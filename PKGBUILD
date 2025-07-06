@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=haruna-git
-pkgver=1.0.1.r12.g616f0317
+pkgver=1.4.0.r60.g929a9ee6
 pkgrel=1
 pkgdesc='Video player built with Qt/QML on top of libmpv'
 arch=(x86_64)
@@ -14,13 +14,16 @@ depends=(ffmpeg
          kcolorscheme
          kconfig
          kcoreaddons
+         kcrash
          kdeclarative
+         kdsingleapplication
          kfilemetadata
          ki18n
          kio
          kirigami
          kwindowsystem
          mpvqt
+         qqc2-desktop-style
          qt6-5compat
          qt6-base
          qt6-declarative)
