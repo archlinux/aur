@@ -7,7 +7,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-openmpi
-pkgver=5.0.7
+pkgver=5.0.8
 pkgrel=1
 arch=('any')
 pkgdesc="High performance message passing library (MPI) (Android ${_android_arch})"
@@ -36,7 +36,7 @@ source=("https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/openmpi-
         '0006-Add-missing-headers.patch'
         '0007-Fix-missing-macros.patch'
         '0008-Force-32-bit-build.patch')
-md5sums=('0529027472015810e5f0d749136ca0a3'
+md5sums=('22ba6092cca432bfca4e3e783d428160'
          '137c5041b5a3a47574b5630b0ff82b4e'
          '49fc1b27cf765f847ce5350a0b38d3f4'
          '15e07e34a261129ccc56fe58d115827e'
