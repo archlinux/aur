@@ -3,8 +3,8 @@
 # Maintainer: Guoxin "7Ji" Pu <pugokushin@gmail.com>
 pkgbase=wps-office-365-edu
 pkgname=('wps-office-365-edu' 'wps-office-365-edu-fonts')
-pkgver=12.8.2.20327
-pkgrel=2
+pkgver=12.8.2.21176
+pkgrel=1
 pkgdesc="WPS Office for education."
 arch=('x86_64' 'aarch64')
 url="https://365.wps.cn/edu/home"
@@ -20,10 +20,10 @@ optdepends=(
   'wps-office-365-edu-fonts: FZ TTF fonts provided by wps office 365 edu'
   'cups: for printing support')
 options=(!strip !zipman !debug)
-source_x86_64=("https://pubwps-wps365-obs.wpscdn.cn/download/365edu/wps-office_${pkgver}.AK.preload.sw.withsn.WPSEdu_amd64.deb")
-source_aarch64=("https://pubwps-wps365-obs.wpscdn.cn/download/365edu/wps-office_${pkgver}.AK.preload.sw.withsn.WPSEdu_arm64.deb")
-sha256sums_x86_64=('bc9504fb5268e1816c120e2bf9f13f4e3ce02364d5fd98e7fae401ae1dfacff1')
-sha256sums_aarch64=('677743858389c982d706052fc1e30d2908cf0ad2246f532a094b640130e75c1d')
+source_x86_64=("https://pubwps-wps365-obs.wpscdn.cn/download/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn_amd64.deb")
+source_aarch64=("https://pubwps-wps365-obs.wpscdn.cn/download/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn_arm64.deb")
+sha256sums_x86_64=('182b06ed73697bd3e2dad4fc07365f53b492b100f59ae15c96509bb04a48abe4')
+sha256sums_aarch64=('1ba7fa4a519f661601e30ce87f434d0f7b6a8217647bac93257888cac15325a1')
 
 prepare() {
   xz -df data.tar.xz
