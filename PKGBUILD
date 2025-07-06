@@ -2,13 +2,13 @@
 # Ex-Maintainer: Nixuge
 
 pkgname=modrinth-app-git
-pkgver=0.8.9.r1503.356a06e
+pkgver=0.10.1.r2787.e5b134f
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
 license=('GPL-3.0-only')
-makedepends=('rust' 'pnpm' 'git' 'jq')
+makedepends=('rust' 'pnpm' 'git' 'jq' 'java-environment>=11')
 depends=(
     # tauri deps
     'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk-4.1'
