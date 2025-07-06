@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=netbird-bin
-pkgver=0.50.0
+pkgver=0.50.1
 pkgrel=1
 pkgdesc='WireGuard-based mesh network'
 url='https://netbird.io'
@@ -20,10 +20,10 @@ source=(
 )
 sha256sums=('128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '5941598ba3698d9a47d06eceb17b6a92d5b37197108b1bb130d02841c8455d05')
-sha256sums_i686=('73cbcd0c207dce145f6ad12fde97dacd433e592d50cca3b4583522524bdb1e3b')
-sha256sums_x86_64=('357e81022337e3f59e61ca61944398ff632596ae804fd00ccf27c22319444214')
-sha256sums_aarch64=('d5f40bfe54bef3b0d62bad9e92ebf70b0cc795cdda6c5a19db120542e8b28f1c')
-sha256sums_armv6h=('b98459605f5acea0b09831198922d026c7b9cf3b5b745884eeda527aeb449e83')
+sha256sums_i686=('48b3c450402ed951adbef0cda0305a0280a25db073e7ac633749c2700564ee5b')
+sha256sums_x86_64=('2abdcb63de698366a4dd44238e5dd52334c704833c614986bd93df7e93eeff78')
+sha256sums_aarch64=('c72776c967bb3dddb3566740654e7175694e8a57d73efbbca18b29826a997d91')
+sha256sums_armv6h=('f8b0588d48f24ff38dec21a8de71fbb33d4fd270027ab73ed5d0dbd594274a74')
 
 _base_url="https://github.com/netbirdio/netbird/releases/download/v$pkgver/netbird_${pkgver}_linux"
 
