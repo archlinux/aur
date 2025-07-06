@@ -1,0 +1,3 @@
+[gnome-tuner-panel]
+source = "git"
+git = "https://altlinux.space/alt-gnome/tunerpanel.git"
