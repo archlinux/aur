@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pango
-pkgver=1.56.3
+pkgver=1.56.4
 pkgrel=1
 arch=('any')
 pkgdesc="A library for layout and rendering of text (Android ${_android_arch})"
@@ -21,7 +21,7 @@ makedepends=('android-meson'
              'gobject-introspection')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/pango/-/archive/${pkgver}/pango-${pkgver}.tar.bz2")
-md5sums=('23c71958614c41f06ae0883a0e1d834f')
+md5sums=('235135d7f48304ee5f95af1a249bc3ff')
 
 build() {
     cd "${srcdir}/pango-${pkgver}"
