@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2506.r91.g944dd711b7'
+pkgver='2506.r183.ga5e85caf0a'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -22,7 +22,7 @@ depends=(
 	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so' 'libgl'
 	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
 	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'pugixml'
-	'sdl2' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
+	'sdl3' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
 	# Additional dependencies to replace vendored deps
 	'cubeb' 'libiconv' 'minizip-ng' 'zlib-ng'
 )
