@@ -8,6 +8,6 @@ pkgbase = klfc-bin
 	provides = klfc
 	conflicts = klfc
 	source = https://github.com/39aldo39/klfc/releases/download/v1.5.7/klfc-linux-amd64-v1.5.7.zip
-	md5sums = caee40a181d7d64092058850eabd8f97
+	sha256sums = 712851d448beb2301cd60f6c04a557f007eb59731fb481e41f7755b41da4f519
 
 pkgname = klfc-bin
