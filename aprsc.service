@@ -3,10 +3,9 @@ Description=APRSC - APRS-IS Core Server
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/aprsc -f /etc/aprsc.conf
+ExecStart=/opt/aprsc/sbin/aprsc -f /opt/aprsc/etc/aprsc.conf
+WorkingDirectory=/opt/aprsc
 Restart=on-failure
-User=aprsc
-Group=aprsc
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
