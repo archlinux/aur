@@ -6,18 +6,9 @@ Target=chromium-ffmpeg-codecs
 Target=opera
 Target=opera-beta
 Target=opera-developer
-Target=electron36
-Target=electron35
-Target=electron34
-Target=electron33
-Target=electron32
-Target=electron31
-Target=electron30
-Target=electron29
-Target=electron28
 Target=nwjs
 Target=slimjet
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /{usr/lib/{opera{,-beta,-developer},electron{28..36},slimjet},opt/nwjs/lib}/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /{usr/lib/{opera{,-beta,-developer},slimjet},opt/nwjs/lib}/libffmpeg.so 2>/dev/null||:'

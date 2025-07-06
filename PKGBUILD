@@ -1,8 +1,8 @@
 
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
-pkgver=${_ffver}.m136_119
-pkgrel=6
+pkgver=${_ffver}.m136_135
+pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M136- (non vendored ${_so})"
 arch=('x86_64')
@@ -15,12 +15,12 @@ install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            '8098a4b44b6f756ebb420fd88cc60fb60dfc27a40e2586925ddb2c59e97a1e41'
-            'b42efa9a14ee2e24037984da45c2717ddf8dad2fd132e2d19d932b8ea6bf96c9')
+            '14db1605a740325737eb9ae029deb142d717a02c1926703b0d45f788c937d861'
+            '0252a9cbf39bbbae2a27b1e929b62de0e69fa653ee691e9c310400fb02ea3598')
 depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch sed) # base-devel
-optdepends=({electron{28..36},nwjs,slimjet}': replace ffmpeg')
+optdepends=({nwjs,slimjet}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
 
@@ -61,7 +61,7 @@ build() {
 package(){
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
   #install -d "${pkgdir}"/opt/vivaldi
-  #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.4
-  # Opera has strange LD_PRELOAD
+  #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.5
+  # Block LD_PRELOAD
   install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
