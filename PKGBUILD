@@ -1,5 +1,5 @@
 pkgname=qobuz-player
-pkgver=0.3.1
+pkgver=0.3.1.2
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
@@ -9,7 +9,7 @@ conflicts=('qobuz-player-git')
 depends=(gstreamer)
 makedepends=(cargo)
 source=("qobuz-player-${pkgver}.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5f341a2d340348fb18bca4de042ada8b5838419aa7bc5149187860c2b2a4f47b')
+sha256sums=('92717d2aebae215d1099920c1581946faae5acca400612d4115026378efbf945')
 options=('!lto')
 
 prepare() {
