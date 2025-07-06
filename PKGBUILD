@@ -14,10 +14,11 @@ source=("https://sourceforge.net/projects/matroska/files/mkvalidator/mkvalidator
 sha256sums=('f9eaa2138fade7103e6df999425291d2947c5355294239874041471e3aa243f0')
 
 build() {
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
   cmake -S "mkvalidator-${pkgver}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   cmake --build build
 }
