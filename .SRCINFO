@@ -1,5 +1,5 @@
 pkgbase = not1mm-9m2pju-git
-	pkgdesc = Unofficial git build of not1mm - Notion-style TUI Markdown Editor
+	pkgdesc = Not1MM != N1MM, An amateur radio contest logger for Linux.
 	pkgver = r123.abcdef0
 	pkgrel = 1
 	url = https://github.com/mbridak/not1mm

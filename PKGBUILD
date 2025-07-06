@@ -2,7 +2,7 @@
 pkgname=not1mm-9m2pju-git
 pkgver=r123.abcdef0  # placeholder; will be auto-generated
 pkgrel=1
-pkgdesc="Unofficial git build of not1mm - Notion-style TUI Markdown Editor"
+pkgdesc="Not1MM != N1MM, An amateur radio contest logger for Linux. "
 arch=('any')
 url="https://github.com/mbridak/not1mm"
 license=('MIT')
