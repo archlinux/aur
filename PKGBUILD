@@ -19,9 +19,9 @@ makedepends=(
   'vala'
 )
 optdepends=(
-  'tuner-gdm: GNOME Display Manager settings'
-  'tuner-panel: Panel mode switcher'
-  'tuner-tweaks: Extra GNOME settings'
+  'gnome-tuner-gdm: GNOME Display Manager settings'
+  'gnome-tuner-panel: Panel mode switcher'
+  'gnome-tuner-tweaks: Extra GNOME settings'
 )
 provides=('libtuner-1.so')
 source=("git+https://altlinux.space/alt-gnome/tuner.git#tag=$pkgver")

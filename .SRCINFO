@@ -13,9 +13,9 @@ pkgbase = gnome-tuner
 	depends = libadwaita
 	depends = libgee
 	depends = libpeas-2
-	optdepends = tuner-gdm: GNOME Display Manager settings
-	optdepends = tuner-panel: Panel mode switcher
-	optdepends = tuner-tweaks: Extra GNOME settings
+	optdepends = gnome-tuner-gdm: GNOME Display Manager settings
+	optdepends = gnome-tuner-panel: Panel mode switcher
+	optdepends = gnome-tuner-tweaks: Extra GNOME settings
 	provides = libtuner-1.so
 	source = git+https://altlinux.space/alt-gnome/tuner.git#tag=0.4.0
 	sha256sums = 7c064c37c4c60e9428f50cce306c686aaab7e4e9f010f169b2ba970f8f82caf6
