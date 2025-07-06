@@ -1,7 +1,7 @@
 pkgbase = dovecot2-antispam-git
 	pkgdesc = Integrates DSPAM into dovecot IMAP server. Git Version for dovecot >= 2.1
 	pkgver = 2.0.r17.g713e9e9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sipsolutions.net/dovecot-antispam.git/
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = dovecot2-antispam-git
 	sha512sums = SKIP
 
 pkgname = dovecot2-antispam-git
-

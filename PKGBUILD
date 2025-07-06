@@ -3,7 +3,7 @@
 
 pkgname=dovecot2-antispam-git
 pkgver=2.0.r17.g713e9e9
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates DSPAM into dovecot IMAP server. Git Version for dovecot >= 2.1"
 arch=( 'i686' 'x86_64' )
 url="https://git.sipsolutions.net/dovecot-antispam.git/"
@@ -23,7 +23,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+
+  # Needed until dovecot 2.4.x
+  # See https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=ed04b7834d76977f8dcd7ace42ad8ede4a2a5f45
+  CFLAGS="-std=gnu17" make
 }
 
 package() {
