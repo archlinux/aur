@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64
-pkgver=1.0.19
+pkgver=1.0.20
 pkgrel=1
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
@@ -46,6 +46,8 @@ makedepends=(
     'libxrender'
     'libxss'
     'libxtst'
+    'lld'
+    'llvm'
     'mesa'
     'sndio'
     'systemd-libs'
@@ -54,7 +56,7 @@ makedepends=(
     'wayland-protocols')
 source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
         'git+https://github.com/Themaister/parallel-rdp-standalone.git')
-sha256sums=('c2ac218b9fa0ff26373fb22fe798fa1d86d98ca88bb03ded6df5daadf1e7fef3'
+sha256sums=('9a960cf75ed4410117a0bbca0bbb9d31ccdf854771344566b79b56c1761d9ead'
             'SKIP')
 
 prepare() {
@@ -67,14 +69,24 @@ prepare() {
 }
 
 build() {
+    export CC='clang'
+    export CXX='clang++'
+    export AR='llvm-ar'
+    export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
+    export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='gopher64/target'
     cargo build --release --frozen --manifest-path='gopher64/Cargo.toml'
 }
 
 check() {
+    export CC='clang'
+    export CXX='clang++'
+    export AR='llvm-ar'
+    export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
+    export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='gopher64/target'
     cargo test --frozen --manifest-path='gopher64/Cargo.toml'
