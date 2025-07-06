@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-sdl3
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3) (Android armv7a-eabi)
-	pkgver = 3.2.12
+	pkgver = 3.2.16
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = any
@@ -24,10 +24,10 @@ pkgbase = android-armv7a-eabi-sdl3
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libsdl-org/SDL/releases/download/release-3.2.12/SDL3-3.2.12.tar.gz
-	source = https://github.com/libsdl-org/SDL/releases/download/release-3.2.12/SDL3-3.2.12.tar.gz.sig
+	source = https://github.com/libsdl-org/SDL/releases/download/release-3.2.16/SDL3-3.2.16.tar.gz
+	source = https://github.com/libsdl-org/SDL/releases/download/release-3.2.16/SDL3-3.2.16.tar.gz.sig
 	validpgpkeys = 1528635D8053A57F77D1E08630A59377A7763BE6
-	md5sums = 12492302d8fc6bb88cd1f8d9726d7242
+	md5sums = c046dd31de901ac7aa3da013e55f1716
 	md5sums = SKIP
 
 pkgname = android-armv7a-eabi-sdl3
