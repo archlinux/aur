@@ -11,7 +11,7 @@ url="https://github.com/dpnspn/aiomax"
 license=('MIT')
 depends=(python3 python-aiohttp)
 makedepends=(python-build python-installer python-wheel python-setuptools python-setuptools-git-versioning)
-source=("$_name-$pkgver::https://codeload.github.com/dpnspn/aiomax/tar.gz/refs/tags/$pkgver")
+source=("https://codeload.github.com/dpnspn/aiomax/tar.gz/refs/tags/$pkgver")
 sha256sums=('dc8d979507f75ecd5b90d740c367ad37a165df93972923291d4e8a99b6ff9004')
 conflicts=(python-aiomax-git)
 
