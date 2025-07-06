@@ -30,7 +30,8 @@ prepare() {
     # Update SDL2 to 2.32.8 to fix build failure with recent pipewire
     # Upstream has an open PR for this at https://github.com/nesbox/TIC-80/pull/2779
     cd vendor/sdl2
-    git checkout 98d1f3a45aae568ccd6ed5fec179330f47d4d356
+    git fetch --tags
+    git checkout release-2.32.8
 }
 
 build() {
