@@ -2,12 +2,13 @@
 # Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=5.15.20.18
+pkgver=5.15.24.17
 pkgrel=1
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
-_basepkgpath='upload/software/2025/202503/20250331'
+_basepkgpath='upload/software/2025/202506/20250618'
 _baseos='linux_x64'
+_suffix='_20250613204459'
 arch=('x86_64')
 url='https://support.omadanetworks.com/us/product/omada-software-controller/?resourceType=download'
 license=('custom')
@@ -16,11 +17,11 @@ makedepends=('git')
 #provides=('sdn-controller')
 conflicts=('omada-sdn-controller')
 source=(
-    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.tar.gz"
+    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}${_suffix}.tar.gz"
     "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
 
-sha256sums=('560cf007b11c19d4820b85b0ab55713393024f1b299e5ddcb6280b4532c7839e'
+sha256sums=('8b383d55c81aa3583945c3c1c4f2cf78a8451888c3ccf5ec932096787712d6a9'
             'SKIP')
 
 package() {
