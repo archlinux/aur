@@ -1,18 +1,21 @@
 pkgbase = x265-git
 	pkgdesc = Open source H.265/HEVC video encoder (git version)
-	pkgver = 3.5.r103.g34532bda1
+	pkgver = 4.1.r189.gcd4f0d6e9
 	pkgrel = 1
 	url = https://bitbucket.org/multicoreware/x265_git
 	arch = x86_64
-	license = GPL
-	makedepends = git
+	license = GPL-2.0-or-later
 	makedepends = cmake
+	makedepends = git
 	makedepends = nasm
 	depends = gcc-libs
+	depends = glibc
 	provides = x265
 	provides = libx265.so
 	conflicts = x265
 	source = git+https://bitbucket.org/multicoreware/x265_git.git
+	source = 010-x265-gcc15-fix.patch
 	sha256sums = SKIP
+	sha256sums = 4eb688e63b24cfdf9c44225ada42cbd1351809d7190935ed10ee5f8496c3cb7c
 
 pkgname = x265-git
