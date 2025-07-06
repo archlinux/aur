@@ -2,3 +2,4 @@
 source = 'github'
 github = 'redis/redis'
 use_max_tag = true
+exclude_regex = ".*(rc|alpha|beta).*"
