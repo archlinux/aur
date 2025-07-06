@@ -1,6 +1,6 @@
 pkgbase = grabit
 	pkgdesc = Screenshot and file uploader for Zipline and other services
-	pkgver = 1.0.3
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://heliopolis.live/creations/grabit.git
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = grabit
 	optdepends = python-pillow: image preview
 	optdepends = python-screeninfo: screen placement
 	optdepends = spectacle: KDE screenshot support
-	source = git+https://heliopolis.live/creations/grabit.git#tag=v1.0.3
+	source = git+https://heliopolis.live/creations/grabit.git#tag=v1.0.5
 	sha256sums = SKIP
 
 pkgname = grabit
