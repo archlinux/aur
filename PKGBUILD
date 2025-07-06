@@ -5,13 +5,11 @@ pkgdesc="A lightweight multi-platform, multi-architecture disassembly framework.
 arch=('i686' 'x86_64')
 url="http://www.capstone-engine.org/"
 license=('BSD')
+makedepends=('git')
 # if you want the bindings uncomment the appropriae line below, and
 # comment out the line above
-#makedepends=('git' 'python2' 'python')
-makedepends=('git' 'python')
-#makedepends=('git' 'python2')
-optdepends=('python: for python3 bindings'
-            'python2: for python2 bindings')
+#makedepends=('git' 'python')
+optdepends=('python: for python3 bindings')
 provides=('capstone')
 conflicts=('capstone')
 
@@ -31,9 +29,8 @@ build() {
   cmake --build build
 
   # uncomment as approriate
-  cd bindings/python
-  #python2 setup.py build -b ./build/py2
-  python setup.py build -b ./build/py3
+  #cd bindings/python
+  #python setup.py build -b ./build/py3
 }
 
 check() {
@@ -41,10 +38,9 @@ check() {
   build/suite/cstest/cstest tests
 
   # uncomment as needed
-  cd bindings/python
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="$PWD/build/py3/lib.linux-$CARCH-cpython-$python_version" python tests/test_all.py
-  #python2 test_basic.py
+  #cd bindings/python
+  #local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  #PYTHONPATH="$PWD/build/py3/lib.linux-$CARCH-cpython-$python_version" python tests/test_all.py
 }
 
 package() {
@@ -55,8 +51,7 @@ package() {
   install LICENSES/LICENSE.TXT ${pkgdir}/usr/share/licenses/capstone-git/LICENSE.TXT
 
   # uncomment as needed
-  cd ${srcdir}/${pkgname}/bindings/python
-  #python2 setup.py install --root ${pkgdir}
-  python setup.py install --root ${pkgdir}
+  #cd ${srcdir}/${pkgname}/bindings/python
+  #python setup.py install --root ${pkgdir}
 }
 # vim:set ts=2 sw=2 et:
