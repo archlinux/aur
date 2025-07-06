@@ -1,0 +1,18 @@
+﻿pkgbase = python-quizr-cli
+pkgdesc = A command-line quiz tool with spaced repetition and image support
+pkgver = 1.0.0
+pkgrel = 1
+url = https://github.com/sipistab/QUIZR
+arch = any
+license = CC0
+makedepends = python-build
+makedepends = python-installer
+makedepends = python-wheel
+depends = python
+depends = python-yaml
+depends = python-rich
+depends = python-rapidfuzz
+source = https://files.pythonhosted.org/packages/source/q/quizr-cli/quizr-cli-1.0.0.tar.gz
+sha256sums = 3E7CC84886F8A4A67C460C894CB70343989591DA5CB270C0A8C67636A86CF366
+
+pkgname = python-quizr-cli
