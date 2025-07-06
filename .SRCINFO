@@ -1,4 +1,4 @@
-pkgbase = tile-molester
+pkgbase = tile-molestor
 	pkgdesc = Multi-format graphics editor for ROM hacking
 	pkgver = 0.19
 	pkgrel = 3

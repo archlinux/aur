@@ -1,5 +1,6 @@
 # Maintainer: Sterophonick
 pkgname=tile-molester
+pkgbase=tile-molestor
 _pkgname='tile-molester'
 pkgver=0.19
 pkgrel=3
