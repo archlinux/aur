@@ -8,7 +8,7 @@ pkgdesc="FetchCord grabs your OS info and displays it as Discord Rich Presence"
 arch=('any')
 url="https://github.com/fetchcord/fetchcord/tree/testing/"
 license=('MIT')
-depends=('python' 'neofetch' 'python-psutil' 'python-setuptools' 'python-pypresence' 'python-yaml')
+depends=('python' 'fastfetch' 'python-psutil' 'python-setuptools' 'python-pypresence' 'python-yaml')
 optdepends=('systemd: Systemd user service' 'python-pyqt5: GUI')
 provides=('fetchcord')
 source=("fetchcord::git+https://github.com/fetchcord/fetchcord/#branch=testing")
