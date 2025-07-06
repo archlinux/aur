@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-openldap
 	pkgdesc = Lightweight Directory Access Protocol (LDAP) (Android riscv64)
-	pkgver = 2.6.9
+	pkgver = 2.6.10
 	pkgrel = 1
 	url = https://www.openldap.org/
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = android-riscv64-openldap
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.9.tgz
+	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.10.tgz
 	source = 0001-Add-missing-headers.patch
-	md5sums = 608973c35cd4924fca0f07d0ea72c016
+	md5sums = 6be5e6c43d599e7a422669c70229ca74
 	md5sums = a02479170500e252834e45e977d95567
 
 pkgname = android-riscv64-openldap
