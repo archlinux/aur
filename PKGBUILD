@@ -22,7 +22,7 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=0.3.0.r87.g48e544a
+pkgver=0.3.0.r216.gcaab1e0
 
 pkgver() {
     cd "$pkgname"
@@ -41,6 +41,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
+    sed -i 's/#!\[deny(unused_crate_dependencies)\]//g' libsurfer/src/lib.rs # https://gitlab.com/surfer-project/surfer/-/issues/424
     cargo build --frozen --release --all-features
 }
 
