@@ -1,0 +1,18 @@
+pkgbase = aosp-overhaul
+	pkgdesc = Metapackage to pull all dependencies required to build modern Android (overhauled)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/title/Android#Building
+	arch = x86_64
+	license = None
+	depends = java-environment
+	depends = ccache
+	depends = wxgtk2
+	depends = gradle
+	depends = maven
+	depends = aosp-devel
+	depends = lineageos-devel
+	depends = grapheneos-devel
+	depends = halium-devel
+
+pkgname = aosp-overhaul
