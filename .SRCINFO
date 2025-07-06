@@ -1,6 +1,6 @@
 pkgbase = python-shap
 	pkgdesc = Game theoretic approach to explain the output of any machine learning model
-	pkgver = 0.47.2
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://github.com/slundberg/shap
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = python-shap
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = cython
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
@@ -23,7 +24,7 @@ pkgbase = python-shap
 	depends = python-cloudpickle
 	optdepends = ipython
 	optdepends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/source/s/shap/shap-0.47.2.tar.gz
-	sha512sums = 5e30944eed87d806fb3a14a2820e1aa2d38bc6e49dc1be909b1d36b61be9eea5877f12e1a19f7d12ba40fac4cfef19b17cc0fcbc23584327a11a24f86cf7a99f
+	source = https://files.pythonhosted.org/packages/source/s/shap/shap-0.48.0.tar.gz
+	sha512sums = af84202c46592d8372b9ad438726bb1c383d26d84554406fba72086bff7e228e9d3cf584a5709f130515891ccc804486fafeb6926425675ea7b691fd5723df9c
 
 pkgname = python-shap
