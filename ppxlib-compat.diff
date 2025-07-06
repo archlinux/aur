@@ -1,0 +1,107 @@
+diff --git a/flow_parser.opam b/flow_parser.opam
+index 1757d07c39..a0ad0ca13b 100644
+--- a/flow_parser.opam
++++ b/flow_parser.opam
+@@ -12,7 +12,7 @@ depends: [
+   "ocaml" {>= "5.2.0"}
+   "dune" {>= "3.2"}
+   "base" {>= "v0.17.1"}
+-  "ppxlib" {>= "0.32.1" & < "0.36.0"}
++  "ppxlib" {>= "0.36.0"}
+   "ppx_deriving" {build}
+   "ppx_gen_rec" {build}
+   "wtf8"
+diff --git a/flowtype.opam b/flowtype.opam
+index a4fff42a96..d7968114d0 100644
+--- a/flowtype.opam
++++ b/flowtype.opam
+@@ -21,7 +21,7 @@ depends: [
+   "lwt" {>= "5.7.0"}
+   "lwt_log" {>= "1.1.1"}
+   "lwt_ppx" {>= "2.1.0"}
+-  "ppxlib" {>= "0.32.1" & < "0.36.0"}
++  "ppxlib" {>= "0.36.0"}
+   "ppx_expect" {>= "0.17.0"}
+   "ppx_expect" {>= "0.17.0"}
+   "ppx_let" {>= "0.14.0"}
+diff --git a/src/third-party/sedlex-ppx/ppx_sedlex.ml b/src/third-party/sedlex-ppx/ppx_sedlex.ml
+index 44c063e7fe..2391282c67 100644
+--- a/src/third-party/sedlex-ppx/ppx_sedlex.ml
++++ b/src/third-party/sedlex-ppx/ppx_sedlex.ml
+@@ -4,6 +4,7 @@
+ 
+ open Ppxlib
+ open Ast_builder.Default
++open Ast_helper
+ 
+ (* let ocaml_version = Versions.ocaml_408 *)
+ 
+@@ -347,23 +348,30 @@ let call_state lexbuf auto state =
+   then match best_final final with
+   | Some i -> eint ~loc:default_loc i
+   | None -> assert false
+-  else appfun (state_fun state) [evar ~loc:default_loc lexbuf]
++  else appfun (state_fun state) [lexbuf]
+ 
+-let gen_state lexbuf auto i (trans, final) =
++let gen_state (lexbuf_name, lexbuf) auto i (trans, final) =
+   let loc = default_loc in
+   let partition = Array.map fst trans in
+   let cases = Array.mapi (fun i (_, j) -> case ~lhs:(pint ~loc i) ~guard:None ~rhs:(call_state lexbuf auto j)) trans in
+   let cases = Array.to_list cases in
+   let body () =
+     pexp_match ~loc
+-      (appfun (partition_name partition) [[%expr Sedlexing.__private__next_int [%e evar ~loc lexbuf]]])
+-      (cases @ [case ~lhs:[%pat? _] ~guard:None ~rhs:[%expr Sedlexing.backtrack [%e evar ~loc lexbuf]]])
++      (appfun (partition_name partition) [[%expr Sedlexing.__private__next_int [%e lexbuf]]])
++      (cases @ [case ~lhs:[%pat? _] ~guard:None ~rhs:[%expr Sedlexing.backtrack [%e lexbuf]]])
++  in
++  let ret body =
++    let lhs = pvar ~loc:lexbuf.pexp_loc lexbuf_name in
++    [
++      value_binding ~loc
++        ~pat:(pvar ~loc (state_fun i))
++        ~expr:(Exp.fun_ ~loc Nolabel None lhs body);
++    ]
+   in
+-  let ret body = [ value_binding ~loc ~pat:(pvar ~loc (state_fun i)) ~expr:(pexp_function ~loc [case ~lhs:(pvar ~loc lexbuf) ~guard:None ~rhs:body]) ] in
+   match best_final final with
+     | None -> ret (body ())
+     | Some _ when Array.length trans = 0 -> []
+-    | Some i -> ret [%expr Sedlexing.mark [%e evar ~loc lexbuf] [%e eint ~loc i]; [%e body ()]]
++    | Some i -> ret [%expr Sedlexing.mark [%e lexbuf] [%e eint ~loc i]; [%e body ()]]
+ 
+ let gen_recflag auto =
+   (* The generated function is not recursive if the transitions end
+@@ -381,17 +389,17 @@ let gen_recflag auto =
+   with
+     Exit -> Recursive
+ 
+-let gen_definition lexbuf l error =
++let gen_definition ((_, lexbuf) as lexbuf_with_name) l error =
+   let loc = default_loc in
+   let brs = Array.of_list l in
+   let auto = Flow_sedlex.compile (Array.map fst brs) in
+   let cases = Array.to_list (Array.mapi (fun i (_, e) -> case ~lhs:(pint ~loc i) ~guard:None ~rhs:e) brs) in
+-  let states = Array.mapi (gen_state lexbuf auto) auto in
++  let states = Array.mapi (gen_state lexbuf_with_name auto) auto in
+   let states = List.flatten (Array.to_list states) in
+   pexp_let ~loc (gen_recflag auto) states
+     (pexp_sequence ~loc
+-       [%expr Sedlexing.start [%e evar ~loc lexbuf]]
+-       (pexp_match ~loc (appfun (state_fun 0) [evar ~loc lexbuf])
++       [%expr Sedlexing.start [%e lexbuf]]
++       (pexp_match ~loc (appfun (state_fun 0) [lexbuf])
+           (cases @ [case ~lhs:(ppat_any ~loc) ~guard:None ~rhs:error])
+        )
+     )
+@@ -554,7 +562,8 @@ let mapper =
+       | [%expr [%sedlex [%e? {pexp_desc=Pexp_match (lexbuf, cases)}]]] ->
+             let lexbuf =
+               match lexbuf with
+-              | {pexp_desc=Pexp_ident{txt=Lident lexbuf}} -> lexbuf
++              | { pexp_desc = Pexp_ident { txt = Lident txt } } ->
++                  (txt, lexbuf)
+               | _ ->
+                 err lexbuf.pexp_loc "the matched expression must be a single identifier"
+             in
