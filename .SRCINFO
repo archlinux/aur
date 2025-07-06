@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-sl
 	pkgdesc = Slovenian language pack for Pale Moon browser
-	pkgver = 33.6.0
+	pkgver = 33.8.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-sl-33.6.0.xpi
-	source = palemoon-i18n-sl-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-sl@palemoon.org
-	sha256sums = d620c9dcdb4246118bda5722fc82add23a66e5f5f6274e86b64dc56061ddccab
+	noextract = palemoon-i18n-sl-33.8.0.xpi
+	source = palemoon-i18n-sl-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-sl@palemoon.org
+	sha256sums = ad79276c7ca3a74e536eaaae7c57901ced6b433eca2ad6720e47be5291951bb6
 
 pkgname = palemoon-i18n-sl
