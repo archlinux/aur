@@ -1,0 +1,97 @@
+diff --git a/pteid-mw-pt/_src/eidmw/common/ByteArray.cpp b/pteid-mw-pt/_src/eidmw/common/ByteArray.cpp
+index 9284fb55e..1999e10b4 100644
+--- a/pteid-mw-pt/_src/eidmw/common/ByteArray.cpp
++++ b/pteid-mw-pt/_src/eidmw/common/ByteArray.cpp
+@@ -25,6 +25,7 @@
+ #include <exception>
+ #include <cassert>
+ #include <limits.h>
++#include <cstdint>
+ 
+ using namespace std;
+ 
+diff --git a/pteid-mw-pt/_src/eidmw/common/Config.cpp b/pteid-mw-pt/_src/eidmw/common/Config.cpp
+index 3edcb3357..9b5d6e707 100644
+--- a/pteid-mw-pt/_src/eidmw/common/Config.cpp
++++ b/pteid-mw-pt/_src/eidmw/common/Config.cpp
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <limits.h>
+ #include <sys/stat.h>
++#include <cstdint>
+ 
+ #include "Config.h"
+ #include "Util.h"
+diff --git a/pteid-mw-pt/_src/eidmw/common/Log.cpp b/pteid-mw-pt/_src/eidmw/common/Log.cpp
+index a29926a03..eb5e7f4c7 100644
+--- a/pteid-mw-pt/_src/eidmw/common/Log.cpp
++++ b/pteid-mw-pt/_src/eidmw/common/Log.cpp
+@@ -28,6 +28,7 @@
+ #include "MWException.h"
+ #include "Util.h"
+ #include <string>
++#include <cstdint>
+ 
+ #define DO_LOGGING
+ 
+diff --git a/pteid-mw-pt/_src/eidmw/common/LogBase.cpp b/pteid-mw-pt/_src/eidmw/common/LogBase.cpp
+index 20b6e01e5..ef07ec706 100644
+--- a/pteid-mw-pt/_src/eidmw/common/LogBase.cpp
++++ b/pteid-mw-pt/_src/eidmw/common/LogBase.cpp
+@@ -31,6 +31,7 @@
+ #include "Thread.h"
+ #include "Config.h"
+ #include "Util.h"
++#include <cstdint>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+diff --git a/pteid-mw-pt/_src/eidmw/common/MWException.cpp b/pteid-mw-pt/_src/eidmw/common/MWException.cpp
+index 77d8f8ea5..abb7493cb 100644
+--- a/pteid-mw-pt/_src/eidmw/common/MWException.cpp
++++ b/pteid-mw-pt/_src/eidmw/common/MWException.cpp
+@@ -21,6 +21,7 @@
+ **************************************************************************** */
+ #include "MWException.h"
+ #include "Util.h"
++#include <cstdint>
+ 
+ using namespace std;
+ 
+diff --git a/pteid-mw-pt/_src/eidmw/common/Util.h b/pteid-mw-pt/_src/eidmw/common/Util.h
+index 7132d7af8..b07679403 100644
+--- a/pteid-mw-pt/_src/eidmw/common/Util.h
++++ b/pteid-mw-pt/_src/eidmw/common/Util.h
+@@ -32,6 +32,7 @@
+ #include <cstring>
+ #include <string>
+ #include <functional>
++#include <cstdint>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+diff --git a/pteid-mw-pt/_src/eidmw/common/datafile.cpp b/pteid-mw-pt/_src/eidmw/common/datafile.cpp
+index 6b583654c..a967f3173 100644
+--- a/pteid-mw-pt/_src/eidmw/common/datafile.cpp
++++ b/pteid-mw-pt/_src/eidmw/common/datafile.cpp
+@@ -69,6 +69,7 @@
+ #include <sstream>
+ #include <errno.h>
+ #include <limits.h>
++#include <cstdint>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+diff --git a/pteid-mw-pt/_src/eidmw/pkcs11/session.c b/pteid-mw-pt/_src/eidmw/pkcs11/session.c
+index 8a386ea69..a84c95bc9 100644
+--- a/pteid-mw-pt/_src/eidmw/pkcs11/session.c
++++ b/pteid-mw-pt/_src/eidmw/pkcs11/session.c
+@@ -56,7 +56,7 @@ CK_RV C_OpenSession(CK_SLOT_ID slotID,				 /* the slot's ID */
+ 
+ 	//   CAutoMutex(&g_oSlotMutex);
+ 	log_trace(WHERE, "I: enter");
+-	ret = p11_lock(slotID); /* mutex per slot slot 0 tot 9 FF=global slot*/
++	ret = p11_lock(); /* mutex per slot slot 0 tot 9 FF=global slot*/
+ 	if (ret != CKR_OK) {
+ 		log_trace(WHERE, "I: leave, p11_lock failed with %i", ret);
+ 		return ((CK_RV)ret);

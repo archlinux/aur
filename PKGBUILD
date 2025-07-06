@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.13.3
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
@@ -32,34 +32,34 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('classpath' 'cartaodecidadao' 'cartaodecidadao-bin')
 replaces=('cartaodecidadao')
 
-source=("git+https://github.com/amagovpt/autenticacao.gov/#tag=v${pkgver}"
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/amagovpt/autenticacao.gov/archive/refs/tags/v${pkgver}.tar.gz"
         "autenticacao-gov-pt.install"
-        "file.patch")
+        "gcc15-fix.patch")
 
-sha512sums=('SKIP'
+sha512sums=('a5b4d2cb86783fcdafbec44af40047ea6b3d40241bdd994aedf208a107d54056a3e0707835a210e90236530ac990fa11ae0e2efc42dbbe536203ba10ef316090'
             '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f'
-            '58fee2c2f161500d028503125de36ce46fabb9779a823abcb0f6e8111cac520a8dd9985bd3a3fbcc5a5b59ddde7e9a0d36085e7d27b68db087b909a788c6865b')
+            '10f9023f0f5f5e38a8f1c32ac6af709f675aa0ca4952a26a4b07667b30498d43a6f5aae4ae18ed96d6aac28ccf4460925b21f61703bd30952f860dfd9bc5ffb1')
 
 install='autenticacao-gov-pt.install'
 
 prepare(){
-cat >> ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidlibJava_Wrapper/eidlibJava_Wrapper.pro <<EOF
+cat >> ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw/eidlibJava_Wrapper/eidlibJava_Wrapper.pro <<EOF
 INCLUDEPATH += /usr/lib/jvm/default/include
 INCLUDEPATH += /usr/lib/jvm/default/include/linux
 EOF
 # work around for upstream bug (GCC-15)
-cd ${srcdir}/${_pkgname}
-patch -p1 < ${srcdir}/file.patch
+cd ${srcdir}/${_pkgname}-${pkgver}
+patch -p1 < ${srcdir}/gcc15-fix.patch
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw
+  cd ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw
   qmake pteid-mw.pro
   make -j${nproc}
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw
+  cd ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw
 
   # Fix upstream bug not creating path
   mkdir -p ${pkgdir}/usr/local/lib/
@@ -73,17 +73,17 @@ package() {
 
 
   # Install desktop files
-  install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/applications/pteid-mw-gui.desktop
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/applications/pteid-mw-gui.desktop
 
   # Install fonts
-  install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Black.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
-  install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Bold.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
-  install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Regular.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Black.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Bold.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Regular.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
 
   # Cleanup
   rm -rf ${pkgdir}/usr/local/share/pteid-mw/fonts/Lato-Regular.ttf
 
   # Install image files
-  install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-signature.png ${pkgdir}/usr/share/autenticacao-gov/pteid-signature.png
-  install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-scalable.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/pteid-scalable.svg
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw/debian/pteid-signature.png ${pkgdir}/usr/share/autenticacao-gov/pteid-signature.png
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw/debian/pteid-scalable.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/pteid-scalable.svg
 }
