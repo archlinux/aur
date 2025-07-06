@@ -1,6 +1,6 @@
 pkgbase = python-llama-cpp-cuda
 	pkgdesc = Python bindings for llama.cpp
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/abetlen/llama-cpp-python
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = python-llama-cpp-cuda
 	optdepends = python-pyaml
 	provides = python-llama-cpp
 	conflicts = python-llama-cpp
-	source = https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-0.3.11.tar.gz
-	sha256sums = b32fd06a7d19c7e25e8f920e5451fda99a99682648576848e4dc1c6d60af686d
+	source = https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-0.3.12.tar.gz
+	sha256sums = 0c977101a46ce6fa363e63a0b33413f29deab9772be24a6c551458fc386f4725
 
 pkgname = python-llama-cpp-cuda
