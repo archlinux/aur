@@ -1,6 +1,6 @@
 pkgbase = tmex
 	pkgdesc = minimalist tmux layout manager
-	pkgver = 2.0.3
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/evnp/tmex
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tmex
 	license = MIT
 	depends = bash
 	depends = tmux
-	source = tmex-2.0.3.tar.gz::https://github.com/evnp/tmex/archive/refs/tags/v2.0.3.tar.gz
-	sha256sums = 98cd4046421b6dad611628261932243481d2454c09e6670b3f7c09f48483c81d
+	source = tmex-2.0.5.tar.gz::https://github.com/evnp/tmex/archive/refs/tags/v2.0.5.tar.gz
+	sha256sums = 7d10effd81f904689a09c82cd5d8f3f078fcc58fe5535e8c7a35658e84e33323
 
 pkgname = tmex
