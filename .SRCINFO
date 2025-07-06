@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-nl
 	pkgdesc = Dutch (Netherlands) language pack for Pale Moon browser
-	pkgver = 33.6.0
+	pkgver = 33.8.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-nl-33.6.0.xpi
-	source = palemoon-i18n-nl-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-nl@palemoon.org
-	sha256sums = e50754384b5ffebf87b3a544fffaf8815bbbbced4b5bbc87b61b298e17c6166f
+	noextract = palemoon-i18n-nl-33.8.0.xpi
+	source = palemoon-i18n-nl-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-nl@palemoon.org
+	sha256sums = 6bf62391b15ad872548576c4052d35f826524bac2b616f885b33c8005e804fc9
 
 pkgname = palemoon-i18n-nl
