@@ -5,7 +5,7 @@ pkgbase = suwayomi-server-preview-bin
 	url = https://github.com/Suwayomi/Suwayomi-Server-preview
 	arch = any
 	license = MPL2
-	depends = java-runtime>=8
+	depends = java-runtime>=21
 	depends = libc++
 	optdepends = electron: running in Electron
 	provides = suwayomi
