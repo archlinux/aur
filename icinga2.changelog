@@ -1,3 +1,7 @@
+2.15.0-1
+  - New upstream version 2.15.0
+    https://github.com/Icinga/icinga2/releases/tag/v2.15.0
+
 2.14.6-1
   - New upstream version 2.14.6
   - Includes a fix for CVE-2025-48057, however, Arch Linux is not affected
