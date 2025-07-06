@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-sv-se
 	pkgdesc = Swedish (Sweden) language pack for Pale Moon browser
-	pkgver = 33.6.0
+	pkgver = 33.8.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-sv-se-33.6.0.xpi
-	source = palemoon-i18n-sv-se-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-sv-SE@palemoon.org
-	sha256sums = 8bd478c5d2a34e4bd125d73a20e0b65bd764610ccab6abf3886b04f344dbf5e4
+	noextract = palemoon-i18n-sv-se-33.8.0.xpi
+	source = palemoon-i18n-sv-se-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-sv-SE@palemoon.org
+	sha256sums = efedcfd7519a83ad675ab780cc66ade4a1ed7a6e8fd280c0f257ab161c2f5e47
 
 pkgname = palemoon-i18n-sv-se
