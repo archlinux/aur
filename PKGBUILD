@@ -1,7 +1,7 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=wstbld
-pkgver=1.1
-_rel_at_source=1
+pkgver=1.2
+_rel_at_source=0
 pkgrel=0
 pkgdesc="web site builder"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/colin-i/${pkgname}"
 license=('0BSD')
 makedepends=('ocompiler')
 source=("${pkgname}-${pkgver}-${_rel_at_source}.tar.gz::https://github.com/colin-i/${pkgname}/archive/${pkgname}-${pkgver}-${_rel_at_source}.tar.gz")
-sha256sums=('12895f84125d007eca074743b5cb8f426700572c2dd41c6191cbdc366112f2a2')
+sha256sums=('dcba20d0d4fe3ab99854c123791107eff69573fe30a8412c531457a143afea95')
 
 _tag() {
 	cd "${pkgname}-${pkgname}-${pkgver}-${_rel_at_source}"
