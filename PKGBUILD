@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 source=("https://github.com/alvr-org/ALVR/releases/download/v$pkgver/${_pkgname%-launcher}_launcher_linux.tar.gz"
 		"${_pkgname}.png"
 		"${_pkgname}.desktop")
-md5sums=('9f8ce9b764ce33dee837d03176c2827c'
+md5sums=('2b8c10b6f75e5694002384cd8168124f'
          'cd2c37fd286efad87b679d50631ca3d7'
          '7467d29e1ea2a23a27f5608c7f62afb9')
 
