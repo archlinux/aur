@@ -2,7 +2,7 @@ pkgbase = omada-controller
 	pkgdesc = Omada SDN Controller
 	pkgver = 5.15.24.17
 	pkgrel = 1
-	url = https://support.omadanetworks.com/us/product/omada-software-controller/?resourceType=download
+	url = https://support.omadanetworks.com/us/download/software/omada-controller
 	arch = x86_64
 	license = custom
 	makedepends = git
