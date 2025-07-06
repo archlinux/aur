@@ -8,6 +8,8 @@ url="https://github.com/Byson94/xfsrtray"
 license=('GPL')
 depends=()
 makedepends=()
+provides=('xfsrtray')
+conflicts=('xfsrtray' 'xfsrtray-git')
 source=("https://github.com/Byson94/xfsrtray/releases/download/v${pkgver}/xfsrtray")
 sha256sums=('fa439f4acf9ce8f78f584e1fb9c4cbb7a357c3ecce32f63bbf7e7b4754a578ec')
 

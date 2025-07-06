@@ -5,6 +5,9 @@ pkgbase = xfsrtray-bin
 	url = https://github.com/Byson94/xfsrtray
 	arch = x86_64
 	license = GPL
+	provides = xfsrtray
+	conflicts = xfsrtray
+	conflicts = xfsrtray-git
 	source = https://github.com/Byson94/xfsrtray/releases/download/v1.0.2/xfsrtray
 	sha256sums = fa439f4acf9ce8f78f584e1fb9c4cbb7a357c3ecce32f63bbf7e7b4754a578ec
 
