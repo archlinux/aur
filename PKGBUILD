@@ -7,7 +7,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-pocl
-pkgver=6.0
+pkgver=7.0
 pkgrel=1
 arch=('any')
 pkgdesc="Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets (Android ${_android_arch})"
@@ -22,7 +22,7 @@ makedepends=('android-cmake'
              'python')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/pocl/pocl/archive/v${pkgver}.tar.gz")
-md5sums=('3811575357b0e3c73ac3eb0afd5a8334')
+md5sums=('befc20fc6bbf42c892dbc3a075155480')
 
 prepare() {
     cd "${srcdir}/pocl-${pkgver}"

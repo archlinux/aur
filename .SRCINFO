@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-pocl
 	pkgdesc = Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets (Android riscv64)
-	pkgver = 6.0
+	pkgver = 7.0
 	pkgrel = 1
 	url = http://portablecl.org/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = android-riscv64-pocl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/pocl/pocl/archive/v6.0.tar.gz
-	md5sums = 3811575357b0e3c73ac3eb0afd5a8334
+	source = https://github.com/pocl/pocl/archive/v7.0.tar.gz
+	md5sums = befc20fc6bbf42c892dbc3a075155480
 
 pkgname = android-riscv64-pocl
