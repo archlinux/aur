@@ -2,14 +2,14 @@
 
 _locale='vi'
 pkgname=palemoon-i18n-vi
-pkgver=33.6.0
+pkgver=33.8.0
 pkgrel=1
 pkgdesc="Vietnamese language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('78fe2b6f4c55d187f5ada0608721ffb261c4bb6e36d135c9256cb05cedaf9961')
+sha256sums=('b792b771a73c5deadc4c265bcba97c913bdcc9dbf2372077925584be9e1b0219')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
