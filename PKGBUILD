@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-sdl3
-pkgver=3.2.12
+pkgver=3.2.16
 pkgrel=1
 arch=('any')
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3) (Android ${_android_arch})"
@@ -27,7 +27,7 @@ makedepends=('android-cmake'
 optdepends=("android-${_android_arch}-alsa-lib: ALSA audio driver")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz"{,.sig})
-md5sums=('12492302d8fc6bb88cd1f8d9726d7242'
+md5sums=('c046dd31de901ac7aa3da013e55f1716'
          'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 clases_file_name=sdl3.jar
