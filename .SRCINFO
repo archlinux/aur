@@ -1,6 +1,6 @@
 pkgbase = devtoolbox
 	pkgdesc = Development tools at your fingertips
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/aleiepure/devtoolbox
 	arch = any
@@ -16,7 +16,9 @@ pkgbase = devtoolbox
 	depends = gtksourceview5
 	depends = libadwaita
 	depends = python-asn1crypto
+	depends = python-color-parser-py
 	depends = python-croniter
+	depends = python-cryptography
 	depends = python-cssbeautifier
 	depends = python-daltonlens
 	depends = python-dateutil
@@ -28,7 +30,6 @@ pkgbase = devtoolbox
 	depends = python-markdown2
 	depends = python-numpy
 	depends = python-pillow
-	depends = python-pygments
 	depends = python-pyjwt
 	depends = python-python-crontab
 	depends = python-python-lorem
@@ -36,13 +37,13 @@ pkgbase = devtoolbox
 	depends = python-qrcode
 	depends = python-rcssmin
 	depends = python-rjsmin
-	depends = python-ruamel.yaml.string
+	depends = python-ruamel-yaml
 	depends = python-sqlparse
 	depends = python-textstat
 	depends = python-tzlocal
 	depends = python-uuid6
 	depends = webkitgtk-6.0
-	source = git+https://github.com/aleiepure/devtoolbox#tag=v1.2.5
-	sha256sums = b9e5a2ef6238c59e46f6233071e4dad6756f5ac72b64c5203f6ca843bd09f75d
+	source = git+https://github.com/aleiepure/devtoolbox#tag=v1.3.0
+	sha256sums = 4d9c6ae3a54aaa26279491841db11e9f4e38a80c51ff28981812fe64b52e541f
 
 pkgname = devtoolbox

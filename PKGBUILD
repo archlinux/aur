@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
@@ -17,7 +17,9 @@ depends=(
   'gtksourceview5'
   'libadwaita'
   'python-asn1crypto'
+  'python-color-parser-py'
   'python-croniter'
+  'python-cryptography'
   'python-cssbeautifier'
   'python-daltonlens'
   'python-dateutil'
@@ -29,7 +31,6 @@ depends=(
   'python-markdown2'
   'python-numpy'
   'python-pillow'
-  'python-pygments'
   'python-pyjwt'
   'python-python-crontab'
   'python-python-lorem'
@@ -37,7 +38,7 @@ depends=(
   'python-qrcode'
   'python-rcssmin'
   'python-rjsmin'
-  'python-ruamel.yaml.string'
+  'python-ruamel-yaml'
   'python-sqlparse'
   'python-textstat'
   'python-tzlocal'
@@ -50,7 +51,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver")
-sha256sums=('b9e5a2ef6238c59e46f6233071e4dad6756f5ac72b64c5203f6ca843bd09f75d')
+sha256sums=('4d9c6ae3a54aaa26279491841db11e9f4e38a80c51ff28981812fe64b52e541f')
 
 build() {
   arch-meson "$pkgname" build
