@@ -1,0 +1,17 @@
+pkgbase = python-color-parser-py
+	pkgdesc = Python bindings for CSS color parser using PyO3. Parse and convert colors between different formats.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/rusiaaman/color-parser-py
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-wheel
+	depends = python
+	source = color-parser-py-0.1.6.tar.gz::https://github.com/rusiaaman/color-parser-py/archive/refs/tags/0.1.6.tar.gz
+	sha256sums = c50fda032977bd69a6f06cbbe692ad65483e63165e1a08aad3adeacbe681a9d9
+
+pkgname = python-color-parser-py
