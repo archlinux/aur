@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-ru
 	pkgdesc = Russian language pack for Pale Moon browser
-	pkgver = 33.6.0
+	pkgver = 33.8.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-ru-33.6.0.xpi
-	source = palemoon-i18n-ru-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-ru@palemoon.org
-	sha256sums = d39756ed25d678f35b6d3885692eb7b62bc3ebcd4a083d3ba8e23e7348af27fb
+	noextract = palemoon-i18n-ru-33.8.0.xpi
+	source = palemoon-i18n-ru-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-ru@palemoon.org
+	sha256sums = 7489ec4f44384f71568c7b53c267959627295c7858ca5794280f5f413068448e
 
 pkgname = palemoon-i18n-ru
