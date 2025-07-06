@@ -5,7 +5,7 @@ pkgver=1.14
 pkgrel=1
 # allow testing locally a release candidate using pkgver like '19.3rc3'
 _version=${pkgver/rc/-rc}
-pkgdesc="A DDRaceNetowrk modification adding new feauters"
+pkgdesc="A DDRaceNetwork modification adding new feauters"
 arch=('x86_64')
 url="https://cactuss.top//"
 license=()
