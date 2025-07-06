@@ -49,8 +49,7 @@ The RPM file is not modified in any way. All extracted files are installed as-is
 
 ## 👤 Maintainer
 
-**asahiner**  
-[GitHub Profile](https://github.com/albertfast)
+[albertfast](https://github.com/albertfast)
 
 ---
 
