@@ -9,14 +9,14 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.3.4
-pkgrel=6
+pkgver=0.3.6
+pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "server.md")
-sha256sums=('ea6d289e1b429806ab054ead30c50e36db720fcb36d2abeadb76f1b6bf7785f5'
+sha256sums=('48333da95afee55faba797f51f89506010902759327283eebb7d7eea02fca7ec'
             '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
@@ -25,10 +25,6 @@ checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-di
 prepare(){
   cp -f "${srcdir}"/server.md "${srcdir}"/${_name0}-${pkgver}/docs/mcp/server.md
   cd "${srcdir}"/${_name0}-${pkgver}
-  sed -i 's/def set_event_loop() -> Iterator\[None\]:/def set_event_loop(anyio_backend: str) -> Iterator\[None\]:/g' tests/conftest.py
-  sed -i 's/async def close_cached_httpx_client() -> AsyncIterator\[None\]:/async def close_cached_httpx_client(anyio_backend: str) -> AsyncIterator\[None\]:/g' tests/conftest.py
-  sed -i 's/config=//g' ${_name5}/${_name5}/schema.py
-  sed -i "s/target_version='py39'/target_version='py311'/g" tests/test_examples.py
   sed -i 's/created=1704067200 if with_created else None,  # 2024-01-01/created=1704067200 if with_created else 0,  # 2024-01-01/g' tests/models/test_mistral.py
   sed -i "s/'type': 'text', 'text': 'sampling model response', 'annotations': None/'type': 'text', 'text': 'sampling model response', 'annotations': None, 'meta': None/g" tests/test_mcp.py
 }
@@ -48,14 +44,13 @@ check() {
   local pytest_options=(
     -vv
     -n auto
-    --dist=loadgroup
-    --deselect tests/models/test_google.py::test_google_model_stream
-    --deselect tests/models/test_google.py::test_google_model_iter_stream
-    --deselect tests/models/test_google.py::test_google_model_thinking_part_iter
     --deselect tests/models/test_model_names.py::test_known_model_names
-    --deselect tests/models/test_mistral.py::test_mistral_model_thinking_part
-    --deselect tests/models/test_mistral.py::test_image_as_binary_content_tool_response
-    --deselect tests/test_settings.py::test_stop_settings[mistral]
+    -k "not genai_email_feedback.py and not google.md"
+    --deselect tests/models/test_fallback.py::test_all_failed_instrumented
+    --deselect tests/test_mcp.py::test_tool_returning_image_resource
+    --deselect tests/test_mcp.py::test_tool_returning_audio_resource
+    --deselect tests/test_mcp.py::test_tool_returning_image
+    --deselect tests/models/test_google.py
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env

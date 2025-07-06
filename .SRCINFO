@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.3.4
-	pkgrel = 6
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
 	license = MIT
@@ -23,9 +23,9 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.3.4::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.3.4
+	source = pydantic-ai-0.3.6::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.3.6
 	source = server.md
-	sha256sums = ea6d289e1b429806ab054ead30c50e36db720fcb36d2abeadb76f1b6bf7785f5
+	sha256sums = 48333da95afee55faba797f51f89506010902759327283eebb7d7eea02fca7ec
 	sha256sums = 93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49
 
 pkgname = python-fasta2a
