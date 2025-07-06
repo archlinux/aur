@@ -3,7 +3,7 @@
 pkgbase=python-ccdproc
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Affiliated package for the AstroPy package for basic data reductions of CCD images"
 arch=('any')
@@ -33,8 +33,8 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "${pkgver}-CITATION.rst::https://github.com/astropy/ccdproc/raw/refs/tags/${pkgver}/CITATION.rst"
         "${pkgver}-CODE_OF_CONDUCT.rst::https://github.com/astropy/ccdproc/raw/refs/tags/${pkgver}/CODE_OF_CONDUCT.rst")
 #       'fix-underline-length.patch')
-md5sums=('8dc76c1729c09af4f11672db34333dd1'
-         '2fdb0db02e2180465ce79943ff0a9c46'
+md5sums=('9fb9e75030b894d20e302c89634a68ff'
+         '3cc3a9f8e03fba3147d351b57b105a48'
          'd32eebebfa65d99d19cc22c2b928c93c'
          'a35d0182f210d708ec29f9f73918be43')
 
