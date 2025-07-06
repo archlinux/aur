@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=asncounter
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Count the number of hits (HTTP, packets, etc) per autonomous system number (ASN) and related network blocks.'
 url='https://gitlab.com/anarcat/asncounter'
@@ -22,8 +22,8 @@ optdepends=(
   'python-prometheus_client: for output data in prometheus format'
 )
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/anarcat/asncounter/-/archive/$pkgver/asncounter-$pkgver.tar.gz")
-sha512sums=('00ff64c20dd060bc2d86aa52d1ffdd87a3d936d26f062a493f251385199cd9d2d7a32da60f7290abfbc1332a6a56473757c66abaad4a93716b9168c4dd881d2d')
-b2sums=('f9da66855b86af6f19d8c39991b79fe60133f8d14c30fc5d83a1bc7b8f7f6107a56f35b5981708f64f13cd5b68b956522b93eec9e2e68615d9a65d730d4dc464')
+sha512sums=('9b230dc5ff61094515629d73cf66dc196e666c1da1e6ee1f637c2b2cf1a8fc7ba2dfdce88a7f89d35c37dece7635448e6fe8f58d300d0daa1b750c3d35d49335')
+b2sums=('201b4a99db9ccfd84a175d1ef068f4184a4bb376b3089e5730a0163d9799396b0c856ad3afeaf05f2dfc82a9fec2c8e47fead71d88e89850ce5b9f232dd7b6af')
 
 build() {
   cd "asncounter-$pkgver"
