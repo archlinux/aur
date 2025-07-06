@@ -1,9 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Name=Tile Molestor
+Name=Tile Molester
 Comment=Multi-format graphics editor for ROM hacking
-Exec=tile-molestor
-Icon=tile-molestor
+Exec=tile-molester
+Icon=tile-molester
 Terminal=false
 Categories=Java;Graphics;Development;
