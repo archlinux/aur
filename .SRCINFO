@@ -1,0 +1,14 @@
+pkgbase = fptn-client-cli-bin
+	pkgdesc = Non-commercial VPN, a volunteer project for bypassing censorship (CLI client)
+	pkgver = 0.3.21
+	pkgrel = 1
+	url = https://github.com/batchar2/fptn
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = https://github.com/batchar2/fptn/releases/download/0.3.21/fptn-client-cli-0.3.21-ubuntu22.04-amd64.deb
+	sha256sums_x86_64 = 494f9580539746a241397577a48310b2e872d8b6653892b7c6b573b398ec62b7
+	source_aarch64 = https://github.com/batchar2/fptn/releases/download/0.3.21/fptn-client-cli-0.3.21-ubuntu22.04-arm64.deb
+	sha256sums_aarch64 = cbd026f4d67c4bbbb88853d03740364db786e9d1497cd3904e980020a185eb9e
+
+pkgname = fptn-client-cli-bin
