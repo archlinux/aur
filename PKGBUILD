@@ -2,7 +2,7 @@
 
 pkgbase=qhotkey-git
 pkgname=('qhotkey-qt6-git' 'qhotkey-qt5-git')
-pkgver=1.5.0.r9.gbb63025
+pkgver=1.5.0.r11.g6c0e984
 pkgrel=1
 pkgdesc='Library for creating global shortcut/hotkey for desktop Qt6 applications (git version)'
 arch=('x86_64')
@@ -27,7 +27,6 @@ build() {
         '-GUnix Makefiles' \
         '-DCMAKE_BUILD_TYPE:STRING=None'
         '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
-        '-DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5.0'
         '-DBUILD_SHARED_LIBS:BOOL=ON'
         '-Wno-dev')
     
