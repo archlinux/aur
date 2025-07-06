@@ -3,6 +3,7 @@ pkgbase = aprsc-9m2pju-git
 	pkgver = r1886.a4efaa5
 	pkgrel = 1
 	url = https://github.com/hessu/aprsc
+	install = aprsc-9m2pju-git.install
 	arch = x86_64
 	license = custom:BSD
 	makedepends = git

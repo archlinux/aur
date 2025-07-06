@@ -1,0 +1,9 @@
+post_install() {
+  echo "==> aprsc-9m2pju-git installed!"
+  echo "==> Config: /opt/aprsc/etc/aprsc.conf"
+  echo "==> To start the service: sudo systemctl enable --now aprsc.service"
+  echo "==> Web UI: http://localhost:14501/"
+  echo "==> Full README: https://github.com/9M2PJU/aprsc-9m2pju-git"
+  echo
+  echo "📦 Thanks to hessu (https://github.com/hessu/aprsc) and the Arch Linux AUR community!"
+}
