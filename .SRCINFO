@@ -1,6 +1,6 @@
 pkgbase = rime-ice-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库
-	pkgver = r785.60cd163
+	pkgver = r799.7acdee6
 	pkgrel = 1
 	url = https://github.com/iDvel/rime-ice
 	arch = any
@@ -25,6 +25,7 @@ pkgname = rime-ice-git
 	conflicts = rime-ice-double-pinyin-sogou
 	conflicts = rime-ice-double-pinyin-flypy
 	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice-double-pinyin-jiajia
 
 pkgname = rime-ice-pinyin-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 拼音方案
@@ -38,6 +39,7 @@ pkgname = rime-ice-pinyin-git
 	conflicts = rime-ice-double-pinyin-sogou
 	conflicts = rime-ice-double-pinyin-flypy
 	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice-double-pinyin-jiajia
 
 pkgname = rime-ice-double-pinyin-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 自然码双拼
@@ -51,6 +53,7 @@ pkgname = rime-ice-double-pinyin-git
 	conflicts = rime-ice-double-pinyin-sogou
 	conflicts = rime-ice-double-pinyin-flypy
 	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice-double-pinyin-jiajia
 
 pkgname = rime-ice-double-pinyin-abc-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 智能ABC双拼
@@ -64,6 +67,7 @@ pkgname = rime-ice-double-pinyin-abc-git
 	conflicts = rime-ice-double-pinyin-sogou
 	conflicts = rime-ice-double-pinyin-flypy
 	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice-double-pinyin-jiajia
 
 pkgname = rime-ice-double-pinyin-mspy-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 微软双拼
@@ -77,6 +81,7 @@ pkgname = rime-ice-double-pinyin-mspy-git
 	conflicts = rime-ice-double-pinyin-sogou
 	conflicts = rime-ice-double-pinyin-flypy
 	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice-double-pinyin-jiajia
 
 pkgname = rime-ice-double-pinyin-sogou-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 搜狗双拼
@@ -90,6 +95,7 @@ pkgname = rime-ice-double-pinyin-sogou-git
 	conflicts = rime-ice-double-pinyin-mspy
 	conflicts = rime-ice-double-pinyin-flypy
 	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice-double-pinyin-jiajia
 
 pkgname = rime-ice-double-pinyin-flypy-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 小鹤双拼
@@ -103,6 +109,7 @@ pkgname = rime-ice-double-pinyin-flypy-git
 	conflicts = rime-ice-double-pinyin-mspy
 	conflicts = rime-ice-double-pinyin-sogou
 	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice-double-pinyin-jiajia
 
 pkgname = rime-ice-double-pinyin-ziguang-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 紫光双拼
@@ -116,3 +123,18 @@ pkgname = rime-ice-double-pinyin-ziguang-git
 	conflicts = rime-ice-double-pinyin-mspy
 	conflicts = rime-ice-double-pinyin-sogou
 	conflicts = rime-ice-double-pinyin-flypy
+	conflicts = rime-ice-double-pinyin-jiajia
+
+pkgname = rime-ice-double-pinyin-jiajia-git
+	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 拼音加加双拼
+	install = post.install
+	provides = rime-ice-double-pinyin-jiajia
+	conflicts = rime-emoji
+	conflicts = rime-ice
+	conflicts = rime-ice-pinyin
+	conflicts = rime-ice-double-pinyin
+	conflicts = rime-ice-double-pinyin-abc
+	conflicts = rime-ice-double-pinyin-mspy
+	conflicts = rime-ice-double-pinyin-sogou
+	conflicts = rime-ice-double-pinyin-flypy
+	conflicts = rime-ice-double-pinyin-ziguang
