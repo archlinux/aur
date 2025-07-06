@@ -16,7 +16,7 @@ makedepends=(
 )
 optdepends=(
   'gnome-shell-extension-appindicator'
-  'gnome-shell-extension-arcmenu'
+  'gnome-shell-extension-arc-menu'
   'gnome-shell-extension-clipboard-indicator'
   'gnome-shell-extension-dash-to-panel'
   'gnome-shell-extension-gtk4-desktop-icons-ng'
