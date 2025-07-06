@@ -4,11 +4,15 @@
 
 pkgname=iqmol
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A molecular editor and visualization package with Q-Chem integration"
 arch=('x86_64')
 url="https://iqmol.org"
 license=('GPL-3.0-only')
+makedepends=(
+    'gcc'
+    'gcc-fortran'
+)
 depends=(
     'gcc-libs'
     'glibc'
