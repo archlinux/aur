@@ -1,0 +1,3 @@
+[tuner-gdm]
+source = "git"
+git = "https://altlinux.space/alt-gnome/TunerGdm.git"
