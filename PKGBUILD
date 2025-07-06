@@ -11,10 +11,8 @@ groups=()
 depends=('gtk3' 'webkit2gtk' 'sqlite')
 makedepends=('git' 'cargo' 'pnpm' 'nodejs')
 options=('!lto') # https://github.com/toeverything/AFFiNE/issues/6280#issuecomment-2041484627
-provides=("cardo")
-conflicts=("cardo")
 source=("https://github.com/cardo-podcast/cardo/archive/refs/tags/$pkgver.tar.gz" 'cardo.desktop')
-sha256sums=('6b38e5dc2219e75f2e22f059848a822169340e0c94da8e1df88456bd9ec195c9'
+sha256sums=('e5567aba46db09ca6d8c30b571f8d23d7b130824529c98b6b3388eaa950a6356'
             '9d9b2d1bb6643f5940085e9df3f7853203f4b70a3ac1a94972284f565849f62b')
 
 
