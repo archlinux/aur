@@ -7,6 +7,21 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20250704
+
+### Deleted
+
+- AC-SERASA-SSL-EV-V2.crt
+- AC-SERASA-SSL-EV-V3.crt
+- AC-SERASA-SSL-EV-V4.crt
+- AC-VALID-CODE-SIGNING.crt
+
+## 20250528
+
+### Added
+
+- AC_JUS_v6.crt
+
 ## 20250325
 
 ### Removed
@@ -17,10 +32,10 @@ and this project versioning is YYYYMMDD.
 - Autoridade_Certificadora_da_Presidencia_da_Republica_v4.crt
 - ICP-Brasilv13.crt
 - ICP-Brasilv4.crt
- 
+
 ## 20250321
 
-### Added 
+### Added
 
 - AC_Certisign_G8.crt
 - Autoridade_Certificadora_da_Presidencia_da_Republica_v3.crt
