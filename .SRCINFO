@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-es-es
 	pkgdesc = Spanish (Spain) language pack for Pale Moon browser
-	pkgver = 33.6.0
+	pkgver = 33.8.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-es-es-33.6.0.xpi
-	source = palemoon-i18n-es-es-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-es-ES@palemoon.org
-	sha256sums = b533daba3a8633c478534b67e231f98025f71c76ba2bb555a795d1a827bd68c3
+	noextract = palemoon-i18n-es-es-33.8.0.xpi
+	source = palemoon-i18n-es-es-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-es-ES@palemoon.org
+	sha256sums = 6fed2b83b16e1b06721b9118d02021d98b5d97433eca78b97b5169c11c73ec10
 
 pkgname = palemoon-i18n-es-es
