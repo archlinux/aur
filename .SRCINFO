@@ -1,7 +1,7 @@
 pkgbase = runit-systemd
 	pkgdesc = A service supervision scheme, intended to be used alongside systemd
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://smarden.org/runit/
 	install = runit-systemd.install
 	arch = i686

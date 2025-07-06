@@ -15,7 +15,7 @@
 
 pkgname=runit-systemd
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A service supervision scheme, intended to be used alongside systemd"
 arch=('i686' 'x86_64')
 url="http://smarden.org/runit/"
@@ -40,7 +40,8 @@ prepare() {
   sed -i -e 's/ -static//g' Makefile
 
   # Add custom CFLAGS and LDFLAGS instead of predefined ones by the source
-  echo "${CC:-gcc} $CFLAGS" > conf-cc
+  # Use GNU89 dialect to avoid compilation issues
+  echo "${CC:-gcc} -std=gnu89 $CFLAGS" > conf-cc
   echo "${CC:-gcc -s} $LDFLAGS" > conf-ld
 }
 
