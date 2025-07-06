@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-pango
 	pkgdesc = A library for layout and rendering of text (Android riscv64)
-	pkgver = 1.56.3
+	pkgver = 1.56.4
 	pkgrel = 1
 	url = https://www.pango.org/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-riscv64-pango
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/pango/-/archive/1.56.3/pango-1.56.3.tar.bz2
-	md5sums = 23c71958614c41f06ae0883a0e1d834f
+	source = https://gitlab.gnome.org/GNOME/pango/-/archive/1.56.4/pango-1.56.4.tar.bz2
+	md5sums = 235135d7f48304ee5f95af1a249bc3ff
 
 pkgname = android-riscv64-pango
