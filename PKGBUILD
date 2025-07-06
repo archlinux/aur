@@ -10,7 +10,7 @@ _basepkgpath='upload/software/2025/202506/20250618'
 _baseos='linux_x64'
 _suffix='_20250613204459'
 arch=('x86_64')
-url='https://support.omadanetworks.com/us/product/omada-software-controller/?resourceType=download'
+url='https://support.omadanetworks.com/us/download/software/omada-controller'
 license=('custom')
 depends=('java-runtime=17' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<8')
 makedepends=('git')
