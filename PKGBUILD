@@ -31,3 +31,4 @@ package() {
   install -Dm755 build/src/gnome-monitor-config "$pkgdir/usr/bin/gnome-monitor-config"
 }
 
+
