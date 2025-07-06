@@ -3,7 +3,7 @@
 pkgbase=qhotkey
 pkgname=('qhotkey-qt6' 'qhotkey-qt5')
 pkgver=1.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Library for creating global shortcut/hotkey for desktop Qt6 applications'
 arch=('x86_64')
 url='https://github.com/Skycoder42/QHotkey/'
@@ -15,12 +15,18 @@ makedepends=(
     'qt5-x11extras'
     'qt6-base')
 source=("https://github.com/Skycoder42/QHotkey/archive/${pkgver}/qhotkey-${pkgver}.tar.gz"
-        '010-qhotkey-fix-segfault-under-wayland.patch'::'https://github.com/Skycoder42/QHotkey/commit/bb630252684d3556b79ac7a521616692f348fcf7.patch')
+        '010-qhotkey-fix-segfault-under-wayland.patch'::'https://github.com/Skycoder42/QHotkey/commit/bb630252684d3556b79ac7a521616692f348fcf7.patch'
+        '020-qhotkey-add-compatibility-with-cmake4.patch'::'https://github.com/Skycoder42/QHotkey/commit/8f90bdf90c0f98f639bcff6c49d8da80ad4b31ea.patch'
+        '030-qhotkey-add-compatibility-with-qt-no-keywords.patch'::'https://github.com/Skycoder42/QHotkey/commit/6c0e98492c59206139f8490706aadeb8ed033057.patch')
 sha256sums=('e8ca5ba77ad04662c18dce8de4b37b373bcb693a7e062fca3d832bf63473b143'
-            '40108fa290eb2d9b0b5f73ac6397781202cdcbd1fde64c6fb66a877abce5bbbe')
+            '40108fa290eb2d9b0b5f73ac6397781202cdcbd1fde64c6fb66a877abce5bbbe'
+            '4ed40e982e4f29dd7545a74701a6e8c1f2eba08d30a489b23428476991c14f08'
+            '290907f8132a39351c0adc63d8de9723492ddbec11bf6bc52f3c50283f9ca25e')
 
 prepare() {
     patch -d "QHotkey-${pkgver}" -Np1 -i "${srcdir}/010-qhotkey-fix-segfault-under-wayland.patch"
+    patch -d "QHotkey-${pkgver}" -Np1 -i "${srcdir}/020-qhotkey-add-compatibility-with-cmake4.patch"
+    patch -d "QHotkey-${pkgver}" -Np1 -i "${srcdir}/030-qhotkey-add-compatibility-with-qt-no-keywords.patch"
 }
 
 build() {
@@ -28,7 +34,6 @@ build() {
         '-GUnix Makefiles' \
         '-DCMAKE_BUILD_TYPE:STRING=None'
         '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
-        '-DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5.0'
         '-DBUILD_SHARED_LIBS:BOOL=ON'
         '-Wno-dev')
     
