@@ -1,6 +1,6 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=mikusays
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple program that makes Miku say things"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('MIT')
 source_x86_64=("$url/releases/download/v$pkgver/mikusays-linux-x64")
 source_aarch64=("$url/releases/download/v$pkgver/mikusays-linux-arm64")
 
-sha256sums_x86_64=('a6c5a4a94084e3375f0a556f38d07b82a86d18fc8c706b89387db6658169d720')
-sha256sums_aarch64=('c9e23976e81b106c95e1b9e16911178374fd6e32997f4b7d4244ac95feccde85')
+sha256sums_x86_64=('a9b409e1d14256417e2db12c6cbc61b20d62afd37d6d3e2708a02aa3c1a06bd0')
+sha256sums_aarch64=('6417bca50ef4f4ed61f5233670274916cf77e866ff83c235dc64626001a40869')
 
 package() {
 	# Install the correct binary based on the architecture
