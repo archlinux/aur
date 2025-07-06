@@ -1,0 +1,15 @@
+Slack License Notice
+====================
+
+This package repackages the official Slack RPM installer for Arch Linux systems.
+
+Slack and the Slack logo are trademarks of Slack Technologies, LLC. All rights belong to their respective owners.
+This package does not modify, alter, or redistribute Slack software in any way other than format conversion for packaging convenience.
+
+You must agree to Slack's Terms of Service to use this software:
+https://slack.com/intl/en-tr/terms-of-service
+
+This package is provided WITHOUT ANY WARRANTY; use at your own risk.
+This is NOT an official Slack package, nor is it endorsed by Slack Technologies.
+
+Packager: asahiner
