@@ -1,0 +1,18 @@
+pkgbase = jq-static
+	pkgdesc = Command-line JSON processor
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://jqlang.github.io/jq/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = musl
+	makedepends = gcc
+	makedepends = make
+	provides = jq
+	provides = libjq.a
+	conflicts = jq
+	source = https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-1.8.1.tar.gz
+	sha512sums = b09d48dbeaac7b552397b75692ed7833afa72186de80d977fb1b887a14ac66c02f677acdd79f9a2736db1fd738b7ce57a39725e34846bfa21ed3728cd7adc187
+
+pkgname = jq-static
