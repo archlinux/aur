@@ -6,6 +6,9 @@ pkgbase = xfsrtray-git
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
+	provides = xfsrtray
+	conflicts = xfsrtray-bin
+	conflicts = xfsrtray
 	source = git+https://github.com/Byson94/xfsrtray.git
 	sha256sums = SKIP
 
