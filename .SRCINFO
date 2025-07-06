@@ -1,7 +1,7 @@
 pkgbase = iqmol
 	pkgdesc = A molecular editor and visualization package with Q-Chem integration
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://iqmol.org
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = iqmol
 	depends = libglvnd
 	depends = libqglviewer-qt5
 	depends = libssh2
-	depends = openbabel
+	depends = openbabel-git
 	depends = openmesh
 	depends = qt5-base
 	depends = yaml-cpp

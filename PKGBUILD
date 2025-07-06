@@ -4,7 +4,7 @@
 
 pkgname=iqmol
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A molecular editor and visualization package with Q-Chem integration"
 arch=('x86_64')
 url="https://iqmol.org"
@@ -16,7 +16,7 @@ depends=(
     'libglvnd'
     'libqglviewer-qt5'
     'libssh2'
-    'openbabel'
+    'openbabel-git'
     'openmesh'
     'qt5-base'
     'yaml-cpp'
