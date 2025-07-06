@@ -1,0 +1,14 @@
+pkgbase = python-ros-genmsg
+	pkgdesc = Standalone Python library for generating ROS message and service data structures for various languages
+	pkgver = dev
+	pkgrel = 1
+	url = https://github.com/ros/genmsg
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	source = python-ros-genmsg::git+https://github.com/ros/genmsg
+	sha256sums = SKIP
+
+pkgname = python-ros-genmsg
