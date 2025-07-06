@@ -1,8 +1,8 @@
 pkgbase = grabit
 	pkgdesc = Screenshot and file uploader for Zipline and other services
-	pkgver = 1.0.4
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = https://git.creations.works/creations/grabit
+	url = https://heliopolis.live/creations/grabit.git
 	arch = any
 	license = BSD
 	depends = bash
@@ -11,6 +11,7 @@ pkgbase = grabit
 	depends = xdg-utils
 	depends = python
 	depends = tk
+	depends = libnotify
 	optdepends = grim: Wayland screenshot support
 	optdepends = slurp: Wayland region selection
 	optdepends = wl-clipboard: Wayland clipboard
@@ -18,7 +19,8 @@ pkgbase = grabit
 	optdepends = xclip: X11 clipboard
 	optdepends = python-pillow: image preview
 	optdepends = python-screeninfo: screen placement
-	source = git+https://git.creations.works/creations/grabit.git#tag=v1.0.4
+	optdepends = spectacle: KDE screenshot support
+	source = git+https://heliopolis.live/creations/grabit.git#tag=v1.0.3
 	sha256sums = SKIP
 
 pkgname = grabit
