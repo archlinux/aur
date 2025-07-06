@@ -1,46 +1,46 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
-
-pkgname=not1mm-9m2pju-git
-pkgver=0.0.0
+pkgname=aprsc-9m2pju-git
+pkgver=r1886.a4efaa5
 pkgrel=1
-pkgdesc="Ham Radio Contest Logger - Latest from official GitHub (9M2PJU custom)"
-license=('GPL-3.0-only')
-arch=('any')
-url="https://github.com/mbridak/not1mm"
-depends=(
-  'python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict'
-  'python-psutil' 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser'
-  'python-pyserial' 'python-appdata' 'python-gobject' 'python-thefuzz' 'python-levenshtein'
-  'gtk4' 'hamradio-menus'
-)
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
-optdepends=('hamlib' 'flrig')
-provides=('not1mm')
-conflicts=('not1mm')
+pkgdesc="APRS-IS software RX/TX iGate and server with multi-threading, written in C. Git version."
+arch=('x86_64')
+url="https://github.com/hessu/aprsc"
+license=('custom:BSD')
+depends=('libevent' 'openssl' 'lksctp-tools' 'libcap')
+makedepends=('git' 'gcc' 'make')
+optdepends=('protobuf-c: optional protocol buffer support')
+provides=('aprsc')
+conflicts=('aprsc')
+backup=('opt/aprsc/etc/aprsc.conf')
+install=aprsc-9m2pju-git.install
 
-source=("git+https://github.com/mbridak/not1mm.git")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/hessu/aprsc.git"
+  "aprsc.service"
+  "aprsc.sysusers"
+  "aprsc.tmpfiles"
+)
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd "$srcdir/not1mm"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/not1mm"
-  git clean -fdx
+  cd "$srcdir/aprsc"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/not1mm"
-  python -m build --wheel --no-isolation
+  cd "$srcdir/aprsc/src"
+  ./configure
+  make
 }
 
 package() {
-  cd "$srcdir/not1mm"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir/aprsc/src"
+  make DESTDIR="$pkgdir" install
 
-  # Desktop icon
-  install -Dm755 "not1mm/data/k6gte-not1mm.desktop" "$pkgdir/usr/share/applications/k6gte-not1mm.desktop"
-  install -Dm755 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
+  # Install systemd unit
+  install -Dm644 "$srcdir/aprsc.service" "$pkgdir/usr/lib/systemd/system/aprsc.service"
+
+  # Install sysusers and tmpfiles
+  install -Dm644 "$srcdir/aprsc.sysusers" "$pkgdir/usr/lib/sysusers.d/aprsc.conf"
+  install -Dm644 "$srcdir/aprsc.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/aprsc.conf"
 }
