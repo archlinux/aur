@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=exam-terminal
 pkgdesc="Terminal/console based exam, test, or quiz tool for educators and learners"
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 arch=(any)
 url="https://github.com/ismet55555/${pkgname}"
@@ -10,8 +10,8 @@ depends=(python-fpdf2 python-requests python-yaml python-click)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname//-/_}-${pkgver}.tar.gz
   https://raw.githubusercontent.com/ismet55555/${pkgname}/master/requirements.txt)
-sha512sums=('97c46fbab36f5078a185f3d3340caeab1bea2a1e0203305c9b60740af80890d5fae5790f9cac4927f711c7514959add229f5496a1f902e11fcf4b0fcee8f6526'
-  '94419652fa9ff95fe43bdf2e10fdfc771bce0ef03dde5711f3f7f4cd4ab27444340f7fb26e3d94ad035a3a9a57c83b5d0422221f8ae4c3f290a888d4057cf948')
+sha512sums=('6d3d96963f420b66ee2d7bdf3686ebeb278817f83871338eec7ee3bcf60ad0e27a082f93e2b81f8dc4e8015f7ff7d5ed7772c8ee98bda7948cd4b84b662bfd4f'
+            '528394dc6c5d63366d5168920e14c7f9be6d9f413e062829be25a3da07093f7334e27bcb8e1cfc213a889f9fd2d684abdc414bd6a41c48334f850df8068169cd')
 
 prepare() {
   mv requirements.txt ${pkgname//-/_}-${pkgver}
