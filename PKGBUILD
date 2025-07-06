@@ -3,7 +3,7 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=6.1.2.2458
+pkgver=6.2.0.2827
 _pkgver="${pkgver%.*}"
 pkgrel=1
 pkgdesc="3D slicer for Creality printers"
@@ -11,10 +11,10 @@ arch=('x86_64')
 url="https://www.creality.com"
 _url="https://github.com/CrealityOfficial/${_Name}"
 license=('AGPL-3.0-only')
-depends=('alsa-lib' 'cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2'
-         'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'libgl'
-         'libsrtp' 'libusrsctp' 'libx11' 'opus' 'pango' 'sh' 'speexdsp'
-         'webkit2gtk-4.1' 'x264' 'xz' 'zlib')
+# 'alsa-lib' 'lerc' 'libmspack' 'libsrtp' 'libusrsctp' 'opus' 'speexdsp' 'x264' 'xz' 
+depends=('cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2'
+         'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'libdeflate'
+         'libgl' 'libx11' 'mesa-amber' 'nss' 'pango' 'sh' 'webkit2gtk-4.1' 'zlib')
 makedepends=('patchelf')
 optdepends=('python'
             'slicer-udev: 3D printer connection rules'
@@ -29,7 +29,7 @@ source_x86_64=("${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${_pkgver
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             '4477dda5e6d2b3e53018b180469716c199d953675dd787b3afe48ed6995557e4'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('14237239892fe49607cdb5efdde6b1576a7d4dceac78a630e729bc3b857e240b')
+sha256sums_x86_64=('f865b2b623fbc141acec53cb9abbaf7a5e6655698e37daecf827d21468f99b22')
 
 prepare() {
   cd "${srcdir}"
@@ -43,12 +43,12 @@ prepare() {
 
   patchelf --remove-rpath "bin/${_Name}"
 
-  cd usr/lib
-  for lib in *; do
-    if [ -e "/usr/lib/$lib" ]; then
-      rm -f "$lib"
-    fi
-  done
+  # cd "usr/lib"
+  # for lib in lib*.so*; do
+  #   if [ -e "/usr/lib/$lib" ]; then
+  #     rm -vf "$lib"
+  #   fi
+  # done
 }
 
 package() {
