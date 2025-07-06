@@ -27,7 +27,7 @@ diff --git a/src/wayland-private.h b/src/wayland-private.h
 index fe9120a..b2d1d89 100644
 --- a/src/wayland-private.h
 +++ b/src/wayland-private.h
-@@ -48,7 +48,10 @@
+@@ -48,8 +48,11 @@
  #define WL_MAP_MAX_OBJECTS 0x00f00000
  #define WL_CLOSURE_MAX_ARGS 20
  #define WL_BUFFER_DEFAULT_SIZE_POT 12
@@ -36,9 +36,11 @@ index fe9120a..b2d1d89 100644
 +#define WL_BUFFER_DEFAULT_MAX_SIZE 0
 +// The size at which queueing a request will also trigger a flush.
 +#define WL_BUFFER_FLUSH_SIZE (1 << WL_BUFFER_DEFAULT_SIZE_POT)
+-#if WL_BUFFER_DEFAULT_MAX_SIZE < WL_MAX_MESSAGE_SIZE
++#if (WL_BUFFER_DEFAULT_MAX_SIZE > 0) && (WL_BUFFER_DEFAULT_MAX_SIZE < WL_MAX_MESSAGE_SIZE)
+ # error default buffer cannot hold maximum-sized message
+ #endif
  
- /**
-  * Argument types used in signatures.
 -- 
 2.45.2
 
