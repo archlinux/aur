@@ -1,6 +1,6 @@
 pkgbase = aurdex
 	pkgdesc = terminal interface for browsing AUR package metadata with GIT and comment views
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/envolution/aurdex
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = aurdex
 	depends = python-appdirs
 	depends = python-httpx
 	depends = python-beautifulsoup4
-	source = aurdex-0.0.8.tar.gz::https://github.com/envolution/auricle/archive/refs/tags/0.0.8.tar.gz
-	sha256sums = f6b04d753c4edb7d5ae106efba8b8ae8a3f4dcb44d4e4dcafbbfd9e7b638e999
+	source = aurdex-0.0.9.tar.gz::https://github.com/envolution/auricle/archive/refs/tags/0.0.9.tar.gz
+	sha256sums = 08ea04e555bcf7404e60dd67c2f1821d5effad86ec3be1d6361218a4fac3581e
 
 pkgname = aurdex
