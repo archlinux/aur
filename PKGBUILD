@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-openldap
-pkgver=2.6.9
+pkgver=2.6.10
 pkgrel=1
 arch=('any')
 pkgdesc="Lightweight Directory Access Protocol (LDAP) (Android ${_android_arch})"
@@ -21,7 +21,7 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz"
         '0001-Add-missing-headers.patch')
-md5sums=('608973c35cd4924fca0f07d0ea72c016'
+md5sums=('6be5e6c43d599e7a422669c70229ca74'
          'a02479170500e252834e45e977d95567')
 
 prepare() {
