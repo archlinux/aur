@@ -1,0 +1,3 @@
+[hypatia]
+source = "git"
+git = "https://codeberg.org/nathandyer/Hypatia.git"

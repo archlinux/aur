@@ -1,27 +1,38 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=hypatia
-pkgver=0.1.1
+pkgver=0.1.4
 pkgrel=1
-pkgdesc="A research helper tool that provides context and information about interesting topics."
-arch=('x86_64' 'aarch64')
-url="https://github.com/HypatiaProject/hypatia"
-license=('GPL3')
-depends=('libadwaita' 'libgee' 'libsoup3' 'json-glib')
-makedepends=('meson' 'gobject-introspection' 'vala')
+pkgdesc="A research helper tool for Linux desktops"
+arch=('x86_64')
+url="https://codeberg.org/nathandyer/Hypatia"
+license=('GPL-3.0-or-later')
+depends=(
+  'dconf'
+  'gtk4'
+  'json-glib'
+  'libadwaita'
+  'libgee'
+  'libsoup'
+)
+makedepends=(
+  'git'
+  'meson'
+  'vala'
+)
 checkdepends=('appstream-glib')
-source=($url/archive/$pkgver.tar.gz)
-b2sums=('4cc26adb7786f59b69dcc6c75763c35e663e26a9f9dedd96d25f643c548cf468f2d829d41da89edb4c3055d93b4b337f0d0ca8076a168582601b6309198f4bb4')
+source=("git+https://codeberg.org/nathandyer/Hypatia.git#tag=$pkgver")
+sha256sums=('05cae81d04f49a4c4f13131bcbbe11303b48a97979fda69d5da11b54232afc9a')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson Hypatia build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
