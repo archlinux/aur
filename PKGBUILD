@@ -4,7 +4,7 @@
 
 pkgname=iqmol
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A molecular editor and visualization package with Q-Chem integration"
 arch=('x86_64')
 url="https://iqmol.org"
@@ -61,6 +61,7 @@ package() {
 
     mkdir -p "${pkgdir}/usr/share/iqmol"
     cp -dr --no-preserve='ownership' "${srcdir}/IQmol3-${pkgver}/share/." "${pkgdir}/usr/share/iqmol/"
+    rm "${pkgdir}/usr/share/iqmol/man/man7/iqmol.7.gz"
 
     mkdir -p "${pkgdir}/usr/share/man/man7/"
     install -Dm644 "${srcdir}/IQmol3-${pkgver}/share/man/man7/iqmol.7.gz" "${pkgdir}/usr/share/man/man7/"

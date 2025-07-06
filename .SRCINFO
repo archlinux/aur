@@ -1,7 +1,7 @@
 pkgbase = iqmol
 	pkgdesc = A molecular editor and visualization package with Q-Chem integration
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iqmol.org
 	arch = x86_64
 	license = GPL-3.0-only
