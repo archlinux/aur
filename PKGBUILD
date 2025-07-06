@@ -4,7 +4,7 @@
 # Contributor: Funami
 
 pkgname=jetbrains-fleet
-pkgver=1.48.236
+pkgver=1.48.261
 pkgrel=1
 pkgdesc="JetBrains IDE for any language"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("${pkgname}-${pkgver}-${arch[0]}.tar.gz::https://download-cdn.jet
 source_aarch64=("${pkgname}-${pkgver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_${arch[1]}/Fleet-${pkgver}-${arch[1]}.tar.gz")
 sha256sums=('cd955f6a93108b2438e6d8ff0434dae97c076f2201b64783338bbdad06d047fb'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
-sha256sums_x86_64=('74717ca9980bf915891c8aaa563fb20b25a1aa891373424eac2a549301b578b8')
-sha256sums_aarch64=('5e3dc5a9ed183871731e6195585d8cdf55a708ce7c1a58da0556ada4dcac458e')
+sha256sums_x86_64=('34b46ec17bdff414eae97d31cd46ea7e9d0b4a98e66cb98c4c64b17579060f4a')
+sha256sums_aarch64=('4a9c7cf2bd5ea3b2e7a69836ca2e549e22d63b5d1218870b1ef7ed72dcc7b86d')
 
 package() {
   install -dm 755 "${pkgdir}/opt/${pkgname}"
@@ -33,3 +33,4 @@ package() {
   install -dm 755 "${pkgdir}/usr/share/pixmaps"
   ln -s "/opt/${pkgname}/lib/Fleet.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
+
