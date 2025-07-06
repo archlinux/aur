@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-openexr
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 arch=('any')
 pkgdesc="A high dynamic-range image file format library (Android ${_android_arch})"
@@ -16,7 +16,7 @@ depends=("android-${_android_arch}-imath"
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/openexr/openexr/archive/v${pkgver}/openexr-${pkgver}.tar.gz")
-md5sums=('1748da38ffd037f6cc32347b2f40aa0e')
+md5sums=('50c69abdabe667a0a821f28d1fa34f0f')
 
 build() {
     cd "${srcdir}/openexr-${pkgver}"
