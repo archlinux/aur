@@ -2,7 +2,7 @@
 
 pkgname=alvr-launcher-bin
 _pkgname=${pkgname%-bin}
-pkgver=20.13.0
+pkgver=20.14.0
 pkgrel=1
 pkgdesc="Launcher for ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
