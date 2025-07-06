@@ -6,7 +6,7 @@ pkgbase = psiphonlinuxgui
 	arch = x86_64
 	license = MIT
 	depends = nodejs
-	source = https://github.com/Alessandros-Hube/PsiphonLinuxGUI/releases/download/v1.0.0/psiphonlinuxgui_1.0.0_amd64.deb
-	sha256sums = fe7c5e06aa4b5c45c4d8736a0ac0162589ec746c2c0a0327bb9a39bd3e90580f
+	source = https://github.com/Alessandros-Hube/PsiphonLinuxGUI/releases/download/v1.1.0/psiphonlinuxgui_1.1.0_amd64.deb
+	sha256sums = b7d9b6d56245da2d0482e9d868e97400879a1b7bf9a9364cb728ba62eba1e39e
 
 pkgname = psiphonlinuxgui
