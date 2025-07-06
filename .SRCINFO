@@ -1,7 +1,7 @@
 pkgbase = ciyue
 	pkgdesc = A simple mdict dictionary with Android/Windows/Linux support
-	pkgver = 1.16.0
-	pkgrel = 3
+	pkgver = 1.17.0
+	pkgrel = 1
 	url = https://mumulhl.eu.org/Ciyue
 	arch = x86_64
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = ciyue
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base
-	source = ciyue-1.16.0.tar.gz::https://github.com/mumu-lhl/Ciyue/archive/refs/tags/v1.16.0.tar.gz
+	source = ciyue-1.17.0.tar.gz::https://github.com/mumu-lhl/Ciyue/archive/refs/tags/v1.17.0.tar.gz
 	source = ciyue.desktop
-	sha256sums = ab745421ac402bc370f263f4d215fb23f941ac3110c1a4398bd12023f3aaf23e
+	sha256sums = b3b56a660dc0ce0ef15f600d3b66dd4009e70f323ee54f709745e43ae4da9968
 	sha256sums = 5a6214e368452ed4be188b7e74395f7f0e34f3101d109b7e814d6ac0a291b1cc
 
 pkgname = ciyue
