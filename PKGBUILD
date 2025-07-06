@@ -1,7 +1,7 @@
 
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
-pkgver=${_ffver}.m136_135
+pkgver=${_ffver}.m136_134
 pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M136- (non vendored ${_so})"
