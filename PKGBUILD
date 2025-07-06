@@ -2,7 +2,7 @@
 
 _pkgname=pytest-docker
 pkgname=python-${_pkgname}
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Pytest plugin for Docker and Docker compose tests."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 depends=('python' 'python-pytest' 'python-attrs')
 checkdepends=('python-requests' 'docker' 'docker-compose')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('cea73dd6bd6fcdcffc8f38999a798b670585f7b654f4ad8723e908e11c3e6ce7f83950d037da93460ea38f805bd946782e49cb94c2f8ad73b9916d43e87c215c')
+b2sums=('264ecc0026f1a1d8a7072b11dbf220b8b255612814b2e862305d32be611796b6edada3777b3e8869d5ca5db6d60304b61fbcb6fc02fd3cd5d7c4e0f6ca783d47')
 
 build() {
     cd "$_pkgname-$pkgver"
