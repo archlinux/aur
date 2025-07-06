@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 _torus_commit="b7bf7965db8c3b2034d6a92f5a1c1fefe13e0e5d"
-pkgver=1.10.2
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
@@ -14,17 +14,22 @@ license=('BSD-3-Clause')
 makedepends=('python-setuptools' 'gsl'
              'python-build'
              'python-installer')  # wheel required by new setuptools
+#            'gcc14'
 #checkdepends=('python-pytest-xdist'
-#              'python-astropy'
+#              'python-astroquery'
+#              'python-numexpr'
 #              'python-scipy'
 #              'python-matplotlib'
 #)
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+# shouldn't use pypi source for torus support
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+source=("https://github.com/jobovy/galpy/archive/refs/tags/v${pkgver}.tar.gz"
         "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz"
-#       "${pkgver}-conftest.py::https://github.com/jobovy/galpy/raw/refs/tags/v1.10.2/tests/conftest.py"
-    )
-md5sums=('5c59ca8ceb708c0fdf851b761f5f52d4'
-         'f84f68196975d1efbac800b1a5703c45')
+#       "${pkgver}-conftest.py::https://github.com/jobovy/galpy/raw/refs/tags/v${pkgver}/tests/conftest.py"
+        'fix-gcc15.patch')
+md5sums=('f97ecbc31e2de9cabbb3cecc4528da6f'
+         'f84f68196975d1efbac800b1a5703c45'
+         'fbccd08422b23ca669452dd64fae9306')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -39,10 +44,13 @@ prepare() {
 #   sed -i 's/numpy.float)/numpy.float64)/' galpy/util/leung_dop853.py
 #   sed -i "/directnbody/s/directnbody/.directnbody/" Snapshot.py
 #   sed -i "/from\ Snapshot/s/Snapshot/.Snapshot/" snapshotMovies.py
+    patch -Np1 -i "${srcdir}/fix-gcc15.patch"
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
+#   CC=gcc-14 CXX=g++-14 python -m build --wheel --no-isolation
+#   CXXFLAGS="${CXXFLAGS} -Wno-register" python -m build --wheel --no-isolation
     python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
@@ -53,6 +61,7 @@ build() {
 #    # takes a lot of time
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
+#    # No module named 'amuse' 'pynbody' 'jax'
 #    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 \
 #        --ignore=tests/test_amuse.py \
 #        --ignore=tests/test_snapshotpotential.py \
