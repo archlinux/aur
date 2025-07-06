@@ -1,6 +1,6 @@
 pkgbase = xonotic-autobuild
 	pkgdesc = A free, fast-paced cross-platform first person shooter
-	pkgver = 20250408
+	pkgver = 20250630
 	pkgrel = 1
 	url = http://xonotic.org
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = xonotic-autobuild
 	options = !strip
 	source = rsync://beta.xonotic.org/autobuild-Xonotic/misc/tools/rsync-updater/update-to-autobuild.sh
 	source = rsync://rsync.xonotic.org/autobuild/Xonotic/misc/tools/rsync-updater/mirrors.txt
-	sha512sums = 5a66e5548fa8e78dc9dda1b1c0211b7703d129b0f00ee0e6794e8191b97a8eceb6caeb01f8f3a07e8c230d07015438dddcabe294ec97e541e8d5f20835f919f9
+	sha512sums = e8f684425f96cf3803946d22fd075e010fee48233f971b79a4ecb453890c81eea3d192bc4b5f47e87e936b26c6446837b17eafa1fa3c4e42aa93a16e378fee35
 	sha512sums = 57e3eb4aa983e0d51b3012a651b772e04a1238e9fdeee37f11016809270cd05a1189f3c4c64621671011897a6c9e31dfc1b391452dddf30f1073cbfe56a85ef9
-	b2sums = 6daec3f7be95b68c16df7af4db18ca52090f54784413c858805b074efb40f7017b4bb3bada1c27739eb489d1aae3bc05cf95d66cb4a19524847765f3b7d86048
+	b2sums = 963e6c975515fa31d2ae1be20757fddca0b0607dc3b1f2c04331dadac7c9202937e2f2feb26eaa5739f68ea236d7cd8fa1f12587897d5180c7a206d7a92caf12
 	b2sums = 04f02f4b399a36cad1be1ca6b33ac212d8ad0db72e0756f52f6424473bd1968ebaeb805541633c7ea722deead9f1220272f5809065af1d24f58f46621701e183
 
 pkgname = xonotic-autobuild
