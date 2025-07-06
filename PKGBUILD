@@ -3,7 +3,7 @@
 _name=control
 pkgname=python-${_name}
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Control Systems Library."
 arch=('any')
 license=('BSD-3-Clause')
@@ -15,6 +15,13 @@ checkdepends=('python-pytest' 'python-pytest-timeout' 'python-numpydoc' 'python-
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('d0cf63f6cfb68a4c8e827c26c3744d129e9777fedc9a5d86ca4740548f23a98b')
 
+prepare(){
+  cd "${srcdir}"/${_name}-${pkgver}
+  sed -i "s/('shooting', 3, None, 'xfail')/('shooting', 3, None, 'endpoint')/g" control/tests/optimal_test.py
+  sed -i "s/('shooting', 3, 'zero', 'xfail')/('shooting', 3, 'zero', 'endpoint')/g" control/tests/optimal_test.py
+  sed -i "s/# ('shooting', 3, 'u0', None)/('shooting', 3, 'u0', None)/g" control/tests/optimal_test.py
+}
+
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
     python -m build --wheel --no-isolation
@@ -23,8 +30,6 @@ build() {
 check() {
   local pytest_options=(
     -vv
-    # https://github.com/python-control/python-control/issues/1165
-    -k "not shooting-3-zero-xfail and not shooting-3-None-xfail"
   )
   cd "${srcdir}"/${_name}-${pkgver}
   python -m venv --system-site-packages test-env
