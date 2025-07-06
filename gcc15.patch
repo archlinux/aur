@@ -1,0 +1,27 @@
+diff --git a/src/srvcont.c b/src/srvcont.c
+index 2356c7f..fef6f18 100644
+--- a/src/srvcont.c
++++ b/src/srvcont.c
+@@ -520,7 +520,8 @@ lw_srvcont_wait_teams (LW_SRVCONT * cont,
+     {
+       log_print_str ("Unable to bind socket on port ");
+       log_print_int (port);
+-      log_println ("!");
++      log_print_str ("!");
++      log_println ();
+
+       /*
+        * We consider this a fatal error and quit the program
+diff --git a/utils/liquidwarcol.c b/utils/liquidwarcol.c
+index 935eea5..b46a3fe 100644
+--- a/utils/liquidwarcol.c
++++ b/utils/liquidwarcol.c
+@@ -430,7 +430,7 @@ main (int argc, char **argv)
+             {
+               if (FLAG_BACKUP)
+                 save_backup (FILENAMES[i]);
+-              convert_bitmap (FILENAMES[i]);
++              convert_bitmap ();
+               save_file (FILENAMES[i]);
+             }
+         }

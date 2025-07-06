@@ -4,7 +4,7 @@
 
 pkgname=liquidwar
 pkgver=5.6.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A unique multiplayer wargame"
 arch=('i686' 'x86_64')
 url="https://www.ufoot.org/liquidwar/"
@@ -13,10 +13,12 @@ depends=('allegro4')
 makedepends=('python')
 source=("https://github.com/ufoot/liquidwar5/releases/download/v$pkgver/liquidwar-$pkgver.tar.gz"
         "gcc10.patch"
-        "doc.patch")
+        "doc.patch"
+        "gcc15.patch")
 sha256sums=('dad0aa84dd416cad055421ed9b40df39efae78d3df759c0583c64c54f7f2ff5f'
             '0101b8df849f8b0767e0fb0f4e3eebcea8d00c272f7827c22573cee7e38d630a'
-            'fff7e5d06e29dba797055b1de3e88a1616cb72ae303e10bde9796afa0b3b3e43')
+            'fff7e5d06e29dba797055b1de3e88a1616cb72ae303e10bde9796afa0b3b3e43'
+            'a9ad4f1359d708988b987119b8ade1b504503ac0b44278aaf5a215a1f18d85e3')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -24,6 +26,7 @@ prepare() {
   sed 's|EFENCE_LIBRARY)$|& -lm|g' -i src/Makefile.in
   patch -Np1 -i "${srcdir}/gcc10.patch"
   patch -Np1 -i "${srcdir}/doc.patch"
+  patch -Np1 -i "${srcdir}/gcc15.patch"
 }
 
 build() {
