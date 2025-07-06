@@ -55,6 +55,7 @@ The RPM file is not modified in any way. All extracted files are installed as-is
 
 ## ⚖️ License
 
+This package uses the [Slack Terms of Service](https://slack.com/intl/en-tr/terms-of-service).
 The Slack binary files are copyrighted by Slack Technologies, LLC.  
 This package does not include, modify, or redistribute any binaries. It simply automates fetching and installation from Slack's official servers.
 

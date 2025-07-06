@@ -1,5 +1,5 @@
 # Maintainer: asahiner <sfahmetsahiner@gmail.com>
-pkgname=slack
+pkgname=slack-bin
 pkgver=4.43.51
 pkgrel=1
 pkgdesc="Slack Desktop (official client)"
