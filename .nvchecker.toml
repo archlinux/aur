@@ -1,0 +1,3 @@
+[gnome-tuner-tweaks]
+source = "git"
+git = "https://altlinux.space/alt-gnome/tunertweaks.git"

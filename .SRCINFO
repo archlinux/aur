@@ -1,0 +1,20 @@
+pkgbase = gnome-tuner-tweaks
+	pkgdesc = Plugin for Tuner that adds more ways to customize GNOME.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://altlinux.space/alt-gnome/tunertweaks
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = gnome-tuner
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	depends = libgee
+	depends = libpeas-2
+	depends = gnome-desktop-4
+	source = git+https://altlinux.space/alt-gnome/tunertweaks.git#tag=0.4.0
+	sha256sums = 743928bbe491bf14102f8e3a76817242d8053e13a6dabec20cbd5d1e3bde23f2
+
+pkgname = gnome-tuner-tweaks
