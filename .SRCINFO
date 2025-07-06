@@ -1,0 +1,21 @@
+pkgbase = alt-panelmoded
+	pkgdesc = Used for panelmode on Alt operating systems with GNOME
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Armatik/alt-panelmoded
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = vala
+	depends = dconf
+	depends = libgee
+	optdepends = gnome-shell-extension-appindicator
+	optdepends = gnome-shell-extension-arcmenu
+	optdepends = gnome-shell-extension-clipboard-indicator
+	optdepends = gnome-shell-extension-dash-to-panel
+	optdepends = gnome-shell-extension-gtk4-desktop-icons-ng
+	optdepends = gnome-shell-extensions: Removable Drive Menu & Launch New Instance
+	source = https://gitlab.gnome.org/Armatik/alt-panelmoded/-/archive/v0.6.1/alt-panelmoded-v0.6.1.tar.gz
+	sha256sums = 49a6251d15a1695a5de68c108002f465dbde17ad37e30150215efad61da04445
+
+pkgname = alt-panelmoded

@@ -1,0 +1,4 @@
+[alt-panelmoded]
+source = "git"
+git = "https://gitlab.gnome.org/Armatik/alt-panelmoded.git"
+prefix = "v"
