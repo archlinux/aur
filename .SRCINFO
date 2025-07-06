@@ -1,6 +1,6 @@
 pkgbase = ptcpdump
 	pkgdesc = packet capture tool with process awareness
-	pkgver = 0.34.0
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://github.com/mozillazg/ptcpdump
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ptcpdump
 	makedepends = go
 	depends = libpcap
 	depends = glibc
-	source = ptcpdump-0.34.0.tar.gz::https://github.com/mozillazg/ptcpdump/archive/v0.34.0.tar.gz
-	sha256sums = c50337371b4c5e90698fedc073b77aa5a025ec7dc795443f66eb7c868945df23
+	source = ptcpdump-0.35.0.tar.gz::https://github.com/mozillazg/ptcpdump/archive/v0.35.0.tar.gz
+	sha256sums = f1b642b0f0a573191dd60136129926d631fba249844412dcff1eeee437256cf2
 
 pkgname = ptcpdump
