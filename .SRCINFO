@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-kn
 	pkgdesc = Kannada language pack for Pale Moon browser
-	pkgver = 33.6.0
+	pkgver = 33.8.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-kn-33.6.0.xpi
-	source = palemoon-i18n-kn-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-kn@palemoon.org
-	sha256sums = 09b7cc7545ce0e2fd208ff983bbaa0d850b2e549c0f45c74aa341c278b2f1fdf
+	noextract = palemoon-i18n-kn-33.8.0.xpi
+	source = palemoon-i18n-kn-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-kn@palemoon.org
+	sha256sums = 03483d01be2da05530803c633193ed932222b393510cff682629af259c94e25d
 
 pkgname = palemoon-i18n-kn
