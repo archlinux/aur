@@ -17,7 +17,7 @@ source=(
     "dkms.conf"
     "git+https://github.com/fofajardo/rtl8851bu.git"
 )
-sha256sums=('3bdec70a0d23eb513ca74295f6c0e112b8e4dd661c3841f530a19cbc407efd61'
+sha256sums=('7b2e9398ba39046d583d669c86c7f9c00a3f3eb4896c0cf8c0a0766e4a2cbe44'
             'SKIP')
 
 pkgver() {
