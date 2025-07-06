@@ -6,14 +6,14 @@
 
 _locale='it'
 pkgname=palemoon-i18n-it
-pkgver=33.6.0
+pkgver=33.8.0
 pkgrel=1
 pkgdesc="Italian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('635de8f0b5edf755128e3494638f20928d8f4913a29e1c8d11a60d3d34f9fd39')
+sha256sums=('369bb7cd95e82de935fa966b5e9630ebb71464f24279a0cf5c09faa4a57641e7')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
