@@ -2,7 +2,7 @@
 
 ver=0000
 
-podman build -t wem-aur:${ver} .
-podman run --rm wem-aur:${ver}
+docker build -t wem-aur:${ver} .
+docker run --rm wem-aur:${ver}
 
 makepkg --printsrcinfo > .SRCINFO
