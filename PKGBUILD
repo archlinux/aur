@@ -45,11 +45,8 @@ check() {
     -vv
     -n auto
     --deselect tests/models/test_model_names.py::test_known_model_names
-    -k "not genai_email_feedback.py and not google.md"
+    -k "not genai_email_feedback.py and not google.md:61"
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
-    --deselect tests/test_mcp.py::test_tool_returning_image_resource
-    --deselect tests/test_mcp.py::test_tool_returning_audio_resource
-    --deselect tests/test_mcp.py::test_tool_returning_image
     --deselect tests/models/test_google.py
   )
   cd "${srcdir}"/${_name0}-${pkgver}
