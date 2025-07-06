@@ -1,6 +1,6 @@
 pkgbase = arctis-bat
 	pkgdesc = CLI tool for checking SteelSeries Arctis headsets battery on linux
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/jewlexx/arctis-bat
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = arctis-bat
 	depends = glibc
 	provides = arctis-bat
 	conflicts = arctis-bat
-	source = arctis-bat-0.2.0.tar.gz::https://github.com/jewlexx/arctis-bat/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 48089eeefbab2a416b99c18cc179790672d8faa3fb240055fc8b772ec91ca5cb
+	source = arctis-bat-0.2.1.tar.gz::https://github.com/jewlexx/arctis-bat/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = b68f97442e3f8549b7eb3e5ba72f41eac22f4bc4b992fea3452177666fb10b3f
 
 pkgname = arctis-bat
