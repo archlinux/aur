@@ -5,7 +5,6 @@ pkgbase = firefly-iii-data-importer
 	url = https://github.com/firefly-iii/data-importer
 	arch = any
 	license = custom
-	makedepends = composer
 	depends = php>=8.4.0
 	backup = etc/webapps/firefly-iii-data-importer/config.env
 	source = data-importer-1.7.0.tar.gz::https://github.com/firefly-iii/data-importer/releases/download/v1.7.0/DataImporter-v1.7.0.tar.gz

@@ -10,7 +10,6 @@ arch=('any')
 url="https://github.com/firefly-iii/$_pkgname"
 license=('custom')
 depends=('php>=8.4.0')
-makedepends=('composer')
 source=("$_pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/DataImporter-v${pkgver}.tar.gz")
 sha256sums=('6058caceba103c49126c1c92a44d8d28d8af1b73d4c2f62e02e2882e542c3dbe')
 
@@ -18,7 +17,6 @@ backup=("etc/webapps/$pkgname/config.env")
 
 package(){
     cd "$srcdir"
-    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-scripts --no-dev --ignore-platform-reqs
 
     install -d "$pkgdir/usr/share/webapps/$pkgname" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
     cp -rv * "$pkgdir/usr/share/webapps/$pkgname"
