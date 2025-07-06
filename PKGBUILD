@@ -1,12 +1,12 @@
-# Maintainer: DeadNews <deadnewsgit@gmail.com>
+# Maintainer: deadnews <deadnewsgit@gmail.com>
 
 pkgbase="python-images-upload-cli"
 pkgname=("python-images-upload-cli")
 _name="images_upload_cli"
-pkgver="3.0.5"
+pkgver="3.0.6"
 pkgrel=1
 pkgdesc="Upload images via APIs"
-url="https://github.com/DeadNews/images-upload-cli"
+url="https://github.com/deadnews/images-upload-cli"
 depends=(
     "python"
     "python-click"
@@ -26,7 +26,7 @@ optdepends=(
 license=("MIT")
 arch=("any")
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/${_name}/${_name}-$pkgver-py3-none-any.whl")
-sha256sums=('8615143d81a25058c4f8837b3ca4cb8f2a3c7ef5c6b8ee492b97d32ee1beb349')
+sha256sums=('160babb525838d5c44795832c1172a5cb2c100619e4116004eee4c5ed816619a')
 
 package() {
     python -m installer --destdir="${pkgdir}" "${_name}-$pkgver-py3-none-any.whl"
