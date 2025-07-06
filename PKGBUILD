@@ -16,7 +16,7 @@ sha512sums=('6ce02d1475f0914f4ad86ad0207060f5261c8cb669453c91c967e4befa21308837e
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 
-pkgdesc="A compatibility layer for running Windows programs"
+pkgdesc="A compatibility layer for running Windows programs on both 32-bit and 64-bit architectures (without WOW64)"
 url="https://www.winehq.org"
 arch=(x86_64)
 options=(staticlibs !lto)

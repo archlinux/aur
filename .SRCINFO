@@ -1,5 +1,5 @@
 pkgbase = wine32
-	pkgdesc = A compatibility layer for running Windows programs
+	pkgdesc = A compatibility layer for running Windows programs on both 32-bit and 64-bit architectures (without WOW64)
 	pkgver = 10.11
 	pkgrel = 1
 	url = https://www.winehq.org
