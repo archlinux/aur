@@ -1,2 +1,0 @@
-d /var/log/aprsc 0755 aprsc aprsc -
-d /var/run/aprsc 0755 aprsc aprsc -
