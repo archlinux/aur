@@ -1,7 +1,7 @@
 # Contributor: Andrew Rabert <ar nullsum.net>
 
 pkgname=sony-bravia-cli
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="CLI for controlling Sony Bravia TV's over RS-232"
 url="https://github.com/nvllsvm/sony-bravia-cli"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 license=('MIT')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nvllsvm/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('1c06270fdc4fc2273089d4c1a1ac9df8b5ac1bdd417a6ae332024e734fda9823')
+sha256sums=('f209cf83ab3b18460426312a221c5786ee068e47a79e456a14644291fb1fc32d')
 
 build() {
   cd "$pkgname-$pkgver"
