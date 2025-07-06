@@ -1,7 +1,7 @@
 pkgbase = fetchcord-testing
 	pkgdesc = FetchCord grabs your OS info and displays it as Discord Rich Presence
 	pkgver = 2.7.8
-	pkgrel = 22
+	pkgrel = 23
 	url = https://github.com/fetchcord/fetchcord/tree/testing/
 	install = fetchcord.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = fetchcord-testing
 	depends = python-psutil
 	depends = python-setuptools
 	depends = python-pypresence
+	depends = python-yaml
 	optdepends = systemd: Systemd user service
 	optdepends = python-pyqt5: GUI
 	provides = fetchcord
