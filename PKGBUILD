@@ -6,14 +6,14 @@
 
 _locale='bg'
 pkgname=palemoon-i18n-bg
-pkgver=33.6.0
+pkgver=33.8.0
 pkgrel=1
 pkgdesc="Bulgarian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('c143686cab41e8ae55f7cfa9e6d87240ae5b18345c563f87d738986be116af42')
+sha256sums=('b716f760eb36b4704bdc3e2943d0ef3b45861c376ad8c86787d86209257e0bbc')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
