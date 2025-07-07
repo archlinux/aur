@@ -3,8 +3,8 @@
 # Contributor: Asuka Minato
 _appname=teams-for-linux
 pkgname="${_appname}-electron-bin"
-pkgver=2.0.18
-_electronversion=36
+pkgver=2.1.0
+_electronversion=37
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -29,10 +29,14 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.aarch64.rpm")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('9cd494c91ee04a2513cbb6c3b757d3d8a0dd4572079dd991569ee3dab521076e')
-sha256sums_armv7h=('1de2f685811076023fee47b9d2ce66e8ad024ad25420b13c2eafc35d97d5dd9f')
-sha256sums_x86_64=('28592e4bb9d99215c4618cc5cf1691d681baa1b2ee851d4585ceb47f4603abf8')
+sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('228aa6aba935f12a2586632d7e39fc587a69e6bb547cfec834d57ae4fff4cdda')
+sha256sums_armv7h=('94862351d177fb8779ca64ac375b290754e1e2a0feb2a952018d7f764136bd78')
+sha256sums_x86_64=('34838c6ab22dafaeccc41b1b6b803c9c75639c3e40f6cf600c3395f43ff94736')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -41,6 +45,7 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
