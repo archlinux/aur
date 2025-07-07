@@ -1,17 +1,17 @@
 # Maintainer: Kevin Masson <hi@oktomus.com>
-# Maintainer: Alex Hirzel <alex@hirzel.us>
+# Maintainer: Alex Hirzel <alex at hirzel period us>
 # Maintainer: Chuyan Zhang <develop@zcy.moe>
 
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=1.29
+pkgver=2.2
 pkgrel=1
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
 url="https://github.com/Tom94/tev"
 license=('LicenseRef-BSD')
-depends=("hicolor-icon-theme" "libc++" "libc++abi" "libdeflate" "libglvnd" "libpng")
-makedepends=("clang" "cmake" "git")
+depends=("hicolor-icon-theme" "jbigkit" "libc++" "libc++abi" "libdeflate" "libglvnd" "libpng" "libwebp" "libxrandr" "libxinerama" "libxcursor" "libxi")
+makedepends=("clang" "cmake" "git" "ninja")
 provides=("tev")
 conflicts=("tev")
 install=
@@ -28,6 +28,7 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DOPENEXR_INSTALL=OFF\
     -DOPENEXR_INSTALL_TOOLS=OFF \
     -DOPENEXR_INSTALL_PKG_CONFIG=OFF \
