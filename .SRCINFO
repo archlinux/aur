@@ -1,0 +1,14 @@
+pkgbase = fortfetch
+	pkgdesc = Самый фортуно-потужний фаст блейзинговый раст фетч во всей вселенной
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/progzone122/fortfetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = https://github.com/progzone122/fortfetch/releases/download/0.1.1/fortfetch
+	sha256sums = SKIP
+
+pkgname = fortfetch
