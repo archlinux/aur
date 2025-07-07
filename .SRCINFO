@@ -1,0 +1,15 @@
+pkgbase = lazysys-git
+	pkgdesc = A TUI tool to manage systemd services
+	pkgver = r12.cd44fe5
+	pkgrel = 1
+	url = https://github.com/XhuyZ/lazysys
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = glibc
+	source = lazysys-git::git+https://github.com/XhuyZ/lazysys.git
+	sha256sums = SKIP
+
+pkgname = lazysys-git
