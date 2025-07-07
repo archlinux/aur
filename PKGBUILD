@@ -6,11 +6,22 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc='TODO'
 url='https://charm.sh/'
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
-arch=('x86_64')
-source_x86_64=("index.html::https://example.com/index.html")
+
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a565fd4b51d0a046f38f32b989fb6a245e5087b0f1c3dc76f5b05ea2721d5077')
+
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('3a0382cccd4a43339bb3ca9441461d42fe2057cc4742b21f4239f2a6eae97fef')
+
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_i386.tar.gz")
+sha256sums_i686=('708d27fdccc3afe98cf054d2097b91e260123d373ecc07e92cba085d763bc456')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('06312a833be1296622a3be5c45dc3c034f2f83df61f158abdcc62b704d7a923f')
 
 package() {
-  echo "TODO"
+  echo "this is a placeholder - do not use this"
+  exit 1
 }
-
