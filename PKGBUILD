@@ -7,7 +7,7 @@ pkgname=(
   webkitgtk-6.0-devel
   webkitgtk-6.0-docs-devel
 )
-pkgver=2.49.2
+pkgver=2.49.3
 pkgrel=1
 pkgdesc="Web content engine for GTK (development release)"
 url="https://webkitgtk.org"
@@ -111,10 +111,12 @@ source=(
   $url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
   caret-no-blinking-assertion.patch
 )
-sha256sums=('47873f7e6057acfcda1273d3a64f65265d36992807f9a1f77d5e0b0b6d57d6e6'
-            'SKIP')
-b2sums=('69c9d0bddfab01a548df4c4693729d092f5aaf1b0ac05fc15f0625cd5b57b32f6b1c08fdd821edacf263614cd8dd70e89720cbfa15717e77686f5c28ad3191d8'
-        'SKIP')
+sha256sums=('25f465bd1f7d615da9f5089575c58c8fbaf26d951de6adc569690e59319d72c1'
+            'SKIP'
+            '63f3ffa583e94a2db011a064e1850a3ceede7f351f9892f42a2b4cc8014d8843')
+b2sums=('9b207405c16b1c6289463ca3a2b3a695dfada19b2c469e1aeb98866361c93e3e2ac843726756d08388e1bfb8c67d2297e7432847c24737707282d10003945fac'
+        'SKIP'
+        'a77558f8817f12f61c091481b8fa1e99ab27149eae9fa303f0c7004ba9cc9f743e1bbd605890f4bb6e07b27a3113f67042ff79b05008d7909840e8522ec7e45c')
 validpgpkeys=(
   # https://www.webkitgtk.org/verifying.html
   5AA3BC334FD7E3369E7C77B291C559DBE4C9123B # Adrián Pérez de Castro <aperez@igalia.com>
