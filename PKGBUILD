@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='TODO'
 url='https://charm.sh/'
 license=('MIT')
+arch=('x86_64')
 
 package() {
   echo "TODO"
