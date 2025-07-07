@@ -1,0 +1,17 @@
+pkgbase = fyrox-project-manager
+	pkgdesc = 3D and 2D game engine written in Rust
+	pkgver = 0.36.2
+	pkgrel = 1
+	url = fyrox.rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcbcommon
+	depends = alsa-lib
+	depends = mesa
+	source = fyrox-project-manager-0.36.2.tar.gz::https://static.crates.io/crates/fyrox-project-manager/fyrox-project-manager-0.36.2.crate
+	b2sums = ea4d0d99f454656b8f497c78a582b1502751d7e959041f3038af9aca4631dde5892b4b085a7d6ea4b48e62808ccb249ae9fdd95242e77cac4b933a4476e03bf6
+
+pkgname = fyrox-project-manager
