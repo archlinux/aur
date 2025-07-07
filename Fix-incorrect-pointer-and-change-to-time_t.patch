@@ -1,0 +1,46 @@
+diff --git a/tws.c b/tws.c
+index cbafeb2..4e601d5 100644
+--- a/tws.c
++++ b/tws.c
+@@ -37,17 +37,16 @@ extern long timezone;
+ #include <sys/timeb.h>
+ #endif /*SYS5*/
+ 
+-extern long time();
+ struct tm* localtime();
+ 
+ struct tws *dtwstime()
+ {
+-   long clock = 0;
++   time_t clock = 0;
+    char *phoontime = getenv( "PHOONTIME" );
+    
+    if( phoontime )
+    {
+-      clock = strtol( phoontime, 0, 0 );
++      clock = strtol( phoontime, NULL, 0 );
+    }
+ 
+    if( !clock )
+@@ -57,7 +56,7 @@ struct tws *dtwstime()
+    return dlocaltime( &clock );
+ }
+ 
+-struct tws* dlocaltime( long* clock )
++struct tws* dlocaltime( const time_t *clock )
+ {
+ register struct tm* tm;
+ #ifndef SYS5
+@@ -65,8 +64,10 @@ register struct tm* tm;
+ #endif /*not SYS5*/
+    static struct tws tw;
+    
+-   if ( clock == (long*) 0 )
+-      return (struct tws*) 0;
++   if ( !clock )
++   {
++     return NULL;
++   }
+    tw.tw_flags = TW_NULL;
+    
+    tm = localtime( clock );

@@ -1,0 +1,51 @@
+From: Leandro Cunha <leandrocunha016@gmail.com>
+Date: Wed, 2 Jul 2025 00:17:30 -0300
+Subject: Fix FTBFS using GCC 15
+
+Fix FTBFS with GCC 15: align dlocaltime() declaration and remove redundant localtime()
+
+- Add #include <time.h> to tws.h to define time_t
+- Update dlocaltime() prototype in tws.h to match implementation (const time_t *)
+- Remove conflicting declaration of localtime() in tws.c
+
+This fixes build errors with GCC 15 due to conflicting types and unknown time_t.
+---
+ tws.c | 2 --
+ tws.h | 4 ++--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/tws.c b/tws.c
+index 4e601d5..cdf44c5 100644
+--- a/tws.c
++++ b/tws.c
+@@ -37,8 +37,6 @@ extern long timezone;
+ #include <sys/timeb.h>
+ #endif /*SYS5*/
+ 
+-struct tm* localtime();
+-
+ struct tws *dtwstime()
+ {
+    time_t clock = 0;
+diff --git a/tws.h b/tws.h
+index 2d69b2f..7f2a388 100644
+--- a/tws.h
++++ b/tws.h
+@@ -2,7 +2,7 @@
+ 
+ 
+ /* Definition of the tws data structure. */
+-
++#include <time.h>
+ #ifndef _TWS_H_
+ #define _TWS_H_ _TWS_H_
+ 
+@@ -33,7 +33,7 @@ struct tws
+ 
+ /* Declarations of routines. */
+ 
+-struct tws *dlocaltime( );
++struct tws *dlocaltime( const time_t * );
+         /* dlocaltime( &clock ) turns a time(3) clock value into a tws */
+ 
+ struct tws *dtwstime( );
