@@ -31,7 +31,7 @@ ExecStart=/usr/bin/java \
 -Xms3G \
 -XX:MaxMetaspaceSize=1G \
 -server \
--jar _RUNDECK_ENTRYPOINT_ \
+-jar /var/lib/rundeck/bootstrap/_RUNDECK_ENTRYPOINT_ \
 --skipinstall
 
 LimitNOFILE=65535

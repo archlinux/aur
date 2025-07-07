@@ -20,6 +20,6 @@ pkgbase = rundeck-community
         source = rundeck-community-5.13.0.20250625-1.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.13.0.20250625-1.noarch.rpm/download.rpm?distro_version_id=227
         source = rundeckd.service
         sha256sums = b84658a5114475838f14d15a0b5ad46e188c7752c9c0b3ca02fa5ec8683eb463
-        sha256sums = ca8573bc1df70edd5466d0288c0550d2988e84d514811148e5938ac7a04caf8a
+        sha256sums = d0fd0c817aa86e1fe43c1d1a5a71465624916ca54fb7405cb09e6b01ac31cca1
 
 pkgname = rundeck-community
