@@ -8,7 +8,7 @@ pkgdesc='Play Pac-Man theme using pcspkr before and after any pacman transaction
 arch=(any)
 #license=('GPL2') ?
 depends=(beep)
-# todo: find udev rule to drop this deps
+# todo: find udev rule to drop this deps, or setpriv?
 optdepends=('beep-sudoable: skip sudo check')
 source=('pacman-beep-pre.hook' 'pacman-beep-post.hook' 'pacman-beep.sh')
 sha256sums=('35d7de76434c8d5c1fe8392c8a9cef7ad42f2b1c779cf09bc9398635b020f26f'
