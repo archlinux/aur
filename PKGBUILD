@@ -38,6 +38,13 @@ pkgver() {
 }
 
 prepare() {
+    cd "$srcdir/code"
+    git reset --hard HEAD
+    git_tag="$(git describe --tags --abbrev=0 | sed 's/^v//')"
+    sed -i "s/1.0.0-local/$git_tag/" "apps/app/Cargo.toml"
+    sed -i "s/1.0.0-local/$git_tag/" "packages/app-lib/Cargo.toml"
+    sed -i "s/1.0.0-local/$git_tag/" "apps/app-frontend/package.json"
+
     cd "$srcdir/code/apps/app"
 
     export CARGO_TARGET_DIR=target
