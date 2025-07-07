@@ -27,11 +27,11 @@ ExecStart=/usr/bin/java \
 -Drundeck.server.workDir=/tmp/rundeck \
 -Dserver.http.port=4440 \
 -Drdeck.base=/var/lib/rundeck \
--Xmx1024m \
--Xms256m \
--XX:MaxMetaspaceSize=256m \
+-Xmx3G \
+-Xms3G \
+-XX:MaxMetaspaceSize=1G \
 -server \
--jar {{ rundeck_binaries.files[0].path }} \
+-jar _RUNDECK_ENTRYPOINT_ \
 --skipinstall
 
 LimitNOFILE=65535

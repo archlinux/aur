@@ -1,6 +1,6 @@
 # Maintainer: Automne von Einzbern <archlinux@automne.me>
 pkgname=rundeck-community
-pkgver=5.10.0.20250312
+pkgver=5.13.0.20250625
 pkgrel=1
 pkgdesc="Rundeck is an open source automation service with a web console, command line tools and a WebAPI"
 arch=('any')
@@ -22,12 +22,12 @@ backup=(
 options=('!strip')
 install=rundeck.install
 source=(
-        "rundeck-community-${pkgver}-${pkgrel}.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.10.0.20250312-1.noarch.rpm/download.rpm?distro_version_id=227"
+        "rundeck-community-${pkgver}-${pkgrel}.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.13.0.20250625-1.noarch.rpm/download.rpm?distro_version_id=227"
         "rundeckd.service"
 )
 sha256sums=(
-        '53519d54b7ee506088208f9868a19b569686097741e23a9b69f41d24be8d0025'
-        '22c7cc157857ef2e2f2fe89b36cd7902566dad40074f01537c1c91d39fd6f1d8'
+        'b84658a5114475838f14d15a0b5ad46e188c7752c9c0b3ca02fa5ec8683eb463'
+        'ca8573bc1df70edd5466d0288c0550d2988e84d514811148e5938ac7a04caf8a'
 )
 
 package() {
@@ -45,6 +45,11 @@ package() {
 
     # Install systemd service
     install -Dm644 "${srcdir}/rundeckd.service" "${pkgdir}/usr/lib/systemd/system/rundeckd.service"
+
+    # Replace war path in systemd service file
+    local war_file
+    war_file=$(find "${srcdir}/var/lib/rundeck/bootstrap" -name "*.war")
+    sed -i "s|_RUNDECK_ENTRYPOINT_|${war_file##*/}|" "${pkgdir}/usr/lib/systemd/system/rundeckd.service"
 
     find "${pkgdir}/var/lib/rundeck" -type d -exec chmod 755 {} +
     find "${pkgdir}/var/log/rundeck" -type d -exec chmod 755 {} +
