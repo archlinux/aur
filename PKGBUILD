@@ -11,7 +11,7 @@
 
 _pkgname="anki"
 pkgname="anki-git"
-pkgver=r11728.d3d6bd8ce
+pkgver=r11894.f927aa578
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://github.com/ankitects/anki"
@@ -87,6 +87,6 @@ package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --root-user-action=ignore --no-deps out/wheels/*.whl
 
 	install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
-	install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
-	install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+	install -Dm644 qt/launcher/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+	install -Dm644 qt/launcher/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
 }
