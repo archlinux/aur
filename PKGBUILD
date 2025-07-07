@@ -1,7 +1,7 @@
 # PKGBUILD
 pkgname=pattern-renamer
 pkgver=0.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI to rename terms/words in a project or normal folders with multiple different patterns"
 arch=('any')
 url="https://github.com/alissonbk/pattern-renamer"
@@ -11,10 +11,10 @@ source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 ignored_folders="pr-ignored-folders.cfg"
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/-.*//' | sed 's/v//'
-}
+# pkgver() {
+#   cd "$srcdir/$pkgname"
+#   git describe --tags | sed 's/-.*//' | sed 's/v//'
+# }
 
 package() {
   cd "$srcdir/$pkgname"
