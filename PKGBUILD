@@ -2,7 +2,7 @@
 # Ex-Maintainer: Nixuge
 
 pkgname=modrinth-app-git
-pkgver=0.10.1.r2787.e5b134f
+pkgver=0.10.3.r2798.bc90c27
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -28,13 +28,13 @@ source=(
 )
 sha256sums=('SKIP'
             '3ac2484618a0b10a979f7ce37fb97e748609bfb3bcccda5018a583e12ac0dbda'
-            '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9'
+            'da70f89aae82e69625bfe920fa52961550c8f9d4825a0d11e620ac55db84e091'
             'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
 options=('!lto')
 
 pkgver() {
 	cd "$srcdir/code"
-	printf "%s.r%s.%s" "$(cat apps/app/tauri.conf.json | jq -r .version)" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	printf "%s.r%s.%s" "$(git describe --tags --abbrev=0 | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
