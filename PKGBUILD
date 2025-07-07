@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=radiosonde_auto_rx
-pkgver=1.7.4
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Automatically Track Radiosonde Launches using RTLSDR"
 arch=('x86_64')
