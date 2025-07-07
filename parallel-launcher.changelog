@@ -1,0 +1,763 @@
+### v8.2.1 (Sun Jul 6 2025)
+* Fixed a regression from v8.0.0 that broke some libpl integrations
+* Fixed the IS Viewer window not properly alternating background colours once the max history size is reached
+* Fixed the IS Viewer history size in settings showing "1050" instead of "Unlimited" when set to unlimited
+
+### v8.2.0 (Thu Jul 3 2025)
+* Fixed an issue that caused save files using SRAM or FlashRAM to not be portable across devices with different CPU endianness
+* The IS Viewer now correctly only displays new lines when the rom explicitly sends a line feed character (instead of automatically inserting a new line after every message)
+* The IS Viewer now correctly decodes text from retail roms from EUC-JP instead of assuming UTF-8, fixing mojibake when playing the OOT Master Quest debug rom. The character encoding can be changed in settings.
+* The IS Viewer window now remembers its size
+* IS Viewer messages are now printed to standard output on Linux and Mac even if the IS Viewer window is disabled (NOTE: output is not converted from EUC-JP to UTF-8 if the IS Viewer window is not enabled)
+
+### v8.1.0 (Sun Jun 1 2025)
+* Added a setting to control the RetroArch logging level
+* Improved RetroArch crash detection
+* Fixed a bug where the selected SD card was being set back to None after playing a ROM
+* Fixed some rom settings getting cut off if the window is made too small
+
+### v8.0.1 (Fri May 23 2025)
+* Fixed a database migration error that resulted in a crash on startup if a previous version of Parallel Launcher hasn't been run before
+
+### v8.0.0 (Fri May 23 2025)
+* Removed the the deprecated Mupen64plus-next emulator core
+* Redesigned the ROM settings UI to be more compact
+* Fixed the Flatpak version not checking for core updates consistently
+* Fixed various actions that open your file browser not working correctly when Nautilus is your default file browser
+* Fixed RetroArch screenshots being placed in unexpected locations
+
+### v7.12.0 (Thu May 1 2025)
+* The MacOS version of Parallel Launcher now supports SDL2 as a controller input driver
+* Large rom support in the ParallelN64 core is now only enabled when launching a rom larger than 64 MiB (fixes saves not loading correctly in Paper Mario)
+* Fixed an issue where the error toast message on a failed patch would not appear when launching Parallel Launcher via the Play Now button
+
+### v7.11.0 (Fri Mar 21 2025)
+* Updated RetroArch to version 1.20.0
+* When enabling RHDC integration, the initial state of the 'Prefer HLE Plugins' checkbox is set based on whether your system appears to support ParaLLEl or not.
+* The Mupen64Plus-Next core is now deprecated. You can continue to use it for now, but it will be removed in a future update.
+
+### v7.10.1 (Sat Jan 4 2025)
+* Fixed a bug with the libpl emulator extension that caused it to fail to correctly fetch RHDC avatars when using the RGBA5551 format
+* Fixed a bug with the libpl emulator extension that caused it to incorrectly return a rate limit status sometimes
+
+### v7.10.0 (Fri Jan 3 2025)
+* Parallel Launcher now always downloads only pre-approved versions of RetroArch instead of the latest version (fixes recent issues with failing to install RetroArch)
+* Fixed a bug with the libpl emulator extension that caused it to fail when fetching an RHDC user avatar that isn't a square image
+
+### v7.9.0 (Tue Nov 19 2024)
+* The Overclock VI option no longer requires "Show advanced ROM options" to be enabled to see it
+* The Overclock VI option now has a much larger effect. It is not recommended for use with retail roms, but it is very useful for certain romhacks
+
+### v7.8.0 (Sat Nov 2 2024)
+* Added Japanese translations (thanks to Rulu for the translations)
+* Fixed RetroArch failing to be unzipped on certain RPM based Linux distros
+* Fixed RetroArch not updating to versions newer than 1.17.0
+* Fixed star icons being cut off in certain star layouts
+
+### v7.7.0 (Sun May 26 2024)
+* Enabled error logging in RetroArch
+* When RetroArch crashes shortly after starting, the error logs can now be viewed in the error dialog
+* Worked around a Windows bug that prevented SD card mounting from working if file compression is enabled
+
+### v7.6.0 (Wed May 22 2024)
+* Added a x9 option for window scale
+* Fixed the application icon not showing up on Linux when using Wayland
+* Fixed the Open Containing Folder option not working on Windows if the rom path contains non-ASCII characters
+* Fixed a rare application freeze on Windows if IS Viewer or Parallel Launcher integration fails to connect to the emulator in a specific way
+* Updated the minimum allowed version of the ParallelN64 core to ensure you have the latest security updates
+
+### v7.5.3 (Tue Apr 16 2024)
+* Fixed a crash on Windows when trying to automatically import a PJ64 save file if the internal rom name is neither valid Shift-JIS nor valid UTF-8
+* Improved parsing of internal rom names to ensure that the parsed result is always a valid UTF-8 string even if the internal rom name is not correctly encoded
+
+### v7.5.2 (Mon Apr 15 2024)
+* Fixed a major regression that prevented RHDC hacks with star layouts from being downloaded in Parallel Launcher
+
+### v7.5.1 (Sun Apr 14 2024)
+* Fixed issues loading roms with non-ASCII characters in their filename on Windows
+* Fixed inability to import PJ64 save files on Windows if the internal rom name contains Japanese characters
+* Parallel Launcher now checks for star layout updates when launching a rom using the Play Now button on the RHDC website
+* Resetting your RetroArch config in Parallel Launcher settings will now also purge the shader cache
+* Fixed audio crackling on some systems when playing on a monitor with a refresh rate higher than 60Hz
+* Fixed a crash if the stored RHDC credentials somehow become corrupted
+
+### v7.5.0 (Fri Apr 5 2024)
+* Added Fixed Shuffle and Random Shuffle sorting methods to the RHDC view
+* Fixed a crash when launching roms or going to controller configuration if the SDL driver helper is missing
+* Fixed an oversight where Parallel Launcher would always disable video shaders on startup
+* Fixed default controller profile for the Gamecube having incorrect mappings on SDL
+* Fixed the star layout tester and save file editor not being resizable
+
+### v7.4.0 (Thu Mar 28 2024)
+* Added a "secret" debugging feature: pressing F8 will now open a dialog showing previous crash logs (only crashes from this version onwards are logged)
+* Fixed a bug where OGRE and GLideN64 with framebuffer emulation disabled would not work correctly on certain GPUs
+
+### v7.3.0 (Tue Mar 5 2024)
+* Updated RHDC hack rating from Parallel Launcher to reflect the new Romhacking.com rating system
+* Updated RHDC integration to use the latest APIs
+* Improved performance of OGRE and GLideN64 cores when not using framebuffer emulation
+
+### v7.2.0 (Wed Feb 21 2024)
+* Disabled anti-aliasing in the GLideN64 plugin by default due to graphical bugs that appear when it is enabled. You can re-enable GLideN64 anti-aliasing in your Parallel Launcher settings if you want to
+* Updated the SDL2 input driver on Windows (v2.0.10 -> v2.30.0)
+* Updated French translations
+* Fixed an issue where old crash reports would be repeatedly sent on startup if Parallel Launcher crashed while being run with elevated permissions
+
+### v7.1.0 (Thu Feb 15 2024)
+* Added an LLE RSP option to the GLideN64 plugin. This allows homebrew/romhacks with custom microcode to be run on GLideN64 instead of just ParaLLEl and Angrylion; however, due to inaccuracies with GLideN64 when using this option, ParaLLEl is still recommended for these hacks.
+
+### v7.0.0 (Fri Jan 26 2024)
+* The non-flatpak Linux version of Parallel Launcher no longer uses a Flatpak installation to install and update an isolated RetroArch. Instead, it now simply uses an appimage.
+* Fixed a bug where the Windows and Flatpak versions of Parallel Launcher could sometimes assign the wrong controller to RetroArch when multiple controllers are connected
+* Fixed a rare crash on Windows when refreshing your rom list under certain conditions
+
+### v6.22.6 (Fri Jan 5 2024)
+* When using the Angrylion RDP (graphics) plugin, the RSP is now emulated with parallel-rsp instead of cxd4
+* Fixed a bug where the "(recommended by hack author)" text would not show up beside GLideN64 for RHDC hacks that recommend that plugin
+
+### v6.22.5 (Tue Dec 12 2023)
+* Fixed a rare crash when downloading a hack from RHDC
+
+### v6.22.3 (Tue Dec 5 2023)
+* Fixed a bug that prevented hacks being downloaded from RHDC if their filename contained certain characters
+* Fixed a bug where hack versions that were deleted from RHDC could still show up but could not be downloaded
+
+### v6.22.0 (Tue Oct 3 2023)
+* Added an option to browse and edit files on virtual SD cards
+* Added an option to clone virtual SD cards
+* Fixed SM64 save file editing, star layouts, and star progress not working correctly on romhacking that use SRAM or FlashRAM
+* Fixed play time not always syncing correctly between different versions of the same RHDC hack
+* Fixed an issue that could result in save files appearing to be lost due to RetroArch putting save files in an unexpected place
+* Fixed a bug where SD cards could not be imported if no other SD cards existed yet
+* Fixed a bug where hacks supporting N64 mouse input would not be detected as such if they were first discovered by Parallel Launcher in a version earlier than 6.2.0
+* Enabled bilinear filtering when playing in fullscreen or using stretched widescreen
+* Added an emulator extension to allow romhacks to create or request an SD card
+
+### v6.21.0 (Sat Aug 12 2023)
+* You can now set the analog to digital button press threshold on your controller profiles, allowing you to change how far down you need to press a trigger or how far you need to move a control stick for it to be considered a button press
+* Changed the default value for the aforementioned threshold from 50% to 70%
+* When playing a romhacks that supports the N64 mouse peripheral, the mouse cursor is now automatically captured by default
+* Fixed a bug that caused the main Parallel Launcher window to not size itself correctly
+
+### v6.20.0 (Tue Aug 1 2023)
+* Added an emulator extension that allows roms to display your username and avatar when romhacking.com integration is enabled
+* Fixed a bug where internal rom names containing a dakuten or handakuten are not decoded correctly
+
+### v6.19.0 (Thu Jun 15 2023)
+* Added the ability to import SD cards from ISO files
+* You can now set the time on the N64 realtime clock, and optionally have it roll back the clock when loading a savestate. (Settings -> System Clock)
+* When using Open Containing Folder, the rom file will now be selected in the opened file browser
+* Added a Show Save File option to the context menu for roms which opens the save directory in your file browser and selects the save file
+* Added a Data Directories submenu to the ≡ main menu where you can open your save directory among other things
+* You will no longer be fully signed out of romhacking.com integration if you open Parallel Launcher with no internet connection
+* Fixed a crash if the rom list updates after right clicking on a rom but before clicking an option on the opened context menu
+
+### v6.18.2 (Wed May 24 2023)
+* Fixed SD cards larger than 2 GiB not showing up
+* Fixed a crash when creating an SD card with no filesystem
+* Fixed some windows and dialogs being smaller than intended on high DPI displays
+
+### v6.18.1 (Sun May 21 2023)
+* Fixed a bug that would cause you to be signed out of RHDC integration when launching Parallel Launcher from the Play Now button on the RHDC website
+* Updated Québécois French translations
+* Added missing Portuguese translations
+
+### v6.18.0 (Tue May 16 2023)
+* Added support for emulating the SD card interface on the SummerCart64 flash cart (thanks to devwizard for implementing this in the ParallelN64 emulator core)
+* Fixed a semi-rare bug in the RHDC integration that could cause you to suddenly be signed out of your RHDC account
+* Fixed a very rare crash that can happen when refreshing your list of ROMs or starting the program
+
+### v6.17.0 (Tue May 2 2023)
+* Added a search bar to both the classic and RHDC views
+* Added IS Viewer support to help in developing romhacks or homebrew. It can be enabled under the new Developer section of the Settings dialog.
+* Fixed a bug where new thumbnails failed to load in the RHDC view
+
+### v6.16.1 (Tue Apr 25 2023)
+* Fixed a bug that would cause users to be signed out of RHDC integration after about a week
+
+### v6.16.0 (Wed Apr 19 2023)
+* Added Portuguese translations (thanks to Lila)
+* RHDC integration: support accounts with multi-factor authentication
+
+### v6.15.2 (Sat Mar 18 2023)
+* Properly handle archived hack versions in the RHDC integration
+
+### v6.15.1 (Mon Mar 13 2023)
+* Fixed star layouts failing to download for RHDC hacks
+
+### v6.15.0 (Mon Mar 13 2023)
+* Updating Romhacking.com iconography
+* Update to latest Romhacking.com API
+* Fixed blurriness on MacOS when using a high DPI display
+
+### v6.14.1 (Fri Jan 20 2023)
+* Fixed a bug where the star display window could be larger than the desktop, making some content offscreen and inaccessible.
+
+### v6.14.0 (Fri Jan 20 2023)
+* When playing on an ARM Mac, the ARM build of ParallelN64 will now be used instead of needing to emulate the x86 build.
+
+### v6.13.0 (Thu Dec 15 2022)
+* When playing a hack in fullscreen with Widescreen (Viewport Hack) on, an aspect ratio of 16:10 will now be used instead of 16:9 if that more closely matches the aspect ratio of your monitor.
+* Similarly, the SteamDeck version will no longer use a 16:10 aspect ratio if it is connected to an external display with a different aspect ratio.
+* Fixed a bug where the Tab key could not be bound to a hotkey or virtual controller input
+* Updated the RetroArch build in the Flatpak version of Parallel Launcher
+
+### v6.12.3 (Sun Oct 23 2022)
+* Fixed a bug where removing the last group in the Manage Groups dialog and then clicking on Delete or Rename would result in a crash
+* Fixed a potential crash when updating emulator cores under certain conditions
+* Fixed a potential rare crash when the sqlite database is busy
+* Updated the sqlite library in the Windows version
+* Include debug symbols in the Linux version so that crash logs can include a backtrace
+
+### v6.12.2 (Mon Oct 17 2022)
+* Reverted the previous vsync change in the Windows version as it was causing issues for a few Windows users
+
+### v6.12.1 (Mon Oct 17 2022)
+* The vsync setting is now enabled by default
+
+### v6.12.0 (Wed Aug 10 2022)
+* The ParaLLEl plugin is now supported on MacOS (if your hardware supports it)
+* Updates specific to the MacOS version of Parallel Launcher will no longer require the Windows version to be updated, and vice versa
+
+### v6.11.1 (Tue Aug 9 2022)
+* Fixed OGRE modifications being applied when using GLideN64.
+
+### v6.11.0 (Fri Jul 29 2022)
+* Changed the default audio driver on Windows to DirectSound because XAudio2 was causing emulation to run muted at uncapped speed for a small percentage of Windows users.
+* The audio driver can now be set in Parallel Launcher settings under the Emulation tab in the Windows version.
+
+### v6.10.0 (Fri Jul 15 2022)
+* Changed the controller selection dialog when starting a singleplayer game with multiple controllers detected. You now only need to press any button on the controller you wish to use instead of having to select it from a list.
+* Added a metainfo file to the Linux packages for better integration with GUI package managers
+* Fixed a crash on the controller setup dialog when rapidly connecting and disconnecting a controller while using the JoyDev driver.
+
+### v6.9.4 (Mon Jun 20 2022)
+* Fixed misaligned icon and text for hack difficulty in the RHDC view
+* Fixed the window sometimes resizing itself vertically even when it doesn't actually need any more space
+* Fixed the plugin selection widget not resizing itself correctly when changing emulators
+* Fixed Québécois French not showing up the language selection
+
+### v6.9.3 (Mon Jun 13 2022)
+* Fixed crashes that can occur when multiple instances of Parallel Launcher are open at the same time
+* Fixed a crash when loading roms if the OS returns an error code when fetching the size of a rom file
+* Fixed a crash when clicking on the New/Edit Profile button in the controller select dialog if you somehow manage to have no controller profile selected
+* Fixed a bug where your selected controller profile for an input device could be reset when changing input drivers
+
+### v6.9.2 (Wed Jun 8 2022)
+* Fixed a crash that can occur when changing the controller input driver
+* Fixed long author lists causing the RHDC view window to expand very wide
+* Fixed the crash reporter not giving useful stack traces on Linux
+
+### v6.9.1 (Sat Jun 4 2022)
+* Fixed a crash when changing the RHDC download folder if the previous download location no longer exists
+* Fixed incorrect icon scaling for high DPI screens on MacOS
+* Fixed a missing maximize button on the ROM Sources window on Windows
+* [Telemetry] Fixed Windows 11 reporting itself as Windows 10
+* [Telemetry] Fixed the OS name and version not being reported correctly in the Flatpak version
+
+### v6.9.0 (Tue May 31 2022)
+* Added Arabic translations (thanks to Elazul for the translations)
+* Fixed missing translations for the input select dropdown
+* Fixed input binding not working on some newer Linux distros when using the SDL2 driver
+
+### v6.8.0 (Sat May 28 2022)
+* Parallel Launcher now submits crash reports and basic telemetry data (no kind of personal information is ever sent)
+
+### v6.7.0 (Wed May 25 2022)
+* Save files can now be shared between different versions of the same RHDC hack. (Requires Romhacking.com integration to be enabled)
+* Hacks can now be sorted by star count in the RHDC view
+* Fixed a bug in the classic view where a group that was collapsed would expand itself again after a refresh if the currently selected rom is in the group
+
+### v6.6.3 (Tue May 17 2022)
+* Fixed a crash when launching Parallel Launcher by clicking on a rom file that hasn't yet been seen by Parallel Launcher and isn't from RHDC
+
+### v6.6.2 (Sun May 15 2022)
+* Fixed the Now Playing window always appearing in the top left corner
+* Fixed the Now Playing window having its title bar offscreen on Windows
+
+### v6.6.1 (Thu May 12 2022)
+* Reverted to launching RetroArch with normal priority on Windows
+
+### v6.6.0 (Mon May 9 2022)
+* The "Widescreen (Viewport Hack)" option will now use 16:10 widescreen on the Steam Deck instead of 16:9, so it now fills the entire screen.
+
+### v6.5.0 (Sun May 8 2022)
+* Parallel Launcher will now always check romhacking.com for graphics plugin recommendations when finding new roms, even if RHDC Integration is disabled.
+* Disabled integer scaling for the ParaLLEl plugin. It will now always scale to fill the window.
+* Fixed the RHDC icon being tiny on high DPI displays
+* RetroArch is now launched with a higher process priority on the Windows version
+
+### v6.4.2 (Fri Apr 29 2022)
+* Fixed the GoldenEye input mode mapping the triggers incorrectly
+* Fixed icon-only buttons being too small on high dpi monitors
+* Removed the warning when starting Parallel Launcher in gaming mode on the Steam Deck
+
+### v6.4.1 (Sun Apr 24 2022)
+* Fixed a bug where opening a .bps patch from an external file browser would create a corrupted rom entry in the Parallel Launcher classic view
+* Removed the 'Automatically Added' category. Roms added by launching them from a file browser now just go into Uncategorized
+* Fixed a bug where the controller deadzone and sensitivity settings were not being applied for users whose locale settings use a comma instead of a period for the decimal separator.
+* Slightly changed the buttons in the controller selection and setup dialogs to be less confusing when creating a new profile from a default.
+
+### v6.4.0 (Tue Apr 19 2022)
+* Tweaked various things when playing on Steam Deck for a better user experience
+* Changed the layout of the RHDC view to be more horizontal
+* Enable Discord integration by default in the Flatpak version
+* Renamed the ParallelN64 core file to ensure RetroArch will never overwrite it
+* The Parallel Launcher window now has two separate sizes that it saves separately for the classic and RHDC views
+* Fixed a bug where the RHDC view would not remember your last selected ROM on startup
+* Fixed graphical bugs in the RHDC view when horizontally resizing the window
+* Fixed the last few controller mappings going to the wrong inputs when using Quick Configure
+
+### v6.3.0 (Mon Apr 18 2022)
+* Added a Flatpak version of Parallel Launcher
+* Tweaked some settings and behaviour when playing on Steam Deck for better usability
+* Added a setting to start the emulator in fullscreen mode
+
+### v6.2.1 (Mon Apr 4 2022)
+* Fixed a crash on startup on Windows and MacOS if the UI theme saved in the settings file is no longer installed
+
+### v6.2.0 (Wed Mar 30 2022)
+* Added support for emulated gamecube controllers (thanks to Wiseguy for implementing this in the ParallelN64 core)
+* Added N64 mouse support
+* Fixed incorrect text for save slots in the SM64 save file editor
+
+### v6.1.1 (Sun Mar 27 2022)
+* Fixed the Remove Black Borders option showing up everywhere when it should only be visible for the ParaLLEl plugin on ParallelN64
+* The Now Playing window now makes the star display scrollable so the window can be made smaller and will not be larger than the screen
+* Fixed the display of rom internal names containing dakuten and/or handakuten
+* Added an information bubble guiding the user to the RHDC view after RHDC integration is enabled
+* Removed the windowsvista style from the Windows themes because it does not get styled correctly
+* Removed the macintosh style from the MacOS themes because it does not get styled correctly
+
+### v6.1.0 (Fri Mar 25 2022)
+* Added a Dark Mode option to Windows and Mac
+* Added missing French and German translations
+* Updated ParallelN64 core
+*  * Added an option to remove the black borders on the sides when using the ParaLLEl plugin
+*  * Fixed a bug where the GLideN64 plugin would stop working for some Windows users when going fullscreen or disabling RetroArch notifications (thanks to aglab2 for this fix)
+*  * Fixed incorrect rendering of PAL roms in GLideN64 when framebuffer emulation is enabled
+
+### v6.0.0 (Tue Mar 22 2022)
+* Parallel Launcher now uses a custom build of the ParallelN64 core
+*  * Fixed inaccuracies with the Taz Express ROM
+*  * The EverDrive ROM header will now be respected for determining the save type of romhacks
+*  * The GLideN64 plugin is now supported on ParallelN64, and some rendering bugs have been fixed. (Huge thanks to aglab2 for bringing this plugin to ParallelN64)
+*  * A new graphics plugin has been added: OGRE (Offshoot GLideN64: Romhack Edition). This plugin is a modification (by aglab2) of the GLideN64 plugin that is designed to be compatible with older romhacks that don't work in the mainline version of GLideN64. This plugin should replace Glide64 and Rice in 95% of use cases.
+* Added a setting to show advanced rom options
+*  * The Overclock VI option is now an advanced option
+*  * Added an option to force the use of 16kB EEPROM save data
+*  * Added an option to use an interpreter core instead of the dynamic recompiler
+* Disabled the ParaLLEl graphics plugin on MacOS (it never actually worked before and instead just loaded the Glide64 plugin when selected)
+* The main window now has a smaller minimum size when in the classic view
+* Fixed the Now Playing window sometimes being bigger than it should be
+* Separated the French translations into Standard French and Québécois French (thanks to Naeso for the Standard French translations)
+
+### v5.12.1 (Tue Mar 15 2022)
+* Fixed rhdc:// links not always download the correct version of the hack
+
+### v5.12.0 (Sun Mar 13 2022)
+* Improved the advanced star layout format to support groups on the top and/or bottom that span both the left and right columns
+* Fixed star layouts not showing up when testing a star layout for a hack that is not yet on romhacking.com
+* Fixed star icons being cut off in the star layout tester window
+* Fixed vertical misalignments in the star layout displays
+* Fixed missing monospace font on Windows and Mac
+
+### v5.11.0 (Sat Mar 12 2022)
+* Added a joydev input driver to the Linux version
+* Added a default SDL profile for Switch Pro controllers
+* Fixed a bug with the star layout editor window suddenly growing unusably large on the Windows version because reasons
+
+### v5.10.3 (Thu Mar 10 2022)
+* Fixed controller names not being detected in the SDL driver on Windows
+* Fixed rhdc:// links not launching on MacOS if Parallel Launcher is already open
+
+### v5.10.2 (Sun Mar 6 2022)
+* Fixed play time and progress not being submitted to romhacking.com when
+		launching Parallel Launcher via an rhdc:// link
+* Fixed core info files being redownloaded more often than they need to be
+* Fixed the internal resolution being lower than it should be when using
+		widescreen on the Mupen64plus-Next core
+* Fixed the SDL input driver not working on the Windows version
+* Fixed the MacOS version not being able to launch rhdc:// links
+
+### v5.10.1 (Sat Mar 5 2022)
+* Fixed some rhdc:// links not launching correctly
+* Don't show the content loaded RetroArch notification
+* Fixed savestates not working on RetroArch 1.10.1 on Linux
+
+### v5.10.0 (Fri Mar 4 2022)
+* Changed the 'Reload ROM' button text to 'Hard Reset' and made the button always visible
+* Added an option to hide RetroArch notifications
+* Added an 'Add Single ROM' action to the ≡ menu that allows for a rom or patch to be quickly added without going through the ROM Sources dialog
+* Added a URL scheme handler that will allow for Parallel Launcher to be launched directly from romhacking.com (coming soon)
+* Fixed savestates not working on RetroArch 1.10.1
+* Fixed controller setup not working on Arch Linux if Parallel Launcher was installed via the AUR repo
+
+### v5.9.2 (Tue Mar 1 2022)
+* Fixed an error when attempting to install or update an emulator core on Windows if your Windows username contains non-ASCII characters
+
+### v5.9.1 (Fri Feb 25 2022)
+* Fixed RHDC romhacks failing to patch on Windows if the vanilla SM64 rom is located on an external drive
+* Fixed the font on Windows and Mac to be consistent with the Linux version
+* Fixed misaligned text in star layouts on the Windows version
+* Fixed the font size on the MacOS version
+* Fixed the font colour on selected hacks in the RHDC view on MacOS
+* Fixed missing icons on dialog buttons in the MacOS version
+* Made the MacOS version themeable and set the default theme to Fusion
+
+### v5.9.0 (Mon Feb 21 2022)
+* Added an option to use DirectInput8 as the controller input driver on Windows. If you have a controller that was not working correctly before, try switching to the DirectInput8 driver.
+* Fixed SVG images in star layouts not loading on MacOS
+* Ensure that the temporary directory is always cleared on shutdown on Linux
+* Corrected some German and Italian translations
+
+### v5.8.0 (Tue Feb 15 2022)
+* Added an option in settings that, when enabled, will add a Reload ROM button to the Now Playing window, allowing romhack creators to quickly reload their changes.
+* Fixed keyboard controls not being mapped correctly
+
+### v5.7.2 (Sat Feb 12 2022)
+* Fixed crash when unselecting a ROM or when launching the program without a rom having been previously selected
+
+### v5.7.1 (Fri Feb 11 2022)
+* The plugin previously listed as "GLideN64 [Old]" is actually gln64, the predecessor to GLideN64. This name has been corrected.
+* Altered controller binding method to allow opposite C buttons to be pressed at the same time
+* Fixed Gamecube controller mapping on Linux
+* The SDL library used by RetroArch no longer needs to be replaced on Linux
+
+### v5.7.0 (Sun Feb 6 2022)
+* Added a Widescreen (Viewport Hack) option when using GLideN64
+* Fixed a bug where the emulator could launch with a larger window size than it should
+* For RHDC hacks with a recommended plugin, show which plugin was recommended by the hack uploader
+* Added British English localization
+
+### v5.6.4 (Mon Jan 31 2022)
+* Fixed some toast messages not being displayed when they should
+* Fixed some issues handling ROMs that have a non-ASCII character in their file path on Windows
+* Fixed the application freezing when attempting to install the ParallelN64 core on MacOS
+
+### v5.6.3 (Sun Jan 23 2022)
+* Changed how the Now Playing / Star Display window is managed to make it behave better in screen capturing software such as OBS
+
+### v5.6.2 (Sat Jan 15 2022)
+* Locks the ParallelN64 emulator core to a specific version on MacOS, as newer builds are broken on this operating system. On MacOS, you will receive a prompt to update ParallelN64 regardless of your current update settings and should accept it. Other operating systems are not affected and will continue to update as usual.
+
+### v5.6.1 (Mon Jan 10 2022)
+* Changed the default star layout to have generic course names
+* Improved detection of MOP2 patch for plugin recommendations
+* Fixed one incorrect warning text in the Spanish translation
+* Fixed minor inconsistency in Spanish and German translations
+
+### v5.6.0 (Sun Jan 9 2022)
+* Added an option to display a default star layout for RHDC hacks if none is provided by the hack author. This is enabled by default, but can be disabled in the romhacking.com options if you prefer.
+
+### v5.5.3 (Fri Jan 7 2022)
+* Fixed a crash on startup when following a hack on RHDC that has no authors
+* Search in more places for Project64 save files
+
+### v5.5.2 (Wed Jan 5 2022)
+* Fixed a bug where downloading an RHDC hack from the classic view would install the oldest version instead of the latest version of the hack
+* Fixed a bug where the RHDC view would default to the oldest version of a hack instead of the latest version
+* Fixed warning text being unreadable on dark themes
+
+### v5.5.1 (Wed Jan 5 2022)
+* Fixed a bug where removing a hack from a list on the romhacking.com site then starting Parallel Launcher would re-add the hack to the list instead of removing it from the group in Parallel Launcher
+* Parallel Launcher will no longer automatically submit star progress for kaizo hacks that require video proof.
+
+### v5.5.0 (Mon Jan 3 2022)
+* Updated RHDC integration to use a newer more efficient API.
+
+### v5.4.4 (Fri Nov 26 2021)
+* Fixed a bug in the conversion of the legacy star layout format that would cause star layouts to not work for some hacks.
+
+### v5.4.3 (Sat Nov 20 2021)
+* Force both Parallel Launcher and RetroArch to use a specific version of the SDL library (fixes controller mapping issues).
+
+### v5.4.2 (Fri Nov 5 2021)
+* Fixed a bug in the Windows version when multiple controllers are connected that would cause the first controller in the list to be used instead of the one actually selected.
+
+### v5.4.1 (Wed Aug 25 2021)
+* Fixed a missing dependency in the Windows version that would cause all web requests to fail on certain Windows installations that don't have the expected C runtime.
+
+### v5.4.0 (Thu Aug 19 2021)
+* The Windows version will now automatically import your Project64 saves when a new rom is found if Project64 is installed to a standard location.
+* Added a way to test star layout files in Parallel Launcher
+* When downloading an RHDC hack with no recommended plugin, Rice will be selected by default if the hack uses the MOP2 patch.
+* Decreased the scroll speed of the hack list in the RHDC view
+* Fixed a bug where star layouts without a missing star icon set would not show uncollected stars at all
+
+### v5.3.0 (Wed Aug 18 2021)
+* Use a star display based save editor for RHDC hacks with a layout file
+* Added a Project64 save importer. To import your save data from Project64, right-click on a rom in the classic view (or click the ≡ button in the RHDC view) and select 'Import Project64 Save File'
+
+### v5.2.2 (Sun Aug 15 2021)
+* Fixed a bug where layouts for existing romhacks would be not automatically downloaded until another rom with a layout was downloaded.
+* Fixed a bug in the conversion of old layouts that could result in an extra star being added to every course
+
+### v5.2.1 (Wed Aug 11 2021)
+* Fixed Discord integration not working on Windows. It will still initially show RetroArch as the active game, but should now switch to Parallel Launcher after several seconds. The Linux and Mac versions will still work immediately.
+
+### v5.2.0 (Wed Aug 11 2021)
+* Added optional Discord integration to set your game status when playing roms. You can enable/disable this feature in Settings.
+* Controller binding is now fully functional on MacOS
+* Fixed unwanted padding in the UI on MacOS
+
+### v5.1.2 (Mon Aug 9 2021)
+* Fixed errors installing emulator cores and downloading hacks on the 64-bit Windows version when your username contains non-ASCII characters
+
+### v5.1.1 (Fri Aug 6 2021)
+* Fixed alignment of text in star display
+* Fixed the RHDC view button having a toggle state when it should not
+* Fixed the text in the RHDC view not changing colour when selected
+* The icons in the RHDC view are now coloured to match the text colour
+* Fixed incorrect spacing and font size in the RHDC view on MacOS
+
+### v5.1.0 (Fri Aug 6 2021)
+* Added support for a new star layout format
+* Fixed incorrect star display on hacks with the 8 star per level patch
+* Fixed misalignments in star display ui
+
+### v5.0.1 (Wed Aug 4 2021)
+* Fixed a bug that could cause some roms to not appear in the correct group/list after syncing with romhacking.com
+* Fixed a crash when clicking 'Open Containing Folder' in the classic view
+
+### v5.0.0 (Wed Aug 4 2021)
+* Added an alternate view to show only romhacking.com roms in a card list layout. You can switch between the classic view and the RHDC view by clicking on the rainbow star button.
+* When playing an RHDC hack that has a layout file, a live star display is shown in the Now Playing window tracking the stars you have collected. This view updates when your save file does.
+* You can now override the application language in Settings
+* Added German translations (thanks to Kate "CommandMC" Dröge)
+* Added French translations (thanks to max954)
+* You can now bind the left and right modifier keys (Shift, Ctrl, etc.) separately on Windows and Linux.
+* Fixed a bug where keyboard bindings would not be set correctly when using a non-English keyboard layout
+* Fixed an error when double-clicking a rom in the classic view that hasn't been downloaded yet
+* Removes the 'Sync Groups' option in RHDC settings. Your Parallel Launcher groups are now always synced with your hack lists on romhacking.com.
+
+### v4.6.3 (Sat Jul 17 2021)
+* Fixed a crash when selecting an RHDC rom that has Glide64 or Rice as its recommended plugin
+* Changed sorting of roms to be case insensitive
+* Show more information in the error message when a download fails
+
+### v4.6.2 (Wed Jun 30 2021)
+* Fixed a bug where the internal rom name would be empty for hacks downloaded from romhacking.com
+* Fixed a bug where names of already existing roms would not update when linked with romhacking.com
+* Fixed a bug where some translations were not being used on the Windows version of Parallel Launcher
+
+### v4.6.1 (Tue Jun 29 2021)
+* Fixed a bug where hacks that require user authentication to access could not be downloaded
+* Fixed missing translations on the Windows and Mac versions
+* Fixed missing button icons on the Windows and Mac versions
+
+### v4.6.0 (Tue Jun 29 2021)
+* RHDC Integration no longer requires all hacks to be immediately downloaded. All followed hacks now show up and can be downloaded on demand.
+* Fixed translations not working on the Windows version
+* Updated some of the Spanish translations
+
+### v4.5.0 (Sun Jun 27 2021)
+* Added a checkbox for whether or not the emulator should pause when it loses focus (defaults to no pause)
+* Added Spanish translations (Thanks to Daniel "Reonu" León)
+* Fixed a bug where the 'Emulate N64 Depth Compare' checkbox for GLideN64 didn't correctly save your choice
+
+### v4.4.2 (Sat Jun 26 2021)
+* Fixed the quality slider in the RHDC rating dialog incorrectly altering the difficulty rating descriptions
+* Fixed missing Italian translations in the Debian version
+* Fixed missing RetroArch assets in the MacOS version
+* Fixed the default XBox360 controller profile on MacOS
+
+### v4.4.1 (Fri Jun 25 2021)
+* Fixed radio buttons for plugin selection becoming squished and cut off when the window is too small
+* Fixed text being cut off in the RHDC integration settings if the window is too small
+
+### v4.4.0 (Wed Jun 23 2021)
+* Your play time is now synced with RHDC if you have romhacking.com integration enabled
+
+### v4.3.0 (Mon Jun 21 2021)
+* Released a MacOS version!
+* Added Italian translations (thanks to Luigi "JakeDower" Orabona)
+* Fixed a bug that caused the automatic plugin detection to suggest the wrong plugin
+* Fixed a bug where a previously empty rom list would remain empty after downloading hacks from romhacking.com until the program was restarted or a rom was added via another source
+
+### v4.2.0 (Sun Jun 13 2021)
+* When downloading a hack from romhacking.com, automatically select the recommended plugin if it has one
+* Added an error log viewer accessible by pressing F7 on the main window
+
+### v4.1.2 (Wed Jun 9 2021)
+* Fixed a plugin setting being configured incorrectly (fixes the bowser/peach painting in Super Mario 64 not transitioning correctly when using the ParaLLEl plugin)
+
+### v4.1.1 (Sat Jun 5 2021)
+* Fixed major graphical errors when disabling GLideN64 framebuffer emulation when anti-aliasing is enabled
+* Prevent GLideN64 N64 Depth Compare from being enabled when framebuffer emulation is disabled
+
+### v4.1.0 (Sat Jun 5 2021)
+* The widescreen checkbox will now be on the same line as the others if the window is wide enough
+* Changed the broken GLideN64 anti-aliasing settings to an FXAA toggle
+* Correctly stylized GlideN64 as GLideN64
+* Added an option for whether ParaLLEl should upscale TEXRECTs or not
+* Added on option for whether or not to enable framebuffer emulation in GLideN64
+* The two above options as well as the existing N64 Depth Compare option for GLideN64 can now be set per rom instead of just globally
+
+### v4.0.0 (Tue Jun 1 2021)
+* If no controller is connected when you launch a rom, the controller bindings from the last used controller profile are used
+* Added preliminary integration with romhacking.com:
+*  * You can enable it by clicking 'Enable romhacking.com integration' in the ≡ menu
+*  * Your followed hacks are automatically downloaded and patched
+*  * You can optionally sync your groups in Parallel Launcher with your lists on romhacking.com
+*  * Star progress is automatically submitted to romhacking.com when you finish playing a rom
+*  * Parallel Launcher attempts to guess the appropriate graphics plugin to use when downloading a hack from romhacking.com
+*  * You can rate a hack from Parallel Launcher by right-clicking on it in your rom list and selecting 'Rate Hack'
+*  * Hacks that do not have stars can be marked as complete from the right-click menu
+
+### v3.2.1 (Mon May 24 2021)
+* Fixed a potential crash on startup if the database gets into a bad state
+* Fixed groups being lost when a rom is updated
+* Fixed unnecessary recalculation of rom checksums (rom scanning should be faster now)
+* Fixed group renaming not always working correctly
+* Fixed sorting by name not working
+
+### v3.2.0 (Sun May 23 2021)
+* Added a right-click option to rename a rom in Parallel Launcher
+* Fixed the 'Delete ROM' right-click action not working
+* Fixed all groups collapsing after playing a rom when sorting by play time
+* Fixed empty groups continuing to show up after they are deleted
+
+### v3.1.1 (Sat May 22 2021)
+* Fixed infinite loading bar when roms are removed and no new or changed roms are found
+* Fixed crash on Windows when looking for a rom that is on a network drive or WSL environment that no longer exists
+* Fixed rom names not updating when a rom file is renamed
+* Fixed a crash when multiple rom files have the same checksum and one of them is updated but the other is not
+
+### v3.1.0 (Fri May 21 2021)
+* Switched rom storage from a json file to a sqlite database
+* The application should now be more responsive when you have a large number of roms
+* Parallel Launcher is now smarter at tracking roms:
+*  * Moving a ROM from one location to another will no longer result in your play time and plugin settings being lost
+*  * If a ROM is deleted, but later restored, your play time and settings are restored
+*  * Manually added rom paths are automatically cleaned up when the rom is moved or deleted
+*  * If two rom files are identical, their settings and play time are synced
+* Fixed a bug where resetting your RetroArch config could result in the assets directory being incorrect
+* Your controllers with rumble disabled now emulate having a memory pak inserted instead of nothing
+
+### v3.0.3 (Tue May 18 2021)
+* Fixed a regression in version 3.0.0 that could cause controllers to bind incorrectly or not at all on Linux when multiple controllers are connected
+* The Windows version now supports Windows 7 as well
+
+### v3.0.2 (Sat May 8 2021)
+* Prevent accidentally created game overrides in RetroArch from overriding your Parallel Launcher settings
+* Suppress the double controller binding notifications when launching RetroArch
+
+### v3.0.1 (Sat May 8 2021)
+* Fixed a bug on the Linux version where a successful first installation of RetroArch would incorrectly be reported as a failure
+* Fixed a bug where launching a ROM or patch file from your file browser rather than the Parallel Launcher UI would result in your total play time being reset
+
+### v3.0.0 (Fri May 7 2021)
+* RetroArch is now automatically installed and updated by Parallel Launcher. This RetroArch install is separate from your system-wide or user installation, so if you previously installed RetroArch and only use it for Parallel Launcher, you can now safely uninstall it.
+* Double-clicking a ROM will now launch it
+
+### v2.10.1 (Sat May 1 2021)
+* Fixed an oddly specific bug on Windows where if an XBox One controller connected to a dongle with 5GHz WiFi was turned off (either manually or by inactivity) while Parallel Launcher is running, it would turn itself off again whenever launching a ROM or entering the controller configuration screen.
+
+### v2.10.0 (Mon Apr 26 2021)
+* Allow binding controller inputs to Fast Forward and Slow Motion
+* Added an automatic core updater
+* Added an 'Open Containing Folder' option to the rom list right-click menu
+* Added a 'Delete ROM' option to the rom list right-click menu
+
+### v2.9.0 (Sun Apr 11 2021)
+* Exposed more graphics plugin settings through Parallel Launcher
+* Improved the default settings for some graphics plugins
+* Added a button in settings to reset your RetroArch config
+* Slightly improved performance when the list of ROMs is very large
+
+### v2.8.0 (Thu Apr 8 2021)
+* The settings dialog is now categorized and more compact
+* You can now set a folder to put patched roms in when loading a bps patch
+* In future updates, the Windows installer will no longer require manually clicking through it when doing an update.
+* When opening a new rom or patch file from your file browser, it is no longer added to your explicit rom list if it is already covered by an existing rom search path.
+* Fixed a bug in the Windows version where the file dialog to add a specific rom or to apply a BPS patch would not work when selecting (a) file(s) in a WSL directory.
+* Fixed a bug in the Windows version where roms could not be added if their file path contains characters not in the Latin1 character set.
+
+### v2.7.2 (Sat Apr 3 2021)
+* Fixed inputs not working in RetroArch version 1.9.1
+* Fixed the D-Pad not working on certain controllers
+* Fixed broken rom names on Windows when a ROM contains non-ASCII characters
+* Fixed explicit x4 and x8 ParaLLEl scaling not working
+* Added a default controller profile for USB N64 controllers
+
+### v2.7.1 (Tue Mar 30 2021)
+* Fixed a bug where the Windows version of Parallel Launcher would sometimes fail to detect RetroArch even though it is installed in the correct location
+* Parallel Launcher now searches in more locations for RetroArch before asking the user to provide the path
+
+### v2.7.0 (Mon Mar 29 2021)
+* Added support for widescreen mode
+
+### v2.6.0 (Mon Mar 22 2021)
+* Parallel Launcher will now offer to install emulator cores for you, removing the need to manually install them in RetroArch first
+
+### v2.5.0 (Sun Mar 21 2021)
+* Fixed a bug where launching Parallel Launcher by clicking on a ROM file would not work correctly in some file browsers on Linux
+* Show a warning when using the outdated GlideN64 plugin on ParallelN64
+* Changed the behaviour of Parallel Launcher when launched by clicking on a ROM in the file browser to now exit when the ROM is closed
+* Fixed RetroArch crashing when using the mupen64plus-next core
+
+### v2.4.0 (Thu Mar 18 2021)
+* Added an Input Mode option to allow for dual analog input that maps to two N64 controllers
+
+### v2.3.1 (Mon Mar 15 2021)
+* Fixed HTML characters not rendering correctly in file paths or internal ROM names
+
+### v2.3.0 (Mon Mar 15 2021)
+* Fixed .bps files not being associated with Parallel Launcher on Linux
+* Added an automatic updater to the Windows version
+
+### v2.2.0 (Sat Mar 13 2021)
+* Parallel Launcher now supports automatically patching .bps files onto known ROMs
+* Fixed the 'Last Played' field giving incorrect dates on the Windows version
+* Fixed an error when loading the ROM list if a ROM has a nul character in its internal name
+
+### v2.1.3 (Tue Mar 9 2021)
+* Fixed a bug where the internal rom name would be scrambled for roms not in big-endian format
+* Internal rom names now update when the rom file is modified
+
+### v2.1.1 (Tue Mar 9 2021)
+* Fixed a bug where the internal ROM name could have the last character cut off
+
+### v2.1.0 (Tue Mar 9 2021)
+* Added an optional column to display the internal name of each ROM
+* Support adding individual ROMs instead of just search directories
+* When opening a new ROM in Parallel Launcher, add it to the list of known ROMs
+* When opening a known ROM in Parallel Launcher, immediately play the ROM in the preferred emulator
+* Prevent a controller input from being inadvertantly mapped to C Button Mode
+* Fixed potential issue with file paths containing non-ASCII characters
+
+### v2.0.2 (Sun Feb 7 2021)
+* Fixed controller profiles not saving when using a locale that uses a comma as the decimal separator
+
+### v2.0.1 (Wed Feb 3 2021)
+* Fixed Kill Emulator button not working on Linux when using the Flatpak install of RetroArch
+* The Windows version is now compiled with MSVC
+* Fixed potential crash when searching for ROMs in the Windows version
+
+### v2.0.0 (Mon Jan 18 2021)
+* Split 'Optimize for Performance' checkbox into two separate options
+* Added support for the Mupen64Plus-Next emulator!
+
+### v1.2.1 (Sat Jan 16 2021)
+* Fixed a bug where certain controller types could have their control scheme changed and attempting to bind to an axis would result in a crash
+
+### v1.2.0 (Thu Nov 26 2020)
+* Improved performance of recursive ROM searches, especially on Linux
+* Don't force integer scaling on HLE plugins
+* Fixed potential crash when refreshing the ROM list while it is already in the process of refreshing
+* Show a loading bar when refreshing the ROM list
+
+### v1.1.0 (Wed Nov 11 2020)
+* Support configuration of hotkeys and keyboard controls from within Parallel Launcher
+* Removed the warning when launching a ROM with no controllers plugged in
+
+### v1.0.2 (Fri Nov 6 2020)
+* Fixed the ROM Source manager not handling WSL directories on Windows
+
+### v1.0.1 (Mon Nov 2 2020)
+* Fixed controller binds for saving and loading states not working
+* Fixed the text entry in the Auto option for ParaLLEl upscaling not updating correctly
+
+### v1.0.0 (Sat Oct 31 2020)
+* Initial Release
