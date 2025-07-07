@@ -1,4 +1,4 @@
-# Maintainer: Aleksey Steapanov <blueingreen@bluig.xyz>
+# Maintainer: Aleksey Stepanov <blueingreen@bluig.xyz>
 
 _pkgname=inhibit-bridge
 pkgname="${_pkgname}-git"
