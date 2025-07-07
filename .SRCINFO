@@ -1,10 +1,11 @@
 pkgbase = calf-no-gui
 	pkgdesc = LV2 plug-in suite and standalone Jack host - GUI disabled
-	pkgver = 0.90.5
-	pkgrel = 2
+	pkgver = 0.90.8
+	pkgrel = 1
 	url = https://calf-studio-gear.org
 	arch = x86_64
-	license = LGPL-2.1-only
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
 	makedepends = cmake
 	makedepends = lv2
 	depends = expat
@@ -12,7 +13,7 @@ pkgbase = calf-no-gui
 	depends = jack
 	provides = calf
 	conflicts = calf
-	source = https://github.com/calf-studio-gear/calf/archive/refs/tags/0.90.5.tar.gz
-	sha512sums = af694c09b063c83ea475aa500ad9fc1fc44f7ca3a612952f0d74ca384c6ef993ff7b61c9d54122450966304d6f5f4e6a60e5a62a415ee09d75c66108063a5f70
+	source = https://github.com/calf-studio-gear/calf/archive/refs/tags/0.90.8.tar.gz
+	sha512sums = a90e4780ee9006b450525d90142f325e7d93594c875984bd2590964e9a45a68daeaa35bcc68c7c0806ba39fc28ef79250744c3406647906447ce43b238cbd432
 
 pkgname = calf-no-gui
