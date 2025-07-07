@@ -1,0 +1,11 @@
+pkgbase = mikey-7x-abd57
+	pkgdesc = CLI launcher for Project Synapse EEG decoder
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = custom
+	depends = python
+	depends = wget
+	depends = curl
+
+pkgname = mikey-7x-abd57
