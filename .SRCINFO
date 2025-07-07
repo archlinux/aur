@@ -1,10 +1,10 @@
 pkgbase = pbzx
 	pkgdesc = stream parser for OS X payloads in .pkg files (Niklas Rosenstein's fork)
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NiklasRosenstein/pbzx
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = xar
 	depends = xz
 	optdepends = cpio: postprocessing of the extracted archive
@@ -12,4 +12,3 @@ pkgbase = pbzx
 	sha256sums = 33db3cf9dc70ae704e1bbfba52c984f4c6dbfd0cc4449fa16408910e22b4fd90
 
 pkgname = pbzx
-
