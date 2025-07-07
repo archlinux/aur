@@ -1,12 +1,10 @@
 # Maintainer:
 # Contributor: easymodo <easymodofrf@gmail.com>
 
-: ${_use_sodeps:=false}
-
 _pkgname="qimgv"
 pkgname="$_pkgname-git"
 pkgver=1.0.2.r170.g34f8b43
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt image viewer with video playback"
 url="https://github.com/easymodo/qimgv"
 license=('GPL-3.0-or-later')
@@ -63,18 +61,5 @@ build() {
 }
 
 package() {
-  if [[ "${_use_sodeps::1}" == "t" ]]; then
-    eval "depends+=(
-      'libQt6Core.so'
-      'libQt6Gui.so'
-      'libQt6OpenGLWidgets.so'
-      'libQt6PrintSupport.so'
-      'libQt6Svg.so'
-      'libQt6Widgets.so'
-      'libopencv_core.so'
-      'libopencv_imgproc.so'
-    )"
-  fi
-
   DESTDIR="$pkgdir" cmake --install build
 }
