@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.2.1
+Name=TWLauncher
+StartupNotify=true
+TryExec=twlauncher
+Exec=twlauncher
+Terminal=false
+Icon=/opt/twlauncher/twlauncher.png
+Type=Application
+Categories=Games
