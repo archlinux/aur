@@ -1,0 +1,20 @@
+pkgbase = bytes-radar
+	pkgdesc = A fast code analysis tool for remote repositories with multi-platform support. Serverless optimized.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/zmh-program/bytes-radar
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = cargo
+	provides = bradar
+	source = bytes-radar-0.6.0.tar.gz::https://github.com/zmh-program/bytes-radar/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 83abaf9ceea378070549d59f1d7f6ea74cdb5a1823c9891558eed5d80ac4a41b
+
+pkgname = bytes-radar
