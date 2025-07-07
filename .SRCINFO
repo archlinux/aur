@@ -1,8 +1,8 @@
 pkgbase = python-langgraph-sdk
 	pkgdesc = SDK for interacting with LangGraph API.
 	pkgver = 0.1.72
-	pkgrel = 1
-	url = https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint
+	pkgrel = 2
+	url = https://github.com/langchain-ai/langgraph/tree/main/libs/sdk-py
 	arch = any
 	license = MIT
 	makedepends = python-hatchling
