@@ -2,12 +2,12 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver
-pkgver=1.17.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) driver'
 arch=('x86_64')
 url='https://github.com/intel/linux-npu-driver/'
-license=('MIT' 'BSD-3-Clause')
+license=('BSD-3-Clause AND MIT')
 depends=(
     'gcc-libs'
     'glibc'
@@ -27,17 +27,15 @@ source=("git+https://github.com/intel/linux-npu-driver.git#tag=v${pkgver}"
         'git+https://github.com/openvinotoolkit/vpux_plugin_elf.git'
         'git+https://android.googlesource.com/platform/external/perfetto.git'
         '10-intel-npu.rules'
-        '010-intel-npu-driver-fix-libdrm-header.patch'
-        '020-intel-npu-driver-rename-installed-binaries.patch'
-        '030-intel-npu-driver-disable-gtest-and-yaml.patch'
-        '040-intel-npu-driver-fix-firmware-install-path.patch'
-        '050-intel-npu-driver-use-system-level-zero.patch')
-sha256sums=('ae4b4e88bae64903b05e6f0dbdcc1c76604c978262893c38891b2ed8d03b220a'
+        '010-intel-npu-driver-rename-installed-binaries.patch'
+        '020-intel-npu-driver-disable-gtest-and-yaml.patch'
+        '030-intel-npu-driver-fix-firmware-install-path.patch'
+        '040-intel-npu-driver-use-system-level-zero.patch')
+sha256sums=('f1abf279263700b69e0af23202c1e20a9046fab326fe43b520a6476e5d571455'
             'SKIP'
             'SKIP'
             'SKIP'
             '592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe'
-            '5b6f0d482c1597c72dc37b16378f5c3891e8744e10f75e4a2f6784f13d6e0469'
             'cb63bccfcd662dafb5c4e1013ede4ea741bd33dadb87cf06a05be29bc1c3e892'
             '861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8'
             'c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825'
@@ -53,11 +51,10 @@ prepare() {
     git -C linux-npu-driver config --local submodule.third_party/perfetto.url "${srcdir}/perfetto"
     git -C linux-npu-driver -c protocol.file.allow='always' submodule update
     
-    patch -d linux-npu-driver -Np1 -i "${srcdir}/010-intel-npu-driver-fix-libdrm-header.patch"
-    patch -d linux-npu-driver -Np1 -i "${srcdir}/020-intel-npu-driver-rename-installed-binaries.patch"
-    patch -d linux-npu-driver -Np1 -i "${srcdir}/030-intel-npu-driver-disable-gtest-and-yaml.patch"
-    patch -d linux-npu-driver -Np1 -i "${srcdir}/040-intel-npu-driver-fix-firmware-install-path.patch"
-    patch -d linux-npu-driver/third_party/level-zero-npu-extensions -Np1 -i "${srcdir}/050-intel-npu-driver-use-system-level-zero.patch"
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/010-intel-npu-driver-rename-installed-binaries.patch"
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/020-intel-npu-driver-disable-gtest-and-yaml.patch"
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/030-intel-npu-driver-fix-firmware-install-path.patch"
+    patch -d linux-npu-driver/third_party/level-zero-npu-extensions -Np1 -i "${srcdir}/040-intel-npu-driver-use-system-level-zero.patch"
 }
 
 build() {
