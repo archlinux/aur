@@ -5,9 +5,11 @@
 # prevent git-lfs error
 export GIT_LFS_SKIP_SMUDGE=1
 
+: ${_build_usd:=false}
+
 _pkgname="f3d"
 pkgname="$_pkgname-git"
-pkgver=2.5.0.r13.g0e0b9b0
+pkgver=3.1.0.r140.g041870f
 pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 url="https://github.com/f3d-app/f3d"
@@ -17,26 +19,20 @@ arch=('x86_64')
 depends=(
   alembic
   assimp
-  boost-libs
   draco
-  fmt
-  glew
   hicolor-icon-theme
   libxcursor
   netcdf
-  nlohmann-json
   onetbb
   opencascade
   openexr
+  openmp
+  openvdb
   ospray
-  pugixml
   python
-  usd
-  verdict
   vtk
 )
 makedepends=(
-  boost
   cmake
   eigen
   fast_float
@@ -44,16 +40,20 @@ makedepends=(
   help2man
   jdk-openjdk
   ninja
-  openmp
+  nlohmann-json
   pybind11
-  python
   utf8cpp
 )
 optdepends=(
   java-runtime
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+if [[ "${_build_usd::1}" == "t" ]]; then
+  depends+=(usd)
+  makedepends+=(cuda)
+fi
+
+provides=("$_pkgname=${pkgver%%.g*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -77,15 +77,16 @@ build() {
     -DF3D_BINDINGS_JAVA=ON
     -DF3D_BINDINGS_PYTHON=ON
     -DF3D_LINUX_GENERATE_MAN=ON
-    -DF3D_MODULE_EXTERNAL_RENDERING=ON
     -DF3D_MODULE_RAYTRACING=ON
     -DF3D_MODULE_EXR=ON
     -DF3D_PLUGINS_STATIC_BUILD=ON
     -DF3D_PLUGIN_BUILD_ALEMBIC=ON
     -DF3D_PLUGIN_BUILD_ASSIMP=ON
     -DF3D_PLUGIN_BUILD_DRACO=ON
+    -DF3D_PLUGIN_BUILD_HDF=ON
     -DF3D_PLUGIN_BUILD_OCCT=ON
-    -DF3D_PLUGIN_BUILD_USD=ON
+    -DF3D_PLUGIN_BUILD_USD=${_build_usd}
+    -DF3D_PLUGIN_BUILD_VDB=ON
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
