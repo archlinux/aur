@@ -1,0 +1,20 @@
+pkgbase = python-pytest-watcher
+	pkgdesc = Automatically rerun your tests on file modifications.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/olzhasar/pytest-watcher
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-freezegun
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-watchdog
+	source = https://github.com/olzhasar/pytest-watcher/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = b3620268c0d8fed5693de2868d7fc2d3454db4d6571eada05b5ca80524a336df
+
+pkgname = python-pytest-watcher
