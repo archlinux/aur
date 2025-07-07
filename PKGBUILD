@@ -6,7 +6,7 @@ pkgname='python-ssort-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.15.0.r0.g2dd40ba
-pkgrel=0
+pkgrel=1
 pkgdesc='Tool for automatically sorting python statements within a module (development version)'
 arch=('any')
 url="https://github.com/bwhmather/$_srcname"
@@ -18,7 +18,7 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python>3.8'
+  'python>=3.9'
   'python-pathspec'
 )
 source=("git+$url.git")
