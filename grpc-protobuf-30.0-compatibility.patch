@@ -1,0 +1,29 @@
+From 7963d50dcbd93a8669d14d1249f1614739105cd4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?L=C3=A1szl=C3=B3=20V=C3=A1rady?= <laszlo.varady@anno.io>
+Date: Mon, 7 Jul 2025 14:46:53 +0200
+Subject: [PATCH] grpc: protobuf 30.0 compatibility
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: László Várady <laszlo.varady@anno.io>
+---
+ modules/grpc/common/filterx/protobuf-field-converter.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/grpc/common/filterx/protobuf-field-converter.cpp b/modules/grpc/common/filterx/protobuf-field-converter.cpp
+index 107f76363..cd8f7524a 100644
+--- a/modules/grpc/common/filterx/protobuf-field-converter.cpp
++++ b/modules/grpc/common/filterx/protobuf-field-converter.cpp
+@@ -684,7 +684,7 @@ public:
+       {
+         Message *elem_message = reflectors.reflection->MutableRepeatedMessage(message, reflectors.field_descriptor, i);
+ 
+-        const std::string &field_name = reflectors.field_descriptor->name();
++        const std::string field_name = std::string(reflectors.field_descriptor->name());
+         ProtoReflectors elem_reflectors(*message, field_name);
+         ProtobufFieldConverter *converter = get_protobuf_field_converter(elem_reflectors.field_type);
+ 
+-- 
+2.50.0
+
