@@ -4,9 +4,11 @@ pkgbase = globalping-cli
 	pkgrel = 1
 	url = https://github.com/jsdelivr/globalping-cli
 	arch = x86_64
-	license = Mozilla Public License 2.0
+	license = MPL-2.0
 	makedepends = git
 	makedepends = go
+	conflicts = globalping-cli
+	conflicts = globalping-cli-cli
 	source = globalping-cli::git+https://github.com/jsdelivr/globalping-cli.git#tag=v1.5.0
 	sha256sums = f3c756d8e414a7d30538f38db5a5d74f61b90fa4688b4fd24523fafc259a5c14
 
