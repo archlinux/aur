@@ -1,7 +1,5 @@
-# Maintainer: Brian Thompson <brianrobt@pm.me>
-
 pkgname=stable-diffusion.cpp-vulkan-git
-pkgver=r211.10c6501
+pkgver=r238.6d84a30
 pkgrel=1
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=("MIT")
@@ -19,7 +17,7 @@ makedepends=(
 )
 arch=("x86_64")
 url="https://github.com/leejet/stable-diffusion.cpp"
-provides=("stable-diffusion.cpp" "libstable-diffusion.so")
+provides=("stable-diffusion.cpp")
 conflicts=("stable-diffusion.cpp")
 source=("git+https://github.com/leejet/stable-diffusion.cpp.git"
         "git+https://github.com/ggerganov/ggml.git"
@@ -64,7 +62,6 @@ package() {
     install -Dm644 stable-diffusion.cpp/LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # Remove ggml contents
-    rm -r "$pkgdir/usr/bin/vulkan-shaders-gen" \
-          "$pkgdir/usr/include" \
+    rm -r "$pkgdir/usr/include" \
           "$pkgdir/usr/lib/libggml.a"
 }
