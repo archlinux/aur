@@ -45,34 +45,27 @@ prepare() {
     sed -i "s/1.0.0-local/$git_tag/" "packages/app-lib/Cargo.toml"
     sed -i "s/1.0.0-local/$git_tag/" "apps/app-frontend/package.json"
 
+    export COREPACK_ENABLE_STRICT=0
+    pnpm install
+
     cd "$srcdir/code/apps/app"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$CARCH-unknown-linux-gnu"
-
-    cd "$srcdir/code/apps/app-frontend"
-    export COREPACK_ENABLE_STRICT=0
-    pnpm install
 }
 
 build() {
-    cd "$srcdir/code/apps/app-frontend/"
-
-    export COREPACK_ENABLE_STRICT=0
-    pnpm build
-
-    cd "$srcdir/code/apps/app"
+    cd "$srcdir/code"
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
-    cargo build --frozen --release
-    #pnpm tauri build --no-bundle
-    #pnpm tauri build --bundles none
+    export COREPACK_ENABLE_STRICT=0
+    pnpm --filter=@modrinth/app run tauri build --config tauri-release.conf.json --no-bundle
 }
 
 package() {
     install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
-    install -Dm755 "$srcdir"/code/apps/app/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
+    install -Dm755 "$srcdir"/code/apps/app/target/release/ModrinthApp "$pkgdir"/opt/modrinth-app/modrinth-app
     
     install -Dm644 "$srcdir"/code/apps/app/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
     install -Dm644 "$srcdir"/code/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
