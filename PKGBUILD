@@ -1,9 +1,9 @@
-# Maintainer: Azure Zeng (weedycn at outlook dot com)
+# Maintainer: DeepChirp <DeepChirp@outlook.com>
 # Contributor: LockRim <lockrim@qq.com>
 # Contributor: shniubobo <shniubobo at outlook dot com>
 # Contributor: Howard Cheung <mail@h-cheung.cf>
 # Contributor: AlprC <alprcyan@gmail.com>
-# Contributor: DeepChirp <DeepChirp@outlook.com>
+# Contributor: Azure Zeng (weedycn at outlook dot com)
 
 pkgname=rime-pinyin-moegirl
 pkgver=20250610
