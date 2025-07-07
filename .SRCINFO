@@ -1,6 +1,6 @@
 pkgbase = microsoft-copilot-nativefier
 	pkgdesc = Microsoft Copilot desktop app (electron)
-	pkgver = 34.2.0
+	pkgver = 36.7.0
 	pkgrel = 1
 	url = https://copilot.microsoft.com
 	arch = armv7l
