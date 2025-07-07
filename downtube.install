@@ -1,0 +1,34 @@
+# Arquivo: downtube.install
+
+# post_install() é executado após a instalação do pacote.
+post_install() {
+  echo "O Downtube foi instalado com sucesso!"
+  echo "Para iniciar o serviço, execute: sudo systemctl start downtube.service"
+  echo "Para habilitar o serviço para iniciar no boot, execute: sudo systemctl enable downtube.service"
+  echo "Para executar o aplicativo manualmente, use: node /usr/share/downtube/archives/server.js"
+  # Recarrega o daemon do systemd para reconhecer a nova unidade de serviço
+  systemctl daemon-reload
+}
+
+# post_upgrade() é executado após a atualização do pacote.
+post_upgrade() {
+  echo "O Downtube foi atualizado!"
+  # Recarrega o daemon do systemd após uma atualização, caso a unidade de serviço tenha mudado
+  systemctl daemon-reload
+  # Reinicia o serviço se ele estiver ativo, para aplicar as mudanças
+  systemctl restart downtube.service || true
+}
+
+# pre_remove() é executado antes da remoção do pacote.
+pre_remove() {
+  echo "Desabilitando e parando o serviço Downtube antes da remoção..."
+  systemctl disable downtube.service || true
+  systemctl stop downtube.service || true
+}
+
+# post_remove() é executado após a remoção do pacote.
+post_remove() {
+  echo "O Downtube foi removido."
+  # Recarrega o daemon do systemd após a remoção
+  systemctl daemon-reload
+}
