@@ -1,0 +1,18 @@
+pkgbase = python-langgraph-sdk
+	pkgdesc = SDK for interacting with LangGraph API.
+	pkgver = 0.1.72
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-httpx
+	depends = python-orjson
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-sdk/langgraph_sdk-0.1.72.tar.gz
+	sha256sums = 396d8195881830700e2d54a0a9ee273e8b1173428e667502ef9c182a3cec7ab7
+
+pkgname = python-langgraph-sdk
