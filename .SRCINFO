@@ -1,0 +1,15 @@
+pkgbase = gofarsi-bin
+	pkgdesc = Free Persian Go programming language book
+	pkgver = 6.1.4
+	pkgrel = 1
+	url = https://github.com/GoFarsi/book
+	arch = x86_64
+	arch = aarch64
+	license = CC0-1.0
+	provides = gofarsi
+	provides = gofarsi-book
+	conflicts = gofarsi-book
+	source = book_6.1.4_linux_amd64.deb::https://github.com/GoFarsi/book/releases/download/v6.1.4/book_6.1.4_linux_amd64.deb
+	sha256sums = ea7727b1588b958990421622a57001daf719b7282a02acac057265438881f375
+
+pkgname = gofarsi-bin
