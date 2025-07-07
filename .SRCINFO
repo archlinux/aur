@@ -51,6 +51,6 @@ pkgbase = python-ray
 	optdepends = python-rich: for ray[rllib]
 	conflicts = mesa-demos
 	source = ray-ray-2.47.1.tar.gz::https://github.com/ray-project/ray/archive/ray-2.47.1.tar.gz
-	sha512sums = def3162ab2ae46753a57d8a1d4dd57df46705468a18ec7d320ff4998a6099850efafec456af81ca44ce04a83bf7d1c83c6cf4177dff9836ee0ee8af89296e893
+	sha512sums = 1a99ee03009fa1ad8cfe14be9b8687b53bf7d472286c5d7c1b6ae41e45125d9486fb86eb8e78124b330033ff8b512aba83c4df6b1fa25a060f1e7d463abd9e49
 
 pkgname = python-ray
