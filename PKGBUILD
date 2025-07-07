@@ -5,13 +5,17 @@
 pkgname=python-laspy
 pkgdesc="Pythonic interface for .LAS LIDAR files"
 url="https://github.com/laspy/laspy"
-pkgver=2.5.4
+pkgver=2.6.0
 pkgrel=1
 arch=('any')
 license=('BSD-2-Clause')
 changelog='CHANGELOG.md'
 
-depends=('python-numpy' 'python-rich' 'python-typer')
+depends=(
+  'python-numpy'
+  'python-rich'
+  'python-typer'
+)
 optdepends=(
   'python-lazrs: LAZ and COPC support'
   'python-laszip: LAZ support'
@@ -30,14 +34,14 @@ makedepends=(
 checkdepends=('python-pytest')
 
 _pyname=laspy
-_commit=a32c7aa40
+_commit=4df8b73
 source=(
   "git+$url#commit=$_commit?signed"
   'modify_doc_conf.patch'
 )
 sha256sums=(
-  'SKIP'
-  'b93fabcad532b5b7062ff8e659ded69167f27872f093023734a2cfca8b8d0d19'
+  '447a4042cc62a14d93c783a5807d6478aea0da2b452b0dbd878006e708b58988'
+  '17efc4a026b813f2d0a8e821846f2ee838eda64d2fe09d8918e52d3c784a2c13'
 )
 validpgpkeys=('44B238524D21C5064D7081BD5022EF94BE848C51')
 
@@ -61,6 +65,7 @@ build() {
 
 check() {
   cd "$_pyname"
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_pyname-$pkgver"-*.whl
   test-env/bin/python -m pytest
