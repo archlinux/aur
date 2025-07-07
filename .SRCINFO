@@ -1,6 +1,6 @@
 pkgbase = nextpnr-machxo2-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for machxo2
-	pkgver = 20250706_nextpnr_0.8_47_g1d4b0eea
+	pkgver = 20250707_nextpnr_0.8_47_g1d4b0eea
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
