@@ -1,7 +1,7 @@
 pkgbase = pypy3-contourpy
 	pkgdesc = Python library for calculating contours in 2D quadrilateral grids
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/contourpy/contourpy
 	arch = any
 	license = BSD-3-Clause

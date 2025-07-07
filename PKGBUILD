@@ -3,7 +3,7 @@ _base=contourpy
 pkgname=pypy3-${_base}
 pkgdesc=" Python library for calculating contours in 2D quadrilateral grids"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/${_base}/${_base}"
 license=(BSD-3-Clause)
@@ -14,7 +14,8 @@ sha512sums=('4948f1fc706623ec63828066efb0fa720a946e39b3d9072356dea9d27ba07fe5fa3
 
 build() {
   cd ${_base}-${pkgver}
-  pypy3 -m build --wheel --skip-dependency-check --no-isolation
+  PKG_CONFIG_PATH=$(/opt/pypy3/bin/pybind11-config --pkgconfigdir) \
+    pypy3 -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
