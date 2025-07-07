@@ -2,7 +2,7 @@
 
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
@@ -12,9 +12,6 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/${pkgver}.tar.gz"
     "0001-Use-installed-libraries.patch"
     "0002-Skip-Test-based-on-timeout.patch"
-    "0003-Refactor-FP_FP-unit-test-to-not-require-FPEXP.patch::https://github.com/bitwuzla/bitwuzla/commit/d090786042aaceef6d39cf55c22daf5fb74457f5.patch"
-    "0004-Enable-unit-test-specific-code-for-urem-when-unit-testing.patch::https://github.com/bitwuzla/bitwuzla/commit/bdc83e1f06ce2851c86cce16a604c3c47b254d2d.patch"
-    "0005-Refactor-N_TESTS-handling-in-test_bv-unit-test.patch::https://github.com/bitwuzla/bitwuzla/commit/a623930e3c12c3932301bd68c54590a15e6bfa69.patch"
 )
 depends=(
     'cryptominisat'
@@ -51,12 +48,9 @@ provides=(
     'libbitwuzlals.so'
     'libbitwuzla.so'
 )
-b2sums=('924742ca0dbcc9c877599b9175c2e48612b88b116976fa1460ca848b598d3bf9f62245d1f9d4ac6b59fdcc80a91a6490ba5d5466e3523510f95a13dd4053a792'
+b2sums=('6d3c6ee92b4e38d8a1a65ccc42d7003967c448efb9c604d98a0ada70682ae90eab5bdffa753e148a481ae17f1548da04ebd74e59185f5ff3a32c8a398494b43d'
         '09f384aaa2ebbec1e70a5122bae2f2019b71a41f691312048dc59dd7c253c2eb07e669ab71decc492fdf58b933b55b0036da7bb54eb1afe0774ee28aca63f199'
-        'af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda'
-        'd8fe8f9dba8648809131c30abf22e767d303804983947548e58c844f9273ee42c29f81cd106e1a1e5049edd724131e1e7ddc95d69097a4c5176a73753430df83'
-        'f688a6ec835396f80711f89ceb1045defcb5a3abd3b6174fb34087046c2d2e215d67f44c4784798f0e830e8a2c3ea6cee088f5b0b9f66c1ea18a61c3c2d77414'
-        'a100b00f882816591c80ef2d497b5181bb4f128a297748ed913849d60988e61d2687fd2a9ce3aa2d0a979af2ca3435047cc8cdfa50978ce4112d85c4e5214578')
+        'af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda')
 options=('!lto')
 
 prepare() {
@@ -64,15 +58,15 @@ prepare() {
 
     patch --forward --strip=1 --input=../0001-Use-installed-libraries.patch
     patch --forward --strip=1 --input=../0002-Skip-Test-based-on-timeout.patch
-
-    # Patch tests broken in 0.8.0
-    patch --forward --strip=1 --input=../0003-Refactor-FP_FP-unit-test-to-not-require-FPEXP.patch
-    patch --forward --strip=1 --input=../0004-Enable-unit-test-specific-code-for-urem-when-unit-testing.patch
-    patch --forward --strip=1 --input=../0005-Refactor-N_TESTS-handling-in-test_bv-unit-test.patch
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # aiger does not provide a library to link against. bitwuzla uses only .c/.h
+    # files for compiling. Thus, there are no aiger run-time dependencies and
+    # aiger is kept as meson subproject.
+
 
     ./configure.py \
 	--prefix /usr \
