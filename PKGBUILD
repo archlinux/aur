@@ -2,7 +2,7 @@
 _appname=netflix
 pkgname="discord-${_appname}"
 _pkgname=Discord-Netflix
-pkgver=1.1.17
+pkgver=1.2.18
 _electronversion=37
 _nodeversion=20
 pkgrel=3
@@ -28,7 +28,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 )
-sha256sums=('39b7abc49a9b0ad7e8f50ded65f04f19efa1dd14423baf6218c87b8abea99227')
+sha256sums=('3532c317b6f56cbc9e3375433566ef876a5ebd138ad5ada5726eb4ba6367c6c9')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
