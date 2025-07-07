@@ -1,0 +1,13 @@
+pkgbase = bonk-cli-bin
+	pkgdesc = The blazingly fast touch alternative with a sprinkle of mkdir written in rust.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/elliot40404/bonk
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = cargo
+	source = git+https://github.com/elliot40404/bonk.git
+	sha256sums = SKIP
+
+pkgname = bonk-cli-bin
