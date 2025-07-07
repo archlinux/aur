@@ -1,6 +1,6 @@
 pkgbase = yojenkins
 	pkgdesc = A CLI tool to interface with Jenkins
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 2
 	url = https://www.yojenkins.com/
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = yojenkins
 	depends = python-xmltodict
 	depends = python-yaml
 	depends = python-yaspin
-	source = https://files.pythonhosted.org/packages/py3/y/yojenkins/yojenkins-0.1.1-py3-none-any.whl
-	sha512sums = 5cad52f8c6919676717132019c05e1a02aacbc770cfe66c5dd7d86df260ee2789161afe9621f17e2e89fb1c6cf236a8a908f53a0ed15846e48fc7aa29cd85799
+	source = https://files.pythonhosted.org/packages/py3/y/yojenkins/yojenkins-0.1.2-py3-none-any.whl
+	sha512sums = 40757b949238d11ab5b5be10ba6ef5f6f6faa2236768dfd51fb3f9be04871532fe7f747b59bc7623b903274e90e87d42bcb4b8bced3a2a4e930d761a844d770b
 
 pkgname = yojenkins
