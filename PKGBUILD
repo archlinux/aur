@@ -1,6 +1,6 @@
 pkgname=fyrox-project-manager
 pkgver=0.36.2
-pkgrel=1
+pkgrel=2
 pkgdesc="3D and 2D game engine written in Rust"
 arch=('x86_64')
 url="fyrox.rs"
