@@ -1,0 +1,24 @@
+pkgbase = python-langgraph-checkpoint-sqlite
+	pkgdesc = Library with a SQLite implementation of LangGraph checkpoint saver.
+	pkgver = 2.0.10
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint-sqlite
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-watcher
+	checkdepends = python-pytest-retry
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-langgraph-checkpoint
+	depends = python-aiosqlite
+	depends = python-sqlite-vec
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-checkpoint-sqlite/langgraph_checkpoint_sqlite-2.0.10.tar.gz
+	sha256sums = c8a55a268b857761dc77f123df48addaf8e9a40b72c4eaddb7c551ddced1c5b6
+
+pkgname = python-langgraph-checkpoint-sqlite
