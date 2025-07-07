@@ -1,0 +1,4 @@
+[gnome-shell-extension-xwayland-indicator]
+source = "git"
+git = "https://codeberg.org/swsnr/gnome-shell-extension-xwayland-indicator.git"
+prefix = "v"
