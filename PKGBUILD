@@ -1,6 +1,6 @@
-# Maintainer: gilcu3 <gilcu3 at gmail dot com>
+# Maintainer: gilcu3
 # Previous Maintainer: Jack R <rubacha dot jack03 at gmail.com>
-
+# Contributor: Jack R <rubacha dot jack03 at gmail.com>
 pkgname=open-numismat
 pkgver=1.10.1
 # since yearcalculator is tightly ingrained into open-numismat, use thr closest version of it to the one released (as submodules aren't bundled in github releases)
@@ -15,7 +15,7 @@ url="http://opennumismat.github.io"
 license=('GPL3')
 conflicts=('open-numismat-bin' 'open-numismat-git')
 makedepends=('python-setuptools')
-depends=('qt6-webchannel' 'qt6-charts' 'qt6-webengine' 'pyside6' 'python-dateutil' 'python-jinja' 'python-lxml' 'python-openpyxl' 'python-pillow' 'python-imagehash' 'python-zxing-cpp' 'python-opencv')
+depends=('qt6-multimedia' 'qt6-webchannel' 'qt6-charts' 'qt6-webengine' 'pyside6' 'python-dateutil' 'python-jinja' 'python-lxml' 'python-openpyxl' 'python-pillow' 'python-imagehash' 'python-zxing-cpp' 'python-opencv')
 optdepends=(
   'python-pyodbc: import from CoinManage and Numizmatik_Ru')
 options=('!strip' '!emptydirs')

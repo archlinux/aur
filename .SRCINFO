@@ -6,6 +6,7 @@ pkgbase = open-numismat
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	depends = qt6-multimedia
 	depends = qt6-webchannel
 	depends = qt6-charts
 	depends = qt6-webengine
