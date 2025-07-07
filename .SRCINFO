@@ -1,6 +1,6 @@
 pkgbase = gauntlet-git
 	pkgdesc = Raycast-inspired open-source cross-platform application launcher with React-based plugins
-	pkgver = 19.r0.g0000000
+	pkgver = 19
 	pkgrel = 1
 	url = https://github.com/project-gauntlet/gauntlet
 	install = gauntlet.install
