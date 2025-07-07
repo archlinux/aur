@@ -1,0 +1,14 @@
+pkgbase = sandbox-bin
+	pkgdesc = A tool for creating lightweight containerized copy-on-write views of your computer for safely running programs and managing output.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/anoek/sandbox
+	install = sandbox-bin.install
+	arch = x86_64
+	license = MIT
+	source = LICENSE::https://github.com/anoek/sandbox/raw/main/LICENSE
+	source = sandbox-bin.tar.zst::https://github.com/anoek/sandbox/releases/download/0.2.0/sandbox-bin-0.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = c73b19352a4ce2884771b8b16ecb562dd755a23ed1e73fb44c2271e90b4af8e5
+	sha256sums = dad77c14b6e1723e37566d0789d8b534faa1d1f111c2e56b11782b8d44f0e7b5
+
+pkgname = sandbox-bin
