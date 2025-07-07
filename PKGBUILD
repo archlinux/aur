@@ -9,7 +9,7 @@ url="https://github.com/Stremio/stremio-linux-shell"
 license=('GPL-3.0-or-later')
 
 depends=('mpv' 'gtk3' 'libappindicator-gtk3' 'nss' 'openssl' 'gcc-libs' 'nodejs'
-         'alsa-lib' 'at-spi2-core' 'cairo' 'cups' 'dbus' 'expat' 'gdk-pixbuf2'
+         'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gdk-pixbuf2'
          'glib2' 'hicolor-icon-theme' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage'
          'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'pango'
          'systemd-libs')

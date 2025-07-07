@@ -23,7 +23,6 @@ pkgbase = stremio-linux-shell-git
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
-	depends = cups
 	depends = dbus
 	depends = expat
 	depends = gdk-pixbuf2
