@@ -1,6 +1,6 @@
 # Maintainer: Robert Greener <dev@greener.sh>
 pkgname=microsoft-openjdk-17-bin
-pkgver=17.0.11
+pkgver=17.0.15
 pkgrel=1
 pkgdesc='Microsoft build of OpenJDK'
 arch=('x86_64')
@@ -21,6 +21,6 @@ package() {
 }
 
 sha256sums=(
-    '4e2e95cda3abbe69e4fa85d7c4a9be7e6257add463c3eb7c6e78d777288c5698'
+    'e7029853d3e9d3dde090aa65dc2386c6e9cb0a41028fea41e48c866a958eba03'
     'SKIP'
 )
