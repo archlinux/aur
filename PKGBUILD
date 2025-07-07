@@ -2,7 +2,7 @@
 
 pkgname=sunshine-beta-bin
 _pkgname=sunshine-beta-bin
-pkgver=2025.702.221443
+pkgver=2025.707.1924
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight"
@@ -64,6 +64,14 @@ prepare() {
 }
 
 package() {
+  if [[ -f "usr/bin/sunshine-v$pkgver" ]]; then
     install -Dm755 "usr/bin/sunshine-v$pkgver" "$pkgdir/usr/bin/sunshine"
-    cp -r "usr/lib" "usr/share" "$pkgdir/usr"
+  elif [[ -f "usr/bin/sunshine-$pkgver" ]]; then
+    install -Dm755 "usr/bin/sunshine-$pkgver" "$pkgdir/usr/bin/sunshine"
+  else
+    install -Dm755 "usr/bin/sunshine" "$pkgdir/usr/bin/sunshine"
+  fi
+
+  cp -r "usr/lib" "$pkgdir/usr"
+  cp -r "usr/share" "$pkgdir/usr" 2>/dev/null || true
 }
