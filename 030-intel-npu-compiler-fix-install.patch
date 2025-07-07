@@ -49,45 +49,6 @@
 -        DESTINATION cid
 +        DESTINATION include
          COMPONENT ${CID_COMPONENT})
---- a/src/vpux_driver_compiler/test/CMakeLists.txt
-+++ b/src/vpux_driver_compiler/test/CMakeLists.txt
-@@ -11,30 +11,33 @@ endif()
- 
- # compilerTest as somke test
- add_executable(compilerTest compilerTest.c)
-+set_target_properties(compilerTest PROPERTIES OUTPUT_NAME intel-npu-compilerTest)
- target_link_libraries(compilerTest PUBLIC npu_driver_compiler)
- ov_add_api_validator_post_build_step(TARGET compilerTest)
- 
- # profilingTest to check profiling API
- add_executable(profilingTest profilingTest.c)
-+set_target_properties(profilingTest PROPERTIES OUTPUT_NAME intel-npu-profilingTest)
- target_link_libraries(profilingTest PUBLIC npu_driver_compiler)
- ov_add_api_validator_post_build_step(TARGET profilingTest)
- 
- # loaderTest to check npu_elf
- add_executable(loaderTest loaderTest.cpp)
-+set_target_properties(loaderTest PROPERTIES OUTPUT_NAME intel-npu-loaderTest)
- target_link_libraries(loaderTest PUBLIC npu_elf npu_llvm_utils npu_ov_utils LLVMSupport)
- ov_add_api_validator_post_build_step(TARGET loaderTest)
- 
- # install tests to CiD component
- install(TARGETS compilerTest
--        RUNTIME DESTINATION cid
-+        RUNTIME DESTINATION bin
-         COMPONENT ${CID_COMPONENT})
- 
- install(TARGETS profilingTest
--        RUNTIME DESTINATION cid
-+        RUNTIME DESTINATION bin
-         COMPONENT ${CID_COMPONENT})
- 
- install(TARGETS loaderTest
--        RUNTIME DESTINATION cid
-+        RUNTIME DESTINATION bin
-         COMPONENT ${CID_COMPONENT})
- 
- if(WIN32)
 --- a/src/vpux_driver_compiler/test/functional/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/test/functional/CMakeLists.txt
 @@ -46,7 +46,7 @@ endif()
@@ -103,6 +64,37 @@
  ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
  
  install(TARGETS vpuxCompilerL0Test
+-        RUNTIME DESTINATION cid
++        RUNTIME DESTINATION bin
+         COMPONENT ${CID_COMPONENT})
+ 
+ if(WIN32)
+--- a/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
++++ b/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
+@@ -12,6 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+ # compilerTest as smoke test
+ find_package(OpenVINO REQUIRED COMPONENTS Runtime)
+ add_executable(compilerTest compilerTest.cpp)
++set_target_properties(compilerTest PROPERTIES OUTPUT_NAME intel-npu-compilerTest)
+ target_link_libraries(compilerTest
+     PUBLIC
+         npu_driver_compiler # VCL function
+@@ -22,17 +23,19 @@ ov_add_api_validator_post_build_step(TARGET compilerTest)
+ 
+ # profilingTest to check profiling API
+ add_executable(profilingTest profilingTest.c)
++set_target_properties(profilingTest PROPERTIES OUTPUT_NAME intel-npu-profilingTest)
+ target_link_libraries(profilingTest PUBLIC npu_driver_compiler)
+ ov_add_api_validator_post_build_step(TARGET profilingTest)
+ 
+ # loaderTest to check npu_elf
+ add_executable(loaderTest loaderTest.cpp)
++set_target_properties(loaderTest PROPERTIES OUTPUT_NAME intel-npu-loaderTest)
+ target_link_libraries(loaderTest PUBLIC npu_elf npu_llvm_utils npu_ov_utils LLVMSupport)
+ ov_add_api_validator_post_build_step(TARGET loaderTest)
+ 
+ # install tests to CID component
+ install(TARGETS compilerTest profilingTest loaderTest
 -        RUNTIME DESTINATION cid
 +        RUNTIME DESTINATION bin
          COMPONENT ${CID_COMPONENT})

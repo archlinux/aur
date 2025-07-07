@@ -1,6 +1,6 @@
 pkgbase = intel-npu-compiler-git
 	pkgdesc = Intel Neural Processing Unit (NPU) compiler (git version)
-	pkgver = 2025.18rc1.r4.g32ea004
+	pkgver = 2025.24rc2.r2.gc146d6a
 	pkgrel = 1
 	url = https://github.com/openvinotoolkit/npu_compiler/
 	arch = x86_64
@@ -90,11 +90,11 @@ pkgbase = intel-npu-compiler-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9123c2b05f4cc9d203c5c51df2254fc5b1bb02f55918bbf4059907185b045cec
+	sha256sums = b994175b16daa45d426d86952ab50fb6a1b3a47bcbf19be4752ecf82c6ebdde7
 	sha256sums = 142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a
-	sha256sums = c919968d2a0aace66a73622c134e9445551f5ae3ad4689150e2d82b6e147ae62
-	sha256sums = b0b76b763b2704dbb22015fe2dea6dd833f9f4f565fbfb7d022b5d06d40b796f
-	sha256sums = 397987f119a81ee9dd4f80b9ea82f3ac49045467d36291f99cd4b126c9a0131e
+	sha256sums = fe78338740ce8baabcaceae7d0e6bfe51be297568e2d6ae4539aa9982421bb22
+	sha256sums = c4cb907528be3b72f01cc3529c7ae347880e00d661737039a23b3ea733ed3ca2
+	sha256sums = ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9
 	sha256sums = e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f
 
 pkgname = intel-npu-compiler-git
