@@ -16,7 +16,7 @@ optdepends=(
 'ffmpeg: video input/output'
 'rust: rawler raw loading (kinda essential, but rustc via rustup works too)'
 'alsa-lib: audio output')
-makedepends=(rsync sed vim cmake vulkan-headers git pkgconf make)
+makedepends=(rsync sed xxd cmake vulkan-headers git pkgconf make)
 # there is no official vkdt release package. if there were, it would be in conflict with this git package:
 # conflicts=(vkdt)
 provides=(vkdt)
