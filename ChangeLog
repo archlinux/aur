@@ -1259,3 +1259,17 @@ Improvements:
 - The "Custom" repeat field powered by AI is now more reliable.
 - Linear tasks without a priority are now displayed at the bottom, below low-priority tasks, when tasks are sorted by Priority. This is consistent with Linear's UI.
 
+
+=== Morgen 3.6.16
+Improvements:
+- AI Planner: AI Planner now respects all calendar settings for tasks, including whether to schedule tasks in the same calendar as the corresponding Frame or a default calendar for tasks.
+- Recurrent events: The AI used to parse custom recurrence rules from natural language has been improved for greater reliability.
+ 
+Fixes:
+- An issue that could cause the current time indicator to stay behind the actual time after resuming from the background has been rectified.
+- Morgen now correctly gives access to all available Google Calendars, even when there are many.
+- AI Planner no longer fails if a task has a fractional duration.
+- An issue that could cause duplicate notifications to be shown for the same event has been fixed.
+- The logo in your booking page now immediately updates when you upload a new one.
+- The preferred alias of a Fastmail account is now correctly used as the organizer's email for meetings booked via a Morgen Scheduling Link.
+
