@@ -1,6 +1,6 @@
 # Maintainer: Robert Greener <dev@greener.sh>
 pkgname=microsoft-openjdk-21-bin
-pkgver=21.0.3
+pkgver=21.0.7
 pkgrel=1
 pkgdesc='Microsoft build of OpenJDK'
 arch=('x86_64')
@@ -21,6 +21,6 @@ package() {
 }
 
 sha256sums=(
-    'b535a58db80aeb5cc0d5e85ae6cb3f621d7f269ca1b36832f1aed3842cede4f4'
+    'b5427bc4fe284de34f1fa20b1ee5677db8ef05e6209d8db0009a3d286b12b840'
     'SKIP'
 )
