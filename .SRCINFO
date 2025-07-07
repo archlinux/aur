@@ -1,6 +1,6 @@
 pkgbase = donutbrowser-bin
 	pkgdesc = A powerful browser orchestrator that puts you in control of your browsing experience. 🍩(Prebuilt version)
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://donutbrowser.com/
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = donutbrowser-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = donutbrowser=0.6.1
+	provides = donutbrowser=0.7.0
 	conflicts = donutbrowser
-	source_aarch64 = donutbrowser-0.6.1-aarch64.rpm::https://github.com/zhom/donutbrowser/releases/download/v0.6.1/Donut.Browser-0.6.1-1.aarch64.rpm
-	sha256sums_aarch64 = a94c127b01b9276210de87d16c84c8e2832a3ba946cfc0dc416e24b4ee58b450
-	source_x86_64 = donutbrowser-0.6.1-x86_64.rpm::https://github.com/zhom/donutbrowser/releases/download/v0.6.1/Donut.Browser-0.6.1-1.x86_64.rpm
-	sha256sums_x86_64 = 6c067bcfd924881b5520215f5495a2390598f2de82f402f93117c722cd06c001
+	source_aarch64 = donutbrowser-0.7.0-aarch64.rpm::https://github.com/zhom/donutbrowser/releases/download/v0.7.0/Donut.Browser-0.7.0-1.aarch64.rpm
+	sha256sums_aarch64 = 7dfd3c0637ebb1eafb6a13aaab44cf9601812df689a5509d9330883abeb2a3cd
+	source_x86_64 = donutbrowser-0.7.0-x86_64.rpm::https://github.com/zhom/donutbrowser/releases/download/v0.7.0/Donut.Browser-0.7.0-1.x86_64.rpm
+	sha256sums_x86_64 = 0184bdaf597852ce7734bba9a390f5c4f3ba0a256a9e2e95f26e58fbb55347a8
 
 pkgname = donutbrowser-bin
