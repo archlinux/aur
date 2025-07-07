@@ -2,7 +2,7 @@
 
 pkgbase=pytorch-kineto-git
 pkgname=(libkineto-git torch-tb-profiler-git)
-pkgver=r622.4e0fec8
+pkgver=r704.16e2a56b
 pkgrel=1
 pkgdesc="Kineto is part of the PyTorch Profiler"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
     SKIP
-    737bb5401e583ac0a376db551690d56e1dc58908799c88c135b7bf28fc2339b0
+    bb4e761d167a07071e6ef70279a65ea61de27e9d6f38f80bfdbf8b313ebdc49c
 )
 
 pkgver() {
@@ -42,7 +42,9 @@ build() {
     cmake .. \
         -DCUDA_SOURCE_DIR=/opt/cuda \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DKINETO_BUILD_TESTS=ON
     make -j$(nproc)
 }
 
