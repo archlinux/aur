@@ -3,8 +3,8 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=0.2.5.r78.g848b9fd
-pkgrel=2
+pkgver=0.2.5.r130.gc58e827
+pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
@@ -32,6 +32,8 @@ makedepends=(
   'flutter-tool'
   # the Flutter linux files
   'flutter-target-linux'
+  # required for Flutter rust bridge
+  'flutter-intellij-patch'
   # used for packaging
   'cmake'
   'rustup'

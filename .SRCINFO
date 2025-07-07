@@ -1,7 +1,7 @@
 pkgbase = polycule-git
 	pkgdesc = A geeky and efficient [matrix] client for power users.
-	pkgver = 0.2.5.r78.g848b9fd
-	pkgrel = 2
+	pkgver = 0.2.5.r130.gc58e827
+	pkgrel = 1
 	url = https://gitlab.com/polycule_client/polycule
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = polycule-git
 	makedepends = git
 	makedepends = flutter-tool
 	makedepends = flutter-target-linux
+	makedepends = flutter-intellij-patch
 	makedepends = cmake
 	makedepends = rustup
 	depends = gtk3
@@ -20,7 +21,7 @@ pkgbase = polycule-git
 	depends = mimalloc
 	depends = libnotify
 	depends = dbus
-	provides = polycule=0.2.5.r78.g848b9fd
+	provides = polycule=0.2.5.r130.gc58e827
 	conflicts = polycule
 	options = !lto
 	source = git+https://gitlab.com/polycule_client/polycule.git
