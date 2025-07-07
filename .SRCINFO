@@ -1,14 +1,14 @@
 pkgbase = matlab-mpm
 	pkgdesc = MATLAB Package Manager
-	pkgver = 2025.1.R2025a
-	pkgrel = 3
+	pkgver = 2025.1+R2025a
+	pkgrel = 4
 	url = https://www.mathworks.com/products/mpm.html
 	arch = x86_64
 	license = custom:MATLAB EULA
 	depends = ca-certificates
 	depends = glibc
 	depends = unzip
-	provides = matlab-mpm-version=R2025a
+	provides = matlab-mpm-release=R2025a
 	source = matlab-mpm-2025.1-README.md::https://github.com/mathworks-ref-arch/matlab-dockerfile/raw/8d84924e79d5d0caa42892a2d4c85c0d3b3fdf87/MPM.md
 	source = matlab-mpm-R2025a-input.txt::https://github.com/mathworks-ref-arch/matlab-dockerfile/raw/refs/heads/main/mpm-input-files/R2025a/mpm_input_r2025a.txt
 	source = matlab-mpm-R2017b-input.txt::https://github.com/mathworks-ref-arch/matlab-dockerfile/raw/refs/heads/main/mpm-input-files/R2017b/mpm_input_r2017b.txt

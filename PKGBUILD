@@ -10,14 +10,14 @@ _commit="8d84924e79d5d0caa42892a2d4c85c0d3b3fdf87" # 2025.1
 
 _name="mpm"
 pkgname="matlab-${_name}"
-pkgver="${_pkgver}.${_release}"
-pkgrel=3
+pkgver="${_pkgver}+${_release}"
+pkgrel=4
 pkgdesc="MATLAB Package Manager"
 arch=('x86_64')
 url="https://www.mathworks.com/products/mpm.html"
 _url="https://github.com/mathworks-ref-arch/matlab-dockerfile"
 license=('custom:MATLAB EULA')
-provides=("${pkgname}-version=${_release}")
+provides=("${pkgname}-release=${_release}")
 depends=('ca-certificates' 'glibc' 'unzip')
 _pkgsrc="${pkgname}-${_pkgver}"
 source=("${_pkgsrc}-README.md::${_url}/raw/${_commit}/MPM.md"
@@ -47,7 +47,7 @@ sha256sums_x86_64=('09a430390e93919c95272b3178ebd29468d600791a6e1f2200c48bb25d67
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgsrc}-${CARCH}"  "${pkgdir}/usr/bin/${_name}"
+  install -vDm755 "${_pkgsrc}-${CARCH}"  "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   for _rel in "${_releases[@]}"; do
@@ -56,5 +56,5 @@ package() {
   install -vDm644 "${pkgname}-${_release}-input.txt" "${pkgdir}/usr/share/${pkgname}/input/${_release}.txt"
   ln -vsf "/usr/share/${pkgname}/input/${_release}.txt" "${pkgdir}/usr/share/${pkgname}/input/latest.txt"
 
-  ln -vsf "/usr/bin/${_name}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -vsf "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${_name}"
 }
