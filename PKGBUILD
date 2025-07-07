@@ -4,7 +4,7 @@ pkgname=osxcross-git
 _pkgname=${pkgname%-git}
 _sdkname=MacOSX10.11.sdk # swy: choose your SDK version here
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="macOS cross-compiling toolchain for Linux, FreeBSD and NetBSD"
 arch=('x86_64')
 url="https://github.com/tpoechtrager/osxcross"
@@ -20,7 +20,7 @@ provides=("$_pkgname" xar)
 conflicts=("$_pkgname" xar apple-darwin-osxcross)
 source=(
 	'git+https://github.com/tpoechtrager/osxcross.git'
-	"https://s3.dockerproject.org/darwin/v2/${_sdkname}.tar.xz"
+	"https://archive.org/https://s3.dockerproject.org/darwin/v2/${_sdkname}.tar.xz"
 
 	# swy: this repository by an anonymous individual seems to have pre-bundled versions of the other SDKs,
 	#      in case you want to change $_sdkname and use a newer version, comment the URL above and uncomment this one

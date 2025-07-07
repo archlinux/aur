@@ -1,7 +1,7 @@
 pkgbase = osxcross-git
 	pkgdesc = macOS cross-compiling toolchain for Linux, FreeBSD and NetBSD
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tpoechtrager/osxcross
 	install = osxcross-git.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = osxcross-git
 	noextract = MacOSX10.11.sdk.tar.xz
 	options = !strip
 	source = git+https://github.com/tpoechtrager/osxcross.git
-	source = https://s3.dockerproject.org/darwin/v2/MacOSX10.11.sdk.tar.xz
+	source = https://web.archive.org/https://s3.dockerproject.org/darwin/v2/MacOSX10.11.sdk.tar.xz
 	md5sums = SKIP
 	md5sums = b0d81b95746c7e698c39c7df1e15ca7d
 
