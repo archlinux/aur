@@ -1,7 +1,7 @@
 # Maintainer: Evan Burkey <evan@burkey.co>
 pkgname=epochcli
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=4
 epoch=
 pkgdesc="Updater and launcher for Project Epoch"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("git+https://git.burkey.co/eburk/epochcli#commit=1200a1bfc2f9d1dc8e39d86317e691a6c5b76289") 
+source=("git+https://git.burkey.co/eburk/epochcli#commit=970d8c654fb789271be22e0ec5da52e9837a0dcf") 
 noextract=()
 sha256sums=("SKIP")
 
