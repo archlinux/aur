@@ -1,0 +1,16 @@
+pkgbase = owte-appimage
+	pkgdesc = Anime girl dancing on your screen
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/sumit-poudel/oWtE
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = owte-1.0.1.AppImage
+	options = !strip
+	source_x86_64 = owte-1.0.1.AppImage::https://github.com/sumit-poudel/oWtE/releases/download/v1.0.1/owte-1.0.1.AppImage
+	sha256sums_x86_64 = 3ddc6d08bdba8df60823ac117b40f35be0575cc2bde3e414fcc1297b0dbb9529
+
+pkgname = owte-appimage
