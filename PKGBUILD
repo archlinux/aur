@@ -1,18 +1,18 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="The Fast Remote Desktop Application"
 arch=('x86_64')
 url="https://anydesk.com"
 license=('custom')
-depends=('fakeroot' 'minizip' 'libglvnd' 'gtk3' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'libxkbfile' 'gcc-libs' 'lsb-release' 'polkit')
+depends=('fakeroot' 'minizip' 'libglvnd' 'gtk3' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'libxkbfile' 'gcc-libs' 'lsb-release' 'polkit' 'yp-tools')
 optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
 conflicts=('anydesk')
 provides=('anydesk')
 options=('!strip')
 source=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
-sha256sums=('0048f8fd2e24ea69c26ff09a8040e1a42b44c41f2922abfb5766ff6ebe270bff')
+sha256sums=('1682899b7f3449a0077060d9a0552a911dac595ca1a123f0c06d5517be4be48f')
 
 package() {
     # install binary
