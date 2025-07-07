@@ -1,6 +1,6 @@
 pkgbase = bonk-cli-bin
 	pkgdesc = The blazingly fast touch alternative with a sprinkle of mkdir written in rust.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/mustard4868/bonk-cli-bin
 	arch = x86_64
