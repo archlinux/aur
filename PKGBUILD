@@ -1,42 +1,42 @@
+# Maintainer: envolution
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Felix von Perger <frekkvb@gmail.com>
-# Maintainer: tee < teeaur at duck dot com >
+# Contributor: tee < teeaur at duck dot com >
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=libthreadar
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='C++ library manage threads and any type to exception between them'
 arch=('x86_64')
 url='http://libthreadar.sourceforge.net'
-license=('LGPL3')
-depends=('gcc-libs')
-#makedepends=('doxygen' 'man-db' 'groff')
-provides=('libthreadar.so')
+license=('LGPL-3.0-only' 'GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc')
+makedepends=('automake' 'libtool' 'autoconf' 'doxygen' 'man-db' 'groff')
+provides=("libthreadar.so=${pkgver}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Edrusb/libthreadar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6b7c12034d0459d064f59acc416083b2c6c6e77b2c7307a918f93dac20c34226')
+sha256sums=('dd8de4b1fb7814aba14a2b2c69b3ff5a174143c78f393a8144da1d061526bf5c')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-	# unbreak build (this is not installed, yet always built, and is broken)
-	sed -r 's|(-all)?-static||' -i doc/examples/Makefile.am
+  # unbreak build (this is not installed, yet always built, and is broken)
+  sed -r 's|(-all)?-static||' -i doc/examples/Makefile.am
 
-	#misc/init
-	cp -av build/{configure.ac,Makefile.am,ChangeLog} -t .
-	autoreconf -fiv
+  misc/init
+  #cp -av build/{configure.ac,Makefile.am,ChangeLog} -t .
+  #autoreconf -fiv
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	# --{enable,disable}-build-html is broken beyond repair
-	./configure --prefix=/usr --sysconfdir=/etc --disable-static --enable-shared #--disable-build-html
-	make
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr --sysconfdir=/etc --disable-static --enable-shared
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install #pkgdatadir="/usr/share/doc/$pkgname/html"
-	install -Dm644 AUTHORS README THANKS -t "$pkgdir/usr/share/doc/$pkgname/"
-	#rm -rf "${pkgdir}/usr/share/doc/dar/html/man"
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install pkgdatadir="/usr/share/doc/$pkgname/html"
+  install -Dm644 AUTHORS README THANKS -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
+# vim:set ts=2 sw=2 et:

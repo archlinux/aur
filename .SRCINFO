@@ -1,13 +1,21 @@
 pkgbase = libthreadar
 	pkgdesc = C++ library manage threads and any type to exception between them
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://libthreadar.sourceforge.net
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-only
+	license = GPL-3.0-or-later
+	makedepends = automake
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = doxygen
+	makedepends = man-db
+	makedepends = groff
 	depends = gcc-libs
-	provides = libthreadar.so
-	source = libthreadar-1.5.2.tar.gz::https://github.com/Edrusb/libthreadar/archive/refs/tags/v1.5.2.tar.gz
-	sha256sums = 6b7c12034d0459d064f59acc416083b2c6c6e77b2c7307a918f93dac20c34226
+	depends = glibc
+	provides = libthreadar.so=1.6.0
+	source = libthreadar-1.6.0.tar.gz::https://github.com/Edrusb/libthreadar/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = dd8de4b1fb7814aba14a2b2c69b3ff5a174143c78f393a8144da1d061526bf5c
 
 pkgname = libthreadar

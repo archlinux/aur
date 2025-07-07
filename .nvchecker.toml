@@ -1,0 +1,5 @@
+[libthreadar]
+source = 'github'
+github = 'Edrusb/libthreadar'
+use_max_tag = true
+prefix = 'v'
