@@ -1,11 +1,11 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=v1.8.r1366.g69a84d0b
+pkgver=v1.9.r1545.g7c882baa9
 pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
 url="https://www.ultragrid.cz/"
-license=('BSD')
+license=('BSD-4-Clause')
 
 depends=(
 	'curl'
@@ -82,6 +82,7 @@ build() {
 	  --disable-cineform \
 	  --disable-pcp \
 	  --disable-rtsp-server \
+	  --disable-caca \
 	  --disable-zfec
 
   make clean && make
@@ -92,5 +93,6 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   rm "$pkgdir/usr/share/doc/ultragrid/ultragrid-bugreport-collect.sh"
+  mv "$pkgdir/usr/bin/uv" "$pkgdir/usr/bin/ultragrid"
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

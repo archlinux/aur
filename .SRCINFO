@@ -1,10 +1,10 @@
 pkgbase = ultragrid-git
 	pkgdesc = Low-latency audio and video network transmission system (from git)
-	pkgver = v1.8.r1366.g69a84d0b
+	pkgver = v1.9.r1545.g7c882baa9
 	pkgrel = 1
 	url = https://www.ultragrid.cz/
 	arch = x86_64
-	license = BSD
+	license = BSD-4-Clause
 	makedepends = git
 	depends = curl
 	depends = speexdsp
