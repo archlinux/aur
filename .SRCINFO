@@ -1,6 +1,6 @@
 pkgbase = rundeck-community
         pkgdesc = Rundeck is an open source automation service with a web console, command line tools and a WebAPI
-        pkgver = 5.10.0.20250312
+        pkgver = 5.13.0.20250625
         pkgrel = 1
         url = https://www.rundeck.com/open-source
         install = rundeck.install
@@ -17,9 +17,9 @@ pkgbase = rundeck-community
         backup = etc/rundeck/realm.properties
         backup = etc/rundeck/rundeck-config.properties
         backup = etc/rundeck/ssl/ssl.properties
-        source = rundeck-community-5.10.0.20250312-1.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.10.0.20250312-1.noarch.rpm/download.rpm?distro_version_id=227
+        source = rundeck-community-5.13.0.20250625-1.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.13.0.20250625-1.noarch.rpm/download.rpm?distro_version_id=227
         source = rundeckd.service
-        sha256sums = 53519d54b7ee506088208f9868a19b569686097741e23a9b69f41d24be8d0025
-        sha256sums = 22c7cc157857ef2e2f2fe89b36cd7902566dad40074f01537c1c91d39fd6f1d8
+        sha256sums = b84658a5114475838f14d15a0b5ad46e188c7752c9c0b3ca02fa5ec8683eb463
+        sha256sums = ca8573bc1df70edd5466d0288c0550d2988e84d514811148e5938ac7a04caf8a
 
 pkgname = rundeck-community
