@@ -1,6 +1,6 @@
 pkgbase = python-desisim
 	pkgdesc = Scripts and packages for simulating DESI spectra
-	pkgver = 0.38.0
+	pkgver = 0.38.2
 	pkgrel = 1
 	url = https://github.com/desihub/desim
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-desisim
 	depends = python-desiutil
 	depends = python-desimodel
 	depends = python-specter
-	source = desisim-0.38.0::https://github.com/desihub/desisim/archive/refs/tags/0.38.0.tar.gz
-	sha256sums = cf81bfbca50611f7978a1f51e19ae784d9615759dd16270729b7658351cb0a94
+	source = desisim-0.38.2::https://github.com/desihub/desisim/archive/refs/tags/0.38.2.tar.gz
+	sha256sums = 00a530ce9b55b8973a4fc30f5eda9757a37b9fd1caa81cd92b12bbaca3abe12d
 
 pkgname = python-desisim

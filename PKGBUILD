@@ -2,7 +2,7 @@
 
 _pkgname="desisim"
 pkgname=python-desisim
-pkgver=0.38.0
+pkgver=0.38.2
 pkgrel=1
 pkgdesc="Scripts and packages for simulating DESI spectra"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python-setuptools' 'python-requests' 'python-astropy' 'python-healpy'
          'python-desiutil' 'python-desimodel' 'python-specter')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cf81bfbca50611f7978a1f51e19ae784d9615759dd16270729b7658351cb0a94')
+sha256sums=('00a530ce9b55b8973a4fc30f5eda9757a37b9fd1caa81cd92b12bbaca3abe12d')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
