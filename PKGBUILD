@@ -111,7 +111,6 @@ package() {
         error "Source directory not found. Did prepare() run successfully?"
         return 1
     fi
-    
     # Create package directories
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
