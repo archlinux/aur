@@ -1,7 +1,7 @@
 pkgbase = sway-scroll-git
 	pkgdesc = Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)
 	pkgver = 1.12.r7546.c33803e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dawsers/scroll
 	install = sway-scroll-git.install
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = sway-scroll-git
 	depends = wayland
 	depends = wlroots-git
 	depends = xcb-util-wm
+	depends = lua
 	optdepends = wmenu: Application launcher used in default configuration
 	optdepends = foot: Terminal emulator used in default configuration
 	optdepends = polkit: System privilege control. Required if not using seatd service

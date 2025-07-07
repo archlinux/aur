@@ -1,7 +1,7 @@
 # Maintainer: dawsers <dawser at gmx dot com>
 pkgname=sway-scroll-git
 pkgver=1.12.r7546.c33803e
-pkgrel=2
+pkgrel=3
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)'
 arch=('x86_64')
 url="https://github.com/dawsers/scroll"
@@ -21,6 +21,7 @@ depends=(
 	"wayland"
 	"wlroots-git"
 	"xcb-util-wm"
+    "lua"
 )
 makedepends=(
 	"git"
