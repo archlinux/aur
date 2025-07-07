@@ -1,6 +1,6 @@
 pkgbase = xfsrtray-git
 	pkgdesc = A floating and customizable system tray for Linux
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Byson94/xfsrtray
 	arch = x86_64
