@@ -1,0 +1,4 @@
+post_upgrade() {
+  echo ":: Heads up! Tigerbeetle has been updated."
+  echo ":: You will want to upgrade the database format."
+}
