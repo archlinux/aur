@@ -1,0 +1,8 @@
+pkgbase = crush-bin
+	pkgdesc = TODO
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://charm.sh/
+	license = MIT
+
+pkgname = crush-bin
