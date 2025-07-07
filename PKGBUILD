@@ -2,7 +2,7 @@
 
 _pkgname="desimodel"
 pkgname=python-desimodel
-pkgver=0.19.0
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Information about DESI hardware designs in machine readable formats"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python-setuptools' 'python-requests' 'python-astropy' 'python-healpy'
          'python-desiutil' 'python-scipy' 'python-pyyaml' 'python-numpy')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c02dd948d40dab0536d2e345b0195fbf47f03aef94ffde15071bf4927c341ead')
+sha256sums=('7f5e62171121bfc3a8a578fa6979b16d356cee3ed5ca8c90176f5e41df54beb3')
 
 prepare() {
   cd "$srcdir/${_pkgname}-$pkgver"
