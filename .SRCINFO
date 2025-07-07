@@ -1,7 +1,7 @@
 pkgbase = ros2-kilted-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Kilted Kaiju, base variant)
 	pkgver = 2025.05.23
-	pkgrel = 3
+	pkgrel = 4
 	url = https://index.ros.org/p/ros_base/#kilted
 	arch = any
 	license = Apache-2.0

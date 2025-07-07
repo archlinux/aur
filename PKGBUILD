@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.05.23
-pkgrel=3
+pkgrel=4
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -85,9 +85,9 @@ prepare() {
 
     # Patches for iceoryx cpptoml dependency
     git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" checkout .
-    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick 2a2c00bbbc3d42ff91492f8b16b44289c4dc4e58
-    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick a3458f823008ffc65868e884b82a3da5a93366f9
-    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick b99ac0c434e799b5b03087ec38a6709d7bbedb63
+    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick -n 2a2c00bbbc3d42ff91492f8b16b44289c4dc4e58
+    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick -n a3458f823008ffc65868e884b82a3da5a93366f9
+    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick -n b99ac0c434e799b5b03087ec38a6709d7bbedb63
 
     # Patches for rmw_zenoh
     git -C "$srcdir/ros2/src/ros2/rmw_zenoh" checkout .
