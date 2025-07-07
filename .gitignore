@@ -1,0 +1,44 @@
+# Compiled files
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+
+# Source files
+src/
+pkg/
+
+# Temporary files
+*.swp
+*~
+
+# Build artifacts
+*.log
+*.log.*
+
+# Makepkg files
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.tar
+*.zip
+*.run
+*.pkg.*
+
+# vim swap files
+.*.swp
+*.swp
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Local development files
+.env
+.env.local
+
+# System files
+.DS_Store
+Thumbs.db
