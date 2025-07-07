@@ -1,7 +1,7 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="neopassmenu"
-pkgver="1.3.1"
+pkgver="1.4.0"
 pkgrel="1"
 pkgdesc="Dmenu front end in POSIX shell for pass with, OTP, navigation, selection from multi-line files, and support for dmenu equivalents"
 arch=('any')
@@ -12,11 +12,14 @@ license=('BSD')
 url="https://notabug.org/BezierQuadratic/neopassmenu"
 
 source=("https://notabug.org/BezierQuadratic/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('c82efad8a04a35277936b05fffe7d84b')
+md5sums=('9d592f8347a6a49303fab887a5d49f12')
 
 package(){
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/licenses/neopassmenu"
+	mkdir -p "${pkgdir}/usr/share/man/man1"
+	gzip "${srcdir}/neopassmenu/docs/neopassmenu.1"
 	install -m 755 "${srcdir}/neopassmenu/neopassmenu.sh" "${pkgdir}/usr/bin/neopassmenu"
 	install -m 644 "${srcdir}/neopassmenu/LICENSE" "${pkgdir}/usr/share/licenses/neopassmenu/LICENSE"
+	install -m 644 "${srcdir}/neopassmenu/docs/neopassmenu.1.gz" "${pkgdir}/usr/share/man/man1/neopassmenu.1.gz"
 }
