@@ -38,3 +38,106 @@ index 5256694a..5998caf8 100644
 +  #   add_subdirectory("${LIBKINETO_THIRDPARTY_DIR}/googletest")
 +  # endif()
  endif()
+diff --git a/libkineto/test/CMakeLists.txt b/libkineto/test/CMakeLists.txt
+index 2c2a487c..b52aa62b 100644
+--- a/libkineto/test/CMakeLists.txt
++++ b/libkineto/test/CMakeLists.txt
+@@ -11,7 +11,7 @@ include(GoogleTest)
+ add_executable(ConfigTest ConfigTest.cpp)
+ target_compile_options(ConfigTest PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(ConfigTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(ConfigTest PRIVATE "${LIBKINETO_DIR}")
+@@ -25,7 +25,7 @@ add_executable(CuptiActivityProfilerTest
+ target_compile_options(CuptiActivityProfilerTest PRIVATE
+     "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(CuptiActivityProfilerTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     gmock
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+@@ -41,7 +41,7 @@ gtest_discover_tests(CuptiActivityProfilerTest)
+ add_executable(CuptiCallbackApiTest CuptiCallbackApiTest.cpp)
+ target_compile_options(CuptiCallbackApiTest PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(CuptiCallbackApiTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(CuptiCallbackApiTest PRIVATE
+@@ -56,7 +56,7 @@ add_executable(CuptiRangeProfilerApiTest CuptiRangeProfilerApiTest.cpp)
+ target_compile_options(CuptiRangeProfilerApiTest PRIVATE
+     "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(CuptiRangeProfilerApiTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(CuptiRangeProfilerApiTest PRIVATE
+@@ -74,7 +74,7 @@ add_executable(CuptiRangeProfilerConfigTest CuptiRangeProfilerConfigTest.cpp)
+ target_compile_options(CuptiRangeProfilerConfigTest PRIVATE
+     "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(CuptiRangeProfilerConfigTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(CuptiRangeProfilerConfigTest PRIVATE
+@@ -87,7 +87,7 @@ add_executable(CuptiRangeProfilerTest CuptiRangeProfilerTest.cpp)
+ target_compile_options(CuptiRangeProfilerTest PRIVATE
+     "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(CuptiRangeProfilerTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(CuptiRangeProfilerTest PRIVATE
+@@ -104,7 +104,7 @@ target_include_directories(CuptiRangeProfilerTest PRIVATE
+ add_executable(CuptiStringsTest CuptiStringsTest.cpp)
+ target_compile_options(CuptiStringsTest PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(CuptiStringsTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(CuptiStringsTest PRIVATE
+@@ -117,7 +117,7 @@ gtest_discover_tests(CuptiStringsTest)
+ add_executable(EventProfilerTest EventProfilerTest.cpp)
+ target_compile_options(EventProfilerTest PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(EventProfilerTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     gmock
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+@@ -132,7 +132,7 @@ gtest_discover_tests(EventProfilerTest)
+ add_executable(LoggerObserverTest LoggerObserverTest.cpp)
+ target_compile_options(LoggerObserverTest PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(LoggerObserverTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(LoggerObserverTest PRIVATE
+@@ -145,7 +145,7 @@ gtest_discover_tests(LoggerObserverTest)
+ add_executable(PidInfoTest PidInfoTest.cpp)
+ target_compile_options(PidInfoTest PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(PidInfoTest PRIVATE
+-    gtest_main
++    GTest::gtest_main
+     kineto
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(PidInfoTest PRIVATE "${LIBKINETO_DIR}")
+@@ -157,7 +157,7 @@ add_executable(CuptiProfilerApiTest CuptiProfilerApiTest.cu)
+ target_compile_options(CuptiProfilerApiTest PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_link_libraries(CuptiProfilerApiTest PRIVATE
+     kineto
+-    gtest_main
++    GTest::gtest_main
+     cuda
+     "${CUDA_cudart_LIBRARY}")
+ target_include_directories(CuptiProfilerApiTest PRIVATE

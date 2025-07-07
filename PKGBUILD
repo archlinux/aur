@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
     SKIP
-    bb4e761d167a07071e6ef70279a65ea61de27e9d6f38f80bfdbf8b313ebdc49c
+    dbedadc2b00acd0611456d704e8cbdab5d24d724b5faa01243d47487f31658aa
 )
 
 pkgver() {
