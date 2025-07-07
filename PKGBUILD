@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
-pkgver=5.3.2
-_electronversion=32
+pkgver=5.10.1
+_electronversion=35
 _nodeversion=22
 pkgrel=1
 pkgdesc="An intuitive cross-platform hardware design application."
@@ -29,7 +29,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('7c045ceddc095098fc1a8f39d011b72e1072eef02ad3e9e60b2c6dc3eebe6218')
+sha256sums=('a2665a3d577d47e435b1e8e4a53d556e7fcaa82eac1601046aa046cbbcc3f081')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
