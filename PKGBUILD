@@ -2,12 +2,12 @@
 
 pkgname=pbzx
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="stream parser for OS X payloads in .pkg files (Niklas Rosenstein's fork)"
 arch=('x86_64')
 url="https://github.com/NiklasRosenstein/${pkgname}"
 license=('GPL-3.0-or-later')
-depends=('xar' 'xz')
+depends=('xar' 'xz' 'glibc')
 optdepends=('cpio: postprocessing of the extracted archive')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('33db3cf9dc70ae704e1bbfba52c984f4c6dbfd0cc4449fa16408910e22b4fd90')
