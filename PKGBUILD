@@ -2,8 +2,8 @@
 pkgname=prompt-booster-bin
 _pkgname='Prompt Booster'
 _zhsname='提示增强器'
-pkgver=0.7.5
-_electronversion=36
+pkgver=0.7.10
+_electronversion=37
 pkgrel=1
 pkgdesc="A comprehensive tool for optimizing LLM prompts with version control, A/B testing, and template management. Supports multiple AI providers.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -28,8 +28,12 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}.AppImage")
 sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('f0b70ff7b6e0bcd1c3d7c6154370a7f266ed54b6734c5f02d51478fb1c2116dd')
-sha256sums_x86_64=('b9c85207a3a811164105f95bbe26573d41736e284f7de5518776caca4906fdfd')
+sha256sums_aarch64=('9ecfd2afe2eeb0bbad873417a3596f0343beeba59da8088bb8788e965bd1c120')
+sha256sums_x86_64=('4c8468e6c43086aa5b85069cd7aeb227282984d338cca2791627d9adcb395566')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -42,6 +46,7 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         4i\Name[zh_CN]=${_zhsname}
