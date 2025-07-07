@@ -1,6 +1,6 @@
 pkgbase = whispering-bin
 	pkgdesc = An open-source transcription application that provides global speech-to-text functionality, with options such as keyboard shortcuts and automatic copy and paste to make dictating as seamless as possible.(Prebuilt version)
-	pkgver = 6.5.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://whispering.bradenwong.com/
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = whispering-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = alsa-lib
-	depends = xdotool
-	provides = whispering=6.5.0
+	provides = whispering=7.0.0
 	conflicts = whispering
-	source = whispering-6.5.0.rpm::https://github.com/braden-w/whispering/releases/download/v6.5.0/Whispering-6.5.0-1.x86_64.rpm
-	source = LICENSE-6.5.0::https://raw.githubusercontent.com/braden-w/whispering/v6.5.0/LICENSE
-	sha256sums = c8dce07858b94859329eed491e573245460b85298e2c57be0b29b1f6dddbe583
+	source = whispering-7.0.0.rpm::https://github.com/braden-w/whispering/releases/download/v7.0.0/Whispering-7.0.0-1.x86_64.rpm
+	source = LICENSE-7.0.0::https://raw.githubusercontent.com/braden-w/whispering/v7.0.0/LICENSE
+	sha256sums = afcd9444e2404a0f2580e4e461aff9916bd5f54b2a4287e732ccad1f446cbd5c
 	sha256sums = c619bbe548615d39e9928c5f86dc1c3a76defc9f99e35273f539aad092fedb9a
 
 pkgname = whispering-bin
