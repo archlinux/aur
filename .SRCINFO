@@ -1,13 +1,13 @@
 pkgbase = go-ukify
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image written in Go
-	pkgver = 0.2.5
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/kairos-io/go-ukify
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/kairos-io/go-ukify.git#tag=v0.2.5
-	sha1sums = SKIP
+	source = git+https://github.com/kairos-io/go-ukify.git#tag=v0.3.1
+	sha1sums = 215c07d9539ea6c64ef67ab7332f71aab711c4be
 
 pkgname = go-ukify

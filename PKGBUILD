@@ -1,6 +1,8 @@
 pkgname=go-ukify
-_fragment=tag=v0.2.5
-pkgver=0.2.5
+
+_fragment=tag=v0.3.1
+
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image written in Go'
 arch=('x86_64')
@@ -8,30 +10,31 @@ license=('MPL-2.0')
 url='https://github.com/kairos-io/go-ukify'
 source=("git+$url.git#$_fragment")
 makedepends=(git go)
-sha1sums=('SKIP')
+sha1sums=('215c07d9539ea6c64ef67ab7332f71aab711c4be')
 
 pkgver() {
-	cd go-ukify
-	git describe --tags --long | sed 's/^v//; s/-0-[[:alnum:]]*$//; s/-/+/g'
+	git -C "$pkgname" describe --tags --long | sed 's/^v//; s/-0-[[:alnum:]]*$//; s/-/+/g'
+}
+
+prepare() {
+	cd "$pkgname"
+	go mod tidy
+	go mod vendor
 }
 
 build() {
-	cd go-ukify
-
-	export GOPATH="$srcdir"
+	cd "$pkgname"
 
 	local gopkg="${url#https://}"
-	local BUILDINFO=(
-		"-X $gopkg/internal/common.VERSION=$pkgver"
-		"-X $gopkg/internal/common.gitCommit=$(git rev-parse --short HEAD)"
-	)
-
 	local BUILDFLAGS=(
 		-buildmode=pie
 		-trimpath
-		-mod=readonly
-		-modcacherw
-		-ldflags="-linkmode=external ${BUILDINFO[*]}"
+		-ldflags="
+			-s -w -linkmode=external
+			-X $gopkg/internal/common.VERSION=$pkgver
+			-X $gopkg/internal/common.gitCommit=$(git rev-parse --short HEAD)
+		"
+
 	)
 
 	go build "${BUILDFLAGS[@]}" -o ../build/
