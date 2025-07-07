@@ -7,16 +7,10 @@ pkgdesc="The blazingly fast touch alternative with a sprinkle of mkdir written i
 arch=('x86_64')
 url="https://github.com/mustard4868/bonk-cli-bin"
 license=('MIT')
-depends=('cargo')
-makedepends=('rust')
+depends=('rust')
 
 source=("git+https://github.com/mustard4868/bonk-cli-bin.git")
 sha256sums=('SKIP')
-
-build() {
-    cd "$srcdir/bonk"
-    cargo build --release --locked
-}
 
 package() {
     cd "$srcdir/bonk"

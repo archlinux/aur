@@ -5,8 +5,7 @@ pkgbase = bonk-cli-bin
 	url = https://github.com/mustard4868/bonk-cli-bin
 	arch = x86_64
 	license = MIT
-	makedepends = rust
-	depends = cargo
+	depends = rust
 	source = git+https://github.com/mustard4868/bonk-cli-bin.git
 	sha256sums = SKIP
 
