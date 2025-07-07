@@ -1,6 +1,6 @@
 pkgbase = libdxvk
 	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux
-	pkgver = 2.6.2
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -22,12 +22,12 @@ pkgbase = libdxvk
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	source = libdxvk::git+https://github.com/doitsujin/dxvk.git#tag=v2.6.2
+	source = libdxvk::git+https://github.com/doitsujin/dxvk.git#tag=v2.7
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git#commit=9df86f2341616ef1888ae59919feaa6d4fad693d
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=234c4b7370a8ea3239a214c9e871e4b17c89f4ab
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=8b246ff75c6615ba4532fe4fde20f1be090c3764
 	source = git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git#commit=275e6459c7ab1ddd4b125f28d0440716e4888078
-	sha256sums = dc81a505bc887f7bcf42e04538e79f4a090119b9d0907452d4bcfd28a819fa9e
+	sha256sums = aab98d6d4e7dd591bccc2d550478bdccef5e885357516fd55e5bede9edd3f29c
 	sha256sums = 021d4102f4ed1ef86a508962c8f550b8f54bf49433a6994cff3a6f4ea992fe13
 	sha256sums = 9c7585e9b4a212b539201a7f295fe58329025a4a8ca238e1743d3aab2f876a05
 	sha256sums = bbbdf1f65d11a5e6a1f03da5804e555af9c027e76f9dd22135a092f88b8a9b2b
