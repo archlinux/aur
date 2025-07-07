@@ -1,0 +1,16 @@
+pkgbase = downtube
+	pkgdesc = O Downtube é um downloader de vídeos do YouTube, minimalista, simples, rápido.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/pedrodev2025/Downtube
+	install = downtube.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	depends = yt-dlp
+	source = git+https://github.com/pedrodev2025/Downtube.git
+	sha256sums = SKIP
+
+pkgname = downtube
