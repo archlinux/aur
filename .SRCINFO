@@ -1,0 +1,19 @@
+pkgbase = leyden-jar-diagnostic-tool-git
+	pkgdesc = Diagnostic utility for Leyden Jar based Model F and Beamspring keyboards (VCS build).
+	pkgver = V1.0.3.r5.g25d3f40
+	pkgrel = 1
+	url = https://github.com/mymakercorner/Leyden_Jar_Diagnostic_Tool
+	install = leyden-jar-diagnostic-tool-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = base-devel
+	depends = sdl2
+	depends = hidapi
+	provides = leyden-jar-diagnostic-tool
+	conflicts = leyden-jar-diagnostic-tool
+	source = git+https://github.com/mymakercorner/Leyden_Jar_Diagnostic_Tool.git
+	sha256sums = SKIP
+
+pkgname = leyden-jar-diagnostic-tool-git

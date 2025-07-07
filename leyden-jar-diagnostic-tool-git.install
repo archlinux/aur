@@ -1,0 +1,23 @@
+post_install() {
+    echo ">>>"
+    echo ">>> IMPORTANT: To run this tool without sudo, a udev rule is required."
+    echo ">>> Create the file '/etc/udev/rules.d/99-leyden-jar.rules' with the following content:"
+    echo '>>> SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="4704", MODE="0666"'
+    echo '>>> SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="4705", MODE="0666"'
+    echo ">>>"
+    echo ">>> After creating the file, run:"
+    echo ">>>   sudo udevadm control --reload-rules && sudo udevadm trigger"
+    echo ">>> Then, unplug and replug your keyboard."
+    echo ">>>"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ">>>"
+    echo ">>> NOTE: The udev rule file at '/etc/udev/rules.d/99-leyden-jar.rules' is not"
+    echo ">>> automatically removed by this package and may be safely deleted."
+    echo ">>>"
+}
