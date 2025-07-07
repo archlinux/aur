@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vscode-bookmark-bin
 _pkgname='VSCode Bookmark'
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=32
 pkgrel=1
 pkgdesc="A utility to save your favorite projects and open them easily in vscode.(Prebuilt version.Use system-wide electron)"
@@ -17,8 +17,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8b09a15bd18950cb136e4cd54ed3b24b780ef77d544451ba0f787cccb1a3d8ea'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('ea4e9b65673de003bb71c2f36578edfcdc4cef1db01ccaed44ed6b813dc6f6f0'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/
@@ -27,6 +31,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
