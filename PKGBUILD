@@ -1,7 +1,7 @@
 # Maintainer: Marco Julian Solanki <aur@solanki.mozmail.com>
 
 pkgname='adaptivecpp-git'
-pkgver=25.02.0.r82.g0107b78
+pkgver=25.02.0.r88.g081b5d3
 pkgrel=1
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
@@ -10,14 +10,16 @@ license=('BSD-2-Clause')
 conflicts=('adaptivecpp')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
+_llvm_version_major=19
 
 depends=(
+    "clang${_llvm_version_major}"
     'cuda'
     'gcc-libs'
     'glibc'
     'hip-runtime-amd'
     'level-zero-loader'
-    'llvm-libs'
+    "llvm${_llvm_version_major}-libs"
     'numactl'
     'nvidia-utils'
     'ocl-icd'
@@ -29,8 +31,8 @@ makedepends=(
     'doxygen'
     'git'
     'level-zero-headers'
-    'lld'
-    'llvm'
+    "lld${_llvm_version_major}"
+    "llvm${_llvm_version_major}"
     'openmp'
     'rocm-llvm'
 )
@@ -47,10 +49,11 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
+        -DLLVM_ROOT="/usr/lib/llvm${_llvm_version_major}" \
         -DCUDAToolkit_ROOT=/opt/cuda \
         -DROCM_PATH=/opt/rocm \
+        -DACPP_LLD_PATH="/usr/lib/llvm${_llvm_version_major}/bin/lld" \
         -DACPP_COMPILER_FEATURE_PROFILE=full \
-        -DACPP_EXPERIMENTAL_LLVM=ON \
         -DWITH_CUDA_BACKEND=ON \
         -DWITH_ROCM_BACKEND=ON \
         -DWITH_LEVEL_ZERO_BACKEND=ON \
