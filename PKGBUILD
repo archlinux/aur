@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=utools-bin
 _pkgname=uTools
-pkgver=7.1.1
+# 更新日志 https://www.u-tools.cn/docs/guide/changelog.html
+pkgver=7.2.1
 _electronversion=22
 pkgrel=1
 pkgdesc="uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
@@ -21,11 +22,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://open.u-tools.cn/download/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.html::${url}/agreement.html"
 )
-sha256sums=('aafaa3911d226b6353e9439ea5880be758f254e1245a545a2b83bbd0380d09a0'
+sha256sums=('0ee3ba7867ffb5ac8c3e4cd6dc7d9c48f1790336c4a7653dc27b0d7575228eef'
             '986625f2970528f051391a41b1ede526de70c896209fc5bf818934b88cc12cfd')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    _get_electron_version
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
 		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
 	for _files in "${_file_list[@]}";do
