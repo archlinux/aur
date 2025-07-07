@@ -1,7 +1,7 @@
 pkgbase = xar
 	pkgdesc = eXtensible ARchive format - apple fork
 	pkgver = 501
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apple-oss-distributions/xar
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = xar
 	depends = acl
 	depends = zlib
 	depends = glibc
+	depends = xz
 	source = https://opensource.apple.com/tarballs/xar/xar-501.tar.gz
 	source = 0001-Update-tests-for-Python-3-and-Nix-sandbox.patch
 	source = 0002-Update-for-modern-liblzma5-versions.patch

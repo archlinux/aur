@@ -9,12 +9,12 @@
 pkgname=xar
 _sourcetag='501'
 pkgver=501
-pkgrel=1
+pkgrel=2
 pkgdesc='eXtensible ARchive format - apple fork'
 arch=('i686' 'x86_64')
 url='https://github.com/apple-oss-distributions/xar'
 license=('BSD-3-Clause')
-depends=('libxml2' 'openssl' 'bzip2' 'acl' 'zlib' 'glibc')
+depends=('libxml2' 'openssl' 'bzip2' 'acl' 'zlib' 'glibc' 'xz')
 source=(
   "https://opensource.apple.com/tarballs/xar/xar-${_sourcetag}.tar.gz"
   0001-Update-tests-for-Python-3-and-Nix-sandbox.patch
