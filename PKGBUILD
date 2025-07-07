@@ -1,7 +1,7 @@
 # Maintainer: Melvin Redondo-Tanis <melvin@redondotanis.com>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.17.0.20250508_14912879441
+pkgver=1.19.0.20250707_16111289554
 pkgrel=1
 _main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
@@ -20,9 +20,9 @@ source=(
 )
 noextract=("${source[@]%%::*}")
 sha256sums=(
-  '24309e17063e94729330ae9c02c5f2ea8ca5c27cdb067303e4e26ad1f4656a13'
-  'cebbac7bdb56eb72529b8060bb1601afdcd4e90f2e5c29018b5ceaff98b7c63c'
-  '07ee5332d0523661f5b3cec69593197fecc95439c8a9a401905e05cb7690097b'
+  '6fae337b15d1ae3eaf9b0fe2edce09b9871f59d6cb97f5bfe853c138c6888056'
+  '05dadf9200b007b590a71b2a5b1b882fa113fff18e89db91988178cdfcec4c57'
+  'cb5ec557850fe8580e241beb8acdfa6b42042b4f6af1f865f52be4defa51b2d7'
   '451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5'
 )
 
