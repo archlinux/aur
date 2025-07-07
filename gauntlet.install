@@ -1,0 +1,13 @@
+post_install() {
+  echo "Gauntlet can be started via 'gauntlet' command"
+  echo "or via systemd user service with 'systemctl --user enable --now gauntlet'"
+  echo "Default global shortcut is Super+Space"
+  echo ""
+  echo "Plugins can be installed from the Settings UI"
+}
+
+post_upgrade() {
+  echo "Gauntlet has been upgraded"
+  echo "If you're running the systemd service, restart it with:"
+  echo "systemctl --user restart gauntlet"
+} 
