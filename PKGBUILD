@@ -1,6 +1,6 @@
 pkgname=netflix
 _pkgname=Netflix
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="Unnofficial Netflix desktop application"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/linuxbombay/netflix-desktop"
 license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('4219cfda4a9e72f2c2ff0481cbf9046a08c564d6f865f1218e2fe113dce0cd76')
+sha256sums=('ca6d420ca719d5d05f554cf8b11bd84f7eccb78e6ce04b1745d68a9f7aadfa8f')
 
 
 package() {
@@ -22,6 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/usr/bin/libelectronmeta" "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
