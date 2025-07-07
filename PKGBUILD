@@ -6,11 +6,12 @@
 
 pkgname=abuse
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Side-scroller action game that pits you against ruthless alien killers'
 arch=(x86_64)
 url='https://github.com/Xenoveritas/abuse'
 license=(custom GPL)
+options+=('!debug')
 depends=('libglvnd' 'sdl2_mixer')
 makedepends=('gendesk' 'glu' 'mesa' 'cmake')
 source=("${pkgname}-${pkgver}::https://github.com/Xenoveritas/abuse/archive/refs/tags/v${pkgver}.tar.gz"
@@ -24,7 +25,7 @@ b2sums=('7af8be86cdd5ede66ac200a193e5e37d188825d648aec8915e3b07608e02afc2be3f58b
 
 build() {
   cd abuse-$pkgver
-  cmake .
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
   make
 }
 

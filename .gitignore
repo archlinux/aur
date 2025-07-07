@@ -2,4 +2,4 @@ src
 pkg
 *.tar.gz
 *.tar.zst
-
+abuse-*
