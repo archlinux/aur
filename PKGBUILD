@@ -22,6 +22,8 @@ makedepends=(rsync sed xxd cmake vulkan-headers git pkgconf make)
 provides=(vkdt)
 source=('git+https://github.com/hanatos/vkdt.git')
 md5sums=('SKIP')
+# stripping removes some function in the c++ dsos which we load runtime
+OPTIONS=(!strip)
 
 pkgver() {
   cd "$_gitname"
