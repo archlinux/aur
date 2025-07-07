@@ -4,7 +4,7 @@ _pkgbase="xlibre-server"
 _pkgname=("${_pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
-pkgver=25.0.0.2.r3.6c2f17a5e
+pkgver=25.0.0.4.r5.7437ce8e3
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
@@ -81,7 +81,7 @@ package_xlibre-server-git() {
   # and /usr/lib/pkgconfig/xorg-server.pc in xlibre-server-devel pkg
   provides=("${_pkgbase}=${pkgver%%.r*}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server') # {xlibre,xorg}"-server=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
-  replaces=('xlibre-server-bootstrap') # 'glamor-egl' 'xf86-video-modesetting'
+  replaces=("${_pkgbase}-bootstrap-git") # 'glamor-egl' 'xf86-video-modesetting'
   options=('emptydirs')
   install="${_pkgbase}.install"
 
