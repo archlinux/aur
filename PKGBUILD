@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 pkgname=shadps4
-pkgver=0.9.0
+pkgver=0.10.0
 _pkgname=shadPS4
 pkgrel=2
 pkgdesc="Sony PlayStation 4 emulator"
@@ -58,7 +58,7 @@ source=(
 	"git+https://github.com/shadps4-emu/ext-discord-rpc.git"
 	"git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
 )
-b2sums=('5504d31268c4ba4ed50afeb66efea4324cd873143e1467453144a0a5d6d5789d4b6f3503a6e9c430910dbdd4f3e7c7d5e19de5595963529db82987b6f5e6a81b'
+b2sums=('a379a021861c2e87690f9993ac3e6b8951eb712bc18f8dbb14d002a695f70df6414ca819aaafcc334ddb554d4c80417cbfe22a31a9beb6d00a398f5d7eec41b3'
         'SKIP'
         'SKIP'
         'SKIP'

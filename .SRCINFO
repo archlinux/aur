@@ -1,6 +1,6 @@
 pkgbase = shadps4
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 2
 	url = https://shadps4.net/
 	arch = aarch64
@@ -41,14 +41,14 @@ pkgbase = shadps4
 	optdepends = vulkan-validation-layers: for vulkan debugging
 	conflicts = shadps4-git
 	options = !debug
-	source = git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.9.0
+	source = git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.10.0
 	source = git+https://github.com/zyantific/zydis.git
 	source = git+https://github.com/shadps4-emu/sirit.git
 	source = git+https://github.com/shadps4-emu/tracy.git
 	source = git+https://github.com/shadps4-emu/ext-imgui.git
 	source = git+https://github.com/shadps4-emu/ext-discord-rpc.git
 	source = git+https://github.com/shadps4-emu/ext-LibAtrac9.git
-	b2sums = 5504d31268c4ba4ed50afeb66efea4324cd873143e1467453144a0a5d6d5789d4b6f3503a6e9c430910dbdd4f3e7c7d5e19de5595963529db82987b6f5e6a81b
+	b2sums = a379a021861c2e87690f9993ac3e6b8951eb712bc18f8dbb14d002a695f70df6414ca819aaafcc334ddb554d4c80417cbfe22a31a9beb6d00a398f5d7eec41b3
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
