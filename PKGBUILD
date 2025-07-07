@@ -3,8 +3,8 @@
 pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
-pkgver=210
-pkgrel=7
+pkgver=220
+pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-commercial')
@@ -55,8 +55,9 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
     'wchisp: WCH ISP Tool in Rust')
-source=("${pkgbase}-${pkgver}.deb::http://file-oss.mounriver.com/upgrade/MounRiverStudio_Linux_X64_V${pkgver}.deb")
-sha256sums=('83745c730b3646dc9a5207dbc90e852fb662de9162a45d01cce0f8d90e37ec94')
+ _sign="?sign=30a3f1d2ec23d55b5752caf8505145f7&time=197e2a88025&from=61.140.235.181&resId=1940710367221092353"
+source=("${pkgbase}-${pkgver}.deb::https://file-oss.mounriver.com/upgrade/MounRiverStudio_Linux_X64_V${pkgver}.deb${_sign}")
+sha256sums=('31358a6af0c2be722f5b50f9d490005e15942f67fb106ab002e8ea2cb8540b78')
 options=('!strip' '!debug')
 # noextract=(${pkgbase}-${pkgver}.deb)
 
