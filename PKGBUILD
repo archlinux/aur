@@ -3,7 +3,7 @@ _pkgname=snekstudio
 
 pkgname=snekstudio-bin
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source VTuber software using Godot Engine!"
 arch=("x86_64" "aarch64")
 url="https://github.com/ExpiredPopsicle/SnekStudio"
@@ -12,7 +12,7 @@ depends=() # Honestly not entirely sure what to throw in here
 provides=("snekstudio")
 conflicts=("snekstudio")
 options=(!debug)
-source=("https://raw.githubusercontent.com/ExpiredPopsicle/SnekStudio/refs/tags/$pkgver/Core/UI/Images/kiri_smug.png"
+source=("icon.png::https://github.com/ExpiredPopsicle/SnekStudio/blob/v0.1.4/Core/UI/Images/kiri_smug.png?raw=true"
         "$_pkgname.desktop"
         "$_pkgname.sh")
 md5sums=("9bc60005961b0df54f23f3edd11a3bb9"
@@ -31,7 +31,7 @@ prepare() {
 
 package() {
 	# Copy application icon, launcher, .desktop and license files
-	install -Dm644 kiri_smug.png "$pkgdir"/usr/share/pixmaps/"$_pkgname".png
+	install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/"$_pkgname".png
 	install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
 	install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
 	install -Dm644 "$_pkgname"/LICENSE.txt "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE.txt
