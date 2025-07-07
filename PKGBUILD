@@ -15,7 +15,7 @@ optmakedepends=('qt6-tools')
 provides=('flowee-hub' 'flowee-libs')
 backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
-source=("https://bitcoincashcode.org/Flowee/thehub/archive/$pkgver.tar.gz"
+source=("https://codeberg.org/Flowee/thehub/archive/$pkgver.tar.gz"
     "flowee.logrotate"
     "flowee.conf")
 
