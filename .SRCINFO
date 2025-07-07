@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-ai
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
 	license = MIT

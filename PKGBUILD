@@ -10,7 +10,7 @@ _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
@@ -47,7 +47,9 @@ check() {
     --deselect tests/models/test_model_names.py::test_known_model_names
     -k "not genai_email_feedback.py and not google.md:61"
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
-    --deselect tests/models/test_google.py
+    --deselect tests/models/test_google.py::test_google_model_stream
+    --deselect tests/models/test_google.py::test_google_model_iter_stream
+    --deselect tests/models/test_google.py::test_google_model_thinking_part_iter
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
