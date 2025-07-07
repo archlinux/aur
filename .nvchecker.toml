@@ -1,0 +1,4 @@
+[app2unit-git]
+source = "git"
+git = "https://github.com/Vladimir-csp/app2unit.git"
+prefix = "v"
