@@ -1,6 +1,6 @@
 pkgbase = xfsrtray
 	pkgdesc = A floating and customizable system tray for Linux
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Byson94/xfsrtray
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xfsrtray
 	provides = xfsrtray
 	conflicts = xfsrtray-bin
 	conflicts = xfsrtray-git
-	source = https://github.com/Byson94/xfsrtray/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 5e75750964b38be52c4694f8475c05e0d49bdbe936b3fac913ddca175dbd15f0
+	source = https://github.com/Byson94/xfsrtray/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 64e0929908361446bf58b88233b90c866e29f08a7da9b97229c38138f13b2860
 
 pkgname = xfsrtray
