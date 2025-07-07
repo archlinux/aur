@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-bluetooth-battery-meter-git
-	pkgdesc = An extension featuring indicator icons in the system tray, serving as a meter for Bluetooth device battery levels.
-	pkgver = 005.r9.g9304351
+	pkgdesc = A GNOME extension that displays indicator icons in the system tray, acting as a meter for Bluetooth device battery levels.
+	pkgver = 030.r52.gb0070d9
 	pkgrel = 1
 	url = https://github.com/maniacx/Bluetooth-Battery-Meter
 	arch = any
