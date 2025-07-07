@@ -1,0 +1,25 @@
+pkgbase = python-langgraph-checkpoint
+	pkgdesc = Library with base interfaces for LangGraph checkpoint savers.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-watcher
+	checkdepends = python-dataclasses-json
+	checkdepends = python-numpy
+	checkdepends = python-pandas
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-langchain-core
+	depends = python-ormsgpack
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-checkpoint/langgraph_checkpoint-2.1.0.tar.gz
+	sha256sums = cdaa2f0b49aa130ab185c02d82f02b40299a1fbc9ac59ac20cecce09642a1abe
+
+pkgname = python-langgraph-checkpoint
