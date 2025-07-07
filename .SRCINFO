@@ -1,20 +1,20 @@
 pkgbase = falkor-bin
 	pkgdesc = Dive into Falkor, where you'll discover a vast selection of games coupled with community-driven enhancements. Experience seamless and secure gaming within a single, universal hub.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://falkor.moe
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron33
-	provides = falkor=0.1.0
+	provides = falkor=1.0.0
 	conflicts = falkor
 	options = !emptydirs
-	source = falkor-0.1.0.pacman::https://github.com/Team-Falkor/falkor/releases/download/v0.1.0-alpha/falkor.pacman
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Team-Falkor/falkor/v0.1.0-alpha/LICENSE
+	source = falkor-1.0.0.pacman::https://github.com/Team-Falkor/falkor/releases/download/v1.0.0/falkor.pacman
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/Team-Falkor/falkor/v1.0.0/LICENSE
 	source = falkor.sh
-	sha256sums = cbbde98b73d0b34dc08a540e76e0d5dcb25fee565855587ade173064d482af95
-	sha256sums = d366fe7f83cb9e5a7d18a6f803aca13cc4e6b96c70bf5702236019e99d4d16c4
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 21313b6c0ccd7cea8616e9527a2bddceb05ceca3827fbddc722def9326969abc
+	sha256sums = 97fdd4aad91d8a01b07f95d1a5448c0d30b738083671153a55e8d0956a32b0a7
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = falkor-bin
