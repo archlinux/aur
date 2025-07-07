@@ -2,7 +2,7 @@
 
 _pkgname=python-storage
 pkgname=python-google-cloud-storage
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=(any)
@@ -31,14 +31,16 @@ makedepends=(
 #)
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('7a7d32bfb788c4cb019c5ed0d0adcc748dc3379c2216592902ad779f9b867ece7b2d6f4231babef57131ebf9984f5aad635e51a43836e81f684bd0ebc038b934')
+b2sums=('be4470222dee0d65a6049b7bff3ebe264e372013eac2054b07fe0121feeb829fd2656fbc9245da7fb40b9eef0748300624546611f4783552024242179a558bea')
 
 build() {
   cd ${_pkgname}-${pkgver}
+
   python \
     -m build \
     --wheel \
     --no-isolation
+
   PYTHONPATH="${PWD}" sphinx-build -b man docs/ docs/build
 }
 
@@ -50,6 +52,7 @@ build() {
 
 package() {
   cd ${_pkgname}-${pkgver}
+
   python \
     -m installer \
     --destdir="${pkgdir}" \
@@ -57,6 +60,7 @@ package() {
 
   install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} \
     SECURITY.md
+
   install -Dm644 -t "${pkgdir}"/usr/share/man/man1 \
     docs/build/google-cloud-storage.1
 }
