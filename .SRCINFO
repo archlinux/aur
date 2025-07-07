@@ -1,6 +1,6 @@
 pkgbase = quarkdown
 	pkgdesc = a Markdown based typesetting system
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/iamgio/quarkdown
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = quarkdown
 	depends = bash
 	depends = java-runtime-openjdk=21
 	optdepends = puppeteer: generate PDF output
-	source = https://github.com/iamgio/quarkdown/archive/v1.6.1/quarkdown-1.6.1.tar.gz
-	sha256sums = 4db99571fa752033e1c622de5e1e50b94cdf5b17b9a0597fc51482a2a270bbb9
+	source = https://github.com/iamgio/quarkdown/archive/v1.6.2/quarkdown-1.6.2.tar.gz
+	sha256sums = 83ecaf033442f5628cdb06e82015e7ac1d5da24ce5f6b51ccc3a26671d7220d2
 
 pkgname = quarkdown
