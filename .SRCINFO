@@ -1,10 +1,11 @@
 pkgbase = pacman-beep-hook
 	pkgdesc = Play Pac-Man theme using pcspkr before and after any pacman transaction
 	pkgver = 1.4.12
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/spkr-beep/beep
 	arch = any
 	depends = beep
-	optdepends = beep-sudoable: skip sudo check
+	depends = util-linux
 	source = pacman-beep-pre.hook
 	source = pacman-beep-post.hook
 	source = pacman-beep.sh
