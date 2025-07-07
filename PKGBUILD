@@ -11,9 +11,9 @@ source=("${url}/raw/refs/tags/v${pkgver}/LICENSE.txt")
 _source=("${url}/releases/download/v${pkgver}/spacetime-${CARCH}-unknown-linux-gnu.tar.gz")
 source_x86_64=("${_source[@]}")
 source_aarch64=("${_source[@]}")
-sha256sums=('c28e9285c496925ba3ad41ee05342bc3122b4a8501e71b1ad573b012084aabd9')
-sha256sums_x86_64=('405043af3e3d8b6ccafa9cc880b9204a997dea61099a81eef1533b42b5c02a15')
-sha256sums_aarch64=('bc1f071f9acb2d2743f7b91a906e72a7ef4f1f960b7627fbb0677ea6dcfa938f')
+sha256sums=('daf4315198791d954766ee48b96fa446ce229373077de5fab2af599707c5000f')
+sha256sums_x86_64=('8e525ce56432982676dc77cf68f8908ecd31bde16382cf82306fc0816dcf52de')
+sha256sums_aarch64=('cb81198608faa33abd2ee6f4143f2615b0c18e37441e66b4a57242ffe5498140')
 
 _package() {
 	install -Dm644 'LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}"

@@ -7,11 +7,11 @@ pkgbase = spacetimedb-bin
 	arch = aarch64
 	license = custom
 	source = https://github.com/clockworklabs/SpacetimeDB/raw/refs/tags/v1.2.0/LICENSE.txt
-	sha256sums = c28e9285c496925ba3ad41ee05342bc3122b4a8501e71b1ad573b012084aabd9
+	sha256sums = daf4315198791d954766ee48b96fa446ce229373077de5fab2af599707c5000f
 	source_x86_64 = https://github.com/clockworklabs/SpacetimeDB/releases/download/v1.2.0/spacetime-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 405043af3e3d8b6ccafa9cc880b9204a997dea61099a81eef1533b42b5c02a15
+	sha256sums_x86_64 = 8e525ce56432982676dc77cf68f8908ecd31bde16382cf82306fc0816dcf52de
 	source_aarch64 = https://github.com/clockworklabs/SpacetimeDB/releases/download/v1.2.0/spacetime-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = bc1f071f9acb2d2743f7b91a906e72a7ef4f1f960b7627fbb0677ea6dcfa938f
+	sha256sums_aarch64 = cb81198608faa33abd2ee6f4143f2615b0c18e37441e66b4a57242ffe5498140
 
 pkgname = spacetimedb-bin
 
