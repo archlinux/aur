@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=hypatia
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A research helper tool for Linux desktops"
 arch=('x86_64')
 url="https://codeberg.org/nathandyer/Hypatia"
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=('appstream-glib')
 source=("git+https://codeberg.org/nathandyer/Hypatia.git#tag=$pkgver")
-sha256sums=('05cae81d04f49a4c4f13131bcbbe11303b48a97979fda69d5da11b54232afc9a')
+sha256sums=('08b67395a2a67461da09ed918999c7916ccf4f7a7889c4d49316e299daeabc8a')
 
 build() {
   arch-meson Hypatia build
