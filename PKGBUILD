@@ -2,7 +2,7 @@
 
 _pkgname="app2unit"
 pkgname="$_pkgname-git"
-pkgver=1.0.1.r0.g767a3f3
+pkgver=1.0.2.r0.g6a2fe29
 pkgrel=1
 pkgdesc="Utility to launch commands as systemd user units"
 url="https://github.com/Vladimir-csp/app2unit"
@@ -25,13 +25,6 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-
-prepare() {
-  # fix makefile
-  sed -E -e '1i DESTDIR ?=' \
-    -e 's&(\s)(\$\((bindir|man1dir)\))&\1$(DESTDIR)\2&g' \
-    -i "$_pkgsrc/Makefile"
-}
 
 pkgver() {
   cd "$_pkgsrc"
