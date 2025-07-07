@@ -1,19 +1,19 @@
 pkgbase = ai-assistant-studio-bin
 	pkgdesc = A visual development platform for creating complex AI workflows using OpenAI assistants.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/gabrielborgesdm/ai-assistant-studio
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = electron35
 	depends = ollama
-	provides = ai-assistant-studio=1.0.1
+	provides = ai-assistant-studio=1.3.0
 	conflicts = ai-assistant-studio
 	options = !emptydirs
 	options = !strip
-	source = ai-assistant-studio-1.0.1.deb::https://github.com/gabrielborgesdm/ai-assistant-studio/releases/download/v1.0.1/ai-assistant-studio_1.0.1_amd64.deb
+	source = ai-assistant-studio-1.3.0.deb::https://github.com/gabrielborgesdm/ai-assistant-studio/releases/download/v1.3.0/ai-assistant-studio_1.3.0_amd64.deb
 	source = ai-assistant-studio.sh
-	sha256sums = 18eb84128fae53e6d6e2528556d65583553c285dda7cd9952744073b7ff0b532
+	sha256sums = 14b121944e0412e3cf2a8fcdb36f4b9c9d738e653fecfbe8777dbb2958f3c559
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = ai-assistant-studio-bin
