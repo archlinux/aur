@@ -1,6 +1,6 @@
 pkgbase = ossia-score-appimage
 	pkgdesc = an interactive sequencer for the intermedia arts.
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://ossia.io/
 	arch = x86_64
@@ -12,10 +12,11 @@ pkgbase = ossia-score-appimage
 	optdepends = ultraleap-hand-tracking-service
 	optdepends = gpsd
 	optdepends = bluez
+	optdepends = onnxruntime
 	optdepends = ndi-sdk
-	source = score.AppImage::https://github.com/ossia/score/releases/download/v3.5.2/ossia.score-3.5.2-linux-x86_64.AppImage
+	source = score.AppImage::https://github.com/ossia/score/releases/download/v3.5.3/ossia.score-3.5.3-linux-x86_64.AppImage
 	source = ossia-score
-	sha512sums = 2dcc6ab8afe7ad1c061088dd6e0dcd3d1f4f479014a7111149e386ea616751b5c8824ccabd581fab73f4438016487c99de157768559195722d3371a8aefaf933
+	sha512sums = e40d229d05063a87f3cbca80476f51fe2ee513182954aeda9b36999aed46981175dc766b4250ce8eb49034e5b3a0b06bb15d633e23f0d38a950d7e0e502f94a8
 	sha512sums = 2a78deed52bf1bcb1abad9b0319c483aef91c16648e45a96a58162f536fb79ce06f92c5f622b547e9cef63e4cf751ce2142fc1f29ae29e470944d35b3d192ba2
 
 pkgname = ossia-score-appimage
