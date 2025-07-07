@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.12.1] - 2025-06-16
+
+### Security
+- Address [CVE-2025-30399] by building with latest version of the .Net SDK (>= 8.0.314)
+
 ## [0.12.0] - 2025-05-06
 
 ### Changes
@@ -372,7 +377,8 @@ legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch pa
 
 Initial release
 
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.0...HEAD
+[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.1...HEAD
+[0.12.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.3...v0.12.0
 [0.11.3]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.1...v0.11.2
@@ -414,6 +420,7 @@ Initial release
 [CVE-2023-36799]: https://github.com/dotnet/announcements/issues/275
 [CVE-2024-30105]: https://github.com/dotnet/announcements/issues/315
 [CVE-2024-38095]: https://github.com/dotnet/announcements/issues/312
+[CVE-2025-30399]: https://github.com/dotnet/announcements/issues/362
 [legendary]: https://github.com/derrod/legendary
 [heroic]: https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher
 [settings file]: README.md#settings
