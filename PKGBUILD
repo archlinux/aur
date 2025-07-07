@@ -2,7 +2,7 @@
 
 _pkgname="desispec"
 pkgname=python-desispec
-pkgver=0.61.0
+pkgver=0.69.0
 pkgrel=1
 pkgdesc="Scripts and packages for building and running DESI spectroscopic analyses"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python-requests' 'python-astropy' 'python-numba' 'python-healpy'
          'python-desiutil' 'python-desimodel')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5c7430126f7a5a33d2ca80dd6ac0f4d23488c4d68552bbfdbc09c2e4774ab044')
+sha256sums=('d258bbfe49d4c0fe8e6b6e799ed2cb7c30ae70e327aa4e98cdc0aa7b0635e00b')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
