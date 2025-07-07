@@ -1,0 +1,11 @@
+pkgbase = python-sqlite-vec
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://pypi.org/project/sqlite-vec/
+	arch = any
+	license = MIT OR Apache-2.0
+	makedepends = python-installer
+	depends = python
+	depends = glibc
+
+pkgname = python-sqlite-vec
