@@ -1,23 +1,22 @@
 pkgbase = jasper-km-bin
 	pkgdesc = Desktop app for Jasper KM. Uses electron to wrap a docker compose config.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.73
+	pkgver = 1.0.74
 	pkgrel = 1
 	url = https://github.com/cjmalloy/jasper-app
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	makedepends = asar
-	depends = electron36
+	depends = electron37
 	depends = docker
 	depends = docker-compose
-	depends = nodejs
-	provides = jasper-km=1.0.73
+	provides = jasper-km=1.0.74
 	conflicts = jasper-km
-	source = jasper-km-1.0.73.AppImage::https://github.com/cjmalloy/jasper-app/releases/download/v1.0.73/Jasper-1.0.73.AppImage
-	source = LICENSE-1.0.73::https://raw.githubusercontent.com/cjmalloy/jasper-app/v1.0.73/LICENSE
+	source = jasper-km-1.0.74-x86_64.AppImage::https://github.com/cjmalloy/jasper-app/releases/download/v1.0.74/Jasper-1.0.74.AppImage
+	source = LICENSE-1.0.74::https://raw.githubusercontent.com/cjmalloy/jasper-app/v1.0.74/LICENSE
 	source = jasper-km.sh
-	sha256sums = fed823960d48abfb51d3e6147fb6f468884661c0e0cc188cfe6b5ac1898ff4d2
+	sha256sums = d4bf68aaa8fc677abc8528a8300760dc84518d7fa1329fc50cf5dfd3b3f7eedc
 	sha256sums = b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = jasper-km-bin
