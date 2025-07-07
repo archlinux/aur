@@ -13,7 +13,7 @@ makedepends=(git go)
 sha1sums=('215c07d9539ea6c64ef67ab7332f71aab711c4be')
 
 pkgver() {
-	git -C "$pkgname" describe --tags --long | sed 's/^v//; s/-0-[[:alnum:]]*$//; s/-/+/g'
+	git -C "$pkgname" describe --tags --first-parent | sed 's/^v//; s/-/+/g'
 }
 
 prepare() {
