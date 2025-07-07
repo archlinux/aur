@@ -1,5 +1,3 @@
-# Maintainer: noxygalaxy <nooxxyyywork@gmail.com>
-
 pkgbase = twlauncher-bin
 	pkgdesc = Launcher for most popular Teeworlds clients.
 	pkgver = 1.2.1
@@ -30,4 +28,4 @@ pkgbase = twlauncher-bin
 	sha256sums = 799007ac487e652bbfeaebc1915f7d024d01706bb34994a846854682c8879dca
 	sha256sums = d7a0e8ac291af121931ebd31ed5e92fb94807ef58f9426a5fd0124e80da30e0b
 
-pkgname = TWLauncher
+pkgname = twlauncher-bin
