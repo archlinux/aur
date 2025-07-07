@@ -1,6 +1,6 @@
 pkgbase = python-desiutil
 	pkgdesc = General purpose tools for DESI pipeline
-	pkgver = 3.4.2
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://github.com/desihub/desiutil
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-desiutil
 	depends = python-astropy
 	depends = python-healpy
 	depends = python-matplotlib
-	source = desiutil-3.4.2::https://github.com/desihub/desiutil/archive/refs/tags/3.4.2.tar.gz
-	sha256sums = c06792b17d1634ea0e3dad144d6bbab6146e7ba03343dfa4fc8d85882391e514
+	source = desiutil-3.5.2::https://github.com/desihub/desiutil/archive/refs/tags/3.5.2.tar.gz
+	sha256sums = eb375a47133ab47999c0d94078e729e8cf045034d0647e63c341a5f90344641f
 
 pkgname = python-desiutil

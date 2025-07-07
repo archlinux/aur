@@ -2,7 +2,7 @@
 
 _pkgname="desiutil"
 pkgname=python-desiutil
-pkgver=3.4.2
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="General purpose tools for DESI pipeline"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python-setuptools' 'python-requests' 'python-pyyaml' 'python-astropy'
          'python-healpy' 'python-matplotlib')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c06792b17d1634ea0e3dad144d6bbab6146e7ba03343dfa4fc8d85882391e514')
+sha256sums=('eb375a47133ab47999c0d94078e729e8cf045034d0647e63c341a5f90344641f')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
