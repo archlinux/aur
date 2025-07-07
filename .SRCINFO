@@ -1,6 +1,6 @@
 pkgbase = openai-chatgpt-nativefier
 	pkgdesc = OpnenAI ChatGPT desktop app (electron)
-	pkgver = 34.2.0
+	pkgver = 36.7.0
 	pkgrel = 1
 	url = https://chatgpt.com/
 	arch = armv7l
