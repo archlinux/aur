@@ -27,7 +27,7 @@ build() {
 
 pkgver() {
     cd "${srcdir}/SamRewritten"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
