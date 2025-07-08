@@ -1,0 +1,24 @@
+pkgbase = idesk-deb
+	pkgdesc = gives users of minimal wm's (fluxbox, blackbox, openbox, windowmaker...) icons on their desktop
+	pkgver = 0.7.5
+	pkgrel = 9
+	url = https://sourceforge.net/projects/idesk/
+	arch = x86_64
+	arch = i686
+	license = GPL / BSD
+	depends = automake
+	depends = gcc-libs
+	depends = pkgconfig
+	depends = libice
+	depends = imlib2
+	depends = librsvg
+	depends = libsm
+	depends = libxft
+	depends = xorg-server
+	conflicts = idesk
+	source = git+https://salsa.debian.org/debian/idesk#tag=debian/0.7.5-9
+	source = archlinux-bugAbstactIconConfig.patch
+	sha256sums = SKIP
+	sha256sums = a9ec1631376b983bff793c4faa276622cc1218f11f6dd90db9238c3496e472cd
+
+pkgname = idesk-deb

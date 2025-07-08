@@ -1,0 +1,25 @@
+From: Serhiy Reshetyuk (Poltawer) <reshtnk7atgmaildotcom>
+Subject: fixes a bug with AbstactIconConfig.
+
+--- a/src/AbstractClasses.h	2025-06-23 17:35:01.817881479 +0200
++++ b/src/AbstractClasses.h	2025-06-25 16:29:35.483695707 +0200
+@@ -284,7 +284,7 @@
+         virtual AbstractIconConfig * nextIcon()
+         {
+             // TODO - use try and catch here to grab out-of-bounds errors
+-            return iconConfigList[++iterCtr];
++            return ++iterCtr < iconConfigList.size() ? iconConfigList[iterCtr] : NULL;
+         }
+         virtual bool notFinished() { return iterCtr < iconConfigList.size(); }
+ 
+--- a/src/DesktopConfig.h	2025-06-23 17:35:01.818392694 +0200
++++ b/src/DesktopConfig.h	2025-06-25 16:13:30.343950032 +0200
+@@ -29,6 +29,8 @@
+ #include "Database.h"
+ #include "DesktopIconConfig.h"
+ #include <dirent.h>
++#include <unistd.h>
++#include <sys/types.h>
+ 
+ class DesktopConfig : public AbstractConfig
+ {
