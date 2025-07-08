@@ -104,16 +104,22 @@ python -m ngpt "Tell me about quantum computing"
 # Start an interactive chat session with conversation memory
 ngpt -i
 # Inside interactive mode, you can use commands like:
-# /help     - Show help menu
-# /save     - Save the current session
-# /sessions - List saved sessions
-# /reset    - Reset the conversation
+
+# /editor   - Open multiline editor for complex inputs
 # /exit     - Exit the session (also 'exit', 'quit', 'bye' without '/')
+# /help     - Show help menu
+# /reset    - Reset the conversation
+# /sessions - List saved sessions
+# /transcript - Show recent conversation exchanges
 
 # Keyboard shortcuts:
 # Ctrl+E    - Open multiline editor for complex inputs
 # Ctrl+C    - Exit the session
 # ↑/↓       - Navigate command history
+
+# Session management improvements:
+# - Commands like preview, load, rename, delete now default to the latest session
+# - Example: 'load' (loads the latest session) vs 'load 2' (loads session at index 2)
 
 # Return response without streaming
 ngpt --plaintext "Tell me about quantum computing"
