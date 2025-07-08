@@ -1,0 +1,22 @@
+pkgbase = python-langgraph-runtime-inmem
+	pkgdesc = Inmem implementation for the LangGraph API server.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://pypi.org/project/langgraph-runtime-inmem/
+	arch = any
+	license = Elastic-2.0
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-blockbuster
+	depends = python-langgraph
+	depends = python-structlog
+	depends = python-sse-starlette
+	depends = python-starlette
+	depends = python-langgraph-checkpoint
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-runtime-inmem/langgraph_runtime_inmem-0.3.4.tar.gz
+	sha256sums = eda7828f3ea07126e5265024b74a3fa9bf611633ad83ba3296ab9f51d89b7c0c
+
+pkgname = python-langgraph-runtime-inmem
