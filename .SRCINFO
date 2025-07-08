@@ -1,7 +1,7 @@
 pkgbase = anitr-cli
 	pkgdesc = Terminal üzerinden Türkçe anime izleme aracı
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xeyossr/anitr-cli
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = anitr-cli
 	optdepends = rofi-wayland: for --rofi mode (recommended for Wayland users)
 	provides = anitr-cli
 	conflicts = anitr-cli
-	noextract = anitr-cli-3.6.0
-	source = anitr-cli-3.6.0::https://github.com/xeyossr/anitr-cli/releases/download/v3.6.0/anitr-cli
+	noextract = anitr-cli-3.6.0-2
+	source = anitr-cli-3.6.0-2::https://github.com/xeyossr/anitr-cli/releases/download/v3.6.0-2/anitr-cli
 	sha256sums = SKIP
 
 pkgname = anitr-cli
