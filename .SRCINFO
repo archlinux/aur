@@ -1,16 +1,22 @@
 pkgbase = symphonie-bin
 	pkgdesc = A simple music player for local audio.
 	pkgver = 1.0.15
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kprakesh1984/symphonie
 	arch = x86_64
 	license = MIT
-	depends = electron
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libsecret
 	provides = symphonie
 	conflicts = symphonie
 	source = https://github.com/kprakesh1984/symphonie/releases/download/linux-aur-release-v1.0.15/symphonie-1.0.15.tar.gz
 	source = symphonie.desktop
+	source = 512x512.png
 	sha256sums = f35f6a4c3f37e15a47197e8f44426303d158b3c7ca41b42bea74c0ef3757b2f1
 	sha256sums = 0fc89a411f6c4c0b5881d2fad4bb5e5e4a24775664b2a44014493ae7acbd3031
+	sha256sums = 66d1d7932ff2c541ace259eca426f8557c4f5853f416562b2162d69e6b69b122
 
 pkgname = symphonie-bin
