@@ -1,0 +1,3 @@
+post_remove() {
+  chmod a+r /usr/lib/opera-developer/libffmpeg.so 2>/dev/null||:
+}

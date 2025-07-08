@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=opera-developer-ffmpeg-codecs-bin
+Target=opera-developer
+
+[Action]
+Description=Disabling default opera-developer libffmpeg.so...
+When=PostTransaction
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-developer/libffmpeg.so 2>/dev/null||:'
