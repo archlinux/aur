@@ -1,16 +1,21 @@
 pkgbase = python-mfusepy
 	pkgdesc = Ctypes bindings for the high-level API in libfuse 2 and 3
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/mxmlnkn/mfusepy
 	arch = any
 	license = ISC
-	checkdepends = python-nose
+	checkdepends = python-pytest
+	checkdepends = fuse2
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mfusepy/mfusepy-1.1.0.tar.gz
-	md5sums = 1ae1f62a73c41c902784f837e22c3a7d
+	source = https://files.pythonhosted.org/packages/source/m/mfusepy/mfusepy-1.1.1.tar.gz
+	source = 1.1.1-memory.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v1.1.1/examples/memory.py
+	source = 1.1.1-memory_nullpath.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v1.1.1/examples/memory_nullpath.py
+	md5sums = c28c666bfc19373ba963e7fbacf17438
+	md5sums = d4067f9d49797f7bcb8417592151c692
+	md5sums = 549b20a28c3dffed3c3f12787533acad
 
 pkgname = python-mfusepy
 	depends = python>=3.9

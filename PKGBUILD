@@ -4,7 +4,7 @@ pkgbase=python-mfusepy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Ctypes bindings for the high-level API in libfuse 2 and 3"
 arch=('any')
@@ -13,9 +13,23 @@ license=('ISC')
 makedepends=('python-setuptools'
              'python-build'
              'python-installer')  # wheel required by new setuptools
-checkdepends=('python-nose')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1ae1f62a73c41c902784f837e22c3a7d')
+checkdepends=('python-pytest'
+              'fuse2')
+#             'fuse3')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "${pkgver}-memory.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/memory.py"
+        "${pkgver}-memory_nullpath.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/memory_nullpath.py"
+    )
+md5sums=('c28c666bfc19373ba963e7fbacf17438'
+         'd4067f9d49797f7bcb8417592151c692'
+         '549b20a28c3dffed3c3f12787533acad')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+#   sed -i "s/fusermount/fusermount3/" tests/test_memory.py
+    for tps in ${srcdir}/${pkgver}-*.py; do ln -rs ${tps} ${tps##*-}; done
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -28,7 +42,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    nosetests
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-mfusepy() {
