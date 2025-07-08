@@ -1,0 +1,15 @@
+pkgbase = idris2-elab-util-git
+	pkgdesc = Utilities for elaborator reflection in Idris2
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/stefan-hoeck/idris2-elab-util
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = idris2
+	provides = idris2-elab-util
+	conflicts = idris2-elab-util
+	source = idris2-elab-util::git+https://github.com/stefan-hoeck/idris2-elab-util.git
+	sha256sums = SKIP
+
+pkgname = idris2-elab-util-git
