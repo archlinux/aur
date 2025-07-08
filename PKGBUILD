@@ -3,14 +3,21 @@
 _pkgname=idris2-pack
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='An Idris2 package manager with curated package collections'
 arch=('x86_64')
 url="https://github.com/stefan-hoeck/$_pkgname"
 license=('custom:BSD')
 depends=('chez-scheme' 'sh')
-makedepends=('git' 'idris2' 'idris2-filepath' 'idris2-toml-idr')
+makedepends=(
+	'git'
+	'idris2'
+	'idris2-filepath'
+	'idris2-elab-util'
+	'idris2-getopts'
+	'idris2-parser-toml'
+)
 optdepends=('idris2: Bootstrapping')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
