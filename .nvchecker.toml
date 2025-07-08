@@ -1,0 +1,5 @@
+[ohmysvg]
+source = "github"
+github = "sonnyp/OhMySVG"
+use_max_tag = true
+prefix = "v"
