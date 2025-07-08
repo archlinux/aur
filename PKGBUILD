@@ -3,8 +3,8 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.14.0
-pkgrel=1
+pkgver=3.13.3
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -36,7 +36,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/amagovpt/autenticacao.
         "autenticacao-gov-pt.install"
         "gcc15-fix.patch")
 
-sha512sums=('a5b4d2cb86783fcdafbec44af40047ea6b3d40241bdd994aedf208a107d54056a3e0707835a210e90236530ac990fa11ae0e2efc42dbbe536203ba10ef316090'
+sha512sums=('d865770c65345423766c56a698984de025d0ad57deef5f1a8224a2d03a7e70b18a7e26dadead0fb70e4332ffbedc4a2a3488b04ec9d2fc08e58cf77010a042de'
             '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f'
             '10f9023f0f5f5e38a8f1c32ac6af709f675aa0ca4952a26a4b07667b30498d43a6f5aae4ae18ed96d6aac28ccf4460925b21f61703bd30952f860dfd9bc5ffb1')
 
@@ -50,11 +50,13 @@ EOF
 # work around for upstream bug (GCC-15)
 cd ${srcdir}/${_pkgname}-${pkgver}
 patch -p1 < ${srcdir}/gcc15-fix.patch
+grep -nrl '/usr/local' | xargs -r sed -i "s|\/usr\/local|\/usr|g"
 }
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw
   qmake pteid-mw.pro
+  grep -nrl '/usr/local' | xargs -r sed -i "s|\/usr\/local|\/usr|g"
   make -j${nproc}
 }
 
