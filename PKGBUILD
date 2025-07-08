@@ -2,11 +2,12 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 pkgname=mrswatson-git
 _reponame=MrsWatson
-pkgver=0.9.8.r128.g32ec2b4
-pkgrel=3
+pkgver=0.9.8.r132.g7108aad
+pkgrel=1
 pkgdesc="Apply VST to WAV files or convert MIDI files to WAV using VST plugins from the CLI"
 arch=('x86_64')
-url="https://github.com/teragonaudio/$_reponame"
+#url="https://github.com/teragonaudio/$_reponame"
+url="https://github.com/actionless/$_reponame"
 license=('BSD')
 depends=(libx11 lib32-libx11 flac lib32-flac audiofile)
 makedepends=(gcc lib32-gcc-libs cmake git vst2sdk)
@@ -15,11 +16,9 @@ conflicts=(mrswatson-bin)
 source=(
 	git+$url
 	CMakeLists_vendor_arch.txt
-	long_filenames.patch
 )
 sha256sums=('SKIP'
-            '600fa7d38fc58239991786b6c78512ad0f00cd0933cde857517c107d6f0dc4a6'
-            'b1ec7eceea820407d2df0dfe1ba34fe7ea343bde2cc6dd439390a0748f6bcaf1')
+            '600fa7d38fc58239991786b6c78512ad0f00cd0933cde857517c107d6f0dc4a6')
 
 pkgver() {
 	cd $srcdir/$_reponame
@@ -34,7 +33,6 @@ prepare(){
 	rm -fr vendor/{flac,flac-config}
 	cp $srcdir/CMakeLists_vendor_arch.txt vendor/CMakeLists.txt
 	sed -i -e 's/-1 << kScaleBits/-1U << kScaleBits/g' vendor/audiofile/libaudiofile/modules/SimpleModule.h
-	patch -Np1 -i "${srcdir}/long_filenames.patch"
 }
 
 build(){
