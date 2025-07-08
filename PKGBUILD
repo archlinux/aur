@@ -2,7 +2,7 @@
 
 _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
-_pkgver=31.0.4
+_pkgver=31.1.0
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
@@ -65,6 +65,7 @@ depends=(
 makedepends=(
   "asio" # Deps of Websocket plugin (headers-only lib)
   "cmake"
+  "extra-cmake-modules"
   "ffnvcodec-headers" # Deps of NVENC plugin (headers-only lib)
   "jack" # Deps of JACK plugin
   "git"
@@ -112,7 +113,7 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed2
+  "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed3
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
 )
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v3.tar.xz")
@@ -121,7 +122,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "115d126c2a80b25beab359ee5cd753bde418836ff239a20c5d8a376a85373912"
+  "f98822ce22f53c83df36a3db888762598a62092daf2f45fd982e0242789cf10f"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
 )
 sha256sums_x86_64=("cb7225c7a937ac4cdc9c41700061f45cccc640d696902357782e57f8250bf43a")
@@ -138,7 +139,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   ## Mark log and titlebar version
-  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" UI/obs-app.cpp
+  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" frontend/OBSApp.cpp
 
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
   patch -Np1 < "$srcdir/bind_iface_eyeballed.patch"
