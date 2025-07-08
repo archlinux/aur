@@ -3,7 +3,7 @@
 pkgbase=glslviewer
 pkgname=('glslviewer' 'glslviewer-examples')
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Console-based GLSL Sandbox for 2D/3D shaders"
 arch=('i686' 'x86_64')
 url="https://github.com/patriciogonzalezvivo/glslViewer"
@@ -28,7 +28,8 @@ build() {
   cmake \
     -S "$pkgbase" \
     -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   make -C build
 }
