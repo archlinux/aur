@@ -7,13 +7,15 @@
 
 pkgname=folly
 pkgver=2025.07.07.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
 license=(Apache-2.0)
 depends=(
   boost-libs
+  boost
+  python
   bzip2
   double-conversion
   fmt
@@ -77,7 +79,7 @@ prepare() {
   # fix a noexcept requirement in executor
   patch --forward --strip=1 --input="$srcdir/fix-executor-noexcept.patch"
   # fix a noexcept requirement in executor
-  patch --forward --strip=1 --input="$srcdir/stringpiece-fmt.patch"
+  patch --forward --strip=1 --input="$srcdir/stringpiece-fmt.patch" || true #already merged, fail to patch is ok
 
   # Remove test with compilation error
   sed -i '/heap_vector_types_test/d' CMakeLists.txt
