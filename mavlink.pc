@@ -1,0 +1,8 @@
+prefix=/opt/ros/humble
+exec_prefix=/opt/ros/humble
+includedir=${prefix}/include
+
+Name: mavlink
+Description: MAVLink micro air vehicle marshalling / communication library
+Version: _ver_
+Cflags: -I${includedir}

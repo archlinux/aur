@@ -1,0 +1,19 @@
+pkgbase = ros2-humble-mavlink
+	pkgdesc = Marshalling / communication library for drones
+	pkgver = dev
+	pkgrel = 1
+	url = https://mavlink.io/
+	arch = x86_64
+	license = LGPL v3
+	makedepends = python
+	depends = ros2-humble
+	source = mavlink::git+https://github.com/mavlink/mavlink.git
+	source = pymavlink::git+https://github.com/ardupilot/pymavlink.git
+	source = mavlink-config.cmake
+	source = mavlink.pc
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 368c9fc36260e7cda49678146be75dba6ed66e32b0f46f028a6703a1a1af34b0
+	sha256sums = 9cf68c122541b320f88c67bfd7feba26240dc034617c299853da7e3737bba291
+
+pkgname = ros2-humble-mavlink
