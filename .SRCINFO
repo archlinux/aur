@@ -1,6 +1,6 @@
 pkgbase = edencommon
 	pkgdesc = Shared library for Watchman and Eden projects
-	pkgver = 2025.06.30.00
+	pkgver = 2025.07.07.00
 	pkgrel = 1
 	url = https://github.com/facebookexperimental/edencommon
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = edencommon
 	makedepends = boost
 	makedepends = cmake
 	makedepends = gtest
-	makedepends = mvfst
+	makedepends = mvfst=2025.07.07.00
 	depends = boost-libs
-	depends = fb303
+	depends = fb303=2025.07.07.00
 	depends = fmt
-	depends = folly
+	depends = folly=2025.07.07.00
 	depends = gcc-libs
 	depends = glibc
 	depends = google-glog
@@ -21,9 +21,9 @@ pkgbase = edencommon
 	provides = libedencommon_testharness.so
 	provides = libedencommon_utils.so
 	options = !lto
-	source = edencommon-2025.06.30.00.tar.gz::https://github.com/facebookexperimental/edencommon/archive/v2025.06.30.00.tar.gz
+	source = edencommon-2025.07.07.00.tar.gz::https://github.com/facebookexperimental/edencommon/archive/v2025.07.07.00.tar.gz
 	source = build-shared-libraries.patch
-	sha256sums = 0e27a1dd0272ca13eb0bc103d104ad1a6217a2fc16e06861c4ce81ebb976e741
+	sha256sums = ee6a9d4103fb3b2a41ff0c5c074d4974cefb5ae7c0b44acc7204d2265cfab161
 	sha256sums = 1f351de94a786c8be397c07454a48d28a0dd0b758924792e6e3f1f49405c492a
 
 pkgname = edencommon
