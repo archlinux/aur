@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=spookyghost-git
-pkgver=r75.837135d
+pkgver=r83.0f37165
 pkgrel=1
 pkgdesc="A procedural sprite animation tool made with the nCine"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ build() {
   cmake -S nCine -B nCine-build\
         -DCMAKE_BUILD_TYPE=Release\
         -DNCINE_DYNAMIC_LIBRARY=OFF\
-        -DIMGUI_VERSION_TAG=docking\
+        -DIMGUI_VERSION_TAG=v1.91.9b-docking\
         -DNCINE_PREFERRED_BACKEND=SDL2\
         -DNCINE_WITH_THREADS=OFF\
         -DNCINE_WITH_WEBP=OFF\
