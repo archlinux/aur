@@ -1,0 +1,18 @@
+# makepkg build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.tgz
+*.tar.xz
+*.tar.gz
+
+# Common build files
+*.log
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
