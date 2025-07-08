@@ -1,26 +1,28 @@
-# Maintainer: Butter Cat <ButteredCats@protonmail.com>
+# Maintainer: NecRaul <necraul@kuroneko.dev>
+# Contributor: Butter Cat <ButteredCats@protonmail.com>
+# Contributor: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=pywal-discord-git
-pkgver=r83.5ca587a
+pkgver=r98.8076fc4
 pkgrel=1
 pkgdesc="A script that dynamically generates discord theme based on the current wal colorscheme"
 arch=("any")
-url="https://github.com/FilipLitwora/pywal-discord"
+url="https://github.com/NecRaul/pywal-discord"
 license=("GPL3")
 makedepends=("git")
 conflicts=("pywal-discord")
 provides=("pywal-discord")
-source=("git+https://github.com/FilipLitwora/pywal-discord")
+source=("git+https://github.com/NecRaul/pywal-discord")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/pywal-discord"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" \
+        "$(git -C "${srcdir}/pywal-discord" rev-list --count HEAD)" \
+        "$(git -C "${srcdir}/pywal-discord" rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${pkgdir}"
-  install -Dm755 "${srcdir}/pywal-discord/pywal-discord" usr/bin/pywal-discord
-  mkdir -p usr/share/
-  cp -r "${srcdir}/pywal-discord/config" usr/share/pywal-discord
+    install -Dm755 "${srcdir}/pywal-discord/pywal-discord" "${pkgdir}/usr/bin/pywal-discord"
+    install -d "${pkgdir}/usr/share/pywal-discord"
+    cp -r "${srcdir}/pywal-discord/config/." "${pkgdir}/usr/share/pywal-discord/"
 }
