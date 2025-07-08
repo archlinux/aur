@@ -2,7 +2,7 @@
 pkgname=symphonie-bin
 pkgver=1.0.15
 pkgrel=1
-pkgdesc="A simple music player built with Electron."
+pkgdesc="A simple music player for local audio."
 arch=('x86_64')
 url="https://github.com/kprakesh1984/symphonie"
 license=('MIT')

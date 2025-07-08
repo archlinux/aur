@@ -1,5 +1,5 @@
 pkgbase = symphonie-bin
-	pkgdesc = A simple music player built with Electron.
+	pkgdesc = A simple music player for local audio.
 	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://github.com/kprakesh1984/symphonie
