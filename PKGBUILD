@@ -1,6 +1,6 @@
 # Maintainer: YangYuS8 <YangYuS8@163.com>
 
-pkgname=hexhub-bin
+pkgname=hexhub-bin-yangyus8
 pkgver=1.2.8
 pkgrel=1
 pkgdesc="Database, Docker, SSH, SFTP - All in one"

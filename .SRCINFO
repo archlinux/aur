@@ -1,4 +1,4 @@
-pkgbase = hexhub-bin
+pkgbase = hexhub-bin-yangyus8
 	pkgdesc = Database, Docker, SSH, SFTP - All in one
 	pkgver = 1.2.8
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = hexhub-bin
 	source = https://oss.hexhub.cn/plugin/HexHub-amd64-appimage-1.2.8.AppImage
 	sha256sums = e9e77aecc8e869aa0d3dfb2b871692f275ce88b5e927db933156e07a4b7a673f
 
-pkgname = hexhub-bin
+pkgname = hexhub-bin-yangyus8
