@@ -1,9 +1,10 @@
-# Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
+# Maintainer: insmtr <insmtr@insmtr.cn>
+# Contributor: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
 _pkgname=eigen_stl_containers
 pkgname=ros2-humble-eigen-stl-containers
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="This package provides a set of typedef's that allow using Eigen datatypes in STL containers"
 url="https://index.ros.org/p/eigen_stl_containers/"
 arch=('any')
@@ -13,7 +14,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("https://github.com/ros/eigen_stl_containers/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4780665fa22d7924072ae2fa22d98a32870becb15ce4e68c08c2de923a184583')
+sha256sums=('75f92ead9cd97e7ac54a4c148cf1d419c1facf087d702b0241e3e5a968c1590e')
 
 
 build() {
