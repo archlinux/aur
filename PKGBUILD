@@ -1,6 +1,6 @@
 # Maintainer: PandaDEV <contact@pandadev.net>
 pkgname=gauntlet-git
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc='Raycast-inspired open-source cross-platform application launcher with React-based plugins'
 arch=('x86_64')
