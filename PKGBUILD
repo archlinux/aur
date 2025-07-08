@@ -1,10 +1,11 @@
+# Maintainer Chris Werner Rau <aur@cwrau.io>
 # Maintainer: Nikolai Rodionov <allanger@zohomail.com>
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 # Contributor: Thomas Hobson <thomas /at/ hexf.me>
 
 pkgname=chart-testing
 pkgver=3.13.0 # renovate: datasource=github-releases depName=helm/chart-testing
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for linting and testing Helm charts'
 arch=('x86_64' 'aarch64' 'armv6h')
 url='https://github.com/helm/chart-testing'
