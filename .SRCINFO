@@ -1,13 +1,13 @@
 pkgbase = pikapika-appimage
 	pkgdesc = A comic browser，support Android / iOS / MacOS / Windows / Linux.
-	pkgver = 1.8.14
+	pkgver = 1.8.15
 	pkgrel = 1
 	url = https://github.com/niuhuan/pikapika
 	arch = x86_64
 	license = unknown
 	conflicts = pikapika-bin
 	options = !strip
-	source = https://github.com/niuhuan/pikapika/releases/download/v1.8.14/pikapika-v1.8.14-linux-x86_64-flutter_2.10.3.AppImage
+	source = https://github.com/niuhuan/pikapika/releases/download/v1.8.15/pikapika-v1.8.15-linux-x86_64-flutter_2.10.3.AppImage
 	sha256sums = SKIP
 
 pkgname = pikapika-appimage

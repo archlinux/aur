@@ -1,7 +1,7 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=pikapika-appimage
 pkgdesc="A comic browser，support Android / iOS / MacOS / Windows / Linux."
-pkgver=1.8.14
+pkgver=1.8.15
 pkgrel=1
 arch=("x86_64")
 _flutterver=2.10.3
