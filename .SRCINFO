@@ -35,6 +35,7 @@ pkgbase = ossia-score-git
 	optdepends = ndi-sdk
 	optdepends = libcoap
 	optdepends = avahi
+	optdepends = onnxruntime
 	provides = ossia-score-git
 	conflicts = ossia-score
 	replaces = i-score
