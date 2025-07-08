@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=wangle
-pkgver=2025.06.30.00
+pkgver=2025.07.07.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
@@ -14,9 +14,9 @@ url="https://github.com/facebook/wangle"
 license=(Apache-2.0)
 depends=(
   double-conversion
-  fizz
+  fizz=$pkgver
   fmt
-  folly
+  folly=$pkgver
   gcc-libs
   gflags
   glibc
@@ -31,7 +31,7 @@ makedepends=(
 checkdepends=(expat)
 provides=(libwangle.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2614f983588744dc977e36add2d16d5d83777e5d4163c27df5f0d3b5d4773edb')
+sha256sums=('dcda76ebe3ee6d7857ee0541942d09c49438ad14bff2e7d8c98c41d74f1e927c')
 
 prepare() {
   cd $pkgname-$pkgver
