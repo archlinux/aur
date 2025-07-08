@@ -2,8 +2,8 @@
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
 _appname=Grayjay
-pkgver=7
-pkgrel=5
+pkgver=8
+pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
