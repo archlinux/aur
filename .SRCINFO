@@ -1,7 +1,7 @@
 pkgbase = llama.cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
 	pkgver = b5809
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h
@@ -12,11 +12,12 @@ pkgbase = llama.cpp
 	depends = curl
 	depends = gcc-libs
 	depends = glibc
-	depends = libggml
 	depends = python
 	depends = python-numpy
 	depends = python-sentencepiece
 	optdepends = python-pytorch
+	conflicts = libggml
+	conflicts = ggml
 	options = lto
 	options = !debug
 	source = git+https://github.com/ggerganov/llama.cpp#tag=b5809
