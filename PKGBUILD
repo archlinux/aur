@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python314-freethreaded
-pkgver=3.14.0b3
+pkgver=3.14.0b4
 pkgrel=1
 _pyver=3.14.0
 _pybasever=3.14
@@ -41,7 +41,7 @@ source=(
   "https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz"{,.sigstore}
 )
 md5sums=(
-  'fe1c20dca37feeb82060788d6df42c9d'
+  'deed9d6e0eba630a5d085bb2df6f8da3'
   'SKIP'
 )
 
