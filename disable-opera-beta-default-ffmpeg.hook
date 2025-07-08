@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=opera-beta-ffmpeg-codecs-bin
+Target=opera-beta
+
+[Action]
+Description=Disabling default opera-beta libffmpeg.so...
+When=PostTransaction
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-beta/libffmpeg.so 2>/dev/null||:'

@@ -1,28 +1,28 @@
 # Maintainer: queenbiscuit311 <sarahacv6002 At gmail Dot com>
-# I don't know where the libffmpeg version numbers in this snap come from
+# Credit to oech3 for information on how to switch source from snap to nwjs-ffmpeg-prebuilt and for 'disable-opera-beta-default-ffmpeg.hook' as well as 'enable-opera-beta-default-ffmpeg.install'
 
 pkgname=opera-beta-ffmpeg-codecs-bin
-pkgver=118356
+pkgver=135.0.7049.96
+_nwjsver=0.98.2
 pkgrel=1
-pkgdesc="additional support for proprietary codecs for opera-beta, extracted directly from the chromium-ffmpeg snap"
+epoch=1
+pkgdesc="Additional support for proprietary codecs for opera-beta using prebuilt FFmpeg binaries made for NW.js."
 arch=('x86_64')
-url="https://snapcraft.io/chromium-ffmpeg/"
+url="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/"
 options=('!debug')
 license=('LGPL2.1')
 depends=('opera-beta')
 provides=('opera-beta-ffmpeg-codecs')
 conflicts=('opera-beta-ffmpeg-codecs')
-makedepends=('7zip')
 source=(
-  "https://api.snapcraft.io/api/v1/snaps/download/XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_69.snap"
+  "https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.98.2/0.98.2-linux-x64.zip"
+  disable-opera-beta-default-ffmpeg.hook
+  enable-opera-beta-default-ffmpeg.install
 )
-sha512sums=('2b4bbb266e435b461dc7b34920f68792c79c661c43a99dd16eb869e0b666038ec03977125f6c854a4eb1d509964e8d676f3ddf62beab67900d53cded40c4b9c7')
-
-prepare() {
-  7z x XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_69.snap -oextract
-}
+install=enable-opera-beta-default-ffmpeg.install
+sha512sums=('89db5a8afe5516bae2b8163d2d7370790d40206a87db3993e58ebc45add0aafea1fb8de6c46032357b1dab02b1ccdb7b736b61c2c0516f25766e05120674c4e0' 'ff68d7d86d97dad5b6aaa800b06b518d77a6d39e7f942512106e10c9df8e7348f3b93c1d842b30ed68665f8d723f6b1f66e393c06b6f3e2bf3a342aa04243090' '329a0576eae61c568816da98605ed95a67032bf3c4b6db8b4178489e6ed1fce5ecd3e1b1b7b9e440ba918405ed3af2c9fbd3d6e09bf12fce3f8fcffc9ea1809d')
 
 package() {
-  cd "$srcdir/extract/chromium-ffmpeg-$pkgver/chromium-ffmpeg"
-  install -Dm644 libffmpeg.so "$pkgdir/usr/lib/opera-beta/lib_extra/libffmpeg.so"
+  install -Dm644 "$srcdir/libffmpeg.so" "$pkgdir/usr/lib/opera-beta/lib_extra/libffmpeg.so"
+  install -Dm644 disable-opera-beta-default-ffmpeg.hook -t "$pkgdir/usr/share/libalpm/hooks"
 }
