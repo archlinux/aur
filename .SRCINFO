@@ -1,10 +1,10 @@
 pkgbase = kubectl-rakkess-bin
 	pkgdesc = Review Access - kubectl plugin to show an access matrix for k8s server resources
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/corneliusweig/rakkess
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	provides = kubectl-rakkess
 	conflicts = rakkess
 	conflicts = rakkess-git

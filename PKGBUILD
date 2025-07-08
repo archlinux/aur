@@ -3,10 +3,10 @@
 _pkgname=rakkess
 pkgname=kubectl-$_pkgname-bin
 pkgver=0.5.0 # renovate: datasource=github-releases depName=corneliusweig/rakkess
-pkgrel=2
+pkgrel=3
 pkgdesc="Review Access - kubectl plugin to show an access matrix for k8s server resources"
 url="https://github.com/corneliusweig/$_pkgname"
-license=('APACHE')
+license=('Apache-2.0')
 arch=('x86_64')
 provides=(kubectl-$_pkgname)
 source=("$_pkgname-$pkgver.tar.gz::${url/$_pkgname/rakkess}/releases/download/v$pkgver/${_pkgname}-amd64-linux.tar.gz")
