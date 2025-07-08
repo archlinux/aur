@@ -1,15 +1,15 @@
+# Maintainer Chris Werner Rau <aur@cwrau.io>
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 
-pkgname=telepresence2
+_name=telepresence
+pkgname=${_name}2
 pkgver=2.23.3 # renovate: datasource=github-releases depName=telepresenceio/telepresence
-pkgrel=1
+pkgrel=2
+url="https://github.com/telepresenceio/$_name"
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
-arch=('x86_64')
-license=('Apache')
-url="https://github.com/telepresenceio/telepresence"
+license=('Apache-2.0')
+arch=(any)
 makedepends=('go' 'git' 'make' 'jq')
-backup=()
-depends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/telepresenceio/telepresence/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('59aebcf63228b5e7e5df0bc07af8dfa9')
 
