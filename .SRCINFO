@@ -1,0 +1,17 @@
+pkgbase = codellm
+	pkgdesc = AI code editor that enhances developer productivity, bundled with the AI super assistant, ChatLLM
+	pkgver = 1.99.32505
+	pkgrel = 1
+	url = https://github.com/abacusai/codellm-releases
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	optdepends = libgnome-keyring: for keyring support
+	provides = codellm
+	conflicts = codellm-bin
+	source_x86_64 = https://github.com/abacusai/codellm-releases/releases/download/1.99.32505/CodeLLM-linux-x64-1.99.32505.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/abacusai/codellm-releases/releases/download/1.99.32505/CodeLLM-linux-arm64-1.99.32505.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = codellm
