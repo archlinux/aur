@@ -1,0 +1,28 @@
+pkgbase = anthywl-git
+	pkgdesc = Japanese input method for Wayland compositors
+	pkgver = r90.2fad24a
+	pkgrel = 1
+	url = https://github.com/tadeokondrak/anthywl
+	install = anthywl-git.install
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	depends = anthy
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = libscfg
+	depends = libvarlink
+	depends = libxkbcommon
+	depends = pango
+	depends = wayland
+	depends = wayland-protocols
+	provides = anthywl=r90.2fad24a
+	conflicts = anthywl
+	source = anthywl::git+https://github.com/tadeokondrak/anthywl.git
+	sha512sums = SKIP
+
+pkgname = anthywl-git

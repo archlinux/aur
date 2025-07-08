@@ -1,0 +1,7 @@
+/.vscode/
+/anthywl/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
