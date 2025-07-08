@@ -1,7 +1,7 @@
 # Maintainer: Hans Peter Buhr <hanspeterbuhr@posteo.net>
 pkgname=wiggly-stt
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Local speech-to-text transcription with whisper.cpp, voice recording, and clipboard integration"
 arch=('any')
 url="https://github.com/hansp27/wiggly-stt"
