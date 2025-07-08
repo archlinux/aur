@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index 8df9e24..1023412 100644
+index 4491e0b..a1ca5c1 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -45,8 +44,7 @@ override CXXFLAGS+= \
+@@ -46,8 +46,7 @@ override CXXFLAGS+= \
    -ftemplate-depth=100 \
    -pipe \
    $(INCS) \
@@ -13,24 +13,24 @@ index 8df9e24..1023412 100644
  ifndef ARCH
  	ARCH=AMD64
 diff --git a/src/main.cpp b/src/main.cpp
-index 789b7f4..984324a 100644
+index 8c65d71..19624a9 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -28,8 +28,6 @@
- #include "macro.hpp"
+@@ -30,8 +30,6 @@
  #include "guard.hpp"
+ #include "ctags.hpp"
  
 -extern char __GIT_COMMIT;
 -
  namespace po = boost::program_options;
  namespace fs = std::filesystem;
  
-@@ -328,7 +326,7 @@ int main(int argc, char** argv)
+@@ -362,7 +360,7 @@ int main(int argc, char** argv)
  
              if(vm.count("version")) 
              {
--                std::cout << "NesFab " << VERSION << " (" << GIT_COMMIT << ", " << __DATE__ << ")\n";
-+                std::cout << "NesFab " << VERSION << " (" << __DATE__ << ")\n";
-                 std::cout << 
-                     "Copyright (C) 2023, Patrick Bene\n"
-                     "This is free software. "
+-                std::cout << "NesFab " << VERSION << " (" << GIT_COMMIT << ", " << __DATE__ << ")";
++                std::cout << "NesFab " << VERSION;
+ #ifdef LEGAL
+                 std::cout << " (ISA=legal)";
+ #endif
