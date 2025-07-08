@@ -2,7 +2,7 @@
 
 pkgname=python-texture2ddecoder
 _module='texture2ddecoder'
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="a python wrapper for Perfare's Texture2DDecoder"
 url="https://github.com/K0lb3/texture2ddecoder"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a4e511f2ea56af1293b3f1d290ca30820b2a6233181929c50d79392b78ec04ea')
+sha256sums=('7767e865394ad8e0a0609d275caf3e8c99d03df107dfb961cb90ea21c9295dc2')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
