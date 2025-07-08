@@ -3,7 +3,7 @@
 _reponame=Stirling-PDF
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
@@ -14,6 +14,7 @@ license=("MIT")
 backup=("etc/${_pkgname}/${_pkgname}.env")
 depends=(
     "fontconfig"
+    "ghostscript"
     "java-runtime-headless>=21"
     "libreoffice"
     "ocrmypdf"
@@ -23,7 +24,6 @@ depends=(
     "python-pillow"
     "python-unoserver"
     "python-weasyprint"
-    "qpdf"
     "tesseract-data-eng"
     "unpaper"
 )
@@ -49,8 +49,8 @@ source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_repon
         "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('1725394e4169715392e26ec5b81b3e1f8dfd8c66f9c8bc611566d2ba89070f79'
-            '002eb1925c552f2d8c62efa2d5fb730819f1f9ee6cc5abceeaa9a8e5f8df298e'
+sha256sums=('a32de483ad6d66ca6ab105fa5f0b2ca97f916c971f58f9d40ac7a2396f63686e'
+            '568d4e273b3135223aedb676caf20c04103ef56350a00ee6db900ee1147e3890'
             'd395992889fdf60de430509cd5866fc4606548aa1ba8f134b7e6bd4e29f293c9'
             '815d0d2c05daf40384a27413fba1dbd9d7db749a98b881d3ed113c164a83e833'
             '67654b2198898e23d0cf35829e83cc0585b7335b8bd7fcd9da0e4a2ce90082d6'
