@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Symphonie
+GenericName=Music Player
+Comment=A simple music player built with Electron.
+Exec=symphonie %U
+Icon=symphonie
+Terminal=false
+Type=Application
+Keywords=music;audio;player;mp3;flac;aac;ogg;wav;opus;symphonie;
+StartupNotify=true
+MimeType=audio/mpeg;audio/mp4;audio/aac;audio/wav;audio/ogg;audio/x-flac;audio/flac;audio/opus;
+Categories=AudioVideo;Audio;

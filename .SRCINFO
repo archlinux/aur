@@ -1,0 +1,17 @@
+pkgbase = symphonie-bin
+	pkgdesc = A simple music player built with Electron.
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = https://github.com/kprakesh1984/symphonie
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	provides = symphonie
+	conflicts = symphonie
+	source = https://github.com/kprakesh1984/symphonie/releases/download/linux-aur-release-v1.0.15/symphonie-1.0.15.tar.gz
+	sha256sums = f35f6a4c3f37e15a47197e8f44426303d158b3c7ca41b42bea74c0ef3757b2f1
+
+pkgname = symphonie-bin
