@@ -1,14 +1,14 @@
-# Maintainer: Anthony <.com>
+# Maintainer: Anthonylucianodev@proton<.me>
 pkgname=deepseek-cli
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Cliente CLI para DeepSeek com contexto de arquivos"
+pkgdesc="Terminal CLI client for DeepSeek with file context support"
 arch=('any')
-url="https://github.com/seuusuario/deepseek-cli-assistant"
+url="https://github.com/anthonyluciano/deepseek-cli"
 license=('MIT')
 depends=('python' 'python-requests' 'python-rich' 'python-tqdm' 'python-dotenv')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/anthonyluciano/deepseek-cli/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
