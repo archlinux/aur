@@ -1,0 +1,21 @@
+pkgbase = piri-git
+	pkgdesc = A simple program to make the firefox pip persist across workspaces in niri
+	pkgver = r15.ca97b74
+	pkgrel = 1
+	url = https://github.com/morr0ne/piri
+	arch = x86_64
+	arch = aarch64
+	license = EUPL-1.2
+	makedepends = cargo
+	makedepends = just
+	makedepends = git
+	makedepends = clang
+	makedepends = lld
+	depends = gcc-libs
+	depends = glibc
+	provides = piri
+	conflicts = piri
+	source = git+https://github.com/morr0ne/piri.git
+	sha256sums = SKIP
+
+pkgname = piri-git
