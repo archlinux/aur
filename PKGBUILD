@@ -5,18 +5,12 @@ pkgver=r68.dacac70
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
-license=('GPL3')
+license=('GPL-3.0-only')
 arch=('x86_64')
-
 makedepends=('cargo' 'gtk4' 'pkg-config')
-
 depends=('gtk4')
 optdepends=('libadwaita: for Adwaita styling')
-
 source=("git+https://github.com/PaulCombal/SamRewritten.git")
-
-# Generate these using `updpkgsums` after setting the `source` array.
-# cd /path/to/PKGBUILD && makepkg -g >> PKGBUILD (then copy/paste)
 sha256sums=('SKIP')
 
 prepare() {
