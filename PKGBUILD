@@ -1,13 +1,13 @@
 pkgname=nerdfonts-installer-bin
-pkgver=2025.06.05.1
-pkgrel=3
+pkgver=2025.07.08.1
+pkgrel=1
 pkgdesc="Executable binary to install Nerd Fonts"
 arch=('x86_64')
 url="https://github.com/fam007e/nerd_fonts_installer"
 license=('MIT')
 depends=('curl' 'unzip' 'fontconfig' 'shc') 
 source=("https://github.com/fam007e/nerd_fonts_installer/releases/download/v${pkgver}/nerdfonts-installer-${pkgver}.tar.gz")
-sha256sums=('ad3153d12589b61e6e465fd8e9cbca572be1f6d237d3896d8081b1b1f5485b72')
+sha256sums=('0779f0757eba0593d39b6d590564aea8d10ba95a1c26a300cc17a6b6f6179dc2')
 
 build() {
     # Change to the directory where the script is located

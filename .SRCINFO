@@ -1,7 +1,7 @@
 pkgbase = nerdfonts-installer-bin
 	pkgdesc = Executable binary to install Nerd Fonts
-	pkgver = 2025.06.05.1
-	pkgrel = 3
+	pkgver = 2025.07.08.1
+	pkgrel = 1
 	url = https://github.com/fam007e/nerd_fonts_installer
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = nerdfonts-installer-bin
 	depends = unzip
 	depends = fontconfig
 	depends = shc
-	source = https://github.com/fam007e/nerd_fonts_installer/releases/download/v2025.06.05.1/nerdfonts-installer-2025.06.05.1.tar.gz
-	sha256sums = ad3153d12589b61e6e465fd8e9cbca572be1f6d237d3896d8081b1b1f5485b72
+	source = https://github.com/fam007e/nerd_fonts_installer/releases/download/v2025.07.08.1/nerdfonts-installer-2025.07.08.1.tar.gz
+	sha256sums = 0779f0757eba0593d39b6d590564aea8d10ba95a1c26a300cc17a6b6f6179dc2
 
 pkgname = nerdfonts-installer-bin

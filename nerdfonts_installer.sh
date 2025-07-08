@@ -5,7 +5,7 @@ detect_os_and_set_package_manager() {
     if [ -f /etc/os-release ]; then
         . /etc/os-release
         case "$ID" in
-            ubuntu|debian)
+            ubuntu|debian|linuxmint)
                 PKG_MANAGER="sudo apt-get update && sudo apt-get install -y"
                 ;;
             fedora)
@@ -14,7 +14,7 @@ detect_os_and_set_package_manager() {
             centos|rhel)
                 PKG_MANAGER="sudo yum install -y"
                 ;;
-            arch)
+            arch|manjaro)
                 PKG_MANAGER="sudo pacman -Syu --noconfirm"
                 ;;
             *)
