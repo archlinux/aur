@@ -2,7 +2,7 @@
 
 pkgname=moz-phab
 _gitpkgname=review
-pkgver=1.11.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Phabricator review submission/management tool'
 arch=('any')
@@ -26,6 +26,7 @@ makedepends=(
 checkdepends=(
   'git'
   'hg-evolve'
+  'jujutsu'
   'mercurial'
   'python-immutabledict'
   'python-pytest'
@@ -33,6 +34,7 @@ checkdepends=(
 optdepends=(
   'git: support for Git repositories'
   'hg-evolve: support for evolve, a Mercurial extension'
+  'jujutsu: support for Jujutsu repositories'
   'mercurial: support for Mercurial repositories'
 )
 
@@ -41,29 +43,15 @@ source=(
   'disable-auto-update.patch'
   'disable-exception-reporting.patch'
   'disable-telemetry.patch'
-  'phabricator-D252875.patch'
-  'phabricator-D254820.patch'
 )
 
-sha512sums=('ac277d96c7b1893d189a60389b16caa01580dbef0deef1a6b7502aa1875754ba5bf46ed5a5f93909678c6b28159c6fb2d08d0e9d00d748d440dfdfbf0a3fabf8'
+sha512sums=('580d3e732888eef30f505de9079191fa82fc25be03eab125bb0333adeef0f7be5589a3fded06f368fd36cc05321f085f27ed88feb8d794a3f6b3d78ade644713'
             'dd5fd9467261866549596836f72dd7d28519f71bce6e838bb1a0de8f607fa7dd7407abd5ac3a02fd8ab139e8a53affef05a73f8597ba0367be15a4e78811ca54'
             '35087a5d373f7ec1c726204b272454e08b8e43469000eb415f218adeb5606e7f48d603191571f88f23295c15b97275866ac117a5d87d0ea9e7ffefc837fefe43'
-            'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6'
-            '4c8606a18f24a92574f81a839d0b4f2639fb49d545c7c1d6fe756a61b941d4c1b46345c8a6356c3348458d8ef5b66c5628294f1ad3422a0c035d1afe8d8e0396'
-            '8e70c561f6ef347c1faefcda0ca35eb7d2f44783a60aedb16abbf8ed825377120c58ae7b470a4656748a9ba392379a7f43865ec4e56b1d44c0397a3b64f8d4a4')
+            'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
-
-  # Remove this patch once upstream has included D252875 and D254820
-  # in a stable release.
-  # See also:
-  # - https://bugzilla.mozilla.org/show_bug.cgi?id=1970907
-  # - https://phabricator.services.mozilla.com/D252875
-  # - https://phabricator.services.mozilla.com/D254820
-  echo >&2 'Applying patch to fix distracting warning'
-  patch -p1 < ../phabricator-D252875.patch
-  patch -p1 < ../phabricator-D254820.patch
 
   # Do not let the package upgrade itself
   patch -p1 < ../disable-auto-update.patch
