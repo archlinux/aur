@@ -1,6 +1,6 @@
 # Maintainer: Mateus Lacerda <mlacerdam.ai@gmail.com>
 pkgname=term_planner
-pkgver=0.1.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A simple planner with dunst based notifications"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 noextract=('*.tar.gz')
 sha256sums=(
-  '70f550314e1169e85197cf6ec1eed18edf421db76164db957f0e8414222807c0'
+  '83236233083c5f900558630663a7310977a3f00e68097736d52a7636d5e80f19'
   'SKIP'
   'SKIP'
   'SKIP'
