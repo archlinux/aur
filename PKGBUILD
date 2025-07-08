@@ -1,9 +1,10 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Daniel Fichtinger <daniel AT ficd DOT ca>
+# Contributor:  Vitalii Kuzhdin <vitaliikuzhdin AT gmail DOT com>
 
 _pkgname="tex-fmt"
 pkgname="${_pkgname}-bin"
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="An extremely fast LaTeX formatter written in Rust"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/WGUNDERWOOD/${_pkgname}"
@@ -17,11 +18,11 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-linux.tar.gz")
 source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-armv7hf-linux.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux.tar.gz")
-sha256sums=('15ab0e5ad5cc45dca930d94172ae0c018f11b4c7838d425fbc1c3561d0599631'
+sha256sums=('e8b41ca2bcfe6e1d03bd62e486a2e7439bcfeb0de8f03fdbcc1d26cefb251109'
             'd909d9843225ff2ccec3a74f3b13c889fb0bfabb7b3801dcad68505a872c941d')
-sha256sums_aarch64=('a2e91ac4d198b68b57810da18a04e5b7a6286dc956aa0a6ae5a7ad45b6fe47c2')
-sha256sums_armv7h=('26230ae444530db0249f0cea90e5991c840e054bdd4b752cdc0f845372dc351c')
-sha256sums_x86_64=('ee5e69ef4f3ab719649e241c7027ab4f3ee3de17d3f956a9d6c5b14df0724297')
+sha256sums_aarch64=('9ef94afc284c554f8803a1c7c45d520500cc5128cfdc83d9711c9c60fd741475')
+sha256sums_armv7h=('18141cb6ed472eb348a569be6576b94876e6dd111a398f11b260c0a284fd531e')
+sha256sums_x86_64=('3fcd82c96992f35efcfd9c5b5f3ca2d6ab2f7a2789ebca1db3b466c421d86528')
 
 prepare() {
   cd "${srcdir}"
