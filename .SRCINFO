@@ -1,10 +1,10 @@
 pkgbase = kube-hunter-bin
 	pkgdesc = Hunt for security weaknesses in Kubernetes clusters
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aquasecurity/kube-hunter
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	conflicts = kube-hunter
 	conflicts = kube-hunter-git
 	source = kube-hunter-0.6.8::https://github.com/aquasecurity/kube-hunter/releases/download/v0.6.8/kube-hunter-linux-x86_64-refs.tags.v0.6.8
