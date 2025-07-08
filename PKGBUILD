@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.06.30.00
+pkgver=2025.07.07.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -14,6 +14,8 @@ url="https://github.com/facebook/folly"
 license=(Apache-2.0)
 depends=(
   boost-libs
+  boost
+  python
   bzip2
   double-conversion
   fmt
@@ -57,12 +59,14 @@ source=(
   "fix-setup-py-for-python-extensions.patch"
   "fix-cython-build.patch"
   "fix-executor-noexcept.patch"
+  "stringpiece-fmt.patch"
 )
-sha256sums=('40b43ef4895f6a82697577b049daec0cb48e2281cef341ca10c2ce09a4be9624'
+sha256sums=('01d2deaba1127dfc94948a73667deffaa5ea0ab76c3f1d4bccbc2f4b7f6b7262'
             'c4b66347a9db6ddedb516e2a778a7a37e26a4280ce2c0c9fdbac11d8c8190c55'
             'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
             '52ae2232a3488aaf2894d98d626c9c04d88cd8d948e99a680ab07edd9ad1f3f1'
-            'b3595e5cd45d4ef5d485549693c11c97b3b53766d06869821b40ad214c61bec2')
+            'b3595e5cd45d4ef5d485549693c11c97b3b53766d06869821b40ad214c61bec2'
+            '078fee7e9c13ca813fc339929b919b60f412166b1fdc5f0c3c6f0eb3073c61e7')
 
 prepare() {
   cd $pkgname
@@ -74,6 +78,8 @@ prepare() {
   patch --forward --strip=1 --input="$srcdir/fix-cython-build.patch"
   # fix a noexcept requirement in executor
   patch --forward --strip=1 --input="$srcdir/fix-executor-noexcept.patch"
+  # fix a noexcept requirement in executor
+  patch --forward --strip=1 --input="$srcdir/stringpiece-fmt.patch"
 
   # Remove test with compilation error
   sed -i '/heap_vector_types_test/d' CMakeLists.txt
@@ -113,7 +119,6 @@ build() {
     -DPACKAGE_VERSION="$pkgver" \
     -DCMAKE_CXX_FLAGS="-mpopcnt -mbmi -mbmi2 -ltbb" \
     -DPYTHON_PACKAGE_INSTALL_DIR=$pkgdir/usr \
-    -DCMAKE_CXX_STANDARD=17 \
     -Wno-dev
   cmake --build build
 }

@@ -1,0 +1,34 @@
+From 74b2a5da39f05cdf3d754e5cc90cb86161f70279 Mon Sep 17 00:00:00 2001
+From: Yedidya Feldblum <yfeldblum@meta.com>
+Date: Mon, 7 Jul 2025 09:59:31 -0700
+Subject: [PATCH] fix StringPiece conversion to fmt::format_string (#2471)
+
+Summary:
+Pull Request resolved: https://github.com/facebook/folly/pull/2471
+
+Only define conversion `StringPiece::operator fmt::string_view` for older versions of `fmt`.
+
+Fixes: https://github.com/facebook/folly/issues/2468.
+
+Reviewed By: DenisYaroshevskiy
+
+Differential Revision: D77799250
+
+fbshipit-source-id: 2948fe4f8f9c0811cb92646abc7c36acce6bfa38
+---
+ folly/Range.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/folly/Range.h b/folly/Range.h
+index 460f98de22a..c342a4c8eb4 100644
+--- a/folly/Range.h
++++ b/folly/Range.h
+@@ -714,7 +714,7 @@ class Range {
+     return Tgt(b_, walk_size());
+   }
+ 
+-#if FMT_VERSION
++#if FMT_VERSION < 100000
+   template <
+       typename IterType = Iter,
+       std::enable_if_t<detail::range_is_char_type_v_<IterType>, int> = 0>
