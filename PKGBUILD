@@ -31,7 +31,8 @@ build() {
     cmake \
         -S "${pkgbase%-git}" \
         -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     make -C build
 }
