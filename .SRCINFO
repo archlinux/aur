@@ -1,0 +1,15 @@
+pkgbase = idris2-prettier-git
+	pkgdesc = Bernarnt style pretty-printer for Idris2
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/Z-snails/prettier
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = idris2
+	provides = idris2-prettier
+	conflicts = idris2-prettier
+	source = idris2-prettier::git+https://github.com/Z-snails/prettier.git
+	sha256sums = SKIP
+
+pkgname = idris2-prettier-git
