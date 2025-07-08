@@ -1,0 +1,5 @@
+[ruby-debug-inspector]
+source = "github"
+github = "banister/debug_inspector"
+prefix = "v"
+use_latest_release = true

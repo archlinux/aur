@@ -1,0 +1,20 @@
+pkgbase = ruby-debug-inspector
+	pkgdesc = Ruby wrapper for the MRI 2.0 debug_inspector API
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/banister/debug_inspector
+	arch = x86_64
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-minitest
+	checkdepends = ruby-rake
+	checkdepends = ruby-rake-compiler
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = debug_inspector-1.2.0.tar.gz::https://github.com/banister/debug_inspector/archive/v1.2.0.tar.gz
+	source = github-pr-42.patch
+	sha512sums = e4328b1e36c1b196219d7e278dec2da730293857a6eb147e653f9ab6ca3628f6115f7661a98f0ca828a1a9657394aeb1392f71842a5833d8bb1c438567d4096f
+	sha512sums = 4adef491642acec6196d4ac4db666caa2c70a8d6c54a3aa6972dff0bd9a0de09ccc3f2c16dedacdecc24bd27eefe0ab1f12818fcfa95cc7a7bed695e2e57c791
+
+pkgname = ruby-debug-inspector
