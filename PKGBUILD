@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/patriciogonzalezvivo/glslViewer"
 license=('BSD-3-Clause')
 depends=('glu' 'glfw-x11' 'ncurses' 'ffmpeg')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'libxrandr' 'libxinerama' 'libxi')
 source=("$pkgbase::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=$pkgver")
 md5sums=('SKIP')
 
