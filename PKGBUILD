@@ -3,16 +3,17 @@
 pkgname=llama.cpp-cuda-f16
 _pkgname="${pkgname%-cuda-f16}"
 pkgver=b5839
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations and F16)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
 depends=(
+  cuda
   curl
   gcc-libs
   glibc
-  libggml-cuda-f16
+  nvidia-utils
   python
   python-numpy
   python-sentencepiece
@@ -23,7 +24,7 @@ makedepends=(
 )
 optdepends=(python-pytorch)
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(${_pkgname} libggml ggml)
 options=(lto !debug)
 source=(
   "git+${url}#tag=${pkgver}"
@@ -43,7 +44,16 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_CURL=ON
     -DLLAMA_BUILD_TESTS=OFF
-    -DLLAMA_USE_SYSTEM_GGML=ON
+    -DLLAMA_USE_SYSTEM_GGML=OFF
+    -DGGML_ALL_WARNINGS=OFF
+    -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
+    -DGGML_BUILD_EXAMPLES=OFF
+    -DGGML_BUILD_TESTS=OFF
+    -DGGML_LTO=ON
+    -DGGML_RPC=ON
+    -DGGML_CUDA=ON
+    -DGGML_CUDA_F16=ON
+    -DGGML_NATIVE=ON
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
