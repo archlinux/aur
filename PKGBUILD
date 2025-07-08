@@ -1,6 +1,8 @@
+# Maintainer Chris Werner Rau <aur@cwrau.io>
+
 pkgname=xss-lock-session
 pkgver=0.3.0 # renovate: datasource=github-tags depName=xdbob/xss-lock
-pkgrel=3
+pkgrel=4
 pkgdesc="Forked version of xss lock that allows specifying a session"
 arch=('i686' 'x86_64')
 url="https://github.com/xdbob/xss-lock"

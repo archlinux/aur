@@ -1,7 +1,7 @@
 pkgbase = xss-lock-session
 	pkgdesc = Forked version of xss lock that allows specifying a session
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xdbob/xss-lock
 	arch = i686
 	arch = x86_64
