@@ -1,11 +1,12 @@
 pkgbase = kftui-bin
 	pkgdesc = 🦀 ⚡ kubectl port forward manager, with support for UDP and proxy connections through k8s clusters
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hcavarsan/kftray
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
+	provides = kftui
 	conflicts = kftui
 	conflicts = kftui-git
 	source_x86_64 = kftui-0.19.0-x86_64::https://github.com/hcavarsan/kftray/releases/download/v0.19.0/kftui_linux_amd64
