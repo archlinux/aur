@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=kicost
 _pkgname=KiCost
-pkgver=1.1.18
+pkgver=1.1.20
 pkgrel=1
 pkgdesc="KiCAD script to convert BOM xml into spreadsheet"
 url="https://github.com/xesscorp/KiCost/"
@@ -26,7 +26,7 @@ arch=('any')
 # Pypi source is missing requirements.txt and setup.py fails :-/
 #source=("https://pypi.python.org/packages/source/k/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xesscorp/KiCost/archive/v$pkgver.tar.gz")
-sha512sums=('442cd84024a6ddaa1bfc5a85e16011c2c3e2b55d09497d87ac04b378e99ec88cb36c278348e5220e4520fbf134396b23994d28287a382d94454cbca18c4facaa')
+sha512sums=('6294b5b92c9a94a22a9ff6243917cff7979e7a38c5187635582e7eaff16658522b5b6afea6c8a4adfd6e035f6839cefcb98bea985de7e6aecd5dcaed3697b348')
 
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
