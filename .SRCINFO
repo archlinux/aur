@@ -1,6 +1,6 @@
 pkgbase = nekoray-mahdi-zarei-bin
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: sing-box) - Mahdi-zarei fork
-	pkgver = 4.3.6
+	pkgver = 4.3.7
 	pkgrel = 1
 	url = https://github.com/Mahdi-zarei/nekoray
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = nekoray-mahdi-zarei-bin
 	conflicts = nekoray-git
 	conflicts = nekoray-bin
 	options = !debug
-	source = nekoray-4.3.6.zip::https://github.com/Mahdi-zarei/nekoray/releases/download/4.3.6/nekoray-4.3.6-2025-07-07-linux64.zip
+	source = nekoray-4.3.7.zip::https://github.com/Mahdi-zarei/nekoray/releases/download/4.3.7/nekoray-4.3.7-2025-07-08-linux64.zip
 	source = nekoray.desktop
 	source = nekoray.sh
-	sha256sums = 3c16f850a94f65dd5fef91e43af4b24875dd4737248a35713d23c065c5e21173
+	sha256sums = 68054a98247a0dfe5618aa7762d44404ac859e1c9c447a806b7e41172eff7f6b
 	sha256sums = fcc65aa60bd743aac9601edb0f2f6da1e9a84612dd8fd9e17cb16995746ef96a
 	sha256sums = 5a7cbb61608137924fb1ba3ecb057adb7973f5775f64758736b447041fa15377
 
