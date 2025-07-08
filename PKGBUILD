@@ -2,8 +2,7 @@ pkgname=pokeclicker-platinum
 pkgver=0.10.24_1  # Arch-friendly version string
 pkgrel=1
 epoch=1
-pkgdesc="PokéClicker Platinum – Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger
- (Electron AppImage)"
+pkgdesc="PokéClicker Platinum – Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Electron AppImage)"
 arch=('x86_64')
 url="https://github.com/wheat32/pokeclicker"
 license=('ISC')
