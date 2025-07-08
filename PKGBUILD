@@ -1,4 +1,4 @@
-# insmtr: insmtr <insmtr@insmtr.cn>
+# Maintainer: insmtr <insmtr@insmtr.cn>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-pymavlink
