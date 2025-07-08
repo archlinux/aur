@@ -1,6 +1,7 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
+DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -fLC - -o %o %u')
 pkgname=asciisec
 pkgver=0.7.2
 pkgrel=4
