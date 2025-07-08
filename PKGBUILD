@@ -3,9 +3,9 @@
 _pkgname=helmrelease-tools
 pkgname=$_pkgname
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to work with flux HelmReleases"
-license=('APACHE')
+license=('Apache-2.0')
 arch=('x86_64')
 depends=("yq" "git" "helm" "fd" "ripgrep" "helm-diff" "zsh")
 source=("hr" "hrDiff" "hrInstall" "hrUpgrade" "helmrelease" "hrUninstall" "_$pkgname")
