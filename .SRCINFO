@@ -1,0 +1,43 @@
+pkgbase = gammu-git
+	pkgdesc = GNU All Mobile Management Utilities. Latest git checkout.
+	pkgver = 1.42.0+290.r14395.20240812.2df3a8a96
+	pkgrel = 1
+	url = https://github.com/gammu/gammu
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = bluez-libs
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gettext
+	makedepends = mariadb-libs
+	makedepends = libgudev
+	makedepends = libusb
+	makedepends = postgresql-libs
+	makedepends = python>=3
+	makedepends = python-sphinx
+	makedepends = sed
+	makedepends = unixodbc
+	depends = bash
+	depends = glib2
+	depends = glibc
+	depends = curl
+	depends = libdbi
+	depends = libbluetooth.so
+	depends = libgudev-1.0.so
+	depends = libmariadb.so
+	depends = libodbc.so
+	depends = libpq.so
+	depends = libusb-1.0.so
+	provides = gammu=1.42.0+290.r14395.20240812.2df3a8a96
+	provides = gammu-udev=1.42.0+290.r14395.20240812.2df3a8a96
+	conflicts = gammu
+	conflicts = gammu-udev
+	source = gammu::git+https://github.com/gammu/gammu.git
+	sha256sums = SKIP
+
+pkgname = gammu-git
