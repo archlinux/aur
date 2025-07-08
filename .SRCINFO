@@ -1,0 +1,17 @@
+pkgbase = riscv32-corev-elf-gcc-bin
+	pkgdesc = Cross compiler for 32-bit RISC-V (Open Hardware Group CV32E40Pv2 project)
+	pkgver = 14.1.0
+	pkgrel = 20240530
+	url = https://embecosm.com/downloads/tool-chain-downloads/#core-v-top-of-tree-compilers
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	provides = riscv32-corev-elf-gdb
+	provides = riscv32-corev-elf-binutils
+	provides = riscv32-corev-elf-newlib
+	options = !emptydirs
+	options = !strip
+	source = https://buildbot.embecosm.com/job/corev-gcc-centos7/48/artifact/corev-openhw-gcc-centos7-20240530.tar.gz
+	sha256sums = e4afdff4d17a0b060fc366cbb1be99ae726c6bd79f00da7dfb164d89c1a29352
+
+pkgname = riscv32-corev-elf-gcc-bin
