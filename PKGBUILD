@@ -2,7 +2,7 @@
 
 _pkgbase=ttf-zhuque-fangsong
 pkgname="${_pkgbase}-bin"
-pkgver=0.210
+pkgver=0.212
 pkgrel=1
 
 pkgdesc='朱雀仿宋/朱雀宋朝/Zhuque Fangsong: An open-source Fansong typeface project'
@@ -11,7 +11,7 @@ url='https://github.com/TrionesType/zhuque'
 license=('OFL')
 
 source=("$pkgname-$pkgver.zip::${url}/releases/download/v${pkgver}/ZhuqueFangsong-v${pkgver}.zip")
-sha256sums=('17afd2e7a196ec4a3139f2fea0a174285aac148c76f5a9bc7eb7d72039a9b87a')
+sha256sums=('bb8b661a7643d2296a72d9d10530a00949419c4e527fb61783f73c2ba1a8c062')
 
 provide=("${_pkgbase}")
 conflicts=("${_pkgbase}")
