@@ -2,7 +2,7 @@
 # Contributor: Daniel Goß <developer@flashsystems.de>
 _npmname=tiddlywiki
 pkgname=nodejs-${_npmname}
-pkgver=5.3.6
+pkgver=5.3.7
 pkgrel=1
 pkgdesc='TiddlyWiki, a non-linear personal web notebook that anyone can use and keep forever, independently of any corporation. This is the nodejs server edition.'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/tiddlywiki/-/$_npmname-$pkgver.tgz"
         "${pkgname}-${pkgver}.license::https://raw.githubusercontent.com/Jermolene/TiddlyWiki5/v${pkgver}/license")
-sha256sums=('c3b3ed6481fd968b7c957c57cdb010c4d292a3fd989a50128ba0ff14f046064e'
-            '6bf5db3f9cb15bec81cd9ead2b433572f6ac8874b463b5b92581c381854879c4')
+sha256sums=('3f0dd67d5c1a8efd08e374bc14dc9f096974933ccd789b90cd5611fb6e233af8'
+            '563955ffb71c1ff7090634d68164a68b8c76f1f9048a98fc6a0526124f447513')
 noextract=("$_npmname-$pkgver.tgz")
 
 package() {
