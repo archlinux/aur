@@ -2,8 +2,8 @@
 # Contributor: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=disig-web-signer
-pkgver=2.2.0
-_upstream_pkgrel=2
+pkgver=2.5.2
+_upstream_pkgrel=1
 pkgrel=1
 pkgdesc="Slovak eID Web Signer by Disig"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('custom')
 url="https://qesportal.sk/"
 source_x86_64=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${pkgver}-${_upstream_pkgrel}_amd64.deb")
 source_i686=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${pkgver}-${_upstream_pkgrel}_i386.deb")
-sha256sums_x86_64=('05d07b6856a881723e3df94762c66d3e118552cb06100ea7c0ee33f29a752790')
-sha256sums_i686=('a31325d2ee164442846076a794279016d5147c713c81b1eaffdc36e857938f0d')
+sha256sums_x86_64=('f6f4c3ffa5af30018d2624900b452c7211b3b4308493472b67a7bcbd24ae8ee2')
+sha256sums_i686=('0166ebc01e032a6a1dee1e55e459cc1c23d5eb5cb5944f7bc21397d39aa53870')
 options=("!strip")
 
 # Upstream uses Debian architecture naming convention. Let's prepare a variable for that.

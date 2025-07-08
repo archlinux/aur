@@ -1,16 +1,16 @@
 pkgbase = disig-web-signer
 	pkgdesc = Slovak eID Web Signer by Disig
-	pkgver = 2.2.0
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://qesportal.sk/
 	arch = i686
 	arch = x86_64
 	license = custom
 	options = !strip
-	source_i686 = https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_2.2.0-2_i386.deb
-	sha256sums_i686 = a31325d2ee164442846076a794279016d5147c713c81b1eaffdc36e857938f0d
-	source_x86_64 = https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_2.2.0-2_amd64.deb
-	sha256sums_x86_64 = 05d07b6856a881723e3df94762c66d3e118552cb06100ea7c0ee33f29a752790
+	source_i686 = https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_2.5.2-1_i386.deb
+	sha256sums_i686 = 0166ebc01e032a6a1dee1e55e459cc1c23d5eb5cb5944f7bc21397d39aa53870
+	source_x86_64 = https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_2.5.2-1_amd64.deb
+	sha256sums_x86_64 = f6f4c3ffa5af30018d2624900b452c7211b3b4308493472b67a7bcbd24ae8ee2
 
 pkgname = disig-web-signer
 	depends = gcc-libs
