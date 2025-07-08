@@ -3,19 +3,25 @@
 
 pkgname=tk-splash
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="create a splash screen"
-depends=('tk')
+depends=('tk' 'perl')
 arch=('any')
 license=('GPL')
 source=(http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-Splash-$pkgver.tar.gz)
-url="http://search.cpan.org/~srezic/Tk-Splash/"
+url="https://metacpan.org/dist/Tk-Splash"
 md5sums=('0fa1f21f98e558fe07d9dfcd0350c256')
 
 build() {
   cd $srcdir/Tk-Splash-$pkgver
-  perl Makefile.PL
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL
   make
+}
+
+check() {
+  cd $srcdir/Tk-Splash-$pkgver
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL
+  make test
 }
 
 package() {

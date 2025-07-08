@@ -1,11 +1,12 @@
 pkgbase = tk-splash
 	pkgdesc = create a splash screen
 	pkgver = 0.16
-	pkgrel = 1
-	url = http://search.cpan.org/~srezic/Tk-Splash/
+	pkgrel = 2
+	url = https://metacpan.org/dist/Tk-Splash
 	arch = any
 	license = GPL
 	depends = tk
+	depends = perl
 	source = http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-Splash-0.16.tar.gz
 	md5sums = 0fa1f21f98e558fe07d9dfcd0350c256
 
