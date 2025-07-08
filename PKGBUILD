@@ -3,7 +3,7 @@
 _gemname='dry-monads'
 pkgname="ruby-${_gemname}"
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Common monads for Ruby'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -19,11 +19,15 @@ makedepends=(
 )
 checkdepends=(
   ruby-bundler
+  ruby-debug-inspector
   ruby-dry-types
   ruby-rake
   ruby-rspec
   ruby-super_diff
   ruby-warning
+)
+optdepends=(
+  'ruby-debug-inspector: reference constants from other modules, such as rspec helpers'
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
@@ -37,10 +41,6 @@ prepare() {
   sed --in-place --regexp-extended \
     --expression 's|~>|>=|g' \
     "${_gemname}.gemspec"
-
-  sed --in-place --regexp-extended \
-    --expression '/debug_inspector/d' \
-    Gemfile
 }
 
 build() {
