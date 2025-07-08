@@ -10,7 +10,6 @@ depends=('ffmpeg' 'wl-clipboard' 'libnotify' 'curl' 'bash')
 optdepends=('ydotool: for auto-paste functionality'
             'whisper.cpp: for local AI transcription (whisper-cli and whisper-server)')
 makedepends=('git')
-provides=('speech-to-text' 'voice-transcription' 'stt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hansp27/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('8213b5866532ca005bda79a5d20fad57aa01ec0d7c024da0125ed69f33f99c83')
 
