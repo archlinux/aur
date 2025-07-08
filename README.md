@@ -109,7 +109,7 @@ ngpt -i
 # /exit     - Exit the session (also 'exit', 'quit', 'bye' without '/')
 # /help     - Show help menu
 # /reset    - Reset the conversation
-# /sessions - List saved sessions
+# /sessions - Manage saved sessions
 # /transcript - Show recent conversation exchanges
 
 # Keyboard shortcuts:

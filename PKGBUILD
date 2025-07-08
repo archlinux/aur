@@ -1,7 +1,7 @@
 # Maintainer: nazdridoy <nazdridoy399@gmail.com>
 pkgname=ngpt
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightning-fast AI-powered CLI toolkit for terminal productivity. Generate code, craft git commits, execute shell commands, and chat with any OpenAI-compatible LLM (OpenAI, Ollama, Groq, Claude, Gemini) directly from your terminal."
 arch=('any')
 url="https://github.com/nazdridoy/ngpt"
