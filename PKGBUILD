@@ -2,10 +2,10 @@
 
 pkgname=nodejs-jsonschema2md
 pkgver=8.0.3 # renovate: datasource=github-releases depName=adobe/jsonschema2md
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Complex JSON Schemas into Markdown Documentation"
 url="https://github.com/adobe/jsonschema2md"
-license=('APACHE')
+license=('Apache-2.0')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("${source[0]##*/}")
 depends=("nodejs")
