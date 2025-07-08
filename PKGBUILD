@@ -5,9 +5,9 @@
 
 _pkgname=choosenim
 pkgname=$_pkgname-bin
-pkgver=0.8.12
+pkgver=0.8.14
 pkgrel=1
-pkgdesc='Nim toolchain installer'
+pkgdesc='Installs different versions of Nim compiler and tools and switches between them (upstream binary)'
 arch=(x86_64)
 url="https://github.com/nim-lang/$_pkgname"
 license=(BSD-3-Clause)
@@ -21,7 +21,7 @@ conflicts=($_pkgname nim)
 install=$pkgname.install
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-${pkgver}_linux_amd64"
         "LICENSE-$pkgname-$pkgver::$url/raw/v$pkgver/LICENSE")
-sha256sums=('8ec1b46bd8b3ce1cba600c9fabe5a0d0b273a82332cb43a630fe44ab358509f2'
+sha256sums=('66911551bb3c64661d5978431fd1e5df045a299214c76219ac2c483638c13382'
             'b56edb0cb907c58a59146f73b43797be78a0e9e0a4d87905dadff9fa7f1d6494')
 
 package() {
