@@ -27,8 +27,8 @@ build() {
   _mavgen=pymavlink/tools/mavgen.py
   for xml in all.xml matrixpilot.xml paparazzi.xml
   do
-    $_mavgen --lang=C++11 --wire-protocol=2.0 -o v2.0 $_msgdir$xml
-    $_mavgen --lang=C -o v1.0 $_msgdir$xml
+    $_mavgen --lang=C++11 --wire-protocol=2.0 -o v2.0 $_msgdir/$xml
+    $_mavgen --lang=C -o v1.0 $_msgdir/$xml
   done
 }
 
