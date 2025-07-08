@@ -17,6 +17,6 @@ pkgbase = konaste-linux
 	optdepends = msitools: for silent install (--silent)
 	optdepends = zenity: dialog handling (GTK-based DEs)
 	source = https://github.com/mizztgc/konaste-linux/releases/download/v0.2.2/konaste-linux-v0.2.2.tar.gz
-	sha256sums = cfd82e1d827e95d16b7d26f45f5aef6e01398a6e54cb18358f286bf2c4beda10
+	sha256sums = 7ff339c40a271f8ae4698a62c0ff845797ad35047fd011812731e289af7fca7f
 
 pkgname = konaste-linux
