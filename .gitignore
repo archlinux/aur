@@ -1,8 +1,0 @@
-*
-!.gitignore
-!.nvchecker.toml
-!.SRCINFO
-!PKGBUILD
-!fix-cmake-find-glog.patch
-!fix-missing-include.patch
-!fix-setup-py-for-python-extensions.patch
