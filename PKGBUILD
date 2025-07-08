@@ -25,6 +25,7 @@ build() {
   cd "$srcdir/pokeclicker"
   npm ci
   npm run tl:init
+  npm run build
   npm run build:electron_linux
 }
 
