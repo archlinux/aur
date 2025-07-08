@@ -1,7 +1,7 @@
 #Maintainer: Ludwintor <ludwintor at proton dot me>
 
 pkgname=tonkeeper
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='Your desktop wallet on The Open Network'
 arch=(any)
@@ -13,13 +13,13 @@ optdepends=(
     'org.freedesktop.secrets: Store secrets'
 )
 options=(!debug)
-source=("git+https://github.com/tonkeeper/tonkeeper-web.git#tag=v${pkgver}"
+source=("git+https://github.com/tonkeeper/tonkeeper-web.git?signed#tag=v${pkgver}"
          tonkeeper.desktop
          tonkeeper.png)
-sha256sums=('8f9bb9db1833e1f87eadf28f5630392a7960495c41ebcaa885843b170d560877'
+sha256sums=('c4f6f63037e1a3777984c5301149c23cae9a082854b75ad081ae09456293a258'
             '4a4aee7691da80aba21dbd1bff28791e9edd6ea5e9712457207c6e1b0bc6c5d5'
             'e9dc80e0c41560ca754f668196054317494d32eed827ac0afbf641d86f799d40')
-
+validpgpkeys=(7073F32BF2770AAE)
 
 _ensure_local_nvm() {
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
