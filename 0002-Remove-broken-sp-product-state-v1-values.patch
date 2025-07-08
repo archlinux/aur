@@ -1,7 +1,7 @@
-From 0c641e5b151ed047ad17eac6d6491f49f29ea853 Mon Sep 17 00:00:00 2001
+From 0b8ec9c15767333721ebb0c7e3bced8cb920bf21 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
 Date: Fri, 27 Dec 2024 18:23:59 +0800
-Subject: [PATCH 2/2] Remove broken sp://product-state/v1/values
+Subject: [PATCH 2/3] Remove broken sp://product-state/v1/values
 
 ---
  src/services/api.js | 2 +-
@@ -21,5 +21,5 @@ index 6f207c9..a6c6f47 100644
              return true
          } else {
 -- 
-2.47.1
+2.50.0
 

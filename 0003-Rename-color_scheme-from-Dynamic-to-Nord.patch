@@ -1,0 +1,26 @@
+From d9c1f540031db9899354fced9fefbd755d9346ae Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Tue, 8 Jul 2025 12:19:35 +0800
+Subject: [PATCH 3/3] Rename color_scheme from Dynamic to Nord
+
+It seems always called Nord if you run Spicetify.Config.color_scheme in DevTools.
+---
+ src/features/colorScheme/dynamicColors/dynamicColors.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/features/colorScheme/dynamicColors/dynamicColors.js b/src/features/colorScheme/dynamicColors/dynamicColors.js
+index f494644..35f5580 100644
+--- a/src/features/colorScheme/dynamicColors/dynamicColors.js
++++ b/src/features/colorScheme/dynamicColors/dynamicColors.js
+@@ -8,7 +8,7 @@ import ColorScheme from "../colorScheme"
+ 
+ const DynamicColors = (() => {
+     async function inject() {
+-        if (Shared.SpicetifyConfig.color_scheme === "Dynamic" && State.app.shouldChangeProp) {
++        if (Shared.SpicetifyConfig.color_scheme === "Nord" && State.app.shouldChangeProp) {
+             let colorPalette = await createDynamicColors()
+             State.app.dynamicColorPalette = colorPalette
+             updateDynamicColors(colorPalette)
+-- 
+2.50.0
+
