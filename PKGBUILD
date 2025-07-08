@@ -1,51 +1,48 @@
-# Maintainer: Julian Pollinger <julian@pollinger.dev>
-# Contributor: Almir Dzinovic <almir@dzinovic.net>
-# Contributor: Alexander Pavel <alexpavel123@gmail.com>
-
+# Maintainer: André LECLERCQ <andre.leclercq.io@protonmail.com>
 pkgname=mattermost-desktop-bin
-_pkgname=mattermost-desktop
-pkgver=5.9.0
+pkgver=5.12.1
 pkgrel=1
-pkgdesc="Mattermost Desktop for Linux (binary)"
-arch=('x86_64' 'aarch64')
-
-url="https://github.com/mattermost/desktop"
-license=('Apache')
-
-makedepends=()
-depends=('alsa-lib' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
-optdepends=()
-
-conflicts=('mattermost-desktop' 'mattermost-desktop-git')
-provides=("${_pkgname}")
-
-source=(${_pkgname}.desktop icon.svg)
-source_x86_64=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
-source_aarch64=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
-sha256sums=('8659351ccebf1fa46bf0ecae0f12261f003edd7cbab21a0a53628efbec02e141'
-            'cc5507133b6ef1ccaf130263f4e2527b55eecf6427eb36a899bab695bcb3803c')
-sha256sums_x86_64=('ccb29d7eee69ed3c893b0f2f257ee2feebb88f43eb51fdbf04399bd6476aa8c7')
-sha256sums_aarch64=('2658caedde0a2c09f5f8dc05f9571e74bffb844b29ffd2f32ddcd139ad5f8090')
+pkgdesc="Mattermost Desktop application (precompiled binary)"
+arch=('x86_64')
+url="https://mattermost.com/"
+license=('Apache-2.0')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'at-spi2-core' 'libcups' 'libxrandr')
+provides=('mattermost-desktop')
+conflicts=('mattermost-desktop')
+source=("mattermost-desktop-${pkgver}-linux-x64.tar.gz::https://releases.mattermost.com/desktop/${pkgver}/mattermost-desktop-${pkgver}-linux-x64.tar.gz")
+sha256sums=('7f672812a6ece58da4f0685013dee91ba4429a522bad2833c77b2a84f7760811')
+options=('!strip')
 
 package() {
-    _pkg=${srcdir}/${_pkgname}-${pkgver}-linux-x64
-    if [ "${CARCH}" = "aarch64" ]; then
-        _pkg=${srcdir}/${_pkgname}-${pkgver}-linux-arm64
-    fi
-    cd "${_pkg}"
-
-    install -d -m 755 "${pkgdir}"/usr/lib/mattermost
-
-    cp -r * "$pkgdir/usr/lib/mattermost"
-
-    cd "$pkgdir/usr/lib/mattermost"
-    install -Dm644 "${srcdir}/icon.svg" "$pkgdir/usr/lib/mattermost/icon.svg"
-
-    install -d -m 755 "$pkgdir/usr/bin"
-    ln -s /usr/lib/mattermost/${_pkgname} "$pkgdir/usr/bin/$_pkgname"
-
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-
-    install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "$pkgdir/usr/lib/mattermost/icon.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+    cd "${srcdir}/mattermost-desktop-${pkgver}-linux-x64"
+    
+    # Installation des fichiers dans /opt
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    cp -r * "${pkgdir}/opt/${pkgname}/"
+    
+    # Lien symbolique pour l'exécutable
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/mattermost-desktop" "${pkgdir}/usr/bin/mattermost-desktop"
+    
+    # Fichier .desktop
+    install -dm755 "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/mattermost-desktop.desktop" << EOF
+[Desktop Entry]
+Name=Mattermost
+Comment=Mattermost Desktop
+Exec=mattermost-desktop
+Icon=mattermost-desktop
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+StartupNotify=true
+StartupWMClass=Mattermost
+EOF
+    
+    # Icône
+    install -Dm644 "app_icon.png" "${pkgdir}/usr/share/pixmaps/mattermost-desktop.png"
+    
+    # Licences
+    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
