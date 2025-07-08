@@ -1,18 +1,17 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=htscodecs
-pkgver=1.6.1
-_pkgver=${pkgver//./-}
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Custom compression for sequencing formats, e.g. CRAM"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url=https://github.com/samtools/htscodecs
 license=('BSD-3-Clause')
 depends=('bzip2' 'zlib')
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/htscodecs-$pkgver.tar.gz)
-sha256sums=('5821b171c9ba5d2a616cedc98db9f4cc8b384fd5efd55a5a0935528646122659')
+sha256sums=('ace6ae54fcdf49ac82b362d1d8a333559e023b1bbb8adbd47e8caf7963c22527')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   aclocal
   autoreconf --install
   ./configure --prefix=/usr
@@ -20,6 +19,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
