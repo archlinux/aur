@@ -1,7 +1,7 @@
 # Maintainer: Rakesh KP <rakeshkpk@gmail.com>
 pkgname=symphonie-bin
 pkgver=1.0.15
-pkgrel=4 # Incremented to signal a new packaging fix
+pkgrel=5 # Incremented to signal a new packaging fix
 pkgdesc="A simple music player for local audio."
 arch=('x86_64')
 url="https://github.com/kprakesh1984/symphonie"
@@ -23,9 +23,16 @@ sha256sums=('f35f6a4c3f37e15a47197e8f44426303d158b3c7ca41b42bea74c0ef3757b2f1'
 
 # This is the corrected package() function
 package() {
-  # Install the main application files from the extracted tar.gz
+  # Install the main application files
   install -d "${pkgdir}/opt/${pkgname%-bin}"
-  cp -r "${srcdir}/"* "${pkgdir}/opt/${pkgname%-bin}/"
+
+  # --- THE CRUCIAL FIX IS HERE ---
+  # This reliably copies all contents from the source directory
+  # into the destination directory.
+  cp -r ./* "${pkgdir}/opt/${pkgname%-bin}/"
+
+  # Explicitly set execute permissions on the main application binary.
+  chmod +x "${pkgdir}/opt/${pkgname%-bin}/Symphonie"
 
   # Create the launch script
   install -d "${pkgdir}/usr/bin"
@@ -33,9 +40,9 @@ package() {
   echo "exec /opt/${pkgname%-bin}/Symphonie \"\$@\"" >> "${pkgdir}/usr/bin/${pkgname%-bin}"
   chmod +x "${pkgdir}/usr/bin/${pkgname%-bin}"
 
-  # Install the .desktop file from our sources
+  # Install the .desktop file
   install -Dm644 "${srcdir}/symphonie.desktop" "${pkgdir}/usr/share/applications/symphonie.desktop"
 
-  # Install the icon from our sources, not from the extracted bundle
+  # Install the icon
   install -Dm644 "${srcdir}/512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/symphonie.png"
 }
