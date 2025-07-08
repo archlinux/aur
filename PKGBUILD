@@ -1,7 +1,7 @@
 # Maintainer: nazdridoy <nazdridoy399@gmail.com>
 pkgname=ngpt
-pkgver=6.5.0
-pkgrel=2
+pkgver=6.6.0
+pkgrel=1
 pkgdesc="A lightning-fast AI-powered CLI toolkit for terminal productivity. Generate code, craft git commits, execute shell commands, and chat with any OpenAI-compatible LLM (OpenAI, Ollama, Groq, Claude, Gemini) directly from your terminal."
 arch=('any')
 url="https://github.com/nazdridoy/ngpt"
@@ -10,7 +10,7 @@ depends=('python' 'python-requests>=2.31.0' 'python-rich>=10.0.0' 'python-prompt
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nazdridoy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('42c0daebffc2c13e58426dfaf9c419ccbdce05a2db48144f2fadf4156acbdab1')
+sha256sums=('b1684061a9be4d6849db339899bba1ef2f94ed046aebd0eab4723100b8a1af30')
 
 build() {
   cd "$pkgname-$pkgver"
