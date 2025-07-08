@@ -1,5 +1,5 @@
 pkgbase = pokeclicker-platinum
-	pkgdesc = PokéClicker Platinum – A clicker game for Pokémon fans (Electron AppImage)
+	pkgdesc = PokéClicker Platinum – Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Electron AppImage)
 	pkgver = 0.10.24_1
 	pkgrel = 1
 	epoch = 1
