@@ -7,7 +7,7 @@
 
 pkgbase=ollama-amd-igpu
 pkgname=(ollama-amd-igpu ollama-amd-igpu-rocm ollama-amd-igpu-cuda ollama-amd-igpu-docs)
-pkgver=0.9.5
+pkgver=0.9.6.rc0
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm, patched for AMD iGPUs'
 arch=(x86_64)
@@ -21,11 +21,12 @@ source=(ollama::git+$url#branch=amd-igpu
         ollama.service
         sysusers.conf
         tmpfiles.d)
-b2sums=('SKIP'
-        'a1cbf7a65d816ba8014623a80c0b2f96d6f95218791acc9ecc4c495707b1e99d6af292bce3534febb36b88c4a4bc766020deac065e49654fc253d6addae9170b'
-        '031e0809a7f564de87017401c83956d43ac29bd0e988b250585af728b952a27d139b3cad0ab1e43750e2cd3b617287d3b81efc4a70ddd61709127f68bd15eabd'
-        '68622ac2e20c1d4f9741c57d2567695ec7b5204ab43356d164483cd3bc9da79fad72489bb33c8a17c2e5cb3b142353ed5f466ce857b0f46965426d16fb388632'
-        'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
+sha256sums=('SKIP'
+            '5e94c1a5a71e44a0dcde082f0c0a26667c6601db53c8ed340c7533ea8aa9c86e'
+            '9177dd27de7ec74cf4f74790e0d1db373f0da3fd6efe3e856b089e0124a4c1ed'
+            '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
+            '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3')
+
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
