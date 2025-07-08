@@ -1,6 +1,6 @@
 pkgbase = pikaur-static-git
 	pkgdesc = AUR helper without dependencies which asks all questions before installing/building. Static build for recovery situations, similar to `pacman-static`
-	pkgver = 1.32
+	pkgver = 1.33
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	changelog = CHANGELOG
