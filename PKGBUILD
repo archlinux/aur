@@ -3,7 +3,7 @@
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
 pkgver=b5839
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -12,18 +12,20 @@ depends=(
   curl
   gcc-libs
   glibc
-  ggml-vulkan
   python
   python-numpy
   python-sentencepiece
+  vulkan-icd-loader
 )
 makedepends=(
   cmake
   git
+  shaderc
+  vulkan-headers
 )
 optdepends=(python-pytorch)
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(${_pkgname} libggml ggml)
 options=(lto !debug)
 source=(
   "git+${url}#tag=${pkgver}"
@@ -38,12 +40,19 @@ build() {
   local _cmake_options=(
     -B build
     -S "${_pkgname}"
-    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_CURL=ON
     -DLLAMA_BUILD_TESTS=OFF
-    -DLLAMA_USE_SYSTEM_GGML=ON
+    -DLLAMA_USE_SYSTEM_GGML=OFF
+    -DGGML_ALL_WARNINGS=OFF
+    -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
+    -DGGML_BUILD_EXAMPLES=OFF
+    -DGGML_BUILD_TESTS=OFF
+    -DGGML_LTO=ON
+    -DGGML_RPC=ON
+    -DGGML_VULKAN=1
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
