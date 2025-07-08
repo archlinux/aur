@@ -1,7 +1,7 @@
 pkgbase = cosmic-applet-logomenu
-	pkgdesc = Logo Menu applet for COSMIC™
-	pkgver = 0.5.0
-	pkgrel = 5
+	pkgdesc = Logo Menu applet for the COSMIC™ desktop
+	pkgver = 0.6.0
+	pkgrel = 6
 	url = https://github.com/cappsyco/cosmic-applet-logomenu
 	arch = x86_64
 	license = GPL-3.0-or-later
