@@ -1,11 +1,13 @@
---- a/75-yes-terminus.conf	2019-01-01 19:32:47.000000000 +0100
-+++ b/75-yes-terminus.conf	2019-01-01 19:41:28.323308293 +0100
-@@ -5,7 +5,7 @@
-  <selectfont>
-   <acceptfont>
+diff -Nurp terminus-font-4.49.1/75-yes-terminus.conf terminus-font-4.49.1-fix/75-yes-terminus.conf
+--- terminus-font-4.49.1/75-yes-terminus.conf	2014-10-12 21:26:56.000000000 +0200
++++ terminus-font-4.49.1-fix/75-yes-terminus.conf	2025-06-30 01:32:01.115180075 +0200
+@@ -7,6 +7,9 @@
     <pattern>
--     <patelt name="family"><string>Terminus</string></patelt>
-+     <patelt name="family"><string>xos4 Terminus</string></patelt>
+      <patelt name="family"><string>Terminus</string></patelt>
     </pattern>
++   <pattern>
++     <patelt name="family"><string>xos4 Terminus</string></patelt>
++   </pattern>
    </acceptfont>
   </selectfont>
+ </fontconfig>

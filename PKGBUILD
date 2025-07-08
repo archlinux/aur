@@ -9,7 +9,7 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1
 pkgver=4.49.1
-pkgrel=4
+pkgrel=5
 
 pkgdesc='Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
@@ -24,7 +24,7 @@ replaces=('terminus-font-td1-otb')
 source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver%.1}/terminus-font-$pkgver.tar.gz"
         fix-75-yes-terminus.patch)
 sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
-            'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
+            '136af8f840ed054fa4c62b4963f1e8b3139e8d4fc32b35f1cf90100cb270716c')
 
 prepare() {
   cd "terminus-font-$pkgver"
