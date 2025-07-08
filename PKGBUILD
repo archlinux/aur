@@ -7,7 +7,7 @@
 
 _suffix=browser
 pkgname="obs-studio-${_suffix}"
-_pkgver=31.0.4
+_pkgver=31.1.0
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
@@ -70,6 +70,7 @@ depends=(
 makedepends=(
   "asio" # Deps of Websocket plugin (headers-only lib)
   "cmake"
+  "extra-cmake-modules"
   "ffnvcodec-headers" # Deps of NVENC plugin (headers-only lib)
   "jack" # Deps of JACK plugin
   "git"
@@ -139,7 +140,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   ## Mark log and titlebar version
-  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" UI/obs-app.cpp
+  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" frontend/OBSApp.cpp
 }
 
 build() {
