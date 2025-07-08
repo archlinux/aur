@@ -3,7 +3,7 @@
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
 pkgver=b5839
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -12,10 +12,13 @@ depends=(
   curl
   gcc-libs
   glibc
-  libggml-hip
+  hip-runtime-amd
+  hipblas
+  openmp
   python
   python-numpy
   python-sentencepiece
+  rocblas
 )
 makedepends=(
   cmake
@@ -24,7 +27,7 @@ makedepends=(
 )
 optdepends=(python-pytorch)
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(${_pkgname} libggml ggml)
 options=(lto !debug)
 source=(
   "git+${url}#tag=${pkgver}"
@@ -46,7 +49,14 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_CURL=ON
     -DLLAMA_BUILD_TESTS=OFF
-    -DLLAMA_USE_SYSTEM_GGML=ON
+    -DLLAMA_USE_SYSTEM_GGML=OFF
+    -DGGML_ALL_WARNINGS=OFF
+    -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
+    -DGGML_BUILD_EXAMPLES=OFF
+    -DGGML_BUILD_TESTS=OFF
+    -DGGML_LTO=ON
+    -DGGML_RPC=ON
+    -DGGML_HIP=ON
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
