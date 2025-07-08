@@ -1,7 +1,7 @@
 # Maintainer: Chance Chen <ufbycd@163.com>
 
 pkgname=mounriver-studio-community
-pkgver=1.80
+pkgver=1.90
 pkgrel=1
 arch=('x86_64')
 pkgdesc="为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。 "
@@ -18,9 +18,9 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
             'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz"
+source=("${pkgname}-${pkgver}.tar.xz::http://file-oss.mounriver.com//upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz"
         "udev-rules.patch")
-sha256sums=('bc7cdf4d8e704c33accc1f4afb6d35f1595c073535ae65e6f5adb4a8ac299222'
+sha256sums=('11e686fe7d00a861ee8ce9f51e01ba432e73d38e3498bc9d6a27b16af7c70b57'
             '7ed97c1a494ddbd5b6d594223bc35aa31949c416c0b23a3adabfda239b9f3c73')
 
 prepare() {
@@ -54,7 +54,7 @@ EOF
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/sh
-/usr/share/$pkgname/MounRiver\ Studio_Community "\$@"
+GDK_BACKEND=x11 /usr/share/$pkgname/MounRiver\ Studio_Community "\$@"
 EOF
 
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<EOF
