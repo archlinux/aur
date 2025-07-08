@@ -6,7 +6,7 @@ pkgdesc="A simple music player built with Electron."
 arch=('x86_64')
 url="https://github.com/kprakesh1984/symphonie"
 license=('MIT')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss')
+depends=('electron')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
