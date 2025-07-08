@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=wiso-steuer-2025
-pkgver=32.7.2520
+pkgver=32.9.2600
 pkgrel=1
 pkgdesc='File your German tax return for the tax year 2024'
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(
 
 sha512sums=('SKIP'
             'SKIP'
-            '0c0f7d144255b42ad935223b6c535c14b32b8f82c34dda27627964e111095ba3ac26130cf11895f4a1e3827278b89d39b0f6b076436a34315d23ead941d6c5f4'
+            'b7e54aa0f41cf7da1b74a388c7415289d5fb7cfa299fe9d1085b37f0b5e0c003722e62e2e63bba6100a325ae426b4f818f25dd0402092a64e08fa920540b7be4'
             '2381be9fd74e26caf4fba059d5dcf14a49c83d4c57ce142803fbb8155403385de1dd1eddad28cc0cdf68ab2ab96592b9511064062731fb3e96c308ae0eb786f7'
             'ede44188da134d5d120c6c8c4d619d91e998a1b9f28497e82307a99a65a7791e492d9c3e7ae2d6c297ef7a12e87a5579cd86bd36b805a5bc0ad1ff7197addaaa')
 
@@ -131,8 +131,11 @@ _run_updater_in_place() {
   cd "${_staging}"
 
   echo >&2 'Extracting updater'
+  # The `realpath --relative-to=.` wrapper works around a regression
+  # introduced in Wine 10.11; remove wrapper once 10.12 has landed in extra.
+  # See also: https://gitlab.winehq.org/wine/wine/-/merge_requests/8455
   wine "${_updater_exe}" \
-    "/extract_all:$(winepath -w "${srcdir}/${pkgname}-updater-cab")"
+    "/extract_all:$(winepath -w "$(realpath --relative-to=. "${srcdir}/${pkgname}-updater-cab")")"
   unshield -d "${srcdir}/${pkgname}-updater" x \
     "${srcdir}/${pkgname}-updater-cab/Disk1/data1.cab"
 
