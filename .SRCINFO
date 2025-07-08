@@ -1,0 +1,14 @@
+pkgbase = ttf-bootstrap-icons
+	pkgdesc = TTF version of Bootstrap's icon font.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://icons.getbootstrap.com/
+	arch = any
+	license = MIT
+	makedepends = woff2
+	source = https://github.com/twbs/icons/raw/refs/tags/v1.13.1/font/fonts/bootstrap-icons.woff2
+	source = font-LICENSE::https://github.com/twbs/icons/raw/refs/tags/v1.13.1/LICENSE
+	sha256sums = 6c75710364a1ca5604267716f6d28997b26319fdb078cf11e0b42ab66ff2ea61
+	sha256sums = 0fb3e11bd57e896c5a512afd64864d28a37de45d19835016c87ca1ad19ead969
+
+pkgname = ttf-bootstrap-icons
