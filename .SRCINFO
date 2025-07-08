@@ -2,7 +2,7 @@ pkgbase = python-yte
 	pkgdesc = YAML template engine with Python expressions
 	pkgver = 1.9.0
 	pkgrel = 1
-	url = https://github.com/koesterlab/yte
+	url = https://github.com/yte-template-engine
 	arch = any
 	license = MIT
 	makedepends = python-uv-build
@@ -12,7 +12,7 @@ pkgbase = python-yte
 	depends = python-argparse_dataclass
 	depends = python-dpath
 	depends = python-pyyaml
-	source = https://github.com/yte-template-engine/yte/archive/refs/tags/v1.9.0.tar.gz
+	source = yte-1.9.0.tar.gz::https://github.com/yte-template-engine/yte/archive/refs/tags/v1.9.0.tar.gz
 	sha256sums = 6b47483eab733bdecab4938c5d8bc745098d9b31f3b7d2d8d074453cb526f717
 
 pkgname = python-yte
