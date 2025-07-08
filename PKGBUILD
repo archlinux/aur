@@ -1,7 +1,7 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-libs
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Indi 3rd party libraries"
 arch=(x86_64 aarch64)
 url="https://indilib.org"
@@ -11,7 +11,6 @@ makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e9ab43d08d09555d2c9d3c658d1bcc3130c3465a3afe2300995fba0d6e737080')
 options=(!lto)
-install=drivers.install
 
 prepare() {
   mkdir -p build

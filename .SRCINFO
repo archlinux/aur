@@ -1,9 +1,8 @@
 pkgbase = indi-3rdparty-libs
 	pkgdesc = Indi 3rd party libraries
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://indilib.org
-	install = drivers.install
 	arch = x86_64
 	arch = aarch64
 	license = LGPLv2
