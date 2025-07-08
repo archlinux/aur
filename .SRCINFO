@@ -1,0 +1,15 @@
+pkgbase = idris2-sop-git
+	pkgdesc = Generic representation of data types as sums of products
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/stefan-hoeck/idris2-sop
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = idris2
+	provides = idris2-sop
+	conflicts = idris2-sop
+	source = idris2-sop::git+https://github.com/stefan-hoeck/idris2-sop.git
+	sha256sums = SKIP
+
+pkgname = idris2-sop-git
