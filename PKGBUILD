@@ -1,8 +1,9 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="clai"
 pkgname="${_pkgname}-bin"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
 arch=('aarch64' 'i686' 'x86_64')
@@ -19,17 +20,20 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 source_aarch64=("${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm64_v${pkgver}")
 source_i686=("${_pkgsrc}-i686::${url}/releases/download/v${pkgver}/${_pkgname}_linux-386_v${pkgver}")
 source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux-amd64_v${pkgver}")
-sha256sums=('7575b7f5ee94948b339cb7f6c72a3f57ca658c71e416da581c600248ecd3f3dd'
+sha256sums=('c8708634e9bd7d9be48915ab42cd58869114df0925af3536c21cf520d9391b28'
             '666651e232585ef27d96bdef35a2f29aec6bc583a0e6cc82b47da18b962ce594'
             'bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc')
-sha256sums_aarch64=('1269e06103aac795d9a08f1166ac174ff6c57d15f93832c5981d684e635b8a62')
-sha256sums_i686=('706e369f4af9bfba4742a4cac1b773f54c08c86681aa80b1a029ef6e23a3ec4c')
-sha256sums_x86_64=('b48d372a77366302efc3f00d83ffc75b07dbb4d402f90e171d9d3f9f330bdb65')
+sha256sums_aarch64=('103dd8cfe6132384a961b5b4202913321a8ccbfaff50cc52d8e3cc99edecdbb8')
+sha256sums_i686=('655ff232007f77153a3a48fcf175199352d55015f78c2e68bc6cfb46ae82b88c')
+sha256sums_x86_64=('6ba9b7e271616ed5d6118778b8df4f043d3685bf40ab172450fa871a8a4ca734')
 
 package() {
   cd "${srcdir}"
+
   install -vDm755 "${_pkgsrc}-${CARCH}"    "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "${_pkgsrc}-README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "${_pkgsrc}-EXAMPLES.md" "${pkgdir}/usr/share/doc/${_pkgname}/EXAMPLES.md"
-  install -vDm644 "${_pkgsrc}-LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  install -vDm644 "${_pkgsrc}-README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-EXAMPLES.md" "${pkgdir}/usr/share/doc/${pkgname}/EXAMPLES.md"
+
+  install -vDm644 "${_pkgsrc}-LICENSE"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
