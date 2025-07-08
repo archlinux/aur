@@ -14,8 +14,6 @@ url="https://github.com/facebook/folly"
 license=(Apache-2.0)
 depends=(
   boost-libs
-  boost
-  python
   bzip2
   double-conversion
   fmt
