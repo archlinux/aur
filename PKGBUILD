@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=qvge
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Qt Visual Graph Editor'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'qt5-svg' 'qt5-x11extras')
 makedepends=('imagemagick' 'setconf')
 optdepends=('graphviz: auto-layout of graphs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('034e5ba6cb9a3b67d51815190aae06406fc5ba1ddeb3271fe1c67b7e577657c3')
+sha256sums=('b86c85186c41cede6f2bbf02f91ad92c2b977fdb3cbfbbc32904eb3db3bf592c')
 
 build() {
   cd "${pkgname}-${pkgver}/src"
@@ -29,9 +29,9 @@ package() {
     install -Dvm644 "${srcdir}/icon${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
   done
 
-  install -Dvm755 "src/bin/${pkgname}app" -t "${pkgdir}/usr/bin"
+  install -Dvm755 "src/bin/${pkgname}" -t "${pkgdir}/usr/bin"
 
-  cd "src/${pkgname}app/linux"
+  cd "src/${pkgname}/linux"
   setconf -u "${pkgname}.desktop" 'Icon' "${pkgname}"
   install -Dvm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dvm644 "${pkgname}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
