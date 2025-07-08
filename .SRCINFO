@@ -1,14 +1,15 @@
 pkgbase = hexhub-bin
-	pkgdesc = database, docker, ssh, sftp. all in one
-	pkgver = 1.2.2
+	pkgdesc = Database, Docker, SSH, SFTP - All in one
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://www.hexhub.cn/
 	arch = x86_64
 	license = GPL
-	noextract = HexHub-amd64-appimage-1.2.2.AppImage
+	depends = fuse2
+	depends = gtk3
 	options = !strip
 	options = !debug
-	source = https://oss.hexhub.cn/plugin/HexHub-amd64-appimage-1.2.2.AppImage
-	sha256sums = 92bb5ec914e4ddf0e061afc6bad4ec0d952de8204c9fcdd05aa502e05ca86382
+	source = https://oss.hexhub.cn/plugin/HexHub-amd64-appimage-1.2.8.AppImage
+	sha256sums = e9e77aecc8e869aa0d3dfb2b871692f275ce88b5e927db933156e07a4b7a673f
 
 pkgname = hexhub-bin
