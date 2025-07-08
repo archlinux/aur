@@ -1,0 +1,17 @@
+pkgbase = dowm-git
+	pkgdesc = A beautiful window manager for x11
+	pkgver = r69.d5784b3
+	pkgrel = 1
+	url = https://github.com/BobdaProgrammer/doWM
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = xorg-server
+	optdepends = xlibre-server
+	provides = dowm
+	conflicts = dowm
+	source = git+https://github.com/BobdaProgrammer/doWM
+	md5sums = SKIP
+
+pkgname = dowm-git
