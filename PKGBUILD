@@ -3,10 +3,10 @@
 _pkgname=tetragon
 pkgname=$_pkgname-bin
 pkgver=1.4.0 # renovate: datasource=github-releases depName=cilium/tetragon
-pkgrel=1
+pkgrel=2
 pkgdesc="eBPF-based Security Observability and Runtime Enforcement"
 url="https://github.com/cilium/$_pkgname"
-license=('APACHE')
+license=('Apache-2.0')
 arch=('x86_64')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/tetragon-cli/${_pkgname}-linux-amd64.tar.gz")
 sha512sums=('e0056b6497a95dcd97db70b0cb3140f12a833b29274006927e1d3b8f2dc638f9154bc252d322922844752dd0a0fb60732282592fc294afa51b359d2110f7770a')
