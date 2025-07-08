@@ -1,0 +1,13 @@
+pkgbase = aesir-launcher
+	pkgdesc = Aesir Minecraft Launcher
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/AesirMC/Aesir-Launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = maven
+	depends = java-runtime=21
+	source = aesir-launcher-3.0.tar.gz::https://github.com/AesirMC/Aesir-Launcher/archive/v3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aesir-launcher
