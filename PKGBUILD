@@ -4,14 +4,15 @@
 pkgname=lingot
 pkgver=1.1.1
 pkgrel=1
-pkgdesc='A musical instrument tuner'
-url='http://www.nongnu.org/lingot/'
+pkgdesc='Musical instrument tuner'
+#url='http://www.nongnu.org/lingot/'
+url='https://github.com/ibancg/lingot'
 license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
 depends=('gtk3')
 makedepends=('perl-xml-parser' 'intltool')
-source=("https://download.savannah.gnu.org/releases/lingot/$pkgname-$pkgver.tar.gz")
-
+#source=("https://download.savannah.gnu.org/releases/lingot/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/ibancg/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('c4f97e496a3666c70786d136e6f2ccc5e8a3813eb08cda35cacd7eb0d16f4d56')
 
 build() {

@@ -1,15 +1,15 @@
 pkgbase = lingot
-	pkgdesc = A musical instrument tuner
+	pkgdesc = Musical instrument tuner
 	pkgver = 1.1.1
 	pkgrel = 1
-	url = http://www.nongnu.org/lingot/
+	url = https://github.com/ibancg/lingot
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = perl-xml-parser
 	makedepends = intltool
 	depends = gtk3
-	source = https://download.savannah.gnu.org/releases/lingot/lingot-1.1.1.tar.gz
+	source = https://github.com/ibancg/lingot/releases/download/v1.1.1/lingot-1.1.1.tar.gz
 	sha256sums = c4f97e496a3666c70786d136e6f2ccc5e8a3813eb08cda35cacd7eb0d16f4d56
 
 pkgname = lingot
