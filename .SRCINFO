@@ -1,10 +1,10 @@
 pkgbase = tetra-bin
 	pkgdesc = eBPF-based Security Observability and Runtime Enforcement - CLI
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cilium/tetragon
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	conflicts = tetra
 	conflicts = tetra-git
 	source = tetra-1.4.0.tar.gz::https://github.com/cilium/tetragon/releases/download/v1.4.0/tetra-linux-amd64.tar.gz
