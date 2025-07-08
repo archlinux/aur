@@ -1,7 +1,7 @@
 pkgbase = asciisec
 	pkgdesc = Ascii Sector: SDL roguelike with a 'Wing Commander: Privateer' theme
 	pkgver = 0.7.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.asciisector.net
 	install = asciisec.install
 	arch = i686
