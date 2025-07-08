@@ -3,7 +3,7 @@
 _name=telepresence
 _pkgname=${_name}2
 pkgname=${_pkgname}-bin
-pkgver=2.23.0 # renovate: datasource=github-releases depName=telepresenceio/telepresence
+pkgver=2.23.3 # renovate: datasource=github-releases depName=telepresenceio/telepresence
 pkgrel=1
 url="https://github.com/telepresenceio/telepresence"
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
@@ -11,8 +11,8 @@ arch=('x86_64' 'aarch64')
 provides=(telepresence2)
 conflicts=("$_pkgname-git" "$_pkgname")
 source=("$_name::https://github.com/telepresenceio/telepresence/releases/download/v${pkgver}/telepresence-linux-amd64")
-sha512sums=('d0274f8f5684d5fcbd51ac1e7ef384848261eebcf3f312c2b5bf4531622cf7256c27efba8fd278b04f4e05d62046f28488e3151af2bfeac0d4dcecc1e913e071')
-sha512sums_aarch64=('d0274f8f5684d5fcbd51ac1e7ef384848261eebcf3f312c2b5bf4531622cf7256c27efba8fd278b04f4e05d62046f28488e3151af2bfeac0d4dcecc1e913e071')
+sha512sums=('ee88f91dbe536a1413055c85f0a14decfbb2757e43c914f7ddd1daa4170563cc0af2cd8d1ea8cfc2cfcf6375d72118555abff309e7f513013ee5a70bccf5bcb6')
+sha512sums_aarch64=('ee88f91dbe536a1413055c85f0a14decfbb2757e43c914f7ddd1daa4170563cc0af2cd8d1ea8cfc2cfcf6375d72118555abff309e7f513013ee5a70bccf5bcb6')
 source_aarch64=("$_name::https://github.com/telepresenceio/telepresence/releases/download/v${pkgver}/telepresence-linux-arm64")
 depends=()
 
