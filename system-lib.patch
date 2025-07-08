@@ -1,0 +1,19 @@
+--- src/cuopt-25.05.01/cpp/CMakeLists.txt	2025-06-11 02:20:08.000000000 +0800
++++ src/cuopt-25.05.01/cpp/CMakeLists.txt.new	2025-06-25 15:00:15.538479143 +0800
+@@ -153,12 +153,14 @@
+   include(cmake/thirdparty/get_raft.cmake)
+ else()
+   find_package(CCCL REQUIRED)
++  find_package(nvtx3 REQUIRED)
++  find_package(rapids_logger REQUIRED)
+   find_package(RMM REQUIRED)
+   find_package(RAFT REQUIRED)
+ endif()
+-include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
++# include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
+ # generate logging macros
+-rapids_cpm_rapids_logger(BUILD_EXPORT_SET cuopt-exports INSTALL_EXPORT_SET cuopt-exports)
++# rapids_cpm_rapids_logger(BUILD_EXPORT_SET cuopt-exports INSTALL_EXPORT_SET cuopt-exports)
+ create_logger_macros(CUOPT "cuopt::default_logger()" include/cuopt)
+ 
+ if(BUILD_TESTS)

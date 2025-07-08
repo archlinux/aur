@@ -1,0 +1,16 @@
+--- src/cuopt-25.05.01/python/cuopt/CMakeLists.txt	2025-06-11 02:20:08.000000000 +0800
++++ src/cuopt-25.05.01/python/cuopt/CMakeLists.txt.new	2025-07-08 11:07:40.713759274 +0800
+@@ -31,6 +31,13 @@
+             C CXX CUDA)
+ 
+ 
++find_package(nvtx3 REQUIRED)
++find_package(rapids_logger REQUIRED)
++find_package(CCCL REQUIRED)
++find_package(rmm REQUIRED)
++find_package(NvidiaCutlass REQUIRED)
++find_package(cuco REQUIRED)
++find_package(raft REQUIRED)
+ find_package(cuopt ${cuopt_version})
+ find_package(mps_parser ${cuopt_version})
+ 

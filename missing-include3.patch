@@ -1,0 +1,11 @@
+--- src/cuopt-25.05.01/cpp/include/cuopt/linear_programming/mip/solver_settings.hpp	2025-06-11 02:20:08.000000000 +0800
++++ src/cuopt-25.05.01/cpp/include/cuopt/linear_programming/mip/solver_settings.hpp.new	2025-06-25 15:15:13.927884559 +0800
+@@ -17,6 +17,8 @@
+ 
+ #pragma once
+ 
++#include <vector>
++
+ #include <cuopt/linear_programming/constants.h>
+ #include <cuopt/linear_programming/utilities/internals.hpp>
+ 
