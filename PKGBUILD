@@ -3,10 +3,10 @@
 _pkgname=kube-bench
 pkgname=$_pkgname-bin
 pkgver=0.11.1 # renovate: datasource=github-releases depName=aquasecurity/kube-bench
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark"
 url="https://github.com/aquasecurity/$_pkgname"
-license=('APACHE')
+license=('Apache-2.0')
 source=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_amd64.tar.gz"
   "https://raw.githubusercontent.com/aquasecurity/kube-bench/v$pkgver/cfg/config.yaml"
