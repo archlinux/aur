@@ -1,6 +1,6 @@
 pkgbase = si-edit-git
         pkgdesc = Tools for working with SI files from LEGO Island.
-        pkgver = 0.0.129
+        pkgver = continuous.r5.g6da93b2
         pkgrel = 1
         url = https://github.com/isledecomp/SIEdit
         arch = i686
