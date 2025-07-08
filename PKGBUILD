@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=obs-studio-liberty
-pkgver=31.0.4
+pkgver=31.1.0
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
@@ -128,7 +128,6 @@ build() {
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
-    -DENABLE_FFMPEG=ON \
     -DENABLE_NVENC=ON \
     -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_x86_64" \
     -DOBS_VERSION_OVERRIDE="$pkgver" \
