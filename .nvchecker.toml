@@ -1,0 +1,5 @@
+[replicate-cog-bin]
+source = "github"
+github = "replicate/cog"
+prefix = "v"
+use_latest_release = true
