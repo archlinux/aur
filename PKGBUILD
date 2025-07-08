@@ -3,7 +3,7 @@
 _reponame=Stirling-PDF
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.46.2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
@@ -16,6 +16,7 @@ depends=(
     "fontconfig"
     "java-runtime-headless>=21"
     "libreoffice"
+    "ocrmypdf"
     "poppler"
     "python-opencv"
     "python-pdf2image"
@@ -24,6 +25,7 @@ depends=(
     "python-weasyprint"
     "qpdf"
     "tesseract-data-eng"
+    "unpaper"
 )
 optdepends=("jbig2enc: for certain OCR functionality"
             "tesseract-data-chi_sim: Chinese Simplified language OCR"
@@ -47,8 +49,8 @@ source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_repon
         "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('16354cd3ea082d3e039a6005fd337dce58416e5739f2bb634b8eeedaa42dd6c9'
-            '5ce0e8d8f976f91324f9a987b666af0cb418b40a62442ce8999ae67d2b087c80'
+sha256sums=('1725394e4169715392e26ec5b81b3e1f8dfd8c66f9c8bc611566d2ba89070f79'
+            '002eb1925c552f2d8c62efa2d5fb730819f1f9ee6cc5abceeaa9a8e5f8df298e'
             'd395992889fdf60de430509cd5866fc4606548aa1ba8f134b7e6bd4e29f293c9'
             '815d0d2c05daf40384a27413fba1dbd9d7db749a98b881d3ed113c164a83e833'
             '67654b2198898e23d0cf35829e83cc0585b7335b8bd7fcd9da0e4a2ce90082d6'
@@ -68,6 +70,6 @@ package() {
     install -Dm644 LICENSE                  -t "${pkgdir}/usr/share/licenses/${_pkgname}"
     install -Dm644 *.md                     -t "${pkgdir}/usr/share/doc/${_pkgname}"
 
-    cd "src/main/resources"
+    cd "${_pkgname}/src/main/resources"
     install -Dm644 static/fonts/*.ttf       -t "${pkgdir}/usr/share/fonts/${_pkgname}"
 }
