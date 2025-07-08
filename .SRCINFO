@@ -1,0 +1,19 @@
+pkgbase = pokeclicker-platinum
+	pkgdesc = PokéClicker Platinum – A clicker game for Pokémon fans (Electron AppImage)
+	pkgver = 0.10.24_1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/wheat32/pokeclicker
+	arch = x86_64
+	license = ISC
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	makedepends = electron-builder
+	makedepends = electron
+	depends = zlib
+	depends = glibc
+	source = git+https://github.com/wheat32/pokeclicker.git#tag=v0.10.24-1
+	sha256sums = SKIP
+
+pkgname = pokeclicker-platinum
