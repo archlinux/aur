@@ -1,0 +1,26 @@
+pkgbase = python-langgraph-cli
+	pkgdesc = CLI for interacting with LangGraph API.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langgraph/tree/main/libs/cli
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-watch
+	checkdepends = python-msgspec
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-langgraph-sdk
+	optdepends = python-langgraph-api: inmem
+	optdepends = python-langgraph-runtime-inmem: inmem
+	optdepends = python-dotenv: inmem
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-cli/langgraph_cli-0.3.3.tar.gz
+	sha256sums = 120adc44064786bb11f1376a7b324b2125276a2e2c3a04bbfab7b8c1622ad4d7
+
+pkgname = python-langgraph-cli
