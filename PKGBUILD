@@ -4,7 +4,7 @@
 # Contributor: Sebastian Krebs <sebastian@krebs.one>
 pkgname=kaniko
 pkgver=1.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
 url='https://github.com/chainguard-dev/kaniko'
@@ -31,7 +31,7 @@ build() {
       export GOARCH=amd64
     ;;
   esac
-  go build -trimpath -o . -ldflags="-linkmode=external -X=github.com/GoogleContainerTools/kaniko/pkg/version.version=v$pkgver" ./cmd/...
+  go build -trimpath -o . -ldflags="-linkmode=external -X=github.com/chainguard-dev/kaniko/pkg/version.version=v$pkgver" ./cmd/...
 }
 
 check() {

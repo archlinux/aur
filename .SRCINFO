@@ -1,7 +1,7 @@
 pkgbase = kaniko
 	pkgdesc = Build Container Images In Kubernetes
 	pkgver = 1.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chainguard-dev/kaniko
 	arch = x86_64
 	license = Apache
