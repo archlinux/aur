@@ -1,6 +1,6 @@
 pkgbase = python-vllm
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -56,7 +56,7 @@ pkgbase = python-vllm
 	optdepends = python-depyf: required for debugging and profiling with complilation config
 	optdepends = python-torchaudio: required for image processor of minicpm-o-2.6
 	optdepends = python-datasets: tools to benchmark scripts
-	source = git+https://github.com/vllm-project/vllm.git#tag=v0.9.1
-	sha256sums = 5354912742471b8a0a1a2e47075c52bf4d42370f623168f81edb2f74887a850b
+	source = git+https://github.com/vllm-project/vllm.git#tag=v0.9.2
+	sha256sums = d5cf46832dfd20a60e2ef7944aae952c75433a6ee32c2a66109816e1e4678e05
 
 pkgname = python-vllm
