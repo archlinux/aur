@@ -1,12 +1,16 @@
 pkgname="nightnote"
 pkgver="25.0708.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="NightNote is a note-taking application."
-arch=("aarch64")
+arch=("x86_64" "aarch64")
 license=("custom")
-source=("nnote")
-sha512sums=("SKIP")
-package(){
+source=("nnote_x86_64" "nnote_aarch64")
+sha512sums=("SKIP" "SKIP")
+package() {
 	mkdir -p "$pkgdir/etc/lingye/nightnote/"
-	install -Dm755 "$srcdir/nnote" "$pkgdir/usr/bin/nnote"
-}
+	if ["$ARCH" = "x86_64"]; then
+		install -Dm755 "$srcdir/nnote_x86_64" "$pkgdir/usr/bin/nnote"
+	elif ["$ARCH" = "aarch64"]; then
+		install -Dm755 "$srcdir/nnote_aarch64" "$pkgdir/usr/bin/nnote"
+	fi
+	}
