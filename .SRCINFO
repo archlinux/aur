@@ -1,7 +1,7 @@
 pkgbase = nightnote
 	pkgdesc = NightNote is a note-taking application.
 	pkgver = 25.0708.1
-	pkgrel = 3
+	pkgrel = 4
 	arch = x86_64
 	arch = aarch64
 	license = custom

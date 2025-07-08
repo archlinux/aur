@@ -1,6 +1,6 @@
 pkgname="nightnote"
 pkgver="25.0708.1"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="NightNote is a note-taking application."
 arch=("x86_64" "aarch64")
 license=("custom")
