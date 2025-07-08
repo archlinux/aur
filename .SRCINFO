@@ -1,0 +1,17 @@
+pkgbase = deepseek-cli
+    pkgdesc = Cliente CLI para DeepSeek com contexto de arquivos
+    pkgver = 1.0.0
+    pkgrel = 1
+    url = https://github.com/seuusuario/deepseek-cli-assistant
+    arch = any
+    license = MIT
+    depends = python
+    depends = python-requests
+    depends = python-rich
+    depends = python-tqdm
+    depends = python-dotenv
+    makedepends = python-setuptools
+    source = deepseek-cli-1.0.0.tar.gz
+    md5sums = SKIP
+
+pkgname = deepseek-cli
