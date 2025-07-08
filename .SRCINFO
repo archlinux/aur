@@ -1,0 +1,16 @@
+pkgbase = ferriby
+	pkgdesc = Keep Ferris alive by contributing to a git repo
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dawedawe/ferriby
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	options = !lto
+	source = ferriby-0.1.1.tar.gz::https://github.com/dawedawe/ferriby/archive/v0.1.1.tar.gz
+	sha256sums = 34cca0fa1e424ab761e1a5e7d87e333a9d21f6e10bc4f5eeebd3ffe6aaca24ef
+
+pkgname = ferriby
