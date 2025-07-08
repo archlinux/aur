@@ -4,8 +4,8 @@
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
 pkgname=torcs
-pkgver=1.3.7
-pkgrel=6
+pkgver=1.3.8
+pkgrel=1
 pkgdesc="A 3D racing cars simulator using OpenGL"
 url="http://torcs.sourceforge.net"
 license=("GPL")
@@ -14,21 +14,15 @@ depends=('freeglut' 'libpng' 'freealut' 'libxi' 'libxmu' 'libxrandr' 'libvorbis'
 makedepends=('plib' 'mesa')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-${pkgver/_/-}.tar.bz2
-	gcc7.patch
-	gcc6-isnan.patch
         format-argument.patch.gz)
-md5sums=('de314c3e421e8d7d4323d819c5010d23'
+md5sums=('45261f9d1a66fc46f1735d57fad97ed5'
          '64216e9dba6cc030c38cde8efea3e59d'
          'e84edaa1660f55fd980136f70e6471e6'
          '626695efb84fb1a4d59dc8be4ac9c047')
 
 prepare() {
   cd "$srcdir"/$pkgname-${pkgver/_/-}
-  for p in $srcdir/*.patch
-  do
-    patch -p1 -i "$p"
-  done
-  gunzip -c format-argument.patch.gz | patch -p1
+  gunzip -c $srcdir/format-argument.patch.gz | patch -p1
 }
 
 build() {
