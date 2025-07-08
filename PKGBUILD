@@ -1,7 +1,7 @@
 # Maintainer: Rakesh KP <rakeshkpk@gmail.com>
 pkgname=symphonie-bin
 pkgver=1.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple music player for local audio."
 arch=('x86_64')
 url="https://github.com/kprakesh1984/symphonie"
@@ -11,10 +11,12 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 # This URL points directly to your specific GitHub release asset
-source=("https://github.com/kprakesh1984/symphonie/releases/download/linux-aur-release-v${pkgver}/symphonie-${pkgver}.tar.gz")
+source=("https://github.com/kprakesh1984/symphonie/releases/download/linux-aur-release-v${pkgver}/symphonie-${pkgver}.tar.gz"
+        "symphonie.desktop")
 
 # We will generate this checksum in the next step
-sha256sums=('f35f6a4c3f37e15a47197e8f44426303d158b3c7ca41b42bea74c0ef3757b2f1')
+sha256sums=('f35f6a4c3f37e15a47197e8f44426303d158b3c7ca41b42bea74c0ef3757b2f1'
+            '0fc89a411f6c4c0b5881d2fad4bb5e5e4a24775664b2a44014493ae7acbd3031')
 
 # This function describes how to install the files
 # This is the corrected package() function
