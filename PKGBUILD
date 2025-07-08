@@ -1,8 +1,9 @@
+# Maintainer Chris Werner Rau <aur@cwrau.io>
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=nodejs-terminalizer
 pkgver=0.12.0 # renovate: datasource=npm depName=terminalizer
-pkgrel=1
+pkgrel=2
 pkgdesc="Record your terminal and generate animated gif images"
 arch=("x86_64")
 url="https://github.com/faressoft/${pkgname#nodejs-}"
