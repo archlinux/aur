@@ -1,6 +1,6 @@
 pkgbase = tonkeeper-bin
 	pkgdesc = Your desktop wallet on The Open Network (Static binaries from upstream)
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://tonkeeper.com
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = tonkeeper-bin
 	optdepends = org.freedesktop.secrets: Store secrets
 	provides = tonkeeper
 	conflicts = tonkeeper
-	noextract = tonkeeper_4.1.0_.deb
+	noextract = tonkeeper_4.1.1_x86_64.deb
 	options = !debug
-	source_x86_64 = tonkeeper_4.1.0_x86_64.deb::https://github.com/tonkeeper/tonkeeper-web/releases/download/v4.1.0/tonkeeper_4.1.0_amd64.deb
-	sha256sums_x86_64 = 962ab462bb4b9e6ba478543e0b3d96943c9429c734406e6cd0e6a67129c86ed7
-	source_aarch64 = tonkeeper_4.1.0_aarch64.deb::https://github.com/tonkeeper/tonkeeper-web/releases/download/v4.1.0/tonkeeper_4.1.0_arm64.deb
-	sha256sums_aarch64 = 2f1d30db332349d57376166a0c1f2674c4c4a2b6f4d97c77515c2ab683397be8
+	source_x86_64 = tonkeeper_4.1.1_x86_64.deb::https://github.com/tonkeeper/tonkeeper-web/releases/download/v4.1.1/tonkeeper_4.1.1_amd64.deb
+	sha256sums_x86_64 = a5605425e6ad2d7dc8c3b1c71e10faaea2b5aa6d5f4db571e940f1eab8dd06f2
+	source_aarch64 = tonkeeper_4.1.1_aarch64.deb::https://github.com/tonkeeper/tonkeeper-web/releases/download/v4.1.1/tonkeeper_4.1.1_arm64.deb
+	sha256sums_aarch64 = 6d5fd78e3d8e79caedf95eec7d1470fa80faa25dfa287cc15f8b06e6b7df35c7
 
 pkgname = tonkeeper-bin
