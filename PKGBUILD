@@ -1,7 +1,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=osu-fm-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Last.fm scrobbler for osu! (lazer)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 source=(
   "https://github.com/Chicken/osu-fm/releases/download/v${pkgver}/osu-fm-${pkgver}.AppImage"
 )
-sha512sums=('ce744477b76295554a47b4087e55a57a59563a41eb0323e1ff138705fb84333d7c5bbf73a2d85e2779d36254e91316f7a20c59fb4f60e15bcdf4301e7aec4394')
+sha512sums=('012489d4c1aeae84719640b99ff0a23a20e7a019e5f0ec64ceae198782b736964e16fa5ffd2108a6ebfd0d75fc443ab51b37e4ee744c3df872c513692794ea07')
 
 _appimage_name="osu-fm-${pkgver}.AppImage"
 _appname="osu-fm"
@@ -33,7 +33,7 @@ package() {
     "s|Exec=AppRun|Exec=env APPDIR=${_install_path} ${_install_path}/AppRun|" \
     "${srcdir}/squashfs-root/${_desktop_file}"
 
-  _sizes=('0x0')
+  _sizes=('512x512')
   for _size in "${_sizes[@]}"; do
     install -Dm644 \
       "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_size}/apps/${_desktop_icon}" \

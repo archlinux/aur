@@ -1,12 +1,12 @@
 pkgbase = osu-fm-bin
 	pkgdesc = Last.fm scrobbler for osu! (lazer)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Chicken/osu-fm
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = https://github.com/Chicken/osu-fm/releases/download/v1.0.1/osu-fm-1.0.1.AppImage
-	sha512sums = ce744477b76295554a47b4087e55a57a59563a41eb0323e1ff138705fb84333d7c5bbf73a2d85e2779d36254e91316f7a20c59fb4f60e15bcdf4301e7aec4394
+	source = https://github.com/Chicken/osu-fm/releases/download/v1.0.2/osu-fm-1.0.2.AppImage
+	sha512sums = 012489d4c1aeae84719640b99ff0a23a20e7a019e5f0ec64ceae198782b736964e16fa5ffd2108a6ebfd0d75fc443ab51b37e4ee744c3df872c513692794ea07
 
 pkgname = osu-fm-bin
