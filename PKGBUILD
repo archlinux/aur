@@ -8,6 +8,7 @@ url="https://github.com/wheat32/pokeclicker"
 license=('ISC')
 depends=('zlib' 'glibc')
 makedepends=('npm' 'nodejs' 'git' 'electron-builder' 'electron')
+options=(!strip)
 
 # Convert _ to - for Git tag
 _gitver="${pkgver//_/-}"
@@ -31,7 +32,7 @@ package() {
   cd "$srcdir/pokeclicker"
 
   install -d "$pkgdir/opt/$pkgname"
-  cp -r release/*.AppImage "$pkgdir/opt/$pkgname/pokeclicker-platinum.AppImage"
+  cp -a release/*.AppImage "$pkgdir/opt/$pkgname/pokeclicker-platinum.AppImage"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/pokeclicker-platinum.AppImage" "$pkgdir/usr/bin/pokeclicker-platinum"

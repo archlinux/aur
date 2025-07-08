@@ -13,6 +13,7 @@ pkgbase = pokeclicker-platinum
 	makedepends = electron
 	depends = zlib
 	depends = glibc
+	options = !strip
 	source = git+https://github.com/wheat32/pokeclicker.git#tag=v0.10.24-1
 	sha256sums = SKIP
 
