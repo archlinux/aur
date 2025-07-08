@@ -1,7 +1,7 @@
 pkgbase = qtemu-git
 	pkgdesc = Qt5 GUI front-end for QEMU, similar to VirtualBox.
 	pkgver = 2.1.r26.gd6c2d66
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/qtemu/gui
 	arch = i686
 	arch = x86_64
