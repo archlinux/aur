@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-cuda-f16
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations and F16)
-	pkgver = b5839
-	pkgrel = 2
+	pkgver = b5840
+	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h
@@ -24,10 +24,10 @@ pkgbase = llama.cpp-cuda-f16
 	conflicts = ggml
 	options = lto
 	options = !debug
-	source = git+https://github.com/ggerganov/llama.cpp#tag=b5839
+	source = git+https://github.com/ggerganov/llama.cpp#tag=b5840
 	source = llama.cpp.conf
 	source = llama.cpp.service
-	sha256sums = cc995cca227b00e91c274bd1c2a7b3e9d4f2f84abbf6da5e1b96ee2b1b0a4f0c
+	sha256sums = 814306ddf326725bc5a70f6332dee55bf1701b0d6a15c4ebc3389630c8cfcffe
 	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
 
