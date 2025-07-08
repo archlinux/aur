@@ -1,6 +1,6 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score-git
-pkgver=r11072.6834fc6
+pkgver=r1.a5e0dca
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
@@ -35,6 +35,7 @@ build() {
   -DSCORE_FHS_BUILD=1 \
   -DSCORE_DEPLOYMENT_BUILD=1 \
   -DCMAKE_SKIP_RPATH=ON \
+  -DSCORE_NO_INSTALL_ONNXRUNTIME=ON \
   -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
 
   cmake --build "$srcdir/build"
