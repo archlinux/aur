@@ -1,9 +1,9 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Chris Werner Rau < aur [ at ] cwrau [ dot ] io >
+# Maintainer Chris Werner Rau <aur@cwrau.io>
 # contributer: Alif Rachmawadi <arch@subosito.com>
 pkgname=dep-bin
 pkgver=0.5.4 # renovate: datasource=github-releases depName=golang/dep
-pkgrel=1
+pkgrel=2
 pkgdesc="Go dependency management tool"
 pkgoption1="dep-linux-amd64"
 pkgoption2="dep-linux-arm64"
