@@ -1,7 +1,7 @@
 pkgbase = symphonie-bin
 	pkgdesc = A lightweight music player for local audio collection.
 	pkgver = 1.0.15
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/kprakesh1984/symphonie
 	arch = x86_64
 	license = MIT

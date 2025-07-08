@@ -1,7 +1,7 @@
 # Maintainer: Rakesh KP <rakeshkpk@gmail.com>
 pkgname=symphonie-bin
 pkgver=1.0.15
-pkgrel=8 # Final version number for this fix
+pkgrel=9 # Final version number for this fix
 pkgdesc="A lightweight music player for local audio collection."
 arch=('x86_64')
 url="https://github.com/kprakesh1984/symphonie"
@@ -19,19 +19,19 @@ sha256sums=('f35f6a4c3f37e15a47197e8f44426303d158b3c7ca41b42bea74c0ef3757b2f1'
             '66d1d7932ff2c541ace259eca426f8557c4f5853f416562b2162d69e6b69b122')
 
 package() {
-  # Install the main application files
   install -d "${pkgdir}/opt/${pkgname%-bin}"
 
-  # --- THE DEFINITIVE FIX IS HERE ---
-  # This command copies all extracted source files robustly.
-  # It changes into the source directory first, then copies everything.
-  cd "${srcdir}"
-  cp -a * "${pkgdir}/opt/${pkgname%-bin}/"
+  # Change into the actual extracted folder
+  cd "${srcdir}/symphonie-1.0.15"
 
-  # This chmod command will now find its target and succeed.
+  # Copy everything into /opt/symphonie
+  cp -a . "${pkgdir}/opt/${pkgname%-bin}/"
+
+  # Mark the main binary executable
   chmod +x "${pkgdir}/opt/${pkgname%-bin}/Symphonie"
 
-  # Install the .desktop file and icon (these paths are now correct)
+  # Install the .desktop file and icon
   install -Dm644 "${srcdir}/symphonie.desktop" "${pkgdir}/usr/share/applications/symphonie.desktop"
   install -Dm644 "${srcdir}/512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/symphonie.png"
 }
+
