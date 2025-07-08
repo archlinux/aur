@@ -11,8 +11,8 @@ optdepends=(
   'gum: TUI interface in sqlchknob'
   'jq: JSON parsing for radio-browser search'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/SW-philip/sqlch-suite/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('59dd1e950a79f3add93336089d55674c06eaf563613705fee64526d1d4eab3f1')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SW-philip/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('458cff80239f117b5aa2c50989bda9d4744f5a70491bd074338ab1224e6852b2')
 
 package() {
   cd "$srcdir"
