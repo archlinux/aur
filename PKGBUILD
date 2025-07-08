@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=proxygen
-pkgver=2025.06.30.00
+pkgver=2025.07.07.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -15,16 +15,16 @@ license=(BSD-3-Clause)
 depends=(
   boost-libs
   double-conversion
-  fizz
+  fizz=$pkgver
   fmt
-  folly
+  folly=$pkgver
   gcc-libs
   gflags
   glibc
   google-glog
-  mvfst
+  mvfst=$pkgver
   openssl
-  wangle
+  wangle=$pkgver
   zlib
   zstd
 )
@@ -44,7 +44,7 @@ provides=(
   libproxygenhttpserver.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4211fe23d284d2df68ca7de924becbf0924a150c6bbfbc1bcf70c24307a2776c')
+sha256sums=('9a7d756fe88704e4f0fc69e72c71249894c94c205215b38e24a4fdd6459d73c8')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -77,6 +77,7 @@ check() {
     HTTPSessionAcceptorTestNPN.Npn
     HTTPSessionAcceptorTestNPNJunk.Npn
     HTTPSessionAcceptorTestNPNPlaintext.PlaintextProtocols
+    HTTPMessage.TestParseQueryParamsSimple
     SSL.DisallowInsecureOnSecureServer
     SSL.SSLTest
     SSL.SSLTestWithMultiCAs
