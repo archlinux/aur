@@ -1,10 +1,10 @@
 pkgbase = kubectl-node-shell
 	pkgdesc = Exec into node via kubectl
 	pkgver = 1.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kvaps/kubectl-node-shell
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	optdepends = k9s: to use the included k9s plugin
 	source = kubectl-node-shell-1.11.0.tar.gz::https://github.com/kvaps/kubectl-node-shell/archive/refs/tags/v1.11.0.tar.gz
 	source = k9s-node-shell.yaml
