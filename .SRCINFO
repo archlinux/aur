@@ -1,6 +1,6 @@
 pkgbase = linuxtoys-bin
 	pkgdesc = A collection of tools for Linux in a user-friendly way.
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://github.com/psygreg/linuxtoys
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = linuxtoys-bin
 	depends = base-devel
 	depends = libnewt
 	depends = git
-	provides = linuxtoys=3.1
-	source = https://github.com/psygreg/linuxtoys/releases/download/3.1/linuxtoys-3.1.tar.xz
-	sha256sums = 295a365ba08cd5a96f1c059c7c18917be2d27a1df60d160e0226e9bade565752
+	provides = linuxtoys=3.2
+	source = https://github.com/psygreg/linuxtoys/releases/download/3.2/linuxtoys-3.2.tar.xz
+	sha256sums = b9b82375995b24c42c64841b33d3162ffb9511653008e525086c87678a7036a2
 
 pkgname = linuxtoys-bin
