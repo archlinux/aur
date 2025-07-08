@@ -1,0 +1,4 @@
+[amp]
+source = 'github'
+github = 'jmacdonald/amp'
+use_latest_release = true
