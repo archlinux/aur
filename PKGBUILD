@@ -1,17 +1,17 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ntvcm
-pkgver=0.0.20250219
+pkgver=0.0.20250703
 pkgrel=1
 pkgdesc='NT Virtual CP/M Machine, emulates CP/M running on an 8080/Z80 processor'
-_commit=65b4029eff89126658c60d0558e8332810688186
+_commit=1ef7d7f7d6a2a80ea177e11543dc8def773fe0bc
 url=https://github.com/davidly/ntvcm
 arch=(x86_64)
 license=(CC0-1.0)
 depends=(glibc)
 makedepends=(git)
 source=("$pkgname-$pkgver::git+$url#commit=$_commit")
-b2sums=('32067845a27a3ab42beb9f4bb9e223518d96f0630615ed653cc166470ee85385cf027c5ca2ba4c3e42a803599b965610a92303cfaac686b8eebe65858cbb042e')
+b2sums=('a78abbe4fa92e1d6f63371fb27b53d08f8e38c3d545cc4115366044a5b4b3d804ee30a222aab3155e25f7b5c1196ee94eada7515210b3d6370e850f416b374e8')
 
 build() {
 	cd "$pkgname-$pkgver"
