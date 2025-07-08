@@ -33,6 +33,6 @@ if [[ "${#management_kubeconfigs[@]}" -gt 0 ]]; then
     for context in $(kubectl config get-contexts -o name); do
       (kubectl --context "$context" get cluster -A -o yaml || true) | yq -r --arg kubeconfig "$KUBECONFIG" --arg context "$context" '.items | map("\($kubeconfig):\($context):\(.metadata.namespace):\(.metadata.name):'"$custom_columns_string"'\(('"${MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION}"') as $custom_name | if $custom_name == "" then .metadata.name else "\($custom_name) (\(.metadata.name))" end)")[]'
     done
-  done | fzf --track --preview="awk -v name={} 'BEGIN{split(name,splitted,\":\"); print splitted[2] \"@\" splitted[1]}'" +s -d : --with-nth=$((4 + ${#custom_columns[@]})),$((5 + ${#custom_columns[@]})) | IFS=: read -r mgmt_kubeconfig mgmt_context namespace name _
+  done | fzf --sync --track --preview="awk -v name={} 'BEGIN{split(name,splitted,\":\"); print splitted[2] \"@\" splitted[1]}'" +s -d : --with-nth=$((4 + ${#custom_columns[@]})),$((5 + ${#custom_columns[@]})) | IFS=: read -r mgmt_kubeconfig mgmt_context namespace name _
   exec env KUBECONFIG="$mgmt_kubeconfig" KUBECONFIG_CONTEXT="$mgmt_context" capo-shell "$namespace" "$name" "${@}"
 fi
