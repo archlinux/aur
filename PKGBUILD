@@ -3,9 +3,9 @@
 pkgname='python-pairinteraction'
 _name='pairinteraction'
 _py="py3"
-pkgver=2.1.0
+pkgver=2.2.0
 #commit="2faf2d01f95311ef29b67f46ae8eb918d2ba7643"
-pkgrel=2
+pkgrel=1
 pkgdesc="A Rydberg Interaction Calculator"
 url="https://github.com/pairinteraction/pairinteraction"
 depends=('python-typing_extensions' 'python-numpy' 'python-scipy' 'python-pint' 'python-colorama' 'pyside6' 'python-matplotlib' 'python-mplcursors' 'python' 'intel-oneapi-mkl' 'python-mkl' 'nlohmann-json' 'doctest' 'eigen' 'fmt' 'openssl' 'spdlog' 'cpptrace' 'jupyter-nbformat' 'jupyter-nbconvert')
@@ -18,7 +18,7 @@ source=("https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v$
 # otherwise we just use the zip of whatever commit I updated this last
 # source=("https://github.com/pairinteraction/pairinteraction/archive/$commit.zip")
 
-sha256sums=("d75b22d08d752db3e780e7f20896becc3222fe34c14bf513f335c863e3fac71c")
+sha256sums=("21c41fbbea220a18506f85dc5e75f2f418711ca677d4771357e39a18b5a8f01f")
 
 
 package() {
