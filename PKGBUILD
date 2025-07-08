@@ -14,7 +14,7 @@ optdepends=('discord-game-sdk: Enable rich presence in Discord desktop client.')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 source=("https://github.com/noxygalaxy/TWLauncher/releases/download/v$_version/TWLauncher-x86_64.AppImage" "run.sh" "twlauncher.desktop" "twlauncher.png")
 sha256sums=('2762db727989a1fbc23ba2124263e7606d7534d74448fb824d041a44ad385d21'
-            'f2f6e7817892ac969877b3953b686f59526d22a3f78b8f7cc505b35ee7ba53b1'
+            'd6f27be58f886699e133cff4bfa7dac43c4fe4e6be47c966f727e0441a0bf6b8'
             '799007ac487e652bbfeaebc1915f7d024d01706bb34994a846854682c8879dca'
             'd7a0e8ac291af121931ebd31ed5e92fb94807ef58f9426a5fd0124e80da30e0b')
 
