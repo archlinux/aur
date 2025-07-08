@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=FastFlix
 pkgname=${_UpstreamPkgName,,}
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
 	    'libwebp: encoding to WebP')
 source=(git+${url}.git#tag=${pkgver}
         FastFlix.desktop)
-sha256sums=('af48433c64ac03984a463973a5d7970008b84dc97dc2e570d030d0c12f9a3d61'
+sha256sums=('f541f16121c15910339f413ea097aa59ccf720c7f91f9908090ed83f75bff70c'
             'cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847')
 
 #prepare() {
