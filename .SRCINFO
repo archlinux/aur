@@ -1,6 +1,6 @@
 pkgbase = python-neurodiffeq
 	pkgdesc = A light-weight & flexible library for solving differential equations using neural networks based on PyTorch
-	pkgver = 0.6.3
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/NeuroDiffGym/neurodiffeq
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-neurodiffeq
 	depends = python-tqdm
 	depends = python-dill
 	depends = python-ordered-set
-	source = neurodiffeq-0.6.3.tar.gz::https://github.com/NeuroDiffGym/neurodiffeq/archive/v0.6.3.tar.gz
-	sha512sums = 4215850b1196a2760ec748897f8c30cbbc4e541447c4bc98b0ecdf2674b623ff2f144d089fc260be2f1ce91c3eb5555bc5a971d656ce9b5acd78494c0536e15b
+	source = neurodiffeq-0.7.0.tar.gz::https://github.com/NeuroDiffGym/neurodiffeq/archive/v0.7.0.tar.gz
+	sha512sums = 7e4e470daa9427dcb18a95c7e0c3ec8278323e822f87a19593f4d13e447c78ca9cf2a6b669ab498b8b0b32c841451d4f052bc1e2778c71c16b33fbdef235292e
 
 pkgname = python-neurodiffeq

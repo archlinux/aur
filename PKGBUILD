@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=neurodiffeq
 pkgname=python-${_base}
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A light-weight & flexible library for solving differential equations using neural networks based on PyTorch"
 url="https://github.com/NeuroDiffGym/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pytorch tensorboard python-seaborn python-tqdm python-dill pytho
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4215850b1196a2760ec748897f8c30cbbc4e541447c4bc98b0ecdf2674b623ff2f144d089fc260be2f1ce91c3eb5555bc5a971d656ce9b5acd78494c0536e15b')
+sha512sums=('7e4e470daa9427dcb18a95c7e0c3ec8278323e822f87a19593f4d13e447c78ca9cf2a6b669ab498b8b0b32c841451d4f052bc1e2778c71c16b33fbdef235292e')
 
 build() {
   cd ${_base}-${pkgver}

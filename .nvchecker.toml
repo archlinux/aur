@@ -1,0 +1,5 @@
+[python-neurodiffeq]
+source = "github"
+github = "NeuroDiffGym/neurodiffeq"
+use_latest_release = "true"
+prefix = "v"
