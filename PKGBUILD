@@ -2,7 +2,7 @@
 
 pkgname=gz-rendering7
 pkgver=7.5.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="C++ library designed to provide an abstraction for different rendering engines."
@@ -15,7 +15,7 @@ depends=(
   'gz-math=7'
   'gz-plugin=2'
   'gz-utils=2'
-  'ogre-next<3.0.0'
+  'ogre-next2'
   )
 makedepends=(
   'cmake'
