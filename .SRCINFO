@@ -1,6 +1,6 @@
 pkgbase = plasma-settings
 	pkgdesc = Settings application for Plasma Mobile
-	pkgver = 25.02.0
+	pkgver = 25.07.0
 	pkgrel = 0
 	url = https://invent.kde.org/plasma-mobile/plasma-settings
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = plasma-settings
         depends = kitemviews
         depends = kitemmodels
         depends = kservice
-	source = http://download.kde.org/stable/plasma-settings/plasma-settings-25.02.0.tar.xz
-	sha256sums = c72a0e847fba06e248d66c1c9bc4432dc94b195f6eab693aa1183970bc6bf363 
+	source = https://download.kde.org/stable/plasma-settings/plasma-settings-25.07.0.tar.xz
+	sha256sums = dc4e90bb0ed40fd8f032956502b5f2f48ecfe8dad25e885e911d9a5b7ea36167
 
 pkgname = plasma-settings
