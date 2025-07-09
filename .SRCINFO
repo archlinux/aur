@@ -1,18 +1,18 @@
 pkgbase = taskjuggler
 	pkgdesc = A Project Management Software
-	pkgver = 3.7.2
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = http://www.taskjuggler.org
 	arch = any
 	license = GPL
 	depends = ruby
-	depends = ruby-mail
+	depends = ruby-mail>=2.7.1
 	depends = ruby-term-ansicolor>=1.7.1
 	depends = ruby-rdoc
 	depends = ruby-sync
-	noextract = taskjuggler-3.7.2.gem
+	noextract = taskjuggler-3.8.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/taskjuggler-3.7.2.gem
-	sha1sums = ef5d4f62e78f835a3366065ca92ac6844454a84f
+	source = https://rubygems.org/downloads/taskjuggler-3.8.1.gem
+	sha1sums = dd14d34c916076ba7dea0bbad6bad3afdb0ad829
 
 pkgname = taskjuggler
