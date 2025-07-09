@@ -1,7 +1,7 @@
 pkgbase = libubox
 	pkgdesc = C utility functions for OpenWrt
 	pkgver = r535.gb7acc8e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openwrt.org/docs/techref/libubox
 	arch = i686
 	arch = x86_64

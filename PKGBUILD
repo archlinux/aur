@@ -3,7 +3,7 @@
 
 pkgname=libubox
 pkgver=r535.gb7acc8e
-pkgrel=1
+pkgrel=2
 pkgdesc="C utility functions for OpenWrt"
 arch=('i686' 'x86_64')
 url="https://openwrt.org/docs/techref/libubox"
@@ -26,11 +26,13 @@ pkgver() {
 build() {
   cd "libubox"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DCMAKE_POLICY_VERSION_MINIMUM="3.5" \
     ./
   cmake --build "_build"
 }
