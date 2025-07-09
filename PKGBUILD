@@ -5,7 +5,7 @@
 #
 pkgname=wtfis
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Passive hostname, domain and IP lookup tool for non-robots"
 arch=("any")
 url='https://github.com/pirxthepilot/wtfis'
@@ -27,7 +27,7 @@ makedepends=(
 source=("https://files.pythonhosted.org/packages/16/55/748b21d2d2e765e319cff417447006fc5d714b56317918da0d70ed8d7ee5/wtfis-0.11.0.tar.gz")
 sha256sums=('3a687d99d91c9bba15e45707acef68c3ebc9ffd571fb311c2d83423a62ee0e6f')
 package() {
-    cd "${_origpkgname}-${pkgver}" || exit
+    cd "${pkgname}-${pkgver}" || exit
     python -m build --wheel --no-isolation
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
