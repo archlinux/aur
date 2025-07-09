@@ -1,6 +1,6 @@
 pkgbase = xfce4-i3-workspaces-plugin-git
 	pkgdesc = A workspace switcher plugin for xfce4-panel which can be used for the i3 window manager
-	pkgver = 1.4.0.r0.gbaec90d
+	pkgver = 1.4.2.r5.gd7c2d97
 	pkgrel = 1
 	url = https://github.com/denesb/xfce4-i3-workspaces-plugin
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = xfce4-i3-workspaces-plugin-git
 	makedepends = git
 	makedepends = autoconf
 	makedepends = automake
+	makedepends = intltool
 	makedepends = xfce4-dev-tools
 	depends = xfce4-panel
 	depends = i3ipc-glib-git
@@ -17,4 +18,3 @@ pkgbase = xfce4-i3-workspaces-plugin-git
 	md5sums = SKIP
 
 pkgname = xfce4-i3-workspaces-plugin-git
-
