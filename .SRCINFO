@@ -1,0 +1,24 @@
+pkgbase = twintaillauncher-bin
+	pkgdesc = A multi-platform launcher for your anime games
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TwintailTeam/TwintailLauncher
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = hdiffpatch
+	provides = twintaillauncher
+	conflicts = twintaillauncher
+	conflicts = twintaillauncher-git
+	options = !debug
+	source = twintaillauncher-1.0.0.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v1.0.0/twintaillauncher_1.0.0_amd64.deb
+	sha256sums = fc5178c5ab7e93621be7d35a17c76aeeba6324b4c3488f7a143cd544f4077114
+
+pkgname = twintaillauncher-bin
