@@ -1,0 +1,39 @@
+#!/bin/bash
+grub_generate() {
+    # Install grub files into /boot
+    /usr/bin/grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules="tpm" --disable-shim-lock
+    # Create BOOTX64 file if not present. if already present check if it is grub. If it is grub then update. If not dont do any thing to it.
+    if [[ -f /boot/EFI/BOOT/BOOTX64.EFI ]]; then
+      if strings /boot/EFI/BOOT/BOOTX64.EFI | grep -qi grub; then
+        /usr/bin/grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules="tpm" --disable-shim-lock --removable
+      fi
+    else
+        /usr/bin/grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules="tpm" --disable-shim-lock --removable
+    fi
+    # create config
+    /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
+    [[ -f /usr/bin/sbctl ]] && /usr/bin/sbctl sign-all -g
+}
+
+vmlinuz_generate() {
+    # create config
+    /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+remove(){
+    # Remove /boot grub entries
+    /usr/bin/rm -rf /boot/grub /boot/EFI/GRUB
+    if [[ -f /boot/EFI/BOOT/BOOTX64.EFI ]]; then
+      if strings /boot/EFI/BOOT/BOOTX64.EFI | grep -qi grub; then
+        /usr/bin/rm -rf /boot/EFI/BOOT/BOOTX64.EFI
+      fi
+    fi
+    # Remove efibootmgr GRUB entries
+    /usr/bin/efibootmgr -b $(/usr/bin/efibootmgr | /usr/bin/grep GRUB | /usr/bin/awk '{print $1}' | /usr/bin/sed 's/Boot\([0-9]*\)\*/\1/') -B >/dev/null
+}
+
+case "$1" in
+  grub_generate) grub_generate ;;
+  vmlinuz_generate) vmlinuz_generate ;;
+  remove) remove ;;
+esac

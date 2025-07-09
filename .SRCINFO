@@ -1,0 +1,20 @@
+pkgbase = grub-hook-ca
+	pkgdesc = Pacman hooks to install and generate grub using the method for CA signing of bootloader and remove grub completely from system upon its uninstallation.
+	pkgver = 1
+	pkgrel = 1
+	install = grub-hook-ca.install
+	arch = any
+	license = GPL
+	depends = bash
+	optdepends = grub: The Bootloader
+	optdepends = sbctl: To sign secureboot
+	source = grub
+	source = grub-grub_generate.hook
+	source = grub-vmlinuz_generate.hook
+	source = grub-remove.hook
+	sha256sums = 180a4711e9dc9dc47fb972091d87246c846b7aa5c431e1c5c973fcbd806ce4bd
+	sha256sums = 6eb015989f4bbd928550b3bc2c8434d4a92409bcb0e9dc91b89c967d11cbba46
+	sha256sums = de0da36d2f5b46f26b4181a24c74c57b880b5c102158d4855b07710e13f3c7f2
+	sha256sums = 88c26842f4a361a494ebe426d3a624b7d256d648acde1a9854f56f38b16277ec
+
+pkgname = grub-hook-ca

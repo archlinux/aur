@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Regenerating grub...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/grub vmlinuz_generate
+NeedsTargets

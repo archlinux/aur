@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = grub
+Target = grub-git
+
+[Action]
+Description = Regenerating grub...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/grub grub_generate
+NeedsTargets
