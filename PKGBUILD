@@ -1,6 +1,6 @@
 pkgname=networkmanager-openvpn-xor
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for Standard and XOR Patched OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
@@ -18,6 +18,7 @@ makedepends=(
   libnma
   libnma-gtk4
   python
+  intltool
 )
 optdepends=(
   "libnma-gtk4: GUI support (GTK 4)"
