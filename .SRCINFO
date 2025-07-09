@@ -1,5 +1,5 @@
 pkgbase = aprsc-9m2pju-git
-	pkgdesc = APRS-IS software RX/TX iGate and server with multi-threading, written in C. Git version.
+	pkgdesc = Ham Radio APRS-IS software RX/TX iGate and server with multi-threading, written in C. Git version.
 	pkgver = r1886.a4efaa5
 	pkgrel = 1
 	url = https://github.com/hessu/aprsc
