@@ -7,13 +7,12 @@ pkgbase = opera-developer-ffmpeg-codecs
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = nasm
-	makedepends = git
 	depends = glibc
-	source = chromium-ffmpeg::git+https://chromium.googlesource.com/chromium/third_party/ffmpeg.git#commit=fbce2a76c00cd2e5aeffe3c2e71d44c284ec52d6
+	source = https://chromium.googlesource.com/chromium/third_party/ffmpeg/+archive/fbce2a76c00cd2e5aeffe3c2e71d44c284ec52d6.tar.gz
 	source = off-opera-developer-ffmpeg.hook
 	source = on-opera-developer-ffmpeg.install
-	sha256sums = ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d
-	sha256sums = b9c34cfc4fa01853f496670a4a6a6f6b1e60804cb3a92501cfc3043c03301abb
+	sha256sums = b407de7a2e8c8c2f1bca1f86540008631e460c2cea323778c9177affac1eabf1
+	sha256sums = 2f118dfca4d3097432000b62f8247ef86afd66a9681c1dfa71adf86783587ed4
 	sha256sums = 4918ba2449b39274878268c5956b604992c504b89660469c93864e44de8c62aa
 
 pkgname = opera-developer-ffmpeg-codecs

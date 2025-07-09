@@ -6,32 +6,28 @@ _note='Make sure every operas have same major Chromium,ffmpeg ver'
 _chromium=135.0.7049.128
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 _ffmpeg=$(curl -s https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_commit}/RELEASE?format=TEXT|base64 -d)
-pkgver=$_chromium.ffmpeg$_ffmpeg
+pkgver=${_chromium}.ffmpeg$_ffmpeg
 pkgrel=1
 pkgdesc='Add codecs to opera-developer'
 arch=('x86_64')
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 license=('LGPL-2.1-or-later')
 depends=(glibc)
-makedepends=(nasm git)
-source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
-off-opera-developer-ffmpeg.hook on-opera-developer-ffmpeg.install
-#sigs-$pkgver::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_commit}/chromium/ffmpeg.sigs?format=TEXT
-)
+makedepends=(nasm)
+source=(${url}/+archive/${_commit}.tar.gz
+off-opera-developer-ffmpeg.hook on-opera-developer-ffmpeg.install)
 install=on-opera-developer-ffmpeg.install
-sha256sums=('ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d'
-            'b9c34cfc4fa01853f496670a4a6a6f6b1e60804cb3a92501cfc3043c03301abb'
+sha256sums=('b407de7a2e8c8c2f1bca1f86540008631e460c2cea323778c9177affac1eabf1'
+            '2f118dfca4d3097432000b62f8247ef86afd66a9681c1dfa71adf86783587ed4'
             '4918ba2449b39274878268c5956b604992c504b89660469c93864e44de8c62aa')
 
 prepare() {
   echo $_note
-  cd chromium-ffmpeg
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
 }
 
 build() {
-  cd chromium-ffmpeg
   # See BUILD.gn and chromium/config/Chrome/linux/x64/
   ./configure \
     --disable-{all,autodetect,doc,iconv,network} \
@@ -47,9 +43,8 @@ build() {
     --prefix="${srcdir}"/release
 
   make install
-
-  cd ../release
-  #_symbols=$(base64 -d ../sigs-${pkgver} | grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  #_symbols=$(cat chromium/ffmpeg.sigs | grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  cd release
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
