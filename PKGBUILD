@@ -1,7 +1,7 @@
 
 # Maintainer: Ling Wang <lingwang@wcysite.com>
 pkgname=ruyi-bin
-pkgver=0.35.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="The package manager for RuyiSDK."
 arch=("x86_64" "arm64" "riscv64")
@@ -10,14 +10,14 @@ license=('Apache-2.0')
 depends=('wget' 'git' 'tar' 'bzip2' 'xz' 'zstd')
 provides=('ruyi=$pkgver')
 options=('!strip') # !important, otherwise the binary will be broken
-source_x86_64=("ruyi-$pkgver-bin-x86_64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/$pkgver/ruyi.amd64")
-source_arm64=("ruyi-$pkgver-bin-arm64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/$pkgver/ruyi.arm64")
-source_riscv64=("ruyi-$pkgver-bin-riscv64::https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/$pkgver/ruyi.riscv64")
+source_x86_64=("ruyi-$pkgver-bin-x86_64::https://fast-mirror.isrc.ac.cn/ruyisdk/ruyi/releases/$pkgver/ruyi.amd64")
+source_arm64=("ruyi-$pkgver-bin-arm64::https://fast-mirror.isrc.ac.cn/ruyisdk/ruyi/releases/$pkgver/ruyi.arm64")
+source_riscv64=("ruyi-$pkgver-bin-riscv64::https://fast-mirror.isrc.ac.cn/ruyisdk/ruyi/releases/$pkgver/ruyi.riscv64")
 
 package() {
     install -d "${pkgdir}/usr/bin"
     install -m755 "${srcdir}/ruyi-$pkgver-bin-$CARCH" "${pkgdir}/usr/bin/ruyi"
 }
-sha256sums_x86_64=('007505993adef91ffb02b0ea29045c596c0445c9db337d5f0359b7e358e9ac7b')
-sha256sums_arm64=('e5bb48f838826ff509e93aad5bf852eeaf22e366622c5f26cc5e4f2630844acf')
-sha256sums_riscv64=('6589af468e87c5374f5f9df46d3b95f8ef43970348bd8d36cec3a84ae005d2b2')
+sha256sums_x86_64=('69880269a32fbc1455927049f36903d4254ab427adb0a749cae675e87a6861e9')
+sha256sums_arm64=('dab109ad8d3a47f7adc7094ae5390ce6ec03a95fdf889b7bedcfcff400e224ff')
+sha256sums_riscv64=('c7f257269c0eda9d141bdea96c14d46899586133afd39571aa947bba455201e7')
