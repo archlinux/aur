@@ -1,18 +1,20 @@
 pkgbase = libndi-git
 	pkgdesc = Library to interact with Network Device Interface (NDI) streams (git version)
-	pkgver = r14.gb2297ff
+	pkgver = r19.gc14b40c
 	pkgrel = 1
 	url = https://code.videolan.org/jbk/libndi/
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = meson
+	depends = glibc
 	depends = ffmpeg
 	depends = libmicrodns
 	provides = libndi
 	conflicts = libndi
 	source = git+https://code.videolan.org/jbk/libndi.git
+	source = 010-libndi-update-ffmpeg-api.patch
 	sha256sums = SKIP
+	sha256sums = cec117da6c8d0e643db1378d88982b59c002eb2dd588ea406aea9275247686e4
 
 pkgname = libndi-git
-

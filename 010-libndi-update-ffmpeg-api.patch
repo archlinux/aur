@@ -1,0 +1,85 @@
+--- a/libndi.c
++++ b/libndi.c
+@@ -68,7 +68,7 @@ typedef struct ndi_message
+ struct ndi_ctx
+ {
+     /* buffers */
+-    AVFifoBuffer *fifo;
++    AVFifo *fifo;
+ 
+     int target_size;
+ 
+@@ -378,7 +378,7 @@ static int handle_ndi_packet(ndi_ctx *ndi_ctx)
+ {
+     if(!ndi_ctx->target_size) {
+         uint8_t data[12];
+-        av_fifo_generic_peek(ndi_ctx->fifo, data, 12, NULL); // fixme
++        av_fifo_peek(ndi_ctx->fifo, data, 12, 0); // fixme
+ 
+         /* MSB = scrambled bit */
+         uint16_t header_type = data[0] | (data[1] << 8);
+@@ -394,17 +394,17 @@ static int handle_ndi_packet(ndi_ctx *ndi_ctx)
+         }
+ 
+         //printf("target size %i \n", ndi_ctx->target_size);
+-        if(av_fifo_space(ndi_ctx->fifo) < ndi_ctx->target_size)
+-            av_fifo_grow(ndi_ctx->fifo, ndi_ctx->target_size * 3 / 2);
++        if(av_fifo_can_write(ndi_ctx->fifo) < (size_t) ndi_ctx->target_size)
++            av_fifo_grow2(ndi_ctx->fifo, (size_t) ndi_ctx->target_size * 3 / 2);
+     }
+ 
+-    if(av_fifo_size(ndi_ctx->fifo) >= ndi_ctx->target_size) {
++    if(av_fifo_can_read(ndi_ctx->fifo) >= (size_t) ndi_ctx->target_size) {
+         /* FIXME: make this zero copy */
+         uint8_t *data = malloc(ndi_ctx->target_size);
+         if(!data)
+             return -1;
+ 
+-        av_fifo_generic_read(ndi_ctx->fifo, data, ndi_ctx->target_size, NULL);
++        av_fifo_peek(ndi_ctx->fifo, data, (size_t) ndi_ctx->target_size, 0);
+         process_ndi_packet(ndi_ctx, data, ndi_ctx->target_size);
+         //printf("draining %i \n", ndi_ctx->target_size);
+         free(data);
+@@ -426,10 +426,10 @@ static int receive_ndi_packet(ndi_ctx *ndi_ctx)
+     if(len == 0)
+         printf("end \n");
+ 
+-    if(av_fifo_space(ndi_ctx->fifo) < len)
+-        av_fifo_grow(ndi_ctx->fifo, 5000); // fixme
++    if(av_fifo_can_write(ndi_ctx->fifo) < (size_t) len)
++        av_fifo_grow2(ndi_ctx->fifo, 5000); // fixme
+ 
+-    av_fifo_generic_write(ndi_ctx->fifo, tmp, len, NULL);
++    av_fifo_write(ndi_ctx->fifo, tmp, (size_t) len);
+ 
+     if(handle_ndi_packet(ndi_ctx) < 0) {
+         printf("handle fail \n");
+@@ -462,7 +462,7 @@ ndi_ctx *libndi_init(void)
+         return NULL;
+     }
+ 
+-    ndi_ctx->fifo = av_fifo_alloc(10000);
++    ndi_ctx->fifo = av_fifo_alloc2(10000, sizeof(uint8_t), AV_FIFO_FLAG_AUTO_GROW);
+     if(!ndi_ctx->fifo)
+         goto end;
+ 
+@@ -629,7 +629,7 @@ void libndi_close(ndi_ctx *ndi_ctx)
+     for(int i = 0; i < 4; i++)
+         free(ndi_ctx->ndi_request[i].buf);
+ 
+-    av_fifo_free(ndi_ctx->fifo);
++    av_fifo_freep2(&ndi_ctx->fifo);
+ 
+     free(ndi_ctx);
+ }
+--- a/ndi.c
++++ b/ndi.c
+@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+ #include "libndi.h"
+ 
+-AVCodec *codec;
++const AVCodec *codec;
+ AVCodecContext *avctx;
+ AVPacket *pkt;
+ AVFrame *frame;
