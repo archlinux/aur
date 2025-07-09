@@ -1,14 +1,14 @@
 pkgbase = highlite-appimage
 	pkgdesc = Open-source game client for High Spell
-	pkgver = 1.3.8
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Highl1te/HighliteDesktop
 	arch = x86_64
 	license = GPLv3
 	options = !strip
-	source = HighLite-1.3.8.AppImage::https://github.com/Highl1te/HighliteDesktop/releases/download/v1.3.8/HighLite-1.3.8.AppImage
+	source = HighLite-1.4.0.AppImage::https://github.com/Highl1te/HighliteDesktop/releases/download/v1.4.0/HighLite-1.4.0.AppImage
 	source = highlite.desktop
-	sha256sums = e8fd2dc2117d5c942941c1987f3e9ad383e023b41a54833d63c7539047d052f4
+	sha256sums = 63b39ca7d1ec1324f82ca3012f1dc18694a0a1d60a279eb87e3ed57c5a972c84
 	sha256sums = cc333c4e700dd66d6c409599f1f8861d9dea8c318947bda95b1d4bc4b8c05bc0
 
 pkgname = highlite-appimage
