@@ -14,7 +14,7 @@ pkgbase = tithon
 	options = !debug
 	source = git+https://github.com/greboid/tithon.git#tag=v0.0.35
 	source = launcher.sh
-	sha256sums = 5ab7b3f92b53fc38eaa16fb654b3c631736d2178684782c2f5207c62d6903dfd
+	sha256sums = d52b7ee27b0c8eccc9b5500b0956680b5de36c83255abf783d29a1fe829ad219
 	sha256sums = 96f891aa77f7374c9d40689add1ec8f5402915a08a70d820725d026fa8ec0f29
 
 pkgname = tithon
