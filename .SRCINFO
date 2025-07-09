@@ -1,11 +1,13 @@
 pkgbase = zdocscan-git
 	pkgdesc = Process phone-taken photos to produce high quality scanned documents
-	pkgver = 0.0.1_r03ad33b
+	pkgver = 0.0.3_r51f54b6
 	pkgrel = 1
 	url = https://github.com/hammerfunctor/zdocscan
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = zig
+	makedepends = git
+	depends = glibc
 	depends = djvulibre
 	depends = potrace
 	provides = zdocscan

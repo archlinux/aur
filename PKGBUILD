@@ -2,7 +2,7 @@
 
 pkgname=zdocscan-git
 _pkgname=zdocscan
-pkgver=0.0.1_r03ad33b
+pkgver=0.0.3_r51f54b6
 pkgrel=1
 pkgdesc="Process phone-taken photos to produce high quality scanned documents"
 arch=('x86_64')
