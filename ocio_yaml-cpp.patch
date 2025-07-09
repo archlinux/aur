@@ -1,0 +1,22 @@
+--- OpenRV.clean/_build/RV_DEPS_OCIO/src/share/cmake/modules/install/Installyaml-cpp.cmake.clean	2024-01-29 23:11:35.000000000 -0800
++++ OpenRV/_build/RV_DEPS_OCIO/src/share/cmake/modules/install/Installyaml-cpp.cmake	2025-07-07 22:28:20.546469447 -0700
+@@ -121,6 +121,11 @@
+         # Hack to let imported target be built from ExternalProject_Add
+         file(MAKE_DIRECTORY ${yaml-cpp_INCLUDE_DIR})
+ 
++        SET(_patch_command
++            cd ${PROJECT_BINARY_DIR} &&
++            sed -i "1i #include <cstdint>" ext/build/yaml-cpp/src/yaml-cpp_install/src/emitterutils.cpp
++        )
++
+         ExternalProject_Add(yaml-cpp_install
+             GIT_REPOSITORY "https://github.com/jbeder/yaml-cpp.git"
+             GIT_TAG ${yaml-cpp_GIT_TAG}
+@@ -130,6 +135,7 @@
+             BUILD_BYPRODUCTS ${yaml-cpp_LIBRARY}
+             CMAKE_ARGS ${yaml-cpp_CMAKE_ARGS}
+             EXCLUDE_FROM_ALL TRUE
++            PATCH_COMMAND ${_patch_command}
+             BUILD_COMMAND ""
+             INSTALL_COMMAND
+                 ${CMAKE_COMMAND} --build .

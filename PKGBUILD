@@ -1,7 +1,7 @@
 # Maintainer: Robert Zhou <meep dot aur at meepzh dot com>
 
 pkgname=openrv-git
-pkgver=2.1.0.r280.dd73ec4
+pkgver=3.0.0.r430.94f9412
 pkgrel=1
 pkgdesc="aka Open RV, an image and sequence viewer for VFX and animation artists"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'libaio' 'mesa' 'tk' 'tcsh' 'opencl-icd-loader' 'glu' 'nss'
          'xcb-util-wm' 'xcb-util-renderutil' 'libxkbcommon-x11' 'libvdpau' 'libxtst'
          'libva' 'xcb-util-keysyms' 'libnsl' 'xcb-util-image' 'libcups' 'libpulse')
 makedepends=('cmake>=3.24' 'git' 'opencl-headers' 'nasm' 'python-pip' 'meson'
-             'openssl-1.1')
+             'openssl-1.1' 'patchelf')
 provides=('openrv')
 options=(!strip)
 DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download and install Qt from the official website, "
@@ -23,32 +23,30 @@ source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
         'git+https://github.com/shotgunsoftware/openrv-oiio.git'
         'ffmpeg.patch'
         'ocio.patch'
+        'ocio.h.patch'
         'ocio_install_yaml-cpp.patch'
+        'ocio_yaml-cpp.patch'
         'oiio.patch'
         'externalpackages.patch'
         'glew-lib64.patch'
         'jpegturbo-lib64.patch'
-        'pyside2.patch'
-        'pyside2-tools-root.patch'
-        'qt5.patch'
-        'pyside2-build_scripts.patch')
-        # 'manual://gcc_64.tar')  # Uncomment to pass Qt5 to chroot
+        'pyside6.patch'
+        'pyside6_build_main.patch')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'b0049be4ef7ade129682f8ccfb5bbaedf8b20f4459996dcc4d75e86a34a0382d099c6f342aebb997b8fef3ad190e4d3cb937f6e780095a33e66781c3c4eda604'
-        '7e8bf6f5e14c51c258c755e1013352ae80725a6cd65223bdffc65282a83ca1d93b16621a0c1af41311ed603ac0f36503a8d930786d04483feda61d32d392b504'
+        '006aafc6da23e045967968ffdfbe905436e05f66957e951917bcfc9aca9f515f9fcc2935884d7629ccaf1061ef64531356a2c89b07cad19fdc7f0bba8a7cd123'
+        '95f6cff1b9026ad1b9bdd9845c7fc646dcff5b78728bff312605e9d3b0ee0616defd89e9125f9784d8aa532047b67339f4d6a3a984ece819790d10ba06f8d605'
+        'c9ef45dfec9f5566fd9f6ab387907b73bb500ea1627f183cc5bbff6b9fb8419d67faa018c39f8f1f78d6164976a313b83842e584873069d17cefa40cdcdb4c22'
         'f5d463d66fadff1d8d9fc7fadd04f5b723bc24a5530dce916e881e812d5e5d701bcbfbcaff6331ef94612028a82b3275fb309dfee292d12800ba4118ddd8c6eb'
+        'de1b4b59c5bfac9a9c9196a2775f83185c8d7901c6e9910408481bd0f057b5e9dc7d8b9cef31743a3a394881775f4959d4a991b22a9ea65a0bbedf2e3945fbaa'
         '4d6b004ae837a636bdaf3c97ca0e67feab3c9792548f9d515ff6cef8ee854d716703174aa4349905b9ed078a28ebc4a6f41166f855e3d4068d7b9de4555ebdb9'
         '83132f08eacfa5684d7adbcba60981e53e908025a31b6e39196a13a74a543d346fdcdbc95eb339bfc2c149c100ead760e7d0609afb275481d30a6c190782e8bb'
         'ab830c1bcae5a35a3c3efc7f09776837a5b0b3d53cb7a42db5fad052635e848a79013617c97abdba2ce51fd41a593f8dde216e52e73e0bc3a7f4e608a22d165b'
         '31ae9ab03451ac06771ae3d07d6b07ce86ea38494bea9d25c49940493a2a7e38db5267a5c4043a9811590ca236d3c9735376f4ab2c529b4565c33e57ee2b6448'
-        '930f6c7a59a225247678bf7cce1a332547f8b47915bc176a204e3edc09edaa32a6fdf7475750a05c5483e7b813f8f11eb715a0d36efad06dd32cd5f5453ff996'
-        'a29b8e8cd6b8a78d7cf31b314bd81e605b6ffaa347d1ff75363848d81cc4624a0ca89b63183f1be41159f1671a78bbf123c98c7e42fba824a7012b9622f12288'
-        '9ed06e225dc5b3c2b367cd0756e448ffbca38bb658ba08ddb6b236b9b25eb83faf00ccaf9ad5ee741c7b0261d624a0c3a5c0d0728025c582d94c921f4b6e41a4'
-        '5429215bda255dcd22687a89380babd0ff50091250c19ffd25feb4d88bf31cea29551572e52cdcc971a6a34fc6b468d9c80723e452763bd92ea826dccc148df5')
-        # 'SKIP')  # Uncomment to pass Qt5 to chroot
+        '7eb73c1463fc59ad122cc6dcec795530f1331d754f7c9e1ed849d7b41d1bfe85fa6c84b2ffa1cfcdca247ee13d04b5d89a6d4d7e08c8f40cf39b9a3dc4cd1b52'
+        '6ba80a7830666c4b7c79e51647bb71548324aa06c4785e7f806c5ab98105ebc18e7db218cc2a77b38865f54a6bd54c5b45f46fd1b1aaef5202a1c4967f6247fd')
 
 pkgver() {
   cd OpenRV
@@ -70,23 +68,41 @@ prepare() {
   git config submodule.src/lib/oiio.url "$srcdir/openrv-oiio"
   git -c protocol.file.allow=always submodule update
 
+  # Use lib instead of lib64
   find cmake -type f -exec sed -i "s/lib64/lib/g" {} \;
-  patch --forward --strip=1 --input="$srcdir/ffmpeg.patch"
-  patch --forward --strip=1 --input="$srcdir/ocio.patch"
-  patch --forward --strip=1 --input="$srcdir/oiio.patch"
+  sed -i "s/lib64/lib/g" src/build/make_openssl.py
+  sed -i "s/lib64/lib/g" src/build/make_python.py
+  sed -i '/-rpath/a\ \ \ \ \ \ \ \ configure_args.append("--libdir=lib")' src/build/make_openssl.py
   patch --forward --strip=1 --input="$srcdir/glew-lib64.patch"
   patch --forward --strip=1 --input="$srcdir/jpegturbo-lib64.patch"
-  patch --forward --strip=1 --input="$srcdir/pyside2.patch"
-  # patch --forward --strip=1 --input="$srcdir/qt5.patch"  # Holdover from trying to use Arch-provided Qt5
+
+  # Fix build errors that occur on Arch
+  patch --forward --strip=1 --input="$srcdir/ffmpeg.patch"  # Use the same version of ffmpeg from the Arch-provided ffmpeg and fix build errors
+  patch --forward --strip=1 --input="$srcdir/ocio.patch"  # Include cstdint, force yaml-cpp static library build
+  patch --forward --strip=1 --input="$srcdir/oiio.patch"  # Update OIIO version to fix build errors and force matching fmt build
+  patch --forward --strip=1 --input="$srcdir/pyside6.patch"  # Force usage of OpenRV's Python installation for shiboken
   sed -i 's/HAVE_MREMAP 1/HAVE_MREMAP 0/g' src/pub/nedmalloc/malloc.c.h
   sed -i 's/s->pcrc_32_tab = get_crc_table()/s->pcrc_32_tab = (const unsigned long *)get_crc_table()/g' src/pub/minizip/unzip.c
   sed -i 's/char\* tagList = \&/char\* tagList = \(char\*\)\&/g' src/pub/FTGL/FTVectoriser.cpp
   sed -i 's/"--enable-shared",/"--enable-shared", "ax_cv_c_float_words_bigendian=no",/' src/build/make_python.py
-  sed -i 's/"CY2023"/"CY2024"/' cmake/defaults/rv_options.cmake
-  sed -i 's/pip install --user/pip install/' rvcmds.sh
-  sed -i -E 's/alias (\w+)="(.+)"/\1() { \2; };/' rvcmds.sh  # Allow commands to run in PKGBUILD
+  sed -i /aja.cmake/d cmake/dependencies/CMakeLists.txt  # Requires libajantv2, which is hardware-specific and requires an update in the AUR
+  echo " " > src/plugins/output/AJADevices/CMakeLists.txt
+  sed -i '/TwkGLFMesa/d' src/lib/graphics/CMakeLists.txt  # Requires OSMesa, only available through legacy support in mesa-amber
+  sed -i '/(MovieRV)/d' src/lib/image/CMakeLists.txt  # Software-based MovieRV uses TwkGLFMesa
+  sed -i '/rvio_sw/d' src/bin/imgtools/CMakeLists.txt  # rvio_sw uses MovieRV
+
+  # Options
+  sed -i '/(NON_FREE_ENCODERS_TO_DISABLE/a "nvenc"' cmake/dependencies/ffmpeg.cmake  # Uncomment if not using nvidia
+  sed -i '/"aac"/d' cmake/dependencies/ffmpeg.cmake  # Re-enable non-free aac in ffmpeg
+
+  # Update rvcmds.sh
+  sed -i 's/pip install --user/pip install/' rvcmds.sh  # Install to venv
+  sed -i -E 's/alias (\w+)="(.+)"/\1() { \2; };/' rvcmds.sh  # Convert aliases to PKGBUILD-callable functions
   sed -i 's,\\"${CMAKE_GENERATOR}\\","${CMAKE_GENERATOR}",' rvcmds.sh
-  sed -i "s/{WIN_PERL};/{WIN_PERL} "'"'"-DRV_FFMPEG_PATCH_COMMAND_STEP=git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e 03823ac0c6a38bd6ba972539e3203a592579792f 06c2a2c425f22e7dba5cad909737a631cc676e3f 9d675bb60d2542631f37613aa92b7e1144bbeaa1 43b417d516b0fabbec1f02120d948f636b8a018e"'"'";/" rvcmds.sh
+  # Pass CMake defines to rvcmds.sh:
+  # * Use latest dependencies in CY2024 and FFmpeg 7
+  # * Copy cherry-picks from Arch-provided ffmpeg
+  sed -i "s/{WIN_PERL};/{WIN_PERL} -DRV_VFX_PLATFORM=CY2024 -DRV_FFMPEG=7 "'"'"-DRV_FFMPEG_PATCH_COMMAND_STEP=git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47 d0facac679faf45d3356dff2e2cb382580d7a521"'"'";/" rvcmds.sh
   sed -i 's/--target ;/--target $1;/' rvcmds.sh
   sed -i 's/ctest /ctest --exclude-regex ".*(ALSASafe|io_oiio).*" /' rvcmds.sh  # ALSASafe uses Rv::Option, removed OpenVDB from OIIO
   # sed -i 's/--parallel=8/--parallel=1/' rvcmds.sh  # May help with debugging
@@ -95,11 +111,10 @@ prepare() {
 build() {
   cd OpenRV
   # export CMAKE_GENERATOR="Unix Makefiles"  # Uncomment to not use Ninja
-  # export QT_HOME="$srcdir/gcc_64"  # Uncomment to pass Qt5 to chroot
   python -m venv .
   source bin/activate
   source rvcmds.sh
-  rvbootstrap
+  CMAKE_POLICY_VERSION_MINIMUM=3.5 rvbootstrap
 }
 
 check() {

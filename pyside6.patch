@@ -1,0 +1,18 @@
+--- OpenRV.clean/src/build/make_pyside6.py	2025-07-06 19:42:18.937890186 -0700
++++ OpenRV/src/build/make_pyside6.py	2025-07-06 19:42:21.015274349 -0700
+@@ -239,10 +239,15 @@
+     python_home = PYTHON_OUTPUT_DIR
+     python_interpreter_args = get_python_interpreter_args(python_home, VARIANT)
+ 
++    subprocess.call(['patch', '--forward', '--binary', '--strip=1', f'--input=../pyside6_build_main.patch'], cwd='../../..')
++    subprocess.call(['sed', '-i', 's/shiboken_find_required_python(@PYTHON_VERSION_MAJOR@)/shiboken_find_required_python(3.11)/', '../../../_build/_deps/rv_deps_pyside6-src/sources/shiboken6/data/Shiboken6Config-spec.cmake.in'])
++
+     pyside_build_args = python_interpreter_args + [
+         os.path.join(SOURCE_DIR, "setup.py"),
+         "install",
+         f"--qtpaths={os.path.join(QT_OUTPUT_DIR, 'bin', 'qtpaths' + ('.exe' if platform.system() == 'Windows' else ''))}",
++        f"--shiboken-config-dir={os.path.join(SOURCE_DIR, "build", ".venv", "install", "lib", "cmake", "Shiboken6")}",
++        f"--shiboken-target-path={os.path.join(SOURCE_DIR, "build", ".venv", "install")}",
+         "--ignore-git",
+         "--standalone",
+         "--verbose",

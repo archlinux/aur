@@ -1,0 +1,25 @@
+--- OpenRV.clean/_build/_deps/rv_deps_pyside6-src/build_scripts/main.py.orig	2025-07-06 20:07:00.447816603 -0700
++++ OpenRV/_build/_deps/rv_deps_pyside6-src/build_scripts/main.py	2025-07-06 20:41:54.134265744 -0700
+@@ -596,6 +596,7 @@
+             # Record the minimum/maximum Python version for later use in Shiboken.__init__
+             f"-DMINIMUM_PYTHON_VERSION={get_allowed_python_versions()[0]}",
+             f"-DMAXIMUM_PYTHON_VERSION={get_allowed_python_versions()[-1]}",
++            f"-DUSE_PYTHON_VERSION={get_allowed_python_versions()[-1][0]}.{get_allowed_python_versions()[-1][1]}",
+             f"-DQUIET_BUILD={cmake_quiet_build}",
+             f"-DCMAKE_RULE_MESSAGES={cmake_rule_messages}",
+             str(module_src_dir)
+@@ -614,10 +615,13 @@
+             cmake_cmd.append(f"-DPYTHON_EXECUTABLE={self.py_executable}")
+             cmake_cmd.append(f"-DPYTHON_INCLUDE_DIR={self.py_include_dir}")
+             cmake_cmd.append(f"-DPYTHON_LIBRARY={self.py_library}")
++            cmake_cmd.append(f"-DPython_EXECUTABLE={self.py_executable}")
++            cmake_cmd.append(f"-DPython_INCLUDE_DIR={self.py_include_dir}")
++            cmake_cmd.append(f"-DPython_LIBRARY={self.py_library}")
+ 
+         # If a custom shiboken cmake config directory path was provided, pass it to CMake.
+         if OPTION["SHIBOKEN_CONFIG_DIR"] and config.is_internal_pyside_build():
+-            config_dir = OPTION["SHIBOKEN_CONFIG_DIR"]
++            config_dir = Path(OPTION["SHIBOKEN_CONFIG_DIR"])
+             if config_dir.exists():
+                 log.info(f"Using custom provided {SHIBOKEN} installation: {config_dir}")
+                 cmake_cmd.append(f"-DShiboken6_DIR={config_dir}")

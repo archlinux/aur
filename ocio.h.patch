@@ -1,0 +1,10 @@
+--- OpenRV.clean/_build/RV_DEPS_OCIO/src/include/OpenColorIO/OpenColorIO.h 2024-01-29 23:11:35.000000000 -0800
++++ OpenRV/_build/RV_DEPS_OCIO/src/include/OpenColorIO/OpenColorIO.h	2025-07-05 21:35:47.016268804 -0700
+@@ -6,6 +6,7 @@
+ #define INCLUDED_OCIO_OPENCOLORIO_H
+ 
+ #include <cstddef>
++#include <cstdint>
+ #include <iosfwd>
+ #include <limits>
+ #include <stdexcept>

@@ -1,13 +1,15 @@
 diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/ocio.cmake OpenRV/cmake/dependencies/ocio.cmake
 --- OpenRV.clean/cmake/dependencies/ocio.cmake	2024-07-20 06:18:07.940813426 -0700
 +++ OpenRV/cmake/dependencies/ocio.cmake	2024-07-20 06:24:28.533832851 -0700
-@@ -46,6 +46,11 @@
+@@ -46,6 +46,13 @@
      "https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/refs/tags/v${_version}.tar.gz"
  )
  
 +SET(_patch_command
 +    cd ${PROJECT_SOURCE_DIR} &&
-+    patch --forward --strip=1 --input=../ocio_install_yaml-cpp.patch
++    patch --forward --strip=1 --input=../ocio.h.patch &&
++    patch --forward --strip=1 --input=../ocio_install_yaml-cpp.patch &&
++    patch --forward --strip=1 --input=../ocio_yaml-cpp.patch
 +)
 +
  # Another project that isn't adding a debug postfix
