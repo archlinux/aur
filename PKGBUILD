@@ -2,7 +2,7 @@
 
 pkgname=wasm3
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest WebAssembly interpreter and the most universal runtime"
 arch=('i686' 'x86_64')
 url="https://github.com/wasm3/wasm3"
@@ -22,13 +22,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm755 "_build/wasm3" -t "$pkgdir/usr/bin"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/wasm3"
 }
