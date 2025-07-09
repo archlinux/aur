@@ -5,14 +5,14 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
 pkgver=1.18.4
-pkgrel=2
+pkgrel=3
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64 bootstrap)"
 _commit=4541e0cd3a751b85e52e2a83d02ac6145a5efa85 # tags/1.18.4^0
 arch=(any)
 url="http://cairographics.org/"
 license=("LGPL" "MPL")
 makedepends=(mingw-w64-meson git)
-depends=(mingw-w64-pixman mingw-w64-glib2 mingw-w64-libpng mingw-w64-lzo)
+depends=(mingw-w64-pixman mingw-w64-glib2 mingw-w64-freetype2-bootstrap mingw-w64-libpng mingw-w64-lzo)
 options=(!strip !buildflags staticlibs)
 provides=(${pkgname%-bootstrap}=$pkgver)
 conflicts=(${pkgname%-bootstrap})
@@ -39,8 +39,8 @@ build() {
     cd "${srcdir}/cairo/build-${_arch}"
     ${_arch}-meson \
       -D spectre=disabled \
-      -D dwrite=enabled \
-      -D freetype=disabled \
+      -D dwrite=disabled \
+      -D freetype=enabled \
       -D fontconfig=disabled \
       -D tests=disabled \
       -D symbol-lookup=disabled \
