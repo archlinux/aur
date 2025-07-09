@@ -1,7 +1,7 @@
 pkgbase = thunderbird-portable
 	pkgdesc = Thunderbird sandboxed by portable
-	pkgver = 139.0.2
-	pkgrel = 2
+	pkgver = 140.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
