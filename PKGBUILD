@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tinyxml2-git
-pkgver=9.0.0.r25.ge059560
+pkgver=11.0.0.r8.ge6caeae
 pkgrel=1
 pkgdesc="Simple, small, efficient, C++ XML parser"
 arch=('i686' 'x86_64')
 url="https://leethomason.github.io/tinyxml2/"
-license=('zlib')
+license=('Zlib')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("tinyxml2=$pkgver")
@@ -24,24 +24,26 @@ pkgver() {
 build() {
   cd "tinyxml2"
 
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -Dtinyxml2_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "tinyxml2"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "tinyxml2"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/tinyxml2"
 }
