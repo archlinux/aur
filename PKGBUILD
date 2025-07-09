@@ -3,14 +3,14 @@
 _pkgname=idris2-sop
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Generic representation of data types as sums of products'
 arch=('x86_64')
 url='https://github.com/stefan-hoeck/idris2-sop'
 license=('custom:BSD')
 depends=('idris2')
-makedepends=('git')
+makedepends=('git' 'idris2-elab-util')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
