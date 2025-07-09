@@ -2,9 +2,9 @@
 #
 # shellcheck shell=bash disable=SC2034 disable=SC2154 disable=SC2164
 
-_commit=71904a7e407ab326a467bf9942222c6d01049f9f
+_commit=0fe157e4035e4b80bef9ead3410ff304edb6715e
 pkgname=radicle-desktop
-pkgver='0.6.0'
+pkgver='0.6.1'
 pkgrel='1'
 pkgdesc='Radicle desktop app'
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
   'appmenu-gtk-module'
   'libappindicator-gtk3'
   'librsvg'
-  'rustup'
+  'cargo'
   'npm'
   'nodejs'
 )

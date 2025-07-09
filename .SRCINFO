@@ -1,6 +1,6 @@
 pkgbase = radicle-desktop
 	pkgdesc = Radicle desktop app
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://www.radworks.garden/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = radicle-desktop
 	makedepends = appmenu-gtk-module
 	makedepends = libappindicator-gtk3
 	makedepends = librsvg
-	makedepends = rustup
+	makedepends = cargo
 	makedepends = npm
 	makedepends = nodejs
 	depends = radicle-node
@@ -26,7 +26,7 @@ pkgbase = radicle-desktop
 	options = !strip
 	options = !emptydirs
 	options = !lto
-	source = radicle-desktop::git+https://seed.radicle.xyz/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=71904a7e407ab326a467bf9942222c6d01049f9f
+	source = radicle-desktop::git+https://seed.radicle.xyz/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=0fe157e4035e4b80bef9ead3410ff304edb6715e
 	sha256sums = SKIP
 
 pkgname = radicle-desktop
