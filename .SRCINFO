@@ -1,12 +1,12 @@
 pkgbase = animeko-appimage
 	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台
 	pkgver = 4.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-ani/animeko/
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = 7zip
-	depends = vlc
+	depends = vlc-plugin-ffmpeg
 	depends = gvfs
 	provides = animeko
 	conflicts = animeko
