@@ -1,9 +1,11 @@
 pkgbase = go-foks
 	pkgdesc = CLI for Federated Open Key Service
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://foks.pub
-	arch = any
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	depends = pcsclite
