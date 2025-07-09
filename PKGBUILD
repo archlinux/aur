@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openjpeg-git
-pkgver=2.5.0.r37.g1ee6d115
+pkgver=2.5.3.r7.ge7453e39
 pkgrel=1
 pkgdesc="An open-source JPEG 2000 codec written in C language"
 arch=('i686' 'x86_64')
 url="https://github.com/uclouvain/openjpeg"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc' 'lcms2' 'libpng' 'libtiff' 'zlib')
 makedepends=('git' 'cmake' 'doxygen' 'jbigkit')
 provides=("openjpeg2=$pkgver")
@@ -31,12 +31,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DBUILD_DOC=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "openjpeg"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/openjpeg2"
 }
