@@ -5,8 +5,8 @@
 _gitname=rogerrouter
 _pkgname=roger-router
 pkgname="${_pkgname}-git"
-pkgver=2.4.90+1.r1426.20230428.f33129a
-pkgrel=3
+pkgver=2.4.90+5.r1430.20250629.8c754a6
+pkgrel=1
 pkgdesc="A utility to control and monitor AVM Fritz!Box Routers. E.g. Journal, fax software and call monitor."
 arch=(
   'aarch64'
