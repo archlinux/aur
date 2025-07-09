@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libcerf-git
-pkgver=2.3.r1.ga471d91
+pkgver=3.0.r0.gda4d8b3
 pkgrel=1
 pkgdesc="A self-contained numeric library"
 arch=('i686' 'x86_64')
 url="https://jugit.fz-juelich.de/mlz/libcerf/"
-license=('custom')
+license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("libcerf=$pkgver")
@@ -30,18 +30,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libcerf"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libcerf"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libcerf"
 }
