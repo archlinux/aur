@@ -1,0 +1,18 @@
+pkgbase = ruby-readline-ext
+	pkgdesc = Provides an interface for GNU Readline and Edit Line (libedit).
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/readline-ext
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = rubygems
+	depends = bash
+	depends = glibc
+	depends = readline
+	depends = ruby
+	noextract = readline-ext-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/readline-ext-0.2.0.gem
+	sha256sums = 490ad4a5534243c554b05db6f2dd364c61aea4759fa7613692a5e5c74ec3eaa8
+
+pkgname = ruby-readline-ext
