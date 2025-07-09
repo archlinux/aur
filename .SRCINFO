@@ -1,6 +1,6 @@
 pkgbase = libcpufeatures
 	pkgdesc = A cross-platform C library to retrieve CPU features (such as available instructions) at runtime.
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/google/cpu_features
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = libcpufeatures
 	makedepends = git
 	makedepends = gtest
 	depends = glibc
-	provides = libcpufeatures=0.10.0
+	provides = libcpufeatures=0.10.1
 	conflicts = libcpufeatures
 	conflicts = libvolk
-	source = git+https://github.com/google/cpu_features.git#tag=v0.10.0
+	source = git+https://github.com/google/cpu_features.git#tag=v0.10.1
 	sha256sums = SKIP
 
 pkgname = libcpufeatures
