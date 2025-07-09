@@ -10,7 +10,7 @@ pkgname=poke-monitor-git
 # shellcheck disable=SC2034
 pkgdesc="Poke connected DP and HDMI displays after suspend"
 # shellcheck disable=SC2034
-pkgver=r5.e7ec1cd
+pkgver=r4.e045037
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -69,8 +69,8 @@ package() {
   # Mark the script executable
   chmod 755 "${_gitname}"
 
-  # Ensure the __BIN_DIR__ is correct relative to the system expected path
-  sed --in-place 's/__BIN_DIR__/\/usr\/bin/' "res/systemd/${_gitname}@.service"
+  # Ensure the %PREFIX% is correct relative to the system expected path
+  sed --in-place 's|%PREFIX%|/usr|' "res/systemd/${_gitname}@.service"
 
   # shellcheck disable=SC2154
   mkdir -p "${pkgdir}/usr/bin"
