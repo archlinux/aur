@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!pico-sdk.sh
+!PKGBUILD
+

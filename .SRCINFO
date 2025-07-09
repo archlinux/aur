@@ -1,0 +1,33 @@
+pkgbase = pico-sdk-develop-git
+	pkgdesc = Raspberry Pi Pico C SDK (develop branch)
+	pkgver = 2.1.1.r104.g214c243
+	pkgrel = 1
+	url = https://www.raspberrypi.com/documentation/pico-sdk/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = rsync
+	provides = pico-sdk
+	provides = raspberry-pico-sdk-git
+	conflicts = pico-sdk
+	conflicts = pico-sdk-git
+	conflicts = raspberry-pico-sdk-git
+	options = !strip
+	source = git+https://github.com/raspberrypi/pico-sdk#branch=develop
+	source = git+https://github.com/hathach/tinyusb.git
+	source = git+https://github.com/georgerobotics/cyw43-driver.git
+	source = git+https://github.com/lwip-tcpip/lwip.git
+	source = git+https://github.com/Mbed-TLS/mbedtls.git
+	source = git+https://github.com/bluekitchen/btstack.git
+	source = git+https://github.com/Mbed-TLS/mbedtls-framework.git
+	source = pico-sdk.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 8610406fc529818eb2f67163e19a7204cda36f8cd7ed77fb4a65154918de3acb
+
+pkgname = pico-sdk-develop-git
