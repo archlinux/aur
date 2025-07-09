@@ -7,7 +7,7 @@ pkgdesc="Parse the arch wiki offline as man pages"
 arch=(any)
 url="https://github.com/cyuria/$pkgname"
 license=(BSD-2-Clause)
-depends=(arch-wiki-doc
+depends=(arch-wiki-docs
          bash
          grep
          man
