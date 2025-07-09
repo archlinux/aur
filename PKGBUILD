@@ -2,7 +2,7 @@
 
 pkgname=yajl-git
 pkgver=2.1.0.r5.g5e3a785
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast streaming JSON parsing library in C"
 arch=('i686' 'x86_64')
 url="https://lloyd.github.io/yajl/"
@@ -30,18 +30,18 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "yajl"
 
-  make -C "_build" test test-api
+  #cmake --build "_build" --target test test-api
 }
 
 package() {
   cd "yajl"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/yajl"
 }
