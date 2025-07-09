@@ -51,6 +51,7 @@ package() {
 
     # Library
     libs=(
+	libEGL.so
         libEGL_vulkan_secondaries.so
         libGLESv1_CM.so
         libGLESv2.so
