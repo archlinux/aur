@@ -4,14 +4,21 @@
 _pkgname=idris2-parser
 pkgname="$_pkgname-all-git"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Various total parsers for Idris2'
 arch=('x86_64')
 url='https://github.com/stefan-hoeck/idris2-parser'
 license=('custom:BSD')
 depends=('idris2')
-makedepends=('git' 'idris2-parser-git' 'idris2-prettier' 'idris2-refined' 'idris2-sop')
+makedepends=(
+	'git'
+	'idris2-parser-git'
+	'idris2-elab-util'
+	'idris2-prettier'
+	'idris2-refined'
+	'idris2-sop'
+)
 provides=("$_pkgname-all")
 conflicts=("$_pkgname-all")
 source=("$_pkgname::git+$url.git")

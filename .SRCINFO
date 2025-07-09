@@ -1,12 +1,13 @@
 pkgbase = idris2-parser-all-git
 	pkgdesc = Various total parsers for Idris2
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stefan-hoeck/idris2-parser
 	arch = x86_64
 	license = custom:BSD
 	makedepends = git
 	makedepends = idris2-parser-git
+	makedepends = idris2-elab-util
 	makedepends = idris2-prettier
 	makedepends = idris2-refined
 	makedepends = idris2-sop
