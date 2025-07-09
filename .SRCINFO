@@ -1,17 +1,17 @@
 pkgbase = ruby-icalendar
 	pkgdesc = Internet calendaring, Ruby style
-	pkgver = 2.11.0
+	pkgver = 2.11.2
 	pkgrel = 5
 	url = https://github.com/icalendar/icalendar
 	arch = any
 	license = Ruby
 	makedepends = ruby
 	optdepends = ruby-activesupport: ActiveSupport is required for TimeWithZone support, but not required for general use.
-	noextract = icalendar-2.11.0.gem
+	noextract = icalendar-2.11.2.gem
 	options = !emptydirs
-	source = http://rubygems.org/downloads/icalendar-2.11.0.gem
+	source = http://rubygems.org/downloads/icalendar-2.11.2.gem
 	source = https://raw.githubusercontent.com/icalendar/icalendar/refs/heads/main/LICENSE
-	sha256sums = 899ddd506bb48beea250a1afd674ff0644a3dd2f8c49e02b1a91795b03b7541c
+	sha256sums = 8260c5990d6fb96d7119854a4a24b97f444da6cdb77498039eb1a565bf4b9574
 	sha256sums = 0e86bd0716d1463c834a241a1b42e7400a7b2b94cddd146edc1069dff4441903
 
 pkgname = ruby-icalendar
