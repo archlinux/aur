@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gst-plugins-base
 	pkgdesc = GStreamer Multimedia Framework Base Plugins (mingw-w64)
 	pkgver = 1.24.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gstreamer.freedesktop.org/
 	arch = any
 	license = LGPL
@@ -25,6 +25,8 @@ pkgbase = mingw-w64-gst-plugins-base
 	options = !buildflags
 	options = staticlibs
 	source = http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.24.5.tar.xz
+	source = 0001-audio-util-parameters.patch
 	sha256sums = 0e33ec9b59eef5ef3a6a53bbd55c44340e681d0000910caca12541a73db38a7d
+	sha256sums = 76a881c429c5ec43504afc0978f0266faa71f7953a35c976c72f7e7273b3d0d7
 
 pkgname = mingw-w64-gst-plugins-base

@@ -1,0 +1,23 @@
+diff --git a/gst-libs/gst/audio/gstaudioutilsprivate.c b/gst-libs/gst/audio/gstaudioutilsprivate.c
+index 1db4601f0..fe2f7d3eb 100644
+--- a/gst-libs/gst/audio/gstaudioutilsprivate.c
++++ b/gst-libs/gst/audio/gstaudioutilsprivate.c
+@@ -297,8 +297,7 @@ __gst_audio_set_thread_priority (gpointer * handle)
+ #ifdef G_OS_WIN32
+   /* This is only used from ringbuffer thread functions */
+   *handle = (gpointer)
+-      _gst_audio_avrt_tbl.AvSetMmThreadCharacteristics (TEXT ("Pro Audio"),
+-      &taskIndex);
++      _gst_audio_avrt_tbl.AvSetMmThreadCharacteristics ();
+   if (*handle == 0) {
+     gchar *errorMsg = g_win32_error_message (GetLastError ());
+ 
+@@ -328,7 +327,7 @@ __gst_audio_restore_thread_priority (gpointer handle)
+   if (!handle)
+     return FALSE;
+ 
+-  return _gst_audio_avrt_tbl.AvRevertMmThreadCharacteristics ((HANDLE) handle);
++  return _gst_audio_avrt_tbl.AvRevertMmThreadCharacteristics ();
+ #else
+   return TRUE;
+ #endif

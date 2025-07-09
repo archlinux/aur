@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-base
 pkgver=1.24.5
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
@@ -17,10 +17,16 @@ optdepends=(
 )
 options=('!strip' '!buildflags' 'staticlibs')
 
-source=("${url}src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz")
-sha256sums=('0e33ec9b59eef5ef3a6a53bbd55c44340e681d0000910caca12541a73db38a7d')
+source=("${url}src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz" "0001-audio-util-parameters.patch")
+sha256sums=('0e33ec9b59eef5ef3a6a53bbd55c44340e681d0000910caca12541a73db38a7d'
+            '76a881c429c5ec43504afc0978f0266faa71f7953a35c976c72f7e7273b3d0d7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+    cd "gst-plugins-base-"$pkgver
+    patch -Np1 -i ../../0001-audio-util-parameters.patch
+}
 
 build() {
   cd "${srcdir}/gst-plugins-base-${pkgver}"
