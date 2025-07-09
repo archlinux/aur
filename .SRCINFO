@@ -1,6 +1,6 @@
 pkgbase = binaryen-git
 	pkgdesc = Compiler infrastructure and toolchain library for WebAssembly
-	pkgver = 119.r60.g0be8d5e07
+	pkgver = 123.r215.g9c5a5ad5f1
 	pkgrel = 1
 	url = https://github.com/WebAssembly/binaryen
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = binaryen-git
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	provides = binaryen=119.r60.g0be8d5e07
+	provides = binaryen=123.r215.g9c5a5ad5f1
 	conflicts = binaryen
 	source = git+https://github.com/WebAssembly/binaryen.git
 	source = binaryen.sh::https://gitlab.archlinux.org/archlinux/packaging/packages/binaryen/-/raw/main/binaryen.sh

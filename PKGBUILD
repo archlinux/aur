@@ -2,7 +2,7 @@
 # Former maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=binaryen-git
-pkgver=119.r60.g0be8d5e07
+pkgver=123.r215.g9c5a5ad5f1
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DENABLE_WERROR=OFF \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
@@ -56,6 +56,6 @@ check() {
 package() {
   cd "binaryen"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm755 "$srcdir/binaryen.sh" -t "$pkgdir/etc/profile.d"
 }
