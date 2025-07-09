@@ -1,12 +1,12 @@
 pkgbase = chhoto-url-cli-bin
 	pkgdesc = A CLI tool to be used to interact with Chhoto URL.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/SinTan1729/chhoto-url-cli
 	arch = x86_64
 	license = MIT
 	provides = chhoto
-	source = chhoto-0.4.1.tar.gz::https://github.com/SinTan1729/chhoto-url-cli/releases/download/0.4.1/chhoto.tar.gz
-	b2sums = a2b29d0349434c527e681647a97a2a5e9116efe280f9cd2e10ccb1ccfc7db2d3299fdeae027ff3ce451a384780471537260dedd55827ba6481086b18037d4ab3
+	source = chhoto-0.4.2.tar.gz::https://github.com/SinTan1729/chhoto-url-cli/releases/download/0.4.2/chhoto.tar.gz
+	b2sums = fe7c53073f2f31d27ee8f53e9d28507ff92fb211b52decaa507b157dfeaa1a53fc966b9fa010c77aa1ecb027ecd6a2bea4cd259ffdfe6d86cc628a05f990b510
 
 pkgname = chhoto-url-cli-bin
