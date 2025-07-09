@@ -3,38 +3,32 @@
 # Maintainer: Harrison <htv04rules at gmail dot com>
 
 pkgname=melonds
-pkgver=0.9.5
-pkgrel=6
+pkgver=1.0
+pkgrel=1
 pkgdesc="DS emulator, sorta"
-arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
+arch=("x86_64" "i686" "pentium4" "armv7h" "aarch64")
 url="http://melonds.kuribo64.net/"
-license=("GPL3")
-makedepends=("git" "cmake" "pkg-config" "extra-cmake-modules")
-depends=("libepoxy" "libslirp" "qt6-base" "qt6-multimedia" "sdl2")
-source=("git+https://github.com/melonDS-emu/melonDS.git#tag=${pkgver}"
-        "dont-fix-libslirp-interface.patch")
-sha256sums=("SKIP"
-            "1c157d21f89a750140727b2906abbd340a7e21257dd7eaeebdc60cf71ed82770")
+license=("GPL-3.0-or-later")
+makedepends=("wayland" "git" "cmake" "pkg-config" "extra-cmake-modules")
+depends=("qt6-base" "qt6-multimedia" "sdl2" "libarchive" "enet" "gcc-libs" "glibc" "libx11" "libglvnd" "zstd" "hicolor-icon-theme")
+source=("$pkgname::git+https://github.com/melonDS-emu/melonDS.git#tag=${pkgver}")
+sha256sums=('414b376e14a66d8e095605b83a6b7711c04330be159b2649c87213fe8af0c9c6')
 
 prepare() {
-  cd melonDS
-  git cherry-pick -n e63e29ca91ba5fc1630634fbb9f064b9cce6cc1f # Fix build with GCC 14
-  patch -p1 -i ../dont-fix-libslirp-interface.patch
+  cd $pkgname
 }
 
 build() {
-  mkdir -p build
-  cd build
-  
-  cmake ../melonDS \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
+  cmake -B build -S $pkgname \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT6=ON
-  cmake --build .
+  
+  cmake --build build
 }
 
 package() {
-  cd build
+  cd "$srcdir"
   
-  DESTDIR="${pkgdir}" cmake --install .
+  DESTDIR="$pkgdir" cmake --install build
 }
