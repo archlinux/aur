@@ -1,9 +1,9 @@
 # Maintainer: kallisti5 <alex at terarocket dot io>
 pkgname=go-foks
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for Federated Open Key Service"
-arch=(any)
+arch=(x86_64 armv7h aarch64)
 url="https://foks.pub"
 license=(MIT)
 depends=(pcsclite glibc)
@@ -15,7 +15,7 @@ sha256sums=('13bf42623437ba84d740e5f54ce100acaad2654bb20055be66c90f06384d9446')
 
 prepare() {
     cd $pkgname-$pkgver
-    mkdir -p build
+    rm -rf build && mkdir -p build
 }
 
 build() {
@@ -33,6 +33,7 @@ package() {
     cd $pkgname-$pkgver
     install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -D -m755 build/foks  "$pkgdir"/usr/bin/foks
+    ln -s /usr/bin/foks "$pkgdir"/usr/bin/git-remote-foks
 }
 
 # vim: ts=2 sw=2 et:
