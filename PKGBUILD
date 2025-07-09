@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=exhale-git
-pkgver=1.1.9.1.r0.g4ef4bc3
+pkgver=1.2.1.2.r2.gbffead0
 pkgrel=1
 pkgdesc="Open source xHE-AAC encoder"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/ecodis/exhale"
-license=('custom')
+license=('LicenseRef-exhale')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("exhale=$pkgver")
@@ -31,12 +31,12 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "exhale"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "include"/{License.htm,styles.css} -t "$pkgdir/usr/share/licenses/exhale"
 }
