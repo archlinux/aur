@@ -1,6 +1,6 @@
 pkgbase = firefox-portable
 	pkgdesc = Firefox sandboxed by portable
-	pkgver = 140.0.2
+	pkgver = 140.0.4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
