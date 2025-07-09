@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gmssl-git
-pkgver=3.1.0.r36.g5ca0d607
+pkgver=3.1.1.r311.g34fa519d
 pkgrel=1
 pkgdesc="Chinese national cryptographic algorithms and protocols"
 arch=('i686' 'x86_64')
 url="http://gmssl.org/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("gmssl=$pkgver")
@@ -33,17 +33,17 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "GmSSL"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "GmSSL"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
