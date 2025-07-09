@@ -9,9 +9,12 @@ pkgname=(
   grub-theme-aorus
   grub-theme-apple
   grub-theme-arch-linux
+  grub-theme-archcraft
   grub-theme-arco-linux
   grub-theme-artix-linux
   grub-theme-asrock
+  grub-theme-asus-rog
+  grub-theme-asus-tuf
   grub-theme-asus
   grub-theme-bedrock-linux
   grub-theme-centos
@@ -24,9 +27,12 @@ pkgname=(
   grub-theme-fedora
   grub-theme-framework
   grub-theme-freebsd
+  grub-theme-fujitsu
   grub-theme-garuda
   grub-theme-gentoo
   grub-theme-gigabyte
+  grub-theme-hp-omen
+  grub-theme-hp-victus
   grub-theme-hp
   grub-theme-huawei
   grub-theme-kde-neon
@@ -35,27 +41,33 @@ pkgname=(
   grub-theme-legion
   grub-theme-lenovo
   grub-theme-lg
-  grub-theme-lubuntu
-  grub-theme-manjaro2
-  grub-theme-medion
+  grub-theme-linux-lite
   grub-theme-linux-mint
+  grub-theme-lubuntu
+  grub-theme-manjaro
+  grub-theme-medion
   grub-theme-msi
   grub-theme-mx-linux
   grub-theme-nixos
+  grub-theme-nobara
   grub-theme-opensuse
   grub-theme-parabola
   grub-theme-pop-os
+  grub-theme-proxmox
   grub-theme-razer
   grub-theme-rocky-linux
   grub-theme-samsung
   grub-theme-slackware
   grub-theme-solus
+  grub-theme-supermicro
   grub-theme-system76
   grub-theme-thinkpad
   grub-theme-toshiba
   grub-theme-ubuntu-mate
+  grub-theme-ubuntu
   grub-theme-ultramarine
   grub-theme-vaio
+  grub-theme-vanilla-os
   grub-theme-ventoy
   grub-theme-void-linux
   grub-theme-windows-10
@@ -64,130 +76,156 @@ pkgname=(
   grub-theme-zorin-os
 )
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Grub themes for distributions and brands"
 url="https://github.com/ahmedmoselhi/distro-grub-themes"
 arch=('any')
 options=(!strip)
 license=('GPL-3.0-only')
 source=(
-  "grub-theme-acer-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/acer.tar"
-  "grub-theme-almalinux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/almalinux.tar"
-  "grub-theme-aorus-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/aorus.tar"
-  "grub-theme-apple-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/apple.tar"
-  "grub-theme-arch-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/arch-linux.tar"
-  "grub-theme-arco-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/arco-linux.tar"
-  "grub-theme-artix-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/artix-linux.tar"
-  "grub-theme-asrock-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/asrock.tar"
-  "grub-theme-asus-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/asus.tar"
-  "grub-theme-bedrock-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/bedrock-linux.tar"
-  "grub-theme-centos-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/centos.tar"
-  "grub-theme-chromeos-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/chromeos.tar"
-  "grub-theme-debian-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/debian.tar"
-  "grub-theme-deepin-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/deepin.tar"
-  "grub-theme-dell-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/dell.tar"
-  "grub-theme-elementaryos-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/elementaryos.tar"
-  "grub-theme-endeavouros-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/endeavouros.tar"
-  "grub-theme-fedora-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/fedora.tar"
-  "grub-theme-framework-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/framework.tar"
-  "grub-theme-freebsd-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/freebsd.tar"
-  "grub-theme-garuda-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/garuda.tar"
-  "grub-theme-gentoo-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/gentoo.tar"
-  "grub-theme-gigabyte-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/gigabyte.tar"
-  "grub-theme-hp-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/hp.tar"
-  "grub-theme-huawei-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/huawei.tar"
-  "grub-theme-kde-neon-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/kde-neon.tar"
-  "grub-theme-kingston-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/kingston.tar"
-  "grub-theme-kubuntu-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/kubuntu.tar"
-  "grub-theme-legion-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/legion.tar"
-  "grub-theme-lenovo-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/lenovo.tar"
-  "grub-theme-lg-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/lg.tar"
-  "grub-theme-lubuntu-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/lubuntu.tar"
-  "grub-theme-manjaro2-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/manjaro.tar"
-  "grub-theme-medion-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/medion.tar"
-  "grub-theme-linux-mint-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/linux-mint.tar"
-  "grub-theme-msi-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/msi.tar"
-  "grub-theme-mx-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/mx-linux.tar"
-  "grub-theme-nixos-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/nixos.tar"
-  "grub-theme-opensuse-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/opensuse.tar"
-  "grub-theme-parabola-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/parabola.tar"
-  "grub-theme-pop-os-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/pop-os.tar"
-  "grub-theme-razer-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/razer.tar"
-  "grub-theme-rocky-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/rocky-linux.tar"
-  "grub-theme-samsung-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/samsung.tar"
-  "grub-theme-slackware-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/slackware.tar"
-  "grub-theme-solus-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/solus.tar"
-  "grub-theme-system76-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/system76.tar"
-  "grub-theme-thinkpad-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/thinkpad.tar"
-  "grub-theme-toshiba-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/toshiba.tar"
-  "grub-theme-ubuntu-mate-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/ubuntu-mate.tar"
-  "grub-theme-ultramarine-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/ultramarine.tar"
-  "grub-theme-vaio-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/vaio.tar"
-  "grub-theme-ventoy-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/ventoy.tar"
-  "grub-theme-void-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/void-linux.tar"
-  "grub-theme-windows-10-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/windows-10.tar"
-  "grub-theme-windows-11-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/windows-11.tar"
-  "grub-theme-xero-linux-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/xero-linux.tar"
-  "grub-theme-zorin-os-${pkgver}.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v${pkgver}/zorin-os.tar")
-sha256sums=('24711107d4e55bbd9ba2f4f853a93c3b5ce99533856c1ff4822c5e8c6ce9cdd1'
-            '90b1714c595561320bf7a28d1df2b52868bddb0a38aecde39f2aa649b4f302ef'
-            'b403ca26b110c25412cc0d02bb6f3d0d286f30a7f70ab27faa613a41c4d80f39'
-            '16fba9f4a244bdc663964657b2d2ee146cf437d0a571fa0ca0527eadba0e5d4f'
-            '04094902a563833842ffd55de8e181523741c56e76c556c4cb8b3fdcb325242c'
-            '03bd6cedaa743547c252f05ac75295dc30a61cf9b910ad38b779e55cb97fece4'
-            '0922b6f7beb5bac9d89fe821611a905f3af53b1e4c27a6ac1075bc0c79d0ec61'
-            'e6d33b5e5b5f2bb2c2b7c7189dc6fb5fdae7c2e50dbcf24a220fcef8179ecaeb'
-            '278408da80d80883664f7dfdc3b0950d192f6f92417dbfd5117f44ef12eeaf5b'
-            '53ab7df883587c232b08322fc1e3eff8aa42b27dce795339859e49b1ae74a67f'
-            'ff438a3f7e85e57f207e39a1c7702709b939f9412c735831e2de366b1271b2ef'
-            '6e63b7f2afd586a5440f77ec003637ab91f591806725e333696faaeebaff1046'
-            '6b4e0b6d9fc5f9244a60d378c45757ca3a60c2a008deefc0287c323d9a855546'
-            'cb1bc1f5cbeced7fd25e6ba143870bdd4f22aea756ebab8975e2203f946dc808'
-            '781692be8ddaf44ceb6833cfdab857ce8e285385f10b46c057d7ad0f3bb53fa7'
-            '7d81f318be91ec10b616952c3d2972bae91a63f0b21923065385993f9b13987a'
-            'a6cd8ed27a2b6610db997c9597843fed7ace4cfebcf47769a7b1471462f5eb3b'
-            '137f47e5b3410a46e5d9ef41cc86fe69c6767e4d6880e978139875fd1d171bc9'
-            '85c93bed65b0964aa74c4d351038d1db6af6a99f0a96538ce1b83d6dd66f800d'
-            '582c0c985279f00809011dc9436cb8708cb584f55ec4c626f574583006f8809f'
-            'e54cb8991f6467803262a8c48156e326a7739ad5b2d9a7ce511b54c5a5bdec2e'
-            '5643ec451a4df4ddb76a85006cef482336bacdee09e64b14f6500dba7567b0ea'
-            'd91f58f97522afc1f1e8f4d53da13e54ea0707391dc9fa06b0f172a5992be1f7'
-            '1be5f9791eb74fc1c4f5c31ad7c0e2fda48a78175cc38de8d9c7171226488cc3'
-            'a978f6e4fd60ceec2488a62a2263c447b341e860f1c80de79fa31d88aa32774f'
-            '04d8975aa48023d63632c244ac39b73af99b2ed4406a4a16c760dbc5f368063c'
-            'ed12809e73b032dcbc9f049678bc0d79f8eb027ab3f61e92f565bbfbc814bc20'
-            'a713eca1737aa06786c9a86ea04d5ee249b257facc68048fcd9476b08fca8885'
-            '03fc33f7d2d3a6065dac05ddc6baa03918b6b29d021eb5d240ff81564e578465'
-            'fcaab15bf66ffe1d866e43d575b77c70b61e79c5d7443df2dff916a968229ed0'
-            'b9733a6b5fdbc524248622cceaf53fda692e1b741d6a0adb63bc0afd9b1d9261'
-            '5de67dd8e981c2d8c722dfb0b6510428da6569115c70ac18b02b17131ab3d9cd'
-            '6e56e3c610fa4fbc02854db71a9565a18bef4dbdf1d908064a495b8c3f3bbc8c'
-            '7d6be1b508a00b8d82cfc83668f8abc504b55f8376de04c54da694bc75add514'
-            'e97a6a0c498e31029de9c660e6eb7bd10cbb71236341c20865867fb1d50d7440'
-            '95ef7c1e6e3dfc1e359cee3184041088e4dd584d4032897c74a9f53ec8ed272b'
-            '6a2bd131db30806087ac2afb270a41cc5cccbc6362e981b5d9fc70a693b598e8'
-            'eda8ad221f0f4e5d58d607a716621b79f399cb17f8413ceb723ef2d59e042c83'
-            '24e0be64cce331e8f580ecc8a99e7fd167ca6fd57a0f6094af9150aed159e6c7'
-            'ff70eacaae0cff21eec4ac53578378e86a652158cffd6d53dba6398467d3a982'
-            'bc4e3dfba915e813afc6a95335b9c23c422a0e749cac79c9ddb1c895c09ed094'
-            '24f7cf29632d78df94bd9e0b117d414b4ce5a5629b996418bfbbda8f1b40706f'
-            '23905d9591fc385c02500ec4f183a1d630f2d31186601d1b6ca775a959bb6f52'
-            'bb4253bfaad0c33bd9784aa277fde0610271167e613214d724d73c35b58f37f9'
-            'c1e98f97e06a2f2f7fc1b1679d2fa9adf7bcd2cd64bd681cebe600057e50e9f1'
-            'b8066275fa25e09e2cfe15495c5bbea47015749ff5075ba85bdae8fc2079013f'
-            '728282a99e7816ca3d300b11491f5903ff906346dc530b2f1c55abf49c5f2ee1'
-            '85fb903949b9628db0154a8f35f958be848afec78525abdc6f453dcf357e50b8'
-            'f64452e83996c718d6b01f189946bef72195e233fb064ea88e2dd6b810dccbf7'
-            'e5893977dbcc7f221d8fdbb454cafc043e8fc1c2570e9930bde18321507ef79c'
-            '45a4057e316d8debc6106b25289a54563f1bdf2078bf32b9022cbfedad3ebefc'
-            '09e8d7acf44acc450894e676a946a5ed1b0edae25fcaed8bf3f177af278de34e'
-            'ac4c12b42793da9f3f9128b2914848bed2be9fa0e5f0af0ace683c59128b2dd0'
-            '2621dd86ff63a7149c2a7a8bac5f5d1a1a8f988ee367ad953c452e026ca62467'
-            '35eb3cef94094d2d9704ae9f6ac612d3f058c6e64de342f1dc850f2a40b84d4c'
-            '26089953035481ae35c39f706ae5c7b34037c5bba0bb4d10ee4b1adc1185fa91'
-            '64b3a59757d9af180685aeb2d258048738fda98fb5654650f06cd1a485e5057c'
-            'e08ec79aa4b0250eed9854ed00c9de6d1ca294bcab7c146a71830826ffc24521')
-
+  "grub-theme-acer-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/acer.tar"
+  "grub-theme-almalinux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/almalinux.tar"
+  "grub-theme-aorus-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/aorus.tar"
+  "grub-theme-apple-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/apple.tar"
+  "grub-theme-arch-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/arch-linux.tar"
+  "grub-theme-archcraft-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/archcraft.tar"
+  "grub-theme-arco-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/arco-linux.tar"
+  "grub-theme-artix-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/artix-linux.tar"
+  "grub-theme-asrock-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/asrock.tar"
+  "grub-theme-asus-rog-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/asus-rog.tar"
+  "grub-theme-asus-tuf-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/asus-tuf.tar"
+  "grub-theme-asus-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/asus.tar"
+  "grub-theme-bedrock-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/bedrock-linux.tar"
+  "grub-theme-centos-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/centos.tar"
+  "grub-theme-chromeos-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/chromeos.tar"
+  "grub-theme-debian-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/debian.tar"
+  "grub-theme-deepin-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/deepin.tar"
+  "grub-theme-dell-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/dell.tar"
+  "grub-theme-elementaryos-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/elementaryos.tar"
+  "grub-theme-endeavouros-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/endeavouros.tar"
+  "grub-theme-fedora-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/fedora.tar"
+  "grub-theme-framework-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/framework.tar"
+  "grub-theme-freebsd-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/freebsd.tar"
+  "grub-theme-fujitsu-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/fujitsu.tar"
+  "grub-theme-garuda-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/garuda.tar"
+  "grub-theme-gentoo-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/gentoo.tar"
+  "grub-theme-gigabyte-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/gigabyte.tar"
+  "grub-theme-hp-omen-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/hp-omen.tar"
+  "grub-theme-hp-victus-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/hp-victus.tar"
+  "grub-theme-hp-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/hp.tar"
+  "grub-theme-huawei-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/huawei.tar"
+  "grub-theme-kde-neon-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/kde-neon.tar"
+  "grub-theme-kingston-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/kingston.tar"
+  "grub-theme-kubuntu-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/kubuntu.tar"
+  "grub-theme-legion-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/legion.tar"
+  "grub-theme-lenovo-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/lenovo.tar"
+  "grub-theme-lg-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/lg.tar"
+  "grub-theme-linux-lite-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/linux-lite.tar"
+  "grub-theme-linux-mint-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/linux-mint.tar"
+  "grub-theme-lubuntu-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/lubuntu.tar"
+  "grub-theme-manjaro-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/manjaro.tar"
+  "grub-theme-medion-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/medion.tar"
+  "grub-theme-msi-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/msi.tar"
+  "grub-theme-mx-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/mx-linux.tar"
+  "grub-theme-nixos-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/nixos.tar"
+  "grub-theme-nobara-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/nobara.tar"
+  "grub-theme-opensuse-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/opensuse.tar"
+  "grub-theme-parabola-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/parabola.tar"
+  "grub-theme-pop-os-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/pop-os.tar"
+  "grub-theme-proxmox-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/proxmox.tar"
+  "grub-theme-razer-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/razer.tar"
+  "grub-theme-rocky-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/rocky-linux.tar"
+  "grub-theme-samsung-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/samsung.tar"
+  "grub-theme-slackware-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/slackware.tar"
+  "grub-theme-solus-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/solus.tar"
+  "grub-theme-supermicro-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/supermicro.tar"
+  "grub-theme-system76-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/system76.tar"
+  "grub-theme-thinkpad-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/thinkpad.tar"
+  "grub-theme-toshiba-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/toshiba.tar"
+  "grub-theme-ubuntu-mate-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/ubuntu-mate.tar"
+  "grub-theme-ubuntu-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/ubuntu.tar"
+  "grub-theme-ultramarine-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/ultramarine.tar"
+  "grub-theme-vaio-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/vaio.tar"
+  "grub-theme-vanilla-os-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/vanilla-os.tar"
+  "grub-theme-ventoy-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/ventoy.tar"
+  "grub-theme-void-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/void-linux.tar"
+  "grub-theme-windows-10-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/windows-10.tar"
+  "grub-theme-windows-11-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/windows-11.tar"
+  "grub-theme-xero-linux-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/xero-linux.tar"
+  "grub-theme-zorin-os-3.4.tar::https://github.com/ahmedmoselhi/distro-grub-themes/releases/download/v3.4/zorin-os.tar"
+  gen.sh
+)
+md5sums=('cd417d49f5ed79e390882b33a3ce0f0f'
+         'c75b94f53ad881befc284c346061d4a5'
+         'cd51c43fd8186f35aec41b98d8d5d3df'
+         'c54d417dea760ceeffb173dcfd88d225'
+         '21d19a408513b3710968936e848ab996'
+         'fb576b90c26df1ad298655ed9a6dec25'
+         '1c84f8303ce095d89565d1cbcf0bcf04'
+         'fa9486e24a4ddc1a5123365c22282ae6'
+         '25693d96bbac323114d6a71baa46a8b0'
+         'f026f59f206e5e20526d4362471038e6'
+         'f77ac28ceab7ed4547f0b5240c47f109'
+         '8629a7bf790db1042053ce6478859142'
+         '9dea8a93ee828dd7e3da3f73836e5c0c'
+         '06422585e90cca7cbb79a7dd5eca0490'
+         'bd0c16027482b12c2d37a18d36782fff'
+         '7f9c5e4fdcd9188f8a471c3255df4d19'
+         '3779bb9c5378b21f3cd8b0693dc96935'
+         'f0c1c6b01372985bb92ceab8dab2b49d'
+         'd8eab867c20542be6a4fedc2d54a37f3'
+         '03ff47cc6cfaf802270b918e9eedf3bb'
+         '586e608b8cf427018c50e815c8bebac3'
+         'd85e67fa598d56a7e3c5e127f99994cb'
+         '81630f4ae6264b757b01449638257b54'
+         'f6a553f4d7530cafc453f1e0a5b2aada'
+         '24e2bbff8e548a2ef2db4746d4e125ad'
+         'f8114fb35543742e510995ce6f99612b'
+         '1326c51a40aa1277bffaeda65fe937b1'
+         'f5e1faaa82d7cf0c7cabbf460dde6479'
+         '68d4df527d2897f9e268594ee555cb6f'
+         '4a7d73542c0231a82ec719c66fd62ca2'
+         'b2f93713d458f9ba132ccedae05a0c96'
+         '6ef6b297670b3d4acddcfa5e40234e25'
+         '2fede919c7303d9be8f90372a94a5598'
+         '7fd03fcd8c733f429df1141b0fb94f7a'
+         'bcd11907f1ed233b0796a86014209976'
+         '7bd568f11b5b1c4c5ba21ba9d1fb4360'
+         '42d7e9b268bdb6ec1bda1fdf593b91af'
+         'a36b4ddb403912c5f9f5b9bc151a81a8'
+         'c05b46c98a526b5b1e8c283254327729'
+         'bff2bb5f19626100efacf22f2d0cc0dc'
+         'a8d7ead07121020458230f579e131625'
+         '79eeff12c50ca6803bcfef3f5391c457'
+         'b159596367d014565391b661c0053f6c'
+         'cb3e0ac3f543f6ddc4d7d0cd78613c67'
+         'a5dd090780b90489321a04089cbac8a7'
+         'a60af1619e52031ba496c1d0996cc03d'
+         'ca4357631eb69d783c93fcf65d07e295'
+         'a388a7f574d5b163f187f97d7e85b7a7'
+         '02e531a6cdc103d3197e75e9b68e41c0'
+         '38562a6a1c9fafea210c1b318d8c17c5'
+         '1ff5d82c9b1b2dc72a2a2ac05bb284c3'
+         '1a981dec8d8babe8804a56addb384e9d'
+         '42612086d6c9577e9de1ca47dae83387'
+         '1c165bfaddbcbdc82354179d8876a973'
+         'b59e6bd68d896a1b6a22e2a91ec4fc29'
+         'b01d47b2bfa4234dee4c34f5912fb017'
+         '026fd706217447fe74f90e44272395fb'
+         'ad9416b16185000ddfe8ccb396c5d43d'
+         'e6b92b54c8500087673916a263ad1dd2'
+         'efa6bbb0bf0c0494e39abffd996b06f9'
+         '10c2714083677d6556ee5f41a513098f'
+         '43bf3c36388a42de9572a0d4dca0a78f'
+         'f25f34716b2ec2d2835c6e218cfc140a'
+         '159a78bcf8a99a0da184f1792250fc34'
+         '76b17411c30d193afaeb0f2090310155'
+         'eb933d47143cc1cfb92ae891aeb957e8'
+         'abd6b9944116febada5941a24147603c'
+         '85b033eebd675204abf22dcabca1cb2a'
+         '6caa2389979ce372e0d4e6e9b7a08984'
+         'c07c7eed710c9194afef013efa528823'
+         '698931170a5c9b45bd05c8826fd37902')
 noextract=("${source[@]%%::*}")
 
 prepare() {
@@ -200,7 +238,7 @@ prepare() {
 
 package_grub-theme-acer() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -208,7 +246,7 @@ package_grub-theme-acer() {
 
 package_grub-theme-almalinux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -216,7 +254,7 @@ package_grub-theme-almalinux() {
 
 package_grub-theme-aorus() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -224,7 +262,7 @@ package_grub-theme-aorus() {
 
 package_grub-theme-apple() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -232,7 +270,15 @@ package_grub-theme-apple() {
 
 package_grub-theme-arch-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-archcraft() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -240,7 +286,7 @@ package_grub-theme-arch-linux() {
 
 package_grub-theme-arco-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -248,7 +294,7 @@ package_grub-theme-arco-linux() {
 
 package_grub-theme-artix-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -256,7 +302,23 @@ package_grub-theme-artix-linux() {
 
 package_grub-theme-asrock() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-asus-rog() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-asus-tuf() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -264,7 +326,7 @@ package_grub-theme-asrock() {
 
 package_grub-theme-asus() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -272,7 +334,7 @@ package_grub-theme-asus() {
 
 package_grub-theme-bedrock-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -280,7 +342,7 @@ package_grub-theme-bedrock-linux() {
 
 package_grub-theme-centos() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -288,7 +350,7 @@ package_grub-theme-centos() {
 
 package_grub-theme-chromeos() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -296,7 +358,7 @@ package_grub-theme-chromeos() {
 
 package_grub-theme-debian() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -304,7 +366,7 @@ package_grub-theme-debian() {
 
 package_grub-theme-deepin() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -312,7 +374,7 @@ package_grub-theme-deepin() {
 
 package_grub-theme-dell() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -320,7 +382,7 @@ package_grub-theme-dell() {
 
 package_grub-theme-elementaryos() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -328,7 +390,7 @@ package_grub-theme-elementaryos() {
 
 package_grub-theme-endeavouros() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -336,7 +398,7 @@ package_grub-theme-endeavouros() {
 
 package_grub-theme-fedora() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -344,7 +406,7 @@ package_grub-theme-fedora() {
 
 package_grub-theme-framework() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -352,7 +414,15 @@ package_grub-theme-framework() {
 
 package_grub-theme-freebsd() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-fujitsu() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -360,7 +430,7 @@ package_grub-theme-freebsd() {
 
 package_grub-theme-garuda() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -368,7 +438,7 @@ package_grub-theme-garuda() {
 
 package_grub-theme-gentoo() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -376,7 +446,23 @@ package_grub-theme-gentoo() {
 
 package_grub-theme-gigabyte() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-hp-omen() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-hp-victus() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -384,7 +470,7 @@ package_grub-theme-gigabyte() {
 
 package_grub-theme-hp() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -392,7 +478,7 @@ package_grub-theme-hp() {
 
 package_grub-theme-huawei() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -400,7 +486,7 @@ package_grub-theme-huawei() {
 
 package_grub-theme-kde-neon() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -408,7 +494,7 @@ package_grub-theme-kde-neon() {
 
 package_grub-theme-kingston() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -416,7 +502,7 @@ package_grub-theme-kingston() {
 
 package_grub-theme-kubuntu() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -424,7 +510,7 @@ package_grub-theme-kubuntu() {
 
 package_grub-theme-legion() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -432,7 +518,7 @@ package_grub-theme-legion() {
 
 package_grub-theme-lenovo() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -440,31 +526,15 @@ package_grub-theme-lenovo() {
 
 package_grub-theme-lg() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
 }
 
-package_grub-theme-lubuntu() {
+package_grub-theme-linux-lite() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
-  install -d "$pkgdir"/usr/share/grub/themes/$name
-  pkgdesc="${name} Theme for Grub2"
-  cp -a * "$pkgdir"/usr/share/grub/themes/$name
-}
-
-package_grub-theme-manjaro2() {
-  cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
-  install -d "$pkgdir"/usr/share/grub/themes/$name
-  pkgdesc="${name} Theme for Grub2"
-  cp -a * "$pkgdir"/usr/share/grub/themes/$name
-}
-
-package_grub-theme-medion() {
-  cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -472,7 +542,31 @@ package_grub-theme-medion() {
 
 package_grub-theme-linux-mint() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-lubuntu() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-manjaro() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-medion() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -480,7 +574,7 @@ package_grub-theme-linux-mint() {
 
 package_grub-theme-msi() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -488,7 +582,7 @@ package_grub-theme-msi() {
 
 package_grub-theme-mx-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -496,7 +590,15 @@ package_grub-theme-mx-linux() {
 
 package_grub-theme-nixos() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-nobara() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -504,7 +606,7 @@ package_grub-theme-nixos() {
 
 package_grub-theme-opensuse() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -512,7 +614,7 @@ package_grub-theme-opensuse() {
 
 package_grub-theme-parabola() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -520,7 +622,15 @@ package_grub-theme-parabola() {
 
 package_grub-theme-pop-os() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-proxmox() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -528,7 +638,7 @@ package_grub-theme-pop-os() {
 
 package_grub-theme-razer() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -536,7 +646,7 @@ package_grub-theme-razer() {
 
 package_grub-theme-rocky-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -544,7 +654,7 @@ package_grub-theme-rocky-linux() {
 
 package_grub-theme-samsung() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -552,7 +662,7 @@ package_grub-theme-samsung() {
 
 package_grub-theme-slackware() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -560,7 +670,15 @@ package_grub-theme-slackware() {
 
 package_grub-theme-solus() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-supermicro() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -568,7 +686,7 @@ package_grub-theme-solus() {
 
 package_grub-theme-system76() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -576,7 +694,7 @@ package_grub-theme-system76() {
 
 package_grub-theme-thinkpad() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -584,7 +702,7 @@ package_grub-theme-thinkpad() {
 
 package_grub-theme-toshiba() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -592,7 +710,15 @@ package_grub-theme-toshiba() {
 
 package_grub-theme-ubuntu-mate() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-ubuntu() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -600,7 +726,7 @@ package_grub-theme-ubuntu-mate() {
 
 package_grub-theme-ultramarine() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -608,7 +734,15 @@ package_grub-theme-ultramarine() {
 
 package_grub-theme-vaio() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
+  install -d "$pkgdir"/usr/share/grub/themes/$name
+  pkgdesc="${name} Theme for Grub2"
+  cp -a * "$pkgdir"/usr/share/grub/themes/$name
+}
+
+package_grub-theme-vanilla-os() {
+  cd "${pkgname}-${pkgver}"
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -616,7 +750,7 @@ package_grub-theme-vaio() {
 
 package_grub-theme-ventoy() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -624,7 +758,7 @@ package_grub-theme-ventoy() {
 
 package_grub-theme-void-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -632,7 +766,7 @@ package_grub-theme-void-linux() {
 
 package_grub-theme-windows-10() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -640,7 +774,7 @@ package_grub-theme-windows-10() {
 
 package_grub-theme-windows-11() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -648,7 +782,7 @@ package_grub-theme-windows-11() {
 
 package_grub-theme-xero-linux() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
@@ -656,9 +790,10 @@ package_grub-theme-xero-linux() {
 
 package_grub-theme-zorin-os() {
   cd "${pkgname}-${pkgver}"
-  name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
+  name=$(echo "${pkgname}" | sed -e "s/\\b\(.\)/\u\1/g" | sed -e "s/^Grub-Theme-//")
   install -d "$pkgdir"/usr/share/grub/themes/$name
   pkgdesc="${name} Theme for Grub2"
   cp -a * "$pkgdir"/usr/share/grub/themes/$name
 }
+
 # vim:set ts=2 sw=2 et:
