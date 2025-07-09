@@ -1,6 +1,6 @@
 pkgbase = opentoonz-git
 	pkgdesc = 2D Animation software.
-	pkgver = 1.5.2982
+	pkgver = 1.7f.4450
 	pkgrel = 1
 	url = https://github.com/opentoonz/opentoonz
 	arch = i686
