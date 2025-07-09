@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher-git
 	pkgdesc = A multi-platform launcher for your anime games
-	pkgver = r140.77ed736
+	pkgver = r165.7e7f0f4
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -24,7 +24,9 @@ pkgbase = twintaillauncher-git
 	depends = hdiffpatch
 	provides = twintaillauncher
 	conflicts = twintaillauncher
+	conflicts = twintaillauncher-bin
 	options = !lto
+	options = !debug
 	source = twintaillauncher::git+https://github.com/TwintailTeam/TwintailLauncher.git#branch=master
 	source = stabilize.patch
 	sha256sums = SKIP
