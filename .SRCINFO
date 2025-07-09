@@ -1,6 +1,6 @@
 pkgbase = libsndfile-git
 	pkgdesc = A C library for reading and writing files containing sampled sound
-	pkgver = 1.2.2.r35.g402f163d
+	pkgver = 1.2.2.r51.g52b803f5
 	pkgrel = 1
 	url = https://libsndfile.github.io/libsndfile/
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = libsndfile-git
 	depends = libvorbisenc.so
 	depends = opus
 	optdepends = alsa-lib: for sndfile-play
-	provides = libsndfile=1.2.2.r35.g402f163d
+	provides = libsndfile=1.2.2.r51.g52b803f5
 	provides = libsndfile.so
 	conflicts = libsndfile
 	source = git+https://github.com/libsndfile/libsndfile.git
