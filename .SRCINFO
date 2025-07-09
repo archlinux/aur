@@ -1,6 +1,6 @@
 pkgbase = poke-monitor-git
 	pkgdesc = Poke connected DP and HDMI displays after suspend
-	pkgver = r4.e045037
+	pkgver = r11.9c449da
 	pkgrel = 1
 	url = https://github.com/pyamsoft/poke-monitor.git
 	arch = any
