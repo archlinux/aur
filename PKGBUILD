@@ -2,11 +2,11 @@
 
 pkgname=gmssl
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese national cryptographic algorithms and protocols"
 arch=('i686' 'x86_64')
 url="http://gmssl.org/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('cmake')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/guanzhi/GmSSL/archive/refs/tags/v$pkgver.tar.gz")
@@ -21,7 +21,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
@@ -33,5 +33,5 @@ check() {
 package() {
   cd "GmSSL-$pkgver"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
