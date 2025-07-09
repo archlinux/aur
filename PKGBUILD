@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=1.20.1.r1.ga76b206
+pkgver=1.23.0.r0.gcfee786
 pkgrel=1
 pkgdesc="An elegant command-line argument parser (git)"
 arch=('x86_64')
