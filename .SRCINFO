@@ -1,6 +1,6 @@
 pkgbase = servicemaster-git
 	pkgdesc = Linux Systemd administration tool with nice TUI written in C.
-	pkgver = 1.7.6.r172.726aff3
+	pkgver = 1.7.7.r172.726aff3
 	pkgrel = 1
 	url = https://github.com/lennart1978/servicemaster
 	arch = x86_64

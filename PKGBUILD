@@ -2,7 +2,7 @@
 
 pkgname=servicemaster-git
 _pkgname=servicemaster
-pkgver=1.7.6.r172.726aff3
+pkgver=1.7.7.r172.726aff3
 pkgrel=1
 pkgdesc="Linux Systemd administration tool with nice TUI written in C."
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "1.7.6.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.7.7.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
