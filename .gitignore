@@ -2,5 +2,6 @@ pkg
 src
 *.pkg.tar.*
 CloudflareSpeedTest
+*.tar.gz
 *.log
 
