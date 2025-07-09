@@ -20,7 +20,7 @@ makedepends=(
   'ninja'
 )
 optdepends=(
-  'kde-rounded-corners: for Wayland support'
+  'kwin-effect-rounded-corners: for Wayland support'
 )
 
 provides=("$_pkgname-x11=${pkgver%%.g*}")
