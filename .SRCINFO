@@ -1,7 +1,7 @@
 pkgbase = symphonie-bin
 	pkgdesc = A lightweight music player for local audio collection.
 	pkgver = 1.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kprakesh1984/symphonie
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = symphonie-bin
 	source = symphonie.desktop
 	source = 512x512.png
 	sha256sums = 4c3b5f0b6b881d62fa75bf2a2a3264169c1b04d8e7505f762415d3e353dd9c92
-	sha256sums = 0fc89a411f6c4c0b5881d2fad4bb5e5e4a24775664b2a44014493ae7acbd3031
+	sha256sums = d88d4d7aee3e34286f51f55eecc7a3be6051dd17f5e4d9eb321a6ca84b774097
 	sha256sums = 66d1d7932ff2c541ace259eca426f8557c4f5853f416562b2162d69e6b69b122
 
 pkgname = symphonie-bin
