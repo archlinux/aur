@@ -2,7 +2,7 @@
 
 pkgname=python-njulogin
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nanjing University login module, which can be used to login to the various campus web sites"
 arch=('any')
 url='https://github.com/Do1e/NJUlogin'
@@ -20,7 +20,7 @@ depends=(
 makedepends=(python-poetry)
 
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/6a/d4/d81e0299b5b645492d1e33746794436f04a5f52cdeb7708c8a4cd73e568f/njulogin-3.4.3.tar.gz")
-sha256sums=('sha256:e0f4cbcfe08be62ad0a88832ac5506fb35418f73f131d6c1c7c592615ca696c1')
+sha256sums=('e0f4cbcfe08be62ad0a88832ac5506fb35418f73f131d6c1c7c592615ca696c1')
 
 build() {
   cd "njulogin-$pkgver"
