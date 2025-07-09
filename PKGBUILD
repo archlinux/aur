@@ -2,7 +2,7 @@
 # Contributor: Henning Mueller <henning at orgizm dot net>
 
 pkgname=transmission-rss
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Adds torrents from rss feeds to transmission web frontend.'
 arch=(any)
@@ -54,6 +54,6 @@ package() {
   find $pkgdir -type d -empty | xargs rmdir
 }
 
-sha256sums=('20137a5c61aa985148cb040fef56b4c69e5c9f88e4dd8e22a7002ad45df4519f'
+sha256sums=('9944e343769bde48b383fd8131d688f0faa99d017c2e15b6cacb65b3d1e73bed'
             'afc4ef4b6b80627f9bd02990cdff1f5ff1442830ee9f4ed39742dd927d69f338'
             '8d88a4858d6ce3f84fe851534d4bbf2e0ca8ecb81e25c095e128046d08fb764e')
