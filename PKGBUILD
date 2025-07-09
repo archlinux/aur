@@ -1,14 +1,21 @@
 # Maintainer: Danijel Tasov <aur@rbfh.de>
 pkgname=qsf
-pkgver=1.2.15
+pkgver=1.2.23
 pkgrel=1
 pkgdesc="small and fast bayesian spam filter"
-url="https://www.ivarch.com/programs/qsf/"
-license=("PerlArtistic")
+url="https://ivarch.com/programs/qsf/"
+license=('Artistic-2.0')
 depends=('gdbm')
 arch=('i686' 'x86_64')
-source=("https://www.ivarch.com/programs/sources/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('d4607e746cef57645aefc94599ff186c2b4f8ad1d971cf016b8effb29a138b36a073004860c41e477ac8efb713553952a5ade4240efdaf6c85f46882f9c5eac5')
+validpgpkeys=('4267B4F90F2678A112169BD61D1EF7581B45E9A0')
+source=(
+  "https://ivarch.com/s/${pkgname}-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz.asc::https://ivarch.com/s/${pkgname}-${pkgver}.tar.gz.txt"
+)
+sha512sums=(
+  'aac64400c37833d5d68d92a21c86899ba5b8ca6451858afa4bc562eafde98f99a99462d5f60635ee7fde8b04eac2780e598a6d30eb098ec6cabb6896073ba4d1'
+  'SKIP'
+)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
