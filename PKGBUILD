@@ -43,12 +43,13 @@ pkgver() {
 
 build() {
   local _cmake_options=(
+    -B build
     -S "$_pkgsrc"
     -G Ninja
     -Wno-dev
   )
 
-  cmake -B build "${_cmake_options[@]}"
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
