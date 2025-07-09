@@ -1,7 +1,7 @@
 pkgbase = gz-transport12
 	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
 	pkgver = 12.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gazebosim/gz-transport
 	arch = any
 	license = Apache-2.0
@@ -17,6 +17,8 @@ pkgbase = gz-transport12
 	depends = zeromq
 	provides = gz-transport=12
 	source = https://github.com/gazebosim/gz-transport/archive/gz-transport12_12.2.2.tar.gz
+	source = protobuf_string_view.patch
 	sha256sums = 8662f7412c40a362eaa0a490a0ad6bce83300d08443920cb51dbe6da0c408b6d
+	sha256sums = 1b46124c4bf23d31e6e16602b19a2d303c1b1702f975b7c1acc6c43c0c19e0f2
 
 pkgname = gz-transport12
