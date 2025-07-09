@@ -42,6 +42,7 @@ build() {
   mkdir -p "$srcdir/$_build_dir" && cd $_
   cmake .. -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
+           -DCMAKE_INSTALL_LIBEXECDIR="lib/$pkgname" \
            -DBUILD_TESTING=OFF \
            -Wno-dev
   cmake --build .
