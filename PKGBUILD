@@ -11,12 +11,13 @@ license=('MIT')
 depends=('vapoursynth'
   'vapoursynth-plugin-znedi3'
   'vapoursynth-plugin-vsjetpack'
-  'vapoursynth-plugin-mlrt'
 )
 optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
   'vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version'
   'vapoursynth-plugin-dfttest2: dfttest support, GPU version'
   'vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version'
+  'vapoursynth-plugin-mlrt: frame interpolation functions'
+  'vapoursynth-plugin-mlrt-ext-models-rife: frame interpolation functions'
 )
 makedepends=('python-pip')
 source=("https://files.pythonhosted.org/packages/3b/dd/52afa253a952861f066b4db54d13015ee4ddc8d343c57b7a828511b32f0c/soifunc-0.11.0-py3-none-any.whl")
