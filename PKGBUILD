@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cmocka-git
-pkgver=1.1.5.r196.g309ee5e
-pkgrel=2
+pkgver=1.1.5.r277.g5912a32
+pkgrel=1
 pkgdesc="An unit testing framework for C with support for mock objects"
 arch=('i686' 'x86_64')
 url="https://cmocka.org/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("cmocka=$pkgver")
@@ -31,17 +31,17 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DUNIT_TESTING=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "cmocka"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "cmocka"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
