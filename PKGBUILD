@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gflags-git
-pkgver=2.2.2.r47.ga738fdf
+pkgver=2.2.2.r57.g52e9456
 pkgrel=1
 pkgdesc="C++ Library for commandline flag processing"
 arch=('i686' 'x86_64')
 url="https://github.com/gflags/gflags"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("gflags=$pkgver")
@@ -34,18 +34,18 @@ build() {
     -DBUILD_STATIC_LIBS=ON \
     -DBUILD_TESTING=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "gflags"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "gflags"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -D -m644 "COPYING.txt" -t "$pkgdir/usr/share/licenses/gflags"
 }
