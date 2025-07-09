@@ -20,7 +20,7 @@ _sourcebase="https://github.com/${pkgname}/${pkgname}/releases/download"
 source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all_php8.4_squashed.zip"
         "nginx-example.conf"
         "${pkgname}.install")
-sha256sums=('15f56fb0bca19328ec622163e02bb5a5475aef9a04105805764634c2bd10d151'
+sha256sums=('b65745db29305d5704f815dda3829f79287bf96abfe951707bdc3296e24c95b3'
             'd579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb'
             'bd9bad5e2825dbc203a7f8e478ba44657de559ce6fe4bd6d079089bbe47734db')
 options=(!strip)
