@@ -11,7 +11,7 @@ depends=('gcc-libs' 'libxcb')
 makedepends=('python' 'rust')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdash-rs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8fd320a3f6bc3dcc7705aec086281e47f908083da4f307f63a28b9f304bf91225b1742916bc25c2adc99af1167e4f086a4f92784c7fe7fe857910cc4bea8b2fb')
+b2sums=('9d89b79785d619365674d5412eb49b8e011619f757da324e0078310c483f3aacf93797780cd32de7e848120ee74cf0112901888fc61292a04c245e576b4841a9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
