@@ -1,11 +1,11 @@
 pkgbase = rpi-imager-git
 	pkgdesc = Raspberry Pi imaging utility
-	pkgver = 1.7.4.r23.g23b0bf6
+	pkgver = 1.9.4.r24.g59dc8f73
 	pkgrel = 1
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
@@ -20,7 +20,7 @@ pkgbase = rpi-imager-git
 	depends = qt5-svg
 	depends = zlib
 	optdepends = dosfstools: SD card bootloader support
-	provides = rpi-imager=1.7.4.r23.g23b0bf6
+	provides = rpi-imager=1.9.4.r24.g59dc8f73
 	conflicts = rpi-imager
 	source = git+https://github.com/raspberrypi/rpi-imager.git
 	sha256sums = SKIP
