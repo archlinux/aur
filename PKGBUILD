@@ -6,18 +6,18 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=5.28.1
+pkgver=5.29.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
 license=(GPL-2.0-or-later)
-depends=('mingw-w64-crt' 'mingw-w64-libiconv' 'mingw-w64-boost')
+depends=('mingw-w64-crt' 'mingw-w64-libiconv' 'mingw-w64-boost' 'mingw-w64-libarchive-reduced')
 optdepends=("$_name-doc: API documentation")
 checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-openssl' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('b5c0dab7ea0ca6bf016ae156877a9c1f238172b09765f499a5b6e174ffe6fc6a')
+sha256sums=('79342cc592a7a7458b1981ded1c5e83ff33003129673048fb259090b1ef719ec')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -53,6 +53,7 @@ build() {
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
         -DUSE_NATIVE_FILE_BUFFER:BOOL=ON \
+        -DUSE_LIBARCHIVE:BOOL=ON \
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ${arch_flags[@]}
