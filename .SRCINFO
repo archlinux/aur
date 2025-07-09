@@ -1,0 +1,16 @@
+pkgbase = awman2
+	pkgdesc = Parse the arch wiki offline as man pages
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/cyuria/awman2
+	arch = any
+	license = BSD-2-Clause
+	depends = arch-wiki-doc
+	depends = bash
+	depends = grep
+	depends = man
+	depends = pandoc
+	source = https://github.com/cyuria/awman2/archive/refs/tags/0.1.tar.gz
+	sha256sums = 1882bdc0d43a84bd1bdacce3483c8caf285ba71746db158d39e00744b4797e60
+
+pkgname = awman2
