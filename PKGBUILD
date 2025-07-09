@@ -2,13 +2,13 @@
 pkgdesc="Gnome: Organize the items of the top (menu)bar"
 _pkgname="top-bar-organizer"
 pkgname="gnome-shell-extension-${_pkgname}"
-pkgver=13
+pkgver=14
 pkgrel=1
 arch=(any)
 url="https://gitlab.gnome.org/julianschacher/top-bar-organizer"
 license=(GPL3)
 source=("https://gitlab.gnome.org/julianschacher/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('76e198d2ff78496c2cf78cd505c10705')
+md5sums=('fbcce7f52f8c39e98425ff9d2e507e9b')
 makedepends=(
   git
   glib2
