@@ -1,7 +1,7 @@
 pkgbase = networkmanager-openvpn-xor
 	pkgdesc = NetworkManager VPN plugin for Standard and XOR Patched OpenVPN
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://networkmanager.dev/docs/vpn/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,6 +9,7 @@ pkgbase = networkmanager-openvpn-xor
 	makedepends = libnma
 	makedepends = libnma-gtk4
 	makedepends = python
+	makedepends = intltool
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
