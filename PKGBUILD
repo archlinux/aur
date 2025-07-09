@@ -3,12 +3,12 @@
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=hyperscan-git
-pkgver=5.4.1.r2.g5c724f7
+pkgver=5.4.2.r1.g6718839e
 pkgrel=1
 pkgdesc="High-performance multiple regex matching library"
 arch=('i686' 'x86_64')
 url="https://www.hyperscan.io/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('git' 'boost' 'cmake' 'ragel')
 provides=("hyperscan=$pkgver")
@@ -41,12 +41,12 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_STATIC_AND_SHARED=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "hyperscan"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/hyperscan"
 }
