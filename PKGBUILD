@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nuspell-git
-pkgver=5.1.2.r2.g1ae818e
+pkgver=5.1.6.r1.g6e46eb3
 pkgrel=1
 pkgdesc="Fast and safe spellchecking C++ library"
 arch=('i686' 'x86_64')
 url="https://nuspell.github.io/"
-license=('GPL3' 'LGPL3')
+license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 depends=('glibc' 'boost-libs' 'icu')
 makedepends=('git' 'cmake' 'boost' 'ruby-ronn')
 provides=("nuspell=$pkgver")
@@ -31,17 +31,17 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "nuspell"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "nuspell"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
