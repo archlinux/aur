@@ -1,12 +1,78 @@
 #!/bin/sh
 
+# determine the real invoking user/home
+_user="$(logname 2>/dev/null || echo "$SUDO_USER")"
+_home="$(eval echo "~$_user")"
+
+# paths and expected version
+steam_dll="$_home/.local/share/Steam/steamapps/common/Lossless Scaling/Lossless.dll"
+required_version="3.0.0.2" # legacy_2.13/2.13.2
+user_manifest="$_home/.local/share/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json"
+user_library="$_home/.local/lib/liblsfg-vk.so"
+
+# extracts the ProductVersion string from the dll
+get_product_version() {
+    local file="$1"
+    strings -e l "$file" 2>/dev/null \
+      | awk '
+          /^ProductVersion$/ { getline; print; exit }
+        '
+}
+
+check_steam_install() {
+    if [ ! -f "$steam_dll" ]; then
+        echo "=================================================================================="
+        echo "==  WARNING: Lossless Scaling DLL not found in the home Steam directory!        =="
+        echo "==  Please install the legacy_2.13 build via Steam:                             =="
+        echo "==    Library → Lossless Scaling → Properties → Betas → legacy_2.13 branch      =="
+        echo "==                                                                              =="
+        echo "==  It should be installed under the following path:                            =="
+        echo "==    ~/.local/share/Steam/steamapps/common/Lossless Scaling/Lossless.dll       =="
+        echo "=================================================================================="
+    else
+        version="$(get_product_version "$steam_dll")"
+        if [ "$version" != "$required_version" ]; then
+            echo "==========================================================================================="
+            echo "==  Detected Lossless Scaling DLL at:                                                    =="
+            echo "==    $steam_dll"
+            echo "==  Version mismatch, please ensure you installed the legacy_2.13 build via Steam:       =="
+            echo "==    Library → Lossless Scaling → Properties → Betas → legacy_2.13 branch               =="
+            echo "==========================================================================================="
+        fi
+    fi
+}
+
+check_local_install() {
+    residuals=()
+    [ -f "$user_manifest" ] && residuals+=("$user_manifest")
+    [ -f "$user_library" ]  && residuals+=("$user_library")
+
+    if [ "${#residuals[@]}" -gt 0 ]; then
+        echo "================================================================================================================================"
+        echo "==  Found residual files from previous local install:                                                                         =="
+        for file in "${residuals[@]}"; do
+            echo "==    $file  "
+        done
+        echo "==                                                                                                                            =="
+        echo "==  You can remove them with:                                                                                                 =="
+        printf "==    rm"
+        for file in "${residuals[@]}"; do
+            printf " \"%s\"" "$file"
+        done
+        echo ""
+        echo "================================================================================================================================"
+    fi
+}
+
 post_install() {
-    echo "======================================================================================================================================"
-    echo "==  For lsfg-vk to work, you will need Lossless Scaling installed from Steam (legacy_2.13 build, installable in the Betas options)  =="
-    echo "==  It should be installed in ~/.local/share/Steam/steamapps/common/Lossless Scaling/Lossless.dll                                   =="
-    echo "==  To enable lsfg, set the env vars ENABLE_LSFG=1 and LSFG_MULTIPLIER to a value between 0 and 5 before running a program          =="
-    echo "==  For more usage instructions, refer to the lsfg-vk wiki: https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk  =="
-    echo "======================================================================================================================================"
+    check_steam_install
+    check_local_install
+
+    echo "================================================================================================================================="
+    echo "==  To enable lsfg-vk, set the env vars ENABLE_LSFG=1 and LSFG_MULTIPLIER to a value between 0 and 4 before running a program  =="
+    echo "==  For more usage instructions, refer to the lsfg-vk wiki:                                                                    =="
+    echo "==    https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk                                                   =="
+    echo "================================================================================================================================="
 }
 
 post_upgrade() {
