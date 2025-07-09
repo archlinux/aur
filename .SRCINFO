@@ -1,13 +1,16 @@
 pkgbase = qsf
 	pkgdesc = small and fast bayesian spam filter
-	pkgver = 1.2.15
+	pkgver = 1.2.23
 	pkgrel = 1
-	url = https://www.ivarch.com/programs/qsf/
+	url = https://ivarch.com/programs/qsf/
 	arch = i686
 	arch = x86_64
-	license = PerlArtistic
+	license = Artistic-2.0
 	depends = gdbm
-	source = https://www.ivarch.com/programs/sources/qsf-1.2.15.tar.bz2
-	sha512sums = d4607e746cef57645aefc94599ff186c2b4f8ad1d971cf016b8effb29a138b36a073004860c41e477ac8efb713553952a5ade4240efdaf6c85f46882f9c5eac5
+	source = https://ivarch.com/s/qsf-1.2.23.tar.gz
+	source = qsf-1.2.23.tar.gz.asc::https://ivarch.com/s/qsf-1.2.23.tar.gz.txt
+	validpgpkeys = 4267B4F90F2678A112169BD61D1EF7581B45E9A0
+	sha512sums = aac64400c37833d5d68d92a21c86899ba5b8ca6451858afa4bc562eafde98f99a99462d5f60635ee7fde8b04eac2780e598a6d30eb098ec6cabb6896073ba4d1
+	sha512sums = SKIP
 
 pkgname = qsf
