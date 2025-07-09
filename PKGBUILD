@@ -4,7 +4,7 @@
 
 pkgname=printer-support
 pkgver=1
-pkgrel=7
+pkgrel=8
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Printers"
 license=('GPL')
@@ -25,9 +25,8 @@ depends=("a2ps"
         "gsfonts"
         "gutenprint"
         "noto-fonts"
-        "noto-fonts-emoji"
-        "python-pyqt5"
-        "python-pysmbc"
+        "noto-color-emoji-fontconfig"
+        "python-pyqt6"
         "python-reportlab"
         "samba-support"
         "splix"
