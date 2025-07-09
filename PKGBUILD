@@ -4,7 +4,7 @@
 _pkgname=idris2
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc='A purely functional programming language with first class types'
 url='https://www.idris-lang.org/'
 license=('custom')
@@ -54,13 +54,13 @@ build() {
 }
 
 check() {
-	# tests seem to be broken upstream. disable them for now.
-	return 0
-
 	_setvars
 	cd "$srcdir/$_pkgname"
 
-	INTERACTIVE='' make test
+	# The refc backend has many unused variables.
+	export CFLAGS+=" -Wno-unused-variable "
+
+	make test INTERACTIVE=''
 }
 
 package() {
