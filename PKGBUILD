@@ -5,8 +5,8 @@
 pkgname='python-bake-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.2.4.r0.g14ea4bd
-pkgrel=2
+pkgver=1.2.4.post2.r0.gd401e2b
+pkgrel=1
 pkgdesc='Mbake: Format and lint Makefiles according to best practices (development version)'
 arch=('any')
 url='https://github.com/EbodShojaei/bake'
@@ -25,8 +25,8 @@ depends=(
   'python-typer'
 )
 source=("git+$url.git")
-provides=({m,python-}bake)
-conflicts=("${provides[@]}")
+provides=({,m,python-}bake)
+conflicts=("${provides[@]}" ruby-bake)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -54,8 +54,26 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
-  # Spot already taken by ruby-bake
-  rm -vf "$pkgdir/usr/bin/bake"
+  local _site_packages
+  _site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+  _pythonpath="$pkgdir$_site_packages"
+
+  for _shell in bash fish zsh; do
+    env PYTHONPATH="$_pythonpath" \
+      "$pkgdir/usr/bin/mbake" completions "$_shell" > "_completions.$_shell"
+  done
+
+  # Bash
+  install -vDm0644 _completions.bash "$pkgdir/usr/share/bash-completion/completions/$_srcname"
+  ln -vsrf "$pkgdir/usr/share/bash-completion/completions/"{,m}"$_srcname"
+
+  # Fish
+  install -vDm0644 _completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_srcname.fish"
+  ln -vsrf "$pkgdir/usr/share/fish/vendor_completions.d/"{,m}"$_srcname.fish"
+
+  # Zsh
+  install -vDm0644 _completions.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_srcname"
+  ln -vsrf "$pkgdir/usr/share/zsh/site-functions/_"{,m}"$_srcname"
 }
 
 # eof

@@ -1,7 +1,7 @@
 pkgbase = python-bake-git
 	pkgdesc = Mbake: Format and lint Makefiles according to best practices (development version)
-	pkgver = 1.2.4.r0.g14ea4bd
-	pkgrel = 2
+	pkgver = 1.2.4.post2.r0.gd401e2b
+	pkgrel = 1
 	url = https://github.com/EbodShojaei/bake
 	arch = any
 	license = MIT
@@ -14,10 +14,13 @@ pkgbase = python-bake-git
 	depends = python-rich
 	depends = python-tomli
 	depends = python-typer
+	provides = bake
 	provides = mbake
 	provides = python-bake
+	conflicts = bake
 	conflicts = mbake
 	conflicts = python-bake
+	conflicts = ruby-bake
 	source = git+https://github.com/EbodShojaei/bake.git
 	sha256sums = SKIP
 
