@@ -1,0 +1,25 @@
+From 4d0da4096a19547d4cb72209041ceb802430f110 Mon Sep 17 00:00:00 2001
+From: rechie <502117806@qq.com>
+Date: Thu, 12 Jun 2025 22:58:20 +0800
+Subject: [PATCH 1/2] fix #ICEQUL
+
+---
+ src/log/format.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/log/format.h b/src/log/format.h
+index e2ff9d4..c8ff859 100644
+--- a/src/log/format.h
++++ b/src/log/format.h
+@@ -46,7 +46,7 @@ extern PrintFormat	klog_printformat;
+ #endif
+ 
+ extern int	getRecordDate(char* date) NOTNULL();
+-extern void	loadFormatOptions();
++extern void	loadFormatOptions(int id);
+ extern int	formatMessage(int lvl , const char *filename , const char *func , int linenum , const char *message , char* result , unsigned int resultSize) NOTNULL();
+ 
+ #endif
+-- 
+2.49.0
+
