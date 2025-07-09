@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gd-git
-pkgver=2.3.2.r464.gd11db230
+pkgver=2.3.3.r119.g2be005f3
 pkgrel=1
 pkgdesc="A library for the dynamic creation of images"
 arch=('i686' 'x86_64')
 url="https://libgd.github.io/"
-license=('custom')
+license=('LicenseRef-gd')
 depends=('glibc' 'fontconfig' 'freetype2' 'libavif' 'libheif' 'libimagequant' 'libjpeg' 'libpng' 'libtiff' 'libwebp' 'libxpm')
 makedepends=('git' 'cmake')
 optdepends=('perl: bdftogd script')
@@ -20,7 +20,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libgd"
 
-  git describe --long --tags | sed 's/^gd-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^gd-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^gd-//'
 }
 
 build() {
@@ -43,12 +46,12 @@ build() {
     -DENABLE_WEBP=ON \
     -DENABLE_XPM=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "libgd"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/gd"
 }
