@@ -1,0 +1,5 @@
+[jenv-archlinux]
+source = "github"
+github = "claui/jenv-archlinux"
+prefix = "v"
+use_max_tag = true
