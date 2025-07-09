@@ -1,11 +1,10 @@
 pkgname=libelectron
 pkgver=2025.5
-pkgrel=4
+pkgrel=5
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron/libelectron"
 license=('GPL')
 depends=('npm' 'libelectron-electron-meta' 'git' 'icu')
-depends_x86_64=('electron-castlab-bin')
 pkgdesc="A meta package for electron and electron dependencies."
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/libelectron-$pkgver.tar.bz2")
