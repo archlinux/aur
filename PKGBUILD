@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=1.7.8
+pkgver=1.7.10
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -31,7 +31,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 [[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
-sha256sums=('1c21adc21069f82a53c7368ff75b52d46fc582b98483336137bc1c0b0640bb4b'
+sha256sums=('5cead81878fa03a981b741e2570acb13b63626a4b520f60bc2a1d8ed83b3a7c1'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
@@ -108,6 +108,7 @@ build() {
         -DVERSIONED_MINGW_LIBRARIES:BOOL=ON \
         -DNO_LIBSYNCTHING:BOOL="${_disable_libsyncthing}" \
         -DUSE_LIBSYNCTHING:BOOL="${_enable_libsyncthing}" \
+        -DSETUP_TOOLS:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
       ninja
