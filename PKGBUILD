@@ -38,8 +38,8 @@ esac
 
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
-pkgver=r767.20250510.b5c60c9
-pkgrel=2
+pkgver=r768.20250703.3bb67b6
+pkgrel=1
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
   'i386'

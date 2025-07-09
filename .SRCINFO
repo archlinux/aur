@@ -1,7 +1,7 @@
 pkgbase = grub4dos-efi-git
 	pkgdesc = GRUB4DOS EFI binaries.
-	pkgver = r767.20250510.b5c60c9
-	pkgrel = 2
+	pkgver = r768.20250703.3bb67b6
+	pkgrel = 1
 	url = http://grub4dos.chenall.net/
 	arch = i386
 	arch = i486
@@ -17,7 +17,7 @@ pkgbase = grub4dos-efi-git
 	makedepends = gcc-multilib
 	makedepends = gcc-libs-multilib
 	optdepends = grub: For adding GRUB4DOS to the GRUB menu.
-	provides = grub4dos-efi=r767.20250510.b5c60c9
+	provides = grub4dos-efi=r768.20250703.3bb67b6
 	conflicts = grub4dos-efi
 	options = !strip
 	options = !buildflags
