@@ -3,6 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
+epoch=1
 pkgver=r27436.64f40c8
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
