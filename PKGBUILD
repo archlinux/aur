@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-git
-pkgver=3.6.1.r733.g233000f66e9
+pkgver=3.12.1.r204.g59125c5e2a8
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
 url="https://aomedia.org/"
-license=('BSD' 'custom:PATENTS')
+license=('BSD-2-Clause' 'LicenseRef-aom')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'perl' 'yasm')
 checkdepends=('python')
@@ -36,19 +36,19 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     -DENABLE_TESTS=OFF \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "aom"
 
-  #make -C "_build" runtests
+  #cmake --build "_build" --target runtests
 }
 
 package() {
   cd "aom"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 
   install -d "$pkgdir/usr/share/doc/aom"
   cp -R "_build/docs/." "$pkgdir/usr/share/doc/aom"
