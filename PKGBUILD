@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Misano <me@mirsobhan.ir>
 pkgname=persian-hm-ftx-fonts
-pkgver=3.8
+pkgver=3.9
 pkgrel=1
 pkgdesc="A Persian font series derived from X Series 2, Metafont and FarsiTeX fonts with Kashida feature."
 url="https://bitbucket.org/dma8hm1334"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz"::"${url}/persian-hm-ftx-${pkgver}/get/master.t
 sha256sums=('9b4863c1413edff3ab136dadda227feb2fe709109673249a799bcf6cad87c448')
 
 package() {
-  cd $srcdir/dma8hm1334-persian-hm-ftx-3.8-b18e150ebc1d/${pkgname%-fonts}-$pkgver
+  cd $srcdir/dma8hm1334-persian-hm-ftx-3.9-b18e150ebc1d/${pkgname%-fonts}-$pkgver
   install -d "${pkgdir}/usr/share/fonts/${pkgname%-fonts}"
   install -t "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" -m644 ./fonts/Ttf/*.ttf
   install -Dm644 ./OFL.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"

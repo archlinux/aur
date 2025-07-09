@@ -1,6 +1,6 @@
 pkgbase = persian-hm-ftx-fonts
 	pkgdesc = A Persian font series derived from X Series 2, Metafont and FarsiTeX fonts with Kashida feature.
-	pkgver = 3.8
+	pkgver = 3.9
 	pkgrel = 1
 	url = https://bitbucket.org/dma8hm1334
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = persian-hm-ftx-fonts
 	depends = fontconfig
 	provides = ttf-persian-hm-ftx
 	conflicts = ttf-persian-hm-ftx
-	source = persian-hm-ftx-fonts-3.8.tar.gz::https://bitbucket.org/dma8hm1334/persian-hm-ftx-3.8/get/master.tar.gz
+	source = persian-hm-ftx-fonts-3.9.tar.gz::https://bitbucket.org/dma8hm1334/persian-hm-ftx-3.9/get/master.tar.gz
 	sha256sums = 9b4863c1413edff3ab136dadda227feb2fe709109673249a799bcf6cad87c448
 
 pkgname = persian-hm-ftx-fonts
