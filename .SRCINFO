@@ -8,10 +8,14 @@ pkgbase = igv-web
 	license = MIT
 	makedepends = npm
 	depends = nginx
+	options = !debug
 	options = !strip
+	backup = etc/nginx/conf.d/igv-web.conf
 	source = https://igv.org/app-archive/igv-webapp.2.2.8.zip
 	source = igv-web.patch
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = igv-web.conf
+	sha256sums = 45f2002159e3088ac1af7179b056599b7b746810ef361d2201579a69667b1133
+	sha256sums = 44cb1fbd23c869fb6e06cff5d9144fd81c6d8951b5a42e762718033fb0fb790c
+	sha256sums = 813c375ee0c763d38b66ea589dd9340b4f2c7ff8b969ab57ec13870cc0348a56
 
 pkgname = igv-web
