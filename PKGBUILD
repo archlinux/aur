@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libssh2-git
-pkgver=1.10.0.r257.gfe02bd2b
+pkgver=1.11.1.r111.g723b7017
 pkgrel=1
 pkgdesc="Client-side C library implementing the SSH2 protocol"
 arch=('i686' 'x86_64')
 url="https://www.libssh2.org/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc' 'openssl' 'zlib')
 makedepends=('git' 'cmake')
 provides=("libssh2=$pkgver" 'libssh2.so')
@@ -31,18 +31,18 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libssh2"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libssh2"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libssh2"
 }
