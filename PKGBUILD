@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=c-ares-git
-pkgver=1.25.0.r5.g2a6a420c
+pkgver=1.29.0.r366.g71663adc
 pkgrel=1
 pkgdesc="A C library for asynchronous DNS requests"
 arch=('i686' 'x86_64')
@@ -35,13 +35,13 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DCARES_STATIC=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "c-ares"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/c-ares"
   install -Dm644 {CONTRIBUTING,README,RELEASE-NOTES}.md -t "$pkgdir/usr/share/doc/c-ares"
 }
