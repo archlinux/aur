@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gopeed-bin
 _pkgname=Gopeed
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="High speed downloader that supports all platforms.(Prebuilt version)"
 arch=(
@@ -20,12 +20,11 @@ depends=(
     'libayatana-indicator'
     'ayatana-ido'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('348e95eaa4b843fe12f64da1eca2a37e1ade4d4fe0cb5f63ae0ecc2b0cf4860d'
-            '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb")
+sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
+sha256sums_aarch64=('4db53a5acc5b9809dfd28393ce4399a46eb17d73eb2d5e69fe224a123acaca7b')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
