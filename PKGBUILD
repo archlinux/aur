@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-beta
-pkgver=118.0.5461.7
+pkgver=120.0.5543.8
 pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - beta stream'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:opera')
 provides=('opera-beta')
 depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
-    'opera-beta-ffmpeg-codecs-bin: additional support for proprietary codecs for opera-beta, extracted directly from the chromium-ffmpeg snap'
+    'opera-beta-ffmpeg-codecs'
     'upower: opera battery save'
 )
 source=(
@@ -18,7 +18,7 @@ source=(
     "opera"
     "default"
 )
-sha256sums=('86698b290c12c78a28fc75744d98a12df4abeac45ea92e0dd49885d1bc37a582'
+sha256sums=('47bc26612f78f30022434aa0ef1d6dd633370dda9249eb8cf3010deff7ccdd0c'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231')
 
