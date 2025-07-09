@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jsoncpp-git
-pkgver=1.9.5.r6.g69098a1
+pkgver=1.9.6.r14.gca98c98
 pkgrel=1
 pkgdesc="C++ library for interacting with JSON"
 arch=('i686' 'x86_64')
 url="https://github.com/open-source-parsers/jsoncpp"
-license=('MIT' 'custom')
+license=('MIT' 'LicenseRef-jsoncpp')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("jsoncpp=$pkgver" 'libjsoncpp.so')
@@ -33,18 +33,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "jsoncpp"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "jsoncpp"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/jsoncpp"
 }
