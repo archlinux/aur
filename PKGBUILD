@@ -1,12 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.47.r86.g6a96a43
+pkgver=1.0.0.alpha.47.r193.g3afadef
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64' 'aarch64')
 url="https://valent.andyholmes.ca"
-license=('CC0-1.0 AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
+license=(
+  'CC0-1.0'
+  'CC-BY-SA-3.0'
+  'GPL-2.0-or-later'
+  'GPL-3.0-or-later'
+  'LGPL-2.1-or-later'
+)
 depends=(
   'evolution-data-server'
   'gnutls'
@@ -17,6 +23,8 @@ depends=(
   'libpipewire'
   'libportal-gtk4'
   'libpulse'
+  'python-dbus'
+  'python-gobject'
 )
 makedepends=(
 #  'gi-docgen'  ## -Ddocumentation=true

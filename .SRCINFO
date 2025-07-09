@@ -1,11 +1,15 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = 1.0.0.alpha.47.r86.g6a96a43
+	pkgver = 1.0.0.alpha.47.r193.g3afadef
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
 	arch = aarch64
-	license = CC0-1.0 AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
+	license = CC0-1.0
+	license = CC-BY-SA-3.0
+	license = GPL-2.0-or-later
+	license = GPL-3.0-or-later
+	license = LGPL-2.1-or-later
 	checkdepends = python-dbusmock
 	checkdepends = walbottle
 	checkdepends = xorg-server-xvfb
@@ -23,6 +27,8 @@ pkgbase = valent-git
 	depends = libpipewire
 	depends = libportal-gtk4
 	depends = libpulse
+	depends = python-dbus
+	depends = python-gobject
 	provides = valent
 	provides = libvalent-1.so=0
 	conflicts = valent
