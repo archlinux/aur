@@ -2,7 +2,7 @@
 
 pkgname=exhale
 pkgver=1.2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source xHE-AAC encoder"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/ecodis/exhale"
@@ -23,12 +23,12 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "$pkgname-v$pkgver"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "include"/{License.htm,styles.css} -t "$pkgdir/usr/share/licenses/exhale"
 }
