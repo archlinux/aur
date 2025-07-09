@@ -2,8 +2,8 @@
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-x86_64-v3-git
 pkgrel=1
-pkgver=r8683.ecfca17a
-pkgdesc="Fast, native, feature-rich terminal emulator with modern x86_64-v3 optimizations"
+pkgver=r11113.d8e7a6634
+pkgdesc="Fast, native, feature-rich terminal emulator with modern x86_64-v3 optimizations and bundled shell integration + terminfo"
 arch=('x86_64')
 url="https://github.com/ghostty-org/${_pkgbasename}"
 provides=('ghostty')
@@ -12,15 +12,16 @@ license=('MIT')
 depends=(bzip2
          fontconfig libfontconfig.so
          freetype2 libfreetype.so
-         gcc-libs # ld-linux-x86-64.so
-         glibc # libc.so libm.so
+         gcc-libs
+         glibc
          glib2 libglib-2.0.so libgio-2.0.so libgobject-2.0.so
          gtk4 libgtk-4.so
-         libx11 # libX11.so
+         gtk4-layer-shell
+         libx11
          harfbuzz libharfbuzz.so
          libadwaita libadwaita-1.so
          libpng
-         oniguruma # libonig.so
+         oniguruma
          pixman
          wayland libwayland-client.so
          zlib)
@@ -37,13 +38,29 @@ pkgver() {
 }
 
 build() {
-        cd "${srcdir}/${_pkgbasename}"
-
+	cd "${srcdir}/${_pkgbasename}"
 	ZIG_GLOBAL_CACHE_DIR="${srcdir}/tmp" ./nix/build-support/fetch-zig-cache.sh
-	zig build --system "${srcdir}/tmp/p" -Dgtk-wayland=true -Dgtk-x11=true -Dpie=true -Dcpu=x86_64_v3 -Doptimize=ReleaseFast -Demit-docs
+	zig build \
+		--system "${srcdir}/tmp/p" \
+		-Dgtk-wayland=true \
+		-Dgtk-x11=true \
+		-Dpie=true \
+		-Dcpu=x86_64_v3 \
+		-Doptimize=ReleaseFast \
+		-Demit-docs
 }
 
 package() {
 	cd "${srcdir}/${_pkgbasename}"
-	zig build -p "${pkgdir}"/usr --system "${srcdir}/tmp/p" -Dcpu=x86_64_v3 -Doptimize=ReleaseFast -Demit-docs
+	ZIG_GLOBAL_CACHE_DIR="${srcdir}/tmp" ./nix/build-support/fetch-zig-cache.sh
+	DESTDIR="${pkgdir}" zig build install \
+		--system "${srcdir}/tmp/p" \
+		-Dgtk-wayland=true \
+		-Dgtk-x11=true \
+		-Dpie=true \
+		-Dcpu=x86_64_v3 \
+		-Doptimize=ReleaseFast \
+		-Demit-docs
+
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

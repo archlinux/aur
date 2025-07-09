@@ -1,6 +1,6 @@
 pkgbase = ghostty-x86_64-v3-git
-	pkgdesc = Fast, native, feature-rich terminal emulator with modern x86_64-v3 optimizations
-	pkgver = r8683.ecfca17a
+	pkgdesc = Fast, native, feature-rich terminal emulator with modern x86_64-v3 optimizations and bundled shell integration + terminfo
+	pkgver = r11032.26522ab8c
 	pkgrel = 1
 	url = https://github.com/ghostty-org/ghostty
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = ghostty-x86_64-v3-git
 	depends = libgobject-2.0.so
 	depends = gtk4
 	depends = libgtk-4.so
+	depends = gtk4-layer-shell
 	depends = libx11
 	depends = harfbuzz
 	depends = libharfbuzz.so
