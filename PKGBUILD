@@ -2,7 +2,7 @@
 
 pkgname=plasma-weather-plus
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='plasma天气插件'
 arch=('any')
