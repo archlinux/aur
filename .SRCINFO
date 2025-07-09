@@ -1,0 +1,19 @@
+pkgbase = superfile-git
+	pkgdesc = Pretty fancy and modern terminal file manager
+	pkgver = v1.3.1.r84.ge7a7483
+	pkgrel = 1
+	url = https://superfile.netlify.app/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = exiftool: support for more detailed metadata
+	optdepends = ttf-nerd-fonts-symbols: support for better icons
+	optdepends = zoxide: support for fast directory navigation
+	provides = superfile
+	conflicts = superfile
+	source = git+https://github.com/yorukot/superfile.git
+	sha256sums = SKIP
+
+pkgname = superfile-git
