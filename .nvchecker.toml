@@ -1,0 +1,5 @@
+[openfoam-com]
+source = "gitlab"
+gitlab = "openfoam/openfoam"
+use_max_tag = "true"
+prefix = "OpenFOAM-"

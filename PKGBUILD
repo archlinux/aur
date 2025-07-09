@@ -7,7 +7,7 @@
 # Contributor: <gucong43216@gmail.com>
 
 # Installs as (for example)
-# /opt/OpenFOAM/OpenFOAM-v2412
+# /opt/OpenFOAM/OpenFOAM-v2506
 
 _distname=OpenFOAM
 pkgname=${_distname,,}-com
