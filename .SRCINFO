@@ -14,6 +14,7 @@ pkgbase = melonds
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = extra-cmake-modules
+	makedepends = clang
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
