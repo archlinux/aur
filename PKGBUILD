@@ -2,8 +2,8 @@
 
 _name=pyOCD
 pkgname=python-pyocd
-pkgver=0.36.0
-pkgrel=2
+pkgver=0.37.0
+pkgrel=1
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
@@ -47,20 +47,16 @@ conflicts=(pyocd)
 replaces=(pyocd)
 source=(
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
-  $pkgname-0.36.0-optional_libusb_package.patch
 )
-sha512sums=('26efd6ceeb0ddaea9ac52170082b9fd87926790f90c0d7ccb1deb9e9ec549b84202801704b65641e6a2ac7fe0215a540e45eb0e1a0b9a38ac373720c5884bd36'
-            'c4aadf654260a3d0a21eb937b211c6790de7eb255fa4ec60133b48d34179692706c6c5500019c95d3664076cf39e1451f40e7d468d8231f749a2b24f11aa8c5b')
-b2sums=('14dac4f5ae3b5fe218557af08a9e284882436a0ebfe16487b59cd0df7a051e0dc1fb515b940ecb66ed0be5cb0c03e02a87834883597e7d8d4fa99e76da60c137'
-        '9871afe976a9ccad60dd71ae8cc28f47178a0848aad9e61d315df92d554a69c0e3e140bdc7390da462e2f138ba8d8584e855bab9c197c8431ff1c77b6ea8156b')
+sha512sums=('dfebd7a916729104cdc7cc6f7b263fe46c4e94dbb3cdee9bccd031c5e25a150ee5b8c4fcb73041d203f77eb2e9eca37cdac6309128ae861dc109e96f0f191ec9')
 
 prepare() {
   cd $_name-$pkgver
 
   # we remove the dependency for libusb-package, because it would vendor libusb
   # https://github.com/pyocd/pyOCD/issues/1331
-  sed '/libusb-package/d' -i setup.cfg
-  patch -Np1 -i ../$pkgname-0.36.0-optional_libusb_package.patch
+ #  sed '/libusb-package/d' -i setup.cfg
+ #  patch -Np1 -i ../$pkgname-0.36.0-optional_libusb_package.patch
 
   # remove udev rules for stlink devices (the stlink package provides them):
   rm -v udev/*stlink*.rules
