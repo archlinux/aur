@@ -3,8 +3,7 @@
 _pkgname=xfce4-dockbarx-plugin
 pkgname=${_pkgname}-git
 epoch=1
-_pkgver=0.6
-pkgver=0.7.1+3+gc2cb169
+pkgver=0.7.2+2+g43af2dd
 pkgrel=1
 pkgdesc="Embed DockbarX in the xfce4-panel (latest git commit)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,24 +18,24 @@ source=("${_pkgname}::git+${url}#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's:^v::;s:-:+:g'
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   [ -d build ] && rm -fr build
   mkdir build
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cd "${_pkgname}"/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
   make  
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"/build
+  cd "${_pkgname}"/build
   make DESTDIR="${pkgdir}" install
 }
 
