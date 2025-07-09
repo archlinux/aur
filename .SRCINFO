@@ -1,6 +1,6 @@
 pkgbase = lmstudio-beta
 	pkgdesc = Discover, download, and run local LLMs
-	pkgver = 0.3.17.8
+	pkgver = 0.3.18.2
 	pkgrel = 1
 	url = https://lmstudio.ai/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = lmstudio-beta
 	depends = hicolor-icon-theme
 	depends = fuse2
 	depends = clblast
-	noextract = lmstudio-beta-0.3.17.8.AppImage
+	noextract = lmstudio-beta-0.3.18.2.AppImage
 	options = !strip
 	options = !debug
-	source = lmstudio-beta-0.3.17.8.AppImage::https://installers.lmstudio.ai/linux/x64/0.3.17-8/LM-Studio-0.3.17-8-x64.AppImage
-	sha256sums = 288fad7e750fd0b6a6e5abaeb5df358486555e6dff91d1b3abc7d86ffc11b901
+	source = lmstudio-beta-0.3.18.2.AppImage::https://installers.lmstudio.ai/linux/x64/0.3.18-2/LM-Studio-0.3.18-2-x64.AppImage
+	sha256sums = a8baebfd70d01601dac4da99d952571b3c8d5d12e22dd351e1654565c3b98434
 
 pkgname = lmstudio-beta
