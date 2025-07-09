@@ -8,6 +8,7 @@ pkgbase = servicemaster-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gcc
+	makedepends = git
 	depends = ncurses
 	depends = systemd-libs
 	provides = servicemaster
