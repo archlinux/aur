@@ -1,6 +1,6 @@
 pkgbase = mcphost
 	pkgdesc = A CLI host application that enables Large Language Models (LLMs) to interact with external tools through the Model Context Protocol (MCP)
-	pkgver = 0.20.2
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/mark3labs/mcphost
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mcphost
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/mark3labs/mcphost.git#tag=v0.20.2
-	sha256sums = 5de7db28326d0210eaa5af199bac84800fc210588ac352b53ab20415712484d5
+	source = git+https://github.com/mark3labs/mcphost.git#tag=v0.21.0
+	sha256sums = 79d1bf8cdfed9373c51eede6337728df885522ccab59848173bda9b1b7fda3cf
 
 pkgname = mcphost
