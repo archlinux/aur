@@ -3,7 +3,7 @@
 pkgname=xfce4-dockbarx-plugin
 epoch=1
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 #url="https://github.com/m7s/xfce4-dockbarx-plugin"
@@ -15,19 +15,19 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('331973e7ffd88a64497e2ab422ff73c7d71fae6245df9061ce638160a3a5a549')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   [ -d build ] && rm -fr build
   mkdir build
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cd "${pkgname}-${pkgver}"/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
   make  
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"/build
+  cd "${pkgname}-${pkgver}"/build
   make DESTDIR="${pkgdir}" install
 }
 
