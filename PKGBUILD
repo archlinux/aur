@@ -2,7 +2,7 @@
 
 pkgname=gmssl
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Chinese national cryptographic algorithms and protocols"
 arch=('i686' 'x86_64')
 url="http://gmssl.org/"
@@ -27,7 +27,7 @@ build() {
 check() {
   cd "GmSSL-$pkgver"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {

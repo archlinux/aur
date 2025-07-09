@@ -1,7 +1,7 @@
 pkgbase = gmssl
 	pkgdesc = Chinese national cryptographic algorithms and protocols
 	pkgver = 3.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gmssl.org/
 	arch = i686
 	arch = x86_64
