@@ -6,9 +6,9 @@
 
 pkgname=meanalyzer
 _pkgname=MEAnalyzer
-_tag=r366
+_tag=r367
 _pkgver="${_tag#v}"
-pkgver=1.307.0.r366
+pkgver=1.307.0.r367
 pkgrel=1
 pkgdesc="Intel Engine & Graphics Firmware Analysis Tool"
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python' 'python-colorama' 'python-crccheck' 'python-pltable')
 makedepends=('dos2unix')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz")
-sha256sums=('60a3ed603fb6048f718658ac998586a0517f624c55174dd33618e7c0844d1485')
+sha256sums=('56d7be08c3e4208e5a7916104123bd9fa40a769a0a02cf0ae43440f901696416')
 
 pkgver() {
     cd "${_pkgname}-${_pkgver}"
