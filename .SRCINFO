@@ -1,7 +1,7 @@
 pkgbase = asap-chiptunes-player-git
 	pkgdesc = Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC.
 	pkgver = 6.0.3+26.r1622.20250703.49ef0ff
-	pkgrel = 1
+	pkgrel = 2
 	url = http://asap.sourceforge.net
 	arch = aarch64
 	arch = armv6h
@@ -15,6 +15,7 @@ pkgbase = asap-chiptunes-player-git
 	makedepends = mads
 	makedepends = moc>=2.4
 	makedepends = opencl-icd-loader
+	makedepends = opencl-headers
 	makedepends = python>=3
 	makedepends = sdl
 	makedepends = vlc
