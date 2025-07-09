@@ -1,0 +1,19 @@
+diff -ura gz-gui-gz-gui7_7.2.2.orig/src/plugins/topic_viewer/TopicViewer.cc gz-gui-gz-gui7_7.2.2.new/src/plugins/topic_viewer/TopicViewer.cc
+--- gz-gui-gz-gui7_7.2.2.orig/src/plugins/topic_viewer/TopicViewer.cc	2024-05-24 21:54:03.000000000 +0800
++++ gz-gui-gz-gui7_7.2.2.new/src/plugins/topic_viewer/TopicViewer.cc	2025-07-07 19:31:01.655022875 +0800
+@@ -252,12 +252,12 @@
+     auto messageType = msgField->message_type();
+ 
+     if (messageType)
+-      this->AddField(msgItem, msgField->name(), messageType->name());
++      this->AddField(msgItem, std::string(msgField->name()), std::string(messageType->name()));
+ 
+     else
+     {
+-      auto msgFieldItem = this->FactoryItem(msgField->name(),
+-                                            msgField->type_name());
++      auto msgFieldItem = this->FactoryItem(std::string(msgField->name()),
++                                            std::string(msgField->type_name()));
+       msgItem->appendRow(msgFieldItem);
+ 
+       this->SetItemPath(msgFieldItem);
