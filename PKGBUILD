@@ -2,7 +2,7 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
-pkgver=7.0.9
+pkgver=7.1.0
 pkgrel=0
 pkgdesc="Optimized Amiga emulator"
 arch=('x86_64' 'armv7' 'aarch64')
@@ -12,14 +12,9 @@ depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialpor
 makedepends=('glibc' 'git' 'cmake' 'ninja')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry-git' 'amiberry-lite')
-source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=073b49a4ee9485940e68513e3c743427b9c3d0fe' 'fix-cstdint.patch')
-sha256sums=('SKIP' 'SKIP')
+source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=787d86881cfaf48574fb55162ad1275c3f4867dd')
+sha256sums=('SKIP')
 options=('!lto')
-
-prepare() {
-  cd ${pkgname}
-  patch -p1 -i "${srcdir}/fix-cstdint.patch"
-}
 
 build() {
   cd ${pkgname}
