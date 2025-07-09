@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lean4-git
-pkgver=4.5.0.rc1.r86.gad068824d0
+pkgver=4.22.0.rc3.r161.gd2e604f74d
 pkgrel=1
 pkgdesc="An interactive theorem prover"
 arch=('i686' 'x86_64')
 url="https://leanprover.github.io/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc' 'gmp')
 makedepends=('git' 'cmake')
 provides=("lean4=$pkgver")
@@ -40,17 +40,17 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build" stage2
+  cmake --build "_build" --target stage2
 }
 
 check() {
   cd "lean4"
 
-  #make -C "_build/stage2" test
+  #cmake --build "_build/stage2" --target test
 }
 
 package() {
   cd "lean4"
 
-  make -C "_build/stage2" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build/stage2"
 }
