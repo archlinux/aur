@@ -3,14 +3,14 @@
 _name=llama-index-instrumentation
 pkgname=python-${_name}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('any')
 url="https://github.com/run-llama/llama_index/tree/main/llama-index-instrumentation"
 license=('MIT')
 depends=('python' 'python-deprecated' 'python-pydantic')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-watch' 'python-msgspec')
+checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('ae8333522487e22a33732924a9a08dfb456f54993c5c97d8340db3c620b76f13')
 

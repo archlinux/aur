@@ -1,14 +1,11 @@
 pkgbase = python-llama-index-instrumentation
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/run-llama/llama_index/tree/main/llama-index-instrumentation
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-mock
-	checkdepends = python-pytest-watch
-	checkdepends = python-msgspec
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
