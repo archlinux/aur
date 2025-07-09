@@ -1,9 +1,10 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 # Maintainer: Raphael Nestler <raphael.nestler@gmail.com>
+# Maintainer: Juliette Cordor <me@cordor.dev>
 
 _pkgname=asdf
 pkgname=asdf-vm
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
 arch=('x86_64' 'aarch64')
@@ -30,7 +31,7 @@ optdepends=(
 )
 install=asdf-vm.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/asdf-vm/asdf/archive/v${pkgver}.tar.gz")
-sha256sums=('47446cd6007b743ee207541fa8ebcddaae2c988f4cbd9dd845a2a7806d5d2f90')
+sha256sums=('c452a886503277260b7c82c07031800340f892bb2147bb3af67dca7268a410b5')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -45,7 +46,7 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
 
-  install -Dm755  build/asdf "$pkgdir"/usr/bin/$_pkgname
+  install -Dm755 build/asdf "$pkgdir"/usr/bin/$_pkgname
 
   local usrshare="${pkgdir}/usr/share"
 
@@ -65,5 +66,5 @@ package() {
 
   install -Dm644 internal/completions/asdf.bash "${usrshare}/bash-completion/completions/asdf"
   install -Dm644 internal/completions/asdf.fish "${usrshare}/fish/vendor_completions.d/asdf.fish"
-  install -Dm644 internal/completions/asdf.zsh     "${usrshare}/zsh/site-functions/_asdf"
+  install -Dm644 internal/completions/asdf.zsh "${usrshare}/zsh/site-functions/_asdf"
 }
