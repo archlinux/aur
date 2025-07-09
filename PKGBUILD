@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libwebp2-git
-pkgver=r364.g7b5fea6
+pkgver=r494.g33b0f21
 pkgrel=1
 pkgdesc="Successor of the WebP image format"
 arch=('i686' 'x86_64')
 url="https://chromium.googlesource.com/codecs/libwebp2/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("libwebp2=$pkgver" 'libwebp2.so')
@@ -39,18 +39,18 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libwebp2"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libwebp2"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "_build/libimageio.so" -t "$pkgdir/usr/lib"
 }
