@@ -1,16 +1,16 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=b2restore
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Program to recreate Backblaze B2 file archive at specified date+time."
 url="https://github.com/bulletmark/$pkgname"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 arch=("any")
 depends=("python>=3.6")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('d37fc3b78e279ec948a1c1705b6b21232c547097')
+sha1sums=('db4a41d83364e7bddc122d5aa2d376ffd84bd4d7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
