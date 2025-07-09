@@ -2,13 +2,14 @@
 #
 # shellcheck disable=SC2034,SC2164,SC2154
 
-pkgname=ts-query-ls-bin
+pkgname=ts_query_ls-bin
 pkgver=3.5.0
-pkgrel=1
-pkgdesc="Language server for tree-sitter's query files"
+pkgrel=2
+pkgdesc="LSP implementation for Tree-sitter's query files"
 url='https://github.com/ribru17/ts_query_ls'
 license=('MIT')
 provides=('ts_query_ls')
+replaces=('ts-query-ls-bin')
 depends=('gcc-libs' 'glibc')
 arch=('x86_64' 'aarch64')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/ribru17/ts_query_ls/releases/download/v$pkgver/ts_query_ls-x86_64-unknown-linux-gnu.tar.gz")
