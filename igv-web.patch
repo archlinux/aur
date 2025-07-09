@@ -1,0 +1,16 @@
+26c26
+<   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+---
+>   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+29c29
+<   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+---
+>   <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+32,34c32,34
+<   <script src="https://unpkg.com/react@16.14.0/umd/react.development.js" defer></script>
+<   <script src="https://unpkg.com/react-dom@16.14.0/umd/react-dom.development.js" defer></script>
+<   <script src="https://unpkg.com/@jbrowse/react-circular-genome-view@1.6.9/dist/react-circular-genome-view.umd.production.min.js" defer></script>
+---
+>   <script src="node_modules/react/umd/react.profiling.min.js" defer></script>
+>   <script src="node_modules/react-dom/umd/react-dom.profiling.min.js" defer></script>
+>   <script src="node_modules/@jbrowse/react-circular-genome-view/dist/react-circular-genome-view.umd.production.min.js" defer></script>

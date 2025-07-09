@@ -1,0 +1,17 @@
+pkgbase = igv-web
+	pkgdesc = A web application for exploring genomic datasets using igv.js
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = https://igv.org/doc/webapp/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nginx
+	options = !strip
+	source = https://igv.org/app-archive/igv-webapp.2.2.8.zip
+	source = igv-web.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = igv-web
