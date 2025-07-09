@@ -1,0 +1,22 @@
+pkgbase = xfce4-zorinappgridlite-plugin-elite
+	pkgdesc = Zorin AppGrid Lite plugin for the Xfce4 panel (with zorin-appgrid-lite dependency)[no error]
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://zorin.com/os/
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = findutils
+	depends = gtk3
+	depends = libxfce4ui
+	depends = libxfce4util
+	depends = xfce4-panel
+	depends = zorin-appgrid-lite
+	source = http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/z/zorin-appgrid-lite/zorin-appgrid-lite_1.0.2.tar.xz
+	source = http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/x/xfce4-zorinappgridlite-plugin/xfce4-zorinappgridlite-plugin_1.0.0.tar.xz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xfce4-zorinappgridlite-plugin-elite
