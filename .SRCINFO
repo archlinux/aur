@@ -1,6 +1,6 @@
 pkgbase = python-plpygis
 	pkgdesc = PL/Python for PostGIS
-	pkgver = 0.5.2
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/bosth/plpygis/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-plpygis
 	makedepends = python-wheel
 	depends = python
 	optdepends = python-shapely: interoperability with Shapely geometries
-	source = https://github.com/bosth/plpygis/archive/v0.5.2/plpygis-0.5.2.tar.gz
-	sha256sums = 5b8af44e617d81aa44d1555f3e1dfc086e09d3fe47cff60143d33556e5e8ac8d
+	source = https://github.com/bosth/plpygis/archive/v0.5.5/plpygis-0.5.5.tar.gz
+	sha256sums = 3f6a5fe1ce96baabbe80f5dbd155f0594fe65f902fca1243366774ba0eba325a
 
 pkgname = python-plpygis

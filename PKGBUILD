@@ -2,7 +2,7 @@
 
 _name=plpygis
 pkgname=python-$_name
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="PL/Python for PostGIS"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 optdepends=('python-shapely: interoperability with Shapely geometries')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://github.com/bosth/$_name/archive/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('5b8af44e617d81aa44d1555f3e1dfc086e09d3fe47cff60143d33556e5e8ac8d')
+sha256sums=('3f6a5fe1ce96baabbe80f5dbd155f0594fe65f902fca1243366774ba0eba325a')
 
 build() {
   cd "$_name-$pkgver"
