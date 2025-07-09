@@ -1,16 +1,16 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=nbtopy
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Converts Jupyter notebook files to Python files"
 url="https://github.com/bulletmark/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 arch=(any)
 depends=("python>=3.6")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('9674844612dd60699f11b415e730a56c5beeb382')
+sha1sums=('505e2ca87669d172bf1f67d54b0a5d03bd967ccc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

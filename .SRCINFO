@@ -1,17 +1,17 @@
 pkgbase = nbtopy
 	pkgdesc = Converts Jupyter notebook files to Python files
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/bulletmark/nbtopy
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python>=3.6
-	source = nbtopy-1.1.tar.gz::https://github.com/bulletmark/nbtopy/archive/1.1.tar.gz
-	sha1sums = 9674844612dd60699f11b415e730a56c5beeb382
+	source = nbtopy-1.2.tar.gz::https://github.com/bulletmark/nbtopy/archive/1.2.tar.gz
+	sha1sums = 505e2ca87669d172bf1f67d54b0a5d03bd967ccc
 
 pkgname = nbtopy
