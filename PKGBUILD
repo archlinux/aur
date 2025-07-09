@@ -1,7 +1,7 @@
 # Maintainer: Do1e <https://aur.archlinux.org/account/Do1e>
 
 pkgname=python-njulogin
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="The Nanjing University login module, which can be used to login to the various campus web sites"
 arch=('any')
@@ -9,18 +9,18 @@ url='https://github.com/Do1e/NJUlogin'
 license=('MIT')
 depends=(
   'python>=3.10'
-  'python-requests>=2.32.3'
+  'python-requests>=2.32.0'
   'python-pillow>=11.0.0'
-  'python-numpy>=2.1.3'
+  'python-numpy>=2.0.0'
   'python-lxml>=5.3.0'
   'python-pycryptodome>=3.21.0'
   'python-onnxruntime>=1.20.0'
-  'python-cryptography>=43.0.3'
+  'python-cryptography>=43.0.0'
 )
 makedepends=(python-poetry)
 
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/68/2d/d8e0da1990c9978885ecf8ed96f0f8b0a84d63af2791d973bb3b515b3cc3/njulogin-3.4.2.tar.gz")
-sha256sums=('0e1e7acafb6cd4750aa66a62b237b470cfde56515de89e0e32ecbdcad419da74')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/6a/d4/d81e0299b5b645492d1e33746794436f04a5f52cdeb7708c8a4cd73e568f/njulogin-3.4.3.tar.gz")
+sha256sums=('sha256:e0f4cbcfe08be62ad0a88832ac5506fb35418f73f131d6c1c7c592615ca696c1')
 
 build() {
   cd "njulogin-$pkgver"
