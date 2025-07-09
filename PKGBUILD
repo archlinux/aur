@@ -6,7 +6,7 @@ _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.9+109.r1734.20250707.91fbb3d
-pkgrel=3
+pkgrel=4
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
@@ -94,6 +94,12 @@ build() {
 package() {
   cd "${srcdir}"
   meson install -C 'build' --destdir "${pkgdir}"
+
+  cd "${pkgdir}/usr/share/fdpp"
+  _fdppelf="$(ls -1 fdppkrnl.*.elf | sort -V | tail -n1)"
+  _fdppmap="$(ls -1 fdppkrnl.*.map | sort -V | tail -n1)"
+  ln -sv "${_fdppelf}" fdppkrnl.elf
+  ln -sf "${_fdppmap}" fdppkrnl.map
 
   cd "${srcdir}/${_pkgname}"
   for _docfile in 'git.log' 'NEWS.md' 'README.md'; do
