@@ -2,12 +2,12 @@
 
 pkgbase=lapack-git
 pkgname=('lapack-git' 'blas-git' 'lapacke-git')
-pkgver=3.11.0.r213.gae2f14fe1
+pkgver=3.12.1.r53.gefbd2fdf4
 pkgrel=1
 pkgdesc="Linear Algebra PACKage"
 arch=('i686' 'x86_64')
 url="https://www.netlib.org/lapack/"
-license=('custom')
+license=('LicenseRef-lapack')
 makedepends=('git' 'gcc-fortran' 'cmake' 'python' 'doxygen')
 source=("git+https://github.com/Reference-LAPACK/lapack.git")
 sha256sums=('SKIP')
@@ -35,7 +35,7 @@ build() {
     -DCBLAS=ON \
     -DLAPACKE_WITH_TMG=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package_lapack-git() {
@@ -44,7 +44,7 @@ package_lapack-git() {
   conflicts=('lapack' 'lapack-manpages')
 
   cd "lapack"
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 
   rm -r "$pkgdir/usr/include"
   rm -r "$pkgdir/usr/lib"/{libblas.*,libcblas.*,liblapacke.*}
@@ -66,8 +66,8 @@ package_blas-git() {
 
   cd "lapack"
 
-  make -C "_build/BLAS" DESTDIR="$pkgdir" install
-  make -C "_build/CBLAS" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build/BLAS"
+  DESTDIR="$pkgdir" cmake --install "_build/CBLAS"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/blas"
 }
 
@@ -80,6 +80,6 @@ package_lapacke-git() {
 
   cd "lapack"
 
-  make -C "_build/LAPACKE"  DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build/LAPACKE"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/lapacke"
 }
