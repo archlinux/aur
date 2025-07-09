@@ -2,14 +2,14 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r217.g82357eab
-pkgrel=2
+pkgver=17.r224.gb2ecd8f3
+pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL-2.0-or-later')
 depends=('wxwidgets-gtk3' 'openal' 'sdl2-compat' 'alsa-lib' 'libpcap')
-makedepends=('git' 'ninja' 'meson' 'cmake')
+makedepends=('git' 'ninja' 'meson' 'cmake' 'clang')
 conflicts=('pcem')
 provides=("pcem=${pkgver}")
 source=("git+https://github.com/sarah-walker-pcem/pcem.git"
@@ -29,6 +29,8 @@ pkgver() {
 build() {
   cd "${srcdir}/pcem"
   export WX_CONFIG=wx-config
+  export CC=clang
+  export CXX=clang++
   mkdir -p build
   cd build
   cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_NETWORKING=ON -DUSE_PCAP_NETWORKING=ON -DUSE_ALSA=ON -DPLUGIN_ENGINE=ON -DFORCE_X11=ON ..
