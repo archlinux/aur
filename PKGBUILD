@@ -2,7 +2,7 @@
 # Previous maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
 pkgname=libubox
-pkgver=r529.g6339204
+pkgver=r535.gb7acc8e
 pkgrel=1
 pkgdesc="C utility functions for OpenWrt"
 arch=('i686' 'x86_64')
@@ -32,13 +32,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "libubox"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 
   if [ -d "$pkgdir/usr/local/lib" ]; then
     mv "$pkgdir"/usr/local/lib/* "$pkgdir/usr/lib"
