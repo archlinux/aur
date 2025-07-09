@@ -1,0 +1,14 @@
+pkgbase = haskell-bmp
+	pkgdesc = Read and write uncompressed BMP image files. 100% robust Haskell implementation
+	pkgver = 1.2.6.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/bmp/1.2.6.4/bmp-1.2.6.4.tar.gz
+	sha512sums = 1e6d02770fb4e0bb30e47683a583ecd794126b26fec778ea89960df7526eebb911d16962da1dca7b14d81f627d54fbb7f90e4a0ec33e43561a86260158ce3a30
+
+pkgname = haskell-bmp
