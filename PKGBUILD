@@ -4,15 +4,21 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.22.0
+pkgver=3.23.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('36eba9369aaf89a5ffd69836964de3f82a8f1a88a3770dbc297d6de6dedce40a')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-0.4.0-py3-none-any.whl"
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-0.4.0-py3-none-any.whl") # Prevent cercular dependencies
+noextract=('pydantic_graph-0.4.0-py3-none-any.whl' 'pydantic_ai_slim-0.4.0-py3-none-any.whl')
+sha256sums=('2485d6f45d619cd81783785101162e20895e6d561a0aca4eb71df902d2fda5fc'
+            '85837d1893add25e85da676d7d091a1e5c203ba68def0280a2ed29931f0a8684'
+            '9bd3b4121cb6abffb32de46044e1628050762507db8506cf9af94f790e1ab31d')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
+_pydantic_ai_depends=('python-griffe' 'python-opentelemetry-api' 'python-typing-inspection')
 checkdepends=('python-httpx'
               'python-aiohttp'
               'python-redis'
@@ -77,9 +83,10 @@ checkdepends=('python-httpx'
               'python-pytest-xdist'
               'python-openai-agents'
               'python-websockets'
+              ${_pydantic_ai_depends[@]}
               'python-langchain'
               'python-langchain-openai'
-              #'python-langgraph'
+              'python-langgraph'
               'python-opentelemetry-instrumentation-google-genai'
               'python-google-genai')
 
@@ -94,7 +101,6 @@ check() {
     -vv
     -n auto
     --dist=loadgroup
-    -W default::langchain_core._api.deprecation.LangChainDeprecationWarning
     # Test for Logfire developers
     --deselect tests/aaa_query_client/test_query_client.py
     # Remove tests that need Docker
@@ -106,10 +112,10 @@ check() {
   )
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
-  test-env/bin/pip install -U pydantic-ai-slim # Fix cercular dependency
-  test-env/bin/pip install -U langgraph # Waint until the package be available in AUR
   test-env/bin/python -m installer ${_name1}/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m installer "${srcdir}"/pydantic_graph-0.4.0-py3-none-any.whl
+  test-env/bin/python -m installer "${srcdir}"/pydantic_ai_slim-0.4.0-py3-none-any.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
