@@ -2,7 +2,7 @@
 
 pkgname=unittestpp-git
 pkgver=2.0.0.r30.g10e50ad
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight unit testing framework for C++"
 arch=('i686' 'x86_64')
 url="https://github.com/unittest-cpp/unittest-cpp/"
@@ -34,12 +34,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DUTPP_AMPLIFY_WARNINGS=OFF \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "unittest-cpp"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/unittestpp"
 }

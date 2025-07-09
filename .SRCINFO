@@ -1,7 +1,7 @@
 pkgbase = unittestpp-git
 	pkgdesc = A lightweight unit testing framework for C++
 	pkgver = 2.0.0.r30.g10e50ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unittest-cpp/unittest-cpp/
 	arch = i686
 	arch = x86_64
