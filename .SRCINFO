@@ -1,17 +1,17 @@
 pkgbase = buildcache-git
 	pkgdesc = An advanced compiler accelerator
-	pkgver = 0.27.7.r0.gf324a12
+	pkgver = 0.28.4.r2.g735eebb
 	pkgrel = 1
 	url = https://github.com/mbitsnbites/buildcache
 	arch = i686
 	arch = x86_64
-	license = zlib
+	license = Zlib
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
 	depends = openssl
 	optdepends = lua
-	provides = buildcache=0.27.7.r0.gf324a12
+	provides = buildcache=0.28.4.r2.g735eebb
 	conflicts = buildcache
 	source = git+https://github.com/mbitsnbites/buildcache.git
 	sha256sums = SKIP

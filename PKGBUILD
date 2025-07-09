@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=buildcache-git
-pkgver=0.27.7.r0.gf324a12
+pkgver=0.28.4.r2.g735eebb
 pkgrel=1
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
 url="https://github.com/mbitsnbites/buildcache"
-license=('zlib')
+license=('Zlib')
 depends=('gcc-libs' 'openssl')
 makedepends=('git' 'cmake')
 optdepends=('lua')
@@ -30,18 +30,18 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     "src"
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "buildcache"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "buildcache"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/buildcache"
 }
