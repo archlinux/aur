@@ -2,7 +2,7 @@
 
 pkgname=cryfa
 pkgver=20.04
-pkgrel=2
+pkgrel=3
 pkgdesc="A secure encryption tool for genomic data"
 arch=('i686' 'x86_64')
 url="https://github.com/cobilab/cryfa"
@@ -22,7 +22,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {

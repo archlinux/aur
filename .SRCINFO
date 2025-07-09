@@ -1,7 +1,7 @@
 pkgbase = cryfa
 	pkgdesc = A secure encryption tool for genomic data
 	pkgver = 20.04
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cobilab/cryfa
 	arch = i686
 	arch = x86_64
