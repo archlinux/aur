@@ -2,7 +2,7 @@
 
 pkgname=hdrhistogram_c
 pkgver=0.11.8
-pkgrel=3
+pkgrel=4
 pkgdesc="C port of the HdrHistogram"
 arch=('i686' 'x86_64')
 url="https://hdrhistogram.github.io/HdrHistogram/"
@@ -25,18 +25,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "HdrHistogram_c-$pkgver"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "HdrHistogram_c-$pkgver"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 {COPYING,LICENSE}.txt -t "$pkgdir/usr/share/licenses/hdrhistogram_c"
 }
