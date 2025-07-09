@@ -1,8 +1,8 @@
 pkgbase = plib
 	pkgdesc = Set of libraries to write games and other realtime interactive applications
 	pkgver = 1.8.5
-	pkgrel = 9
-	url = http://plib.sourceforge.net/
+	pkgrel = 10
+	url = https://plib.sourceforge.net/
 	arch = x86_64
 	arch = aarch64
 	license = custom:LGPL
@@ -11,11 +11,10 @@ pkgbase = plib
 	makedepends = libxmu
 	options = staticlibs
 	source = http://plib.sourceforge.net/dist/plib-1.8.5.tar.gz
-	source = config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
-	source = config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
+	source = config.guess
+	source = config.sub
 	md5sums = 47a6fbf63668c1eed631024038b2ea90
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 11714d3cd0a013dc3a7fd350d3a67066
+	md5sums = cf258f914ddb13bb4cfa8a5d60f951b5
 
 pkgname = plib
-
