@@ -1,0 +1,19 @@
+pkgbase = ruby-ruby_wasm
+	pkgdesc = Ruby to WebAssembly toolkit.
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/ruby_wasm
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = rubygems
+	depends = gcc-libs
+	depends = glibc
+	depends = ruby
+	noextract = ruby_wasm-2.7.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby_wasm-2.7.1.gem
+	sha256sums = b3c9c6cfab73c3c47924cde88c552487fb2ff15d69f9dff3a812372ea4af1c33
+
+pkgname = ruby-ruby_wasm
