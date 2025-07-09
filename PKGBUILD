@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=winchecksec-git
-pkgver=3.1.0.r5.gf8f6727
-pkgrel=3
+pkgver=3.1.0.r8.gd3efe9f
+pkgrel=1
 pkgdesc="Checksec, but for Windows: static detection of security mitigations in executables"
 arch=('i686' 'x86_64')
 url="https://trailofbits.github.io/winchecksec/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs' 'openssl' 'pe-parse')
 makedepends=('git' 'cmake' 'uthenticode')
 provides=("winchecksec=$pkgver")
@@ -32,7 +32,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
