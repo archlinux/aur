@@ -2,11 +2,11 @@
 
 pkgname=blosc2-git
 pkgver=2.19.0.r4.gffd84083
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation c-blosc"
 arch=('i686' 'x86_64')
 url="https://www.blosc.org/"
-license=(' BSD-3-Clause')
+license=('BSD-3-Clause')
 depends=('glibc' 'lz4' 'zlib' 'zstd')
 makedepends=('git' 'cmake')
 provides=("blosc2=$pkgver")
