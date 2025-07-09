@@ -7,7 +7,7 @@ _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.9+109.r1734.20250707.91fbb3d
-pkgrel=1
+pkgrel=2
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
@@ -15,7 +15,7 @@ arch=(
 )
 url="https://github.com/${_gitname}/${_pkgname}"
 license=(
-  'GPL3'
+  'GPL-3.0-or-later'
 )
 depends=(
   'gcc-libs'
