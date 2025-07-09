@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=ty-bin
-pkgver=0.0.1-alpha.13 # datasource=github-releases depName=astral-sh/ty
+pkgver=0.0.1-alpha.14 # datasource=github-tags depName=astral-sh/ty
 pkgver="${pkgver//-/_}"
 pkgrel=1
 pkgdesc='An extremely fast Python type checker and language server, written in Rust.'
@@ -12,27 +12,27 @@ license=('MIT')
 provides=('ty')
 conflicts=('ty')
 
-_baseurl="https://github.com/astral-sh/ty/releases/download/${pkgver//_/-}"
+_baseurl="${url}/releases/download/${pkgver//_/-}"
 
 source_aarch64=("ty-aarch64-${pkgver}.tgz::${_baseurl}/ty-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7=("ty-armv7-${pkgver}.tgz::${_baseurl}/ty-armv7-unknown-linux-gnueabihf.tar.gz")
 source_i686=("ty-i686-${pkgver}.tgz::${_baseurl}/ty-i686-unknown-linux-gnu.tar.gz")
 source_x86_64=("ty-x86_64-${pkgver}.tgz::${_baseurl}/ty-x86_64-unknown-linux-gnu.tar.gz")
 
-source=("https://raw.githubusercontent.com/astral-sh/ty/refs/tags/${pkgver//_/-}/LICENSE")
+source=("LICENSE-${pkgver}::${url}/raw/refs/tags/${pkgver//_/-}/LICENSE")
 
 sha256sums=('860e3d7a86b84e6a7012c7a635fc64df475cebc6cce34dfeb73a5982ec58176c')
-sha256sums_aarch64=('41f3c71e036b7d74ee134a646e7825d592476b8019eaa02b8a9bb37afe5e260d')
-sha256sums_armv7=('c31aa2c5551720434efcdd7218faa6856bac8a77f4672773190e294751e82c62')
-sha256sums_i686=('5995ade18695ac1c5ef1af7548021c441b305da78185a5dcdaa6457536995c11')
-sha256sums_x86_64=('b5d81e1c5a4686c4da2a70a21af5bd3d3a38ea210827e8409c389ef043548bb1')
+sha256sums_aarch64=('9a32578eda004b04299b0c6291f1ce1083c70adbdb90ab3dee77404e67d828d5')
+sha256sums_armv7=('032636d4f778f3f3fc62db6e4fe0139895a65abc4b0054fd962c2e6a096f3b6b')
+sha256sums_i686=('385e527444ed1bbbab345b31101d9ac1957427daa94d2131a5e90a98ffb4d903')
+sha256sums_x86_64=('4896de84dc9bbce00fbf7f3975023571d949ffe008edec70898886d4c976ec32')
 
 package() {
 
 	local target="${pkgdir}/usr/bin/ty"
 
 	install -Dm755 "ty-${CARCH}-unknown-linux-gnu/ty" "$target"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	$target generate-shell-completion bash | \
 	install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgbase.bash"
