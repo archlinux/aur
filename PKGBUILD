@@ -1,9 +1,12 @@
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-_note='Make sure every operas have same Chromium ver at opera:about'
-pkgver=135.0.7049.115
-_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${pkgver}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+_note='Make sure every operas have same major Chromium,ffmpeg ver'
+# Bump minor ver
+_chromium=135.0.7049.128
+_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+_ffmpeg=$(curl -s https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_commit}/RELEASE?format=TEXT|base64 -d)
+pkgver=$_chromium.ffmpeg$_ffmpeg
 pkgrel=1
 pkgdesc='Add codecs to opera-developer'
 arch=('x86_64')
@@ -12,9 +15,13 @@ license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm git)
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
+off-opera-developer-ffmpeg.hook on-opera-developer-ffmpeg.install
 #sigs-$pkgver::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_commit}/chromium/ffmpeg.sigs?format=TEXT
 )
-sha256sums=('ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d')
+install=on-opera-developer-ffmpeg.install
+sha256sums=('ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d'
+            'b9c34cfc4fa01853f496670a4a6a6f6b1e60804cb3a92501cfc3043c03301abb'
+            '4918ba2449b39274878268c5956b604992c504b89660469c93864e44de8c62aa')
 
 prepare() {
   echo $_note
@@ -50,6 +57,7 @@ build() {
 }
 
 package(){
-  # Merge this package to opera-ffmpeg-codecs by symlink
   install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/opera-developer/lib_extra/libffmpeg.so"
+  # Block LD_PRELOAD even this works without it. It breaks many things.
+  install -Dm644 off-opera-developer-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
