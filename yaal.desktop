@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YAAL
+Comment=Yet Another App Launcher
+Exec=yaal
+Icon=yaal
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=launcher;application;search; 

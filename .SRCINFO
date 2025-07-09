@@ -1,0 +1,13 @@
+pkgbase = yaal
+	pkgdesc = Yet Another Awesome Launcher
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/Remi-Avec-Un-I/yaal
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = yaal-1.0.6.tar.gz::https://github.com/Remi-Avec-Un-I/yaal/archive/v1.0.6.tar.gz
+	sha256sums = 06948073fa07aaeb3fcd71835e7c182b00aba0e89166a1aaa1bcbaf05e25f77a
+
+pkgname = yaal
