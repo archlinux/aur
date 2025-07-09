@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnfs-git
-pkgver=5.0.2.r84.g465a12d
+pkgver=6.0.2.r95.gec2ae23
 pkgrel=1
 pkgdesc="NFS client library"
 arch=('i686' 'x86_64')
 url="https://github.com/sahlberg/libnfs"
-license=('BSD-2-Clause OR GPL-3.0-or-later' 'custom')
+license=('BSD-2-Clause OR GPL-3.0-or-later' 'LicenseRef-libnfs')
 depends=('glibc')
 makedepends=('git' 'cmake' 'docbook-xsl')
 provides=("libnfs=$pkgver")
@@ -34,18 +34,18 @@ build() {
     -DENABLE_DOCUMENTATION=ON \
     -DENABLE_UTILS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libnfs"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libnfs"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 {COPYING,LICENCE-BSD.txt} -t "$pkgdir/usr/share/licenses/libnfs"
 }

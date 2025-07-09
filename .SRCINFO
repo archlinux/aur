@@ -1,17 +1,17 @@
 pkgbase = libnfs-git
 	pkgdesc = NFS client library
-	pkgver = 5.0.2.r84.g465a12d
+	pkgver = 6.0.2.r95.gec2ae23
 	pkgrel = 1
 	url = https://github.com/sahlberg/libnfs
 	arch = i686
 	arch = x86_64
 	license = BSD-2-Clause OR GPL-3.0-or-later
-	license = custom
+	license = LicenseRef-libnfs
 	makedepends = git
 	makedepends = cmake
 	makedepends = docbook-xsl
 	depends = glibc
-	provides = libnfs=5.0.2.r84.g465a12d
+	provides = libnfs=6.0.2.r95.gec2ae23
 	conflicts = libnfs
 	source = git+https://github.com/sahlberg/libnfs.git
 	sha256sums = SKIP
