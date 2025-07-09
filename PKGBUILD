@@ -3,12 +3,12 @@
 # Contributor: 2ion <dev@2ion.de>
 
 pkgname=uchardet-git
-pkgver=0.0.8.r98.gab1d2f1
+pkgver=0.0.8.r103.g9699dfc
 pkgrel=1
 pkgdesc="Encoding detector library ported from Mozilla"
 arch=('i686' 'x86_64')
 url="https://www.freedesktop.org/wiki/Software/uchardet/"
-license=('MPL')
+license=('MPL-1.1')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("uchardet=$pkgver" 'libuchardet.so')
@@ -36,17 +36,17 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "uchardet"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "uchardet"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
