@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=upx-git
-pkgver=4.2.3.r17.g90a7faa1
+pkgver=5.0.1.r20.ga7940fd1
 pkgrel=1
 pkgdesc="A free, portable, extendable, high-performance executable packer for several executable formats"
 arch=('i686' 'x86_64')
@@ -40,17 +40,17 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DUSE_STRICT_DEFAULTS=OFF \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "upx"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "upx"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
