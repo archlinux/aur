@@ -61,8 +61,6 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   git log > git.log
-
-  # sed -e '/^PREFIX / s:/usr/local:/usr:g' -i 'fdpp/defs.mak'
 }
 
 pkgver() {
@@ -85,19 +83,16 @@ pkgver() {
 
 build() {
   cd "${srcdir}"
-  # bash -e -u configure
   if grep -qe '-- ' "${_pkgname}/configure.meson"; then
     "${_pkgname}"/configure.meson -b 'build' -- --prefix '/usr'
   else
     "${_pkgname}"/configure.meson --prefix '/usr' 'build'
   fi
-  # make -j "$(nproc)"
   meson compile --verbose -C 'build'
 }
 
 package() {
   cd "${srcdir}"
-  # make -j1 DESTDIR="${pkgdir}" install
   meson install -C 'build' --destdir "${pkgdir}"
 
   cd "${srcdir}/${_pkgname}"
