@@ -1,19 +1,19 @@
 pkgbase = worldpainter
 	pkgdesc = An interactive map generator for Minecraft
-	pkgver = 2.24.4
+	pkgver = 2.25.0
 	pkgrel = 1
 	url = https://www.worldpainter.net/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = java-environment
+	depends = java-environment>=17
 	depends = lib32-libxi
 	depends = sh
 	optdepends = minecraft: for playing the exported maps
-	source = https://www.worldpainter.net/files/worldpainter_2.24.4.tar.gz
+	source = https://www.worldpainter.net/files/worldpainter_2.25.0.tar.gz
 	source = worldpainter.png
 	source = worldpainter.desktop
 	source = launch-script.sh
-	sha256sums = 8f66ff57c33168c46a19a8cccb9a183e51922d558de3f85d4638b6ce1f0bd5c8
+	sha256sums = 367ca2da077d1f66414bc0c5c9919648287f4856f963de99d2666d2f44f867ca
 	sha256sums = a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e
 	sha256sums = 815abfee2eb545a3bac0d2e4e5c0cadc548cc1466c4e0aaf3bfd1f07a15e7741
 	sha256sums = 631cffdb102945a39b28ec33567acd350c3ae5b000face915d24159741942fd0

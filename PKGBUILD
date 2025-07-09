@@ -2,7 +2,7 @@
 # Contributor: Hunter Jones <hjones2199 at gmail dot com>
 # Maintainer: Thomas Bork <sudobash418 at gmail dot com>
 pkgname=worldpainter
-pkgver=2.24.4
+pkgver=2.25.0
 pkgrel=1
 pkgdesc='An interactive map generator for Minecraft'
 
@@ -10,14 +10,14 @@ url='https://www.worldpainter.net/'
 arch=('x86_64')
 license=('GPL-3.0-only')
 
-depends=('java-environment' 'lib32-libxi' 'sh')
+depends=('java-environment>=17' 'lib32-libxi' 'sh')
 optdepends=('minecraft: for playing the exported maps')
 
 source=("https://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
 		'worldpainter.png'
 		'worldpainter.desktop'
 		'launch-script.sh')
-sha256sums=('8f66ff57c33168c46a19a8cccb9a183e51922d558de3f85d4638b6ce1f0bd5c8'
+sha256sums=('367ca2da077d1f66414bc0c5c9919648287f4856f963de99d2666d2f44f867ca'
             'a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e'
             '815abfee2eb545a3bac0d2e4e5c0cadc548cc1466c4e0aaf3bfd1f07a15e7741'
             '631cffdb102945a39b28ec33567acd350c3ae5b000face915d24159741942fd0')
