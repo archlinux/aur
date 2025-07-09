@@ -1,6 +1,6 @@
 pkgbase = own3d-desktop-git
 	pkgdesc = Public Development Preview of the OWN3D Desktop App.(Use system-wide electron)
-	pkgver = 2.4.0.r0.g61113ea
+	pkgver = 2.6.0.r0.g18b92c9
 	pkgrel = 1
 	url = https://www.own3d.pro/
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = own3d-desktop-git
 	makedepends = curl
 	makedepends = yarn
 	depends = electron29
-	provides = own3d-desktop=2.4.0
+	provides = own3d-desktop=2.6.0
 	conflicts = own3d-desktop
 	source = own3d-desktop.git::git+https://github.com/own3d/desktop.git
 	source = own3d-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = own3d-desktop-git
