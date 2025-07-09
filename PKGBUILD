@@ -16,7 +16,7 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             '14db1605a740325737eb9ae029deb142d717a02c1926703b0d45f788c937d861'
-            '0252a9cbf39bbbae2a27b1e929b62de0e69fa653ee691e9c310400fb02ea3598')
+            '2daae2c2a2865d6986a906160d0eb7a84568c5460c37870e77e81efff2af1b80')
 depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch sed) # base-devel
