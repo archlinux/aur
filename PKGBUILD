@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=prplmesh-git
-pkgver=4.0.1.r156.g6cd1ed230
-pkgrel=2
+pkgver=5.0.1.r99.gaebf3a83e
+pkgrel=1
 pkgdesc="WFA Multi-AP implementation"
 arch=('i686' 'x86_64')
 url="https://prplfoundation.org/prplmesh/"
-license=('BSD' 'custom')
+license=('BSD-2-Clause' 'LicenseRef-prplmesh')
 depends=('glibc' 'json-c' 'ncurses' 'openssl' 'readline' 'zeromq')
 makedepends=('git' 'cmake' 'libnl' 'python-yaml')
 provides=("prplmesh=$pkgver")
@@ -33,13 +33,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "prplMesh"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 
   install -d "$pkgdir/usr/share/prplmesh"
   mv "$pkgdir/usr/share/prplmesh_platform_db" "$pkgdir/usr/share/prplmesh"
