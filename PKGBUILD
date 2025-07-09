@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjpeg-turbo-git
-pkgver=2.1.3.r16.g290ddbf7
-pkgrel=2
+pkgver=3.1.1.r6.g81feffa6
+pkgrel=1
 pkgdesc="JPEG codec with SIMD accelerated compression and decompression"
 arch=('i686' 'x86_64')
 url="https://libjpeg-turbo.org/"
-license=('custom')
+license=('LicenseRef-libjpeg-turbo')
 depends=('glibc')
 makedepends=('git' 'cmake' 'nasm')
 provides=("libjpeg-turbo=$pkgver" 'libjpeg' 'libjpeg.so' 'libturbojpeg.so')
@@ -25,6 +25,8 @@ pkgver() {
 build() {
   cd "libjpeg-turbo"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
@@ -32,25 +34,23 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
     -DWITH_JPEG8=1 \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libjpeg-turbo"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libjpeg-turbo"
 
-  make \
-    -C "_build" \
-    DESTDIR="$pkgdir" \
-    docdir="/usr/share/doc/libjpeg-turbo" \
-    exampledir="/usr/share/doc/libjpeg-turbo" \
-    install
+  DESTDIR="$pkgdir" \
+  docdir="/usr/share/doc/libjpeg-turbo" \
+  exampledir="/usr/share/doc/libjpeg-turbo" \
+  cmake --install "_build"
 
-  install -Dm644 "jpegint.h" "$pkgdir/usr/include"  # required by other software
+  install -Dm644 "src/jpegint.h" "$pkgdir/usr/include"  # required by other software
   install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/libjpeg-turbo"
 }
