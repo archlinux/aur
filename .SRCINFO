@@ -1,17 +1,17 @@
 pkgbase = uci-git
 	pkgdesc = OpenWrt unified configuration interface
-	pkgver = r566.g04d0c46
+	pkgver = r573.gf3fc0b7
 	pkgrel = 1
 	url = https://openwrt.org/docs/techref/uci
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
 	depends = libubox
 	depends = lua
-	provides = uci=r566.g04d0c46
+	provides = uci=r573.gf3fc0b7
 	conflicts = uci
 	source = git+https://git.openwrt.org/project/uci.git
 	sha256sums = SKIP

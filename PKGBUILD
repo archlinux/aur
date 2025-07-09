@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uci-git
-pkgver=r566.g04d0c46
+pkgver=r573.gf3fc0b7
 pkgrel=1
 pkgdesc="OpenWrt unified configuration interface"
 arch=('i686' 'x86_64')
 url="https://openwrt.org/docs/techref/uci"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('glibc' 'libubox' 'lua')
 makedepends=('git' 'cmake')
 provides=("uci=$pkgver")
@@ -32,11 +32,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "uci"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
