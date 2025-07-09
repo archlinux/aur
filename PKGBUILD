@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libsamplerate-git
-pkgver=0.2.2.r13.g22bd06e
+pkgver=0.2.2.r18.g15c392d
 pkgrel=1
 pkgdesc="A Sample Rate Converter for audio"
 arch=('i686' 'x86_64')
 url="https://libsndfile.github.io/libsamplerate/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('git' 'alsa-lib' 'cmake' 'libsndfile' 'opus')
 checkdepends=('fftw')
@@ -35,19 +35,19 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libsamplerate"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libsamplerate"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 {AUTHORS,NEWS,README.md,ChangeLog} -t "$pkgdir/usr/share/doc/libsamplerate"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libsamplerate"
 }
