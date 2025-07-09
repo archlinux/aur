@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=utf8cpp-git
-pkgver=4.0.5.r0.g6be08bb
+pkgver=4.0.6.r7.gda71cf9
 pkgrel=1
 pkgdesc="UTF-8 with C++ in a Portable Way"
 arch=('any')
@@ -38,7 +38,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
@@ -47,14 +47,14 @@ check() {
   #cmake \
   #  -B "_build" \
   #  ./
-  #make -C "_build"
-  #make -C "_build" test
+  #cmake --build "_build"
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "utfcpp"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/utf8cpp"
 }
 
