@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hisat2-git
-pkgver=2.2.1.r55.g5086938
+pkgver=2.2.1.r59.g7e01700
 pkgrel=1
 pkgdesc="A fast and sensitive alignment program for mapping sequencing reads"
 arch=('x86_64')
 url="https://daehwankimlab.github.io/hisat2/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('git' 'cmake')
 optdepends=('perl' 'python')
@@ -31,7 +31,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
