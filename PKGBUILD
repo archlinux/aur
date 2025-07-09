@@ -3,7 +3,7 @@
 pkgname=libfprint-2-tod1-goodix-v2
 pkgver=0.0.11+2404
 _debver="${pkgver}-0ubuntu1"
-pkgrel=4
+pkgrel=5
 pkgdesc="Proprietary driver for Goodix fingerprint readers from Ubuntu launchpad"
 arch=('x86_64')
 url="https://launchpad.net/~libfprint-tod1-group"
@@ -18,7 +18,7 @@ sha256sums=('8781ba581d7baa17fbeef2fb602e86fd0801e9f8846e20d27bd78a3067932bc6')
 prepare() {
     cd "$srcdir"
     # Extract the deb file
-    ar x "${pkgname}_${_debver}_amd64.deb"
+    ar x "libfprint-2-tod1-goodix_${_debver}_amd64.deb"
     # Extract data archive
     tar -xf data.tar.*
 }
@@ -40,6 +40,6 @@ package() {
     
     # Install license if present
     if [ -f "usr/share/doc/${pkgname}/copyright" ]; then
-        install -Dm644 "usr/share/doc/${pkgname}/copyright" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+        install -Dm644 "usr/share/doc/libfprint-2-tod1-goodix/copyright" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
