@@ -1,0 +1,17 @@
+pkgbase = ruby-gdbm
+	pkgdesc = Ruby extension for GNU dbm.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/gdbm
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = rubygems
+	depends = gdbm
+	depends = glibc
+	depends = ruby>=2.3.0
+	noextract = gdbm-2.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gdbm-2.1.0.gem
+	sha256sums = 0b618465946a6e7a630b8dd3d10e30570cbc8fb8710bcb28f2db89058a7bbe77
+
+pkgname = ruby-gdbm
