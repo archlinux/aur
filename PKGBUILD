@@ -1,7 +1,11 @@
 # Maintainer: tytan652 <tytan652[at]tytanium[dot]xyz>
 
 pkgbase=vlc-luajit
-pkgname=(vlc-luajit libvlc-luajit)
+pkgname=(
+  vlc-luajit
+  libvlc-luajit
+  vlc-plugin-luajit
+)
 _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
@@ -140,6 +144,8 @@ makedepends=(
   zvbi
   luajit
   lua51
+  vlc
+  libvlc libvlccore.so
 )
 _name=vlc
 options=('!emptydirs')
@@ -197,7 +203,6 @@ build() {
     --disable-rpath
     --disable-schroedinger
     --disable-update-check
-    --disable-decklink
     --enable-a52
     --enable-aa
     --enable-alsa
@@ -286,6 +291,8 @@ build() {
     --prefix=/usr
     --sysconfdir=/etc
     --with-kde-solid=/usr/share/solid/actions/
+    --disable-decklink
+    --enable-lua
   )
 
   if [[ $CARCH == 'aarch64' ]]; then
@@ -324,125 +331,11 @@ _pick() {
 
 package_vlc-luajit() {
   depends=(
-    a52dec
-    "abseil-cpp>=$_abseilcppver"
-    aribb24
-    bash
-    cairo
-    dbus
-    faad2
-    "ffmpeg>=$_ffmpegver"
-    fontconfig
-    freetype2
-    fribidi
-    gcc-libs
-    gdk-pixbuf2
-    glib2
-    glibc
-    gnutls
-    harfbuzz
-    hicolor-icon-theme
-    libarchive
-    libdca
-    libdvbpsi
-    libglvnd
-    libidn
-    libmad
-    libmatroska
-    libmpcdec
-    libmpeg2
-    libproxy
-    libsecret
-    "libupnp>=$_libupnpver"
-    # libva : Non-functional in VLC 3 if FFmpeg 5 or later, only VLC 4 supports it
+    vlc
     libvlc-luajit
-    libx11
-    libxcb
-    libxinerama
-    libxml2
-    libxpm
-    lua
-    qt5-base
-    qt5-svg
-    qt5-x11extras
-    "taglib>=$_taglibver"
-    wayland
-    xcb-util-keysyms
-    zlib
-    luajit
+    vlc-plugin-luajit
   )
-  optdepends=(
-    'aalib: ASCII art video output'
-    'alsa-lib: ALSA audio output'
-    'aom: AOM AV1 codec'
-    'aribb25: aribcam support'
-    'avahi: service discovery using bonjour protocol'
-    'dav1d: dav1d AV1 decoder'
-    'flac: Free Lossless Audio Codec plugin'
-    'fluidsynth: FluidSynth based MIDI playback plugin'
-    'gnu-free-fonts: subtitle font'
-    'gst-plugins-base-libs: for libgst plugins'
-    'gstreamer: for libgst plugins'
-    'gtk3: notification plugin'
-    'jack: jack audio server'
-    'kwallet: kwallet keystore'
-    'libass: Subtitle support'
-    'libavc1394: devices using the 1394ta AV/C'
-    'libbluray: Blu-Ray video input'
-    'libcaca: colored ASCII art video output'
-    'libcdio: audio CD playback'
-    'libdc1394: IEEE 1394 access plugin'
-    'libdvdcss: decoding encrypted DVDs'
-    'libdvdnav: DVD with navigation input module'
-    'libdvdread: DVD input module'
-    'libgme: Game Music Emu plugin'
-    'libgoom2: Goom visualization'
-    'libjpeg-turbo: JPEG support'
-    'libkate: Kate codec'
-    'libmodplug: MOD output plugin'
-    'libmicrodns: mDNS services discovery (chromecast etc)'
-    'libmtp: MTP devices discovery'
-    'libnfs: NFS access'
-    'libnotify: notification plugin'
-    'libogg: Ogg and OggSpots codec'
-    'libpng: PNG support'
-    'libpulse: PulseAudio audio output'
-    'libraw1394: IEEE 1394 access plugin'
-    'librsvg: SVG plugin'
-    'libsamplerate: audio Resampler'
-    'libshout: shoutcast/icecast output plugin'
-    'libsoxr: SoX audio Resampler'
-    'libssh2: sftp access'
-    'libtheora: theora codec'
-    'libtiger: Tiger rendering for Kate streams'
-    #'libva-intel-driver: video backend intel'
-    'libvorbis: Vorbis decoder/encoder'
-    'libvpx: VP8 and VP9 codec'
-    'lirc: lirc control'
-    'live-media: streaming over RTSP'
-    #'lua-socket: http interface'
-    'mpg123: mpg123 codec'
-    'ncurses: ncurses interface'
-    'opus: opus codec'
-    'pcsclite: aribcam support'
-    'projectm: ProjectM visualisation'
-    'protobuf: chromecast streaming'
-    'sdl12-compat: SDL image support'
-    'sdl_image: SDL image support'
-    'smbclient: SMB access plugin'
-    'speex: Speex codec'
-    'speexdsp: Speex codec'
-    'srt: SRT input/output plugin'
-    'systemd-libs: udev services discovery'
-    'ttf-dejavu: subtitle font'
-    'twolame: TwoLAME mpeg2 encoder plugin'
-    'vcdimager: navigate VCD with libvcdinfo'
-    'x264: H264 encoding'
-    'x265: HEVC/H.265 encoder'
-    'zvbi: VBI/Teletext/webcam/v4l2 capture/decoding'
-  )
-  conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
-  provides=("${_name}=${pkgver}")
+  arch=(any)
 
   cd $_name-$_vlcver
 
@@ -450,26 +343,37 @@ package_vlc-luajit() {
 
   (
     cd "$pkgdir"
-    _pick lib$pkgname usr/include
-    _pick lib$pkgname usr/lib/libvlc*
-    _pick lib$pkgname usr/lib/pkgconfig/libvlc.pc
+
+    _pick $_name-plugin-luajit usr/lib/vlc/lua/
+    _pick $_name-plugin-luajit usr/lib/vlc/plugins/lua/
+    _pick $_name-plugin-luajit usr/share/vlc/lua/
+    _pick $_name-plugin-luajit usr/share/doc/vlc/lua/
   )
 
-  for res in 16 32 48 128 256; do
-    install -Dm 644 share/icons/${res}x$res/vlc.png -t "$pkgdir/usr/share/icons/hicolor/${res}x$res/apps/"
-  done
-  install -Dm 644 ../update-vlc-plugin-cache.hook -t "$pkgdir/usr/share/libalpm/hooks/"
+  rm -rf $pkgdir/*
 }
 
 package_libvlc-luajit() {
-  pkgdesc+=" - library"
+  pkgdesc+=" - library meta-package"
   depends=(
-    dbus
+    libvlc
+  )
+  arch=(any)
+}
+
+package_vlc-plugin-luajit() {
+  pkgdesc+=" - LuaJIT scripting plugins"
+  depends=(
     gcc-libs
     glibc
+    libvlc libvlccore.so
+    luajit
   )
-  conflicts=(libvlc)
-  provides=(libvlc)
+  optdepends=(
+    'lua-socket: for http interface'
+  )
+  conflicts=(vlc-plugin-lua)
+  provides=("vlc-plugin-lua=$pkgver")
 
   mv -v $pkgname/* "$pkgdir"
 }
