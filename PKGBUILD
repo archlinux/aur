@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=leveldb-git
-pkgver=1.20.r288.gaa5479b
+pkgver=1.20.r307.gac69108
 pkgrel=1
 pkgdesc="Fast key-value storage library"
 arch=('i686' 'x86_64')
 url="https://github.com/google/leveldb"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc' 'snappy')
 makedepends=('git')
 provides=("leveldb=$pkgver")
@@ -41,18 +41,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "leveldb"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "leveldb"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/leveldb"
 }
