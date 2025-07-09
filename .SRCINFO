@@ -1,6 +1,6 @@
 pkgbase = mbake-git
 	pkgdesc = A Python-based Makefile formatter and linter
-	pkgver = 1.2.1.r1.g2655ad9
+	pkgver = 1.2.4.post2.r0.gd401e2b
 	pkgrel = 1
 	url = https://github.com/EbodShojaei/bake
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mbake-git
 	depends = python-rich
 	depends = python-tomli
 	depends = python-typer
-	provides = mbake=1.2.1.r1.g2655ad9
-	provides = python-mbake=1.2.1.r1.g2655ad9
+	provides = mbake=1.2.4.post2.r0.gd401e2b
+	provides = python-mbake=1.2.4.post2.r0.gd401e2b
 	conflicts = mbake
 	conflicts = python-mbake
 	source = git+https://github.com/EbodShojaei/bake.git

@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mbake-git
-pkgver=1.2.1.r1.g2655ad9
+pkgver=1.2.4.post2.r0.gd401e2b
 pkgrel=1
 pkgdesc='A Python-based Makefile formatter and linter'
 arch=(any)
@@ -40,4 +40,12 @@ package () {
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	# So we don't conflict with ruby-bake
 	rm -f "$pkgdir/usr/bin/bake"
+	local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	_comp_inst () {
+		PYTHONPATH="$pkgdir/$_site_packages" "$pkgdir/usr/bin/$_pkgname" completions $1 |
+			install -Dm0644 /dev/stdin "$pkgdir/$2"
+	}
+	_comp_inst bash "usr/share/bash-completion/completions/$_pkgname"
+	_comp_inst fish "usr/share/fish/vendor_completions.d/$_pkgname.fish"
+	_comp_inst zsh  "usr/share/zsh/site-functions/_$_pkgname"
 }
