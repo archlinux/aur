@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lagrange-git
-pkgver=1.17.5.r3.gd519fad4
+pkgver=1.18.5.r20.g39326980
 pkgrel=1
 pkgdesc="A desktop GUI client for browsing Geminispace"
 arch=('i686' 'x86_64')
 url="https://gmi.skyjake.fi/lagrange/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc' 'fribidi' 'harfbuzz' 'hicolor-icon-theme' 'libunistring' 'libwebp' 'mpg123' 'openssl' 'pcre' 'sdl2' 'zlib')
 makedepends=('git' 'cmake' 'zip')
 optdepends=('mpg123')
@@ -40,12 +40,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "lagrange"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/lagrange"
 }
