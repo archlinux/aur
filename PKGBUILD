@@ -1,13 +1,12 @@
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Chris Severance
 
-set -u
 _pkgname='fdpp'
 _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.9+109.r1734.20250707.91fbb3d
-pkgrel=2
+pkgrel=3
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
   'x86_64'
@@ -34,6 +33,7 @@ makedepends=(
   'binutils'
   'clang'
   'git'
+  'meson'
   'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
   'thunk_gen'
 )
@@ -58,17 +58,14 @@ sha256sums=(
 )
 
 prepare() {
-  set -u
   cd "${srcdir}/${_pkgname}"
 
   git log > git.log
 
-  sed -e '/^PREFIX / s:/usr/local:/usr:g' -i 'fdpp/defs.mak'
-  set +u
+  # sed -e '/^PREFIX / s:/usr/local:/usr:g' -i 'fdpp/defs.mak'
 }
 
 pkgver() {
-  set -u
   cd "${srcdir}/${_pkgname}"
 
   # _ver="$(grep -E -m1 '^[[:space:]]*fdpp[[:space:]]*\(' debian/changelog | sed -E -e 's|^[^\(]*\(([^\)]*)\).*$|\1|' -e 's|-.*$||')"
@@ -87,18 +84,23 @@ pkgver() {
 }
 
 build() {
-  set -u
-  cd "${srcdir}/${_pkgname}"
-  bash -e -u configure
-  make -j "$(nproc)"
-  set +u
+  cd "${srcdir}"
+  # bash -e -u configure
+  if grep -qe '-- ' "${_pkgname}/configure.meson"; then
+    "${_pkgname}"/configure.meson -b 'build' -- --prefix '/usr'
+  else
+    "${_pkgname}"/configure.meson --prefix '/usr' 'build'
+  fi
+  # make -j "$(nproc)"
+  meson compile --verbose -C 'build'
 }
 
 package() {
-  set -u
-  cd "${srcdir}/${_pkgname}"
-  make -j1 DESTDIR="${pkgdir}" install
+  cd "${srcdir}"
+  # make -j1 DESTDIR="${pkgdir}" install
+  meson install -C 'build' --destdir "${pkgdir}"
 
+  cd "${srcdir}/${_pkgname}"
   for _docfile in 'git.log' 'NEWS.md' 'README.md'; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
@@ -106,7 +108,4 @@ package() {
     install -Dvm644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/${_licensefile}"
     ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/${_licensefile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_licensefile}"
   done
-
-  set +u
 }
-set +u
