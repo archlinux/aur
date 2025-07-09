@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=yasm-git
-pkgver=1.3.0.r55.g101bca9c
+pkgver=1.3.0.r87.g121ab150
 pkgrel=1
 pkgdesc="A complete rewrite of the NASM assembler under the BSD License"
 arch=('i686' 'x86_64')
 url="https://yasm.tortall.net/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('git' 'cmake' 'python')
 provides=("yasm=$pkgver")
@@ -32,18 +32,18 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=OFF \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "yasm"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "yasm"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 {BSD.txt,COPYING} -t "$pkgdir/usr/share/licenses/yasm"
 }
