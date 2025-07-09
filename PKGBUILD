@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
-pkgver=0.0.2.r126.ga002730
+pkgver=r27436.64f40c8
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden')
 depends=('enet' 'fmt' 'opus' 'libusb' 'libva' 'qt6-webengine' 'brotli' 'speexdsp' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'openssl' 'zstd' 'glibc' 'boost-libs' 'libvdpau' 'libx11' 'libdrm')
-makedepends=('git' 'cmake' 'wireless_tools' 'nlohmann-json' 'vulkan-headers' 'vulkan-utility-libraries' 'clang' 'llvm' 'gamemode' 'renderdoc' 'lld' 'ninja' 'boost' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen')
+makedepends=('git' 'cmake' 'wireless_tools' 'spirv-tools' 'nlohmann-json' 'vulkan-headers' 'vulkan-utility-libraries' 'clang' 'llvm' 'gamemode' 'renderdoc' 'lld' 'ninja' 'boost' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen')
 optdepends=('gamemode: Gamemoded support')
 options=('!debug' 'lto')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
@@ -21,9 +21,7 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
 		"git+https://github.com/libsdl-org/SDL.git"
 		"git+https://github.com/xiph/opus.git"
 		"git+https://github.com/arun11299/cpp-jwt.git"
-		"git+https://git.eden-emu.dev/eden-emu/tzdb_to_nx.git"
 		"git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
-		"git+https://git.eden-emu.dev/eden-emu/simpleini.git"
 		"git+https://github.com/boostorg/headers.git"
 		"git+https://github.com/herumi/xbyak.git"
 		"ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git"
@@ -57,16 +55,14 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 pkgver() {
-    cd "$srcdir/$_pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/.pre.alpha//g'
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 prepare() {
 	cd "$srcdir/$_pkgname"
-	for _submodule in opus SDL cubeb simpleini VulkanMemoryAllocator tzdb_to_nx cpp-jwt cpp-httplib xbyak ffmpeg;
+	for _submodule in opus SDL cubeb VulkanMemoryAllocator cpp-jwt cpp-httplib xbyak ffmpeg;
 		do
 		git config submodule.$_submodule.url ../$_submodule
 		done
