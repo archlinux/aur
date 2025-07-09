@@ -7,6 +7,6 @@ diff --color -ura a/gale-bin/usr/share/applications/Gale.desktop b/gale-bin/usr/
  Comment=A lightweight mod manager for Thunderstore
 -Exec=gale
 +Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 gale
+ StartupWMClass=gale
  Icon=gale
  Name=Gale
- Terminal=false
