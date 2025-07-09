@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libfdk-aac-git
-pkgver=2.0.3.r0.g716f439
+pkgver=2.0.3.r146.g2ef9a14
 pkgrel=1
 pkgdesc="Modified library of Fraunhofer AAC decoder and encoder"
 arch=('i686' 'x86_64')
 url="https://opencore-amr.sourceforge.io/"
-license=('custom')
+license=('LicenseRef-libfdk-aac')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("libfdk-aac=$pkgver" 'libfdk-aac.so')
@@ -33,12 +33,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "fdk-aac"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "NOTICE" -t "$pkgdir/usr/share/licenses/libfdk-aac"
 }
