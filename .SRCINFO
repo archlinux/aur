@@ -1,0 +1,24 @@
+pkgbase = lsfg-vk-git
+	pkgdesc = Lossless Scaling Frame Generation on Linux via DXVK/Vulkan
+	pkgver = r103.223f4ba
+	pkgrel = 1
+	url = https://github.com/PancakeTAS/lsfg-vk
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = llvm
+	makedepends = vulkan-headers
+	makedepends = cmake
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = sed
+	makedepends = sdl2
+	makedepends = glslang
+	depends = vulkan-icd-loader
+	provides = lsfg-vk
+	conflicts = lsfg-vk
+	source = git+https://github.com/PancakeTAS/lsfg-vk
+	sha256sums = SKIP
+
+pkgname = lsfg-vk-git
