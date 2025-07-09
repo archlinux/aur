@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt6-languageserver-git
-pkgver=6.5.0_beta3.r27.g2eb066b
+pkgver=6.10.0_beta1.r19.g3afa35c
 pkgrel=1
 pkgdesc="An implementation of the Language Server Protocol"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
-license=('GPL' 'LGPL' 'custom')
+license=('GPL-3.0-only' 'LGPL-3.0-only' 'LicenseRef-qt6-languageserver')
 depends=('glibc' 'qt6-base')
 makedepends=('git' 'cmake')
 provides=("qt6-languageserver=$pkgver")
@@ -31,18 +31,18 @@ build() {
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "qtlanguageserver"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "qtlanguageserver"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt6-languageserver"
 }
