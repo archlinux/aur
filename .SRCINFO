@@ -1,0 +1,15 @@
+pkgbase = haskell-bindings-glfw
+	pkgdesc = Low-level bindings to GLFW
+	pkgver = 3.3.9.2
+	pkgrel = 1
+	url = https://github.com/bsl/bindings-GLFW.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-bindings-dsl
+	source = https://hackage.haskell.org/packages/archive/bindings-GLFW/3.3.9.2/bindings-GLFW-3.3.9.2.tar.gz
+	sha512sums = e9465d88d648f8e958c6294f1e0115ce797bb268b3a1035cb0d8e6225d0884bf8e72db77a9aec8221552ea13ed21f6e60b9b3a96266db92685d003e1ff2cf689
+
+pkgname = haskell-bindings-glfw
