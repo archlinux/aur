@@ -2,11 +2,11 @@
 
 pkgname=winchecksec
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Checksec, but for Windows: static detection of security mitigations in executables"
 arch=('i686' 'x86_64')
 url="https://trailofbits.github.io/winchecksec/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs' 'openssl' 'pe-parse')
 makedepends=('cmake' 'uthenticode')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/trailofbits/winchecksec/archive/refs/tags/v$pkgver.tar.gz")
@@ -22,7 +22,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {

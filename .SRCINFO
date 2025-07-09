@@ -1,11 +1,11 @@
 pkgbase = winchecksec
 	pkgdesc = Checksec, but for Windows: static detection of security mitigations in executables
 	pkgver = 3.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://trailofbits.github.io/winchecksec/
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = uthenticode
 	depends = gcc-libs
