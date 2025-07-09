@@ -21,8 +21,8 @@ depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch sed) # base-devel
 optdepends=({nwjs,slimjet}': replace ffmpeg')
-conflicts=(opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
-provides=("${conflicts[@]}")
+conflicts=(opera-ffmpeg-codecs) # Unsynced Chromiumver
+provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 
 prepare() {
   cd ffmpeg-$_ffver
@@ -34,9 +34,8 @@ prepare() {
 
 build() {
   cd ffmpeg-$_ffver
-  # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
-  # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
-  # Why --{disable-error-resilience,faan}?
+  # https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
+  # BUILD.gn
   ./configure \
     --disable-{all,autodetect,doc,iconv,network,symver} \
     --disable-{error-resilience,faan,iamf} \
@@ -48,7 +47,7 @@ build() {
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
-    --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
+    --enable-{pic,asm,hardcoded-tables}
 
   make install
   cd ../release

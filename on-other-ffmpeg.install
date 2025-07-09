@@ -1,3 +1,6 @@
+post_install() {
+  echo opera*codecs are used with high priority if you have.
+}
 post_remove() {
   chmod a+r /{usr/lib/{opera{,-beta,-developer},slimjet},opt/nwjs/lib}/libffmpeg.so 2>/dev/null||:
 }
