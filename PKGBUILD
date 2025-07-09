@@ -2,10 +2,10 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.18.1
-_pkgver_ext=1.18.1_24813_20250409_2138
-_pkg_file_name=en.st-stm32cubeide_1.18.1_24813_20250409_2138_amd64.sh.zip
-pkgrel=3
+pkgver=1.19.0
+_pkgver_ext=1.19.0_25607_20250703_0907
+_pkg_file_name=st-stm32cubeide_1.19.0_25607_20250703_0907_amd64.sh.zip
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -16,23 +16,15 @@ url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
 options=(!strip)
 
-# Download file with list of URLs to files
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$_curl_req_url" )"
+if [ ! -f ${PWD}/${_pkg_file_name} ]; then
+	msg2 ""
+	msg2 "Package not found!"
+	msg2 "The ${pkgname} can be downloaded here: ${url}"
+	msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory (${PWD}) before build."
+	msg2 ""
+fi
 
-# Extract actual download link to the desired file
-_pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
-_pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
-_download_path="https://www.st.com""$_pkg_url"
-#echo $_download_path
-
-DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' --retry 3 --retry-delay 3 \
-              --cookie "${srcdir}http_cookies" \
-              -H "@${srcdir}http_headers" \
-              -o %o --compressed %u")
-
-source=("${_pkg_file_name}"::"$_download_path"
+source=("local://${_pkg_file_name}"
 	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
 	"http_headers"
@@ -40,7 +32,7 @@ source=("${_pkg_file_name}"::"$_download_path"
 	"stm32cubeide"
 	"stm32cubeide_wayland"
 	)
-sha256sums=('6ac76ee6d35a0d2cbd6dc14ded0fa32f1788565c866b9dd28cba7c6250d8d54f'
+sha256sums=('fa3797bfbfb2c11860400225eda1429d1ce16d52593e55ba2480af18b69c3c6d'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 	'4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40'
