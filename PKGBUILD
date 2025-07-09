@@ -34,8 +34,8 @@ pkgver() {
 
 package(){
 	install -Dm644 $_pkgname/LICENSE -t $pkgdir/usr/share/licenses/$pkgname
-	install -Dm644 $_pkgname/src-tauri/target/release/resources/hpatchz_kuro.exe -t $pkgdir/usr/lib/twintaillauncher/resources
-	ln -s /usr/bin/hpatchz $pkgdir/usr/lib/twintaillauncher/resources
+	install -Dm755 $_pkgname/src-tauri/target/release/resources/hpatchz_kuro.exe -t $pkgdir/usr/lib/twintaillauncher/resources
+	install -Dm755 $_pkgname/src-tauri/target/release/resources/hpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/twintaillauncher -t $pkgdir/usr/bin
 	install -Dm644 $_pkgname/twintaillauncher.desktop -t $pkgdir/usr/share/applications
 	install -Dm644 $_pkgname/src-tauri/icons/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png
