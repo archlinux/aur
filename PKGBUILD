@@ -12,7 +12,7 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.52.0
+pkgver=1.52.1
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
@@ -63,15 +63,15 @@ checkdepends=(
   python-dbus
 )
 source=(
-  "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git?signed#tag=$pkgver"
+  "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git?signed#tag=${pkgver/[a-z]/-&}"
 )
-b2sums=('c062388e55d5b752244178b59487b4ff8b9d37fe2b6f32110eb36c2e9f17a6721d3ac5e3f347870422f256168793536f1fb1249d61f7884f01d1d291f4f14cba')
+b2sums=('0af9767688f43ccdca335c1655f4a0b7b2f0568f965b7cfc268aad63a4dfa0f0d9b86746a72e5d27923f0fb8fe8cc74d429fe977c10edea3b24dd47497d021b1')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>
   2B5F3B2028801E15F57AAA309906C97AA15D984F # Fernando Fernandez Mancera <ffmancera@riseup.net>
   48FD6FAE515A77B48436821C8789567B8715CEBC # Gris Ge <fge@redhat.com>
-  # Could not locate key ACFA41513D2854D0A72F55BE9A2C77A85F2D72FE # Ján Václav <jvaclav@redhat.com>
+  ACFA41513D2854D0A72F55BE9A2C77A85F2D72FE # Ján Václav <jvaclav@redhat.com>
   4B8EF9745A973724E965939189A2DA5AF73D5E3D # Lubomir Rintel <lkundrak@v3.sk>
   E472337703D0C46002928B5790617850A125DE59 # Stanislas FAYE <sfaye@redhat.com>
   49EA7C670E0850E7419514F629C2366E4DFC5728 # Thomas Haller <thaller@redhat.com>
@@ -80,6 +80,9 @@ validpgpkeys=(
 
 prepare() {
   cd NetworkManager
+
+  # Fix docs generation
+  git cherry-pick -n 12eff9a7fdfeabab12ce56e5f7d515a13a3d704c
 }
 
 build() {
