@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxslt-git
-pkgver=1.1.38.r9.g8c2e8031
+pkgver=1.1.43.r3.g923903c5
 pkgrel=1
 pkgdesc="XML stylesheet transformation library"
 arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
-license=('custom')
+license=('MIT')
 depends=('glibc' 'libgcrypt' 'libxml2')
 makedepends=('git' 'cmake' 'python')
 provides=("libxslt=$pkgver")
@@ -30,18 +30,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libxslt"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libxslt"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "Copyright" -t "$pkgdir/usr/share/licenses/libxslt"
 }
