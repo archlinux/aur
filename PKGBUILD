@@ -10,7 +10,7 @@ arch=("x86_64" "i686" "pentium4" "armv7h" "aarch64")
 url="http://melonds.kuribo64.net/"
 license=("GPL-3.0-or-later")
 makedepends=("wayland" "git" "cmake" "pkg-config" "extra-cmake-modules" "clang")
-depends=("qt6-base" "qt6-multimedia" "sdl2" "libarchive" "enet" "gcc-libs" "glibc" "libx11" "libglvnd" "zstd" "hicolor-icon-theme")
+depends=("qt6-base" "qt6-multimedia" "sdl2" "enet" "libx11" "libglvnd" "hicolor-icon-theme")
 source=("$pkgname::git+https://github.com/melonDS-emu/melonDS.git#tag=${pkgver}")
 sha256sums=('414b376e14a66d8e095605b83a6b7711c04330be159b2649c87213fe8af0c9c6')
 

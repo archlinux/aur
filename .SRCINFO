@@ -18,13 +18,9 @@ pkgbase = melonds
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
-	depends = libarchive
 	depends = enet
-	depends = gcc-libs
-	depends = glibc
 	depends = libx11
 	depends = libglvnd
-	depends = zstd
 	depends = hicolor-icon-theme
 	source = melonds::git+https://github.com/melonDS-emu/melonDS.git#tag=1.0
 	sha256sums = 414b376e14a66d8e095605b83a6b7711c04330be159b2649c87213fe8af0c9c6
