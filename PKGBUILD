@@ -1,17 +1,17 @@
 # Maintainer:
 
 ## options
-: ${_commit:=71a4497991623fbcb865e8117e61a000b99b364f} # 12.r12
-
 : ${_build_git:=false}
+: ${_use_sodeps:=false}
 
-unset _pkgtype
-_pkgtype+="-arch1t3cht"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+: ${_commit:=9bfd5008d9fc30bd86b3634416781d2c41ce8f89} # 12.r24
+
+_pkgtype="-arch1t3cht"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+='-git' && _commit="feature"
 
 _pkgname="aegisub"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=feature_12
+pkgver=12
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 url="https://github.com/arch1t3cht/Aegisub"
@@ -63,16 +63,6 @@ noextract=(
 
 options=('!lto')
 
-if [[ "${_build_git::1}" == "t" ]]; then
-  _commit="feature"
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --match="feature_*" --exclude='feature_*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
-
 _pkgsrc="arch1t3cht.aegisub"
 source=(
   "$_pkgsrc"::"git+https://github.com/arch1t3cht/Aegisub.git#commit=${_commit:?}"
@@ -116,6 +106,17 @@ prepare() {
   meson subprojects packagefiles --apply luajit
 }
 
+pkgver() {
+  cd "$_pkgsrc"
+  local _pkgver=$(
+    git describe --long --tags --abbrev=7 --match="feature_*" --exclude='feature_*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
+  )
+
+  [ "${_build_git::1}" != "t" ] && _pkgver="${_pkgver%.r*}"
+  printf "%s" "${_pkgver:?}"
+}
+
 build() {
   local _meson_options=(
     -Ddefault_audio_output=PulseAudio
@@ -133,6 +134,29 @@ check() {
 }
 
 package() {
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      'libGL.so'
+      'libasound.so'
+      'libass.so'
+      'libavcodec.so'
+      'libavformat.so'
+      'libavutil.so'
+      'libboost_filesystem.so'
+      'libboost_locale.so'
+      'libfftw3.so'
+      'libfontconfig.so'
+      'libicui18n.so'
+      'libicuuc.so'
+      'libopenal.so'
+      'libportaudio.so'
+      'libpulse.so'
+      'libswscale.so'
+      'libxxhash.so'
+      'libz.so'
+    )"
+  fi
+
   local _meson_options=(
     --skip-subprojects bestsource
   )

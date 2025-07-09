@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/arch1t3cht/Aegisub.git"
 include_regex = 'feature_[0-9]+'
+prefix = 'feature_'
