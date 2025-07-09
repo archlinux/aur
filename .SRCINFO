@@ -1,0 +1,17 @@
+pkgbase = python-gf2bv-git
+	pkgdesc = Solving linear systems over GF(2) by manipulating bitvectors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maple3142/gf2bv
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = m4ri
+	optdepends = sagemath
+	source = git+https://github.com/maple3142/gf2bv
+	sha256sums = SKIP
+
+pkgname = python-gf2bv-git
