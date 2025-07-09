@@ -1,6 +1,6 @@
 pkgbase = swi-prolog-git
 	pkgdesc = Comprehensive Prolog environment (latest git development version)
-	pkgver = 9.3.13.r4.g1a8482417
+	pkgver = 9.3.25.r28.g19f18da1a
 	pkgrel = 1
 	url = http://www.swi-prolog.org/
 	arch = x86_64

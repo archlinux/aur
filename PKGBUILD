@@ -7,7 +7,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-git
-pkgver=9.3.13.r4.g1a8482417
+pkgver=9.3.25.r28.g19f18da1a
 pkgrel=1
 pkgdesc='Comprehensive Prolog environment (latest git development version)'
 arch=(x86_64 i686)

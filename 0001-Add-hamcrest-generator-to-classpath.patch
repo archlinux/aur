@@ -1,6 +1,6 @@
-From bbf44445a679af7977fabdbcdc7b3c1eafd1425b Mon Sep 17 00:00:00 2001
-From: Aleksy Grabowski <hurufu@gmail.com>
-Date: Sat, 12 Oct 2024 19:05:52 +0200
+From 3b63185d0d5d59be0192a7c450c56927c962530c Mon Sep 17 00:00:00 2001
+From: Aleks Grabowski <hurufu@gmail.com>
+Date: Wed, 9 Jul 2025 12:37:23 +0200
 Subject: [PATCH] Add hamcrest-generator to classpath
 
 Fixes jpl unit tests. Still needs fixing hardcoded JUnit path
@@ -10,7 +10,7 @@ Fixes jpl unit tests. Still needs fixing hardcoded JUnit path
  2 files changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e412f9d..7600c93 100644
+index 734f8eb..7093b41 100644
 --- a/packages/jpl/CMakeLists.txt
 +++ b/packages/jpl/CMakeLists.txt
 @@ -163,7 +163,7 @@ if(JNI_FOUND AND Java_FOUND)
@@ -23,13 +23,14 @@ index e412f9d..7600c93 100644
  	endif()
  
 diff --git a/cmake/JUnit.cmake b/cmake/JUnit.cmake
-index eee424e..f4a00c0 100644
+index f7a7636..d1984d8 100644
 --- a/packages/jpl/cmake/JUnit.cmake
 +++ b/packages/jpl/cmake/JUnit.cmake
-@@ -41,6 +41,18 @@ find_file(HAMCREST
+@@ -54,6 +54,18 @@ find_file(HAMCREST
+ 	/usr/local/share/java
  	/usr/lib/java/javapackages-bootstrap)
  MARK_AS_ADVANCED(HAMCREST)
- 
++
 +find_file(HAMCREST_GENERATOR
 +    NAMES
 +        hamcrest-generator.jar
@@ -41,10 +42,9 @@ index eee424e..f4a00c0 100644
 +	/opt/local/share/java/
 +	/usr/lib/java/javapackages-bootstrap)
 +MARK_AS_ADVANCED(HAMCREST_GENERATOR)
-+
+ endif()
  
  function(add_junit_test TARGET_NAME)
- 
 -- 
-2.47.0
+2.50.0
 
