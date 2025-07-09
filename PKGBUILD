@@ -20,7 +20,7 @@ makedepends=(
   'ninja'
 )
 optdepends=(
-  'kde-rounded-corners-x11: for X11 support'
+  'kwin-effect-rounded-corners-x11: for X11 support'
 )
 
 provides=("$_pkgname=${pkgver%%.g*}")
