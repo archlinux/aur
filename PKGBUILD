@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=googletest-git
-pkgver=1.14.0.r140.ga7f443b8
+pkgver=1.17.0.r27.g3983f67e
 pkgrel=1
 pkgdesc="Google's C++ test framework"
 arch=('i686' 'x86_64')
@@ -34,18 +34,18 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "googletest"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "googletest"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/gtest"
 }

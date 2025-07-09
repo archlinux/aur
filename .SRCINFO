@@ -1,6 +1,6 @@
 pkgbase = googletest-git
 	pkgdesc = Google's C++ test framework
-	pkgver = 1.14.0.r140.ga7f443b8
+	pkgver = 1.17.0.r27.g3983f67e
 	pkgrel = 1
 	url = https://google.github.io/googletest/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = googletest-git
 	makedepends = cmake
 	depends = gcc-libs
 	depends = sh
-	provides = gmock=1.14.0.r140.ga7f443b8
-	provides = gtest=1.14.0.r140.ga7f443b8
+	provides = gmock=1.17.0.r27.g3983f67e
+	provides = gtest=1.17.0.r27.g3983f67e
 	conflicts = gmock
 	conflicts = gtest
 	source = git+https://github.com/google/googletest.git
