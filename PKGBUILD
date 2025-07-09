@@ -20,4 +20,3 @@ package()
 
     cp -r cursors $pkgdir/usr/share/icons/ater-yellow
 }
-
