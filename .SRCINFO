@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = python-pydantic-ai
 	checkdepends = python-pytest-examples
 	checkdepends = python-pytest-mock
 	checkdepends = python-pytest-recording
-	checkdepends = python-diff-cover
 	checkdepends = python-pytest-xdist
 	checkdepends = deno
 	makedepends = python-hatchling
@@ -23,9 +22,9 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.3.6::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.3.6
+	source = pydantic-ai-0.4.0::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.0
 	source = server.md
-	sha256sums = 48333da95afee55faba797f51f89506010902759327283eebb7d7eea02fca7ec
+	sha256sums = d093b497e2838e055424a50430dcaac4a325efa53efb3eae9371690d39a358c3
 	sha256sums = 93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49
 
 pkgname = python-fasta2a
@@ -113,6 +112,7 @@ pkgname = python-pydantic-ai-examples
 	depends = python-mcp
 	depends = python-typer
 	depends = python-dotenv
+	depends = python-modal
 
 pkgname = python-pydantic-ai
 	pkgdesc = Agent Framework / shim to use Pydantic with LLMs.

@@ -9,18 +9,18 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "server.md")
-sha256sums=('48333da95afee55faba797f51f89506010902759327283eebb7d7eea02fca7ec'
+sha256sums=('d093b497e2838e055424a50430dcaac4a325efa53efb3eae9371690d39a358c3'
             '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
-checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-diff-cover' 'python-pytest-xdist' 'deno')
+checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'deno')
 
 prepare(){
   cp -f "${srcdir}"/server.md "${srcdir}"/${_name0}-${pkgver}/docs/mcp/server.md
@@ -47,9 +47,6 @@ check() {
     --deselect tests/models/test_model_names.py::test_known_model_names
     -k "not genai_email_feedback.py and not google.md:61"
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
-    --deselect tests/models/test_google.py::test_google_model_stream
-    --deselect tests/models/test_google.py::test_google_model_iter_stream
-    --deselect tests/models/test_google.py::test_google_model_thinking_part_iter
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
@@ -102,7 +99,7 @@ package_python-pydantic-evals() {
 
 package_python-pydantic-ai-examples() {
   pkgdesc='Examples of how to use PydanticAI and what it can do.'
-  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-groq' 'python-anthropic' 'python-pydantic-evals' 'python-asyncpg' 'python-fastapi' 'python-logfire' 'python-opentelemetry-instrumentation-asyncpg' 'python-opentelemetry-instrumentation-fastapi' 'python-opentelemetry-instrumentation-sqlite3' 'python-opentelemetry-instrumentation-httpx' 'python-python-multipart' 'python-rich' 'uvicorn' 'python-devtools' 'python-gradio' 'python-mcp' 'python-typer' 'python-dotenv')
+  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-groq' 'python-anthropic' 'python-pydantic-evals' 'python-asyncpg' 'python-fastapi' 'python-logfire' 'python-opentelemetry-instrumentation-asyncpg' 'python-opentelemetry-instrumentation-fastapi' 'python-opentelemetry-instrumentation-sqlite3' 'python-opentelemetry-instrumentation-httpx' 'python-python-multipart' 'python-rich' 'uvicorn' 'python-devtools' 'python-gradio' 'python-mcp' 'python-typer' 'python-dotenv' 'python-modal')
   url='https://github.com/pydantic/pydantic-ai/tree/main/examples'
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" ${_name1}/dist/*.whl
