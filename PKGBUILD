@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmatroska-git
-pkgver=1.7.0.r11.g7e61e84
+pkgver=1.7.1.r281.g395563f
 pkgrel=1
 pkgdesc="C++ libary to parse Matroska files"
 arch=('i686' 'x86_64')
 url="https://matroska.org/index.html"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('glibc' 'libebml.so')
 makedepends=('git' 'cmake')
 provides=("libmatroska=$pkgver" 'libmatroska.so')
@@ -18,7 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libmatroska"
 
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^release-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^release-//'
 }
 
 build() {
@@ -31,11 +34,11 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "libmatroska"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
