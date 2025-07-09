@@ -1,6 +1,6 @@
 # Maintainer: Daniël van de Giessen <aur@dvdgiessen.nl>
 pkgname=pipemixer-git
-pkgver=r109.cd68cd1
+pkgver=0.1.2.r202.efa00fe
 pkgrel=1
 pkgdesc='TUI volume control app for pipewire'
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd pipemixer
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --always --abbrev=7 | sed "s/^\([0-9a-f]*\)$/-0-g\1/;s/^v//;s/\(-[0-9]*-g\)\([0-9a-f]*\)/.r$(git rev-list --count HEAD).\2/;s/^\.//"
 }
 
 build() {

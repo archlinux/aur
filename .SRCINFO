@@ -1,6 +1,6 @@
 pkgbase = pipemixer-git
 	pkgdesc = TUI volume control app for pipewire
-	pkgver = r109.cd68cd1
+	pkgver = 0.1.2.r202.efa00fe
 	pkgrel = 1
 	url = https://github.com/heather7283/pipemixer
 	arch = x86_64
