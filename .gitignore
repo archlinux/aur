@@ -1,0 +1,4 @@
+src/
+pkg/
+networkmanager-openvpn-xor/
+networkmanager-openvpn-xor-*.pkg.tar.zst
