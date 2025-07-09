@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wabt-git
-pkgver=1.0.32.r51.g539c541b
-pkgrel=2
+pkgver=1.0.37.r27.ga55fb946
+pkgrel=1
 pkgdesc="The WebAssembly binary toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/WebAssembly/wabt"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'clang' 'cmake' 'gcc')
 provides=("wabt=$pkgver")
@@ -40,17 +40,17 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "wabt"
 
-  #make -C "_build" check
+  #cmake --build "_build" --target check
 }
 
 package() {
   cd "wabt"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
