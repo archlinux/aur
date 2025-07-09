@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libdatachannel-git
-pkgver=0.20.3.r45.g1f4d08ab
+pkgver=0.23.1.r6.g7a4b6c2d
 pkgrel=1
 pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
 arch=('i686' 'x86_64')
@@ -42,17 +42,17 @@ build() {
     -DUSE_SYSTEM_SRTP=ON \
     -DNO_EXAMPLES=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libdatachannel"
 
-  #make -C "_build" tests
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "libdatachannel"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }
