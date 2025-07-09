@@ -1,7 +1,7 @@
 # Maintainer: Tim Lagnese tim@inept.tech
 
 pkgname=ada_language_server-bin
-pkgver=26.0.202504171
+pkgver=26.0.202507020
 pkgrel=1
 pkgdesc="High performance syntactic and semantic engine for the Ada programming language"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gmp' 'glibc' 'gcc-libs')
 makedepends=('patchelf')
 
 source=("https://github.com/AdaCore/ada_language_server/releases/download/$pkgver/als-$pkgver-linux-x64.tar.gz")
-b2sums=('7f1034d1f6a28f6288ea299c599ad53c02da66aca56c51da494c7f1ba18da4ccf759f14297ed60de4a38edc12bc2feac629d597351ccb2cea8780d11d5f089c1')
+b2sums=('32621cb8e92ada2e74369899663ca5e53215c2fd5839a576a582aeb9be0207b8c7625c1c49a749db0ecdeb066f2f03701462ef0d480cc6149033a24617b5ae31')
 
 prepare() {
   cd "$srcdir/integration/vscode/ada/x64/linux"
