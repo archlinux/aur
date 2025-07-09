@@ -15,8 +15,6 @@ makedepends=('cmake>=3.24' 'git' 'opencl-headers' 'nasm' 'python-pip' 'meson'
              'openssl-1.1' 'patchelf')
 provides=('openrv')
 options=(!strip)
-DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download and install Qt from the official website, "
-                                      "then tarball the Qt/5.15.2/gcc_64 directory defined as QT_HOME.")
 source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
         'git+https://github.com/shotgunsoftware/openrv-WFObj.git'
         'git+https://github.com/shotgunsoftware/openrv-pub.git'
@@ -92,8 +90,8 @@ prepare() {
   sed -i '/rvio_sw/d' src/bin/imgtools/CMakeLists.txt  # rvio_sw uses MovieRV
 
   # Options
-  sed -i '/(NON_FREE_ENCODERS_TO_DISABLE/a "nvenc"' cmake/dependencies/ffmpeg.cmake  # Uncomment if not using nvidia
-  sed -i '/"aac"/d' cmake/dependencies/ffmpeg.cmake  # Re-enable non-free aac in ffmpeg
+  # sed -i '/(NON_FREE_ENCODERS_TO_DISABLE/a "nvenc"' cmake/dependencies/ffmpeg.cmake  # Uncomment if not using nvidia
+  # sed -i '/"aac"/d' cmake/dependencies/ffmpeg.cmake  # Re-enable non-free aac in ffmpeg
 
   # Update rvcmds.sh
   sed -i 's/pip install --user/pip install/' rvcmds.sh  # Install to venv
@@ -102,7 +100,7 @@ prepare() {
   # Pass CMake defines to rvcmds.sh:
   # * Use latest dependencies in CY2024 and FFmpeg 7
   # * Copy cherry-picks from Arch-provided ffmpeg
-  sed -i "s/{WIN_PERL};/{WIN_PERL} -DRV_VFX_PLATFORM=CY2024 -DRV_FFMPEG=7 "'"'"-DRV_FFMPEG_PATCH_COMMAND_STEP=git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47 d0facac679faf45d3356dff2e2cb382580d7a521"'"'";/" rvcmds.sh
+  sed -i "s/{WIN_PERL};/{WIN_PERL} -DRV_FFMPEG=7 "'"'"-DRV_FFMPEG_PATCH_COMMAND_STEP=git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47 d0facac679faf45d3356dff2e2cb382580d7a521"'"'";/" rvcmds.sh
   sed -i 's/--target ;/--target $1;/' rvcmds.sh
   sed -i 's/ctest /ctest --exclude-regex ".*(ALSASafe|io_oiio).*" /' rvcmds.sh  # ALSASafe uses Rv::Option, removed OpenVDB from OIIO
   # sed -i 's/--parallel=8/--parallel=1/' rvcmds.sh  # May help with debugging
@@ -113,8 +111,34 @@ build() {
   # export CMAKE_GENERATOR="Unix Makefiles"  # Uncomment to not use Ninja
   python -m venv .
   source bin/activate
-  source rvcmds.sh
-  CMAKE_POLICY_VERSION_MINIMUM=3.5 rvbootstrap
+
+  # Check for a suitable Qt installation, currently mirroring the rvcmds script
+  local qt_arch="gcc_64"
+  local qt_version="6.5.3"
+  local qt_home=$(find ~/Qt*/6.5* -maxdepth 4 -type d -path "*/$qt_arch" | sort -V | tail -n 1)
+  if [ -z "$qt_home" ]; then
+    qt_home=$(find "$srcdir/Qt/$qt_version" -maxdepth 4 -type d -path "*/$qt_arch" | sort -V | tail -n 1)
+  fi
+  if [ -z "$qt_home" ]; then
+    # If not, use aqtinstall to download it, mirroring the official OpenRV Dockerfiles
+    # Thank you michimussato for the suggestion!
+    if ! pip show aqtinstall &> /dev/null; then
+      pip install aqtinstall
+    fi
+    local qt_modules="debug_info qt3d qt5compat qtcharts qtconnectivity qtdatavis3d qtgrpc qthttpserver \
+                      qtimageformats qtlanguageserver qtlocation qtlottie qtmultimedia qtnetworkauth qtpdf \
+                      qtpositioning qtquick3d qtquick3dphysics qtquickeffectmaker qtquicktimeline \
+                      qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtshadertools qtspeech \
+                      qtvirtualkeyboard qtwaylandcompositor qtwebchannel qtwebengine qtwebsockets qtwebview"
+    local qt_archives="icu qtbase qtdeclarative qtsvg qttools qttranslations qtwayland"
+    python -m aqt install-qt linux desktop $qt_version $qt_arch -O "$srcdir/Qt" \
+      -m ${qt_modules} \
+      --archives ${qt_archives}
+    qt_home="$srcdir/Qt/$qt_version/$qt_arch"
+  fi
+
+  QT_HOME="$qt_home" source rvcmds.sh
+  CMAKE_POLICY_VERSION_MINIMUM=3.5 QT_HOME="$qt_home" rvbootstrap
 }
 
 check() {
@@ -131,4 +155,3 @@ package() {
   source rvcmds.sh
   rvinst
 }
-
