@@ -43,6 +43,7 @@ build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
+           -DCMAKE_INSTALL_LIBEXECDIR="lib/$pkgname" \
            -DBUILD_TESTING=OFF \
            -DUSE_SYSTEM_PATHS_FOR_PYTHON_INSTALLATION:BOOL=ON \
            -Wno-dev
