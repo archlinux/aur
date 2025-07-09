@@ -1,0 +1,17 @@
+pkgbase = haskell-gloss-rendering
+	pkgdesc = haskell gloss picture data types and rendering functions
+	pkgver = 1.13.2.1
+	pkgrel = 1
+	url = http://www.haskell.org/haskellwiki/gloss-rendering
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-glut
+	depends = haskell-opengl
+	depends = haskell-bmp
+	source = https://hackage.haskell.org/packages/archive/gloss-rendering/1.13.2.1/gloss-rendering-1.13.2.1.tar.gz
+	sha512sums = f050846234aef3cbe123f347bb3dd34c8797071305015a3ee431fdca97c7fdbe0e4fe7878dd70d3968fba5e09a2723a7d28e40fd2f9f452a7884548be4a90a96
+
+pkgname = haskell-gloss-rendering
