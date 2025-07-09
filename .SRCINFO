@@ -1,6 +1,6 @@
 pkgbase = librm-git
 	pkgdesc = Offers FRITZ!Box related core functionality for Roger Router (GUI), Roger CLI (CLI) and Roger Rabbit (ncurses) interfaces.
-	pkgver = 2.3.4.r152.20230128.4ebbae3
+	pkgver = 2.3.4+2.r154.20250629.9dabfe1
 	pkgrel = 1
 	url = https://gitlab.com/tabos/librm
 	arch = aarch64
@@ -38,9 +38,9 @@ pkgbase = librm-git
 	depends = spandsp
 	depends = speex
 	optdepends = dconf: For provided glib schemas.
-	provides = librm=2.3.4.r152.20230128.4ebbae3
+	provides = librm=2.3.4+2.r154.20250629.9dabfe1
 	provides = librm.so
-	provides = librm-doc=2.3.4.r152.20230128.4ebbae3
+	provides = librm-doc=2.3.4+2.r154.20250629.9dabfe1
 	conflicts = librm
 	conflicts = librm.so
 	conflicts = librm-doc

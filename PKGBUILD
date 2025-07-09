@@ -8,7 +8,7 @@
 
 _pkgname=librm
 pkgname="${_pkgname}"-git
-pkgver=2.3.4.r152.20230128.4ebbae3
+pkgver=2.3.4+2.r154.20250629.9dabfe1
 pkgrel=1
 pkgdesc="Offers FRITZ!Box related core functionality for Roger Router (GUI), Roger CLI (CLI) and Roger Rabbit (ncurses) interfaces."
 arch=(
