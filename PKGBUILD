@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -20,8 +20,8 @@ optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
   'vapoursynth-plugin-mlrt-ext-models-rife: frame interpolation functions'
 )
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/3b/dd/52afa253a952861f066b4db54d13015ee4ddc8d343c57b7a828511b32f0c/soifunc-0.11.0-py3-none-any.whl")
-sha256sums=('804d81cecfa9c51fd1e1b3352f667d59edbf80f7abcd0b5e58df4221f6aa857e')
+source=("https://files.pythonhosted.org/packages/27/eb/1e1f268e7523aba68d5714e4838084c60ce8d97fe0121117c3cb0b814149/soifunc-0.11.1-py3-none-any.whl")
+sha256sums=('cadae02c4b5208ef745e05973056be721c113098faf4620a24f417de5bffc618')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
