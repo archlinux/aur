@@ -1,0 +1,14 @@
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!50_org.gnome.desktop.wm.keybindings.gnome-mosiac.gschema.override
+!50_org.gnome.mutter.keybindings.gnome-mosaic.gschema.override
+!50_org.gnome.mutter.wayland.keybindings.gnome-mosaic.gschema.override
+!50_org.gnome.settings-daemon.plugins.media-keys.gnome-mosaic.gschema.override
+!50_org.gnome.shell.keybindings.gnome-mosaic.gschema.override

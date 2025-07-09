@@ -1,0 +1,3 @@
+[org.gnome.mutter.keybindings]
+toggle-tiled-left = []
+toggle-tiled-right = []

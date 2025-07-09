@@ -1,0 +1,3 @@
+[org.gnome.shell.keybindings]
+toggle-message-tray = ['<Super>v']
+toggle-overview = []

@@ -1,0 +1,3 @@
+[gnome-shell-extension-mosaic]
+source = "git"
+git = "https://github.com/jardon/gnome-mosaic.git"
