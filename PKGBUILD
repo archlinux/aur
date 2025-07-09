@@ -2,61 +2,117 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=3.0.0rc3
+pkgver=3.1.2
 pkgrel=1
-pkgdesc="GNU Image Manipulation Program (Development version)"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://www.gimp.org/"
+pkgdesc='GNU Image Manipulation Program (development release)'
+url='https://www.gimp.org/'
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=('GPL-3.0-or-later')
-depends=('appstream-glib' 'babl>=0.1.110' 'cairo' 'desktop-file-utils' 'enchant'
-         'gegl>=0.4.54' 'graphviz' 'gtk3' 'icu' 'lcms2' 'libexif' 'libgexiv2'
-         'libgudev' 'librsvg' 'libwmf' 'libxmu' 'mypaint-brushes1' 'openexr'
-         'openjpeg2' 'poppler-data' 'poppler-glib' 'python-gobject')
-makedepends=('aalib' 'alsa-lib' 'appstream' 'cfitsio' 'curl' 'ghostscript'
-             'gi-docgen' 'gjs' 'glib2-devel' 'glib-networking' 'gobject-introspection'
-             'highway' 'intltool' 'iso-codes' 'libheif' 'libilbm' 'libjxl'
-             'libmng' 'libwebp' 'libxpm' 'libxslt' 'luajit' 'meson' 'qoi-headers'
-             'vala' 'zlib')
-             # 'xorg-server-xvfb' # needed for -Dheadless-tests=enabled
-             # 'yelp-tools' # needed for -Dg-ir-doc=true
-optdepends=('aalib: ASCII art support'
-            'alsa-lib: for MIDI event controller module'
-            'cfitsio: FITS support'
-            'curl: for URI support'
-            'gjs: JavaScript scripting support'
-            'ghostscript: for postscript support'
-            'iso-codes: Language support'
-            'libheif: HEIF support'
-            'libilbm: ILBM support'
-            'libjxl: JPEG XL support'
-            'libmng: MNG support'
-            'libwebp: WebP support'
-            'libxpm: XPM support'
-            'lua51-lgi: LUA scripting support'
-            'luajit: LUA scripting support'
-            'qoi-headers: QOI image support'
-            'zlib: Compression routines')
-# 'gutenprint: for sophisticated printing only as gimp has built-in cups print support' # GIMP 2.0 only
-conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver}")
-source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver/rc/-RC}.tar.xz"
-        'linux.gpl')
-sha256sums=('61fb527cf22d093a3f3501884796ababd3c30dd7f0e354dbdc041bef0f7e38ec'
+depends=(
+  # Core deps
+  'appstream-glib'
+  'babl'
+  'cairo'
+  'fontconfig'
+  'freetype2'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'gegl'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'harfbuzz'
+  'hicolor-icon-theme'
+  'iso-codes'
+  'json-glib'
+  'lcms2'
+  'libgexiv2'
+  'libmypaint'
+  'libunwind'
+  'mypaint-brushes1'
+  'pango'
+  'python-gobject'
+  'zlib'
+
+  # Plugins deps
+  'aalib'
+  'bzip2'
+  'libgudev'
+  'libheif'
+  'libjpeg-turbo'
+  'libjxl'
+  'libmng'
+  'libpng'
+  'librsvg'
+  'libtiff'
+  'libwebp'
+  'libwmf'
+  'libx11'
+  'libxcursor'
+  'libxext'
+  'libxfixes'
+  'libxmu'
+  'libxpm'
+  'openexr'
+  'openjpeg2'
+  'poppler-data'
+  'poppler-glib'
+  'xz'
+)
+makedepends=(
+  'alsa-lib'
+  'appstream'
+  'cfitsio'
+  'ghostscript'
+  'gi-docgen'
+  'git'
+  'gjs'
+  'glib2-devel'
+  'gobject-introspection'
+  'gtk-doc'
+  'gvfs'
+  'intltool'
+  'libilbm'
+  'luajit'
+  'meson'
+  'qoi'
+  'vala'
+)
+optdepends=(
+  'alsa-lib: for MIDI event controller module'
+  'cfitsio: for FITS support'
+  'ghostscript: for PostScript support'
+  'gjs: for JavaScript scripting support'
+  'gutenprint: for sophisticated printing only as gimp has built-in cups print support'
+  'gvfs: for HTTP/S support (and many other schemes)'
+  'libilbm: ILBM support'
+  'luajit: LUA scripting support'
+  'lua51-lgi: LUA scripting support'
+)
+source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
+        'linux.gpl'
+)
+sha256sums=('330b1634bec07dc34bec4e7e4109765b7b864a39a3702f6899de4738f2e38c2a'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 build() {
   local meson_options=(
-    # -Dg-ir-doc=false # disabled by default, depends on yelp-tools -- was causing build errors on 3.0 RC1
+    --buildtype=plain
+    --prefix=/usr
+    --sysconfdir=/etc
+    --libexecdir=/usr/bin \
+    -Dopenmp=enabled
+    -Dcheck-update=no
+    -Dbug-report-url='https://aur.archlinux.org/packages/gimp-devel'
+    -Dopenexr=enabled
     -Dheadless-tests=disabled # enabled by default, depends on xorg-server-xvfb
-    -Dlua=true # disabled by default for release (flagged as experimental)
+    -Dlua=true
   )
 
-  arch-meson "${_pkgname}-${pkgver/rc/-RC}" build "${meson_options[@]}"
+  arch-meson ${_pkgname}-${pkgver} build "${meson_options[@]}"
   meson compile -C build
 }
 
 package() {
   meson install -C build --destdir "${pkgdir}"
-
-  install -Dm 644 "${srcdir}"/linux.gpl "${pkgdir}/usr/share/gimp/${pkgver%.*}/palettes/Linux.gpl"
 }
