@@ -1,5 +1,5 @@
 pkgbase = drbd-utils-git
-	pkgdesc = Userland tools for Distributed Replicated Block Device
+	pkgdesc = Userland tools for Distributed Replicated Block Device. (Git)
 	pkgver = 9.28.0
 	pkgrel = 1
 	url = https://www.drbd.org
@@ -17,7 +17,8 @@ pkgbase = drbd-utils-git
 	backup = etc/drbd.conf
 	backup = etc/drbd.d/global_common.conf
 	source = git+https://github.com/LINBIT/drbd-utils.git
+	source = drbd-headers.git::git+https://github.com/LINBIT/drbd-headers.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = drbd-utils-git
-

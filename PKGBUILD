@@ -54,7 +54,6 @@ package() {
 
   # move bash completion
   install -dm 755 usr/share/bash-completion
-  mv etc/bash_completion.d usr/share/bash-completion/completions
 
   # remove /var establish /var/lib/drbd when installed
   rm -r var
