@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pe-parse-git
-pkgver=2.1.1.r4.gbc0d0d3
+pkgver=2.1.1.r17.g31ac596
 pkgrel=1
 pkgdesc="Principled, lightweight C/C++ PE parser"
 arch=('i686' 'x86_64')
@@ -39,12 +39,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "pe-parse"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/pe-parse"
 }
