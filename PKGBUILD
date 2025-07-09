@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ispc-git
-pkgver=1.19.0.r23.gd43e322c
+pkgver=1.26.0.r420.g1f8ac39a
 pkgrel=1
 pkgdesc="Intel SPMD program compiler"
 arch=('i686' 'x86_64')
 url="https://ispc.github.io/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('clang' 'llvm-libs' 'zlib')
 makedepends=('git' 'cmake' 'lib32-glibc' 'llvm' 'python')
 provides=("ispc=$pkgver")
@@ -31,19 +31,19 @@ build() {
     -DISPC_INCLUDE_EXAMPLES=OFF \
     -DISPC_NO_DUMPS=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "ispc"
 
-  #make -C "_build" check-all
+  #cmake --build "_build" --target check-all
 }
 
 package() {
   cd "ispc"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "contrib/ispc.vim" -t "$pkgdir/usr/share/vim/vimfiles/syntax"
   install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/ispc"
 }
