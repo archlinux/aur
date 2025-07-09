@@ -1,26 +1,27 @@
-# Maintainer: Harrison <htv04rules at gmail dot com>
+# Maintainer: hcorion <zionnimchuk@gmail.com>
+# Contributor: Harrison <htv04rules at gmail dot com>
 
 _pkgname="melonds"
 pkgname="${_pkgname}-bin"
-pkgver=0.9.5
+pkgver=1.0
 pkgrel=1
 pkgdesc="DS emulator, sorta"
 arch=("x86_64" "aarch64")
 url="http://melonds.kuribo64.net"
-license=("GPL3")
-depends=("libepoxy" "libslirp" "qt5-base" "qt5-multimedia" "sdl2")
+license=("GPL-3.0-or-later")
+depends=("qt6-base" "qt6-multimedia" "sdl2" "enet" "libx11" "libglvnd" "hicolor-icon-theme")
 makedepends=("git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-git::git+https://github.com/Arisotura/melonDS.git#tag=${pkgver}")
-sha256sums=("SKIP")
+sha256sums=("414b376e14a66d8e095605b83a6b7711c04330be159b2649c87213fe8af0c9c6")
 
-source_x86_64=("${url}/downloads/melonDS_${pkgver}_linux_x64.zip")
-sha256sums_x86_64=("67eb30acb1bb33a36ad9ea3d025a4666cc188ee51c5289857e940f3892efe84d")
+source_x86_64=("https://github.com/melonDS-emu/melonDS/releases/download/${pkgver}/melonDS-ubuntu-x86_64.zip")
+sha256sums_x86_64=("1f6187a69a34261a8aa28ca0758493e89f0969f70ff14a38d0b861c8dc236160")
 
-source_aarch64=("${url}/downloads/melonDS_${pkgver}_linux_arm64.zip")
-sha256sums_aarch64=("1747bd4d34bae7ecd2fdb15b4f7458d991dd0bd9bf014de6fea8ded4b12664d7")
+source_aarch64=("https://github.com/melonDS-emu/melonDS/releases/download/${pkgver}/melonDS-ubuntu-aarch64.zip")
+sha256sums_aarch64=("6d385cf5e8c5d508a7dc1fc327649227fde06f781daa7ea158bd897c35461340")
 
 package() {
   cd "${srcdir}"
