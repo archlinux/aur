@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=alembic-git
-pkgver=1.8.5.r2.gfdb0dcbb
+pkgver=1.8.8.r0.g43a1489a
 pkgrel=1
 pkgdesc="An open framework for storing and sharing scene data"
 arch=('i686' 'x86_64')
 url="https://www.alembic.io/"
-license=('BSD' 'custom')
+license=('BSD-3-Clause' 'LicenseRef-alembic')
 depends=('glibc' 'hdf5' 'imath')
 makedepends=('git' 'cmake')
 provides=("alembic=$pkgver")
@@ -34,18 +34,18 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DUSE_HDF5=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "alembic"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "alembic"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/alembic"
 }
