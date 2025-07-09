@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=glog-git
-pkgver=0.7.0.r4.gea0748d
+pkgver=0.7.1.r43.g53d58e4
 pkgrel=1
 pkgdesc="C++ implementation of the Google logging module"
 arch=('i686' 'x86_64')
@@ -34,19 +34,19 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DWITH_PKGCONFIG=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "glog"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "glog"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/glog"
 }
 

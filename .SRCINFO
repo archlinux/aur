@@ -1,6 +1,6 @@
 pkgbase = glog-git
 	pkgdesc = C++ implementation of the Google logging module
-	pkgver = 0.7.0.r4.gea0748d
+	pkgver = 0.7.1.r43.g53d58e4
 	pkgrel = 1
 	url = https://github.com/google/glog
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = glog-git
 	makedepends = cmake
 	depends = gcc-libs
 	depends = gflags
-	provides = google-glog=0.7.0.r4.gea0748d
+	provides = google-glog=0.7.1.r43.g53d58e4
 	conflicts = google-glog
 	source = git+https://github.com/google/glog.git
 	sha256sums = SKIP
