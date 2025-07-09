@@ -1,7 +1,7 @@
 pkgbase = stellar-cli
 	pkgdesc = Command-line multi-tool for running and deploying Stellar contracts on the Stellar network
-	pkgver = 22.8.1
-	pkgrel = 1
+	pkgver = 22.8.2
+	pkgrel = 2
 	url = https://stellar.org
 	arch = x86_64
 	license = Apache-2.0
@@ -14,7 +14,7 @@ pkgbase = stellar-cli
 	depends = openssl
 	depends = dbus
 	options = !lto
-	source = git+https://github.com/stellar/stellar-cli#tag=v22.8.1
-	sha512sums = 14138155e62397f027dbf5d3a68c86b4d53643affb754504b9e5c6cb9da5fe81112910daf1d770161ddf9c54f4ad8dd25590ba5707c4a5fce9e45d9305c99182
+	source = git+https://github.com/stellar/stellar-cli#tag=v22.8.2
+	sha512sums = 3b85ef511a21e3a45ce328ff9a801864646556aad44483fadf9c1bf3a3f1109879d74b9e0a8f4644489851b455c1aa35f0413e96a1f055e20da8e0d922f6adfd
 
 pkgname = stellar-cli
