@@ -1,6 +1,6 @@
 pkgbase = way-edges-git
 	pkgdesc = Hidden widget on screen edges
-	pkgver = r582.f30deee
+	pkgver = r677.12f81fc
 	pkgrel = 1
 	url = https://github.com/way-edges/way-edges
 	arch = x86_64

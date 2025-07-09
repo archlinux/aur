@@ -1,7 +1,7 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-git
-pkgver=r582.f30deee
+pkgver=r677.12f81fc
 pkgrel=1
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
@@ -41,7 +41,7 @@ prepare() {
 build() {
   cd "$_pkgname"
 
-  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src --cfg tokio_unstable"
+  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src --cfg tokio_unstable -C target-cpu=native"
   cargo build --release --frozen
 }
 
