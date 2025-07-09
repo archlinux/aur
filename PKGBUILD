@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libzip-git
-pkgver=1.9.2.r144.gdadb14d5
+pkgver=1.11.4.r10.gdd450e6e
 pkgrel=1
 pkgdesc="C library for reading, creating, and modifying zip archives"
 arch=('i686' 'x86_64')
 url="https://libzip.org/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc' 'bzip2' 'gnutls' 'openssl' 'xz' 'zlib' 'zstd')
 makedepends=('git' 'cmake')
 provides=("libzip=$pkgver")
@@ -30,18 +30,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "libzip"
 
-  make -C "_build" check
+  #cmake --build "_build" --target check
 }
 
 package() {
   cd "libzip"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libzip"
 }

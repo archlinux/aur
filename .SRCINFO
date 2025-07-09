@@ -1,11 +1,11 @@
 pkgbase = libzip-git
 	pkgdesc = C library for reading, creating, and modifying zip archives
-	pkgver = 1.9.2.r144.gdadb14d5
+	pkgver = 1.11.4.r10.gdd450e6e
 	pkgrel = 1
 	url = https://libzip.org/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
@@ -15,7 +15,7 @@ pkgbase = libzip-git
 	depends = xz
 	depends = zlib
 	depends = zstd
-	provides = libzip=1.9.2.r144.gdadb14d5
+	provides = libzip=1.11.4.r10.gdd450e6e
 	conflicts = libzip
 	source = git+https://github.com/nih-at/libzip.git
 	sha256sums = SKIP
