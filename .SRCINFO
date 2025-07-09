@@ -1,0 +1,19 @@
+pkgbase = xfce4-zorinmenulite-plugin-elite
+	pkgdesc = Zorin Menu Lite plugin for the Xfce4 panel[no error]
+	pkgver = 1.1.4
+	pkgrel = 4
+	url = https://zorin.com/os/
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = findutils
+	depends = gtk3
+	depends = libxfce4ui
+	depends = libxfce4util
+	depends = xfce4-panel
+	source = http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/x/xfce4-zorinmenulite-plugin/xfce4-zorinmenulite-plugin_1.1.4.tar.xz
+	sha256sums = SKIP
+
+pkgname = xfce4-zorinmenulite-plugin-elite
