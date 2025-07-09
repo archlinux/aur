@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.13.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -50,13 +50,13 @@ EOF
 # work around for upstream bug (GCC-15)
 cd ${srcdir}/${_pkgname}-${pkgver}
 patch -p1 < ${srcdir}/gcc15-fix.patch
-grep -nrl '/usr/local' | xargs -r sed -i "s|\/usr\/local|\/usr|g"
+#grep -nrl '/usr/local' | xargs -r sed -i "s|\/usr\/local|\/usr|g"
 }
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}/pteid-mw-pt/_src/eidmw
   qmake pteid-mw.pro
-  grep -nrl '/usr/local' | xargs -r sed -i "s|\/usr\/local|\/usr|g"
+  #grep -nrl '/usr/local' | xargs -r sed -i "s|\/usr\/local|\/usr|g"
   make -j${nproc}
 }
 

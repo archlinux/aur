@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID) source code based version
 	pkgver = 3.13.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt.install
 	arch = i686
