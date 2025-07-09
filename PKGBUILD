@@ -1,69 +1,55 @@
-# vim:set ft=sh:
-# Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
+# Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=121.0.6156.3
+_note='Make sure every operas have same Chromium ver at opera:about'
+pkgver=135.0.7049.115
+_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${pkgver}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgrel=1
-pkgdesc="additional support for proprietary codecs for opera-developer"
+pkgdesc='Add codecs to opera-developer'
 arch=('x86_64')
-url="https://ffmpeg.org/"
-license=('LGPL2.1')
-depends=('glibc')
-makedepends=(
-  'gn' 'ninja' 'python' 'gtk3' 'nss' 'libva' 'libevdev'
+url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
+license=('LGPL-2.1-or-later')
+depends=(glibc)
+makedepends=(nasm git)
+source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
+#sigs-$pkgver::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_commit}/chromium/ffmpeg.sigs?format=TEXT
 )
-source=(
-  "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
-)
-sha512sums=('1f8b5280f562776b37c91714c709e4d0941bb5c3b2a3677266585911bd8a4a5ea1f65382c66a9920af5847f7d5dc25ff29f8d0acc0678ed1fd14d80480f9c9ef')
+sha256sums=('ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d')
 
-#prepare() {
-  #cd "$srcdir/chromium-$pkgver"
-#}
+prepare() {
+  echo $_note
+  cd chromium-ffmpeg
+  # Use native opus decoder not in kAllowedAudioCodecs
+  sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
+}
 
-_build_flags=(
-  'is_component_build=false'
-  'is_component_ffmpeg=true'
-  'use_sysroot=false'
-  'use_qt=false'
-  'use_glib=false'
-  'ozone_platform_x11=false'
-)
-
-_ffmpeg_build_flags=(
-  "ffmpeg_branding=\"ChromeOS\""
-  "proprietary_codecs=true"
-  "enable_platform_hevc=true"
-  "enable_platform_ac3_eac3_audio=true"
-  "enable_platform_mpeg_h_audio=true"
-  "enable_platform_dolby_vision=true"
-  "enable_mse_mpeg2ts_stream_parser=true"
-)
 build() {
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-ffmpeg
+  # See BUILD.gn and chromium/config/Chrome/linux/x64/
+  ./configure \
+    --disable-{all,autodetect,doc,iconv,network} \
+    --disable-{error-resilience,faan,iamf} \
+    --enable-static --disable-shared \
+    --enable-av{format,codec,util} \
+    --enable-swresample \
+    --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
+    --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
+    --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros $LTOFLAGS" \
+    --enable-{pic,asm,hardcoded-tables} \
+    --prefix="${srcdir}"/release
 
-  # chromium clang
-  python tools/clang/scripts/update.py
-  python tools/rust/update_rust.py
-  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
+  make install
 
-  export CC="clang"
-  export CXX="clang++"
-
-  gn gen -v \
-    --fail-on-unused-args \
-    --args="${_build_flags[*]} ${_ffmpeg_build_flags[*]}" \
-    --script-executable=/usr/bin/python \
-    out/ffmpegso
-
-  ninja -C out/ffmpegso libffmpeg.so
+  cd ../release
+  #_symbols=$(base64 -d ../sigs-${pkgver} | grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  gcc $LTOFLAGS -shared $LDFLAGS \
+    -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
+    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
+    -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
 
-package() {
-  cd "$srcdir/chromium-$pkgver"
-
-  install -Dm644 out/ffmpegso/libffmpeg.so \
-    "$pkgdir/usr/lib/opera-developer/lib_extra/libffmpeg.so"
+package(){
+  # Merge this package to opera-ffmpeg-codecs by symlink
+  install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/opera-developer/lib_extra/libffmpeg.so"
 }
-
-# vim:set ts=2 sw=2 et:
