@@ -1,0 +1,14 @@
+#!/bin/sh
+
+post_install() {
+    echo "======================================================================================================================================"
+    echo "==  For lsfg-vk to work, you will need Lossless Scaling installed from Steam (legacy_2.13 build, installable in the Betas options)  =="
+    echo "==  It should be installed in ~/.local/share/Steam/steamapps/common/Lossless Scaling/Lossless.dll                                   =="
+    echo "==  To enable lsfg, set the env vars ENABLE_LSFG=1 and LSFG_MULTIPLIER to a value between 0 and 5 before running a program          =="
+    echo "==  For more usage instructions, refer to the lsfg-vk wiki: https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk  =="
+    echo "======================================================================================================================================"
+}
+
+post_upgrade() {
+    post_install
+}

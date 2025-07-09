@@ -14,6 +14,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/PancakeTAS/lsfg-vk')
 sha256sums=('SKIP')
+install=lsfg-vk.install
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
