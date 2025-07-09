@@ -8,7 +8,7 @@
 
 pkgname=grace-openmotif
 pkgver=5.1.25
-pkgrel=3
+pkgrel=4
 pkgdesc="2D plotting tool"
 arch=(i686 x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
@@ -22,7 +22,7 @@ license=('GPL')
 # netcdf_fftw2.patch : fix configure instead of aclocal.m4
 # fortran.patch : fix for missing defines when fortran is disabled
 # dlmodule.patch pdfdrv.patch : fix a leak and pdf driver (from freebsd)
-source=(ftp://plasma-gate.weizmann.ac.il/pub/grace/src/grace5/grace-$pkgver.tar.gz \
+source=(http://plasma-gate.weizmann.ac.il/pub/grace/src/grace5/grace-$pkgver.tar.gz \
         mkstemp.patch \
         netcdf_fftw2.patch \
         fortran.patch \
@@ -51,7 +51,7 @@ build() {
   patch -Np1 < ../meaningful_timestamp.patch
   patch -Np1 < ../handle_nans.patch
   
-  CFLAGS="-Wno-format-security" ./configure   --prefix=/usr --exec-prefix=/usr \
+  CFLAGS="-Wno-format-security -Wno-implicit-int -Wno-old-style-definition -Wno-implicit-function-declaration -Wno-int-conversion -D_XOPEN_SOURCE -std=c17" ./configure   --prefix=/usr --exec-prefix=/usr \
                 --enable-grace-home=/usr/share/grace \
                 --disable-xmhtml \
                 --without-bundled-xbae \

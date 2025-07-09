@@ -1,7 +1,7 @@
 pkgbase = grace-openmotif
 	pkgdesc = 2D plotting tool
 	pkgver = 5.1.25
-	pkgrel = 3
+	pkgrel = 4
 	url = http://plasma-gate.weizmann.ac.il/Grace/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = grace-openmotif
 	provides = grace
 	conflicts = grace
 	replaces = grace
-	source = ftp://plasma-gate.weizmann.ac.il/pub/grace/src/grace5/grace-5.1.25.tar.gz
+	source = http://plasma-gate.weizmann.ac.il/pub/grace/src/grace5/grace-5.1.25.tar.gz
 	source = mkstemp.patch
 	source = netcdf_fftw2.patch
 	source = fortran.patch
