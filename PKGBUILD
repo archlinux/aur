@@ -1,18 +1,18 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=authselect
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Tool to select system authentication and identity sources from a list of supported profiles."
 arch=('i686' 'x86_64')
 url="https://github.com/authselect/authselect"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('popt' 'asciidoc' 'libselinux')
 provides=('authconfig')
 conflicts=('authconfig')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cf61268b308cb3bb5c424c73c012a712cac0050c42dee94aa70037019a10dff7')
+sha256sums=('d8f1f0bedd5ee7399ded9f65004168608576ed1814bda2e71962627965fb5547')
 
 _srcdir="${pkgname}-${pkgver}"
 
