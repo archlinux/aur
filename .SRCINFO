@@ -1,0 +1,22 @@
+pkgbase = python-llama-index-instrumentation
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/run-llama/llama_index/tree/main/llama-index-instrumentation
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-watch
+	checkdepends = python-msgspec
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-deprecated
+	depends = python-pydantic
+	source = https://files.pythonhosted.org/packages/source/l/llama-index-instrumentation/llama_index_instrumentation-0.2.0.tar.gz
+	sha256sums = ae8333522487e22a33732924a9a08dfb456f54993c5c97d8340db3c620b76f13
+
+pkgname = python-llama-index-instrumentation
