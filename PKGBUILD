@@ -3,13 +3,13 @@
 _pkgname=idris2-refined
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Refinedment types for Idris2'
 arch=('x86_64')
 url='https://github.com/stefan-hoeck/idris2-refined'
 license=('custom:BSD')
-depends=('idris2' 'idris2-algebra')
+depends=('idris2' 'idris2-algebra' 'idris2-elab-util')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

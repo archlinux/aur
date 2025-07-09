@@ -1,13 +1,14 @@
 pkgbase = idris2-refined-git
 	pkgdesc = Refinedment types for Idris2
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stefan-hoeck/idris2-refined
 	arch = x86_64
 	license = custom:BSD
 	makedepends = git
 	depends = idris2
 	depends = idris2-algebra
+	depends = idris2-elab-util
 	provides = idris2-refined
 	conflicts = idris2-refined
 	source = idris2-refined::git+https://github.com/stefan-hoeck/idris2-refined.git
