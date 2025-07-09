@@ -8,7 +8,7 @@
 
 pkgname=graphite-editor-git
 _pkgname=Graphite
-pkgver=r1409.46a9fc0
+pkgver=r2086.e025103
 pkgrel=1
 pkgdesc='2D raster & vector editor that melds traditional layers & tools with a modern node-based, non-destructive, procedural workflow'
 arch=(x86_64)
@@ -30,7 +30,7 @@ makedepends=(binaryen
              rust-wasm
              wasm-bindgen
              wasm-pack
-             webkit2gtk)
+             webkit2gtk-4.1)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -39,7 +39,7 @@ sha256sums=('SKIP')
 prepare() {
 	cd "$pkgname"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-        pushd frontend
+	pushd frontend
 	npm install
 }
 
@@ -60,11 +60,11 @@ _srcenv() {
 
 build() {
 	_srcenv
-	# pushd frontend
-	# npm run tauri:build-wasm
-	# popd
-	# cargo build --release --frozen
-	cargo tauri build -b app ||:
+	pushd frontend
+	npm run tauri:build
+	popd
+	cargo build --release --frozen
+	# cargo tauri build -b appimage ||:
 }
 
 check() {
@@ -73,5 +73,7 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin/" target/release/graphite-{cli,desktop}
+	install -Dm0755 -t "$pkgdir/usr/bin/" target/release/graphene-cli
+	install -Dm0755 -t "$pkgdir/usr/lib/" target/release/libgraphite_wasm.so
+	# install -Dm0755 -t "$pkgdir/usr/bin/" target/release/graphite-{cli,desktop}
 }
