@@ -3,11 +3,12 @@
 pkgname=libfprint-2-tod1-goodix-v2
 pkgver=0.0.11
 _debver="${pkgver}-0ubuntu1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary driver for Goodix fingerprint readers from Ubuntu launchpad"
 arch=('x86_64')
 url="https://launchpad.net/~libfprint-tod1-group"
 license=('custom')
+conflicts=('libfprint-2-tod1-goodix')
 depends=('libfprint-tod')
 makedepends=('tar')
 groups=('fprint')
