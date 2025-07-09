@@ -1,23 +1,23 @@
 pkgbase = vesktop-bin
 	pkgdesc = A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.5.7
-	pkgrel = 2
+	pkgver = 1.5.8
+	pkgrel = 1
 	url = https://github.com/Vencord/Vesktop
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron36
+	depends = electron37
 	depends = debugedit
 	optdepends = speech-dispatcher: High-level device independent layer for speech synthesis interface
-	provides = vesktop=1.5.7
-	provides = vencord-desktop=1.5.7
+	provides = vesktop=1.5.8
+	provides = vencord-desktop=1.5.8
 	conflicts = vesktop
 	conflicts = vencord-desktop
 	source = vesktop.sh
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = vesktop-1.5.7-aarch64.rpm::https://github.com/Vencord/Vesktop/releases/download/v1.5.7/vesktop-1.5.7.aarch64.rpm
-	sha256sums_aarch64 = 741cb8def79803d81c942c5bce2f53a9d24eac1e1d74fc3595065dc4f998f443
-	source_x86_64 = vesktop-1.5.7-x86_64.rpm::https://github.com/Vencord/Vesktop/releases/download/v1.5.7/vesktop-1.5.7.x86_64.rpm
-	sha256sums_x86_64 = d2be41df066a5a6d053d8607a2c25ac1cffdd00d014833f0931521ecf11191c0
+	source_aarch64 = vesktop-1.5.8-aarch64.rpm::https://github.com/Vencord/Vesktop/releases/download/v1.5.8/vesktop-1.5.8.aarch64.rpm
+	sha256sums_aarch64 = 24c656c20f92dd2613d1c01a9cffc93c15509a22df2da98180e6075c33030962
+	source_x86_64 = vesktop-1.5.8-x86_64.rpm::https://github.com/Vencord/Vesktop/releases/download/v1.5.8/vesktop-1.5.8.x86_64.rpm
+	sha256sums_x86_64 = 4e3dd423dc753dbd5cb1ec37b7305db92a2c46c6ba31dcff952170c65a30b66d
 
 pkgname = vesktop-bin
