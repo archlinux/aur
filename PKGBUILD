@@ -2,11 +2,11 @@
 
 pkgname=libtorrent-rasterbar-1_1-git
 pkgver=1.1.14.r4.g760f94862
-pkgrel=2
+pkgrel=3
 pkgdesc="A feature complete C++ bittorrent library (git branch RC_1_1)"
 arch=('i686' 'x86_64')
 url="https://www.libtorrent.org/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('boost-libs' 'openssl')
 makedepends=('git' 'boost' 'cmake' 'python' 'python-setuptools')
 provides=("libtorrent-rasterbar=$pkgver")
@@ -36,12 +36,12 @@ build() {
     -Dpython-bindings=ON \
     -Dboost-python-module-name="python" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 package() {
   cd "libtorrent"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libtorrent-rasterbar"
 }
