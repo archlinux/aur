@@ -1,11 +1,12 @@
 pkgbase = kikit-git
 	pkgdesc = Automation for KiCAD boards
-	pkgver = r748.559d637
-	pkgrel = 1
+	pkgver = r751.4f1a424
+	pkgrel = 2
 	url = https://github.com/yaqwsx/KiKit.git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-versioneer
 	depends = kicad>=5.1.0
 	depends = python-shapely
 	depends = python-solidpython

@@ -2,8 +2,8 @@
 # Contributor: Julian Daube <joposter at gmail dot com>
 pkgname=kikit-git
 pkgdesc="Automation for KiCAD boards"
-pkgver=r748.559d637
-pkgrel=1
+pkgver=r751.4f1a424
+pkgrel=2
 
 url="https://github.com/yaqwsx/KiKit.git"
 
@@ -14,7 +14,10 @@ conflicts=("python-kikit")
 
 source=("$pkgname::git+https://github.com/yaqwsx/KiKit.git")
 md5sums=("SKIP")
-makedepends=("python-setuptools")
+makedepends=(
+	"python-setuptools" 
+	"python-versioneer"
+)
 depends=(
 	"kicad>=5.1.0"
 	"python-shapely"
@@ -35,9 +38,15 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build()
+{
+	cd "$pkgname"
+	python -m build --wheel --no-isolation
+}
+
 package() {
 	cd "$pkgname"
-	python setup.py install --root="$pkgdir/" --optimize=1	
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 
 	# install license
 	install -Dm 644 LICENCE "$pkgdir"/usr/share/licenses/kikit/LICENSE
