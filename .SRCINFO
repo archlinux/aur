@@ -1,6 +1,6 @@
 pkgbase = transistor-git
 	pkgdesc = Internet radio player that provides access to a station database with over 50,000 stations.
-	pkgver = 1.1.c47f5d6
+	pkgver = r14.c47f5d6
 	pkgrel = 1
 	url = https://invent.kde.org/saurov/transistor
 	arch = x86_64

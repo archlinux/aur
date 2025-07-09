@@ -5,7 +5,7 @@
 # basic info
 pkgname="transistor-git"
 _pkgname="transistor"
-pkgver=1.1.c47f5d6
+pkgver=r14.c47f5d6
 pkgrel=1
 pkgdesc="Internet radio player that provides access to a station database with over 50,000 stations."
 url="https://invent.kde.org/saurov/transistor"
@@ -43,7 +43,7 @@ depends=("${depends[@]}")
 
 pkgver() {
   cd "$srcdir/$_pkgname.git"
-  git rev-parse --short HEAD
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
