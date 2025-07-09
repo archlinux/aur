@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=unstoppableswap-gui-bin
-_pkgver=1.0.0-rc.21
+_pkgver=2.0.3
 pkgver=${_pkgver/-/.}
 pkgrel=1
 epoch=
@@ -16,7 +16,7 @@ conflicts=(unstoppableswap-gui)
 backup=()
 options=()
 source=("https://github.com/UnstoppableSwap/core/releases/download/${_pkgver}/UnstoppableSwap_${_pkgver}_amd64.deb")
-sha256sums=('9472837470ead146aa6a9699b978d2ebd131c36569fceac29512ed48f4251d87')
+sha256sums=('dae3ac67a22f6907acf8560643470d625c92ce3c8dc1fff77ea9370c9ccdf962')
 validpgpkeys=()
 
 package() {

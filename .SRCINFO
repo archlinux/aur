@@ -1,6 +1,6 @@
 pkgbase = unstoppableswap-gui-bin
 	pkgdesc = Graphical User Interface for trustless cross-chain XMR<>BTC Atomic Swaps.
-	pkgver = 1.0.0.rc.21
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://unstoppableswap.net/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = unstoppableswap-gui-bin
 	depends = webkit2gtk
 	provides = unstoppableswap-gui
 	conflicts = unstoppableswap-gui
-	source = https://github.com/UnstoppableSwap/core/releases/download/1.0.0-rc.21/UnstoppableSwap_1.0.0-rc.21_amd64.deb
-	sha256sums = 9472837470ead146aa6a9699b978d2ebd131c36569fceac29512ed48f4251d87
+	source = https://github.com/UnstoppableSwap/core/releases/download/2.0.3/UnstoppableSwap_2.0.3_amd64.deb
+	sha256sums = dae3ac67a22f6907acf8560643470d625c92ce3c8dc1fff77ea9370c9ccdf962
 
 pkgname = unstoppableswap-gui-bin
