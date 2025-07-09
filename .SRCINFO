@@ -1,7 +1,7 @@
 pkgbase = printer-support
 	pkgdesc = Metapkg for packages needed to use printers
 	pkgver = 1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://wiki.archlinux.org/index.php/Category:Printers
 	install = printer-support.install
 	arch = any
@@ -22,7 +22,6 @@ pkgbase = printer-support
 	depends = gsfonts
 	depends = gutenprint
 	depends = noto-fonts
-	depends = noto-color-emoji-fontconfig
 	depends = python-pyqt6
 	depends = python-reportlab
 	depends = samba-support
@@ -30,6 +29,7 @@ pkgbase = printer-support
 	depends = system-config-printer
 	optdepends = print-manager: A KDE tool for managing print jobs and printers
 	optdepends = hplip: HP printer and scaner support and tools
+	optdepends = noto-color-emoji-fontconfig: Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed
 	provides = printer-support
 	replaces = manjaro-printer
 

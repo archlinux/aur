@@ -4,7 +4,7 @@
 
 pkgname=printer-support
 pkgver=1
-pkgrel=8
+pkgrel=9
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Printers"
 license=('GPL')
@@ -25,14 +25,14 @@ depends=("a2ps"
         "gsfonts"
         "gutenprint"
         "noto-fonts"
-        "noto-color-emoji-fontconfig"
         "python-pyqt6"
         "python-reportlab"
         "samba-support"
         "splix"
         "system-config-printer")
 optdepends=('print-manager: A KDE tool for managing print jobs and printers'
-            'hplip: HP printer and scaner support and tools')
+            'hplip: HP printer and scaner support and tools'
+            'noto-color-emoji-fontconfig: Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed')
 provides=('printer-support')
 replaces=('manjaro-printer')
 install=$pkgname.install
