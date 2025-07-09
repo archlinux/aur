@@ -1,6 +1,6 @@
 pkgbase = cachyos-ksm-settings-git
 	pkgdesc = Package for easy configuration of kernel samepage merding (KSM) via commandline or systemd. Replaces 'uksmd'.
-	pkgver = 2.r2.20250504.ce686af9
+	pkgver = 4.r3.20250629.62660947
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/CachyOS/CachyOS-PKGBUILDS/tree/master/cachyos-ksm-settings
@@ -14,9 +14,9 @@ pkgbase = cachyos-ksm-settings-git
 	optdepends = lightdm: For systemd service override to work (lightdm graphical session via systemd).
 	optdepends = ly: For systemd service override to work (ly session via systemd).
 	optdepends = sddm: For systemd service override to work (sddm graphical session via systemd).
-	provides = cachyos-ksm-settings=2.r2.20250504.ce686af9
-	provides = ksmctl=2.r2.20250504.ce686af9
-	provides = ksmstats=2.r2.20250504.ce686af9
+	provides = cachyos-ksm-settings=4.r3.20250629.62660947
+	provides = ksmctl=4.r3.20250629.62660947
+	provides = ksmstats=4.r3.20250629.62660947
 	conflicts = cachyos-ksm-settings
 	conflicts = ksmctl
 	conflicts = ksmstats
