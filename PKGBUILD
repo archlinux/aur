@@ -18,8 +18,11 @@ build() {
 }
 
 package(){
-	install -Dm644 usr/bin/twintaillauncher -t $pkgdir/usr/bin
-	find usr/share -exec install -Dm644 {} $pkgdir/{} \;
-	install -Dm644 usr/lib/twintaillauncher/resources/hpatchz_kuro.exe -t $pkgdir/usr/lib/twintaillauncher/resources
-	ln -s /usr/bin/hpatchz $pkgdir/usr/lib/twintaillauncher/resources
+	install -Dm755 usr/bin/twintaillauncher -t $pkgdir/usr/bin
+	install -Dm755 usr/lib/twintaillauncher/resources/hpatchz_kuro.exe -t $pkgdir/usr/lib/twintaillauncher/resources
+	install -Dm755 usr/lib/twintaillauncher/resources/hpatchz -t $pkgdir/usr/lib/twintaillauncher/resources
+	install -Dm644 usr/share/icons/hicolor/32x32/apps/twintaillauncher.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png
+	install -Dm644 usr/share/icons/hicolor/128x128/apps/twintaillauncher.png $pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png
+	install -Dm644 usr/share/icons/hicolor/256x256@2/apps/twintaillauncher.png $pkgdir/usr/share/icons/hicolor/256x256@2/apps/$_pkgname.png
+	install -Dm644 usr/share/applications/twintaillauncher.desktop -t $pkgdir/usr/share/applications
 }
