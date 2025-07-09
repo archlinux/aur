@@ -17,7 +17,7 @@ makedepends=(nasm)
 source=(${url}/+archive/${_commit}.tar.gz
 off-opera-developer-ffmpeg.hook on-opera-developer-ffmpeg.install)
 install=on-opera-developer-ffmpeg.install
-sha256sums=('b407de7a2e8c8c2f1bca1f86540008631e460c2cea323778c9177affac1eabf1'
+sha256sums=('011859b8e407b2838cddb505fa1c237b88672558719808ab3f63e89e53755a79'
             '2f118dfca4d3097432000b62f8247ef86afd66a9681c1dfa71adf86783587ed4'
             '4918ba2449b39274878268c5956b604992c504b89660469c93864e44de8c62aa')
 
