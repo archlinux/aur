@@ -1,15 +1,15 @@
 pkgbase = authme-bin
 	pkgdesc = Simple cross-platform two-factor (2FA) authenticator app for desktop.(Prebuilt version)
-	pkgver = 6.1.1
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://authme.levminer.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = authme=6.1.1
+	provides = authme=6.1.2
 	conflicts = authme
-	source = authme-6.1.1.deb::https://github.com/Levminer/authme/releases/download/6.1.1/authme-6.1.1-linux-x64.deb
-	sha256sums = 03006c57f532d547c91c545eb327813e980d4666ebcc1816ee8a6c1a0893c8ff
+	source = authme-6.1.2.deb::https://github.com/Levminer/authme/releases/download/6.1.2/authme-6.1.2-linux-x64.deb
+	sha256sums = 0668e806378fd853b92fdceac493f0f542ef9f0195b454e1f290b20a22c9260a
 
 pkgname = authme-bin
