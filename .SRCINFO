@@ -1,5 +1,5 @@
 pkgbase = nocodb
-	pkgdesc = The Open Source Airtable Alternative
+	pkgdesc = A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface.
 	pkgver = 0.263.8
 	pkgrel = 2
 	url = https://nocodb.com
@@ -10,16 +10,17 @@ pkgbase = nocodb
 	makedepends = node-gyp
 	makedepends = python
 	makedepends = libvips
-	makedepends = dasel
-	depends = nodejs
+	depends = nodejs>=20.0.1
 	optdepends = postgresql: recommended database
 	optdepends = litestream
-	optdepends = mariadb-lts
+	optdepends = dasel: read litestream config
+	optdepends = mariadb-server
 	optdepends = valkey
 	options = !debug
 	options = !strip
+	backup = usr/lib/systemd/user/nocodb.service
 	source = git+https://github.com/nocodb/nocodb.git#branch=master
-	source = nocodb.proto
+	source = nocodb.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -2,30 +2,30 @@
 pkgname=nocodb
 pkgver=0.263.8
 pkgrel=2
-pkgdesc="The Open Source Airtable Alternative"
+pkgdesc="A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface."
 arch=('x86_64' 'aarch64')
 url="https://nocodb.com"
 license=('AGPL-3.0-or-later')
-depends=('nodejs')
+depends=('nodejs>=20.0.1')
 makedepends=('pnpm'
     'node-gyp'
     'python'
     'libvips'
-    'dasel'
 )
 optdepends=('postgresql: recommended database'
     'litestream'
-    'mariadb-lts'
+    'dasel: read litestream config'
+    'mariadb-server'
     'valkey'
 )
+
+backup=("usr/lib/systemd/user/nocodb.service")
 source=(
     "git+https://github.com/nocodb/nocodb.git#branch=master"
-    "nocodb.proto"
-    #"nocodb.install"
+    "nocodb.service"
 )
 sha256sums=('SKIP'
     'SKIP'
-    #'SKIP'
 )
 options=('!debug' '!strip')
 
@@ -61,7 +61,7 @@ build() {
 }
 
 package() {
-    install -Dm644 nocodb.proto ${pkgdir}/usr/lib/systemd/system/nocodb.service.proto
+    install -Dm644 nocodb.service ${pkgdir}/usr/lib/systemd/user/nocodb.service
     install -dm755 ${pkgdir}/var/lib/nocodb
 
     cd ${srcdir}/app/packages/nocodb
@@ -71,4 +71,6 @@ package() {
     install -Dm644 package.json ${pkgdir}/usr/share/nocodb/packages/nocodb/package.json
     cp -r node_modules ${pkgdir}/usr/share/nocodb/packages/nocodb/node_modules
     cp -r ${srcdir}/app/node_modules ${pkgdir}/usr/share/nocodb/node_modules
+
+    echo -e "Please change envs in \n/usr/lib/systemd/user/nocodb.service"
 }

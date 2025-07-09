@@ -18,3 +18,6 @@ Environment="NC_PUBLIC_URL=https://example.com:8080"
 ExecStart=/usr/bin/nocodb
 WorkingDirectory=/usr/share/nocodb/packages/nocodb
 Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
