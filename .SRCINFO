@@ -1,0 +1,20 @@
+pkgbase = kapsul-git
+	pkgdesc = A tool to create and manage deduplicated, compressed and encrypted PTAR vaults
+	pkgver = 0.0.0.beta.6.r2.gc33cf76
+	pkgrel = 1
+	url = https://plakar.io/
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = ISC
+	makedepends = go
+	optdepends = plakar: for the man pages
+	provides = kapsul
+	provides = kapsule
+	conflicts = kapsul
+	conflicts = kapsule
+	source = kapsul::git+https://github.com/PlakarKorp/kapsul#branch=main
+	sha256sums = SKIP
+
+pkgname = kapsul-git
