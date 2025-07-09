@@ -1,13 +1,13 @@
 pkgbase = somo
 	pkgdesc = A human-friendly alternative to netstat for socket and port monitoring
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/theopfr/somo
 	arch = x86_64
-	license = UNLICENCED
+	license = MIT
 	makedepends = cargo
 	options = !debug
-	source = https://github.com/theopfr/somo/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 334946fcd0dfa056effbe45ec8be37c72a3bcae50ba7b9464806b0ac7615285c
+	source = https://github.com/theopfr/somo/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 8026a39058a0e71cc603cd887b4fd5c0eb8ff310fb5ee1a36ff98ebe90be5878
 
 pkgname = somo

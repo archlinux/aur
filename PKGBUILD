@@ -1,16 +1,16 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=somo
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A human-friendly alternative to netstat for socket and port monitoring'
 url='https://github.com/theopfr/somo'
-license=('UNLICENCED')
+license=('MIT')
 makedepends=('cargo')
 depends=()
 arch=('x86_64')
 source=("https://github.com/theopfr/somo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('334946fcd0dfa056effbe45ec8be37c72a3bcae50ba7b9464806b0ac7615285c')
+sha256sums=('8026a39058a0e71cc603cd887b4fd5c0eb8ff310fb5ee1a36ff98ebe90be5878')
 options=('!debug')
 
 prepare() {
