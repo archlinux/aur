@@ -6,7 +6,7 @@ pkgdesc='TUI volume control app for pipewire'
 arch=('x86_64')
 url='https://github.com/heather7283/pipemixer'
 license=('GPL-3.0-or-later')
-depends=('libpipewire' 'ncurses')
+depends=('glibc' 'libpipewire' 'ncurses')
 makedepends=('git' 'meson')
 source=('git+https://github.com/heather7283/pipemixer.git')
 sha256sums=('SKIP')
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
 	cd pipemixer
-    arch-meson build
+	arch-meson -D system_libraries=disabled build
 	meson compile -C build
 }
 

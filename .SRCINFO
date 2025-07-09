@@ -7,6 +7,7 @@ pkgbase = pipemixer-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = meson
+	depends = glibc
 	depends = libpipewire
 	depends = ncurses
 	source = git+https://github.com/heather7283/pipemixer.git
