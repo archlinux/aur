@@ -7,8 +7,8 @@ clean:
 	@rm -rf src/ pkg/ *.pkg.tar.zst
 
 test:
-	@rm -rf *.pkg.tar.zst
-	@makepkg -s
+	@make clean
+	@makepkg -sf
 
 publish:
 	@git add .
