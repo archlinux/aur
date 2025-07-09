@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libebml-git
-pkgver=1.4.3.r521.g50a4d44
+pkgver=1.4.5.r521.g50a4d44
 pkgrel=1
 pkgdesc="Extensible Binary Meta Language library"
 arch=('i686' 'x86_64')
@@ -18,7 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libebml"
 
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^release-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^release-//'
 }
 
 build() {
