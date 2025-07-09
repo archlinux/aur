@@ -1,6 +1,6 @@
 pkgbase = ares-emu
 	pkgdesc = Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation.
-	pkgver = 144
+	pkgver = 145
 	pkgrel = 1
 	url = https://ares-emu.net/
 	install = ares.install
@@ -36,7 +36,7 @@ pkgbase = ares-emu
 	depends = pango
 	provides = ares-emu
 	conflicts = ares-emu
-	source = https://github.com/ares-emulator/ares/archive/refs/tags/v144.tar.gz
-	sha512sums = 2258bfa61a64d847b7d59f868a8b4cc948b35e71b4c27c66867d1622c1ffca9a7f3c079a2e0050467f60ff1eb3a20e9e4eb0a9f00ae0b7871ccbabd4c3ec31a2
+	source = https://github.com/ares-emulator/ares/archive/refs/tags/v145.tar.gz
+	sha512sums = 78284326a48dddaddc11817b1ea74b7c3370739646bbda0c4a5b75fd928bf6f209e15f62c0a08ac9babd141938d624a9faf4dac08666fe52d601e3855a2ab20f
 
 pkgname = ares-emu
