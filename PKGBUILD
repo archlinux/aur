@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=lamW
-_pkgver=2.2.4
+_pkgver=2.2.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d169a166a9cd2456a417572d5fa1b178')
-b2sums=('76b4ea1b537b46d842d426d24ca9504167f68d11ac57db9f62075c3a5a61e4a3aea129217137605ddc5f304a1c28d5566e593f9e3747137ccc7eb2da7366dcb2')
+md5sums=('a7160bd07d07b227a5b8e33ada7f85d5')
+b2sums=('e8d9582bab5c7ff5b16b3911f9e6546ef4d92348119c8b501de166cc2e6a7f10007c41e9b4dc661e129a0c2c502e7c2840ec837a9da67b7f4d47955f53d89268')
 
 build() {
   mkdir build
