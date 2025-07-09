@@ -7,7 +7,7 @@
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 pkgname=toxcore-git
-pkgver=0.2.18.r281.gad4921dba
+pkgver=0.2.21.r3.g679444751
 pkgrel=1
 pkgdesc="Peer to peer (serverless) instant messenger core"
 arch=('i686' 'x86_64')
@@ -37,7 +37,10 @@ prepare() {
 pkgver() {
   cd "c-toxcore"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
@@ -49,19 +52,19 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "c-toxcore"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "c-toxcore"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 
   install -Dm644 "$srcdir/toxcore.conf" -t "$pkgdir/usr/lib/sysusers.d"
   install -Dm644 "$srcdir/toxcore.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/toxcore.conf"
