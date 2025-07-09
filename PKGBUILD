@@ -12,7 +12,7 @@ arch=(
   'i686'
   'x86_64'
 )
-url="https://github.com/freemed/tty0tty"  # Version 1.3
+url="https://github.com/freemed/tty0tty"  # Version 1.3   -- but as of 2025-07-09, much more recently updated than the below version 1.4.
 # url="https://github.com/lcgamboa/tty0tty" # Version 1.4
 license=(
   'GPL-2.0-only'
