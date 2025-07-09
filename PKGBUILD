@@ -1,4 +1,4 @@
-# Maintainter: DXC-0 <thecyberarcher@protonmail.ch>
+# Maintainter: DXC-0 <thecyberarcher@protonmail.ch >
 # Contributor: Amy <amy at fluff dot tech>
 
 pkgname=bitwarden-chromium
