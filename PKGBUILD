@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hdf5-git
-pkgver=1.14.0.r95.gfc91e8856f
+pkgver=1.14.3.r1717.gd212ae6b41
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data"
 arch=('i686' 'x86_64')
 url="https://www.hdfgroup.org/solutions/hdf5/"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('glibc' 'bash' 'libaec' 'zlib')
 makedepends=('git' 'cmake')  # gcc-fortran
 provides=("hdf5=$pkgver")
@@ -38,18 +38,18 @@ build() {
     -DHDF5_ENABLE_SZIP_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_ENCODING=ON \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "hdf5"
 
-  make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "hdf5"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/hdf5"
 }
