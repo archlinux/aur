@@ -1,0 +1,14 @@
+pkgbase = hemeshp
+	pkgdesc = A scripting language like Bash, created by Hemesh
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/hemeshdev/hemeshp
+	arch = any
+	license = GPL
+	depends = python
+	source = hemeshp
+	source = hemeshp_main.py
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hemeshp
