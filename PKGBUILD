@@ -2,7 +2,7 @@
 export GIT_LFS_SKIP_SMUDGE=1
 _pkgname=opentoonz
 _version=git
-pkgver=1.5.2982
+pkgver=1.7f.4450
 pkgname=${_pkgname}-${_version}
 pkgrel=1
 pkgdesc="2D Animation software."
@@ -59,6 +59,9 @@ build() {
   cmake -H$_pkgname/toonz/sources \
         -B$_pkgname-build \
         -DCMAKE_BUILD_TYPE:STRING=Release \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_CXX_STANDARD=17 \
+        -DCMAKE_C_STANDARD=99 \
         -DCMAKE_INSTALL_PREFIX:PATH=/opt/opentoonz
 
   cd $_pkgname-build
