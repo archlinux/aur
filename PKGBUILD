@@ -2,7 +2,7 @@
 # Maintainer: Rene Peinthor <peinthor@gmail.com>
 
 pkgname=drbd-utils-git
-pkgver=9.28.0
+pkgver=9.31.0
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc='Userland tools for Distributed Replicated Block Device. (Git)'
