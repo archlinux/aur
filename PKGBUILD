@@ -1,89 +1,105 @@
-# Maintainer: tytan652 <tytan652@tytanium.xyz>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Contributor: Paul Mattal <paul@archlinux.org>
+# Contributor: Sylvain "Magicking" Laurent <s@6120.eu>
 
 pkgname=ffmpeg-ndi
-pkgver=5.0.1
-pkgrel=1
-pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
+pkgver=7.1.1
+pkgrel=4
+epoch=2
+pkgdesc='Complete solution to record, convert and stream audio and video with NDI support'
 arch=(x86_64)
-url=https://ffmpeg.org/
-license=('custom: nonfree and unredistributable')
+url=https://ffmpeg.org
+license=(GPL-3.0-only)
 depends=(
   alsa-lib
   aom
   bzip2
+  cairo
+  dav1d
   fontconfig
+  freetype2
   fribidi
+  glib2
+  glibc
+  glslang
   gmp
   gnutls
   gsm
+  harfbuzz
   jack
   lame
-  libass.so
+  libass
   libavc1394
-  libbluray.so
-  libdav1d.so
+  libbluray
+  libbs2b
   libdrm
-  libfreetype.so
+  libdvdnav
+  libdvdread
+  libgl
   libiec61883
-  libmfx
+  libjxl
   libmodplug
+  libopenmpt
+  libplacebo
   libpulse
-  librav1e.so
   libraw1394
-  librsvg-2.so
+  librsvg
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  libva
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpx.so
+  libvorbis
+  libvpx
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
+  ndi-sdk
+  ocl-icd
+  onevpl
   opencore-amr
   openjpeg2
   opus
+  rav1e
+  rubberband
   sdl2
+  snappy
   speex
   srt
   svt-av1
   v4l-utils
+  vapoursynth
   vmaf
+  vulkan-icd-loader
   xz
+  zeromq
+  zimg
   zlib
-
-# AUR:
-  ndi-sdk
 )
 makedepends=(
   amf-headers
-  avisynthplus
   clang
   ffnvcodec-headers
   git
   ladspa
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
 )
 optdepends=(
-  'avisynthplus: AviSynthPlus support'
-  'intel-media-sdk: Intel QuickSync support'
+  'intel-media-sdk: Intel QuickSync support (legacy)'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
+  'onevpl-intel-gpu: Intel QuickSync support'
 )
 provides=(
-  ffmpeg
   libavcodec.so
   libavdevice.so
   libavfilter.so
@@ -93,80 +109,90 @@ provides=(
   libswresample.so
   libswscale.so
 )
-conflicts=('ffmpeg')
-_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
+_tag=a1328e68877e12ab5a6e5d92a84aefa566783ea5
 source=(
-  "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
-  "ffmpeg-vmaf2.x.patch"
-  "master_Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/master_Revert-lavd-Remove-libndi_newtek.patch?inline=false"
-  "libndi_newtek_common.h::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false"
-  "libndi_newtek_dec.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false"
-  "libndi_newtek_enc.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false"
-  "LICENSE"
+  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
+  0001-Add-av_stream_get_first_dts-for-Chromium.patch
+  0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  fix_build_with_v4l2_1.30.patch
+  chore-Add-nonfree-libndi_newtek-device.patch
 )
-sha256sums=(
-  "SKIP"
-  "42bd572442a4eba4e9559953c72f9e980b78286ab288ac01e659be39d8bc7298"
-  "a5701faa71ac69c94dc0230b401203d135e48c45980926432f1190ef3218009b"
-  "462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4"
-  "3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca"
-  "83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb"
-  "04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36"
-)
-
-pkgver() {
-  cd ffmpeg
-
-  git describe --tags | sed 's/^n//'
-}
+b2sums=('c7b1a56593f123de8e18b3b93c81dca4aff439f5701935cc1fe6316543e8c3256acd7f95b4a533eb7ba30e346fa13bf0ad5bff54b7822c088ef3939882416a7c'
+        'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
+        'a32aeff68032a78d661011654bbdba138002833f7d17d23bba6f95479ca22bef5697eb9e7e4cb9e0b5140fc23eab3aab16fc60962d62809c3c02f890599a8332'
+        'a713b3a4243cc5de3867f7c210172c094f50bd614c0c8be2c99d6161b06d43d9183ae9c442ac3056bfe06c28419e276d129b1235471466eedd340bf0c4780acb'
+        '5402946473629643e45cdaeaa43dcc5e4da0de8a575cabb49ba0d69100ea204d364f7fad46d990a6fdb828d6c34918a48f4329817386b14ff60eb923d51f5b48')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
   cd ffmpeg
 
-  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch
-  patch -Np1 -i "${srcdir}"/master_Revert-lavd-Remove-libndi_newtek.patch
+  # Fix build with v4l2 >= 1.30
+  # https://trac.ffmpeg.org/ticket/11570
+  patch -Np1 -i "${srcdir}/fix_build_with_v4l2_1.30.patch"
+  patch -Np1 -i ../chore-Add-nonfree-libndi_newtek-device.patch
 
-  printf 'Copying libndi missing file\n'
-  cp "${srcdir}"/libndi_newtek_* libavdevice/
+  # https://crbug.com/1251779
+  git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
+
+  # Fix for svt-av1
+  # Taken from https://github.com/FFmpeg/FFmpeg/commit/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95.patch
+  git apply -3 ../0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+
+
+  # VAAPI HEVC encode alignment fix
+  git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
+  git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
+
+}
+
+pkgver() {
+  cd ffmpeg
+  git describe --tags | sed 's/^n//'
 }
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib/mbedtls2/pkgconfig'
   cd ffmpeg
-
   ./configure \
     --prefix=/usr \
     --disable-debug \
     --disable-static \
     --disable-stripping \
     --enable-amf \
-    --enable-avisynth \
     --enable-cuda-llvm \
     --enable-lto \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
-    --enable-gpl \
     --enable-ladspa \
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
+    --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
+    --enable-libglslang \
     --enable-libgsm \
+    --enable-libharfbuzz \
     --enable-libiec61883 \
     --enable-libjack \
-    --enable-libmfx \
+    --enable-libjxl \
     --enable-libmodplug \
     --enable-libmp3lame \
+    --enable-libndi_newtek \
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
+    --enable-libplacebo \
     --enable-libpulse \
     --enable-librav1e \
     --enable-librsvg \
+    --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
@@ -174,33 +200,53 @@ build() {
     --enable-libsvtav1 \
     --enable-libtheora \
     --enable-libv4l2 \
-    --enable-libvidstab \
     --enable-libvmaf \
     --enable-libvorbis \
+    --enable-libvpl \
     --enable-libvpx \
     --enable-libwebp \
-    --enable-libx264 \
-    --enable-libx265 \
     --enable-libxcb \
     --enable-libxml2 \
-    --enable-libxvid \
     --enable-libzimg \
+    --enable-libzmq \
     --enable-nvdec \
     --enable-nvenc \
+    --enable-opencl \
+    --enable-opengl \
     --enable-shared \
+    --enable-vapoursynth \
     --enable-version3 \
-    --enable-nonfree \
-    --enable-libndi_newtek
-
+    --enable-vulkan
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
 }
 
 package() {
+  depends+=(
+    libass.so
+    libbluray.so
+    libbs2b.so
+    libdav1d.so
+    libfreetype.so
+    libharfbuzz.so
+    libjxl.so
+    libopenmpt.so
+    libplacebo.so
+    librav1e.so
+    librsvg-2.so
+    libva.so
+    libva-drm.so
+    libva-x11.so
+    libvorbisenc.so
+    libvorbis.so
+    libvpx.so
+    libzimg.so
+    libzmq.so
+  )
+
   make DESTDIR="${pkgdir}" -C ffmpeg install install-man
   install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
-  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
