@@ -1,7 +1,7 @@
 pkgbase = airvpn-suite-beta-bin
 	pkgdesc = AirVPN client software collection - prebuilt beta
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://airvpn.org/linux/suite
 	install = airvpn-suite-beta-bin.install
 	changelog = Changelog-Suite.txt
@@ -24,9 +24,9 @@ pkgbase = airvpn-suite-beta-bin
 	conflicts = airvpn-suite
 	conflicts = airvpn-suite-bin
 	backup = etc/airvpn/bluetit.rc
-	source = https://eddie.website/repository/AirVPN-Suite/2.0-RC1/AirVPN-Suite-x86_64-2.0.0-RC-1.tar.gz
+	source = https://eddie.website/repository/AirVPN-Suite/2.0-RC2/AirVPN-Suite-x86_64-2.0.0-RC-2.tar.gz
 	source = airvpn-suite.sysusers
-	sha512sums = b85f131c05d077c29c1168cb4dc3fb024fead493ec8628a4799eea77674bbc2053527f8c35fdd78914993a4b8eff6eccd2affd83a8befff7793e99b4e7c04c9c
+	sha512sums = fa54d9e9203107bc7a1ca0a39045fb5a3bfc40268ed2e5325eba5c66adc1a480c19d687e750a2b3dfecb8a80221a550729c3fb1d82aa2d712e2b4bdc47c613e4
 	sha512sums = bae4fad4ef209f91f2473101713f0d58db7d4db9eb6b706508527422cf029aa631a7d877eb88d80bcb6c14ecf562f2cc88816200d83a8288cb7b3619261ba72c
 
 pkgname = airvpn-suite-beta-bin
