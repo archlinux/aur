@@ -12,7 +12,8 @@ license=(BSD)
 
 pkgver() {
   cd "${srcdir}/oapi-cli"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --match="v*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 makedepends=(git)
