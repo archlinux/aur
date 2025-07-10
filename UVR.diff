@@ -1,21 +1,58 @@
+diff --git a/UVR.py b/UVR.py
+index 09f0de4..89fb071 100644
+--- a/UVR.py
++++ b/UVR.py
+@@ -62,8 +62,8 @@ from os.path import expanduser
+ # import faulthandler
+ # faulthandler.enable()
+ 
+-if not is_macos:
+-    import torch_directml # type:ignore
++# if not is_macos:
++#     import torch_directml # type:ignore
+ 
+ is_choose_arch = cuda_available and directml_available
+ is_directml_only = not cuda_available and directml_available
 diff --git a/gui_data/app_size_values.py b/gui_data/app_size_values.py
-index 85c3ad4..5d6e912 100644
+index 4839f81..e1d456b 100644
 --- a/gui_data/app_size_values.py
 +++ b/gui_data/app_size_values.py
-@@ -132,7 +132,7 @@ class ImagePath():
+@@ -132,9 +132,9 @@ class ImagePath():
          if size is not None:
              size = (int(size[0]), int(size[1]))
              if keep_aspect:
 -                img = img.resize((size[0], int(size[0] * ratio)), Image.ANTIALIAS)
 +                img = img.resize((size[0], int(size[0] * ratio)), Image.LANCZOS)
              else:
-                 img = img.resize(size, Image.ANTIALIAS)
+-                img = img.resize(size, Image.ANTIALIAS)
++                img = img.resize(size, Image.LANCZOS)
                  
-diff --git a/install_packages.sh b/install_packages.sh
-old mode 100644
-new mode 100755
+         return ImageTk.PhotoImage(img)
+ 
+diff --git a/lib_v5/apollo_inference.py b/lib_v5/apollo_inference.py
+index 8ce47a9..6d8cdd1 100644
+--- a/lib_v5/apollo_inference.py
++++ b/lib_v5/apollo_inference.py
+@@ -11,8 +11,8 @@ from separate import (get_gpu_info, clear_gpu_cache,
+ import warnings
+ warnings.filterwarnings("ignore")
+ 
+-if not is_macos:
+-    import torch_directml # type:ignore
++# if not is_macos:
++#     import torch_directml # type:ignore
+ 
+ DIRECTML_DEVICE, directml_available = get_gpu_info()
+ is_choose_arch = cuda_available and directml_available
+@@ -157,4 +157,4 @@ def restore_process(input_wav, ckpt_path, overlap=2, chunk_size=10, set_progress
+     del model
+     clear_gpu_cache()
+     
+-    return final_output
+\ No newline at end of file
++    return final_output
 diff --git a/lib_v5/spec_utils.py b/lib_v5/spec_utils.py
-index 8ec520d..5c2fe7c 100644
+index 9f75e2c..103497a 100644
 --- a/lib_v5/spec_utils.py
 +++ b/lib_v5/spec_utils.py
 @@ -271,8 +271,8 @@ def wave_to_spectrogram(wave, hop_length, n_fft, mp, band, is_v51_model=False):
@@ -34,7 +71,7 @@ index 8ec520d..5c2fe7c 100644
                  else:
                      spec_s = fft_lp_filter(spec_s, bp['lpf_start'], bp['lpf_stop'])
 -                wave = librosa.resample(spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model), bp['sr'], sr, res_type=wav_resolution)
-+                wave = librosa.resample(spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model), orig_sr=bp['sr'], target_sr=sr, res_type=wav_resolution)
++                wave = librosa.resample(spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model), bp['sr'], target_sr=sr, res_type=wav_resolution)
              else: # mid
                  if is_v51_model:
                      spec_s *= get_hp_filter_mask(spec_s.shape[1], bp['hpf_start'], bp['hpf_stop'] - 1)
@@ -43,24 +80,54 @@ index 8ec520d..5c2fe7c 100644
                      
                  wave2 = np.add(wave, spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model))
 -                wave = librosa.resample(wave2, bp['sr'], sr, res_type=wav_resolution)
-+                wave = librosa.resample(wave2, orig_sr=bp['sr'], target_sr=sr, res_type=wav_resolution)
++                wave = librosa.resample(wave2, bp['sr'], target_sr=sr, res_type=wav_resolution)
          
      return wave
  
+@@ -406,8 +406,8 @@ def wave_to_spectrogram_old(wave, hop_length, n_fft):
+     wave_left = np.asfortranarray(wave[0])
+     wave_right = np.asfortranarray(wave[1])
+ 
+-    spec_left = librosa.stft(wave_left, n_fft, hop_length=hop_length)
+-    spec_right = librosa.stft(wave_right, n_fft, hop_length=hop_length)
++    spec_left = librosa.stft(wave_left, n_fft=n_fft, hop_length=hop_length)
++    spec_right = librosa.stft(wave_right, n_fft=n_fft, hop_length=hop_length)
+     
+     spec = np.asfortranarray([spec_left, spec_right])
+ 
 diff --git a/separate.py b/separate.py
-index 864473e..4b1057c 100644
+index 6ee4e05..1b31394 100644
 --- a/separate.py
 +++ b/separate.py
-@@ -1104,7 +1104,7 @@ class SeperateVR(SeperateAttributes):
-                 wav_resolution = bp['res_type']
-         
-             if d == bands_n: # high-end band
--                X_wave[d], _ = librosa.load(audio_file, bp['sr'], False, dtype=np.float32, res_type=wav_resolution)
-+                X_wave[d], _ = librosa.load(audio_file, sr=bp['sr'], mono=False, dtype=np.float32, res_type=wav_resolution)
-                 X_spec_s[d] = spec_utils.wave_to_spectrogram(X_wave[d], bp['hl'], bp['n_fft'], self.mp, band=d, is_v51_model=self.is_vr_51_model)
-                     
-                 if not np.any(X_wave[d]) and is_mp3:
-@@ -1113,7 +1113,7 @@ class SeperateVR(SeperateAttributes):
+@@ -41,8 +41,8 @@ import gc
+ if TYPE_CHECKING:
+     from UVR import ModelData
+ 
+-if not is_macos:
+-    import torch_directml # type:ignore
++# if not is_macos:
++#     import torch_directml # type:ignore
+ 
+ mps_available = torch.backends.mps.is_available() if is_macos else False
+ cuda_available = torch.cuda.is_available()
+@@ -51,11 +51,11 @@ default_sr = 44100
+ def get_gpu_info():
+     directml_device, directml_available = DIRECTML_DEVICE, False
+     
+-    if not is_macos:
+-        directml_available = torch_directml.is_available()
+-
+-        if directml_available:
+-            directml_device = str(torch_directml.device()).partition(":")[0]
++    # if not is_macos:
++    #     directml_available = torch_directml.is_available()
++    #
++    #     if directml_available:
++    #         directml_device = str(torch_directml.device()).partition(":")[0]
+ 
+     return directml_device, directml_available
+ 
+@@ -1210,7 +1210,7 @@ class SeperateVR(SeperateAttributes):
                  if X_wave[d].ndim == 1:
                      X_wave[d] = np.asarray([X_wave[d], X_wave[d]])
              else: # lower bands
@@ -69,3 +136,12 @@ index 864473e..4b1057c 100644
                  X_spec_s[d] = spec_utils.wave_to_spectrogram(X_wave[d], bp['hl'], bp['n_fft'], self.mp, band=d, is_v51_model=self.is_vr_51_model)
  
              if d == bands_n and self.high_end_process != 'none':
+@@ -1541,7 +1541,7 @@ def loading_mix(X, mp):
+             X_wave[d] = X
+ 
+         else: # lower bands
+-            X_wave[d] = librosa.resample(X_wave[d+1], mp.param['band'][d+1]['sr'], bp['sr'], res_type=wav_resolution)
++            X_wave[d] = librosa.resample(X_wave[d+1], orig_sr=mp.param['band'][d+1]['sr'], target_sr=bp['sr'], res_type=wav_resolution)
+             
+         X_spec_s[d] = spec_utils.wave_to_spectrogram(X_wave[d], bp['hl'], bp['n_fft'], mp, band=d, is_v51_model=True)
+         
