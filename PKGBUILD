@@ -6,7 +6,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sway-scroll-stable
-pkgver=1.11.1
+pkgver=1.11.2
 epoch=1
 pkgrel=1
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (stable version)'
@@ -29,6 +29,7 @@ depends=(
   'ttf-font'
   'wlroots0.19'
   'xcb-util-wm'
+  'lua'
 )
 makedepends=(git meson ninja scdoc wayland-protocols)
 provides=('sway-scroll-stable' 'wayland-compositor')

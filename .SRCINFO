@@ -1,6 +1,6 @@
 pkgbase = sway-scroll-stable
 	pkgdesc = Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (stable version)
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dawsers/scroll
@@ -27,6 +27,7 @@ pkgbase = sway-scroll-stable
 	depends = ttf-font
 	depends = wlroots0.19
 	depends = xcb-util-wm
+	depends = lua
 	optdepends = brightnessctl: Brightness adjustment tool used in the default configuration
 	optdepends = foot: Terminal emulator used in the default configuration
 	optdepends = i3status: Status line generation
@@ -47,7 +48,7 @@ pkgbase = sway-scroll-stable
 	conflicts = sway-scroll-git
 	backup = etc/scroll/config
 	backup = etc/scroll/config.d/50-systemd-user.conf
-	source = git+https://github.com/dawsers/scroll.git#tag=1.11.1
+	source = git+https://github.com/dawsers/scroll.git#tag=1.11.2
 	source = 50-systemd-user.conf
 	source = scroll-portals.conf
 	source = remove_git_version_format.patch
