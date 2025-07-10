@@ -14,4 +14,3 @@ for rcfile in ~/.bashrc ~/.zshrc; do
   fi
 done
 
-echo "AYAAN UNSTABLE FETCH READY! Just type: ayaanfetch"
