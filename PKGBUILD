@@ -1,7 +1,7 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=minc-bin
-pkgver=0.0.9
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="MicroShift in Container"
 arch=("any")
