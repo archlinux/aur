@@ -1,0 +1,40 @@
+From 0ba4b46ca1a43a3ba5e98dd688616cd5d2550760 Mon Sep 17 00:00:00 2001
+From: Julian Smith <julian.smith@artifex.com>
+Date: Fri, 3 May 2024 10:54:27 +0100
+Subject: [PATCH] setup.py: avoid requiring pip._internal.req.
+
+pip._internal.req is not always available. Instead we parse requirements.txt by
+hand.
+---
+ setup.py | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 0b75a053..01b2076e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -28,19 +28,11 @@ def load_long_description(fname):
+ 
+ def load_requirements(fname):
+     '''Load requirements.'''
+-    try:
+-        # pip >= 10.0
+-        from pip._internal.req import parse_requirements
+-    except ImportError:
+-        # pip < 10.0
+-        from pip.req import parse_requirements
+-
+-    reqs = parse_requirements(fname, session=False)
+-    try:
+-        requirements = [str(ir.requirement) for ir in reqs]
+-    except AttributeError:
+-        requirements = [str(ir.req) for ir in reqs]
+-    return requirements
++    ret = list()
++    with open(fname) as f:
++        for line in f:
++            ret.append(line)
++    return ret
+ 
+ 
+ setup(
