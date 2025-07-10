@@ -1,0 +1,11 @@
+pkgbase = crush-demo
+	pkgdesc = A dummy file compression utility
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sst/crush
+	arch = x86_64
+	license = MIT
+	source = crush-demo-1.0.0.tar.gz::https://github.com/sst/crush/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = crush-demo
