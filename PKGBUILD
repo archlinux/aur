@@ -1,21 +1,13 @@
 # Maintainer:
 # Contributor: Oliver Braunschweig <olt78 at web dot de>
 # Contributor: Andrew Crerar <crerar@archlinux.org>
-# Contributor: Rob McCathie <korrode at gmail>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
-# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
-# Contributor: heaven <aheaven87 at gmail dot com>
-# Contributor: graysky <graysky at archlinux dot us>
-# Contributor: Arkham <arkham at archlinux dot us>
-# Contributor: MacWolf <macwolf at archlinux dot de>
 
 _pkgname="vlc"
 pkgname="vlc-git"
-pkgver=4.0.0.r33753.g562bc83
-pkgrel=1
-pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
-url='https://code.videolan.org/videolan/vlc'
+pkgver=4.0.0.r34182.g39a4b41
+pkgrel=2
+pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player (monolithic)"
+url="https://github.com/videolan/vlc"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
 
@@ -52,7 +44,9 @@ depends=(
 makedepends=(
   'ffnvcodec-headers'
   'git'
+  'meson'
   'qt6-shadertools'
+  'qt6-tools'
   'vulkan-headers'
   'wayland-protocols'
 )
@@ -123,14 +117,28 @@ for i in "${_optdeps[@]}"; do
   optdepends+=("$i")
 done
 
-provides=("${_pkgname}=${pkgver}" "lib${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}" "lib${_pkgname}")
+provides=(
+  "vlc=${pkgver%.g*}"
+  "libvlc=${pkgver%.g*}"
+  vlc-cli
+  vlc-gui-{ncurses,qt,skins2}
+  vlc-plugin-{a52dec,aalib,alsa,aom,archive,aribb24,aribb25,ass,avahi,bluray,caca,cddb,chromecast,dav1d,dbus,dbus-screensaver,dca,dvb,dvd,faad2,ffmpeg,firewire,flac,fluidsynth,freetype,gme,gnutls,gstreamer,inflate,jack,journal,jpeg,kate,kwallet,libsecret,lirc,live555,lua,mad,matroska,mdns,modplug,mpeg2,mpg123,mtp,musepack,nfs,notify,ogg,opus,png,pulse,quicksync,samplerate,sdl,sftp,shout,smb,soxr,speex,srt,svg,tag,theora,twolame,udev,upnp,vorbis,vpx,x264,x265,xml,zvbi}
+  vlc-plugins-{all,base,extra,video-output,visualization}
+)
+conflicts=(
+  vlc
+  libvlc
+  vlc-cli
+  vlc-gui-{ncurses,qt,skins2}
+  vlc-plugin-{a52dec,aalib,alsa,aom,archive,aribb24,aribb25,ass,avahi,bluray,caca,cddb,chromecast,dav1d,dbus,dbus-screensaver,dca,dvb,dvd,faad2,ffmpeg,firewire,flac,fluidsynth,freetype,gme,gnutls,gstreamer,inflate,jack,journal,jpeg,kate,kwallet,libsecret,lirc,live555,lua,mad,matroska,mdns,modplug,mpeg2,mpg123,mtp,musepack,nfs,notify,ogg,opus,png,pulse,quicksync,samplerate,sdl,sftp,shout,smb,soxr,speex,srt,svg,tag,theora,twolame,udev,upnp,vorbis,vpx,x264,x265,xml,zvbi}
+  vlc-plugins-{all,base,extra,video-output,visualization}
+)
 
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 
-_pkgsrc="$_pkgname"
+_pkgsrc="$_pkgname.github"
 source=(
-  "$_pkgsrc"::"git+https://code.videolan.org/videolan/vlc.git"
+  "$_pkgsrc"::"git+$url.git"
   'update-vlc-plugin-cache.hook'
 )
 sha256sums=(
@@ -159,135 +167,54 @@ build() {
   export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/} -std=c++17"
-  export MPG123_CFLAGS+=" -DMPG123_NO_LARGENAME"
 
   export RCC=/usr/lib/qt6/rcc
   export QMAKE=/usr/bin/qmake6
   export QTPATHS6="/usr/lib/qt6/bin/qtpaths6"
 
-  # gawk -v RS="### config-options ###\n" 'NR==2{print}' PKGBUILD | sort -t'-' -k'4' | xclip -sel clip
-  local _config_opts=(
-    --prefix=/usr
-    --sysconfdir=/etc
-    --libexecdir=/usr/lib
-    --with-kde-solid=/usr/share/solid/actions/
+  local _meson_args=(
+    -Dbranch_protection=disabled
+    -Davx=disabled
+    -Dsse=disabled
+    -Dtests=disabled
+    -Dupdate-check=disabled
 
-    ### config-options ###
-    --enable-alsa
-    --enable-aribb25
-    --enable-aom
-    --enable-archive
-    --enable-aribsub
-    --enable-avahi
-    --enable-avcodec
-    --enable-avformat
-    --enable-bluray
-    --enable-caca
-    --enable-chromaprint
-    --enable-chromecast
-    --enable-dav1d
-    --enable-dc1394
-    --disable-decklink
-    --enable-dv1394
-    --enable-dvbpsi
-    --enable-dvdnav
-    --enable-dvdread
-    --enable-ebur128
-    --enable-faad
-    --disable-fdkaac
-    --enable-flac
-    --disable-fluidsynth
-    --enable-fontconfig
-    --enable-freetype
-    --enable-fribidi
-    --enable-gme
-    --enable-gnutls
-    --enable-goom
-    --enable-gst-decode
-    --enable-harfbuzz
-    --enable-jack
-    --enable-jpeg
-    --enable-kate
-    --enable-kwallet
-    --enable-libass
-    --disable-libgcrypt
-    --enable-libplacebo
-    --enable-libva
-    --enable-libxml2
-    --enable-lirc
-    --enable-live555
-    --enable-mad
-    --enable-matroska
-    --enable-microdns
-    --enable-mod
-    --enable-mpc
-    --enable-mpg123
-    --enable-mtp
-    --enable-ncurses
-    --enable-nfs
-    --enable-nls
-    --enable-notify
-    --enable-ogg
-    --enable-oggspots
-    --disable-opencv
-    --enable-opus
-    --enable-png
-    --enable-postproc
-    --enable-projectm
-    --enable-pulse
-    --enable-qt
-    --enable-qtdeclarative
-    --enable-qtshadertools
-    --enable-qtsvg
-    --enable-qtwayland
-    --disable-rist
-    --disable-rpath
-    --enable-samplerate
-    --disable-schroedinger
-    --enable-secret
-    --enable-sftp
-    --enable-shout
-    --enable-skins2
-    --enable-smbclient
-    --enable-soxr
-    --enable-speex
-    --enable-srt
-    --enable-svg
-    --enable-svgdec
-    --enable-taglib
-    --enable-tiger
-    --enable-twolame
-    --disable-update-check
-    --enable-upnp
-    --enable-vcd
-    --enable-vdpau
-    --enable-vlc
-    --enable-vorbis
-    --enable-vpx
-    --enable-wayland
-    --enable-x264
-    --enable-x265
-    --enable-zvbi
-    ### config-options ###
+    -Daribcaption=disabled
+    -Ddecklink=disabled
+    -Ddsm=disabled # smb/cifs
+    -Ddvbcsa=disabled
+    -Dfdk-aac=disabled
+    -Dfreerdp=disabled
+    -Dlibcddb=disabled
+    -Dlibgcrypt=disabled
+    -Dlive555=disabled
+    -Dmacosx_avfoundation=disabled # macos
+    -Dmedialibrary=disabled
+    -Dminimal_macosx=disabled # macos
+    -Drist=disabled
+    -Dschroedinger=disabled
+    -Dshine=disabled
+    -Dsid=disabled
+    -Dsndio=disabled
+    -Dspatialaudio=disabled
+    -Dvnc=disabled
+    -Dvsxu=disabled
+    -Dwasapi=disabled # windows
+    -Dx262=disabled
   )
 
-  cd "$_pkgsrc"
-  ./configure "${_config_opts[@]}"
-
-  # prevent excessive overlinking due to libtool
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+  arch-meson ${_meson_args[@]} "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgsrc"
-  make DESTDIR="${pkgdir}" install
+  provides+=(
+    'libvlc.so'
+    'libvlccore.so'
+  )
 
-  for res in 16 32 48 128 256; do
-    install -Dm 644 "${srcdir}"/"${_pkgname}"/share/icons/"${res}"x"${res}"/vlc.png \
-      "${pkgdir}"/usr/share/icons/hicolor/"${res}"x"${res}"/apps/vlc.png
-  done
+  meson install -C build --destdir "$pkgdir"
 
-  install -Dm644 "${srcdir}"/update-vlc-plugin-cache.hook -t "${pkgdir}"/usr/share/libalpm/hooks
+  install -Dm 644 "$_pkgsrc/share/icons/256x256/vlc.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "$srcdir/update-vlc-plugin-cache.hook" -t "$pkgdir/usr/share/libalpm/hooks/"
 }
