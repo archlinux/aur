@@ -1,12 +1,12 @@
 pkgbase = advanced-linux-system-cleaning
 	pkgdesc = Advanced system cleaning and privacy
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/SeryogaBrigada/AdvancedLinuxSystemCleaning
 	arch = any
 	license = MIT
 	optdepends = bleachbit: additional custom options support
-	source = advanced-linux-system-cleaning-1.0.5.tar.gz::https://github.com/SeryogaBrigada/AdvancedLinuxSystemCleaning/archive/refs/tags/v1.0.5.tar.gz
-	sha512sums = c912364087c288e847937f17812c7f8f94168ca2cab62b2316be051ac980e1739e7336934958d924c9571d72c11a88f1e6ae78efe6bc198bc01f170be826b2ca
+	source = advanced-linux-system-cleaning-1.0.6.tar.gz::https://github.com/SeryogaBrigada/AdvancedLinuxSystemCleaning/archive/refs/tags/v1.0.6.tar.gz
+	sha512sums = ccd59cfcc1c2d6837a8d49d0a665e2d77955f1140d03f39fa7f20d58f558346b7b935b41c404bf306382cab1f7b8db773f310544b50f9076092f0d698d481e4f
 
 pkgname = advanced-linux-system-cleaning
