@@ -1,0 +1,2 @@
+# Type  Name  ID    Home directory  Shell
+u       gstd  -     /var/lib/gstd   /usr/bin/nologin

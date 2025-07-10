@@ -1,0 +1,14 @@
+post_install() {
+  echo ">>> A new system user 'gstd' has been created to run the GStreamer Daemon."
+  echo ">>> To enable and start the service, run:"
+  echo "    sudo systemctl enable --now gstd.service"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ">>> The 'gstd' system user is not removed automatically. You may remove it manually with:"
+  echo "    sudo userdel gstd"
+}
