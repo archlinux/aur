@@ -4,7 +4,7 @@ pkgbase=python-sphinx-codeautolink
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.17.4
+pkgver=0.17.5
 pkgrel=1
 pkgdesc="Automatic links from code examples to reference documentation"
 arch=('any')
@@ -17,13 +17,13 @@ makedepends=('python-setuptools'
              'python-sphinx_rtd_theme'
              'python-matplotlib'
              'ipython'
-             'python-pickleshare'
+##           'python-pickleshare'
              'python-beautifulsoup4')  # wheel required by new setuptools
 checkdepends=('python-pytest')    # sphinx, bs4, ipython already in makedepends
 #checkdepends=('python-pytest-xdist')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('52daf9dc365efc7ad1cd47204cb180a8'
+md5sums=('ad09c4c5e4b26de7dd6652d202b19696'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -37,13 +37,13 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    PYTHONPATH="../../build/lib" make -C docs/src html
+    PYTHONPATH="../../src" make -C docs/src html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-sphinx-codeautolink() {

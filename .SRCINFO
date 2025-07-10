@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-codeautolink
 	pkgdesc = Automatic links from code examples to reference documentation
-	pkgver = 0.17.4
+	pkgver = 0.17.5
 	pkgrel = 1
 	url = https://sphinx-codeautolink.readthedocs.io
 	arch = any
@@ -13,11 +13,10 @@ pkgbase = python-sphinx-codeautolink
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-matplotlib
 	makedepends = ipython
-	makedepends = python-pickleshare
 	makedepends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_codeautolink/sphinx_codeautolink-0.17.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_codeautolink/sphinx_codeautolink-0.17.5.tar.gz
 	source = Makefile
-	md5sums = 52daf9dc365efc7ad1cd47204cb180a8
+	md5sums = ad09c4c5e4b26de7dd6652d202b19696
 	md5sums = a6aa4bc42b138d75f938065a0994c3e1
 
 pkgname = python-sphinx-codeautolink
