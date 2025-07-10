@@ -12,6 +12,10 @@ depends=(
     "alsa-lib"
     "dotnet-runtime"
 )
+optdepends=(
+	'pipewire-alsa:   audio output support if you use PipeWire'
+	'pulseaudio-alsa: audio output support if you use PulseAudio'
+)
 makedepends=(
     "dotnet-runtime"
     "dotnet-sdk"
