@@ -1,0 +1,16 @@
+pkgbase = python-deepcomparer
+	pkgdesc = Deep compare python structures like dictionaries, lists and iterables
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/jparadadev/deepcomparer.py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.org/packages/source/d/deepcomparer/deepcomparer-0.4.0.tar.gz
+	sha512sums = 030d3396f809f31acbc707660461c83a17840de508d1aee01d27cdeefdde2c5fb2fccfac4130a43b2eabb44b78f76e420b9fa81f15335eb6e2cda0dcbc9189a9
+
+pkgname = python-deepcomparer
