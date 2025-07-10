@@ -1,0 +1,30 @@
+[Desktop Entry]
+Type=Application
+Icon=user-desktop
+Name=zzzFM Desktop
+Name[ru]=Рабочий стол zzzFM
+Name[de]=zzzFM Desktop
+Name[es]=Escritorio zzzFM
+Name[fr]=Bureau zzzFM
+Name[it]=Desktop zzzFM
+Name[pt]=Área de Trabalho zzzFM
+Name[zh_CN]=zzzFM 桌面
+Name[ja]=zzzFM デスクトップ
+Name[uk]=Робочий стіл zzzFM
+Name[tr]=zzzFM Masaüstü
+
+Comment=File manager desktop mode
+Comment[ru]=Режим рабочего стола файлового менеджера
+Comment[de]=Dateimanager Desktop-Modus
+Comment[es]=Modo escritorio del gestor de archivos
+Comment[fr]=Mode bureau du gestionnaire de fichiers
+Comment[it]=Modalità desktop del file manager
+Comment[pt]=Modo desktop do gerenciador de arquivos
+Comment[zh_CN]=文件管理器桌面模式
+Comment[ja]=ファイルマネージャーのデスクトップモード
+Comment[uk]=Режим робочого столу файлового менеджера
+Comment[tr]=Dosya yöneticisi masaüstü modu
+
+Exec=zzzfm --desktop
+Terminal=false
+Categories=Utility;FileManager;

@@ -1,0 +1,38 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Background Choice
+Name[ru]=Обои рабочего стола
+Name[de]=Hintergrundauswahl
+Name[es]=Selector de fondo
+Name[fr]=Choix du fond d'écran
+Name[it]=Scelta dello sfondo
+Name[pt]=Escolha de plano de fundo
+Name[zh_CN]=背景选择
+Name[ja]=背景選択
+
+Icon=preferences-desktop-wallpaper
+
+Comment=Configure desktop wallpaper
+Comment[ru]=Настройка обоев рабочего стола
+Comment[de]=Desktop-Hintergrund konfigurieren
+Comment[es]=Configurar el fondo de pantalla
+Comment[fr]=Configurer le fond d'écran
+Comment[it]=Configura lo sfondo del desktop
+Comment[pt]=Configurar papel de parede
+Comment[zh_CN]=配置桌面壁纸
+Comment[ja]=デスクトップの壁紙を設定
+
+Exec=zzzfm --desktop-pref
+Terminal=false
+Type=Application
+Categories=DesktopSettings;
+
+GenericName=Wallpaper Settings
+GenericName[ru]=Настройки обоев
+GenericName[de]=Hintergrundeinstellungen
+GenericName[es]=Configuración de fondo
+GenericName[fr]=Paramètres du fond d'écran
+GenericName[it]=Impostazioni sfondo
+GenericName[pt]=Configurações de papel de parede
+GenericName[zh_CN]=壁纸设置
+GenericName[ja]=壁紙設定
