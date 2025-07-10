@@ -71,7 +71,7 @@ index 9f75e2c..103497a 100644
                  else:
                      spec_s = fft_lp_filter(spec_s, bp['lpf_start'], bp['lpf_stop'])
 -                wave = librosa.resample(spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model), bp['sr'], sr, res_type=wav_resolution)
-+                wave = librosa.resample(spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model), bp['sr'], target_sr=sr, res_type=wav_resolution)
++                wave = librosa.resample(spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model), orig_sr=bp['sr'], target_sr=sr, res_type=wav_resolution)
              else: # mid
                  if is_v51_model:
                      spec_s *= get_hp_filter_mask(spec_s.shape[1], bp['hpf_start'], bp['hpf_stop'] - 1)
@@ -80,7 +80,7 @@ index 9f75e2c..103497a 100644
                      
                  wave2 = np.add(wave, spectrogram_to_wave(spec_s, bp['hl'], mp, d, is_v51_model))
 -                wave = librosa.resample(wave2, bp['sr'], sr, res_type=wav_resolution)
-+                wave = librosa.resample(wave2, bp['sr'], target_sr=sr, res_type=wav_resolution)
++                wave = librosa.resample(wave2, orig_sr=bp['sr'], target_sr=sr, res_type=wav_resolution)
          
      return wave
  
@@ -127,7 +127,15 @@ index 6ee4e05..1b31394 100644
  
      return directml_device, directml_available
  
-@@ -1210,7 +1210,7 @@ class SeperateVR(SeperateAttributes):
+@@ -1203,14 +1203,14 @@ class SeperateVR(SeperateAttributes):
+             if d == bands_n: # high-end band
+-                X_wave[d], _ = librosa.load(audio_file, bp['sr'], False, dtype=np.float32, res_type=wav_resolution)
++                X_wave[d], _ = librosa.load(audio_file, sr=bp['sr'], mono=False, dtype=np.float32, res_type=wav_resolution)
+                 X_spec_s[d] = spec_utils.wave_to_spectrogram(X_wave[d], bp['hl'], bp['n_fft'], self.mp, band=d, is_v51_model=self.is_vr_51_model)
+                     
+                 if not np.any(X_wave[d]) and is_mp3:
+                     X_wave[d] = rerun_mp3(audio_file, bp['sr'])
+ 
                  if X_wave[d].ndim == 1:
                      X_wave[d] = np.asarray([X_wave[d], X_wave[d]])
              else: # lower bands

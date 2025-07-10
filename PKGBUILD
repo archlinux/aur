@@ -21,7 +21,7 @@ sha256sums=("SKIP"
 prepare() {
   cd "${srcdir}/${name}"
   git checkout "v5.6.0_roformer_add+directml"
-  git apply ../UVR.diff
+  git apply --ignore-whitespace ../UVR.diff
   rm -rf "${srcdir}/${name}/gui_data/${tkdnd2}"
   cp -r "${srcdir}/${tkdnd2}/${tkdnd2}" "${srcdir}/${name}/gui_data/"
 }
