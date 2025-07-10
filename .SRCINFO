@@ -1,6 +1,6 @@
 pkgbase = sddm-silent-theme
 	pkgdesc = Highly customizable SDDM theme
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/uiriansan/SilentSDDM
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = sddm-silent-theme
 	depends = qt6-multimedia-ffmpeg
 	depends = redhat-fonts
 	backup = usr/share/sddm/themes/silent/metadata.desktop
-	source = https://github.com/uiriansan/SilentSDDM/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = a0a1ca5d010f96aea14f1ffff50fe92c4691bcf055b0fa57df3370732563a1ec
+	source = https://github.com/uiriansan/SilentSDDM/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 582fe4ac7340575cb95f9fbc667ee6f6e5495ba0ed816a6ed42d00ec9205a330
 
 pkgname = sddm-silent-theme
