@@ -1,16 +1,11 @@
 pkgbase = chromium-ffmpeg-codecs-git
-	pkgdesc = Add codecs to Chromium M138+ (non vendored libffmpeg.so)
+	pkgdesc = Add codecs to Chromium M138+ (non vendored ffmpeg)
 	pkgver = 7.2.r119684.g670089304a
 	pkgrel = 5
 	url = https://git.ffmpeg.org/ffmpeg
 	arch = x86_64
 	license = LGPL-2.1-or-later
-	makedepends = diffutils
-	makedepends = gcc
-	makedepends = make
 	makedepends = nasm
-	makedepends = patch
-	makedepends = sed
 	makedepends = git
 	depends = glibc
 	provides = vivaldi-ffmpeg-codecs
