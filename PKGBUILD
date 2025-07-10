@@ -1,16 +1,17 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Contributor: dreieck <oid-maps@seznam.cz>
 
 pkgname=vcftools
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="A set of tools written in Perl and C++ for working with VCF files"
 arch=('x86_64')
 url="https://vcftools.github.io/"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('perl' 'zlib')
-source=(https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('575c13073efe65cbff6e2ab99eef12fe04536f5dc1f98de6674c848ca83cf302')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
+sha256sums=('00b54fc7349179c2efbdab0e4dcb65a69e7b0ab0d0d29b59cc823140d0b40bff')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
