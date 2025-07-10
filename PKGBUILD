@@ -1,4 +1,4 @@
-# Maintainer: Igor Shimanogov <shimanogov@phystech.edu>
+# Maintainer: Igor Shimanogov <shimanogov.in@phystech.edu>
 
 pkgname=nkt
 pkgver=0.3.0
