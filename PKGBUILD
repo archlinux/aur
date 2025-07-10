@@ -3,7 +3,7 @@
 _pkgname=albumentations
 pkgname=python-albumentations
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast image augmentation library and easy to use wrapper around other libraries'
 arch=('any')
 url='https://github.com/albumentations-team/albumentations'
@@ -13,7 +13,6 @@ depends=(
   python-numpy
   python-opencv
   python-pydantic
-  python-scikit-image
   python-scipy
   python-typing_extensions
   python-yaml
