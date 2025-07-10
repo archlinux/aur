@@ -95,3 +95,17 @@ index 8a386ea69..a84c95bc9 100644
  	if (ret != CKR_OK) {
  		log_trace(WHERE, "I: leave, p11_lock failed with %i", ret);
  		return ((CK_RV)ret);
+diff --git a/pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro b/pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro
+index ea83879c1..7662582d6 100644
+--- a/pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro
++++ b/pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro
+@@ -53,7 +53,7 @@ macx: LIBS += -Wl,-framework -Wl,CoreFoundation -Wl,-framework -Wl,Security
+ unix:!macx: LIBS += -Wl,-rpath-link,../lib
+
+ #pteid-scap needs to be before its dependencies here
+-LIBS += -L../lib -lpteidscap -lpteidcommon -lpteidapplayer -lpteidlib  \
++LIBS += -L../lib -lpteidscap -lpteidcommon -lpteidcardlayer -lpteidapplayer -lpteidlib  \
+         -lssl -lcrypto -lpoppler-qt5 -lCMDServices -lcurl -lzip -lcjson
+
+ # Additional import path used to resolve QML modules in Qt Creator's code model
+

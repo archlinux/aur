@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID) source code based version
-	pkgver = 3.13.3
-	pkgrel = 3
+	pkgver = 3.14.0
+	pkgrel = 0
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt.install
 	arch = i686
@@ -35,11 +35,11 @@ pkgbase = autenticacao-gov-pt
 	conflicts = cartaodecidadao
 	conflicts = cartaodecidadao-bin
 	replaces = cartaodecidadao
-	source = autenticacao.gov-3.13.3.tar.gz::https://github.com/amagovpt/autenticacao.gov/archive/refs/tags/v3.13.3.tar.gz
+	source = autenticacao.gov-3.14.0.tar.gz::https://github.com/amagovpt/autenticacao.gov/archive/refs/tags/v3.14.0.tar.gz
 	source = autenticacao-gov-pt.install
 	source = gcc15-fix.patch
-	sha512sums = d865770c65345423766c56a698984de025d0ad57deef5f1a8224a2d03a7e70b18a7e26dadead0fb70e4332ffbedc4a2a3488b04ec9d2fc08e58cf77010a042de
+	sha512sums = a5b4d2cb86783fcdafbec44af40047ea6b3d40241bdd994aedf208a107d54056a3e0707835a210e90236530ac990fa11ae0e2efc42dbbe536203ba10ef316090
 	sha512sums = 344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f
-	sha512sums = 10f9023f0f5f5e38a8f1c32ac6af709f675aa0ca4952a26a4b07667b30498d43a6f5aae4ae18ed96d6aac28ccf4460925b21f61703bd30952f860dfd9bc5ffb1
+	sha512sums = c06a3b6584ba0836da916b14ed7edd4afc0d146b4b1cd5f16cbdf7f3e4786b4b46e0c4bc8dc6de28d87b3709ccfbecb42598a982cff33436feceee7e9e860600
 
 pkgname = autenticacao-gov-pt
