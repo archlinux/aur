@@ -1,16 +1,16 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=vim-plugins-profiler
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="Utility to output a sorted list of VIM plugin startup times in millisec."
 url="https://github.com/bulletmark/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 arch=(any)
 depends=("python>=3.6")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('dac3136d5452d3909da3820058368e28')
+md5sums=('161a4135f38bbb906c96df79c9300b93')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
