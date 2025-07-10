@@ -1,15 +1,14 @@
 pkgbase = storyfork
 	pkgdesc = A tool for reading CYOA stories written in text files
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://codeberg.org/wayfarer/StoryFork
 	arch = any
 	groups = wayfarer
 	license = GPL-3.0-only
-	makedepends = xdg-utils
 	depends = python-pyqt6
 	depends = python3
-	source = https://codeberg.org/wayfarer/StoryFork/archive/v1.0.0.zip
+	source = https://codeberg.org/wayfarer/StoryFork/archive/v1.1.0.zip
 	sha512sums = SKIP
 
 pkgname = storyfork
