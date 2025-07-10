@@ -151,18 +151,6 @@ pkgver() {
   printf "%s.r%s.g%s" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare() {
-  cd "$_pkgsrc"
-  ./bootstrap
-  autoreconf -vf
-
-  sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
-  sed -e 's|-Werror-implicit-function-declaration||g' \
-    -e 's|whoami|echo builduser|g' \
-    -e 's|hostname -f|echo arch|g' \
-    -i configure
-}
-
 build() {
   export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
