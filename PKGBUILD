@@ -1,7 +1,8 @@
 # Maintainer: User0 <user0thenyancat@proton.me>
+# Co-Maintainer: Speykious <spey.aur@speykious.dev>
 pkgname=wavetracker
 pkgver="1.1.2"
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source music-making software for Windows with experimental patches to run on Linux."
 arch=('x86_64')
 url="https://github.com/squiggythings/WaveTracker"
@@ -21,11 +22,9 @@ source=(
     "wavetracker.desktop"
     "wavetracker.patch"
 )
-sha256sums=(
-    'f0d766f7aee61b0beb93371c6669fcbdd5115a330ad9e2735a5956b43e55d4aa'
-    '22ca029eeceaff1781309a83972d49dfdab500d1a87b30a790458b051df1bce0'
-    '8ebf6557544cd045f36ba56aa5b8c2368633ddcce230e4cde0bc20e34cffa9f6'
-)
+sha256sums=('f0d766f7aee61b0beb93371c6669fcbdd5115a330ad9e2735a5956b43e55d4aa'
+            '80183916a649b243dc795f42e6354f0275e815a3ff5a237608167d6a9b9e7fac'
+            '8ebf6557544cd045f36ba56aa5b8c2368633ddcce230e4cde0bc20e34cffa9f6')
 
 prepare() {
 	cd "$srcdir/WaveTracker-$pkgver"

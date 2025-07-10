@@ -1,7 +1,14 @@
 [Desktop Entry]
 Name=WaveTracker
+GenericName=Chiptune Music Tracker
 Comment=A free and open source music-making software using wavetable synthesis and sampling to generate sounds.
-GenericName=Music tracker
-Exec=/usr/local/bin/wavetracker
+Categories=Audio;AudioEditing;Midi;Sequencer;Music;
+Type=Application
+Exec=TERM= wavetracker %F
 Icon=wavetracker
-Type=Audio;AudioEditing;Midi;Sequencer;Music;
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Path=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
