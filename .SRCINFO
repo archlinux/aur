@@ -1,4 +1,4 @@
-pkgbase = ayaan-unstable
+pkgbase = ayaanfetch
 	pkgdesc = AYAANFETCH by AYAAN511 – The Only Fetch Tool You’ll Ever Need (Wine, auto-grabs latest .zip)
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = ayaan-unstable
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = ayaan-unstable
+pkgname = ayaanfetch

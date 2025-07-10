@@ -1,4 +1,4 @@
-pkgname=ayaan-unstable
+pkgname=ayaanfetch
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="AYAANFETCH by AYAAN511 – The Only Fetch Tool You’ll Ever Need (Wine, auto-grabs latest .zip)"
