@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WhatPulse
+Comment=Measures your keyboard, mouse and application usage, network traffic and uptime
+Exec=whatpulse
+Icon=whatpulse
+Terminal=false
+Categories=System;Monitor;
+StartupNotify=true
+Keywords=keyboard;mouse;network;statistics;monitoring;
