@@ -6,7 +6,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.25.13
+pkgver=2.25.15
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('6070982ff1d5327712b03dab1898905e74e95d570cd15cbb937855ea3e459fef'
+sha256sums=('4c00e31638a1b5278f286d4dc93bc420003da53f891d5dd199de15c489ccd0ac'
             '7aef55eaf111cf2ec99f68d9a69357bd8b5f400d3260ccf99c981ab37de93b07')
 
 prepare(){
