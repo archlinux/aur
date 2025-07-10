@@ -1,5 +1,5 @@
 pkgname=twintaillauncher-bin
-_pkgname=""
+_pkgname="${pkgname%-bin}"
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="A multi-platform launcher for your anime games"

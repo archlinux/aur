@@ -15,7 +15,7 @@ pkgbase = twintaillauncher-bin
 	depends = webkit2gtk-4.1
 	depends = hdiffpatch
 	options = !debug
-	source = -1.0.1.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v1.0.1/twintaillauncher_1.0.1_amd64.deb
+	source = twintaillauncher-1.0.1.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v1.0.1/twintaillauncher_1.0.1_amd64.deb
 	sha256sums = 99c09544b4a15d639ad0ff35798b98b50a5daa9b6601a341fc49e5611d5d6bba
 
 pkgname = twintaillauncher-bin
