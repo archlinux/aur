@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa
 
 pkgname=improve-imgsli
-pkgver=4.9.0
+pkgver=5.8.24
 pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(x86_64)
@@ -24,8 +24,8 @@ makedepends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('4eec575b317ff9e0343de3088c92ef11bc14c36a534b83e58f57f66fc740f15afa1b3a2e53bd6489998037abf2d048539467a07099e6ae264c48f8ffef64a084')
-b2sums=('924ea05420d6998eac317c85c963c868a2047f3714ac4ed136b16122d2f680345894f8ac701d38e864549b7528400be5df59877289d07a9580969ada1f289392')
+sha512sums=('c71e6f41d9a7758adcdcbe975dacc7988554f19b51f347f6dccb91f1759e242b11903ecdfcfaa424f991cd419cdfe3df7f20253671f35be033759c1b6526f597')
+b2sums=('65051e8cb833c03a7b178a0d304fbafd7980ab9442c7bff25c9b1729e4e6bd2d3297e20c947924a0894518f581019c77825c973c80b858e187faa87c5d7e9635')
 
 prepare() {
   #Making launching app more secure
@@ -44,6 +44,7 @@ package() {
   install -vDm 644 image_comparison_app.py                -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 translations.py                        -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 settings_dialog.py                     -t "$pkgdir"/usr/lib/$pkgname/
+  install -vDm 644 assets/circle_mask.png                 -t "$pkgdir"/usr/lib/$pkgname/assets/
   install -vDm 644 font/SourceSans3-Regular.ttf           -t "$pkgdir"/usr/lib/$pkgname/font/
   install -vDm 644 ../build/AUR-template/$pkgname.desktop -t "$pkgdir"/usr/share/applications/
   install -vDm 644 icons/icon.png                            "$pkgdir"/usr/share/icons/hicolor/512x512/apps/$pkgname.png
@@ -55,6 +56,7 @@ package() {
   cd "$srcdir"/Improve-ImgSLI-$pkgver/src/services
   install -vDm 644 event_handler.py                       -t "$pkgdir"/usr/lib/$pkgname/services/
   install -vDm 644 image_processing_worker.py             -t "$pkgdir"/usr/lib/$pkgname/services/
+  install -vDm 644 logging_service.py                     -t "$pkgdir"/usr/lib/$pkgname/services/
   install -vDm 644 main_controller.py                     -t "$pkgdir"/usr/lib/$pkgname/services/
   install -vDm 644 settings_manager.py                    -t "$pkgdir"/usr/lib/$pkgname/services/
   install -vDm 644 state_manager.py                       -t "$pkgdir"/usr/lib/$pkgname/services/
