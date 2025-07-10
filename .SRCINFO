@@ -1,16 +1,15 @@
 pkgbase = cuishark
 	pkgdesc = A protocol analyzer like a wireshark on CUI/TUI
 	pkgver = 0.1.2
-	pkgrel = 1
-	url = https://github.com/slankdev/cuishark
+	pkgrel = 2
+	url = https://github.com/cuishark/cuishark
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = libpcap
 	depends = ncurses
-	source = https://github.com/slankdev/cuishark/archive/v0.1.2.tar.gz
+	source = https://github.com/cuishark/cuishark/archive/v0.1.2.tar.gz
 	sha256sums = 40e2eb847a79d2b91c6f504e948e8432ee42e8401e4854a5ec9439acf379d07b
 
 pkgname = cuishark
-
