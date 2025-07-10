@@ -3,7 +3,7 @@
 
 pkgname=lsfg-vk-git
 pkgver=r103.223f4ba
-pkgrel=3
+pkgrel=4
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
@@ -38,7 +38,9 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	DESTDIR="$pkgdir/" cmake --install build --prefix=/usr
+	install -Dm644 VkLayer_LS_frame_generation.json "$pkgdir/etc/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json"
+	
+	install -Dm644 build/liblsfg-vk.so "$pkgdir/usr/lib/liblsfg-vk.so"
 
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
