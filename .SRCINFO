@@ -1,6 +1,6 @@
 pkgbase = sui-bin
 	pkgdesc = A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model
-	pkgver = 1.48.2
+	pkgver = 1.51.4
 	pkgrel = 2
 	url = https://github.com/MystenLabs/sui
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sui-bin
 	makedepends = fakeroot
 	provides = sui
 	conflicts = sui
-	source_x86_64 = sui-1.48.2-x86_64.tgz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.48.2/sui-mainnet-v1.48.2-ubuntu-x86_64.tgz
-	sha256sums_x86_64 = 371c69b0523341d0b0ebdf876ecad90ad2da22b9bbfe06c82d93c61eec3f7f17
-	source_aarch64 = sui-1.48.2-aarch64.tgz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.48.2/sui-mainnet-v1.48.2-ubuntu-aarch64.tgz
-	sha256sums_aarch64 = 521faaf2e937acc16f26844c943897abf84f07d4e5ccade4d5095e81c5336692
+	source_x86_64 = sui-1.51.4-x86_64.tgz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.51.4/sui-mainnet-v1.51.4-ubuntu-x86_64.tgz
+	sha256sums_x86_64 = c780e3bc5a218c9f512773af57219689037dae19400015a35ca85c86a0d42031
+	source_aarch64 = sui-1.51.4-aarch64.tgz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.51.4/sui-mainnet-v1.51.4-ubuntu-aarch64.tgz
+	sha256sums_aarch64 = 2b3eee123ba60b53910ea18aacce825a5e27ee3b6aaca17e898627d24ed43a81
 
 pkgname = sui-bin
