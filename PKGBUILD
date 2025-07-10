@@ -7,14 +7,81 @@
 pkgname=maya
 pkgver=2026.1
 _majorver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
 arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
 license=('custom')
-depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing>=15.1.0.12339' 'libxp' 'gtk2' 'libxcrypt-compat'
-         'libjpeg6-turbo' 'libffi6' 'nss' 'libxaw' 'libpng15' 'libtool' 'ncurses5-compat-libs' 'libpulse'
-         'glu' 'gst-plugins-base-libs' 'libxtst' 'libtiff5')
+depends=(
+         'adsklicensing>=15.1.0.12339'
+         'alsa-lib'
+         'at-spi2-core'
+         'attr'
+         'audiofile'  # Required for audio
+         'bash'
+         'cairo'
+         'curl'
+         'dbus'
+         'expat'
+         'fontconfig'
+         'gcc-libs'
+         'gdk-pixbuf2'
+         'glibc'
+         'glu'
+         'gtk2'
+         'krb5'
+         'libcap'
+         'libcups'
+         'libdrm'
+         'libglvnd'
+         'libice'
+         'libjpeg6-turbo'
+         'libmng'
+         'libpng'
+         'libpulse'
+         'librsvg'
+         'libsm'
+         'libtiff5'
+         'libtool'
+         'libva'
+         'libvdpau'
+         'libx11'
+         'libxaw'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxft'
+         'libxi'
+         'libxinerama'
+         'libxkbcommon-x11'
+         'libxkbcommon'
+         'libxkbfile'
+         'libxmu'
+         'libxp'
+         'libxpm'
+         'libxrandr'
+         'libxrender'
+         'libxt'
+         'libxtst'
+         'libxv'
+         'libxxf86vm'
+         'nspr'
+         'nss'
+         'openssl'
+         'pango'
+         'util-linux-libs'
+         'wayland'
+         'xcb-util-cursor'
+         'xcb-util-image'
+         'xcb-util-keysyms'
+         'xcb-util-renderutil'
+         'xcb-util-wm'
+         'xorg-fonts-100dpi'  # Required for font errors
+         'xorg-fonts-75dpi'  # Required for font errors
+         'zstd'
+         )
 optdepends=('opencl-driver: OpenCL support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
