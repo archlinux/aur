@@ -1,14 +1,15 @@
 pkgbase = wmifs
 	pkgdesc = A network monitor for all network devices that shows the transmission ratio
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = http://www.dockapps.net/wmifs
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
-	source = http://www.dockapps.net/download/wmifs-1.8.tar.gz
-	md5sums = 5d74a93c7d1561ecb3949a1eae8f4fbd
+	depends = libdockapp
+	options = !debug
+	source = http://www.dockapps.net/download/wmifs-1.9.tar.gz
+	md5sums = 3c361b0ee6209b25095dbda1130f60c7
 
 pkgname = wmifs
-
