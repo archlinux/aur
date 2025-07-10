@@ -1,6 +1,6 @@
 pkgbase = cryptopro-csp-k1
 	pkgdesc = CryptoPro CSP 5.0
-	pkgver = 5.0.13300
+	pkgver = 5.0.13455
 	pkgrel = 1
 	url = https://cryptopro.ru/products/cryptopro-csp
 	install = cryptopro-csp-k1.install
@@ -22,6 +22,6 @@ pkgbase = cryptopro-csp-k1
 	optdepends = rutoken-plugin: Rutoken PKCS11 keys support
 	options = !strip
 	source = linux-amd64.tgz::local://linux-amd64.tgz
-	sha256sums = 287e1b47de2a7b07e84f9445a1563c2951196453bcecfa948b3bc2d1e71d6d50
+	sha256sums = dab8ecb83a21bcdbe232cff93b11b2aaa471274f88c469e8c79bd1543df5a0c4
 
 pkgname = cryptopro-csp-k1
