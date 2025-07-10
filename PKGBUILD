@@ -2,7 +2,7 @@
 
 pkgbase=surfer-waveform
 pkgname=surfer-waveform-git-bin
-pkgver=0.3.0.r946.52371675
+pkgver=0.4.0.r995.9d3c6d30
 pkgrel=1
 provides=('surfer-waveform')
 pkgdesc='A waveform viewer with a focus on a snappy usable interface, and extensibility.'
@@ -11,8 +11,8 @@ url='https://gitlab.com/surfer-project/surfer'
 license=('EUPL')
 depends=('openssl')
 optdepends=('zenity')
-source=("$pkgname-$pkgver.zip::https://gitlab.com/surfer-project/surfer/-/jobs/10175804122/artifacts/download?file_type=archive")
-sha256sums=('09951bf9cde75a4833819b88a71943fbb77b5e3d8e6be634d58c1c06b37577f9')
+source=("$pkgname-$pkgver.zip::https://gitlab.com/surfer-project/surfer/-/jobs/10640255979/artifacts/download?file_type=archive")
+sha256sums=('c85a2766d134885fd2c0be87239c156844461ff0f52db545c453095c3eefc6bf')
 
 prepare() {
     mkdir -p ${srcdir}/$pkgname-$pkgver
