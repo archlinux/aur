@@ -1,7 +1,7 @@
 pkgbase = organize
 	pkgdesc = A command line utility to automate file organization tasks
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tfeldmann/organize
 	arch = any
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = organize
 
 pkgname = organize
 	depends = python
-	depends = docx2txt
 	depends = python-arrow
 	depends = python-jinja
 	depends = python-natsort
@@ -26,5 +25,6 @@ pkgname = organize
 	depends = python-send2trash
 	depends = python-yaml
 	depends = python-docopt-ng
+	depends = python-docx2txt
 	depends = python-exifread
 	depends = python-simplematch
