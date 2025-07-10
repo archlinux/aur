@@ -6,7 +6,7 @@
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
-pkgver=2.0.1826
+pkgver=2.0.1833
 pkgrel=1.1
 _pkgver="${pkgver%_*}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
