@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <vaibhavmattoo1@gmail.com>
 pkgname=cxt
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A command-line tool that aggregates file and directory contents into your clipboard, perfect for providing project context to AI chatbots"
 arch=('x86_64' 'aarch64' 'armv7h')
