@@ -1,11 +1,11 @@
 pkgbase = cup-docker
 	pkgdesc = Cup is the easiest way to check for container image updates.
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sergi0g/cup
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = AGPL-3
 	makedepends = cargo
 	makedepends = bun
 	makedepends = typescript
