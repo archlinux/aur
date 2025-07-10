@@ -1,7 +1,7 @@
 pkgbase = cryptopro-csp-k1
 	pkgdesc = CryptoPro CSP 5.0
 	pkgver = 5.0.13455
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cryptopro.ru/products/cryptopro-csp
 	install = cryptopro-csp-k1.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cryptopro-csp-k1
 	makedepends = libarchive
 	depends = glibc
 	depends = gcc-libs
-	depends = gtk2
+	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = pango
 	depends = atk

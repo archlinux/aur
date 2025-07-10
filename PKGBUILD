@@ -26,7 +26,7 @@
 
 pkgname="cryptopro-csp-k1"
 pkgver=5.0.13455
-pkgrel=1
+pkgrel=2
 _pkgver_patch="7"
 _cades_version="2.0.15400-1"
 _pkgver="$pkgver-$_pkgver_patch"
@@ -37,7 +37,7 @@ license=('unknown')
 depends=(
     'glibc'
     'gcc-libs'
-    'gtk2'
+    'gtk3'
     'gdk-pixbuf2'
     'pango'
     'atk'
