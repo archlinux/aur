@@ -2,17 +2,17 @@
 # Maintainer: blingus <brett@hyperplay.xyz>
 
 pkgname=hyperplay
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="An open source Web3 gaming platform."
 arch=('x86_64')
 url="https://github.com/HyperPlay-Gaming/hyperplay-desktop-client"
 license=('GPL3')
 depends=('gawk')
-_filename=hyperplay-0.29.0.pacman
-source=("https://github.com/HyperPlay-Gaming/hyperplay-desktop-client/releases/download/v0.29.0/hyperplay-0.29.0.pacman")
-noextract=("hyperplay-0.29.0.pacman")
-md5sums=(f804086b7308e067b6b6b245b794b752)
+_filename=hyperplay-0.30.0.pacman
+source=("https://github.com/HyperPlay-Gaming/hyperplay-desktop-client/releases/download/v0.30.0/hyperplay-0.30.0.pacman")
+noextract=("hyperplay-0.30.0.pacman")
+md5sums=(47bdeefe88c573ea17a74282ab53b630)
 options=(!strip)
 
 package() {
