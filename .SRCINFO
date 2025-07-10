@@ -13,6 +13,7 @@ pkgbase = python-foamlib
 	depends = python-aioshutil
 	depends = python-numpy
 	depends = python-pyparsing
+	depends = python-rich
 	depends = openfoam-com
 	source = foamlib-1.1.1.tar.gz::https://github.com/gerlero/foamlib/archive/v1.1.1.tar.gz
 	sha512sums = c276650e5968938b7dea145e751a91faf8152903a9fcef94534b61397d433fadea0f00c010587093bf79a57da432c29e4f6cde5a9a15054560e019663a9c7dff
