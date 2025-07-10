@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mnelab
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Graphical user interface (GUI) for MNE, a Python-based toolbox for EEG/MEG analysis"
 arch=('any')
@@ -21,7 +21,7 @@ changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz
         mnelab.desktop)
 noextract=()
-sha1sums=('e5a8bb9bf61537bfcb8c07368da34058a2c6514c'
+sha1sums=('f0dc61f4c18bbe3a653e3fb05f8a3ac06bcad7f8'
           '19c8abd304416595d8316f91eb2b5410aa88b070')
 
 build() {
