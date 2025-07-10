@@ -1,7 +1,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=nodenv-node-build-git
-pkgver=5.4.5.r0.g73a5315b
+pkgver=5.4.6.r0.gbd103c38
 pkgrel=1
 pkgdesc='Install NodeJS versions'
 arch=('any')
