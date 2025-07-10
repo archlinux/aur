@@ -1,6 +1,6 @@
 # Maintainer: nikopoto nikopoto.8@protonmail.com
 pkgname=m8mouse-git
-pkgver=1.0
+pkgver=2
 pkgrel=1
 pkgdesc="A RGB and DPI controller for m8mouse"
 arch=('x86_64')
