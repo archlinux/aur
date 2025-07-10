@@ -1,0 +1,5 @@
+[python-k3d]
+source = "github"
+github = "K3D-tools/K3D-jupyter"
+use_latest_release = "true"
+prefix = "v"
