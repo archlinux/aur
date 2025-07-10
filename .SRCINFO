@@ -1,6 +1,6 @@
 pkgbase = python-aenum
 	pkgdesc = Advanced Enumerations (compatible with Python's stdlib Enum)
-	pkgver = 3.1.15
+	pkgver = 3.1.16
 	pkgrel = 1
 	url = https://pypi.org/project/aenum
 	arch = any
@@ -10,11 +10,7 @@ pkgbase = python-aenum
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-aenum-3.1.15.tar.gz::https://files.pythonhosted.org/packages/source/a/aenum/aenum-3.1.15.tar.gz
-	source = https://patch-diff.githubusercontent.com/raw/ethanfurman/aenum/pull/36.patch
-	source = https://raw.githubusercontent.com/ethanfurman/aenum/master/aenum/test_v37.py
-	sha256sums = 8cbd76cd18c4f870ff39b24284d3ea028fbe8731a58df3aa581e434c575b9559
-	sha256sums = 9151a5147b8d72bda40f62078d0780bb6926a045137f6bcd7137ef04a051a649
-	sha256sums = 666be366ac8b8089d005581cdddfd8acef1b73d61b01c53d5fe079daa7cc8325
+	source = python-aenum-3.1.16.tar.gz::https://github.com/ethanfurman/aenum/archive/refs/tags/3.1.16.tar.gz
+	sha256sums = 4c7a5fb76a04ad8dc0c82b13c4cd858b755c69d16c2060a248bf3380a4d1067e
 
 pkgname = python-aenum
