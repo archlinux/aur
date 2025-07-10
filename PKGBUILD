@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ttservice
-_pkgver=0.4.1
+_pkgver=0.5.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,8 +15,8 @@ depends=(
   r-plotly
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('00aad30026ae11ace76d7e6f79e815c6')
-b2sums=('09ade096865a69f3b67599b40eb56f436453ad028bf07aed7ef095e3dc677ac3710bdd8bdfc13d791e64ad196636b9f03ad6d8f20968e29cbf64e9cc22980dcc')
+md5sums=('8728371c00fa163a75a2beb34498e609')
+b2sums=('c295de28ca0c7d66b738e71843e16b00f8154dc34c10b5fc2aa0b29ccb96dccd94d6b860e3070419a459fa2e766858152bcaea70fe2f46c166f8aded7f918c89')
 
 build() {
   mkdir build
