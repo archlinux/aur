@@ -1,6 +1,6 @@
 pkgbase = coot
 	pkgdesc = Crystallographic Object-Oriented Toolkit for model building, completion and validation
-	pkgver = 1.1.13
+	pkgver = 1.1.17
 	pkgrel = 1
 	url = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/
 	arch = i686
@@ -30,10 +30,10 @@ pkgbase = coot
 	depends = rdkit
 	depends = mmdb2>=2.0.12-4
 	replaces = coot-data
-	source = coot-1.1.13.tar.gz::https://github.com/pemsley/coot/archive/refs/tags/Release-1.1.13.tar.gz
+	source = coot-1.1.17.tar.gz::https://github.com/pemsley/coot/archive/refs/tags/Release-1.1.17.tar.gz
 	source = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/refmac-monomer-library.tar.gz
 	source = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/reference-structures.tar.gz
-	sha256sums = b3db7585d6f012eee9502e05d35e2f6c695d9fbdf02aa357a5f7cc8744d43699
+	sha256sums = 127480271faafd0543b6a12708608e6f449901bf04d1e955dfdc252cc3d02e85
 	sha256sums = 03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b
 	sha256sums = 44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a
 

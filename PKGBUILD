@@ -1,7 +1,7 @@
 # Maintainer: Jakub Smulski <hgonomeg@gmail.com>
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=1.1.13
+pkgver=1.1.17
 pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
@@ -18,12 +18,14 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/ref
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
         )
 
-sha256sums=('b3db7585d6f012eee9502e05d35e2f6c695d9fbdf02aa357a5f7cc8744d43699'
+sha256sums=('127480271faafd0543b6a12708608e6f449901bf04d1e955dfdc252cc3d02e85'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             )
 prepare() {	
   cd "$srcdir/$pkgname-Release-$pkgver"
+  echo Patching configure.ac so that we can have C++20 \(as required now by RDKit\)
+  sed -i 's/c++17/c++20/g' configure.ac
   #patch -Np1 -i "$srcdir/glm_nopkgconfig.patch"
 }
 
