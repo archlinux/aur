@@ -1,0 +1,19 @@
+pkgbase = haskell-gloss
+	pkgdesc = Gloss hides the pain of drawing simple vector graphics behind a nice data type and a few display functions
+	pkgver = 1.13.2.2
+	pkgrel = 1
+	url = https://github.com/benl23x5/gloss
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-gloss-rendering
+	depends = haskell-glut
+	depends = haskell-glfw-b
+	depends = haskell-opengl
+	depends = haskell-bmp
+	source = https://hackage.haskell.org/packages/archive/gloss/1.13.2.2/gloss-1.13.2.2.tar.gz
+	sha512sums = 072588698ca7fa956fd59ee253394819526b09f43dbec80c1e371fab8c90c333d913692cebaed5823476fef5af19ccc1849531c7fe36379f0fcc3ea79a032725
+
+pkgname = haskell-gloss
