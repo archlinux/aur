@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="AYAANFETCH by AYAAN511 – The Only Fetch Tool You’ll Ever Need (Wine, always grabs latest .zip release)"
 arch=('any')
 url="https://github.com/ayaan511/ayaanfetch"
-license=('MIT')r
+license=('MIT')
 depends=('wine' 'unzip')
 source=(
   "ayaanfetch-latest.zip::https://github.com/ayaan511/ayaanfetch/releases/latest/download/ayaanfetch.zip"
