@@ -3,14 +3,14 @@
 
 pkgname=sunshine-bin
 _pkgname=${pkgname%-bin}
-pkgver=2025.122.141614
+pkgver=2025.628.4510
 _gittag=v$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
 url="https://app.lizardbyte.dev"
 source=(
     "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine.pkg.tar.zst"
-    "$_pkgname-$pkgver.desktop"::"https://raw.githubusercontent.com/LizardByte/Sunshine/$_gittag/packaging/linux/sunshine.desktop"
+    "$_pkgname-$pkgver.desktop"::"https://raw.githubusercontent.com/LizardByte/Sunshine/$_gittag/packaging/linux/dev.lizardbyte.app.Sunshine.desktop"
 )
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
@@ -43,21 +43,21 @@ optdepends=(
     'libva-mesa-driver: AMD GPU encoding support'
     'xorg-server-xvfb: Virtual X server for headless testing'
 )
-makedepends=('patchelf')
+# makedepends=('patchelf')
 conflicts=('sunshine')
 provides=('sunshine')
-b2sums=('bd022ee27d9f28e5cb19a90db84a3230f5e8160d634bb5ac32354a2b8bd79a7c8902ec08dbdda670c54829fe68d0267ce619da32d23537160d207d78da2b9abc'
-        'ed6cac298a7a42bcee3bc653834f1ff017732cc2e26b5fb845ef4af77d4153a573943acc41b92bb65c8a7140117f5ab38759e1e5c31d64ad2f745ba508b6e0c8')
+b2sums=('9ab9bf8d357142fd3eb6f3c8a85a52bb80c25ead7d3c0f54d21d0c2215827def50bf52b8a9925a774718c7028d1cbef56a78a183b165fa0bca56b6ff08eb8b2f'
+        '83ead21583339cb9d5a9ce19c96697079b8c7c3be3c3a9f1d7090e9b1b979b37478ac28cfe3c9a6c9d171560e987ea627351bd8dddb8c6fae59c7ae794462fd0')
 
 prepare() {
     sed -i "s/@PROJECT_NAME@/$_pkgname/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_DESCRIPTION@/$pkgdesc/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_VERSION@/$_gittag/g" "$_pkgname-$pkgver.desktop"
 
-    patchelf \
-    --replace-needed libminiupnpc.so.{18,21} \
-    --replace-needed libicuuc.so.7{5,6} \
-    "usr/bin/sunshine"
+    # patchelf \
+    # "usr/bin/sunshine"
+    # --replace-needed libminiupnpc.so.{18,21} \
+    # --replace-needed libicuuc.so.7{5,6} \
     # --replace-needed libboost_locale.so.1.8{3,6}.0 \
     # --replace-needed libboost_log.so.1.8{3,6}.0 \
     # --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
