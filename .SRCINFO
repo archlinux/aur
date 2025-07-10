@@ -1,6 +1,6 @@
 pkgbase = miracle-wm
 	pkgdesc = Wayland compositor based on mir
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/miracle-wm-org/miracle-wm
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = miracle-wm
 	depends = glibc
 	depends = python
 	depends = wayland
-	source = miracle-wm-0.6.0.tar.gz::https://github.com/miracle-wm-org/miracle-wm/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = c07527b2d61d3ff888736aa5925b585bb801f0a54a9951c2bc5dbc7f8e3c2efe
+	source = miracle-wm-0.6.1.tar.gz::https://github.com/miracle-wm-org/miracle-wm/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 646b7441243516df4c68827329aac8253bd25543c2c0095513fadefb28580fa5
 
 pkgname = miracle-wm
