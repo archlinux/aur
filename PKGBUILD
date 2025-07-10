@@ -2,29 +2,18 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.25.0
+pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5adf3a7d58dc53f97addf38a4218df05a2b200980f274c3a01a03464e51f4bd0')
+sha256sums=('27398af4e5ceae166e825f52f50a920a84e22336febe7f21e333c7c2dc91275d')
 depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
-checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-mcp')
+checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp')
 optdepends=('python-aiohttp: aiohttp')
-
-prepare(){
-  cd "${srcdir}"/${pkgname//google-/}-${pkgver}
-  sed -i "s/'post'/'POST'/g" ${_name//-//}/tokens.py
-  sed -i "s/'post'/'POST'/g" ${_name//-//}/batches.py
-  sed -i "s/'post'/'POST'/g" ${_name//-//}/caches.py
-  sed -i "s/'post'/'POST'/g" ${_name//-//}/models.py
-  sed -i "s/'post'/'POST'/g" ${_name//-//}/files.py
-  sed -i "s/'post'/'POST'/g" ${_name//-//}/tunings.py
-  sed -i "s/'post'/'POST'/g" ${_name//-//}/operations.py
-}
 
 build() {
   cd "${srcdir}"/${pkgname//google-/}-${pkgver}
