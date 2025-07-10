@@ -1,7 +1,8 @@
-From 7aca9d1997653798200d81fe68e0af7aa6c250d2 Mon Sep 17 00:00:00 2001
+From 129466a5811e31480f95687c29be1308df5c828e Mon Sep 17 00:00:00 2001
 From: "s@6120.eu" <s@6120.eu>
 Date: Thu, 10 Jul 2025 21:19:26 +0200
-Subject: [PATCH] chore: Add nonfree libndi_newtek device
+Subject: [PATCH] chore: Add nonfree libndi_newtek device and adapting patch to
+ latest ffmpeg (v7.1.1)
 
 ---
  configure                          |   7 +
@@ -10,9 +11,9 @@ Subject: [PATCH] chore: Add nonfree libndi_newtek device
  libavdevice/Makefile               |   4 +
  libavdevice/alldevices.c           |   2 +
  libavdevice/libndi_newtek_common.h |  30 +++
- libavdevice/libndi_newtek_dec.c    | 378 +++++++++++++++++++++++++++++
- libavdevice/libndi_newtek_enc.c    | 306 +++++++++++++++++++++++
- 8 files changed, 837 insertions(+)
+ libavdevice/libndi_newtek_dec.c    | 379 +++++++++++++++++++++++++++++
+ libavdevice/libndi_newtek_enc.c    | 309 +++++++++++++++++++++++
+ 8 files changed, 841 insertions(+)
  create mode 100644 libavdevice/libndi_newtek_common.h
  create mode 100644 libavdevice/libndi_newtek_dec.c
  create mode 100644 libavdevice/libndi_newtek_enc.c
@@ -189,7 +190,7 @@ index 86c78f31b7..62d342f2c2 100644
  
  OSS (Open Sound System) output device.
 diff --git a/libavdevice/Makefile b/libavdevice/Makefile
-index a226368d16..272c80deed 100644
+index a226368d16..727af3c6e2 100644
 --- a/libavdevice/Makefile
 +++ b/libavdevice/Makefile
 @@ -21,6 +21,8 @@ OBJS-$(CONFIG_AVFOUNDATION_INDEV)        += avfoundation.o
@@ -205,21 +206,21 @@ index a226368d16..272c80deed 100644
  SKIPHEADERS                              += decklink_common.h
  SKIPHEADERS-$(CONFIG_DECKLINK)           += decklink_enc.h decklink_dec.h \
                                              decklink_common_c.h
-+SKIPHEADERS-$(CONFIG_LIBNDI_NEWTEK_INDEV) += libndi_newtek_common.h
 +SKIPHEADERS-$(CONFIG_LIBNDI_NEWTEK_OUTDEV) += libndi_newtek_common.h
++SKIPHEADERS-$(CONFIG_LIBNDI_NEWTEK_INDEV) += libndi_newtek_common.h
  SKIPHEADERS-$(CONFIG_DSHOW_INDEV)        += dshow_capture.h
  SKIPHEADERS-$(CONFIG_FBDEV_INDEV)        += fbdev_common.h
  SKIPHEADERS-$(CONFIG_FBDEV_OUTDEV)       += fbdev_common.h
 diff --git a/libavdevice/alldevices.c b/libavdevice/alldevices.c
-index 573595f416..03c965ee63 100644
+index 573595f416..3b516e6d3e 100644
 --- a/libavdevice/alldevices.c
 +++ b/libavdevice/alldevices.c
 @@ -35,6 +35,8 @@ extern const FFInputFormat  ff_avfoundation_demuxer;
  extern const FFOutputFormat ff_caca_muxer;
  extern const FFInputFormat  ff_decklink_demuxer;
  extern const FFOutputFormat ff_decklink_muxer;
-+extern const AVInputFormat  ff_libndi_newtek_demuxer;
-+extern const AVOutputFormat ff_libndi_newtek_muxer;
++extern const FFInputFormat  ff_libndi_newtek_demuxer;
++extern const FFOutputFormat ff_libndi_newtek_muxer;
  extern const FFInputFormat  ff_dshow_demuxer;
  extern const FFInputFormat  ff_fbdev_demuxer;
  extern const FFOutputFormat ff_fbdev_muxer;
@@ -261,10 +262,10 @@ index 0000000000..899031707d
 +#endif
 diff --git a/libavdevice/libndi_newtek_dec.c b/libavdevice/libndi_newtek_dec.c
 new file mode 100644
-index 0000000000..29d88fd412
+index 0000000000..1fad2c18af
 --- /dev/null
 +++ b/libavdevice/libndi_newtek_dec.c
-@@ -0,0 +1,378 @@
+@@ -0,0 +1,379 @@
 +/*
 + * Newtek NDI input
 + * Copyright (c) 2017 Maksym Veremeyenko
@@ -289,6 +290,7 @@ index 0000000000..29d88fd412
 +
 +#include "libavformat/avformat.h"
 +#include "libavformat/internal.h"
++#include "libavformat/demux.h"
 +#include "libavutil/opt.h"
 +#include "libavutil/imgutils.h"
 +
@@ -633,11 +635,11 @@ index 0000000000..29d88fd412
 +#define NDI_DEMUXER_LONG_NAME NULL
 +#endif
 +
-+AVInputFormat ff_libndi_newtek_demuxer = {
-+    .name           = "libndi_newtek",
-+    .long_name      = NDI_DEMUXER_LONG_NAME,
-+    .flags          = AVFMT_NOFILE,
-+    .priv_class     = &libndi_newtek_demuxer_class,
++const FFInputFormat ff_libndi_newtek_demuxer = {
++    .p.name           = "libndi_newtek",
++    .p.long_name      = NDI_DEMUXER_LONG_NAME,
++    .p.flags          = AVFMT_NOFILE,
++    .p.priv_class     = &libndi_newtek_demuxer_class,
 +    .priv_data_size = sizeof(struct NDIContext),
 +    .read_header   = ndi_read_header,
 +    .read_packet   = ndi_read_packet,
@@ -645,10 +647,10 @@ index 0000000000..29d88fd412
 +};
 diff --git a/libavdevice/libndi_newtek_enc.c b/libavdevice/libndi_newtek_enc.c
 new file mode 100644
-index 0000000000..8c9d1170c7
+index 0000000000..b3a481d9d2
 --- /dev/null
 +++ b/libavdevice/libndi_newtek_enc.c
-@@ -0,0 +1,306 @@
+@@ -0,0 +1,309 @@
 +/*
 + * NewTek NDI output
 + * Copyright (c) 2017 Maksym Veremeyenko
@@ -673,8 +675,11 @@ index 0000000000..8c9d1170c7
 +
 +#include "libavformat/avformat.h"
 +#include "libavformat/internal.h"
++#include "libavformat/mux.h"
 +#include "libavutil/opt.h"
 +#include "libavutil/imgutils.h"
++#include "libavutil/mem.h"
++#include "libavcodec/avcodec.h"
 +
 +#include "libndi_newtek_common.h"
 +
@@ -942,14 +947,14 @@ index 0000000000..8c9d1170c7
 +#define NDI_MUXER_LONG_NAME NULL
 +#endif
 +
-+AVOutputFormat ff_libndi_newtek_muxer = {
-+    .name           = "libndi_newtek",
-+    .long_name      = NDI_MUXER_LONG_NAME,
-+    .audio_codec    = AV_CODEC_ID_PCM_S16LE,
-+    .video_codec    = AV_CODEC_ID_WRAPPED_AVFRAME,
-+    .subtitle_codec = AV_CODEC_ID_NONE,
-+    .flags          = AVFMT_NOFILE,
-+    .priv_class     = &libndi_newtek_muxer_class,
++const FFOutputFormat ff_libndi_newtek_muxer = {
++    .p.name           = "libndi_newtek",
++    .p.long_name      = NDI_MUXER_LONG_NAME,
++    .p.audio_codec    = AV_CODEC_ID_PCM_S16LE,
++    .p.video_codec    = AV_CODEC_ID_WRAPPED_AVFRAME,
++    .p.subtitle_codec = AV_CODEC_ID_NONE,
++    .p.flags          = AVFMT_NOFILE,
++    .p.priv_class     = &libndi_newtek_muxer_class,
 +    .priv_data_size = sizeof(struct NDIContext),
 +    .write_header   = ndi_write_header,
 +    .write_packet   = ndi_write_packet,
