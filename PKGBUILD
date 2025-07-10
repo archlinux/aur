@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=oapi-cli-git
-pkgrel=1
+pkgrel=2
 pkgdesc='New Outscale CLI'
 pkgver=nightly.linux.r0.gc6a9503
 
@@ -12,7 +12,7 @@ license=(BSD)
 
 pkgver() {
   cd "${srcdir}/oapi-cli"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 makedepends=(git)
