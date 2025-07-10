@@ -1,0 +1,17 @@
+diff -ura grandorgue/src/core/GOWave.h grandorgue.new/src/core/GOWave.h
+--- grandorgue/src/core/GOWave.h	2025-07-10 08:33:29.095786637 +0200
++++ grandorgue.new/src/core/GOWave.h	2025-07-10 08:35:49.058844671 +0200
+@@ -8,10 +8,11 @@
+ #ifndef GOWAVE_H
+ #define GOWAVE_H
+ 
+-#include <wx/string.h>
+-
++#include <cstdint>
+ #include <vector>
+ 
++#include <wx/string.h>
++
+ #include "GOBuffer.h"
+ #include "GOWaveLoop.h"
+ 
