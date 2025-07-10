@@ -4,7 +4,7 @@
 
 pkgname=afew-git
 _pkgname=${pkgname%-git}
-pkgver=3.0.1.r63.g65227fa
+pkgver=3.0.1.r78.gbc09b14
 pkgrel=1
 epoch=1
 pkgdesc='Initial tagging script for notmuch mail'
@@ -14,6 +14,7 @@ license=(ISC)
 depends=(
   notmuch
   python-chardet
+  python-cffi
   python-dkim
   python-setuptools
 )
@@ -25,6 +26,7 @@ makedepends=(
   python-sphinx
   python-wheel
 )
+optdepends=('python-pyinotify: for --watch')
 checkdepends=(python-freezegun)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -32,7 +34,7 @@ source=("git+$url.git")
 b2sums=(SKIP)
 
 pkgver() {
-  cd afew
+  cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -51,10 +53,5 @@ package() {
   cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir"/usr/share/man/man1 build/"$_pkgname".1
-
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/"$_pkgname"-$pkgver.dist-info/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
