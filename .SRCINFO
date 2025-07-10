@@ -1,7 +1,7 @@
 pkgbase = lsfg-vk-git
 	pkgdesc = Lossless Scaling Frame Generation on Linux via DXVK/Vulkan
 	pkgver = r103.223f4ba
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PancakeTAS/lsfg-vk
 	install = lsfg-vk.install
 	arch = x86_64

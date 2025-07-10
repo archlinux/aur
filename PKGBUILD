@@ -3,7 +3,7 @@
 
 pkgname=lsfg-vk-git
 pkgver=r103.223f4ba
-pkgrel=2
+pkgrel=3
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
