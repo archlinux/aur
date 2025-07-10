@@ -1,22 +1,20 @@
+# Maintainer: nikopoto nikopoto.8@protonmail.com
 pkgname=m8mouse-git
-pkgver=1.0.r3.g3b5d0d4
+pkgver=1.0
 pkgrel=1
 pkgdesc="A RGB and DPI controller for m8mouse"
 arch=('x86_64')
 url="https://github.com/nikopoto/m8mouse"
-license=('MIT')
-depends=('hidapi')
-makedepends=('git' 'cmake' 'pkgconf' 'gcc' 'make')
-provides=('m8mouse')
-conflicts=('m8mouse')
-source=("git+https://github.com/nikopoto/m8mouse.git")
-md5sums=('SKIP')
+license=("MIT")
+depends=("hidapi")
+makedepends=("git" "cmake" "pkgconf" "gcc" "make")
+provides=("m8mouse")
+conflicts=("m8mouse")
+source=("git+https://github.com/nikopoto/m8mouse.git"
+        "${pkgname}.install")
+md5sums=("SKIP" "SKIP")
 install="$pkgname.install"
-
-pkgver() {
-  cd "$srcdir/m8mouse"
-  echo "1.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
+options=(!debug)
 
 build() {
   cd "$srcdir/m8mouse"
@@ -31,4 +29,5 @@ package() {
   cd "$srcdir/m8mouse"
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 90-m8mouse.rules "$pkgdir/etc/udev/rules.d/90-m8mouse.rules"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
