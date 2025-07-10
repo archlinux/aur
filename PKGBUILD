@@ -3,28 +3,33 @@
 # Contributor: liberodark
 
 pkgname=guitar
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Open source Git GUI Client"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://soramimi.github.io/Guitar/"
 license=(GPL-2.0-only)
-depends=(qt5-svg git file)
-makedepends=(cmake qt5-tools)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/soramimi/Guitar/archive/v${pkgver}.tar.gz")
-sha256sums=('e1f4b2571a44dc763b62957f7633e92baabcaf0fb3f2d4cc7e0d68ec78275ff5')
+depends=(qt6-base qt6-svg git)
+makedepends=(ruby qt6-tools)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/soramimi/Guitar/archive/v${pkgver}.tar.gz")
+sha256sums=('d1de24ded13dd554b7fde75bee61c6c5f641514df0706823079cf79c0c6b8108')
 
 build() {
-  cmake -B build -S "Guitar-${pkgver}" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=None \
+  cd "Guitar-${pkgver}/filetype"
+  qmake6 libfiletype.pro
+  make
 
-  cmake --build build
+  cd "${srcdir}/Guitar-${pkgver}"
+  qmake6 Guitar.pro
+  make
 }
 
 package() {
-  install -Dm755 "build/Guitar" "$pkgdir/usr/bin/$pkgname"
+  cd "Guitar-${pkgver}"
+  install -Dm755 "_bin/Guitar" "${pkgdir}/usr/bin/guitar"
 
-  cd "Guitar-${pkgver}/LinuxDesktop"
-  install -D "Guitar.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-  install -D "guitar.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  cd LinuxDesktop
+  install -D Guitar.svg         -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  install -D guitar.desktop     -t "${pkgdir}/usr/share/applications/"
+  install -D guitar.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
 }
