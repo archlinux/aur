@@ -23,9 +23,9 @@ prepare(){
   sed -i 's/"pnpm": "^9"/"pnpm": "^10"/g' package.json # Use pnpm 10
   rm -rf test/test_docker # Remove tests that need docker
   # Fix test_mcp_mount_gradio_app test
-  sed -i '240i\    import asyncio' test/test_mcp.py
+  sed -i '240i\    import anyio' test/test_mcp.py
   sed -i '241i\    from sse_starlette.sse import AppStatus' test/test_mcp.py
-  sed -i '242i\    AppStatus.should_exit_event = asyncio.Event()' test/test_mcp.py
+  sed -i '242i\    AppStatus.should_exit_event = anyio.Event()' test/test_mcp.py
 }
 
 build() {
