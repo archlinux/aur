@@ -1,12 +1,12 @@
 pkgbase = cutmp3
 	pkgdesc = Edit mp3 (and mp2) files without quality loss
-	pkgver = 3.0.3
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://www.puchalla-online.de/cutmp3.html
 	arch = any
 	license = GPL
 	depends = readline
-	source = https://github.com/tarjanm-movidius/cutmp3/archive/refs/tags/v3.0.3.tar.gz
-	sha256sums = 7fde60cbf9c57b1697cb86f9f95d073dbabb4281df2a3899861e0bd1531cbd01
+	source = https://github.com/tarjanm-movidius/cutmp3/archive/refs/tags/v4.0.tar.gz
+	sha256sums = ea30f42fe462b5fdec7efc5510cae740f3f3ea007758cffcfa6cdb95657728b3
 
 pkgname = cutmp3
