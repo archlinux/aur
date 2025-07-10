@@ -3,7 +3,7 @@
 pkgname=kikit-git
 pkgdesc="Automation for KiCAD boards"
 pkgver=r751.4f1a424
-pkgrel=2
+pkgrel=3
 
 url="https://github.com/yaqwsx/KiKit.git"
 
@@ -17,6 +17,8 @@ md5sums=("SKIP")
 makedepends=(
 	"python-setuptools" 
 	"python-versioneer"
+	"python-build"
+	"python-installer"
 )
 depends=(
 	"kicad>=5.1.0"
