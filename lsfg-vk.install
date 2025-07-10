@@ -7,25 +7,32 @@ _data_home="${XDG_DATA_HOME:-$_home/.local/share}"
 
 # paths and expected version
 steam_dll="$_data_home/Steam/steamapps/common/Lossless Scaling/Lossless.dll"
-required_version="3.0.0.2" # legacy_2.13/2.13.2
+required_version="3.2.0.0" # latest version
+
 user_manifest="$_data_home/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json"
 user_library="$_home/.local/lib/liblsfg-vk.so"
+
+get_version() {
+    case "$1" in
+        1.6.0.0) echo "1.6" ;;
+        3.0.0.2) echo "2.13" ;;
+        3.0.0.1) echo "3.0" ;;
+        3.1.0.2) echo "3.1" ;;
+        *)        echo "$1" ;;  # fallback to productversion if unmapped
+    esac
+}
 
 # extracts the ProductVersion string from the dll
 get_product_version() {
     local file="$1"
-    strings -e l "$file" 2>/dev/null \
-      | awk '
-          /^ProductVersion$/ { getline; print; exit }
-        '
+    strings -e l "$file" 2>/dev/null | awk '/^ProductVersion$/ { getline; print; exit }'
 }
 
 check_steam_install() {
     if [ ! -f "$steam_dll" ]; then
         echo "==============================================================================================="
         echo "==  WARNING: Lossless Scaling DLL not found in the home Steam directory!                     =="
-        echo "==  Please install the legacy_2.13 build via Steam:                                          =="
-        echo "==    Library → Lossless Scaling → Properties → Betas → legacy_2.13 branch                   =="
+        echo "==  Please install the latest version via Steam.                                             =="
         echo "==                                                                                           =="
         echo "==  It should be installed under the following path:                                         =="
         echo "==    $_data_home/Steam/steamapps/common/Lossless Scaling/Lossless.dll"
@@ -36,12 +43,14 @@ check_steam_install() {
     else
         version="$(get_product_version "$steam_dll")"
         if [ "$version" != "$required_version" ]; then
-            echo "==========================================================================================="
-            echo "==  Detected Lossless Scaling DLL at:                                                    =="
-            echo "==    $steam_dll"
-            echo "==  Version mismatch, please ensure you installed the legacy_2.13 build via Steam:       =="
-            echo "==    Library → Lossless Scaling → Properties → Betas → legacy_2.13 branch               =="
-            echo "==========================================================================================="
+            short_installed=$(get_version "$version")
+            echo "========================================================================================"
+            echo "==  Lossless Scaling version mismatch!                                                =="
+            echo "==    Installed version: $short_installed"
+            echo "==                                                                                    =="
+            echo "==  Please install the latest build via Steam:                                        =="
+            echo "==    Library → Lossless Scaling → Properties → Betas → none                          =="
+            echo "========================================================================================"
         fi
     fi
 }
