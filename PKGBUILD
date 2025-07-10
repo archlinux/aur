@@ -3,7 +3,7 @@
 
 pkgname=python-flax
 _pkgname=${pkgname#python-}
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
@@ -31,8 +31,8 @@ optdepends=(
 # Maintainers change release tag. Yes, I know. ¯\_(ツ)_/¯
 source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz"
         'python-flax.diff')
-sha256sums=('a5fe312b1c3cc29bb0f1c592ce07a69d53e4b1ddc5cf2be927ac7f1ce036dffb'
-            'SKIP')
+sha256sums=('587c6d9c5054f24422f4505f7fe5b069f943213fdb892734a25c0496cb5bd881'
+            '3b769ed13cab8ee6374ccd85089da7c0ab9a11faeb79ad050aa640b52328742a')
 
 prepare() {
     cd $_pkgname-$pkgver
