@@ -4,7 +4,7 @@
 
 _pkgname="hal-emsec"
 pkgname="$_pkgname-git"
-pkgver=4.4.1.r245.ga2ff63b
+pkgver=4.4.1.r302.g9900bf1
 pkgrel=1
 pkgdesc='Hardware Analyzer for Hardware Reversing from emsec'
 url="https://github.com/emsec/hal"
@@ -43,12 +43,8 @@ _source_main() {
 
 _source_patch() {
   source+=(
-    "bitwuzla-040-parser-api.patch"::"https://patch-diff.githubusercontent.com/raw/emsec/hal/pull/604.diff"
-    "fix-build-fmt-enums.patch"::"https://patch-diff.githubusercontent.com/raw/emsec/hal/pull/605.diff"
   )
   sha256sums+=(
-    'SKIP'
-    'SKIP'
   )
 }
 
