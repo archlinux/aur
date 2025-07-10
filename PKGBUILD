@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=aurdex
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="terminal interface for browsing AUR package metadata with GIT and comment views"
 arch=(any)
@@ -25,7 +25,7 @@ makedepends=(
   python-wheel
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envolution/auricle/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ea741e4965e68b6cf178d7ccb6baf7ed09a581524eeea2d87a20405a09238103')
+sha256sums=('68d1d7bd76015305edf25278f441f865bfaaa2345695b944434640c7c91d5733')
 
 build() {
   cd "$pkgname-$pkgver"
