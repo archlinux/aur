@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-name=electron36
+name=electron37
 flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/${name}-flags.conf"
 fallback_file="${XDG_CONFIG_HOME:-$HOME/.config}/electron-flags.conf"
 
@@ -25,4 +25,4 @@ export ELECTRON_IS_DEV
 : ${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec /usr/lib/${name}/electron . --gtk-version=3 "${flags[@]}" "$@"
+exec /usr/lib/${name}/electron . "${flags[@]}" "$@"

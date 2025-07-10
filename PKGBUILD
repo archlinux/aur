@@ -1,12 +1,12 @@
 pkgname=libelectron-electron-meta
-pkgver=36
-pkgrel=3
+pkgver=37
+pkgrel=1
 arch=("x86_64" "aarch64")
 license=('GPL')
-depends=("electron${pkgver}")
+depends=("electron${pkgver}-bin")
 pkgdesc="A meta package for setting and controlling the electron versioning for LibElectron packages"
 source=("electron")
-sha256sums=('89e9ff2cfeeddeb08f691ff403eba84c7722443966bb303b602df62b5cee85bd')
+sha256sums=('bcb4adffd3cc478297a8ff19dd7fe4c6f33d66f279f4145fda6fa1c940ba3e63')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
