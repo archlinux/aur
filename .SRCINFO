@@ -1,6 +1,6 @@
 pkgbase = trueconf-client
 	pkgdesc = TrueConf for Linux is a video conferencing app with advanced collaboration tools and user-friendly UI. All you need to get started is any PC or laptop with an Internet connection.
-	pkgver = 8.5.0.2881
+	pkgver = 8.5.0.3039
 	pkgrel = 1
 	url = https://trueconf.com
 	install = trueconf.install
@@ -38,7 +38,7 @@ pkgbase = trueconf-client
 	depends = double-conversion
 	depends = gtk3
 	depends = lshw
-	source = https://packages.trueconf.ru/archlinux/trueconf-8.5.0.2881-1-x86_64.pkg.tar.zst
-	sha512sums = 0727eea3456d5aa78efdf5adc3edb30d601fa012bfd3d1016adaf1fb2a7fbf63e0a5ca04d2a05584ee907aabf1a5f4e3645d66cda406cae0457ec7af3a49f6a5
+	source = https://packages.trueconf.ru/archlinux/trueconf-8.5.0.3039-1-x86_64.pkg.tar.zst
+	sha512sums = da922f8ff3bd093cd0789ae0340ca8e7da79c0350c26b354f680727fbbfa492616aa2fd182fb5ba7f0acf27118f7d53168bff2a21673a4ee4fea1fb7815f7d40
 
 pkgname = trueconf
