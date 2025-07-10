@@ -1,18 +1,13 @@
 pkgbase = adfinis-rclone-mgr-bin
 	pkgdesc = Configure and manage rclone mounts for Google Drive
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/adfinis/adfinis-rclone-mgr/
 	license = GPL3
-	depends = rclone
-	depends = python-nautilus
-	depends = xclip
-	depends = zenity
-	depends = python-httpx
 	conflicts = adfinis-rclone-mgr
 	provides = adfinis-rclone-mgr
 	arch = x86_64
-	source_x86_64 = https://github.com/adfinis/adfinis-rclone-mgr/releases/download/v2.0.0/adfinis-rclone-mgr-v2.0.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 52e75cdd21a46fb8ad4b4bda266b7c78c8e4de6c614c4e1f195520ba6a9c7660
+	source_x86_64 = https://github.com/adfinis/adfinis-rclone-mgr/releases/download/v2.1.0/adfinis-rclone-mgr-v2.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7493cf79a05fb48eb862284ca052a2930142c0cf1db4bc387c0aca313fb70269
 	
 pkgname = adfinis-rclone-mgr-bin
