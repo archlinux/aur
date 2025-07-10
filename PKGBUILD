@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.35.0
+pkgver=5.36.2
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -10,23 +10,22 @@ url='https://github.com/gradio-app/gradio'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz"
         "https://files.pythonhosted.org/packages/py3/g/gradio-pdf/gradio_pdf-0.0.22-py3-none-any.whl") # Prevent cercular dependencies
-sha256sums=('731ea752a6b85a6e70d145b1247ff4bb417d5de82fe8fb8bce0d99e2ef274d52'
-            '6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5')
 noextract=('gradio_pdf-0.0.22-py3-none-any.whl')
-depends=('python' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
+sha256sums=('9174ccd43faf6e853f01a04f3f8a130bd148d9c9f2809887cba804472a1608e2'
+            '6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5')
+depends=('python' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-brotli' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel' 'pnpm')
-checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras' 'python-openai')
+checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras' 'python-openai')
 optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp')
-install='python-gradio.install'
 
 prepare(){
   cd "${srcdir}"/${_name}-${_name}-${pkgver}
   sed -i 's/"pnpm": "^9"/"pnpm": "^10"/g' package.json # Use pnpm 10
   rm -rf test/test_docker # Remove tests that need docker
   # Fix test_mcp_mount_gradio_app test
-  sed -i '220i\    import asyncio' test/test_mcp.py
-  sed -i '224i\    from sse_starlette.sse import AppStatus' test/test_mcp.py
-  sed -i '227i\    AppStatus.should_exit_event = asyncio.Event()' test/test_mcp.py
+  sed -i '240i\    import asyncio' test/test_mcp.py
+  sed -i '241i\    from sse_starlette.sse import AppStatus' test/test_mcp.py
+  sed -i '242i\    AppStatus.should_exit_event = asyncio.Event()' test/test_mcp.py
 }
 
 build() {
