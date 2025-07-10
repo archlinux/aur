@@ -3,22 +3,22 @@
 _base=paddlepaddle
 pkgname=${_base}-bin
 pkgdesc="Parallel Distributed Deep Learning"
-pkgver=2.6.2
+pkgver=3.1.0
 pkgrel=1
 arch=(x86_64)
 url="https://${_base}.org.cn"
 license=(Apache-2.0)
-depends=(python-httpx python-numpy python-pillow python-decorator
-  python-astor python-opt_einsum python-protobuf perl) # python-paddle_bfloat
+depends=(python-httpx python-numpy python-protobuf python-pillow python-decorator
+  python-opt_einsum python-networkx python-typing_extensions perl)
 makedepends=(python-installer)
-_pyversion=cp312 # $(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
+_pyversion=cp313 # $(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
 _wheel="${_base}-${pkgver}-${_pyversion}-${_pyversion}-manylinux1_${CARCH}"
 source=(https://pypi.org/packages/${_pyversion}/${_base::1}/${_base}/${_wheel}.whl)
-sha256sums=('1aab2186d24402060f690a850acb21e014282b01882bcc1442f5f387dd012a50')
+sha256sums=('460f64c1a3b6d682ad5bf354db648055e2efaee7d1cec593bf029d6f3d85b46e')
 noextract=("${_wheel}.whl")
 provides=("${_base}=${pkgver}")
 conflicts=(${_base})
 
 package() {
-  XDG_CACHE_HOME="${PWD}" PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" ${_base}-${pkgver}-*.whl
+  XDG_CACHE_HOME="${PWD}" PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" ${_wheel}.whl
 }
