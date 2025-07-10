@@ -1,16 +1,16 @@
 pkgname=m8mouse-git
+pkgver=1.0.r3.g3b5d0d4
 pkgrel=1
-pkgdesc="An RGB and DPI controller for m8mouse"
-arch=("x86_64")
+pkgdesc="A RGB and DPI controller for m8mouse"
+arch=('x86_64')
 url="https://github.com/nikopoto/m8mouse"
-license=("MIT")
-depends=("hidapi")
-makedepends=("git" "cmake" "pkgconf" "gcc" "make")
-provides=("m8mouse")
-conflicts=("m8mouse")
-source=("git+https://github.com/nikopoto/m8mouse.git"
-	"${pkgname}.install")
-md5sums=("SKIP")
+license=('MIT')
+depends=('hidapi')
+makedepends=('git' 'cmake' 'pkgconf' 'gcc' 'make')
+provides=('m8mouse')
+conflicts=('m8mouse')
+source=("git+https://github.com/nikopoto/m8mouse.git")
+md5sums=('SKIP')
 install="$pkgname.install"
 
 pkgver() {
