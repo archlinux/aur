@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r70236.a8fc15c6b30
+pkgver=r70264.8b1f1ae87ae
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -14,16 +14,24 @@ conflicts=(ladybird)
 provides=(ladybird)
 depends=(
   curl
+  fast_float
   ffmpeg
+  harfbuzz
+  icu
   libgl
+  libjpeg-turbo
+  libjxl
+  libtiff
+  libtommath
+  libwebp
   qt6-base
   qt6-multimedia
   qt6-tools
   qt6-wayland
-  ttf-liberation
-  libtommath
-  fast_float
   simdutf
+  sqlite
+  ttf-liberation
+  woff2
   
   libpng-apng # AUR
   skia # AUR
