@@ -1,7 +1,7 @@
 pkgname=ayaanfetch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="AYAANFETCH by AYAAN511 – The Only Fetch Tool You’ll Ever Need (Wine, auto-grabs latest .zip)"
+pkgdesc="AYAANFETCH by AYAAN511 – The Only Fetch Tool You’ll Ever Need (Wine, always grabs latest .zip release)"
 arch=('any')
 url="https://github.com/ayaan511/ayaanfetch"
 license=('MIT')
@@ -19,11 +19,10 @@ prepare() {
 package() {
     # Make main directory
     install -d "$pkgdir/usr/bin/unstable/ayaanfetch"
-    # Install main exe
+    # Copy main EXE
     install -Dm755 "$srcdir/AyaanFetch.exe" "$pkgdir/usr/bin/unstable/ayaanfetch/AyaanFetch.exe"
-    # Install OpenHardwareMonitor folder and exe
-    install -d "$pkgdir/usr/bin/unstable/ayaanfetch/OpenHardwareMonitor"
-    install -Dm755 "$srcdir/OpenHardwareMonitor/OpenHardwareMonitor.exe" "$pkgdir/usr/bin/unstable/ayaanfetch/OpenHardwareMonitor/OpenHardwareMonitor.exe"
-    # Install the setup script
-    install -Dm755 "$srcdir/install.sh" "$pkgdir/usr/bin/ayaan-unstable-setup"
+    # Copy the ENTIRE OpenHardwareMonitor folder with all files/subfolders
+    cp -r "$srcdir/OpenHardwareMonitor" "$pkgdir/usr/bin/unstable/ayaanfetch/"
+    # Install the setup script as ayaanfetch-setup
+    install -Dm755 "$srcdir/install.sh" "$pkgdir/usr/bin/ayaanfetch-setup"
 }

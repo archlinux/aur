@@ -1,6 +1,6 @@
 pkgbase = ayaanfetch
-	pkgdesc = AYAANFETCH by AYAAN511 – The Only Fetch Tool You’ll Ever Need (Wine, auto-grabs latest .zip)
-	pkgver = 1.0.0
+	pkgdesc = AYAANFETCH by AYAAN511 – The Only Fetch Tool You’ll Ever Need (Wine, always grabs latest .zip release)
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ayaan511/ayaanfetch
 	arch = any
