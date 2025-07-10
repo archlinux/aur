@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linglong-tools
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A command line helper for linglong.'
 arch=($CARCH)
@@ -19,6 +19,7 @@ depends=(
   glibc
 )
 makedepends=(
+  git
   go
   pkgconf
 )
@@ -28,16 +29,20 @@ makedepends=(
 optdepends=("linyaps: Linglong is the container application toolkit ofdeepin.")
 backup=(etc/${pkgname}.conf)
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}::git+${url}.git#tag=v${pkgver}"
   "${pkgname}.conf"
   "${pkgname}.sh"
 )
-sha256sums=('0117f1d19acaed406a1ec9b4b3985d1fa38fb9f197fa01fce4d3af77f1ba5202'
+sha256sums=('ba4a9a0b96e8d27668a08b51fae09b8635c37b736d9c125cbb11a4e92c58afa5'
             'ca5310a6046c27fde5d5ef3751bcfd62b13c6ac0fcce929fc852dd0533aa8786'
             'a8c629db431fad5da26cca63fb511d965f153a409b541520352eac8f283dc6de')
 
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}/
+  cd "${srcdir}"/${pkgname}/
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -52,12 +57,12 @@ build() {
 }
 
 # check() {
-#   cd "${srcdir}"/${pkgname}-${pkgver}/
+#   cd "${srcdir}"/${pkgname}/
 #   make test
 # }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "${srcdir}"/${pkgname}
   install -Dm755 build/${pkgname} -t "${pkgdir}/usr/bin/"
   install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
