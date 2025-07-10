@@ -3,8 +3,8 @@
 # Contributor: Moritz Luedecke <ritze@skweez.net>
 # Contributor: johnLate
 pkgname=aspectc++-nightly-bin
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="Nightly build of AspectC++, a set of C++ language extensions to facilitate aspect-oriented programming with C/C++"
 arch=('i686' 'x86_64')
 url="http://aspectc.org/"
@@ -17,6 +17,10 @@ sha512sums_i686=('SKIP')
 sha512sums_x86_64=('SKIP')
 
 _dirname=aspectc++
+
+pkgver () {
+
+}
 
 package() {
 	install -dm755 $pkgdir/usr/bin
