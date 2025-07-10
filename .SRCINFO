@@ -1,13 +1,13 @@
 pkgbase = r-sampling
 	pkgdesc = Survey Sampling
-	pkgver = 2.10
-	pkgrel = 2
+	pkgver = 2.11
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sampling
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = r-lpsolve
-	source = https://cran.r-project.org/src/contrib/sampling_2.10.tar.gz
-	md5sums = 42f9a999adb8edaa1aa1199d1774b8aa
-	b2sums = 022baa77d2b46732f55c5bfc451cc6cf900d8d9c5709dd35ca8f73b62e9ef49337c57d28eba01b73180d7f4bb4f83a6eb85d7a860683d6c20a37cd2b1c168bdb
+	source = https://cran.r-project.org/src/contrib/sampling_2.11.tar.gz
+	md5sums = 2858cd4ef79896fe2d6dfedb63b73a72
+	b2sums = 64512dedbb677c72a6082df62f827049cdd6f7d35536da21adb95d8f85cfc07677b43c96153901148d87caf2c2582cd6928a2db81a86c646a28c67224e6f4f8d
 
 pkgname = r-sampling
