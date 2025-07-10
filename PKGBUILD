@@ -1,7 +1,7 @@
 # Maintainer: Martin Kröning (mkroening) <m.kroening@hotmail.de>
 
 pkgname=edu-sync-git
-pkgver=0.2.3.r0.g3a82e44
+pkgver=0.3.2.r0.g4177e02
 pkgrel=1
 pkgdesc="A command line application for synchronizing the contents of Moodle instances to your computer."
 arch=('x86_64')

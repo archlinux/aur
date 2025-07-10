@@ -1,6 +1,6 @@
 pkgbase = edu-sync-git
 	pkgdesc = A command line application for synchronizing the contents of Moodle instances to your computer.
-	pkgver = 0.2.3.r0.g3a82e44
+	pkgver = 0.3.2.r0.g4177e02
 	pkgrel = 1
 	url = http://edu-sync.org/
 	arch = x86_64
