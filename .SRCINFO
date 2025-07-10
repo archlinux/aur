@@ -1,0 +1,18 @@
+pkgbase = m3uget
+	pkgdesc = Multi-threaded M3U8 stream downloader
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OlexiyOdarchuk/m3uget
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = yt-dlp
+	depends = ffmpeg
+	provides = m3uget
+	conflicts = m3uget
+	source = m3uget-1.0.0.tar.gz::https://github.com/OlexiyOdarchuk/m3uget/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 5f58718109b6b836cbc48122e7ada0c247b75305027ce75b666503797cba216c
+
+pkgname = m3uget
