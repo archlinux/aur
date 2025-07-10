@@ -1,18 +1,17 @@
 pkgbase = vok
 	pkgdesc = Vogo's Keyboard for Xorg 7 (Czech)
 	pkgver = 1.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://gitlab.com/vojta_vogo/vok
 	install = vok.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = grep
 	depends = xmlstarlet
 	depends = perl
-	source = https://gitlab.com/vojta_vogo/vok/raw/9b338e5c/xorg/vok
+	source = https://gitlab.com/vojta_vogo/vok/raw/e0a7cd98cfdeb037fecaa02844664e2c770cd073/xorg/vok
 	source = vok.xml
 	sha256sums = 2b683970f8fbaf92dea41a7c483bdd00b30a1b695a7a983266d0364078a19274
 	sha256sums = c4440340e5a7d4ad05e4c6d6fa2bf0eb4f642a6007a09621339a42cd6786a492
 
 pkgname = vok
-
