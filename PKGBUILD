@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=vkdoom-git
-pkgver=v0.9+2158+g976c18f3a
+pkgver=v25.6.0+8+ge29e1578b
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
@@ -42,13 +42,11 @@ conflicts=('vkdoom' 'vkdoom-bin-nightly')
 #disable LTO due to instability
 options=(!debug !lto)
 source=('vkdoom::git+https://github.com/dpjudas/VkDoom/'
-        'vkdoom.desktop'
-        '0001-Enforce-file-paths.patch'
-        'vkdoom.svg')
+        'org.vkdoom.vkdoom.desktop'
+        '0001-Enforce-file-paths.patch')
 b2sums=('SKIP'
-            '4129062d604c978682536d5d4cb00d1995a8a77b41235556614252f779882623b6babd46f3f9cb3544c62b67a4e9026c7bb68960c319f2cf32682535c43a2bed'
-            'b61b7fd292db0632e3ea155dccbe38d80589d07c1d37c19963ac5e39103f57c489c3c08ab5a3f6a07f7f1d8ae6f7ddf3fdfc0006313312754d7b91f35d6780f4'
-            'b9587a107c69dc98593f98454d411bcd69e9257b15d0d7d535c3afd19ce18b74a4513d67c7e973712768d60d1457dd5972d993cb84466d15525e26cf582cb105')
+            '25d72c4147bd27c415ae8dc7e21549e40a1c562ab3df77ca82bd299aef895125a2106ef92f3b699a605157919b57e3971d907f3f256d9e05b3caedad11949101'
+            'b61b7fd292db0632e3ea155dccbe38d80589d07c1d37c19963ac5e39103f57c489c3c08ab5a3f6a07f7f1d8ae6f7ddf3fdfc0006313312754d7b91f35d6780f4')
 
 _enforce_clang=${_enforce_clang-}
 
@@ -104,7 +102,8 @@ package() {
     make -C build install DESTDIR="$pkgdir"
     install -d "$pkgdir"/usr/share/licenses
     mv "$pkgdir"/usr/share/doc/vkdoom/licenses "$pkgdir"/usr/share/licenses/vkdoom
-    desktop-file-install "$srcdir"/vkdoom.desktop --dir="$pkgdir"/usr/share/applications
+    desktop-file-install "$srcdir"/org.vkdoom.vkdoom.desktop --dir="$pkgdir"/usr/share/applications
     install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vkdoom.xpm
-    install "$srcdir"/vkdoom.svg -D -m 644 "$pkgdir"/usr/share/pixmaps/vkdoom.svg
+    install src/posix/unix/org.vkdoom.vkdoom.svg -D -m 644 "$pkgdir"/usr/share/pixmaps/org.vkdoom.vkdoom.svg
+    install src/posix/unix/org.vkdoom.vkdoom.metainfo.xml -D -m 644 "$pkgdir"/usr/share/metainfo/org.vkdoom.vkdoom.metainfo.xml
 }

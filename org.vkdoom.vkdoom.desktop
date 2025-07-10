@@ -1,11 +1,13 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=VKDoom
-GenericName=Advanced Doom source port with a focus on Vulkan and modern computers
-Icon=/usr/share/pixmaps/vkdoom.svg
+Name=VkDoom
+Comment=Modern, Vulkan-based Doom source port
+Icon=org.vkdoom.vkdoom
 Exec=vkdoom %F
 Terminal=false
+StartupNotify=true
+Keywords=doom;retro
 MimeType=application/x-doom-wad;
 Categories=Game;ActionGame;
 X-Desktop-File-Install-Version=0.26
