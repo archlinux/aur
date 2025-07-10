@@ -1,34 +1,34 @@
 # Maintainer: Matthias gatto <matthias.gatto@outscale.com>
 # Reference: PKGBUILD(5)
 
+_pkgbase=oapi-cli
 pkgname=oapi-cli-git
 pkgrel=1
 pkgdesc='New Outscale CLI'
 pkgver=nightly.linux.r0.gc6a9503
 
 arch=('any')
-url='https://github.com/outscale/oapi-cli'
+url="https://github.com/outscale/$_pkgbase"
 license=(BSD)
-
-pkgver() {
-  cd "${srcdir}/oapi-cli"
-  git describe --long --tags --abbrev=7 --match="v*" HEAD |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 makedepends=(git)
 depends=(curl)
 
-source=("git+https://github.com/outscale/oapi-cli.git")
+source=("git+$url.git")
 sha256sums=("SKIP")
 
+pkgver() {
+  cd "$_pkgbase"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 build() {
-	cd "${srcdir}/oapi-cli"
+  cd "$_pkgbase"
 	make
 }
 
 package() {
-	cd "${srcdir}/oapi-cli"
+  cd "$_pkgbase"
 	install -Dm 644 "${srcdir}/oapi-cli/oapi-cli-completion.bash" "$pkgdir/usr/share/bash-completion/completions/oapi-cli"
 	install -Dm 775 "${srcdir}/oapi-cli/oapi-cli" "$pkgdir/usr/bin/oapi-cli"
 	install -Dm 644 "${srcdir}/oapi-cli/LICENSE" "$pkgdir/usr/share/licenses/oapi-cli/LICENSE"
