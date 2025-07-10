@@ -2,45 +2,46 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal neuphonic nltk openai playai resemble rime sarvam silero speechify speechmatics spitch tavus turn-detector)
+_plugins=(anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero speechify speechmatics spitch tavus turn-detector)
 pkgbase=python-${_name0}
 pkgname=(python-${_name0} ${_plugins[@]/#/python-${_name1}-})
-pkgver=1.1.5
-pkgrel=3
+pkgver=1.1.6
+pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for services from Anthropic.'
-          'Agent Framework plugin for AssemblyAI.'
-          'LiveKit Agents Plugin for services from AWS.'
-          'Agent Framework plugin for services from Azure.'
-          'Agent Framework plugin for Baseten.'
-          'Agent Framework plugin for services from Beyond Presence.'
-          'Agent Framework plugin for services from BitHuman Avatar Rendering.'
-          'LiveKit Agents Plugin for Cartesia.'
-          'LiveKit Agents Plugin for LINE Clova STT.'
-          "Agent Framework plugin for services using Deepgram's API."
-          "Agent Framework plugin for voice synthesis with ElevenLabs' API."
-          'fal plugin template for LiveKit Agents.'
-          "Agent Framework plugin for services using Gladia's API."
-          'Agent Framework plugin for services from Google Cloud.'
-          'Groq inference plugin for LiveKit Agents.'
-          'Agent Framework plugin for Hedra Avatar.'
-          'Hume TTS plugin for LiveKit agents.'
-          "Agent Framework plugin for voice synthesis with Inworld's API."
-          'LangChain/LangGraph plugin for LiveKit agents.'
-          'LMNT TTS plugin for LiveKit agents.'
-          'Minimal plugin template for LiveKit Agents.'
-          'Neuphonic inference plugin for LiveKit Agents.'
-          'Agent Framework plugin for NLTK-based text processing.'
-          'Agent Framework plugin for services from OpenAI.'
-          "Agent Framework plugin for voice synthesis with PlayAI's API."
-          'LiveKit Agents Plugin for Resemble AI.'
-          'LiveKit Agents Plugin for Rime.'
-          "Agent Framework plugin for services using Sarvam.ai's API."
-          'Agent Framework Plugin for Silero.'
-          "Agent Framework plugin for voice synthesis with Speechify's API."
-          'Agent Framework plugin for Speechmatics.'
-          'spitch plugin template for LiveKit Agents.'
-          'Agent Framework plugin for Tavus.'
-          'End of utterance detection for LiveKit Agents.')
+                  'Agent Framework plugin for AssemblyAI.'
+                  'LiveKit Agents Plugin for services from AWS.'
+                  'Agent Framework plugin for services from Azure.'
+                  'Agent Framework plugin for Baseten.'
+                  'Agent Framework plugin for services from Beyond Presence.'
+                  'Agent Framework plugin for services from BitHuman Avatar Rendering.'
+                  'LiveKit Agents Plugin for Cartesia.'
+                  'LiveKit Agents Plugin for LINE Clova STT.'
+                  "Agent Framework plugin for services using Deepgram's API."
+                  "Agent Framework plugin for voice synthesis with ElevenLabs' API."
+                  'fal plugin template for LiveKit Agents.'
+                  "Agent Framework plugin for services using Gladia's API."
+                  'Agent Framework plugin for services from Google Cloud.'
+                  'Groq inference plugin for LiveKit Agents.'
+                  'Agent Framework plugin for Hedra Avatar.'
+                  'Hume TTS plugin for LiveKit agents.'
+                  "Agent Framework plugin for voice synthesis with Inworld's API."
+                  'LangChain/LangGraph plugin for LiveKit agents.'
+                  'LMNT TTS plugin for LiveKit agents.'
+                  'Minimal plugin template for LiveKit Agents.'
+                  'LiveKit Agents Plugin for services from AWS.'
+                  'Neuphonic inference plugin for LiveKit Agents.'
+                  'Agent Framework plugin for NLTK-based text processing.'
+                  'Agent Framework plugin for services from OpenAI.'
+                  "Agent Framework plugin for voice synthesis with PlayAI's API."
+                  'LiveKit Agents Plugin for Resemble AI.'
+                  'LiveKit Agents Plugin for Rime.'
+                  "Agent Framework plugin for services using Sarvam.ai's API."
+                  'Agent Framework Plugin for Silero.'
+                  "Agent Framework plugin for voice synthesis with Speechify's API."
+                  'Agent Framework plugin for Speechmatics.'
+                  'spitch plugin template for LiveKit Agents.'
+                  'Agent Framework plugin for Tavus.'
+                  'End of utterance detection for LiveKit Agents.')
 _plugins_depends=("'python-livekit-agents' 'python-anthropic' 'python-httpx'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-aioboto3' 'python-amazon-transcribe'"
@@ -62,6 +63,7 @@ _plugins_depends=("'python-livekit-agents' 'python-anthropic' 'python-httpx'"
                   "'python-livekit-agents' 'python-langchain-core' 'python-langgraph'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents'"
+                  "'python-livekit-agents' 'python-mistralai'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-nltk'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-openai' 'python-websockets'"
@@ -98,6 +100,7 @@ _plugins__optdepends=(""
                       ""
                       ""
                       ""
+                      ""
                       "'python-google-auth: vertex'"
                       ""
                       ""
@@ -114,11 +117,11 @@ _repo='https://github.com/livekit/agents'
 license=('Apache-2.0')
 source=("${_repo}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
         "${_repo}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('a3a6631e23125a6c11f51fef5bf74f6ab7b1a31bbb7e5547b5fe49018664dbdb'
+sha256sums=('c6de8c41bdaa1df1c303f011071a9f307e8dd2160f3e87568135337137f8e1e2'
             '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser')
+checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser')
 
 prepare(){
   cp -f "${srcdir}"/silero_vad.onnx "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx

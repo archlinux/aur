@@ -1,9 +1,10 @@
 pkgbase = python-livekit-agents
-	pkgver = 1.1.5
-	pkgrel = 3
+	pkgver = 1.1.6
+	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	checkdepends = python-dotenv
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-jiwer
@@ -16,9 +17,9 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.1.5.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.1.5/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = a3a6631e23125a6c11f51fef5bf74f6ab7b1a31bbb7e5547b5fe49018664dbdb
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.1.6.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.1.6/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = c6de8c41bdaa1df1c303f011071a9f307e8dd2160f3e87568135337137f8e1e2
 	sha256sums = 6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396
 
 pkgname = python-livekit-agents
@@ -234,6 +235,13 @@ pkgname = python-livekit-plugins-minimal
 	pkgdesc = Minimal plugin template for LiveKit Agents.
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-minimal
 	depends = python-livekit-agents
+	optdepends = 
+
+pkgname = python-livekit-plugins-mistralai
+	pkgdesc = LiveKit Agents Plugin for services from AWS.
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-mistralai
+	depends = python-livekit-agents
+	depends = python-mistralai
 	optdepends = 
 
 pkgname = python-livekit-plugins-neuphonic
