@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=145
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=("x86_64" "i686" "aarch64")
 url="https://ares-emu.net/"
@@ -15,8 +15,8 @@ makedepends=("cmake" "mesa" "ninja" "pkgconf")
 provides=("ares-emu")
 conflicts=("ares-emu")
 install="ares.install"
-source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("78284326a48dddaddc11817b1ea74b7c3370739646bbda0c4a5b75fd928bf6f209e15f62c0a08ac9babd141938d624a9faf4dac08666fe52d601e3855a2ab20f")
+source=("https://github.com/ares-emulator/ares/releases/download/v${pkgver}/ares-source.tar.gz")
+sha512sums=("37c4a371b36aed1e72d6b32e92bc7c364879c383cbdeeff288ee7e74f677022dfdaeef20b9cc4c1e10f48ac434f95fee5003fa26d92ef3c9b89002d8b7303c69")
 
 build() {
   local cmake_options=(
