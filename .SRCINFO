@@ -1,0 +1,12 @@
+pkgbase = superbirdjumper2
+	pkgdesc = A fun game
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/codyferd/superbirdjumper2
+	arch = x86_64
+	license = Unlicense
+	depends = glibc
+	source = https://github.com/codyferd/superbirdjumper2/releases/download/2.2Flamsjon/superbirdjumper2_linux.x86_64
+	sha256sums = SKIP
+
+pkgname = superbirdjumper2
