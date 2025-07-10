@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clv
-_pkgver=0.3-2.4
+_pkgver=0.3-2.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Cluster Validation Techniques"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bad3bb2af579830b283b0d8b5fa58a6f')
-b2sums=('d2bd5de2f2087c5e7d54c245e9db9cd7a30ed872031903ed250ac599387c6f2e48e4c5734f4a40360572d6dae2daf81c2223cd7e1242180fdbefe3e35baa4258')
+md5sums=('e4422fb222407c0422aa39740d407930')
+b2sums=('22bf0d08ce8acf20ff38ac37229bf3a46936e4218cc90aff57342f8cfba7099ccc02aa270e698fc9565ecc69be7eb2e3c697ed323875be4bdad001cd8c9186b5')
 
 build() {
   mkdir build
