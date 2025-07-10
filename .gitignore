@@ -7,5 +7,6 @@ src/
 *.pdf
 *.part
 *.tar
+*.html
 
 http_cookies

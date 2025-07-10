@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.19.0
 _pkgver_ext=1.19.0_25607_20250703_0907
 _pkg_file_name=st-stm32cubeide_1.19.0_25607_20250703_0907_amd64.sh.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -24,9 +24,19 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 	msg2 ""
 fi
 
+# Download cookies
+curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$url" > /dev/null
+
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' --retry 3 --retry-delay 3 \
+              --cookie "${srcdir}http_cookies" \
+              -H "@${srcdir}http_headers" \
+              -o %o --compressed %u")
+              
 source=("local://${_pkg_file_name}"
 	"99-jlink.rules.patch"
-	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
+	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf"
+	"https://www.st.com/resource/en/additional_license_terms/additional-license-terms-stm32cubeide-v${pkgver//./-}.html"
 	"http_headers"
 	"stm32cubeide.desktop"
 	"stm32cubeide"
@@ -34,6 +44,7 @@ source=("local://${_pkg_file_name}"
 	)
 sha256sums=('fa3797bfbfb2c11860400225eda1429d1ce16d52593e55ba2480af18b69c3c6d'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
+	'SKIP'
 	'SKIP'
 	'4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40'
 	'48849f72574f043c0d2d0132750f7bc0a95f14c89ff74e10ba2bc34b0a081103'
@@ -103,7 +114,8 @@ package() {
 	
 	msg2 'Installation of license file'
 	install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm 644 -o root -g root "${srcdir}/SLA0048_STM32CubeIDE.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm 644 -o root -g root "${srcdir}/dm00218346.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm 644 -o root -g root "${srcdir}/additional-license-terms-stm32cubeide-v${pkgver//./-}.html" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 #
