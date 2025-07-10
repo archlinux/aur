@@ -8,13 +8,9 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Type = Path
-
-# This was extracted of localepurge and formatted to the style of the hook
-# [ ...for LDIR in /usr/share/{locale,man,gnome...lang}; do ... ]
-
-Target = usr/share/locale/*
-Target = usr/share/man/*
+Type = File
+Target = usr/share/locale/?*
+Target = usr/share/man/?*
 Target = usr/share/gnome/help/*
 Target = usr/share/omf/*
 Target = usr/share/doc/kde/HTML/*
@@ -23,14 +19,20 @@ Target = usr/share/cups/templates/*
 Target = usr/share/cups/locale/*
 Target = usr/share/cups/doc-root/*
 Target = usr/share/calendar/*
-#Target = usr/share/aptitude/*  <- This does not use in Archlinux.
-Target = usr/share/cups/templates/*
-Target = usr/share/cups/locale/*
-Target = usr/share/cups/doc-root/*
-Target = usr/share/help/*
+#Target = usr/share/aptitude/* # This does not exist in Arch.
+Target = usr/share/help/?*
+
+# This avoids the removal of English content (necessary).
+Target = !usr/share/help/C/*
+Target = !usr/share/locale/C/*
+Target = !usr/share/locale/en/*
+Target = !usr/share/locale/en_GB/*
+Target = !usr/share/locale/en_US/*
+Target = !usr/share/man/en_GB/*
+Target = !usr/share/man/man*
 
 [Action]
-Description = Removing unneeded files with localepurge
+Description = Run localepurge
 When = PostTransaction
 Exec = /usr/bin/localepurge
 Depends = localepurge
