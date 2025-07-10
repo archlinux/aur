@@ -7,8 +7,8 @@
 pkgname=osu-lazer-tachyon-bin
 _pkgname=${pkgname%-bin}
 pkgver=2025.710.0
-_pkgtag=$pkgver-lazer
-pkgrel=1
+_pkgtag=$pkgver-tachyon
+pkgrel=2
 pkgdesc="Tachyon pre-release channel of the future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"

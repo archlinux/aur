@@ -1,7 +1,7 @@
 pkgbase = osu-lazer-tachyon-bin
 	pkgdesc = Tachyon pre-release channel of the future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew.
 	pkgver = 2025.710.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = osu-lazer-tachyon-bin
 	noextract = osu.AppImage
 	options = !strip
 	options = !debug
-	source = osu-lazer-tachyon-2025.710.0.AppImage::https://github.com/ppy/osu/releases/download/2025.710.0-lazer/osu.AppImage
+	source = osu-lazer-tachyon-2025.710.0.AppImage::https://github.com/ppy/osu/releases/download/2025.710.0-tachyon/osu.AppImage
 	source = icon.png
 	source = https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md
 	source = osu-lazer.desktop
