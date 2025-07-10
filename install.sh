@@ -6,7 +6,6 @@ for rcfile in ~/.bashrc ~/.zshrc; do
       echo '# >>> AYAAN UNSTABLE ZONE >>>' >> "$rcfile"
       alias ayaanfetch="wine /usr/bin/unstable/ayaanfetch/AyaanFetch.exe 2>/dev/null"
       echo 'export EPATH=/usr/bin/unstable/ayaanfetch' >> "$rcfile"
-      echo 'echo \"AYAANFETCH by AYAAN511 (github.com/ayaan511) – WELCOME TO THE UNSTABLE ZONE!\"' >> "$rcfile"
       echo '# <<< AYAAN UNSTABLE ZONE <<<' >> "$rcfile"
       # Auto-source the rcfile for INSTANT ALIAS!
       source "$rcfile"
