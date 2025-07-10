@@ -3,8 +3,8 @@
 _python=python
 _distname=docx
 pkgname=$_python-$_distname
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Create and modify Word documents with Python"
 arch=(any)
 url="https://github.com/python-openxml/python-docx"
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/python-openxml/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('b86345b5a408a651434c3dd89e368dec')
+md5sums=('dc385b78e0670ba792e6bd924d5f9a30')
 
 build() {
     cd "${pkgname}-${pkgver}"

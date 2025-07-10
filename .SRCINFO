@@ -1,7 +1,7 @@
 pkgbase = python-docx
 	pkgdesc = Create and modify Word documents with Python
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/python-openxml/python-docx
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-docx
 	depends = python-lxml
 	depends = python-typing_extensions
 	options = !emptydirs
-	source = https://github.com/python-openxml/python-docx/archive/v1.1.2.tar.gz
-	md5sums = b86345b5a408a651434c3dd89e368dec
+	source = https://github.com/python-openxml/python-docx/archive/v1.2.0.tar.gz
+	md5sums = dc385b78e0670ba792e6bd924d5f9a30
 
 pkgname = python-docx
