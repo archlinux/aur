@@ -1,0 +1,14 @@
+pkgbase = festvox-palpc16k
+	pkgdesc = Male Spanish voice Voz for Festival. (Pedro)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.guadalinex.org
+	arch = any
+	license = custom
+	depends = festival
+	options = !strip
+	options = !emptydirs
+	source = https://raw.githubusercontent.com/guadalinex-archive/hispavoces/master/packages/festvox-palpc16k_1.0-1_all.deb
+	sha256sums = d367c7ca274f468c4c79258b664a3959a86d7523863d26d57a538b98cdfa4ac1
+
+pkgname = festvox-palpc16k
