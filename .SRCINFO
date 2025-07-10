@@ -1,0 +1,18 @@
+pkgbase = eez-studio-appimage
+	pkgdesc = Cross-platform low-code GUI and automation
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://github.com/eez-open/studio/releases
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
+	options = !strip
+	source = eez-studio-appimage-0.23.2.AppImage::https://github.com/eez-open/studio/releases/download/v0.23.2/EEZ-Studio-0.23.2.AppImage
+	source = requirements.txt
+	sha256sums = 18380472a9ddc3001a63fb8438022425f47fc9268f7502aad2947c69382f5530
+	sha256sums = 7019be3da97f345557fb38a581aabfd8a1d2e5324391a785213d8e5eb238aa90
+
+pkgname = eez-studio-appimage
