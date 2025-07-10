@@ -36,8 +36,15 @@ makedepends=(
   'python'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('e3577d9dba2a711f41362fee67c9320e702a5a055b7d0172fe9245c5ecf4f83f')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
+        "https://github.com/gazebosim/${_pkgbase}/pull/2414.patch")
+sha256sums=('e3577d9dba2a711f41362fee67c9320e702a5a055b7d0172fe9245c5ecf4f83f'
+            '51bdba1957060de1312bfebe50f8701d1565b68ba6590ec5ba5b72ae04110641')
+
+prepare() {
+  cd "${_pkgbase}-${pkgname}_${pkgver}"
+  patch -p1 < ${srcdir}/2414.patch
+}
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \

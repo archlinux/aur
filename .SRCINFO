@@ -29,6 +29,8 @@ pkgbase = gz-sim7
 	depends = tinyxml2
 	provides = gz-sim=7
 	source = https://github.com/gazebosim/gz-sim/archive/gz-sim7_7.9.0.tar.gz
+	source = https://github.com/gazebosim/gz-sim/pull/2414.patch
 	sha256sums = e3577d9dba2a711f41362fee67c9320e702a5a055b7d0172fe9245c5ecf4f83f
+	sha256sums = 51bdba1957060de1312bfebe50f8701d1565b68ba6590ec5ba5b72ae04110641
 
 pkgname = gz-sim7
