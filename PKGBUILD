@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgver=4.0.0.r34182.g39a4b41
 pkgrel=3
-pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player (monolithic)"
+pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
 url="https://github.com/videolan/vlc"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
@@ -291,6 +291,8 @@ build() {
 }
 
 package_vlc-git() {
+  pkgdesc+=" (monolithic)"
+
   provides=(
     'libvlc.so'
     'libvlccore.so'
@@ -317,6 +319,8 @@ package_vlc-git() {
 }
 
 package_vlc-plugin-lua-git() {
+  pkgdesc+=" - Lua scripting plugins"
+
   depends=(
     libvlc libvlccore.so
     lua

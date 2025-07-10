@@ -1,5 +1,5 @@
 pkgbase = vlc-git
-	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player (monolithic)
+	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player
 	pkgver = 4.0.0.r34182.g39a4b41
 	pkgrel = 3
 	url = https://github.com/videolan/vlc
@@ -157,6 +157,7 @@ pkgbase = vlc-git
 	sha256sums = b98043683dd90d3f5a3f501212dfc629839b661100de5ac79fd30cb7b4a06f13
 
 pkgname = vlc-git
+	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player (monolithic)
 	provides = libvlc.so
 	provides = libvlccore.so
 	provides = vlc=4.0.0.r34182
@@ -327,6 +328,7 @@ pkgname = vlc-git
 	conflicts = vlc-plugins-visualization
 
 pkgname = vlc-plugin-lua-git
+	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player - Lua scripting plugins
 	depends = libvlc
 	depends = libvlccore.so
 	depends = lua
