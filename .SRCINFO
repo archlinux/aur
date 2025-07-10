@@ -1,17 +1,17 @@
 pkgbase = python-timesched
 	pkgdesc = Python module providing a simple time event scheduler
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/bulletmark/timesched
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python>=3.6
-	source = python-timesched-1.8.tar.gz::https://github.com/bulletmark/timesched/archive/1.8.tar.gz
-	sha1sums = f5b5852df0a3a8706e22521cc8ea5e9b1385dfc2
+	source = python-timesched-1.9.tar.gz::https://github.com/bulletmark/timesched/archive/1.9.tar.gz
+	sha1sums = ae49370909b01ada7e50d1f43a5107d0a1193463
 
 pkgname = python-timesched
