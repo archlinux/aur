@@ -1,13 +1,13 @@
 pkgbase = python-ygglatency
 	pkgdesc = Find the fastest Yggdrasil peers.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/ygglatency
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-bs4
+	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-icmplib
 	conflicts = python-ygglatency

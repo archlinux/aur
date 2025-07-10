@@ -2,12 +2,12 @@
 pkgname=python-ygglatency
 _pkgname="ygglatency"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Find the fastest Yggdrasil peers."
 arch=("any")
 url="https://pypi.python.org/pypi/$_pkgname"
 license=("MIT")
-depends=("python" "python-bs4" "python-requests" "python-icmplib")
+depends=("python" "python-beautifulsoup4" "python-requests" "python-icmplib")
 makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("https://files.pythonhosted.org/packages/53/6e/6dd6a6eb852df35a28d99f5a5b3490e5ff55eac0316ebe2a6ad3bb3ee287/$_pkgname-$pkgver.tar.gz")
