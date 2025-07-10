@@ -2,14 +2,14 @@
 
 _name=mcp
 pkgname=python-${_name}
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
 license=('MIT')
 source=("${_name}-${pkgver}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('aa5a79c68837f4594c097d68a0138f920383555868def3aeb1d1192310319f20')
 depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-python-multipart' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn' 'python-jsonschema')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'ruff' 'python-trio' 'python-pytest-flakefinder' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv')
@@ -18,7 +18,6 @@ optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python
 prepare(){
   cd "${srcdir}"/${_name}-${pkgver}
   sed -i 's/timeout=5/timeout=60/' tests/client/test_config.py # Increate time limit
-  sed -i "206i\        'additionalProperties': True," tests/server/fastmcp/test_func_metadata.py # Fix for pydantic 2.11
 }
 
 build() {
