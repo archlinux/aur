@@ -1,7 +1,7 @@
 pkgbase = aacskeys
 	pkgdesc = A library and program to retrieve decryption keys for HD discs
 	pkgver = 0.4.0f
-	pkgrel = 9
+	pkgrel = 10
 	url = http://cyberside.net.ee/ripping/BD_DeviceKeys
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = aacskeys
 	source = https://archive.deb-multimedia.org/pool/main/a/aacskeys/aacskeys_0.4.0e-dmo7.diff.gz
 	source = aacskeys-0.4.0f.patch
 	source = 001-aacskeys-OpenSSL-build-fixes.patch
+	source = 002-BN_bn2bin-fix.patch
 	sha1sums = 8790f0d4098d6bc83304ad2136cc9681374df83a
 	sha1sums = 481c737983332a4a38aab0b292ba0cd958bb629c
 	sha1sums = dca9a9cb6bdd4cf6c4f7cbef1be3556728166117
 	sha1sums = 1b55ac6b6c31b603c0cf4970dcff6833fa77c86f
+	sha1sums = 7329ef386c87a4de02d00510b64d0844997becb2
 
 pkgname = aacskeys

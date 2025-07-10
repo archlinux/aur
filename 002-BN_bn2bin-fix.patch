@@ -1,0 +1,47 @@
+--- a/src/aacskeys.cpp	2025-07-10 17:02:59.676452482 -0500
++++ b/src/aacskeys.cpp	2025-07-10 17:03:06.282090837 -0500
+@@ -963,7 +963,7 @@
+                   if (BN_hex2bn(&key_bn, line) != 32) {
+                      (*rdprintf)("Invalid Processing Key / Device Key, ignoring\n");
+                   } else {
+-                     BN_bn2bin(key_bn, key_bin);
++                     BN_bn2binpad(key_bn, key_bin, 16);
+
+                      memcpy(possible_keys + (keys_tried % 32) * 16, key_bin, 16); // store last 32 keys
+                      if (keys_tried >= 32) keys_tried = 0;
+@@ -1077,7 +1077,7 @@
+             (*rdprintf)("Invalid Media Key in file MediaKey.txt\n");
+             ret = -3;
+          } else {
+-            BN_bn2bin(raw, media_key);
++            BN_bn2binpad(raw, media_key, 16);
+          }
+       }
+    }
+@@ -1126,7 +1126,7 @@
+                //memset(key, 0, 20);
+                ret = -3;
+             } else {
+-               BN_bn2bin(raw, key);
++               BN_bn2binpad(raw, key, 20);
+
+                // Read the Host Certificate
+                if (fgets(linebuffer, linebuffer_size, FileHandle) != linebuffer) {
+@@ -1143,7 +1143,7 @@
+                      //memset(cert, 0, 92);
+                      ret = -5;
+                   } else {
+-                     BN_bn2bin(raw, cert);
++                     BN_bn2binpad(raw, cert, 92);
+                   }
+                }
+             }
+@@ -1424,7 +1424,7 @@
+          BIGNUM *volume_id_bn = NULL;
+          int rv = BN_hex2bn(&volume_id_bn, argv[currentArg]);
+          if (rv == 32) {
+-            BN_bn2bin(volume_id_bn, volume_id);
++            BN_bn2binpad(volume_id_bn, volume_id, 16);
+             BN_free(volume_id_bn);
+          } else {
+             BN_free(volume_id_bn);

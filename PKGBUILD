@@ -7,7 +7,7 @@ pkgname=aacskeys
 pkgver="0.4.0f"
 _origpkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=9
+pkgrel=10
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://cyberside.net.ee/ripping/BD_DeviceKeys"
@@ -17,11 +17,13 @@ makedepends=("java-environment" "premake3")
 source=("https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${_origpkgver}.orig.tar.gz"
 	      "https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${_origpkgver}-${_dmover}.diff.gz"
         "aacskeys-0.4.0f.patch"
-        "001-aacskeys-OpenSSL-build-fixes.patch")
+        "001-aacskeys-OpenSSL-build-fixes.patch"
+        "002-BN_bn2bin-fix.patch")
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
           '481c737983332a4a38aab0b292ba0cd958bb629c'
           'dca9a9cb6bdd4cf6c4f7cbef1be3556728166117'
-          '1b55ac6b6c31b603c0cf4970dcff6833fa77c86f')
+          '1b55ac6b6c31b603c0cf4970dcff6833fa77c86f'
+          '7329ef386c87a4de02d00510b64d0844997becb2')
 
 prepare() {
   zcat ${pkgname}_${_origpkgver}-${_dmover}.diff.gz > ${srcdir}/${pkgname}_${_origpkgver}-${_dmover}.diff
@@ -29,6 +31,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/${pkgname}_${_origpkgver}-${_dmover}.diff"
   patch -Np1 -i ../aacskeys-0.4.0f.patch
   patch -Np1 -i ../001-aacskeys-OpenSSL-build-fixes.patch
+  patch -Np1 -i ../002-BN_bn2bin-fix.patch
 
   # Make sure use resent premake
   sed -i 's|/usr/local/ssl/include|/usr/include|' premake.lua
