@@ -1,19 +1,20 @@
 pkgbase = syncthingdesktop
 	pkgdesc = Unnofficial Syncthing desktop application
-	pkgver = 1.0.5.aurpatch
-	pkgrel = 2
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/syncthingdesktop
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
+	depends = libelectron-electron-meta
 	depends = libelectron>=2025.1
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
 	depends = syncthing
-	source = https://gitlab.com/linuxbombay/syncthingdesktop/application/-/archive/1.0.5.aurpatch/application-1.0.5.aurpatch.tar.bz2
-	sha256sums = 1ce02369c0abcc77280e0e24595efb948b48aa0de96f2328e6522bde865b6db3
+	source = https://gitlab.com/linuxbombay/syncthingdesktop/application/-/archive/1.0.6/application-1.0.6.tar.bz2
+	sha256sums = d216a014cb52dc4e8b430c1c24a8fd568217885dac50e1fe39bc48504c0aad5a
 
 pkgname = syncthingdesktop
