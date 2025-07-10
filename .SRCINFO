@@ -1,0 +1,18 @@
+pkgbase = evap-git
+	pkgdesc = Ephemeral editing buffer with zero residue (git version)
+	pkgver = r1.abcdefg
+	pkgrel = 1
+	url = https://github.com/Texas0295/evap
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = evap
+	conflicts = evap
+	options = !strip
+	options = !debug
+	source = git+https://github.com/Texas0295/evap.git
+	md5sums = SKIP
+
+pkgname = evap-git
