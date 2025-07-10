@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
-pkgver=1.10.19
+pkgver=1.10.23
 pkgrel=1
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
@@ -12,14 +12,14 @@ depends=('libxml++2.6' 'xmlsec' 'imagemagick' 'openjpeg2>=2.5' 'libcxml>=0.17.13
 makedepends=('git' 'python' 'boost>=1.88.0' 'gcc' 'pkg-config' 'fast_float>=7.0')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('d96bb93cb799e3950334124cf372dc7f344d1e873ce47b6d9bd58fe9409d9fbb')
+sha256sums=('191b4cdb9073125fe8eceb927943dcf32ae59789ec83e29a1c8b65fa542a58ba')
 
 prepare() {
-  cd $srcdir/${pkgname}-${pkgver}
+  cd "$srcdir/${pkgname}-${pkgver}"
   ### Cherry pick upstream commits (fixes and such) ###
   for c in "${_cherrypicks[@]}"; do
       echo "Applying commit ${c}"
-      git cherry-pick ${c};
+      git cherry-pick "${c}";
   done
   ### Apply patches ###
   for p in "${source[@]}"; do
