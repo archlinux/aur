@@ -1,0 +1,14 @@
+pkgbase = systemd-lsp
+	pkgdesc = A language server implementation for systemd unit files made in rust
+	pkgver = 2025.07.10
+	pkgrel = 1
+	url = https://github.com/JFryy/systemd-lsp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = git+https://github.com/JFryy/systemd-lsp.git#tag=v2025.07.10
+	sha256sums = 2d35f03c4eba682bbe36745147a0b4f1fb26d5a1d88bbe51637cabb4f3cb9589
+
+pkgname = systemd-lsp
