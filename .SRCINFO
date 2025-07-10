@@ -1,7 +1,7 @@
 pkgbase = notify-osd-customizable
 	pkgdesc = daemon that displays passive pop-up notifications, with leolik patch added
 	pkgver = 0.9.35
-	pkgrel = 6
+	pkgrel = 7
 	url = https://launchpad.net/~leolik/+archive/leolik
 	install = notify-osd-customizable.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = notify-osd-customizable
 	makedepends = pkgconfig
 	makedepends = libnotify
 	makedepends = gnome-common
+	makedepends = glib2-devel
 	depends = libwnck3
 	depends = libnotify>=0.7.0
 	depends = dbus-glib>=0.76
@@ -21,8 +22,9 @@ pkgbase = notify-osd-customizable
 	conflicts = notify-osd
 	source = https://launchpad.net/~leolik/+archive/leolik/+files/notify-osd_0.9.35+16.04.20160415-0ubuntu1-leolik~ppa2.tar.gz
 	source = notify-osd
+	source = fix_compilation.patch
 	md5sums = eaa4416b176bf86d406c08f5382958d9
 	md5sums = 44180ae7a2ac9446133f76aface88bed
+	md5sums = 14ab57acc4329a8ca27764ebfd5501ac
 
 pkgname = notify-osd-customizable
-

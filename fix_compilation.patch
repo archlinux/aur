@@ -1,0 +1,40 @@
+diff --git a/src/bubble-window.c b/src/bubble-window.c
+index 0622d22..4833be0 100644
+--- a/src/bubble-window.c
++++ b/src/bubble-window.c
+@@ -78,8 +78,8 @@ bubble_window_get_accessible (GtkWidget *widget)
+     {
+       AtkObjectFactory *factory = NULL;
+       AtkRegistry *registry = NULL;
+-      GType derived_type = NULL;
+-      GType derived_atk_type = NULL;
++      GType derived_type = G_TYPE_NONE;
++      GType derived_atk_type = G_TYPE_NONE;
+ 
+       /*
+        * Figure out whether accessibility is enabled by looking at the
+diff --git a/src/display.c b/src/display.c
+index 8defd82..85aa3e6 100644
+--- a/src/display.c
++++ b/src/display.c
+@@ -288,7 +288,7 @@ stack_layout (Stack* self)
+ 	gint       y      = 0;
+ 	gint       x      = 0;
+ 
+-	g_return_if_fail (self != NULL);
++	g_return_val_if_fail (self != NULL, FALSE);
+ 
+ 	bubble = stack_select_next_to_display (self);
+ 	if (bubble == NULL)
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index ec8919e..8b8a574 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -55,6 +55,7 @@ test_modules_SOURCES =						\
+ test_modules_CFLAGS =		\
+ 	$(GCOV_CFLAGS)		\
+ 	-Wall 			\
++	-Wno-error=incompatible-pointer-types	\
+ 	$(GLIB_CFLAGS)		\
+ 	$(GTK_CFLAGS)		\
+ 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
