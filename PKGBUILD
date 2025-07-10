@@ -1,8 +1,8 @@
 pkgname=mcphost
 
-_fragment=tag=v0.21.0
+_fragment=tag=v0.22.0
 
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='A CLI host application that enables Large Language Models (LLMs) to interact with external tools through the Model Context Protocol (MCP)'
 
@@ -15,7 +15,7 @@ makedepends=(git go)
 source=(
 	"git+$url.git#$_fragment"
 )
-sha256sums=('79d1bf8cdfed9373c51eede6337728df885522ccab59848173bda9b1b7fda3cf')
+sha256sums=('6acef66b3f9d130bc247531510f5d056795a50149502d71f28e8c353bc74146e')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
@@ -28,19 +28,21 @@ prepare() {
 build() {
 	cd "$pkgname"
 
-	export CGO_CPPFLAGS="$CPPFLAGS"
-	export CGO_CFLAGS="$CFLAGS"
-	export CGO_CXXFLAGS="$CXXFLAGS"
-	export CGO_LDFLAGS="$LDFLAGS"
+	export CGO_CPPFLAGS=$CPPFLAGS
+	export CGO_CFLAGS=$CFLAGS
+	export CGO_CXXFLAGS=$CXXFLAGS
+	export CGO_LDFLAGS=$LDFLAGS
+	export GOPATH=$srcdir
 
-	local GOBUILDOPTS=(
+	local BUILD_OPTS=(
 		-v
 		-trimpath
 		-buildmode=pie
+		-mod=readonly
 		-ldflags="-linkmode=external"
 	)
 
-	go build "${GOBUILDOPTS[@]}"
+	go build "${BUILD_OPTS[@]}"
 }
 
 package() {
