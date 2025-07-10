@@ -95,6 +95,7 @@ prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
   git -C $_pkgfn cherry-pick -n dc52aa68ea305d8ef40f8b514bfeba80cd6c2c1e # Unbreak reproducibility
+  git -C $_pkgfn cherry-pick -n eb6fd1d74b66fa2f390ec8b2456141cad3e571b9 # Fix plasmashell crashes in QHttp2Connection::handleDATA
   git -C $_pkgfn cherry-pick -n 1fe3a3c059bcaa2319505006df60df1f7f60769d # https://bugreports.qt.io/browse/QTBUG-137427
 }
 
