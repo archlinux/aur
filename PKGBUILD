@@ -4,13 +4,13 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=taisei-git
-pkgver=1.3.r1132.ga5678791
+pkgver=1.4.r374.g9cbc19bb
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('opengl-driver' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme')
+depends=('opengl-driver' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme' 'mimalloc')
 optdepends=('spirv-cross: OpenGL ES backends'
             'shaderc: OpenGL ES backends'
             'gamemode: GameMode integration'
