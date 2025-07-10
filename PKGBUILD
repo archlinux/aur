@@ -2,7 +2,7 @@
 
 pkgname=(lua-protobuf lua53-protobuf lua52-protobuf lua51-protobuf)
 pkgdesc="A Lua module to work with Google protobuf"
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 _rockrel=1
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(lua lua53 lua52 lua51 luarocks)
 _rock="$pkgname-$pkgver-$_rockrel.src.rock"
 _license="$pkgname/LICENSE"
 source=("https://luarocks.org/$_rock")
-sha256sums=("98446543cec14ba5153c0a6aac3a14e06f73919f76aabd6f83ba115457dae82f")
+sha256sums=('3d9e11d7546dd4733f6d3a5b49d9ad80955e0dd724bc6018095e0b9125a6571b')
 
 _package() {
     pkgdesc="A Lua $1 module to work with Google protobuf"
