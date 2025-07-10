@@ -1,6 +1,6 @@
 pkgbase = pdfcmd
 	pkgdesc = Utility to perform commands on PDF files.
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/bulletmark/pdfcmd
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = pdfcmd
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python>=3.5
-	depends = python-pypdf
+	depends = python-pypdf>=3.1.0
 	depends = python-argcomplete
-	source = pdfcmd-1.12.tar.gz::https://github.com/bulletmark/pdfcmd/archive/1.12.tar.gz
-	sha1sums = b23b48835ef2e5d3f65210f6f9b04d7830e9c85b
+	source = pdfcmd-1.13.tar.gz::https://github.com/bulletmark/pdfcmd/archive/1.13.tar.gz
+	sha1sums = 8fcc983bcb04ff36a7df782bdf0560d11de13a7b
 
 pkgname = pdfcmd
