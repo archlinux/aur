@@ -1,8 +1,8 @@
-# Maintainer: cqzw555 <cqzw555@163.com>
+# Contributor: cqzw555 <cqzw555@163.com>
 
 _name=pycnite
 pkgname=python-$_name
-pkgver=2023.10.11
+pkgver=2024.7.31
 pkgrel=1
 pkgdesc='Python bytecode utilities'
 arch=(any)
@@ -22,7 +22,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/p/$_name/$_name-$pkgver.tar.gz"
 )
 b2sums=(
-  '162dab1fb94fbf7f18f8fc4093a5b9aa010cb0fe4a8779c313ad21630879acc2eb1e74cec3fff0ef68df9c118dc070ff3020635df520dbe9a5bcff0c8e86e982'
+  '47d643fcd11a1c421ffd1bf8640d3e4ff1860052488fe9aeb64be6bf0b8b367fa11387e86c4438e68ef2021fff76cadb70bdc34eebe681e8245172a05f9d8d8b'
 )
 
 build() {
