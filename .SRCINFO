@@ -17,6 +17,7 @@ pkgbase = python-k3d
 	depends = python-traittypes
 	depends = python-msgpack
 	depends = python-ipywidgets
+	depends = python-deepcomparer
 	optdepends = jupyterlab: for notebook support
 	source = K3D-jupyter-2.17.0.tar.gz::https://github.com/K3D-tools/K3D-jupyter/archive/v2.17.0.tar.gz
 	sha512sums = 4ebaaa604011cec645d5e8f9720f80377d381ef5ded08bbfb070c2d73b6efe7c7ac6d911ba91d2d401e27bcd47c6d29e8011a70396034d2d8b6fcd2d777d0e44

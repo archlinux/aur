@@ -7,7 +7,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-tools/${_base}-jupyter"
 license=(MIT)
-depends=(python-traittypes python-msgpack python-ipywidgets)
+depends=(python-traittypes python-msgpack python-ipywidgets python-deepcomparer)
 makedepends=(python-build python-installer python-hatch-nodejs-version python-hatch-jupyter-builder
   python-wheel jupyterlab nodejs-lts-iron npm)
 checkdepends=(python-pytest)
