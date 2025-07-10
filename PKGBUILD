@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-gcsfs'
 _module='gcsfs'
-pkgver='2025.3.0'
+pkgver='2025.5.1'
 pkgrel=1
 pkgdesc="Pythonic file-system interface for Google Cloud Storage."
 url="http://gcsfs.readthedocs.io/en/latest/"
@@ -14,7 +14,7 @@ optdepends=(python-crcmod)
 license=('BSD-3-Clause')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dask/gcsfs/archive/$pkgver.tar.gz")
-sha256sums=('66ccce11f1b6d657d965602704f3221b29c6a533795f17ae6fc569c885435d02')
+sha256sums=('cb78377d06c85fd7800de32d971a909ba799d70e4c61dfee454d94604021b7ac')
 
 #check() {
     #cd "${_module}-${pkgver}"

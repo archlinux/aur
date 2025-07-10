@@ -1,6 +1,6 @@
 pkgbase = python-gcsfs
 	pkgdesc = Pythonic file-system interface for Google Cloud Storage.
-	pkgver = 2025.3.0
+	pkgver = 2025.5.1
 	pkgrel = 1
 	url = http://gcsfs.readthedocs.io/en/latest/
 	arch = any
@@ -12,13 +12,13 @@ pkgbase = python-gcsfs
 	depends = python
 	depends = python-aiohttp
 	depends = python-click
-	depends = python-fsspec>=2025.3.0
+	depends = python-fsspec>=2025.5.1
 	depends = python-google-auth
 	depends = python-google-auth-oauthlib
 	depends = python-requests
 	depends = python-decorator
 	optdepends = python-crcmod
-	source = python-gcsfs-2025.3.0.tar.gz::https://github.com/dask/gcsfs/archive/2025.3.0.tar.gz
-	sha256sums = 66ccce11f1b6d657d965602704f3221b29c6a533795f17ae6fc569c885435d02
+	source = python-gcsfs-2025.5.1.tar.gz::https://github.com/dask/gcsfs/archive/2025.5.1.tar.gz
+	sha256sums = cb78377d06c85fd7800de32d971a909ba799d70e4c61dfee454d94604021b7ac
 
 pkgname = python-gcsfs
