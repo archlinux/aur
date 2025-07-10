@@ -1,5 +1,6 @@
-# Maintainer: Adam Goldsmith <adam@adamgoldsmith.name>
-# Previous Maintainer: Hong Xu <hong at topbug dot net>
+# Maintainer: Michał Lisowski <lisu at riseup dot net>
+# Contributor: Adam Goldsmith <adam@adamgoldsmith.name>
+# Contributor: Hong Xu <hong at topbug dot net>
 
 pkgname=xfce4-i3-workspaces-plugin-git
 pkgrel=1
