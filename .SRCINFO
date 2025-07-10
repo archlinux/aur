@@ -1,0 +1,13 @@
+pkgbase = localepurge-hook
+	pkgdesc = A hook for run localepurge after each installation or update.
+	pkgver = 1.0
+	pkgrel = 1
+	install = .install
+	arch = any
+	depends = localepurge
+	options = !strip
+	options = !debug
+	source = 99-localepurge.hook
+	cksums = SKIP
+
+pkgname = localepurge-hook

@@ -1,0 +1,7 @@
+post_install() {
+  echo "Remember comment the "CheckSpace" line of pacman.conf"
+}
+
+post_remove() {
+  echo "Remember uncomment the "CheckSpace" line of pacman.conf"
+}

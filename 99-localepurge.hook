@@ -1,0 +1,36 @@
+# Reclaim disk space removing unneeded localizations
+
+# NOTE: You may want to omit this hook and instead configure the NoExtract
+# option inside pacman.conf if you only intend to keep one or two languages
+# installed. More info here: https://bbs.archlinux.org/viewtopic.php?id=208549
+# Note by Energetix: comment the "CheckSpace" line of pacman.conf
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+
+# This was extracted of localepurge and formatted to the style of the hook
+# [ ...for LDIR in /usr/share/{locale,man,gnome...lang}; do ... ]
+
+Target = usr/share/locale/*
+Target = usr/share/man/*
+Target = usr/share/gnome/help/*
+Target = usr/share/omf/*
+Target = usr/share/doc/kde/HTML/*
+Target = usr/share/tcltk/*
+Target = usr/share/cups/templates/*
+Target = usr/share/cups/locale/*
+Target = usr/share/cups/doc-root/*
+Target = usr/share/calendar/*
+#Target = usr/share/aptitude/*  <- This does not use in Archlinux.
+Target = usr/share/cups/templates/*
+Target = usr/share/cups/locale/*
+Target = usr/share/cups/doc-root/*
+Target = usr/share/help/*
+
+[Action]
+Description = Removing unneeded files with localepurge
+When = PostTransaction
+Exec = /usr/bin/localepurge
+Depends = localepurge
