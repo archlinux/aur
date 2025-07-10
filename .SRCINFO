@@ -1,0 +1,17 @@
+pkgbase = evap
+	pkgdesc = Ephemeral editing buffer with zero residue
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Texas0295/evap
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = evap
+	conflicts = evap-git
+	options = !strip
+	source = evap-0.1.0.tar.gz::https://github.com/Texas0295/evap/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = def559def6b769bde6f63659bafc3405aff39e12ebc5306f98521737d923b87f
+
+pkgname = evap
