@@ -8,7 +8,7 @@ pkgname=osu-lazer-tachyon-bin
 _pkgname=${pkgname%-bin}
 pkgver=2025.710.0
 _pkgtag=$pkgver-tachyon
-pkgrel=2
+pkgrel=3
 pkgdesc="Tachyon pre-release channel of the future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"
@@ -31,7 +31,7 @@ source=(
   "osu-lazer"
 )
 noextract=("osu.AppImage")
-sha256sums=('4df9bbe7e8e4480ab234190dddc56bc77872c3e022de529ae99228e3bc76467b'
+sha256sums=('3a56d3bbdf7bc46cc9032c2d3fffed27ee0c9ca3ffb262dfa456b0dcd419f4a5'
             '30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'e08a76a780960fffbd63fed26df21f0e7846d9bc8b366bfdbb54b07bf543113e'

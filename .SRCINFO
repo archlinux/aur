@@ -1,7 +1,7 @@
 pkgbase = osu-lazer-tachyon-bin
 	pkgdesc = Tachyon pre-release channel of the future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew.
 	pkgver = 2025.710.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osu.ppy.sh
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = osu-lazer-tachyon-bin
 	source = osu-lazer.desktop
 	source = osu-lazer-uri-handler.desktop
 	source = osu-lazer
-	sha256sums = 4df9bbe7e8e4480ab234190dddc56bc77872c3e022de529ae99228e3bc76467b
+	sha256sums = 3a56d3bbdf7bc46cc9032c2d3fffed27ee0c9ca3ffb262dfa456b0dcd419f4a5
 	sha256sums = 30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51
 	sha256sums = 30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244
 	sha256sums = e08a76a780960fffbd63fed26df21f0e7846d9bc8b366bfdbb54b07bf543113e
