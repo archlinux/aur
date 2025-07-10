@@ -1,7 +1,7 @@
 # PKGBUILD
 pkgname=pattern-renamer
-pkgver=0.0.6
-pkgrel=3
+pkgver=0.0.7
+pkgrel=1
 pkgdesc="CLI to rename terms/words in a project or normal folders with multiple different patterns"
 arch=('any')
 url="https://github.com/alissonbk/pattern-renamer"
