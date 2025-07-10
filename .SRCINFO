@@ -1,12 +1,11 @@
 pkgbase = python-langgraph
 	pkgdesc = Building stateful, multi-actor applications with LLMs.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/langgraph
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-mock
 	checkdepends = python-syrupy
 	checkdepends = python-httpx
@@ -37,10 +36,10 @@ pkgbase = python-langgraph
 	depends = python-pydantic
 	noextract = langgraph_cli-0.3.3-py3-none-any.whl
 	noextract = langgraph_runtime_inmem-0.3.4-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/source/l/langgraph/langgraph-0.5.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/langgraph/langgraph-0.5.2.tar.gz
 	source = https://files.pythonhosted.org/packages/py3/l/langgraph-cli/langgraph_cli-0.3.3-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/l/langgraph-runtime-inmem/langgraph_runtime_inmem-0.3.4-py3-none-any.whl
-	sha256sums = 312d341979e38034dde60e08df53505b8a196619df1266d6eacf6b002a0a65a8
+	sha256sums = 393b767e9d6a129636a9df36edc492499336c71e4ee268e64b9d1299d30e636c
 	sha256sums = a0c6b04d6a37191431ede17f7a358f1944c6e5ac9e1b7d2004b9f973fe940094
 	sha256sums = dcb9ac68ac90b3fb1ddaf666d14a367ab70e69d5bb5589b77a72c318e29104ae
 
