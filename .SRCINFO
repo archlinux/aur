@@ -1,15 +1,15 @@
 pkgbase = hyprsunset-util
 license = MIT
 pkgdesc = hyprsunset utility managing screen temperature
-pkgver = 0.0.1
+pkgver = 0.0.2
 pkgrel = 1
 url = https://github.com/abenz1267/hyprsunset-util
 arch = x86_64
 provides = hyprsunset-util
 conflicts = hyprsunset-util
 makedepends = go
-source = https://github.com/abenz1267/hyprsunset-util/archive/refs/tags/v0.0.1.gz
-sha256sums = 2afce77157d8993f93ca145bd2cfd659a9efe8c258ba72baab813d6b53df4e28
-b2sums = 56f215943ad0e3148f4007154131a0e85c6278f2b5c767e9059d74610b0a30e4c8d472e746fc484062cc3747669714ae57b4a2e37835ef6849ac8951a62ae949
+source = https://github.com/abenz1267/hyprsunset-util/archive/refs/tags/v0.0.2.gz
+sha256sums = 3cb23b61e74bef3503e9a3c53c028e278d08fef0494d46b1e0769b6af71f504d
+b2sums = 904e2a4b56b76910efc01c84c021bc5a234093befc4404bed0c709dc19f8c3900cea016b4659fb39adf28355325c77d67f3bdcea7b70afd7489ab3129139b287
 
 pkgname = hyprsunset-util
