@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=external-solver
 pkgname=petsc4foam
-pkgver=v2312
+pkgver=v2412
 pkgrel=1
 pkgdesc="Exploration and testing of linear solvers, matrix operations"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(openfoam-com=${pkgver} petsc hypre)
 conflicts=(pets-complex)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('d7b7f1198c8bca471aee5cbb7336ae6afd03d0db9e5760aced04bae1f43ac622838d084f87631334941011751de3e5d932f783eafc439e745ff8c819d4663251')
+sha512sums=('0b9f44822dde667f29fca0dce90e78d1ade335fe31b896c62d3b8007414204169f35fbe02fe56de0659244730f4ab5ed3256205a89be42935927a818173e2dee')
 
 prepare() {
   if [ -n "$WM_PROJECT_DIR" ]; then
