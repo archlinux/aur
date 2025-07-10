@@ -7,7 +7,6 @@ pkgbase = mingw-w64-lzlib
 	license = BSD-2-Clause
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-make
-	makedepends = mingw-w64-wine
 	depends = mingw-w64-crt
 	options = !strip
 	options = staticlibs
