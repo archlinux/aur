@@ -1,6 +1,6 @@
 pkgbase = lib32-libwebp
 	pkgdesc = WebP library (32-bit)
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://developers.google.com/speed/webp/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = lib32-libwebp
 	provides = libwebpdecoder.so
 	provides = libwebpdemux.so
 	provides = libwebpmux.so
-	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.5.0.tar.gz
-	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.5.0.tar.gz.asc
+	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz
+	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz.asc
 	validpgpkeys = 6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D
-	sha256sums = 7d6fab70cf844bf6769077bd5d7a74893f8ffd4dfb42861745750c63c2a5c92c
+	sha256sums = e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564
 	sha256sums = SKIP
-	b2sums = 68e94f5592556ac4b57011a94abc651a187b23ca7cddd6791aec3f62bede7a7c176d4a67f8170a83990a6ff290a6716011bdb117818657b63bd3e21a8d5ed59e
+	b2sums = cbdfa8616edce14bf3f8621d9d0d925884d0f40e8775c7d8810575c8bec88f10ed912029cc0a4bccf9bb9eb98824e4b1a89ec61ee53d7ef20a150450d8513168
 	b2sums = SKIP
 
 pkgname = lib32-libwebp

@@ -5,7 +5,7 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="WebP library (32-bit)"
 url="https://developers.google.com/speed/webp/"
@@ -27,9 +27,9 @@ provides=(
 source=(
   https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc}
 )
-sha256sums=('7d6fab70cf844bf6769077bd5d7a74893f8ffd4dfb42861745750c63c2a5c92c'
+sha256sums=('e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564'
             'SKIP')
-b2sums=('68e94f5592556ac4b57011a94abc651a187b23ca7cddd6791aec3f62bede7a7c176d4a67f8170a83990a6ff290a6716011bdb117818657b63bd3e21a8d5ed59e'
+b2sums=('cbdfa8616edce14bf3f8621d9d0d925884d0f40e8775c7d8810575c8bec88f10ed912029cc0a4bccf9bb9eb98824e4b1a89ec61ee53d7ef20a150450d8513168'
         'SKIP')
 validpgpkeys=(
   6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D # WebP release signing key
@@ -41,14 +41,17 @@ prepare() {
 
 build() {
   local cmake_options=(
-    -DBUILD_SHARED_LIBS=ON
-    -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib32
-    -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_SKIP_INSTALL_RPATH=ON
-    -DWEBP_BUILD_EXTRAS=OFF
-    -DWEBP_BUILD_VWEBP=OFF
-    -DWEBP_BUILD_{C,D,GIF2,IMG2}WEBP=OFF
+    -D BUILD_SHARED_LIBS=ON
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_LIBDIR=/usr/lib32
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_SKIP_INSTALL_RPATH=ON
+    -D WEBP_BUILD_CWEBP=OFF
+    -D WEBP_BUILD_DWEBP=OFF
+    -D WEBP_BUILD_EXTRAS=OFF
+    -D WEBP_BUILD_GIF2WEBP=OFF
+    -D WEBP_BUILD_IMG2WEBP=OFF
+    -D WEBP_BUILD_VWEBP=OFF
   )
 
   export CC="gcc -m32"
