@@ -12,7 +12,7 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
@@ -20,7 +20,10 @@ arch=(any)
 license=(MIT)
 depends=('python>=3.13' 'python-dnspython' 'python-tomli-w' 'python-cryptography>=42' 
         'python-dateutil' 'lockmgr' 'certbot')
-optdepends=('dns_tools: dnssec and dns server manager')
+optdepends=(
+    'dns_tools: dnssec and dns server manager'
+    'pyconcurrent: to run external programs instead of local copy'
+)
 
 # To build docs uncommont sphinx/texlive
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync' 'git'

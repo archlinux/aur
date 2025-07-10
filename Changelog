@@ -1,0 +1,81 @@
+-------------------------------------------------------
+ Changelog    : ssl-mgr
+ Tags         : 5.6.0 ➙ 6.1.0
+              : 2025-02-09 ➙ 2025-07-10
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2025-07-10   : 6.1.0
+                *Version 6.1 :*
+                * New integrity check.
+                  On each run *sslm-mgr* validates that the production directory is up to
+                  date
+                  and consistent with the current suite of certificates, keys and TLSA
+                  files.
+                  If not, it explains what the problem is and suggests possible ways to
+                  proceed.
+                  Note that the first run after updating to *6.1* it will
+                  automatically re-sync production directory if necessary. No action is
+                  required by you.
+                * Keep certs and production certs fully synced.
+                  Includes removing *next* directory from production after the *roll*
+                  has happened and *next* is no longer needed. This change allows us to
+                  check
+                  that production is correctly synchronized. Earlier versions did not
+                  remove any files from production, needed or not.
+                * New dev option *--force-server-restarts*.
+                * Add ability to specif the top level directory (where configs and outputs
+                  are read from / saved to) via environment variable *SSL_MGR_TOPDIR*.
+                * External programs are run using a local copy of *run_prog()* from
+                  the *pyconcurrent* module.
+                You can also install *pyconcurrent* which will ensure the latest
+                  version is always used.
+ 2025-07-08     update Docs/Changelog.rst Docs/ssl-mgr.pdf
+
+ 2025-07-08   : 6.0.0
+                New **major version 6.0* released. Includes:
+                    * PEP-8, PEP-257 and PEP-484 style and type annotations.
+                    * Major re-write and tidy ups.
+                    * Split up various modules (e.g. certs -> 5 separate crypto modules.)
+                    * Ensure config and command line options are 100% backward compatible.
+                    * Improve 2 config values:
+                      Background: Local CAs have self-signed a root CA certificate which is
+                      then used
+                      to sign an intermediate CA cert.  The intermediate CA is in turn used
+                      to sign
+                      application certificates.
+                      * ca-info.conf: Intermediate local CA entries.
+                        * ca_type = "local" is preferred to "self" (NB both work).
+                          "self" should still be used for self-signed root CAs where it
+                          makes more sense.
+                      * CA service config file for self-signed root certificate:
+                        *  "signing_ca" = "self" is now preferred to an empty string (NB
+                        Both work).
+                      * These 2 changes are optional but preferred. No other config file
+                      changes.
+                    * Simplify logging code.
+ 2025-03-11     update Docs/Changelog.rst Docs/ssl-mgr.pdf
+
+ 2025-03-11   : 5.7.1
+                After latex update we needed to fix building latex pdf to avoid error
+ 2025-02-28     update Docs/Changelog.rst Docs/ssl-mgr.pdf
+
+ 2025-02-28   : 5.7.0
+                DANE update:
+                  for port 25 tlsa records are generated for each MX record same as always.
+                  But now, if port is not 25, then TLSA records are for each subdomain in
+                  the x509 SAN domain list.
+                  There is also a capability to specify this with additional elemein in the
+                  dane_tls item which can be "MX" or "SANS"
+                Expand dane tlsa example config file
+ 2025-02-09     update Docs/Changelog.rst Docs/ssl-mgr.pdf
+
+ 2025-02-09   : 5.6.0
+                Less logging to stdout when not verbose. Keep details in log file
+                Increase default saved logs to 200k plus 4 backup files
+                Avoid double log of cert expiration when renewing.
+                  Once when checking and again when renewing
+                fix: time_to_renew() now returns the expiration string and caller chooses to
+                log or not
+                small logging improvements
+ 2025-01-10     update Docs/Changelog.rst Docs/ssl-mgr.pdf
