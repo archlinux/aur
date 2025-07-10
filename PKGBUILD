@@ -1,6 +1,6 @@
 # Maintainer: Nikolai Oplachko <magnickolas@gmail.com>
 pkgname=remindee-bot
-pkgver=0.2.10
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Reminder bot for Telegram without bullshit"
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('cargo' 'rust' 'make' 'git')
 options=(!debug !lto)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('54e4836d3db36f2efd32b92aaee9588b08038ae6d92eade89b6075fadb571020')
+sha256sums=('67ba370fc1978a648cbce01e6c124b873919d8e0c6e591e18cf1a05004d8a2e9')
 
 build() {
 	cd "$pkgname"
