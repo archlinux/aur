@@ -10,7 +10,7 @@ _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signalbeta.desktop'
 pkgver=7.62.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -48,7 +48,7 @@ makedepends=(
   'git-lfs'
   'libxcrypt-compat'
   'node-gyp'
-  'nodejs'
+  'nodejs-lts-jod'
   'python'
   'pnpm'
 )
