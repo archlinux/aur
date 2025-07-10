@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.15.5.arch1
+pkgver=6.15.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -41,18 +41,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('2ca707939c14431232649874d438aa58f11b4b127290fa68d164f8bd79c688b5'
+sha256sums=('2bb586c954277d070c8fdf6d7275faa93b4807d9bf3353b491d8149cca02b4fc'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            'a2c29b0d078b961535b384af32643e96a41bdd0f645ceb59eb49f02d4a0ec28e'
+            '2e41f4218472b46451af3718ce0951d908ad0356ac3a65f3a81b9ae932b24ad0'
             'SKIP'
-            '01fb08d3ba762ea7098be6bd8e9283011714d663b3b7dfc84cb293a7b692b928')
-b2sums=('6e8143b4f2c10f6747ab1cc4c56b06b9dc06ff3790c5067ce6daf53f5538c78f5d4dd0e4fb037dd73b673140ff3b93b1a663befe4b1f059abe2dfca3ce939ea8'
+            '95a2848c23e99e7987ef73afc9fcd038f2460168fd1c56b1cb59faebe4fb599d')
+b2sums=('34301ec451141cab53c6017445fb78c6a681095604387b20060e8b2102d9677cf25a3af9f3db56a0b88772434179f730842bce67b718cd28998e5c56178c748a'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
-        'eb5a7c4ffc6078890256c45cf35eff193548789c5d06231eb38d12731ff0db51ede005e84221102c50ad2ffa324528d403cee83df18cd7c02e4e44b538e7eb4a'
+        'caff0a73f3eb6152fcc9fd9972328321dfab6437a60ba93501bc44452e09382a2865e9672218645aa145bf6cd9600d77b472691d2199ac8229e18d77c3a9b7b4'
         'SKIP'
-        '61693ec0904c0f0c021e775dd4bfc902ce11b2b7fb5ecee07a2ee857667fe48cf5ef14dd11655150e45491d37a5731c9e05343708984dd10c676bc28c5f3488c')
+        'f0624f70c2a2396b28b3346140226cfef8896775b4a1bfe79e1db0b2a9e6ad3508f9688636c390cfa68edccb8eb4e592fdee69f9fe3307139b6a222e18b45f8b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
