@@ -5,7 +5,7 @@
 
 pkgname=gnokii
 pkgver=0.6.31
-pkgrel=19
+pkgrel=20
 pkgdesc='Tools and user space driver for use with mobile phones'
 arch=('x86_64')
 url='https://www.gnokii.org/'
@@ -51,7 +51,7 @@ build() {
               --enable-security
   make
   pushd xgnokii
-  make
+  make CFLAGS=-Wno-error=incompatible-pointer-types
   popd
 }
 
