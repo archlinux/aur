@@ -2,7 +2,7 @@
 # Contributor: Thomas Heinemann <thomas@niphba.de>
 
 pkgname=mailparser
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc='Tokenizer for raw mails'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-setuptools)
 provides=(python-mail-parser=${pkgver})
 conflicts=("python-mail-parser")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('1a5534c3243d75e575355138176094fd99233b29fbed1f3a3788da90692bf2d85cd1f91ceefe830bad82a658feefe81b7114b61300da11ac08bbcbc55425233b')
+sha512sums=('96723b7871879cc1c4423906f180547ddd83100e95b9d2b6772944c891d2ffe6ebc467dd4e683f34781aaa9f6e8024698dcb1fb9c03cad853b0be6794dcbc9a4')
 
 build() {
   cd mail-parser-${pkgver}
