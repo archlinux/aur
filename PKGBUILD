@@ -2,7 +2,7 @@
 
 pkgname=sunshine-beta-bin
 _pkgname=sunshine-beta-bin
-pkgver=2025.709.125604
+pkgver=2025.710.130932
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight"
@@ -44,7 +44,7 @@ conflicts=('sunshine' 'sunshine-git' 'sunshine-bin')
 replaces=('sunshine-bin')
 makedepends=('patchelf')
 provides=('sunshine-bin')
-sha256sums=('14968d6563f1507d14cf5e3664eb33afbcac8ac39c36cf7ccc7ced812e47ed4b'
+sha256sums=('ed3870c38e76ff4b890c1404cb6e125c4f04795fac4b24449ffcc2ddd5c85b82'
     '733594073f27c818f89ae1b065943384806811f02048376b76f64ce9c8768229')
 
 prepare() {
