@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.0.35
+pkgver=0.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Detect and invoke build systems"
@@ -15,8 +15,9 @@ depends=(
   'python'
 )
 makedepends=('cargo')
+#checkdepends=('mmdebstrap')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8df7b44e27e6ce481bf989c4f2fe5998958278c99ba82e0beea50311a626c54c')
+sha256sums=('69d526e6b7e09677f0faab7718c06f57052600e7544113f5518866a04a91600e')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -43,13 +44,8 @@ package() {
   cd "$pkgname-$pkgver"
 
   targets=(
-    deb-fix-build
-    deb-upstream-deps
-    dep-server
     ogni
-    "$pkgname-deb"
     "$pkgname-dist"
-    report-apt-deps-status
   )
   for target in ${targets[*]}; do
     install -Dm755 target/release/${target} -t "$pkgdir/usr/bin/"
