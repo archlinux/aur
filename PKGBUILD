@@ -3,7 +3,7 @@
 
 pkgname=chromium-extension-ublock-origin-lite
 pkgver=2025.709.1622
-pkgrel=1
+pkgrel=2
 pkgdesc="uBO Lite (uBOL), a permission-less MV3 API-based content blocker, for chromium"
 arch=('any')
 url="https://github.com/uBlockOrigin/uBOL-home"
