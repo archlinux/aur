@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=oapi-cli-git
-pkgrel=2
+pkgrel=1
 pkgdesc='New Outscale CLI'
 pkgver=nightly.linux.r0.gc6a9503
 
