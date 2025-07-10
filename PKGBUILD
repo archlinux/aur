@@ -10,9 +10,10 @@ arch=('x86_64')
 license=('GPL3')
 provides=('adfinis-rclone-mgr')
 conflicts=('adfinis-rclone-mgr')
+depends=('rclone' 'python-nautilus' 'xclip' 'zenity' 'python-httpx')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/adfinis/adfinis-rclone-mgr/releases/download/v2.1.0/adfinis-rclone-mgr-v2.1.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('7493cf79a05fb48eb862284ca052a2930142c0cf1db4bc387c0aca313fb70269')
+sha256sums_x86_64=('e533af378682cc86832045fe6d9d84c7a5559ec0fd089b5a4c9fa9d95a0c081c')
 
 package() {
   cd ./adfinis-rclone-mgr-v2.1.0-linux-amd64
