@@ -1,7 +1,7 @@
 pkgbase = ds4drv
 	pkgdesc = Sony DualShock 4 Userspace Driver
 	pkgver = 0.5.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/chrippa/ds4drv
 	install = ds4drv.install
 	arch = any
@@ -14,6 +14,8 @@ pkgbase = ds4drv
 	depends = python-pyudev
 	conflicts = ds4drv-git
 	source = https://github.com/chrippa/ds4drv/archive/v0.5.1.tar.gz
+	source = ds4drv.conf
 	sha256sums = da6841c17af0fc019abfe9e65d3f2a6fab3ced40294dc7391dc3e954e04479f8
+	sha256sums = d1b5537b7d76e029eac019f8b4c2b215dae08227fa65fa5da4fa58ffc23924a6
 
 pkgname = ds4drv
