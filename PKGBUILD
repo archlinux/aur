@@ -2,17 +2,17 @@
 
 _pkgname=lzlib
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.14
-pkgrel=2
+pkgver=1.15
+pkgrel=1
 pkgdesc="A library providing in-memory LZMA compression and decompression functions (mingw-w64)"
 arch=('any')
 url="https://www.nongnu.org/lzip/lzlib.html"
 license=('BSD-2-Clause')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-configure' 'mingw-w64-make')
+makedepends=('mingw-w64-configure' 'mingw-w64-make' 'mingw-w64-wine')
 options=('!strip' 'staticlibs' '!buildflags')
 source=(http://download.savannah.gnu.org/releases/lzip/${_pkgname}/${_pkgname}-${pkgver}.tar.gz{,.sig})
-sha256sums=('5acac8714ed4f306020bae660dddce706e5f8a795863679037da9fe6bf4dcf6f'
+sha256sums=('4afab907a46d5a7d14e927a1080c3f4d7e3ca5a0f9aea81747d8fed0292377ff'
             'SKIP')
 validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
 
@@ -25,7 +25,7 @@ build() {
     pushd build-${_arch}
     ${_arch}-configure \
       --enable-shared
-    ${_arch}-make
+    ${_arch}-make lib bin
     popd
   done
 }
@@ -36,7 +36,7 @@ package() {
     pushd build-${_arch}
     ${_arch}-make DESTDIR="$pkgdir" install
     install -Dm755 minilzip.exe "$pkgdir"/usr/${_arch}/bin/minilzip.exe
-    install -Dm755 liblz.so.${pkgver} "$pkgdir"/usr/${_arch}/bin/liblz.dll
+    install -Dm755 liblz.so.1 "$pkgdir"/usr/${_arch}/bin/liblz.dll
     rm "$pkgdir"/usr/${_arch}/lib/liblz.so*
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
