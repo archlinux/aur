@@ -19,6 +19,10 @@ md5sums=('SKIP' # this program is updated REALLY often :sob:
          'SKIP'
          'SKIP')
 
+pkgver() {
+  curl -sS https://amigan.1emu.net/releases/ | grep -Po "(?<=WinArcadia )(.*)(?= \(Windows)"
+}
+
 prepare() {
   mkdir -p $srcdir/zip
   7z x WinArcadia-bin.rar -o$srcdir/zip
