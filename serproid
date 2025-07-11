@@ -1,3 +1,19 @@
 #!/bin/sh
+JAVA=java
+if [[ -x /usr/lib/jvm/java-23-openjdk/bin/java ]]; then
+    # Prefer Java 23 if installed (approved by java-openjfx)
+    JAVA=/usr/lib/jvm/java-23-openjdk/bin/java
+fi
+
+OPENJFX_DIR="$(echo /usr/lib/jvm/java-*-openjfx/lib)"
+if [[ -d "$OPENJFX_DIR" ]]; then
+    # For java-openjfx-bin
+    OPENJFX_OPTS="--module-path $OPENJFX_DIR"
+fi
+if [[ -d /usr/share/java/java-openjfx ]]; then
+    # For java-openjfx
+    OPENJFX_OPTS="-Djava.library.path=/usr/lib/java-openjfx --module-path /usr/share/java/java-openjfx"
+fi
+
 cd /usr/share/serproid-desktop
-exec java --module-path /usr/lib/jvm/java-*-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.swing -Djava.util.logging.config.class=smartcert.LogConfig -classpath "lib/*" smartcert.Main
+exec $JAVA $OPENJFX_OPTS --add-modules javafx.controls,javafx.fxml,javafx.swing -Djava.util.logging.config.class=smartcert.LogConfig -classpath "lib/*" smartcert.Main

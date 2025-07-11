@@ -1,7 +1,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=serproid
-pkgver=2.1.1
+pkgver=2.1.5
 pkgrel=1
 pkgdesc='PKCS#11 driver for cloud-based digital certificates issued by Serpro'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('java-runtime' 'java-openjfx' 'openssl' 'gcc-libs' 'bash')
 makedepends=('tar')
 source=("serproid"
         "https://storagegw.estaleiro.serpro.gov.br/instalador-desktop/SerproID-$pkgver-amd64.deb")
-sha256sums=('32c5e192db8f0b4472148293e737ac6718c81eaf285e3f9974c90e896fc91d5b'
-            '20f47b93649c550293defa62fdb64b45cc7b7a22389fd252f953fdaeb76c8399')
+sha256sums=('25dce11075985ae2c0178d46290995a0ea1e91d572e14f80b6ddcc4882fd21ec'
+            'd2f3764654c14a15c47848506351e82e17e4ea305b2c130ae2ad761fb2d0c7d1')
 
 package() {
   tar --zstd --no-same-owner -xf data.tar.zst
