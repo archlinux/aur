@@ -1,6 +1,6 @@
 pkgbase = sile-resilient
 	pkgdesc = Advanced book classes and packages for the SILE typesetting system
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Omikhleia/resilient.sile
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = sile-resilient
 	conflicts = sile-printoptions
 	replaces = sile-fancytoc
 	replaces = sile-printoptions
-	source = https://github.com/Omikhleia/resilient.sile/archive/v3.0.0/resilient.sile-3.0.0.tar.gz
-	sha256sums = c6af1c7e61a3afc823addc5d306ab84be61cd06ca57315bd85252f31bbb85d9b
+	source = https://github.com/Omikhleia/resilient.sile/archive/v3.1.0/resilient.sile-3.1.0.tar.gz
+	sha256sums = 6b8d9f10f7f2b32d899355f01be35d4c950fd0eb29134e13053d84d3eef52e37
 
 pkgname = sile-resilient
