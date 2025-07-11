@@ -1,0 +1,23 @@
+pkgbase = lua-lux-lua
+	pkgdesc = An embeddable Lua command prompt as well as a stand-alone interpreter with pretty-printing and autocompletion.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/nvim-neorocks/lux
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = rust
+	source = lua-lux-lua-0.8.2::https://github.com/nvim-neorocks/lux/archive/v0.8.2.tar.gz
+	md5sums = a0250d107888d9ea7d72d065ccb67f5a
+
+pkgname = lua-lux-lua
+
+pkgname = lua53-lux-lua
+
+pkgname = lua52-lux-lua
+
+pkgname = lua51-lux-lua
