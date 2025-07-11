@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
-pkgver=5.101.0
+pkgver=5.102.2
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
@@ -11,7 +11,7 @@ conflicts=("qp-bin" "qp-git")
 replaces=("yaylog" "yaylog-bin" "yaylog-git")
 optdepends=('sqlite: RPM support')
 source=("${url}/releases/download/v${pkgver}/qp-v${pkgver}.tar.gz")
-sha256sums=("63a9233d3eecfa57e7b712f1424e468eb97455d30a184c00913b93cf400fc12f")
+sha256sums=("0090f29e269c57d8081d2eadf537f310866ffb72124832060b203258d3514232")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -32,4 +32,10 @@ package() {
 
   install -Dm644 "update-qp-cache.hook" \
     "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
+
+  "${pkgdir}/usr/bin/${pkgname}" --completions bash >"$srcdir/qp.bash"
+  "${pkgdir}/usr/bin/${pkgname}" --completions zsh >"$srcdir/qp.zsh"
+
+  install -Dm644 "$srcdir/qp.bash" "$pkgdir/usr/share/bash-completion/completions/qp"
+  install -Dm644 "$srcdir/qp.zsh" "$pkgdir/usr/share/zsh/site-functions/_qp"
 }
