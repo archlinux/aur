@@ -3,7 +3,7 @@
 pkgname=scribus-unstable
 _pkgname=scribus
 pkgver=1.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A desktop publishing program - Unstable branch 1.7.x"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')

@@ -1,7 +1,7 @@
 pkgbase = scribus-unstable
 	pkgdesc = A desktop publishing program - Unstable branch 1.7.x
 	pkgver = 1.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.scribus.net
 	arch = i686
 	arch = x86_64
