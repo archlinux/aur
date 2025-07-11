@@ -2,7 +2,7 @@
 _pkgname=balatro-multiplayer-launcher
 pkgname=balatro-multiplayer-launcher
 pkgver=1.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Launcher for Balatro Multiplayer Mod (AppImage)"
 arch=('x86_64')
 url="https://github.com/Balatro-Multiplayer/Balatro-Multiplayer-Launcher/"

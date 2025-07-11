@@ -1,7 +1,7 @@
 pkgbase = balatro-multiplayer-launcher
 	pkgdesc = Launcher for Balatro Multiplayer Mod (AppImage)
 	pkgver = 1.0.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Balatro-Multiplayer/Balatro-Multiplayer-Launcher/
 	arch = x86_64
 	license = 
