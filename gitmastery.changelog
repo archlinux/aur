@@ -4,3 +4,6 @@ Set changelog in quotes
 Add sync off command
 
 
+Support empty commit when no downloaded resources
+
+
