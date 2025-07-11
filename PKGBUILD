@@ -2,7 +2,7 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.46.5-beta.1'
+_pkgver='1.46.6-beta.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -17,14 +17,18 @@ backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'update-dependencies.diff'
+	'update-dependencies-beta.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
+	'fix-argv-beta.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('15e8705c998dacadd2009d11165c5d34a4eada30fbbb4cc4ce2ca5f67716369ccaf9e4de04a07c4b011efb25743e1b85c465baf2db0dfb0552cca0bb92b4e756'
-        '860ed63ad0e3bfe56da032c6ced44777221cda791533080fc1ca73c47fe0c3e68e3f31d4df8cb537c5dca0012e1fb36b7c1b9192b01e378fc9f151ac80f012a0'
+b2sums=('72d7a32b540d7667340a4a255fcc4d1923c3ce33285279b603a651ac7c16ca24f8d07552e9a7a131c6980b00b6482d1de45de4441a1d89f6974a7c9da8c81e5b'
+        '39963c3cf3aec9a9e43ea76a5a5d7ac7dfd5bc9ed3011bbf8b1febf4f70fc5b885e33197327d9ac82f3ae51d282e118f206ac1ee44dfbff7192109ecf05e9e8e'
+        'ba5a5b57c4f8d75fa2cbdbf9267a4025768db5c9c13759893b29e1a4265e16ea4a5194e880b6e70d30db19e0e25ff248a06de8152936c9f36d277654ca7ac14d'
         '339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef'
         '69154b5491c8c3149195743bcbcb0ae7b18b8e83635f7afa29e9ef7b50a42343a2877760b41662c5943b8f7d390df85548cbcd253772fa92e33b9f231ab19436'
+        '416e82d97116bbb4c8ad00837a81608a3b18fba4fffa9adebbabc4583124da96f9c6632645de5a9b234ccdb0436030928546c8c1a897081da8bbd12fef95249e'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="compass-$_pkgver"
@@ -33,7 +37,11 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Set npm overrides for various dependencies
-	patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	if [[ "$_target" =~ -beta$ ]]; then
+		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
+	else
+		patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	fi
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
@@ -49,7 +57,11 @@ prepare() {
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
 
 	# Apply argv fixes
-	patch --forward -p1 < "$srcdir/fix-argv.diff"
+	if [[ "$_target" =~ -beta$ ]]; then
+		patch --forward -p1 < "$srcdir/fix-argv-beta.diff"
+	else
+		patch --forward -p1 < "$srcdir/fix-argv.diff"
+	fi
 
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
