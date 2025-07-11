@@ -16,5 +16,12 @@ install: PKGBUILD .SRCINFO
 	make build
 	makepkg --install
 
+check: PKGBUILD .SRCINFO
+	pkgctl version check
+
+upgrade: PKGBUILD .SRCINFO
+	pkgctl version upgrade
+	make srcinfo
+
 clean:
 	rm -rf GOVERNANCE LICENSE README *.tar.* pkg src
