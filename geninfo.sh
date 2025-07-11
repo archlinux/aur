@@ -11,7 +11,6 @@ pyreq="src/${_pipname}-${pkgver}/requirements.txt"
 trap "rm depends.txt" EXIT
 makepkg -do
 sudo pacman -Sy --noconfirm --noprogressbar --needed jq go-yq python-packaging
-pkgdesc=$(yq eval -o=json "$pytoml" | jq -r '.project.description')
 depends=$(./geninfo.py "$pyreq" |
     tr 'A-Z' 'a-z' |
     grep -oP "^[a-z0-9_-]+" |
@@ -44,9 +43,5 @@ echo -e "${depends}\n)" > depends.txt
 # )
 # echo -e "${optdepends}\n)" > optdepends.txt
 
-sed -e "s|^pkgdesc=.*|pkgdesc=\"$pkgdesc\"|" \
-    -e "/^depends=(/,/)/c\depends=(" \
-    -i PKGBUILD
-
-sed -e "/^depends=/r depends.txt" \
-    -i PKGBUILD
+sed -e "/^depends=(/,/)/c\depends=(" -i PKGBUILD
+sed -e "/^depends=/r depends.txt" -i PKGBUILD
