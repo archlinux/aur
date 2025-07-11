@@ -1,4 +1,5 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: lmartinez-mirror
 pkgname=vim-pkgbuild-git
 _pkgname=${pkgname%-git}
 pkgver=r15.02a240d
