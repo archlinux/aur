@@ -6,12 +6,13 @@ _pkgname="shijima-qt"
 pkgname='shijima-qt-bin'
 pkgver='0.2.0alpha1'
 _pkgver='0.2.0-alpha1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=(x86_64 aarch64)
 url='https://github.com/pixelomer/Shijima-Qt'
 license=('GPL-3.0-only')
 depends=(
+	'libunarr'
 	'qt6-base'
 	'qt6-multimedia'
 )
@@ -27,7 +28,7 @@ source_x86_64=("$_pkgname.zip::$url/releases/download/v$_pkgver/release-linux-x8
 source_aarch64=("$_pkgname.zip::$url/releases/download/v$_pkgver/release-linux-arm64.zip")
 
 sha256sums=('a142a1a0802c5209a9fc306781c48a8e96b9c2dab5b6f50a9c7080d634c3c188'
-	'fb7eeac8eb05c7d40ef68b9f65897b0a3b6b4e30cd547919b37cf8aa5e94c0b4')
+	'e81d9e0dd9233995aa95aabc59ad45121435d6d1c747c51251a7e93a4c9bf4f7')
 sha256sums_x86_64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
 sha256sums_aarch64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
 
@@ -41,12 +42,8 @@ build() {
 package() {
 	cd "$srcdir"
 	install -d "$pkgdir/usr/bin/"
-	install -d "$pkgdir/opt/$_pkgname"
 
-	install -Dm755 "$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
-	install -Dm755 "libunarr.so.1" "$pkgdir/opt/$_pkgname/libunarr.so.1"
-
-	ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
 	# Icon
 	install -D "$_pkgname.png" "$pkgdir/usr/share/icons/$_pkgname.png"
@@ -63,7 +60,7 @@ package() {
 	install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop <<EOF
 [Desktop Entry]
 Name=Shijima-Qt
-Exec=$_pkgname
+Exec=/usr/bin/$_pkgname
 Icon=$_pkgname
 Terminal=false
 Type=Application
