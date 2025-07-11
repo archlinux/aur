@@ -2,8 +2,8 @@
 # Contributor: Ariel Abreu <facekapow@outlook.com>
 pkgname=gitify-bin
 _pkgname=Gitify
-pkgver=6.4.1
-_electronversion=36
+pkgver=6.5.0
+_electronversion=37
 pkgrel=1
 pkgdesc="GitHub notifications on your menu bar.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -18,9 +18,13 @@ source=(
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/gitify-app/gitify/v$pkgver/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('9a610b97357f9c3b8f3c6540900ff73128fa107e099284c810a1182e8db54e53'
+sha256sums=('0d20cac0db2d6a8209626b10bf40a349f631b0987ffb60c4d9bcf9eb8abb575d'
             'e3583a920d79b28287ca8bf4b021c6cbeba746a75073c0c68b0aa64ff0b38961'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -29,6 +33,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
 	sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
