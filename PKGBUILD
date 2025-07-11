@@ -8,12 +8,24 @@ pkgdesc="A GTK based GUI program to create and modify starters (*.desktop files)
 arch=('any')
 license=('GPL-3.0-or-later')
 url="https://www.florian-diesch.de/software/arronax"
-depends=('libwnck3' 'python-gobject' 'python-pyxdg')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('nemo-python: for Nemo extension'
-            'python-caja: for Caja extension'
-#            'python-nautilus: for Nautilus extension'
-            'thunarx-python: for Thunar plugin')
+depends=(
+  'libwnck3'
+  'python-gobject'
+  'python-pyxdg'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'nemo-python: for Nemo extension'
+  'python-caja: for Caja extension'
+#  'python-nautilus: for Nautilus extension'
+  'thunarx-python: for Thunar plugin'
+)
 #source=("https://www.florian-diesch.de/software/arronax/dist/$pkgname-$pkgver.tar.gz"{,.gpg}
 _commit=acb6aaf4826cd8f3d92bdbec8116e317fe954a98  # 0.8.1
 source=("git+https://codeberg.org/diesch/arronax.git#commit=${_commit}"
