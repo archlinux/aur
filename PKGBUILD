@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64
-pkgver=1.0.20
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
@@ -56,7 +56,7 @@ makedepends=(
     'wayland-protocols')
 source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
         'git+https://github.com/Themaister/parallel-rdp-standalone.git')
-sha256sums=('9a960cf75ed4410117a0bbca0bbb9d31ccdf854771344566b79b56c1761d9ead'
+sha256sums=('fb889098c127fa5d20cb2c036b785cb969c8100ac0ccde6f21832c26cbd18760'
             'SKIP')
 
 prepare() {
@@ -76,8 +76,8 @@ build() {
     export CFLAGS+=' -ffat-lto-objects'
     export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
-    export CARGO_TARGET_DIR='gopher64/target'
-    cargo build --release --frozen --manifest-path='gopher64/Cargo.toml'
+    export CARGO_TARGET_DIR='target'
+    cargo build --release --frozen --all-features --manifest-path='gopher64/Cargo.toml'
 }
 
 check() {
@@ -88,12 +88,12 @@ check() {
     export CFLAGS+=' -ffat-lto-objects'
     export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
-    export CARGO_TARGET_DIR='gopher64/target'
-    cargo test --frozen --manifest-path='gopher64/Cargo.toml'
+    export CARGO_TARGET_DIR='target'
+    cargo test --frozen --all-features --manifest-path='gopher64/Cargo.toml'
 }
 
 package() {
-    find gopher64/target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
+    find target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
     
     local _icon
     local _res
