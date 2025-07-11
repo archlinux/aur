@@ -3,7 +3,7 @@ pkgname=bazaar-git
 _pkgname=bazaar
 pkgver=0.0.0.r0.g0000000
 pkgrel=1
-pkgdesc="A project that manages Flatpak installations with a GTK4 GUI (git version)"
+pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
 url="https://github.com/kolunmi/bazaar"
 license=('GPL-3.0-only')
@@ -26,6 +26,7 @@ depends=(
   'cairo'
 )
 makedepends=('meson' 'ninja' 'gcc' 'pkgconf' 'git' 'glib2-devel')
+optdepends=('krunner-bazaar: krunner integration')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+$url")
