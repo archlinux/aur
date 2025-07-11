@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zhiximind-desktop-bin
 _debname=com.zhixi.desktop
-pkgver=3.3.12
+pkgver=3.3.13
 _electronversion=22
 pkgrel=1
 pkgdesc="A mind mapping and mind mapping software present on all major platforms.(Prebuilt version.Use system-wide electron)知犀思维导图官方版"
@@ -18,8 +18,8 @@ source=(
     "LICENSE-${pkgver}.html::${url}/user-agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a797b9dff210945a8371cd2b7fb1f2772c5579425d37c8ef35e6da026b630187'
-            'fdfc317944b0210c65353d25e47f87bcadfe841270c7ffcb237212148b1ddb26'
+sha256sums=('f4ee0510895a39902d8676080a346421d552752dc5fbee9e3a84c7cb9f643fbb'
+            'df14f6a9d3ef819eca015826ef8929d25d4d414ec6cf293c594fecbecab32a99'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_debname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
