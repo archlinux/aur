@@ -12,7 +12,8 @@ pkgbase = krunner-bazaar
 	depends = krunner
 	depends = ki18n
 	depends = kcoreaddons
-	source = krunner-bazaar::git+https://github.com/ublue-os/krunner-bazaar.git#tag=v1.0.4
-	sha256sums = SKIP
+	depends = bazaar
+	source = https://github.com/ublue-os/krunner-bazaar/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = ab7b891272c633b36ab784a1751b18cb8c2140fdfb03a63d21248350339f7e56
 
 pkgname = krunner-bazaar
