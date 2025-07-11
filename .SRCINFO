@@ -1,0 +1,20 @@
+pkgbase = hyprupld
+	pkgdesc = Hyprland screenshot and screen recording utility
+	pkgver = d8160d8.r0.gd8160d8
+	pkgrel = 1
+	url = https://github.com/PhoenixAceVFX/hyprupld
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = wget
+	makedepends = imagemagick
+	makedepends = cmake
+	depends = bash
+	depends = fuse2
+	depends = glib2
+	depends = cairo
+	depends = pango
+	source = git+https://github.com/PhoenixAceVFX/hyprupld.git
+	sha256sums = SKIP
+
+pkgname = hyprupld
