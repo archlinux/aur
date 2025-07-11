@@ -1,8 +1,8 @@
 pkgbase = mupen64plus-rsp-parallel-highscore-git
-	pkgdesc = Parallel RSP plugin for Highscore port of Mupen64Plus
+	pkgdesc = ParaLLEl-RSP with mupen64plus-highscore patches
 	pkgver = r122.738c95c
 	pkgrel = 1
-	url = https://github.com/alice-mkh/parallel-rsp
+	url = https://github.com/highscore-emu/parallel-rsp
 	arch = x86_64
 	license = LGPL-3.0-or-later OR MIT
 	makedepends = cmake
@@ -12,7 +12,7 @@ pkgbase = mupen64plus-rsp-parallel-highscore-git
 	provides = mupen64plus-rsp-parallel
 	conflicts = mupen64plus-rsp-parallel-highscore
 	conflicts = mupen64plus-rsp-parallel
-	source = git+https://github.com/alice-mkh/parallel-rsp.git
+	source = git+https://github.com/highscore-emu/parallel-rsp.git
 	sha256sums = SKIP
 
 pkgname = mupen64plus-rsp-parallel-highscore-git
