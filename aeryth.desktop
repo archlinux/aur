@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Aeryth
+Comment=Convertir AppImage in package for Debian/Ubuntu/Mint and ArchLinux/Manjaro
+Exec=aeryth
+Icon=aeryth
+Terminal=true
+Type=Application
+Categories=Utility;
