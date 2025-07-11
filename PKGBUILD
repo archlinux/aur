@@ -4,7 +4,7 @@
 _name=twuewand-git
 pkgbase="${_name}"
 pkgname=("${pkgbase}")
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="twuewand - A TrueRand algorithm for generating entropy"
 arch=('any')
@@ -22,10 +22,14 @@ makedepends=(git python-pycryptodome python-build python-installer python-wheel)
 build() {
     cd "$_name"
     python -m build --wheel --no-isolation
+    cd "rndaddentropy"
+    make rndaddentropy
 }
 
 package() {
     cd "$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "rndaddentropy"
+    make DESTDIR="$pkgdir/" install
 }
 
