@@ -1,7 +1,7 @@
 pkgbase = python-mcp
 	pkgdesc = Model Context Protocol SDK.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 _name=mcp
 pkgname=python-${_name}
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -39,4 +39,7 @@ check() {
 package() {
   cd "${srcdir}"/${_name}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "${site_packages}/${_name}-${pkgver}.dist-info/licenses/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
