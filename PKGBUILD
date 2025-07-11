@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-sahi
-pkgver=0.11.28
+pkgver=0.11.30
 pkgrel=1
 pkgdesc="Lightweight vision library for performing large scale object detection/ instance segmentation"
 arch=('any')
