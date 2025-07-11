@@ -1,0 +1,12 @@
+index be733dbbb8..75a46cc8a6 100644
+--- a/xbmc/addons/Scraper.h
++++ b/xbmc/addons/Scraper.h
+@@ -199,7 +199,7 @@ template<>
+ struct fmt::formatter<ADDON::ContentType> : fmt::formatter<std::string_view>
+ {
+   template<typename FormatContext>
+-  constexpr auto format(const ADDON::ContentType& type, FormatContext& ctx)
++  constexpr auto format(const ADDON::ContentType& type, FormatContext& ctx) const
+   {
+     return fmt::formatter<std::string_view>::format(enumToSV(type), ctx);
+   }
