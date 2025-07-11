@@ -15,6 +15,16 @@ source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
 b2sums=('ad5c14c74a4b6234bdb4c29839ed098e65279623ae8de39d27be6f00ed52c06e28e145648dd88cd0c5a980d4b9c259bad8fe7fe42de22b12f731962554f324be')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go get -v ./...
+  chmod -R ug+Xwr "${GOMODCACHE}"
+
+  mkdir -p "build"
+}
+
+build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -23,15 +33,6 @@ prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${srcdir}/go-mod-cache" -type d -exec chmod 755 {} +
-  find "${srcdir}/go-mod-cache" -type f -exec chmod 644 {} +
-
-  mkdir -p "build"
-}
-
-build() {
   cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
     -X main.version=${pkgver}-${pkgrel} \
