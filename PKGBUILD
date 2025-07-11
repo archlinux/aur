@@ -2,7 +2,7 @@
 # Contributor: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 _pkgname=xmrig-cuda
-_pkgver=6.22.0
+_pkgver=6.22.1
 _mover=1
 _pkgtag="${_pkgver}-mo${_mover}"
 pkgname="xmrig-mo-cuda"
@@ -11,13 +11,13 @@ pkgrel=1
 pkgdesc='NVIDIA CUDA plugin for XMRig miner, MoneroOcean fork.'
 arch=(x86_64)
 url="https://github.com/MoneroOcean/${_pkgname}"
-depends=('xmrig-mo>=6.17.0' 'cuda>=11.8' 'nvidia-utils')
+depends=('xmrig-mo>=6.17.0' 'cuda>=11.8' 'nvidia-utils' 'gcc13-libs')
+makedepends=('cmake' 'gcc13' 'openssl')
 optdepends=('monero: wallet')
-makedepends=('cmake' 'openssl')
-license=('GPL')
+license=('GPL-3.0-only')
 source=("${url}/archive/v${_pkgtag}.tar.gz"
         "fix-cryptonight.patch")
-sha256sums=('42f064c20758e58cc0bdc3ebbd0f32a739ebfd8594d7ffc7753be9091453b3ea'
+sha256sums=('cb876f936dc1d10e4b84877290db6bee39dca12ab777354b01a2d5b915a63a0d'
             '668a954c1c127652cf693c96d05b928bd0e3c1126afcff26e1168d59b19543d2')
 
 prepare () {
