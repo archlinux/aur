@@ -1,6 +1,6 @@
 # Maintainer: ParsaGP <psrzp1386@gmail.com>
 pkgname=beatmapexporter-cli-bin
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="osu!lazer Beatmap Exporter utility - CLI version"
 arch=("x86_64")

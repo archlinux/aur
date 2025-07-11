@@ -1,13 +1,13 @@
 pkgbase = beatmapexporter-cli-bin
 	pkgdesc = osu!lazer Beatmap Exporter utility - CLI version
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/kabiiQ/BeatmapExporter
 	arch = x86_64
 	license = MIT
 	makedepends = curl
 	options = !strip
-	source = BeatmapExporterCLI::https://github.com/kabiiQ/BeatmapExporter/releases/download/v2.5.0/linux-BeatmapExporterCLI
+	source = BeatmapExporterCLI::https://github.com/kabiiQ/BeatmapExporter/releases/download/v2.6.0/linux-BeatmapExporterCLI
 	sha256sums = 833912e69ca409d160bc459bbb6101bef82a3506e392f75ef702bd9076c103a9
 
 pkgname = beatmapexporter-cli-bin
