@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/2e3s/${pkgbase}"
 license=('MPL-2.0')
 depends=()
-makedepends=('rustup' 'cargo' 'npm' 'git' 'dbus' 'openssl')
+makedepends=('rust' 'cargo' 'npm' 'git' 'dbus' 'openssl')
 source=(
     "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
