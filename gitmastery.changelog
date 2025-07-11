@@ -7,3 +7,6 @@ Add sync off command
 Support empty commit when no downloaded resources
 
 
+Create PR if not present during sync on
+
+
