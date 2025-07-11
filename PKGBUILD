@@ -21,7 +21,6 @@ depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch sed) # base-devel
 optdepends=({nwjs,slimjet}': replace ffmpeg')
-conflicts=(opera-ffmpeg-codecs) # Unsynced Chromiumver
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 
 prepare() {
@@ -29,7 +28,8 @@ prepare() {
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   patch -Np1 -i ../aom.patch
   # Use native opus not in kAllowedAudioCodecs
-  sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
+  sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
+  # diff libavcodec/opus/dec.c{.bak,} || :
 }
 
 build() {
@@ -37,7 +37,7 @@ build() {
   # https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # BUILD.gn
   ./configure \
-    --disable-{all,autodetect,doc,iconv,network,symver} \
+    --disable-{debug,all,autodetect,doc,iconv,network,symver} \
     --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
@@ -61,6 +61,6 @@ package(){
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
   #install -d "${pkgdir}"/opt/vivaldi
   #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.5
-  # Block LD_PRELOAD
+  # Block LD_PRELOAD and use layout inconflicts with opera*
   install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
