@@ -2,7 +2,7 @@
 
 pkgname="slippi-mainline"
 pkgver='v4.0.0.mainline.beta.11.r0.g3d4c4f85fb'
-pkgrel=1
+pkgrel=2
 pkgdesc='https://slippi.gg/about'
 arch=('x86_64')
 url="https://github.com/project-slippi/dolphin"
@@ -44,7 +44,7 @@ depends=('alsa-lib'
          'zstd'
 )
 
-makedepends=('cmake' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg' 'cargo')
+makedepends=('cmake3-bin' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg' 'cargo')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 
@@ -125,7 +125,8 @@ build() {
         cd "$srcdir/$_sourcedirectory/"
         export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
 
-        cmake -S '.' -B 'build/' -G Ninja \
+        CMAKE_BIN="/usr/bin/cmake3"
+        "$CMAKE_BIN" -S '.' -B 'build/' -G Ninja \
                 -DLINUX_LOCAL_DEV=true \
                 -DCMAKE_BUILD_TYPE=None \
                 -DSLIPPI_PLAYBACK=false \
@@ -138,7 +139,7 @@ build() {
                 -DUSE_SYSTEM_MINIZIP=OFF \
                 -Wno-dev
 
-        cmake --build 'build/'
+        "$CMAKE_BIN" --build 'build/'
 }
 
 package() {

@@ -1,11 +1,11 @@
 pkgbase = slippi-mainline
 	pkgdesc = https://slippi.gg/about
 	pkgver = v4.0.0.mainline.beta.11.r0.g3d4c4f85fb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/project-slippi/dolphin
 	arch = x86_64
 	license = GPL2
-	makedepends = cmake
+	makedepends = cmake3-bin
 	makedepends = git
 	makedepends = miniupnpc
 	makedepends = ninja
