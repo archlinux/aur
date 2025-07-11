@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-_aarch64_ver=2.12.9
-_x86_64_ver=3.15.0
+_aarch64_ver=3.21.0
+_x86_64_ver=3.21.0
 case "${CARCH}" in
     aarch64)
         pkgver="${_aarch64_ver}"
@@ -38,10 +38,11 @@ source_aarch64=("${pkgname%-bin}-${_aarch64_ver}-aarch64.rpm::https://cdn-cn.xte
 source_x86_64=("${pkgname%-bin}-${_x86_64_ver}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_x86_64_ver}-linux-x86_64.rpm")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('e715f44ab759f2d1cd6bce72bdb5172cad825d4c0e48613133a351da35375e08')
-sha256sums_x86_64=('ef00985dfff4ff0cd68b5579ba7c7daad1294b9f468594a55406a5dc49c21642')
+sha256sums_aarch64=('f850f7d78d1c31e0f723945d9b33e79da85c8ea581309ffb3c26478ee46b2ecd')
+sha256sums_x86_64=('a08387aa5a8b77f23dd9464f49ab737d946b8ea0c6d8047c2cbcfd4baf9c67f3')
 _get_electron_version() {
-    _electronversion="strings ${srcdir}/opt/${_pkgname}/${pkgname%-bin}  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
     sed -i -e "

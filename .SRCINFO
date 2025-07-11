@@ -1,6 +1,6 @@
 pkgbase = xterminal-bin
 	pkgdesc = Not only powerful SSH tools, but also local consoles, and more coming soon.(Prebuilt version.Use system-wide electron)不仅是强大的SSH工具,更提供本地控制台,以及更多即将推出的开发相关功能.
-	pkgver = 3.15.0
+	pkgver = 3.21.0
 	pkgrel = 1
 	url = https://www.xterminal.cn/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = xterminal-bin
 	depends = electron31
 	depends = java-runtime
 	depends = python
-	provides = xterminal=3.15.0
+	provides = xterminal=3.21.0
 	conflicts = xterminal
 	source = LICENSE.html
 	source = xterminal.sh
 	sha256sums = 8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = xterminal-2.12.9-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-2.12.9-linux-aarch64.rpm
-	sha256sums_aarch64 = e715f44ab759f2d1cd6bce72bdb5172cad825d4c0e48613133a351da35375e08
-	source_x86_64 = xterminal-3.15.0-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-3.15.0-linux-x86_64.rpm
-	sha256sums_x86_64 = ef00985dfff4ff0cd68b5579ba7c7daad1294b9f468594a55406a5dc49c21642
+	source_aarch64 = xterminal-3.21.0-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-3.21.0-linux-aarch64.rpm
+	sha256sums_aarch64 = f850f7d78d1c31e0f723945d9b33e79da85c8ea581309ffb3c26478ee46b2ecd
+	source_x86_64 = xterminal-3.21.0-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-3.21.0-linux-x86_64.rpm
+	sha256sums_x86_64 = a08387aa5a8b77f23dd9464f49ab737d946b8ea0c6d8047c2cbcfd4baf9c67f3
 
 pkgname = xterminal-bin
