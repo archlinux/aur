@@ -9,7 +9,7 @@ url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 _ffmpeg=$(curl -s ${url}/+/${_commit}/RELEASE?format=TEXT|base64 -d)
 pkgver=${_chromium}.ffmpeg$_ffmpeg
-pkgrel=1
+pkgrel=2
 pkgdesc="Add codecs to Opera"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -20,8 +20,8 @@ source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
 install=on-opera-ffmpeg.install
 sha256sums=('ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d'
-            'ed5c5178492da256c24b9eff647573b69e46165cf2e6e950d1d3dfc14784581f'
-            'c2423b9cf8ac5e9a64e6cf232afbcecd07d34beb884fe90b24dc84d8d830a9dc')
+            'cf61ed6d89c84f1f999af8e126395fdad05e4bb898d900178673b626f0204e12'
+            'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 
 prepare() {
   cd chromium-ffmpeg
@@ -56,14 +56,14 @@ build() {
 }
 
 package(){
-  install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/${_browser}/lib_extra/libffmpeg.so"
+  install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so"
   # Block LD_PRELOAD even this works without it. It breaks many things.
   install -Dm644 off-opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
-  # Provide -{beta,developer}-ffmpeg-codecs after LD_PRELOAD issue was fixed 
+
   #echo Make sure every operas have same major Chromium ver
-  #conflicts=(opera-{beta,developer}-ffmpeg-codecs)
-  #provides=(opera-{beta,developer}-ffmpeg-codecs)
-  #install -d "$pkgdir"/usr/lib/opera-{beta,developer}/lib_extra
-  #ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-beta/lib_extra/libfmpeg.so
-  #ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-developer/lib_extra/libfmpeg.so
+  conflicts=(opera-{beta,developer}-ffmpeg-codecs)
+  provides=(opera-{beta,developer}-ffmpeg-codecs)
+  install -d "$pkgdir"/usr/lib/opera-{beta,developer}/lib_extra
+  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-beta/lib_extra/libfmpeg.so
+  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-developer/lib_extra/libfmpeg.so
 }

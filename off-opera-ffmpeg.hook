@@ -4,7 +4,9 @@ Operation=Upgrade
 Type=Package
 Target=opera-ffmpeg-codecs
 Target=opera
+Target=opera-beta
+Target=opera-developer
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/chmod a-r /usr/lib/opera/libffmpeg.so
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera{,-beta,-developer}/libffmpeg.so 2>/dev/null||:'
