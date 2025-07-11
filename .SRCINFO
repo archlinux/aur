@@ -1,16 +1,16 @@
 pkgbase = overmind-cli-bin
 	pkgdesc = Identify the blast radius and risks for Terraform changes in real time
-	pkgver = v1.8.1
+	pkgver = v1.8.2
 	pkgrel = 1
 	url = https://github.com/overmindtech/cli
 	arch = x86_64
 	arch = aarch64
 	license = FSL-1.1-Apache-2.0
-	noextract = overmind-cli-bin-v1.8.1-x86_64.tar.gz
-	noextract = overmind-cli-bin-v1.8.1-aarch64.tar.gz
-	source_x86_64 = overmind-cli-bin-v1.8.1-x86_64.tar.gz::https://github.com/overmindtech/cli/releases/download/v1.8.1/overmind_cli_1.8.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = b7ce423a913dca79abe4d5ece5606f98b1b33cc4e5f63b8d073857cb48363795
-	source_aarch64 = overmind-cli-bin-v1.8.1-aarch64.tar.gz::https://github.com/overmindtech/cli/releases/download/v1.8.1/overmind_cli_1.8.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = d93da62a24d9711052cd42d4ca5702dd60cdaf5c736ca62429686dad190b8464
+	noextract = overmind-cli-bin-v1.8.2-x86_64.tar.gz
+	noextract = overmind-cli-bin-v1.8.2-aarch64.tar.gz
+	source_x86_64 = overmind-cli-bin-v1.8.2-x86_64.tar.gz::https://github.com/overmindtech/cli/releases/download/v1.8.2/overmind_cli_1.8.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 129769a996d7ee55bec9f7bbfdf9eb7d4bca10fd174be6b43a602ec2a5b0ea46
+	source_aarch64 = overmind-cli-bin-v1.8.2-aarch64.tar.gz::https://github.com/overmindtech/cli/releases/download/v1.8.2/overmind_cli_1.8.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 27efe30efaed177b44af69c16942489d26f4a7ce1f6b1454837566a42da4beb0
 
 pkgname = overmind-cli-bin
