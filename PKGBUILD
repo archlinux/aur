@@ -3,7 +3,7 @@
 
 pkgname=pje-office
 pkgver=2.5.16u
-pkgrel=4
+pkgrel=5
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
 url='https://pjeoffice.trf3.jus.br'
@@ -20,6 +20,9 @@ prepare() {
 
   # Remove the bundled JRE
   rm -rf "${srcdir}/pjeoffice-pro/jre"
+
+  # Remove not applicable README file
+  rm -rf "${srcdir}/pjeoffice-pro/LEIA-ME.TXT"
 
   # Create the target directory structure within srcdir before moving files
   install -d "${srcdir}/usr/share/"
