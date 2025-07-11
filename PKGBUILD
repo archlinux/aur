@@ -1,6 +1,6 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=mmdebstrap
-pkgver=1.5.4
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="create a Debian chroot"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 	'qemu-user-static-binfmt: foreign-architecture support'
 	'arch-test: foreign-architecture support')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('c6a11530ee713ff4ab8e1554023e81e7654cb8c9f8499c2682181f76a06f5593')
+sha256sums=('b6bed09d6f86755aaf1a98c1d23438d7b160a43923fe8d3074c311eb295ac994')
 
 prepare() {
 	cd "$pkgname"
