@@ -3,29 +3,27 @@
 _name='uri-ssh_git'
 pkgname="ruby-uri-ssh_git"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parse and build git repository url via ssh protocol.'
 arch=('any')
 url="https://github.com/packsaddle/${pkgname}"
 license=('MIT')
 depends=(ruby)
+makedepends=('git')
 checkdepends=('ruby-bundler' 'ruby-rake' 'ruby-test-unit' 'ruby-yard')
 options=('!emptydirs')
-source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('5dc53b8e39e0f42e05e49d60c30f2cd592d83d39054a6ad112ef282c24a7c00ef5acd6c117fcb0deb22bf36561e9d5c70fc230767f3084e818fb4a6fcad589bf')
+source=("$pkgname::git+$url#tag=v$pkgver")
+b2sums=('d7b59114e0f721302ec410902d0c95a8f96236475c53f5d3a3f571253c70f32a68d5bb59d7c4fdfedb4520a4ab3b8b942faae669d3dca2cd3033b340d3dc2830')
 
 prepare() {
-  cd "${pkgname}-2.0.0"
-
-  # we built based on a tar archive, not a git repo
-  sed --in-place 's/git ls-files/find/' "${_name}.gemspec"
+  cd "${pkgname}"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "${_name}.gemspec"
 }
 
 build() {
-  cd "${pkgname}-2.0.0"
+  cd "${pkgname}"
 
   local _gemdir="$(gem env gemdir)"
 
@@ -68,7 +66,7 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-2.0.0"
+  cd "${pkgname}"
 
   local _gemdir="$(gem env gemdir)"
 
@@ -76,7 +74,7 @@ check() {
 }
 
 package() {
-  cd "${pkgname}-2.0.0"
+  cd "${pkgname}"
 
   cp --archive --verbose tmp_install/* "${pkgdir}"
 }
