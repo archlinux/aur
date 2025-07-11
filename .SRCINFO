@@ -1,6 +1,6 @@
 pkgbase = python-tidalapi
 	pkgdesc = Unofficial API for TIDAL music streaming service.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/tamland/python-tidal
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-tidalapi
 	depends = python-dateutil
 	depends = python-isodate
 	depends = python-mpegdash
-	source = https://files.pythonhosted.org/packages/source/t/tidalapi/tidalapi-0.8.3.tar.gz
-	sha256sums = dc8e578bdbe6c8095434a066993b869deb5a8a25732f7b04132df59e94599455
+	source = https://files.pythonhosted.org/packages/source/t/tidalapi/tidalapi-0.8.4.tar.gz
+	sha256sums = 4afb80cef4ac733456c4b8e3cd3ecfc3475bfa1d6453c50549706f27e615ee8c
 
 pkgname = python-tidalapi
