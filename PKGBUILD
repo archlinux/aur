@@ -1,12 +1,14 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
 pkgname=not1mm-9m2pju-git
-pkgver=r123.abcdef0  # placeholder; will be auto-generated
+pkgver=r2195.50b99a0  # placeholder; will be auto-generated
 pkgrel=1
 pkgdesc="Not1MM != N1MM, An amateur radio contest logger for Linux. "
 arch=('any')
 url="https://github.com/mbridak/not1mm"
-license=('MIT')
-depends=('python' 'python-rich' 'python-appdirs' 'python-notctyparser' 'python-appdata')
+license=('GPLv3')
+depends=('python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil' \
+	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' 'python-appdata' \
+	 'python-gobject' 'python-thefuzz' 'python-levenshtein' 'gtk4' 'hamradio-menus')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('not1mm')
 conflicts=('not1mm')
