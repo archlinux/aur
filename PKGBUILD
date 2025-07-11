@@ -16,7 +16,7 @@ pkgname=(
   java17-openjfx-doc
   java17-openjfx-src
 )
-pkgver=17.0.16.u1
+pkgver=17.0.16.u2
 pkgrel=1
 pkgdesc="Java OpenJFX 17 client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
@@ -58,7 +58,7 @@ source=(
   java-openjfx-env_compiler.patch
   webcore_mapfile-vers.patch
 )
-b2sums=('0e03e5f01b762e0546b057d78a6e8daf0ef69ee8403ec8a93301d7eede7b1823f1de1332d84572dc4b45fc414c9377c9e686139677d5cc93f1a6a50429f880f3'
+b2sums=('e185bf69d36a1326eccbd6c12202b1bf198733d8b77928e18677ed0ebe5adecde4a6735e8ec7eea961c8710c6407427d6f51cd2f7df078a3a834a2e9a560e130'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         'a56a5cfebb44cdbe3ada9c6da88fda6427a5bd1bf9fcc491df289c4f5c0e96ac3614c619aaf9428340f11e9dabf0a85fc7db4f49754c2700587cc66fc15372fd'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
