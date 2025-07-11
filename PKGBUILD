@@ -3,7 +3,7 @@
 pkgname=winarcadia-bin
 _pkgname='winarcadia-bin'
 pkgver=34.41
-pkgrel=1
+pkgrel=2
 pkgdesc='Emulator/Debugger of various Signetics 2650 game consoles'
 url='https://amigan.1emu.net/releases'
 arch=(x86_64 i686)
