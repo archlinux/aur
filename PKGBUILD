@@ -1,8 +1,9 @@
 # Maintainer: Sterophonick
+
 pkgname=nocashgba-debugger
 _pkgname='nocashgba-debugger'
 pkgver=3.06
-pkgrel=1
+pkgrel=2
 pkgdesc='Game Boy Advance / Nintendo DS debugger and emulator'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')
@@ -16,6 +17,10 @@ md5sums=('13bd8fdf3cf1de6273b047e090c91a5c'
          'SKIP'
          'SKIP')
 noextract=(no\$gba.zip)
+
+pkgver() {
+  curl -Ss https://problemkaputt.de/gba.htm | grep -Po "(?<=- no\\\$gba v)(.*)(?= -)"
+}
 
 prepare() {
   cd $srcdir
