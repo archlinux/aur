@@ -1,10 +1,11 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Oliver Lantwin <olantwin+aur@gmail.com>
 # Contributor: Gabriel Peixoto <gabrielrcp@gmail.com>
 
 pkgname=lastpass-cli
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LastPass command line interface tool"
 arch=('x86_64')
 url="https://lastpass.com/"
@@ -19,7 +20,7 @@ sha256sums=('9989ef0650db18bc3f80ba52964202b778abda0548f95dcd321e9c7c39a1a24e')
 build() {
   cd "$srcdir"/$pkgname-$pkgver
   CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
-  cmake . -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake . -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 

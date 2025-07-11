@@ -1,7 +1,7 @@
 pkgbase = lastpass-cli
 	pkgdesc = LastPass command line interface tool
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lastpass.com/
 	arch = x86_64
 	license = GPL2
