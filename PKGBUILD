@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mednafen-highscore-git
-pkgver=r46.426610a
+pkgver=1.32.1.r44.g9f2aa99
 pkgrel=1
 pkgdesc="Highscore port of Mednafen"
 arch=('x86_64')
-url="https://github.com/alice-mkh/mednafen-highscore"
+url="https://github.com/highscore-emu/mednafen-highscore"
 license=('GPL-2.0-or-later')
 depends=(
   'libhighscore-git'
@@ -16,12 +16,12 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/alice-mkh/mednafen-highscore.git')
+source=('git+https://github.com/highscore-emu/mednafen-highscore.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
