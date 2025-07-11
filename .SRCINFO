@@ -1,15 +1,17 @@
 pkgbase = bsnes-highscore-git
-	pkgdesc = Highscore port of BSNES
-	pkgver = r3019.1ae043e3
+	pkgdesc = Highscore port of bsnes-JG
+	pkgver = r1742.e05ea25
 	pkgrel = 1
-	url = https://github.com/alice-mkh/bsnes
+	url = https://gitlab.com/highscore-emu/bsnes
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = meson
 	depends = libhighscore-git
+	depends = libsamplerate
 	provides = bsnes-highscore
 	conflicts = bsnes-highscore
-	source = git+https://github.com/alice-mkh/bsnes.git
+	source = git+https://gitlab.com/highscore-emu/bsnes.git
 	sha256sums = SKIP
 
 pkgname = bsnes-highscore-git

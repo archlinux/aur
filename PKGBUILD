@@ -1,37 +1,36 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bsnes-highscore-git
-pkgver=r3019.1ae043e3
+pkgver=r1742.e05ea25
 pkgrel=1
-pkgdesc="Highscore port of BSNES"
+pkgdesc="Highscore port of bsnes-JG"
 arch=('x86_64')
-url="https://github.com/alice-mkh/bsnes"
+url="https://gitlab.com/highscore-emu/bsnes"
 license=('GPL-3.0-or-later')
-depends=('libhighscore-git')
-makedepends=('git')
+depends=(
+  'libhighscore-git'
+  'libsamplerate'
+)
+makedepends=(
+  'git'
+  'meson'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/alice-mkh/bsnes.git')
+source=('git+https://gitlab.com/highscore-emu/bsnes.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd bsnes
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   cd bsnes
-  make -C bsnes \
-    target=highscore \
-    binary=library \
-    build=performance \
-    local=false \
-    platform=linux
+  arch-meson highscore build
+  meson compile -C build
 }
 
 package() {
   cd bsnes
-  install -Dm755 "bsnes/out/${pkgname%-git}.so" -t \
-    "$pkgdir/usr/lib/highscore/cores/"
-  install -m644 bsnes/target-highscore/bsnes.highscore -t \
-    "$pkgdir/usr/lib/highscore/cores/"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
