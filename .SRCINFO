@@ -1,7 +1,7 @@
 pkgbase = gnokii
 	pkgdesc = Tools and user space driver for use with mobile phones
 	pkgver = 0.6.31
-	pkgrel = 20
+	pkgrel = 21
 	url = https://www.gnokii.org/
 	install = gnokii.install
 	arch = x86_64

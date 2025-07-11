@@ -5,7 +5,7 @@
 
 pkgname=gnokii
 pkgver=0.6.31
-pkgrel=20
+pkgrel=21
 pkgdesc='Tools and user space driver for use with mobile phones'
 arch=('x86_64')
 url='https://www.gnokii.org/'
@@ -47,11 +47,16 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+
+  _CFLAGSADDITIONS="-Wno-error=incompatible-pointer-types"
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+
   ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
               --enable-security
   make
   pushd xgnokii
-  make CFLAGS=-Wno-error=incompatible-pointer-types
+  make
   popd
 }
 
