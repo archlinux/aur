@@ -9,7 +9,7 @@ url="https://github.com/SinTan1729/$_pkgname-url-cli"
 license=('MIT')
 provides=('chhoto')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname.tar.gz")
-b2sums=('3bc74ee41e626b66593f9a9ad4626e1090cbbd08998cb8c020f74636eedc70f36a1226c181302feb229706ad2f569c35345d646f54c3516a2da5eab6e195f546')
+b2sums=('136a89ef1de376cf3bdaffb731ad6ec67233535ce1b88ef622310f89126875d4e8b43ecc909d5bc1d67201931e25249c49dc0735a44442ef9720fb74646f9424')
 package() {
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/bin/$_pkgname"
