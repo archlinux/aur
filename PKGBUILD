@@ -2,7 +2,7 @@
 
 _cmdname=bradar
 pkgname=bytes-radar
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A fast code analysis tool for remote repositories with multi-platform support. Serverless optimized."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 provides=("${_cmdname}")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6f580b1d50b236c80082446dcfe1f22b098b93cdb3cc336e3f19d232b7278870')
+sha256sums=('2acd4b35ea9634748ad883776d74e6d046f179762ee85b265646fe3185d70dd5')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
