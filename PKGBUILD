@@ -2,7 +2,7 @@
 
 pkgname=lefthook-bin
 pkgdesc="Git hooks manager"
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/evilmartians/lefthook"
@@ -13,8 +13,8 @@ provides=('lefthook')
 conflicts=('lefthook')
 source_x86_64=("https://github.com/evilmartians/lefthook/releases/download/v${pkgver}/lefthook_${pkgver}_Linux_x86_64.gz")
 source_aarch64=("https://github.com/evilmartians/lefthook/releases/download/v${pkgver}/lefthook_${pkgver}_Linux_aarch64.gz")
-sha256sums_x86_64=('54bc20f77116c8274281034b281a74f82b1d72c70c6387eafa37f3fb28ce8954')
-sha256sums_aarch64=('b7ae4c789ed6defaf02cfc8cbc677f14d752564690b535030567a29ff7cdf67d')
+sha256sums_x86_64=('f750d88b24b6c2402b531da6a3f23df645fe4abefec2ddb1b897692a7abdf0a1')
+sha256sums_aarch64=('e20a5b99aabcccc33fa52d24e4d81bebc7f2ce243a1977847ca531fbd13e9a33')
 
 build() {
 	cd "${srcdir}"
