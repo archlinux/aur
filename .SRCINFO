@@ -1,4 +1,4 @@
-pkgbase = balatro-multiplayer-launcher
+pkgbase = balatro-multiplayer-launcher-AppImage
 	pkgdesc = Launcher for Balatro Multiplayer Mod (AppImage)
 	pkgver = 1.0.11
 	pkgrel = 1
@@ -28,4 +28,4 @@ pkgbase = balatro-multiplayer-launcher
 	sha256sums = 06add245663e80e88fa287ab096cc5934a5b1d68805416f18e5c73bf6f9dd45a
 	sha256sums = eb906bf72e79c5e481993617a76f33713cd22002bcc64d7fd956a70b4833ad59
 
-pkgname = balatro-multiplayer-launcher
+pkgname = balatro-multiplayer-launcher-AppImage

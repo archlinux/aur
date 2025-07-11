@@ -1,5 +1,6 @@
 # Maintainer: ricalditodepollo <richarclarinet at gmail dot com>
-pkgname=balatro-multiplayer-launcher
+_pkgname=balatro-multiplayer-launcher
+pkgname=balatro-multiplayer-launcher-AppImage
 pkgver=1.0.11
 pkgrel=1
 pkgdesc="Launcher for Balatro Multiplayer Mod (AppImage)"
@@ -45,18 +46,18 @@ prepare() {
 }
 
 package() {
-  install -dm755 "${pkgdir}/opt/${pkgname}"
+  install -dm755 "${pkgdir}/opt/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/share/pixmaps"
 
   install -m755 "${srcdir}/balatro-multiplayer-launcher.AppImage" \
-    "${pkgdir}/opt/${pkgname}/"
+    "${pkgdir}/opt/${_pkgname}/"
 
-  ln -s "/opt/${pkgname}/balatro-multiplayer-launcher.AppImage" \
-    "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${_pkgname}/balatro-multiplayer-launcher.AppImage" \
+    "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -m644 "${srcdir}/${pkgname}.desktop" \
+  install -m644 "${srcdir}/${_pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/"
 
   if [ -f "${srcdir}/squashfs-root/balatro-multiplayer-launcher.png" ]; then
