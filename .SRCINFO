@@ -1,15 +1,15 @@
 pkgbase = zluda
 	pkgdesc = A drop-in replacement for CUDA on non-NVIDIA GPUs
 	pkgver = 4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vosen/ZLUDA/
 	arch = x86_64
 	license = Apache-2.0 OR MIT
 	makedepends = git
+	makedepends = cargo
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
-	depends = cargo
 	depends = comgr
 	depends = gcc-libs
 	depends = glibc

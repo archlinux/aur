@@ -2,19 +2,19 @@
 
 pkgname=zluda
 pkgver=4
-pkgrel=2
+pkgrel=3
 pkgdesc='A drop-in replacement for CUDA on non-NVIDIA GPUs'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
 license=('Apache-2.0 OR MIT')
 depends=(
-    'cargo'
     'comgr'
     'gcc-libs'
     'glibc'
     'hip-runtime-amd')
 makedepends=(
     'git'
+    'cargo'
     'cmake'
     'ninja'
     'python')
@@ -41,14 +41,14 @@ build() {
     export CFLAGS+=' -ffat-lto-objects'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='target'
-    cargo build --release --frozen --manifest-path='ZLUDA/Cargo.toml'
+    cargo build --release --frozen --all-features --manifest-path='ZLUDA/Cargo.toml'
 }
 
 #check() {
 #    export CFLAGS+=' -ffat-lto-objects'
 #    export RUSTUP_TOOLCHAIN='stable'
 #    export CARGO_TARGET_DIR='target'
-#    cargo test --frozen --workspace --manifest-path='ZLUDA/Cargo.toml'
+#    cargo test --frozen --workspace --all-features --manifest-path='ZLUDA/Cargo.toml'
 #}
 
 package() {
