@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Clabaut <mathieu[at]clabaut.net>
 
 pkgname=prometheus-blackbox-exporter-bin
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP (binary, not built from source)."
 arch=('x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -57,19 +57,19 @@ sha256sums_x86_64=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588e
                    '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
                    '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
                    '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
-                   '4b1bb299c685ecff75d41e55e90aae8e02a658395fb14092c7f9c5c9d75016c7')
+                   '507a77ff411822fd6b543e8b8d9e00e1cc49408df465588cd746753bf05046e2')
 sha256sums_armv5h=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588ef857'
                    '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
                    '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
                    '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
-                   '79568cb413be5228d183cb5a20aa8f45a6edb89cc1212d1acbccd040d73665ef')
+                   '23d9a323de691410b7a46a35926c1937583ff2625139722de4f51fa700fc6fba')
 sha256sums_armv6h=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588ef857'
                    '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
                    '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
                    '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
-                   '4a721ad66b45536f566a48ce58273aaf4700bbb3e7f95a50fb09a760f168b90f')
+                   '368db6938f0a45ce44bddb3d50e1735d6bd14e668a36942c455b552e10d4c67e')
 sha256sums_armv7h=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588ef857'
                    '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
                    '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
                    '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
-                   '44ae9312c9b466e16ee1a87200e2d188e023de660c8129a974d4ccc0ba72aa6a')
+                   'd595bb19f4700028f8bb35cd08487b28dd4e3dee56d011dd29253f9e08537ba7')
