@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r67602.22885432ec4
+pkgver=r68713.495b3e84360d
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
