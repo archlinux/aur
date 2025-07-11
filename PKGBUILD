@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mupen64plus-video-parallel-highscore-git
-pkgver=r66.a6cd5b4
+pkgver=r67.9197cd8
 pkgrel=1
-pkgdesc="Parallel RDP plugin for Highscore port of Mupen64Plus"
+pkgdesc="ParaLLEl-RDP with mupen64plus-highscore modifications"
 arch=('x86_64')
-url="https://github.com/alice-mkh/parallel-rdp"
+url="https://github.com/highscore-emu/parallel-rdp"
 license=('MIT')
 depends=('mupen64plus-git')
 makedepends=(
@@ -12,11 +12,9 @@ makedepends=(
   'meson'
   'vulkan-headers'
 )
-checkdepends=()
-optdepends=()
 provides=("${pkgname%-git}" 'mupen64plus-video-parallel')
 conflicts=("${pkgname%-git}" 'mupen64plus-video-parallel')
-source=('git+https://github.com/alice-mkh/parallel-rdp.git')
+source=('git+https://github.com/highscore-emu/parallel-rdp.git')
 sha256sums=('SKIP')
 
 pkgver() {

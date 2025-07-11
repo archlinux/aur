@@ -1,8 +1,8 @@
 pkgbase = mupen64plus-video-parallel-highscore-git
-	pkgdesc = Parallel RDP plugin for Highscore port of Mupen64Plus
-	pkgver = r66.a6cd5b4
+	pkgdesc = ParaLLEl-RDP with mupen64plus-highscore modifications
+	pkgver = r67.9197cd8
 	pkgrel = 1
-	url = https://github.com/alice-mkh/parallel-rdp
+	url = https://github.com/highscore-emu/parallel-rdp
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = mupen64plus-video-parallel-highscore-git
 	provides = mupen64plus-video-parallel
 	conflicts = mupen64plus-video-parallel-highscore
 	conflicts = mupen64plus-video-parallel
-	source = git+https://github.com/alice-mkh/parallel-rdp.git
+	source = git+https://github.com/highscore-emu/parallel-rdp.git
 	sha256sums = SKIP
 
 pkgname = mupen64plus-video-parallel-highscore-git
