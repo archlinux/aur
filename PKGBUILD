@@ -1,7 +1,7 @@
 # Maintainer: Omansh Krishn <omansh@duck.com>
 
 pkgname=crave
-_pkgver=0.2-7127
+_pkgver=0.2-7136
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Crave CLI - Binary Version"
@@ -14,7 +14,7 @@ conflicts=('crave-bin')
 
 source=( crave-${_pkgver}::https://github.com/accupara/crave/releases/download/${_pkgver}/crave-${_pkgver}-linux-amd64.bin )
 
-sha256sums=('5d2b692a369e6b79467256bb204a4b19b0b8403d0b1e61662ff24e2ddf829b02')
+sha256sums=('b133ba96eee5cfc1b468287b9e2685f267bfc36693bdd044445fe0f9cfc95692')
 
 package() {
 
