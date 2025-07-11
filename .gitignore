@@ -1,10 +1,11 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !argos-translate.desktop
 !argos-translate.png
-!.nvchecker.toml
