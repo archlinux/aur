@@ -52,6 +52,7 @@ pkgbase = scribus-unstable
 	source = fix_build_with_poppler_25.02.0.patch
 	source = fix_build_with_qt_6.9.0.patch
 	source = fix_build_with_poppler_25.06.0.patch
+	source = fix_build_with_poppler_25.07.0.patch
 	validpgpkeys = 5086B8D68E70FDDF4C40045AEF7B95E7F60166DA
 	validpgpkeys = 757F5E9B13DD648887AD50092D47C099E782504E
 	validpgpkeys = 6558BE84D27273A438A151198BEA48118AEBEE64
@@ -60,5 +61,6 @@ pkgbase = scribus-unstable
 	sha256sums = 2d9bf20f0653b7ff498865215fa4bc5d9f8291e92e3c6d7e385b029e47212751
 	sha256sums = 05f1f22a6274089f20af88fe978335490eb4ed27b71eb8355dc596b60dc66833
 	sha256sums = 59fc92d5ffd0da221e71fd634b6af68be2365ccb382687c795dce0f8d6355c0d
+	sha256sums = 167769e255f8994d86094b45e9723145028f98dd2f0fa1a1ddd3a04beb982d2a
 
 pkgname = scribus-unstable
