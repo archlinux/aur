@@ -11,6 +11,7 @@ license=('MIT')
 depends=('python' 'python-starlette' 'python-pydantic' 'python-opentelemetry-api')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-asgi-lifespan' 'python-httpx' 'python-inline-snapshot' 'python-pytest')
+optdepends=('python-logfire: logfire')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('0bca45f675fb3354ae6cd0e6dd0be1d504ee135b8e802b4058fb3485521f61e9')
 
