@@ -1,11 +1,12 @@
-# Maintainer: Timothy Gu <timothygu99@gmail.com>
+# Maintainer: chengxuncc <chengxuncc@gmail.com>
+# Contributor: Timothy Gu <timothygu99@gmail.com>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: David Anderson <dave@natulte.net>
 
 pkgname=tailscale-git
 _pkgname=tailscale
 pkgver=1.85.198+t04e8d21b0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
 url="https://tailscale.com"
@@ -30,6 +31,7 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
+    chmod +x tool/go
     TOOLCHAIN="$PWD/../tailscale-go" tool/go mod download -x
 }
 
