@@ -9,6 +9,7 @@ pkgbase = beepalsa
 	depends = alsa-lib
 	depends = glibc
 	provides = beepalsa
+	provides = beep
 	conflicts = beep
 	source = beepalsa::git+https://github.com/Sound-Linux-More/beepalsa.git
 	sha512sums = SKIP
