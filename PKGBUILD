@@ -2,7 +2,7 @@
 
 pkgname=kdotool
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A xdotool clone for KDE Wayland'
 arch=('x86_64')
 url='https://github.com/jinliu/kdotool/'
@@ -10,8 +10,7 @@ license=('Apache-2.0')
 depends=(
     'dbus'
     'gcc-libs'
-    'glibc'
-    'kwin')
+    'glibc')
 makedepends=(
     'cargo')
 source=("https://github.com/jinliu/kdotool/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
