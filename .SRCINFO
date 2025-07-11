@@ -12,6 +12,7 @@ pkgbase = python-mcp
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-examples
 	checkdepends = python-inline-snapshot
+	checkdepends = python-dirty-equals
 	checkdepends = python-rich
 	checkdepends = python-typer
 	checkdepends = python-dotenv
