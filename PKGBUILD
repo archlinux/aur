@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo-git
 _pkgname=Folo
-pkgver=0.2.1.r276.g32f473c
-_electronversion=35
+pkgver=0.2.3.r27.gd3b32d3
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Use system-wide electron)"

@@ -1,6 +1,6 @@
 pkgbase = folo-git
 	pkgdesc = organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Use system-wide electron)
-	pkgver = 0.2.1.r276.g32f473c
+	pkgver = 0.2.3.r27.gd3b32d3
 	pkgrel = 1
 	url = https://folo.is/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = folo-git
 	makedepends = git
 	makedepends = pnpm
 	makedepends = python-setuptools
-	depends = electron35
-	provides = folo=0.2.1
+	depends = electron37
+	provides = folo=0.2.3
 	conflicts = folo
 	source = folo.git::git+https://github.com/RSSNext/folo.git
 	source = folo.sh
