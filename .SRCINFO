@@ -11,8 +11,6 @@ pkgbase = python-invocation-tree
 	makedepends = python-installer
 	depends = python
 	depends = python-graphviz
-	depends = python-numpy
-	depends = python-pandas
 	source = https://files.pythonhosted.org/packages/source/i/invocation_tree/invocation_tree-0.0.15.tar.gz
 	sha256sums = 680646a7b3e6abe63b580713d85eeef3176539bcd68a3b34f61ba8a7e7b12170
 
