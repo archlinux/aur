@@ -1,12 +1,12 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
-_tag=nym-binaries-v2024.14-crunch
+_tag=nym-binaries-v2025.12-dolcelatte
 pkgname=nym
-pkgver=2024.14
+pkgver=2025.12
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
-url='https://nymtech.net/'
+url='https://nym.com/'
 license=('Apache-2.0' 'MIT' 'CC0')
 depends=('openssl')
 makedepends=('git' 'cargo' 'libgit2')
