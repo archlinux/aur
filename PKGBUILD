@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=5.101.0.r0.gb8060fd
+pkgver=5.102.2.r0.g94125a2
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
@@ -49,4 +49,10 @@ package() {
 
   install -Dm644 "${srcdir}/packaging/hooks/pacman/update-qp-cache.hook" \
     "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
+
+  "${pkgdir}/usr/bin/${_binaryname}" --completions bash >"$srcdir/qp.bash"
+  "${pkgdir}/usr/bin/${_binaryname}" --completions zsh >"$srcdir/qp.zsh"
+
+  install -Dm644 "$srcdir/qp.bash" "$pkgdir/usr/share/bash-completion/completions/qp"
+  install -Dm644 "$srcdir/qp.zsh" "$pkgdir/usr/share/zsh/site-functions/_qp"
 }
