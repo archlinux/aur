@@ -9,7 +9,7 @@ arch=('any')
 license=('custom')
 url="https://github.com/liip/taxi-zebra"
 depends=(python-requests)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(
     "$_name-$pkgver.tar.gz::https://github.com/liip/taxi-zebra/archive/$pkgver.tar.gz"
     "https://raw.githubusercontent.com/liip/taxi/master/LICENSE"
