@@ -1,0 +1,16 @@
+pkgbase = haskell-repa
+	pkgdesc = haskell repa provides high performance, regular, multi-dimensional, shape polymorphic parallel arrays
+	pkgver = 3.4.2.0
+	pkgrel = 1
+	url = http://repa.ouroborus.net/
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-quickcheck
+	depends = haskell-vector
+	source = https://hackage.haskell.org/packages/archive/repa/3.4.2.0/repa-3.4.2.0.tar.gz
+	sha512sums = 6e9e5ac7c7cc38fea0290c00cbb389ef390f712e580edc29b5db025f32ea6be1a76d79bfd13eaf81618e79b1f5c6d42e2e70f8c454bfd69520578cc33e47c0fd
+
+pkgname = haskell-repa
