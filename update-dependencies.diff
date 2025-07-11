@@ -1,16 +1,16 @@
 diff --git a/package.json b/package.json
-index cd08e56ab..cbbd4020e 100644
+index 9f041af70..265e2024c 100644
 --- a/package.json
 +++ b/package.json
-@@ -108,6 +108,10 @@
+@@ -110,6 +110,10 @@
        "eslint-plugin-jsx-a11y": "^6.10.2",
        "eslint-plugin-react": "^7.37.5",
-       "eslint-plugin-react-hooks": "^4.6.2"
+       "eslint-plugin-react-hooks": "^5.2.0"
 -    }
 +    },
 +    "electron": "%%ELECTRON_VERSION%%",
 +    "electron-to-chromium": "latest",
 +    "ssh2": "1.16.0",
-+    "nan": "2.22.2"
++    "nan": "2.23.0"
    }
  }
