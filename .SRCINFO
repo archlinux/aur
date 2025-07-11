@@ -1,6 +1,6 @@
 pkgbase = opera-ffmpeg-codecs
 	pkgdesc = Add codecs to opera
-	pkgver = 135.0.7049.128.ffmpeg
+	pkgver = 135.0.7049.128.ffmpeg7.1.git
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/third_party/ffmpeg
 	install = on-opera-ffmpeg.install
