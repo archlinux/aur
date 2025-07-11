@@ -1,7 +1,7 @@
 pkgbase = chromium-ffmpeg-codecs
 	pkgdesc = Add codecs to Chromium M136- (non vendored libffmpeg.so)
 	pkgver = 7.1.1.m136_134
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	install = on-other-ffmpeg.install
 	arch = x86_64
@@ -30,6 +30,6 @@ pkgbase = chromium-ffmpeg-codecs
 	sha256sums = 0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c
 	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
 	sha256sums = 14db1605a740325737eb9ae029deb142d717a02c1926703b0d45f788c937d861
-	sha256sums = 2daae2c2a2865d6986a906160d0eb7a84568c5460c37870e77e81efff2af1b80
+	sha256sums = 0252a9cbf39bbbae2a27b1e929b62de0e69fa653ee691e9c310400fb02ea3598
 
 pkgname = chromium-ffmpeg-codecs
