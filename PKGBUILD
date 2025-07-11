@@ -4,8 +4,8 @@
 pkgname=plasma6-themes-qogir-git
 _gitname=Qogir-kde
 pkgver=r131.31e7bbf
-pkgrel=1
-pkgdesc='Qogir kde is a flat Design theme for KDE Plasma desktop'
+pkgrel=2
+pkgdesc='Qogir-KDE is a flat design theme for KDE Plasma desktop'
 arch=('any')
 url='https://github.com/vinceliuice/Qogir-kde'
 license=('GPL3')
