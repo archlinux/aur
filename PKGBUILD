@@ -1,7 +1,7 @@
 
 pkgname=chromium-ffmpeg-codecs-git
 pkgver=7.2.r119684.g670089304a
-pkgrel=5
+pkgrel=6
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ffmpeg)"
 arch=('x86_64')
@@ -20,8 +20,8 @@ prepare() {
   cd ffmpeg
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   # Use native opus decoder not in kAllowedAudioCodecs
-  # needs swresample
-  sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
+  sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
+  diff libavcodec/opus/dec.c{.bak,} || :
 }
 
 build() {
@@ -29,7 +29,7 @@ build() {
   # https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/
   # chromium/config/Chrome/linux/x64/ BUILD.gn
   ./configure \
-    --disable-{all,autodetect,doc,iconv,network,symver} \
+    --disable-{debug,all,autodetect,doc,iconv,network,symver} \
     --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
@@ -37,7 +37,7 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fno-math-errno -fno-signed-zeros ${LTOFLAGS}" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables}
 
