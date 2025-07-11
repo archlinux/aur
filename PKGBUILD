@@ -3,6 +3,7 @@ pkgbase=hyprupld
 pkgname=hyprupld-git
 pkgver=r0.g0000000
 pkgrel=1
+url="https://hyprupld.space"
 pkgdesc="A versatile screenshot and file upload utility for Linux and MacOS with multi-platform support"
 arch=('x86_64')
 url="https://github.com/PhoenixAceVFX/hyprupld"
