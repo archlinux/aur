@@ -1,4 +1,4 @@
-pkgbase = pyboinc
+pkgbase = pyboinc-git
 	pkgdesc = PyBOINC - a very basic python BOINC bridge
 	pkgver = 0.0.2
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = pyboinc
 	source = git+https://github.com/nielstron/pyboinc.git
 	sha1sums = SKIP
 
-pkgname = pyboinc
+pkgname = pyboinc-git
