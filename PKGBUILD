@@ -12,7 +12,7 @@ source=(https://problemkaputt.de/no\$gba.zip
         nocashgba-debugger
         nocashgba-debugger.desktop
         nocashgba-debugger.png)
-md5sums=('13bd8fdf3cf1de6273b047e090c91a5c'
+md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP')

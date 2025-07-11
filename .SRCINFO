@@ -1,7 +1,7 @@
 pkgbase = nocashgba-debugger
 	pkgdesc = Game Boy Advance / Nintendo DS debugger and emulator
 	pkgver = 3.06
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	makedepends = p7zip
@@ -12,7 +12,7 @@ pkgbase = nocashgba-debugger
 	source = nocashgba-debugger
 	source = nocashgba-debugger.desktop
 	source = nocashgba-debugger.png
-	md5sums = 13bd8fdf3cf1de6273b047e090c91a5c
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
