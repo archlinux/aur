@@ -1,0 +1,13 @@
+pkgbase = rapidraw-bin
+	pkgdesc = A beautiful, non-destructive, and GPU-accelerated RAW image editor built with performance in mind.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/CyberTimon/RapidRAW
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = onnxruntime
+	provides = rapidraw
+	source = https://github.com/CyberTimon/RapidRAW/releases/download/v1.2.2/RapidRAW_1.2.2_amd64.deb
+	sha256sums = d9697033d94b6c4c6a4c323b349b64c7aba985a5987aa8f11372e91deaefbb97
+
+pkgname = rapidraw-bin
