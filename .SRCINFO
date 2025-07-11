@@ -1,7 +1,7 @@
 pkgbase = python-scheduler-git
 	pkgdesc = Uses data from taskwarrior and timewarrior to indicate which task should be done next
 	pkgver = 0.0.1.rc1.r12.gd211d2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ftapajos/scheduler
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,6 +11,7 @@ pkgbase = python-scheduler-git
 	makedepends = python-wheel
 	depends = python-tasklib
 	depends = python-typer
+	depends = timew
 	source = git+https://github.com/ftapajos/scheduler.git
 	sha256sums = SKIP
 

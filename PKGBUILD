@@ -1,12 +1,12 @@
 _name=scheduler
 pkgname=python-$_name-git
 pkgver=0.0.1.rc1.r12.gd211d2c
-pkgrel=1
+pkgrel=2
 pkgdesc="Uses data from taskwarrior and timewarrior to indicate which task should be done next"
 arch=('any')
 url="https://github.com/ftapajos/scheduler"
 license=('GPL-3.0-or-later')
-depends=('python-tasklib' 'python-typer')
+depends=('python-tasklib' 'python-typer' 'timew')
 makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 source=(git+$url.git)
 sha256sums=('SKIP')
