@@ -1,6 +1,6 @@
 pkgbase = vim-pkgbuild-git
 	pkgdesc = Vim plugin to edit PKGBUILD files
-	pkgver = r13.5fc4106
+	pkgver = r15.02a240d
 	pkgrel = 1
 	url = https://github.com/m-pilia/vim-pkgbuild
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = vim-pkgbuild-git
 	md5sums = SKIP
 
 pkgname = vim-pkgbuild-git
-

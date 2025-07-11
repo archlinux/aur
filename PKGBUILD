@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 pkgname=vim-pkgbuild-git
 _pkgname=${pkgname%-git}
-pkgver=r13.5fc4106
+pkgver=r15.02a240d
 pkgrel=1
 pkgdesc="Vim plugin to edit PKGBUILD files"
 arch=('any')
@@ -26,4 +26,5 @@ package() {
   find ale_linters autoload doc ftdetect ftplugin indent plugin scripts \
     syntax template -type f -exec install -Dm644 '{}' \
     "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
