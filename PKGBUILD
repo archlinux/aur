@@ -2,9 +2,9 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.4.9
+pkgver=1.4.11
 _electron=electron36
-pkgrel=2
+pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('84696994dc5101120d5bf18945380823e6098db5bf3506a33eff1151555f830d'
+sha256sums=('0c2de9a9f2fe82c06b22711b0037641926e93816fd3f17bb942e148a70fd09f0'
     '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
@@ -41,6 +41,8 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/${_electron}"
     local electronVersion="$(<$electronDist/version)"
+    # electron@36.7.1 not found on npm,
+    electronVersion="${electronVersion%.*}.0"
     jq ".devDependencies.electron = \"$electronVersion\"" package.json |
         jq ".build.electronDist = \"$electronDist\"" |
         jq ".build.electronVersion = \"$electronVersion\"" |
