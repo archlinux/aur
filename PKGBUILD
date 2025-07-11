@@ -21,6 +21,6 @@ package() {
 	cd "$_pkgname-$pkgver" || return 1
 
 	install -D build/texk/web2c/luahbtex "$pkgdir/usr/bin/texlua"
-	install -Dm644 source/texk/kpathsea/texmf.cnf -t "$pkgdir/etc/web2c"
+	install -Dm644 source/texk/kpathsea/texmf.cnf -t "$pkgdir/etc/texmf/web2c"
 }
 # ex: nowrap
