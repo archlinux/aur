@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='qcheck'
 pkgname="ocaml-$_projectname"
-pkgver='0.25'
+pkgver='0.26'
 pkgrel='1'
 pkgdesc='QuickCheck inspired property-based testing for OCaml'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('ocaml>=4.08.0' 'ocaml-alcotest>=1.2.0' 'ocaml-ounit>=2.0.0' 'ocaml-ppx
 makedepends=('dune>=2.8.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('1f30fde8d55ba40f1467acb8f4c05cadaa01aa4159ea30e89f20918a6892cd4ddbded5a3f63c78d5f5405bf2f69d32c49577023da379a0e797a2a4f26d32ec6d')
+b2sums=('0e17717b665c78104f414bab6b509b945a42f8545d63d137a5047d4d62c4745a45cbf2ad6695989fadc19c8e792732c82bb5dc205e10be64c2296ea3081460ae')
 
 _sourcedirectory="$_projectname-$pkgver"
 
