@@ -1,0 +1,11 @@
+--- old/source/libs/lua53/lua53-src/src/luaconf.h	2023-04-29 22:20:25.000000000 +0800
++++ new/source/libs/lua53/lua53-src/src/luaconf.h	2025-07-12 01:29:25.618025192 +0800
+@@ -200,7 +200,7 @@
+ 
+ #else			/* }{ */
+ 
+-#define LUA_ROOT	"/usr/local/"
++#define LUA_ROOT	"/usr/"
+ #define LUA_LDIR	LUA_ROOT "share/lua/" LUA_VDIR "/"
+ #define LUA_CDIR	LUA_ROOT "lib/lua/" LUA_VDIR "/"
+ #define LUA_PATH_DEFAULT  \

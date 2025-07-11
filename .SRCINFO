@@ -9,6 +9,8 @@ pkgbase = texlua
 	arch = aarch64
 	license = GPL2
 	source = https://gitlab.lisn.upsaclay.fr/texlive/luatex/-/archive/1.17.0/luatex-1.17.0.zip
+	source = fix-LUA_ROOT.patch
 	sha256sums = 93c927256be8f6cd87f5d8745a1f8210513f52b19cfa269736f67626c43865ff
+	sha256sums = SKIP
 
 pkgname = texlua

@@ -3,4 +3,5 @@
 !/PKGBUILD
 !/.SRCINFO
 !/*.install
+!/*.patch
 !/nvchecker.toml

@@ -8,8 +8,15 @@ pkgdesc="The LuaTeX project's main objective is to provide an open and configura
 arch=(i686 x86_64 arm aarch64)
 url=https://www.luatex.org/
 license=(GPL2)
-source=("https://gitlab.lisn.upsaclay.fr/texlive/luatex/-/archive/$pkgver/luatex-$pkgver.zip")
-sha256sums=('93c927256be8f6cd87f5d8745a1f8210513f52b19cfa269736f67626c43865ff')
+source=("https://gitlab.lisn.upsaclay.fr/texlive/luatex/-/archive/$pkgver/luatex-$pkgver.zip"
+	fix-LUA_ROOT.patch)
+sha256sums=('93c927256be8f6cd87f5d8745a1f8210513f52b19cfa269736f67626c43865ff' SKIP)
+
+prepare() {
+	cd "$_pkgname-$pkgver" || return 1
+
+	patch -Np1 -i ../fix-LUA_ROOT.patch
+}
 
 build() {
 	cd "$_pkgname-$pkgver" || return 1
