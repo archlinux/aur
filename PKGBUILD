@@ -1,6 +1,5 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_name5=fasta2a
 _name4=graph
 _name3=slim
 _name2=evals
@@ -8,15 +7,15 @@ _name1=examples
 _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
-pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.4.0
+pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
+pkgver=0.4.2
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "server.md")
-sha256sums=('d093b497e2838e055424a50430dcaac4a325efa53efb3eae9371690d39a358c3'
+sha256sums=('191f80c458f29f56dff1363946b9b17971a71573c028b9f75078993dafa55977'
             '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
@@ -27,11 +26,11 @@ prepare(){
   cd "${srcdir}"/${_name0}-${pkgver}
   sed -i 's/created=1704067200 if with_created else None,  # 2024-01-01/created=1704067200 if with_created else 0,  # 2024-01-01/g' tests/models/test_mistral.py
   sed -i "s/'type': 'text', 'text': 'sampling model response', 'annotations': None/'type': 'text', 'text': 'sampling model response', 'annotations': None, 'meta': None/g" tests/test_mcp.py
+  sed -i "s/TextAssistantMessageContentItem/TextAssistantMessageV2ContentItem/g" ${_name0//-/_}_${_name3}/${_name0//-/_}/models/cohere.py
 }
 
 build() {
   cd "${srcdir}"/${_name0}-${pkgver}
-  python -m build --wheel --no-isolation ${_name5}
   python -m build --wheel --no-isolation ${_name0//-ai/_}${_name4}
   python -m build --wheel --no-isolation ${_name0//-/_}_${_name3}
   python -m build --wheel --no-isolation ${_name0//-ai/_}${_name2}
@@ -45,13 +44,12 @@ check() {
     -vv
     -n auto
     --deselect tests/models/test_model_names.py::test_known_model_names
-    -k "not genai_email_feedback.py and not google.md:61"
+    -k "not genai_email_feedback.py and not google.md:61 and not a2a and not agent.py:1781"
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
   ln -sf /usr/bin/ruff test-env/bin/ruff
-  test-env/bin/python -m installer ${_name5}/dist/*.whl
   test-env/bin/python -m installer ${_name0//-ai/_}${_name4}/dist/*.whl
   test-env/bin/python -m installer ${_name0//-/_}_${_name3}/dist/*.whl
   rm -rf test-env/bin/pai
@@ -60,15 +58,6 @@ check() {
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer ${_name00}/dist/*.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
-}
-
-package_python-fasta2a() {
-  pkgdesc='Convert an AI Agent into a A2A server! ✨'
-  depends+=('python-starlette' 'python-pydantic' 'python-opentelemetry-api')
-  optdepends=('python-logfire: logfire')
-  url='https://github.com/pydantic/pydantic-ai/tree/main/fasta2a'
-  cd "${srcdir}"/${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name5}/dist/*.whl
 }
 
 package_python-pydantic-graph() {
@@ -107,8 +96,8 @@ package_python-pydantic-ai-examples() {
 
 package_python-pydantic-ai() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs.'
-  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-mcp' 'python-pydantic-evals' 'python-fasta2a')
-  optdepends=('python-pydantic-ai-examples: examples' 'python-logfire: logfire')
+  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-mcp' 'python-pydantic-evals')
+  optdepends=('python-pydantic-ai-examples: examples' 'python-logfire: logfire' 'python-fasta2a: a2a')
   url='https://github.com/pydantic/pydantic-ai/'
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl

@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -22,19 +22,10 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.4.0::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.0
+	source = pydantic-ai-0.4.2::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.2
 	source = server.md
-	sha256sums = d093b497e2838e055424a50430dcaac4a325efa53efb3eae9371690d39a358c3
+	sha256sums = 191f80c458f29f56dff1363946b9b17971a71573c028b9f75078993dafa55977
 	sha256sums = 93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49
-
-pkgname = python-fasta2a
-	pkgdesc = Convert an AI Agent into a A2A server! ✨
-	url = https://github.com/pydantic/pydantic-ai/tree/main/fasta2a
-	depends = python
-	depends = python-starlette
-	depends = python-pydantic
-	depends = python-opentelemetry-api
-	optdepends = python-logfire: logfire
 
 pkgname = python-pydantic-graph
 	pkgdesc = Graph and state machine librarys.
@@ -133,9 +124,9 @@ pkgname = python-pydantic-ai
 	depends = python-argcomplete
 	depends = python-mcp
 	depends = python-pydantic-evals
-	depends = python-fasta2a
 	optdepends = python-pydantic-ai-examples: examples
 	optdepends = python-logfire: logfire
+	optdepends = python-fasta2a: a2a
 
 pkgname = python-clai
 	pkgdesc = PydanticAI CLI: command line interface to chat to LLMs.
