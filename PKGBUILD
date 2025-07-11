@@ -1,6 +1,6 @@
-# Maintainer: Bubblegum <bubblegum@arch-linux.pro>
-pkgname=hyprupld
-pkgver=d8160d8.r0.gd8160d8
+# Maintainer: AromaXR <aromaxr@arch-linux.pro>
+pkgname=hyprupld-git
+pkgver=r0.g0000000
 pkgrel=1
 pkgdesc="Hyprland screenshot and screen recording utility"
 arch=('x86_64')
@@ -8,17 +8,19 @@ url="https://github.com/PhoenixAceVFX/hyprupld"
 license=('GPL2')
 depends=('bash' 'fuse2' 'glib2' 'cairo' 'pango')
 makedepends=('git' 'wget' 'imagemagick' 'cmake')
+provides=('hyprupld')
+conflicts=('hyprupld')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/hyprupld"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
   printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/hyprupld"
   chmod +x compile.sh
   # Unset SOURCE_DATE_EPOCH to prevent conflict with mksquashfs
   unset SOURCE_DATE_EPOCH
@@ -26,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/hyprupld"
   
   # Create the necessary directories in the package
   install -dm755 "$pkgdir/usr/bin"
