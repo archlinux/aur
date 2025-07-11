@@ -2,9 +2,9 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=9871c255c0b8a29f0a0efc35493e9cccbabf7fce
+_commit=424bc7f56e59c09d70a40bb5ad4de6a006a4f3b1
 pkgname=penguins-eggs
-pkgver=25.7.7
+pkgver=25.7.10
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -74,16 +74,14 @@ package() {
  cp -r addons \
     assets \
     bin \
+    bootloaders \
     conf \
-    ipxe \
     dracut \
     dist \
     eui \
     mkinitcpio \
-    mkinitfs \
     node_modules \
     scripts \
-    syslinux \
     "$pkgdir/usr/lib/$pkgname/"
  
  # Fix permissions
