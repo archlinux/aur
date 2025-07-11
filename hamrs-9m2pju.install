@@ -1,0 +1,16 @@
+post_install() {
+  echo "###############################################################"
+  echo "#                HAMRS by 9M2PJU (Unofficial)                 #"
+  echo "###############################################################"
+  echo "# This package installs a portable AppImage of HAMRS Pro.     #"
+  echo "# It does NOT auto-update to the latest version automatically.#"
+  echo "#                                                             #"
+  echo "# Maintainer (9M2PJU) manually checks for updates and pushes  #"
+  echo "# new versions to AUR using an update script (update.sh).     #"
+  echo "#                                                             #"
+  echo "# If you need the latest version and it's not updated yet,    #"
+  echo "# clone this AUR repo and run ./update.sh manually.           #"
+  echo "#                                                             #"
+  echo "# Git URL: https://aur.archlinux.org/hamrs-9m2pju.git         #"
+  echo "###############################################################"
+}

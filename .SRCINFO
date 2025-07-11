@@ -1,0 +1,20 @@
+pkgbase = hamrs-9m2pju
+	pkgdesc = HAMRS Pro repackaged by 9M2PJU — Portable ham radio logger (AppImage version)
+	pkgver = 2.41.1
+	pkgrel = 1
+	url = https://hamrs.app/
+	install = hamrs-9m2pju.install
+	arch = x86_64
+	license = LicenseRef-custom:electron
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = hamradio-menus
+	provides = hamrs
+	conflicts = hamrs
+	noextract = hamrs-pro-2.41.1-linux-x86_64.AppImage
+	options = !strip
+	source = https://hamrs-dist.s3.amazonaws.com/hamrs-pro-2.41.1-linux-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = hamrs-9m2pju
