@@ -26,7 +26,7 @@ build() {
   cd chromium-ffmpeg
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
-  # diff libavcodec/opus/dec.c{.bak,} || :
+  diff libavcodec/opus/dec.c{.bak,} || :
   # See BUILD.gn and chromium/config/Chrome/linux/x64/
   ./configure \
     --disable-{debug,all,autodetect,doc,iconv,network,symver} \
@@ -37,7 +37,7 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fno-math-errno -fno-signed-zeros $LTOFLAGS" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
     --prefix="${srcdir}"/release
 
@@ -56,13 +56,13 @@ package(){
   install -Dm644 off-${_browser}-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
 # symlink
-source=(off-${_browser}-ffmpeg.hook on-${_browser}-ffmpeg.install)
-sha256sums=('2f118dfca4d3097432000b62f8247ef86afd66a9681c1dfa71adf86783587ed4'
-'4918ba2449b39274878268c5956b604992c504b89660469c93864e44de8c62aa')
-depends=(opera-ffmpeg-codecs)
-unset build makedepends
-package() {
-  echo Make sure $_browser have same major Chromium ver with opera at opera:about
-  install -d "$pkgdir/usr/lib/${_browser}/lib_extra"
-  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir/usr/lib/${_browser}/lib_extra"
-}
+#source=(off-${_browser}-ffmpeg.hook on-${_browser}-ffmpeg.install)
+#sha256sums=('2f118dfca4d3097432000b62f8247ef86afd66a9681c1dfa71adf86783587ed4'
+#'4918ba2449b39274878268c5956b604992c504b89660469c93864e44de8c62aa')
+#depends=(opera-ffmpeg-codecs)
+#unset build makedepends
+#package() {
+#  echo Make sure $_browser have same major Chromium ver with opera at opera:about
+#  install -d "$pkgdir/usr/lib/${_browser}/lib_extra"
+#  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir/usr/lib/${_browser}/lib_extra"
+#}
