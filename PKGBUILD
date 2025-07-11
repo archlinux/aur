@@ -4,17 +4,16 @@
 pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
 
-_vfreenginx=1.29.0
-_vlibressl=4.1.0
+epoch=1
+pkgver=1.29.0
+pkgrel=1
 _tests_commit=0b27b42aef05
 
-pkgver="${_vfreenginx}_${_vlibressl}"
-pkgrel=1
-pkgdesc='webserver in an effort to preserve free and open development of nginx (build with OpenBSD libressl)'
+pkgdesc='webserver in an effort to preserve free and open development of nginx (linked against libressl)'
 arch=(i686 x86_64)
 url=https://freenginx.org
-license=('BSD-2-Clause AND LicenseRef-LibreSSL')
-depends=(geoip libxcrypt pcre2 zlib glibc mailcap)
+license=(BSD-2-Clause)
+depends=(libressl geoip libxcrypt pcre2 zlib glibc mailcap)
 makedepends=(mercurial)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
 	      perl-cryptx memcached ffmpeg coreutils)
@@ -28,20 +27,16 @@ backup=(etc/nginx/fastcgi.conf
 	etc/nginx/win-utf
 	etc/logrotate.d/nginx)
 install=nginx.install
-source=("$url/download/freenginx-$_vfreenginx.tar.gz"{,.asc}
-	"https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$_vlibressl.tar.gz"{,.asc}
-	"hg+https://freenginx.org/hg/nginx-tests#revision=${_tests_commit}"
+source=("$url/download/freenginx-$pkgver.tar.gz"{,.asc}
+	"hg+https://freenginx.org/hg/nginx-tests#revision=$_tests_commit"
 	"service"
 	"logrotate")
 sha256sums=('c4b259afa560c34b37292e9e9c76cfd71ba24cfcff05c3f339d6a63a3f46801e'
             'SKIP'
-            '0f71c16bd34bdaaccdcb96a5d94a4921bfb612ec6e0eba7a80d8854eefd8bb61'
-            'SKIP'
             '5690168cdab62225ecee3345e30e7bc2475794253f4139569c611bd59884374c'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
-validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8  # Maxim Dounin <mdounin@mdounin.ru>
-	      A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5) # Brent Cook <busterb@gmail.com>
+validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8)  # Maxim Dounin <mdounin@mdounin.ru>
 
 _common_flags=(
 	--with-compat
@@ -81,21 +76,12 @@ _quic_flags=(
 
 prepare() {
 	# Backup pristine version of nginx source for -src package
-	test -d ${srcdir}/${pkgname}-src && rm -r ${srcdir}/${pkgname}-src
-	cp -r ${srcdir}/freenginx-$_vfreenginx ${srcdir}/nginx-src
+	test -d $srcdir/$pkgname-src && rm -r $srcdir/$pkgname-src
+	cp -r $srcdir/freenginx-$pkgver $srcdir/nginx-src
 }
 
 build() {
-	export CXXFLAGS="$CXXFLAGS -fPIC"
-	export CFLAGS="$CFLAGS -fPIC"
-	export LDFLAGS="$LDFLAGS"
-
-	if [[ $CC == "clang" ]]; then
-		_cc_opt="-flto $CPPFLAGS $CFLAGS"
-		_ld_opt="-flto -fuse-ld=lld $LDFLAGS"
-	fi
-
-	cd freenginx-$_vfreenginx
+	cd freenginx-$pkgver
 	./configure \
 		--prefix=/etc/nginx \
 		--conf-path=/etc/nginx/nginx.conf \
@@ -111,9 +97,8 @@ build() {
 		--http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
 		--http-scgi-temp-path=/var/lib/nginx/scgi \
 		--http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-		--with-openssl=${srcdir}/libressl-${_vlibressl} \
-		--with-cc-opt="${_cc_opt}" \
-		--with-ld-opt="${_ld_opt}" \
+		--with-cc-opt="-I/usr/include/libressl" \
+		--with-ld-opt="$LDFLAGS -L/usr/lib/libressl -Wl,-rpath=/usr/lib/libressl" \
 		${_common_flags[@]} \
 		${_quic_flags[@]}
 
@@ -122,14 +107,14 @@ build() {
 
 check() {
 	cd nginx-tests
-	TEST_NGINX_BINARY="$srcdir/freenginx-$_vfreenginx/objs/nginx" prove -j $(nproc) .
+	TEST_NGINX_BINARY="$srcdir/freenginx-$pkgver/objs/nginx" prove -j $(nproc) .
 }
 
 package_freenginx-libressl() {
 	provides=(nginx)
 	conflicts=(nginx)
 
-	cd freenginx-$_vfreenginx
+	cd freenginx-$pkgver
 	make DESTDIR="$pkgdir" install
 
 	sed -e 's|\<user\s\+\w\+;|user http;|g' \
@@ -162,12 +147,10 @@ package_freenginx-libressl() {
 		install -Dm644 contrib/vim/${i}/nginx.vim \
 			"${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
 	done
-	install -Dm644 "$srcdir"/libressl-${_vlibressl}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
-
 }
 
 package_freenginx-libressl-src() {
-	pkgdesc="Source code of freenginx $_vfreenginx, useful for building modules"
+	pkgdesc="Source code of freenginx $pkgver, useful for building modules"
 	arch=(any)
 	provides=(nginx-src)
 	conflicts=(nginx-src)
@@ -181,5 +164,4 @@ package_freenginx-libressl-src() {
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
 	install -d "$pkgdir"/usr/share/licenses/$pkgname
 	ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	install -Dm644 "$srcdir"/libressl-${_vlibressl}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
 }
