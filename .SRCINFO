@@ -1,6 +1,6 @@
 pkgbase = gnome-settings-daemon-git
 	pkgdesc = GNOME Settings Daemon
-	pkgver = 47.2
+	pkgver = 49.alpha.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = gnome-settings-daemon-git
 	depends = geocode-glib-2
 	depends = glib2
 	depends = glibc
-	depends = gnome-desktop
+	depends = gnome-desktop-4
 	depends = gsettings-desktop-schemas
 	depends = gtk3
 	depends = libcanberra-pulse

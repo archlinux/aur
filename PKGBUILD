@@ -2,7 +2,7 @@
 
 _pkgname=gnome-settings-daemon
 pkgname="${_pkgname}-git"
-pkgver=47.2
+pkgver=49.alpha.1
 pkgrel=1
 pkgdesc="GNOME Settings Daemon"
 _gnome_git="https://gitlab.gnome.org/GNOME"
@@ -27,7 +27,7 @@ depends=(
   geocode-glib-2
   glib2
   glibc
-  gnome-desktop
+  gnome-desktop-4
   gsettings-desktop-schemas
   gtk3
   libcanberra-pulse
