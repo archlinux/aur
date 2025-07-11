@@ -5,8 +5,8 @@
 pkgname='python-bake-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.2.4.post2.r0.gd401e2b
-pkgrel=2
+pkgver=1.3.0.r0.gf4b1c9f
+pkgrel=1
 pkgdesc='Mbake: Format and lint Makefiles according to best practices (development version)'
 arch=('any')
 url='https://github.com/EbodShojaei/bake'
