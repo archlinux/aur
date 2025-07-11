@@ -14,9 +14,9 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.11.w0.s3e94d12
+pkgver=10.12.w0.scaa47e6
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -38,7 +38,7 @@ _disabled_staging=(winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points m
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="06-30-2025-cad35b3c-3e94d124"
+_patchbase_tag="07-11-2025-9ecae7b5-caa47e6c"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -49,8 +49,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=cad35b3c8119f38bf2084a5a3613630cd7b2d45d
-_desired_staging_commit=3e94d12465c0ed9f6ce1bec742ae779a0932813c
+_desired_wine_commit=9ecae7b571f87dbef641601e66793dbcd5b40530
+_desired_staging_commit=caa47e6c731a1cd29eb5568c16d012242d6b5375
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
