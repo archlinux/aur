@@ -1,8 +1,8 @@
 pkgbase = gearsystem-highscore-git
 	pkgdesc = Highscore port of Gearsystem
-	pkgver = r1074.4feccb0
+	pkgver = r1291.ae7bebc
 	pkgrel = 1
-	url = https://github.com/alice-mkh/Gearsystem
+	url = https://github.com/highscore-emu/Gearsystem
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = gearsystem-highscore-git
 	depends = libhighscore-git
 	provides = gearsystem-highscore
 	conflicts = gearsystem-highscore
-	source = git+https://github.com/alice-mkh/Gearsystem.git
+	source = git+https://github.com/highscore-emu/Gearsystem.git
 	sha256sums = SKIP
 
 pkgname = gearsystem-highscore-git

@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gearsystem-highscore-git
-pkgver=r1074.4feccb0
+pkgver=r1291.ae7bebc
 pkgrel=1
 pkgdesc="Highscore port of Gearsystem"
 arch=('x86_64')
-url="https://github.com/alice-mkh/Gearsystem"
+url="https://github.com/highscore-emu/Gearsystem"
 license=('GPL-3.0-or-later')
 depends=('libhighscore-git')
 makedepends=(
@@ -13,7 +13,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/alice-mkh/Gearsystem.git')
+source=('git+https://github.com/highscore-emu/Gearsystem.git')
 sha256sums=('SKIP')
 
 pkgver() {
