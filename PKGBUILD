@@ -3,8 +3,8 @@
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=processing-bin
 _pkgname=Processing
-pkgver=4.4.4
-_subver=1304
+pkgver=4.4.5
+_subver=1305
 pkgrel=1
 arch=(
     'aarch64'
@@ -31,8 +31,8 @@ makedepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64-portable.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64-portable.zip")
-sha256sums_aarch64=('1edaea182058ef72b525bf3bbe88f36742840520cc90ca533f4516923d2e7c8f')
-sha256sums_x86_64=('8f5141d09c06bc68a3c58ec3bd0e707003a347ea96e742f83f1868b9c460bb6f')
+sha256sums_aarch64=('7ed8ebf365531257ce01abead1c541f8b259810c2d51c4b3c068ea62167afbd8')
+sha256sums_x86_64=('9619ead084ca575f205f572a782b7f9853ed3595da7ee2ca3a642963a9434ecb')
 prepare() {
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
