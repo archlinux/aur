@@ -1,8 +1,8 @@
 # Maintainer: ricalditodepollo <richarclarinet at gmail dot com>
 _pkgname=balatro-multiplayer-launcher
-pkgname=balatro-multiplayer-launcher-AppImage
+pkgname=balatro-multiplayer-launcher
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher for Balatro Multiplayer Mod (AppImage)"
 arch=('x86_64')
 url="https://github.com/Balatro-Multiplayer/Balatro-Multiplayer-Launcher/"
@@ -28,7 +28,7 @@ depends=(
 )
 
 source=(
-  "${url}releases/download/v${pkgver}/balatro-multiplayer-launcher.AppImage"
+  "${pkgname}-{pkgver}.AppImage::${url}releases/download/v${pkgver}/balatro-multiplayer-launcher.AppImage"
   "balatro-multiplayer-launcher.desktop"
 
 )
@@ -65,4 +65,3 @@ package() {
       "${pkgdir}/usr/share/pixmaps/"
   fi
 }
-
