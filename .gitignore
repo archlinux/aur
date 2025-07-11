@@ -1,4 +1,3 @@
-.gitignore
 beatmapexporter-bin-*-x86_64.pkg.tar.zst
 beatmapexporter-bin-debug-*-x86_64.pkg.tar.zst
 *.part
