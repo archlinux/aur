@@ -50,7 +50,11 @@ ignored_dep_prefix = [
     "src/third_party/accessibility_test_framework",
     "src/third_party/freetype-testing",
     "src/third_party/dawn/testing",
-    "src/third_party/dawn/third_party/webgpu-cts"
+    "src/third_party/dawn/third_party/webgpu-cts",
+    "src/third_party/webgpu-cts",
+    # Repo become private, not sure why
+    # last snapshot: https://web.archive.org/web/20250220152649/https://chromium.googlesource.com/chromium/wasm-tts-engine/
+    "src/third_party/wasm_tts_engine",
 ]
 
 ignored_dep_regex = [

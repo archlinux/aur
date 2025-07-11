@@ -62,8 +62,8 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/$_gcc_patches/chromium-patches-$_gcc_patches.tar.bz2
         # Chromium
-        chromium-136-drop-nodejs-ver-check.patch
-        compiler-rt-adjust-paths.patch # deleteme
+        compiler-rt-adjust-paths.patch
+	chromium-138-nodejs-version-check.patch
         disable-clang-fextend-variable-liveness.patch
         pdfium-fix-build-with-system-libpng.patch
         # Electron
@@ -190,14 +190,12 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_vulkan-utility-libraries_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Utility-Libraries.git#commit=49ac28931f28bffaa3cd73dc4ad997284d574962
         chromium-mirror_third_party_vulkan-validation-layers_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-ValidationLayers.git#commit=f7ceb1d01a292846db77ec87786be84d6fd568d9
         chromium-mirror_third_party_vulkan_memory_allocator::git+https://chromium.googlesource.com/external/github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#commit=56300b29fbfcc693ee6609ddad3fdd5b7a449a21
-        chromium-mirror_third_party_wasm_tts_engine_src::git+https://chromium.googlesource.com/chromium/wasm-tts-engine.git#commit=352880bb49e2410707543c252ef6b94a21b0f47f
         chromium-mirror_third_party_wayland_src::git+https://chromium.googlesource.com/external/anongit.freedesktop.org/git/wayland/wayland.git#commit=a156431ea66fe67d69c9fbba8a8ad34dabbab81c
         chromium-mirror_third_party_wayland-protocols_src::git+https://chromium.googlesource.com/external/anongit.freedesktop.org/git/wayland/wayland-protocols.git#commit=7d5a3a8b494ae44cd9651f9505e88a250082765e
         chromium-mirror_third_party_wayland-protocols_kde::git+https://chromium.googlesource.com/external/github.com/KDE/plasma-wayland-protocols.git#commit=0b07950714b3a36c9b9f71fc025fc7783e82926e
         chromium-mirror_third_party_wayland-protocols_gtk::git+https://chromium.googlesource.com/external/github.com/GNOME/gtk.git#commit=40ebed3a03aef096addc0af09fec4ec529d882a0
         chromium-mirror_third_party_webdriver_pylib::git+https://chromium.googlesource.com/external/github.com/SeleniumHQ/selenium/py.git#commit=fc5e7e70c098bfb189a9a74746809ad3c5c34e04
         chromium-mirror_third_party_webgl_src::git+https://chromium.googlesource.com/external/khronosgroup/webgl.git#commit=c01b768bce4a143e152c1870b6ba99ea6267d2b0
-        chromium-mirror_third_party_webgpu-cts_src::git+https://chromium.googlesource.com/external/github.com/gpuweb/cts.git#commit=905c7cbfeaac1cf3feb4c6056dd6f3dbaa06b074
         chromium-mirror_third_party_webpagereplay::git+https://chromium.googlesource.com/webpagereplay.git#commit=18172a359f6dab8e3f70b6c5c8c7c55d3e97537a
         chromium-mirror_third_party_webrtc::git+https://webrtc.googlesource.com/src.git#commit=e4445e46a910eb407571ec0b0b8b7043562678cf
         chromium-mirror_third_party_wuffs_src::git+https://skia.googlesource.com/external/github.com/google/wuffs-mirror-release-c.git#commit=e3f919ccfe3ef542cfc983a82146070258fb57f8
@@ -231,8 +229,8 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         )
 sha256sums=('7e01be024b2a068b41028776d14eef98e4c9ccb0aef78fd226677c9c0c0023ee'
             '6f5067e5f87ac0591295fc3ec0f7e722d0f5eb94ade2fb3e73ae8abcbb674f8a'
-            '32f0080282fc0b2795a342bf17fcb3db4028c5d02619c7e304222230ba99d5fe'
-            'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
+            '750fa28c0cbe464a45bab5a1021434e296ad83fef78b927eaec0f82df3aac26c'
+            '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
             'de3222b13d3a49628a00fd74acae633912b830f78c2de452d3bdff3d0e42026d'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
@@ -240,7 +238,7 @@ sha256sums=('7e01be024b2a068b41028776d14eef98e4c9ccb0aef78fd226677c9c0c0023ee'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '991e54f4490cdbb5e52c9a4a4f6e0e32f2fc95979f18a4736016d065da229c2e'
-            'b0a024a71833bc1c96adbc796d31da24bb4a3e6d189e031fa8ac23d918f33ea0'
+            '0e75444d1620a932294375f3372100334e2aadfec9cc2e6a1c7c8f1f0c2f252b'
             'c589d5a274f44dc62c5f14e392723b38072c9d52035f323a6329b8c182986c93'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             '12df8c956282bdbf0a3af78f8b0b476b943d630315a0710e88435a692e3624ee'
@@ -357,14 +355,12 @@ sha256sums=('7e01be024b2a068b41028776d14eef98e4c9ccb0aef78fd226677c9c0c0023ee'
             '8dbffb4595601de3c4ff7b67cca0851c9efe9e24bce29eb1a2358fa9c12be22f'
             'c12fc6b5716a565f196981ffe0be2bf802739d4796c3d9c81ff516d4015438f5'
             '913fc3a85ae676025bafe63880c6413ffafe42495a04a52527ee914ee9ba3ae5'
-            '4f8054f22d1edc6c5f42b9773b12d3631963797da8c0d480dfa3bcc4d933e0cc'
             '8ee0bade4127e082dc1ae86f0068aa32ea0fbce26069ed2d9dbdef324e1bb980'
             '900f9249e65a3bf0189f3e32c6a2d84bd88b9b3a7d7cfba8c12c1be0d78dd31f'
             '1da28304d237ba934e76394107e46fed0e4120fd2b257f1c667c2d11b52d959b'
             'a9a8839d08232091a0cd381f51380a0a6ebe841f5a8e50a6047aae7b8e34c681'
             '02696a90c7831e3fa903df105573c5f10f4934602fb0e90c846fb44213c40b27'
             '91ef8477f7d670d88f4d8bdeca47aa3b661f6a359fe8ac973bcdf2315affdcda'
-            'a2b140a2fa075a9b72be68292ec815cb3f6d63518fb5b40c253876ac8123ba07'
             'd73161cc1b733ab88be1d2a0ca0b9b15ef3cc4f636e885af30b22d6c896276a6'
             '461b275d6177f04153dd6522f836a997527d7c4b10d41e823a37be54f2fe8e2f'
             '0c9106a2bef658f02b2312d081faad6ba8a72bbb5b4ee1cae7d0a95e4ef53f8f'
@@ -489,10 +485,10 @@ prepare() {
   # patch -d third_party/pdfium -Np1 < ../pdfium-fix-build-with-system-libpng.patch
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-136-drop-nodejs-ver-check.patch
+  patch -Np1 -i ../chromium-138-nodejs-version-check.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
-  # patch -Np1 -i ../compiler-rt-adjust-paths.patch
+  patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../chromium-patches-*/chromium-138-compiler.patch
