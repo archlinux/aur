@@ -1,0 +1,20 @@
+pkgbase = jwt-service-rs-git
+	pkgdesc = JWT service for Element Call
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/JadedBlueEyes/jwt-service-rs
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = jwt-service-rs
+	conflicts = jwt-service-rs
+	options = !lto
+	source = git+https://github.com/JadedBlueEyes/jwt-service-rs.git
+	md5sums = SKIP
+
+pkgname = jwt-service-rs-git
