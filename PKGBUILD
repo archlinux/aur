@@ -2,7 +2,7 @@
 
 pkgbase=ddns-watchdog
 pkgname=("${pkgbase}-server" "${pkgbase}-client")
-pkgver=1.5.11
+pkgver=1.5.12
 pkgrel=1
 pkgdesc='简单快速的可常驻的 Dynamic DNS 客户端，自动更新域名解析记录值'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ replaces=('watchdog-ddns')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service")
-sha256sums=('8cd5ab001391dee78e11327f6b668fd1fb1f803204a94dc596078890e63db5a7'
+sha256sums=('fb348391c97d3cbd40eaac4035824d1b5c73107646e292f815c274d9a32c759c'
             '61a4ffbfa76731c06b4c1744f3b5eb00f39009af0913f135670e1f7cc05aa9fe'
             '2ba36324b6b433d0256e097f990386d43b638358835d7cbbcca5e00cb890b1dc')
 
