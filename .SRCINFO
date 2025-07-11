@@ -1,21 +1,21 @@
 pkgbase = hayase-bin
 	pkgdesc = Formerly Miru. Torrent streaming made simple. Watch anime torrents, real-time with no waiting for downloads.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.4.12
+	pkgver = 6.4.13
 	pkgrel = 1
 	url = https://hayase.watch/
 	arch = x86_64
 	license = BUSL-1.1
 	depends = electron32
 	depends = python
-	provides = hayase=6.4.12
+	provides = hayase=6.4.13
 	provides = miru
 	conflicts = hayase
 	options = !emptydirs
 	options = !strip
-	source = hayase-6.4.12.deb::https://github.com/hayase-app/ui/releases/download/v6.4.12/linux-hayase-6.4.12-linux.deb
-	source = LICENSE-6.4.12::https://raw.githubusercontent.com/hayase-app/ui/v6.4.12/LICENSE
+	source = hayase-6.4.13.deb::https://github.com/hayase-app/ui/releases/download/v6.4.13/linux-hayase-6.4.13-linux.deb
+	source = LICENSE-6.4.13::https://raw.githubusercontent.com/hayase-app/ui/v6.4.13/LICENSE
 	source = hayase.sh
-	sha256sums = c16a05e859cffe1658877989b74240ede2f6ba59c77dd217abb73c283c7e3e7e
+	sha256sums = 9015c7267b7fcea09dddeaa281f07e8f8808e921a76378eac03d9bb6fdf3ed58
 	sha256sums = 2ce1355094b25dd0c0d777b33d610dbe669e2e3a13659637d41e9a096ab65e9b
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
