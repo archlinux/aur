@@ -1,6 +1,6 @@
 pkgbase = forgejo-runner
 	pkgdesc = Continous integration for Forgejo
-	pkgver = 6.4.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://code.forgejo.org/forgejo/runner
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = forgejo-runner
 	optdepends = docker
 	provides = forgejo-runner
 	backup = etc/forgejo-runner/forgejo-runner.yaml
-	source = forgejo-runner::git+https://code.forgejo.org/forgejo/runner#tag=v6.4.0
+	source = forgejo-runner::git+https://code.forgejo.org/forgejo/runner#tag=v7.0.0
 	source = forgejo-runner.service
-	sha256sums = SKIP
+	sha256sums = e067adfeb1425787faac6d619daf191e92db20f76001f2bddf38e3ab6019af5e
 	sha256sums = 693925cda2ad678f5e03d3196468f1304db42d4d74df3376979d8f35a0fb86d0
 
 pkgname = forgejo-runner
