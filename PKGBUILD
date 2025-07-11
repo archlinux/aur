@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.16.1
+pkgver=5.16.3
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -19,11 +19,11 @@ depends=(
   ada
   ffmpeg
   hunspell
-  jemalloc
   kcoreaddons
   libavif
   libdispatch
   libheif
+  libjxl
   libpipewire
   libvpx
   libxcomposite
@@ -52,6 +52,7 @@ makedepends=(
   glib2-devel
   gobject-introspection
   gperf # for tde2e
+  jemalloc # gio error when absent
   libtg_owt
   microsoft-gsl
   mm-common
@@ -81,7 +82,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  'fed8bab5e318719c5e0dd2e6d6fe48c6e26b2452727771d474feed1246c0267e'
+  '45aec3b204dbedac43cc5b8b5d7fa8663a92292c5da31f663a969c3f1bb2cf3f'
   'SKIP'
 )
 
@@ -125,7 +126,7 @@ build() {
 
 package() {
   if [[ "${_use_sodeps::1}" == "t" ]]; then
-    depends+=(
+    eval "depends+=(
       'libavcodec.so'
       'libavfilter.so'
       'libavformat.so'
@@ -135,7 +136,6 @@ package() {
       'libglib-2.0.so'
       'libgobject-2.0.so'
       'libheif.so'
-      'libjemalloc.so'
       'libjpeg.so'
       'libjxl.so'
       'libjxl_threads.so'
@@ -152,7 +152,7 @@ package() {
       'libxkbcommon.so'
       'libxxhash.so'
       'libz.so'
-    )
+    )"
   fi
 
   DESTDIR="$pkgdir" cmake --install build
@@ -177,7 +177,7 @@ Name=org.telegram.desktop
 Exec=/usr/bin/$_pkgname
 END
 
-  # .desktop
+  # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Name=${_pkgname^}
