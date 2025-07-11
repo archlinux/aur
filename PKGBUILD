@@ -1,7 +1,7 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.info>
 
 pkgname=shm-modbus-gui
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="QT GUI (PySide6) for shm-modbus"
 url="https://github.com/SHMModbus/shm_modbus_gui"
