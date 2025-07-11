@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=prosystem-highscore-git
-pkgver=1.5.2.r71.ga2c3e56
+pkgver=r143.77a6764
 pkgrel=1
-pkgdesc="Highscore port of ProSystem JG"
+pkgdesc="Highscore port of ProSystem-JG"
 arch=('x86_64')
-url="https://gitlab.com/alice-m/prosystem"
+url="https://gitlab.com/highscore-emu/prosystem"
 license=('GPL-2.0-or-later')
 depends=('libhighscore-git')
 makedepends=(
@@ -13,12 +13,12 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.com/alice-m/prosystem.git')
+source=('git+https://gitlab.com/highscore-emu/prosystem.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd prosystem
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
