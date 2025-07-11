@@ -1,3 +1,4 @@
 scheduler/
 src/
+pkg/
 *.zst

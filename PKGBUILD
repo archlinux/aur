@@ -1,6 +1,6 @@
 _name=scheduler
-pkgname=$_name-git
-pkgver=0.0.1.rc1.r0.g7208802
+pkgname=python-$_name-git
+pkgver=0.0.1.rc1.r12.gd211d2c
 pkgrel=1
 pkgdesc="Uses data from taskwarrior and timewarrior to indicate which task should be done next"
 arch=('any')
