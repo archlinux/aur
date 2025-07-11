@@ -1,6 +1,6 @@
 pkgbase = lintian
 	pkgdesc = dissects Debian packages and tries to find bugs and policy violations
-	pkgver = 2.119.0
+	pkgver = 2.122.0
 	pkgrel = 1
 	url = https://lintian.debian.org/
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = lintian
 	depends = perl
 	depends = perl-aptpkg
 	depends = perl-berkeleydb
+	depends = perl-class-xsaccessor
 	depends = perl-config-tiny
 	depends = perl-data-dpath
 	depends = perl-data-validate-domain
@@ -49,7 +50,7 @@ pkgbase = lintian
 	depends = perl-yaml-libyaml
 	options = !emptydirs
 	options = purge
-	source = https://salsa.debian.org/lintian/lintian/-/archive/2.119.0/lintian-2.119.0.tar.gz
-	sha512sums = 12869520c06dbe399189ad4c17dd93bae7b842a265844de893a0436c69f9500f10495ef4df3566b04e86802898d70136218df7ecb85fc72961c8f1c99b1d6a72
+	source = https://salsa.debian.org/lintian/lintian/-/archive/2.122.0/lintian-2.122.0.tar.gz
+	sha512sums = 85188241b5d0f9e4bd27b7b4662e9bf570e8b00b1caf4b43618537ec49a7ea82ac4eed3524bf8dfc7b081ac870eab80a6489fbf59408e76253a5495d56a9f55c
 
 pkgname = lintian

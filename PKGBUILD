@@ -1,6 +1,6 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=lintian
-pkgver=2.119.0
+pkgver=2.122.0
 pkgrel=1
 pkgdesc="dissects Debian packages and tries to find bugs and policy violations"
 arch=(any)
@@ -11,6 +11,7 @@ depends=(
 	perl
 	perl-aptpkg
 	perl-berkeleydb
+	perl-class-xsaccessor
 	perl-config-tiny
 	perl-data-dpath
 	perl-data-validate-domain
@@ -73,7 +74,7 @@ makedepends=(
 optdepends=()
 options=('!emptydirs' purge)
 source=("https://salsa.debian.org/lintian/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('12869520c06dbe399189ad4c17dd93bae7b842a265844de893a0436c69f9500f10495ef4df3566b04e86802898d70136218df7ecb85fc72961c8f1c99b1d6a72')
+sha512sums=('85188241b5d0f9e4bd27b7b4662e9bf570e8b00b1caf4b43618537ec49a7ea82ac4eed3524bf8dfc7b081ac870eab80a6489fbf59408e76253a5495d56a9f55c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
