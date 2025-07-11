@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=desmume-highscore-git
-pkgver=r6958.33a43b5
+pkgver=r7050.2930679
 pkgrel=1
 pkgdesc="Highscore port of DeSmuME"
 arch=('x86_64')
-url="https://github.com/alice-mkh/desmume"
+url="https://github.com/highscore-emu/desmume"
 license=('GPL-2.0-or-later')
 depends=(
   'libhighscore-git'
@@ -17,7 +17,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/alice-mkh/desmume.git')
+source=('git+https://github.com/highscore-emu/desmume.git')
 sha256sums=('SKIP')
 
 pkgver() {
