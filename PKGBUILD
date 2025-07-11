@@ -2,20 +2,20 @@
 _pkgname=f3d
 _pkgown=f3d-app
 pkgname=${_pkgname}-bin
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 epoch=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_pkgown/$_pkgname"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('libglvnd' 'libxcb' 'libxau' 'libxdmcp')
 provides=('f3d')
 conflicts=('f3d')
-backup=("etc/$_pkgname/config.json")
+backup=("etc/$_pkgname/")
 _pkgsrc=F3D-$pkgver-Linux-$CARCH-raytracing
 source=("$url/releases/download/v$pkgver/$_pkgsrc.tar.xz")
-sha256sums=('7533608c8af0ce9e416692fd14461b081ae2f4e5b0834bf056169fce5de5ed13')
+sha256sums=('6ad2dec9545ea93e1bf457363dfa5b9c4293e4af37abe23b142f433484ada56c')
 
 package() {
 	install -dm755 "${pkgdir}"/opt/
