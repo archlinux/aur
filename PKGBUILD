@@ -21,6 +21,7 @@ depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch sed) # base-devel
 optdepends=({nwjs,slimjet}': replace ffmpeg')
+conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 
 prepare() {
