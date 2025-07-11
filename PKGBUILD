@@ -3,15 +3,16 @@
 # Contributor: Swift Geek
 pkgname=bluez-git
 _pkgname=bluez
-pkgver=5.79.r98.g628c15a5b
+pkgver=5.83.r132.g806dd732f
 pkgrel=1
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
 
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64')
-license=('GPL2')
-depends=('libical' 'libdbus' 'glib2' 'alsa-lib' 'ell' 'json-c')
+license=('GPL-2.0-only')
+depends=('libical' 'libdbus' 'glib2' 'alsa-lib' 'ell' 'json-c' 'perl' 'bash' 'systemd-libs' 'readline'
+         'glibc')
 optdepends=('cups: CUPS backend')
 makedepends=('git' 'python-docutils')
 conflicts=($_pkgname
@@ -21,15 +22,16 @@ conflicts=($_pkgname
 	   $_pkgname-hid2hci
 	   $_pkgname-plugins
 	   $_pkgname-hcidump
-           'obexd-client'
-	   'obexd-server')
+	   $_pkgname-obex)
 provides=(libbluetooth.so
 	  $_pkgname=${pkgver%%.r*}-${pkgrel}
-          $_pkgname-utils=${pkgver%%.r*}-${pkgrel}
+	  $_pkgname-utils=${pkgver%%.r*}-${pkgrel}
 	  $_pkgname-libs=${pkgver%%.r*}-${pkgrel}
 	  $_pkgname-cups=${pkgver%%.r*}-${pkgrel}
 	  $_pkgname-hid2hci=${pkgver%%.r*}-${pkgrel}
-	  $_pkgname-plugins=${pkgver%%.r*}-${pkgrel})
+	  $_pkgname-plugins=${pkgver%%.r*}-${pkgrel}
+	  $_pkgname-hcidump=${pkgver%%.r*}-${pkgrel}
+	  $_pkgname-obex=${pkgver%%.r*}-${pkgrel})
 backup=('etc/bluetooth/main.conf')
 source=("$pkgname::git://git.kernel.org/pub/scm/bluetooth/bluez.git"
 	bluetooth.modprobe)

@@ -1,12 +1,12 @@
 pkgbase = bluez-git
 	pkgdesc = Libraries and tools for the Bluetooth protocol stack
-	pkgver = 5.79.r98.g628c15a5b
+	pkgver = 5.83.r132.g806dd732f
 	pkgrel = 1
 	epoch = 1
 	url = http://www.bluez.org/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = python-docutils
 	depends = libical
@@ -15,14 +15,21 @@ pkgbase = bluez-git
 	depends = alsa-lib
 	depends = ell
 	depends = json-c
+	depends = perl
+	depends = bash
+	depends = systemd-libs
+	depends = readline
+	depends = glibc
 	optdepends = cups: CUPS backend
 	provides = libbluetooth.so
-	provides = bluez=5.79-1
-	provides = bluez-utils=5.79-1
-	provides = bluez-libs=5.79-1
-	provides = bluez-cups=5.79-1
-	provides = bluez-hid2hci=5.79-1
-	provides = bluez-plugins=5.79-1
+	provides = bluez=5.83-1
+	provides = bluez-utils=5.83-1
+	provides = bluez-libs=5.83-1
+	provides = bluez-cups=5.83-1
+	provides = bluez-hid2hci=5.83-1
+	provides = bluez-plugins=5.83-1
+	provides = bluez-hcidump=5.83-1
+	provides = bluez-obex=5.83-1
 	conflicts = bluez
 	conflicts = bluez-utils
 	conflicts = bluez-libs
@@ -30,8 +37,7 @@ pkgbase = bluez-git
 	conflicts = bluez-hid2hci
 	conflicts = bluez-plugins
 	conflicts = bluez-hcidump
-	conflicts = obexd-client
-	conflicts = obexd-server
+	conflicts = bluez-obex
 	backup = etc/bluetooth/main.conf
 	source = bluez-git::git://git.kernel.org/pub/scm/bluetooth/bluez.git
 	source = bluetooth.modprobe
