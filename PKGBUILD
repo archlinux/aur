@@ -4,7 +4,7 @@
 _name=twuewand-git
 pkgbase="${_name}"
 pkgname=("${pkgbase}")
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="twuewand - A TrueRand algorithm for generating entropy"
 arch=('any')
@@ -17,7 +17,7 @@ sha1sums=('SKIP')
 conflicts=('twuewand-git')
 provides=('twuewand-git')
 
-makedepends=(git python-pycryptodome python-build python-installer python-wheel)
+makedepends=(git python-build python-installer python-wheel)
 
 build() {
     cd "$_name"

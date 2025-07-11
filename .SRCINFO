@@ -1,15 +1,15 @@
 pkgbase = twuewand-git
-pkgdesc = twuewand - A TrueRand algorithm for generating entropy
-pkgver = 0.0.3
-pkgrel = 1
-url = https://github.com/rfinnie/twuewand.git
-arch = any
-license = MPL-2.0
-makedepends = python-pycryptodome
-makedepends = python-build
-makedepends = python-installer
-makedepends = python-wheel
-source = git+https://github.com/rfinnie/twuewand.git
-sha1sums = SKIP
+  pkgdesc = twuewand - A TrueRand algorithm for generating entropy
+  pkgver = 0.0.4
+  pkgrel = 1
+  url = https://github.com/rfinnie/twuewand.git
+  arch = any
+  license = MPL-2.0
+  makedepends = python-pycryptodome
+  makedepends = python-build
+  makedepends = python-installer
+  makedepends = python-wheel
+  source = git+https://github.com/rfinnie/twuewand.git
+  sha1sums = SKIP
 
 pkgname = twuewand-git
