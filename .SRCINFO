@@ -1,4 +1,4 @@
-pkgbase = simple-stateful-firewall
+pkgbase = simple-stateful-firewall-git
 	pkgdesc = Simple Stateful Firewall. For personal computers or you can change this by yourself
 	pkgver = 0.0.33
 	pkgrel = 1
@@ -8,11 +8,11 @@ pkgbase = simple-stateful-firewall
 	makedepends = git
 	depends = iptables
 	optdepends = opensnitch: A GNU/Linux application firewall
-	provides = simple-stateful-firewall
-	conflicts = simple-stateful-firewall
+	provides = simple-stateful-firewall-git
+	conflicts = simple-stateful-firewall-git
 	options = !strip
 	options = !emptydirs
 	source = https://github.com/asciiscry3r/simple-stateful-firewall
 	sha256sums = SKIP
 
-pkgname = simple-stateful-firewall
+pkgname = simple-stateful-firewall-git
