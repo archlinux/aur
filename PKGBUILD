@@ -2,7 +2,7 @@
 
 _pkgname="fvm"
 pkgname="$_pkgname-git"
-pkgver=3.1.4.r2.g3cad095
+pkgver=3.2.1.r83.g83149fa
 pkgrel=1
 pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions"
 url="https://github.com/leoafarias/fvm"
@@ -17,7 +17,7 @@ makedepends=(
   'dart'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname=${pkgver%%.g*}")
 conflicts=("$_pkgname")
 
 options=(!strip !debug)
@@ -34,8 +34,10 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
+  dart --disable-analytics
   dart pub upgrade
 }
+
 build() {
   cd "$_pkgsrc"
   dart compile exe -o bin/fvm bin/main.dart
