@@ -1,11 +1,11 @@
 pkgbase = skeema-bin
 	pkgdesc = Declarative pure-SQL schema management for MySQL and MariaDB
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://www.skeema.io/
 	arch = x86_64
 	license = Apache
-	source = https://github.com/skeema/skeema/releases/download/v1.12.2/skeema_amd64.deb
-	sha256sums = abf66b9fcd76a6141e6d5a5eb3b7ef7fab63c8b69d900e38631025bc96137699
+	source = https://github.com/skeema/skeema/releases/download/v1.12.3/skeema_amd64.deb
+	sha256sums = 51cfd52b0b0ac3f950bc7f13edf99232e6efbee9b01c110f5daa4ad91ef3c093
 
 pkgname = skeema-bin
