@@ -1,3 +1,4 @@
 [python-textstat]
 source = "git"
 git = "https://github.com/textstat/textstat.git"
+exclude_regex = ".*(alpha|beta|rc).*"
