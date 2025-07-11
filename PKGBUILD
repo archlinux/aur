@@ -4,7 +4,7 @@
 pkgname=plasma6-themes-qogir-git
 _gitname=Qogir-kde
 pkgver=r131.31e7bbf
-pkgrel=2
+pkgrel=3
 pkgdesc='Qogir-KDE is a flat design theme for KDE Plasma desktop'
 arch=('any')
 url='https://github.com/vinceliuice/Qogir-kde'
@@ -16,7 +16,7 @@ optdepends=('plasma-desktop: Plasma desktop'
 	    'sddm: SDDM theme')
 makedepends=('git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'plasma5-theme-qogir-git' 'plasma5-theme-qogir')
 replaces=('plasma5-theme-qogir-git' 'plasma5-theme-qogir')
 source=("git+${url}.git")
 sha256sums=('SKIP')
