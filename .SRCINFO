@@ -1,5 +1,5 @@
 pkgbase = krunner-bazaar
-	pkgdesc = KRunner plugin for Browse installed applications based on categories
+	pkgdesc = KRunner plugin for bazaar
 	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/ublue-os/krunner-bazaar

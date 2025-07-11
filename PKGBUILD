@@ -2,7 +2,7 @@
 pkgname=krunner-bazaar
 pkgver=1.0.4
 pkgrel=1
-pkgdesc="KRunner plugin for Browse installed applications based on categories"
+pkgdesc="KRunner plugin for bazaar"
 arch=('x86_64')
 url="https://github.com/ublue-os/krunner-bazaar"
 license=('Apache-2.0')
