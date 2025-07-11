@@ -1,8 +1,13 @@
 # Maintainer:
 
+## options
+: ${_use_sodeps:=false}
+
+: ${_commit=}
+
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.14.3.r3.g88ce676
+pkgver=5.16.3.r3.g6afd4dc
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -13,9 +18,11 @@ depends=(
   ada
   ffmpeg
   hunspell
-  jemalloc
   kcoreaddons
+  libavif
   libdispatch
+  libheif
+  libjxl
   libvpx
   libxdamage
   minizip
@@ -39,6 +46,7 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
+  jemalloc # gio error when absent
   ninja
   range-v3
   tl-expected
@@ -53,7 +61,7 @@ conflicts=("$_pkgname")
 
 _source_main() {
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
+  source=("$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}")
   sha256sums=('SKIP')
 }
 
@@ -83,14 +91,12 @@ _source_telegram_desktop() {
     'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'::'Telegram/ThirdParty/nimf'
     'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'::'Telegram/ThirdParty/hime'
     #'hunspell'::'git+https://github.com/hunspell/hunspell.git'::'Telegram/ThirdParty/hunspell'
-    #'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'::'Telegram/ThirdParty/jemalloc'
     #'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'::'Telegram/ThirdParty/kcoreaddons'
-    #'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'::'Telegram/ThirdParty/kimageformats'
+    'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'::'Telegram/ThirdParty/kimageformats'
     #'lz4'::'git+https://github.com/lz4/lz4.git'::'Telegram/ThirdParty/lz4'
     'microsoft.gsl'::'git+https://github.com/Microsoft/GSL.git'::'Telegram/ThirdParty/GSL'
     'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'::'Telegram/ThirdParty/QR'
     'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'::'Telegram/ThirdParty/expected'
-    'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'::'Telegram/ThirdParty/libtgvoip'
     'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'::'Telegram/ThirdParty/tgcalls'
   )
 
@@ -113,7 +119,6 @@ _source_telegram_desktop() {
 _source_desktop_app_cmake_helpers() {
   local _sources_add=(
     'mnauw.cppgir'::'git+https://gitlab.com/mnauw/cppgir.git'::'external/glib/cppgir'
-    'yugr.implib.so'::'git+https://github.com/yugr/Implib.so.git'::'external/Implib.so'
   )
 
   local _p _idx _src _sm_prep _sm_func
@@ -317,6 +322,32 @@ build() {
 }
 
 package() {
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      'libavcodec.so'
+      'libavfilter.so'
+      'libavformat.so'
+      'libavutil.so'
+      'libcrypto.so'
+      'libgio-2.0.so'
+      'libglib-2.0.so'
+      'libgobject-2.0.so'
+      'libjpeg.so'
+      'liblz4.so'
+      'libopenal.so'
+      'libopenh264.so'
+      'libopus.so'
+      'libpipewire-0.3.so'
+      'libprotobuf-lite.so'
+      'libssl.so'
+      'libswresample.so'
+      'libswscale.so'
+      'libvpx.so'
+      'libxxhash.so'
+      'libz.so'
+    )"
+  fi
+
   DESTDIR="$pkgdir" cmake --install build
 }
 
