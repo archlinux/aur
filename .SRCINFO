@@ -1,6 +1,6 @@
 pkgbase = python-stpipe
 	pkgdesc = Framework for calibration pipeline software
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://stpipe.readthedocs.io
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-stpipe
 	makedepends = python-numpydoc
 	makedepends = python-crds
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/stpipe/stpipe-0.9.0.tar.gz
-	md5sums = 166eb2cb4b8718a93f47fd9e316054dd
+	source = https://files.pythonhosted.org/packages/source/s/stpipe/stpipe-0.10.0.tar.gz
+	md5sums = 83966cbcdcca82e0b3c12d132397a69b
 
 pkgname = python-stpipe
 	depends = python>=3.10
