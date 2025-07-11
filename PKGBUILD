@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=stella-highscore-git
-pkgver=r8080.dbb3300
+pkgver=r8073.3b7dcb6
 pkgrel=1
 pkgdesc="Highscore port of Stella"
 arch=('x86_64')
-url="https://github.com/alice-mkh/stella"
+url="https://github.com/highscore-emu/stella"
 license=('GPL-2.0-or-later')
 depends=('libhighscore-git')
 makedepends=(
@@ -13,7 +13,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/alice-mkh/stella.git')
+source=('git+https://github.com/highscore-emu/stella.git')
 sha256sums=('SKIP')
 
 pkgver() {
