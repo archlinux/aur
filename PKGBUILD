@@ -3,21 +3,19 @@
 
 _pkgbase=rtl8852au
 pkgname=rtl8852au-dkms-git
-pkgver=r100.865ab0f
-pkgrel=3
+pkgver=r109.a9bb48f
+pkgrel=1
 pkgdesc="The WiFi driver for Realtek chipsets RTL8832AU and RTL8852AU (e.g. ASUS USB-AX56, D-Link DW-AX1850, TP-Link AX1800) "
 arch=('x86_64')
-url="https://github.com/lwfinger/rtl8852au"
+url="https://github.com/natimerry/rtl8852au"
 license=('GPL2')
 depends=('dkms' 'bc' 'linux-headers' 'usb_modeswitch')
 makedepends=('git')
 conflicts=("${_pkgbase}")
-source=('git+https://github.com/lwfinger/rtl8852au'
-        '40-rtl8852au-usb-modeswitch.rules'
-        'diff.patch')
+source=('git+https://github.com/natimerry/rtl8852au'
+        '40-rtl8852au-usb-modeswitch.rules')
 sha256sums=('SKIP'
-            '0764d1a35efc5434a43e685f5a1ea97019b10e124f04ddadbe89b7eb2ec88998'
-            '11517ec26bac412d3176d12044cfb11284147d09d629c23289362db433adbed7')
+            '0764d1a35efc5434a43e685f5a1ea97019b10e124f04ddadbe89b7eb2ec88998')
 
 pkgver() {
   cd ${_pkgbase}
@@ -25,11 +23,6 @@ pkgver() {
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
-}
-
-prepare() {
-  cd ${srcdir}/${_pkgbase}
-  patch -Np1 -i ${srcdir}/diff.patch
 }
 
 package() {
