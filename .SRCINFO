@@ -1,0 +1,17 @@
+pkgbase = ruby-uri-ssh_git
+	pkgdesc = Parse and build git repository url via ssh protocol.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/packsaddle/ruby-uri-ssh_git
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	checkdepends = ruby-yard
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/packsaddle/ruby-uri-ssh_git/archive/v2.0.0/ruby-uri-ssh_git-2.0.0.tar.gz
+	b2sums = 5dc53b8e39e0f42e05e49d60c30f2cd592d83d39054a6ad112ef282c24a7c00ef5acd6c117fcb0deb22bf36561e9d5c70fc230767f3084e818fb4a6fcad589bf
+
+pkgname = ruby-uri-ssh_git
