@@ -1,6 +1,6 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=sbuild
-_tag=debian/0.86.3
+_tag=debian/0.89.3
 pkgver=${_tag##*/}
 _srcname=$pkgname-${_tag/\//-}
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
 	"$url/-/archive/$_tag/$_srcname.tar.gz"
 	sbuild.sysusers
 )
-sha512sums=('debd25d32d3e14bdd36944a5a22492d262acafb14171d1af93ec6701e1e0932430f92b61ae16b97b48a01130eb0c7e505072b89643fbf6e0ea9645a17c2d14a5'
+sha512sums=('3c99aba4e2b989dd0fd931f4499b88d93f45857e1a1ff0c286c4cfec342e152e0c055b052aa88f9a554fdd3bbd173e8d5a6d6e5e320af09fbcde95b8534e80dd'
             'd885e8aaaf44b72b7cdbdca2163d7594f08296f34f930522eaa86b8e348ce0b4a2cf7f2cf5cfc2e595f7c272c70f5bf2734a416333a7a068a00bc74b58c67fe8')
 validpgpkeys=()
 
