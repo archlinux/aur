@@ -1,13 +1,14 @@
 pkgbase = python-taxi
 	pkgdesc = Timesheeting tool that focuses on simplicity
 	pkgver = 6.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sephii/taxi
 	arch = any
 	license = custom
-	makedepends = python
-	makedepends = python-flit
+	makedepends = python-build
+	makedepends = python-flit-core
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-appdirs
 	depends = python-click
 	optdepends = python-taxi-zebra: Zebra backend for Taxi
@@ -15,7 +16,7 @@ pkgbase = python-taxi
 	source = taxi-complete.bash
 	source = taxi-complete.zsh
 	sha512sums = fb1ab86d06b3272f9cdec3f22298b0b5353e6efd489f6941da88b5f28c8584f6b91c9280d2ab6fdda0a063fb5e1f444b33f0947830ebd8fbcb879ca143316254
-	sha512sums = 646ac547f52fb9a1c8498a9d1d431a3c19b41faacd86b7344ffb8c2334e6b01b765945882e5180c7f658b8c3f6a7887a690171b624326b5b3fa3ecda59344ccc
-	sha512sums = d02c0e3489dba8841eff335571088b739911d4c541623971cfef9b1628ea6960ad748e1e6c4cc1dfdd20dc88fc289f8078dbb51fa0402eed4868c45e87f4106a
+	sha512sums = 006e058e78737f3e9da2da7a31e66b5b6b220c3a4c952cc911de8d093a13cb3df63cbf9a12fc4fb9a1b6a59031f5d44396871f49333956e24b9c58a487872152
+	sha512sums = 3bbb8f968dc1a6fabcc0b974441c59e09255b98706713b9c3737f985ca807ab41992885455e4afdfc8556e244f0abf6ebfb2dcd0ffbd657ed95100d85c9fba2b
 
 pkgname = python-taxi

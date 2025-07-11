@@ -4,27 +4,38 @@ _taxi_completion() {
     local -a completions
     local -a completions_with_descriptions
     local -a response
-    response=("${(@f)$( env COMP_WORDS="${words[*]}" \
-                        COMP_CWORD=$((CURRENT-1)) \
-                        _TAXI_COMPLETE="complete_zsh" \
-                        taxi )}")
+    (( ! $+commands[taxi] )) && return 1
 
-    for key descr in ${(kv)response}; do
-      if [[ "$descr" == "_" ]]; then
-          completions+=("$key")
-      else
-          completions_with_descriptions+=("$key":"$descr")
-      fi
+    response=("${(@f)$(env COMP_WORDS="${words[*]}" COMP_CWORD=$((CURRENT-1)) _TAXI_COMPLETE=zsh_complete taxi)}")
+
+    for type key descr in ${response}; do
+        if [[ "$type" == "plain" ]]; then
+            if [[ "$descr" == "_" ]]; then
+                completions+=("$key")
+            else
+                completions_with_descriptions+=("$key":"$descr")
+            fi
+        elif [[ "$type" == "dir" ]]; then
+            _path_files -/
+        elif [[ "$type" == "file" ]]; then
+            _path_files -f
+        fi
     done
 
     if [ -n "$completions_with_descriptions" ]; then
-        _describe -V unsorted completions_with_descriptions -U -Q
+        _describe -V unsorted completions_with_descriptions -U
     fi
 
     if [ -n "$completions" ]; then
-        compadd -U -V unsorted -Q -a completions
+        compadd -U -V unsorted -a completions
     fi
-    compstate[insert]="automenu"
 }
 
-compdef _taxi_completion taxi;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _taxi_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _taxi_completion taxi
+fi
+
