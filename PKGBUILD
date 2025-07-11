@@ -47,7 +47,7 @@ sha256sums=('7316b33f4f354d95670cccce544fa03992fceb751890deb8cc83e641b7783ac0'
             'SKIP')
 
 prepare() {
-  cd "$srcdir/Atoms"
+  cd Atoms
   git submodule init
   git config submodule.atoms-cli.url "$srcdir/atoms-cli"
   git config submodule.atoms-core.url "$srcdir/atoms-core"
@@ -87,9 +87,7 @@ package_atoms() {
     'servicectl-atoms'
     'vte4'
   )
-  optdepends=(
-    'distrobox: List and handle Distrobox containers as atoms'
-  )
+  optdepends=('distrobox: List and handle Distrobox containers as atoms')
 
   meson install -C build --destdir "$pkgdir"
 }
@@ -102,7 +100,7 @@ package_atoms-cli() {
     'python-tabulate'
   )
 
-  cd "$srcdir/Atoms/$pkgbase-cli"
+  cd "Atoms/$pkgbase-cli"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
@@ -122,9 +120,7 @@ package_servicectl-atoms() {
   pkgdesc="Control services (daemons) for systemd in chroot environment (POSIX compliant fork)"
   url="https://github.com/AtomsDevs/servicectl"
   license=('MIT')
-  depends=(
-    'systemd'
-  )
+  depends=('systemd')
   provides=('servicectl')
   conflicts=('servicectl')
 
