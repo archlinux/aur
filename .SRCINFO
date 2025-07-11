@@ -1,6 +1,6 @@
 pkgbase = python-occ-core
 	pkgdesc = Python package for 3D geometry CAD/BIM/CAM
-	pkgver = 7.8.1.1
+	pkgver = 7.9.0
 	pkgrel = 1
 	url = https://github.com/tpaviot/pythonocc-core
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-occ-core
 	depends = libxmu
 	depends = libxi
 	depends = python-numpy
-	source = git+https://github.com/tpaviot/pythonocc-core#tag=7.8.1.1
+	source = git+https://github.com/tpaviot/pythonocc-core#tag=7.9.0
 	sha512sums = SKIP
 
 pkgname = python-occ-core
