@@ -1,0 +1,16 @@
+pkgbase = aeryth
+	pkgdesc = Great tool to convert AppImage into Debian or ArchLinux packages (FR/EN/ES/IT/DE) developed by PEPINATURE the ecological & nourishing fruit nursery
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/pepinature/aeryth
+	arch = any
+	license = GPL3
+	depends = bash
+	source = git+https://gitlab.com/pepinature/aeryth.git
+	source = aeryth.desktop
+	source = aeryth.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = aeryth
