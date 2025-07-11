@@ -5,12 +5,12 @@
 
 pkgname=taisei
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Touhou clone"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('opengl-driver' 'mimalloc' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme')
+depends=('opengl-driver' 'mimalloc' 'sdl3' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme')
 makedepends=('meson' 'gamemode' 'python-docutils' 'python-zstandard')
 source=("https://github.com/taisei-project/taisei/releases/download/v$pkgver/taisei-$pkgver.tar.xz")
 sha256sums=('826b5e3af8f2181423aca12d21bba1d8925179f5d9d933156293c16ca29861fb')
