@@ -1,12 +1,12 @@
 PACKAGER="Laurent Brock <incognito0135@protonmail.com>"
 pkgname=piavpn-bin
 
-pkgver=3.6.1
-build_number=08339
+pkgver=3.6.2
+build_number=08398
 # https://www.privateinternetaccess.com/pages/changelog
 
 epoch=1 # Switch versioning schemes for guaranteed upgrades
-pkgrel=4
+pkgrel=1
 pkgdesc="Private Internet Access client"
 arch=('x86_64' 'aarch64')
 url="https://privateinternetaccess.com/"
@@ -20,8 +20,8 @@ install=piavpn-bin.install
 source_x86_64=("https://installers.privateinternetaccess.com/download/pia-linux-${pkgver}-${build_number}.run")
 source_aarch64=("https://installers.privateinternetaccess.com/download/pia-linux-arm64-${pkgver}-${build_number}.run")
 options=(!strip)
-sha256sums_x86_64=('6f14c63c7b7fbc5e7482ea2fb42381afade6dc8bcf9816632813adfa112ca613')
-sha256sums_aarch64=('523bd7e87328ba01934585275f6d95d0bba070f2a7f050fc578c701d6dbca803')
+sha256sums_x86_64=('c513721e42e707a5fef03c4480a301fd542551ca357bd5205323ac9421dfaffd')
+sha256sums_aarch64=('7068bc24f7fdcd029e30c78b1ce81cabc06487f96972a7a937af02628f7aee2a')
 
 # == You need to enable and start piavpn.service. Run sudo systemctl enable --now piavpn.service ==
 prepare() {
@@ -68,9 +68,6 @@ package() {
 
 	mkdir -p $pkgdir/usr/local/bin
 	ln -s ../../../opt/piavpn/bin/piactl $pkgdir/usr/local/bin/piactl
-
-	# Temporary fix for systemd update 256.7 -> 256.8, will remove ASAP
-	ln -sf /usr/lib/libcrypto.so.3 $pkgdir/opt/piavpn/lib/libcrypto.so.3
 	
 	# limit log to the minimum to avoid excessive flooding
 	mkdir -p $pkgdir/opt/piavpn/var
