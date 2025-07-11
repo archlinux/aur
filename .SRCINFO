@@ -1,6 +1,6 @@
 pkgbase = perl-text-markdown-discount
 	pkgdesc = fast function for converting markdown to HTML
-	pkgver = 0.16
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://metacpan.org/release/Text-Markdown-Discount
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = perl-text-markdown-discount
 	depends = discount
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/S/SE/SEKIMURA/Text-Markdown-Discount-0.16.tar.gz
-	sha512sums = 4175fe71b94ec7b9aa11a0c25b963f3a3cca606d63db757fd1156aff30f50cc8253d0ae18241b4129a89855c843b1ff275297b70a18d6c59bf11769d6d159ae2
+	source = https://cpan.metacpan.org/authors/id/S/SO/SONGMU/Text-Markdown-Discount-0.18.tar.gz
+	sha512sums = 3af7113676b897d9f0b1fdd35906e4f622797fdb0b942975678a0072f8e780bd630a903151acdc33899a34272c3d83106d85603a2a26096acc05c74e65ff7e71
 
 pkgname = perl-text-markdown-discount
