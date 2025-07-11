@@ -1,0 +1,20 @@
+pkgbase = debtap-git
+	pkgdesc = A script to convert .deb packages to Arch Linux packages, focused on accuracy. git version. Do not use it to convert packages that already exist on official repositories or can be built from AUR!
+	pkgver = 3.5.1.r15.gbd6a0752
+	pkgrel = 1
+	url = https://github.com/helixarch/debtap
+	install = debtap.install
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = binutils
+	depends = pkgfile
+	depends = fakeroot
+	provides = debtap
+	conflicts = debtap
+	source = git+https://github.com/helixarch/debtap.git
+	source = debtap.install
+	sha512sums = SKIP
+	sha512sums = 5317cf5da1142ed83b1b11c60ee4a70ad74d21f6f98c59b0ec45ad4026d4db4952fe061fb493e3a92675e6bb558ea059677db2bcf42b620cb71d5b772b288008
+
+pkgname = debtap-git

@@ -1,0 +1,17 @@
+post_install() {
+	echo "==> You must run at least once \"debtap -u\""
+	echo "with root privileges (preferably recently),"
+	echo "before running this script"
+	echo
+	echo "==> Syntax: debtap [option] package_filename"
+	echo
+	echo "==> Run \"debtap -h\" for help"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo "==> /var/cache/debtap has not been removed"
+}
