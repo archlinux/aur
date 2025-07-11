@@ -7,7 +7,7 @@ _note='Make sure every operas have same major Chromium,ffmpeg ver'
 _chromium=135.0.7049.128
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-_ffmpeg=$(curl -s ${yrl}/+/${_commit}/RELEASE?format=TEXT|base64 -d)
+_ffmpeg=$(curl -s ${url}/+/${_commit}/RELEASE?format=TEXT|base64 -d)
 pkgver=${_chromium}.ffmpeg$_ffmpeg
 pkgrel=1
 pkgdesc="Add codecs to ${_browser}"
