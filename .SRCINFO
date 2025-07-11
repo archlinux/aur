@@ -1,0 +1,18 @@
+pkgbase = niri-wselector-git
+	pkgdesc = Quick hack to use fuzzel to select windows and workspaces in niri.
+	pkgver = r10.1eff068
+	pkgrel = 1
+	url = https://github.com/kassick/niri-wselector
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	provides = niri-wselector
+	source = git+https://github.com/kassick/niri-wselector.git
+	sha256sums = SKIP
+
+pkgname = niri-wselector-git
