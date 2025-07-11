@@ -2,7 +2,7 @@
 
 pkgname=tagstudio
 pkgver=alpha9.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
 
@@ -15,6 +15,7 @@ depends=(
 	"python-humanfriendly>=10.0"
 	"python-opencv>=4.10.0.84"
 	"python-pillow>=10.3"
+    "python-pillow-avif-plugin"
 	"python-pillow-jpegxl-plugin>=1.3.0"
 	"pyside6>=6.8.0.1"
 	"python-typing_extensions>=3.10"
@@ -60,6 +61,7 @@ source=(
 	"$pkgname.desktop"
 	"$pkgname"
 	"MANIFEST.in"
+    "fix_avif.patch"
 )
 
 sha256sums=(
@@ -67,10 +69,16 @@ sha256sums=(
 	"75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3"
 	"7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f"
 	"ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb"
+	"cdc2b1c82b7335e4ff56a0f4d36be69fef541757cad19fe0e08466962dde8e66"
 )
 
 provides=("$pkgname")
 conflicts=("$pkgname")
+
+prepare() {
+    cd "TagStudio-$_pkgver"
+    patch -p1 < ../fix_avif.patch
+}
 
 build() {
 	cd "TagStudio-$_pkgver"

@@ -1,0 +1,26 @@
+diff --git a/src/tagstudio/qt/widgets/thumb_renderer.py b/src/tagstudio/qt/widgets/thumb_renderer.py
+index f0116c6..b4d6b39 100644
+--- a/src/tagstudio/qt/widgets/thumb_renderer.py
++++ b/src/tagstudio/qt/widgets/thumb_renderer.py
+@@ -31,7 +31,7 @@ from PIL import (
+     UnidentifiedImageError,
+ )
+ from PIL.Image import DecompressionBombError
+-from pillow_heif import register_avif_opener, register_heif_opener
++from pillow_heif import register_heif_opener
+ from PySide6.QtCore import (
+     QBuffer,
+     QFile,
+@@ -75,7 +75,11 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
+ logger = structlog.get_logger(__name__)
+ Image.MAX_IMAGE_PIXELS = None
+ register_heif_opener()
+-register_avif_opener()
++
++try:
++    import pillow_avif
++except ImportError:
++    logger.exception('[ThumbRenderer] Could not import the "pillow_avif" module')
+ 
+ try:
+     import pillow_jxl  # noqa: F401 # pyright: ignore[reportUnusedImport]
