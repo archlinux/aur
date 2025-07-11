@@ -1,12 +1,11 @@
 pkgbase = folly
 	pkgdesc = An open-source C++ library developed and used at Facebook
 	pkgver = 2025.07.07.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/facebook/folly
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
-	makedepends = boost
 	makedepends = cmake
 	makedepends = cython
 	makedepends = fast_float

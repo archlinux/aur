@@ -7,7 +7,7 @@
 
 pkgname=folly
 pkgver=2025.07.07.00
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
@@ -39,7 +39,6 @@ depends=(
 )
 makedepends=(
   git
-  boost
   cmake
   cython
   fast_float
@@ -107,8 +106,6 @@ target_link_libraries(folly_python_cpp PRIVATE Python3::Python)' folly/CMakeList
 
 build() {
   cd $pkgname
-  # DCMAKE_CXX_FLAGS: minimum reqs: haswel(gen4+) amd circa 2017+  fails to compile without these flags
-  # DPYTHON_PACKAGE_INSTALL_DIR: possibly not needed
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_PREFIX_PATH=/usr \
@@ -117,7 +114,6 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     -DPYTHON_EXTENSIONS=ON \
     -DPACKAGE_VERSION="$pkgver" \
-    -DCMAKE_CXX_FLAGS="-mpopcnt -mbmi -mbmi2 -ltbb" \
     -DPYTHON_PACKAGE_INSTALL_DIR=$pkgdir/usr \
     -Wno-dev
   cmake --build build
