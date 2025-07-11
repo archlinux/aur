@@ -1,6 +1,6 @@
 pkgbase = mubu-bin
 	pkgdesc = A mind management tool that combines outline notes and mind maps.(Prebuilt version.Use system-wide electron)一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe)
-	pkgver = 5.0.2
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://mubu.com
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = mubu-bin
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = electron15
-	provides = mubu=5.0.2
+	provides = mubu=5.0.3
 	conflicts = mubu
-	source = mubu-5.0.2.exe::https://assets.mubu.com/client/Mubu-5.0.2.exe
-	source = LICENSE-5.0.2.html::https://mubu.com/agreement
+	source = mubu-5.0.3.exe::https://assets.mubu.com/client/Mubu-5.0.3.exe
+	source = LICENSE-5.0.3.html::https://mubu.com/agreement
 	source = mubu.sh
-	sha256sums = 4315e92cd6d8db17d21e5f2b55e5cd0adc6949fa38ea1ac7ae0fdee0591ca7d5
+	sha256sums = 7ebde626b1916753ea5e56cbed0ff6987a4ddd1efed5d26a66d5765d2daeab36
 	sha256sums = dbc572392757c2abbb6d6d7ca62337561b46b8f3b403963a3624fa5a4884c4ec
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = mubu-bin
