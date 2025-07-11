@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
 	pkgver = 128.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.savannah.gnu.org/cgit/gnuzilla.git
 	arch = x86_64
 	license = MPL-2.0
@@ -40,6 +40,7 @@ pkgbase = icecat
 	depends = gtk3
 	depends = libevent
 	depends = libjpeg
+	depends = libpulse
 	depends = libvpx.so
 	depends = libwebp.so
 	depends = libxss

@@ -18,6 +18,11 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=true}
 
+: ${_build_lto:=false}
+: ${_build_system_libs:=true}
+
+: ${_build_limit_cores:=false}
+
 ## update
 _icver="128.12.0"
 _commit="7286181cbff5c4b98ed9246366a85ae1fbc8f54d"
@@ -28,7 +33,7 @@ _ffsum="2bedeb86c6cb16cd3fce88d42ae4e245bafe2c6e9221ba8e445b8e02e89d973f"
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="$_icver"
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
 license=('MPL-2.0')
@@ -40,6 +45,7 @@ depends=(
   gtk3
   libevent
   libjpeg
+  libpulse
   libvpx.so
   libwebp.so
   libxss
@@ -99,7 +105,6 @@ if [[ "${_build_pgo::1}" == "t" ]]; then
   else
     makedepends+=(
       weston
-      xorg-xwayland
       wlheadless-run # aur/xwayland-run
     )
   fi
@@ -225,27 +230,16 @@ END
   # clear forced startup pages
   sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/icecat-branding.js"
 
-  # calculate core availability
-  local _mem _nproc _cores
-  _mem=$(cat /proc/meminfo | grep MemFree | grep -Eom1 '[0-9]+')
-  _nproc=$(nproc)
-  _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) - 1 : _nproc - 1))
-  _cores=$((_cores < 1 ? 1 : _cores))
-
-  printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
-
   # configure
   cat > ../mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
 
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
-mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
@@ -265,17 +259,6 @@ export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
 MOZ_REQUIRE_SIGNING=
 
-# System Libraries
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-webp
-ac_add_options --with-system-zlib
-ac_add_options --enable-system-ffi
-ac_add_options --enable-system-pixman
-
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-av1
@@ -283,6 +266,7 @@ ac_add_options --enable-av1
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-pulseaudio
 ac_add_options --enable-sandbox
 ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
@@ -305,19 +289,59 @@ ac_add_options --enable-strip
 ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
+# Optimization
+ac_add_options --enable-optimize
+ac_add_options OPT_LEVEL="2"
+ac_add_options RUSTC_OPT_LEVEL="2"
+
 # Other
+export AR=llvm-ar
 export CC=clang
 export CXX=clang++
-export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
+
+  if [[ "${_build_system_libs::1}" == "t" ]]; then
+    cat >> ../mozconfig << END
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-webp
+ac_add_options --with-system-zlib
+END
+  fi
+
+  if [[ "${_build_lto::1}" == "t" ]]; then
+    cat >> ../mozconfig << END
+ac_add_options --enable-lto=cross,full
+END
+  fi
+
+  if [[ "${_build_limit_cores::1}" == "t" ]]; then
+    # calculate core availability
+    local _mem _nproc _cores
+    _mem=$(cat /proc/meminfo | grep MemFree | grep -Eom1 '[0-9]+')
+    _nproc=$(nproc)
+    _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
+    _cores=$((_cores < 1 ? 1 : _cores))
+
+    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
+
+    cat >> ../mozconfig << END
+mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
+END
+  fi
 )
 
 build() (
   _run_if_exists _prepare_icecat
 
   cd "$_pkgsrc"
+
+  export RUSTUP_TOOLCHAIN=stable
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && mkdir -pm700 "${XDG_RUNTIME_DIR:?}"
@@ -423,7 +447,7 @@ END
       env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
-      ./mach clobber
+      ./mach clobber objdir
 
       # reenable extensions
       cp "$srcdir/Makefile.in" "browser/app/Makefile.in"
@@ -437,7 +461,6 @@ END
     if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
       cat >> .mozconfig - << END
-ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
@@ -524,7 +547,7 @@ Version=2
 END
 
   # Replace duplicate binary
-  ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  ln -sf "$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
   # desktop file
   install -Dm644 ../$_pkgname.desktop \
