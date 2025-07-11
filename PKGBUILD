@@ -64,6 +64,6 @@ package(){
   conflicts=(opera-{beta,developer}-ffmpeg-codecs)
   provides=(opera-{beta,developer}-ffmpeg-codecs)
   install -d "$pkgdir"/usr/lib/opera-{beta,developer}/lib_extra
-  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-beta/lib_extra/libfmpeg.so
-  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-developer/lib_extra/libfmpeg.so
+  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-beta/lib_extra/libffmpeg.so
+  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-developer/lib_extra/libffmpeg.so
 }
