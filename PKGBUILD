@@ -44,7 +44,7 @@ check() {
     -vv
     -n auto
     --deselect tests/models/test_model_names.py::test_known_model_names
-    -k "not genai_email_feedback.py and not google.md:61 and not a2a and not agent.py:1781"
+    -k "not genai_email_feedback.py and not google.md:61"
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
   )
   cd "${srcdir}"/${_name0}-${pkgver}
