@@ -14,7 +14,7 @@ license=(BSD)
 makedepends=(git)
 depends=(curl)
 
-source=("git+$url.git")
+source=("git+$url.git#branch=master")
 sha256sums=("SKIP")
 
 pkgver() {

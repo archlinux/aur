@@ -7,7 +7,7 @@ pkgbase = oapi-cli-git
 	license = BSD
 	makedepends = git
 	depends = curl
-	source = git+https://github.com/outscale/oapi-cli.git
+	source = git+https://github.com/outscale/oapi-cli.git#branch=master
 	sha256sums = SKIP
 
 pkgname = oapi-cli-git
