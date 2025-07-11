@@ -1,10 +1,10 @@
 # # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mgba-highscore-git
-pkgver=r8795.8df1bc7
+pkgver=r8921.2e05962
 pkgrel=1
 pkgdesc="Highscore port of mGBA"
 arch=('x86_64')
-url="https://github.com/alice-mkh/mgba"
+url="https://github.com/highscore-emu/mgba"
 license=('MPL-2.0')
 depends=(
   'ffmpeg'
@@ -17,7 +17,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/alice-mkh/mgba.git')
+source=('git+https://github.com/highscore-emu/mgba.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -47,7 +47,6 @@ build() {
     -DBUILD_SDL='OFF' \
     -DBUILD_HIGHSCORE='ON' \
     -DSKIP_LIBRARY='ON' \
-    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
     -Wno-dev
   cmake --build build
 }
