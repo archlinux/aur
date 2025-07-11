@@ -8,7 +8,7 @@
 
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
-pkgver=2.19.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
@@ -64,7 +64,7 @@ source=("${_pkg_file_name}::$_download_path"
 	"TargetProgrammerPanelConsoleHelper.java"
 	"SLA0048_STM32CubeProg.pdf")
 
-sha256sums=('e8e97ba4188f9c4681705f83bdf237ccd1a56de8fc58f858addf8cbddfde2161'
+sha256sums=('5fe26a9350c0c72c3b4a87aa3012fdeb6cfb0952b3e0fc05ba84f049f2f1401e'
             '4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40'
             '12f3f8a3301d6f50c00195f9c852e25f8d841246768bf3bbfd4e91fd2052ce6e'
             '8775375cfd21848eafb92bc11712b2d797bbec4f0109e728c175c4abb014131c'
