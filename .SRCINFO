@@ -1,0 +1,13 @@
+pkgbase = normm-bin
+	pkgdesc = A cross-platform mod manager for Oblivion Remastered
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/TheNamlessGuy/oblivion-remaster-mod-manager
+	arch = x86_64
+	provides = normm
+	source = namless-oblivion-remaster-mod-manager.x86_64::https://github.com/TheNamlessGuy/oblivion-remaster-mod-manager/releases/download/v0.4.2/namless-oblivion-remaster-mod-manager.x86_64
+	source = normm
+	sha512sums = db81a3896a6709e4ded20552c89e11cf2d69b0621d12c1701be82d6887d4a119d5987c8c7de3204b6477064e77ffa2c6b873f459f1381190db78c97aa2e8a685
+	sha512sums = 542636ce6395e6ba68ae589d8f238bf0419381a31703d1b7bfa010daa63e363341865166a13e4671effaa9d1ff3a294c28539d6bdd6c2592ebd55fa8ac296a30
+
+pkgname = normm-bin

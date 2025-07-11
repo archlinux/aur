@@ -1,0 +1,6 @@
+/pkg
+/src
+*.tar.gz
+*.pkg.tar
+*.pkg.tar.zst
+namless-oblivion-remaster-mod-manager.x86_64

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+namless-oblivion-remaster-mod-manager.x86_64 -- --manager-folder ~/.config/normm
