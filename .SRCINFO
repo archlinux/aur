@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-iptvsimple
 	pkgdesc = IPTV Simple PVR client addon for Kodi
-	pkgver = 21.10.2
+	pkgver = 21.11.0
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.iptvsimple
 	arch = armv6h
@@ -16,7 +16,7 @@ pkgbase = kodi-addon-pvr-iptvsimple
 	depends = kodi
 	depends = pugixml
 	conflicts = kodi-addon-pvr-iptvsimple-git
-	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/21.10.2-Omega.tar.gz
-	sha256sums = 4ab62a6ee946de406fa2ae502f9e7b1c591ff6aabc2777b5c26ad5b748e2cd02
+	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/21.11.0-Omega.tar.gz
+	sha256sums = 377fb3c69d39866c0b3b8a3a7d4c790241b15997b140f45443209c4e44e62418
 
 pkgname = kodi-addon-pvr-iptvsimple
