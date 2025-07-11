@@ -1,8 +1,9 @@
 pkgbase = nocodb
 	pkgdesc = A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface.
 	pkgver = 0.263.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nocodb.com
+	install = nocodb.install
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
@@ -15,12 +16,14 @@ pkgbase = nocodb
 	optdepends = litestream
 	optdepends = dasel: read litestream config
 	optdepends = mariadb-server
-	optdepends = valkey
+	optdepends = redis
 	options = !debug
 	options = !strip
-	backup = usr/lib/systemd/user/nocodb.service
-	source = git+https://github.com/nocodb/nocodb.git#branch=master
+	backup = usr/lib/systemd/system/nocodb.service
+	source = git+https://github.com/nocodb/nocodb.git#tag=0.263.8
 	source = nocodb.service
+	source = nocodb.install
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
