@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=/usr/bin/vtf-thumbnailer
+Exec=/usr/bin/vtf-thumbnailer -i %i -o %o -s %s
+MimeType=image/x-vtf;image/vnd.valve.source.texture;
