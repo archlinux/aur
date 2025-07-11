@@ -6,7 +6,7 @@
 _pkgname='github-desktop-plus'
 pkgname="${_pkgname}-bin"
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Work-in-progress fork of GitHub Desktop with extra features and improvements."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/pol-rivero/github-desktop-plus"

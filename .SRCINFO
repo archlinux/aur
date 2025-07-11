@@ -1,7 +1,7 @@
 pkgbase = github-desktop-plus-bin
 	pkgdesc = Work-in-progress fork of GitHub Desktop with extra features and improvements.
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pol-rivero/github-desktop-plus
 	arch = x86_64
 	arch = aarch64
