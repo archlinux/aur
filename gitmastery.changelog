@@ -10,3 +10,6 @@ Support empty commit when no downloaded resources
 Create PR if not present during sync on
 
 
+Create PR if not present, even if no changes occurred
+
+
