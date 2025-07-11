@@ -2,7 +2,7 @@
 _pkgname=balatro-multiplayer-launcher
 pkgname=balatro-multiplayer-launcher
 pkgver=1.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Launcher for Balatro Multiplayer Mod (AppImage)"
 arch=('x86_64')
 url="https://github.com/Balatro-Multiplayer/Balatro-Multiplayer-Launcher/"
@@ -28,7 +28,7 @@ depends=(
 )
 
 source=(
-  "${pkgname}-{pkgver}.AppImage::${url}releases/download/v${pkgver}/balatro-multiplayer-launcher.AppImage"
+  "${pkgname}-${pkgver}.AppImage::${url}releases/download/v${pkgver}/${pkgname}-${pkgver}.AppImage"
   "balatro-multiplayer-launcher.desktop"
 
 )
@@ -40,9 +40,9 @@ sha256sums=(
 options=(!strip !debug)
 
 prepare() {
-  chmod +x "${srcdir}/balatro-multiplayer-launcher.AppImage"
+  chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
   #Icon
-  "${srcdir}/balatro-multiplayer-launcher.AppImage" --appimage-extract
+  "${srcdir}/${pkgname}-${pkgver}.AppImage" --appimage-extract
 }
 
 package() {
@@ -51,10 +51,10 @@ package() {
   install -dm755 "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/share/pixmaps"
 
-  install -m755 "${srcdir}/balatro-multiplayer-launcher.AppImage" \
+  install -m755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
     "${pkgdir}/opt/${_pkgname}/"
 
-  ln -s "/opt/${_pkgname}/balatro-multiplayer-launcher.AppImage" \
+  ln -s "/opt/${_pkgname}/${pkgname}-${pkgver}.AppImage" \
     "${pkgdir}/usr/bin/${_pkgname}"
 
   install -m644 "${srcdir}/${_pkgname}.desktop" \
