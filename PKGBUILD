@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=prompt-style
 pkgname=(lua{,51,52,53}-"$_pkgname")
-pkgver=0.0.4
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Lua plugin for powerlevel10k style prompt and WakaTime time tracking"
 arch=(any)
@@ -11,8 +11,8 @@ license=(GPL3)
 makedepends=(luarocks)
 optdepends=('git: get project name')
 _revision=1
-source=("https://luarocks.org/manifests/Freed-Wu/$_pkgname-$pkgver-$_revision.src.rock")
-sha256sums=('2b55ee50c0b1f232261b97d27f3222f055dcecf5923d5a5033c0920ba2ceb292')
+source=("https://luarocks.org/manifests/freed-wu/$_pkgname-$pkgver-$_revision.src.rock")
+sha256sums=('b54f88be075d91d0f076c5b47417953a8bf2e3980a97444f22c76b9b7ba169f7')
 _lua_version=5.4
 
 _package() {
@@ -43,9 +43,9 @@ package_lua51-prompt-style() {
 	local version=5.1
 	_package $version
 	rm -r "${pkgdir:?}/usr/bin"
-	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"{nvimp,texluajitp} -t "$pkgdir/usr/bin"
+	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"nvimp -t "$pkgdir/usr/bin"
 	# texluajit doesn't use $LUA_PATH_5_1
-	_complete "$version" nvimp texluajitp
+	_complete "$version" nvimp
 }
 
 package_lua52-prompt-style() {
@@ -57,7 +57,7 @@ package_lua52-prompt-style() {
 
 package_lua53-prompt-style() {
 	# luatex, neomutt uses lua5.3
-	optdepends=(texlive-bin neomutt)
+	optdepends=(texlive-bin neomutt texlua)
 	depends=(lua53-{ansicolors,filesystem,luaprompt})
 	local version=5.3
 	_package $version
