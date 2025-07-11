@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-bin
-pkgver=5.101.0
+pkgver=5.102.2
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("x86_64" "aarch64" "armv7h")
@@ -18,9 +18,9 @@ source_x86_64+=("${_release_url}-x86_64${_ext}")
 source_aarch64+=("${_release_url}-aarch64${_ext}")
 source_armv7h+=("${_release_url}-armv7h${_ext}")
 
-sha256sums_x86_64=("bf197e09fe492f08ef041e5af27132a5b42f472750e934437778fc59aef9da98")
-sha256sums_aarch64=("846beaa8899b9ce895ae963c60b8cd2e08131961b5f663eb3986234c7e18f4df")
-sha256sums_armv7h=("0ac0faba68a051706eb55cc8c2b7b39e686a399de2c4e88ec4ffa43a47009150")
+sha256sums_x86_64=("75cb791f17bdde6e516ea9e62ef3bf09ce8b1b12453ac35a1430c1d96dcc4925")
+sha256sums_aarch64=("bdf0eeb9118a229e07fe5734a28df662aa2ba77fd0594c0befa03abca6a1fcdd")
+sha256sums_armv7h=("11bde0fbfd9369cb45424ad1c7d79677042a2836faa7b14935355ec04699b1b5")
 
 package() {
   tar -xzf "$srcdir/qp-v${pkgver}-${CARCH}${_ext}" -C "$srcdir"
@@ -31,4 +31,10 @@ package() {
 
   install -Dm644 "update-qp-cache.hook" \
     "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
+
+  "$pkgdir/usr/bin/qp" --completions bash >"$srcdir/qp.bash"
+  "$pkgdir/usr/bin/qp" --completions zsh >"$srcdir/qp.zsh"
+
+  install -Dm644 "$srcdir/qp.bash" "$pkgdir/usr/share/bash-completion/completions/qp"
+  install -Dm644 "$srcdir/qp.zsh" "$pkgdir/usr/share/zsh/site-functions/_qp"
 }
