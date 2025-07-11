@@ -7,4 +7,4 @@ Target=opera
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/chmod a-r /usr/lib/opera/libffmpeg.so

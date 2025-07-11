@@ -1,5 +1,5 @@
 pkgbase = opera-ffmpeg-codecs
-	pkgdesc = Add codecs to opera
+	pkgdesc = Add codecs to Opera
 	pkgver = 135.0.7049.128.ffmpeg7.1.git
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/third_party/ffmpeg
@@ -13,7 +13,7 @@ pkgbase = opera-ffmpeg-codecs
 	source = off-opera-ffmpeg.hook
 	source = on-opera-ffmpeg.install
 	sha256sums = ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d
-	sha256sums = c1b78ec90368c6d89f2a3f8a6e5b19248535f22b7cd812c20ceaffb054f3a457
-	sha256sums = f28888c41499e74e35e64858adc4e9b73c8d6f4211ef91a564cb95e58362f147
+	sha256sums = ed5c5178492da256c24b9eff647573b69e46165cf2e6e950d1d3dfc14784581f
+	sha256sums = c2423b9cf8ac5e9a64e6cf232afbcecd07d34beb884fe90b24dc84d8d830a9dc
 
 pkgname = opera-ffmpeg-codecs

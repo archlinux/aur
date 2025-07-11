@@ -2,9 +2,7 @@
 # Maintainer: oech3
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 
-_browser=opera
-pkgname=${_browser}-ffmpeg-codecs
-_note='Make sure every operas have same major Chromium,ffmpeg ver'
+pkgname=opera-ffmpeg-codecs
 # Bump minor ver of Chromiumver from opera:about
 _chromium=135.0.7049.128
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
@@ -12,25 +10,24 @@ _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags
 _ffmpeg=$(curl -s ${url}/+/${_commit}/RELEASE?format=TEXT|base64 -d)
 pkgver=${_chromium}.ffmpeg$_ffmpeg
 pkgrel=1
-pkgdesc="Add codecs to ${_browser}"
+pkgdesc="Add codecs to Opera"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm git)
 # tarball is something wrong
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
-off-${_browser}-ffmpeg.hook on-${_browser}-ffmpeg.install)
-install=on-${_browser}-ffmpeg.install
+off-opera-ffmpeg.hook on-opera-ffmpeg.install)
+install=on-opera-ffmpeg.install
 sha256sums=('ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d'
-            'c1b78ec90368c6d89f2a3f8a6e5b19248535f22b7cd812c20ceaffb054f3a457'
-            'f28888c41499e74e35e64858adc4e9b73c8d6f4211ef91a564cb95e58362f147')
+            'ed5c5178492da256c24b9eff647573b69e46165cf2e6e950d1d3dfc14784581f'
+            'c2423b9cf8ac5e9a64e6cf232afbcecd07d34beb884fe90b24dc84d8d830a9dc')
 
 prepare() {
   cd chromium-ffmpeg
-  echo $_note
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
-  #diff libavcodec/opus/dec.c{.bak,} || :
+  diff libavcodec/opus/dec.c{.bak,} || :
 }
 
 build() {
@@ -45,7 +42,7 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fno-math-errno -fno-signed-zeros $LTOFLAGS" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
     --prefix="${srcdir}"/release
 
@@ -61,5 +58,12 @@ build() {
 package(){
   install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/${_browser}/lib_extra/libffmpeg.so"
   # Block LD_PRELOAD even this works without it. It breaks many things.
-  install -Dm644 off-${_browser}-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dm644 off-opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  # Provide -{beta,developer}-ffmpeg-codecs after LD_PRELOAD issue was fixed 
+  #echo Make sure every operas have same major Chromium ver
+  #conflicts=(opera-{beta,developer}-ffmpeg-codecs)
+  #provides=(opera-{beta,developer}-ffmpeg-codecs)
+  #install -d "$pkgdir"/usr/lib/opera-{beta,developer}/lib_extra
+  #ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-beta/lib_extra/libfmpeg.so
+  #ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-developer/lib_extra/libfmpeg.so
 }
