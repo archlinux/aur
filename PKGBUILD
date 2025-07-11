@@ -1,11 +1,15 @@
-# Maintainer: Geoff Hudson <geoff [at] sadcomputer [dot] co [dot] uk> Contributor: Aaron Miller <aaronm [at] cldtk [dot] com> Contributor: Anthony Boccia <aboccia [at] boccia [dot] me> Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com> Contributor: Bill Durr
-# <billyburly [at] gmail [dot] com>
+# Maintainer: Peter Marheine <peter [at] taricorp [dot] net>
+# Contributor: Geoff Hudson <geoff [at] sadcomputer [dot] co [dot] uk>
+# Contributor: Aaron Miller <aaronm [at] cldtk [dot] com>
+# Contributor: Anthony Boccia <aboccia [at] boccia [dot] me>
+# Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com>
+# Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 # Achilleas Koutsou <achilleas@koutsou.net>
 
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=11.5.0
-_pkgbuild=445
+pkgver=11.6.0
+_pkgbuild=758
 pkgrel=1
 pkgdesc="A business online/offsite backup solution"
 url="https://www.crashplan.com/en-us/small-business/"
@@ -19,7 +23,7 @@ source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuil
         upgrade.sh
         crashplan-pro_upgrade.service
         crashplan-pro_upgrade.path)
-sha1sums=('8d9d38bce262c1ea3b9c16a8a104aa20c1386bef'
+sha1sums=('f391ade98265823c8a6e461f2e9487a5299c7862'
           '194c2022af9809ba9a4694c747db01124c550ffb'
           '8135b6e0fca07b5e3793faa8064ec480efda0063'
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
