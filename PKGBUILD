@@ -28,7 +28,7 @@ depends=(
 )
 
 source=(
-  "${pkgname}-${pkgver}.AppImage::${url}releases/download/v${pkgver}/${pkgname}-${pkgver}.AppImage"
+  "${pkgname}-${pkgver}.AppImage::${url}releases/download/v${pkgver}/balatro-multiplayer-launcher.AppImage"
   "balatro-multiplayer-launcher.desktop"
 
 )
