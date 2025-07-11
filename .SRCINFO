@@ -1,8 +1,8 @@
 pkgbase = mupen64plus-highscore-git
 	pkgdesc = Highscore port of Mupen64Plus
-	pkgver = r85.fcdc05b
+	pkgver = r109.fa1bee4
 	pkgrel = 1
-	url = https://github.com/alice-mkh/mupen64plus-highscore
+	url = https://github.com/highscore-emu/mupen64plus-highscore
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = mupen64plus-highscore-git
 	depends = mupen64plus-video-parallel-highscore-git
 	provides = mupen64plus-highscore
 	conflicts = mupen64plus-highscore
-	source = git+https://github.com/alice-mkh/mupen64plus-highscore.git
+	source = git+https://github.com/highscore-emu/mupen64plus-highscore.git
 	sha256sums = SKIP
 
 pkgname = mupen64plus-highscore-git

@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mupen64plus-highscore-git
-pkgver=r85.fcdc05b
+pkgver=r109.fa1bee4
 pkgrel=1
 pkgdesc="Highscore port of Mupen64Plus"
 arch=('x86_64')
-url="https://github.com/alice-mkh/mupen64plus-highscore"
+url="https://github.com/highscore-emu/mupen64plus-highscore"
 license=('GPL-2.0-only')
 depends=(
   'libhighscore-git'
@@ -18,7 +18,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/alice-mkh/mupen64plus-highscore.git')
+source=('git+https://github.com/highscore-emu/mupen64plus-highscore.git')
 sha256sums=('SKIP')
 
 pkgver() {
