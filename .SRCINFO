@@ -1,12 +1,11 @@
 pkgbase = jfetch
-	pkgdesc = A python-based, minimalist neofetch-like script packed as a binary.
+	pkgdesc = A python-based, minimalist neofetch-like script.
 	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/blobbo7/jfetch
 	arch = x86_64
 	license = GPL
-	makedepends = python-pyinstaller
-	source = https://github.com/blobbo7/jfetch/archive/refs/tags/v0.3.tar.gz
-	sha256sums = de92e1f2a273fcaae5e37fadb642f7b74d22f492fd490bcc722e7cf465aa437f
+	source = https://github.com/blobbo7/jfetch/releases/download/0.3/jfetch
+	sha256sums = bcab6ecb3607642fd2906f9e45c053217575dbca98438061c2d038d9ef241903
 
 pkgname = jfetch
