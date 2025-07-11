@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mupen64plus-rsp-parallel-highscore-git
 pkgver=r122.738c95c
-pkgrel=2
+pkgrel=3
 pkgdesc="ParaLLEl-RSP with mupen64plus-highscore patches"
 arch=('x86_64')
 url="https://github.com/highscore-emu/parallel-rsp"
@@ -11,8 +11,8 @@ makedepends=(
   'cmake'
   'git'
 )
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'mupen64plus-rsp-parallel')
+conflicts=("${pkgname%-git}" 'mupen64plus-rsp-parallel')
 source=('git+https://github.com/highscore-emu/parallel-rsp.git')
 sha256sums=('SKIP')
 
