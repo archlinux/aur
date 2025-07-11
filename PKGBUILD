@@ -2,8 +2,8 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=6.4.1
-_electronversion=36
+pkgver=6.5.0
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="GitHub notifications on your menu bar.(Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c2c848a16db863be7b223809ca9c264eacddad27426c4d3332ed0a4d60d5b47e'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('aab0f6db7962024c1a9284c43ce5f844df7637928d68af51b950d7efbf1b285c'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -64,7 +64,7 @@ prepare() {
         echo "shamefully-hoist=true"
         echo "virtual-store-dir-max-length=80"
         echo "node-linker=hoisted"
-        echo "network-concurrency=10"
+        echo "network-concurrency=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
