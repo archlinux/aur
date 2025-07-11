@@ -1,6 +1,6 @@
 pkgbase = baiduwenku-bin
 	pkgdesc = Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://wenku.baidu.com
 	arch = x86_64
@@ -10,16 +10,15 @@ pkgbase = baiduwenku-bin
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron22
-	depends = nodejs
-	provides = baiduwenku=3.3.0
+	provides = baiduwenku=3.3.1
 	conflicts = baiduwenku
 	conflicts = deepin-wine-baiduwenku
 	options = !strip
 	options = !emptydirs
-	source = baiduwenku-3.3.0.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/wenku-Setup-3.3.0.exe
+	source = baiduwenku-3.3.1.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/wenku-Setup-3.3.1.exe
 	source = LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm
 	source = baiduwenku.sh
-	sha256sums = fde636e12c59b2ed55f05b9ca2642ed14d999facf02a40b9e06e2b27856619ce
+	sha256sums = 27a2bb2e3970ad92a3e65e515174d033cab7d0f158add13b9d10da5cbac2824d
 	sha256sums = eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 

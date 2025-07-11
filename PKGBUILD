@@ -2,7 +2,7 @@
 _pkgname=wenku
 pkgname="baidu${_pkgname}-bin"
 _zhsname='百度文库'
-pkgver=3.3.0
+pkgver=3.3.1
 _electronversion=22
 pkgrel=1
 pkgdesc="Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台"
@@ -16,7 +16,6 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 makedepends=(
     '7zip'
@@ -33,11 +32,15 @@ source=(
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fde636e12c59b2ed55f05b9ca2642ed14d999facf02a40b9e06e2b27856619ce'
+sha256sums=('27a2bb2e3970ad92a3e65e515174d033cab7d0f158add13b9d10da5cbac2824d'
             'eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="strings ${srcdir}/tmp/${_zhsname}.exe  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+}
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/tmp/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
     sed -i -e "
