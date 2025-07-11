@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!gcc-14.patch
 !.nvchecker.toml
+!LICENSE
+!gcc-14.patch

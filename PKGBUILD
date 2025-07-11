@@ -7,8 +7,16 @@ pkgdesc="A beautiful GTK 4 terminal"
 arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/blackbox"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'libgee' 'libpqmarble' 'vte4')
-makedepends=('meson' 'vala')
+depends=(
+  'libadwaita'
+  'libgee'
+  'libpqmarble'
+  'vte4'
+)
+makedepends=(
+  'meson'
+  'vala'
+)
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/blackbox-v$pkgver.tar.gz"
         'gcc-14.patch')
@@ -29,9 +37,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
