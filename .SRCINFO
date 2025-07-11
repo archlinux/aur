@@ -1,0 +1,17 @@
+pkgbase = ndrop-git
+	pkgdesc = Run, show and hide programs via keybind in niri
+	pkgver = r5.12c4f87
+	pkgrel = 1
+	url = https://github.com/Schweber/ndrop
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = scdoc
+	depends = bash
+	depends = niri
+	depends = jq
+	provides = ndrop
+	source = git+https://github.com/Schweber/ndrop.git
+	sha256sums = SKIP
+
+pkgname = ndrop-git
