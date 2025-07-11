@@ -4,13 +4,13 @@
 
 pkgname=tailscale-git
 _pkgname=tailscale
-pkgver=1.59.6+t4e822c031
+pkgver=1.85.198+t04e8d21b0
 pkgrel=1
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
 url="https://tailscale.com"
 license=("MIT")
-makedepends=("git")
+makedepends=("git" "go")
 depends=("glibc")
 optdepends=('networkmanager: DNS resolver integration'
             'openresolv: DNS resolver integration'
@@ -30,11 +30,7 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-    TOOLCHAIN="$PWD/../tailscale-go" tool/go mod vendor
-    # go mod vendor can contribute some changes to go.mod or go.sum.
-    # Revert them so that the version stamp in "tailscale version" doesn't have
-    # "-dirty" suffix.
-    git restore go.mod go.sum
+    TOOLCHAIN="$PWD/../tailscale-go" tool/go mod download -x
 }
 
 build() {
