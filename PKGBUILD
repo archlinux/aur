@@ -6,7 +6,7 @@
 # Contributor: "donaldtrump" [AUR]
 pkgname=osu-lazer
 _pkgname=osu
-pkgver=2025.607.0
+pkgver=2025.710.0
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64')
@@ -14,17 +14,17 @@ url="https://osu.ppy.sh/"
 license=('MIT AND CC-BY-NC-4.0')
 depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-8.0')
 makedepends=('dotnet-sdk-8.0')
-source=("https://github.com/ppy/osu/archive/$pkgver.tar.gz"
+source=("https://github.com/ppy/osu/archive/${pkgver}-lazer.tar.gz"
         "osu-lazer.sh"
         "osu-lazer.desktop"
         "osu-lazer.xml")
-sha256sums=('5c5854ca4f060b474fca4789d8e0737db18565c41b066c02aeba8aa0a020d886'
+sha256sums=('29597d9f1bc30ce079cf4fe8802b19be2721d51cbd7df1d77e9218091255589e'
             '488b52f62445054d0615c334b6bd81ffa70d00964e91384a9cad92c54b216b3d'
             'c22099222c01f33979e17ec0575b864f018f5f416919f9ed1b2b99584a5d37d6'
             'e01a156e7c9bb11ad5b1e1698b029378cb971c29469fc3dceca9421e9a81f3e8')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver-lazer"
   DOTNET_CLI_TELEMETRY_OPTOUT="1" dotnet publish osu.Desktop \
     --framework net8.0 \
     --configuration Release \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver-lazer"
   install -d "$pkgdir/opt/osu-lazer"
   cp -r output/* "$pkgdir/opt/osu-lazer"
   install -Dm755 "$srcdir/osu-lazer.sh" "$pkgdir/usr/bin/osu-lazer"
