@@ -2,7 +2,7 @@
 _appname=dnschanger
 pkgname="${_appname}-desktop-bin"
 _pkgname=DNS-Changer
-pkgver=2.3.4
+pkgver=2.3.5
 _electronversion=33
 pkgrel=1
 pkgdesc="Gather the best DNS servers in a secure application.(Prebuilt version.Use system-wide electron)"
@@ -23,9 +23,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5fde90159cc1444187e2de42aef02b4ed4e1df713919dd6b184e0bc8845e7d3b'
+sha256sums=('c3d3f1d8590fa12cf47dd2da1df5debd5c3e57864a2a658046884caeb7ce1f37'
             'd8cd7d03b1c407ad97d6059dd8d6821ce42ab3bd8e9d39caab2fe4e730c8f737'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname//-/ }/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -34,6 +38,7 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname//-/ }\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
