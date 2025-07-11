@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.0.20.r1.g5dcfd72b
+pkgver=1.1.0.r1.gb96c9e4c
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -82,8 +82,8 @@ build() {
     export CFLAGS+=' -ffat-lto-objects'
     export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
-    export CARGO_TARGET_DIR='gopher64/target'
-    cargo build --release --frozen --manifest-path='gopher64/Cargo.toml'
+    export CARGO_TARGET_DIR='target'
+    cargo build --release --frozen --all-features --manifest-path='gopher64/Cargo.toml'
 }
 
 check() {
@@ -94,12 +94,12 @@ check() {
     export CFLAGS+=' -ffat-lto-objects'
     export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
-    export CARGO_TARGET_DIR='gopher64/target'
-    cargo test --frozen --manifest-path='gopher64/Cargo.toml'
+    export CARGO_TARGET_DIR='target'
+    cargo test --frozen --all-features --manifest-path='gopher64/Cargo.toml'
 }
 
 package() {
-    find gopher64/target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
+    find target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
     
     local _icon
     local _res
