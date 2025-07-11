@@ -1,7 +1,7 @@
 pkgbase = glab-git
 	pkgdesc = Cli tool to help work seamlessly with Gitlab from the command line
 	pkgver = 1.62.0.r6.gd9ebe10c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/cli
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = glab-git
 	depends = glibc
 	provides = glab=1.62.0.r6.gd9ebe10c
 	conflicts = glab
-	replaces = gitlab-glab-git
 	source = glab-git::git+https://gitlab.com/gitlab-org/cli.git
 	sha256sums = SKIP
 

@@ -4,7 +4,7 @@
 
 pkgname=glab-git
 pkgver=1.62.0.r6.gd9ebe10c
-pkgrel=1
+pkgrel=2
 pkgdesc='Cli tool to help work seamlessly with Gitlab from the command line'
 arch=(x86_64)
 url="https://gitlab.com/gitlab-org/cli"
@@ -14,7 +14,6 @@ makedepends=(git
              go)
 provides=("glab=$pkgver")
 conflicts=(glab)
-replaces=(gitlab-glab-git)
 source=("$pkgname::git+$url.git")
 sha256sums=(SKIP)
 
