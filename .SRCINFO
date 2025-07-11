@@ -1,6 +1,6 @@
 pkgbase = emmylua-ls-bin
 	pkgdesc = Lua Language Server based on EmmyLua-Analyzer-Rust
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/EmmyLuaLs/emmylua-analyzer-rust
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = emmylua-ls-bin
 	license = MIT
 	provides = emmylua-ls
 	conflicts = emmylua-ls
-	source_x86_64 = emmylua-ls-bin-0.8.2-x64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.8.2/emmylua_ls-linux-x64.tar.gz
-	sha256sums_x86_64 = d2c1a8e4f13947e1ae91d65b5d5f6ee2db78679bd322211ede0dfba316bf0e60
-	source_aarch64 = emmylua-ls-bin-0.8.2-aarch64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.8.2/emmylua_ls-linux-aarch64-glibc.2.17.tar.gz
-	sha256sums_aarch64 = 20feee98a1c3a5a3ac8cad394073d90193f1037ed5b4fa3017c9fefa8fa4e7c9
-	source_riscv64 = emmylua-ls-bin-0.8.2-riscv64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.8.2/emmylua_ls-linux-riscv64.tar.gz
-	sha256sums_riscv64 = 49eac049ee04663d17bfcfdba9e8ce3964cdaf4852de2a175804bd5f806cfa85
+	source_x86_64 = emmylua-ls-bin-0.9.0-x64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.9.0/emmylua_ls-linux-x64.tar.gz
+	sha256sums_x86_64 = 00494d9f14363e22cea3bf5ef21c8eaf83a2481e3edca7152f7585b145a031e0
+	source_aarch64 = emmylua-ls-bin-0.9.0-aarch64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.9.0/emmylua_ls-linux-aarch64-glibc.2.17.tar.gz
+	sha256sums_aarch64 = ffa64ca2a1429131b44d31da553464c9f48b6baa3ac79fa89b1bb550a16429f9
+	source_riscv64 = emmylua-ls-bin-0.9.0-riscv64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.9.0/emmylua_ls-linux-riscv64.tar.gz
+	sha256sums_riscv64 = f82ed0b2e6d0517d0558fa36ca5d26ea72700f6ada8ccaf49f9dd06326824ae7
 
 pkgname = emmylua-ls-bin
