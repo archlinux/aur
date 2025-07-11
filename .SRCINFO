@@ -1,7 +1,7 @@
 pkgbase = python-asciitree
 	pkgdesc = Draws +-- ASCII Trees
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 4
 	url = http://github.com/mbr/asciitree
 	arch = any
 	license = MIT

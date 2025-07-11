@@ -4,7 +4,7 @@
 _name=asciitree
 pkgname=python-asciitree
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Draws +-- ASCII Trees'
 arch=('any')
 url='http://github.com/mbr/asciitree'
