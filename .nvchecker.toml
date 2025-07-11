@@ -1,0 +1,4 @@
+[mullvad-vpn-bin]
+source = "git"
+git = "https://github.com/mullvad/mullvadvpn-app.git"
+exclude_regex = ".*(alpha|beta|rc).*"
