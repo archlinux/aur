@@ -3,8 +3,8 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=glab-git
-pkgver=1.22.0.r168.g11a81099
-pkgrel=2
+pkgver=1.62.0.r6.gd9ebe10c
+pkgrel=1
 pkgdesc='Cli tool to help work seamlessly with Gitlab from the command line'
 arch=(x86_64)
 url="https://gitlab.com/gitlab-org/cli"
@@ -38,12 +38,12 @@ build() {
       -modcacherw \
       -ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.version=v$pkgver -X main.build=$_date -X main.usageMode=prod -s -w" \
       -o build \
-      ./cmd/glab/main.go
+      ./cmd/glab
 }
 
 package() {
     cd "$pkgname"
-    install -Dm0755 build/main "$pkgdir/usr/bin/glab"
+    install -Dm0755 build/glab "$pkgdir/usr/bin/glab"
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 
     # Shell completions
