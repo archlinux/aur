@@ -10,7 +10,7 @@ pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('opengl-driver' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme' 'mimalloc')
+depends=('opengl-driver' 'sdl3' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme' 'mimalloc')
 optdepends=('spirv-cross: OpenGL ES backends'
             'shaderc: OpenGL ES backends'
             'gamemode: GameMode integration'
