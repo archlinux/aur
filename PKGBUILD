@@ -15,10 +15,10 @@ provides=('snazy')
 conflicts=('snazy')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.57.0/snazy-v0.57.0-linux-arm64.tar.gz")
-sha256sums_aarch64=('bfdf2bc6519e972b593783f18644279c0ea31ac95080bc95149d0ebcfa04dd25')
+sha256sums_aarch64=('a41ed9739f4b17ac45a94dcd57cbecf59fa8e2855b6512f9a1c0054b240eab09')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.57.0/snazy-v0.57.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('0d7d087c3a9501214021e4ee20f1791ec5d086bda7191bfd10a6df0e020bb933')
+sha256sums_x86_64=('2fb6f4ccb12cfb0a447be1d792b82f66c34e9459a63a8a8667d6fc07b80a6cbd')
 
 package() {
 	install -Dm755 "./snazy" "${pkgdir}/usr/bin/snazy"
