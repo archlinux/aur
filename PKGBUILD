@@ -3,9 +3,9 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname='有道云笔记'
-pkgver=8.1.41
+pkgver=8.1.51
 _electronversion=18
-_reldate='%2F2025%2F06%2F16%2F453421a8'
+_reldate='%2F2025%2F07%2F04%2F67e287a0'
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -29,11 +29,12 @@ source=(
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b3595ff15ea8ae2cf88bd089803c1bc2225fd8cb9d0879630ee01daa90853b97'
+sha256sums=('2899b36ebe0f09c243d2ac2c7d8efd004f90e7a4777ce91612c47e6973762f28'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_zhsname}/${pkgname%-bin}" | grep -o 'Electron/[0-9.]+' | cut -d'/' -f2 | cut -d'.' -f1)"
+    _electronversion="$(strings "${srcdir}/opt/${_zhsname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
     sed -i -e "
