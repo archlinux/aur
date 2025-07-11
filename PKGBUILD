@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync"
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
 arch=("any")
@@ -27,7 +27,7 @@ optdepends=(
 makedepends=('git' 'maven')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync-git')
-sha256sums=('6e0f06781abcc724048cbb21dc15c556d38793cdc8472b87c8de2a682a215bad')
+sha256sums=('a587fdeafa3b493056135930a1d82c14f89d8d36279f3fd1dffec0e384768bdd')
 
 check_java_version() {
     local java_version
