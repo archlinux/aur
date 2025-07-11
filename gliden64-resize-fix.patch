@@ -1,0 +1,28 @@
+From 6f75824c7213c18b6cc6e7a2c5513796f24c2c69 Mon Sep 17 00:00:00 2001
+From: Alice Mikhaylenko <alicem@gnome.org>
+Date: Sun, 11 May 2025 22:35:38 +0400
+Subject: [PATCH] mupen64plus_DisplayWindow: Actually resize it
+
+I'm not sure why it's not being done right now; it works in RMG so I'm
+probably missing something, but explicitly doing a resize makes it work.
+---
+ .../OpenGLContext/mupen64plus/mupen64plus_DisplayWindow.cpp    | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/Graphics/OpenGLContext/mupen64plus/mupen64plus_DisplayWindow.cpp b/src/Graphics/OpenGLContext/mupen64plus/mupen64plus_DisplayWindow.cpp
+index 80bdbfad..70f5b27a 100644
+--- a/src/Graphics/OpenGLContext/mupen64plus/mupen64plus_DisplayWindow.cpp
++++ b/src/Graphics/OpenGLContext/mupen64plus/mupen64plus_DisplayWindow.cpp
+@@ -188,6 +188,9 @@ bool DisplayWindowMupen64plus::_resizeWindow()
+ 	m_height = m_screenHeight = m_resizeHeight;
+ 
+ 	_setBufferSize();
++
++	CoreVideo_ResizeWindow(m_resizeWidth, m_resizeHeight);
++
+ 	opengl::Utils::isGLError(); // reset GL error.
+ 	return true;
+ }
+-- 
+2.49.0
+

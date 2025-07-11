@@ -8,3 +8,4 @@
 !.nvchecker.toml
 !LICENSE
 !gliden64-framebuffer-fix.patch
+!gliden64-resize-fix.patch
