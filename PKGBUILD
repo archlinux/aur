@@ -27,7 +27,7 @@ prepare() {
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
 
-    make all || return 1
+    CFLAGS="${CFLAGS} -std=gnu17" make all || return 1
 }
 
 package() {
