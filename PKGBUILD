@@ -4,8 +4,8 @@
 _slug=alefsbits
 _name=alefsbits
 pkgname=vcvrack-alefsbits
-pkgver=2.5.54
-pkgrel=3
+pkgver=2.5.60
+pkgrel=1
 pkgdesc="alef's bits VCV Rack modules"
 arch=(x86_64 aarch64)
 url='https://github.com/alefnull/alefsbits'
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alefnull/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0b2b7270ec8e4ed8efc8bd0d761a0099d04aeb1c08e50fae2a133367cdc97be')
+sha256sums=('c81d19ff0b86bc442222bae7d70bec4c6adaa948afe3f6d3b951a2c2764474b2')
 
 build() {
   cd $_name-$pkgver
