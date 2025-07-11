@@ -1,7 +1,7 @@
 pkgbase = serial-monitor-git
 	pkgdesc = Cross-platform command line serial terminal program (git)
-	pkgver = r35.7797564
-	pkgrel = 2
+	pkgver = r39.9cc100b
+	pkgrel = 1
 	url = https://github.com/dhylands/serial-monitor
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,6 @@ pkgbase = serial-monitor-git
 	provides = serial-monitor
 	conflicts = serial-monitor
 	source = git+https://github.com/dhylands/serial-monitor
-	source = serial-monitor-git-serial-version.patch::https://github.com/dhylands/serial-monitor/commit/db0470db30531188d1385e989b332ebae0410ffa.patch
 	sha256sums = SKIP
-	sha256sums = 5adc912c8d40f89cee5ed9fea5a2e7011e6fbd17178eba16d7b5485d0c90def6
 
 pkgname = serial-monitor-git
