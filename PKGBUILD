@@ -1,6 +1,6 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Maintainer: nobody <nobody@example.org>
 
 pkgname='python-bake-git'
 _pkgname="${pkgname/-git/}"
