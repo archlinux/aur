@@ -2,7 +2,7 @@
 
 _suffix=rc
 pkgname="obs-studio-${_suffix}"
-_pkgver=31.1.0
+_pkgver=31.1.1
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 epoch=11
@@ -115,15 +115,15 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
 )
-source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v3.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v4.tar.xz")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v5.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v5.tar.xz")
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
 )
-sha256sums_x86_64=("cb7225c7a937ac4cdc9c41700061f45cccc640d696902357782e57f8250bf43a")
-sha256sums_aarch64=("e82388ef61776a88701b37d96e44f65dcc91f4d4f205f4f17cdc0d50f4e6a7a7")
+sha256sums_x86_64=("df38ef6d8078895953d224a58dd811b83110b4f8644c5cd2b6246d04b0023ee6")
+sha256sums_aarch64=("b1ebcedbe63657c7f38a4d547398a4759544f75d955777eea386052abc9c9228")
 
 if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
