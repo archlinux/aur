@@ -1,0 +1,15 @@
+pkgbase = superfan
+	pkgdesc = Supermicro fan control for X9 and X10 series motherboards
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Doridian/superfan
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = lm_sensors
+	source = superfan-1.0.0.tar.gz::https://github.com/Doridian/superfan/archive/refs/tags/v1.0.0.tar.gz
+	source = superfan.service
+	sha256sums = ecaa850098ee05452555e5dfc6e29d1f635fedce363aeaddb6837df520041837
+	sha256sums = 14f9f6d88b69872c8852dd661b9886e0e53b062f0d68e4bfe5b31c24e1507219
+
+pkgname = superfan
