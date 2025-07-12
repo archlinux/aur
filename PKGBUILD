@@ -4,7 +4,7 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore
 pkgver=40.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A retro gaming application for the GNOME desktop"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
@@ -16,27 +16,33 @@ depends=(
   'glib2'
   'glibc'
   'grilo'
-  'gtk3'
+  'gtk4'
   'hicolor-icon-theme'
   'libarchive'
-  'libhandy'
+  'libadwaita'
   'libmanette'
   'librsvg'
   'libsoup3'
   'libxml2'
-  'retro-gtk'
+  'retro-gtk-git'
   'sqlite'
-  'tracker3'
+  'tinysparql'
 )
-makedepends=('git' 'meson' 'vala')
-checkdepends=('appstream-glib')
+makedepends=(
+  'git'
+  'meson'
+  'vala'
+)
+checkdepends=(
+  'appstream-glib'
+)
 optdepends=(
   'libretro-beetle-ngp: Support for Neo Geo Pocket and Neo Geo Pocket Color games'
   'libretro-beetle-pce-fast: NEC PC Engine/CD core'
   'libretro-beetle-pce: NEC PC Engine/SuperGrafx/CD core'
   'libretro-beetle-psx-hw: Sony PlayStation core'
   'libretro-beetle-psx: Sony PlayStation core'
-#  'libretro-beetle-vb: Support for Virtual Boy games'
+  'libretro-beetle-vb: Support for Virtual Boy games'
 #  'libretro-beetle-wswan: Support for WonderSwan and WonderSwan Color games'
   'libretro-beetle-supergrafx: NEC SuperGrafx core'
   'libretro-blastem: Sega Mega Drive core'
@@ -54,7 +60,7 @@ optdepends=(
   'libretro-gambatte: Nintendo Game Boy/Game Boy Color core'
 #  'libretro-gearsystem: Support for Game Gear, Master System and SG-1000 games'
   'libretro-genesis-plus-gx: Sega MS/GG/MD/CD core'
-#  'libretro-handy: Support for Atari Lynx games'
+  'libretro-handy: Support for Atari Lynx games'
   'libretro-kronos: Sega Saturn core'
   'libretro-melonds: Nintendo DS core'
   'libretro-mesen-s: Super Nintendo Entertainment System core'
@@ -68,38 +74,28 @@ optdepends=(
   'libretro-picodrive: Sega MS/MD/CD/32X core'
   'libretro-play: Sony PlayStation 2 core'
   'libretro-ppsspp: Sony PlayStation Portable core'
-#  'libretro-prosystem: Support for Atari 7800 games'
+  'libretro-prosystem: Support for Atari 7800 games'
   'libretro-retrodream: Sega Dreamcast core'
   'libretro-sameboy: Nintendo Game Boy/Game Boy Color core'
   'libretro-scummvm: ScummVM core'
   'libretro-shaders-slang: Collection of shaders for libretro'
   'libretro-snes9x: Super Nintendo Entertainment System core'
-#  'libretro-stella2014: Support for Atari 2600 games'
+  'libretro-stella2014: Support for Atari 2600 games'
   'libretro-yabause: Sega Saturn core'
   'retroarch: Reference frontend for the libretro API'
 )
 provides=('gnome-games')
 conflicts=('gnome-games')
-source=("https://gitlab.gnome.org/World/highscore/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
-        'tracker3.patch'
-        'meson-0.60.patch'
-        'libsoup3.patch')
-sha512sums=('39e1abfe4dae8a349449d8a42070a5f1eb9e7556c5857477ef24213710aff09faebffd0e77ce1aaf22f65ea3e7d057c6f8b590810dcab97324f8772dd22a31fa'
-            'b7e60604171b3189cd38cbfdb165d29d524a9f08c807fef7dccf251b52a745d60cfadafc86e305634c2313f04989664e26d0483cd86fb51ea176ecff47e38967'
-            '714e7cabbb45b63eddccfe295976a29bc85b577c2040a55903b84a2270fa7b63621cbed50c0bfecf1f17a8a8eb28d98e0a3f7c611ba30a97b62a44ffd6566340'
-            'd02a285893435d741569df8a4f9ecc5416212e239393784d3b69ec50ad8f7f13448a8478be7ac8cad17cd8692f796001b05d60eaa384d24ca40cbbaa662bbea9')
+_commit=b6389d3d279d5904f62249dd5b771523b6eef930  # branch/pre-rewrite
+source=("git+https://gitlab.gnome.org/World/highscore.git#commit=${_commit}")
+sha512sums=('338c375e41d0f8067f4072f11493e3b4235607a4a8db4242fe315987a59a8aec9a0cbf90d5e9c602e5f715449eaf3e1cf03cf1aa9cb6b2dbe9f476beb6c3a04c'
+            'f49f71bf53d206275d0533d57c264952fa65c763e02edde355d9ec5c7379ac27c9e6a7e09f35e9a786c56125585af736799f5767730f8713557d8923232a0645'
+            '0a9d66b764d91d6f4fa4741c1b6024b55d3c12d6461738d486bfa6c916856e2dd647b76a4d52f9fe0fa44239c24789fe4ec6d6b7a73f7275e0b91487b2e37a1c'
+            '26f0e6914d6c5d23cb87e59a91a8532e74575664b7eef36f6146e326bd9d940792f51a474b3359d54f3eebc4a8a89bd934a9d26550195549ffa73f99c482f2ba'
+            '119aec090231c1760f0daf98f76936877f9ee22ff1b7c9a3915810d9882daf22bdc5b69fccd7a37ee76b06450234e76d496a6aed536c9c5c1bb7cf4e869e3260')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-
-  # Port to Tracker 3
-  patch -Np1 -i ../tracker3.patch
-
-  # Fix build with meson 0.60 (Alpine)
-  patch -p1 -i ../meson-0.60.patch
-
-  # Port to libsoup3 (Alpine)
-  patch -p1 -i ../libsoup3.patch
+  cd "$pkgname"
 
   # Replace pcsx_rearmed with mednafen_psx
   mv flatpak/libretro-cores/{pcsx_rearmed,mednafen_psx}.libretro
@@ -110,18 +106,20 @@ prepare() {
 }
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson "$pkgname" build -Dprofile=development
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  ln -s /usr/bin/org.gnome.World.Highscore.Devel "$pkgdir/usr/bin/$pkgname"
 
   # Install *.libretro files
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm644 flatpak/libretro-cores/*.libretro -t "$pkgdir/usr/lib/libretro/"
 }
