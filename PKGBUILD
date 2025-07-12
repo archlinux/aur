@@ -1,5 +1,5 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
-# Contributor: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 
 pkgname=perl-test2-tools-command
 pkgver=0.20
