@@ -1,6 +1,6 @@
 pkgbase = inputplumber-bin
 	pkgdesc = Open source input router and remapper daemon for Linux
-	pkgver = v0.59.3
+	pkgver = v0.60.0
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/inputplumber
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = inputplumber-bin
 	depends = libiio
 	provides = inputplumber
 	conflicts = inputplumber-git
-	source = inputplumber-v0.59.3.tar.gz::https://github.com/ShadowBlip/inputplumber/releases/download/v0.59.3/inputplumber-x86_64.tar.gz
-	sha256sums = bb5f5b4238db8516d203382dca964bd86df70c942f7bc20cfc1690524a2bbfa1
+	source = inputplumber-v0.60.0.tar.gz::https://github.com/ShadowBlip/inputplumber/releases/download/v0.60.0/inputplumber-x86_64.tar.gz
+	sha256sums = d853a0634e6c826a50c75e983bae2f35d08ac0ce7893440fb97a6335c91d0c1f
 
 pkgname = inputplumber-bin
