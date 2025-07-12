@@ -1,0 +1,17 @@
+pkgbase = sameboy-highscore-git
+	pkgdesc = Highscore port of SameBoy
+	pkgver = r2664.06dafde
+	pkgrel = 1
+	url = https://github.com/highscore-emu/SameBoy
+	arch = x86_64
+	license = Expat
+	makedepends = git
+	makedepends = meson
+	depends = libhighscore-git
+	depends = rgbds
+	provides = sameboy-highscore
+	conflicts = sameboy-highscore
+	source = git+https://github.com/highscore-emu/SameBoy.git
+	sha256sums = SKIP
+
+pkgname = sameboy-highscore-git
