@@ -1,10 +1,5 @@
-# Maintainer:  nesk_aur
-# Contributor: Olivier Brunel <jjk at jjacky.com>
-# Contributor: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
-# Contributor: David Arroyo <droyo@aqwari.us>
-# Contributor: Andrew O'Neill <andrew at meanjollies dot com>
-# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
-# Contributor: Josh VanderLinden <arch@cloudlery.com>
+# Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
+
 pkgname=execline-musl
 _pkgname=${pkgname%-musl}
 pkgver=2.9.7.0
