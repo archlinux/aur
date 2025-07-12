@@ -3,7 +3,7 @@
 _pkgname=gnome-settings-daemon
 pkgname="${_pkgname}-git"
 pkgver=49.alpha.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Settings Daemon"
 _gnome_git="https://gitlab.gnome.org/GNOME"
 url="${_gnome_git}/${_pkgname}.git"
@@ -14,11 +14,13 @@ arch=(
   aarch64
   armv7h
 )
-license=(LGPL-2.1-only)
+license=(
+  GPL-2.0-or-later
+  LGPL-2.0-or-later
+)
 depends=(
   alsa-lib
   bash
-  cairo
   dconf
   fontconfig
   gcc-libs
@@ -29,7 +31,7 @@ depends=(
   glibc
   gnome-desktop-4
   gsettings-desktop-schemas
-  gtk3
+  gtk4
   libcanberra-pulse
   libcolord
   libcups
@@ -40,21 +42,12 @@ depends=(
   libnotify
   libp11-kit
   libpulse
-  librsvg
-  libwacom
   libx11
-  libxext
   libxfixes
-  libxi
-  nss
-  pango
   polkit
   pulse-native-provider
-  systemd
   systemd-libs
   upower
-  wayland
-  xorg-xrdb
 )
 makedepends=(
   docbook-xsl
