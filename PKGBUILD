@@ -1,7 +1,8 @@
+# Contributor: Karel-van-de-plassche <karelvandeplassche@gmail.com>
 # Contributor: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 
 pkgname=keepass-keetheme
-pkgver=0.10.2
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="plugin that provides a dark theme for keepass"
 arch=('any')
