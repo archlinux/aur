@@ -25,16 +25,15 @@ prepare() {
 }
 
 package() {
-    install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-$arch.AppImage" "$pkgdir/$_install_path/$_pkgname.AppImage"
-    install -Dm644 "$srcdir/squashfs-root/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-$arch.AppImage" "$pkgdir/$_install_path/$_pkgname.AppImage"
+	install -Dm644 "$srcdir/squashfs-root/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-    # Install all available icon sizes
-    for size in 16 32 48 64 128 256 512 1024; do
-        iconpath="$srcdir/squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png"
-        if [[ -f "$iconpath" ]]; then
-            install -Dm644 "$iconpath" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png"
-        fi
-    done
+	for _icons in 1024x1024;do
+	install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/$_icons/apps/$_pkgname.png" \
+		"$pkgdir/usr/share/icons/hicolor/$_icons/apps/$_pkgname.png"
+	done
+	install -Dm644 "$srcdir/$_pkgname.png" \
+		"$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
 
-    install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
