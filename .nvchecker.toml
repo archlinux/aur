@@ -1,4 +1,4 @@
 [typstyle]
 source = "git"
-git = "https://github.com/Enter-tainer/typstyle.git"
+git = "https://github.com/typstyle-rs/typstyle.git"
 prefix = "v"
