@@ -4,7 +4,7 @@
 : ${_build_debug_enabled:=false}
 
 pkgname=cloud-sql-proxy
-pkgver=2.17.1
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
@@ -16,7 +16,7 @@ if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('9aa6692e82fe06f3eb6584dba8085fcef5c4718f4c0e22b430fcd8cfe1525e3cbdd4d3e3ce80776f7825c1a75ceae82add77747c289fbe565b383b34427b4ce7')
+b2sums=('87aa41f0e15144f2b32e84f8172cd8fda7221c812c75800d33db44c2390eb76c2b2c477bb85b1e59f1a03b1f02ce422d7165b8531f39f2dca1b5a5132face9af')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -70,6 +70,7 @@ package() {
 
   install -Dm755 -t "${pkgdir}"/usr/bin \
     out/${pkgname}
+
   install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname} \
     LICENSE
 }
