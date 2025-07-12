@@ -1,12 +1,12 @@
 # Maintainer: Aubrey Carlson (Carlson) <aubreycarlson24@outlook.com>
 
 _javaver=8
-_zuluver=8.84.0.15
-_jdkver=8.0.442
+_zuluver=8.86.0.25
+_jdkver=8.0.452
 
 pkgname="openjdk-zulu${_javaver}-ca-fx-bin"
 pkgver="${_javaver}+${_zuluver}+${_jdkver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -35,7 +35,7 @@ provides=("java-environment=${_javaver}"
           "jre${_javaver}-openjdk-headless=${_javaver}"
           "java${_javaver}-openjfx=${_javaver}")
 source=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
-b2sums=("c6fc9c5f92e930ca489b97979a8ea47cc759b5546c587772caa768f4ca4cc10af6b07ca7f4f308e67572294b5adb8862313059ef2ab3ca4a5e7c4c0a1a13efe2")
+b2sums=('00fc5898f81483a48693adfb68696f606c8d78a37bc7e7e8e3ee4dc2c71f7605c8d7c81c4b52aea588562bf4d7868ecdb399ffad406824c9056e6dd0f5ec79bd')
 install="install_${pkgname}.sh"
 
 _jvmdir="/usr/lib/jvm/${pkgname}"
@@ -67,16 +67,16 @@ package() {
   # Conf
   mv "${pkgdir}${_jvmdir}"/jre/lib/management/jmxremote.password{.template,}
   mv "${pkgdir}${_jvmdir}"/jre/lib/management/snmp.acl{.template,}
-  install -dm 755 "${pkgdir}/etc/${pkgname}"
+  install -dm 755 "${pkgdir}/etc/openjdk-zulu/${pkgname}"
   for f in "${_conf_files[@]}"; do
     _file="${_jvmdir}/jre/lib/$f"
-    install -D -m 644 "${pkgdir}${_file}" "${pkgdir}/etc/${pkgname}/$f"
-    ln -sf "/etc/${pkgname}/$f" "${pkgdir}${_file}"
+    install -Dm 644 "${pkgdir}${_file}" "${pkgdir}/etc/openjdk-zulu/${pkgname}/$f"
+    ln -sf "/etc/openjdk-zulu/${pkgname}/$f" "${pkgdir}${_file}"
   done
 
   # Legal
-  install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -m 644 ASSEMBLY_EXCEPTION LICENSE THIRD_PARTY_README "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm 644 ASSEMBLY_EXCEPTION LICENSE THIRD_PARTY_README "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Man pages
   for f in bin/*; do
