@@ -1,19 +1,20 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=renpy
-pkgver=8.3.4.24120703
+pkgver=8.4.0.25071206
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs"
 arch=('i686' 'x86_64')
 license=('MIT')
 url='http://www.renpy.org'
 depends=(
-	'glibc' 'ffmpeg6.1' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
+	'glibc' 'ffmpeg' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
 	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer'
-	'sdl2_gfx' 'sdl2_ttf' 'python-future' 'python-ecdsa')
+	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'python-legacy-cgi' 'assimp' 'ftgl')
 makedepends=(
-	'cython0' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
-	'python-sphinx_rtd_theme' 'python-build' 'python-installer' 'python-wheel' 'git')
+	'cython' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
+	'python-sphinx_rtd_theme' 'python-build' 'python-installer' 'python-wheel' 'git'
+	'python-future')
 provides=('python-renpy')
 replaces=('renpy64')
 install='renpy.install'
@@ -21,35 +22,28 @@ install='renpy.install'
 source=("git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}"
         "${pkgname}.desktop"
         "${pkgname}-launcher.sh")
-sha256sums=('e11a92b866fce4ed6160a0d55b1b629c5844caa1d5165239cc6d14847af52282'
+sha256sums=('98641f646f5bfd2288c8c42e5ce1f4a15b98666ddb23f14c790ad270191077c7'
             'b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6'
             'a38112859bf659d48c30be5c7c20ed1a1c72271ffd74eb4b4e730afbd87d73dc')
 
 build() {
 	cd "${pkgname}"
 
-	export CFLAGS+=' -I/usr/include/ffmpeg6.1 -L/usr/lib/ffmpeg6.1 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration'
-	export RENPY_DEPS_INSTALL='/usr/include/ffmpeg6.1:/usr/lib/ffmpeg6.1:/usr'
-
 	# This always return the last version from HEAD regardless of what version we are building.
 	#python 'distribute.py' --vc-version-only
+
+	export CFLAGS+=" $(pkg-config --cflags ftgl)"
 
 	install -Dm644 <(cat << EOF
 branch = 'master'
 nightly = False
 official = False
 version = '$pkgver'
-version_name = 'Second Star to the Right'
+version_name = 'Tomorrowland'
 EOF
 	) 'renpy/vc_version.py'
 
-	pushd 'module'
-		python -m build --wheel --no-isolation
-		#rm -rf "$srcdir/tempinstall"
-		#python -m installer --destdir="$srcdir/tempinstall" dist/*.whl
-	popd
-
-	python -m compileall 'renpy'
+	python -m build --wheel --no-isolation
 
 	#local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
 	#for game in 'tutorial' 'launcher' 'the_question'; do
@@ -68,7 +62,7 @@ package() {
 	depends+=('python-pefile' 'python-requests' 'python-rsa' 'python-six')
 
 	#pack data
-	mkdir -p "$pkgdir/usr/share/$pkgname"
+	mkdir -p "$pkgdir/"{usr/share/{$pkgname,doc/$pkgname},}
 
 	install -D -m755 "${pkgname}-launcher.sh" "$pkgdir/usr/bin/$pkgname"
 	install -D -m644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
@@ -82,7 +76,5 @@ package() {
 	install -d -m755 "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 	ln -s '/usr/bin/renpy' "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 
-	#pack modules
-	cd 'module'
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
