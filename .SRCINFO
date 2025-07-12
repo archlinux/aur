@@ -1,7 +1,8 @@
 pkgbase = creality-print-bin
 	pkgdesc = 3D slicer for Creality printers
-	pkgver = 6.2.0.2827
+	pkgver = 6.1.2.2458
 	pkgrel = 1
+	epoch = 1
 	url = https://www.creality.com
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -17,27 +18,29 @@ pkgbase = creality-print-bin
 	depends = gst-plugins-base-libs
 	depends = gstreamer
 	depends = gtk3
-	depends = libdeflate
 	depends = libgl
+	depends = libsrtp
+	depends = libusrsctp
 	depends = libx11
-	depends = mesa-amber
+	depends = nspr
 	depends = nss
 	depends = pango
 	depends = sh
 	depends = webkit2gtk-4.1
+	depends = x264
 	depends = zlib
 	optdepends = python
 	optdepends = slicer-udev: 3D printer connection rules
 	optdepends = wayland
-	provides = creality-print=6.2.0
+	provides = creality-print=6.1.2
 	conflicts = creality-print
 	source = creality-print.sh
-	source = creality-print-6.2.0-README.md::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v6.2.0/README.md
-	source = creality-print-6.2.0-LICENSE.txt::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v6.2.0/LICENSE.txt
+	source = creality-print-6.1.2-README.md::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v6.1.2/README.md
+	source = creality-print-6.1.2-LICENSE.txt::https://github.com/CrealityOfficial/CrealityPrint/raw/refs/tags/v6.1.2/LICENSE.txt
 	sha256sums = 11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1
 	sha256sums = 4477dda5e6d2b3e53018b180469716c199d953675dd787b3afe48ed6995557e4
 	sha256sums = 5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b
-	source_x86_64 = creality-print-6.2.0.2827-x86_64.AppImage::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v6.2.0/CrealityPrint_Ubuntu2404-V6.2.0.2827-x86_64-Release.AppImage
-	sha256sums_x86_64 = f865b2b623fbc141acec53cb9abbaf7a5e6655698e37daecf827d21468f99b22
+	source_x86_64 = creality-print-6.1.2.2458-x86_64.AppImage::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v6.1.2/CrealityPrint_Ubuntu2404-V6.1.2.2458-x86_64-Release.AppImage
+	sha256sums_x86_64 = 14237239892fe49607cdb5efdde6b1576a7d4dceac78a630e729bc3b857e240b
 
 pkgname = creality-print-bin
