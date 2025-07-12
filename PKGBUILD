@@ -3,16 +3,16 @@
 pkgname=cef-minimal-obs-bin
 _cefver="127.3.4"
 _version=${_cefver//-/_}
-_commit="e9e2e14"
+_commit="a0ca18e"
 _cefbranch="6533"
 _chromiumver="127.0.${_cefbranch}.100"
-_rebuild="3" # The tarball sometime can get rebuild by OBS Project
+_rebuild="5" # The tarball sometime can get rebuild by OBS Project
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
-pkgrel=2
-epoch=1
+pkgrel=1
+epoch=2
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("x86_64" "aarch64")
-url="https://github.com/obsproject/cef/tree/6533-fix-stutter"
+url="https://github.com/tytan652/cef/tree/6533-fix-stutter-and-osr-extra-info"
 license=(BSD-3-Clause)
 depends=(
   "alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
@@ -25,10 +25,10 @@ provides=("cef-minimal-obs=$pkgver")
 conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
 options=('!lto' '!strip' 'debug')
-source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v3.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v4.tar.xz")
-sha256sums_x86_64=("cb7225c7a937ac4cdc9c41700061f45cccc640d696902357782e57f8250bf43a")
-sha256sums_aarch64=("e82388ef61776a88701b37d96e44f65dcc91f4d4f205f4f17cdc0d50f4e6a7a7")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v5.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v5.tar.xz")
+sha256sums_x86_64=("df38ef6d8078895953d224a58dd811b83110b4f8644c5cd2b6246d04b0023ee6")
+sha256sums_aarch64=("b1ebcedbe63657c7f38a4d547398a4759544f75d955777eea386052abc9c9228")
 
 prepare() {
   cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
