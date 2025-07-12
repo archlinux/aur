@@ -2,7 +2,7 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.62
+pkgver=5.25.72
 _electronversion=32
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -26,11 +26,12 @@ source=(
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('22fc909049818630bc092da08471b31fd5f276c09f5350e9f6e5dcc4e4e85ed4'
-            '7508831687e1d9431d22b02fc49166e142f79497f6a938563d3b4f7d8a54c8ee'
+sha256sums=('97c042377ad988257bb9cb384609abf7f4f783518347482686c242b7c36ecf88'
+            '165291deda7ce854a2cb1bf0fda0c0186c165f35be1d727ffe5285b4d36acca3'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
-    _electronversion="strings ${srcdir}/tmp/${pkgname%-bin}.exe  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+    _electronversion="$(strings "${srcdir}/tmp/${pkgname%-bin}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
     sed -i -e "
