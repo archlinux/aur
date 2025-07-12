@@ -2,7 +2,7 @@
 _appname=ting_en
 pkgname="eusoft-${_appname//_/-}-bin"
 _zhname='每日英语听力'
-pkgver=10.1.3
+pkgver=10.2.0
 _electronversion=11
 pkgrel=1
 pkgdesc="Listening statistics, note synchronization, and voice highlighting follow-up make learning English easy and enjoyable for you.(Prebuilt version.Use system-wide electron)听力统计、笔记同步、语音高亮跟随，让您轻松愉快学英语"
@@ -24,7 +24,11 @@ source=(
 )
 sha256sums=('5806324c371d9115f7e7f46ead8816a3a2ba5e797403369cd40ae49111c4f5fc'
             '17651cf7ae49b0372b6b6812d8b3b066203892c9fbe0b04b25efec0ab038c12b'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_zhname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g

@@ -1,6 +1,6 @@
 pkgbase = eusoft-ting-en-bin
 	pkgdesc = Listening statistics, note synchronization, and voice highlighting follow-up make learning English easy and enjoyable for you.(Prebuilt version.Use system-wide electron)听力统计、笔记同步、语音高亮跟随，让您轻松愉快学英语
-	pkgver = 10.1.3
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = http://dict.eudic.net/ting
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = eusoft-ting-en-bin
 	depends = ffmpeg
 	conflicts = eusoft-ting-en
 	conflicts = eudic-ting_en
-	source = eusoft-ting-en-10.1.3.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb
+	source = eusoft-ting-en-10.2.0.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb
 	source = LICENSE.html
 	source = eusoft-ting-en.sh
 	sha256sums = 5806324c371d9115f7e7f46ead8816a3a2ba5e797403369cd40ae49111c4f5fc
 	sha256sums = 17651cf7ae49b0372b6b6812d8b3b066203892c9fbe0b04b25efec0ab038c12b
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = eusoft-ting-en-bin
