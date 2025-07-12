@@ -8,6 +8,7 @@ pkgbase = goldwarden-gui
 	license = MIT
 	makedepends = blueprint-compiler
 	depends = goldwarden
+	depends = python-tendo
 	source = goldwarden::git+https://github.com/quexten/goldwarden#tag=v0.3.6
 	source = fix-bin-name.patch
 	sha256sums = SKIP
