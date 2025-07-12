@@ -1,0 +1,5 @@
+[intel-sde]
+user_agent = 'curl/8.14.1'
+source = "regex"
+url = "https://software.intel.com/en-us/articles/intel-software-development-emulator/"
+regex = 'Current version: ([0-9\.-]+)'

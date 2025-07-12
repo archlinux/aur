@@ -1,12 +1,12 @@
 # Maintainer:
 # Contributor: Marcel <aur-feedback [ät] marehr.dialup.fu-berlin.de>
 
-: ${_pkgver:=9.53.0-2025-03-16}
-: ${_dl_dir:=850782}
+: ${_pkgver:=859732::9.58.0-2025-06-16}
+: ${_chksum:=f849acecad4c9b108259c643b2688fd65c35723cd23368abe5dd64b917cc18c0}
 
 _pkgname="intel-sde"
 pkgname="$_pkgname"
-pkgver=${_pkgver%%-*}
+pkgver=$(sed -E -e 's&^.*::&&;s&-.*&&' <<< ${_pkgver:?})
 pkgrel=1
 pkgdesc="Intel Software Development Emulator"
 url="https://software.intel.com/en-us/articles/intel-software-development-emulator/"
@@ -18,19 +18,21 @@ depends=(
 )
 optdepends=(
   'bash'
+  'lib32-gcc-libs'
   'lib32-glibc'
   'python'
+  'python-distro'
 )
 
-provides=("intelxed")
-conflicts=("intelxed")
+provides=("intel-xed")
+conflicts=("intel-xed")
 
 options=('!debug' '!strip')
 
-_pkgsrc="sde-external-$_pkgver-lin"
+_pkgsrc="sde-external-${_pkgver##*::}-lin"
 _pkgext="tar.xz"
-source=("https://downloadmirror.intel.com/$_dl_dir/$_pkgsrc.$_pkgext")
-sha256sums=('f55138df53378198e8c0a89598351cdb3c5e7f8819e63e472b0bc179afaad34c')
+source=("https://downloadmirror.intel.com/${_pkgver%%::*}/$_pkgsrc.$_pkgext")
+sha256sums=("${_chksum:-SKIP}")
 
 package() {
   install -dm755 "$pkgdir/opt/$_pkgname"
