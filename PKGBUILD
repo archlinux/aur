@@ -14,17 +14,17 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=8.0.10
+pkgver=8.0.11
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("SSPL-1.0")
 depends=('libstemmer' 'snappy' 'yaml-cpp' 'libunwind' 'curl' 'zstd' 'zlib'
-         'libsasl' 'openssl' 'glibc' 'gcc-libs')
+         'libsasl' 'openssl' 'glibc' 'gcc14-libs')
 makedepends=('python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3'
              'python-yaml' 'python-requests' 'python-pymongo' 'python-gitpython'
-             'python-distro' 'python-retry')
+             'python-distro' 'python-retry' 'gcc14')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh: interactive shell to connect with MongoDB')
 backup=("etc/mongodb.conf")
@@ -39,7 +39,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb-4.4.29-no-enterprise.patch
 		boost_issue_402.patch
 )
-sha256sums=('32dafc101bbac2a19280f508ad92473960241a9f3b74ac2a1a76352355269a05'
+sha256sums=('420cf84825852ab2d9fb3b3889450d26a069ea4c0e29f8097b2809e0f11cc348'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '3438f7f463b98270d1fe580b3153c19cff1c86c18745a40d4f2984e73086005e'
@@ -51,9 +51,9 @@ sha256sums_aarch64=('6dd9f20e153ff2a3e185d9411e9d9ec54ba8ed29a0a1489828ccb047205
 source_aarch64=(extrapatch-sconstruct.patch)
 
 _scons_args=(
-  CC="${CC:-gcc}"
-  CXX="${CXX:-g++}"
-  AR="${AR:-ar}"
+  CC="${CC:-gcc-14}"
+  CXX="${CXX:-g++-14}"
+  AR="${AR:-gcc-ar-14}"
   MONGO_DISTMOD=arch
   MONGO_VERSION="$pkgver"
   CCFLAGS="-w"
