@@ -1,11 +1,14 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Kamil Bączkowski <me@kavela.ch>
+# Contributor: Guillaume BOEHM <aur@mail.gboehm.com>
 
 _gitname=pywal16
 pkgname=python-${_gitname}
 pkgver=3.8.9
-pkgrel=1
+pkgrel=2
 epoch=1
+_dirname=${_gitname}-${pkgver}
+_archive_name=${_gitname}-${pkgver}-${pkgrel}-${epoch}.tar.gz
 pkgdesc='Generate and change color-schemes on the fly (fork that uses 16 colors)'
 arch=('any')
 url="https://github.com/eylles/${_gitname}"
@@ -48,22 +51,22 @@ conflicts=(
   'pywal'
   'python-pywal'
 )
-source=("git+$url.git#tag=$pkgver")
-b2sums=('SKIP')
+source=("${_archive_name}::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1871d3d7c6cbefcd10d4425eb0df3796ec31672a5755b55ff3f68bfb20404e22')
 
 prepare() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${_dirname}"
   echo "removing support for the discontinued schemer2 which has no license..."
   rm -v 'pywal/backends/schemer2.py'
 }
 
 build() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${_dirname}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
+  cd "$srcdir/${_dirname}"
   export PYTHONHASHSEED=0
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 
