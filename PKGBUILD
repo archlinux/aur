@@ -13,20 +13,17 @@ makedepends=(
     'clang'
     'zlib'
 )
-
 source=("$pkgbase::git+https://github.com/BrycensRanch/SnapX.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgbase"
-    ver=$(./build.sh --version | head -n1 | tr -d '\r\n')
-    # Keep digits, dots and letters, plus dashes or underscores
-    # Then replace forbidden hyphens with underscores
+    ver=$(./build.sh --version | tail -n1)
     ver="${ver//-/_}"
-    # Remove colons, slashes, whitespace completely
-    ver="${ver//[:\/[:space:]]/}"
-    echo "$ver"
+    ver=${ver%%_makepkg*}
+    echo "${ver}"
 }
+
 
 build() {
     cd "$pkgbase"
