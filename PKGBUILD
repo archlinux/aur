@@ -76,6 +76,7 @@ optdepends=(
     'zlib'
 )
 _source_url=$(
+    # shellcheck disable=SC2312 # a failure will be visible in `source`
     curl -s 'https://www.wolfram.com/download-center/' \
     | grep 'account.wolfram.com/dl/WolframApp' \
     | grep -E "version=${_pkgver}\b" \
@@ -113,7 +114,8 @@ prepare() {
     warning "Building Mathematica (Light) takes around 10GiB of space for 'makepkg'."
     warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
-    if [ "$(echo "${srcdir}" | wc -w)" -ne 1 ]; then
+    # shellcheck disable=SC2312 # echo won't trigger errors
+    if [[ "$(echo "${srcdir}" | wc -w)" -ne 1 ]]; then
         msg2 "ERROR: The Mathematica installer doesn't support directory names with spaces."
         msg2 "Current build directory: ${srcdir}"
         exit 1
@@ -140,7 +142,7 @@ package() {
         -targetdir="${installdir}" \
         -auto
 
-    if [ -s "${installdir}"/InstallErrors ]; then
+    if [[ -s "${installdir}"/InstallErrors ]]; then
         msg2 "Review installation errors:"
         cat "${installdir}"/InstallErrors
     fi
@@ -148,6 +150,7 @@ package() {
 
     msg2 'Setting up WolframScript'
     install -d "${srcdir}"/WolframScript "${pkgdir}"/usr/share
+    # shellcheck disable=SC2312 # a pipe here allows more efficient disk usage
     bsdtar -xf "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
         -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
 
@@ -155,9 +158,9 @@ package() {
 
     install -d "${pkgdir}"/usr/share/applications
     desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
-    _fix_dekstop_file "${installdir}/SystemFiles/Installation/$desktop_file"
+    _fix_dekstop_file "${installdir}/SystemFiles/Installation/${desktop_file}"
 
-    install -D -m644 "${installdir}/SystemFiles/Installation/$desktop_file" -t "${pkgdir}"/usr/share/applications/
+    install -D -m644 "${installdir}/SystemFiles/Installation/${desktop_file}" -t "${pkgdir}"/usr/share/applications/
     install -D -m644 "${installdir}"/SystemFiles/Installation/*.directory -t "${pkgdir}"/usr/share/desktop-directories
     install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
 
@@ -166,8 +169,9 @@ package() {
         install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
 
+        # shellcheck disable=SC2312 # the pipe works better with '\n'
         for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
-            mimetype="$(basename "$mimetype")"
+            mimetype="$(basename "${mimetype}")"
             install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
                 "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
         done
@@ -219,14 +223,15 @@ _fix_insecure_runpath() {
 
     while read -r elffile; do
         # remove all RPATHs and RUNPATHs that aren't relative to $ORIGIN
+        # shellcheck disable=SC2312 # missing files are a non-issue
         safe_runpath="$(chrpath -l "${installdir}/${elffile}" |\
             sed -E 's/.*\bR(UN)?PATH=(.*)/\2/g' |\
             tr ':' '\n' | grep -E "^\\\$ORIGIN" | paste -sd ':')"
 
-        if [ -z "$safe_runpath" ]; then
+        if [[ -z "${safe_runpath}" ]]; then
             chrpath -d "${installdir}/${elffile}"
         else
-            chrpath -r "$safe_runpath" "${installdir}/${elffile}"
+            chrpath -r "${safe_runpath}" "${installdir}/${elffile}"
         fi
     done < "${srcdir}/insecure-runpath.list"
 }
