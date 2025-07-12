@@ -1,0 +1,22 @@
+pkgbase = spotube-nightly-bin
+	pkgdesc = 🎧 Open source music client! Available for both desktop & mobile!
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/KRTirtho/spotube
+	arch = i686
+	arch = x86_64
+	license = BSD-4
+	depends = mpv
+	depends = libappindicator-gtk3
+	depends = libsecret
+	depends = jsoncpp
+	depends = libnotify
+	depends = xdg-user-dirs
+	depends = webkit2gtk-4.1
+	optdepends = yt-dlp-git
+	provides = spotube
+	conflicts = spotube
+	source = https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz
+	sha256sums = 7715767b6803a3b228adf775e2d235d3146117b34fb80c6688c86295e2aa6a78
+
+pkgname = spotube-nightly-bin
