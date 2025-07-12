@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=fnlock
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="A systemd service to toggle Fn Lock using Ctrl, Shift, and Alt keys for Lenovo laptops"
 arch=('any')
