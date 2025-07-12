@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.16.5
-_subver=2
+_subver=3
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 _nodeversion=22
@@ -38,8 +38,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('62b8d076bd8a3748058d2218b53d3bf44c70b4e2f54ee038e0d0c3ca27c25083'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('c4cf343d1231b9c9c258fedf87182d448283b8f95f396c2d8b5bd54026537943'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
