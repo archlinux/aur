@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  go build -trimpath -ldflags "-X main.version=${pkgver}" -o shortcuts ./cmd/shortcuts.go
+  go build -trimpath -ldflags "-w -X main.version=${pkgver}" -o shortcuts ./cmd/shortcuts.go
 }
 
 package() {
