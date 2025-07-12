@@ -1,17 +1,22 @@
-# Maintainer: Minecodes <minecodes at minecodes.de>
+# Maintainer: Minecodes <contact at mcds.moe>
 pkgname=shortcuts-bin
-pkgver=v1.0.3
-pkgrel=2
+_pkgname=shortcuts
+pkgver=v2.0.0
+pkgrel=3
 pkgdesc="A tool for getting shortcuts & commands for commands"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'riscv64')
 url="https://codeberg.org/Minecodes/shortcuts"
 license=('bsd-4-clause')
-depends=('gum' 'glow' 'curl')
-source=("shortcuts::https://codeberg.org/Minecodes/shortcuts/raw/branch/main/shortcuts")
+depends=('go' 'git')
+source=("git+https://codeberg.org/Minecodes/shortcuts.git")
 sha256sums=('SKIP')
 
+build() {
+  cd "${srcdir}/${_pkgname}"
+  go build -trimpath -ldflags "-X main.version=${pkgver}" -o shortcuts ./cmd/shortcuts.go
+}
+
 package() {
-  install -d -m0755 -g 0 "${pkgdir}"/usr/bin
-  install -m0755 -g 0 -t "${pkgdir}"/usr/bin/ shortcuts
-  #ln -s shortcuts ${pkgdir}/usr/bin/shortcuts
+  cd "${srcdir}/${_pkgname}"
+  install -Dm755 shortcuts -t "${pkgdir}/usr/bin"
 }
