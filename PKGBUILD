@@ -2,8 +2,8 @@
 _reponame=universal-pidff
 pkgname=$_reponame-dkms-git
 provides=($_reponame-dkms)
-pkgver=1.0.0
-pkgrel=2
+pkgver=0.1.0
+pkgrel=5
 pkgdesc="Development package for hid-pidff and hid-universal-pidff"
 arch=('x86_64')
 url="https://github.com/JacKeTUs/$_reponame"
