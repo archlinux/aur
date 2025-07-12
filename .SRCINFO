@@ -1,0 +1,19 @@
+pkgbase = genesis-plus-gx-highscore-git
+	pkgdesc = Highscore port of Genesis Plus GX
+	pkgver = r1711.e36edee
+	pkgrel = 1
+	url = https://github.com/highscore-emu/Genesis-Plus-GX
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = git
+	makedepends = meson
+	depends = flac
+	depends = libhighscore-git
+	depends = libvorbis
+	depends = zlib
+	provides = genesis-plus-gx-highscore
+	conflicts = genesis-plus-gx-highscore
+	source = git+https://github.com/highscore-emu/Genesis-Plus-GX.git
+	sha256sums = SKIP
+
+pkgname = genesis-plus-gx-highscore-git
