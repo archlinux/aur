@@ -134,6 +134,10 @@ When using the `list` operation, which is also `search` under the hood, appearen
 You can find an example Containerfile in the root of the repository.  
 You will need to set an user password as soon as you're in a runtime environment.  
 
+### Subdependencies
+`base-devel` is required to build packages with `makepkg`.  
+You can read more about it [here](https://wiki.archlinux.org/title/Makepkg#Usage).
+
 ## Changelog
 
 ### 2024.09.16 Breaking changes - Default source directory changed.
