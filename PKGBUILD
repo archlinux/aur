@@ -1,8 +1,8 @@
-# nesk_aur
+# Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=librewolf-extension-duckduckgo-privacy-essentials
 _id="jid1-ZAdIEUB7XOzOJw@jetpack"
-pkgver=2025.4.7
+pkgver=2025.7.10
 pkgrel=1
 pkgdesc="Actively protects your data in your current browser"
 arch=('any')
@@ -11,10 +11,10 @@ license=('MPL-2.0')
 depends=('librewolf')
 checkdepends=('jq')
 groups=('librewolf-addons')
-source=("${_id}.xpi::https://addons.mozilla.org/firefox/downloads/file/4470003/duckduckgo_for_firefox-${pkgver}.xpi")
+source=("${_id}.xpi::https://github.com/duckduckgo/duckduckgo-privacy-extension/releases/download/${pkgver}/duckduckgo_privacy_essentials-${pkgver}.zip")
 noextract=("${_id}.xpi")
-sha256sums=('8380d403a5412a0fe93716c297c220242b5918939773667e50984c4d60506e63')
-b2sums=('f949af74ac33ebf0000dfc6c38ea0abba6d8e15babc812cbf3ed3b4110153387e9b0fe65bdca5c8642809dd4f1106292d90e339b6dd1cf20194cec7b984c2d9f')
+sha256sums=('c04ac3d999e997cfc4bcba2e1e5379ffcf848155e3099e21f7540b32b1938615')
+b2sums=('f54d127e8f17cced396a8b09ada00082e02112767d8b7504df217d496859eb14e236d4dae7763eef246f3eca336a01005de54c3d92b126c2bc7eae021558d4bf')
 
 check() {
   bsdtar xf ${_id}.xpi manifest.json
