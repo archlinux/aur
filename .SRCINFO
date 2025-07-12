@@ -1,6 +1,6 @@
 pkgbase = renoise-demo
 	pkgdesc = A music composition program
-	pkgver = 3.4.4
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://www.renoise.com
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = renoise-demo
 	depends = libxext
 	optdepends = jack: For JACK audio support
 	conflicts = renoise
-	conflicts = renoise3-demo
 	options = !strip
-	source = https://files.renoise.com/demo/Renoise_3_4_4_Demo_Linux_x86_64.tar.gz
-	sha512sums = 806f23563bb3ffdc7797f4e14b313d1d2bc8c68c4f71670a43e06f59ffa84260ab8ca492105d017b8698577a7819c2262ad60d1fbcb58969347c96583a664965
+	source = https://files.renoise.com/demo/Renoise_3_5_1_Demo_Linux_x86_64.tar.gz
+	sha512sums = f8c8466c03675150f7ea0f34856c10b7320f055ee238b24889b592e377ab4107f9fae83690642aeee9c1271bb5e75d8e669b09f95cb83c4f473ca1265cf07f5a
 
 pkgname = renoise-demo
