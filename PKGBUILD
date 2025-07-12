@@ -6,21 +6,22 @@ pkgname='python-piou-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=0.15.0.r0.g6cd9f42
-pkgrel=1
-pkgdesc='A CLI tool to build beautiful rich text command-line interfaces with type validation (latest git commit)'
+pkgver=0.17.0.r0.g68685c4
+pkgrel=2
+pkgdesc='A CLI tool to build rich text command-line interfaces with type validation (development version)'
 arch=('any')
 url="https://github.com/Andarius/$_srcname"
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-poetry'
   'python-wheel'
 )
 depends=(
-  'python'
+  'python>=3.9'
   'python-rich'
   'python-typing_extensions'
 )
