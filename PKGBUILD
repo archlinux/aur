@@ -2,10 +2,9 @@
 # Maintainer: Torben <git@letorbi.com>
 # Contributor: F. Rødseth <xyproto@archlinux.org>
 
-
 pkgname=processing
-pkgver=4.4.4
-_build=1304
+pkgver=4.4.5
+_build=1305
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -16,9 +15,9 @@ optdepends=('processing-examples: Examples for Processing')
 makedepends=(gradle rsync unzip)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
-	'disable_update_check.patch'
-	'no_jdk_download.patch')
-sha256sums=('650546c3523e9c937db1743aebe37e145223c7a7a4864fd31041a280303c45e2'
+	    'disable_update_check.patch'
+	    'no_jdk_download.patch')
+sha256sums=('90442160640ee3a8434e23373d0bde3431aa5d78d4387adddb0e635eeddf1af1'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '4bb2676426b25b9ef874a334335b50af67224e592456318505fa4612ce02e35b')
 install='processing.install'
