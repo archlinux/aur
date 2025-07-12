@@ -1,7 +1,7 @@
 pkgbase = libkysdk-base
 	pkgdesc = kylin system develpoer kit - base kit
 	pkgver = 3.0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/openkylin/libkysdk-base
 	arch = x86_64
 	groups = ukui
@@ -9,7 +9,6 @@ pkgbase = libkysdk-base
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = gtk3
 	depends = dbus
 	depends = glib2
 	depends = glibc
@@ -19,11 +18,13 @@ pkgbase = libkysdk-base
 	depends = sqlite
 	depends = systemd-libs
 	depends = gcc-libs
-	source = git+https://gitee.com/openkylin/libkysdk-base.git
-	source = 0001-fix-ICEQUL.patch
-	source = 0002-fix-ICETPG.patch
+	depends = gtk3
+	depends = python
+	depends = python-dbus
+	depends = python-watchdog
+	depends = python-yaml
+	depends = python-gobject
+	source = git+https://gitee.com/openkylin/libkysdk-base.git?#commit=033cb735231122779a007bbd75b2cf40cbcc55cd
 	sha512sums = SKIP
-	sha512sums = 1cce12a96fc5b7ed7b1c6b58715596a229784f3af5e1012cb2988455fe77dd2d50ed81acff11e33e4c6b2d71f395924c749e92633ab46df7da82014078a6f597
-	sha512sums = 183904c1b189943b56defe04321648e60a17113e9a5f1a16496ea8468e1bc030fc8472ad4822f3cf732e48b0cbbd9250e44a36a9761a20625a6c73827705f02d
 
 pkgname = libkysdk-base

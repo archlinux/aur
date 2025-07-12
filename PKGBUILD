@@ -3,11 +3,10 @@
 pkgbase=libkysdk-base
 pkgname=libkysdk-base
 pkgver=3.0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="kylin system develpoer kit - base kit"
 arch=('x86_64')
 license=('GPL-3.0-only')
-#_tag=e3a0df5878b515fb27c6f58e756ae7d46bff0a22
 url="https://gitee.com/openkylin/libkysdk-base"
 depends=(
 	'dbus'
@@ -18,27 +17,23 @@ depends=(
 	'openssl'
 	'sqlite'
 	'systemd-libs'
-	'gcc-libs')
+	'gcc-libs'
+	'gtk3'
+  'python'
+  'python-dbus'
+  'python-watchdog'
+  'python-yaml'
+  'python-gobject')
 makedepends=(
 	'git'
 	'cmake'
 	'gcc'
-        'gtk3')
-
+        )
 groups=('ukui')
+_commit=033cb735231122779a007bbd75b2cf40cbcc55cd
 source=(
-	"git+https://gitee.com/openkylin/libkysdk-base.git"
-	"0001-fix-ICEQUL.patch"
-	"0002-fix-ICETPG.patch")
-sha512sums=('SKIP'
-            '1cce12a96fc5b7ed7b1c6b58715596a229784f3af5e1012cb2988455fe77dd2d50ed81acff11e33e4c6b2d71f395924c749e92633ab46df7da82014078a6f597'
-            '183904c1b189943b56defe04321648e60a17113e9a5f1a16496ea8468e1bc030fc8472ad4822f3cf732e48b0cbbd9250e44a36a9761a20625a6c73827705f02d')
-
-prepare() {
-  cd "$srcdir/$pkgbase"
-  git checkout upstream/${pkgver}
-  git apply ../*patch
-}
+	"git+https://gitee.com/openkylin/libkysdk-base.git?#commit=$_commit")
+sha512sums=('64469f60f197be0799c480e617022c4fd26de619c7d4247f7db2b66c13a6c3e937751795a9698e10d523fe69d872cd7331819f78090dd39276cf37a393dfff00')
 
 build() {
   cd "$srcdir/${pkgbase}"
@@ -46,47 +41,53 @@ build() {
   make
 }
 
-check() {
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$srcdir/$pkgbase/lib"
-  cd "$srcdir/$pkgbase/bin"
-  ./test-delete
-  #./test-insert
-  #./test-kytimer
-  #./test-search
-  #./test-utils
-}
-
 package() {
-  cd "$srcdir/$pkgbase" 
-  DESTDIR="$pkgdir" make install
-  install -d $pkgdir/usr/share/pkgconfig/
-  # libkysdk-base-dev
-  install -D -m644 development-files/kysdk-base.pc $pkgdir/usr/share/pkgconfig/
-  install -d $pkgdir/etc/ld.so.conf.d/
-  # libkysdk-basecommon
-  install -D -m644 development-files/kysdk-base.conf $pkgdir/etc/ld.so.conf.d/
+  cd "$srcdir/$pkgbase"  
+  # library
+  mkdir -p $pkgdir/usr/ && cp -r lib/ $pkgdir/usr/
+  # pkgconfig
+  install -Dm644 -t $pkgdir/usr/lib/pkgconfig/ development-files/*.pc
+  install -Dm644 -t $pkgdir/etc/ld.so.conf.d/ development-files/kysdk-base.conf 
+  # manpages
+  install -Dt $pkgdir/usr/share/man/man3 man/*/*.3
   # libkysdk-conf2-dev
-  install -D -m644 development-files/kysdk-conf2.pc $pkgdir/usr/share/pkgconfig/
-  # libkysdk-config-dev
-  install -D -m644 development-files/kysdk-config.pc $pkgdir/usr/share/pkgconfig/
-  # libkysdk-diagnostics-dev
-  install -D -m644 development-files/kysdk-diagnostics.pc $pkgdir/usr/share/pkgconfig/
-  # libkysdk-gsetting-dev
-  install -D -m644 development-files/kysdk-gsetting.pc $pkgdir/usr/share/pkgconfig/
-  # libkysdk-log-dev
-  install -D -m644 development-files/kysdk-log.pc $pkgdir/usr/share/pkgconfig/
+  install -Dm644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/conf2/api/libkysettings.h
+  # libkysdk-conf2-tools
+  install -Dm755 -t $pkgdir/usr/bin/ src/conf2/tools/*2yaml
+  install -Dm755 -t $pkgdir/usr/bin/ src/conf2/tools/health-check
+  install -Dm755 -t $pkgdir/etc/bash_completion.d/ src/conf2/tools/kconf2-completion.sh
+  install -Dm755 -t $pkgdir/usr/bin/ bin/kconf2
+  # libkysdk-conf2
+  ## system bus
+  install -Dm755 -t $pkgdir/usr/share/kysdk/kysdk-base/ src/conf2/service/conf2Utils.py
+  install -Dm755 -t $pkgdir/usr/share/kysdk/kysdk-base/ src/conf2/service/conf2-system.py
+  install -Dm644 -t $pkgdir/etc/dbus-1/system.d/ src/conf2/service/kysdk-conf2.conf
+  install -Dm644 -t $pkgdir/usr/lib/systemd/system/ src/conf2/service/kysdk-conf2.service
+  install -Dm644 -t $pkgdir/etc/kylin-config/ src/conf2/configs/conf2.yaml
+  ## session bus
+  install -Dm755 -t $pkgdir/usr/share/kysdk/kysdk-base/ src/conf2/service/conf2-session.py
+  install -Dm755 -t $pkgdir/etc/xdg/autostart/ src/conf2/service/kysdk-conf2.desktop
+  ## conf2 compile
+  install -Dm755 -t $pkgdir/usr/bin/ bin/conf2-compile
+  install -Dm644 -t $pkgdir/usr/lib/systemd/system/ src/conf2/configs/conf2-compile.service
+  ## dbus control
+  install -Dm644 -t $pkgdir/etc/kylin-config/basic/ src/conf2/configs/com.kylin.kysdk.conf2.yaml
+  ## sync system bus
+  install -Dm755 -t $pkgdir/usr/bin/ bin/conf2-sync-system
+  install -Dm644 -t $pkgdir/etc/dbus-1/system.d/ src/conf2/sync-config/com.kylin.kysdk.SyncConfig.conf
+  install -Dm644 -t $pkgdir/usr/lib/systemd/system/ src/conf2/sync-config/com.kylin.kysdk.SyncConfig.service
+  ## sync session bus
+  install -Dm755 -t $pkgdir/usr/bin/ bin/conf2-sync-session
+  install -Dm755 -t $pkgdir/etc/xdg/autostart/ src/conf2/sync-config/com.kylin.kysdk.SyncConfig.desktop
   # libkysdk-log
   install -d $pkgdir/etc/kysdk/kysdk-base/
   install -D -m644 src/log/kylog-default.conf $pkgdir/etc/kysdk/kysdk-base/
   install -D -m644 src/log/kylog-rotate-default $pkgdir/etc/kysdk/kysdk-base/
-  # libkysdk-timer
-  install -D -m644 development-files/kysdk-timer.pc $pkgdir/usr/share/pkgconfig/
   # libkysdk-utils-dev
-  install -D -m644 src/utils/sdkmarcos.h $pkgdir/usr/include/kysdk/kysdk-base/
-  install -D -m644 src/utils/kerr.h $pkgdir/usr/include/kysdk/kysdk-base/
-  install -D -m644 src/utils/cstring-extension.h $pkgdir/usr/include/kysdk/kysdk-base/
-  install -D -m644 src/utils/kyutils.h $pkgdir/usr/include/kysdk/kysdk-base/
-  install -D -m644 src/utils/data-structure/linklist/skip_linklist/skip_linklist.h $pkgdir/usr/include/kysdk/kysdk-base/
-  install -D -m644 src/utils/data-structure/linklist/listdata.h $pkgdir/usr/include/kysdk/kysdk-base/
-  install -D -m644 development-files/kysdk-utils.pc $pkgdir/usr/share/pkgconfig/
+  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/sdkmarcos.h 
+  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/kerr.h
+  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/cstring-extension.h
+  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/kyutils.h
+  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/data-structure/linklist/skip_linklist/skip_linklist.h 
+  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/data-structure/linklist/listdata.h 
 }
