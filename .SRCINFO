@@ -1,0 +1,23 @@
+pkgbase = efibootmgr-json-git
+	pkgdesc = Linux user-space application to modify the EFI Boot Manager with JSON support.
+	pkgver = r392.g975051a
+	pkgrel = 1
+	url = https://github.com/pvxe/efibootmgr-json
+	arch = x86_64
+	license = GPL2
+	makedepends = efivar
+	makedepends = git
+	depends = glibc
+	depends = popt
+	depends = jansson
+	provides = efibootmgr
+	conflicts = efibootmgr
+	source = git+https://github.com/pvxe/efibootmgr-json
+	sha512sums = SKIP
+
+pkgname = efibootmgr-json-git
+	depends = glibc
+	depends = popt
+	depends = jansson
+	depends = libefiboot.so
+	depends = libefivar.so
