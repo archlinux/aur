@@ -1,6 +1,6 @@
 pkgbase = clementine
 	pkgdesc = A modern music player and library organizer
-	pkgver = 1.4.1+43+gaf57cfdd0
+	pkgver = 1.4.1+47+g488b6416e
 	pkgrel = 1
 	url = https://github.com/clementine-player/Clementine
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = clementine
 	depends = libgpod
 	depends = liblastfm-qt5
 	depends = libmtp
-	depends = libmygpo-qt5
 	depends = protobuf
 	depends = qt5-x11extras
 	depends = projectm
@@ -41,7 +40,7 @@ pkgbase = clementine
 	optdepends = gst-plugins-ugly: "Ugly" plugin libraries
 	optdepends = gst-libav: Libav plugin
 	optdepends = gvfs: Various devices support
-	source = git+https://github.com/clementine-player/Clementine.git#commit=af57cfdd0532111143a381255fcd607b94b0e78d
-	sha256sums = fdc88ac4e8edd471547c5f5385082e2a425614310eb7fc9812fa42b3a5eb7ae2
+	source = git+https://github.com/clementine-player/Clementine.git#commit=488b6416e8f1ce00505ed751bd3a70e39a6d9580
+	sha256sums = 9ebdc02f88563282998e2523f7674345bfba265d9d1a60a69c1d21ba3b49d346
 
 pkgname = clementine

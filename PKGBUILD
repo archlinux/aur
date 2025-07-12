@@ -5,13 +5,13 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+43+gaf57cfdd0
+pkgver=1.4.1+47+g488b6416e
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
 url="https://github.com/clementine-player/Clementine"
 license=(GPL-3.0-or-later)
-depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp libmygpo-qt5
+depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp
          protobuf qt5-x11extras projectm alsa-lib libpulse hicolor-icon-theme taglib
 
          # namcap implicit depends
@@ -27,8 +27,8 @@ optdepends=(
   'gst-libav: Libav plugin'
   'gvfs: Various devices support')
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=af57cfdd0532111143a381255fcd607b94b0e78d")
-sha256sums=('fdc88ac4e8edd471547c5f5385082e2a425614310eb7fc9812fa42b3a5eb7ae2')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=488b6416e8f1ce00505ed751bd3a70e39a6d9580")
+sha256sums=('9ebdc02f88563282998e2523f7674345bfba265d9d1a60a69c1d21ba3b49d346')
 
 pkgver() {
   cd Clementine
