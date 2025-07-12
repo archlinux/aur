@@ -1,8 +1,8 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=2.8.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
 url=https://github.com/mealie-recipes/mealie
@@ -14,15 +14,10 @@ source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.ta
         mealie.sh
         mealie.service
         mealie.sysusers)
-sha256sums=('9a801874a7012b9282da4e204825b7c0a321ad91fd8bbbd3bbc4a224f16e0555'
+sha256sums=('5036cb28f818d383af234d81e1abe5e5045f6e8bb2e9e5ec8250316b6e1e8be9'
             '7d8f6ff8e146e20c545aa390662cdc167ec0311a83ab88a27283df2330e29b5b'
             '582e023c8a68117fb9c28a5bbb182173ba857819bd4118e7a07d25012bc02b6a'
             '1a6b434a125f6940e53f8ba6613426f50c8ca8d5e7a447a80efd57016b917208')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"/frontend
-  yarn upgrade
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -47,7 +42,8 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir -pm755 "${pkgdir}/opt/mealie"
-  cp -r {venv,frontend/dist} -t "${pkgdir}/opt/mealie/"
+  cp -r venv -t "${pkgdir}/opt/mealie/"
+  cp -rL frontend/dist -t "${pkgdir}/opt/mealie/"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   cd ..
 
