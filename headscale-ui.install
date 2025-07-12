@@ -3,7 +3,7 @@ cat <<INFO
 
 Headscale-ui was successfully installed. Now you need add configuration to your reverse proxy. Example for nginx:
 
-    location /ui {
+    location /web {
         alias /usr/share/webapps/headscale-ui;
         index index.html;
     }
