@@ -24,7 +24,10 @@ b2sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgbase}-${pkgver//_/-}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  version="$(git rev-list --count HEAD)"
+  commit="$(git rev-parse --short=7 HEAD)"
+
+  printf "r%s.%s" "${version}" "${commit}"
 }
 
 prepare() {
