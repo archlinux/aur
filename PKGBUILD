@@ -1,6 +1,6 @@
 # Maintainer: Rufus Deponian <rufus at deponian dot com>
 pkgname=logalize-bin
-pkgver=0.4.8
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Fast and extensible log colorizer. Alternative to ccze. Pre-compiled."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=('logalize')
 backup=('etc/logalize/logalize.yaml')
 source=("${pkgname}-${pkgver}.tar.zst::https://github.com/deponian/logalize/releases/download/v${pkgver}/logalize_${pkgver}_linux_amd64.pkg.tar.zst")
-sha256sums=('3fff64d4f6a1f9eca54b15618a50bd423a183bf9b0fef35064e4ba2a63f01d13')
+sha256sums=('05c0efc157f69d95fa45004b2544c522df999ff9fa281633cefec1496e96e115')
 
 package() {
   # bin
