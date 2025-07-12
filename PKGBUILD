@@ -1,6 +1,6 @@
 # Maintainer: AntiApple4life <antiapple at antiapple dot net>
 pkgname=wayvr-dashboard
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="WayVR Dashboard is a work-in-progress overlay application (WayVR/wlx-overlay-s plugin via IPC) for launching various applications and games directly into a VR desktop environment"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!lto')
 install=instructions.install
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/olekolek1000/wayvr-dashboard/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7c2a5f7f7801552cf6630c5e799bafb9f948fc6bc2906fdabc0c60f271bb2a51')
+sha256sums=('43762fa2d9b5fb3d04cae2bee6f1d24bee3ced9700b374f0161a79953cafd08d')
 
 prepare() {
   cd ${pkgname}-${pkgver}
