@@ -1,0 +1,21 @@
+pkgbase = termr
+	pkgdesc = Terminal-based radio player with TUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hibbins/termr
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	depends = python>=3.10
+	depends = vlc
+	depends = python-textual
+	depends = python-requests
+	depends = python-rich
+	source = termr-1.0.0.tar.gz::https://github.com/Hibbins/termr/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = termr
