@@ -1,6 +1,6 @@
 pkgbase = openjdk-zulu-ca-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK 24 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 24.
-	pkgver = 24+24.28.85+24.0.0
+	pkgver = 24+24.30.13+24.0.1
 	pkgrel = 1
 	url = https://www.azul.com/downloads
 	install = install_openjdk-zulu-ca-fx-bin.sh
@@ -29,7 +29,7 @@ pkgbase = openjdk-zulu-ca-fx-bin
 	provides = jdk24-openjdk=24
 	provides = jre24-openjdk-headless=24
 	provides = java24-openjfx=24
-	source = https://cdn.azul.com/zulu/bin/zulu24.28.85-ca-fx-jdk24.0.0-linux_x64.tar.gz
-	b2sums = cde1af579aa4cf27a5665bb5ab46690bcbb95d0ca302927d5bba9863e3e4653ea6a281df1eb944d9ab9884f29e3bde2d214a8990030b36132483d9335708f0a3
+	source = https://cdn.azul.com/zulu/bin/zulu24.30.13-ca-fx-jdk24.0.1-linux_x64.tar.gz
+	b2sums = 02afbe71a44292e2cf91237306e7cd02e2380b149495d1a9ddfb5fdd072aedb0f802702d2371799bedb6f33a3bb3bb505f5e84f82817bd9040b9b13253c821f6
 
 pkgname = openjdk-zulu-ca-fx-bin

@@ -1,8 +1,8 @@
 # Maintainer: Aubrey Carlson (Carlson) <aubreycarlson24@outlook.com>
 
 _javaver=24
-_zuluver=24.28.85
-_jdkver=24.0.0
+_zuluver=24.30.13
+_jdkver=24.0.1
 
 pkgname="openjdk-zulu-ca-fx-bin"
 pkgver="${_javaver}+${_zuluver}+${_jdkver}"
@@ -35,7 +35,7 @@ provides=("java-environment=${_javaver}"
           "jre${_javaver}-openjdk-headless=${_javaver}"
           "java${_javaver}-openjfx=${_javaver}")
 source=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
-b2sums=("cde1af579aa4cf27a5665bb5ab46690bcbb95d0ca302927d5bba9863e3e4653ea6a281df1eb944d9ab9884f29e3bde2d214a8990030b36132483d9335708f0a3")
+b2sums=('02afbe71a44292e2cf91237306e7cd02e2380b149495d1a9ddfb5fdd072aedb0f802702d2371799bedb6f33a3bb3bb505f5e84f82817bd9040b9b13253c821f6')
 install="install_${pkgname}.sh"
 
 _jvmdir="/usr/lib/jvm/${pkgname}"
@@ -46,10 +46,10 @@ package() {
   cp -a . "${pkgdir}${_jvmdir}"
 
   # Conf
-  install -dm 755 "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/${pkgname}"
+  install -dm 755 "${pkgdir}/etc/openjdk-zulu"
+  cp -r conf "${pkgdir}/etc/openjdk-zulu/${pkgname}"
   rm -r "${pkgdir}${_jvmdir}/conf"
-  ln -s /etc/${pkgname} "${pkgdir}${_jvmdir}/conf"
+  ln -s /etc/openjdk-zulu/${pkgname} "${pkgdir}${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
