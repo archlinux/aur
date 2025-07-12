@@ -63,10 +63,10 @@ _fix_binary_symlinks() {
   )
 
   for symlink in "${broken_symlinks[@]}"; do
-    target="${pkgdir}/usr/lib/$(basename "$symlink")"
-    target="$(realpath --relative-to="$(dirname "$symlink")" "$target")"
+    target="${pkgdir}/usr/lib/$(basename "${symlink}")"
+    target="$(realpath --relative-to="$(dirname "${symlink}")" "${target}")"
 
-    ln -sf "$target" "$symlink"
+    ln -sf "${target}" "${symlink}"
   done
 }
 
