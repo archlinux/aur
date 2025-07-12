@@ -15,7 +15,6 @@ pkgbase = renpy
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = git
-	makedepends = python-future
 	depends = glibc
 	depends = ffmpeg
 	depends = fribidi

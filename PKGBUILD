@@ -13,8 +13,7 @@ depends=(
 	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'python-legacy-cgi' 'assimp' 'ftgl')
 makedepends=(
 	'cython' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
-	'python-sphinx_rtd_theme' 'python-build' 'python-installer' 'python-wheel' 'git'
-	'python-future')
+	'python-sphinx_rtd_theme' 'python-build' 'python-installer' 'python-wheel' 'git')
 provides=('python-renpy')
 replaces=('renpy64')
 install='renpy.install'
