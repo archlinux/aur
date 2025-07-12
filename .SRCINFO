@@ -1,6 +1,6 @@
 pkgbase = pyboinc-git
 	pkgdesc = PyBOINC - a very basic python BOINC bridge
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/nielstron/pyboinc
 	arch = any
