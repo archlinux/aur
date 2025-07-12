@@ -22,11 +22,12 @@ GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "-p" "--persistent-pa
 INSTALL_OPTIONS=("-c" "--cleanup" "-C" "--clean-operation" "-d" "--download-only" "-x" "--comparison-criteria" "-M" "--makepkg-opts" "-V" "-W" "--overwrite-existing" "-w" "-s" "--source-path" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
 UPDATE_OPTIONS=("-k" "--keep-sources" "-K" "--keep-failed-sources" "-B" "--block-overwrite" "-x" "--comparison-criteria" "-M" "--makepkg-opts")
-SEARCH_OPTIONS=("-r" "--search-results" "-S" "--search-criteria" "-b" "--sort-by" "-o" "--order-by" "-O" "--no-out-of-date" "-m" "--maintained" "-i" "--no-mark-installed" "-u" "--no-mark-update" "-P" "--parallel")
+SEARCH_OPTIONS=("-r" "--search-results" "-S" "--search-criteria" "-b" "--sort-by" "-o" "--order-by" "-O" "-z" "--output" "--no-out-of-date" "-m" "--maintained" "-i" "--no-mark-installed" "-u" "--no-mark-update" "-P" "--parallel")
 COMPLETION_OPTIONS=("-e" "--executable-name")
 LIST_OPTIONS=("-u" "--no-mark-update" "-P" "--parallel" "-i" "--no-mark-installed")
 AVAILABLE_COMPLETIONS=("bash")
 COMPARISON_CRITERIA_VALUES=("rpc" "pkgbuild")
+OUTPUT_VALUES=("formatted" "json")
 ORDER_BY_VALUES=("ascending" "descending")
 SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends" "makedepends" "maintainer" "submitter" "provides" "conflicts" "replaces" "keywords" "groups" "comaintainers" "suggest")
 SORT_BY_VALUES=("firstsubmitted" "lastmodified" "votes" "popularity")
@@ -47,6 +48,7 @@ NO_MARK_INSTALLED=${AURX_NO_MARK_INSTALLED:-false}
 NO_MARK_UPDATE=${AURX_NO_MARK_UPDATE:-false}
 NO_OUT_OF_DATE=${AURX_NO_OUT_OF_DATE:-false}
 ORDER_BY="${AURX_ORDER_BY:-descending}"
+OUTPUT="${AURX_OUTPUT:-formatted}"
 OVERWRITE_EXISTING=${AURX_OVERWRITE_EXISTING:-false}
 PARALLEL=${AURX_PARALLEL:-50}
 SEARCH_CRITERIA="${AURX_SEARCH_CRITERIA:-name}"
@@ -127,6 +129,8 @@ usage() {
 		  -O, --no-out-of-date                  filter out all out of date packages.
 		  -o, --order-by [ORDER]                how to order search results. ("descending")
 		                                        "ascending", "descending".
+		  -z, --output [TYPE]                   how to output search results. ("formatted")
+		                                        "formatted", "json".
 		  -P, --parallel [COUNT]                how many requests to do simultaneously. (10)
 		  -r, --search-results [COUNT]          number of results to display from search queries. (20)
 		  -S, --search-criteria [CRITERIA]      criteria to use in search queries. ("name")
@@ -264,6 +268,10 @@ print_error() {
 		74 )
 			echo "[-] Could not establish a connection to the AUR HTTP."
 			;;
+		75 )
+			echo "[-] Unknown output: \"${OUTPUT}\"."
+			echo "[i] Possible options are: json, formatted."
+			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}."
 			;;
@@ -288,10 +296,11 @@ aurx_completion() {
 				        local COMPLETION_OPTIONS="${COMPLETION_OPTIONS[*]}"
 				        local LIST_OPTIONS="${LIST_OPTIONS[*]}"
 				        local AVAILABLE_COMPLETIONS="${AVAILABLE_COMPLETIONS[*]}"
-				        local SEARCH_CRITERIA_VALUES="${SEARCH_CRITERIA_VALUES[*]}"
 				        local COMPARISON_CRITERIA_VALUES="${COMPARISON_CRITERIA_VALUES[*]}"
-				        local SORT_BY_VALUES="${SORT_BY_VALUES[*]}"
+				        local OUTPUT_VALUES="${OUTPUT_VALUES[*]}"
 				        local ORDER_BY_VALUES="${ORDER_BY_VALUES[*]}"
+				        local SEARCH_CRITERIA_VALUES="${SEARCH_CRITERIA_VALUES[*]}"
+				        local SORT_BY_VALUES="${SORT_BY_VALUES[*]}"
 				        
 				        if [[ \${CURRENT_WORD} == -* ]]; then
 				                COMPREPLY=( \$(compgen -W "\${GENERAL_OPTIONS}" -- "\${CURRENT_WORD}") )
@@ -312,6 +321,8 @@ aurx_completion() {
 				                COMPREPLY=( \$(compgen -W "\${SEARCH_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--comparison-criteria" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${COMPARISON_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--output" ]]; then
+				                COMPREPLY=( \$(compgen -W "\${OUTPUT_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--order-by" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${ORDER_BY_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--sort-by" ]]; then
@@ -558,8 +569,21 @@ aur_rpc_search() {
 			)
 		fi
 	
-		echo "${RESULT}" \
-			| jq -r ".[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity\(.StatusString) \n\t\(.Description)\""
+		case "${OUTPUT}" in
+			formatted )
+				echo "${RESULT}" \
+					| jq -r ".[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity\(.StatusString) \n\t\(.Description)\""
+				;;
+			json )
+				echo "${RESULT}" | jq --monochrome-output --compact-output \
+					--arg SEARCH_QUERY "${TARGET_KEYWORD}" \
+					'[.[] + {"SearchQuery": $SEARCH_QUERY}]'
+				;;
+			* )
+				print_error 75
+				exit 75
+				;;
+		esac
 		
 		rm -rf "${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}"
 	done
@@ -670,10 +694,10 @@ fi
 # Options.
 LONGOPTS=''
 LONGOPTS+='all,block-overwrite,cleanup,clean-operation,download-only,force,help,keep-sources,keep-failed-sources,maintained,no-mark-installed,no-mark-update,no-out-of-date,overwrite-existing,verify-versions,wipe-existing'
-LONGOPTS+=',comparison-criteria:,executable-name:,makepkg-opts:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
+LONGOPTS+=',comparison-criteria:,executable-name:,makepkg-opts:,output:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
 OPTIONS=''
 OPTIONS+='aBcCdfhkKmiOuVwW'
-OPTIONS+='b:e:M:o:p:P:r:R:s:S:t:v:x:'
+OPTIONS+='b:e:M:o:p:P:r:R:s:S:t:v:x:z:'
 if ! PARSED_OPTIONS=$(getopt --options="${OPTIONS}" --longoptions="${LONGOPTS}" --name "${0}" -- "${@}"); then
 	print_error 51
 	exit 51
@@ -753,6 +777,14 @@ while true; do
 		-O|--no-out-of-date )
 			NO_OUT_OF_DATE=true
 			shift
+			;;
+		-z|--output )
+			OUTPUT="${2}"
+			if [[ ! "${OUTPUT_VALUES[*]}" =~ ${OUTPUT} ]]; then
+				print_error 75
+				exit 75
+			fi
+			shift 2
 			;;
 		-o|--order-by )
 			ORDER_BY="${2}"
