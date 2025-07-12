@@ -1,9 +1,10 @@
-# Maintainer: Albert Sebastian <albertsebe2 at gmail dot com> 
+# Maintainer:  shtrophic <aur at shtrophic dot net>
+# Contributor: Albert Sebastian <albertsebe2 at gmail dot com>
 
 pkgname=wstunnel
-pkgver=10.1.11
+pkgver=10.4.4
 pkgrel=1
-pkgdesc="Tunnel all your traffic over websocket protocol - Bypass firewalls/DPI"
+pkgdesc="tunnel all your traffic over Websocket or HTTP2"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 options=('!lto')
 url="https://github.com/erebe/wstunnel"
@@ -12,16 +13,16 @@ provides=('wstunnel')
 conflicts=('wstunnel-bin' 'nodejs-wstunnel' 'haskell-wstunnel-bin')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'git')
-source=("https://github.com/erebe/wstunnel/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a560268d5aa1f8dac9c158798828c495c4d266ce5953891494868d4647e36cac')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('69a12b8bbc2888dcefc84a90fbdf9925c7292e3b2839108a8aa1caf4a6758ffb')
 
 prepare() {
   cd $pkgname-$pkgver
 
   RUSTUP_TOOLCHAIN=stable \
-  cargo fetch \
-  --locked \
-  --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch \
+    --locked \
+    --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -29,10 +30,10 @@ build() {
 
   CARGO_TARET_DIR=target \
   RUSTUP_TOOLCHAIN=stable \
-  cargo build \
-  -p $pkgname-cli \
-  --frozen \
-  --release
+    cargo build \
+    -p $pkgname-cli \
+    --frozen \
+    --release
 }
 
 package() {
