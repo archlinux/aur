@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glib2
 	pkgdesc = Low level core library
-	pkgver = 2.82.3
+	pkgver = 2.85.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/glib
 	arch = any
@@ -16,12 +16,12 @@ pkgbase = mingw-w64-glib2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.82.3
+	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.85.1
 	source = git+https://gitlab.gnome.org/GNOME/gvdb.git
 	source = 0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
 	validpgpkeys = 53EF3DC3B63E2899271BD26322E8091EEA11BBB7
 	validpgpkeys = 923B7025EE03C1C59F42684CF0942E894B2EAFA0
-	b2sums = 9abb7878311f0df50affd3e308aa157ff711e8789e9f12b6b95f9cab198e3d662528fa1f8a48d5e489bfb1925886e9c5b1bcc5161d65e6323d04c5f3351df831
+	b2sums = 0806e198e6ccfe2c2e8b0e37c8887d95f6caae876c1cdfded4ff72371cf1ab08061307d07b44d1dc50d36cd1145d38794854a5487260f959079ba90864f7631c
 	b2sums = SKIP
 	b2sums = 8d6cc5d4d321bb861b6acb86d796a4646f2c5b0a4b4fa54ddda750cbf523de8521edaa7da2595addbe8a3c8ba66020cf4c7c9cbf8ad263515b36808e5b354f57
 

@@ -1,11 +1,11 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 # Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
-# Contributor: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-glib2
-pkgver=2.82.3
+pkgver=2.85.1
 pkgrel=1
 arch=(any)
 pkgdesc="Low level core library"
@@ -19,7 +19,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
   0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
 )
-b2sums=('9abb7878311f0df50affd3e308aa157ff711e8789e9f12b6b95f9cab198e3d662528fa1f8a48d5e489bfb1925886e9c5b1bcc5161d65e6323d04c5f3351df831'
+b2sums=('0806e198e6ccfe2c2e8b0e37c8887d95f6caae876c1cdfded4ff72371cf1ab08061307d07b44d1dc50d36cd1145d38794854a5487260f959079ba90864f7631c'
         'SKIP'
         '8d6cc5d4d321bb861b6acb86d796a4646f2c5b0a4b4fa54ddda750cbf523de8521edaa7da2595addbe8a3c8ba66020cf4c7c9cbf8ad263515b36808e5b354f57')
 validpgpkeys=(
@@ -31,6 +31,12 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd glib
+
+  # Drop dep on libatomic
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/qemu/-/issues/6
+  git revert -n 4e6dc4dee0e1c6407113597180d9616b4f275f94
+  sed -i '/    atomic_dep,/d' glib/meson.build
+
   # https://gitlab.gnome.org/GNOME/glib/issues/539
   patch -Np1 -i ../0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
 
@@ -49,15 +55,16 @@ build() {
     ${_arch}-meson \
       -D strip=true \
       -D man=false \
-      -D gtk_doc=false \
+      -D man-pages=disabled \
+      -D documentation=false \
       --default-library static ..
     meson compile
 
     cd "${srcdir}/glib/build-${_arch}-shared"
     ${_arch}-meson \
       -D strip=true \
-      -D man=false \
-      -D gtk_doc=false \
+      -D man-pages=disabled \
+      -D documentation=false \
       --default-library shared ..
     meson compile
   done
