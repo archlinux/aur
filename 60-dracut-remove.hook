@@ -4,7 +4,7 @@ Operation = Remove
 Target = usr/lib/modules/*/pkgbase
 
 [Action]
-Description = Removing initramfs...
+Description = Removing initramfs with dracut
 When = PreTransaction
 Exec = /usr/share/libalpm/scripts/dracut-remove
 NeedsTargets

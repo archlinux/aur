@@ -25,7 +25,7 @@ Target = dracut
 Target = dracut-git
 
 [Action]
-Description = Updating initramfs...
+Description = Updating initramfs with dracut
 When = PostTransaction
 Exec = /usr/share/libalpm/scripts/dracut-install
 NeedsTargets
