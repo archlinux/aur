@@ -23,7 +23,9 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
+  GIT_TAG="$(git describe --long --tags)"
+  echo "${GIT_TAG}" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package_tela-circle-icon-theme-all-git() {
@@ -37,9 +39,9 @@ _package() {
   # and shouldn't be part of the package itself. Other icon packages like 'hicolor-icon-theme' and 'adwaita-icon-theme'
   # does things this way.
   # See https://gitlab.archlinux.org/archlinux/packaging/packages/gtk4/-/blob/main/gtk-update-icon-cache.hook
+  # shellcheck disable=SC2317 # Used in 'install.sh'
   gtk-update-icon-cache() {
-    # shellcheck disable=SC2317 # Used in 'install.sh'
-    true
+    :
   }
   export -f gtk-update-icon-cache
 
