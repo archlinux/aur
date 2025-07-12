@@ -2,8 +2,8 @@
 # Contributor: Ash <xash at riseup d0t net>
 
 pkgname=lsfg-vk-git
-pkgver=r119.8823dea
-pkgrel=2
+pkgver=r123.dac149c
+pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
