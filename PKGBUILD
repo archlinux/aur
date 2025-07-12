@@ -1,6 +1,6 @@
 # Maintainer: 46620 <46620osu@gmail.com>
 pkgname='revanced-patches-bin'
-pkgver=5.30.0
+pkgver=5.31.1
 pkgrel=1
 pkgdesc='Patches for ReVanced'
 arch=('any')
@@ -11,7 +11,7 @@ provides=('revanced-patches')
 conflicts=('revanced-patches')
 source=("${url}/releases/download/v${pkgver}/patches-${pkgver}.rvp"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('26f72fc39705d0c6dacd93a0adb3c90b1e6a628e1616d2e85d73886189b61fa8'
+sha256sums=('761a1d312786f501d72e13786494f23656e52f58db6b742fb708e4e98fd5213e'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
