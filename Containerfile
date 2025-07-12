@@ -3,7 +3,7 @@ FROM archlinux/archlinux AS one-stage
 RUN useradd -m archlinux \
 	&& passwd -d archlinux \
 	&& pacman -Syu --noconfirm \
-	&& pacman -S --noconfirm base-devel bash-completion git jq \
+	&& pacman -S --noconfirm base-devel git jq \
 	&& echo "archlinux ALL=(ALL) ALL" \
 	| tee /etc/sudoers.d/archlinux
 

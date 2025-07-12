@@ -366,9 +366,12 @@ compare_versions() {
 			;;
 		rpc )
 			local LATEST_VERSION
-			LATEST_VERSION=$(curl --connect-timeout 60 --max-time 180 \
+			if ! LATEST_VERSION=$(curl --connect-timeout 60 --max-time 180 \
 				"https://aur.archlinux.org/rpc/v5/info?arg[]=${TARGET_PACKAGE}" 2> /dev/null \
-				| jq -r .results.[0].Version)
+				| jq -r .results.[0].Version); then
+				print_error 74
+				exit 74
+			fi
 			;;
 		* )
 			print_error 68
@@ -494,8 +497,11 @@ aur_rpc_search() {
 		REQUESTS+=("-o${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}")
 	done
 
-	curl --connect-timeout 60 --max-time 180 --parallel --parallel-immediate --parallel-max "${PARALLEL}" \
-		"${REQUESTS[@]}" 2> /dev/null
+	if ! curl --connect-timeout 60 --max-time 180 --parallel --parallel-immediate --parallel-max "${PARALLEL}" \
+		"${REQUESTS[@]}" 2> /dev/null; then
+		print_error 74
+		exit 74
+	fi
 
 	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
 		RESULT=$(< "${TMP_PATH}/temp_request_${TARGET_KEYWORD}")
@@ -572,8 +578,11 @@ aur_rpc_suggest() {
 		REQUESTS+=( "https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" )
 	done
 
-	RESULTS=$(curl --connect-timeout 5 --max-time 15 --parallel --parallel-immediate \
-		--parallel-max "${PARALLEL}" "${REQUESTS[@]}" 2> /dev/null)
+	if ! RESULTS=$(curl --connect-timeout 5 --max-time 15 --parallel --parallel-immediate \
+		--parallel-max "${PARALLEL}" "${REQUESTS[@]}" 2> /dev/null); then
+		print_error 74
+		exit 74
+	fi
 	RESULTS=$(
 		for RESULT in ${RESULTS}; do
 			echo "${RESULT}" | jq -r ".[:${SEARCH_RESULTS}] | .[]" 2> /dev/null
@@ -982,14 +991,9 @@ if ${ALL}; then
 fi
 
 # No packages and all left operations need them.
-if [[ -z "${TARGET_PACKAGES}" ]]; then
+if [[ -z "${TARGET_PACKAGES[*]}" ]]; then
 	print_error 56
 	exit 56
-fi
-
-# Check for internet connection.
-if ! curl --connect-timeout 10 "https://aur.archlinux.org/rpc/v5/info" 2> /dev/null 1>&2; then
-	print_error 74
 fi
 
 # Execution.
