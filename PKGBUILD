@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/domferr/tilingshell"
 license=('GPL2')
 depends=('gnome-shell>=42')
-makedepends=('nodejs' 'zip')
+makedepends=('nodejs' 'npm' 'zip')
 provides=('gnome-shell-extension-tiling-shell' 'gnome-shell-extension-tilingshell')
 conflicts=('gnome-shell-extension-tiling-shell' 'gnome-shell-extension-tilingshell')
 

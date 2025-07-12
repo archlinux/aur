@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-tiling-shell-git
 	arch = any
 	license = GPL2
 	makedepends = nodejs
+	makedepends = npm
 	makedepends = zip
 	depends = gnome-shell>=42
 	provides = gnome-shell-extension-tiling-shell
