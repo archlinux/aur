@@ -1,7 +1,7 @@
 pkgbase = clementine-git
 	pkgdesc = A modern music player and library organizer
-	pkgver = 1.4.1.r43.gaf57cfdd0.0.gaf57cfdd0
-	pkgrel = 1
+	pkgver = 1.4.1.r47.g488b6416e.0.g488b6416e
+	pkgrel = 2
 	url = https://github.com/clementine-player/Clementine
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -16,7 +16,6 @@ pkgbase = clementine-git
 	depends = libgpod
 	depends = liblastfm-qt5
 	depends = libmtp
-	depends = libmygpo-qt5
 	depends = protobuf
 	depends = qt5-x11extras
 	depends = projectm

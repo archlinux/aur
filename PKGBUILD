@@ -10,13 +10,13 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r43.gaf57cfdd0.0.gaf57cfdd0
-pkgrel=1
+pkgver=1.4.1.r47.g488b6416e.0.g488b6416e
+pkgrel=2
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
 url="https://github.com/clementine-player/Clementine"
 license=(GPL-3.0-or-later)
-depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp libmygpo-qt5
+depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp
          protobuf qt5-x11extras projectm alsa-lib libpulse hicolor-icon-theme taglib
 
          # namcap implicit depends
