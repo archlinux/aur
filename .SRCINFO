@@ -1,6 +1,6 @@
 pkgbase = firedragon-beta
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 12.0.0_beta.16
+	pkgver = 12.0.0_beta.17
 	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -64,9 +64,9 @@ pkgbase = firedragon-beta
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = firedragon-source-v12.0.0-beta.16.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.16/downloads/firedragon-source.tar.zst
+	source = firedragon-source-v12.0.0-beta.17.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17/downloads/firedragon-source.tar.zst
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	sha256sums = 6511fab8d61d32ef8c898830deed6e2505daab478df8cd94ffeb5acab3ef4275
+	sha256sums = 21e28ad4b85d46044c9ca14aaa480d4df81159c01d58bf6a2a0fa06f640d0c49
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
 
 pkgname = firedragon-beta
