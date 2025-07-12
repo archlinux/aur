@@ -266,11 +266,11 @@ print_error() {
 			echo "[-] Could not touch required file \"${REQUIRED_FILE}\"."
 			;;
 		74 )
-			echo "[-] Could not establish a connection to the AUR HTTP."
+			echo "[-] Could not establish a connection to the AUR RPC HTTP API."
 			;;
 		75 )
 			echo "[-] Unknown output: \"${OUTPUT}\"."
-			echo "[i] Possible options are: json, formatted."
+			echo "[i] Possible options are: formatted, json."
 			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}."
