@@ -1,4 +1,5 @@
-# Maintainer: nesk_aur
+# Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
+
 pkgname=html2xhtml
 pkgver=1.4
 pkgrel=1
@@ -14,7 +15,7 @@ b2sums=('7390ac030cf6bf7fac60e218e85033038ccb6fe586dc93c1940f274365c816cad2964d2
 build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
-  make
+  make -j $(nproc)
 }
 package() {
   make -C ${pkgname}-${pkgver} DESTDIR="$pkgdir/" install
