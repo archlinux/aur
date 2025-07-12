@@ -1,19 +1,19 @@
 pkgbase = sticker-convert
 	pkgdesc = Convert (animated) stickers to/from WhatsApp, Telegram, Signal, Line, Kakao, Viber, Discord, iMessage. Written in Python.
-	pkgver = 2.13.1.0
+	pkgver = 2.13.2.2
 	pkgrel = 1
 	url = https://github.com/laggykiller/sticker-convert
 	arch = x86_64
 	arch = aarch64
 	license = GPLv2
 	options = !strip
-	source_x86_64 = sticker-convert-linux-x86_64-2.13.1.0.zip::https://github.com/laggykiller/sticker-convert/releases/download/v2.13.1.0/sticker-convert-linux-x86_64.zip
-	source_x86_64 = sticker-convert-2.13.1.0-LICENSE::https://raw.githubusercontent.com/laggykiller/sticker-convert/v2.13.1.0/LICENSE
-	sha256sums_x86_64 = 94722006a15d6d00b675b7a382519eca8e969a6401023d84d6702602b8ab3807
+	source_x86_64 = sticker-convert-linux-x86_64-2.13.2.2.zip::https://github.com/laggykiller/sticker-convert/releases/download/v2.13.2.2/sticker-convert-linux-x86_64.zip
+	source_x86_64 = sticker-convert-2.13.2.2-LICENSE::https://raw.githubusercontent.com/laggykiller/sticker-convert/v2.13.2.2/LICENSE
+	sha256sums_x86_64 = 5e1c00d45bd775da87915c74b5ab71933a9bcb1084d0cdf876c7df7d1ce31ea5
 	sha256sums_x86_64 = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
-	source_aarch64 = sticker-convert-linux-aarch64-2.13.1.0.zip::https://github.com/laggykiller/sticker-convert/releases/download/v2.13.1.0/sticker-convert-linux-aarch64.zip
-	source_aarch64 = sticker-convert-2.13.1.0-LICENSE::https://raw.githubusercontent.com/laggykiller/sticker-convert/v2.13.1.0/LICENSE
-	sha256sums_aarch64 = f6d7174f18e429659364a8cea68f6123ff0a9f346968d45d2cc56b933705e95c
+	source_aarch64 = sticker-convert-linux-aarch64-2.13.2.2.zip::https://github.com/laggykiller/sticker-convert/releases/download/v2.13.2.2/sticker-convert-linux-aarch64.zip
+	source_aarch64 = sticker-convert-2.13.2.2-LICENSE::https://raw.githubusercontent.com/laggykiller/sticker-convert/v2.13.2.2/LICENSE
+	sha256sums_aarch64 = 758d271db83664372b9759b66f229260962a3c77279abc1187c9d11038aa34ce
 	sha256sums_aarch64 = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
 
 pkgname = sticker-convert
