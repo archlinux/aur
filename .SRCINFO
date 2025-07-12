@@ -1,7 +1,7 @@
 pkgbase = jazz2-native-bin
 	pkgdesc = Jazz jackrabbit 2 Reimplimentation engine.
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/jazz2-native
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = jazz2-native-bin
 	depends = openal
 	depends = glew
 	depends = glfw
+	depends = libopenmpt
 	source_x86_64 = https://gitlab.com/linuxbombay/jazz2-native/binaries/2.6.0/-/raw/main/jazz2-linux-x64.tar.xz
 	sha256sums_x86_64 = 0e55d87f0356e99083e400a66c14f48dadae738ced3f7766a6dd5f7b2cd97133
 	source_aarch64 = https://gitlab.com/linuxbombay/jazz2-native/binaries/2.6.0/-/raw/main/jazz2-linux-arm64.tar.xz
