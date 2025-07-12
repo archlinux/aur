@@ -1,7 +1,7 @@
 pkgbase = crossover-overlay-bin
 	pkgdesc = 🎯 A Crosshair Overlay for any screen (binary release, system Electron)
-	pkgver = 3.3.4
-	pkgrel = 3
+	pkgver = 3.3.7
+	pkgrel = 1
 	url = https://github.com/lacymorrow/crossover
 	arch = x86_64
 	arch = i686
@@ -19,9 +19,7 @@ pkgbase = crossover-overlay-bin
 	optdepends = libappindicator-gtk3
 	provides = crossover-overlay
 	conflicts = crossover-overlay
-	source_x86_64 = https://github.com/lacymorrow/crossover/releases/download/v3.3.4/CrossOver-3.3.4-x86_64.rpm
-	sha256sums_x86_64 = d83a2d7ec5bcdf253ab22210159e2bd353ef7ba9e03efa6e4b841b5facb2b933
-	source_i686 = https://github.com/lacymorrow/crossover/releases/download/v3.3.4/CrossOver-3.3.4-i686.rpm
-	sha256sums_i686 = SKIP
+	source_x86_64 = https://github.com/lacymorrow/crossover/releases/download/v3.3.7/CrossOver-3.3.7-amd64.deb
+	sha256sums_x86_64 = 7a52498a9f58b821c7bb6be671fac6fcf86f1aa1444c9d672942287720cbdbbb
 
 pkgname = crossover-overlay-bin
