@@ -1,7 +1,7 @@
 pkgbase = openjdk-zulu21-ca-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK 21 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 21.
-	pkgver = 21+21.40.17+21.0.6
-	pkgrel = 3
+	pkgver = 21+21.42.19+21.0.7
+	pkgrel = 1
 	url = https://www.azul.com/downloads
 	install = install_openjdk-zulu21-ca-fx-bin.sh
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = openjdk-zulu21-ca-fx-bin
 	provides = jdk21-openjdk=21
 	provides = jre21-openjdk-headless=21
 	provides = java21-openjfx=21
-	source = https://cdn.azul.com/zulu/bin/zulu21.40.17-ca-fx-jdk21.0.6-linux_x64.tar.gz
-	b2sums = 92ede87a2e1189881429ee6afcd5d854acfb75097eb70bfb78aaff0529089da8f3555c01994e6e4e57f04c8644aa47d24e11e1b545941da4cfd3a0cdaa25cca9
+	source = https://cdn.azul.com/zulu/bin/zulu21.42.19-ca-fx-jdk21.0.7-linux_x64.tar.gz
+	b2sums = c69ff6687aad5127df9b5f3eee0bac832d40fe116419cabc5161ddd8498500b51fd08032a187def091b309697efe1c3ff13ad66d0553136a57d2f2946cf4dde4
 
 pkgname = openjdk-zulu21-ca-fx-bin
