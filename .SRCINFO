@@ -1,7 +1,7 @@
 pkgbase = atapi-mimetypes
 	pkgdesc = Various Arch Linux customizations that I do :3
 	pkgver = 1
-	pkgrel = 7
+	pkgrel = 8
 	arch = any
 	source = x-atapi-mimetypes.xml
 	source = 51-dolphinbar.rules
@@ -15,7 +15,6 @@ pkgbase = atapi-mimetypes
 	source = 20-net-timeout.conf
 	source = mod-preload.conf
 	source = memlock.conf
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

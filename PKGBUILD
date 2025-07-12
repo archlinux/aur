@@ -3,12 +3,12 @@ pkgname=atapi-customizations
 _pkgname='atapi-customizations'
 pkgbase=atapi-mimetypes
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc='Various Arch Linux customizations that I do :3'
 arch=(any)
 makedepends=()
 source=(x-atapi-mimetypes.xml 51-dolphinbar.rules 51-gamecube-adapter.rules killsteam steam-monitor unfuck_bt pipewire.conf 30-splitlock.conf 30-vm.conf 20-net-timeout.conf mod-preload.conf memlock.conf)
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   install -Dm644 "$srcdir/x-atapi-mimetypes.xml" "$pkgdir/usr/share/mime/packages/x-atapi-mimetypes.xml"
