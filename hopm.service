@@ -1,0 +1,34 @@
+[Unit]
+Description=Hybrid Open Proxy Monitor (hopm)
+Documentation=https://github.com/ircd-hybrid/hopm
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hopm -d
+
+DynamicUser=yes
+StateDirectory=hopm
+LogsDirectory=hopm
+RuntimeDirectory=hopm
+
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+ProtectProc=invisible
+RestrictNamespaces=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

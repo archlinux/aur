@@ -1,0 +1,40 @@
+--- doc/reference.conf.orig	2025-07-06 13:36:24.095778432 +0530
++++ doc/reference.conf	2025-07-06 13:39:10.430367118 +0530
+@@ -30,7 +30,7 @@
+ 	 * Full path and filename for storing the process ID of the running
+ 	 * HOPM.
+ 	 */
+-	pidfile = "var/run/hopm.pid";
++	pidfile = "/var/run/hopm/hopm.pid";
+ 
+ 	/*
+ 	 * Maximum commands to queue. Set to 0 if you don't want HOPM
+@@ -92,7 +92,7 @@
+ 	 * the scan in question can be useful. Leave commented for no
+ 	 * logging.
+ 	 */
+-#	scanlog = "var/log/scan.log";
++#	scanlog = "/var/log/hopm/scan.log";
+ };
+ 
+ 
+@@ -275,6 +275,9 @@
+ 	/* ngIRCd */
+ #	connregex = "Client connecting: ([^ ]+) \\(([^@]+)@([^\\)]+)\\) \\[([0-9a-f\\.:]+)\\].*";
+ 
++	/* ergo */
++#	connregex = ".+-.+CONNECT.+-.+ Client Connected \\[([^ ]+)\\] \\[u:([^ ]+)\\] \\[h:([^ ]+)\\] \\[ip:([^ ]+)\\] .+";	
++
+ 	/*
+ 	 * "kline" controls the command used when an open proxy is confirmed.
+ 	 * We suggest applying a temporary (no more than a few hours) KLINE on the host.
+@@ -317,6 +320,9 @@
+ 	/* A ZLINE example for UnrealIRCd */
+ #	kline = "ZLINE *@%i 3h :Open proxy found on your host.";
+ 
++	/* A DLINE example for ergo */
++#	kline = "DLINE ANDKILL 2h %i :Open proxy found on your host.";	
++
+ 	/*
+ 	 * An AKILL example for services with OperServ. Your HOPM must have permission to
+ 	 * AKILL for this to work!
