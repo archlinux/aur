@@ -1,6 +1,8 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=6.0
+epoch=1
+_pkgver=6.0
+pkgver=6.1
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -14,8 +16,6 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
-	"wayland-utils"
-	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
 	"awk"
@@ -32,6 +32,7 @@ depends=(
 	"nspr"
 	"zlib"
 	"glib2"
+	"wayland"
 	"dbus"
 	"bash"
 	"lsb-release"
@@ -45,7 +46,7 @@ depends=(
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
-        'way-secure: Wayland secure context'
+	'way-secure'
 )
 
 makedepends+=(
@@ -54,7 +55,7 @@ makedepends+=(
 
 checkdepends=()
 
-source=(portable-source::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
+source=(portable-source::git+https://github.com/Kraftland/portable.git#tag=${_pkgver})
 
 md5sums=('02ad9a9819033bbb5e5b4149f0351b85')
 
@@ -63,8 +64,8 @@ function package() {
 	cd "${srcdir}/portable-source"
 	install -Dm755 portable.sh ${pkgdir}/usr/bin/portable
 	install -Dm755 open.sh ${pkgdir}/usr/lib/portable/open
+	install -Dm755 portable-pools ${pkgdir}/usr/bin/portable-pools
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 	install -Dm755 bwrapinfo.json ${pkgdir}/usr/lib/portable/bwrapinfo.json
 	install -Dm755 portable-helper.sh ${pkgdir}/usr/lib/portable/helper
-	install -Dm755 portable-pools ${pkgdir}/usr/bin/portable-pools
 }
