@@ -1,11 +1,11 @@
 # Maintainer: Jisu-Woniu <jswn@jswn9945.xyz>
 _pkgname=typstyle
 pkgname=$_pkgname-git
-pkgver=0.12.12.r0.5657f89
+pkgver=0.13.14.r3.5223f9e
 pkgrel=1
 pkgdesc="Beautiful and reliable typst code formatter"
 arch=("aarch64" "armv7h" "x86_64")
-url="https://github.com/Enter-tainer/typstyle"
+url="https://github.com/typstyle-rs/typstyle"
 license=("Apache-2.0")
 depends=("gcc-libs" "glibc")
 makedepends=("git" "cargo" "libgit2")
