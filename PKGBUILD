@@ -19,7 +19,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgbase"
-    ./build.sh --version | grep -Eo '^[0-9]+\.[0-9]+\.[0-9]+'
+    ver=$(./build.sh --version | head -n1 | tr -d '\r\n')
+    # Keep digits, dots and letters, plus dashes or underscores
+    # Then replace forbidden hyphens with underscores
+    ver="${ver//-/_}"
+    # Remove colons, slashes, whitespace completely
+    ver="${ver//[:\/[:space:]]/}"
+    echo "$ver"
 }
 
 build() {

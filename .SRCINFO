@@ -1,6 +1,6 @@
 pkgbase = snapx
 	pkgdesc = Screenshot tool that handles images, text, and video (fork of ShareX)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/BrycensRanch/SnapX
 	arch = x86_64
