@@ -37,7 +37,7 @@ package() {
 
     # These libraries are not needed because they can be satisfied with system and AUR packages
     rm -rf "${pkgdir}/usr/lib/atostekid"
-    # Install PKCS #11 module configuration file
+    # Install Atostek ID's PKCS #11 module configuration file
     install -D -m 644 atostek-id.module -t "${pkgdir}/usr/share/p11-kit/modules/"
     # Install Atostek ID's PKCS #11 module to the proper location
     install -D -m 644 "${pkgdir}/usr/lib/Atostek-ID-PKCS11.so" -t "${pkgdir}/usr/lib/pkcs11/"
