@@ -1,0 +1,18 @@
+pkgbase = cargo-nextest-git
+	pkgdesc = A next-generation test runner for Rust.
+	pkgver = 0.9.101.r5.g1fa7dd96
+	pkgrel = 1
+	url = https://github.com/nextest-rs/nextest
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	depends = cargo
+	depends = gcc-libs
+	provides = cargo-nextest
+	conflicts = cargo-nextest
+	options = !lto
+	source = git+https://github.com/nextest-rs/nextest
+	sha512sums = SKIP
+
+pkgname = cargo-nextest-git
