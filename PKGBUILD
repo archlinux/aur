@@ -1,4 +1,5 @@
-# Maintainer: nesk_aur
+# Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
+
 pkgname=organicmaps
 pkgver=2025.06.26_3
 tag="${pkgver%%_*}-${pkgver##*_}-android"
