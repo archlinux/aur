@@ -52,7 +52,6 @@ exec java \
 -Dffmpeg_home="/usr/share/pjeoffice-pro/" \
 -Dpjeoffice_looksandfeels="Metal" \
 -Dcutplayer4j_looksandfeels="Nimbus" \
--Dsigner4j_a3auto="$a3auto" \
 -jar \
 /usr/share/pjeoffice-pro/pjeoffice-pro.jar
 EOF
