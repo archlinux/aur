@@ -1,5 +1,5 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
-# Contributor: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: John D Jones III <jnbek1972@gmail.com>
 
 pkgname=perl-string-escape
