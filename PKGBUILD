@@ -1,7 +1,7 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
 pkgver=202507111
-pkgrel=1
+pkgrel=2
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
@@ -38,21 +38,21 @@ package() {
     install -Dm644 "$tmpdir/etc/profile.d/phoenix-env-overrides.sh" "$pkgdir/etc/profile.d/phoenix-env-overrides.sh"
     install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
-    install -Dm644 "$tmpdir/userjs/linux/apple-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/apple-maps/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/discord/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/element/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/extended/user.js" "$pkgdir/etc/firefox/phoenix/userjs/extended/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/google-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/google-maps/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/twitter/user.js" "$pkgdir/etc/firefox/phoenix/userjs/twitter/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix/apple-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/apple-maps/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/discord/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/element/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix/extended/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/extended/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix/google-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/google-maps/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix/twitter/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/twitter/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix/youtube/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/youtube/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/ui-fix-base/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix-base/user.js"
-    install -Dm644 "$tmpdir/userjs/linux/youtube/user.js" "$pkgdir/etc/firefox/phoenix/userjs/youtube/user.js"
+    install -Dm644 "$tmpdir/userjs/apple-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/apple-maps/user.js"
+    install -Dm644 "$tmpdir/userjs/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/discord/user.js"
+    install -Dm644 "$tmpdir/userjs/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/element/user.js"
+    install -Dm644 "$tmpdir/userjs/extended/user.js" "$pkgdir/etc/firefox/phoenix/userjs/extended/user.js"
+    install -Dm644 "$tmpdir/userjs/google-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/google-maps/user.js"
+    install -Dm644 "$tmpdir/userjs/twitter/user.js" "$pkgdir/etc/firefox/phoenix/userjs/twitter/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix/apple-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/apple-maps/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/discord/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/element/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix/extended/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/extended/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix/google-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/google-maps/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix/twitter/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/twitter/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix/youtube/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/youtube/user.js"
+    install -Dm644 "$tmpdir/userjs/ui-fix-base/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix-base/user.js"
+    install -Dm644 "$tmpdir/userjs/youtube/user.js" "$pkgdir/etc/firefox/phoenix/userjs/youtube/user.js"
     install -Dm644 "$tmpdir/COPYING" "$pkgdir/usr/share/doc/phoenix/COPYING"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/phoenix/README.md"
 
