@@ -1,6 +1,6 @@
 pkgbase = file-share-bin
 	pkgdesc = Rust powered HTTP file-server with beautiful web-based GUI.
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/Maneren/file-share-rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = file-share-bin
 	license = MIT
 	optdepends = xdg-desktop-portal: for GUI picker support
 	provides = file-share-bin
-	source_x86_64 = file-share-bin-1.5.2.tar.gz::https://github.com/Maneren/file-share-rs/releases/download/v1.5.2/file-share_x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 80e65bc22af89e94c32deed9e7bf67ecfbd074d7222084cc2d68261a92e7ef8a
-	source_aarch64 = file-share-bin-1.5.2.tar.gz::https://github.com/Maneren/file-share-rs/releases/download/v1.5.2/file-share_aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 6f153fbdc341a53e0423eb5b286af4c2ae6cbaaee935136a16b3942af1c261d2
+	source_x86_64 = file-share-bin-1.5.3.tar.gz::https://github.com/Maneren/file-share-rs/releases/download/v1.5.3/file-share_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d3d64939968a9c91353d21e417b414625fd81893f2431e082db29af7e92664b6
+	source_aarch64 = file-share-bin-1.5.3.tar.gz::https://github.com/Maneren/file-share-rs/releases/download/v1.5.3/file-share_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fa8a57c924f7186e41bce3257ed649eca5511c26f22b81ccf221482582f81f4e
 
 pkgname = file-share-bin
