@@ -18,7 +18,7 @@ warn() {
 }
 
 is_update_from() {
-    result="$(vercmp "${1}" "${2}")"
+    local result="$(vercmp "${1}" "${2}")"
     case $result in
         '-1'|'0') return 0;;
         '1') return 1;;
@@ -87,8 +87,8 @@ post_install() {
 }
 
 post_upgrade() {
-    # new_version="${1}"
-    old_version="${2}"
+    # local new_version="${1}"
+    local old_version="${2}"
     if is_update_from "${old_version}" 4.3.1.0-2; then
         deprecate_certificates
     fi
