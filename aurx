@@ -1,0 +1,1023 @@
+#!/bin/bash
+
+# The Archlinux User Repository eXplorer.
+# A simple bash script for easily managing AUR installs.
+#
+#
+# Script structure:
+#
+# Metadata
+# Variables & Arrays
+# Functions
+# Options parse
+# Composed metadata
+# Input sanity checks
+# Execution
+#
+
+
+# Metadata.
+POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list")
+GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "-p" "--persistent-path" "-t" "--tmp-path" "-v" "--verbosity")
+INSTALL_OPTIONS=("-c" "--cleanup" "-C" "--clean-operation" "-d" "--download-only" "-x" "--comparison-criteria" "-M" "--makepkg-opts" "-V" "-W" "--overwrite-existing" "-w" "-s" "--source-path" "--verify-versions" "--wipe-existing")
+REMOVE_OPTIONS=("-R" "--remove-opts")
+UPDATE_OPTIONS=("-k" "--keep-sources" "-K" "--keep-failed-sources" "-B" "--block-overwrite" "-x" "--comparison-criteria" "-M" "--makepkg-opts")
+SEARCH_OPTIONS=("-r" "--search-results" "-S" "--search-criteria" "-b" "--sort-by" "-o" "--order-by" "-O" "--no-out-of-date" "-m" "--maintained" "-i" "--no-mark-installed" "-u" "--no-mark-update" "-P" "--parallel")
+COMPLETION_OPTIONS=("-e" "--executable-name")
+LIST_OPTIONS=("-u" "--no-mark-update" "-P" "--parallel" "-i" "--no-mark-installed")
+AVAILABLE_COMPLETIONS=("bash")
+COMPARISON_CRITERIA_VALUES=("rpc" "pkgbuild")
+ORDER_BY_VALUES=("ascending" "descending")
+SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends" "makedepends" "maintainer" "submitter" "provides" "conflicts" "replaces" "keywords" "groups" "comaintainers" "suggest")
+SORT_BY_VALUES=("firstsubmitted" "lastmodified" "votes" "popularity")
+
+# Variables.
+ALL=${AURX_ALL:-false}
+BLOCK_OVERWRITE=${AURX_BLOCK_OVERWRITE:-false}
+CLEANUP=${AURX_CLEANUP:-false}
+CLEAN_OPERATION=${AURX_CLEAN_OPERATION:-false}
+COMPARISON_CRITERIA="${AURX_COMPARISON_CRITERIA:-rpc}"
+DOWNLOAD_ONLY=${AURX_DOWNLOAD_ONLY:-false}
+EXECUTABLE_NAME="${AURX_EXECUTABLE_NAME:-aurx}"
+FORCE=${AURX_FORCE:-false}
+KEEP_SOURCES=${AURX_KEEP_SOURCES:-false}
+KEEP_FAILED_SOURCES=${AURX_KEEP_FAILED_SOURCES:-false}
+MAINTAINED=${AURX_MAINTAINED:-false}
+NO_MARK_INSTALLED=${AURX_NO_MARK_INSTALLED:-false}
+NO_MARK_UPDATE=${AURX_NO_MARK_UPDATE:-false}
+NO_OUT_OF_DATE=${AURX_NO_OUT_OF_DATE:-false}
+ORDER_BY="${AURX_ORDER_BY:-descending}"
+OVERWRITE_EXISTING=${AURX_OVERWRITE_EXISTING:-false}
+PARALLEL=${AURX_PARALLEL:-50}
+SEARCH_CRITERIA="${AURX_SEARCH_CRITERIA:-name}"
+SEARCH_RESULTS=${AURX_SEARCH_RESULTS:-20}
+SORT_BY="${AURX_SORT_BY:-popularity}"
+TMP_PATH="${AURX_TMP_PATH:-/tmp/aurx}"
+VERBOSITY=${AURX_VERBOSITY:-2}
+VERIFY_VERSIONS=${AURX_VERIFY_VERSIONS:-false}
+WIPE_EXISTING=${AURX_WIPE_EXISTING:-false}
+
+# Stacked variables.
+PERSISTENT_PATH="${AURX_PERSISTENT_PATH:-${HOME?HOME not defined.}/.aurx/cfg}"
+SOURCE_PATH="${AURX_SOURCE_PATH:-${HOME?HOME not defined.}/.aurx/src}"
+
+# Arrays.
+declare -a MAKEPKG_OPTS
+if [[ -n "${AURX_MAKEPKG_OPTS}" ]]; then
+	for OPT in ${AURX_MAKEPKG_OPTS}; do
+		MAKEPKG_OPTS+=("${OPT}")
+	done
+else
+	MAKEPKG_OPTS=('-sirc')
+fi
+declare -a REMOVE_OPTS
+if [[ -n "${AURX_REMOVE_OPTS}" ]]; then
+	for OPT in ${AURX_REMOVE_OPTS}; do
+		REMOVE_OPTS+=("${OPT}")
+	done
+else
+	REMOVE_OPTS=('-R')
+fi
+
+# Functions.
+usage() {
+	cat <<- EOF
+		usage: ${EXECUTABLE_NAME} [OPERATION] [OPTION].. [PACKAGE].. 
+		
+		The Archlinux User Repository eXplorer.
+		Every option can be set through environment variables but the explicit option has the highest priority.
+		
+		Operations:
+		  install       install any package from AUR or the working directory.
+		  remove        remove packages from system and the package list.
+		  update        force install any package from AUR and delete source after.
+		  search        query the AUR database via the HTTP RPC API.
+		  completion    generate completion for the specified shell.
+		  list          search for all locally installed AUR packages.
+		
+		Options:
+		  general:
+		  -a, --all                             add all installed packages to the operation.
+		  -f, --force                           forces the operation, where appliable.
+		  -h, --help                            display this information and exit.
+		  -p, --persistent-path [PATH]          path for persistent data. ("\${HOME}/.aurx/cfg")
+		  -t, --tmp-path [PATH]                 temp filesystem for various operations. ("/tmp/aurx")
+		  -v, --verbosity [LEVEL]               level of verbosity. (2)
+		                                        0 - none, 1 - stderr, 2 - all.
+		
+		  install:
+		  -c, --cleanup                         delete sources after successful installs.
+		  -C, --clean-operation                 delete sources after unsucessful installs.
+		  -x, --comparison-criteria [CRITERIA]  criteria to use when comparing packages. ("rpc")
+		                                        "rpc" - AUR HTTP RPC API, "makepkg" - filesystem.
+		  -d, --download-only                   download the source from AUR and stop.
+		  -M, --makepkg-opts [OPTS]..           opts to give in to makepkg installs. ("-sirc")
+		  -W, --overwrite-existing              overwrite eventually existing sources.
+		  -s, --source-path [PATH]              work directory for builds.("\${HOME}/.aurx/src")
+		  -V, --verify-versions                 compare target versions to installed ones.
+		  -w, --wipe-existing                   wipe eventually existing sources.
+
+		  remove:
+		  -R, --remove-opts [OPTS]..            opts to give in to pacman for removing package. ("-R")
+
+		  search:
+		  -m, --maintained                      filter out unmaintained packages.
+		  -i, --no-mark-installed               don't show the '[installed]' mark.
+		  -u, --no-mark-update                  do not check for updates while searching.
+		  -O, --no-out-of-date                  filter out all out of date packages.
+		  -o, --order-by [ORDER]                how to order search results. ("descending")
+		                                        "ascending", "descending".
+		  -P, --parallel [COUNT]                how many requests to do simultaneously. (10)
+		  -r, --search-results [COUNT]          number of results to display from search queries. (20)
+		  -S, --search-criteria [CRITERIA]      criteria to use in search queries. ("name")
+		                                        "name", "name-desc", "depends", "checkdepends",
+		                                        "optdepends", "makedepends", "maintainer",
+		                                        "submitter", "provides", "conflicts", "replaces",
+		                                        "keywords", "groups", "comaintainers", "suggest".
+		  -b, --sort-by [KEY]                   key to sort results by. ("popularity")
+		                                        "popularity", "firstsubmitted", "lastmodified",
+		                                        "votes", "popularity".
+		
+		  update:
+		  -B, --block-overwrite                 don't overwrite existing sources.
+		  -x, --comparison-criteria [CRITERIA]  criteria to use when comparing packages. ("rpc")
+		                                        "rpc" - AUR HTTP RPC API, "makepkg" - filesystem.
+		  -k, --keep-sources                    don't cleanup after successful updates.
+		  -K, --keep-failed-sources             don't cleanup after unsuccessful updates.
+		  -M, --makepkg-opts [OPTS]             opts to give in to makepkg installs. ("-sirc")
+
+		  list:
+		  -i, --no-mark-installed               don't show the '[installed]' mark.
+		  -u, --no-mark-update                  do not check for updates while searching.
+		  -P, --parallel [COUNT]                how many requests to do simultaneously. (10)
+
+		  completion:
+		  -e, --executable-name [NAME]          the name of the executable to be used for completion. ("aurx")
+		
+		Environment variables:
+		  Capitalized long option names with AURX_ prefix, for example: AURX_SEARCH_CRITERIA.
+	EOF
+}
+
+print_error() {
+	local GIVEN_ERROR="${1}"
+
+	case "${GIVEN_ERROR}" in
+		10 )
+			echo "[!] Could not remove files for target: \"${SELECTED_PACKAGE}\"."
+			echo "[i] Check file permissions."
+			;;
+		11 )
+			echo "[!] Could not pull repository: \"${SELECTED_PACKAGE}\"."
+			;;
+		12 )
+			echo "[!] Could not clone git repository of \"${SELECTED_PACKAGE}\"."
+			;;
+		13 )
+			echo "[!] Could not build \"${SELECTED_PACKAGE}\"."
+			;;
+		14 )
+			echo "[!] Could not write \"${SELECTED_PACKAGE}\" to the package_list."
+			;;
+		20 )
+			echo "[!] Could not remove \"${SELECTED_PACKAGE}\" from system."
+			;;
+		21 )
+			echo "[!] Could not remove \"${SELECTED_PACKAGE}\" from the package_list."
+			;;
+		30 )
+			local TEMP_PACKAGES
+			TEMP_PACKAGES="${PACKAGES_NOT_FOUND[*]}"
+			echo "[!] Could not find ${TEMP_PACKAGES//\ /,\ }."
+			;;
+		50|51 )
+			echo "[-] getopt not working properly."
+			;;
+		52 )
+			echo "[-] Unknown search criteria: \"${SEARCH_CRITERIA}\"."
+			echo "[i] Possible options are: name, name-desc, depends, checkdepends, optdepends, makedepends, maintainer, submitter, provides, conflicts, replaces, keywords, groups, comaintainers, suggest."
+			;;
+		53 )
+			echo "[-] Unknown error while parsing options."
+			;;
+		54 )
+			echo "[-] No operation selected. Possible options are: ${POSSIBLE_OPERATIONS[*]}."
+			;;
+		55 )
+			echo "[-] Unknown operation: \"${CURRENT_OPERATION}\". Possible options are: ${POSSIBLE_OPERATIONS[*]}."
+			;;
+		56 )
+			echo "[-] No parameters found and the current \"${CURRENT_OPERATION}\" operation requires at least one."
+			;;
+		57 )
+			echo "[!] Can't install or update packages as root."
+			;;
+		58 )
+			echo "[-] Unknown verbosity level \"${VERBOSITY}\"."
+			echo "[i] Possible options are: 0 - nothing, 1 - stderr, 2 - all"
+			;;
+		59 )
+			echo "[-] The following required packages are not installed: ${ABSENT_PACKAGES[*]}."
+			;;
+		60 )
+			echo "[-] Shell type \"${SHELL_TYPE}\" is not supported."
+			;;
+		61 )
+			echo "[-] Uknown error code ${ERROR_CODE} received."
+			;;
+		62 )
+			echo "[-] Completion for \"${COMPLETION_TYPE}\" is not available."
+			;;
+		63 )
+			echo "[-] pushd failed at \"${PWD}\"."
+			;;
+		64 )
+			echo "[-] popd failed at \"${PWD}\"."
+			;;
+		65 )
+			echo "[-] Unknown sort-by value: \"${SORT_BY}\"."
+			echo "[i] Possible options are: firstsubmitted, lastmodified, votes, popularity."
+			;;
+		66 )
+			echo "[-] Unknown order-by value: \"${ORDER_BY}\"."
+			echo "[i] Possible options are: ascending, descending."
+			;;
+		67 )
+			echo "[-] Could not pull repository: \"${SELECTED_PACKAGE}\"."
+			;;
+		68 )
+			echo "[-] Unknown comparison criteria: \"${COMPARISON_CRITERIA}\"."
+			echo "[i] Possible options are: pkgbuild, rpc."
+			;;
+		70 )
+			echo "[-] Could not find PKGBUILD for \"${SELECTED_PACKAGE}\" with comparison criteria \"pkgbuild\"."
+			;;
+		71 )
+			echo "[-] Internal error during execution phase."
+			;;
+		72 )
+			echo "[-] Could not create required directory \"${REQUIRED_DIRECTORY}\"."
+			;;
+		73 )
+			echo "[-] Could not touch required file \"${REQUIRED_FILE}\"."
+			;;
+		* )
+			echo "[-] No error message found for error ${GIVEN_ERROR}."
+			;;
+	esac
+}
+
+aurx_completion() {
+	local SHELL_TYPE="${1}"
+	case "${SHELL_TYPE}" in
+		bash )
+			cat <<- EOS
+				_aurx_completion() {
+					local CURRENT_WORD="\${COMP_WORDS[COMP_CWORD]}"
+				        local LAST_WORD="\${COMP_WORDS[COMP_CWORD-1]}"
+				        COMPREPLY=()
+				        local POSSIBLE_OPERATIONS="${POSSIBLE_OPERATIONS[*]}"
+				        local GENERAL_OPTIONS="${GENERAL_OPTIONS[*]}"
+				        local INSTALL_OPTIONS="${INSTALL_OPTIONS[*]}"
+				        local REMOVE_OPTIONS="${REMOVE_OPTIONS[*]}"
+				        local UPDATE_OPTIONS="${UPDATE_OPTIONS[*]}"
+				        local SEARCH_OPTIONS="${SEARCH_OPTIONS[*]}"
+				        local COMPLETION_OPTIONS="${COMPLETION_OPTIONS[*]}"
+				        local LIST_OPTIONS="${LIST_OPTIONS[*]}"
+				        local AVAILABLE_COMPLETIONS="${AVAILABLE_COMPLETIONS[*]}"
+				        local SEARCH_CRITERIA_VALUES="${SEARCH_CRITERIA_VALUES[*]}"
+				        local COMPARISON_CRITERIA_VALUES="${COMPARISON_CRITERIA_VALUES[*]}"
+				        local SORT_BY_VALUES="${SORT_BY_VALUES[*]}"
+				        local ORDER_BY_VALUES="${ORDER_BY_VALUES[*]}"
+				        
+				        if [[ \${CURRENT_WORD} == -* ]]; then
+				                COMPREPLY=( \$(compgen -W "\${GENERAL_OPTIONS}" -- "\${CURRENT_WORD}") )
+				                if [[ \${COMP_WORDS[*]} =~ " install " ]]; then
+				                        COMPREPLY+=( \$(compgen -W "\${INSTALL_OPTIONS}" -- "\${CURRENT_WORD}") )
+				                elif [[ \${COMP_WORDS[*]} =~ " remove " ]]; then
+				                        COMPREPLY+=( \$(compgen -W "\${REMOVE_OPTIONS}" -- "\${CURRENT_WORD}") )
+				                elif [[ \${COMP_WORDS[*]} =~ " update " ]]; then
+				                        COMPREPLY+=( \$(compgen -W "\${UPDATE_OPTIONS}" -- "\${CURRENT_WORD}") )
+				        	elif [[ \${COMP_WORDS[*]} =~ " search " ]]; then
+				                        COMPREPLY+=( \$(compgen -W "\${SEARCH_OPTIONS}" -- "\${CURRENT_WORD}") )
+				        	elif [[ \${COMP_WORDS[*]} =~ " completion " ]]; then
+				                        COMPREPLY+=( \$(compgen -W "\${COMPLETION_OPTIONS}" -- "\${CURRENT_WORD}") )
+				        	elif [[ \${COMP_WORDS[*]} =~ " list " ]]; then
+				                        COMPREPLY+=( \$(compgen -W "\${LIST_OPTIONS}" -- "\${CURRENT_WORD}") )
+				                fi
+				        elif [[ \${LAST_WORD} == "--search-criteria" ]]; then
+				                COMPREPLY=( \$(compgen -W "\${SEARCH_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--comparison-criteria" ]]; then
+				                COMPREPLY=( \$(compgen -W "\${COMPARISON_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--order-by" ]]; then
+				                COMPREPLY=( \$(compgen -W "\${ORDER_BY_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--sort-by" ]]; then
+				                COMPREPLY=( \$(compgen -W "\${SORT_BY_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--source-path" ]] || [[ \${LAST_WORD} == "--persistent-path" ]] \
+				                || [[ \${LAST_WORD} == "--tmp-path" ]]; then
+						COMPREPLY=( \$(compgen -d -- "\${CURRENT_WORD}") )
+				        elif [[ -z \$(echo \${COMP_WORDS[*]} \${POSSIBLE_OPERATIONS[*]} | tr " " "\n" | sort | uniq -D) ]]; then
+				                COMPREPLY=( \$(compgen -W "\${POSSIBLE_OPERATIONS}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${#CURRENT_WORD} -ge 3 ]] && [[ ! -z \$(echo \${COMP_WORDS[*]} " install search " | tr " " "\n" | sort | uniq -D) ]]; then
+				                COMPREPLY=( \$(compgen -W "\$(${EXECUTABLE_NAME} search --search-criteria suggest \${CURRENT_WORD} | tr '\n' ' ')" -- "\${CURRENT_WORD}") )
+				        elif [[ ! -z \$(echo \${COMP_WORDS[*]} " remove update " | tr " " "\n" | sort | uniq -D) ]]; then
+				                COMPREPLY=( \$(compgen -W "\$(cat ${PERSISTENT_PATH}/package_list | tr '\n' ' ')" -- "\${CURRENT_WORD}") )
+				        elif [[ ! -z \$(echo \${COMP_WORDS[*]} " completion " | tr " " "\n" | sort | uniq -D) ]]; then
+				                COMPREPLY=( \$(compgen -W "\${AVAILABLE_COMPLETIONS}" -- "\${CURRENT_WORD}") )
+				        fi
+
+				        for PLANNED_REPLY in \${COMPREPLY[*]}; do
+				                if [[ \${COMP_WORDS[*]} =~ " \${PLANNED_REPLY} " ]]; then
+				                        TEMP_COMPREPLY=\${COMPREPLY[*]}
+				                        COMPREPLY=( \${TEMP_COMPREPLY//"\${PLANNED_REPLY}"/} )
+				                fi
+				        done
+				        
+				        return 0
+				}
+				complete -F _aurx_completion ${EXECUTABLE_NAME}
+			EOS
+			;;
+	esac
+}
+
+compare_versions() {
+	local TARGET_PACKAGE="${1}"
+
+	local INSTALLED_VERSION
+	INSTALLED_VERSION=$(pacman -Qi "${TARGET_PACKAGE}" 2> /dev/null \
+		| grep -e "Version" | awk '{ print $3 }')
+
+	case "${COMPARISON_CRITERIA}" in
+		pkgbuild )
+			if [[ ! -f "${SOURCE_PATH}"/"${TARGET_PACKAGE}"/PKGBUILD ]]; then
+				print_error 70
+				exit 70
+			fi
+			local LATEST_VERSION
+			local PKGVER
+			local PKGREL
+			PKGVER=$(sed -n 's/pkgver=\(.*\)/\1/p' "${SOURCE_PATH:?SOURCE_PATH not defined.}"/"${TARGET_PACKAGE}/PKGBUILD")
+			PKGREL=$(sed -n 's/pkgrel=\(.*\)/\1/p' "${SOURCE_PATH:?SOURCE_PATH not defined.}"/"${TARGET_PACKAGE}/PKGBUILD")
+			LATEST_VERSION="${PKGVER}-${PKGREL}"
+			;;
+		rpc )
+			local LATEST_VERSION
+			LATEST_VERSION=$(curl \
+				"https://aur.archlinux.org/rpc/v5/info?arg[]=${TARGET_PACKAGE}" 2> /dev/null \
+				| jq -r .results.[0].Version)
+			;;
+		* )
+			print_error 68
+			exit 68
+			;;
+	esac
+
+	if [[ "${LATEST_VERSION}" == "${INSTALLED_VERSION}" ]] && ! ${FORCE}; then
+		return 1
+	fi
+	return 0
+}
+
+clone_git_repo() {
+	local TARGET_PACKAGE="${1}"
+	if ! pushd "${SOURCE_PATH}" 1> /dev/null; then
+		print_error 63
+		exit 63
+	fi
+	git clone "https://aur.archlinux.org/${TARGET_PACKAGE}.git"
+	if [[ -z $(ls "${SOURCE_PATH}"/"${TARGET_PACKAGE}") ]]; then
+		if ! popd 1> /dev/null; then
+			print_error 64
+			exit 64
+		fi
+		return 1
+	fi
+	if ! popd 1> /dev/null; then
+		print_error 64
+		exit 64
+	fi
+	return 0
+}
+
+pull_git_repo() {
+	local TARGET_PACKAGE="${1}"
+	if ! pushd "${SOURCE_PATH}"/"${TARGET_PACKAGE}" 1> /dev/null; then
+		print_error 63
+		exit 63
+	fi
+	if ! git pull; then
+		if ! popd 1> /dev/null; then
+			print_error 64
+			exit 64
+		fi
+		return 1
+	fi
+	if ! popd 1> /dev/null; then
+		print_error 64
+		exit 64
+	fi
+	return 0
+}
+
+build_makepkg_package() {
+	local TARGET_PACKAGE="${1}"
+	if ! pushd "${SOURCE_PATH}"/"${TARGET_PACKAGE}" 1> /dev/null; then
+		print_error 63
+		exit 63
+	fi
+	if ! makepkg "${MAKEPKG_OPTS[@]}"; then
+		if ! popd 1> /dev/null; then
+			print_error 64
+			exit 64
+		fi
+		return 1
+	fi
+	if ! popd 1> /dev/null; then
+		print_error 64
+		exit 64
+	fi
+}
+
+remove_from_system() {
+	local TARGET_PACKAGE="${1}"
+	if [[ $(pacman -Qi "${TARGET_PACKAGE}" 2>/dev/null) ]]; then
+		sudo pacman "${REMOVE_OPTS[@]}" "${TARGET_PACKAGE}"
+	else
+		return 0
+	fi
+	if [[ $(pacman -Qi "${TARGET_PACKAGE}" 2> /dev/null) ]]; then
+		return 1
+	fi
+	return 0
+}
+
+remove_from_package_list() {
+	local TARGET_PACKAGE="${1}"
+	if grep -qe "^${TARGET_PACKAGE}$" "${PERSISTENT_PATH}"/package_list 2> /dev/null; then
+		sed -i "/^${TARGET_PACKAGE}$/d" "${PERSISTENT_PATH:?PERSISTENT_PATH not defined.}"/package_list
+	else
+		return 0
+	fi
+	if grep -qe "^${TARGET_PACKAGE}$" "${PERSISTENT_PATH}"/package_list; then
+		return 2
+	fi
+	sort "${PERSISTENT_PATH}/package_list" \
+		| tee "${PERSISTENT_PATH?PERSISTENT_PATH not defined.}/package_list" 1> /dev/null 2>&1
+	return 0
+}
+
+write_package_list() {
+	local TARGET_PACKAGE="${1}"
+	if ! grep -qe "${TARGET_PACKAGE}" "${PERSISTENT_PATH}"/package_list 2> /dev/null; then
+		echo "${TARGET_PACKAGE}" | tee -a "${PERSISTENT_PATH:?PERSISTENT_PATH not defined.}"/package_list 1> /dev/null
+	fi
+	if ! grep -qe "${TARGET_PACKAGE}" "${PERSISTENT_PATH}"/package_list; then
+		return 1
+	fi
+	sort "${PERSISTENT_PATH}/package_list" \
+		| tee "${PERSISTENT_PATH?PERSISTENT_PATH not defined.}/package_list" 1> /dev/null 2>&1
+	return 0
+}
+
+aur_rpc_search() {
+	local TARGET_KEYWORDS="${*}"
+	local RESULTS
+	declare -a PACKAGES_NOT_FOUND
+	declare -a REQUESTS
+
+	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
+		REQUESTS+=("https://aur.archlinux.org/rpc/v5/search/${TARGET_KEYWORD}?by=${SEARCH_CRITERIA}")
+		REQUESTS+=("-o${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}")
+	done
+
+	curl --parallel --parallel-immediate --parallel-max "${PARALLEL}" \
+		"${REQUESTS[@]}" 2> /dev/null
+
+	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
+		RESULT=$(< "${TMP_PATH}/temp_request_${TARGET_KEYWORD}")
+		if [[ $(echo "${RESULT}" | jq -c ".results") == "[]" ]]; then
+			PACKAGES_NOT_FOUND+=("${TARGET_KEYWORD}")
+			rm -rf "${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}"
+			continue
+		fi
+
+		RESULT=$(echo "${RESULT}" | jq -c ".results")
+
+		RESULT=$(echo "${RESULT}" | jq -r "sort_by(.${SORT_BY})")
+		if [[ "${ORDER_BY}" == "descending" ]]; then
+			RESULT=$(echo "${RESULT}" | jq -r 'reverse')
+		fi
+		if ${NO_OUT_OF_DATE}; then
+			RESULT=$(echo "${RESULT}" | jq -r '[.[] | select(.OutOfDate == null)]')
+		fi
+		if ${MAINTAINED}; then
+			RESULT=$(echo "${RESULT}" | jq -r '[.[] | select(.Maintainer != null)]')
+		fi
+		RESULT=$(echo "${RESULT}" | jq -r ".[:${SEARCH_RESULTS}]")
+
+
+		if [[ $(command -v pacman) ]]; then
+			RESULT=$(
+				echo "${RESULT}" | jq -c '.[]' | while read -r TEMP_DICT; do
+					local STATUS_STRING
+					local PACKAGE_NAME
+					local INSTALLED_VERSION
+					local ONLINE_VERSION
+
+					STATUS_STRING=""
+					PACKAGE_NAME=$(echo "${TEMP_DICT}" | jq -r '.Name')
+					if ! ${NO_MARK_INSTALLED} || ! ${NO_MARK_UPDATE}; then
+						INSTALLED_VERSION=$(pacman -Qi "${PACKAGE_NAME}" 2> /dev/null \
+							| grep -e "Version" | awk '{ print $3 }')
+					fi
+
+					if ! ${NO_MARK_INSTALLED} && [[ -n "${INSTALLED_VERSION}" ]]; then
+						STATUS_STRING=" [installed]"
+					fi
+
+					if ! ${NO_MARK_UPDATE} && [[ -n "${INSTALLED_VERSION}" ]]; then
+						ONLINE_VERSION=$(echo "${TEMP_DICT}" | jq -r '.Version')
+						if [[ "${INSTALLED_VERSION}" != "${ONLINE_VERSION}" ]]; then
+							STATUS_STRING=" [new version available]"
+						fi
+					fi
+
+					echo "${TEMP_DICT}" | jq --arg STATUS_STRING "${STATUS_STRING}" \
+						'. + {"StatusString": $STATUS_STRING}'
+				done | jq -s '.'
+			)
+		fi
+	
+		echo "${RESULT}" \
+			| jq -r ".[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity\(.StatusString) \n\t\(.Description)\""
+		
+		rm -rf "${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}"
+	done
+
+	if [[ ${#PACKAGES_NOT_FOUND[@]} -gt 0 ]]; then
+		print_error 30
+		exit 30
+	fi
+}
+
+aur_rpc_suggest() {
+	local TARGET_KEYWORDS="${*}"
+	local RESULTS
+	declare -a REQUESTS
+	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
+		REQUESTS+=( "https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" )
+	done
+
+	RESULTS=$(curl --parallel --parallel-immediate --parallel-max "${PARALLEL}" "${REQUESTS[@]}" 2> /dev/null)
+	RESULTS=$(
+		for RESULT in ${RESULTS}; do
+			echo "${RESULT}" | jq -r ".[:${SEARCH_RESULTS}] | .[]" 2> /dev/null
+		done
+	)
+
+	echo "${RESULTS}"
+}
+
+install_aur_package() {
+	local TARGET_PACKAGE="${1}"
+
+	if ${VERIFY_VERSIONS}; then
+		compare_versions "${TARGET_PACKAGE}" || return 0
+	fi
+
+	if [[ -d "${SOURCE_PATH}"/"${TARGET_PACKAGE}" ]]; then
+		if ${WIPE_EXISTING}; then
+			rm -rf "${SOURCE_PATH:?SOURCE_PATH not defined.}"/"${TARGET_PACKAGE}" || return 10
+		elif ${OVERWRITE_EXISTING} && [[ "${COMPARISON_CRITERIA}" == "rpc" ]]; then
+			pull_git_repo "${TARGET_PACKAGE}" || return 11
+		fi
+	fi
+	if [[ ! -d "${SOURCE_PATH}"/"${TARGET_PACKAGE}" ]]; then
+		clone_git_repo "${TARGET_PACKAGE}" || return 12
+	fi
+
+	if ${DOWNLOAD_ONLY}; then
+		return 0
+	fi
+
+	if build_makepkg_package "${TARGET_PACKAGE}"; then
+		if ${CLEANUP}; then
+			rm -rf "${SOURCE_PATH:?SOURCE_PATH not defined.}"/"${TARGET_PACKAGE}" || return 10
+		fi
+	else
+		if ${CLEAN_OPERATION}; then
+			rm -rf "${SOURCE_PATH:?SOURCE_PATH not defined.}"/"${TARGET_PACKAGE}" || return 10
+		fi
+		return 13
+	fi
+	
+	write_package_list "${TARGET_PACKAGE}" || return 14
+
+	return 0
+}
+
+remove_aur_package() {
+	local TARGET_PACKAGE="${1}"
+
+	remove_from_system "${TARGET_PACKAGE}" || return 20
+
+	remove_from_package_list "${TARGET_PACKAGE}" || return 21
+
+	return 0
+}
+
+search_aur_packages() {
+	local TARGET_KEYWORDS="${*}"
+
+	case "${SEARCH_CRITERIA}" in
+		name|name-desc|depends|checkdepends|optdepends \
+			|makedepends|maintainer|submitter|provides \
+			|conflicts|replaces|keywords|groups|comaintainers )
+			aur_rpc_search "${TARGET_KEYWORDS}"
+			;;
+		suggest )
+			aur_rpc_suggest "${TARGET_KEYWORDS}"
+			;;
+		* )
+			print_error 52
+			exit 52
+			;;
+	esac
+
+	return 0
+}
+
+getopt --test 1> /dev/null && true
+if [[ ${?} -ne 4 ]]; then
+	print_error 50
+	exit 50
+fi
+
+# Options.
+LONGOPTS=''
+LONGOPTS+='all,block-overwrite,cleanup,clean-operation,download-only,force,help,keep-sources,keep-failed-sources,maintained,no-mark-installed,no-mark-update,no-out-of-date,overwrite-existing,verify-versions,wipe-existing'
+LONGOPTS+=',comparison-criteria:,executable-name:,makepkg-opts:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
+OPTIONS=''
+OPTIONS+='aBcCdfhkKmiOuVwW'
+OPTIONS+='b:e:M:o:p:P:r:R:s:S:t:v:x:'
+if ! PARSED_OPTIONS=$(getopt --options="${OPTIONS}" --longoptions="${LONGOPTS}" --name "${0}" -- "${@}"); then
+	print_error 51
+	exit 51
+fi
+
+eval set -- "${PARSED_OPTIONS}"
+
+while true; do
+	case "${1}" in
+		-a|--all )
+			ALL=true
+			shift
+			;;
+		-b|--sort-by )
+			SORT_BY="${2}"
+			if [[ ! "${SORT_BY_VALUES[*]}" =~ ${SORT_BY} ]]; then
+				print_error 65
+				exit 65
+			fi
+			shift 2
+			;;
+		-B|--block-overwrite )
+			BLOCK_OVERWRITE=true
+			shift
+			;;
+		-c|--cleanup )
+			CLEANUP=true
+			shift
+			;;
+		-C|--clean-operation )
+			CLEAN_OPERATION=true
+			shift
+			;;
+		-d|--download-only )
+			DOWNLOAD_ONLY=true
+			shift
+			;;
+		-e|--executable-name )
+			EXECUTABLE_NAME="${2}"
+			shift 2
+			;;
+		-f|--force )
+			FORCE=true
+			shift
+			;;
+		-h|--help )
+			usage
+			exit 0
+			;;
+		-k|--keep-sources )
+			KEEP_SOURCES=true
+			shift
+			;;
+		-K|--keep-failed-sources )
+			KEEP_FAILED_SOURCES=true
+			shift
+			;;
+		-m|--maintained )
+			MAINTAINED=true
+			shift
+			;;
+		-M|--makepkg-opts )
+			MAKEPKG_OPTS=()
+			for OPT in ${2}; do
+				MAKEPKG_OPTS+=("${OPT}")
+			done
+			shift 2
+			;;
+		-u|--no-mark-update )
+			NO_MARK_UPDATE=true
+			shift
+			;;
+		-i|--no-mark-installed )
+			NO_MARK_INSTALLED=true
+			shift
+			;;
+		-O|--no-out-of-date )
+			NO_OUT_OF_DATE=true
+			shift
+			;;
+		-o|--order-by )
+			ORDER_BY="${2}"
+			if [[ ! "${ORDER_BY_VALUES[*]}" =~ ${ORDER_BY} ]]; then
+				print_error 66
+				exit 66
+			fi
+			shift 2
+			;;
+		-p|--persistent-path )
+			PERSISTENT_PATH="${2}"
+			shift 2
+			;;
+		-P|--parallel )
+			PARALLEL="${2}"
+			shift 2
+			;;
+		-r|--search-results )
+			SEARCH_RESULTS="${2}"
+			shift 2
+			;;
+		-R|--remove-opts )
+			REMOVE_OPTS=()
+			for OPT in ${2}; do
+				REMOVE_OPTS+=("${OPT}")
+			done
+			shift 2
+			;;
+		-s|--source-path )
+			SOURCE_PATH="${2}"
+			shift 2
+			;;
+		-S|--search-criteria )
+			SEARCH_CRITERIA="${2}"
+			if [[ ! "${SEARCH_CRITERIA_VALUES[*]}" =~ ${SEARCH_CRITERIA} ]]; then
+				print_error 52
+				exit 52
+			fi
+			shift 2
+			;;
+		-t|--tmp-path )
+			TMP_PATH="${2}"
+			shift 2
+			;;
+		-v|--verbosity )
+			VERBOSITY="${2}"
+			shift 2
+			;;
+		-V|--verify-versions )
+			VERIFY_VERSIONS=true
+			shift
+			;;
+		-w|--wipe-existing )
+			WIPE_EXISTING=true
+			shift
+			;;
+		-W|--overwrite-existing )
+			OVERWRITE_EXISTING=true
+			shift
+			;;
+		-x|--comparison-criteria )
+			COMPARISON_CRITERIA="${2}"
+			if [[ ! "${COMPARISON_CRITERIA_VALUES[*]}" =~ ${COMPARISON_CRITERIA} ]]; then
+				print_error 68
+				exit 68
+			fi
+			shift 2
+			;;
+		-- )
+			shift
+			break
+			;;
+		* )
+			print_error 53
+			exit 53
+			;;
+	esac
+done
+
+# Composed metadata.
+REQUIRED_DIRECTORIES=("${TMP_PATH?TMP_PATH not defined.}" \
+	"${SOURCE_PATH?SOURCE_PATH not defined.}" \
+	"${PERSISTENT_PATH?PERSISTENT_PATH not defined.}")
+REQUIRED_FILES=("${PERSISTENT_PATH?PERSISTENT_PATH not defined.}/package_list")
+
+
+# Input sanity checks.
+#
+# Current operation.
+if [[ ${#} -eq 0 ]]; then
+	print_error 54
+	exit 54
+fi
+CURRENT_OPERATION="${1}"
+if [[ ! "${POSSIBLE_OPERATIONS[*]}" =~ ${CURRENT_OPERATION} ]]; then
+	print_error 55
+	exit 55
+fi
+shift
+
+# Take all packages.
+TARGET_PACKAGES=("${@}")
+
+# Take all stdin packages.
+if ! [[ -t 0 ]]; then
+	while read -r STDIN_OPT; do
+		TARGET_PACKAGES+=("${STDIN_OPT}")
+	done
+fi
+
+# Root + install/update exception.
+if [[ ${UID} -eq 0 ]] && [[ " install update " =~ ${CURRENT_OPERATION} ]]; then
+	print_error 57
+	exit 57
+fi
+
+# Verbosity.
+case "${VERBOSITY}" in
+	0 ) 
+		STDOUT_DESTINATION=/dev/null
+		STDERR_DESTINATION=/dev/null
+		;;
+	1 )
+		STDOUT_DESTINATION=/dev/null
+		STDERR_DESTINATION=/dev/stderr
+		;;
+	2 )
+		STDOUT_DESTINATION=/dev/stdout
+		STDERR_DESTINATION=/dev/stderr
+		;;
+	* )
+		print_error 58
+		exit 58
+		;;
+esac
+
+# Sort by.
+case "${SORT_BY}" in
+	firstsubmitted )
+		SORT_BY="FirstSubmitted"
+		;;
+	lastmodified )
+		SORT_BY="LastModified"
+		;;
+	votes )
+		SORT_BY="NumVotes"
+		;;
+	popularity )
+		SORT_BY="Popularity"
+		;;
+	* )
+		print_error 65
+		exit 65
+		;;
+esac
+
+# Dependencies check.
+case "${CURRENT_OPERATION}" in
+	install | update )
+		REQUIRED_PACKAGES=('curl' 'echo' 'git' 'grep' 'jq' 'pacman' 'sed' 'tee')
+		;;
+	remove )
+		REQUIRED_PACKAGES=('grep' 'pacman' 'sed')
+		;;
+	search | completion | list )
+		REQUIRED_PACKAGES=('curl' 'echo' 'jq')
+		;;
+	* )
+		print_error 55
+		exit 55
+		;;
+esac		
+ABSENT_PACKAGES=()
+for REQUIRED_PACKAGE in "${REQUIRED_PACKAGES[@]}"; do
+	if [[ ! $(command -v "${REQUIRED_PACKAGE}") ]]; then
+		ABSENT_PACKAGES+=( "${REQUIRED_PACKAGE}" )
+	fi
+done
+if [[ -n "${ABSENT_PACKAGES[*]}" ]]; then
+	print_error 59
+	exit 59
+fi
+
+# Required directories.
+for REQUIRED_DIRECTORY in "${REQUIRED_DIRECTORIES[@]}"; do
+	if [[ ! -d "${REQUIRED_DIRECTORY}" ]]; then
+		if ! mkdir -p "${REQUIRED_DIRECTORY}"; then
+			print_error 72
+			exit 72
+		fi
+	fi
+done
+
+# Required files.
+for REQUIRED_FILE in "${REQUIRED_FILES[@]}"; do
+	if [[ ! -f "${REQUIRED_FILE}" ]]; then
+		if ! touch "${REQUIRED_FILE}"; then
+			print_error 73
+			exit 73
+		fi
+	fi
+done
+
+# Operation transformations.
+case "${CURRENT_OPERATION}" in
+	update )
+		SOURCE_PATH="${TMP_PATH?TMP_PATH not defined.}"
+		VERIFY_VERSIONS=true
+		if ! ${KEEP_SOURCES}; then
+			CLEANUP=true
+		fi
+		if ! ${KEEP_FAILED_SOURCES}; then
+			CLEAN_OPERATION=true
+		fi
+		if ! ${BLOCK_OVERWRITE}; then
+			OVERWRITE_EXISTING=true
+		fi
+		CURRENT_OPERATION="install"
+		;;
+	list )
+		ALL=true
+		SEARCH_RESULTS=1
+		CURRENT_OPERATION="search"
+		;;
+	* )
+		;;
+esac
+
+# Add all packages if 'ALL' option active.
+if ${ALL}; then
+	while IFS= read -r TARGET_PACKAGE; do
+		if [[ -n "${TARGET_PACKAGE}" ]]; then
+			TARGET_PACKAGES+=( "${TARGET_PACKAGE}" )
+		fi
+	done < "${PERSISTENT_PATH}"/package_list
+fi
+
+# No packages and all left operations need them.
+if [[ -z "${TARGET_PACKAGES}" ]]; then
+	print_error 56
+	exit 56
+fi
+
+# Execution.
+case "${CURRENT_OPERATION}" in
+	install|remove )
+		for SELECTED_PACKAGE in "${TARGET_PACKAGES[@]}"; do
+			"${CURRENT_OPERATION}"_aur_package "${SELECTED_PACKAGE}" 1> "${STDOUT_DESTINATION}" 2> "${STDERR_DESTINATION}"
+			ERROR_CODE=${?}
+			case ${ERROR_CODE} in
+				0 )
+					;;
+				10|11|12|13|14|20|21 )
+					print_error "${ERROR_CODE}"
+					;;
+				* )
+					print_error 61
+					exit "${ERROR_CODE}"
+					;;
+			esac
+		done
+		;;
+	search )
+		search_aur_packages "${TARGET_PACKAGES[@]}" 1> "${STDOUT_DESTINATION}" 2> "${STDERR_DESTINATION}"
+		;;
+	completion )
+		COMPLETION_TYPE="${TARGET_PACKAGES[0]}"
+		if [[ "${AVAILABLE_COMPLETIONS[*]}" =~ ${COMPLETION_TYPE} ]]; then
+			aurx_completion "${COMPLETION_TYPE}"
+			exit 0
+		else
+			print_error 62
+			exit 62
+		fi
+		;;
+	* )
+		print_error 71
+		exit 71
+		;;
+esac
+

@@ -1,31 +1,17 @@
-# Maintainer: carlyle
-
-pkgname=aurx
-pkgver=1.0.2.r6.g415b3b6
+# Maintainer: mvtab <mvtabilitas@protonmail.com>
+pkgname="aurx"
+pkgver="1.0.0"
 pkgrel=1
-pkgdesc="An AUR helper written in C."
-arch=('x86_64')
-url="https://github.com/carlyle-felix/aurx"
-license=( 'GPL-3.0-or-later' )
-depends=(
-        'base-devel'
-        'git'
-        'pacman'
-        'pacutils'
-        'json-c'
-        'libcurl-gnutls'
-)
-source=("${pkgname}::git+${url}.git")
-pkgver() {
-        cd "$pkgname"
-        git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-sha256sums=('SKIP')
-build() {
-	cd "${srcdir}/${pkgname}"
-        make
-}
+pkgdesc="A simple bash script for easily managing AUR installs."
+arch=("x86_64")
+url="https://github.com/mvtab/aurx"
+license=("GPL-3.0-only")
+depends=("curl>=7.68.0" "git" "grep" "jq" "sed")
+source=("aurx")
+sha256sums=("1368abf63ef80cce4de0d64f7385029ad6137d917f92c4543eaff4a620321b9d")
+
 package() {
-        cd "${srcdir}/${pkgname}"
-        make DESTDIR="$pkgdir" install
+	install -Dm755 "${srcdir}/aurx" "${pkgdir}/usr/bin/aurx"
+	echo "[i] For bash completion you can: 'source <(aurx completion bash)'"
 }
+

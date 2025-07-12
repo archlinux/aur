@@ -1,17 +1,16 @@
 pkgbase = aurx
-	pkgdesc = An AUR helper written in C.
-	pkgver = 1.0.2.r6.g415b3b6
+	pkgdesc = A simple bash script for easily managing AUR installs.
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/carlyle-felix/aurx
+	url = https://github.com/mvtab/aurx
 	arch = x86_64
-	license = GPL-3.0-or-later
-	depends = base-devel
+	license = GPL-3.0-only
+	depends = curl>=7.68.0
 	depends = git
-	depends = pacman
-	depends = pacutils
-	depends = json-c
-	depends = libcurl-gnutls
-	source = aurx::git+https://github.com/carlyle-felix/aurx.git
-	sha256sums = SKIP
+	depends = grep
+	depends = jq
+	depends = sed
+	source = aurx
+	sha256sums = 1368abf63ef80cce4de0d64f7385029ad6137d917f92c4543eaff4a620321b9d
 
 pkgname = aurx
