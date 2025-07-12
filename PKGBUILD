@@ -21,25 +21,30 @@ sha256sums=('SKIP')
 prepare() {
     chmod a+x "$_pkgname-$pkgver-linux-$arch.AppImage"
     "./$_pkgname-$pkgver-linux-$arch.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/hamrs-pro.AppImage|g;s|Utility|HamRadio|g' -i "$srcdir/squashfs-root/$_pkgname.desktop"
+
+    # Fix desktop file to use absolute AppImage path and correct icon reference
+    sed -i \
+        -e 's|AppRun|/opt/appimages/hamrs-pro.AppImage|g' \
+        -e 's|Utility|HamRadio|g' \
+        -e 's|Icon=.*|Icon=hamrs-pro|g' \
+        "$srcdir/squashfs-root/$_pkgname.desktop"
 }
 
 package() {
-    # Install AppImage
+    # Install AppImage binary
     install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-$arch.AppImage" \
         "$pkgdir/$_install_path/$_pkgname.AppImage"
 
-    # Install .desktop launcher
+    # Install .desktop file
     install -Dm644 "$srcdir/squashfs-root/$_pkgname.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-    # Install icon(s)
-    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png" \
-        "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png"
+    # Install icons (copy 1024x1024 version as both sizes)
+    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/hamrs.png" \
+        "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/hamrs-pro.png"
 
-    # Reuse the same icon for 32x32 fallback (same file copied)
-    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png" \
-        "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
+    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/hamrs.png" \
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/hamrs-pro.png"
 
     # Install license
     install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" \
