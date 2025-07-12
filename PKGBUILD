@@ -4,7 +4,7 @@
 
 pkgname=lx-music
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 _electron=electron35
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
@@ -29,6 +29,7 @@ prepare() {
 
 	local electronDist="/usr/lib/${_electron}"
 	local electronVersion="$(<$electronDist/version)"
+	electronVersion="${electronVersion%.*}.0"
 	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
 	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
 	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json

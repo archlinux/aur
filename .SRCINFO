@@ -1,7 +1,7 @@
 pkgbase = lx-music
 	pkgdesc = An Electron-based music player
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	arch = aarch64
