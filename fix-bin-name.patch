@@ -1,0 +1,16 @@
+diff --git a/gui/com.quexten.Goldwarden.desktop b/gui/com.quexten.Goldwarden.desktop
+index 5df1eb5..0919491 100644
+--- a/gui/com.quexten.Goldwarden.desktop
++++ b/gui/com.quexten.Goldwarden.desktop
+@@ -2,9 +2,9 @@
+ Name=Goldwarden
+ Comment=A Bitwarden compatible desktop password manager
+ Keywords=password;ssh;auto-type;keys;
+-Exec=goldwarden_ui_main.py
++Exec=goldwarden-gui
+ Terminal=false
+ Type=Application
+ Icon=com.quexten.Goldwarden
+ StartupNotify=true
+ Categories=GNOME;GTK;Utility;
+\ No newline at end of file

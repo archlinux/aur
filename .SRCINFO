@@ -1,0 +1,16 @@
+pkgbase = goldwarden-gui
+	pkgdesc = A feature-packed Bitwarden compatible desktop integration
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/quexten/goldwarden
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = blueprint-compiler
+	depends = goldwarden
+	source = goldwarden::git+https://github.com/quexten/goldwarden#tag=v0.3.6
+	source = fix-bin-name.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = goldwarden-gui

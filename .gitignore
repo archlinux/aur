@@ -1,0 +1,4 @@
+src/
+pkg/
+goldwarden/
+goldwarden-gui-*.pkg.tar.zst
