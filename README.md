@@ -9,12 +9,13 @@ A simple bash script for easily managing AUR installs.
 git clone git@github.com:mvtab/aurx.git
 #git clone https://github.com/mvtab/aurx
 cd aurx/
-chmod +111 ./aurx
-./aurx --help
 
-## Hard link and completion for comfort.
-#sudo ln ${PWD}/aurx /usr/bin/aurx
-#source <(aurx completion bash)
+# Install and add temporary completion.
+makepkg -sirc
+source <(aurx completion bash)
+
+aurx --help
+
 ```
 
 ## Usage
