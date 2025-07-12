@@ -4,7 +4,7 @@
 
 pkgname=ticker-bin
 _pkg=ticker
-pkgver=5.0.3
+pkgver=5.0.5
 pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,15 +19,24 @@ source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v$pkgver/$_pk
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-arm64.tar.gz")
 source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-armv6.tar.gz")
 source_armv6h=("$pkgname-$pkgver-armv6h.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-armv6.tar.gz")
-sha256sums_i686=('6d80f98edc5e986bc9d94183c70bd58055fba42a728cf1275466c61c50211e2f')
-sha256sums_x86_64=('8a2bdf817a0218a9e04fe82b627780b5647e04e874fb0404e9ce83435829e802')
-sha256sums_armv6h=('008f765da29bae6d37769a37f9cd74e895d9e370d538d4dd6ddb9d2e8097f791')
-sha256sums_armv7h=('008f765da29bae6d37769a37f9cd74e895d9e370d538d4dd6ddb9d2e8097f791')
-sha256sums_aarch64=('7976d142200622da39584088677584b10e98089438f1c7cff2fc075db39f69a4')
+sha256sums_i686=('f0242a0821f100e1db437d70e23e51a601ff958bc26bedf25e2c51db76a8dfcd')
+sha256sums_x86_64=('6f52ae8b1140d3d072002108d4f6dbbcdb42717c1386cd5d99f8de201720770e')
+sha256sums_armv6h=('52a1489554fbe17755225ccde5d6ca98d595462db0496f6ca1799d76ac13900d')
+sha256sums_armv7h=('52a1489554fbe17755225ccde5d6ca98d595462db0496f6ca1799d76ac13900d')
+sha256sums_aarch64=('beaf996fb90b4f82d2a574d9e09bd1a589ca8a9efe672cbfbced3148ed9a6d3b')
 
 package () {
-	install -Dv "$_pkg" -t "$pkgdir/usr/bin/"
+	install -Dv ticker -t "$pkgdir/usr/bin/"
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+	./ticker completion bash > "${pkgdir}/usr/share/bash-completion/completions/ticker"
+
+	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+	./ticker completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_ticker"
+
+	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	./ticker completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/ticker.fish"
 }
 # vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
