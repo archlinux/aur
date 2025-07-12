@@ -1,0 +1,18 @@
+pkgbase = kronos-highscore-git
+	pkgdesc = Highscore port of Kronos (WIP)
+	pkgver = r7747.2422016
+	pkgrel = 1
+	url = https://github.com/highscore-emu/Kronos
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = git
+	makedepends = meson
+	depends = libepoxy
+	depends = libhighscore-git
+	depends = zlib
+	provides = kronos-highscore
+	conflicts = kronos-highscore
+	source = git+https://github.com/highscore-emu/Kronos.git
+	sha256sums = SKIP
+
+pkgname = kronos-highscore-git
