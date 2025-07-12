@@ -1,14 +1,15 @@
 pkgbase = fnlock
-	pkgdesc = A systemd service to toggle Fn Lock using Ctrl, Shift, and Alt keys For Lenovo laptops
+	pkgdesc = A systemd service to toggle Fn Lock using Ctrl, Shift, and Alt keys for Lenovo laptops
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/yourrepo/FnLock
 	arch = any
 	license = GPL3
+	depends = python
 	depends = python-evdev
-	source = FnLock.sh
+	source = FnLock.py
 	source = FnLock.service
-	sha256sums = 5cf5b75fd57797480ec876f4b51ccc42e420d79671f02c2c290e442e80057b82
-	sha256sums = dd3fcefe0b125a0e4a1f4f310029188a985eb1c4e4e6ac689671ec3552370c81
+	sha256sums = 848205c651d18d49b11fd27de543dacca98db0f06282190207e6150ef280af81
+	sha256sums = 6a684ccf742fa9e6e52a593925f8b2580408fb01fd05cba050605ab81cdf186c
 
 pkgname = fnlock

@@ -1,14 +1,23 @@
 [Unit]
-Description=Toggle Fn Lock on Key Press
+Description=Toggle Fn Lock on Modifier Key Press
 After=multi-user.target
+Wants=network.target
 
 [Service]
-ExecStart=/usr/bin/FnLock
-Restart=always
 Type=simple
+ExecStart=/usr/bin/python3 /usr/bin/FnLock
+Restart=on-failure
+RestartSec=5
+
+ProtectSystem=full
+ProtectHome=read-only
+NoNewPrivileges=true
+PrivateTmp=true
+ReadWritePaths=/sys/bus/platform/devices/VPC2004:00/fn_lock /dev/input
+CapabilityBoundingSet=CAP_SYS_ADMIN CAP_DAC_OVERRIDE
 StandardOutput=journal
 StandardError=journal
+User=root
 
 [Install]
 WantedBy=multi-user.target
-
