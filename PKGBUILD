@@ -2,13 +2,14 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.17.0.r7.g4e9e57edb
+pkgver=2.17.2.r18.g9a9c1568e
 pkgrel=1
+_electron=electron37
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux, with the system electron (unsupported)."
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
-depends=(electron)
+depends=(electron37)
 makedepends=(git pnpm npm)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
@@ -29,7 +30,7 @@ build() {
   cd $_pkgname
   pnpm install
   pnpm run download-helper-binaries
-  pnpm dist:linux --x64 --dir -c.electronDist=/usr/lib/electron/ -c.electronVersion=$(cat /usr/lib/electron/version)
+  pnpm dist:linux --x64 --dir -c.electronDist=/usr/lib/$_electron/ -c.electronVersion=$(cat /usr/lib/$_electron/version)
 }
 
 package() {
