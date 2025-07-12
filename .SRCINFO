@@ -1,6 +1,6 @@
 pkgbase = qlog-git
 	pkgdesc = Amateur radio logbook software
-	pkgver = 0.44.1.r0.g79625cf
+	pkgver = 0.45.0.r0.g6f90e01
 	pkgrel = 1
 	url = https://github.com/foldynl/QLog
 	arch = x86_64
@@ -8,18 +8,20 @@ pkgbase = qlog-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = hamlib
-	depends = qt6-base
+	depends = libglvnd
 	depends = qt6-charts
+	depends = qt6-declarative
+	depends = qt6-positioning
 	depends = qt6-serialport
+	depends = qt6-webchannel
 	depends = qt6-webengine
 	depends = qt6-websockets
 	depends = qtkeychain-qt6
+	depends = sqlite
 	optdepends = org.freedesktop.secrets: keyring/password support
-	provides = qlog=0.44.1.r0
+	provides = qlog=0.45.0.r0
 	conflicts = qlog
 	source = qlog::git+https://github.com/foldynl/QLog.git
-	source = foldynl.qlog-flags::git+https://github.com/foldynl/QLog-Flags.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = qlog-git
