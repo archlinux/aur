@@ -2,7 +2,7 @@
 
 _pkgname=pvsneslib
 pkgname=${_pkgname}-git
-pkgver=r1640.9f278d4e
+pkgver=r1722.a3b165d7
 pkgrel=1
 pkgdesc="A free/libre toolchain to program the SNES using assembler and C"
 arch=('x86_64')
@@ -24,6 +24,7 @@ prepare() {
   git submodule update --init --recursive
   export MAKEFLAGS=--jobs=1
   export PVSNESLIB_HOME=$(pwd)
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   echo "CFLAGS: ${CFLAGS}"
   echo "CXXFLAGS: ${CXXFLAGS}"
   echo "LDFLAGS: ${LDFLAGS}"
