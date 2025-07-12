@@ -1,13 +1,15 @@
 pkgbase = skalibs-musl
 	pkgdesc = A set of general-purpose C programming libraries
 	pkgver = 2.14.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.skarnet.org/software/skalibs
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = musl
+	makedepends = gcc
+	makedepends = make
 	provides = skalibs=2.14.4.0
 	conflicts = skalibs
 	replaces = skalibs

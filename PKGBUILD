@@ -1,12 +1,13 @@
-# Maintainer: nesk_aur
+# Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
+
 pkgname=skalibs-musl
 pkgver=2.14.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of general-purpose C programming libraries"
-arch=(aarch64 'i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="http://www.skarnet.org/software/skalibs"
 license=('custom:ISC')
-makedepends=(musl)
+makedepends=(musl gcc make)
 provides=(skalibs=${pkgver})
 replaces=(skalibs)
 conflicts=(skalibs)
