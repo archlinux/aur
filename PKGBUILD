@@ -3,16 +3,16 @@
 # Maintainer: tee <teeaur at duck dot com>
 
 pkgname=ticker
-pkgver=5.0.3
+pkgver=5.0.5
 pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/achannarasappa/ticker"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums_x86_64=('3ee5da344f6ad871021b9748722850b7a281ae1d09b709581aeeb57ad0e1606d')
+sha256sums_x86_64=('0dc715b88412fb0930c812400c8200c9ddac05bdc5ba240d5a8c1a2db6ca8c02')
 
 prepare () {
 	cd "$pkgname-$pkgver"
@@ -45,4 +45,14 @@ package () {
 	install -Dv "build/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+    cd build
+	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+	./ticker completion bash > "${pkgdir}/usr/share/bash-completion/completions/ticker"
+
+	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+	./ticker completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_ticker"
+
+	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	./ticker completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/ticker.fish"
 }
