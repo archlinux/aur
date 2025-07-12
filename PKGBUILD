@@ -4,8 +4,8 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.3.4.24120703.r499.g3b60afe
-pkgrel=2
+pkgver=8.4.0.25071206.r0.g8881389
+pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -13,7 +13,7 @@ url='http://www.renpy.org'
 depends=(
 	'glibc' 'ffmpeg' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
 	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer'
-	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'assimp' 'python-legacy-cgi')
+	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'assimp' 'python-legacy-cgi' 'ftgl')
 makedepends=(
 	'cython' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
 	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel')
@@ -40,7 +40,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 
-	export CFLAGS+=" $(pkg-config --cflags freetype2)"
+	export CFLAGS+=" $(pkg-config --cflags ftgl)"
 
 	local _version="${pkgver%.*}"
 	_version="${_version%.*}"
