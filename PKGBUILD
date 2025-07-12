@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r8009
-pkgrel=2
+pkgrel=3
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -117,8 +117,7 @@ build() {
   cd "${pkgname%-git}"
 
   ./configure \
-    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
-    --configprofile=hostonly
+    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
   make
 }
 
