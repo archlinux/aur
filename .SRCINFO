@@ -1,6 +1,6 @@
 pkgbase = pulse-secure
 	pkgdesc = Ivanti Secure Access Client
-	pkgver = 22.8r1_b31437
+	pkgver = 22.8r2_b33497
 	pkgrel = 1
 	url = https://www.pulsesecure.net/
 	install = pulse-secure.install
@@ -22,7 +22,7 @@ pkgbase = pulse-secure
 	source = setup_cef.sh.patch
 	md5sums = 261848a28201e5386ec4bf587473a48b
 	md5sums = 31c0e4d462053b189274b8f6df340525
-	source_x86_64 = https://static.elisa.com/v2/image/2tqybbhjs47b/39fWWYetPu16CdMQth8vWj/ps-pulse-linux-22.8r1-b31437-installer.rpm
-	md5sums_x86_64 = 7a2547c1df066b64cedb3a81f437e589
+	source_x86_64 = https://dl.vpn.ucsb.edu/clients/Linux%20VPN%20Client/ps-pulse-linux-22.8r2-b33497-installer.rpm
+	md5sums_x86_64 = 73802a4670c798acdb9fbe11e1d07695
 
 pkgname = pulse-secure
