@@ -1,6 +1,8 @@
-# Maintainer: Pandakewt chuminhtuan30306@gmail.com
+# Maintainer: Pandakewt <chuminhtuan30306@gmail.com>
+# Contributor Games_Crack <aur@gamescrack.net>
+
 pkgname=teleport-connect
-pkgver=17.5.2
+pkgver=18.0.0
 pkgrel=1
 pkgdesc="Teleport Connect"
 arch=('x86_64')
@@ -9,7 +11,7 @@ license=('Apache')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux' 'libsecret')
 optdepends=('libappindicator-gtk3')
 source=("${pkgname}-${pkgver}.deb::https://cdn.teleport.dev/teleport-connect_${pkgver}_amd64.deb")
-sha256sums=('cbd55468b6b1e6b60fd07c160dd158ffddd3e4b3a85bfecd300b7e8fd918e0b3')
+sha256sums=('c5b8461b69e2129a345cc6e740e808e2a6cc23e21558ed8294528f42c4a22dd4')
 
 package() {
     # Extract the DEB package

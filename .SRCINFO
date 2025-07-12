@@ -1,6 +1,6 @@
 pkgbase = teleport-connect
 	pkgdesc = Teleport Connect
-	pkgver = 17.5.2
+	pkgver = 18.0.0
 	pkgrel = 1
 	url = https://goteleport.com
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = teleport-connect
 	depends = util-linux
 	depends = libsecret
 	optdepends = libappindicator-gtk3
-	source = teleport-connect-17.5.2.deb::https://cdn.teleport.dev/teleport-connect_17.5.2_amd64.deb
-	sha256sums = cbd55468b6b1e6b60fd07c160dd158ffddd3e4b3a85bfecd300b7e8fd918e0b3
+	source = teleport-connect-18.0.0.deb::https://cdn.teleport.dev/teleport-connect_18.0.0_amd64.deb
+	sha256sums = c5b8461b69e2129a345cc6e740e808e2a6cc23e21558ed8294528f42c4a22dd4
 
 pkgname = teleport-connect
