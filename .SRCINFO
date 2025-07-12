@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang
 	pkgdesc = 万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型
-	pkgver = 8.7.3
+	pkgver = 8.7.5
 	pkgrel = 1
 	url = https://github.com/amzxyz/rime_wanxiang
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = rime-wanxiang
 	makedepends = sed
 	makedepends = python
 	makedepends = zip
-	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v8.7.3.zip
-	b2sums = f649f01cd2929b57ad811e1bd6a6030eb5fa046f3dcb861c7bdee23e36fddd18b0cf2c46e24a0a6a4a9a4f981450c6e7d6bfde06f5935238027da1d08e033b47
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v8.7.5.zip
+	b2sums = 82837e2c658e0590b5ff3e2539012cfb45789e287155f8d12781a7cc23c596309237f9e4f414747983820a266177eb8e5339318ef0c38f502cec4f8df7da4f0b
 
 pkgname = rime-wanxiang-data
 	pkgdesc = 万象拼音基础数据
@@ -33,8 +33,8 @@ pkgname = rime-wanxiang-zrm
 	pkgdesc = 万象拼音标准版（自然码方案）
 	install = post.install
 	depends = rime-wanxiang-zrm-data
-	depends = rime-wanxiang-dict-zh=8.7.3
-	provides = rime-wanxiang=8.7.3
+	depends = rime-wanxiang-dict-zh=8.7.5
+	provides = rime-wanxiang=8.7.5
 	conflicts = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-mspy
 	conflicts = rime-wanxiang-pinyin
@@ -47,8 +47,8 @@ pkgname = rime-wanxiang-pro-zrm
 	pkgdesc = 万象拼音双拼辅助码版（自然码方案）
 	install = post.install
 	depends = rime-wanxiang-zrm-data
-	depends = rime-wanxiang-pro-dict-zh=8.7.3
-	provides = rime-wanxiang-pro=8.7.3
+	depends = rime-wanxiang-pro-dict-zh=8.7.5
+	provides = rime-wanxiang-pro=8.7.5
 	conflicts = rime-wanxiang-pro-flypy
 	conflicts = rime-wanxiang-pro-mspy
 	conflicts = rime-wanxiang-pro-pinyin
@@ -56,7 +56,7 @@ pkgname = rime-wanxiang-pro-zrm
 
 pkgname = rime-wanxiang-pro-dict-zh-zrm
 	pkgdesc = 万象拼音中文词库（自然码辅助码版）
-	provides = rime-wanxiang-pro-dict-zh=8.7.3
+	provides = rime-wanxiang-pro-dict-zh=8.7.5
 	conflicts = rime-wanxiang-pro-dict-zh-tiger
 	conflicts = rime-wanxiang-pro-dict-zh-moqi
 	conflicts = rime-wanxiang-pro-dict-zh-flypy
@@ -66,7 +66,7 @@ pkgname = rime-wanxiang-pro-dict-zh-zrm
 
 pkgname = rime-wanxiang-pro-dict-zh-tiger
 	pkgdesc = 万象拼音中文词库（虎码首末辅助码版）
-	provides = rime-wanxiang-pro-dict-zh=8.7.3
+	provides = rime-wanxiang-pro-dict-zh=8.7.5
 	conflicts = rime-wanxiang-pro-dict-zh-zrm
 	conflicts = rime-wanxiang-pro-dict-zh-moqi
 	conflicts = rime-wanxiang-pro-dict-zh-flypy
@@ -76,7 +76,7 @@ pkgname = rime-wanxiang-pro-dict-zh-tiger
 
 pkgname = rime-wanxiang-pro-dict-zh-moqi
 	pkgdesc = 万象拼音中文词库（墨奇辅助码版）
-	provides = rime-wanxiang-pro-dict-zh=8.7.3
+	provides = rime-wanxiang-pro-dict-zh=8.7.5
 	conflicts = rime-wanxiang-pro-dict-zh-zrm
 	conflicts = rime-wanxiang-pro-dict-zh-tiger
 	conflicts = rime-wanxiang-pro-dict-zh-flypy
@@ -86,7 +86,7 @@ pkgname = rime-wanxiang-pro-dict-zh-moqi
 
 pkgname = rime-wanxiang-pro-dict-zh-flypy
 	pkgdesc = 万象拼音中文词库（小鹤辅助码版）
-	provides = rime-wanxiang-pro-dict-zh=8.7.3
+	provides = rime-wanxiang-pro-dict-zh=8.7.5
 	conflicts = rime-wanxiang-pro-dict-zh-zrm
 	conflicts = rime-wanxiang-pro-dict-zh-tiger
 	conflicts = rime-wanxiang-pro-dict-zh-moqi
@@ -96,7 +96,7 @@ pkgname = rime-wanxiang-pro-dict-zh-flypy
 
 pkgname = rime-wanxiang-pro-dict-zh-wubi
 	pkgdesc = 万象拼音中文词库（五笔前2辅助码版）
-	provides = rime-wanxiang-pro-dict-zh=8.7.3
+	provides = rime-wanxiang-pro-dict-zh=8.7.5
 	conflicts = rime-wanxiang-pro-dict-zh-zrm
 	conflicts = rime-wanxiang-pro-dict-zh-tiger
 	conflicts = rime-wanxiang-pro-dict-zh-moqi
@@ -106,7 +106,7 @@ pkgname = rime-wanxiang-pro-dict-zh-wubi
 
 pkgname = rime-wanxiang-pro-dict-zh-jdh
 	pkgdesc = 万象拼音中文词库（简单鹤辅助码版）
-	provides = rime-wanxiang-pro-dict-zh=8.7.3
+	provides = rime-wanxiang-pro-dict-zh=8.7.5
 	conflicts = rime-wanxiang-pro-dict-zh-zrm
 	conflicts = rime-wanxiang-pro-dict-zh-tiger
 	conflicts = rime-wanxiang-pro-dict-zh-moqi
@@ -116,7 +116,7 @@ pkgname = rime-wanxiang-pro-dict-zh-jdh
 
 pkgname = rime-wanxiang-pro-dict-zh-hanxin
 	pkgdesc = 万象拼音中文词库（汉心辅助码版）
-	provides = rime-wanxiang-pro-dict-zh=8.7.3
+	provides = rime-wanxiang-pro-dict-zh=8.7.5
 	conflicts = rime-wanxiang-pro-dict-zh-zrm
 	conflicts = rime-wanxiang-pro-dict-zh-tiger
 	conflicts = rime-wanxiang-pro-dict-zh-moqi
@@ -136,8 +136,8 @@ pkgname = rime-wanxiang-flypy
 	pkgdesc = 万象拼音标准版（小鹤双拼方案）
 	install = post.install
 	depends = rime-wanxiang-flypy-data
-	depends = rime-wanxiang-dict-zh=8.7.3
-	provides = rime-wanxiang=8.7.3
+	depends = rime-wanxiang-dict-zh=8.7.5
+	provides = rime-wanxiang=8.7.5
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-mspy
 	conflicts = rime-wanxiang-pinyin
@@ -147,8 +147,8 @@ pkgname = rime-wanxiang-pro-flypy
 	pkgdesc = 万象拼音双拼辅助码版（小鹤双拼方案）
 	install = post.install
 	depends = rime-wanxiang-flypy-data
-	depends = rime-wanxiang-pro-dict-zh=8.7.3
-	provides = rime-wanxiang-pro=8.7.3
+	depends = rime-wanxiang-pro-dict-zh=8.7.5
+	provides = rime-wanxiang-pro=8.7.5
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-mspy
 	conflicts = rime-wanxiang-pro-pinyin
@@ -166,8 +166,8 @@ pkgname = rime-wanxiang-mspy
 	pkgdesc = 万象拼音标准版（微软双拼方案）
 	install = post.install
 	depends = rime-wanxiang-mspy-data
-	depends = rime-wanxiang-dict-zh=8.7.3
-	provides = rime-wanxiang=8.7.3
+	depends = rime-wanxiang-dict-zh=8.7.5
+	provides = rime-wanxiang=8.7.5
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-pinyin
@@ -177,8 +177,8 @@ pkgname = rime-wanxiang-pro-mspy
 	pkgdesc = 万象拼音双拼辅助码版（微软双拼方案）
 	install = post.install
 	depends = rime-wanxiang-mspy-data
-	depends = rime-wanxiang-pro-dict-zh=8.7.3
-	provides = rime-wanxiang-pro=8.7.3
+	depends = rime-wanxiang-pro-dict-zh=8.7.5
+	provides = rime-wanxiang-pro=8.7.5
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-flypy
 	conflicts = rime-wanxiang-pro-pinyin
@@ -196,8 +196,8 @@ pkgname = rime-wanxiang-pinyin
 	pkgdesc = 万象拼音标准版（全拼方案）
 	install = post.install
 	depends = rime-wanxiang-pinyin-data
-	depends = rime-wanxiang-dict-zh=8.7.3
-	provides = rime-wanxiang=8.7.3
+	depends = rime-wanxiang-dict-zh=8.7.5
+	provides = rime-wanxiang=8.7.5
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-mspy
@@ -215,8 +215,8 @@ pkgname = rime-wanxiang-sogou
 	pkgdesc = 万象拼音标准版（搜狗双拼方案）
 	install = post.install
 	depends = rime-wanxiang-sogou-data
-	depends = rime-wanxiang-dict-zh=8.7.3
-	provides = rime-wanxiang=8.7.3
+	depends = rime-wanxiang-dict-zh=8.7.5
+	provides = rime-wanxiang=8.7.5
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-mspy
@@ -226,8 +226,8 @@ pkgname = rime-wanxiang-pro-sogou
 	pkgdesc = 万象拼音双拼辅助码版（搜狗双拼方案）
 	install = post.install
 	depends = rime-wanxiang-sogou-data
-	depends = rime-wanxiang-pro-dict-zh=8.7.3
-	provides = rime-wanxiang-pro=8.7.3
+	depends = rime-wanxiang-pro-dict-zh=8.7.5
+	provides = rime-wanxiang-pro=8.7.5
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-flypy
 	conflicts = rime-wanxiang-pro-mspy
