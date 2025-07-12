@@ -7,7 +7,7 @@ pkgbase=wordnet
 pkgname=(wordnet-common wordnet-progs)
 pkgver=3.1
 _srcver=3.0
-pkgrel=12
+pkgrel=13
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
@@ -47,6 +47,8 @@ build() {
 package_wordnet-common() {
   depends+=('wordnet-progs')
   pkgdesc="An Electronic Lexical Database from Princeton University"
+  provides=(dict-wn)
+  conflicts=(dict-wn)
 
   cd "${srcdir}/WordNet-${_srcver}"
   make DESTDIR="$pkgdir" install

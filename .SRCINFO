@@ -1,6 +1,6 @@
 pkgbase = wordnet
 	pkgver = 3.1
-	pkgrel = 12
+	pkgrel = 13
 	url = https://wordnet.princeton.edu/
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgname = wordnet-common
 	depends = python
 	depends = tk
 	depends = wordnet-progs
+	provides = dict-wn
+	conflicts = dict-wn
 
 pkgname = wordnet-progs
 	pkgdesc = An Electronic Lexical Database from Princeton University (CLI and GUI tools)
