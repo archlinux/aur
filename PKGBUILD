@@ -1,4 +1,5 @@
-# Maintainer: nesk_aur
+# Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
+
 pkgname=android-file-transfer-cli
 pkgver=4.5
 pkgrel=2
@@ -20,7 +21,7 @@ build() {
 		-D BUILD_PYTHON=OFF \
 		-D BUILD_TAGLIB=OFF \
 		.
-  make
+  make -j $(nproc)
 }
 package() {
   cd ${pkgname%-cli}-linux-$pkgver
