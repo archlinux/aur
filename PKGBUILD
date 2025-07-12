@@ -1,4 +1,5 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: arojas <arojas@archlinux.org>
 # Contributor: Florian Pritz <bluewind@archlinux.org>
 
