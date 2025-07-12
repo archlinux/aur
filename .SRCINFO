@@ -1,6 +1,6 @@
 pkgbase = fish-lsp
 	pkgdesc = LSP implementation for the fish shell language
-	pkgver = 1.0.9_1
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/ndonfris/fish-lsp
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = fish-lsp
 	depends = python
 	provides = fish-lsp
 	conflicts = fish-lsp-git
-	source = fish-lsp-1.0.9_1.tar.gz::https://github.com/ndonfris/fish-lsp/archive/refs/tags/v1.0.9-1.tar.gz
-	sha256sums = efe3fa30bbc4cf9d17e1f56c44f53361640d5b4531cf4262f1ba3a8fc8dfeadd
+	source = fish-lsp-1.0.10.tar.gz::https://github.com/ndonfris/fish-lsp/archive/refs/tags/v1.0.10.tar.gz
+	sha256sums = 3db7ace2173a2c1d3622808aae518e23e4ccee99cf4cf9722a11ae9c760cfcfa
 
 pkgname = fish-lsp
