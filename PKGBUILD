@@ -3,7 +3,7 @@ pkgname=hamrs-9m2pju
 _pkgname=hamrs-pro
 __pkgname=hamrs
 _install_path="/opt/appimages"
-pkgver=2.41.1  # Clone this aur and run update.sh to update package version
+pkgver=2.41.1  # Clone this AUR and run update.sh to update package version
 pkgrel=1
 install=hamrs-9m2pju.install
 pkgdesc="HAMRS Pro repackaged by 9M2PJU — Portable ham radio logger (AppImage version)"
@@ -25,15 +25,23 @@ prepare() {
 }
 
 package() {
-	install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-$arch.AppImage" "$pkgdir/$_install_path/$_pkgname.AppImage"
-	install -Dm644 "$srcdir/squashfs-root/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    # Install AppImage
+    install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-$arch.AppImage" \
+        "$pkgdir/$_install_path/$_pkgname.AppImage"
 
-	for _icons in 1024x1024;do
-	install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/$_icons/apps/$_pkgname.png" \
-		"$pkgdir/usr/share/icons/hicolor/$_icons/apps/$_pkgname.png"
-	done
-	install -Dm644 "$srcdir/$_pkgname.png" \
-		"$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
+    # Install .desktop launcher
+    install -Dm644 "$srcdir/squashfs-root/$_pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-	install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+    # Install icon(s)
+    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png" \
+        "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png"
+
+    # Reuse the same icon for 32x32 fallback (same file copied)
+    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/$_pkgname.png" \
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
+
+    # Install license
+    install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
 }
