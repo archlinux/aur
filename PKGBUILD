@@ -6,35 +6,32 @@
 
 pkgname=alttab
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The task switcher for minimalistic window managers or standalone X11 session"
 url="https://github.com/sagb/${pkgname}"
 license=('GPL-3.0-only')
 arch=('x86_64' 'i686' 'aarch64')
-depends=('libx11' 'libxmu' 'libxft' 'libxrender' 'libxrandr' 'libpng' 'uthash' 'libxpm')
+depends=('glibc' 'libx11' 'libxmu' 'libxft' 'libxrender' 'libxrandr' 'libpng' 'uthash' 'libxpm')
 makedepends=('autoconf' 'automake' 'git')
 # we need a recent commit to avoid several build failures
 source=(
   "git+${url}.git#commit=739d9a7d4286fc06be1c75be8525404f6ec9d04a"
-  #"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
  )
 sha256sums=('f14b5b32612609e9693f76282c82f8ff4464b8ee399185677c94d34421160dd6')
 
 prepare() {
-    cd $pkgname
-    ./bootstrap.sh
+  cd $pkgname
+  ./bootstrap.sh
 }
 
 build() {
   cd $pkgname
-	#cd "${pkgname}-${pkgver}"
-	./configure --prefix=/usr
-	make
+  /configure --prefix=/usr
+  make
 }
 
 package() {
   cd $pkgname
-	#cd "${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install
 }
 # vim:set ts=2 sw=2 et:

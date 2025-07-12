@@ -1,7 +1,7 @@
 pkgbase = alttab
 	pkgdesc = The task switcher for minimalistic window managers or standalone X11 session
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sagb/alttab
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = alttab
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = git
+	depends = glibc
 	depends = libx11
 	depends = libxmu
 	depends = libxft
