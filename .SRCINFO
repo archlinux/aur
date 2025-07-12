@@ -1,7 +1,7 @@
 pkgbase = cargo-diet
 	pkgdesc = Make your crate lean by computing size-optimal include directives for Cargo m...
 	pkgver = 1.2.7
-	pkgrel = 2
+	pkgrel = 1
 	url = https://crates.io/crates/cargo-diet
 	arch = aarch64
 	arch = i686
