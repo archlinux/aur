@@ -8,9 +8,8 @@ url="https://github.com/mbridak/not1mm"
 license=('GPLv3')
 makedepends=(git python-build python-installer python-wheel)
 depends=('python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil'
-	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' 'python-appdata'
-	 'python-gobject' 'python-thefuzz' 'python-levenshtein' 'gtk4' 'hamradio-menus')
-optdepends=(hamlib flrig)
+         'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' 'python-appdata'
+         'python-gobject' 'python-thefuzz' 'python-levenshtein' 'gtk4' 'hamradio-menus' 'hamlib' 'flrig')
 provides=(not1mm)
 conflicts=(not1mm)
 source=($pkgname::"git+$url.git")
