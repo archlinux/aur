@@ -38,7 +38,8 @@ sha256sums=('1ee4848c44ec665f24d32b5cdb8dd586606cbcfe3fd8089c8dfb1687ccb91a63')
 
 build() {
   cmake -B build -S $pkgname \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DDBUS_CONFIG_FILENAME=plasma_org.freedesktop.DisplayManager.conf \
   cmake --build build
 }
 
