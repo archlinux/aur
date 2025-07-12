@@ -1,6 +1,6 @@
 pkgname=rapidraw-bin
 pkgdesc="A beautiful, non-destructive, and GPU-accelerated RAW image editor built with performance in mind."
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 arch=('x86_64')
 url=https://github.com/CyberTimon/RapidRAW
@@ -10,12 +10,12 @@ depends=("onnxruntime")
 
 
 _prgname="RapidRAW"
-_debfile="${_prgname}_${pkgver}_amd64.deb"
+_debfile="${_prgname}_v${pkgver}_ubuntu_amd64.deb"
 source=(
     "https://github.com/CyberTimon/RapidRAW/releases/download/v${pkgver}/${_debfile}"
 )
 sha256sums=(
-    "d9697033d94b6c4c6a4c323b349b64c7aba985a5987aa8f11372e91deaefbb97"
+    "e09e4aa293a149622d8ae571e64b8fd231e4fa5e1d6ab311c639660e0d60eba6"
 )
 
 prepare() {
