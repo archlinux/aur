@@ -16,7 +16,7 @@ depends=('vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-mvsfunc' 
          'vapoursynth-plugin-frameblender'
          'vapoursynth-plugin-adjust'
-         'vapoursynth-plugin-vsakarin-llvm14-git'
+         'vapoursynth-plugin-vsakarin-llvm15-git'
          'python')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support')
 makedepends=('rust' 'gtk3' 'git')
