@@ -29,7 +29,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    make PREFIX=/usr "DESTDIR=$pkgdir" install
+    make PREFIX=/usr "DESTDIR=${pkgdir}" install
 
-    install -D -m 644 "${srcdir}"/physlock.pam "$pkgdir/etc/pam.d/physlock"
+    install -D -m 644 "${srcdir}"/physlock.pam "${pkgdir}/etc/pam.d/physlock"
 }
