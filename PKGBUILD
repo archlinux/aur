@@ -3,7 +3,7 @@
 pkgbase=libkysdk-base
 pkgname=libkysdk-base
 pkgver=3.0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="kylin system develpoer kit - base kit"
 arch=('x86_64')
 license=('GPL-3.0-only')
@@ -79,15 +79,25 @@ package() {
   ## sync session bus
   install -Dm755 -t $pkgdir/usr/bin/ bin/conf2-sync-session
   install -Dm755 -t $pkgdir/etc/xdg/autostart/ src/conf2/sync-config/com.kylin.kysdk.SyncConfig.desktop
+  # libkysdk-config-dev
+  install -Dt $pkgdir/usr/include/kysdk/kysdk-base/ src/config/libkyconf.h
+  # libkysdk-diagnostics-dev
+  install -Dt $pkgdir/usr/include/kysdk/kysdk-base/ src/diagnostics/libkydiagnostics.h
+  # libkysdk-gsetting-dev
+  install -Dt $pkgdir/usr/include/kysdk/kysdk-base/ src/gsettings/libkygsetting.h
+  # libkysdk-log-dev
+  install -Dt $pkgdir/usr/include/kysdk/kysdk-base/ src/log/libkylog.h
   # libkysdk-log
-  install -d $pkgdir/etc/kysdk/kysdk-base/
-  install -D -m644 src/log/kylog-default.conf $pkgdir/etc/kysdk/kysdk-base/
-  install -D -m644 src/log/kylog-rotate-default $pkgdir/etc/kysdk/kysdk-base/
+  install -D -m644 -t $pkgdir/etc/kysdk/kysdk-base/ src/log/kylog-default.conf
+  install -D -m644 -t $pkgdir/etc/kysdk/kysdk-base/ src/log/kylog-rotate-default
+  # libkysdk-timer-dev
+  install -Dt $pkgdir/usr/include/kysdk/kysdk-base/ src/timer/libkytimer.h
   # libkysdk-utils-dev
   install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/sdkmarcos.h 
   install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/kerr.h
   install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/cstring-extension.h
   install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/kyutils.h
   install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/data-structure/linklist/skip_linklist/skip_linklist.h 
-  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/data-structure/linklist/listdata.h 
+  install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/data-structure/linklist/listdata.h
+
 }

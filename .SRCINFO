@@ -1,7 +1,7 @@
 pkgbase = libkysdk-base
 	pkgdesc = kylin system develpoer kit - base kit
 	pkgver = 3.0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitee.com/openkylin/libkysdk-base
 	arch = x86_64
 	groups = ukui
@@ -25,6 +25,6 @@ pkgbase = libkysdk-base
 	depends = python-yaml
 	depends = python-gobject
 	source = git+https://gitee.com/openkylin/libkysdk-base.git?#commit=033cb735231122779a007bbd75b2cf40cbcc55cd
-	sha512sums = SKIP
+	sha512sums = 64469f60f197be0799c480e617022c4fd26de619c7d4247f7db2b66c13a6c3e937751795a9698e10d523fe69d872cd7331819f78090dd39276cf37a393dfff00
 
 pkgname = libkysdk-base
