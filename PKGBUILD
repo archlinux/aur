@@ -1,6 +1,6 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
-# Contributor: marmis <tiagodepalves@gmail.com>
 # Contributor: Kudlaty
+# Contributor: marmis <tiagodepalves@gmail.com>
 # Contributor: vitor_hideyoshi <vitor.h.n.batista@gmail.com>
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Yangtse Su <i@yangtse.me>
@@ -34,7 +34,8 @@ prepare() {
 
 check() {
     # Warn if missing linux-headers for current `uname -r` kernel
-    if [ ! -f "/usr/lib/modules/$(uname -r)/build/Makefile" ]
+    CURRENT_KERNEL="$(name -r)"
+    if [[ ! -f "/usr/lib/modules/${CURRENT_KERNEL}/build/Makefile" ]]
     then
         _BOLDRED='\033[1;31m'
         _RED='\033[0;31m'
