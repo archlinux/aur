@@ -3,7 +3,7 @@
 pkgname=('polylib' 'polylib-gmp')
 pkgbase='polylib'
 pkgver='5.22.8'
-pkgrel=1
+pkgrel=2
 pkgdesc='A library of polyhedral functions'
 arch=('x86_64')
 url='http://icps.u-strasbg.fr/polylib/'
@@ -27,7 +27,7 @@ build() {
     msg "compiling normal version of Polylib"
     [ -d "polylib" ] || mkdir "polylib"
     cd polylib
-    ../configure --prefix=/usr
+    ../configure --prefix=/usr --without-libgmp
     make
 
     cd ..
@@ -50,6 +50,7 @@ check() {
 
 package_polylib() {
     depends=('glibc')
+    provides=('libpolylib32.so' 'libpolylib64.so')
 
     cd "$srcdir/$pkgbase-$pkgver/polylib"
     make DESTDIR="$pkgdir" install
@@ -57,6 +58,7 @@ package_polylib() {
 
 package_polylib-gmp() {
     depends=('glibc' 'gmp' "polylib>=$pkgver")
+    provides=('libpolylibgmp.so')
 
     cd "$srcdir/$pkgbase-$pkgver/polylibgmp"
     make DESTDIR="$pkgdir" install-exec

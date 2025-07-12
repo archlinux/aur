@@ -1,7 +1,7 @@
 pkgbase = polylib
 	pkgdesc = A library of polyhedral functions
 	pkgver = 5.22.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://icps.u-strasbg.fr/polylib/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,8 +12,11 @@ pkgbase = polylib
 
 pkgname = polylib
 	depends = glibc
+	provides = libpolylib32.so
+	provides = libpolylib64.so
 
 pkgname = polylib-gmp
 	depends = glibc
 	depends = gmp
 	depends = polylib>=5.22.8
+	provides = libpolylibgmp.so
