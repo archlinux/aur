@@ -3,7 +3,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
-pkgver=r1529.0752d37
+pkgver=r2063.ce5b5b5
 pkgrel=1
 pkgdesc="A rewrite of Highscore, formerly gnome-games"
 arch=('x86_64' 'aarch64')
@@ -14,28 +14,38 @@ depends=(
   'hicolor-icon-theme'
   'hidapi'
   'libadwaita'
+  'libarchive'
+  'libepoxy'
   'libgee'
   'libhighscore-git'
-  'libmanette>0.2.9'
+  'libmanette'
   'libmirage'
   'libpulse'
+  'librsvg'
   'sdl2'
+  'sqlite'
 )
 makedepends=(
+  'blueprint-compiler'
   'git'
   'meson'
   'vala'
 )
 optdepends=(
   'blastem-highscore-git: BlastEm core'
-  'bsnes-highscore-git: BSNES core'
+  'bsnes-highscore-git: bsnes JG core'
   'desmume-highscore-git: DeSmuME core'
   'gearsystem-highscore-git: Gearsystem core'
+  'genesis-plus-gx-highscore-git: Genesis Plus GX core'
+  'kronos-highscore-git: Kronos core'
   'mednafen-highscore-git: Mednafen core'
+  'melonds-highscore-git: melonDS core'
   'mgba-highscore-git: mGBA core'
   'mupen64plus-highscore-git: Mupen64Plus core'
   'nestopia-highscore-git: Nestopia JG core'
+  'picodrive-highscore-git: PicoDrive core'
   'prosystem-highscore-git: ProSystem JG core'
+  'sameboy-highscore-git: SameBoy core'
   'stella-highscore-git: Stella core'
 )
 provides=("${pkgname%-git}")
