@@ -10,7 +10,7 @@ url="https://github.com/xatupal/KeeTheme"
 license=('MIT')
 depends=('keepass')
 source=("https://github.com/xatupal/KeeTheme/releases/download/v${pkgver}/KeeTheme.plgx")
-sha256sums=('e3886e0f8955ae826e7ea95a4896e89a40cabdc0e4a493c8d32bd5aa622090c3')
+sha256sums=('4b131a8b58f0c9dca259ff915e637407151ccfc39fb7fa4fc9cf077dc9c5ff96')
 
 package() {
     path="usr/share/keepass/Plugins"
