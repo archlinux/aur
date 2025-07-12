@@ -1,7 +1,7 @@
 pkgname=clash-verge-rev-autobuild-bin
 _pkgname=clash-verge-rev
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
