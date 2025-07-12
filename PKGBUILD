@@ -45,5 +45,6 @@ package() {
   install -Dm644 usr/share/icons/hicolor/0x0/apps/crossover.png "$pkgdir/usr/share/pixmaps/$_pkgname2.png"
   install -Dm644 usr/share/doc/crossover/changelog.gz "$pkgdir/usr/share/doc/crossover/$_pkgname2"
   install -Dm755 $_pkgname2 -t "$pkgdir/usr/bin"
+  ln -s $_pkgname2 "$pkgdir/usr/bin/$_pkgname"
   mv opt/CrossOver/resources/* "$pkgdir/usr/lib/$_pkgname2"
 }
