@@ -1,5 +1,4 @@
-# Maintainer: 
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Kevin Majewski <kevin.majewski02@gmail.com>
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
@@ -9,12 +8,24 @@
 pkgname=retro-gtk-git
 pkgver=1.0.2.r61.g9033b2a
 pkgrel=1
-pkgdesc="The GTK Libretro frontend framework"
+pkgdesc="Toolkit to write GTK based Libretro frontends"
 arch=('x86_64' 'aarch64')
-url="https://wiki.gnome.org/Apps/Games"
+url="https://gnome.pages.gitlab.gnome.org/retro-gtk/"
 license=('GPL-3.0-or-later')
-depends=('libepoxy' 'glib2' 'gtk4' 'libpulse' 'libsamplerate')
-makedepends=('git' 'gobject-introspection' 'meson' 'vala')
+depends=(
+  'libepoxy'
+  'glib2'
+  'gtk4'
+  'libpulse'
+  'libsamplerate'
+)
+makedepends=(
+  'git'
+  'glib2-devel'
+  'gobject-introspection'
+  'meson'
+  'vala'
+)
 provides=("${pkgname%-git}" 'libretro-gtk-2.so')
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/GNOME/retro-gtk.git')
@@ -22,7 +33,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -37,9 +48,9 @@ build() {
 
 #  dbus-run-session xvfb-run \
 #    -s '-screen 0 1920x1080x24 -nolisten local' \
-#    meson test -C build --print-errorlogs
+#    meson test -C build --no-rebuild --print-errorlogs
 #}
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }

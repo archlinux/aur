@@ -1,12 +1,13 @@
 pkgbase = retro-gtk-git
-	pkgdesc = The GTK Libretro frontend framework
+	pkgdesc = Toolkit to write GTK based Libretro frontends
 	pkgver = 1.0.2.r61.g9033b2a
 	pkgrel = 1
-	url = https://wiki.gnome.org/Apps/Games
+	url = https://gnome.pages.gitlab.gnome.org/retro-gtk/
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
