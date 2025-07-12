@@ -1,0 +1,21 @@
+pkgbase = alman
+	pkgdesc = Intelligent alias manager with TUI for managing shell aliases with intelligent suggestions based on command history
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vaibhav-mattoo/alman
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = bash: For bash shell integration
+	optdepends = zsh: For zsh shell integration
+	optdepends = fish: For fish shell integration
+	options = !strip
+	options = !debug
+	source = alman-0.1.0.tar.gz::https://github.com/vaibhav-mattoo/alman/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = alman
