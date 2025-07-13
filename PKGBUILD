@@ -1,25 +1,50 @@
-# Maintainer: robertfoster
-# Contributor: kehon
-
+# Maintainer: wilke
 pkgname=traccar
-pkgver=4.0
-pkgrel=1
+pkgver=6.8.1
+pkgrel=0
 pkgdesc="Open source GPS tracking system"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.traccar.org/"
 license=('APACHE')
-depends=(java-runtime)
-source=("https://github.com/tananaev/traccar/releases/download/v${pkgver}/$pkgname-linux-$pkgver.zip"
-"$pkgname.service")
+depends=(npm makeself jdk-temurin)
+backup=('opt/traccar/conf/traccar.xml')
+conflicts=('traccar-bin')
+provides=("traccar=${pkgver}")
 
-package() {
-	cd ${srcdir}
-	./traccar.run --noexec --target $pkgdir/opt/traccar/
-	install -m755 -d "${pkgdir}/usr/lib/systemd/system"
-	install -m644 "${srcdir}/traccar.service" "${pkgdir}/usr/lib/systemd/system/"
-	install -m755 -d "${pkgdir}/opt/traccar/init.d"
-	chmod 755 -R $pkgdir/opt/*
+source=("git+https://github.com/traccar/traccar.git"
+	"package.patch")
+sha512sums=('SKIP'
+            'SKIP')
+
+build() {
+  cd traccar
+
+  git submodule init
+  git config submodule.traccar-web.url "https://github.com/traccar/traccar-web"
+  git submodule update
+  git checkout "v${pkgver}"
+
+  # Build traccar-web
+
+  cd traccar-web
+  npm install
+  npm run build
+  cd ..
+
+  # Build traccar-server
+
+  ./gradlew assemble
 }
 
-md5sums=('2b3149854f56de4ad3212f0c8c1bf31e'
-         '3e230b1b98fb5d0ae71ee08ab96a7c92')
+package() {
+  echo "$(pwd)"
+  patch -Np1 -i package.patch
+
+  cd "${srcdir}/traccar/setup"
+  ./package.sh "v${pkgver}" linux-64
+
+  ./traccar.run --noexec --target "${pkgdir}/opt/traccar/"
+  install -m755 -d "${pkgdir}/usr/lib/systemd/system"
+  mv "${pkgdir}/opt/traccar/traccar.service" "${pkgdir}/usr/lib/systemd/system/"
+  chmod 755 -R "${pkgdir}/opt"
+}
