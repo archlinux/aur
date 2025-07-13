@@ -2,7 +2,7 @@
 # Maintainer: fgonzalezurriola <fgonzalezurriola@gmail.com>
 
 pkgname='dccprint-bin'
-pkgver=0.1.1
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Una herramienta TUI para imprimir archivos en el DCC.'
 url='https://github.com/fgonzalezurriola/dccprint'
@@ -12,14 +12,14 @@ provides=('dccprint')
 conflicts=('dccprint')
 depends=('glibc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.1/dccprint_Linux_arm64.tar.gz")
-sha256sums_aarch64=('faca38bbfce0ddb5d751d700fbc545a2ca0483c074f733411043423d11aaaca9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.11/dccprint_Linux_arm64.tar.gz")
+sha256sums_aarch64=('d3811c8e4a7e9d5c770bf6e10f3db0953184e9d3fc4415c32404075d681d1199')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.1/dccprint_Linux_i386.tar.gz")
-sha256sums_i686=('eb6c26b7e433bd2bd0c3efa38d6d03954e4a782c3ebe9be78125524a893172b7')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.11/dccprint_Linux_i386.tar.gz")
+sha256sums_i686=('3f8f1bb6dad61ba7798a7484273ecdcd4b0fffc6dc7d3366c43bce1080a226da')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.1/dccprint_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0e2cd888b069719b23f3fbe178a6c5608c9628b0e1a703cef60f66902d441a80')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.11/dccprint_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('799709c646762d144fb3122ededfffc56353f1a90f4b0701e980ce70c88e28c0')
 
 package() {
   install -Dm755 "./dccprint" "${pkgdir}/usr/bin/dccprint"
