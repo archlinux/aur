@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Ho1Ai <ristakon.team@gmail.com>
 pkgname=in-editor
 pkgver=0.1.0
 pkgrel=1
