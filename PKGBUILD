@@ -6,7 +6,7 @@ pkgname='python-piou-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=0.17.0.r0.g68685c4
+pkgver=0.18.0.r0.g982260d
 pkgrel=2
 pkgdesc='A CLI tool to build rich text command-line interfaces with type validation (development version)'
 arch=('any')
@@ -50,6 +50,8 @@ package() {
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     README.md
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
+    examples/*.py
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 }
