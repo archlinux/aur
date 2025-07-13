@@ -1,0 +1,17 @@
+pkgbase = pulldocker
+	pkgdesc = Watch git repositories for Docker compose configuration changes
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://www.muflone.com/pulldocker
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-gitpython
+	depends = python-yaml
+	source = pulldocker-0.4.3.tar.gz::https://github.com/muflone/pulldocker/archive/0.4.3.tar.gz
+	sha512sums = 0d739349d6aa2591735009642387148905e1e0ae06027116effa0f5c7c24519a3fa84ba67ee2edad3eaea26aa1ca60a52d7a1e6bf05efeff04452d48914be68f
+
+pkgname = pulldocker
