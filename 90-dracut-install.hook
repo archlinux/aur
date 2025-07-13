@@ -21,7 +21,6 @@ Target = usr/lib/modules/*/pkgbase
 Type = Package
 Operation = Install
 Operation = Upgrade
-Target = dracut
 Target = dracut-git
 
 [Action]
