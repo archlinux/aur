@@ -2,11 +2,11 @@
 _base=precice-config-visualizer
 pkgname=${_base}-git
 pkgdesc="A tool for visualizing a preCICE configuration file as a dot file"
-pkgver=20240215
+pkgver=20250701
 pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base/precice-/}"
-license=(GPL-3.0-or-later)
+license=(MIT)
 depends=(python-lxml python-pydot xdot)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
 checkdepends=(python-pytest)
