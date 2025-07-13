@@ -1,12 +1,12 @@
 pkgname=superbirdjumper2
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A fun game"
 arch=('x86_64')
 url="https://github.com/codyferd/superbirdjumper2"
-license=('Unlicense')
+license=('MIT')
 depends=('glibc')
-source=("https://github.com/codyferd/superbirdjumper2/releases/download/2.2Flamsjon/superbirdjumper2_linux.x86_64")
+source=("https://github.com/codyferd/superbirdjumper2/releases/download/2.3Skagern/superbirdjumper2_linux.x86_64")
 sha256sums=('SKIP')  # Replace with real sha256sum
 
 package() {
