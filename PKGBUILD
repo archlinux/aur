@@ -4,16 +4,16 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=taisei
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="Open source Touhou clone"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('opengl-driver' 'mimalloc' 'sdl3' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme')
-makedepends=('meson' 'gamemode' 'python-docutils' 'python-zstandard')
+depends=('opengl-driver' 'mimalloc' 'sdl3' 'freetype2' 'libwebp' 'libpng' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme')
+makedepends=('meson' 'gamemode' 'cglm' 'python-docutils' 'python-zstandard')
 source=("https://github.com/taisei-project/taisei/releases/download/v$pkgver/taisei-$pkgver.tar.xz")
-sha256sums=('826b5e3af8f2181423aca12d21bba1d8925179f5d9d933156293c16ca29861fb')
+sha256sums=('f06ed11f955c9f73e6bb3aadd499b1f04b4370e0f0b09d63f3eb376d9182628d')
 
 
 build() {
