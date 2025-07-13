@@ -1,7 +1,7 @@
 # Maintainer: notscripter <grx8x0mfy@mozmail.com>
 pkgname=spotube-nightly-bin
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="🎧 Open source music client! Available for both desktop & mobile!"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ provides=(spotube)
 conflicts=(spotube)
 replaces=()
 backup=()
-options=()
+options=(!debug)
 install=
 changelog=
 source=(spotube-linux-nightly-x86_64-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz)
