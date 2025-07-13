@@ -1,6 +1,6 @@
 pkgbase = mystmd
 	pkgdesc = Command line tools for working with MyST Markdown
-	pkgver = 1.3.25
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/jupyter-book/mystmd
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mystmd
 	depends = nodejs
 	depends = npm
 	options = !emptydirs
-	source = https://registry.npmjs.org/mystmd/-/mystmd-1.3.25.tgz
-	b2sums = 3a08260dfeab93d5167fee822120798b091f200fe33a7728f2b568602f2c7caaa1d1727ee3e6128946cae048732f9f7a99d5abc214458c4a26aff7b7e9b54e6f
+	source = https://registry.npmjs.org/mystmd/-/mystmd-1.5.1.tgz
+	b2sums = a0c3daedfe687f8d78928b52b10b34ef08d98d41dd8b44ce4257156c8e58e74b72389db466904715f87f549a90340b06a47c593e4b1bba7dc47a833aad011a42
 
 pkgname = mystmd
