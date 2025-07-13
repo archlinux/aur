@@ -2,13 +2,13 @@
 
 pkgname=tv-lite
 pkgver=0.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="IPTV player with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
 arch=('i686' 'x86_64')
 url="https://www.tv-lite.com"
 license=('GPL2')
 groups=()
-depends=('vlc' 'wxwidgets-gtk3' 'sqlite' 'curl' 'util-linux-libs')
+depends=('vlc' 'vlc-plugins-all' 'wxwidgets-gtk3' 'sqlite' 'curl' 'util-linux-libs')
 makedepends=('rapidjson' 'cmake')
 optdepends=()
 provides=()
