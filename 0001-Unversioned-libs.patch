@@ -1,5 +1,5 @@
---- a/source/configure	2024-02-11 09:23:14.830443486 -0300
-+++ b/source/configure	2024-02-11 09:23:24.290161107 -0300
+--- a/source/configure
++++ b/source/configure
 @@ -539,6 +539,7 @@
  else
    as_ln_s='cp -pR'
@@ -16,3 +16,58 @@
  rm -f conf$$ conf$$.exe conf$$.dir/conf$$.file conf$$.file
  rmdir conf$$.dir 2>/dev/null
  
+--- a/source/config/mh-linux
++++ b/source/config/mh-linux
+@@ -26,10 +26,7 @@
+ LDFLAGSICUDT=-nodefaultlibs -nostdlib
+ 
+ ## Compiler switch to embed a library name
+-# The initial tab in the next line is to prevent icu-config from reading it.
+-	LD_SONAME = -Wl,-soname -Wl,$(notdir $(MIDDLE_SO_TARGET))
+-#SH# # We can't depend on MIDDLE_SO_TARGET being set.
+-#SH# LD_SONAME=
++LD_SONAME=
+ 
+ ## Shared library options
+ LD_SOOPTIONS= -Wl,-Bsymbolic
+@@ -66,10 +63,10 @@
+ 
+ ## Versioned libraries rules
+ 
+-%.$(SO).$(SO_TARGET_VERSION_MAJOR): %.$(SO).$(SO_TARGET_VERSION)
+-	$(RM) $@ && ln -s ${<F} $@
+-%.$(SO): %.$(SO).$(SO_TARGET_VERSION_MAJOR)
+-	$(RM) $@ && ln -s ${*F}.$(SO).$(SO_TARGET_VERSION) $@
++%$(SO_TARGET_VERSION_MAJOR).$(SO): %$(SO_TARGET_VERSION).$(SO)
++	$(RM) $@ && cp ${<F} $@
++%.$(SO): %$(SO_TARGET_VERSION_MAJOR).$(SO)
++	@echo -n
+ 
+ ##  Bind internal references
+ 
+--- a/source/icudefs.mk.in
++++ b/source/icudefs.mk.in
+@@ -196,8 +196,8 @@
+ LDLIBRARYPATH_ENVVAR = LD_LIBRARY_PATH
+ 
+ # Versioned target for a shared library.
+-FINAL_SO_TARGET = $(SO_TARGET).$(SO_TARGET_VERSION)
+-MIDDLE_SO_TARGET = $(SO_TARGET).$(SO_TARGET_VERSION_MAJOR)
++FINAL_SO_TARGET = $(SO_TARGET)
++MIDDLE_SO_TARGET = $(SO_TARGET)
+ SHARED_OBJECT = $(FINAL_SO_TARGET)
+ 
+ ##  How ICU libraries are named...  ex. $(LIBICU)uc$(SO)
+--- a/source/config/Makefile.inc.in
++++ b/source/config/Makefile.inc.in
+@@ -141,8 +141,8 @@
+ LDLIBRARYPATH_ENVVAR = LD_LIBRARY_PATH
+ 
+ # Versioned target for a shared library
+-FINAL_SO_TARGET = $(SO_TARGET).$(SO_TARGET_VERSION)
+-MIDDLE_SO_TARGET = $(SO_TARGET).$(SO_TARGET_VERSION_MAJOR)
++FINAL_SO_TARGET = $(SO_TARGET)
++MIDDLE_SO_TARGET = $(SO_TARGET)
+ 
+ # Access to important ICU tools.
+ # Use as follows:  $(INVOKE) $(GENRB) arguments .. 
