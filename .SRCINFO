@@ -1,7 +1,7 @@
 pkgbase = alman
 	pkgdesc = Intelligent alias manager with TUI for managing shell aliases with intelligent suggestions based on command history
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vaibhav-mattoo/alman
 	arch = x86_64
 	arch = aarch64
