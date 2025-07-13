@@ -3,8 +3,8 @@
 _CUDA_ARCH_LIST="60;61;62;70;72;75;80;86;89;90"
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=1.48.0
-pkgrel=1
+pkgver=1.50.0
+pkgrel=2
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
 url='https://github.com/NVIDIA/DALI'
@@ -14,7 +14,7 @@ depends=(
   cfitsio
   cuda
   ffmpeg
-  gcc-libs
+  gcc13-libs
   glibc
   libcudart.so
   libsndfile
@@ -29,6 +29,7 @@ depends=(
   python-six
 )
 makedepends=(
+  gcc13
   python-build
   python-installer
   python-wheel
@@ -46,7 +47,7 @@ optdepends=(
 options=(!emptydirs !lto)
 source=("${pkgname}::git+https://github.com/NVIDIA/DALI.git#tag=v${pkgver}"
 )
-sha512sums=('b97d51df5f2d21be1f6ce373c55f484eae8c2ab5136b2bc219ab36e19dbdf627a79335f5115ee44ee07d00bb0ef9540b7f8e8e971701e2bbe2a83dc4b5065e65')
+sha512sums=('14ad0269f661cf4b7bdfc20a240273348dbc656dc2330ad69ea8e84db7a601866d084e4dd73f91ed368ee9937e7a05baacb38e3034f2a22ff6c4073fe9e77e16')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -81,7 +82,10 @@ build() {
     -DBUILD_PROTOBUF=ON \
     -DBUILD_PYTHON=ON \
     -DBUILD_TEST=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_C_COMPILER=gcc-13 \
+    -DCMAKE_CXX_COMPILER=g++-13 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
     -DCUDA_TARGET_ARCHS=${_CUDA_ARCH_LIST} \
@@ -94,7 +98,10 @@ build() {
   python -m build --wheel --no-isolation
   # built tf plugin
   cmake -B ${srcdir}/build-tf \
-    -DCUDA_VERSION=12.5.1 \
+    -DCUDA_VERSION=12.9.1 \
+    -DCMAKE_C_COMPILER=gcc-13 \
+    -DCMAKE_CXX_COMPILER=g++-13 \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -S ${srcdir}/${pkgname}/dali_tf_plugin
   make -C ${srcdir}/build-tf
 }
