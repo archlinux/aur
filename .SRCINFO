@@ -1,13 +1,13 @@
 pkgbase = sdupes
-	pkgdesc = Fast duplicate file detection
-	pkgver = 1.5
+	pkgdesc = fast duplicate file detection
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/sph-mn/sdupes
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	provides = sdupes
-	source = https://github.com/sph-mn/sdupes/archive/refs/tags/v1.5.tar.gz
-	md5sums = 964b5e43037ffa7dd9112dbab70a118f
+	source = https://github.com/sph-mn/sdupes/archive/refs/tags/v1.6.tar.gz
+	md5sums = 80816322ff6667140408583ab67a2615
 
 pkgname = sdupes
