@@ -3,7 +3,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname="litellm"
-pkgver=1.73.1
+pkgver=1.74.3
 pkgrel=1
 pkgdesc="Call all LLM APIs using the OpenAI format"
 arch=(any)
@@ -50,7 +50,7 @@ optdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('e2226f7f3483ace6efd97d2908a6352fc1d75b04f36c92a6c4ddfa8755c84b09191c5fd9f42328e569c789e161ca42915e12424d774359e290eb729333a1d302')
+b2sums=('699a3921e21ce04bce042c9dd694cdc9b51f27354c51ec11fa3e5c300cab922272efa937f87b2b88525569674e2a2f5e406e8b95c93041a1e8c70847c28d45d4')
 options=("!strip")
 
 prepare(){
