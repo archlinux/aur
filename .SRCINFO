@@ -1,0 +1,21 @@
+pkgbase = wayland-font-dpi
+	pkgdesc = Automatic text scaling for Wayland compositors based on physical display DPI
+	pkgver = 1.0.43
+	pkgrel = 1
+	url = https://github.com/acrion/wayland-font-dpi
+	install = wayland-font-dpi.install
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = bc
+	depends = systemd
+	depends = dbus
+	depends = glib2
+	depends = inotify-tools
+	depends = gawk
+	depends = sed
+	depends = wayland-display-info
+	source = wayland-font-dpi-1.0.43.tar.gz::https://github.com/acrion/wayland-font-dpi/archive/refs/tags/v1.0.43.tar.gz
+	sha256sums = SKIP
+
+pkgname = wayland-font-dpi

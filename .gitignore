@@ -1,0 +1,20 @@
+# PKGBUILD artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.gz
+
+# Logs
+*.log
+
+# Editor files
+*~
+*.swp
+.*.swp
+\#*\#
+.\#*
+
+# System files
+.DS_Store
+Thumbs.db

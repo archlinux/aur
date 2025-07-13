@@ -1,0 +1,40 @@
+# Copyright (c) 2025 acrion innovations GmbH
+# Authors: Stefan Zipproth, s.zipproth@acrion.ch
+#
+# This file is part of wayland-font-dpi, see https://github.com/acrion/wayland-font-dpi
+#
+# wayland-font-dpi is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# wayland-font-dpi is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with wayland-font-dpi. If not, see <https://www.gnu.org/licenses/>.
+
+post_install() {
+    systemctl daemon-reload
+    systemctl enable wayland-font-dpi.service
+    systemctl --global enable wayland-font-dpi-session.service
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl disable wayland-font-dpi.service || true
+    systemctl --global disable wayland-font-dpi-session.service || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+    echo "==> Wayland Font DPI removed."
+    echo "==> Lines that were added to /etc/environment were not removed to retain your current scaling settings"
+    echo "==> Manually edit this file to remove settings that are no longer needed (see section marked with 'WAYLAND-FONT-DPI'):"
+    echo "==> sudo ${EDITOR:-vim} /etc/environment"
+}
