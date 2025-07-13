@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mbake-git
-pkgver=1.2.4.post2.r0.gd401e2b
+pkgver=1.3.0.r0.gf4b1c9f
 pkgrel=1
 pkgdesc='A Python-based Makefile formatter and linter'
 arch=(any)
@@ -19,7 +19,8 @@ makedepends=(git
 provides=("${pkgname%-git}=$pkgver"
           "python-${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}"
-           "python-${pkgname%-git}")
+           python-bake)
+replaces=(python-bake-git)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
