@@ -8,7 +8,6 @@ pkgbase = traccar
 	depends = npm
 	depends = makeself
 	depends = jdk-openjdk
-	depends = jdk-temurin
 	depends = zip
 	depends = unzip
 	provides = traccar=6.8.1

@@ -6,7 +6,7 @@ pkgdesc="Open source GPS tracking system"
 arch=('x86_64')
 url="http://www.traccar.org/"
 license=('APACHE')
-depends=(npm makeself jdk-openjdk jdk-temurin zip unzip)
+depends=(npm makeself jdk-openjdk zip unzip)
 backup=('opt/traccar/conf/traccar.xml')
 conflicts=('traccar-bin')
 provides=("traccar=${pkgver}")
