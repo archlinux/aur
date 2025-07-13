@@ -1,6 +1,6 @@
 pkgbase = p2ascii
 	pkgdesc = Image to ASCII art converter with optional color and edge-based rendering
-	pkgver = 1.0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Hugana/p2ascii
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = p2ascii
 	depends = python
 	depends = opencv
 	depends = python-numpy
-	source = p2ascii-1.0.1.tar.gz::https://github.com/Hugana/p2ascii/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 41607c7ebf0e1486d16d44af3dc1da79612dd15b880e3d790330b155b7b96e3b
+	depends = python-opencv
+	source = p2ascii-1.0.0.tar.gz::https://github.com/Hugana/p2ascii/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f312fd51e717ce6adb7b645ede5d5c312519670b364c104b29f5cb9e10561c86
 
 pkgname = p2ascii
