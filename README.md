@@ -10,9 +10,10 @@ cd fnq-monitor
 makepkg -si
 
 Post-Installation
-After installation, each user must enable the user service to start monitoring:
-systemctl --user daemon-reexec
+The fnq-monitor service is automatically enabled for each user upon login via a systemd preset. No manual activation is required.
+If you need to manually enable or disable the service, use:
 systemctl --user enable --now fnq-monitor.service
+systemctl --user disable --now fnq-monitor.service
 
 Dependencies
 

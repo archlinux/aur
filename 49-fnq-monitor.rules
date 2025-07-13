@@ -4,7 +4,7 @@ polkit.addRule(function(action, subject) {
         "org.freedesktop.policykit.exec.run",
         "org.freedesktop.modprobe"
     ];
-    if (allowedActions.indexOf(action.id) >= 0 && subject.isInGroup("wheel")) {
+    if (allowedActions.indexOf(action.id) >= 0) {
         return polkit.Result.YES;
     }
 });

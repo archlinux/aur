@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=fnq-monitor
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Monitor Fn+Q ACPI events for system performance modes"
 arch=('any')
 url="https://github.com/yourusername/fnq-monitor"
@@ -14,8 +14,9 @@ source=('fnq-monitor.sh'
         'fnq-monitor.service'
         '49-fnq-monitor.rules'
         'acpi_call-rebuild-initramfs.hook'
-        'README.md')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'README.md'
+        '90-fnq-monitor.preset')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install main script
@@ -32,4 +33,7 @@ package() {
 
     # Install README
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    # Install systemd preset
+    install -Dm644 "${srcdir}/90-fnq-monitor.preset" "${pkgdir}/usr/lib/systemd/user-preset/90-fnq-monitor.preset"
 }
