@@ -1,7 +1,7 @@
 # Maintainer: rie_t <megumin at megu dot dev>
 pkgname=moonlight-canary-bin
 _pkgname=moonlight-canary
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="A convenient launcher for the moonlight Discord mod (canary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${_pkgname}.desktop"
 )
 sha256sums=(
-    "38fbdf8b745be2987da6691121a149036d3f025b5b4c306b7c0f088b190a8023"
+    "30cc4156068161edd707b1eff92ee71373cc7287ee934632b43cf5839fb1aae5"
     "9eefc1f1921b018b9c8298649e46f9abbe6e99c966b55e81d17154844b3e4531"
 )
 
