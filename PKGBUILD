@@ -1,8 +1,7 @@
 # Maintainer: notscripter <grx8x0mfy@mozmail.com>
 pkgname=spotube-nightly-bin
-_pkgname=spotube
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="🎧 Open source music client! Available for both desktop & mobile!"
 arch=(i686 x86_64)
@@ -20,18 +19,18 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz)
+source=(spotube-linux-nightly-x86_64-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz)
 noextract=()
-sha256sums=(7715767b6803a3b228adf775e2d235d3146117b34fb80c6688c86295e2aa6a78)
+sha256sums=(260e82b6d3c089443680be93cf96ae3b3c5f7692893b19b10f9386c3afa37a74)
 validpgpkeys=()
 
 package() {
     cd ${srcdir}
+    install -dm755 "${pkgdir}/usr/bin"
 
-    install -Dm644 ./spotube.desktop "${pkgdir}/usr/share/applications/spotube.desktop"
-    install -Dm644 ./spotube-logo.png "${pkgdir}/usr/share/icons/spotube/spotube-logo.png"
-    install -Dm644 ./com.github.KRTirtho.Spotube.appdata.xml "${pkgdir}/usr/share/appdata/spotube.appdata.xml"
-    install -Dm755 -d ./data "${pkgdir}/usr/share/spotube/"
-    install -Dm755 -d ./lib "${pkgdir}/usr/share/spotube/"
-    install -Dm755 ./spotube "${pkgdir}/usr/bin/spotube"
+    install -Dm644 ./spotube.desktop "$pkgdir/usr/share/applications/spotube.desktop"
+    install -Dm644 ./spotube-logo.png "$pkgdir/usr/share/icons/spotube/spotube-logo.png"
+    install -Dm644 ./com.github.KRTirtho.Spotube.appdata.xml "$pkgdir/usr/share/appdata/spotube.appdata.xml"
+    find ./data ./lib ./spotube -type f -exec install -Dm755 "{}" "$pkgdir/usr/share/spotube/{}" \;
+    ln -s ./usr/share/spotube/spotube "${pkgdir}/usr/bin/spotube"
  }
