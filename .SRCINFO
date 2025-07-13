@@ -1,13 +1,19 @@
 pkgbase = templ-bin
 	pkgdesc = A language for writing HTML user interfaces in Go.
-	pkgver = 0.2.648
+	pkgver = 0.3.865
 	pkgrel = 1
 	url = https://github.com/a-h/templ
+	arch = aarch64
+	arch = i386
 	arch = x86_64
 	license = MIT
 	provides = templ
 	conflicts = templ
-	source_x86_64 = templ-x86-x64-0.2.648.tar.gz::https://github.com/a-h/templ/releases/download/v0.2.648/templ_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 3abad775c8ef0ff42181158e58b6d8746be7d3e2e194974345d97556ad668259
+	source_aarch64 = templ-aarch64-0.3.865.tar.gz::https://github.com/a-h/templ/releases/download/v0.3.865/templ_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 66446fd92b96ed954b6e14d59f6fd7251004248a905e4d7a81c308998dd0451a
+	source_i386 = templ-i386-0.3.865.tar.gz::https://github.com/a-h/templ/releases/download/v0.3.865/templ_Linux_i386.tar.gz
+	sha256sums_i386 = 60b1936b76393d3b5430187b6922b80d6f54ad6439c22191485bf2117842e9d1
+	source_x86_64 = templ-x86_64-0.3.865.tar.gz::https://github.com/a-h/templ/releases/download/v0.3.865/templ_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d2f51ed1806e279037fa380af25dfe199a5196c8585ee60fa82d94be1a62bd8b
 
 pkgname = templ-bin
