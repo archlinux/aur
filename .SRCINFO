@@ -1,0 +1,12 @@
+pkgbase = gobindiff
+	pkgdesc = Highlight differences between multiple files with a hex grid
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/Xeeynamo/gobindiff
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = gobindiff-0.2.tar.gz::https://github.com/Xeeynamo/gobindiff/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 7ef9b967183ad340e60c750c2996df1ed45d36ad51386d27a8d18967b58f8cc4
+
+pkgname = gobindiff
