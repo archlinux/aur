@@ -1,16 +1,18 @@
 # Maintainer: Dae <daedaevibin@naver.com>
 pkgname=voix
 pkgver=0.0.16b
-pkgrel=2
+pkgrel=3
 install=voix.install
-pkgdesc="A privilege escalation tool that replaces sudo/doas/sudo-rs, using PAM for authentication"
+pkgdesc="A privilege escalation tool replacing sudo/doas/sudo-rs, using PAM for authentication - WILL REPLACE SUDO!!"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('AGPL-3.0-or-later' 'VCL-1.0')
 depends=('pam')
 makedepends=('cmake' 'gcc' 'make' 'pkgconf')
+replaces=('sudo')
+conflicts=('sudo')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('1d6387beedec95a242cedaf3dfedaa2af58c2b34fc96820be3247f39f2cb1164')
 
 build() {
   cd "Voix-${pkgver}/src"
@@ -19,12 +21,16 @@ build() {
 }
 
 backup=('etc/pam.d/voix')
+backup=('etc/voix/config/lua')
 
 package() {
   cd "Voix-${pkgver}/src"
 
-  # Install binary with setuid bit in one go
+  # Install binary (Setuid fix applied later)
   install -Dm4755 build/voix "${pkgdir}/usr/bin/voix"
+
+  # Symlink /usr/bin/sudo -> /usr/bin/voix
+  ln -sf /usr/bin/voix "${pkgdir}/usr/bin/sudo"
 
   # Install config
   install -Dm644 lua/config.lua   "${pkgdir}/etc/voix/config.lua"
