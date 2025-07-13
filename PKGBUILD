@@ -20,6 +20,7 @@ makedepends=(
 	"clang" 
 	"llvm"
 	"lld"
+	"python"
 )
 optdepends=(
 	"python: For running verilogae to obtain equations of compact models"
@@ -28,8 +29,14 @@ options=(!lto)
 provides=("openvaf-r")
 
 _commit="802bce21ac44833b52c010cb90d37e0d6fddd4ac" # FIXME: No releases yet - use a specific commit for now
-source=("${pkgname}::git+${url}#commit=${_commit}")
-b2sums=('4f78dffa89e24bf97b094bba876a0637a0a5cb16c92d6966bc95bde69195bb1afb5544f37f036167fcf1cd065bad11bf4dd3c6fe5603e2c3c716c1af5a0a004f')
+source=(
+	"${pkgname}::git+${url}#commit=${_commit}"
+	"0001-integration_test_fix.patch"
+)
+b2sums=(
+	'4f78dffa89e24bf97b094bba876a0637a0a5cb16c92d6966bc95bde69195bb1afb5544f37f036167fcf1cd065bad11bf4dd3c6fe5603e2c3c716c1af5a0a004f'
+	'e696f1d39a93a9c47d12926c8c9988494c656653d5822c4a894eb11c54f01b9cf4ba07e6a3e522545750577be77addf2622de7980fa1169b4f068602186ee028'
+)
 
 pkgver() {
 	# FIXME: Add custom version since there's no tagged release
@@ -42,6 +49,10 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
+
+	# Add PR/Patch which crashes integration tests:
+	# See https://github.com/OpenVAF/OpenVAF-Reloaded/pull/9
+	patch -p1 < ../0001-integration_test_fix.patch
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"

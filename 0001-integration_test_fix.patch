@@ -1,0 +1,30 @@
+From 7da89a855d26c5234bade225ec4f3a23363c9bd6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?=
+ <16509259+tskaar@users.noreply.github.com>
+Date: Sun, 13 Jul 2025 17:40:16 +0200
+Subject: [PATCH] mir_llvm/get_declared_value: fix null pointer dereference
+
+LLVMGetNamedGlobal _can_ return null when no global exists,
+but get_declared_value were unconditionally dereferencing the result.
+---
+ openvaf/mir_llvm/src/declarations.rs | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/openvaf/mir_llvm/src/declarations.rs b/openvaf/mir_llvm/src/declarations.rs
+index cbf3f6b..91c3676 100644
+--- a/openvaf/mir_llvm/src/declarations.rs
++++ b/openvaf/mir_llvm/src/declarations.rs
+@@ -139,10 +139,11 @@ impl<'a, 'll> CodegenCx<'a, 'll> {
+     pub fn get_declared_value(&self, name: &str) -> Option<&'ll Value> {
+         let name = CString::new(name).unwrap();
+         unsafe {
+-            Some(&*llvm_sys::core::LLVMGetNamedGlobal(
++            let ptr = llvm_sys::core::LLVMGetNamedGlobal(
+                 NonNull::from(self.llmod).as_ptr(),
+                 name.as_ptr(),
+-            ))
++            );
++            ptr.as_ref()
+         }
+     }
+ 

@@ -1,2 +1,5 @@
-*/
-*.pkg.tar.zst
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO
+!0001-integration_test_fix.patch
