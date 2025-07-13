@@ -1,6 +1,6 @@
 pkgbase = dict-freedict-deu-fra-bin
 	pkgdesc = German -> French dictionary for dictd et al. from FreeDict.org
-	pkgver = 2023.05.29
+	pkgver = 2024.10.10
 	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-deu-fra-bin.install
@@ -8,9 +8,9 @@ pkgbase = dict-freedict-deu-fra-bin
 	license = CCPL:by-sa
 	license = FDL
 	optdepends = dictd: dict client and server
-	provides = dict-freedict-deu-fra=2023.05.29
+	provides = dict-freedict-deu-fra=2024.10.10
 	conflicts = dict-freedict-deu-fra
-	source = https://download.freedict.org/dictionaries/deu-fra/2023.05.29/freedict-deu-fra-2023.05.29.dictd.tar.xz
-	sha512sums = b6df59e435d89ffb6bb8fdccd37f41cc3f098b4f1889cb8ab8330145999ad32b75ae6a2a829342ec7781ecefca525c70a9f49916212c5f7c2ccecb93a0743a45
+	source = https://download.freedict.org/dictionaries/deu-fra/2024.10.10/freedict-deu-fra-2024.10.10.dictd.tar.xz
+	sha512sums = eb30a0c4dc3ef21c017c270849afa9511e40afd2c814f01325687413632d327b5fd33c549905c275e759b3f84c34acb92038d3854cc403bc91ca5025cf2a5698
 
 pkgname = dict-freedict-deu-fra-bin
