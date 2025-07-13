@@ -1,7 +1,7 @@
 pkgbase = fnq-monitor
 	pkgdesc = Monitor Fn+Q ACPI events for system performance modes
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yourusername/fnq-monitor
 	install = fnq-monitor.install
 	arch = any
@@ -18,6 +18,8 @@ pkgbase = fnq-monitor
 	source = 49-fnq-monitor.rules
 	source = acpi_call-rebuild-initramfs.hook
 	source = README.md
+	source = 90-fnq-monitor.preset
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
