@@ -1,0 +1,17 @@
+pkgbase = pumpkin-git
+	pkgdesc = Empowering everyone to host fast and efficient Minecraft servers
+	pkgver = dev
+	pkgrel = 1
+	url = https://github.com/Pumpkin-MC/Pumpkin
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = clang
+	depends = glibc
+	provides = pumpkin
+	options = !debug
+	source = pumpkin-git::git+https://github.com/Pumpkin-MC/Pumpkin.git
+	sha256sums = SKIP
+
+pkgname = pumpkin-git
