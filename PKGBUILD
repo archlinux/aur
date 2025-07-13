@@ -3,7 +3,7 @@
 # Contributor: Wu Zhenyu <wuzhenyu@ustc.edu>
 _base=brew
 pkgname=${_base}-git
-pkgver=2.7.4.r12568.gcfac516ee
+pkgver=2.7.4.r20233.g23c491e5bc
 pkgrel=1
 pkgdesc="The missing package manager for macOS (or Linux)"
 arch=(x86_64)
@@ -17,7 +17,7 @@ conflicts=(linux${_base}-git linux${_base} ${_base})
 source=(${_base}::git+${url}.git#branch=master
   brew4archlinux.patch::${url}/pull/5926.patch)
 sha512sums=('SKIP'
-  '5500cd6b43022a2fd90ac24f2189df4b02e96acfe6383d356a0dd4d74e161b53f3b65709624b243dec00c270ab812f84c6e276e6692106d5a50c360055a03c35')
+            '5500cd6b43022a2fd90ac24f2189df4b02e96acfe6383d356a0dd4d74e161b53f3b65709624b243dec00c270ab812f84c6e276e6692106d5a50c360055a03c35')
 
 pkgver() {
   if [ -d ${srcdir}/${_base} ]; then
