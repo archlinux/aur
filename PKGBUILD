@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
-_electronversion=35
+_nodeversion=22
+_electronversion=38
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
@@ -11,25 +12,44 @@ depends=(
   "electron${_electronversion}"
   'libsecret'
 )
-makedepends=('pnpm')
+makedepends=(
+  'nvm'
+  'pnpm'
+)
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('2b4f457924005bd476861715ed3f3e1ab91ff8bbb6ee328425db74e5851da907'
+sha256sums=('88647c28d56aa7d90006a319281fd53b574f8b916d38d018708609e777e1a0c6'
             'e00aee0592b3b759fc055815c75326063348bcdf6e05b7632396592b05614637'
             '534337968b3443ff2911a951f8ec6a777cad22a270826dfbe61b0caf2741c654')
 
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="${srcdir}/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvmrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
   cd "$pkgname-$pkgver"
+  _ensure_local_nvm
+  nvm install "${_nodeversion}"
+
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
 build() {
   cd "$pkgname-$pkgver"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  export PNPM_HOME="$srcdir/pnpm-home"
+  _ensure_local_nvm
   pnpm install --frozen-lockfile
   pnpm clean
   pnpm build
