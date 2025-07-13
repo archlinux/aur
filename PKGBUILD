@@ -1,7 +1,8 @@
 # Maintainer: Minecodes <minecodes at minecodes.de>
 pkgname=rbcat
 pkgver=v1.0.1
-pkgrel=2
+pkgrel=3
+groups=('mcds')
 pkgdesc="A go clone of lolcat with built-in cat function."
 arch=('x86_64')
 url="https://codeberg.org/Minecodes/rbcat"

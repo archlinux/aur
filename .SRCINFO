@@ -1,9 +1,10 @@
 pkgbase = rbcat
 	pkgdesc = A go clone of lolcat with built-in cat function.
 	pkgver = v1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/Minecodes/rbcat
 	arch = x86_64
+	groups = mcds
 	license = bsd-4-clause
 	depends = go
 	source = https://git.minecodes.de/thies/rbcat/raw/branch/main/main.go
