@@ -3,7 +3,7 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=2025.3.1
+pkgver=2025.6.0
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('1532af97c205259b7b09abe34c65840712062573a5090a72c81503d4f286f873'
+sha256sums=('4ea42bfa4cfc65b6c6d0be40deec673b95a252a162b7e0df236bdc12a5a7f033'
             '792da71f113aa15177a654e08a31dabd9be864ceb42f64d55cc46d18875c475b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             '986c1a67e5a00b9a766798933f1774995736a0ed345427509bdc522ad71d7e93')
