@@ -7,7 +7,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base/precice-/}"
 license=(MIT)
-depends=(python-lxml python-pydot xdot)
+depends=(python-lxml python-pydot python-typing_extensions xdot)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
 checkdepends=(python-pytest)
 source=(git+${url}.git#branch=master)

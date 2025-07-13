@@ -13,6 +13,7 @@ pkgbase = precice-config-visualizer-git
 	makedepends = git
 	depends = python-lxml
 	depends = python-pydot
+	depends = python-typing_extensions
 	depends = xdot
 	provides = precice-config-visualizer
 	conflicts = precice-config-visualizer
