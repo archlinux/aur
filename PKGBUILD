@@ -2,7 +2,7 @@
 
 pkgname=wwphone
 pkgver=4.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary CTI and SIP client from wwcom"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2025 by wwcom ag"')
@@ -29,7 +29,7 @@ optdepends=(
 package() {
   cd "${srcdir}"
 
-  tar -x --zstd -f data.tar.zst
+  tar -x --xz -f data.tar.xz
 
   install -d "${pkgdir}"/opt/wwphone/certs
   install -m 0644 opt/wwphone/certs/* "${pkgdir}"/opt/wwphone/certs
