@@ -1,0 +1,21 @@
+pkgbase = torrtux
+	pkgdesc = A Professional Multi-Source Torrent Search Tool for Command Line
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/almezali/torrtux-c
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-tabulate
+	depends = python-termcolor
+	depends = python-tqdm
+	source = torrtux-c-1.0.3.tar.gz::https://github.com/almezali/torrtux-c/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = torrtux
