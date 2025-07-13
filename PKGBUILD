@@ -1,21 +1,18 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # Maintainer: tee < teeaur at duck dot com >
-# -*- sh -*-
 
 pkgname='codon-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc='High-performance, zero-overhead, extensible Python compiler using LLVM'
 arch=('x86_64')
 url='https://github.com/exaloop/codon'
 _rawurl='https://raw.githubusercontent.com/exaloop/codon/develop'
-license=('custom:Business Source License 1.1')
+license=('Apache-2.0')
 depends=(
   'cython'
   'gcc-libs'
-  'glibc'
-  'python'
   'python-astunparse'
   'python-setuptools'
   'sh'
@@ -27,7 +24,7 @@ source=(
   'codon.sh'
   "$_tarball::$url/releases/download/v$pkgver/codon-linux-$CARCH.tar.gz"
   "$_rawurl/LICENSE"
-  "$_rawurl/README.md"
+  "README-$pkgver.md::$_rawurl/README.md"
 )
 noextract=("$_tarball")
 
@@ -38,13 +35,13 @@ package() {
   bsdtar -xf "$_tarball" -C "$pkgdir/opt"
 
   install -Dm0755 codon.sh  "$pkgdir/usr/bin/codon"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm0644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
   install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 b2sums=('718328c0651e383b892e7c1f00b795f88c6f4775b02e3a2ba217873d105e51824f380ba55b8602d1698da12ee3609641a753a6aa7660d5d4df52ea855eca5ca7'
-        '33b8318de7a86198754899d4efa1ecd46e826454fe009760c83d938cc852e501777c95772019bf951995c6348c7a25d50630a2bfb8294bde6a329e257328dd26'
-        'SKIP'
-        'SKIP')
+        'a318c336c2117ea9ae30382d56b017dab58e547a798778562f490d6753edbd03fce2be6a3ace5aaa8e1a2213667bc6c7e48c6f69c8182be324db837ab95e2b7e'
+        '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85'
+        '06480299981fcd08d565645613f114c3d339d78447035a83eaa924f38f6b7361e437e7586dc746f51bfa6d795ecef5a4adf7dfb50068769a9deb3465ce4ec054')
 
 # eof
