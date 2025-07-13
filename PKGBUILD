@@ -11,9 +11,17 @@ license=('custom')
 source=("https://static.squareline.io/downloads/${_pkgname}_Linux_v${pkgver//./_}.zip")
 sha256sums=('a5e3035e4d2ca1488184eae294292efa869f5eb3f8520ed68bd9c2ccf43fe7fd')
 
+prepare() {
+  # Packaging folder structure can change.
+  # Find lvgl to find the root of the source
+  _lvgl_path=$(find "${srcdir}" -type d -name lvgl | head -n 1)
+  export _source_dir=$(dirname "${_lvgl_path}")
+}
+
 package() {
   install -dm755 ${pkgdir}/opt/
-  cp -a ${srcdir}/${_pkgname}_Linux_v${pkgver//./_} ${pkgdir}/opt/${pkgname}
+  # Using normalized source path from _source_dir
+  cp -a "${_source_dir}" ${pkgdir}/opt/${pkgname}
 
   cd ${pkgdir}/opt/${pkgname}
 
