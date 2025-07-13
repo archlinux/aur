@@ -1,9 +1,11 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
+# Do HEAD by default. You can specify a specific commit hash here.
+_commit=HEAD
 _pkgname=marsdev
 pkgname=${_pkgname}-git
-pkgver=r153.d4d51e1
-pkgrel=5
+pkgver=r157.3c11da3
+pkgrel=1
 pkgdesc="Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain"
 arch=('x86_64')
 url="https://github.com/andwn/${_pkgname}"
@@ -11,7 +13,8 @@ makedepends=('boost' 'texinfo' 'wget' 'java-environment>=11')
 depends=('java-environment>=11')
 provides=('marsdev' 'x68k-tools' 'sik-tools' 'flamewing-tools' 'sgdk')
 license=('MIT')
-source=("git+$url")
+source=("git+$url#commit=$_commit")
+
 sha256sums=('SKIP')
 options=('!strip' '!debug' '!lto')
 
@@ -22,12 +25,13 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  git submodule update --init
   export   CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection"
   export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection"
   export  LDFLAGS="-static-libstdc++ -static-libgcc -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
-  export MAKEFLAGS=--jobs=1
+  export MAKEFLAGS=--jobs=$(nproc)
   export MARS_INSTALL_DIR="${pkgdir}/opt/marsdev"
-  export SGDK_VER="master"
+  export SGDK_VER="v2.11"
   echo "CFLAGS: ${CFLAGS}"
   echo "CXXFLAGS: ${CXXFLAGS}"
   echo "LDFLAGS: ${LDFLAGS}"
