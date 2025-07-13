@@ -2,7 +2,7 @@
 
 pkgname=bawa
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A TUI game save organizer'
 url='https://github.com/sarowish/bawa'
@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('195793aafa5d35acd41ddd510311b0e870d37e8e71ba9af69a5f262b376c3812')
+sha256sums=('afe4c1808604e6be0b42afea43509c76f8ed321d8466b2e1cc37c33106444ad8')
 
 prepare() {
   cd "$pkgname-$pkgver"
