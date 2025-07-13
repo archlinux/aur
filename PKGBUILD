@@ -1,7 +1,7 @@
 # Maintainer: rie_t <megumin at megu dot dev>
 pkgname=moonlight-stable-bin
 _pkgname=moonlight-stable
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="A convenient launcher for the moonlight Discord mod (stable)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${_pkgname}.desktop"
 )
 sha256sums=(
-    "77ac50c78f0421f505f7b8cf5308dafd11e6df399def06465805a845ad0bdc84"
+    "32f2e2c645e5fb2f6f21ea11643feb0d4fd954d1d850d27f2d0aaf349b1d3c95"
     "f7a9166a288c5b09c0ca94bec75dbe64a347df41709460b20f9933dff45e0bf4"
 )
 
