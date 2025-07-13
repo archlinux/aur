@@ -21,6 +21,7 @@ pkgbase = amiberry
 	depends = portmidi
 	depends = hicolor-icon-theme
 	depends = enet
+	depends = libpcap
 	provides = amiberry=7.1.0
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
