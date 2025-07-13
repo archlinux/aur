@@ -1,7 +1,7 @@
 pkgbase = android-riscv64-icu
 	pkgdesc = International Components for Unicode library (Android riscv64)
 	pkgver = 77.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icu.unicode.org/
 	arch = any
 	groups = android-icu
@@ -15,8 +15,6 @@ pkgbase = android-riscv64-icu
 	options = staticlibs
 	options = !emptydirs
 	source = https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz
-	source = 0001-Unversioned-libs.patch
 	md5sums = bc0132b4c43db8455d2446c3bae58898
-	md5sums = 773c68c8408a5208c279babcaa9c6816
 
 pkgname = android-riscv64-icu
