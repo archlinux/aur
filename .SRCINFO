@@ -1,7 +1,7 @@
 pkgbase = cast_control
 	pkgdesc = Control Chromecasts from Linux and D-Bus
 	pkgver = 0.16.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/alexdelorenzo/cast_control
 	arch = any
