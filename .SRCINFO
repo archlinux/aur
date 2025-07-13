@@ -1,0 +1,10 @@
+pkgbase = in-editor
+	pkgdesc = small CLI text editor. Based on ed
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Ho1Ai/in
+	arch = x86_64
+	license = MIT
+	source = in
+
+pkgname = in-editor
