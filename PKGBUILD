@@ -1,94 +1,78 @@
-# Current Maintainer: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
-# Original Maintainer:: Marcos Piccinini <x@nofxx.com>
-# Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
+# Maintainer: envolution
+# Contributor: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
+# Contributor: Marcos Piccinini <x@nofxx.com>
+# Contributor: Jonathan Hudson <jh+arch@daria.co.uk>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=mapserver
-pkgver=8.0.1
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
-license=('MIT')
+license=("Apache-2.0" "BSD-2-Clause")
 url="http://www.mapserver.org"
-depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'protobuf-c'
-'fcgi' 'mod_fcgid' 'python' 'libsvg-cairo' 'fribidi' )
-## For v8 support require v8-3.20; for PHP mapscript require php, php-pear, php-apache
-makedepends=('cfitsio')
-options=()
+depends=(
+  gdal
+  proj
+  libpng
+  freetype2
+  fribidi
+  fcgi
+  libjpeg-turbo
+  zlib
+  curl
+  libxml2
+  geos
+  gcc-libs
+  libxslt
+  pcre2
+  glibc
+  cairo
+  giflib
+  harfbuzz
+  protobuf-c
+  python
+  python-pillow
+  postgresql-libs
+)
+provides=(python-mapserver)
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('c85b9b734471da431958b6331aae0803')
+md5sums=('3686508a575938c8eaaa6000296151a2')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  
-  if [ -f CMakeCache.txt ]  
-    then
-	  rm -rf CMakeCache.txt CMakeFiles
-  fi	
-  rm -rf build && mkdir build
+  cd "${pkgname}-${pkgver}"
+  mkdir -p build
   cd build
+  #The following options are enabled by default
+  # WITH_PROJ, WITH_WMS, WITH_FRIBIDI,
+  # WITH_HARFBUZZ, WITH_ICONV, WITH_CAIRO,
+  # WITH_FCGI, WITH_GEOS, WITH_POSTGIS,
+  # WITH_GDAL, WITH_OGR, WITH_WFS,
+  # WITH_WCS, WITH_LIBXML2, WITH_GIF.
+  #svgcairo broken in AUR
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DWITH_SVGCAIRO=OFF \
+    ../ >../configure.out.txt
 
-  ## Compile with python
-  ## -DPYTHON_LIBRARIES=/usr/lib/python2.7 \
-	## -DPYTHON_INCLUDE_PATH=/usr/include/python2.7 \
-    
-  cmake .. \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_INSTALL_LIBDIR=lib \
-  -DFRIBIDI_INCLUDE_DIR="/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/fribidi" \
-  -DCMAKE_PREFIX_PATH=/opt/v8 \
-  -DWITH_CAIRO=ON \
-	-DWITH_CLIENT_WFS=ON \
-	-DWITH_OGCAPI=ON \
-	-DWITH_CLIENT_WMS=ON \
-	-DWITH_CSHARP=OFF \
-	-DWITH_CURL=ON \
-	-DWITH_EXEMPI=OFF \
-	-DWITH_FCGI=ON \
-	-DWITH_FRIBIDI=ON \
-	-DWITH_GENERIC_NINT=OFF \
-	-DWITH_GEOS=ON \
-	-DWITH_GIF=ON \
-	-DWITH_ICONV=ON \
-	-DWITH_JAVA=OFF \
-	-DWITH_KML=ON \
-	-DWITH_V8=OFF \
-	-DWITH_LIBXML2=ON \
-	-DWITH_MSSQL2008=OFF \
-	-DWITH_MYSQL=OFF \
-	-DWITH_ORACLESPATIAL=OFF \
-	-DWITH_ORACLE_PLUGIN=OFF \
-	-DWITH_PERL=OFF \
-	-DWITH_POSTGIS=ON \
-	-DWITH_GIF=ON \
-	-DWITH_PYTHON=ON \
-	-DWITH_RSVG=OFF \
-	-DWITH_RUBY=OFF \
-	-DWITH_SOS=ON \
-	-DWITH_SVGCAIRO=ON \
-	-DWITH_THREAD_SAFETY=ON \
-	-DWITH_WCS=ON \
-	-DWITH_WFS=ON \
-	-DWITH_WMS=ON \
-	-DWITH_XMLMAPFILE=OFF \
-	-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
-    
-  make clean	
-  make -j$(nproc)
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cd build
-  
-  make || return 1
+  cd "${pkgname}-${pkgver}/build"
   make DESTDIR=${pkgdir} install
-  
+
   #Copy the headers a include for ZooWPS project
   install -d "$pkgdir"/usr/include/mapserver
   install -d "$pkgdir"/usr/share/mapserver
   install -d "$pkgdir"/opt/mapserver/test/
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/build/*.h "$pkgdir"/usr/include/mapserver/
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/*.h "$pkgdir"/usr/include/mapserver/
   cp -rfv "${srcdir}/${pkgname}-${pkgver}"/share/ogcapi "$pkgdir"/usr/share/mapserver
   cp -rfv "${srcdir}/${pkgname}-${pkgver}"/tests/* "$pkgdir"/opt/mapserver/test
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/flatgeobuf/LICENSE" \
+    ${pkgdir}/usr/share/licenses/${pkgname}/FlatGeoBuf-LICENSE
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/flatgeobuf/include/flatbuffers/LICENSE" \
+    ${pkgdir}/usr/share/licenses/${pkgname}/FlatBuffers-LICENSE
 }
+# vim:set ts=2 sw=2 et:

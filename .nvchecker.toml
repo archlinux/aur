@@ -1,0 +1,4 @@
+[mapserver]
+source = 'regex'
+url = 'https://mapserver.org/download.html'
+regex = 'mapserver-([0-9.]+).tar.gz'
