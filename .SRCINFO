@@ -1,13 +1,14 @@
 pkgbase = shortcuts-bin
 	pkgdesc = A tool for getting shortcuts & commands for commands
 	pkgver = v2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://codeberg.org/Minecodes/shortcuts
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = riscv64
+	groups = mcds
 	license = bsd-4-clause
 	depends = go
 	depends = git

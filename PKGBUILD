@@ -2,7 +2,8 @@
 pkgname=shortcuts-bin
 _pkgname=shortcuts
 pkgver=v2.0.0
-pkgrel=4
+pkgrel=5
+groups=('mcds')
 pkgdesc="A tool for getting shortcuts & commands for commands"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'riscv64')
 url="https://codeberg.org/Minecodes/shortcuts"
