@@ -1,7 +1,7 @@
 pkgbase = voix
 	pkgdesc = A privilege escalation tool replacing sudo/doas/sudo-rs, using PAM for authentication - WILL REPLACE SUDO!!
 	pkgver = 0.0.16b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Veridian-Zenith/Voix
 	install = voix.install
 	arch = x86_64
