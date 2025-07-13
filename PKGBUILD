@@ -8,7 +8,7 @@ options=('!strip' '!debug')
 
 # Maintainer: Vaibhav Mattoo <vaibhavmattoo1@gmail.com>
 pkgname=alman
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Intelligent alias manager with TUI for managing shell aliases with intelligent suggestions based on command history"
 arch=('x86_64' 'aarch64' 'armv7h')
