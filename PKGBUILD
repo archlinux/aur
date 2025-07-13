@@ -1,7 +1,7 @@
 # Maintainer: Shiina Rikka <rikka@rikka.im>
 _pkgname=mechrevo-drivers
 pkgname=mechrevo-drivers-dkms
-pkgver=4.13.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc='Kernel modules for MECHREVO devices. Drivers for several platform devices for MECHREVO notebooks meant for DKMS. Modified from TUXEDO drivers.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('tuxedo-drivers-dkms'
             'ite_829x')
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v$pkgver/tuxedo-drivers-v$pkgver.tar.gz patch.diff )
-sha256sums=('0828a1d234e739751d75288d681ad52b34f81beeeb006b142547fc3847e97d32'
+sha256sums=('9bb93fbe8460d06573b05509b5894f80fe51f217f62c5176062054be16415aa6'
             'cec9ca635762733b3a307f008df541c7eb0c02fb1107d427255d7f42023d5ee2')
 
 prepare(){
@@ -36,5 +36,4 @@ package() {
   sed -i "s/#MODULE_VERSION#/${pkgver}/" "${pkgdir}/usr/src/${_pkgname%}-$pkgver/dkms.conf"
   install -Dm644 "tuxedo-drivers-v$pkgver"/tuxedo_keyboard.conf -t "$pkgdir/usr/lib/modprobe.d/"
   cp -ar "tuxedo-drivers-v$pkgver"/src/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
-  install -Dm644 "tuxedo-drivers-v$pkgver"/99-z-tuxedo-systemd-fix.rules -t "$pkgdir/etc/udev/rules.d/"
 }
