@@ -14,7 +14,7 @@
 #  place it into same DIR as this file
 
 pkgname="renoise"
-pkgver="3.5.0"
+pkgver="3.5.1"
 pkgrel="1"
 pkgdesc="A music composition program"
 arch=("x86_64" "aarch64" "armv7h")
@@ -28,7 +28,6 @@ provides=("vst-host" "vst3-host" "ladspa-host" "dssi-host")
 
 source_x86_64=("file://rns_${pkgver//./}_linux_x86_64.tar.gz")
 source_aarch64=("file://rns_${pkgver//./}_linux_arm64.tar.gz")
-source_armv7h=("file://rns_${pkgver//./}_linux_armhf.tar.gz")
 
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
@@ -37,12 +36,16 @@ sha256sums_armv7h=('SKIP')
 _arch='x86_64'
 case "$CARCH" in
     'aarch64') _arch='arm64' ;;
-    'armv7h')  _arch='armhf' ;;
 esac
 
 
 package() {
     cd "$srcdir/rns_${pkgver//./}_linux_${_arch}"
+
+    find . -type d -exec chmod 755 {} \;
+    find . -type f -exec chmod 644 {} \;
+    chmod 755 "Resources/AudioPluginServer_${_arch}"
+    chmod 755 "Resources/3rdParty/LuaLS/bin/lua-language-server-linux_${_arch}"
 
     mkdir -p "$pkgdir/usr/share/renoise-$pkgver"
     cp -r "Resources"/* "$pkgdir/usr/share/renoise-$pkgver"
