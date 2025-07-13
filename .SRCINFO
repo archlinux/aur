@@ -1,0 +1,13 @@
+pkgbase = starpls
+	pkgdesc = An LSP implementation for Starlark
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://github.com/withered-magic/starpls
+	arch = x86_64
+	license = Apache-2.0 AND MIT
+	makedepends = cargo
+	depends = bazel
+	source = git+https://github.com/withered-magic/starpls#tag=v0.1.21
+	sha256sums = SKIP
+
+pkgname = starpls
