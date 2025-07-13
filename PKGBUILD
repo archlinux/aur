@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="gizmosql-bin"
-pkgver=1.9.10
+pkgver=1.9.11
 pkgrel=1
 pkgdesc="A Flight SQL Server implementation with DuckDB and SQLite back-ends"
 url="https://gizmodata.com/gizmosql"
