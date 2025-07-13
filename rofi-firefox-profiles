@@ -7,7 +7,11 @@ from pathlib import Path
 
 dbg_temp = CONFIG_PATH = Path.home() / "MyCode" / "python" / "rofi-firefox-profiles" / "config.ini"
 
-CONFIG_PATH = Path("/etc/rofi-firefox-profiles/config.ini")
+user_config = Path.home() / ".config" / "rofi-fox" / "config.ini"
+system_config = Path("/etc/rofi-firefox-profiles/config.ini")
+
+CONFIG_PATH = user_config if user_config.exists() else system_config
+
 # CONFIG_PATH = dbg_temp
 
 

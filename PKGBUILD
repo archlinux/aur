@@ -1,8 +1,8 @@
 # Maintainer: Shantanu R <shantanu@ramanujapuram.com>
 
 pkgname=rofi-firefox-profiles
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="Launch Firefox with a selected profile using rofi"
 arch=('any')
 url="https://github.com/shanten/rofi-firefox-profiles"
