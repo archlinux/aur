@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ferriby
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Keep Ferris alive by contributing to a git repo"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'zlib' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('34cca0fa1e424ab761e1a5e7d87e333a9d21f6e10bc4f5eeebd3ffe6aaca24ef')
+sha256sums=('7b38e48783db14072e32c9a34df23355f0aee9f02f2853d78e830ae3ba3f15a7')
 options=('!lto')
 
 prepare() {
