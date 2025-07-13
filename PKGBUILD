@@ -318,7 +318,7 @@ END
 
 package_nvidia-open-dkms() {
   pkgdesc="NVIDIA open kernel modules - module sources"
-  depends+=('dkms')
+  depends+=('dkms' "nvidia-utils=$pkgver")
   license=('MIT AND GPL-2.0-only')
   conflicts=('nvidia-open' 'NVIDIA-MODULE')
   provides=('nvidia-open' 'NVIDIA-MODULE')
