@@ -1,9 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Ho1Ai <ristakon.team@gmail.com>
+# Maintainer: Ho1Ai
 pkgname=in-editor
 pkgver=0.1.0
 pkgrel=1
