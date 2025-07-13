@@ -1,12 +1,14 @@
 pkgbase = mapserver
 	pkgdesc = Platform for publishing spatial data and interactive mapping applications to the web
 	pkgver = 8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mapserver.org
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = swig
 	depends = gdal
 	depends = proj
 	depends = libpng
