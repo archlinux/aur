@@ -1,6 +1,6 @@
 pkgbase = wine-tkg-staging-ntsync-bin
 	pkgdesc = A compatibility layer for running Windows programs (WOW64 with TkG-Staging and NTSYNC patches)
-	pkgver = 10.11
+	pkgver = 10.12
 	pkgrel = 1
 	url = https://github.com/Kron4ek/Wine-Builds
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = wine-tkg-staging-ntsync-bin
 	depends = desktop-file-utils
 	depends = libgphoto2
 	depends = glibc
-	provides = wine=10.11
-	provides = wine-staging=10.11
-	provides = wine-wow64=10.11
+	provides = wine=10.12
+	provides = wine-staging=10.12
+	provides = wine-wow64=10.12
 	conflicts = wine
-	source = https://github.com/Kron4ek/Wine-Builds/releases/download/10.11/wine-10.11-staging-tkg-ntsync-amd64-wow64.tar.xz
-	sha256sums = 1bd50a198c4903afe7b41c4c873a8aaaeb78605fe58a409fd3c9cde6a9b8098b
+	source = https://github.com/Kron4ek/Wine-Builds/releases/download/10.12/wine-10.12-staging-tkg-ntsync-amd64-wow64.tar.xz
+	sha256sums = 4cc351f9f63321454ff0c24361b9224f88ec127438df29a749b43a47e085619c
 
 pkgname = wine-tkg-staging-ntsync-bin
