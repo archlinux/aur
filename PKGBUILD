@@ -1,7 +1,7 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove
 pkgver=202507131
-pkgrel=1
+pkgrel=2
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
@@ -25,6 +25,7 @@ package() {
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/etc/thunderbird/policies/policies.json"
     install -Dm644 "$tmpdir/COPYING" "$pkgdir/usr/share/doc/dove/COPYING"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/dove/README.md"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/123mail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/123mail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/126.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/126.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/12fuel.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/12fuel.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/12mail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/12mail.dk"
