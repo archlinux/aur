@@ -2,7 +2,7 @@
 
 pkgname=rapidraw-bin
 pkgdesc="A beautiful, non-destructive, and GPU-accelerated RAW image editor built with performance in mind."
-pkgver=1.2.45
+pkgver=1.2.5
 pkgrel=1
 arch=('x86_64')
 url=https://github.com/CyberTimon/RapidRAW
