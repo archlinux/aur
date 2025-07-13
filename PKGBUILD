@@ -3,14 +3,14 @@
 
 pkgname=mangayomi-bin
 _pkgname=mangayomi
-pkgver=0.6.25
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A free and open source manga, manhwa and manhua reader for Android, Windows, Linux, and macOS."
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
 license=('GPL3')
 
-depends=('unzip')
+depends=('webkit2gtk-4.1' 'mpv' 'xdg-user-dirs' 'unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
