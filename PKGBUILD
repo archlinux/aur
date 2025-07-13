@@ -3,7 +3,7 @@
 pkgname=rapidraw-bin
 pkgdesc="A beautiful, non-destructive, and GPU-accelerated RAW image editor built with performance in mind."
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://github.com/CyberTimon/RapidRAW
 license=('AGPL-3.0-or-later')
@@ -40,4 +40,10 @@ package() {
     icons_dir="usr/share/icons/hicolor/${icon_size}/apps"
     install -Dm644 -t "$pkgdir/${icons_dir}/" "${icons_dir}/${_prgname}.png"
   done
+
+  # Install libraries and workflows
+  install -d "$pkgdir/usr/lib/${_prgname}/workflows"
+  install -d "$pkgdir/usr/lib/${_prgname}/resources"
+  cp -r "usr/lib/${_prgname}/workflows/" "$pkgdir/usr/lib/${_prgname}/workflows"
+  ln -s "/usr/lib/libonnxruntime.so" "$pkgdir/usr/lib/${_prgname}/resources/libonnxruntime.so"
 }
