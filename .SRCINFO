@@ -1,12 +1,12 @@
 pkgbase = runapp
 	pkgdesc = Application runner for Linux desktop environments that integrate with systemd
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/c4rlo/runapp
 	arch = x86_64
 	license = MIT
 	depends = systemd-libs
-	source = https://github.com/c4rlo/runapp/archive/0.2.0.tar.gz
-	sha256sums = 65c1a95a67fe6442224cccc015b65115fc30ecd763f46dee1ed79c59322131ed
+	source = https://github.com/c4rlo/runapp/archive/0.3.0.tar.gz
+	sha256sums = 65f3fbb126a9f08cff1062dfdfc97e2d144f1dd8a1e8f023077895305f228065
 
 pkgname = runapp
