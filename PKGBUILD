@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=107.r8009
-pkgrel=3
+pkgver=107.r8010
+pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -124,7 +124,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
 
-  DESTDIR="$pkgdir" enable_test=no make install
+  DESTDIR="$pkgdir" make install
 
   # pacman hooks
   install -Dm755 "${srcdir}"/dracut-install.script "${pkgdir}"/usr/share/libalpm/scripts/dracut-install
