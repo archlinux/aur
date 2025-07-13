@@ -1,7 +1,7 @@
 pkgbase = blue-recorder-git
 	pkgdesc = Simple Screen Recorder written in Rust based on Green Recorder
-	pkgver = r196.9d61234
-	pkgrel = 2
+	pkgver = r202.dfdb73e
+	pkgrel = 1
 	url = https://github.com/xlmnxp/blue-recorder
 	arch = x86_64
 	license = GPL-3.0-or-later

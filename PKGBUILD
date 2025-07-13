@@ -2,8 +2,8 @@
 # Contributor: RadioactiveRadio <barraiser59@gmail.com>
 pkgname=blue-recorder-git
 _app_id=sa.sy.bluerecorder
-pkgver=r196.9d61234
-pkgrel=2
+pkgver=r202.dfdb73e
+pkgrel=1
 pkgdesc="Simple Screen Recorder written in Rust based on Green Recorder"
 arch=('x86_64')
 url="https://github.com/xlmnxp/blue-recorder"
@@ -47,7 +47,7 @@ build() {
   export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 package() {
