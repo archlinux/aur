@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Westberg <sebastian@westberg.io>
 pkgname=termr
-pkgver=$(python -c "import sys; sys.path.append('../..'); from termr.version import __version__; print(__version__)")
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal-based radio player with TUI"
 arch=('x86_64' 'i686' 'aarch64')
