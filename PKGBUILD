@@ -9,7 +9,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-icu
 pkgver=77.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="International Components for Unicode library (Android ${_android_arch})"
 groups=('android-icu')
@@ -20,10 +20,8 @@ makedepends=('android-environment'
 options=(!strip !buildflags staticlibs !emptydirs)
 license=('custom')
 url="https://icu.unicode.org/"
-source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"
-        "0001-Unversioned-libs.patch")
-md5sums=('bc0132b4c43db8455d2446c3bae58898'
-         '773c68c8408a5208c279babcaa9c6816')
+source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz")
+md5sums=('bc0132b4c43db8455d2446c3bae58898')
 
 prepare() {
     cd "${srcdir}/icu/source"
