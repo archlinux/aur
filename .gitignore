@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.xz
+*.zst
+src/
+pkg/
+wayland-display-info/

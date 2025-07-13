@@ -1,0 +1,19 @@
+post_install() {
+    # create cache dir immediately (also done at boot by tmpfiles)
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/wayland-display-info.conf
+    systemctl --global enable wayland-display-info.service >/dev/null 2>&1 || true
+    systemctl daemon-reload
+}
+
+post_upgrade() {
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/wayland-display-info.conf
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl --global disable wayland-display-info.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
