@@ -1,7 +1,7 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 _pkgname=muse-sounds-manager
 pkgname="$_pkgname-bin"
-pkgver=2.0.3.659
+pkgver=2.0.4.872
 pkgrel=1
 pkgdesc="Manage MuseScore Libraries"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('muse-hub')
 depends=('fontconfig' 'zlib' 'hicolor-icon-theme' 'skia-sharp')
 makedepends=()
 install="$_pkgname.install"
-source=('https://muse-cdn.com/Muse_Sounds_Manager_x64.tar.gz' 'LICENSE')
-sha256sums=('b5986615810a73cebf1ff201aa99e74f67bb56f9f8d814930fde73aa93bd682e'
+source=("_$pkgname-$pkgver.tar.gz::https://muse-cdn.com/Muse_Sounds_Manager_x64.tar.gz" 'LICENSE')
+sha256sums=('55c2c15e92c393dd327748fd348cc13975c072248b58ff72e57e752f6ffd5b80'
             'ed3c749e7391b70b11717469815ce8fe65a962cf40dd4df88e21bf240b2058b2')
 options=('!strip')
 
@@ -23,7 +23,7 @@ package(){
   #tar -xJ -f data.tar.xz -C "$pkgdir"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/muse-sounds-manager"
 
-  cd $srcdir/muse_sounds_manager_x64_*
+  cd $srcdir/muse_sounds_manager_x64_$pkgver
 
   # mkdir -p "$pkgdir/usr/lib/muse-sounds-manager"
   mkdir -p "$pkgdir/opt/muse-sounds-manager"
