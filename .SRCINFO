@@ -7,6 +7,7 @@ pkgbase = portable-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = libarchive
+	depends = polkit
 	depends = wayland-utils
 	depends = pipewire-v4l2
 	depends = procps-ng
