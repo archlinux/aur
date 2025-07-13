@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=pulldocker
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc=" Watch git repositories for Docker compose configuration changes"
 url="http://www.muflone.com/pulldocker"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('python-gitpython' 'python-yaml')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('0d739349d6aa2591735009642387148905e1e0ae06027116effa0f5c7c24519a3fa84ba67ee2edad3eaea26aa1ca60a52d7a1e6bf05efeff04452d48914be68f')
+sha512sums=('4c7bf3c3fae3a890b44e830c4e1c4bdaa3e7a53cb70c13c270f3d7047034dcb06c07d1002d345fde6a1789f74499587587bffb4db4bff217f43045c61bb3b726')
 
 build() {
   cd "${pkgname}-${pkgver}"
