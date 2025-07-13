@@ -1,7 +1,7 @@
 # Maintainer: Not_Noob <magnitudetransparentcouncil@duck.com>
 pkgname=octarine-bin
 pkgdesc="Octarine is an opinionated tool for taking notes, tasks and organising your thoughts."
-pkgver=0.26.8
+pkgver=0.27.0
 pkgrel=1
 arch=("x86_64")
 url="https://octarine.app"
