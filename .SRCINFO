@@ -1,0 +1,18 @@
+pkgbase = termitype
+	pkgdesc = Terminal-based typing test inspired by a certain typing test you might know.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/emanuel2718/termitype
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = sqlite
+	source = termitype-0.0.6.tar.gz::https://github.com/emanuel2718/termitype/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = 5030a7a9516c9b0d7a1057017d95942488be29efca912e36f7ff32da7b6452dd
+
+pkgname = termitype
