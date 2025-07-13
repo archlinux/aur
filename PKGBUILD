@@ -21,22 +21,18 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Find and move termr script to correct location
-    if [ -f "$pkgdir/usr/local/bin/termr" ]; then
-        install -Dm755 "$pkgdir/usr/local/bin/termr" "$pkgdir/usr/bin/termr"
-        rm "$pkgdir/usr/local/bin/termr"
-    fi
-    if [ -f "$pkgdir/bin/termr" ]; then
-        install -Dm755 "$pkgdir/bin/termr" "$pkgdir/usr/bin/termr"
-        rm "$pkgdir/bin/termr"
-    fi
-    if [ -f "$pkgdir/sbin/termr" ]; then
-        install -Dm755 "$pkgdir/sbin/termr" "$pkgdir/usr/bin/termr"
-        rm "$pkgdir/sbin/termr"
-    fi
-    if [ -f "$pkgdir/usr/sbin/termr" ]; then
-        install -Dm755 "$pkgdir/usr/sbin/termr" "$pkgdir/usr/bin/termr"
-        rm "$pkgdir/usr/sbin/termr"
-    fi
+    echo "Looking for termr script in package directory..."
+    find "$pkgdir" -name "termr" -type f -executable
+    
+    # Move script from any location to /usr/bin/termr
+    for script_path in "$pkgdir"/usr/local/bin/termr "$pkgdir"/bin/termr "$pkgdir"/sbin/termr "$pkgdir"/usr/sbin/termr; do
+        if [ -f "$script_path" ]; then
+            echo "Moving $script_path to /usr/bin/termr"
+            install -Dm755 "$script_path" "$pkgdir/usr/bin/termr"
+            rm "$script_path"
+            break
+        fi
+    done
     
     # Ensure the script exists in /usr/bin
     if [ ! -f "$pkgdir/usr/bin/termr" ]; then
