@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music-git
-pkgver=3.9.0.r79.g382caaa
+pkgver=3.10.0.r2.g5925b76
 pkgrel=1
-_electronversion=36
+_nodeversion=22
+_electronversion=38
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
@@ -13,6 +14,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'nvm'
   'pnpm'
 )
 provides=("${pkgname%-git}")
@@ -30,17 +32,33 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="${srcdir}/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvmrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
   cd "${pkgname%-git}"
+  _ensure_local_nvm
+  nvm install "${_nodeversion}"
+
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/${pkgname%-git}.sh"
 }
 
 build() {
   cd "${pkgname%-git}"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install
+  _ensure_local_nvm
+  pnpm install --frozen-lockfile
   pnpm clean
   pnpm build
   pnpm electron-builder --linux dir \
