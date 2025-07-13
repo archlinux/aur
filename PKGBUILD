@@ -27,10 +27,11 @@ validpgpkeys=()
 package() {
     cd ${srcdir}
     install -dm755 "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/share/spotube"
 
-    install -Dm644 ./spotube.desktop "$pkgdir/usr/share/applications/spotube.desktop"
-    install -Dm644 ./spotube-logo.png "$pkgdir/usr/share/icons/spotube/spotube-logo.png"
-    install -Dm644 ./com.github.KRTirtho.Spotube.appdata.xml "$pkgdir/usr/share/appdata/spotube.appdata.xml"
-    find ./data ./lib ./spotube -type f -exec install -Dm755 "{}" "$pkgdir/usr/share/spotube/{}" \;
-    ln -s ./usr/share/spotube/spotube "${pkgdir}/usr/bin/spotube"
- }
+    install -Dm755 ./spotube.desktop "$pkgdir/usr/share/applications/spotube.desktop"
+    install -Dm755 ./spotube-logo.png "$pkgdir/usr/share/icons/spotube/spotube-logo.png"
+    install -Dm755 ./com.github.KRTirtho.Spotube.appdata.xml "$pkgdir/usr/share/appdata/spotube.appdata.xml"
+    cp -ra ./data ./lib ./spotube "$pkgdir/usr/share/spotube"
+    ln -s /usr/share/spotube/spotube "${pkgdir}/usr/bin/spotube"
+}
