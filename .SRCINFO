@@ -1,7 +1,7 @@
 pkgbase = compbench
 	pkgdesc = A CLI tool for testing the compression performance of a file under different algorithms
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fgaoxing/Compbench
 	arch = x86_64
 	license = GPL-3.0-or-later

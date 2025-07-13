@@ -1,7 +1,7 @@
 # Maintainer: Fgaoxing <fgaoxing0206@outlook.com>;
 pkgname=compbench
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool for testing the compression performance of a file under different algorithms"
 arch=("x86_64")
 url="https://github.com/Fgaoxing/Compbench"
@@ -13,6 +13,5 @@ sha256sums=("247607aca52b5a1e4630b719ee3682d51c0986265299777e07d82efed391dce9")
 package() {
     cd $srcdir;
     tar -zxvf compbench-linux-x86_64.tar.gz
-    cd ./compbench-linux-x86_64
     cp ./compbench /usr/bin
 }
