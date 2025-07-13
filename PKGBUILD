@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/craftablescience/minizip-ng.git#commit=2c0dc5d82c22df373515f890a656b5394285493c"
 	"git+https://github.com/phoboslab/qoi.git#commit=4461cc37ef08b24f157a5ab7c3f7d6c9e6caa6c0"
 	)
-sha256sums=('083303b9037c9658d5e88f0fb2ce560ed86bed924fe86d37f4eea868a66d585d'
+sha256sums=('50160282538836bafc27aea1882d33faeedce65b6f23eb76ef7c7c530561a924'
             '8510317b204d5c8722252c2a2c01532a76ff7d196902546ddad2ff239fcf961e'
             '3f0e4218e858ad461ab70b7c77371d57a9305281e33d86e55de3576d1ce20723'
             '42b2b012a0724cfe279a79a520e63602d0dc7d549e8e56ea626018ffcc3f0bc9'
