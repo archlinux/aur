@@ -1,0 +1,11 @@
+pkgbase = otf-manufacturing-consent
+	pkgdesc = An original blackletter font inspired by the New York Times masthead type developed by Fred Brennan
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/googlefonts/manufacturing-consent-font
+	arch = any
+	license = OFL-1.1
+	source = manufacturing-consent-font-2.3.tar.gz::https://github.com/googlefonts/manufacturing-consent-font/archive/refs/tags/v2.3.tar.gz
+	sha256sums = 97aeb293287aa3253ce55ce2888d53580cb6119a673926597056fac86abb13c4
+
+pkgname = otf-manufacturing-consent
