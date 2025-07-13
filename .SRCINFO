@@ -1,6 +1,6 @@
 pkgbase = fuc
 	pkgdesc = Modern, performance focused unix commands
-	pkgver = 2.2.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/SUPERCILEX/fuc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fuc
 	checkdepends = cargo
 	makedepends = cargo
 	depends = gcc-libs
-	source = fuc-2.2.0.tar.gz::https://github.com/SUPERCILEX/fuc/archive/refs/tags/2.2.0.tar.gz
-	sha256sums = d0444f67311408ecbcc51a8df120e711c2736a3b82186f33e5df7b12a6b9fc88
+	source = fuc-3.1.0.tar.gz::https://github.com/SUPERCILEX/fuc/archive/refs/tags/3.1.0.tar.gz
+	sha256sums = cfc1faaec08e7b2a5aec124abea12a8779cf7c2da937931964112210d2bdb576
 
 pkgname = fuc
