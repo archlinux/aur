@@ -9,12 +9,12 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.28.0
+pkgver=12.0.14
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
-arch=('x86_64' 'aarch64')
 license=('MPL-2.0')
+arch=('x86_64')
 
 makedepends=(
   'imagemagick'
@@ -34,18 +34,16 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 
 source=(
+  "$_pkgname-$pkgver-linux-amd64.tar.xz"::"https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-linux-amd64.tar.xz"
   "floorp.desktop"
   "floorp.png"
 )
-source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-x86_64.tar.bz2")
-source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-aarch64.tar.bz2")
 
 sha256sums=(
+  'd877a6ba60190630bb2e08c47e76971400b2963aefa0dad3efa323d4c243da75'
   '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
 )
-sha256sums_x86_64=('17d35b6ccf0452cf9986c0b886c993ee1297b4c2df60e54aef0a426d581c7df8')
-sha256sums_aarch64=('279461fc06c46eb191a88e476cc100471617878fdb1478c8c03e92c2608b2bef')
 
 package() {
   depends=(
@@ -54,7 +52,7 @@ package() {
   )
 
   # app
-  install -dm755 "$pkgdir/$_install_path/$_pkgname"
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname"
   cp -a "$_pkgname"/* "$pkgdir/$_install_path/$_pkgname/"
 
   # symlink duplicate
@@ -74,7 +72,7 @@ package() {
     chmod 644 "$_icon_dest/$_pkgname.png"
   done
 
-  # desktop file
+  # launcher
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # script
