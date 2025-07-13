@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = acpi_call
+
+[Action]
+Description = Rebuilding initramfs after acpi_call update...
+When = PostTransaction
+Exec = /bin/sh -c 'mkinitcpio -P'

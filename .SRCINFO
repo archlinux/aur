@@ -1,0 +1,27 @@
+pkgbase = fnq-monitor
+	pkgdesc = Monitor Fn+Q ACPI events for system performance modes
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/yourusername/fnq-monitor
+	install = fnq-monitor.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = acpi_call
+	depends = acpid
+	depends = qt5-tools
+	depends = polkit
+	depends = breeze-icons
+	backup = etc/polkit-1/rules.d/49-fnq-monitor.rules
+	source = fnq-monitor.sh
+	source = fnq-monitor.service
+	source = 49-fnq-monitor.rules
+	source = acpi_call-rebuild-initramfs.hook
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fnq-monitor

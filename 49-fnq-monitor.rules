@@ -1,0 +1,10 @@
+polkit.addRule(function(action, subject) {
+    var allowedActions = [
+        "org.freedesktop.policykit.exec",
+        "org.freedesktop.policykit.exec.run",
+        "org.freedesktop.modprobe"
+    ];
+    if (allowedActions.indexOf(action.id) >= 0 && subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});

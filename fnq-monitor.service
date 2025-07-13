@@ -1,0 +1,11 @@
+[Unit]
+Description=Fn+Q ACPI Monitor
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/fnq-monitor
+Restart=on-failure
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+
+[Install]
+WantedBy=default.target

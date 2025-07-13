@@ -1,0 +1,38 @@
+post_install() {
+    if command -v systemctl >/dev/null 2>&1; then
+        echo "[1/2] Enabling and starting acpid system-wide..."
+        systemctl enable --now acpid.service >/dev/null 2>&1 || echo "Warning: Failed to enable/start acpid"
+    else
+        echo "Warning: systemctl not found, skipping acpid activation"
+    fi
+
+    echo "[2/2] Installation complete."
+    echo "ℹ To enable Fn+Q monitor for your user session, run:"
+    echo "    systemctl --user daemon-reexec && systemctl --user enable --now fnq-monitor.service"
+}
+
+post_upgrade() {
+    if command -v systemctl >/dev/null 2>&1; then
+        echo "[1/2] Ensuring acpid is enabled and running..."
+        systemctl enable --now acpid.service >/dev/null 2>&1 || echo "Warning: Failed to enable/start acpid"
+    else
+        echo "Warning: systemctl not found, skipping acpid activation"
+    fi
+
+    echo "[2/2] Upgrade complete."
+    echo "ℹ To enable Fn+Q monitor for your user session, run:"
+    echo "    systemctl --user daemon-reexec && systemctl --user enable --now fnq-monitor.service"
+}
+
+pre_remove() {
+    if command -v systemctl >/dev/null 2>&1; then
+        echo "Disabling acpid service..."
+        systemctl disable acpid.service >/dev/null 2>&1 || true
+    fi
+}
+
+post_remove() {
+    echo "Fn+Q monitor removed."
+    echo "ℹ To disable the user service, run:"
+    echo "    systemctl --user disable --now fnq-monitor.service"
+}
