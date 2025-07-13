@@ -1,6 +1,6 @@
 pkgbase = windowmaker-git
 	pkgdesc = An X11 window manager with a NEXTSTEP look and feel
-	pkgver = 0.95.9.r0.gf9bc310f
+	pkgver = 0.96.0.r14.gda676c9e
 	pkgrel = 1
 	url = http://www.windowmaker.org/
 	arch = i686
@@ -17,12 +17,15 @@ pkgbase = windowmaker-git
 	depends = libxft
 	depends = libwebp
 	depends = libexif
+	depends = perl
 	provides = windowmaker
+	provides = windowmaker-crm
+	provides = windowmaker-crm-git
 	conflicts = windowmaker
+	options = !debug
 	source = windowmaker-git::git://repo.or.cz/wmaker-crm.git
 	source = wmaker.desktop
 	sha256sums = SKIP
 	sha256sums = 126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef
 
 pkgname = windowmaker-git
-

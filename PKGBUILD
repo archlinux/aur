@@ -1,19 +1,21 @@
 # vim: set et sw=2:
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Mike Pento <mjpento@gmail.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-git
-pkgver=0.95.9.r0.gf9bc310f
+pkgver=0.96.0.r14.gda676c9e
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
 license=('GPL' 'custom')
-provides=('windowmaker')
+provides=('windowmaker' 'windowmaker-crm' 'windowmaker-crm-git')
 conflicts=('windowmaker')
+options+=('!debug')
 makedepends=('git')
-depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif')
+depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif' 'perl')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git"
         'wmaker.desktop')
 
