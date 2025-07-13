@@ -16,6 +16,7 @@ pkgbase = gstreamer0.10-base
 	makedepends = libtheora
 	makedepends = pango
 	makedepends = gobject-introspection
+	makedepends = glib2-devel
 	options = !emptydirs
 	source = https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.36.tar.xz
 	source = fix-crash-0-byte-ogg.patch

@@ -11,7 +11,8 @@ pkgrel=13
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 makedepends=('gstreamer0.10>=0.10.36' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 
-             'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection')
+             'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection'
+             'glib2-devel')
 options=(!emptydirs)
 url='http://gstreamer.freedesktop.org/'
 source=("https://gstreamer.freedesktop.org/src/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
