@@ -1,6 +1,6 @@
 # Maintainer: Ho1Ai
 pkgname=in-editor
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="small CLI text editor. Based on ed"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=()
 replaces=()
 source=("in")
-sha256sums=('b83027034cec33b438598a3818dd6d622db4bb00fbf15e853c07742a28b20739')
+sha256sums=('e60bf50e72ce2685bbd4dd244b77aad536689ecc5c19ec50837d689157c1b7f1')
 
 package() {
 	install -Dm755 "$srcdir/in" "$pkgdir/usr/bin/in"
