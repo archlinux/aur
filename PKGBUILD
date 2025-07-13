@@ -6,7 +6,7 @@
 
 pkgname=alttab
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The task switcher for minimalistic window managers or standalone X11 session"
 url="https://github.com/sagb/${pkgname}"
 license=('GPL-3.0-only')
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  /configure --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
