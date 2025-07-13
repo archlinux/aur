@@ -1,6 +1,6 @@
 pkgbase = dccprint-bin
 	pkgdesc = Una herramienta TUI para imprimir archivos en el DCC.
-	pkgver = 0.1.12
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/fgonzalezurriola/dccprint
 	license = GPL-3.0-or-later
@@ -8,13 +8,13 @@ pkgbase = dccprint-bin
 	conflicts = dccprint
 	provides = dccprint
 	arch = aarch64
-	source_aarch64 = https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.12/dccprint_Linux_arm64.tar.gz
-	sha256sums_aarch64 = f27fa7da194b921125d5c029b7b7e0c4dc0ee1e6389098eeba95ed8adb8ae5ae
+	source_aarch64 = https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.1/dccprint_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 540997c13a21173a1c50fe57948fd55c6e963fb79aee22cc97bf002fdd81c7c6
 	arch = i686
-	source_i686 = https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.12/dccprint_Linux_i386.tar.gz
-	sha256sums_i686 = 28d947a5c8aa895e8204773a3997a50d25efcc1e67fdbaaec34d485bd0dff5b1
+	source_i686 = https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.1/dccprint_Linux_i386.tar.gz
+	sha256sums_i686 = 889b5f37c2b82aa7626a8e0aff21b958d2893d3430136c4910a3bf983816ca30
 	arch = x86_64
-	source_x86_64 = https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.12/dccprint_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 98afb20aabb93ed147643695d1362677109f9a36b3ebd4b2428b4cb1dbc18352
+	source_x86_64 = https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.1/dccprint_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4602fbdc813392fb18db3a6fbadf3319c3600a2f82c48b7731dfce9b6cfc02b6
 	
 pkgname = dccprint-bin
