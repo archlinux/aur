@@ -5,7 +5,7 @@ _pkgname="docfd"
 _pkgauthor="darrenldl"
 pkgname="${_pkgname}-bin"
 pkgver=11.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI multiline fuzzy document finder'
 arch=('x86_64' 'aarch64')
 url='https://github.com/darrenldl/docfd'
@@ -28,12 +28,12 @@ source_aarch64=(
   "${_docs[@]}"
 )
 sha256sums_x86_64=('7b781517bf5035eb62fd8b8b8dcc06f25afccafd206b18c2b0285244a225b756'
-                   '324ff79fdd4701ed0c6540e5a88d01d4a7d3eabcdf2895505eee5ab49fe65265'
-                   '8998b5e3388693e68700fda237a4887655a39d1d1d138f7d61414b2391b84d6a'
+                   'ab8fbe17e4aa0f80fed31ffb43a8e68321a6a8d7f9548d23082e86471cde0f45'
+                   'b072284b7104ee9c6546cf0782f2d78e0ca68383d3f2555e173cbb0154dcdab0'
                    '05b43717c1e0f368743f7544e68bc43a2d96a2cd4df4a16190f290cd6e6fb528')
 sha256sums_aarch64=('d324968a4359dd24a51a84ab4e2b992f31bc4aa7e66c1973ad5c7286d2ae13e1'
-                    '324ff79fdd4701ed0c6540e5a88d01d4a7d3eabcdf2895505eee5ab49fe65265'
-                    '8998b5e3388693e68700fda237a4887655a39d1d1d138f7d61414b2391b84d6a'
+                    'ab8fbe17e4aa0f80fed31ffb43a8e68321a6a8d7f9548d23082e86471cde0f45'
+                    'b072284b7104ee9c6546cf0782f2d78e0ca68383d3f2555e173cbb0154dcdab0'
                     '05b43717c1e0f368743f7544e68bc43a2d96a2cd4df4a16190f290cd6e6fb528')
 
 changelog="$pkgname.changelog"
