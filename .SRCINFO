@@ -1,6 +1,6 @@
 pkgbase = r-heatmaply
 	pkgdesc = Interactive Cluster Heat Maps Using 'plotly' and 'ggplot2'
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=heatmaply
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-heatmaply
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyselect
-	source = https://cran.r-project.org/src/contrib/heatmaply_1.5.0.tar.gz
-	sha256sums = aca4dd8b0181aa97969c8c25c73343e294c4d9c24e7cbf52e97fecbed5a92db3
+	source = https://cran.r-project.org/src/contrib/heatmaply_1.6.0.tar.gz
+	sha256sums = 86f2e3cc8c286784af2b211aac855974a40e4f0910ad90343e40694dc4b66fb5
 
 pkgname = r-heatmaply
