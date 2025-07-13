@@ -11,7 +11,7 @@ pkgname=(
 )
 pkgver=3.1
 _srcver=3.0
-pkgrel=14
+pkgrel=15
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=('GPL-2.0-only' 'LicenseRef-custom')
@@ -22,12 +22,14 @@ source=(
   "http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_${_srcver}.orig.tar.gz"
   "https://wordnetcode.princeton.edu/wn${pkgver}.dict.tar.gz"
   wordnet.desktop
-  wordnet.png)
+  wordnet.png
+  wordnet-dictd.install)
 sha256sums=('0e3001b38c6f77aaa276deff6276c9bbcb31dd17f32a9d2ee30e806bb4315c6e'
             '73572005ef8eb15be48ea1010d18082b80bfbf8684b78ce64bc3abf11db1f95f'
             '3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a'
             '10a4011b3d9705b2b0a1f496b33d926d4be21439c63f039b871d93f2d143ed0c'
-            '9ab9f761a3fabd278fd05d755fec8a403874f899d7e40347f1da48bf93a67e97')
+            '9ab9f761a3fabd278fd05d755fec8a403874f899d7e40347f1da48bf93a67e97'
+            '6b6f7a11e781635e015da79cb8828d691073b6ae28f9b08c2065f3f3bd7a9f5f')
 
 prepare() {
   find . -type d -exec chmod 755 {} + && find . -type f -exec chmod 644 {} +
@@ -64,6 +66,7 @@ package_wordnet-dictd() {
   provides=(dict-wn)
   conflicts=(dict-wn)
   license=('GPL-2.0-only' 'LicenseRef-custom')
+  install=${pkgname}.install
   cd "${srcdir}/WordNet-${_srcver}"
   install -Dm644 contrib/wordnet_structures/wn.{dict.dz,index} -t "${pkgdir}"/usr/share/dictd/
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
