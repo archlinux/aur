@@ -1,0 +1,6 @@
+post_install() {
+  if [ -f /usr/bin/voix ]; then
+    chmod u+s /usr/bin/voix
+  fi
+  echo -e "\n[voix] Ensure /etc/pam.d/voix is correct. Review any .pacnew files after upgrades.\n"
+}
