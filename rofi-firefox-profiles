@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import configparser
+from pathlib import Path
+
+dbg_temp = CONFIG_PATH = Path.home() / "MyCode" / "python" / "rofi-firefox-profiles" / "config.ini"
+
+CONFIG_PATH = Path.home() / ".config" / "rofi-fox" / "config.ini"
+# CONFIG_PATH = dbg_temp
+
+
+def debug_log(debug, message):
+    if debug:
+        print(f"[DEBUG] {message}")
+
+def load_config(config_path):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+
+    settings = config['Settings']
+    profile_ini = os.path.expanduser(settings.get('profile_search_path', '~/.mozilla/firefox/profiles.ini'))
+    browser = settings.get('browser_command', 'firefox')
+    rofi_theme = os.path.expanduser(settings.get('rofi_theme', ''))
+    debug = settings.getboolean('debug', fallback=False)
+
+    return profile_ini, browser, rofi_theme, debug
+
+def parse_profiles_ini(ini_path, debug=False):
+    config = configparser.RawConfigParser()
+    config.read(ini_path)
+
+    profiles = []
+    for section in config.sections():
+        if section.startswith("Profile"):
+            profile = {
+                "name": config.get(section, "Name", fallback=""),
+                "path": config.get(section, "Path", fallback=""),
+                "is_relative": config.getboolean(section, "IsRelative", fallback=True)
+            }
+            profiles.append(profile)
+            debug_log(debug, f"Parsed profile: {profile}")
+    return profiles
+
+def resolve_profile_paths(profiles, base_dir, debug=False):
+    for profile in profiles:
+        if profile["is_relative"]:
+            old_path = profile["path"]
+            profile["path"] = os.path.abspath(os.path.join(base_dir, profile["path"]))
+            debug_log(debug, f"Resolved relative path: {old_path} → {profile['path']}")
+    return profiles
+
+def show_rofi_menu(profiles, theme, debug=False):
+    profile_names = "\n".join(profile['name'] for profile in profiles)
+    cmd = ['rofi', '-dmenu', '-p', 'Select Firefox Profile']
+    if theme:
+        cmd.extend(['-theme', theme])
+
+    debug_log(debug, f"Running rofi with command: {' '.join(cmd)}")
+    debug_log(debug, f"Profile options passed to rofi:\n{profile_names}")
+
+    try:
+        result = subprocess.run(
+            cmd,
+            input=profile_names,
+            text=True,
+            capture_output=True
+        )
+        selection = result.stdout.strip()
+        debug_log(debug, f"Rofi returned selection: {selection}")
+        return selection if selection else None
+    except FileNotFoundError:
+        print("Rofi is not installed or not in PATH.")
+        return None
+
+def launch_browser_with_profile(browser_cmd, profile_name, debug=False):
+    debug_log(debug, f"Launching browser: {browser_cmd} -P {profile_name}")
+    try:
+        subprocess.Popen([browser_cmd, '-P', profile_name])
+    except FileNotFoundError:
+        print(f"{browser_cmd} is not installed or not in PATH.")
+
+def main():
+    if not CONFIG_PATH.exists():
+        print(f"Config file not found at {CONFIG_PATH}")
+        return
+
+    ini_path, browser_cmd, rofi_theme, debug = load_config(CONFIG_PATH)
+    ini_path = Path(ini_path)
+
+    debug_log(debug, f"Using profiles.ini at: {ini_path}")
+    debug_log(debug, f"Browser command: {browser_cmd}")
+    debug_log(debug, f"Rofi theme path: {rofi_theme}")
+
+    if not ini_path.exists():
+        print("profiles.ini not found. Is Firefox installed?")
+        return
+
+    profiles = parse_profiles_ini(ini_path, debug)
+    profiles = resolve_profile_paths(profiles, ini_path.parent, debug)
+
+    selected_profile = show_rofi_menu(profiles, rofi_theme, debug)
+    if selected_profile:
+        launch_browser_with_profile(browser_cmd, selected_profile, debug)
+    else:
+        print("No profile selected.")
+
+if __name__ == "__main__":
+    main()
