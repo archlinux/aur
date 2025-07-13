@@ -4,17 +4,25 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.29.0.r0.g4a74f3b
+pkgver=0.30.1.r0.g41111b9
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/${_pkgname}launcher"
 license=('LicenseRef-Albert')
-depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg' 'qtkeychain-qt6')
-makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python' 'qt6-tools')
-optdepends=('ddgr: duckduckgo search plugin'
-	'libarchive: documentation plugin'
-	'libqalculate: calculator plugin')
+depends=(
+	'libqalculate'
+	'python'
+	'python-pip'
+	'qt6-base'
+	'qt6-declarative'
+	'qt6-5compat'
+	'qt6-scxml'
+	'qt6-shadertools'
+	'qt6-svg'
+	'qtkeychain-qt6'
+)
+makedepends=('git' 'cmake' 'qt6-tools')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+${url}/${_pkgname}.git"
@@ -50,8 +58,10 @@ source=("git+${url}/${_pkgname}.git"
 	"git+${url}/${_pkgname}-plugin-widgetsboxmodel-qss.git"
 	"git+${url}/${_pkgname}-plugin-widgetsboxmodel.git"
 	"git+${url}/python.git"
+	"git+https://github.com/pybind/pybind11.git"
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -128,40 +138,21 @@ prepare() {
 	git config submodule.plugins/widgetsboxmodel.url "${srcdir}/${_pkgname}-plugin-widgetsboxmodel/"
 	git -c protocol.file.allow=always submodule update
 
-	cd plugins/python/
-	git rm pybind11
+	cd plugins/python
 	git submodule init
+	git config submodule.pybind11.url "${srcdir}/pybind11/"
 	git config submodule.plugins.url "${srcdir}/python/"
 	git -c protocol.file.allow=always submodule update
-
-	sed -i 's/add_subdirectory(pybind11)/find_package(pybind11 REQUIRED)/' CMakeLists.txt
 }
 
 build() {
-	cmake -B build -S "${_pkgname}" \
+	cmake -B build \
+		-S "${_pkgname}" \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
-		-DQHOTKEY_INSTALL=OFF \
-		-DBUILD_APPLICATIONS_XDG=ON \
-		-DBUILD_CALCULATOR_QALCULATE=ON \
-		-DBUILD_CHROMIUM=ON \
-		-DBUILD_CLIPBOARD=ON \
-		-DBUILD_DATETIME=ON \
-		-DBUILD_DEBUG=OFF \
-		-DBUILD_FILES=ON \
-		-DBUILD_HASH=ON \
-		-DBUILD_PYTHON=ON \
-		-DBUILD_QMLBOXMODEL=ON \
-		-DBUILD_SNIPPETS=ON \
-		-DBUILD_SSH=ON \
-		-DBUILD_SYSTEM=ON \
-		-DBUILD_TEMPLATE=OFF \
-		-DBUILD_TERMINAL=ON \
-		-DBUILD_URLHANDLER=ON \
-		-DBUILD_WEBSEARCH=ON \
-		-DBUILD_WIDGETSBOXMODEL=ON
+		-DQHOTKEY_INSTALL=OFF
 
 	cmake --build build
 }
