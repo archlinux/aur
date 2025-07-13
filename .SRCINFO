@@ -1,12 +1,18 @@
 pkgbase = dnsinspector-dnsproxy
-	pkgdesc = Go PKGBUILD Example
+	pkgdesc = A Proxy server for DNS over HTTP, TLS, and QUIC
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/dns-inspector/dnsproxy
-	arch = x86_64
+	install = dnsinspector-dnsproxy.install
+	arch = any
 	license = GPL
 	makedepends = go
-	source = https://github.com/dns-inspector/dnsproxy/archive/refs/tags/{pkgver}.tar.gz
+	conflicts = dnsproxy
+	source = https://github.com/dns-inspector/dnsproxy/archive/refs/tags/1.1.0.tar.gz
+	source = dnsinspector-dnsproxy.service
+	source = dnsinspector-dnsproxy.sysusers
 	sha256sums = 6ee2dafd17d66c48272c29749e88d750ebc1663df9f2b5c4f071c1228aabc2f9
+	sha256sums = aa1881d1abaa0699a6e574e6711f28b7ba7fd2aa3e5e0322324af00a8ab079ae
+	sha256sums = 788d5d7d961cc16fa2d4b354b5759aed7909765712d776db109a8af1f07ec5b8
 
 pkgname = dnsinspector-dnsproxy
