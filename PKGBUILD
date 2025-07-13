@@ -8,28 +8,26 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-icu
-pkgver=76.1
+pkgver=77.1
 pkgrel=1
 arch=('any')
 pkgdesc="International Components for Unicode library (Android ${_android_arch})"
 groups=('android-icu')
 depends=('android-ndk')
 makedepends=('android-environment'
-             'autoconf-archive')
+             'autoconf-archive'
+             'patchelf')
 options=(!strip !buildflags staticlibs !emptydirs)
 license=('custom')
 url="https://icu.unicode.org/"
 source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"
         "0001-Unversioned-libs.patch")
-md5sums=('857fdafff8127139cc175a3ec9b43bd6'
-         '47ed468f22e2c16909505253f16e0da5')
+md5sums=('bc0132b4c43db8455d2446c3bae58898'
+         '773c68c8408a5208c279babcaa9c6816')
 
 prepare() {
-    cd "${srcdir}/icu"
+    cd "${srcdir}/icu/source"
 
-    patch -p1 -i ../0001-Unversioned-libs.patch
-
-    cd source
     autoreconf -fi
 }
 
@@ -59,8 +57,9 @@ build() {
         --enable-static \
         --with-cross-build="${PWD}/nativebuild" \
         --with-data-packaging=library \
-        --disable-rpath \
         --enable-release \
+        --disable-renaming \
+        --disable-rpath \
         --disable-extras \
         --disable-tools \
         --disable-tests \
@@ -77,4 +76,10 @@ package() {
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
+
+    # Fix the libraries soname
+
+    for f in $(ls "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so); do
+        patchelf --set-soname $(basename "$f") "$f"
+    done
 }
