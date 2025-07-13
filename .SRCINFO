@@ -1,5 +1,5 @@
 pkgbase = chromium-ffmpeg-codecs
-	pkgdesc = Add codecs to Chromium M136- (non vendored libffmpeg.so)
+	pkgdesc = Add codecs to Chromium M137- (non vendored ffmpeg)
 	pkgver = 7.1.1.m136_134
 	pkgrel = 2
 	url = https://ffmpeg.org/

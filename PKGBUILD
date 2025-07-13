@@ -1,10 +1,10 @@
 
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
-pkgver=${_ffver}.m136_134
-pkgrel=2
+pkgver=${_ffver}.m136_134 # update to m137_ at next rel
+pkgrel=2 # drop at next rel
 _so=libffmpeg.so
-pkgdesc="Add codecs to Chromium M136- (non vendored ${_so})"
+pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('LGPL-2.1-or-later')
