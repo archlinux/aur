@@ -1,0 +1,11 @@
+pkgbase = m
+	pkgdesc = a tiny and fast bash-based text editing tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/m
+	arch = any
+	license = MIT
+	source = m
+	md5sums = SKIP
+
+pkgname = m
