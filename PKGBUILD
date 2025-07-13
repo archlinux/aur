@@ -1,6 +1,8 @@
+# Maintainer: kdh8219 <kdh8219@monamo.dev>
+
 pkgname=rapidraw-bin
 pkgdesc="A beautiful, non-destructive, and GPU-accelerated RAW image editor built with performance in mind."
-pkgver=1.2.4
+pkgver=1.2.45
 pkgrel=1
 arch=('x86_64')
 url=https://github.com/CyberTimon/RapidRAW
@@ -15,7 +17,7 @@ source=(
     "https://github.com/CyberTimon/RapidRAW/releases/download/v${pkgver}/${_debfile}"
 )
 sha256sums=(
-    "b7fa5dc8a0009f2805b3a2bb3ca2087dd8457d2bd7c6ee581a063016e143801b"
+    "c0ac41f079fd6a9a22e674a3578fa2ba5221f08980c08f5f7e149ae3041f3fba"
 )
 
 prepare() {
