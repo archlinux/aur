@@ -42,16 +42,15 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition $LTOFLAGS" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
     --prefix="${srcdir}"/release
 
   make install
-  #_symbols=$(cat chromium/ffmpeg.sigs | grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  _symbols=$(cat chromium/ffmpeg.sigs | grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
+    lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
 
