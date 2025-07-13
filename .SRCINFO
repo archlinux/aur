@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin-beta-bin
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 12.0.0_beta.17
+	pkgver = 12.0.0_beta.18
 	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -38,12 +38,12 @@ pkgbase = firedragon-catppuccin-beta-bin
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	source = https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v12.0.0-beta.17/assets/firedragon.desktop
+	source = https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v12.0.0-beta.18/assets/firedragon.desktop
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
 	sha256sums = 53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560
-	source_x86_64 = firedragon-catppuccin-v12.0.0-beta.17-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17/downloads/firedragon-catppuccin-linux-x64.tar.xz
-	sha256sums_x86_64 = cf6b126e2d733b701836a9b6671bbc5d54ef62c07d280eecb416534247bf0051
-	source_aarch64 = firedragon-catppuccin-v12.0.0-beta.17-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17/downloads/firedragon-catppuccin-linux-arm64.tar.xz
-	sha256sums_aarch64 = 603f42f9670c64363ede205f5042eacba49377e3c44811627ba37177bd7ee219
+	source_x86_64 = firedragon-catppuccin-v12.0.0-beta.18-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18/downloads/firedragon-catppuccin-linux-x64.tar.xz
+	sha256sums_x86_64 = 610fb6d274be1e55076c8d1ad7fc5767279e1204cf20d8e45c01fbae1cb568b8
+	source_aarch64 = firedragon-catppuccin-v12.0.0-beta.18-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18/downloads/firedragon-catppuccin-linux-arm64.tar.xz
+	sha256sums_aarch64 = 37e20bf9a0cfa3569bb0b3bae8bad32a6cb236daa0e202735ff2c04275b31228
 
 pkgname = firedragon-catppuccin-beta-bin

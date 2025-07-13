@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=12.0.0-beta.17
+_pkgver=12.0.0-beta.18
 
 pkgname=${_pkgname}-catppuccin-beta-bin
 pkgver=${_pkgver//-/_}
@@ -61,9 +61,9 @@ sha256sums=(
   '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
 )
 source_x86_64=(firedragon-catppuccin-v${_pkgver}-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${_pkgver}/downloads/firedragon-catppuccin-linux-x64.tar.xz)
-sha256sums_x86_64=('cf6b126e2d733b701836a9b6671bbc5d54ef62c07d280eecb416534247bf0051')
+sha256sums_x86_64=('610fb6d274be1e55076c8d1ad7fc5767279e1204cf20d8e45c01fbae1cb568b8')
 source_aarch64=(firedragon-catppuccin-v${_pkgver}-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${_pkgver}/downloads/firedragon-catppuccin-linux-arm64.tar.xz)
-sha256sums_aarch64=('603f42f9670c64363ede205f5042eacba49377e3c44811627ba37177bd7ee219')
+sha256sums_aarch64=('37e20bf9a0cfa3569bb0b3bae8bad32a6cb236daa0e202735ff2c04275b31228')
 
 package() {
   cd "${srcdir}/${_pkgname}"
