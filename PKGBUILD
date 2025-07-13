@@ -1,15 +1,15 @@
 # Maintainer: Sebastian Westberg <sebastian@westberg.io>
 pkgname=termr
-pkgver=1.0.0
+pkgver=$(python -c "import sys; sys.path.append('../..'); from termr.version import __version__; print(__version__)")
 pkgrel=1
 pkgdesc="Terminal-based radio player with TUI"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/Hibbins/termr"
 license=('MIT')
-depends=('python>=3.10' 'vlc' 'python-textual' 'python-requests' 'python-rich')
+depends=('python>=3.10' 'vlc' 'python-textual' 'python-requests' 'python-rich' 'python-installer')
 makedepends=('python-setuptools' 'python-wheel' 'python-build')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Hibbins/termr/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('ef052dac6d38f58fed794a44129761dc6c89f882c8e842e6a4bee9a0e7c08714')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -19,6 +19,30 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    
+    # Find and move termr script to correct location
+    if [ -f "$pkgdir/usr/local/bin/termr" ]; then
+        install -Dm755 "$pkgdir/usr/local/bin/termr" "$pkgdir/usr/bin/termr"
+        rm "$pkgdir/usr/local/bin/termr"
+    fi
+    if [ -f "$pkgdir/bin/termr" ]; then
+        install -Dm755 "$pkgdir/bin/termr" "$pkgdir/usr/bin/termr"
+        rm "$pkgdir/bin/termr"
+    fi
+    if [ -f "$pkgdir/sbin/termr" ]; then
+        install -Dm755 "$pkgdir/sbin/termr" "$pkgdir/usr/bin/termr"
+        rm "$pkgdir/sbin/termr"
+    fi
+    if [ -f "$pkgdir/usr/sbin/termr" ]; then
+        install -Dm755 "$pkgdir/usr/sbin/termr" "$pkgdir/usr/bin/termr"
+        rm "$pkgdir/usr/sbin/termr"
+    fi
+    
+    # Ensure the script exists in /usr/bin
+    if [ ! -f "$pkgdir/usr/bin/termr" ]; then
+        echo "Warning: termr script not found in expected locations"
+        exit 1
+    fi
     
     # Create man page
     install -Dm644 "$srcdir/$pkgname-$pkgver/termr.1" "$pkgdir/usr/share/man/man1/termr.1"
