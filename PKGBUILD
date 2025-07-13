@@ -1,7 +1,7 @@
 # Maintainer: Dae <daedaevibin@naver.com>
 pkgname=voix
 pkgver=0.0.16b
-pkgrel=4
+pkgrel=5
 install=voix.install
 pkgdesc="A privilege escalation tool replacing sudo/doas/sudo-rs, using PAM for authentication - WILL REPLACE SUDO!!"
 arch=('x86_64')
@@ -9,8 +9,9 @@ url="https://github.com/Veridian-Zenith/Voix"
 license=('AGPL-3.0-or-later' 'VCL-1.0')
 depends=('pam')
 makedepends=('cmake' 'gcc' 'make' 'pkgconf')
-replaces=('sudo')
-conflicts=('sudo')
+provides=('sudo' 'doas')
+replaces=('sudo' 'doas')
+conflicts=('sudo' 'doas' 'sudo-rs-symlink')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1d6387beedec95a242cedaf3dfedaa2af58c2b34fc96820be3247f39f2cb1164')
 
@@ -20,8 +21,7 @@ build() {
   cmake --build build
 }
 
-backup=('etc/pam.d/voix')
-backup=('etc/voix/config/lua')
+backup=('etc/pam.d/voix' 'etc/voix/config.lua')
 
 package() {
   cd "Voix-${pkgver}/src"
