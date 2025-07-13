@@ -1,5 +1,5 @@
 pkgname=m
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="a tiny and fast bash-based text editing tool"
 arch=('any')

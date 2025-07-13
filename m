@@ -12,7 +12,7 @@ check() {
 
 delfile() {
     load
-    echo 'ohshit: r u sure u want to delete? (y/n)'
+    echo 'm: are you sure you want to delete? (y/n)'
     read answer
     if [[ "$answer" == "y" ]]; then
         rm "$file" && echo "m: deleted!"
@@ -45,7 +45,7 @@ dl() {
 }
 
 help() {
-    echo "welcome to M-Write! this is a lightweight quick text editor i made as a little joke."
+    echo "welcome to M! this is a lightweight and easy text editor."
     echo "commands:"
     echo ""
     echo "m-define: defines a file path to save to."
@@ -61,6 +61,7 @@ help() {
     echo "m-check: outputs the file's contents."
     echo "" 
     echo "m-dl: deletes the last line."
+    echo ""
     echo "m-delfile: deletes the entire file."
     echo ""
     echo "m-watch: live outputs the file. refreshes every second. use in another shell window."
