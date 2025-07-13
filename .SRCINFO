@@ -1,16 +1,12 @@
 pkgbase = hypr-windowrulex
 	pkgdesc = ✨ Enhances Hyprland window management by applying float, size, and move adjustments to dynamic title changes.
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/xeyossr/hypr-windowrulex
 	arch = x86_64
 	license = GPL3
-	makedepends = python
-	makedepends = python-pip
-	makedepends = python-virtualenv
-	makedepends = upx
-	makedepends = gcc
-	source = hypr-windowrulex-0.1.0.tar.gz::https://github.com/xeyossr/hypr-windowrulex/archive/refs/tags/v0.1.0.tar.gz
+	makedepends = go
+	source = hypr-windowrulex-1.0.0.tar.gz::https://github.com/xeyossr/hypr-windowrulex/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = hypr-windowrulex
