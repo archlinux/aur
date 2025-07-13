@@ -1,0 +1,12 @@
+pkgbase = dnsinspector-dnsproxy
+	pkgdesc = Go PKGBUILD Example
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/dns-inspector/dnsproxy
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://github.com/dns-inspector/dnsproxy/archive/refs/tags/{pkgver}.tar.gz
+	sha256sums = 6ee2dafd17d66c48272c29749e88d750ebc1663df9f2b5c4f071c1228aabc2f9
+
+pkgname = dnsinspector-dnsproxy

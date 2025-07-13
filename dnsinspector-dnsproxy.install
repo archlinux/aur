@@ -1,0 +1,5 @@
+post_install() {
+ echo ">> Before Enabling dnsproxy.service copy /etc/dnsproxy/dnsproxy.conf.example"
+ echo ">> to /etc/dnsproxy/dnsproxy.conf and edit the configuration with your certificate,"
+ echo ">> resolver, and other configuration"
+}
