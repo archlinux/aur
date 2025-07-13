@@ -1,6 +1,6 @@
 diff '--color=auto' -Naur src/traccar.new/setup/package.sh src/traccar/setup/package.sh
-+++ src/traccar/setup/package.sh	2025-07-13 11:53:35.801892538 +0200
---- src/traccar.new/setup/package.sh	2025-07-13 11:52:51.700381500 +0200
+--- src/traccar.new/setup/package.sh	2025-07-13 13:02:45.152131135 +0200
++++ src/traccar/setup/package.sh	2025-07-13 13:03:40.201699198 +0200
 @@ -67,9 +67,6 @@
  if [ $PLATFORM = "all" -o $PLATFORM = "linux-64" -o $PLATFORM = "linux-arm" ]; then
    check_requirement "Makeself" "which makeself" "Missing makeself binary"
@@ -11,7 +11,7 @@ diff '--color=auto' -Naur src/traccar.new/setup/package.sh src/traccar/setup/pac
  if [ $PLATFORM = "all" -o $PLATFORM = "linux-arm" ]; then
    check_requirement "Linux ARM Java" "ls OpenJDK*aarch64_linux*.tar.gz" "Missing Linux ARM JDK (https://adoptium.net/)"
  fi
-@@ -131,17 +128,12 @@
+@@ -131,17 +128,11 @@
    cp setup.sh out
    cp traccar.service out
 
@@ -19,7 +19,7 @@ diff '--color=auto' -Naur src/traccar.new/setup/package.sh src/traccar/setup/pac
    jlink --module-path jdk-*/jmods --add-modules java.se,jdk.charsets,jdk.crypto.ec,jdk.unsupported --output out/jre
    rm -rf jdk-*
    makeself --needroot --quiet --notemp out traccar.run "traccar" ./setup.sh
-   rm -rf out/jre
+-  rm -rf out/jre
 
    zip -q -j traccar-linux-$1-$VERSION.zip traccar.run README.txt
 -
@@ -29,7 +29,7 @@ diff '--color=auto' -Naur src/traccar.new/setup/package.sh src/traccar/setup/pac
  }
 
  package_linux_64 () {
-@@ -183,6 +175,4 @@
+@@ -183,6 +174,4 @@
  	;;
  esac
 
