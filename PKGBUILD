@@ -1,7 +1,7 @@
 pkgname='python-daal'
 _module='daal'
 _src_folder='daal-2025.7.0'
-pkgver='2025.y.0'
+pkgver='2025.7.0'
 pkgrel=1
 pkgdesc="Intel® oneAPI Data Analytics Library"
 url="https://www.intel.com/content/www/us/en/developer/tools/oneapi/onedal.html"
