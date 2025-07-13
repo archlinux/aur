@@ -2,8 +2,8 @@
 
 pkgname=xremap-kde
 _pkgname=xremap
-pkgver=0.10.8
-_pkgver=0.10.8
+pkgver=0.10.13
+_pkgver=0.10.13
 pkgrel=1
 pkgdesc="Key remapper for X11 and Wayland - KDE Edition"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=('xremap')
 
 source=("$_pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$_pkgname/$_pkgname-$_pkgver.crate"
         )
-sha256sums=('ed89c0968cb8e2d79e7257478798dedb1dbb59330bbb20aa3c0ca767081d327a')
+sha256sums=('e944e63d28c9f1f5e2b6555b25f3708b71a16f1e5abbe69aa36e9d56cc981a4b')
 
 prepare() {
     cd "$srcdir/$_pkgname-$_pkgver/"
