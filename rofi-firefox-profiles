@@ -7,7 +7,7 @@ from pathlib import Path
 
 dbg_temp = CONFIG_PATH = Path.home() / "MyCode" / "python" / "rofi-firefox-profiles" / "config.ini"
 
-CONFIG_PATH = Path.home() / ".config" / "rofi-fox" / "config.ini"
+CONFIG_PATH = Path("/etc/rofi-firefox-profiles/config.ini")
 # CONFIG_PATH = dbg_temp
 
 
