@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <dkiziridis at outlook dot com>
 
 pkgname=tartube
-pkgver=2.5.100
+pkgver=2.5.145
 pkgrel=1
 pkgdesc='A GUI front-end for youtube-dl, yt-dlp and other compatible video downloaders'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=('aria2: external downlader for youtube-dl'
             'streamlink: support for downloading livestreams')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('211dd409a94e230008fcacfbdfae90099472360a1b9eb073096d5f2a553f9cc9')
+sha256sums=('35e9675b0cb08131e6d495136d69188abf940ecd484821e754d65cc4e8e05ebd')
 
 build() {
   cd "${pkgname}-${pkgver}"
