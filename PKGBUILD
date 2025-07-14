@@ -3,8 +3,8 @@
 
 _appname=dragonfly
 pkgname=${_appname}-bin
-pkgver=1.29.0
-pkgrel=2
+pkgver=1.31.1
+pkgrel=1
 pkgdesc="Dragonfly is a modern in-memory datastore, fully compatible with Redis and Memcached APIs"
 arch=("x86_64" "aarch64")
 url="https://dragonflydb.io/"
@@ -17,7 +17,7 @@ source=("https://github.com/dragonflydb/${_appname}/releases/download/v${pkgver}
         "${_appname}.service"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles")
-sha256sums=('f123c1217eeacba5d5ca2ee7e87ac76bb104c4f6f9cb2e9374e804176d737bc9'
+sha256sums=('326b63f76aa66a831b46e5906bdf35e0bc655eabdc4f2c445095b61cb987f0d4'
             '148d8c6c9981b82f66f3c53f3a6f99b4190fe47fe35db6303d0f28bfe2ade547'
             '438e9e6c26949735bee90df63da748c70fc948199031084c8fdae86ac6e7b7ab'
             'ac7e5bfbf6e33de1140e1804374ca1e01c2b86215daf75b532d00bcdc04355ee'
