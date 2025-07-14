@@ -3,7 +3,7 @@
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.9.7
+pkgver=4.9.7   # github.com/gambit/gambit/releases/latest
 pkgrel=1
 pkgdesc='Efficient implementation of the Scheme programming language'
 arch=(x86_64)
@@ -30,5 +30,3 @@ build() {
 package() {
   make -C ${_srcname} install DESTDIR="$pkgdir"
 }
-
-# getver: github.com/gambit/gambit/releases/latest
