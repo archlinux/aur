@@ -21,7 +21,8 @@ prepare() {
 build() {
     cd "${srcdir}/source"
     yarn build
-    zip addon.zip -r dist/
+    cd dist
+    zip ../addon.zip -r .
 }
 
 package_firefox-extension-violentmonkey() {
