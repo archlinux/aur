@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Westberg <sebastian@westberg.io>
 pkgname=termr
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Terminal-based radio player with TUI"
 arch=('x86_64' 'i686' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python>=3.10' 'vlc' 'python-textual' 'python-requests' 'python-rich')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Hibbins/termr/archive/v$pkgver.tar.gz")
-sha256sums=('ef052dac6d38f58fed794a44129761dc6c89f882c8e842e6a4bee9a0e7c08714')
+sha256sums=('a2471e6b81b8a8b7d5c8fc96be724dbcd43e242d63a94c39fb2a87b89e5b0c85')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
