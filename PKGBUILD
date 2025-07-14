@@ -1,15 +1,15 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A multi-platform launcher for your anime games"
 arch=('x86_64')
 url="https://github.com/TwintailTeam/TwintailLauncher"
 license=('GPL-3.0-only')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'hdiffpatch')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1')
 options=('!debug')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
-sha256sums=('87efd5ba5d8f37a92a8e4580304446092519433880d66cbd0da2dadb27c3ea58')
+sha256sums=('f9d628131bbe53e656ba2971d9ef03e3b90754dec7f8912f40c6a2b087b2784a')
 
 build() {
   bsdtar -x -f data.tar.gz
