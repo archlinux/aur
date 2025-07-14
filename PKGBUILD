@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.16.13
+pkgver=3.16.14
 pkgrel=1
 pkgdesc="A program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
@@ -66,6 +66,7 @@ depends=(
     "python-pyrss2gen"
     "python-pytz"
     "python-pyyaml"
+    "python-pyzstd"
     "python-rebulk"
     "python-referencing"
     "python-requests"
@@ -85,7 +86,6 @@ depends=(
     "python-webencodings"
     "python-werkzeug"
     "python-zc.lockfile"
-    "python-zstandard"
     "python-zxcvbn"
 )
 makedepends=('python-build' 'python-hatchling' 'python-installer')
@@ -104,7 +104,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('b71f7a5d78d85928d9c48d179815d909ecb49a01b8dffbadd93bfb5c95b1edf9'
+sha256sums=('02b3ee9adf07d7f2f0ca8bee51e45e144a7889e0c87e62bbf2e868c7d9775037'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
