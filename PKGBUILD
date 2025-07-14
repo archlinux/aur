@@ -7,8 +7,7 @@ url="https://github.com/kayemaye/m"
 license=('MIT')
 depends=()
 source=("https://github.com/kayemaye/m/releases/download/v2.0/m")
-sha256sums=('d71f8591b7b9c16b6faba5e3971248b288eb205bb7ad9fe87acc58b77664a5b')
-
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 # sorry envolution. first time on the AUR, didnt know to do this stuff. thanks.
 # BUT, my package is useful tho? like read the pkgdesc dude???
 
