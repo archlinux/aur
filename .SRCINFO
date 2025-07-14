@@ -1,0 +1,13 @@
+pkgbase = pallene-tracer
+	pkgdesc = Allows Lua libraries written in C to have proper function tracebacks, without changing a single code in Lua
+	pkgver = 0.5.0a
+	pkgrel = 1
+	url = https://github.com/pallene-lang/pallene-tracer
+	arch = x86_64
+	license = MIT
+	checkdepends = busted
+	depends = pallene-lua
+	source = pallene-tracer::git+https://github.com/pallene-lang/pallene-tracer --depth 1 --branch 0.5.0a
+	sha256sums = SKIP
+
+pkgname = pallene-tracer
