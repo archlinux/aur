@@ -2,7 +2,7 @@
 _pkgname=wenku
 pkgname="baidu${_pkgname}-bin"
 _zhsname='百度文库'
-pkgver=3.3.1
+pkgver=3.4.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台"
@@ -32,7 +32,7 @@ source=(
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('27a2bb2e3970ad92a3e65e515174d033cab7d0f158add13b9d10da5cbac2824d'
+sha256sums=('f8e33293cd48a0b093c67a26919c7cc0df889e09aca85497ef9968b7fbc48154'
             'eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
