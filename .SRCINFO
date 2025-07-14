@@ -1,6 +1,6 @@
 pkgbase = ollama-amd-igpu
 	pkgdesc = Create, run and share large language models (LLMs)
-	pkgver = 0.9.6.rc0
+	pkgver = 0.9.7.rc0
 	pkgrel = 1
 	url = https://github.com/Crandel/ollama-amd-igpu
 	arch = x86_64
