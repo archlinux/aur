@@ -1,6 +1,6 @@
 # Maintainer: Dimitri V. Pekarovsky <dimitri dot pekarovsky snail gmail dot com>
 pkgname=postgresql-plsh
-pkgver=1.20140221
+pkgver=1.20220917.r6.gd880796
 pkgrel=1
 epoch=
 pkgdesc="PL/sh language for Postgresql database"
@@ -9,7 +9,7 @@ url="https://github.com/petere/plsh"
 license=('MIT')
 groups=()
 depends=('postgresql-libs' 'postgresql')
-makedepends=('make')
+makedepends=('make' 'clang' 'llvm')
 checkdepends=()
 optdepends=()
 provides=('postgresql-plsh')

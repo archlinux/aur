@@ -1,6 +1,6 @@
 pkgbase = postgresql-plsh
 	pkgdesc = PL/sh language for Postgresql database
-	pkgver = 1.20140221
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/petere/plsh
 	arch = x86_64
