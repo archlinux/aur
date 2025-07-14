@@ -1,0 +1,13 @@
+pkgbase = pam-duress
+	pkgdesc = "PAM module for duress user password"
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = "https://github.com/nuvious/pam-duress"
+	arch = any
+	license = LGPL-3.0
+	makedepends = openssl
+	makedepends = make
+	source = https://github.com/nuvious/pam-duress/archive/04e607f9ab674c8dbbf27ea8bb59158178a72f69.zip
+	sha256sums = 504fb984af3fa469cb7d0a59af456be483e9514d69f8e7bb64010e98db406de6
+
+pkgname = pam-duress
