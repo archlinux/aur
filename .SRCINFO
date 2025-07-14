@@ -1,13 +1,13 @@
 pkgbase = kuzu-bin
 	pkgdesc = In-process property graph database management system (GDBMS) built for query speed and scalability
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://kuzudb.com
 	arch = x86_64
 	license = MIT
-	source = kuzu-bin-v0.10.0.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v0.10.0/kuzu_cli-linux-x86_64.tar.gz
-	source = libkuzu-bin-v0.10.0.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v0.10.0/libkuzu-linux-x86_64.tar.gz
-	sha256sums = 1d38995bb1503e9d8372cfe98ec3bbe3f77029d838c4f01d320ecd11df368cd4
-	sha256sums = 898ab5639b21a891a56e5962108679dce5deeed06db9559a9a0974e386ee7640
+	source = kuzu-bin-v0.11.0.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v0.11.0/kuzu_cli-linux-x86_64.tar.gz
+	source = libkuzu-bin-v0.11.0.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v0.11.0/libkuzu-linux-x86_64.tar.gz
+	sha256sums = e465db592a3c77b16ca58b7e95b03a44b6637a53a70f94907fb29590f754d52d
+	sha256sums = 94b7667628d861d9232d941549b7caa767065644aeda2dd42c24db4bbd273144
 
 pkgname = kuzu-bin
