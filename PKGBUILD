@@ -13,7 +13,7 @@ provides=('sudo' 'doas')
 replaces=('sudo' 'doas')
 conflicts=('sudo' 'doas' 'sudo-rs-symlink')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1d6387beedec95a242cedaf3dfedaa2af58c2b34fc96820be3247f39f2cb1164')
+sha256sums=('453171912bdad2b89f4e38866359bb6c7a37a430ff4f12b9274cbcfae4be8e50')
 
 build() {
   cd "Voix-${pkgver}/src"
