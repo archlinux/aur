@@ -25,8 +25,8 @@ package() {
   tar -xpf data.tar.xz -C "$pkgdir"
 
   # 需要改到root，不上无法打印
-  sudo chown root:root /usr/lib/cups/filter/pdftodspdfpin
-  sudo chown root:root /usr/lib/cups/filter/rastertodascom
+  chown root:root "$pkgdir/usr/lib/cups/filter/pdftodspdfpin"
+  chown root:root "$pkgdir/usr/lib/cups/filter/rastertodascom"
 
   # 清理临时文件
   rm -f control.tar.xz data.tar.xz debian-binary
