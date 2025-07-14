@@ -2,7 +2,7 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=rakarrack-plus
-pkgver=1.2.7
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Guitar Effects Processor'
 arch=(x86_64 aarch64)
@@ -15,20 +15,21 @@ optdepends=('lv2-host: for running LV2 plugins'
             'new-session-manager: for NSM support')
 groups=(lv2-plugins pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stazed/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2934b5fe6153deaae1f9eb6548184e48d95de8ac81a250fb88e90b4cd20b7786')
+sha256sums=('b3dde2b08e436e88dcf7c4f69167dbaebd64337930154eedda36848065b4e879')
 
 build() {
   cmake -B build-$pkgname-$pkgver -S $pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DEnableSysex=ON -DBuildCarlaPresets=ON \
+    -DEnableSysex=ON -DBuildCarlaPresets=OFF \
+    -DEnableNTK=OFF -DBuildRakarrackPlusLV2=OFF \
     -Wno-dev
   cmake --build build-$pkgname-$pkgver
 }
 
 check() {
   mkdir -p "$srcdir"/test
-  DESTDIR="$srcdir"/test make -C build-$pkgname-$pkgver/lv2 install
+  DESTDIR="$srcdir"/test cmake --install build-$pkgname-$pkgver
   local _lv2path="$srcdir"/test/usr/lib/lv2
   local _plugins=($(LV2_PATH="$_lv2path" lv2ls))
   LV2_PATH="$_lv2path":/usr/lib/lv2 lv2lint -Mpack -d -q \

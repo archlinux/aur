@@ -1,0 +1,4 @@
+[rakarrack-plus]
+source = "github"
+github = "Stazed/rakarrack-plus"
+use_max_tag = true
