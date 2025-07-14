@@ -1,0 +1,26 @@
+pkgbase = knighttime-git
+	pkgdesc = Helpers for scheduling the dark-light cycle
+	pkgver = e7b8e32
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/knighttime
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = gtest
+	depends = extra-cmake-modules
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kdbusaddons
+	depends = kholidays
+	depends = ki18n
+	depends = qt6-base
+	depends = qt6-positioning
+	provides = libKNightTime.so
+	conflicts = knighttime
+	source = knighttime-git::git+https://invent.kde.org/plasma/knighttime.git
+	md5sums = SKIP
+
+pkgname = knighttime-git
