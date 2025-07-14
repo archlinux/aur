@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=16.0.0.snapshot20250706
-_pkgver=16-20250706
+pkgver=16.0.0.snapshot20250713
+_pkgver=16-20250713
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
