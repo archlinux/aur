@@ -1,7 +1,7 @@
 # Maintainer: Dimitri V. Pekarovsky <dimitri dot pekarovsky snail gmail dot com>
 pkgname=postgresql-plsh
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="PL/sh language for Postgresql database"
 arch=('x86_64' 'i686')
