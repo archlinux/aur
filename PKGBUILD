@@ -2,7 +2,7 @@
 
 _pkgname='dsnote'
 pkgname="${_pkgname}-git"
-pkgver=r1374.9dc5b34
+pkgver=r1491.fab4736
 pkgrel=1
 pkgdesc="Note taking, reading and translating with offline Speech to Text, Text to Speech and Machine Translation"
 arch=(
@@ -26,7 +26,6 @@ depends=(
   'libxtst'
   'ocl-icd'
   'openblas'
-  'perl'
   'python>=3.11'
   'qt5-base'
   'qt5-declarative'
@@ -36,6 +35,7 @@ depends=(
   'rubberband'
   'taglib'
   'vulkan-icd-loader'
+  'wayland'
   'xz'
 )
 makedepends=(
@@ -56,13 +56,15 @@ optdepends=(
   'python-accelerate: Support for Punctuation and Hebrew Diacritics restoration'
   'python-torchaudio: Support for Coqui TTS models'
   'python-transformers: Support for Punctuation and Hebrew Diacritics restoration'
-  'tts: Support for Coqui TTS models'
+  'ydotool: Support for inserting text into active window in Wayland'
 )
 optdepends_x86_64=(
   'amdvlk: Vulkan support for AMD GPU (AMDVLK Open)'
+  'coqui-tts: Support for Coqui TTS models'
   'cuda: Support for GPU acceleration on NVidia graphic cards'
   'cudnn: Support for GPU acceleration on NVidia graphic cards'
   'nvidia-utils: Vulkan support for NVidia GPU'
+  'python-faster-whisper: Support for FasterWhisper TTS models'
   'vulkan-intel: Vulkan support for Intel GPU'
   'vulkan-radeon: Vulkan support for AMD RADV'
 )
@@ -113,9 +115,12 @@ build() {
   FULL_BUILD=true
 
   if [[ "${CARCH}" == "x86_64" ]]; then
-    # Build for CUDA if needed package is found
-    pacman -Qi cuda &> /dev/null && $FULL_BUILD && CMAKE+=" -DBUILD_WHISPERCPP_CUBLAS=ON -DCMAKE_CUDA_ARCHITECTURES=native"
-    pacman -Qi cuda &> /dev/null && $FULL_BUILD && export CUDA_PATH=/opt/cuda
+    pacman -Qi cuda &> /dev/null && HAS_CUDA=true || HAS_CUDA=false
+
+    if [[ $HAS_CUDA = true ]] && [[ $FULL_BUILD = true ]]; then
+      CMAKE+=" -DBUILD_WHISPERCPP_CUBLAS=ON -DCMAKE_CUDA_ARCHITECTURES=native"
+      export NVCC_APPEND_FLAGS="-std=c++17 --compress-mode=size --split-compile=0 -Wno-deprecated-gpu-targets"
+    fi
   fi
 
   CI_BUILD=false
