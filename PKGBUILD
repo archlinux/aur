@@ -1,9 +1,9 @@
 # Maintainer: Funami
 pkgname=fend-bin
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Arbitrary-precision unit-aware calculator"
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/printfn/fend"
 license=('MIT')
 provides=('fend')
@@ -11,13 +11,11 @@ conflicts=('fend')
 source=("$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/printfn/fend/v$pkgver/LICENSE.md"
         "$pkgname-$pkgver-fend.1::https://github.com/printfn/fend/releases/download/v$pkgver/fend.1")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/printfn/fend/releases/download/v$pkgver/fend-$pkgver-linux-x86_64-gnu.zip")
-source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::https://github.com/printfn/fend/releases/download/v$pkgver/fend-$pkgver-linux-armv7-gnueabihf.zip")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/printfn/fend/releases/download/v$pkgver/fend-$pkgver-linux-aarch64-gnu.zip")
-sha256sums=('1992e36d631c5f8df9716fb1b736b3b138157ff98c87baa9889be7593841a1df'
-            '17eff91e3bb1b573488f061eab9997081719a435e361856251f67a52345314a7')
-sha256sums_x86_64=('885b696035bea6cb032950f978f59daec50c4f11fc2c62011175aecccf6d5810')
-sha256sums_armv7h=('a8dfb221c400408963afb4e89cd20ef9582186432af0b12f63a59b39936e6f91')
-sha256sums_aarch64=('c350cfa94b521e7e469ca0ba69a25237b92294d58c2ff16e8e14544bdea0d53f')
+sha256sums=('d39a21ed70fb553856f6d7e74fee4332261069502ae32ab9ac13b49d147696f7'
+            '7902e777734d3ebc9efe3111b2f19beef682e654c1049f6a03514506f4354642')
+sha256sums_x86_64=('aa7991265821595800d32aff64be79e0810eb1b3d77a446a48172dfe536e2928')
+sha256sums_aarch64=('ab35be2a4490034e4b2edea7f13fd5642e82a188487bf0e58b96db892dead2f7')
 
 package() {
   install -Dm755 fend -t "$pkgdir/usr/bin"
