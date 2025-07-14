@@ -1,7 +1,7 @@
 pkgname=m
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
-pkgdesc="a tiny and fast bash-based text editing tool"
+pkgdesc='this package has been deprecated. please go to the "m-tools" package to find M 2.0.'
 arch=('any')
 url="https://aur.archlinux.org/packages/m"
 license=('MIT')
