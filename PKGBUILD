@@ -5,7 +5,7 @@
 # Maintainer: widowild
 
 pkgname=rslsync
-pkgver=3.0.3
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology"
 license=("custom:resilio")
@@ -25,8 +25,8 @@ sha256sums=('4483cbe3fff81281666d8fbe8c9b8d7d27c38ba7a3d3752a865f1ab8c1f212db'
             'ba4b0ee3303027122e67345d4bf852f911a56f213f98c9eaa198c69d903fd8a1'
             '58ba5cef05bcfde72c5841eaeffaa4d31c39e26902b5fefb2e17eb9b629416cf'
             '3c69179987c2e0f54b2f3478ab421c65515f5b5b9bad2b6e055ec04aea0f5c6d')
-sha256sums_x86_64=('6ce1855938d0ca4a6494a6a0ef65aa8f4c92dd913c5ecb9093da1676d616ae4e')
-sha256sums_aarch64=('740c81ee1f13a781c511cf6b2b0f1aa74fcb397cdf19a3398ddf8f347775e5bd')
+sha256sums_x86_64=('b8a74c8280f4d57011f13a8119b155a2fdf94f3d0d5637d27b77d2f4406e840b')
+sha256sums_aarch64=('22fc3604ea88fcbab6296951f7cc28bc7ea865e550fad35d0c31adfb1899f47b')
 
 
 package() {
