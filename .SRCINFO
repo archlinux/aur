@@ -1,7 +1,7 @@
 pkgbase = android-x86-icu
 	pkgdesc = International Components for Unicode library (Android x86)
 	pkgver = 77.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://icu.unicode.org/
 	arch = any
 	groups = android-icu
