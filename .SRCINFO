@@ -1,7 +1,7 @@
 pkgbase = task2
 	pkgdesc = Taskwarrior 2.X, a command-line todo list manager (prior to its breaking-change rewrite of version 3.0)
 	pkgver = 2.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://taskwarrior.org/
 	arch = x86_64
 	license = MIT

@@ -17,7 +17,7 @@
 _pkgname='task'
 pkgname='task2'
 pkgver=2.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Taskwarrior 2.X, a command-line todo list manager (prior to its breaking-change rewrite of version 3.0)"
 arch=('x86_64')
 url="https://taskwarrior.org/"
@@ -33,7 +33,7 @@ conflicts=('task')
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
