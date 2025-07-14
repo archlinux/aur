@@ -14,7 +14,7 @@ source=("git+https://github.com/samcv/brainworkshop.git"
         brainworkshop.sh
         brainworkshop.desktop)
 sha256sums=('SKIP'
-            '213d8d5763f29da5f3ec65811e9c63052ca615cf770233957ed8bc9e3b43557c'
+            '95f09471b03db40eb23d48584c43f398800ae2141b6c69b8ebf926aedb531a92'
             '1e645c18ce0648f82285da25a5bbbad1e63e282bfe9d5c31329eb9d04c23f21c')
 
 pkgver() {
