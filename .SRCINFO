@@ -1,0 +1,11 @@
+pkgbase = m-tools
+	pkgdesc = a fast and lightweight bash-based text editing tool. M was previously in the "M" package on the AUR, but it has been moved to "m-tools" for easier installation.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/m
+	arch = any
+	license = MIT
+	source = m
+	md5sums = SKIP
+
+pkgname = m-tools
