@@ -1,7 +1,7 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname=sway-audio-idle-inhibit-git
 _ver=0.1.2
-pkgver=0.1.2.r45.7a70ef1
+pkgver=$_ver.r53.e903b34
 pkgrel=1
 pkgdesc="Prevents swayidle from sleeping while any application is outputting or receiving audio"
 _pkgfoldername=SwayAudioIdleInhibit
@@ -12,7 +12,7 @@ arch=(
     'armv7h'  # ARM v7 hardfloat
 )
 license=(GPL)
-depends=("wayland>=1.14.91" "wayland-protocols" "libpulse")
+depends=("systemd-libs" "libpulse")
 makedepends=(gcc meson git)
 optdepends=("swaync-git" "swaysettings-git")
 source=("git+$url")
@@ -26,7 +26,6 @@ pkgver() {
 prepare() {
   cd $_pkgfoldername
   git checkout main
-  git pull
 }
 
 build() {
