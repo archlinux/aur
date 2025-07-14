@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 replaces=()
 backup=()
 install=
-source=("${_pkgname}::git+https://codeberg.org/spn109/${_pkgname}.git#tag=${_pkgver}")
+source=("${_pkgname}::git+https://codeberg.org/spn109/${_pkgname}.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build()
