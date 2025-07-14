@@ -22,6 +22,6 @@ pkgbase = voix
 	backup = etc/pam.d/voix
 	backup = etc/voix/config.lua
 	source = https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v0.0.17b.tar.gz
-	sha256sums = 1d6387beedec95a242cedaf3dfedaa2af58c2b34fc96820be3247f39f2cb1164
+	sha256sums = 453171912bdad2b89f4e38866359bb6c7a37a430ff4f12b9274cbcfae4be8e50
 
 pkgname = voix
