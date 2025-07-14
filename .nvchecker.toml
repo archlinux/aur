@@ -1,0 +1,5 @@
+[nginx-mainline-mod-cgi]
+source = "github"
+github = "pjincz/nginx-cgi"
+use_max_tag = true
+prefix = "v"
