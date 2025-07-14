@@ -1,13 +1,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=z5-git
 _pkgname=z5
-pkgver=0.1.0
+pkgver=2.0.20.r0.g7df1d21
 pkgrel=1
 pkgdesc="A C++ library for chunked n-dimensional arrays."
 arch=('x86_64')
 url="https://github.com/constantinpape/z5"
 license=('MIT')
-depends=('blosc' 'zlib' 'bzip2' 'xz' 'lz4' 'xtensor' 'nlohmann-json' 'python-pybind11' 'python-xtensor' 'python-numpy')
+depends=('blosc' 'zlib' 'bzip2' 'xz' 'lz4' 'xtensor' 'nlohmann-json')
 makedepends=('git' 'cmake')
 optdepends=('aws-sdk-cpp: for S3 support'
             'gcs-client-cpp: for GCS support')
@@ -24,6 +24,7 @@ build() {
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DBUILD_Z5PY=OFF \
            -DWITH_BLOSC=ON \
            -DWITH_ZLIB=ON \
            -DWITH_BZIP2=ON \
