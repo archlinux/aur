@@ -26,6 +26,7 @@ depends=(
     'pyside6-tools'
     'shiboken6'
     'python-qt-material'
+    'qt6-tools'
     'python-appdirs'
     'python-networkx'
 )
