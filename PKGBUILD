@@ -8,18 +8,17 @@ pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('LGPL-2.1-or-later')
-source=(${url}releases/ffmpeg-${_ffver}.tar.xz aom.patch
+source=(${url}releases/ffmpeg-${_ffver}.tar.xz
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
-            '0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             '14db1605a740325737eb9ae029deb142d717a02c1926703b0d45f788c937d861'
             '0252a9cbf39bbbae2a27b1e929b62de0e69fa653ee691e9c310400fb02ea3598')
 depends=(glibc)
 makedepends=(nasm
-diffutils gcc make patch sed) # base-devel
+diffutils gcc make sed) # base-devel
 optdepends=({nwjs,slimjet}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
@@ -27,10 +26,11 @@ provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 prepare() {
   cd ffmpeg-$_ffver
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
-  patch -Np1 -i ../aom.patch
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   # diff libavcodec/opus/dec.c{.bak,} || :
+  # Drop this at 7.1.2 # https://lists.ffmpeg.org/pipermail/ffmpeg-devel/2025-May/343409.html
+  sed -i.bak  "s/h264_sei.o h2645_sei.o/h264_sei.o h2645_sei.o aom_film_grain.o/" libavcodec/Makefile
 }
 
 build() {
@@ -54,7 +54,7 @@ build() {
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
+    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
