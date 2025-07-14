@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3799.40d10b58f
+pkgver=r3806.cf3d62732
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 depends=(
 	'dbus'
 	'libcurl-gnutls'
-	'sdl2'
+	'sdl3'
 )
 optdepends=(
 	'vulkan-validation-layers: Descriptive vulkan errors'
@@ -48,7 +48,7 @@ source=(
 	'imgui_club'::'git+https://github.com/ocornut/imgui_club.git'
 	'nativefiledialog-extended'::'git+https://github.com/btzy/nativefiledialog-extended.git'
 	'pugixml'::'git+https://github.com/zeux/pugixml.git'
-	'sdl2-cmake-scripts'::'git+https://github.com/tcbrindle/sdl2-cmake-scripts.git'
+	'sdl'::'git+https://github.com/libsdl-org/SDL.git'
 	'spdlog'::'git+https://github.com/gabime/spdlog.git'
 	'stb'::'git+https://github.com/nothings/stb.git'
 	'tracy'::'git+https://github.com/wolfpld/tracy.git'
@@ -61,7 +61,6 @@ source=(
 	'vita3k-libfat16'::'git+https://github.com/Vita3K/libfat16.git'
 	'vita3k-printf'::'git+https://github.com/Vita3K/printf.git'
 	'vita3k-psvpfstools'::'git+https://github.com/Vita3K/psvpfstools.git'
-	'vita3k-sdl'::'git+https://github.com/Vita3K/sdl.git'
 	'vita3k-unicorn'::'git+https://github.com/Vita3K/unicorn.git'
 	'vita3k-zlib'::'git+https://github.com/korewawatchful/zlib.git'
 	'xxHash'::'git+https://github.com/Cyan4973/xxHash.git'
@@ -90,7 +89,6 @@ sha256sums=(
 	'SKIP'
 	'18009fe1d5e6b44854ab360d0ec01955858d5ddf03f0a807a97cf1c3491d77f7'
 
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -168,7 +166,7 @@ prepare() {
 			['imgui_club']='external/imgui_club'
 			['nativefiledialog-extended']='external/nativefiledialog-extended'
 			['pugixml']='external/pugixml'
-			['sdl2-cmake-scripts']='external/sdl2-cmake-scripts'
+			['sdl']='external/sdl'
 			['spdlog']='external/spdlog'
 			['stb']='external/stb'
 			['tracy']='external/tracy'
@@ -181,7 +179,6 @@ prepare() {
 			['vita3k-libfat16']='external/libfat16'
 			['vita3k-printf']='external/printf'
 			['vita3k-psvpfstools']='external/psvpfstools'
-			['vita3k-sdl']='external/sdl'
 			['vita3k-unicorn']='external/unicorn'
 			['xxHash']='external/xxHash'
 			['yaml-cpp']='external/yaml-cpp'
