@@ -1,6 +1,6 @@
 # Maintainer: Dae <daedaevibin@naver.com>
 pkgname=voix
-pkgver=0.0.20b
+pkgver=0.0.26b
 pkgrel=2
 install=voix.install
 pkgdesc="A privilege escalation tool replacing sudo/doas/sudo-rs, using PAM for authentication - WILL REPLACE SUDO!!"
@@ -13,7 +13,7 @@ provides=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
 replaces=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
 conflicts=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('71a9a82f828b5d4eeca925250cabeead3944ac5a3be1534c3e42a0ac4fbb8db6')
+sha256sums=('e1950bee7fc899d05f0097a6468eb9c738f8eeb4585bab4692bbd9e31878ec2a')
 
 build() {
   cd "Voix-${pkgver}/src"
