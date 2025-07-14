@@ -3,7 +3,7 @@
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.9.5
+pkgver=4.9.7
 pkgrel=1
 pkgdesc='Efficient implementation of the Scheme programming language'
 arch=(x86_64)
@@ -13,7 +13,7 @@ options=(staticlibs !lto)
 makedepends=(git)
 _srcname=${pkgname/-c}-v${pkgver//./_}
 source=("https://gambitscheme.org/latest/${_srcname}.tgz")
-b2sums=('1e3c32eb03acb97fafc639941312682c59c173a9605f516bb83bec210c2cc6163ea3357ae08a82572314fa252480a3eb3001a874ea9a8a2e34a389fe090a5de9')
+b2sums=('e232c9e6529575cf3d677cc3e3fa2fa22545c5ef6805b992f1aa49a562ee114f285090812c399ae277a1ac2aa66774c99b62796cafd0a5bc35053000f40979d1')
 
 build() {
   cd ${_srcname}
