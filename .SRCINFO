@@ -1,14 +1,14 @@
 pkgbase = directpv
-	pkgdesc = MinIO DirectPV
+	pkgdesc = CSI driver for Direct Attached Storage
 	pkgver = 4.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://min.io/docs/directpv/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = directpv-4.1.5.tar.gz::https://codeload.github.com/minio/directpv/tar.gz/refs/tags/v4.1.5
+	source = directpv-4.1.5.tar.gz::https://github.com/minio/directpv/archive/v4.1.5.tar.gz
 	sha256sums = c839ad53f97beeb9d1d521c9d0252aadf35f6138c2650453989b6c34a6294fd9
 
 pkgname = directpv
