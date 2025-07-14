@@ -1,0 +1,21 @@
+pkgbase = python-ipycache-git
+	pkgdesc = Defines a %%cache cell magic in the IPython notebook to cache results of long-lasting computations
+	pkgver = 0.1.4.r86.g73b6bec
+	pkgrel = 1
+	url = https://github.com/rossant/ipycache
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = ipython
+	depends = python-traitlets
+	optdepends = python-cloudpickle: cloudpickle support
+	provides = python-ipycache
+	conflicts = python-ipycache
+	source = ipycache::git+https://github.com/rossant/ipycache.git
+	sha512sums = SKIP
+
+pkgname = python-ipycache-git
