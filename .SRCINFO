@@ -1,6 +1,6 @@
 pkgbase = superslicer-prerelease
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.7.61.5
+	pkgver = 2.7.61.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
@@ -27,11 +27,11 @@ pkgbase = superslicer-prerelease
 	depends = slicer-udev
 	depends = wxwidgets-gtk3
 	optdepends = superslicer-profiles: Predefined printer profiles
-	provides = superslicer=1:2.7.61.5
+	provides = superslicer=1:2.7.61.6
 	conflicts = superslicer
 	conflicts = superslicer-git
 	options = !emptydirs
-	source = https://github.com/supermerill/SuperSlicer/archive/2.7.61.5.tar.gz
+	source = https://github.com/supermerill/SuperSlicer/archive/2.7.61.6.tar.gz
 	source = https://github.com/prusa3d/libbgcode/archive/6f43cb004ef3d3bda37dde49f6235e24d2717629.tar.gz
 	source = 0001-libbgcode-binarize-public-deps.patch
 	source = 0001-findwxwidgets.patch
@@ -39,7 +39,7 @@ pkgbase = superslicer-prerelease
 	source = 0003-openexr3.patch
 	source = 0004-cgal6.patch
 	source = 0005-boost-process-includes.patch
-	sha512sums = 2c588332f1710f39024644836d238dc6e4d6465ee7e91a4d813b4498e9aad44d251114a204dd6262dbe357abb4b239611236238b0f664af0f29f61524fe77685
+	sha512sums = 56efb1efcb498127ee188d87a8c7c1a5ce0fa1dc72dae6c10842c8dbefb1b09c20cb4d1043cb0c0662b0a26f6beebe98e38f9e5d241fff7422f3b9398fad348e
 	sha512sums = 04cb7cb69d887e1fa5ced5c0219b0ee6cab81f09d1bc1226ebd26563e2ce60b85fb6e5aef11a36dffd3e00779849906fc5c19ad2cdd22d45360226912b6af31b
 	sha512sums = ecbe9bdec72a372dfdc25b32dee382a9937c544567fa2da42a30467ddff2594495bf244a773401f655930301a2debc94636a362383239fa08808d0e51bc687a4
 	sha512sums = 1b8561d0f148ce2c38b7211eb78facc6e0cc2b89481e7c7700353534c7946a7b885e517852597b3252c6c21de527736f406f27ab01833d0f275c64103a8111f7
