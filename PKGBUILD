@@ -3,7 +3,7 @@
 # Contributor: Tim Paik <timpaik@163.com>
 pkgname=gnome-shell-extension-quick-settings-tweaks-git
 _uuid=quick-settings-tweaks@qwreey
-pkgver=2.1.stable.r13.ga733088
+pkgver=2.1.stable.r19.g7a4d3e1
 pkgrel=1
 pkgdesc="A GNOME extension which allows you to customize the new Quick Settings Panel to your liking"
 arch=('any')
@@ -16,10 +16,8 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/qwreey75/quick-settings-tweaks.git'
-        'gnome48.patch')
-sha256sums=('SKIP'
-            '1904d8bd44e89d4eae0686ad74f2ee49e135cd40f83efcaf998e0534c4d260cd')
+source=('git+https://github.com/qwreey75/quick-settings-tweaks.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd quick-settings-tweaks
@@ -28,11 +26,6 @@ pkgver() {
 
 prepare() {
   cd quick-settings-tweaks
-
-  # Fix compatibility issues with GNOME 48
-  # https://github.com/qwreey/quick-settings-tweaks/issues/197
-  # https://github.com/qwreey/quick-settings-tweaks/pull/204
-  patch -Np1 -i ../gnome48.patch
 }
 
 build() {
