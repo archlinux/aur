@@ -1,7 +1,7 @@
 # Maintainer: Wiktor W. <wykwit@disroot.org>
 
 pkgname=neocities
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A neocities.org client written in Go"
 arch=('any')
@@ -10,23 +10,16 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('588143b86d5d3b9c94a2ab7d06bbbb48ee30043221867744cf83a21deafc6283')
-
-prepare() {
-  mkdir -p gopath/src/github.com/peterhellberg
-  ln -rTsf "$pkgname-$pkgver" gopath/src/github.com/peterhellberg/$pkgname
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/peterhellberg/$pkgname
-  go get
-}
+sha256sums=('dcdc1854ccfb282214ac41f9be99ac5c57b77d91b387ca97657c1aaf107b851d')
 
 build() {
-  export GOPATH="$srcdir"/gopath
   cd "$pkgname-$pkgver"
-  go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o $pkgname
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o $pkgname
 }
 
 package() {
