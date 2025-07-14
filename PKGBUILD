@@ -1,21 +1,21 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 pkgname=amneziavpn-bin
-pkgver=4.8.7.2
+pkgver=4.8.8.3
 pkgrel=1
 pkgdesc="Amnezia VPN Client"
 arch=('x86_64')
 url="https://github.com/amnezia-vpn/amnezia-client"
 license=('GPL-3.0-only')
 install=amneziavpn.install
-#depends=('')
-makedepends=(p7zip)
+conflicts=(amneziavpn amneziavpn-git)
+#makedepends=(p7zip)
 options=(!debug)
-source=("AmneziaVPN.tar.zip::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.tar.zip")
-sha256sums=('ce8261783b7760d3c51d085fe275ae7cb173fb4251a015f268387a9aeca77f6b')
+source=(AmneziaVPN-$pkgver.tar.zip::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.tar.zip)
+sha256sums=('cdab6c6a4908f6f4261fdff18f27e6bcc7f2fcdc1883e36f96dba7d0983f1d9c')
 
 # Signature '\x37\x7A\xBC\xAF\x27\x1C' version '\x00\x04'
 _archive_offset=0x1ABF35C
-_archive_size=0x4AA6FCB
+_archive_size=0x4B1B417
 
 prepare() {  
   # Cleanup files from previous run
@@ -29,11 +29,11 @@ prepare() {
   tail -c +$((_archive_offset+1)) "AmneziaVPN_Linux_Installer.bin" | head -c $((_archive_size)) > "data.7z"
   rm -f "AmneziaVPN_Linux_Installer.bin"
 
-  7z x "data.7z" -o"AmneziaVPN"
+  #7z x "data.7z" -o"AmneziaVPN"
+  mkdir "AmneziaVPN" && bsdtar -xf "data.7z" -C "AmneziaVPN"
   rm -f "data.7z"
   
   # Fix desktop file
-  sed -i 's/4.8.7.2/1.0/g' "$srcdir"/AmneziaVPN/AmneziaVPN.desktop
   sed -i 's#/usr/share/pixmaps/AmneziaVPN.png#AmneziaVPN#g' "$srcdir"/AmneziaVPN/AmneziaVPN.desktop
 }
 
