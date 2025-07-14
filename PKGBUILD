@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="A cross platform mDNS-Browser app written in Rust using tauri and leptos "
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('305fb015c33b609ba52eb43f0e254054ffa2a2b19171912143a21e45e4f4e61d')
+sha256sums=('93c8ff3929d2de4532a70829e9e87f3c0de74b2ef0d08b956cce9478e5054bc3')
 _builddir="$pkgname-$pkgname-v$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
