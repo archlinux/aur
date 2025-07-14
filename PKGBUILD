@@ -3,14 +3,16 @@
 pkgname=flrig-git
 _pkgname=flrig
 __pkgname=fldigi
-pkgver=1.4.04.r0.g047aadb
+pkgver=2.0.08.r0.g2d9aa65c
+#.r0.g2d9aa65c
+#.r0.g047aadb
 #.r0.gb05b001
 pkgrel=2
 pkgdesc="Ham Radio - Xcvr control program - GIT version"
-arch=('i686' 'x86_64')
+arch=('armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.w1hkj.com/flrig-help/index.html"
 license=('GPL')
-depends=('fltk' 'flxmlrpc>=1.0.1' 'systemd-libs' 'hamradio-menus')
+depends=('fltk<1.5' 'flxmlrpc>=1.0.1' 'systemd-libs' 'hamradio-menus')
 makedepends=('git' 'autoconf' 'automake' 'pkg-config')
 optdepends=('fldigi: for digital mode interface')
 provides=('flrig')
@@ -31,7 +33,7 @@ prepare() {
 
 build() {
 	cd $srcdir/$_pkgname
-			 
+
 	./configure --prefix=/usr
 	make
 }
@@ -40,6 +42,6 @@ package() {
 	cd $srcdir/$_pkgname
 
 	make prefix=$pkgdir/usr install
-}                                                  
+}
 md5sums=('SKIP')
 sha256sums=('SKIP')

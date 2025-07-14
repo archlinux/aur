@@ -1,16 +1,18 @@
 pkgbase = flrig-git
 	pkgdesc = Ham Radio - Xcvr control program - GIT version
-	pkgver = 1.4.04.r0.g047aadb
+	pkgver = 2.0.08.r0.g2d9aa65c
 	pkgrel = 2
 	url = http://www.w1hkj.com/flrig-help/index.html
+	arch = armv7h
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = pkg-config
-	depends = fltk
+	depends = fltk<1.5
 	depends = flxmlrpc>=1.0.1
 	depends = systemd-libs
 	depends = hamradio-menus
