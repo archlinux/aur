@@ -3,7 +3,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=anytime
-_pkgver=0.3.11
+_pkgver=0.3.12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f690eb410d0212aa1701e9ea58015ca9')
-b2sums=('83c282ce2db7b160453d8c0aa26db1129b130738a3d76c52efddc7eeaa424524676961c67028a13315800c50f580c2fe9917877c3381219efd99ff75eee902fe')
+md5sums=('e451a98010673972692fe2aac488b5de')
+b2sums=('a4643ab4934bc3a028aa1fe5db08bf662af5a861435f7aad34548eb2ad4f1f7f30bb94fa917456053fca19cf9020685d5e999da1577b5fdc8453f8b87a2e4e5f')
 
 build() {
   mkdir build
