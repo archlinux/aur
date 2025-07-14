@@ -1,7 +1,7 @@
 pkgbase = pdfutil
 	pkgdesc = A utility for PDF document manipulation.
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/J-F-Liu/lopdf/tree/master/pdfutil
 	arch = aarch64
 	arch = i686
