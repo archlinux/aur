@@ -3,7 +3,7 @@
 _pkgname=wb32-dfu-updater_cli
 pkgname="$_pkgname-git"
 pkgver=1.0.0.r16.g76ce8d2
-pkgrel=1
+pkgrel=2
 pkgdesc="USB programmer for downloading and uploading firmware to/from USB devices."
 arch=(x86_64 aarch64)
 url="https://github.com/WestberryTech/wb32-dfu-updater"
