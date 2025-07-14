@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vdu_controls
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -10,15 +10,15 @@ depends=(
   'ddcutil'
   'hicolor-icon-theme'
   'noto-fonts'
-  'python-pyqt5'
-  'qt5-svg'
+  'python-pyqt6'
+  'qt6-svg'
 )
 optdepends=(
   'ddcutil-service: D-Bus Interface for up to 10x faster response times.'
   'python-pyserial: If you wish to use a serial-port lux metering device'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51ca62c05051c9b3ada025c669807fad482112c1a7b45f02d42512f9e49f896c')
+sha256sums=('d9d8f1ae68f16a506a159de5f0d5fb9684308b8c6b6aad84682f2d40dcc20a95')
 
 package() {
   cd "$pkgname-$pkgver"
