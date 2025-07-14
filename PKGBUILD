@@ -9,9 +9,9 @@ url="https://github.com/Veridian-Zenith/Voix"
 license=('AGPL-3.0-or-later' 'VCL-1.0')
 depends=('pam')
 makedepends=('cmake' 'gcc' 'make' 'pkgconf')
-provides=('sudo' 'doas')
-replaces=('sudo' 'doas')
-conflicts=('sudo' 'doas' 'sudo-rs-symlink')
+provides=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
+replaces=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
+conflicts=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('71a9a82f828b5d4eeca925250cabeead3944ac5a3be1534c3e42a0ac4fbb8db6')
 
