@@ -13,13 +13,13 @@ conflicts=('dccprint')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.4/dccprint_Linux_arm64.tar.gz")
-sha256sums_aarch64=('404601aad88e6addedf109e72863c516858d6728102709fd342179d4f7a48911')
+sha256sums_aarch64=('dbccb895f4c61d44d09bc632cbb7a20f7e31dce7d6b4ddffd8d2453c952eeabb')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.4/dccprint_Linux_i386.tar.gz")
-sha256sums_i686=('26016ee253682dd2bc38e4bdb3817fa3d495b7ca924ea0f27b5af0d803874643')
+sha256sums_i686=('10e5d6fb5699f834208860987b6d774f475ac45e874c3c51892d743f992e63c9')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fgonzalezurriola/dccprint/releases/download/v0.1.4/dccprint_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9e0db9aa253f69e935b863dc6a9095b22a55cf80cea1d8ec260e7322fbdf4c3d')
+sha256sums_x86_64=('74c4c7ad88fb70e6dcaf0da8ea0b842b4f81962d5808cc36c0e3c33280667585')
 
 package() {
   install -Dm755 "./dccprint" "${pkgdir}/usr/bin/dccprint"
