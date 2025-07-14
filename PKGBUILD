@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mefa
-_pkgver=3.2-9
+_pkgver=3.2-10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7cc82dc53a2f47423125ead8b370ac45')
-b2sums=('d66c6bda04762125ae30472bcef62b1d9c2a554bc5dfcb2bf631984566ebff13ef5ed8d1dec2b32d6ff7bd98fac6b037078d231fbf320afdc8c000323712ffd2')
+md5sums=('92f5dc3827db715b28e3babb7a682a52')
+b2sums=('07b5f590d1230f8a058f67545ee49b064219fa1205258a529c01d82f2ffd9b3bb54d198c4adf225a03f8e39c28b8dc27d75cb3ecdd805d752af090b7f98ce130')
 
 build() {
   mkdir build
