@@ -1,7 +1,7 @@
 pkgbase = koboldcpp-hipblas-portable
-	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)
+	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM, portable build for old CPUs)
 	pkgver = 1.95.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -17,6 +17,7 @@ pkgbase = koboldcpp-hipblas-portable
 	provides = koboldcpp=1.95.1
 	provides = koboldcpp-rocm=1.95.1
 	conflicts = koboldcpp
+	conflicts = koboldcpp-rocm
 	source = koboldcpp-hipblas-portable-1.95.1.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.95.1.tar.gz
 	source = koboldcpp.desktop
 	source = koboldcpp.png

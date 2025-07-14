@@ -1,20 +1,20 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
-# Author: LostRuins (concedo), YellowRoseCx
+# Author: LostRuins (concedo)
 
 pkgname=koboldcpp-hipblas-portable
 pkgver=1.95.1
-pkgrel=1
-pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
+pkgrel=2
+pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM, portable build for old CPUs)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
 license=('AGPL-3.0-only')
 depends=(
-    'python'
-    'cblas'
-    'clblast'
-    'vulkan-icd-loader'
-    'hipblas'
+    "python"
+    "cblas"
+    "clblast"
+    "vulkan-icd-loader"
+    "hipblas"
 )
 optdepends=(
     'python-customtkinter: for GUI launcher'
@@ -22,8 +22,14 @@ optdepends=(
     'zenity: native file picker dialogs'
     'yad: native file picker dialogs'
 )
-provides=("koboldcpp=$pkgver" "koboldcpp-rocm=$pkgver")
-conflicts=('koboldcpp')
+provides=(
+    "koboldcpp=$pkgver"
+    "koboldcpp-rocm=$pkgver"
+)
+conflicts=(
+    "koboldcpp"
+    "koboldcpp-rocm"
+)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz"
     'koboldcpp.desktop'
@@ -38,7 +44,7 @@ sha256sums=(
 build() {
     cd "$srcdir/koboldcpp-$pkgver"
 
-    make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1 LLAMA_PORTABLE=1
+    make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1 LLAMA_PORTABLE=1 LLAMA_NOAVX2=1
 }
 
 package() {
@@ -48,6 +54,7 @@ package() {
 
     install -Dm644 ./*.so "$pkgdir/usr/share/koboldcpp/"
     install -Dm644 ./*.embd "$pkgdir/usr/share/koboldcpp/"
+    install -Dm644 ./json_to_gbnf.py "$pkgdir/usr/share/koboldcpp/"
 
     install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
     install -m644 "kcpp_adapters"/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
