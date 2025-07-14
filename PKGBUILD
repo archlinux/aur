@@ -4,23 +4,14 @@
 # options
 : ${_build_clang:=false}
 
-: ${_build_level:=1}
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
-[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
-[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-_pkgname=flycast
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.5.r13.ga1a782d
+_pkgname="flycast"
+pkgname="$_pkgname-git"
+pkgver=2.5.r23.g48c58db
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
-arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64')
 
 depends=(
   'alsa-lib'
@@ -29,17 +20,22 @@ depends=(
   'libzip'
 )
 makedepends=(
-  'clang'
   'cmake'
   'git'
-  'lld'
   'ninja'
   'python'
 )
 
+if [[ "${_build_clang::1}" == "t" ]]; then
+  makedepends+=(
+    'clang'
+    'lld'
+  )
+fi
+
 _source_main() {
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
 
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git")
@@ -97,6 +93,7 @@ prepare() {
   _run_if_exists _prepare_flycast
 
   sed -e '1i #include <cstdint>' -i "$_pkgsrc/core/deps/glslang/SPIRV/SpvBuilder.h"
+  sed -e '1i #include <cstddef>' -i "$_pkgsrc/core/network/miniupnp.cpp"
 }
 
 pkgver() {
@@ -119,15 +116,6 @@ build() {
   export CFLAGS CXXFLAGS
   CFLAGS+=" -DNDEBUG"
   CXXFLAGS+=" -DNDEBUG"
-
-  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-    local _cflags _cxxflags
-    _cflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}"))
-    _cxxflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}"))
-
-    CFLAGS="-march=x86-64-v${_build_level::1} -O3 ${_cflags[@]}"
-    CXXFLAGS="-march=x86-64-v${_build_level::1} -O3 ${_cxxflags[@]}"
-  fi
 
   local _cmake_options=(
     -B build
