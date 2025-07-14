@@ -1,16 +1,18 @@
 pkgbase = shinden-client-bin
-	pkgdesc = Unofficial client for the polish anime websites. It allows you to watch anime without being exposed to ads and pop-ups.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.1.2
-	pkgrel = 2
-	url = https://github.com/KlapChat-Entertainment/shinden-client
+	pkgdesc = Unofficial client for the polish anime websites. It allows you to watch anime without being exposed to ads and pop-ups.(Prebuilt version)
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/Tsugumik/shinden-client
 	arch = x86_64
 	license = MIT
-	depends = electron29
-	provides = shinden-client=3.1.2
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = shinden-client=4.0.0
 	conflicts = shinden-client
-	source = shinden-client-3.1.2.rpm::https://github.com/KlapChat-Entertainment/shinden-client/releases/download/v3.1.2/shinden-client-electron-3.1.2-1.x86_64.rpm
-	source = shinden-client.sh
-	sha256sums = b8daf5f4efa78ad17223fae44eea82b2502a09b2bd483ec390fff09e0a56fe68
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source = shinden-client-4.0.0.rpm::https://github.com/Tsugumik/shinden-client/releases/download/v4.0.0/Shinden.Client-4.0.0-1.x86_64.rpm
+	source = LICENSE-4.0.0::https://raw.githubusercontent.com/Tsugumik/shinden-client/v4.0.0/LICENSE
+	sha256sums = 53736f6c0db526226148c69ef0ab1d2f78fcddee45086ff1324f9e5fff8bf21b
+	sha256sums = fce4e2ea584ea650e48248400d92e98b522cf58d15bde4b1e55345817fe8bc91
 
 pkgname = shinden-client-bin
