@@ -1,7 +1,7 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 pkgname=openstarbound-nightly
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenStarbound Client (Nightly Build, requires original Starbound game assets)"
 arch=('x86_64')
 url="https://github.com/OpenStarbound/OpenStarbound"
