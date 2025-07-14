@@ -1,7 +1,7 @@
 pkgbase = xviewer-plugins
 	pkgdesc = Plugins for xviewer. X-Apps Project.
-	pkgver = 1.4.1
-	pkgrel = 3
+	pkgver = 3.4.1
+	pkgrel = 1
 	url = https://github.com/linuxmint/xviewer-plugins
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,14 @@ pkgbase = xviewer-plugins
 	license = GPL-2.0-or-later
 	makedepends = gnome-common
 	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = libchamplain
 	depends = xviewer
 	depends = libpeas
+	optdepends = libchamplain: Map plugin
 	provides = xviewer-plugins
 	conflicts = xviewer-plugins-git
-	source = xviewer-plugins-1.4.1.tar.gz::https://github.com/linuxmint/xviewer-plugins/archive/1.4.1.tar.gz
-	md5sums = be81aab5f798ba018f747e3be1dbd8d7
+	source = xviewer-plugins-3.4.1.tar.gz::https://github.com/linuxmint/xviewer-plugins/archive/3.4.1.tar.gz
+	md5sums = 02dfa3413f5511f6cadc7b9aa373a597
 
 pkgname = xviewer-plugins
