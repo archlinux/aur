@@ -8,7 +8,7 @@
 # Which in turn is based on extra/electron* by
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
-_pkgname=electron38
+_pkgname=electron39
 pkgname=electron-nightly-bin
 _pkgver=39.0.0-nightly.20250714
 pkgver="${_pkgver/-}"
@@ -48,8 +48,8 @@ noextract=("electron-${_pkgver}-${CARCH}.zip")
 #source_armv7h=("electron-${_pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
-sha256sums_x86_64=('2bfe6be3eb9cbd4622d4f4516ea7533f629863624edb9138662796efd93f2a7d'
-                   'f074713d0322b652b78ed2491dce2676d05d10a284187c5deba4a047b8283e4c')
+sha256sums_x86_64=('351d7ceae010eaad558a109fead3d8255759fd1e54845e6f7f84c754fa9f295c'
+                   '34113e95910409a0c0763dc1b856eb7660a863ea0295f59b6007684bc030a93a')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/electron-${_pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"

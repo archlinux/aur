@@ -19,7 +19,7 @@ pkgbase = electron-nightly-bin
 	provides = electron
 	provides = electron=39.0.0nightly.20250714
 	conflicts = electron
-	conflicts = electron38
+	conflicts = electron39
 	noextract = electron-39.0.0-nightly.20250714-x86_64.zip
 	source_x86_64 = electron-39.0.0-nightly.20250714-x86_64.zip::https://github.com/electron/nightlies/releases/download/v39.0.0-nightly.20250714/electron-v39.0.0-nightly.20250714-linux-x64.zip
 	source_x86_64 = electron
