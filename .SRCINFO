@@ -1,7 +1,7 @@
 pkgbase = hashbox
 	pkgdesc = A GUI tool for hashing and verifying passwords using PyQt5
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/madyel/password-hasher
 	arch = any
 	license = MIT

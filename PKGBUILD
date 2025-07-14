@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=hashbox
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI tool for hashing and verifying passwords using PyQt5"
 arch=('any')
 url="https://github.com/madyel/password-hasher"
