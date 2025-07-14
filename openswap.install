@@ -6,8 +6,22 @@ build ()
     grep "keyfile_filename=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
     grep "keyfile_device_mount_options=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
     grep "cryptsetup_options=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
+    grep "keyfile_block_number=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
+    grep "unlock_method=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
+    grep "keyfile_length=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
 
     source "$BUILDROOT/openswap.conf"
+
+    if [ -z "$unlock_method" ]; then
+      # unlock_method is not set, determine it based on keyfile_device and keyfile_filename
+      # for backward compatibility.
+      if [ -z "$keyfile_device" ] || [ -z "$keyfile_filename" ]; then
+        unlock_method="password"
+      else
+        unlock_method="keyfile"
+      fi
+    fi
+    echo "unlock_method=$unlock_method" >> "$BUILDROOT/openswap.conf"
 
     if [ -z "$swap_device" ]; then
       warning "swap_device variable is not set"
@@ -15,6 +29,41 @@ build ()
 
     if [ -z "$crypt_swap_name" ]; then
       warning "crypt_swap_name variable is not set"
+    fi
+
+    if [ "$unlock_method" = "keyfile" ]; then
+      warning "you are using potentially dangerous unlock_method keyfile, please make sure you know what you are doing"
+      warning "https://docs.kernel.org/power/swsusp.html"
+      warning "https://wiki.archlinux.org/title/Dm-crypt/Swap_encryption#busybox-based_initramfs"
+      if [ -z "$keyfile_device" ]; then
+        warning "keyfile_device variable is not set and unlock_method is set to keyfile"
+      fi
+      if [ -z "$keyfile_filename" ]; then
+        warning "keyfile_filename variable is not set and unlock_method is set to keyfile"
+      fi
+
+      if [ -z "$keyfile_device_mount_options" ]; then
+        warning "keyfile_device_mount_options variable is not set and unlock_method is set to keyfile"
+      fi
+    fi
+
+    if [ "$unlock_method" = "keyfile_raw" ]; then
+      if [ -z "$keyfile_device" ]; then
+        warning "keyfile_device variable is not set and unlock_method is set to keyfile_raw"
+      fi
+      if [ -z "$keyfile_block_number" ]; then
+        warning "keyfile_block_number variable is not set and unlock_method is set to keyfile_raw"
+      fi
+      if [ -z "$keyfile_length" ]; then
+        warning "keyfile_length variable is not set and unlock_method is set to keyfile_raw"
+      fi
+    fi
+
+    # check if unlock_method is valid
+    if [ "$unlock_method" != "password" ] && [ "$unlock_method" != "keyfile" ] && [ "$unlock_method" != "keyfile_raw" ]; then
+      error "unlock_method is set to $unlock_method, but it can only be password, keyfile or keyfile_raw"
+      error "please change the unlock_method variable in /etc/openswap.conf"
+      exit 1
     fi
 
     add_runscript
