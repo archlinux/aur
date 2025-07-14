@@ -1,0 +1,25 @@
+pkgbase = python-mal-gui
+	pkgdesc = A graphical user interface tool used to create MAL instance models.
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/mal-lang/mal-gui
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python>=3.10
+	depends = python-mal-toolbox
+	depends = python-numpy
+	depends = pyside6
+	depends = pyside6-tools
+	depends = shiboken6
+	depends = python-qt-material
+	depends = python-appdirs
+	depends = python-networkx
+	optdepends = NOTE: Install manually with pip: py2neo (required for Neo4j integration)
+	source = mal-gui-0.0.8.tar.gz::https://github.com/mal-lang/mal-gui/archive/refs/tags/0.0.8.tar.gz
+	sha256sums = e00bd0295aced1467e8c3685a8c892b177d0f0f2ce0d25b84f54451fbf54bc98
+
+pkgname = python-mal-gui
