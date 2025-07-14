@@ -1,7 +1,7 @@
 # Maintainer: Not_Noob <magnitudetransparentcouncil@duck.com>
 pkgname=octarine-bin
 pkgdesc="Octarine is an opinionated tool for taking notes, tasks and organising your thoughts."
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 arch=("x86_64")
 url="https://octarine.app"
@@ -17,7 +17,7 @@ prepare() {
 
 package() {
 	# Desktop
-	install -Dm644 "$srcdir/usr/share/applications/octarine.desktop" "$pkgdir/usr/share/applications/octarine.desktop"
+	install -Dm644 "$srcdir/usr/share/applications/Octarine.desktop" "$pkgdir/usr/share/applications/octarine.desktop"
 
 	# Icons
 	install -Dm644 "$srcdir/usr/share/icons/hicolor/128x128/apps/octarine.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/octarine.png"
