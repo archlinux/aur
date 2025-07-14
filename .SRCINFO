@@ -1,6 +1,6 @@
 pkgbase = crystal-dock-git
 	pkgdesc = A cool desktop panel for Linux desktop
-	pkgver = r459.g1d2c4d8
+	pkgver = r499.gaba6bc2
 	pkgrel = 1
 	url = https://github.com/dangvd/crystal-dock
 	arch = x86_64
