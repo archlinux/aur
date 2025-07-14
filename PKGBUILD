@@ -2,21 +2,22 @@
 
 pkgname=libfprint-goodix-53xc
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary driver for the Goodix fingerprint reader 27c6:533c, from Dell driver"
 arch=('x86_64')
 url="http://dell.archive.canonical.com/updates/pool/public/libf/libfprint-2-tod1-goodix/"
+_filename="libfprint-2-tod1-goodix_${pkgver}-0ubuntu1~somerville1_amd64.deb"
 license=('custom')
 depends=('libfprint-tod')
 makedepends=('tar')
 groups=('fprint')
-source=("fprint-driver.deb::http://dell.archive.canonical.com/updates/pool/public/libf/libfprint-2-tod1-goodix/libfprint-2-tod1-goodix_${pkgver}-0ubuntu1~somerville1_amd64.deb")
+source=("${_filename}::${url}${_filename}")
 sha256sums=('b921e155fd35b06341a453b9c6f6c4c7101f199aee314403826c517156a4b038')
 
 prepare() {
     cd "$srcdir"
     # Extract the deb file
-    ar x "fprint-driver.deb"
+    ar x "${_filename}"
     # Extract data archive
     tar -xf data.tar.*
 }
