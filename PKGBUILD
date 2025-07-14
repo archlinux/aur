@@ -4,7 +4,7 @@
 
 pkgname=ttf-joypixels
 pkgver=9.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Emoji as a Service (formerly EmojiOne)'
 url='https://www.joypixels.com/download'
 arch=('any')
