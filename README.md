@@ -1,40 +1,15 @@
-# Voix - A Modern Privilege Escalation Tool
+# Voix - A Secure Privilege Management Tool
 
 ## Overview
 
-Voix is a modern privilege escalation tool designed to replace traditional tools like `sudo` and `doas`. It provides a secure way to execute commands with elevated privileges while maintaining a clean and user-friendly interface. Voix uses PAM for authentication, creating and using /etc/pam.d/voix for PAM authentication, making it a robust alternative to existing privilege escalation tools. (Upload to AUR planned)
+Voix is a secure privilege management tool designed to provide controlled command execution with elevated privileges. Unlike traditional sudo implementations, Voix focuses on security and simplicity.
 
-**Note**: Command Aliases in your shell will not work with Voix, this is unknown, feel free to open an issue if you know how to fix this.
 ## Features
 
-### Current Implementation
-
-1. **CLI Tool**:
-   - Secure password prompt with hidden input
-   - Configurable user and group permissions
-   - Logging of authentication attempts
-   - PAM integration for authentication
-
-2. **PAM Helper**:
-   - Authentication backend
-   - Integration with system authentication
-
-3. **Build System**:
-   - CMake-based build configuration
-   - Multi-shell compatible build script (fish, bash, zsh)
-   - Dependency management
-
-### Work in Progress
-
-1. **Security Enhancements**:
-   - More granular permission controls
-   - Enhanced logging capabilities
-   - Additional authentication methods
-
-2. **Documentation**:
-   - Complete API documentation
-   - Usage examples and tutorials
-   - Configuration guide
+- **Controlled Privilege Escalation**: Execute commands with elevated privileges only when explicitly configured
+- **Simple Configuration**: Easy-to-understand configuration format
+- **PAM Authentication**: Secure authentication using Pluggable Authentication Modules
+- **Shell Integration**: Properly executes commands within the user's shell environment
 
 ## Installation
 
@@ -59,98 +34,57 @@ sudo dnf install cmake make gcc pkgconf
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/voix.git
-cd voix
+git clone https://github.com/Veridian-Zenith/Voix.git
+cd Voix/src
 ```
 
 2. Build the project:
 ```bash
-cd src
 cmake -B build
 cmake --build build
 ```
 
-## Usage
-
-### CLI Tool
+3. Install the binary:
 ```bash
-voix <command> [args...]
+sudo install -o root -m 4755 build/voix /usr/local/bin/voix
 ```
-
 
 ## Configuration
 
-The main configuration file is located at `/etc/voix/config.lua`.
+The configuration file is located at `/etc/voix/config.lua`. Here's an example configuration:
 
-Example configuration:
 ```lua
 return {
+  -- List of users who can run commands with elevated privileges
   users = {
     "root",
-    "yourusername"
+    "your_username"
   },
+
+  -- List of groups whose members can run commands with elevated privileges
   groups = {
     "wheel",
     "admin"
   },
-  max_auth_attempts = 3,
-  log_file = "/var/log/voix.log"
+
+  -- Maximum number of authentication attempts
+  max_auth_attempts = 3
 }
 ```
 
-## Project Structure
+## Usage
 
-```
-.
-├── .gitignore
-├── PKGBUILD
-├── README.md
-├── src/
-│   ├── .gitignore
-│   ├── build.fish
-│   ├── CMakeLists.txt
-│   ├── config.cpp
-│   ├── LICENSE
-│   ├── LICENSE-AGPLv3
-│   ├── LICENSE-VCL1.0
-│   ├── main.cpp
-│   ├── utils.cpp
-│   ├── include/
-│   │   ├── config.hpp
-│   │   └── utils.hpp
-│   └── lua/
-│       └── config.lua
+To run a command with elevated privileges:
+```bash
+voix <command> [args...]
 ```
 
-## Missing Parts and Future Work
+## Security Notes
 
-1. **Enhanced Security Features**:
-   - Time-based access controls
-   - Command-specific permissions
-   - Audit logging
-
-2. **Additional Backend Support**:
-   - Additional authentication methods
-
-3. **Documentation**:
-   - More detailed usage examples
-   - Troubleshooting guide
-
-4. **Testing**:
-   - Comprehensive test suite
-   - CI/CD pipeline integration
-
-## Contributing
-
-We welcome contributions to Voix! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to your branch
-5. Open a pull request
+- Voix runs commands with the current user's privileges by default
+- Privilege escalation must be explicitly configured
+- The binary must be owned by root with the setuid bit set for proper operation
 
 ## License
 
-Voix is dual-licensed under the AGPLv3 and VCL 1.0 licenses. See the src/LICENSE file for more details.
-(IMPORTANT - The VCL 1.0 license is for commercial use, while the AGPLv3 license is for all other uses. Please use the appropriate license for your use case.)
+Voix is licensed under the AGPLv3 license. See the LICENSE file for more details.
