@@ -1,0 +1,16 @@
+pkgbase = geanypad
+	pkgdesc = Configuration files for using Geany as a simple text editor
+	pkgver = 25.07
+	pkgrel = 1
+	url = https://teejeetech.com//tags/geany
+	arch = any
+	license = GPL-2.0-or-later
+	depends = geany
+	depends = geany-plugins
+	depends = rsync
+	optdepends = ttf-firacode: default editor font
+	optdepends = ttf-ubuntu-font-family: default tagbar & msgwin font
+	source = https://packages.teejeetech.com/public/deb/geanypad_25.07_all.deb
+	sha256sums = bd3158e477ce5d69bde48a3a59e1ed14e3ed2529cf863ca0840104f5a07d5f2f
+
+pkgname = geanypad
