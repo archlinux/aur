@@ -1,6 +1,6 @@
 pkgbase = codequery
 	pkgdesc = A code-understanding, code-browsing or code-search tool
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://ruben2020.github.io/codequery
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = codequery
 	depends = sqlite
 	optdepends = cscope: to create CodeQuery databases
 	optdepends = ctags: to create CodeQuery databases
-	source = codequery-1.0.0.tar.gz::https://github.com/ruben2020/codequery/archive/v1.0.0.tar.gz
+	source = codequery-1.0.1.tar.gz::https://github.com/ruben2020/codequery/archive/v1.0.1.tar.gz
 	source = codequery.desktop
-	sha256sums = b0776adeae2963f197e3b9a57eb7ca405542da5f6413e06063e8d68f8246baa8
+	sha256sums = 40781a7499adddddcb9b7ab2d1d840453aed08f91f5ebc7c339c2f13f63a9403
 	sha256sums = 1448fb7690e6b33cee50dffa8dc89654eba96e5910ae731b1b1486c46d72922a
 
 pkgname = codequery

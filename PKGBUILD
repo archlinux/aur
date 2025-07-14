@@ -2,7 +2,7 @@
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=codequery
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A code-understanding, code-browsing or code-search tool"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('cscope: to create CodeQuery databases'
             'ctags: to create CodeQuery databases')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ruben2020/codequery/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('b0776adeae2963f197e3b9a57eb7ca405542da5f6413e06063e8d68f8246baa8'
+sha256sums=('40781a7499adddddcb9b7ab2d1d840453aed08f91f5ebc7c339c2f13f63a9403'
             '1448fb7690e6b33cee50dffa8dc89654eba96e5910ae731b1b1486c46d72922a')
 
 build() {
