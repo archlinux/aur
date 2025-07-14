@@ -26,7 +26,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
 optdepends=('NOTE: Install manually with pip: py2neo (required for Neo4j integration)')
-source=("${_name}-${pkgver}.tar.gz::https://github.com/mal-lang/mal-toolbox/archive/refs/tags/${pkgver}.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://github.com/mal-lang/${_name}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('7d339ede0813a094ebcc65e3efcd237d37a2f43ed5fbe5bd46a3c971db9ed8b5')
 
 
