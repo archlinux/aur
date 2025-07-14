@@ -1,12 +1,14 @@
 # Maintainer: Igor Shimanogov <shimanogov.in@phystech.edu>
 
 pkgname=devzat-git
-pkgver=2025.07.11
+pkgver=2025.07.14
 pkgrel=1
 pkgdesc='custom SSH server that takes you to a chat instead of a shell prompt'
 arch=('x86_64')
 url="https://github.com/quackduck/devzat"
 license=('MIT')
+conflicts=('devzat')
+provides=('devzat')
 makedepends=('go' 'git')
 depends=('glibc')
 source=("git+$url.git")
