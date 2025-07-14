@@ -2,7 +2,7 @@
 
 pkgname=mbake
 _pkgname=${pkgname#m}
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A Python-based Makefile formatter and linter'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(git
              python-hatchling)
 provides=("python-$pkgname=$pkgver")
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('4d6188d5ed0acb91a1c3158d429b4ff79a918e7d93ff6cef1d0fce868194f2fa')
+sha256sums=('ae23343683d3e04e679c7b0fa27ded6cb798016cb992a89505a2da4886eab0cf')
 
 build() {
 	cd "$_pkgname"
