@@ -1,7 +1,7 @@
 pkgbase = warcraftlogsuploader
 	pkgdesc = warcraftlogs.com desktop client for Linux
 	pkgver = 8.17.30
-	pkgrel = 3
+	pkgrel = 1
 	url = https://warcraftlogs.com/
 	arch = x86_64
 	license = custom

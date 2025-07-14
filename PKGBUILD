@@ -2,7 +2,7 @@
 
 pkgname=warcraftlogsuploader
 pkgver=8.17.30
-pkgrel=3
+pkgrel=1
 pkgdesc="warcraftlogs.com desktop client for Linux"
 arch=('x86_64')
 depends=("fuse2")
