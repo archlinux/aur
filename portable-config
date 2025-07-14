@@ -43,3 +43,5 @@ useZink="false"
 qt5Compat="true"
 
 # Below you can set envs that will be imported into the application sandbox
+
+QT_QPA_PLATFORM=xcb

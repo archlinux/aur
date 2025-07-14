@@ -178,7 +178,7 @@ package() {
   install -D -m 0644 -t "${pkgdir}/usr/lib/udev/rules.d" \
     "share/etc/udev/rules.d"/{99-BlackmagicDevices.rules,99-ResolveKeyboardHID.rules,99-DavinciPanel.rules}
   popd
-  	#rm -r "${pkgdir}/usr/share/applications"
+  	rm -r "${pkgdir}/usr/bin"
 	install -Dm644 \
 		"${srcdir}/desktop.file" \
 		"${pkgdir}/usr/share/applications/com.blackmagic.davinci.desktop"
