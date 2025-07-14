@@ -40,6 +40,6 @@ else
   git add ${files[@]}
   echo 'Committing...'
   git commit -m "Version bump to ${latestRel}"
-  #echo 'Pushing...'
-  #git push || { echo "Failed to push version bump." ; exit 1;}
+  echo 'Pushing...'
+  git push || { echo "Failed to push version bump." ; exit 1;}
 fi
