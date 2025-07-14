@@ -82,15 +82,17 @@ optdepends=(
 )
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")
-
 source=(
   git+${url}.git
   dracut-{install,remove}.script
   90-dracut-install.hook
   60-dracut-remove.hook
 )
-
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP'
+            '734999ef753ebc0a67660d2359d640a328d8da08e681ac1c5cb5349d267d11d83d07de6bbebb714d93e4ddf9059315e23be56e1c8e6738fb7bafd64462d0e526'
+            '8f8c3a892094dca621db8f18c73501b4f316692d82bb05fc193d772d51c935eb85e0e8a45a2ae6285432421d3733077e74ab4803a722507147cc6e012b374b6d'
+            'eea03d26c34b54984cf04a30fd4166814757258d67cd0cd72bbc9d69f0ebae8cd181290b0f2a1d43c24b39b19b802936ff6374205fa721d34e152db0aca5179e'
+            '5f8f6f04081061d36cd331737b40a8f523319f0d05d92308c0967de97266c27d3dd901da49ce0850f12c2cd95e5eb19ba6219b5d8a1d075c010420be1900f803')
 
 pkgver() {
   cd "${pkgname%-git}"
