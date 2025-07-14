@@ -3,11 +3,12 @@
 
 pkgname=cbmc
 pkgver=6.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C Bounded Model Checker'
 arch=('x86_64')
 url='https://diffblue.github.io/cbmc'
-license=('custom:4-clause BSD license')
+license=('BSD-4-Clause-UC')
+depends=('gcc-libs')
 makedepends=('git')
 changelog=CHANGELOG
 _minisatver=2.2.1
@@ -26,7 +27,7 @@ prepare() {
 }
 
 build() {
-  make -C "$srcdir/cbmc-cbmc-$pkgver/src"
+  LINKFLAGS="$LDFLAGS" make -C "$srcdir/cbmc-cbmc-$pkgver/src"
 }
 
 package() {

@@ -1,12 +1,13 @@
 pkgbase = cbmc
 	pkgdesc = C Bounded Model Checker
 	pkgver = 6.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://diffblue.github.io/cbmc
 	changelog = CHANGELOG
 	arch = x86_64
-	license = custom:4-clause BSD license
+	license = BSD-4-Clause-UC
 	makedepends = git
+	depends = gcc-libs
 	source = https://github.com/diffblue/cbmc/archive/refs/tags/cbmc-6.7.1.tar.gz
 	source = https://ftp.debian.org/debian/pool/main/m/minisat2/minisat2_2.2.1.orig.tar.gz
 	b2sums = db85af19f003a6389716b16aa2bd99fe2022ab65851750fb899796ffb62838284647e8bd573637b7cd4113be3d686b636fcba06155deec57b0d889f137b0e897
