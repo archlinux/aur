@@ -1,7 +1,7 @@
 pkgbase = firefox-browser-violentmonkey
 	pkgdesc = Web Extension for saving a faithful copy of a complete web page in a single HTML file
 	pkgver = 2.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Violentmonkey/Violentmonkey
 	arch = any
 	groups = zen-browser-addons

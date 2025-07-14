@@ -3,7 +3,7 @@
 pkgname=(zen-browser-violentmonkey firefox-extension-violentmonkey)
 pkgbase=firefox-browser-violentmonkey
 pkgver=2.31.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/Violentmonkey/Violentmonkey'
 license=('MIT')
@@ -34,5 +34,4 @@ package_zen-browser-violentmonkey() {
     cd "${srcdir}/source"
     install -Dm644 "${srcdir}/source/addon.zip" "${pkgdir}/usr/lib/zen-browser/browser/extensions/{aecec67f-0d10-4fa7-b7c7-609a2db280cf}.xpi"
 }
-
 
