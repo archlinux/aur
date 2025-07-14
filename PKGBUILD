@@ -1,7 +1,7 @@
 # Maintainer: Keiran <keiran0@proton.me>
 # Made possible by: Gurov <https://github.com/Gur0v>
 pkgname=archium
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Fast & Easy Package Management for Arch Linux"
 arch=('x86_64')
