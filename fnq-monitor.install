@@ -1,38 +1,36 @@
 post_install() {
     if command -v systemctl >/dev/null 2>&1; then
-        echo "[1/2] Enabling and starting acpid system-wide..."
+        echo "[1/3] Enabling and starting acpid system-wide..."
         systemctl enable --now acpid.service >/dev/null 2>&1 || echo "Warning: Failed to enable/start acpid"
+        echo "[2/3] Enabling fnq-monitor for all users..."
+        systemctl --user --global enable fnq-monitor.service >/dev/null 2>&1 || echo "Warning: Failed to enable fnq-monitor globally"
     else
-        echo "Warning: systemctl not found, skipping acpid activation"
+        echo "Warning: systemctl not found, skipping acpid and fnq-monitor activation"
     fi
-
-    echo "[2/2] Installation complete."
-    echo "ℹ To enable Fn+Q monitor for your user session, run:"
-    echo "    systemctl --user daemon-reexec && systemctl --user enable --now fnq-monitor.service"
+    echo "[3/3] Installation complete."
 }
 
 post_upgrade() {
     if command -v systemctl >/dev/null 2>&1; then
-        echo "[1/2] Ensuring acpid is enabled and running..."
+        echo "[1/3] Ensuring acpid is enabled and running..."
         systemctl enable --now acpid.service >/dev/null 2>&1 || echo "Warning: Failed to enable/start acpid"
+        echo "[2/3] Ensuring fnq-monitor is enabled for all users..."
+        systemctl --user --global enable fnq-monitor.service >/dev/null 2>&1 || echo "Warning: Failed to enable fnq-monitor globally"
     else
-        echo "Warning: systemctl not found, skipping acpid activation"
+        echo "Warning: systemctl not found, skipping acpid and fnq-monitor activation"
     fi
-
-    echo "[2/2] Upgrade complete."
-    echo "ℹ To enable Fn+Q monitor for your user session, run:"
-    echo "    systemctl --user daemon-reexec && systemctl --user enable --now fnq-monitor.service"
+    echo "[3/3] Upgrade complete."
 }
 
 pre_remove() {
     if command -v systemctl >/dev/null 2>&1; then
         echo "Disabling acpid service..."
         systemctl disable acpid.service >/dev/null 2>&1 || true
+        echo "Disabling fnq-monitor for all users..."
+        systemctl --user --global disable fnq-monitor.service >/dev/null 2>&1 || true
     fi
 }
 
 post_remove() {
     echo "Fn+Q monitor removed."
-    echo "ℹ To disable the user service, run:"
-    echo "    systemctl --user disable --now fnq-monitor.service"
 }
