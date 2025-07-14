@@ -1,0 +1,16 @@
+pkgbase = cn-dascom-pin-driver
+	pkgdesc = Dascom Pin Dirver (Supported models include 24-pin、AR-510N(include AR-570 ...) and some DS Series.)
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://www.dascom.cn/
+	arch = x86_64
+	license = mit
+	depends = cups
+	depends = cups-pdf
+	depends = cups-filters
+	depends = ghostscript
+	depends = system-config-printer
+	source = https://raw.githubusercontent.com/LongYinStudio/printers-drivers/refs/heads/main/cn.dascom.pin-driver_2.0.6_amd64.deb
+	sha256sums = SKIP
+
+pkgname = cn-dascom-pin-driver
