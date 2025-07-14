@@ -1,0 +1,17 @@
+pkgbase = raycast-linux-appimage
+	pkgdesc = An open-source, Raycast-inspired launcher for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ByteAtATime/raycast-linux
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = fuse2
+	noextract = raycast-linux-appimage-0.1.0_amd64.AppImage
+	options = !strip
+	source_x86_64 = raycast-linux-appimage-0.1.0_amd64.AppImage::https://github.com/ByteAtATime/raycast-linux/releases/download/v0.1.0-alpha/raycast-linux_0.1.0_amd64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/ByteAtATime/raycast-linux/main/LICENSE
+	sha256sums_x86_64 = 0ea44e0c3b623395fcd2033debb545ce6acf8de72914f80389d0a1d11aab281a
+	sha256sums_x86_64 = bbf2463a9c1da2b25365398dbe7ff15694eb7e700c7185194fdc9a7a21a6f786
+
+pkgname = raycast-linux-appimage
