@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=zen-browser-portable
-pkgver=None
+pkgver=1.14.4b
 pkgrel=1
 pkgdesc="Zen Browser sandboxed by portable"
 arch=('any')
