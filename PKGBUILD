@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=geforce-infinity-bin
 _pkgname=GeForceInfinity
-pkgver=1.0.0
-_electronversion=31
-pkgrel=2
+pkgver=1.1.0
+_electronversion=37
+pkgrel=1
 pkgdesc="A work-in-progress application designed to enhance the GeForce NOW experience.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://geforce-infinity.xyz/"
@@ -18,13 +18,17 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AstralVixen/GeForce-Infinity/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b180b12ac6feba152d14e915cfdddaa605ae70ec1d8b299672c09724a1c88138'
+sha256sums=('647a593be73fa0f4c8dae7eecc61deda53b76a32af6cec4c661644ea3066e195'
             '669b46a31342a99549197ed97fac42000bbfe178114b2d6843aa08f6902b11a1'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,8 +37,10 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
-        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/\/opt\/${_pkgname}\///g
         s/\/opt\/${_pkgname}\/resources\/infinitylogo\.ico/${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
