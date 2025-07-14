@@ -2,9 +2,9 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="probe-rs-tools"
-_cratever="0.29.0"
+_cratever="0.29.1"
 pkgname="probe-rs"
-pkgver=0.29.0
+pkgver=0.29.1
 pkgrel=1
 pkgdesc='A collection of on chip debugging tools to communicate with microchips.'
 url='https://probe.rs'
@@ -15,9 +15,9 @@ makedepends=('cargo' 'cargo-auditable' 'cmake')
 optdepends=('rtthost: Real-time transfer client')
 conflicts=('cargo-embed' 'cargo-flash')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/probe-rs-tools/0.29.0/download"
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/probe-rs-tools/0.29.1/download"
         '69-probe-rs.rules')
-sha512sums=('284578145ce0d078b3a7bc8b9f68ce71d056f1946348531eef25a6df2393b6229c345d6bb711182f349efe749d2300cd5670d4e00d4d2ce0c52f0d300044cd02'
+sha512sums=('16addf9d864e36078df3e1df908241d09007be876f311707d49705532e723c967a517a5f187342137ab3bcf10a1ac08b862e2fa2783ff4b5cedb2ddbafa56825'
             'bb16b7e2c1d1522bae4b457c3547337531d4ebc9f2db1f1e319c4d7ad4308da6888afa746516cb2a41349cca6114b7cf1927825936ab879b066b362197b15095')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
