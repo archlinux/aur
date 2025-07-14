@@ -1,0 +1,21 @@
+pkgbase = virt-lightning
+	pkgdesc = A tool to start libvirt VMs in a couple of seconds
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/virt-lightning/virt-lightning
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = libvirt-python
+	depends = python-yaml
+	provides = virt-lightning
+	provides = vl
+	source = virt-lightning-2.3.2.tar.gz::https://github.com/virt-lightning/virt-lightning/archive/refs/tags/2.3.2.tar.gz
+	sha256sums = d89d05116f9bd21a8d90adcf5bfaa6f60752f63cdd9cb2fd73bd6f729bbd94e9
+
+pkgname = virt-lightning
