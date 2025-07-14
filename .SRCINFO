@@ -1,22 +1,21 @@
 pkgbase = reticulum-meshchat-bin
 	pkgdesc = A simple mesh network communications app powered by the Reticulum Network Stack.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.22.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://meshchat.app/
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron30
-	depends = nodejs
-	provides = reticulum-meshchat=1.22.0
+	provides = reticulum-meshchat=2.0.0
 	conflicts = reticulum-meshchat
 	options = !strip
 	options = !emptydirs
-	source = reticulum-meshchat-1.22.0.AppImage::https://github.com/liamcottle/reticulum-meshchat/releases/download/v1.22.0/ReticulumMeshChat-v1.22.0-linux.AppImage
-	source = LICENSE-1.22.0::https://raw.githubusercontent.com/liamcottle/reticulum-meshchat/v1.22.0/LICENSE
+	source = reticulum-meshchat-2.0.0-x86_64.AppImage::https://github.com/liamcottle/reticulum-meshchat/releases/download/v2.0.0/ReticulumMeshChat-v2.0.0-linux.AppImage
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/liamcottle/reticulum-meshchat/v2.0.0/LICENSE
 	source = reticulum-meshchat.sh
-	sha256sums = 1e1ff8acb32d00077ab3be01d299196a7fe6940ff09cd822746eea03a09d6fd1
+	sha256sums = 43b07fc21f4b2e1a76bab589d7da4a62284bbb588fd2c280330f896638d1b2c8
 	sha256sums = 4e590a1cbb467d60c6c55ca547dc71517955098d13d5483e3d9191fc03af44df
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = reticulum-meshchat-bin
