@@ -1,6 +1,6 @@
 pkgbase = python-formulaic
 	pkgdesc = A high performance of Wilkinson formulas in Pythonn
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/matthewwardrop/formulaic
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-formulaic
 	depends = python-wrapt
 	optdepends = python-pyarrow
 	optdepends = python-sympy
-	source = https://files.pythonhosted.org/packages/source/f/formulaic/formulaic-1.1.1.tar.gz
-	sha256sums = ddf80e4bef976dd99698aa27512015276c7b86c314b601ae6fd360c7741b7231
+	source = https://files.pythonhosted.org/packages/source/f/formulaic/formulaic-1.2.0.tar.gz
+	sha256sums = ab5c43a5b107d1b1e87f55cf0a01245531cce793d3dcab433dae12053c3cb2d6
 
 pkgname = python-formulaic
