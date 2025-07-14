@@ -1,7 +1,7 @@
 # Maintainer: Max Harmathy <harmathy@alumni.tum.de>
 pkgname=openstack_cli
-pkgver=0.12.3
-pkgrel=2
+pkgver=1.11.4
+pkgrel=1
 pkgdesc="CLI for the OpenStack written in Rust"
 arch=('x86_64')
 url="https://github.com/gtema/openstack"
