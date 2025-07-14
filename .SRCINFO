@@ -1,7 +1,7 @@
 pkgbase = madypass
     pkgdesc = Gestore di password sicure con GUI PyQt5 e cifratura Fernet
     pkgver = 1.0
-    pkgrel = 2
+    pkgrel = 3
     url = https://github.com/madyel/generate-password
     arch = any
     license = GPL3
