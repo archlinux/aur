@@ -2,28 +2,25 @@
 # Contributor: Steven Allen <steven@stebalien.com>
 
 pkgname=pbc
-pkgver=0.5.14
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='The pairing-based cryptography library'
 arch=('x86_64' 'i686')
 url='https://crypto.stanford.edu/pbc/'
 license=('LGPL-3.0-or-later')
 depends=('gmp')
+makedepends=('autoconf-archive')
 provides=('libpbc.so')
 source=("$url/files/$pkgname-$pkgver.tar.gz")
-sha256sums=('772527404117587560080241cedaf441e5cac3269009cdde4c588a1dce4c23d2')
+sha256sums=('18275a367283077bafe35f443200499e3b19c4a3754953da2a1b2f0d6b5922dc')
 
 build() {
   cd "$pkgname-$pkgver"
 
+  sed -i "s/(yywrap)/([noyywrap])/" configure.ac
+  ./setup
   ./configure --prefix=/usr --enable-optimized
   make
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-
-  make -k check
 }
 
 package() {

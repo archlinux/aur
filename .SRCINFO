@@ -1,14 +1,15 @@
 pkgbase = pbc
 	pkgdesc = The pairing-based cryptography library
-	pkgver = 0.5.14
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://crypto.stanford.edu/pbc/
 	arch = x86_64
 	arch = i686
 	license = LGPL-3.0-or-later
+	makedepends = autoconf-archive
 	depends = gmp
 	provides = libpbc.so
-	source = https://crypto.stanford.edu/pbc//files/pbc-0.5.14.tar.gz
-	sha256sums = 772527404117587560080241cedaf441e5cac3269009cdde4c588a1dce4c23d2
+	source = https://crypto.stanford.edu/pbc//files/pbc-1.0.0.tar.gz
+	sha256sums = 18275a367283077bafe35f443200499e3b19c4a3754953da2a1b2f0d6b5922dc
 
 pkgname = pbc
