@@ -1,6 +1,6 @@
 pkgbase = zsh-abbr
 	pkgdesc = The zsh manager for auto-expanding abbreviations, inspired by fish shell.
-	pkgver = 6.3.0
+	pkgver = 6.3.2
 	pkgrel = 1
 	url = https://github.com/olets/zsh-abbr
 	changelog = CHANGELOG.md
@@ -8,9 +8,9 @@ pkgbase = zsh-abbr
 	license = LicenseRef-custom
 	makedepends = git
 	depends = zsh
-	source = zsh-abbr-6.3.0::git+https://github.com/olets/zsh-abbr.git#tag=v6.3.0
+	source = zsh-abbr-6.3.2::git+https://github.com/olets/zsh-abbr.git#tag=v6.3.2
 	source = zsh-job-queue::git+https://github.com/olets/zsh-job-queue.git#commit=80327a7
-	b2sums = 98333dcf9594f542876af8a4b49e7fca19d1787f88afa39e817c02912dbcf64c31545420a51be6c818eecdd1f7e504cb2b7c2c27f38aac3010d2aed2763a8dfc
+	b2sums = d5a4c30f6e168d248d055d3abb3bba419008b0f1e9c0e454f9d5b4d4fbf57fa0f0ec10181026bea7082c10f54aac1db23ffd75a68d0ab02401ce5e0dd46229e3
 	b2sums = a9cb18e69ba78ad49c938ae7286593b3bbee2e6314adddd711b70543b25cf5fd372a9dbcd86749370abd764344aff0e4070c2791f9a016d5a84b9a5fb323b1b4
 
 pkgname = zsh-abbr
