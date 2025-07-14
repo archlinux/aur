@@ -1,6 +1,6 @@
 pkgbase = pandora-box-bin
 	pkgdesc = A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://github.com/snakem982/Pandora-Box
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = pandora-box-bin
 	conflicts = pandora-box
 	source = pandora-box.sh
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = pandora-box-1.0.14-aarch64.zip::https://github.com/snakem982/Pandora-Box/releases/download/v1.0.14/linux-arm64-rpm.zip
-	sha256sums_aarch64 = 34792842ee51eb6f81c9d06619ede8d814f345a3dfcd1db6a85e5590ca8e3c40
-	source_x86_64 = pandora-box-1.0.14-x86_64.zip::https://github.com/snakem982/Pandora-Box/releases/download/v1.0.14/linux-amd64-rpm.zip
-	sha256sums_x86_64 = 555ef2c1c6682b58a7b212620d11bb009e3ccbb1f83e9b4acee3b33d9ba8401f
+	source_aarch64 = pandora-box-1.0.15-aarch64.zip::https://github.com/snakem982/Pandora-Box/releases/download/v1.0.15/linux-arm64-rpm.zip
+	sha256sums_aarch64 = 9a36ac8a12cc30f5987f83ccd6c1f0fba2ce6fee2215ddeb7dfc402d81eb6b1b
+	source_x86_64 = pandora-box-1.0.15-x86_64.zip::https://github.com/snakem982/Pandora-Box/releases/download/v1.0.15/linux-amd64-rpm.zip
+	sha256sums_x86_64 = ef03c12508dca484c2b0ea5460c6d87434272af60b6977a3ae548b4943328401
 
 pkgname = pandora-box-bin
