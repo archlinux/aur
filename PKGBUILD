@@ -2,13 +2,13 @@
 # Contributor: Anthony DeStefano <adx@fastmail.fm> 
 
 pkgname=flrig
-pkgver=2.0.05
+pkgver=2.0.08
 pkgrel=1
 pkgdesc="Amateur (Ham) Radio Transceiver Control Program"
 arch=('armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.w1hkj.com/flrig-help/index.html"
-license=('GPL')
-depends=('fltk' 'systemd-libs' 'flxmlrpc>=1.0.1' 'hamradio-menus')
+license=('GPL-2.0-or-later')
+depends=('fltk<1.5' 'systemd-libs' 'flxmlrpc>=1.0.1' 'hamradio-menus')
 optdepends=('fldigi: for digital mode interface')
 makedepends=('autoconf' 'automake' 'pkg-config')
 provides=('flrig')
@@ -38,5 +38,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('d92d70a1c35ac869af0a5f0a1cf5698b')
-sha256sums=('31cdc025f05db489fd9ba087eb4d8c8f85168fc3aa9cf95fe488b02d780c62b0')
+md5sums=('759c2099c04f0a758061da029b390d4e')
+sha256sums=('f9eaf140164a1f330e40f33f54093e230f48b4f6675bd35d8aed07434f12ce6f')
