@@ -1,6 +1,6 @@
 pkgbase = archipelagomw-bin
 	pkgdesc = A Multi-Game Randomizer and Server
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/ArchipelagoMW/Archipelago
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = archipelagomw-bin
 	depends = xsel
 	depends = xclip
 	optdepends = mtdev: Multi-touch device support
-	source = https://github.com/ArchipelagoMW/Archipelago/releases/download/0.6.1/Archipelago_0.6.1_linux-x86_64.tar.gz
-	sha512sums = a414b0c6eb4a73fe367f6d6f1426f26c314e2c15a750fa6b57057bc8f81aa7d5fb992bb99d55b881a580418e48a8302c489322b90d8fd35786aea6db51add422
+	source = https://github.com/ArchipelagoMW/Archipelago/releases/download/0.6.2/Archipelago_0.6.2_linux-x86_64.tar.gz
+	sha512sums = 22c79a88763050a30117fa9f0b61e022a3dabefe5fd5095ed9baf6e737c28f5dc10da764550d969335b5788cd0ca693c616975bc58773c733349c2153a987fc3
 
 pkgname = archipelagomw-bin
