@@ -10,14 +10,11 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "twintaillauncher-bin")
-source=("${_pkgname}::git+${url}.git#branch=master"
-		stabilize.patch)
-sha256sums=('SKIP'
-			'SKIP')
+source=("${_pkgname}::git+${url}.git#branch=master")
+sha256sums=('SKIP')
 options=('!lto' '!debug')
 
 prepare() {
-	patch -Np1 -d $_pkgname -i ../stabilize.patch
 	cd $_pkgname
 	pnpm i
 }

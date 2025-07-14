@@ -27,8 +27,6 @@ pkgbase = twintaillauncher-git
 	options = !lto
 	options = !debug
 	source = twintaillauncher::git+https://github.com/TwintailTeam/TwintailLauncher.git#branch=master
-	source = stabilize.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = twintaillauncher-git
