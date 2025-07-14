@@ -1,7 +1,7 @@
 pkgbase = gtk2-perl
 	pkgdesc = Perl bindings for GTK+ 2.x
 	pkgver = 1.24993
-	pkgrel = 8
+	pkgrel = 9
 	url = http://gtk2-perl.sourceforge.net/
 	arch = x86_64
 	license = LGPL

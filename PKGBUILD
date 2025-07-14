@@ -3,7 +3,7 @@
 
 pkgname=gtk2-perl
 pkgver=1.24993
-pkgrel=8
+pkgrel=9
 pkgdesc="Perl bindings for GTK+ 2.x"
 arch=(x86_64)
 license=('LGPL')
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd Gtk2-$pkgver
   export PERL_USE_UNSAFE_INC=1
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$CFLAGS -Wno-incompatible-pointer-types"
   make
 }
 
