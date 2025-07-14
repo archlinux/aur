@@ -21,5 +21,5 @@ prepare() {
 }
 
 package() {
-    install -Dm755 nav -t "$pkgdir/usr/local/bin/"
+    install -Dm755 nav -t "$pkgdir/usr/bin/"
 }
