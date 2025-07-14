@@ -1,0 +1,20 @@
+pkgbase = alman-bin
+	pkgdesc = Intelligent alias manager with TUI for managing shell aliases with intelligent suggestions based on command history
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/vaibhav-mattoo/alman
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = alman
+	conflicts = alman
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/vaibhav-mattoo/alman/v0.1.2/LICENSE
+	source = README-0.1.2.md::https://raw.githubusercontent.com/vaibhav-mattoo/alman/v0.1.2/README.md
+	sha256sums = 5c4f66133a924db1fcc7218088f8c73c87b382bcb9612fc9347f4c0b83658cce
+	sha256sums = 50938bef4dcde911f2ef821b223aba7d8d25b71978c8ca4b6f73c16f34659f2b
+	source_x86_64 = https://github.com/vaibhav-mattoo/alman/releases/download/v0.1.2/alman-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 02e6122635dffa5c00d44e2086e584ec859b8f2b0bd0608ceeeaaaf92a366d10
+	source_aarch64 = https://github.com/vaibhav-mattoo/alman/releases/download/v0.1.2/alman-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 864dd03f1b56d6c8055a6e26366489127fa1c94d90a6e871d9bd09ad657cf590
+
+pkgname = alman-bin
