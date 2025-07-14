@@ -1,16 +1,16 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=nixfmt
-pkgver=0.6.0
-pkgrel=6
-pkgdesc="An opinionated formatter for Nix"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Official formatter for Nix code"
 url="https://github.com/NixOS/nixfmt"
 license=("MPL-2.0")
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-cmdargs' 'haskell-megaparsec' 'haskell-parser-combinators' 'haskell-safe-exceptions' 'haskell-scientific')
+depends=('ghc-libs' 'haskell-cmdargs' 'haskell-megaparsec' 'haskell-parser-combinators' 'haskell-safe-exceptions' 'haskell-scientific' 'haskell-file-embed' 'haskell-pretty-simple')
 makedepends=('ghc' 'uusi')
 source=("https://github.com/NixOS/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('79abe243eec4b403a3571153f68ccbf5b3e2e342ffbe5f78318f3612ef3c073dcf5afa922276edd50a763a85463ffd617622fd2524d4fc55af7e4e8e91312325')
+b2sums=('7e6a8635d0c444584e4728f50445fc07d91c1f540de920625be7ad74c7084ce7a094e3a78b898659df3c3b2e263d944653b08d458009198faa6a016b85b3b4b0')
 
 prepare() {
   uusi $pkgname-$pkgver/$pkgname.cabal
