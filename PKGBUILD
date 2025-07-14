@@ -143,9 +143,6 @@ package() {
 	install -Dm755 \
 		portable-config \
 		"${pkgdir}/usr/lib/portable/info/com.blackmagic.davinci/config"
-	install -Dm644 \
-		"${srcdir}/desktop.file" \
-		"${pkgdir}/usr/share/applications/com.blackmagic.davinci.desktop"
   # Install binary launchers
   #install -D -m 0755 "${srcdir}/davinci-control-panels-setup.sh" \
   #  "${pkgdir}/usr/bin/davinci-control-panels-setup"
@@ -163,16 +160,6 @@ package() {
   install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
     "share/default_cm_config.bin"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
-  # Install Desktop files and menu
-  install -D -m 0644 -t "${pkgdir}/usr/share/applications" \
-    "share/DaVinciResolve.desktop" \
-    "share/DaVinciControlPanelsSetup.desktop" \
-    "share/blackmagicraw-player.desktop" \
-    "share/blackmagicraw-speedtest.desktop"
-  install -D -m 0644 -t "${pkgdir}/usr/share/desktop-directories" \
-    "share/DaVinciResolve.directory"
-  install -D -m 0644 -t "${pkgdir}/etc/xdg/menus" \
-    "share/DaVinciResolve.menu"
   # Install icons
   install -D -m 0644 -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps" \
     "graphics/DV_Resolve.png" \
@@ -191,4 +178,8 @@ package() {
   install -D -m 0644 -t "${pkgdir}/usr/lib/udev/rules.d" \
     "share/etc/udev/rules.d"/{99-BlackmagicDevices.rules,99-ResolveKeyboardHID.rules,99-DavinciPanel.rules}
   popd
+  	#rm -r "${pkgdir}/usr/share/applications"
+	install -Dm644 \
+		"${srcdir}/desktop.file" \
+		"${pkgdir}/usr/share/applications/com.blackmagic.davinci.desktop"
 }
