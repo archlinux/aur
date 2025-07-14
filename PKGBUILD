@@ -3,7 +3,7 @@
 pkgname=gstd
 _pkgname=gstd-1.x
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GStreamer framework for controlling audio and video streaming using TCP messages"
 arch=('x86_64' 'aarch64')
 url="https://github.com/RidgeRun/gstd-1.x"
@@ -20,22 +20,26 @@ optdepends=(
 install=gstd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "gstd.service"
+        "gstd-server.service"
+        "gstd.confd"
         "gstd.sysusers"
-        "gstd.install"
-        "gstd.tmpfiles")
+        "gstd.tmpfiles"
+        "gstd.install")
 sha256sums=('d9d3205551482acd6b7ec2a865407b60efce252e8f747553628401c84f88c556'
-            '69b7253e911bc3ac20218bbd481976b92a2ad53e13465ceb79397a7ba688e22f'
-            'd0a9177ad62318b931869d3a246373639cfdc525fe3085e6bc6fd97ca40b6c2f'
-            '513b244cbc6b83981b96c2e7dfdfb983119ed5abf6eb5f5cb9999156eb0bfc84'
-            '3ef0992149c75bf5157b03711b230e69655b2c2e08da1e67f4b9dbd7bfecfd69')
+            'e412603c44f12d2ba7b03e401e22c186c2f59268a49c6b48c60f8dcac489f31a'
+            '576ad2e905a98ee006151075a1e0fc00ba56d7c0a984c95d27ed49c36c7dcc8f'
+            'f42db0544f5fdc0e57417b68cb5129b7051300ada44b762fb29951f05019af02'
+            '68dd9ba38cc6371aae659a0447ea057e27beeef3af4e6bbeeeb17d9133cdad6f'
+            '4c1929641396d5ccc701528012a80e781a7e508c5af9f8b200cafae69f965270'
+            '6a74b4a836f9a4987dda60c37772df55b635559ac12dbca0c7078b1573de42e7')
 
 build() {
   cd "$_pkgname-$pkgver"
   arch-meson build \
-    -Denable-tests=disabled \
-    -Denable-examples=disabled \
+    -Denable-tests=enabled \
+    -Denable-examples=enabled \
     -Denable-gtk-doc=false \
-    -Denable-systemd=enabled \
+    -Denable-systemd=disabled \
     -Denable-initd=disabled \
     -Denable-python=enabled \
     -Dwith-gstd-systemddir=/usr/lib/systemd/system \
@@ -52,13 +56,20 @@ package() {
   # Install the main license file
   install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Install our custom service, user, and tmpfiles configurations
-  install -Dm644 "$srcdir/gstd.service" "$pkgdir/usr/lib/systemd/system/gstd.service"
+  # Install the user service file
+  install -Dm644 "$srcdir/gstd.service" "$pkgdir/usr/lib/systemd/user/gstd.service"
+  
+  # Install the system service file for server use, renaming it to gstd.service
+  install -Dm644 "$srcdir/gstd-server.service" "$pkgdir/usr/lib/systemd/system/gstd.service"
+
+  # Install helper files for the system service
   install -Dm644 "$srcdir/gstd.sysusers" "$pkgdir/usr/lib/sysusers.d/gstd.conf"
   install -Dm644 "$srcdir/gstd.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/gstd.conf"
-
-  # Clean up. The package should NOT own any directories in /run or /var.
-  rm -vf "$pkgdir/usr/lib/systemd/system/gstd-check-user-xenv.sh"
+  
+  # Install the user-configurable environment file
+  install -Dm644 "$srcdir/gstd.confd" "$pkgdir/etc/conf.d/gstd"
+  
+  # Final cleanup
   rm -vrf "$pkgdir/run"
   rm -vrf "$pkgdir/var"
 }

@@ -1,0 +1,25 @@
+[Unit]
+Description=GStreamer Daemon (System Service)
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/gstd
+ExecStart=/usr/bin/gstd $GSTD_OPTS
+ExecStop=/usr/bin/pkill -f "/usr/bin/gstd"
+Restart=on-failure
+RestartSec=5s
+
+User=gstd
+Group=gstd
+
+Environment=GST_PLUGIN_PATH=/usr/lib/gstreamer-1.0/
+RuntimeDirectory=gstd
+ReadWritePaths=/var/lib/gstd /dev/shm
+
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target

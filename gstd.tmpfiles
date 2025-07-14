@@ -1,3 +1,1 @@
-# Type Path             Mode  User  Group  Age  Argument
-# Create /var/log/gstd directory for the gstd service at boot
-d      /var/log/gstd    0775  root  gstd   -
+d /var/log/gstd 0775 root gstd -

@@ -1,0 +1,2 @@
+# Configuration for gstd services
+GSTD_OPTS="--enable-tcp-protocol --tcp-address=127.0.0.1 --tcp-base-port=5000"

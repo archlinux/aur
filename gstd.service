@@ -1,32 +1,15 @@
 [Unit]
-Description=GStreamer Daemon
-After=network.target
-StartLimitBurst=3
-StartLimitIntervalSec=30
+Description=GStreamer Daemon (User Service)
+After=graphical-session.target pipewire.socket pulseaudio.socket
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/gstd
+EnvironmentFile=-/etc/conf.d/gstd
+ExecStart=/usr/bin/gstd $GSTD_OPTS
+ExecStop=/usr/bin/pkill -f "/usr/bin/gstd"
 Restart=on-failure
 RestartSec=5s
 
-# Environment variables for the daemon
-Environment=XDG_RUNTIME_DIR=/run/gstd
-Environment=GST_PLUGIN_PATH=/usr/lib/gstreamer-1.0/
-
-# Security and permissions
-User=gstd
-Group=gstd
-
-# Shared memory and runtime directory
-RuntimeDirectory=gstd
-RuntimeDirectoryMode=0755
-LimitMEMLOCK=infinity
-LimitNOFILE=65536
-
-# IPC and shared memory settings
-RemoveIPC=no
-InaccessiblePaths=-/dev/shm
-
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical-session.target

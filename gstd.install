@@ -1,6 +1,11 @@
 post_install() {
-  echo ">>> A new system user 'gstd' has been created to run the GStreamer Daemon."
-  echo ">>> To enable and start the service, run:"
+  echo ">>> gstd has been installed."
+  echo ">>> Configuration options can be set in /etc/conf.d/gstd"
+  echo ""
+  echo ">>> For desktop use with graphical/audio pipelines, enable the USER service:"
+  echo "    systemctl --user enable --now gstd.service"
+  echo ""
+  echo ">>> For a non-graphical server environment, enable the SYSTEM service:"
   echo "    sudo systemctl enable --now gstd.service"
 }
 
@@ -9,6 +14,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  echo ">>> The 'gstd' system user is not removed automatically. You may remove it manually with:"
-  echo "    sudo userdel gstd"
+    echo ">>> The 'gstd' system user is not removed automatically. You may remove it manually with:"
+    echo "    sudo userdel gstd"
 }
