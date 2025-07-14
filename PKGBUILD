@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts66
-pkgver=6.6.97
+pkgver=6.6.98
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -40,14 +40,14 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('3b67c170638142da56b7a9c3295f2483b88e8c4d3bc26b2bda63b6cf0cb9ee3b'
+sha256sums=('296a34c500abc22c434b967d471d75568891f06a98f11fc31c5e79b037f45de5'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
             '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
             'edc98e741c25e3eda366f6e4675e0350efea8630b9f76799c0b9e0abf065cbc0')
-b2sums=('2eb1d91bfa66f9b067aee55192849e09f55ca5a41758784a97059f2fbaa0a31a611f94424e5917d1fe9a744e003857dd1d6b6a3e9d963bcaa02b80660ec7ee0d'
+b2sums=('56c1d85b781828d735d06c4a8c179da7d810222ce7b594ea1c9177c558e5c83ac483f78a04e1d381c519782af6cc310badba942c50013f2a01431ba96ed78d67'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         '5dc21a7a6f0b840e6a671dcf09a865e42f0e2c000d5e45d3f3202c02946a8ab2207858d0b2ef1004648b8c2963efb428298b263c8494be806dfc9b6af66d5413'
