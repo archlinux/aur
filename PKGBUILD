@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-notification-configurator-git
 _uuid=notification-configurator@exposedcat
-pkgver=1.1.6.r0.gcf7057b
+pkgver=1.3.0.r0.gaacf46d
 pkgrel=1
 pkgdesc="Advanced GNOME notification capabilities including rate limiting, custom color theming per application, and notification positioning"
 arch=('any')
@@ -33,6 +33,8 @@ package() {
   cd gnome-notification-configurator
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   cp -r dist/* "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale/" "$pkgdir/usr/share/"
 
   install -Dm644 dist/schemas/org.gnome.shell.extensions.notification-configurator.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
