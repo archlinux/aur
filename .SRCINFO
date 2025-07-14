@@ -1,0 +1,17 @@
+pkgbase = palettro-bin
+	pkgdesc = A package for quickly updating the color scheme of your RICE
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/arithefirst/palettro
+	arch = x86_64
+	license = GPL3
+	provides = palettro
+	conflicts = palettro
+	source = palettro-1.0.0::https://github.com/arithefirst/palettro/releases/download/v1.0.0/palettro-linux-x86_64
+	source = https://raw.githubusercontent.com/arithefirst/palettro/refs/heads/master/README.md
+	source = https://raw.githubusercontent.com/arithefirst/palettro/refs/heads/master/LICENSE
+	sha256sums = 41cf04b6ac6418ae489e623d328b270f72c1ebf3fa0beff0aaa3585f00c18067
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = palettro-bin
