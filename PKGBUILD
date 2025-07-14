@@ -9,7 +9,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-icu
 pkgver=77.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="International Components for Unicode library (Android ${_android_arch})"
 groups=('android-icu')
@@ -56,7 +56,6 @@ build() {
         --with-cross-build="${PWD}/nativebuild" \
         --with-data-packaging=library \
         --enable-release \
-        --disable-renaming \
         --disable-rpath \
         --disable-extras \
         --disable-tools \
