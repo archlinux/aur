@@ -3,13 +3,11 @@
 # Author: LostRuins (concedo), YellowRoseCx
 
 pkgname=koboldcpp-hipblas
-_pkgver=1.95.1
-pkgver=$_pkgver.yr0
-_git_pkgver=$pkgver-ROCm
+pkgver=1.95.1
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
-url="https://github.com/YellowRoseCx/koboldcpp-rocm"
+url="https://github.com/LostRuins/koboldcpp"
 license=('AGPL-3.0-only')
 depends=(
     'python'
@@ -21,26 +19,30 @@ depends=(
 optdepends=(
     'python-customtkinter: for GUI launcher'
     'python-psutil: increasing the process CPU priority'
+    'zenity: native file picker dialogs'
+    'yad: native file picker dialogs'
 )
-provides=("koboldcpp=$_pkgver" "koboldcpp-rocm=$_pkgver")
+provides=("koboldcpp=$pkgver" "koboldcpp-rocm=$pkgver")
 conflicts=('koboldcpp')
 source=(
-    "$pkgname-${_git_pkgver}.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v${_git_pkgver}.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz"
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
-sha256sums=('9fa34a66b20e4c3966cbea3a2ce44d7e974b4edd3b01cecfc09347565580e8fc'
-            'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
-            'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54')
+sha256sums=(
+    'efb5a7981738bcbf364cad073e646cbea077d5269494ce1bce60542cd2d16a4f'
+    'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
+    'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
+)
 
 build() {
-    cd "$srcdir/koboldcpp-rocm-${_git_pkgver}"
+    cd "$srcdir/koboldcpp-$pkgver"
 
     make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1
 }
 
 package() {
-    cd "$srcdir/koboldcpp-rocm-${_git_pkgver}"
+    cd "$srcdir/koboldcpp-$pkgver"
 
     install -d "$pkgdir/usr/share/koboldcpp"
 
