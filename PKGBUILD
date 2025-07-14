@@ -1,37 +1,50 @@
-# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
+# Maintainer: Wiktor W. <wykwit@disroot.org>
+# Contributor: Abdur-Rahman Mansoor <armansoor at posteo dot net>
 
 pkgname='rustpython'
-pkgver=0.3.0
+_pkgname='RustPython'
+pkgver=0.4.0+38
+_pkgver='2025-07-14-main-38'
 pkgrel=1
 pkgdesc='A Python Interpreter written in Rust'
 arch=('x86_64' 'i686')
 url='https://github.com/RustPython/RustPython'
-makedepends=('rust')
 license=('MIT')
-source=(
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-)
-conflicts=("${pkgname}")
-provides=("${pkgname}")
-b2sums=('1f6f6c10a40feec5f6dc1ecb4a83cebb4b565b798c0bcaa539c4cd6cae38542dfd6abba3f3dc46f74d03f73ca45a8ecd500654adca93c13d985afa34d3afe043')
-_rustpythonpath="/usr/lib/${pkgname}${pkgver}"
+depends=('gcc-libs' 'glibc' 'libffi' 'openssl' 'xz')
+makedepends=('cargo' 'rust')
+provides=('rustpython')
+conflicts=('rustpython')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('1918616d8f305100653813e6df43dd5f6f2076a11db5b1594d3868c30b7d78cf')
 
-build() {
-	cd "${srcdir}/RustPython-${pkgver}"
-	BUILDTIME_RUSTPYTHONPATH="${_rustpythonpath}" cargo build --release --locked
+_rustpythonpath="/usr/lib/${pkgname}-${_pkgver}"
+
+prepare() {
+  cd "${_pkgname}-${_pkgver}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-check() {
-	cd "${srcdir}/RustPython-${pkgver}"
-	cargo test --release --locked
+build() {
+  cd "${_pkgname}-${_pkgver}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export OPENSSL_INCLUDE_DIR='/usr/include/'
+  export OPENSSL_LIB_DIR='/usr/lib/'
+  export BUILDTIME_RUSTPYTHONPATH="${_rustpythonpath}"
+  cargo build --release --frozen --features jit,ssl
 }
 
 package() {
-	cd "${srcdir}/RustPython-${pkgver}"
-	install -Dm755 ./target/release/rustpython -t "${pkgdir}/usr/bin"
-	install -Dm644 ./LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 ./README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-	[[ ! -d "${pkgdir}${_rustpythonpath}" ]] && mkdir -p "${pkgdir}${_rustpythonpath}"
-	cp -r ./Lib/* "${pkgdir}${_rustpythonpath}"
+  cd "${_pkgname}-${_pkgver}"
+
+  install -Dm755 "./target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm644 ./LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 ./README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+  mkdir -p "${pkgdir}${_rustpythonpath}"
+  cp -r ./Lib/* "${pkgdir}${_rustpythonpath}"
 }
-	
+
