@@ -2,10 +2,10 @@ pkgbase = m-tools
 	pkgdesc = a fast and lightweight bash-based text editing tool
 	pkgver = 2.1
 	pkgrel = 1
-	url = https://aur.archlinux.org/packages/m
+	url = https://github.com/kayemaye/m
 	arch = any
 	license = MIT
-	source = https://raw.githubusercontent.com/kayemaye/m/refs/heads/main/m
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	source = https://github.com/kayemaye/m/releases/download/v2.0/m
+	sha256sums = d71f8591b7b9c16b6faba5e3971248b288eb205bb7ad9fe87acc58b77664a5b
 
 pkgname = m-tools
