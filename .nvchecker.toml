@@ -1,0 +1,4 @@
+[nginx-mainline-mod-headers-more]
+source = "git"
+git = "https://github.com/openresty/headers-more-nginx-module.git"
+prefix = "v"
