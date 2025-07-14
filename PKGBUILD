@@ -2,7 +2,7 @@
 # Adapted from https://gitlab.alpinelinux.org/alpine/aports/-/blob/5eda3cc22d0f1657c9c616545464b9497a35c265/community/virt-lightning/APKBUILD
 
 pkgname=virt-lightning
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A tool to start libvirt VMs in a couple of seconds"
 url="https://github.com/virt-lightning/virt-lightning"
@@ -12,7 +12,7 @@ depends=("python" "libvirt-python" "python-yaml")
 makedepends=('python-setuptools' 'python-build' 'python-wheel' 'python-installer' 'python-setuptools-scm')
 provides=("$pkgname" "vl")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/virt-lightning/virt-lightning/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d89d05116f9bd21a8d90adcf5bfaa6f60752f63cdd9cb2fd73bd6f729bbd94e9')
+sha256sums=('18932ad829a9982774cbd57ac6586a22d2b5608612d0bd57d1304292f940d972')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver

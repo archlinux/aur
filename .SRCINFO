@@ -1,6 +1,6 @@
 pkgbase = virt-lightning
 	pkgdesc = A tool to start libvirt VMs in a couple of seconds
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/virt-lightning/virt-lightning
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = virt-lightning
 	depends = python-yaml
 	provides = virt-lightning
 	provides = vl
-	source = virt-lightning-2.3.2.tar.gz::https://github.com/virt-lightning/virt-lightning/archive/refs/tags/2.3.2.tar.gz
-	sha256sums = d89d05116f9bd21a8d90adcf5bfaa6f60752f63cdd9cb2fd73bd6f729bbd94e9
+	source = virt-lightning-2.4.0.tar.gz::https://github.com/virt-lightning/virt-lightning/archive/refs/tags/2.4.0.tar.gz
+	sha256sums = 18932ad829a9982774cbd57ac6586a22d2b5608612d0bd57d1304292f940d972
 
 pkgname = virt-lightning
