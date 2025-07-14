@@ -6,15 +6,15 @@ pkgname=($pkgbase $pkgbase-src)
 
 epoch=1
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 _tests_commit=0b27b42aef05
 
 pkgdesc='webserver in an effort to preserve free and open development of nginx (linked against libressl)'
 arch=(i686 x86_64)
 url=https://freenginx.org
 license=(BSD-2-Clause)
-depends=(libressl geoip libxcrypt pcre2 zlib glibc mailcap)
-makedepends=(mercurial)
+depends=(libressl geoip gd libxcrypt pcre2 zlib glibc libxml2 libxslt mailcap)
+makedepends=(perl mercurial)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
 	      perl-cryptx memcached ffmpeg coreutils)
 backup=(etc/nginx/fastcgi.conf
@@ -34,44 +34,44 @@ source=("$url/download/freenginx-$pkgver.tar.gz"{,.asc}
 sha256sums=('c4b259afa560c34b37292e9e9c76cfd71ba24cfcff05c3f339d6a63a3f46801e'
             'SKIP'
             '5690168cdab62225ecee3345e30e7bc2475794253f4139569c611bd59884374c'
-            'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
+            'daa4292d37342f3a1c4e82a85d3b83e3b559f11e8cd309788dc8d6e46c0ce247'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8)  # Maxim Dounin <mdounin@mdounin.ru>
 
 _common_flags=(
-	--with-compat
-	--with-debug
-	--with-file-aio
-	--with-http_addition_module
-	--with-http_auth_request_module
-	--with-http_dav_module
-	--with-http_degradation_module
-	--with-http_flv_module
-	--with-http_geoip_module
-	--with-http_gunzip_module
-	--with-http_gzip_static_module
-	--with-http_mp4_module
-	--with-http_realip_module
-	--with-http_secure_link_module
-	--with-http_slice_module
-	--with-http_ssl_module
-	--with-http_stub_status_module
-	--with-http_sub_module
-	--with-http_v2_module
-	--with-mail
-	--with-mail_ssl_module
-	--with-pcre-jit
-	--with-stream
-	--with-stream_geoip_module
-	--with-stream_realip_module
-	--with-stream_ssl_module
-	--with-stream_ssl_preread_module
-	--with-threads
-)
-
-_quic_flags=(
-	--with-http_v3_module
-	#  --with-stream_quic_module
+    --with-compat
+    --with-debug
+    --with-file-aio
+    --with-http_addition_module
+    --with-http_auth_request_module
+    --with-http_dav_module
+    --with-http_degradation_module
+    --with-http_flv_module
+    --with-http_geoip_module
+    --with-http_gunzip_module
+    --with-http_gzip_static_module
+    --with-http_image_filter_module
+    --with-http_mp4_module
+    --with-http_perl_module
+    --with-http_random_index_module
+    --with-http_realip_module
+    --with-http_secure_link_module
+    --with-http_slice_module
+    --with-http_ssl_module
+    --with-http_stub_status_module
+    --with-http_sub_module
+    --with-http_v2_module
+    --with-http_v3_module
+    --with-http_xslt_module
+    --with-mail
+    --with-mail_ssl_module
+    --with-pcre-jit
+    --with-stream
+    --with-stream_geoip_module
+    --with-stream_realip_module
+    --with-stream_ssl_module
+    --with-stream_ssl_preread_module
+    --with-threads
 )
 
 prepare() {
@@ -99,8 +99,7 @@ build() {
 		--http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
 		--with-cc-opt="-I/usr/include/libressl" \
 		--with-ld-opt="$LDFLAGS -L/usr/lib/libressl -Wl,-rpath=/usr/lib/libressl" \
-		${_common_flags[@]} \
-		${_quic_flags[@]}
+		${_common_flags[@]}
 
 	make
 }
