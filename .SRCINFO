@@ -1,7 +1,7 @@
 pkgbase = ellipse
 	pkgdesc = Command that truncates and ellipses strings in a human-friendly way
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/ellipse-bin
 	arch = aarch64
 	arch = i686
