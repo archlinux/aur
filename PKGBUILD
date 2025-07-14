@@ -3,13 +3,13 @@
 pkgbase=vcutil
 pkgname=(ipmikvm)
 pkgver=1.55 # renovate: datasource=github-tags depName=ossobv/vcutil
-pkgrel=1
+pkgrel=2
 pkgdesc="Misc. simple utilities to aid version control and host maintenance."
 license=()
 arch=('any')
 depends=()
 url=https://github.com/ossobv/vcutil
-source=("$pkgbase.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('7732ea801176e54094dd6618de02d2dc3d12e934c07138f9fe62c60809bb79ff0ef1b71db966c2fd00f214a0e856ce3e975c581a58742f84b94ab812c3b7b6ac')
 
 declare -A pkgdescs
