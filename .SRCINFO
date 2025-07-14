@@ -1,13 +1,13 @@
 pkgbase = kal
 	pkgdesc = Colorful little calendar utility for getting a monthly overview
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/xyproto/kal
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/xyproto/kal#commit=f8fcb2793e65b745ec1a890249e5f6492ee87b57
-	b2sums = SKIP
+	source = git+https://github.com/xyproto/kal#tag=v1.3.1
+	b2sums = a6687d0625e3122e64aed97f0cd4d33f1af5a47aa61434c647ab2d944d490424f13ed3481c310e210758f25126275299a407c86ab21f421707a7382035a17974
 
 pkgname = kal
