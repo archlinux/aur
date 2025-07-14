@@ -5,8 +5,8 @@
 pkgname='python-bs4'
 _pkgname='bs4'
 pkgver='0.0.2'
-pkgrel=2
-pkgdesc='Dummy package for BS4 name, because CME requires it.'
+pkgrel=3
+pkgdesc='This is a dummy package designed to prevent namesquatting on PyPI. You should install beautifulsoup4 instead.'
 arch=('any')
 url='https://pypi.python.org/pypi/bs4/'
 license=('custom:unknown')
