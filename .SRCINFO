@@ -1,6 +1,6 @@
 pkgbase = psfu
 	pkgdesc = process fu
-	pkgver = 0.4.7
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/idiv-biodiversity/psfu
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = psfu
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = psfu-0.4.7.tar.gz::https://github.com/idiv-biodiversity/psfu/archive/v0.4.7.tar.gz
-	md5sums = 2ae607b5c33ec3c4f132ca2c15f0489f
+	source = psfu-0.5.0.tar.gz::https://github.com/idiv-biodiversity/psfu/archive/v0.5.0.tar.gz
+	md5sums = fb4cbc1e23f2c49ffd958ff514fb85d4
 
 pkgname = psfu

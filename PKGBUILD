@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=psfu
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="process fu"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/idiv-biodiversity/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('2ae607b5c33ec3c4f132ca2c15f0489f')
+md5sums=('fb4cbc1e23f2c49ffd958ff514fb85d4')
 
 prepare() {
   # shellcheck disable=2154
