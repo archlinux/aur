@@ -1,0 +1,27 @@
+diff --color --unified --recursive --text --color pxview-git/CMakeLists.txt pxview-git-new/CMakeLists.txt
+--- pxview-git/CMakeLists.txt	2025-07-15 00:10:35.748093407 +0800
++++ pxview-git-new/CMakeLists.txt	2025-07-15 00:11:44.735459528 +0800
+@@ -369,17 +369,14 @@
+ 	PXView/src/QRibbon/qribbon.ui
+ )
+ 
+-if(NOT QT_VERSION_FORCE OR "${QT_VERSION_FORCE}" STREQUAL "5")
+-	find_package(Qt6Core QUIET)
+-	if(Qt6Core)
+-		qt6_wrap_ui(UI_HEADERS ${UIS})
+-	else()
+-		qt5_wrap_ui(UI_HEADERS ${UIS})
+-	endif()
+-endif()
+ 
++if(Qt5Core_FOUND)
++	qt5_wrap_ui(UI_HEADERS ${UIS})
++endif()
+ 
+-#qt_wrap_ui(UI_HEADERS ${UIS})
++if(Qt6Core_FOUND)
++	qt6_wrap_ui(UI_HEADERS ${UIS})
++endif()
+ 
+ set(PXView_HEADERS
+ 	PXView/src/mystyle.h 

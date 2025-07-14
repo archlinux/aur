@@ -6,8 +6,8 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.3.7.r7.8c9ef49
-pkgrel=4
+pkgver=1.4.5.r8.e8e9042
+pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
@@ -18,9 +18,11 @@ depends=(hicolor-icon-theme glib2 python fftw
         libusb zlib qt5-base boost-libs saribbon)
 makedepends=(boost cmake git librsvg)
 source=("${pkgname}::git+https://github.com/PXLogic/PXView"
-        "0001-make-glibc-happy.patch")
+        "0001-make-glibc-happy.patch"
+        "0002-simplify-qt-version-detection.patch")
 sha1sums=('SKIP'
-          'c36f3d81501bc35b207631483179ca663308926b')
+          '8ad9e29163c60579a668c424f47a82c0c0275182'
+          '57350dbf49986724ab6f5767f570dfcc6138e870')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -44,6 +46,7 @@ prepare() {
 
   # patch
   git apply ${srcdir}/0001-make-glibc-happy.patch
+  git apply ${srcdir}/0002-simplify-qt-version-detection.patch
 }
  
 build() {
@@ -53,8 +56,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
-    -B build \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # FIXME
+    -B build
   cmake --build build
 }
 
