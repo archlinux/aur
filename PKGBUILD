@@ -1,6 +1,6 @@
 # Maintainer: kamisaki
 pkgname=hypr-windowrulex
-pkgver=1.0.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc=" ✨ Enhances Hyprland window management by applying float, size, and move adjustments to dynamic title changes."
 arch=('x86_64')
