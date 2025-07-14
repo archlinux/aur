@@ -2,7 +2,7 @@
 # Contributor: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc
-pkgver=6.6.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc='C Bounded Model Checker'
 arch=('x86_64')
@@ -14,7 +14,7 @@ _minisatver=2.2.1
 source=(
   "https://github.com/diffblue/cbmc/archive/refs/tags/cbmc-$pkgver.tar.gz"
   "https://ftp.debian.org/debian/pool/main/m/minisat2/minisat2_$_minisatver.orig.tar.gz")
-b2sums=('9c0cca5a67feb5ff4b9c21016a0435e3f5899d4906ef790ad2d12c1858870abbff83f8d8749ff5e8f2de18649a378d5c3e6b46d6be841a44785299927b605174'
+b2sums=('db85af19f003a6389716b16aa2bd99fe2022ab65851750fb899796ffb62838284647e8bd573637b7cd4113be3d686b636fcba06155deec57b0d889f137b0e897'
         'de9bded4bd8a17ec157af486c0572d47429cd0f59bdd57e1238d3c031d7406dc4e305e5e7368898c991e0184ed845bae21717f10a8ba36ea6b60aac0fb84dc71')
 
 prepare() {
