@@ -3,7 +3,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 pkgname=conversejs
-pkgver=10.1.8
+pkgver=11.0.1
 pkgrel=1
 pkgdesc='Web-based XMPP/Jabber chat client written in JavaScript'
 arch=('any')
@@ -13,7 +13,7 @@ depends=("nodejs")
 makedepends=('npm' 'python')
 backup=('usr/share/webapps/converse.js/fullscreen.html')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/conversejs/converse.js/archive/v$pkgver.tar.gz")
-sha256sums=('75e367913a1e5b2828568808007d58c447b839e090fa8830c8abcf4d0dff94cb')
+sha256sums=('cb7f809db9a9511d2833f7c01b219896797f17d6049a93e8a00d25c851316176')
 
 build() {
     cd "converse.js-$pkgver"
@@ -28,4 +28,5 @@ package() {
     cp -r sounds "$pkgdir"/usr/share/webapps/converse.js/
     cp -r images/favicon.ico "$pkgdir"/usr/share/webapps/converse.js/dist/
     install -Dm644 fullscreen.html "$pkgdir"/usr/share/webapps/converse.js/
+    install -Dm644 manifest.json "$pkgdir"/usr/share/webapps/converse.js/
 }
