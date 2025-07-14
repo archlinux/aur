@@ -1,6 +1,6 @@
 pkgbase = wine32
-	pkgdesc = A compatibility layer for running Windows programs on both 32-bit and 64-bit architectures (without WOW64)
-	pkgver = 10.11
+	pkgdesc = A compatibility layer for running Windows programs on both 32-bit and 64-bit architectures (without WoW64)
+	pkgver = 10.12
 	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
@@ -135,10 +135,10 @@ pkgbase = wine32
 	conflicts = wine
 	options = staticlibs
 	options = !lto
-	source = https://dl.winehq.org/wine/source/10.x/wine-10.11.tar.xz
+	source = https://dl.winehq.org/wine/source/10.x/wine-10.12.tar.xz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	sha512sums = 6ce02d1475f0914f4ad86ad0207060f5261c8cb669453c91c967e4befa21308837e567666a3ee9efb9b6534f2effaeba576a114e1eaac654784616d0e67848e9
+	sha512sums = 80081e558d22d9029481ea71ccd09913741e88362d9aaf29c1a47a1c7f74064c7313a775eba74ebd6a846baff7cf28ad56eae933120d1870504f0ea420c4827e
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 
