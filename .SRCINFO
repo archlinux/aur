@@ -1,0 +1,25 @@
+pkgbase = musik
+	pkgdesc = A music player
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/arjav0703/music-app
+	install = musik.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = spotdl
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/arjav0703/music-app/releases/download/app-v0.1.6/musik_0.1.6_amd64.deb
+	sha256sums_x86_64 = 86e3d0d4c0fca3603c459e959c342976ba67bb8f7aff7df6c6988fa83ec25a24
+
+pkgname = musik
