@@ -34,7 +34,7 @@ watch() {
     tput civis
     while true; do
         clear
-        cat "$1"
+        cat -n "$1"
         sleep 1
     done
 }
@@ -44,28 +44,53 @@ dl() {
 	sed '$d' "$file" > tmp && mv tmp "$file"
 }
 
+dsl() {
+	load
+	sed -i "${1}d" "$file"
+}
+
+rl() {
+	load
+	sed -i "${1}s|.*|${2}|" "$file"
+}
+
+addaft() {
+	load 
+	sed -i "${1}a $2" "$file"
+}
+
 help() {
-    echo "welcome to M! this is a lightweight and easy text editor."
+    echo "welcome to M! this is a lightweight and easy to use text editor."
     echo "commands:"
     echo ""
-    echo "m-define: defines a file path to save to."
+    echo "def: defines a file path to save to."
     echo "usage: m-define '/path/to/your/file'"
     echo ""
-    echo "m-deldef: deletes the existing file definition."
+    echo "deldef: deletes the existing file definition."
     echo ""
-    echo "m-checkdef: echoes the existing file definition."
+    echo "checkdef: echoes the existing file definition."
     echo ""
-    echo "m-add: adds text to the file. creates the file if it doesnt exist."
-    echo "usage: m-add 'hello world!'"
+    echo "add: adds text to the file. creates the file if it doesnt exist."
+    echo "usage: m add 'hello world!'"
     echo ""
-    echo "m-check: outputs the file's contents."
+    echo "addaft: add a line after a selected line."
+    echo "usage: m addaft 4 'hello world!'"
+    echo ""
+    echo "rl: replace the text of the selected line."
+    echo "usage: m rl 4 'hello world!'"
+    echo ""
+    echo "check: outputs the file's contents."
     echo "" 
-    echo "m-dl: deletes the last line."
+    echo "dl: deletes the last line."
     echo ""
-    echo "m-delfile: deletes the entire file."
+    echo "dsl: deletes the selected line."
+    echo "usage: m dsl 4"
     echo ""
-    echo "m-watch: live outputs the file. refreshes every second. use in another shell window."
-    echo "usage: m-watch '/path/to/your/file'"
+    echo "delfile: deletes the entire file."
+    echo ""
+    echo "watch: live outputs the file. refreshes every second. use in another shell window."
+    echo "usage: m watch '/path/to/your/file'"
+    echo ""
 }
 
 checkdef() {
