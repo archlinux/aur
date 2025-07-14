@@ -2,7 +2,7 @@
 # Maintainer: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
 _pkgname=shairport-sync-mpris
 pkgname=$_pkgname-git
-pkgver=4.3.5.dev.r32.g92a933a3
+pkgver=5.0.dev.r31.gd40e499d
 pkgrel=1
 pkgdesc="AirPlay 2 audio player with multi-room playback (with mpris support)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -42,8 +42,8 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --with-alsa \
-    --with-pa \
-    --with-pw \
+    --with-pulseaudio \
+    --with-pipewire \
     --with-jack \
     --with-stdout \
     --with-pipe \
@@ -56,7 +56,7 @@ build() {
     --with-metadata \
     --with-apple-alac \
     --with-soxr \
-    --with-systemd \
+    --with-systemd-startup \
     --with-dbus-interface \
     --with-airplay-2 \
     --with-mpris-interface
