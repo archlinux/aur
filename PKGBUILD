@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   local _cmake_options=(
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -B build
     -S "$_pkgsrc"
     -G Ninja
