@@ -16,6 +16,7 @@ pkgbase = lsfg-vk-git
 	makedepends = sed
 	makedepends = sdl2
 	makedepends = glslang
+	makedepends = spirv-headers
 	depends = vulkan-icd-loader
 	provides = lsfg-vk
 	conflicts = lsfg-vk
