@@ -3,7 +3,7 @@ pkgname=uxplay
 _gitname=UxPlay
 pkgver=1.72.2
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
 url="https://github.com/FDH2/$_gitname"
@@ -37,4 +37,7 @@ package() {
   install -Dm 644 "$srcdir/$_gitname-$pkgver"/README.* "$pkgdir/usr/share/doc/uxplay"
   # install license
   install -Dm 644 "$srcdir/$_gitname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/uxplay/LICENSE"
+
+  # install systemd service
+  install -Dm 644 "$srcdir/$_gitname-$pkgver/uxplay.service" "$pkgdir/usr/lib/systemd/system/uxplay.service"
 }
