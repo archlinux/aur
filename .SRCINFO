@@ -2,10 +2,12 @@ pkgbase = mippfetch
 	pkgdesc = A minimal Rust-based system fetch tool like neofetch
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/yourusername/mippfetch
+	url = https://github.com/tyyyyyyp/mippfetch
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	source = git+https://github.com/tyyyyyyp/mippfetch.git
+	md5sums = SKIP
 
 pkgname = mippfetch
