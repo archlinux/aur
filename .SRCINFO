@@ -11,6 +11,7 @@ pkgbase = units
 	makedepends = python-unidecode
 	makedepends = python-requests
 	depends = readline
+	optdepends = less: pager for built-in documentation
 	optdepends = python-unidecode: for live currency rates
 	optdepends = python-requests: for live currency rates
 	options = !makeflags

@@ -12,7 +12,8 @@ pkgdesc="converts between different units"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url="https://www.gnu.org/software/units/units.html"
 depends=('readline')
-optdepends=('python-unidecode: for live currency rates'
+optdepends=('less: pager for built-in documentation'
+            'python-unidecode: for live currency rates'
             'python-requests: for live currency rates')
 makedepends=('python-unidecode' 'python-requests')
 license=("GPL-3.0-or-later")
