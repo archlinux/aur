@@ -1,4 +1,5 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+
 pkgname=go-task-git
 _pkgname=task
 pkgver=3.26.0.r14.g5fdaa9aa
