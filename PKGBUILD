@@ -1,6 +1,6 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 pkgname=databend
-pkgver=1.2.745
+pkgver=1.2.773
 pkgrel=1
 epoch=
 pkgdesc="Opensource alternative to Snowflake"
@@ -15,7 +15,8 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=()
+backup=('etc/databend/databend-meta.toml'
+        'etc/databend/databend-query.toml')
 options=()
 install='databend.install'
 changelog=
@@ -23,7 +24,7 @@ source_x86_64=("https://github.com/databendlabs/databend/releases/download/v${pk
                "databend.install")
 source_aarch64=("https://github.com/databendlabs/databend/releases/download/v${pkgver}-nightly/databend-v${pkgver}-nightly-aarch64-unknown-linux-gnu.tar.gz"
                "databend.install")
-sha256sums_x86_64=('5a64fa4bd3ffc484efefa5e55c01a2b57fa16d2e8aa1aff9d05b1b7a70fe9a22'
+sha256sums_x86_64=('a9344e27ec46396eb2ed9ddb0696d29f3fb0ac787350f01689e731ff1255f97e'
                    'b6516eed6b0b3ffc35d914581f2e7bb1ccf1effe92d63df59d48984ebf918332')
 noextract=()
 
