@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Fund my existence on https://rys.rs/donate
-# Previous Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 _pkgname=Flatseal
 pkgname=flatseal
