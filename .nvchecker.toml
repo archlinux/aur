@@ -1,3 +1,5 @@
 [python-playsound]
-source = "pypi"
-pypi = "playsound"
+source = "github"
+github = "TaylorSMarks/playsound"
+use_max_tag = true
+prefix = "v"
