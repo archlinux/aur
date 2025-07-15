@@ -1,6 +1,6 @@
 pkgbase = cosmic-idle-git
 	pkgdesc = Cosmic idle daemon
-	pkgver = r38.08c1cf3
+	pkgver = 1.0.0.alpha.7.r0.g267bb83
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-idle
 	arch = x86_64

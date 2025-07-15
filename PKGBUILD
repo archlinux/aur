@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-idle-git
-pkgver=r38.08c1cf3
+pkgver=1.0.0.alpha.7.r0.g267bb83
 pkgrel=1
 pkgdesc="Cosmic idle daemon"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -36,7 +36,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use nice to build with lower priority
-  nice just build-release --frozen --offline
+  nice just build-release --frozen
 }
 
 package() {
