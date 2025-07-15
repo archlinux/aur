@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 # Contributor: envolution
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
@@ -11,13 +11,13 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org
 # Contributor: codyps <archlinux@codyps.com>
 
-_pkgbase=aircrack-ng
 pkgname=aircrack-ng-git
-pkgver=1.7.r4703.g13e5c460
-pkgrel=5
-pkgdesc="Key cracker for the 802.11 WEP and WPA-PSK protocols"
+_name=${pkgname%-git}
+pkgver=1.7.r4705.g3e1b99a0
+pkgrel=1
+pkgdesc='Key cracker for the 802.11 WEP and WPA-PSK protocols'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'pentium4')
-url="https://www.aircrack-ng.org"
+url='https://www.aircrack-ng.org'
 license=('GPL-2.0-only')
 depends=('glibc' 'gcc-libs' 'openssl' 'sqlite' 'iw' 'net-tools' 'wireless_tools' 'ethtool'
          'pcre' 'libpcap' libpcap.so 'python' 'zlib' 'libnl' 'hwloc' 'usbutils')
@@ -29,11 +29,11 @@ checkdepends=('cmocka')
 provides=('aircrack-ng-scripts')
 conflicts=('aircrack-ng-scripts')
 replaces=('aircrack-ng-scripts')
-source=("git+https://github.com/$_pkgbase/$_pkgbase.git")
+source=("git+https://github.com/$_name/$_name.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $_pkgbase
+    cd $_name
 
     _release=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1)
     _revision=$(git rev-list --count HEAD)
@@ -42,31 +42,28 @@ pkgver() {
 }
 
 prepare() {
-    cd $_pkgbase
+    cd $_name
     autoreconf -fiv
 }
 
 build() {
-    cd $_pkgbase
+    cd $_name
 
     ./configure \
-      --prefix=/usr \
-      --libexecdir=/usr/lib \
-      --sbindir=/usr/bin \
-      --with-ext-scripts \
-      --with-experimental
-
+        --prefix=/usr \
+        --libexecdir=/usr/lib \
+        --sbindir=/usr/bin \
+        --with-ext-scripts \
+        --with-experimental
     make
 }
 
 check() {
-    cd $_pkgbase
+    cd $_name
     make check
 }
 
 package() {
-    cd $_pkgbase
-    make DESTDIR=$pkgdir install
+    cd $_name
+    make DESTDIR="$pkgdir" install
 }
-
-# vim: set ts=4 sw=4 sts=4 et:
