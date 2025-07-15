@@ -8,9 +8,9 @@ pkgname=(
   liblightdm-qt5-guest
 )
 pkgver=1.32.0
-pkgrel=2
+pkgrel=3
 epoch=1
-pkgdesc='A lightweight display manager. With guest-session enabled'
+pkgdesc='A lightweight display manager. With guest session enabled'
 _add_group=add-autologin-group
 arch=(x86_64)
 url=https://github.com/canonical/lightdm
@@ -211,7 +211,7 @@ package_lightdm-guest() {
 }
 
 package_liblightdm-qt5-guest() {
-  pkgdesc='LightDM Qt client library. With guest-session enabled'
+  pkgdesc='LightDM Qt client library. With guest session enabled'
   license=('LGPL-2.0-only OR LGPL-3.0-only')
   depends=(
     lightdm
