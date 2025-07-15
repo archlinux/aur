@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=video2midi-git
 pkgver=0.4.7.1.r1.8097431
@@ -8,7 +8,6 @@ arch=('any')
 url='https://github.com/svsdval/video2midi'
 license=('GPL3')
 depends=('hdf5' 'python-midiutil' 'python-opencv' 'python-opengl' 'python-pygame')
-#optdepends=('')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
