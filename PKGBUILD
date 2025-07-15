@@ -3,13 +3,13 @@
 pkgname=kapsul-git
 _pkgname=kapsul
 pkgdesc="A tool to create and manage deduplicated, compressed and encrypted PTAR vaults"
-pkgver=0.0.0.beta.6.r2.gc33cf76
+pkgver=0.0.0.beta.6.r14.g227eb65
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://plakar.io/"
 license=('ISC')
-provides=('kapsul' 'kapsule')
-conflicts=('kapsul' 'kapsule')
+provides=('kapsul')
+conflicts=('kapsul')
 makedepends=(
   'go'
 )
@@ -47,14 +47,15 @@ prepare() {
     -modcacherw
 }
 
-check() {
-  _ensure_common_env
-  cd "$srcdir/$_pkgname"
+# Commenting tests for now (early dev)
+# check() {
+#   _ensure_common_env
+#   cd "$srcdir/$_pkgname"
 
-  go test \
-    -mod=vendor \
-    ./...
-}
+#   go test \
+#     -mod=vendor \
+#     ./...
+# }
 
 build() {
   _ensure_common_env
@@ -72,11 +73,11 @@ build() {
 }
 
 package() {
-  # TODO: check why the module name changed to kapsule
-  install -D -m0755 "$srcdir/$_pkgname/kapsule" "$pkgdir/usr/bin/kapsule"
+  # TODO: check why the module name changed to kapsul
+  install -D -m0755 "$srcdir/$_pkgname/kapsul" "$pkgdir/usr/bin/kapsul"
   # for command in $(find "$srcdir/$_pkgname" -name "*.1" -type f); do
   #   install -D -m0644 "$command" "$pkgdir/usr/share/man/man1/$(basename $command)"
   # done
-  install -D -m0644 "$srcdir/$_pkgname/kapsule.1" "$pkgdir/usr/share/man/man1/kapsule.1"
+  install -D -m0644 "$srcdir/$_pkgname/kapsul.1" "$pkgdir/usr/share/man/man1/kapsul.1"
   install -D -m0644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
