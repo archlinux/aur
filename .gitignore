@@ -2,4 +2,5 @@
 !.gitignore
 !.nvchecker.toml
 !.SRCINFO
+!LICENSE
 !PKGBUILD
