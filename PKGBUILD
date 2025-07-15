@@ -1,5 +1,5 @@
 # Maintainer: Taiko2k <captain dot gxj at gmail dot com>
-# Co-Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=tauon-music-box
 _pkgname=tauonmb
