@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Kyuzial <kyuzial@protonmail.com>
 pkgname=cosmic-term-git
-pkgver=1.0.0.alpha.3.r6.g1743730
+pkgver=1.0.0.alpha.7.r26.ga20d77f
 pkgrel=1
 pkgdesc="COSMIC Terminal Emulator"
 arch=('x86_64' 'aarch64')
