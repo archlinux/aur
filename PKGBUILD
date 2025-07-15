@@ -1,11 +1,11 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-elevenlabs
-_reponame=elevenlabs
-pkgver=2.6.0
+_reponame=elevenlabs-python
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="ElevenLabs API module - generate realistic, captivating speech in a wide range of languages"
-url="https://pypi.org/project/elevenlabs/"
+url="https://github.com/elevenlabs/elevenlabs-python"
 arch=(any)
 license=('MIT')
 depends=(
@@ -18,10 +18,11 @@ makedepends=(
 	'git'
 	'python-poetry'
 )
-source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('74cc74a584dcdde079ac127a7b38a63c2c84948cb0a38e6ef62fc895bbf6b56c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/elevenlabs/elevenlabs-python/archive/v${pkgver}.tar.gz")
+sha256sums=('145719922fb037755044930b39b78d7d1a6c566d2f15a81fce099cdb6595d261')
 
 build() {
+	ls -lah
 	cd "${srcdir}/${_reponame}-${pkgver}"
 	python -m build --wheel --no-isolation
 }

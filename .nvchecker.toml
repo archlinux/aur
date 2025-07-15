@@ -1,3 +1,5 @@
 [python-elevenlabs]
-source = "pypi"
-pypi = "elevenlabs"
+source = "github"
+github = "elevenlabs/elevenlabs-python"
+use_max_tag = true
+prefix = "v"
