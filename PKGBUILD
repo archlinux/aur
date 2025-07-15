@@ -9,7 +9,11 @@ arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/cheat/cheat"
 license=('MIT AND CC0-1.0')
 depends=('glibc')
-makedepends=('git' 'go' 'pandoc')
+makedepends=(
+  'git'
+  'go'
+  'pandoc'
+)
 optdepends=('fzf: Fuzzy Finder integration for bash-completion')
 conflicts=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")

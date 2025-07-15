@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!conf.yml
 !.nvchecker.toml
+!LICENSE
+!conf.yml
