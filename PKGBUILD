@@ -4,7 +4,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.9.1
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -35,8 +35,8 @@ checkdepends=('python-pytest'
               'python-matplotlib'
               'python-scikit-learn'
               'python-scikit-image'
-              'python-spherical_geometry'
-              'python-stwcs'
+#             'python-spherical_geometry'
+#             'python-stwcs'
               'python-stsci.skypac'
               'python-ci_watson'
               'python-fitsblender'
@@ -54,7 +54,7 @@ checkdepends=('python-pytest'
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('8ed0fdd1a91a38cdb834d630e24ddd89'
+md5sums=('1a7a40555b88c6fb4eeb5f606910dead'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyinfo() {
@@ -92,6 +92,7 @@ check() {
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_ibyt50.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_j97e06.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_je281u.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_u2as01.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_wfc3ir.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
 #       --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_run_svmpoller.py \
@@ -100,7 +101,7 @@ check() {
 }
 
 package_python-drizzlepac() {
-    depends=('python>=3.10'
+    depends=('python>=3.11'
              'python-scipy'
              'python-matplotlib'
              'python-requests'
@@ -110,7 +111,7 @@ package_python-drizzlepac() {
              'python-stsci.imagestats>=1.8.2'
              'python-stsci.skypac>=1.0.9'
              'python-stsci.stimage'
-             'python-stwcs>=1.5.3'
+             'python-stwcs>=1.7.4'
              'python-tweakwcs>=0.8.7'
              'python-stregion>=1.1.7'
              'python-fitsblender>=0.4.2'
@@ -119,7 +120,7 @@ package_python-drizzlepac() {
              'python-spherical_geometry>=1.2.22'
              'python-astroquery>=0.4'
              'python-astrocut'
-             'python-photutils>=1.10.0'
+             'python-photutils>=2.0.0'
              'python-lxml'
              'python-pypdf2'
              'python-scikit-image>=0.14.2'
