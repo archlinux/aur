@@ -7,13 +7,25 @@ pkgdesc="A C daemon that turns your webcam into a light sensor. It can also chan
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clight"
 license=('GPL-3.0-or-later')
-depends=('clightd' 'gsl' 'hicolor-icon-theme' 'libconfig' 'popt')
-makedepends=('git' 'cmake' 'bash-completion')
-optdepends=('geoclue: to retrieve user location through geoclue.'
-            'upower: to save energy by increasing timeouts between captures while on battery
-                     and to autocalibrate keyboard backlight.'
-            'bash-completion: to add support for bash automatic completion.'
-            'clight-gui: Clight GUI written in Qt.')
+depends=(
+  'clightd'
+  'gsl'
+  'hicolor-icon-theme'
+  'libconfig'
+  'popt'
+)
+makedepends=(
+  'bash-completion'
+  'cmake'
+  'git'
+)
+optdepends=(
+  'bash-completion: to add support for bash automatic completion.'
+  'clight-gui: Clight GUI written in Qt.'
+  'geoclue: to retrieve user location through geoclue.'
+  'upower: to save energy by increasing timeouts between captures while on battery
+    and to autocalibrate keyboard backlight.'
+)
 backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/modules.conf.d"/{backlight,daytime,dimmer,dpms,gamma,inhibit,keyboard,screen,sensor}.conf)
 install="$pkgname.install"

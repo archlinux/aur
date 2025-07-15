@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!clight.install
 !.nvchecker.toml
+!LICENSE
+!clight.install
