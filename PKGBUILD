@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainer: Derson5
+# Contributor: Derson5
 pkgname=jdownloader2
 pkgver=latest
 pkgrel=21
