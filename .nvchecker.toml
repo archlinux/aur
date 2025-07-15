@@ -1,0 +1,6 @@
+["fluida.lv2"]
+source = "github"
+github = "brummer10/Fluida.lv2"
+use_max_tag = true
+include_regex = '^v\d+(\.\d+)+$'
+prefix = "v"
