@@ -13,8 +13,10 @@ depends=('electron27')
 makedepends=('git' 'yarn')
 provides=('deemix-gui')
 source=(
-	"${_pkgname}::git+https://gitlab.com/RemixDev/${_pkgname}" "deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui"
-	"${_pkgname}.desktop" "${_pkgname}.sh")
+	"${_pkgname}::git+https://gitlab.com/RemixDev/${_pkgname}"
+	"deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui"
+	"${_pkgname}.desktop"
+	"${_pkgname}.sh")
 sha256sums=('SKIP'
             'SKIP'
             '87ae7b086c91a3ee8c9c29c5e920680416a1ca92d33b05c9276abb8d2bc4da3b'
