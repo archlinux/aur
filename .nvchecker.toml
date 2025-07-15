@@ -1,0 +1,8 @@
+[license]
+source = "cmd"
+cmd = '''
+git ls-remote --tags https://git.sr.ht/~zethra/license \
+    | awk -F/ '/refs\/tags\/[0-9.]+$/ {print $3}' \
+    | sort -V \
+    | tail -n1
+'''
