@@ -1,6 +1,6 @@
 pkgbase = cosmic-randr-git
 	pkgdesc = Library and utility for displaying and configuring Wayland outputs
-	pkgver = 1.0.0.alpha.5.1.r3.gc247019
+	pkgver = 1.0.0.alpha.7.r0.gc32d0d6
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-randr
 	arch = x86_64

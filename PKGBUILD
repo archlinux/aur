@@ -1,14 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-randr-git
-pkgver=1.0.0.alpha.5.1.r3.gc247019
+pkgver=1.0.0.alpha.7.r0.gc32d0d6
 pkgrel=1
 pkgdesc="Library and utility for displaying and configuring Wayland outputs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-randr"
 license=('MPL-2.0')
-depends=(
-  'wayland'
-)
+depends=('wayland')
 makedepends=(
   'cargo'
   'clang'
