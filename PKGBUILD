@@ -20,8 +20,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
-#	pip install --root="${pkgdir}" dist/*.whl
+	#pip install --root="${pkgdir}" dist/*.whl
 	python -m installer --destdir="${pkgdir}" dist/*.whl
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	cp ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
