@@ -1,7 +1,8 @@
 pkgbase = sshp-git
 	pkgdesc = Parallel SSH Executor
-	pkgver = 1.1.3.r129.f27d66f
-	pkgrel = 2
+	pkgver = 1.1.3.r2.g01c3f71
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/bahamas10/sshp
 	arch = x86_64
 	license = MIT
@@ -9,7 +10,7 @@ pkgbase = sshp-git
 	depends = glibc
 	provides = sshp
 	conflicts = sshp
-	source = sshp-git::git+https://github.com/bahamas10/sshp
+	source = git+https://github.com/bahamas10/sshp
 	sha256sums = SKIP
 
 pkgname = sshp-git
