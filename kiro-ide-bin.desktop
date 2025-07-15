@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Kiro IDE
+Comment=An AI-powered IDE for modern development
+Exec=kiro-ide
+Icon=kiro-ide
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=Kiro
