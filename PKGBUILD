@@ -1,8 +1,8 @@
 # Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-swtbot
-pkgver=2.8.0
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc='SWT UI Testing for Eclipse IDE'
 arch=('any')
 url='https://projects.eclipse.org/projects/technology.swtbot'
@@ -13,13 +13,11 @@ options=('!strip')
 source=(
 	http://download.eclipse.org/technology/swtbot/releases/${pkgver}/repository.zip
 )
-sha256sums=('e3db769d911ae730c825841b7d643e23436bea79e7a52af74e4ae5bcfa7d9116')
+sha256sums=('200be5f64fc374034398647c454ffa59bd4473f6cf74274a53bdc06430423558')
 
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
   cd ${srcdir}
-  # remove gz files
-  rm plugins/*.pack.gz
   # Features
   find features -type f | while read _feature ; do
     if [[ ${_feature} =~ (.*\.jar$) ]] ; then
