@@ -7,7 +7,10 @@ auth        [success=1 default=ignore]  pam_succeed_if.so user ingroup autologin
 auth        required    pam_unix.so
 auth        required    pam_permit.so
 -auth       optional    pam_gnome_keyring.so
+-auth       optional    pam_kwallet5.so
 account     include     system-local-login
 password    include     system-local-login
 session     include     system-local-login
 -session    optional    pam_gnome_keyring.so auto_start
+-session    optional    pam_kwallet5.so auto_start
+

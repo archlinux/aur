@@ -37,4 +37,5 @@ diff '--color=auto' -rupN lightdm.orig/data/users.conf lightdm/data/users.conf
 +minimum-uid=1000
  hidden-users=nobody nobody4 noaccess
 -hidden-shells=/bin/false /usr/sbin/nologin /sbin/nologin
-+hidden-shells=/bin/false /usr/bin/nologin /bin/nologin
++hidden-shells=/bin/false /usr/bin/nologin /bin/nologin /sbin/nologin
+
