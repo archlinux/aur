@@ -8,12 +8,23 @@ pkgdesc="A C daemon that turns your webcam into a light sensor. It can also chan
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clight"
 license=('GPL-3.0-or-later')
-depends=('clightd-git' 'gsl' 'hicolor-icon-theme' 'libconfig' 'popt')
-makedepends=('cmake' 'git')
-optdepends=('clight-gui-git: Clight GUI written in Qt.'
-            'geoclue: to retrieve user location through geoclue.'
-            'upower: to save energy by increasing timeouts between captures while on battery
-             and to autocalibrate keyboard backlight.')
+depends=(
+  'clightd-git'
+  'gsl'
+  'hicolor-icon-theme'
+  'libconfig'
+  'popt'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
+optdepends=(
+  'clight-gui-git: Clight GUI written in Qt.'
+  'geoclue: to retrieve user location through geoclue.'
+  'upower: to save energy by increasing timeouts between captures while on battery
+    and to autocalibrate keyboard backlight.'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}/${pkgname%-git}.conf"
@@ -24,7 +35,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Clight
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
