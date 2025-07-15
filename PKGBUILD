@@ -4,7 +4,7 @@
 
 pkgbase="gurobi"
 pkgname=({,java-,r-}"${pkgbase}")
-pkgver=12.0.2
+pkgver=12.0.3
 _pkgver="${pkgver%.*}"
 pkgrel=2
 pkgdesc="State-of-the-art solver for mathematical programming"
@@ -17,11 +17,11 @@ source=("${pkgbase}.sh")
 source_aarch64=("${pkgbase}-${pkgver}-aarch64.tar.gz::https://packages.gurobi.com/${_pkgver}/${pkgname}${pkgver}_armlinux64.tar.gz")
 source_x86_64=("${pkgbase}-${pkgver}-x86_64.tar.gz::https://packages.gurobi.com/${_pkgver}/${pkgname}${pkgver}_linux64.tar.gz")
 md5sums=('1f34712dbc8df686d987b6bf129811fd')
-md5sums_aarch64=('4b27456406bfa57eefb29a64b10b21ee')
-md5sums_x86_64=('a29179c21aa02c511df847a28e4561a2')
+md5sums_aarch64=('2365a298a88900856441766350e3a917')
+md5sums_x86_64=('7cb948ba0906faf0d666b77a40687cc2')
 b2sums=('1e78921a5fe8c04a73ac595f80c8116919fd3174c946715ca836c375950785b5b13e5dbb8c6b1356ed6b4b993a0a2efcbc0ad458cfe2563d9945a5a7678381d0')
-b2sums_aarch64=('20c96e062e218bac2939b4f1ddc2781c3278104dc05b000c478521179d2c220396168298106a006468bb642141cbbb70bb37b721024ea5bbecec1c9ea7064fa8')
-b2sums_x86_64=('437fef3e89dff4fc64d6b9ef181fdf4cee432eeaba1b062b83dc1a076ce2a9de62d43dd0d375f334142ebee2a91cd640a1249412f011fc8a4f9c2d3f639de44d')
+b2sums_aarch64=('2b801d8778e2bf462a15153a027edb9e6d1ae3b7ea99c800ba52cec555be80cbf8e0a8359912d3d90fd34a821f701030319a7958450e644c61076e390c89ceac')
+b2sums_x86_64=('5dd5419d105e273da774423880b59f7dd13b6ee6136acd4710ef59357bb95faa8811b4f9d1b7ec616995241e483083d6f50d9482a805e9c7b1c894642004cf6e')
 
 if [ "${CARCH}" = 'aarch64' ]; then
   _arch=armlinux64
