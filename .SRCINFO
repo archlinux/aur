@@ -1,13 +1,16 @@
 pkgbase = airwindows-consolidated-bin
 	pkgdesc = The entirety of the Airwindows collection, as LV2 and VST3.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://www.airwindows.com/consolidated/
 	arch = x86_64
+	groups = clap-plugins
 	groups = lv2-plugins
 	groups = pro-audio
 	groups = vst3-plugins
 	license = GPL3
+	provides = airwindows-consolidated
+	conflicts = airwindows-consolidated
 	source = AirwindowsConsolidated-2025-07-13-dc94a5b-Linux.zip::https://github.com/baconpaul/airwin2rack/releases/download/DAWPlugin/AirwindowsConsolidated-2025-07-13-dc94a5b-Linux.zip
 	sha256sums = 2fb4e1a1d25d6ea2d5ef428a4211744f56cbb71af282ac90d18b22a0326a84eb
 
