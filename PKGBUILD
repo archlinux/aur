@@ -1,15 +1,15 @@
 # Maintainer: coffebar i8ehkvien@mozmail.com
 
 pkgname=hyprland-per-window-layout
-pkgver=2.13
-pkgrel=2
+pkgver=2.14
+pkgrel=1
 pkgdesc='Per window keyboard layout (language) for Hyprland wayland compositor'
 arch=('x86_64')
 url="https://github.com/coffebar/$pkgname"
 license=('GPL')
 makedepends=(cargo git)
 depends=()
-_commit=961e72
+_commit=1f46441
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
