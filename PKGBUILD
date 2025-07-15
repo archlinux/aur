@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <rys.rs/contact>
-# Co-Maintainer: phiresky <phireskyde+git@gmail.com>
+# Maintainer: phiresky <phireskyde+git@gmail.com>
 _pkgname=svp
 pkgname=svp-bin
 pkgver=4.6.263
