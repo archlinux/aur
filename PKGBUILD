@@ -3,7 +3,7 @@
 pkgname=squareline-studio
 _pkgname=SquareLine_Studio
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual drag-and-drop UI editor to create beautiful Graphical User Interfaces quickly and easily"
 arch=('x86_64')
 url="https://squareline.io/"
