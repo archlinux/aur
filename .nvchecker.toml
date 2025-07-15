@@ -1,3 +1,4 @@
 [python-midiutil]
-source = "pypi"
-pypi = "MIDIUtil"
+source = "github"
+github = "MarkCWirt/MIDIUtil"
+use_max_tag = true

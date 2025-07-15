@@ -3,15 +3,15 @@
 pkgname=python-midiutil
 _reponame=MIDIUtil
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Library to work with MIDI files"
-url="https://pypi.org/project/${_reponame}/"
+url="https://github.com/MarkCWirt/MIDIUtil"
 arch=('any')
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-installer' 'python-build')
-source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('79fa983bd1efc60785f68a8fe78fa8f45b8d7ec5898bf7cb7f3f7f3336d6a90a')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MarkCWirt/MIDIUtil/archive/${pkgver}.tar.gz")
+sha256sums=('d56057d00b88b7a45c34351b3313fb5d3892aff5f3fb89731ce5b8d23b8689ce')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
