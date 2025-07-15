@@ -39,12 +39,12 @@ build() {
 
 	# use system electron version
 	# see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-	electronDist='/usr/lib/electron27'
-	electronVer=$(sed s/^v// /usr/lib/electron27/version)
+	_electronDist='/usr/lib/electron27'
+	_electronVer=$(sed s/^v// /usr/lib/electron27/version)
 	sed -i '/		"electron": /d' ./package.json
 	HOME="${srcdir}/.electron-gyp" yarn install-all
 	yarn predist
-	./node_modules/.bin/electron-builder build --linux --x64 --dir -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
+	./node_modules/.bin/electron-builder build --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion=${_electronVer}
 }
 
 package() {
