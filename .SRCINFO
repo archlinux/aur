@@ -1,7 +1,7 @@
 pkgbase = gita
 	pkgdesc = Command-line tool to manage multiple git repos
 	pkgver = 0.16.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nosarthur/gita
 	arch = any
 	license = MIT
@@ -12,6 +12,14 @@ pkgbase = gita
 	depends = git
 	depends = python-argcomplete
 	source = gita-0.16.7.2.tar.gz::https://files.pythonhosted.org/packages/source/g/gita/gita-0.16.7.2.tar.gz
+	source = gita.bash::https://raw.githubusercontent.com/nosarthur/gita/refs/tags/v0.16.7.2/auto-completion/bash/.gita-completion.bash
+	source = gita.fish::https://raw.githubusercontent.com/nosarthur/gita/refs/tags/v0.16.7.2/auto-completion/fish/gita.fish
+	source = gita.zsh::https://raw.githubusercontent.com/nosarthur/gita/refs/tags/v0.16.7.2/auto-completion/zsh/_gita
+	source = 0001-warning.patch
 	sha256sums = ad0c0f4c7d7f59c477dd8c1115b081b0b45ab7d4ef2e0d599403a07e87d19016
+	sha256sums = 1a2df0f0f1adfad7a1a388883c24676689a9fbd1f65c5f0c7c36d809af6cae34
+	sha256sums = 34aecf5cbec31d5a2a1b51a2f89d01982e99906d6b2cc0c53b15d51161c6aca7
+	sha256sums = 24376f49d4b3088af95be551f5f657208102e83e5f1ad1ccb0ee0f5ee828cfdf
+	sha256sums = 7ec48fdb6bfbb9849db124de46d09bcd50e9dc1a8dcdef1c6e53317793facf4c
 
 pkgname = gita
