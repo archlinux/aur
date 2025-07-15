@@ -1,7 +1,7 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=ppsspp-bin
 _pkgname=ppsspp
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="A PSP emulator for Android, Windows, Mac and Linux, written in C++"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 _appimage=PPSSPP-v${pkgver}-anylinux-x86_64.AppImage
 noextract=("${_appimage}")
 source=("https://github.com/hrydgard/ppsspp/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('b1b8203aacc15c070480dd9fa4501c6c8ffc6aa3524b6256181c2d9796ddde98')
+sha256sums=('540f317c1ed6661894167d2dce21b62295857e1a912274982da7048cf2256466')
 
 prepare() {
 	# Extract AppImage
