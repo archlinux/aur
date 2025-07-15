@@ -1,0 +1,22 @@
+pkgbase = cursor-app
+	pkgdesc = Cursor - AI-first coding environment
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://www.cursor.com/
+	arch = x86_64
+	license = custom:Proprietary
+	depends = fuse2
+	depends = gtk3
+	conflicts = cursor-bin
+	noextract = cursor-app-1.2.4.AppImage
+	options = !strip
+	source_x86_64 = cursor-app-1.2.4.AppImage::https://downloads.cursor.com/production/a8e95743c5268be73767c46944a71f4465d05c90/linux/x64/Cursor-1.2.4-x86_64.AppImage
+	source_x86_64 = cursor.png::file:///tmp/local-repo/assets/cursor.png
+	source_x86_64 = cursor-app.desktop.in::file:///tmp/local-repo/assets/cursor-app.desktop.in
+	source_x86_64 = cursor-app.sh::file:///tmp/local-repo/assets/cursor-app.sh
+	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = SKIP
+
+pkgname = cursor-app
