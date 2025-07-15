@@ -23,8 +23,8 @@ sha256sums=('SKIP'
             'e1c74c414423858b5ea845cabf75361aa330d34016939f2f97ed8e34fad13666')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
 }
 
 prepare() {
