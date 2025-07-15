@@ -1,6 +1,6 @@
 [Unit]
-Description=frp-panel
-Documentation=https://github.com/VaalaCat/frp-panel
+Description=frp-panel %i service
+Documentation=https://vaala.cat/frp-panel/
 After=network.target
 
 [Service]
