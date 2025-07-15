@@ -1,0 +1,11 @@
+--- threadNs.c	2022-11-04 14:16:13.000000000 +0100
++++ threadNs.c2	2025-07-15 15:51:19.144830857 +0200
+@@ -33,7 +33,7 @@
+  */
+ 
+ static int
+-NsThread_Init (Tcl_Interp *interp, void *cd)
++NsThread_Init (Tcl_Interp *interp, const void *cd)
+ {
+     NsThreadInterpData *md = (NsThreadInterpData*)cd;
+     int ret = Thread_Init(interp);

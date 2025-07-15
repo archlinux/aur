@@ -8,6 +8,8 @@ pkgbase = naviserver-tclthread
 	depends = tcl
 	depends = naviserver
 	source = http://downloads.sourceforge.net/project/tcl/Thread%20Extension/2.8.8/thread2.8.8.tar.gz
+	source = naviserver_include.patch
 	md5sums = 871a3029746d9a40913d78e7db46a81d
+	md5sums = db873a8586f5735abb38e44bb2736954
 
 pkgname = naviserver-tclthread
