@@ -1,6 +1,6 @@
 pkgbase = python-cibuildwheel
 	pkgdesc = Build Python wheels for all the platforms with minimal configuration.
-	pkgver = 2.23.3
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/pypa/cibuildwheel
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-cibuildwheel
 	depends = python-filelock
 	depends = python-packaging
 	depends = python-platformdirs
-	source = python-cibuildwheel-2.23.3.tar.gz::https://github.com/pypa/cibuildwheel/archive/refs/tags/v2.23.3.tar.gz
-	sha256sums = b2ffc592554844163de29825e3b45d9012d3f9c63cca2c4d306b4ab005393820
+	source = python-cibuildwheel-3.0.0.tar.gz::https://github.com/pypa/cibuildwheel/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = f0fa54f3dec13aaa636a7e585a1c1dfef3154d20bd3d045d9033767ed83097fd
 
 pkgname = python-cibuildwheel

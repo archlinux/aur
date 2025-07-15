@@ -2,7 +2,7 @@
 
 pkgname=python-cibuildwheel
 _pkgname=${pkgname#python-}
-pkgver=2.23.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Build Python wheels for all the platforms with minimal configuration.'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer'
              'python-wheel')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b2ffc592554844163de29825e3b45d9012d3f9c63cca2c4d306b4ab005393820')
+sha256sums=('f0fa54f3dec13aaa636a7e585a1c1dfef3154d20bd3d045d9033767ed83097fd')
 
 build() {
     python -m build -nw $srcdir/$_pkgname-$pkgver
