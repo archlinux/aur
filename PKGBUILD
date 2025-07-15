@@ -1,7 +1,7 @@
 # Maintainer: Alonso Herreros <alonso.herreros at gmail.com
 
 pkgname="hyprcap"
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 url="https://github.com/alonso-herreros/hyprcap"
 pkgdesc="A utility to easily capture screenshots and recordings in Hyprland"
