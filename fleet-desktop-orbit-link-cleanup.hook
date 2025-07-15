@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = fleet-desktop
+
+[Action]
+Description = Remove fleet‑desktop symlink for fleet‑orbit.
+When = PreTransaction
+Exec = /usr/lib/fleet-desktop/fleet-desktop-orbit-link-cleanup.sh
