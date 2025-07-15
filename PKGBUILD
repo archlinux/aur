@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 pkgname=packr
 pkgver=2.8.3
 pkgrel=2
