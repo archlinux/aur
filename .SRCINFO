@@ -1,6 +1,6 @@
 pkgbase = r-dendextend
 	pkgdesc = Extending 'dendrogram' Functionality in R
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dendextend
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-dendextend
 	optdepends = r-testthat
 	optdepends = r-wgcna
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/dendextend_1.19.0.tar.gz
-	sha256sums = 58daa281a18b872b18ec81745e6aa82430bab3295c8a2f4ce3f17d8f9f98db9e
+	source = https://cran.r-project.org/src/contrib/dendextend_1.19.1.tar.gz
+	sha256sums = be3c150c0ca460bb9181a906215244da92fe556e6bbfe1a6841398b45b5d2701
 
 pkgname = r-dendextend

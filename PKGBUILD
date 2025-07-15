@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dendextend
-_pkgver=1.19.0
+_pkgver=1.19.1
 pkgname=r-${_pkgname,,}
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="Extending 'dendrogram' Functionality in R"
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58daa281a18b872b18ec81745e6aa82430bab3295c8a2f4ce3f17d8f9f98db9e')
+sha256sums=('be3c150c0ca460bb9181a906215244da92fe556e6bbfe1a6841398b45b5d2701')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
