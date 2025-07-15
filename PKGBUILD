@@ -4,7 +4,7 @@
 
 _pkgname=llama-cpp-python
 pkgname=python-llama-cpp
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="Python bindings for llama.cpp"
 arch=(any)
@@ -41,7 +41,7 @@ checkdepends=(
   python-jinja
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('0c977101a46ce6fa363e63a0b33413f29deab9772be24a6c551458fc386f4725')
+sha256sums=('307ce2abf62c7cf574234b8c633978cf92eb1c4b3cfe6babef889d812c298d84')
 
 _srcdir="llama_cpp_python-${pkgver}"
 build() {
