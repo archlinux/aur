@@ -1,0 +1,17 @@
+pkgbase = sail-model
+	pkgdesc = The Sail ISA specification language
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/rems-project/sail
+	arch = x86_64
+	license = BSD-2-Claus
+	makedepends = opam
+	makedepends = dune
+	makedepends = ocaml>=4.8.1
+	makedepends = z3
+	makedepends = bash
+	provides = sail
+	source = sail-model-0.19.1.tar.gz::https://github.com/rems-project/sail/archive/refs/tags/0.19.1.tar.gz
+	sha512sums = 77497EC093BFFB5F4F0967430295FE69C33E3DCB8A158C3CA287D6311EC7F57A1CDCDB4211591B7C8F3783267238E60E786F4D36BD525805D44F38C19660BBEC
+
+pkgname = sail-model
