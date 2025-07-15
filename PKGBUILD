@@ -10,7 +10,6 @@ license=('custom')
 # License: AWS Customer Agreement and AWS Intellectual Property License
 # See: https://kiro.dev/license for full license terms
 depends=('gtk3' 'nss' 'alsa-lib' 'libxkbfile')
-optdepends=()
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_x86_64=("https://prod.download.desktop.kiro.dev/releases/202507140012--distro-linux-x64-tar-gz/202507140012-distro-linux-x64.tar.gz"
