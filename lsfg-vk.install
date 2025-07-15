@@ -24,18 +24,23 @@ if [[ -z "$steam_dll" ]]; then
     done
 fi
 
-required_version="3.2.0.0" # latest version
-
 user_manifest="$_data_home/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json"
 user_library="$_home/.local/lib/liblsfg-vk.so"
 
-get_version() {
+correct_version() {
     case "$1" in
-        1.6.0.0) echo "1.6" ;;
-        3.0.0.2) echo "2.13" ;;
-        3.0.0.1) echo "3.0" ;;
-        3.1.0.2) echo "3.1" ;;
-        *)       echo "$1" ;;  # fallback to productversion if unmapped
+          1.6.0.0 \
+        | 2.8.2.0 \
+        | 2.9.0.0 \
+        | 2.10.0.0 \
+        | 2.11.0.0 \
+        | 2.12.0.0 \
+        | 2.13.2.0 \
+        | 3.0.0.1 \
+        | 3.1.0.2)
+        return 0 ;; # old versions
+        *)
+        return 1 ;;  # latest version
     esac
 }
 
@@ -62,11 +67,10 @@ check_steam_install() {
         echo "==    LSFG_DLL_PATH=\"/your/path/Lossless.dll\"                                                                                  =="
     else
         version="$(get_product_version "$steam_dll")"
-        if [ "$version" != "$required_version" ]; then
-            short_installed=$(get_version "$version")
+        if correct_version "$version"; then
             echo "================================================================================================================================="
             echo "==  WARNING: Lossless Scaling version mismatch!                                                                                =="
-            echo "==    Installed version: $short_installed"
+            echo "==    Installed version: $version"
             echo "==                                                                                                                             =="
             echo "==  Please install the latest build via Steam:                                                                                 =="
             echo "==    Library → Lossless Scaling → Properties → Betas → None                                                                   =="
