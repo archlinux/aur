@@ -1,20 +1,23 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-xmldiff-git
-pkgver=2.6.3.r15.gca0e024
-pkgrel=7
+pkgver=3.0b1.r1.g43815ee
+pkgrel=2
 pkgdesc='A library and command line utility for diffing xml'
 url='https://github.com/Shoobx/xmldiff'
 license=('MIT')
 arch=(any)
 depends=(
-    libxslt
-    jade
     python
     python-lxml
-    python-six)
-makedepends=(git
-    python-setuptools)
+)
+makedepends=(
+    git
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
+)
 provides=("${pkgname%-git}" xmldiff)
 conflicts=("${pkgname%-git}" xmldiff)
 source=("$pkgname::git+$url.git")
@@ -27,7 +30,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 # check() {
@@ -37,5 +40,5 @@ build() {
 
 package() {
     cd "$pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
