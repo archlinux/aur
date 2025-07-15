@@ -10,7 +10,7 @@ index f76d2a1..4e06279 100644
 -[bdist_wheel]
 -universal = 1
 diff --git a/setup.py b/setup.py
-index de02273..28d051d 100644
+index de02273..4cd68ef 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -2,30 +2,12 @@ import codecs
@@ -44,7 +44,7 @@ index de02273..28d051d 100644
  with codecs.open("README.md", encoding="utf-8") as f:
      README = f.read()
  
-@@ -54,9 +36,7 @@ setup(
+@@ -54,16 +36,13 @@ setup(
      long_description="\n".join((README, CHANGELOG)),
      long_description_content_type="text/markdown",
      keywords="puppet puppetdb",
@@ -54,3 +54,10 @@ index de02273..28d051d 100644
      install_requires=requirements,
      python_requires=">=3.7.0",
      classifiers=[
+         "Development Status :: 5 - Production/Stable",
+         "Intended Audience :: Developers",
+         "Natural Language :: English",
+-        "License :: OSI Approved :: Apache Software License",
+         "Operating System :: POSIX",
+         "Programming Language :: Python :: 3",
+         "Programming Language :: Python :: 3.7",

@@ -1,7 +1,7 @@
 pkgbase = python-pypuppetdb
 	pkgdesc = Library for working with the PuppetDB REST API
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/voxpupuli/pypuppetdb
 	arch = any
 	license = Apache-2.0
@@ -15,8 +15,10 @@ pkgbase = python-pypuppetdb
 	makedepends = python-wheel
 	depends = python-requests
 	source = python-pypuppetdb-3.2.0.tar.gz::https://github.com/voxpupuli/pypuppetdb/archive/refs/tags/3.2.0.tar.gz
+	source = update-docs-to-use-importlib.patch
 	source = fix-deprecations-warnings.patch
 	sha512sums = a1f924c2fa63a915581c48a14512388e949d39ff3420b79a323b50949d2bf8fadcf6d92951480e0926d07dc18d82d1f46a35e80e812e5f0daa8f7cc0622c39de
-	sha512sums = 386e920dfc74a3ef0eeb691010fa8e0bfb0d9b218c2d4c9b0949f06ae26e6236bb1574fbcee1f471e1db5acb8537dc9a30d24085815230f5fbb262c41644183e
+	sha512sums = 0ceb24d00e94cab8f218ed3fed8ae2264b1e5b6a5384425543ba522c155d27e444931dedc5f1aca9f81226cfe14eb6d444f146359fe4ae9e50007f44991ac0dc
+	sha512sums = b4003d4f492ff5b7ffe2b1247ce3cf09f56ef8e94234b437656d9a517fc8d406d3e0219b4a023bdd17bb5a7cd679714fbf454f5c3cfd6e347d646eb140bd4cb4
 
 pkgname = python-pypuppetdb
