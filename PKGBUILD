@@ -7,7 +7,13 @@ arch=('any')
 url="https://github.com/EskelinenAntti/cdir"
 license=('MIT')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/EskelinenAntti/cdir.git')
@@ -15,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
