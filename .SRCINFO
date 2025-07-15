@@ -1,21 +1,23 @@
 pkgbase = license
 	pkgdesc = A tool to easily add a license to your project
 	pkgver = 3.1.0
-	pkgrel = 1
-	url = https://sr.ht/~zethra/license/
+	pkgrel = 2
+	url = https://sr.ht/~zethra/license
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv7h
 	arch = aarch64
 	license = MPL-2.0
-	makedepends = rust
 	makedepends = cargo
 	makedepends = scdoc
+	depends = gcc-libs
+	depends = glibc
+	depends = sh
 	optdepends = fzf: required for interactive scripts: set-license, copy-header
 	optdepends = xclip: required for interactive scripts: set-license, copy-header
 	optdepends = wl-clipboard: required for interactive scripts: set-license, copy-header
-	source = https://git.sr.ht/~zethra/license/archive/3.1.0.tar.gz
+	source = license-3.1.0::https://git.sr.ht/~zethra/license/archive/3.1.0.tar.gz
 	sha256sums = 67e16dc8f048ea5e92e1f91c4739b9611cec23a80533e9305f1dfcd448c9ed55
 
 pkgname = license
