@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 _pkbase=cluster-api
 pkgname=clusterctl
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc='Cluster API command line interface'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://cluster-api.sigs.k8s.io/"
 license=('Apache-2.0')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/${_pkbase}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d93fcf18606addfdd93722b197138c992022180183d5420007a4c7e5d0ccc17d')
+sha256sums=('b50e70b68ed5685661296cb877feb9978bb377d3ca1dce4e72541f57a9567aaa')
 
 prepare(){
   cd "$_pkbase-$pkgver"
