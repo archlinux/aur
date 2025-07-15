@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Holger Döbler <holger.doebler@posteo.de>
 pkgname=verapdf
-pkgver=1.28.1
-pkgrel=2
+pkgver=1.28.2
+pkgrel=1
 epoch=
 pkgdesc="purpose-built, open source, file-format validator covering all PDF/A parts and conformance levels"
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://software.verapdf.org/rel/${pkgver%.*}/${pkgname}-greenfield-${p
         "$pkgname.desktop"
         "auto-install.xml")
 noextract=("${pkgname}-greenfield-${pkgver}-installer.zip" 'auto-install.sh')
-md5sums=('806fb79bf1121ea718fb44f44965f2a9'
+md5sums=('8d897ed4401321107f87b2fe9e1f4b16'
          '076b23717ab675281ed53dcf84471b89'
          'd84e22d0455afdf60816e182d66ce089'
          '312f8dc7e9c4a6ecfd25d75aff7b22c9')
