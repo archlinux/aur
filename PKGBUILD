@@ -1,3 +1,7 @@
+#!/bin/bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+
 # Maintainer: Philippe.seraphin <philippe(dot)seraphin(at)infomaniak(dot)com>
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)infomaniak(dot)com>
 _pkgname=auxilium
@@ -22,17 +26,17 @@ md5sums=('SKIP')
 
 build()
 {
-    cd "$srcdir/$_pkgname"
+    cd "${srcdir}/${_pkgname}" || exit 1
 
 }
 
 package()
 {
-    cd "$srcdir/$_pkgname"
-    mkdir -p $pkgdir/usr/bin/ 
-    mkdir -p $pkgdir/usr/share/auxilium/
+    cd "${srcdir}/$_pkg{name" || exit 1
+     mkdir -p "${pkgdir}/usr/bin/ "
+    mkdir -p "${pkgdir}/usr/share/auxilium/"
 
-    cp bin/auxilium_test $pkgdir/usr/bin/
-    chmod +x $pkgdir/usr/bin/auxilium_test
-    cp share/* $pkgdir/usr/share/${_pkgname}/
+    cp "bin/auxilium_test" "${pkgdir}/usr/bin/"
+    chmod +x "${pkgdir}/usr/bin/auxilium_test"
+    cp "share/*" "${pkgdir}/usr/share/${_pkgname}/"
 }
