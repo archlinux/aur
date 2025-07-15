@@ -5,7 +5,7 @@
 _branch=main
 _pkgname=yaml-language-server
 pkgname=${_pkgname}-git
-pkgver=r1345.de78c0e9
+pkgver=r1371.b8750279
 pkgrel=1
 pkgdesc='YAML Language Server, git main build'
 url="https://github.com/redhat-developer/${_pkgname}"
@@ -41,6 +41,7 @@ package() {
   # Emulate `npm prune --omit=dev`
   cp package.json{,.bak}
   read -ra devDependencies < <(jq -r '.devDependencies | keys | join(" ")' package.json)
+  yarn install
   yarn remove --frozen-lockfile "${devDependencies[@]}"
   mv package.json{.bak,}
 
