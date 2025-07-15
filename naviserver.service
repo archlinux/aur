@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 Environment="LANG=en_US.UTF-8"
 
-ExecStart=/usr/bin/nsd -f -u nsadmin -g nsadmin -t /etc/naviserver/nsd-config.tcl
+ExecStart=/usr/local/ns/bin/nsd -f -u nsadmin -g nsadmin -t /usr/local/ns/conf/nsd-config.tcl
 
 Restart=on-abnormal
 KillMode=process
