@@ -4,18 +4,18 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.24.0
+pkgver=3.24.2
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-0.4.0-py3-none-any.whl"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-0.4.0-py3-none-any.whl") # Prevent cercular dependencies
-noextract=('pydantic_graph-0.4.0-py3-none-any.whl' 'pydantic_ai_slim-0.4.0-py3-none-any.whl')
-sha256sums=('1e676bbbe58bcfad4185d1f5d47a2d1762f59e2a9393bf0c89e70b8d985a8c00'
-            '85837d1893add25e85da676d7d091a1e5c203ba68def0280a2ed29931f0a8684'
-            '9bd3b4121cb6abffb32de46044e1628050762507db8506cf9af94f790e1ab31d')
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-0.4.2-py3-none-any.whl"
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-0.4.2-py3-none-any.whl") # Prevent cercular dependencies
+noextract=('pydantic_graph-0.4.2-py3-none-any.whl' 'pydantic_ai_slim-0.4.2-py3-none-any.whl')
+sha256sums=('21d248a2ef800365e85f45f686bd928ecbea2f94172923ebe58a5c6594c13cd7'
+            '6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2'
+            '1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 _pydantic_ai_depends=('python-griffe' 'python-opentelemetry-api' 'python-typing-inspection')
@@ -109,17 +109,14 @@ check() {
     --ignore tests/otel_integrations/test_celery.py
     --ignore tests/otel_integrations/test_mysql.py
     --ignore tests/otel_integrations/test_redis.py
-    # Failed
-    --deselect tests/otel_integrations/test_litellm.py::test_litellm_instrumentation
-    --deselect tests/otel_integrations/test_openai_agents_mcp.py::test_mcp
   )
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/pip install -U openinference-instrumentation-litellm
   test-env/bin/python -m installer ${_name1}/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m installer "${srcdir}"/pydantic_graph-0.4.0-py3-none-any.whl
-  test-env/bin/python -m installer "${srcdir}"/pydantic_ai_slim-0.4.0-py3-none-any.whl
+  test-env/bin/python -m installer "${srcdir}"/pydantic_graph-*-py3-none-any.whl
+  test-env/bin/python -m installer "${srcdir}"/pydantic_ai_slim-*-py3-none-any.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
