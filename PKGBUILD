@@ -6,8 +6,16 @@ pkgdesc="GUI file synchronization client that can sync with any cloud provider"
 arch=('x86_64')
 url="https://github.com/hwittenborn/celeste"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'rclone')
-makedepends=('cargo-nightly' 'clang' 'go' 'just')
+depends=(
+  'libadwaita'
+  'rclone'
+)
+makedepends=(
+  'cargo-nightly'
+  'clang'
+  'go'
+  'just'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0557d393595eae97b11feb6ec9b9914d8d3779c047ff3771be7307487cbed07c')
 
