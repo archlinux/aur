@@ -1,24 +1,24 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-stwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="WCS based distortion models and coordinate transformation"
 arch=('any')
 url="https://stwcs.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
-             'python-installer')
+             'python-installer')  # wheel required by new setuptools
 checkdepends=('python-pytest'
               'python-stsci.tools'
 #             'python-matplotlib'
               'python-lxml'
               'python-requests')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('daec58de6921b543ac8d54cd51a60fed')
+md5sums=('e4d810f0d3370619be445401fd8a7cdd')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
