@@ -14,7 +14,7 @@ conflicts=('deemix')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer')
 provides=('deemix')
 source=("${_pkgname}::git+https://gitlab.com/RemixDev/${_pkgname}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"

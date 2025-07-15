@@ -20,6 +20,6 @@ pkgbase = deemix-git
 	provides = deemix
 	conflicts = deemix
 	source = deemix-py::git+https://gitlab.com/RemixDev/deemix-py
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = deemix-git
