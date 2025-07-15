@@ -32,7 +32,7 @@ makedepends=(
   'pkgconf'
 )
 provides=("$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname-git")
 
 source=("$pkgname"-"$pkgver.tar.gz"::"$url/archive/v0.1.0.tar.gz"
   quickshell-check.hook)
