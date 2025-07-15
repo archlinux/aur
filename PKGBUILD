@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-bg-git
-pkgver=1.0.0.alpha.2.r0.g584f6b3
-pkgrel=2
+pkgver=1.0.0.alpha.7.r1.g1da843a
+pkgrel=1
 pkgdes="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
