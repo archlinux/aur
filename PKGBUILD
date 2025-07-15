@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous Maintainer: RemixDev <RemixDev64@gmail.com>
+# Contributor: RemixDev <RemixDev64@gmail.com>
 
 pkgname="deemix-gui-git"
 _pkgname="deemix-gui"
