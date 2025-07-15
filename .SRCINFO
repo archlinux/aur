@@ -1,7 +1,7 @@
 pkgbase = r-rserve
-	pkgdesc = Binary R server
-	pkgver = 1.8.13
-	pkgrel = 2
+	pkgdesc = Versatile R Server
+	pkgver = 1.8.15
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Rserve
 	arch = x86_64
 	license = GPL-2.0-only WITH openvpn-openssl-exception
@@ -10,11 +10,11 @@ pkgbase = r-rserve
 	depends = r
 	optdepends = java-runtime: REngine Java client
 	optdepends = r-rsclient
-	source = https://cran.r-project.org/src/contrib/Rserve_1.8-13.tar.gz
+	source = https://cran.r-project.org/src/contrib/Rserve_1.8-15.tar.gz
 	source = fix-install.patch
-	md5sums = 1ff84f0cc4c026ccec13686bd9f17846
+	md5sums = 6520a52bce06b9046dd97632b181b42b
 	md5sums = 14db30e2b5f891214adf035312aeab2a
-	b2sums = b0a3ba4b88eb53533fe8fa942b2a9381ac73874c82c0eca3bc02d7cac75683502b1c2c5609f64069aeed607f448ac6d17ed50a9af3783f610b9d3ca43645d481
+	b2sums = 646ab28fc42b5eb96c0a5ac191b611c18321f1b5f9aacfceb269007e53504aedaded601e4db4fcce1dc6940c04ae7b3e958995e9cdf7b1e676a9222d7ef368aa
 	b2sums = a480df5dd2ab3dbf7c72c248add04e5f986eed3f5e5ebdca3acaa3819345098e1e9a305cd5927896ee0999fc71fea5e2d0a08bb309da72123ed35761b2dae29b
 
 pkgname = r-rserve
