@@ -1,7 +1,7 @@
 # Maintainer: Stan-breaks <stanleymwendwa03@email.com>
 pkgname=ytsurf
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Search and play YouTube videos from the terminal using fzf or rofi and mpv"
 arch=('any')
 url="https://github.com/Stan-breaks/ytsurf"
