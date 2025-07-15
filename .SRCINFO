@@ -1,7 +1,7 @@
 pkgbase = archipelagomw-bin
 	pkgdesc = A Multi-Game Randomizer and Server
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArchipelagoMW/Archipelago
 	arch = x86_64
 	license = MIT

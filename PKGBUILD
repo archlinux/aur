@@ -3,7 +3,7 @@
 pkgname=archipelagomw-bin
 _ghrel=0.6.2
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Multi-Game Randomizer and Server"
 arch=("x86_64")
 url="https://github.com/ArchipelagoMW/Archipelago"
