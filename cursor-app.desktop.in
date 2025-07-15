@@ -3,7 +3,7 @@
 [Desktop Entry]
 Name=Cursor
 Comment=AI-first coding environment
-Keywords=AI;code;editor;development;IDE;programming;
+Keywords=cursor,ai-code,code
 
 # Exec points to the launcher script. The script itself will handle all flags.
 # %U allows opening multiple files/URLs from the file manager.
@@ -16,6 +16,6 @@ Icon=cursor-app
 StartupWMClass=Cursor
 X-AppImage-Version=@@PKGVERSION@@
 
-# Handles custom cursor:// URL schemes
+# Handles custom cursor:// URL schemes.
 MimeType=x-scheme-handler/cursor;
-Categories=Utility;TextEditor;Development;IDE;
+Categories=TextEditor;Development;IDE;

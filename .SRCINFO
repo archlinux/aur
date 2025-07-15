@@ -1,7 +1,7 @@
 pkgbase = cursor-app
 	pkgdesc = Cursor - AI-first coding environment
 	pkgver = 1.2.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.cursor.com/
 	arch = x86_64
 	license = custom:Anysphere-Inc
