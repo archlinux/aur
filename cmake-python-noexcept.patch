@@ -1,0 +1,179 @@
+From 89218f9b35b1cb237d424c811b74d20099a8ff95 Mon Sep 17 00:00:00 2001
+From: involution <involution@gmail.com>
+Date: Tue, 1 Jul 2025 14:33:30 -0400
+Subject: [PATCH 1/5] avoid trying to install deprecated executor_api.h
+
+---
+ folly/CMakeLists.txt | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/folly/CMakeLists.txt b/folly/CMakeLists.txt
+index 9c5ed4e2d4f..e58d02c1c79 100644
+--- a/folly/CMakeLists.txt
++++ b/folly/CMakeLists.txt
+@@ -86,18 +86,11 @@ if (PYTHON_EXTENSIONS)
+       python3 ${CMAKE_CURRENT_SOURCE_DIR}/python/setup.py
+       build_ext -f ${incs} ${libs}
+     BYPRODUCTS
+-      ${_cybld}/folly/executor_api.h
+       ${_cybld}/folly/iobuf_api.h
+     WORKING_DIRECTORY ${_cybld}
+   )
+ 
+   add_custom_target(create_post_binding_symlink ALL)
+-  add_custom_command(TARGET create_post_binding_symlink
+-    COMMAND
+-      ${CMAKE_COMMAND} -E create_symlink
+-      "${_cybld}/folly/executor_api.h"
+-      "${_cybld}/folly/python/executor_api.h"
+-  )
+   add_custom_command(TARGET create_post_binding_symlink
+     COMMAND
+       ${CMAKE_COMMAND} -E create_symlink
+@@ -143,7 +136,6 @@ if (PYTHON_EXTENSIONS)
+ 
+   install(
+     FILES
+-      ${_cybld}/folly/executor_api.h
+       ${_cybld}/folly/iobuf_api.h
+     DESTINATION ${INCLUDE_INSTALL_DIR}/folly/python
+     COMPONENT dev
+
+From fdb31f9891b9c2e08ac6bd39063a617dde7880ae Mon Sep 17 00:00:00 2001
+From: involution <involution@gmail.com>
+Date: Tue, 1 Jul 2025 14:36:33 -0400
+Subject: [PATCH 2/5] help cmake find Python.h
+
+---
+ build/.cmake/api/v1/query/client-neocmake/query.json | 1 +
+ folly/CMakeLists.txt                                 | 6 ++++++
+ 2 files changed, 7 insertions(+)
+ create mode 100644 build/.cmake/api/v1/query/client-neocmake/query.json
+
+diff --git a/build/.cmake/api/v1/query/client-neocmake/query.json b/build/.cmake/api/v1/query/client-neocmake/query.json
+new file mode 100644
+index 00000000000..394cc33f015
+--- /dev/null
++++ b/build/.cmake/api/v1/query/client-neocmake/query.json
+@@ -0,0 +1 @@
++{"requests":[{"kind":"codemodel","version":[{"major":2,"minor":8}]},{"kind":"configureLog","version":[{"major":1,"minor":0}]},{"kind":"cache","version":[{"major":2,"minor":0}]},{"kind":"cmakeFiles","version":[{"major":1,"minor":1}]},{"kind":"toolchains","version":[{"major":1,"minor":0}]}]}
+\ No newline at end of file
+diff --git a/folly/CMakeLists.txt b/folly/CMakeLists.txt
+index e58d02c1c79..08589b53185 100644
+--- a/folly/CMakeLists.txt
++++ b/folly/CMakeLists.txt
+@@ -12,6 +12,8 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
++find_package(Python3 REQUIRED COMPONENTS Development)
++
+ add_library(
+     follybenchmark
+     Benchmark.cpp
+@@ -98,6 +100,8 @@ if (PYTHON_EXTENSIONS)
+       "${_cybld}/folly/python/iobuf_api.h"
+   )
+ 
++find_package(Python3 REQUIRED COMPONENTS Development)
++
+   add_library(
+     folly_python_cpp
+       python/error.cpp
+@@ -105,6 +109,8 @@ if (PYTHON_EXTENSIONS)
+       python/iobuf.cpp
+   )
+ 
++target_include_directories(folly_python_cpp PRIVATE ${Python3_INCLUDE_DIRS})
++target_link_libraries(folly_python_cpp PRIVATE Python3::Python)
+   add_dependencies(folly_python_cpp folly_python_bindings create_post_binding_symlink)
+   set_property(TARGET folly_python_cpp PROPERTY VERSION ${PACKAGE_VERSION})
+   target_compile_definitions(folly_python_cpp PRIVATE BOOST_NO_AUTO_PTR)
+
+From 25843ac5b3559ea9dc3020726709fbd087f4b73c Mon Sep 17 00:00:00 2001
+From: involution <involution@gmail.com>
+Date: Tue, 1 Jul 2025 14:53:46 -0400
+Subject: [PATCH 3/5] clean up stray file
+
+---
+ build/.cmake/api/v1/query/client-neocmake/query.json | 1 -
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 build/.cmake/api/v1/query/client-neocmake/query.json
+
+diff --git a/build/.cmake/api/v1/query/client-neocmake/query.json b/build/.cmake/api/v1/query/client-neocmake/query.json
+deleted file mode 100644
+index 394cc33f015..00000000000
+--- a/build/.cmake/api/v1/query/client-neocmake/query.json
++++ /dev/null
+@@ -1 +0,0 @@
+-{"requests":[{"kind":"codemodel","version":[{"major":2,"minor":8}]},{"kind":"configureLog","version":[{"major":1,"minor":0}]},{"kind":"cache","version":[{"major":2,"minor":0}]},{"kind":"cmakeFiles","version":[{"major":1,"minor":1}]},{"kind":"toolchains","version":[{"major":1,"minor":0}]}]}
+\ No newline at end of file
+
+From 92c71f098d834cef6e377c29b186550545d139e0 Mon Sep 17 00:00:00 2001
+From: involution <involution@gmail.com>
+Date: Tue, 1 Jul 2025 14:56:04 -0400
+Subject: [PATCH 4/5] formatting
+
+---
+ folly/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/folly/CMakeLists.txt b/folly/CMakeLists.txt
+index 08589b53185..6948ae25dd4 100644
+--- a/folly/CMakeLists.txt
++++ b/folly/CMakeLists.txt
+@@ -109,8 +109,8 @@ find_package(Python3 REQUIRED COMPONENTS Development)
+       python/iobuf.cpp
+   )
+ 
+-target_include_directories(folly_python_cpp PRIVATE ${Python3_INCLUDE_DIRS})
+-target_link_libraries(folly_python_cpp PRIVATE Python3::Python)
++  target_include_directories(folly_python_cpp PRIVATE ${Python3_INCLUDE_DIRS})
++  target_link_libraries(folly_python_cpp PRIVATE Python3::Python)
+   add_dependencies(folly_python_cpp folly_python_bindings create_post_binding_symlink)
+   set_property(TARGET folly_python_cpp PROPERTY VERSION ${PACKAGE_VERSION})
+   target_compile_definitions(folly_python_cpp PRIVATE BOOST_NO_AUTO_PTR)
+
+From c7e6e4fb3b56be851b34c077c420e8094bf7f94a Mon Sep 17 00:00:00 2001
+From: involution <involution@gmail.com>
+Date: Fri, 11 Jul 2025 19:18:47 -0400
+Subject: [PATCH 5/5] move to folly-deps.cmake
+
+---
+ CMake/folly-deps.cmake | 2 +-
+ folly/CMakeLists.txt   | 2 --
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMake/folly-deps.cmake b/CMake/folly-deps.cmake
+index 6ce4c679a42..7dafece7d5a 100644
+--- a/CMake/folly-deps.cmake
++++ b/CMake/folly-deps.cmake
+@@ -151,7 +151,7 @@ list(APPEND FOLLY_LINK_LIBRARIES ${CMAKE_DL_LIBS})
+ list(APPEND CMAKE_REQUIRED_LIBRARIES ${CMAKE_DL_LIBS})
+ 
+ if (PYTHON_EXTENSIONS)
+-  find_package(PythonInterp 3.6 REQUIRED)
++  find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+   find_package(Cython 0.26 REQUIRED)
+ endif ()
+ 
+diff --git a/folly/CMakeLists.txt b/folly/CMakeLists.txt
+index 6948ae25dd4..ceed1b6a969 100644
+--- a/folly/CMakeLists.txt
++++ b/folly/CMakeLists.txt
+@@ -12,7 +12,6 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-find_package(Python3 REQUIRED COMPONENTS Development)
+ 
+ add_library(
+     follybenchmark
+@@ -100,7 +99,6 @@ if (PYTHON_EXTENSIONS)
+       "${_cybld}/folly/python/iobuf_api.h"
+   )
+ 
+-find_package(Python3 REQUIRED COMPONENTS Development)
+ 
+   add_library(
+     folly_python_cpp

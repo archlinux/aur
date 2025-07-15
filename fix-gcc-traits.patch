@@ -1,0 +1,12 @@
+--- folly/folly/Traits.h.orig	2025-07-15 10:35:20.460181661 -0400
++++ folly/folly/Traits.h	2025-07-15 10:36:41.291074678 -0400
+@@ -1197,7 +1197,8 @@
+ /// trait must not be used anywhere it might be subject to mangling, such as in
+ /// a return-type expression.
+ 
+-#if FOLLY_HAS_BUILTIN(__type_pack_element)
++///__type_pack_element is not fully implemented in GCC
++#if FOLLY_HAS_BUILTIN(__type_pack_element) && (!defined(__GNUC__))
+ 
+ template <std::size_t I, typename... Ts>
+ using type_pack_element_t = __type_pack_element<I, Ts...>;
