@@ -7,7 +7,7 @@ pkgdesc="Added missing Japanese OADG109A layout (e.g. dell's travel keyboard jap
 arch=(any)
 url="http://example.com/dummy-url/"
 license=('MIT')
-depends=(kbd)
+depends=('kbd')
 source=(jp-OADG109A.map.gz)
 noextract=(jp-OADG109A.map.gz)
 
