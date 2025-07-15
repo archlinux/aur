@@ -1,0 +1,33 @@
+pkgbase = discoursemap
+	pkgdesc = Discourse forum security scanner for security professionals and forum administrators
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/ibrahmsql/discoursemap
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-pip
+	optdepends = python-pyyaml: YAML configuration support
+	optdepends = python-requests: HTTP library for API calls
+	optdepends = python-beautifulsoup4: HTML parsing
+	optdepends = python-lxml: XML/HTML processing
+	optdepends = python-colorama: Colored terminal output
+	optdepends = python-tqdm: Progress bars
+	optdepends = python-jinja2: Template engine
+	optdepends = python-urllib3: HTTP client library
+	optdepends = python-certifi: SSL certificate verification
+	optdepends = python-chardet: Character encoding detection
+	optdepends = python-idna: Internationalized domain names
+	optdepends = python-cryptography: Cryptographic operations
+	optdepends = python-pyopenssl: OpenSSL wrapper
+	optdepends = ruby-nokogiri: HTML/XML parsing for Ruby exploits
+	optdepends = ruby-json: JSON processing for Ruby exploits
+	optdepends = ruby-openssl: SSL/TLS support for Ruby exploits
+	source = https://files.pythonhosted.org/packages/source/d/discoursemap/discoursemap-1.2.2.tar.gz
+	sha256sums = 8df189ac1eed024fffd2ec73b6ec987b0e31446be642b33c7626bfc835701ffb
+
+pkgname = discoursemap
