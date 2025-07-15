@@ -1,3 +1,4 @@
 [python-sdbus-notifications]
-source = "pypi"
-pypi = "sdbus-notifications"
+source = "github"
+github = "python-sdbus/python-sdbus-notifications"
+use_max_tag = true

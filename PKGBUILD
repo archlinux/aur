@@ -1,9 +1,8 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-sdbus-notifications
-_reponame=sdbus_notifications
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop Notifications binds for python-sdbus"
 url="https://github.com/python-sdbus/python-sdbus-notifications"
 arch=('any')
@@ -18,16 +17,16 @@ makedepends=(
 	'python-poetry'
 	'python-setuptools'
 )
-source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('92c301b8232832efc50c8c1d8789dedf83ce8fd55c1bc52d2befbeedfedfebc3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/python-sdbus/python-sdbus-notifications/archive/${pkgver}.tar.gz")
+sha256sums=('076bdabb698a72380e104c9bbe367af948153dcaafd64cdab3f866319046f501')
 
 build() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 
