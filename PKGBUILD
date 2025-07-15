@@ -12,9 +12,9 @@ license=('custom')
 depends=('libxss')
 DLAGENTS=("https::/usr/bin/curl --user-agent 'exodus-archlinux-pkg' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://downloads.exodus.com/releases/exodus-linux-x64-${pkgver}.zip"
-	"${pkgname}.svg"
-	"${pkgname}.desktop"
-        "LICENSE")
+	"${pkgname}.svg::https://aur.archlinux.org/cgit/aur.git/plain/${pkgname}.svg?h=${pkgname}"
+	"${pkgname}.desktop::https://aur.archlinux.org/cgit/aur.git/plain/${pkgname}.desktop?h=${pkgname}"
+	"LICENSE::https://aur.archlinux.org/cgit/aur.git/plain/LICENSE?h=${pkgname}")
 sha256sums=('ed9ea615bc7c6208121690502c7d9451f26bfdee7b14663b88f873b79bf5f6d8'
             'ffafdcd0869f1c9338ba25e447698c4cfa3c8714123459ae3e63686a5312ef2e'
             '04676d81272a35a91150a7eec4640e69ca50f2e479d29fad8be90160ee74122c'
