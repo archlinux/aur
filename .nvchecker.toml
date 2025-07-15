@@ -1,3 +1,5 @@
 [python-ticktick-py]
-source = "pypi"
-pypi = "ticktick-py"
+source = "github"
+github = "lazeroffmichael/ticktick-py"
+use_max_tag = true
+prefix = "v"
