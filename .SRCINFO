@@ -1,6 +1,6 @@
 pkgbase = catppuccinifier-gui-bin
 	pkgdesc = An application to catppuccinifiy your images.
-	pkgver = 8.0.0
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/lighttigerXIV/catppuccinifier
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = catppuccinifier-gui-bin
 	depends = libvips
 	provides = catppuccinifier-gui
 	conflicts = catppuccinifier-gui
-	source = https://github.com/lighttigerXIV/catppuccinifier/releases/download/8.0.0/Catppuccinifer-Linux-8.0.0.zip
-	md5sums = SKIP
+	source = https://github.com/lighttigerXIV/catppuccinifier/releases/download/9.0.0/Catppuccinifer-Linux-9.0.0.tar.xz
+	md5sums = 4616926942c4800928fd81a88c1e77bf
 
 pkgname = catppuccinifier-gui-bin
