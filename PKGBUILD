@@ -1,7 +1,7 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.0.0.r349.gdb18b43
+pkgver=0.0.0.r359.g1af3ca1
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
