@@ -15,9 +15,7 @@ pkgbase = openrgb-git
 	conflicts = openrgb
 	source = git+https://gitlab.com/CalcProgrammer1/OpenRGB.git
 	source = openrgb.conf
-	source = openrgb.service
 	sha256sums = SKIP
 	sha256sums = b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2
-	sha256sums = 272dc43a77d0e48d29f32da753c7e05fd635883b173c21047f4eefa8bfc77938
 
 pkgname = openrgb-git
