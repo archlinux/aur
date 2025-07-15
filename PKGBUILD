@@ -14,7 +14,7 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.52.0
+pkgver=1.52.1
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -61,10 +61,15 @@ checkdepends=(
   libx11
   python-dbus
 )
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=$pkgver"
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=${pkgver/[a-z]/-&}"
         "$pkgbase.install")
-b2sums=('c062388e55d5b752244178b59487b4ff8b9d37fe2b6f32110eb36c2e9f17a6721d3ac5e3f347870422f256168793536f1fb1249d61f7884f01d1d291f4f14cba'
+b2sums=('0af9767688f43ccdca335c1655f4a0b7b2f0568f965b7cfc268aad63a4dfa0f0d9b86746a72e5d27923f0fb8fe8cc74d429fe977c10edea3b24dd47497d021b1'
         '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
+
+prepare() {
+  cd NetworkManager
+  git cherry-pick -n 12eff9a7fdfeabab12ce56e5f7d515a13a3d704c  # fix docs generation
+}
 
 build() {
   local meson_options=(
