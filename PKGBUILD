@@ -38,10 +38,10 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	PYTHON_VERSION=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+	_PYTHON_VERSION=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
-	cp -r sdl3/bin "${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/sdl3/"
-	cp -r sdl3/__doc__.py "${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/sdl3/"
+	cp -r sdl3/bin "${pkgdir}/usr/lib/python${_PYTHON_VERSION}/site-packages/sdl3/"
+	cp -r sdl3/__doc__.py "${pkgdir}/usr/lib/python${_PYTHON_VERSION}/site-packages/sdl3/"
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
