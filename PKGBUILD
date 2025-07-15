@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-tweaks-git
-pkgver=0.1.3.r0.g7eaf569
+pkgver=0.1.3.r68.g3d212df
 pkgrel=1
 pkgdesc="A tweaking tool for the COSMIC desktop."
 arch=('x86_64')
