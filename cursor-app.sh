@@ -3,28 +3,40 @@
 # Cursor launcher script
 # This script allows loading user flags from $XDG_CONFIG_HOME/cursor-flags.conf
 
-# Set default config directory
+# Set default config directory according to XDG Base Directory Specification
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 CURSOR_FLAGS_FILE="$XDG_CONFIG_HOME/cursor-flags.conf"
 
-# Default flags if doesn't start use --no-sandbox
-DEFAULT_FLAGS=""
+# Default flags. Example: use --no-sandbox if the app doesn't start.
+DEFAULT_FLAGS=()
 
-# Create a file with default contents if it does not exist
+# Create a default config file if it does not exist
 if [[ ! -f "$CURSOR_FLAGS_FILE" ]]; then
     mkdir -p "$(dirname "$CURSOR_FLAGS_FILE")"
-    echo "# User flags for Cursor" > "$CURSOR_FLAGS_FILE"
+    # Provide a helpful default file
+    cat > "$CURSOR_FLAGS_FILE" <<EOF
+# User flags for Cursor. One flag per line.
+# Example:
+# --force-device-scale-factor=1.5
+# --enable-features=UseOzonePlatform
+# --ozone-platform=wayland
+EOF
 fi
 
-# Read user flags if file exists
-USER_FLAGS=""
-if [[ -f "$CURSOR_FLAGS_FILE" ]]; then
-    # Filter only valid flags: remove comments and empty lines
-    USER_FLAGS=$(grep -vE '^\s*#' "$CURSOR_FLAGS_FILE" | grep -vE '^\s*$' | xargs)
-fi
+# Read user flags into an array for safer handling
+# This avoids issues with spaces and special characters.
+USER_FLAGS=()
+# The `while` loop is safer than `mapfile` or `xargs` for arbitrary flags.
+while IFS= read -r line; do
+    # Skip comments and empty lines
+    if [[ "$line" =~ ^\s*# || -z "$line" ]]; then
+        continue
+    fi
+    USER_FLAGS+=("$line")
+done < "$CURSOR_FLAGS_FILE"
 
-# Combine flags
-ALL_FLAGS="$DEFAULT_FLAGS $USER_FLAGS"
 
 # Launch with AppImageLauncher disabled and execute Cursor AppImage
-APPIMAGELAUNCHER_DISABLE=TRUE exec /opt/cursor-app/cursor-app.AppImage $ALL_FLAGS "$@"
+# exec replaces this script's process with the app's process.
+# "$@" passes all command-line arguments from this script to the app.
+APPIMAGELAUNCHER_DISABLE=TRUE exec /opt/cursor-app/cursor-app.AppImage "${DEFAULT_FLAGS[@]}" "${USER_FLAGS[@]}" "$@"

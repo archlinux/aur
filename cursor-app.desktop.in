@@ -1,11 +1,21 @@
+# This is a template for the .desktop file
+# The @@PKGVERSION@@ placeholder will be replaced during the build process.
 [Desktop Entry]
 Name=Cursor
-Exec=/usr/bin/cursor --no-sandbox %U
+Comment=AI-first coding environment
+Keywords=AI;code;editor;development;IDE;programming;
+
+# Exec points to the launcher script. The script itself will handle all flags.
+# %U allows opening multiple files/URLs from the file manager.
+Exec=/usr/bin/cursor %U
 Terminal=false
 Type=Application
 Icon=cursor-app
-# Change the class below to "Cursor" when on X11
-StartupWMClass=cursor
+
+# Associates the running application window with this .desktop file for the dock/taskbar.
+StartupWMClass=Cursor
 X-AppImage-Version=@@PKGVERSION@@
+
+# Handles custom cursor:// URL schemes.
 MimeType=x-scheme-handler/cursor;
-Categories=Utility;TextEditor;Development;IDE
+Categories=Utility;TextEditor;Development;IDE;
