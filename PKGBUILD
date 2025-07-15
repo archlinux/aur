@@ -1,7 +1,7 @@
 
 pkgname=chromium-ffmpeg-codecs-git
 pkgver=7.2.r119684.g670089304a
-pkgrel=6
+pkgrel=7
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ffmpeg)"
 arch=('x86_64')
@@ -56,4 +56,9 @@ package(){
     ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
     ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
   done
+  # soname
+  cd ffmpeg
+  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h > "${pkgdir}"/usr/lib/${pkgname}/soname.txt
+  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h >> "${pkgdir}"/usr/lib/${pkgname}/soname.txt
+  cat "${pkgdir}"/usr/lib/${pkgname}/soname.txt
 }
