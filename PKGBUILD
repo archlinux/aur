@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous Maintainer: John Troxler <firstname dot lastname at gmail dot com>
+# Contributor: John Troxler <firstname dot lastname at gmail dot com>
 
 # https://github.com/loot/libloot/issues/95
 # Maybe add doxgen for /docs, but then we get the following error as `spdlog`` will be pulled:
