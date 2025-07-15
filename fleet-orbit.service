@@ -9,7 +9,6 @@ Restart=always
 RestartSec=60
 KillMode=control-group
 KillSignal=SIGTERM
-CPUQuota=5%
 
 [Install]
 WantedBy=multi-user.target
