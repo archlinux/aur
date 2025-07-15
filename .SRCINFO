@@ -1,6 +1,6 @@
 pkgbase = python-playsound3
 	pkgdesc = Pure Python library for playing sounds
-	pkgver = 2.5.2
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://github.com/sjmikler/playsound3
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-playsound3
 	depends = python-certifi
 	depends = python-gobject
 	depends = gstreamer
-	source = python-playsound3-2.5.2.tar.gz::https://files.pythonhosted.org/packages/source/p/playsound3/playsound3-2.5.2.tar.gz
-	sha256sums = 37e75d9803cae5801e3a7c16bf6c8715c3f486df3637e550c9c729e544652ccc
+	source = python-playsound3-3.2.4.tar.gz::https://github.com/sjmikler/playsound3/archive/v3.2.4.tar.gz
+	sha256sums = 8a11deb4c77348558c8cbe8e0356b991754d105063eddba4c6ec0a553e169b05
 
 pkgname = python-playsound3

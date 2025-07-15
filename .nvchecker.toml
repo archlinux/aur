@@ -1,3 +1,5 @@
 [python-playsound3]
-source = "pypi"
-pypi = "playsound3"
+source = "github"
+github = "sjmikler/playsound3"
+use_max_tag = true
+prefix = "v"
