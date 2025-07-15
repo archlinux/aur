@@ -5,10 +5,10 @@
 
 _pkgname="ultimate-doom-builder"
 pkgname="$_pkgname-git"
-pkgver=3.0.0.4212.3993ec8
+pkgver=3.0.0.4239.99086de
 pkgrel=1
 pkgdesc="A level editor for Doom-engine games"
-url="https://github.com/jewalky/UltimateDoomBuilder"
+url="https://github.com/UltimateDoomBuilder/UltimateDoomBuilder"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
@@ -21,6 +21,9 @@ makedepends=(
   'imagemagick'
   'libglvnd'
   'mono-msbuild'
+)
+optdepends=(
+  'gtk2: use non-built-in color scheme'
 )
 
 provides=("$_pkgname")
@@ -66,14 +69,15 @@ package() {
 
   # copy files
   install -dm755 "$pkgdir/$_install_path/ultimate-doom-builder"
-  cp --reflink=auto -a Build/* "$pkgdir/$_install_path/ultimate-doom-builder/"
+  cp -a Build/* "$pkgdir/$_install_path/ultimate-doom-builder/"
 
   # script
-  install -Dm755 /dev/stdin "$pkgdir/$_install_path/ultimate-doom-builder/builder" << 'EOF'
+  # https://github.com/UltimateDoomBuilder/UltimateDoomBuilder/issues/989
+  install -Dm755 /dev/stdin "$pkgdir/$_install_path/ultimate-doom-builder/builder" << END
 #!/usr/bin/env sh
-_builder_path="$(dirname `readlink -f "$0"`)"
-exec mono "$_builder_path/Builder.exe" "$@"
-EOF
+_builder_path="\$(dirname \$(readlink -f "\$0"))"
+exec mono "\$_builder_path/Builder.exe" "\$@"
+END
 
   # symlink
   install -dm755 "$pkgdir/usr/bin"

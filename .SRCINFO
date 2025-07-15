@@ -1,8 +1,8 @@
 pkgbase = ultimate-doom-builder-git
 	pkgdesc = A level editor for Doom-engine games
-	pkgver = 3.0.0.4212.3993ec8
+	pkgver = 3.0.0.4239.99086de
 	pkgrel = 1
-	url = https://github.com/jewalky/UltimateDoomBuilder
+	url = https://github.com/UltimateDoomBuilder/UltimateDoomBuilder
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -11,9 +11,10 @@ pkgbase = ultimate-doom-builder-git
 	makedepends = mono-msbuild
 	depends = libxfixes
 	depends = mono
+	optdepends = gtk2: use non-built-in color scheme
 	provides = ultimate-doom-builder
 	conflicts = ultimate-doom-builder
-	source = ultimate-doom-builder::git+https://github.com/jewalky/UltimateDoomBuilder.git
+	source = ultimate-doom-builder::git+https://github.com/UltimateDoomBuilder/UltimateDoomBuilder.git
 	sha256sums = SKIP
 
 pkgname = ultimate-doom-builder-git
