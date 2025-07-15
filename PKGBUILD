@@ -7,7 +7,9 @@ pkgdesc="The Sail ISA specification language"
 arch=('x86_64')
 url="https://github.com/rems-project/sail"
 license=('BSD-2-Claus')
-depends=()
+depends=(
+  'z3'
+)
 makedepends=(
   'opam'
   'dune'
@@ -27,8 +29,11 @@ build() {
   cd "sail-$pkgver"
 
   eval $(opam env)
-  opam install . --deps-only --yes
-  dune build --release
+  # opam install . --deps-only --yes
+  # dune build --release
+
+  opam pin --yes --no-action add .
+  opam install sail --yes
 }
 
 check() {
@@ -39,10 +44,10 @@ check() {
 
 package() {
   cd "sail-$pkgver"
-
-  dune install --bindir="${pkgdir}/usr/bin/"
+  eval $(opam env)
+  dune install --relocatable --prefix="." --destdir="${pkgdir}/usr"
+  # dune install --relocatable 
 
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  # install -Dm644 doc/** -d "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
