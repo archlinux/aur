@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=trufflehog-bin
-pkgver=3.89.2
+pkgver=3.90.0
 pkgrel=1
 pkgdesc='Find, verify, and analyze leaked credentials'
 url='https://github.com/trufflesecurity/trufflehog'
@@ -20,8 +20,8 @@ source_aarch64=("$url/releases/download/v$pkgver/trufflehog_${pkgver}_linux_arm6
 
 sha256sums=('37e56a67543eea634967c9516831c823967fb2e2cbfedc036be25648f5d696d2'
             'f01a5a32d359e07a30b56df2b8c5b303e398d9801c1c4e775c09912b42ca74e7')
-sha256sums_x86_64=('1288a9e28ff2257e8a34995aab767147d38069848e940b3c4b3533be2536dda8')
-sha256sums_aarch64=('d3f97600acf7a9f362a9e72b232f96088084cf13ecadac66013255241e1f6543')
+sha256sums_x86_64=('74ee0b26af165699b6eb852d2f06f8fbf21070bf18184f97bd450ef27c4ce58b')
+sha256sums_aarch64=('f0c7e02cdcc29dfe6a561a91f1f4df68de66a87ff17e1f04c5069da392a2e513')
 
 package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
