@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainer: MartJosip Ponjavic <josipponjavic at gmail dot com>
+# Contributor:  MartJosip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=python-iso639
 _libname=iso639
