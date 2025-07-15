@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
-pkgver=3.14.1
-pkgrel=2
+pkgver=3.15.0
+pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -14,7 +14,7 @@ optdepends=(
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6d57827bff0b82d20f1a7dd8add27e7632e155a489999ad597792a32d09928a2')
+sha256sums=('fbebd9a5490f76f6d5889305cee260d18cf3d82bb745d79a2f47714d0aefb9c0')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
