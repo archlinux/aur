@@ -1,6 +1,6 @@
 pkgbase = examine-git
 	pkgdesc = A system information viewer for the COSMIC™ Desktop
-	pkgver = 1.0.0.r0.ga34c1b9
+	pkgver = 1.0.0.r33.g8a237c1
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/examine
 	arch = x86_64

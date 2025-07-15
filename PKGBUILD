@@ -1,13 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=examine-git
-pkgver=1.0.0.r0.ga34c1b9
+pkgver=1.0.0.r33.g8a237c1
 pkgrel=1
 pkgdesc="A system information viewer for the COSMIC™ Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cosmic-utils/examine"
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' 'libxkbcommon')
-makedepends=('cargo' 'git' 'just')
+depends=(
+  'hicolor-icon-theme'
+  'libxkbcommon'
+)
+makedepends=(
+  'cargo'
+  'git'
+  'just'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/cosmic-utils/examine.git')
