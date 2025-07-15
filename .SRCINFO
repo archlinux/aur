@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 24.0.1 Oracle Build.
-	pkgver = 24.0.1.u9
+	pkgdesc = Java OpenJDK 24.0.2 Oracle Build.
+	pkgver = 24.0.2.u12
 	pkgrel = 1
 	url = https://jdk.java.net/24
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=24
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	source = https://download.java.net/java/GA/jdk24.0.1/24a58e0e276943138bf3e963e6291ac2/9/GPL/openjdk-24.0.1_linux-x64_bin.tar.gz
-	sha256sums = 5d78a1c35dc36b5435addd908f5bc8d714368635b5adc6fd0ea6784d4d00db83
+	source = https://download.java.net/java/GA/jdk24.0.2/fdc5d0102fe0414db21410ad5834341f/12/GPL/openjdk-24.0.2_linux-x64_bin.tar.gz
+	sha256sums = 635050717feab0e4c283c8e90e79e944a2b65a3b6b21f1d37dcaadad4cc29548
 
 pkgname = java-openjdk-bin
