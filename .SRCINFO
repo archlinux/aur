@@ -1,6 +1,6 @@
 pkgbase = cosmic-wallpapers-git
 	pkgdesc = Wallpapers for the COSMIC Desktop Environment
-	pkgver = 1.0.0.alpha.3.r0.gcb8e6d6
+	pkgver = 1.0.0.alpha.7.r0.g189c2c6
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-wallpapers
 	arch = any
