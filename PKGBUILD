@@ -1,11 +1,10 @@
-# Maintainer: Ashish Singh <ashish.singh1@live.in>
 pkgname=salome-kernel
 pkgver=9.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Implements general services of SALOME platform"
 url="https://www.salome-platform.org"
 license=('LGPL2+')
-depends=('salome-configuration' 'python-psutil' 'omniorbpy' 'python-h5py-openmpi' 'salome-bootstrap' 'boost')
+depends=('salome-configuration' 'python-psutil' 'omniorbpy' 'python-h5py-openmpi' 'salome-bootstrap')
 optdepends=('doxygen: Documentation'
             'graphviz: Documentation'
             'python-sphinx: Documentation')
@@ -28,6 +27,7 @@ prepare() {
          -e 's/PyArray_STRING/NPY_STRING/g' \
          -e 's|PyEval_CallObject(excc, (PyObject \*)NULL)|PyObject_CallNoArgs(excc)|g' \
          src/DSC/DSC_Python/calcium.i
+  sed -i 's/typedef int bool;/#include <stdbool.h>/' src/DSC/DSC_User/Datastream/Calcium/CalciumC.c
   sed -i '27i #include "CalciumMacroCInterface.h"' src/DSC/DSC_User/Datastream/Calcium/CalciumC.c
   sed -i '46i //Following have been added for declaration\
 InfoType ecp_fin_ (void * component, int code);\
@@ -79,7 +79,7 @@ build () {
   export SALOMEBOOTSTRAP_ROOT_DIR="/opt/salome"
   # Add SALOMEBOOTSTRAP libraries folder to LD_LIBRARY_PATH to enable finding of KERNELBasics library
   export LD_LIBRARY_PATH="$SALOMEBOOTSTRAP_ROOT_DIR/__RUN_SALOME__/lib/salome:$LD_LIBRARY_PATH"
-  cmake -DCMAKE_BUILD_TYPE=Release -DSALOME_USE_MPI=ON -DCONFIGURATION_ROOT_DIR=/usr/share/salome/configuration -DOMNIORBPY_ROOT_DIR=/usr/lib/python3.13/site-packages/omniORB -DSALOME_BUILD_DOC=OFF -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/salome ../
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DSALOME_USE_MPI=ON -DCONFIGURATION_ROOT_DIR=/usr/share/salome/configuration -DOMNIORBPY_ROOT_DIR=/usr/lib/python3.13/site-packages/omniORB -DSALOME_BUILD_DOC=OFF -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr/share/salome ../
   make
 }
 
@@ -90,5 +90,5 @@ check() {
 
 package() {
   cd "$srcdir/kernel/build"
-  make prefix=/opt/salome DESTDIR="$pkgdir" install
+  make prefix=/usr/share/salome DESTDIR="$pkgdir" install
 }
