@@ -45,7 +45,7 @@ package() {
 	cd "${srcdir}/jira-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-	local site_packages
-	site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	rm -rf "${pkgdir}/${site_packages}/tests"
+	local _site_packages
+	_site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	rm -rf "${pkgdir}/${_site_packages}/tests"
 }
