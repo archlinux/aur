@@ -22,3 +22,6 @@ Include version command
 Fix version string
 
 
+Add version checking on command
+
+

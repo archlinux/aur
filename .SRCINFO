@@ -1,13 +1,13 @@
 pkgbase = gitmastery-bin
 	pkgdesc = Git-Mastery CLI for practicing Git
-	pkgver = v3.4.2
+	pkgver = v3.5.0
 	pkgrel = 1
 	url = https://github.com/git-mastery/app
 	changelog = gitmastery.changelog
 	arch = x86_64
 	license = MIT
 	depends = python
-	source = gitmastery-3.4.2-linux-amd64::https://github.com/git-mastery/app/releases/download/v3.4.2/gitmastery-3.4.2-linux-amd64
+	source = gitmastery-3.5.0-linux-amd64::https://github.com/git-mastery/app/releases/download/v3.5.0/gitmastery-3.5.0-linux-amd64
 	sha256sums = SKIP
 
 pkgname = gitmastery-bin
