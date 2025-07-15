@@ -30,6 +30,5 @@ package() {
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-	cp ./COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
