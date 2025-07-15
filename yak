@@ -1,0 +1,151 @@
+#!/bin/bash
+
+AUR_URL="https://aur.archlinux.org"
+BUILD_DIR="$HOME/build_dir"
+mkdir -p "$BUILD_DIR"
+
+# Colors
+YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
+BLUE='\033[1;34m'
+NC='\033[0m'
+
+# Core functions
+
+search_aur() {
+    local query="$1"
+    curl -s "${AUR_URL}/rpc/?v=5&type=search&arg=${query}" |
+        jq -r '.results[] | .Name + " - " + .Description'
+}
+
+info_aur() {
+    local pkg="$1"
+    curl -s "${AUR_URL}/rpc/?v=5&type=info&arg=$pkg" | jq
+}
+
+get_latest_version() {
+    local pkg="$1"
+    curl -s "${AUR_URL}/rpc/?v=5&type=info&arg=$pkg" |
+        jq -r '.results | .Version'
+}
+
+get_local_version() {
+    grep "^pkgver=" "$BUILD_DIR/$1/PKGBUILD" 2>/dev/null | cut -d= -f2
+}
+
+is_in_aur() {
+    curl -s "${AUR_URL}/rpc/?v=5&type=info&arg=$1" | grep -q '"Name"'
+}
+
+build_package() {
+    local pkg="$1"
+    cd "$BUILD_DIR/$pkg" || return
+
+    echo -e "${BLUE}Building and installing $pkg...${NC}"
+    (
+        trap "exit" INT
+        makepkg -si --noconfirm
+    ) | while IFS= read -r line; do
+        echo -ne "\r$line                                "
+    done
+    echo -e "\n${GREEN}Build complete.${NC}"
+}
+
+install_package() {
+    local pkg="$1"
+    if pacman -Qi "$pkg" &>/dev/null; then
+        echo -e "${GREEN}Package $pkg is already installed via pacman.${NC}"
+        return
+    fi
+
+    if is_in_aur "$pkg"; then
+        if [ -d "$BUILD_DIR/$pkg" ]; then
+            echo -e "${YELLOW}Using existing AUR source for $pkg.${NC}"
+        else
+            echo -e "${BLUE}Cloning AUR package $pkg...${NC}"
+            git clone "https://aur.archlinux.org/$pkg.git" "$BUILD_DIR/$pkg" || {
+                echo -e "${YELLOW}Failed to clone $pkg${NC}"
+                return 1
+            }
+        fi
+        build_package "$pkg"
+    else
+        echo -e "${BLUE}Installing $pkg from official repos...${NC}"
+        sudo pacman -S --noconfirm "$pkg"
+    fi
+}
+
+remove_package() {
+    local pkg="$1"
+    echo -e "${BLUE}Removing $pkg with dependencies...${NC}"
+    sudo pacman -Rns --noconfirm "$pkg"
+
+    if [ -d "$BUILD_DIR/$pkg" ]; then
+        echo -e "${BLUE}Cleaning build dir for $pkg...${NC}"
+        rm -rf "$BUILD_DIR/$pkg"
+    fi
+}
+
+update_package() {
+    local pkg="$1"
+    if [ ! -d "$BUILD_DIR/$pkg" ]; then
+        echo -e "${YELLOW}$pkg is not built by yak.${NC}"
+        return
+    fi
+
+    local remote_ver local_ver
+    remote_ver=$(get_latest_version "$pkg")
+    local_ver=$(get_local_version "$pkg")
+
+    echo -e "${BLUE}Checking $pkg: local=$local_ver, remote=$remote_ver${NC}"
+
+    if [ "$remote_ver" != "$local_ver" ]; then
+        echo -e "${BLUE}Updating $pkg...${NC}"
+        cd "$BUILD_DIR/$pkg" && git pull
+        build_package "$pkg"
+    else
+        echo -e "${GREEN}$pkg is up to date.${NC}"
+    fi
+}
+
+update_all() {
+    echo -e "${BLUE}Updating official packages (pacman)...${NC}"
+    sudo pacman -Syu
+
+    echo -e "\n${BLUE}Checking AUR packages in $BUILD_DIR...${NC}"
+    for dir in "$BUILD_DIR"/*; do
+        [ -d "$dir" ] || continue
+        pkg=$(basename "$dir")
+        update_package "$pkg"
+    done
+}
+
+# Pacman-style option handler
+
+if [[ "$1" == "-Syu" ]]; then
+    update_all
+elif [[ "$1" == "-S" ]]; then
+    shift
+    for pkg in "$@"; do
+        install_package "$pkg"
+    done
+elif [[ "$1" == "-Rns" ]]; then
+    shift
+    for pkg in "$@"; do
+        remove_package "$pkg"
+    done
+elif [[ "$1" == "-Ss" ]]; then
+    shift
+    search_aur "$*"
+elif [[ "$1" == "-Si" ]]; then
+    shift
+    info_aur "$1"
+else
+    echo -e "${YELLOW}yak - Pacman-style AUR helper${NC}"
+    echo "Usage:"
+    echo "  yak -S <pkg>       Install from AUR or Pacman"
+    echo "  yak -Rns <pkg>     Remove package (Pacman + build dir)"
+    echo "  yak -Ss <query>    Search AUR"
+    echo "  yak -Si <pkg>      Show AUR package info"
+    echo "  yak -Syu           Full system + AUR update"
+fi
