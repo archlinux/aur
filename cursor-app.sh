@@ -19,7 +19,8 @@ fi
 # Read user flags if file exists
 USER_FLAGS=""
 if [[ -f "$CURSOR_FLAGS_FILE" ]]; then
-    USER_FLAGS=$(cat "$CURSOR_FLAGS_FILE")
+    # Фильтруем только валидные флаги: убираем комментарии и пустые строки
+    USER_FLAGS=$(grep -vE '^\s*#' "$CURSOR_FLAGS_FILE" | grep -vE '^\s*$' | xargs)
 fi
 
 # Combine flags
