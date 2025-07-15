@@ -1,7 +1,7 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=SMAPI
-Version=4.2.1
+Version=4.3.2
 Comment=The modding API for Stardew Valley.
 Comment[ru_RU]=API для загрузки модов в Stardew Valley.
 Exec=smapi

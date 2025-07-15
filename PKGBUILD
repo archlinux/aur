@@ -1,7 +1,7 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="gog-stardew-valley-smapi"
-pkgver=4.2.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="The modding API for Stardew Valley."
 url="https://github.com/Pathoschild/SMAPI"
@@ -19,9 +19,9 @@ source=(
 )
 
 sha256sums=(
-    '9b21b77b41b00b7b5a913ca3c6d5a31ce6634d247b82ab753bf619ecdb410b20'
-    'd43136eab4beb916fdf1a57690f1fb13761823df056805ed3034821bf1904c26'
-    '9f496b90f30549170189a990d1c13b7a6d66c5b21189617c9f3b666a32b7c7b5'
+    'ed8e9ae12fc83a875f52fbc24eb7623c8981826083edc1b16b240beaabbcee51'
+    '4cd0a2b975d11c72fcf3d00aaa97ab783f7b82af1355be12dd64e24806cd5884'
+    '5008d5678c3dfbbe87e2e2eea2d30e34b126a6196f5cd967b22f7cf0a6d5fc8a'
 )
 
 prepare() {
@@ -31,6 +31,12 @@ prepare() {
     # Change saves backups path from GamePath to DataPath ($HOME/.config/StardewValley/save-backups) for SaveBackup mod
     sed -i 's|private readonly string BackupFolder = Path.Combine(Constants.GamePath, "save-backups");|private readonly string BackupFolder = Path.Combine(Constants.DataPath, "save-backups");|' \
     "$srcdir/SMAPI-$pkgver/src/SMAPI.Mods.SaveBackup/ModEntry.cs"
+
+    # Change mods blacklist file path in smapi code to let blacklist fetching work right
+    sed -i 's|internal static string ApiBlacklistPath => Path.Combine(Constants.InternalFilesPath, "blacklist.json");|internal static string ApiBlacklistPath => Path.Combine(Constants.DataPath, "blacklist.json");|' \
+    "$srcdir/SMAPI-$pkgver/src/SMAPI/Constants.cs"
+    sed -i 's|internal static string ApiBlacklistFetchedPath => Path.Combine(Constants.InternalFilesPath, "blacklist-updated.json");|internal static string ApiBlacklistFetchedPath => Path.Combine(Constants.DataPath, "blacklist-updated.json");|' \
+    "$srcdir/SMAPI-$pkgver/src/SMAPI/Constants.cs"
 
     # SMAPI version
     cd "$srcdir/SMAPI-$pkgver"
@@ -86,9 +92,10 @@ package() {
     ## i18n
     cp -r "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/i18n/"* "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/i18n/"
 
-    ## config & metadata .json
+    ## config & metadata & blacklist .json
     install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/SMAPI.config.json" "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/config.json"
     install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/SMAPI.metadata.json" "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/metadata.json"
+    install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/SMAPI.blacklist.json" "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/blacklist.json"
     ## Disable update check
     sed -i 's|"CheckForUpdates": true,|"CheckForUpdates": false,|' "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/config.json"
 
