@@ -33,14 +33,10 @@ build() {
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/bin/"
-	mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
+	install -d "${pkgdir}/usr/bin/"
+	install -d "${pkgdir}/usr/lib/udev/rules.d/"
 
 	install -Dm755 "${srcdir}/${pkgname}/bloody-cli" "${pkgdir}/usr/bin/"
-	chmod +x "${pkgdir}/usr/bin/bloody-cli"
-
 	install -Dm755 "${srcdir}/${pkgname}/qt/bloody" "${pkgdir}/usr/bin/"
-	chmod +x "${pkgdir}/usr/bin/bloody"
-
 	install -Dm644 "${srcdir}/60-bloody.rules" "${pkgdir}/usr/lib/udev/rules.d/"
 }
