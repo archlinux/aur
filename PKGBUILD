@@ -1,13 +1,13 @@
 # Maintainer: Tobias Frilling <aur@ckafi.addy.io>
 
 pkgname=zig-master-bin
-pkgver=0.15.0_dev.936.gfc2c1883b
+pkgver=0.15.0_dev.1034.gbd97b6618
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master build)"
 arch=('x86_64')
 url="https://ziglang.org/"
 license=('MIT')
-provides=('zig')
+provides=('zig' 'zig-master')
 conflicts=('zig')
 makedepends=(jq minisign)
 options=('!strip')
