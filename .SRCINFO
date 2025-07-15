@@ -1,8 +1,8 @@
 pkgbase = python-type-enforced
 	pkgdesc = Check if type annotations correspond the reality at runtime
 	pkgver = 2.2.0
-	pkgrel = 1
-	url = https://pypi.org/project/type-enforced
+	pkgrel = 2
+	url = https://github.com/connor-makowski/type_enforced
 	arch = any
 	license = MIT
 	makedepends = python-build
