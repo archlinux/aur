@@ -1,7 +1,6 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # Contributor: Jonatan Holmgren <jonatan at jontes dot page>
-# Previous maintainers:
-#   Shayne Hartford<shayneehartford@gmail.com>
+# Contributor: Shayne Hartford<shayneehartford@gmail.com>
 pkgname=nvflash
 pkgver=5.867
 pkgrel=3
