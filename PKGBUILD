@@ -13,7 +13,7 @@
 
 pkgname=chitubox-free-bin
 pkgver=2.3.1
-RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.3.run'
+_RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.3.run'
 
 pkgrel=1
 pkgdesc='All-in-one SLA/DLP/LCD Slicer'
@@ -67,26 +67,26 @@ sha256sums=('44cf18f8468fbcab69179d9622232b187a263d9fa25c539b5d6bc209794ec93b'
 package()
 {
 	# Use a path close to the default in the installer
-	INSTALL_ROOT="${srcdir}/opt/CHITUBOX_Basic"
-	OPT_DIR="${pkgdir}/opt"
-	APP_DIR="${OPT_DIR}/CHITUBOX_Basic"
+	_INSTALL_ROOT="${srcdir}/opt/CHITUBOX_Basic"
+	_OPT_DIR="${pkgdir}/opt"
+	_APP_DIR="${_OPT_DIR}/CHITUBOX_Basic"
 
 	# Run installer, which unfortunately doesn't run without root privileges. So it's not possible to put the install in build().
-	"${srcdir}/${RUNFILE}" --root "${INSTALL_ROOT}" --accept-licenses --no-size-checking --accept-messages --confirm-command install
+	"${srcdir}/${_RUNFILE}" --root "${_INSTALL_ROOT}" --accept-licenses --no-size-checking --accept-messages --confirm-command install
 
 	## Clean up
 	# Nice 35MB Uninstall binary and some other garbage
-	rm "${INSTALL_ROOT}/Uninstall"*
-	rm "${INSTALL_ROOT}/InstallationLog.txt"
+	rm "${_INSTALL_ROOT}/Uninstall"*
+	rm "${_INSTALL_ROOT}/InstallationLog.txt"
 	# Installer installs everything for Linux, macOS and Windows, including 330MB of ffmpeg .exe's
-	rm "${INSTALL_ROOT}"/bin/Resources/DependentSoftware/recordOrShot/*.exe
+	rm "${_INSTALL_ROOT}"/bin/Resources/DependentSoftware/recordOrShot/*.exe
 
 	# Install License
-	install -Dm644 "${INSTALL_ROOT}/Licenses/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${_INSTALL_ROOT}/Licenses/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# binary data
 	install -d "${pkgdir}"/opt
-	mv "${INSTALL_ROOT}" "${OPT_DIR}/"
+	mv "${_INSTALL_ROOT}" "${_OPT_DIR}/"
 
 	# launcher
 	install -d "${pkgdir}"/usr/bin
@@ -96,7 +96,7 @@ package()
 	install -Dm644 chitubox-basic.desktop "${pkgdir}"/usr/share/applications/chitubox-basic.desktop
 
 	# Extract the included Windows ICO file into PNG(s)
-	icotool --extract "${APP_DIR}/bin/Resources/Image/SoftwareIcon/freeIcon.ico" --output .
+	icotool --extract "${_APP_DIR}/bin/Resources/Image/SoftwareIcon/freeIcon.ico" --output .
 	install -Dm644 freeIcon_1_256x256x32.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/chitubox-basic.png"
 
 	# mime/associations - see https://manual.chitubox.com/user-manual-pro/requirements/
