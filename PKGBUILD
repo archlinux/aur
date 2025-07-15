@@ -1,12 +1,12 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
-# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=proxygen
-pkgver=2025.07.07.00
+pkgver=2025.07.14.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -44,7 +44,7 @@ provides=(
   libproxygenhttpserver.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9a7d756fe88704e4f0fc69e72c71249894c94c205215b38e24a4fdd6459d73c8')
+sha256sums=('6982a8bd73069e7a9ea72df99b4578e9032a5f0c7b6d0f5084a0fd9671b0d134')
 
 prepare() {
   cd $pkgname-$pkgver
