@@ -38,8 +38,8 @@ package() {
 	install -d "${pkgdir}/usr/include"
 	cp -r "${_builddir}/../include"/* "${pkgdir}/usr/include"
 	install -d "${pkgdir}/usr/lib/cmake/${pkgname}"
-	cp "${_builddir}/liblootConfig.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/"
-	cp "${_builddir}/liblootConfigVersion.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/"
+	install -Dm644 "${_builddir}/liblootConfig.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/liblootConfig.cmake"
+	install -Dm644 "${_builddir}/liblootConfigVersion.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/liblootConfigVersion.cmake"
 	cp "${_builddir}/CMakeFiles/Export/"*"/"*".cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/" # two liblootTarget*.cmake files
 #	find . "${pkgdir}"
 }
