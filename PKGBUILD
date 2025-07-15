@@ -2,12 +2,15 @@
 
 pkgname=fleet-orbit
 pkgver=1.45.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Eases the deployment of osquery connected with a Fleet server.'
 arch=(x86_64)
 url='https://github.com/fleetdm/fleet/tree/main/orbit'
 license=(MIT)
 depends=(osquery)
+optdepends=(
+  'fleet-desktop: integration with Fleet Desktop applet'
+)
 makedepends=(go)
 backup=(etc/default/fleet-orbit)
 optdepends=()
