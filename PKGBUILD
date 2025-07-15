@@ -47,8 +47,8 @@ check() {
 	cd "${pkgname}"
 	# install to temporary location, as importlib is used
 	python -m installer --destdir=test_dir dist/*.whl
-	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	export PYTHONPATH="test_dir/${site_packages}:${PYTHONPATH}"
+	local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	export PYTHONPATH="test_dir/${_site_packages}:${PYTHONPATH}"
 	pytest -vv --ignore test_dir/
 }
 
@@ -56,9 +56,9 @@ package() {
 	cd "${pkgname}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	# symlink license file
-	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 	ln -s \
-		"${site_packages}/pytest_pylint-${pkgver}.dist-info/LICENSE" \
+		"${_site_packages}/pytest_pylint-${pkgver}.dist-info/LICENSE" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
