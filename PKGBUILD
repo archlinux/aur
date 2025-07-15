@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=haste-server-git
 _gitname=haste-server
