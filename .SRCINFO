@@ -1,14 +1,14 @@
 pkgbase = http-server-upload
 	pkgdesc = Zero-configuration command-line http server which provides a lightweight interface to upload files.
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/crycode-de/http-server-upload
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
 	noextract = http-server-upload-3.0.0.tgz
-	source = https://registry.npmjs.org/http-server-upload/-/http-server-upload-3.0.0.tgz
-	sha256sums = 35d335f54020bb9dfe70489e4d90e6904b22435728467176c28978f6e4a0f02c
+	source = http-server-upload-3.0.0.tar.gz::https://github.com/crycode-de/http-server-upload/archive/v3.0.0.tar.gz
+	sha256sums = b146145ba8aaec88c6a933fb02202fefbe95458daed5fcd36ba51d42b4e00c7e
 
 pkgname = http-server-upload

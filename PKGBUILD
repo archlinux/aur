@@ -2,7 +2,7 @@
 
 pkgname=http-server-upload
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Zero-configuration command-line http server which provides a lightweight interface to upload files."
 arch=('any')
@@ -20,11 +20,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crycode-de/http-server-upload/archive/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('35d335f54020bb9dfe70489e4d90e6904b22435728467176c28978f6e4a0f02c')
+sha256sums=('b146145ba8aaec88c6a933fb02202fefbe95458daed5fcd36ba51d42b4e00c7e')
 validpgpkeys=()
 
 package() {
-	npm install -g --prefix "${pkgdir}"/usr "${srcdir}"/${pkgname}-${pkgver}.tgz
+	npm install -g --prefix "${pkgdir}"/usr "${srcdir}"/${pkgname}-${pkgver}.tar.gz
 }

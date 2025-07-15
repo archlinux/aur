@@ -1,3 +1,5 @@
 [http-server-upload]
-source = "npm"
-npm = "http-server-upload"
+source = "github"
+github = "crycode-de/http-server-upload"
+use_max_tag = true
+prefix = "v"
