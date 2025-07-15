@@ -1,9 +1,8 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-sdbus
-_reponame=sdbus
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Python library for D-Bus"
 url="https://github.com/python-sdbus/python-sdbus"
 arch=('x86_64')
@@ -22,16 +21,18 @@ makedepends=(
 	'python-poetry'
 	'python-setuptools'
 )
-source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('41d61b76cc05a9ea41d10d70a11e9f9a86ed95f40f713630c5e18340e0e4c76f')
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/python-sdbus/python-sdbus/archive/${pkgver}.tar.gz"
+)
+sha256sums=('b51aefe18037ab7043fd08e06c1d58a6105f7830b03a240c7ee95591060c45e1')
 
 build() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 

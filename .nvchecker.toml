@@ -1,3 +1,4 @@
 [python-sdbus]
-source = "pypi"
-pypi = "sdbus"
+source = "github"
+github = "python-sdbus/python-sdbus"
+use_max_tag = true
