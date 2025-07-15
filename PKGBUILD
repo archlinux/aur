@@ -1,27 +1,30 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Jesse R Codling <codling@umich.edu>
 
 pkgname=python-periphery
-pkgver=2.3.0
-pkgrel=5
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="A pure Python 2/3 library for peripheral I/O (GPIO, LED, PWM, SPI, I2C, MMIO, Serial) in Linux"
 url="https://github.com/vsergeev/python-periphery"
 license=('MIT')
 arch=('any')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest')
+# checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vsergeev/python-periphery/archive/v$pkgver.tar.gz")
-sha512sums=('34042d9364d7846252f464cffb1361ea1c4717cce9c1fd6788f4be495784a17c42fc5fcf3f296a7d7277c420ed876f6c2815f9e46936460275356405911cb50d')
+sha512sums=('3ea16ce51f135aefc4b438d80bbd15c1ec867c87f2224e3ee28ba41f636cc6f61a383c7bb63077e18c31fa63a441efa3f30ad9b550430e24cb7ef403439e98ba')
 
 build() {
   cd python-periphery-$pkgver
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd python-periphery-$pkgver
-  pytest || echo "Tests failed"
-}
+# Tests can't normally be run, require a specfific test bench environment
+# check() {
+#   cd python-periphery-$pkgver
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest
+# }
 
 package() {
   cd python-periphery-$pkgver
