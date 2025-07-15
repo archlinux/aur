@@ -1,7 +1,7 @@
 pkgbase = swaync-git
 	pkgdesc = A simple notification daemon with a GTK panel for checking previous notifications like other DEs
-	pkgver = r595.3ece57f
-	pkgrel = 1
+	pkgver = r596.73521f5
+	pkgrel = 2
 	url = https://github.com/ErikReider/SwayNotificationCenter
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = swaync-git
 	makedepends = scdoc
 	makedepends = sassc
 	depends = gtk4
-	depends = gtk4-layer-shell>=1.1.1
+	depends = gtk4-layer-shell>=1.0.4
 	depends = dbus
 	depends = glib2
 	depends = gobject-introspection
