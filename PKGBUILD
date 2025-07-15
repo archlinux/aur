@@ -2,7 +2,7 @@
 
 _pkgname=lutgen-studio
 pkgname=$_pkgname-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Offical GUI for Lutgen, the best way to apply popular colorschemes to any image or wallpaper!"
 url="https://github.com/ozwaldorf/lutgen-rs"
@@ -12,13 +12,12 @@ provides=("lutgen-studio")
 conflicts=("lutgen-studio")
 source=("LICENSE" "https://github.com/ozwaldorf/lutgen-rs/releases/download/$_pkgname-v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu")
 sha256sums=('f007afaeba32931337b4be155b3f8094cce9248dece43ebe53bf2579fe26a330'
-            '4183b919c8387bb90e219c34b36b13fdf6208a5847ce938151b24e98589b1ca6')
+            '52b9cdd66a07e02f5806d6d1c7324e2b0f16a0168e0b9bb1dd15828493a10669')
 depends=(
   'libxkbcommon'
   'libxcb'
   'wayland'
   'openssl'
-  'zenity' # file picker
 )
 
 package() {
