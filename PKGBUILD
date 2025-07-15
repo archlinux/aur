@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=falkor-bin
 _pkgname=Falkor
-pkgver=1.0.2
+pkgver=1.1.0
 _electronversion=35
 pkgrel=1
 pkgdesc="Dive into Falkor, where you'll discover a vast selection of games coupled with community-driven enhancements. Experience seamless and secure gaming within a single, universal hub.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Team-Falkor/falkor/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e9fb38a5451fd368c9fdcca455d9f5c618afb67290c09ea544b453992347ebdc'
+sha256sums=('920b8392ac48b5276c1d992addf7bbb4c0e1dd1ad3f5a43b9ee3d8491519bbcd'
             '97fdd4aad91d8a01b07f95d1a5448c0d30b738083671153a55e8d0956a32b0a7'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
