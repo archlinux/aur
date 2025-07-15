@@ -2,8 +2,8 @@
 # Contributor: James Williams <jowilliams12000 at gmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=wallust
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="generate colors from an image"
 arch=('x86_64' 'i686')
 url="https://codeberg.org/explosion-mental/wallust"
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('imagemagick')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 options=('!lto')
-sha256sums=('9e0a3f0e2eff6b7ddf8011b15602550f15a4c4fb3037947e71adf578e6486522')
+sha256sums=('bd0ec8a0876b8b789f005e8d7cda44f13a76eb7ed49a2823e3e0557c012d05fa')
 
 prepare() {
   cd "$pkgname"-"$pkgver"
