@@ -1,0 +1,4 @@
+[photocollage]
+source = "git"
+git = "https://github.com/adrienverge/PhotoCollage.git"
+prefix = "v"
