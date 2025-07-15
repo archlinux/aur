@@ -4,7 +4,7 @@ set -eu
 SRC=/usr/bin/fleet-desktop
 TARGET=/opt/fleet-orbit/bin/desktop/linux/stable/fleet-desktop/fleet-desktop
 
-if test -L "${TARGET}"; then
+if ! test -d /opt/fleet-orbit || test -L "${TARGET}"; then
   exit 0
 fi
 

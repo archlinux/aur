@@ -5,6 +5,6 @@ Target = fleet-orbit
 Target = fleet-desktop
 
 [Action]
-Description = Create fleet‑desktop symlink for fleet‑orbit.
+Description = Create fleet-desktop symlink for fleet-orbit.
 When = PostTransaction
 Exec = /usr/lib/fleet-desktop/fleet-desktop-orbit-link.sh
