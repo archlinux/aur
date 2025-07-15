@@ -1,7 +1,7 @@
 pkgbase = python-alt-profanity-check
 	pkgdesc = A fast, robust library to check for offensive language in strings, dropdown replacement of "profanity-check".
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/dimitrismistriotis/alt-profanity-check
 	arch = any
 	license = MIT
@@ -13,9 +13,9 @@ pkgbase = python-alt-profanity-check
 	depends = python-setuptools
 	depends = python-joblib
 	depends = python-numpy
-	depends = python-scikit-learn=1.6.1
+	depends = python-scikit-learn=1.7.0
 	provides = profanity-check
-	source = git+https://github.com/dimitrismistriotis/alt-profanity-check.git#commit=1170fe9d18d9ca8af34ba08ec3cbe99abd94225a?signed
+	source = git+https://github.com/dimitrismistriotis/alt-profanity-check.git#commit=9017229a93d8310e5b5a1e294e8a44bb0c86565f?signed
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha256sums = SKIP
 
