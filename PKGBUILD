@@ -2,7 +2,7 @@
 
 pkgname=rhythmbox-plugin-alternative-toolbar
 pkgver=0.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, minimal and music-focused interface for Rhythmbox'
 arch=('any')
 url="https://github.com/fossfreedom/alternative-toolbar"
@@ -22,7 +22,7 @@ conflicts=(
     rhythmbox-plugin-alternative-toolbar-git
 )
 install='rhythmbox-plugin-alternative-toolbar.install'
-_commit='269ae059f729afaa495c80fa2e352db76da5002e'
+_commit='a03f1b3f36fb8802b9f4c9117ee1e302a8e2894d'
 source=("${pkgname}::git+${url}#commit=${_commit}")
 sha256sums=('SKIP')
 
