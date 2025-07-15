@@ -1,6 +1,6 @@
 pkgbase = m-tools
 	pkgdesc = a fast and lightweight bash-based text editing tool
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/kayemaye/m
 	arch = any
