@@ -3,14 +3,11 @@
 
 _pkgname="prjapicula"
 pkgname="$_pkgname-git"
-pkgver=0.15.r33.g15614ef
-_fuzzerver=1.9.8
+pkgver=0.21.r0.gfffb2a3
 pkgrel=1
 pkgdesc="Project Apicula bitstream documentation for Gowin FPGAs"
 url="https://github.com/YosysHQ/apicula"
 _pkgsrc="apicula"
-_fuzzer="fuzzer-$_fuzzerver"
-_fuzzerimg="docker.io/pepijndevos/apicula:$_fuzzerver"
 source=(
   "$_pkgsrc"::"git+$url.git"
 )
@@ -49,6 +46,9 @@ pkgver() {
 }
 
 prepare() {
+  _fuzzerver=$(cat "$_pkgsrc/GWVERSION")
+  _fuzzer="fuzzer-$_fuzzerver"
+  _fuzzerimg="docker.io/pepijndevos/apicula:$_fuzzerver"
   apptainer pull -F $_fuzzer.sif docker://$_fuzzerimg
   apptainer sif dump 4 $_fuzzer.sif >$_fuzzer.squashfs
   mkdir -p $_fuzzer
