@@ -1,7 +1,7 @@
 # Maintainer: Erffy <https://github.com/erffy>
 
 pkgname=zig-waybar-contrib
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Lightweight Waybar modules built with Zig"
 arch=('x86_64')
