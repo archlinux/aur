@@ -5,15 +5,17 @@ _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
 pkgver=1.2.48
-pkgrel=1
+pkgrel=2
 _threema_web_ver=2.6.2 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL-3.0-only')
-depends=(electron34)
-makedepends=(npm nodejs-lts-jod git)
+# Upstream still uses electron 32.2.0, but electron 32 has been EOL since 2025-03-04
+_electron=electron36
+depends=(${_electron})
+makedepends=(git nodejs-lts-iron npm)
 source=(
-  "threema-web-electron-v${pkgver}-${pkgrel}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/${pkgver}.tar.gz"
+  "threema-web-electron-v${pkgver}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/${pkgver}.tar.gz"
   "threema-web-v${_threema_web_ver}.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v${_threema_web_ver}.tar.gz"
   "threema.desktop"
 )
@@ -24,21 +26,25 @@ sha256sums=(
 )
 
 prepare() {
-  cd "${srcdir}/threema-web-${_threema_web_ver}"
+  cd "${srcdir}/threema-web-electron-${pkgver}/"
+
+  # Move threema-web source code (since threema-web-electron submodule
+  # is not contained in GitHub export)
+  rm -r "app/dependencies/threema-web"
+  mv "${srcdir}/threema-web-${_threema_web_ver}" "app/dependencies/threema-web"
+
+  # Download dependencies for building Threema Web
+  export DEV_ENV=production
+  export THREEMA_WEB_VERSION=threema-web-${_threema_web_ver}
+  npm install --no-audit
 }
 
 build() {
   cd "${srcdir}/threema-web-electron-${pkgver}/"
 
-  # Copy threema-web source code (since threema-web-electron submodule
-  # is not contained in GitHub export)
-  rm -r "app/dependencies/threema-web"
-  cp -R "../threema-web-${_threema_web_ver}" "app/dependencies/threema-web"
-
   # Build Threema Web
   export DEV_ENV=production
   export THREEMA_WEB_VERSION=threema-web-${_threema_web_ver}
-  npm install --no-audit
   ./tools/patches/patch-threema-web.sh
   npm run app:build:web
   ./tools/patches/post-patch-threema-web.sh
@@ -66,7 +72,7 @@ package() {
   # Create launcher
   mkdir -p "${pkgdir}/usr/bin/"
   _launcher="${pkgdir}/usr/bin/${_binname}"
-  echo -e "#!/bin/sh\nexec electron34 '/usr/lib/${pkgname}/resources/app.asar' '$@'" > "$_launcher"
+  echo -e "#!/bin/sh\nexec ${_electron} '/usr/lib/${pkgname}/resources/app.asar' \${@}" > "$_launcher"
   chmod +x "$_launcher"
 
   # Copy desktop files
