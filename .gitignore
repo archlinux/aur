@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!template.sh
+!doomtools.desktop
