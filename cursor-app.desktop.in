@@ -16,6 +16,6 @@ Icon=cursor-app
 StartupWMClass=Cursor
 X-AppImage-Version=@@PKGVERSION@@
 
-# Handles custom cursor:// URL schemes.
+# Handles custom cursor:// URL schemes
 MimeType=x-scheme-handler/cursor;
 Categories=Utility;TextEditor;Development;IDE;
