@@ -1,11 +1,11 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
-# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fizz
-pkgver=2025.07.07.00
+pkgver=2025.07.14.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=(x86_64)
@@ -35,7 +35,7 @@ provides=(
   libfizz_test_support.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('86635b14d000c6e8e61a3edfbd9ad51764c9bf84b3702d73ac6dadff97786c99')
+sha256sums=('ae29be17f95a3d3096a14bb9cef236ccdec6e055b6830f19632cc089c497e557')
 
 prepare() {
   cd $pkgname-$pkgver
