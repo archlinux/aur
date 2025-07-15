@@ -2,8 +2,8 @@
 
 pkgname=autojump-rs-git
 _pkgname=autojump-rs
-pkgver=0.5.1.r14.g65abf11
-pkgrel=2
+pkgver=0.5.1.r15.g06d2cd186a37
+pkgrel=3
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
 url="https://github.com/xen0n/autojump-rs"
@@ -19,6 +19,11 @@ sha256sums=('SKIP'
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/^release\-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+  git pull --no-edit --rebase origin pull/250/head
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = autojump-rs-git
 	pkgdesc = A faster way to navigate your filesystem from the command line
-	pkgver = 0.5.1.r14.g65abf11
-	pkgrel = 2
+	pkgver = 0.5.1.r15.g06d2cd186a37
+	pkgrel = 3
 	url = https://github.com/xen0n/autojump-rs
 	arch = any
 	license = GPL-3.0-only
