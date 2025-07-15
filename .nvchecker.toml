@@ -1,0 +1,4 @@
+[espanso-gui]
+source = "git"
+git = "https://github.com/unobserved-io/espanso-gui.git"
+exclude_regex = "2023.*|23.*"
