@@ -58,8 +58,12 @@ package(){
   install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so"
   # Block LD_PRELOAD even this works without it. It breaks many things.
   install -Dm644 off-opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
-
-  #echo Make sure every operas have same major Chromium ver
+  # soname
+  cd chromium-ffmpeg
+  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h  > "${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
+  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h >> "${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
+  cat "${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
+  # symlink
   conflicts=(opera-{beta,developer}-ffmpeg-codecs)
   provides=(opera-{beta,developer}-ffmpeg-codecs)
   install -d "$pkgdir"/usr/lib/opera-{beta,developer}/lib_extra
