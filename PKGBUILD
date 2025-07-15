@@ -1,22 +1,22 @@
-# Maintainer: George Angelopoulos <george@usermod.net>
-pkgname=tremc
-pkgver=0.9.3
-pkgrel=2
-pkgdesc="Curses interface for transmission - python3 fork of transmission-remote-cli"
-arch=('any')
-url="https://github.com/tremc/tremc"
-license=('GPL3')
-depends=('python')
-optdepends=('python-geoip: Guess which country peers come from'
-            'python-xerox: Copy magnet links to the system clipboard')
-source=("https://github.com/tremc/tremc/archive/$pkgver.tar.gz")
-md5sums=('3adc2bf4796fa991118e41b7cb98c668')
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: George Angelopoulos <george@usermod.net>
 
-conflicts=('tremc-git')
+pkgname=tremc
+pkgver=0.9.4
+pkgrel=1
+pkgdesc='Curses interface for Transmission. Python 3 fork of transmission-remote-cli'
+arch=(any)
+url=https://github.com/tremc/tremc
+license=(GPL-3.0-or-later)
+depends=(python)
+optdepends=(
+  'python-geoip: guess which country peers come from'
+  'python-geoip2: guess which country peers come from'
+  'python-pyperclip: copy magnet links to the system clipboard')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('f8cd45f2bfc1fa67dc8816659d81beacb9fd7b7a4a4b8402604a71c29836bd6f')
 
 package() {
-    cd "$pkgname-$pkgver"
-    make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 $pkgname-$pkgver/settings.cfg -t "$pkgdir/usr/share/$pkgname"
+  make -C $pkgname-$pkgver PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
-# vim: ts=4 sts=4 sw=4 et
