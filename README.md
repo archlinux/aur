@@ -34,13 +34,14 @@ install    | install any package from AUR or the working directory.
 remove     | Remove packages from system and the package list.
 update     | force install any package from AUR and delete source after.
 search     | query the AUR database via the HTTP RPC API.
+suggest    | completion results via the AUR HTTP RPC API.
 completion | generate completion for the specified shell.
 list       | search for all locally installed AUR packages.
 
 ## Configuration
 
 #### Environment variables
-Capitalized long option names with `AURX_` prefix. For example for `--search-criteria`: `AURX_SEARCH_CRITERIA`.  
+Capitalized long option names with `AURX_` prefix. For example for `--tmp-path`: `AURX_TMP_PATH`.  
 
 #### Values
 A comprehensive list of the possible configurations can be found with `aurx --help` or by using the bash completion.  
@@ -53,10 +54,6 @@ Package completions are using the AUR HTTP RPC API, which has a daily rate limit
 ### Search installed mark
 Packages may be falsely marked as installed in search operations, if coincidentally an installed package is called exactly like one found online.   
 When using the `list` operation, which is also `search` under the hood, appearence of not installed packages means a package is in `aurx`'s package_list but not installed on the system. Search errors from `list` mean a package is in `aurx`'s package_list (installed on system or not) and not on AUR.  
-
-### Containers
-You can find an example Containerfile in the root of the repository.  
-You will need to set an user password as soon as you're in a runtime environment.  
 
 ## Examples
 

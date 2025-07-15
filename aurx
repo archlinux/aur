@@ -17,19 +17,20 @@
 
 
 # Metadata.
-POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list")
+POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest")
 GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "-p" "--persistent-path" "-t" "--tmp-path" "-v" "--verbosity")
 INSTALL_OPTIONS=("-c" "--cleanup" "-C" "--clean-operation" "-d" "--download-only" "-x" "--comparison-criteria" "-M" "--makepkg-opts" "-V" "-W" "--overwrite-existing" "-w" "-s" "--source-path" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
 UPDATE_OPTIONS=("-k" "--keep-sources" "-K" "--keep-failed-sources" "-B" "--block-overwrite" "-x" "--comparison-criteria" "-M" "--makepkg-opts")
-SEARCH_OPTIONS=("-r" "--search-results" "-S" "--search-criteria" "-b" "--sort-by" "-o" "--order-by" "-O" "-z" "--output" "--no-out-of-date" "-m" "--maintained" "-i" "--no-mark-installed" "-u" "--no-mark-update" "-P" "--parallel")
+SEARCH_OPTIONS=("-r" "--search-results" "-S" "--search-criteria" "-b" "--sort-by" "-o" "--order-by" "-z" "--output" "-O" "--no-out-of-date" "-m" "--maintained" "-i" "--no-mark-installed" "-u" "--no-mark-update" "-P" "--parallel")
+SUGGEST_OPTIONS=("-r" "--search-results" "-o" "--order-by")
 COMPLETION_OPTIONS=("-e" "--executable-name")
 LIST_OPTIONS=("-u" "--no-mark-update" "-P" "--parallel" "-i" "--no-mark-installed")
 AVAILABLE_COMPLETIONS=("bash")
 COMPARISON_CRITERIA_VALUES=("rpc" "pkgbuild")
 OUTPUT_VALUES=("formatted" "json")
 ORDER_BY_VALUES=("ascending" "descending")
-SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends" "makedepends" "maintainer" "submitter" "provides" "conflicts" "replaces" "keywords" "groups" "comaintainers" "suggest")
+SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends" "makedepends" "maintainer" "submitter" "provides" "conflicts" "replaces" "keywords" "groups" "comaintainers")
 SORT_BY_VALUES=("firstsubmitted" "lastmodified" "votes" "popularity")
 
 # Variables.
@@ -94,6 +95,7 @@ usage() {
 		  remove        remove packages from system and the package list.
 		  update        force install any package from AUR and delete source after.
 		  search        query the AUR database via the HTTP RPC API.
+		  suggest       completion results via the AUR HTTP RPC API.
 		  completion    generate completion for the specified shell.
 		  list          search for all locally installed AUR packages.
 		
@@ -137,10 +139,15 @@ usage() {
 		                                        "name", "name-desc", "depends", "checkdepends",
 		                                        "optdepends", "makedepends", "maintainer",
 		                                        "submitter", "provides", "conflicts", "replaces",
-		                                        "keywords", "groups", "comaintainers", "suggest".
+		                                        "keywords", "groups", "comaintainers".
 		  -b, --sort-by [KEY]                   key to sort results by. ("popularity")
 		                                        "popularity", "firstsubmitted", "lastmodified",
 		                                        "votes", "popularity".
+
+		  suggest:
+		  -o, --order-by [ORDER]                how to order search results. ("descending")
+		                                        "ascending", "descending".
+		  -r, --search-results [COUNT]          number of results to suggest, max 20. (20)
 		
 		  update:
 		  -B, --block-overwrite                 don't overwrite existing sources.
@@ -198,12 +205,15 @@ print_error() {
 		32 )
 			echo "[!] Could not print AUR HTTP data."
 			;;
+		40 )
+			echo "[!] Could not get suggest results."
+			;;
 		50|51 )
 			echo "[-] getopt not working properly."
 			;;
 		52 )
 			echo "[-] Unknown search criteria: \"${SEARCH_CRITERIA}\"."
-			echo "[i] Possible options are: name, name-desc, depends, checkdepends, optdepends, makedepends, maintainer, submitter, provides, conflicts, replaces, keywords, groups, comaintainers, suggest."
+			echo "[i] Possible options are: name, name-desc, depends, checkdepends, optdepends, makedepends, maintainer, submitter, provides, conflicts, replaces, keywords, groups, comaintainers."
 			;;
 		53 )
 			echo "[-] Unknown error while parsing options."
@@ -302,6 +312,7 @@ aurx_completion() {
 				        local REMOVE_OPTIONS="${REMOVE_OPTIONS[*]}"
 				        local UPDATE_OPTIONS="${UPDATE_OPTIONS[*]}"
 				        local SEARCH_OPTIONS="${SEARCH_OPTIONS[*]}"
+				        local SUGGEST_OPTIONS="${SUGGEST_OPTIONS[*]}"
 				        local COMPLETION_OPTIONS="${COMPLETION_OPTIONS[*]}"
 				        local LIST_OPTIONS="${LIST_OPTIONS[*]}"
 				        local AVAILABLE_COMPLETIONS="${AVAILABLE_COMPLETIONS[*]}"
@@ -321,6 +332,8 @@ aurx_completion() {
 				                        COMPREPLY+=( \$(compgen -W "\${UPDATE_OPTIONS}" -- "\${CURRENT_WORD}") )
 				        	elif [[ \${COMP_WORDS[*]} =~ " search " ]]; then
 				                        COMPREPLY+=( \$(compgen -W "\${SEARCH_OPTIONS}" -- "\${CURRENT_WORD}") )
+				        	elif [[ \${COMP_WORDS[*]} =~ " suggest " ]]; then
+				                        COMPREPLY+=( \$(compgen -W "\${SUGGEST_OPTIONS}" -- "\${CURRENT_WORD}") )
 				        	elif [[ \${COMP_WORDS[*]} =~ " completion " ]]; then
 				                        COMPREPLY+=( \$(compgen -W "\${COMPLETION_OPTIONS}" -- "\${CURRENT_WORD}") )
 				        	elif [[ \${COMP_WORDS[*]} =~ " list " ]]; then
@@ -342,7 +355,7 @@ aurx_completion() {
 				        elif [[ -z \$(echo \${COMP_WORDS[*]} \${POSSIBLE_OPERATIONS[*]} | tr " " "\n" | sort | uniq -D) ]]; then
 				                COMPREPLY=( \$(compgen -W "\${POSSIBLE_OPERATIONS}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${#CURRENT_WORD} -ge 3 ]] && [[ ! -z \$(echo \${COMP_WORDS[*]} " install search " | tr " " "\n" | sort | uniq -D) ]]; then
-				                COMPREPLY=( \$(compgen -W "\$(${EXECUTABLE_NAME} search --search-criteria suggest \${CURRENT_WORD} | tr '\n' ' ')" -- "\${CURRENT_WORD}") )
+				                COMPREPLY=( \$(compgen -W "\$(${EXECUTABLE_NAME} suggest \${CURRENT_WORD} | tr '\n' ' ')" -- "\${CURRENT_WORD}") )
 				        elif [[ ! -z \$(echo \${COMP_WORDS[*]} " remove update " | tr " " "\n" | sort | uniq -D) ]]; then
 				                COMPREPLY=( \$(compgen -W "\$(cat ${PERSISTENT_PATH}/package_list | tr '\n' ' ')" -- "\${CURRENT_WORD}") )
 				        elif [[ ! -z \$(echo \${COMP_WORDS[*]} " completion " | tr " " "\n" | sort | uniq -D) ]]; then
@@ -506,6 +519,32 @@ write_package_list() {
 	return 0
 }
 
+aur_rpc_suggest() {
+	local TARGET_KEYWORD="${1}"
+
+	if ! RESULTS=$(curl --connect-timeout 60 --max-time 180 "https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" 2> /dev/null); then
+		print_error 74
+		exit 74
+	fi
+
+	if [[ "${ORDER_BY}" == "ascending" ]]; then
+		RESULTS=$(echo "${RESULTS}" | jq -cr 'reverse')
+	fi
+
+	case "${OUTPUT}" in
+		formatted )
+			echo "${RESULTS}" | jq -cr ".[:${SEARCH_RESULTS}] | .[]"
+			;;
+		json )
+			echo "${RESULTS}" | jq -cr ".[:${SEARCH_RESULTS}]"
+			;;
+		* )
+			print_error 75
+			exit 75
+			;;
+	esac
+}
+
 gather_aur_data() {
 	local TARGET_KEYWORDS="${*}"
 	local RESULTS
@@ -515,20 +554,7 @@ gather_aur_data() {
 	TARGET_KEYWORDS=$(echo "${TARGET_KEYWORDS}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 
 	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
-		case "${SEARCH_CRITERIA}" in
-			name|name-desc|depends|checkdepends|optdepends \
-				|makedepends|maintainer|submitter|provides \
-				|conflicts|replaces|keywords|groups|comaintainers )
-				REQUESTS+=( "https://aur.archlinux.org/rpc/v5/search/${TARGET_KEYWORD}?by=${SEARCH_CRITERIA}" )
-				;;
-			suggest )
-				REQUESTS+=( "https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" )
-				;;
-			* )
-				print_error 52
-				exit 52
-				;;
-		esac
+		REQUESTS+=( "https://aur.archlinux.org/rpc/v5/search/${TARGET_KEYWORD}?by=${SEARCH_CRITERIA}" )
 		REQUESTS+=( "-o${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}" )
 	done
 
@@ -541,11 +567,7 @@ gather_aur_data() {
 	RESULTS=$(
 		for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
 			RESULT=$(< "${TMP_PATH}/temp_request_${TARGET_KEYWORD}")
-			if [[ "${SEARCH_CRITERIA}" == "suggest" ]]; then
-				echo "${RESULT}"
-			else
-				echo "${RESULT}" | jq -cr --arg SEARCHED_KEYWORD "${TARGET_KEYWORD}" '. + {"searchedkeyword": $SEARCHED_KEYWORD}'
-			fi
+			echo "${RESULT}" | jq -cr --arg SEARCHED_KEYWORD "${TARGET_KEYWORD}" '. + {"searchedkeyword": $SEARCHED_KEYWORD}'
 			rm -rf "${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}"
 		done | jq -sc
 	)
@@ -622,11 +644,6 @@ print_aur_data() {
 			echo "${AUR_DATA}"
 			;;
 		formatted )
-			if [[ "${SEARCH_CRITERIA}" == "suggest" ]]; then
-				echo "${AUR_DATA}" | jq -cr ".[] | .[:${SEARCH_RESULTS}] | .[]"
-				return 0
-			fi
-
 			local IFS=$'\n'
 			for ENTRY in $(echo "${AUR_DATA}" | jq -cr '.[]'); do
 				if [[ $(echo "${ENTRY}" | jq -cr '.resultcount') -eq 0 ]]; then
@@ -703,11 +720,15 @@ search_aur_packages() {
 
 	AUR_DATA=$(gather_aur_data "${TARGET_KEYWORDS}") || return 30
 
-	if [[ "${SEARCH_CRITERIA}" != "suggest" ]]; then
-		AUR_DATA=$(filter_aur_data "${AUR_DATA}") || return 31
-	fi
+	AUR_DATA=$(filter_aur_data "${AUR_DATA}") || return 31
 
 	print_aur_data "${AUR_DATA}" || return 32
+}
+
+suggest_aur_package() {
+	local TARGET_KEYWORD="${1}"
+
+	aur_rpc_suggest "${TARGET_KEYWORD}" || return 40
 }
 
 getopt --test 1> /dev/null && true
@@ -974,7 +995,7 @@ case "${CURRENT_OPERATION}" in
 	remove )
 		REQUIRED_PACKAGES=('grep' 'pacman' 'sed')
 		;;
-	search | completion | list )
+	search | completion | list | suggest )
 		REQUIRED_PACKAGES=('curl' 'echo' 'jq')
 		;;
 	* )
@@ -1055,14 +1076,14 @@ fi
 
 # Execution.
 case "${CURRENT_OPERATION}" in
-	install|remove )
+	install|remove|suggest )
 		for SELECTED_PACKAGE in "${TARGET_PACKAGES[@]}"; do
 			"${CURRENT_OPERATION}"_aur_package "${SELECTED_PACKAGE}" 1> "${STDOUT_DESTINATION}" 2> "${STDERR_DESTINATION}"
 			ERROR_CODE=${?}
 			case ${ERROR_CODE} in
 				0 )
 					;;
-				10|11|12|13|14|20|21 )
+				10|11|12|13|14|20|21|40 )
 					print_error "${ERROR_CODE}"
 					;;
 				* )
