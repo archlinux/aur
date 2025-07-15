@@ -1,0 +1,19 @@
+pkgbase = kiro-ide-bin
+	pkgdesc = An AI-powered IDE for modern development
+	pkgver = 202507140012
+	pkgrel = 1
+	url = https://kiro.dev
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxkbfile
+	provides = kiro-ide
+	conflicts = kiro-ide
+	source_x86_64 = https://prod.download.desktop.kiro.dev/releases/202507140012--distro-linux-x64-tar-gz/202507140012-distro-linux-x64.tar.gz
+	source_x86_64 = kiro-ide-bin.desktop
+	sha256sums_x86_64 = e9b6dcfc79dd88dfc7528672628f6be8e9628769f8fcd332469c43e7dcfd487d
+	sha256sums_x86_64 = 4b9c2573adb2e08a2db807deebfb8776c0e5b39e25fdd8fbcfb621752ac80566
+
+pkgname = kiro-ide-bin
