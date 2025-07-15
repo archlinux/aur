@@ -6,4 +6,3 @@ Exec=/bin/rimsort
 Icon=RimSort
 Type=Application
 Categories=Game
-Path=/opt/rimsort
