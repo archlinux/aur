@@ -1,4 +1,5 @@
 [codename-goose-bin]
-source = "git"
-git = "https://github.com/block/goose.git"
+source = "github"
+github = "block/goose"
 prefix = "v"
+use_max_release = true
