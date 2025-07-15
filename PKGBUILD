@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=edencommon
-pkgver=2025.07.07.00
+pkgver=2025.07.14.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -11,6 +11,7 @@ url="https://github.com/facebookexperimental/edencommon"
 license=(MIT)
 depends=(
   boost-libs
+  boost
   fb303=$pkgver
   fmt
   folly=$pkgver
@@ -35,7 +36,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "build-shared-libraries.patch"
 )
-sha256sums=('ee6a9d4103fb3b2a41ff0c5c074d4974cefb5ae7c0b44acc7204d2265cfab161'
+sha256sums=('be016f38869e4a77f880ec53ac0808a8ee5e02ab5a9424e67cf732afb99c3a54'
             '1f351de94a786c8be397c07454a48d28a0dd0b758924792e6e3f1f49405c492a')
 
 prepare() {
