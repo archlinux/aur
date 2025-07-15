@@ -44,9 +44,9 @@ noextract=("${_appimage}")
 
 sha512sums=(
     'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
+    '2d67f603368a1114c876ca3dc85219674e83becf79bcd3919c6c886d25a1a5ef6b0624775f01eae3c551dc38f9d4de038214604ca38b7e4e8e959a23426df5a9'
+    '9a3c37b50ba07faf7b1742ac6cc1be38135cde9af49287222f361aa959ccc6264fff63dc5256adbc08d6f33ffbb82e249f01743f3a12cd7cfa5bd27f89f3f6a5'
+    '15dbbb4d0964113d9f64ac24c8cd8f9c0aa92fabc1485c0ba1f7aa12ea32c9aa4da96759d75469c05bf24a278c679e6d3c52646b162a87829fa1aae34616a6eb'
 )
 prepare() {
     if [[ ! -f "${srcdir}/${_appimage}" ]]; then
@@ -54,10 +54,14 @@ prepare() {
         return 1
     fi
     
-    if ! file "${srcdir}/${_appimage}" | grep -q "executable"; then
-        echo "ERROR: Downloaded file is not a valid executable" >&2
+    # Follow symbolic link and check if file is ELF format
+    if ! file -L "${srcdir}/${_appimage}" | grep -q "ELF"; then
+        echo "ERROR: Downloaded file is not a valid ELF file" >&2
         return 1
     fi
+    
+    # Ensure the AppImage has execute permissions (follow symlink)
+    chmod +x "${srcdir}/${_appimage}"
     
     sed "s/@@PKGVERSION@@/${pkgver}/g" "${srcdir}/cursor-app.desktop.in" > "${srcdir}/cursor-app.desktop"
 
