@@ -1,0 +1,13 @@
+pkgbase = kbd-jp-oadg109a-keymap
+	pkgdesc = Added missing Japanese OADG109A layout (e.g. dell's travel keyboard japanese version)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://example.com/dummy-url/
+	arch = any
+	license = MIT
+	depends = kbd
+	noextract = jp-OADG109A.map.gz
+	source = jp-OADG109A.map.gz
+	md5sums = 1229da10217dd350280fa89c69683c3d
+
+pkgname = kbd-jp-oadg109a-keymap
