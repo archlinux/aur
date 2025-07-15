@@ -1,10 +1,10 @@
 pkgbase = jitsi-meet-desktop-bin
 	pkgdesc = Jitsi Meet desktop application powered by Electron
 	pkgver = 2025.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jitsi-meet-electron
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = coreutils
 	depends = alsa-lib
 	depends = gtk3
