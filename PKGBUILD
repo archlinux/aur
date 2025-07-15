@@ -3,7 +3,7 @@
 # Maintainer: Vesa Kaihlavirta <vegai@iki.fi>
 
 pkgname=pwsafe
-pkgver=r5.3e23fa2
+pkgver=r224.984fe38
 pkgrel=1
 pkgdesc="A commandline program for managing encrypted password databases"
 arch=('x86_64')
@@ -15,12 +15,8 @@ source=(git+https://github.com/nsd20463/pwsafe)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir"/${pkgname}
 }
 
 build() {
