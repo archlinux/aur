@@ -1,22 +1,17 @@
 pkgbase = syng
 	pkgdesc = All in one karaoke software
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/christofsteel/syng
 	arch = any
 	license = AGPL-3.0-or-later
-	makedepends = git
 	makedepends = python-poetry-core
 	makedepends = python-build
 	makedepends = python-installer
-	source = syng-2.1.0.tar.gz::https://github.com/christofsteel/syng/archive/refs/tags/v2.1.0.tar.gz
+	source = syng-2.2.0.tar.gz::https://github.com/christofsteel/syng/archive/refs/tags/v2.2.0.tar.gz
 	source = syng.desktop
-	source = 25cf5468.patch
-	source = 91dec5bc.patch
-	sha256sums = e8b42876a0ebcd11322381b760b1248449e481a3258911bdb8c3f69770079c08
+	sha256sums = 278c840a5f5213f3248156047569aa212147d395a248659a6c4f7f05123f3e8b
 	sha256sums = 7ed5ae1a81667ebe73206736a531ce8425347b2a8c4240db363c026670efada2
-	sha256sums = db8a2f19dc5aa3a6989bb9550504514f22f711f11fbeed57b9a1a180cf4454f0
-	sha256sums = 1db7e2edc125ffc7ef9eb91c8631546abf2191908d5d6eb408ab62b7fc14eb30
 
 pkgname = syng-common
 	pkgdesc = All in one karaoke software (common)
