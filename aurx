@@ -131,7 +131,7 @@ usage() {
 		                                        "ascending", "descending".
 		  -z, --output [TYPE]                   how to output search results. ("formatted")
 		                                        "formatted", "json".
-		  -P, --parallel [COUNT]                how many requests to do simultaneously. (10)
+		  -P, --parallel [COUNT]                how many requests to do simultaneously. (50)
 		  -r, --search-results [COUNT]          number of results to display from search queries. (20)
 		  -S, --search-criteria [CRITERIA]      criteria to use in search queries. ("name")
 		                                        "name", "name-desc", "depends", "checkdepends",
@@ -190,9 +190,13 @@ print_error() {
 			echo "[!] Could not remove \"${SELECTED_PACKAGE}\" from the package_list."
 			;;
 		30 )
-			local TEMP_PACKAGES
-			TEMP_PACKAGES="${PACKAGES_NOT_FOUND[*]}"
-			echo "[!] Could not find ${TEMP_PACKAGES//\ /,\ }."
+			echo "[!] Could not gather AUR HTTP data. Connection successful."
+			;;
+		31 )
+			echo "[!] Could not filter AUR HTTP responses."
+			;;
+		32 )
+			echo "[!] Could not print AUR HTTP data."
 			;;
 		50|51 )
 			echo "[-] getopt not working properly."
@@ -271,6 +275,11 @@ print_error() {
 		75 )
 			echo "[-] Unknown output: \"${OUTPUT}\"."
 			echo "[i] Possible options are: formatted, json."
+			;;
+		76 )
+			local TEMP_PACKAGES
+			TEMP_PACKAGES="${PACKAGES_NOT_FOUND[*]}"
+			echo "[!] Could not find ${TEMP_PACKAGES//\ /,\ }."
 			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}."
@@ -497,124 +506,148 @@ write_package_list() {
 	return 0
 }
 
-aur_rpc_search() {
+gather_aur_data() {
 	local TARGET_KEYWORDS="${*}"
 	local RESULTS
-	declare -a PACKAGES_NOT_FOUND
 	declare -a REQUESTS
 
+	# Avoid duplicate keywords as curl will overwrite them and the script will look for extra results.
+	TARGET_KEYWORDS=$(echo "${TARGET_KEYWORDS}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+
 	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
-		REQUESTS+=("https://aur.archlinux.org/rpc/v5/search/${TARGET_KEYWORD}?by=${SEARCH_CRITERIA}")
-		REQUESTS+=("-o${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}")
+		case "${SEARCH_CRITERIA}" in
+			name|name-desc|depends|checkdepends|optdepends \
+				|makedepends|maintainer|submitter|provides \
+				|conflicts|replaces|keywords|groups|comaintainers )
+				REQUESTS+=( "https://aur.archlinux.org/rpc/v5/search/${TARGET_KEYWORD}?by=${SEARCH_CRITERIA}" )
+				;;
+			suggest )
+				REQUESTS+=( "https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" )
+				;;
+			* )
+				print_error 52
+				exit 52
+				;;
+		esac
+		REQUESTS+=( "-o${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}" )
 	done
 
 	if ! curl --connect-timeout 60 --max-time 180 --parallel --parallel-immediate --parallel-max "${PARALLEL}" \
 		"${REQUESTS[@]}" 2> /dev/null; then
-		print_error 74
-		exit 74
+		return 1
 	fi
 
-	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
-		RESULT=$(< "${TMP_PATH}/temp_request_${TARGET_KEYWORD}")
-		if [[ $(echo "${RESULT}" | jq -c ".results") == "[]" ]]; then
-			PACKAGES_NOT_FOUND+=("${TARGET_KEYWORD}")
-			rm -rf "${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}"
-			continue
-		fi
-
-		RESULT=$(echo "${RESULT}" | jq -c ".results")
-
-		RESULT=$(echo "${RESULT}" | jq -r "sort_by(.${SORT_BY})")
-		if [[ "${ORDER_BY}" == "descending" ]]; then
-			RESULT=$(echo "${RESULT}" | jq -r 'reverse')
-		fi
-		if ${NO_OUT_OF_DATE}; then
-			RESULT=$(echo "${RESULT}" | jq -r '[.[] | select(.OutOfDate == null)]')
-		fi
-		if ${MAINTAINED}; then
-			RESULT=$(echo "${RESULT}" | jq -r '[.[] | select(.Maintainer != null)]')
-		fi
-		RESULT=$(echo "${RESULT}" | jq -r ".[:${SEARCH_RESULTS}]")
-
-
-		if [[ $(command -v pacman) ]]; then
-			RESULT=$(
-				echo "${RESULT}" | jq -c '.[]' | while read -r TEMP_DICT; do
-					local STATUS_STRING
-					local PACKAGE_NAME
-					local INSTALLED_VERSION
-					local ONLINE_VERSION
-
-					STATUS_STRING=""
-					PACKAGE_NAME=$(echo "${TEMP_DICT}" | jq -r '.Name')
-					if ! ${NO_MARK_INSTALLED} || ! ${NO_MARK_UPDATE}; then
-						INSTALLED_VERSION=$(pacman -Qi "${PACKAGE_NAME}" 2> /dev/null \
-							| grep -e "Version" | awk '{ print $3 }')
-					fi
-
-					if ! ${NO_MARK_INSTALLED} && [[ -n "${INSTALLED_VERSION}" ]]; then
-						STATUS_STRING=" [installed]"
-					fi
-
-					if ! ${NO_MARK_UPDATE} && [[ -n "${INSTALLED_VERSION}" ]]; then
-						ONLINE_VERSION=$(echo "${TEMP_DICT}" | jq -r '.Version')
-						if [[ "${INSTALLED_VERSION}" != "${ONLINE_VERSION}" ]]; then
-							STATUS_STRING=" [new version available]"
-						fi
-					fi
-
-					echo "${TEMP_DICT}" | jq --arg STATUS_STRING "${STATUS_STRING}" \
-						'. + {"StatusString": $STATUS_STRING}'
-				done | jq -s '.'
-			)
-		fi
-	
-		case "${OUTPUT}" in
-			formatted )
-				echo "${RESULT}" \
-					| jq -r ".[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity\(.StatusString) \n\t\(.Description)\""
-				;;
-			json )
-				echo "${RESULT}" | jq --monochrome-output --compact-output \
-					--arg SEARCH_QUERY "${TARGET_KEYWORD}" \
-					'[.[] + {"SearchQuery": $SEARCH_QUERY}]'
-				;;
-			* )
-				print_error 75
-				exit 75
-				;;
-		esac
-		
-		rm -rf "${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}"
-	done
-
-	if [[ ${#PACKAGES_NOT_FOUND[@]} -gt 0 ]]; then
-		print_error 30
-		exit 30
-	fi
-}
-
-aur_rpc_suggest() {
-	local TARGET_KEYWORDS="${*}"
-	local RESULTS
-	declare -a REQUESTS
-	for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
-		REQUESTS+=( "https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" )
-	done
-
-	if ! RESULTS=$(curl --connect-timeout 5 --max-time 15 --parallel --parallel-immediate \
-		--parallel-max "${PARALLEL}" "${REQUESTS[@]}" 2> /dev/null); then
-		print_error 74
-		exit 74
-	fi
 	RESULTS=$(
-		for RESULT in ${RESULTS}; do
-			echo "${RESULT}" | jq -r ".[:${SEARCH_RESULTS}] | .[]" 2> /dev/null
-		done
+		for TARGET_KEYWORD in ${TARGET_KEYWORDS}; do
+			RESULT=$(< "${TMP_PATH}/temp_request_${TARGET_KEYWORD}")
+			if [[ "${SEARCH_CRITERIA}" == "suggest" ]]; then
+				echo "${RESULT}"
+			else
+				echo "${RESULT}" | jq -cr --arg SEARCHED_KEYWORD "${TARGET_KEYWORD}" '. + {"searchedkeyword": $SEARCHED_KEYWORD}'
+			fi
+			rm -rf "${TMP_PATH?TMP_PATH not defined.}/temp_request_${TARGET_KEYWORD}"
+		done | jq -sc
 	)
 
 	echo "${RESULTS}"
 }
+
+filter_aur_data() {
+	local AUR_DATA="${*}"
+	local LOCAL_STATUS
+
+	# Break down every entry in the curl results.
+	local IFS=$'\n'
+	for ENTRY in $(echo "${AUR_DATA}" | jq -cr ".[]"); do
+		RESULTS=$(echo "${ENTRY}" | jq -cr '.results')
+		RESULT_COUNT=$(echo "${ENTRY}" | jq -cr '.resultcount')
+		if [[ ${RESULT_COUNT} -gt 0 ]] \
+			&& [[ ${RESULT_COUNT} -gt ${SEARCH_RESULTS} ]]; then
+			ENTRY=$(echo "${ENTRY}" \
+				| jq -cr --arg SEARCH_RESULTS "${SEARCH_RESULTS}" '.resultcount = $SEARCH_RESULTS')
+		fi
+
+		# Apply aurx filters on the results section of the entry.
+		RESULTS=$(echo "${RESULTS}" | jq -cr "sort_by(.${SORT_BY})")
+		if [[ "${ORDER_BY}" == "descending" ]]; then
+			RESULTS=$(echo "${RESULTS}" | jq -cr 'reverse')
+		fi
+		if ${NO_OUT_OF_DATE}; then
+			RESULTS=$(echo "${RESULTS}" | jq -cr '[.[] | select(.OutOfDate == null)]')
+		fi
+		if ${MAINTAINED}; then
+			RESULTS=$(echo "${RESULTS}" | jq -cr '[.[] | select(.Maintainer != null)]')
+		fi
+		RESULTS=$(echo "${RESULTS}" | jq -cr ".[:${SEARCH_RESULTS}]")
+
+		# Break down every result in the results section of the entry.
+		RESULTS=$(
+			for RESULT in $(echo "${RESULTS}" | jq -cr '.[]'); do
+				# Apply installed and update marks.
+				LOCAL_STATUS=""
+				PACKAGE_NAME=$(echo "${RESULT}" | jq -cr '.Name')
+				if ! ${NO_MARK_INSTALLED} || ! ${NO_MARK_UPDATE}; then
+					INSTALLED_VERSION=$(pacman -Qi "${PACKAGE_NAME}" 2> /dev/null \
+						| grep -e "Version" | awk '{ print $3 }')
+
+					if [[ -n "${INSTALLED_VERSION}" ]]; then
+						if ! ${NO_MARK_INSTALLED}; then
+							LOCAL_STATUS="[installed]"
+						fi
+
+						if ! ${NO_MARK_UPDATE}; then
+							ONLINE_VERSION=$(echo "${RESULT}" | jq -r '.Version')
+							if [[ "${INSTALLED_VERSION}" != "${ONLINE_VERSION}" ]]; then
+								LOCAL_STATUS="[update]"
+							fi
+						fi
+					fi
+				fi
+				echo "${RESULT}" | jq -cr --arg LOCAL_STATUS "${LOCAL_STATUS}" '.LocalStatus = $LOCAL_STATUS'
+			done | jq -sc
+		)
+
+		# Print entry with modified results section.
+		echo "${ENTRY}" | jq -cr --argjson RESULTS "${RESULTS}" '.results = $RESULTS'
+	done | jq -sc
+}
+
+print_aur_data() {
+	AUR_DATA="${*}"
+	declare -a PACKAGES_NOT_FOUND
+
+	case "${OUTPUT}" in
+		json )
+			echo "${AUR_DATA}"
+			;;
+		formatted )
+			if [[ "${SEARCH_CRITERIA}" == "suggest" ]]; then
+				echo "${AUR_DATA}" | jq -cr ".[] | .[:${SEARCH_RESULTS}] | .[]"
+				return 0
+			fi
+
+			local IFS=$'\n'
+			for ENTRY in $(echo "${AUR_DATA}" | jq -cr '.[]'); do
+				if [[ $(echo "${ENTRY}" | jq -cr '.resultcount') -eq 0 ]]; then
+					PACKAGES_NOT_FOUND+=( "$(echo "${ENTRY}" | jq -cr '.searchedkeyword')" )
+				fi
+			done
+
+			echo "${AUR_DATA}" \
+				| jq -cr ".[] | .results[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity \(.LocalStatus) \n\t\(.Description)\""
+
+			if [[ ${#PACKAGES_NOT_FOUND[@]} -gt 0 ]]; then
+				print_error 76
+			fi
+			;;
+		* )
+			print_error 75
+			exit 75
+			;;
+	esac
+
+}
+
 
 install_aur_package() {
 	local TARGET_PACKAGE="${1}"
@@ -667,22 +700,13 @@ remove_aur_package() {
 search_aur_packages() {
 	local TARGET_KEYWORDS="${*}"
 
-	case "${SEARCH_CRITERIA}" in
-		name|name-desc|depends|checkdepends|optdepends \
-			|makedepends|maintainer|submitter|provides \
-			|conflicts|replaces|keywords|groups|comaintainers )
-			aur_rpc_search "${TARGET_KEYWORDS}"
-			;;
-		suggest )
-			aur_rpc_suggest "${TARGET_KEYWORDS}"
-			;;
-		* )
-			print_error 52
-			exit 52
-			;;
-	esac
+	AUR_DATA=$(gather_aur_data "${TARGET_KEYWORDS}") || return 30
 
-	return 0
+	if [[ "${SEARCH_CRITERIA}" != "suggest" ]]; then
+		AUR_DATA=$(filter_aur_data "${AUR_DATA}") || return 31
+	fi
+
+	print_aur_data "${AUR_DATA}" || return 32
 }
 
 getopt --test 1> /dev/null && true
@@ -1049,6 +1073,19 @@ case "${CURRENT_OPERATION}" in
 		;;
 	search )
 		search_aur_packages "${TARGET_PACKAGES[@]}" 1> "${STDOUT_DESTINATION}" 2> "${STDERR_DESTINATION}"
+		ERROR_CODE=${?}
+		case ${ERROR_CODE} in
+			0 )
+				;;
+			30|31|32 )
+				print_error "${ERROR_CODE}"
+				exit "${ERROR_CODE}"
+				;;
+			* )
+				print_error 61
+				exit "${ERROR_CODE}"
+				;;
+		esac
 		;;
 	completion )
 		COMPLETION_TYPE="${TARGET_PACKAGES[0]}"

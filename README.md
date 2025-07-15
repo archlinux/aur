@@ -24,19 +24,7 @@ aurx [OPERATION] [OPTION].. [PACKAGE]..
 ``` 
 
 ### Requirements
-
-##### install / update
-> curl, echo, git, grep, jq, pacman, sed, tee.
-
-##### remove
-> grep, pacman, sed.
-
-##### search / list
-> curl, echo, jq.  
-> optional: pacman (for package installation status).
-
-##### completion
-> curl, echo, jq.
+> base-devel, curl>=7.68.0, git, jq.
 
 ### Operations
 
@@ -52,10 +40,23 @@ list       | search for all locally installed AUR packages.
 ## Configuration
 
 #### Environment variables
-Capitalized long option names with `AURX_` prefix. For example for `--search-criteria`: `AURX_SEARCH_CRITERIA`.
+Capitalized long option names with `AURX_` prefix. For example for `--search-criteria`: `AURX_SEARCH_CRITERIA`.  
 
 #### Values
-A comprehensive list of the possible configurations can be found with `aurx --help` or by using the bash completion.
+A comprehensive list of the possible configurations can be found with `aurx --help` or by using the bash completion.  
+
+## Considerations
+
+### Rate limit
+Package completions are using the AUR HTTP RPC API, which has a daily rate limit of 4000 requests per IP per day.  
+
+### Search installed mark
+Packages may be falsely marked as installed in search operations, if coincidentally an installed package is called exactly like one found online.   
+When using the `list` operation, which is also `search` under the hood, appearence of not installed packages means a package is in `aurx`'s package_list but not installed on the system. Search errors from `list` mean a package is in `aurx`'s package_list (installed on system or not) and not on AUR.  
+
+### Containers
+You can find an example Containerfile in the root of the repository.  
+You will need to set an user password as soon as you're in a runtime environment.  
 
 ## Examples
 
@@ -93,7 +94,7 @@ aurx update some-package
 aurx list
 ```
 
-##### Update all installed packages.
+##### Try to update all installed packages.
 ```bash
 aurx update --all
 ```
@@ -103,51 +104,12 @@ aurx update --all
 aurx search some-package --no-out-of-date --maintained --sort-by votes
 ```
 
-##### Grab the all-time first 5 submitted packages of a maintainer.
+##### Search for packages from a maintainer and return results in JSON format.
 ```bash
-aurx search SomeMaintainerName --search-criteria maintainer --sort-by firstsubmitted --order-by ascending --search-results 5
-```
-
-##### Grab the latest 5 modified packages that have gcc as makedepends.
-```bash
-aurx search some-package --search-criteria makedepends --sort-by lastmodified --search-results 5
+aurx search some-maintainer --search-criteria maintainer --sort-by firstsubmitted --order-by ascending --search-results 10 --output json
 ```
 
 ##### Get bash completion for custom executable name (where `aurx` is not correct).
 ```bash
 source <(/specific/path/aurx completion bash --executable-name /specific/path/aurx)
 ```
-
-## Considerations
-
-### Sudo password
-This script intentionally does not handle sudo passwords directly in any way.  
-It only prompts for sudo when removing packages with `pacman` and `makepkg` does it's own sudo calls. 
-
-### Completion
-Package completions are using the AUR HTTP RPC API, which has a daily rate limit of 4000 requests per IP per day.  
-
-### Search installed mark
-Packages may be falsely marked as installed in search operations, if coincidentally an installed package is called exactly like one found online.   
-When using the `list` operation, which is also `search` under the hood, appearence of not installed packages means a package is in `aurx`'s package_list but not installed on the system. Search errors from `list` mean a package is in `aurx`'s package_list (installed on system or not) and not on AUR.
-
-### Containers
-You can find an example Containerfile in the root of the repository.  
-You will need to set an user password as soon as you're in a runtime environment.  
-
-### Subdependencies
-`base-devel` is required to build packages with `makepkg`.  
-You can read more about it [here](https://wiki.archlinux.org/title/Makepkg#Usage).
-
-## Changelog
-
-### 2024.09.16 Breaking changes - Default source directory changed.
-While adding the --persistent-path configuration option, I also refactored and changed the default work directory for more scalability.
-To migrate any old data simply copy it to these locations:
-```
-package_list:   ${HOME}/.aurx/cfg/package_list
-sources:        ${HOME}/.aurx/src/
-```
-
-Or just set the old directories with options or environment variables.
-
