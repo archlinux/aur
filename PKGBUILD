@@ -1,12 +1,12 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
-# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=wangle
-pkgver=2025.07.07.00
+pkgver=2025.07.14.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
@@ -31,7 +31,7 @@ makedepends=(
 checkdepends=(expat)
 provides=(libwangle.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dcda76ebe3ee6d7857ee0541942d09c49438ad14bff2e7d8c98c41d74f1e927c')
+sha256sums=('45f48a99f6486c8c7459e6875c8f10e4dc0999a25f761b7d66795fbf7ba13847')
 
 prepare() {
   cd $pkgname-$pkgver
