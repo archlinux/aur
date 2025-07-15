@@ -1,7 +1,7 @@
 pkgbase = matomo
 	pkgdesc = A real-time web analytics platform
 	pkgver = 5.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://matomo.org/
 	install = matomo.install
 	arch = any

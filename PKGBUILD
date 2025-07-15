@@ -5,7 +5,7 @@
 
 pkgname=matomo
 pkgver=5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A real-time web analytics platform"
 arch=("any")
 url="https://matomo.org/"
@@ -39,13 +39,13 @@ package() {
 	# e.g. by `chown -R root:http /etc/webapps/${pkgname}`
 	install -d "${pkgdir}/etc/webapps"
 	mv "${pkgdir}/usr/share/webapps/${pkgname}/config" "${pkgdir}/etc/webapps/${pkgname}"
-	ln -s "../../../../etc/webapps/${pkgname}" "${pkgdir}/usr/share/webapps/matomo/config"
+	ln -s "/etc/webapps/${pkgname}" "${pkgdir}/usr/share/webapps/matomo/config"
 
 	# matomo uses this tmp dir for writing its own data;
 	# but it belongs in /var rather than /usr.
 	rmdir "${pkgdir}/usr/share/webapps/matomo/tmp"
 	install -dm700 "${pkgdir}/var/lib/webapps/matomo/tmp"
-	ln -s "../../../../var/lib/webapps/matomo/tmp" "${pkgdir}/usr/share/webapps/matomo/tmp"
+	ln -s "/var/lib/webapps/matomo/tmp" "${pkgdir}/usr/share/webapps/matomo/tmp"
 
 	# Installing or upgrading non-core plugins requires write access to plugins/;
 	# we could try g+w on the directory and try to restrict core plugins, but
@@ -63,5 +63,5 @@ package() {
 	# See /etc/GeoIP.conf and make sure to enable geoipupdate's timer
 	# Keep in mind it takes a while before a newly generated license becomes active
 	# I figure a dead symlink should be safe if the DB is missing.
-	ln -s "../../../../../var/lib/GeoIP/GeoLite2-City.mmdb" "${pkgdir}/usr/share/webapps/matomo/misc"
+	ln -s "/var/lib/GeoIP/GeoLite2-City.mmdb" "${pkgdir}/usr/share/webapps/matomo/misc"
 }
