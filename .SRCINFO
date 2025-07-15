@@ -1,22 +1,23 @@
 pkgbase = python-pyroma
 	pkgdesc = Test your project's packaging friendliness
-	pkgver = 4.3.1
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/regebro/pyroma
 	arch = any
 	license = MIT
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	depends = python-setuptools
+	depends = python-build
+	options = !emptydirs
+	source = pyroma-5.0.tar.gz::https://github.com/regebro/pyroma/archive/refs/tags/5.0.tar.gz
+	sha256sums = c7686fe93a58fe660c96f407be2c50c61f4aa9abe5e55d1057b7d99d7829984b
+
+pkgname = python-pyroma
+	depends = python-setuptools
+	depends = python-build
 	depends = python-docutils
 	depends = python-requests
 	depends = python-pygments
 	depends = python-trove-classifiers
-	depends = python-setuptools
-	depends = python-build
 	depends = python-packaging
-	options = !emptydirs
-	source = pyroma-4.3.1.tar.gz::https://github.com/regebro/pyroma/archive/refs/tags/4.3.1.tar.gz
-	sha256sums = 499f0dce1184de737dc96b6f8102cb34dbdeef261cbc5f063057da4e068bf981
-
-pkgname = python-pyroma
