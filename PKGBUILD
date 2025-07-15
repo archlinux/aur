@@ -7,7 +7,7 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=139.0
+pkgver=140.0
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
@@ -59,14 +59,13 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/7c49594d947aa62edcbd6b3fec7a8dd1fce8a943
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/329bd1f8bfdde4ab87bf67ecbdc119cb69a73e95
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         $commit/vendor-prefs.js
         $commit/distribution.ini
         $commit/mozconfig.cfg
         $commit/metainfo.patch
         $commit/org.mozilla.Thunderbird.desktop
-        $commit/thunderbird-system-icu-76.patch
 )
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
@@ -170,18 +169,17 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('8e749ceb7f0e88603ad244485b0d33ff209c71b7419debab5ca0bcecb3d9835079d72fee6333ba29458399ce748b92e55156ebbf1bd147a3787fa2f5bf1ed55c'
+sha512sums=('2e9a5fb44b21eba3e3295205142bfad666a65f9eea43118388968320597a940cf3c5675fbcf458fbbaa9e1bb85fe8a663feda6461b7e23f7103c5bb7a1103bd4'
             'SKIP'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
             '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
             '3a6957380243716065e9dff66cbbee8c5aa6b34b5b19bc6193a23407d33f6e4c23bfca55b929bee4739bdd2c47838cc0fd6667b188de066b795ab55e3bf275a6'
             '7e43b1f25827ddae615ad43fc1e11c6ba439d6c2049477dfe60e00188a70c0a76160c59a97cc01d1fd99c476f261c7cecb57628b5be48874be7cf991c22db290'
             'fffeb73e2055408c5598439b0214b3cb3bb4e53dac3090b880a55f64afcbc56ba5d32d1187829a08ef06d592513d158ced1fde2f20e2f01e967b5fbd3b2fafd4'
-            'dd8dd2ba5f2ce009c081c3fc5f1fc0e87261acd55770071e1e05bc6b273d701d9408a282b53a08304eb4b003b336e80c15c2227c5756c3f70f57c951be89d324'
             )
 
 provides=(thunderbird)
 conflicts=(thunderbird)
 
 source+=(unity-menubar.patch)
-sha512sums+=(a83806577e8eca19969a5c5387fafa00d2c2564c8d940deeafb69f831beee0b9cc0ab5c05e6873b818ee1a06c294c29db591e6a0f02d26fc99212585f949ba2d)
+sha512sums+=(ab5ded12b555d21fabf9f4aafc91f2b109074dff746edd67252b1a9b9d37fc6f16c40961c69acefa69132abf902b31142c7bc3e32a968a09b47eeb1e5b97b314)
