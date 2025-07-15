@@ -8,18 +8,23 @@ pkgname=(
   'colloid-nord-gtk-theme-git'
 )
 pkgbase=colloid-gtk-theme-git
-pkgver=2024.06.18.r21.g482c350
+pkgver=2024.11.16.r22.g15f9b99
 pkgrel=1
 pkgdesc="Gtk theme for Linux"
 arch=('any')
 url="https://github.com/vinceliuice/Colloid-gtk-theme"
 license=('GPL-3.0-or-later')
-makedepends=('git' 'sassc')
-optdepends=('gtk-engine-murrine: GTK2 theme support'
-            'colloid-icon-theme: Matching icon theme'
-            'colloid-cursors: Matching cursor theme')
+makedepends=(
+  'git'
+  'sassc'
+)
+optdepends=(
+  'colloid-cursors: Matching cursor theme'
+  'colloid-icon-theme: Matching icon theme'
+  'gtk-engine-murrine: GTK2 theme support'
+)
 options=('!strip')
-install="${pkgname%-git}.install"
+install="${pkgbase%-git}.install"
 source=('git+https://github.com/vinceliuice/Colloid-gtk-theme.git')
 sha256sums=('SKIP')
 
