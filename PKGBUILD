@@ -2,7 +2,7 @@
 pkgname="goradion-bin"
 _pkgname=${pkgname%-bin}
 pkgdesc="Terminal based online radio player"
-pkgver="v0.4.5"
+pkgver="v0.5.6"
 pkgrel=1
 _dir="${pkgname}-${pkgver#v}"
 arch=("any")
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=("${_pkgname}-${pkgver}-linux"::"${url}/releases/download/${pkgver}/${_pkgname}-linux-amd64")
-b2sums=('e5395b0b8f7314f57833a37b33688bf7aff8bbd5e6e7fb346f9edc0343425bb78ba4c05d0187bbb795adfcb8450c15c19be9e54c76e3e4438216e5f43f83422a')
+b2sums=('9b937a14f5c27f1a38756e69ecd6227f7a8d7265551af330c1beb112e983d0373217c99a624bc88c66d462955176e5468d48d8d74c8f66dfaf1b459247db9daa')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}-linux" "$pkgdir/usr/bin/$_pkgname"
