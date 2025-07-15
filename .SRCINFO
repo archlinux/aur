@@ -1,7 +1,7 @@
 pkgbase = salome-bootstrap
 	pkgdesc = Required for SALOME KERNEL
 	pkgver = 9.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.salome-platform.org
 	arch = any
 	license = LGPL2+
