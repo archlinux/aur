@@ -3,14 +3,36 @@ post_install() {
     echo "==> sudo usermod -a -G audio \$USER"
     echo "==> You may need to log out and back in for the group changes to take effect"
     echo "==> Launch Mixbus from the applications menu or by typing 'mixbus11' in terminal"
+    echo ""
+    echo "==> This package removes conflicting bundled libraries (readline, history) to prevent"
+    echo "==> symbol lookup errors with recent Arch updates. System libraries are used instead."
+    echo "==> If you experience issues, please check the AUR package page for troubleshooting."
+
+    # Update icon cache
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    fi
 }
 
 post_upgrade() {
     echo "==> Mixbus has been upgraded"
     echo "==> Make sure you're in the 'audio' group:"
     echo "==> sudo usermod -a -G audio \$USER"
+    echo ""
+    echo "==> Conflicting bundled libraries have been removed for better system compatibility"
+    echo "==> If you experience library-related issues, please report them to the AUR maintainer"
+
+    # Update icon cache
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    fi
 }
 
 post_remove() {
     echo "==> Mixbus has been removed from your system"
+
+    # Update icon cache
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    fi
 }

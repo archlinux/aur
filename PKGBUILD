@@ -1,16 +1,15 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
 pkgname=mixbus11
 pkgver=11.0.289
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Consoles Mixbus DAW (Version 11)"
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/mixbus"
-license=('EULA')
+license=('custom')
 groups=('pro-audio')
-depends=('glibc' 'libcurl-gnutls')
+depends=('glibc' 'libcurl-gnutls' 'readline' 'ncurses' 'zlib' 'bzip2')
 makedepends=(
     'binutils'
-    'xdg-user-dirs'
 )
 optdepends=('avldrums.lv2: AVLinux drumkits'
             'gmsynth.lv2: General MIDI LV2 Synth'
@@ -50,7 +49,7 @@ package() {
     # Create required directories
     install -dm755 "$pkgdir/opt/Mixbus-${pkgver}"
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/local/bin"
+
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/16x16/apps"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/22x22/apps"
@@ -58,8 +57,31 @@ package() {
     install -dm755 "$pkgdir/usr/share/icons/hicolor/48x48/apps"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
+
     # Copy the extracted files to the package directory
-    cp -r Mixbus_x86_64-${pkgver}/* "$pkgdir/opt/Mixbus-${pkgver}/"
+    cp -a Mixbus_x86_64-${pkgver}/* "$pkgdir/opt/Mixbus-${pkgver}/"
+
+    # Remove conflicting bundled libraries that clash with system libraries
+    # This prevents symbol lookup errors like "undefined symbol: rl_print_keybinding"
+    # and other compatibility issues with recent Arch updates
+
+    # Core system libraries that should use system versions
+    rm -f "$pkgdir/opt/Mixbus-${pkgver}/lib/libreadline.so"*
+    rm -f "$pkgdir/opt/Mixbus-${pkgver}/lib/libhistory.so"*
+    rm -f "$pkgdir/opt/Mixbus-${pkgver}/lib/libncurses.so"*
+    rm -f "$pkgdir/opt/Mixbus-${pkgver}/lib/libncursesw.so"*
+    rm -f "$pkgdir/opt/Mixbus-${pkgver}/lib/libtinfo.so"*
+    rm -f "$pkgdir/opt/Mixbus-${pkgver}/lib/libz.so"*
+    rm -f "$pkgdir/opt/Mixbus-${pkgver}/lib/libbz2.so"*
+
+
+    # Install license file
+    install -Dm644 "$pkgdir/opt/Mixbus-${pkgver}/share/doc/COPYING" \
+        "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" || \
+    install -Dm644 "$pkgdir/opt/Mixbus-${pkgver}/COPYING" \
+        "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" || \
+    install -Dm644 "$pkgdir/opt/Mixbus-${pkgver}/LICENSE" \
+        "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" || true
 
     # Install icons
     install -Dm644 "$pkgdir/opt/Mixbus-${pkgver}/share/resources/Mixbus-icon_16px.png" \
@@ -76,8 +98,15 @@ package() {
     # Create wrapper script to handle library paths
     cat > "$pkgdir/usr/bin/mixbus11-wrapper" << EOF
 #!/bin/bash
-# Set Mixbus-specific library path
-export LD_LIBRARY_PATH="/opt/Mixbus-${pkgver}/lib"
+# Enhanced wrapper to handle library conflicts and system compatibility
+
+# Ensure system libraries take precedence over potentially conflicting bundled ones
+# This prevents issues like "undefined symbol: rl_print_keybinding"
+export LD_LIBRARY_PATH="/opt/Mixbus-${pkgver}/lib:\$LD_LIBRARY_PATH"
+
+# Set additional environment variables for better compatibility
+export MIXBUS_SYSTEM_LIB_PATH="/usr/lib:/lib"
+
 # Run Mixbus with appropriate environment
 exec env GDK_BACKEND=x11 /opt/Mixbus-${pkgver}/bin/mixbus11 "\$@"
 EOF
@@ -86,7 +115,6 @@ EOF
     # Install desktop file with the wrapper
     cat > "$pkgdir/usr/share/applications/mixbus11.desktop" << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
@@ -99,9 +127,8 @@ StartupWMClass=Mixbus-${pkgver}
 StartupNotify=true
 EOF
 
-    # Create symlinks to the wrapper
+    # Create symlink to the wrapper
     ln -s "/usr/bin/mixbus11-wrapper" "$pkgdir/usr/bin/mixbus11"
-    ln -s "/usr/bin/mixbus11-wrapper" "$pkgdir/usr/local/bin/Mixbus11"
 
     # Fix permissions
     chmod -R 755 "$pkgdir/opt/Mixbus-${pkgver}"
