@@ -1,0 +1,14 @@
+pkgbase = kat
+	pkgdesc = TUI and rule-based rendering engine for Kubernetes manifests
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/MacroPower/kat
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = gcc
+	options = !debug
+	source = https://github.com/MacroPower/kat/archive/v0.20.1.tar.gz
+	sha256sums = fc64a82b342e94a1b05e6c7671fb0eb3395cd9cfcf5cda90efe1c3ec4126d9cd
+
+pkgname = kat
