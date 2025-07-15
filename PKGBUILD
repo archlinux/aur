@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainer: Andrew Shark <ashark linuxcomp ru>
+# Contributor: Andrew Shark <ashark linuxcomp ru>
 
 pkgname="python-type-enforced"
 _name=${pkgname#python-}
