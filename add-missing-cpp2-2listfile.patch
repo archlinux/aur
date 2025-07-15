@@ -1,0 +1,25 @@
+From 60858d74ded0ec39e33546c472ec65ad6208a6d5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A1t=C3=A9=20Szab=C3=B3?= <mszabo-oss@protonmail.com>
+Date: Mon, 14 Jul 2025 13:06:03 +0200
+Subject: [PATCH] Add missing cpp2 implementation files to listfile
+
+These were split out in D77981920 and D77981921 but are missing
+from the corresponding listfile.
+---
+ thrift/lib/cpp2/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/thrift/lib/cpp2/CMakeLists.txt b/thrift/lib/cpp2/CMakeLists.txt
+index 8fe4cb13e60..64eca6ea2ee 100644
+--- a/thrift/lib/cpp2/CMakeLists.txt
++++ b/thrift/lib/cpp2/CMakeLists.txt
+@@ -322,7 +322,9 @@ add_library(
+   transport/rocket/client/RequestContextQueue.cpp
+   transport/rocket/client/RocketClient.cpp
+   transport/rocket/client/KeepAliveWatcher.cpp
++  transport/rocket/client/RocketSinkServerCallback.cpp
+   transport/rocket/client/RocketStreamServerCallback.cpp
++  transport/rocket/client/RocketStreamServerCallbackWithChunkTimeout.cpp
+   transport/rocket/flush/FlushManager.cpp
+   transport/rocket/framing/parser/AllocatingParserStrategy.cpp
+   transport/rocket/framing/ErrorCode.cpp

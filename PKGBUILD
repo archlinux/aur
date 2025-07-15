@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fbthrift
-pkgver=2025.07.07.00
+pkgver=2025.07.14.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -30,7 +30,7 @@ makedepends=(
   cmake
   cython
   gtest
-  mvfst
+  mvfst=$pkgver
 )
 optdepends=(
   'python-snappy: Snappy compression support'
@@ -60,14 +60,19 @@ options=(
   !emptydirs
   !lto
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3f9faa1b15912379740655d082048f2dd78b47a3b4b660bfd162f8965e1a85ea')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "add-missing-cpp2-2listfile.patch"
+)
+sha256sums=('9c2df5c98d73eccbda695983d9961578bb21706338f4ffe7dfca562d490e780b'
+            '3fb17037822a8f2bc860e8e091d394f3ee0ad0f9b38fbf51487a647fbf556a2d')
 
 prepare() {
   cd $pkgname-$pkgver
   # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
+  patch -Np1 -i ../add-missing-cpp2-2listfile.patch
 }
 
 build() {
@@ -84,7 +89,7 @@ build() {
     -DPACKAGE_VERSION="$pkgver"
 
   #fixing a missing path issue in the current release
-  mkdir -p build/thrift/conformance/if    
+  mkdir -p build/thrift/conformance/if
 
   cmake --build build
 }
