@@ -1,5 +1,5 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
-# Co-Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # Contributor: Carl George < arch at cgtx dot us >
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 # Contributor: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
