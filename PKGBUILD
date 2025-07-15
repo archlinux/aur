@@ -2,7 +2,7 @@
 
 pkgname='python-evaluate'
 _pkgname=${pkgname#python-}
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='HuggigFace library for easily evaluating machine learning models and datasets'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
     'python-transformers: Transformers library support'
 )
 source=("evaluate-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ce7e01669f22c1e6348dd99b0de43c0e886bf36e591e036f708d623a0ad2731d')
+sha256sums=('edd43b499d65b11d0dd1e95588ff73a71af3629fb1fd65be2600765288a87fb4')
 
 build() {
   python -m build -nw "${_pkgname}-${pkgver}"
