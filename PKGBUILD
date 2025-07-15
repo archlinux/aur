@@ -1,24 +1,28 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cod-git
-pkgver=0.1.0.r2.gde10c9b
-pkgrel=3
+pkgver=0.1.0.r9.gfdbe85a
+pkgrel=1
 pkgdesc="A completion daemon for bash/zsh"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/dim-an/cod"
 license=('Apache-2.0')
-makedepends=('git' 'go')
+depends=('glibc')
+makedepends=(
+  'git'
+  'go'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dim-an/cod.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export GOPATH="$srcdir/gopath"
 
   # download dependencies
@@ -29,7 +33,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -43,6 +47,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -Dm755 "build/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 }
