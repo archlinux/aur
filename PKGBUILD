@@ -18,9 +18,7 @@ makedepends=(
   'meson'
   'vala'
 )
-checkdepends=(
-  'appstream-glib'
-)
+checkdepends=('appstream-glib')
 source=("$url/-/archive/v$pkgver/damask-v$pkgver.tar.gz")
 sha256sums=('1e1939af48c89665a7d28f146e0105a4bc8262bc0a152c1f697d4c87609ea255')
 
@@ -30,9 +28,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
