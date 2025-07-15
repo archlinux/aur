@@ -3,7 +3,7 @@
 # Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
 _projectname='azure-identity'
 pkgname="python-$_projectname"
-pkgver='1.23.0'
+pkgver='1.23.1'
 pkgrel='1'
 pkgdesc='Microsoft Azure Identity Client Library for Python'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python>=3.9.0' 'python-azure-core>=1.31.0' 'python-cryptography>=2.5.0' 'python-msal>=1.30.0' 'python-msal-extensions>=1.2.0' 'python-typing_extensions>=4.0.0')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${_projectname}_$pkgver.tar.gz")
-b2sums=('776054e0d251c6688a3bf002ad3ec37c6f8f5a55726b620d4d77eeaae99e5beabce21ca4f396219d3b219d6fa093ae5498be1cd9ffd8a5395d970338601e1932')
+b2sums=('2319896029ef56c2e53f447fa61069b54ef06a670463e07dbda8e86f90d956abc0cbdb5973eb51214e91e7b958cf6b13b4e2fe0fabc412740583237a3799e064')
 
 _sourcedirectory="azure-sdk-for-python-${_projectname}_$pkgver/sdk/identity/$_projectname"
 
