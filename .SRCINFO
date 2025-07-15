@@ -1,14 +1,14 @@
 pkgbase = lotti-bin
 	pkgdesc = Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.(Prebuilt version)
-	pkgver = 0.9.396_2294
-	pkgrel = 6
+	pkgver = 0.9.642_3166
+	pkgrel = 1
 	url = https://github.com/matthiasn/lotti
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
 	depends = pango
 	depends = gdk-pixbuf2
-	depends = jsoncpp
+	depends = mpv
 	depends = gtk3
 	depends = libkeybinder3
 	depends = libsecret
@@ -16,13 +16,14 @@ pkgbase = lotti-bin
 	depends = cairo
 	depends = at-spi2-core
 	depends = harfbuzz
-	provides = lotti=0.9.396_2294
+	depends = libxmu
+	provides = lotti=0.9.642_3166
 	conflicts = lotti
-	noextract = lotti-0.9.396_2294.tar.gz
-	source = lotti-0.9.396_2294.tar.gz::https://github.com/matthiasn/lotti/releases/download/0.9.396+2294/linux.x64.tar.gz
-	source = lotti-0.9.396_2294.png::https://raw.githubusercontent.com/matthiasn/lotti/0.9.396+2294/assets/icon/app_icon_1024.png
+	noextract = lotti-0.9.642_3166.tar.gz
+	source = lotti-0.9.642_3166.tar.gz::https://github.com/matthiasn/lotti/releases/download/0.9.642+3166/linux.x64.tar.gz
+	source = lotti-0.9.642_3166.png::https://raw.githubusercontent.com/matthiasn/lotti/0.9.642+3166/assets/icon/app_icon_1024.png
 	source = lotti.sh
-	sha256sums = a3c3fa5ae7c8a1130d1ed71c809e6c445af9eec850537552f50aaca3c8b3b210
+	sha256sums = c76d342bdeba873cfbd8303324b7b7d1715ef5ac96c3870a59eec48ead5c1733
 	sha256sums = 306adaeff6c8613e536db665d24cab8551b4a3774c5729492dd132dc690256c6
 	sha256sums = 6c653ecadf03d9566022c30e03185a6cbfc1ab8de1c9ddec899bac356c4d40d7
 
