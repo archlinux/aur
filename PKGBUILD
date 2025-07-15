@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=4.4.3
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -51,7 +51,9 @@ depends=('glibc' 'bash' 'hicolor-icon-theme'
 'ncurses'
 'libx11'
 'gcc-libs'
-'zlib')
+'zlib'
+'opengl-driver'
+'vulkan-driver')
 optdepends=('cuda: Cycles renderer CUDA support'
             'intel-compute-runtime: Cycles renderer Intel OneAPI support'
 	    'level-zero-loader: Cycles rrender Intel OneAPI support'
@@ -61,7 +63,7 @@ provides=('blender')
 conflicts=('blender')
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
-sha256sums=('8d3be07d2bc412b502c6bfe3cfe3e22195a4164076867da987ce148d73c27946'
+sha256sums=('1188b95cc12321c770b631939f7c25a096910b6f884a990bf9c0f62d52b38aec'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
