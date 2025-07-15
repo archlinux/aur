@@ -1,4 +1,5 @@
-# Maintainer: Martin Rys <rys.rs/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+
 pkgname=aax-bruteforce
 pkgver=1.0.1
 _pkgver="v${pkgver}"
