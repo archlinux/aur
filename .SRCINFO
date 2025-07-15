@@ -1,6 +1,6 @@
 pkgbase = python-langgraph
 	pkgdesc = Building stateful, multi-actor applications with LLMs.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/langgraph
 	arch = any
@@ -36,11 +36,11 @@ pkgbase = python-langgraph
 	depends = python-pydantic
 	noextract = langgraph_cli-0.3.3-py3-none-any.whl
 	noextract = langgraph_runtime_inmem-0.3.4-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/source/l/langgraph/langgraph-0.5.2.tar.gz
-	source = https://files.pythonhosted.org/packages/py3/l/langgraph-cli/langgraph_cli-0.3.3-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/l/langgraph-runtime-inmem/langgraph_runtime_inmem-0.3.4-py3-none-any.whl
-	sha256sums = 393b767e9d6a129636a9df36edc492499336c71e4ee268e64b9d1299d30e636c
-	sha256sums = a0c6b04d6a37191431ede17f7a358f1944c6e5ac9e1b7d2004b9f973fe940094
-	sha256sums = dcb9ac68ac90b3fb1ddaf666d14a367ab70e69d5bb5589b77a72c318e29104ae
+	source = https://files.pythonhosted.org/packages/source/l/langgraph/langgraph-0.5.3.tar.gz
+	source = https://files.pythonhosted.org/packages/py3/l/langgraph-cli/langgraph_cli-0.3.4-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/l/langgraph-runtime-inmem/langgraph_runtime_inmem-0.4.0-py3-none-any.whl
+	sha256sums = 36d4b67f984ff2649d447826fc99b1a2af3e97599a590058f20750048e4f548f
+	sha256sums = b3ac9fbc67cec5d0295c23a9e7a9014f34502639fb52b2d02c89b3bb2ba36c33
+	sha256sums = 61a392b6faa4fedcf16287538332e0a0e528e54d0e13b1f5f0174256c26dd8f3
 
 pkgname = python-langgraph
