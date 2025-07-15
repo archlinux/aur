@@ -534,7 +534,8 @@ gather_aur_data() {
 
 	if ! curl --connect-timeout 60 --max-time 180 --parallel --parallel-immediate --parallel-max "${PARALLEL}" \
 		"${REQUESTS[@]}" 2> /dev/null; then
-		return 1
+		print_error 74
+		exit 74
 	fi
 
 	RESULTS=$(
