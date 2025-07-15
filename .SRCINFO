@@ -1,12 +1,12 @@
 pkgbase = ringover-bin
 	pkgdesc = Ringover desktop application
-	pkgver = 2.1.13
+	pkgver = 2.1.15
 	pkgrel = 1
 	url = https://github.com/ringover/ringover-desktop-v2
 	install = ringover.install
 	arch = x86_64
 	license = custom
-	source = https://github.com/ringover/ringover-desktop-v2/releases/download/2.1.13/Ringover.deb
-	sha512sums = d538744d52857e5e157a656dd0d60262906ee2e1334fe4835d14505cf947a73ad4d51aba25d9e768b2b5cb5322402d97215a209e3f5affac8dff7a7cbc1479fb
+	source = https://github.com/ringover/ringover-desktop-v2/releases/download/2.1.15/Ringover.deb
+	sha512sums = 0fe83058d877afdef9e7e97b84daa7123d88352447f96d7f619e7ecfdf4032e84b5ad3ca9ee9cd77eabe57ebb20cd1244975a8e52621fe8755f8232aa9d64a5e
 
 pkgname = ringover-bin
