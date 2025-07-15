@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisk-bin
 _pkgname=Brisk
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Fast, multithreaded, cross-platform download manager.(Prebuilt version)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('da44033fb378d34626ff41fae970944fd49bcaac36e080c7940bf87356a43899'
+sha256sums=('926dcdae9753458ff3c9be61e9696cdb661851258481d3f4ac16b35743e02d20'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
     sed -i -e "
