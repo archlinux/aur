@@ -20,9 +20,7 @@ makedepends=(
   'python-setuptools'
   'yarn'
 )
-optdepends=(
-  'org.freedesktop.secrets: password storage backend'
-)
+optdepends=('org.freedesktop.secrets: password storage backend')
 source=("git+https://github.com/vladimiry/ElectronMail.git#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh")
