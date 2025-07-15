@@ -7,27 +7,24 @@
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 CURSOR_FLAGS_FILE="$XDG_CONFIG_HOME/cursor-flags.conf"
 
-# Default flags
+# Default flags if doesn't start use --no-sandbox
 DEFAULT_FLAGS=""
 
-# Создать файл с дефолтным содержимым, если он отсутствует
+# Create a file with default contents if it does not exist
 if [[ ! -f "$CURSOR_FLAGS_FILE" ]]; then
     mkdir -p "$(dirname "$CURSOR_FLAGS_FILE")"
-    echo "# Пользовательские флаги для Cursor" > "$CURSOR_FLAGS_FILE"
+    echo "# User flags for Cursor" > "$CURSOR_FLAGS_FILE"
 fi
 
 # Read user flags if file exists
 USER_FLAGS=""
 if [[ -f "$CURSOR_FLAGS_FILE" ]]; then
-    # Фильтруем только валидные флаги: убираем комментарии и пустые строки
+    # Filter only valid flags: remove comments and empty lines
     USER_FLAGS=$(grep -vE '^\s*#' "$CURSOR_FLAGS_FILE" | grep -vE '^\s*$' | xargs)
 fi
 
 # Combine flags
 ALL_FLAGS="$DEFAULT_FLAGS $USER_FLAGS"
 
-# Execute Cursor AppImage with flags and passed arguments
-exec /opt/cursor-app/cursor-app.AppImage $ALL_FLAGS "$@"
-
-# Launch with AppImageLauncher disabled only for this process (author panikinator https://github.com/Gunther-Schulz/aur-cursor-bin-updater/pull/15/commits/1d44207003a7c1ebf16719135c8d03856e109e5f)
-APPIMAGELAUNCHER_DISABLE=TRUE exec /opt/cursor-app/cursor-app.AppImage"$@" $CURSOR_USER_FLAGS
+# Launch with AppImageLauncher disabled and execute Cursor AppImage
+APPIMAGELAUNCHER_DISABLE=TRUE exec /opt/cursor-app/cursor-app.AppImage $ALL_FLAGS "$@"

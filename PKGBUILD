@@ -6,13 +6,14 @@ pkgrel=1
 pkgdesc="Cursor - AI-first coding environment"
 arch=('x86_64')
 url="https://www.cursor.com/"
-license=('custom:Proprietary')  # Replace with the correct license if known
+license=('custom:Anysphere-Inc')
 depends=('fuse2' 'gtk3')
 conflicts=('cursor-bin')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${_cursor_url}" "cursor.png::file://${PWD}/assets/cursor.png" "${pkgname}.desktop.in::file://${PWD}/assets/${pkgname}.desktop.in" "${pkgname}.sh::file://${PWD}/assets/${pkgname}.sh")
 noextract=("${_appimage}")
+# Dependencies will be updated automatically by the script
 sha512sums_x86_64=('SKIP'
                    'SKIP'
                    'SKIP'
