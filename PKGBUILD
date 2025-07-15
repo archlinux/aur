@@ -5,9 +5,7 @@
  
 pkgname=thunderbird-esr-bin
 _pkgname=thunderbird
-pkgver=128.12.0
-_major=${pkgver/rc*}
-_build=${pkgver/*rc}
+pkgver=140.0.1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - binary version"
 arch=('x86_64' 'pentium4' 'i686')
@@ -25,26 +23,27 @@ source=(
   'thunderbird-esr-bin.desktop'
   'vendor.js'
 )
+
 source_x86_64=(
-  thunderbird-${pkgver}esr-x86_64.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-x86_64/en-US/thunderbird-${pkgver}esr.tar.bz2
-  thunderbird-${pkgver}esr-x86_64.tar.bz2.asc::https://ftp.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-x86_64/en-US/thunderbird-${pkgver}esr.tar.bz2.asc
+  thunderbird-${pkgver}esr-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-x86_64/en-US/thunderbird-${pkgver}esr.tar.xz
+  thunderbird-${pkgver}esr-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-x86_64/en-US/thunderbird-${pkgver}esr.tar.xz.asc
 )
 source_pentium4=(
-  thunderbird-${pkgver}esr-pentium4.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.bz2
-  thunderbird-${pkgver}esr-pentium4.tar.bz2.asc::https://ftp.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.bz2.asc
+  thunderbird-${pkgver}esr-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz
+  thunderbird-${pkgver}esr-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz.asc
 )
 source_i686=(
-  thunderbird-${pkgver}esr-i686.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.bz2
-  thunderbird-${pkgver}esr-i686.tar.bz2.asc::https://ftp.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.bz2.asc
+  thunderbird-${pkgver}esr-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz
+  thunderbird-${pkgver}esr-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz.asc
 )
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('4320c092f05e5732fd07e494243e70fb2557ca383d8f8cfc3cd27eed977f40620ab70535ecb4169edf6ecfe159c8b6148832e3fcf04ca8546b9319c7419a6865'
+sha512sums_x86_64=('d3eca151fd4c5013774fdeb7b8c1c970c3b454ed9c9c62e49e243c0beb3667c490a0cb1cb6249fb9a2786fef552294315785a33cacfc53795cb1f95c64ac2778'
                    'SKIP')
-sha512sums_pentium4=('1e1cfffe760ee8f8dc09569e9d986e7b89516d1e809db91bf7cfc7da36354424e74e5c335a5958915e54b1b07761fdcbabd25f5a48d64272e6652fb0543e0194'
+sha512sums_pentium4=('0b915593ee28b6ecf55ce6d6f8e00e0c56f2f884fd6a2163be0753d8351124b4fecf03d3b59692b47fd8b8a75dd4af0c83e4ed949e57e9fcb3cb134073a605b8'
                      'SKIP')
-sha512sums_i686=('1e1cfffe760ee8f8dc09569e9d986e7b89516d1e809db91bf7cfc7da36354424e74e5c335a5958915e54b1b07761fdcbabd25f5a48d64272e6652fb0543e0194'
+sha512sums_i686=('0b915593ee28b6ecf55ce6d6f8e00e0c56f2f884fd6a2163be0753d8351124b4fecf03d3b59692b47fd8b8a75dd4af0c83e4ed949e57e9fcb3cb134073a605b8'
                  'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
