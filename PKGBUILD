@@ -3,14 +3,16 @@
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-# Bump minor ver of Chromiumver from opera:about
-_chromium=135.0.7049.128
+# Bump Chromiumver from opera:about if av{codec,format,util} have same major soname
+_codec=61
+_format=61
+_util=59
+_chromium=137.0.7151.138
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-_ffmpeg=$(curl -s ${url}/+/${_commit}/RELEASE?format=TEXT|base64 -d)
-pkgver=${_chromium}.ffmpeg$_ffmpeg
-pkgrel=2
-pkgdesc="Add codecs to Opera"
+pkgver=${_chromium}.sonames${_codec}.${_format}.${_util}
+pkgrel=1
+pkgdesc='Add codecs to Opera by ffmpeg with same sonames'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=(glibc)
@@ -19,7 +21,7 @@ makedepends=(nasm git)
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
 install=on-opera-ffmpeg.install
-sha256sums=('ef9d0877853ea4678c5ad84c40e145785280af4e54251710f5a905d7ded2262d'
+sha256sums=('30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
             'cf61ed6d89c84f1f999af8e126395fdad05e4bb898d900178673b626f0204e12'
             'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 
@@ -28,6 +30,12 @@ prepare() {
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   diff libavcodec/opus/dec.c{.bak,} || :
+  # soname
+  echo Bumping commit using sonames 
+  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h > soname.txt
+  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h >> soname.txt
+  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h >> soname.txt
+  cat soname.txt
 }
 
 build() {
@@ -59,10 +67,7 @@ package(){
   # Block LD_PRELOAD even this works without it. It breaks many things.
   install -Dm644 off-opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # soname
-  cd chromium-ffmpeg
-  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h  > "${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
-  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h >> "${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
-  cat "${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
+  install -Dvm644 chromium-ffmpeg/soname.txt /"${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
   # symlink
   conflicts=(opera-{beta,developer}-ffmpeg-codecs)
   provides=(opera-{beta,developer}-ffmpeg-codecs)
