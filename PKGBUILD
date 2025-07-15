@@ -4,7 +4,7 @@
 pkgname="python-type-enforced"
 _name=${pkgname#python-}
 _name2="type_enforced"
-pkgver=1.10.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Check if type annotations correspond the reality at runtime"
 arch=("any")
@@ -17,7 +17,7 @@ makedepends=(
 	python-setuptools
 	python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/connor-makowski/type_enforced/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0aee5d34b1528841f56f65e93667d954bdf734fee18c3d64718f565714f1659c')
+sha256sums=('bf643281e16cb3f455e23e20b1b80868b8e5676fcbe34ccab2afe1d78de2fb19')
 
 build() {
 	cd "${_name2}-${pkgver}"
@@ -28,6 +28,5 @@ package() {
 	cd "${_name2}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" "dist/${_name2}-${pkgver}-py3-none-any.whl"
 
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	cp ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
