@@ -14,6 +14,6 @@ pkgbase = kiro-ide-bin
 	source_x86_64 = https://prod.download.desktop.kiro.dev/releases/202507140012--distro-linux-x64-tar-gz/202507140012-distro-linux-x64.tar.gz
 	source_x86_64 = kiro-ide-bin.desktop
 	sha256sums_x86_64 = e9b6dcfc79dd88dfc7528672628f6be8e9628769f8fcd332469c43e7dcfd487d
-	sha256sums_x86_64 = 4b9c2573adb2e08a2db807deebfb8776c0e5b39e25fdd8fbcfb621752ac80566
+	sha256sums_x86_64 = f33ea86f5ff0ebd9919c5fabea04a1018161e299ff543a467c2e558f08f0c45b
 
 pkgname = kiro-ide-bin
