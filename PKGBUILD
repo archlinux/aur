@@ -1,5 +1,5 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
-# Co-Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=sc-controller-git
 pkgver=0.4.9.4.r8.ae6593c
