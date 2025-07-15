@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=novelwriter-bin
 _pkgname=novelWriter
-pkgver=2.7.3
+pkgver=2.7.4
 _pyver=3.13
 pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels.(Prebuilt version)"
@@ -21,7 +21,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_all.deb"
 )
-sha256sums=('53f723fd46f72b35067d98b49d776c64bff9264f7b840f9554148c15770abef8')
+sha256sums=('040e3315a57995fabe5fa5bcf0c29278096c36a87c56fbe3c419b290419bff7b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
