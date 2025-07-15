@@ -1,7 +1,6 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainers:
-#   George Rawlinson <grawlinson@archlinux.org>
-#   Felix Yan <felixonmars@archlinux.org>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pytest-pylint
 pkgver=0.21.0
