@@ -21,9 +21,7 @@ makedepends=(
 	'python-poetry'
 	'python-setuptools'
 )
-source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/python-sdbus/python-sdbus/archive/${pkgver}.tar.gz"
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/python-sdbus/python-sdbus/archive/${pkgver}.tar.gz")
 sha256sums=('b51aefe18037ab7043fd08e06c1d58a6105f7830b03a240c7ee95591060c45e1')
 
 build() {
