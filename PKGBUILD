@@ -1,6 +1,6 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainers:
-#   Roman Kupriyanov <mr.eshua@gmail.com>
+# Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
+
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
 pkgver=2025.4.0
