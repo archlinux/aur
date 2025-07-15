@@ -73,7 +73,7 @@ package() {
 
 	install -Dm755 -t "${pkgdir}/opt/${pkgname}" "${_builddir}/LOOT"
 
-	mkdir -p "${pkgdir}/usr/bin"
+	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/LOOT" "${pkgdir}/usr/bin"
 
 	# Install the icon
