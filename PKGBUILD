@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=miniaudio-git
 pkgver=3574.4a5b74b
