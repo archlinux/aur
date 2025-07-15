@@ -14,14 +14,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visioncortex/${pkgname}
 sha256sums=('a4b554afe0384ddbdb5f96dde2d2e6f412493ae990acc32e0d71c4f8b63d8ba4')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
-  cargo build --release
+	cargo build --release
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
-  install -Dm755 target/release/vtracer "${pkgdir}/usr/bin/vtracer"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 target/release/vtracer "${pkgdir}/usr/bin/vtracer"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
