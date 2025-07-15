@@ -1,10 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-myst-nb
 _pname=${pkgbase#python-}
 _pyname=MyST-NB
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
@@ -40,7 +41,7 @@ checkdepends=('python-pytest-param-files'
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
 #       'Makefile')
-md5sums=('62848286dd0ed353c7ea446ccea5aaeb')
+md5sums=('d2825a4ccf6d7b9b5385632c8ffca651')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -95,7 +96,8 @@ package_python-myst-nb() {
                 'python-sphinx-panels: rtd'
                 'python-sphinx_design: rtd'
                 'python-sphinxcontrib-bibtex: rtd'
-                'python-sympy: rtd')
+                'python-sympy: rtd'
+                'python-sphinx-autodoc-typehints: rtd')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
