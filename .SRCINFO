@@ -1,7 +1,7 @@
 pkgbase = unmined-gui
 	pkgdesc = An easy to use and fast Minecraft world viewer and mapper tool
-	pkgver = 0.19.46
-	pkgrel = 3
+	pkgver = 0.19.49
+	pkgrel = 1
 	url = https://unmined.net/
 	arch = x86_64
 	license = custom

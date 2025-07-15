@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till at gmail dot com>
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
-pkgver=0.19.46
-pkgrel=3
+pkgver=0.19.49
+pkgrel=1
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
 url="https://unmined.net/"
@@ -28,5 +28,6 @@ package() {
     cd "$srcdir/extracted"
     cp -a usr opt "$pkgdir/"
     chmod +x "$pkgdir/opt/unmined/unmined"
+    chmod +x "$pkgdir/opt/unmined/"*.so
     install -D -m644 opt/unmined/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
