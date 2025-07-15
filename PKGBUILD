@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-panel-git
-pkgver=1.0.0.alpha.2.r0.g4fedcbf
-pkgrel=2
+pkgver=1.0.0.alpha.7.r21.g1985e80
+pkgrel=1
 pkgdesc="XDG Shell Wrapper Panel for COSMIC"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-panel"
