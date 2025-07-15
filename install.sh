@@ -14,6 +14,7 @@ cd yak
 
 echo "Step 4: Build and install yak with makepkg"
 makepkg -si --noconfirm
+sudo mv yak /usr/bin
 
 echo "Installation finished!"
 echo "You can now use yak by typing: yak"

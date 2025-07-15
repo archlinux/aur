@@ -1,7 +1,7 @@
 # Maintainer: Noah Ramkissoon nohramkissoon1@gmail.com
 pkgname=yak
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple AUR helper written in Bash using Pacman-like flags"
 arch=('any')
 url="https://github.com/rainbownx/yak"

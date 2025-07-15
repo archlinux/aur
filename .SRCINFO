@@ -1,7 +1,7 @@
 pkgbase = yak
 	pkgdesc = A simple AUR helper written in Bash using Pacman-like flags
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rainbownx/yak
 	arch = any
 	license = MIT
