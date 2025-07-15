@@ -1,7 +1,7 @@
 pkgbase = forticlient
 	pkgdesc = Fortinet VPN client ZTNA edition
 	pkgver = 7.4.3.1736
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.forticlient.com
 	arch = x86_64
 	license = custom
@@ -13,6 +13,7 @@ pkgbase = forticlient
 	depends = nss
 	depends = libxcrypt-compat
 	depends = libappindicator-gtk2
+	depends = org.freedesktop.secrets
 	provides = forticlient
 	options = !strip
 	source = https://repo.fortinet.com/repo/forticlient/7.4/ubuntu22/pool/non-free/f/forticlient/forticlient_7.4.3.1736_amd64.deb
