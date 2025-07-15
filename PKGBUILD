@@ -1,8 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
-# Previous maintainers:
-#   Brian Li <brian14708@gmail.com>
-#   Denys Zariaiev <denys.zariaiev@gmail.com>
+# Contributor: Brian Li <brian14708@gmail.com>
+# Contributor: Denys Zariaiev <denys.zariaiev@gmail.com>
 
 # TODO 2.0.0 - they're using trying to copy Sphere.stl and others with wrong capitalization...
 #Error copying file: boost::filesystem::copy_file: No such file or directory [system:2]: "Resources/Model/ExampleModel/sphere.stl", "/home/c0rn3j/.local/share/chituboxResource/sphere.stl"
