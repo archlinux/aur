@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
+# Contributor: Bijaya Dangol <dangoldbj23@gmail.com>
 
 pkgname=python-hsaudiotag3k
 _reponame=hsaudiotag3k
