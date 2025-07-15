@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=hyprland-easyfocus
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='A tool to help efficiently focus windows in Sway inspired by sway-easyfocus/i3-easyfocus.'
 url='https://github.com/abenz1267/hyprland-easyfocus'
@@ -12,8 +12,8 @@ depends=('gtk4-layer-shell')
 conflicts=('hyprland-easyfocus')
 provides=('hyprland-easyfocus')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8a82ee6b2ab9f1e13c8c39a490b2f6acb498de846bec01e682cf65d023d4ddbe')
-b2sums=('434e0a9dace9a7eb7eef9e384745accf625284ad9688756c8df17037d262d94a3d4d94c7cfced9dc79ba7dc970793bf168a2d26d0d1b8b5fe6843cbd5e93e1d4')
+sha256sums=('20d7f99ce39c2690e0c69e6d576f5fe99f31696efb8c026329c80c4a3215c31c')
+b2sums=('fd48bebaa73cd122cb825f9a53737177a042e14d362a98ad09d7281b18292c14a83c242f1e9507ef682c15de2a339c20693194cc9f82afa52bdc9b975bcfeef4')
 
 build() {
   cd ${pkgname}-${pkgver}
