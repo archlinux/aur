@@ -7,7 +7,7 @@
 
 pkgname=di
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A disk information utility, displaying everything (and more) that your df command does"
 arch=('x86_64')
 url="https://diskinfo-di.sourceforge.io/"
@@ -21,7 +21,7 @@ sha256sums=('7b663e4db044b1fa4986bd018f827c18e96fe6d1f9a36732dcbb0450e7f518cb')
 prepare()
 {
   cd ${pkgname}-${pkgver}
-  cmake -S . -B _build.out --install-prefix "/usr" -DDI_USE_MATH=DI_INTERNAL
+  cmake -S . -B _build.out --install-prefix "/usr" -DDI_USE_MATH=DI_INTERNAL -DCMAKE_INSTALL_FULL_LOCALEDIR="${pkgdir}/usr"
 }
 
 #

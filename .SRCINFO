@@ -1,7 +1,7 @@
 pkgbase = di
 	pkgdesc = A disk information utility, displaying everything (and more) that your df command does
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://diskinfo-di.sourceforge.io/
 	arch = x86_64
 	license = Zlib
