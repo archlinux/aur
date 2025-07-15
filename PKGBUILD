@@ -7,7 +7,12 @@ pkgdesc="Magically transform your images."
 arch=('any')
 url="https://github.com/nate-xyz/conjure"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'python-gobject' 'python-loguru' 'python-wand')
+depends=(
+  'libadwaita'
+  'python-gobject'
+  'python-loguru'
+  'python-wand'
+)
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
