@@ -1,8 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainers:
-#  Chris Morgan <me@chrismorgan.info>
-#  Carsten Feuls <archlinux dot carstenfeuls dot de>
-#  Nils Czernia <nils at czserver dot de>
+# Contributor: Chris Morgan <me@chrismorgan.info>
+# Contributor: Carsten Feuls <archlinux dot carstenfeuls dot de>
+# Contributor: Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
 pkgver=5.3.2
