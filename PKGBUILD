@@ -6,7 +6,7 @@ pkgrel=2
 _commit=3093e54e96eee5fcf9102825429ad39fb4a47d7a
 arch=(x86_64)
 pkgdesc='Plasma Login Manager'
-url='https://kde.org/es/plasma-desktop/'
+url='https://kde.org/plasma-desktop/'
 license=(GPL-2.0-or-later)
 depends=(gcc-libs
          glibc
