@@ -1,3 +1,5 @@
 [nodejs-fontmin]
-source = "npm"
-npm = "fontmin"
+source = "github"
+github = "ecomfe/fontmin"
+use_max_tag = true
+prefix = "v"
