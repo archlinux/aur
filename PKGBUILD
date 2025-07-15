@@ -11,8 +11,7 @@ license=("MIT")
 depends=("python-colorama" "python-websockets" "python-yaml" "python-jellyfish" "python-jinja" "python-schema" "python-kivy" "python-bsdiff4" "python-platformdirs" "python-certifi" "cython" "python-cymem" "python-orjson" "python-typing_extensions" "xsel" "xclip")
 optdepends=("mtdev: Multi-touch device support")
 source=("https://github.com/ArchipelagoMW/Archipelago/releases/download/${_ghrel}/Archipelago_${pkgver}_linux-x86_64.tar.gz")
-sha512sums=('22c79a88763050a30117fa9f0b61e022a3dabefe5fd5095ed9baf6e737c28f5dc10da764550d969335b5788cd0ca693c61697
-5bc58773c733349c2153a987fc3')
+sha512sums=('22c79a88763050a30117fa9f0b61e022a3dabefe5fd5095ed9baf6e737c28f5dc10da764550d969335b5788cd0ca693c616975bc58773c733349c2153a987fc3')
 
 package() {
   install -d "$pkgdir/opt"
