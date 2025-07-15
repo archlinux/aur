@@ -1,6 +1,6 @@
 pkgbase = automatic-timezoned
 	pkgdesc = A Linux daemon to automatically update the system timezone based on location.
-	pkgver = 2.0.80
+	pkgver = 2.0.82
 	pkgrel = 1
 	url = https://github.com/maxbrunet/automatic-timezoned
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = automatic-timezoned
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = geoclue
-	source = automatic-timezoned-2.0.80.tar.gz::https://static.crates.io/crates/automatic-timezoned/automatic-timezoned-2.0.80.crate
-	b2sums = da52228040508397663b1f0f2a5c8f72fe657e4194a76489c5528004555509f89598b7aa2a86c69325a18aab5d7beeee32fe721079e6ae2d69b26aa5f48a11ff
+	source = automatic-timezoned-2.0.82.tar.gz::https://static.crates.io/crates/automatic-timezoned/automatic-timezoned-2.0.82.crate
+	b2sums = 09bc5a1a6854e6f1542fc67b0b2e074c24a95663e6b853e9e920cb8fdc59a7ace59553e32f1d913eca203a88d1cc058f670be2e639b79f7aa03af3988e6719b3
 
 pkgname = automatic-timezoned
