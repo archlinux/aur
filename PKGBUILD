@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 # Contributor: Zen <dev@pyl.onl>
 
 pkgname=python-zenlib
@@ -31,5 +31,3 @@ package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-# vim: set ts=4 sw=4 sts=4 et:
