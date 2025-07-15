@@ -1,5 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous maintainer: Simon Tas <simon.tas.st@gmail.com>
+# Contributor: Simon Tas <simon.tas.st@gmail.com>
 
 pkgname="deemix-git"
 _pkgname="deemix-py"
