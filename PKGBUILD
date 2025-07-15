@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 # Contributor: Zen <dev@pyl.onl>
 
 pkgname=ugrd
@@ -17,17 +17,15 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('2a4644b31dbf7496ba6aec0c01508731a89fcf242cdc85a9a65b52d4d2a826bebf67828b1fd34a8e00186cc9556b2fee3aa8f4d37ad88635c109764b7d4a1a11')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd $pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 examples/example.toml "$pkgdir/etc/$pkgname/config.toml"
-    install -Dm644 completion/ugrd "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    install -Dm644 completion/_ugrd "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
     install -Dm644 hooks/alpm/91-ugrd.hook "$pkgdir/usr/share/libalpm/hooks/91-$pkgname.hook"
+    install -Dm644 completion/ugrd "$pkgdir/usr/share/bash-completion/completions/ugrd"
+    install -Dm644 completion/_ugrd "$pkgdir/usr/share/zsh/site-functions/_ugrd"
 }
-
-# vim: set ts=4 sw=4 sts=4 et:
