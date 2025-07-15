@@ -3,7 +3,7 @@
 
 pkgname=readest-deb
 pkgver=0.9.64
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface'
 arch=('x86_64')
 url='https://github.com/readest/readest'
