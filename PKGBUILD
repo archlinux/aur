@@ -10,7 +10,7 @@ depends=('bash' 'yt-dlp' 'jq' 'curl' 'mpv' 'fzf' 'chafa')
 optdepends=(
 	'rofi: GUI launcher alternative to fzf'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/V$pkgver.tar.gz")
+source=("$pkgver.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/V$pkgver.tar.gz")
 sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed') # replace with real checksum if needed
 
 package() {
