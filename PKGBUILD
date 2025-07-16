@@ -6,17 +6,17 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 pkgname=pavumeter-gtk3
 pkgver=0.9.3
-pkgrel=2
-pkgdesc="A simple GTK volume meter for the PulseAudio sound server (GTK3)"
-arch=(i686 x86_64)
-url="http://git.0pointer.de/pavumeter.git"
-license=(GPL)
+pkgrel=3
+pkgdesc="A simple GTK3 volume meter for the PulseAudio sound server"
+arch=('x86_64')
+url="https://github.com/nekohayo/pavumeter"
+# Original project: https://0pointer.de/lennart/projects/pavumeter/
+license=('GPL-2.0-only')
 depends=(gtkmm3 pulseaudio gnome-icon-theme libsigc++)
 makedepends=(lynx git)
 conflicts=(pavumeter)
 provides=(pavumeter)
-groups=(pulseaudio-gnome)
-source=(git+https://github.com/nekohayo/pavumeter.git
+source=(git+${url}.git
         pavumeter.desktop
         pavumeter-record.desktop)
 md5sums=('SKIP'

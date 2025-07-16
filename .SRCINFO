@@ -1,12 +1,10 @@
 pkgbase = pavumeter-gtk3
-	pkgdesc = A simple GTK volume meter for the PulseAudio sound server (GTK3)
+	pkgdesc = A simple GTK3 volume meter for the PulseAudio sound server
 	pkgver = 0.9.3
-	pkgrel = 2
-	url = http://git.0pointer.de/pavumeter.git
-	arch = i686
+	pkgrel = 3
+	url = https://github.com/nekohayo/pavumeter
 	arch = x86_64
-	groups = pulseaudio-gnome
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = lynx
 	makedepends = git
 	depends = gtkmm3
