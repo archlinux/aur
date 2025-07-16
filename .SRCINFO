@@ -10,8 +10,8 @@ pkgbase = shortcuts-bin
 	arch = riscv64
 	groups = mcds
 	license = bsd-4-clause
-	depends = go
-	depends = git
+	makedepends = go
+	makedepends = git
 	source = git+https://codeberg.org/Minecodes/shortcuts.git
 	sha256sums = SKIP
 

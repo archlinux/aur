@@ -8,7 +8,7 @@ pkgdesc="A tool for getting shortcuts & commands for commands"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'riscv64')
 url="https://codeberg.org/Minecodes/shortcuts"
 license=('bsd-4-clause')
-depends=('go' 'git')
+makedepends=('go' 'git')
 source=("git+https://codeberg.org/Minecodes/shortcuts.git")
 sha256sums=('SKIP')
 
