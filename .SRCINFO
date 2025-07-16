@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-tr
 	pkgdesc = Turkish language pack for Firefox Nightly
-	pkgver = 142.0a1.20250715.212043
+	pkgver = 142.0a1.20250716.090754
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-tr
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-tr-142.0a1.20250715.212043.xpi
-	source = firefox-nightly-i18n-tr-142.0a1.20250715.212043.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-142.0a1.tr.langpack.xpi
-	sha256sums = a38bf31da9bdbe1996ab33c446a354b761f97891f3af85a0099372199f2252c4
+	noextract = firefox-nightly-i18n-tr-142.0a1.20250716.090754.xpi
+	source = firefox-nightly-i18n-tr-142.0a1.20250716.090754.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-142.0a1.tr.langpack.xpi
+	sha256sums = 13913d471da937fb6c00c3fb77e63728e290fd043f980f7fb47b2ac0b8e05eb9
 
 pkgname = firefox-nightly-i18n-tr
