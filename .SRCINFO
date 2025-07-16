@@ -1,12 +1,12 @@
 pkgbase = ollama-dinit
 	pkgdesc = Dinit user service scripts for Ollama
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = Unlicense
 	depends = ollama
 	depends = dinit
-	depends = init-turnstile
+	optdepends = init-turnstile: Artix Linux Dinit user service manager
 	source = ollama
 	sha256sums = 6903992da2714074e03bfcc34c9680861b09358d2dfa629eda7ce3f6fff6ba8a
 
