@@ -4,16 +4,15 @@
 
 use strict;
 my ($ip, %B);
-my %whiteList = ( '192.168.0' => 1 );
+my %whiteList = ( '192.168.0' => 1, '192.168.1' => 1 );
 
 open(F,'-|','/usr/bin/journalctl -afb -p info -n1 -t sshd -t sshd-session -o cat') || die("Cannot read from journalctl");
 
 while (<F>) {
 	if (/Failed password for (|invalid user )(\s*\w*) from (\d+\.\d+\.\d+\.\d+)/) { $ip = $3; }
 	elsif (/authentication failure; .+rhost=(\d+\.\d+\.\d+\.\d+)/) { $ip = $1; }
-	elsif (/Disconnected from (\d+\.\d+\.\d+\.\d+) port \d+ \[preauth\]/) { $ip = $1; }
 	elsif (/Unable to negotiate with (\d+\.\d+\.\d+\.\d+)/) { $ip = $1; }
-	elsif (/(Connection closed by|Disconnected from) (\d+\.\d+\.\d+\.\d+) port \d+ \[preauth\]/) { $ip = $2; }
+	elsif (/(Connection closed by|Disconnected from)(| invalid user \w*) (\d+\.\d+\.\d+\.\d+) port \d+ \[preauth\]/) { $ip = $3; }
 	elsif (/Unable to negotiate with (\d+\.\d+\.\d+\.\d+) port \d+/) { $ip = $1; }
 	else { next; }
 

@@ -1,6 +1,6 @@
 pkgbase = ssshguard
 	pkgdesc = Brute force detector for SSH. Simplified version of SSHGuard. Blocks access via ipset.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://eklausmeier.goip.de/blog/2024/08-25-replacing-sshguard-with-20-lines-of-perl-code
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ssshguard
 	optdepends = ipset
 	source = ssshguard
 	source = ssshguard.service
-	md5sums = 194213cf44155f6c9e3357db230f113b
+	md5sums = 3776874b1eeaf717a1cf7b056b019272
 	md5sums = e6177b5a6ca5b70627062e77637af1a5
 
 pkgname = ssshguard
