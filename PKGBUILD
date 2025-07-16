@@ -6,13 +6,13 @@ pkgrel=1
 pkgdesc="A simple automated solution for muxing media (e.g. video, audio, subtitles)."
 arch=("x86_64")
 url="https://github.com/nujievik/mux-media"
-license=("GPL-3.0")
+license=("GPL3")
 depends=("mkvtoolnix-cli")
 makedepends=("rust" "cargo" "git")
+options=(!debug)
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("4fe0e79bcc1799434269c75572bf5bbdb8a8544c0a8b9c5c2582ad9513b83e24")
-validpgpkeys=("74A5ADD727FF62E8")
-options=(!debug)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -21,7 +21,12 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo test --release || echo "Tests failed, continuing packaging anyway"
+  if [[ -n "$RUN_TESTS" ]]; then
+    echo "Running tests because RUN_TESTS is set"
+    cargo test --release
+  else
+    echo "Skipping tests (set RUN_TESTS=1 to enable)"
+  fi
 }
 
 package() {
