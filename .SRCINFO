@@ -7,13 +7,13 @@ pkgbase = opera-ffmpeg-codecs
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = nasm
+	makedepends = mold
 	makedepends = git
 	makedepends = diffutils
 	makedepends = gcc
 	makedepends = make
 	makedepends = sed
 	depends = glibc
-	depends = mold
 	source = chromium-ffmpeg::git+https://chromium.googlesource.com/chromium/third_party/ffmpeg.git#commit=01f23648c6b84de6c0f717fa4e1816f53b9ee72e
 	source = off-opera-ffmpeg.hook
 	source = on-opera-ffmpeg.install

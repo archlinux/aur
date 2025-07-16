@@ -15,8 +15,8 @@ pkgrel=2
 pkgdesc='Add codecs to Opera by vendored ffmpeg with same sonames'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
-depends=(glibc mold) # mold is needed to filter unused funcs?
-makedepends=(nasm git
+depends=(glibc)
+makedepends=(nasm mold git  # mold is needed to filter unused funcs?
 diffutils gcc make sed) # base-devel
 # tarball has unstable csum
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
