@@ -43,9 +43,6 @@ pkgver() {
 build() {
   cd pacredir/
 
-  # https://github.com/curl/curl/pull/17790
-  CFLAGS+=' -Wno-attribute-warning'
-
   make
 }
 
