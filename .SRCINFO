@@ -1,6 +1,6 @@
 pkgbase = at-link-console-bin
 	pkgdesc = Artery AT LINK Console 是一款基于 MCU Bootloader 的命令行应用程序。支持AT32 MCU「在电路编程」Console工具
-	pkgver = 3.0.12
+	pkgver = 3.0.13
 	pkgrel = 1
 	url = https://www.arterytek.com/cn/product/AT32F403.jsp
 	install = at-link-console-bin.install
@@ -20,11 +20,11 @@ pkgbase = at-link-console-bin
 	provides = at-link-console
 	provides = AT-LINK_Console
 	conflicts = at-link-console
-	noextract = Artery_ATLINK_Console_V3.0.12.zip
+	noextract = Artery_ATLINK_Console_V3.0.13.zip
 	options = !strip
 	options = !debug
 	options = !lto
-	source = Artery_ATLINK_Console_V3.0.12.zip::https://www.arterytek.com/download/TOOL/Artery_ATLINK_Console_Linux-x86_64_V3.0.12.zip
-	sha256sums = 0e50ff99f57eccd309e44b1bf6b25aa2ee7d5072a6fcf8bb40e30f516e7b12db
+	source = Artery_ATLINK_Console_V3.0.13.zip::https://www.arterytek.com/download/TOOL/Artery_ATLINK_Console_Linux-x86_64_V3.0.13.zip
+	sha256sums = 4c384bf0cffad0e2265a8ef057408181ae627a3f9592c8b3855a92b97447eac6
 
 pkgname = at-link-console-bin
