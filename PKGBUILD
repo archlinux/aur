@@ -3,7 +3,7 @@
 
 pkgname=perl-authen-simple
 pkgver=0.5
-pkgrel=13
+pkgrel=14
 pkgdesc='Authen-Simple for Perl'
 arch=('any')
 url='https://metacpan.org/release/Authen-Simple'
