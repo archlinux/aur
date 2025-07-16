@@ -5,8 +5,5 @@
         <icon name="x-flogo_file.png"/>
         <comment>Flogo Program</comment>
         <glob pattern="*.flogo" case-sensitive="false"/>
-        <magic>
-            <match type="string" offset="0" value="flogo1"/>
-        </magic>
     </mime-type>
 </mime-info>
