@@ -7,8 +7,16 @@ pkgdesc="The GNOME Session Properties Tool"
 arch=('x86_64')
 url="https://www.gnome.org"
 license=('GPL-2.0-or-later')
-depends=('gtk3' 'hicolor-icon-theme' 'dbus-glib')
-makedepends=('gnome-common' 'gtk-doc' 'intltool')
+depends=(
+  'gtk3'
+  'hicolor-icon-theme'
+  'dbus-glib'
+)
+makedepends=(
+  'gnome-common'
+  'gtk-doc'
+  'intltool'
+)
 source=("https://download-fallback.gnome.org/sources/gnome-session/${pkgver%.*}/gnome-session-${pkgver}.tar.xz"
         # Patch too large to upload to aurweb
         'https://raw.githubusercontent.com/yochananmarqos/pkgbuilds/master/gnome-session-properties/0001-Remove-unneeded-stuff.patch'
