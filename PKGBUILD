@@ -5,7 +5,7 @@ _name1=livekit-plugins
 _plugins=(anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero speechify speechmatics spitch tavus turn-detector)
 pkgbase=python-${_name0}
 pkgname=(python-${_name0} ${_plugins[@]/#/python-${_name1}-})
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for services from Anthropic.'
                   'Agent Framework plugin for AssemblyAI.'
@@ -117,7 +117,7 @@ _repo='https://github.com/livekit/agents'
 license=('Apache-2.0')
 source=("${_repo}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
         "${_repo}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('c6de8c41bdaa1df1c303f011071a9f307e8dd2160f3e87568135337137f8e1e2'
+sha256sums=('ea98722e20849ad6793e1480ee60de91f35a235b452623e1f96ca28bed911829'
             '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
