@@ -2,7 +2,7 @@
 
 pkgbase=at32-new-clock-configuration-bin
 pkgname=at32-new-clock-configuration
-pkgver=3.0.17
+pkgver=3.0.18
 pkgrel=1
 # epoch=1
 pkgdesc="AT32 时钟配置工具是雅特力科技为方便对 AT32 系列 MCU 进行时钟配置而开发的一个图形化配置工具，其主旨是使用户清晰了解时钟路径和配置出期望的时钟频率。"
@@ -30,7 +30,7 @@ _pkg_linux=${_pkg_name}_Linux-${arch}
 _pkg_file_name=${_pkg_linux}_V${pkgver}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
 # https://www.arterytek.com/download/TOOL/AT32_New_Clock_Configuration_Linux-x86_64_V3.0.14.zip
-sha256sums=('6ba5b7413597376befdd9eaf6a4802b81fe51e1ee780c28a6def4c277bdad51c')
+sha256sums=('bbff3a1823baa13225b4029166b2d39f32c8685f85268ec999b59199bbd982ce')
 # noextract=(${_pkg_file_name}.zip)
 
 package() {
