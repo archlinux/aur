@@ -10,7 +10,7 @@ license=('LGPL-2.1-or-later')
 source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
-makedepends=(nasm git)
+makedepends=(nasm mold git) # mold: preliminary to remove unused funcs
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 
@@ -41,13 +41,13 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition ${LTOFLAGS}" \
+    --extra-cflags="-fuse-ld=mold -fno-math-errno -fno-signed-zeros -fno-semantic-interposition ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables}
 
   make install
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS \
+  gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o $_so
