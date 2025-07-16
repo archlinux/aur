@@ -1,0 +1,14 @@
+pkgbase = quantizr
+	pkgdesc = Fast library for converting RGBA images to 8-bit palette images
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/DarthSim/quantizr
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cargo-c
+	depends = gcc-libs
+	source = quantizr-1.4.3.tar.gz::https://github.com/DarthSim/quantizr/archive/refs/tags/v1.4.3.tar.gz
+	sha256sums = 83b471de2a2bb898f33bef5ab8514ae33b535f36a749ce79cdaa6d5a73558ae8
+
+pkgname = quantizr
