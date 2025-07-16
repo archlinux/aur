@@ -23,7 +23,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
   if [[ -n "$RUN_TESTS" ]]; then
     echo "Running tests because RUN_TESTS is set"
-    cargo test --release
+    cargo test --release --locked
   else
     echo "Skipping tests (set RUN_TESTS=1 to enable)"
   fi
