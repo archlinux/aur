@@ -27,6 +27,7 @@ Other changes:
 - Active tunnels are now periodically refreshed to check if the underlying tunnel was closed
 - Fix SSH agent variables being wrong on macOS when using homebrew ssh
 - Fix automatic x11 display server forward to WSL not working on Windows
+- Fix various gpg agent configuration issues
 
 [SSH Documentation](https://docs.xpipe.io/guide/ssh)
 
@@ -147,3 +148,4 @@ The HTTP API has been improved in various areas. The action system is integrated
 - Fix freeze after waking up the local system from a long hibernation
 - Fix application not starting up if some antivirus interfered with local socket connections
 - Fix kubectl apply changes functionality for pods not working
+- Fix custom workspaces not working on Linux
