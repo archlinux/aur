@@ -1,14 +1,15 @@
 pkgbase = kamakura
-	pkgdesc = Kamakura - code editor
+	pkgdesc = A simple and functional code editor
 	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/msbCyricTohoku/Kamakura--
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = qt5-tools
 	makedepends = git
 	depends = qt5-base
-	source = git+https://github.com/msbCyricTohoku/Kamakura--.git
+	depends = hicolor-icon-theme
+	source = kamakura::git+https://github.com/msbCyricTohoku/Kamakura--.git
 	sha512sums = SKIP
 
 pkgname = kamakura
