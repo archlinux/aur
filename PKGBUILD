@@ -11,6 +11,7 @@ depends=("mkvtoolnix-cli")
 makedepends=("rust" "cargo" "git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("4fe0e79bcc1799434269c75572bf5bbdb8a8544c0a8b9c5c2582ad9513b83e24")
+options=(!debug)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
