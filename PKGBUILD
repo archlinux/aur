@@ -1,7 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer@live.de> 
 
 pkgname=cryptpad-sso
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="SSO plugin for Cryptpad"
 arch=('any')
@@ -10,9 +10,9 @@ license=('AGPL-3.0-or-later')
 depends=('cryptpad')
 backup=(etc/webapps/cryptpad/sso.js)
 options=(!strip)
-source=("git+$url#tag=$pkgver"
+source=("$url/archive/$pkgver.tar.gz"
         "https://github.com/cryptpad/cryptpad/raw/main/config/sso.example.js")
-sha256sums=('10936f96a986e1b6486b6e6cbc9e52fb1dc6c239f3fe57272591a10c4936b045'
+sha256sums=('d1065bfe8f6682acbf3d06a62986043efae54eae28440d121b563bc780555955'
             'b4eb1f69fc931fc6202d9903b28052f6dbad481d6083d4263fb03830099b60bb')
 
 package() {
