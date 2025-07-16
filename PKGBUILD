@@ -2,15 +2,21 @@
 # Contributor: Matthew Murray <matt@compti.me>
 
 pkgname=mautrix-whatsapp
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later')
 # mautrix-whatsapp can be build without encription support.
-# For that libolm has to be removed from the makedepends and depends
-makedepends=(go git)
-depends=('libolm')
+# For that libolm has to be removed from the depends array
+makedepends=(
+  'go'
+  'git'
+)
+depends=(
+  'glibc'
+  'libolm'
+)
 optdepends=('ffmpeg: If you want to send gifs from Matrix')
 url="https://github.com/tulir/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
@@ -19,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   mautrix-whatsapp.service
 )
 backup=("etc/${pkgname}/mautrix-whatsapp.yaml")
-sha256sums=('8f41729529b7af76dcafe74d711d6081f6d21d04731a727db950a3333067db8f'
+sha256sums=('a1aa787d194a7f3491c2231dc9b34c5614f760b0b469caf2dcc05ad682177212'
             '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
             '2e5ecb77aa175c1ebce40a5ff560bb5ee26ed39b3d1f4cf6d62db2ad604050b4'
             '0f909a1b9170a72efc8cca5f51334b73d0e04e5346ae23b75169eaccca7574a2')
