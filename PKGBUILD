@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A multi-platform launcher for your anime games"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1')
 options=('!debug')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
-sha256sums=('f9d628131bbe53e656ba2971d9ef03e3b90754dec7f8912f40c6a2b087b2784a')
+sha256sums=('ec309bf83a840f72227ba0750c63d1d9fed544a980486e07fb85952ec7896d63')
 
 build() {
   bsdtar -x -f data.tar.gz
@@ -17,7 +17,7 @@ build() {
 
 package() {
   install -Dm755 usr/bin/twintaillauncher -t "$pkgdir/usr/bin"
-  install -Dm755 usr/lib/twintaillauncher/resources/hpatchz_kuro.exe -t "$pkgdir/usr/lib/twintaillauncher/resources"
+  install -Dm755 usr/lib/twintaillauncher/resources/krpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/hpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm644 usr/share/icons/hicolor/32x32/apps/twintaillauncher.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
   install -Dm644 usr/share/icons/hicolor/128x128/apps/twintaillauncher.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
