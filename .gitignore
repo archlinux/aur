@@ -1,5 +1,9 @@
-*.tar.gz
-*.pkg.tar.zst
-src
-pkg
-git-nautilus-icons
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
