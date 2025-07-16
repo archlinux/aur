@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Flogo
+Comment=Create and run programs using flow charts
+Exec=flogo %U
+Terminal=false
+Type=Application
+Icon=flogo.png
+MimeType=application/x-flogo
+Categories=Education
+StartupWMClass=Flogo

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-flogo">
+        <sub-class-of type="application/octet-stream"/>
+        <icon name="x-flogo_file.png"/>
+        <comment>Flogo Program</comment>
+        <glob pattern="*.flogo" case-sensitive="false"/>
+        <magic>
+            <match type="string" offset="0" value="flogo1"/>
+        </magic>
+    </mime-type>
+</mime-info>
