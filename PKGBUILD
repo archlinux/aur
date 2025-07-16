@@ -7,7 +7,10 @@ pkgdesc="Show side by side preview of markdown files"
 arch=('any')
 url="https://github.com/aliva/gedit-markdownpreview"
 license=('GPL-2.0-or-later')
-depends=('gedit' 'python-markdown')
+depends=(
+  'gedit'
+  'python-markdown'
+)
 makedepends=('git')
 optdepends=('pymdown-extensions: for extra utility')
 provides=("${pkgname%-git}")
@@ -17,11 +20,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm644 "$_pkgname.plugin" "$_pkgname.py" style.css template.html -t \
-    "$pkgdir/usr/lib/gedit/plugins/$_pkgname"
+  install -Dm644 "${_pkgname}.plugin" "${_pkgname}.py" style.css template.html -t \
+    "$pkgdir/usr/lib/gedit/plugins/${_pkgname}/"
 }
