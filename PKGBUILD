@@ -2,7 +2,7 @@
 
 pkgname=cryptpad-sso
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SSO plugin for Cryptpad"
 arch=('any')
 url="https://github.com/cryptpad/sso"
@@ -18,7 +18,7 @@ sha256sums=('d1065bfe8f6682acbf3d06a62986043efae54eae28440d121b563bc780555955'
 package() {
     install -Dm644 sso.example.js "$pkgdir/etc/webapps/cryptpad/sso.js"
 
-    cd sso
+    cd sso-${pkgver}
     install -Dm644 -t "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso" challenge.js decrees.js get-saml-metadata.js index.js sso-utils.js
 
     cp -rt "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso" client protocols
