@@ -7,10 +7,21 @@ pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmwar
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL-3.0-or-later')
-depends=('dbus' 'gtk3' 'libgudev' 'openssl' 'polkit')
-makedepends=('cargo' 'git')
-optdepends=('fwupd: Generic firmware updates'
-            'system76-firmware-daemon: System76 firmware updates')
+depends=(
+  'dbus'
+  'gtk3'
+  'libgudev'
+  'openssl'
+  'polkit'
+)
+makedepends=(
+  'cargo'
+  'git'
+)
+optdepends=(
+  'fwupd: Generic firmware updates'
+  'system76-firmware-daemon: System76 firmware updates'
+)
 conflicts=('libfirmware-manager')
 source=('git+https://github.com/pop-os/firmware-manager.git'
         "${_app_id}.policy"
@@ -21,7 +32,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -49,4 +60,3 @@ package() {
   desktop-file-edit --set-key=Exec --set-value="${pkgname%-git}" \
     "$pkgdir/usr/share/applications/${_app_id}.desktop"
 }
-

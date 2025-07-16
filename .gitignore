@@ -1,10 +1,12 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !com.system76.FirmwareManager.policy
 !firmware-manager.install
 !firmware-manager.sh
