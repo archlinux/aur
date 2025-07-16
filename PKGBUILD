@@ -1,10 +1,10 @@
-# Maintainer: adolfintel <info@fdossena.com>
+# Maintainer: fdossena <info@fdossena.com>
 
 pkgname=flogo
-pkgver=1.0.0.r129.603d29a
+pkgver=1.0.0.r129.5545504
 pkgrel=1
 pkgdesc='Create and run programs using flow charts'
-arch=('x86_64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://fdossena.com?p=flogo/index.frag"
 license=('AGPL-3.0-or-later')
 depends=('electron')
