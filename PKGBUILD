@@ -22,6 +22,10 @@ prepare() {
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   diff libavcodec/opus/dec.c{.bak,} || :
+  # soname
+  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
+  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h
+  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h
 }
 
 build() {
@@ -45,7 +49,7 @@ build() {
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a \
+    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
@@ -56,9 +60,4 @@ package(){
     ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
     ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
   done
-  # soname
-  cd ffmpeg
-  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h > "${pkgdir}"/usr/lib/${pkgname}/soname.txt
-  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h >> "${pkgdir}"/usr/lib/${pkgname}/soname.txt
-  cat "${pkgdir}"/usr/lib/${pkgname}/soname.txt
 }
