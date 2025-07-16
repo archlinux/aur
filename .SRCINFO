@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sdl3
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3) (mingw-w64)
-	pkgver = 3.2.16
+	pkgver = 3.2.18
 	pkgrel = 1
 	url = http://libsdl.org
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-sdl3
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/libsdl-org/SDL/releases/download/release-3.2.16/SDL3-3.2.16.tar.gz
-	b2sums = b39912ca801dddb9c28143971658bf1fcfb92a4dbacb2ed0157d6615cfb9c61d8924880eb449f9ef59c0d917f2142cc430ba535272054e90af903a1f9e154e89
+	source = https://github.com/libsdl-org/SDL/releases/download/release-3.2.18/SDL3-3.2.18.tar.gz
+	b2sums = 615dc401b691f088a368cc0becc731f3fecc2a0114531cdb6a29c932dc59558c1884f8cedf9aabe024c37360c79d018e1300d619de67a58389bacf4ac1128043
 
 pkgname = mingw-w64-sdl3
