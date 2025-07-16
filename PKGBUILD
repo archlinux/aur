@@ -11,12 +11,13 @@ _chromium=137.0.7151.138
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=${_chromium}.sonames${_codec}.${_format}.${_util}
-pkgrel=1
+pkgrel=2
 pkgdesc='Add codecs to Opera by vendored ffmpeg with same sonames'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
-depends=(glibc)
-makedepends=(nasm git)
+depends=(glibc mold) # mold is needed to filter unused funcs?
+makedepends=(nasm git
+diffutils gcc make sed) # base-devel
 # tarball has unstable csum
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
@@ -49,14 +50,14 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
+    --extra-cflags="-fuse-ld=mold -fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
     --prefix="${srcdir}"/release
 
   make install
   _symbols=$(cat chromium/ffmpeg.sigs | grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS \
+  gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
     lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
