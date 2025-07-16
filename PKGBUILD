@@ -3,10 +3,10 @@
 # Following: https://wiki.archlinux.org/title/Rust_package_guidelines
 # Take the commit from the releases at https://github.com/stackabletech/stackable-cockpit/releases/
 
-_commit=5c9767e99417b7cc262c45fd0102451e63a79550
+_commit=72e88c3616c16f66a52ee27bc243f145aef308d3
 pkgname=stackablectl
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 # We moved to epoch=1 because we moved from CalVer to SemVer
 epoch=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
