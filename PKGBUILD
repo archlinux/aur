@@ -11,7 +11,7 @@ license=('MIT')
 arch=('any')
 depends=('python-distribute' 'python-docutils' 'python-typing_extensions')
 optdepends=('python-pyvisa-py: Pure Python backend')
-makedepends=('python-build' 'python-installer' 'python-pkgconfig' 'python-pytest' 'python-setuptools-scm')
+makedepends=('python-build' 'python-installer' 'python-pytest' 'python-setuptools-scm')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('3da0bab73f06e1aba64a9f35b1aaee4cee1d950347b811844bb6322c5c849b52')
 
