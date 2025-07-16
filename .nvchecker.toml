@@ -1,0 +1,5 @@
+[pcsx2-stable]
+source = "git"
+git = "https://github.com/PCSX2/pcsx2.git"
+prefix = "v"
+exclude_regex = 'v[0-9]+.[13579]+.[0-9]+'

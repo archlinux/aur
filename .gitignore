@@ -1,0 +1,6 @@
+# Ignore build-only files/folders
+*
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!PKGBUILD
