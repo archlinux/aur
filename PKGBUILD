@@ -1,6 +1,6 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r1168.8355d246
+pkgver=r1552.bc8eda28
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
@@ -14,8 +14,8 @@ source=("git+https://github.com/RimSort/RimSort.git"
         "RimSort.desktop"
         "RimSort.sh")
 sha512sums=('SKIP'
-            '43aa5e5d28ec832f3a54434d66e4724c9a8fdde5098b2910911faf62a80823896a9b6d455dbe749150adf11e44126f6851bcd4cd937a3e00bb9b7f95699ca96e'
-            'b737900aa332b202ae7cf48bd2f345b8e2af7fecaf0bd606768d26d8c632843b325f173f9c39879ef8ff0e1dafebd0bbdcb28d4be6d35c3532fba807b0ac86fd')
+            'b12eaf50aa20f390fd01f71610c2993feac3fc835d49ee2ed0c3f650fcb86baeebaf50da38e0d649d9a715694662c27ea84f406ea6798eeaade67da21865c0a4'
+            '090612cebedfc3bbeb2297b4863eaad2a6d9e4b1a52fe701acf0201e1d16736b7e9314af9436ab9c19e93c0656d551ed6fd210c963d2ba2f50721c93b69de793')
 
 OPTIONS=(!strip)
 

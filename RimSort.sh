@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /opt/rimsort
-./RimSort $@
+/opt/rimsort/RimSort $@
