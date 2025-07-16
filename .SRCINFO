@@ -1,6 +1,6 @@
 pkgbase = xfce4-screensaver-git
 	pkgdesc = Screensaver for XFCE Desktop (git checkout)
-	pkgver = 0.1.10+34+g575a042
+	pkgver = 4.20.0+1+g49d1344
 	pkgrel = 1
 	url = https://docs.xfce.org/apps/screensaver/start
 	arch = x86_64
@@ -9,10 +9,13 @@ pkgbase = xfce4-screensaver-git
 	arch = aarch64
 	groups = xfce4-goodies-git
 	license = GPL2
-	makedepends = intltool
 	makedepends = systemd
 	makedepends = xfce4-dev-tools
-	makedepends = exo
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = git
+	makedepends = xmlto
+	makedepends = docbook-xml
 	depends = libxss
 	depends = libxklavier
 	depends = garcon
@@ -20,10 +23,11 @@ pkgbase = xfce4-screensaver-git
 	depends = python-gobject
 	depends = xfconf
 	depends = dbus-glib
-	provides = xfce4-screensaver=0.1.10
+	depends = libwlembed
+	depends = libxfce4windowing
+	provides = xfce4-screensaver=4.20.0
 	conflicts = xfce4-screensaver
 	source = xfce4-screensaver::git+https://gitlab.xfce.org/apps/xfce4-screensaver
 	sha256sums = SKIP
 
 pkgname = xfce4-screensaver-git
-
