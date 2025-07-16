@@ -22,7 +22,7 @@ build() {
 }
 package() {
   install -dm 755 "${pkgdir}/var/lib/homepage"
-  cp -r "$srcdir/homepage-${pkgver}" "${pkgdir}/var/lib/homepage"
+  cp -r "$srcdir/homepage-${pkgver}/." "${pkgdir}/var/lib/homepage/"
   install -Dm644 "$srcdir/homepage.service" "$pkgdir/usr/lib/systemd/system/homepage.service"
   install -Dm644 "$srcdir/homepage.sysusers" "$pkgdir/usr/lib/sysusers.d/homepage.conf"
   install -Dm644 "$srcdir/homepage.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/homepage.conf"
