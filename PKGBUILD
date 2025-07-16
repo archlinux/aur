@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=webchem
-_pkgver=1.3.0
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Chemical Information from the Web'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-vcr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('78974c1109fed732c727b543402ecd0194f35b8c6f3ec2fd27a6bc1b658a6919')
+sha256sums=('8d2323fbe1d3a5710d233ff50d75e16d2fe9cbb43062f617ee4f971feffd78f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
