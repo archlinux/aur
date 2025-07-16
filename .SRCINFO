@@ -1,6 +1,6 @@
 pkgbase = system-bridge-git
 	pkgdesc = A bridge for your systems (git version)
-	pkgver = r15.g0438bff
+	pkgver = r16.g09b8095
 	pkgrel = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = system-bridge-git
 	depends = libxtst
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
-	depends = libayatana-appindicator-glib
 	provides = system-bridge
 	conflicts = system-bridge
 	source = system-bridge-git::git+https://github.com/timmo001/system-bridge.git
