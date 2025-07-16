@@ -32,7 +32,7 @@ pkgver() {
         return 1
     }
 
-    formatted=$(echo "$version_content" | sed -E 's/-SNAPSHOT-/.SNAPSHOT./; s/-//g')
+    formatted=$(echo "$version_content" | sed -E 's/-SNAPSHOT-/.snapshot./; s/-//g')
     if [[ -z "$formatted" ]]; then
         echo "ERROR: Version transformation failed" >&2
         return 1
@@ -44,7 +44,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir"
-
     echo "Fetching latest snapshot info..."
 
     local api_response=$(curl -s "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots")
@@ -57,20 +56,20 @@ prepare() {
 
     local tarball_name=$(basename "$tarball_url")
     curl -L -o "$tarball_name" "$tarball_url"
-    tar xf "$tarball_name"
 }
+
 
 package() {
     cd "$srcdir"
-	install -d -m0755 "$pkgdir"/usr/share/$_pkgname/res
-	tar xf forge-installer-$pkgver.tar.bz2
-	cp -r res/* "$pkgdir"/usr/share/$_pkgname/res
-	install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
-	install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
-	install -Dm0644 "forge-gui-desktop-$pkgver-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/$_pkgname.jar
-  	_deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
-	_startfile="$pkgdir/usr/bin/$_pkgname.sh"
-  	install -Dm0644 /dev/stdin "$_deskfile"<<END
+    install -d -m0755 "$pkgdir"/usr/share/$_pkgname/res
+    cp -r res/* "$pkgdir"/usr/share/$_pkgname/res
+    install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
+    install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+    install -Dm0644 "forge-gui-desktop-$pkgver-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/$_pkgname.jar
+
+    _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
+    _startfile="$pkgdir/usr/bin/$_pkgname.sh"
+    install -Dm0644 /dev/stdin "$_deskfile" <<END
 [Desktop Entry]
 Name=MTG Forge (Snapshot)
 Comment=$pkgdesc
@@ -89,3 +88,4 @@ exec /usr/bin/java -Xmx1024m -jar "/usr/share/java/$_pkgname.jar"
 END
     chmod +x "$_startfile"
 }
+
