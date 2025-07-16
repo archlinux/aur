@@ -1,5 +1,5 @@
 pkgbase = opera-ffmpeg-codecs
-	pkgdesc = Add codecs to Opera by ffmpeg with same sonames
+	pkgdesc = Add codecs to Opera by vendored ffmpeg with same sonames
 	pkgver = 137.0.7151.138.sonames61.61.59
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/third_party/ffmpeg

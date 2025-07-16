@@ -12,12 +12,12 @@ url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=${_chromium}.sonames${_codec}.${_format}.${_util}
 pkgrel=1
-pkgdesc='Add codecs to Opera by ffmpeg with same sonames'
+pkgdesc='Add codecs to Opera by vendored ffmpeg with same sonames'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm git)
-# tarball is something wrong
+# tarball has unstable csum
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
 install=on-opera-ffmpeg.install
@@ -29,13 +29,12 @@ prepare() {
   cd chromium-ffmpeg
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
-  diff libavcodec/opus/dec.c{.bak,} || :
+  #diff libavcodec/opus/dec.c{.bak,} || :
   # soname
-  echo Bumping commit using sonames 
-  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h > soname.txt
-  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h >> soname.txt
-  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h >> soname.txt
-  cat soname.txt
+  echo Using ffmpeg with same sonames 
+  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
+  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h
+  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h
 }
 
 build() {
@@ -64,10 +63,8 @@ build() {
 
 package(){
   install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so"
-  # Block LD_PRELOAD even this works without it. It breaks many things.
+  # Block LD_PRELOAD which might breaks external apps
   install -Dm644 off-opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
-  # soname
-  install -Dvm644 chromium-ffmpeg/soname.txt /"${pkgdir}"/usr/lib/opera/lib_extra/soname.txt
   # symlink
   conflicts=(opera-{beta,developer}-ffmpeg-codecs)
   provides=(opera-{beta,developer}-ffmpeg-codecs)
