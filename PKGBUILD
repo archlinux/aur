@@ -1,8 +1,8 @@
 pkgname=llama-swap
 
-: ${_fragment:=tag=v139}
+: "${_fragment:=tag=v139}"
 
-pkgver=137
+pkgver=139
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
@@ -24,8 +24,6 @@ pkgver() {
 }
 
 prepare() {
-	echo $_fragment
-	exit 0
 	cd "$pkgname"
 	go mod vendor
 	pnpm -C ui install
