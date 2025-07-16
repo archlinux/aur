@@ -2,8 +2,8 @@
 
 _pkgname=stackablectl
 pkgname="${_pkgname}-bin"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 # We moved to epoch=1 because we moved from CalVer to SemVer
 epoch=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
@@ -12,7 +12,7 @@ url="https://github.com/stackabletech/stackable-cockpit/"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 source=("stackablectl-${pkgver}::https://github.com/stackabletech/stackable-cockpit/releases/download/stackablectl-${pkgver}/stackablectl-$CARCH-unknown-linux-gnu")
-b2sums=('a767473f1d641ddc3e71818cbb4dca425047fb1664430ab614425a95078c428c7c950ebcc1f1fc7c9e3f775ac372c79f377633348e512a9d222a8d61338dbf7a')
+b2sums=('2dc0fecca7f0ec2fb2d012fe171a108acc4143b8ad2eb5c89154f3dc350999f1452376bbe3c3f9307c00a3e8e436e6a688d4c75c224a6cf7e3da8abfbd63e1c1')
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
 
