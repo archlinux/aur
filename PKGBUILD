@@ -2,7 +2,7 @@
 pkgname=folder-color-caja
 _pkgname=${pkgname%-caja}
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Change your folder color in Caja"
 arch=('any')
 url="https://github.com/costales/folder-color"
@@ -34,6 +34,9 @@ build() {
 package() {
   cd "${_pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -d "$pkgdir/usr/share/icons"
+  cp -r icons/* "$pkgdir/usr/share/icons/"
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   mv "${pkgdir}${site_packages}/usr/share/caja-python" "$pkgdir/usr/share/"
