@@ -1,6 +1,6 @@
 pkgbase = mux-media
 	pkgdesc = A simple automated solution for muxing media (e.g. video, audio, subtitles).
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/nujievik/mux-media
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mux-media
 	makedepends = git
 	depends = mkvtoolnix-cli
 	options = !debug
-	source = mux-media-0.13.0.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.13.0.tar.gz
-	sha256sums = 4fe0e79bcc1799434269c75572bf5bbdb8a8544c0a8b9c5c2582ad9513b83e24
+	source = mux-media-0.13.1.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.13.1.tar.gz
+	sha256sums = a84e328da2ff912084915578e1007d1b02060aaddc24b41c11af0cf2d23e4d2f
 
 pkgname = mux-media
