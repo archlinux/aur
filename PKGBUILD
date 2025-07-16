@@ -1,16 +1,16 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_releases=(R2020b R2021a R2021b R2022a R2022b R2023a R2023b R2024a R2024b)
-_release=R2025a
+# _releases=(R2020b R2021a R2021b R2022a R2022b R2023a R2023b R2024a R2024b
+_releases=(R2025a)
 
 _name="batch"
 pkgbase="matlab-${_name}"
 pkgname=("matlab-common-${_name}" "${pkgbase}")
-# for rel in "${_releases[@]}"; do
-#   pkgname+=("matlab-${rel}-${_name}")
-# done
+for rel in "${_releases[@]}"; do
+  pkgname+=("matlab-${rel,,}-${_name}")
+done
 pkgver=2025.03.1
-pkgrel=5
+pkgrel=6
 pkgdesc="CLI tool that starts MATLAB non-interactively using a batch licensing token and any MATLAB startup options"
 arch=('x86_64')
 _url="https://github.com/mathworks-ref-arch/matlab-dockerfile"
@@ -51,7 +51,7 @@ package_matlab-common-batch() {
 
 package_matlab-batch() {
   arch=('any')
-  depends=('matlab' "matlab-common-${_name}=${pkgver}-${pkgrel}" "matlab-release>=${_release}") # "matlab-release=${_release}"
+  depends=('matlab' "matlab-common-${_name}=${pkgver}-${pkgrel}" "matlab-release>=${_releases[-1]}") # "matlab-release=${_releases[-1]}"
 
   install -vd "${pkgdir}/usr/bin"
   ln -vsf "/usr/lib/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
@@ -59,10 +59,11 @@ package_matlab-batch() {
 
 for rel in "${_releases[@]}"; do
   eval "
-package_matlab-${rel}-${_name}() {
+package_matlab-${rel,,}-${_name}() {
   pkgdesc+=' (${rel})'
   arch=('any')
   depends=('matlab-release=${rel}' 'matlab-common-${_name}=${pkgver}-${pkgrel}' 'sh')
+  provides=('${pkgbase}-release=${rel}')
 
   install -vd \"\${pkgdir}/usr/lib/${pkgbase}/${rel}\"
   ln -vsf '/usr/bin/matlab-${rel}' \"\${pkgdir}/usr/lib/${pkgbase}/${rel}/matlab\"
