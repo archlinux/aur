@@ -1,7 +1,8 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=gofarsi-bin
-pkgver=6.1.4
+pkgver=20250716_075240_837fbaf09
+_pkgver=2025.07.16-075240-837fbaf09
 pkgrel=1
 pkgdesc="Free Persian Go programming language book"
 arch=('x86_64' 'aarch64')
@@ -13,12 +14,12 @@ conflicts=('gofarsi-book')
 
 case "$CARCH" in
   x86_64)
-    _deb="book_${pkgver}_linux_amd64.deb"
-    _sha256='ea7727b1588b958990421622a57001daf719b7282a02acac057265438881f375'
+    _deb="book_${_pkgver}_linux_amd64.deb"
+    _sha256='f2efcd454c587498ddf48cfcb18702992a3d3d0deb38661683bd8730b71f830a'
     ;;
   aarch64)
-    _deb="book_${pkgver}_linux_arm64.deb"
-    _sha256='6508a35a2e1a08d66e0e5c918a91136870e03b12ec20da5a222a9e207fbc75e6'
+    _deb="book_${_pkgver}_linux_arm64.deb"
+    _sha256='1235ba30ed17f37d83b4a8c0da72e06c6e7e673751520cf6f073c7dad5f29bbc'
     ;;
   *)
     echo "Unsupported architecture: $CARCH"
@@ -26,7 +27,7 @@ case "$CARCH" in
     ;;
 esac
 
-source=("$_deb::https://github.com/GoFarsi/book/releases/download/v${pkgver}/${_deb}")
+source=("$_deb::https://github.com/GoFarsi/book/releases/download/v${_pkgver}/${_deb}")
 sha256sums=("$_sha256")
 
 package() {
