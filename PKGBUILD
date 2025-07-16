@@ -3,7 +3,7 @@
 # Maintainer: Stas Zhuk <stas.zhuk@ddev.com>
 
 pkgname='ddev-test-edge-bin'
-pkgver=1.99.19
+pkgver=1.99.20
 pkgrel=1
 pkgdesc='DDEV: a local web development environment (edge)'
 url='https://github.com/ddev/ddev'
@@ -14,11 +14,11 @@ conflicts=('ddev')
 depends=('docker' 'mkcert')
 optdepends=('bash-completion: subcommand completion support')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.99.19/ddev_linux-arm64.v1.99.19.tar.gz")
-sha256sums_aarch64=('b0782f01039cbd8768d1293e3cfd0aee7c6c5f8549516e2370785a899d442739')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.99.20/ddev_linux-arm64.v1.99.20.tar.gz")
+sha256sums_aarch64=('248ffbf742968c92ba5f91d2dd70ff778d3039b95f5134277f8647b1d3a79035')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.99.19/ddev_linux-amd64.v1.99.19.tar.gz")
-sha256sums_x86_64=('1e1953eaba971cdc4705f2b286acbddb7d20bf6fe299dae49bd01047b13a0315')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.99.20/ddev_linux-amd64.v1.99.20.tar.gz")
+sha256sums_x86_64=('bde9f2955ef484e0c5b32dcb67c29d903f6436e25a2703bbfcfe98812ef29a85')
 
 package() {
   # bin
