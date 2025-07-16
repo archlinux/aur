@@ -8,6 +8,7 @@ pkgbase = sbsondemand
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
+	depends = electron-castlab-bin
 	depends = libelectron
 	depends = nss
 	depends = gtk3
