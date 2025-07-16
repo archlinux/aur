@@ -1,0 +1,26 @@
+pkgbase = libwlembed-git
+	pkgdesc = Wayland compositor library that allows you to embed surfaces from one application into another (git checkout)
+	pkgver = 0.0.0+r299+4d37dc9
+	pkgrel = 1
+	url = https://gitlab.xfce.org/kelnos/libwlembed/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = xfce4-dev-tools
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = wlr-protocols
+	makedepends = meson
+	depends = libxfce4windowing
+	depends = wayland
+	depends = gtk-layer-shell
+	provides = libwlembed=0.0.0
+	conflicts = libwlembed
+	source = libwlembed::git+https://gitlab.xfce.org/kelnos/libwlembed/
+	sha256sums = SKIP
+
+pkgname = libwlembed-git
