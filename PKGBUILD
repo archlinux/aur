@@ -9,13 +9,14 @@ url="https://github.com/${_base}/${_base}"
 license=(BSD-2-Clause)
 arch=(any)
 depends=(python-cucumber-tag-expressions python-parse-type python-colorama)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 # checkdepends=(python-pytest-html python-path python-pyhamcrest python-mock python-assertpy)
 source=(${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('5000c4daa10b76087770e9b1c31f5f6f49ebb90414d93223da3f1224310a06316ee61ee5a4c6514625375877d95ac5fe38a50993ef482761b49d7ee807d8fe54')
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
