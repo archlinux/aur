@@ -1,5 +1,5 @@
 pkgname=m-tools
-pkgver=2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='a fast and lightweight bash-based text editing tool'
 arch=('any')
