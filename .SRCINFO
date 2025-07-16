@@ -1,6 +1,6 @@
 pkgbase = plastimatch
 	pkgdesc = Tools for medical image reconstruction and registration.
-	pkgver = main
+	pkgver = master
 	pkgrel = 2
 	url = http://plastimatch.org/
 	arch = i686
