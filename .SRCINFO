@@ -6,7 +6,7 @@ pkgbase = rbcat
 	arch = x86_64
 	groups = mcds
 	license = bsd-4-clause
-	depends = go
+	makedepends = go
 	source = https://git.minecodes.de/thies/rbcat/raw/branch/main/main.go
 	sha256sums = SKIP
 

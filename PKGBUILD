@@ -7,7 +7,7 @@ pkgdesc="A go clone of lolcat with built-in cat function."
 arch=('x86_64')
 url="https://codeberg.org/Minecodes/rbcat"
 license=('bsd-4-clause')
-depends=('go')
+makedepends=('go')
 source=("https://git.minecodes.de/thies/rbcat/raw/branch/main/main.go")
 sha256sums=('SKIP')
 
