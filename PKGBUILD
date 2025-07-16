@@ -3,7 +3,7 @@
 
 pkgname=fractouille
 _pkgname=Fractouille
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Mandelbrot in terminal"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('51e01194667b0c232fd88868a8d01a057bd4345a0979c7caa8229a316f6a47e0')
+sha256sums=('6ae92b5de43d6f9e345ffad5edacff2b424ef4cb5e263cbc76da10f7070321a0')
 
 prepare() {
   cd "$_pkgname-$pkgver"

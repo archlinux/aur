@@ -1,13 +1,13 @@
 pkgbase = fractouille
 	pkgdesc = Mandelbrot in terminal
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/PottierLoic/Fractouille
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = fractouille-1.0.2.tar.gz::https://github.com/PottierLoic/Fractouille/archive/v1.0.2.tar.gz
-	sha256sums = 51e01194667b0c232fd88868a8d01a057bd4345a0979c7caa8229a316f6a47e0
+	source = fractouille-1.0.3.tar.gz::https://github.com/PottierLoic/Fractouille/archive/v1.0.3.tar.gz
+	sha256sums = 6ae92b5de43d6f9e345ffad5edacff2b424ef4cb5e263cbc76da10f7070321a0
 
 pkgname = fractouille
