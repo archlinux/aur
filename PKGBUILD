@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 _base=behave
 pkgname=python-${_base}
-pkgver=1.2.7.dev6
+pkgver=1.2.7.dev7
 pkgrel=1
 pkgdesc="Behaviour-driven development, Python style"
 url="https://github.com/${_base}/${_base}"
@@ -12,7 +12,7 @@ depends=(python-cucumber-tag-expressions python-parse-type python-colorama)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest-html python-path python-pyhamcrest python-mock python-assertpy)
 source=(${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('cd0e643a69e25ab358f926465d0bb4b2408e88d186245245e0bb41a4e82ee41e26f18618072b84c05d886e5b4652ee452569d2d12ec25a5a9dece4f527b42ed7')
+sha512sums=('5000c4daa10b76087770e9b1c31f5f6f49ebb90414d93223da3f1224310a06316ee61ee5a4c6514625375877d95ac5fe38a50993ef482761b49d7ee807d8fe54')
 
 build() {
   cd ${_base}-${pkgver}
