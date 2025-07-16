@@ -32,7 +32,7 @@ pkgver() {
         return 1
     }
 
-    formatted=$(echo "$version_content" | sed -E 's/-SNAPSHOT-/.snapshot./; s/-//g')
+    formatted=$(echo "$version_content" | sed -E 's/-SNAPSHOT-/.SNAPSHOT./; s/-//g')
     if [[ -z "$formatted" ]]; then
         echo "ERROR: Version transformation failed" >&2
         return 1
