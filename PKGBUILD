@@ -4,7 +4,7 @@
 
 pkgname=ib-tws
 pkgver=10.38.1c
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers (IBKR)'
 arch=('x86_64')
