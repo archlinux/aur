@@ -2,18 +2,18 @@
 
 _name=openai-agents
 pkgname=python-${_name}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
 url='https://github.com/openai/openai-agents-python'
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
-sha256sums=('a697a4fdd881a7a16db8c0dcafba0f17d9e90b6236a4b79923bd043b6ae86d80')
+sha256sums=('573734f220dcc6c2713bdc400e8ffea819e3ca9ce0e5d8f37fd077f740429e35')
 depends=('python' 'python-openai' 'python-pydantic' 'python-griffe' 'python-typing_extensions' 'python-requests' 'python-mcp')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-rich' 'python-playwright' 'python-inline-snapshot' 'python-pynput' 'python-sounddevice' 'python-textual' 'python-websockets' 'python-graphviz' 'python-fastapi' 'litellm')
-optdepends=('python-numpy: voice' 'python-websockets: voice' 'python-graphviz: viz' 'litellm: litellm')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-rich' 'python-playwright' 'python-inline-snapshot' 'python-sounddevice' 'python-textual' 'python-websockets' 'python-graphviz' 'python-fastapi' 'litellm')
+optdepends=('python-numpy: voice' 'python-websockets: voice' 'python-graphviz: viz' 'litellm: litellm' 'python-websockets: realtime')
 
 prepare(){
   # Fix tests with MCP>=1.10
