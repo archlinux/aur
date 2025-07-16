@@ -1,6 +1,6 @@
 pkgbase = symdirs-bin
 	pkgdesc = A C# console application for managing links between multiple directories
-	pkgver = 1.0.1.2
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ComputerElite/SymDirs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = symdirs-bin
 	depends = libsystemd
 	depends = xdg-utils
 	replaces = sym-dirs
-	source = https://github.com/ComputerElite/SymDirs/releases/download/1.0.1.2/symdirs_linux_x64.refs.tags.1.0.1.2.tar.gz
+	source = https://github.com/ComputerElite/SymDirs/releases/download/1.0.2/symdirs_linux_x64.refs.tags.1.0.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = symdirs-bin

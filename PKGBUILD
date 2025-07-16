@@ -1,6 +1,6 @@
 # Maintainer: ComputerElite <ComputerElite.dev@gmail.com>
 pkgname=symdirs-bin
-pkgver=1.0.1.2
+pkgver=1.0.2
 pkgrel=1
 replaces=("sym-dirs")
 pkgdesc="A C# console application for managing links between multiple directories"
