@@ -3,6 +3,8 @@ Module: urllib.parse
     open_webui/config.py
     open_webui/main.py
     open_webui/retrieval/loaders/youtube.py
+    open_webui/retrieval/models/external.py
+    open_webui/retrieval/utils.py
     open_webui/retrieval/vector/dbs/qdrant.py
     open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
     open_webui/retrieval/web/firecrawl.py
@@ -11,8 +13,11 @@ Module: urllib.parse
     open_webui/retrieval/web/serpapi.py
     open_webui/retrieval/web/serply.py
     open_webui/retrieval/web/utils.py
+    open_webui/routers/audio.py
     open_webui/routers/files.py
+    open_webui/routers/images.py
     open_webui/routers/ollama.py
+    open_webui/routers/openai.py
     open_webui/utils/images/comfyui.py
     open_webui/utils/redis.py
 Module: pydantic
@@ -86,6 +91,7 @@ Module: sqlalchemy
     open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
     open_webui/migrations/versions/c69f45358db4_add_folder_table.py
     open_webui/migrations/versions/ca81bd47c050_add_config_table.py
+    open_webui/migrations/versions/d31026856c01_update_folder_table_data.py
     open_webui/models/auths.py
     open_webui/models/channels.py
     open_webui/models/chats.py
@@ -267,6 +273,9 @@ Module: starlette.responses
     open_webui/utils/chat.py
     open_webui/utils/middleware.py
     open_webui/utils/oauth.py
+Module: starlette.datastructures
+  Imported in:
+    open_webui/main.py
 Module: open_webui.utils
   Imported in:
     open_webui/main.py
@@ -511,6 +520,7 @@ Module: open_webui.env
     open_webui/routers/utils.py
     open_webui/socket/main.py
     open_webui/storage/provider.py
+    open_webui/tasks.py
     open_webui/utils/audit.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
@@ -558,6 +568,7 @@ Module: open_webui.utils.access_control
     open_webui/models/notes.py
     open_webui/models/prompts.py
     open_webui/models/tools.py
+    open_webui/retrieval/utils.py
     open_webui/routers/auths.py
     open_webui/routers/channels.py
     open_webui/routers/chats.py
@@ -570,6 +581,7 @@ Module: open_webui.utils.access_control
     open_webui/routers/prompts.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
+    open_webui/socket/main.py
     open_webui/utils/models.py
 Module: open_webui.utils.auth
   Imported in:
@@ -630,6 +642,7 @@ Module: open_webui.utils.redis
 Module: open_webui.tasks
   Imported in:
     open_webui/main.py
+    open_webui/socket/main.py
     open_webui/utils/middleware.py
 Module: open_webui.utils.telemetry.setup
   Imported in:
@@ -729,6 +742,10 @@ Module: redis.asyncio
   Imported in:
     open_webui/tasks.py
     open_webui/utils/redis.py
+Module: authlib.integrations.starlette_client
+  Imported in:
+    open_webui/config.py
+    open_webui/utils/oauth.py
 Module: chromadb
   Imported in:
     open_webui/config.py
@@ -754,12 +771,10 @@ Module: alembic
     open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
     open_webui/migrations/versions/c69f45358db4_add_folder_table.py
     open_webui/migrations/versions/ca81bd47c050_add_config_table.py
+    open_webui/migrations/versions/d31026856c01_update_folder_table_data.py
 Module: alembic.config
   Imported in:
     open_webui/config.py
-Module: authlib.integrations.starlette_client
-  Imported in:
-    open_webui/utils/oauth.py
 Module: authlib.oidc.core
   Imported in:
     open_webui/utils/oauth.py
@@ -848,6 +863,11 @@ Module: concurrent.futures
     open_webui/retrieval/utils.py
     open_webui/retrieval/vector/dbs/pinecone.py
     open_webui/routers/audio.py
+    open_webui/utils/middleware.py
+Module: open_webui.models.folders
+  Imported in:
+    open_webui/routers/chats.py
+    open_webui/routers/folders.py
     open_webui/utils/middleware.py
 Module: open_webui.routers.tasks
   Imported in:
@@ -958,6 +978,9 @@ Module: opentelemetry.sdk.resources
 Module: opentelemetry.exporter.otlp.proto.grpc.trace_exporter
   Imported in:
     open_webui/utils/telemetry/setup.py
+Module: opentelemetry.exporter.otlp.proto.http.trace_exporter
+  Imported in:
+    open_webui/utils/telemetry/setup.py
 Module: open_webui.utils.telemetry.exporters
   Imported in:
     open_webui/utils/telemetry/setup.py
@@ -967,9 +990,18 @@ Module: open_webui.utils.telemetry.instrumentors
 Module: open_webui.utils.telemetry.metrics
   Imported in:
     open_webui/utils/telemetry/setup.py
+Module: pycrdt
+  Imported in:
+    open_webui/socket/main.py
+    open_webui/socket/utils.py
 Module: open_webui.models.channels
   Imported in:
     open_webui/routers/channels.py
+    open_webui/socket/main.py
+Module: open_webui.models.notes
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/notes.py
     open_webui/socket/main.py
 Module: open_webui.socket.utils
   Imported in:
@@ -1153,16 +1185,15 @@ Module: open_webui.models.tags
     open_webui/models/chats.py
     open_webui/models/messages.py
     open_webui/routers/chats.py
+Module: sqlalchemy.sql.expression
+  Imported in:
+    open_webui/models/chats.py
 Module: open_webui.routers.files
   Imported in:
     open_webui/routers/images.py
 Module: open_webui.utils.images.comfyui
   Imported in:
     open_webui/routers/images.py
-Module: open_webui.models.folders
-  Imported in:
-    open_webui/routers/chats.py
-    open_webui/routers/folders.py
 Module: black
   Imported in:
     open_webui/routers/utils.py
@@ -1171,6 +1202,7 @@ Module: open_webui.utils.pdf_generator
     open_webui/routers/utils.py
 Module: open_webui.models.knowledge
   Imported in:
+    open_webui/retrieval/utils.py
     open_webui/routers/files.py
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
@@ -1214,6 +1246,9 @@ Module: tiktoken
   Imported in:
     open_webui/routers/retrieval.py
 Module: langchain.text_splitter
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: langchain_text_splitters
   Imported in:
     open_webui/routers/retrieval.py
 Module: langchain_core.documents
@@ -1337,9 +1372,6 @@ Module: open_webui.retrieval.models.external
 Module: open_webui.models.feedbacks
   Imported in:
     open_webui/routers/evaluations.py
-Module: open_webui.models.notes
-  Imported in:
-    open_webui/routers/notes.py
 Module: open_webui.models.prompts
   Imported in:
     open_webui/routers/prompts.py
@@ -1540,10 +1572,10 @@ Module: playwright.sync_api
 Module: playwright.async_api
   Imported in:
     open_webui/retrieval/web/utils.py
-Module: duckduckgo_search
+Module: ddgs
   Imported in:
     open_webui/retrieval/web/duckduckgo.py
-Module: duckduckgo_search.exceptions
+Module: ddgs.exceptions
   Imported in:
     open_webui/retrieval/web/duckduckgo.py
 Module: requests.auth

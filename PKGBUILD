@@ -2,7 +2,7 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.6.14
+pkgver=0.6.16
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
@@ -27,6 +27,7 @@ depends=(python
         python-certifi
         python-chromadb
         python-colbert-ai
+        python-pycrdt
         python-datasets
         python-dotenv
         python-duckduckgo-search
@@ -43,6 +44,7 @@ depends=(python
         python-langchain
         python-langchain-community
         python-langchain-core
+        python-langchain-text-splitters
         python-ldap3
         python-loguru
         python-markdown
@@ -50,6 +52,7 @@ depends=(python
         python-opensearch
         python-opentelemetry-api
         python-opentelemetry-exporter-otlp-proto-grpc
+        python-opentelemetry-exporter-otlp-proto-http
         python-opentelemetry-instrumentation
         python-opentelemetry-instrumentation-httpx
         python-opentelemetry-instrumentation-logging
@@ -97,12 +100,12 @@ depends=(python
 makedepends=('git' 'npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui')
-source=("git+${url}#commit=b5f4c85bb196c16a775802907aedd87366f58b0f"
+source=("git+${url}#commit=f966935d1da56a1f9f8691c1f62d68eecc0438fa"
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
 
-b2sums=('f57cc1fd728be856411771332ed5be1a5bcdb65095b70a7ce40d169c5d5d1b617fd34ae823782a18332e79078e9e7c963fdb72fd02aa474613d4422d7ff543a7'
+b2sums=('3c4beba29d747b58a871efc2964625301c85a37f0f25d818cb69f89d299c71d1951bc43ee7fa9db14e0bd57583c35e2fc46d2ce68980392b9f74e644b984270d'
         '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
         'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
         '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')
