@@ -1,6 +1,6 @@
 pkgname=sbsondemand
 _pkgname=SBSonDemand
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Unofficial SBS on Demand desktop app."
 arch=('x86_64' 'arm7h' 'aarch64')
@@ -9,11 +9,11 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('62f09d0de0233c951378ab41f77ec394e1ef036bdda6c3012e2d37d2d771ea37')
+sha256sums=('ddc011dadb43498fb74e20a625b86ba396fd57ed20c682bbd48ab307b329cda3')
 
 package() {
     cd "$srcdir/application-$pkgver"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -22,7 +22,8 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/usr/bin/electroncastlab" "$pkgdir/opt/$_pkgname/electron"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
