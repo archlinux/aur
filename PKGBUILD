@@ -2,7 +2,7 @@
 
 _package_name=capter
 pkgname="$_package_name"
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 epoch=
 pkgdesc="Cross-Platform Screen Capture and Annotation Tool"
