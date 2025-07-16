@@ -1,7 +1,7 @@
 pkgbase = turboprint
 	pkgdesc = High-quality printer driver system for Linux
-	pkgver = 2.57.1
-	pkgrel = 3
+	pkgver = 2.58.1
+	pkgrel = 1
 	url = http://www.turboprint.info/
 	install = turboprint.install
 	arch = i686
@@ -36,10 +36,10 @@ pkgbase = turboprint
 	sha256sums = de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f
 	sha256sums = a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad
 	sha256sums = 6123cfea355a0e308e1f5bab357450399670dde45d6ed367c13da38c53a871fb
-	source_i686 = https://www.zedonet.com/download/tp2/turboprint-2.57-1.i586.tgz
+	source_i686 = https://www.zedonet.com/download/tp2/turboprint-2.58-1.i586.tgz
 	md5sums_i686 = ce10ba1927a0143057e8613cd63fe9e1
 	sha256sums_i686 = 7154b1bc66fd6a629eb5760f1a5b79dd2c64ee45d6ec6d70cb45d52d0fb5fe9a
-	source_x86_64 = https://www.zedonet.com/download/tp2/turboprint-2.57-1.x86_64.tgz
+	source_x86_64 = https://www.zedonet.com/download/tp2/turboprint-2.58-1.x86_64.tgz
 	md5sums_x86_64 = 2d7977b4e91d9d1f4dd27e7d888f496b
 	sha256sums_x86_64 = f62b9caeb5d820fb249161cd9273e88f6740589deada1a4a37e432eb144d8302
 
