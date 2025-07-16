@@ -6,7 +6,11 @@ pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions
 arch=('x86_64')
 url="https://fvm.app"
 license=('MIT')
-depends=('git' 'glibc' 'unzip')
+depends=(
+  'git'
+  'glibc'
+  'unzip'
+)
 makedepends=('dart')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/$pkgver.tar.gz")
