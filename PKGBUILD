@@ -1,14 +1,14 @@
 # Maintainer: kamisaki
 # Description: Terminal üzerinden Türkçe anime izleme aracı
-
 pkgname=anitr-cli
-pkgver=3.6.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Terminal üzerinden Türkçe anime izleme aracı"
 arch=('x86_64')
 url="https://github.com/xeyossr/anitr-cli"
 license=('GPL3')
 depends=('mpv')
+makedepends=('go' 'git')
 
 optdepends=(
     'rofi: for --rofi mode (recommended for X11 users)'
@@ -17,10 +17,18 @@ optdepends=(
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}-${pkgrel}::https://github.com/xeyossr/anitr-cli/releases/download/v${pkgver}-${pkgrel}/anitr-cli")
-noextract=("${pkgname}-${pkgver}-${pkgrel}")
+source=(
+    "git+https://github.com/xeyossr/anitr-cli.git#tag=v${pkgver}"
+)
 sha256sums=('SKIP')
 
+build() {
+    cd "$srcdir/${pkgname}"
+    go mod tidy
+    go build -o anitr-cli
+}
+
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${pkgrel}" "${pkgdir}/usr/bin/${pkgname}"
+    cd "$srcdir/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}/anitr-cli" "${pkgdir}/usr/bin/${pkgname}"
 }
