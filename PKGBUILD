@@ -2,7 +2,7 @@
 
 pkgname=zig-waybar-contrib
 pkgver=1.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Waybar modules built with Zig"
 arch=('x86_64')
 url="https://github.com/erffy/zig-waybar-contrib"
@@ -29,5 +29,6 @@ package() {
     install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-${bin}-bin"
   done
 
+  install -Dm644 "$srcdir/$pkgname/config.waybar.json" "$pkgdir/etc/zig-waybar-contrib/config.json"
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
