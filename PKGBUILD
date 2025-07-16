@@ -15,14 +15,6 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-rich' 'python-playwright' 'python-inline-snapshot' 'python-sounddevice' 'python-textual' 'python-websockets' 'python-graphviz' 'python-fastapi' 'litellm')
 optdepends=('python-numpy: voice' 'python-websockets: voice' 'python-graphviz: viz' 'litellm: litellm' 'python-websockets: realtime')
 
-prepare(){
-  # Fix tests with MCP>=1.10
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
-  sed -i 's/"type":"text","text":"result_test_tool_1_{}","annotations":null/"type":"text","text":"result_test_tool_1_{}","annotations":null,"meta":null/g' tests/mcp/test_mcp_tracing.py
-  sed -i 's/"type":"text","text":"result_test_tool_2_{}","annotations":null/"type":"text","text":"result_test_tool_2_{}","annotations":null,"meta":null/g' tests/mcp/test_mcp_tracing.py
-  sed -i 's/"type":"text","text":"result_test_tool_3_{}","annotations":null/"type":"text","text":"result_test_tool_3_{}","annotations":null,"meta":null/g' tests/mcp/test_mcp_tracing.py
-}
-
 build() {
   cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m build --wheel --no-isolation
