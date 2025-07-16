@@ -1,24 +1,32 @@
 pkgbase = xuantie-900-llvm-toolchain-bin
-	pkgver = 2.0.1
-	pkgrel = 2
-	url = https://www.xrvm.cn/community/download?id=4382929556173033472
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.xrvm.cn/community/download?id=4453625117213265920
 	arch = x86_64
 	license = unknown
-	noextract = xuantie-900-llvm-elf-newlib-bin-2.0.1.tar.gz
-	noextract = xuantie-900-llvm-linux-glibc-bin-2.0.1.tar.gz
+	noextract = xuantie-900-llvm-elf-newlib-bin-2.1.0.tar.gz
+	noextract = xuantie-900-llvm-linux-6.6.0-glibc-bin-2.1.0.tar.gz
 	options = !strip
-	source = xuantie-900-llvm-elf-newlib-bin-2.0.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732890326920/Xuantie-900-llvm-elf-newlib-x86_64-V2.0.1-20241121.tar.gz
-	source = xuantie-900-llvm-linux-glibc-bin-2.0.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732893794797/Xuantie-900-llvm-linux-6.6.0-glibc-x86_64-V2.0.1-20241121.tar.gz
-	sha256sums = 4e71a6efd86203a180775be78068204e21c12dfcc400bf221b2d8f41da101f5c
-	sha256sums = 2359597e3b88fb5817bb894d6c82e15d62f8575abc82bad7e1a53678dca377cc
+	source = xuantie-900-llvm-elf-newlib-bin-2.1.0.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1749717040975/Xuantie-900-llvm-elf-newlib-x86_64-V2.1.0-20250522.tar.gz
+	source = xuantie-900-llvm-linux-6.6.0-glibc-bin-2.1.0.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1749717539068/Xuantie-900-llvm-linux-6.6.0-glibc-x86_64-V2.1.0-20250522.tar.gz
+	source = ReleaseNote 2.1.0.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1749715591203/ReleaseNote.pdf
+	source = XuanTieCustomExtensionV0.9.0 2.1.0.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1750149606783/XuanTieCustomExtensionV0.9.0.pdf
+	sha256sums = fd816ec367cf70c35338c47cf071bf8a5d1467bdf2e1d21aa736b209ef4cff4e
+	sha256sums = ddbb415d91518ec6480b1bf75db0f427ba72a5d0a69db68453f6470576c0ea34
+	sha256sums = 7ca9d4d042acff682e660bfe9440e5610c21df7621273eeb1a38c185da630eb4
+	sha256sums = 6814ddaf4c7e016dc7fe5b228bc2299b99a04425ee1d3970060c51f4b9fe3400
 
 pkgname = xuantie-900-llvm-toolchain-bin
 	pkgdesc = Xuantie 900 LLVM toolchain
 	depends = xuantie-900-llvm-elf-newlib-bin
-	depends = xuantie-900-llvm-linux-glibc-bin
+	depends = xuantie-900-llvm-linux-6.6.0-glibc-bin
+	depends = xuantie-900-llvm-manual
 
 pkgname = xuantie-900-llvm-elf-newlib-bin
 	pkgdesc = Xuantie 900 LLVM elf newlib toolchain
 
-pkgname = xuantie-900-llvm-linux-glibc-bin
-	pkgdesc = Xuantie 900 LLVM glibc toolchain
+pkgname = xuantie-900-llvm-linux-6.6.0-glibc-bin
+	pkgdesc = Xuantie 900 LLVM glibc toolchain targeting platform linux 6.6.0
+
+pkgname = xuantie-900-llvm-manual
+	pkgdesc = Xuantie 900 LLVM manual
