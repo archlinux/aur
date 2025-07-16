@@ -1,5 +1,5 @@
 pkgname=electron-castlab-bin
-pkgver=v36.4.0+wvcus
+pkgver=v37.2.2+wvcus
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/castlabs/electron-releases"
@@ -14,9 +14,9 @@ depends=(c-ares
          nss
          zlib)
 pkgdesc="Electron for Content Security (ECS) is a fork of Electron created by castLabs to facilitate the use of Google's Widevine Content Decryption Module (CDM) for DRM-enabled playback within Electron"
-sha256sums=('fa8028a9a667299b4f33cab977647e6572558f1390389945ccf4db565f7d3129'
+sha256sums=('fc936e5aa0f1aac5ad97bd42d0685233e156ba789d24a4899e0641261f5a9a6f'
             'b3be2089b97573fc4bd8e5e9b9ded130c9b8c665eeee73d6fde78f1fbbdca0b6')
-sha256sums_x86_64=('16e12e27df1f7b54c830dc6aae20c02491d183e67972b8074c2ceb5076845847')
+sha256sums_x86_64=('70fe1a1aaf06768a6c3fdec7389ccebcf9b8796e0da94315312045051b902e12')
 source_x86_64=("https://github.com/castlabs/electron-releases/releases/download/$pkgver/electron-$pkgver-linux-x64.zip")
 source=("electroncastlab" "electroncastlab.desktop")
 
@@ -27,7 +27,6 @@ package() {
     cd "$srcdir"
     cp -r "$srcdir"/* "$pkgdir/usr/lib/electron-castlab"
     install -Dm755 "$srcdir/electroncastlab" "$pkgdir/usr/bin/electroncastlab"
-    #ln -s /usr/lib/electron-castlab/electron "$pkgdir/usr/bin/electroncastlab"
 
    # Desktop Entry
    install -Dm644 "$srcdir/electroncastlab.desktop" \
