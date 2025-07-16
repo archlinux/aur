@@ -2,6 +2,7 @@ pkgbase = digi-ttf
 	pkgdesc = lowercase only pixel font
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://github.com/danapixels/digi-ttf.git
 	arch = any
 	license = GPL3
 	noextract = digi.ttf
