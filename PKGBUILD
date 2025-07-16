@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-fuzzy-app-search-git
-_uuid=gnome-fuzzy-app-search@gnome-shell-extensions.Czarlie.gitlab.com
-pkgver=5.0.15.r0.g595fada
+pkgver=5.1.0.r3.gb94e37b
 pkgrel=1
 pkgdesc="Fuzzy application search results for Gnome Search"
 arch=('any')
@@ -16,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd gnome-fuzzy-app-search
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
