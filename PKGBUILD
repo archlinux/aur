@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=138.0.7204.92
+pkgver=138.0.7204.157
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
@@ -29,7 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('43b770d9ac36220949317482b601c41eaf393d7efc528b59d635bd1e0d3f90de'
+sha256sums=('21867c081656dacf2958c6179a54e3462a5ea2eb0a0b2c3443e13c0b99aca5e4'
             'bafb04282db0ae19d4e42e022fdccfafb424f18406e5b893475dc18bf4bd8f9e'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
