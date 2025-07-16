@@ -5,7 +5,7 @@
 _pkgname=langchain-core
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.3.68
+pkgver=0.3.69
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=(python-jsonpatch python-langsmith python-packaging python-pydantic python-pyyaml python-tenacity python-typing_extensions)
 makedepends=('python-build' 'python-installer' 'python-pdm-backend' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('1de4fa0b42f5a6fa17952a781e83270a6a4a5c0cdc5a920e4db7d57663a8de2f11ac384088be6d3c1c3cb5439085f25e532ff64c6247c27292fd54a82ddcd91a')
+b2sums=('e021681b7b705540294a355c82abf34a2e659738d76b326eea1f995f31560207644b0f496e0c8f177641054076d528ef467d059472e0b9a567db19fea9d59718')
 
 build() {
     cd "${_pipname}-${pkgver}"
