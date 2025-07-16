@@ -14,12 +14,8 @@ depends=(
   'python-mutagen'
   'python-pillow'
 )
-makedepends=(
-  'meson'
-)
-checkdepends=(
-  'appstream-glib'
-)
+makedepends=('meson')
+checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('33730497879b42051ccff2ebd9cff67bbfb48d3a78c36a1e8097acdfe10aa39a')
 
@@ -29,9 +25,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
