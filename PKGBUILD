@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gedit-plugin-markdown_preview-git
 pkgver=r182.1c3da56
 pkgrel=1
