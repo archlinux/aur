@@ -1,7 +1,7 @@
 # Maintainer: Benedikt Vollmerhaus <benedikt[at]vollmerhaus[dot]org>
 
 pkgname=agesafetch
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A tool for obtaining your firmware's embedded AGESA version on Linux."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 
 makedepends=('cargo')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('311c3fabf3cf65783cde785c430cfdae4e12368c3fed3b18d03551f3b5737cdd05fb7499333431d36710f3424a6669fa2a4982cde376572d799920ead04ee5fb')
+b2sums=('805b1054acae35924dafc4c4e74aa3096b290a8f45f2209bd7b21e5028c9cb403f06d83efa824a1e799595c3ce0b3814283600d19b22892a628a7b578bb33a1b')
 
 prepare() {
   cd "${pkgname}-v${pkgver}" || exit
