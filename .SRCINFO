@@ -1,5 +1,5 @@
 pkgbase = in-editor
-	pkgdesc = small CLI text editor. Based on ed
+	pkgdesc = small CLI text editor. Inspired by ed
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Ho1Ai/in
