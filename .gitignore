@@ -1,9 +1,9 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!net.davidotek.pupgui2.sh
 !.nvchecker.toml
+!LICENSE
