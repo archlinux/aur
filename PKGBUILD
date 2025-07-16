@@ -2,13 +2,13 @@
 
 pkgname=mux-media
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple automated solution for muxing media (e.g. video, audio, subtitles)."
 arch=("x86_64")
 url="https://github.com/nujievik/mux-media"
 license=("GPL3")
 depends=("mkvtoolnix-cli")
-makedepends=("rust" "cargo" "git")
+makedepends=("git" "rustup")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
