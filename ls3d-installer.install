@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> Running Learnspace 3D installer..."
+  /usr/bin/ls3d-install
+}
