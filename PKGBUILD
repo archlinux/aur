@@ -6,16 +6,17 @@
 
 pkgname=multimarkdown
 pkgver=6.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
 url="http://fletcherpenney.net/multimarkdown/"
 license=("GPL2" "MIT")
 depends=("bash")
-makedepends=("git" "glib2" "cmake")
+makedepends=("git" "glib2" "cmake>=3.5.0")
 optdepends=("texlive-core: LaTeX and PDF output support")
 options=(!buildflags)
-source=("multimarkdown::git+https://github.com/fletcher/MultiMarkdown-6.git#tag=$pkgver")
+#source=("multimarkdown::git+https://github.com/fletcher/MultiMarkdown-6.git#tag=$pkgver")
+source=("multimarkdown::git+https://github.com/fletcher/MultiMarkdown-6.git#commit=8b81672c2355c41296773ece36077558b3fe7adf")
 sha1sums=("SKIP")
 
 prepare() {
