@@ -1,6 +1,6 @@
 pkgbase = system-bridge-git
 	pkgdesc = A bridge for your systems (git version)
-	pkgver = r27.gf438414
+	pkgver = r28.g2c745f2
 	pkgrel = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = x86_64
