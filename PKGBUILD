@@ -1,17 +1,20 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly-git
-pkgver=0.6.15.r2.g07a81ee2
+pkgver=0.8.16.r1.g6e641c15d
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers (git version)'
 arch=('x86_64')
 url='https://earthly.dev/'
-license=('MPL2')
-depends=('docker')
-makedepends=('git' 'go')
+license=('MPL-2.0')
+depends=(
+    'docker'
+    'glibc')
+makedepends=(
+    'git'
+    'go')
 provides=('earthly')
 conflicts=('earthly')
-BUILDENV+=('!check')
 source=('git+https://github.com/earthly/earthly.git')
 sha256sums=('SKIP')
 
@@ -38,10 +41,10 @@ build() {
     go build -tags "$_tags" -ldflags "$_ldflags" -o build ./cmd/...
 }
 
-check() {
-    cd earthly
-    go test ./...
-}
+#check() {
+#    cd earthly
+#    go test ./...
+#}
 
 package() {
     install -D -m755 earthly/build/earthly -t "${pkgdir}/usr/bin"

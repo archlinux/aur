@@ -1,13 +1,14 @@
 pkgbase = earthly-git
 	pkgdesc = A build automation tool that executes in containers (git version)
-	pkgver = 0.6.15.r2.g07a81ee2
+	pkgver = 0.8.16.r1.g6e641c15d
 	pkgrel = 1
 	url = https://earthly.dev/
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = git
 	makedepends = go
 	depends = docker
+	depends = glibc
 	provides = earthly
 	conflicts = earthly
 	source = git+https://github.com/earthly/earthly.git
