@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-custom-accent-colors-git
 _uuid=custom-accent-colors@demiskp
 pkgver=11.r2.ga5678ae
