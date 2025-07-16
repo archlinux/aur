@@ -7,7 +7,11 @@ arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('cmake' 'go' 'git')
+makedepends=(
+  'cmake'
+  'go'
+  'git'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b146072559c45e30451232eabdcb626ba3b153a139a7520b7be19f1d0cc87197')
 
@@ -33,6 +37,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
