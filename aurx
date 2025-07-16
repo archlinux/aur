@@ -17,18 +17,20 @@
 
 
 # Metadata.
-POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest")
+INTERNAL_VERSION="1.0.3-1"
+POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest" "version")
 GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "-p" "--persistent-path" "-t" "--tmp-path" "-v" "--verbosity")
 INSTALL_OPTIONS=("-c" "--cleanup" "-C" "--clean-operation" "-d" "--download-only" "-x" "--comparison-criteria" "-M" "--makepkg-opts" "-V" "-W" "--overwrite-existing" "-w" "-s" "--source-path" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
 UPDATE_OPTIONS=("-k" "--keep-sources" "-K" "--keep-failed-sources" "-B" "--block-overwrite" "-x" "--comparison-criteria" "-M" "--makepkg-opts")
 SEARCH_OPTIONS=("-r" "--search-results" "-S" "--search-criteria" "-b" "--sort-by" "-o" "--order-by" "-z" "--output" "-O" "--no-out-of-date" "-m" "--maintained" "-i" "--no-mark-installed" "-u" "--no-mark-update" "-P" "--parallel")
-SUGGEST_OPTIONS=("-r" "--search-results" "-o" "--order-by")
+SUGGEST_OPTIONS=("-r" "--search-results" "-o" "--order-by" "-z" "--output")
 COMPLETION_OPTIONS=("-e" "--executable-name")
 LIST_OPTIONS=("-u" "--no-mark-update" "-P" "--parallel" "-i" "--no-mark-installed")
 AVAILABLE_COMPLETIONS=("bash")
 COMPARISON_CRITERIA_VALUES=("rpc" "pkgbuild")
-OUTPUT_VALUES=("formatted" "json")
+OUTPUT_VALUES=("formatted" "json" "json-lines")
+OUTPUT_SUGGEST_VALUES=("formatted" "json-lines")
 ORDER_BY_VALUES=("ascending" "descending")
 SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends" "makedepends" "maintainer" "submitter" "provides" "conflicts" "replaces" "keywords" "groups" "comaintainers")
 SORT_BY_VALUES=("firstsubmitted" "lastmodified" "votes" "popularity")
@@ -98,6 +100,7 @@ usage() {
 		  suggest       completion results via the AUR HTTP RPC API.
 		  completion    generate completion for the specified shell.
 		  list          search for all locally installed AUR packages.
+		  version       display current version and exit.
 		
 		Options:
 		  general:
@@ -132,7 +135,7 @@ usage() {
 		  -o, --order-by [ORDER]                how to order search results. ("descending")
 		                                        "ascending", "descending".
 		  -z, --output [TYPE]                   how to output search results. ("formatted")
-		                                        "formatted", "json".
+		                                        "formatted", "json", "json-lines".
 		  -P, --parallel [COUNT]                how many requests to do simultaneously. (50)
 		  -r, --search-results [COUNT]          number of results to display from search queries. (20)
 		  -S, --search-criteria [CRITERIA]      criteria to use in search queries. ("name")
@@ -148,6 +151,8 @@ usage() {
 		  -o, --order-by [ORDER]                how to order search results. ("descending")
 		                                        "ascending", "descending".
 		  -r, --search-results [COUNT]          number of results to suggest, max 20. (20)
+		  -z, --output [TYPE]                   how to output suggest results. ("formatted")
+		                                        "formatted", "json-lines".
 		
 		  update:
 		  -B, --block-overwrite                 don't overwrite existing sources.
@@ -284,12 +289,16 @@ print_error() {
 			;;
 		75 )
 			echo "[-] Unknown output: \"${OUTPUT}\"."
-			echo "[i] Possible options are: formatted, json."
+			echo "[i] Possible options are: formatted, json-lines, json."
 			;;
 		76 )
 			local TEMP_PACKAGES
 			TEMP_PACKAGES="${PACKAGES_NOT_FOUND[*]}"
 			echo "[!] Could not find ${TEMP_PACKAGES//\ /,\ }."
+			;;
+		77 )
+			echo "[!] The suggest operation can not output json."
+			echo "[i] Possible options are: formatted, json-lines."
 			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}."
@@ -318,6 +327,7 @@ aurx_completion() {
 				        local AVAILABLE_COMPLETIONS="${AVAILABLE_COMPLETIONS[*]}"
 				        local COMPARISON_CRITERIA_VALUES="${COMPARISON_CRITERIA_VALUES[*]}"
 				        local OUTPUT_VALUES="${OUTPUT_VALUES[*]}"
+				        local OUTPUT_SUGGEST_VALUES="${OUTPUT_SUGGEST_VALUES[*]}"
 				        local ORDER_BY_VALUES="${ORDER_BY_VALUES[*]}"
 				        local SEARCH_CRITERIA_VALUES="${SEARCH_CRITERIA_VALUES[*]}"
 				        local SORT_BY_VALUES="${SORT_BY_VALUES[*]}"
@@ -343,15 +353,16 @@ aurx_completion() {
 				                COMPREPLY=( \$(compgen -W "\${SEARCH_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--comparison-criteria" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${COMPARISON_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--output" ]]; then
+				        elif [[ \${LAST_WORD} == "--output" ]] && [[ \${COMP_WORDS[*]} =~ " search " ]]; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--output" ]] && [[ \${COMP_WORDS[*]} =~ " suggest " ]]; then
+				                COMPREPLY=( \$(compgen -W "\${OUTPUT_SUGGEST_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--order-by" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${ORDER_BY_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--sort-by" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${SORT_BY_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--source-path" ]] || [[ \${LAST_WORD} == "--persistent-path" ]] \
-				                || [[ \${LAST_WORD} == "--tmp-path" ]]; then
-						COMPREPLY=( \$(compgen -d -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--source-path" ]] || [[ \${LAST_WORD} == "--persistent-path" ]] || [[ \${LAST_WORD} == "--tmp-path" ]]; then
+				                COMPREPLY=( \$(compgen -d -- "\${CURRENT_WORD}") )
 				        elif [[ -z \$(echo \${COMP_WORDS[*]} \${POSSIBLE_OPERATIONS[*]} | tr " " "\n" | sort | uniq -D) ]]; then
 				                COMPREPLY=( \$(compgen -W "\${POSSIBLE_OPERATIONS}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${#CURRENT_WORD} -ge 3 ]] && [[ ! -z \$(echo \${COMP_WORDS[*]} " install search " | tr " " "\n" | sort | uniq -D) ]]; then
@@ -375,6 +386,143 @@ aurx_completion() {
 			EOS
 			;;
 	esac
+}
+
+aurx_sanity_checks() {
+	# current operation.
+	if [[ ! "${POSSIBLE_OPERATIONS[*]}" =~ ${CURRENT_OPERATION} ]]; then
+		print_error 55
+		exit 55
+	fi
+
+	# Root + install/update exception.
+	if [[ ${UID} -eq 0 ]] && [[ " install update " =~ ${CURRENT_OPERATION} ]]; then
+		print_error 57
+		exit 57
+	fi
+
+	# comparison-criteria.
+	if [[ ! "${COMPARISON_CRITERIA_VALUES[*]}" =~ ${COMPARISON_CRITERIA} ]]; then
+		print_error 68
+		exit 68
+	fi
+
+	# sort-by.
+	case "${SORT_BY}" in
+		firstsubmitted )
+			SORT_BY="FirstSubmitted"
+			;;
+		lastmodified )
+			SORT_BY="LastModified"
+			;;
+		votes )
+			SORT_BY="NumVotes"
+			;;
+		popularity )
+			SORT_BY="Popularity"
+			;;
+		* )
+			print_error 65
+			exit 65
+			;;
+	esac
+
+	# order-by.
+	if [[ ! "${ORDER_BY_VALUES[*]}" =~ ${ORDER_BY} ]]; then
+		print_error 66
+		exit 66
+	fi
+
+	# output-format.
+	case "${CURRENT_OPERATION}" in
+		search )
+			if [[ ! "${OUTPUT_VALUES[*]}" =~ ${OUTPUT} ]]; then
+				print_error 75
+				exit 75
+			fi
+			;;
+		suggest )
+			if [[ ! "${OUTPUT_SUGGEST_VALUES[*]}" =~ ${OUTPUT} ]]; then
+				print_error 77
+				exit 77
+			fi
+			;;
+		* )
+			;;
+	esac
+
+	# search-criteria
+	if [[ ! "${SEARCH_CRITERIA_VALUES[*]}" =~ ${SEARCH_CRITERIA} ]]; then
+		print_error 52
+		exit 52
+	fi
+
+	# verbosity.
+	case "${VERBOSITY}" in
+		0 )
+			STDOUT_DESTINATION=/dev/null
+			STDERR_DESTINATION=/dev/null
+			;;
+		1 )
+			STDOUT_DESTINATION=/dev/null
+			STDERR_DESTINATION=/dev/stderr
+			;;
+		2 )
+			STDOUT_DESTINATION=/dev/stdout
+			STDERR_DESTINATION=/dev/stderr
+			;;
+		* )
+			print_error 58
+			exit 58
+			;;
+	esac
+}
+
+aurx_system_checks() {
+	# Dependencies check.
+	case "${CURRENT_OPERATION}" in
+		install | update )
+			REQUIRED_PACKAGES=('curl' 'echo' 'git' 'grep' 'jq' 'pacman' 'sed' 'tee')
+			;;
+		remove )
+			REQUIRED_PACKAGES=('grep' 'pacman' 'sed')
+			;;
+		search | completion | list | suggest )
+			REQUIRED_PACKAGES=('curl' 'echo' 'jq')
+			;;
+		* )
+			;;
+	esac
+	ABSENT_PACKAGES=()
+	for REQUIRED_PACKAGE in "${REQUIRED_PACKAGES[@]}"; do
+		if [[ ! $(command -v "${REQUIRED_PACKAGE}") ]]; then
+			ABSENT_PACKAGES+=( "${REQUIRED_PACKAGE}" )
+		fi
+	done
+	if [[ -n "${ABSENT_PACKAGES[*]}" ]]; then
+		print_error 59
+		exit 59
+	fi
+
+	# Required directories.
+	for REQUIRED_DIRECTORY in "${REQUIRED_DIRECTORIES[@]}"; do
+		if [[ ! -d "${REQUIRED_DIRECTORY}" ]]; then
+			if ! mkdir -p "${REQUIRED_DIRECTORY}"; then
+				print_error 72
+				exit 72
+			fi
+		fi
+	done
+
+	# Required files.
+	for REQUIRED_FILE in "${REQUIRED_FILES[@]}"; do
+		if [[ ! -f "${REQUIRED_FILE}" ]]; then
+			if ! touch "${REQUIRED_FILE}"; then
+				print_error 73
+				exit 73
+			fi
+		fi
+	done
 }
 
 compare_versions() {
@@ -522,7 +670,8 @@ write_package_list() {
 aur_rpc_suggest() {
 	local TARGET_KEYWORD="${1}"
 
-	if ! RESULTS=$(curl --connect-timeout 60 --max-time 180 "https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" 2> /dev/null); then
+	if ! RESULTS=$(curl --connect-timeout 5 --max-time 10 \
+		"https://aur.archlinux.org/rpc/v5/suggest/${TARGET_KEYWORD}" 2> /dev/null); then
 		print_error 74
 		exit 74
 	fi
@@ -533,10 +682,14 @@ aur_rpc_suggest() {
 
 	case "${OUTPUT}" in
 		formatted )
-			echo "${RESULTS}" | jq -cr ".[:${SEARCH_RESULTS}] | .[]"
+			echo "${RESULTS}" | jq -crM ".[:${SEARCH_RESULTS}] | .[]"
+			;;
+		json-lines )
+			echo "${RESULTS}" | jq -crM ".[:${SEARCH_RESULTS}]"
 			;;
 		json )
-			echo "${RESULTS}" | jq -cr ".[:${SEARCH_RESULTS}]"
+			print_error 77
+			exit 77
 			;;
 		* )
 			print_error 75
@@ -636,12 +789,15 @@ filter_aur_data() {
 }
 
 print_aur_data() {
-	AUR_DATA="${*}"
+	local AUR_DATA="${*}"
 	declare -a PACKAGES_NOT_FOUND
 
 	case "${OUTPUT}" in
 		json )
 			echo "${AUR_DATA}"
+			;;
+		json-lines )
+			echo "${AUR_DATA}" | jq -crM ".[]"
 			;;
 		formatted )
 			local IFS=$'\n'
@@ -652,7 +808,7 @@ print_aur_data() {
 			done
 
 			echo "${AUR_DATA}" \
-				| jq -cr ".[] | .results[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity \(.LocalStatus) \n\t\(.Description)\""
+				| jq -crM ".[] | .results[] | \"\(.Maintainer)/\(.Name) \(.Version): \(.NumVotes) Votes, \(.Popularity) Popularity \(.LocalStatus) \n\t\(.Description)\""
 
 			if [[ ${#PACKAGES_NOT_FOUND[@]} -gt 0 ]]; then
 				print_error 76
@@ -759,10 +915,6 @@ while true; do
 			;;
 		-b|--sort-by )
 			SORT_BY="${2}"
-			if [[ ! "${SORT_BY_VALUES[*]}" =~ ${SORT_BY} ]]; then
-				print_error 65
-				exit 65
-			fi
 			shift 2
 			;;
 		-B|--block-overwrite )
@@ -826,18 +978,10 @@ while true; do
 			;;
 		-z|--output )
 			OUTPUT="${2}"
-			if [[ ! "${OUTPUT_VALUES[*]}" =~ ${OUTPUT} ]]; then
-				print_error 75
-				exit 75
-			fi
 			shift 2
 			;;
 		-o|--order-by )
 			ORDER_BY="${2}"
-			if [[ ! "${ORDER_BY_VALUES[*]}" =~ ${ORDER_BY} ]]; then
-				print_error 66
-				exit 66
-			fi
 			shift 2
 			;;
 		-p|--persistent-path )
@@ -865,10 +1009,6 @@ while true; do
 			;;
 		-S|--search-criteria )
 			SEARCH_CRITERIA="${2}"
-			if [[ ! "${SEARCH_CRITERIA_VALUES[*]}" =~ ${SEARCH_CRITERIA} ]]; then
-				print_error 52
-				exit 52
-			fi
 			shift 2
 			;;
 		-t|--tmp-path )
@@ -893,10 +1033,6 @@ while true; do
 			;;
 		-x|--comparison-criteria )
 			COMPARISON_CRITERIA="${2}"
-			if [[ ! "${COMPARISON_CRITERIA_VALUES[*]}" =~ ${COMPARISON_CRITERIA} ]]; then
-				print_error 68
-				exit 68
-			fi
 			shift 2
 			;;
 		-- )
@@ -916,19 +1052,12 @@ REQUIRED_DIRECTORIES=("${TMP_PATH?TMP_PATH not defined.}" \
 	"${PERSISTENT_PATH?PERSISTENT_PATH not defined.}")
 REQUIRED_FILES=("${PERSISTENT_PATH?PERSISTENT_PATH not defined.}/package_list")
 
-
-# Input sanity checks.
-#
-# Current operation.
+# Current operation parse.
 if [[ ${#} -eq 0 ]]; then
 	print_error 54
 	exit 54
 fi
 CURRENT_OPERATION="${1}"
-if [[ ! "${POSSIBLE_OPERATIONS[*]}" =~ ${CURRENT_OPERATION} ]]; then
-	print_error 55
-	exit 55
-fi
 shift
 
 # Take all packages.
@@ -941,100 +1070,11 @@ if ! [[ -t 0 ]]; then
 	done
 fi
 
-# Root + install/update exception.
-if [[ ${UID} -eq 0 ]] && [[ " install update " =~ ${CURRENT_OPERATION} ]]; then
-	print_error 57
-	exit 57
-fi
+# Sanity & system checks.
+aurx_sanity_checks
+aurx_system_checks
 
-# Verbosity.
-case "${VERBOSITY}" in
-	0 ) 
-		STDOUT_DESTINATION=/dev/null
-		STDERR_DESTINATION=/dev/null
-		;;
-	1 )
-		STDOUT_DESTINATION=/dev/null
-		STDERR_DESTINATION=/dev/stderr
-		;;
-	2 )
-		STDOUT_DESTINATION=/dev/stdout
-		STDERR_DESTINATION=/dev/stderr
-		;;
-	* )
-		print_error 58
-		exit 58
-		;;
-esac
-
-# Sort by.
-case "${SORT_BY}" in
-	firstsubmitted )
-		SORT_BY="FirstSubmitted"
-		;;
-	lastmodified )
-		SORT_BY="LastModified"
-		;;
-	votes )
-		SORT_BY="NumVotes"
-		;;
-	popularity )
-		SORT_BY="Popularity"
-		;;
-	* )
-		print_error 65
-		exit 65
-		;;
-esac
-
-# Dependencies check.
-case "${CURRENT_OPERATION}" in
-	install | update )
-		REQUIRED_PACKAGES=('curl' 'echo' 'git' 'grep' 'jq' 'pacman' 'sed' 'tee')
-		;;
-	remove )
-		REQUIRED_PACKAGES=('grep' 'pacman' 'sed')
-		;;
-	search | completion | list | suggest )
-		REQUIRED_PACKAGES=('curl' 'echo' 'jq')
-		;;
-	* )
-		print_error 55
-		exit 55
-		;;
-esac		
-ABSENT_PACKAGES=()
-for REQUIRED_PACKAGE in "${REQUIRED_PACKAGES[@]}"; do
-	if [[ ! $(command -v "${REQUIRED_PACKAGE}") ]]; then
-		ABSENT_PACKAGES+=( "${REQUIRED_PACKAGE}" )
-	fi
-done
-if [[ -n "${ABSENT_PACKAGES[*]}" ]]; then
-	print_error 59
-	exit 59
-fi
-
-# Required directories.
-for REQUIRED_DIRECTORY in "${REQUIRED_DIRECTORIES[@]}"; do
-	if [[ ! -d "${REQUIRED_DIRECTORY}" ]]; then
-		if ! mkdir -p "${REQUIRED_DIRECTORY}"; then
-			print_error 72
-			exit 72
-		fi
-	fi
-done
-
-# Required files.
-for REQUIRED_FILE in "${REQUIRED_FILES[@]}"; do
-	if [[ ! -f "${REQUIRED_FILE}" ]]; then
-		if ! touch "${REQUIRED_FILE}"; then
-			print_error 73
-			exit 73
-		fi
-	fi
-done
-
-# Operation transformations.
+# Early execution.
 case "${CURRENT_OPERATION}" in
 	update )
 		SOURCE_PATH="${TMP_PATH?TMP_PATH not defined.}"
@@ -1054,6 +1094,10 @@ case "${CURRENT_OPERATION}" in
 		ALL=true
 		SEARCH_RESULTS=1
 		CURRENT_OPERATION="search"
+		;;
+	version )
+		echo "${INTERNAL_VERSION}"
+		exit 0
 		;;
 	* )
 		;;
