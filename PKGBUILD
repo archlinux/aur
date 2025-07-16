@@ -1,4 +1,4 @@
-pkgname=kon
+pkgname=kons
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Wallpaper fetcher for KDE Plasma from Konachan with resolution detection and D-Bus integration"
