@@ -41,11 +41,10 @@ pkgver() {
     echo "$formatted"
 }
 
-
 prepare() {
     cd "$srcdir"
-
     echo "Fetching latest snapshot info..."
+
     api_response=$(curl -s "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots")
 
     tarball_url=$(echo "$api_response" | jq -r '.assets[] | select(.name | startswith("forge-installer") and endswith(".tar.bz2")) | .browser_download_url' | head -n 1)
@@ -57,36 +56,40 @@ prepare() {
 
     tarball_name=$(basename "$tarball_url")
     echo "Downloading: $tarball_name"
-    curl -Lf -o "$tarball_name" "$tarball_url"
+    curl -Lf -o "$srcdir/$tarball_name" "$tarball_url"
 
     echo "Extracting: $tarball_name"
-    tar xf "$tarball_name"
+    mkdir -p "$srcdir/snapshot"
+    tar -xjf "$tarball_name" -C "$srcdir/snapshot"
 }
-
-
 
 package() {
     cd "$srcdir"
 
-    jar_file=$(find . -name 'forge-gui-desktop-*-jar-with-dependencies.jar' | head -n 1)
-
+    jar_file=$(find snapshot -name 'forge-gui-desktop-*-jar-with-dependencies.jar' | head -n 1)
     if [[ -z "$jar_file" ]]; then
-        echo "ERROR: JAR file not found" >&2
+        echo "ERROR: JAR file not found in snapshot" >&2
         exit 1
     fi
 
-    install -d -m0755 "$pkgdir"/usr/share/$_pkgname/res
-    cp -r res/* "$pkgdir"/usr/share/$_pkgname/res
+    install -Dm0644 "$jar_file" "$pkgdir/usr/share/java/$_pkgname.jar"
 
-    install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
-    install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+    res_dir=$(find snapshot -type d -name "res" | head -n 1)
+    if [[ -d "$res_dir" ]]; then
+        install -d -m0755 "$pkgdir/usr/share/$_pkgname/res"
+        cp -r "$res_dir/"* "$pkgdir/usr/share/$_pkgname/res"
+    else
+        echo "WARNING: res/ directory not found"
+    fi
 
-    install -Dm0644 "$jar_file" "$pkgdir"/usr/share/java/$_pkgname.jar
+    license_file=$(find snapshot -name LICENSE.txt | head -n 1)
+    if [[ -f "$license_file" ]]; then
+        install -Dm0664 "$license_file" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
+    fi
 
-
+    install -Dm0644 "$srcdir/AppIcon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
     _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
-    _startfile="$pkgdir/usr/bin/$_pkgname.sh"
     install -Dm0644 /dev/stdin "$_deskfile" <<END
 [Desktop Entry]
 Name=MTG Forge (Snapshot)
@@ -99,7 +102,9 @@ Keywords=mtg magic gathering
 Icon=$_pkgname
 END
 
-    install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$_pkgname.sh" <<END
+    # Startup script
+    _startfile="$pkgdir/usr/bin/$_pkgname.sh"
+    install -Dm0755 /dev/stdin "$_startfile" <<END
 #!/bin/sh
 cd "/usr/share/$_pkgname"
 exec /usr/bin/java -Xmx1024m -jar "/usr/share/java/$_pkgname.jar"
