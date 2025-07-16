@@ -2,12 +2,12 @@
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 
-# Maintainer: Philippe.seraphin <philippe(dot)seraphin(at)infomaniak(dot)com>
-# Contributor: Philippe.seraphin <philippe(dot)seraphin(at)infomaniak(dot)com>
+# Maintainer: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
+# Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=auxilium
 pkgname=${_pkgname}-git
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for parse args in many shell (bash, ksh,zsh)"
 arch=(any)
 url="https://auxilium.spn.109"
@@ -32,9 +32,10 @@ build()
 
 package()
 {
+
     cd "${srcdir}/${pkgname}" || exit 1
     mkdir -p "${pkgdir}/usr/bin/ "
-    mkdir -p "${pkgdir}/usr/share/auxilium/"
+    mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
 
     cp "bin/auxilium_test" "${pkgdir}/usr/bin/"
     chmod +x "${pkgdir}/usr/bin/auxilium_test"
