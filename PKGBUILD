@@ -27,15 +27,7 @@ pkgver() {
     echo "0"
     return
   fi
-  # Get the version from git describe
-  local desc rest
-  desc=$(git describe --long --tags --abbrev=7 2>/dev/null)
-  if [ -n "$desc" ]; then
-    rest=$(echo "$desc" | sed 's/^v//;s/^[0-9.]*//;s/-/./g; s/\([^-]*-g\)/r\1/')
-    echo "5.0.0${rest}"
-  else
-    printf "5.0.0.r%s.%s" "$(git rev-list --count HEAD 2>/dev/null)" "$(git rev-parse --short=7 HEAD 2>/dev/null)"
-  fi
+  printf "r%s.g%s" "$(git rev-list --count HEAD 2>/dev/null)" "$(git rev-parse --short=7 HEAD 2>/dev/null)"
 }
 
 build() {
