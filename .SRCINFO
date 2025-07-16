@@ -1,14 +1,14 @@
 pkgbase = sourcegraph-amp
 	pkgdesc = CLI for Amp, an agentic coding tool in research preview from Sourcegraph.
-	pkgver = 0.0.1752609840_gbf1029
+	pkgver = 0.0.1752624340_g544932
 	pkgrel = 1
 	url = https://ampcode.com/
 	arch = any
 	license = custom
 	makedepends = npm
 	depends = nodejs
-	noextract = amp-0.0.1752609840-gbf1029.tgz
-	source = https://registry.npmjs.org/@sourcegraph/amp/-/amp-0.0.1752609840-gbf1029.tgz
-	sha1sums = 3f802247902e67a296ef4cb0d5fb568d9f7d65d7
+	noextract = amp-0.0.1752624340-g544932.tgz
+	source = https://registry.npmjs.org/@sourcegraph/amp/-/amp-0.0.1752624340-g544932.tgz
+	sha1sums = dcfe12eb5950849bba424760cd3d4e8298381989
 
 pkgname = sourcegraph-amp
