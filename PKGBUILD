@@ -1,5 +1,5 @@
 pkgname=homepage
-pkgver=1.4.0-2
+pkgver=1.4.0_2
 pkgrel=1
 pkgdesc="A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations."
 arch=('any')
@@ -25,11 +25,17 @@ build() {
   pnpm build
 }
 package() {
+  # Create directories
   install -dm 755 "${pkgdir}/var/lib/homepage"
+  # Copy build output (assumes no config/ exists here)
   cp -r "$srcdir/homepage-${pkgver}/.next/standalone/." "${pkgdir}/var/lib/homepage/"
+  mkdir -p "${pkgdir}/var/lib/homepage/.next"
+  cp -r "$srcdir/homepage-${pkgver}/.next/standalone/.next/." "${pkgdir}/var/lib/homepage/.next/"
+  # Copy public assets
   cp -r "${srcdir}/homepage-${pkgver}/public/." "${pkgdir}/var/lib/homepage/public/"
   mkdir -p "${pkgdir}/var/lib/homepage/.next/static"
   cp -r "${srcdir}/homepage-${pkgver}/.next/static/." "${pkgdir}/var/lib/homepage/.next/static/"
+  # Copy service files
   install -Dm644 "$srcdir/homepage.service" "$pkgdir/usr/lib/systemd/system/homepage.service"
   install -Dm644 "$srcdir/homepage.sysusers" "$pkgdir/usr/lib/sysusers.d/homepage.conf"
   install -Dm644 "$srcdir/homepage.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/homepage.conf"
