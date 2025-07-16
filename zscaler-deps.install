@@ -1,0 +1,20 @@
+post_install() {
+    echo ""
+    echo "========================================"
+    echo "ZScaler dependencies installed!"
+    echo "========================================"
+    echo ""
+    echo "To complete ZScaler installation:"
+    echo "1. Download your organization's ZScaler installer (Zscaler*.run)"
+    echo "2. Run: sudo bash Zscaler*.run"
+    echo "3. The services should start automatically"
+    echo ""
+    echo "If you encounter missing library errors, check:"
+    echo "  journalctl -u zstunnel"
+    echo "  journalctl --user -u ZSTray"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

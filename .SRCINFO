@@ -1,0 +1,23 @@
+pkgbase = zscaler-deps
+	pkgdesc = Dependencies and compatibility fixes for ZScaler Client Connector on Arch Linux (does not include ZScaler itself) - Tested with ZScaler 3.7.2
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://www.zscaler.com/
+	install = zscaler-deps.install
+	arch = x86_64
+	license = MIT
+	depends = glib2
+	depends = net-tools
+	depends = dbus
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = qt5-webkit
+	depends = dbus-glib
+	depends = nss
+	depends = libpcap
+	depends = curl
+	depends = jq
+	depends = gpgme
+	depends = openssl
+
+pkgname = zscaler-deps

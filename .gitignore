@@ -1,0 +1,9 @@
+# Arch package build files
+*.tar.gz
+*.tar.xz
+*.tar.zst
+pkg/
+src/
+
+# AUR repo (keep separate)
+aur-repo/
