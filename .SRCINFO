@@ -1,16 +1,24 @@
 pkgbase = domake
 	pkgdesc = Docker make
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/gportay/domake
 	arch = any
-	license = MIT
+	license = LGPL-2.1-or-later
 	checkdepends = shellcheck
 	makedepends = asciidoctor
-	depends = docker
-	depends = dosh
-	source = https://github.com/gportay/domake/archive/1.tar.gz
-	md5sums = f5cec4cbe3c0823a82fa19bf3ec07b16
+	makedepends = bash-completion
+	depends = bash
+	source = domake-2.tar.gz::https://github.com/gportay/domake/archive/2.tar.gz
+	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
+	sha256sums = bc93dc89527e52d25f6533924e24a961787e6efbd7305ea92615458f5e3fe30e
 
 pkgname = domake
+	depends = bash
+	depends = dosh
+	optdepends = domake-docker-make
 
+pkgname = domake-docker-make
+	pkgdesc = Docker CLI plugin for domake
+	depends = bash
+	depends = domake
