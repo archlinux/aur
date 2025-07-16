@@ -2,14 +2,14 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.55b1
+pkgver=0.56b0
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('3902680169465a971034629921b4494b1903fe3b152abe022d6e01e0e320359cdd9c06f95ffce3fc12f8ec0f32f5d0928dfaafa9b1490bb2590585f5f8bd46d0')
+b2sums=('1cdbd8ce0f7ab232ccec3f2d2bee3aa1c0be36af001b65f361a82786c3a71d1786587ac2382ddd678ea37d1fa30dd23b0dd28eb3d51a278513d6f6c6ebc923b8')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
