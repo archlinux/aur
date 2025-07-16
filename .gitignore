@@ -1,9 +1,12 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !60-awsm-ydotool-uinput.rules
 !gnome-shell-extension-another-window-session-manager.install
+!initial-changes-for-styling-and-improvements.patch

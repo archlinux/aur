@@ -1,25 +1,40 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
-pkgver=47.r0.gf2b7937
+pkgver=47.r6.g9379f86
 pkgrel=1
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
 url="https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager"
 license=('GPL-3.0-or-later')
-depends=('glib2' 'gnome-shell' 'libgtop' 'procps-ng')
+depends=(
+  'glib2'
+  'gnome-shell'
+  'libgtop'
+  'procps-ng'
+)
 makedepends=('git')
 optdepends=('ydotool: to make Close by rules work')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
 source=('git+https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager.git'
-        '60-awsm-ydotool-uinput.rules')
+        '60-awsm-ydotool-uinput.rules'
+        'initial-changes-for-styling-and-improvements.patch')
 sha256sums=('SKIP'
-            '9f3e96fd1d964f3e6564e0ef859f5e4f5b59059aa89b2654bb3fe2c9abed4f27')
+            '9f3e96fd1d964f3e6564e0ef859f5e4f5b59059aa89b2654bb3fe2c9abed4f27'
+            'd993ba9109a3b510637ac22d4cd701ae7965d573fe3d88af5fa76383e8cbb062')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+
+  # GNOME 48 compatibility
+  # https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager/pull/120
+  patch -Np1 -i ../initial-changes-for-styling-and-improvements.patch
 }
 
 build() {
