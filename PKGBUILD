@@ -14,7 +14,7 @@ provides=(sudo)
 conflicts=(sudo doas-sudo-shim)
 depends=(awk doas sh)
 makedepends=(asciidoctor)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/mckaygerhard/doas-sudo-shim/archive/refs/heads/fclivaz42-master.zip")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mckaygerhard/doas-sudo-shim/archive/refs/tags/v0.1.2.1.tar.gz")
 sha256sums=('c991cbbe197e9018dc0d80e1ea0a7ecfa2920d8f748751d53d22f7ba21ea10c0')
 
 build() {
