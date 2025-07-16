@@ -11,6 +11,7 @@ pkgbase = mux-media
 	depends = mkvtoolnix-cli
 	options = !debug
 	source = mux-media-0.13.0.tar.gz::https://github.com/nujievik/mux-media/archive/refs/tags/v0.13.0.tar.gz
+	validpgpkeys = 74A5ADD727FF62E8
 	sha256sums = 4fe0e79bcc1799434269c75572bf5bbdb8a8544c0a8b9c5c2582ad9513b83e24
 
 pkgname = mux-media
