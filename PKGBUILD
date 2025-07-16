@@ -6,7 +6,7 @@ _pyname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Run a command, print its output only if it fails."
 arch=('any')
@@ -17,14 +17,16 @@ makedepends=('python-pdm-backend'
              'python-installer')
 #            'mkdocs')
 checkdepends=('python-pytest-timeout'
+#             'python-pytest-xdist'
               'python-hypothesis'
-              'python-colorama'
+              'python-griffe'
               'python-ansimarkup'
               'python-jinja'
-              'python-ptyprocess')
+              'python-ptyprocess'
+              'mkdocstrings')
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('21af2e1d8da6db1d35d5ce0c1e3b8554e36bcc90339b874e6142d4c41add9b64')
+sha256sums=('29ddff27b49fe9e6905f12c2e23ce2d48499f1f5e6f80590034a82b51453c27c')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,9 +39,10 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-failprint() {
