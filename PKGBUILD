@@ -20,8 +20,8 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '14db1605a740325737eb9ae029deb142d717a02c1926703b0d45f788c937d861'
             '0252a9cbf39bbbae2a27b1e929b62de0e69fa653ee691e9c310400fb02ea3598')
 depends=(glibc)
-makedepends=(nasm
-diffutils gcc make sed) # base-devel
+makedepends=(nasm mold # mold: preliminary to remove unused funcs
+diffutils gcc make patch sed) # base-devel
 optdepends=({nwjs,slimjet}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
@@ -53,13 +53,13 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer ${LTOFLAGS}" \
+    --extra-cflags="-fuse-ld=mold -fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables}
 
   make install
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS \
+  gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o $_so
