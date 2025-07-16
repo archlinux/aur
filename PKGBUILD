@@ -8,14 +8,14 @@ arch=(x86_64)
 url='https://invent.kde.org/plasma-bigscreen/plasma-remotecontrollers'
 license=(GPL2)
 conflicts=(plasma-remotecontrollers)
-depends=(plasma-workspace plasma-bigscreen)
-makedepends=(extra-cmake-modules plasma-wayland-protocols libcec)
-optdepends=('libcec: TV remotes support')
+depends=(plasma-workspace-git plasma-bigscreen-git)
+makedepends=(extra-cmake-modules-git plasma-wayland-protocols-git libcec-git)
+optdepends=('libcec: support for TV remotes')
 source=(git+https://invent.kde.org/plasma-bigscreen/plasma-remotecontrollers.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$srcdir" cmake --install build
 }
 
