@@ -4,7 +4,7 @@
 
 pkgname=plastimatch
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for medical image reconstruction and registration.'
 arch=('i686' 'x86_64')
 url='http://plastimatch.org/'
