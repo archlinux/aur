@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/flyingpie/windows-terminal-quake"
 license=('MIT')
 depends=(
+  'libappindicator-gtk3'
   'webkit2gtk-4.1'
 )
 provides=()
