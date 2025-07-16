@@ -15,7 +15,7 @@ pkgname=(
   'dotnet-targeting-pack-preview-bin'
   'aspnet-targeting-pack-preview-bin'
  )
-pkgver=10.0.0.sdk100+preview.5
+pkgver=10.0.0.sdk100+preview.6
 _runtimever=10.0.0
 _sdkver=10.0.100
 _short_ver=10.0
@@ -25,13 +25,13 @@ url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
 source=('dotnet.sh')
-source_armv7h=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-preview.5.25277.114/dotnet-sdk-10.0.100-preview.5.25277.114-linux-arm.tar.gz')
-source_aarch64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-preview.5.25277.114/dotnet-sdk-10.0.100-preview.5.25277.114-linux-arm64.tar.gz')
-source_x86_64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-preview.5.25277.114/dotnet-sdk-10.0.100-preview.5.25277.114-linux-x64.tar.gz')
+source_armv7h=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-preview.6.25358.103/dotnet-sdk-10.0.100-preview.6.25358.103-linux-arm.tar.gz')
+source_aarch64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-preview.6.25358.103/dotnet-sdk-10.0.100-preview.6.25358.103-linux-arm64.tar.gz')
+source_x86_64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-preview.6.25358.103/dotnet-sdk-10.0.100-preview.6.25358.103-linux-x64.tar.gz')
 sha512sums=('768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06')
-sha512sums_armv7h=('1BB72EBACF090A3FC34DD1311AD634E4FB00EA452320AA68D62ABBF83121518B5AE42B9C1895FB804F55CFACEC78095CAF23C0CCF44D0076912C7E3A5A001786')
-sha512sums_aarch64=('E99F03858BAFFA1B41E67EB6291B7E9EB68FC8926409794D4416982092B7E80356E5547BE779B774216C1EC7AEE236B6474567CB7C0D815ECD19EBC71B07F971')
-sha512sums_x86_64=('4EF3BC177BBAA7BA38CEB78CF0109BACCEA1F4432CD8C52E3D78B237CD5A92BD660E926774036A2FCB51175F48FFEBC8A65DCA56BB905BC8ED4F2ECFD8C15C79')
+sha512sums_armv7h=('9588e34dc8b1044bdd8e9cea1fd0d6b567fedf0ddbaf4897b153ab9b3e93ac4957457810fa9ecd7da4d5a36d8a05bc48b670afd0f52d4d56d140f742a043820a')
+sha512sums_aarch64=('7301643ea2fbdb2582526c6d4699d3cb657f6c90e3ce7f2746ad51c320a8483c280d3a15fc2e072605b2bdfe76369063a384ff61d79ff9644183e4b21c1ba774')
+sha512sums_x86_64=('662bd61a77275a893186aed5b0a6e66a613d33657f71026a27f765f1196b78e3f3a2ada58e1b37e0faeac39a8377b3e9b3bcea2b72c5b06dd5d9848ad9873f3f')
 
 package_dotnet-host-preview-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
