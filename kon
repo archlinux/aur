@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+
+import os
+import requests
+import random
+import shutil
+import tempfile
+import subprocess
+from pathlib import Path
+from rich.console import Console
+from rich.prompt import Confirm
+
+# === CONFIG ===
+SAVE_DIR = Path.home() / "Pictures/wallpapers"
+TEMP_DIR = Path(tempfile.gettempdir()) / "konachan_preview"
+MAX_WALLPAPERS = 100
+KONACHAN_URL = "https://konachan.net/post.json"
+
+console = Console()
+
+
+def get_screen_resolution():
+    try:
+        xrandr = subprocess.check_output(["xrandr"]).decode()
+        for line in xrandr.splitlines():
+            if "*" in line:
+                res = line.split()[0].split("x")
+                return int(res[0]), int(res[1])
+    except Exception as e:
+        console.print(f"[red]Ошибка при получении разрешения: {e}")
+    return 1920, 1080
+
+
+def fetch_random_image(min_width, min_height):
+    params = {
+        "limit": 100,
+        "tags": f"rating:safe width:>={min_width} height:>={min_height}",
+        "page": random.randint(1, 1000)
+    }
+    try:
+        r = requests.get(KONACHAN_URL, params=params)
+        r.raise_for_status()
+        posts = r.json()
+        random.shuffle(posts)
+        for post in posts:
+            url = post.get("file_url", "")
+            if url.endswith((".jpg", ".png")):
+                return url, post.get("width"), post.get("height")
+    except Exception as e:
+        console.print(f"[red]Ошибка при получении картинки: {e}")
+    return None, None, None
+
+
+def is_duplicate(file_url):
+    fname = file_url.split("/")[-1]
+    return any(str(f).endswith(fname) for f in SAVE_DIR.iterdir())
+
+
+def download_image(url, dest_dir):
+    dest = dest_dir / url.split("/")[-1]
+    with requests.get(url, stream=True) as r:
+        with open(dest, 'wb') as f:
+            shutil.copyfileobj(r.raw, f)
+    return dest
+
+
+def cleanup_old_wallpapers():
+    files = sorted(SAVE_DIR.iterdir(), key=lambda f: f.stat().st_mtime)
+    while len(files) > MAX_WALLPAPERS:
+        old = files.pop(0)
+        console.print(f"[yellow]Удаляю старые обои: {old.name}")
+        old.unlink()
+
+
+def apply_wallpaper(path: Path):
+    console.rule("[bold cyan]📺 Установка обоев KDE Plasma")
+
+    image_uri = path.as_uri()  # → file:///home/...
+
+    script = f"""
+    var all = desktops();
+    for (var i = 0; i < all.length; i++) {{
+        var d = all[i];
+        d.wallpaperPlugin = "org.kde.image";
+        d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"];
+        d.writeConfig("Image", "{image_uri}");
+        d.reloadConfig();
+    }}
+    """
+
+    # логируем URI
+    console.print(f"[blue]→ Путь к обоям:[/blue] {image_uri}")
+
+    try:
+        result = subprocess.run([
+            "qdbus",
+            "org.kde.plasmashell",
+            "/PlasmaShell",
+            "org.kde.PlasmaShell.evaluateScript",
+            script
+        ], capture_output=True, text=True)
+
+        console.print(f"[cyan]→ Return code:[/cyan] {result.returncode}")
+        if result.stdout.strip():
+            console.print(f"[green]stdout:[/green]\n{result.stdout}")
+        if result.stderr.strip():
+            console.print(f"[red]stderr:[/red]\n{result.stderr}")
+
+        if result.returncode == 0:
+            console.print(f"[bold green]✅ Обои применены: {path}")
+        else:
+            console.print(f"[bold red]❌ Ошибка при применении обоев.")
+
+    except Exception as e:
+        console.print(f"[red]Ошибка при вызове qdbus: {e}")
+
+
+def main():
+    SAVE_DIR.mkdir(parents=True, exist_ok=True)
+    TEMP_DIR.mkdir(parents=True, exist_ok=True)
+
+    width, height = get_screen_resolution()
+    console.print(f"[green]Определено разрешение экрана: {width}x{height}")
+
+    while True:
+        url, w, h = fetch_random_image(width, height)
+        if not url or is_duplicate(url):
+            continue
+
+        tmp = download_image(url, TEMP_DIR)
+        console.print(f"[blue]Картинка: {w}x{h}")
+        os.system(f"kitty +kitten icat --transfer-mode=memory '{tmp}'")
+
+        if Confirm.ask("[cyan]Установить эти обои?"):
+            dest = SAVE_DIR / tmp.name
+            shutil.copy(tmp, dest)
+            apply_wallpaper(dest)
+            cleanup_old_wallpapers()
+            break
+        else:
+            tmp.unlink()
+
+
+if __name__ == '__main__':
+    main()
