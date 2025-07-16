@@ -1,4 +1,5 @@
 [soapui]
-source="github"
-github="SmartBear/soapui"
-use_max_tag=true
+source = "github"
+github = "SmartBear/soapui"
+use_max_tag = true
+prefix = 'v'

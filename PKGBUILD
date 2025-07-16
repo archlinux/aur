@@ -2,7 +2,7 @@
 # Contributor: Damien Guihal <dguihal@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=soapui
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="free and open source cross-platform functional testing solution for APIs and web services"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ license=('EUPL-1.1')
 depends=('java-environment>=17' hicolor-icon-theme ttf-dejavu)
 optdepends=('java-openjfx: Open JFX for Internal browser')
 source=(
-  "https://dl.eviware.com/soapuios/5.8.0/SoapUI-${pkgver}-linux-bin.tar.gz"
+  "https://dl.eviware.com/soapuios/${pkgver}/SoapUI-${pkgver}-linux-bin.tar.gz"
   "${pkgname}.png::https://raw.githubusercontent.com/SmartBear/soapui/refs/heads/next/soapui-installer/src/install4j/resources/images/SoapUI-OS_48-48.png"
   "$pkgname.desktop")
-md5sums=('7a247d4ea2a8171f81accd344a44e900'
+md5sums=('dd32ae603f7c665e13a131cb7c87e6b7'
          'e4866edd68c373e9cf11903272d1d995'
          '65b69df4f67f9f7802fd4e56493e58d0')
 
