@@ -7,8 +7,8 @@
 
 _name="gurobi"
 pkgname="matlab-${_name}"
-pkgver=12.0.2
-pkgrel=2
+pkgver=12.0.3
+pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming (MATLAB bindings)"
 arch=('x86_64') # 'aarch64'
 url="https://www.gurobi.com/products/gurobi-optimizer"
@@ -19,9 +19,9 @@ source=("${_name}_setup.m")
 # source_aarch64=("${_pkgsrc}-aarch64.tar.gz::https://packages.gurobi.com/${pkgver%.*}/${_name}${pkgver}_armlinux64.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::https://packages.gurobi.com/${pkgver%.*}/${_name}${pkgver}_linux64.tar.gz")
 md5sums=('fde2cef01f075e2d28188576a2639b34')
-md5sums_x86_64=('a29179c21aa02c511df847a28e4561a2')
+md5sums_x86_64=('7cb948ba0906faf0d666b77a40687cc2')
 b2sums=('5e704dc5b6ede40064772fea3fadcfb4728e8d402829162045364aae21f25aa59bea4e3ddb666050ef3351daae73f5b3f7f9c5d06c08fb8f2fc68d521a07570d')
-b2sums_x86_64=('437fef3e89dff4fc64d6b9ef181fdf4cee432eeaba1b062b83dc1a076ce2a9de62d43dd0d375f334142ebee2a91cd640a1249412f011fc8a4f9c2d3f639de44d')
+b2sums_x86_64=('5dd5419d105e273da774423880b59f7dd13b6ee6136acd4710ef59357bb95faa8811b4f9d1b7ec616995241e483083d6f50d9482a805e9c7b1c894642004cf6e')
 
 if   [ "$CARCH" = 'aarch64' ]; then _arch=armlinux64;
 elif [ "$CARCH" = 'x86_64'  ]; then _arch=linux64; fi
