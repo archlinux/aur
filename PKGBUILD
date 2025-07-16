@@ -44,23 +44,23 @@ pkgver() {
 
 prepare() {
     cd "$srcdir"
+
     echo "Fetching latest snapshot info..."
+    api_response=$(curl -s "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots")
 
-    local api_response=$(curl -s "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots")
-    local tarball_url=$(echo "$api_response" | jq -r '.assets[] | select(.name | startswith("forge-installer") and endswith(".tar.bz2")) | .browser_download_url' | head -n 1)
+    tarball_url=$(echo "$api_response" | jq -r '.assets[] | select(.name | startswith("forge-installer") and endswith(".tar.bz2")) | .browser_download_url' | head -n 1)
 
-    if [ -z "$tarball_url" ] || [ "$tarball_url" = "null" ]; then
-        echo "Could not find valid snapshot."
+    if [[ -z "$tarball_url" || "$tarball_url" == "null" ]]; then
+        echo "ERROR: No snapshot tarball found" >&2
         exit 1
     fi
 
     tarball_name=$(basename "$tarball_url")
-    curl -L -o "$tarball_name" "$tarball_url"
+    echo "Downloading: $tarball_name"
+    curl -Lf -o "$tarball_name" "$tarball_url"
 
+    echo "Extracting: $tarball_name"
     tar xf "$tarball_name"
-
-    echo "Extracted files:"
-    ls -l
 }
 
 
@@ -68,15 +68,21 @@ prepare() {
 package() {
     cd "$srcdir"
 
+    jar_file=$(find . -name 'forge-gui-desktop-*-jar-with-dependencies.jar' | head -n 1)
+
+    if [[ -z "$jar_file" ]]; then
+        echo "ERROR: JAR file not found" >&2
+        exit 1
+    fi
+
     install -d -m0755 "$pkgdir"/usr/share/$_pkgname/res
     cp -r res/* "$pkgdir"/usr/share/$_pkgname/res
 
     install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
     install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
 
-    jarver=$(echo "$pkgver" | tr '[:lower:]' '[:upper:]' | sed 's/\.SNAPSHOT/-SNAPSHOT-/; s/\.//g')
+    install -Dm0644 "$jar_file" "$pkgdir"/usr/share/java/$_pkgname.jar
 
-    install -Dm0644 forge-gui-desktop-*-jar-with-dependencies.jar "$pkgdir"/usr/share/java/$_pkgname.jar
 
 
     _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
