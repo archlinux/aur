@@ -1,0 +1,15 @@
+pkgbase = wpset
+	pkgdesc = A simple, interactive wallpaper selector for GNOME desktops.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/anipr2002/wpset
+	arch = any
+	license = MIT
+	depends = gum
+	depends = fzf
+	depends = gnome-desktop
+	optdepends = kitty: for image previews in the terminal
+	source = wpset-0.1.0.tar.gz::https://github.com/anipr2002/wpset/archive/v0.1.0.tar.gz
+	sha256sums = 57e658996f5377fc061011aab5fe639a88dc3ce4bd727046f2bbffb36bba8324
+
+pkgname = wpset
