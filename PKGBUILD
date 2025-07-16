@@ -7,7 +7,12 @@ arch=('x86_64' 'aarch64')
 url="https://ranfdev.com/projects/Geopard"
 license=('GPL-3.0-or-later')
 depends=('libadwaita')
-makedepends=('blueprint-compiler' 'cargo' 'git' 'meson')
+makedepends=(
+  'blueprint-compiler'
+  'cargo'
+  'git'
+  'meson'
+)
 source=("git+https://github.com/ranfdev/Geopard.git#tag=v$pkgver")
 sha256sums=('9000c92df8e0e200dc618656e18400ab16c9878b3d539e7c68723fad243c5c3c')
 
@@ -24,9 +29,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
