@@ -4,7 +4,7 @@
 
 pkgname=python-pyvisa
 pkgver=1.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 url="https://github.com/pyvisa/pyvisa"
 license=('MIT')
@@ -15,16 +15,14 @@ makedepends=('python-build' 'python-installer' 'python-pkgconfig' 'python-pytest
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('3da0bab73f06e1aba64a9f35b1aaee4cee1d950347b811844bb6322c5c849b52')
 
-prepare() {
-  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-}
-
 build() {
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   cd pyvisa-$pkgver
   python -m build --wheel --no-isolation
 }
 
 check(){
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   cd pyvisa-$pkgver
   PYTHONPATH="$srcdir/pyvisa" python -m pytest --pyargs pyvisa --ignore pyvisa/testsuite/test_cmd_line_tools.py
 }
