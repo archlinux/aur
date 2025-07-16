@@ -1,6 +1,6 @@
 pkgname=homepage
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations."
 arch=('any')
 url="https://github.com/gethomepage/homepage"

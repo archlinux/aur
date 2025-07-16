@@ -18,7 +18,7 @@ Group=homepage
 SyslogIdentifier=homepage
 WorkingDirectory=/var/lib/homepage/
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/pnpm start
+ExecStart=/usr/bin/node server.js
 Restart=on-failure
 
 [Install]

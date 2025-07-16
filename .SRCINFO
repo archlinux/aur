@@ -1,7 +1,7 @@
 pkgbase = homepage
 	pkgdesc = A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations.
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gethomepage/homepage
 	arch = any
 	license = GPL-3.0-only
