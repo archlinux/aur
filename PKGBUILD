@@ -3,7 +3,7 @@
 # Contributor: sanduhrs <stefan.auditor@erdfisch.de>
 pkgname=gnome-shell-extension-caffeine-git
 _uuid=caffeine@patapon.info
-pkgver=53.r0.gfc5fad1
+pkgver=57.r4.gc7b0164
 pkgrel=1
 pkgdesc="Disable the screensaver and auto suspend"
 arch=('any')
@@ -18,11 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
