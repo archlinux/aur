@@ -5,9 +5,19 @@ pkgrel=1
 pkgdesc="Python GTK app to install extensions from extensions.gnome.org"
 arch=('any')
 url="https://github.com/polkaulfield/GetExtensions"
-license=('unknown')
-depends=('python-gobject' 'python-lxml' 'python-requests')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+license=('LicenseRef-unknown')
+depends=(
+  'python-gobject'
+  'python-lxml'
+  'python-requests'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/polkaulfield/GetExtensions.git"
@@ -18,7 +28,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd GetExtensions
   printf "%s.r%s.g%s" "$(python setup.py --version)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
