@@ -3,7 +3,7 @@
 
 _pkgname="opencomic"
 pkgname="$_pkgname-bin"
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron."
@@ -45,12 +45,12 @@ changelog="changelog.md"
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ollm/OpenComic/releases/download/v${pkgver}/opencomic-${pkgver}.${CARCH}.rpm"
 	"https://raw.githubusercontent.com/ollm/OpenComic/master/LICENSE")
-b2sums=('0a5e7b7cb9ea39f342f026e1999017ac1ad13b956d2f3adba63b901f910c1ce5f86e3f8e761057ee01ea6e42da6d1df63fc5ee44837d94cca22c07d92a6a143e'
+b2sums=('7a7098ff78de67534f8af530fd73df2c00e4b51c8e83df76b0c3ca8b2c654689efdbc5c56ae57d898e017e9f80d3cbcab65b2e723cc419a463b33c6131eaa33b'
 	'399283bc59e70998486f2ae7b0af9f2f241206dd660e50808be3cef500adef2a9e8d449304f506d93bd2281e6b0729b16145173591deeb105ef545b769453e10')
 
 build() {
 	# modifying .desktop file
-	sed -i -E "s|Exec=/opt/OpenComic/opencomic|Exec=/usr/bin/${_pkgname}|" "usr/share/applications/${_pkgname}.desktop"
+	sed -i -E "s|Exec=/opt/OpenComic/opencomic|Exec=/usr/bin/${_pkgname}|" "usr/share/applications/OpenComic.desktop"
 }
 
 package() {
