@@ -1,5 +1,5 @@
 pkgname=amazon-corretto-21-bin
-pkgver=21.0.7.6.1
+pkgver=21.0.8.9.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -18,7 +18,7 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-21-amazon-corretto"
 }
 
-sha256sums=('8bb627728d147e7507b2e38a5ef872549e895da50c2685d435c0d4c15ba95eb4'
+sha256sums=('86be550b203970414df9d181a72607731a1a592f7c5416f649bcce9a537e7572'
         'SKIP')
 
 
