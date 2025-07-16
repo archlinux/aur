@@ -10,9 +10,6 @@ license=('MIT')
 depends=(
   'webkit2gtk-4.1'
 )
-makedepends=(
-  'gendesk'
-)
 provides=()
 conflicts=()
 source=(
