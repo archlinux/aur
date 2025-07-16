@@ -4,7 +4,7 @@
 # pkgver is set to 5.0.0+dev is replaced in the update-aur.sh script
 
 pkgname=system-bridge-git
-pkgver=r12.g01fdd6f
+pkgver=r13.gb6a9d07
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'go' 'bun-bin')
@@ -16,7 +16,7 @@ arch=('x86_64')
 url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
 keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
-depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11' 'libayatana-appindicator')
+depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11' 'libayatana-appindicator-glib')
 provides=('system-bridge')
 
 build() {
