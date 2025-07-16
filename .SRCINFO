@@ -1,0 +1,14 @@
+pkgbase = kff
+	pkgdesc = A simple tool for setting up the environment (SDK/Toolchain) and generating projects from templates for Kindle development
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/progzone122/kff
+	arch = x86_64
+	license = GPL-3.0-or-later
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = https://github.com/progzone122/kff/releases/download/0.1.0/kff
+	sha256sums = SKIP
+
+pkgname = kff
