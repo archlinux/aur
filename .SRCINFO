@@ -1,7 +1,7 @@
 pkgbase = punyinform
 	pkgdesc = A fast and compact Inform 6 library
 	pkgver = 5.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johanberntsson/PunyInform
 	arch = any
 	groups = inform
