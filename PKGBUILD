@@ -2,7 +2,7 @@
 pkgname=folder-color-nemo
 _pkgname=${pkgname%-nemo}
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Change your folder color in Nemo"
 arch=('any')
 url="https://github.com/costales/folder-color"
@@ -34,9 +34,6 @@ build() {
 package() {
   cd "${_pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -d "$pkgdir/usr/share/icons"
-  cp -r icons/* "$pkgdir/usr/share/icons/"
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   mv "${pkgdir}${site_packages}/usr/share/nemo-python" "$pkgdir/usr/share/"
