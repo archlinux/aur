@@ -2,30 +2,24 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='4.2.11'
+pkgver='4.5.0'
 #Official Mirror(Direct Link)
-_mirror="https://mirrors.dotsrc.org"
+_mirror="https://download.blender.org"
 
 ##Alternate Mirrors##
-#China
-#_mirror="https://mirrors.aliyun.com"
 #Germany
-#_mirror="https://ftp.halifax.rwth-aachen.de"
-#Denmark
-#_mirror="https://mirrors.dotsrc.org"
+#_mirror="https://ftp.halifax.rwth-aachen.de/blender"
 #Netherlands
-#_mirror="https://ftp.nluug.nl"
-#Brazil
-#_mirror="https://mirrors.ocf.berkeley.edu"
+#_mirror="https://ftp.nluug.nl/pub/graphics/blender"
 
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
-source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
+source=("${_mirror}/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('8cfe3dbc2cff9c6153069aac54e22188dac1f6c0e35de1888d92bedaa14b9d5d1840f94c62fc15359a95af3d61a9b04f1f3dfbb348143be1ba4e83df376c644d'
+b2sums=('a72f350c9b086981c6c769feb564a9c6a536585f4a5ebdd359539d23aef5689436a94f680ab7304bee504373914af15bf5e0140fdbfec01dd91b7eae500fa5d4'
 '7009d16d3afe2c59d3b906b32fdb5540ad70b221e84f308959986d58e4a5391cdcc49f78651c5039ea94f1cf305e6cf39b01c105e05fb0e76f6c3cc068e06bf4')
 
 _setvars() {
