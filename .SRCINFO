@@ -1,15 +1,16 @@
 pkgbase = violetumleditor-git
 	pkgdesc = Java UML diagram editor (git version)
-	pkgver = 3.0.0+32+2db04d50
+	pkgver = 2.2.2+r628+aaba20d4
 	pkgrel = 1
+	epoch = 1
 	url = https://sourceforge.net/projects/violet
 	arch = any
 	license = GPL
-	makedepends = java-environment>=8
+	makedepends = java-environment=21
 	makedepends = maven
 	makedepends = git
-	depends = java-runtime>=8
-	provides = violetumleditor=3.0.0
+	depends = java-runtime=21
+	provides = violetumleditor=2.2.2
 	conflicts = violetumleditor
 	source = violetumleditor::git+https://github.com/violetumleditor/violetumleditor.git
 	sha256sums = SKIP
