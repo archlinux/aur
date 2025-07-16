@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/homepage 0755 homepage homepage
+Z /var/lib/homepage - homepage homepage

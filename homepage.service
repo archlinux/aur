@@ -1,0 +1,24 @@
+# Be sure to use `systemctl edit homepage` to modify this service with an override.conf because
+# direct changes will be overwritten by package updates.
+#
+# A user per service w/ shared group setup would have an override like:
+# [Service]
+# Group=sharedgroupname
+# UMask=002
+
+[Unit]
+Description=Homepage Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=homepage
+Group=homepage
+SyslogIdentifier=homepage
+WorkingDirectory=/var/lib/homepage/
+ExecStart=/usr/bin/pnpm start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
