@@ -1,0 +1,10 @@
+post_install() {
+  printf "*\n* TIP! It may wise to run 'folsy man' and read chapter 'introductory lesson'\n*\n"
+}
+
+# Only enable when there are "importand changes", add then a "release-notes.txt" file
+# post_upgrade() {
+#   [ $1 == $2 ] && return                 # Nothing todo, looks like reinstall
+#   [ "${1%-*}" == "${2%-*}" ] && return   # Still Nothing todo, looks like pkg fix only
+#   printf "*\n* Hint! Look at the release notes for importand changes: pacman -Qc folsy\n*\n"
+# }

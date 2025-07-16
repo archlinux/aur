@@ -1,0 +1,18 @@
+pkgbase = folsy
+	pkgdesc = folder synchronization in POSIX sh
+	pkgver = 25.7
+	pkgrel = 1
+	url = https://github.com/loh-tar/folsy
+	install = folsy.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = findutils
+	depends = grep
+	depends = rsync
+	depends = sed
+	optdepends = openssh: ssh support
+	source = git+https://github.com/loh-tar/folsy.git#commit=cdcde50e436eb2c59eb6edc11cc0635ec5250509
+	sha256sums = 89e61c93f950b6bfcba7d9ca4c49d02111ae71b0964af29454222256fef38a40
+
+pkgname = folsy
