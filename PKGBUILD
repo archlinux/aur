@@ -54,12 +54,16 @@ prepare() {
         exit 1
     fi
 
-    local tarball_name=$(basename "$tarball_url")
+    tarball_name=$(basename "$tarball_url")
     curl -L -o "$tarball_name" "$tarball_url"
     tar xf "$tarball_name"
 
+    echo "Extracted files:"
     ls -l
+
+    export TARBALL_NAME="$tarball_name"
 }
+
 
 
 package() {
