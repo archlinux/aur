@@ -3,7 +3,7 @@
 _name="gurobipy"
 _py=3.13
 pkgname="python-${_name}"
-pkgver=12.0.2
+pkgver=12.0.3
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming (Python bindings)"
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,8 @@ source_aarch64=("https://files.pythonhosted.org/packages/cp${_py//./}/${_name::1
 source_x86_64=("https://files.pythonhosted.org/packages/cp${_py//./}/${_name::1}/${_name}/${_name//-/_}-${pkgver}-cp${_py//./}-cp${_py//./}-manylinux2014_x86_64.manylinux_2_17_x86_64.whl")
 noextract=("${source_aarch64[@]##*/}"
            "${source_x86_64[@]##*/}")
-sha256sums_aarch64=('b3caebef6a7c6ba23559872ab73dcd8040c7156ef80cde0b59118bbdfd24e779')
-sha256sums_x86_64=('240aab60fcfbfe586f456d6ecbcc8eca3b5aa5ffe717e6a08c41c82964026137')
+sha256sums_aarch64=('be05c074141c8a126c8aaeccc41795ab091a666eabb39ca1ff98a74bde81e663')
+sha256sums_x86_64=('79a333766e27fef7902ceeefbcf0279a1ca393a27a72ea62f8e301b21aa17d59')
 
 package() {
   local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
