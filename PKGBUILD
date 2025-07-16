@@ -8,7 +8,11 @@ pkgdesc="Unofficial OpenGL G-SYNC Demo for Linux"
 arch=('x86_64')
 url="https://github.com/dahenry/gl-gsync-demo"
 license=('MIT')
-depends=('freeglut' 'glew' 'libxnvctrl')
+depends=(
+  'freeglut'
+  'glew'
+  'libxnvctrl'
+)
 makedepends=('git')
 _commit=4fd963a8ad880dc2d846394c8c80b2091a119591
 source=("git+https://github.com/dahenry/gl-gsync-demo.git#commit=${_commit}")
@@ -16,7 +20,7 @@ sha256sums=('66f8792be5517d92d89991b0e820d412bb2683a9fffccc4bebc9fc20826b3463')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
 }
 
 build() {
