@@ -1,0 +1,6 @@
+*.pkg.tar.zst
+*.log
+pkg/
+src/
+*.tar.gz
+*.pdf

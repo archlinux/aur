@@ -2,31 +2,34 @@
 # Contributor: Gerardo Marset <gammer1994@gmail.com>
 
 pkgname=grrlib
-pkgver=4.5.1
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="A helper library for Nintendo Gamecube/Wii homebrew developers"
 arch=('any')
 url="http://grrlib.santo.fr/"
 license=('MIT')
-depends=("libfat-ogc")
-makedepends=("devkitPPC")
+depends=("libfat-ogc" "ppc-freetype" "ppc-libjpeg-turbo" "ppc-libpng")
+makedepends=("devkitPPC" "catnip")
 source=("https://github.com/GRRLIB/GRRLIB/archive/v$pkgver.tar.gz"
         "https://github.com/GRRLIB/GRRLIB/releases/download/v$pkgver/PDF-documentation.pdf")
-sha256sums=('9fe1debb1d058449a1ca831a5102fc75d6ac25324480844b3ac8fb347d2bc65a'
-            'e242184a5dcdb4e53e0641772026e79d85af78bfa90fb1ce027eb063fa855a4a')
-options=(!strip staticlibs)
+sha256sums=('a01b3580a725de261cde62c050f353c5aaf2e2b15dd0b8163f12633c3674bd04'
+            '4957d1ebedfaf49a461f6b2311cfb93b1d9b0bba8af08946c4359485822391c5')
+options=(!strip libtool staticlibs)
 
 build() {
+  cd GRRLIB-$pkgver
+
   # set environment
   source /etc/profile.d/devkit-env.sh
   unset CFLAGS
+  unset CXXFLAGS
 
-  make -C GRRLIB-$pkgver/GRRLIB
+  catnip -t wii
 }
 
 package() {
   cd GRRLIB-$pkgver
-  DEVKITPRO="$pkgdir/$DEVKITPRO" make -C GRRLIB install
+  DESTDIR=${pkgdir} catnip install
 
   # license
   install -Dm0644 LICENCE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
