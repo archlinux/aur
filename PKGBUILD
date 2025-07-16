@@ -4,7 +4,7 @@
 
 pkgname=cryptpad
 pkgver=2025.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
@@ -13,7 +13,8 @@ depends=(nodejs)
 makedepends=(npm git unzip)
 optdepends=('nginx: HTTP server providing TLS'
             'certbot: Let’s Encrypt – automatically receive and install X.509 certificates to enable TLS'
-            'certbot-nginx: Nginx plugin for Let’s Encrypt client')
+            'certbot-nginx: Nginx plugin for Let’s Encrypt client'
+            'cryptpad-sso: SSO plugin for Cryptpad')
 backup=(etc/webapps/"$pkgname"/config.js
         etc/nginx/sites-available/"$pkgname".conf)
 options=(!strip) # There are no ELF files, no need to strip anything.
@@ -49,7 +50,7 @@ package() {
 
     # Cryptpad
     install -Dt "$pkgdir/usr/share/webapps/$pkgname" package.json server.js
-    cp -rt "$pkgdir/usr/share/webapps/$pkgname" customize.dist lib node_modules scripts www
+    cp -rt "$pkgdir/usr/share/webapps/$pkgname" customize.dist lib node_modules scripts src www
 
     # Config
     sed -e "s|\(Path: '\)\./|\1/var/lib/cryptpad/|" \
