@@ -1,14 +1,19 @@
 pkgbase = quint-bin
 	pkgdesc = An executable specification language with delightful tooling based on the temporal logic of actions (TLA)
 	pkgver = 0.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/informalsystems/quint
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = deno>=2.1.10
 	provides = quint
 	conflicts = quint
 	source = https://github.com/informalsystems/quint/raw/v0.26.0/LICENSE
 	sha256sums = 0f8c4f9a99d4861ee62ade9a9526d09570844bdeab3e6bca500383d5ae7d9495
+	source_x86_64 = quint_x86_64::https://github.com/informalsystems/quint/releases/download/v0.26.0/quint-linux-amd64
+	sha256sums_x86_64 = 7b51e8af58fc6c2b521a82a84d45065ba1d92c9c82565e0cca7a1afd308ee2b5
+	source_aarch64 = quint_aarch64::https://github.com/informalsystems/quint/releases/download/v0.26.0/quint-linux-arm64
+	sha256sums_aarch64 = e8405eac6b8c85195a096c7871e10dbe6164f028d482035410c1faa712224e06
 
 pkgname = quint-bin
