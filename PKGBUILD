@@ -8,7 +8,7 @@
 # Note: source array can be synced with an Electron release after updating $pkgver with:
 # bash -c 'source PKGBUILD; _update_sources'
 
-pkgver=37.2.1
+pkgver=37.2.2
 _gcc_patches=138-1
 pkgrel=1
 _major_ver=${pkgver%%.*}
@@ -74,7 +74,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         use-system-libraries-in-node.patch
         makepkg-source-roller.py
         # BEGIN managed sources
-        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=138.0.7204.97
+        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=138.0.7204.100
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
         chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v22.17.0
         chromium-mirror_third_party_engflow-reclient-configs::git+https://github.com/EngFlow/reclient-configs.git#commit=955335c30a752e9ef7bff375baab5e0819b6c00d
@@ -105,7 +105,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_crc32c_src::git+https://chromium.googlesource.com/external/github.com/google/crc32c.git#commit=d3d60ac6e0f16780bcfcc825385e1d338801a558
         chromium-mirror_third_party_cros_system_api::git+https://chromium.googlesource.com/chromiumos/platform2/system_api.git#commit=fe88d943e5f328b34e38b91296db39650f6ec6f3
         chromium-mirror_third_party_depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=a8900cc0f023d6a662eb66b317e8ddceeb113490
-        chromium-mirror_third_party_devtools-frontend_src::git+https://chromium.googlesource.com/devtools/devtools-frontend.git#commit=f8dfe8b36e516cef8a5a169e88d16480d8abdc68
+        chromium-mirror_third_party_devtools-frontend_src::git+https://chromium.googlesource.com/devtools/devtools-frontend.git#commit=a6dbe06dafbad00ef4b0ea139ece1a94a5e2e6d8
         chromium-mirror_third_party_dom_distiller_js_dist::git+https://chromium.googlesource.com/chromium/dom-distiller/dist.git#commit=199de96b345ada7c6e7e6ba3d2fa7a6911b8767d
         chromium-mirror_third_party_dragonbox_src::git+https://chromium.googlesource.com/external/github.com/jk-jeon/dragonbox.git#commit=6c7c925b571d54486b9ffae8d9d18a822801cbda
         chromium-mirror_third_party_eigen3_src::git+https://chromium.googlesource.com/external/gitlab.com/libeigen/eigen.git#commit=ae3aba99db4c829b4cc4d9fdd54321dedd814dc4
@@ -227,7 +227,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_openscreen_src_third_party_tinycbor_src::git+https://chromium.googlesource.com/external/github.com/intel/tinycbor.git#commit=d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7
         # END managed sources
         )
-sha256sums=('7e01be024b2a068b41028776d14eef98e4c9ccb0aef78fd226677c9c0c0023ee'
+sha256sums=('25e8088bb49f207cf02ca412a39023f65c5005cd5a720f1a90abacb96830ad98'
             '6f5067e5f87ac0591295fc3ec0f7e722d0f5eb94ade2fb3e73ae8abcbb674f8a'
             '750fa28c0cbe464a45bab5a1021434e296ad83fef78b927eaec0f82df3aac26c'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
@@ -239,7 +239,7 @@ sha256sums=('7e01be024b2a068b41028776d14eef98e4c9ccb0aef78fd226677c9c0c0023ee'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '991e54f4490cdbb5e52c9a4a4f6e0e32f2fc95979f18a4736016d065da229c2e'
             '0e75444d1620a932294375f3372100334e2aadfec9cc2e6a1c7c8f1f0c2f252b'
-            'c589d5a274f44dc62c5f14e392723b38072c9d52035f323a6329b8c182986c93'
+            '32880501a822f296764ba374a48fb084d601c45c1507a2b75446a35f41089976'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             '12df8c956282bdbf0a3af78f8b0b476b943d630315a0710e88435a692e3624ee'
             '3522166c3ca75316a172b7cc4fe12bba9367e30fed16df8193ede2e236dca8c5'
@@ -270,7 +270,7 @@ sha256sums=('7e01be024b2a068b41028776d14eef98e4c9ccb0aef78fd226677c9c0c0023ee'
             '6ae7ae01b3c23f8bf7657a59427aac6f3216e041ebdb983b82c002a949bdb071'
             '4b9855f53a18eefcef43bb64534f4aa82e756384b847c7d4b03073989415ee32'
             '1b014921a3ee7f52b8d8aaa07c1495c9f4002f343cc561fd80bb63a905ec3a88'
-            'fcf628ecff962a1ebc9b3daa9fed2fa10352a935b54ecae0095ef8dda3a9588e'
+            '59aac71feca992d2628b8f11c5ea5e7ad21e311af39ebfd420db07b186f6e5e9'
             '47f3f3d044cc0658274833022db1e7695964b1da8f37cb905882d15457212fba'
             '7a6c373f8694e540f5a767b315670ccef5526baa41f5427f02db2e4bf261765c'
             'ee63da5c2b0efd2e2d919070ea1e2da73407020c7563d4ed69d586c101a2443c'
