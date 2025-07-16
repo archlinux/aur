@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=basedpyright-bin
-pkgver=1.30.1 # datasource=npm depName=basedpyright
+pkgver=1.31.0 # datasource=npm depName=basedpyright
 pkgrel=1
 pkgdesc='pyright fork with various type checking improvement and pylance features'
 arch=("any")
@@ -12,7 +12,7 @@ options=('!strip')
 provides=('basedpyright')
 
 source=("https://registry.npmjs.org/basedpyright/-/basedpyright-${pkgver}.tgz")
-sha256sums=('781e2cf87b5a1854845a039223791c82c01d91f56dd7d7067685c968b2428a42')
+sha256sums=('05391cdff033634b37234ecd8331ce238479f1c331afa95fa95bc494b104e432')
 
 package() {
 
