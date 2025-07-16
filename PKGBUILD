@@ -3,7 +3,7 @@
 
 pkgname=maptool-bin
 _pkgname=maptool
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('gvfs: access virtual filesystem')
 provides=('maptool')
 conflicts=('maptool')
 source=("https://github.com/RPTools/maptool/releases/download/${pkgver}/maptool_${pkgver}-amd64.deb")
-sha256sums=('97707bb25e6b58b7a4b44efc5c97c31c5d6f5322bd344f9ca53d7139f1b621ae')
+sha256sums=('701b7cf636bd26baab619bc9c633200509e3e7f32c7dad41c5c1fb0976b55f3d')
 
 package() {
 
