@@ -1,8 +1,11 @@
 
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
-pkgver=${_ffver}.m136_134 # update to m137_ at next rel
-pkgrel=2 # drop at next rel
+_codec=61
+_format=61
+_util=59
+pkgver=${_ffver}.sonames${_codec}.${_format}.${_util}
+pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
 arch=('x86_64')
@@ -31,6 +34,10 @@ prepare() {
   # diff libavcodec/opus/dec.c{.bak,} || :
   # Drop this at 7.1.2 # https://lists.ffmpeg.org/pipermail/ffmpeg-devel/2025-May/343409.html
   sed -i.bak  "s/h264_sei.o h2645_sei.o/h264_sei.o h2645_sei.o aom_film_grain.o/" libavcodec/Makefile
+  # soname
+  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
+  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h
+  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h
 }
 
 build() {
@@ -62,6 +69,6 @@ package(){
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
   #install -d "${pkgdir}"/opt/vivaldi
   #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.5
-  # Block LD_PRELOAD and use layout inconflicts with opera*
+  # Block LD_PRELOAD
   install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
