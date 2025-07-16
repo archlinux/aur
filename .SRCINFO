@@ -1,0 +1,27 @@
+pkgbase = nip4
+	pkgdesc = image processing spreadsheet
+	pkgver = 9.0.10
+	pkgrel = 1
+	url = https://github.com/jcupitt/nip4
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = cmake
+	makedepends = glib2-devel
+	depends = cairo
+	depends = dconf
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gsl
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libvips
+	depends = libxml2
+	depends = pango
+	source = nip4-9.0.10.tar.xz::https://github.com/jcupitt/nip4/releases/download/v9.0.10/nip4-9.0.10.tar.xz
+	sha256sums = 0e50978c042ff6a333fb9ca35ef0ebf6afbf0db43cbc5e122f2ab85cd6343c60
+
+pkgname = nip4
