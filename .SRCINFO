@@ -1,8 +1,8 @@
 pkgbase = frobtads
 	pkgdesc = Combined TADS 2 & 3 interpreter and compilers for playing and creating Interactive Fiction games
 	pkgver = 2.0
-	pkgrel = 3
-	url = http://www.tads.org/frobtads.htm
+	pkgrel = 4
+	url = https://tads.org/frobtads.htm
 	arch = i686
 	arch = x86_64
 	license = custom: freeware
