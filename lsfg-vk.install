@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # determine the real invoking user/home
 _user="${SUDO_USER:-$(logname 2>/dev/null)}"
@@ -27,7 +27,7 @@ fi
 user_manifest="$_data_home/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json"
 user_library="$_home/.local/lib/liblsfg-vk.so"
 
-correct_version() {
+incorrect_version() {
     case "$1" in
           1.6.0.0 \
         | 2.8.2.0 \
@@ -67,7 +67,7 @@ check_steam_install() {
         echo "==    LSFG_DLL_PATH=\"/your/path/Lossless.dll\"                                                                                  =="
     else
         version="$(get_product_version "$steam_dll")"
-        if correct_version "$version"; then
+        if incorrect_version "$version"; then
             echo "================================================================================================================================="
             echo "==  WARNING: Lossless Scaling version mismatch!                                                                                =="
             echo "==    Installed version: $version"

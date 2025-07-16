@@ -3,13 +3,25 @@
 
 pkgname=lsfg-vk-git
 pkgver=r143.cebe5e2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
 license=('MIT')
 depends=('vulkan-icd-loader' 'bash' 'gcc-libs')
-makedepends=('clang' 'llvm' 'vulkan-headers' 'cmake' 'meson' 'ninja' 'git' 'sed' 'sdl2' 'glslang' 'spirv-headers')
+makedepends=(
+	'clang'
+	'llvm'
+	'vulkan-headers'
+	'cmake'
+	'meson'
+	'ninja'
+	'git'
+	'sed'
+	'sdl2'
+	'glslang'
+	'spirv-headers'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/PancakeTAS/lsfg-vk'
@@ -52,8 +64,6 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 	install -Dm644 VkLayer_LS_frame_generation.json "$pkgdir/etc/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json"
-	
 	install -Dm644 build/liblsfg-vk.so "$pkgdir/usr/lib/liblsfg-vk.so"
-
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
