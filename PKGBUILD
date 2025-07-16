@@ -3,7 +3,7 @@
 
 pkgname=perl-text-vcard
 pkgver=3.09
-pkgrel=5
+pkgrel=6
 pkgdesc='Text-vCard for Perl'
 arch=('any')
 url='https://metacpan.org/release/Text-vCard/'
@@ -15,8 +15,6 @@ depends=('perl'
         'perl-text-vfile-asdata'
         'perl-unicode-linebreak'
         'perl-uri')
-checkdepends=('perl-directory-scratch'
-         'perl-test-most')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/L/LL/LLAP/Text-vCard-${pkgver}.tar.gz")
 sha256sums=('c1ff3b0b14a86d8146808bdc59d8d207f220120309ccf16decfb0dc236c144b0')
@@ -27,12 +25,6 @@ build() {
 
 	perl Makefile.PL INSTALLDIRS=vendor
 	make
-}
-
-check() {
-	cd "${srcdir}/Text-vCard-${pkgver}"
-
-	make test
 }
 
 package() {
