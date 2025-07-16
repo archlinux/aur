@@ -7,18 +7,18 @@
 # Contributor: ahrs
 
 pkgname=mailspring
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=(x86_64)
 license=(GPL-3.0-only)
 url="https://github.com/Foundry376/Mailspring"
 depends=(alsa-lib gtk3 libsecret nss)
-makedepends=(git npm nodejs-lts-iron grunt-cli python)
+makedepends=(git npm nodejs-lts-iron grunt-cli python chrpath)
 source=("git+https://github.com/Foundry376/Mailspring.git#tag=${pkgver}"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch"
         desktop.patch)
-sha256sums=('9edc0b4c0a39f9c839c31a717e3185c66fa522c9845f4f1bc4815c502e2642fa'
+sha256sums=('96b8c72dda5910e9dd9c85edb4b272bfb7e0eac1fc60eb6effd382c79ee1d9f8'
             'fd2158e0e3d39df0fa498b2afbcfa55c30607018ae144656f9575a6ec9e3dc98'
             '406b34236f3d966989b347aad88dfe52b9c1681ae26296974dcd719171c9833e')
 
@@ -50,6 +50,8 @@ package() {
   for s in 16 32 64 128 256 512; do
     install -Dm0644 "icons/$s.png" "${pkgdir}/usr/share/icons/hicolor/$s/apps/mailspring.png"
   done
+
+  chrpath --delete "${pkgdir}/opt/mailspring/resources/app.asar.unpacked/mailsync.bin"
 
 #Insecure RPATH '/opt/openssl/lib' in file ('opt/mailspring/resources/app.asar.unpacked/mailsync.bin')
 }
