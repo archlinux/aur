@@ -1,6 +1,6 @@
 pkgbase = fcitx5-toki-pona-git
 	pkgdesc = fcitx5 for writing various toki pona logographs
-	pkgver = r3.681904d
+	pkgver = r5.b001947
 	pkgrel = 1
 	url = https://github.com/plasmaofthedawn/fcitx5-toki-pona
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = fcitx5-toki-pona-git
 	makedepends = git
 	depends = fcitx5
 	conflicts = fcitx5-toki-pona
-	source = fcitx5-toki-pona::git+https://github.com/plasmaofthedawn/fcitx5-toki-pona
+	source = fcitx5-toki-pona::git+https://github.com/plasmaofthedawn/fcitx5-toki-pona.git
 	sha512sums = SKIP
 
 pkgname = fcitx5-toki-pona-git

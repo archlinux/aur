@@ -2,7 +2,7 @@
 
 pkgname='fcitx5-toki-pona-git'
 _pkgname='fcitx5-toki-pona'
-pkgver=r3.681904d
+pkgver=r5.b001947
 pkgrel=1
 pkgdesc="fcitx5 for writing various toki pona logographs"
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('fcitx5')
 makedepends=('python' 'libime' 'git')
 conflicts=(${_pkgname})
-source=("${_pkgname}::git+https://github.com/plasmaofthedawn/fcitx5-toki-pona")
+source=("${_pkgname}::git+https://github.com/plasmaofthedawn/fcitx5-toki-pona.git")
 sha512sums=('SKIP')
 
 pkgver() {
