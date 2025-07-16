@@ -1,6 +1,6 @@
 pkgname=llama-swap
 
-_fragment=tag=v137
+: ${_fragment:=tag=v139}
 
 pkgver=137
 pkgrel=1
@@ -16,7 +16,7 @@ source=(
 	"git+$url.git#$_fragment"
 	llama-swap.service
 )
-sha256sums=('f474d9881633e7bba197ca4b5a55775f1c9f454b8c91a86b270e865225e87e22'
+sha256sums=('397a6c3b1a327e688a930374559265fe18317f479a136e7860fccd7283dffc20'
             'b4546cefb0c4255e432c6bd95143ae19735068951945d233011b02caecc641ff')
 
 pkgver() {
@@ -24,6 +24,8 @@ pkgver() {
 }
 
 prepare() {
+	echo $_fragment
+	exit 0
 	cd "$pkgname"
 	go mod vendor
 	pnpm -C ui install
@@ -32,16 +34,16 @@ prepare() {
 build() {
 	cd "$pkgname"
 
-	export CGO_CPPFLAGS="$CPPFLAGS"
-	export CGO_CFLAGS="$CFLAGS"
-	export CGO_CXXFLAGS="$CXXFLAGS"
-	export CGO_LDFLAGS="$LDFLAGS"
+	export CGO_CPPFLAGS=$CPPFLAGS
+	export CGO_CFLAGS=$CFLAGS
+	export CGO_CXXFLAGS=$CXXFLAGS
+	export CGO_LDFLAGS=$LDFLAGS
+	export GOPATH=$srcdir
 
 	local BUILD_OPTS=(
 		-v
 		-trimpath
 		-mod=readonly
-		-modcacherw
 		-buildmode=pie
 		-ldflags="
 			-linkmode=external
