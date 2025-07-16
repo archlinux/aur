@@ -1,15 +1,18 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=violetumleditor
-pkgver=3.0.0
+epoch=1
+_pkgver=2.2.2
+_snapshot=20250531
+pkgver=${_pkgver}_${_snapshot}
 pkgrel=1
 pkgdesc="Java UML diagram editor"
 arch=('any')
 url="http://sourceforge.net/projects/violet"
 license=('GPL')
 depends=('java-runtime')
-source=( ${pkgname}-${pkgver}.deb::https://sourceforge.net/projects/violet/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.deb/download )
-sha256sums=('93fd9616d1b870c45bd91f88132239888a521b55daa656a7cdf26532cd2995b8')
+source=("${pkgname}-${pkgver}.deb::https://sourceforge.net/projects/violet/files/violetumleditor/${_pkgver}-SNAPSHOT/${pkgname}-${_pkgver}-SNAPSHOT.deb/download")
+sha256sums=('3920a780a48bcb8f594b29e9cffa19b867cc900d0569f43c7a1b2860c1b743a1')
 
 package() {
   cd ${srcdir}
