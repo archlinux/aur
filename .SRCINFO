@@ -1,12 +1,13 @@
 pkgbase = waybar-module-pacman-updates-git
 	pkgdesc = Waybar module for Arch to show system updates available
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coffebar/waybar-module-pacman-updates
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
+	makedepends = pacman
 	depends = waybar
 	depends = pacman
 	depends = pacman-contrib
