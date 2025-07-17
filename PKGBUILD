@@ -3,9 +3,9 @@
 
 _pkgname="qimgv"
 pkgname="$_pkgname-git"
-pkgver=1.0.2.r170.g34f8b43
-pkgrel=3
-pkgdesc="Qt image viewer with video playback"
+pkgver=1.0.2.r175.gdfa2c87
+pkgrel=1
+pkgdesc="Qt6 image viewer with video playback"
 url="https://github.com/easymodo/qimgv"
 license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64')
@@ -35,9 +35,9 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgsrc"
-  sed -E -e 's/Qt5_FOUND/FALSE/' \
-    -e '/\bQt5\b/d' \
-    -i CMakeLists.txt
+
+  # disable Qt5 fallback
+  sed -E -e '/find_package/s/^.*Qt5.*$//' -i CMakeLists.txt
 }
 
 pkgver() {
@@ -53,6 +53,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DUSE_QT5=OFF
     -Wno-dev
   )
 
