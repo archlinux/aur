@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
-pkgver=6.2.r2.ge2029856
+pkgver=6.2.r3.gbd770267
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -70,7 +70,10 @@ function pkgver() {
 function package() {
 	cd portable
 	install -Dm755 portable.sh "${pkgdir}/usr/bin/portable"
-	install -t "${pkgdir}/usr/lib/portable" -Dm755 "${srcdir}/portable/lib"/*
+#	install -t "${pkgdir}/usr/lib/portable" -Dm755 -D "${srcdir}/portable/lib"/*
+#	find ./lib -type f -exec 'install -Dm755 {} "${pkgdir}/usr/lib/portable"' +
+	install -d "${pkgdir}/usr/lib/"
+	cp -r "${srcdir}/portable/lib" "${pkgdir}/usr/lib/portable" 
 	install -t "${pkgdir}/usr/share/portable" -Dm755 "${srcdir}/portable/share"/*
 	install -Dm755 portable-pools "${pkgdir}/usr/bin/portable-pools"
 }
