@@ -1,0 +1,21 @@
+pkgbase = rokuecp
+	pkgdesc = C library to interact with Roku devices remotely using ECP
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/benthetechguy/rokuecp
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = cmake
+	depends = libsoup3
+	depends = gssdp
+	depends = libxml2
+	source = https://github.com/benthetechguy/rokuecp/releases/download/v0.2.0/rokuecp-0.2.0_src.tar.gz
+	source = https://github.com/benthetechguy/rokuecp/releases/download/v0.2.0/rokuecp-0.2.0_src.tar.gz.asc
+	validpgpkeys = 3869DA72A461754E9E366B45C311C5F54E89B698
+	sha256sums = e904f37940717d08526ccbf2860bc0ff9117d2c3d93136e1f48b95eff42bca2a
+	sha256sums = SKIP
+
+pkgname = rokuecp
