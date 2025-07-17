@@ -1,7 +1,7 @@
 # Maintainer: fdossena <info@fdossena.com>
 
 pkgname=flogo
-pkgver=1.0.1.r132.56d96cf
+pkgver=1.0.2.r145.d443d7b
 pkgrel=1
 pkgdesc='Create and run programs using flow charts'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -29,7 +29,7 @@ build() {
 
 package() {
   install -d "${pkgdir}"/{usr/bin,usr/lib/flogo}
-  cp -R "./$pkgname/out/flogo-linux-x64/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
+  cp -R "./$pkgname/out/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
   install -Dm755 "./flogo.sh" "$pkgdir/usr/bin/flogo"
   install -Dm644 "./flogo.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "./flogo-mime.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
