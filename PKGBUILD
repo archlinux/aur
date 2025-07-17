@@ -1,8 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=bee-host
-pkgver=1.3.7.3v2
-_upstreamver=1.3.7-3v2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A native messaging host application for Browser's Exernal Editor extension."
 arch=(x86_64)
@@ -10,12 +9,12 @@ url="https://github.com/rosmanov/bee-host"
 license=('MIT')
 depends=()
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}::https://github.com/rosmanov/bee-host/archive/refs/tags/${_upstreamver}.tar.gz")
-sha256sums=('d1e179a268718ef64e917f64b3b1a0b8367ba773d793863a537009b4c269deeb')
+source=("${pkgname}-${pkgver}::https://github.com/rosmanov/bee-host/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('8fac983e514f259a496f00e82f5b2d6f101fb85e9af75abcb4310b575488a668')
 
 
 build() {
-	cd "${srcdir}/${pkgname}-${_upstreamver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build_dir
 	cd build_dir
 	cmake ../	\
@@ -26,7 +25,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${_upstreamver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	cd build_dir
 	make PREFIX='/usr' DESTDIR="${pkgdir}" install
 	cp -rv "${pkgdir}/etc/opt/chrome" "${pkgdir}/etc"
