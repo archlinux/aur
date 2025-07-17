@@ -1,10 +1,12 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=tranalyzer
-pkgver=0.8.8
-pkgrel=2
+pkgver=0.9.3
+_pkgver=lmw1
+pkgrel=1
 pkgdesc='Lightweight flow generator and packet analyzer'
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 url='https://tranalyzer.com'
 license=('GPL3')
 depends=('libpcap'
@@ -23,8 +25,8 @@ optdepends=('graphviz: Required by some plugins'
 makedepends=('mongo-c-driver'
              'libtool'
              'cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-${pkgver}lmw4.tar.gz")
-sha256sums=('55beaa92d6269a184aea9e2a8ecbda029cbba932ee1a3ab12807d1d76026cce9')
+source=("${pkgname}-${pkgver}.tar.gz::https://tranalyzer.com/download/tranalyzer/tranalyzer2-${pkgver}${_pkgver}.tar.gz")
+b2sums=('af51a2699896fadb93515c31faa6c4474647328faee621dd240ecf1b37ccfaaeb1c991f7b32f8416aa6f6a3c252fa7407805d52f8359873b9f8708f495c92294')
 
 prepare() {
   cd "${pkgname}2-${pkgver}"
@@ -32,8 +34,8 @@ prepare() {
   sed -i "43s|.*|T2FMDIR=/usr/share/tranalyzer/scripts/t2fm|" scripts/t2fm/t2fm
   sed -i "7s|\$(dirname \"$\0\")|/usr/share/tranalyzer/scripts/tawk|" scripts/tawk/tawk 
 
-  for script in b64ex fpsGplt gpq3x osStat plot_monitoring protStat rrdmonitor rrdplot statGplt t2alive t2caplist t2dmon t2flowstat t2plot t2stat t2timeline t2viz topNStat; do
-    sed -i "s|\$(dirname \"$\0\")|/usr/share/tranalyzer/scripts|" scripts/${script}
+  for script in b64ex fpsGplt gpq3x osStat plot_monitoring protStat statGplt t2alive t2caplist t2dmon t2flowstat t2plot t2stat t2timeline t2viz topNStat; do
+    sed -i "s|\$(dirname \"$\0\")|/usr/share/tranalyzer/scripts|" scripts/${script} || true
   done
 }
 
@@ -82,8 +84,8 @@ package() {
   install -Dm644 scripts/completions/* -t "${pkgdir}/usr/share/zsh/site-functions/"
   install -Dm644 scripts/t2_aliases -t "${pkgdir}/usr/share/bash-completion/completions/"
 
-  for script in b64ex fpsGplt gpq3x osStat plot_monitoring protStat rrdmonitor rrdplot statGplt t2alive t2caplist t2dmon t2flowstat t2plot t2stat t2timeline t2viz topNStat; do
-    ln -s /usr/share/tranalyzer/scripts/${script} "${pkgdir}/usr/bin/"
+  for script in b64ex fpsGplt gpq3x osStat plot_monitoring protStat statGplt t2alive t2caplist t2dmon t2flowstat t2plot t2stat t2timeline t2viz topNStat; do
+    ln -s /usr/share/tranalyzer/scripts/${script} "${pkgdir}/usr/bin/" || true
   done
 
   ln -s /usr/share/tranalyzer/scripts/tawk/tawk "${pkgdir}/usr/bin/"
@@ -96,4 +98,3 @@ package() {
   # sed -i "79s|.*|folder=\"/usr/share/doc/tranalyzer/\"|" "${pkgdir}/usr/share/${pkgname}/scripts/t2doc"
   # sed -i "91s|.*|folder=\"/usr/share/doc/tranalyzer/plugins/\"|" "${pkgdir}/usr/share/${pkgname}/scripts/t2doc"
 }
-# vim:set ts=2 sw=2 et:
