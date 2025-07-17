@@ -1,7 +1,7 @@
 pkgbase = angle
 	pkgdesc = A conformant OpenGL ES implementation for Windows, Mac, Linux, iOS and Android.
 	pkgver = 7258
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/angle
 	arch = x86_64
 	license = BSD-3-Clause

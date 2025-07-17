@@ -2,7 +2,7 @@
 
 pkgname=('angle')
 pkgver=7258
-pkgrel=1
+pkgrel=2
 pkgdesc="A conformant OpenGL ES implementation for Windows, Mac, Linux, iOS and Android."
 arch=('x86_64')
 url="https://github.com/google/angle"
