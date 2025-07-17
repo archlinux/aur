@@ -1,0 +1,19 @@
+pkgbase = python-mytimer
+	pkgdesc = A Geeky Timer for Terminal Enthusiasts
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/sepandhaghighi/mytimer
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-nava
+	depends = python-art
+	depends = python-jdatetime
+	source = https://files.pythonhosted.org/packages/source/m/mytimer/mytimer-2.3.tar.gz
+	sha256sums = 21de1eda4a9a6e9dbc999d559c7f6e002f0904d2b190999dbb5c077ea2a9d110
+
+pkgname = python-mytimer
