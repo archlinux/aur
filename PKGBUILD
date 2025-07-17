@@ -1,7 +1,7 @@
 # Maintainer: James Forster <james.forsterer@gmail.com>
 
 pkgname=metapac
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="multi-backend declarative package manager"
 url="https://github.com/ripytide/${pkgname}"
@@ -13,7 +13,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
 options=(!debug !lto)
-sha256sums=('dc1a04b07af74c112035cd8b63eb6e0d7c2b4f5d7c68b1c0fc20c07acaeb790a')
+sha256sums=('4406ddc8aa06d329abd63ae5bb2f9a55953ab6f9abbb8091fb7fc9681b0a8106')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
