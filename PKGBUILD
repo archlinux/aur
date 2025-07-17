@@ -1,24 +1,28 @@
-# Maintainer: kamisaki
+# Maintainer: kamisaki <your-email@example.com>
 # Description: A terminal wrap tool inspired by Spotify Wrapped
 
-
 pkgname=terminalwrap
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A terminal wrap tool inspired by Spotify Wrapped"
 arch=('x86_64')
 url="https://github.com/xeyossr/terminalwrap"
-license=('GPL-3')
-depends=('gcc')
-source=("git+https://github.com/xeyossr/terminalwrap.git")
+license=('GPL3')
+depends=('glibc')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/xeyossr/terminalwrap/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/terminalwrap"
-  g++ -O3 -march=native -flto -funroll-loops -ftree-vectorize -std=c++17 -o terminalwrap terminalwrap.cpp
+
+  cd "$srcdir/$pkgname-$pkgver"
+  go build -o terminalwrap main.go
+
 }
 
 package() {
-  cd "$srcdir/terminalwrap"
+
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 terminalwrap "$pkgdir/usr/bin/terminalwrap"
+
 }
