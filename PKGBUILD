@@ -51,21 +51,21 @@ package() {
 
     # Library
     libs=(
-	libEGL.so
-        libEGL_vulkan_secondaries.so
-        libGLESv1_CM.so
-        libGLESv2.so
-        libGLESv2_vulkan_secondaries.so
-        libGLESv2_with_capture.so
-        libVkICD_mock_icd.so
-        libfeature_support.so
+	libEGL
+        libEGL_vulkan_secondaries
+        libGLESv1_CM
+        libGLESv2
+        libGLESv2_vulkan_secondaries
+        libGLESv2_with_capture
+        libVkICD_mock_icd
+        libfeature_support
     )
     for lib in "${libs[@]}"; do
-        install -D -m644 out/Release/"$lib" "$pkgdir/usr/lib/$(basename -s.so "$lib")-ANGLE.so"
+        install -D -m644 "out/Release/$lib.so" "$pkgdir/opt/angle/usr/lib/$lib.so"
     done
 
     # Headers
-    find include -type f -and -name "*.h" -exec install -v -D -m644 {} "$pkgdir/usr/include/"{} \; -print
+    find include -type f -and -name "*.h" -exec install -v -D -m644 {} "$pkgdir/opt/angle/usr/"{} \; -print
 
     install -D -m644 "$srcdir/angle.pc" "$pkgdir/usr/lib/pkgconfig/angle.pc"
 
