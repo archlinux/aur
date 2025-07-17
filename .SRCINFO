@@ -1,7 +1,7 @@
 pkgbase = kwallet-git
 	pkgdesc = KWallet Framework
-	pkgver = 6.4.0_r1466.g5d3bf6da
-	pkgrel = 1
+	pkgver = 6.17.0_r1599.g9d9266f6
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/kwallet
 	arch = x86_64
 	license = LGPL
@@ -27,6 +27,7 @@ pkgbase = kwallet-git
 	depends = qt6-base
 	optdepends = kwalletmanager: Configuration GUI
 	provides = kwallet
+	provides = org.freedesktop.secrets
 	conflicts = kwallet
 	source = git+https://github.com/KDE/kwallet.git
 	md5sums = SKIP
