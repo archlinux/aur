@@ -3,7 +3,7 @@
 
 pkgname='perl-math-prime-util-gmp'
 pkgver='0.52'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Math::Prime::Util::GMP - utilities related to prime numbers and factoring, using GMP"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +12,7 @@ depends=('glibc>=2.24' 'gmp>=6.1.1' 'perl>=5.6.2')
 makedepends=()
 url='https://metacpan.org/release/Math-Prime-Util-GMP'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-GMP-$pkgver.tar.gz")
-b2sums=('f1a0049aaffad5df7ee0500d9526a4245c8f8faf4d6a5eceeb012e983209c11b9302afdf1e050558d3412da5ddf829d481a710b2e90a531ef1f1db0275488df1')
+b2sums=('765dff6a9898abe60038a68288061c8395d11b954c5fa46a9e71a94c88cb48dd4c02eead5a1b945757215863e9b318bd362fcd088c83d77245d23b8730071877')
 _distdir="Math-Prime-Util-GMP-$pkgver"
 
 build() {
