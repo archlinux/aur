@@ -2,7 +2,7 @@
 
 _pkgname=glslang
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.4.313.0
+pkgver=1.4.321.0
 pkgrel=1
 epoch=1
 _tag="vulkan-sdk-$pkgver"
@@ -18,7 +18,7 @@ source=(
 	"${_pkgname}-${_tag}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz"
 	"$pkgname-fix-wrong-export.patch"
 )
-sha256sums=('555ac780ccceca926fa25775834639ce6ffc744120bfb68fb8657dd4032d21ee'
+sha256sums=('cb14f05b25b832655f440a36b13fbd0ab83e508d4de5c2e19c5f83eb61f6d55c'
             '773ced2829456e38dfc92e9b813005e1487c1c96ecd6d150d6edbfd02626876e')
 
 _srcdir="${_pkgname}-${_tag}"
