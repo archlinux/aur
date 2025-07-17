@@ -1,6 +1,6 @@
 pkgbase = perl-net-ssh2
 	pkgdesc = Support for the SSH 2 protocol via libssh2.
-	pkgver = 0.73
+	pkgver = 0.74
 	pkgrel = 1
 	url = https://metacpan.org/release/Net-SSH2
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = perl-net-ssh2
 	depends = perl>=5.6.0
 	depends = zlib>=1.2.8
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RK/RKITOVER/Net-SSH2-0.73.tar.gz
-	sha512sums = 9d0f06f3404127e953a2b625e48de733dca122f95a467a5785ddaedac79c693874dbd904f0dad91c5539688fb89c5dc00e32ff34f005efb1e220784121788c92
+	source = https://cpan.metacpan.org/authors/id/R/RK/RKITOVER/Net-SSH2-0.74.tar.gz
+	sha512sums = cdaed673b9e773565228d31a0f78063789c3355d3056c1a45eff887ed5a6427cac42d3350d1f28915dd90c0abd523927b8a23b2586e595a922118ddadb7d11a9
 
 pkgname = perl-net-ssh2
