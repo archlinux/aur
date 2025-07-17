@@ -3,7 +3,7 @@
 
 pkgname='perl-math-mpc'
 pkgver='1.33'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Math::MPC - perl interface to the MPC (multi precision complex) library."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')

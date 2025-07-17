@@ -1,7 +1,7 @@
 pkgbase = perl-math-mpc
 	pkgdesc = Math::MPC - perl interface to the MPC (multi precision complex) library.
 	pkgver = 1.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Math-MPC
 	arch = i686
 	arch = x86_64
