@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname="doom_ascii"
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound."
 arch=('any')
 url="https://github.com/wojciech-graj/doom-ascii"
@@ -15,7 +15,7 @@ _pkgsrc="doom-ascii-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.sh"
   cstd23.patch)
-sha256sums=('063a61c3fb75c371065ee457d10a937b1dc99065e0852ac759438f434e234642'
+sha256sums=('8218747865025aba92380b7ff3e3db17d0c3e912d544c5be08c8f6b6a0e56e6a'
             '7e4817fcb8bcd5038f648e0f8291ca073a3f111fba6e133984b906cc26dfafc1'
             '674a1b2b4a07c11d49bd917c461c983a34b1d7867835a9d3bafc20ee577dfb50')
 backup=("usr/lib/${pkgname}/.default.cfg")
