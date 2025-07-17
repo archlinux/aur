@@ -1,17 +1,23 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgbase=libastal-lua-git
 pkgname=("libastal-lua-git" "libastal-lua51-git" "libastal-lua53-git")
-pkgver=r580.d538d8e
+pkgver=r10.ad63ffc
 pkgrel=1
+epoch=1
 pkgdesc="Lua bindings for libastal."
 arch=("x86_64")
 license=(LGPL-2.1-only)
-url="https://github.com/Aylur/astal"
+url="https://github.com/tokyob0t/astal-lua"
 makedepends=(
   "git"
   "lua-lgi" "lua51" "lua51-lgi" "lua53" "lua53-lgi"
   "luarocks")
-depends=("libastal-git" "libastal-4-git")
+depends=('gobject-introspection'
+         'libastal-io'
+         'libastal'
+         'libastal-4'
+        )
+optdepends=('libastal-meta: provides all astal libs, needed for eg bluetooth, audio, etc')
 groups=("libastal")
 provides=(libastal-lua)
 source=("git+${url}.git")
@@ -19,13 +25,13 @@ sha256sums=('SKIP')
 _rockname=astal-dev-1.rockspec
 
 pkgver(){
-  cd astal
+  cd astal-lua
   # git describe --long --tags --abbrev=7 | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 _package_lua() {
-  cd astal/lang/lua
+  cd astal-lua
 	luarocks --lua-version $1 --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest -- "$_rockname"
 }
