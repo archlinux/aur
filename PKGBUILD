@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
-pkgver=0.15.2
-pkgrel=3
+pkgver=0.15.3
+pkgrel=1
 pkgdesc="Matrix-Telegram hybrid puppeting/relaybot bridge"
 url="https://github.com/tulir/mautrix-telegram"
 # python-tulir-telethon needs exact version matching
@@ -9,7 +9,7 @@ url="https://github.com/tulir/mautrix-telegram"
 # if someone else were to maintain only one, it'd need explicit version pin
 depends=('python' 'python-asyncpg' 'python-ruamel-yaml'
 	'python-magic' 'python-commonmark' 'python-aiohttp' 'python-yarl'
-	'python-mautrix>=0.20.3' 'python-mautrix<0.21'
+	'python-mautrix>=0.20.8' 'python-mautrix<0.21'
 	'python-tulir-telethon'
 	'python-mako')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
@@ -29,7 +29,7 @@ optdepends=('ffmpeg: high quality thumbnails'
 license=('AGPLv3')
 arch=('any')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('32b517584ffe888196e816e40d9e2f748687e3b3bb386151847241c603bc7cd3'
+sha256sums=('e201b9604c04a927d12b7a23d218a32430eb4b721da555f3112e0150811a0572'
             '5745211f778be7220159f8e23f493cc819dd9290ddd81c6b83a9b5fef2a15547'
             '83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9'
             '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
