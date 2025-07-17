@@ -7,7 +7,7 @@
 _pkgname=auxilium
 pkgname=${_pkgname}-git
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool for parse args in many shell (bash, ksh,zsh)"
 arch=(any)
 url="https://auxilium.spn.109"
@@ -37,7 +37,7 @@ package()
     mkdir -p "${pkgdir}/usr/bin/ "
     mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
 
-    cp "bin/auxilium_test" "${pkgdir}/usr/bin/"
+    cp bin/auxilium_test "${pkgdir}/usr/bin/"
     chmod +x "${pkgdir}/usr/bin/auxilium_test"
-    cp "share/*" "${pkgdir}/usr/share/${_pkgname}/"
+    cp share/* "${pkgdir}/usr/share/${_pkgname}/"
 }
