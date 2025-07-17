@@ -1,6 +1,6 @@
 pkgbase = java-openjfx
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
-	pkgver = 25.24
+	pkgver = 26.0
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = java-openjfx
 	makedepends = gperf
 	makedepends = gradle
 	makedepends = gtk3
-	makedepends = java-environment-openjdk=23
+	makedepends = java-environment-openjdk=24
 	makedepends = libgl
 	makedepends = libx11
 	makedepends = libxtst
@@ -28,20 +28,20 @@ pkgbase = java-openjfx
 	makedepends = unzip
 	makedepends = zip
 	options = !lto
-	source = java-openjfx-25.24.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/25+24.tar.gz
+	source = java-openjfx-26.0.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/26+0.tar.gz
 	source = gradle.properties
 	source = java-openjfx-flags.patch
-	b2sums = 3e8ba151661a733787c301fa5cf153a177a20f60ad31634c0ad8db4a45de438a5ddb55b23035ad6e1164b93a76a16a9b7d55e146db8897c5b64511de5da2bcfa
+	b2sums = 51a8009bc6bbc5152eacd42660c19565718feda6aa892b0c8024a3a70a3f92a11813cf8469ea946349b55f65c23263cc02d13a3743206c39c09515a31ebca484
 	b2sums = 0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f
 	b2sums = 5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3
 
 pkgname = java-openjfx
-	depends = java-runtime-openjdk=23
+	depends = java-runtime-openjdk=24
 	depends = libgl
 	depends = libx11
 	depends = libxtst
 	optdepends = gtk3: GTK3 support
-	provides = java-openjfx=25
+	provides = java-openjfx=26
 
 pkgname = java-openjfx-doc
 	arch = any
