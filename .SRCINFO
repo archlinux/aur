@@ -1,7 +1,7 @@
 pkgbase = perl-math-prime-util
 	pkgdesc = Math::Prime::Util - utilities related to prime numbers, including fast sieves and factoring (ntheory)
 	pkgver = 0.73.git
-	pkgrel = 6
+	pkgrel = 7
 	url = https://metacpan.org/release/Math-Prime-Util
 	arch = i686
 	arch = x86_64
