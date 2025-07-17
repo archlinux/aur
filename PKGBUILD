@@ -1,54 +1,71 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=librsvg-git
-_pkgname=librsvg
-pkgver=2.56.90.r66.gae4efb91
+pkgver=2.60.0.r223.g822f3229a
 pkgrel=1
 epoch=2
 pkgdesc="SVG rendering library"
 url="https://wiki.gnome.org/Projects/LibRsvg"
-arch=(x86_64 i686)
-license=(LGPL)
-depends=(gdk-pixbuf2 pango)
-makedepends=(gobject-introspection vala git rust python-docutils gi-docgen)
-provides=(librsvg-${pkgver%%.*}.so "${_pkgname}=${pkgver%%.r*}-${pkgrel}")
-conflicts=("${_pkgname}")
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
+arch=(x86_64)
+license=(LGPL-2.1-or-later)
+depends=(
+  cairo
+  dav1d
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  harfbuzz
+  libxml2
+  pango
+)
+makedepends=(
+  cargo-c
+  gi-docgen
+  git
+  gobject-introspection
+  llvm
+  meson
+  python-docutils
+  rust
+  vala
+)
+provides=(librsvg-${pkgver%%.*}.so "${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://gitlab.gnome.org/GNOME/librsvg.git")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed -r 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,[-_],.,g'
-}
-
-prepare() {
-  cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
-}
 
 # Use LTO
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 
-build() {
-  cd $pkgname
-  ./configure --prefix=/usr --disable-static --enable-vala \
-    --enable-gtk-doc
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-  make
+# Use debug
+export CARGO_PROFILE_RELEASE_DEBUG=2
+
+pkgver() {
+  cd "${pkgname%-git}"
+  git describe --tags | sed -r 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,[-_],.,g'
 }
 
-check() {
-  cd $pkgname
-  # Test suite is very dependent on the versions of
-  # Cairo, Pango, FreeType and HarfBuzz
-  make check || :
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  local meson_options=(
+    -D avif=enabled
+  )
+
+  arch-meson librsvg build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir" --no-rebuild
 }
 
 # vim:set sw=2 et:
