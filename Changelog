@@ -1,9 +1,12 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.2.2 ➙ 3.6.0
+ Tags         : 3.2.2 ➙ HEAD
               : 2025-05-19 ➙ 2025-07-16
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-07-16   : HEAD
+                update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-07-16   : 3.6.0
                 Add net_to_cidr()
