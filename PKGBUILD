@@ -8,7 +8,7 @@
 # Contributor: zer0def <zer0def@github>
 
 pkgname=salt
-pkgver=3007.4
+pkgver=3007.6
 pkgrel=1
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
@@ -69,13 +69,15 @@ source=(
   has_crypt.patch
   salt-call
 )
-sha256sums=('4fb7b6455949686517dc895a7c5a42d922e00fdae25da9549f737e2e2101f4af'
-            'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-            '58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236'
-            'fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a'
-            'f9ab2f18fbf85c8a0ebba6aa88fe415f993ca377aaa0f3541b32d29f0d690c5a'
-            '556c2b7e31eab0cd2393dfb4a8a84275508621f301418d35488a6dd0ea86b5a3'
-            '00ec669399c737bd30683c8ac62965520ebbe3b9b3a50884004b923797ad6a72')
+sha256sums=(
+  '176a8b97c43c50ed87df12279b3dd248bbb6ab48cd32b2de90f45234c7c4d094'
+  'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
+  '58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236'
+  'fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a'
+  'f9ab2f18fbf85c8a0ebba6aa88fe415f993ca377aaa0f3541b32d29f0d690c5a'
+  '556c2b7e31eab0cd2393dfb4a8a84275508621f301418d35488a6dd0ea86b5a3'
+  '00ec669399c737bd30683c8ac62965520ebbe3b9b3a50884004b923797ad6a72'
+)
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,2 +1,4 @@
 salt-*.tar.gz
-
+salt-*any.pkg.tar.zst
+pkg
+src
