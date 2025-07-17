@@ -1,0 +1,19 @@
+pkgbase = python-chirpstack-api
+	pkgdesc = ChirpStack gRPC API message and service wrappers for Python
+	pkgver = 4.13.0
+	pkgrel = 1
+	url = https://pypi.org/project/chirpstack-api/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-grpcio-tools
+	depends = python
+	depends = python-grpcio
+	depends = python-google-api-core
+	source = https://github.com/chirpstack/chirpstack/archive/refs/tags/v4.13.0.tar.gz
+	md5sums = 1aff2a683e8766ccdbe7e80629153d6c
+
+pkgname = python-chirpstack-api
