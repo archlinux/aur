@@ -1,7 +1,7 @@
 # Maintainer: rutra
 pkgname=forge-gui-desktop-git
 _pkgname=forge-gui-desktop
-pkgver=2.0.05.snapshot.07.15
+pkgver=2.0.05.snapshot.07.16
 pkgrel=1
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI (daily snapshot)"
 arch=('any')
