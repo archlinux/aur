@@ -1,29 +1,63 @@
 post_install() {
-  echo "To setup Mastodon, enable and start PostgreSQL and Redis:
-# systemctl enable --now postgresql redis
-Create the Mastodon PostgreSQL user and grant it the ability to create databases with:
-# sudo -u postgres createuser -d mastodon
-Then, run:
-# cd /var/lib/mastodon
-# sudo chown mastodon:mastodon -R .
-# sudo -u mastodon corepack enable --install-directory . yarn
-# sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=./:$PATH bundle exec rails mastodon:setup
-Finally, enable and start all the required services:
-# systemctl enable --now mastodon.target"
+	echo "##########################################"
+	echo "### Mastodon Installation Instructions ###"
+	echo "##########################################"
+	echo
+	echo "### To setup Mastodon, enable and start PostgreSQL and Redis ###"
+	echo "systemctl enable --now postgresql redis"
+	echo
+	echo "### Create the Mastodon PostgreSQL user and grant it the ability to create databases with ###"
+	echo "sudo -u postgres createuser -d mastodon"
+	echo
+	echo "### Then, run the following commands ###"
+	echo "cd /var/lib/mastodon"
+	echo "sudo chown mastodon:mastodon -R ."
+	echo "sudo -u mastodon corepack enable --install-directory . yarn"
+	echo "sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=./:$PATH bundle exec rails mastodon:setup"
+	echo
+	echo "Afterwards, check if your nginx is properly setup. Please orient yourself on this file: https://github.com/mastodon/mastodon/blob/main/dist/nginx.conf"
+	echo "Other Reverse Proxy are _not_ supported by upstream. Use them on your own and expect them to not work or fail after updates"
+	echo
+	echo "And if you want an working search, it is highly recommended to also install OpenSearch and setup that package before continuing here"
+	echo
+	echo "### Finally, enable and start all the required services ###"
+	echo "systemctl enable --now mastodon.target"
 }
 
 post_upgrade() {
-  cd /var/lib/mastodon
-
-  echo "For the 4.2 to 4.3 update, generate new encryption secrets:
-# sudo -u mastodon sh -c \"cd /var/lib/mastodon && RAILS_ENV=production bin/rails db:encryption:init\"
-And add them and MASTODON_USE_LIBVIPS=true to /etc/mastodon.conf"
-
-  echo "Setting ownership of mastodon files"
-  find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +
-  echo "Upgrading database schema"
-  sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate
-  echo "Precompiling assets"
-  sudo -u mastodon corepack enable --install-directory . yarn
-  sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=./:$PATH bundle exec rails assets:precompile
+	echo "#####################################"
+	echo "### Mastodon Upgrade Instructions ###"
+	echo "#####################################"
+	echo
+	echo "### No matter which version you're coming from, First go into the mastodon directory and set the ownership ###"
+	echo "cd /var/lib/mastodon; find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
+	echo
+	echo "#########################################"
+	echo "### For people who are already at 4.4 ###"
+	echo "#########################################"
+	echo
+	echo "### Precompile the assets ###"
+	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
+	echo
+	echo "### And restart all services ###"
+	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo
+	echo "#####################################"
+	echo "### For people upgrading from 4.3 ###"
+	echo "#####################################"
+	echo
+	echo "### Precompile the assets ###"
+	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
+	echo
+	echo "### Migrate the Database (Step 1) ###"
+	echo "sudo -u mastodon SKIP_POST_DEPLOYMENT_MIGRATIONS=true RAILS_ENV=production bundle exec rails db:migrate"
+	echo
+	echo "### Now restart the mastodon services ###"
+	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo
+	echo "### Migrate the Database (Step 2) ###"
+	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate"
+	echo
+	echo "### If you use OpenSearch, you also have to do this ###"
+	echo "sudo -u mastodon RAILS_ENV=production bin/tootctl search deploy --only-mapping --only=accounts"
 }
