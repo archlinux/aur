@@ -1,6 +1,6 @@
 pkgbase = spectroterm
 	pkgdesc = Curses based terminal spectrum analyzer for currently playing audio
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/mzivic7/spectroterm
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = spectroterm
 	provides = spectroterm
 	conflicts = spectroterm
 	options = !strip
-	source = spectroterm.tar.gz::https://github.com/mzivic7/spectroterm/releases/download/0.4.7/spectroterm-0.4.7-linux.tar.gz
+	source = spectroterm.tar.gz::https://github.com/mzivic7/spectroterm/releases/download/0.4.8/spectroterm-0.4.8-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = spectroterm
