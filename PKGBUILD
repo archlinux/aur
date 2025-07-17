@@ -2,7 +2,7 @@
 
 pkgname=lcevcdec
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -17,16 +17,10 @@ makedepends=(
     'range-v3'
     'rapidjson')
 options=('!emptydirs')
-source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}"
-        '010-lcevcdec-disable-avx.patch')
-sha256sums=('0113f50cdde2e07bbad9bf643a0921865b2fc04ee2e23964f74e713e027dd4e4'
-            '71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76')
+source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}")
+sha256sums=('0113f50cdde2e07bbad9bf643a0921865b2fc04ee2e23964f74e713e027dd4e4')
 
 export GIT_LFS_SKIP_SMUDGE='1'
-
-prepare() {
-    patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-disable-avx.patch"
-}
 
 build() {
     export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
@@ -37,7 +31,8 @@ build() {
         -DVN_SDK_AVX2:BOOL='OFF' \
         -DVN_SDK_EXECUTABLES:BOOL='OFF' \
         -DVN_SDK_SAMPLE_SOURCE:BOOL='OFF' \
-        -DVN_SDK_SSE:BOOL='OFF' \
+        -DVN_SDK_SIMD:BOOL='ON' \
+        -DVN_SDK_SSE:BOOL='ON' \
         -DVN_SDK_UNIT_TESTS:BOOL='OFF' \
         -Wno-dev
     cmake --build build
