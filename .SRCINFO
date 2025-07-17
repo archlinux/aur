@@ -2,13 +2,15 @@ pkgbase = spectroterm-git
 	pkgdesc = Curses based terminal spectrum analyzer for currently playing audio
 	pkgver = 0.4.7
 	pkgrel = 1
-	url = https://github.com/mzivic7/spectroterm-git
+	url = https://github.com/mzivic7/spectroterm
 	arch = any
 	license = GPL
-	makedepends = python>=3.11
-	makedepends = python-pipenv
+	makedepends = python>=3.12
+	makedepends = uv
 	makedepends = git
-	source = git+https://github.com/mzivic7/spectroterm-git.git
+	provides = spectroterm
+	conflicts = spectroterm
+	source = git+https://github.com/mzivic7/spectroterm.git
 	sha256sums = SKIP
 
 pkgname = spectroterm-git
