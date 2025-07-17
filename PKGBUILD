@@ -3,7 +3,7 @@
 
 pkgname='perl-math-gmpq'
 pkgver='0.67'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Math::GMPq - perl interface to the GMP library's rational (mpq) functions."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
