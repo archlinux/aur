@@ -1,6 +1,6 @@
 pkgbase = onlook-bin
 	pkgdesc = The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.2.31
+	pkgver = 0.2.32
 	pkgrel = 1
 	url = https://onlook.dev/
 	arch = aarch64
@@ -10,13 +10,13 @@ pkgbase = onlook-bin
 	depends = electron36
 	depends = python
 	depends = bun
-	provides = onlook=0.2.31
+	provides = onlook=0.2.32
 	conflicts = onlook
 	source = onlook.sh
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = onlook-0.2.31-aarch64.deb::https://github.com/onlook-dev/studio/releases/download/v0.2.31/Onlook-arm64.deb
-	sha256sums_aarch64 = 0fe699d82277c127100e4426229b36c191db830b9ad8807fbf5ee7a155527358
-	source_x86_64 = onlook-0.2.31-x86_64.deb::https://github.com/onlook-dev/studio/releases/download/v0.2.31/Onlook-amd64.deb
-	sha256sums_x86_64 = 6754866ce54495dbf91167a2b28a44c2a9ee5ddfe2dbedf779a05b3664f2d1d6
+	source_aarch64 = onlook-0.2.32-aarch64.deb::https://github.com/onlook-dev/studio/releases/download/v0.2.32/Onlook-arm64.deb
+	sha256sums_aarch64 = 7f9219f3f18d11db632b838944c7ea9a1e493fe3f877936491b77a64a2493a2e
+	source_x86_64 = onlook-0.2.32-x86_64.deb::https://github.com/onlook-dev/studio/releases/download/v0.2.32/Onlook-amd64.deb
+	sha256sums_x86_64 = a0b1fd0f8d55df6ee9102edf94e0f81d7e4c108a905498e7918bdcb7b13bfc62
 
 pkgname = onlook-bin

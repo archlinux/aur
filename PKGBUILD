@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-bin
 _pkgname=Onlook
-pkgver=0.2.31
+pkgver=0.2.32
 _electronversion=36
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Prebuilt version.Use system-wide electron)"
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-amd64.deb")
 sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('0fe699d82277c127100e4426229b36c191db830b9ad8807fbf5ee7a155527358')
-sha256sums_x86_64=('6754866ce54495dbf91167a2b28a44c2a9ee5ddfe2dbedf779a05b3664f2d1d6')
+sha256sums_aarch64=('7f9219f3f18d11db632b838944c7ea9a1e493fe3f877936491b77a64a2493a2e')
+sha256sums_x86_64=('a0b1fd0f8d55df6ee9102edf94e0f81d7e4c108a905498e7918bdcb7b13bfc62')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
