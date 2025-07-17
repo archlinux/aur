@@ -5,8 +5,8 @@
 
 _gitname=fast-syntax-highlighting
 pkgname=zsh-$_gitname
-pkgver=1.55
-pkgrel=2
+pkgver=1.56
+pkgrel=1
 pkgdesc='Optimized and extended zsh-syntax-highlighting'
 arch=('any')
 url='https://github.com/zdharma-continuum/fast-syntax-highlighting'
@@ -28,7 +28,6 @@ package() {
   install -dm0755 ${_plugindir}
   cp -r ${_srcdir} ${_plugindir}
   rm -rf ${_plugindir}/${_gitname}/.git
-  echo ${_plugindir}/${_gitname}/.git
 
   install -dm755 ${_licdir}
   install -m0644 ${_srcdir}/LICENSE ${_licdir}
