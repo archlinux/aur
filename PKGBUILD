@@ -4,7 +4,7 @@
 pkgname=perl-uuid
 _dist=UUID
 pkgver=0.37
-pkgrel=1
+pkgrel=2
 pkgdesc='Universally Unique Identifier library for Perl'
 license=(Artistic-2.0)
 
