@@ -1,13 +1,13 @@
 pkgbase = rtl8xxxu-dkms-git
 	pkgdesc = Driver for Realtek 802.11n USB wireless chips
-	pkgver = r65.087209b
+	pkgver = r71.eb876f4
 	pkgrel = 1
 	url = https://github.com/a5a5aa555oo/rtl8xxxu
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	depends = linux-firmware>=20230625.ee91452d-1
+	depends = linux-firmware-realtek
 	optdepends = usb_modeswitch: For RTL8188GU/RTL8192FU users, use this tool to switch the adapter to wifi mode if needed.
 	source = git+https://github.com/a5a5aa555oo/rtl8xxxu
 	sha256sums = SKIP

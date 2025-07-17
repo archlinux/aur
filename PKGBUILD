@@ -2,13 +2,13 @@
 
 _pkgbase=rtl8xxxu
 pkgname=rtl8xxxu-dkms-git
-pkgver=r65.087209b
+pkgver=r71.eb876f4
 pkgrel=1
 pkgdesc="Driver for Realtek 802.11n USB wireless chips"
 arch=('any')
 url="https://github.com/a5a5aa555oo/rtl8xxxu"
 license=('GPL2')
-depends=('dkms' 'linux-firmware>=20230625.ee91452d-1')
+depends=('dkms' 'linux-firmware-realtek')
 makedepends=('git')
 source=("git+https://github.com/a5a5aa555oo/rtl8xxxu")
 sha256sums=('SKIP')
