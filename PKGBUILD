@@ -36,7 +36,7 @@ package() {
 
 	# Create symlink in /usr/bin
 	install -Ddm755 "$pkgdir/usr/bin"
-	ln -s $app_bin "$pkgdir/usr/bin/wtq"
+	ln -s "/opt/wtq/wtq" "$pkgdir/usr/bin/wtq"
 
 	# Create .desktop file
 	install -d "$pkgdir/usr/share/applications"
