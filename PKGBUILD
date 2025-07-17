@@ -1,7 +1,7 @@
 # Maintainer: rutra
 pkgname=forge-gui-desktop-git
 _pkgname=forge-gui-desktop
-pkgver=2.0.05.snapshot.07.15
+pkgver=2.0.05.snapshot.07.16
 pkgrel=1
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI (daily snapshot)"
 arch=('any')
@@ -14,80 +14,37 @@ source=("AppIcon.png::https://github.com/Card-Forge/forge/raw/master/AppIcon.png
 sha256sums=('SKIP')
 
 pkgver() {
-    local api_response version_url version_content formatted
-
-    api_response=$(curl -sLf "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots") || {
-        echo "ERROR: Failed to fetch API data" >&2
-        return 1
-    }
-
+    local api_response version_url version_content
+    api_response=$(curl -sLf "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots") || return 1
     version_url=$(echo "$api_response" | jq -r '.assets[] | select(.name == "version.txt") | .browser_download_url')
-    if [[ -z "$version_url" || "$version_url" == "null" ]]; then
-        echo "ERROR: version.txt URL not found" >&2
-        return 1
-    fi
-
-    version_content=$(curl -sLf "$version_url") || {
-        echo "ERROR: Could not fetch version.txt" >&2
-        return 1
-    }
-
-    formatted=$(echo "$version_content" | sed -E 's/-SNAPSHOT-/.snapshot./; s/-//g')
-    if [[ -z "$formatted" ]]; then
-        echo "ERROR: Version transformation failed" >&2
-        return 1
-    fi
-
-    echo "$formatted"
+    [[ -z "$version_url" || "$version_url" == "null" ]] && return 1
+    version_content=$(curl -sLf "$version_url") || return 1
+    echo "$version_content" | sed -E 's/-SNAPSHOT-/.snapshot./; s/-//g'
 }
 
 prepare() {
     cd "$srcdir"
-    echo "Fetching latest snapshot info..."
-
     api_response=$(curl -s "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots")
-
     tarball_url=$(echo "$api_response" | jq -r '.assets[] | select(.name | startswith("forge-installer") and endswith(".tar.bz2")) | .browser_download_url' | head -n 1)
-
-    if [[ -z "$tarball_url" || "$tarball_url" == "null" ]]; then
-        echo "ERROR: No snapshot tarball found" >&2
-        exit 1
-    fi
-
-    tarball_name=$(basename "$tarball_url")
-    echo "Downloading: $tarball_name"
-    curl -Lf -o "$tarball_name" "$tarball_url"
-
-    echo "Extracting: $tarball_name"
-    mkdir -p snapshot
-    tar -xjf "$tarball_name" -C snapshot
+    [[ -z "$tarball_url" || "$tarball_url" == "null" ]] && exit 1
+    curl -Lf -o "$(basename "$tarball_url")" "$tarball_url"
+    tar -xjf "$(basename "$tarball_url")"
 }
 
-
 package() {
-    cd "$srcdir/snapshot"
-
+    cd "$srcdir"
     jar_file=$(find . -name 'forge-gui-desktop-*-jar-with-dependencies.jar' | head -n 1)
-    if [[ -z "$jar_file" ]]; then
-        echo "ERROR: JAR file not found" >&2
-        exit 1
-    fi
+    [[ -z "$jar_file" ]] && exit 1
 
     install -d -m0755 "$pkgdir/usr/share/$_pkgname/res"
     cp -r res/* "$pkgdir/usr/share/$_pkgname/res"
-
     install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
-    install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    install -Dm0644 "$srcdir/AppIcon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
     install -Dm0644 "$jar_file" "$pkgdir/usr/share/java/$_pkgname.jar"
 
     _startfile="$pkgdir/usr/bin/$_pkgname.sh"
-    install -Dm0755 /dev/stdin "$_startfile" <<END
-#!/bin/sh
-cd "/usr/share/$_pkgname"
-exec /usr/bin/java -Xmx1024m -jar "/usr/share/java/$_pkgname.jar"
-END
-
     _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
+
     install -Dm0644 /dev/stdin "$_deskfile" <<END
 [Desktop Entry]
 Name=MTG Forge (Snapshot)
@@ -99,5 +56,11 @@ Categories=Game;
 Keywords=mtg magic gathering
 Icon=$_pkgname
 END
-}
 
+    install -Dm0644 /dev/stdin "$_startfile" <<END
+#!/bin/sh
+cd "/usr/share/$_pkgname"
+exec /usr/bin/java -Xmx1024m -jar '/usr/share/java/$_pkgname.jar'
+END
+    chmod +x "$_startfile"
+}
