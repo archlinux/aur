@@ -3,7 +3,7 @@
 pkgname=cosu-trainer-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Change various parameters of an osu! map easily"
 arch=(x86_64)
 url="https://github.com/hwsmm/cosutrainer"
