@@ -4,8 +4,8 @@
 #
 pkgname=py-nvfan
 _origpkgname=py_nvfan
-pkgver=0.1.20
-pkgrel=2
+pkgver=0.1.22
+pkgrel=1
 pkgdesc="Automatic Fan Control for NVIDIA Graphics Cards Based on Temperature."
 arch=("x86_64")
 url='https://pypi.org/project/py-nvfan/'
@@ -22,8 +22,8 @@ makedepends=(
   "python-setuptools"
   "python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/10/48/05a4defa4a73aa13cb217b117876a33d6a36e2a613c24eda9366f15e8dab/py_nvfan-0.1.20.tar.gz")
-sha256sums=("befc69c9761398eedd7a888702245e43554ef07a432fcc13f8244d701d019099")
+source=("https://files.pythonhosted.org/packages/bf/ec/1b263043a86b54ab971fa90ee7cd1d6a67c3ac7fac49c3d5155713d63b66/py_nvfan-0.1.22.tar.gz")
+sha256sums=("f20e8906f69991c89f5368dd15c91376220ed765a5b749429da1e792823a037e")
 package() {
   cd "${_origpkgname}-${pkgver}" || exit
   python -m build --wheel --no-isolation
