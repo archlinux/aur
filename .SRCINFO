@@ -1,6 +1,6 @@
 pkgbase = spectroterm-git
 	pkgdesc = Curses based terminal spectrum analyzer for currently playing audio
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/mzivic7/spectroterm
 	arch = any
