@@ -1,10 +1,10 @@
 pkgbase = webledger
 	pkgdesc = Web based ledger
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/jnphilipp/ledger
 	arch = any
-	license = GPL3+
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = help2man
 	depends = python
