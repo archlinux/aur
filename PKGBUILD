@@ -3,7 +3,7 @@
 
 pkgname='perl-math-bigint-gmp'
 pkgver='1.7003'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Math::BigInt::GMP - backend library for Math::BigInt etc. based on GMP"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
