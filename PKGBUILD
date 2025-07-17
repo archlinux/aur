@@ -1,35 +1,42 @@
-#!/usr/bin/env bash
-# Maintainer: Joshua Hoeflich
+# shellcheck shell=bash disable=SC2034,SC2154
+# Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=lsr-git
-__repo_name__=lsr
-pkgver=main
+pkgver=v1.0.0.r17.g833935b
 pkgrel=1
-pkgdesc="Recursively list files in directories."
+pkgdesc="ls but with io_uring"
 arch=('x86_64')
-url="https://github.com/joshuahoeflich/lsr"
+url="https://github.com/rockorager/lsr.git"
 license=('MIT')
-groups=()
-depends=()
-makedepends=('cargo')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/joshuahoeflich/${__repo_name__}/archive/main.tar.gz")
-noextract=()
-md5sums=('da8293111d8ae975b31bceeab71e89d5')
+makedepends=('zig>=0.15.1')
+source=("$pkgname::git+$url")
+md5sums=('SKIP')
+provides=('lsr')
+conflicts=('lsr')
+
+pkgver() {
+  cd "$pkgname" || exit 1
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$pkgname" || exit 1
+  export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache/"
+  zig build --fetch
+}
 
 build() {
-  cd "${__repo_name__}-$pkgver"
-  cargo build --release
+  cd "$pkgname" || exit 1
+  DESTDIR=build zig build \
+                --summary all \
+                --prefix "/usr" \
+                --system "$srcdir/zig-global-cache/p" \
+                -Doptimize=ReleaseFast
 }
 
 package() {
-  cd "${__repo_name__}-$pkgver"
-  mkdir -p "$pkgdir"/usr/bin
-  cp target/release/lsr "$pkgdir"/usr/bin
+  cd "$pkgname" || exit 1
+  cp -a build/* "$pkgdir/"
 }
+
+# vim:set ts=2 sw=2 et:
+

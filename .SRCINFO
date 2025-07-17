@@ -1,13 +1,14 @@
 pkgbase = lsr-git
-	pkgdesc = Recursively list files in directories.
-	pkgver = main
+	pkgdesc = ls but with io_uring
+	pkgver = v1.0.0.r17.g833935b
 	pkgrel = 1
-	url = https://github.com/joshuahoeflich/lsr
+	url = https://github.com/rockorager/lsr.git
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	source = https://github.com/joshuahoeflich/lsr/archive/main.tar.gz
-	md5sums = da8293111d8ae975b31bceeab71e89d5
+	makedepends = zig>=0.15.1
+	provides = lsr
+	conflicts = lsr
+	source = lsr-git::git+https://github.com/rockorager/lsr.git
+	md5sums = SKIP
 
 pkgname = lsr-git
-
