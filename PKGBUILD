@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=stunner
-pkgver=0.0.10
-_commit=4c26e4972df966bf954a9ec73c4f79841b905971
+pkgver=0.0.11
+_commit=1db6460188f1020c843d4084c486044a4258ed1b
 pkgrel=1
 pkgdesc="Detect your NAT quickly and easily"
 arch=('x86_64')
