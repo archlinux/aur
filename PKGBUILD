@@ -4,8 +4,8 @@
 #
 pkgname=niripwmenu
 _origpkgname=niripwmenu
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="A modern powermenu for Niri Scrollable-Tiling Wayland compositor."
 arch=("x86_64")
 url='https://pypi.org/project/niripwmenu/'
@@ -25,8 +25,8 @@ makedepends=(
   "python-setuptools"
   "python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/ee/06/aa004e35792a605c8127b2b16465bb72de71d50f5e6ff1d2e1385f7254d1/niripwmenu-0.1.2.tar.gz")
-sha256sums=("f854a46842881fbc4757ff5b9ba334a6e9ae0b2c024e15ac21f8c91aa1e5ec5c")
+source=("https://files.pythonhosted.org/packages/08/28/91b9079d513dac8b6534868b831a6ac6cf8e194754b153ea39a3a1aeb5fd/niripwmenu-0.1.4.tar.gz")
+sha256sums=("955d6f3aeabedd016f9a22187d6b87dd87c01270ebed41678ed2645800bb1fea")
 package() {
   cd "${_origpkgname}-${pkgver}" || exit
   python -m build --wheel --no-isolation
