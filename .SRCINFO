@@ -1,0 +1,12 @@
+pkgbase = lsr
+	pkgdesc = ls but with io_uring
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://tangled.sh/@rockorager.dev/lsr
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.14.0
+	source = lsr::git+https://tangled.sh/@rockorager.dev/lsr#tag=v1.0.0
+	md5sums = 06e83941f97dc95bf825dd67fc05948a
+
+pkgname = lsr
