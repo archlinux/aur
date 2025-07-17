@@ -1,4 +1,4 @@
-pkgname=izumi
+pkgname=izumi-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Izumi is an instruction pipeline visualizer for Onikiri2-Kanata format based on Konata."

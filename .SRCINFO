@@ -1,4 +1,4 @@
-pkgbase = izumi
+pkgbase = izumi-git
 	pkgdesc = Izumi is an instruction pipeline visualizer for Onikiri2-Kanata format based on Konata.
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = izumi
 	source = git+https://github.com/theOfficeCat/izumi.git
 	sha256sums = SKIP
 
-pkgname = izumi
+pkgname = izumi-git
