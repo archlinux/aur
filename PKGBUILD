@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.4.11
+pkgver=1.5.1
 _electron=electron36
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -29,8 +29,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('0c2de9a9f2fe82c06b22711b0037641926e93816fd3f17bb942e148a70fd09f0'
-    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('0e689bb2b06adb2d8fb280954092b9aa06c9f954f457532e5a48660df8d83783'
+            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
@@ -42,7 +42,7 @@ prepare() {
     local electronDist="/usr/lib/${_electron}"
     local electronVersion="$(<$electronDist/version)"
     # electron@36.7.1 not found on npm,
-    electronVersion="${electronVersion%.*}.0"
+    # electronVersion="${electronVersion%.*}.0"
     jq ".devDependencies.electron = \"$electronVersion\"" package.json |
         jq ".build.electronDist = \"$electronDist\"" |
         jq ".build.electronVersion = \"$electronVersion\"" |
