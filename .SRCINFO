@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.4.2::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.2
+	source = pydantic-ai-0.4.3::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.3
 	source = server.md
-	sha256sums = 191f80c458f29f56dff1363946b9b17971a71573c028b9f75078993dafa55977
+	sha256sums = ba965fbdb1e54daaa7188bba75d1bd80a67d0c8a49daf623fc03e517d4aef8af
 	sha256sums = 93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49
 
 pkgname = python-pydantic-graph
@@ -68,7 +68,9 @@ pkgname = python-pydantic-ai-slim
 	optdepends = python-groq: groq
 	optdepends = python-mistralai: mistral
 	optdepends = python-boto3: bedrock
-	optdepends = python-duckduckgo-search: duckduckgo
+	optdepends = python-huggingface-hub: huggingface
+	optdepends = python-aiohttp: huggingface
+	optdepends = python-ddgs: duckduckgo
 	optdepends = python-tavily: tavily
 	optdepends = python-rich: cli
 	optdepends = python-prompt-toolkit: cli
@@ -119,6 +121,8 @@ pkgname = python-pydantic-ai
 	depends = python-mistralai
 	depends = python-cohere
 	depends = python-boto3
+	depends = python-huggingface-hub
+	depends = python-aiohttp
 	depends = python-rich
 	depends = python-prompt-toolkit
 	depends = python-argcomplete

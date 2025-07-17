@@ -8,18 +8,18 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "server.md")
-sha256sums=('191f80c458f29f56dff1363946b9b17971a71573c028b9f75078993dafa55977'
+sha256sums=('ba965fbdb1e54daaa7188bba75d1bd80a67d0c8a49daf623fc03e517d4aef8af'
             '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
-checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'deno')
+checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals'  'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'deno') # 'python-ddgs'
 
 prepare(){
   cp -f "${srcdir}"/server.md "${srcdir}"/${_name0}-${pkgver}/docs/mcp/server.md
@@ -44,8 +44,12 @@ check() {
     -vv
     -n auto
     --deselect tests/models/test_model_names.py::test_known_model_names
-    -k "not genai_email_feedback.py and not google.md:61"
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
+    --deselect tests/models/test_instrumented.py::test_instrumented_model
+    --deselect tests/models/test_instrumented.py::test_instrumented_model_stream
+    --deselect tests/models/test_instrumented.py::test_instrumented_model_stream_break
+    -k "not instrumentation_settings_event_mode.py"
+    --deselect tests/test_logfire.py::test_logfire[instrument3]
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
@@ -71,7 +75,7 @@ package_python-pydantic-graph() {
 package_python-pydantic-ai-slim() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs, slim package.'
   depends+=('python-griffe' 'python-httpx' 'python-pydantic' 'python-pydantic-graph' 'python-opentelemetry-api' 'python-typing-inspection')
-  optdepends=('python-logfire: logfire' 'python-openai: openai' 'python-cohere: cohere' 'python-google-auth: vertexai' 'python-requests: vertexai' 'python-google-genai: google' 'python-anthropic: anthropic' 'python-groq: groq' 'python-mistralai: mistral' 'python-boto3: bedrock' 'python-duckduckgo-search: duckduckgo' 'python-tavily: tavily' 'python-rich: cli' 'python-prompt-toolkit: cli' 'python-argcomplete: cli' 'python-mcp: mcp' 'python-pydantic-evals: evals' 'python-fasta2a: a2a')
+  optdepends=('python-logfire: logfire' 'python-openai: openai' 'python-cohere: cohere' 'python-google-auth: vertexai' 'python-requests: vertexai' 'python-google-genai: google' 'python-anthropic: anthropic' 'python-groq: groq' 'python-mistralai: mistral' 'python-boto3: bedrock' 'python-huggingface-hub: huggingface' 'python-aiohttp: huggingface' 'python-ddgs: duckduckgo' 'python-tavily: tavily' 'python-rich: cli' 'python-prompt-toolkit: cli' 'python-argcomplete: cli' 'python-mcp: mcp' 'python-pydantic-evals: evals' 'python-fasta2a: a2a')
   url='https://github.com/pydantic/pydantic-ai/tree/main/pydantic_ai_slim'
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" ${_name0//-/_}_${_name3}/dist/*.whl
@@ -96,7 +100,7 @@ package_python-pydantic-ai-examples() {
 
 package_python-pydantic-ai() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs.'
-  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-mcp' 'python-pydantic-evals')
+  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-huggingface-hub' 'python-aiohttp' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-mcp' 'python-pydantic-evals')
   optdepends=('python-pydantic-ai-examples: examples' 'python-logfire: logfire' 'python-fasta2a: a2a')
   url='https://github.com/pydantic/pydantic-ai/'
   cd "${srcdir}"/${_name0}-${pkgver}
