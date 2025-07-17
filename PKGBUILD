@@ -2,7 +2,7 @@
 
 pkgname=frzr-sk
 _pkgname=frzr
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
