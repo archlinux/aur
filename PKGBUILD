@@ -11,12 +11,12 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname"
+  cd izumi
   meson setup build
   meson compile -C build
 }
 
 package() {
-  cd "$pkgname"
+  cd izumi
   meson install -C build --destdir "$pkgdir"
 }
