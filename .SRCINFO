@@ -1,0 +1,18 @@
+pkgbase = python-imagebackup
+	pkgdesc = vntfsclone, vpartclone & vpartimage - Mount Image Backups as Virtual Partitions
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/joergmlpts/imagebackup
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-lz4
+	depends = python-tqdm
+	depends = python-pyfuse3
+	depends = python-zstandard
+	source = imagebackup-0.2.1.tar.gz::https://github.com/joergmlpts/imagebackup/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 9d10e6487278b00b495da9cbd422534cb2875f167c6bee0dbec3cff2150aa5fe
+
+pkgname = python-imagebackup
