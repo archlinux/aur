@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.16.3
+pkgver=5.16.4
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -51,7 +51,7 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
-  gperf # for tde2e
+  gperf    # for tde2e
   jemalloc # gio error when absent
   libtg_owt
   microsoft-gsl
@@ -82,7 +82,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  '45aec3b204dbedac43cc5b8b5d7fa8663a92292c5da31f663a969c3f1bb2cf3f'
+  'ebf53b4dd4aeafbbc2a6b73a349c26a402e5c6edcc3b096df1e42536bcf48530'
   'SKIP'
 )
 
