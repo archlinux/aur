@@ -1,29 +1,28 @@
 # Maintainer: BrainDamage
 
 pkgname=python-tulir-telethon
-pkgver=1.37.0a1
+pkgver=1.99.0a6
 pkgrel=1
 pkgdesc="fork of Telethon library with custom patches from Tulir"
 arch=('any')
 url="https://github.com/tulir/Telethon"
 license=('MIT')
-depends=('python-pyaes' 'python-rsa')
+depends=('python' 'python-pyaes' 'python-rsa')
+makedepends=(python-build python-installer python-wheel python-setuptools)
 provides=('python-telethon')
 conflicts=('python-telethon')
 optdepends=('python-cryptg' 'python-pysocks' 'python-hachoir' 'python-pillow')
 
-sha256sums=('15c90c1ea19a06caaf15bac49c35aa240406f23fdeb98d8da287ac9f157a29c7')
+sha256sums=('7b0a9ceace715eab9925365506c1661de6a604b0f0e8f9d348d7264cd283d2c9')
 
-_dirname="${pkgname#python-}-${pkgver}"
-_basename="${pkgname#python-}"
+_basename="tulir_telethon"
+_dirname="${_basename}-${pkgver}"
 
-# template start; name=pythonhosted; version=1;
+
+
 source=("https://files.pythonhosted.org/packages/source/${_basename::1}/${_basename}/${_basename}-${pkgver}.tar.gz")
-# template end;
 
-# template start; name=python-wheel; version=1;
-depends+=('python')
-makedepends+=(python-build python-installer python-wheel python-setuptools)
+
 
 build() {
 	cd "${srcdir}/${_dirname}"
@@ -39,4 +38,3 @@ package() {
 	find . -maxdepth 1 -iname 'README*' -exec install -Dvm 644 {} -t "${pkgdir}/usr/share/doc/${_basename}" \;
 	find . -maxdepth 1 -iname 'LICENSE*' -exec install -Dvm 644 {} -t "${pkgdir}/usr/share/licenses/${_basename}" \;
 }
-# template end;
