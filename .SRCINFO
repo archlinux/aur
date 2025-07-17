@@ -1,0 +1,14 @@
+pkgbase = python-databpy
+	pkgdesc = A set of data-oriented wrappers around the python API of Blender.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://bradyajohnston.github.io/databpy/
+	arch = any
+	license = GPL
+	depends = python-numpy
+	depends = blender
+	options = !emptydirs
+	source = https://pypi.io/packages/source/d/databpy/databpy-0.1.0.tar.gz
+	sha256sums = 45aa729474a64f3f51eaa5d0e34d4748104b395b1c569ec5869252f4389aa35f
+
+pkgname = python-databpy
