@@ -3,7 +3,7 @@
 pkgname=perl-pdl-transform-color
 _dist=PDL-Transform-Color
 pkgver=1.010
-pkgrel=1
+pkgrel=2
 pkgdesc='Useful color system conversions for PDL'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
