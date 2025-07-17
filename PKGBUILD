@@ -1,12 +1,12 @@
 # Maintainer: Paul Clark <paul500clark at gmail dot com>
 pkgname=perl-tk-xft
 pkgver=804.036
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical user interface toolkit for Perl with libxft support"
 arch=('x86_64')
 url="https://search.cpan.org/dist/Tk"
 license=('PerlArtistic' 'GPL' 'custom')
-depends=('libpng' 'libjpeg' 'perl' 'libxft')
+depends=('libpng' 'libjpeg-turbo' 'perl' 'libxft')
 checkdepends=('xorg-server-xvfb' 'perl-devel-leak' 'perl-test-pod' 'ttf-font')
 provides=('perl-tk')
 conflicts=('perl-tk')
@@ -24,7 +24,7 @@ build() {
   cd Tk-$pkgver
 
   perl Makefile.PL XFT=1 INSTALLDIRS=vendor
-  sed -E 's|(^OPTIMIZE.*)|\1 -Wno-incompatible-pointer-types -Wno-implicit-int|' -i Makefile
+  sed -E 's|(^OPTIMIZE.*)|\1 -Wno-incompatible-pointer-types -Wno-implicit-int -std=gnu17|' -i Makefile
   make
 }
 

@@ -1,7 +1,7 @@
 pkgbase = perl-tk-xft
 	pkgdesc = A graphical user interface toolkit for Perl with libxft support
 	pkgver = 804.036
-	pkgrel = 2
+	pkgrel = 3
 	url = https://search.cpan.org/dist/Tk
 	arch = x86_64
 	license = PerlArtistic
@@ -12,7 +12,7 @@ pkgbase = perl-tk-xft
 	checkdepends = perl-test-pod
 	checkdepends = ttf-font
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = perl
 	depends = libxft
 	provides = perl-tk
