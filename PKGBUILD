@@ -17,12 +17,12 @@ off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            '14db1605a740325737eb9ae029deb142d717a02c1926703b0d45f788c937d861'
-            '0252a9cbf39bbbae2a27b1e929b62de0e69fa653ee691e9c310400fb02ea3598')
+            '1bc365a4183898684ef28b306951390f0bbc56ae2496f2119ecc7086c410c400'
+            '0e520f2d9ebd9c6b4aca6b0f1726f500badb5f50af766bc4dcfb9b9df1a237d6')
 depends=(glibc)
 makedepends=(nasm mold # mold: preliminary to remove unused funcs
 diffutils gcc make patch sed) # base-devel
-optdepends=({nwjs,slimjet}': replace ffmpeg')
+optdepends=({nwjs,slimjet,electron{31..36}}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 
