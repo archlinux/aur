@@ -1,26 +1,21 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
-pkgname=pacredir-git
-pkgver=0.6.0.r0.ge5aa168
+pkgbase=pacredir-git
+pkgname=(pacredir-git pacredir-avahi-git)
+pkgver=0.7.0.r0.g99e7479
 pkgrel=1
-pkgdesc='redirect pacman requests, assisted by avahi service discovery - git checkout'
+pkgdesc='redirect pacman requests, assisted by mDNS service discovery - git checkout'
 arch=('x86_64')
 url='https://github.com/eworm-de/pacredir'
 license=('GPL-3.0-or-later')
-depends=('avahi' 'libavahi-client.so' 'libavahi-common.so'
-         'curl' 'libcurl.so'
-         'darkhttpd'
-         'iniparser' 'libiniparser.so'
-         'libmicrohttpd' 'libmicrohttpd.so'
-         'sh'
-         'systemd-libs' 'libsystemd.so')
-makedepends=('git' 'systemd' 'discount')
-provides=('pacredir')
-conflicts=('pacredir')
-install=pacredir.install
-backup=('etc/pacman.d/pacredir'
-        'etc/pacredir.conf'
-        'etc/pacserve.conf')
+makedepends=('git'
+             'coreutils'
+             'curl'
+             'discount'
+             'iniparser'
+             'libmicrohttpd'
+             'sh'
+             'systemd')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183') # Christian Hesse <mail@eworm.de>
 source=('git+https://github.com/eworm-de/pacredir.git')
 sha256sums=('SKIP')
@@ -46,9 +41,35 @@ build() {
   make
 }
 
-package() {
+package_pacredir-git() {
+  depends=('curl' 'libcurl.so'
+           'darkhttpd'
+           'iniparser' 'libiniparser.so'
+           'libmicrohttpd' 'libmicrohttpd.so'
+           'sh'
+           'systemd-libs' 'libsystemd.so')
+  optdepends=('pacredir-avahi-git: compatibility for avahi-daemon')
+  install=pacredir.install
+  backup=('etc/pacman.d/pacredir'
+          'etc/pacredir.conf'
+          'etc/pacserve.conf'
+          'etc/systemd/resolved.conf.d//01-pacredir-MulticastDNS-yes.conf')
+  provides=('pacredir')
+  conflicts=('pacredir')
+
   cd pacredir/
 
   make DESTDIR="${pkgdir}" install
 }
 
+package_pacredir-avahi-git() {
+  pkgdesc='redirect pacman requests, assisted by mDNS service discovery, avahi compatibility - git checkout'
+  depends=('pacredir-git' 'avahi')
+  backup=('etc/systemd/resolved.conf.d/02-pacredir-avahi-MulticastDNS-resolve.conf')
+  provides=('pacredir-avahi')
+  conflicts=('pacredir-avahi')
+
+  cd pacredir/
+
+  make DESTDIR="${pkgdir}" install-avahi
+}
