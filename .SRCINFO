@@ -1,6 +1,6 @@
 pkgbase = pypi2aur
 	pkgdesc = PyPi to AUR PKGBUILD generator and helper.
-	pkgver = 0.1.12
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://pypi.org/project/pypi2aur/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pypi2aur
 	depends = python-click
 	depends = python-slugify
 	depends = python-rich
-	source = https://files.pythonhosted.org/packages/5a/a5/62909a7ea93b51294646d97d50cbd3beef0d5036f4b460a197f0ceae3dc5/pypi2aur-0.1.12.tar.gz
-	sha256sums = aed7224f6039841aeaae8f9942d94766c0ff0343c80720ddedc469c1c97a8287
+	source = https://files.pythonhosted.org/packages/45/7e/3292a63bca586f7fa869f4c122bca3a33dd3e304b51d8572dd19d9cbb940/pypi2aur-0.1.14.tar.gz
+	sha256sums = 25f57abfcb8e54b38b6441fa341aca2d6f14478bdcee4aea1bf25969730061a2
 
 pkgname = pypi2aur
