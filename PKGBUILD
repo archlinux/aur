@@ -24,7 +24,7 @@ optdepends=(
 	'geoip-database-extra: GeoIP legacy city/ASN databases (based on GeoLite2 data created by MaxMind)'
 )
 backup=('etc/goaccess/goaccess.conf')
-source=("$pkgname::git+https://github.com/allinurl/goaccess.git#tag=v$pkgver")
+source=("${pkgname}::git+https://github.com/allinurl/goaccess.git#tag=v${pkgver}")
 sha512sums=('42d3f4d8bc11cba2858b45ab6f29ac41cd028f9df7bda18f67abd1e448ee2dc88bd628a4bb587ac0fc5c4224553ebc8925537bedc68d9a399e4ddd67bb1d5ead')
 
 prepare() {
