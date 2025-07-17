@@ -6,12 +6,12 @@
 pkgname=youtube-dl
 pkgver=2021.12.17
 pkgrel=4
-pkgdesc="A command-line program to download videos from YouTube.com and a few more sites"
+pkgdesc='A command-line program to download videos from YouTube.com and a few more sites'
 arch=('any')
-url="https://ytdl-org.github.io/youtube-dl/"
+url='https://ytdl-org.github.io/youtube-dl'
 license=('Unlicense')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
@@ -22,20 +22,23 @@ sha256sums=('9f3b99c8b778455165b4525f21505e86c7ff565f3ac319e19733d810194135df'
 validpgpkeys=('ED7F5BF46B3BBED81C87368E2C393E0F18A9236D') # Sergey M. <dstftw@gmail.com>
 
 prepare() {
-  cd ${pkgname}
+  cd $pkgname
   sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
   sed -i 's|etc/fish/completions|share/fish/vendor_completions.d|' setup.py
 }
 
 build() {
-  cd ${pkgname}
-  python setup.py build
+  cd $pkgname
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${pkgname}
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  mv "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash-completion" \
-     "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 ${pkgname}.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  cd $pkgname
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 $pkgname.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+
+  cd "$pkgdir/usr/share/bash-completion/completions/"
+  mv $pkgname.bash-completion $pkgname
 }
