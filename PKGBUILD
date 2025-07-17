@@ -3,7 +3,7 @@
 
 pkgname='perl-math-gmpf'
 pkgver='0.53'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Math::GMPf - perl interface to the GMP library's floating point (mpf) functions."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')

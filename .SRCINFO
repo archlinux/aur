@@ -1,7 +1,7 @@
 pkgbase = perl-math-gmpf
 	pkgdesc = Math::GMPf - perl interface to the GMP library's floating point (mpf) functions.
 	pkgver = 0.53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Math-GMPf
 	arch = i686
 	arch = x86_64
