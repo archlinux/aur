@@ -1,7 +1,7 @@
 pkgbase = perl-alien-build-plugin-cleanse-builddir
 	pkgdesc = Alien::Build plugin to cleanse the build dir after the build phase
 	pkgver = 0.06
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Alien-Build-Plugin-Cleanse-BuildDir
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
