@@ -1,13 +1,13 @@
 # Maintainer: Erffy <https://github.com/erffy>
 
 pkgname=zig-waybar-contrib
-pkgver=1.0.15
-pkgrel=2
+pkgver=1.0.16
+pkgrel=1
 pkgdesc="Lightweight Waybar modules built with Zig"
 arch=('x86_64')
 url="https://github.com/erffy/zig-waybar-contrib"
 license=('GPL3')
-depends=()
+depends=('rocm-smi-lib')
 makedepends=('git' 'zig>=0.14.0')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
