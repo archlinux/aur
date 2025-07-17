@@ -1,7 +1,7 @@
 # Maintainer: txfx <fx.roure@gmail.com>
 
 pkgname=fastbuild
-pkgver=1.07
+pkgver=1.15
 pkgrel=1
 pkgdesc="High-performance build system"
 arch=('x86_64')
@@ -9,10 +9,9 @@ url="https://www.fastbuild.org"
 license=('custom')
 makedepends=('gcc')
 source=("https://www.fastbuild.org/downloads/v$pkgver/FASTBuild-Src-v$pkgver.zip")
-md5sums=('b38ebeb53b1736f7365fe05a64636974')
+md5sums=('b6710394d1b7db25449fd2030b0a1e5a')
 
 build() {
-	cd dist_v$pkgver
 	chmod +x Bin/Linux-x64/fbuild
 	
 	cd Code
@@ -32,8 +31,6 @@ build() {
 }
 
 package() {
-	cd dist_v$pkgver
-
 	install -Dm755 tmp/x64Linux-Release/Tools/FBuild/FBuild/fbuild "$pkgdir/usr/bin/fbuild"
 	install -Dm755 tmp/x64Linux-Release/Tools/FBuild/FBuildWorker/fbuildworker "$pkgdir/usr/bin/fbuildworker"
 	install -Dm644 Code/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
