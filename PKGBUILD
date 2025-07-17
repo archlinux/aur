@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
-pkgver=6.2.r3.gbd770267
+pkgver=7.0.rc1.r0.g38283d13
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -15,7 +15,6 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
-	"polkit"
 	"wayland-utils"
 	"pipewire-v4l2"
 	"procps-ng"
