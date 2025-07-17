@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=oauth2-proxy-bin
-pkgver=7.9.0
+pkgver=7.10.0
 pkgrel=1
 pkgdesc="A reverse proxy and static file server that provides authentication using Providers (Google, Keycloak, GitHub and others) to validate accounts by email, domain or group."
 arch=("x86_64")
@@ -16,7 +16,7 @@ provides=("oauth2-proxy")
 conflicts=("oauth2-proxy")
 backup=("etc/oauth2-proxy.cfg")
 
-sha512sums=('00ca6a597dc3d54775b96f769dd9dd2a1670873bf3312bb1160fa47a226ec51a10ded66f8293a631914fe357bde34eb4ae0327604b57abcfe807f92790118ee4'
+sha512sums=('cc1088b0c327f0628f96f1dc8f9bc0bc6464b9a344a36f01ba82a0d0197b7e7600e48a9329f74a85a1d7ea77cda50ebd4a6add9038fcaf380c8470c3c3bcc4b7'
             'e2f593cf01c162b5ea4a177dc69e8aaed9da5d98fcd8912944e352d4656468e73de28b039943ebd1996552dd1fa5bd4243b170ae22567e3b2523f47b2466ba9c'
             'eb61d30f5098c9c689df91c45194a85485de3794c0a976e9d4ddbd173a1718f573446e3d139800b8db6f931fbbce779913732382e09ecf849a0f073046eda350'
             'fb95bf4f0bb32289b2d27847fb8936fafad55f5fb87f0b7481c96f324ea697ac01a1cd33b19275674abac6558d4bcba9af2e8c4e623a35fe738e99938278da3f')
