@@ -1,6 +1,6 @@
 pkgname=izumi-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Izumi is an instruction pipeline visualizer for Onikiri2-Kanata format based on Konata."
 arch=('x86_64')
 url="https://github.com/theOfficeCat/izumi"
