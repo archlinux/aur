@@ -1,15 +1,15 @@
 # Maintainer: Anirudh Panchangam Ranganath <anirudhpr.apachi@gmail.com>
 pkgname=wpset
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="A simple, interactive wallpaper selector for GNOME desktops."
+pkgdesc="A simple, interactive wallpaper selector for GNOME desktops with menu interface and random wallpaper feature."
 arch=('any')
 url="https://github.com/anipr2002/wpset"
 license=('MIT')
 depends=('gum' 'fzf' 'gnome-desktop')
 optdepends=('kitty: for image previews in the terminal')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('57e658996f5377fc061011aab5fe639a88dc3ce4bd727046f2bbffb36bba8324')
+sha256sums=('d9967b70d62fe0c1b1866e9edb29cf1bf8fd5600da195478f0b25ebccb9d5782')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
