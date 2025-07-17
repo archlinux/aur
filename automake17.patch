@@ -5,7 +5,7 @@
  # Check for automake
  amvers="no"
 -for v in 16 15 14 13; do
-+for v in 17 16 15 14 13; do
++for v in 18 17 16 15 14 13; do
    if automake-1.${v} --version >/dev/null 2>&1; then
      amvers="-1.${v}"
      break
