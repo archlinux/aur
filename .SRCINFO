@@ -1,6 +1,6 @@
 pkgbase = forge-gui-desktop-git
 	pkgdesc = Implementation of Magic the Gathering that lets you play against a computer AI (daily snapshot)
-	pkgver = 2.0.05.snapshot.07.16
+	pkgver = 2.0.05.snapshot.07.15
 	pkgrel = 1
 	url = https://github.com/Card-Forge/forge
 	arch = any

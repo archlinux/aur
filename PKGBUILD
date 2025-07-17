@@ -1,7 +1,7 @@
 # Maintainer: rutra
 pkgname=forge-gui-desktop-git
 _pkgname=forge-gui-desktop
-pkgver=2.0.05.snapshot.07.16
+pkgver=2.0.05.snapshot.07.15
 pkgrel=1
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI (daily snapshot)"
 arch=('any')
@@ -27,8 +27,9 @@ prepare() {
     api_response=$(curl -s "https://api.github.com/repos/Card-Forge/forge/releases/tags/daily-snapshots")
     tarball_url=$(echo "$api_response" | jq -r '.assets[] | select(.name | startswith("forge-installer") and endswith(".tar.bz2")) | .browser_download_url' | head -n 1)
     [[ -z "$tarball_url" || "$tarball_url" == "null" ]] && exit 1
-    curl -Lf -o "$(basename "$tarball_url")" "$tarball_url"
-    tar -xjf "$(basename "$tarball_url")"
+    tarball_name=$(basename "$tarball_url")
+    curl -Lf -o "$tarball_name" "$tarball_url"
+    tar -xjf "$tarball_name"
 }
 
 package() {
