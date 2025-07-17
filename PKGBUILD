@@ -3,7 +3,7 @@
 # Contributor: Karol Babioch <karol@babioch.de
 
 pkgname=tika-server
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Detects and extracts metadata and text from over a thousand different file types, such as PPT, XLS, and PDF. (server)"
 arch=('any')
@@ -11,10 +11,21 @@ url="https://${pkgname}.apache.org"
 license=('Apache-2.0')
 backup=("etc/default/${pkgname}")
 depends=('java-runtime-headless')
-    source=("${pkgname}-${pkgver}.jar::https://dlcdn.apache.org/tika/${pkgver}/${pkgname}-standard-${pkgver}.jar"
+
+_get_url() {
+    url_upstream="${pkgname}-${pkgver}.jar::https://dlcdn.apache.org/tika/${pkgver}/${pkgname}-standard-${pkgver}.jar"
+    ret=$(curl --output /dev/null --silent --head --fail "$url_upstream")
+    if [ ret == 0 ];then
+        echo $url_upstream
+    else
+        echo ${pkgname}-${pkgver}.jar::https://archive.apache.org/dist/tika/${pkgver}/${pkgname}-standard-${pkgver}.jar
+    fi
+}
+
+source=("$(_get_url)"
         "${pkgname}.env"
         "${pkgname}.service")
-sha256sums=('60cc16fc933ee47f94e9f4a56e8d6f9554e0caf14facf896d9727b1e834224c1'
+sha256sums=('383a8a99ec886ea95e4143bfe200208afe1884db14b4c1e470950edec82d2c5d'
             'de1829782fc698b1be42fdb850ea3d9dd1d750bf37d4ab98a8ed5d43157cdeac'
             '00ad2023fe47bb77b78c4be364973c21ef8961a51cfa8b4f5ef910ee32542837')
 noextract=("${pkgname}-${pkgver}.jar")
