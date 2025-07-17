@@ -1,7 +1,7 @@
 # Maintainer: exu <aur _a_ frm01 _d_ net>
 
 pkgname=supersonic-desktop-wayland
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic and Jellyfin music servers."
 _pkgname="${pkgname//-desktop-wayland/}"
@@ -18,7 +18,7 @@ makedepends=('go>=1.17')
 provides=('supersonic-desktop')
 conflicts=('supersonic-desktop')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fae1911ad67b69e6ce12027d06b8d1ba02d51c55041e9bd80cd502cd1b43e0c1')
+sha256sums=('6a84f857d68ef9581b3fcc7299fe11be316bc989e16e561d7ad657831c3303d6')
 
 build() {
   export GOPATH="$srcdir"/gopath
