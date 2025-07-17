@@ -1,15 +1,15 @@
 # Maintainer: x70b1
 pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprexpo' 'hyprland-plugin-hyprscrolling' 'hyprland-plugin-hyprtrails' 'hyprland-plugin-hyprwinwrap' 'hyprland-plugin-xtra-dispatchers')
 pkgbase='hyprland-plugins'
-pkgver='0.49.1'
+pkgver='0.50.0'
 pkgrel=1
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64')
 url='https://github.com/hyprwm/hyprland-plugins'
 license=('BSD')
-depends=('hyprland=0.49.0')
+depends=('hyprland=0.50.0')
 makedepends=('git' 'hyprland')
-source=("$pkgbase::git+https://github.com/hyprwm/hyprland-plugins.git#commit=4dea1029e837ae642979ab509eb2eddc959470d0")
+source=("$pkgbase::git+https://github.com/hyprwm/hyprland-plugins.git#commit=d723e5b153b7990d36e62a425bda3768c41dd9eb")
 sha256sums=('SKIP')
 
 build() {
