@@ -1,12 +1,17 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.2.2 ➙ HEAD
-              : 2025-05-19 ➙ 2025-07-16
+ Tags         : 3.4.0 ➙ 3.8.0
+              : 2025-05-20 ➙ 2025-07-17
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2025-07-16   : HEAD
-                update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
+ 2025-07-17   : 3.8.0
+                Cidr cache lockfile name use effective user id instead of username.
+
+ 2025-07-17   : 3.7.0, origin/master
+                Cidr cache lockfile: remove getlogin() line accidently left in - reported by
+                AUR user @piate
+ 2025-07-16     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-07-16   : 3.6.0
                 Add net_to_cidr()
@@ -25,13 +30,3 @@
  2025-05-20   : 3.4.0
                 Remove unused files
                 update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-
- 2025-05-20   : 3.3.0
-                Fix for lockfile path when run in chroot.
-                  As reported by AUR user @piater
- 2025-05-19     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-
- 2025-05-19   : 3.2.2
-                Add pytest to checkdepnds in arch PKBUILD
-                  Thanks to @Reylak pm AUR.
- 2025-05-04     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
