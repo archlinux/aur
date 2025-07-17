@@ -2,7 +2,7 @@
 _base_pkgname="doh-server"
 pkgname="${_base_pkgname}-bin"
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, mature, secure DoH and ODoH server proxy written in Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/DNSCrypt/doh-server"
@@ -41,6 +41,6 @@ package() {
 		"$pkgdir/usr/lib/systemd/system/${_base_pkgname}.service"
 
 	# bin
-	install -Dm755 "doh-proxy/doh-proxy" "$pkgdir/usr/sbin/doh-proxy"
+	install -Dm755 "doh-proxy/doh-proxy" "$pkgdir/usr/bin/doh-proxy"
 }
 
