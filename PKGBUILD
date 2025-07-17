@@ -3,8 +3,8 @@
 # based on the PKGBUILD of sulis
 
 pkgname=sulis-git
-pkgver=1.0.0.20230718
-pkgrel=2
+pkgver=1.0.0.20250112
+pkgrel=1
 pkgdesc='Turn based tactical RPG with several campaigns, written in Rust.'
 arch=('x86_64')
 url='https://www.sulisgame.com/'
