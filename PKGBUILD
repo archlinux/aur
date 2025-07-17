@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r70264.8b1f1ae87ae
+pkgver=r70419.0ff61e5e7b1
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -28,7 +28,6 @@ depends=(
   qt6-multimedia
   qt6-tools
   qt6-wayland
-  simdutf
   sqlite
   ttf-liberation
   woff2
@@ -36,6 +35,7 @@ depends=(
   libpng-apng # AUR
   skia # AUR
   angle # AUR
+  simdutf-git # 'simdutf' is v6, we need v7.
 )
 makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
@@ -66,7 +66,7 @@ build() {
     -B build \
     -S ladybird \
     -DBUILD_SHARED_LIBS=OFF \
-    -DSERENITY_CACHE_DIR=Build/caches \
+    -DLADYBIRD_CACHE_DIR=Build/caches \
     -DCMAKE_BUILD_TYPE=Release \
     $use_linker \
     -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -84,9 +84,6 @@ package() {
 
   find "$pkgdir" -name '*.a' -delete
   find "$pkgdir" -name '*.cmake' -delete
-
-  install -Dm644 "ladybird/Meta/CMake/freedesktop/org.ladybird.Ladybird.desktop" "${pkgdir}/usr/share/applications/ladybird.desktop"
-  install -Dm644 "ladybird/Base/res/icons/128x128/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"
 
   install -Dm644 ladybird/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
