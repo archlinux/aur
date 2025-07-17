@@ -1,5 +1,5 @@
 pkgname=git-commit-helper
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="一个帮助规范 git commit message 的工具"
 arch=('x86_64')
@@ -9,11 +9,11 @@ depends=('git')
 makedepends=('rust' 'cargo')
 
 # 直接使用当前目录作为源
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/077f297cd1f0d9d4b3509134e501ab0d8033003a.tar.gz")
-sha256sums=('3299a262b0a7ef21ddd047bed6da72f49a0de05885c971ac50c6d858be4f34b0')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/5dbbdf10eb4229d5ab5929cde5f5d9675c486fb5.tar.gz")
+sha256sums=('be9a142378267b29af1c4e278f4030b102dc18b13d2122571adbe9d1e06c31e2')
 
 pkgver() {
-    cd "$srcdir/$pkgname-077f297cd1f0d9d4b3509134e501ab0d8033003a"
+    cd "$srcdir/$pkgname-5dbbdf10eb4229d5ab5929cde5f5d9675c486fb5"
     # 尝试获取最新的 git tag 版本号（去除 v 前缀）
     local tag_ver=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "")
     if [ -n "$tag_ver" ]; then
@@ -26,25 +26,25 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname-077f297cd1f0d9d4b3509134e501ab0d8033003a"
+    cd "$srcdir/$pkgname-5dbbdf10eb4229d5ab5929cde5f5d9675c486fb5"
     export CARGO_HOME="$srcdir/cargo-home"
     cargo fetch --locked || true
 }
 
 build() {
-    cd "$srcdir/$pkgname-077f297cd1f0d9d4b3509134e501ab0d8033003a"
+    cd "$srcdir/$pkgname-5dbbdf10eb4229d5ab5929cde5f5d9675c486fb5"
     export CARGO_HOME="$srcdir/cargo-home"
     RUSTUP_TOOLCHAIN=stable cargo build --release
 }
 
 check() {
-    cd "$srcdir/$pkgname-077f297cd1f0d9d4b3509134e501ab0d8033003a"
+    cd "$srcdir/$pkgname-5dbbdf10eb4229d5ab5929cde5f5d9675c486fb5"
     export CARGO_HOME="$srcdir/cargo-home"
     RUSTUP_TOOLCHAIN=stable cargo test --release || true
 }
 
 package() {
-    cd "$srcdir/$pkgname-077f297cd1f0d9d4b3509134e501ab0d8033003a"
+    cd "$srcdir/$pkgname-5dbbdf10eb4229d5ab5929cde5f5d9675c486fb5"
 
     # 创建必要的目录
     mkdir -p "$pkgdir/usr/bin"
