@@ -1,0 +1,16 @@
+pkgbase = sds-git
+	pkgdesc = Simple Dynamic Strings library for C
+	pkgver = r60.5347739
+	pkgrel = 1
+	url = https://github.com/antirez/sds
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = glibc
+	provides = sds=${pkgver}
+	source = git+https://github.com/antirez/sds
+	source = sds.patch
+	sha256sums = SKIP
+	sha256sums = e1f4f94549c9102699be93994d23e715f337a33cde2bc269891236458e2f07f3
+
+pkgname = sds-git

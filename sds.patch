@@ -1,0 +1,14 @@
+--- sds.c.orig	2025-07-17 20:13:51.723681666 +0100
++++ sds.c	2025-07-17 20:14:44.321521044 +0100
+@@ -37,7 +37,10 @@
+ #include <assert.h>
+ #include <limits.h>
+ #include "sds.h"
+-#include "sdsalloc.h"
++
++#define s_malloc malloc
++#define s_realloc realloc
++#define s_free free
+ 
+ const char *SDS_NOINIT = "SDS_NOINIT";
+ 
