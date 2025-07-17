@@ -1,7 +1,7 @@
 pkgbase = perl-proc-pid-file
 	pkgdesc = Manage process id files
 	pkgver = 1.29
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Proc-PID-File
 	arch = any
 	license = GPL-2.0-only
