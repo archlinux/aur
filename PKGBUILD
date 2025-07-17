@@ -6,7 +6,7 @@
 pkgname=tango-cpp
 _pkgname=cppTango
 pkgver="10.0.2"
-pkgrel=7
+pkgrel=8
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - shared library"
 arch=("x86_64" "armv7h")
