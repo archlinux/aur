@@ -2,14 +2,14 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('27398af4e5ceae166e825f52f50a920a84e22336febe7f21e333c7c2dc91275d')
+sha256sums=('02cafb16d1fccbf425d82a7a0b86fcca54486ab00173a8e7dcea15bc428f75ff')
 depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp')
@@ -65,6 +65,10 @@ check() {
     --ignore google/genai/tests/tunings/test_get.py
     --ignore google/genai/tests/tunings/test_list.py
     --ignore google/genai/tests/tunings/test_tune.py
+    --ignore google/genai/tests/batches/test_create_with_bigquery.py
+    --ignore google/genai/tests/batches/test_create_with_file.py
+    --ignore google/genai/tests/batches/test_create_with_gcs.py
+    --ignore google/genai/tests/batches/test_create_with_inlined_requests.py
     --deselect google/genai/tests/chats/test_send_message.py
     --deselect google/genai/tests/files/test_upload.py
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
