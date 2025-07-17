@@ -1,6 +1,6 @@
 # Maintainer: mst-mkt <mail@keito.dev>
 pkgname=moocs-collect-cli
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="CLI tool to download lecture slides from INIAD MOOCs (from source)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 provides=('moocs-collect-cli')
 conflicts=('moocs-collect-cli-git' 'moocs-collect-cli-bin')
 source=("https://github.com/yu7400ki/moocs-collect/archive/refs/tags/cli-v${pkgver}.tar.gz")
-sha256sums=('c6fdb6ee70b86ba2b5f2f5cd3902bff3b444e6f873b75df341f22f1ef21ee962')
+sha256sums=('d411722fdeca53968f7b6afd6eb912ac1ca7c490334d616203967c57e1e5f5f4')
 
 build() {
   cd "$srcdir/moocs-collect-cli-v${pkgver}/collect-cli"
