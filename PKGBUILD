@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot  <jgc@archlinux.org>
 pkgname=libwnck
 pkgver=2.31.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Window Navigator Construction Kit"
 arch=('x86_64')
 license=('LGPL-2.0-only')

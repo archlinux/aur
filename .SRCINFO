@@ -1,7 +1,7 @@
 pkgbase = libwnck
 	pkgdesc = Window Navigator Construction Kit
 	pkgver = 2.31.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.gnome.org/GNOME/libwnck
 	arch = x86_64
 	license = LGPL-2.0-only
