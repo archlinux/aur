@@ -5,25 +5,25 @@
 
 pkgbase=libdxvk-gplasync
 pkgname=('libdxvk-gplasync' 'lib32-libdxvk-gplasync')
-pkgver=2.6.1
+pkgver=2.7
 pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux, gplasync patch"
 arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
 license=(Zlib)
-_depends=(glibc sdl2 sdl3 vulkan-icd-loader)
+_depends=(glibc sdl2 sdl3 glfw vulkan-icd-loader)
 _32depends=(lib32-glibc lib32-sdl2 lib32-sdl3 lib32-vulkan-icd-loader)
 makedepends=(git glslang meson ${_depends[@]} ${_32depends[@]})
 provides=(libdxvk_dxgi.so libdxvk_d3d8.so libdxvk_d3d9.so libdxvk_d3d10core.so
 	  libdxvk_d3d11.so)
-source=("git+$url.git#tag=v${pkgver}"
+source=("git+$url.git#commit=daed0c1ce8d39e6dcc1580b753554deb7fcbd2ae"
 	"git+https://github.com/misyltoad/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 	"git+https://gitlab.freedesktop.org/frog/libdisplay-info.git"
 	"dxvk-gplasync-${pkgver}-1.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-${pkgver}-1.patch?ref_type=heads&inline=false"
 	"global-dxvk.conf.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/global-dxvk.conf.patch?ref_type=heads&inline=false")
-sha256sums=('4eb280f1e54a767b06818d5610578d961b181563b8a363835f3b0f2ac0635c6b'
+sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -43,6 +43,7 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	patch -p1 -i "$srcdir"/dxvk-gplasync-${pkgver}-1.patch
 	patch -p1 -i "$srcdir"/global-dxvk.conf.patch
+	sed -i "s/dependency('glfw/dependency('glfw3/g" meson.build
 }
 
 build() {
@@ -67,7 +68,7 @@ build() {
 package_libdxvk-gplasync() {
 	depends=(${_depends[@]})
     conflicts=('libdxvk')
-	provides+=('libdxvk')
+	provides+=(libdxvk=${pkgver})
 	meson install -C build --destdir "$pkgdir"
 	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
@@ -75,7 +76,7 @@ package_libdxvk-gplasync() {
 package_lib32-libdxvk-gplasync() {
 	pkgdesc+=" (32-bit)"
 	conflicts=('lib32-libdxvk')
-	provides+=(lib32-libdxvk)
+	provides+=(lib32-libdxvk=${pkgver})
 	depends=(${_32depends[@]})
 	optdepends=('libdxvk: DXVK headers')
 

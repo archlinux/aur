@@ -1,6 +1,6 @@
 pkgbase = libdxvk-gplasync
 	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux, gplasync patch
-	pkgver = 2.6.1
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = libdxvk-gplasync
 	makedepends = glibc
 	makedepends = sdl2
 	makedepends = sdl3
+	makedepends = glfw
 	makedepends = vulkan-icd-loader
 	makedepends = lib32-glibc
 	makedepends = lib32-sdl2
@@ -21,14 +22,14 @@ pkgbase = libdxvk-gplasync
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.6.1
+	source = git+https://github.com/doitsujin/dxvk.git#commit=daed0c1ce8d39e6dcc1580b753554deb7fcbd2ae
 	source = git+https://github.com/misyltoad/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://gitlab.freedesktop.org/frog/libdisplay-info.git
-	source = dxvk-gplasync-2.6.1-1.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-2.6.1-1.patch?ref_type=heads&inline=false
+	source = dxvk-gplasync-2.7-1.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-2.7-1.patch?ref_type=heads&inline=false
 	source = global-dxvk.conf.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/global-dxvk.conf.patch?ref_type=heads&inline=false
-	sha256sums = 4eb280f1e54a767b06818d5610578d961b181563b8a363835f3b0f2ac0635c6b
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -40,13 +41,14 @@ pkgname = libdxvk-gplasync
 	depends = glibc
 	depends = sdl2
 	depends = sdl3
+	depends = glfw
 	depends = vulkan-icd-loader
 	provides = libdxvk_dxgi.so
 	provides = libdxvk_d3d8.so
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	provides = libdxvk
+	provides = libdxvk=2.7
 	conflicts = libdxvk
 
 pkgname = lib32-libdxvk-gplasync
@@ -61,5 +63,5 @@ pkgname = lib32-libdxvk-gplasync
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	provides = lib32-libdxvk
+	provides = lib32-libdxvk=2.7
 	conflicts = lib32-libdxvk
