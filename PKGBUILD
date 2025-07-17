@@ -22,6 +22,6 @@ pkgver() {
 
 package() {
     install -Dm755 "$srcdir/$pkgname/paruse.sh" "$pkgdir/usr/bin/paruse"
-    install -Dm644 "$srcdir/$pkgname/paruse.desktop" "$pkgdir/usr/share/applications/paruse.desktop"
+    install -Dm644 "$srcdir/$pkgname/.aur/paruse.desktop" "$pkgdir/usr/share/applications/paruse.desktop"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
