@@ -2,7 +2,7 @@
 
 _reponame="plasmusic-toolbar"
 pkgname=plasma6-applets-plasmusic-toolbar
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Widget that shows currently playing song information and provide playback controls."
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/ccatterina/$_reponame"
 license=(GPL-3.0-or-later)
 depends=(plasma-desktop kdeplasma-addons)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('19bf170310020a2df8268a9fbf88997c30e27e6a3d6be22c4b4e87fada739ee2')
+sha256sums=('fb757d0dc05ee524c3bf94268450b9dd7ad6c574fdeedc126e783c770fa40468')
 
 package() {
   _path="$pkgdir/usr/share/plasma/plasmoids/plasmusic-toolbar" 
