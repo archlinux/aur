@@ -3,7 +3,7 @@
 pkgname=perl-alien-sqlite
 _dist=Alien-sqlite
 pkgver=1.07
-pkgrel=5
+pkgrel=6
 pkgdesc='Compile the Sqlite library'
 
 url="https://metacpan.org/release/$_dist"
