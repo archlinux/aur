@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-vimiumc-bin
 	pkgdesc = A keyboard shortcut browser extension for keyboard-based navigation and tab operations with an advanced omnibar
-	pkgver = 1.99.997
+	pkgver = 2.12.3
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/vimium-c
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = librewolf-extension-vimiumc-bin
 	depends = librewolf
 	provides = librewolf-extension-vimiumc
 	conflicts = librewolf-extension-vimiumc
-	noextract = vimium_c-1.99.997.xpi
-	source = vimium-c@gdh1995.cn.xpi::https://addons.mozilla.org/firefox/downloads/file/4210117/vimium_c-1.99.997.xpi
+	noextract = vimium_c-2.12.3.xpi
+	source = vimium-c@gdh1995.cn.xpi::https://addons.mozilla.org/firefox/downloads/file/4474326/vimium_c-2.12.3.xpi
 	source = https://raw.githubusercontent.com/gdh1995/vimium-c/master/LICENSE.txt
-	sha256sums = 20e9217ba3d9a7bd0ec3faa88ed7f872acc3f039d1bdeb997398341631617184
-	sha256sums = SKIP
+	sha256sums = e1a4f8cc13791dfb985c2a78d33df1e8a40f23bd6eca9217165cb748009df540
+	sha256sums = 74cf78c0a915c141f656a9fce1dac48a440d2328e262cf7714f06cd1889bec79
 
 pkgname = librewolf-extension-vimiumc-bin
