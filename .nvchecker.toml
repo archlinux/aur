@@ -1,0 +1,4 @@
+[ttf-lilex]
+source = "github"
+github = "mishamyrt/Lilex"
+use_max_tag = true
