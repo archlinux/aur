@@ -1,8 +1,8 @@
 diff --git a/src/main/main.ts b/src/main/main.ts
-index 49ed99a0..83289649 100644
+index f0c05e03..dbbe8415 100644
 --- a/src/main/main.ts
 +++ b/src/main/main.ts
-@@ -206,9 +206,7 @@ const createWindow = async () => {
+@@ -211,9 +211,7 @@ const createWindow = async () => {
      await installExtensions();
    }
  
@@ -13,7 +13,7 @@ index 49ed99a0..83289649 100644
  
    const getAssetPath = (...paths: string[]): string => {
      return path.join(RESOURCES_PATH, ...paths);
-@@ -238,9 +236,7 @@ const createWindow = async () => {
+@@ -243,9 +241,7 @@ const createWindow = async () => {
      'userDefines'
    );
  
@@ -24,7 +24,7 @@ index 49ed99a0..83289649 100644
  
    const getPlatformioPath = path.join(dependenciesPath, 'get-platformio.py');
    const platformioStateTempStoragePath = path.join(
-@@ -327,13 +323,9 @@ const createWindow = async () => {
+@@ -332,13 +328,9 @@ const createWindow = async () => {
    }
    localApiServerEnv.PATH = PATH;
  
