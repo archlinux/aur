@@ -1,7 +1,7 @@
 # Maintainer: J A <soulhotel@pm.me>
 pkgname=paruse
-pkgver=0.1.rc.78bc9f7
-pkgrel=1
+pkgver=0.4r
+pkgrel=2
 pkgdesc="An interactive package manager and browser using paru and fzf"
 arch=('any')
 url="https://github.com/soulhotel/paruse"
@@ -22,5 +22,6 @@ pkgver() {
 
 package() {
     install -Dm755 "$srcdir/$pkgname/paruse.sh" "$pkgdir/usr/bin/paruse"
+    install -Dm644 "$srcdir/$pkgname/paruse.desktop" "$pkgdir/usr/share/applications/paruse.desktop"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

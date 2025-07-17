@@ -1,7 +1,7 @@
 pkgbase = paruse
 	pkgdesc = An interactive package manager and browser using paru and fzf
-	pkgver = 0.1.rc.b1b23cb
-	pkgrel = 1
+	pkgver = 0.4r
+	pkgrel = 2
 	url = https://github.com/soulhotel/paruse
 	arch = any
 	license = MIT
