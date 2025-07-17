@@ -1,8 +1,8 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=picoscope7beta
-pkgver=7.1.56_1r6040
-pkgrel=2
+pkgver=7.1.58_1r6335
+pkgrel=1
 pkgdesc="PicoScope 7 Test and Measurment Early Access"
 arch=('x86_64')
 url="https://oem.picotech.com/p7beta/download"
@@ -28,7 +28,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_${pkgver//_/-}_amd64.deb")
-md5sums=('8a639f8ce38a9e2aa7fe3dba0cdd4122')
+md5sums=('0d0361124865fdeba94e3505bc808d02')
 
 package() {
   tar -xf data.tar.* -C "${pkgdir}"
