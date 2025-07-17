@@ -1,6 +1,6 @@
 pkgbase = waterfox
 	pkgdesc = Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.
-	pkgver = 6.5.7
+	pkgver = 6.5.10
 	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -42,9 +42,9 @@ pkgbase = waterfox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = waterfox-6.5.7.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/6.5.7.tar.gz
+	source = waterfox-6.5.10.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/6.5.10.tar.gz
 	source = waterfox.desktop
-	sha256sums = bf0246e9fd42ba4fbacfeaa737078f554281d1a3dbe13f9c625c4b6b2910106e
+	sha256sums = 35b6b725bf5ed961c667fb19a290485a23a937ee540600b328f99f959736f0a3
 	sha256sums = 1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85
 
 pkgname = waterfox

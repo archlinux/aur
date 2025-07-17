@@ -1,5 +1,6 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
-# contributor: Nicola Revelant <nicolarevelant@outlook.com>
+# Maintainer: CristianCYAC <cristianyasprillac at gmail dot com>
+# Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Nicola Revelant <nicolarevelant@outlook.com>
 # Contributor: Cyra Westmere <cyra@slowest.network>
 # Contributor: random-nick <random-nick@email.com>
 # Based on the official firefox package by:
@@ -8,7 +9,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=6.5.7
+pkgver=6.5.10
 pkgrel=1
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
@@ -222,5 +223,6 @@ EOT
 		ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
 	fi
 }
-sha256sums=('bf0246e9fd42ba4fbacfeaa737078f554281d1a3dbe13f9c625c4b6b2910106e'
+#first browser package, second icon file 
+sha256sums=('35b6b725bf5ed961c667fb19a290485a23a937ee540600b328f99f959736f0a3'
             '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
