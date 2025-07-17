@@ -2,7 +2,7 @@
 _base=optype
 pkgname=python-${_base}
 pkgdesc="Building blocks for precise & flexible type hints"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/jorenham/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-hatchling)
 checkdepends=(python-pytest python-beartype)
 optdepends=('python-numpy: for Numpy Support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ccdd10f538e9b26de70e70180947a5b5df5aa8d3469a669329492634cad5c866bcb45461d0aaf8572f176d748d2c5416bdd419b61294552479311a43a3e7c55b')
+sha512sums=('649890e1885754854fe09c5568e595e165c375b367f00d5882e715a9885cbe8bc2de30d6af53d5e03a0c9a4b51da0d432e41ccf92b3afe69d9df5c60fb6f52a0')
 
 build() {
   cd ${_base}-${pkgver}
