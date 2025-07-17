@@ -1,0 +1,21 @@
+pkgbase = goaccess-legacy
+	pkgdesc = An open source real-time web log analyzer and interactive viewer (lagacy)
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = https://goaccess.io
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = geoip
+	depends = ncurses
+	depends = openssl
+	optdepends = geoip-database: GeoIP legacy country database (based on GeoLite2 data created by MaxMind)
+	optdepends = geoip-database-extra: GeoIP legacy city/ASN databases (based on GeoLite2 data created by MaxMind)
+	provides = goaccess
+	conflicts = goaccess
+	backup = etc/goaccess/goaccess.conf
+	source = goaccess-legacy::git+https://github.com/allinurl/goaccess.git#tag=v1.9.4
+	sha512sums = 42d3f4d8bc11cba2858b45ab6f29ac41cd028f9df7bda18f67abd1e448ee2dc88bd628a4bb587ac0fc5c4224553ebc8925537bedc68d9a399e4ddd67bb1d5ead
+
+pkgname = goaccess-legacy
