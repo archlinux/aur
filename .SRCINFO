@@ -1,7 +1,7 @@
 pkgbase = salome-kernel
 	pkgdesc = Implements general services of SALOME platform
 	pkgver = 9.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.salome-platform.org
 	arch = any
 	license = LGPL2+
