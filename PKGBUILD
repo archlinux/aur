@@ -2,19 +2,19 @@
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=speedynote-bin
-_tagname='0.4.10-1'
+_tagname='0.6.1'
 pkgver=${_tagname//-/.}
 pkgrel=1
 pkgdesc="A simple note app with good performance and PDF import support"
 arch=('x86_64')
 url="https://github.com/alpha-liu-01/SpeedyNote"
 license=('MIT')
-depends=('qt6-base' 'qt6-multimedia' 'poppler-qt6' 'sdl2-compat' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
+depends=('qt6-base' 'qt6-multimedia' 'poppler-qt6' 'sdl2-compat' 'glibc' 'gcc-libs')
 provides=('speedynote')
 conflicts=('speedynote' 'speedynote-git')
-source=("$pkgname-$pkgver.deb::https://github.com/alpha-liu-01/SpeedyNote/releases/download/v$_tagname/speedynote.deb"
+source=("$pkgname-$pkgver.deb::https://github.com/alpha-liu-01/SpeedyNote/releases/download/v$_tagname/speedynote_${_tagname}-1_amd64.deb"
         "LICENSE-$_tagname::https://raw.githubusercontent.com/alpha-liu-01/SpeedyNote/v$_tagname/LICENSE")
-sha256sums=('16d3b8a9fffd852bb4e2aff459572ce1ea5672bc24f4b6346ff8be88ba801ff8'
+sha256sums=('71533e9b308d052b156b509033a8512870d30b86b42ccaa9df4eddf35e3565d5'
             '36273406b3d0ea68274d369dcf48167a3cef8660beddb30f5dfbee9ba75a45d7')
 
 prepare() {
@@ -25,13 +25,13 @@ prepare() {
 package() {
   cd "$pkgname-$pkgver"
   # binary
-  install -Dm755 "usr/local/bin/NoteApp" "$pkgdir/usr/bin/speedynote"
+  install -Dm755 "usr/bin/speedynote" "$pkgdir/usr/bin/speedynote"
   # desktop file
   install -Dm644 "usr/share/applications/speedynote.desktop" "$pkgdir/usr/share/applications/speedynote.desktop"
-  sed -i "s|Exec=NoteApp|Exec=speedynote|g" "$pkgdir/usr/share/applications/speedynote.desktop"
-  # icons
-  install -dm755 "$pkgdir/usr/share/"
-  cp -dpr --no-preserve=ownership "usr/share/icons" "$pkgdir/usr/share/"
+  # icon
+  install -Dm644 "usr/share/pixmaps/speedynote.png" "$pkgdir/usr/share/pixmaps/speedynote.png"
+  # doc
+  install -Dm644 "usr/share/doc/speedynote/README.md" "$pkgdir/usr/share/doc/speedynote/README.md"
   # license
   install -Dm644 "$srcdir/LICENSE-$_tagname" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
