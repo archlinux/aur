@@ -1,7 +1,7 @@
 pkgbase = mastodon
 	pkgdesc = Your self-hosted, globally interconnected microblogging community
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mastodon/mastodon
 	install = mastodon.install
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = mastodon
 	depends = sudo
 	depends = valkey
 	depends = zlib
+	depends = yarn-berry
 	options = !strip
 	backup = etc/mastodon.conf
 	source = https://github.com/mastodon/mastodon/archive/v4.4.1.tar.gz
