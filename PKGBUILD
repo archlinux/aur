@@ -2,21 +2,21 @@
 
 pkgname=portproton
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
 url="https://linux-gaming.ru"
 license=('MIT')
-depends=('bash' 'icoutils' 'yad' 'bubblewrap' 'zstd' 'cabextract' 'gzip'
-         'tar' 'openssl' 'openssl-1.1' 'desktop-file-utils' 'curl' 'dbus' 'freetype2' 'xdg-utils'
-         'gdk-pixbuf2' 'ttf-font' 'nss' 'xorg-xrandr' 'lsof' 'mesa-utils' 'imagemagick'
+depends=('bash' 'yad' 'bubblewrap' 'zstd' 'cabextract' 'gzip'
+         'tar' 'openssl' 'desktop-file-utils' 'curl' 'dbus' 'freetype2' 'xdg-utils'
+         'gdk-pixbuf2' 'ttf-font' 'nss' 'xorg-xrandr' 'mesa-utils' 'imagemagick'
          'vulkan-driver' 'vulkan-icd-loader' 'lib32-libgl' 'lib32-gcc-libs' 'vulkan-tools'
          'lib32-libx11' 'lib32-libxss' 'lib32-alsa-plugins' 'lib32-pipewire' 'lib32-libgpg-error' 'lib32-gnutls' 'lib32-freetype2' 'perl-image-exiftool'
-         'lib32-nss' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader' 'lib32-openssl' 'lib32-openssl-1.1' 'lib32-mesa-utils' 'python-pillow' 'jq')
+         'lib32-nss' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader' 'lib32-openssl' 'python-pillow' 'jq')
 optdepends=('gamemode: Support for Feral GameMode'
             'lib32-gamemode: 32-bit support for Feral GameMode'
             'gamescope: Support for Gamescope'
-            'icoextract: For proper icon creation in GNOME')
+            )
 _commit=78f10eb
 source=("git+https://github.com/Castro-Fidel/PortProton_ALT.git#commit=$_commit")
 sha256sums=('SKIP')
