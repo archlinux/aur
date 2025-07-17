@@ -40,7 +40,7 @@ package() {
     install -d -m0755 "$pkgdir/usr/share/$_pkgname/res"
     cp -r res/* "$pkgdir/usr/share/$_pkgname/res"
     install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
-    install -Dm0644 "$srcdir/AppIcon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    install -Dm0644 AppIcon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
     install -Dm0644 "$jar_file" "$pkgdir/usr/share/java/$_pkgname.jar"
 
     _startfile="$pkgdir/usr/bin/$_pkgname.sh"
