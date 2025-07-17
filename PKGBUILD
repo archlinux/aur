@@ -11,7 +11,7 @@ license=(GPL-3.0-only)
 depends=(fuse2)
 options=(!strip)
 install="$_pkgname.install"
-source=("https://github.com/hwsmm/cosutrainer/releases/download/$pkgver/cosu-trainer-bin.tar.zst"
+source=("$pkgname-$pkgver.tar.zst::https://github.com/hwsmm/cosutrainer/releases/download/$pkgver/cosu-trainer-bin.tar.zst"
         "$_pkgname.desktop::https://raw.githubusercontent.com/hwsmm/cosutrainer/700306f4f97cbfe895b23f1955409f9c4be8f5b7/docs/cosu-trainer.desktop"
         "$_pkgname.png::https://raw.githubusercontent.com/hwsmm/cosutrainer/700306f4f97cbfe895b23f1955409f9c4be8f5b7/docs/cosutrainer.png")
 sha256sums=("db1c149d4c302d3a0a84f3cb6e207c76f69caef9fc6e463478d3bb82855172d5"
