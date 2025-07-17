@@ -3,7 +3,7 @@
 
 pkgname='perl-math-mpfr'
 pkgver='4.39'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Math::MPFR - perl interface to the MPFR (floating point) library."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
