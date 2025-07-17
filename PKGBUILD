@@ -10,13 +10,14 @@ license=('Unlicense')
 depends=('python')
 provides=('youtube-dl')
 conflicts=('youtube-dl')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
             'python-pycryptodome: for hlsnative downloader'
             'python-pycryptodomex: for ivi extractor'
-            'python-brotli: support for the Brotli compression format'
+            'python-brotli: support for Brotli HTTP compression'
+            'python-zstandard: support for zstd HTTP compression'
             'aria2: alternative parallel downloader')
 source=("https://github.com/ytdl-org/ytdl-nightly/releases/download/${pkgver}/youtube-dl-${pkgver}.tar.gz")
 sha256sums=('279c011c68bc3631610bded2e5619014b414b1c8185a4e8a6c821e5585288b7c')
@@ -29,13 +30,16 @@ prepare() {
 
 build() {
   cd youtube-dl
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd youtube-dl
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  mv "${pkgdir}/usr/share/bash-completion/completions/youtube-dl.bash-completion" \
-     "${pkgdir}/usr/share/bash-completion/completions/youtube-dl"
-  install -Dm644 youtube-dl.zsh "${pkgdir}/usr/share/zsh/site-functions/_youtube-dl"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 youtube-dl.zsh "$pkgdir/usr/share/zsh/site-functions/_youtube-dl"
+
+  cd "$pkgdir/usr/share/bash-completion/completions/"
+  mv youtube-dl.bash-completion youtube-dl
 }
