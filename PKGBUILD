@@ -2,7 +2,7 @@
 
 _name="Pogo"
 pkgname=tango-${_name,,}
-pkgver=9.10.0
+pkgver=9.10.1
 _jarfile="${_name}-${pkgver}.jar"
 pkgrel=1
 pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
@@ -16,7 +16,7 @@ source=(
   launcher
 )
 sha256sums=(
-  "0f0f91d61279490b983d809ec8c2250b109592bd2b9b74789d8021f106f11ef0"
+  "a0e62479bdd91f81de93db39eef4d38fde8bf438e9fd3e1549d08431f031a1bd"
   "49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee"
 )
 
