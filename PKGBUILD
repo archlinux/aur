@@ -2,14 +2,14 @@
 
 pkgname=lyx-git
 _pkgname=lyx
-pkgver=2.4.Beta1.r369.g109ea2be4a
+pkgver=2.5.gamma1.337.ge96f4ec
 pkgrel=1
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('i686' 'x86_64')
 url="http://www.lyx.org"
 license=('GPL')
-depends=(qt5-svg qt5-base python imagemagick enchant python-pyenchant boost-libs libmythes file)
-makedepends=(glibc qt5-base git autoconf automake gcc bc)
+depends=(qt6-svg qt6-base python imagemagick enchant python-pyenchant boost-libs libmythes file)
+makedepends=(glibc qt6-base git autoconf automake gcc bc)
 optdepends=(texlive-core rcs texlive-latexextra)
 provides=('lyx')
 conflicts=('lyx')
@@ -18,16 +18,21 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./autogen.sh && ./configure --enable-qt5 --prefix=/usr 
-	make -j"$(nproc)"
+  ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --enable-qt6 \
+    --without-included-boost \
+    --without-included-mythes
+  make
 }
 
 package() {
