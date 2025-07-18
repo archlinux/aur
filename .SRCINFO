@@ -1,0 +1,17 @@
+pkgbase = stam
+	pkgdesc = Command line tools for working with stand-off annotations on text
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://annotation.github.io/stam
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = stam
+	conflicts = stam
+	source = stam-tools::https://github.com/annotation/stam-tools/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = bed75ad53d9097a85e96d82d1e58c01063ae993e899e20df7515171a73085a5c
+
+pkgname = stam
