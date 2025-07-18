@@ -1,7 +1,7 @@
 # Maintainer: Ireozar <ireo at ireo dot xyz>
 
 pkgname="openspeedrun-bin"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Modern and minimalistic open-source speedrun timer"
 arch=('x86_64')
