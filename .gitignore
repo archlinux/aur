@@ -1,4 +1,8 @@
-/*.tar.xz
-/*.deb
-/src
-/pkg
+# Ignore build-only files/folders
+*
+!.SRCINFO
+!.gitignore
+!ccpkip11.module
+!LICENSE.html
+!PKGBUILD
+!README.md
