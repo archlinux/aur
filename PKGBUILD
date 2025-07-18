@@ -5,9 +5,15 @@ pkgrel=2
 pkgdesc="Research into making web shortcuts a 'first class citizen' in GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/sthursfield/gnome-web-shortcuts-extension"
-license=('unknown')
-depends=('nautilus' 'firefox')
-makedepends=('git' 'meson')
+license=('LicenseRef-unknown')
+depends=(
+  'firefox'
+  'nautilus'
+)
+makedepends=(
+  'git'
+  'meson'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
@@ -16,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
