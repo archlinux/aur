@@ -4,7 +4,7 @@
 # pkgver is set to 5.0.0+dev is replaced in the update-aur.sh script
 
 pkgname=system-bridge-git
-pkgver=r40.gb76508d
+pkgver=r41.g4509110
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'go' 'bun-bin')
@@ -23,7 +23,7 @@ build() {
   cd "$pkgname"
   export STATIC_EXPORT=true
   export CGO_ENABLED=1
-  make build_client
+  make build_web_client
   local version
   version="$(cd "$srcdir/$pkgname" && git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")"
   go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
