@@ -1,10 +1,9 @@
 # Maintainer: mazix <mazix@bk.ru>
 pkgname=perplexity
-pkgver='1.1.3.12'
+pkgver='1.1.3.13'
 pkgrel=1
 pkgdesc="Native Perplexity AI client for Linux (Electron wrapper)"
 arch=('x86_64')
-url="https://github.com/mazix/perplexity"
 license=('Apache 2.0')
 depends=('electron')
 makedepends=('npm' 'nodejs')
