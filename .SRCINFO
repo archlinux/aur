@@ -1,0 +1,6 @@
+pkgbase = vesktop-bin-patched
+	arch = any
+	pkgrel = 1
+	pkgver = 0
+
+pkgname = vesktop-bin-patched
