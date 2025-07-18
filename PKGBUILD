@@ -3,7 +3,7 @@
 
 pkgname=pje-office
 pkgver=2.5.16u
-pkgrel=5
+pkgrel=6
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
 url='https://pjeoffice.trf3.jus.br'
@@ -41,8 +41,7 @@ prepare() {
 
 echo "Iniciando o PJeOffice!"
 
-export PATH="/usr/lib/jvm/java-11-openjdk/bin"
-exec java \
+exec /usr/lib/jvm/java-11-openjdk/bin/java \
 -XX:+UseG1GC \
 -XX:MinHeapFreeRatio=3 \
 -XX:MaxHeapFreeRatio=3 \
