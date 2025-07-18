@@ -1,7 +1,7 @@
 pkgbase = firefox-browser-sponsorblock
 	pkgdesc = Skip YouTube video sponsors
 	pkgver = 5.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajayyy/SponsorBlock
 	arch = any
 	groups = zen-browser-addons
