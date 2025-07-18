@@ -15,8 +15,8 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=227995f24282894a58d2b1077f5d022c8bd891d4
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=08c7ba925184a53c02976e0d7cf71b4674fef695
+	source = git+https://github.com/fcitx/mozc.git#commit=c7dac6a3cd28eb842cdf7229045c919ddf7a0239
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=4914c853627d79039c0070dc6c13765f7584c893
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=bc257a88
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=52eb8108
@@ -34,8 +34,8 @@ pkgbase = mozc-with-jp-dict
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
 	source = fcitx5-mozc-conf.patch
-	sha512sums = e0cef94a29c2efe43249ca1d12757e34e12a1b2fbcd115e9b40f7dd40de6fef33880f3160624d952ce3ac467de329b78aa3bd58cf1b4720164819214a1cf51ac
-	sha512sums = 97639900966f213c7e3a7448d124d938c388ad8b6f9e27f4628a831aa7c6677167c6bf2dbfc78520065d25af4d033121077c256b9bd60bc14be3ca3a91f595f6
+	sha512sums = 932cab0f32b3aa2e5eb6372394c37752f05aeec6f168b6185b2b1297f1759ab73e879d372a45f2aa26f18d07aa0e9b507756e80dfe66e7e191b1248b4e8b7802
+	sha512sums = 674e77528871843bad66294894a133b62a8143e5947ce8e9554de49c3517ca18c4afb075a02c580477bd8eeb7ee6d4cde749bb2e4e2d0211253beb508e858c3d
 	sha512sums = 5629f4976ec8ca7a041f06543d976f4806df394f3c2d02eec8bfbf5161539b069dd2a0a4fd3d2d478383602ea181ced4d704aa514124fcedbc5710c40d52fbb2
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 48cd60ccec0f9a5f262c8f8865bcc794c023fc8a421a071c179922e5176ecbe83e554430de30c70efee2d47c0b3defec687ba89d66124d372798d0394fe3c767
