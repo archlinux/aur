@@ -1,0 +1,6 @@
+pkgbase = zen-browser-patched-bin
+	arch = any
+	pkgrel = 1
+	pkgver = 0
+
+pkgname = zen-browser-patched-bin
