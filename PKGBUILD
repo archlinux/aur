@@ -2,7 +2,7 @@
 
 _pkgbase=pytouhou
 pkgname="$_pkgbase-hg"
-pkgver=772
+pkgver=773
 pkgrel=1
 pkgdesc='Libre reimplementation of the Touhou 6 engine.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,8 +12,7 @@ depends=('python' 'glfw' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libepoxy' 
 makedepends=('mercurial' 'cython')
 provides=("pytouhou=$pkgver")
 conflicts=('pytouhou')
-optdepends=('gtk3: for a graphical main menu'
-            'th06-demo-pytouhou: the freeware demo of EoSD.')
+optdepends=('th06-demo-pytouhou: the freeware demo of EoSD.')
 
 source=("$_pkgbase::hg+https://hg.linkmauve.fr/touhou")
 md5sums=('SKIP')
@@ -31,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgbase"
-  install -Dm755 target/release/libtouhou.so "$pkgdir"/usr/lib/python3.11/site-packages/libtouhou.so
+  install -Dm755 target/release/libtouhou.so "$pkgdir"/usr/lib/python3.13/site-packages/libtouhou.so
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 

@@ -1,6 +1,6 @@
 pkgbase = pytouhou-hg
 	pkgdesc = Libre reimplementation of the Touhou 6 engine.
-	pkgver = 772
+	pkgver = 773
 	pkgrel = 1
 	url = https://pytouhou.linkmauve.fr/
 	arch = i686
@@ -17,9 +17,8 @@ pkgbase = pytouhou-hg
 	depends = sdl2_ttf
 	depends = libepoxy
 	depends = libgl
-	optdepends = gtk3: for a graphical main menu
 	optdepends = th06-demo-pytouhou: the freeware demo of EoSD.
-	provides = pytouhou=772
+	provides = pytouhou=773
 	conflicts = pytouhou
 	source = pytouhou::hg+https://hg.linkmauve.fr/touhou
 	md5sums = SKIP
