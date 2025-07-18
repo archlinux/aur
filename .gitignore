@@ -1,10 +1,11 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !i8kgui.install
 !i8kgui.patch
-!.nvchecker.toml
