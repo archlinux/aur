@@ -1,8 +1,9 @@
-# Maintainer: ObscureScience <curvedreality at gmail dot com>
+# Maintainer: TwoFinger
+# Contributor: ObscureScience <curvedreality at gmail dot com>
 
 pkgname=urweb-git
 _pkgname=urweb
-pkgver=20160330.1278321
+pkgver=20240308.55a881ff
 pkgrel=1
 pkgdesc='Full stack web framework based on a functional programming language'
 url='http://www.impredicative.com/ur/'
@@ -11,7 +12,7 @@ license=('BSD 3-Clause')
 depends=()
 optdepends=('postgresql' 'mariadb' 'sqlite')
 makedepends=('mlton' 'openssl' 'git')
-source=('git://github.com/urweb/urweb.git')
+source=('git+https://github.com/urweb/urweb.git')
 md5sums=('SKIP')
 
 provides=("${_pkgname}")
