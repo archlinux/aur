@@ -4,8 +4,9 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-git
+_pkgname=howl
 pkgver=0.6
-pkgrel=2
+pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=(i686 x86_64)
 url='https://howl.io/'
@@ -19,19 +20,18 @@ source=(git+https://github.com/howl-editor/howl.git#branch=next)
 md5sums=(SKIP)
 
 pkgver() {
-  cd howl
+  cd "$srcdir"/$_pkgname
   git describe --tags | sed "s+-+.r+" | tr - .
 }
 
 build() {
-  cd howl/src
-  make
+  cd "$srcdir"/$_pkgname
+  make -C src
 }
 
 package() {
-  cd howl/src
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  cd ..
-  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
+  cd "$srcdir"/$_pkgname
+  make -C src PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE.md
   rm "$pkgdir"/usr/share/howl/bundles/python/misc/examples.py
 }
