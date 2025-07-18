@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_deriving'
 pkgname="ocaml-$_projectname"
-pkgver='6.1.0'
+pkgver='6.1.1'
 pkgrel='1'
 epoch='1'
 pkgdesc='Type-driven code generation for OCaml'
@@ -14,7 +14,7 @@ makedepends=('cppo>=1.1.0' 'dune>=1.6.3')
 checkdepends=('ocaml-ounit')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('fae4e30c3f9f98a10810ee1373d96598836eebc0b07a8121ace6a2328eb46c2b6d04523b204cf4757de9bde46edf516a5e16a8fc1c0dc514af742ecd144a18db')
+b2sums=('6e6ef6b2ace6413de9f40420075148737738ad6834164ae037c851ff4b7b7511ecbce4068228898d69a5fb0b32081e376fbd52e278c9c38fd8d3080f28c12c67')
 
 _sourcedirectory="$_projectname-$pkgver"
 
