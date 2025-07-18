@@ -1,0 +1,17 @@
+pkgbase = python-livekit-blingfire
+	pkgdesc = BlingFire bindings for livekit-agents.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-blingfire
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.1.5.tar.gz
+	sha256sums = a3a6631e23125a6c11f51fef5bf74f6ab7b1a31bbb7e5547b5fe49018664dbdb
+
+pkgname = python-livekit-blingfire
