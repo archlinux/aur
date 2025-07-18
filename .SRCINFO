@@ -1,0 +1,17 @@
+pkgbase = hyprbop
+	pkgdesc = A hacky utility for creating custom popups on hyprland
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/zetorik/hyprbop
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = pyside6
+	source = hyprbop-0.1.1.tar.gz::https://github.com/zetorik/hyprbop/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprbop
