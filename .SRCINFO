@@ -1,0 +1,13 @@
+pkgbase = proxydetox-bin
+	pkgdesc = A proxy for localhost to simplify life with corporate proxies.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://proxydetox.colorto.cc
+	arch = x86_64
+	license = MIT
+	options = !strip
+	options = !emptydirs
+	source = proxydetox-bin-0.12.0.deb::https://github.com/kiron1/proxydetox/releases/download/v0.12.0/proxydetox-0.12.0-noble_amd64.deb
+	sha512sums = e96d70d4ff68ad28e0afbe54374c36a559a6049091f0c2db0cc0d24fbf4ae9da01c59810c32542a6ff86bd74b5cb9f7d2b85a02f56a33274aa43dee635a3e88e
+
+pkgname = proxydetox-bin
