@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-material-you-colors-git
 _uuid=material-you-colors@francescocaracciolo.github.io
-pkgver=28.r1.g4596665
+pkgver=29.r0.gf69b088
 pkgrel=1
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-material-you-colors-git
 	pkgdesc = Applies generated libadwaita theme from wallpaper using Material You
-	pkgver = 28.r1.g4596665
+	pkgver = 29.r0.gf69b088
 	pkgrel = 1
 	url = https://github.com/FrancescoCaracciolo/material-you-colors
 	arch = any
