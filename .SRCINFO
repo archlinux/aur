@@ -1,6 +1,6 @@
 pkgbase = zen-browser-ublock-origin
 	pkgdesc = Efficient blocker add-on for various browsers. Fast, potent, and lean. Symlink to the Firefox addon.
-	pkgver = 4.9.109
+	pkgver = 4.9.110
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
