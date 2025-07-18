@@ -8,11 +8,22 @@ pkgdesc="Fixes hardcoded tray icons"
 arch=('x86_64')
 url="https://github.com/bil-elmoussaoui/Hardcode-Tray"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'librsvg' 'python-cairosvg' 'python-gobject')
-makedepends=('git' 'gobject-introspection' 'meson')
-optdepends=('nodejs-svgexport: option to convert svg to png'
-            'imagemagick: option to convert svg to png'
-            'inkscape: option to convert svg to png')
+depends=(
+  'gtk3'
+  'librsvg'
+  'python-cairosvg'
+  'python-gobject'
+)
+makedepends=(
+  'git'
+  'gobject-introspection'
+  'meson'
+)
+optdepends=(
+  'nodejs-svgexport: option to convert svg to png'
+  'imagemagick: option to convert svg to png'
+  'inkscape: option to convert svg to png'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/bil-elmoussaoui/Hardcode-Tray.git'
@@ -24,7 +35,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd Hardcode-Tray
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -45,7 +56,7 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   # Compile Python bytecode:
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
