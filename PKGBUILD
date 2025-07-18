@@ -2,8 +2,8 @@
 
 _pkgname=tetragon
 pkgname=$_pkgname-bin
-pkgver=1.4.0 # renovate: datasource=github-releases depName=cilium/tetragon
-pkgrel=2
+pkgver=1.4.1 # renovate: datasource=github-releases depName=cilium/tetragon
+pkgrel=1
 pkgdesc="eBPF-based Security Observability and Runtime Enforcement"
 url="https://github.com/cilium/$_pkgname"
 license=('Apache-2.0')
