@@ -1,17 +1,17 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname="numnastics"
 pkgname="${_pkgname}-git"
-pkgver=r13.1b666c1
+pkgver=r25.3c81526
 pkgrel=1
 pkgdesc="A number puzzle audio game"
 arch=('any')
-url="https://gitlab.com/stormdragon2976/numnastics"
+url="https://git.stormux.org/storm/numnastics"
 license=('GPL3')
 depends=('python' 'python-pygame' 'python-pyperclip' 'python-requests' 'python-setproctitle' 'python-xdg' 'speech-dispatcher')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://gitlab.com/stormdragon2976/numnastics.git"
+source=("git+https://git.stormux.org/storm/numnastics"
         "$_pkgname.desktop"
         "$_pkgname.sh")
 sha512sums=('SKIP'
