@@ -7,9 +7,10 @@ arch=('any')
 url="https://github.com/nikooozzz/passly"
 license=('MIT')
 depends=('python' 'python-tldextract')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+keywords=('password' 'security' 'cli' 'bitwarden' 'passly')
 source=("https://github.com/nikooozzz/passly/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fb36c0eb75ab3b7d08093e0189dda2d7db1e3c903c44bcfc6c103468c1afaeab')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
