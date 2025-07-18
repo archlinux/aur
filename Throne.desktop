@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Throne
-Comment=Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
+Comment=Cross-platform GUI proxy utility (Empowered by sing-box)
 Icon=Throne
 Exec=throne
 Categories=Network;Utility;
