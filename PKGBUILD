@@ -1,7 +1,7 @@
 # Maintainer: Serhii Hordiienko <phrippy2@gmail.com>
 
 pkgname='fet-timetabling-bin'
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="A software for automatically scheduling the timetable of a school, high-school or university."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base' 'hicolor-icon-theme')
 provides=("fet-timetabling=${pkgver}")
 conflicts=('fet-timetabling')
 source=("https://gitlab.com/phrippy/fet-bin/-/raw/main/fet-bin-${pkgver}.tar.xz")
-sha256sums=('9767fa8e6fb8eeb89b11ace160ef80e4a45a36eac56e33f1e202b26688dd7382')
+sha256sums=('ee582ca516701cc442a8a547635b0516d610ce22463bb6ed6a07c4c8b839c235')
 package() {
   cd "$srcdir"
   bsdtar -xf "fet-bin-${pkgver}.tar.xz" -C "$pkgdir"
