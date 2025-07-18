@@ -1,9 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=('palenight-gtk-theme'
-         'amarena-gtk-theme'
-         'gruvterial-gtk-theme'
-         'oceanic-gtk-theme'
-         'spacx-gtk-theme')
+pkgname=(
+  'palenight-gtk-theme'
+  'amarena-gtk-theme'
+  'gruvterial-gtk-theme'
+  'oceanic-gtk-theme'
+  'spacx-gtk-theme'
+)
 pkgbase=gtk-theme-framework
 pkgver=0.2.3
 pkgrel=1
@@ -13,8 +15,10 @@ url="https://github.com/jaxwilko/gtk-theme-framework"
 license=('GPL-3.0-or-later')
 depends=('gtk3')
 makedepends=('git')
-optdepends=('gtk-engine-murrine: GTK2 theme support'
-            'gtk-engines: GTK2 theme support')
+optdepends=(
+  'gtk-engine-murrine: GTK2 theme support'
+  'gtk-engines: GTK2 theme support'
+)
 conflicts=('material-gtk-framework')
 options=('!strip')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
