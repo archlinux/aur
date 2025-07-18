@@ -4,7 +4,7 @@ pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
 _pkgname=${pkgname}
-pkgver=1.60.2
+pkgver=1.60.3
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -12,9 +12,11 @@ url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=(
+    amd-debug-tools
     cage
     expect
     efibootmgr
+    ethtool
     fakeroot
     fpaste
     fzf
@@ -35,10 +37,8 @@ optdepends=(
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz"
-        "amd_s2idle.py::https://web.git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git/plain/amd_s2idle.py")
-sha256sums=('SKIP'
-            'SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
