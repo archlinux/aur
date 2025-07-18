@@ -1,20 +1,25 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-bin
-pkgver=2.12.5
-_build=19302
-_oclcommit=58242977b4092cf5eb94a10dd144691c12c87001
+pkgver=2.14.1
+_build=19448
+_oclcommit=7eef46576eca117685ae431735c2725ddb889260
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT' 'Apache-2.0 WITH LLVM-exception')
-depends=('gcc-libs' 'glibc' 'zlib' 'zstd')
-makedepends=('git')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'zlib'
+    'zstd')
+makedepends=(
+    'git')
 provides=('intel-graphics-compiler' 'intel-opencl-clang')
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
-options=('!strip' '!emptydirs')
+options=('!debug' '!emptydirs' '!strip')
 source=("https://github.com/intel/intel-graphics-compiler/releases/download/v${pkgver}/intel-igc-core-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/v${pkgver}/intel-igc-opencl-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/v${pkgver}/intel-igc-opencl-devel_${pkgver}+${_build}_amd64.deb"
@@ -23,10 +28,10 @@ source=("https://github.com/intel/intel-graphics-compiler/releases/download/v${p
 noextract=("intel-igc-core-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
            "intel-igc-opencl-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}+${_build}_amd64.deb")
-sha256sums=('6f3531c3dc2de7a895b990fe6661d61ff6aad2afe68d1f2069965ee7e7af08d0'
-            '888d5958f344d267387194926276c8fc06fd28debdf575b2fd8a6bf37e80875c'
-            'e924467408f58c381fc01645dde881d37872f837c88035e4ad3ddb3a77d34aee'
-            'cc4961a1701dc241d9a3c8c7f0d9a1ab8302f6f70b3df036e73313c32bf551f2'
+sha256sums=('8a10d246c083a34782dc8a58fa3bf1f2e9ad01510b6487e9596f33a1b2b43859'
+            'f52b13428d034ff9e3abd72f7127dfaf5a4ce6f0ae16ebe2f5eb43f4b7adc366'
+            'b7aa739c16415b84374b1dfa759aabd4d610da708c6d9d1e7631afd2230dc822'
+            '20b358895a331ebaf921d5dfce5042a03f2f262b9b64b33a421710abd2255a93'
             '72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716')
 
 prepare() {
