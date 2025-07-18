@@ -1,6 +1,6 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=kff
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple tool for setting up the environment (SDK/Toolchain) and generating projects from templates for Kindle development"
 arch=('x86_64')
