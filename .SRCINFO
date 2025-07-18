@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 24 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 24.0.1.u9
+	pkgver = 24.0.2.u12
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -21,10 +21,10 @@ pkgbase = jdk-temurin
 	provides = java-runtime-openjdk=24
 	provides = java-environment=24
 	provides = java-environment-openjdk=24
-	provides = jdk24-openjdk=24.0.1.u9
-	provides = jdk-openjdk=24.0.1.u9
-	provides = openjdk24-src=24.0.1.u9
-	provides = openjdk-src=24.0.1.u9
+	provides = jdk24-openjdk=24.0.2.u12
+	provides = jdk-openjdk=24.0.2.u12
+	provides = openjdk24-src=24.0.2.u12
+	provides = openjdk-src=24.0.2.u12
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -42,11 +42,11 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24.0.1%2B9/OpenJDK24U-jdk_x64_linux_hotspot_24.0.1_9.tar.gz
+	source = https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24.0.2%2B12/OpenJDK24U-jdk_x64_linux_hotspot_24.0.2_12.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 78832cb5ea4074f2215cde0d01d6192d09c87636fc24b36647aea61fb23b8272
+	sha256sums = aea1cc55e51cf651c85f2f00ad021603fe269c4bb6493fa97a321ad770c9b096
 	sha256sums = ce49e3435f1e229260f429d61896be9a6f9d2b0cdc72d2c0091fed6ac55c388a
 	sha256sums = decb720bd8d5e8628e836af8813bfbcf7fec00a4d119765e993a19cf235d8784
 	sha256sums = a71dbdb6f769bf33a55e78ef0fe2300929a9a291b6e5ccba4245c67f679321a5
