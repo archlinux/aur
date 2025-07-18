@@ -1,11 +1,15 @@
 pkgbase = fzy-static
 	pkgdesc = A better fuzzy finder
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jhawthorn/fzy
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = musl
+	makedepends = gzip
 	provides = fzy
 	conflicts = fzy
 	source = https://github.com/jhawthorn/fzy/archive/1.1.tar.gz
