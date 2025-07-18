@@ -3,11 +3,11 @@
 pkgname=unstoppableswap-gui-bin
 _pkgver=3.0.0
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Eigenwallet (formerly UnstoppableSwap), a Graphical User Interface for trustless cross-chain XMR<>BTC Atomic Swaps."
+pkgdesc="λ eigenallet (previously UnstoppableSwap) is a GUI for trustless cross-chain XMR<>BTC Atomic Swaps."
 arch=('x86_64')
-url="https://unstoppableswap.net/"
+url="https://eigenwallet.org/"
 license=('GPL-3.0')
 groups=()
 depends=(glib2 hicolor-icon-theme gtk3 webkit2gtk)
