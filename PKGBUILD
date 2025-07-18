@@ -1,18 +1,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=comrak
-pkgver=0.38.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=(x86_64 i686)
 url="https://github.com/kivikakk/$pkgname"
 license=(BSD-2-Clause)
 depends=(gcc-libs
-         glibc)
+         glibc
+         oniguruma)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b09ef8f84e7f8c7ef6d248dd7fdae3f2ecc3e511b7ee7db20f3c196832353782')
+sha256sums=('89bf88ac19a0b7542048a78c6273643d25259acb10ffe22af3482ad8fd04f69d')
 
 prepare() {
 	cd "$_archive"
@@ -23,6 +24,7 @@ _srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export RUSTONIG_DYNAMIC_LIBONIG=1
 	export CFLAGS+=' -ffat-lto-objects'
 }
 
