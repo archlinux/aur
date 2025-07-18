@@ -1,33 +1,46 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=marker-git
-pkgver=2023.05.02.r11.gae508ff7
+pkgver=2023.05.02.r21.g2091b45
 pkgrel=1
 pkgdesc="Markdown editor for linux made with Gtk+-3.0"
 arch=('x86_64')
-url="https://fabiocolacio.github.io/Marker"
+url="https://fabiocolacio.xyz/Marker"
 license=('GPL-3.0-or-later')
-depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk-4.1')
-makedepends=('git' 'itstool' 'meson')
+depends=(
+  'gtksourceview3'
+  'gtkspell3'
+  'webkit2gtk-4.1'
+)
+makedepends=(
+  'git'
+  'itstool'
+  'meson'
+)
 checkdepends=('appstream')
-optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX'
-            'yelp: in-app help')
+optdepends=(
+  'mathjax2: alternative backend for rendering formulas'
+  'pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX'
+  'yelp: in-app help'
+)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=('git+https://github.com/fabiocolacio/Marker.git'
         'git+https://github.com/Mandarancio/scidown.git'
         'git+https://github.com/Mandarancio/charter.git'
         'git+https://github.com/codeplea/tinyexpr.git'
-        'add_gi18n_h.patch')
+        'add_gi18n_h.patch'
+        'fix-incompatible-pointer-type.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a549a622d3d58936643f4932235711c03a38550d09266e1863a936e41618b661')
+            'a549a622d3d58936643f4932235711c03a38550d09266e1863a936e41618b661'
+            '84ac0e9030efeb413daa4fec218fbbdcde4d137fd0d39178301a1fe9a6708a32')
 
 pkgver() {
   cd Marker
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -38,8 +51,15 @@ prepare() {
 
   # Update version
   sed -i "s/2020.04.04/${pkgver%%.r*}/g" meson.build
+ 
+  # Unbundle mathjax
+  sed -i 's|file:///usr/share/javascript/mathjax/MathJax.js|file:///usr/share/mathjax2/MathJax.js|' src/marker-markdown.c
 
   patch -Np1 -i ../add_gi18n_h.patch
+
+  # Fix incompatible pointer type
+  # https://github.com/fabiocolacio/Marker/pull/427
+  patch -Np1 -i ../fix-incompatible-pointer-type.patch
 
   cd src/scidown
   git submodule init
@@ -53,6 +73,10 @@ prepare() {
 }
 
 build() {
+
+  # Remove optimalization as it breaks charter
+  export CFLAGS=${CFLAGS/ -O2}
+
   arch-meson Marker build
   meson compile -C build
 }
@@ -64,5 +88,5 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
