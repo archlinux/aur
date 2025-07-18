@@ -1,5 +1,5 @@
 pkgname=rymdport
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=0
 pkgdesc='Cross-platform application for easy encrypted sharing of files, folders, and text between devices.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPLv3')
 depends=('libglvnd' 'libxcursor' 'libxrandr' 'libxcursor' 'libx11' 'libxinerama' 'libxi')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2b0dbf4faea7ad56368780a71b89be3ced26c8155b371a69700ba358bf90a99d')
+sha256sums=('1d2f3ede16a406f44e914287d033fcfc544aa1da050d64b1622f096c7e3ef2e2')
 
 build() {
   cd "$pkgname-$pkgver"
