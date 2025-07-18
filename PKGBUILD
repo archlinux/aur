@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-# Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
-pkgname=waybar-niri-taskbar-git
-_pkgname=niri-taskbar
-pkgver=r33.73db83b
-=======
-# waybar-niri-taskbar-git
 # Maintainer: Corey Mwamba <contact dot me at coreymwamba dot co dot uk>
 pkgname=waybar-niri-taskbar-git
 _pkgname=niri-taskbar
 pkgver=v0.2.0+niri.25.05
->>>>>>> c54c9e7 (Edited PKGBUILD to stop irritating flagging)
 pkgver() {
   cd "$_pkgname"
   ( set -o pipefail
