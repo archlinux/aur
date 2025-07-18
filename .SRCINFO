@@ -1,0 +1,6 @@
+pkgbase = firefox-patch-bin
+	arch = any
+	pkgrel = 1
+	pkgver = 0
+
+pkgname = firefox-patch-bin
