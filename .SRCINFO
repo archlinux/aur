@@ -1,18 +1,21 @@
 pkgbase = dong
 	pkgdesc = A striking clock on your computer
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://gitlab.com/TuTiuTe/dong
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = alsa-lib
 	depends = alsa-lib
+	depends = glibc
+	depends = gcc-libs
+	depends = glibc
 	provides = dong
 	conflicts = dong
 	options = !lto
 	options = !debug
-	source = https://gitlab.com/TuTiuTe/dong/-/archive/v0.2.1/dong-v0.2.1.tar.gz
-	sha256sums = 45f397f0340cf773b0af7263fcb551740ab6ad3f53b3d4263c87b5ebf76c3c92
+	source = https://gitlab.com/TuTiuTe/dong/-/archive/v0.3.0/dong-v0.3.0.tar.gz
+	sha256sums = 4d5fe142771350b992b8e95eb91d12ac24c7d5d2af2178ad223cf674c7469562
 
 pkgname = dong
