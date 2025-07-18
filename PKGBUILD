@@ -1,16 +1,27 @@
 # Maintainer: Vincent.Ducamps <aur@ducamps.eu>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-pop-shell-git
-pkgver=1.2.0.r305.gcfa0c55
+pkgver=1.2.0.r313.g6fd8c03
 pkgrel=1
 pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
 url="https://github.com/pop-os/shell"
 license=('GPL-3.0-or-later')
-depends=('fd' 'gnome-shell' 'pop-launcher-git' 'pop-shell-shortcuts-git' 'xorg-xprop')
-makedepends=('git' 'typescript')
-optdepends=('gnome-control-center: keybinding categories'
-            'gnome-shell-extensions: for Native Window Placment extension')
+depends=(
+  'fd'
+  'gnome-shell'
+  'pop-launcher-git'
+  'pop-shell-shortcuts-git'
+  'xorg-xprop'
+)
+makedepends=(
+  'git'
+  'typescript'
+)
+optdepends=(
+  'gnome-control-center: keybinding categories'
+  'gnome-shell-extensions: for Native Window Placment extension'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/shell.git#branch=master_noble'
@@ -30,7 +41,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd shell
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

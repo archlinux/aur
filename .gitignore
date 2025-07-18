@@ -1,10 +1,12 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !0001-Remove-schema-handling-from-transpile.sh.patch
 !50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override
 !50_org.gnome.mutter.pop-shell.gschema.override
