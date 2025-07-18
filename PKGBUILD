@@ -1,24 +1,32 @@
-# Maintainer: Kimiblock Moe
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Contributor: Kimiblock Moe
 
-pkgname=nodejs-vite
-_pkgname=${pkgname#nodejs-}
-pkgdesc="Next generation frontend tooling. It's fast!"
-url="https://github.com/vitejs/vite"
-license=(MIT)
-makedepends=('npm')
-noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('083dfbda7d984ea8884c23fc4e9778a0ef647442ecffb599026109d578753c0e'
-            '29b68325fe026047d13e187b44c33b2acacf7dc647dec4583702e59f235e13b5')
-arch=(any)
-pkgver=6.3.5
+_npmname=vite
+pkgname=nodejs-$_npmname
+pkgver=7.0.5
 pkgrel=1
-source=(
-	"${_pkgname}-${pkgver}.tgz"::"https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
-	LICENSE::"https://github.com/vitejs/vite/raw/main/LICENSE"
-)
-function package() {
-	npm i -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
-	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-	install -Dm755 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
+pkgdesc="Next generation frontend tooling. It's fast!"
+arch=('any')
+url="https://github.com/vitejs/vite"
+license=('MIT')
+depends=('nodejs')
+makedepends=('npm')
+source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
+        "https://github.com/vitejs/vite/raw/main/LICENSE")
+noextract=($_npmname-$pkgver.tgz)
+sha512sums=('d669dc570271cb60bd4e12f0cf4fb618a672117b82dccc96b4002535fb656595d90cfdc026de459b070c8adfc818668d67c64e07604d3bf1c5501f82a4dd0d43'
+            '6d9074936683997b5f01e7ca64d88b4242be94a5bb151405654d3d4845cae7c2e4286d1b546b79b26c59866f56fe68b068c68f62f1cd465019fbb6de9abc9957')
 
+package() {
+  npm install -g --prefix "${pkgdir}"/usr "${srcdir}"/$_npmname-$pkgver.tgz
+
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  chmod -R u=rwX,go=rX "${pkgdir}"
+
+  # npm installs package.json owned by build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
+
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
