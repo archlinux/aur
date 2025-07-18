@@ -1,7 +1,7 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=python-torra
 _name=`echo ${pkgname} | grep -Po "(?<=-).*"`
-pkgver=1.0.39
+pkgver=1.0.41
 pkgrel=0
 pkgdesc="Torrent client"
 arch=('any')
@@ -10,7 +10,7 @@ license=('0BSD')
 depends=(gtk4 python-appdirs libtorrent-rasterbar)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('8d8088cc0d813e2030328bdcdfc77850dfcb5dc586a9b8a5baa09adf9ae3656b')
+sha256sums=('7b89f391dc1ac33f3ef2d55fd86439038cf22ff5188cd5d84f9f542a76004426')
 
 prepare() {
 	_patches="`cat ../list`"
