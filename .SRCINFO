@@ -1,0 +1,12 @@
+pkgbase = nvidia-powerd-dinit
+	pkgdesc = Dinit service replacement files for nvidia-powerd.service
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL-3.0
+	depends = dinit
+	depends = NVIDIA-MODULE
+	source = nvidia-powerd
+	sha256sums = c0a5a4af6b6da12c0891822e382c6d9677c781238bd1b34778559f15cbe1373e
+
+pkgname = nvidia-powerd-dinit

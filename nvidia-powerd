@@ -1,0 +1,4 @@
+type		= process
+command		= /usr/bin/nvidia-powerd
+pid-file	= /run/nvidia-powerd.pid
+after		= early-fs-fstab.target modules
