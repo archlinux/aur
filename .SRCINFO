@@ -1,6 +1,6 @@
 pkgbase = natscli-git
 	pkgdesc = The NATS Command Line Interface
-	pkgver = r1889.118da2e
+	pkgver = r2745.e9c4f0b
 	pkgrel = 1
 	url = https://github.com/nats-io/natscli
 	arch = x86_64
