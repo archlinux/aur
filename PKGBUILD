@@ -57,7 +57,7 @@ package_lua52-prompt-style() {
 
 package_lua53-prompt-style() {
 	# luatex, neomutt uses lua5.3
-	optdepends=(texlive-bin neomutt texlua)
+	optdepends=(texlive-bin neomutt luahbtex)
 	depends=(lua53-{ansicolors,filesystem,luaprompt})
 	local version=5.3
 	_package $version

@@ -33,4 +33,4 @@ pkgname = lua53-prompt-style
 	depends = lua53-luaprompt
 	optdepends = texlive-bin
 	optdepends = neomutt
-	optdepends = texlua
+	optdepends = luahbtex
