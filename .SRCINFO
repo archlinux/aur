@@ -1,0 +1,15 @@
+pkgbase = classisland
+	pkgdesc = ClassIsland - 适用于班级大屏的课表小工具。社区维护 AUR 包。
+	pkgver = 1.7.103.0
+	pkgrel = 1
+	url = https://www.classisland.tech/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	source = LICENSE.txt
+	source_x86_64 = https://ghfast.top/https://github.com/ClassIsland/ClassIsland/releases/download/1.7.103.0/ClassIsland_app_linux_x64_selfContained_deb.deb
+	sha256sums_x86_64 = 52f036c3e040a1ca956053cccb49efd3e9d271eba63d66b986a90c1d9ca352cc
+	source_aarch64 = https://ghfast.top/https://github.com/ClassIsland/ClassIsland/releases/download/1.7.103.0/ClassIsland_app_linux_arm64_selfContained_deb.deb
+	sha256sums_aarch64 = cfc9ae088ebf58a74f7d92d5d499f58f2463a5dee07b69d1e99378619bad2dda
+
+pkgname = classisland
