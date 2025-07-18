@@ -4,7 +4,7 @@
 
 pkgname=sulis-git
 pkgver=1.0.0.20250112
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn based tactical RPG with several campaigns, written in Rust.'
 arch=('x86_64')
 url='https://www.sulisgame.com/'
@@ -48,13 +48,13 @@ pkgver() {
 
 prepare() {
     gendesk -f -n --pkgname "sulis" --name "Sulis" --pkgdesc "${pkgdesc}s" --exec="/opt/sulis/sulis" --categories=Game --icon sulis --path=/opt/sulis
-    gendesk -f -n --pkgname "sulis-editor" --name 'Sulis Editor' --pkgdesc "${pkgdesc}s" --exec="/opt/sulis/sulis-editor" --categories=Game --icon sulis --path=/opt/sulis
+    gendesk -f -n --pkgname "sulis-editor" --name 'Sulis Editor' --pkgdesc "Editor for sulis" --exec="/opt/sulis/sulis-editor" --categories=Game --icon sulis --path=/opt/sulis
 }
 
 build() {
 	_srcdir="$PWD"
 	cd "sulis"
-	RUSTUP_TOOLCHAIN=stable cargo build --release --workspace --locked --all-features --target-dir="${_srcdir}/target"
+	RUSTUP_TOOLCHAIN=stable cargo build --release --workspace --locked --all-features --target-dir="${_srcdir}/target" --config ../../overridden_config.toml
 }
 
 package() {
