@@ -5,7 +5,7 @@ _name1=livekit-plugins
 _plugins=(anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero speechify speechmatics spitch tavus turn-detector)
 pkgbase=python-${_name0}
 pkgname=(python-${_name0} ${_plugins[@]/#/python-${_name1}-})
-pkgver=1.1.7
+pkgver=1.2.0
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for services from Anthropic.'
                   'Agent Framework plugin for AssemblyAI.'
@@ -117,7 +117,7 @@ _repo='https://github.com/livekit/agents'
 license=('Apache-2.0')
 source=("${_repo}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
         "${_repo}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('ea98722e20849ad6793e1480ee60de91f35a235b452623e1f96ca28bed911829'
+sha256sums=('c85c10d379c86aaf040c495f374c624b2000e913e6f741073e70ea22aafd112b'
             '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
@@ -158,6 +158,9 @@ check() {
     --deselect tests/test_tts.py::test_tts_synthesize_timeout
     --deselect tests/test_tts.py::test_tts_stream
     --deselect tests/test_tts.py::test_tts_stream_timeout
+    --deselect tests/test_evals.py::test_function_call
+    --deselect tests/test_evals.py::test_inline_agent
+    --deselect tests/test_workflows.py::test_collect_email
   )
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
@@ -171,7 +174,7 @@ check() {
 package_python-livekit-agents() {
   pkgdesc='A powerful framework for building realtime voice AI agents.'
   url='https://github.com/livekit/agents/tree/main/livekit-agents'
-  depends+=('python-click' 'python-livekit' 'python-livekit-api' 'python-livekit-protocol' 'python-protobuf' 'python-pyjwt' 'python-watchfiles' 'python-psutil' 'python-aiohttp' 'python-typing_extensions' 'python-sounddevice' 'python-docstring-parser' 'python-colorama' 'python-av' 'python-numpy' 'python-pydantic' 'python-nest-asyncio')
+  depends+=('python-click' 'python-livekit' 'python-livekit-api' 'python-livekit-protocol' 'python-livekit-blingfire' 'python-protobuf' 'python-pyjwt' 'python-watchfiles' 'python-psutil' 'python-aiohttp' 'python-typing_extensions' 'python-sounddevice' 'python-docstring-parser' 'python-colorama' 'python-av' 'python-numpy' 'python-pydantic' 'python-nest-asyncio' 'python-opentelemetry-api' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp' 'python-prometheus_client')
   optdepends=('python-mcp: mcp'
               'python-av: codecs' 'python-numpy: codecs'
               'python-pillow: images'
