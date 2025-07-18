@@ -1,0 +1,17 @@
+pkgbase = msodbcsql13
+	pkgdesc = Microsoft® ODBC Driver 13 for SQL Server®
+	pkgver = 13.1.9.2
+	pkgrel = 1
+	url = https://techcommunity.microsoft.com/t5/sql-server-blog/bg-p/SQLServer/label-name/SQLServerDrivers
+	install = install.sh
+	arch = x86_64
+	license = custom
+	depends = unixodbc
+	depends = krb5
+	depends = curl
+	provides = msodbcsql=13.1.9.2
+	options = !strip
+	source = https://packages.microsoft.com/rhel/7/prod/Packages/m/msodbcsql-13.1.9.2-1.x86_64.rpm
+	sha256sums = cff336d21b6ca4e48f0e297fbf64dc9cfb3d18e26d52950853062e5fda052068
+
+pkgname = msodbcsql13
