@@ -1,12 +1,12 @@
 pkgbase = superbirdjumper2
 	pkgdesc = A fun game
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/codyferd/superbirdjumper2
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/codyferd/superbirdjumper2/releases/download/2.3Skagern/superbirdjumper2_linux.x86_64
+	source = https://github.com/codyferd/superbirdjumper2/releases/download/2.4Saimaa/superbirdjumper2_linux.x86_64
 	sha256sums = SKIP
 
 pkgname = superbirdjumper2
