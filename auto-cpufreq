@@ -1,0 +1,7 @@
+type		= process
+command		= /usr/bin/auto-cpufreq --daemon
+restart		= on-failure
+smooth-recovery = true
+logfile		= /var/log/dinit/auto-cpufreq.log
+waits-for	= loginready
+after		= network.target
