@@ -1,11 +1,11 @@
 pkgbase = argon-rbx
 	pkgdesc = Full featured tool for Roblox development
-	pkgver = 2.0.24
+	pkgver = 2.0.25
 	pkgrel = 1
 	url = https://github.com/argon-rbx/argon
 	arch = x86_64
 	license = Apache-2.0
-	source = argon-2.0.24.zip::https://github.com/argon-rbx/argon/releases/download/2.0.24/argon-2.0.24-linux-x86_64.zip
-	sha256sums = 5404bb9cbb67d87c123fd3050fb922b493de38368e0c389db2f5f24c97af12c6
+	source = argon-2.0.25.zip::https://github.com/argon-rbx/argon/releases/download/2.0.25/argon-2.0.25-linux-x86_64.zip
+	sha256sums = e5b2964508214a17dfb029e4118502d5a531bce7abcc86f7961cc70689ce841f
 
 pkgname = argon-rbx
