@@ -1,5 +1,5 @@
 pkgname="carapace"
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="multi-shell multi-command argument completer"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=("go")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/carapace-sh/carapace-bin/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('0de73fc9338eb034a0c2bdbda72880f1de12ac0bc686d814beb1975a310264fc')
+sha256sums=('b0e0c7d3040d04a71e6c602f4097ffeaf5de2c0e40b5fb8f3b32a1697a94bad2')
 
 build(){
     cd "${srcdir}/carapace-bin-${pkgver}"
