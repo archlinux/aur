@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WebDesktop
+Comment=Display an interactable webpage as your desktop background.
+Exec=webdesktop
+Terminal=false
+Type=Application
+Categories=Utility;Desktop;Qt;Wayland;
+StartupNotify=false

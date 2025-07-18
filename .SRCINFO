@@ -1,0 +1,26 @@
+pkgbase = webdesktop
+	pkgdesc = A Qt6 application to display an interactable webpage as your desktop background, primarily for Hyprland.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://gitlab.com/daethederg/webdesktop
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.16
+	makedepends = gcc
+	makedepends = extra-cmake-modules
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = qt6-webengine
+	makedepends = layer-shell-qt
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-webengine
+	depends = layer-shell-qt
+	source = webdesktop-v1.2.3.tar.gz::https://gitlab.com/daethederg/webdesktop/-/archive/v1.2.3/webdesktop-v1.2.3.tar.gz
+	source = tomlplusplus-3.4.0.tar.gz::https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.4.0.tar.gz
+	source = webdesktop.desktop
+	sha256sums = e417f0862334e1e6b547cd66fba90fc5e94c5e3af2579cd46c7a3373dc253034
+	sha256sums = 8517f65938a4faae9ccf8ebb36631a38c1cadfb5efa85d9a72e15b9e97d25155
+	sha256sums = 7c4f86820422763c4a71fcac762c1e55cf87ec7b1e44e593310a66637bb075c6
+
+pkgname = webdesktop
