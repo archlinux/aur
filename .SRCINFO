@@ -1,0 +1,6 @@
+pkgbase = librewolf-fix-bin
+	arch = any
+	pkgrel = 1
+	pkgver = 0
+
+pkgname = librewolf-fix-bin
