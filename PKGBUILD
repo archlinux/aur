@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.13.r3.g0bf1cd3
+pkgver=2.2.13.r34.g02e537d
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
