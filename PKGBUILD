@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=natscli
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="The NATS Command Line Interface"
 arch=(x86_64)
@@ -15,20 +15,20 @@ provides=('nats')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('8f889526185f160265fb4988b7cad4d3dee36bedaede85ac859a134f2b1ba975')
+sha256sums=('ad0904a7fac5c930fe766c008fdd6bea0c7a0e5a79dcd3e76dff48978a3dc42b')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/nats"
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-    .
+	cd "${srcdir}/${pkgname}-${pkgver}/nats"
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		.
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/nats"
-  install -D -m755 nats ${pkgdir}/usr/bin/nats
+	cd "${srcdir}/${pkgname}-${pkgver}/nats"
+	install -D -m755 nats ${pkgdir}/usr/bin/nats
 }
