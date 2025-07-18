@@ -1,0 +1,21 @@
+pkgbase = meowrch-settings
+	pkgdesc = System optimization settings for Meowrch distribution
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/meowrch/meowrch
+	install = meowrch-settings.install
+	arch = any
+	license = MIT
+	depends = systemd
+	depends = zram-generator
+	depends = pipewire
+	depends = earlyoom
+	depends = pciutils
+	optdepends = nvidia-utils: for NVIDIA GPU optimizations
+	optdepends = amd-ucode: for AMD CPU microcode
+	optdepends = intel-ucode: for Intel CPU microcode
+	optdepends = hdparm: for HDD performance optimizations
+	source = https://github.com/meowrch/meowrch/archive/refs/heads/v3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = meowrch-settings
