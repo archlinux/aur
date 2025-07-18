@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd karton
-	echo r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -26,7 +26,7 @@ build() {
 	cmake -B build -S . -Wno-dev \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr
-	cmake --build build -- -j$(nproc)
+	cmake --build build
 }
 
 package() {
