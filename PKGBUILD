@@ -4,7 +4,7 @@ _pkgname=lnd
 pkgver=0.19.2_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Network Daemon ⚡"
 arch=('x86_64')
 url="https://github.com/lightningnetwork/lnd"
@@ -37,7 +37,6 @@ validpgpkeys=(
     'A5B61896952D9FDA83BC054CDC42612E89237182' # roasbeef
     '4DC235556B18694E08518DBB671103D881A5F0E4' # sputn1ck
     '187F6ADD93AE3B0CF335AA6AB984570980684DCC' # ViktorTigerstrom
-    '729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1' # wpaulino
     'E85497D2DBA0EB9ADB0024279BCD95C4FF296868' # yyforyongyu
     '5F75437E11695F86D50C11BB1AFF9C4DCED6D666' # ziggie1984
 )
@@ -65,7 +64,6 @@ prepare() {
         'roasbeef'
         'sputn1ck'
         'ViktorTigerstrom'
-        'wpaulino'
         'yyforyongyu'
         'ziggie1984'
     )

@@ -1,7 +1,7 @@
 pkgbase = lnd-bin
 	pkgdesc = Lightning Network Daemon ⚡
 	pkgver = 0.19.2_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lightningnetwork/lnd
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,6 @@ pkgbase = lnd-bin
 	validpgpkeys = A5B61896952D9FDA83BC054CDC42612E89237182
 	validpgpkeys = 4DC235556B18694E08518DBB671103D881A5F0E4
 	validpgpkeys = 187F6ADD93AE3B0CF335AA6AB984570980684DCC
-	validpgpkeys = 729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1
 	validpgpkeys = E85497D2DBA0EB9ADB0024279BCD95C4FF296868
 	validpgpkeys = 5F75437E11695F86D50C11BB1AFF9C4DCED6D666
 	sha512sums = f5a3c143eb765e70a1783670b174c632b791cbd5a4fc473d78b375c9a015adb1249d4940b8a54dd93110ad2c203b8f486b008852e7549f88a10656a3ab5cbf51
