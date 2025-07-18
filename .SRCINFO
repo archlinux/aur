@@ -1,6 +1,6 @@
 pkgbase = python-mistralai
 	pkgdesc = You can use the Mistral Python client to interact with the Mistral AI API.
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/mistralai/client-python
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-mistralai
 	optdepends = python-griffe: agents
 	optdepends = python-authlib: agents
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/m/mistralai/mistralai-1.9.1.tar.gz
-	sha256sums = 89eb1d48e9555c8289c02ddea966115eba0516355731726ea0a24eabb42f8419
+	source = https://files.pythonhosted.org/packages/source/m/mistralai/mistralai-1.9.2.tar.gz
+	sha256sums = c0c6d5aff18ffccbc0d22c06fbc84280d71eeaeb08fa4e1ef7326b36629cfb0b
 
 pkgname = python-mistralai
