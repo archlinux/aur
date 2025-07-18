@@ -22,6 +22,8 @@ pkgbase = tango-cpp
 	optdepends = graphviz: for building docs
 	conflicts = tango
 	source = https://gitlab.com/tango-controls/cppTango/-/releases/10.0.2/downloads/cppTango-with-submodules-10.0.2.tar.gz
+	source = fortify.patch
 	sha256sums = db53d16f386a8397e18d325a3aaf6490e68968cbc6bdc39427f7d87c76949930
+	sha256sums = f83a617bda31176a0331189b2480f5a7cee867c2b53ce47698fdf4ce72768cc4
 
 pkgname = tango-cpp

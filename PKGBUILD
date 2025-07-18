@@ -18,11 +18,18 @@ optdepends=("doxygen: for building docs" "graphviz: for building docs")
 conflicts=("tango")
 source=(
   "https://gitlab.com/tango-controls/${_pkgname}/-/releases/${pkgver}/downloads/${_pkgname}-with-submodules-${pkgver}.tar.gz"
+  "fortify.patch"
 )
 
 sha256sums=(
   "db53d16f386a8397e18d325a3aaf6490e68968cbc6bdc39427f7d87c76949930"
+  "f83a617bda31176a0331189b2480f5a7cee867c2b53ce47698fdf4ce72768cc4"
 )
+
+prepare() {
+  cd "${_pkgname}-with-submodules-${pkgver}"
+  patch -N -p1 --input="${srcdir}/fortify.patch"
+}
 
 build() {
   # Disable mmx (for jpeg) instruction for arm architecture
