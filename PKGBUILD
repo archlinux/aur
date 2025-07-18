@@ -12,7 +12,7 @@ depends=('dotnet-runtime-8.0-bin' 'dotnet-host-bin')
 options=('!strip' '!debug')
 
 source=("LICENSE.txt" "launcher.sh")
-sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' '5edb8220e6b29f71e2ebe7611115343d50dfff62107858a1d6fa823743709933')
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' '734b832d155352bb70a385b92c9eb9eeca19c5514cc37001656fbb97600cb5ed')
 # x86_64文件信息
 source_x86_64=("https://ghfast.top/https://github.com/ClassIsland/ClassIsland/releases/download/${pkgver}/ClassIsland_app_linux_x64_selfContained_deb.deb")
 sha256sums_x86_64=("52f036c3e040a1ca956053cccb49efd3e9d271eba63d66b986a90c1d9ca352cc")
