@@ -1,6 +1,6 @@
 pkgbase = jasper-gtk-theme-git
 	pkgdesc = Jasper gtk theme for linux
-	pkgver = r90.6e3ec69
+	pkgver = r114.f9c8317
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Jasper-gtk-theme
 	install = jasper-theme.install
@@ -8,8 +8,8 @@ pkgbase = jasper-gtk-theme-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = sassc
-	optdepends = gtk-engine-murrine: GTK2 theme support
 	optdepends = colloid-icon-theme: Recommended icon theme
+	optdepends = gtk-engine-murrine: GTK2 theme support
 	provides = jasper-gtk-theme
 	conflicts = jasper-gtk-theme
 	conflicts = nephrite-gtk-theme

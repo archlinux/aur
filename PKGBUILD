@@ -1,14 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jasper-gtk-theme-git
-pkgver=r90.6e3ec69
+pkgver=r114.f9c8317
 pkgrel=1
 pkgdesc="Jasper gtk theme for linux"
 arch=('any')
 url="https://github.com/vinceliuice/Jasper-gtk-theme"
 license=('GPL-3.0-or-later')
-makedepends=('git' 'sassc')
-optdepends=('gtk-engine-murrine: GTK2 theme support'
-            'colloid-icon-theme: Recommended icon theme')
+makedepends=(
+  'git'
+  'sassc'
+)
+optdepends=(
+  'colloid-icon-theme: Recommended icon theme'
+  'gtk-engine-murrine: GTK2 theme support'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'nephrite-gtk-theme')
 options=('!strip')
@@ -18,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Jasper-gtk-theme
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
