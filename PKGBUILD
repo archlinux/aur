@@ -1,6 +1,6 @@
 # Maintainer: Ireozar <ireo@ireo.xyz>
 pkgname="mailnaggertray-git"
-pkgver=r10.3cc1e38
+pkgver=r11.e498fb4
 pkgrel=1
 pkgdesc="Tray icon for use with mailnagger"
 arch=('x86_64')

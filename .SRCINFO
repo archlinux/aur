@@ -1,6 +1,6 @@
 pkgbase = mailnaggertray-git
 	pkgdesc = Tray icon for use with mailnagger
-	pkgver = r10.3cc1e38
+	pkgver = r11.e498fb4
 	pkgrel = 1
 	url = https://codeberg.org/ireozar/mailnaggertray
 	arch = x86_64
