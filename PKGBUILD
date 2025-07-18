@@ -1,7 +1,7 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname="kapitano"
-pkgver="1.1.3"
+pkgver="1.1.4"
 pkgrel="1"
 epoch="1"
 pkgdesc="Modern ClamAV front-end that uses gtk4/libadwaita"
@@ -12,7 +12,7 @@ depends=("glib2" "gtk4" "libadwaita" "python-gobject" "clamav")
 makedepends=("git" "meson" "appstream")
 provides=("kapitano")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/zynequ/Kapitano/archive/${pkgver}.tar.gz")
-sha256sums=("d520ad7568249c29e3642b159183ddfa0da6c0fc71f44f15dd70597591b6f114")
+sha256sums=("d118d18a9f6f01aa32a4541184dc96ad77f4810529fb5c9e70089170baf2405d")
 
 prepare() {
   dst="src/config/paths_config.py"
