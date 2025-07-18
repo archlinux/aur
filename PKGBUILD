@@ -2,7 +2,7 @@
 # Contributor: Gordon Chan <gc@gondro.xyz>
 
 pkgname=ttf-shanggu
-pkgver=1.021
+pkgver=1.022
 pkgrel=1
 pkgdesc="Shanggu Fonts"
 arch=(any)
@@ -14,8 +14,6 @@ source=("${url}/releases/download/${pkgver}/ShangguMonoOTCs.7z"
         "${url}/releases/download/${pkgver}/ShangguSerifOTCs.7z"
         "${url}/releases/download/${pkgver}/ShangguRoundTTCs.7z"
         "70-shanggu.conf")
-
-
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
