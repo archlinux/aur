@@ -11,7 +11,7 @@ pkgbase = openspeedrun-bin
 	conflicts = openspeedrun
 	source = openspeedrun-bin-0.3.1.tar.gz::https://github.com/SrWither/OpenSpeedRun/releases/download/v0.3.1/openspeedrun-linux-gnu-x86_64.zip
 	source = openspeedrun-bin-0.3.1::git+https://github.com/SrWither/OpenSpeedRun.git
-	sha256sums = 77d31d203c483d3dac0b815ec69017cfe39e4b8ac19ba826f7d6b933f8bbbc66
+	sha256sums = f943c6b835267b50f1748061144900c05e221b3fd69cbe58a3ed040e3745fc2d
 	sha256sums = SKIP
 
 pkgname = openspeedrun-bin

@@ -2,7 +2,7 @@
 
 pkgname="openspeedrun-bin"
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern and minimalistic open-source speedrun timer"
 arch=('x86_64')
 url="https://github.com/SrWither/OpenSpeedRun"
@@ -13,7 +13,7 @@ provides=("openspeedrun")
 conflicts=("openspeedrun")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/openspeedrun-linux-gnu-$arch.zip"
         "$pkgname-$pkgver::git+$url.git")
-sha256sums=('77d31d203c483d3dac0b815ec69017cfe39e4b8ac19ba826f7d6b933f8bbbc66'
+sha256sums=('f943c6b835267b50f1748061144900c05e221b3fd69cbe58a3ed040e3745fc2d'
             'SKIP')
 
 package() {
