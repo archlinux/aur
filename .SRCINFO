@@ -1,6 +1,6 @@
 pkgbase = dinit
 	pkgdesc = Service monitoring / "init" system
-	pkgver = 0.19.3
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://github.com/davmac314/dinit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dinit
 	arch = aarch64
 	license = Apache
 	makedepends = make
-	source = dinit-0.19.3.tar.gz::https://github.com/davmac314/dinit/archive/v0.19.3.tar.gz
-	sha256sums = 3a78b70948b496a73c708693f43c85cf58d7e63e0fcb844c621431264e69aa1b
+	source = dinit-0.19.4.tar.gz::https://github.com/davmac314/dinit/archive/v0.19.4.tar.gz
+	sha256sums = 3c0f624eb958f8e884631be4ef687da1e475ebaa6241e7ee330b864e6cd9e30b
 
 pkgname = dinit
