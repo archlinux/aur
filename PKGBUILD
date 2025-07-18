@@ -2,8 +2,8 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.5.1
+pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
 url="https://vektra.github.io/mockery"
@@ -16,15 +16,14 @@ conflicts=('golang-mockery')
 replaces=('golang-mockery')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('02586a2dcd30de1ab48106224cfbba4306f7d16e9e552bb5202c57c24610e5c8')
+sha256sums=('98c58a9ab36aa6d76351ede906756a06dc1051c889fe0f7d2ba60a7216322f06')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  go get -v ./...
+  chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build" "completions"
 }
