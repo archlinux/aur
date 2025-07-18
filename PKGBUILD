@@ -58,10 +58,6 @@ package() {
     # 复制软链接 覆盖
     find "${source_dir}/bin" -maxdepth 1 -type l -exec cp -P -f {} "${pkgdir}/usr/bin/" \;
 
-    # amd_s2idle.py to amd_s2idle-analysis
-    install -dm755 "${pkgdir}/usr/bin"
-    install -m755 "${srcdir}/amd_s2idle.py" "${pkgdir}/usr/bin/amd_s2idle-analysis"
-
     # conf
     install -dm755 "${pkgdir}/etc/${_basename}"
     install -m644 -t "${pkgdir}/etc/${_basename}" "${source_dir}/etc/${_basename}"/*.conf
