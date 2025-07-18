@@ -1,18 +1,18 @@
 # Maintainer: Rastislav Barlik <barlik.arch at gmx dot com>
 
 pkgname=figlet-fonts-extra
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Additional collection of asciiart fonts for figlet"
 arch=('any')
 license=('unknown')
 url="https://github.com/xero/figlet-fonts"
 depends=('figlet')
-source=('https://github.com/xero/figlet-fonts/archive/2f821cf9b4d20ab5f392f8b7627adbb4e8531831.zip')
-md5sums=('f9dbae7902b5edecbd601339bbb0ac3a')
+source=('https://github.com/xero/figlet-fonts/archive/8fc6db5e9e980153505c89edc9d7246633a26985.zip')
+md5sums=('db05469e58b7456c3ff723ebecf9afb7')
 
 package() {
-        local dir=$srcdir/figlet-fonts-2f821cf9b4d20ab5f392f8b7627adbb4e8531831
+        local dir=$srcdir/figlet-fonts-8fc6db5e9e980153505c89edc9d7246633a26985
 
         install -dm755 ${pkgdir}/usr/share/figlet/fonts/
 
