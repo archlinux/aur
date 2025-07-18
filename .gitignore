@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!hardinfo2.install
 !.nvchecker.toml
+!LICENSE
+!hardinfo2.install
