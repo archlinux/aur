@@ -3,8 +3,8 @@
 
 _pkgname=xwayland-satellite
 pkgname="$_pkgname-git"
-pkgver=0.2.r9.g601223d
-pkgrel=2
+pkgver=0.6.r19.gba78881
+pkgrel=1
 pkgdesc="Xwayland outside your Wayland - git version"
 arch=(x86_64)
 url="https://github.com/Supreeeme/$_pkgname"
@@ -23,10 +23,8 @@ makedepends=(
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
-options=(!debug)
-source=(git+$url.git xwayland-satellite.service)
-b2sums=('SKIP'
-        '3fffedae358d637670366a8cafe0edbcaa482e3eb108f8af8e1520864e845980ea649b62d2c6fdff141cc28716a1dcfcf40cfbf83f4f2b0906f12cba6ff66f4b')
+source=(git+$url.git)
+b2sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -37,6 +35,7 @@ prepare() {
   cd $_pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_HOME="$srcdir"/.cargo
+  sed 's|/usr/local|/usr|' -i resources/$_pkgname.service
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -50,6 +49,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir"/$_pkgname.service -t "$pkgdir"/usr/lib/systemd/user/
+  install -Dm644 $_pkgname/resources/$_pkgname.service -t "$pkgdir"/usr/lib/systemd/user/
   install -Dm755 $_pkgname/target/release/$_pkgname -t "$pkgdir"/usr/bin/
 }
