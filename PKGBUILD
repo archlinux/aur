@@ -1,16 +1,19 @@
 # Maintainer: 30p87 <30p87@30p87.de>
 
 pkgname=iocaine-git
-pkgver=r78.9af7e4a
+pkgver=r332.710c366
 pkgrel=1
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
-url='https://iocaine.madhouse-project.org/any'
+url='https://iocaine.madhouse-project.org/'
 license=('MIT')
 makedepends=('cargo')
 optdepends=('nginx: when using nginx as reverse proxy'
 			'caddy: when using caddy as reverse proxy')
-source=('git+https://git.30p87.de/30p87/iocaine.git'
+backup=('etc/webapps/iocaine/iocaine.toml')
+conflicts=('iocaine')
+options=('!lto')
+source=('git+https://git.madhouse-project.org/iocaine/iocaine.git'
 		'nginx_filter.conf'
 		'nginx_component.conf'
 		'sysusers.conf'
@@ -18,10 +21,10 @@ source=('git+https://git.30p87.de/30p87/iocaine.git'
 		'systemd.service.patch')
 sha256sums=('SKIP'
             '008464028dc45c0ced3d8649ca36e016181e638548508a6ecf17ee7ce8195bd2'
-            '7c4aedcaaa00b6e297d5a7057cfba0c827c69a2552535f1c68fe3dc29b007dd0'
+            '3ba1d429be28b8291861aca9b91564ab4db4f83aa7d955ed102d090259d46b5b'
             'd98c03791baff0fbd59261de5f0e38e592e3a4f2014d3dbf135567771ccf8193'
             '7761fab52173f5f0cfeb8678bcbf9e4c297fcb6282acb13c604b6cba4f760f9b'
-            'e9bd15719d958299e3cc5be57a4c46644e417d6a86c9fcef55cb48102f082262')
+            '5f399aeebab673326c8140f6c7c2fd8fa07e7234dbef288708cb00d56d6dd232')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -43,8 +46,11 @@ package() {
 	# Binary
 	install -Dm755 "target/release/iocaine" "${pkgdir}/usr/bin/iocaine"
 
+	# Dirs
+	install -dm755 "${pkgdir}/usr/share/webapps/iocaine"
+
 	# Docs/Example configs
-	install -Dm644 "data/etc/config.toml" "${pkgdir}/usr/share/doc/${pkgname}/config.toml"
+	install -Dm644 "data/etc/config.toml" "${pkgdir}/etc/webapps/iocaine/iocaine.toml"
 	install -Dm644 "${srcdir}/nginx_filter.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine_filter.conf"
 	install -Dm644 "${srcdir}/nginx_component.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine.component"
 

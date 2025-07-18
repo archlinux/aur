@@ -1,30 +1,24 @@
---- iocaine/data/iocaine.service	2025-02-22 21:29:28.470829427 +0100
-+++ iocaine.n/data/iocaine.service	2025-02-22 21:12:40.086779181 +0100
-@@ -8,15 +8,15 @@
+--- iocaine/data/iocaine.service	2025-07-18 19:00:29.998251290 +0200
++++ iocaine.n/data/iocaine.service	2025-07-18 19:13:31.869608457 +0200
+@@ -7,11 +7,11 @@
+ Description=iocaine, the deadliest poison known to AI
  
  [Service]
- Type=simple
--ExecStart=/usr/local/bin/iocaine --config-file /usr/local/etc/iocaine/config.toml
 +User=iocaine
-+Group=iocaine
-+ExecStart=/usr/bin/iocaine --config-file /etc/iocaine.toml
- 
- DevicePolicy=closed
--DynamicUser=true
- LockPersonality=true
- MemoryDenyWriteExecute=true
- NoNewPrivileges=true
- PrivateDevices=true
--PrivateTmp=true
- ProtectClock=true
- ProtectControlGroups=true
- ProtectHostname=true
-@@ -25,8 +25,6 @@
- ProtectProc=invisible
- ProtectSystem=strict
+ Type=notify
+-ExecStart=/usr/local/bin/iocaine --config-file /usr/local/etc/iocaine/config.toml start
+-ExecReload=/usr/local/bin/iocaine --config-file /usr/local/etc/iocaine/config.toml reload
++ExecStart=/usr/bin/iocaine --config-file /etc/webapps/iocaine/iocaine.toml start
++ExecReload=/usr/bin/iocaine --config-file /etc/webapps/iocaine/iocaine.toml reload
  Restart=on-failure
--RestrictAddressFamilies=AF_INET
--RestrictAddressFamilies=AF_INET6
- RestrictNamespaces=true
- RestrictRealtime=true
- SystemCallArchitectures=native
+-DynamicUser=true
+ UMask=0077
+ 
+ StateDirectory=iocaine
+@@ -30,7 +30,6 @@
+ 
+ PrivateTmp=true
+ PrivateDevices=true
+-PrivateUsers=true
+ 
+ SystemCallArchitectures=n
