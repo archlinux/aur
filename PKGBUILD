@@ -8,7 +8,7 @@ pkgdesc="ClassIsland - 适用于班级大屏的课表小工具。社区维护 AU
 arch=('x86_64' 'aarch64')
 url='https://www.classisland.tech/'
 license=('GPL-3.0-or-later')
-depends=()
+depends=('dotnet-runtime-bin' 'dotnet-host-bin')
 
 source=("LICENSE.txt")
 # x86_64文件信息
