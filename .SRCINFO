@@ -1,0 +1,6 @@
+pkgbase = ttf-all-ms-fonts
+	arch = any
+	pkgrel = 1
+	pkgver = 0
+
+pkgname = ttf-all-ms-fonts
