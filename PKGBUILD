@@ -9,7 +9,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple taskbar for Niri, written in Rust"
 arch=('x86_64')
 url="https://github.com/lawngnome/niri-taskbar"
