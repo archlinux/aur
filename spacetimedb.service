@@ -1,0 +1,29 @@
+[Unit]
+Description=SpacetimeDB Server
+After=network.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/spacetimedb start --data-dir=/var/lib/spacetimedb/data --jwt-key-dir=/var/lib/spacetimedb/config
+User=spacetimedb
+Group=spacetimedb
+RuntimeDirectory=spacetimedb
+StateDirectory=spacetimedb
+StateDirectoryMode=700
+
+# Additional security-related features
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
