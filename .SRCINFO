@@ -1,6 +1,6 @@
 pkgbase = waybar-niri-taskbar-git
 	pkgdesc = A simple taskbar for Niri, written in Rust
-	pkgver = v0.2.0+niri.25.05
+	pkgver = r33.73db83b
 	pkgrel = 2
 	url = https://github.com/lawngnome/niri-taskbar
 	arch = x86_64
