@@ -1,6 +1,6 @@
 # Maintainer: bcoiner <x6ji7ar9 at anonaddy dot me>
 
-pkgbase=asusctl
+pkgbase=asusctl-nosystemd
 pkgname=(asusctl-nosystemd rog-control-center-nosystemd)
 pkgver=6.1.12
 pkgrel=1
@@ -12,8 +12,10 @@ makedepends=(clang cmake fontconfig git hicolor-icon-theme libayatana-appindicat
 source=("git+https://gitlab.com/asus-linux/asusctl.git#tag=$pkgver")
 sha256sums=('b09f27a6d906e942f17dc537391ab209bed25e1cc3d124a2be50474cbc701368')
 
+_PROJECT=asusctl
+
 prepare() {
-  cd "${pkgbase}"
+  cd "${_PROJECT}"
 
   # Keep rust/cargo build-dependency management inside the build directory
   export CARGO_HOME="${srcdir}/cargo"
@@ -25,7 +27,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase}"
+  cd "${_PROJECT}"
 
   # Keep rust/cargo build-dependency management inside the build directory
   export CARGO_HOME="${srcdir}/cargo"
@@ -61,7 +63,7 @@ package_asusctl-nosystemd() {
     'rog-control-center-nosystemd: app to control asusctl'
   )
 
-  cd "${pkgbase}"
+  cd "${_PROJECT}"
   export CARGO_HOME="${srcdir}/cargo"
   make DESTDIR="${pkgdir}" install
 

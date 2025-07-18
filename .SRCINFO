@@ -1,4 +1,4 @@
-pkgbase = asusctl
+pkgbase = asusctl-nosystemd
 	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops (with no SystemD)
 	pkgver = 6.1.12
 	pkgrel = 1
