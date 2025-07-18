@@ -53,9 +53,6 @@ else
   _basedir="gcc-${pkgver}"
 fi
 
-_CHOST="${CHOST}" # https://bbs.archlinux.org/viewtopic.php?pid=2174541
-_MAKEFLAGS="${MAKEFLAGS}"
-
 #_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
 prepare() {
@@ -110,8 +107,6 @@ prepare() {
 }
 
 build() {
-  export MAKEFLAGS="${_MAKEFLAGS}"
-  export CHOST="${_CHOST}"
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -169,8 +164,6 @@ build() {
 }
 
 package() {
-  export MAKEFLAGS="${_MAKEFLAGS}"
-  export CHOST="${_CHOST}"
   set -u
   cd "${_basedir}/gcc-build"
 
