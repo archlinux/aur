@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=25.22.33944.8
-_gmmver=22.7.0
+pkgver=25.27.34303.5
+_gmmver=22.7.2
 _gmmsover=12
-_igcver=2.12.5
+_igcver=2.14.1
 _lzsover=1
 _build=0
 pkgrel=1
@@ -12,12 +12,16 @@ pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver 
 arch=('x86_64')
 url='https://github.com/intel/compute-runtime/'
 license=('MIT')
-depends=('gcc-libs' 'glibc' "intel-graphics-compiler-bin=1:${_igcver}")
-optdepends=('libva: for cl_intel_va_api_media_sharing'
-            'libdrm: for cl_intel_va_api_media_sharing')
+depends=(
+    'gcc-libs'
+    'glibc'
+    "intel-graphics-compiler-bin=1:${_igcver}")
+optdepends=(
+    'libdrm: for cl_intel_va_api_media_sharing'
+    'libva: for cl_intel_va_api_media_sharing')
 provides=('intel-compute-runtime' 'intel-gmmlib' 'level-zero-driver' 'opencl-driver')
 conflicts=('intel-compute-runtime' 'intel-gmmlib')
-options=('!strip' '!emptydirs')
+options=('!debug' '!emptydirs' '!strip')
 source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-ocloc_${pkgver}-${_build}_amd64.deb"
         "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl-icd_${pkgver}-${_build}_amd64.deb"
         "${pkgname}-${pkgver}-level-zero-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libze-intel-gpu${_lzsover}_${pkgver}-${_build}_amd64.deb"
@@ -27,10 +31,10 @@ noextract=("intel-ocloc_${pkgver}-${_build}_amd64.deb"
            "intel-opencl-icd_${pkgver}-${_build}_amd64.deb"
            "${pkgname}-${pkgver}-level-zero-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('f18f4ad68b550448f8f5d88b9e209c0050331b43a907e61d61d912483d53b597'
-            'fe7381a7ff9487e95eec4480fe4393de303c0b443fef11d0b5d71a6dd3fe10e9'
-            '585f702e9eb5af37bb04a3d9e7f382c496182669dfac7de42803d7499da81148'
-            '3360af2bc0efaf05ad77c7f04a72320bf02ee6ae4989415d7256a656ee1ed37e'
+sha256sums=('49f88c7d6a985ef94544261755b01dc6dba169e4c534e06bfe77f186c068774c'
+            'e46499fd7fa0a056759b52425b6ba28e5aa6734ff46bcd1e1f8541c5efc2e0b3'
+            '4e08d3796c856505c852f8700f44b7895cd185c48e83ebc5785d9744b6003546'
+            '68f9e6c79c298bf75a80253adef2e84bf0011dc3e70db3e72daa7e4ad46f95cf'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
 
 prepare() {
