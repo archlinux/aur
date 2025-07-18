@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.13.0.1
+pkgver=5.14.0.2
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -47,7 +47,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '020-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('133e34f33a3c16676638f92084fe0f84e9e7cafaf27328495e89bb04eb1d61b0'
+sha256sums=('2a7804473938cf8c91c6ce45c54f328136b56abd33e93de71fc2f5b215809cbd'
             'SKIP'
             '62e79d30acafdc13855851e64c4419d8ee4a0b213089ea352882b49413e549f4'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171')
@@ -58,9 +58,9 @@ prepare() {
     #git -C MEGAsync -c protocol.file.allow='always' submodule update
     
     # https://github.com/meganz/MEGAsync/issues/1010
-    # https://github.com/meganz/MEGAsync/blob/v5.12.0.1_Linux/src/MEGASync/control/Version.h#L26-L27
+    # https://github.com/meganz/MEGAsync/blob/v5.14.0.2_Linux/src/MEGASync/control/Version.h#L28-L29
     git -C meganz-sdk config --local advice.detachedHead false
-    git -C meganz-sdk checkout e6691ac87e4551e950ee5cbff04a4c291181606b
+    git -C meganz-sdk checkout 9d816439574996306468895bc784568707bd1b88
     rm -r MEGAsync/src/MEGASync/mega
     ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
     
