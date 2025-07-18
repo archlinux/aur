@@ -3,7 +3,7 @@
 _name=livekit-blingfire
 pkgname=python-${_name}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='BlingFire bindings for livekit-agents.'
 arch=('any')
 _repo='https://github.com/livekit/agents'
@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd "${srcdir}"/agents-${_name//-blingfire/-agents}-1.1.5/livekit-plugins/${_name}
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
