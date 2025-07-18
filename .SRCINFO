@@ -1,13 +1,13 @@
 pkgbase = ia-bin
 	pkgdesc = A Python and Command-Line Interface to Archive.org
-	pkgver = 5.4.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://archive.org/download/ia-pex/
 	arch = x86_64
 	license = AGPL-3.0
 	conflicts = ia-bin
-	noextract = ia-5.4.0
-	source = ia-5.4.0::https://archive.org/download/ia-pex/ia
-	sha512sums = d01884a500dd4507c0d23ba4d2c6afc4f5097279a91fff185815e68a8970c82fafe21c0a9c7f0227c8de7a245a1e1795756149881a08ead21719925fc8ef2feb
+	noextract = ia-5.5.0
+	source = ia-5.5.0::https://archive.org/download/ia-pex/ia
+	sha512sums = a15b0778c384f74516f55eba53962a213613520767503cb1f3c4e50e9f0b502163bda608b31b2b292d0d512061b1246217125a9d0377994e39d3a99f9d87e665
 
 pkgname = ia-bin
