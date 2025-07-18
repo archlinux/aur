@@ -16,8 +16,12 @@ makedepends=(git wget)
 optdepends=('ruby: for running some scripts' 'coffee-script: for running some scripts')
 provides=(howl)
 conflicts=(howl)
-source=(git+https://github.com/howl-editor/howl.git#branch=next)
-md5sums=(SKIP)
+source=(git+https://github.com/howl-editor/howl.git#branch=next
+        fix-terraform.patch
+)
+md5sums=(SKIP
+        7589b99661ec75797fbc61d2423f5844
+)
 
 pkgver() {
   cd "$srcdir"/$_pkgname
@@ -26,6 +30,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/$_pkgname
+  git apply ../fix-terraform.patch
   make -C src
 }
 
