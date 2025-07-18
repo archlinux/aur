@@ -1,6 +1,6 @@
 pkgbase=sac-core
 pkgname=(sac-core sac-gui)
-pkgver=10.8.1050
+pkgver=10.9.4723
 pkgrel=1
 pkgdesc='Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime'
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
@@ -8,18 +8,18 @@ arch=(x86_64)
 depends=(ccid pcsclite)
 optdepends=('sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)')
 license=(custom)
-source=('https://nullroute.lt/tmp/2023/pkg/SAC_Linux_10.8.105_R1_GA.zip'
+source=('https://www.digicert.com/StaticFiles/Linux_SAC_10.9_GA.zip'
         eToken.conf
         safenetauthenticationclient.service)
-sha256sums=('18ecac33e8a1ddb894c23423074592ffd77a272a7255b519d20992662a5c699e'
+sha256sums=('46759cfe91d736af18a49d10e4749f264022db44e04ed4caf94e1ca77d6a013e'
             '85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c'
             'eb8b4e105d8b75f11e4b83ca6c4a605f781f50cc0f0405a5d1deccb5580fd055')
 validpgpkeys=('B37EBA84D2EB0C786F91EEF77F8AA801285DEE57')
 
-_dir="SAC Linux 10.8.1050 R1 GA"
-_rn_pdf="007-013841-004-SafeNet Authentication Client_10.8_R1_Linux_GA_Release_Notes.pdf"
-_ag_pdf="007-013842-002_SafeNet Authentication Client_10.8_R1_Linux_GA_Administrator_Guide_Rev C.pdf"
-_ug_pdf="007-013843-002_SafeNet Authentication Client_10.8_R1_Linux_GA_User_Guide_Rev C.pdf"
+_dir="SAC_10.9 GA"
+_rn_pdf="007-013841-005-SafeNet Authentication Client_10.9_Linux_GA_Release Notes_Rev A.pdf"
+_ag_pdf="007-013842-003-SafeNet Authentication Client_10.9_Linux_GA_Administrator Guide_Rev A.pdf"
+_ug_pdf="007-013843-003-SafeNet Authentication Client_10.9_Linux_GA_User Guide_Rev A.pdf"
 
 _err() {
     printf '\e[1;31mError:\e[m %s\n' "$*" >&2
@@ -32,7 +32,7 @@ prepare() {
 
   if (( ! SKIPPGPCHECK )); then
     echo "Verifying PGP signature of '${_deb}'..."
-    # gpg --import "$_key"
+    # sqv --keyring="$_key" --signature-file="$_deb.asc" "$_deb"
     if ! _out=$(gpg --batch --status-fd 1 --trust-model always \
                     --auto-key-retrieve --verify "$_deb.asc" "$_deb" 2>&1); then
         _err "PGP signature verification failed"
