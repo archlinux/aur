@@ -7,7 +7,12 @@ arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/marble"
 license=('GPL-3.0-or-later')
 depends=('gtk4')
-makedepends=('git' 'gobject-introspection' 'meson' 'vala')
+makedepends=(
+  'git'
+  'gobject-introspection'
+  'meson'
+  'vala'
+)
 provides=('libpqmarble.so=2')
 conflicts=('libmarble')
 _commit=f240b2ec7d5cdacb8fdcc553703420dc5101ffdb  # branch/master
@@ -18,7 +23,7 @@ sha256sums=('5965922dc0451b81ebd065fefbc3e13a02369659545c9f7c2c15d06dc46447a5'
 
 pkgver() {
   cd marble
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
@@ -34,5 +39,5 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
