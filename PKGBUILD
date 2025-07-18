@@ -1,4 +1,5 @@
-# Maintainer: Evan Goode <mail@evangoo.de>
+# Maintainer: yuztra <panduodenk98 at gmail dot com>
+# Contributor: Evan Goode <mail@evangoo.de>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: seth <getchoo at tuta dot io>
@@ -9,12 +10,12 @@
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 # Contributor: dada513 <dada513@protonmail.com>
 
-pkgname=fjordlauncher
-pkgver=9.4.0
+pkgname=shatteredprism
+pkgver=1.7
 pkgrel=1
-pkgdesc="Prism Launcher fork with support for alternative auth servers"
+pkgdesc="DRM-free Fjord Launcher fork"
 arch=('i686' 'x86_64' 'aarch64')
-url='https://github.com/unmojang/FjordLauncher'
+url='https://github.com/LunaisLazier/ShatteredPrism'
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
 depends=(
   glibc
@@ -36,17 +37,17 @@ makedepends=(cmake extra-cmake-modules git jdk17-openjdk scdoc ghc-filesystem ga
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
-            'xorg-xrandr: for older minecraft versions'
-            'flite: minecraft voice narration')
-source=("https://github.com/unmojang/FjordLauncher/releases/download/$pkgver/FjordLauncher-$pkgver.tar.gz"
+            'xorg-xrandr: for older Minecraft versions'
+            'flite: Minecraft voice narration')
+source=("https://github.com/LunaisLazier/ShatteredPrism/releases/download/$pkgver/ShatteredPrism-$pkgver.tar.gz"
         {lionshead,batch,mdi}.license)
-b2sums=('75f8d2f4f6f7c624df99f5fcc5a1206695f785378581166750ecbd5f432b23ce52b56500bf8eb0a6888af80d2dfc7bde1cd61405a732a30bd00e52824711e2e9'
+b2sums=('574f3f93a815dd4e30e5b14772c23bd7902cf7fb8abb4294bdc8b3ca019a6d317e7af90d4a8df106d35b4a7e4b7f073dc6702ac05692620b7d3ad028969e6ff3'
         'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
         '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
         'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
 
 build() {
-  cd FjordLauncher-$pkgver
+  cd ShatteredPrism-$pkgver
 
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
 
@@ -59,7 +60,7 @@ build() {
 }
 
 check() {
-  cd FjordLauncher-$pkgver/build
+  cd ShatteredPrism-$pkgver/build
   ctest .
 }
 
@@ -69,11 +70,11 @@ package() {
   install -Dm644 batch.license -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 mdi.license -t "$pkgdir"/usr/share/licenses/$pkgname/
 
-  cd FjordLauncher-$pkgver/build
+  cd ShatteredPrism-$pkgver/build
   DESTDIR="$pkgdir" cmake --install .
 
   mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
-     "${pkgdir}/usr/share/mime/packages/fjordlauncher-modrinth-mrpack-mime.xml"
+     "${pkgdir}/usr/share/mime/packages/shatteredprism-modrinth-mrpack-mime.xml"
 }
 
 # vim:set ts=2 sw=2 et:

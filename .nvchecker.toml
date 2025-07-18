@@ -1,5 +1,5 @@
-[fjordlauncher]
+[shatteredprism]
 source = "github"
-github = "unmojang/FjordLauncher"
+github = "LunaisLazier/ShatteredPrism"
 include_regex = "\\d+\\.\\d+"
 use_latest_release = true
