@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=2.10.9.r173.g19bd4293f
+pkgver=2.15.3.r95.g323eca95f
 _llvmmaj=15
 _llvmver="${_llvmmaj}.0.7"
 pkgrel=1
@@ -10,8 +10,17 @@ pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT' 'Apache-2.0 WITH LLVM-exception')
-depends=('gcc-libs' 'glibc' 'zlib' 'zstd')
-makedepends=('cmake' 'git' 'python' 'python-mako' 'python-yaml')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'zlib'
+    'zstd')
+makedepends=(
+    'cmake'
+    'git'
+    'python'
+    'python-mako'
+    'python-yaml')
 provides=('intel-graphics-compiler' "intel-opencl-clang=${_llvmmaj}.0.0")
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
 options=('!emptydirs' '!lto')
@@ -21,14 +30,16 @@ source=('git+https://github.com/intel/intel-graphics-compiler.git'
         "git+https://github.com/intel/opencl-clang.git#branch=ocl-open-${_llvmmaj}0"
         "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-${_llvmver}"
         'git+https://github.com/KhronosGroup/SPIRV-Tools.git#branch=main'
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git#branch=main')
+        'git+https://github.com/KhronosGroup/SPIRV-Headers.git#branch=main'
+        '010-intel-graphics-compiler-disable-werror.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '5e0b72ca37446fdf0fa54f1bb4cea6d3a53c19bdf373fa054b6a8ce640519024'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'ea06a84995007be8940d8e3d53dd7969375fd7644a4b40d334ff214ac12005d9')
 
 prepare() {
     # rename to prevent SPIRV-LLVM-Translator from being included
@@ -37,6 +48,13 @@ prepare() {
 
     ln -s "${srcdir}/SPIRV-LLVM-Translator-IGC-LLVM"  "${srcdir}/llvm-project/llvm/projects/llvm-spirv"
     ln -s "${srcdir}/opencl-clang" "${srcdir}/llvm-project/llvm/projects/opencl-clang"
+    
+    # llvm: fix build with gcc 15
+    # https://github.com/llvm/llvm-project/commit/7e44305041d96b064c197216b931ae3917a34ac1
+    EMAIL='builduser@archlinux.org' \
+    git -C llvm-project cherry-pick 7e44305041d96b064c197216b931ae3917a34ac1
+    
+    patch -d intel-graphics-compiler -Np1 -i "${srcdir}/010-intel-graphics-compiler-disable-werror.patch"
 }
 
 pkgver() {
@@ -70,12 +88,11 @@ build() {
         -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DIGC_OPTION__ARCHITECTURE_TARGET:STRING='Linux64' \
         -DIGC_OPTION__CLANG_MODE:STRING='Source' \
+        -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR:BOOL='ON' \
         -DIGC_OPTION__LLD_MODE:STRING='Source' \
         -DIGC_OPTION__LLVM_MODE:STRING='Source' \
         -DIGC_OPTION__LLVM_PREFERRED_VERSION:STRING="${_llvmver}" \
-        -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR:BOOL='ON' \
         -DIGC_OPTION__SPIRV_TOOLS_MODE:STRING='Source' \
-        -DIGC_OPTION__USE_KHRONOS_SPIRV_TRANSLATOR_IN_SC:BOOL='ON' \
         -DIGC_OPTION__USE_PREINSTALLED_SPIRV_HEADERS:BOOL='OFF' \
         -DIGC_OPTION__VC_INTRINSICS_MODE:STRING='Source' \
         -Wno-dev
