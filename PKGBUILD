@@ -12,7 +12,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
-        "https://github.com/vitejs/vite/raw/main/LICENSE")
+        "${_npmname}-LICENSE::https://raw.githubusercontent.com/vitejs/vite/56eb869a67551a257d20cba00016ea59b1e1a2c4/LICENSE")
 noextract=($_npmname-$pkgver.tgz)
 sha512sums=('d669dc570271cb60bd4e12f0cf4fb618a672117b82dccc96b4002535fb656595d90cfdc026de459b070c8adfc818668d67c64e07604d3bf1c5501f82a4dd0d43'
             '6d9074936683997b5f01e7ca64d88b4242be94a5bb151405654d3d4845cae7c2e4286d1b546b79b26c59866f56fe68b068c68f62f1cd465019fbb6de9abc9957')
@@ -28,5 +28,5 @@ package() {
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
 
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_npmname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
