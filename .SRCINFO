@@ -1,0 +1,14 @@
+pkgbase = focusx
+	pkgdesc = A beautiful Pomodoro Timer for the terminal, optimized for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Justine01231/focusX
+	arch = any
+	license = MIT
+	depends = bash
+	depends = go
+	depends = libnotify
+	source = focusx.sh
+	md5sums = SKIP
+
+pkgname = focusx
