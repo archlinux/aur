@@ -1,7 +1,7 @@
 pkgbase = python-urlopen
 	pkgdesc = Python urlopen wrapper.
-	pkgver = 0.0.8
-	pkgrel = 2
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://pypi.org/project/python-urlopen
 	arch = any
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = python-urlopen
 	conflicts = python-urlopen
 	options = !strip
 	options = !debug
-	source = python_urlopen-0.0.8.tar.gz::https://files.pythonhosted.org/packages/source/p/python_urlopen/python_urlopen-0.0.8.tar.gz
-	sha256sums = 9be7fe43644230f654b4c647ba4f0c312d043709bf2854811d469d5dddc0c47e
+	source = python_urlopen-0.0.9.tar.gz::https://files.pythonhosted.org/packages/source/p/python_urlopen/python_urlopen-0.0.9.tar.gz
+	sha256sums = c85d011bae59feb562783c9624e932625c9b9d81582a9e44434c2519efe50498
 
 pkgname = python-urlopen
