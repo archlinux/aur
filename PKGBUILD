@@ -3,7 +3,7 @@
 
 pkgname=perl-mp4-info
 pkgver=1.13
-pkgrel=3
+pkgrel=4
 pkgdesc='Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)'
 _dist=MP4-Info
 arch=(any)
