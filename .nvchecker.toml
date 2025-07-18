@@ -1,0 +1,5 @@
+[ipinfo-cli]
+source = "git"
+git = "https://github.com/ipinfo/cli.git"
+prefix = "ipinfo-"
+include_regex = "ipinfo.*"
