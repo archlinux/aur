@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('jre17-openjdk')
 provides=('forge-gui-desktop')
 conflicts=('forge-gui-desktop')
+replaces=('forge-gui-desktop-git')
 source=("AppIcon.png::https://github.com/Card-Forge/forge/raw/master/AppIcon.png")
 sha256sums=('SKIP')
 
