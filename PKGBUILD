@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=axosyslog
-pkgver=4.13.0
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Scalable security data processor"
 arch=(x86_64)
@@ -109,15 +109,13 @@ source=(
   "git+https://github.com/Thalhammer/jwt-cpp.git"
   "syslog-ng.logrotate"
   "syslog-ng-systemd-integration.patch"
-  "grpc-protobuf-30.0-compatibility.patch"
 )
-sha256sums=('9ea790eb48f5e725bbd57255d4f3b5d184032ef9b145eb5af8bfbe7169fae36e'
+sha256sums=('c67a00d6f6808409674f16aa5bb74154d83ca315038b3496844d9d5691433d07'
             'SKIP'
             'SKIP'
             'SKIP'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
-            '12e7d38ca2b79aae9417207a7b3a777f8f7646cc23bddfd383a6a6e9b7014d6e'
-            'c0bfe1a08c529bab62ffecdbface66ec3e723569c879ab305b2bb54af054142b')
+            '12e7d38ca2b79aae9417207a7b3a777f8f7646cc23bddfd383a6a6e9b7014d6e')
 
 prepare() {
   cd $pkgname
@@ -128,7 +126,6 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   patch -Np1 -i "$srcdir/syslog-ng-systemd-integration.patch"        # Fix paths for systemd integration.
-  patch -Np1 -i "$srcdir/grpc-protobuf-30.0-compatibility.patch"
 
   # Remove tests failing in a chroot but not on host. Not sure why.
   sed -i '/include lib\/secret-storage\/tests\/Makefile.am/d' lib/secret-storage/Makefile.am
