@@ -1,13 +1,13 @@
 # Maintainer: Erffy <https://github.com/erffy>
 
 pkgname=zig-waybar-contrib
-pkgver=1.0.16
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lightweight Waybar modules built with Zig"
 arch=('x86_64')
 url="https://github.com/erffy/zig-waybar-contrib"
 license=('GPL3')
-depends=('rocm-smi-lib')
+depends=()
 makedepends=('git' 'zig>=0.14.0')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
@@ -29,6 +29,6 @@ package() {
     install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-${bin}-bin"
   done
 
-  install -Dm644 "$srcdir/$pkgname/config.waybar.json" "$pkgdir/etc/zig-waybar-contrib/config.json"
+  install -Dm644 "$srcdir/$pkgname/config.waybar.jsonc" "$pkgdir/etc/zig-waybar-contrib/config.jsonc"
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
