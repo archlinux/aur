@@ -3,7 +3,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=miracle-wm
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Wayland compositor based on mir"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ depends=('mir'
     )
 makedepends=('cmake' 'nlohmann-json' 'ninja' 'glm' 'boost')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('646b7441243516df4c68827329aac8253bd25543c2c0095513fadefb28580fa5')
+sha256sums=('f10f9c0bf03b815a15265171d4926221e45fe0ca2e997d31f69ba34a3839a2b3')
 
 build() {
 
