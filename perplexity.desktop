@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Perplexity AI
+Name[ru]=Perplexity AI
+Comment=Native Perplexity AI client for Linux
+Comment[ru]=Нативный клиент Perplexity AI для Linux
+Exec=/usr/bin/perplexity
+Icon=perplexity
+Type=Application
+Categories=Network;WebBrowser;AI;Education;
+StartupNotify=true
+StartupWMClass=perplexity
+Terminal=false
+MimeType=x-scheme-handler/perplexity;
