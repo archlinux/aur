@@ -2,7 +2,7 @@
 
 _pkgname=mop
 pkgname=${_pkgname}-git
-pkgver=280.94ff210
+pkgver=346.3ece0ff
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -25,8 +25,9 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  _LDFLAGS="-X main.version=$(git rev-list --count HEAD) -X main.branch=master -X main.commit=$(git rev-parse HEAD) -linkmode=external -extldflags ${LDFLAGS}"
+  _LDFLAGS="-X main.version=$(git rev-list --count HEAD) -X main.branch=master -X main.commit=$(git rev-parse HEAD) -linkmode=external"
   go build -o mop -ldflags="${_LDFLAGS}" "./cmd/..."
 }
 

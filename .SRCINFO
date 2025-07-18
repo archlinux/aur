@@ -1,6 +1,6 @@
 pkgbase = mop-git
 	pkgdesc = Stock market tracker for hackers
-	pkgver = 280.94ff210
+	pkgver = 346.3ece0ff
 	pkgrel = 1
 	url = https://github.com/mop-tracker/mop
 	arch = i686
