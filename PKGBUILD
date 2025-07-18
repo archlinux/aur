@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/Justine01231/focusX"
 license=('MIT')
 depends=('bash' 'go' 'libnotify')  # add 'lolcat' 'speech-dispatcher' if needed
-source=("$pkgname.sh")
+source=("focusx.sh")
 md5sums=('SKIP')  # Use 'SKIP' for local scripts or update with actual checksum
 
 package() {
