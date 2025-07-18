@@ -2,13 +2,18 @@
 # Contributor: Ash <xash at riseup d0t net>
 
 pkgname=lsfg-vk-git
-pkgver=r143.cebe5e2
-pkgrel=2
+pkgver=r185.15d9864
+pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
 license=('MIT')
-depends=('vulkan-icd-loader' 'bash' 'gcc-libs')
+depends=(
+	'vulkan-icd-loader'
+	'bash'
+	'gcc-libs'
+	'libglvnd'
+)
 makedepends=(
 	'clang'
 	'llvm'
@@ -18,16 +23,29 @@ makedepends=(
 	'ninja'
 	'git'
 	'sed'
-	'sdl2'
+	'sdl3'
 	'glslang'
 	'spirv-headers'
+	'libxrandr'
+	'libxinerama'
+	'libxi'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/PancakeTAS/lsfg-vk'
-		'git+https://github.com/PancakeTAS/dxbc.git'
-		'git+https://github.com/trailofbits/pe-parse')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+source=(
+	'git+https://github.com/PancakeTAS/lsfg-vk'
+	'git+https://github.com/PancakeTAS/dxbc.git'
+	'git+https://github.com/trailofbits/pe-parse'
+	'git+https://github.com/ToruNiina/toml11'
+	'git+https://github.com/raysan5/raylib'
+)
+sha256sums=(
+	'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 install=lsfg-vk.install
 
 pkgver() {
@@ -44,6 +62,8 @@ prepare() {
 
 	git config submodule.dxbc.url "$srcdir/dxbc"
 	git config submodule.pe-parse.url "$srcdir/pe-parse"
+	git config submodule.toml11.url "$srcdir/toml11"
+	git config submodule.raylib.url "$srcdir/raylib"
 
 	git -c protocol.file.allow=always submodule update
 }
@@ -51,12 +71,12 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
+	# "-UDLSFG_NO_DEBUG" is necessary as to prevent "DrawLine" routines from being stripped out
 	cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-    -DCMAKE_CXX_CLANG_TIDY="" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-z,lazy" # fixes makepkg's default "-z,now" flag which strips out the necessary symbols
+	-DCMAKE_CXX_FLAGS="-UDLSFG_NO_DEBUG" \
+	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,-z,lazy" # fixes makepkg's default "-z,now" flag which strips out the necessary symbols
     cmake --build build
 }
 
