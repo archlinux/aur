@@ -1,0 +1,8 @@
+post_install() {
+  printf ":: asusd provides a service that is activated by an udev rule on\n"
+  printf ":: startup. Please reboot the system or activate\n"
+  printf ":: asusd with your init system to make it work.\n"
+  printf ":: See https://gitlab.com/asus-linux/asusctl#kernel-support.\n"
+  printf ":: for latest required kernel patches/versions\n"
+}
+
