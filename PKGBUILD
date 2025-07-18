@@ -21,5 +21,7 @@ pkgver(){
 
 package() {
 	cd $_pkgname
+	python -m venv venv
+	source venv/bin/activate
 	python -m pip install . --no-deps --root="$pkgdir/" --prefix=/usr
 }
