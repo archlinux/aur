@@ -1,0 +1,7 @@
+type		= process
+command		= /usr/bin/asusd
+restart		= on-failure
+smooth-recovery = true
+restart-delay	= 1
+logfile		= /var/log/dinit/asusd.log
+after		= udevd
