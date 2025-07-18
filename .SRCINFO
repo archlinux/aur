@@ -1,0 +1,17 @@
+pkgbase = mcsast
+	pkgdesc = Manage Minecraft server / proxy / plugins quickly and easily!
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/MagicTeaMC/Minecraft-server-auto-setup
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc
+	depends = openssl
+	depends = zlib
+	options = !debug
+	source = mcsast-2.3.0.tar.gz::https://github.com/MagicTeaMC/Minecraft-server-auto-setup/archive/refs/tags/2.3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mcsast
