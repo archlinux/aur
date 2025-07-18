@@ -5,7 +5,7 @@
 
 pkgname=tango-database
 _pkgname=TangoDatabase
-pkgver=5.23
+pkgver=5.24
 pkgrel=1
 _pkgver=Database-Release-${pkgver}
 groups=("tango-controls")
@@ -22,14 +22,13 @@ conflicts=("tango" "tango-database-git")
 install=$pkgname.install
 source=(
   "https://gitlab.com/tango-controls/${_pkgname}/-/releases/${_pkgver}/downloads/${_pkgname}-with-submodules-${_pkgver}.tar.gz"
-  "tango-database.service" "collate.patch" "timestamp.patch"
-  "tango-db.conf" "create_db_user.sql" "check_and_create_db.sh"
+  "tango-database.service" "collate.patch" "fortify.patch" "tango-db.conf" "create_db_user.sql" "check_and_create_db.sh"
 )
 sha256sums=(
-  "c36acdb7f80d108ff9a5320d879d7e17487d98188c6d3090f0d06e999d22ce98"
+  "155dea28e43bdbbd998e29c0a3d66c8671a8f7618a933d030a09673e3cc8127c"
   "a0e7dc022acc43d4eb96828ba0362bc1397607d5850e1b69ce5aa5ae90a74386"
   "a48e929dfffc7831cf2cb783aa51d38ddbfb3ee04bfa57d07947de8134f61ac3"
-  "fa74b511a0645129b6fea7235604fd5433e3a99e2ea44e05e971bfa945ebe908"
+  "7701f7a2540b748e32e17a319f236af385901940bb37f1d7fd658ad4f75f5229"
   "0edcbdda3f3789973d30ab65589b5a0920a3b70b185e25544f60cc4669492475"
   "ab966cba68b02c7163cb3a210c59ef7e645d5a43fc1ad18869a2533e1b297fc8"
   "a77e1b23dd90f36345a43fc45afa738e458ea3b88d395f83c396516ba2efdfbd"
@@ -37,7 +36,7 @@ sha256sums=(
 
 prepare() {
   cd "${_pkgname}-with-submodules-${_pkgver}"
-  patch -N -p1 --input="${srcdir}/timestamp.patch"
+  patch -N -p1 --input="${srcdir}/fortify.patch"
   patch -N -p1 --input="${srcdir}/collate.patch"
 }
 
