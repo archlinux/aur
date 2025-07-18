@@ -1,0 +1,79 @@
+post_install() {
+    echo "==> Configuring Meowrch tools..."
+    
+    # Enable and start pacman cache cleanup timer
+    systemctl enable pacman-cache-cleanup.timer
+    systemctl start pacman-cache-cleanup.timer
+    
+    # Update desktop database
+    update-desktop-database -q
+    
+    # Create symlinks for easy access to core tools
+    ln -sf /usr/bin/core/game-performance /usr/bin/game-performance 2>/dev/null || true
+    ln -sf /usr/bin/core/meowrch-autotune /usr/bin/meowrch-autotune 2>/dev/null || true
+    ln -sf /usr/bin/core/meowrch-profile /usr/bin/meowrch-profile 2>/dev/null || true
+    
+    # Create symlinks for wrappers
+    ln -sf /usr/bin/wrappers/meowrch-prime-run /usr/bin/meowrch-prime-run 2>/dev/null || true
+    ln -sf /usr/bin/wrappers/dlss-swapper /usr/bin/dlss-swapper 2>/dev/null || true
+    ln -sf /usr/bin/wrappers/zink-run /usr/bin/zink-run 2>/dev/null || true
+    
+    echo "==> Meowrch tools installed successfully!"
+    echo "==> Available commands:"
+    echo "    - game-performance: Toggle gaming mode"
+    echo "    - meowrch-game-run: Intelligent gaming wrapper"
+    echo "    - meowrch-prime-run: Run apps with discrete GPU"
+    echo "    - meowrch-autotune: Auto-configure for your hardware"
+    echo "    - meowrch-profile: Manage performance profiles"
+    echo "    - dlss-swapper: NVIDIA DLSS optimization"
+    echo "    - zink-run: OpenGL to Vulkan wrapper"
+    echo "==> Gaming: Use 'meowrch-game-run %command%' in Steam for optimal performance"
+    echo "==> Run 'sudo meowrch-autotune --tune' to optimize for your hardware"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "==> Disabling Meowrch tools..."
+    
+    # Disable and stop pacman cache cleanup timer
+    systemctl stop pacman-cache-cleanup.timer
+    systemctl disable pacman-cache-cleanup.timer
+    
+    # Disable gaming mode if enabled
+    if [[ -f /tmp/meowrch-game-mode.lock ]]; then
+        game-performance --disable || true
+    fi
+    
+    # Remove symlinks
+    rm -f /usr/bin/game-performance
+    rm -f /usr/bin/meowrch-autotune
+    rm -f /usr/bin/meowrch-profile
+    rm -f /usr/bin/meowrch-prime-run
+    rm -f /usr/bin/dlss-swapper
+    rm -f /usr/bin/zink-run
+    
+    # Clean up dynamically created files
+    echo "==> Cleaning up configuration files..."
+    
+    # Remove meowrch-profile configuration files
+    rm -f /etc/pipewire/pipewire.conf.d/99-meowrch-profile.conf
+    rm -f /etc/meowrch/current-profile
+    rm -rf /etc/meowrch/profiles
+    
+    # Remove /etc/meowrch directory if empty
+    if [[ -d /etc/meowrch ]] && [[ -z "$(ls -A /etc/meowrch)" ]]; then
+        rmdir /etc/meowrch
+    fi
+    
+    # Remove temporary files
+    rm -f /tmp/meowrch-game-mode.lock
+    rm -f /tmp/meowrch-*.tmp
+    
+    # Update desktop database
+    update-desktop-database -q
+    
+    echo "==> Meowrch tools removed successfully!"
+}
