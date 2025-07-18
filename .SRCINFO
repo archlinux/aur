@@ -1,0 +1,27 @@
+pkgbase = iocaine-git
+	pkgdesc = The deadliest poison known to AI
+	pkgver = r332.710c366
+	pkgrel = 1
+	url = https://iocaine.madhouse-project.org/
+	arch = any
+	license = MIT
+	makedepends = cargo
+	optdepends = nginx: when using nginx as reverse proxy
+	optdepends = caddy: when using caddy as reverse proxy
+	conflicts = iocaine
+	options = !lto
+	backup = etc/webapps/iocaine/iocaine.toml
+	source = git+https://git.madhouse-project.org/iocaine/iocaine.git
+	source = nginx_filter.conf
+	source = nginx_component.conf
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = systemd.service.patch
+	sha256sums = SKIP
+	sha256sums = 008464028dc45c0ced3d8649ca36e016181e638548508a6ecf17ee7ce8195bd2
+	sha256sums = 3ba1d429be28b8291861aca9b91564ab4db4f83aa7d955ed102d090259d46b5b
+	sha256sums = d98c03791baff0fbd59261de5f0e38e592e3a4f2014d3dbf135567771ccf8193
+	sha256sums = 7761fab52173f5f0cfeb8678bcbf9e4c297fcb6282acb13c604b6cba4f760f9b
+	sha256sums = 5f399aeebab673326c8140f6c7c2fd8fa07e7234dbef288708cb00d56d6dd232
+
+pkgname = iocaine-git
