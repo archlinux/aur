@@ -1,0 +1,13 @@
+pkgbase = dpms-off-git
+	pkgdesc = Turn off monitors to save power (for Wayland)
+	pkgver = r18.17c5600
+	pkgrel = 1
+	url = https://github.com/lilydjwg/dpms-off
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	source = git+https://github.com/lilydjwg/dpms-off
+	sha256sums = SKIP
+
+pkgname = dpms-off-git
