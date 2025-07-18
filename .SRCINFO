@@ -1,0 +1,17 @@
+pkgbase = eigenallet-bin
+	pkgdesc = λ eigenallet (previously UnstoppableSwap) is a GUI for trustless cross-chain XMR<>BTC Atomic Swaps.
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = https://eigenwallet.org/
+	arch = x86_64
+	license = GPL-3.0
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = webkit2gtk
+	provides = unstoppableswap-gui
+	conflicts = unstoppableswap-gui
+	source = https://github.com/EigenWallet/core/releases/download/3.0.0-beta/EigenWallet_3.0.0-beta_amd64.deb
+	sha256sums = 0eadc67beb0d361c359e18685ffcf6350fda071603c417109b1e6182b683479a
+
+pkgname = eigenallet-bin
