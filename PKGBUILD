@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhnaibek.adilbekov@proton.me>
 # shellcheck disable=2034,2154,2164
 pkgname=postgrestools-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A collection of language tools and a Language Server Protocol (LSP) implementation for Postgres, focusing on developer experience and reliable SQL tooling'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ source=($pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel-LICENSE::"https://github.com
 source_x86_64=("$pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel-x86_64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/${pkgver}/postgrestools_x86_64-unknown-linux-gnu")
 source_aarch64=("$pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel-aarch64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/${pkgver}/postgrestools_aarch64-unknown-linux-gnu")
 b2sums=('7ae0aa37903c2bb0ebba4dbf11292947a42c522bdc4fa762f2407a2546091047dbe1b3057007c35769ab3ff414c8ca3896ff6b178f94df3e1cff4e616466edc0')
-b2sums_x86_64=('0149b4ae90a898a699a108e69148ddb9d0564b60f822fbb398eeb959b43ff111093f92ca62e68f09b3e41ca50c460ffb2cf0a783d167b128b968f334bc7f7d03')
-b2sums_aarch64=('72fb51b8b091db86971efa56a8c32e0f021122986a088dfe1233f1572d6174c45221d609f4f0edc391a45eed8202385f971a7c7a2d95ff08b65132b28d624ecc')
+b2sums_x86_64=('984c452821e0fdf1561cc87f13c9ec5c2309b251bd7bef6a68be34b1c8491e5530cd828575b96384aa02077e6c402aed5f39600baa9b6cf7e304465de7cd8dd4')
+b2sums_aarch64=('8794c0f825b04b9b0d876c31812ee53f54980ec4da1ef59bfc11cc21de664f7832de17d9006fb9da2134117b72279b77865199cb824e5172d08419a1de921ce1')
 
 package() {
 	install -Dm755 "$srcdir/$pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel-$CARCH.bin" "$pkgdir/usr/bin/postgrestools"
