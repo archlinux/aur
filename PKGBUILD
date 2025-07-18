@@ -36,7 +36,7 @@ build() {
 
 package() {
 	cd "$srcdir"/$_pkgname
-	make PREFIX=/usr DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 	install -Dm644 README.md "$pkgdir"/usr/share/doc/$_pkgname/README
 }
