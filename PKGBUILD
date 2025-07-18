@@ -8,7 +8,12 @@ pkgdesc="A puzzle game similar to Bejeweled or Diamond Mine"
 arch=('x86_64')
 url="https://gweled.org"
 license=('GPL-2.0-or-later')
-depends=('clutter-gtk' 'gsound' 'gtk3' 'libgnome-games-support')
+depends=(
+  'clutter-gtk'
+  'gsound'
+  'gtk3'
+  'libgnome-games-support'
+)
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("https://launchpad.net/gweled/1.0/${_pkgver}/+download/$pkgname-${_pkgver}.tar.xz")
