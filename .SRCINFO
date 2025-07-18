@@ -1,6 +1,6 @@
 pkgbase = radicle-desktop
 	pkgdesc = Radicle desktop app
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://www.radworks.garden/
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = radicle-desktop
 	options = !strip
 	options = !emptydirs
 	options = !lto
-	source = radicle-desktop::git+https://seed.radicle.xyz/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=0e4711b313a1293727664abe91b03ed4ea2290d1
+	source = radicle-desktop::git+https://seed.radicle.xyz/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=5f4d31c9e313532e3ba66444a4ae9af9a7c33738
 	sha256sums = SKIP
 
 pkgname = radicle-desktop
