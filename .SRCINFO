@@ -1,4 +1,4 @@
-pkgbase = forge-gui-desktop-git
+pkgbase = forge-gui-desktop-snapshot-bin
 	pkgdesc = Implementation of Magic the Gathering that lets you play against a computer AI (daily snapshot)
 	pkgver = 2.0.05.snapshot.07.16
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = forge-gui-desktop-git
 	source = AppIcon.png::https://github.com/Card-Forge/forge/raw/master/AppIcon.png
 	sha256sums = SKIP
 
-pkgname = forge-gui-desktop-git
+pkgname = forge-gui-desktop-snapshot-bin

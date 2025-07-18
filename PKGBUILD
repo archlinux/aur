@@ -1,5 +1,5 @@
 # Maintainer: rutra
-pkgname=forge-gui-desktop-git
+pkgname=forge-gui-desktop-snapshot-bin
 _pkgname=forge-gui-desktop
 pkgver=2.0.05.snapshot.07.16
 pkgrel=1
