@@ -8,7 +8,7 @@ url="https://codeberg.org/ireozar/mailnaggertray"
 license=('MIT')
 depends=('glibc' 'mailnagger' 'gcc-libs')
 makedepends=('git' 'cargo')
-source=("mailnaggertray-git::git+$url.git")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
