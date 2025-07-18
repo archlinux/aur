@@ -1,7 +1,7 @@
 pkgbase = itk-lite
 	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
-	pkgver = 5.4.2
-	pkgrel = 2
+	pkgver = 5.4.4
+	pkgrel = 1
 	url = https://itk.org/
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = itk-lite
 	makedepends = git
 	makedepends = eigen
 	makedepends = gtest
+	makedepends = gcc14
 	depends = glibc
 	depends = gcc-libs
 	depends = libjpeg-turbo
@@ -22,7 +23,7 @@ pkgbase = itk-lite
 	provides = insight-toolkit
 	conflicts = itk
 	conflicts = insight-toolkit
-	source = https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.4.2/InsightToolkit-5.4.2.tar.gz
-	sha512sums = 440d5962336ae7ba68e1efcabd78db8f10437db27da077a65731024d2fd94c588468678d0af8d8be1bfdb45dc90a88ace85ae9e1fabf77fb4172f3cb7cc27a3c
+	source = https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.4.4/InsightToolkit-5.4.4.tar.gz
+	sha512sums = 98e01bbbe6f9d1d2634dc6bd957edd3aef7ba6f2c3fc1d3de9dd00be1b2cda90df959c86275b3c6a57f7945852970d7b4bbe8f82ea8114a89f9a92cca15e2638
 
 pkgname = itk-lite
