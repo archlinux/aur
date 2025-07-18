@@ -6,7 +6,11 @@ pkgdesc="Simple & versatile image editor."
 arch=('any')
 url="https://imeditor.github.io"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'python-gobject' 'python-pillow')
+depends=(
+  'gtk3'
+  'python-gobject'
+  'python-pillow'
+)
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ImEditor/ImEditor/archive/$pkgver.tar.gz")
@@ -18,9 +22,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
