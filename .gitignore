@@ -1,10 +1,11 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !setup.patch
 !un-reboot.png
-!.nvchecker.toml
