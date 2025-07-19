@@ -12,7 +12,7 @@ makedepends=('curl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('3314aad967c9d2d2e9ee5e8ace06a11c5667e2bba18a02412541a8b3dc71db5c')
+sha256sums_x86_64=('fe3a8813f6c68d69552f3713820ec11b730dba0cc18c837c72c8659d8bbe8438')
 source=("LICENSE-${sha256sums}::https://raw.githubusercontent.com/${_repo}/v${pkgver}/LICENSE")
 source_x86_64=("famsa-${sha256sums_x86_64}.tar.gz::${url}/releases/download/v$pkgver/famsa-v$pkgver-x64_linux.tar.gz")
 pkgver() {
