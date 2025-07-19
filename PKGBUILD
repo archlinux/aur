@@ -10,10 +10,8 @@ pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
 url="https://www.svp-team.com/wiki/SVP:Linux"
 license=('LicenseRef-custom')
-groups=()
 depends=(libmediainfo libusb lsof vapoursynth qt5-svg qt5-script qt5-declarative xdg-utils)
 makedepends=(p7zip)
-checkdepends=()
 # Youtube-dl is bundled with SVP in extensions directory
 optdepends=(
 	'mpv: Video player'
@@ -25,12 +23,8 @@ optdepends=(
 	'vlc: Video player'
 )
 provides=('svp')
-conflicts=()
-replaces=()
-backup=()
 options=(!strip)
 install=${pkgname}.install
-changelog=
 #source=("https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d11afd1/raw/svp4-linux.$pkgver.tar.bz2")
 source=("https://www.svp-team.com/files/svp4-linux.${_pkgver}.tar.bz2")
 # I am rehosting the binaries taken from
@@ -39,9 +33,7 @@ source=("https://www.svp-team.com/files/svp4-linux.${_pkgver}.tar.bz2")
 # so they are correctly versioned and old versions still exist
 # update 2019-10-06: svp-team.com now uses versioned file names.
 # I'll keep rehosting them for now since i don't trust them to actually keep old versions.
-noextract=()
 sha256sums=('1f24435451d59936a7fd28b7423190a42df36b7d306b2d747741e4efda171bdf')
-validpgpkeys=()
 
 prepare() {
 	rm -rf "${srcdir}/installer"
