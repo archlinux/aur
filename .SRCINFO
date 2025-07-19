@@ -1,15 +1,13 @@
 pkgbase = openfire-git
 	pkgdesc = High performance XMPP (Jabber) server.
-	pkgver = 4.8.0.r16.g6816685
-	pkgrel = 2
+	pkgver = 5.0.0.r82.g4de330c
+	pkgrel = 1
 	url = https://www.igniterealtime.org/projects/openfire/
 	arch = any
 	license = APACHE
-	makedepends = maven
-	makedepends = jre11-openjdk-headless
-	makedepends = jdk11-openjdk
+	makedepends = java-environment=17
 	makedepends = git
-	depends = java-runtime-headless<19
+	depends = java-runtime-headless>=17
 	provides = openfire
 	conflicts = openfire
 	backup = etc/conf.d/openfire
@@ -25,11 +23,13 @@ pkgbase = openfire-git
 	source = openfire.service
 	source = user.conf
 	source = tmpfile.conf
+	source = force-java17.patch
 	sha256sums = SKIP
 	sha256sums = c850f376d53134ccc8d1035322dea792ba9145a5ab37f1801598c60bc70d0ed1
 	sha256sums = c8a612abee90bdc9a2869e562a4bbbf596159c60adcd23368833a0e2ca27c1d4
 	sha256sums = bc58f7e80cbdaee8523874990bf061cfd0e6480c676102e2131fe487d2782061
 	sha256sums = 8bfa51cf8cc88fc69547a8f6e9e3fb242926ca2a100659363e1a6b332f223ba9
 	sha256sums = c63396991984a067d05e21094a664255d6aed2bf294bddd3885a7da75472b886
+	sha256sums = a2842bb2f9e47a39a2c65359241cff2563525430badc220a4ffa0d5bae67d6cb
 
 pkgname = openfire-git

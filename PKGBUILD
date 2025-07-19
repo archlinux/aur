@@ -3,14 +3,14 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openfire-git
-pkgver=4.8.0.r16.g6816685
-pkgrel=2
+pkgver=5.0.0.r82.g4de330c
+pkgrel=1
 pkgdesc="High performance XMPP (Jabber) server."
 arch=('any')
 url='https://www.igniterealtime.org/projects/openfire/'
 license=('APACHE')
-depends=('java-runtime-headless<19')
-makedepends=('maven' 'jre11-openjdk-headless' 'jdk11-openjdk' 'git')
+depends=('java-runtime-headless>=17')
+makedepends=('java-environment=17' 'git')
 backup=('etc/conf.d/openfire'
         'etc/openfire/openfire.xml'
         'etc/openfire/security.xml'
@@ -23,13 +23,15 @@ source=("$pkgname::git+https://github.com/igniterealtime/Openfire"
         'openfire.conf'
         'openfire.service'
         'user.conf'
-        'tmpfile.conf')
+        'tmpfile.conf'
+        'force-java17.patch')
 sha256sums=('SKIP'
             'c850f376d53134ccc8d1035322dea792ba9145a5ab37f1801598c60bc70d0ed1'
             'c8a612abee90bdc9a2869e562a4bbbf596159c60adcd23368833a0e2ca27c1d4'
             'bc58f7e80cbdaee8523874990bf061cfd0e6480c676102e2131fe487d2782061'
             '8bfa51cf8cc88fc69547a8f6e9e3fb242926ca2a100659363e1a6b332f223ba9'
-            'c63396991984a067d05e21094a664255d6aed2bf294bddd3885a7da75472b886')
+            'c63396991984a067d05e21094a664255d6aed2bf294bddd3885a7da75472b886'
+            'a2842bb2f9e47a39a2c65359241cff2563525430badc220a4ffa0d5bae67d6cb')
 provides=('openfire')
 conflicts=('openfire')
 
@@ -38,9 +40,13 @@ pkgver() {
       git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
 }
 
+prepare() {
+    patch -d $pkgname -Np2 -i ../force-java17.patch
+}
+
 build() {
   cd "$pkgname"
-  make
+  make dist
 }
 
 package() {

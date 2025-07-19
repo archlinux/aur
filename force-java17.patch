@@ -1,0 +1,11 @@
+diff -ura package.orig/openfire-git/pom.xml package.new/openfire-git/pom.xml
+--- package.orig/openfire-git/pom.xml	2025-07-18 23:47:14.768931454 +0100
++++ package.new/openfire-git/pom.xml	2025-07-18 23:47:48.468948688 +0100
+@@ -127,6 +127,7 @@
+         <slf4j.version>2.0.9</slf4j.version>
+         <log4j.version>2.20.0</log4j.version>
+         <ojdbc.version>23.7.0.25.01</ojdbc.version>
++        <maven.compiler.release>17</maven.compiler.release>
+     </properties>
+ 
+     <profiles>
