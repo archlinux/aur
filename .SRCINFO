@@ -1,7 +1,7 @@
 pkgbase = perl-coerce-types-standard
 	pkgdesc = Coercing
 	pkgver = 0.000009
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Coerce-Types-Standard
 	arch = any
 	license = PerlArtistic
