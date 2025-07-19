@@ -46,3 +46,6 @@ Fix progress reset with new naming
 Implement progress show command
 
 
+Remove logging
+
+
