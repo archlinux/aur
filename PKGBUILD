@@ -3,7 +3,7 @@
 pkgname=garuda-rani
 pkgver="3.0.2"
 _commit='7e1f290cbae9b91964f3aa82cc10913f7e372270'
-pkgrel=1
+pkgrel=2
 _electronversion=36
 pkgdesc="Garuda's Reliable Assistant for Native Installations"
 arch=('any')
@@ -16,8 +16,6 @@ optdepends=('paru: show pending AUR updates'
   'pace: manage Pacman repositories via a GUI'
   'reflector-simple: update Arch mirrorlists interactively'
   'btrfs-assistant: easily manage Btrfs snapshots and further settings')
-provides=('garuda-rani')
-conflicts=('garuda-rani')
 options=('!strip' '!emptydirs' '!debug')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
@@ -55,6 +53,10 @@ build() {
 }
 
 package() {
+  # Replaces all of garuda-settings-manager
+  replaces=('garuda-settings-manager')
+  conflicts=('garuda-settings-manager-kcm' 'garuda-settings-manager-notifier' 'garuda-settings-manager-knotifier' 'garuda-settings-manager-knotifier-git' 'garuda-settings-manager-notifier-git')
+
   install -Dm755 "${srcdir}/rani/assets/garuda-rani.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/rani/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
   install -Dm644 "${srcdir}/rani/assets/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
