@@ -1,45 +1,28 @@
+# Maintainer: Wade Duvall <wsduvall@proton.me>
+# Contributor: Daniel <dgcbueu@gmail.com>
+
 pkgname=netdiscover
-pkgver=0.10
+pkgver=0.20
 pkgrel=0
-pkgdesc="ARP Scanner"
+pkgdesc="A network address discovering tool"
 arch=('i686' 'x86_64')
 url="https://github.com/netdiscover-scanner/netdiscover/"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('libnet' 'libpcap')
-makedepends=('gcc' 'make' 'wget')
+makedepends=('gcc' 'make' 'wget' 'dos2unix')
 provides=('netdiscover')
-conflicts=('netdiscover-debian' 'netdiscover-svn')
-source=("https://github.com/netdiscover-scanner/netdiscover/archive/${pkgver}.tar.gz"
-        "http://standards-oui.ieee.org/oui/oui.txt")
-
-sha256sums=('dc331da2052ef1b0e8de50b8550c63f1e10720101df8f075efe6adeb2dad4afd'
-            'SKIP')
-
-prepare(){
-        cd "$srcdir/$pkgname-$pkgver"
-        cat << EOT > src/oui.h
-struct oui {
-        char *prefix;   /* 24 bit global prefix */
-        char *vendor;   /* Vendor id string     */
-};
-        
-struct oui oui_table[] = {
-EOT
-        cat ../oui.txt | sed 's/\r//' | grep "base 16" | tr '\t' ' ' | tr -s " " | sed 's/(base 16) //' | grep '[0-9A-F]' |  sort | sed 's/ /", "/' | sed 's/^/ { "/' | sed -z 's/\n/" },#/g' | tr '#' '\n' >> src/oui.h
-        cat << EOT >> src/oui.h
-    { NULL, NULL }
-};
-EOT
-}
+source=("https://github.com/netdiscover-scanner/netdiscover/releases/download/${pkgver}/netdiscover-${pkgver}.tar.gz")
+sha256sums=('d7c40559487905059c99f1b2ae7b1a148c9f7cd45f58ac5d834faa35d9bf5f6e')
 
 build() {
-        cd "$srcdir/$pkgname-$pkgver"
-        ./autogen.sh
-        ./configure --sbindir=/usr/bin --prefix=/usr --sysconfdir=/etc/
-        make 
+  cd "$srcdir/$pkgname-$pkgver"
+  ./update-oui-database.sh
+  ./autogen.sh
+  ./configure --sbindir=/usr/bin --prefix=/usr --sysconfdir=/etc
+  make
 }
-        
+
 package() {
-        cd "$srcdir/$pkgname-$pkgver"
-        make DESTDIR="$pkgdir" install || return 1
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install || return 1
 }
