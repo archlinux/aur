@@ -38,7 +38,7 @@ package() {
 	find           "${srcdir}/squashfs-root/resources/" -type d -exec chmod 755 {} +
 
 	install -d     "${pkgdir}/opt/${_pkgname}"
-	cp -r          "${srcdir}/squashfs-root/"*                       "${pkgdir}/opt/${_pkgname}"
+	cp -r          "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${_pkgname}"
 
 	# Remove broken or unused files and directories
 	rm -r          "${pkgdir}/opt/${_pkgname}/usr/"
@@ -52,7 +52,7 @@ package() {
 	cp -r          "${srcdir}/squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons/hicolor"
 
 	install -d     "${pkgdir}/usr/bin"
-	ln -s          "../../opt/${_pkgname}/jitsi-meet"                "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s          "../../opt/${_pkgname}/jitsi-meet" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "${srcdir}/${_pkgname}.desktop"                   "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
