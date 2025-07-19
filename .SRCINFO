@@ -1,0 +1,19 @@
+pkgbase = wayterm-git
+	pkgdesc = A minimal Wayland terminal (Early Development)
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/Squar-DE/wayterm
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = vte4
+	depends = gdk-pixbuf2
+	provides = wayterm
+	conflicts = wayterm
+	source = git+file:///home/spiky/wayterm-aur
+	sha256sums = SKIP
+
+pkgname = wayterm-git
