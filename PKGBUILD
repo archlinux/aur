@@ -4,7 +4,7 @@
 pkgname='perl-xml-xpathengine'
 pkgver='0.14.20161119'
 _commit=73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf
-pkgrel='2'
+pkgrel='3'
 pkgdesc="a re-usable XPath engine for DOM-like trees"
 arch=('any')
 license=('Artistic-1.0-Perl')

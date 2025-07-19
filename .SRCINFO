@@ -1,7 +1,7 @@
 pkgbase = perl-xml-xpathengine
 	pkgdesc = a re-usable XPath engine for DOM-like trees
 	pkgver = 0.14.20161119
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/XML-XPathEngine
 	arch = any
 	license = Artistic-1.0-Perl
