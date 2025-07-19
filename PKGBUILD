@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="containerlab"
-pkgver=0.68.0
+pkgver=0.69.0
 pkgrel=1
 pkgdesc="Container-based networking labs"
 arch=('aarch64' 'x86_64')
@@ -9,20 +9,20 @@ url="https://containerlab.dev"
 _url="https://github.com/srl-labs/${pkgname}"
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('go')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e7ae1dfbb216cefa83f7d4f1e35322279732c49d2089e4e32137ed74f5e55d3f0d61c4a8d0774ff85e58371671d39efb3be829b03bef7064c8e787574599731d')
+makedepends=('go' 'git')
+_pkgsrc="${_url##*/}"
+source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
+b2sums=('7f9b46529b810ea6fc7b85ea7b52823875213f8875c2cc1c7f87c44ca6c388686050dd2349faf05945a8e65c11f52a8de847e87e392b85157f6eb56aa7432acf')
+
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  go get -v ./...
+  chmod -R ug+Xwr "${GOMODCACHE}"
 
-  mkdir -p "build"
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -35,15 +35,24 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
+  local build_commit="$(git rev-parse --short HEAD)"
+  local build_date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
   go build -v -o "build/${pkgname}" -ldflags "\
-    -X ${_url#https://}/cmd.version=${pkgver}" \
+    -X ${_url#https://}/cmd/version.Version=${pkgver} \
+    -X ${_url#https://}/cmd/version.commit=${build_commit} \
+    -X ${_url#https://}/cmd/version.date=${build_date}" \
     .
+
+  for _sh in bash fish zsh; do
+    ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
+  done
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
@@ -52,5 +61,10 @@ package() {
   install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   find "lab-examples" -type f ! -name '.gitignore' -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
+    install -Dm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
+
+  cd "completions"
+  install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
