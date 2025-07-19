@@ -1,0 +1,13 @@
+pkgbase = rbonsai
+	pkgdesc = A port of cbonsai to Rust
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/roberte777/rbonsai
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cargo
+	source = https://github.com/roberte777/rbonsai/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = rbonsai
