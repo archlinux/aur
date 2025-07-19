@@ -3,7 +3,7 @@
 
 pkgname='perl-devel-size'
 pkgver='0.85'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for finding the memory usage of Perl variables"
 arch=('i686' 'x86_64')
 license=('Artistic-1.0')
