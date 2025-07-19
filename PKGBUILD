@@ -2,7 +2,7 @@
 
 pkgname=sudo-rs-symlink
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='(Avoid if app supports PATH) swap sudo with -rs'
 arch=(any)
 url="https://github.com/trifectatechfoundation/sudo-rs"
@@ -12,8 +12,8 @@ provides=(sudo)
 conflicts=(sudo)
 source=("https://gitlab.archlinux.org/archlinux/packaging/packages/sudo/-/raw/main/sudo.pam"
 sudoers-rs)
-sha256sums=('d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2'
-            'a17090feee1f91b1205074dc1c542957a08dca7f432bbaa43586b6e70f0858fd')
+sha512sums=('SKIP'
+            'd052030d282d64f7db0ca7948d066dc8898677bbf30c554b0d718a6dce295b47a7878f623ee333b1b469fda44707d33ead3dd69b3c56a689273b3508c202ae83')
 package (){
   install -Dm644 sudo.pam "$pkgdir"/etc/pam.d/sudo
   ln -sf /etc/pam.d/sudo "$pkgdir"/etc/pam.d/sudo-i
