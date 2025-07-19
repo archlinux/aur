@@ -3,7 +3,7 @@
 
 pkgname='perl-catalyst-view-tt'
 pkgver='0.46'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Template View Class"
 arch=('any')
 license=('PerlArtistic' 'GPL')

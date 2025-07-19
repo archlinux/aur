@@ -1,7 +1,7 @@
 pkgbase = perl-catalyst-view-tt
 	pkgdesc = Template View Class
 	pkgver = 0.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Catalyst-View-TT
 	arch = any
 	license = PerlArtistic
