@@ -3,11 +3,13 @@
 _basename=ab-download-manager
 pkgname=${_basename}-bin
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('x86_64')
 url="https://abdownloadmanager.com/"
 license=('Apache-2.0')
+# Add the options array to disable debug package creation
+options=('!debug')
 provides=("${_basename}")
 conflicts=("${_basename}")
 depends=(
