@@ -1,15 +1,15 @@
-# Maintainer: Veillain <veillainwertz@gmail.com>
+# Maintainer: Veillain <ahmadinnewertz@gmail.com>
 pkgname=currento
 pkgver=1.1
 pkgrel=2
 pkgdesc="A package to extend the basic 'cd' command. Currento adds some features that shouldn't be in basic 'cd'."
 arch=("any")
-url="https://github.com/veillain/currento"
+url="https://github.com/ahmadinne/currento"
 license=("GPL-3.0-or-later")
 depends=("git")
 provides=("currento")
 conflicts=("currento")
-source=("${pkgname}::git+https://github.com/veillain/currento.git")
+source=("${pkgname}::git+https://github.com/ahmadinne/currento.git")
 sha256sums=('SKIP')
 
 package() {
