@@ -4,7 +4,7 @@
 
 pkgname='perl-web-scraper'
 pkgver='0.38'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Web Scraping Toolkit using HTML and CSS Selectors or XPath expressions"
 arch=('any')
 license=('Artistic-1.0-Perl'

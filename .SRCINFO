@@ -1,7 +1,7 @@
 pkgbase = perl-web-scraper
 	pkgdesc = Web Scraping Toolkit using HTML and CSS Selectors or XPath expressions
 	pkgver = 0.38
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Web-Scraper
 	arch = any
 	license = Artistic-1.0-Perl
