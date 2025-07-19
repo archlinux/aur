@@ -3,7 +3,7 @@
 
 pkgname='perl-regexp-util'
 pkgver='0.005'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A selection of general-utility regexp subroutines"
 arch=('i686' 'x86_64')
 license=('Artistic-1.0')

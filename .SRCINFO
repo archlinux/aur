@@ -1,7 +1,7 @@
 pkgbase = perl-regexp-util
 	pkgdesc = A selection of general-utility regexp subroutines
 	pkgver = 0.005
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Regexp-Util
 	arch = i686
 	arch = x86_64
