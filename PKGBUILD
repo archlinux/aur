@@ -11,7 +11,7 @@ pkgrel=5
 pkgdesc="A cross-platform audio output library and plugins (32-bit)"
 url="https://www.xiph.org/ao/"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(
   "libao=${pkgver}"
   lib32-glibc
