@@ -1,11 +1,10 @@
 pkgbase = perl-file-sharedir-tiny
 	pkgdesc = Locate per-dist and per-module shared files
 	pkgver = 0.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/File-ShareDir-Tiny
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	depends = perl>=5.006
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/File-ShareDir-Tiny-0.001.tar.gz

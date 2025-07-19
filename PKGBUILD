@@ -3,10 +3,10 @@
 
 pkgname='perl-file-sharedir-tiny'
 pkgver='0.001'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Locate per-dist and per-module shared files"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
