@@ -1,7 +1,7 @@
 pkgbase = perl-data-section
 	pkgdesc = read multiple hunks of data out of your DATA section
 	pkgver = 0.200008
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/dist/Data-Section
 	arch = any
 	license = Artistic-1.0-Perl

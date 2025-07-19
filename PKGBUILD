@@ -3,7 +3,7 @@
 
 pkgname='perl-data-section'
 pkgver='0.200008'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="read multiple hunks of data out of your DATA section"
 arch=('any')
 license=('Artistic-1.0-Perl'
