@@ -1,7 +1,7 @@
 From ba66a6c6eeb16eb8e2d2ec368d6605b974070d4b Mon Sep 17 00:00:00 2001
 From: Matt Bilker <me@mbilker.us>
 Date: Wed, 25 Sep 2024 04:35:50 +0000
-Subject: [PATCH] lib: do not take mdev UUID as 17.x may get the vGPU info
+Subject: [PATCH 1/7] lib: do not take mdev UUID as 17.x may get the vGPU info
  multiple times
 
 - See #37
@@ -23,5 +23,5 @@ index eddb72d..6e1ffad 100644
      if let Some(config_override) = config_overrides.profile.get(vgpu_type.as_str()) {
          info!("Applying profile {} overrides", vgpu_type);
 -- 
-2.49.0
+2.50.1
 

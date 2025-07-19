@@ -1,7 +1,7 @@
 From ff3e6e4b81cb3ede42a320f383667a3614aa7f04 Mon Sep 17 00:00:00 2001
 From: bennaber <39690241+bennaber@users.noreply.github.com>
 Date: Tue, 1 Apr 2025 11:53:54 +0200
-Subject: [PATCH] lib: added params_size of 5232 bytes for v18 driver
+Subject: [PATCH 2/7] lib: added params_size of 5232 bytes for v18 driver
  compatibility (#43)
 
 Co-authored-by: plaguenarr <plaguenarr@MacBook-Pro-von-plaguenarr.local>
@@ -27,5 +27,5 @@ index 6e1ffad..f1254c2 100644
                          NVA081_CTRL_CMD_VGPU_CONFIG_GET_VGPU_TYPE_INFO,
                          NvA081CtrlVgpuConfigGetVgpuTypeInfoParams
 -- 
-2.49.0
+2.50.1
 
