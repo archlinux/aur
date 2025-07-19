@@ -13,15 +13,7 @@ pkgbase = picodrive-highscore-git
 	conflicts = picodrive-highscore
 	options = !lto
 	source = git+https://github.com/highscore-emu/picodrive.git
-	source = git+https://github.com/irixxxx/libpicofe.git
-	source = git+https://github.com/irixxxx/cyclone68000.git
 	source = git+https://github.com/digital-sound-antiques/emu2413.git
-	source = git+https://github.com/irixxxx/libchdr.git
-	source = git+https://github.com/mackron/dr_libs.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
