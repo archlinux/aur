@@ -1,0 +1,22 @@
+pkgbase = ceres-solver-cuda-git
+	pkgdesc = A large scale non-linear optimization library - git build with cuda and cudss
+	pkgver = 2.2.0.r125.g8c50a34a1
+	pkgrel = 1
+	url = http://ceres-solver.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = eigen
+	depends = google-glog
+	depends = suitesparse
+	depends = cudss
+	depends = abseil-cpp
+	provides = ceres-solver
+	conflicts = ceres-solver
+	options = staticlibs
+	source = git+https://ceres-solver.googlesource.com/ceres-solver.git
+	sha256sums = SKIP
+
+pkgname = ceres-solver-cuda-git
