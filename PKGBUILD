@@ -13,7 +13,7 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'hdparm: for HDD performance optimizations')
 install=meowrch-settings.install
 source=("$url/archive/refs/heads/v3.0.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0c635fcc72c166a0cf13b7c7be24755ce875b651d48771d84562e92ad239cf82')
 
 package() {
     cd "$srcdir/meowrch-3.0/aur-packages/meowrch-settings"
