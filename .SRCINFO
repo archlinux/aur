@@ -1,14 +1,13 @@
 pkgbase = currento
-	pkgdesc = A package to extend the basic 'cd' command. Currento adds some features that shouldn't be in basic 'cd'.
-	pkgver = 1.1
-	pkgrel = 2
+	pkgdesc = Extend the basic 'cd' command. Currento adds features that shouldn't be in basic 'cd'.
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/ahmadinne/currento
 	arch = any
 	license = GPL-3.0-or-later
+	depends = bash
 	depends = git
-	provides = currento
-	conflicts = currento
 	source = currento::git+https://github.com/ahmadinne/currento.git
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = currento

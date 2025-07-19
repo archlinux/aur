@@ -1,25 +1,19 @@
-# Maintainer: Veillain <ahmadinnewertz@gmail.com>
+# Maintainer: Fikriansyah Ahmadinejad <ahmadinne@proton.me>
 pkgname=currento
-pkgver=1.1
-pkgrel=2
-pkgdesc="A package to extend the basic 'cd' command. Currento adds some features that shouldn't be in basic 'cd'."
+pkgver=1.2
+pkgrel=1
+pkgdesc="Extend the basic 'cd' command. Currento adds features that shouldn't be in basic 'cd'."
 arch=("any")
 url="https://github.com/ahmadinne/currento"
 license=("GPL-3.0-or-later")
-depends=("git")
-provides=("currento")
-conflicts=("currento")
+depends=("bash" "git")
 source=("${pkgname}::git+https://github.com/ahmadinne/currento.git")
-sha256sums=('SKIP')
+md5sums=("SKIP")
 
 package() {
     cd "${pkgname}"
     install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    _CHECK_=$(cat $HOME/.bashrc | grep -x -c "source /usr/bin/currento")
-    if [[ "${_CHECK_}" != 1 ]]; then
+    if [[ $(cat $HOME/.bashrc | grep -x -c "source /usr/bin/currento") != 1 ]]; then 
         echo -e "\nsource /usr/bin/currento" >> $HOME/.bashrc
     fi
 }
