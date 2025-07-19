@@ -13,18 +13,12 @@ depends=(
   "glibc"
   "libx11"
   "libxtst"
-  "mesa"
   "qt5-base"
   "qt5-declarative"
   "qt5-multimedia"
   "qt5-websockets"
   "qt6-declarative"
   "qt6-multimedia"
-)
-optdepends=(
-  "dbus: media player support"
-  "libpulse: pulse audio support"
-  "xorg-server: send keyboard keys"
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz"
@@ -36,36 +30,7 @@ sha256sums=(
 build() {
     cd "OpenVR-AdvancedSettings-$pkgver"
 
-    _additionalOptions=
-
-    # Attempting to compile without package will result in compile error
-    pacman -Qi xorg-server >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        _additionalOptions="CONFIG+=noX11"
-        echo "X11 features disabled."
-    else
-        echo "X11 features enabled."
-    fi
-
-    # Attempting to compile without package will result in compile error
-    pacman -Qi dbus >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        _additionalOptions+=" CONFIG+=noDBUS"
-        echo "DBUS features disabled."
-    else
-        echo "DBUS features enabled."
-    fi
-
-    # Attempting to compile without package will result in compile error
-    pacman -Qi libpulse >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        _additionalOptions+=" CONFIG+=noPulse"
-        echo "Pulse features disabled."
-    else
-        echo "Pulse features enabled."
-    fi
-
-    qmake -Wnone -nocache PREFIX="$pkgdir/opt/" $_additionalOptions
+    qmake -Wnone -nocache PREFIX="$pkgdir/opt/"
     make
 }
 

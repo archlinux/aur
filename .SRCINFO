@@ -10,16 +10,12 @@ pkgbase = ovras
 	depends = glibc
 	depends = libx11
 	depends = libxtst
-	depends = mesa
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-multimedia
 	depends = qt5-websockets
 	depends = qt6-declarative
 	depends = qt6-multimedia
-	optdepends = dbus: media player support
-	optdepends = libpulse: pulse audio support
-	optdepends = xorg-server: send keyboard keys
 	source = ovras-5.8.11.tar.gz::https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v5.8.11.tar.gz
 	sha256sums = 2bd7e610a3b44e1525621b6fef17b4f0e1f40f8c4719bc0d4540cd8f81f3f8c5
 
