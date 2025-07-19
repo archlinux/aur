@@ -9,7 +9,6 @@ pkgbase = python-ag-ui-protocol
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = git
 	depends = python
 	depends = python-pydantic
 	source = https://files.pythonhosted.org/packages/source/a/ag-ui-protocol/ag_ui_protocol-0.1.8.tar.gz
