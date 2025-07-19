@@ -5,7 +5,7 @@
 _pkgname='tootik'
 pkgname="${_pkgname}-git"
 pkgver=0.18.0.r0.g292ccaf
-pkgrel=1
+pkgrel=2
 pkgdesc='A federated nanoblogging service with a finger/gemini/gopher/guppy frontend (development version)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/dimkr/tootik'
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  git -dfx
+  git clean -dfx
   mkdir -p build
   go mod tidy
   go generate ./migrations
