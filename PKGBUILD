@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=ffmpeg-normalize-git
-pkgver=1.32.5.r6.g05576cd
+pkgver=1.32.5.r7.g30c2a48
 pkgrel=1
 pkgdesc='Normalize loudness of audio and video files using FFmpeg'
 arch=(any)
@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd $pkgname
-  pytest test/test_all.py
+  pytest tests/test_all.py
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-normalize-git
 	pkgdesc = Normalize loudness of audio and video files using FFmpeg
-	pkgver = 1.32.5.r6.g05576cd
+	pkgver = 1.32.5.r7.g30c2a48
 	pkgrel = 1
 	url = https://github.com/slhck/ffmpeg-normalize
 	arch = any
