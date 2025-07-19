@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
-pkgver=0.105.3
+pkgver=0.105.4
 pkgrel=1
-_commit=69197adb791053c732f078153aa32ba27fdbc687
+_commit=e08273503f1c2df046f7e3b038544ba6367fb259
 pkgdesc="Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more"
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
