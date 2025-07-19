@@ -23,7 +23,7 @@ package() {
     then
         echo "$FILE exists skipping download."
         mkdir "$pkgdir/usr/share/games/$_pkgname/Paks"
-        ln -s /usr/share/games/$_pkgname/Paks/MFA2.pak "$pkgdir/usr/share/games/$_pkgname//Paks/MFA2.pak"
+        ln -s /usr/share/games/$_pkgname/Paks/MFA2.pak "$pkgdir/usr/share/games/$_pkgname/Paks/MFA2.pak"
     else
         echo "$FILE does not exist, Starting download.."
         mkdir "$pkgdir/usr/share/games/$_pkgname/Paks"
