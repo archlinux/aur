@@ -1,0 +1,4 @@
+[nautilus-folder-icons]
+source = "git"
+git = "https://github.com/bilelmoussaoui/nautilus-folder-icons.git"
+prefix = "v"
