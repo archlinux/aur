@@ -9,7 +9,8 @@ pkgdesc="Representing double stranded DNA and functions for simulating cloning a
 arch=(any)
 url="https://github.com/bjornfjohansson/${_base}"
 license=(BSD-3-Clause)
-depends=(python-appdirs python-biopython python-networkx python-prettytable python-pyperclip python-pyfiglet)
+depends=(python-appdirs python-biopython python-networkx python-prettytable
+	python-pyfiglet python-regex)
 makedepends=(python-build python-installer python-poetry-dynamic-versioning python-wheel git)
 checkdepends=(python-pytest python-requests-mock ipython) # python-cai2
 optdepends=('python-scipy: gel simulation'
