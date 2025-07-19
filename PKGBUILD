@@ -25,22 +25,13 @@ pkgver() {
 }
 
 export RUSTONIG_DYNAMIC_LIBONIG=1
-export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS} --remap-path-prefix=${srcdir}="
+export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS}"
 
-#build() { cause build twice
-#  cd $_pkgname
-#  cargo build --release # --locked
-#}
+# How to avoid building twice on packaging guideline?
 
 package() {
   cd $_pkgname
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
     PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/uu-coreutils SKIP_UTILS="runcon chcon" # Avoid SELinux bug for build
-  # for $PATH
-  _uu="$pkgdir"/usr/bin/uu-coreutils
-  install -d "$pkgdir"/usr/lib/uu-coreutils
-  for f in $("$_uu" --list)
-    do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/lib/uu-coreutils/"$f"
-  done
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
