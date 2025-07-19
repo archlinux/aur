@@ -18,10 +18,10 @@ build() {
 
 package() {
   # Binary
-  install -Dm755 "$srcdir/$pkgname/Basteh/basteh" "$pkgdir/usr/bin/basteh"
+  install -Dm755 "$srcdir/$pkgname/basteh" "$pkgdir/usr/bin/basteh"
 
   # Icon
-  install -Dm644 "$srcdir/$pkgname/icons/basteh_minimal.jpg" "$pkgdir/usr/share/icons/hicolor/128x128/apps/basteh.png"
+  install -Dm644 "$srcdir/$pkgname/basteh_minimal.jpg" "$pkgdir/usr/share/icons/hicolor/128x128/apps/basteh.png"
 
   # Desktop Entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/basteh.desktop" <<EOF
