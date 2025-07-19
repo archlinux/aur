@@ -3,7 +3,7 @@
 
 pkgname='perl-test-kwalitee'
 pkgver='1.28'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Test the Kwalitee of a distribution before you release it"
 arch=('any')
 license=('Artistic-1.0-Perl'

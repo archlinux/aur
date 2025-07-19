@@ -1,7 +1,7 @@
 pkgbase = perl-test-kwalitee
 	pkgdesc = Test the Kwalitee of a distribution before you release it
 	pkgver = 1.28
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/Test-Kwalitee
 	arch = any
 	license = Artistic-1.0-Perl
