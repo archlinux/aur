@@ -15,6 +15,8 @@ typedef struct {
     guint search_timeout_id;
 } AppWidgets;
 
+static void clear_listbox(GtkListBox *listbox);
+
 static GtkWidget* get_row_child(GtkListBoxRow *row) {
     GList *children = gtk_container_get_children(GTK_CONTAINER(row));
     GtkWidget *child = NULL;
@@ -39,12 +41,7 @@ static gchar *run_cmd(const gchar *cmd) {
     return g_string_free(result, FALSE);
 }
 
-static void clear_listbox(GtkListBox *listbox) {
-    GList *children = gtk_container_get_children(GTK_CONTAINER(listbox));
-    for (GList *iter = children; iter != NULL; iter = iter->next)
-        gtk_widget_destroy(GTK_WIDGET(iter->data));
-    g_list_free(children);
-}
+
 
 static void list_installed_packages(AppWidgets *a) {
     clear_listbox(a->listbox);
@@ -140,6 +137,13 @@ static void on_check_updates_clicked(GtkButton *btn, gpointer user_data) {
 
     gtk_widget_show_all(GTK_WIDGET(a->listbox));
     free(output);
+}
+
+static void clear_listbox(GtkListBox *listbox) {
+    GList *children = gtk_container_get_children(GTK_CONTAINER(listbox));
+    for (GList *iter = children; iter != NULL; iter = iter->next)
+        gtk_widget_destroy(GTK_WIDGET(iter->data));
+    g_list_free(children);
 }
 
 static void show_info_window(GtkWindow *parent, const gchar *pkg, gboolean installed) {

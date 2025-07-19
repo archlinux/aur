@@ -1,7 +1,7 @@
 # Maintainer: Aydin Rahbaran <codewizaard@proton.me>
 pkgname=basteh
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK GUI frontend for pacman"
 arch=('x86_64')
 url="https://github.com/sahandlinux/basteh"
