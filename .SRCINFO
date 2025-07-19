@@ -1,7 +1,7 @@
 pkgbase = perl-cgi-emulate-psgi
 	pkgdesc = PSGI adapter for CGI
 	pkgver = 0.23
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/CGI-Emulate-PSGI
 	arch = any
 	license = Artistic-1.0

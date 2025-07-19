@@ -3,7 +3,7 @@
 
 pkgname='perl-cgi-emulate-psgi'
 pkgver='0.23'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="PSGI adapter for CGI"
 arch=('any')
 license=('Artistic-1.0' 'GPL-1.0+')
