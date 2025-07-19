@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.6.3
+pkgver=1.6.5
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d3f078a92fe69c71077a30b6fc0a2eecb2adc4d24f7ba00a0661bf5852f4d2d1'
+sha256sums=('359602caa94b5c08e3f78f9e0371af30c35bf65810a2ed8ed1339331ba729da9'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -56,7 +56,9 @@ prepare() {
     rm -rf \
         "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/"{darwin,linux/ia32} \
         "${srcdir}/squashfs-root/resources/ffmpeg.exe" \
-        "${srcdir}/squashfs-root/resources/app/extra-resources/ffprobe.exe"
+        "${srcdir}/squashfs-root/resources/app/extra-resources/ffprobe.exe" \
+        "${srcdir}/squashfs-root/resources/app/node_modules/bare-fs/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64} \
+        "${srcdir}/squashfs-root/resources/app/node_modules/bare-os/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
