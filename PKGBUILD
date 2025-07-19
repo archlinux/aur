@@ -2,7 +2,7 @@
 # Contributor: Ash <xash at riseup d0t net>
 
 pkgname=lsfg-vk-git
-pkgver=r185.15d9864
+pkgver=r193.dd5190a
 pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
@@ -71,12 +71,15 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# "-UDLSFG_NO_DEBUG" is necessary as to prevent "DrawLine" routines from being stripped out
+	# Unset certain default makepkg flags that strip out necessary symbols in the linker
+	export LDFLAGS="${LDFLAGS//-Wl,-z,now/} -Wl,-z,lazy"
+	export CFLAGS="${CFLAGS//-flto=auto/}"
+
 	cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_CXX_FLAGS="-UDLSFG_NO_DEBUG" \
-	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,-z,lazy" # fixes makepkg's default "-z,now" flag which strips out the necessary symbols
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+	-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS"
     cmake --build build
 }
 
