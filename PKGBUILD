@@ -54,8 +54,7 @@ build() {
 
 package() {
   # Replaces all of garuda-settings-manager
-  replaces=('garuda-settings-manager')
-  conflicts=('garuda-settings-manager-kcm' 'garuda-settings-manager-notifier' 'garuda-settings-manager-knotifier' 'garuda-settings-manager-knotifier-git' 'garuda-settings-manager-notifier-git')
+  replaces=('garuda-settings-manager' 'garuda-settings-manager-kcm' 'garuda-settings-manager-notifier' 'garuda-settings-manager-knotifier' 'garuda-settings-manager-knotifier-git' 'garuda-settings-manager-notifier-git')
 
   install -Dm755 "${srcdir}/rani/assets/garuda-rani.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/rani/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
