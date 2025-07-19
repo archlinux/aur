@@ -7,7 +7,6 @@ pkgrel=1
 pkgdesc="Task runner & Make alternative written in GO that runs taskfiles(Installs as go-task to avoid conflict with taskwarrior)"
 arch=('any')
 license=('MIT')
-depends=()
 url="https://github.com/go-task/task"
 makedepends=('go' 'git')
 provides=('go-task')
