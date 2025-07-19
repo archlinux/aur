@@ -1,7 +1,7 @@
 pkgbase = js-beautify
 	pkgdesc = CSS, HTML & JavaScript unobfuscator and beautifier
 	pkgver = 1.15.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beautifier.io
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = js-beautify
 	depends = nodejs
 	conflicts = python-cssbeautifier
 	conflicts = python-jsbeautifier
-	noextract = js-beautify-1.15.4.tgz
-	source = https://registry.npmjs.org/js-beautify/-/js-beautify-1.15.4.tgz
-	sha256sums = 5feefb437c9467e789d179fc4cbc4f942008c05222f6b573a4f03ee41e31d9a6
+	noextract = js-beautify-1.15.4.tar.gz
+	source = js-beautify-1.15.4.tar.gz::https://github.com/beautifier/js-beautify/archive/v1.15.4.tar.gz
+	sha256sums = 54f1d231b2ddd5727d8add4b6486ec7799508227ca0185bc08bb9da908c55ac5
 
 pkgname = js-beautify
