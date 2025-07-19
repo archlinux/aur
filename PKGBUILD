@@ -5,7 +5,7 @@
 _pkgname=libfprint
 pkgname=libfprint-vfs009x-git
 epoch=1
-pkgver=1.94.9.r161.gea27fc3
+pkgver=1.94.9.r161.g045e8ce
 pkgrel=1
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 arch=(i686 x86_64)

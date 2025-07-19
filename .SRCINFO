@@ -1,6 +1,6 @@
 pkgbase = libfprint-vfs009x-git
 	pkgdesc = Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)
-	pkgver = 1.94.9.r161.gea27fc3
+	pkgver = 1.94.9.r161.g045e8ce
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.archlinux.org/gugah/libfprint
