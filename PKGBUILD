@@ -3,7 +3,7 @@
 
 pkgname='perl-devel-overloadinfo'
 pkgver='0.007'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="introspect overloaded operators"
 arch=('any')
 license=('Artistic-1.0')

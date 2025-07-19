@@ -1,7 +1,7 @@
 pkgbase = perl-devel-overloadinfo
 	pkgdesc = introspect overloaded operators
 	pkgver = 0.007
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Devel-OverloadInfo
 	arch = any
 	license = Artistic-1.0
