@@ -11,9 +11,8 @@ pkgbase = ktls-utils
 	makedepends = pkg-config
 	depends = glib2
 	depends = gnutls
-	depends = libkeyutils.so
-	depends = libnl-3.so
-	depends = libnl-genl-3.so
+	depends = keyutils
+	depends = libnl
 	backup = etc/tlshd.conf
 	source = git+https://github.com/oracle/ktls-utils#tag=ktls-utils-1.2.1?signed
 	validpgpkeys = 28B2E5B01286DF243CF23EFE336AB3336F667F97

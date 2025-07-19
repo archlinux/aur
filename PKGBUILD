@@ -8,9 +8,8 @@ arch=(x86_64)
 depends=(
   glib2
   gnutls
-  libkeyutils.so
-  libnl-3.so
-  libnl-genl-3.so
+  keyutils          # libkeyutils.so
+  libnl             # libnl-3.so libnl-genl-3.so
 )
 makedepends=(gcc git make pkg-config)
 source=("git+https://github.com/oracle/ktls-utils#tag=ktls-utils-$pkgver?signed")
