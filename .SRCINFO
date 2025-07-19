@@ -1,7 +1,7 @@
 pkgbase = perl-moox-lazierattributes
 	pkgdesc = Lazier Attributes.
 	pkgver = 1.07010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/MooX-LazierAttributes
 	arch = any
 	license = PerlArtistic

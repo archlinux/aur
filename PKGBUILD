@@ -3,7 +3,7 @@
 
 pkgname='perl-moox-lazierattributes'
 pkgver='1.07010'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Lazier Attributes."
 arch=('any')
 license=('PerlArtistic' 'GPL')
