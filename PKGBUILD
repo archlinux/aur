@@ -1,3 +1,5 @@
+# Maintainer: SovietReimu1228 <reimu@hakurei.win>
+
 pkgname=sudo-rs-symlink
 pkgver=0.2.7
 pkgrel=1
