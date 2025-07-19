@@ -4,7 +4,7 @@
 
 pkgname='perl-html-formattext-withlinks'
 pkgver='0.15'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="HTML to text conversion with links as footnotes"
 arch=('any')
 license=('PerlArtistic' 'GPL')
