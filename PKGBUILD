@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=pocket-casts
 pkgname="${_pkgname}-desktop-bin"
-pkgver=0.10.3
-_electronversion=35
+pkgver=0.10.4
+_electronversion=34
 pkgrel=1
 pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -27,9 +27,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('9c3e700cafdfb51f59a248512dcc34047c8e19fca5d3b7a347e3c68c7bb0ceb0')
-sha256sums_x86_64=('8fa87754269c8c0d826cdce807dcf897c64f4244bdaee052bf193ef3166b78af')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('e230ae7da4a3dc0417ff744d6e02cb5a00a5f7f89ec6854b9802cc28b3bbead0')
+sha256sums_x86_64=('305f6110096806e310a045c1d18ed0fbed3fe04679c569b324c13a3a043ea6bb')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -38,6 +42,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/${_pkgname} %U/${pkgname%-bin} %U/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
