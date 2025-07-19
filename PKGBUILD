@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-pymavlink
-pkgver=2.4.47
+pkgver=2.4.48
 pkgrel=1
 pkgdesc='python MAVLink interface and utilities'
 arch=('any')
