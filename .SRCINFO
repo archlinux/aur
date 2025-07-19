@@ -34,6 +34,7 @@ pkgbase = orca-slicer-git
 	depends = libx11
 	depends = pango
 	depends = python
+	depends = ttf-nanum
 	depends = wayland
 	depends = webkit2gtk-4.1
 	depends = zlib

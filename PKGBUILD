@@ -9,7 +9,7 @@ url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
          'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 
-         'libspnav' 'libx11' 'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
+         'libspnav' 'libx11' 'pango' 'python' 'ttf-nanum' 'wayland' 'webkit2gtk-4.1' 'zlib')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
 optdepends=('mesa: Enables Zink fallback workaround for NVIDIA on Wayland'
             'mesa-utils: for detecting renderer'
