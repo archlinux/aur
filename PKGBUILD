@@ -19,10 +19,12 @@ depends=(glibc)
 makedepends=(nasm mold git  # mold is needed to filter unused funcs?
 diffutils gcc make sed) # base-devel
 # tarball has unstable csum
-source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
+source=(export.map
+"chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
 install=on-opera-ffmpeg.install
-sha256sums=('30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
+sha256sums=('6ef627c55222625785c771eace688d1d3c50874bba4ab43150b100767ffa24c6'
+            '30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
             'cf61ed6d89c84f1f999af8e126395fdad05e4bb898d900178673b626f0204e12'
             'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 
@@ -59,6 +61,7 @@ build() {
   cd ../release
   gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
     lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} -Wl,-u,avformat_version -Wl,-u,avutil_version \
+    -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
 
