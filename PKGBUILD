@@ -3,7 +3,7 @@
 
 pkgname="classisland"
 pkgver="1.7.103.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="ClassIsland - 适用于班级大屏的课表小工具。社区维护 AUR 包。"
 arch=('x86_64' 'aarch64')
 url='https://www.classisland.tech/'
