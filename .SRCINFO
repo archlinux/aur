@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-makemaker-cpanfile
 	pkgdesc = cpanfile support for EUMM
 	pkgver = 0.09
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/ExtUtils-MakeMaker-CPANfile
 	arch = any
 	license = Artistic-1.0-Perl

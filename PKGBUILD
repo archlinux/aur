@@ -3,7 +3,7 @@
 
 pkgname='perl-extutils-makemaker-cpanfile'
 pkgver='0.09'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="cpanfile support for EUMM"
 arch=('any')
 license=(' Artistic-1.0-Perl'
