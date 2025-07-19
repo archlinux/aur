@@ -1,7 +1,7 @@
 pkgbase = passbook-git
 	pkgdesc = Password manager for GNOME
 	pkgver = 0.8.r36.g750825d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Passbook
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = passbook-git
 	makedepends = gobject-introspection
 	makedepends = meson
 	depends = gtk3
+	depends = libsecret
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = python-pykeepass: Support for keepass files
