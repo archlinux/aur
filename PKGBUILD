@@ -1,13 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ntfix-git
 pkgver=0.2.1.r6.g48f4bc1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fixes the problem of Proton games not running on NTFS partitions"
 arch=('x86_64')
 url="https://github.com/benjamimgois/ntfix"
 license=('GPL-3.0-or-later')
 depends=('gtk3')
-makedepends=('git' 'lazarus' 'xmlstarlet')
+makedepends=(
+  'git'
+  'lazarus'
+#  'xmlstarlet'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/benjamimgois/ntfix.git')
@@ -22,18 +26,14 @@ prepare() {
   cd "${pkgname%-git}"
 
   # modify compiler options
-  for i in "${pkgname%-git}.lpi"; do
-    xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
-      -i "$i"
-  done
-
-  # update GCC paths
-  sed -i 's/9.3.0/13.3.0/g
-          s/10.1.0/14.1.1/g' "${pkgname%-git}.lpi"
+#  for i in "${pkgname%-git}.lpi"; do
+#    xmlstarlet edit --inplace --delete '//Other' "$i"
+#    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
+#      -i "$i"
+#  done
 
   # icon name
-  sed -i "s/${pkgname%-git}48/${pkgname%-git}/g" "data/${pkgname%-git}.desktop"
+  desktop-file-edit --set-icon="${pkgname%-git}" "data/${pkgname%-git}.desktop"
 
   mkdir -p build
 }
