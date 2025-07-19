@@ -3,7 +3,7 @@
 # Contributor: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Find duplicate files with various contents, using perceptual diff for pictures"
 arch=('any')
 url="https://dupeguru.voltaicideas.net/"
@@ -13,9 +13,13 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-polib'
          'python-mutagen' 'python-send2trash' 'libxkbcommon-x11')
 makedepends=('python-distro' 'python-sphinx' 'python-setuptools')
 source=("https://github.com/arsenetar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
-	'0001-fix-Replace-use-of-imp-with-importlib.patch')
+	'0001-fix-Replace-use-of-imp-with-importlib.patch'
+  '0002-setuptools-sandbox-deprecation.patch'
+)
 md5sums=('996f2a9bab1541c188f823e9647f341c'
-	'd6874bc038efd92420517407665c7f69')
+	'd6874bc038efd92420517407665c7f69'
+  '479f7be4a4bf64b92baff59dff20b1fd'
+)
 provides=('dupeguru')
 conflicts=('dupeguru-git' 'dupeguru-se' 'dupeguru-pe' 'dupeguru-me')
 
@@ -23,7 +27,10 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i -E 's/polib.*/polib>=1.1.0/g' requirements.txt
   sed -i -E '125s/.*/    packages = ["hscommon", "core", "qt"]/' package.py
+  # Replace use of `imp` with `importlib`
   patch -p1 < "${srcdir}"/0001-fix-Replace-use-of-imp-with-importlib.patch
+  # Workaround for setuptools sandbox deprecation
+  patch -p1 < "${srcdir}"/0002-setuptools-sandbox-deprecation.patch
 }
 
 build() {

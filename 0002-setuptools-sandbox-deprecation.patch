@@ -1,0 +1,29 @@
+diff --git a/build.py b/build.py
+index cedb8bb0..ac650b20 100644
+--- a/build.py
++++ b/build.py
+@@ -10,7 +10,6 @@ from optparse import OptionParser
+ import shutil
+ from multiprocessing import Pool
+ 
+-from setuptools import sandbox
+ from hscommon import sphinxgen
+ from hscommon.build import (
+     add_to_pythonpath,
+@@ -18,6 +17,7 @@ from hscommon.build import (
+     fix_qt_resource_file,
+ )
+ from hscommon import loc
++import subprocess
+ 
+ 
+ def parse_args():
+@@ -118,7 +118,7 @@ def build_normpo():
+ def build_pe_modules():
+     print("Building PE Modules")
+     # Leverage setup.py to build modules
+-    sandbox.run_setup("setup.py", ["build_ext", "--inplace"])
++    subprocess.check_call([sys.executable, "setup.py", "build_ext", "--inplace"])
+ 
+ 
+ def build_normal():
