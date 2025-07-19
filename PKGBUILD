@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r25150.88fb818
+pkgver=2.3.1.r25349.e44ec1f
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -45,6 +45,9 @@ build() {
     -G Ninja \
     -S deps \
     -B deps/build \
+    -DDESTDIR="$PWD/deps/build/destdir" \
+    -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
+    -DCOLORED_OUTPUT=ON \
     -DDEP_WX_GTK3=ON
   ninja -C deps/build
 
@@ -54,7 +57,7 @@ build() {
     -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_FULL_DATAROOTDIR=/usr/share/ \
-    -DCMAKE_PREFIX_PATH="$srcdir/$pkgname/deps/build/destdir/usr/local" \
+    -DCMAKE_PREFIX_PATH="$PWD/deps/build/destdir/usr/local" \
     -DSLIC3R_STATIC=1 \
     -DORCA_TOOLS=1 \
     -DSLIC3R_FHS=1 \
