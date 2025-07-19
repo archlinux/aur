@@ -1,7 +1,7 @@
 pkgbase = perl-test-env
 	pkgdesc = test the environment
 	pkgver = 1.088
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-Env
 	arch = any
 	license = Artistic-1.0
