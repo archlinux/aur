@@ -35,6 +35,8 @@ prepare() {
 
   # abuse FLATPAK IF statement to build against some system libs
   sed -i 's/if(FLATPAK)/if(true)/' deps/CMakeLists.txt
+  # revert: Link libspnav statically (#9964)
+  git revert --no-commit 6ed9b0817381042a63fa121c5f9b5cbcb11a3bfa 
 }
 
 build() {
