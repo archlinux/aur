@@ -1,6 +1,6 @@
 pkgbase = python-pg8000
 	pkgdesc = Pure-Python PostgreSQL database driver, DB-API compatible
-	pkgver = 1.31.2
+	pkgver = 1.31.3
 	pkgrel = 1
 	url = https://github.com/tlocke/pg8000
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-pg8000
 	depends = python
 	depends = python-scramp
 	depends = python-dateutil
-	source = git+https://github.com/tlocke/pg8000.git?signed#commit=9945228f2cec51727f83058229f59fa7397b4d64
+	source = git+https://github.com/tlocke/pg8000.git?signed#commit=6ddd79553b7ab26ab0bd284b7b8911acf7120d21
 	validpgpkeys = D5681B7EC7292511C4CC1450892B00AB699851E8
-	sha256sums = bec9c96595f6f3330e5441782c9687bf0a0c0fcd56eecfa2baef08fa0c1d9cca
+	sha256sums = fa66e26e55097380ec97f57e166a2ce47eaf1bbd365f5442b49990ea9a60d1d4
 
 pkgname = python-pg8000

@@ -1,22 +1,21 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-pg8000
-# https://raw.githubusercontent.com/tlocke/pg8000/main/README.rst
-pkgver=1.31.2
+pkgver=1.31.3
 pkgrel=1
-_commit=9945228f2cec51727f83058229f59fa7397b4d64
+_commit=6ddd79553b7ab26ab0bd284b7b8911acf7120d21
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
-# https://github.com/tlocke/pg8000/blob/1.30.4/pyproject.toml#L14
 license=('BSD-3-Clause')
 makedepends=(git python-build python-installer python-hatchling python-versioningit)
 checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp python-dateutil)
 source=("git+https://github.com/tlocke/pg8000.git?signed#commit=$_commit")
-sha256sums=('bec9c96595f6f3330e5441782c9687bf0a0c0fcd56eecfa2baef08fa0c1d9cca')
+sha256sums=('fa66e26e55097380ec97f57e166a2ce47eaf1bbd365f5442b49990ea9a60d1d4')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
