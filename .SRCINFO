@@ -1,0 +1,17 @@
+pkgbase = mullvad-socks-git
+	pkgdesc = Filter Mullvad's SOCKS5 proxies by country, city, weight and online status.
+	pkgver = vcs
+	pkgrel = 1
+	url = https://github.com/APT37/mullvad-socks
+	arch = x86_64
+	license = MIT-0
+	makedepends = git
+	makedepends = cargo
+	provides = mullvad-socks
+	conflicts = mullvad-socks
+	conflicts = mullvad-socks-bin
+	options = !lto
+	source = mullvad-socks-git::git+https://github.com/APT37/mullvad-socks
+	sha256sums = SKIP
+
+pkgname = mullvad-socks-git
