@@ -50,4 +50,5 @@ package() {
     ln -s /opt/AdvancedSettings/AdvancedSettings "$pkgdir/usr/bin/ovras"
 
     make install
+    sed -i '/binary_path_windows/a "binary_path_linux": "/opt/AdvancedSettings/AdvancedSettings",' "$pkgdir/opt/AdvancedSettings/manifest.vrmanifest"
 }
