@@ -1,0 +1,20 @@
+pkgbase = z5-git
+	pkgdesc = A C++ library for chunked n-dimensional arrays.
+	pkgver = 2.0.20.r0.g7df1d21
+	pkgrel = 1
+	url = https://github.com/constantinpape/z5
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = blosc
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = lz4
+	depends = xtensor
+	depends = nlohmann-json
+	source = git+https://github.com/constantinpape/z5.git
+	sha256sums = SKIP
+
+pkgname = z5-git
