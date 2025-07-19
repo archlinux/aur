@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Hendrik Schilling <hendrik.schilling@posteo.de>
 pkgname=z5-git
 _pkgname=z5
 pkgver=2.0.20.r0.g7df1d21
@@ -9,8 +9,6 @@ url="https://github.com/constantinpape/z5"
 license=('MIT')
 depends=('blosc' 'zlib' 'bzip2' 'xz' 'lz4' 'xtensor' 'nlohmann-json')
 makedepends=('git' 'cmake')
-optdepends=('aws-sdk-cpp: for S3 support'
-            'gcs-client-cpp: for GCS support')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
