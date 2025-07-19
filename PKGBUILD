@@ -1,6 +1,6 @@
 # Maintainer: Sai Kiran Belana
 pkgname=goodnotes-electron
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Unofficial Electron wrapper for GoodNotes web app"
 arch=('x86_64')
