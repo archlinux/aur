@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Bernardello <aleberna at erine dot eu>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=zenta-bin
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="mindfulness for terminal users "
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ source=("zenta-LICENSE::https://raw.githubusercontent.com/e6a5/zenta/refs/tags/v
 source_x86_64=("https://github.com/e6a5/zenta/releases/download/v${pkgver}/zenta-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("https://github.com/e6a5/zenta/releases/download/v${pkgver}/zenta-v${pkgver}-linux-arm64.tar.gz")
 b2sums=('e7384d51cd8451dd6b68452f767374895b5371ce4cd7fb8607095af8415bc3621d70c0ab9756858d87ff58b24537f35ebaec97ce3bfd89192a303cc92bc78063')
-b2sums_x86_64=('b42ec17c4f90b84733d11a38bc547cfbb74edb3cb6b442429684a393adbf48f2b10f499c76ce1b8c1a3501047787ccdb1b5449b626b60a995bdccb610de3dc6a')
-b2sums_aarch64=('e1e1321da5a39a8badd38e86e25a369352e4370f4d64d1ccbd071362e48509a4340b71edced57791015b08e749840f780758a5de3e86eebda6954f1788ec14e3')
+b2sums_x86_64=('a2abd6d09df9f92d73da6579ec49723fbd3729e8e00fd31adaf2c382ea4560507f3ed52de24597ddc5d4ab78f3c868d4dd765fc9f7ab0d61bb24709711b7e93c')
+b2sums_aarch64=('ae5c1b51eee587c881f982470376ccdc42bc394a9f4c9638b090e7ad13159c514b610a28cd529eea2c5765ee98ef9ac7dc33911bf3011c2c878ebb5b531d88bd')
 
 package() {
     if [[ "$CARCH" == "aarch64" ]]; then
