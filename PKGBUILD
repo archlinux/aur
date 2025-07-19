@@ -5,8 +5,11 @@ pkgrel=2
 pkgdesc="Compare Actions using Meld for Nemo File Manager"
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Nemo#Nemo_Actions"
-license=('none')
-depends=('nemo' 'meld')
+license=('GFDL-1.3-no-invariants-or-later')
+depends=(
+  'meld'
+  'nemo'
+)
 source=('compare-save-for-later.nemo_action'
         'compare-with-saved.nemo_action'
         'compare.sh')
