@@ -7,7 +7,7 @@
 _pkgname=wemeet-wayland-screenshare
 pkgname=wemeet-wayland-screenshare-git
 provides=('wemeet-wayland-screenshare')
-pkgver=3.19.2.400.H.r56.g7f33896
+pkgver=3.19.2.400_hooked.r56.g7f33896
 pkgrel=1
 pkgdesc='Hooked wemeet that enables screenshare on Wayland. 实现Wayland下腾讯会议屏幕共享.'
 arch=('x86_64')
@@ -30,9 +30,11 @@ depends=(
     'xdg-desktop-portal'
     'xdg-desktop-portal-impl'
     'qt5-wayland'
-    'xwaylandvideobridge'
     'opencv'
     'libxrandr'
+)
+optdepends=(
+    'xwaylandvideobridge: legacy xwaylandvideobridge dependency, in case it is needed on some DEs'
 )
 makedepends=(
     'cmake'
@@ -45,7 +47,7 @@ _desktop_entry_file="wemeetapp-wayland-screenshare.desktop"
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "3.19.2.400.H.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "3.19.2.400_hooked.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
