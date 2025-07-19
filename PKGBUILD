@@ -2,9 +2,9 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=airwindows-consolidated-bin
-pkgver=0.3.0
-pkgrel=1
+pkgver=2025.07.16.b6c3120
 _airwin="2025-07-16-b6c3120"
+pkgrel=1
 epoch=
 pkgdesc="The entirety of the Airwindows collection as LV2, VST3, and CLAP."
 arch=('x86_64')

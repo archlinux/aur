@@ -1,6 +1,6 @@
 pkgbase = airwindows-consolidated-bin
 	pkgdesc = The entirety of the Airwindows collection as LV2, VST3, and CLAP.
-	pkgver = 0.3.0
+	pkgver = 2025.07.16.b6c3120
 	pkgrel = 1
 	url = https://www.airwindows.com/consolidated/
 	arch = x86_64
