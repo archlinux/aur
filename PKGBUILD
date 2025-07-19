@@ -1,6 +1,6 @@
 # Maintainer: Sai Kiran Belana
 pkgname=goodnotes-electron
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Unofficial Electron wrapper for GoodNotes web app"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://web.goodnotes.com"
 license=('MIT')
 depends=('electron')
 makedepends=('npm' 'nodejs')
-source=("https://github.com/belanasaikiran/goodnotes-electron/archive/refs/tags/1.1.0.tar.gz")
-sha256sums=('38b1339e29ee9a1d2d0cdb306abe48addd05c3df5f7e77ef1c2ea21dfebf8430')
+source=("https://github.com/belanasaikiran/goodnotes-electron/archive/refs/tags/1.1.2.tar.gz")
+sha256sums=('dd227cc08db01a75d1e3ecdae99e850d93e66e6252b6fef847ea38e4b8c7fc87')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
