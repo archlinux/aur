@@ -7,7 +7,10 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/grant0417/mullvad-ping"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('deno' 'unzip')
+makedepends=(
+  'deno'
+  'unzip'
+)
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6f5c0a667b22471dc5752d3ca42f52b51d864e48fe99d6aaa6bac3e6a2315562')
