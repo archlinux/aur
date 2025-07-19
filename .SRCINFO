@@ -1,0 +1,21 @@
+pkgbase = skalibs-static
+	pkgdesc = A set of general-purpose C programming libraries
+	pkgver = 2.14.4.0
+	pkgrel = 1
+	url = http://www.skarnet.org/software/skalibs
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = musl
+	makedepends = gcc
+	makedepends = make
+	makedepends = gzip
+	provides = skalibs=2.14.4.0
+	replaces = skalibs-musl
+	options = staticlibs
+	options = !lto
+	source = http://www.skarnet.org/software/skalibs/skalibs-2.14.4.0.tar.gz
+	sha256sums = 0e626261848cc920738f92fd50a24c14b21e30306dfed97b8435369f4bae00a5
+
+pkgname = skalibs-static
