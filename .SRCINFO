@@ -1,6 +1,6 @@
 pkgbase = linux-fsync-nobara-bin
 	pkgdesc = The Linux kernel and modules of Nobara Project - Prebuilt version
-	pkgver = 6.15.6
+	pkgver = 6.15.7
 	pkgrel = 1
 	url = https://nobaraproject.org
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = linux-fsync-nobara-bin
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 	options = !strip
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-42/fedora-42-x86_64/09268407-kernel/kernel-core-6.15.6-201.nobara.fc42.x86_64.rpm
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-42/fedora-42-x86_64/09268407-kernel/kernel-modules-6.15.6-201.nobara.fc42.x86_64.rpm
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-42/fedora-42-x86_64/09268407-kernel/kernel-devel-6.15.6-201.nobara.fc42.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-42/fedora-42-x86_64/09285048-kernel/kernel-core-6.15.7-200.nobara.fc42.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-42/fedora-42-x86_64/09285048-kernel/kernel-modules-6.15.7-200.nobara.fc42.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-42/fedora-42-x86_64/09285048-kernel/kernel-devel-6.15.7-200.nobara.fc42.x86_64.rpm
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 6243f27c9329137dbd3fa7c423b2ec312c2b30a1161828c9a108d7a33d39cb9a
-	sha256sums = 0c95f0f93914f8f62551e57dc5e59ddb6eb00a5934d3357075cf6b085a8e2dab
-	sha256sums = 0fadcb04f3aafd1b63ccf43bbf8162f24ad03fd33a3c0d262e440b3fe2e176c3
+	sha256sums = fe60018ff4bc914054cac2e52b0cb95a6551d4916b3d627a88747e4b7cd929e9
+	sha256sums = 7afe2b35e1e582f4bbdba5aeae444a7b8847368770b5f23ef7da590d5ef1ec7a
+	sha256sums = ae07a6c48866a5a8138c6c45063b9477b9e4fc618fa8c1c75c4259c339475acb
 
 pkgname = linux-fsync-nobara-bin
