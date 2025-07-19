@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Sai Kiran Belana
 pkgname=goodnotes-electron
 pkgver=1.0.0
 pkgrel=1
@@ -8,8 +8,8 @@ url="https://web.goodnotes.com"
 license=('MIT')
 depends=('electron')
 makedepends=('npm' 'nodejs')
-source=("https://github.com/belanasaikiran/goodnotes-electron/releases/download/1.0.0/goodnotes-electron-1.0.0.tar.gz")
-sha256sums=('328477e7bd9687c9a0f93165276859b3e8b55b9ca04a92d5f94f4559542720d7')
+source=("https://github.com/belanasaikiran/goodnotes-electron/archive/refs/tags/1.1.0.tar.gz")
+sha256sums=('38b1339e29ee9a1d2d0cdb306abe48addd05c3df5f7e77ef1c2ea21dfebf8430')
 
 build() {
   cd "$srcdir"
