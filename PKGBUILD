@@ -3,10 +3,10 @@
 
 pkgname='perl-test-cpan-changes-reallystrict'
 pkgver='1.000004'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Ensure a Changes file looks exactly like it would if it was machine generated."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-cpan-changes>=0.27' 'perl-class-tiny>=0' 'perl-try-tiny>=0' 'perl>=5.006')
 makedepends=()

@@ -1,11 +1,10 @@
 pkgbase = perl-test-cpan-changes-reallystrict
 	pkgdesc = Ensure a Changes file looks exactly like it would if it was machine generated.
 	pkgver = 1.000004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-CPAN-Changes-ReallyStrict
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	depends = perl-cpan-changes>=0.27
 	depends = perl-class-tiny>=0
 	depends = perl-try-tiny>=0
