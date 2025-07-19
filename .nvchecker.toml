@@ -1,3 +1,4 @@
 [prometheus-slurm-exporter]
 source = "git"
-git = "https://github.com/vpenso/prometheus-slurm-exporter.git"
+git = "https://github.com/rivosinc/prometheus-slurm-exporter.git"
+prefix = "v"
