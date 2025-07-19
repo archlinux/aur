@@ -3,7 +3,7 @@
 # Contributor: Vitaly Utkin (https://aur.archlinux.org/account/vautkin)
 pkgname=ovras
 pkgver=5.8.11
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
 arch=("x86_64")
