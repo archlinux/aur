@@ -3,7 +3,7 @@
 
 pkgname='perl-crypt-rc4'
 pkgver='2.02'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl implementation of the RC4 encryption algorithm"
 arch=('any')
 license=('Artistic-1.0-Perl'
