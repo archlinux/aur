@@ -2,27 +2,29 @@
 
 pkgname=joymap
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A linux userspace device driver that allows joystick events to be remapped.'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/linuxjoymap'
 license=('GPL-2.0-only')
 depends=()
-makedepends=()
+makedepends=('git')
+_commit=ac6419df209b5921be08209758162491db0cd10e
 source=(
-	"$pkgname-$pkgver.tar.gz::${url}/files/$pkgname-${pkgver}.tar.gz/download"
+	#"$pkgname-$pkgver.tar.gz::${url}/files/$pkgname-${pkgver}.tar.gz/download"
+	"$pkgname::git+https://git.code.sf.net/p/linuxjoymap/git#commit=$_commit"
 	"${pkgname}-user.service"
 	"${pkgname}-system.service"
 	"${pkgname}-sysuser.conf"
 	"90-${pkgname}-uinput.rules")
-sha256sums=('b03752350e4c1c97b4c578c06b2bae715b153cfe22de006f4555278bf4a23838'
+sha256sums=('b0f32e74e728a785a8f6bdf484539290047c7f027c60ae1bf3b4032590c388ca'
             '427aae12107225ed8e47a2c9ec77539723cce98f340316a08d9d68b0514b78ec'
             'fa6c5cf0a5104fffc5181db5a198554d86ddacc1230c481530ac197e798415e2'
             '1bbbbe0f795adcb11f7284d17b0e67dc6c3d8577f4509f83e64936d99e504fc7'
             '61068aaf6e67b8739acbdc93f44353f4666a00bfd3fae8b50c952a97b7a35ac6')
 install="${pkgname}.install"
 
-_srcdir="$pkgname-${pkgver}"
+_srcdir="$pkgname"
 
 build() {
 	cd "${_srcdir}"
