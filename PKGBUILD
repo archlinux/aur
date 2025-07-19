@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=moonlander-git
 pkgver=r229.abfb9cd
 pkgrel=1
@@ -48,5 +49,5 @@ package() {
     "$pkgdir/usr/share/applications/"
   install -Dm644 "misc/${pkgname%-git}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
