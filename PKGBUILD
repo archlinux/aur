@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20240411
+pkgver=20250719
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -144,7 +144,6 @@ depends=(
 	'ttf-iosevkaterm-nerd'
 	'ttf-jetbrains-mono'
 	'ttf-jetbrains-mono-nerd'
-	'ttf-joypixels'
 	'ttf-junicode'
 	'ttf-junicode-variable'
 	'ttf-khmer'

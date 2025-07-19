@@ -1,6 +1,6 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20240411
+	pkgver = 20250719
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
@@ -140,7 +140,6 @@ pkgbase = all-repository-fonts
 	depends = ttf-iosevkaterm-nerd
 	depends = ttf-jetbrains-mono
 	depends = ttf-jetbrains-mono-nerd
-	depends = ttf-joypixels
 	depends = ttf-junicode
 	depends = ttf-junicode-variable
 	depends = ttf-khmer
