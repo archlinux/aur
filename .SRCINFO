@@ -1,0 +1,13 @@
+pkgbase = twincan
+	pkgdesc = DBC compare Tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JP-Makers/
+	arch = any
+	license = MIT
+	provides = twincan
+	conflicts = twincan
+	source = TwinCAN.tar.gz::https://github.com/JP-Makers/TwinCAN/releases/download/v1.0.0/TwinCAN.tar.gz
+	sha256sums = a31c61e733ae21eaa645de0e870c03d4fdb812c7e5a0a5666ef229ceba7fa8f4
+
+pkgname = twincan
