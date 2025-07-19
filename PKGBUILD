@@ -23,9 +23,11 @@ depends=(
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz"
+  "${pkgname}_launch.sh"
 )
 sha256sums=(
   "2bd7e610a3b44e1525621b6fef17b4f0e1f40f8c4719bc0d4540cd8f81f3f8c5"
+  "09f3c0c5eeea7d63e914d97f53c5f2b8af6acfed398957e202142be93ea85fb4"
 )
 
 build() {
@@ -46,9 +48,8 @@ package() {
     sed -i 's@Icon=.*@Icon=/opt/AdvancedSettings/AdvancedSettings.png@' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
     echo "Path=/opt/AdvancedSettings" >> "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
 
-    install -d "$pkgdir"/usr/bin
-    ln -s /opt/AdvancedSettings/AdvancedSettings "$pkgdir/usr/bin/ovras"
+    install -Dm755 "${srcdir}/${pkgname}_launch.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     make install
-    sed -i '/binary_path_windows/a "binary_path_linux": "/opt/AdvancedSettings/AdvancedSettings",' "$pkgdir/opt/AdvancedSettings/manifest.vrmanifest"
+    sed -i '/binary_path_windows/a "binary_path_linux": "/usr/bin/ovras",' "$pkgdir/opt/AdvancedSettings/manifest.vrmanifest"
 }
