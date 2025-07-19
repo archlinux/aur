@@ -8,7 +8,6 @@ pkgdesc='Single file audio playback and capture library.'
 arch=('any')
 url='https://github.com/mackron/miniaudio'
 license=('MIT')
-depends=()
 makedepends=('git')
 conflicts=('mini_al' 'miniaudio')
 provides=('mini_al' 'miniaudio')
