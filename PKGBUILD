@@ -13,6 +13,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
+  ls
   gcc main.c -o basteh `pkg-config --cflags --libs gtk+-3.0`
 }
 
