@@ -4,7 +4,7 @@
 #
 _pkgname="opera-proxy"
 pkgname="opera-proxy-git"
-pkgver=1.9.0.r0.g2a0c431
+pkgver=1.9.0.r1.g8ebbd70
 pkgrel=1
 pkgdesc="Standalone Opera VPN client as http-proxy backend only"
 url="https://github.com/Snawoot/opera-proxy"
