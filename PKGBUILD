@@ -2,7 +2,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=wakapi
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 epoch=
 pkgdesc='A minimalist, self-hosted WakaTime-compatible backend for coding statistics'
@@ -18,7 +18,7 @@ source=(
   'wakapi.tmpfiles'
 )
 b2sums=(
-  '5c2f6e9fef1174b274aba8358c3dd81cd41044b1d09b0b47bf76c2d308c87e54a56ccd480612825db2a79c8986c118d5ea90fa9aa950a19af9060e686a052144'
+  '73123ed4f5f801022f2ec6f43e36e4492138ac42f9787a7ff367e77a61cdc536d49f59def598300427ddc8136182d76e490ba63efb6fa52b9abea0924bfc1422'
   '6059694007393199684c8490805d90b4bd40f41c15743325f68aab703a8a4390da0df7cc2204a3ac4ad2c0a4965c35b932570ac5b0b89e80d2942df066ad8cdf'
   '1de59ad462234effb9bfb7e58a35d33c8b43eab26fc5bf0fab27ba427f7ed42f9fc54d03a1a546dcaa09061ab6fd986538db00ca072a295d10218aff81c33fcd'
   '6030b334cf0671fb6493dce169e3b9786411f2c5eb8057cd93669af03c77da95960cba20322c7235995eab5e635efc41724dbd55917debe6ec569caea28d2433'
