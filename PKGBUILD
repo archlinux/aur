@@ -18,7 +18,7 @@ build() {
   cd "$pkgname"
   
   # Build with release optimizations
-  cargo build --release --locked
+  cargo build --release
   
   # Strip binary for smaller size
   strip target/release/genwallet
