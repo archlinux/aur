@@ -8,12 +8,12 @@ pkgbase = netdiscover
 	license = GPL-3.0-only
 	makedepends = gcc
 	makedepends = make
-	makedepends = wget
-	makedepends = dos2unix
 	depends = libnet
 	depends = libpcap
 	provides = netdiscover
 	source = https://github.com/netdiscover-scanner/netdiscover/releases/download/0.20/netdiscover-0.20.tar.gz
+	source = oui-0.20.txt::http://standards-oui.ieee.org/oui/oui.txt
 	sha256sums = d7c40559487905059c99f1b2ae7b1a148c9f7cd45f58ac5d834faa35d9bf5f6e
+	sha256sums = SKIP
 
 pkgname = netdiscover
