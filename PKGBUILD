@@ -1,7 +1,7 @@
 # Maintainer: Miquel Lionel <lionel@les-miquelots.net>
 pkgname=samsung-ssd-fwupdate
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="A script to ease downloading and updating Samsung SSD firmware on Linux."
 url="https://git.les-miquelots.net/samsung-ssd-fwupdate"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('curl' 'unzip')
 conflicts=("$pkgname-git")
 provides=("$pkgname")
 source=("https://git.les-miquelots.net/$pkgname/snapshot/$pkgname-$pkgver.zip")
-sha256sums=('9c7a924db76c19edc0bb21724eeb7020dc5cf6128e7bbffb5a44f3b054d173f2')
+sha256sums=('5a43b8961d6f8a7ae901340bb8b2239b8cf764ea8790ba43db22e8d09e3947a8')
 
 package() {
   #mkdir -p "${pkgdir}/usr/local/sbin"
