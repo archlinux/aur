@@ -3,6 +3,7 @@ pkgname=z5-git
 _pkgname=z5
 pkgver=2.0.20.r0.g7df1d21
 pkgrel=1
+provides=("${_pkgname}")
 pkgdesc="A C++ library for chunked n-dimensional arrays."
 arch=('x86_64')
 url="https://github.com/constantinpape/z5"
