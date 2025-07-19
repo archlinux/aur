@@ -7,7 +7,12 @@ pkgdesc="Material cursors with 3 color variants"
 arch=('any')
 url="https://github.com/varlesh/material-cursors"
 license=('GPL-2.0-or-later')
-makedepends=('git' 'inkscape' 'libcanberra' 'xorg-xcursorgen')
+makedepends=(
+  'git'
+  'inkscape'
+  'libcanberra'
+  'xorg-xcursorgen'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/varlesh/material-cursors.git")
@@ -16,7 +21,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   printf "%s.r%s.%s" "$(git show -s --format=%cd --date=format:%Y%m%d HEAD)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
