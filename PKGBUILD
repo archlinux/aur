@@ -8,14 +8,14 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "server.md")
-sha256sums=('ba965fbdb1e54daaa7188bba75d1bd80a67d0c8a49daf623fc03e517d4aef8af'
+sha256sums=('1d68f75ad3bc6a61056d3dc3fe0d634e0a53bfdb1379111bd7824ffffc3fb3ed'
             '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
@@ -43,7 +43,6 @@ check() {
   local pytest_options=(
     -vv
     -n auto
-    --deselect tests/models/test_model_names.py::test_known_model_names
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
     --deselect tests/models/test_instrumented.py::test_instrumented_model
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream
@@ -75,7 +74,7 @@ package_python-pydantic-graph() {
 package_python-pydantic-ai-slim() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs, slim package.'
   depends+=('python-griffe' 'python-httpx' 'python-pydantic' 'python-pydantic-graph' 'python-opentelemetry-api' 'python-typing-inspection')
-  optdepends=('python-logfire: logfire' 'python-openai: openai' 'python-cohere: cohere' 'python-google-auth: vertexai' 'python-requests: vertexai' 'python-google-genai: google' 'python-anthropic: anthropic' 'python-groq: groq' 'python-mistralai: mistral' 'python-boto3: bedrock' 'python-huggingface-hub: huggingface' 'python-aiohttp: huggingface' 'python-ddgs: duckduckgo' 'python-tavily: tavily' 'python-rich: cli' 'python-prompt-toolkit: cli' 'python-argcomplete: cli' 'python-mcp: mcp' 'python-pydantic-evals: evals' 'python-fasta2a: a2a')
+  optdepends=('python-logfire: logfire' 'python-openai: openai' 'python-cohere: cohere' 'python-google-auth: vertexai' 'python-requests: vertexai' 'python-google-genai: google' 'python-anthropic: anthropic' 'python-groq: groq' 'python-mistralai: mistral' 'python-boto3: bedrock' 'python-huggingface-hub: huggingface' 'python-aiohttp: huggingface' 'python-ddgs: duckduckgo' 'python-tavily: tavily' 'python-rich: cli' 'python-prompt-toolkit: cli' 'python-argcomplete: cli' 'python-mcp: mcp' 'python-pydantic-evals: evals' 'python-fasta2a: a2a' 'python-ag-ui-protocol: ag-ui' 'python-starlette: ag-ui')
   url='https://github.com/pydantic/pydantic-ai/tree/main/pydantic_ai_slim'
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" ${_name0//-/_}_${_name3}/dist/*.whl
@@ -100,7 +99,7 @@ package_python-pydantic-ai-examples() {
 
 package_python-pydantic-ai() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs.'
-  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-huggingface-hub' 'python-aiohttp' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-mcp' 'python-pydantic-evals')
+  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-huggingface-hub' 'python-aiohttp' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-mcp' 'python-pydantic-evals' 'python-ag-ui-protocol' 'python-starlette')
   optdepends=('python-pydantic-ai-examples: examples' 'python-logfire: logfire' 'python-fasta2a: a2a')
   url='https://github.com/pydantic/pydantic-ai/'
   cd "${srcdir}"/${_name0}-${pkgver}

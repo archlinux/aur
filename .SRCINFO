@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.4.3::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.3
+	source = pydantic-ai-0.4.4::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.4
 	source = server.md
-	sha256sums = ba965fbdb1e54daaa7188bba75d1bd80a67d0c8a49daf623fc03e517d4aef8af
+	sha256sums = 1d68f75ad3bc6a61056d3dc3fe0d634e0a53bfdb1379111bd7824ffffc3fb3ed
 	sha256sums = 93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49
 
 pkgname = python-pydantic-graph
@@ -78,6 +78,8 @@ pkgname = python-pydantic-ai-slim
 	optdepends = python-mcp: mcp
 	optdepends = python-pydantic-evals: evals
 	optdepends = python-fasta2a: a2a
+	optdepends = python-ag-ui-protocol: ag-ui
+	optdepends = python-starlette: ag-ui
 
 pkgname = python-pydantic-ai-examples
 	pkgdesc = Examples of how to use PydanticAI and what it can do.
@@ -128,6 +130,8 @@ pkgname = python-pydantic-ai
 	depends = python-argcomplete
 	depends = python-mcp
 	depends = python-pydantic-evals
+	depends = python-ag-ui-protocol
+	depends = python-starlette
 	optdepends = python-pydantic-ai-examples: examples
 	optdepends = python-logfire: logfire
 	optdepends = python-fasta2a: a2a
