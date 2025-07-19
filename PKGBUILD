@@ -3,7 +3,7 @@
 # Contributor: Siddhartha Das bablu.boy@gmail.com>
 pkgname=nutty-git
 _app_id=com.github.babluboy.nutty
-pkgver=1.2.0.r0.g69331cb
+pkgver=1.2.0.r10.g23c4712
 pkgrel=1
 pkgdesc="A network utility with a user interface for common command line tools"
 arch=('x86_64')
@@ -26,7 +26,11 @@ depends=(
   'vnstat'
   'wireless_tools'
 )
-makedepends=('git' 'meson' 'vala')
+makedepends=(
+  'git'
+  'meson'
+  'vala'
+)
 checkdepends=('appstream-glib')
 optdepends=('cronie: background device monitoring')
 provides=("${pkgname%-git}")
@@ -46,11 +50,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/${pkgname%-git}"
 }

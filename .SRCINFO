@@ -1,6 +1,6 @@
 pkgbase = nutty-git
 	pkgdesc = A network utility with a user interface for common command line tools
-	pkgver = 1.2.0.r0.g69331cb
+	pkgver = 1.2.0.r10.g23c4712
 	pkgrel = 1
 	url = https://babluboy.github.io/nutty
 	install = nutty.install
