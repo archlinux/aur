@@ -32,7 +32,7 @@ build() {
     cd "OpenVR-AdvancedSettings-$pkgver"
 
     LDFLAGS=${LDFLAGS/-Wl,-z,pack-relative-relocs}
-    qmake -Wnone -nocache PREFIX="$pkgdir/opt/"
+    qmake PREFIX="$pkgdir/opt/"
     make
 }
 
