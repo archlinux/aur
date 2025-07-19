@@ -43,3 +43,6 @@ Fix false positive issue
 Fix progress reset with new naming
 
 
+Implement progress show command
+
+
