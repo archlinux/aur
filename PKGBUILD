@@ -1,6 +1,6 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
     'python-gobject>=3.48.0'
     'python-pillow'
     'python-pillow-avif-plugin'
+    'python-cairo'
 )
 makedepends=(
     'patch'
@@ -25,7 +26,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
     'pillow_avif.patch'
 )
-sha256sums=('3c34c296d73ace8e2b82094cfc051a1712489c68b0896d4f4b69014574677edb'
+sha256sums=('8d3c2fc1bb1d4ae94ec05e5089c68771de3f68b43f4eb96083c7c74906667da3'
             '5080f87f3b2f2b7360c6afebe333e7b8b09ef2017cc0f20b95d364df83bf3528')
 
 prepare() {
