@@ -3,7 +3,7 @@
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 _base=uqbar
 pkgname=python-${_base}
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Tools for building documentation with Sphinx, Graphviz and LaTeX"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python-sphinx python-unidecode python-black)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov graphviz)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('af89ebcd341064c0c3724c9241d4f3a51c804b44e75a2711cea8820035668eadcd8dda5f847a8f9acf9859a7b7908f243e7cc4c0f7bf1c8b85b3af0e749d30c2')
+sha512sums=('ccd4a7d32f41a4813e890fae841eca3b89ae5e46445f2bca88675a524db11f47812241a2310e5ac153b2711f7d4afef3e0faa12b8483a2ad434695794a3a26f4')
 
 prepare() {
   cd ${_base}-${pkgver}
