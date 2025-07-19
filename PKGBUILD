@@ -3,7 +3,7 @@
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
@@ -15,7 +15,8 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-sphinx-asdf'
              'python-matplotlib')  # wheel required by new setuptools; importlib-metadata <- asdf
 # circular deps
-#checkdepends=('python-pytest-doctestplus'
+#checkdepends=(
+#   'python-pytest-doctestplus'
 #             'python-pytest-xdist'
 #              'python-asdf'
 #              'python-crds'
@@ -23,7 +24,7 @@ makedepends=('python-setuptools-scm>=3.4'
 #              'python-roman-datamodels>=0.22.0'
 #)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('47b3b05025eb778e67e92452d6d32340')
+md5sums=('89c25d955184f16b75e98883863441a6')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -44,7 +45,7 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 ##   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
-##   PYTHONPATH="src" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#    PYTHONPATH="src" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 #}
 
 package_python-rad() {
