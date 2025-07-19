@@ -2,7 +2,7 @@
 
 pkgname=pulse-visualizer-git
 pkgver=1.0.r100.g6ddb8a5
-pkgrel=1
+pkgrel=2
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire (latest git)"
 arch=('any')
 url="https://github.com/Beacroxx/pulse-visualizer"
