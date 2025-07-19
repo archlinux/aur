@@ -3,7 +3,7 @@
 
 pkgname='perl-moox-returnmodifiers'
 pkgver='1.000002'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Returns Moo Modifiers as a Hash"
 arch=('any')
 license=('Artistic-1.0')

@@ -1,7 +1,7 @@
 pkgbase = perl-moox-returnmodifiers
 	pkgdesc = Returns Moo Modifiers as a Hash
 	pkgver = 1.000002
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/MooX-ReturnModifiers
 	arch = any
 	license = Artistic-1.0
