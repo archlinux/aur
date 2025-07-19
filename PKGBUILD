@@ -17,9 +17,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-optdepends=(
-  'system76-dkms: Control hotkeys and fan on certain System76 laptops'
-)
+optdepends=('system76-dkms: Control hotkeys and fan on certain System76 laptops')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('d1ebeaf7464147beb3dba36e629b0e0afe5e31c6243cef298998eb2afe240a16')

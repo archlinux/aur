@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!oryx-kb-leds.install
 !.nvchecker.toml
+!LICENSE
+!oryx-kb-leds.install
