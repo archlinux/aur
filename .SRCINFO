@@ -1,0 +1,23 @@
+pkgbase = execline-static
+	pkgdesc = A (non-interactive) scripting language, like sh
+	pkgver = 2.9.7.0
+	pkgrel = 3
+	url = http://skarnet.org/software/execline
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = skalibs-static>=2.14.4.0
+	makedepends = musl
+	makedepends = gcc
+	makedepends = links
+	provides = execline
+	conflicts = execline
+	replaces = execline-musl
+	options = staticlibs
+	options = !lto
+	options = !debug
+	source = http://skarnet.org/software/execline/execline-2.9.7.0.tar.gz
+	sha256sums = 73c9160efc994078d8ea5480f9161bfd1b3cf0b61f7faab704ab1898517d0207
+
+pkgname = execline-static
