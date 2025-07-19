@@ -3,7 +3,7 @@
 
 pkgname='perl-software-license'
 pkgver='0.104007'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="packages that provide templated software licenses"
 arch=('any')
 license=('Artistic-1.0-Perl'
