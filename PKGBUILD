@@ -3,10 +3,10 @@
 
 pkgname='perl-extutils-hascompiler'
 pkgver='0.025'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Check for the presence of a compiler"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
@@ -37,6 +37,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
