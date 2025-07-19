@@ -1,0 +1,17 @@
+pkgbase = python-nmcli
+	pkgdesc = Python wrapper around NetworkManager's nmcli command (by ushiboy)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/s-adi-dev/nmcli
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	source = nmcli-src::git+https://github.com/s-adi-dev/nmcli.git
+	sha256sums = SKIP
+
+pkgname = python-nmcli
