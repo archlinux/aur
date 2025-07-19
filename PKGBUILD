@@ -9,7 +9,6 @@ pkgdesc='Rust rewrite of coreutils (SELinux)'
 depends=(gcc-libs glibc oniguruma libselinux)
 makedepends=( rust clang #libclang.so is only for SElinux
   grep make pkgconf ) # base-devel
-optdepends=(coreutils-uutils-symlink)
 conflicts=(uutils-coreutils)
 provides=(uutils-coreutils)
 source=($pkgname-$pkgver.tar.gz::https://github.com/uutils/coreutils/archive/$pkgver.tar.gz)

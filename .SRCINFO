@@ -14,7 +14,6 @@ pkgbase = uutils-coreutils-selinux
 	depends = glibc
 	depends = oniguruma
 	depends = libselinux
-	optdepends = coreutils-uutils-symlink
 	provides = uutils-coreutils
 	conflicts = uutils-coreutils
 	options = !lto
