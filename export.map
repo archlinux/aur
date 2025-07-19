@@ -1,0 +1,10 @@
+/*Better to export funcs on ffmpeg.sigs only*/
+{
+ global:
+  avcodec*;
+  avformat*;
+  avio_*;
+  av_*;
+ local:
+  *;
+};

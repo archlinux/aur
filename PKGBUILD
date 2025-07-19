@@ -7,10 +7,13 @@ pkgdesc="Add codecs to Chromium M138+ (non vendored ffmpeg)"
 arch=('x86_64')
 url='https://git.ffmpeg.org/ffmpeg'
 license=('LGPL-2.1-or-later')
-source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
-sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
+source=(export.map
+https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
+sha256sums=('53166fd87a3441ad60fe180a37038080e0c7ebde71097968c6510e67d7a39181'
+            'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
-makedepends=(nasm mold git) # mold: preliminary to remove unused funcs
+makedepends=(nasm mold git # mold: preliminary to remove unused funcs
+diffutils gcc make patch sed) # base-devel
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 
@@ -50,6 +53,7 @@ build() {
   gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
+    -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
