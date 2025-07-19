@@ -4,7 +4,7 @@
 pkgname=oolite-git
 _gitname=oolite-git
 pkgver=1.91.0.7683.250717.68de802.r0.68de80200
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Open Source remake of Elite with many, many enhancements"
 arch=('x86_64')
 url="https://oolite.space/"
@@ -35,14 +35,15 @@ prepare(){
   git checkout -- .gitmodules
 
   # Workaround for -Werror=format-security default flag from GNUstep
-  sed -Ei 's|(include \$\(GNUSTEP_MAKEFILES\)/common\.make)|\1\nCCFLAGS += -Wno-error=format-security\nOPTFLAG += -Wno-error=format-security|' GNUmakefile
+#  sed -Ei 's|(include \$\(GNUSTEP_MAKEFILES\)/common\.make)|\1\nCCFLAGS += -Wno-error=format-security\nOPTFLAG += -Wno-error=format-security|' GNUmakefile
 }
 
 
 build() {
   cd oolite-git
   source /usr/share/GNUstep/Makefiles/GNUstep.sh
-  make -f Makefile release
+  make -f Makefile release \
+    OBJCFLAGS+="-Wno-format-security"
 }
 
 package() {
@@ -58,7 +59,8 @@ package() {
         -e 's:Exec=oolite:Exec=/usr/bin/oolite-git.sh:' \
         -e 's:Icon=oolite-icon:Icon=/usr/share/pixmaps/oolite-icon-git.png:' \
         -e 's:StartupWMClass=oolite:StartupWMClass=oolite-git:' \
-        <installers/FreeDesktop/oolite.desktop >oolite-git.desktop
+        <installers/FreeDesktop/oolite.desktop \
+        >oolite-git.desktop
 
   install -D -m644 oolite-git.desktop "$pkgdir"/usr/share/applications/oolite-git.desktop
   install -D -m644 Doc/AdviceForNewCommanders.pdf Doc/OoliteReadMe.pdf Doc/OoliteRS.pdf "$pkgdir"/usr/share/doc/oolite-git/
