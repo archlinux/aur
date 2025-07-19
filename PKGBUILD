@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
-pkgver=4.1.3.0
-pkgrel=2
+pkgver=4.2.0.0
+pkgrel=1
 pkgdesc="TTKMusicPlayer imitates Kugou UI, the music player uses of qmmp core library based on Qt.(Prebuilt version)支持网易云音乐、酷我音乐、酷狗音乐"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
@@ -35,7 +35,7 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fa0e5b16094e28988b2e8e75da9cf6c3da9b02b178308b23a641c7119e662b80'
+sha256sums=('f183e622961601adf662fbe703cace5df233cef86be0acc04e0c545fab907e6b'
             '26293cbcc216f141d1ec7346c225d13a14f689b4b1ab81e37da73f279082214d'
             '47c425909880e36e68f338a022b066e2a4f2f51ab4ab575532e54eca2520f779')
 prepare() {
