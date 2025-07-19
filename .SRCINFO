@@ -1,7 +1,7 @@
 pkgbase = classisland
 	pkgdesc = ClassIsland - 适用于班级大屏的课表小工具。社区维护 AUR 包。
 	pkgver = 1.7.103.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.classisland.tech/
 	arch = x86_64
 	arch = aarch64
