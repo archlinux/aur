@@ -3,7 +3,7 @@
 
 pkgname='perl-test-env'
 pkgver='1.088'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="test the environment"
 arch=('any')
 license=('Artistic-1.0')
