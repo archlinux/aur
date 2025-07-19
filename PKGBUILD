@@ -3,7 +3,7 @@
 
 pkgname='perl-moosex-methodattributes'
 pkgver='0.32'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="Code attribute introspection"
 arch=('any')
 license=('Artistic-1.0')
