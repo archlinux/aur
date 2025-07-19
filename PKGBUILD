@@ -2,13 +2,20 @@
 # Co-Maintainer: DanCodes <dan@dancodes.online>
 pkgname=parrot
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A Rust-based GUI in Tauri for pacman using the wrapper paru."
 arch=('x86_64')
 url="https://github.com/dan-online/parrot"
 license=('MIT')
-depends=('gtk3' 'webkit2gtk')
-makedepends=('cargo' 'node-gyp' 'yarn')
+depends=(
+  'gtk3'
+  'webkit2gtk'
+)
+makedepends=(
+  'cargo'
+  'node-gyp'
+  'yarn'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('32c7a8b20a908e0d57de4c7ff503af117c34b1b93f76937daa3380edd3116882')
 
@@ -21,7 +28,7 @@ prepare() {
 
   cd src-tauri
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 
   sed -i "s/\"productName\": \"Parrot\"/\"productName\": \"Parrot (1.0.6)\"/" \
     tauri.conf.json
@@ -33,7 +40,6 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   export RUSTUP_TOOLCHAIN=stable
-  yarn build
   yarn tauri build
 }
 
@@ -48,13 +54,15 @@ package() {
     install -Dm644 src-tauri/icons/${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}/apps/$pkgname.png"
   done
-  install -Dm644 "${_bundle_dir}/data/usr/share/icons/hicolor/256x256@2/apps/$pkgname-${pkgver//./-}.png" -t \
+  install -Dm644 "${_bundle_dir}/data/usr/share/icons/hicolor/256x256@2/apps/$pkgname-${pkgver//./-}.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/$pkgname.png"
   install -Dm644 src-tauri/icons/icon.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 
-  install -Dm644 "${_bundle_dir}/data/usr/share/applications/$pkgname-${pkgver//./-}.desktop" -t \
-    "$pkgdir/usr/share/applications/"
+  desktop-file-edit --set-key=Exec --set-value="$pkgname" --set-icon="$pkgname" --set-name=Parrot \
+    "${_bundle_dir}/data/usr/share/applications/$pkgname-${pkgver//./-}.desktop"
+  install -Dm644 "${_bundle_dir}/data/usr/share/applications/$pkgname-${pkgver//./-}.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
