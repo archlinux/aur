@@ -9,6 +9,7 @@ arch=('x86_64' 'aarch64')
 url='https://www.classisland.tech/'
 license=('GPL-3.0')
 options=('!strip' '!debug')
+conflicts=('classisland-git')
 
 source=("LICENSE.txt" "launcher.sh")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' '751127b78f0b1d9d07ebbcd87ea8e27d1f96467861a4b7491b77132158587987')

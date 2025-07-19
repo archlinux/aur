@@ -6,6 +6,7 @@ pkgbase = classisland
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
+	conflicts = classisland-git
 	options = !strip
 	options = !debug
 	source = LICENSE.txt
