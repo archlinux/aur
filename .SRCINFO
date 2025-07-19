@@ -1,7 +1,7 @@
 pkgbase = perl-html-lint
 	pkgdesc = Perl module to check for HTML errors in a string or file
 	pkgver = 2.32
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/dist/HTML-Lint
 	arch = any
 	license = Artistic-2.0

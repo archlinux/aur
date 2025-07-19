@@ -4,7 +4,7 @@
 pkgname=perl-html-lint
 _pkgname='HTML-Lint'
 pkgver=2.32
-pkgrel=3
+pkgrel=4
 _extraversion=''
 pkgdesc="Perl module to check for HTML errors in a string or file"
 arch=("any")
