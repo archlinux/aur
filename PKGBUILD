@@ -8,7 +8,12 @@ pkgdesc="OpenCL Hardware Capability Viewer"
 arch=('x86_64')
 url="https://opencl.gpuinfo.org/"
 license=('GPL-2.0-or-later')
-makedepends=('git' 'opencl-icd-loader' 'qt5-wayland' 'qt5-x11extras')
+makedepends=(
+  'git'
+  'opencl-icd-loader'
+  'qt5-wayland'
+  'qt5-x11extras'
+)
 source=("git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/OpenCL-Headers.git')
 sha256sums=('510e3f05f1ce2cda5fc4812f2693e15a672de393b984ad2df5ab8f29f74f2594'
@@ -51,7 +56,10 @@ build() {
 
 package_opencl-caps-viewer-x11() {
   pkgdesc+=" (X11)"
-  depends=('opencl-icd-loader' 'qt5-x11extras')
+  depends=(
+    'opencl-icd-loader'
+    'qt5-x11extras'
+  )
   provides=('opencl-caps-viewer')
   conflicts=('opencl-caps-viewer')
 
@@ -64,7 +72,10 @@ package_opencl-caps-viewer-x11() {
 
 package_opencl-caps-viewer-wayland() {
   pkgdesc+=" (Wayland)"
-  depends=('opencl-icd-loader' 'qt5-wayland')
+  depends=(
+    'opencl-icd-loader'
+    'qt5-wayland'
+  )
   provides=('opencl-caps-viewer')
   conflicts=('opencl-caps-viewer')
 
