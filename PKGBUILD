@@ -5,7 +5,7 @@
 _module="glean_parser"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
-pkgver=17.1.0
+pkgver=17.3.0
 pkgrel=1
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 url="https://github.com/mozilla/glean_parser"
@@ -24,7 +24,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
-  'python-setuptools-scm'
+  'python-hatchling'
   'python-wheel'
 )
 checkdepends=(
@@ -38,7 +38,7 @@ _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 _dl_url="https://files.pythonhosted.org/packages/source"
 source=("$_pkgsrc.$_pkgext"::"$_dl_url/${_module::1}/$_module/$_pkgsrc.$_pkgext")
-sha256sums=('a59ab66dd734a8bea7d7a2cb632276602dd899411ee1c1cb89f439a833ba1598')
+sha256sums=('f70fb4496436068f81ef786029a1b369f61ae2f9327eeb2fa50335dba59ee214')
 
 build() {
   cd "$_pkgsrc"
@@ -47,7 +47,8 @@ build() {
 
 check() {
   cd "$_pkgsrc"
-  PYTHONPATH=./ pytest
+  python -m installer --destdir=fakeinstall dist/*.whl
+  PYTHONPATH="$(find fakeinstall -type d -name site-packages -print -quit)" pytest
 }
 
 package() {
