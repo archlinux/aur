@@ -1,7 +1,7 @@
 # Contributor: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=rutoken-plugin
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="The Rutoken plugin is necessary for connecting USB devices with the browser, it allows you to identify devices and work with them."
 arch=('i686' 'x86_64')
@@ -11,9 +11,10 @@ depends=('rutoken-pkcs')
 makedepends=('findutils' 'sed' 'grep' 'coreutils' 'bash')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::https://download.rutoken.ru/Rutoken_Plugin/${pkgver}.0/Linux/libnpRutokenPlugin-${pkgver}-1.x86_64.rpm")
-sha256sums_x86_64=('91ab121a7bf8f006532da0d6b80dc341cf0fa432eeb668fb69086d071f9c1603')
 source_i686=("${pkgname}-${pkgver}-i686.rpm::https://download.rutoken.ru/Rutoken_Plugin/${pkgver}.0/Linux/libnpRutokenPlugin-${pkgver}-1.i686.rpm")
-sha256sums_i686=('ea2dcd5d266cd5cca4f608b700af363189ae8d38d7d2f296dd51ff361628b24a')
+
+sha256sums_i686=('b8c15ea9b4e6444162a2f3783d728d1dab2e442e9d2ebe5b4c874f1410397311')
+sha256sums_x86_64=('3143dd410803e39d506af53db10f4df4434f290cc94724c3a56b7ffa5d2e614f')
 
 package() {
 	cp -r "${srcdir}/usr/lib64/mozilla/native-messaging-hosts" "${srcdir}/usr/lib/mozilla/"
