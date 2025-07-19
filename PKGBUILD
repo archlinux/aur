@@ -1,8 +1,9 @@
-# Controbutor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer: awh (https://aur.archlinux.org/account/awh)
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Vitaly Utkin (https://aur.archlinux.org/account/vautkin)
 pkgname=ovras
 pkgver=5.8.11
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
 arch=("x86_64")
@@ -30,6 +31,7 @@ sha256sums=(
 build() {
     cd "OpenVR-AdvancedSettings-$pkgver"
 
+    LDFLAGS=${LDFLAGS/-Wl,-z,pack-relative-relocs}
     qmake -Wnone -nocache PREFIX="$pkgdir/opt/"
     make
 }
