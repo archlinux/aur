@@ -4,8 +4,8 @@
 
 _pkgname='tootik'
 pkgname="${_pkgname}-git"
-pkgver=0.15.6.r7.gc4520ff
-pkgrel=2
+pkgver=0.18.0.r0.g292ccaf
+pkgrel=1
 pkgdesc='A federated nanoblogging service with a finger/gemini/gopher/guppy frontend (development version)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/dimkr/tootik'
@@ -27,6 +27,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
+  git -dfx
   mkdir -p build
   go mod tidy
   go generate ./migrations
@@ -34,6 +35,13 @@ prepare() {
 
 build() {
   cd "$_pkgname"
+
+  case "Z${CARCH:-unknown}" in
+    'Zaarch64' | 'Zx86_64' )
+      # Fix “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK” error message:
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
+    ;;
+  esac
 
   export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
@@ -63,9 +71,9 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin/" \
+  install -vDm0755 -t "$pkgdir/usr/bin" \
     ./tootik
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ./*.md
 }
 
