@@ -6,7 +6,10 @@ pkgdesc="Papirus folder icon set based on distros and the most famous icon theme
 arch=('any')
 url="https://github.com/Adapta-Projects/Papirus-Linux-Universe"
 license=('GPL-2.0-or-later')
-depends=('bash' 'papirus-icon-theme')
+depends=(
+  'bash'
+  'papirus-icon-theme'
+)
 optdepends=('papirus-nord: additional icon themes')
 provides=('papirus-folders')
 conflicts=('papirus-folders')
