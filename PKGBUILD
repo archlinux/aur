@@ -3,7 +3,7 @@
 
 pkgname='perl-redis'
 pkgver='2.000'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl binding for Redis database"
 arch=('any')
 license=('Artistic-2.0')

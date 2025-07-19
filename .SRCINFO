@@ -1,7 +1,7 @@
 pkgbase = perl-redis
 	pkgdesc = Perl binding for Redis database
 	pkgver = 2.000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Redis
 	arch = any
 	license = Artistic-2.0
