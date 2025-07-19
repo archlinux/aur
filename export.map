@@ -1,0 +1,11 @@
+/*Better to export funcs on ffmpeg.sigs only*/
+{
+ global:
+  avcodec*;
+  avformat*;
+  avutil_version*;ff_aac*;ff_h264*; /*used by opera*/
+  avio_*;
+  av_*;
+ local:
+  *;
+};

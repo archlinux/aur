@@ -11,18 +11,19 @@ pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('LGPL-2.1-or-later')
-source=(${url}releases/ffmpeg-${_ffver}.tar.xz
+source=(${url}releases/ffmpeg-${_ffver}.tar.xz export.map
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
+            '6ef627c55222625785c771eace688d1d3c50874bba4ab43150b100767ffa24c6'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             '1bc365a4183898684ef28b306951390f0bbc56ae2496f2119ecc7086c410c400'
             '0e520f2d9ebd9c6b4aca6b0f1726f500badb5f50af766bc4dcfb9b9df1a237d6')
 depends=(glibc)
 makedepends=(nasm mold # mold: preliminary to remove unused funcs
 diffutils gcc make patch sed) # base-devel
-optdepends=({nwjs,slimjet,electron{31..36}}': replace ffmpeg')
+optdepends=({slimjet,electron{31..36}}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 
@@ -62,6 +63,7 @@ build() {
   gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
+    -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
