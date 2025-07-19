@@ -1,0 +1,16 @@
+pkgbase = basteh
+	pkgdesc = GTK GUI frontend for pacman
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/sahandlinux/basteh
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	depends = gtk3
+	depends = pacman
+	depends = polkit
+	source = basteh::git+https://github.com/sahandlinux/basteh.git
+	sha256sums = SKIP
+
+pkgname = basteh
