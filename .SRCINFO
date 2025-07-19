@@ -1,6 +1,6 @@
 pkgbase = wiliwili-git
 	pkgdesc = A 3rd party bilibili client
-	pkgver = v1.5.1.r2.g318ba943
+	pkgver = v1.5.1.r3.g35d50d88
 	pkgrel = 1
 	url = https://github.com/xfangfang/wiliwili
 	arch = x86_64
@@ -22,7 +22,9 @@ pkgbase = wiliwili-git
 	conflicts = wiliwili-bin
 	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git
 	source = wiliwili.sh
+	source = add-cstdint.patch
 	sha256sums = SKIP
 	sha256sums = 82567c5b14b818d3b628c43f89ae85bc4f60eac22241933379a97318fdebb240
+	sha256sums = 5b0667d0b70a56398c651f08d1d343a25bf72e1689e303ce0469ee7335fa4128
 
 pkgname = wiliwili-git

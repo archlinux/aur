@@ -5,3 +5,5 @@
 !.SRCINFO
 !.gitignore
 !wiliwili.sh
+!add-cstdint.patch
+

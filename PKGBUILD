@@ -2,7 +2,7 @@
 
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v1.5.1.r2.g318ba943
+pkgver=v1.5.1.r3.g35d50d88
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
@@ -24,9 +24,11 @@ makedepends=('git' 'cmake' 'gcc' 'libxinerama' 'libxi')
 # options("name")
 
 source=("${_pkg}::git+$url.git"
-	"${_pkg}.sh")
+	"${_pkg}.sh"
+	"add-cstdint.patch")
 sha256sums=('SKIP'
-            '82567c5b14b818d3b628c43f89ae85bc4f60eac22241933379a97318fdebb240')
+            '82567c5b14b818d3b628c43f89ae85bc4f60eac22241933379a97318fdebb240'
+            '5b0667d0b70a56398c651f08d1d343a25bf72e1689e303ce0469ee7335fa4128')
 
 pkgver() {
 	cd "$_pkg"
@@ -39,6 +41,9 @@ pkgver() {
 prepare() {
 	cd "$_pkg"
 	git submodule update --init --recursive
+
+	cd "$srcdir/wiliwili"
+	patch -p1 < "$srcdir/add-cstdint.patch"
 }
 
 build() {
@@ -55,6 +60,7 @@ build() {
 		-D USE_SYSTEM_CURL=ON \
 		-D GLFW_BUILD_WAYLAND=ON \
 		-D GLFW_BUILD_X11=ON \
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-Wno-dev
 	cmake --build build --parallel $(nproc)
 }
