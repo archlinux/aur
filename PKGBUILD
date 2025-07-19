@@ -1,6 +1,6 @@
 # Maintainer: Aydin Rahbaran <codewizaard@proton.me>
 pkgname=basteh
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="GTK GUI frontend for pacman"
 arch=('x86_64')
