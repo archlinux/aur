@@ -1,10 +1,10 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 # Co-Maintainer: Christopher Snowhill <kode54@gmail.com>
-_wlroots_version=0.18.2
-_wlroots_majver=0.18
+_wlroots_version=0.19.0
+_wlroots_majver=0.19
 pkgname=wayfire-git
-pkgver=0.9.0.r95.g32c4ada7
+pkgver=0.9.0.r202.ga1d73f58
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
