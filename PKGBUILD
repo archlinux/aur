@@ -7,7 +7,7 @@
 _name=libao
 pkgname=lib32-libao
 pkgver=1.2.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform audio output library and plugins (32-bit)"
 url="https://www.xiph.org/ao/"
 arch=(x86_64)
