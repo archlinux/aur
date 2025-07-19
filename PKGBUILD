@@ -13,11 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/casperrr/termpix/archive/v$
 sha256sums=('SKIP')
 
 build() {
-    cd "$startdir"
-    /usr/bin/python -m build --wheel --no-isolation
+    cd "termpix-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$startdir"
-    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "termpix-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
