@@ -1,0 +1,92 @@
+diff --git a/library/lib/platforms/desktop/desktop_platform.cpp b/library/lib/platforms/desktop/desktop_platform.cpp
+index e192b8a1..737f5881 100644
+--- a/library/lib/platforms/desktop/desktop_platform.cpp
++++ b/library/lib/platforms/desktop/desktop_platform.cpp
+@@ -58,6 +58,9 @@ using winrt::Windows::UI::ViewManagement::UISettings;
+ #include <ifaddrs.h>
+ #endif
+ 
++#if defined(__linux__) && !defined(ANDROID)
++#include <dbus/dbus.h>
++#endif
+ 
+ namespace brls
+ {
+@@ -417,6 +420,77 @@ DesktopPlatform::DesktopPlatform()
+             }
+             FreeLibrary(hUxtheme);
+         }
++#elif defined(__linux__) && !defined(ANDROID)
++        constexpr const char* APPEARANCE_NAMESPACE = "org.freedesktop.appearance";
++        constexpr const char* COLOR_SCHEME_KEY = "color-scheme";
++        constexpr dbus_uint32_t COLOR_SCHEME_DARK = 1; // 1 means prefer dark appearance
++
++        DBusError err;
++        dbus_error_init(&err);
++
++        DBusConnection* conn = dbus_bus_get(DBUS_BUS_SESSION, &err);
++        if (!conn)
++        {
++            brls::Logger::warning("DBus: Failed to connect to session bus: {}", err.message ? err.message : "(unknown)");
++            dbus_error_free(&err);
++            return;
++        }
++
++        DBusMessage* msg = dbus_message_new_method_call(
++            "org.freedesktop.portal.Desktop",
++            "/org/freedesktop/portal/desktop",
++            "org.freedesktop.portal.Settings",
++            "Read");
++        if (!msg)
++        {
++            brls::Logger::warning("DBus: Failed to create method call message");
++            dbus_connection_unref(conn);
++            return;
++        }
++
++        DBusMessageIter iter;
++        dbus_message_iter_init_append(msg, &iter);
++        dbus_message_iter_append_basic(&iter, DBUS_TYPE_STRING, &APPEARANCE_NAMESPACE);
++        dbus_message_iter_append_basic(&iter, DBUS_TYPE_STRING, &COLOR_SCHEME_KEY);
++
++        DBusMessage* reply = dbus_connection_send_with_reply_and_block(conn, msg, -1, &err);
++        dbus_message_unref(msg);
++
++        if (!reply)
++        {
++            brls::Logger::warning("DBus: Failed to get reply: {}", err.message ? err.message : "(unknown)");
++            dbus_error_free(&err);
++            dbus_connection_unref(conn);
++            return;
++        }
++
++        auto extractDarkTheme = [](DBusMessage* reply) -> bool {
++            DBusMessageIter riter;
++            if (!dbus_message_iter_init(reply, &riter)) return false;
++            if (dbus_message_iter_get_arg_type(&riter) != DBUS_TYPE_VARIANT) return false;
++
++            DBusMessageIter sub;
++            dbus_message_iter_recurse(&riter, &sub);
++            if (dbus_message_iter_get_arg_type(&sub) != DBUS_TYPE_VARIANT) return false;
++
++            DBusMessageIter subsub;
++            dbus_message_iter_recurse(&sub, &subsub);
++            if (dbus_message_iter_get_arg_type(&subsub) != DBUS_TYPE_UINT32) return false;
++
++            dbus_uint32_t val = 0;
++            dbus_message_iter_get_basic(&subsub, &val);
++            return val == COLOR_SCHEME_DARK;
++        };
++
++        if (extractDarkTheme(reply))
++        {
++            this->themeVariant = ThemeVariant::DARK;
++            brls::Logger::info("Set app theme: Dark");
++        }
++
++        dbus_message_unref(reply);
++        dbus_connection_unref(conn);
++        dbus_error_free(&err);
+ #endif
+     }
+     else if (!strcasecmp(themeEnv, "DARK"))

@@ -24,10 +24,10 @@ makedepends=('git' 'cmake' 'gcc' 'libxinerama' 'libxi')
 # options("name")
 
 source=("${_pkg}::git+$url.git"
-	"${_pkg}.sh"
+	"linux-auto-dark.patch"
 	"add-cstdint.patch")
 sha256sums=('SKIP'
-            '82567c5b14b818d3b628c43f89ae85bc4f60eac22241933379a97318fdebb240'
+            '632deaddab2ebceee82cb1c7a3cd22d0924cd187fb6a66f8b9556a9a01c7a3ea'
             '5b0667d0b70a56398c651f08d1d343a25bf72e1689e303ce0469ee7335fa4128')
 
 pkgver() {
@@ -44,6 +44,8 @@ prepare() {
 
 	cd "$srcdir/wiliwili"
 	patch -p1 < "$srcdir/add-cstdint.patch"
+	cd "$srcdir/wiliwili/library/borealis"
+	patch -p1 < "$srcdir/linux-auto-dark.patch"
 }
 
 build() {
@@ -68,9 +70,5 @@ build() {
 package() {
 	# main
 	DESTDIR="${pkgdir}" cmake --install "build"
-
-	# booting auto choose dark theme use gdbus.
-	mv ${pkgdir}/usr/bin/${_pkg} ${pkgdir}/usr/share/${_pkg}/
-	install -Dm755 "${_pkg}.sh" ${pkgdir}/usr/bin/${_pkg}
 }
 

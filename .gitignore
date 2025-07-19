@@ -4,6 +4,6 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!wiliwili.sh
 !add-cstdint.patch
+!linux-auto-dark.patch
 
