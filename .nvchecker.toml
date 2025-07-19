@@ -1,0 +1,4 @@
+[papirus-nord]
+source = "git"
+git = "https://github.com/Adapta-Projects/Papirus-Nord.git"
+exclude_regex = "2020.*"
