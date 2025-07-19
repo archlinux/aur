@@ -43,7 +43,6 @@ function post_upgrade() {
     
     for version in "${upgrades[@]}"; do
         if [[ "$(vercmp "${version}" "$2")" -eq "1" ]]; then
-            echo ":: Displaying update notices for '${version}'"
             "_${version//[.-]/_}_changes"
         fi
     done
