@@ -1,8 +1,8 @@
 pkgbase = python-deezer-py
 	pkgdesc = A wrapper for all Deezer's APIs
 	pkgver = 1.3.7
-	pkgrel = 3
-	url = https://pypi.org/project/deezer-py/
+	pkgrel = 4
+	url = https://gitlab.com/RemixDev/deezer-py
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-setuptools
@@ -10,7 +10,7 @@ pkgbase = python-deezer-py
 	makedepends = python-installer
 	depends = python
 	depends = python-requests
-	source = https://pypi.org/packages/source/d/deezer-py/deezer-py-1.3.7.tar.gz
-	sha256sums = b1a332f88780cba1fd4a04bc5c79d9f649457ab1b2afebd0aa1b82b629a06c4a
+	source = deezer-py-1.3.7.tar.gz::https://gitlab.com/RemixDev/deezer-py/-/archive/12e26328e8aa44430e36f96d0a32e52a410e76a5/deezer-py-12e26328e8aa44430e36f96d0a32e52a410e76a5.tar.gz
+	sha256sums = 8beedba302f68b90435c6c7be3032ad80c1bd922218d01d0d942c549f1b12823
 
 pkgname = python-deezer-py
