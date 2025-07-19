@@ -2,7 +2,7 @@
 _base=pyfonts
 pkgname=python-${_base}
 pkgdesc="A simple and reproducible way of using fonts in matplotlib"
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/JosephBARBIERDARNAL/${_base}"
@@ -10,8 +10,8 @@ license=(MIT)
 depends=(python-matplotlib python-requests)
 makedepends=(python-build python-installer python-setuptools-scm)
 checkdepends=(python-pytest)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('1f5911542adb1653edb5c03dd3c835f892ce4333b733901ccc178278a462846e1b5f84009ded5f83001e2b29ad9a51e9de17d7dbf114da31260866ca210a0fc2')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('83340aa8ae81536f1603e0561d396ef1285b0910e9d0f796197eac4fcdc2e14df9462b2158816cbacabab373fea0b2dcfce0d8da85a88fe319d95c4cb8f3339b')
 
 build() {
   cd ${_base}-${pkgver}
