@@ -3,16 +3,16 @@
 
 pkgname="classisland"
 pkgver="1.7.103.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="ClassIsland - 适用于班级大屏的课表小工具。社区维护 AUR 包。"
 arch=('x86_64' 'aarch64')
 url='https://www.classisland.tech/'
-license=('GPL-3.0-or-later')
+license=('GPL-3.0')
 depends=('dotnet-runtime-8.0-bin' 'dotnet-host-bin')
 options=('!strip' '!debug')
 
 source=("LICENSE.txt" "launcher.sh")
-sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' '734b832d155352bb70a385b92c9eb9eeca19c5514cc37001656fbb97600cb5ed')
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' '751127b78f0b1d9d07ebbcd87ea8e27d1f96467861a4b7491b77132158587987')
 # x86_64文件信息
 source_x86_64=("https://ghfast.top/https://github.com/ClassIsland/ClassIsland/releases/download/${pkgver}/ClassIsland_app_linux_x64_selfContained_deb.deb")
 sha256sums_x86_64=("52f036c3e040a1ca956053cccb49efd3e9d271eba63d66b986a90c1d9ca352cc")
@@ -26,6 +26,8 @@ package() {
 	echo " <-> 请坐和放宽，一切交给我们来处理。"
 	echo " <-> 正在解压 data.tar.xz，使用 bsdtar..."
 	bsdtar -xf data.tar.xz -C "${pkgdir}/"
+	mv "${pkgdir}/opt/apps/cn.classisland.app/files/bin/" "${pkgdir}/opt/classisland/"
+	rm -rf "${pkgdir}/opt/apps"
 	echo " <-> 正在安装..."
 	echo " <-> [1/3] 创建启动器 /usr/bin/classisland..."
 	# Launcher 创建
@@ -33,7 +35,7 @@ package() {
 	echo " <-> [2/3] 修改 Desktop Entry..."
 	# 更改 Desktop Entry 内容
 	sed -i 's|^Exec=/opt/apps/cn\.classisland\.app/files/bin/ClassIsland\.Desktop.*|Exec=classisland|' "${pkgdir}/usr/share/applications/cn.classisland.app.desktop"
-	echo " <-> [3/3] 移动 LICENSE"
+	echo " <-> [3/3] 复制 LICENSE"
 	# License 复制
 	install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	echo " <-> 安装完成！快去品尝美味可口的 ClassIsland 吧！awa"
