@@ -1,0 +1,24 @@
+pkgbase = pulse-visualizer-git
+	pkgdesc = A GPU-accelerated audio visualizer for PulseAudio/PipeWire (latest git)
+	pkgver = 1.0.r100.g6ddb8a5
+	pkgrel = 1
+	url = https://github.com/Beacroxx/pulse-visualizer
+	install = pulse-visualizer-git.install
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = git
+	depends = sdl2
+	depends = fftw
+	depends = freetype2
+	depends = glew
+	depends = yaml-cpp
+	optdepends = libpulse: PulseAudio support
+	optdepends = libpipewire: PipeWire support
+	backup = etc/pulse-visualizer/config.yml
+	source = git+https://github.com/Beacroxx/pulse-visualizer.git
+	sha256sums = SKIP
+
+pkgname = pulse-visualizer-git
