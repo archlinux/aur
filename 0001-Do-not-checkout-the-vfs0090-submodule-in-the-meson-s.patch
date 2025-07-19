@@ -1,33 +1,13 @@
-diff --git a/meson.build b/meson.build
-index 919129f..5f4bd5d 100644
---- a/meson.build
-+++ b/meson.build
-@@ -160,17 +160,17 @@ foreach driver: drivers
-             error('pixman is required for imaging support')
-         endif
- 
--        git = find_program('git', required: false)
--        if git.found()
--            message('Updating the vfs0090 submodule')
--            c = run_command(git, ['submodule', 'update', '--init', '--recursive'])
--
--            if c.returncode() != 0
--                error('Impossible to update the vfs0090 submodule')
--            endif
--        else
--            message('Ensure you updated the vfs0090 submodule!')
--        endif
-+#        git = find_program('git', required: false)
-+#        if git.found()
-+#            message('Updating the vfs0090 submodule')
-+#            c = run_command(git, ['submodule', 'update', '--init', '--recursive'])
-+#
-+#            if c.returncode() != 0
-+#                error('Impossible to update the vfs0090 submodule')
-+#            endif
-+#        else
-+#            message('Ensure you updated the vfs0090 submodule!')
-+#        endif
-     endif
-     if not all_drivers.contains(driver)
-         error('Invalid driver \'' + driver + '\'')
+diff --git i/meson.build w/meson.build
+index b53dde6..384f71b 100644
+--- i/meson.build
++++ w/meson.build
+@@ -212,7 +212,7 @@ driver_helper_mapping = {
+     'aes4000' : [ 'aeslib', 'aes3k' ],
+     'uru4000' : [ 'openssl' ],
+     'elanspi' : [ 'udev' ],
+-    'vfs0090' : [ 'nss', 'aes3k', 'openssl', 'submodule' ],
++    'vfs0090' : [ 'nss', 'aes3k', 'openssl' ],
+     'virtual_image'          : [ 'virtual' ],
+     'virtual_device'         : [ 'virtual' ],
+     'virtual_device_storage' : [ 'virtual' ],
