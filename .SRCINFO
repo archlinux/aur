@@ -1,0 +1,20 @@
+pkgbase = pacman-gui
+	pkgdesc = Simple GTK4 GUI for pacman package manager with AUR support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Coneriys/pacman-gui
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk4
+	depends = glib2
+	depends = pacman
+	depends = polkit
+	optdepends = yay: AUR support
+	optdepends = paru: Alternative AUR helper
+	source = pacman-gui-1.0.0.tar.gz::https://github.com/Coneriys/pacman-gui/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pacman-gui
