@@ -4,7 +4,7 @@
 
 pkgname=kontur-plugin
 pkgver=4.10.0.2633
-pkgrel=1
+pkgrel=2
 pkgdesc='Kontur.Plugin is an extension for web browsers that allows users to perform cryptographic operations in SKB Kontur services.'
 arch=('x86_64')
 license=('proprietary')
@@ -23,6 +23,8 @@ pkgver() {
 }
 
 package() {
-    bsdtar -xf data.tar.gz -C "$pkgdir/"
-    rm -r "$pkgdir/usr/lib64/"  # /usr/lib64 is a symlink to /usr/lib
+    bsdtar -xf data.tar.gz -C "${pkgdir}/"
+    mv "${pkgdir}/lib/systemd" "${pkgdir}/usr/lib"
+    rm -r "${pkgdir}/usr/lib64/"  # /usr/lib64 is a symlink to /usr/lib
+    rm -r "${pkgdir}/lib"
 }
