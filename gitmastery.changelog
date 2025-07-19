@@ -40,3 +40,6 @@ Add check for valid exercise before downloading
 Fix false positive issue
 
 
+Fix progress reset with new naming
+
+
