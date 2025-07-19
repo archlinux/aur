@@ -7,7 +7,10 @@ arch=('x86_64')
 url="https://git.sr.ht/~admicos/moonlander"
 license=('MIT')
 depends=('gtk3')
-makedepends=('cargo' 'git')
+makedepends=(
+  'cargo'
+  'git'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!lto')
@@ -29,13 +32,13 @@ build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
