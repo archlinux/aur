@@ -6,8 +6,13 @@ pkgdesc="Have always at a glance the usage of system resources"
 arch=('any')
 url="https://github.com/jorchube/monitorets"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'python-cairo' 'python-gobject' 'python-psutil'
-         'python-xdg-base-dirs')
+depends=(
+  'libadwaita'
+  'python-cairo'
+  'python-gobject'
+  'python-psutil'
+  'python-xdg-base-dirs'
+)
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
@@ -29,9 +34,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
