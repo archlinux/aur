@@ -2,7 +2,7 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=plank-reloaded
-pkgver=0.11.142
+pkgver=0.11.143
 pkgrel=1
 pkgdesc='Fork of the original Plank project, providing a simple dock for X11 desktop environments'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('gnome-common' 'git' 'intltool' 'vala' 'meson' 'ninja')
 provides=('plank')
 conflicts=('plank')
 source=("https://github.com/zquestz/plank-reloaded/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7f38c75b80dd650dcc8d00c2e6acfaee7783e0c73e081b0938765e028b19f54a')
+sha256sums=('ddea17d7b2e6c96d17568e7a966e675bfc1699eebb924e805eed85a61f0a3d6d')
 
 prepare() {
   cd plank-reloaded-${pkgver}
