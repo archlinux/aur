@@ -39,6 +39,52 @@ static gchar *run_cmd(const gchar *cmd) {
     return g_string_free(result, FALSE);
 }
 
+static void clear_listbox(GtkListBox *listbox) {
+    GList *children = gtk_container_get_children(GTK_CONTAINER(listbox));
+    for (GList *iter = children; iter != NULL; iter = iter->next)
+        gtk_widget_destroy(GTK_WIDGET(iter->data));
+    g_list_free(children);
+}
+
+static void list_installed_packages(AppWidgets *a) {
+    clear_listbox(a->listbox);
+    gchar *output = run_cmd("pacman -Qq");
+    gchar **lines = g_strsplit(output, "\n", -1);
+    for (int i = 0; lines[i] && lines[i][0]; i++) {
+        GtkWidget *row = gtk_label_new(lines[i]);
+        gtk_list_box_insert(a->listbox, row, -1);
+    }
+    g_strfreev(lines);
+    g_free(output);
+    gtk_widget_show_all(GTK_WIDGET(a->listbox));
+    a->showing_installed = TRUE;
+    gtk_button_set_label(a->btn_install, "Install");
+}
+
+static void list_search_packages(AppWidgets *a, const gchar *term) {
+    clear_listbox(a->listbox);
+    if (term == NULL || strlen(term) == 0) {
+        list_installed_packages(a);
+        return;
+    }
+
+    char cmd[256];
+    snprintf(cmd, sizeof(cmd), "pacman -Ss %s | head -n 100 | cut -d/ -f2 | cut -d' ' -f1", term);
+
+    gchar *output = run_cmd(cmd);
+    gchar **lines = g_strsplit(output, "\n", -1);
+    for (int i = 0; lines[i] && lines[i][0]; i++) {
+        GtkWidget *row = gtk_label_new(lines[i]);
+        gtk_list_box_insert(a->listbox, row, -1);
+    }
+    g_strfreev(lines);
+    g_free(output);
+
+    gtk_widget_show_all(GTK_WIDGET(a->listbox));
+    a->showing_installed = FALSE;
+    gtk_button_set_label(a->btn_install, "Install");
+}
+
 static void on_upgrade_system_clicked(GtkButton *btn, gpointer user_data) {
     AppWidgets *a = user_data;
     GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(a->window),
@@ -94,52 +140,6 @@ static void on_check_updates_clicked(GtkButton *btn, gpointer user_data) {
 
     gtk_widget_show_all(GTK_WIDGET(a->listbox));
     free(output);
-}
-
-static void clear_listbox(GtkListBox *listbox) {
-    GList *children = gtk_container_get_children(GTK_CONTAINER(listbox));
-    for (GList *iter = children; iter != NULL; iter = iter->next)
-        gtk_widget_destroy(GTK_WIDGET(iter->data));
-    g_list_free(children);
-}
-
-static void list_installed_packages(AppWidgets *a) {
-    clear_listbox(a->listbox);
-    gchar *output = run_cmd("pacman -Qq");
-    gchar **lines = g_strsplit(output, "\n", -1);
-    for (int i = 0; lines[i] && lines[i][0]; i++) {
-        GtkWidget *row = gtk_label_new(lines[i]);
-        gtk_list_box_insert(a->listbox, row, -1);
-    }
-    g_strfreev(lines);
-    g_free(output);
-    gtk_widget_show_all(GTK_WIDGET(a->listbox));
-    a->showing_installed = TRUE;
-    gtk_button_set_label(a->btn_install, "Install");
-}
-
-static void list_search_packages(AppWidgets *a, const gchar *term) {
-    clear_listbox(a->listbox);
-    if (term == NULL || strlen(term) == 0) {
-        list_installed_packages(a);
-        return;
-    }
-
-    char cmd[256];
-    snprintf(cmd, sizeof(cmd), "pacman -Ss %s | head -n 100 | cut -d/ -f2 | cut -d' ' -f1", term);
-
-    gchar *output = run_cmd(cmd);
-    gchar **lines = g_strsplit(output, "\n", -1);
-    for (int i = 0; lines[i] && lines[i][0]; i++) {
-        GtkWidget *row = gtk_label_new(lines[i]);
-        gtk_list_box_insert(a->listbox, row, -1);
-    }
-    g_strfreev(lines);
-    g_free(output);
-
-    gtk_widget_show_all(GTK_WIDGET(a->listbox));
-    a->showing_installed = FALSE;
-    gtk_button_set_label(a->btn_install, "Install");
 }
 
 static void show_info_window(GtkWindow *parent, const gchar *pkg, gboolean installed) {
