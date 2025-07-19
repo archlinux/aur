@@ -8,7 +8,7 @@ pkgbase = goodnotes-electron
 	makedepends = npm
 	makedepends = nodejs
 	depends = electron
-	source = goodnotes-electron-1.0.0.tar.gz
+	source = https://github.com/belanasaikiran/goodnotes-electron/releases/download/1.0.0/goodnotes-electron-1.0.0.tar.gz
 	sha256sums = 328477e7bd9687c9a0f93165276859b3e8b55b9ca04a92d5f94f4559542720d7
 
 pkgname = goodnotes-electron
