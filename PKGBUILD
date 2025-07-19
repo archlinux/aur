@@ -3,7 +3,7 @@
 
 pkgname='perl-moox-validatesubs'
 pkgver='1.012010'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Validating sub routines via Type::Tiny."
 arch=('any')
 license=('Artistic-1.0')
