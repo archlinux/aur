@@ -5,7 +5,7 @@
 pkgname=rapidraw-bin
 _pkgname=RapidRAW
 pkgdesc="GPU-accelerated RAW image editor built with performance in mind"
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 arch=('x86_64')
 url=https://github.com/CyberTimon/RapidRAW
@@ -27,7 +27,7 @@ _ubuntuver=24.04
 _debfile="03_${_pkgname}_v${pkgver}_ubuntu-${_ubuntuver}_amd64.deb"
 #https://github.com/CyberTimon/RapidRAW/releases/download/v1.2.7/03_RapidRAW_v1.2.7_ubuntu-24.04_amd64.deb
 source=("https://github.com/CyberTimon/${_pkgname}/releases/download/v${pkgver}/${_debfile}")
-sha256sums=('cfb8b135be46f0c8a94eea613f1d977bfa342ed72b4d48d197d620085ec9e47d')
+sha256sums=('d5e37c58b7c50db89b7dfbec5465ee2708ce9299df5bb189ed35d981da1ca4ee')
 
 prepare() {
   bsdtar -xf data.tar.gz
