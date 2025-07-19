@@ -1,14 +1,17 @@
 
-pkgbase=uutils-coreutils-selinux
-pkgname=(${pkgbase} coreutils-uutils-selinux)
+pkgname=uutils-coreutils-selinux
 pkgver=0.1.0
 pkgrel=37
 arch=('x86_64')
 license=('MIT')
 url='https://uutils.github.io/'
+pkgdesc='Rust rewrite of coreutils (SELinux)'
 depends=(gcc-libs glibc oniguruma libselinux)
 makedepends=( rust clang #libclang.so is only for SElinux
   grep make pkgconf ) # base-devel
+optdepends=(coreutils-uutils-symlink)
+conflicts=(uutils-coreutils)
+provides=(uutils-coreutils)
 source=($pkgname-$pkgver.tar.gz::https://github.com/uutils/coreutils/archive/$pkgver.tar.gz)
 sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
 options=('!lto' 'zipman')
@@ -21,34 +24,12 @@ prepare() {
 
 export SELINUX_ENABLED=1 RUSTONIG_DYNAMIC_LIBONIG=1
 # release-fast profile has panic=abort
-export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort $RUSTFLAGS --remap-path-prefix=${srcdir}="
+export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort $RUSTFLAGS"
 
-# include every command
-package_uutils-coreutils-selinux() {
-  pkgdesc='Rust rewrite of coreutils (SELinux)'
-  conflicts=(uutils-coreutils)
+# Don't exclude any command
+# next release supports external libstdbuf.so
+package() {
   cd coreutils-$pkgver
   make install USE=selinux PROFILE=release MULTICALL=y \
     DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROG_PREFIX=uu-
-}
-
-# Don't build twice
-package_coreutils-uutils-selinux(){
-  pkgdesc='(Dangerous) Swap system coreutils with uutils (SELinux)'
-  conflicts=(coreutils b3sum sha3sum)
-  provides=(coreutils{,-selinux} sha3sum)
-  depends=(uutils-coreutils-selinux)
-
-  install -d "$pkgdir"/usr/{bin,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
-  cd "$pkgdir"/usr
-  for f in $("$srcdir"/coreutils-$pkgver/target/release/coreutils --list|grep -v -E '^(kill|more|uptime|hostname|\[)$'); do
-    ln -sf /usr/bin/uu-coreutils bin/"$f"
-    ln -s /usr/share/man/man1/uu-"$f".1.gz share/man/man1/"$f".1.gz
-    # Conflicting with Extra/bash-completion: https://github.com/scop/bash-completion/discussions/1386
-    echo -e "#compdef ${f}=uu-${f}\n_${f}" > share/zsh/site-functions/_$f
-    echo "complete -c ${f} -w uu-${f}" > share/fish/vendor_completions.d/${f}.fish
-  done
-  ln -s /usr/bin/uu-coreutils bin/\[
-  # Dynamic libstdbuf may supported: https://github.com/uutils/coreutils/issues/6591
-  install -Dm644 "$srcdir"/coreutils-$pkgver/target/release/deps/liblibstdbuf.so lib/coreutils/libstdbuf.so
 }

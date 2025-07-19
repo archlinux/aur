@@ -1,4 +1,5 @@
 pkgbase = uutils-coreutils-selinux
+	pkgdesc = Rust rewrite of coreutils (SELinux)
 	pkgver = 0.1.0
 	pkgrel = 37
 	url = https://uutils.github.io/
@@ -13,21 +14,12 @@ pkgbase = uutils-coreutils-selinux
 	depends = glibc
 	depends = oniguruma
 	depends = libselinux
+	optdepends = coreutils-uutils-symlink
+	provides = uutils-coreutils
+	conflicts = uutils-coreutils
 	options = !lto
 	options = zipman
 	source = uutils-coreutils-selinux-0.1.0.tar.gz::https://github.com/uutils/coreutils/archive/0.1.0.tar.gz
 	sha256sums = 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
 
 pkgname = uutils-coreutils-selinux
-	pkgdesc = Rust rewrite of coreutils (SELinux)
-	conflicts = uutils-coreutils
-
-pkgname = coreutils-uutils-selinux
-	pkgdesc = (Dangerous) Swap system coreutils with uutils (SELinux)
-	depends = uutils-coreutils-selinux
-	provides = coreutils
-	provides = coreutils-selinux
-	provides = sha3sum
-	conflicts = coreutils
-	conflicts = b3sum
-	conflicts = sha3sum
