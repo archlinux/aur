@@ -1,0 +1,18 @@
+pkgbase = python-ag-ui-protocol
+	pkgdesc = Python SDK for the Agent-User Interaction (AG-UI) Protocol.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/ag-ui-protocol/ag-ui/tree/main/python-sdk
+	arch = any
+	license = MIT
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-pydantic
+	source = https://files.pythonhosted.org/packages/source/a/ag-ui-protocol/ag_ui_protocol-0.1.8.tar.gz
+	sha256sums = eb745855e9fc30964c77e953890092f8bd7d4bbe6550d6413845428dd0faac0b
+
+pkgname = python-ag-ui-protocol
