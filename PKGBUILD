@@ -7,7 +7,11 @@ arch=('x86_64')
 url="https://github.com/nate-xyz/paleta"
 license=('GPL-3.0-or-later')
 depends=('libadwaita')
-makedepends=('cargo' 'git' 'meson')
+makedepends=(
+  'cargo'
+  'git'
+  'meson'
+)
 checkdepends=('appstream-glib')
 source=("git+https://github.com/nate-xyz/paleta.git#tag=v$pkgver")
 sha256sums=('e4fd896fc1ab4112b8c26c5d24cb9a9262b10cb6c97551d84f6521bd1d19ca7c')
@@ -26,7 +30,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package () {
