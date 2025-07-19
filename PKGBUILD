@@ -11,7 +11,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=25.04.3
-pkgrel=1
+pkgrel=2
 arch=(
   'x86_64'
   'i686'
@@ -57,6 +57,7 @@ depends=(
   'kparts>=6'
   'kservice>=6'
   'ktexteditor>=6'
+  'kuserfeedback>=6'
   'kxmlgui>=6'
   'kwidgetsaddons>=6'
   'kwindowsystem>=6'
@@ -70,7 +71,6 @@ optdepends=(
   'clang: C and C++ LSP support.'
   'git: git-blame plugin.'
   'konsole: open a terminal in Kate.'
-  'kuserfeedback>=6'
   'kwallet>=6'
   'markdownpart: Markdown preview.'
   'pkgconf: To use the pkg-config files.'

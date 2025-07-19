@@ -1,7 +1,7 @@
 pkgbase = kate-root
 	pkgdesc = Advanced Text Editor from the KDE project, patched to be able to run as root.
 	pkgver = 25.04.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kate/
 	arch = x86_64
 	arch = i686
@@ -50,6 +50,7 @@ pkgbase = kate-root
 	depends = kparts>=6
 	depends = kservice>=6
 	depends = ktexteditor>=6
+	depends = kuserfeedback>=6
 	depends = kxmlgui>=6
 	depends = kwidgetsaddons>=6
 	depends = kwindowsystem>=6
@@ -60,7 +61,6 @@ pkgbase = kate-root
 	optdepends = clang: C and C++ LSP support.
 	optdepends = git: git-blame plugin.
 	optdepends = konsole: open a terminal in Kate.
-	optdepends = kuserfeedback>=6
 	optdepends = kwallet>=6
 	optdepends = markdownpart: Markdown preview.
 	optdepends = pkgconf: To use the pkg-config files.
