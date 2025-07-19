@@ -1,7 +1,7 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files with various contents, using perceptual diff for pictures
 	pkgver = 4.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dupeguru.voltaicideas.net/
 	arch = any
 	license = GPL3
@@ -24,7 +24,9 @@ pkgbase = dupeguru
 	conflicts = dupeguru-me
 	source = https://github.com/arsenetar/dupeguru/archive/refs/tags/4.3.1.tar.gz
 	source = 0001-fix-Replace-use-of-imp-with-importlib.patch
+	source = 0002-setuptools-sandbox-deprecation.patch
 	md5sums = 996f2a9bab1541c188f823e9647f341c
 	md5sums = d6874bc038efd92420517407665c7f69
+	md5sums = 479f7be4a4bf64b92baff59dff20b1fd
 
 pkgname = dupeguru
