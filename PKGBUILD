@@ -3,7 +3,7 @@
 
 pkgname='perl-crypt-jwt'
 pkgver='0.037'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="JSON Web Token (JWT, JWS, JWE) as defined by RFC7519, RFC7515, RFC7516"
 arch=('any')
 license=('Artistic-1.0')
