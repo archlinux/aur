@@ -39,24 +39,15 @@ build() {
 package() {
     cd "OpenVR-AdvancedSettings-$pkgver"
 
-    # Add .desktop file
-    mkdir -p "$pkgdir/usr/share/applications"
-    cp "src/package_files/linux/AdvancedSettings.desktop" "$pkgdir/usr/share/applications/"
-    sed -i 's/Exec=.*/Exec=\/opt\/AdvancedSettings\/AdvancedSettings/' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+    install -Dm644 "src/res/img/icons/thumbicon.png" "$pkgdir/opt/AdvancedSettings/AdvancedSettings.png"
 
-    # Add correct desktop icon to desktop file
-    sed -i 's/Icon=.*/Icon=\/opt\/AdvancedSettings\/AdvancedSettings.png/' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
-    # Dir doesn't exist before `make install`
-    mkdir -p "$pkgdir/opt/AdvancedSettings/"
-    cp "src/res/img/icons/thumbicon.png" "$pkgdir/opt/AdvancedSettings/AdvancedSettings.png"
-
-    # Make program use correct working dir
+    install -Dm644 "src/package_files/linux/AdvancedSettings.desktop" "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+    sed -i 's@Exec=.*@Exec=/opt/AdvancedSettings/AdvancedSettings@' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+    sed -i 's@Icon=.*@Icon=/opt/AdvancedSettings/AdvancedSettings.png@' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
     echo "Path=/opt/AdvancedSettings" >> "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
 
-    # Enable command line usage
-    mkdir -p "$pkgdir/usr/bin/"
+    install -d "$pkgdir"/usr/bin
     ln -s /opt/AdvancedSettings/AdvancedSettings "$pkgdir/usr/bin/ovras"
 
-    # Install
     make install
 }
