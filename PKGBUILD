@@ -9,7 +9,7 @@ license=('MIT')
 depends=('electron')
 makedepends=('npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('37a6ff424bf8637b4199eae7cb0c6548625e67c9aa635c03e18f23f063aadfcd')
+sha256sums=('328477e7bd9687c9a0f93165276859b3e8b55b9ca04a92d5f94f4559542720d7')
 
 build() {
   cd "$srcdir"
