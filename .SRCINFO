@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-builder
 	pkgdesc = An overview of the foundations of the ExtUtils::Builder Plan framework
 	pkgver = 0.017
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/ExtUtils-Builder
 	arch = any
 	license = Artistic-1.0

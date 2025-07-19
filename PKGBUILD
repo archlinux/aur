@@ -3,7 +3,7 @@
 
 pkgname='perl-extutils-builder'
 pkgver='0.017'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="An overview of the foundations of the ExtUtils::Builder Plan framework"
 arch=('any')
 license=('Artistic-1.0')
