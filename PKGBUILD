@@ -3,7 +3,7 @@
 
 pkgname='perl-ole-storage-lite'
 pkgver='0.22'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Simple Class for OLE document interface."
 arch=('any')
 license=('Artistic-1.0-Perl')
