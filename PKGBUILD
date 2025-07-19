@@ -1,8 +1,8 @@
 # Maintainer: James Pulec
 _npmname=cspell
-_npmver=8.18.0
+_npmver=9.2.0
 pkgname=nodejs-cspell # All lowercase
-pkgver=8.18.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc="A Spelling Checker for Code!"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(6e3f58bdf8ac4be027f076b5b7013e267179c895)
+sha1sums=(a3197a7583f632c0d16ef3c24da5c0009a43ef49)
 
 package() {
   cd $srcdir
