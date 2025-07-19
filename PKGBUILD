@@ -3,7 +3,7 @@
 
 pkgname='perl-date-range'
 pkgver='1.41'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="work with a range of dates"
 arch=('any')
 license=('PerlArtistic' 'GPL')
