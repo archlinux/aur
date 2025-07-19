@@ -1,6 +1,6 @@
 pkgname=osu-tachyon
 _pkgname=${pkgname%}
-pkgver=2025.715.0
+pkgver=2025.718.0
 pkgrel=1
 pkgdesc="osu!lazer unstable branch."
 arch=(x86_64)
