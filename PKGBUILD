@@ -2,7 +2,7 @@
 pkgname=arc_unpacker-git
 _pkgname=arc_unpacker
 pkgver=r2428.456834ec
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI tool for extracting images and sounds from visual novels."
 arch=(x86_64)
 url="https://github.com/vn-tools/arc_unpacker"
@@ -14,14 +14,12 @@ conflicts=('arc_unpacker')
 source=("$pkgname::git+https://github.com/vn-tools/arc_unpacker.git"
         'catch.hpp::https://raw.githubusercontent.com/catchorg/Catch2/v2.13.8/single_include/catch2/catch.hpp'
         'etc.patch'
-        'include_limits.patch'
-        'include_cstdint.patch'
+        'include.patch'
         'failing_tests.patch')
 sha256sums=('SKIP'
             'f5adf6a4c3237920421d51a11112904084043b015acf2c9058e8f36b92ab2921'
             'e8c02f338aca81df79f6d5c0e302322abd776b2aeb36eb0a57ee93335c0da216'
-            '83c82ea28e61b8acb296c33a1a8336c8ac54163b3fa0fd7edd57cd35d72bd671'
-            '91e33edbefc17afd2613d9b571d558f0df244dfb6c77d51c103ed3d72c488ec3'
+            'd2270c915ace563cd695532be5bd559c606dd061460b64945c606e8869c2622d'
             '61244eb2ec5ef7ccfb0a0532d51c256d2e99304098b143522f2bee8da3b8eac0')
 
 pkgver() {
@@ -39,9 +37,7 @@ prepare() {
   git apply "$srcdir/etc.patch"
 
   # fix includes
-  for p in "$srcdir"/include_*.patch; do
-    git apply "$p"
-  done
+  git apply "$srcdir/include.patch"
 
   # fix tests
   cp "$srcdir/catch.hpp" tests/test_support/catch.h
@@ -52,7 +48,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/bin/ -DCMAKE_BUILD_TYPE=Release .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/bin/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
   make
 }
 
