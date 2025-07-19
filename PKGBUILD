@@ -5,8 +5,11 @@ pkgrel=5
 pkgdesc="Déjà Dup Actions for Nemo File Manager"
 arch=('any')
 url="https://github.com/erickj/nemo-actions"
-license=('unknown')
-depends=('nemo' 'deja-dup')
+license=('LicenseRef-unknown')
+depends=(
+  'deja-dup'
+  'nemo'
+)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -15,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd nemo-actions
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
