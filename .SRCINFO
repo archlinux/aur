@@ -1,0 +1,14 @@
+pkgbase = bottom-nightly-autocomplete
+	pkgdesc = Autocompletion for bottom, a graphical process/system monitor
+	pkgver = nightly
+	pkgrel = 1
+	url = https://github.com/ClementTsang/bottom
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = bottom-nightly-bin
+	provides = bottom-autocomplete
+	source = bottom.tar.gz::https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = bottom-nightly-autocomplete
