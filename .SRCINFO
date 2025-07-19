@@ -1,0 +1,26 @@
+pkgbase = zenbrowser
+	pkgdesc = Performance oriented Firefox-based web browser (Minimal Modified PKGBUILD)
+	pkgver = 1.14.5b
+	pkgrel = 1
+	url = https://github.com/zen-browser/desktop
+	arch = x86_64
+	license = MPL-2.0
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = dbus-glib
+	depends = nss
+	depends = ttf-font
+	depends = systemd
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = libnotify: Notification integration
+	optdepends = pulse-native-provider: Audio support
+	provides = zenbrowser=1.14.5b
+	conflicts = zen-browser
+	conflicts = zen-browser-bin
+	conflicts = zenbrowser
+	options = !strip
+	source_x86_64 = https://github.com/zen-browser/desktop/releases/download/1.14.5b/zen.linux-x86_64.tar.xz
+	sha256sums_x86_64 = ce3f8952a5e468d6569dd6d86764221bbf2d4582bd6aaa4dc6e8ba3ca314858e
+
+pkgname = zenbrowser
