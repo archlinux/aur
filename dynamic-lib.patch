@@ -1,0 +1,11 @@
+--- src/pynvjitlink-0.7.0/CMakeLists.txt	2025-06-25 22:22:26.000000000 +0800
++++ src/pynvjitlink-0.7.0/CMakeLists.txt.new	2025-07-19 16:53:29.396105057 +0800
+@@ -16,7 +16,7 @@
+   # Require CUDA 12.2 Update 2 to avoid nvjitlink bugs
+   CUDAToolkit 12.2.140 REQUIRED
+ )
+-target_link_libraries(_nvjitlinklib PRIVATE CUDA::nvJitLink_static CUDA::nvptxcompiler_static)
++target_link_libraries(_nvjitlinklib PRIVATE CUDA::nvJitLink CUDA::nvptxcompiler_static)
+ 
+ target_compile_options(_nvjitlinklib PRIVATE -Werror -Wall)
+ 

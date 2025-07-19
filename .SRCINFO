@@ -1,6 +1,6 @@
 pkgbase = python-pynvjitlink
 	pkgdesc = nvJitLink Python binding
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/rapidsai/pynvjitlink
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = python-pynvjitlink
 	makedepends = cython
 	depends = cuda
 	depends = python
-	source = https://github.com/rapidsai/pynvjitlink/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 44cf5d3d7082b0ce54a06591e22f2cb7dcd1fd54bc654bdf96ad14c5c922868d
+	source = https://github.com/rapidsai/pynvjitlink/archive/refs/tags/v0.7.0.tar.gz
+	source = dynamic-lib.patch
+	sha256sums = 350abe5e45a9f137c947f8cd06095a02c982689e1ed174e4d9bd06ba675268ca
+	sha256sums = 56bdc91c0d769efed7e99bb36dd5168943e554d728a174e64e8b896f90c50444
 
 pkgname = python-pynvjitlink

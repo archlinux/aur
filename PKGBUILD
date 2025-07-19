@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=python-pynvjitlink
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="nvJitLink Python binding"
 url="https://github.com/rapidsai/pynvjitlink"
@@ -9,17 +9,16 @@ arch=('x86_64')
 license=('Apache-2.0')
 depends=('cuda' 'python')
 makedepends=('python-setuptools' 'cmake' 'python-scikit-build-core' 'python-rapids-build-backend' 'ninja' 'cython')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz" "dynamic-lib.patch")
 sha256sums=(
-    '44cf5d3d7082b0ce54a06591e22f2cb7dcd1fd54bc654bdf96ad14c5c922868d'
+    '350abe5e45a9f137c947f8cd06095a02c982689e1ed174e4d9bd06ba675268ca'
+    '56bdc91c0d769efed7e99bb36dd5168943e554d728a174e64e8b896f90c50444'
 )
 
-
-# prepare() {
-#     cd "$srcdir/pynvjitlink-$pkgver"
-#     patch -p1 "python/cudf/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
-# }
-
+prepare() {
+    cd "$srcdir/pynvjitlink-$pkgver"
+    patch -p1 CMakeLists.txt < "$srcdir/dynamic-lib.patch"
+}
 
 build() {
     cd "$srcdir/pynvjitlink-$pkgver"
