@@ -8,7 +8,7 @@ url="https://web.goodnotes.com"
 license=('MIT')
 depends=('electron')
 makedepends=('npm' 'nodejs')
-source=("$pkgname-$pkgver.tar.gz")
+source=("https://github.com/belanasaikiran/goodnotes-electron/releases/download/1.0.0/goodnotes-electron-1.0.0.tar.gz")
 sha256sums=('328477e7bd9687c9a0f93165276859b3e8b55b9ca04a92d5f94f4559542720d7')
 
 build() {
