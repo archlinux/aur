@@ -1,7 +1,7 @@
 # Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=uxn11-git
-pkgver=r288.897e0a5
+pkgver=r653.a18193a
 pkgrel=1
 pkgdesc='An emulator for the Uxn virtual stack-machine, written in ANSI C.'
 arch=('any')
@@ -19,13 +19,11 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	gcc -Os -DNDEBUG -g0 -s \
-		src/uxn.c \
-		src/devices/*.c \
-		src/uxn11.c -o uxn11 -lX11
+	make bin/uxn11
 }
 
 package() {
 	cd "$pkgname"
-	install -Dm755 uxn11 -t "${pkgdir}/usr/bin"
+	install -Dm644 doc/man/*.7 -t "${pkgdir}/usr/share/man/man7"
+	install -Dm755 bin/uxn11 -t "${pkgdir}/usr/bin"
 }

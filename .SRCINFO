@@ -1,6 +1,6 @@
 pkgbase = uxn11-git
 	pkgdesc = An emulator for the Uxn virtual stack-machine, written in ANSI C.
-	pkgver = r288.897e0a5
+	pkgver = r653.a18193a
 	pkgrel = 1
 	url = https://100r.co/site/uxn.html
 	arch = any
