@@ -60,7 +60,7 @@ _ensure_local_nvm() {
 
 prepare() {
   cd mullvadvpn-app
-  git submodule init
+  git submodule init dist-assets/binaries wireguard-go-rs/libwg/wireguard-go
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
   git config submodule.wireguard-go-rs/libwg/wireguard-go.url "$srcdir/wireguard-go"
   git -c protocol.file.allow=always submodule update
