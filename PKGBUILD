@@ -8,6 +8,9 @@ url="https://github.com/casperrr/termpix"
 license=('MIT')
 depends=('python' 'python-pillow' 'python-requests' 'python-validators')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/casperrr/termpix/archive/v$pkgver.tar.gz")
+# sha256sums=('b0248009114940d3f12b4df0c2126745a9182161756c2580da4675274320b4f2  v1.0.1.tar.gz')
+sha256sums=('SKIP')
 
 build() {
     cd "$startdir"
