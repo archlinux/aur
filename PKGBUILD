@@ -14,7 +14,7 @@ depends=('acpica'
          'swh-plugins')
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/honjow/device-quirks.git#tag=${_srctag}")
-sha256sums=('eba002d8f4d8e5a56aad795466b261ef428524347e71c6611152cb5a171d83b3')
+sha256sums=('1196e65a8d1d418fa355c34fe36cad91cb673d076d32d52c2abbae45c85d5df3')
 backup=("etc/device-quirks/device-quirks.conf")
 provides=("${_pkgbase}-git")
 conflicts=("${_pkgbase}-git" "${_pkgbase}-sk-git")
