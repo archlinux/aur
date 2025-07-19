@@ -8,7 +8,6 @@ pkgdesc="ClassIsland - 适用于班级大屏的课表小工具。社区维护 AU
 arch=('x86_64' 'aarch64')
 url='https://www.classisland.tech/'
 license=('GPL-3.0')
-depends=('dotnet-runtime-8.0-bin' 'dotnet-host-bin')
 options=('!strip' '!debug')
 
 source=("LICENSE.txt" "launcher.sh")
