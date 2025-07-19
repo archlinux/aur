@@ -1,0 +1,24 @@
+pkgbase = bwfmetaedit
+	pkgdesc = Supplies technical and tag information about a video or audio file
+	pkgver = 25.04
+	pkgrel = 1
+	url = http://mediaarea.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-base
+	makedepends = qt5-quickcontrols2
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	makedepends = ca-certificates
+	source = bwfmetaedit-25.04.tar.gz::https://github.com/MediaArea/BWFMetaEdit/archive/v25.04.tar.gz
+	md5sums = 682edde44eb8ffa3e8578e762bf78421
+
+pkgname = bwfmetaedit
+	pkgdesc = Supplies technical and tag information about a video or audio file (CLI)
+
+pkgname = bwfmetaedit-gui
+	pkgdesc = Supplies technical and tag information about a video or audio file (GUI)
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
