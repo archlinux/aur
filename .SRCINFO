@@ -17,6 +17,6 @@ pkgbase = chimeraos-device-quirks-sk
 	replaces = chimeraos-device-quirks-sk-git
 	backup = etc/device-quirks/device-quirks.conf
 	source = chimeraos-device-quirks::git+https://github.com/honjow/device-quirks.git#tag=v1.0.9
-	sha256sums = 1196e65a8d1d418fa355c34fe36cad91cb673d076d32d52c2abbae45c85d5df3
+	sha256sums = SKIP
 
 pkgname = chimeraos-device-quirks-sk
