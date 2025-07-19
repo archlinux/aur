@@ -1,6 +1,6 @@
 pkgbase = typstyle-bin
 	pkgdesc = Beautiful and reliable typst code formatter
-	pkgver = 0.13.14
+	pkgver = 0.13.16
 	pkgrel = 1
 	url = https://github.com/typstyle-rs/typstyle
 	arch = aarch64
@@ -12,11 +12,11 @@ pkgbase = typstyle-bin
 	optdepends = typst: For typst compilation
 	provides = typstyle
 	conflicts = typstyle
-	source_aarch64 = typstyle-aarch64-0.13.14::https://github.com/typstyle-rs/typstyle/releases/download/v0.13.14/typstyle-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 1920d66340d15d1aaba3983c1d543d679283de93f3ddcb78f144c485e843b0a6
-	source_x86_64 = typstyle-x86_64-0.13.14::https://github.com/typstyle-rs/typstyle/releases/download/v0.13.14/typstyle-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 5a8711ed8fc092ce46d8b5cc9617ebf39b3dfd23a723d83367aac099034a9690
-	source_armv7h = typstyle-armv7h-0.13.14::https://github.com/typstyle-rs/typstyle/releases/download/v0.13.14/typstyle-arm-unknown-linux-gnueabihf
-	sha256sums_armv7h = f42585b0ad3a91be18b37bea35a1c9b3f49d441abf54e6300d87ed7a29bc849c
+	source_aarch64 = typstyle-aarch64-0.13.16::https://github.com/typstyle-rs/typstyle/releases/download/v0.13.16/typstyle-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 57ec033da0f28553d7f5b148c18d6081908255ed9ba4f248be64c288a8f505b6
+	source_x86_64 = typstyle-x86_64-0.13.16::https://github.com/typstyle-rs/typstyle/releases/download/v0.13.16/typstyle-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = b38e325c6f499683a2af263edd6192379bf02224f944966fb9e00089f79feb86
+	source_armv7h = typstyle-armv7h-0.13.16::https://github.com/typstyle-rs/typstyle/releases/download/v0.13.16/typstyle-arm-unknown-linux-gnueabihf
+	sha256sums_armv7h = 6e9aa6301076a279194c4662564aa1ff0e68948c2734a732ba4353631a7f6e82
 
 pkgname = typstyle-bin
