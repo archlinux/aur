@@ -2,7 +2,7 @@
 
 pkgname=python-p115updatedb
 _name=${pkgname#python-}
-pkgver=0.0.11.2
+pkgver=0.0.12
 pkgrel=1
 epoch=
 pkgdesc="把 115 网盘的文件列表导出到数据库"
@@ -30,7 +30,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('7f150469673bc883bfd4cf893798b83848127326e881c4ce960e4e255532eeeb')
+sha256sums=('4b46595bac10fbd411a97a488d810a866a84ef945d11ff57a69931e36e673ace')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
