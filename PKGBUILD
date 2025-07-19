@@ -7,9 +7,18 @@ pkgdesc="Nemo extension that makes changing folders icons easy!"
 arch=('any')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'nemo-python')
-makedepends=('git' 'meson')
-checkdepends=('appstream-glib' 'libcanberra')
+depends=(
+  'gtk3'
+  'nemo-python'
+)
+makedepends=(
+  'git'
+  'meson'
+)
+checkdepends=(
+  'appstream-glib'
+  'libcanberra'
+)
 conflicts=('nemo-ext-git' 'nemo-compare')
             # See https://github.com/bilelmoussaoui/nautilus-folder-icons/issues/34
 _commit=b0ae536292177cbdb8c26d8fdb4981959aee3ab4  # v3.0.1
@@ -17,7 +26,7 @@ source=("git+https://github.com/bilelmoussaoui/nautilus-folder-icons.git#commit=
 sha256sums=('9038c7eb21c03ddaf86049e9a100b8ec8fbfd5b5cf169efe9fdae7333775439c')
 
 prepare() {
-  cd "$srcdir/nautilus-folder-icons"
+  cd nautilus-folder-icons
 
   # Fix for 'Function does not take positional arguments'
   # https://github.com/bilelmoussaoui/nautilus-folder-icons/issues/37
@@ -31,9 +40,9 @@ build() {
 
 check() {
   export NO_AT_BRIDGE=1
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
