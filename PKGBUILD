@@ -3,11 +3,11 @@
 
 pkgname='slpcli-git'
 pkgver='r63.484b39e'
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft: Java Edition CLI Server List Ping implementation in C++."
 arch=('x86_64')
 url="https://github.com/Urpagin/slpcli"
-license=('0BSD')
+license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'ninja')
 _asio_tag='1-34-2'
