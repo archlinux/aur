@@ -17,6 +17,8 @@ source=(
 )
 noextract=("${_appimage}")
 sha256sums=('bdae9020323da57818be30106811e6da47eb51e2049b5c7e22e75abaa5e0a61d')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 prepare() {
     cd "${srcdir}"
