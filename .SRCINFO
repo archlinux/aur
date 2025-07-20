@@ -1,0 +1,12 @@
+pkgbase = guessgame
+	pkgdesc = A simple Rust-based number guessing game
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/praneethashok/guessgame
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = guessgame::git+https://github.com/praneethashok/guessgame.git
+	md5sums = SKIP
+
+pkgname = guessgame
