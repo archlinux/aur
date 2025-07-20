@@ -6,7 +6,10 @@ pkgdesc="System76 Pop sound theme"
 arch=('any')
 url="https://github.com/pop-os/gtk-theme"
 license=('GPL-3.0-or-later')
-makedepends=('git' 'setconf')
+makedepends=(
+  'git'
+  'setconf'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'pop-gtk-theme')
 source=('git+https://github.com/pop-os/gtk-theme.git')
