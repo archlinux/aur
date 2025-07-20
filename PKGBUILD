@@ -1,5 +1,5 @@
 pkgname=updater
-pkgver=2.1
+pkgver=2.2
 pkgrel=2
 pkgdesc="This is an updater."
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=("https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/mai
 sha256sums=('SKIP')
 
 build() {
-  return 0
+  chmod +x "$srcdir/testpackage-main/code.sh"
 }
 
 package() {
