@@ -7,14 +7,14 @@
 
 pkgname=libtcod
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
 url="https://github.com/libtcod/libtcod"
 license=('BSD')
 depends=('sdl3' 'stb' 'lodepng' 'libutf8proc' 'zlib')
 makedepends=('cmake')
-provides=("${pkgname}.a")
+provides=("${pkgname}.so")
 changelog=CHANGELOG.md
 source=(
   "https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz"
@@ -40,6 +40,7 @@ build() {
     -D CMAKE_PREFIX_PATH="${srcdir}"
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_BUILD_TYPE=Release
+    -D BUILD_SHARED_LIBS=ON
     -D LIBTCOD_SAMPLES=OFF
     -D LIBTCOD_TESTS=OFF
     -D LIBTCOD_SDL3="find_package"
