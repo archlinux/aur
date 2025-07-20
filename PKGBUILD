@@ -17,7 +17,7 @@ sha256sums=('5c7d6407ad68e219d8038e8dd472ba82a50b570df995b6bd6ebdb6ef4a63aa93')
 
 pkgver() {
   cd proot
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
