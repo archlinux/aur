@@ -13,11 +13,11 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  cargo build
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 calcli "$pkgdir/usr/bin/calcli"
+  install -Dm755 target/debug/calcli "$pkgdir/usr/bin/calcli"
 }
 
