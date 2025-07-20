@@ -1,4 +1,4 @@
-pkgbase = claude-monitor
+pkgbase = claude-monitor-git
 	pkgdesc = A real-time terminal monitoring tool for Claude AI token usage
 	pkgver = 3.0.4
 	pkgrel = 1
@@ -15,9 +15,9 @@ pkgbase = claude-monitor
 	depends = python-pytz
 	depends = python-pydantic
 	depends = python-pydantic-settings
-	provides = claude-monitor
-	conflicts = claude-monitor-git
-	source = claude-monitor-3.0.4.tar.gz::https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor/archive/refs/tags/v3.0.4.tar.gz
+	provides = claude-monitor-git
+	conflicts = claude-monitor
+	source = claude-monitor-git-3.0.4.tar.gz::https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor/archive/refs/tags/v3.0.4.tar.gz
 	sha256sums = SKIP
 
-pkgname = claude-monitor
+pkgname = claude-monitor-git

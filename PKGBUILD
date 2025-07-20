@@ -1,5 +1,5 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
-pkgname=claude-monitor
+pkgname=claude-monitor-git
 pkgver=3.0.4
 pkgrel=1
 pkgdesc="A real-time terminal monitoring tool for Claude AI token usage"
@@ -8,8 +8,8 @@ url="https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor"
 license=('MIT')
 depends=('python>=3.9' 'python-httpx' 'python-rich' 'python-pytz' 'python-pydantic' 'python-pydantic-settings')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-provides=('claude-monitor')
-conflicts=('claude-monitor-git')
+provides=('claude-monitor-git')
+conflicts=('claude-monitor')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
