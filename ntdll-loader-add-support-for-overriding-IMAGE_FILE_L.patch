@@ -1,4 +1,4 @@
-From 245dfe63a720eae04890a8d3e0f74ebae800ffbd Mon Sep 17 00:00:00 2001
+From c28933300c7f231c73be544b6b4aa20f9b470444 Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@valvesoftware.com>
 Date: Wed, 17 Oct 2018 04:13:37 -0700
 Subject: [PATCH] ntdll/loader: add support for overriding
@@ -7,12 +7,12 @@ Subject: [PATCH] ntdll/loader: add support for overriding
 Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
 ---
  dlls/kernel32/heap.c           |  8 +++++++-
- dlls/ntdll/ntdll.spec          |  1 +
+ dlls/ntdll/ntdll.spec          |  3 +++
  dlls/ntdll/signal_arm64ec.c    |  1 +
  dlls/ntdll/unix/unix_private.h |  2 ++
  dlls/ntdll/unix/virtual.c      | 22 ++++++++++++++++++++--
  dlls/wow64/system.c            |  6 ++++++
- 6 files changed, 37 insertions(+), 3 deletions(-)
+ 6 files changed, 39 insertions(+), 3 deletions(-)
 
 diff --git a/dlls/kernel32/heap.c b/dlls/kernel32/heap.c
 index 1ec2f5cce0d..10f6895478e 100644
@@ -55,31 +55,33 @@ index 1ec2f5cce0d..10f6895478e 100644
          if (lpBuffer->dwTotalPhys > MAXLONG) lpBuffer->dwTotalPhys = MAXLONG;
          if (lpBuffer->dwAvailPhys > MAXLONG) lpBuffer->dwAvailPhys = MAXLONG;
 diff --git a/dlls/ntdll/ntdll.spec b/dlls/ntdll/ntdll.spec
-index 620d96a5992..b3d93326d8c 100644
+index 7c2e494e4ad..7dff2b6a0eb 100644
 --- a/dlls/ntdll/ntdll.spec
 +++ b/dlls/ntdll/ntdll.spec
-@@ -1760,3 +1760,4 @@
- # Filesystem
- @ stdcall -syscall wine_nt_to_unix_file_name(ptr ptr ptr long)
- @ stdcall -syscall wine_unix_to_nt_file_name(str ptr ptr)
+@@ -1757,3 +1757,6 @@
+ @ cdecl wine_get_version()
+ @ cdecl wine_get_build_id()
+ @ cdecl wine_get_host_version(ptr ptr)
++
++# Filesystem
 +@ stdcall -syscall __wine_needs_override_large_address_aware()
 diff --git a/dlls/ntdll/signal_arm64ec.c b/dlls/ntdll/signal_arm64ec.c
-index 4505aeacfba..d64647f7b45 100644
+index 0f4b55b60c4..001da1327a7 100644
 --- a/dlls/ntdll/signal_arm64ec.c
 +++ b/dlls/ntdll/signal_arm64ec.c
-@@ -581,6 +581,7 @@ DEFINE_SYSCALL(NtWriteVirtualMemory, (HANDLE process, void *addr, const void *bu
+@@ -596,6 +596,7 @@ DEFINE_SYSCALL(NtWriteFileGather, (HANDLE file, HANDLE event, PIO_APC_ROUTINE ap
+ DEFINE_SYSCALL(NtWriteRequestData, (HANDLE handle, LPC_MESSAGE *request, ULONG id, void *buffer, ULONG len, ULONG *retlen))
+ DEFINE_SYSCALL(NtWriteVirtualMemory, (HANDLE process, void *addr, const void *buffer, SIZE_T size, SIZE_T *bytes_written))
  DEFINE_SYSCALL(NtYieldExecution, (void))
- DEFINE_SYSCALL(wine_nt_to_unix_file_name, (const OBJECT_ATTRIBUTES *attr, char *nameA, ULONG *size, UINT disposition))
- DEFINE_SYSCALL(wine_unix_to_nt_file_name, (const char *name, WCHAR *buffer, ULONG *size))
 +DEFINE_SYSCALL_(BOOL, __wine_needs_override_large_address_aware, (void))
  
  NTSTATUS SYSCALL_API NtAllocateVirtualMemory( HANDLE process, PVOID *ret, ULONG_PTR zero_bits,
                                                SIZE_T *size_ptr, ULONG type, ULONG protect )
 diff --git a/dlls/ntdll/unix/unix_private.h b/dlls/ntdll/unix/unix_private.h
-index 2f956af6966..007b4fb85bc 100644
+index fa38f4b87ca..e2f3a5d1e44 100644
 --- a/dlls/ntdll/unix/unix_private.h
 +++ b/dlls/ntdll/unix/unix_private.h
-@@ -575,4 +575,6 @@ static inline NTSTATUS map_section( HANDLE mapping, void **ptr, SIZE_T *size, UL
+@@ -590,4 +590,6 @@ static inline NTSTATUS map_section( HANDLE mapping, void **ptr, SIZE_T *size, UL
                                 0, NULL, size, ViewShare, 0, protect );
  }
  
@@ -87,10 +89,10 @@ index 2f956af6966..007b4fb85bc 100644
 +
  #endif /* __NTDLL_UNIX_PRIVATE_H */
 diff --git a/dlls/ntdll/unix/virtual.c b/dlls/ntdll/unix/virtual.c
-index 909c089cf07..31fa04fdab3 100644
+index e733e3ffdd6..0e28d79caca 100644
 --- a/dlls/ntdll/unix/virtual.c
 +++ b/dlls/ntdll/unix/virtual.c
-@@ -4904,6 +4904,24 @@ static void virtual_release_address_space(void)
+@@ -4890,6 +4890,24 @@ static void virtual_release_address_space(void)
  
  #endif  /* _WIN64 */
  
@@ -115,7 +117,7 @@ index 909c089cf07..31fa04fdab3 100644
  
  /***********************************************************************
   *           virtual_set_large_address_space
-@@ -4915,7 +4933,7 @@ void virtual_set_large_address_space(void)
+@@ -4901,7 +4919,7 @@ void virtual_set_large_address_space(void)
      if (is_win64)
      {
          if (is_wow64())
@@ -124,7 +126,7 @@ index 909c089cf07..31fa04fdab3 100644
  #ifndef __APPLE__  /* don't free the zerofill section on macOS */
          else if ((main_image_info.DllCharacteristics & IMAGE_DLLCHARACTERISTICS_HIGH_ENTROPY_VA) &&
                   (main_image_info.DllCharacteristics & IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE))
-@@ -4924,7 +4942,7 @@ void virtual_set_large_address_space(void)
+@@ -4910,7 +4928,7 @@ void virtual_set_large_address_space(void)
      }
      else
      {
@@ -134,10 +136,10 @@ index 909c089cf07..31fa04fdab3 100644
      }
      user_space_limit = working_set_limit = address_space_limit;
 diff --git a/dlls/wow64/system.c b/dlls/wow64/system.c
-index 5f3056a4179..2f466d869dd 100644
+index fd10a0585ce..933a594f29b 100644
 --- a/dlls/wow64/system.c
 +++ b/dlls/wow64/system.c
-@@ -855,3 +855,9 @@ NTSTATUS WINAPI wow64_NtWow64GetNativeSystemInformation( UINT *args )
+@@ -857,3 +857,9 @@ NTSTATUS WINAPI wow64_NtWow64GetNativeSystemInformation( UINT *args )
          return STATUS_INVALID_INFO_CLASS;
      }
  }
@@ -148,5 +150,5 @@ index 5f3056a4179..2f466d869dd 100644
 +    return __wine_needs_override_large_address_aware();
 +}
 -- 
-2.49.0
+2.50.1
 

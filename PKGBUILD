@@ -6,14 +6,14 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.11.r0.gcad35b3c811
-pkgrel=2
+pkgver=10.12.r91.ge44737278a4
+pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
   30-win32-aliases.conf
   wine-binfmt.conf
-  ntsync-10.11-staging.patch
+  ntsync-10.12-staging.patch
   7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
@@ -25,6 +25,7 @@ source=(
   kernelbase-Fix-uninitialized-structs-in-OpenThread.patch
   winecfg-Add-tweaks-tab-page.patch
   ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch
+  Add-workarounds-for-game-launchers.patch
 )
 
 sha256sums=(
@@ -32,7 +33,7 @@ sha256sums=(
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  'fd08ab9ff881d66148fff96ae4761c0dcbf97b0d62bf90f89e7c536302c3830d'
+  '889ee2bd0da2042bf3dda13782cf85945f57512e043eace850a53a3fd0856516'
   'a7e69169f2869a71e6eed3fe01116629ea889c26d6a7c80b48945d88d9a2a09c'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
@@ -43,7 +44,8 @@ sha256sums=(
   '261f59b60bdb9d4adecdb2c6cc1f0089e65e9dbd2141b4bfa91d8875716a01b1'
   'ab84b21a5b2ee097ff19c6ccf029fc25d2e43f04987e8e0e24a8ef7aeb1af322'
   '27e451af4e7d512c6247cf5d1b7ec4b31f67768469e707e37ac741468fde1d7f'
-  'e7cf0af8f12f8c49b5116beb4d1723cae5167bf0456f6233f98541b102f3d65c'
+  'bc3d772a8944661a2958571a943d4f77c23bf796a7536425508ced164c692ad7'
+  '07b0cbe87d08ce9272c15870acfc4f8a467990fc1b4405329e96d76c23f0fc58'
 )
 
 pkgdesc="Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)"
@@ -114,10 +116,11 @@ prepare() {
   cd wine
 
   # apply wine-staging patchset
-  ../wine-staging/staging/patchinstall.py --backend=git-apply --all
+  ../wine-staging/staging/patchinstall.py --backend=git-apply --all \
+    -W server-Signal_Thread
 
-  # NTSync for Wine 10.11
-  patch -Np1 -i "${srcdir}/ntsync-10.11-staging.patch"
+  # NTSync for Wine 10.12
+  patch -Np1 -i "${srcdir}/ntsync-10.12-staging.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
   patch -Np1 -i "${srcdir}/0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch"
@@ -135,7 +138,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch"
 
   # Fixes "The explorer process failed to start" issue
-  patch -Np1 -i "${srcdir}/Avoid-winemenubuilder-to-startup-explorer.exe.patch"
+  #patch -Np1 -i "${srcdir}/Avoid-winemenubuilder-to-startup-explorer.exe.patch"
 
   # Fixes struct alignment inside kernelbase.OpenThread()
   # Fixes: Hogwarts Legacy
@@ -147,6 +150,9 @@ prepare() {
   # Patch from Proton. Works only if WINE_LARGE_ADDRESS_AWARE environment
   # variable is specified.
   patch -Np1 -i "${srcdir}/ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch"
+
+  # Fix black windows in some launchers when using winewayland
+  patch -Np1 -i "${srcdir}/Add-workarounds-for-game-launchers.patch"
 
   ./dlls/winevulkan/make_vulkan
   ./tools/make_requests
