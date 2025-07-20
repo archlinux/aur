@@ -1,0 +1,13 @@
+pkgbase = guile-websocket
+	pkgdesc = A guile implementation of the WebSocket protocol as defined by RFC 6455.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://dthompson.us/projects/guile-websocket.html
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = guile>=3.0
+	depends = guile>=3.0
+	source = https://files.dthompson.us/releases/guile-websocket/guile-websocket-0.2.0.tar.gz
+	md5sums = 9b7f45fd0f4fb4722599d0bcf041bcbc
+
+pkgname = guile-websocket
