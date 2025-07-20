@@ -1,6 +1,6 @@
 pkgbase = usql
 	pkgdesc = A universal command-line interface for SQL databases
-	pkgver = 0.19.24
+	pkgver = 0.19.25
 	pkgrel = 1
 	url = https://github.com/xo/usql
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = usql
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = usql-0.19.24.tar.gz::https://github.com/xo/usql/archive/v0.19.24.tar.gz
-	sha256sums = b4a78bf942754dfb835710533a25a83f52d0cafb3a4caf896a92398886b14b1c
+	source = usql-0.19.25.tar.gz::https://github.com/xo/usql/archive/v0.19.25.tar.gz
+	sha256sums = 5c578e4484799e7007bce5b7de2955c16586ddb4088d2fbf030efee46c75faf0
 
 pkgname = usql
