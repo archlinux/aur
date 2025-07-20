@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.5.9
+pkgver=0.5.10
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
@@ -10,10 +10,10 @@ license=('GPL3')
 pkgdesc='A Bang-like card game'
 depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'qt6-shadertools' 'libgit2' 'lua' 'sqlite' 'openssl'
-  'readline' )
+  'readline' 'lua-socket' 'lua-filesystem' 'lua-posix' )
 makedepends=('cmake' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('348dbb427161f549e3f5f7fe2253cc6de45351c5d0435167733874a4ad79b663')
+sha256sums=('2abc62a573f2836f3ba45e2131a67a52cccfdd17a314b48a7432d5734dc0dc15')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
@@ -24,6 +24,10 @@ build() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
   mkdir build && cd build
   cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel
+  make
+
+  cd ..
+  cd src/swig/qrandom
   make
 }
 
@@ -38,4 +42,5 @@ package() {
 
   install -Dm644 image/icon.png ${pkgdir}/usr/share/icons/freekill_logo.png
   install -Dm644 freekill.desktop ${pkgdir}/usr/share/applications/freekill.desktop
+  install -Dm755 src/swig/qrandom/freekill-qrandomgen.so ${pkgdir}/usr/lib/lua/5.4/freekill-qrandomgen.so
 }
