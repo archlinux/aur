@@ -1,0 +1,20 @@
+pkgbase = slpcli-git
+	pkgdesc = A Minecraft: Java Edition CLI Server List Ping implementation in C++.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Urpagin/slpcli
+	arch = x86_64
+	license = 0BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = gcc-libs
+	provides = slpcli
+	conflicts = slpcli
+	source = slpcli::git+https://github.com/Urpagin/slpcli.git
+	source = asio-1-34-2.tar.gz::https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-34-2.tar.gz
+	sha256sums = SKIP
+	sha256sums = f3bac015305fbb700545bd2959fbc52d75a1ec2e05f9c7f695801273ceb78cf5
+
+pkgname = slpcli-git
