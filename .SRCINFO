@@ -1,7 +1,7 @@
 pkgbase = scrapscript-git
 	pkgdesc = A functional, content-addressable programming language
 	pkgver = r428.467a577
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tekknolagi/scrapscript
 	arch = any
 	license = MIT

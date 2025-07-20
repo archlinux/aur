@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="scrapscript-git"
 pkgver=r428.467a577
-pkgrel=1
+pkgrel=2
 pkgdesc="A functional, content-addressable programming language"
 arch=('any')
 url="https://github.com/tekknolagi/scrapscript"
@@ -23,7 +23,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/scrapscript"
     ./util/build-com
-    printf "%b" "\n\n------------------\nInstalled as \e[1;34mscrap\e[0m\n------------------\n\n"
 }
 
 package() {
@@ -31,4 +30,8 @@ package() {
     install -Dm755 "$srcdir"/scrapscript/scrapscript.com "$pkgdir/usr/lib/scrapscript/scrapscript.com"
     install -Dm755 "$srcdir"/scrapscript/scrapscript.py "$pkgdir/usr/lib/scrapscript/scrapscript.py"
     install -Dm644 "$srcdir"/scrapscript/README.md "$pkgdir/usr/share/doc/scrapscript"
+}
+
+post_install() {
+	printf "%b" "\n\n------------------\nInstalled as \e[1;34mscrap\e[0m\n------------------\n\n"
 }
