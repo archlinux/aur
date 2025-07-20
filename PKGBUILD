@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=()
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/0drng/nywida/archive/$pkgver.tar.gz")
-sha256sums=('4d3a0da806fcb52d09aefdb31b5f2ea3ce9e8915e1bb48ba38061623df611a97')
+sha256sums=('bd9e9b073520904f45dcdbdb292819c417ac6e53087dafef6efab366dbfcbe78')
 OPTIONS=(!debug)
 
 prepare() {
