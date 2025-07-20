@@ -2,8 +2,8 @@
 
 author=0drng
 pkgname=nyw
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc='Declarative way to manage your packages independent of the system'
 url='https://github.com/0drng/nyw'
 license=()
@@ -11,7 +11,7 @@ makedepends=('cargo')
 depends=()
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$author/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('9b81f0affb04528fbfa590253b662a0665afb0c43e4398a6c1cca4b7e2ea8e6f')
+sha256sums=('803ab2a1e8518a108908ad5f9e1cb16d6ef1ce69e9c6a9c433ec04f0740e4720')
 OPTIONS=(!debug)
 
 prepare() {
