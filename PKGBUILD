@@ -1,6 +1,11 @@
 pkgname=updater
+<<<<<<< HEAD
 pkgver=2.8
 pkgrel=2
+=======
+pkgver=3.2
+pkgrel=3
+>>>>>>> 3e1c1be (Update package to version 3.2)
 pkgdesc="This is an updater."
 arch=('x86_64')
 url="https://test.com"
