@@ -1,0 +1,56 @@
+--- Audio-Scan-1.01/Scan.xs	2018-07-10 05:07:55.000000000 +0200
++++ Audio-Scan-1.01.fixed/Scan.xs	2025-07-20 18:51:16.045338207 +0200
+@@ -214,7 +214,7 @@
+ MODULE = Audio::Scan		PACKAGE = Audio::Scan
+ 
+ HV *
+-_scan( char *, char *suffix, PerlIO *infile, SV *path, int filter, int md5_size, int md5_offset )
++_scan( SV *self, char *suffix, PerlIO *infile, SV *path, int filter, int md5_size, int md5_offset )
+ CODE:
+ {
+   taghandler *hdl;
+@@ -266,7 +266,7 @@
+   RETVAL
+   
+ int
+-_find_frame( char *, char *suffix, PerlIO *infile, SV *path, int offset )
++_find_frame( SV *self, char *suffix, PerlIO *infile, SV *path, int offset )
+ CODE:
+ {
+   taghandler *hdl;
+@@ -282,7 +282,7 @@
+   RETVAL
+ 
+ HV *
+-_find_frame_return_info( char *, char *suffix, PerlIO *infile, SV *path, int offset )
++_find_frame_return_info( SV *self, char *suffix, PerlIO *infile, SV *path, int offset )
+ CODE:
+ {
+   taghandler *hdl = _get_taghandler(suffix);
+@@ -306,7 +306,7 @@
+   RETVAL
+ 
+ int
+-is_supported(char *, SV *path)
++is_supported(SV *self, SV *path)
+ CODE:
+ {
+   char *suffix = strrchr( SvPVX(path), '.' );
+@@ -322,7 +322,7 @@
+   RETVAL
+ 
+ SV *
+-type_for(char *, SV *suffix)
++type_for(SV *self, SV *suffix)
+ CODE:
+ {
+   taghandler *hdl = NULL;
+@@ -360,7 +360,7 @@
+   RETVAL
+ 
+ AV *
+-extensions_for(char *, SV *type)
++extensions_for(SV *self, SV *type)
+ CODE:
+ {
+   int i, j;
