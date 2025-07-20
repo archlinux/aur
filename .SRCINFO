@@ -1,6 +1,6 @@
 pkgbase = genwallet-git
 	pkgdesc = Ethereum wallet generator with pattern matching
-	pkgver = 0.1.0.r6.ef43e07
+	pkgver = 0.1.0.r18.3c07e09
 	pkgrel = 1
 	url = https://github.com/kewlfft/genwallet
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = genwallet-git
 	makedepends = cargo
 	makedepends = libsecp256k1
 	makedepends = pkg-config
+	depends = gcc-libs
 	source = genwallet-git::git+https://github.com/kewlfft/genwallet.git
 	sha256sums = SKIP
 
