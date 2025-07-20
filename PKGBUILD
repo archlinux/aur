@@ -1,7 +1,7 @@
 # Maintainer: Dominik 0drng <dominik.contact@proton.me>
 
 pkgname=nywida
-pkgver=0.1.2alpha
+pkgver=0.1.3beta
 pkgrel=1
 pkgdesc='Declarative package helper for pacman and existing aur helper'
 url='https://github.com/0drng/nywida'
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=()
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/0drng/nywida/archive/$pkgver.tar.gz")
-sha256sums=('92e350ca0e6210d2e3c15ad899fc36d810ea360aebed471dba71f767fcb57adb')
+sha256sums=('4d3a0da806fcb52d09aefdb31b5f2ea3ce9e8915e1bb48ba38061623df611a97')
 OPTIONS=(!debug)
 
 prepare() {
