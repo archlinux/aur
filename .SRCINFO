@@ -1,7 +1,7 @@
 pkgbase = wfview
 	pkgdesc = Interface for Icom transceivers
 	pkgver = 2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wfview.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,10 @@ pkgbase = wfview
 	depends = opus
 	depends = hidapi
 	depends = portaudio
-	provides = wfview
+	depends = glibc
+	depends = qt5-base
+	depends = systemd-libs
+	depends = gcc-libs
 	source = https://gitlab.com/eliggett/wfview/-/archive/v2.11/wfview-v2.11.tar.gz
 	md5sums = cbd4c4fec0a6bf922ccdc71e4a2ebe88
 
