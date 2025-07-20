@@ -5,7 +5,7 @@ _get_latest_version() {
     curl -s "https://api.github.com/repos/andyyoungm/muenzo/releases/latest" | jq -r '.tag_name' | sed 's/^v//'
 }
 
-pkgname=noteey
+pkgname=noteey-bin
 pkgver=$(_get_latest_version)
 pkgrel=1
 pkgdesc="Noteey - A powerful note-taking application"
