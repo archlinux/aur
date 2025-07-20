@@ -1,0 +1,4 @@
+[libisocodes]
+source = "git"
+git = "https://github.com/toddy15/libisocodes.git"
+prefix = "v"
