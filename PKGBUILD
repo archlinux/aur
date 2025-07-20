@@ -1,6 +1,5 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
 pkgname=python-backoff
 _name=${pkgname#python-}
 pkgver=2.2.1
@@ -10,8 +9,16 @@ arch=('any')
 url="https://github.com/litl/backoff"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-checkdepends=('python-pytest-asyncio' 'python-responses')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-poetry-core'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest-asyncio'
+  'python-responses'
+)
 source=("$_name-$pkgver.tar.gz::https://github.com/litl/backoff/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7b92e74aac38ec49e97ac899c96c882496c7b09cf4235e8da205e62b2c6c001d')
 
