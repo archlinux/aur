@@ -1,0 +1,4 @@
+[zenith-theme-gtk]
+source = "git"
+git = "https://github.com/vmkspv/zenith-theme-gtk.git"
+prefix = "v"
