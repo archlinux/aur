@@ -13,11 +13,10 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo build --release
+  cargo build
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 target/release/guessgame "$pkgdir/usr/bin/guessgame"
+  install -Dm755 target/debug/guessgame "$pkgdir/usr/bin/guessgame"
 }
-
