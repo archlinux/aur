@@ -1,9 +1,9 @@
 # Maintainer: Frédéric Logier <fredix@protonmail.com>
 _name=notedeck
-_tag=0.4.0
+_tag=0.5.2
 pkgname=notedeck-git
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.2.r0.ge9ee1b5
+pkgrel=1
 epoch=
 pkgdesc="The nostr browser"
 arch=('x86_64' 'aarch64')
