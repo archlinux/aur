@@ -1,6 +1,6 @@
 pkgname=updaterv2
-pkgver=5.0
-pkgrel=5
+pkgver=4.7
+pkgrel=4
 pkgdesc="This is an updater."
 arch=('x86_64')
 url="https://test.com"

@@ -1,7 +1,7 @@
 pkgbase = updaterv2
 	pkgdesc = This is an updater.
-	pkgver = 5.0
-	pkgrel = 5
+	pkgver = 4.7
+	pkgrel = 4
 	url = https://test.com
 	arch = x86_64
 	license = MIT
