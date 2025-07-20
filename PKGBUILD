@@ -7,7 +7,7 @@ pkgname=(
   libcheese
 )
 pkgver=44.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -70,9 +70,8 @@ check() (
   export GSETTINGS_SCHEMA_DIR="$PWD/cheese/data"
   glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
 
-# NOTE: Fails with g_strsplit: assertion 'string != NULL' failed
-#  dbus-run-session xvfb-run -s '-nolisten local' \
-#    meson test -C build --print-errorlogs
+  dbus-run-session xvfb-run -s '-nolisten local' \
+    meson test -C build --print-errorlogs
 )
 
 _pick() {
@@ -87,7 +86,6 @@ _pick() {
 
 package_cheese() {
   depends+=("libcheese=$pkgver-$pkgrel")
-  groups=(gnome-extra)
 
   meson install -C build --destdir "$pkgdir"
 
