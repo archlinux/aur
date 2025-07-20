@@ -18,9 +18,7 @@ makedepends=(
   'python-setuptools-rust'
   'python-wheel'
 )
-optdepends=(
-  'python-openai'
-)
+optdepends=('python-openai')
 source=("$_name-$pkgver.tar.gz::https://github.com/jelmer/buildlog-consultant/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2bc1fa8245547f7bebcc02cccdcffd4a699c772ce35ac6f78f6fd22da49fa1e3')
 
