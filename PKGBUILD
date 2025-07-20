@@ -1,31 +1,26 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
-pkgname=claude-monitor-git
-pkgver=r73.63367dc
+pkgname=claude-monitor
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A real-time terminal monitoring tool for Claude AI token usage"
 arch=('any')
 url="https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor"
 license=('MIT')
-depends=('python>=3.8' 'python-pytz' 'python-rich')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+depends=('python>=3.9' 'python-httpx' 'python-rich' 'python-pytz' 'python-pydantic' 'python-pydantic-settings')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 provides=('claude-monitor')
-conflicts=('claude-monitor')
-source=("git+https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor.git")
-md5sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/Claude-Code-Usage-Monitor"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+conflicts=('claude-monitor-git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/Claude-Code-Usage-Monitor"
-    python -m build --wheel --no-isolation
+    cd "$srcdir/Claude-Code-Usage-Monitor-$pkgver"
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/Claude-Code-Usage-Monitor"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$srcdir/Claude-Code-Usage-Monitor-$pkgver"
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
