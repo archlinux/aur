@@ -1,5 +1,4 @@
-# Maintainer: 
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-restructuredtext_lint
 _name=restructuredtext-lint
 pkgver=1.4.0
