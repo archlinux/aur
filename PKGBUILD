@@ -2,7 +2,7 @@
 
 pkgname=zenbrowser
 pkgver=1.14.5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Performance oriented Firefox-based web browser (Minimal Modified PKGBUILD)"
 arch=('x86_64')
 url="https://github.com/zen-browser/desktop"
@@ -31,6 +31,7 @@ Exec=/opt/$pkgname/zen %u
 Icon=$pkgname
 Type=Application
 Terminal=false
+StartupWMClass=zen
 Categories=Network;WebBrowser;
 EOF
 
