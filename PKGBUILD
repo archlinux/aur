@@ -2,15 +2,13 @@
 # (The email is base64-encoded)
 
 pkgname='slpcli-git'
-pkgver=r63.484b39e
+pkgver='r63.484b39e'
 pkgrel=2
 pkgdesc="A Minecraft: Java Edition CLI Server List Ping implementation in C++."
 arch=('x86_64')
 url="https://github.com/Urpagin/slpcli"
 license=('0BSD')
 depends=('glibc' 'gcc-libs')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 makedepends=('git' 'cmake' 'ninja')
 _asio_tag='1-34-2'
 source=(
