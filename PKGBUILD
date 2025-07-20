@@ -13,11 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/rgcastrof/fff/archive/v$pkg
 sha256sums=(12a07627340746d439496bb9424d6414a912151c71bd70f4472a477405c708e7)
 
 build() {
-        cd "$srcdir/$pkgname-$pkgver"
+        cd "$srcdir/fff-$pkgver"
         make all
 }
 
 package() {
-        cd "$srcdir/$pkgname-$pkgver"
+        cd "$srcdir/fff-$pkgver"
         make BIN_DIR="$pkgdir/usr/bin" install
 }
