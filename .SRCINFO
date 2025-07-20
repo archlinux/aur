@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 6.15.0.rc4.1.bcachefs.git.00259.g17227e8eaf3b
+	pkgver = 6.16.0.rc6.1.bcachefs.git.00212.gd156fb9d839c
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -12,6 +12,9 @@ pkgbase = linux-bcachefs-git
 	makedepends = pahole
 	makedepends = perl
 	makedepends = python
+	makedepends = rust
+	makedepends = rust-bindgen
+	makedepends = rust-src
 	makedepends = tar
 	makedepends = xz
 	makedepends = git
@@ -28,9 +31,9 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
 	sha256sums = SKIP
-	sha256sums = 8b6aaf43ba648c02c58723aede9fb803bfc972a523a2b1db7c0e55e4a10fc24d
+	sha256sums = d460d04e58b75be7a844d4e8c08a5b309c2a1f2097b17db1fa721ca4db262044
 	b2sums = SKIP
-	b2sums = 538cd820f1f5bbcfc0d24424ce1d5873e066c81f8475f3ec93b631322f5e483efef1ab9d5e0a9e6eb6694eaa3cad26ca655972fd77303113503150e79c04171d
+	b2sums = 4974ccfc2b133edc9e5553230af0589917205072c7e178305251644c6b1d7615988d067dec2935c1dc63c634df229965e5287d612898917d1f4ed1969412eec5
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
@@ -42,6 +45,7 @@ pkgname = linux-bcachefs-git
 	optdepends = scx-scheds: to use sched-ext schedulers
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = KSMBD-MODULE
+	provides = NTSYNC-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	replaces = virtualbox-guest-modules-arch
@@ -50,3 +54,5 @@ pkgname = linux-bcachefs-git
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = pahole
+Syncing...
+Synced

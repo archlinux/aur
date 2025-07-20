@@ -14,18 +14,8 @@ _bcachefs_branch=
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Compile ONLY used modules to VASTLY reduce the number of modules built
-# and the build time.
-#
-# To keep track of which modules are needed for your specific system/hardware,
-# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD read the database kept if it exists
-#
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
-
 pkgbase=linux-bcachefs-git
-pkgver=6.15.0.rc4.1.bcachefs.git.00259.g17227e8eaf3b
+pkgver=6.16.0.rc6.1.bcachefs.git.00212.gd156fb9d839c
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/koverstreet/bcachefs'
@@ -39,6 +29,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
   git
@@ -81,9 +74,9 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('SKIP'
-            '8b6aaf43ba648c02c58723aede9fb803bfc972a523a2b1db7c0e55e4a10fc24d')
+            'd460d04e58b75be7a844d4e8c08a5b309c2a1f2097b17db1fa721ca4db262044')
 b2sums=('SKIP'
-        '538cd820f1f5bbcfc0d24424ce1d5873e066c81f8475f3ec93b631322f5e483efef1ab9d5e0a9e6eb6694eaa3cad26ca655972fd77303113503150e79c04171d')
+        '4974ccfc2b133edc9e5553230af0589917205072c7e178305251644c6b1d7615988d067dec2935c1dc63c634df229965e5287d612898917d1f4ed1969412eec5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -96,31 +89,19 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  #FullPatchesArray=(
-  #  
-  #)
-  #for MyPatch in "${FullPatchesArray[@]}"
-  #do
-  #  echo "Applying patch $MyPatch..."
-  #  patch -Np1 -i "$srcdir/$MyPatch"
-  #done
+  # FullPatchesArray=(
+  #   ${PatchesArray[@]}
+  # )
+  # for MyPatch in "${FullPatchesArray[@]}"
+  # do
+  #   echo ">>>>>> Applying patch $MyPatch..."
+  #   patch -Np1 -i "$srcdir/$MyPatch"
+  # done
 
   echo "Setting config..."
   cp ../config .config
 
   make prepare
-
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db
-  if [ -n "$_localmodcfg" ]; then
-    if [ -f $HOME/.config/modprobed.db ]; then
-      echo "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
-    else
-      echo "No modprobed.db data found"
-      exit
-    fi
-  fi
 
   # do not run 'make olddefconfig' as it sets default options
   yes "" | make config >/dev/null
@@ -164,6 +145,7 @@ _package() {
   )
   provides=(
     KSMBD-MODULE
+    NTSYNC-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
@@ -233,6 +215,14 @@ _package-headers() {
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  echo "Installing Rust files..."
+  install -Dt "$builddir/rust" -m644 rust/*.rmeta
+  install -Dt "$builddir/rust" rust/*.so
+
+  echo "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+    link=  # Suppress build-id symlinks
 
   echo "Removing unneeded architectures..."
   local arch
