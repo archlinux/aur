@@ -1,5 +1,6 @@
 [Desktop Entry]
-Version=1.0
+Actions=new-window;new-private-window;profile-manager-window;
+Type=Application
 Name=Floorp
 GenericName=Web Browser
 GenericName[ca]=Navegador web
@@ -44,12 +45,13 @@ Comment[sk]=Prehliadanie internetu
 Comment[sv]=Surfa på webben
 Exec=floorp --class="floorp" %u
 Icon=floorp
+StartupNotify=true
+StartupWMClass=floorp
 Terminal=false
-Type=Application
+TerminalOptions=
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
 Categories=Network;WebBrowser;
 Keywords=web;browser;internet;
-Actions=new-window;new-private-window;profile-manager-window;
 
 [Desktop Action new-window]
 Name=Open a New Window

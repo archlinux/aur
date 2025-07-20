@@ -13,16 +13,18 @@
 : ${_build_lto:=false}
 : ${_build_system_libs:=true}
 
-: ${_commit:=fcfc71a7cac7b300f8325404767887a45adb031d}
+: ${_build_limit_cores:=false}
+
+: ${_commit:=7d0eabd3a938adef5aa0764c2b421653adef1962}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.28.0
-pkgrel=3
+pkgver=12.0.15
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
-arch=('x86_64')
 license=('MPL-2.0')
+arch=('x86_64')
 
 depends=(
   dbus
@@ -83,7 +85,6 @@ if [[ "${_build_pgo::1}" == "t" ]]; then
   else
     makedepends+=(
       weston
-      xorg-xwayland
       wlheadless-run # aur/xwayland-run
     )
   fi
@@ -109,13 +110,13 @@ _source_floorp() {
     'SKIP'
     'SKIP'
     'SKIP'
-    '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
+    '00ac63fe0331de13e418b5d6552bda95cb3a00267feccf07afa49600e810f65a'
   )
 }
 
 _source_floorp
 
-prepare() {
+prepare() (
   _submodule_update() {
     local _module
     for _module in "${_submodules[@]}"; do
@@ -143,7 +144,7 @@ prepare() {
   )
 
   # clear forced startup pages
-  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
+  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
 
   # prepare api keys
   cp "floorp/apis"/api-*-key ./
@@ -245,17 +246,21 @@ ac_add_options --enable-lto=cross,full
 END
   fi
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
-    fi
-  done
-}
+  if [[ "${_build_limit_cores::1}" == "t" ]]; then
+    # calculate core availability
+    local _mem _nproc _cores
+    _mem=$(cat /proc/meminfo | grep MemFree | grep -Eom1 '[0-9]+')
+    _nproc=$(nproc)
+    _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
+    _cores=$((_cores < 1 ? 1 : _cores))
+
+    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
+
+    cat >> ../mozconfig << END
+mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
+END
+  fi
+)
 
 build() (
   cd "$_pkgsrc"
@@ -263,7 +268,7 @@ build() (
   export RUSTUP_TOOLCHAIN=stable
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
-  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && mkdir -pm700 "${XDG_RUNTIME_DIR:?}"
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -288,7 +293,7 @@ build() (
     _pkgver_prof=$(
       cd "$SRCDEST"
       for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
-        | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
+        | sort -rV | head -1 | sed -E -e 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
