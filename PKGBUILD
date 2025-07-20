@@ -3,12 +3,12 @@
 pkgname=nvshmem
 pkgver=3.3.9
 _cudaver=12
-pkgrel=6
+pkgrel=7
 pkgdesc="NVSHMEM is a software library that implements the OpenSHMEM application programming interface (API) for clusters of NVIDIA ® GPUs."
 arch=('x86_64')
 url="https://developer.nvidia.com/nvshmem"
 license=(LicenseRef-NVIDIA-NVSHMEM)
-depends=('gcc14' 'cuda>='"${_cudaver}" 'cmake' 'nvidia-open')
+depends=('gcc14' 'cuda>='"${_cudaver}" 'cmake' 'NVIDIA-MODULE')
 optdepends=('mellanox-ofed' 'rdma-core' 'openmpi' 'gdrcopy' 'openucx' 'libfabric' 'nccl' 'openpmix')
 options=(!strip staticlibs)
 source=("https://developer.download.nvidia.com/compute/${pkgname}/redist/lib${pkgname}/linux-x86_64/lib${pkgname}-linux-x86_64-${pkgver}_cuda${_cudaver}-archive.tar.xz")
