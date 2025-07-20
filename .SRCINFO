@@ -1,6 +1,6 @@
 pkgbase = sumo
 	pkgdesc = Traffic simulation modelling road vehicles, public transport and pedestrians.
-	pkgver = 1.21.0
+	pkgver = 1.23.1
 	pkgrel = 1
 	url = http://sumo.dlr.de
 	arch = i686
@@ -9,8 +9,6 @@ pkgbase = sumo
 	makedepends = cmake
 	makedepends = help2man
 	makedepends = swig
-	makedepends = gtest
-	makedepends = gmock
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = eigen
@@ -31,8 +29,8 @@ pkgbase = sumo
 	depends = python-scipy
 	depends = ffmpeg
 	depends = python-matplotlib
-	source = https://sumo.dlr.de/releases/1.21.0/sumo-src-1.21.0.tar.gz
-	sha256sums = 1a246c30159abd4b5a878c0ce4eba3779bc6fce95f9c815c5f45567ceaa4ea53
+	source = https://sumo.dlr.de/releases/1.23.1/sumo-src-1.23.1.tar.gz
+	sha256sums = 016c506d8bd5d0b6f8e2229ac5dbb9e948535a041559cdd2ff6b616293ac21a8
 
 pkgname = sumo
 	optdepends = java-runtime-common: for executing Jar files like TraCI4J
