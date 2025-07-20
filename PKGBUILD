@@ -13,6 +13,18 @@ build() {
   echo "Listing files in $srcdir/testpackage-main before chmod:"
   ls -l "$srcdir/testpackage-main"
 
+  # If config.sh missing, copy fallback from current directory
+  if [[ ! -f "$srcdir/testpackage-main/config.sh" ]]; then
+    echo "config.sh missing in source dir, copying fallback..."
+    cp ./config.sh "$srcdir/testpackage-main/config.sh"
+  fi
+
+  # Same for code.sh just in case (optional)
+  if [[ ! -f "$srcdir/testpackage-main/code.sh" ]]; then
+    echo "code.sh missing in source dir, copying fallback..."
+    cp ./code.sh "$srcdir/testpackage-main/code.sh"
+  fi
+
   chmod +x "$srcdir/testpackage-main/code.sh"
   chmod +x "$srcdir/testpackage-main/config.sh"
 
