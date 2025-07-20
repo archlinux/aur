@@ -1,0 +1,14 @@
+pkgbase = nextor-ip-changer
+	pkgdesc = A Python-based tool to change Tor IPs dynamically
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Stalin-143/NexTOR_IP_CHANGER
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = tor
+	source = nextor-ip-changer::git+https://github.com/Stalin-143/NexTOR_IP_CHANGER#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = nextor-ip-changer
