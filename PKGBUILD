@@ -2,7 +2,7 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb70-bin"
-pkgver=7.0.21
+pkgver=7.0.22
 _basever=7.0
 _basedist="jammy"
 pkgrel="1"
@@ -38,15 +38,15 @@ noextract=(
 sha256sums=('47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             'e5273bfee70fb114d7d17d03ef43cc6aae209c4224253abf4c9954cbcc087fc8'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('8b641aa479560be0572a438895cebacbbd430959ea50ed327314f7b4cec6e9f4'
-                   '6fc2f7cb3be269379c043a70523dfcb3d87af129b2d5e63c13de15ea3094c012')
-sha256sums_aarch64=('f955bedea194e35cfc13e0be2613941c1136889813c3d5058dd228916323bd23'
-                    'fc5ba9d732569960181e0d1552b81e953ca86ef11853f1b79ea4bfaefbbac538')
+sha256sums_x86_64=('9f54127b9bfbf9ce6e2200a4ac2ec614e89c0d3409dd58f37e0878595bb7a121'
+                   'a08d24fcdd187b4c2709cbce386264d16cf2d4d42ec22b6d6426d2940e947537')
+sha256sums_aarch64=('509d450e0cce8d9f872ce8070bfbcef357ae448c725b0fe2e6b4714151d912b9'
+                    'b5576e2b7b9004385c38912061ae0d119c75e94822a09dd847f0596952dcf7e7')
 
 prepare() {
   mkdir -p output
-  bsdtar -O -xf mongodb-org-server_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf - #server extracted
-  bsdtar -O -xf mongodb-org-mongos_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf - #mongos extracted
+  bsdtar -O -xf mongodb-org-server_${pkgver}_${CARCH}.deb data.tar.zst | bsdtar -C output -xJf - #server extracted
+  bsdtar -O -xf mongodb-org-mongos_${pkgver}_${CARCH}.deb data.tar.zst | bsdtar -C output -xJf - #mongos extracted
 
   # Remove insecure RUNPATH '$ORIGIN/../lib' as reported by namcap
   chrpath -d output/usr/bin/mongos
