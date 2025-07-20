@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/coherent-oss/pytest-flake8"
 license=('MIT')
 depends=(
-  'flake8'
+  'python-flake8'
   'python-pytest'
 )
 makedepends=(
@@ -20,11 +20,6 @@ makedepends=(
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('7b7fb4836e5510c924d1d49af9c1253286f1e353f78b2444ae2733a2cac9b6bc')
-
-prepare() {
-  cd "$_name-$pkgver"
-#  sed -i 's/ignore = E128/ignore = E128 W605/' tox.ini
-}
 
 build() {
   cd "$_name-$pkgver"
