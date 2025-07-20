@@ -9,7 +9,12 @@ arch=('any')
 url="https://github.com/hustcc/timeago"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('7b54b88b3d0566cbf01ca11077dad8f7ae07a4318479e3d1b30feebe85f7137f')
 
