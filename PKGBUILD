@@ -1,6 +1,7 @@
 # Maintainer: David Cooper <david@dtcooper.com>
 
-pkgname=amplitude-soundboard
+_pkgname=amplitude-soundboard
+pkgname="${_pkgname}-appimage"
 pkgver=2.11.0
 pkgrel=1
 pkgdesc='A sleek, cross-platform soundboard, available for Windows, MacOS, and Linux'
@@ -29,11 +30,11 @@ build() {
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
 
     install -Dm755 "${srcdir}/squashfs-root/${_lowername}.desktop" "${pkgdir}/usr/share/applications/${_lowername}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/icn.png" "${pkgdir}/usr/share/pixmaps/${_lowername}.png"
 
     install -dm755 "${pkgdir}/usr/bin/"
-    ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_lowername}"
+    ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_lowername}"
 }
