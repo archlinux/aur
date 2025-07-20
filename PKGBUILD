@@ -10,7 +10,7 @@ source=("https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/mai
 sha256sums=('SKIP')
 
 build() {
-  chmod +x "$srcdir/testpachkage-main/code.sh"
+  chmod +x "$srcdir/testpackage-main/code.sh"
 }
 
 package() {
