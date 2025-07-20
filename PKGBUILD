@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
 url='https://www.archlinux.org/'
-license=(GPL)
+license=("OFL")
 depends=('behdad-fonts'
          'gandom-fonts'
          'iran-nastaliq-fonts'
@@ -13,8 +13,8 @@ depends=('behdad-fonts'
          'ir-standard-fonts'
          'nahid-fonts'
          'parastoo-fonts'
-         'persian-hm-ftx-fonts'
-         'persian-hm-xs2-fonts'
+         #'persian-hm-ftx-fonts'
+         #'persian-hm-xs2-fonts'
          'sahel-fonts'
          'samim-fonts'
          'shabnam-fonts'
