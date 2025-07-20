@@ -3,7 +3,7 @@
 _pkgname=amplitude-soundboard
 pkgname="${_pkgname}-appimage"
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A sleek, cross-platform soundboard, available for Windows, MacOS, and Linux'
 arch=('x86_64')
 url='https://amplitude-soundboard.dan0v.com/'
