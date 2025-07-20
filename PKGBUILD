@@ -14,7 +14,7 @@ provides=('cudatext')
 conflicts=('cudatext')
 options=('!strip')
 source=("https://sourceforge.net/projects/cudatext/files/release/${pkgver}/cudatext_${pkgver}-${pkgrel}_gtk2_amd64.deb")
-sha256sums=('0ed63ce83a0944d32ede3aa7da3d6074f97197381feeca1db8dd1179e482f7f9')
+sha256sums=('d648fc93e577d92a123583d6d525c5ac8666ebc6397a87dbf04568d7cb4d9662')
 
 package() {
     tar xvf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
