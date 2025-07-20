@@ -8,13 +8,14 @@ arch=('any')
 url="https://github.com/aws/base64io-python"
 license=('Apache-2.0')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('24f2d0fe765c35339e1b2d33aa95f9137b1b765b594164fad1016c15827a7073')
-
-prepare() {
-  cd "$_name-$pkgver"
-}
 
 build() {
   cd "$_name-$pkgver"
