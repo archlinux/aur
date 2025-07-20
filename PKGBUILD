@@ -29,7 +29,7 @@ sha256sums=('8da661f11a423b133a18bfff5cd1e5965f04794550b733cc929d3ea170c5cdf7')
 
 pkgver() {
   cd python-plexapi
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags --abbrev=7 | sed 's/-/+/g'
 }
 
 build() {
