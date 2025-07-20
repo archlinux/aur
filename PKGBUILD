@@ -4,11 +4,11 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple Rust-based number guessing game"
 arch=('x86_64')
-url="https://github.com/praneethashok/guessgame"
+url="https://github.com/praneethashok14/guessgame"
 license=('MIT')
 depends=()
 makedepends=('rust')
-source=("$pkgname::git+https://github.com/praneethashok/guessgame.git")
+source=("$pkgname::git+https://github.com/praneethashok14/guessgame.git")
 md5sums=('SKIP')
 
 build() {
