@@ -1,17 +1,13 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Maximiliano Christener <christener at outlook dot com dot ar>
 pkgname=python-pandas-docs
-pkgver=2.2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Documentation for Python Pandas module."
 arch=('any')
 url='http://pandas.pydata.org'
 license=('BSD')
 source=("${pkgname}-${pkgver}.zip::http://pandas.pydata.org/pandas-docs/version/${pkgver}/pandas.zip")
-sha256sums=('02b7f371cf27803ddbc2015f330739bbd3d3ac96066b407126514fe6aeff9d1e')
-
-prepare() {
-	rm ${pkgname}-${pkgver}.zip
-}
+sha256sums=('6eeda58bf9bf4a72bccab640d3dbe4e73e5ee82b2625774be284680c52ed6f70')
 
 package() {
 	install -d "${pkgdir}"/usr/share/doc/python-pandas/html

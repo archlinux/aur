@@ -1,11 +1,11 @@
 pkgbase = python-pandas-docs
 	pkgdesc = Documentation for Python Pandas module.
-	pkgver = 2.2.3
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = http://pandas.pydata.org
 	arch = any
 	license = BSD
-	source = python-pandas-docs-2.2.3.zip::http://pandas.pydata.org/pandas-docs/version/2.2.3/pandas.zip
-	sha256sums = 02b7f371cf27803ddbc2015f330739bbd3d3ac96066b407126514fe6aeff9d1e
+	source = python-pandas-docs-2.3.1.zip::http://pandas.pydata.org/pandas-docs/version/2.3.1/pandas.zip
+	sha256sums = 6eeda58bf9bf4a72bccab640d3dbe4e73e5ee82b2625774be284680c52ed6f70
 
 pkgname = python-pandas-docs
