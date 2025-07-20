@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-ruamel.yaml.string
 _name=${pkgname#python-}
 pkgver=0.1.1
