@@ -1,7 +1,7 @@
 # Maintainer: amadejk <amadejkastelic7@gmail.com>
 pkgname=hyprlux
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland utility that automates vibrance and night light control"
 arch=('x86_64')
 url="https://github.com/amadejkastelic/Hyprlux"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
     'ee1e24153f12a732eff6bf430ca773e0ebb4b16ec2688956913a917d0410a78a'
-    'ea86a3847218b4f229f0ab5a871311b64328cec774fb9defb551771ef77d4602'
+    '7e2586a52438688fb3fc1dfe0ac073b2751a4155cd6fc99b52abc0f152a2b0a8'
     '727f8015318fbf5914f3d8cda1302214e4f72da4b16296e4f140f1e9e4e6292f'
 )
 
@@ -39,6 +39,6 @@ check() {
 package() {
     cd "$srcdir/Hyprlux-${pkgver}"
     install -Dm755 "target/release/hyprlux" "$pkgdir/usr/bin/hyprlux"
-    install -Dm644 "$srcdir/hyprlux.service" "$pkgdir/usr/lib/systemd/system/hyprlux.service"
+    install -Dm644 "$srcdir/hyprlux.service" "$pkgdir/usr/lib/systemd/user/hyprlux.service"
     install -Dm644 "$srcdir/config.toml" "$pkgdir/usr/share/hyprlux/config.toml"
 }

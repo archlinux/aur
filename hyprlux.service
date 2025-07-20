@@ -4,8 +4,6 @@ WantedBy=hyprland-session.target
 [Service]
 ExecStart=/usr/bin/hyprlux
 Restart=on-failure
-User=nobody
-Group=nogroup
 
 [Unit]
 After=graphical-session-pre.target
