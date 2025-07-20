@@ -1,4 +1,4 @@
-# Maintainer: Your Name <syvarinth@gmail.com>
+# Maintainer: Syvarinth <syvarinth@gmail.com>
 pkgname=pacman-gui
 pkgver=1.0.0
 pkgrel=1
