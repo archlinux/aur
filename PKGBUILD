@@ -5,10 +5,15 @@ pkgver=7.1.8
 pkgrel=1
 pkgdesc="Write Python extensions in C++"
 arch=('any')
-url="http://cxx.sourceforge.net"
-license=('custom')
+url="https://cxx.sourceforge.net"
+license=('LicenseRef-custom')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("https://downloads.sourceforge.net/cxx/$_name-$pkgver.tar.gz")
 sha256sums=('4b91e1e1141c23fbd5039df635c4bb6e75632168548f56b83ce177193c0c98c6')
 
