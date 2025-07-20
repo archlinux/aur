@@ -1,6 +1,6 @@
 pkgbase = updaterv2
 	pkgdesc = This is an updater.
-	pkgver = 4.2
+	pkgver = 4.3
 	pkgrel = 4
 	url = https://test.com
 	arch = x86_64
