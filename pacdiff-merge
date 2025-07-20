@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# pacdiff-merge - Merge .pacnew files using pacdiff and meld (or $MERGE_TOOL)
+MERGE_TOOL="${MERGE_TOOL:-/usr/bin/meld}"
+REQUIRED_CMDS=(pacdiff sudo snapper "$MERGE_TOOL")
+
+for cmd in "${REQUIRED_CMDS[@]}"; do
+    command -v "${cmd%% *}" >/dev/null 2>&1 || { echo "Missing required command: $cmd"; exit 1; }
+done
+
+export SUDO_EDITOR="$MERGE_TOOL"
+
+echo "Creating pre-merge snapshot..."
+snap=$(sudo snapper create -d "Before PacDiff merge" -p)
+echo "Created snapshot ${snap}"
+
+mapfile -t pacfiles < <(/usr/bin/pacdiff --output)
+if [[ ${#pacfiles[@]} -eq 0 ]]; then
+    echo "No .pacnew files found."
+    exit 0
+fi
+
+for i in "${pacfiles[@]}"; do
+    echo -e "\nMerging ${i} ..."
+    /usr/bin/sudo -e "${i}" "${i/.pacnew/}"
+
+    while true; do
+        read -erp 'Were the files successfully merged? (delete .pacnew) [y/N/q] ' answer
+        case "$answer" in
+            [Yy]*) echo "Deleting ${i}..."; sudo rm "${i}"; break ;;
+            [Qq]*) echo "Aborting."; exit 1 ;;
+            [Nn]*|"") break ;;
+            *) echo "Invalid input. Please enter 'y', 'n', or 'q'." ;;
+        esac
+    done
+
+done
+
+echo -e "\nAll .pacnew files processed."
+read -rp "Press enter to finish."
