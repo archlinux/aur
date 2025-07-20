@@ -2,7 +2,7 @@
 Type=Application
 Name=rustymeter
 Comment=A rust-based egui application to operate your OWON XDM multimeters from your PC without the need for NI VISA
-Icon=rustymeter.svg
+Icon=rustymeter
 Terminal=false
 Exec=pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY rustymeter
 Categories=Utility;
