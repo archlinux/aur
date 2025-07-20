@@ -1,0 +1,12 @@
+pkgbase = updater
+	pkgdesc = This is an updater.
+	pkgver = 3.2
+	pkgrel = 3
+	url = https://test.com
+	arch = x86_64
+	license = MIT
+	depends = bash
+	source = https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = updater
