@@ -11,14 +11,20 @@ pkgbase = nwjs-bin
 	optdepends = nodejs: npm package support
 	optdepends = nw-gyp: native add-on build tool for node-webkit
 	provides = nwjs
-	provides = node-webkit
+	provides = nwjs-sdk
 	conflicts = nwjs
-	conflicts = node-webkit
-	source = nwjs-bin-0.101.2.tar.gz::http://dl.nwjs.io/v0.101.2/nwjs-v0.101.2-linux-x64.tar.gz
-	sha256sums = 94ed3e608fa4df022a50973bd4e80ffc43508fcb597a0a767e1ed9a9d9462413
+	conflicts = nwjs-sdk
+	source = https://dl.nwjs.io/v0.101.2/nwjs-sdk-v0.101.2-linux-x64.tar.gz
+	sha256sums = 8c2b46e3dae39b1339120ed78fb9a376ee3bb205a16fabb663b81a6efd8da878
 
 pkgname = nwjs-bin
 	depends = gtk3
 	depends = nss
 	depends = libxss
 	depends = vivaldi-ffmpeg-codecs
+
+pkgname = nwjs-sdk-bin
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = nwjs
