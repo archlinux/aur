@@ -5,7 +5,8 @@ pkgname='perl-date-simple'
 pkgver='3.03'
 pkgrel='15'
 pkgdesc="a simple date object"
-arch=('i686' 'x86_64')
+arch=('aarch64'
+      'x86_64')
 license=('Artistic-1.0-Perl'
          'GPL-3.0-or-later')
 options=('!emptydirs')
