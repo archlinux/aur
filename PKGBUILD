@@ -1,12 +1,12 @@
-# Contributor: Ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-git-hooks'
 pkgver='4.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Framework for implementing Git (and Gerrit) hooks"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-email-sender>=0' 'perl-email-simple>=0' 'perl-git-repository>=0' 'perl-git-repository-plugin-log>=0' 'perl-io-interactive>=0' 'perl-list-moreutils>=0' 'perl-log-any>=0' 'perl-path-tiny>=0.060' 'perl-text-glob>=0' 'perl-uri>=0')
 makedepends=()

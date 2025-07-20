@@ -1,11 +1,10 @@
 pkgbase = perl-git-hooks
 	pkgdesc = Framework for implementing Git (and Gerrit) hooks
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Git-Hooks
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	checkdepends = perl-test-requires-git>=0
 	depends = perl-email-sender>=0
 	depends = perl-email-simple>=0
