@@ -1,13 +1,17 @@
 #!/bin/bash
+# shellcheck disable=SC2317
 set -e
 
 # Hacky way to check if the package is installed
 package-exists-fast() {
-	if compgen -G "/var/lib/pacman/local/$1-*" >/dev/null; then
-		return 0
-	else
-		return 1
-	fi
+    [[ -n "$1" ]] || return 1
+    local p
+    for p in "/var/lib/pacman/local/$1-"*/; do
+        if [[ $p =~ /$1-[^-]+-[0-9.]+/$ ]]; then
+            return 0
+        fi
+    done
+    return 1
 }
 
 update_keyrings() {
@@ -31,10 +35,49 @@ install_expect() {
 	fi
 }
 
+# Various hotfixes for the update process that do not involve modifying the pacman command itself (use package-replaces for that)
+# This kind of competes with the garuda-hotfixes package, but I much prefer to have things modifiying the pacman database in an unsupported way not running while pacman itself is running.
+# (garuda-hotfixes is run in a post_upgrade scriptlet)
+update_hotfixes() {
+	set -euo pipefail
+	local packages
+	packages="$($PACMAN -Qq "linux-firmware<20250613.12fe085f-5" 2>/dev/null | xargs || true)"
+	# https://archlinux.org/news/linux-firmware-2025061312fe085f-5-upgrade-requires-manual-intervention/
+	# linux-firmware<20250613.12fe085f-5
+	if [[ "$packages" =~ (^| )linux-firmware($| ) ]]; then
+		# It doesn't handle symlinks very well, it seems
+		# We replace the symlinks with the ones that are expected by linux-firmware-nvidia to allow the update to go through smoothly
+		# This is of course very hacky and not how archlinux wants us to do it, but this is more correct than force removing the entire linux-firmware package in my opinion >.<
+		# Reason: If the update process does not succeed for another reason, the user is left without any linux-firmware files AT ALL. This way, we have all the linux-firmware files still in place
+		# Any potential damage caused to the local pacman database will be reverted upon the next update of linux-firmware, which is scheduled to happen only moments after this code is run.
+
+		# Find linux-firmware database path
+		local db_path=""
+		for p in /var/lib/pacman/local/linux-firmware-*/; do
+			# Match path ending in /linux-firmware-<version>-<pkgrel>
+			[[ $p =~ /linux-firmware-[^-]+-[0-9]+/$ ]] && { db_path="$p"; break; }
+		done
+
+		if [ -d "$db_path" ]; then
+			# Remove any lines that match /usr/lib/firmware/nvidia/ad*/gsp from the files list that are not ad102
+			gawk -i inplace '!/usr\/lib\/firmware\/nvidia\/ad.*/ || /usr\/lib\/firmware\/nvidia\/ad102\/.*$/' "$db_path/files"
+			# Delete faulty symlinks
+			rm -r /usr/lib/firmware/nvidia/ad103 /usr/lib/firmware/nvidia/ad104 /usr/lib/firmware/nvidia/ad106 /usr/lib/firmware/nvidia/ad107 || true
+			# Copy the ad102 gsp files to the correct locations
+			pushd /usr/lib/firmware/nvidia/ >/dev/null
+			for dest in /usr/lib/firmware/nvidia/ad10{3,4,6,7}; do ln -s ./ad102 "$dest"; done
+			popd >/dev/null
+			# Write to "$db_path"/files
+			sed -i -e '$ { /^$/d; }' "$db_path/files"
+			printf "%s\n" usr/lib/firmware/nvidia/ad10{3,4,6,7} >> "$db_path/files"
+		fi
+	fi
+}
+
 # Anything printed by this script into stdout will be added as a pacman parameter to pacman -Syu
 package-replaces() {
 	local packages
-	packages="$($PACMAN -Qq python-xdg garuda-dr460nized garuda-xfce-kwin-settings garuda-lxqt-kwin-settings garuda-wayfire-settings sweet-kde-git sweet-cursor-theme-git pipewire-media-session pipewire-support qemu-base virt-manager-meta libretro-meta libretro-mame-git jack2 pipewire-jack libpipewire-0.3.so=0-64 jre-openjdk-headless jre-openjdk jdk-openjdk pinta dotnet-runtime-7.0 2>/dev/null | xargs || true)"
+	packages="$($PACMAN -Qq python-xdg garuda-dr460nized garuda-xfce-kwin-settings garuda-lxqt-kwin-settings garuda-wayfire-settings sweet-kde-git sweet-cursor-theme-git pipewire-media-session pipewire-support qemu-base virt-manager-meta libretro-meta libretro-mame-git jack2 pipewire-jack libpipewire-0.3.so=0-64 jre-openjdk-headless jre-openjdk jdk-openjdk pinta dotnet-runtime-7.0 kwin-x11 plasma-desktop plasma-x11-session "linux-firmware<20250613.12fe085f-5" garuda-rani-git garuda-settings-manager 2>/dev/null | xargs || true)"
 	# We replace python-xdg with python-pyxdg from extra
 	# This is not done automatically for some reason
 	if [[ "$packages" =~ (^| )python-xdg($| ) ]]; then
@@ -71,6 +114,17 @@ package-replaces() {
 	if [[ "$packages" =~ (^| )pinta($| ) ]] && ! [[ "$packages" =~ (^| )dotnet-runtime-7.0($| ) ]]; then
 		echo dotnet-runtime-7.0
 	fi
+	# Detect if kwin-x11 is installed, we need to install plasma-x11-session to ensure
+	# that the user can log into their desktop environment.
+	# https://archlinux.org/news/plasma-640-will-need-manual-intervention-if-you-are-on-x11/
+	if [[ "$packages" =~ (^| )kwin-x11($| ) ]] && [[ "$packages" =~ (^| )plasma-desktop($| ) ]] && ! [[ "$packages" =~ (^| )plasma-x11-session($| ) ]]; then
+		echo plasma-x11-session
+	fi
+	# garuda-rani has replaces=(garuda-settings-manager). If garuda-rani-git is installed and has an update pending, the conflict prompt can not be shown
+	if [[ "$packages" =~ (^| )garuda-rani-git($| ) ]] && [[ "$packages" =~ (^| )garuda-settings-manager($| ) ]]; then
+		echo --ignore
+		echo garuda-rani-git
+	fi
 }
 
 # Exit codes:
@@ -78,9 +132,13 @@ package-replaces() {
 # 1: Something went wrong
 # 2: Keyring updated
 pre-update-routines() {
+	set -euo pipefail
+
 	local exit_code=0
 	update_keyrings || exit_code=2
-	install_expect
+	install_expect || exit_code=1
+	update_hotfixes || exit_code=1
+
 	return $exit_code
 }
 
