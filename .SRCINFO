@@ -1,18 +1,15 @@
 pkgbase = ayllu
 	pkgdesc = Ayllu Forge
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://ayllu-forge.org/projects/ayllu
 	arch = x86_64
 	license = AGPL3
 	makedepends = rust
-	makedepends = sqlx-cli
-	makedepends = sassc
-	makedepends = npm
-	makedepends = capnproto
 	depends = git
 	provides = ayllu
-	source = ayllu-0.3.1::https://ayllu-forge.org/projects/ayllu/refs/archive/0.3.1.tar.gz
-	sha256sums = 577fdeb4d2cce05ad5963733d56d75aaef84a473d6320088bb649161c111d163
+	options = !lto
+	source = ayllu-0.4.0::https://ayllu-forge.org/ayllu/ayllu/refs/archive/0.4.0.tar.gz
+	sha256sums = 1d4cff32a8b927228198c326c4831a07d528dece8b1183dc35fc98479596a2d1
 
 pkgname = ayllu
