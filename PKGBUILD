@@ -1,7 +1,7 @@
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-perl-critic-strictersubs'
+pkgname='perl-critic-strictersubs'
 pkgver='0.08'
 pkgrel='2'
 pkgdesc="Perl::Critic plugin for stricter subroutine checks"
