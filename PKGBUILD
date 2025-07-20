@@ -6,22 +6,20 @@
 
 pkgname=hmcl-bin
 pkgver=3.6.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
-license=('GPL3')
-depends=('java-runtime' 'gtk2')
+license=('GPL-3.0-or-later')
+depends=('java-runtime' 'hicolor-icon-theme')
 provides=('hmcl')
 conflicts=('hmcl')
 replaces=('hmcl-stable-bin')
 source=("hmcl.desktop"
         "hmcl-launch-script"
-        "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/refs/heads/main/LICENSE"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/release-${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'fe8c663bd3aaee7c70dff4da75781a078993c665e5492883d708e46658e6c0ec'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '17e422c5b03acc4035a96df26fc32124dbab53cff68d90046df414f5c27bcd3e')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
@@ -46,6 +44,6 @@ package() {
   for _icon in 32:icon.png 64:icon@2x.png 128:icon@4x.png 256:icon@8x.png; do
     _iconfile=${_icon#*:}
     _icon=${_icon%:*}
-    install -Dm644 "assets/img/${_iconfile}" "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${_pkgname}.png"
+    install -Dm644 "assets/img/${_iconfile}" "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname}.png"
   done
 }
