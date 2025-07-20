@@ -1,6 +1,6 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=genwallet-git
-pkgver=0.1.0.r3.e371efb
+pkgver=0.1.0.r4.6349682
 pkgrel=1
 pkgdesc="Ethereum wallet generator with pattern matching"
 arch=('x86_64' 'aarch64')
@@ -20,11 +20,19 @@ build() {
   # Set environment variables for secp256k1-sys to use system library
   export SECP256K1_SYS_USE_PKG_CONFIG=1
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
-  export RUSTFLAGS="-C link-arg=-lsecp256k1"
   export SECP256K1_SYS_STATIC=0
   export SECP256K1_SYS_USE_SYSTEM=1
   export LIBRARY_PATH="/usr/lib"
   export LD_LIBRARY_PATH="/usr/lib"
+  export SECP256K1_SYS_NO_PKG_CONFIG=0
+  export SECP256K1_SYS_USE_EXTERNAL_LIBS=1
+  
+  # Set explicit pkg-config variables
+  export PKG_CONFIG_ALLOW_CROSS=1
+  export SECP256K1_SYS_USE_VENDORED=0
+  
+  # Set explicit linker flags
+  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-lsecp256k1"
   
   # Build with release optimizations
   cargo build --release
