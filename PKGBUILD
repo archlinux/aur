@@ -18,4 +18,5 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/testpackage-main/code.sh" "$pkgdir/usr/bin/updater"
+  install -Dm755 "$srcdir/testpackage-main/config.sh" "$pkgdir/usr/bin/updater-config"
 }
