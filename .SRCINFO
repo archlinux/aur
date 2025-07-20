@@ -1,7 +1,7 @@
 pkgbase = nwjs-bin
 	pkgdesc = Runtime based on Chromium and node.js
 	pkgver = 0.101.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nwjs.io/
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,7 @@ pkgbase = nwjs-bin
 	optdepends = nodejs: npm package support
 	optdepends = nw-gyp: native add-on build tool for node-webkit
 	provides = nwjs
-	provides = nwjs-sdk
 	conflicts = nwjs
-	conflicts = nwjs-sdk
 	source = https://dl.nwjs.io/v0.101.2/nwjs-sdk-v0.101.2-linux-x64.tar.gz
 	sha256sums = 8c2b46e3dae39b1339120ed78fb9a376ee3bb205a16fabb663b81a6efd8da878
 
@@ -28,3 +26,5 @@ pkgname = nwjs-sdk-bin
 	depends = nss
 	depends = libxss
 	depends = nwjs
+	provides = nwjs-sdk
+	conflicts = nwjs-sdk

@@ -6,7 +6,7 @@
 pkgbase=nwjs-bin
 pkgname=(nwjs{,-sdk}-bin)
 pkgver=0.101.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Runtime based on Chromium and node.js'
 arch=("x86_64")
 url="https://nwjs.io/"
@@ -16,8 +16,8 @@ optdepends=(
   "nodejs: npm package support"
   "nw-gyp: native add-on build tool for node-webkit"
 )
-provides=(nwjs{,-sdk})
-conflicts=(nwjs{,-sdk})
+provides=(nwjs)
+conflicts=(nwjs)
 source=("https://dl.nwjs.io/v${pkgver}/nwjs-sdk-v${pkgver}-linux-x64.tar.gz")
 sha256sums=('8c2b46e3dae39b1339120ed78fb9a376ee3bb205a16fabb663b81a6efd8da878')
 prepare(){
@@ -38,6 +38,8 @@ package_nwjs-bin() {
 }
 package_nwjs-sdk-bin() {
   depends+=(nwjs)
+  provides=(nwjs-sdk)
+  conflicts=(nwjs-sdk)
   install -d "${pkgdir}"/usr/lib
   mv sdk "${pkgdir}"/usr/lib/nwjs
 }
