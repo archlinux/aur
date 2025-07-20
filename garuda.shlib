@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Adds a notice that will be shown at the end of garuda-update
+garudalib_add_update_notice() {
+	mkdir -p /var/lib/garuda/tmp
+	echo "$(date +%F)	${1//	/    }" >>/var/lib/garuda/tmp/update_notices
+}

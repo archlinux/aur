@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+GARUDALIB_GUI="${GARUDALIB_GUI:-true}"
+if [ -z "$DISPLAY" ]; then
+	GARUDALIB_GUI=false
+fi
+
+# Elevate
+if [[ $EUID -ne 0 ]] && [ "$GARUDALIB_GUI" == "true" ]; then
+	exec pkexec /usr/lib/garuda/install-software "$@"
+	exit 1
+fi
+
+sudo pacman -S --noconfirm "$@"

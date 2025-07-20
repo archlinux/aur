@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# Bash strict mode
+set -euo pipefail
+
+# Elevate
+if [[ $EUID -ne 0 ]]; then
+	exec pkexec /usr/lib/garuda/pkexec-gui "$@"
+	exit 1
+fi
+
+# Launch dbus session if not already running
+if [[ ! -v DBUS_SESSION_BUS_ADDRESS ]]; then
+	eval $(dbus-launch --sh-syntax --exit-with-session)
+fi
+
+# Restore some variables from parent process
+while IFS= read -rd '' var; do export "$var"; done < <(grep --null-data -ae "^\(HOME\|XDG_CURRENT_DESKTOP\|WAYLAND_DISPLAY\|XDG_RUNTIME_DIR\|XDG_CONFIG_DIRS\|XDG_SESSION_TYPE\|XDG_SESSION_PATH\|XCURSOR_SIZE\|KDE_SESSION_VERSION\|LC_.*\|LANG\|LANGUAGE\|QT_WAYLAND_FORCE_DPI\|QT_QPA_PLATFORMTHEME\|QT_STYLE_OVERRIDE\)=.*\$" /proc/$PPID/environ)
+
+# Temporary directory to store overlays
+overlays_dir="$(mktemp -d)"
+mkdir "$overlays_dir"/{upper,work,home}
+# Overlayfs mount
+mount -t overlay overlay -o lowerdir="$HOME",upperdir="$overlays_dir/upper",workdir="$overlays_dir/work" "$overlays_dir/home"
+
+# If not set, the default behavior of the program that is launched will be used automatically
+if [[ -v XDG_CONFIG_DIRS ]]; then
+	# Replace any mention of the user's home directory with the overlay in XDG_CONFIG_DIRS
+	export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS//"$HOME"/"$overlays_dir/home"}"
+fi
+
+# Set HOME to the overlay
+export HOME="$overlays_dir/home"
+
+# Make sure wayland is configured correctly. This variable is usually not defined expliclty, so it will have to be generated
+if [[ -v WAYLAND_DISPLAY ]]; then
+	export WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
+fi
+# We do not want root writing to user's XDG_RUNTIME_DIR
+export XDG_RUNTIME_DIR="/run/user/0"
+
+# Run program and store exit code
+"$@" || code=$?
+
+# Cleanup
+umount "$overlays_dir/home"
+rm -rf "$overlays_dir"
+
+exit ${code:-0}

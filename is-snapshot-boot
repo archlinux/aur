@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+# Returns 0 on confirmed snapper snapshot boot, returns a non zero value otherwise
+
+if grep -qE 'subvol=@/.snapshots/[0-9]+/snapshot' /proc/cmdline; then
+	exit 0
+fi
+exit 1
