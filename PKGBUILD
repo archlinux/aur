@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-_tag=3.16.ba123.f2
+_tag=3.16.ba124
 pkgver="$_tag"
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
@@ -52,7 +52,8 @@ makedepends=(
     wayland-protocols
 )
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
-    "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+    # "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+    "git+https://github.com/nothings/stb.git"
     "git+https://github.com/bazzite-org/wlroots.git"
     "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
     "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
@@ -63,8 +64,8 @@ source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 )
 
-b2sums=('d43457037faf5962eecdce4f33eb6609b2150ba3d607e80ee68ed1276bae5a982a29382e7ad7e51c52c650779c8c701949102ca32924df5d021b394898a2496d'
-        'db31478999287cc5b08cc7d98d1daa43a27b339b3ad975269710bd719d30e9f1cf5ee240ee7e2a8d8551f20fa46da14acd669cb207b26a18d79b360e718ff55b'
+b2sums=('e906337dda0d889c863a235501d74a5febc4c0a0be6480f8f6ce58d672375684b021b73ae4cef72a2efd6bee3cec0e1cf99a66149cc0e35ed8119162b6d43418'
+        'SKIP'
         'SKIP'
         'SKIP'
         'ca268553bc3dacb5bd19553702cd454ea78ed97ab39d4397c5abf9a27d32633b63e0f7f7bf567b56066e6ecd979275330e629ba202a6d7721f0cd8166cd110dd'
@@ -81,33 +82,17 @@ prepare() {
     cd "$srcdir/$_pkgname"
     meson subprojects download
 
-    git submodule init subprojects/wlroots
-    git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
-
-    git submodule init subprojects/libliftoff
-    git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
-
-    git submodule init subprojects/vkroots
-    git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
-
-    git submodule init subprojects/libdisplay-info
-    git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
-
-    # git submodule init subprojects/openvr
-    # git config submodule.subprojects/openvr.url "$srcdir/openvr"
-
-    git submodule init src/reshade
-    git config submodule.src/reshade.url "$srcdir/reshade"
-
-    git submodule init thirdparty/SPIRV-Headers
-    git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+    for submodule in src/reshade subprojects/{libdisplay-info,libliftoff,vkroots,wlroots} thirdparty/SPIRV-Headers ; do
+        git submodule init ${submodule}
+        git config submodule.${submodule}.url ../${submodule##*/}
+    done
 
     git -c protocol.file.allow=always submodule update
 
     # make stb.wrap use our local clone
-    rm -rf subprojects/stb
-    git clone "$srcdir/stb" subprojects/stb
-    cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
+    # rm -rf subprojects/stb
+    # git clone "$srcdir/stb" subprojects/stb
+    # cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
 }
 
 pkgver() {
@@ -119,7 +104,7 @@ pkgver() {
 build() {
     export LDFLAGS="$LDFLAGS -lrt"
     arch-meson gamescope build \
-        -Dforce_fallback_for=stb,libliftoff,wlroots,vkroots,libdisplay-info \
+        -Dforce_fallback_for=glm,stb,libliftoff,wlroots,vkroots,libdisplay-info \
         -Dpipewire=enabled \
         -Denable_openvr_support=false
     ninja -C build
