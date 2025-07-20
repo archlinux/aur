@@ -5,7 +5,7 @@ pkgdesc="This is an updater."
 arch=('x86_64')
 url="https://test.com"
 license=('MIT')
-depends=('bash')
+depends=('bash' 'jq')
 source=("https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/main.zip")
 sha256sums=('SKIP')
 
