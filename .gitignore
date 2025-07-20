@@ -1,0 +1,8 @@
+# Ignore everything
+*
+# Except for
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!0001-fix_update_theme_script_path.patch
+!0002-fix_cachedir_path.patch

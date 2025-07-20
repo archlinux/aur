@@ -1,13 +1,14 @@
 pkgbase = grub-theme-minegrub
-	pkgver = 2.0.0
+	pkgdesc = The minegrub theme and related utilities
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Lxtharia/minegrub-theme
 	arch = any
 	license = MIT
-	source = https://github.com/Lxtharia/minegrub-theme/archive/v2.0.0.tar.gz
+	source = minegrub-theme-3.1.0.tar.gz::https://github.com/Lxtharia/minegrub-theme/archive/v3.1.0.tar.gz
 	source = 0001-fix_update_theme_script_path.patch
 	source = 0002-fix_cachedir_path.patch
-	sha256sums = 459420760b53d3e18de8669bda3806c4065c1165ba9ba74ea22f2f5e80bc9191
+	sha256sums = 127ee3b112014dd6b26e2316ccd018084c300ecf5c401d6047efd0d5d4705112
 	sha256sums = 45739b6d506d0c57fc66f291bcd951c0de8103c3c7eeeb0c39b1875761f14e66
 	sha256sums = 695c88c58200f85e69a4f01b2b1e5388403f3b05e5b545490c779fc383b8bdf9
 
@@ -17,9 +18,9 @@ pkgname = grub-theme-minegrub
 	optdepends = minegrub-theme-update-service: for automatic theme update
 
 pkgname = minegrub-theme-update-service
-	pkgdesc = A systemd service that automatically updates minegrub theme
+	pkgdesc = A systemd service that automatically updates the minegrub theme
 	depends = grub-theme-minegrub
 	depends = systemd
 	depends = python-pillow
-	depends = neofetch
+	depends = fastfetch
 	conflicts = grub-theme-minegrub-git
