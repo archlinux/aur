@@ -1,13 +1,13 @@
 pkgbase = csvargs
 	pkgdesc = A command-line tool for processing CSV files with Jinja2 templates and executing commands on each row
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/rickprice/csvargs
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = rust
 	makedepends = cargo
-	source = csvargs-0.3.0.tar.gz::https://github.com/rickprice/csvargs/archive/v0.3.0.tar.gz
-	sha256sums = 716ca5ae2e1508e35fe7d3a3b479fe634ac904048a041ccea18e9dfd7aa0ecd6
+	source = csvargs-0.3.1.tar.gz::https://github.com/rickprice/csvargs/archive/v0.3.1.tar.gz
+	sha256sums = 31180976a882f686fe30317dea39439d7898b7b42083f0dab3d51f59c345637e
 
 pkgname = csvargs
