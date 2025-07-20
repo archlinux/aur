@@ -1,0 +1,3 @@
+[libmodule]
+source = "git"
+git = "https://github.com/FedeDP/libmodule.git"
