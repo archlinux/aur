@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname=python-pytest-flake8
 _name=${pkgname#python-}
