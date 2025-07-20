@@ -11,7 +11,13 @@ source=("$pkgname::git+https://github.com/kewlfft/rpc-gateway.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  # Extract version from Makefile
+  local version=$(grep '^VERSION=' Makefile | cut -d'=' -f2)
+  # Get git commit count and short hash
+  local commit_count=$(git rev-list --count HEAD)
+  local commit_hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" "$version" "$commit_count" "$commit_hash"
 }
 
 build() {
