@@ -1,25 +1,25 @@
-# Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
+# Maintainer: Kimiblock Moe
 
 pkgname=python-cryptg
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Cryptographic utilities for Telegram, designed to use with Telethon."
 url="https://github.com/cher-nov/cryptg"
 depends=('python')
-makedepends=('python-setuptools' 'python-setuptools-rust' 'python-build' 'python-installer' 'python-wheel')
-license=('CC0')
+makedepends=('python-setuptools' 'python-setuptools-rust' 'python-build' 'python-installer' 'python-wheel' 'git')
+license=('CC0-1.0')
 arch=('any')
-source=("https://github.com/cher-nov/cryptg/archive/v${pkgver}.tar.gz")
+source=("git+https://github.com/cher-nov/cryptg.git#tag=v${pkgver}")
 
-sha256sums=('923a2318ab2e591952794d9b2125eb3f4fa4b5b9462fb2305ee9de8b092c49b3')
+sha256sums=('c23d0055ea730b372de29cc6ff1aaa7a23d165e2b20908e1c27cb65b9aa29f97')
 
 build() {
-    cd "${srcdir}/cryptg-${pkgver}"
+    cd "${srcdir}/cryptg"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/cryptg-${pkgver}"
+    cd "${srcdir}/cryptg"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
