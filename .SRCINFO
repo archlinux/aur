@@ -8,7 +8,7 @@ pkgbase = fff-dev
 	makedepends = git
 	provides = fff-dev
 	conflicts = fff-dev
-	source = fff-dev-0.0.8.tar.gz::https://github.com/rgcastrof/fff/archive/v0.0.8.tar.gz
+	source = fff-0.0.8.tar.gz::https://github.com/rgcastrof/fff/archive/v0.0.8.tar.gz
 	sha256sums = 12a07627340746d439496bb9424d6414a912151c71bd70f4472a477405c708e7
 
 pkgname = fff-dev
