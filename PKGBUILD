@@ -1,5 +1,5 @@
 pkgname=updaterv2
-pkgver=5.32
+pkgver=5.33
 pkgrel=5
 pkgdesc="This is an updater."
 arch=('x86_64')
@@ -13,16 +13,26 @@ build() {
   echo "Listing files in $srcdir/testpackage-main before chmod:"
   ls -l "$srcdir/testpackage-main"
 
-  # If config.sh missing, copy fallback from current directory
+  # Fallback for config.sh
   if [[ ! -f "$srcdir/testpackage-main/config.sh" ]]; then
-    echo "config.sh missing in source dir, copying fallback..."
-    cp ./config.sh "$srcdir/testpackage-main/config.sh"
+    echo "config.sh missing in source dir, trying to copy fallback..."
+    if [[ -f ./config.sh ]]; then
+      cp ./config.sh "$srcdir/testpackage-main/config.sh"
+    else
+      echo "Local fallback config.sh missing, downloading from GitHub raw..."
+      curl -fsSL "https://raw.githubusercontent.com/shadowfreddy25551/testpackage/refs/heads/main/config.sh" -o "$srcdir/testpackage-main/config.sh"
+    fi
   fi
 
-  # Same for code.sh just in case (optional)
+  # Fallback for code.sh
   if [[ ! -f "$srcdir/testpackage-main/code.sh" ]]; then
-    echo "code.sh missing in source dir, copying fallback..."
-    cp ./code.sh "$srcdir/testpackage-main/code.sh"
+    echo "code.sh missing in source dir, trying to copy fallback..."
+    if [[ -f ./code.sh ]]; then
+      cp ./code.sh "$srcdir/testpackage-main/code.sh"
+    else
+      echo "Local fallback code.sh missing, downloading from GitHub raw..."
+      curl -fsSL "https://raw.githubusercontent.com/shadowfreddy25551/testpackage/refs/heads/main/code.sh" -o "$srcdir/testpackage-main/code.sh"
+    fi
   fi
 
   chmod +x "$srcdir/testpackage-main/code.sh"
@@ -31,6 +41,7 @@ build() {
   echo "To run the updater type 'updater'"
   sleep 3
 }
+
 
 package() {
   install -Dm755 "$srcdir/testpackage-main/code.sh" "$pkgdir/usr/bin/updater"
