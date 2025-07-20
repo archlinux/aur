@@ -17,6 +17,5 @@ package() {
   cd lib${pkgname}-linux-x86_64-${pkgver}_cuda${_cudaver}-archive
   mkdir "$pkgdir"/usr
   cp -r bin include lib share "$pkgdir"/usr
-  rm -rf "$pkgdir"/usr/src
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
