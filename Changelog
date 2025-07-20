@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 4.12.0 ➙ 4.16.0
-              : 2024-12-19 ➙ 2025-05-29
+ Tags         : 4.13.0 ➙ 5.0.0
+              : 2024-12-31 ➙ 2025-07-20
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-07-20   : 5.0.0
+                update Docs/Changelog Docs/kea_config.pdf
+                Code re-org/cleanup.
+                Code now complies with PEP-8, PEP-257 and PEP-484 style and type annotations
+ 2025-05-29     update Docs/Changelog Docs/kea_config.pdf
 
  2025-05-29   : 4.16.0
                 Make default socket_dir "/var/run/kea". Linux FHS recommends "/run".
@@ -25,9 +31,3 @@
                 Add git signing key to Arch Package
                 Bump python version
  2024-12-19     update Docs/Changelog.rst Docs/kea_config.pdf
-
- 2024-12-19   : 4.12.0
-                add new file toml.py
-                replace toml module with native tomllib which requires python >= 3.11
-                update license ids in source
- 2024-09-12     update Docs/Changelog.rst Docs/kea_config.pdf
