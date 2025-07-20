@@ -54,5 +54,3 @@ pkgname = linux-bcachefs-git
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = pahole
-Syncing...
-Synced
