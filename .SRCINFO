@@ -1,11 +1,11 @@
 pkgbase = nyw
 	pkgdesc = Declarative way to manage your packages independent of the system
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 3
 	url = https://github.com/0drng/nyw
 	arch = x86_64
 	makedepends = cargo
-	source = nyw-0.1.1.tar.gz::https://github.com/0drng/nyw/archive/0.1.1.tar.gz
-	sha256sums = 803ab2a1e8518a108908ad5f9e1cb16d6ef1ce69e9c6a9c433ec04f0740e4720
+	source = nyw-0.1.2.tar.gz::https://github.com/0drng/nyw/archive/0.1.2.tar.gz
+	sha256sums = 7651182d06f7870bd001f3fc0aa4952d8a1eb3ebf8a4f4426006c366fdca7cc2
 
 pkgname = nyw
