@@ -3,7 +3,7 @@
 pkgname=nvshmem
 pkgver=3.3.9
 _cudaver=12
-pkgrel=4
+pkgrel=5
 pkgdesc="NVSHMEM is a software library that implements the OpenSHMEM application programming interface (API) for clusters of NVIDIA ® GPUs."
 arch=('x86_64')
 url="https://developer.nvidia.com/nvshmem"
@@ -18,6 +18,7 @@ package() {
   cd lib${pkgname}-linux-x86_64-${pkgver}_cuda${_cudaver}-archive
   mkdir "$pkgdir"/usr
   cp -r bin include lib "$pkgdir"/usr
-  cp -r share/src "$pkgdir"/usr/src
+  mkdir -p "$pkgdir"/usr/src/debug/${pkgname}
+  cp -r share/src "$pkgdir"/usr/src/debug/${pkgname}
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
