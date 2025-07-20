@@ -9,7 +9,9 @@ pkgbase = nwjs-bin
 	optdepends = nw-gyp: native add-on build tool for node-webkit
 	options = !debug
 	source = nwjs-sdk-0.101.2.tar.gz::https://dl.nwjs.io/v0.101.2/nwjs-sdk-v0.101.2-linux-x64.tar.gz
+	source = nwjs-ffmpeg-0.101.2.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.101.2/0.101.2-linux-x64.zip
 	sha256sums = 8c2b46e3dae39b1339120ed78fb9a376ee3bb205a16fabb663b81a6efd8da878
+	sha256sums = 03b6f6250acca8b1c91a035784c31092e776a513a5ed45d2e1b8502410864526
 
 pkgname = nwjs-bin
 	depends = gtk3

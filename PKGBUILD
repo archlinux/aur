@@ -12,7 +12,7 @@ pkgname=(
   nwjs-sdk-bin
 )
 pkgver=0.101.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Runtime based on Chromium and node.js"
 arch=('x86_64')
 url="https://nwjs.io"
@@ -22,8 +22,12 @@ optdepends=(
   'nw-gyp: native add-on build tool for node-webkit'
 )
 options=(!debug)
-source=(nwjs-sdk-$pkgver.tar.gz::${url//nwjs/dl.nwjs}/v$pkgver/nwjs-sdk-v$pkgver-linux-x64.tar.gz)
-sha256sums=('8c2b46e3dae39b1339120ed78fb9a376ee3bb205a16fabb663b81a6efd8da878')
+source=(
+  nwjs-sdk-$pkgver.tar.gz::https://dl.nwjs.io/v$pkgver/nwjs-sdk-v$pkgver-linux-x64.tar.gz
+  nwjs-ffmpeg-$pkgver.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/$pkgver/$pkgver-linux-x64.zip
+)
+sha256sums=('8c2b46e3dae39b1339120ed78fb9a376ee3bb205a16fabb663b81a6efd8da878'
+            '03b6f6250acca8b1c91a035784c31092e776a513a5ed45d2e1b8502410864526')
 
 prepare() {
   # Simplify folder name (only if exists, in case of using '--noextract').
@@ -47,6 +51,10 @@ package_nwjs-bin() {
   done
 
   mkdir -p "$pkgdir"/usr/bin/ && ln -sr "$pkgdir"/opt/nwjs/nw -t "$pkgdir"/usr/bin/
+
+  # Enable proprietary codecs, by replacing bundled FFmpeg with third-party one.
+  rm "$pkgdir"/opt/nwjs/lib/libffmpeg.so
+  install -Dm644 "$srcdir"/libffmpeg.so -t "$pkgdir"/opt/nwjs/lib/
 }
 
 package_nwjs-sdk-bin() {
