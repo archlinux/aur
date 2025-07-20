@@ -3,10 +3,10 @@
 
 pkgname='perl-method-delegation'
 pkgver='0.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Easily delegate methods to another object"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-sub-install>=0.928')
 makedepends=()

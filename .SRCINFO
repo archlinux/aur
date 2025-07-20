@@ -1,11 +1,10 @@
 pkgbase = perl-method-delegation
 	pkgdesc = Easily delegate methods to another object
 	pkgver = 0.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Method-Delegation
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	checkdepends = perl-test-most>=0.35
 	depends = perl-sub-install>=0.928
 	options = !emptydirs
