@@ -3,7 +3,7 @@
 _binname=xenia_canary
 _branchname=canary_experimental
 pkgname=xenia-canary-git
-pkgver=r7879.7835f92d8
+pkgver=r7895.5e4a04f38
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -64,7 +64,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
-            '51d8882d67ad9120e00ace0fab206141eca481642237e467b4cc363cd16c57a8')
+            '212d2eff01802ece498a90b0e20c7506cc7667c85361c8192f896374b782b6ab')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"
@@ -92,7 +92,6 @@ prepare() {
 
   export CXXFLAGS CFLAGS LDFLAGS
   premake5 \
-    --cc=clang \
     --file="${pkgname}"/premake5.lua \
     cmake
   cmake \
@@ -123,7 +122,6 @@ check() {
     "${pkgname}"/premake5.lua
 
   premake5 \
-    --cc=clang \
     --file="${pkgname}"/premake5.lua \
     cmake
   cmake \

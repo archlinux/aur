@@ -1,10 +1,10 @@
-From 5addd60a43eebc811ca01fe8fa39db80fe6eac00 Mon Sep 17 00:00:00 2001
+From 17f720cb688fd275e67cefc212a493ff505fe586 Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
 Date: Sun, 11 May 2025 20:22:11 -0700
 Subject: [PATCH] Use system dependencies
 
 ---
- .gitmodules                                   | 39 ---------------
+ .gitmodules                                   | 41 +--------------
  premake5.lua                                  | 50 +++++++++++++------
  src/xenia/apu/sdl/premake5.lua                |  2 +-
  src/xenia/emulator.cc                         |  2 +-
@@ -27,6 +27,7 @@ Subject: [PATCH] Use system dependencies
  third_party/cxxopts/include/cxxopts.hpp       |  1 +
  third_party/fmt                               |  1 -
  third_party/fmt/include                       |  1 +
+ third_party/premake-cmake                     |  2 +-
  third_party/pugixml                           |  1 -
  third_party/pugixml/src/pugixml.hpp           |  1 +
  third_party/snappy                            |  2 +-
@@ -40,7 +41,7 @@ Subject: [PATCH] Use system dependencies
  third_party/zarchive/include                  |  1 +
  third_party/zlib                              |  1 -
  third_party/zlib/zlib.h                       |  1 +
- 36 files changed, 58 insertions(+), 74 deletions(-)
+ 37 files changed, 60 insertions(+), 76 deletions(-)
  delete mode 160000 third_party/SDL2
  create mode 120000 third_party/SDL2/include
  delete mode 160000 third_party/SPIRV-Tools
@@ -71,7 +72,7 @@ Subject: [PATCH] Use system dependencies
  create mode 120000 third_party/zlib/zlib.h
 
 diff --git a/.gitmodules b/.gitmodules
-index 6c40a386d..24fb85c8d 100644
+index 58feb9936..1560702ae 100644
 --- a/.gitmodules
 +++ b/.gitmodules
 @@ -7,15 +7,9 @@
@@ -115,7 +116,12 @@ index 6c40a386d..24fb85c8d 100644
  [submodule "third_party/disruptorplus"]
  	path = third_party/disruptorplus
  	url = https://github.com/xenia-canary/disruptorplus.git
-@@ -58,9 +37,6 @@
+@@ -54,13 +33,10 @@
+ 	url = https://github.com/microsoft/DirectXShaderCompiler.git
+ [submodule "third_party/premake-cmake"]
+ 	path = third_party/premake-cmake
+-	url = https://github.com/JoelLinn/premake-cmake.git
++       url = https://github.com/Jarod42/premake-cmake.git
  [submodule "third_party/date"]
  	path = third_party/date
  	url = https://github.com/HowardHinnant/date.git
@@ -163,7 +169,7 @@ index 6c40a386d..24fb85c8d 100644
  	path = third_party/libusb
  	url = https://github.com/libusb/libusb.git
 diff --git a/premake5.lua b/premake5.lua
-index 8f44e9d1a..f619e68b8 100644
+index 548140fb9..5cff85700 100644
 --- a/premake5.lua
 +++ b/premake5.lua
 @@ -1,6 +1,4 @@
@@ -173,10 +179,10 @@ index 8f44e9d1a..f619e68b8 100644
  require("third_party/premake-cmake/cmake")
  
  location(build_root)
-@@ -119,13 +117,35 @@ filter("platforms:Linux")
-   buildoptions({
-     -- "-mlzcnt",  -- (don't) Assume lzcnt is supported.
-   })
+@@ -122,13 +120,35 @@ filter("platforms:Linux")
+   --buildoptions({
+   --    "-mlzcnt",   -- (don't) Assume lzcnt is supported.
+   --})
 +  pkg_config.all("RapidJSON")
 +  pkg_config.all("SPIRV-Tools")
 +  pkg_config.all("capstone")
@@ -210,7 +216,7 @@ index 8f44e9d1a..f619e68b8 100644
    })
  
  filter({"platforms:Linux", "kind:*App"})
-@@ -168,7 +188,7 @@ filter({"platforms:Linux", "language:C++", "toolset:clang", "files:*.cc or *.cpp
+@@ -194,7 +214,7 @@ filter({"language:C", "toolset:clang or gcc"}) -- "platforms:Linux"
  filter("platforms:Android-*")
    system("android")
    systemversion("24")
@@ -219,7 +225,7 @@ index 8f44e9d1a..f619e68b8 100644
    staticruntime("On")
    -- Hidden visibility is needed to prevent dynamic relocations in FFmpeg
    -- AArch64 Neon libavcodec assembly with PIC (accesses extern lookup tables
-@@ -263,22 +283,22 @@ workspace("xenia")
+@@ -286,22 +306,22 @@ workspace("xenia")
    configurations({"Checked", "Debug", "Release"})
  
    include("third_party/aes_128.lua")
@@ -252,7 +258,7 @@ index 8f44e9d1a..f619e68b8 100644
  
    if os.istarget("windows") then
      include("third_party/libusb.lua")
-@@ -291,7 +311,7 @@ workspace("xenia")
+@@ -314,7 +334,7 @@ workspace("xenia")
      -- one controller (Nvidia Shield) being supported, digital triggers are also
      -- not supported; lifecycle management (especially surface loss) is also
      -- complicated.
@@ -279,10 +285,10 @@ index 8f0e9ab61..21bf598ba 100644
    local_platform_files()
 -  sdl2_include()
 diff --git a/src/xenia/emulator.cc b/src/xenia/emulator.cc
-index fa346e616..b608dd1c4 100644
+index a28b8b4ac..4b2e05150 100644
 --- a/src/xenia/emulator.cc
 +++ b/src/xenia/emulator.cc
-@@ -17,7 +17,7 @@
+@@ -14,7 +14,7 @@
  #include "third_party/tabulate/single_include/tabulate/tabulate.hpp"
  #include "third_party/zarchive/include/zarchive/zarchivecommon.h"
  #include "third_party/zarchive/include/zarchive/zarchivewriter.h"
@@ -471,6 +477,13 @@ index 000000000..408ea0f82
 @@ -0,0 +1 @@
 +/usr/include
 \ No newline at end of file
+diff --git a/third_party/premake-cmake b/third_party/premake-cmake
+index 91c646f63..8e02bb91a 160000
+--- a/third_party/premake-cmake
++++ b/third_party/premake-cmake
+@@ -1 +1 @@
+-Subproject commit 91c646f638a6fbff20f0ea90769df8dcf62bc5e4
++Subproject commit 8e02bb91a4d0f29d7540de7357574cf3b7c454f9
 diff --git a/third_party/pugixml b/third_party/pugixml
 deleted file mode 160000
 index b2b466403..000000000
@@ -503,11 +516,11 @@ index 000000000..408ea0f82
 \ No newline at end of file
 diff --git a/third_party/tomlplusplus b/third_party/tomlplusplus
 deleted file mode 160000
-index 30172438c..000000000
+index 708fff700..000000000
 --- a/third_party/tomlplusplus
 +++ /dev/null
 @@ -1 +0,0 @@
--Subproject commit 30172438cee64926dc41fdd9c11fb3ba5b2ba9de
+-Subproject commit 708fff700f36ab3c2ab107b984ec9f3b8be5f055
 diff --git a/third_party/tomlplusplus/impl b/third_party/tomlplusplus/impl
 new file mode 120000
 index 000000000..77969bc9d
@@ -578,5 +591,5 @@ index 000000000..595c3ced9
 +/usr/include/zlib.h
 \ No newline at end of file
 -- 
-2.49.0
+2.50.1
 
