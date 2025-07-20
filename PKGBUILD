@@ -9,31 +9,34 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/shell-shortcuts"
 license=('GPL-3.0-or-later')
 depends=('gtk3')
-makedepends=('cargo' 'git')
+makedepends=(
+  'cargo'
+  'git'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/shell-shortcuts.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/shell-shortcuts"
+  cd shell-shortcuts
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/shell-shortcuts"
+  cd shell-shortcuts
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$srcdir/shell-shortcuts"
+  cd shell-shortcuts
   export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
 
 package() {
-  cd "$srcdir/shell-shortcuts"
+  cd shell-shortcuts
   make prefix=/usr DESTDIR="$pkgdir" install
 }
 
