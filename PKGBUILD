@@ -1,4 +1,4 @@
-# Maintainer: Praneeth Ashok <your@email.here>
+# Maintainer: Praneeth Ashok Kumar <praneethashok14@gmail.com>
 pkgname=guessgame
 pkgver=1.0.0
 pkgrel=1
