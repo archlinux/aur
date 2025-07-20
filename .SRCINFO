@@ -1,14 +1,12 @@
 pkgbase = calcli
-	pkgdesc = A simple calculator CLI app written in Rust
+	pkgdesc = A simple Rust-based calculator for the terminal
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/praneethashok14/calcli
+	url = https://github.com/praneethashok/calcli
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	makedepends = cargo
-	makedepends = git
-	source = git+https://github.com/praneethashok14/calcli.git#tag=v1.0.0
-	sha256sums = SKIP
+	source = calcli::git+https://github.com/praneethashok/calcli.git
+	md5sums = SKIP
 
 pkgname = calcli
