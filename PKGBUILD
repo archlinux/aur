@@ -1,13 +1,13 @@
 # Maintainer: amadejk <amadejkastelic7@gmail.com>
 pkgname=hyprlux
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="Hyprland utility that automates vibrance and night light control"
 arch=('x86_64')
 url="https://github.com/amadejkastelic/Hyprlux"
 license=('MIT')
-depends=('rust' 'cargo' 'hyprland')
-makedepends=('git')
+depends=('hyprland')
+makedepends=('cargo')
 install="install.sh"
 options=('!debug')
 source=(
@@ -16,19 +16,24 @@ source=(
     "config.toml"
 )
 sha256sums=(
-    'a89df780b6262ce4343bd0a1ae6c539feef23e90d8be9379a6c4c67372b816f2'
-    '201c8a74f08038ac95971bc601976fbf6b26f50ee2ec7859ee7f13df9113b135'
-    '6c6308c8315abc06fda605e14c7be898304c2448ccc1c23c1845bf5a66a49647'
+    'ee1e24153f12a732eff6bf430ca773e0ebb4b16ec2688956913a917d0410a78a'
+    'ea86a3847218b4f229f0ab5a871311b64328cec774fb9defb551771ef77d4602'
+    '727f8015318fbf5914f3d8cda1302214e4f72da4b16296e4f140f1e9e4e6292f'
 )
+
+prepare() {
+    cd "$srcdir/Hyprlux-${pkgver}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
+}
 
 build() {
     cd "$srcdir/Hyprlux-${pkgver}"
-    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --release
+    cargo build --frozen --release --target-dir target
 }
 
 check() {
     cd "$srcdir/Hyprlux-${pkgver}"
-    RUSTUP_TOOLCHAIN=stable cargo test
+    cargo test --frozen --release
 }
 
 package() {
@@ -37,4 +42,3 @@ package() {
     install -Dm644 "$srcdir/hyprlux.service" "$pkgdir/usr/lib/systemd/system/hyprlux.service"
     install -Dm644 "$srcdir/config.toml" "$pkgdir/usr/share/hyprlux/config.toml"
 }
-
