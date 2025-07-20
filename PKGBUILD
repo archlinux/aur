@@ -1,12 +1,12 @@
-# Maintainer: Ordoban <dirk.langer@vvovgonik.de>
-_author=OCBNET
+# Contributor: Anonymous
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-css-sass'
 pkgver='3.6.4'
-pkgrel='2'
-pkgdesc="Compile .scss files using libsass"
+pkgrel='3'
+pkgdesc=""
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-encode-locale>=0.01' 'perl-extutils-cppguess>=0.14' 'perl-file-chdir>=0.01' 'perl-filesys-notify-simple>=0.01' 'perl-yaml-libyaml>=0')
 makedepends=()
