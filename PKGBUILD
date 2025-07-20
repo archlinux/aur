@@ -1,6 +1,6 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=genwallet-git
-pkgver=0.1.0.r18.3c07e09
+pkgver=0.4.1.r20.5a043be
 pkgrel=1
 pkgdesc="Ethereum wallet generator with pattern matching"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local version=$(grep '^version = ' Cargo.toml | cut -d'"' -f2)
+  printf "%s.r%s.%s" "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
