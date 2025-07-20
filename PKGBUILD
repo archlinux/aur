@@ -2,7 +2,7 @@
 pkgname=los-git
 binname=los
 pkgnamelong=lights_out_solver
-pkgver=1.3.0.r0.g4517f9f
+pkgver=1.3.2.r0.g953bc9e
 pkgrel=1
 pkgdesc="CLI program created in Rust to solve Lights Out Puzzle"
 arch=('x86_64')
@@ -36,14 +36,14 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --bin "$binname"
 }
 
 check() {
     cd "$pkgnamelong"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --frozen --release --bin "$binname"
 }
 
 package() {
