@@ -1,10 +1,13 @@
 pkgbase = python-rst.linker
 	pkgdesc = Tools for adding metadata and hyperlinks to reStructuredText
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaraco/rst.linker
 	arch = any
 	license = MIT
+	checkdepends = python-path
+	checkdepends = python-pytest
+	checkdepends = python-pytest-subprocess
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
