@@ -1,11 +1,13 @@
 pkgbase = otf-firamath
 	pkgdesc = Fira Math is a sans-serif font with Unicode math support
-	pkgver = v0.3.4
+	pkgver = 0.3.4
 	pkgrel = 1
-	url = https://github.com/firamath
+	url = https://github.com/firamath/firamath
 	arch = any
-	license = custom:ofl
-	source = https://github.com/firamath/firamath/releases/download/v0.3.4/FiraMath-Regular.otf
-	md5sums = bc0416de599a48532457e00d64f6695b
+	license = OFL-1.1-no-RFN
+	source = otf-firamath-0.3.4-regular.otf::https://github.com/firamath/firamath/releases/download/v0.3.4/FiraMath-Regular.otf
+	source = otf-firamath-0.3.4-LICENSE.txt::https://github.com/firamath/firamath/raw/refs/tags/v0.3.4/LICENSE
+	sha256sums = 2028cbd3dd4d8c0cf1608520eb4759956a83a67931d7b6d8e7c313520186e35b
+	sha256sums = 573c14d3ddf557b59bf1fb5537a116a85f264654cdb9ba194ac305acd8ce5dc6
 
 pkgname = otf-firamath
