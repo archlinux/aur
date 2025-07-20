@@ -5,7 +5,7 @@ pkgbase = nyw
 	url = https://github.com/0drng/nyw
 	arch = x86_64
 	makedepends = cargo
-	source = nywida-0.1.0.tar.gz::https://github.com/0drng/nyw/archive/0.1.0.tar.gz
+	source = nyw-0.1.0.tar.gz::https://github.com/0drng/nyw/archive/0.1.0.tar.gz
 	sha256sums = 9b81f0affb04528fbfa590253b662a0665afb0c43e4398a6c1cca4b7e2ea8e6f
 
 pkgname = nyw
