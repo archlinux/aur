@@ -1,0 +1,8 @@
+/var/log/garuda/garuda-update {
+    daily
+    rotate 7
+    missingok
+    notifempty
+    maxsize 2M
+    noolddir
+}

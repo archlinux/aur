@@ -1,0 +1,188 @@
+#!/bin/bash
+set -e
+
+# Hacky way to check if the package is installed
+package-exists-fast() {
+	if compgen -G "/var/lib/pacman/local/$1-*" >/dev/null; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+update_keyrings() {
+	local packages=("archlinux-keyring" "chaotic-keyring" "garuda-hotfixes")
+	if $PACMAN -Qq blackarch-keyring &>/dev/null; then
+		packages+=("blackarch-keyring")
+	fi
+	if [ -n "$($PACMAN -Qu "${packages[@]}" 2>&1)" ]; then
+		echo -e "\n\033[1;33m-->\033[1;34m Applying keyring updates before starting full system update..\033[0m"
+		# shellcheck disable=1007
+		SNAP_PAC_SKIP=y SKIP_AUTOSNAP= $PACMAN -S --needed --noconfirm "${packages[@]}" || return 0
+		return 1
+	fi
+	return 0
+}
+
+# If we are dealing with a more legacy garuda install, we should auto install expect to get auto-pacman working.
+install_expect() {
+	if [ -x /usr/bin/tclsh ] && [ ! -x /usr/bin/expect ]; then
+		SKIP_AUTOSNAP=1 SNAP_PAC_SKIP=y $PACMAN -U https://archive.archlinux.org/repos/2022/04/25/extra/os/x86_64/expect-5.45.4-2-x86_64.pkg.tar.zst --noconfirm --asdeps
+	fi
+}
+
+# Anything printed by this script into stdout will be added as a pacman parameter to pacman -Syu
+package-replaces() {
+	local packages
+	packages="$($PACMAN -Qq python-xdg garuda-dr460nized garuda-xfce-kwin-settings garuda-lxqt-kwin-settings garuda-wayfire-settings sweet-kde-git sweet-cursor-theme-git pipewire-media-session pipewire-support qemu-base virt-manager-meta libretro-meta libretro-mame-git jack2 pipewire-jack libpipewire-0.3.so=0-64 jre-openjdk-headless jre-openjdk jdk-openjdk pinta dotnet-runtime-7.0 2>/dev/null | xargs || true)"
+	# We replace python-xdg with python-pyxdg from extra
+	# This is not done automatically for some reason
+	if [[ "$packages" =~ (^| )python-xdg($| ) ]]; then
+		echo python-pyxdg
+	fi
+	if [[ "$packages" =~ (^| )(garuda-dr460nized|garuda-xfce-kwin-settings|garuda-lxqt-kwin-settings|garuda-wayfire-settings)($| ) ]] && [[ "$packages" =~ (^| )(sweet-cursor-theme-git|sweet-kde-git)($| ) ]]; then
+		echo --ignore
+		echo sweet-kde-git,sweet-cursor-theme-git,kvantum-theme-sweet-git,sweet-gtk-theme-dark,plasma5-theme-sweet-git
+	fi
+	if [[ "$packages" =~ (^| )pipewire-media-session($| ) ]] && [[ "$packages" =~ (^| )pipewire-support($| ) ]]; then
+		echo --ignore
+		echo pipewire-media-session
+	fi
+	if [[ "$packages" =~ (^| )libretro-meta($| ) ]] && [[ "$packages" =~ (^| )libretro-mame-git($| ) ]]; then
+		echo --ignore
+		echo libretro-mame-git
+	fi
+	if [[ "$packages" =~ (^| )jack2($| ) ]] && [[ "$packages" =~ (^| )pipewire-jack($| ) ]]; then
+		echo --ignore
+		echo jack2,lib32-jack2,jack2-dbus
+	fi
+	if [[ "$packages" =~ (^| )pipewire($| ) ]]; then
+		echo --ignore
+		echo pipewire-common-git
+	fi
+	if [[ "$packages" =~ (^| )jdk-openjdk($| ) ]] && [[ "$packages" =~ (^| )jre-openjdk(-headless)?($| ) ]]; then
+		echo --ignore
+		echo jre-openjdk,jre-openjdk-headless
+	elif [[ "$packages" =~ (^| )jre-openjdk($| ) ]] && [[ "$packages" =~ (^| )jre-openjdk-headless($| ) ]]; then
+		echo --ignore
+		echo jre-openjdk-headless
+	fi
+	# TODO: Remove this when pinta is updated to .NET 8 or pacman's dependency resolver is fixed lmao
+	if [[ "$packages" =~ (^| )pinta($| ) ]] && ! [[ "$packages" =~ (^| )dotnet-runtime-7.0($| ) ]]; then
+		echo dotnet-runtime-7.0
+	fi
+}
+
+# Exit codes:
+# 0: Everything is fine
+# 1: Something went wrong
+# 2: Keyring updated
+pre-update-routines() {
+	local exit_code=0
+	update_keyrings || exit_code=2
+	install_expect
+	return $exit_code
+}
+
+migrate-garuda-repo() {
+	# Add garuda repo if it doesn't exist
+	gawk -i inplace 'BEGIN {
+        err=1
+    }
+    {
+    if (rm)
+    {
+        if ($0 ~ /^ *(Include|Server) *=/)
+        {
+            next
+        }
+        # Check for empty line
+        else if ($0 ~ /^ *$/)
+        {
+            next
+        }
+        else
+        {
+            rm=0
+        }
+    }
+    if ($0 == "[options]")
+    {
+        print
+        next
+    }
+    else if ($0 == "[garuda]")
+    {
+      if (set) {
+        rm=1
+        next
+      }
+      set=1
+    }
+    else if ($0 == "[testing]")
+    {
+        print "[core-testing]"
+        err=0
+        next
+    }
+    else if ($0 == "[community-testing]")
+    {
+        print "[extra-testing]"
+        err=0
+        next
+    }
+    else if ($0 == "[community]")
+    {
+        rm=1
+        err=0
+        next
+    }
+  }
+  /^\[[^ \[\]]+\]/ {
+    if (!set) {
+        print "[garuda]"
+        print "Include = /etc/pacman.d/chaotic-mirrorlist"
+        print ""
+        set=1
+        err=0
+    }
+  }
+  END {exit err}
+  1' /etc/pacman.conf
+}
+
+# Verify if some core common breaking compontents are working
+verify-core() {
+	local invalid_nvidia=()
+	if [ -f "/usr/lib/modprobe.d/nvidia-utils.conf" ] && [ -f "/usr/share/licenses/nvidia-dkms/LICENSE" ]; then
+		for i in /usr/lib/modules/[0-9]*; do
+			if pacman -Qo "${i}" &>/dev/null; then
+				local nvidia
+				nvidia="$(grep -ohP '^.*/nvidia.ko[^/]*(?=:)' "${i}/modules.dep" 2>/dev/null || true)"
+				if [ -z "$nvidia" ] || [[ "$(modinfo "${i}/${nvidia}" -F vermagic 2>/dev/null | cut -d' ' -f1)" != "${i##*/}" ]]; then
+					invalid_nvidia+=("${i##*/}")
+				fi
+			fi
+		done
+	fi
+
+	# Oops, at least one is invalid!
+	if [ ${#invalid_nvidia[@]} -ne 0 ]; then
+		dkms_version="$(pacman -Rddp --print-format %v nvidia-dkms 2>/dev/null)"
+		if [ -n "${dkms_version}" ]; then
+			echo -e "\n\033[1;33m-->\033[1;34m A problem with the NVIDIA drivers has been detected\033[0m"
+		fi
+		for i in "${invalid_nvidia[@]}"; do
+			if [ -n "${dkms_version}" ]; then
+				echo -e "\n\033[1;33m--->\033[1;34m Building NVIDIA DKMS module for kernel $i\033[0m"
+				dkms remove -m nvidia -v "${dkms_version%-*}" -k "$i" || true
+				dkms install -m nvidia -v "${dkms_version%-*}" -k "$i" && depmod "$i" && echo -e "\033[1;33m--->\033[1;32m NVIDIA DKMS module for kernel $i built successfully\033[0m" || echo -e "\033[1;33m--->\033[1;31m Failed to build NVIDIA DKMS module for kernel $i\033[0m"
+			elif command -v dkms >/dev/null; then
+				dkms autoinstall -k "$i" && depmod "$i"
+			fi
+		done
+	fi
+}
+
+"$@"
+exit "$?"

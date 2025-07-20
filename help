@@ -1,0 +1,38 @@
+cat << EOF
+Garuda Update is Garuda Linux' preferred update solution. 
+The update script allows Garuda Linux to apply certain hotfixes and update automations for a smoother experience.
+
+Usage:
+	garuda-update [options] -- [extra pacman parameters]
+
+	–skip-mirrorlist -> Don't update the mirrorlist before applying the system update (SKIP_MIRRORLIST=1)
+	–aur/-a -> Update AUR packages via paru/yay after system update (UPDATE_AUR=1)
+	–noconfirm -> Emulate a custom (safer) version of --noconfirm for pacman (PACMAN_NOCONFIRM=1)
+
+	[extra pacman parameters] Add extra pacman parameters, everything after the two dashes (PACMAN_EXTRA_OPTS="…")
+
+Persistent configuration:
+	A config file can be created at /etc/garuda/garuda-update/config that can contain the environment variables mentioned above.
+
+Extended features:
+	Garuda-update offers additional features beyond the basic update process. These features provide users with more control and flexibility over system maintenance.
+
+	- garuda-update remote fix -> Reset pacman.conf and refresh keyrings.
+	- garuda-update remote keyring -> Refresh keyring without resetting pacman.conf.
+	- garuda-update remote fullfix -> Reset pacman.conf, refresh keyrings, and reinstall all packages in your OS.
+	- garuda-update remote reinstall -> Reinstall all packages in your OS.
+	- garuda-update remote reset-snapper -> Remove all backup subvolumes and snapshots created by Snapper, and force recreates Snapper configs.
+	- garuda-update remote reset-audio -> Reinstall Pipewire-support and WirePlumber, and disable/enable their services to reset the audio configuration.
+
+What does it do?
+
+	- A self-update is performed to ensure the latest fixes are downloaded.
+	- The mirrorlist is automatically refreshed using rate-mirrors
+	- The archlinux and chaotic keyrings are updated
+	- The garuda-hotfixes package is updated before any other system packages are updated to fix any important issues.
+	- Package related hotfixes such as conflicts and other issues are automatically resolved after they have been approved by the developers.
+	- The system update is applied. Common pacman prompts are automatically answered by “auto-pacman”. The user is asked to answer with “y” if they want to apply the update.
+	- Common post-update tasks are executed. The mlocate database is updated, fish completions and micro plugins are updated.
+	- If needed, a changelog showing major configuration changes is shown.
+EOF
+exit 0

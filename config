@@ -1,0 +1,11 @@
+##
+## Garuda Update config
+##
+# Environment variables can be set in this config to modify the behavior of the garuda-update script.
+# For more information, see the wiki page: https://wiki.garudalinux.org/garuda-update
+#
+# Uncomment the variables you wish to set.
+
+# SKIP_MIRRORLIST=1
+# UPDATE_AUR=1
+# PACMAN_NOCONFIRM=1
