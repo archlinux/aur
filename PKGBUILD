@@ -7,8 +7,17 @@ pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
 license=('Apache-2.0 AND MIT')
-depends=('python-cryptography' 'python-argon2_cffi')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'python-argon2_cffi'
+  'python-cryptography'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -17,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_name"
-  printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
