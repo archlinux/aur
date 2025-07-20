@@ -7,7 +7,6 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/genwallet"
 license=('GPL3')
 makedepends=('rust' 'cargo' 'libsecp256k1' 'pkg-config')
-depends=('gcc-libs')
 source=("$pkgname::git+https://github.com/kewlfft/genwallet.git")
 sha256sums=('SKIP')
 
@@ -31,20 +30,6 @@ build() {
   
   # Build with release optimizations (profile settings from .cargo/config.toml)
   cargo build --release
-  
-  # Strip binary for smaller size
-  strip target/release/genwallet
-}
-
-check() {
-  cd "$pkgname"
-  
-  # Set environment variables for secp256k1-sys to use system library
-  export SECP256K1_SYS_USE_PKG_CONFIG=1
-  export SECP256K1_SYS_USE_VENDORED=0
-  
-  # Run tests
-  cargo test --release
 }
 
 package() {

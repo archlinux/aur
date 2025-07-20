@@ -10,7 +10,6 @@ pkgbase = genwallet-git
 	makedepends = cargo
 	makedepends = libsecp256k1
 	makedepends = pkg-config
-	depends = gcc-libs
 	source = genwallet-git::git+https://github.com/kewlfft/genwallet.git
 	sha256sums = SKIP
 
