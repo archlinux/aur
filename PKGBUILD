@@ -2,19 +2,33 @@
 pkgname=python-daltonlens
 _name=${pkgname#python-}
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="R&D companion package for the desktop application DaltonLens"
 arch=('any')
 url="https://github.com/DaltonLens/DaltonLens-Python"
 license=('MIT')
-depends=('python-numpy' 'python-pillow')
-makedepends=('python-build' 'python-installer' 'python-setuptools-git' 'python-wheel')
+depends=(
+  'python-numpy'
+  'python-pillow'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools-git'
+  'python-wheel'
+)
+checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('4fb7d7951745b5c570e565113ea6610a6ba5522d599c27c25e070bb531de35ab')
 
 build() {
   cd "$_name-$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  PYTHONPATH=. pytest tests/test_simulate.py
 }
 
 package() {
