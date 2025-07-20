@@ -1,9 +1,9 @@
 # Maintainer: dr460nf1r3 <root at dr460nf1r3 dot org>
 
 pkgname=garuda-rani
-pkgver="3.0.2"
-_commit='7e1f290cbae9b91964f3aa82cc10913f7e372270'
-pkgrel=2
+pkgver="3.1.0"
+_commit='bf8e95552e2ace3d1988402888a3abb285ba2005'
+pkgrel=3
 _electronversion=36
 pkgdesc="Garuda's Reliable Assistant for Native Installations"
 arch=('any')
@@ -54,7 +54,7 @@ build() {
 
 package() {
   # Replaces all of garuda-settings-manager
-  replaces=('garuda-settings-manager' 'garuda-settings-manager-kcm' 'garuda-settings-manager-notifier' 'garuda-settings-manager-knotifier' 'garuda-settings-manager-knotifier-git' 'garuda-settings-manager-notifier-git')
+  replaces=('garuda-settings-manager' 'garuda-settings-manager-git' 'garuda-settings-manager-kcm' 'garuda-settings-manager-kcm-git' 'garuda-settings-manager-notifier' 'garuda-settings-manager-knotifier' 'garuda-settings-manager-knotifier-git' 'garuda-settings-manager-notifier-git')
 
   install -Dm755 "${srcdir}/rani/assets/garuda-rani.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/rani/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
