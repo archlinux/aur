@@ -2,23 +2,25 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-_gitname=oolite-git
-pkgver=1.91.0.7683.250717.68de802.r0.68de80200
-pkgrel=1.3
+pkgver=1.91.0.7684.250719.75e511b.r0.75e511b31
+pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements"
 arch=('x86_64')
 url="https://oolite.space/"
 license=('GPL-2.0-or-later')
 groups=('game')
-depends=(espeak gnustep-base sdl_mixer sdl_image glu nspr openal
-         libpng gcc-libs libglvnd glibc zlib sdl12-compat bash
+depends=(espeak gnustep-base glu nspr openal
+         libpng14 gcc-libs libglvnd glibc zlib sdl12-compat bash
          libvorbis)
-makedepends=(gnustep-make curl zip mesa gcc-objc git)
-source=($_gitname::git+https://github.com/OoliteProject/oolite
-        oolite-git.sh)
+makedepends=(gnustep-make curl zip libx11 gcc-objc git)
+source=(oolite-git::git+https://github.com/OoliteProject/oolite
+        oolite-git.sh
+        linux-force-use-of-libpng14.patch
+)
 
 sha512sums=('SKIP'
-            '9eacfddce04dcc91df12038be04387abd508e2e16248561d15c92c173d5b94a363d6b8fa4df644c07732b2cb484aaa0c11b7a07e56295e2d30a87de59f760aef')
+            '9eacfddce04dcc91df12038be04387abd508e2e16248561d15c92c173d5b94a363d6b8fa4df644c07732b2cb484aaa0c11b7a07e56295e2d30a87de59f760aef'
+            'd0b77a8375bdaadef9a79d287abcb2941b6b50e9e7f8d400d89ec384eaacabaa12353d5d3432b8e8714bae687c3026748e781ab104cc6ad96b81590cf6eac743')
 
 pkgver() {
   git -C oolite-git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
@@ -33,9 +35,7 @@ prepare(){
 
   echo "Updating git submodules"
   git checkout -- .gitmodules
-
-  # Workaround for -Werror=format-security default flag from GNUstep
-#  sed -Ei 's|(include \$\(GNUSTEP_MAKEFILES\)/common\.make)|\1\nCCFLAGS += -Wno-error=format-security\nOPTFLAG += -Wno-error=format-security|' GNUmakefile
+  patch -Np1 -i "$srcdir"/linux-force-use-of-libpng14.patch
 }
 
 
