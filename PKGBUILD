@@ -2,8 +2,8 @@
 # (The email is base64-encoded)
 
 pkgname='slpcli-git'
-pkgver=0
-pkgrel=1
+pkgver=r63.484b39e
+pkgrel=2
 pkgdesc="A Minecraft: Java Edition CLI Server List Ping implementation in C++."
 arch=('x86_64')
 url="https://github.com/Urpagin/slpcli"
