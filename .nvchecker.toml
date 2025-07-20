@@ -1,0 +1,4 @@
+[gnome-shell-extension-system76-power]
+source = "git"
+git = "https://gitlab.com/LFd3v/gnome-shell-extension-system76-power.git"
+prefix = "v"
