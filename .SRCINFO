@@ -1,0 +1,13 @@
+pkgbase = nputop-git
+	pkgdesc = Displaying Intel NPU usage on Linux
+	pkgver = r5.bfb22a4
+	pkgrel = 1
+	url = https://github.com/ZoLArk173/nputop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/ZoLArk173/nputop
+	b2sums = SKIP
+
+pkgname = nputop-git
