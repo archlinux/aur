@@ -1,3 +1,3 @@
-[ultimatekeys]
+[xkb-ultimatekeys]
 source = "git"
 git = "https://github.com/pieter-degroote/UltimateKEYS.git"
