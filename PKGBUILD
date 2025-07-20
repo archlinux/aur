@@ -3,7 +3,7 @@
 
 _pkgname=bonsai
 pkgname="python-$_pkgname"
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Python 3 module for accessing LDAP directory servers."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('python-gevent: enable bonsai.gevent'
             'python-tornado: enable bonsai.tornado'
             'python-trio: enable bonsai.trio')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bc9c13b225efa0a86d22fd9b66e0acd536dae3e7eddb8d3a662f12bbb61b698e')
+sha256sums=('6dd1710b1458bc3a4b7602d075b3691d9c18dd60a74a9968b942316c96fa62ed')
 
 build() {
     cd "${_pkgname}-${pkgver}"
