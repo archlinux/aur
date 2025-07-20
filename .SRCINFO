@@ -1,0 +1,12 @@
+pkgbase = ultimatekeys
+	pkgdesc = International US QWERTY keyboard layout with enhanced multilingual support
+	pkgver = 2025.04.25
+	pkgrel = 1
+	url = https://github.com/pieter-degroote/UltimateKEYS
+	arch = any
+	license = GPL-3.0-only
+	depends = xkeyboard-config
+	source = ultimatekeys-2025.04.25.tar.gz::https://github.com/pieter-degroote/UltimateKEYS/archive/refs/tags/r2025-04-25.tar.gz
+	b2sums = 2b71179a74c6e76ea3dfa8097f40fb5434d21b65329280a8f57330ca829a457fb0dda9fecea8133ee7c31519d4d6d318b47c5a90808540a3b462a0bc8fcceca4
+
+pkgname = ultimatekeys
