@@ -1,7 +1,7 @@
 pkgbase = python-pytest-black
 	pkgdesc = A pytest plugin to enable formatting checks with black
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coherent-oss/pytest-black
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-pytest-black
 	depends = python-black
 	depends = python-pytest
 	depends = python-toml
-	source = https://github.com/coherent-oss/pytest-black/archive/refs/tags/v0.6.0.tar.gz
+	source = pytest-black-0.6.0.tar.gz::https://github.com/coherent-oss/pytest-black/archive/refs/tags/v0.6.0.tar.gz
 	sha256sums = 90500bd9deb30ecf4985f496d5390f5366817faba3738898f1994db8eb53dce7
 
 pkgname = python-pytest-black

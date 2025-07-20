@@ -3,7 +3,7 @@
 pkgname=python-pytest-black
 _name=${pkgname#python-}
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pytest plugin to enable formatting checks with black"
 arch=('any')
 url="https://github.com/coherent-oss/pytest-black"
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-source=("https://github.com/coherent-oss/pytest-black/archive/refs/tags/v$pkgver.tar.gz")
+source=("$_name-$pkgver.tar.gz::https://github.com/coherent-oss/pytest-black/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('90500bd9deb30ecf4985f496d5390f5366817faba3738898f1994db8eb53dce7')
 
 build() {
