@@ -1,13 +1,12 @@
 pkgbase = zig-waybar-contrib
 	pkgdesc = Lightweight Waybar modules built with Zig
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/erffy/zig-waybar-contrib
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = zig>=0.14.0
-	depends = rocm-smi-lib
 	source = zig-waybar-contrib::git+https://github.com/erffy/zig-waybar-contrib.git
 	md5sums = SKIP
 
