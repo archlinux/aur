@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.6.r6.gc4eab08f
+pkgver=2.6.r68.gc1c2962
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -57,7 +57,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
@@ -66,10 +66,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
-	# https://github.com/cemu-project/Cemu/pull/1436
-	sed -i '/set/s/"glslang"/"glslang::glslang"/' src/Cafe/CMakeLists.txt
-	# fix for cmake 4
-	sed -i '/VERSION/s/3\.2\.0/3.5/' dependencies/discord-rpc/CMakeLists.txt
 }
 
 build() {
