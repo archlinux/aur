@@ -1,0 +1,4 @@
+[web-archives]
+source = "git"
+git = "https://github.com/birros/web-archives.git"
+prefix = "v"
