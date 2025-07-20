@@ -1,0 +1,19 @@
+pkgbase = keygen-cli-git
+	pkgdesc = CLI to interact with keygen.sh
+	pkgver = r209.3fa3a56
+	pkgrel = 1
+	url = https://github.com/keygen-sh/keygen-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = keygen-cli
+	conflicts = keygen-cli
+	source = git+https://github.com/keygen-sh/keygen-cli.git
+	sha256sums = SKIP
+
+pkgname = keygen-cli-git
