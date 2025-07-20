@@ -1,0 +1,11 @@
+pkgbase = harmontest
+	pkgdesc = Test package
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/harmonherring/harmontest.git
+	arch = x86_64
+	license = LGPL2.1
+	source = git+https://github.com/harmontest/harmontest.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = harmontest
