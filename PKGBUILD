@@ -1,27 +1,29 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=fermyon-spin
 _realname=spin
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly'
 arch=('x86_64')
-url="https://github.com/fermyon/spin"
+url="https://www.fermyon.com/spin"
 license=('Apache-2.0')
-depends=('gcc-libs' 'openssl')
-makedepends=('cargo' 'cmake')
-source=("${_realname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+depends=('glibc' 'gcc-libs' 'openssl' 'sqlite')
+makedepends=('cargo' 'rust-wasm' 'cmake' 'git')
+source=("${_realname}-${pkgver}.tar.gz::https://github.com/spinframework/spin/archive/v${pkgver}.tar.gz")
 options=("!debug")
 
 prepare() {
   cd $_realname-$pkgver
+  # fix compile errors with onig 6.4.0 / onig_sys 69.8.1
+  cargo update onig
+
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd $_realname-$pkgver
-  export RUSTUP_TOOLCHAIN=stable
-  # clear CFLAGS for the build was failing
-  export CFLAGS=""
+  export CFLAGS+=' -ffat-lto-objects' # fix issue compiling ring
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1 # force building against system sqlite libraries (negate bundled feature)
   cargo build --frozen --release --bin spin
 }
 
@@ -29,4 +31,4 @@ package() {
   install -Dm0755 $_realname-$pkgver/target/release/$_realname "$pkgdir"/usr/bin/$pkgname
 }
 
-sha256sums=('e890fd1dfce63d162b3660414ca54d877e723579cdb6e62ef501202f68029a02')
+sha256sums=('5137573e757a7d2cef68bf59b4a4a017149f3286353e68e16aeb6686b100f653')
