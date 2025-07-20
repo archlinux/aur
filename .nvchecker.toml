@@ -1,0 +1,5 @@
+[gshortcuts]
+source = "git"
+git = "https://github.com/jpinilloslr/gshortcuts.git"
+prefix = "v"
+exclude_regex = ".*(alpha|beta|rc).*"
