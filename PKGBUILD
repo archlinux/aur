@@ -1,7 +1,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 _pkgbase=openhab4
 pkgname=${_pkgbase}-addons
-pkgver=4.3.5
+pkgver=4.3.6
 pkgrel=1
 pkgdesc="addons for openhab4 open source home automation software"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("openhab4")
 conflicts=("openhab4-snapshot-addons")
 
 source=("openhab-addons-${pkgver}.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/${pkgver}/openhab-addons-${pkgver}.kar")
-sha256sums=('965b8e64fca915c603b37a96d5fd89875a26d413f478cd7a705270542040e4bb')
+sha256sums=('bfceeabeb4d8d712cb2a53091225e7b6de5829b01a2e842c2847c349b3be9d13')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${_pkgbase}/addons"
