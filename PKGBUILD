@@ -7,27 +7,17 @@
 
 pkgname=libtcod
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
 url="https://github.com/libtcod/libtcod"
 license=('BSD')
-depends=('sdl3' 'stb' 'lodepng' 'libutf8proc' 'zlib')
+depends=('sdl3' 'zlib')
 makedepends=('cmake')
 provides=("${pkgname}.so")
 changelog=CHANGELOG.md
-source=(
-  "https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz"
-  'lodepng-cConfig.cmake'
-  'utf8procConfig.cmake'
-  'StbConfig.cmake'
-)
-sha256sums=(
-  'ee9cc60140f480f72cb2321d5aa50beeaa829b0a4a651e8a37e2ba938ea23caa'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+source=("https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('ee9cc60140f480f72cb2321d5aa50beeaa829b0a4a651e8a37e2ba938ea23caa')
 
 build() {
   export CFLAGS+=" ${CPPFLAGS}"
@@ -45,9 +35,9 @@ build() {
     -D LIBTCOD_TESTS=OFF
     -D LIBTCOD_SDL3="find_package"
     -D LIBTCOD_ZLIB="find_package"
-    -D LIBTCOD_LODEPNG="find_package"
-    -D LIBTCOD_UTF8PROC="find_package"
-    -D LIBTCOD_STB="find_package"
+    -D LIBTCOD_LODEPNG="vendored"
+    -D LIBTCOD_UTF8PROC="vendored"
+    -D LIBTCOD_STB="vendored"
     -D LIBTCOD_INSTALL=ON
   )
 
