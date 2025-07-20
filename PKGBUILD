@@ -14,7 +14,7 @@ url="https://github.com/libtcod/libtcod"
 license=('BSD')
 depends=('sdl3' 'stb' 'lodepng' 'libutf8proc' 'zlib')
 makedepends=('cmake')
-provides=("${pkgname}.so")
+provides=("${pkgname}.a")
 changelog=CHANGELOG.md
 source=(
   "https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz"
