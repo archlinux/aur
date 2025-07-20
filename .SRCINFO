@@ -1,18 +1,20 @@
 pkgbase = ayllu-git
-	pkgdesc = Ayllu Forge
+	pkgdesc = Hyper Performant & Hackable Code Forge
 	pkgver = 0.0.0
 	pkgrel = 1
-	url = https://ayllu-forge.org/projects/ayllu
+	url = https://ayllu-forge.org/ayllu/ayllu
 	arch = x86_64
 	license = AGPL3
 	makedepends = rust
-	makedepends = sqlx-cli
-	makedepends = sassc
-	makedepends = npm
-	makedepends = capnproto
+	makedepends = gcc
+	makedepends = libgit2
+	makedepends = tree-sitter
 	depends = git
+	depends = libgit2
+	depends = tree-sitter
 	provides = ayllu-git
-	source = ayllu::git+https://ayllu-forge.org/projects/ayllu
+	options = !lto
+	source = ayllu::git+https://ayllu-forge.org/ayllu/ayllu
 	sha256sums = SKIP
 
 pkgname = ayllu-git

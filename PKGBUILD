@@ -2,58 +2,63 @@ pkgname=ayllu-git
 _pkgname=ayllu
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="Ayllu Forge"
+pkgdesc="Hyper Performant & Hackable Code Forge"
 arch=("x86_64")
 license=("AGPL3")
-url="https://ayllu-forge.org/projects/ayllu"
+url="https://ayllu-forge.org/ayllu/ayllu"
 depends=(
 	"git"
+	"libgit2"
+	"tree-sitter"
 )
 makedepends=(
 	"rust"
-	"sqlx-cli"
-	"sassc"
-	"npm"
-	"capnproto"
+	"gcc"
+	"libgit2"
+	"tree-sitter"
 )
 provides=("ayllu-git")
 optdepends=()
 source=(
-	"$_pkgname::git+https://ayllu-forge.org/projects/${_pkgname}"
+	"$_pkgname::git+https://ayllu-forge.org/ayllu/${_pkgname}"
 )
-
+# See: https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
+options=(!lto)
 sha256sums=("SKIP")
 
-build() {
-	cd $_pkgname
-	[[ -f db/state.db ]] && rm db/state.db
-	scripts/init_db_if_missing.sh
-	cargo build --release
-	cargo build --release --package ayllu-mail
+prepare() {
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
-	npm install
-	scripts/compile_stylesheets.sh
+check() {
+    cargo test --frozen --all-features
+}
+
+build() {
+	export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
-	cd $_pkgname
-	install -Dm755 "target/release/ayllu" $pkgdir/usr/bin/ayllu
-	install -Dm755 "target/release/ayllu-mail" $pkgdir/usr/bin/ayllu-mail
-	install -Dm644 "LICENSE" $pkgdir/usr/share/licenses/ayllu
-	install -Dm644 "config.example.toml" $pkgdir/etc/ayllu/config.example.toml
-	install -Dm644 "contrib/systemd/system/ayllu.service" $pkgdir/usr/lib/systemd/system/ayllu.service
-	install -Dm644 "contrib/systemd/user/ayllu.service" $pkgdir/usr/lib/systemd/user/ayllu.service
-	install -Dm644 "contrib/systemd/ayllu-sysusers.conf" $pkgdir/usr/lib/sysusers.d/ayllu-sysusers.conf
-	install -Dm755 "contrib/hooks/post-commit" $pkgdir/usr/share/ayllu/hooks/post-commit
-	install -Dm755 "contrib/hooks/post-receive" $pkgdir/usr/share/ayllu/hooks/post-receive
-
-	install -Dm644 "themes/default/main.min.css" $pkgdir/usr/share/ayllu/themes/default/main.min.css
-	find themes/default/templates -name '*.html' -exec install -Dm644 {} $pkgdir/usr/share/ayllu/{} \;
-	find themes/default/assets -type f -exec install -Dm644 {} $pkgdir/usr/share/ayllu/{} \;
-
-	install -Dm644 "themes/tokyonight/main.min.css" $pkgdir/usr/share/ayllu/themes/tokyonight/main.min.css
-	find themes/tokyonight/templates -name '*.html' -exec install -Dm644 {} $pkgdir/usr/share/ayllu/{} \;
-
-	install -Dm644 "themes/adwaita/main.min.css" $pkgdir/usr/share/ayllu/themes/adwaita/main.min.css
-	find themes/adwaita/templates -name '*.html' -exec install -Dm644 {} $pkgdir/usr/share/ayllu/{} \;
+	install -Dm755 \
+		"${srcdir}/target/release/ayllu" "${pkgdir}/usr/bin/ayllu"
+	install -Dm755 \
+		"${srcdir}/target/release/quipu" "${pkgdir}/usr/bin/quipu"
+	install -Dm755 \
+		"${srcdir}/target/release/ayllu-shell" "${pkgdir}/usr/bin/ayllu-shell"
+	install -Dm755 \
+		"${srcdir}/target/release/ayllu-keys" "${pkgdir}/usr/bin/ayllu-keys"
+	install -Dm644 \
+		"${srcdir}/ayllu/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 \
+		"${srcdir}/ayllu/config.example.toml" "${pkgdir}/etc/ayllu/config.example.toml"
+	install -Dm644 \
+		"${srcdir}/ayllu/contrib/systemd/ayllu-sysusers.conf" \
+		"${pkgdir}/usr/lib/sysusers.d/ayllu.conf"
+	install -Dm644 \
+		"${srcdir}/ayllu/contrib/systemd/system/ayllu.service" \
+		"${pkgdir}/usr/lib/systemd/system/ayllu.service"
+	install -Dm644 \
+		"${srcdir}/ayllu/contrib/systemd/user/ayllu.service" \
+		"${pkgdir}/usr/lib/systemd/user/ayllu.service"
 }
