@@ -9,7 +9,7 @@ depends=('glibc')
 provides=('xray-knife')
 conflicts=('xray-knife')
 
-source=("xray-knife.zip::https://github.com/lilendian0x00/xray-knife/releases/download/v${pkgver}/Xray-knife-linux-64.zip")
+source=("xray-knife.zip::https://github.com/lilendian0x00/xray-knife/releases/latest/download/Xray-knife-linux-64.zip")
 sha256sums=('SKIP')  # Or replace with real checksum
 
 package() {

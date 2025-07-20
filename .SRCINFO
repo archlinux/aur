@@ -1,0 +1,14 @@
+pkgbase = xray-knife-bin
+	pkgdesc = Swiss‑army CLI for xray‑core & sing‑box (prebuilt binary)
+	pkgver = 6.62
+	pkgrel = 1
+	url = https://github.com/lilendian0x00/xray-knife
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = xray-knife
+	conflicts = xray-knife
+	source = xray-knife.zip::https://github.com/lilendian0x00/xray-knife/releases/latest/download/Xray-knife-linux-64.zip
+	sha256sums = SKIP
+
+pkgname = xray-knife-bin
