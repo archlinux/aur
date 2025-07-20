@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 4.13.0 ➙ 5.0.0
-              : 2024-12-31 ➙ 2025-07-20
+ Tags         : 4.14.0 ➙ 5.0.1
+              : 2025-03-23 ➙ 2025-07-20
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-07-20   : 5.0.1
+                readme - more rst tweaks
+                more readme
+                Readme: tidy up some rst
+                update Docs/Changelog Docs/kea_config.pdf
 
  2025-07-20   : 5.0.0
                 update Docs/Changelog Docs/kea_config.pdf
@@ -24,10 +30,3 @@
  2025-03-23   : 4.14.0
                 Better error handling of host reservations/dns_net when missing info
  2024-12-31     update Docs/Changelog.rst Docs/kea_config.pdf
-
- 2024-12-31   : 4.13.0
-                Git tags are now signed.
-                Update SPDX tags
-                Add git signing key to Arch Package
-                Bump python version
- 2024-12-19     update Docs/Changelog.rst Docs/kea_config.pdf
