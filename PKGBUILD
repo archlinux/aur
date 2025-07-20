@@ -7,13 +7,13 @@ arch=('x86_64')
 url="https://github.com/praneethashok14/guessgame"
 license=('MIT')
 depends=()
-makedepends=('rust')
+makedepends=('rust' 'cargo')
 source=("$pkgname::git+https://github.com/praneethashok14/guessgame.git")
 md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  cargo build --release
 }
 
 package() {
