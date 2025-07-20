@@ -8,7 +8,12 @@ arch=('any')
 url="https://github.com/alexdelorenzo/unpackable"
 license=('LGPL-3.0-or-later')
 depends=('python-varname')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/alexdelorenzo/unpackable/master/requirements.txt')
 sha256sums=('55185896c71f607f43e8cbe22913e46083baf2371ecd1c8a06f0bf93ab76f38d'
