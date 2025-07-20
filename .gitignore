@@ -1,0 +1,34 @@
+# Ignore the downloaded source directory
+rpc-gateway-git/
+
+# Ignore built packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Ignore backup files
+*.bak
+*.orig
+*~
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore log files
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore build artifacts
+src/
+pkg/ 
