@@ -3,10 +3,10 @@
 
 pkgname='perl-devel-traceuse'
 pkgver='2.097'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="show the modules your program loads, recursively"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl>=5.008')
 makedepends=()
