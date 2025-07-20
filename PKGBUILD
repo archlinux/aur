@@ -7,8 +7,15 @@ pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
 license=('Apache-2.0 AND MIT')
-depends=('python-cryptography' 'python-argon2_cffi')
-makedepends=('python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'python-argon2_cffi'
+  'python-cryptography'
+)
+makedepends=(
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl"
         "https://raw.githubusercontent.com/ofek/privy/master/LICENSE-MIT")
