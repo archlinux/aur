@@ -1,4 +1,4 @@
-pkgname=updater
+pkgname=updaterv2
 pkgver=3.2
 pkgrel=3
 pkgdesc="This is an updater."

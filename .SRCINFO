@@ -1,4 +1,4 @@
-pkgbase = updater
+pkgbase = updaterv2
 	pkgdesc = This is an updater.
 	pkgver = 3.2
 	pkgrel = 3
@@ -9,4 +9,4 @@ pkgbase = updater
 	source = https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/main.zip
 	sha256sums = SKIP
 
-pkgname = updater
+pkgname = updaterv2
