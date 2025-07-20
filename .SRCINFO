@@ -1,6 +1,6 @@
 pkgbase = python-torchrl
 	pkgdesc = A modular, primitive-first, python-first PyTorch library for Reinforcement Learning.
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/pytorch/rl
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-torchrl
 	depends = python-numpy
 	depends = python-pytorch
 	depends = python-packaging
-	source = https://github.com/pytorch/rl/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 2806c6f62fc9b86a39075ebd7398ef5c3c89fa1d41068888d543f0486438bfdc
+	source = https://github.com/pytorch/rl/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = f6ec41227711515961d7c6457bdcaa532f053239719a624e6bd292628c129f1f
 
 pkgname = python-torchrl
