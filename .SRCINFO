@@ -1,6 +1,6 @@
 pkgbase = passly
 	pkgdesc = A CLI toolkit for auditing and cleaning exported password manager data
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/nikooozzz/passly
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = passly
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
 	depends = python
 	depends = python-tldextract
-	source = https://github.com/nikooozzz/passly/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = fb36c0eb75ab3b7d08093e0189dda2d7db1e3c903c44bcfc6c103468c1afaeab
+	source = https://github.com/nikooozzz/passly/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = passly
