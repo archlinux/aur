@@ -10,8 +10,12 @@ source=("https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/mai
 sha256sums=('SKIP')
 
 build() {
+  echo "Listing files in $srcdir/testpackage-main before chmod:"
+  ls -l "$srcdir/testpackage-main"
+
   chmod +x "$srcdir/testpackage-main/code.sh"
   chmod +x "$srcdir/testpackage-main/config.sh"
+
   echo "To run the updater type 'updater'"
   sleep 3
 }
