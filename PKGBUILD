@@ -6,7 +6,7 @@ pkgdesc="RPC gateway with automatic failover, load balancing, and request routin
 arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/rpc-gateway"
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'git')
 source=("$pkgname::git+https://github.com/kewlfft/rpc-gateway.git")
 sha256sums=('SKIP')
 

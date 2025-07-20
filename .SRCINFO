@@ -7,6 +7,7 @@ pkgbase = rpc-gateway-git
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	source = rpc-gateway-git::git+https://github.com/kewlfft/rpc-gateway.git
 	sha256sums = SKIP
 
