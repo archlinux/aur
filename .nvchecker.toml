@@ -1,0 +1,4 @@
+[python-pytest-flake8]
+source = "git"
+git = "https://github.com/coherent-oss/pytest-flake8.git"
+prefix = "v"
