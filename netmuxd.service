@@ -1,0 +1,9 @@
+[Unit]
+Description=netmuxd for AltServer
+After=network-online.target
+
+[Service]
+ExecStart=/opt/altserver/netmuxd
+
+[Install]
+WantedBy=default.target

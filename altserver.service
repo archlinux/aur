@@ -1,0 +1,10 @@
+[Unit]
+Description=AltServer Daemon
+After=network-online.target netmuxd.service
+
+[Service]
+Environment="ALTSERVER_ANISETTE_SERVER=http://127.0.0.1:6969"
+ExecStart=/opt/altserver/AltServer
+
+[Install]
+WantedBy=default.target
