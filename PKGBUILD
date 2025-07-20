@@ -1,17 +1,16 @@
 # Maintainer: René Wagner
 # Contributor: Christian Sturm <reezer@reezer.org>
 pkgname=perl-modern-perl
-pkgver=1.20241001
+pkgver=1.20250607
 pkgrel=1
 pkgdesc="enable all of the features of Modern Perl with one command"
 arch=(any)
 url="https://metacpan.org/release/Modern-Perl"
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-only' 'Artistic-1.0')
 depends=('perl>=5.10.0')
 makedepends=('make')
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-$pkgver.tar.gz")
-sha256sums=('dba7bee92ecbf2b0a6cf61e3409ab59b0cd25518bbb90fe387230283aa683dc5')
 
 build() {
   cd "$srcdir/Modern-Perl-$pkgver"
@@ -31,3 +30,4 @@ package() {
   find "$pkgdir" -name .packlist -delete
 }
 # vim:set ts=2 sw=2 et:
+sha256sums=('38ed7eb7b91aeed153887483e49a9a807a2e8962ab227cc6fdb5ea4dc41df128')
