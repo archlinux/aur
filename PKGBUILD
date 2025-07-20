@@ -6,20 +6,20 @@
 
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
-pkgver=2.11
-pkgrel=3
+pkgver=2.12
+pkgrel=1
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('any')
 url="https://www.dyne.org/software/tomb/"
 license=('GPL-3.0-or-later')
-source=("https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz"
-        "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.sha"
-        "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.asc"
+source=("https://files.dyne.org/?file=tomb/releases/Tomb-$pkgver.tar.gz"
+        "https://files.dyne.org/?file=tomb/releases/Tomb-$pkgver.tar.gz.sha"
+        "https://files.dyne.org/?file=tomb/releases/Tomb-$pkgver.tar.gz.asc"
         "_tomb")
 
 # The first hash comes from the .sha file
-sha256sums=('f524f997e9967371ae65280726de32ea123ef7bf6fa9998f74c9ae90ba27c315'
-            '777bfe815f68a5fab1c6d0e186e6d4fe7f889e68ccc78de54bb40ce4fdd634a2'
+sha256sums=('2bb54cc92adb769e555a548697819862474368beb9386cb421545691af567a8e'
+            '89df658b39777f1eb86f9844eca8bc2f904a99d666b6bfa179757213b81c6686'
             'SKIP'
             '8007bc208fdac3fbd7a61320b48c4c8073639b478fcc410145a3792986aca9e8')
 
