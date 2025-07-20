@@ -1,13 +1,13 @@
 pkgbase = nvshmem
 	pkgdesc = NVSHMEM is a software library that implements the OpenSHMEM application programming interface (API) for clusters of NVIDIA ® GPUs.
 	pkgver = 3.3.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.nvidia.com/nvshmem
 	arch = x86_64
 	license = LicenseRef-NVIDIA-NVSHMEM
 	depends = libpciaccess
 	depends = nvidia-utils
-	depends = cuda
+	depends = cuda>=12
 	depends = glibc
 	depends = gcc-libs
 	depends = openmpi
