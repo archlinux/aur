@@ -1,40 +1,46 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname=python-pytest-black
-pkgver=0.3.12
-_commit=1d0d34a44004252ce73368ac3bf34354c06a5131
-pkgrel=10
-pkgdesc="A pytest plugin to enable format checking with black"
+_name=${pkgname#python-}
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="A pytest plugin to enable formatting checks with black"
 arch=('any')
+url="https://github.com/coherent-oss/pytest-black"
 license=('MIT')
-url="https://github.com/shopkeep/pytest-black/"
-depends=('python-black' 'python-pytest' 'python-toml')
-makedepends=('git' 'python-setuptools-scm')
-source=("git+https://github.com/shopkeep/pytest-black.git#commit=$_commit")
-sha512sums=('SKIP')
-
-prepare() {
-  cd pytest-black
-  # pytest 6
-  git cherry-pick -n edcbcae7d55a992e785c7fc001f9d3880b197ea2
-}
+depends=(
+  'python-black'
+  'python-pytest'
+  'python-toml'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+checkdepends=('python-pytest')
+source=("https://github.com/coherent-oss/pytest-black/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('90500bd9deb30ecf4985f496d5390f5366817faba3738898f1994db8eb53dce7')
 
 build() {
-  cd pytest-black
-  python setup.py build
+  cd "$_name-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  # Hack entry points by installing it
+  cd "$_name-$pkgver"
 
-  cd pytest-black
-  python setup.py install --root="$PWD/tmp_install" --optimize=1
+  # Hack entry points by installing it
+  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH:$PWD/tests" py.test
+  PYTHONPATH="$PWD/tmp_install/${site_packages}:$PYTHONPATH:$PWD/tests" pytest
 }
 
 package() {
-  cd pytest-black
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

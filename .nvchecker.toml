@@ -1,0 +1,4 @@
+[python-pytest-black]
+source = "git"
+git = "https://github.com/coherent-oss/pytest-black.git"
+prefix = "v"
