@@ -1,4 +1,4 @@
-pkgbase = noteey
+pkgbase = noteey-bin
 	pkgdesc = Noteey - A powerful note-taking application
 	pkgver = 1.27.1
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = noteey
 	source = noteey-1.27.1.exe::https://noteey.oss-cn-beijing.aliyuncs.com/Noteey-Setup-1.27.1.exe
 	sha256sums = SKIP
 
-pkgname = noteey
+pkgname = noteey-bin
