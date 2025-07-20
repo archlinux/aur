@@ -1,25 +1,27 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# based on core/xf86-video-nouveau: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: buddabrod <buddabrod@gmail.com>
+# based on extra/xf86-video-nouveau by
+# Andreas Radke <andyrtr@archlinux.org>
+# buddabrod <buddabrod@gmail.com>
 #
-# Send PRs here: https://github.com/yurikoles-aur/xf86-video-ati-git
+# Pull requests are welcome here:
+# https://github.com/yurikoles-aur/xf86-video-nouveau-git
 #
 
 pkgname=xf86-video-nouveau-git
 _pkgname=xf86-video-nouveau
-pkgver=1.0.17.r5.g29cc528
+pkgver=1.0.18.r1.g4ee596f
 pkgrel=1
 pkgdesc='Open Source 3D acceleration driver for nVidia cards (git version)'
 arch=('x86_64')
 url="https://nouveau.freedesktop.org/"
-license=('GPL')
+license=('MIT')
+depends=('systemd-libs' 'mesa' 'libdrm' 'glibc')
+makedepends=('git' 'xorg-server-devel' 'systemd')
+provides=("xf86-video-nouveau=${pkgver}")
+conflicts=('xf86-video-nouveau')
 groups=('xorg-drivers-git')
-depends=('systemd-libs' 'mesa')
-makedepends=('xorg-server-devel' 'xorg-server' 'systemd' 'git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
 source=("${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -39,7 +41,7 @@ build() {
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/,-z,now}
+  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
 
   ./configure --prefix=/usr
   make
@@ -48,4 +50,6 @@ build() {
 package() {
   cd "${pkgname}"
   make DESTDIR="$pkgdir" install
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
