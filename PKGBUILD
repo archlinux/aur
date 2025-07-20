@@ -7,8 +7,17 @@ pkgdesc="Unified Curses Wrapper for Python"
 arch=('any')
 url="https://github.com/unicurses/unicurses"
 license=('GPL-3.0-or-later')
-depends=('ncurses' 'python' 'python-x256')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'ncurses'
+  'python'
+  'python-x256'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v.$pkgver.tar.gz")
 sha256sums=('306d63739bfb47032f9c9d7c6ac00eea08667b09559fbac49d57d55e4cb9f676')
 
