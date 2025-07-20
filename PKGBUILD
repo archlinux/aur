@@ -1,6 +1,6 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=genwallet-git
-pkgver=0.1.0.r5.bac894c
+pkgver=0.1.0.r6.ef43e07
 pkgrel=1
 pkgdesc="Ethereum wallet generator with pattern matching"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ build() {
   # Set explicit linker flags (preserves existing RUSTFLAGS)
   export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-lsecp256k1"
   
-  # Build with release optimizations
-  cargo build --release
+  # Build with release optimizations and LTO via config
+  cargo build --release --config 'profile.release.lto=true' --config 'profile.release.codegen-units=1' --config 'profile.release.panic="abort"'
   
   # Strip binary for smaller size
   strip target/release/genwallet
