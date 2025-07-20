@@ -2,8 +2,8 @@
 # Contributor: Original submitter: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=constellation
-pkgver=3.0.0
-_pkgver=3.0.0
+pkgver=3.1.0
+_pkgver=3.1.0
 pkgrel=1
 pkgdesc="A graph-focused data visualisation and interactive analysis application"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('java-runtime'
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/constellation-app/constellation/releases/download/v${_pkgver}/constellation-linux-v${_pkgver}.tar.gz"
         'icon.png')
-sha256sums=('63d30e5cab47767470169096cb600d290f4aa875f32b314d1749371f13caac0e'
+sha256sums=('118da12bf9321cce76cbf9e557f3faec4d2ce65628dc0f509ec06ad25dc17d6e'
             '4ddf0edb1323aa2e752a30fe17303e8ef25280e6d53dcdd147b9d7c811c05565')
 
 package() {
