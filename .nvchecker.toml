@@ -1,0 +1,5 @@
+[otf-firamath]
+source = "git"
+git = "https://github.com/firamath/firamath.git"
+prefix = "v"
+exclude_regex = '.*[A-Za-z][A-Za-z].*'

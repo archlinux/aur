@@ -1,5 +1,5 @@
 pkgbase = otf-firamath
-	pkgdesc = Fira Math is a sans-serif font with Unicode math support
+	pkgdesc = A sans-serif font with Unicode math support, forked from Fira Sans
 	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/firamath/firamath
