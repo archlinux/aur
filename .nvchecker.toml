@@ -1,0 +1,4 @@
+[python-color-parser-py]
+source = "git"
+git = "https://github.com/rusiaaman/color-parser-py.git"
+prefix = "v"
