@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 guessgame "$pkgdir/usr/bin/guessgame"
+  install -Dm755 target/release/guessgame "$pkgdir/usr/bin/guessgame"
 }
 
