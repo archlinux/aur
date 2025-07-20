@@ -1,10 +1,10 @@
 pkgbase = slpcli-git
 	pkgdesc = A Minecraft: Java Edition CLI Server List Ping implementation in C++.
 	pkgver = r63.484b39e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Urpagin/slpcli
 	arch = x86_64
-	license = 0BSD
+	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
