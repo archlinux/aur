@@ -2,29 +2,44 @@
 # Maintainer: Jia Yin<lok-ation at outlook dot com>
 
 pkgname=hmcl-beta-bin
-pkgver=3.6.12.283
-pkgrel=2
+pkgver=3.6.14.286
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
-license=('GPL3')
-depends=('java-runtime' 'gtk2')
+license=('GPL-3.0-or-later')
+depends=('java-runtime' 'hicolor-icon-theme')
 provides=('hmcl')
 conflicts=('hmcl')
 source=("hmcl.desktop"
-	      "hmcl.png"
-        "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/refs/heads/main/LICENSE"
-        "${pkgname}-${pkgver}-${pkgrel}.sh::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.sh")
+        "hmcl-launch-script"
+        "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('ef5edb4285293c77162374e15f01f3540c7f511f6d9ab5b7244c4b01eb8512de'
-            '29120471641c51aae3ee84f8bcc16e1e4148c153085f71ccb9680415007f82ad'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'bdfbf7f07e61dbbc161b9198711bb1802d854e824b440fe923610a6d74252dab')
+            '296914106dac2d07c9ce2bc92a91568830534332e9bf7554ea591f22efa357df'
+            'b5646657a1abcbc8963067d7c17fe699b948c47fb27dbc18c512b2e3aa7086f1')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.sh")
 
+prepare() {
+  # extract icons from jar
+  # Thanks to @Misaka13514
+  local _iconfile
+  for _iconfile in icon.png icon@2x.png icon@4x.png icon@8x.png; do
+    jar -xf "${pkgname}-${pkgver}-${pkgrel}.jar" "assets/img/${_iconfile}"
+  done
+}
+
 package() {
-  install -Dm755 "${pkgname}-${pkgver}-${pkgrel}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+  install -Dm755 "hmcl-launch-script" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "hmcl.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # install icons
+  local _icon _iconfile
+  for _icon in 32:icon.png 64:icon@2x.png 128:icon@4x.png 256:icon@8x.png; do
+    _iconfile=${_icon#*:}
+    _icon=${_icon%:*}
+    install -Dm644 "assets/img/${_iconfile}" "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname}.png"
+  done
 }
