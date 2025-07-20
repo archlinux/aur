@@ -1,12 +1,16 @@
 pkgbase = classisland-bin
 	pkgdesc = Class schedule displaying tool for interactive whiteboards in classrooms. (Pre-built version)
 	pkgver = 1.7.103.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ClassIsland/ClassIsland
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	depends = dotnet-runtime-8.0
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = hicolor-icon-theme
 	provides = classisland=1.7.103.0
 	conflicts = classisland
 	source = classisland.sh

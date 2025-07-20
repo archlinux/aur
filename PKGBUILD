@@ -4,13 +4,19 @@ pkgname=classisland-bin
 _pkgname=classisland
 _appname=cn.classisland.app
 pkgver=1.7.103.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Class schedule displaying tool for interactive whiteboards in classrooms. (Pre-built version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ClassIsland/ClassIsland"
 _branch="dev"
 license=('GPL-3.0-only')
-depends=('dotnet-runtime-8.0')
+depends=(
+    'dotnet-runtime-8.0'
+    'glibc'
+    'gcc-libs'
+    'fontconfig'
+    'hicolor-icon-theme'
+)
 source=("${_pkgname}.sh")
 sha256sums=('5342aed758213e2068c1a41c696b317b935fe491158fc750f454156686a35388')
 source_x86_64=("${url}/releases/download/${pkgver}/ClassIsland_app_linux_x64_selfContained_deb.deb")
