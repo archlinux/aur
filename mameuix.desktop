@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MAMEUIx
+Comment=Modern frontend for MAME arcade emulator
+Exec=mameuix
+Icon=mameuix
+Terminal=false
+Categories=Game;Emulator;
+Keywords=mame;arcade;emulator;game;
+StartupNotify=true 

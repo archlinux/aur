@@ -1,0 +1,15 @@
+pkgbase = mameuix
+	pkgdesc = Modern GUI frontend for MAME arcade emulator
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/firesand/MAMEUIx
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = zstd
+	depends = mame>=0.200
+	source = mameuix-0.1.2.tar.gz::https://github.com/firesand/MAMEUIx/archive/v0.1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = mameuix
