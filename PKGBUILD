@@ -13,9 +13,11 @@ md5sums=('SKIP')
 package() {
   cd "$srcdir/NexTOR_IP_CHANGER/Nex_Tor_IP_changer"
 
-  install -Dm755 NexTOR.py "$pkgdir/usr/bin/nextor"
-  chmod +x "$pkgdir/usr/bin/nextor"
+  # Install the main script as 'Nex'
+  install -Dm755 NexTOR.py "$pkgdir/usr/bin/Nex"
+  chmod +x "$pkgdir/usr/bin/Nex"
 
+  # Docs and license
   install -Dm644 "$srcdir/NexTOR_IP_CHANGER/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir/NexTOR_IP_CHANGER/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
