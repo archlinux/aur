@@ -1,0 +1,52 @@
+# AUR package specific
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.src.tar.gz
+*.src.tar.xz
+*.src.tar.zst
+
+# Build artifacts
+pkg/
+src/
+*.log
+*.tmp
+
+# Rust/Cargo specific (in case you build locally)
+target/
+Cargo.lock
+*.rlib
+*.rmeta
+*.so
+*.dylib
+*.dll
+*.exe
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Package manager files
+*.orig
+*.rej
+*.patch
+
+# Debug files
+*.debug
+*.pdb 
