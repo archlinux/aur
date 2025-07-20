@@ -7,8 +7,18 @@ pkgdesc="X11 & Windows cursor building API (legacy 1.X.X version)"
 arch=('x86_64')
 url="https://github.com/ful1e5/clickgen"
 license=('MIT')
-depends=('python-pillow' 'libx11' 'libxcursor' 'libpng')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'libpng'
+  'libx11'
+  'libxcursor'
+  'python-pillow'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 provides=('xcursorgen.so' 'python-clickgen')
 conflicts=('python-clickgen')
 source=("$_name-$pkgver.tar.gz::https://github.com/ful1e5/clickgen/archive/refs/tags/v$pkgver.tar.gz")
@@ -29,5 +39,6 @@ package() {
   install -Dm644 src/xcursorgen/xcursorgen.so -t "${pkgdir}${site_packages}/$_name/"
 
   install -d "$pkgdir/usr/share/licenses/python-clickgen"
-  ln -s "$site_packages/$_name-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/python-clickgen/"
+  ln -s "${site_packages}/$_name-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/python-clickgen/"
 }
