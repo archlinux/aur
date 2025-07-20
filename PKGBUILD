@@ -2,7 +2,7 @@
 # Private key generated with `openssl genrsa 2048| openssl pkcs8 -topk8 -nocrypt -traditional`
 
 pkgname=chromium-extension-ublock-origin-lite
-pkgver=2025.711.1256
+pkgver=2025.718.1921
 pkgrel=1
 pkgdesc="uBO Lite (uBOL), a permission-less MV3 API-based content blocker, for chromium"
 arch=('any')
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.zip::${url}/releases/download/uBOLite_${pkgver}/uB
 provides=('chromium-extension-ublock-origin')
 conflicts=('chromium-extension-ublock-origin')
 noextract=("${pkgname}-${pkgver}.zip")
-sha256sums=('dbbf33d30f4d82e609a3853974504786102e962788f69dfa3229291ccd8abd16'
+sha256sums=('e5bf620f6c68c9d54c57dbb712113914c6b3ed2cc3561ef1a825c0409edbc350'
             '804e431b5601a5d0bd9d7e1d27ea8396c6cc87f2523d6d857f1abf368df3a06f')
 
 build() {
