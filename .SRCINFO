@@ -1,0 +1,19 @@
+pkgbase = classisland-bin
+	pkgdesc = Class schedule displaying tool for interactive whiteboards in classrooms. (Pre-built version)
+	pkgver = 1.7.103.0
+	pkgrel = 1
+	url = https://github.com/ClassIsland/ClassIsland
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = dotnet-runtime-8.0
+	provides = classisland=1.7.103.0
+	conflicts = classisland
+	source = classisland.sh
+	sha256sums = 5342aed758213e2068c1a41c696b317b935fe491158fc750f454156686a35388
+	source_x86_64 = https://github.com/ClassIsland/ClassIsland/releases/download/1.7.103.0/ClassIsland_app_linux_x64_selfContained_deb.deb
+	sha256sums_x86_64 = 52f036c3e040a1ca956053cccb49efd3e9d271eba63d66b986a90c1d9ca352cc
+	source_aarch64 = https://github.com/ClassIsland/ClassIsland/releases/download/1.7.103.0/ClassIsland_app_linux_arm64_selfContained_deb.deb
+	sha256sums_aarch64 = cfc9ae088ebf58a74f7d92d5d499f58f2463a5dee07b69d1e99378619bad2dda
+
+pkgname = classisland-bin
