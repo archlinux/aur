@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sed -i "s/WallpaperSource=.*//" ~/.config/plasma-org.kde.plasma.desktop-appletsrc

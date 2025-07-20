@@ -1,7 +1,7 @@
 pkgbase = atapi-mimetypes
 	pkgdesc = Various Arch Linux customizations that I do :3
 	pkgver = 1
-	pkgrel = 8
+	pkgrel = 9
 	arch = any
 	source = x-atapi-mimetypes.xml
 	source = 51-dolphinbar.rules
@@ -9,6 +9,7 @@ pkgbase = atapi-mimetypes
 	source = killsteam
 	source = steam-monitor
 	source = unfuck_bt
+	source = unfuck_wpe
 	source = pipewire.conf
 	source = 30-splitlock.conf
 	source = 30-vm.conf
