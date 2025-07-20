@@ -1,7 +1,8 @@
-# Maintainer: Nicola Fontana <ntd@entidi.it>
+# Maintainer: Lobo Torres <lobo@quiltro.org>
+# Contributor: Nicola Fontana <ntd@entidi.it>
 
 pkgname=pforth-git
-pkgver=20160529
+pkgver=20250606
 pkgrel=1
 pkgdesc='A portable implementation of the Forth programming language written in ANSI C'
 arch=(any)
@@ -21,29 +22,23 @@ pkgver() {
 }
 
 build() {
-  local cflags='-DPF_DEFAULT_DICTIONARY=\"/usr/share/pforth/pforth.dic\"'
-
-  # --std=c89 implicitely declares off_t I/O functions such as ftello
-  cflags="$cflags --std=c89"
-
-  # -D_BSD_SOURCE=1 is defined to avoid the ‘ECHOCTL’ undeclared error
-  cflags="$cflags -D_BSD_SOURCE=1"
+  local extra_cflags="-DPF_DEFAULT_DICTIONARY=\\\"$pkgdir/usr/share/pforth/pforth.dic\\\""
+  extra_cflags="$extra_cflags --std=c89 -D_BSD_SOURCE=1"
 
   cd "$srcdir/pforth"
-  make -j 1 -f build/unix/Makefile all \
-    SRCDIR=. FULL_WARNINGS= DEBUGOPTS= EXTRA_CCOPTS="$cflags"
+  make -j1 -f platforms/unix/Makefile all \
+    SRCDIR=. CFLAGS:="\$(WIDTHOPT) -x c $CFLAGS $extra_cflags"
 }
 
 package() {
   local prefix="$pkgdir/usr"
-
   cd "$srcdir/pforth"
 
   install -Dm755 pforth "$prefix/bin/pforth"
   install -Dm755 pforth_standalone "$prefix/bin/pforth_standalone"
   install -Dm644 pforth.dic "$prefix/share/pforth/pforth.dic"
-  install -Dm644 readme.txt "$prefix/share/pforth/README"
-  install -Dm644 releases.txt "$prefix/share/pforth/NEWS"
+  install -Dm644 README.md "$prefix/share/pforth/README"
+  install -Dm644 RELEASES.md "$prefix/share/pforth/NEWS"
 }
 
 # vim:set ts=2 sw=2 et:
