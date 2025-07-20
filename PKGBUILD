@@ -1,6 +1,6 @@
 pkgname=updaterv2
-pkgver=4.9
-pkgrel=4
+pkgver=5.0
+pkgrel=5
 pkgdesc="This is an updater."
 arch=('x86_64')
 url="https://test.com"
@@ -11,7 +11,7 @@ sha256sums=('SKIP')
 
 build() {
   chmod +x "$srcdir/testpackage-main/code.sh"
-
+  chmod +x "$srcdir/testpackage-main/config.sh"
   echo "To run the updater type 'updater'"
   sleep 3
 }
