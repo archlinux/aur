@@ -12,6 +12,6 @@ pkgbase = cudatext-qt6-bin
 	conflicts = cudatext
 	options = !strip
 	source = https://sourceforge.net/projects/cudatext/files/release/1.226.0.0/cudatext-linux-qt6-amd64-1.226.0.0.tar.xz
-	sha256sums = 880b42cacab9b237a4384ec174d6eece5bec12ff307d546ec6de21e7d1656cda
+	sha256sums = cc3c39e09e50acab97c60b1d2e70507a43c0543213075edeb1d4e994e26d69b6
 
 pkgname = cudatext-qt6-bin
