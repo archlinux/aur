@@ -3,7 +3,7 @@
 
 pkgname=saleae-logic2
 pkgver=2.4.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
 url="https://discuss.saleae.com/c/logic-2-0-software/7"
@@ -39,6 +39,11 @@ package() {
 	rm "${pkgdir}/opt/${pkgname}/AppRun"
 	rm "${pkgdir}/opt/${pkgname}/version"
 	rm -rf "${pkgdir}/usr/lib/"
+
+	# Use intended program icon
+    rm -r "${pkgdir}/usr/share/icons"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    mv "${pkgdir}/opt/${pkgname}/resources/linux-x64/LogicIcon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/Logic.png"
 
 	install -Dm644 "${pkgdir}/opt/${pkgname}/resources/linux-x64/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
 
