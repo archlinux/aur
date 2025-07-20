@@ -1,4 +1,4 @@
-# Maintainer: Floranaras <email@example.com>
+# Maintainer: Floranaras 
 pkgname=teehee-bday
 pkgver=1.0.0
 pkgrel=1
@@ -21,8 +21,4 @@ package() {
     
     # Install the binary
     install -Dm755 teehee-bday "$pkgdir/usr/bin/teehee-bday"
-    
-    # Install documentation
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
