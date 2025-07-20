@@ -1,0 +1,49 @@
+post_install() {
+    echo "==> Creating symlinks for Omarchy Example Theme..."
+    
+    # Find users with omarchy config directory
+    for homedir in /home/*; do
+        if [ -d "$homedir/.config/omarchy" ]; then
+            username=$(basename "$homedir")
+            
+            # Ensure themes and backgrounds directories exist
+            sudo -u "$username" mkdir -p "$homedir/.config/omarchy/themes"
+            sudo -u "$username" mkdir -p "$homedir/.config/omarchy/backgrounds"
+            
+            # Create symlink to theme
+            sudo -u "$username" ln -sf /usr/share/omarchy/themes/example "$homedir/.config/omarchy/themes/example"
+            
+            # Create symlink to backgrounds
+            sudo -u "$username" ln -sf /usr/share/omarchy/themes/example/backgrounds "$homedir/.config/omarchy/backgrounds/example"
+            
+            echo "==> Theme symlinked for user: $username"
+        fi
+    done
+    
+    echo "==> Omarchy Example Theme has been installed!"
+    echo "==> Theme location: ~/.config/omarchy/themes/example/"
+    echo "==> Backgrounds location: ~/.config/omarchy/backgrounds/example/"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> Removing Omarchy Example Theme symlinks..."
+    
+    # Remove symlinks
+    for homedir in /home/*; do
+        THEME_LINK="$homedir/.config/omarchy/themes/example"
+        BG_LINK="$homedir/.config/omarchy/backgrounds/example"
+        
+        if [ -L "$THEME_LINK" ] || [ -L "$BG_LINK" ]; then
+            username=$(basename "$homedir")
+            [ -L "$THEME_LINK" ] && rm -f "$THEME_LINK"
+            [ -L "$BG_LINK" ] && rm -f "$BG_LINK"
+            echo "==> Theme symlinks removed for user: $username"
+        fi
+    done
+    
+    echo "==> Omarchy Example Theme has been removed!"
+}
