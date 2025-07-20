@@ -1,0 +1,13 @@
+pkgbase = intel-npu-top-git
+	pkgdesc = A simplified, text-only proof-of-concept for monitoring Intel Meteor Lake NPU usage in real-time via sysfs on Linux
+	pkgver = r23.b1328af
+	pkgrel = 1
+	url = https://github.com/DMontgomery40/intel-npu-top
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = python
+	source = git+https://github.com/DMontgomery40/intel-npu-top
+	b2sums = SKIP
+
+pkgname = intel-npu-top-git
