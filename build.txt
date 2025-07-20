@@ -1,0 +1,4 @@
+makepkg --printsrcinfo > .SRCINFO
+git add PKGBUILD .SRCINFO
+git commit -m "Update package to version 1.2"
+git push
