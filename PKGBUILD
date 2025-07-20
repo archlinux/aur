@@ -2,8 +2,8 @@
 # Contributor: Ash <xash at riseup d0t net>
 
 pkgname=lsfg-vk-git
-pkgver=r193.dd5190a
-pkgrel=2
+pkgver=r197.b2205f3
+pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
@@ -66,7 +66,7 @@ prepare() {
 	git config submodule.toml11.url "$srcdir/toml11"
 	git config submodule.raylib.url "$srcdir/raylib"
 
-	git -c protocol.file.allow=always submodule update
+	git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 build() {
