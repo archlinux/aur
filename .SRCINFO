@@ -1,0 +1,22 @@
+pkgbase = python-panoramisk-git
+	pkgdesc = asyncio based library to play with asterisk
+	pkgver = 1.4.r43.d0df36b
+	pkgrel = 1
+	url = https://github.com/gawel/panoramisk
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	provides = python-panoramisk=1.4.r43.d0df36b
+	conflicts = python-panoramisk
+	source = python-panoramisk::git+https://github.com/gawel/panoramisk
+	sha256sums = SKIP
+
+pkgname = python-panoramisk-git
