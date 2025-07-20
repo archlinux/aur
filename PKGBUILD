@@ -1,6 +1,6 @@
 pkgname=updater
-pkgver=1.3
-pkgrel=1.3
+pkgver=2.0
+pkgrel=2.0
 pkgdesc="this is an updater."
 arch=('x86_64')
 url="https://test.com"
