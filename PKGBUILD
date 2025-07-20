@@ -16,7 +16,7 @@ provides=('cudatext')
 conflicts=('cudatext')
 options=('!strip')
 source=("https://sourceforge.net/projects/cudatext/files/release/${pkgver}/cudatext-linux-qt5-amd64-${pkgver}.tar.xz")
-sha256sums=('2a959406cdfbed289c3fe907cda01acdc3474ccbcd55b6908b6b0994d144a2b1')
+sha256sums=('5b4487fa097e73898941de3a9e81817674ded8b871dab6b6d2dffd6611913400')
 
 prepare() {
 	echo "Creating desktop file"
