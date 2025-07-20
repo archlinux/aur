@@ -1,0 +1,4 @@
+[vimix-gtk-themes]
+source = "git"
+git = "https://github.com/vinceliuice/vimix-gtk-themes.git"
+exclude_regex = "2017.*"
