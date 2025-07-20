@@ -1,19 +1,12 @@
 pkgbase = perplexity
-	pkgdesc = Native Perplexity AI client for Linux (Electron wrapper)
-	pkgver = 1.1.3.13
+	pkgdesc = Native Perplexity AI client for Linux (Electron wrapper, binary package)
+	pkgver = 1.1.3
 	pkgrel = 1
+	url = https://github.com/mazixs/perplexity
 	arch = x86_64
-	license = Apache 2.0
-	makedepends = npm
-	makedepends = nodejs
+	license = Apache
 	depends = electron
-	source = launcher.sh
-	source = perplexity.desktop
-	source = perplexity.png
-	source = default.conf
-	sha256sums = 73a2a82540005d5c856efba8b01c04aff2f6a42bf890164e37da57691e662d2b
-	sha256sums = cc0ccc05588907474681a197fd658135625426b0f7de6b5006e5ce06fc0257fd
-	sha256sums = 36ee4908a30561ee36454cc2319dbb636d6b0091c8ab46bc440ba25ce47a746c
-	sha256sums = 0926f58bd0adad27d8cda90feb401cf83350b6d37098d481178bb211cb34e95c
+	source = perplexity-1.1.3-1-x86_64.pkg.tar.zst::https://github.com/mazixs/perplexity/releases/download/binary-423e5cdb2119ff4d5acee6874ab8b1606e592ef7/perplexity-1.1.3-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
 
 pkgname = perplexity
