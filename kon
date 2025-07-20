@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 
 import os
 import requests
@@ -6,17 +6,56 @@ import random
 import shutil
 import tempfile
 import subprocess
+import time
 from pathlib import Path
 from rich.console import Console
-from rich.prompt import Confirm
+from rich.prompt import Confirm, Prompt
 
 # === CONFIG ===
 SAVE_DIR = Path.home() / "Pictures/wallpapers"
 TEMP_DIR = Path(tempfile.gettempdir()) / "konachan_preview"
 MAX_WALLPAPERS = 100
-KONACHAN_URL = "https://konachan.net/post.json"
+KONACHAN_URL = "https://konachan.com/post.json"
+KONACHAN_TAGS_URL = "https://konachan.com/tag.json"
+MAX_ATTEMPTS = 10
+REQUEST_TIMEOUT = 15  # Увеличил таймаут
+REQUEST_DELAY = 1  # Пауза между запросами (сек)
 
 console = Console()
+
+# Популярные теги для подсказки
+POPULAR_TAGS = [
+    "anime", "blonde_hair", "maid", "cat_ears", "school_uniform",
+    "blue_eyes", "long_hair", "sakura", "landscape", "fantasy"
+]
+
+
+def check_api_availability():
+    try:
+        r = requests.get(KONACHAN_URL, timeout=REQUEST_TIMEOUT)
+        r.raise_for_status()
+        console.print(f"[green]API доступен: {KONACHAN_URL}")
+        return True
+    except requests.RequestException as e:
+        console.print(f"[red]API недоступен ({KONACHAN_URL}): {e}")
+        console.print(f"[yellow]Попробуйте использовать VPN или проверьте соединение.")
+        return False
+
+
+def validate_tag(tag):
+    """Проверяем, существует ли тег через API."""
+    try:
+        r = requests.get(KONACHAN_TAGS_URL, params={"name": tag}, timeout=REQUEST_TIMEOUT)
+        r.raise_for_status()
+        tags = r.json()
+        if tags and any(t["name"] == tag for t in tags):
+            console.print(f"[green]Тег '{tag}' найден в базе Konachan.")
+            return True
+        console.print(f"[yellow]Тег '{tag}' не найден в базе Konachan.")
+        return False
+    except requests.RequestException as e:
+        console.print(f"[red]Ошибка при проверке тега '{tag}': {e}")
+        return False
 
 
 def get_screen_resolution():
@@ -31,23 +70,48 @@ def get_screen_resolution():
     return 1920, 1080
 
 
-def fetch_random_image(min_width, min_height):
+def sanitize_tags(tags):
+    """Заменяем пробелы на подчёркивания в тегах."""
+    if not tags:
+        return ""
+    return tags.replace(" ", "_").strip()
+
+
+def fetch_random_image(min_width, min_height, tags="", use_safe_rating=True, use_resolution=True):
+    tags = sanitize_tags(tags)
+    tag_string = tags
+    if use_resolution:
+        tag_string = f"width:>={min_width} height:>={min_height} {tag_string}".strip()
+    if use_safe_rating:
+        tag_string = f"rating:safe {tag_string}".strip()
+    
     params = {
         "limit": 100,
-        "tags": f"rating:safe width:>={min_width} height:>={min_height}",
-        "page": random.randint(1, 1000)
+        "tags": tag_string,
+        "page": random.randint(1, 50)  # Ограничил страницы до 1-50
     }
+    console.print(f"[cyan]Параметры запроса: {params}")
     try:
-        r = requests.get(KONACHAN_URL, params=params)
+        r = requests.get(KONACHAN_URL, params=params, timeout=REQUEST_TIMEOUT)
+        console.print(f"[cyan]URL запроса: {r.url}")
         r.raise_for_status()
         posts = r.json()
+        if not posts:
+            console.print(f"[yellow]API вернул пустой список для тегов: {tag_string}")
+            console.print(f"[yellow]Сырой ответ API: {r.text[:200]}...")
+            return None, None, None
+        console.print(f"[cyan]Получено {len(posts)} постов")
         random.shuffle(posts)
         for post in posts:
             url = post.get("file_url", "")
             if url.endswith((".jpg", ".png")):
+                console.print(f"[cyan]Найдена картинка: {url} ({post.get('width')}x{post.get('height')})")
                 return url, post.get("width"), post.get("height")
-    except Exception as e:
-        console.print(f"[red]Ошибка при получении картинки: {e}")
+        console.print(f"[yellow]Нет подходящих изображений (jpg/png) для тегов: {tag_string}")
+    except requests.Timeout:
+        console.print(f"[red]Таймаут при запросе к {KONACHAN_URL}")
+    except requests.RequestException as e:
+        console.print(f"[red]Ошибка сети при получении картинки: {e}")
     return None, None, None
 
 
@@ -58,10 +122,16 @@ def is_duplicate(file_url):
 
 def download_image(url, dest_dir):
     dest = dest_dir / url.split("/")[-1]
-    with requests.get(url, stream=True) as r:
-        with open(dest, 'wb') as f:
-            shutil.copyfileobj(r.raw, f)
-    return dest
+    try:
+        with requests.get(url, stream=True, timeout=REQUEST_TIMEOUT) as r:
+            r.raise_for_status()
+            with open(dest, 'wb') as f:
+                shutil.copyfileobj(r.raw, f)
+        console.print(f"[green]Скачана картинка: {dest}")
+        return dest
+    except requests.RequestException as e:
+        console.print(f"[red]Ошибка при скачивании картинки: {e}")
+        return None
 
 
 def cleanup_old_wallpapers():
@@ -74,9 +144,7 @@ def cleanup_old_wallpapers():
 
 def apply_wallpaper(path: Path):
     console.rule("[bold cyan]📺 Установка обоев KDE Plasma")
-
-    image_uri = path.as_uri()  # → file:///home/...
-
+    image_uri = path.as_uri()
     script = f"""
     var all = desktops();
     for (var i = 0; i < all.length; i++) {{
@@ -87,10 +155,7 @@ def apply_wallpaper(path: Path):
         d.reloadConfig();
     }}
     """
-
-    # логируем URI
-    console.print(f"[blue]→ Путь к обоям:[/blue] {image_uri}")
-
+    console.print(f"[blue]→ Путь к обоям: {image_uri}")
     try:
         result = subprocess.run([
             "qdbus",
@@ -99,18 +164,15 @@ def apply_wallpaper(path: Path):
             "org.kde.PlasmaShell.evaluateScript",
             script
         ], capture_output=True, text=True)
-
-        console.print(f"[cyan]→ Return code:[/cyan] {result.returncode}")
+        console.print(f"[cyan]→ Return code: {result.returncode}")
         if result.stdout.strip():
-            console.print(f"[green]stdout:[/green]\n{result.stdout}")
+            console.print(f"[green]stdout: {result.stdout}")
         if result.stderr.strip():
-            console.print(f"[red]stderr:[/red]\n{result.stderr}")
-
+            console.print(f"[red]stderr: {result.stderr}")
         if result.returncode == 0:
             console.print(f"[bold green]✅ Обои применены: {path}")
         else:
             console.print(f"[bold red]❌ Ошибка при применении обоев.")
-
     except Exception as e:
         console.print(f"[red]Ошибка при вызове qdbus: {e}")
 
@@ -122,23 +184,67 @@ def main():
     width, height = get_screen_resolution()
     console.print(f"[green]Определено разрешение экрана: {width}x{height}")
 
+    if not check_api_availability():
+        console.print(f"[red]Программа завершена из-за недоступности API.")
+        return
+
     while True:
-        url, w, h = fetch_random_image(width, height)
-        if not url or is_duplicate(url):
+        console.print(f"[cyan]Популярные теги: {', '.join(POPULAR_TAGS)}")
+        tags = Prompt.ask("[cyan]Введите теги для поиска (например, 'anime blonde_hair'), или нажмите Enter для случайного выбора[/cyan]", default="")
+        if tags:
+            for tag in tags.split():
+                validate_tag(tag)
+        use_safe = Confirm.ask("[cyan]Искать только безопасные (safe) картинки?[/cyan]", default=True)
+        use_resolution = Confirm.ask("[cyan]Фильтровать по разрешению экрана ({width}x{height})?[/cyan]", default=True)
+        
+        min_width, min_height = (width, height) if use_resolution else (0, 0)
+        attempts = 0
+        while attempts < MAX_ATTEMPTS:
+            url, w, h = fetch_random_image(min_width, min_height, tags, use_safe, use_resolution)
+            if not url:
+                attempts += 1
+                console.print(f"[yellow]Попытка {attempts}/{MAX_ATTEMPTS} не удалась...")
+                if attempts == MAX_ATTEMPTS and min_width == width and use_resolution:
+                    console.print(f"[yellow]Не найдено с разрешением {width}x{height}. Пробую без фильтра разрешения...")
+                    min_width, min_height = 0, 0
+                    attempts = 0
+                elif attempts == MAX_ATTEMPTS:
+                    console.print(f"[red]Достигнут лимит попыток ({MAX_ATTEMPTS}).")
+                    break
+                time.sleep(REQUEST_DELAY)  # Пауза между запросами
+                continue
+            if is_duplicate(url):
+                console.print(f"[yellow]Картинка уже существует, пробую ещё раз...")
+                attempts += 1
+                time.sleep(REQUEST_DELAY)
+                continue
+
+            tmp = download_image(url, TEMP_DIR)
+            if not tmp:
+                attempts += 1
+                time.sleep(REQUEST_DELAY)
+                continue
+
+            console.print(f"[blue]Картинка: {w}x{h}")
+            os.system(f"kitty +kitten icat --transfer-mode=memory '{tmp}'")
+
+            if Confirm.ask("[cyan]Установить эти обои?"):
+                dest = SAVE_DIR / tmp.name
+                shutil.copy(tmp, dest)
+                apply_wallpaper(dest)
+                cleanup_old_wallpapers()
+                tmp.unlink()
+                return
+            else:
+                tmp.unlink()
+                attempts += 1
+                time.sleep(REQUEST_DELAY)
+
+        if Confirm.ask("[cyan]Попробовать другие теги?[/cyan]"):
             continue
-
-        tmp = download_image(url, TEMP_DIR)
-        console.print(f"[blue]Картинка: {w}x{h}")
-        os.system(f"kitty +kitten icat --transfer-mode=memory '{tmp}'")
-
-        if Confirm.ask("[cyan]Установить эти обои?"):
-            dest = SAVE_DIR / tmp.name
-            shutil.copy(tmp, dest)
-            apply_wallpaper(dest)
-            cleanup_old_wallpapers()
-            break
         else:
-            tmp.unlink()
+            console.print("[yellow]Выход из программы.")
+            break
 
 
 if __name__ == '__main__':
