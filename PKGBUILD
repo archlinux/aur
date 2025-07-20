@@ -1,5 +1,5 @@
 pkgname=updaterv2
-pkgver=4.5
+pkgver=4.6
 pkgrel=4
 pkgdesc="This is an updater."
 arch=('x86_64')
