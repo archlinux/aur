@@ -1,17 +1,17 @@
 # Maintainer: Rémi BERTHO <remi.bertho at dalan dot fr>
 
 pkgname=save_my_code
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="smc - Utility to save code and other files"
 arch=('x86_64')
 url="https://codeberg.org/dalan/smc"
 license=('MIT')
-depends=('glibc' 'xz' 'gcc-libs' 'bzip2')
+depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=(!lto)
 source=("https://binaries.dalan.fr/smc/smc-v$pkgver-src.tar.zst")
-sha512sums=('4ee15382e138db0627d9f114ea8a7bcb869221a3098bbd5d77df2bd6103eb3e96fae7d8eba680d71cd5ab448f8c8be1988e7f36d41970772cbb28c6e50cffd40')
+sha512sums=('5687234733608c3fd3fb5082534f63478016dfe100c717fa8d0480db5883e3a59e2e7c5f954e5dafeadd5e29ac0b69f20bb5682f01355c1dcf9ff946197ae6ea')
 
 build() {
   cd "smc-v$pkgver-src"
