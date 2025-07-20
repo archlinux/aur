@@ -8,7 +8,7 @@ url="https://github.com/sahandlinux/basteh"
 license=('GPL3')
 depends=('gtk3' 'pacman' 'polkit')
 makedepends=('gcc' 'git')
-source=("$pkgname::git+https://github.com/sahandlinux/basteh.git")
+source=("main.c")
 sha256sums=('SKIP')
 
 build() {
@@ -36,3 +36,4 @@ Categories=System;Utility;
 EOF
 }
 
+sha256sums=('669b4f77c5adcc7ab9ea5be031917fe04419d12ae52b02acb41f477e0e097ed9')
