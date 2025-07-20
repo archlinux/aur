@@ -1,7 +1,7 @@
 # Maintainer: amadejk <amadejkastelic7@gmail.com>
 pkgname=hyprlux
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Hyprland utility that automates vibrance and night light control"
 arch=('x86_64')
 url="https://github.com/amadejkastelic/Hyprlux"

@@ -3,7 +3,8 @@ post_install() {
         install -Dm644 /usr/share/hyprlux/config.toml /etc/hyprlux/config.toml
     fi
 
-    systemctl --user enable --now hyprlux.service
+    echo "To enable hyprlux, run:"
+    echo "  systemctl --user enable --now hyprlux.service"
 }
 
 post_upgrade() {
@@ -11,10 +12,12 @@ post_upgrade() {
         install -Dm644 /usr/share/hyprlux/config.toml /etc/hyprlux/config.toml
     fi
 
-	systemctl --user restart hyprlux.service
+    echo "Hyprlux upgraded. If the service was running, restart it with:"
+    echo "  systemctl --user restart hyprlux.service"
 }
 
 post_remove() {
-	rm /etc/hyprlux/config.toml
-    systemctl --user disable --now hyprlux.service
+	rm -f /etc/hyprlux/config.toml
+    echo "To disable hyprlux service, run:"
+    echo "  systemctl --user disable --now hyprlux.service"
 }
