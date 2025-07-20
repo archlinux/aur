@@ -1,11 +1,10 @@
 pkgbase = perl-git-repository-plugin-log
 	pkgdesc = Add a log() method to Git::Repository
 	pkgver = 1.314
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Git-Repository-Plugin-Log
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	checkdepends = perl-git-repository>=0
 	checkdepends = perl-test-cpan-meta>=0.25
 	checkdepends = perl-test-pod>=1.51
