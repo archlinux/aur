@@ -1,17 +1,18 @@
-# Contributor: Ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-critic-strictersubs'
+pkgname='perl-perl-critic-strictersubs'
 pkgver='0.08'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl::Critic plugin for stricter subroutine checks"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
-depends=('perl-file-pathlist>=0' 'perl-list-moreutils>=0' 'perl-module-build>=0.4' 'perl-ppi>=0' 'perl-perl-critic>=0')
+depends=('perl-file-pathlist>=0' 'perl-list-moreutils>=0' 'perl-module-build>=0.4' 'perl-ppi>=0' 'perl-perl-critic>=0' 'perl>=5.6.1')
 makedepends=()
+checkdepends=('perl-test-warnings>=0')
 url='https://metacpan.org/release/Perl-Critic-StricterSubs'
-source=("https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Perl-Critic-StricterSubs-$pkgver.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Perl-Critic-StricterSubs-$pkgver.tar.gz")
 md5sums=('4cb9bd80fdd33ec71565af51936c8057')
 sha512sums=('a405fca247a86b64133b85553db5cb396fd205436c7ffe805d479b4ed117b929a03ec3b0fa8655ce63789d3d578e60586f9ce3544bebde36e39a231219850940')
 _distdir="Perl-Critic-StricterSubs-$pkgver"
