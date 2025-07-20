@@ -1,6 +1,6 @@
 # Maintainer: misano <me@mirsobhan.ir>
 pkgname=persian-fonts
-pkgver=20250610
+pkgver=20250729
 pkgrel=1
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
