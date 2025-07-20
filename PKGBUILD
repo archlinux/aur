@@ -1,5 +1,5 @@
 pkgname=kon
-pkgver=1.0.0
+pkgver=1.0.4
 pkgrel=2  # Увеличил pkgrel
 pkgdesc="Wallpaper fetcher for KDE Plasma from Konachan with resolution detection and D-Bus integration"
 arch=('any')
