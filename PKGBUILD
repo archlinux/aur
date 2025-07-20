@@ -1,6 +1,6 @@
 pkgname=test
-pkgver=1.0
-pkgrel=1
+pkgver=1.2
+pkgrel=1.2
 pkgdesc="this is a test package."
 arch=('x86_64')
 url="https://test.com"
