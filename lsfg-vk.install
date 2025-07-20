@@ -105,16 +105,15 @@ post_install() {
     check_local_install
 
     echo "================================================================================================================================="
-    echo "==  To enable lsfg-vk, you can either use environment variables by launching a game with the env var LSFG_LEGACY=1 (instead of =="
-    echo "==  ENABLE_LSFG=1), followed by those listed here:                                                                             =="
-    echo "==    https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg-vk/58b4525d99c70811464ad5e691056f2ae6c015c0                  =="
+    echo "==  To enable lsfg-vk, you can either use the environment variables listed here:                                               =="
+    echo "==    https://github.com/Pahheb/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk                                                       =="
     echo "==                                                                                                                             =="
-    echo "==  Or by using the new config system, located at:                                                                             =="
+    echo "==  Or the new config system, located at:                                                                                      =="
     echo "==    $_config_home/lsfg-vk/conf.toml"
     echo "==  WARNING: The config is generated only after launching at least 1 vulkan app!                                               =="
     echo "==                                                                                                                             =="
-    echo "==  For more usage instructions and additional env vars, refer to the lsfg-vk wiki:                                            =="
-    echo "==    https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg-vk                                                           =="
+    echo "==  For more usage instructions, refer to the lsfg-vk wiki:                                                                    =="
+    echo "==    https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk                                                   =="
     echo "================================================================================================================================="
 }
 

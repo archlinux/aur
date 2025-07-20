@@ -20,6 +20,7 @@ pkgbase = lsfg-vk-git
 	makedepends = libxrandr
 	makedepends = libxinerama
 	makedepends = libxi
+	makedepends = libxkbcommon
 	depends = vulkan-icd-loader
 	depends = bash
 	depends = gcc-libs

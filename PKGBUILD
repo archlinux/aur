@@ -29,6 +29,7 @@ makedepends=(
 	'libxrandr'
 	'libxinerama'
 	'libxi'
+	'libxkbcommon'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
