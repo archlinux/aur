@@ -12,6 +12,7 @@
 # Build artifacts
 pkg/
 src/
+genwallet-git/
 *.log
 *.tmp
 
