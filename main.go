@@ -23,7 +23,7 @@ const (
 	MAX_WALLPAPERS    = 100
 	KONACHAN_URL      = "https://konachan.com/post.json"
 	KONACHAN_TAGS_URL = "https://konachan.com/tag.json"
-	MAX_ATTEMPTS      = 10
+	MAX_ATTEMPTS      = 20
 	REQUEST_TIMEOUT   = 15 * time.Second
 	REQUEST_DELAY     = 1 * time.Second
 )
@@ -107,6 +107,16 @@ func sanitizeTags(tags string) string {
 	return strings.ReplaceAll(tags, " ", "_")
 }
 
+// Очищаем имя файла от проблемных символов
+func sanitizeFilename(filename string) string {
+	filename = strings.ReplaceAll(filename, "%20", "_")
+	filename = strings.ReplaceAll(filename, " ", "_")
+	filename = strings.ReplaceAll(filename, "%", "_")
+	filename = strings.ReplaceAll(filename, "?", "_")
+	filename = strings.ReplaceAll(filename, "&", "_")
+	return filename
+}
+
 // Ищем случайную картинку
 func fetchRandomImage(minWidth, minHeight int, tags string, useSafeRating, useResolution bool) (string, int, int) {
 	tagString := sanitizeTags(tags)
@@ -145,16 +155,14 @@ func fetchRandomImage(minWidth, minHeight int, tags string, useSafeRating, useRe
 
 // Проверяем, есть ли такая картинка
 func isDuplicate(fileURL string, saveDir string) bool {
-	fname := filepath.Base(fileURL)
+	fname := sanitizeFilename(filepath.Base(fileURL))
 	_, err := os.Stat(filepath.Join(saveDir, fname))
 	return err == nil
 }
 
 // Скачиваем картинку
 func downloadImage(url string, destDir string) (string, error) {
-	fname := filepath.Base(url)
-	// Очищаем имя файла от пробелов и специальных символов
-	fname = strings.ReplaceAll(fname, " ", "_")
+	fname := sanitizeFilename(filepath.Base(url))
 	dest := filepath.Join(destDir, fname)
 	resp, err := http.Get(url)
 	if err != nil {
@@ -171,6 +179,25 @@ func downloadImage(url string, destDir string) (string, error) {
 		return "", err
 	}
 	return dest, nil
+}
+
+// Перемещаем файл с копированием вместо переименования
+func moveFile(src, dest string) error {
+	input, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer input.Close()
+	output, err := os.Create(dest)
+	if err != nil {
+		return err
+	}
+	defer output.Close()
+	_, err = io.Copy(output, input)
+	if err != nil {
+		return err
+	}
+	return os.Remove(src)
 }
 
 // Удаляем старые обои
@@ -255,21 +282,15 @@ func main() {
 		}
 
 		attempts := 0
-		for attempts < MAX_ATTEMPTS {
+		for {
 			url, w, h := fetchRandomImage(minWidth, minHeight, tags, useSafe, useResolution)
 			if url == "" {
-				attempts++
-				fmt.Printf("Попытка %d/%d не удалась...\n", attempts, MAX_ATTEMPTS)
-				if attempts == MAX_ATTEMPTS && minWidth == width && useResolution {
-					fmt.Println("Не найдено с разрешением. Пробую без фильтра...")
-					minWidth, minHeight = 0, 0
-					attempts = 0
-				} else if attempts == MAX_ATTEMPTS {
-					fmt.Println("Достигнут лимит попыток.")
-					break
+				fmt.Printf("Попытка %d не удалась: ничего не найдено\n", attempts+1)
+				if tags == "" && attempts >= MAX_ATTEMPTS-1 {
+					fmt.Println("Достигнут лимит попыток для случайного выбора.")
+					os.Exit(0)
 				}
-				time.Sleep(REQUEST_DELAY)
-				continue
+				break // Ошибка: спросим новые теги
 			}
 			if isDuplicate(url, saveDir) {
 				fmt.Println("Картинка уже есть, ищу другую...")
@@ -280,9 +301,7 @@ func main() {
 			tmp, err := downloadImage(url, tempDir)
 			if err != nil {
 				fmt.Printf("Ошибка скачивания: %v\n", err)
-				attempts++
-				time.Sleep(REQUEST_DELAY)
-				continue
+				break // Ошибка: спросим новые теги
 			}
 			// Проверяем, существует ли файл и валиден ли он
 			fileInfo, err := os.Stat(tmp)
@@ -301,7 +320,7 @@ func main() {
 			}
 			fmt.Printf("Картинка: %dx%d\n", w, h)
 			fmt.Printf("Отображаемый файл: %s\n", tmp)
-			// Упрощённая команда для kitty icat с фиксированным размером 1600x900
+			// Упрощённая команда для kitty icat
 			cmd := exec.Command("kitty", "+kitten", "icat", "--scale-up", tmp)
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
@@ -317,7 +336,7 @@ func main() {
 			scanner.Scan()
 			if strings.ToLower(scanner.Text()) != "n" {
 				dest := filepath.Join(saveDir, filepath.Base(tmp))
-				err := os.Rename(tmp, dest)
+				err := moveFile(tmp, dest)
 				if err != nil {
 					fmt.Printf("Ошибка перемещения файла: %v\n", err)
 					os.Remove(tmp)
@@ -332,6 +351,11 @@ func main() {
 				os.Remove(tmp)
 				attempts++
 				time.Sleep(REQUEST_DELAY)
+			}
+			// Если теги пустые, проверяем лимит попыток
+			if tags == "" && attempts >= MAX_ATTEMPTS {
+				fmt.Println("Достигнут лимит попыток для случайного выбора.")
+				os.Exit(0)
 			}
 		}
 		fmt.Print("Попробовать другие теги? [Y/n]: ")

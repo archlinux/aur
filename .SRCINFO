@@ -1,17 +1,15 @@
 pkgbase = kon
-	pkgdesc = Wallpaper fetcher for KDE Plasma from Konachan with resolution detection and D-Bus integration
-	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://konachan.net
-	arch = any
+	pkgdesc = A wallpaper downloader for KDE Plasma from Konachan with fixed 1600x900 preview
+	pkgver = 1.0
+	pkgrel = 10
+	arch = x86_64
 	license = MIT
-	depends = python
-	depends = python-requests
-	depends = python-rich
-	depends = kitty
-	depends = xorg-xrandr
+	makedepends = go
 	depends = qt5-tools
-	source = kon
-	sha256sums = 5b0c784b1b898b913d456bb54ea94182e71015a0fd6a310b1bfedd6e83d0bbdc
+	depends = xorg-xrandr
+	depends = kitty
+	depends = imagemagick
+	source = main.go
+	sha256sums = SKIP
 
 pkgname = kon
