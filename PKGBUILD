@@ -2,7 +2,7 @@
 pkgname=portable
 epoch=1
 pkgver=7.0rc4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Portable Sandboxing framework"
 arch=('any')
@@ -15,7 +15,6 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
-	"polkit"
 	"procps-ng"
 	"coreutils"
 	"awk"
