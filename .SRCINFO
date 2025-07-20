@@ -1,6 +1,6 @@
 pkgbase = open-tv
 	pkgdesc = Fast & Simple IPTV app
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/Fredolx/open-tv
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = open-tv
 	depends = librsvg
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = open-tv-1.8.0.tar.gz::https://github.com/Fredolx/open-tv/archive/refs/tags/v1.8.0.tar.gz
-	b2sums = 44384538d202f41cdca4dca410d839b4f3eed958ecd56896afd0b88a6bbebc5d02916f6f8bd3bc31a84c84efe7c3d68bd0555a15e2328a8a24178f1ff80a3fa8
+	source = open-tv-1.8.1.tar.gz::https://github.com/Fredolx/open-tv/archive/refs/tags/v1.8.1.tar.gz
+	b2sums = aba1dca746b7fd4c363e28870c8d24036b5e104ccde7304611860eba9d4a3d341f3a9d82e4662616fb54be482fe91215dee00d0fecc24c1c0635c5912a68ed5c
 
 pkgname = open-tv
