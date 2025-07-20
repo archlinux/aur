@@ -12,7 +12,7 @@ _file_list=(
 pkgname=eterm
 _pkgname=Eterm
 pkgver=0.9.6
-pkgrel=3
+pkgrel=4
 _pkgrel=1
 pkgdesc="A vt102 terminal emulator intended as a replacement for xterm."
 arch=('i686' 'x86_64')
@@ -26,25 +26,20 @@ conflicts=('esetroot')
 install=${pkgname}.install
 source=(https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-${_pkgrel}/${pkgname}_${pkgver}.orig.tar.gz 
     eterm.install
-    libscream.c.patch
-    options.c.patch
-    pixmap.c.patch
-    pixmap.h.patch
-    screen.c.patch)
+    patches.tgz
+)
+
 md5sums=('90e424584c22d4050496874d14f78bb1'
     '32eddc4b9f4d34b0603c4af2ecaee39a'
-    '7fbfdca8ed67ff4872ba703b23b0c900'
-    'e9062f21600ab9829c4f056818785e62'
-    '9ca51d90d07a0ea770e32a453be979ac'
-    '300891726fe97cf1b5196d970a4cf3fd'
-    '055a664ebfa477f28705a4bd74aefe5d')
+    '8e4bb6a66b2d61feeae8108d0e1ae122'
+)
 
 prepare() {
     cd ${_pkgname}-${pkgver}/src
 
     # patch sources
     for _file in ${_file_list[@]}; do
-	patch -b ${_file} < ../../../${_file}.patch
+	    patch -b < ../../patches/${_file}.patch
     done
 }
 
