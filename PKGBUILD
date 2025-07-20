@@ -1,6 +1,6 @@
 # Maintainer: Syvarinth <syvarinth@gmail.com>
 pkgname=pacman-gui
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple GTK4 GUI for pacman package manager with AUR support"
 arch=('x86_64')
