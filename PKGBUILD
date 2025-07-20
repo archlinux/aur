@@ -8,16 +8,19 @@
 
 pkgname=xf86-video-intel-git
 _pkgname=${pkgname%-*}
-pkgver=2.99.917+916+g31486f40
+pkgver=2.99.917+939+g4a64400e
 pkgrel=1
 epoch=1
 arch=(x86_64)
-url="https://01.org/linuxgraphics"
-license=('custom')
+url="https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel"
+license=('MIT')
 install=$pkgname.install
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
-depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'systemd-libs' 'libxfont2')
-makedepends=('xorg-server-devel' 'libx11' 'libxrender' 'libxv'
+depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'systemd-libs'
+         'libxcb' 'libxfixes' 'libxshmfence' 'libdrm' 'libxrender'
+         'libx11' 'libxdamage' 'libxext' 'libpciaccess' 'glibc')
+depends+=('libxfont2')
+makedepends=('xorg-server-devel' 'libxv'
              # additional deps for intel-virtual-output
              'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
              # additional for git snapshot
@@ -34,7 +37,7 @@ conflicts=("$_pkgname" 'xorg-server<21.1.1'
 groups=('xorg-drivers-git')
 source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
-#options=('!makeflags')
+options=('!lto')
 
 pkgver() {
   cd $pkgname
@@ -56,11 +59,12 @@ build() {
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/,-z,now}
+  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
 
   ./configure --prefix=/usr \
     --libexecdir=/usr/lib \
     --with-default-dri=3
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 #  cd build
 #  arch-meson $pkgname build \
