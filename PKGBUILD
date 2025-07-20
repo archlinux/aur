@@ -1,18 +1,18 @@
-# Contributor: Ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-clean'
 pkgver='0.508'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Clean data structure"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
-depends=('perl-clone-pp>=0' 'perl-data-dmp>=0.242' 'perl-datetime>=0' 'perl-log-ger>=0.037' 'perl-string-linenumber>=0' 'perl-string-perlquote>=0' 'perl>=5.10.1')
+depends=('perl-clone-pp>=0' 'perl-data-dmp>=0.242' 'perl-datetime>=0' 'perl-log-ger>=0.038' 'perl-string-linenumber>=0' 'perl-string-perlquote>=0' 'perl>=5.10.1')
 makedepends=()
 checkdepends=('perl-test-exception>=0')
 url='https://metacpan.org/release/Data-Clean'
-source=("https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Data-Clean-$pkgver.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/Data-Clean-$pkgver.tar.gz")
 md5sums=('ba2a9520f35930bda4e78f668de9c902')
 sha512sums=('3fd9896d5cc8f0d98f6bb7f2fd21d50a4954691f2b304a48de7955d0c003e7ff39194db9a136f0a013d78d7b993afbe6f0bb504c0da13c70f8a0587f8592658b')
 _distdir="Data-Clean-$pkgver"
