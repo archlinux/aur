@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.1.r66.g6a1b8b9
-pkgrel=3
+pkgver=1.2.4.r14.g8d9da92
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL-2.0')
@@ -67,7 +67,11 @@ package_pop-launcher-git() {
 
 package_pop-shell-plugin-system76-power-git() {
   pkgdesc="System76 Power scripts for the launcher"
-  depends=('gnome-terminal' 'pop-launcher-git' 'system76-power')
+  depends=(
+    'gnome-terminal'
+    'pop-launcher-git'
+    'system76-power'
+  )
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
 
