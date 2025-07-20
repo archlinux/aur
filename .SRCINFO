@@ -1,14 +1,19 @@
 pkgbase = dynamic-power-daemon
 	pkgdesc = Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload
-	pkgver = 3.2.2
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/evertvorster/dynamic-power-daemon
 	install = dynamic-power-daemon.install
 	arch = any
 	license = GPL3
-	depends = bc
-	depends = systemd
-	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v3.2.2.tar.gz
+	depends = python
+	depends = python-yaml
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-psutil
+	depends = python-setproctitle
+	depends = python-systemd
+	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v4.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = dynamic-power-daemon
