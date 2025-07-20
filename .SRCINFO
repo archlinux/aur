@@ -1,17 +1,25 @@
 pkgbase = classisland-git
-	pkgdesc = 一款适用于班级多媒体屏幕的课表信息显示工具，可以一目了然地显示各种信息。
-	pkgver = cedac5b759fe1a5eac4f873d34a1ff5c2bc4b0f6
+	pkgdesc = Class schedule displaying tool for interactive whiteboards in classrooms.
+	pkgver = 1.7.103.0.r25.gcedac5b
 	pkgrel = 1
 	url = https://github.com/ClassIsland/ClassIsland
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
-	makedepends = git
 	makedepends = dotnet-sdk-8.0
+	makedepends = git
 	depends = dotnet-runtime-8.0
 	depends = glibc
 	depends = gcc-libs
 	depends = fontconfig
 	depends = hicolor-icon-theme
+	provides = classisland=1.7.103.0
 	conflicts = classisland
+	source = git+https://github.com/ClassIsland/ClassIsland.git#branch=dev
+	source = git+https://github.com/ClassIsland/EdgeTtsSharp.git#branch=classisland-v2
+	source = classisland.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 5342aed758213e2068c1a41c696b317b935fe491158fc750f454156686a35388
 
 pkgname = classisland-git
