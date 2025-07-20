@@ -1,62 +1,48 @@
-# Maintainer: Dominik Schwaiger <domi.schwaiger04@gmail.com>
-pkgname=sonyheadphonesclient-bin
+# Maintainer:
+# Contributor: Dominik Schwaiger <domi.schwaiger04@gmail.com>
+
+_pkgname="sonyheadphonesclient"
+pkgname="$_pkgname-bin"
 pkgver=1.3.2
 pkgrel=1
-epoch=5
-pkgdesc="A {Windows, macOS, Linux} client recreating the functionality of the Sony Headphones app"
-arch=("x86_64")
+pkgdesc="Desktop client recreating the functionality of the Sony Headphones app (XM3/XM4)"
 url="https://github.com/Plutoberth/SonyHeadphonesClient"
 license=('MIT')
-groups=()
-depends=("glfw" "unzip" "gcc-libs" "libglvnd" "glibc" "dbus" "bluez-libs" "glew" "glew-2.1" "dbus")
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/Plutoberth/SonyHeadphonesClient/releases/download/v$pkgver/SonyHeadphonesClient-linux-x64.zip" "MIT")
-noextract=()
-md5sums=("SKIP" "SKIP")
-validpgpkeys=()
+arch=("x86_64")
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
+depends=(
+  'bluez-libs'
+  'dbus'
+  'glew'
+  'glfw'
+  'libglvnd'
+)
 
-# build() {
-# 	cd "$pkgname-$pkgver"
-# 	unzip
-# }
+provides=("sonyheadphonesclient")
+conflicts=("sonyheadphonesclient")
 
-# check() {
-# 	cd "$pkgname-$pkgver"
-# 	make -k check
-# }
+source=(
+  "$_pkgname-$pkgver.zip"::"$url/releases/download/v$pkgver/SonyHeadphonesClient-linux-x64.zip"
+  "LICENSE-$pkgver"::"$url/raw/refs/tags/v$pkgver/LICENSE"
+)
+sha256sums=(
+  '6a58c20abe26b7ffb263f81e2dcaf779ea187243623c8b39eaac708249bc8013'
+  '0b3db3e11db69b6d0de551cb7d9a56cc65be7f8fd912bcf6bae61ba57df36c34'
+)
 
 package() {
-	unzip -o -qq "SonyHeadphonesClient-linux-x64.zip"
-	rm "SonyHeadphonesClient-linux-x64.zip"
-	mkdir -p "$pkgdir/usr/bin/"
-	mv SonyHeadphonesClient "$pkgdir/usr/bin/"
-	chmod +x "$pkgdir/usr/bin/SonyHeadphonesClient"
+  install -Dm755 SonyHeadphonesClient "$pkgdir/usr/bin/$_pkgname"
 
-	# Desktop entry
-	mkdir -p "$pkgdir/usr/share/applications/"
-	echo "[Desktop Entry]
-	Name=Sony Headphones Client
-	Exec=SonyHeadphonesClient
-	Terminal=false
-	Type=Application
-	Icon=application-executable
-	Categories=Accessories;" >>"$pkgdir/usr/share/applications/SonyHeadphonesClient.desktop"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/sonyheadphonesclient-bluetooth.desktop" << END
+[Desktop Entry]
+Name=Sony Headphones Client [XM3/XM4]
+Comment=[XM3/XM4] A Linux client recreating the functionality of the Sony Headphones app
+Exec=$_pkgname
+Terminal=false
+Categories=Utility;
+Type=Application
+Icon=audio-headphones
+END
 
-	# License
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-	cp MIT "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

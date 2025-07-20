@@ -1,4 +1,4 @@
-*.zip
-*.zst
-src/*
-pkg/*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
