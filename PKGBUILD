@@ -21,15 +21,15 @@ package() {
   install -Dm755 "$srcdir/$pkgname/basteh" "$pkgdir/usr/bin/basteh"
 
   # Icon
-  install -Dm644 "$srcdir/$pkgname/basteh_minimal.jpg" "$pkgdir/usr/share/icons/hicolor/128x128/apps/basteh.png"
+  install -Dm644 "$srcdir/$pkgname/basteh_minimal.jpg" "$pkgdir/usr/share/icons/basteh_minimal.jpg"
 
   # Desktop Entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/basteh.desktop" <<EOF
 [Desktop Entry]
 Version=0.0.2
 Name=Basteh
-Exec=basteh
-Icon=basteh
+Exec=$pkgdir/usr/bin/basteh
+Icon=$pkgdir/usr/share/icons/basteh_minimal.jpg
 Terminal=false
 Type=Application
 Categories=System;Utility;
