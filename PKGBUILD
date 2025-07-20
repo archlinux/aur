@@ -7,9 +7,7 @@ pkgdesc="Adds a method dump_to_string (and its equivalent dumps) to the ruamel.y
 arch=('any')
 url="https://sourceforge.net/p/ruamel-yaml-string"
 license=('MIT')
-depends=(
-  'python-ruamel-yaml'
-)
+depends=('python-ruamel-yaml')
 makedepends=(
   'python-build'
   'python-installer'
