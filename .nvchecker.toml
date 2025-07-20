@@ -1,0 +1,4 @@
+[libzim-glib]
+source = "git"
+git = "https://github.com/birros/libzim-glib.git"
+prefix = "v"
