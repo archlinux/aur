@@ -1,0 +1,15 @@
+pkgbase = plasma-wireguard-vpn
+	pkgdesc = Package that adds quicksettings button for Wireguard VPN
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/comradeFreeman/plasma-mobile-wireguard.git
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-2.0-or-later
+	depends = wireguard-tools
+	depends = kdialog
+	source = git+https://github.com/comradeFreeman/plasma-mobile-wireguard.git
+	sha256sums = SKIP
+
+pkgname = plasma-wireguard-vpn
