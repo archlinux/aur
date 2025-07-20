@@ -1,7 +1,7 @@
 # shellcheck disable=SC2034,SC2148,SC2128,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-git
-pkgver=1.2.0.r0.g7f75b8e
+pkgver=1.2.3.r0.g7e1ec83
 pkgrel=1
 depends=('pam')
 makedepends=('git' 'make' 'gcc')
