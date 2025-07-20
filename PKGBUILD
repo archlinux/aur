@@ -2,7 +2,7 @@
 pkgname=python-async-tkinter-loop
 _name=${pkgname#python-}
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Asynchronous mainloop implementation for tkinter."
 arch=('any')
 url="https://insolor.github.io/async-tkinter-loop"
@@ -32,7 +32,7 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  PYTHONPATH=. xvfb-run -a -s "-screen 0 1024x768x24" pytest
+  PYTHONPATH=. dbus-run-session xvfb-run pytest
 }
 
 package() {
