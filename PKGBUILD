@@ -6,7 +6,7 @@
 pkgname=kraft
 pkgver=1.2.1
 _ver=v$pkgver
-pkgrel=5
+pkgrel=6
 pkgdesc="Handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
@@ -52,7 +52,8 @@ build() {
   cmake ".." \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
