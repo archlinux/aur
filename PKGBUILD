@@ -35,8 +35,9 @@ package()
 
     cd "${srcdir}/${pkgname}" || exit 1
     mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
+    mkdir -p "${pkgdir}/usr/bin/ "
 
     cp -R ./* "${pkgdir}/usr/share/${_pkgname}/"
-    ln -s "${pkgdir}/usr/share/${_pkgname}/${_pkgname}" "/usr/bin/${_pkgname}"
-    chmod +x "/usr/bin/${_pkgname}"
+    ln -s "${pkgdir}/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 }
