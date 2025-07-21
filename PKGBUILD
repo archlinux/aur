@@ -46,7 +46,7 @@ prepare() {
   sed -i -E 's/"postinstall": "npx patch-package"/"postinstall": "npx --yes patch-package"/' redisinsight/api/package.json
 
   _ensure_local_nvm
-  nvm install 20.12.2
+  nvm install 24.4.1
 }
 
 build() {
