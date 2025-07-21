@@ -1,0 +1,18 @@
+pkgbase = tdlib-td
+	pkgdesc = Cross-platform library for building Telegram clients
+	pkgver = 1.8.51
+	pkgrel = 1
+	url = https://github.com/tdlib/td
+	arch = x86_64
+	license = Boost
+	makedepends = git
+	makedepends = cmake
+	makedepends = gperf
+	makedepends = make
+	makedepends = gcc
+	depends = openssl
+	depends = zlib
+	source = git+https://github.com/tdlib/td.git#commit=bb474a201baa798784d696d2d9d762a9d2807f96
+	sha256sums = SKIP
+
+pkgname = tdlib-td
