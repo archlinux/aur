@@ -6,8 +6,14 @@ pkgdesc="Snoop through your files"
 arch=('x86_64')
 url="https://gitlab.gnome.org/philippun1/snoop"
 license=('GPL-3.0-or-later')
-depends=('gtksourceview5' 'libadwaita')
-makedepends=('meson' 'vala')
+depends=(
+  'gtksourceview5'
+  'libadwaita'
+)
+makedepends=(
+  'meson'
+  'vala'
+)
 checkdepends=('appstream-glib')
 optdepends=('nautilus-python: Nautilus extension')
 source=("https://gitlab.gnome.org/philippun1/snoop/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
@@ -19,9 +25,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
