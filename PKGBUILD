@@ -1,9 +1,9 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Maintainer: tee < teeaur at duck dot com >
 
 _pkgname="ipfs-desktop"
 pkgname="${_pkgname}-bin"
-pkgver=0.43.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=('x86_64')
@@ -17,16 +17,16 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-noextract=("${_pkgsrc}-x86_64.deb")
+#noextract=("${_pkgsrc}-x86_64.deb")
 source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
- source_x86_64=("${_pkgsrc}-x86_64.tar.xz::${_url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x64.tar.xz")
+source_x86_64=("${_pkgsrc}-x86_64.tar.xz::${_url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x64.tar.xz")
 #source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc}-linux-amd64.deb")
-b2sums=('a838c58e367ef1b71eb09ad5aff90be608508dd30f49894b15eb56e254aa69197114ba2596565dce84d3b0dcdca776d3557329f4dc3823308168d3a288467773'
-        'bf181dc848d42f39e73a0c00a20e15f5d2c9a96ecad044a7098c1ecb49feb1875491d1375f9b200f01cea192d5155fe172190d7dc816c521f94d5697fffb24da'
+b2sums=('5c2c2f7f5402f24bff6efaa23d1c597a9a139fe0a59e55ddf373d7312a59f0c25a428ad4e172ac167a10e113c3f299d5084459fbf8d4eb9b6ce355d8bb78b5fc'
+        '47a16929c3a963038a7e07683dc5f00f1882ce924ecb4f3d847f7212511f42cf7ad52b90bd75918ac1d5fe76634f3c31c39ee2065c4929e04861e64ff99f747d'
         '2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d')
-b2sums_x86_64=('76e7e4648458597463776ce04e36aa5ecadae47c848edfd93e0beea0da1032bf3a6b434380069b2b907fad4356bec6cfb75e5538ac254a2fbbb47c4646e38c30')
+b2sums_x86_64=('9f9425c110c5a65540f433a29eb6efc7310737505b8319824e9c76682158ba726725e2dab01703b2821bb7c6b3eb6d64fbdc410258641114b0b804b8082eb2b0')
 
 prepare() {
   cd "${srcdir}"
