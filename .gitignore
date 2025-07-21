@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!slimbookbattery.install
 !.nvchecker.toml
+!LICENSE
+!slimbookbattery.install
