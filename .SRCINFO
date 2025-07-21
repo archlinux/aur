@@ -1,6 +1,6 @@
 pkgbase = tauri-cli
 	pkgdesc = Command line interface for building Tauri apps
-	pkgver = 2.6.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://tauri.app
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = tauri-cli
 	depends = appmenu-gtk-module
 	depends = libappindicator-gtk3
 	depends = librsvg
-	source = tauri-cli-2.6.2.tar.gz::https://crates.io/api/v1/crates/tauri-cli/2.6.2/download
-	sha512sums = 1e2638565f16795dcd9ec5969c752b33b14dc67c32a49cba6e9d0c77ba49fb29bead7a008687bd2f141b67c5cd6a5b25664d0985daed66e37d144e2ebe7df330
+	source = tauri-cli-2.7.0.tar.gz::https://crates.io/api/v1/crates/tauri-cli/2.7.0/download
+	sha512sums = e4222602dc3cb27ff7bc2e7971c9b25123deb0da10e8b16ff8aac5377c806b35a9d52e784243ad6ef2488a9b61786e1d245d2f46cc7bfc491e36875133aa05f9
 
 pkgname = tauri-cli
