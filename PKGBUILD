@@ -7,7 +7,12 @@ pkgdesc="Simple GTK dictionary application powered by Wiktionary"
 arch=('any')
 url="https://github.com/johnfactotum/quick-lookup"
 license=('GPL-3.0-or-later')
-depends=('gjs' 'gtk4' 'libadwaita' 'webkitgtk-6.0')
+depends=(
+  'gjs'
+  'gtk4'
+  'libadwaita'
+  'webkitgtk-6.0'
+)
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('040d3570e5799396ef728402242ab06d8b7dfda4f365a5ae9d20e28d95c4f701')
