@@ -3,7 +3,7 @@
 
 pkgname="galaxy-flasher"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for Samsung flash-tools"
 url="https://codeberg.org/ethical_haquer/galaxy-flasher"
 license=("GPL-3.0")
@@ -16,6 +16,7 @@ depends=(
   'python-pexpect'
   'odin4-cli'
   'thor-flash-utility'
+  'python-gobject'
 )
 makedepends=(
   'git'
