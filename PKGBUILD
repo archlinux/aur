@@ -40,7 +40,7 @@ package()
     mkdir -p "${pkgdir}/usr/share/zsh/functions/Completion/Linux/"
     cp -R ./* "${pkgdir}/usr/share/${_pkgname}/"
     chmod +x "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh"
-    ln -s "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/usr/share/${_pkgname}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Create completion scripts
     ${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh --sh_completion bash > "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
