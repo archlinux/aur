@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.9.0.r4.gd124f40
+pkgver=0.9.0.r202.ga4c5fa4
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -23,7 +23,6 @@ makedepends=(
 	'git'
 	'half>=1.12'
 	'libpng>=1.6'
-	'libusb>=1.0.27'
 	'magic_enum>=0.9.7'
 	'qt6-base'
 	'qt6-multimedia'
@@ -33,6 +32,7 @@ makedepends=(
 	'robin-map>=1.3'
 	'spirv-headers'
 	'stb'
+	'systemd-libs'
 	'toml11>=4.2'
 	'util-linux-libs'
 	'vulkan-headers>=1:1.4.314'
@@ -53,6 +53,7 @@ source=(
 	"$_pkgname-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git"
 	"$_pkgname-imgui::git+https://github.com/shadps4-emu/ext-imgui.git"
 	"$_pkgname-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
+	"$_pkgname-libusb::git+https://github.com/shadps4-emu/ext-libusb.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
@@ -65,17 +66,19 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'SKIP'
 )
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --abbrev=7 | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=7 | sed 's/^v\.\?//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
 	cd $_pkgname
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
+	git config submodule.externals/ext-libusb.url ../$_pkgname-libusb
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
@@ -110,7 +113,7 @@ package() {
 		'libpng16.so'
 		'libswresample.so'
 		'libswscale.so'
-		'libusb-1.0.so'
+		'libudev.so'
 		'libuuid.so'
 		'libxxhash.so'
 		'libz.so'
