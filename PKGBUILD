@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: yaa110 <yaa110@gmail.com>
 pkgname=nomino-bin
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Batch rename utility for developers.(Prebuilt version)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 	"LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/yaa110/nomino/v${pkgver}/LICENSE-MIT"
 	"LICENSE-APACHE-${pkgver}::https://raw.githubusercontent.com/yaa110/nomino/v${pkgver}/LICENSE-APACHE"
 )
-sha256sums=('b82e229a3e281e1a3107408cd99d05d990838c340b47244bdc6908eeb84e74e9'
+sha256sums=('c844809fb90a7a36c97c76798b8ec116d0f30f9f46ef1a60908cab43dc6ccdc5'
             'c61849f2f67590dc6e6a865e273accfd56a337ae29bc30c93ecaf50bc7bab77f'
             '0beb66d48e2a5702f0f1d8c8f62cce5877410c85eed400952db3d58a759935ef')
 package() {
