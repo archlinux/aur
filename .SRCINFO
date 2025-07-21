@@ -1,6 +1,6 @@
 pkgbase = xlibre-server
 	pkgver = 25.0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/x11libre/xserver
 	arch = aarch64
 	arch = x86_64
@@ -79,7 +79,7 @@ pkgname = xlibre-server
 	depends = sh
 	depends = systemd-libs>=209
 	depends = xlibre-input-libinput
-	depends = xlibre-server-common=25.0.0.5-1
+	depends = xlibre-server-common=25.0.0.5-2
 	provides = X-ABI-VIDEODRV_VERSION=28.0
 	provides = X-ABI-XINPUT_VERSION=26.0
 	provides = X-ABI-EXTENSION_VERSION=11.0
@@ -111,7 +111,7 @@ pkgname = xlibre-server-bootstrap
 	depends = pixman>=0.27.2
 	depends = sh
 	depends = systemd-libs>=209
-	depends = xlibre-server-common=25.0.0.5-1
+	depends = xlibre-server-common=25.0.0.5-2
 	provides = xlibre-server
 	provides = X-ABI-VIDEODRV_VERSION=28.0
 	provides = X-ABI-XINPUT_VERSION=26.0
@@ -160,7 +160,7 @@ pkgname = xlibre-server-xephyr
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = xlibre-server-common=25.0.0.5-1
+	depends = xlibre-server-common=25.0.0.5-2
 
 pkgname = xlibre-server-xnest
 	pkgdesc = A nested XLibre server that runs as an X application
@@ -175,7 +175,7 @@ pkgname = xlibre-server-xnest
 	depends = nettle
 	depends = pixman>=0.27.2
 	depends = systemd-libs>=209
-	depends = xlibre-server-common=25.0.0.5-1
+	depends = xlibre-server-common=25.0.0.5-2
 
 pkgname = xlibre-server-xvfb
 	pkgdesc = Virtual framebuffer XLibre server
@@ -192,5 +192,5 @@ pkgname = xlibre-server-xvfb
 	depends = pixman
 	depends = sh
 	depends = systemd-libs>=209
-	depends = xlibre-server-common=25.0.0.5-1
+	depends = xlibre-server-common=25.0.0.5-2
 	depends = xorg-xauth

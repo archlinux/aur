@@ -3,7 +3,7 @@
 pkgbase="xlibre-server"
 pkgname=("${pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
 pkgver=25.0.0.5
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
 license=('LicenseRef-Adobe-Display-PostScript' 'BSD-3-Clause' 'LicenseRef-DEC-3-Clause' 
@@ -190,8 +190,8 @@ package_xlibre-server-xvfb() {
   cd "${srcdir}"
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
+  find "${pkgdir}" -type f,l ! -name '*Xvfb*' -delete
+
   install -vDm755 "xvfb-run"   "${pkgdir}/usr/bin/xvfb-run"
   install -vDm644 "xvfb-run.1" "${pkgdir}/usr/share/man/man1/xvfb-run.1" # outda
-
-  find "${pkgdir}" -type f,l ! -name '*Xvfb*' -delete
 }
