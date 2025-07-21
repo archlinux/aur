@@ -2,14 +2,15 @@
 
 pkgname=circle-flags
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of circular flags in SVG format'
 arch=('any')
 url=https://github.com/linuxmint/circle-flags
 _url="http://packages.linuxmint.com/pool/main/c/${pkgname}"
 license=(GPL3)
-source=("${_url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('41206d62f7e14a9917c4f551ebf88f21434a3bfb709ecd074077cbc6057506f6')
+#source=("${_url}/${pkgname}_${pkgver}.tar.xz")
+source=("${_url}/${pkgname}_${pkgver}+mint1.tar.xz")
+sha256sums=('2e7d286ee1ea58c84217348eca2d0e03ffdee74ab1deb9880f640ab3a604d84d')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
