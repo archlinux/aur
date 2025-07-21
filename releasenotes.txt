@@ -1,46 +1,24 @@
-# Gaia Sky 3.6.9
+# Gaia Sky 3.6.10
+
+This version brings lots of minor improvements and bug fixes.
 
 ## Features
-- Add motion trail effect, which stretches stars and particles in the velocity direction. Can be toggled off in the settings.
-- Add Turkish translation, contributed by Erdem Uygun.
-- Migrate go-to-object operation in the camera info pane to use the smooth transitions API, which creates seamless, bumpy-free rides between two camera states.
-- Add a new API v2, which re-names and re-organizes the single access pont we had in the previous API into several modules grouped by function. It also improves documentation and standardizes function and parameter names when possible.
-- Adapt REST server and console to also accept APIv2 calls.
-- Add new setting to enable and disable notification messages, and add checkbox to preferences window. Notifications are off by default. Fixes [#847](https://codeberg.org/gaiasky/gaiasky/issues/847).
-- Update monospace fonts to include all supported characters, now using Liberation Mono.
-- Add missing characters to font files to ready them for the Turkish translation.
-- Left and right trigger buttons (LT, RT) in gamepads to control slider values in gamepad GUI.
-- Update default lens flare shader.
-- Add `generateIndex` attribute to particle sets, so that the index can be omitted for sets that do not need it (which is most of them).
+- Localize Wikipedia API queries for object information.
+- Add file-level cache to TLE subsystem. TLE files are also cached per-group to avoid unnecessary sequential calls to fetch the same file. By default, the TTL for TLE files is 1 hour.
+- Directory structure of virtual texture tiles now accepts more formats (`levelx`, `levelxx`, `x`, `xx`).
+- Set default virtual texture cache size to 10. Add information tooltip to cache size in preferences window.
+- Add markers for towns and landmarks. Night lights go out with ambient light in PBR shader.
+- Country perimeter lines disappear when the camera gets close to the surface of the Planet.
+- Add new attributes to dataset definition format: `links` (now accepts multiple sources as links), `creator` (the creator or curator of the dataset), `credits` (specific attribute for credits instead of adding them to the description; multiple strings accepted).
 
 ## Bug Fixes
-- Fix issues with upper- and lower-case conversions not using the correct locale.
-- Star glow effect flickers due to using a different method to render the billboard depending on whether the effect is active or not.
-- Big bugfix campaign in scripting. Went over all scripting tests and fixed all bugs so that all of them run fine.
-- Add missing `"` character to fonts, fix custom and messages interfaces' computation of position coordinates.
-- Dataset highlight API call not working properly.
-- Use concurrent set as collections in event manager to avoid concurrent modification exceptions.
-- Proper motions produce index out of bounds due to incorrect computation of maximum number of arrows.
-- Correct many instances where the wrong locale is used to convert strings to upper and/or lower case. Enable star name localization for the index and labels.
-- Properly scale camera mouse scroll and drag operations with the current frame rate.
-- Disable OpenAL system.
-- Use `RGBA16F` float format for the lens flare ping-pong buffer, otherwise AMD APUs show banding artifacts. Fixes [#846](https://codeberg.org/gaiasky/gaiasky/issues/846).
-- Resolve redirects for Wikipedia titles, as the API does not resolve redirects automatically. This leads to 403 errors.
-- Make sure `versionFile` task is executed when packing the app by setting the right dependencies.
-- Adjust layout and width of about window to avoid UI overflow.
-
-
-## Performance Improvements
-- Use `GL_RGB16F` instead of `GL_RGBA16F` format (omitting the alpha channel) for internal post-processing effects buffers (lens flare, bloom, etc.). This saves some VRAM, especially useful in integrated graphics.
-- Set a default value of 0.4 scale for the lens flare effect to minimize fill rate and make the ping-pong pass much faster.
-
-## Code Refactoring
-- Harmonize and consolidate star and particle set creation methods under the same class.
-
-## Build System
-- Disable OptFlowCam export option for keyframes in Flatpak in order to avoid Python dependencies.
-- Upgrade to Gradle 8.14.2, which supports Java 24.
-- Update to bundled JRE 24 in packages.
-
-## Documentation
-- Add new APIv2 package-level documentation.
+- Typo in default shader class (`u_emissionCubemap` -> `u_emissiveCubemap`) prevented emissive/night cubemaps from working.
+- Add `nightCubemap` as alias to `emissiveCubemap` in material component.
+- Add `specularValue` and `specularValues` as aliases to `specular` in material component, with floating point number parameters.
+- Properly filtre directories when building the SVT quadtree structure to avoid incorrect 'Worng directory name format' warnings.
+- Deactivating atmospheres causes night texture to apply uniformly to all planet as if it were a regular emissive texture.
+- Procedural generation window does not fit in the window with the new UI theme. Fix layout by introducing scroll panes and resizing elements.
+- Layout issue in right pane of dataset manager window prevented it from using scroll, causing the window to be too large in some cases.
+- Layout issue and tooltip text in datasets component.
+- Move `genVersionFile` task to the top of the dependency list (before `compileJava`) so that we always have the correct file available.
+- Mend wording in new data pack notification window.
