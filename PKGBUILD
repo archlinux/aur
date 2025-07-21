@@ -1,14 +1,14 @@
 # Maintainer: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-plugins-extra-git
-pkgver=r283.75f82c4
+pkgver=r293.45e681f
 pkgrel=1
 pkgdesc="3D wayland compositor extra plugins"
 arch=('any')
 url="https://github.com/WayfireWM/wayfire-plugins-extra"
 license=('MIT')
 depends=('wayfire-git' 'glibmm' 'iio-sensor-proxy' 'wayland-protocols' 'glm')
-makedepends=('git' 'meson' 'ninja' 'libdisplay-info' 'nlohmann-json' 'boost')
+makedepends=('git' 'meson' 'ninja' 'libdisplay-info' 'nlohmann-json' 'boost' 'vulkan-headers')
 optdepends=('wcm: GTK3-based configuration tool for the Wayfire compositor')
 provides=("${pkgname}" "wayfire-plugins-extra")
 conflicts=("wayfire-plugins-extra")
