@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
 # Contributor: Michael Bauer <michael@m-bauer.org>
 pkgname=radicle-cli
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Radicle command line interface"
 arch=('x86_64')
@@ -11,16 +11,16 @@ depends=('libusb' 'gcc-libs' 'openssh' 'git' 'glibc' 'zlib')
 makedepends=('cargo' 'asciidoctor')
 
 _man_pages="rad-id rad-patch rad git-remote-rad radicle-node"
- 
-_pkgver_commit=6f25d73d
-_repoid=z3gqcJUoA1n9HaHKufZs5FCSGazv5
 
-source=("heartwood-$pkgver::git+https://seed.radicle.xyz/$_repoid.git#commit=$_pkgver_commit")
+source=("https://files.radicle.xyz/releases/$pkgver/heartwood-$pkgver.tar.gz")
+noextract=("heartwood-$pkgver.tar.gz")
 
-sha512sums=('SKIP')
+sha512sums=('371f1e8907ebe2fa13a75e0a48cc37944bea14138f8496ca974892430d18d70d5144668248b922b61b9497ba0203ecaec8353df6e8d792e092b37401a5ac3264')
 
 prepare() {
+  mkdir -p "$srcdir/heartwood-$pkgver"
 	cd "$srcdir/heartwood-$pkgver"
+	bsdtar xzf ../heartwood-$pkgver.tar.gz
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
