@@ -1,0 +1,15 @@
+pkgbase = auto-brightness-ddcutil
+	pkgdesc = Automatic monitor brightness adjustment based on sunrise/sunset times
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DonutsDelivery/Auto-Brightness
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = ddcutil
+	source = git+https://github.com/DonutsDelivery/Auto-Brightness.git
+	sha256sums = SKIP
+
+pkgname = auto-brightness-ddcutil
