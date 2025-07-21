@@ -1,5 +1,5 @@
 pkgname=electrs
-pkgver=0.10.7
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="An efficient re-implementation of Electrum Server in Rust"
 arch=(aarch64 x86_64)
@@ -8,13 +8,15 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'clang' 'cmake' 'rust')
 source=("git+https://github.com/romanz/electrs.git#tag=v$pkgver")
-sha256sums=('9116ce80af6c2ce22f7bfeca9ac9d21a2bb8f257b01e1117e7f8aa47cf94c154')
+b2sums=('2b470105a98b36a6b969ac0311f4341a9841d9519053971472e04f262a316a19dcbb6fc782ff775481d757355553d1c54af0a65cafa15f30681dba7817ba1ee7')
 
 prepare() {
   if check_option lto y; then
     CFLAGS+=" -ffat-lto-objects"
     CXXFLAGS+=" -ffat-lto-objects"
   fi
+  # https://github.com/facebook/rocksdb/issues/13365
+  CXXFLAGS+="  -include cstdint"
 }
 
 build() {
