@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=protomd
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Protobuf Markdown generator"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('cecdfaa67b370644410f7c88fbcdb5f53f445927805a9cf3b5dc6483a5c9059b6c3365f9422657fb82016048298f09345fbbe2a2f0ae8a44cb4a3a876465eddd')
+b2sums=('ff3beecdb7c074a35a445b9b4c8cde434b4598967d715bedc84f0061653f40658451ca18766ec4998e3784ab3846cc0fa5d366878f67bb0b0aded0350527c114')
 
 prepare() {
   cd "$pkgname"
