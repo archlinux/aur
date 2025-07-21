@@ -1,7 +1,7 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=dv-processing
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Generic algorithms for event cameras."
 url="https://gitlab.com/inivation/dv/$pkgname/"
@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("https://release.inivation.com/processing/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('4841a67e0c0ab04b47c8ddedfe56633efc372efa11aeabf06884962097981959')
+sha256sums=('4944115d1e6b902b1f2dfe904f44add95262300a82f03da7585ec7863b5d5212')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
