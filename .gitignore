@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!slimbookintelcontroller.install
 !.nvchecker.toml
+!LICENSE
+!slimbookintelcontroller.install
