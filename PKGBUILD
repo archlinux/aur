@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r8935.g3d2085f79
+pkgver=0.1.r9362.g9ab4e4d70
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -68,6 +68,8 @@ source=(
     stenzek.discord-rpc::git+https://github.com/stenzek/discord-rpc.git
     stenzek.soundtouch::git+https://github.com/stenzek/soundtouch.git
     stenzek.plutosvg::git+https://github.com/stenzek/plutosvg.git
+    https://github.com/duckstation/chtdb/releases/download/latest/cheats.zip
+    https://github.com/duckstation/chtdb/releases/download/latest/patches.zip
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
@@ -77,8 +79,14 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'c69cf8206d4928f8bcee0e041597b6590b97b42680fd6cd08182870958a5b2d3'
+            'b9638f487addc5130842793e88214b07535f6f757ce8c584f1492406630ad4e9'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5')
+noextract=(
+    cheats.zip
+    patches.zip
+)
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -102,6 +110,9 @@ prepare() {
                 fi
             done
         done
+
+    # bundle additional resources
+    cp ../cheats.zip ../patches.zip $srcdir/duckstation/data/resources
 }
 
 build() {
@@ -138,7 +149,7 @@ build() {
 
     cmake -B build -S duckstation \
         -G Ninja \
-        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=format-security" \
