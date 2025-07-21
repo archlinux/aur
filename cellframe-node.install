@@ -12,14 +12,14 @@ ${BOLD}NODE CONFIGURATION FILES${NORMAL}
     For enabling diagtool (which is used by Cellframe Dashboard), run (as root):
 
     ${BOLD}systemctl enable --now cellframe-diagtool.service${NORMAL}
-    
+
 ${BOLD}STARTING CELLFRAME NODE${NORMAL}
 
     Use the provided systemd unit file and launch node with cellframe-node-config tool (as root):
 
     ${BOLD}cellframe-node-config -e service enable${NORMAL}
     ${BOLD}cellframe-node-config -e service start${NORMAL}
-    
+
 ${BOLD}RUNNING A MASTERNODE${NORMAL}
 
     View the prerequisites and instructions at:
@@ -44,6 +44,10 @@ pre_remove() {
     systemctl is-active --quiet cellframe-node.service \
     && systemctl stop cellframe-node.service \
     && systemctl disable cellframe-node.service \
+    || true
+    systemctl is-active --quiet cellframe-diagtool.service \
+    && systemctl stop cellframe-diagtool.service \
+    && systemctl disable cellframe-diagtool.service \
     || true
     systemctl daemon-reload
 }
