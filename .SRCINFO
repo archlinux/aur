@@ -1,7 +1,7 @@
 pkgbase = perl-file-loadlines
 	pkgdesc = load the contents of a text file into an array of lines
 	pkgver = 1.047
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/File-LoadLines
 	arch = any
 	license = Artistic-1.0-Perl
