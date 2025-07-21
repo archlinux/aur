@@ -1,16 +1,14 @@
 pkgbase = perl-app-prt
 	pkgdesc = Command line Perl Refactoring Tool
 	pkgver = 0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/App-PRT
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	checkdepends = perl-test-class>=0
 	checkdepends = perl-test-deep>=0
 	checkdepends = perl-test-fatal>=0
 	checkdepends = perl-test-mock-guard>=0
-	makedepends = perl-module-build
 	depends = perl-capture-tiny>=0.39
 	depends = perl-class-load>=0
 	depends = perl-file-copy-recursive>=0

@@ -1,14 +1,15 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-app-prt'
 pkgver='0.22'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Command line Perl Refactoring Tool"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-capture-tiny>=0.39' 'perl-class-load>=0' 'perl-file-copy-recursive>=0' 'perl-file-find-rule>=0' 'perl-file-pushd>=1.013' 'perl-io-interactive>=0' 'perl-ppi>=0.844' 'perl-path-class>=0' 'perl>=5.10.1')
-makedepends=('perl-module-build')
+makedepends=()
 checkdepends=('perl-test-class>=0' 'perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-mock-guard>=0')
 url='https://metacpan.org/release/App-PRT'
 source=("http://search.cpan.org/CPAN/authors/id/H/HI/HITODE/App-PRT-$pkgver.tar.gz")
@@ -17,27 +18,28 @@ sha512sums=('31ea87c2f3e8840bab898dd4de5906f2c3a96e5b006fa28872b2182cbba54bb1412
 _distdir="App-PRT-$pkgver"
 
 build() {
-   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
+         PERL_AUTOINSTALL=--skipdeps                            \
+         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+         MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    ./Build
+  cd "$srcdir/$_distdir"
+   /usr/bin/perl Build.PL
+   /usr/bin/perl Build
 }
 
 check() {
   cd "$srcdir/$_distdir"
   export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
-  ./Build test
+  /usr/bin/perl Build test
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  ./Build install
-  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete 
+  /usr/bin/perl Build install
+
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
