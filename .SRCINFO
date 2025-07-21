@@ -1,9 +1,8 @@
 pkgbase = ente-auth-bin
 	pkgdesc = Ente two-factor authenticator.
-	pkgver = 4.4.0
+	pkgver = 4.4.3
 	pkgrel = 1
 	url = https://ente.io/auth
-	install = ente-auth-bin.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = libayatana-appindicator
@@ -14,7 +13,7 @@ pkgbase = ente-auth-bin
 	optdepends = zenity: Required for importing files
 	provides = ente-auth
 	conflicts = ente-auth
-	source_x86_64 = https://github.com/ente-io/ente/releases/download/auth-v4.4.0/ente-auth-v4.4.0-x86_64.deb
-	sha256sums_x86_64 = d45a1c0ce4a9137ffb0d16c45171d50b56de663855ac1cebcaebfe677e7e1934
+	source = https://github.com/ente-io/ente/releases/download/auth-v4.4.3/ente-auth-v4.4.3-x86_64.deb
+	sha256sums = c2993c33467f53b063c06b6208332ab253e851b44195ef3715e6e6d41baf5877
 
 pkgname = ente-auth-bin

@@ -1,6 +1,0 @@
-pre_upgrade() {
-	# Needed to prevent orphaned files when upgrading from ente-auth-bin <= 4.0.2
-	if [ "$(readlink /usr/bin/ente_auth)" = "/usr/share/ente_auth/ente_auth" ]; then
-    	rm /usr/bin/ente_auth
-	fi
-}
