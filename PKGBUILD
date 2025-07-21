@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
-pkgver=4.4.0
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'git+https://github.com/ente-io/flutter_distributor_fork.git#branch=develop'
         'enteauth.desktop')
-sha256sums=('95e3e41ca132fb574ff727fd4ea3467e3f892a775af719c0322b9154daa8e1ce'
+sha256sums=('15cc7bacf715eb8f4d6dec0fe451e5e0cc0fdcac3415d56450a874abe3f99a70'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -44,10 +44,10 @@ prepare() {
   git config submodule.auth/assets/simple-icons.url "$srcdir/simple-icons"
   git -c protocol.file.allow=always submodule update
 
-  cd auth
+  cd mobile/apps/auth
   ln -sf "$srcdir/flutter_distributor_fork" flutter/packages/flutter_distributor
 
-  export FLUTTER_HOME="$srcdir/ente/auth/flutter"
+  export FLUTTER_HOME="$srcdir/ente/mobile/apps/auth/flutter"
   export PATH="${FLUTTER_HOME}/bin:${PATH}"
 
   # Disable analytics
@@ -61,8 +61,8 @@ prepare() {
 }
 
 build() {
-  cd ente/auth
-  export FLUTTER_HOME="$srcdir/ente/auth/flutter"
+  cd ente/mobile/apps/auth
+  export FLUTTER_HOME="$srcdir/ente/mobile/apps/auth/flutter"
   export HOME="${FLUTTER_HOME}"
   export PATH="${FLUTTER_HOME}/bin:${PATH}"
   export PATH="${PATH}":"${HOME}/.pub-cache/bin"
@@ -70,8 +70,8 @@ build() {
   export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/lib/sodium-1.0.18/pkgconfig/"
   export LIBRARY_PATH="${LIBRARY_PATH}:/usr/lib/sodium-1.0.18/"
 
-  # Treat app_indicator_new deprecation error as a warning
-  export CXXFLAGS+=' -Wno-error=deprecated-declarations'
+  # Treat deprecation errors as warnings
+  export CXXFLAGS+=' -Wno-error=deprecated-declarations -Wno-error=deprecated-literal-operator'
 
   # Disable analytics
   flutter config --no-analytics
@@ -85,14 +85,14 @@ build() {
 }
 
 check() {
-  cd ente/auth
-  export FLUTTER_HOME="$srcdir/ente/auth/flutter"
+  cd ente/mobile/apps/auth
+  export FLUTTER_HOME="$srcdir/ente/mobile/apps/auth/flutter"
   export PATH="${FLUTTER_HOME}/bin:${PATH}"
   flutter test
 }
 
 package() {
-  cd ente/auth
+  cd ente/mobile/apps/auth
 
   if [ "$CARCH" == "aarch64" ]; then
     FLUTTER_ARCH=arm64
