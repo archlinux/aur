@@ -8,11 +8,18 @@ pkgdesc="An emoji picker with custom tags support"
 arch=('any')
 url="https://smile.mijorus.it"
 license=('GPL-3.0-or-later')
-depends=('emoji-font' 'libadwaita' 'python-dbus' 'python-gobject')
+depends=(
+  'emoji-font'
+  'libadwaita'
+  'python-dbus'
+  'python-gobject'
+)
 makedepends=('meson')
 checkdepends=('appstream-glib')
-optdepends=('wl-clipboard: Automatically paste emojis (Wayland)'
-            'xdotool: Automatically paste emojis (X11)')
+optdepends=(
+  'wl-clipboard: Automatically paste emojis (Wayland)'
+  'xdotool: Automatically paste emojis (X11)'
+)
 conflicts=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('055b8ce8104560bf7425cd4913cbbeaa6ae82abdb4f96f59cd1758f1115ce7ce')
@@ -32,11 +39,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   rm -v "$pkgdir/usr/share/icons/hicolor/scalable/actions/meson.build"
   rm -v "$pkgdir/usr/share/$pkgname/assets/meson.build"
