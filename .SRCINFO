@@ -1,13 +1,11 @@
 pkgbase = perl-web-microformats2
 	pkgdesc = Read Microformats2 metadata from HTML or JSON
 	pkgver = 0.511
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Web-Microformats2
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	checkdepends = perl-test-deep>=0
-	makedepends = perl-module-build-tiny
 	depends = perl-datetime-format-iso8601>=0
 	depends = perl-html-parser>=0
 	depends = perl-html-treebuilder-xpath>=0
