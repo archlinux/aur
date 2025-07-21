@@ -13,9 +13,10 @@ depends=('gtk3' 'cairo' 'multiload-ng-common')
 
 conflicts=('multiload-ng-systray-gtk2' 'multiload-ng-systray-gtk2-git' 'multiload-ng-systray-gtk3-git')
 
-source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz" "build-fix.patch")
+source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz" "build-fix.patch" "build-fix2.patch")
 md5sums=('bdb9344d696324bd4db04a8bce6d7ec0'
-'b474387e4532bdd6a639f721a51d2587')
+         'b474387e4532bdd6a639f721a51d2587'
+         'c384174d49f3ceff7975f1a87cb74c1f')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
@@ -24,6 +25,7 @@ license=('GPL2')
 build() {
     cd "multiload-ng-$pkgver"
     patch -p1 -i $srcdir/build-fix.patch
+	patch -p1 -i $srcdir/build-fix2.patch
     ./autogen.sh
     ./configure --prefix=/usr --with-gtk=3.0 --disable-deprecations --without-awn --without-indicator --without-lxpanel --without-mate --without-standalone --with-systray --without-xfce4
     make
