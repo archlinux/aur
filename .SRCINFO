@@ -7,8 +7,9 @@ pkgbase = pidgin-toobars
 	license = GPL
 	makedepends = intltool
 	depends = pidgin
-	source = http://vayurik.ru/wordpress/wp-content/uploads/toobars/1.14/pidgin-toobars-1.14.tar.gz
-	md5sums = 0b9255902c10ec1b171329474bd69e82
+	source = pidgin-toobars-1.14.tar::https://web.archive.org/web/20250226154908if_/https://vayurik.ru/wordpress/wp-content/uploads/toobars/1.14/pidgin-toobars-1.14.tar.gz
+	source = msgfmt.patch
+	md5sums = ed51c513cc746673ada4bc9d89946e88
+	md5sums = 65be5df61da0f737cf2fcdfbd25eaef4
 
 pkgname = pidgin-toobars
-

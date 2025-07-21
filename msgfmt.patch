@@ -1,0 +1,241 @@
+diff -urN pidgin-toobars-1.14/po/cs.po pidgin-toobars-1.14_fixed/po/cs.po
+--- pidgin-toobars-1.14/po/cs.po	2010-11-09 17:09:42.000000000 +0100
++++ pidgin-toobars-1.14_fixed/po/cs.po	2025-07-21 11:57:00.445354299 +0200
+@@ -6,6 +6,11 @@
+ # This file is distributed under the same license as the PACKAGE package.
+ # <lukas@francalek.cz>, 2010
+ 
++msgid ""
++msgstr ""
++"Content-Type: text/plain; charset=UTF-8\n"
++
++
+ #Plugin
+ msgid "Adds toolbar and statusbar to buddy list."
+ msgstr "Přidá panel nástrojů a stavový řádek do seznamu kamarádů."
+diff -urN pidgin-toobars-1.14/po/es.po pidgin-toobars-1.14_fixed/po/es.po
+--- pidgin-toobars-1.14/po/es.po	2010-11-09 16:54:37.000000000 +0100
++++ pidgin-toobars-1.14_fixed/po/es.po	2025-07-21 11:56:50.370242659 +0200
+@@ -8,6 +8,11 @@
+ # <acidrums4@gmail.com>, 2009.
+ # <vayurik@mail.ru>, 2010
+ 
++msgid ""
++msgstr ""
++"Content-Type: text/plain; charset=UTF-8\n"
++
++
+ #Plugin
+ msgid "Adds toolbar and statusbar to buddy list."
+ msgstr "Agrega una barra de herramientas y una barra de estado a la lista de amigos."
+diff -urN pidgin-toobars-1.14/po/fr.po pidgin-toobars-1.14_fixed/po/fr.po
+--- pidgin-toobars-1.14/po/fr.po	2010-12-14 11:39:54.000000000 +0100
++++ pidgin-toobars-1.14_fixed/po/fr.po	2025-07-21 11:58:59.122641651 +0200
+@@ -12,7 +12,7 @@
+ "Last-Translator: Louis SCHEIDT <louis.scheidt@free.fr>\n"
+ "Language-Team: Louis SCHEIDT <louis.scheidt@free.fr>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso-8859-15\n"
++"Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ "X-Poedit-Language: French\n"
+ "X-Poedit-Country: FRANCE\n"
+@@ -21,7 +21,7 @@
+ 
+ #Plugin
+ msgid "Adds toolbar and statusbar to buddy list."
+-msgstr "Ajoute une barre d'outil et une barre de statut � la liste de contacts."
++msgstr "Ajoute une barre d'outil et une barre de statut à la liste de contacts."
+ 
+ msgid ""
+ "Adds toolbar to buddy list with buttons: add a new contact, settings of display a buddy list, enable or disable sound notifications and quick access to program settings and user accounts.\n"
+@@ -29,32 +29,32 @@
+ "Allows you to hide the main menu.\n"
+ "Adds a context menu to empty space of buddy list."
+ msgstr ""
+-"Ajoute une barre d'outil avec des boutons � la liste de contacts: ajouter un nouveau contact, param�trer l'affichage de la liste de contacts, activer ou d�sactiver les notifications sonores et acc�s rapide aux param�tres du programme et des comptes utilisateur. \n"
+-"Cr�er une barre de statut qui affiche les contacts actifs, et permet de changer le statut et l'humeur de chaque compte depuis le menu. \n"
++"Ajoute une barre d'outil avec des boutons à la liste de contacts: ajouter un nouveau contact, paramétrer l'affichage de la liste de contacts, activer ou désactiver les notifications sonores et accès rapide aux paramètres du programme et des comptes utilisateur. \n"
++"Créer une barre de statut qui affiche les contacts actifs, et permet de changer le statut et l'humeur de chaque compte depuis le menu. \n"
+ "Permet de cacher le menu principal. \n"
+-"Ajoute un menu de contexte pour lib�rer l'espace de la liste de contacts."
++"Ajoute un menu de contexte pour libérer l'espace de la liste de contacts."
+ 
+ #Toolbar
+ msgid "Add Buddy"
+ msgstr "Ajouter un contact"
+ 
+ msgid "Add Buddy to your Buddy List"
+-msgstr "Ajouter un contact � la liste de contacts"
++msgstr "Ajouter un contact à la liste de contacts"
+ 
+ msgid "Buddies"
+ msgstr "Contacts"
+ 
+ msgid "Show Offline Buddies"
+-msgstr "Afficher les contacts d�connect�s"
++msgstr "Afficher les contacts déconnectés"
+ 
+ msgid "Show Online Buddies"
+-msgstr "Afficher les contacts connect�s"
++msgstr "Afficher les contacts connectés"
+ 
+ msgid "View"
+ msgstr "Vue"
+ 
+ msgid "Show Buddy Details"
+-msgstr "Afficher les d�tails du contact"
++msgstr "Afficher les détails du contact"
+ 
+ msgid "Show Buddy List"
+ msgstr "Afficher la liste de contacts"
+@@ -72,20 +72,20 @@
+ msgstr "Service indisponible"
+ 
+ msgid "Preferences"
+-msgstr "Pr�f�rences"
++msgstr "Préférences"
+ 
+ msgid "Accounts"
+ msgstr "Comptes"
+ 
+ msgid "Manage Accounts"
+-msgstr "G�rer les comptes"
++msgstr "Gérer les comptes"
+ 
+ #Statusbar
+ msgid "_Edit Account"
+ msgstr "_Editer le compte"
+ 
+ msgid "_Disable Account"
+-msgstr "_D�sactiver le compte"
++msgstr "_Désactiver le compte"
+ 
+ msgid "%d unread message from %s\n"
+ msgid_plural "%d unread messages from %s\n"
+@@ -118,7 +118,7 @@
+ msgstr "_Plugins"
+ 
+ msgid "Pr_eferences"
+-msgstr "Pr_�f�rences"
++msgstr "Pr_éférences"
+ 
+ #Preferences
+ msgid "_Configure Plugin"
+@@ -167,16 +167,16 @@
+ msgstr "Afficher le bouton: _Ajouter un contact"
+ 
+ msgid "Show _hide offline buddies button"
+-msgstr "Afficher le bouton: Cac_her les contacts d�connect�s"
++msgstr "Afficher le bouton: Cac_her les contacts déconnectés"
+ 
+ msgid "Show buddy _details button"
+-msgstr "Afficher le bouton: _D�tails du contact"
++msgstr "Afficher le bouton: _Détails du contact"
+ 
+ msgid "Show _mute sound button"
+ msgstr "Afficher le bouton: _Mettre en sourdine"
+ 
+ msgid "Show _preferences button"
+-msgstr "Afficher le bouton: _Pr�f�rences"
++msgstr "Afficher le bouton: _Préférences"
+ 
+ msgid "Show _accounts button"
+ msgstr "Afficher le bouton: _Contact"
+@@ -185,19 +185,19 @@
+ msgstr "Apparence:"
+ 
+ msgid "Icons Only"
+-msgstr "Ic�nes seulement"
++msgstr "Icônes seulement"
+ 
+ msgid "Text Only"
+ msgstr "Texte seulement"
+ 
+ msgid "Text Below Icons"
+-msgstr "Texte en dessous des ic�nes"
++msgstr "Texte en dessous des icônes"
+ 
+ msgid "Default"
+-msgstr "Par d�faut"
++msgstr "Par défaut"
+ 
+ msgid "Icon Size:"
+-msgstr "Taille des ic�nes:"
++msgstr "Taille des icônes:"
+ 
+ msgid "Small"
+ msgstr "Petite"
+@@ -227,20 +227,20 @@
+ msgstr "Utiliser la _zone de statut pour changer de statut"
+ 
+ msgid "Show _user icon in statusbox"
+-msgstr "Afficher l'_ic�ne utilisateur dans la zone de statut"
++msgstr "Afficher l'_icône utilisateur dans la zone de statut"
+ 
+ msgid "Show unrea_d message icon"
+-msgstr "Afficher l'ic�ne de _messages non-lus"
++msgstr "Afficher l'icône de _messages non-lus"
+ 
+ msgid "Show statusbar resize _grip"
+ msgstr "Afficher l'in_dicateur de redimensionnement dans la barre de statut"
+ 
+ #Status menu
+ msgid "Unset"
+-msgstr "Non param�tr�"
++msgstr "Non paramétré"
+ 
+ msgid "Online"
+-msgstr "Connect�"
++msgstr "Connecté"
+ 
+ msgid "Available"
+ msgstr "Disponible"
+@@ -261,13 +261,13 @@
+ msgstr "Ecoute de la musique"
+ 
+ msgid "Do Not Disturb"
+-msgstr "Ne Pas D�ranger"
++msgstr "Ne Pas Déranger"
+ 
+ msgid "Do not disturb"
+-msgstr "Ne pas d�ranger"
++msgstr "Ne pas déranger"
+ 
+ msgid "Occupied"
+-msgstr "Occup�"
++msgstr "Occupé"
+ 
+ msgid "Not Available"
+ msgstr "Indisponible"
+@@ -279,13 +279,13 @@
+ msgstr "Invisible"
+ 
+ msgid "Offline"
+-msgstr "D�connect�"
++msgstr "Déconnecté"
+ 
+ msgid "New status..."
+ msgstr "Nouveau statut..."
+ 
+ msgid "Saved statuses..."
+-msgstr "Statuts enregistr�s..."
++msgstr "Statuts enregistrés..."
+ 
+ msgid "Status message..."
+ msgstr "Message de statut..."
+diff -urN pidgin-toobars-1.14/po/ru.po pidgin-toobars-1.14_fixed/po/ru.po
+--- pidgin-toobars-1.14/po/ru.po	2010-11-09 16:49:57.000000000 +0100
++++ pidgin-toobars-1.14_fixed/po/ru.po	2025-07-21 11:57:24.461618563 +0200
+@@ -7,6 +7,11 @@
+ # <vayurik@mail.ru>, 2010.
+ #
+ 
++msgid ""
++msgstr ""
++"Content-Type: text/plain; charset=UTF-8\n"
++
++
+ #Plugin
+ msgid "Adds toolbar and statusbar to buddy list."
+ msgstr "Добавляет в окно списка контактов панель инструментов и статусную строку."

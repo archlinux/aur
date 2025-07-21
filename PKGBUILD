@@ -11,11 +11,14 @@ url='http://vayurik.ru/wordpress/en/toobars/'
 license=('GPL')
 depends=('pidgin')
 makedepends=('intltool')
-source=(http://vayurik.ru/wordpress/wp-content/uploads/toobars/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('0b9255902c10ec1b171329474bd69e82')
+source=(pidgin-toobars-1.14.tar::https://web.archive.org/web/20250226154908if_/https://vayurik.ru/wordpress/wp-content/uploads/toobars/1.14/pidgin-toobars-1.14.tar.gz msgfmt.patch)
+#md5sums=('0b9255902c10ec1b171329474bd69e82')
+md5sums=('ed51c513cc746673ada4bc9d89946e88'
+         '65be5df61da0f737cf2fcdfbd25eaef4')
 
 build() {
   cd $pkgname-$pkgver
+  patch -p1 -i $srcdir/msgfmt.patch
   ./configure --prefix=/usr
   make
 }
