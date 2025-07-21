@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Koofr
+GenericName=Hybrid storage cloud
+Exec=koofr -update=false
+Terminal=false
+Type=Application
+Icon=koofr
+Categories=Network;FileTransfer;Internet;

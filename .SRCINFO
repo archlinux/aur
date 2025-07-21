@@ -1,0 +1,15 @@
+pkgbase = koofr-desktop-bin
+	pkgdesc = Koofr Desktop Client - Cloud storage client
+	pkgver = 41a82e7
+	pkgrel = 1
+	url = https://koofr.eu/
+	arch = x86_64
+	license = custom
+	depends = gvfs
+	options = !strip
+	source = koofr-41a82e7-linux-x86_64.tar.gz::https://app.koofr.net/dl/apps/linux64
+	source = koofr.desktop
+	sha256sums = fa34a74e31f3b6d145f300e547dd0d92bc6293634eb0a8b5f2442440a216bb1a
+	sha256sums = 9e59b2cb3d1fb8c678e0aa3b36919c679945207f01b65846c884f4de8fa43ed9
+
+pkgname = koofr-desktop-bin
