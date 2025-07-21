@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RcppXPtrUtils
-_pkgver=0.1.2
+_pkgver=0.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="XPtr Add-Ons for 'Rcpp'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3f646f0d2c93a5bfec9636a7e9b63c26')
-b2sums=('2d9371d20acef699663b94243f8e22a8b087c2ff1be37ae75b0c68f248dcd14ff4c3213223f900cd102ee5c58a41d9a62e0c0542f69e3e95592c157a7c8418d2')
+md5sums=('dd249dfd2a5d75006cf037ae196b82ae')
+b2sums=('f2ddfaa1f1df149074ba0ed2de16d422c99e0ad26e0758d6acf0afa3c888452845e54c1cb6eca9b9e21dea096415b25266853a56d57335d6c49098b7575b9fd6')
 
 build() {
   mkdir build
