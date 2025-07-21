@@ -2,7 +2,7 @@
 
 pkgname=torrra
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python tool that lets you find and download torrents without leaving your CLI."
 arch=('any')
 url="https://github.com/stabldev/torrra"
