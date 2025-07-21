@@ -1,11 +1,12 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
-# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
-# You may find it convenient to file issues and pull requests there.
+# Maintainer: maki <maki@hotmilk.space>
+
+# This PKGBUILD was maintained on GitHub
+# https://github.com/dffischer/gnome-shell-extensions
 
 pkgname=gnome-shell-extension-hidetopbar-git
-pkgver=117.r4.geff9801
+pkgver=120.r0.ge9ececc
 pkgrel=1
-pkgdesc="Gnome extension to hide the top bar except in overview mode"
+pkgdesc="GNOME extension to hide the top bar except in overview mode"
 arch=(any)
 url='https://gitlab.gnome.org/tuxor1337/hidetopbar'
 branch='main'
