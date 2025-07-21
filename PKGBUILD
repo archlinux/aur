@@ -3,8 +3,8 @@
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
 
 pkgname=figlet-fonts
-pkgver=1.0 #23.03.2014
-pkgrel=3
+pkgver=1.1 #23.03.2014
+pkgrel=1
 pkgdesc="Additional asciiart fonts for figlet"
 arch=('any')
 license=('GPL')
@@ -38,5 +38,5 @@ package() {
 	msg 'Installing figlet-gallery script...'
 	install -Dm755 ${srcdir}/figlet-gallery ${pkgdir}/usr/bin/figlet-gallery
 	find ${pkgdir}/usr/share/figlet/fonts -type f -exec chmod 644 {} \;
-        find ${pkgdir}/usr/share/figlet/fonts -type d -exec chmod 755 {} \;
+    find ${pkgdir}/usr/share/figlet/fonts -type d -exec chmod 755 {} \;
 }
