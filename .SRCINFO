@@ -1,7 +1,7 @@
 pkgbase = kio5-extras
 	pkgdesc = Additional components to increase the functionality of KIO
 	pkgver = 24.02.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kde.org/
 	arch = x86_64
 	license = LGPL-2.0-or-later
@@ -28,7 +28,6 @@ pkgbase = kio5-extras
 	depends = libssh
 	depends = libtirpc
 	depends = libxcursor
-	depends = kactivities5
 	depends = qt5-base
 	depends = qt5-svg
 	depends = smbclient

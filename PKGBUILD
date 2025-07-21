@@ -4,7 +4,7 @@
 
 pkgname=kio5-extras
 pkgver=24.02.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
 url='https://www.kde.org/'
@@ -26,7 +26,6 @@ depends=(gcc-libs
          libssh
          libtirpc
          libxcursor
-         kactivities5
          qt5-base
          qt5-svg
          smbclient
