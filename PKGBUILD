@@ -1,7 +1,7 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-l-icons
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="A flat, colorful, and modern theme based on Paper and Moka (legacy)."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('9ef3eff700a9d6c481836d07aa9e40124fc091666ed655436757457ba7bcb9a5')
+sha256sums=('a89eb7bf220231900330314b0ebe8df296966aef3b440d34f4687d08069c112a')
 
 package() {
     cd "${srcdir}"/"${pkgname}"
