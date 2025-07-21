@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rogue
-_pkgver=2.1.6
+_pkgver=2.1.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Identify Rogue Taxa in Sets of Phylogenetic Trees"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('141a2936bf39e506a24d3f8afff344ef')
-b2sums=('d3bae972e933470e1733a05a704d4e90d870d28cd9456eaa9d209dc3f0cc178cdf5a6c4431089cb670fdc4e69e3d75548740e6d70f78a079bdac565327dcee8b')
+md5sums=('7f27f037ed14a157a027ae395abc2829')
+b2sums=('bf6e026815f3838ff3fd0857cbb5c461c88d3d10a13af809618536dd45f6b11f777fdbbdfc30fc1387b3b6b1abbbf5c532873863549c865e1eb2a2d0b19a4326')
 
 build() {
   mkdir build
