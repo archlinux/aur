@@ -1,12 +1,12 @@
-# Contributor: Ordoban < dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-search-elasticsearch'
 pkgver='8.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="The official client for Elasticsearch"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-any-uri-escape>=0' 'perl-devel-globaldestruction>=0' 'perl-http-message>=0' 'perl-io-socket-ssl>=0' 'perl-json-maybexs>=1.002002' 'perl-log-any>=1.02' 'perl-log-any-adapter-callback>=0.09' 'perl-module-runtime>=0' 'perl-moo>=2.001000' 'perl-net-ip>=0' 'perl-package-stash>=0.34' 'perl-sub-exporter>=0' 'perl-try-tiny>=0' 'perl-uri>=0' 'perl-libwww>=0' 'perl-namespace-clean>=0')
 makedepends=()

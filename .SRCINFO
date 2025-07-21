@@ -1,11 +1,10 @@
 pkgbase = perl-search-elasticsearch
 	pkgdesc = The official client for Elasticsearch
 	pkgver = 8.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Search-Elasticsearch
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	checkdepends = perl-test-deep>=0
 	checkdepends = perl-test-exception>=0
 	checkdepends = perl-test-pod>=0
