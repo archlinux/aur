@@ -1,8 +1,6 @@
-diff --git a/CMake/folly-deps.cmake b/CMake/folly-deps.cmake
-index c72273a73..d0408f2b3 100644
---- a/CMake/folly-deps.cmake
-+++ b/CMake/folly-deps.cmake
-@@ -64,10 +64,9 @@ if(LIBGFLAGS_FOUND)
+--- folly/CMake/folly-deps.cmake.orig	2025-07-15 18:52:36.766025683 -0400
++++ folly/CMake/folly-deps.cmake	2025-07-15 18:54:17.271772559 -0400
+@@ -64,10 +64,18 @@
    set(FOLLY_LIBGFLAGS_INCLUDE ${LIBGFLAGS_INCLUDE_DIR})
  endif()
  
@@ -10,9 +8,15 @@ index c72273a73..d0408f2b3 100644
 -set(FOLLY_HAVE_LIBGLOG ${GLOG_FOUND})
 -list(APPEND FOLLY_LINK_LIBRARIES ${GLOG_LIBRARY})
 -list(APPEND FOLLY_INCLUDE_DIRECTORIES ${GLOG_INCLUDE_DIR})
-+find_package(Glog CONFIG REQUIRED)
-+set(FOLLY_HAVE_LIBGLOG True)
-+list(APPEND FOLLY_LINK_LIBRARIES glog::glog)
- 
- find_package(LibEvent MODULE REQUIRED)
- list(APPEND FOLLY_LINK_LIBRARIES ${LIBEVENT_LIB})
++# Detect glog with CONFIG first
++find_package(glog CONFIG QUIET)
++if(glog_FOUND)
++  set(FOLLY_HAVE_LIBGLOG True)
++  list(APPEND FOLLY_LINK_LIBRARIES glog::glog)
++else()
++  # Fallback to module mode
++  find_package(Glog MODULE REQUIRED)
++  set(FOLLY_HAVE_LIBGLOG ${GLOG_FOUND})
++  list(APPEND FOLLY_LINK_LIBRARIES ${GLOG_LIBRARY})
++  list(APPEND FOLLY_INCLUDE_DIRECTORIES ${GLOG_INCLUDE_DIR})
++endif()

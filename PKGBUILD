@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.07.14.00
+pkgver=2025.07.21.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -52,47 +52,30 @@ provides=(
   libfollybenchmark.so
 )
 options=(!lto)
-
-#https://github.com/facebook/folly/commit/1497482399f47b2fdc657674a872896848244878
-#this is to correct some path resolution issues from fb internal loads to their OS release loads
-#_commit=1497482399f47b2fdc657674a872896848244878
-#"git+https://github.com/facebook/folly.git#commit=${_commit}"
-#
-# https://github.com/facebook/folly/pull/2466 = cmake-python-noexcept.patch"
 source=(
   "git+https://github.com/facebook/folly.git#tag=v${pkgver}"
   "fix-cmake-find-glog.patch"
   "fix-setup-py-for-python-extensions.patch"
-  "cmake-python-noexcept.patch"
-  "fix-gcc-traits.patch"
-)
-sha256sums=('dd402667603ef38e10f1a516b6f615e361dca8e6f2087efcb73603948200dbd1'
-            'c4b66347a9db6ddedb516e2a778a7a37e26a4280ce2c0c9fdbac11d8c8190c55'
+  "fix-cmake-for-setup-py-extensions.patch"
+  "fix-gcc-traits.patch")
+sha256sums=('ba78bacd4782a1195e3fb4c59cd27f3a31057ccd637bd689469b0406a91c5eb3'
+            'a6e57c9ec968ed6de454803d141035585ee9ab1355beba64b2b176ab8c793d2c'
             'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
-            '2f08e457f0c7d5a76a3cb8884543dcd60abdf04522b681dfd6a003f012584fbe'
+            '78f6127afef08193923b955aae79171a8218a74c6e0e9765bf3b49dee7a1d062'
             'f958f12379e301cff2a0983124696c3c40746da8964799a27d3601b1d5c8575a')
 
 prepare() {
   cd $pkgname
-  git apply --verbose --reject --whitespace=fix ../cmake-python-noexcept.patch
   patch --forward --strip=1 --input="$srcdir/fix-cmake-find-glog.patch"
+  patch --forward --strip=1 --input="$srcdir/fix-cmake-for-setup-py-extensions.patch"
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
   patch --forward --strip=1 --input="$srcdir/fix-gcc-traits.patch"
-
-  # Remove test with compilation error
-  sed -i '/heap_vector_types_test/d' CMakeLists.txt
-
-  # Remove test missing file
-  sed -i '/tuple_ops_test/d' CMakeLists.txt
-
-  # Add our glog export and detect python early to solve some downstream issues (find_package may not be needed here)
-  sed -i '/^project(/a\
-add_definitions(-DGLOG_USE_GLOG_EXPORT)\n' CMakeLists.txt
-
-  # Set Python extensions version
+#concurrency tests currently don't compile (2025-07-21)
+  sed -i '/^    DIRECTORY concurrency\/test\//,/^$/d' CMakeLists.txt
+#pass $pkgver to python extensions
   sed -i "s/version=.*/version=\"$pkgver\",/" folly/python/setup.py
-
 }
+
 build() {
   cd $pkgname
   cmake -S . -B build \
@@ -104,6 +87,8 @@ build() {
     -DPYTHON_EXTENSIONS=ON \
     -DPACKAGE_VERSION="$pkgver" \
     -DPYTHON_PACKAGE_INSTALL_DIR=$pkgdir/usr \
+    -DCMAKE_CXX_STANDARD=20 \
+    -DCMAKE_CXX_STANDARD_REQUIRED=ON \
     -Wno-dev
   cmake --build build
 }
