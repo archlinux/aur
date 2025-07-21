@@ -1,0 +1,4 @@
+[godot-export-template-linux]
+source = "pacman"
+pacman = "godot"
+strip_release = "true"
