@@ -13,11 +13,12 @@ pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
 arch=('x86_64')
-url='https://ffmpeg.org/'
+url=https://ffmpeg.org/
+_url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz fetch-soname-by-chromium.sh
-"${_chromium}sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
-#"${_chrlow}sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
+"${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
+#"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
@@ -28,7 +29,7 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '03263b84dfd79619d22a50538e0dc668a2a919d58471cde4d388f0999c66de22'
             '73c9e3d7685f291a5df13fd28dd04b6ffdc42ea73505cacbe6009c2cb5018be3')
 depends=(glibc)
-makedepends=(nasm mold # mold: preliminary to remove unused funcs
+makedepends=(nasm mold # mold: to remove unused funcs
 diffutils gcc make patch sed) # base-devel
 optdepends=({slimjet,electron{31..36}}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
@@ -41,14 +42,12 @@ prepare() {
   #./fetch-soname-by-chromium.sh $_chrlow > solow.txt
   #diff so{,low}.txt
 
+  echo -e "avformat_version\navutil_version" >> ${_chromium}sigs.txt # for opera
   # mask symbols for binary size
   echo -e "{\nglobal:" > export.map
   sed 's/$/;/' ${_chromium}sigs.txt >> export.map
-  echo -e "avformat_version;\navutil_version;" >> export.map # for opera 
   echo 'ff_aac*;ff_h264*;' >> export.map # for opera
   echo -e "local:\n*;\n};" >> export.map
-  #cat export.map
-  #false
   
   cd ffmpeg-$_ffver
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
@@ -61,7 +60,7 @@ prepare() {
 
 build() {
   cd ffmpeg-$_ffver
-  # https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
+  # ${_url}/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # BUILD.gn
   ./configure \
     --disable-{debug,all,autodetect,doc,iconv,network,symver} \
@@ -81,7 +80,6 @@ build() {
   cd ../release
   gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
     lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} \
-    -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
@@ -89,7 +87,7 @@ build() {
 package(){
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
   #install -d "${pkgdir}"/opt/vivaldi
-  #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.5
+  #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.5 # different soname
   # Block LD_PRELOAD
   install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
