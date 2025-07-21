@@ -8,36 +8,35 @@ _codec=61
 _format=61
 _util=59
 _chromium=137.0.7151.138
-url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
+url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=${_chromium}.sonames${_codec}.${_format}.${_util}
 pkgrel=2
-pkgdesc='Add codecs to Opera by vendored ffmpeg with same sonames'
+pkgdesc='Add codecs to Opera (vendored ffmpeg with same sonames)'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm mold git  # mold is needed to filter unused funcs?
 diffutils gcc make sed) # base-devel
 # tarball has unstable csum
-source=(export.map
-"chromium-ffmpeg::git+${url}.git#commit=${_commit}"
+source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
 install=on-opera-ffmpeg.install
-sha256sums=('6ef627c55222625785c771eace688d1d3c50874bba4ab43150b100767ffa24c6'
-            '30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
+sha256sums=('30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
             'cf61ed6d89c84f1f999af8e126395fdad05e4bb898d900178673b626f0204e12'
             'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 
 prepare() {
   cd chromium-ffmpeg
+  grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > sigs.txt
+  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
+  # mask symbols for binary size
+  echo -e "{\nglobal:" > ../export.map
+  sed 's/$/;/' sigs.txt >> ../export.map
+  echo -e "local:\n*;\n};" >> ../export.map
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   #diff libavcodec/opus/dec.c{.bak,} || :
-  # soname
-  echo Using ffmpeg with same sonames 
-  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
-  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h
-  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h
 }
 
 build() {
@@ -57,10 +56,10 @@ build() {
     --prefix="${srcdir}"/release
 
   make install
-  _symbols=$(cat chromium/ffmpeg.sigs | grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
   gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
-    lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} -Wl,-u,avformat_version -Wl,-u,avutil_version \
+    lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} \
     -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
