@@ -1,7 +1,7 @@
 # Maintainer: Ivan Reutov <nujievik@gmail.com>
 
 pkgname=mux-media
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A simple automated solution for muxing media (e.g. video, audio, subtitles)."
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("git" "rustup")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("ffdeeb30c521e27739af01e1e0f57bc23d80ffd86754111688b0e17719647b49")
+sha256sums=("a8a1687eec2673379b50eef74bc0edcc6daaef632ae1e21b4d4c15405e023f7b")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
