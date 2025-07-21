@@ -1,0 +1,4 @@
+pre_upgrade() {
+	rm -fr /var/lib/openhab5/cache
+	rm -fr /var/lib/openhab5/tmp
+}

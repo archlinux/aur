@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = openhab5
+Target = openhab5-addons
+
+[Action]
+Description = Stopping openhab5 for upgrade
+When = PreTransaction
+Exec = /usr/bin/systemctl stop openhab5.service
