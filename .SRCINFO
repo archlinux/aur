@@ -1,0 +1,20 @@
+pkgbase = nmgui-bin
+	pkgdesc = GTK4-based GUI for NetworkManager (nmcli) — binary release
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/s-adi-dev/nmgui
+	arch = x86_64
+	license = GPL3
+	depends = networkmanager
+	depends = gtk4
+	depends = python-gobject
+	provides = nmgui
+	conflicts = nmgui
+	noextract = nmgui-1.0.0.bin
+	options = !strip
+	source = nmgui-1.0.0.bin::https://github.com/s-adi-dev/nmgui/releases/download/v1.0.0/main.bin
+	source = nmgui.desktop::https://raw.githubusercontent.com/s-adi-dev/nmgui/main/nmgui.desktop
+	sha256sums = b1cdebfbdb2eb42000ead3757cc4c0ac17763d8ebda041a359521fdff3b2b089
+	sha256sums = SKIP
+
+pkgname = nmgui-bin
