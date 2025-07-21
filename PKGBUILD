@@ -42,11 +42,10 @@ prepare() {
   #./fetch-soname-by-chromium.sh $_chrlow > solow.txt
   #diff so{,low}.txt
 
-  echo -e "avformat_version\navutil_version" >> ${_chromium}sigs.txt # for opera
+  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> ${_chromium}sigs.txt # only for opera
   # mask symbols for binary size
   echo -e "{\nglobal:" > export.map
   sed 's/$/;/' ${_chromium}sigs.txt >> export.map
-  echo 'ff_aac*;ff_h264*;' >> export.map # for opera
   echo -e "local:\n*;\n};" >> export.map
   
   cd ffmpeg-$_ffver
