@@ -9,7 +9,7 @@ pkgname=('graphite-grub-theme-default-1080p'
          'graphite-grub-theme-nord-1080p'
          'graphite-grub-theme-nord-2k'
          'graphite-grub-theme-nord-4k')
-pkgver=2024.07.15
+pkgver=2025.07.06
 _pkgver="${pkgver//./-}"
 pkgrel=1
 pkgdesc="Graphite grub theme"
@@ -19,7 +19,7 @@ license=('GPL-3.0-or-later')
 depends=('grub')
 makedepends=()
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-b2sums=('06c62622d9505b63ad61c875bc3a12dbc4511dfd92b0ba8e7c49819eb2bfad0caca7114557c6bab3cd1a9cfda6f8c9d48b28aa39e412f8e8a15dccdee20463ac')
+b2sums=('3e655b89219eb1bcc96e4e611a8480af7a6b87d3dd35f5071c793a8f86309ef19b34dd30af0ec8a1485f5708f1f0f854a871a1f80414f4850b1bae6cef3649f7')
 
 _package() {
   cd "$srcdir/$_pkgbase-$_pkgver"
