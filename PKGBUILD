@@ -3,12 +3,12 @@
 
 pkgname='perl-critic-toomuchcode'
 pkgver='0.19'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="perlcritic add-ons that generally check for dead code."
 arch=('any')
 license=('Artistic-1.0')
 options=('!emptydirs')
-depends=('perl-ppix-quotelike>=0' 'perl-ppix-utils>=0.002' 'perl-critic>=0')
+depends=('perl-ppix-quotelike>=0' 'perl-ppix-utils>=0.002' 'perl-perl-critic>=0')
 makedepends=()
 url='https://metacpan.org/release/Perl-Critic-TooMuchCode'
 source=("http://search.cpan.org/CPAN/authors/id/G/GU/GUGOD/Perl-Critic-TooMuchCode-$pkgver.tar.gz")
