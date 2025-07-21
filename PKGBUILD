@@ -3,7 +3,7 @@
 _author="Johan Vromans"
 pkgname=perl-app-packager
 pkgver=1.440
-pkgrel=1
+pkgrel=2
 pkgdesc="Abstraction for Packagers"
 arch=('any')
 license=('unknown')
