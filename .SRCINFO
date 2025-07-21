@@ -1,6 +1,6 @@
 pkgbase = steamback-git
 	pkgdesc = Add versioned save-game snapshots to Steam-cloud enabled games.
-	pkgver = 1.0.0.r25.gba41859
+	pkgver = 1.0.0.r34.ga4cb7c0
 	pkgrel = 1
 	url = https://github.com/geeksville/steamback
 	arch = x86_64
