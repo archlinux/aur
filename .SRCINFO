@@ -1,6 +1,6 @@
 pkgbase = blast+
 	pkgdesc = BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)
-	pkgver = 2.16.0
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = http://blast.ncbi.nlm.nih.gov/
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = blast+
 	conflicts = ncbi-blast
 	conflicts = proj
 	replaces = ncbi-blast
-	source = https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.16.0/ncbi-blast-2.16.0+-src.tar.gz
-	sha256sums = 17c93cf009721023e5aecf5753f9c6a255d157561638b91b3ad7276fd6950c2b
+	source = https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.17.0/ncbi-blast-2.17.0+-src.tar.gz
+	sha256sums = 502057a88e9990e34e62758be21ea474cc0ad68d6a63a2e37b2372af1e5ea147
 
 pkgname = blast+
