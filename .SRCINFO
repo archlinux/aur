@@ -1,7 +1,7 @@
 pkgbase = figlet-fonts-extra
 	pkgdesc = Additional collection of asciiart fonts for figlet
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xero/figlet-fonts
 	arch = any
 	license = unknown

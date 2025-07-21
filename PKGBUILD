@@ -2,7 +2,7 @@
 
 pkgname=figlet-fonts-extra
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional collection of asciiart fonts for figlet"
 arch=('any')
 license=('unknown')
