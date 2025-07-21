@@ -1,19 +1,19 @@
 pkgbase = niconizer-bin
 	pkgdesc = Displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.150
-	pkgrel = 2
+	pkgver = 2.0.152
+	pkgrel = 1
 	url = https://github.com/matzkoh/niconizer
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = electron33
-	provides = niconizer=2.0.150
+	depends = electron37
+	provides = niconizer=2.0.152
 	conflicts = niconizer
-	source = niconizer-2.0.150.zip::https://github.com/matzkoh/niconizer/releases/download/v2.0.150/niconizer-linux-x64.zip
-	source = niconizer-2.0.150.png::https://raw.githubusercontent.com/matzkoh/niconizer/v2.0.150/icon/icon_512x512.png
+	source = niconizer-2.0.152.zip::https://github.com/matzkoh/niconizer/releases/download/v2.0.152/niconizer-linux-x64.zip
+	source = niconizer-2.0.152.png::https://raw.githubusercontent.com/matzkoh/niconizer/v2.0.152/icon/icon_512x512.png
 	source = niconizer.sh
-	sha256sums = 3b3b09da915e6a8a1bf20ca020a2443b285cd4719d6986bd9e9f5b5599406b88
+	sha256sums = e909966644f6bb9c8d72e44c76e2f3dbe8578fbd2805f86b86496f612c52cbbe
 	sha256sums = 7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = niconizer-bin

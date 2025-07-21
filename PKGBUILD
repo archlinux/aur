@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.150
-_electronversion=33
-pkgrel=2
+pkgver=2.0.152
+_electronversion=37
+pkgrel=1
 pkgdesc="Displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/matzkoh/niconizer"
@@ -20,9 +20,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3b3b09da915e6a8a1bf20ca020a2443b285cd4719d6986bd9e9f5b5599406b88'
+sha256sums=('e909966644f6bb9c8d72e44c76e2f3dbe8578fbd2805f86b86496f612c52cbbe'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/${pkgname%-bin}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/
@@ -31,6 +35,7 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
         --pkgdesc="${pkgdesc}" \
