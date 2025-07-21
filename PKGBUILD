@@ -1,6 +1,6 @@
 # Maintainer: Aetf <aetf at unlimited-code dot works>
 pkgname=unftp
-pkgver=0.14.5
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A FTP(S) server with a couple of twists written in Rust."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 # See also https://github.com/Canop/broot/issues/852
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('c73eb151ad0b85b4f3d8c5083027c38874352dd8e3fc476ceba41eff6bb993475a6b4abd0b8eb6a8f5c1657dd7cadb4eb42d45f92e420c496762bb67e82f29d0')
+sha512sums=('9e2534c2571057b67e58b4dd3fcbee5bb36f320b20067c1d765e9503fd723e0669184aa7ab4e3127b239606b32ab4462d19ebf2fe3d6ba4af863ca11f5d1fdc6')
 
 prepare() {
   cd "$pkgname-$pkgver"
