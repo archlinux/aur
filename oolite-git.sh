@@ -1,4 +1,5 @@
 #!/bin/bash
+source /usr/share/GNUstep/Makefiles/GNUstep.sh
 if [ ! -d ~/.Oolite/AddOns ]; then
     mkdir -p ~/.Oolite/AddOns
 fi
