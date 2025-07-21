@@ -37,4 +37,6 @@ package()
     mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
 
     cp -R ./* "${pkgdir}/usr/share/${_pkgname}/"
+    ln -s "${pkgdir}/usr/share/${_pkgname}/${_pkgname}" "/usr/bin/${_pkgname}"
+    chmod +x "/usr/bin/${_pkgname}"
 }
