@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!system76-acpi-dkms.conf
 !.nvchecker.toml
+!LICENSE
+!system76-acpi-dkms.conf
