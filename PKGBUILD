@@ -1,20 +1,21 @@
-# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Contributor: Filipe Nascimento <flipee at tuta dot io>
 # Contributor: Luca Cesari < luca AT cesari DOT me>
 
 _gemname=xdg
 pkgname=ruby-xdg
-pkgver=8.5.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="Provides a Ruby implementation of the XDG Base Directory Specification"
 arch=('any')
 url="https://www.alchemists.io/projects/xdg"
 license=('Apache')
-depends=('ruby>=3.3')
+depends=('ruby>=3.4')
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=("http://rubygems.org/downloads/xdg-$pkgver.gem")
 noextract=("xdg-$pkgver.gem")
-sha256sums=('17b8cc9f3506ac2c45f5948f32c2d21534aa1672daaadf3ed78033d0b5ecaf47')
+sha256sums=('5983be107939281dbcc4f5cc58fc4b820ef240d0de1122a25aad6d92baa5565c')
 
 package() {
     local _gemdir
