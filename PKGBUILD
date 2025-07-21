@@ -1,5 +1,5 @@
 pkgname=chattr2
-pkgver=2.3
+pkgver=2.4
 pkgrel=2
 pkgdesc="A simple package that allows you to send messages to computers or modify files on computers remotely."
 arch=('x86_64')
