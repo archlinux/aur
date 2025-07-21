@@ -1,6 +1,6 @@
 pkgbase = anki-sync-server
 	pkgdesc = Sync server for anki (official version)
-	pkgver = 25.07.2
+	pkgver = 25.07.3
 	pkgrel = 1
 	url = https://github.com/ankitects/anki
 	arch = x86_64
@@ -19,15 +19,15 @@ pkgbase = anki-sync-server
 	makedepends = nodejs
 	makedepends = openssl
 	makedepends = protobuf
-	makedepends = python
+	makedepends = python>=3.9
 	makedepends = python-mypy-protobuf
 	makedepends = rsync
 	makedepends = yarn
 	depends = gcc-libs
-	depends = glibc
+	depends = glibc>=2.36
 	options = !lto
 	backup = etc/default/anki-sync-server
-	source = anki-sync-server-25.07.2.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/25.07.2.zip
+	source = anki-sync-server-25.07.3.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/25.07.3.zip
 	source = git+https://github.com/ankitects/PyOxidizer.git
 	source = git+https://github.com/ankitects/anki-desktop-ftl.git
 	source = git+https://github.com/ankitects/anki-core-i18n.git
@@ -35,7 +35,7 @@ pkgbase = anki-sync-server
 	source = anki-sync-server.service
 	source = anki-sync-server.tmpfiles
 	source = sysusers-anki-sync-server.conf
-	sha512sums = 7654d163cbf7b9eb9e4d04cbc3241befc841711d5a8b639116b1ab81b432acb0a74c5ce04c88a857c8bdd394ef43ee99711332f58f750dc9a63fdd5069d25599
+	sha512sums = 5642b23e45db138e7f17c39696b8113b75f6b777c869d737e5792dc0e88c1afcd5a77c442ae10c21b06c3c69e1e0f57580b9ff9a4dc3e8cd1ec452a2aad6c65f
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

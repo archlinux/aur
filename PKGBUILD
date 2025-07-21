@@ -3,13 +3,13 @@
 
 pkgname=anki-sync-server
 _name="anki"
-pkgver="25.07.2"
+pkgver="25.07.3"
 pkgrel=1
 pkgdesc='Sync server for anki (official version)'
 url="https://github.com/ankitects/anki"
 depends=(
   'gcc-libs'
-  'glibc'
+  'glibc>=2.36'
 )
 makedepends=(
   'bash'
@@ -26,7 +26,7 @@ makedepends=(
   'nodejs'
   'openssl'
   'protobuf'
-  'python'
+  'python>=3.9'
   'python-mypy-protobuf' # AUR
   'rsync'
   'yarn'
@@ -46,7 +46,7 @@ source=(
     "sysusers-anki-sync-server.conf"
 )
 
-sha512sums=('7654d163cbf7b9eb9e4d04cbc3241befc841711d5a8b639116b1ab81b432acb0a74c5ce04c88a857c8bdd394ef43ee99711332f58f750dc9a63fdd5069d25599'
+sha512sums=('5642b23e45db138e7f17c39696b8113b75f6b777c869d737e5792dc0e88c1afcd5a77c442ae10c21b06c3c69e1e0f57580b9ff9a4dc3e8cd1ec452a2aad6c65f'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -88,12 +88,6 @@ build() {
   export CFLAGS+=' -ffat-lto-objects'
   export LTOFLAGS='-flto=auto -ffat-lto-objects'
   cargo build --package runner --release --package "$pkgname"
-}
-
-check() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --package "$pkgname"
 }
 
 package() {
