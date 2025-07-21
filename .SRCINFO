@@ -1,0 +1,23 @@
+pkgbase = pickle-glass-git
+	pkgdesc = 🤖 Fast, light & open-source—Glass lives on your desktop, sees what you see, listens in real time, understands your context, 和 turns every moment into structured knowledge.(Use system-wide electron)
+	pkgver = 0.2.4.r20.g1970d73
+	pkgrel = 1
+	url = https://pickle.com/glass
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron30
+	depends = libsecret
+	depends = java-runtime
+	provides = pickle-glass=0.2.4
+	conflicts = pickle-glass
+	source = pickle-glass.git::git+https://github.com/pickle-com/glass
+	source = pickle-glass.sh
+	sha256sums = SKIP
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+
+pkgname = pickle-glass-git
