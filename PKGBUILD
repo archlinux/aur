@@ -2,13 +2,13 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.14.17
+pkgver=3.14.34
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
 url="https://www.ivpn.net"
 license=('GPL3')
-depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
+depends=('glibc' 'lsof' 'openvpn')
 optdepends=('bash-completion')
 makedepends=('make' 'curl' 'go>=1.21' 'git' 'cmake' 'ninja')
 install="ivpn.install"
@@ -17,7 +17,7 @@ install="ivpn.install"
 
 # Default installation sources
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('2074f1bc3986d19e9a0a0d4e9e00be6eea391c85009d527a305e8d5241da7eca')
+sha256sums=('fb1a93e775dc3bf30fb9f1be3fe6b466140c2e8464c8eff727062baab7388c44')
 src_prj_dir_name=desktop-app-${pkgver}
 
 # Use bellow two lines to install package from beta branch
