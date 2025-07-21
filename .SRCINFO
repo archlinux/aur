@@ -8,7 +8,6 @@ pkgbase = perplexity
 	depends = electron
 	depends = wget
 	optdepends = libappindicator-gtk3: for tray icon support
-	conflicts = perplexity-bin
 	source = perplexity.desktop
 	source = perplexity.png
 	source = launcher.sh

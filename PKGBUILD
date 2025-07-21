@@ -9,7 +9,7 @@ url='https://github.com/mazixs/perplexity'
 license=('Apache')
 depends=('electron' 'wget')
 optdepends=('libappindicator-gtk3: for tray icon support')
-conflicts=('perplexity-bin')
+#conflicts=('')
 source=("perplexity.desktop"
         "perplexity.png"
         "launcher.sh"
