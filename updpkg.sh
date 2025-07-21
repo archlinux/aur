@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Upstream name
-_pkgnamefmt=LibreOfficeDev
+_pkgnamefmt=LibreOffice
 
 # Package version
-pkgver=25.8.0.0.beta1
+pkgver=25.8.0.1
 
 #
 pkgrel=1
