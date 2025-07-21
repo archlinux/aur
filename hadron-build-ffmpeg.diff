@@ -1,5 +1,5 @@
 diff --git a/packages/hadron-build/lib/target.js b/packages/hadron-build/lib/target.js
-index bbb0a2089..829002d7b 100644
+index c93399325..84be7e71e 100644
 --- a/packages/hadron-build/lib/target.js
 +++ b/packages/hadron-build/lib/target.js
 @@ -7,8 +7,6 @@ const semver = require('semver');

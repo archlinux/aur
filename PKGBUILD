@@ -10,7 +10,7 @@ pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-_electronpkg='electron36'
+_electronpkg='electron37'
 depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
 makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
@@ -25,8 +25,8 @@ source=(
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        'ba5a5b57c4f8d75fa2cbdbf9267a4025768db5c9c13759893b29e1a4265e16ea4a5194e880b6e70d30db19e0e25ff248a06de8152936c9f36d277654ca7ac14d'
-        '339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef'
+        '5ab361071c348ff7528d12431ccda107b8ff967cca45e388bbb9b2a73be16d10d606a384323192bcce730e95338cfb3d2f8d8089ffd520f6af03f5a8db100dbe'
+        'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '416e82d97116bbb4c8ad00837a81608a3b18fba4fffa9adebbabc4583124da96f9c6632645de5a9b234ccdb0436030928546c8c1a897081da8bbd12fef95249e'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
