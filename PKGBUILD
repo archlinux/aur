@@ -7,7 +7,7 @@
 _pkgname=dispositio
 pkgname=${_pkgname}-git
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Tool for displaying tabula data r (from CSV, JSON or YAML) in terminal (or markdown or Texttile)> You can use it as a library."
 arch=(any)
 url="https://dispositio.spn.109"
