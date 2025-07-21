@@ -6,7 +6,7 @@ pkgbase = dispositio-git
 	arch = any
 	license = Apache-2
 	makedepends = git
-	depends = auilium-git
+	depends = auxilium-git
 	provides = dispositio
 	conflicts = dispositio
 	source = dispositio-git::git+https://codeberg.org/spn109/dispositio.git#tag=v0.0.1
