@@ -1,14 +1,13 @@
 pkgbase = perl-crypt-ecb
-	pkgdesc = Use block ciphers using ECB mode within perl scripts
+	pkgdesc = Use block ciphers using ECB mode
 	pkgver = 2.23
-	pkgrel = 1
-	url = https://metacpan.org/pod/Crypt::ECB
+	pkgrel = 2
+	url = https://metacpan.org/release/Crypt-ECB
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl
+	license = Artistic-1.0
+	depends = perl>=5.6.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/A/AP/APPEL/Crypt-ECB-2.23.tar.gz
+	source = http://search.cpan.org/CPAN/authors/id/A/AP/APPEL/Crypt-ECB-2.23.tar.gz
 	md5sums = 0bc63fea36ce864469ee8bf6c410ade4
 	sha512sums = a48277362dd30586ac4b5ba91f1e4e02990b51b49bc073bd06110baa9bd6a3aec1faac508120642f43762ee8f92aa16b46292f4e2c81704c31778dcc72edf1d8
 
