@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=plexamp-bin
 _pkgname=Plexamp
-pkgver=4.12.3
+pkgver=4.12.4
 _electronversion=28
 pkgrel=1
 pkgdesc="Modern music client for Plex.(Prebuilt version.Use system-wide electron)"
@@ -18,13 +18,17 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::https://plexamp.plex.tv/plexamp.plex.tv/desktop/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::https://plexamp.plex.tv/plexamp.plex.tv/desktop/${_pkgname}-${pkgver}.AppImage"
     "LICENSE.html::https://www.plex.tv/media-server-downloads/?cat=computer&plat=linux#remodal-terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('563b7096aaebc454272537097eb82987c73501cbbc5000b51b718b295345310f'
-            '73ea0da9d2ccd8a9fff373d896ad801c1b00b7d5b6a8485d620c47564a84914d'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('c11a74fd5141db11b11579da649a7a8c539ba81d20104987ada56b86e061f9d2'
+            'bb12961bd55b81119cd50be4ef1a3df915c738b06e3ec634122fed47dc5af632'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,10 +37,11 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
