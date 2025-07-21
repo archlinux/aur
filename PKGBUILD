@@ -1,10 +1,10 @@
 pkgname=chattr2
-pkgver=2.4
+pkgver=2.5
 pkgrel=2
 pkgdesc="A simple package that allows you to send messages to computers or modify files on computers remotely."
 arch=('x86_64')
 license=('MIT')
-depends=('openssl' 'bash' 'coreutils')
+depends=('openssl' 'bash' 'coreutils' 'socat')
 source=("https://github.com/shadowfreddy25551/chattr/archive/refs/heads/main.zip")
 sha256sums=('SKIP')
 
