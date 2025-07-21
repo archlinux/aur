@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-cmudict
-pkgver=1.0.33
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A versioned python wrapper package for cmudict"
 arch=('any')
 url="https://github.com/prosegrinder/python-cmudict"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('python')
 makedepends=(
   'git'
@@ -14,9 +14,10 @@ makedepends=(
   'python-poetry-core'
   'python-wheel'
 )
+checkdepends=('python-pytest')
 source=("git+https://github.com/prosegrinder/python-cmudict.git#tag=v$pkgver"
         'git+https://github.com/cmusphinx/cmudict.git')
-sha256sums=('e75f66c27953b202d907f45cb9d0ac22d968b8fb0fe7ed97454acb77a920d45f'
+sha256sums=('3a7920c180a3f90667f521e7b4aad505795a4013419dfd37fc6950ceac618114'
             'SKIP')
 
 prepare() {
@@ -29,6 +30,13 @@ prepare() {
 build() {
   cd "$pkgname"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+  python -m venv --clear --without-pip --system-site-packages .testenv
+	.testenv/bin/python -m installer dist/*.whl
+	.testenv/bin/python -m pytest
 }
 
 package() {
