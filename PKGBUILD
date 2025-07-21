@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=eshelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2025.02.27
+pkgver=11.6.0
 pkgrel=1
 pkgdesc="Authoritative Spanish dictionary software, an essential tool for Spanish language learners.(Prebuilt version)西班牙语助手,权威的西班牙语词典软件,西班牙语学习者必备的工具."
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('59af3b48c1cda58220e303c479d8244257fb2d7c7be7d229b83f3e8dc23ee358'
-            '8fe0d20c22878ba0e32aa68b384c46f44b542e96a34801da588ed55421b22716'
+            'a961d77963997afda7147235ae0540912aa8300d9ccdf2dddf90f1893045adac'
             '99459e293a8aa12658616ee9bdb4cbfb186265b8bfd3e0f4d57ccb5fac5b2d41')
 prepare() {
     sed -e "
