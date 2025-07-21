@@ -1,7 +1,7 @@
 # Author: Kyle Manna <kyle at kylemanna dot com>
 
 pkgname=do-agent
-pkgver=3.17.0
+pkgver=3.18.0
 pkgrel=1
 pkgdesc='DigitalOcean Agent for Enhanced Droplet Graphs'
 url='https://github.com/digitalocean/do-agent'
@@ -14,7 +14,7 @@ license=('Apache')
 source=("https://github.com/digitalocean/${pkgname}/archive/${pkgver}.tar.gz"
         "do-agent.service")
 
-sha512sums=('de83be6c5745383485c9f595c0a39c2f453a19310a6e6ebd3e0ca9bb454cb4f8a2876568bfe09dd77b1e2376b9497fae68f073d1a280c0cad4d5dccdd3219ca0'
+sha512sums=('98502d939a8185c3d5419f80f1d6c3d5c2e8c5049dacffce016fc9a38c0cf869b5997d4e40ac692ff9eb5885c31ce4f29a254d5940017b29e952adc6df449bcc'
             '3758a5d63c12db885d54829f67ce62a00ce0155c0d292969fcbb7d9177666fc499d1d5c37c05424fd6684ee793d2c93ddd442948805b313f23af12b97bcd695b')
 
 prepare() {
