@@ -36,8 +36,8 @@ package()
     cd "${srcdir}/${pkgname}" || exit 1
     mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
     mkdir -p "${pkgdir}/usr/bin/ "
-    mkdir -p "/usr/share/bash-completion/completions/"
-    mkdir -p "/usr/share/zsh/functions/Completion/Linux/"
+    mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+    mkdir -p "${pkgdir}/usr/share/zsh/functions/Completion/Linux/"
     cp -R ./* "${pkgdir}/usr/share/${_pkgname}/"
     chmod +x "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh"
     ln -s "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
