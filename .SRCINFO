@@ -1,8 +1,8 @@
 pkgbase = system-monitoring-center
 	pkgdesc = Multi-featured system monitor.
-	pkgver = 2.26.0
+	pkgver = 2.26.1
 	pkgrel = 1
-	url = https://github.com/hakandundar34coding/system-monitoring-center
+	url = https://github.com/mamolinux/system-monitoring-center
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
@@ -18,7 +18,7 @@ pkgbase = system-monitoring-center
 	optdepends = amdgpu_top: for video engine load on GPU tab and per-process GPU usage, GPU memory columns on Processes tab
 	optdepends = hwdata: for device vendor-model information of new devices
 	optdepends = xorg-xrandr: for more accurate screen resolution and refresh rate detection
-	source = system-monitoring-center-2.26.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v2.26.0.tar.gz
-	sha256sums = 31d2426bfc731bf0181618449988b29b08ff27ce2ac1c577fa7231aa96301c47
+	source = system-monitoring-center-2.26.1.tar.gz::https://github.com/mamolinux/system-monitoring-center/archive/refs/tags/2.26.1.tar.gz
+	sha256sums = 42b0d0931650f2de7d4af91258bd9c40d89faf80997ceb10929b7f24cbd7463a
 
 pkgname = system-monitoring-center
