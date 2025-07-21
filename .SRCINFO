@@ -1,0 +1,25 @@
+pkgbase = influxdb1
+	pkgdesc = Influx 1.x branch for everyone who is too lazy to upgrade
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://github.com/InfluxData/influxdb
+	arch = x86_64
+	license = MIT
+	makedepends = asciidoc
+	makedepends = xmlto
+	makedepends = go
+	makedepends = go-tools
+	makedepends = git
+	makedepends = protobuf
+	makedepends = yarn
+	makedepends = cargo
+	makedepends = clang
+	makedepends = llvm
+	conflicts = influxdb
+	backup = etc/influxdb/influxdb.conf
+	source = git+https://github.com/influxdata/influxdb.git#tag=v1.12.1
+	source = influxdb.service
+	sha256sums = 85dfe38451b2b021cc28b5986a625c63bea89201de373e18af333611ec1adad4
+	sha256sums = ada0d13107cd863bb3d516dc00b9fa33c41715244e3aea88d215f5191204ba6b
+
+pkgname = influxdb1
