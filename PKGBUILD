@@ -4,7 +4,7 @@ _pkgbase="xlibre-server"
 _pkgname=("${_pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
-pkgver=25.0.0.4.r5.7437ce8e3
+pkgver=25.0.0.5.r70.85a66a723
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
@@ -204,8 +204,8 @@ package_xlibre-server-xvfb-git() {
   cd "${srcdir}"
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
+  find "${pkgdir}" -type f,l ! -name '*Xvfb*' -delete
+
   install -vDm755 "xvfb-run"   "${pkgdir}/usr/bin/xvfb-run"
   install -vDm644 "xvfb-run.1" "${pkgdir}/usr/share/man/man1/xvfb-run.1" # outda
-
-  find "${pkgdir}" -type f,l ! -name '*Xvfb*' -delete
 }
