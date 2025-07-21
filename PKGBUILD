@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=airlift-bin
 _pkgname=Airlift
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Upload & Merge Data with Attachments to Airtable.(Prebuilt version)"
 arch=("x86_64")
@@ -17,8 +17,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/bin_${pkgname%-bin}_${pkgver}_linux_x64.tar.gz"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/TheAcharya/Airlift/v${pkgver}/LICENSE"
 )
-sha256sums=('038e4328013de72af59407accbf8f7164a0b5f71276bf871228ce584876450d8'
-            '67067a59e0c9762bb67f448315f48a9d759a47544280ac323f6f02f741459fa2')
+sha256sums=('869c41d0b53aed4adb63dc5e274efdc52bf8872b2974dfd417934963ce4ddbec'
+            'b8f675195c0ecbc2d64dfb769de672582644cfe3e1406026d90e04556f4f57cf')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
