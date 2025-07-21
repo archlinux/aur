@@ -1,7 +1,7 @@
 pkgbase = fbthrift
 	pkgdesc = Facebook's branch of Apache Thrift, including a new C++ server
 	pkgver = 2025.07.21.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/fbthrift
 	arch = x86_64
 	license = Apache-2.0
@@ -47,8 +47,6 @@ pkgbase = fbthrift
 	options = !emptydirs
 	options = !lto
 	source = fbthrift-2025.07.21.00.tar.gz::https://github.com/facebook/fbthrift/archive/v2025.07.21.00.tar.gz
-	source = add-missing-cpp2-2listfile.patch
 	sha256sums = e5b48881c376829e691ef5e866790cf1875d042a2a8cb81089b7e112c19056c0
-	sha256sums = 3fb17037822a8f2bc860e8e091d394f3ee0ad0f9b38fbf51487a647fbf556a2d
 
 pkgname = fbthrift

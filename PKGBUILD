@@ -5,7 +5,7 @@
 
 pkgname=fbthrift
 pkgver=2025.07.21.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
 url="https://github.com/facebook/fbthrift"
@@ -63,17 +63,14 @@ options=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "add-missing-cpp2-2listfile.patch"
 )
-sha256sums=('e5b48881c376829e691ef5e866790cf1875d042a2a8cb81089b7e112c19056c0'
-  '3fb17037822a8f2bc860e8e091d394f3ee0ad0f9b38fbf51487a647fbf556a2d')
+sha256sums=('e5b48881c376829e691ef5e866790cf1875d042a2a8cb81089b7e112c19056c0')
 
 prepare() {
   cd $pkgname-$pkgver
   # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
-  patch -Np1 -i ../add-missing-cpp2-2listfile.patch
 }
 
 build() {
