@@ -1,0 +1,19 @@
+
+post_install() {
+    echo ">> Running user_updater install.sh…"
+    if [ -x /var/lib/user_updater/install.sh ]; then
+        /var/lib/user_updater/install.sh
+    else
+        echo "!! /var/lib/user_updater/install.sh not found or not executable."
+    fi
+}
+
+pre_remove() {
+    echo "Running user_updater uninstall script..."
+
+    if [ -x /var/lib/user_updater/uninstall.sh ]; then
+        /var/lib/user_updater/uninstall.sh
+    else
+        echo "uninstall.sh not found or not executable."
+    fi
+}
