@@ -1,6 +1,6 @@
 pkgbase = clifm-nerd
 	pkgdesc = The command line file manager (with Nerd fonts icons support)
-	pkgver = 1.25
+	pkgver = 1.26
 	pkgrel = 1
 	url = https://github.com/leo-arch/clifm
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = clifm-nerd
 	conflicts = clifm
 	conflicts = clifm-bin
 	conflicts = clifm-git
-	source = clifm-1.25.tar.gz::https://github.com/leo-arch/clifm/archive/v1.25.tar.gz
-	sha256sums = ac9156753338f6027d05551b1d02bcb6f3044348108b00b9cefd97f125fc95ee
+	source = clifm-1.26.tar.gz::https://github.com/leo-arch/clifm/archive/v1.26.tar.gz
+	sha256sums = 2f5e5e2412307ea9e4e836b441785b325de58e12150629e81364f4da9adf4f01
 
 pkgname = clifm-nerd

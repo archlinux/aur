@@ -2,7 +2,7 @@
 
 pkgname=clifm-nerd
 _pkgname=clifm
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 pkgdesc="The command line file manager (with Nerd fonts icons support)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
@@ -23,7 +23,7 @@ optdepends=(
 	'udisks2: (un)mount storage devices'
 	)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ac9156753338f6027d05551b1d02bcb6f3044348108b00b9cefd97f125fc95ee')
+sha256sums=('2f5e5e2412307ea9e4e836b441785b325de58e12150629e81364f4da9adf4f01')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
