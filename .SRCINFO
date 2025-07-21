@@ -1,15 +1,15 @@
 pkgbase = python-azure-monitor-ingestion
 	pkgdesc = Microsoft Azure Monitor Ingestion Client Library for Python
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python>=3.8.0
+	depends = python>=3.9.0
 	depends = python-azure-core>=1.28.0
 	depends = python-isodate>=0.6.0
-	source = python-azure-monitor-ingestion-1.0.4.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/azure-monitor-ingestion_1.0.4.tar.gz
-	b2sums = 85513b1f2620321b3fce8d38c92065f4de155599592faf589d958e81be549c68b5e4714ce0a1a5b33740c6322d76d6ebc8972b6810727e42b310bccb56f3fd57
+	source = python-azure-monitor-ingestion-1.1.0.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/azure-monitor-ingestion_1.1.0.tar.gz
+	b2sums = 7a044c9ad568a0112bfe2e41ba037f17b25014b04595524304a9913afda19216d872277b3b891d211b177e233038b154bda8e6c2d5b73a0ca5f762db9fd4b57d
 
 pkgname = python-azure-monitor-ingestion
