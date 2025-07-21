@@ -3,25 +3,16 @@
 
 _vkprefix=Vulkan-Tools-vulkan-sdk
 pkgname=lib32-vulkan-tools
-pkgver=1.4.313.0
+pkgver=1.4.321.0
 pkgrel=1
 arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
 pkgdesc="Vulkan Utilities and Tools (32-bit)"
 license=('Apache-2.0')
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' 'lib32-vulkan-icd-loader')
-makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools' 'git' 'volk')
+makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/vulkan-sdk-${pkgver}.tar.gz")
-sha256sums=('6b88045c8cad7bd042e202826d8b597c657b9a422ca1f89fc3b0ab2dd64c5a0f')
-
-prepare() {
-  cd "${_vkprefix}-${pkgver}"
-
-  # Hack to allow using 64-bit volk (because Vulkan tools only uses the header part)
-  sed -i \
-    's@find_package(volk QUIET REQUIRED CONFIG)@set(CMAKE_SIZEOF_VOID_P 8)\nfind_package(volk QUIET REQUIRED CONFIG)\nset(CMAKE_SIZEOF_VOID_P 4)@' \
-    CMakeLists.txt
-}
+sha256sums=('f897f76b1fae6b85b567ee86d7bc1ba6f5b1a13d3bfa5fe0f07fdb81609f7b75')
 
 build() {
   export CFLAGS="-m32 ${CFLAGS}"

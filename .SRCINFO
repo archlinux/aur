@@ -1,6 +1,6 @@
 pkgbase = lib32-vulkan-tools
 	pkgdesc = Vulkan Utilities and Tools (32-bit)
-	pkgver = 1.4.313.0
+	pkgver = 1.4.321.0
 	pkgrel = 1
 	url = https://www.khronos.org/vulkan/
 	arch = x86_64
@@ -12,12 +12,11 @@ pkgbase = lib32-vulkan-tools
 	makedepends = glslang
 	makedepends = spirv-tools
 	makedepends = git
-	makedepends = volk
 	depends = lib32-libx11
 	depends = lib32-libxcb
 	depends = lib32-wayland
 	depends = lib32-vulkan-icd-loader
-	source = lib32-vulkan-tools-1.4.313.0.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/vulkan-sdk-1.4.313.0.tar.gz
-	sha256sums = 6b88045c8cad7bd042e202826d8b597c657b9a422ca1f89fc3b0ab2dd64c5a0f
+	source = lib32-vulkan-tools-1.4.321.0.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/vulkan-sdk-1.4.321.0.tar.gz
+	sha256sums = f897f76b1fae6b85b567ee86d7bc1ba6f5b1a13d3bfa5fe0f07fdb81609f7b75
 
 pkgname = lib32-vulkan-tools
