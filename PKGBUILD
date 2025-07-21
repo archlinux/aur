@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cloudflarespeedtest-bin
 _appname=cfst
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="XIU2/CloudflareSpeedTest 🌩 'Choose Your Own Preferred IP' Test Cloudflare CDN latency and speed, get the fastest IP! Written in go.(Prebuilt version)"
 arch=(
@@ -19,10 +19,10 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_appname}_linux_armv7.tar.gz")
 source_i686=("${pkgname}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_appname}_linux_386.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_appname}_linux_amd64.tar.gz")
-sha256sums_aarch64=('813c76fe716c0300f52f07f0c7b204fb81df6397f07d6254a30154c064d4e411')
-sha256sums_armv7h=('b06181bfef4f2dac6cd367222ff711b4005493c102317ed63ce39efd68c53662')
-sha256sums_i686=('8015de6f8e81bfd2068119d26cc615930fcd2706399e50a3c6b1c0c06691c988')
-sha256sums_x86_64=('4e1d52487e0d53e773a31d8da1c29f3783bf8a6e13eb12ba5738c7ba52e79a0e')
+sha256sums_aarch64=('35ab668e49ce7c30288fa1fdcb47b4b282daa696a996edce51e32c320a2e96d1')
+sha256sums_armv7h=('0945612b0252689dde8e4f15db75b852723252eb87f3011cd740f7b9064f5a56')
+sha256sums_i686=('f3a74fd01672b3e2780a954fc617d7be9226d1f311a1e47827828bcbc2ecb16f')
+sha256sums_x86_64=('fc64865daccb6745eeb1f6a06d09b3107a5c93c4473ca9a530a7d652d66aed68')
 prepare() {
     mv "${srcdir}/使用+错误+反馈说明.txt" "${srcdir}/ReadMe.txt"
 }

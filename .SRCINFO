@@ -1,6 +1,6 @@
 pkgbase = cloudflarespeedtest-bin
 	pkgdesc = XIU2/CloudflareSpeedTest 🌩 'Choose Your Own Preferred IP' Test Cloudflare CDN latency and speed, get the fastest IP! Written in go.(Prebuilt version)
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/XIU2/CloudflareSpeedTest
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = cloudflarespeedtest-bin
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = cloudflarespeedtest=2.3.2
+	provides = cloudflarespeedtest=2.3.3
 	conflicts = cloudflarespeedtest
-	source_aarch64 = cloudflarespeedtest-bin-2.3.2-aarch64.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.2/cfst_linux_arm64.tar.gz
-	sha256sums_aarch64 = 813c76fe716c0300f52f07f0c7b204fb81df6397f07d6254a30154c064d4e411
-	source_armv7h = cloudflarespeedtest-bin-2.3.2-armv7h.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.2/cfst_linux_armv7.tar.gz
-	sha256sums_armv7h = b06181bfef4f2dac6cd367222ff711b4005493c102317ed63ce39efd68c53662
-	source_i686 = cloudflarespeedtest-bin-2.3.2-i686.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.2/cfst_linux_386.tar.gz
-	sha256sums_i686 = 8015de6f8e81bfd2068119d26cc615930fcd2706399e50a3c6b1c0c06691c988
-	source_x86_64 = cloudflarespeedtest-bin-2.3.2-x86_64.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.2/cfst_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4e1d52487e0d53e773a31d8da1c29f3783bf8a6e13eb12ba5738c7ba52e79a0e
+	source_aarch64 = cloudflarespeedtest-bin-2.3.3-aarch64.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.3/cfst_linux_arm64.tar.gz
+	sha256sums_aarch64 = 35ab668e49ce7c30288fa1fdcb47b4b282daa696a996edce51e32c320a2e96d1
+	source_armv7h = cloudflarespeedtest-bin-2.3.3-armv7h.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.3/cfst_linux_armv7.tar.gz
+	sha256sums_armv7h = 0945612b0252689dde8e4f15db75b852723252eb87f3011cd740f7b9064f5a56
+	source_i686 = cloudflarespeedtest-bin-2.3.3-i686.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.3/cfst_linux_386.tar.gz
+	sha256sums_i686 = f3a74fd01672b3e2780a954fc617d7be9226d1f311a1e47827828bcbc2ecb16f
+	source_x86_64 = cloudflarespeedtest-bin-2.3.3-x86_64.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.3/cfst_linux_amd64.tar.gz
+	sha256sums_x86_64 = fc64865daccb6745eeb1f6a06d09b3107a5c93c4473ca9a530a7d652d66aed68
 
 pkgname = cloudflarespeedtest-bin
