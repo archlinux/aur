@@ -17,7 +17,6 @@ pkgbase = pulse-visualizer-git
 	depends = yaml-cpp
 	optdepends = libpulse: PulseAudio support
 	optdepends = libpipewire: PipeWire support
-	backup = etc/pulse-visualizer/config.yml
 	source = git+https://github.com/Beacroxx/pulse-visualizer.git
 	sha256sums = SKIP
 

@@ -12,7 +12,6 @@ makedepends=('cmake' 'ninja' 'clang' 'git')
 optdepends=('libpulse: PulseAudio support' 'libpipewire: PipeWire support')
 source=("git+https://github.com/Beacroxx/pulse-visualizer.git")
 sha256sums=('SKIP')
-backup=('etc/pulse-visualizer/config.yml')
 install=pulse-visualizer-git.install
 
 pkgver() {
