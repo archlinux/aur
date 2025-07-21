@@ -1,0 +1,20 @@
+pkgbase = gdrcopy
+	pkgdesc = A fast GPU memory copy library based on NVIDIA GPUDirect RDMA technology.
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/NVIDIA/gdrcopy
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = linux-headers
+	makedepends = nvidia-open-dkms
+	makedepends = zstd
+	depends = nvidia-open
+	depends = cuda
+	options = !strip
+	options = staticlibs
+	source = https://github.com/NVIDIA/gdrcopy/archive/refs/tags/v2.5.tar.gz
+	sha256sums = 196400877be7e511edcf2a87b21a605cca99522ff217c97429348fd9153b30d7
+
+pkgname = gdrcopy
