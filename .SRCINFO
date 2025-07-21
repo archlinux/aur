@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin-beta
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 12.0.0_beta.18
+	pkgver = 12.0.0_beta.19
 	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -64,9 +64,9 @@ pkgbase = firedragon-catppuccin-beta
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = firedragon-source-v12.0.0-beta.18.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18/downloads/firedragon-source.tar.zst
+	source = firedragon-source-v12.0.0-beta.19.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.19/downloads/firedragon-source.tar.zst
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	sha256sums = cbc7621aca05ec1821818382e194cccf527e1cabe6c91d7b4f9dbc0921f0c1e7
+	sha256sums = bbcf4d86c8bb27b84d8908f6868f46f69fb4e56751f8406ad1d0d43d6d1caf6e
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
 
 pkgname = firedragon-catppuccin-beta

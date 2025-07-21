@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=12.0.0-beta.18
+_pkgver=12.0.0-beta.19
 
 __pkgname=firedragon
 pkgname=$__pkgname-catppuccin-beta
@@ -90,7 +90,7 @@ source=(
   firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
 )
 sha256sums=(
-  'cbc7621aca05ec1821818382e194cccf527e1cabe6c91d7b4f9dbc0921f0c1e7'
+  'bbcf4d86c8bb27b84d8908f6868f46f69fb4e56751f8406ad1d0d43d6d1caf6e'
   '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
 )
 
