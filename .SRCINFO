@@ -1,7 +1,7 @@
 pkgbase = amplitude-soundboard-appimage
 	pkgdesc = A sleek, cross-platform soundboard, available for Windows, MacOS, and Linux
 	pkgver = 2.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://amplitude-soundboard.dan0v.com/
 	arch = x86_64
 	license = GPL-3.0-or-later

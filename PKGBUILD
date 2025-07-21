@@ -3,7 +3,7 @@
 _pkgname=amplitude-soundboard
 pkgname="${_pkgname}-appimage"
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A sleek, cross-platform soundboard, available for Windows, MacOS, and Linux'
 arch=('x86_64')
 url='https://amplitude-soundboard.dan0v.com/'
@@ -24,18 +24,22 @@ prepare() {
     cd "${srcdir}"
     chmod +x "${_appimage}"
     "./${_appimage}" --appimage-extract
-
 }
 
 build() {
-    sed -i "s/\(Icon=\).*/\1${_lowername}/" "${srcdir}/squashfs-root//${_lowername}.desktop"
+    local squashfsdir
+    squashfsdir="${srcdir}/squashfs-root"
+    sed -i "s/\(Icon=\).*/\1${_lowername}/" "${squashfsdir}/${_lowername}.desktop"
 }
 
 package() {
+    local squashfsdir
+    squashfsdir="${srcdir}/squashfs-root"
+
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
 
-    install -Dm755 "${srcdir}/squashfs-root/${_lowername}.desktop" "${pkgdir}/usr/share/applications/${_lowername}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/icn.png" "${pkgdir}/usr/share/pixmaps/${_lowername}.png"
+    install -Dm755 "${squashfsdir}/${_lowername}.desktop" "${pkgdir}/usr/share/applications/${_lowername}.desktop"
+    install -Dm644 "${squashfsdir}/icn.png" "${pkgdir}/usr/share/pixmaps/${_lowername}.png"
 
     install -dm755 "${pkgdir}/usr/bin/"
     ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_lowername}"
