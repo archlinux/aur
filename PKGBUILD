@@ -8,12 +8,9 @@ arch=('x86_64')
 url="https://github.com/xeyossr/pulsarship"
 license=('GPL3')
 depends=()
-makedepends=('go')
+makedepends=('go' 'git')
 
 optdepends=()
-
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 source=(
     "git+https://github.com/xeyossr/pulsarship.git#tag=v${pkgver}"
 )

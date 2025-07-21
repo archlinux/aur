@@ -6,8 +6,7 @@ pkgbase = pulsarship
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	provides = pulsarship
-	conflicts = pulsarship
+	makedepends = git
 	source = git+https://github.com/xeyossr/pulsarship.git#tag=v0.1.0
 	sha256sums = SKIP
 
