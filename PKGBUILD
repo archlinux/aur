@@ -1,7 +1,8 @@
-# Maintainer: Piotr Patalong <piotr@patalong.pl>
+# Maintainer: Alexander Drozdov <adrozdoff@gmail.com>
+# Contributor: Piotr Patalong <piotr@patalong.pl>
 pkgname=lrzsz-shim
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A shim for lrzsz providing the rz and sz XMODEM binaries"
 arch=('x86_64')
 url="https://www.ohse.de/uwe/software/lrzsz.html"

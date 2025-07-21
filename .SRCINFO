@@ -1,7 +1,7 @@
 pkgbase = lrzsz-shim
 	pkgdesc = A shim for lrzsz providing the rz and sz XMODEM binaries
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ohse.de/uwe/software/lrzsz.html
 	arch = x86_64
 	license = GPL2
