@@ -1,8 +1,9 @@
-# Maintainer: 
+# Maintainer: envolution
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-posthog
 _name=posthog-python
-pkgver=5.4.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -14,6 +15,7 @@ depends=(
   'python-distro'
   'python-requests'
   'python-six'
+  'python-typing_extensions'
 )
 makedepends=(
   'python-build'
@@ -30,6 +32,7 @@ checkdepends=(
   'python-pydantic'
   'python-pytest-asyncio'
   'python-pytest-timeout'
+  'python-pytest'
 )
 optdepends=(
   'python-anthropic: Anthropic support for LLM Observability'
@@ -38,7 +41,7 @@ optdepends=(
   'python-openai: OpenAI SDK support'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe30c303961cc109d17bd64235f581aef99e5df12c7b21ae3b4bedecbe4ca874')
+sha256sums=('ed54cb5a744e9824db072a1f7da8b18c030fcffff37edd06836186b446bc64b5')
 
 prepare() {
   cd "$_name-$pkgver"
@@ -67,3 +70,4 @@ package() {
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+# vim:set ts=2 sw=2 et:
