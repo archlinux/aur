@@ -6,8 +6,8 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=dispositio
 pkgname=${_pkgname}-git
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.0.2
+pkgrel=0
 pkgdesc="Tool for displaying tabula data r (from CSV, JSON or YAML) in terminal (or markdown or Texttile)> You can use it as a library."
 arch=(any)
 url="https://dispositio.spn.109"
@@ -36,8 +36,14 @@ package()
     cd "${srcdir}/${pkgname}" || exit 1
     mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
     mkdir -p "${pkgdir}/usr/bin/ "
-
+    mkdir -p "/usr/share/bash-completion/completions/"
+    mkdir -p "/usr/share/zsh/functions/Completion/Linux/"
     cp -R ./* "${pkgdir}/usr/share/${_pkgname}/"
     chmod +x "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh"
-    ln -s "${pkgdir}/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Create completion scripts
+    ${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh --sh_completion bash > "/usr/share/bash-completion/completions/${_pkgname}"
+    ${pkgdir}/usr/share/${_pkgname}/${_pkgname}.sh --sh_completion zsh > "/usr/share/zsh/functions/Completion/Linux/_${_pkgname}"
+
 }
