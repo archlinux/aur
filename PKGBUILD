@@ -16,7 +16,7 @@ _dartmax="3.9.0"
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
-pkgrel=1
+pkgrel=2
 _pkgdesc="Flutter SDK artifacts (binary from Google)"
 pkgdesc="${_pkgdesc}"
 arch=("x86_64" "aarch64")
@@ -253,9 +253,9 @@ build() {
 _package-engine-common-google-bin() {
   pkgdesc="${_pkgdesc} - common engine files"
   depends=(
-	"${_group}-common=${pkgver}"
-	"${_group}-sky-engine=${pkgver}"
-	"${_group}-material-fonts=${pkgver}"
+	"${_group}-common"
+	"${_group}-sky-engine"
+	"${_group}-material-fonts"
 	"dart>=${_dartmin}"
 	"dart<${_dartmax}"
   )
@@ -302,16 +302,13 @@ _package-material-fonts-google-bin() {
 _package-engine-linux-google-bin() {
   pkgdesc="${_pkgdesc} - linux engine"
   depends=(
-	"${_group}-engine-common=${pkgver}"
+	"${_group}-engine-common"
   )
   provides=(
 	"${_group}-engine-linux=${pkgver}"
   )
   conflicts=(
 	"${_group}-engine-linux"
-	"${_group}-target-linux<${pkgver}"
-	"${_group}-engine-android<${pkgver}"
-	"${_group}-engine-web<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
@@ -324,16 +321,13 @@ _package-engine-linux-google-bin() {
 _package-engine-web-google-bin() {
   pkgdesc="${_pkgdesc} - web engine"
   depends=(
-	"${_group}-engine-common=${pkgver}"
+	"${_group}-engine-common"
   )
   provides=(
 	"${_group}-engine-web=${pkgver}"
   )
   conflicts=(
 	"${_group}-engine-web"
-	"${_group}-target-web<${pkgver}"
-	"${_group}-engine-android<${pkgver}"
-	"${_group}-engine-linux<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache"
@@ -344,14 +338,13 @@ _package-engine-web-google-bin() {
 _package-gradle-google-bin() {
   pkgdesc="${_pkgdesc} - gradle wrapper"
   depends=(
-	"${_group}-common=${pkgver}"
+	"${_group}-common"
   )
   provides=(
 	"${_group}-gradle=${pkgver}"
   )
   conflicts=(
 	"${_group}-gradle"
-	"${_group}-target-android<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
@@ -362,16 +355,13 @@ _package-gradle-google-bin() {
 _package-engine-android-google-bin() {
   pkgdesc="${_pkgdesc} - android engine"
   depends=(
-	"${_group}-engine-common=${pkgver}"
+	"${_group}-engine-common"
   )
   provides=(
 	"${_group}-engine-android=${pkgver}"
   )
   conflicts=(
 	"${_group}-engine-android"
-	"${_group}-target-android<${pkgver}"
-	"${_group}-engine-linux<${pkgver}"
-	"${_group}-engine-web<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"

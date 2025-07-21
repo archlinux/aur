@@ -1,7 +1,7 @@
 pkgbase = flutter-artifacts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google)
 	pkgver = 3.32.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flutter.dev
 	arch = x86_64
 	arch = aarch64
@@ -117,9 +117,9 @@ pkgbase = flutter-artifacts-google-bin
 
 pkgname = flutter-engine-common-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - common engine files
-	depends = flutter-common=3.32.5
-	depends = flutter-sky-engine=3.32.5
-	depends = flutter-material-fonts=3.32.5
+	depends = flutter-common
+	depends = flutter-sky-engine
+	depends = flutter-material-fonts
 	depends = dart>=3.8.0
 	depends = dart<3.9.0
 	provides = flutter-engine-common=3.32.5
@@ -127,30 +127,21 @@ pkgname = flutter-engine-common-google-bin
 
 pkgname = flutter-engine-linux-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - linux engine
-	depends = flutter-engine-common=3.32.5
+	depends = flutter-engine-common
 	provides = flutter-engine-linux=3.32.5
 	conflicts = flutter-engine-linux
-	conflicts = flutter-target-linux<3.32.5
-	conflicts = flutter-engine-android<3.32.5
-	conflicts = flutter-engine-web<3.32.5
 
 pkgname = flutter-engine-web-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - web engine
-	depends = flutter-engine-common=3.32.5
+	depends = flutter-engine-common
 	provides = flutter-engine-web=3.32.5
 	conflicts = flutter-engine-web
-	conflicts = flutter-target-web<3.32.5
-	conflicts = flutter-engine-android<3.32.5
-	conflicts = flutter-engine-linux<3.32.5
 
 pkgname = flutter-engine-android-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - android engine
-	depends = flutter-engine-common=3.32.5
+	depends = flutter-engine-common
 	provides = flutter-engine-android=3.32.5
 	conflicts = flutter-engine-android
-	conflicts = flutter-target-android<3.32.5
-	conflicts = flutter-engine-linux<3.32.5
-	conflicts = flutter-engine-web<3.32.5
 
 pkgname = flutter-sky-engine-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - sky-engine
@@ -164,10 +155,9 @@ pkgname = flutter-material-fonts-google-bin
 
 pkgname = flutter-gradle-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - gradle wrapper
-	depends = flutter-common=3.32.5
+	depends = flutter-common
 	provides = flutter-gradle=3.32.5
 	conflicts = flutter-gradle
-	conflicts = flutter-target-android<3.32.5
 
 pkgname = flutter-dart-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - Dart SDK
