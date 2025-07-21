@@ -2,9 +2,9 @@
 # Contributor: Minmo <com dot gmail at maroboromike>
 # Contributor: Sematre <sematre at gmx dot de>
 
-pkgname=yt-dlp-drop-in
-pkgver=2024.12.13
-pkgrel=2
+pkgname="yt-dlp-drop-in"
+pkgver=2025.06.30
+pkgrel=1
 pkgdesc='Provide both youtube-dl command and python imports using yt-dlp'
 url="https://aur.archlinux.org/packages/yt-dlp-drop-in"
 arch=('any')
@@ -16,7 +16,7 @@ provides=("youtube-dl=${pkgver:?}")
 conflicts=("youtube-dl")
 
 pkgver() {
-  LANG=C LC_ALL=C pacman -Si yt-dlp | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])'
+  LC_ALL=C pacman -Si yt-dlp | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])'
 }
 
 package() {
