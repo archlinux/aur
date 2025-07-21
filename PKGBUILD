@@ -13,7 +13,7 @@
 pkgname=shatteredprism-bin
 pkgver=1.7
 pkgrel=1
-pkgdesc="DRM-free Fjord Launcher fork (precompiled)"
+pkgdesc="DRM-free Prism Launcher fork with support for alternative auth servers (precompiled)"
 arch=('x86_64')
 url="https://github.com/LunaisLazier/ShatteredPrism"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1')
