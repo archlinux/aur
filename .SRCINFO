@@ -1,0 +1,13 @@
+pkgbase = chattr
+	pkgdesc = Simple secure chat between two PCs using TLS and bash
+	pkgver = 1.2
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = openssl
+	depends = bash
+	depends = coreutils
+	source = https://github.com/shadowfreddy25551/chattr/archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = chattr
