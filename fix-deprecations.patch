@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index 83d7f4e..3ee53ed 100644
+--- a/setup.py
++++ b/setup.py
+@@ -17,11 +17,10 @@ setup(
+     url='https://github.com/jessepollak/urlmatch',
+     description=short_description,
+     long_description=long_description,
++    license="Apache-2.0",
+     classifiers=[
+-        'License :: OSI Approved :: Apache Software License',
+         'Operating System :: OS Independent',
+         'Programming Language :: Python',
+     ],
+-    test_suite='tests',
+     install_requires=[]
+ )

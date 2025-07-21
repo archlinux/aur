@@ -1,45 +1,36 @@
-# Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# from: pypi
-# what: urlmatch
+# Contributor: Mubashshir <ahmubashshir@gmail.com>
 
 _name=urlmatch
-pkgname=( python-$_name python2-$_name)
-pkgbase=python-$_name
+pkgname=python-urlmatch
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='fnmatch for the web'
-
+pkgrel=2
+pkgdesc='Library for easily pattern matching wildcard URLs'
 arch=(any)
 url=https://github.com/jessepollak/urlmatch
-license=(Apache)
-depends=()
-
-makedepends=(python-setuptools python2-setuptools)
-source=("$pkgbase-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3f0c3529f03f3b31efc4547ce44e6512ff5714bf61f7f6ac355b1636ad16eb2d')
+license=('Apache-2.0')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz"
+	"fix-deprecations.patch")
+sha256sums=('0368322e54927683a25a469105f619ed7d69647f5ca10066421325cc5fcd1518'
+            '10757412061ed7e1a3cae2eef0f688cbe8a3cf16806f063593f1111c8c33cbab')
 
 prepare() {
-    # copy folder, so we can cleanly build for both python versions
-    cp -rup $_name-$pkgver $_name-$pkgver-py2
+    cd "$_name-$pkgver"
+    patch -p1 < ../fix-deprecations.patch
 }
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py build
-    cd "$srcdir/$_name-$pkgver-py2"
-    python2 setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
-package_python-urlmatch()
-{
-    depends=( python )
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+check() {
+    cd "$_name-$pkgver"
+    python -m unittest tests/urlmatch_test.py
 }
 
-package_python2-urlmatch()
-{
-    depends=( python2 )
-    cd "$srcdir/$_name-$pkgver-py2"
-    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+package() {
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,17 +1,18 @@
 pkgbase = python-urlmatch
-	pkgdesc = fnmatch for the web
+	pkgdesc = Library for easily pattern matching wildcard URLs
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jessepollak/urlmatch
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-urlmatch-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/u/urlmatch/urlmatch-1.0.1.tar.gz
-	sha256sums = 3f0c3529f03f3b31efc4547ce44e6512ff5714bf61f7f6ac355b1636ad16eb2d
+	depends = python
+	source = python-urlmatch-1.0.1.tar.gz::https://github.com/jessepollak/urlmatch/archive/v1.0.1.tar.gz
+	source = fix-deprecations.patch
+	sha256sums = 0368322e54927683a25a469105f619ed7d69647f5ca10066421325cc5fcd1518
+	sha256sums = 10757412061ed7e1a3cae2eef0f688cbe8a3cf16806f063593f1111c8c33cbab
 
 pkgname = python-urlmatch
-	depends = python
-
-pkgname = python2-urlmatch
-	depends = python2
