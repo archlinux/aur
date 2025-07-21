@@ -2,14 +2,14 @@
 _target='compass'
 _edition=''
 pkgname="mongodb-$_target"
-_pkgver='1.46.5'
+_pkgver='1.46.6'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-_electronpkg='electron36'
+_electronpkg='electron37'
 depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
 makedepends=('git' 'npm>=11.4.1' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
@@ -17,17 +17,13 @@ backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'update-dependencies.diff'
-	'update-dependencies-beta.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
-	'fix-argv-beta.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('27a836be849477aa823a6c133c12ac60772c2786c8bc67136133a4842393e59ba588b7c271cd9874d29d41ce1b52e4f3e6d9fba9ba6b44f78fe5f64d4ef123e4'
-        '39963c3cf3aec9a9e43ea76a5a5d7ac7dfd5bc9ed3011bbf8b1febf4f70fc5b885e33197327d9ac82f3ae51d282e118f206ac1ee44dfbff7192109ecf05e9e8e'
-        'ba5a5b57c4f8d75fa2cbdbf9267a4025768db5c9c13759893b29e1a4265e16ea4a5194e880b6e70d30db19e0e25ff248a06de8152936c9f36d277654ca7ac14d'
+b2sums=('511c71014e133b5c5d5691d4f7937ba28f5c0df9fa4db026479c802829a017ccdd1b591913f062e2217ae4230709def361e2037a31f2c4fc308dbccd18166df0'
+        '5ab361071c348ff7528d12431ccda107b8ff967cca45e388bbb9b2a73be16d10d606a384323192bcce730e95338cfb3d2f8d8089ffd520f6af03f5a8db100dbe'
         '339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef'
-        '69154b5491c8c3149195743bcbcb0ae7b18b8e83635f7afa29e9ef7b50a42343a2877760b41662c5943b8f7d390df85548cbcd253772fa92e33b9f231ab19436'
         '416e82d97116bbb4c8ad00837a81608a3b18fba4fffa9adebbabc4583124da96f9c6632645de5a9b234ccdb0436030928546c8c1a897081da8bbd12fef95249e'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
@@ -37,11 +33,7 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Set npm overrides for various dependencies
-	if [[ "$_target" =~ -beta$ ]]; then
-		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
-	else
-		patch --forward -p1 < "$srcdir/update-dependencies.diff"
-	fi
+	patch --forward -p1 < "$srcdir/update-dependencies.diff"
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
@@ -57,11 +49,7 @@ prepare() {
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
 
 	# Apply argv fixes
-	if [[ "$_target" =~ -beta$ ]]; then
-		patch --forward -p1 < "$srcdir/fix-argv-beta.diff"
-	else
-		patch --forward -p1 < "$srcdir/fix-argv.diff"
-	fi
+	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
