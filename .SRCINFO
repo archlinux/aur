@@ -1,0 +1,12 @@
+pkgbase = mkinitcpio-efi-copy
+	pkgdesc = Mkinitcpio hook to upgrade efi kernel
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL-2.0-only
+	makedepends = gettext
+	depends = mkinitcpio
+	source = kernel-efi-copy.template
+	md5sums = 00e5a27e02f2d8cef8196a7678dbe173
+
+pkgname = mkinitcpio-efi-copy

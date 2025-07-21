@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Copy kernel and initramfs images to EFI directory
+# /usr/local/bin/kernel-efi-copy.sh
+
+ESP_DIR="$ESP_DIR_VALUE"
+
+
+if [[ -n "$1" ]]; then
+    TARGET_KERNEL="$1"
+else
+    TARGET_KERNEL=(/boot/vmlinuz*)
+fi
+
+for file in "${TARGET_KERNEL[@]}"
+do
+        echo "Copying $file to $ESP_DIR"
+        [[ ! -e "$file" ]] && echo "File $file does not exist!" && exit 1
+        [[ ! -d "$ESP_DIR" ]] && echo "Directory $ESP_DIR does not exist!" && exit 1
+        cp -af "$file" "$ESP_DIR$(basename "$file")"
+        [[ $? -ne 0 ]] && exit 1
+done
+
+
+
+if [[ -n "$2" ]]; then
+    TARGET_INITRAMFS=("$2")
+else
+    TARGET_INITRAMFS=(/boot/initramfs*)
+fi 
+
+for file in "${TARGET_INITRAMFS[@]}"
+do
+        echo "Copying $file to $ESP_DIR"
+        [[ ! -e "$file" ]] && echo "File $file does not exist!" && continue
+        [[ ! -d "$ESP_DIR" ]] && echo "Directory $ESP_DIR does not exist!" && exit 1
+        cp -af "$file" "$ESP_DIR/"
+        [[ $? -ne 0 ]] && exit 1
+done
+
+
+[[ -e /boot/intel-ucode.img ]] && cp -af /boot/intel-ucode.img "$ESP_DIR/"
+[[ -e /boot/amd-ucode.img ]] && cp -af /boot/amd-ucode.img "$ESP_DIR/"
+
+exit 0
