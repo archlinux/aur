@@ -1,0 +1,3 @@
+[perl-javascript-quickjs]
+source = "cpan"
+cpan = "JavaScript-QuickJS"
