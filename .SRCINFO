@@ -1,11 +1,10 @@
 pkgbase = perl-locale-textdomain-utf8
 	pkgdesc = Shortcut to use Locale::TextDomain and decoding to UTF8
 	pkgver = 0.020
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Locale-TextDomain-UTF8
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0
 	depends = perl-libintl-perl>=0
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/Locale-TextDomain-UTF8-0.020.tar.gz

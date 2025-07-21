@@ -1,12 +1,12 @@
-# Contributor: Ordoban i<dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-locale-textdomain-utf8'
 pkgver='0.020'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Shortcut to use Locale::TextDomain and decoding to UTF8"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-libintl-perl>=0')
 makedepends=()
