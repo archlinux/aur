@@ -2,16 +2,16 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2025.6.0
+pkgver=2025.7.0
 pkgrel=1
-pkgdesc="Download web video and audio (GNOME)"
+pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
 license=('MIT')
 depends=('aria2'
          'bash'
          'boost-libs'
-         'curl'
+         'cpr'
          'ffmpeg'
          'gcc-libs'
          'glib2'
@@ -21,20 +21,19 @@ depends=('aria2'
          'libadwaita'
          'libsecret'
          'libxml++-5.0'
-         'openssl'
+         'sqlcipher'
          'yt-dlp')
 makedepends=('blueprint-compiler' 'boost' 'cmake' 'libnick' 'yelp-tools')
 provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a2715fc437335fe633fc227fd2ab1da76eae098a7ab9dfc35ef7a53f4d6cf7d3')
+sha256sums=('330fedb2b655422cccf8f6e9463d0535f01300f74bab71326b45834e31cc3de6')
 
 build() {
     cmake -B build -S "${pkgname^}-${pkgver}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUI_PLATFORM=gnome \
         -Wno-dev
     cmake --build build
 }
