@@ -1,0 +1,27 @@
+pkgbase = huion-keydial-mini-driver
+	pkgdesc = User space driver for Huion Keydial Mini bluetooth device
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Triforcey/huion-keydial-mini-uinput
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-evdev
+	depends = python-bleak
+	depends = python-click
+	depends = python-pyyaml
+	depends = python-dbus-next
+	depends = systemd
+	depends = bluez
+	provides = huion-keydial-mini
+	conflicts = huion-keydial-mini
+	options = !strip
+	options = !debug
+	source = https://github.com/Triforcey/huion-keydial-mini-uinput/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a09e32f07d87b7c3dcaad7a6dba0a1f624a4692bfa457b0c089d3e98e41dfb8c
+
+pkgname = huion-keydial-mini-driver
