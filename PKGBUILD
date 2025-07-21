@@ -6,17 +6,12 @@ pkgrel=1
 pkgdesc="DKMS module for controlling System76 Io board"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/system76-io-dkms"
-license=('GPL3')
+license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git')
 source=("git+https://github.com/pop-os/system76-io-dkms.git#tag=$pkgver")
 sha256sums=('b80de8520d0635500eb13b857578b6c0a817e610b14d26d192af936d61dc9286')
 #validpgpkeys=('DA0878FCF806089ED4FDDF58E988B49EE78A7FB1') # Jeremy Soller <jeremy@system76.com>
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/-/+/g'
-}
 
 package() {
   cd "$pkgname"
