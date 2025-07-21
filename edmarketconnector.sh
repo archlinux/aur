@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /usr/lib/edmarketconnector
-python ./EDMarketConnector.py
+cd /usr/lib/edmarketconnector || exit 1
+exec /usr/bin/python ./EDMarketConnector.py "$@"

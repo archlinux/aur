@@ -3,7 +3,7 @@
 
 pkgname=edmarketconnector
 pkgver=5.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools'
 arch=('x86_64')
 url='https://github.com/EDCD/EDMarketConnector'
@@ -15,8 +15,8 @@ source=("https://github.com/EDCD/EDMarketConnector/releases/download/Release%2F$
   "edmarketconnector.sh"
   "edmarketconnector.desktop")
 sha256sums=('085698a6cde2594b7ec6a4888b8405fc65546a66347c6413dfddfd84ad8ac1ce'
-            '7be0528d56edfcb444c4a7ba7a18e85296571e7558906c90fe6520c03206242c'
-            '5f755b86b1b5a3f879be6555cce0c2628006195b95f10fb48df4b1d1d8af6900')
+  '9a78ba9acb74e3d8c5a2a051cb058e113437dd786f6e8ed863398f4176a3b8a7'
+  '5f755b86b1b5a3f879be6555cce0c2628006195b95f10fb48df4b1d1d8af6900')
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/edmarketconnector
