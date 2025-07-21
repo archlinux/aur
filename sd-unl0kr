@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+build() {
+    add_checked_modules '/input/touchscreen/'
+
+    add_systemd_unit 'unl0kr-agent.service'
+    add_systemd_unit 'unl0kr-agent.path'
+
+    add_symlink '/usr/lib/systemd/system/sysinit.target.wants/unl0kr-agent.path' '/usr/lib/systemd/system/unl0kr-agent.path'
+
+    printf '%s\n' \
+        '[Unit]' \
+        'Conflicts=systemd-ask-password-console.path' \
+        'After=systemd-ask-password-console.path' \
+    | add_systemd_drop_in 'unl0kr-agent.path' 'mkinitcpio'
+
+    add_binary '/usr/bin/unl0kr'
+    add_file '/etc/unl0kr.conf'
+
+    add_file '/usr/lib/udev/hwdb.bin'
+    map add_udev_rule \
+        '60-evdev.rules' \
+        '60-input-id.rules' \
+        '70-mouse.rules'
+
+    add_full_dir '/usr/share/libinput'
+    add_full_dir '/usr/share/X11/xkb'
+}
+
+help() {
+    cat <<HELPEOF
+This hook installs a systemd password agent [1] based on unl0kr. This allows to enter passwords for encrypted volumes or tokens with an on-screen keyboard.
+
+[1] https://systemd.io/PASSWORD_AGENTS
+HELPEOF
+}
