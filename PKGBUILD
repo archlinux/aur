@@ -8,9 +8,10 @@ arch=('any')
 url="https://github.com/stabldev/torrra"
 license=('MIT')
 depends=(
-  'python'
-  'python-httpx'
   'libtorrent-rasterbar'
+  'python'
+  'python-diskcache'
+  'python-httpx'
   'python-platformdirs'
   'python-textual'
   'python-tomli-w'
