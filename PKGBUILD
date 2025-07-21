@@ -1,17 +1,12 @@
 # Maintainer:
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
-## links
-# https://github.com/barry-ran/QtScrcpy
-# https://github.com/barry-ran/QtScrcpyCore
-
 ## options
 : ${_install_path:=opt}
-: ${_commit=98d6bd05e3572c86b433bc392ab19cad3720dfaa}
 
 _pkgname="qtscrcpy"
 pkgname="$_pkgname"
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
@@ -23,21 +18,18 @@ depends=(
   'qt6-multimedia'
 )
 makedepends=(
-  'patchelf'
   'cmake'
   'git'
   'ninja'
   'qt6-tools'
 )
 
-conflicts=('qtscrcpy-docs')
-
 backup=("etc/$_pkgname/config.ini")
 
 _pkgsrc="$_pkgname"
 _pkgsrc_core="qtscrcpycore"
 source=(
-  "$_pkgname"::"git+$url.git#commit=$_commit"
+  "$_pkgname"::"git+$url.git#tag=v$pkgver"
   "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
   "path-fix.patch"
 )
@@ -92,7 +84,7 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-exec /$_install_path/qtscrcpy/QtScrcpy "\$@"
+exec /$_install_path/$_pkgname/QtScrcpy "\$@"
 END
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
@@ -108,6 +100,5 @@ Categories=Development;Utility;
 MimeType=application/epub+zip;
 END
 
-  # fix permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
