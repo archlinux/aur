@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dida
 pkgname="${_pkgname}365-bin"
-pkgver=6.0.30
+pkgver=6.0.40
 _electronversion=21
 pkgrel=1
 pkgdesc='Todo list, checklist and task manager app, Linux desktop application.(Prebuilt version.Use system-wide electron)'
@@ -26,11 +26,15 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_arm64/${_pkgname}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_x64/${_pkgname}-${pkgver}-x86_64.rpm")
-sha256sums=('9c12c6e407c89e696fb6278dba78ea6f26e70d285a2e944be75199584402581e'
-            'b4e8b82341c5bf6fe50649b84658fcae8110f70dcd40164352d4154a0236b776'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('196a3923a4738f2d3a3dfd4e7741fc9de6d59e9ca5103bc9caa42aa1c4c0dba2')
-sha256sums_x86_64=('c660425102cdec735441b423853ec3c4df4a42c5aac3f7653d549e9010b91170')
+sha256sums=('f47b9d990cface0f36b30c9a71534308d84518669d17864e4633a4f515d09985'
+            'c626332f19edfccbda060f34a325035c5e320cb59cb5fa00055b21338e84b516'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('46fd91ac1e67181690e28b76a30b4dac937942256cd3f2ead801952b6a1e1b9f')
+sha256sums_x86_64=('40d4889bb99c741ed014e21f0d5b850422b2dcce205c069ab959e834fe2cf7df')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -39,6 +43,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
