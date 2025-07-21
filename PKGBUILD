@@ -3,7 +3,7 @@
 
 pkgname=hmcl-beta-bin
 pkgver=3.6.14.286
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -33,7 +33,6 @@ package() {
   install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
   install -Dm755 "hmcl-launch-script" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # install icons
   local _icon _iconfile
