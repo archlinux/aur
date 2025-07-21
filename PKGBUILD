@@ -1,7 +1,7 @@
 # Maintainer: kamisaki
 # Description: Terminal üzerinden Türkçe anime izleme aracı
 pkgname=anitr-cli
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Terminal üzerinden Türkçe anime izleme aracı"
 arch=('x86_64')
