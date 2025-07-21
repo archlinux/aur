@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hollama-bin
 _pkgname=Hollama
-pkgver=0.35.0
+pkgver=0.35.1
 _electronversion=31
-pkgrel=2
+pkgrel=1
 pkgdesc="A minimal web-UI for talking to Ollama servers.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://hollama.fernando.is/"
@@ -28,7 +28,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/fmaclen/hollama/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('edd5e61745704a76e475186373e8da92e1c909572e8c08a2c3a24436994982c1'
+sha256sums=('d835efdacd62290d1330734664921e0ace9776de1a0333fff09a20e9c94fd718'
             '9e4e274319c0c5716601c69a701adce095b2248d7d314c2b4b1973f0ad4c4a20'
             '03ecf7aebc7db58685a433f3a0a126e1ac5329fb8a72f3af981957363a6362e6'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
@@ -44,13 +44,13 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-bin} %U"
-    _get_electron_version
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
