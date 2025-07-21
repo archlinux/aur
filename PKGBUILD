@@ -7,7 +7,7 @@
 # Contributor: fuckotheclown <fuckotheclown@example.com>
 pkgname=bitchat-tui
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure, anonymous, peer-to-peer Bluetooth chat with terminal UI"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/vaibhav-mattoo/bitchat-tui"
@@ -23,6 +23,8 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+  # Remove the vendored feature to use the system's dbus library
+    sed -i '/\[target.cfg(target_os = "linux")\].dependencies\]/{n;s/, features = \["vendored"\]//}' Cargo.toml
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 

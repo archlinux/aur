@@ -1,7 +1,7 @@
 pkgbase = bitchat-tui
 	pkgdesc = Secure, anonymous, peer-to-peer Bluetooth chat with terminal UI
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vaibhav-mattoo/bitchat-tui
 	arch = x86_64
 	arch = aarch64
