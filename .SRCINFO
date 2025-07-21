@@ -29,13 +29,17 @@ pkgbase = chromium-ffmpeg-codecs
 	conflicts = opera-beta-ffmpeg-codecs
 	source = https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
 	source = export.map
+	source = fetch-soname-by-chromium.sh
+	source = 137.0.7151.138sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/01f23648c6b84de6c0f717fa4e1816f53b9ee72e/chromium/ffmpeg.sigs?format=TEXT
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	source = off-other-ffmpeg.hook
 	source = on-other-ffmpeg.install
 	sha256sums = 733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
 	sha256sums = 6ef627c55222625785c771eace688d1d3c50874bba4ab43150b100767ffa24c6
+	sha256sums = e39c6d127cb7ed768eeebc5c388cf86967cfde855e6d99edc27daba8c412227c
+	sha256sums = e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01
 	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
-	sha256sums = e7efbbd8aeb68de4febce8b483d23229800213dfb94f30adfd3bbfee95baa614
-	sha256sums = e6f292657b075fe76f95f603afff02d0254c2358f0607c1011299b545377cd0e
+	sha256sums = 03263b84dfd79619d22a50538e0dc668a2a919d58471cde4d388f0999c66de22
+	sha256sums = 73c9e3d7685f291a5df13fd28dd04b6ffdc42ea73505cacbe6009c2cb5018be3
 
 pkgname = chromium-ffmpeg-codecs

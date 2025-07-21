@@ -4,6 +4,8 @@ _ffver=7.1.1
 _codec=61
 _format=61
 _util=59
+_chromium=137.0.7151.138
+_chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=${_ffver}.sonames${_codec}.${_format}.${_util}
 pkgrel=1
 _so=libffmpeg.so
@@ -11,15 +13,18 @@ pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('LGPL-2.1-or-later')
-source=(${url}releases/ffmpeg-${_ffver}.tar.xz export.map
+source=(${url}releases/ffmpeg-${_ffver}.tar.xz export.map fetch-soname-by-chromium.sh
+"${_chromium}sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '6ef627c55222625785c771eace688d1d3c50874bba4ab43150b100767ffa24c6'
+            'e39c6d127cb7ed768eeebc5c388cf86967cfde855e6d99edc27daba8c412227c'
+            'e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            'e7efbbd8aeb68de4febce8b483d23229800213dfb94f30adfd3bbfee95baa614'
-            'e6f292657b075fe76f95f603afff02d0254c2358f0607c1011299b545377cd0e')
+            '03263b84dfd79619d22a50538e0dc668a2a919d58471cde4d388f0999c66de22'
+            '73c9e3d7685f291a5df13fd28dd04b6ffdc42ea73505cacbe6009c2cb5018be3')
 depends=(glibc)
 makedepends=(nasm mold # mold: preliminary to remove unused funcs
 diffutils gcc make patch sed) # base-devel
@@ -28,17 +33,14 @@ conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 
 prepare() {
+  base64 -d ${_chromium}sigs.base64 > ffmpeg.sigs
   cd ffmpeg-$_ffver
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
-  # diff libavcodec/opus/dec.c{.bak,} || :
+  #diff libavcodec/opus/dec.c{.bak,} || :
   # Drop this at 7.1.2 # https://lists.ffmpeg.org/pipermail/ffmpeg-devel/2025-May/343409.html
   sed -i.bak  "s/h264_sei.o h2645_sei.o/h264_sei.o h2645_sei.o aom_film_grain.o/" libavcodec/Makefile
-  # soname
-  grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
-  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h
-  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h
 }
 
 build() {
@@ -59,10 +61,11 @@ build() {
     --enable-{pic,asm,hardcoded-tables}
 
   make install
+  _symbols=$(grep -oP '\bav[a-z0-9_]*(?=\s*\()' ../ffmpeg.sigs | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
   gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
+    lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} \
+    -Wl,-u,avformat_version -Wl,-u,avutil_version \
     -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
