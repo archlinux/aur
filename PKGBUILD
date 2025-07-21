@@ -1,5 +1,4 @@
-# Maintainer: 
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=system-monitoring-center
 pkgver=2.26.0
 pkgrel=1
