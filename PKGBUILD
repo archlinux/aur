@@ -5,7 +5,7 @@
 
 pkgname=iso-flag-png
 _pkgname=flags
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='ISO country flags in PNG format'
 arch=('any')
@@ -14,7 +14,7 @@ url="https://github.com/linuxmint/flags"
 _url="http://packages.linuxmint.com/pool/main/f/${_pkgname}"
 license=(GPL3)
 source=("${_url}/${_pkgname}_${pkgver}.tar.xz")
-sha256sums=('071b4a9665c1ce4f741f79c7e3ca4dea52c18864f24b05e7740c8358f34d4d67')
+sha256sums=('594f22f076d8e34ca5730d3a4cb5e76d6dc2828b633cd2ea090fc0e0c5786993')
 
 package() {
   cd "${srcdir}"/"${_pkgname}"
