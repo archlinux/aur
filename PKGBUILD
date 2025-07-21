@@ -1,16 +1,15 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=z-library-electron
-pkgver=2.3.0
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Your gateway to knowledge and culture. use system electron"
 arch=(x86_64 aarch64)
-url="https://singlelogin.re"
+url="https://articles.sk/"
 license=('unknown')
 makedepends=(asar)
-# Chrome/112.0.5615.204 Electron/24.8.8
-depends=(electron bash hicolor-icon-theme)
-source=("https://articles.sk/soft/linux/zlibrary-setup-latest.deb")
-sha256sums=('a2de6205e37ad8a50e61ad792c06549646cfe570fa1715058dd14cb178262c6f')
+depends=(electron34 bash hicolor-icon-theme)
+source=("https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb")
+sha256sums=('3b2c0625d554006c4af82d786a46cbce192dff9404ebe95c84f1ed7a4b0e2cb6')
 options=(!emptydirs)
 
 package() {
@@ -35,7 +34,7 @@ package() {
 	popd
 
 	printf "#!/bin/sh
-exec env ELECTRON_ENABLE_LOGGING=1 electron /opt/Z-Library/resources/app \"\$@\"
+exec env ELECTRON_ENABLE_LOGGING=1 electron34 /opt/Z-Library/resources/app \"\$@\"
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/z-library
 	find $pkgdir -name "*.desktop" -print -exec sed -i "s/^Exec=.*/Exec=z-library/g" {} \;
 }
