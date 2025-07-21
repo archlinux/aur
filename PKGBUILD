@@ -1,20 +1,20 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-catalyst-plugin-session'
-pkgver='0.43'
+pkgver='0.44'
 pkgrel='1'
 pkgdesc="Generic Session plugin - ties together server side storage and client side state required to maintain session data."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
-depends=('perl-catalyst-runtime>=5.71001' 'perl-html-parser>=0' 'perl-mro-compat>=0' 'perl-moose>=0.76' 'perl-moosex-emulate-class-accessor-fast>=0.00801' 'perl-object-signature>=0' 'perl-namespace-clean>=0.10' 'perl>=5.8.0')
+depends=('perl-catalyst-runtime>=5.71001' 'perl-crypt-sysrandom>=0.007' 'perl-html-parser>=0' 'perl-mro-compat>=0' 'perl-moose>=0.76' 'perl-moosex-emulate-class-accessor-fast>=0.00801' 'perl-object-signature>=0' 'perl-plack>=0' 'perl-namespace-clean>=0.10' 'perl>=5.008')
 makedepends=()
-checkdepends=('perl-test-deep>=0' 'perl-test-exception>=0' 'perl-test-www-mechanize-psgi>=0')
+checkdepends=('perl-test-deep>=0' 'perl-test-needs>=0')
 url='https://metacpan.org/release/Catalyst-Plugin-Session'
-source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Plugin-Session-$pkgver.tar.gz")
-md5sums=('18fc3e30afc60cfbadc2220842b08f65')
-sha512sums=('5e41cab3c37d8dee7aceb386f0b9e8d0f01771d1d4d26403acdf2a4ea5966af81406afbf1032b62178613e6186228d8f8f3b7accd03d9b9db709d6727ac76be1')
+source=("http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/Catalyst-Plugin-Session-$pkgver.tar.gz")
+md5sums=('32984ac460ca44ad2f566205010c249a')
+sha512sums=('c45cda4489542c249feb5eadebec89db05445201141079f4813d2b29719acb41232a3abc0efc72ea92be32af36841291ae53699f8a6212d252e2df03a2cce202')
 _distdir="Catalyst-Plugin-Session-$pkgver"
 
 build() {
