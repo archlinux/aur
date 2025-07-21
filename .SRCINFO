@@ -1,0 +1,14 @@
+pkgbase = perl-crypt-sysrandom
+	pkgdesc = Perl interface to system randomness
+	pkgver = 0.007
+	pkgrel = 1
+	url = https://metacpan.org/release/Crypt-SysRandom
+	arch = any
+	license = Artistic-1.0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Crypt-SysRandom-0.007.tar.gz
+	md5sums = b9c12598fb4cf375a06d190380873d20
+	sha512sums = 75d5d89e8d883560f24f4f617afbb57f8953c6f7b96c4934ff8a7d2251ffddffe372ee8b5411011cb4eae0e7d19d4a44dd8414146c50d6bdc9b489ba8a4a23a6
+
+pkgname = perl-crypt-sysrandom
