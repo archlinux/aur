@@ -1,6 +1,6 @@
 pkgbase = chattr2
 	pkgdesc = Simple secure chat between two PCs using TLS and bash
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
