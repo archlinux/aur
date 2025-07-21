@@ -1,3 +1,4 @@
+
 # This is an example PKGBUILD file. Use this as a start to creating your own,
 # and remove these comments. For more information, see 'man PKGBUILD'.
 # NOTE: Please fill out the license field for your package! If it is unknown,
@@ -7,13 +8,13 @@
 # Contributor: fuckotheclown <fuckotheclown@example.com>
 pkgname=bitchat-tui
 pkgver=0.1.0
-pkgrel=3 # Incremented pkgrel due to PKGBUILD correction
+pkgrel=4 # Incremented pkgrel due to PKGBUILD correction
 pkgdesc="Secure, anonymous, peer-to-peer Bluetooth chat with terminal UI"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/vaibhav-mattoo/$pkgname"
 license=('MIT')
-depends=('dbus' 'bluez' 'pkgconf')
-makedepends=('rust' 'cargo' 'git')
+depends=('dbus' 'bluez')
+makedepends=('rust' 'cargo' 'git' 'pkgconf')
 provides=('bitchat-tui')
 conflicts=('bitchat-tui')
 # Corrected source array to have only one entry
@@ -24,8 +25,8 @@ validpgpkeys=()
 prepare() {
   # The cd target must match the directory created by the tarball
   cd "$pkgname-$pkgver"
-  # Corrected sed command: removed the leading comma from the pattern
-  sed -i '/\[target.cfg(target_os = "linux")\].dependencies\]/{n;s/features = \["vendored"\]//}' Cargo.toml
+  # Corrected sed command to properly remove vendored feature
+  sed -i '/\[target\.\'\''cfg(target_os = "linux")\'\''\.dependencies\]/{n;s/, features = \[ "vendored" \]//}' Cargo.toml
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
