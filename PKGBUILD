@@ -1,19 +1,19 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-critic-toomuchcode'
-pkgver='0.18'
+pkgver='0.19'
 pkgrel='1'
-pkgdesc="Perl-critic find unused imports"
+pkgdesc="perlcritic add-ons that generally check for dead code."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
-depends=('perl>=5.008')
+depends=('perl-ppix-quotelike>=0' 'perl-ppix-utils>=0.002' 'perl-critic>=0')
 makedepends=()
-url='https://metacpan.org/dist/Perl-Critic-TooMuchCode'
-source=("https://cpan.metacpan.org/authors/id/G/GU/GUGOD/Perl-Critic-TooMuchCode-$pkgver.tar.gz")
-md5sums=('09107814791c8619ec7e36cd27b9fa93')
-sha512sums=('0cab4af37272f68f35c22d200711afc23e67508f062347a0f94abf6010f885bed9bae344dc2fdbcaae4e0defcde91cdefabefe57f0c0fb140eeb3c22ac7e865b')
+url='https://metacpan.org/release/Perl-Critic-TooMuchCode'
+source=("http://search.cpan.org/CPAN/authors/id/G/GU/GUGOD/Perl-Critic-TooMuchCode-$pkgver.tar.gz")
+md5sums=('fc003b6181f42ed9d4427e2a992d6496')
+sha512sums=('9f2dcd52c6bdf5d6aafd1910f9e947baecdbbcbe895022c33422d283be13a4e90482f1df7e36da334e54caa88f72713455842c18d52bdd81f51be6fa2482a40d')
 _distdir="Perl-Critic-TooMuchCode-$pkgver"
 
 build() {
@@ -24,19 +24,19 @@ build() {
          MODULEBUILDRC=/dev/null
 
   cd "$srcdir/$_distdir"
-  /usr/bin/perl Build.PL
-  ./Build
+   /usr/bin/perl Build.PL
+   /usr/bin/perl Build
 }
 
 check() {
   cd "$srcdir/$_distdir"
   export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
-  ./Build test
+  /usr/bin/perl Build test
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  ./Build install
+  /usr/bin/perl Build install
 
   find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

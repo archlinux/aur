@@ -1,15 +1,16 @@
 pkgbase = perl-critic-toomuchcode
-	pkgdesc = Perl-critic find unused imports
-	pkgver = 0.18
+	pkgdesc = perlcritic add-ons that generally check for dead code.
+	pkgver = 0.19
 	pkgrel = 1
-	url = https://metacpan.org/dist/Perl-Critic-TooMuchCode
+	url = https://metacpan.org/release/Perl-Critic-TooMuchCode
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl>=5.008
+	license = Artistic-1.0
+	depends = perl-ppix-quotelike>=0
+	depends = perl-ppix-utils>=0.002
+	depends = perl-critic>=0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/G/GU/GUGOD/Perl-Critic-TooMuchCode-0.18.tar.gz
-	md5sums = 09107814791c8619ec7e36cd27b9fa93
-	sha512sums = 0cab4af37272f68f35c22d200711afc23e67508f062347a0f94abf6010f885bed9bae344dc2fdbcaae4e0defcde91cdefabefe57f0c0fb140eeb3c22ac7e865b
+	source = http://search.cpan.org/CPAN/authors/id/G/GU/GUGOD/Perl-Critic-TooMuchCode-0.19.tar.gz
+	md5sums = fc003b6181f42ed9d4427e2a992d6496
+	sha512sums = 9f2dcd52c6bdf5d6aafd1910f9e947baecdbbcbe895022c33422d283be13a4e90482f1df7e36da334e54caa88f72713455842c18d52bdd81f51be6fa2482a40d
 
 pkgname = perl-critic-toomuchcode
