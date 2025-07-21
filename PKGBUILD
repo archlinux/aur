@@ -1,5 +1,5 @@
 pkgname=chattr
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Simple secure chat between two PCs using TLS and bash"
 arch=('x86_64')
