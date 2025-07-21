@@ -14,9 +14,10 @@ depends=('gtk3' 'cairo' 'libxfce4util' 'xfce4-panel' 'multiload-ng-common')
 conflicts=('xfce4-multiload-ng-plugin-gtk2' 'xfce4-multiload-ng-plugin-gtk2-git' 'xfce4-multiload-ng-plugin-gtk3' 'xfce4-multiload-ng-plugin-gtk3-git')
 replaces=('xfce4-multiload-ng-plugin-gtk2' 'xfce4-multiload-ng-plugin-gtk2-git' 'xfce4-multiload-ng-plugin-gtk3' 'xfce4-multiload-ng-plugin-gtk3-git')
 
-source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz" "build-fix.patch")
+source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz" "build-fix.patch" "build-fix2.patch")
 md5sums=('bdb9344d696324bd4db04a8bce6d7ec0'
-         '898eb6c7df5df2ef641cd83836627559')
+         '898eb6c7df5df2ef641cd83836627559'
+         'c384174d49f3ceff7975f1a87cb74c1f')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
@@ -25,6 +26,7 @@ license=('GPL2')
 build() {
     cd "multiload-ng-$pkgver"
     patch -p1 -i $srcdir/build-fix.patch
+    patch -p1 -i $srcdir/build-fix2.patch
     ./autogen.sh
     ./configure --prefix=/usr --with-gtk=3.0 --disable-deprecations --without-awn --without-indicator --without-lxpanel --without-mate --without-standalone --without-systray --with-xfce4
     make

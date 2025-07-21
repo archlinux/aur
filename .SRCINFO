@@ -22,8 +22,9 @@ pkgbase = xfce4-multiload-ng-plugin
 	replaces = xfce4-multiload-ng-plugin-gtk3-git
 	source = https://github.com/udda/multiload-ng/archive/v1.5.2.tar.gz
 	source = build-fix.patch
+	source = build-fix2.patch
 	md5sums = bdb9344d696324bd4db04a8bce6d7ec0
 	md5sums = 898eb6c7df5df2ef641cd83836627559
+	md5sums = c384174d49f3ceff7975f1a87cb74c1f
 
 pkgname = xfce4-multiload-ng-plugin
-
