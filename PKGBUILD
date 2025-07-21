@@ -1,9 +1,10 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: envolution
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fbthrift
-pkgver=2025.07.14.00
+pkgver=2025.07.21.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -64,8 +65,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "add-missing-cpp2-2listfile.patch"
 )
-sha256sums=('9c2df5c98d73eccbda695983d9961578bb21706338f4ffe7dfca562d490e780b'
-            '3fb17037822a8f2bc860e8e091d394f3ee0ad0f9b38fbf51487a647fbf556a2d')
+sha256sums=('e5b48881c376829e691ef5e866790cf1875d042a2a8cb81089b7e112c19056c0'
+  '3fb17037822a8f2bc860e8e091d394f3ee0ad0f9b38fbf51487a647fbf556a2d')
 
 prepare() {
   cd $pkgname-$pkgver
