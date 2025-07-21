@@ -17,8 +17,9 @@ pkgbase = lxpanel-multiload-ng-plugin-gtk3
 	replaces = lxpanel-multiload-ng-applet-gtk3
 	source = https://github.com/udda/multiload-ng/archive/v1.5.2.tar.gz
 	source = build-fix.patch
+	source = build-fix2.patch
 	md5sums = bdb9344d696324bd4db04a8bce6d7ec0
 	md5sums = b474387e4532bdd6a639f721a51d2587
+	md5sums = c384174d49f3ceff7975f1a87cb74c1f
 
 pkgname = lxpanel-multiload-ng-plugin-gtk3
-

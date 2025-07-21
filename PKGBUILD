@@ -15,9 +15,10 @@ conflicts=('lxpanel-multiload-ng-plugin-gtk2' 'lxpanel-multiload-ng-plugin-gtk2-
 
 replaces=('lxpanel-multiload-ng-applet-gtk3')
 
-source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz" "build-fix.patch")
+source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz" "build-fix.patch" "build-fix2.patch")
 md5sums=('bdb9344d696324bd4db04a8bce6d7ec0'
-'b474387e4532bdd6a639f721a51d2587')
+         'b474387e4532bdd6a639f721a51d2587'
+         'c384174d49f3ceff7975f1a87cb74c1f')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
@@ -26,6 +27,7 @@ license=('GPL2')
 build() {
     cd "multiload-ng-$pkgver"
     patch -p1 -i $srcdir/build-fix.patch
+    patch -p1 -i $srcdir/build-fix2.patch
     ./autogen.sh
     ./configure --prefix=/usr --with-gtk=3.0 --disable-deprecations --without-awn --without-indicator --with-lxpanel --without-mate --without-standalone --without-systray --without-xfce4
     make
