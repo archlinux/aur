@@ -11,7 +11,7 @@ _enginever=dd93de6fb1776398bf586cbd477deade1391c7e4
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(echo "$CARCH" | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
-pkgrel=1
+pkgrel=3
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 _pkgdesc="Flutter SDK component"
 arch=("x86_64" "aarch64")
@@ -142,24 +142,14 @@ build() {
 
 _package() {
   pkgdesc="${_pkgdesc} - full installation of development tool and runtime"
-  depends=("${pkgbase}-devel=${pkgver}" "${pkgbase}-target-linux=${pkgver}" "${pkgbase}-target-android=${pkgver}" "${pkgbase}-target-web=${pkgver}" "${pkgbase}-intellij-patch=${pkgver}")
+  depends=(
+	  "${pkgbase}-devel" "${pkgbase}-target-linux" "${pkgbase}-target-android" "${pkgbase}-target-web" "${pkgbase}-intellij-patch")
   conflicts=("${pkgbase}")
 }
 
 _package-common() {
   pkgdesc="${_pkgdesc} - common SDK files and pub cache"
   install="${_group}-common.install"
-  conflicts=(
-        "${_group}<${pkgver}"
-        "${_group}-engine-common<${pkgver}"
-        "${_group}-intellij-patch<${pkgver}"
-        "${_group}-gradle<${pkgver}"
-        "${_group}-engine-android<${pkgver}"
-        "${_group}-engine-linux<${pkgver}"
-        "${_group}-engine-web<${pkgver}"
-        "${_group}-tool<${pkgver}"
-        "${_group}-devel<${pkgver}"
-  )
 
   install -Dm644 "${srcdir}/${_group}/LICENSE" "${pkgdir}/usr/share/licenses/${_group}/LICENSE"
 
@@ -186,10 +176,9 @@ _package-common() {
 _package-target-linux() {
   pkgdesc="${_pkgdesc} - linux target files"
   depends=(
-	"${_group}-tool=${pkgver}"
-	"${_group}-engine-linux=${pkgver}"
+	"${_group}-tool"
+	"${_group}-engine-linux"
 	"dart>=${_dartver[0]}"
-	# "dart<${_dartver[1]}"
 	"clang"
 	"cmake"
 	"ninja"
@@ -208,8 +197,8 @@ _package-target-linux() {
 _package-target-web() {
   pkgdesc="${_pkgdesc} - web target files"
   depends=(
-	"${_group}-tool=${pkgver}"
-	"${_group}-engine-web=${pkgver}"
+	"${_group}-tool"
+	"${_group}-engine-web"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/packages/flutter_tools/lib/src/web"
@@ -220,9 +209,9 @@ _package-target-web() {
 _package-target-android() {
   pkgdesc="${_pkgdesc} - android target files"
   depends=(
-	"${_group}-tool=${pkgver}"
-	"${_group}-engine-android=${pkgver}"
-	"${_group}-gradle=${pkgver}"
+	"${_group}-tool"
+	"${_group}-engine-android"
+	"${_group}-gradle"
   )
   optdepends=("android-sdk: develop for Android devices"
 	    "java-environment: develop for Android devices"
@@ -242,11 +231,10 @@ _package-target-android() {
 _package-gradle() {
   pkgdesc="${_pkgdesc} - gradle wrapper"
   provides=(
-	"${_group}-gradle=${pkgver}"
+	"${_group}-gradle"
   )
   conflicts=(
 	"${_group}-gradle"
-	"${_group}-target-android<${pkgver}"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
@@ -257,10 +245,9 @@ _package-gradle() {
 _package-tool() {
   pkgdesc="${_pkgdesc} - CLI tool (for packaging only)"
   depends=(
-	"${_group}-common=${pkgver}"
+	"${_group}-common"
 	# TODO: completely compile Flutter tool standalone and drop dependency
 	"dart>=${_dartver[0]}"
-	# "dart<${_dartver[1]}"
 	# commands first
 	"bash"
 	"curl"
@@ -273,7 +260,6 @@ _package-tool() {
 	"zip"
 	"glu" # libGLU.so.1 required for flutter test
   )
-  conflicts=("${_group}-devel<${pkgver}" "${_group}-target-android<${pkgver}" "${_group}-target-linux<${pkgver}" "${_group}-target-web<${pkgver}")
 
 
   install -dm755 "${pkgdir}/usr/lib/${_group}"
@@ -299,12 +285,10 @@ _package-tool() {
 _package-devel() {
   pkgdesc="${_pkgdesc} - CLI tool (for application development)"
   depends=(
-	"${_group}-tool=${pkgver}"
+	"${_group}-tool"
 	"dart>=${_dartver[0]}"
-	# "dart<${_dartver[1]}"
   )
   replaces=("${_group}-tool-developer")
-  conflicts=("${_group}<${pkgver}")
 
   install -dm755 "${pkgdir}/usr/lib/${_group}"
   install -dm755 "${pkgdir}/usr/lib/${_group}/packages/flutter_tools"
@@ -318,7 +302,7 @@ _package-devel() {
 
 _package-intellij-patch() {
   pkgdesc="${_pkgdesc} - IntelliJ Flutter plugin hotfix"
-  depends=("${_group}-common=${pkgver}")
+  depends=("${_group}-common")
   optdepends=(
     "android-studio"
     "intellij-idea-community-edition"
