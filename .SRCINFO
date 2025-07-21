@@ -1,11 +1,14 @@
 pkgbase = eigenwallet-developertools-bin
 	pkgdesc = λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps
 	pkgver = 3.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://eigenwallet.org/
 	arch = x86_64
 	license = GPL-3.0
 	depends = glib2
+	optdepends = monero: monero node for abs
+	optdepends = electrs: bitcoin indexer for abs
+	optdepends = bitcoin-daemon: bitcoin node for electrs for abs
 	provides = eigenwallet-developertools
 	provides = asb
 	provides = swap

@@ -3,7 +3,7 @@
 pkgname=eigenwallet-developertools-bin
 _pkgver=3.0.0
 pkgver=${_pkgver/-/.}
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps"
 arch=('x86_64')
@@ -11,6 +11,11 @@ url="https://eigenwallet.org/"
 license=('GPL-3.0')
 groups=()
 depends=(glib2)
+optdepends=(
+	'monero: monero node for abs'
+	'electrs: bitcoin indexer for abs'
+	'bitcoin-daemon: bitcoin node for electrs for abs'
+)
 provides=(eigenwallet-developertools asb swap)
 backup=()
 options=()
