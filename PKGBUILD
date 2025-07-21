@@ -1,7 +1,7 @@
 pkgname=chattr2
-pkgver=2.0
+pkgver=2.1
 pkgrel=2
-pkgdesc="Simple secure chat between two PCs using TLS and bash"
+pkgdesc="A simple package that allows you to send messages to computers or modify files on computers remotely."
 arch=('x86_64')
 license=('MIT')
 depends=('openssl' 'bash' 'coreutils')

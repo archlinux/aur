@@ -1,6 +1,6 @@
 pkgbase = chattr2
-	pkgdesc = Simple secure chat between two PCs using TLS and bash
-	pkgver = 2.0
+	pkgdesc = A simple package that allows you to send messages to computers or modify files on computers remotely.
+	pkgver = 2.1
 	pkgrel = 2
 	arch = x86_64
 	license = MIT
