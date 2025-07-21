@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=lobe-chat
-pkgver=1.99.6
+pkgver=1.101.2
 pkgrel=1
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
@@ -19,9 +19,9 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
   "${pkgname}.service"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles")
-sha256sums=('293a5595292611e19c7e305db3cd15fbbd5f624fcfc77bc36012a5e98e5791b5'
+sha256sums=('9b6b57d30d6aa9ac4467afab73a1f2cbb0088dcb0ad97d41557137e131e32e72'
             '98d24ac4674757eb1e0b2e4be84bb871cbb0361752608090b49196aa044e51c1'
-            '43143b06b5418e718fafa404999f6f1266a8f11c7427d93b81a23a2a0b348595'
+            '52b4cf31dff5e5e505d0a34ba8f3eec2837023ee03552d634a1e857e1a1ed983'
             '4205728d7528ccc94f2a9eb25655cf4bed59502be3726f17da814355c540f528'
             'b370a660e91eacd7fee44691ff8de4446f4c8f36634a2d96a2f982b5fea9a0a6'
             '2e5323c4dc10d815cf3ffcee0fb9fa33dba5c95b2c28055e4c5b4f551bdc5049')
@@ -40,6 +40,7 @@ build() {
   export NODE_OPTIONS='--max-old-space-size=8192'
   export PUPPETEER_SKIP_DOWNLOAD="true"
   export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  export APP_URL="http://localhost"
 
   # build web
   cd "${pkgname}-${pkgver}"
