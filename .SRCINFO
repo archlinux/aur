@@ -1,0 +1,17 @@
+pkgbase = python-yamlcore
+	pkgdesc = YAML 1.2 Core Schema Support for PyYAML
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://pypi.org/project/yamlcore/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-yaml
+	noextract = yamlcore-0.0.4-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/y/yamlcore/yamlcore-0.0.4-py3-none-any.whl
+	sha256sums = SKIP
+
+pkgname = python-yamlcore
