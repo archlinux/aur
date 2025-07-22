@@ -3,27 +3,23 @@
 
 pkgname=plank-reloaded
 pkgver=0.11.146
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of the original Plank project, providing a simple dock for X11 desktop environments'
 arch=('x86_64')
 url='https://github.com/zquestz/plank-reloaded'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus'
-         'gtk3' 'libgee' 'libwnck3' 'libx11' 'libxfixes' 'libxi' 'pango')
+         'gtk3' 'libgee' 'libwnck3' 'libx11' 'libxfixes' 'libxi' 'pango'
+         'libdbusmenu-gtk3' 'libdbusmenu-glib')
 makedepends=('gnome-common' 'git' 'intltool' 'vala' 'meson' 'ninja')
 provides=('plank')
 conflicts=('plank')
 source=("https://github.com/zquestz/plank-reloaded/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('23af0c2754c5d5f45bb21ca99079f1062807d380a2f75ee24eb21f216ca067d8')
 
-prepare() {
-  cd plank-reloaded-${pkgver}
-  meson setup --prefix=/usr build
-  meson configure build -D enable-apport=false -D production-release=true
-}
-
 build() {
   cd plank-reloaded-${pkgver}
+  meson setup --prefix=/usr -D enable-apport=false -D production-release=true build
   meson compile -C build
 }
 
