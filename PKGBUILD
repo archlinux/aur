@@ -2,16 +2,16 @@
 
 pkgbase=pacredir-git
 pkgname=(pacredir-git pacredir-avahi-git)
-pkgver=0.7.2.r0.g2607d85
+pkgver=0.7.3.r0.gd4f4b48
 pkgrel=1
 pkgdesc='redirect pacman requests, assisted by mDNS service discovery - git checkout'
 arch=('x86_64')
 url='https://github.com/eworm-de/pacredir'
 license=('GPL-3.0-or-later')
-makedepends=('git'
-             'coreutils'
+makedepends=('coreutils'
              'curl'
              'discount'
+             'git'
              'iniparser'
              'libmicrohttpd'
              'librsvg'
@@ -40,7 +40,7 @@ pkgver() {
 build() {
   cd pacredir/
 
-  make
+  make VERSION="${pkgver}-${pkgrel}"
 }
 
 package_pacredir-git() {
