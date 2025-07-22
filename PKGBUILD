@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.197.0
+pkgver=3.198.5
 pkgrel=1
 _electronversion=35
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
@@ -23,7 +23,7 @@ makedepends=(
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('bccd3b98003d1fc0e15a714912eb67c4e535796b44e9ca7c8cb412581137d54f'
+sha256sums=('9de0b04d364ad0e3a086c52178c3416fe55d91962bf64b6bcd73ec8abbba758a'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '3ef9a5d2b4f2ba2e5b210a492c7398073f3cdd472d989e5ce2d4c6105d905666')
 
@@ -35,9 +35,9 @@ prepare() {
 build() {
   cd "app--$pkgname-$pkgver"
   export YARN_CACHE_FOLDER=.yarn/cache
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   yarn config set --home enableTelemetry 0
   yarn install --immutable
   yarn workspace @standardnotes/desktop rebuild:home-server
