@@ -8,7 +8,7 @@ arch=(x86_64 i686)
 url="https://doom2d.org/"
 license=('GPL3')
 group=(doom2df-full)
-depends=(doom2df-res sdl2 sdl2_mixer enet libgl openal xmp libxmp libvorbis opus opusfile libgme timidity miniupnpc)
+depends=(doom2df-res sdl2 sdl2_mixer enet libgl openal xmp libxmp libvorbis opus opusfile libgme timidity fluidsynth soundfont-fluid )
 makedepends=(git fpc)
 optdepends=('doom2df-editor: map editor for game')
 provides=(doom2df)
@@ -73,7 +73,7 @@ build() {
   cd "src/game"
 
   # First - main graphical binary with openal sound system
-  fpc -g -gl -FU../../tmp -dUSE_SDL2 -dUSE_OPENGL -dUSE_OPENAL -dUSE_SDL2 -dUSE_VORBIS -dUSE_MODPLUG -dUSE_XMP -dUSE_MPG123 -dUSE_OPUS -dUSE_GME -dUSE_MINIUPNPC Doom2DF.lpr
+  fpc -g -gl -FU../../tmp -dUSE_SDL2 -dUSE_OPENGL -dUSE_OPENAL -dUSE_SDL2 -dUSE_VORBIS -dUSE_FLUIDSYNTH -dUSE_MODPLUG -dUSE_XMP -dUSE_MPG123 -dUSE_OPUS -dUSE_GME Doom2DF.lpr
 
   # If you want to build with a sdl_mixer, comment out the line above and uncomment the bottom line.
   #fpc -g -gl -FU../../tmp -dUSE_SDL2 -dUSE_OPENGL -dUSE_SDLMIXER -dUSE_MINIUPNPC Doom2DF.lpr
@@ -82,7 +82,7 @@ build() {
   rm -r ../../tmp && mkdir ../../tmp
 
   # Second - headless binary (for dedicated server)
-  fpc -g -gl -FU../../tmp -dUSE_SYSSTUB -dUSE_SDLMIXER -dUSE_MINIUPNPC -dHEADLESS -oDoom2DF_H Doom2DF.lpr
+  fpc -g -gl -FU../../tmp -dUSE_SYSSTUB -dDISABLE_SOUND -dHEADLESS -oDoom2DF_H Doom2DF.lpr
 
   cp Doom2DF ../../../
   cp Doom2DF_H ../../../
