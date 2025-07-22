@@ -2,7 +2,7 @@
 
 pkgname='python-dirhash'
 _module=${pkgname#python-}
-pkgver='0.4.1'
+pkgver='0.5.0'
 pkgrel=1
 pkgdesc="Python module and CLI for hashing of file system directories."
 url="https://github.com/andhus/dirhash-python"
@@ -18,7 +18,7 @@ makedepends=(
 license=('MIT')
 arch=('any')
 source=("${url}/releases/download/v${pkgver}/${_module}-${pkgver}.tar.gz")
-b2sums=('221109970c686bb1af9048028d592c30238a92fec7fce4cadad3dab94f03db262d90d682a33222b32f299e553a2f70eb6ff5f5bf0ba37e96e2d08468ed317ab8')
+b2sums=('3c2e8dc652d212ca267fc7843e19ced4383ca60f8abc7a7bc36e210d821ea425b34dc3aa2b97bfe3e46a9de8448194818c658653c66dbad99a3bef72d8912e9b')
 
 build() {
 	cd "${srcdir}/${_module}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = python-dirhash
 	pkgdesc = Python module and CLI for hashing of file system directories.
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/andhus/dirhash-python
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-dirhash
 	makedepends = python-wheel
 	makedepends = python-versioneer
 	depends = python>=3.12
-	source = https://github.com/andhus/dirhash-python/releases/download/v0.4.1/dirhash-0.4.1.tar.gz
-	b2sums = 221109970c686bb1af9048028d592c30238a92fec7fce4cadad3dab94f03db262d90d682a33222b32f299e553a2f70eb6ff5f5bf0ba37e96e2d08468ed317ab8
+	source = https://github.com/andhus/dirhash-python/releases/download/v0.5.0/dirhash-0.5.0.tar.gz
+	b2sums = 3c2e8dc652d212ca267fc7843e19ced4383ca60f8abc7a7bc36e210d821ea425b34dc3aa2b97bfe3e46a9de8448194818c658653c66dbad99a3bef72d8912e9b
 
 pkgname = python-dirhash
