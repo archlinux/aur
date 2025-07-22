@@ -1,12 +1,12 @@
 pkgbase = python-jaxlib
 	pkgdesc = XLA library for JAX
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jax-ml/jax/
 	arch = x86_64
 	groups = jax
 	license = Apache-2.0
-	makedepends = clang
+	makedepends = gcc14
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

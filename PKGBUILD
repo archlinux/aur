@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/jax-ml/jax/'
@@ -13,7 +13,7 @@ depends=(
     'python-numpy'
     'python-scipy'
 )
-makedepends=('clang' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('gcc14' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 _bazel_ver=7.4.1
 source=("jax-${pkgver}.tar.gz::$url/archive/refs/tags/jax-v${pkgver}.tar.gz"
         "bazel-${_bazel_ver}-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/${_bazel_ver}/bazel-${_bazel_ver}-linux-x86_64")
@@ -36,8 +36,9 @@ build() {
         --bazel_path="$srcdir/bazel-${_bazel_ver}-linux-x86_64" \
         --bazel_startup_options="--output_user_root=$srcdir/bazel"\
         --bazel_options='--action_env=JAXLIB_RELEASE' \
-        --use_clang --clang_path='/usr/bin/clang' \
         --target_cpu_features=release \
+        --use_clang=false \
+        --gcc_path=/usr/bin/gcc-14 \
         --verbose
 }
 
