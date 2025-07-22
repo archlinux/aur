@@ -2,7 +2,7 @@
 
 pkgname=wofi-vim
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="wofi menu to select Vim commands from cheat sheet"
 arch=('any')
 url="https://github.com/timasoft/wofi-vim.git"

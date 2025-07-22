@@ -1,7 +1,7 @@
 pkgbase = wofi-vim
 	pkgdesc = wofi menu to select Vim commands from cheat sheet
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/timasoft/wofi-vim.git
 	arch = any
 	license = MIT
