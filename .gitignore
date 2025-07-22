@@ -1,4 +1,4 @@
-pkg/
-src/
-luxtorpeda/
-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
