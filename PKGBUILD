@@ -3,8 +3,8 @@
 _pkgname="libadapta"
 pkgbase=libadapta-git
 pkgname=(libadapta-git libadapta-docs-git libadapta-demos-git)
-pkgver=r4088.5f2193a
-pkgrel=2
+pkgver=r4232.ac83b1b
+pkgrel=1
 pkgdesc="libAdapta is libAdwaita with theme support and a few extra."
 url="https://github.com/xapp-project/libadapta"
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
@@ -15,7 +15,7 @@ depends=(
   glib2
   glibc
   graphene
-  gtk4-git
+  gtk4
   pango
 )
 makedepends=(
@@ -79,7 +79,7 @@ package_libadapta-git() {
 
   cd "$pkgdir"
 
-  _pick demo usr/bin/Adapta-1-demo
+  _pick demo usr/bin/adapta-1-demo
   _pick demo usr/share/applications/org.gnome.Adapta1.Demo.desktop
   _pick demo usr/share/icons/hicolor/*/apps/org.gnome.Adapta1.Demo[-.]*
   _pick demo usr/share/metainfo/org.gnome.Adapta1.Demo.metainfo.xml
