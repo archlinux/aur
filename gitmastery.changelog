@@ -58,3 +58,6 @@ Show list of exercise progress regardless
 Fix clone on first setup
 
 
+Add logging for exceptions
+
+
