@@ -5,7 +5,7 @@
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
 
 pkgname='goldendict'
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=4
 epoch=1
 pkgdesc='Feature-rich dictionary lookup program supporting multiple dictionary formats'
@@ -38,7 +38,6 @@ depends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-    "0001-add-support-for-ffmpeg-7.0.patch"
 )
 sha256sums=('f9f8e068ece74cc026fdc5f56615246228b4e70c97c7197ccd4c14ceae412c7c'
             'ff2c5639a10c93b010f8ba4fb5489faab1f14977dbf7dec59c698254ccb62947')
@@ -46,7 +45,6 @@ sha256sums=('f9f8e068ece74cc026fdc5f56615246228b4e70c97c7197ccd4c14ceae412c7c'
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input=../0001-add-support-for-ffmpeg-7.0.patch
     echo "Fixing QMake in goldendict.pro file..."
     echo "QMAKE_CXXFLAGS_RELEASE = ${CFLAGS}" >> goldendict.pro
     echo "QMAKE_CFLAGS_RELEASE = ${CXXFLAGS}" >> goldendict.pro
