@@ -1,0 +1,4 @@
+[libremidi]
+source = "git"
+git = "https://github.com/celtera/libremidi.git"
+prefix = "v"

@@ -1,0 +1,23 @@
+pkgbase = libremidi
+	pkgdesc = Modern C++ MIDI 1/2 real-time and file I/O library
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/celtera/libremidi
+	arch = x86_64
+	license = MIT
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = alsa-lib
+	makedepends = pipewire
+	makedepends = boost
+	makedepends = readerwriterqueue
+	depends = glibc
+	depends = gcc-libs
+	depends = jack2
+	source = libremidi::git+https://github.com/celtera/libremidi#tag=v4.5.0
+	sha512sums = 06e919e51a1e3a57b2cc363fd8684867e3765d955ef753fe61694d797792ba1b0433245a307c9c4b52a1055b9dcb47966ccc13fe219b0a80b3bab92bfd18ccbf
+	b2sums = 711c0cf59df996968a116a26e5b1f9c478b1219262d30184d6039ec697a3cb2b23ca79d6ece8da1f8db040aa4e5d4fc7d5999834234e3e6a4100642bfef642d4
+
+pkgname = libremidi
