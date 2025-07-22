@@ -1,0 +1,228 @@
+diff --git a/Makefile.in b/Makefile.in
+index 9c380544..ef79cac6 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -12,6 +12,7 @@ sysconfdir = @sysconfdir@
+ mandir = @mandir@
+ datarootdir = @datarootdir@
+ localstatedir = @localstatedir@
++runstatedir = @runstatedir@
+ 
+ CC = @CC@
+ CFLAGS = @CFLAGS@ @CPPFLAGS@
+@@ -64,7 +65,8 @@ $(RECURSIVE_TARGETS):
+ 
+ 
+ config-php:
+-	sed -e "s%SYSCONFDIR%$(sysconfdir)%g" -e "s%SBINDIR%$(sbindir)%g" config.php.in > webui/config.php
++	sed -e "s%SYSCONFDIR%$(sysconfdir)%g" -e "s%SBINDIR%$(sbindir)%g" -e "s%LOCALSTATEDIR%$(localstatedir)%g" \
++		config.php.in > webui/config.php
+ 	sed -e "s%BINDIR%$(bindir)%g" -i webui/config.php
+ 
+ 
+@@ -85,7 +87,7 @@ installdirs: mkinstalldirs
+ 		$(DESTDIR)$(localstatedir)/piler/export \
+ 		$(DESTDIR)$(localstatedir)/piler/manticore
+ 
+-	$(INSTALL) -d -m 0755 -o $(RUNNING_USER) -g $(RUNNING_GROUP) $(DESTDIR)$(localstatedir)/run/piler
++	$(INSTALL) -d -m 0755 -o $(RUNNING_USER) -g $(RUNNING_GROUP) $(DESTDIR)$(runstatedir)/piler
+ 	$(INSTALL) -d -m 0700 -o $(RUNNING_USER) -g $(RUNNING_GROUP) $(DESTDIR)$(localstatedir)/piler/store
+ 	$(INSTALL) -d -m 0700 -o $(RUNNING_USER) -g $(RUNNING_GROUP) $(DESTDIR)$(localstatedir)/piler/imap
+ 	$(INSTALL) -d -m 0755 -o $(RUNNING_USER) -g $(RUNNING_GROUP) $(DESTDIR)$(localstatedir)/piler/stat
+diff --git a/config.php.in b/config.php.in
+index ba647a70..6b7c9812 100644
+--- a/config.php.in
++++ b/config.php.in
+@@ -95,8 +95,8 @@ $config['PROVIDED_BY'] = 'www.mailpiler.org';
+ $config['SITE_KEYWORDS'] = 'piler email archiver';
+ $config['SITE_DESCRIPTION'] = 'piler email archiver';
+ 
+-$config['INDEXER_BEACON'] = '/var/piler/stat/indexer';
+-$config['PURGE_BEACON'] = '/var/piler/stat/purge';
++$config['INDEXER_BEACON'] = 'LOCALSTATEDIR/piler/stat/indexer';
++$config['PURGE_BEACON'] = 'LOCALSTATEDIR/piler/stat/purge';
+ 
+ $config['ENABLE_PDF_DOWNLOAD'] = 0;
+ // You may need to run "Xvfb :1 -screen 0 1024x768x16"
+@@ -237,10 +237,10 @@ $config['DEFAULT_POLICY'] = 'default_policy';
+ 
+ $config['DIR_BASE'] = dirname(__FILE__) . '/';
+ 
+-$config['DIR_SPHINX'] = '/var/piler/manticore/';
+-$config['DIR_STAT'] = '/var/piler/stat';
+-$config['DIR_IMAP'] = '/var/piler/imap';
+-$config['DIR_TMP'] = '/var/piler/tmp';
++$config['DIR_SPHINX'] = 'LOCALSTATEDIR/piler/manticore/';
++$config['DIR_STAT'] = 'LOCALSTATEDIR/piler/stat';
++$config['DIR_IMAP'] = 'LOCALSTATEDIR/piler/imap';
++$config['DIR_TMP'] = 'LOCALSTATEDIR/piler/tmp';
+ 
+ $config['DECRYPT_BINARY'] = 'BINDIR/pilerget';
+ $config['DECRYPT_ATTACHMENT_BINARY'] = 'BINDIR/pileraget';
+@@ -280,11 +280,11 @@ $config['RT'] = 1;
+ $config['MAX_EMAIL_LEN'] = 41;
+ 
+ $config['RELOAD_COMMAND'] = 'sudo -n /etc/init.d/rc.piler reload';
+-$config['PILERIMPORT_IMAP_COMMAND'] = '/usr/local/bin/pilerimport -d /var/piler/imap -q -r';
++$config['PILERIMPORT_IMAP_COMMAND'] = 'BINDIR/pilerimport -d LOCALSTATEDIR/piler/imap -q -r';
+ $config['CPU_USAGE_COMMAND'] = "LC_ALL=C mpstat | tail -1 | rev | awk '{ print $1 }' | rev";
+ $config['PILER_BINARY'] = "SBINDIR/piler";
+ 
+-$config['LDAP_IMPORT_CONFIG_FILE'] = '/usr/local/etc/ldap-import.cfg';
++$config['LDAP_IMPORT_CONFIG_FILE'] = 'SYSCONFDIR/ldap-import.cfg';
+ 
+ $config['DN_MAX_LEN'] = 255;
+ $config['USE_EMAIL_AS_USERNAME'] = 1;
+@@ -333,7 +333,7 @@ $SUPPRESS_RECIPIENTS = array();
+ 
+ $memcached_server = ['127.0.0.1', 11211];
+ 
+-$partitions_to_monitor = array('/', '/home', '/var', '/var/piler', '/tmp');
++$partitions_to_monitor = array('/', '/home', '/var', 'LOCALSTATEDIR/piler', '/tmp');
+ $config['DATA_PARTITION'] = '/var';
+ 
+ $config['DELIMITER'] = "\t";
+diff --git a/etc/Makefile.in b/etc/Makefile.in
+index 48b535fe..6d7c6ed0 100644
+--- a/etc/Makefile.in
++++ b/etc/Makefile.in
+@@ -12,6 +12,7 @@ sysconfdir = @sysconfdir@
+ mandir = @mandir@
+ datarootdir = @datarootdir@
+ localstatedir = @localstatedir@
++runstatedir = @runstatedir@
+ 
+ CC = @CC@
+ CFLAGS = @CFLAGS@ @CPPFLAGS@
+@@ -25,14 +26,15 @@ RUNNING_GROUP = `@id_bin@ -gn $(RUNNING_USER)`
+ INSTALL = @INSTALL@
+ 
+ all:
+-	sed -e 's%pidfile=.*%pidfile=$(localstatedir)/run/piler/piler.pid%g' \
++	sed -e 's%pidfile=.*%pidfile=$(runstatedir)/piler/piler.pid%g' \
+ 	-e 's%pemfile=%pemfile=$(sysconfdir)/piler/piler.pem%g' \
++	-e 's%queuedir=.*%queuedir=$(localstatedir)/piler/store%g' \
+ 	-e 's%workdir=.*%workdir=$(localstatedir)/piler/tmp%g' < $(srcdir)/example.conf | grep -v ^\; | grep '=' | sort > $(srcdir)/piler.conf
+ 
+ install:
+ 	$(INSTALL) -m 0640 -g $(RUNNING_GROUP) $(srcdir)/piler.conf $(DESTDIR)$(sysconfdir)/piler/piler.conf.dist
+ 	sed -e 's%@LOCALSTATEDIR@%$(localstatedir)%g' $(srcdir)/sphinx.conf.in > sphinx.conf.dist
+-	sed -e 's%@LOCALSTATEDIR@%$(localstatedir)%g' $(srcdir)/manticore.conf.in > manticore.conf.dist
++	sed -e 's%@LOCALSTATEDIR@%$(localstatedir)%g' -e 's%@RUNSTATEDIR@%$(runstatedir)%g' $(srcdir)/manticore.conf.in > manticore.conf.dist
+ 	$(INSTALL) -m 0755 -g $(RUNNING_GROUP) $(srcdir)/sphinx.conf.dist $(DESTDIR)$(sysconfdir)/piler/sphinx.conf.dist
+ 	$(INSTALL) -m 0755 -g $(RUNNING_GROUP) $(srcdir)/manticore.conf.dist $(DESTDIR)$(sysconfdir)/piler/manticore.conf.dist
+ 	$(INSTALL) -m 0644 -g $(RUNNING_GROUP) $(srcdir)/config-site.dist.php $(DESTDIR)$(sysconfdir)/piler/config-site.dist.php
+diff --git a/etc/manticore.conf.in b/etc/manticore.conf.in
+index 92cb7f25..7a1e046d 100755
+--- a/etc/manticore.conf.in
++++ b/etc/manticore.conf.in
+@@ -1,7 +1,8 @@
+ #!/usr/bin/php
+ <?php
+ 
+-define('LOCALSTATEDIR', '/var');
++define('LOCALSTATEDIR', '@LOCALSTATEDIR@');
++define('RUNSTATEDIR', '@RUNSTATEDIR@');
+ define('NGRAM_CONFIG', "        #ngram_len               = 1\n        #ngram_chars             = U+3000..U+2FA1F\n");
+ 
+ # See http://sphinxsearch.com/wiki/doku.php?id=charset_tables for more on the charset_table settings
+@@ -190,7 +191,7 @@ index note1
+ index piler1
+ {
+     type = rt
+-    path = /var/piler/manticore/piler1
++    path = <?php print LOCALSTATEDIR; ?>/piler/manticore/piler1
+     rt_mem_limit = 512M
+     stored_fields =
+     min_word_len = 1
+@@ -217,7 +218,7 @@ index piler1
+ index tag1
+ {
+     type = rt
+-    path = /var/piler/manticore/tag1
++    path = <?php print LOCALSTATEDIR; ?>/piler/manticore/tag1
+     rt_mem_limit = 16M
+     stored_fields = tag
+     min_word_len = 2
+@@ -231,7 +232,7 @@ index tag1
+ index note1
+ {
+     type = rt
+-    path = /var/piler/manticore/note1
++    path = <?php print LOCALSTATEDIR; ?>/piler/manticore/note1
+     rt_mem_limit = 16M
+     stored_fields = note
+     min_word_len = 2
+@@ -245,7 +246,7 @@ index note1
+ index audit1
+ {
+     type = rt
+-    path = /var/piler/manticore/audit1
++    path = <?php print LOCALSTATEDIR; ?>/piler/manticore/audit1
+     rt_mem_limit = 16M
+     stored_fields = *
+     min_word_len = 2
+@@ -267,13 +268,13 @@ searchd
+         listen                  = 127.0.0.1:9312
+         listen                  = 127.0.0.1:9306:mysql
+         listen                  = 127.0.0.1:9307:mysql_readonly
+-        log                     = /var/piler/manticore/manticore.log
++        log                     = <?php print LOCALSTATEDIR; ?>/piler/manticore/manticore.log
+         binlog_max_log_size     = 256M
+-        binlog_path             = /var/piler/manticore
++        binlog_path             = <?php print LOCALSTATEDIR; ?>/piler/manticore
+         binlog_flush            = 2
+-        query_log               = /var/piler/manticore/query.log
++        query_log               = <?php print LOCALSTATEDIR; ?>/piler/manticore/query.log
+         network_timeout         = 5
+-        pid_file                = /var/run/piler/searchd.pid
++        pid_file                = <?php print RUNSTATEDIR; ?>/piler/searchd.pid
+         seamless_rotate         = 1
+         preopen_tables          = 1
+         unlink_old              = 1
+diff --git a/systemd/Makefile.in b/systemd/Makefile.in
+index 8d81d820..746ba799 100644
+--- a/systemd/Makefile.in
++++ b/systemd/Makefile.in
+@@ -12,6 +12,7 @@ sysconfdir = @sysconfdir@
+ mandir = @mandir@
+ datarootdir = @datarootdir@
+ localstatedir = @localstatedir@
++runstatedir = @runstatedir@
+ 
+ CC = @CC@
+ CFLAGS = @CFLAGS@ @CPPFLAGS@
+@@ -28,6 +29,7 @@ all:
+ 	echo all
+ 
+ install:
++	sed -i -e 's%@RUNSTATEDIR@%$(runstatedir)%g' $(srcdir)/piler.service $(srcdir)/pilersearch.service
+ 	$(INSTALL) -m 0644 $(srcdir)/piler.service $(DESTDIR)$(libexecdir)/piler/piler.service
+ 	$(INSTALL) -m 0644 $(srcdir)/piler-smtp.service $(DESTDIR)$(libexecdir)/piler/piler-smtp.service
+ 	$(INSTALL) -m 0644 $(srcdir)/pilersearch.service $(DESTDIR)$(libexecdir)/piler/pilersearch.service
+diff --git a/systemd/piler.service b/systemd/piler.service
+index 755f7c39..62f55194 100644
+--- a/systemd/piler.service
++++ b/systemd/piler.service
+@@ -4,7 +4,7 @@ After=network.target mariadb.service
+ 
+ [Service]
+ ExecStart=/usr/sbin/piler -d
+-PIDFile=/var/run/piler/piler.pid
++PIDFile=@RUNSTATEDIR@/piler/piler.pid
+ KillMode=process
+ Restart=on-failure
+ RestartPreventExitStatus=255
+diff --git a/systemd/pilersearch.service b/systemd/pilersearch.service
+index 9afb3b12..6a2a0351 100644
+--- a/systemd/pilersearch.service
++++ b/systemd/pilersearch.service
+@@ -5,7 +5,7 @@ After=network.target mariadb.service
+ [Service]
+ ExecStart=/usr/bin/searchd --config /etc/piler/manticore.conf
+ ExecStop=/usr/bin/searchd --config /etc/piler/manticore.conf --stopwait
+-PIDFile=/var/run/piler/searchd.pid
++PIDFile=@RUNSTATEDIR@/piler/searchd.pid
+ KillMode=process
+ Restart=on-failure
+ RestartPreventExitStatus=255
