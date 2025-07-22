@@ -1,7 +1,7 @@
 # Maintainer: Sashetophizika
 
 pkgname=hyprscratch
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Improved scratchpad functiontality for Hyprland"
 url="https://github.com/sashetophizika/hyprscratch"
@@ -10,7 +10,7 @@ depends=('hyprland')
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/sashetophizika/hyprscratch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b991783208e660f66b4876777c8591605e2b638ed28b4a0ff77f7e47b7c4f217')
+sha256sums=('d27bafb076c297ffb98aed8ddb24e0003760cc5aca1ce8c7dd1bd232ce01b544')
 
 build() {
   cd "$pkgname-$pkgver"
