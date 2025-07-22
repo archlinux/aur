@@ -1,21 +1,16 @@
 pkgbase = swordfish-git
-	pkgdesc = File manager
-	pkgver = 20140309.0f1d929
+	pkgdesc = A pkill-like CLI tool with more control over process management.
+	pkgver = r3.44cec52
 	pkgrel = 1
-	url = http://www.maui-project.org
-	arch = i686
+	url = https://github.com/Foox-dev/swordfish
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = git
-	makedepends = cmake
-	depends = qt5-declarative
-	depends = qt5-quickcontrols
-	depends = qt5-tools
-	conflicts = hawaii-swordfish-git
-	replaces = hawaii-swordfish-git
-	options = debug
-	source = swordfish::git://github.com/mauios/swordfish.git#branch=master
+	makedepends = gcc
+	makedepends = make
+	provides = swordfish
+	conflicts = swordfish
+	source = git+https://github.com/Foox-dev/swordfish
 	md5sums = SKIP
 
 pkgname = swordfish-git
-
