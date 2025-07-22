@@ -1,6 +1,6 @@
 pkgbase = zig-master-bin
-	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master build)
-	pkgver = 0.15.0_dev.1034.gbd97b6618
+	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)
+	pkgver = 0.15.0_dev.1228.g6dbcc3bd5
 	pkgrel = 1
 	url = https://ziglang.org/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = zig-master-bin
 	provides = zig-master
 	conflicts = zig
 	options = !strip
-	source = https://ziglang.org/builds/zig-x86_64-linux-0.15.0-dev.1034+bd97b6618.tar.xz
-	source = https://ziglang.org/builds/zig-x86_64-linux-0.15.0-dev.1034+bd97b6618.tar.xz.minisig
-	sha256sums = 326883901c970f16c33a587bca44b26271c84d28d166e18f1411ef4a37fe8b53
+	source = https://ziglang.org/builds/zig-x86_64-linux-0.15.0-dev.1228+6dbcc3bd5.tar.xz
+	source = https://ziglang.org/builds/zig-x86_64-linux-0.15.0-dev.1228+6dbcc3bd5.tar.xz.minisig
+	sha256sums = 0f4ead23984a3cec1838539ca81a8e2694a286c0cd7bf3756a6983e000daef2a
 	sha256sums = SKIP
 
 pkgname = zig-master-bin

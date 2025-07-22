@@ -1,9 +1,9 @@
 # Maintainer: Tobias Frilling <aur@ckafi.addy.io>
 
 pkgname=zig-master-bin
-pkgver=0.15.0_dev.1034.gbd97b6618
+pkgver=0.15.0_dev.1228.g6dbcc3bd5
 pkgrel=1
-pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master build)"
+pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
 arch=('x86_64')
 url="https://ziglang.org/"
 license=('MIT')
@@ -14,8 +14,8 @@ options=('!strip')
 
 _index_json=$(curl -s "${url}/download/index.json")
 _master_version=$(echo "$_index_json" | jq -r '.master.version')
-_tarball_url=$(echo "$_index_json" | jq -r ".master.\"${CARCH}-linux\".tarball")
-_tarball_sha256=$(echo "$_index_json" | jq -r ".master.\"${CARCH}-linux\".shasum")
+_tarball_url=$(echo "$_index_json" | jq -r ".master.\"x86_64-linux\".tarball")
+_tarball_sha256=$(echo "$_index_json" | jq -r ".master.\"x86_64-linux\".shasum")
 _tarball=$(basename $_tarball_url)
 
 pkgver() {
