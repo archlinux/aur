@@ -1,5 +1,5 @@
 pkgbase = lbry-desktop-bin
-	pkgdesc = Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative
+	pkgdesc = Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative (no active development)
 	pkgver = 0.53.9
 	pkgrel = 1
 	url = https://github.com/lbryio/lbry-desktop
@@ -19,7 +19,7 @@ pkgbase = lbry-desktop-bin
 	conflicts = lbrynet-bin
 	conflicts = lbry-desktop-git
 	source = https://github.com/lbryio/lbry-desktop/releases/download/v0.53.9/LBRY_0.53.9.deb
-	source = https://raw.githubusercontent.com/lbryio/lbry-desktop/master/LICENSE
+	source = LICENSE.package::https://raw.githubusercontent.com/lbryio/lbry-desktop/master/LICENSE
 	b2sums = 5541ce87f8812bb60a762f42ca00452111d6acee1b372f95d489f1607bcd9c9301c25db9ed9305f625916887f8eb7121cd4841eced01b118130cbc0e10521016
 	b2sums = eadd07c9a4210b7d3b2408483433daca30100cdca4590379f376538d2c7cb300d77da3ffcd4950c279c7ecae729fbb2f5f6447c4a4fd8079ef979c54aaa21e42
 

@@ -4,7 +4,7 @@
 pkgname=lbry-desktop-bin
 pkgver=0.53.9
 pkgrel=1
-pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
+pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative (no active development)'
 arch=('x86_64')
 changelog=changelog
 url="https://github.com/lbryio/${pkgname::-4}"
@@ -15,7 +15,7 @@ conflicts=('lbry' 'lbry-desktop' 'lbrynet' 'lbrynet-bin' 'lbry-desktop-git')
 depends=('libxtst' 'nss' 'alsa-lib' 'gtk3')
 source=("$url/releases/download/v$pkgver/LBRY_$pkgver.deb"
 #        "$url/releases/download/v$pkgver/LBRY_$pkgver.deb.asc"
-        "https://raw.githubusercontent.com/lbryio/${pkgname::-4}/master/LICENSE")
+        "LICENSE.package::https://raw.githubusercontent.com/lbryio/${pkgname::-4}/master/LICENSE")
 
 # Not yet usable, as there are no individual signatures for the files. Feature was requested here
 # https://github.com/lbryio/lbry-desktop/issues/7707
@@ -31,5 +31,5 @@ package() {
   ln -s "/opt/LBRY/lbry" "$pkgdir/usr/bin/lbry"
   ln -s "/opt/LBRY/resources/static/daemon/lbrynet" "$pkgdir/usr/bin/"
   cd "${srcdir}"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.package "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
