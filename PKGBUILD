@@ -69,7 +69,7 @@ sha1sums=(
   'eb36aa73a9be98164447774217865b91e79d503c'
 )
 
-sha1sums_x86_64=('a50c87536c3f059aed908deddb4adf3cf075b481')
+sha1sums_x86_64=('76718e38bd6123fc8a9bcc258d54044deb5cce77')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
