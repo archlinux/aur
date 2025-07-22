@@ -1,6 +1,6 @@
 pkgbase = google-cloud-cli-firestore-emulator
 	pkgdesc = A google-cloud-cli component that provides a local, in-memory emulator for Firestore.
-	pkgver = 530.0.0
+	pkgver = 531.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/firestore/docs/emulator
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = google-cloud-cli-firestore-emulator
 	depends = google-cloud-cli
 	depends = java-runtime
 	options = !strip
-	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-cli-firestore-emulator_530.0.0.orig.tar.gz
-	sha256sums = 939c0236ca3584db05c6781b345237a0bc0ee2672cbf2427f69a16cc9833aeea
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-cli-firestore-emulator_531.0.0.orig.tar.gz
+	sha256sums = 0ec1ff4e3c8bbc046e359d2be0152c6136aeb2666e1e50ffd5abe8c1e94bc98e
 
 pkgname = google-cloud-cli-firestore-emulator
