@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
-pkgver=0.23.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ build() {
 
 package() {
   warning "Remember to add yourself as member for the new \`spack\` group after installation!"
-  python -m installer --destdir ${pkgdir}/ ${srcdir}/${pkgname}-${pkgver}/dist/spack-${pkgver}-py2.py3-none-any.whl
+  python -m installer --destdir ${pkgdir}/ ${srcdir}/${pkgname}-${pkgver}/dist/spack-${pkgver}-py3-none-any.whl
 
   PYTHON_VERSION=`python -c "import sys; print (f'{sys.version_info[0]}.{sys.version_info[1]}', end='')"`
   pushd ${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/
