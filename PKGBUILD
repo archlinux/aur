@@ -6,9 +6,14 @@ pkgdesc="A Pacman hook written in C++ that logs all of the updates and downgrade
 arch=("x86_64")
 url="https://github.com/alexlnkp/paclogger"
 license=("Unlicense")
-depends=("glibc"
-				 "gcc-libs")
-makedepends=("cmake")
+depends=(
+	"glibc"
+	"gcc-libs"
+)
+makedepends=(
+	"cmake"
+	"ctre"
+)
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/alexlnkp/paclogger/archive/v$pkgver.tar.gz")
 sha256sums=('a2aa360ea818e41ff35fc9979284c23d90d093dd7ef57e9a6102f2eb212c03db')
 
