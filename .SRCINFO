@@ -1,7 +1,7 @@
 pkgbase = cajviewer
 	pkgdesc = CAJViewer for Linux. Document Viewer for TEB, CAJ, NH, KDH and PDF format
 	pkgver = 9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cajviewer.cnki.net/
 	arch = x86_64
 	license = custom
@@ -9,7 +9,10 @@ pkgbase = cajviewer
 	depends = gcc-libs
 	depends = bash
 	depends = hicolor-icon-theme
+	depends = libxml2-legacy
 	options = !strip
+	source = cajviewer.sh
+	sha256sums = a85c0526d3cdbbc33808c34f8c149050790134f8127b86cbb0bd53786bfeb88b
 	source_x86_64 = https://download.cnki.net/cajviewer_9.0_amd64.deb
 	sha256sums_x86_64 = 3142c633d74dcf34ebaca9b7653f88ad3619f0b7a6cb689487b6cc583ec926d3
 

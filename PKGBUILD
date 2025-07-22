@@ -4,7 +4,7 @@
 
 pkgname=cajviewer
 pkgver=9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CAJViewer for Linux. Document Viewer for TEB, CAJ, NH, KDH and PDF format"
 arch=('x86_64')
 url="http://cajviewer.cnki.net/"
@@ -14,16 +14,19 @@ depends=(
         'gcc-libs'
         'bash'
         'hicolor-icon-theme'
+        'libxml2-legacy'
 #        'qt5-base'
 #        'libcups'
 #        'openssl-1.1'
 #        'qt5-webchannel'
 #        'qt5-webengine'
 )
+source=("cajviewer.sh")
 source_x86_64=("https://download.cnki.net/${pkgname}_${pkgver}_amd64.deb")
 
 # strip will cause cajviewer core dumped 
 options=('!strip')
+sha256sums=('a85c0526d3cdbbc33808c34f8c149050790134f8127b86cbb0bd53786bfeb88b')
 sha256sums_x86_64=('3142c633d74dcf34ebaca9b7653f88ad3619f0b7a6cb689487b6cc583ec926d3')
 
 _install() {
@@ -56,9 +59,10 @@ package() {
     chmod 0755 ${pkgdir}/opt/${pkgname}/bin/${_exe}
   done
   chmod 0755 ${pkgdir}/opt/${pkgname}/libexec/QtWebEngineProcess
-  install -dm755 ${pkgdir}/usr/bin/
-  ln -s /opt/${pkgname}/bin/start.sh ${pkgdir}/usr/bin/${pkgname}
 
+  # install -dm755 ${pkgdir}/usr/bin/
+  # ln -s /opt/${pkgname}/bin/start.sh ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 ${srcdir}/cajviewer.sh -t ${pkgdir}/usr/bin
 
   # mime
   _install 644 usr/share/mime/
