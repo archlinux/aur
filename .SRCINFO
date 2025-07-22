@@ -1,7 +1,7 @@
 pkgbase = ctune-git
 	pkgdesc = NCurses internet radio player for Linux.
-	pkgver = v1.3.3
-	pkgrel = 3
+	pkgver = v1.3.4
+	pkgrel = 0
 	url = https://github.com/An7ar35/ctune
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,7 @@ pkgbase = ctune-git
 	optdepends = pandoc-cli: To compile the man page from source
 	provides = ctune
 	conflicts = ctune
-	source = git+https://github.com/An7ar35/ctune.git#tag=v1.3.3
+	source = git+https://github.com/An7ar35/ctune.git#tag=v1.3.4
 	sha512sums = SKIP
 
 pkgname = ctune-git
