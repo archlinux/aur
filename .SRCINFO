@@ -7,7 +7,6 @@ pkgbase = opera-ffmpeg-codecs
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = nasm
-	makedepends = mold
 	makedepends = git
 	makedepends = diffutils
 	makedepends = gcc

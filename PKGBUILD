@@ -16,7 +16,7 @@ pkgdesc='Add codecs to Opera (vendored ffmpeg with same sonames)'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=(glibc)
-makedepends=(nasm mold git  # mold is needed to filter unused funcs?
+makedepends=(nasm git
 diffutils gcc make sed) # base-devel
 # tarball has unstable csum
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
@@ -51,16 +51,16 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fuse-ld=mold -fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
     --prefix="${srcdir}"/release
 
   make install
   _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
-  gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
-    lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} \
-    -Wl,--version-script=../export.map \
+  gcc $LTOFLAGS -shared $LDFLAGS \
+    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
 
