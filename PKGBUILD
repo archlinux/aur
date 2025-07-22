@@ -2,8 +2,8 @@
 
 pkgname=perplexity
 pkgver=1.1.3
-pkgrel=4
-pkgdesc='Native Perplexity AI client for Linux (Electron wrapper)'
+pkgrel=6
+pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
 license=('Apache')
