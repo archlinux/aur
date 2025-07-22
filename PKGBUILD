@@ -1,9 +1,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-login-manager
-pkgver=6.4.git20250712
-pkgrel=2
-_commit=3093e54e96eee5fcf9102825429ad39fb4a47d7a
+pkgver=6.4.git20250721
+pkgrel=1
+_commit=7aa153a1545360f498e261a31c487bb58f113795
 arch=(x86_64)
 pkgdesc='Plasma Login Manager'
 url='https://kde.org/plasma-desktop/'
@@ -35,7 +35,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 source=(git+https://invent.kde.org/plasma/plasma-login-manager#commit=$_commit
         plasmalogin{,-greeter,-autologin})
-sha256sums=('1ee4848c44ec665f24d32b5cdb8dd586606cbcfe3fd8089c8dfb1687ccb91a63'
+sha256sums=('69b4234598fe663585ce2c1b81bb94d9373a94975bd2e7cd83d677beace980cd'
             'd7394292a65ae463926c2c3d2cb4e67bbfeb20995450c8e4c92fe5a28e7c4254'
             '3406bce46be8450e28ddbccfbcd0e1f8fa585d57da8833ff7294cf3aee84bb46'
             '1a84cf752782b03b53f66188013bf7e4af4f5e6feb7266bfe58c3faaa20777b4')
@@ -43,6 +43,7 @@ sha256sums=('1ee4848c44ec665f24d32b5cdb8dd586606cbcfe3fd8089c8dfb1687ccb91a63'
 build() {
   cmake -B build -S $pkgname \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DDBUS_CONFIG_FILENAME=plasma_org.freedesktop.DisplayManager.conf
   cmake --build build
 }
