@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-mlrt-migx-runtime-git
+	pkgdesc = Plugin for VapourSynth: mlrt (MIGraphX runtime)
+	pkgver = 725.467e4fc
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vs-mlrt
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = jq
+	depends = vapoursynth
+	depends = opencl-amd-dev
+	provides = vapoursynth-plugin-mlrt
+	conflicts = vapoursynth-plugin-mlrt
+	source = mlrt::git+https://github.com/AmusementClub/vs-mlrt.git
+	source = models-v15.12.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.12/models.v15.12.7z
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-mlrt-migx-runtime-git
