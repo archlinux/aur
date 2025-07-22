@@ -1,7 +1,7 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam-git'
-pkgver=v0.7.0
+pkgver=v0.8.1
 pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
@@ -51,6 +51,7 @@ package_linvam-git() {
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install LinVAM.desktop -Dm644 "$pkgdir/usr/share/applications/LinVAM.desktop"
+  install linvam.svg -Dm644 "$pkgdir/usr/share/icons/hicolor/scalable/apps/linvam.svg"
   install LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
   # install rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
   # install rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
