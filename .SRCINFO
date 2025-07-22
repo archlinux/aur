@@ -1,0 +1,18 @@
+pkgbase = tt-kmd-dkms
+	pkgdesc = Tenstorrent Kernel Module
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/tenstorrent/tt-kmd
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = base-devel
+	depends = dkms
+	source = tt-kmd-ttkmd-2.1.0.tar.gz::https://github.com/tenstorrent/tt-kmd/archive/refs/tags/ttkmd-2.1.0.tar.gz
+	source = dkms.conf
+	sha256sums = 11756bc3858fb755f74228b4c11de910e7401b3be54972214315e00afe2cd6bd
+	sha256sums = 9b43b301e6795449ac710c7c337389383253988c8eaa7a213135356bccd1e9c1
+
+pkgname = tt-kmd-dkms
