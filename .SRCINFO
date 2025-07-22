@@ -1,24 +1,20 @@
 pkgbase = larksuite-bin
 	pkgdesc = Linux client of Lark Suite
-	pkgver = 7.36.11
+	pkgver = 7.42.17
 	pkgrel = 1
 	url = https://www.larksuite.com
 	install = larksuite-bin.install
 	arch = x86_64
 	license = unknown
-	depends = ca-certificates
 	depends = gtk3
 	depends = libpulse
 	depends = libmfx
 	depends = alsa-lib
-	depends = xdg-utils
-	depends = appmenu-gtk-module
-	optdepends = appmenu-gtk-module: Appmenu support
 	provides = bytedance-lark
 	provides = lark
 	replaces = bytedance-lark-dev-bin
 	options = !emptydirs
-	source = https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/932c7f7e/Lark-linux_x64-7.36.11.deb
-	sha256sums = 4d13f48cb205225a4b0050893ad623bd2cf091837b86b8af66d3c0665679317e
+	source = Lark-linux_x64-7.42.17.deb::https://www.larksuite.com/api/package_info?platform=10
+	sha256sums = 7eeb1495f6488d9e754a76e0d962518591b043ecadcd8f3c6a66d51d27c3d269
 
 pkgname = larksuite-bin
