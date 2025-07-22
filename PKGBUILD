@@ -29,7 +29,7 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '03263b84dfd79619d22a50538e0dc668a2a919d58471cde4d388f0999c66de22'
             '73c9e3d7685f291a5df13fd28dd04b6ffdc42ea73505cacbe6009c2cb5018be3')
 depends=(glibc)
-makedepends=(nasm mold # mold: to remove unused funcs
+makedepends=(nasm
 diffutils gcc make patch sed) # base-devel
 optdepends=({slimjet,electron{31..36}}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
@@ -70,16 +70,16 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="-fuse-ld=mold -fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer ${LTOFLAGS}" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables}
 
   make install
   _symbols=$(cat ../${_chromium}sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
-  gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
-    lib/libav{codec,format,util}.a lib/libswresample.a ${_symbols} \
-    -Wl,--version-script=../export.map \
+  gcc $LTOFLAGS -shared $LDFLAGS \
+    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
