@@ -1,0 +1,20 @@
+pkgbase = python-libparse
+	pkgdesc = Python library for parsing Liberty files
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/TinyTapeout/libparse-python
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = swig
+	makedepends = gcc
+	makedepends = make
+	depends = python
+	depends = yosys
+	source = git+https://github.com/TinyTapeout/libparse-python.git#commit=cec8b6d
+	sha256sums = SKIP
+
+pkgname = python-libparse
