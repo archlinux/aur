@@ -1,6 +1,5 @@
 post_install() {
     # NetExtender needs to edit pppd script to automatically add route to sslvpn.
-    /usr/sbin/netExtender -i
     echo
     echo "To allow non-root users to use NetExtender, run chmod -v u+s /usr/sbin/pppd"
 }

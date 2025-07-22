@@ -1,0 +1,12 @@
+--- com.sonicwall.NetExtender.desktop	2024-10-28 07:18:58.000000000 -0400
++++ com.sonicwall.NetExtender.desktop	2025-07-21 16:17:26.731878184 -0400
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Categories=Office
+-Exec=/usr/local/netextender/NetExtender
+-Icon=/usr/local/netextender/nx-icon.png
++Exec=/opt/netextender/NetExtender
++Icon=/opt/netextender/nx-icon.png
+ Name=SonicWall NetExtender
+ Terminal=false
+ Type=Application

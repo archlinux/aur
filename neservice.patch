@@ -1,0 +1,18 @@
+--- neservice	2025-07-22 15:31:30.298573158 -0400
++++ neservice	2025-07-22 15:32:22.201598776 -0400
+@@ -9,12 +9,12 @@
+ # Description:       SonicWall NetExtender Service
+ ### END INIT INFO
+ 
+-PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/netextender
++PATH=/sbin:/usr/sbin:/bin:/usr/bin:/opt/netextender
+ DESC="SonicWall Netextender Service"
+ NAME=NEService
+-DAEMON=/usr/local/netextender/$NAME
++DAEMON=/opt/netextender/$NAME
+ DAEMON_ARGS=""
+-PIDFILE=/var/run/$NAME.pid
++PIDFILE=/run/$NAME.pid
+ SCRIPTNAME=/etc/init.d/neservice
+ 
+ # Exit if the package is not installed

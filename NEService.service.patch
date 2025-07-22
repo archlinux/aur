@@ -1,0 +1,15 @@
+--- NEService.service	2025-07-22 15:23:55.717937132 -0400
++++ NEService.service	2025-07-22 15:24:24.964430116 -0400
+@@ -2,9 +2,9 @@
+ Description=SonicWall NetExtender Service
+ 
+ [Service]
+-PIDFile=/var/run/NEService.pid
+-ExecStartPre=/bin/rm -f /var/run/NEService.pid
+-ExecStart=/usr/local/netextender/NEService
++PIDFile=/run/NEService.pid
++ExecStartPre=/bin/rm -f /run/NEService.pid
++ExecStart=/opt/netextender/NEService
+ Restart=on-failure
+ KillMode=process
+ 
