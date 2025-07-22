@@ -1,8 +1,9 @@
 pkgbase = verylup
 	pkgdesc = The Veryl toolchain installer
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/veryl-lang/verylup
+	install = post.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0

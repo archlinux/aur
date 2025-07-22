@@ -2,7 +2,7 @@
 
 pkgname=verylup
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The Veryl toolchain installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/veryl-lang/verylup"
@@ -10,6 +10,7 @@ license=('Apache-2.0' 'MIT')
 provides=("$pkgname")
 conflicts=("$pkgname")
 _binlinks=('veryl' 'veryl-ls')
+install='post.install'
 
 makedepends=('cargo')
 options=(!lto)
@@ -45,3 +46,4 @@ package() {
   install -Dm644 LICENSE-MIT "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-MIT
   install -Dm644 LICENSE-APACHE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-APACHE
 }
+
