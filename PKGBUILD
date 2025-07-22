@@ -2,7 +2,9 @@
 
 _name=langgraph
 pkgname=python-${_name}
-pkgver=0.5.3
+pkgver=0.5.4
+_cliver=0.3.5
+_inmemver=0.6.0
 pkgrel=1
 pkgdesc="Building stateful, multi-actor applications with LLMs."
 arch=('any')
@@ -14,22 +16,12 @@ _langgraph_cli_depends=('python-click' 'python-dotenv')
 _langgraph_runtime_inmem_depends=('python-blockbuster' 'python-structlog' 'python-sse-starlette' 'python-starlette')
 checkdepends=('python-pytest' 'python-pytest-mock' 'python-syrupy' 'python-httpx' 'python-pytest-watcher' 'python-pytest-xdist' 'python-psutil' 'python-pytest-repeat' 'python-langgraph-checkpoint-sqlite' 'python-langgraph-checkpoint-postgres' 'python-psycopg' 'python-pycryptodome' ${_langgraph_cli_depends[@]} ${_langgraph_runtime_inmem_depends[@]})
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-        "https://files.pythonhosted.org/packages/py3/l/langgraph-cli/langgraph_cli-0.3.4-py3-none-any.whl"
-        "https://files.pythonhosted.org/packages/py3/l/langgraph-runtime-inmem/langgraph_runtime_inmem-0.4.0-py3-none-any.whl") # Prevent cercular dependencies
-noextract=('langgraph_cli-0.3.3-py3-none-any.whl' 'langgraph_runtime_inmem-0.3.4-py3-none-any.whl')
-sha256sums=('36d4b67f984ff2649d447826fc99b1a2af3e97599a590058f20750048e4f548f'
-            'b3ac9fbc67cec5d0295c23a9e7a9014f34502639fb52b2d02c89b3bb2ba36c33'
-            '61a392b6faa4fedcf16287538332e0a0e528e54d0e13b1f5f0174256c26dd8f3')
-
-prepare(){
-  # Fix tests
-  cd "${srcdir}"/${_name}-${pkgver}
-  sed -i 's/"parents": {},/"parents": {},\n                "thread_id": "1",/g' tests/test_checkpoint_migration.py
-  sed -i 's/"parents": {},/"parents": {},\n                "thread_id": AnyStr(),/g' tests/test_large_cases.py
-  sed -i 's/"parents": {},/"parents": {},\n                "thread_id": AnyStr(),/g' tests/test_large_cases_async.py
-  sed -i 's/"parents": {},/"parents": {},\n                "thread_id": AnyStr(),/g' tests/test_pregel.py
-  sed -i 's/"parents": {},/"parents": {},\n                "thread_id": AnyStr(),/g' tests/test_pregel_async.py
-}
+        "https://files.pythonhosted.org/packages/py3/l/langgraph-cli/langgraph_cli-${_cliver}-py3-none-any.whl"
+        "https://files.pythonhosted.org/packages/py3/l/langgraph-runtime-inmem/langgraph_runtime_inmem-${_inmemver}-py3-none-any.whl") # Prevent cercular dependencies
+noextract=("langgraph_cli-${_cliver}-py3-none-any.whl" "langgraph_runtime_inmem-${_inmemver}-py3-none-any.whl")
+sha256sums=('ab8f6b7b9c50fd2ae35a2efb072fbbfe79500dfc18071ac4ba6f5de5fa181931'
+            '88f93c1d3c59da1935469633023c273e44e921c780525cb45e49aa2db98c7c4e'
+            '312dab25bec6557f1edf95cb8bd7c8bb52f7f4bfeecaf66e7001662f095c9079')
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
@@ -45,13 +37,13 @@ check() {
     --deselect tests/test_remote_graph.py::test_remote_graph_basic_invoke
     --deselect tests/test_remote_graph.py::test_remote_graph_stream_messages_tuple
     # Need to be fixed by developers
-    --deselect tests/test_large_cases.py::test_nested_graph_state
-    --deselect tests/test_large_cases.py::test_doubly_nested_graph_state
-    --deselect tests/test_large_cases.py::test_weather_subgraph
-    --deselect tests/test_large_cases_async.py::test_nested_graph_state
-    --deselect tests/test_large_cases_async.py::test_doubly_nested_graph_state
-    --deselect tests/test_large_cases_async.py::test_weather_subgraph
-    --deselect tests/test_pregel.py::test_falsy_return_from_task
+    #--deselect tests/test_large_cases.py::test_nested_graph_state
+    #--deselect tests/test_large_cases.py::test_doubly_nested_graph_state
+    #--deselect tests/test_large_cases.py::test_weather_subgraph
+    #--deselect tests/test_large_cases_async.py::test_nested_graph_state
+    #--deselect tests/test_large_cases_async.py::test_doubly_nested_graph_state
+    #--deselect tests/test_large_cases_async.py::test_weather_subgraph
+    #--deselect tests/test_pregel.py::test_falsy_return_from_task
   )
   cd "${srcdir}"/${_name}-${pkgver}
   python -m venv --system-site-packages test-env
