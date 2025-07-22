@@ -1,6 +1,6 @@
 pkgbase = servo-nightly-bin
 	pkgdesc = embeddable, independent, memory-safe, modular, parallel web rendering engine
-	pkgver = 20250721
+	pkgver = 20250722
 	pkgrel = 1
 	url = https://servo.org
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = servo-nightly-bin
 	depends = libunwind
 	provides = servo
 	conflicts = servo
-	source = servo-20250721.tar.gz::https://github.com/servo/servo-nightly-builds/releases/download/2025-07-21/servo-latest.tar.gz
-	source = servo-20250721.tar.gz.sha256::https://github.com/servo/servo-nightly-builds/releases/download/2025-07-21/servo-latest.tar.gz.sha256
+	source = servo-20250722.tar.gz::https://github.com/servo/servo-nightly-builds/releases/download/2025-07-22/servo-latest.tar.gz
+	source = servo-20250722.tar.gz.sha256::https://github.com/servo/servo-nightly-builds/releases/download/2025-07-22/servo-latest.tar.gz.sha256
 	source = https://raw.githubusercontent.com/servo/servo/main/LICENSE
 	source = org.servo.Servo.desktop
-	sha256sums = 591d008722adc11d7130709dff9d348d17c5d7b184e848e4e3d57e9a9b51d599
-	sha256sums = 2592c7e0320ba7d1859cc7fb3292c0ca79dde2a8442258149f5772b863b382b6
+	sha256sums = bd2b2fc5bb80d2e61cd2a7513afecf915a13bec371493f1f2eb6dbe572f762a8
+	sha256sums = 02cdfebd76dcfb2e4a0248edfa9818d732da860e07599ec50c5207a63ce5a36f
 	sha256sums = 1af2d2b02d9c86030d29ed77117ca7a1b0e4b6ff35bcf8eeb124867d0f5cb59e
 	sha256sums = cb5fe124efa3db92ed298cd67d597ef26e35afa448d4e9fdcb31bb67a961047d
 
