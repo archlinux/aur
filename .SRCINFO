@@ -1,0 +1,27 @@
+pkgbase = kinect-audio-setup-k4w-motorfix
+	pkgdesc = Tools to download and apply USB Audio Class firmware for Kinect and use it as microphone, patched for Kinect for Windows, updated to use the non-beta Kinect firmware that also enables motor control, for use in libfreenect/OpenNI
+	pkgver = 0.5
+	pkgrel = 4
+	url = https://git.ao2.it/kinect-audio-setup.git
+	arch = x86_64
+	arch = i686
+	license = WTFPL
+	license = BSD
+	makedepends = make
+	makedepends = gcc
+	makedepends = msitools
+	makedepends = cabextract
+	depends = libusb
+	depends = systemd-libs
+	provides = kinect-audio-setup
+	conflicts = kinect-audio-setup
+	source = git+https://git.ao2.it/kinect-audio-setup.git#tag=v0.5
+	source = https://download.microsoft.com/download/E/C/5/EC50686B-82F4-4DBF-A922-980183B214E6/KinectRuntime-v1.8-Setup.exe
+	source = Kinect-for-Windows.patch
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = f4d4143fb0f0a8d276889c077bfc8af42bfe99c128cadab5e316bf015a9858e9
+	sha256sums = b5eaedb8190480a2905a6fde13529eb4c03e15724d271d6d023d55ccf6c0e1c7
+	sha256sums = d23efd383bc03aa8cdeac33be24a9c915f05ad92d20f4070e7160bdcff7f4a8c
+
+pkgname = kinect-audio-setup-k4w-motorfix
