@@ -1,5 +1,5 @@
 pkgname=stable-diffusion.cpp-vulkan-git
-pkgver=r238.6d84a30
+pkgver=r242.1896b28
 pkgrel=1
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=("MIT")
