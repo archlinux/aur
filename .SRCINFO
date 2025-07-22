@@ -1,0 +1,18 @@
+pkgbase = subcat-git
+	pkgdesc = Lightning-fast passive subdomain discovery tool for security professionals and bug bounty hunters
+	pkgver = r28.1b3d015
+	pkgrel = 1
+	url = https://github.com/duty1g/subcat
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-yaml
+	depends = python-urllib3
+	provides = subcat
+	source = git+https://github.com/duty1g/subcat
+	sha256sums = SKIP
+
+pkgname = subcat-git
