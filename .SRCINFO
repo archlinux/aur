@@ -1,13 +1,13 @@
 pkgbase = hagrid-git
 	pkgdesc = Verifying OpenPGP keyserver, written in Rust
-	pkgver = r779.1d1eedc
-	pkgrel = 2
+	pkgver = r906.94bf37a
+	pkgrel = 1
 	url = https://gitlab.com/keys.openpgp.org/hagrid
 	arch = x86_64
 	license = AGPL3
-	makedepends = cargo
+	makedepends = rustup
 	makedepends = git
-	makedepends = clang
+	makedepends = cargo
 	depends = nettle
 	depends = gmp
 	optdepends = gunicorn: wkd-domain-checker
@@ -15,6 +15,6 @@ pkgbase = hagrid-git
 	source = git+https://gitlab.com/keys.openpgp.org/hagrid.git
 	source = hagrid.service
 	sha512sums = SKIP
-	sha512sums = e4e33158fd360947a64f3faee784f9a4203a171bef85ab0cee048e1df19d6c080175c6e175cfac3aeb08d56291c1c26ac473bb979c7347401338654926617781
+	sha512sums = e6b2db1058484da3b168d38389c3d3109e8bd28381ff199997396c46513f0e4d52a7201db4c21d952bfdb7e36fc40bea36682349fe6e8d51bc808ebd9f1b0d96
 
 pkgname = hagrid-git
