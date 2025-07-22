@@ -1,0 +1,18 @@
+pkgbase = python-trackio
+	pkgdesc = A lightweight, local-first, and free experiment tracking library
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gradio-app/trackio
+	arch = any
+	groups = huggingface
+	license = MIT
+	makedepends = python-installer
+	makedepends = unzip
+	depends = python-pandas
+	depends = python-huggingface-hub
+	depends = python-gradio
+	noextract = trackio-0.1.0-py3-none-any.whl
+	source = trackio-0.1.0-py3-none-any.whl::https://files.pythonhosted.org/packages/84/1f/e05cf89b42f069cf5682900968b1d632cc32c65220a1ca7a04545906d884/trackio-0.1.0-py3-none-any.whl
+	sha256sums = db46c9d88e3ba552e1c38996e2dfe21c157c9929bb71658d98ad49e2858819c8
+
+pkgname = python-trackio
