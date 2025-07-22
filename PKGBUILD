@@ -4,7 +4,7 @@
 pkgname=phonon-qt5
 pkgdesc='The multimedia framework by KDE'
 pkgver=4.12.0
-pkgrel=6
+pkgrel=7
 arch=(x86_64)
 url='https://community.kde.org/Phonon'
 license=(LGPL)
@@ -30,7 +30,6 @@ build() {
 }
 
 package(){
-  depends+=(phonon-qt5-backend)
   optdepends+=('qt5-tools: Designer plugin')
 
   DESTDIR="$pkgdir" cmake --install build
