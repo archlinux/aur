@@ -1,7 +1,7 @@
 pkgbase = beaker
 	pkgdesc = Full-stack software and hardware integration testing system
-	pkgver = 28.3
-	pkgrel = 4
+	pkgver = 29.2
+	pkgrel = 1
 	url = https://beaker-project.org/
 	arch = any
 	license = GPL
@@ -19,12 +19,8 @@ pkgbase = beaker
 	provides = bkr
 	provides = beaker-wizard
 	options = zipman
-	source = beaker-28.3.tar.gz::https://github.com/beaker-project/beaker/archive/beaker-28.3.tar.gz
-	source = 0001-add-sphinx-extension.patch
-	source = 0002-fix-sphinx-extlinks.patch
-	sha256sums = be2bea573bc6ab70a0eacf366c63623c9cca679bbf3313c8dc6625b76e2c66b8
-	sha256sums = f2cc708ff3c7f6c8c8fbc2dc13c45f89326c11a4c489f80c842f0ef518081447
-	sha256sums = 2649c5a7a3ec6028634ec45be3d6f15402f9f276f76976234ac4d7f27319321c
+	source = https://github.com/beaker-project/beaker/archive/refs/tags/beaker-29.2.tar.gz
+	sha256sums = 5aa4c1807187e7c318db1ddc9132d1045824f6eaa6f04773663d9fae0e950b8c
 
 pkgname = beaker-common
 	pkgdesc = Full-stack software and hardware integration testing system - common files
@@ -39,4 +35,4 @@ pkgname = beaker-client
 	depends = python-requests
 	depends = python-prettytable
 	depends = python-jinja
-	depends = beaker-common=28.3
+	depends = beaker-common=29.2
