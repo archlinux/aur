@@ -2,7 +2,7 @@
 
 pkgname=ctune-git
 pkgver=v1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="NCurses internet radio player for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/An7ar35/ctune"
