@@ -1,8 +1,10 @@
 # Maintainer: Novadragon <me@novadragon.space>
 # Contributor: DragonWoven
+
+: ${_godot_version:=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])').stable}
 pkgname="godots-git"
 pkgver=1.3.stable.r38.gdbb263b
-pkgrel=1
+pkgrel=2
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=("MIT")
@@ -20,17 +22,14 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-prepare(){
- mkdir -p "godot-data"
- cp -r "/usr/share/godot" "godot-data"
-}
 
 build(){
+ sed -i "s|custom_template/release=\"\"|custom_template/release=\"/usr/share/godot/export_templates/${_godot_version}/linux_release.x86_64\"|" godots/export_presets.cfg
  cd "${pkgname%-git}"
 
  mkdir build
  rm -R tests
- XDG_DATA_HOME="$srcdir/godot-data" godot --headless --export-release "Linux/X11" build/godots
+ godot --headless --export-release "Linux/X11" build/godots
 
 }
 
