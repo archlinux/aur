@@ -1,0 +1,14 @@
+pkgbase = php-md4c
+	pkgdesc = MD4C extension for PHP
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://pecl.php.net/package/md4c
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = php
+	depends = md4c
+	source = http://pecl.php.net/get/md4c-1.1.tgz
+	sha256sums = ef5f6f76e525a50747f691af2240075efb793a47efc34782a8cee875f13bdee7
+
+pkgname = php-md4c
