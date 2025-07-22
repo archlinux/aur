@@ -15,7 +15,7 @@ provides=('bytedance-lark' 'lark')
 options=('!emptydirs')
 install=${pkgname}.install
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10)
-DLAGENTS=("https::/usr/bin/sh -c curl\ -vLO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\"")
+DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\"")
 sha256sums=('7eeb1495f6488d9e754a76e0d962518591b043ecadcd8f3c6a66d51d27c3d269')
 
 package() {
