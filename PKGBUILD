@@ -5,7 +5,7 @@
 
 pkgname=python-pinyin
 _pkg=pypinyin
-pkgver=0.54.0
+pkgver=0.55.0
 pkgrel=1
 pkgdesc="Chinese to Pinyin library"
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('9ab0d07ff51d191529e22134a60e109d0526d80b7a80afa73da4c89521610958')
+sha256sums=('b5711b3a0c6f76e67408ec6b2e3c4987a3a806b7c528076e7c7b86fcf0eaa66b')
 
 build() {
 	cd "$_pkg-$pkgver"
