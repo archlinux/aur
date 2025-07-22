@@ -1,0 +1,14 @@
+pkgbase = texlive-awesome-cv-git
+	pkgdesc = LaTeX template for your outstanding job application.
+	pkgver = r261.dc50c6d
+	pkgrel = 1
+	url = https://github.com/posquit0/Awesome-CV
+	arch = any
+	license = LPPL-1.3c
+	makedepends = git
+	depends = texlive-bin
+	provides = Awesome-CV
+	source = Awesome-CV::git+https://github.com/posquit0/Awesome-CV.git
+	sha512sums = SKIP
+
+pkgname = texlive-awesome-cv-git
