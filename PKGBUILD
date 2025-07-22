@@ -1,9 +1,9 @@
 # Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
 pkgname=karton-git
-pkgver=0.1.prealpha.r28.fdfaef8
+pkgver=0.1.prealpha.r31.07a4d62
 pkgrel=1
-pkgdesc='A Libvirt-based Virtual Machine Manager for KDE'
+pkgdesc='A libvirt-based Virtual Machine Manager for KDE'
 arch=(x86_64)
 url='https://invent.kde.org/sitter/karton'
 license=(GPL-3.0-or-later)
@@ -19,7 +19,8 @@ depends=(gcc-libs
          qqc2-desktop-style
          qt6-base
          qt6-declarative
-         virt-viewer)
+         qt6-multimedia
+         spice-gtk)
 makedepends=(git
              extra-cmake-modules
              vulkan-headers)
