@@ -1,0 +1,27 @@
+pkgbase = openai-codex-rust
+	pkgdesc = Lightweight coding agent that runs in your terminal (Rust rewrite)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/openai/codex
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = tree-sitter
+	makedepends = tree-sitter-bash
+	makedepends = oniguruma
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = tree-sitter
+	depends = tree-sitter-bash
+	depends = oniguruma
+	provides = codex
+	conflicts = openai-codex
+	conflicts = openai-codex-bin
+	conflicts = codex
+	options = !debug
+	source = https://github.com/openai/codex/archive/refs/tags/rust-v0.8.0.tar.gz
+	sha256sums = f8cfe4d38efc0e297d44f33cb17c744977b25076e7c4d85e3d038c402bc36441
+
+pkgname = openai-codex-rust
