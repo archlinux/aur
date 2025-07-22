@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MCMCprecision
-_pkgver=0.4.0
+_pkgver=0.4.2
 pkgname=r-${_pkgname,,}
-pkgver=0.4.0
-pkgrel=4
+pkgver=0.4.2
+pkgrel=1
 pkgdesc='Precision of Discrete Parameters in Transdimensional MCMC'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4e419c325a9e66cab67ea2c141062791bd52a6e6308395731b5307b323641864')
+sha256sums=('fc2109165a7f147e7d2a782774617e328282e10cf2e0a54a2ef1bf064db9fa04')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
