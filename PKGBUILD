@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Wang <me at nicho1as dot wang>
 
 pkgname=nmcrcon-git
-pkgver=r34.a34941c
+pkgver=r51.f1917f7
 pkgrel=1
 pkgdesc="Yet another Minecraft RCON client that isn't against humanity and actually works."
 url="https://github.com/nicholascw/nmcrcon"
@@ -22,7 +22,8 @@ pkgver () {
 
 build () {
   cd "$srcdir/nmcrcon"
-  make nmcrcon
+  BUILDVER="nmcrcon (AUR nmcrcon-git, $pkgver-$pkgrel)"
+  make nmcrcon CFLAGS+=" -DNMCRCON_VERSION='\"${BUILDVER}\"'"
 }
 
 package () {
