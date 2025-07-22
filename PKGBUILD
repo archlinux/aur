@@ -2,12 +2,12 @@
 
 pkgname=serproid
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='PKCS#11 driver for cloud-based digital certificates issued by Serpro'
 arch=('x86_64')
 url='https://serproid.serpro.gov.br'
 license=('custom')
-depends=('java-runtime' 'java-openjfx' 'openssl' 'gcc-libs' 'bash')
+depends=('java-runtime>=23' 'java-openjfx' 'openssl' 'gcc-libs' 'bash')
 makedepends=('tar')
 source=("serproid"
         "https://storagegw.estaleiro.serpro.gov.br/instalador-desktop/SerproID-$pkgver-amd64.deb")
