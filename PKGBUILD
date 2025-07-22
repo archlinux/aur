@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.7.r11.g54b4418
+pkgver=1.0.0.alpha.7.r13.gf4f4fb3
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,9 @@ depends=(
   'acpid'
   'adw-gtk-theme'
   'alsa-utils'
-  'geoclue'
   'libinput'
   'libpulse'
+  'openssl'
   'playerctl'
   'pop-sound-theme-git'
   'systemd'
@@ -25,9 +25,7 @@ makedepends=(
   'libxkbcommon'
   'mold'
 )
-optdepends=(
-  'pipewire-alsa: Media keys support'
-)
+optdepends=('pipewire-alsa: Media keys support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-settings-daemon.git'
@@ -57,13 +55,12 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export GEOCLUE_AGENT="/usr/lib/geoclue-2.0/demos/agent"
 
   # use mold instead of lld to speed up build
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  ARGS+=" --frozen" nice make geoclue_agent='/usr/lib/geoclue-2.0/demos/agent'
+  ARGS+=" --frozen" nice make
 }
 
 package() {
