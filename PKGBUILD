@@ -3,13 +3,14 @@
 _pkgname=crystal-dock
 pkgname=${_pkgname}-bin
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A cool dock (desktop panel) for Linux desktop."
 arch=('x86_64')
 url='https://github.com/dangvd/crystal-dock'
 license=('GPL3')
 options=('!strip' 'staticlibs')
-depends=(qt6-base wayland layer-shell-qt kwin)
+depends=(qt6-base wayland layer-shell-qt)
+optdepends=(kwin)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
