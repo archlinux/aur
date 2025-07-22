@@ -17,6 +17,7 @@ pkgbase = abdownloadmanager-bin
 	depends = fontconfig
 	depends = libx11
 	depends = libxext
+	depends = libappindicator-gtk3
 	provides = abdownloadmanager
 	conflicts = abdownloadmanager
 	options = !debug
