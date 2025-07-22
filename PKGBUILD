@@ -5,7 +5,7 @@
 
 pkgname=rot8-git
 _pkgname="rot8"
-pkgver=1.0.0+r109+g6a51f7cdf
+pkgver=1.0.0+r112+g428221ea0
 pkgrel=1
 pkgdesc="A screen rotation daemon "
 arch=("x86_64" "aarch64")
