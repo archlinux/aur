@@ -1,7 +1,7 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 7.0rc4
-	pkgrel = 2
+	pkgver = 7.0rc6
+	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
 	license = GPL-3.0-or-later
@@ -32,13 +32,14 @@ pkgbase = portable
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-impl
 	depends = inotify-tools
+	depends = grep
 	optdepends = at-spi2-core: accessibility
 	optdepends = orca: screen reader
 	optdepends = way-secure
 	provides = portable
 	options = !debug
 	options = !strip
-	source = portable::git+https://github.com/Kraftland/portable.git#tag=7.0rc4
-	md5sums = 4dc17eae5022deb047865072971cfb1f
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=7.0rc6
+	md5sums = b23deb037113e0c5cfe06c8bb36c3e7c
 
 pkgname = portable
