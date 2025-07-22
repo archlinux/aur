@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='4.3.0.20250630'
+pkgver='4.3.1.20250722'
 libaddr2line_commit=70b1ab0087acf35d5825b2341b2b03cb3cce3e24
 pkgrel='1'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.
         "https://github.com/bsc-performance-tools/libaddr2line/archive/${libaddr2line_commit}.tar.gz"
         extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(a546316132d186179ceeb32294edd601e7cb147f3decf43c342cfa1ede926f30e818b52f91367240f1f8e454140d941f5d321f28e7d35a2b7a8d22875a2c5417
+sha512sums=(b657e67b8ce959e5a08a859522773b104c33a8e0ff089427a350328a1e7e6138a4916316fa5297f86ca3be0973c3a570e0aec0f9499226718c35fcd92227e268
             32f564d56e68606b69b262fc055c317aa5986482ccd84cd150fd037d01d0575bd5d70a0fd1fda9f3cd281af70e06472c50ead66e9f6a83f329b305256e9a7dff
             e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
