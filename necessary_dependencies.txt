@@ -184,6 +184,7 @@ Module: redis
     open_webui/config.py
     open_webui/main.py
     open_webui/socket/main.py
+    open_webui/test/util/test_redis.py
     open_webui/utils/redis.py
     open_webui/utils/telemetry/instrumentors.py
 Module: fastapi
@@ -291,9 +292,11 @@ Module: open_webui.socket.main
     open_webui/main.py
     open_webui/routers/channels.py
     open_webui/routers/chats.py
+    open_webui/routers/notes.py
     open_webui/routers/users.py
     open_webui/utils/chat.py
     open_webui/utils/middleware.py
+    open_webui/utils/telemetry/metrics.py
 Module: open_webui.routers
   Imported in:
     open_webui/main.py
@@ -386,6 +389,7 @@ Module: open_webui.models.users
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
+    open_webui/utils/telemetry/metrics.py
     open_webui/utils/tools.py
 Module: open_webui.models.chats
   Imported in:
@@ -535,6 +539,7 @@ Module: open_webui.env
     open_webui/utils/oauth.py
     open_webui/utils/pdf_generator.py
     open_webui/utils/plugin.py
+    open_webui/utils/redis.py
     open_webui/utils/task.py
     open_webui/utils/telemetry/instrumentors.py
     open_webui/utils/telemetry/metrics.py
@@ -639,6 +644,7 @@ Module: open_webui.utils.redis
     open_webui/main.py
     open_webui/socket/main.py
     open_webui/socket/utils.py
+    open_webui/test/util/test_redis.py
 Module: open_webui.tasks
   Imported in:
     open_webui/main.py
@@ -855,6 +861,12 @@ Module: collections.abc
 Module: websockets
   Imported in:
     open_webui/utils/code_interpreter.py
+Module: opentelemetry
+  Imported in:
+    open_webui/utils/auth.py
+    open_webui/utils/logger.py
+    open_webui/utils/telemetry/metrics.py
+    open_webui/utils/telemetry/setup.py
 Module: fpdf
   Imported in:
     open_webui/utils/pdf_generator.py
@@ -897,21 +909,12 @@ Module: jwt
 Module: pytz
   Imported in:
     open_webui/utils/auth.py
-Module: opentelemetry
-  Imported in:
-    open_webui/utils/auth.py
-    open_webui/utils/telemetry/metrics.py
-    open_webui/utils/telemetry/setup.py
 Module: fastapi.security
   Imported in:
     open_webui/utils/auth.py
 Module: passlib.context
   Imported in:
     open_webui/utils/auth.py
-Module: socketio
-  Imported in:
-    open_webui/socket/main.py
-    open_webui/utils/redis.py
 Module: urllib.request
   Imported in:
     open_webui/retrieval/web/utils.py
@@ -990,6 +993,9 @@ Module: open_webui.utils.telemetry.instrumentors
 Module: open_webui.utils.telemetry.metrics
   Imported in:
     open_webui/utils/telemetry/setup.py
+Module: socketio
+  Imported in:
+    open_webui/socket/main.py
 Module: pycrdt
   Imported in:
     open_webui/socket/main.py
@@ -1059,12 +1065,17 @@ Module: open_webui.migrations.util
 Module: open_webui.routers.webui
   Imported in:
     open_webui/test/util/mock_user.py
-Module: docker
-  Imported in:
-    open_webui/test/util/abstract_integration_test.py
 Module: pytest
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
+    open_webui/test/util/abstract_integration_test.py
+    open_webui/test/util/test_redis.py
+Module: unittest.mock
+  Imported in:
+    open_webui/test/apps/webui/storage/test_provider.py
+    open_webui/test/util/test_redis.py
+Module: docker
+  Imported in:
     open_webui/test/util/abstract_integration_test.py
 Module: pytest_docker.plugin
   Imported in:
@@ -1079,9 +1090,6 @@ Module: open_webui.storage
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
 Module: gcp_storage_emulator.server
-  Imported in:
-    open_webui/test/apps/webui/storage/test_provider.py
-Module: unittest.mock
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
 Module: peewee
@@ -1200,6 +1208,13 @@ Module: black
 Module: open_webui.utils.pdf_generator
   Imported in:
     open_webui/routers/utils.py
+Module: open_webui.retrieval.vector.factory
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/files.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/retrieval.py
 Module: open_webui.models.knowledge
   Imported in:
     open_webui/retrieval/utils.py
@@ -1220,12 +1235,6 @@ Module: open_webui.storage.provider
 Module: open_webui.models.memories
   Imported in:
     open_webui/routers/memories.py
-Module: open_webui.retrieval.vector.factory
-  Imported in:
-    open_webui/retrieval/utils.py
-    open_webui/routers/knowledge.py
-    open_webui/routers/memories.py
-    open_webui/routers/retrieval.py
 Module: ldap3
   Imported in:
     open_webui/routers/auths.py
