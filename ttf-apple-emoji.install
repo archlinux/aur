@@ -1,0 +1,3 @@
+post_install() {
+  printf "Be aware there some programs default to Noto Emoji, which can lead to this font not being used."
+}
