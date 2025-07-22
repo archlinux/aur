@@ -1,0 +1,19 @@
+pkgbase = docker-pushmi-pullyu-git
+	pkgdesc = Copy Docker images directly to a remote host without using Docker Hub or a hosted registry
+	pkgver = r68.12d2893
+	pkgrel = 1
+	url = https://github.com/mkantor/docker-pushmi-pullyu
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	depends = bash
+	depends = docker
+	depends = openssh
+	provides = docker-pushmi-pullyu
+	conflicts = docker-pushmi-pullyu
+	source = git+https://github.com/mkantor/docker-pushmi-pullyu
+	source = plugin.patch
+	sha256sums = SKIP
+	sha256sums = 467abfc764c4a3177398be1edd8165816b21c730dde47fe435039a0643acccc3
+
+pkgname = docker-pushmi-pullyu-git

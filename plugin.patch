@@ -1,0 +1,50 @@
+diff --git a/docker-pushmi-pullyu b/docker-pushmi-pullyu
+index 9dbcb65..12e1e20 100755
+--- a/docker-pushmi-pullyu
++++ b/docker-pushmi-pullyu
+@@ -5,9 +5,12 @@ set -o nounset
+ trap 'echo "$0: line $LINENO: exit status of last command: $?" >&2' ERR
+ trap 'cleanup' EXIT
+ 
++plugin_name='pushmi'
++cmd="docker $plugin_name"
++
+ usage() {
+   echo "
+-Usage:	$0 [OPTIONS] [USER@]HOST NAME[:TAG] [NAME[:TAG]...]
++Usage:	$cmd [OPTIONS] [USER@]HOST NAME[:TAG] [NAME[:TAG]...]
+ 
+ Push images directly to a remote host (without a separate registry)
+ 
+@@ -68,6 +71,22 @@ check-registry() {
+   docker login --username="AzureDiamond" --password="hunter2" "$registry" >/dev/null 2>&1
+ }
+ 
++if [[ "${1:-}" = "docker-cli-plugin-metadata" ]]; then
++    cat <<EOF
++{
++  "SchemaVersion": "0.1.0",
++  "Vendor": "%VENDOR%",
++  "Version": "%VERSION%",
++  "ShortDescription": "%DESCRIPTION%"
++}
++EOF
++    exit 0
++fi
++
++if [[ "${1:-}" = "$plugin_name" ]]; then
++    shift
++fi
++
+ use_cache=true
+ 
+ args=""
+@@ -108,7 +127,7 @@ eval set -- "$args"
+ 
+ if [ "$#" -lt 2 ]
+ then
+-  argument-error "\"$0\" requires at least 2 arguments."
++  argument-error "\"$cmd\" requires at least 2 arguments."
+ fi
+ 
+ deploy_target="$1"
