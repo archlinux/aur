@@ -3,7 +3,7 @@
 
 pkgname=openmohaa-git
 _pkgname="${pkgname/-git/}"
-pkgver=0.81.1.r529.g4e8ddf3
+pkgver=0.82.0.r26.c9f13f1
 pkgrel=1
 pkgdesc="Open re-implementation of Medal of Honor: Allied Assault "
 arch=('i686' 'x86_64')
@@ -28,7 +28,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  version=$(git tag --sort=-version:refname | head -1)
+  count=r$(git rev-list --count $version..HEAD)
+  id=$(git rev-parse --short=7 HEAD)
+  full_ver=$(echo "$version.$count.$id" | cut -dv -f2)
+  echo "$full_ver"
 }
 
 build() {
