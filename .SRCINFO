@@ -1,0 +1,14 @@
+pkgbase = agemo
+	pkgdesc = Agemo is a GUI for Hyprpaper, written in Python + Qt6
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/acidburnmonkey/agemo
+	arch = any
+	license = GLP3
+	depends = uv
+	depends = hyprpaper
+	depends = hyprland
+	source = agemo-2.1.0.tar.gz::https://github.com/acidburnmonkey/agemo/archive/refs/tags/2.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = agemo
