@@ -2,11 +2,12 @@
 
 pkgname=godots-bin
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A hub for managing your Godot versions and projects."
 arch=(x86_64)
 url=https://github.com/MakovWait/godots
 license=(MIT)
+provides=('godots')
 conflicts=('godots')
 options=('!strip')
 depends=('unzip')
