@@ -1,7 +1,7 @@
 # Maintainer: SysAdm <sysadm.archlinux@proton.me>
 # Contributor: Asuka Minato
 pkgname=caido-cli
-pkgver=0.48.1
+pkgver=0.49.0
 pkgrel=1
 pkgdesc="A lightweight web security auditing toolkit."
 arch=(x86_64 aarch64)
@@ -12,8 +12,8 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://caido.download/releases/v${pkgver}/caido-cli-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://caido.download/releases/v${pkgver}/caido-cli-v${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('51d782dc166641551d5a6c104c2dbba6d174fa5660097a45f325da7fc063a5ba')
-sha256sums_aarch64=('e4ad70e85a6512eafc54584a3be63244bb3836c7733e197829ffb329df9e69da')
+sha256sums_x86_64=('a4f15337f2a3c1965726f147b6dc37750afb0109c8204932c65b16131eb529b7')
+sha256sums_aarch64=('79de76ed1f77e4c5ce76ba487ae85fe436229cad3508c6bbefc85b7c17183bcb')
 
 package() {
 	install -Dm755 caido-cli -t $pkgdir/usr/bin
