@@ -2,8 +2,8 @@
 _jdkname=liberica-nik-23-full
 pkgname="${_jdkname}-bin"
 _java_ver=21
-_pkgver=${_java_ver}.0.7+9
-_nikver=23.1.7
+_pkgver=${_java_ver}.0.8+13
+_nikver=23.1.8
 pkgver=${_nikver/+/.}
 pkgrel=1
 pkgdesc='Liberica NIK is a downstream of GraalVM Community edition. The full version provides support for JavaFX and Swing.'
