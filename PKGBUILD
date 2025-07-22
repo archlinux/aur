@@ -7,17 +7,18 @@ pkgname=('xapp-thumbnailers-common'
          'xapp-appimage-thumbnailer'
          'xapp-gimp-thumbnailer'
          'xapp-jxl-thumbnailer'
-         'xapp-ora-thumbnailer')
+         'xapp-ora-thumbnailer'
+         'xapp-aiff-thumbnailer')
 pkgbase=xapp-thumbnailers
-pkgver=1.2.6
-pkgrel=2
+pkgver=1.2.7
+pkgrel=1
 pkgdesc="Thumbnailers for GTK Desktop Environments"
 arch=('any')
 url="https://github.com/linuxmint/xapp-thumbnailers"
 license=('GPL-3.0-or-later')
 makedepends=('meson')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7e4c6cc0c140fe3813cc6b877e952cca9e300cd00a204c2b8ed7c73a3369d14b')
+sha256sums=('00eda2aee83035e94c5fabe14e129c75da1f8475ad9068658a023eaf9dd545c8')
 
 build() {
   arch-meson "$pkgbase-$pkgver" build
@@ -127,6 +128,19 @@ package_xapp-jxl-thumbnailer() {
 package_xapp-ora-thumbnailer() {
   pkgdesc="OpenRaster thumbnailer"
   depends=('xapp-thumbnailers-common')
+
+  cd "$pkgbase-$pkgver"
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+    "$pkgdir/usr/share/thumbnailers/"
+}
+
+package_xapp-aiff-thumbnailer() {
+  pkgdesc="AIFF thumbnailer"
+  depends=(
+    'python-mutagen'
+    'xapp-thumbnailers-common'
+  )
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
