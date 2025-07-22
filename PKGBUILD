@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.6.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -142,7 +142,7 @@ build() {
 
     # Frontend part
     export NODE_OPTIONS="--max_old_space_size=4096"
-    npm install
+    npm install --force
     npm run format
     npm run i18n:parse
     npm run build
