@@ -1,0 +1,26 @@
+# Maintainer: stag-enterprises < x [at] stag [dot] lol >
+
+pkgname=ghq-gst-bin
+pkgver=5.0.5
+pkgrel=1
+pkgdesc="Additional commands for ghq"
+arch=("x86_64" "aarch64")
+url="https://github.com/uetchy/gst"
+license=("Apache-2.0")
+depends=("ghq>=1.8.0")
+changelog="CHANGELOG"
+source_x86_64=("https://github.com/uetchy/gst/releases/download/v${pkgver}/gst_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/uetchy/gst/releases/download/v${pkgver}/gst_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('79185bb0c866218d138934b09fcbd03815bfdf87786c5f0e82a1ab88f3658cae')
+sha256sums_aarch64=('71b6fa4fcab7e3012c2cbdeb5828fbbce322293ee1951bf87fdbe2aa679f0cb5')
+sha512sums_x86_64=('b03e504f010ccd729a78fe2be905e70232857422b36320ecd41c86ba2babaa7930b1b4934d671980efc76aa79b0ddc8176c10f6fc59087907b14141a249bd82a')
+sha512sums_aarch64=('d2a0f9cf73d01e38cc17839452f80130d0712c1ed39f9f27fdfb6ad7b6ace768624aa3c10c2242100818da71d460d7f304fd99290540b05fc880885eaa72707f')
+b2sums_x86_64=('27a700eea370b57fe73232c239ede9dcdad96fb96a73ea55124190ed778a16045c65d7bb58abec4dc842c7100d10c14b8329281e98780a5a947e3a5b84facfba')
+b2sums_aarch64=('17b4a983781c4005798cc2420a1d00000f9ca680a7ec5feea8368474c792f62a53dda15ad86e762d3d357a9659e514424e7b42e988c4529ef8706dccc9b91bab')
+
+package() {
+     cd "$srcdir"
+     install -Dm755 gst       "$pkgdir/usr/bin/gst"
+     install -Dm644 README.md "$pkgdir/usr/share/doc/ghq-gst/README.md"
+     install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/ghq-gst/LICENSE"
+}
