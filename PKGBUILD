@@ -36,14 +36,6 @@ check() {
     # Tests for LangGraph developers
     --deselect tests/test_remote_graph.py::test_remote_graph_basic_invoke
     --deselect tests/test_remote_graph.py::test_remote_graph_stream_messages_tuple
-    # Need to be fixed by developers
-    #--deselect tests/test_large_cases.py::test_nested_graph_state
-    #--deselect tests/test_large_cases.py::test_doubly_nested_graph_state
-    #--deselect tests/test_large_cases.py::test_weather_subgraph
-    #--deselect tests/test_large_cases_async.py::test_nested_graph_state
-    #--deselect tests/test_large_cases_async.py::test_doubly_nested_graph_state
-    #--deselect tests/test_large_cases_async.py::test_weather_subgraph
-    #--deselect tests/test_pregel.py::test_falsy_return_from_task
   )
   cd "${srcdir}"/${_name}-${pkgver}
   python -m venv --system-site-packages test-env
