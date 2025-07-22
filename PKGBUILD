@@ -1,7 +1,7 @@
 # Maintainer: Ted Pinkerton <p_t@fastmail.net>
 pkgname=markcat
-pkgver=1.1.0
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="A CLI tool to convert project directories to markdown format"
 arch=('x86_64')
 url="https://github.com/RunnersNum40/markcat"
