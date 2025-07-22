@@ -1,7 +1,7 @@
 pkgbase = spacefm-bin
 	pkgdesc = SpaceFM binary package from debian bullseye, GTK3 version
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/bookworm/amd64/spacefm-gtk3
 	arch = x86_64
 	license = GPL-2.0-only
@@ -12,7 +12,7 @@ pkgbase = spacefm-bin
 	conflicts = spacefm
 	conflicts = spacefm-gtk2
 	conflicts = spacefm-gtk2-bin
-	source = http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm-gtk3_1.0.6-5+b1_amd64.deb
-	sha256sums = 758a0197e8fa8862d97d51ce9734755269896fa67a46fb0b36d6831b25ca6bfd
+	source = http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm-gtk3_1.0.6-5_amd64.deb
+	sha256sums = 912006c015b5e43943a87b8f1fe5a49abdd22b60a3d5a29f87b3e31d48856cd9
 
 pkgname = spacefm-bin

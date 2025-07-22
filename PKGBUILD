@@ -3,15 +3,15 @@
 pkgname=spacefm-bin
 pkgver=1.0.6
 _subver=5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="SpaceFM binary package from debian bullseye, GTK3 version"
 license=('GPL-2.0-only')
-source=("http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm-gtk3_${pkgver}-${_subver}+b1_amd64.deb")
+source=("http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm-gtk3_${pkgver}-${_subver}_amd64.deb")
 depends=(gtk3 startup-notification ffmpegthumbnailer)
 provides=('spacefm')
 conflicts=('spacefm' 'spacefm-gtk2' 'spacefm-gtk2-bin')
-sha256sums=('758a0197e8fa8862d97d51ce9734755269896fa67a46fb0b36d6831b25ca6bfd')
+sha256sums=('912006c015b5e43943a87b8f1fe5a49abdd22b60a3d5a29f87b3e31d48856cd9')
 url="https://packages.debian.org/bookworm/amd64/spacefm-gtk3"
 
 prepare() {
