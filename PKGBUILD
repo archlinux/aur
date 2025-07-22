@@ -15,12 +15,12 @@ source=("git+https://gitlab.com/protesilaos/tempus-themes-kitty.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -d "$pkgdir/etc/kitty/tempus-themes"
   install -Dm644 *.conf -t "$pkgdir/etc/kitty/tempus-themes/"
 }
