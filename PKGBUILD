@@ -1,7 +1,7 @@
 # Maintainer: Alex Murkoff <413x1nkp@gmail.com>
 pkgname=paclogger
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Pacman hook written in C++ that logs all of the updates and downgrades every day."
 arch=("x86_64")
 url="https://codeberg.org/413x1nkp/paclogger"
