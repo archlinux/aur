@@ -14,7 +14,7 @@ pkgver=2.25.27
 pkgrel=1
 pkgdesc="Lilypond music engraving program (development release)"
 arch=('x86_64')
-#url="https://lilypond.org"
+url="https://lilypond.org"
 license=('FDL1.3' 'GPL3' 'custom:OFL')
 groups=('pro-audio')
 depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile')
@@ -50,8 +50,8 @@ package() {
   depends+=('libfontconfig.so' 'libfreetype.so' 'libglib-2.0.so'
   'libgobject-2.0.so' 'libpangoft2-1.0.so' 'libpango-1.0.so')
   cd "$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir" vimdir="/usr/share/vim/vimfiles" install
   make DESTDIR="$pkgdir" install-bytecode
+  make DESTDIR="$pkgdir" vimdir="/usr/share/vim/vimfiles" install
   install -vDm 644 LICENSE.OFL -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -vDm 644 {AUTHORS,NEWS}.txt README.md \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
