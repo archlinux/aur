@@ -2,8 +2,8 @@
 
 pkgname=qimgv-qt6-kde-git
 _pkgname=qimgv
-pkgver=v1.0.3.alpha.r119.g82e6b75
-pkgrel=2
+pkgver=v1.0.3.alpha.r153.ga8e335b
+pkgrel=3
 pkgdesc="Qt6 image viewer. Fast, configurable, easy to use. Supports video playback."
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://github.com/easymodo/qimgv"
@@ -16,31 +16,23 @@ optdepends=('kimageformats: support for more image formats'
             )
 provides=("qimgv")
 conflicts=("qimgv")
-patch="556.patch"
-source=(git+"${url}".git
-        $patch
-)
-md5sums=('SKIP'
-         'baa77b45698b38f63c2e7b9a297196fb')
+source=(git+"${url}".git)
+md5sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    patch -p1 -i "${srcdir}/$patch"
-    install -d build
-}
-
 build() {
+    install -d "${srcdir}/${_pkgname}/build"
     cd "${srcdir}/${_pkgname}/build"
     cmake .. \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DKDE_SUPPORT=ON \
+        -DUSE_QT5=OFF \
         -DCMAKE_CXX_COMPILER_LAUNCHER='ccache' \
         -DCMAKE_C_COMPILER_LAUNCHER='ccache'
     make

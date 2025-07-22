@@ -1,7 +1,7 @@
 pkgbase = qimgv-qt6-kde-git
 	pkgdesc = Qt6 image viewer. Fast, configurable, easy to use. Supports video playback.
-	pkgver = v1.0.3.alpha.r119.g82e6b75
-	pkgrel = 2
+	pkgver = v1.0.3.alpha.r153.ga8e335b
+	pkgrel = 3
 	url = https://github.com/easymodo/qimgv
 	arch = x86_64
 	arch = i686
@@ -27,8 +27,6 @@ pkgbase = qimgv-qt6-kde-git
 	provides = qimgv
 	conflicts = qimgv
 	source = git+https://github.com/easymodo/qimgv.git
-	source = 556.patch
 	md5sums = SKIP
-	md5sums = baa77b45698b38f63c2e7b9a297196fb
 
 pkgname = qimgv-qt6-kde-git
