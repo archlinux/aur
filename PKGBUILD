@@ -4,12 +4,13 @@
 : ${_godot_version:=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])').stable}
 pkgname="godots-git"
 pkgver=1.3.r38.gdbb263b
-pkgrel=4
+pkgrel=5
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=("MIT")
 arch=("x86_64")
 provides=('godots')
+conflicts=('godots')
 depends=('unzip')
 source=("git+https://github.com/MakovWait/godots.git")
 makedepends=('git' 'godot' 'godot-export-templates-linux')
