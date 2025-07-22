@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Automated player and recorder for Easy Effects, allowing re-recording one or multiple songs with applied effects."
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('python>=3.11' 'easyeffects' 'ffmpeg' 'pipewire')
 makedepends=('git')
 source=("git+$url.git")
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'git describe --tags
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

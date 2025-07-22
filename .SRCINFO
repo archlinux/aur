@@ -4,7 +4,7 @@ pkgbase = easyeffects-record
 	pkgrel = 1
 	url = https://github.com/mzivic7/easyeffects-record
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = git
 	depends = python>=3.11
 	depends = easyeffects
