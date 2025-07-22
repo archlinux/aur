@@ -3,23 +3,23 @@
 
 pkgname=oolite-git
 pkgver=1.91.0.7684.250719.75e511b.r0.75e511b31
-pkgrel=2
+pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements"
 arch=('x86_64')
 url="https://oolite.space/"
 license=('GPL-2.0-or-later')
 groups=('game')
-depends=(espeak gnustep-base gnustep-make glu nspr openal
+depends=(espeak gnustep-base glu nspr openal
          libpng14 gcc-libs libglvnd glibc zlib sdl12-compat bash
          libvorbis)
-makedepends=(curl zip libx11 gcc-objc git)
+makedepends=(gnustep-make curl zip libx11 gcc-objc git)
 source=(oolite-git::git+https://github.com/OoliteProject/oolite
         oolite-git.sh
         linux-force-use-of-libpng14.patch
 )
 
 sha512sums=('SKIP'
-            '2d0431cc2cdfa82c9c7f897d2f2311519a9b5ef9f73fb276a445bdd4e834d5a9ed0f4442223b6c3703d899ce1b072b1db66548fab65782a8cd1b492a56c3793a'
+            '9eacfddce04dcc91df12038be04387abd508e2e16248561d15c92c173d5b94a363d6b8fa4df644c07732b2cb484aaa0c11b7a07e56295e2d30a87de59f760aef'
             'd0b77a8375bdaadef9a79d287abcb2941b6b50e9e7f8d400d89ec384eaacabaa12353d5d3432b8e8714bae687c3026748e781ab104cc6ad96b81590cf6eac743')
 
 pkgver() {
