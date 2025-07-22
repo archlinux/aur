@@ -12,7 +12,7 @@ pkgbase = remindmez
 	depends = python
 	depends = python-plyer
 	depends = python-pyfiglet
-	source = remindmez::git+https://github.com/Penguin-Dev93/remindmez.git#tag=v1.0.0
-	md5sums = SKIP
+	source = https://github.com/Penguin-Dev93/remindmez/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 9e92b3219528049a097f33f390d2f82d50a8e75cd3c29cdecff2ad13509e5c60
 
 pkgname = remindmez
