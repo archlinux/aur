@@ -8,6 +8,6 @@ pkgbase = ssprea-nvidia-control
 	makedepends = git
 	depends = dotnet-sdk-9.0
 	source = ssprea-nvidia-control-1.1.0::git+https://github.com/ssprea/ssprea-nvidia-control.git#tag=1.1.0
-	sha256sums = 2109d46a705776337002c53d729494a774f5315b9dc3cc814c943b5ef0b11a03
+	sha256sums = SKIP
 
 pkgname = ssprea-nvidia-control

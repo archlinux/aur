@@ -39,4 +39,4 @@ package() {
 	make DESTDIR="$pkgdir/" installgui
 }
 
-sha256sums=('2109d46a705776337002c53d729494a774f5315b9dc3cc814c943b5ef0b11a03')
+sha256sums=('SKIP')
