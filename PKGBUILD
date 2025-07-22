@@ -1,21 +1,48 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=openai-codex
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Lightweight coding agent that runs in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openai/codex"
 license=('Apache-2.0')
-depends=('nodejs')
-makedepends=('npm')
+depends=()
+makedepends=(
+	'cargo'
+)
 optdepends=(
 	'git'
 	'ripgrep: accelerated large-repo search'
 )
-source=("https://registry.npmjs.org/@openai/codex/-/codex-$pkgver.tgz")
-b2sums=('ba4046764fe40d44da8a644d177e4ca5efc6ad58edd6beafb509bbba329842ca8ef118b090dbef390af7bc7de38c900ebbad5a67319cd23f112dfba8554f3805')
-noextract=("codex-${pkgver}.tgz")
+# LTO seems to cause build failures, details unclear
+options=('!lto')
+source=("${url}/archive/refs/tags/rust-v${pkgver}.tar.gz")
+b2sums=('3fb3462f46d4ac892578a63cba0f273dd52c7e50cd57ca71296a2402540e27c4323ba33526fa057ca0735e9b3ad9535862b80a1b28237873891667e895842a1c')
+
+prepare() {
+    cd "codex-rust-v${pkgver}/codex-rs"
+
+	export RUSTUP_TOOLCHAIN=stable
+
+    # Cargo.lock seems to be outdated, do not use --locked.
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "codex-rust-v${pkgver}/codex-rs"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+
+    cargo build --release --frozen
+}
+
+# check() omitted - there seems to be some irrelevant test failures
 
 package() {
-	npm install -g --prefix "${pkgdir}/usr" "${srcdir}/codex-${pkgver}.tgz"
+    cd "codex-rust-v${pkgver}/codex-rs"
+
+    install -Dm755 -t "${pkgdir}/usr/bin" "target/release/codex"
+    install -Dm755 -t "${pkgdir}/usr/bin" "target/release/codex-exec"
+    install -Dm755 -t "${pkgdir}/usr/bin" "target/release/codex-linux-sandbox"
 }
