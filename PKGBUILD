@@ -3,7 +3,7 @@
 
 pkgname=pforth-git
 pkgver=20250606
-pkgrel=1
+pkgrel=2
 pkgdesc='A portable implementation of the Forth programming language written in ANSI C'
 arch=(any)
 url='http://www.softsynth.com/pforth/'
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  local extra_cflags="-DPF_DEFAULT_DICTIONARY=\\\"$pkgdir/usr/share/pforth/pforth.dic\\\""
+  local extra_cflags="-DPF_DEFAULT_DICTIONARY=\\\"/usr/share/pforth/pforth.dic\\\""
   extra_cflags="$extra_cflags --std=c89 -D_BSD_SOURCE=1"
 
   cd "$srcdir/pforth"

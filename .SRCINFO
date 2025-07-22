@@ -1,7 +1,7 @@
 pkgbase = pforth-git
 	pkgdesc = A portable implementation of the Forth programming language written in ANSI C
 	pkgver = 20250606
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.softsynth.com/pforth/
 	arch = any
 	license = custom
