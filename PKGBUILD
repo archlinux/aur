@@ -6,8 +6,8 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=auxilium
 pkgname=${_pkgname}-git
-pkgver=0.1.0
-pkgrel=5
+pkgver=0.1.1
+pkgrel=0
 pkgdesc="Tool for parse args in many shell (bash, ksh,zsh)"
 arch=(any)
 url="https://auxilium.spn.109"
