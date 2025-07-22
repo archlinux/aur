@@ -1,0 +1,16 @@
+pkgbase = perk-opam-git
+	pkgdesc = A modern, ergonomic, low level programming language. Using opam for dependencies.
+	pkgver = r112.7d00ffc
+	pkgrel = 1
+	url = https://perklang.org/
+	arch = x86_64
+	makedepends = git
+	makedepends = opam
+	depends = gcc
+	depends = ctags
+	provides = perk
+	conflicts = perk
+	source = git+https://github.com/Alex23087/Perk.git
+	sha256sums = SKIP
+
+pkgname = perk-opam-git
