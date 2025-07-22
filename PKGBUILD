@@ -4,7 +4,7 @@
 pkgname=phonon-qt5
 pkgdesc='The multimedia framework by KDE'
 pkgver=4.12.0
-pkgrel=7
+pkgrel=8
 arch=(x86_64)
 url='https://community.kde.org/Phonon'
 license=(LGPL)
@@ -25,7 +25,8 @@ validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84  # Harald Sitter <sitter@
 build() {
   cmake -B build -S phonon-$pkgver \
     -DCMAKE_BUILD_TYPE=None \
-    -DPHONON_BUILD_QT6=OFF
+    -DPHONON_BUILD_QT6=OFF \
+    -DPHONON_BUILD_SETTINGS=OFF
   cmake --build build
 }
 
@@ -33,4 +34,5 @@ package(){
   optdepends+=('qt5-tools: Designer plugin')
 
   DESTDIR="$pkgdir" cmake --install build
+  rm -r "$pkgdir"/usr/share # Conflicts with phonon-qt6
 }
