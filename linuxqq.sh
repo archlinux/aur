@@ -7,6 +7,6 @@ fi
 
 rm -rf ~/.config/QQ/crash_files/*
 
-XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+#XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
-exec /opt/QQ/qq"$@" --enable-wayland-ime --ozone-platform-hint=auto --wayland-text-input-version=3 --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL
+exec /opt/QQ/qq "$@" --enable-features=OverlayScrollbar,ParallelDownloading,CanvasOopRasterization,AcceleratedVideoEncoder,AcceleratedVideoDecoder,AcceleratedVideoDecodeLinuxGL,VaapiIgnoreDriverChecks,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan --wayland-text-input-version=3 --enable-wayland-ime --no-suid-sandbox --password-store=gnome-libsecret

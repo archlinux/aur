@@ -3,7 +3,7 @@
 # Contributor: Integral <integral@member.fsf.org>
 
 pkgname=linuxqq-portable
-pkgver=3.2.17_34740
+pkgver=3.2.18_37475
 pkgrel=1
 epoch=5
 pkgdesc="New Linux QQ based on Electron, sandboxed by portable"
@@ -14,19 +14,19 @@ conflicts=("linuxqq")
 provides=("linuxqq")
 depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'libvips' 'openjpeg2' 'openslide' 'portable')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-_md5_prefix=5aa2d8d6
+_md5_prefix=9ddb6c3b
 _src_prefix="linuxqq_${pkgver/_/-}"
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefix}_amd64.deb")
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefix}_arm64.deb")
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefix}_loongarch64.deb")
 source=("linuxqq.sh" "start.sh" "portable-config" "qq.desktop")
-sha512sums=('d5a0ef4a67c32e051273388fdaf547431feb86d70dd2f8269f545f21232e7ea763e610f476f4c9ba06ee4757094d09d2eb2858e3a3c3ed6141d25caf086b0ad9'
-            '80ee8f7589fb68181732f7c122fc8b36056af696c4941be81eb6e81331f93d080484cd69f5279536f24b27bc120cb7ca25cb6c3ccfd039cd89e77d46632e5248'
-            'c13a004895be89a5e7e05eedf95e7bedbcbcea18e08e64d97bb03166e36425993f7d63a04517cefa78066830a68fc0a68387877caaa6641dcdc810528eb34185'
+sha512sums=('cf9358aada690b8ecc141ed168b05ca828ea220df91dc71084cfc23d90b62331aad6e50c4a7b18d73934be14718b90b57bb3adf3b173cb5edbcea84b9739c8af'
+            'b6a955e64b69d98776346a5ec154d119e1acdc3bba364bf01bdcd6119ce20933f326d40990e7e477c3b7c741beb50e22da4ad2d6880538256245bdc31dcede0e'
+            'f9a9ca63c44fe7ae4a238cc913506e86d712a7ba079a4840a8d00434bcfb3312ffe0914d894a39bf5d412d792a9ca4a402e6b5db42c8a1f69c525bc37c7e884c'
             '2e8d6f87849a59458bb9e5f297cb73a9c9fe4eb24a39e5c45cbbd2c0ba5d628f6378a707b2734873a3765693a096c7cae21edd582a04fc5a2d70fddd7e2906d4')
-sha512sums_x86_64=('ec0345e79aeeac7b8a3db94563430fea6b66ae0987327ad76b7923955a4bedc4610a98a95b4a604c1169b4e54919a07724689f5f818e235a3d099a2c2120efad')
-sha512sums_aarch64=('9d35fb12146014fb63e2e982851e477f872f3e40dbd890558a71eb2b38237c0af4db44f952bc0804f7aad5a9fbb107e3e7e2d20f946dafc503844fa8c53762e8')
-sha512sums_loong64=('a0592faa5af1d272d057469d3605f2cd11356303eee9a9b45590d8f2c55b6a31e3106ae3279ca37de43042479dc769f55a219e9feebd144d1c44a8f88d68d1bc')
+sha512sums_x86_64=('cdd876f2a00a8b23f6340f8b7f2671f7e21dc31cde29bfd071495f4655d12b4a5b8ed4122fac0a2033b87b0d606e9571245002d4bd6612436858103bfefb72f4')
+sha512sums_aarch64=('ec24b93a4ac5de8ba2fa64fb9c793998d7ab2d41401912a1fd0458b8da068487e0aa3eb7b347348bb8dd0c7ee7c5b9be4d5505e3366955f63adaced05face893')
+sha512sums_loong64=('234589f868334fe9b15a2eb36878f57e6ca1ae9fbf05aaee712b935af32e28a31c165d2b52b8e02fd279aababc88e6cecf53ac3e4432397d9b100a699d4fdcdf')
 options=('!strip' '!debug')
 
 package() {
