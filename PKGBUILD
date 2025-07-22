@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.1.0.r1.gb96c9e4c
+pkgver=1.1.0.r20.g98b5d650
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -23,7 +23,6 @@ makedepends=(
     'fcitx'
     'git'
     'hidapi'
-    'icoutils'
     'jack'
     'libdecor'
     'libdrm'
@@ -57,7 +56,7 @@ makedepends=(
 provides=('gopher64')
 conflicts=('gopher64')
 source=('git+https://github.com/gopher64/gopher64.git'
-        'git+https://github.com/Themaister/parallel-rdp-standalone.git')
+        'git+https://github.com/gopher64/parallel-rdp-standalone.git')
 sha256sums=('SKIP'
             'SKIP')
 
@@ -67,7 +66,6 @@ prepare() {
     git -C gopher64 -c protocol.file.allow='always' submodule update
     
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='gopher64/Cargo.toml'
-    icotool -x gopher64/data/icon.ico -o gopher64/data
 }
 
 pkgver() {
@@ -80,7 +78,7 @@ build() {
     export AR='llvm-ar'
     export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
-    export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
+    export RUSTFLAGS+=' -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='target'
     cargo build --release --frozen --all-features --manifest-path='gopher64/Cargo.toml'
@@ -92,7 +90,7 @@ check() {
     export AR='llvm-ar'
     export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
-    export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
+    export RUSTFLAGS+=' -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='target'
     cargo test --frozen --all-features --manifest-path='gopher64/Cargo.toml'
@@ -100,15 +98,7 @@ check() {
 
 package() {
     find target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
-    
-    local _icon
-    local _res
-    while read -r -d '' _icon
-    do
-        _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_icon")"
-        install -D -m644 "$_icon" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/gopher64.png"
-    done < <(find gopher64/data -maxdepth 1 -type f -name 'icon_*_*x*x*.png' -print0)
-    
-    install -D -m644 gopher64/data/gopher64.png -t "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    install -D -m644 gopher64/data/gopher64.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -D -m644 gopher64/data/icon/gopher64_128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gopher64.png"
+    install -D -m644 gopher64/data/icon/gopher64_256x256.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gopher64.png"
+    install -D -m644 gopher64/data/icon/gopher64_512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gopher64.png"
 }
