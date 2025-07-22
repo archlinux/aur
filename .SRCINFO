@@ -4,7 +4,7 @@ pkgbase = cmus-auto-lyrics
 	pkgrel = 1
 	url = https://github.com/mzivic7/cmus-auto-lyrics
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = python>=3.11
 	makedepends = python-pipenv
 	makedepends = git

@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Curses based lyrics display and fetcher for cmus music player"
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('cmus')
 makedepends=('python>=3.11' 'python-pipenv' 'git')
 source=("git+$url.git")
