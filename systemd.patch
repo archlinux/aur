@@ -1,0 +1,13 @@
+diff --git a/config.php.in b/config.php.in
+index 6b7c9812..f2c8c3cf 100644
+--- a/config.php.in
++++ b/config.php.in
+@@ -279,7 +279,7 @@ $config['SPHINX_STRICT_SCHEMA'] = 1;
+ $config['RT'] = 1;
+ $config['MAX_EMAIL_LEN'] = 41;
+ 
+-$config['RELOAD_COMMAND'] = 'sudo -n /etc/init.d/rc.piler reload';
++$config['RELOAD_COMMAND'] = 'sudo -n SBINDIR/systemctl reload piler.service';
+ $config['PILERIMPORT_IMAP_COMMAND'] = 'BINDIR/pilerimport -d LOCALSTATEDIR/piler/imap -q -r';
+ $config['CPU_USAGE_COMMAND'] = "LC_ALL=C mpstat | tail -1 | rev | awk '{ print $1 }' | rev";
+ $config['PILER_BINARY'] = "SBINDIR/piler";
