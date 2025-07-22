@@ -192,7 +192,7 @@ arch=("x86_64")
 url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
 license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
-[ -n "${_use_llvm_to}" ] && makedepends+=("clang" "llvm" "lld")
+[ -n "${_use_llvm_lto}" ] && makedepends+=("clang" "llvm" "lld")
 options=("!strip" "!debug")
 [ "${_debug}" == "y" ] && options=("!strip")
 source=(
@@ -212,7 +212,7 @@ export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 # Check for deprecated settings
 _check_deprecated_settings() {
     if [ -n "${_update_kconfig_on_reuse}" ]; then
-        warning "Please switch to using '_update_kconfig_on_reuse' flag instead of '_optimize_defconfig'"
+        warning "Please switch to using '_optimize_defconfig' flag instead of '_update_kconfig_on_reuse'"
         _optimize_defconfig="y"
     fi
     if [ -n "${_reuse_current}" ]; then
