@@ -1,0 +1,24 @@
+diff --git a/contrib/55-kinect_audio.rules.in b/contrib/55-kinect_audio.rules.in
+index 25ea713..26b154c 100644
+--- a/contrib/55-kinect_audio.rules.in
++++ b/contrib/55-kinect_audio.rules.in
+@@ -1,2 +1,2 @@
+ # Rule to load the Kinect UAC firmware on the "generic" usb device
+-ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02ad", RUN+="@LOADER_PATH@ @FIRMWARE_PATH@"
++ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02be", RUN+="@LOADER_PATH@ @FIRMWARE_PATH@"
+diff --git a/kinect_upload_fw/kinect_upload_fw.c b/kinect_upload_fw/kinect_upload_fw.c
+index 1bd4102..75a7d98 100644
+--- a/kinect_upload_fw/kinect_upload_fw.c
++++ b/kinect_upload_fw/kinect_upload_fw.c
+@@ -40,7 +40,7 @@
+ #include "endian.h"
+ 
+ #define KINECT_AUDIO_VID           0x045e
+-#define KINECT_AUDIO_PID           0x02ad
++#define KINECT_AUDIO_PID           0x02be
+ #define KINECT_AUDIO_CONFIGURATION 1
+ #define KINECT_AUDIO_INTERFACE     0
+ #define KINECT_AUDIO_IN_EP         0x81
+-- 
+2.41.0
+
