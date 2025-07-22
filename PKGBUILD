@@ -4,8 +4,8 @@
 # Date 2025-05-18 00:53:52
 #
 pkgname=wtfis
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Passive hostname, domain and IP lookup tool for non-robots"
 arch=("any")
 url='https://github.com/pirxthepilot/wtfis'
@@ -24,8 +24,8 @@ makedepends=(
     "python-setuptools"
     "python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/16/55/748b21d2d2e765e319cff417447006fc5d714b56317918da0d70ed8d7ee5/wtfis-0.11.0.tar.gz")
-sha256sums=('3a687d99d91c9bba15e45707acef68c3ebc9ffd571fb311c2d83423a62ee0e6f')
+source=("https://files.pythonhosted.org/packages/73/3f/d415009b6ca935d1e5cb5b864fb5d11c052564e32cb109d2662557be2f37/wtfis-0.12.0.tar.gz")
+sha256sums=('1aa26783db9cb05b6ee5e932c9bc4b302c82462452d9e90c3d1d7b2a353b5922')
 package() {
     cd "${pkgname}-${pkgver}" || exit
     python -m build --wheel --no-isolation
