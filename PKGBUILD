@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.6.r97.gbb41b49
+pkgver=1.0.0.alpha.7.r93.g6a29294
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ url="https://github.com/pop-os/cosmic-settings"
 license=('GPL-3.0-only')
 depends=(
   'accountsservice'
+  'adw-gtk-theme'
   'cosmic-icons-git'
   'cosmic-randr-git'
   'fontconfig'
@@ -18,7 +19,6 @@ depends=(
   'libpipewire'
   'libpulse'
   'libxkbcommon'
-  'networkmanager'
   'nm-connection-editor'
   'pipewire-pulse'
   'systemd-libs'
@@ -33,7 +33,7 @@ makedepends=(
   'mold'
 )
 optdepends=(
-  'adw-gtk-theme'
+  'networkmanager: network applet'
   'networkmanager-openvpn: VPN settings'
   'power-profiles-daemon: power profiles'
 )
