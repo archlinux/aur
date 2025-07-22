@@ -2,7 +2,7 @@
 
 pkgbase=pytorch-kineto-git
 pkgname=(libkineto-git torch-tb-profiler-git)
-pkgver=r704.16e2a56b
+pkgver=r708.186618f2
 pkgrel=1
 pkgdesc="Kineto is part of the PyTorch Profiler"
 arch=('x86_64')
@@ -32,7 +32,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/kineto"
     git submodule update --init --recursive
-    patch -Np1 -i ${srcdir}/3rdparty.patch
+    # patch -Np1 -i ${srcdir}/3rdparty.patch
     cd "${srcdir}/kineto/libkineto"
     mkdir -p build
 }

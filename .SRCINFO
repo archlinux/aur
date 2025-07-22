@@ -1,6 +1,6 @@
 pkgbase = pytorch-kineto-git
 	pkgdesc = Kineto is part of the PyTorch Profiler
-	pkgver = r704.16e2a56b
+	pkgver = r708.186618f2
 	pkgrel = 1
 	url = http://www.pytorch.org
 	arch = x86_64
