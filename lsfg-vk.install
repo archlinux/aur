@@ -106,7 +106,7 @@ post_install() {
 
     echo "================================================================================================================================="
     echo "==  To enable lsfg-vk, you can either use the environment variables listed here:                                               =="
-    echo "==    https://github.com/Pahheb/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk                                                       =="
+    echo "==    https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk#legacy-environment-variables                      =="
     echo "==                                                                                                                             =="
     echo "==  Or the new config system, located at:                                                                                      =="
     echo "==    $_config_home/lsfg-vk/conf.toml"
