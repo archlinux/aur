@@ -3,7 +3,7 @@
 
 _pkgname=dotbot
 pkgname="$_pkgname"-git
-pkgver=1.20.1.r6.g7202065
+pkgver=1.23.0.r1.g569ff0b
 pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
@@ -21,6 +21,7 @@ makedepends=(
   python-installer
   python-setuptools
   python-wheel
+  python-hatchling
 )
 checkdepends=(
   python-pytest
