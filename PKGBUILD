@@ -1,8 +1,8 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 
 pkgname=vectorscan
-pkgver=5.4.11
-pkgrel=3
+pkgver=5.4.12
+pkgrel=1
 pkgdesc='Portable fork of hyperscan regular expression matching library'
 arch=(x86_64)
 url=https://github.com/VectorCamp/vectorscan
@@ -20,7 +20,7 @@ depends=(
 )
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgname}/${pkgver}.tar.gz")
-b2sums=('a8f5a1230af0ddf7d9fb9299769ec1736d37ac3284f6a98b1e650af461206cf459eac35d13a47beb6683786c6529539b2d082edf426e7d4890ed11804c76268b')
+b2sums=('7d2a5934423ea5ef7153ab04544e9819d3c95644352780f6614ec2e896cbde4d92cffe6433eab86a55be26c2dd968d4d0ea7867d7c1251d4631af9da33d39f31')
 
 build() {
   cd "${srcdir}"
