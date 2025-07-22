@@ -1,6 +1,6 @@
 # Maintainer: Syvarinth <syvarinth@gmail.com>
 pkgname=pacman-gui
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Simple GTK4 GUI for pacman package manager with AUR support"
 arch=('x86_64')
@@ -35,6 +35,6 @@ package() {
     # Install .desktop file
     install -Dm644 ../pacman-gui.desktop "$pkgdir/usr/share/applications/pacman-gui.desktop"
 
-    # Install icon (if you have one)
-    # install -Dm644 ../icon.png "$pkgdir/usr/share/pixmaps/pacman-gui.png"
+    # Install icon
+    install -Dm644 ../icon-64.png "$pkgdir/usr/share/pixmaps/pacman-gui.png"
 }
