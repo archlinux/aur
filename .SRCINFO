@@ -1,0 +1,45 @@
+pkgbase = godot-export-templates-bin
+	pkgdesc = Godot export templates
+	pkgver = 4.4.1
+	pkgrel = 1
+	url = https://github.com/godotengine/godot
+	arch = any
+	license = MIT
+	optdepends = godot: use the templates
+	provides = godot-export-templates
+	options = !strip
+	options = !debug
+	source = https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
+	source = godot-4.4.1-LICENSE.MIT::https://github.com/godotengine/godot/raw/refs/tags/4.4.1-stable/LICENSE.txt
+	sha256sums = SKIP
+	sha256sums = b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80
+
+pkgname = godot-export-templates-android-bin
+	pkgdesc = Godot export templates - android
+	provides = godot-export-templates
+	provides = godot-export-templates-android
+	conflicts = godot-export-templates-android
+
+pkgname = godot-export-templates-apple-bin
+	pkgdesc = Godot export templates - apple
+	provides = godot-export-templates
+	provides = godot-export-templates-apple
+	conflicts = godot-export-templates-apple
+
+pkgname = godot-export-templates-linux-bin
+	pkgdesc = Godot export templates - linux
+	provides = godot-export-templates
+	provides = godot-export-templates-linux
+	conflicts = godot-export-templates-linux
+
+pkgname = godot-export-templates-web-bin
+	pkgdesc = Godot export templates - web
+	provides = godot-export-templates
+	provides = godot-export-templates-web
+	conflicts = godot-export-templates-web
+
+pkgname = godot-export-templates-windows-bin
+	pkgdesc = Godot export templates - windows
+	provides = godot-export-templates
+	provides = godot-export-templates-windows
+	conflicts = godot-export-templates-windows
