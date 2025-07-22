@@ -2,7 +2,7 @@
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run websites as if they were apps"
 arch=('any')
 url="https://github.com/linuxmint/webapp-manager"
@@ -28,8 +28,9 @@ prepare() {
     "usr/lib/$pkgname/$pkgname.py"
 
   # Fix license path
-  sed -i 's|common-licenses/GPL|licenses/spdx/GPL-3.0-or-later.txt|g' \
-    "usr/lib/$pkgname/$pkgname.py"
+  # Dialog expands too wide
+#  sed -i 's|common-licenses/GPL|licenses/spdx/GPL-3.0-or-later.txt|g' \
+#    "usr/lib/$pkgname/$pkgname.py"
 }
 
 build() {
