@@ -38,4 +38,5 @@ package() {
 	make DESTDIR="$pkgdir/" installcli
 	make DESTDIR="$pkgdir/" installgui
 }
-sha256sums=('a15875cdae333e945c7f92d1f5d3241cfd3e46a4147f982283d4594c856299cb')
+
+sha256sums=('2109d46a705776337002c53d729494a774f5315b9dc3cc814c943b5ef0b11a03')
