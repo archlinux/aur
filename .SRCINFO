@@ -1,0 +1,23 @@
+pkgbase = zoi-bin
+	pkgdesc = Universal Package Manager & Environment Setup Tool (pre-compiled binary)
+	pkgver = 2.4.0_beta
+	pkgrel = 1
+	url = https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = bash-completion: for bash shell completion
+	optdepends = zsh: for zsh shell completion
+	optdepends = fish: for fish shell completion
+	provides = zoi
+	conflicts = zoi
+	source_x86_64 = zoi-linux-amd64.tar.xz::https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/releases/Prod-Beta-2.4.0/downloads/zoi-linux-amd64.tar.xz
+	source_x86_64 = LICENSE::http://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/raw/main/LICENSE
+	sha256sums_x86_64 = 47147cb6d646a15bb78b0f1c9a1884c896b94836d8c89bd9c931e65dd2823def
+	sha256sums_x86_64 = ef33a32348e2f527ff6b3d923e75a8f96e7a72de51b6665f2f79fffd991c938f
+	source_aarch64 = zoi-linux-arm64.tar.xz::https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/releases/Prod-Beta-2.4.0/downloads/zoi-linux-arm64.tar.xz
+	source_aarch64 = LICENSE::http://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/raw/main/LICENSE
+	sha256sums_aarch64 = 6663499eb10c9623f15bf3b8f816d312cb22d3e32e14c91e50a403a99c4e524b
+	sha256sums_aarch64 = ef33a32348e2f527ff6b3d923e75a8f96e7a72de51b6665f2f79fffd991c938f
+
+pkgname = zoi-bin
