@@ -1,15 +1,15 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 pkgname=libfftranscode
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="Proprietary library for ASN.1 APER <-> BER transcoding of RUA/RANAP/HNBAP/S1AP/NGAP"
 arch=('x86_64')
 url="http://ftp.osmocom.org/binaries/libfftranscode/"
 license=('proprietary')
 source=("http://ftp.osmocom.org/binaries/${pkgname}/${pkgname}-dev_${pkgver}_amd64.deb"
         "http://ftp.osmocom.org/binaries/${pkgname}/${pkgname}0_${pkgver}_amd64.deb")
-md5sums=("ec71c1ef65972de2e21c0adba2a855c5"
-         "4592c9a2ec973bc9d5dab14bdeffe7ed")
+sha256sums=('1a7fa4f7265861cfe012af01933dd824109a39f00372354109e547274dd7c1bf'
+            'a53df3878bdb63731924cc8c9aad3f4d1b40887b8d0eaffde52154046ed70139')
 
 exz() {
 	ar x $1
