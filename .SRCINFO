@@ -1,6 +1,6 @@
 pkgbase = liberica-nik-23-full-bin
 	pkgdesc = Liberica NIK is a downstream of GraalVM Community edition. The full version provides support for JavaFX and Swing.
-	pkgver = 23.1.7
+	pkgver = 23.1.8
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-nik-23-full.install
@@ -21,11 +21,11 @@ pkgbase = liberica-nik-23-full-bin
 	provides = java-runtime-headless-openjdk=21
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = liberica-jdk-21-bin=21.0.7+9
-	provides = liberica-jdk-21-full-bin=21.0.7+9
-	provides = liberica-jdk-21-lite-bin=21.0.7+9
-	provides = liberica-jre-21-bin=21.0.7+9
-	provides = liberica-jre-21-full-bin=21.0.7+9
+	provides = liberica-jdk-21-bin=21.0.8+13
+	provides = liberica-jdk-21-full-bin=21.0.8+13
+	provides = liberica-jdk-21-lite-bin=21.0.8+13
+	provides = liberica-jre-21-bin=21.0.8+13
+	provides = liberica-jre-21-full-bin=21.0.8+13
 	backup = etc/liberica-nik-23-full/logging.properties
 	backup = etc/liberica-nik-23-full/management/jmxremote.access
 	backup = etc/liberica-nik-23-full/management/jmxremote.password.template
@@ -54,7 +54,7 @@ pkgbase = liberica-nik-23-full-bin
 	sha1sums = b8233f9ff931ce97a265827fac18ed90f4e248c6
 	sha1sums = a0da2952bc87a425182c3ac88e88649fbaa7cb65
 	sha1sums = eb36aa73a9be98164447774217865b91e79d503c
-	source_x86_64 = https://download.bell-sw.com/vm/23.1.7/bellsoft-liberica-vm-full-openjdk21.0.7+9-23.1.7+1-linux-amd64.tar.gz
+	source_x86_64 = https://download.bell-sw.com/vm/23.1.8/bellsoft-liberica-vm-full-openjdk21.0.8+13-23.1.8+1-linux-amd64.tar.gz
 	sha1sums_x86_64 = a50c87536c3f059aed908deddb4adf3cf075b481
 
 pkgname = liberica-nik-23-full-bin
