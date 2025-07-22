@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: gonsolo@gmail.com
 pkgname=python-libparse
 pkgver=0.3.1
 pkgrel=1
