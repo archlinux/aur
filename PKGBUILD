@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.46.6-beta.4'
+_pkgver='1.46.7-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version - binary version'
@@ -27,7 +27,7 @@ source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 	'mongodb-compass.conf'
 )
-b2sums=('60f62c0bf09f5ce502e191c7fdda153bbf8235661c7dc5aa9b0a5caaeb164e8c2fe3c20233f18303fc2b1cdee2d2110fbce77f40d51441ce2209297125a61dad'
+b2sums=('c13420a276384df40a86be1f058d8c0c2e65ccee4a021a39c338efe8832a8aa9972e0d85b21f52da629b16f52dd9c209920f2668c741408a5391f4c0f46124e3'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 check() {
