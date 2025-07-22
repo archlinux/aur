@@ -1,0 +1,15 @@
+pkgbase = openlane2
+	pkgdesc = OpenLane2 ASIC flow used by TinyTapeout (commit 5e5f5fb)
+	pkgver = 3.0.0.dev23
+	pkgrel = 1
+	url = https://github.com/TinyTapeout/openlane2
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = openlane2::git+https://github.com/TinyTapeout/openlane2#commit=5e5f5fb
+	sha256sums = SKIP
+
+pkgname = openlane2
