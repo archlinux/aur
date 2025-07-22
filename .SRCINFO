@@ -1,6 +1,6 @@
 pkgbase = mipsel-elf-binutils
 	pkgdesc = A collection of binary tools for baremetal MIPS.
-	pkgver = 2.42
+	pkgver = 2.44
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mipsel-elf-binutils
 	depends = glibc
 	depends = zstd
 	depends = libelf
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.xz
-	sha256sums = f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.44.tar.xz
+	sha256sums = ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237
 
 pkgname = mipsel-elf-binutils

@@ -1,11 +1,12 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
 # Contributor: Daniel Hillenbrand < codeworkx at bbqlinux dot org >
-# Maintainer: Liao Junxuan <mikeljx at 126 dot com>
+# Contributor: Liao Junxuan <mikeljx at 126 dot com>
+# Maintainer: Filippo Falezza <filippo dot falezza at outlook dot com>
 
 pkgname=mipsel-elf-binutils
 _pkgname=binutils
 _target="mipsel-elf"
-pkgver=2.42
+pkgver=2.44
 pkgrel=1
 pkgdesc="A collection of binary tools for baremetal MIPS."
 url="http://www.gnu.org/software/binutils/"
@@ -14,18 +15,18 @@ license=('GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND FSFAP')
 checkdepends=(dejagnu debuginfod bc)
 depends=(glibc zstd libelf)
 source=("https://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800')
+sha256sums=('ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237')
 _sysroot="/usr/lib/${_target}"
 
 prepare() {
-    cd ""$srcdir""/${_pkgname}-${pkgver}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     # Hack - see native package for details
     sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
 build() {
-    cd ""$srcdir""/${_pkgname}-${pkgver}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     mkdir -p binutils-build && cd binutils-build
 
