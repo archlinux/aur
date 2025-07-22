@@ -5,10 +5,10 @@
 
 pkgname=lbry-desktop-git
 _pkgname_base=lbry-desktop
-pkgver=0.53.8.r10956.g523ea284a
-pkgrel=2
+pkgver=0.53.9.r10962.gd14c9141d
+pkgrel=1
 arch=('x86_64')
-pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative - dev version'
+pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative - dev version (no active development)'
 url="https://github.com/lbryio/${_pkgname_base}.git"
 license=('MIT')
 
