@@ -32,7 +32,7 @@ conflicts=(
   'linvamrun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0d2a001dcb5849f0d2cf4f57f0a145f7f22ff4acbeca2c93cb625da7d59304b')
+sha256sums=('5c91a06a6f0bd585def3b224582a56548e9e8aa7b453cbfeb204c02a86fe85c4')
 install=linvam.install
 
 build() {
