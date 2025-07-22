@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SHEET="$HOME/.config/vimcheet.txt"
+SHEET="/usr/share/wofi-vim/vimcheat"
 
 if [[ ! -f "$SHEET" ]]; then
   echo "Cheat sheet file not found: $SHEET" >&2
