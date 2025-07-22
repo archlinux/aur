@@ -1,0 +1,4 @@
+[readerwriterqueue]
+source = "git"
+git = "https://github.com/cameron314/readerwriterqueue.git"
+prefix = "v"

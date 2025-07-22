@@ -1,0 +1,15 @@
+pkgbase = readerwriterqueue
+	pkgdesc = A fast single-producer, single-consumer lock-free queue for C++
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/cameron314/readerwriterqueue
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	source = readerwriterqueue::git+https://github.com/cameron314/readerwriterqueue#tag=v1.0.7
+	sha512sums = 2635df4dc6c7b1e34e0ef152e7c104cbee1c5ff930370667afc4ff63cd59f72b8c623075b809c8ecc5b591e99823b4bb8dcea2b5443114a936b9bcc522b75c81
+	b2sums = caf8a03facb50986d31f41eb5c8f936dd2ad0feb62a1bcbbca9292e0c682ff8e57b786c2f93d1428261ad71fab62b003d487e36ee45ac6ba726ac18232c0f8b1
+
+pkgname = readerwriterqueue
