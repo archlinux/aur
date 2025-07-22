@@ -1,7 +1,7 @@
 pkgbase = tango-pogo
 	pkgdesc = The TANGO code generator. It allows to define a TANGO class model
-	pkgver = 9.10.1
-	pkgrel = 2
+	pkgver = 9.10.2
+	pkgrel = 1
 	url = https://gitlab.com/tango-controls/Pogo
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,9 +9,9 @@ pkgbase = tango-pogo
 	makedepends = maven
 	depends = java-runtime=17
 	depends = sh
-	source = https://gitlab.com/tango-controls/pogo/-/archive/9.10.1/pogo-9.10.1.tar.gz
+	source = https://gitlab.com/tango-controls/pogo/-/archive/9.10.2/pogo-9.10.2.tar.gz
 	source = launcher
-	sha256sums = 34a582972044aafe38f15aeb37cdd265e75462796f20b3a11b67fea727ddfee4
+	sha256sums = 417dc456c9473be3b70b2d06cbd941a9c18f2b89f9f7fc781a4d6d21002fc1a6
 	sha256sums = 49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee
 
 pkgname = tango-pogo
