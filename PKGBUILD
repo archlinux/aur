@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 
 pkgname=box-git
 pkgver=0.2.0.r0.gc22cfad
@@ -21,19 +21,17 @@ pkgver() {
 
 build() {
     cd box
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
     go build -o box .
 }
 
 package() {
     cd box
-    install -Dm755 box "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 man/box.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
+    install -Dm755 box "$pkgdir/usr/bin/box"
+    install -Dm644 man/box.1 "$pkgdir/usr/share/man/man1/box.1"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: set ts=4 sw=4 sts=4 et:
