@@ -1,0 +1,18 @@
+pkgbase = msi-ge66-raider-rgb-git
+	pkgdesc = MSI GE66 Raider RGB - A tool to control the RGB lighting of the MSI GE66 Raider laptop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/luisalbertopm/msi-ge66-raider-rgb
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = hidapi
+	depends = libcap
+	depends = systemd-libs
+	source = msi-ge66-raider-rgb-git::git+https://github.com/luisalbertopm/msi-ge66-raider-rgb.git
+	sha256sums = SKIP
+
+pkgname = msi-ge66-raider-rgb-git
