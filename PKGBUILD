@@ -3,17 +3,18 @@
 _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
+_pydanticaiver=0.4.2
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.25.0
+pkgver=4.0.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-0.4.2-py3-none-any.whl"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-0.4.2-py3-none-any.whl") # Prevent cercular dependencies
-noextract=('pydantic_graph-0.4.2-py3-none-any.whl' 'pydantic_ai_slim-0.4.2-py3-none-any.whl')
-sha256sums=('c78b2ef57f436be0cb1545e280115a423d662c956cbaf2dc7cc28aa75835b463'
+source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-${_pydanticaiver}-py3-none-any.whl"
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl") # Prevent cercular dependencies
+noextract=("pydantic_graph-${_pydanticaiver}-py3-none-any.whl" "pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl")
+sha256sums=('cd4d9c4fc481cb0b20fea15fc620aaa33d650f2fa5fd64be186f53857abff8b2'
             '6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2'
             '1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475')
 depends=('python')
@@ -93,7 +94,7 @@ checkdepends=('python-httpx'
               'litellm')
 
 build() {
-  cd "${srcdir}"/${_name0//-/_}-${pkgver}
+  cd "${srcdir}"/${_name0}-${pkgver}
   python -m build --wheel --no-isolation ${_name1}
   python -m build --wheel --no-isolation
 }
@@ -112,7 +113,7 @@ check() {
     # Failed
     --deselect tests/test_cli.py::test_inspect
   )
-  cd "${srcdir}"/${_name0//-/_}-${pkgver}
+  cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/pip install -U openinference-instrumentation-litellm
   test-env/bin/python -m installer ${_name1}/dist/*.whl
