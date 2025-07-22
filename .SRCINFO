@@ -1,15 +1,15 @@
 pkgbase = javcap-bin
 	pkgdesc = 电影刮削器
-	pkgver = 0.2.15
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/jane-212/javcap
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = javcap
-	source_x86_64 = https://github.com/jane-212/javcap/releases/download/0.2.15/javcap-0.2.15-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8d08554f46b5c53466ca8d63c1c6e2582f1797b97763e7ead1d6f01f419cddb2
-	source_aarch64 = https://github.com/jane-212/javcap/releases/download/0.2.15/javcap-0.2.15-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 7304f812124fd884aa5f9797bfe844600f04abff9642b1ad90d12cc8c55c8afb
+	source_x86_64 = https://github.com/jane-212/javcap/releases/download/0.2.16/javcap-0.2.16-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 71a7bee8c3cadc8c33b0269c90d6d8be0b782a187ae8c1ef7c12633ac26c0452
+	source_aarch64 = https://github.com/jane-212/javcap/releases/download/0.2.16/javcap-0.2.16-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f6d2a827c7e8e8048de0ee396b9115c13ea2a9fe0671195d0869eb048fcce360
 
 pkgname = javcap-bin
