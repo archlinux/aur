@@ -1,6 +1,6 @@
 # Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 pkgname=kma 
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="An ultra-fast mapping method designed to map raw reads directly against redundant databases using seed and extend."
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 makedepends=('git')
 depends=('zlib' 'glibc')
 source=(${pkgname}::git+https://bitbucket.org/genomicepidemiology/kma.git#tag=$pkgver)
-sha256sums=('700fdd584e997822dc371601a624aca6230b386fc68ac38769a6eb071e26f0a6')
+sha256sums=('793ca9763d82848d96dd6bd6c419ba05965e981aa62508677aeef3b970e1c1c1')
 
 build() {
 	cd "$srcdir/${pkgname}"
