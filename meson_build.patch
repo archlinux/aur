@@ -1,5 +1,5 @@
 --- vivictpp-1.1.0-orig/meson.build	2024-10-17 18:45:58.085075903 +0200
-+++ vivictpp-1.1.0/meson.build	2024-10-17 18:50:03.385248421 +0200
++++ meson.build	2024-10-17 18:50:03.385248421 +0200
 @@ -10,7 +10,6 @@
  spdlog_proj = subproject('spdlog', default_options: 'warning_level=0')
  cli11_proj = subproject('cli11', default_options: 'warning_level=0')
