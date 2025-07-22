@@ -1,23 +1,38 @@
 
 pkgname=chromium-ffmpeg-codecs-git
+# sparse checkout
 pkgver=7.2.r119684.g670089304a
-pkgrel=7
+pkgrel=8
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ffmpeg)"
 arch=('x86_64')
-url='https://git.ffmpeg.org/ffmpeg'
+url=https://git.ffmpeg.org/ffmpeg
+_url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
-source=(export.map
+_chromium=138.0.7204.55
+_chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+source=( "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
+"${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
-sha256sums=('53166fd87a3441ad60fe180a37038080e0c7ebde71097968c6510e67d7a39181'
+sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
+            '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
+conflicts[0]='SKIP'
 depends=(glibc)
-makedepends=(nasm mold git # mold: preliminary to remove unused funcs
+makedepends=(nasm git
 diffutils gcc make patch sed) # base-devel
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
-
 prepare() {
+  # Lust used funcs
+  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > ${_chromium}sigs.txt
+  base64 -d sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt
+  diff {${_chromium},git}sigs.txt || echo ffmpeg.sigs was changed at upstream. Please OOD $pkgname
+  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
+  echo -e "{\nglobal:" > export.map
+  sed 's/$/;/' sigs.txt >> export.map
+  echo -e "local:\n*;\n};" >> export.map
+  # sparse checkout
   rm -rf ffmpeg
   git clone --depth=1 ${url}
   cd ffmpeg
@@ -33,7 +48,7 @@ prepare() {
 
 build() {
   cd ffmpeg
-  # https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/
+  # ${_url}/+/refs/heads/master/
   # chromium/config/Chrome/linux/x64/ BUILD.gn
   ./configure \
     --disable-{debug,all,autodetect,doc,iconv,network,symver} \
@@ -49,11 +64,11 @@ build() {
     --enable-{pic,asm,hardcoded-tables}
 
   make install
+  _symbols=$(cat ../sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
-  gcc -fuse-ld=mold $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avformat_version -Wl,-u,avutil_version \
-    -Wl,--version-script=../export.map \
+  gcc $LTOFLAGS -shared $LDFLAGS \
+    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
