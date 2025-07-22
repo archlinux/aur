@@ -8,23 +8,29 @@ arch=('any')
 url="https://protesilaos.com/tempus-themes"
 license=('GPL-3.0-or-later')
 depends=('python-pygments')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitlab.com/protesilaos/tempus-themes-pygments.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
