@@ -1,0 +1,289 @@
+Vim Cheat Sheet
+
+# Global commands
+:h[elp] keyword        # open help for keyword
+:sav[eas] file        # save file as
+:clo[se]              # close current pane
+:ter[minal]           # open a terminal window
+K                     # open man page for word under cursor
+
+# Tip
+# Run vimtutor in a terminal to learn the first Vim commands.
+
+# Cursor movement
+h     # move cursor left
+j     # move cursor down
+k     # move cursor up
+l     # move cursor right
+gj    # move cursor down (multi-line text)
+gk    # move cursor up (multi-line text)
+H     # move to top of screen
+M     # move to middle of screen
+L     # move to bottom of screen
+w     # jump forward to start of word
+W     # jump forward to start of WORD (punctuation included)
+e     # jump forward to end of word
+E     # jump forward to end of WORD (punctuation included)
+b     # jump backward to start of word
+B     # jump backward to start of WORD
+ge    # jump backward to end of word
+gE    # jump backward to end of WORD
+%     # move cursor to matching character ((), {}, [])
+0     # jump to start of line
+^     # jump to first non-blank char of line
+$     # jump to end of line
+g_    # jump to last non-blank char of line
+gg    # go to first line of document
+G     # go to last line of document
+5gg   # go to line 5
+5G    # go to line 5
+gd    # move to local declaration
+gD    # move to global declaration
+fx    # jump to next occurrence of char x
+tx    # jump to before next occurrence of char x
+Fx    # jump to previous occurrence of char x
+Tx    # jump to after previous occurrence of char x
+;     # repeat previous f/t/F/T
+,     # repeat previous f/t/F/T backwards
+}     # jump to next paragraph or block
+{     # jump to previous paragraph or block
+zz    # center cursor on screen
+zt    # position cursor at top of screen
+zb    # position cursor at bottom of screen
+Ctrl+e # scroll down one line (cursor fixed)
+Ctrl+y # scroll up one line (cursor fixed)
+Ctrl+b # page up (cursor moves)
+Ctrl+f # page down (cursor moves)
+Ctrl+d # half-page down
+Ctrl+u # half-page up
+
+# Tip
+# Prefix cursor movement with number: e.g., 4j moves down 4 lines.
+
+# Insert mode (inserting/appending text)
+i     # insert before cursor
+I     # insert at beginning of line
+a     # append after cursor
+A     # append at end of line
+o     # open new line below
+O     # open new line above
+ea    # append at end of word
+Ctrl+h # delete character before cursor in insert mode
+Ctrl+w # delete word before cursor in insert mode
+Ctrl+j # line break in insert mode
+Ctrl+t # indent one shiftwidth in insert mode
+Ctrl+d # de-indent one shiftwidth in insert mode
+Ctrl+n # autocomplete next in insert mode
+Ctrl+p # autocomplete previous in insert mode
+Ctrl+rx # insert contents of register x
+Ctrl+ox # temporary normal mode command x
+Esc or Ctrl+c # exit insert mode
+
+# Editing
+r     # replace single character
+R     # replace until Esc pressed
+J     # join next line with this one (with space)
+gJ    # join next line with this one (no space)
+gwip  # reflow paragraph
+g~{motion} # switch case thru motion
+gu{motion} # change to lowercase thru motion
+gU{motion} # change to uppercase thru motion
+cc    # change entire line
+c$ or C # change to end of line
+ciw   # change inner word
+cw or ce # change to end of word
+s     # substitute single character (like cl)
+S     # substitute entire line (like cc)
+xp    # transpose two letters
+u     # undo
+U     # undo entire last change
+Ctrl+r # redo
+.     # repeat last command
+
+# Visual mode (marking text)
+v     # start visual mode
+V     # start linewise visual mode
+o     # move to other end of selection
+Ctrl+v # start block visual mode
+O     # move to other corner of block
+aw    # select a word
+ab    # select a block with ()
+aB    # select a block with {}
+at    # select a block with <> tags
+ib    # inner block ()
+iB    # inner block {}
+it    # inner tags
+Esc or Ctrl+c # exit visual mode
+
+# Tip
+# Instead of b/B one can use (/{ respectively.
+
+# Visual commands
+>     # shift selection right
+<     # shift selection left
+y     # yank selected text
+d     # delete selected text
+~     # switch case in selection
+u     # lowercase selection
+U     # uppercase selection
+
+# Registers
+:reg[isters] # show register contents
+"xy   # yank to register x
+"xp   # paste from register x
+"+y   # yank to system clipboard
+"+p   # paste from system clipboard
+
+# Tip
+# Registers stored in ~/.viminfo, loaded on next session.
+
+# Special registers:
+# 0 = last yank
+# " = unnamed register (last delete/yank)
+# % = current file name
+# # = alternate file name
+# * = X11 primary clipboard
+# + = X11 clipboard
+# / = last search pattern
+# : = last command line
+# . = last inserted text
+# - = last small delete
+# = = expression register
+# _ = black hole register
+
+# Marks and positions
+:marks   # list marks
+ma       # set mark a
+`a       # jump to mark a position
+y`a      # yank to position of mark a
+`0       # jump to where vim exited last
+`"       # jump to position of last file edit
+`.       # jump to position of last change
+``       # jump before last jump
+:ju[mps] # list jumps
+Ctrl+i   # jump newer in jump list
+Ctrl+o   # jump older in jump list
+:changes # list changes
+g,       # newer change position
+g;       # older change position
+Ctrl+]   # jump to tag under cursor
+
+# Tip
+# Use `'` instead of `` to jump to start of line of mark.
+
+# Macros
+qa       # start recording macro a
+q        # stop recording macro
+@a       # run macro a
+@@       # run last macro
+
+# Cut and paste
+yy       # yank line
+2yy      # yank 2 lines
+yw       # yank word
+yiw      # yank inner word
+yaw      # yank word with spaces
+y$ or Y  # yank to end of line
+p        # paste after cursor
+P        # paste before cursor
+gp       # paste after and stay after
+gP       # paste before and stay before
+dd       # delete line
+2dd      # delete 2 lines
+dw       # delete word
+diw      # delete inner word
+daw      # delete word with spaces
+:3,5d    # delete lines 3 to 5
+:.,$d    # delete current to end
+:.,1d    # delete current to beginning
+:10,1d   # delete lines 10 to 1
+:g/{pattern}/d  # delete lines with pattern
+:g!/{pattern}/d # delete lines without pattern
+d$ or D  # delete to end of line
+x        # delete character
+
+# Indent text
+>>       # indent line
+<<       # de-indent line
+>%       # indent block with matching braces
+<%       # de-indent block with matching braces
+>ib      # indent inner block ()
+>at      # indent block with <> tags
+3==      # re-indent 3 lines
+=%       # re-indent block with braces
+=iB      # re-indent inner block {}
+gg=G     # re-indent entire file
+]p       # paste and adjust indent
+
+# Exiting
+:w       # save file
+:w !sudo tee % # save with sudo
+:wq or :x or ZZ # save and quit
+:q       # quit (fails if unsaved)
+:q! or ZQ # quit discard changes
+:wqa     # save all and quit
+
+# Search and replace
+/pattern # search forward
+?pattern # search backward
+\vpattern # very magic regex
+n        # next search result
+N        # previous search result
+:%s/old/new/g   # replace all
+:%s/old/new/gc  # replace with confirm
+:noh[lsearch]   # clear search highlight
+
+# Search in multiple files
+:vim[grep] /pattern/ `{file}` # grep in files
+:cn[ext]   # next quickfix
+:cp[revious] # previous quickfix
+:cope[n]   # open quickfix window
+:ccl[ose]  # close quickfix window
+
+# Tabs
+:tabnew {file} # open file in new tab
+Ctrl+wT       # move split to its own tab
+gt or :tabn    # next tab
+gT or :tabp    # previous tab
+#gt           # go to tab #
+:tabm[ove] #  # move tab to position #
+:tabc[lose]    # close current tab
+:tabo[nly]     # close other tabs
+:tabdo {cmd}   # run cmd in all tabs
+
+# Windows & buffers
+:e[dit] file   # open file in buffer
+:bn[ext]       # next buffer
+:bp[revious]   # previous buffer
+:bd[elete]     # delete buffer
+:b#            # go to buffer #
+:b[file]       # go to buffer by file
+:ls or :buffers # list buffers
+:sp[lit] file   # horizontal split
+:vs[plit] file  # vertical split
+:vert[ical] ba[ll] # vertical tiles
+:tab ba[ll]    # tabs layout all buffers
+Ctrl+ws        # split window horizontal
+Ctrl+wv        # split window vertical
+Ctrl+ww        # switch windows
+Ctrl+wq        # quit window
+Ctrl+wx        # swap windows
+Ctrl+w=        # equalize window sizes
+Ctrl+wh/l/j/k/H/L/J/K # window navigation & placement
+
+# Diff / folding
+zf {motion}    # create fold
+zd             # delete fold
+za             # toggle fold
+zo             # open fold
+zc             # close fold
+zr             # reduce folds
+zm             # close more folds
+zi             # toggle folding
+]c             # next diff change
+[c             # previous diff change
+do or :diffget # get diff from other buffer
+dp or :diffput # put diff to other buffer
+:diffthis      # enable diff in current window
+:dif[fupdate]  # update diffs
+:diffo[ff]     # disable diff mode

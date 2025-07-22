@@ -1,0 +1,14 @@
+pkgbase = wofi-vim
+	pkgdesc = wofi menu to select Vim commands from cheat sheet
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/timasoft/wofi-vim.git
+	arch = any
+	license = MIT
+	depends = wofi
+	source = wofi-vim.sh
+	source = vimcheet.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wofi-vim
