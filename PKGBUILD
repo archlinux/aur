@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 arch=("x86_64")
 provides=("rsunset")
 conflicts=("rsunset")
-source=("https://codeberg.org/mrfantome/rsunset/releases/download/v$pkgver/rsunset-$pkgver-x86_64.tar.gz")
+source=("https://codeberg.org/mrfantome/rsunset/releases/download/$pkgver/rsunset-$pkgver-x86_64.tar.gz")
 sha256sums=("d18bfd88c27ca6f59dc88c0a98362a22380dd9076e406457640faf032406f4f1")
 
 package() {
