@@ -1,0 +1,17 @@
+pkgbase = verylup
+	pkgdesc = The Veryl toolchain installer
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/veryl-lang/verylup
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	provides = verylup
+	conflicts = verylup
+	options = !lto
+	source = verylup-0.1.7.tar.gz::https://github.com/veryl-lang/verylup/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 394acd4e7599893469ccae9767817ac987aca8642998cbdf8a947c5f06d20db1
+
+pkgname = verylup
