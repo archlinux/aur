@@ -1,3 +1,4 @@
+# Maintainer: gonsolo@gmail.com
 pkgname=openlane2
 pkgver=3.0.0.dev23
 pkgrel=1
