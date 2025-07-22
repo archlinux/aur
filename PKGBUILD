@@ -1,7 +1,7 @@
 # Maintainer: ifurther <>
 
 pkgname=ufw-docker
-pkgver=210925
+pkgver=250710
 pkgrel=1
 pkgdesc="To fix the Docker and UFW security flaw without disabling iptables."
 arch=("any")
@@ -11,7 +11,7 @@ depends=('ufw')
 install=ufw-docker.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chaifeng/$pkgname/archive/refs/tags/$pkgver.tar.gz"
         "ufw-docker.install")
-sha256sums=('805d65ad952364e888294515c0a127a6d46a9628af87311f2bb7a8b57935121c'
+sha256sums=('13b17fc74df2fdb6bda653c6130054f156318a4910db4c943be1df54110a450b'
             'd97ba0e63766444128e4ddfadc316734f431b5d6d9fc6a6ddadbfd1057ae95f7')
 
 package() {
