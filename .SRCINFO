@@ -4,11 +4,9 @@ pkgbase = spectroterm
 	pkgrel = 1
 	url = https://github.com/mzivic7/spectroterm
 	arch = any
-	license = GPL
-	provides = spectroterm
-	conflicts = spectroterm
+	license = GPL-3.0-only
 	options = !strip
-	source = spectroterm.tar.gz::https://github.com/mzivic7/spectroterm/releases/download/0.5.0/spectroterm-0.5.0-linux.tar.gz
+	source = spectroterm-0.5.0.tar.gz::https://github.com/mzivic7/spectroterm/releases/download/0.5.0/spectroterm-0.5.0-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = spectroterm

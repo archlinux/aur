@@ -5,12 +5,10 @@ pkgrel=1
 pkgdesc="Curses based terminal spectrum analyzer for currently playing audio"
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=()
-provides=('spectroterm')
-conflicts=('spectroterm')
 makedepends=()
-source=("$pkgname.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver-linux.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver-linux.tar.gz")
 sha256sums=('SKIP')
 options=(!strip)
 
