@@ -1,7 +1,7 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam'
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=(
   'linvamrun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6f1b29f92fc1187a5c3aa921f4d0e81976462a206660b2d9758652c592dba894')
+sha256sums=('c0d2a001dcb5849f0d2cf4f57f0a145f7f22ff4acbeca2c93cb625da7d59304b')
 install=linvam.install
 
 build() {
@@ -45,6 +45,7 @@ package() {
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install LinVAM.desktop -Dm644 "$pkgdir/usr/share/applications/LinVAM.desktop"
+  install linvam.svg -Dm644 "$pkgdir/usr/share/icons/hicolor/scalable/apps/linvam.svg"
   install LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
   # install rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
   # install rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
