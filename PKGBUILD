@@ -2,11 +2,11 @@
 
 pkgname=perplexity
 pkgver=1.1.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
-license=('Apache')
+license=('Apache 2.0')
 depends=('electron' 'wget')
 optdepends=('libappindicator-gtk3: for tray icon support')
 #conflicts=('')
