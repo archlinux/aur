@@ -1,7 +1,7 @@
 pkgbase = proto-bin
 	pkgdesc = Pluggable multi-language version manager
 	pkgver = 0.51.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = proto-bin
 	depends = unzip
 	depends = gzip
 	depends = xz
+	optdepends = rustup: support for Rust toolchains
 	provides = proto
 	conflicts = proto
 	source_x86_64 = proto-0.51.4-x86_64.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.51.4/proto_cli-x86_64-unknown-linux-gnu.tar.xz
