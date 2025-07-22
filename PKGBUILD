@@ -7,7 +7,7 @@
 set -u
 _pkgname='relax-and-recover'
 pkgname="${_pkgname}-git"
-pkgver=2.6.r808.gc673df65
+pkgver=2.9.r103.g4dd5392b3
 pkgrel=1
 pkgdesc='bootable Linux disaster recovery, formerly rear'
 arch=('any')
@@ -33,7 +33,7 @@ sha256sums=('SKIP')
 pkgver() {
   set -u
   cd "${_srcdir}"
-  local _vcsver="$(git describe --long | sed -e 's/^rear-//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
+  local _vcsver="$(git describe --long | sed -e 's:release/::g' -e 's/^rear-//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
   local _vcsct="$(git rev-list --count HEAD)"
   _vcsver="${_vcsver//.r0./.r${_vcsct}.}"
   echo "${_vcsver}"

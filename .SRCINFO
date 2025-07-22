@@ -1,6 +1,6 @@
 pkgbase = relax-and-recover-git
 	pkgdesc = bootable Linux disaster recovery, formerly rear
-	pkgver = 2.6.r808.gc673df65
+	pkgver = 2.9.r103.g4dd5392b3
 	pkgrel = 1
 	url = http://relax-and-recover.org/
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = relax-and-recover-git
 	optdepends = nfs-utils: to save images to NFS shares
 	optdepends = cdrkit: to create ISO images
 	optdepends = syslinux: to create bootable media
-	provides = relax-and-recover=2.6
+	provides = relax-and-recover=2.9
 	conflicts = relax-and-recover
 	replaces = rear
 	backup = etc/rear/local.conf
