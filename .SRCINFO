@@ -1,6 +1,6 @@
 pkgbase = crowdsec
 	pkgdesc = The open-source and collaborative security suite
-	pkgver = 1.6.10
+	pkgver = 1.6.11
 	pkgrel = 1
 	url = https://www.crowdsec.net
 	install = crowdsec.install
@@ -27,7 +27,7 @@ pkgbase = crowdsec
 	backup = etc/crowdsec/notifications/sentinel.yaml
 	backup = etc/crowdsec/notifications/slack.yaml
 	backup = etc/crowdsec/notifications/splunk.yaml
-	source = git+https://github.com/crowdsecurity/crowdsec.git#tag=v1.6.10
-	sha256sums = 56d063a7089d30be4b112a3543af7b7a570143f3d7689f34dc65f1652340e172
+	source = git+https://github.com/crowdsecurity/crowdsec.git#tag=v1.6.11
+	sha256sums = bbca4d38537c64e9025b957e28068cf96d5244aff2b98508b7ef16637663680c
 
 pkgname = crowdsec
