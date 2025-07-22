@@ -1,12 +1,12 @@
 pkgbase = ax25-apps
 	pkgdesc = Programs for the Amateur (Ham) Radio protocol AX.25.
 	pkgver = 0.0.8_rc5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://linux-ax25.in-berlin.de
 	install = ax25-apps.install
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = libax25
 	depends = ncurses
 	backup = etc/ax25/ax25ipd.conf

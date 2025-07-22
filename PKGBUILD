@@ -6,11 +6,11 @@
 pkgname=ax25-apps
 pkgver=0.0.8_rc5
 _pkgver=${pkgver//_/-}
-pkgrel=6
+pkgrel=7
 pkgdesc="Programs for the Amateur (Ham) Radio protocol AX.25."
 arch=('i686' 'x86_64')
 url='https://linux-ax25.in-berlin.de'
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('libax25' 'ncurses')
 install=$pkgname.install
 backup=('etc/ax25/ax25ipd.conf' 'etc/ax25/ax25mond.conf'\
@@ -20,6 +20,7 @@ source=("https://linux-ax25.in-berlin.de/pub/$pkgname/$pkgname-$_pkgver.tar.xz")
 prepare () {
 	cd $srcdir/$pkgname-$_pkgver
 	sed -i -e "s#ncursesw/ncurses.h#ncurses.h#" call/call.c
+	sed -i -e "8i #include <stdlib.h>" ax25ipd/routing.c
 }
 
 build() {
