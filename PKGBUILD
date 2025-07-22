@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("https://github.com/xdearboy/mfetch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed59ba2113396d8ac3e4008fd06bd92f4a96af7c434fb0e023fe66383aa9a8a5')
+sha256sums=('8fe43b2e5ac6aca6aa2ae70363526e2ff00c64d5e3d808eafca4e07278c1d822')
 
 build() {
   cd "$srcdir/mfetch-$pkgver"
