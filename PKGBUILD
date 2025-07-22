@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2564.8d2d42ba
+pkgver=r2615.0cd06ff4
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -34,8 +34,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}/"
-    # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/194
-    export CFLAGS+=" -Wno-error=incompatible-pointer-types"
 
     # Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
     # "all" (free + proprietary) and "none".
