@@ -1,6 +1,6 @@
 pkgbase = python-openai-agents
 	pkgdesc = OpenAI Agents SDK.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/openai/openai-agents-python
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-openai-agents
 	optdepends = python-graphviz: viz
 	optdepends = litellm: litellm
 	optdepends = python-websockets: realtime
-	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.2.2.tar.gz
-	sha256sums = 8a40971db5113be8f1a5842f30cd9f5ebec29848124f64f95820b6d52096241c
+	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.2.3.tar.gz
+	sha256sums = 95d4ad194c5c0cf1a40038cb701eee8ecdaaf7698d87bb13e3c2c5cff80c4b4d
 
 pkgname = python-openai-agents
