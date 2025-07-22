@@ -1,16 +1,17 @@
-# Maintainer: Pizero <zhaory200707@outlook.com>
 # Maintainer: RoboMico <robomico at outlook dot com>
+# Contributor: Pizero <zhaory200707@outlook.com>
 
 pkgname=classisland-git
 _pkgname=classisland
 _appname=cn.classisland.app
 pkgver=1.7.103.0.r25.gcedac5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Class schedule displaying tool for interactive whiteboards in classrooms."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ClassIsland/ClassIsland"
 _branch="dev"
 license=('GPL-3.0-only')
+install=${pkgname}.install
 depends=(
     'dotnet-runtime-8.0'
     'glibc'
