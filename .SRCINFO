@@ -1,12 +1,12 @@
 pkgbase = godots-bin
 	pkgdesc = A hub for managing your Godot versions and projects.
-	pkgver = 1.3.stable
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 3
 	url = https://github.com/MakovWait/godots
 	arch = x86_64
 	license = MIT
 	depends = unzip
-	provides = godots
+	conflicts = godots
 	options = !strip
 	source = https://github.com/MakovWait/godots/releases/download/v1.3.stable/LinuxX11.zip
 	source = https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v1.3.stable/LICENSE
