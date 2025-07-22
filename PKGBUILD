@@ -1,20 +1,20 @@
 # Maintainer: Chance Parsons <chance lorne at icloud dot com>
 
 pkgname="airport-utils-bin"
-pkgver="2_5"
+pkgver="2_8"
 pkgrel=1
 pkgdesc="Configuration and management utilities for Apple AirPort base stations"
 arch=("x86_64")
 depends=(java-environment)
 
 source=(
-		"http://launchpadlibrarian.net/205833754/airport-utils_2-5_all.deb"
+		"http://ftp.ca.debian.org/debian/pool/main/a/airport-utils/airport-utils_2-8_all.deb"
 )
-sha256sums=('912ea041fa86652550c9e9502a9e2fa58dd098a89b82491081d8e55e43db07de')
+sha256sums=('ee7106202f757bc3b5e8507fde72e5f7b16fdabab0d4620eb9d35ac5ec838188')
 
 prepare() {
 	mkdir -p output
-	bsdtar -O -xf airport-utils_2-5_all.deb data.tar.xz | bsdtar -C output -xJf - #main extracted
+	bsdtar -O -xf airport-utils_2-8_all.deb data.tar.xz | bsdtar -C output -xJf - #main extracted
 }
 
 package() {
