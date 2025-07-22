@@ -1,7 +1,7 @@
 pkgbase = godot-export-templates-linux
 	pkgdesc = Godot export templates - Linux x86_64
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/godotengine/godot
 	arch = any
 	license = MIT

@@ -1,4 +1,5 @@
-# Maintainer:
+# Maintainer: xiota
+# Mainterner: novadragon <me@novadragon.space>
 
 ## options
 : ${_build_debug:=true}
@@ -8,7 +9,7 @@
 _pkgname="godot-export-templates"
 pkgname="$_pkgname-linux"
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Godot export templates - Linux x86_64'
 url="https://github.com/godotengine/godot"
 license=('MIT')
@@ -47,10 +48,10 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
-  scons platform=linux tools=no target=template_release arch=x86_64 production=yes
+  scons platform=linux tools=no target=template_release arch=x86_64
 
   if [[ "${_build_debug::1}" == "t" ]]; then
-    scons platform=linux tools=no target=template_debug arch=x86_64 use_static_cpp=no
+    scons platform=linux tools=no target=template_debug arch=x86_64
   fi
 }
 
