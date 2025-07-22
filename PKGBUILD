@@ -4,8 +4,8 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.0.2.r175.ga538126
-pkgrel=2
+pkgver=0.0.2.r188.g7db5eb8
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
@@ -25,7 +25,6 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
 		"git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 		"git+https://github.com/boostorg/headers.git"
 		"git+https://github.com/herumi/xbyak.git"
-		"ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git"
 		"git+https://github.com/lioncash/biscuit.git" # submodule of dynarmic
 		"catch::git+https://github.com/catchorg/Catch2.git" # submodule of dynarmic
 		"git+https://github.com/azahar-emu/mcl.git" # submodule of dynarmic
@@ -55,7 +54,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -63,7 +61,7 @@ pkgver() {
 }
 prepare() {
 	cd "$srcdir/$_pkgname"
-	for _submodule in opus SDL cubeb VulkanMemoryAllocator cpp-jwt cpp-httplib xbyak ffmpeg;
+	for _submodule in opus SDL cubeb VulkanMemoryAllocator cpp-jwt cpp-httplib xbyak;
 		do
 		git config submodule.$_submodule.url ../$_submodule
 		done
@@ -97,7 +95,7 @@ build() {
 		-DYUZU_ENABLE_LTO=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
-		-DYUZU_USE_BUNDLED_FFMPEG=ON \
+		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
 		-DYUZU_USE_BUNDLED_VCPKG=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
 		-DYUZU_USE_BUNDLED_SDL2=OFF \
