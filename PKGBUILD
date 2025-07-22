@@ -3,7 +3,7 @@
 
 pkgname=python-django-docs
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation for the Django framework"
 arch=('any')
 url='https://docs.djangoproject.com/'
@@ -20,4 +20,4 @@ package() {
 	chmod -R a=rX,u=rwX ${pkgdir}/usr/share/doc/python-django/html
 }
 
-sha256sums=('02fb9605550bf109f1ae2fda07eb91a29f80a932985409185fb664a0bc5f5d71')
+sha256sums=('2f92314cb76e08cff82da3f0ff6fcf63db23d8745777c7239ec4af503e4481e9')
