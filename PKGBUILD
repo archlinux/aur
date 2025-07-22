@@ -9,11 +9,11 @@ license=('unknow')
 group=(doom2df-full)
 conflicts=(doom2df-git doom2df-bin-git)
 source=(
-  'https://deadsoftware.ru/files/terminalhash/doom2df-packages/d2df-res.zip'
+  'https://deadsoftware.ru/files/terminalhash/doom2df-packages/d2df-res.tar.gz'
   'https://deadsoftware.ru/files/terminalhash/doom2df-packages/instruments.tar.xz'
 )
 md5sums=(
-  'cc2d402d730a4261db154cd63fcc71c3'
+  'fa14512d70fbf79f1f12683bad13f288'
   '583c086205aec0d0257fdcb8c2f3c817'
 )
 
