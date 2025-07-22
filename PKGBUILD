@@ -1,11 +1,11 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
-pkgname=fermyon-spin
+pkgname=spinframework-cli
 _realname=spin
 pkgver=3.3.1
 pkgrel=1
 pkgdesc='an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly'
 arch=('x86_64')
-url="https://www.fermyon.com/spin"
+url="https://spinframework.dev/"
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs' 'openssl' 'sqlite')
 makedepends=('cargo' 'rust-wasm' 'cmake' 'git')
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  install -Dm0755 $_realname-$pkgver/target/release/$_realname "$pkgdir"/usr/bin/$pkgname
+  install -Dm0755 $_realname-$pkgver/target/release/spin "$pkgdir"/usr/bin/spin-cli
 }
 
 sha256sums=('5137573e757a7d2cef68bf59b4a4a017149f3286353e68e16aeb6686b100f653')
