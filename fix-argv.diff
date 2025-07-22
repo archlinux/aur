@@ -1,8 +1,8 @@
 diff --git a/apps/studio/src/common/bksConfig/mainBksConfig.ts b/apps/studio/src/common/bksConfig/mainBksConfig.ts
-index def335047..892767603 100644
+index b3d8e4b7b..3afca6227 100644
 --- a/apps/studio/src/common/bksConfig/mainBksConfig.ts
 +++ b/apps/studio/src/common/bksConfig/mainBksConfig.ts
-@@ -85,7 +85,7 @@ export function checkConflicts(
+@@ -91,7 +91,7 @@ export function checkConflicts(
    return results;
  }
  

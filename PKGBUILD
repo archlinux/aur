@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.2.12'
+pkgver='5.3.1'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -20,10 +20,10 @@ source=(
 	'missing-log-app-name.diff'
 	'LICENSE.md'
 )
-b2sums=('0ad12a6b725c548cc9398831f8ccd32ae87b81980f8ac39932fe6f9d0a91c2c290f15c4ce189a266aed9cc7364e68ba2f0e56f69462e2480eee0fa3193ed4f49'
+b2sums=('b987e1d957f9e475645421add064af35e0ab949933ac8708d1bdf879419c1f8bb31c4a4af6390b3f2f8a66b8240f81b5c98fc7fdc1e1e1b2852e208d0c2bea8b'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
         'e1642a5e2ec927922ef5eb73a9987779587846de2e175100cfe5dd2d7c8a96bd4d8baa2dca2c67f323ae1d764de747f9c6cebaa5944b3896e2c4d6a2a1ee311a'
-        '710d9cc5dc5c435aabcf4cd0d64fac238ed5a301a6e8797bc9d0d6ef58a0908bc551ff1bcde0e4cbaabdd3a175d66a0231b06d553c225262bd3cefedd95bc70f'
+        '108c2e7da2139dd5dde0a09a5ca31d013da05e58ea0d1239661e397dd4bd109e731d0606f6262b8b6c9f8bea004721da83ab145e2a81de8dbc2657a85922cccf'
         '36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc'
         '055ca4386f171af5916e7377605b57b23fc4de6fda4c57a0ae86782a18baeabde874f06a5cc2521a8bed65d30fb0b17c5a3edd005ffc2daddea6b785d09ea737')
 
@@ -67,9 +67,6 @@ check() {
 
 	# Run non-DB integration tests
 	yarn run test:ci --ci
-
-	# Not running DB integration tests, as they are currently not repeatable and the sqlserver test suite does not work
-	# yarn run test:integration --runInBand --ci --testPathIgnorePatterns=sqlserver.spec.js
 }
 
 package() {
