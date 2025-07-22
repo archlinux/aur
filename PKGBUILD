@@ -15,9 +15,9 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 groups=('librewolf-addons')
 noextract=("$_id.xpi")
-source=("$_id.xpi::https://github.com/gorhill/uBlock/releases/download/$pkgver/uBlock0_$pkgver.firefox.xpi"
+source=("$_id.xpi::https://github.com/gorhill/uBlock/releases/download/$pkgver/uBlock0_$pkgver.firefox.signed.xpi"
         "https://raw.githubusercontent.com/gorhill/uBlock/refs/tags/$pkgver/LICENSE.txt")
-b2sums=('597f7a8393357659c14acc4b3af2346355d9f749b4bf7893ee331fc87a08cf52921611b7b459aacd07587b8aa090b83942aa495a424043ea0b9557d5e55819a1'
+b2sums=('0b04d8f347a3162d2da345206cbbb9b2f086a87db956a06108267392f9ca22e955a75396eabd021f7d59c330930d93e0f97d2a32c74ded460edcd4a81141e7d4'
         '70878e15940b01e24866195829871711509ab49d8aca2ff7bac1d0fade060e409b10c348cc45f290f4d9c32105439fff847d571102ba6688d5b6aa02bd91bc42')
 
 package() {
