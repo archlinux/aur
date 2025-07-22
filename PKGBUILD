@@ -15,12 +15,12 @@ source=("git+https://gitlab.com/protesilaos/tempus-themes-xfce4-terminal.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -d "$pkgdir/usr/share/xfce4/terminal/colorschemes"
   install -Dm644 *.theme -t "$pkgdir/usr/share/xfce4/terminal/colorschemes/"
 }
