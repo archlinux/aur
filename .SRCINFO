@@ -1,0 +1,18 @@
+pkgbase = python-pynini
+	pkgdesc = For compiling, optimizing, and applying grammar rules
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://www.opengrm.org/twiki/bin/view/GRM/Pynini
+	arch = any
+	license = Apache-2.0
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-absl
+	depends = openfst
+	source = https://files.pythonhosted.org/packages/source/p/pynini/pynini-2.1.6.tar.gz
+	sha512sums = 985411a153978c1ea79294e9aa30a59706f19c34697ec31c0610952fe18ed4d2aadd2fc4937e425ad0775dde5b22cada608b9e889e132c803288a147f28c65fe
+
+pkgname = python-pynini
