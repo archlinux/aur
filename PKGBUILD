@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "Toney-$pkgver"
   install -Dm755 "toney" "$pkgdir/usr/bin/toney"
 }
 
