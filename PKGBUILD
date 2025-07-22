@@ -1,6 +1,6 @@
 # Maintainer: iShawyha <shawyhaf@gmail.com>
 pkgname=m3uget
-pkgver=1.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Multi-threaded M3U8 stream downloader"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OlexiyOdarchuk/m3uget/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('980162c09c3009debdf860c4eb1cc795c11f09874bf3346545eada40bb0a4005')
+sha256sums=('5f58718109b6b836cbc48122e7ada0c247b75305027ce75b666503797cba216c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
