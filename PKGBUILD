@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=142.0a1+20250624.1+hd06391b8fd49
+pkgver=143.0a1+20250722.1+hbca22a6d0402
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -101,10 +101,9 @@ b2sums=('SKIP'
         '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
         '8a894b01e405b628877483e40e9b018647977cb053b6af02afc901ed24d6e1f767f3db8c321070e33aea4a05ba16f1eb47ae600e5299b5f9caad03d20ba38cf5')
 
-# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
-# more information.
+# get your own set of keys.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 pkgver() {
