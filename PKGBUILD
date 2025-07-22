@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/SourcewareLab/Toney/archive
 sha256sums=('SKIP') 
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "Toney-$pkgver"
   go build -o toney 
 }
 
