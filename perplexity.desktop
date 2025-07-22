@@ -1,14 +1,14 @@
 [Desktop Entry]
-Name=Perplexity AI
-Name[ru]=Perplexity AI
-Comment=Native Perplexity AI client for Linux
-Comment[ru]=Нативный клиент Perplexity AI для Linux
-Comment[es]=Cliente nativo de Perplexity AI para Linux
-Comment[zh_CN]=Linux的原生Perplexity AI客户端
-Comment[zh_TW]=Linux的原生Perplexity AI客戶端
-Comment[ja]=Linux用のネイティブPerplexity AIクライアント
-Comment[ko]=Linux용 네이티브 Perplexity AI 클라이언트
-Comment[hi]=Linux के लिए नेटिव Perplexity AI क्लाइंट
+Name=Perplexity
+Name[ru]=Perplexity
+Comment=Native Perplexity client for Linux
+Comment[ru]=Нативный клиент Perplexity для Linux
+Comment[es]=Cliente nativo de Perplexity para Linux
+Comment[zh_CN]=Linux的原生Perplexity客户端
+Comment[zh_TW]=Linux的原生Perplexity客戶端
+Comment[ja]=Linux用のネイティブPerplexityクライアント
+Comment[ko]=Linux용 네이티브 Perplexity 클라이언트
+Comment[hi]=Linux के लिए नेटिव Perplexity क्लाइंट
 Exec=perplexity
 Icon=perplexity
 Type=Application

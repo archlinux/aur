@@ -2,7 +2,7 @@
 
 pkgname=perplexity
 pkgver=1.1.3
-pkgrel=8
+pkgrel=11
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
