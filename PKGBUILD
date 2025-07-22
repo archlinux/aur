@@ -3,7 +3,7 @@
 
 pkgname=lbry-desktop-bin
 pkgver=0.53.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative (no active development)'
 arch=('x86_64')
 changelog=changelog
