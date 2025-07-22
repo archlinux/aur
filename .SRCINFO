@@ -1,6 +1,6 @@
 pkgbase = airport-utils-bin
 	pkgdesc = Configuration and management utilities for Apple AirPort base stations
-	pkgver = 2_5
+	pkgver = 2_8
 	pkgrel = 1
 	arch = x86_64
 	depends = java-environment
