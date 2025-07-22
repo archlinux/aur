@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-openssl
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssl.org
 	arch = any
 	license = Apache-2.0
