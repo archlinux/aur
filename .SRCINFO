@@ -1,0 +1,24 @@
+pkgbase = phonon-qt5-vlc
+	pkgdesc = Phonon VLC backend for Qt5
+	pkgver = 0.12.0
+	pkgrel = 6
+	url = https://community.kde.org/Phonon
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = libvlc
+	depends = phonon-qt5
+	depends = qt5-base
+	depends = vlc-plugins-base
+	provides = phonon-qt5-backend
+	source = https://download.kde.org/stable/phonon/phonon-backend-vlc/0.12.0/phonon-backend-vlc-0.12.0.tar.xz
+	source = https://download.kde.org/stable/phonon/phonon-backend-vlc/0.12.0/phonon-backend-vlc-0.12.0.tar.xz.sig
+	validpgpkeys = CB9387521E1EE0127DA804843FDBB55084CC5D84
+	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
+	sha256sums = 338479dc451e4b94b3ca5b578def741dcf82f5c626a2807d36235be2dce7c9a5
+	sha256sums = SKIP
+
+pkgname = phonon-qt5-vlc
