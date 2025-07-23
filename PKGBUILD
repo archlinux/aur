@@ -2,15 +2,30 @@
 # Contributor: slact
 pkgname=tlpui-git
 _app_id=com.github.d4nj1.tlpui
-pkgver=1.6.4.r0.g2caad18
-pkgrel=2
+pkgver=1.8.0.r0.g77d7dc5
+pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
 url="https://github.com/d4nj1/TLPUI"
 license=('GPL-2.0-or-later')
-depends=('gtk3' 'python-gobject' 'python-toml' 'python-yaml' 'tlp')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+depends=(
+  'gtk3'
+  'python-gobject'
+  'python-yaml'
+  'tlp'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-poetry-core'
+  'python-wheel'
+)
+checkdepends=(
+  'appstream'
+  'python-pytest'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/d4nj1/TLPUI.git")
@@ -18,12 +33,20 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^tlpui.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^tlpui.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${pkgname%-git}"
   GIT_DIR='.' python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${pkgname%-git}"
+  desktop-file-validate "${pkgname%-git}.desktop"
+  appstreamcli validate --no-net "AppImage/${_app_id}.appdata.xml"
+
+  pytest
 }
 
 package() {
