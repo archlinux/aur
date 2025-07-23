@@ -1,6 +1,6 @@
 pkgbase = python-telegram-bot
 	pkgdesc = A library that provides a Python interface to the Telegram Bot API
-	pkgver = 22.2
+	pkgver = 22.3
 	pkgrel = 1
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-telegram-bot
 	optdepends = python-aiolimiter: for rate limiter
 	optdepends = python-socksio: for SOCKS proxy support
 	optdepends = python-tornado: for webhooks support
-	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v22.2/python_telegram_bot-22.2.tar.gz
-	sha512sums = 2c396d651e8cb30093d330dfb15c791d7ac0b0325ce34abd4176b41f7ae18fd2086d1c502d8e32a0da20ae60954b158a1d234ff4dbf623196a05890448c887f2
+	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v22.3/python_telegram_bot-22.3.tar.gz
+	sha512sums = 07afef860a2f76a8b28c4311d870ea1373e8c1b08eaf4b42b047b6cd05b65adc0d4d2ca8974730942a25ab0440aef9f1339eb2bf9fd18f47f06a13d05cc831dd
 
 pkgname = python-telegram-bot
