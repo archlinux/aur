@@ -9,12 +9,18 @@ pkgdesc="Desktop Suite for Xfce"
 arch=('any')
 url="https://shimmerproject.org"
 license=('CC-BY-SA-3.0 AND GPL-2.0-or-later')
-makedepends=('librsvg' 'meson' 'sassc')
-optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
-            'gtk3: required for CSS/GTK3 theme'
-            'lightdm-gtk-greeter: required for the LightDM GTK theme'
-            'shimmer-wallpapers: contains the Greybird wallpaper, among others'
-            'gtk-engine-murrine: GTK2 theme support')
+makedepends=(
+  'librsvg'
+  'meson'
+  'sassc'
+)
+optdepends=(
+  'elementary-xfce-icons: matching icon set; use the dark icon theme'
+  'gtk-engine-murrine: GTK2 theme support'
+  'gtk3: required for CSS/GTK3 theme'
+  'lightdm-gtk-greeter: required for the LightDM GTK theme'
+  'shimmer-wallpapers: contains the Greybird wallpaper, among others'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shimmerproject/Greybird/archive/v$pkgver.tar.gz")
 sha256sums=('74dcec9b9bcf6c869941b661c50ce0d752b4eb4e193747db536ffd7e97d32453')
 
