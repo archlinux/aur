@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Maestri <umpire274@gmail.com>
 
 pkgname=rbackup
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Fast, cross-platform, multithreaded incremental backup tool (rsync/robocopy-like) written in Rust"
 arch=('x86_64')
@@ -19,5 +19,6 @@ package() {
   install -Dm755 "$srcdir/rbackup" "$pkgdir/usr/bin/rbackup"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "$srcdir/CHAANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
 
