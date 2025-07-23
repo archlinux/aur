@@ -1,11 +1,11 @@
 pkgbase = simplex-desktop-bin
 	pkgdesc = SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled)
-	pkgver = 6.3.7
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://simplex.chat/
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	source = simplex-desktop-bin-6.3.7.deb::https://github.com/simplex-chat/simplex-chat/releases/download/v6.3.7/simplex-desktop-ubuntu-22_04-x86_64.deb
-	sha512sums = 8540f143bf1b44ac321066c69001a1fa263bc0b631112383e1d5819e3b0f4c2ee62f74ed43bd86cf9351372d91bf17f73da867d4e4574ab11696825287bfd02b
+	source = simplex-desktop-bin-6.4.0.deb::https://github.com/simplex-chat/simplex-chat/releases/download/v6.4.0/simplex-desktop-ubuntu-22_04-x86_64.deb
+	sha512sums = c00ad3072691b62af2d9800675990f6e8d627917c572d153974c12405fe3d34c2fb2b125748dd4eb648ab7288e3e49e4deb498e3814047d4551961477943ff4f
 
 pkgname = simplex-desktop-bin
