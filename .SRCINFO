@@ -1,6 +1,6 @@
 pkgbase = python-langgraph-sdk
 	pkgdesc = SDK for interacting with LangGraph API.
-	pkgver = 0.1.74
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/sdk-py
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-langgraph-sdk
 	depends = python
 	depends = python-httpx
 	depends = python-orjson
-	source = https://files.pythonhosted.org/packages/source/l/langgraph-sdk/langgraph_sdk-0.1.74.tar.gz
-	sha256sums = 7450e0db5b226cc2e5328ca22c5968725873630ef47c4206a30707cb25dc3ad6
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-sdk/langgraph_sdk-0.2.0.tar.gz
+	sha256sums = cd8b5f6595e5571be5cbffd04cf936978ab8f5d1005517c99715947ef871e246
 
 pkgname = python-langgraph-sdk
