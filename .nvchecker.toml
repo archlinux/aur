@@ -1,0 +1,4 @@
+[kissfft-git]
+source = "manual"
+#git = "https://github.com/mborgerding/kissfft.git"
+#prefix = "v"
