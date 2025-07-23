@@ -7,7 +7,7 @@
 
 pkgname=servo-nightly-bin
 _pkgname=servo
-pkgver=20250722
+pkgver=20250723
 pkgrel=1
 pkgdesc='embeddable, independent, memory-safe, modular, parallel web rendering engine'
 arch=(x86_64)
@@ -27,8 +27,8 @@ source=(
   https://raw.githubusercontent.com/servo/servo/main/LICENSE
   org.servo.Servo.desktop
 )
-sha256sums=('bd2b2fc5bb80d2e61cd2a7513afecf915a13bec371493f1f2eb6dbe572f762a8'
-            '02cdfebd76dcfb2e4a0248edfa9818d732da860e07599ec50c5207a63ce5a36f'
+sha256sums=('47fcdf33291738777584a0112a005525e777211631302dfc849fd5d1a80d1183'
+            '351cf55d563100949818b32b1756df1c5a354462de55727d6f2b88a2a34766c3'
             '1af2d2b02d9c86030d29ed77117ca7a1b0e4b6ff35bcf8eeb124867d0f5cb59e'
             'cb5fe124efa3db92ed298cd67d597ef26e35afa448d4e9fdcb31bb67a961047d')
 
