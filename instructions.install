@@ -1,0 +1,16 @@
+post_install() {
+    echo ""
+    echo "To use pyactivate, add a line that sources it to your shell's rc"
+    echo "For example: echo \"source /usr/share/pyactivate/pyactivate.sh\" >> ~/.bashrc"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "You should now remove the line that sources pyactivate from your shell's rc."
+    echo ""
+}

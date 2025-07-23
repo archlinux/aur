@@ -1,0 +1,5 @@
+[pyactivate]
+source = "github"
+github = "AlphaLynx0/pyactivate"
+use_max_tag = true
+prefix = "v"

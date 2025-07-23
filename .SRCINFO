@@ -1,0 +1,14 @@
+pkgbase = pyactivate-git
+	pkgdesc = Add a python venv to your environment from within subdirs in a project
+	pkgver = 1.2.0.r1.gb2972a0
+	pkgrel = 1
+	url = https://github.com/AlphaLynx0/pyactivate
+	install = instructions.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/AlphaLynx0/pyactivate
+	sha256sums = SKIP
+
+pkgname = pyactivate-git
