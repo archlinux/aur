@@ -88,6 +88,14 @@ _use_mingw=gcc
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
 
+## if using llvm-mingw, the path to the root directory containing the installation
+##   if it's empty (default), then try in order:
+##      1. dirname "$(command -v i686-w64-mingw32-clang)"
+##      2. /opt/llvm-mingw
+##      3. /opt/llvm-mingw/llvm-mingw-msvcrt
+##      4. /opt/llvm-mingw/llvm-mingw-ucrt
+_llvm_mingw_prefdir=
+
 ################################################################################################################################
 ################################################################################################################################
 
@@ -241,16 +249,21 @@ _set_vars() {
     _stripprog="$(command -v strip)"
 
     ## paths setup
-    _llvm_mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
+    if { [ -n "${_llvm_mingw_prefdir:-}" ] && [ -d "${_llvm_mingw_prefdir}" ] && [ -x "${_llvm_mingw_prefdir}/bin/i686-w64-mingw32-clang" ]; }; then
+      _llvm_mingw_path="${_llvm_mingw_prefdir}/bin"
+    else
+      _llvm_mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
+    fi
+
     if [[ "${_use_mingw}" =~ (llvm|bundled*) ]]; then
       makedepends+=(llvm-mingw-w64-toolchain)
       if [ "${_llvm_mingw_path}" = "." ]; then
-        if [ -f "/opt/llvm-mingw/llvm-mingw-ucrt/bin/clang" ]; then
-          _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+        if [ -f "/opt/llvm-mingw/bin/clang" ]; then
+          _llvm_mingw_path="/opt/llvm-mingw/bin"
         elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
           _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
         else
-          _llvm_mingw_path="/opt/llvm-mingw/bin"
+          _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
         fi
       fi
       if [ -x "${_llvm_mingw_path}/i686-w64-mingw32-clang" ]; then
