@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gettext
-pkgver=0.24
-pkgrel=2
+pkgver=0.26
+pkgrel=1
 arch=('any')
 pkgdesc='GNU internationalization library (mingw-w64)'
 depends=('mingw-w64-termcap' 'mingw-w64-libunistring')
@@ -12,11 +12,11 @@ source=(http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz{,.sig}
         intl.pc
         0001-restore-DllMain-symbol.patch
         0024-disable-gnu-format.patch)
-sha256sums=('c918503d593d70daf4844d175a13d816afacb667c06fba1ec9dcd5002c1518b7'
-            'SKIP'
-            '0dc8a3e2c95d79aacaeaacd3c90e41c0f5d6ba9cfbc949a0ca55f4b0fd389d9c'
-            'bfd38442d899bee75dc5d919f2bfe4a8fd827eff3fdcf45966f9de5bb5d6f283'
-            'ce7ccf6dd3a492cab322253cd67310899b546eccc25821c25cbc047a1a984633')
+b2sums=('f8e6b6d232b0a92f333d934c273a6923af40a9d6c632e20d240c7260d13f4be4bacd89efe4ccc2cce5a847e45e87911d692ef6c6f749c1821d1d5508daa14188'
+        'SKIP'
+        '9ceacac403a64800f46e2a5ba2e238454a781ac2fbc9508330f5269aee5a0e77066ac4c5e16d852fe101116a152fa79879b956930d0fffb0e4c992ca2f16a0e9'
+        'ad82e06ba60e337c6b307824b0e64919fef736449192876a75eb483614debd413b31c9899c076614ca96ba611d5bb8209cd6044c26ad8ffa7945190d74ef6d7a'
+        'c3e5d735aa791b684f5111327d9d07fb54aa1f4ed0cacfdb98b47ff3e47edb037b786a2cb84b7db5a63aa25f371708843d48eea2e3d9b2f0ed6c02fd5ba0e16f')
 validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871'  # Daiki Ueno
               '68D94D8AAEEAD48AE7DC5B904F494A942E4616C2'
               '9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D'  # Bruno Haible
