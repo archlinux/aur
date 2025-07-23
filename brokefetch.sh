@@ -24,4 +24,4 @@ echo -e "${BLUE}\`+sso+:-\`                 \`.-/+oso:"
 echo -e "${BLUE}\`++:.                           \`-/+/"
 echo -e "${BLUE}\`.\`                                \`"
 
-echo -e "${BOLD}BROKEFETCH 🥀${RESET}"
+echo -e "${BOLD}BROKEFETCH 🥀 1.4 ${RESET}"
