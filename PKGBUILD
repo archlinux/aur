@@ -3,7 +3,7 @@
 # Contributor: Patrik Plihal <patrik.plihal@gmail.com>
 
 pkgname=ckan-git
-pkgver=1.34.4.r128.g4694463c
+pkgver=1.36.0.r247.g99ebf468
 pkgrel=1
 pkgdesc="A metadata repository and associated tools for searching, installing, and managing mods for Kerbal Space Program (KSP)"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 provides=('ckan')
 conflicts=('ckan')
 depends=('mono')
-makedepends=('git' 'mono-msbuild' 'dotnet-sdk')
+makedepends=('git' 'mono-msbuild' 'dotnet-sdk-8.0')
 source=('git+https://github.com/KSP-CKAN/CKAN'
         'ckan')
 sha256sums=('SKIP'
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "CKAN"
-  ./build
+  ./build.sh
 }
 
 package() {
