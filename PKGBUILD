@@ -1,6 +1,6 @@
 # Maintainer: iShawyha <shawyhaf@gmail.com>
 pkgname=m3uget
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Multi-threaded M3U8 stream downloader"
 arch=('x86_64' 'aarch64')
