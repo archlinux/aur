@@ -19,6 +19,19 @@ depends=('python' 'python-pyyaml' 'python-paramiko' 'python-jinja' 'python-resol
 provides=('ansible-core' 'python-ansible')
 replaces=('ansible-core' 'python-ansible')
 conflicts=('ansible-core' 'python-ansible')
+checkdepends=('git'
+              'openssh'
+              'python-bcrypt'
+              'python-botocore'
+              'python-passlib'
+              'python-pexpect'
+              'python-pytest'
+              'python-pytest-mock'
+              'python-pytest-xdist'
+              'python-pytest-forked'
+              'python-pywinrm'
+              'python-voluptuous'
+)
 optdepends=('sshpass: for ssh connections with password'
             'python-passlib: crypt values for vars_prompt'
             'python-netaddr: for the ipaddr filter'
