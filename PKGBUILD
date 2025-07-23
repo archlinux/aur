@@ -3,19 +3,22 @@
 pkgname=spacefm-bin
 pkgver=1.0.6
 _subver=5
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="SpaceFM binary package from debian bullseye, GTK3 version"
 license=('GPL-2.0-only')
-source=("http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm-gtk3_${pkgver}-${_subver}_amd64.deb")
+source=("http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm-gtk3_${pkgver}-${_subver}_amd64.deb"
+        "https://www.dave-blair.de/projects/ui-assets.tar.gz")
 depends=(gtk3 startup-notification ffmpegthumbnailer)
 provides=('spacefm')
 conflicts=('spacefm' 'spacefm-gtk2' 'spacefm-gtk2-bin')
-sha256sums=('912006c015b5e43943a87b8f1fe5a49abdd22b60a3d5a29f87b3e31d48856cd9')
+sha256sums=('912006c015b5e43943a87b8f1fe5a49abdd22b60a3d5a29f87b3e31d48856cd9'
+            '8500677665655a1a5d472ca1e1c36cb76b027d075f8f690b403503ebcaad1c32')
 url="https://packages.debian.org/bookworm/amd64/spacefm-gtk3"
 
 prepare() {
   bsdtar -xf 'data.tar.xz' -C ${srcdir}
+  bsdtar -xf 'ui-assets.tar.gz' -C ${srcdir}
 }
 
 package() {
