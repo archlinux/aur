@@ -6,6 +6,7 @@ pkgdesc="Code editing. Redefined. AIoT IDE is the first choice for developing qu
 arch=('x86_64')
 url="https://iot.mi.com/vela/quickapp/"
 license=('custom')
+options=('!debug')
 depends=(
   'ca-certificates'
   'alsa-lib'
