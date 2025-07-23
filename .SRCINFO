@@ -1,7 +1,7 @@
 pkgbase = wootility
 	pkgdesc = Utility for configuring Wooting keyboards
 	pkgver = 5.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wooting.io/wootility
 	install = wootility.install
 	arch = x86_64
