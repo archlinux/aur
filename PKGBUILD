@@ -13,7 +13,7 @@ source=(
   'https://deadsoftware.ru/files/terminalhash/doom2df-packages/instruments.tar.xz'
 )
 md5sums=(
-  'fa14512d70fbf79f1f12683bad13f288'
+  'e7216f21d712e2d39963ea31a7557e5e'
   '583c086205aec0d0257fdcb8c2f3c817'
 )
 
