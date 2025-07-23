@@ -1,0 +1,5 @@
+[pdfposter]
+source = 'gitlab'
+gitlab = 'pdftools/pdfposter'
+use_max_tag = true
+prefix = 'v'
