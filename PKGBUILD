@@ -11,6 +11,7 @@ depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
 source=('git+https://github.com/Kesomannen/gale.git' 'Gale.desktop')
 sha256sums=('SKIP' '014a3c5a5a773fc0846e0c08df29e327dee4f05c3a9977dbf853fb7a2910d4f4')
 conflicts=('gale-bin')
+provides=('gale')
 
 pkgver() {
 	cd "$srcdir/gale"
