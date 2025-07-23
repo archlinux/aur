@@ -1,0 +1,17 @@
+pkgbase = uf2-utils-git
+	pkgdesc = Toolbox for working with UF2 format. bin2uf2/uf22bin/uf2dump
+	pkgver = r8.3ca6d14
+	pkgrel = 2
+	url = https://github.com/tinyvision-ai-inc/uf2-utils
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	provides = uf2-utils
+	conflicts = uf2-utils
+	source = uf2-utils-git::git+https://github.com/tinyvision-ai-inc/uf2-utils.git
+	md5sums = SKIP
+
+pkgname = uf2-utils-git
