@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Vintage Story 1-click Mod Install Handler
+Comment=Handler for vintagestorymodinstall:// URI scheme (unstable)
+Exec=/usr/bin/vintagestory-unstable -i %u
+Path=/usr/share/vintagestory-unstable
+MimeType=x-scheme-handler/vintagestorymodinstall;
+NoDisplay=true
+Terminal=false
