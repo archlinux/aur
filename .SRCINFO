@@ -1,12 +1,12 @@
 pkgbase = brokefetch
 	pkgdesc = A sad, funny alternative to neofetch
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/Szerwigi1410/brokefetch
 	arch = any
 	license = MIT
 	depends = bash
 	source = brokefetch.sh::https://raw.githubusercontent.com/Szerwigi1410/brokefetch/main/brokefetch.sh
-	md5sums = aa36e38d02f3058e2c48ddcba536722e
+	md5sums = 1eabe4d197049a0ac34befb009a32b26
 
 pkgname = brokefetch
