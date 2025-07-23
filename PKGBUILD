@@ -8,7 +8,7 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=5.3.0.prealpha.2258.g83bdc0dc5f
+pkgver=5.3.0.prealpha.3290.g35bad92f7c
 pkgrel=1
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
@@ -17,22 +17,22 @@ license=('GPL-3.0-only')
 
 depends=(
 	exiv2 ffmpeg fftw fontconfig freetype2 fribidi gcc-libs giflib glibc gsl
-	harfbuzz imath kcompletion5 kconfig5 kcoreaddons5 kcrash5 kguiaddons5 ki18n5
-	kitemviews5 kitemmodels5 kwidgetsaddons5 kwindowsystem5 lcms2 libjpeg-turbo
-	libkdcraw5 libpng libtiff libunibreak libwebp libx11 mlt opencolorio openexr
-	openjpeg2 qt5-base qt5-svg qt5-x11extras quazip-qt5 zlib
+	harfbuzz imath kcompletion kconfig kcoreaddons kcrash kguiaddons ki18n
+	kitemviews kitemmodels kwidgetsaddons kwindowsystem lcms2 libjpeg-turbo
+	libkdcraw libpng libtiff libunibreak libwebp libx11 mlt opencolorio openexr
+	openjpeg2 qt6-base qt6-svg quazip-qt6 zlib
 )
 makedepends=(
-	git boost eigen extra-cmake-modules immer kdoctools5 kseexpr lager libheif
-	libjxl libmypaint poppler-qt5 python-pyqt5 qt5-tools sip xsimd zug
+	git boost eigen extra-cmake-modules immer kdoctools kseexpr lager libheif
+	libjxl libmypaint poppler-qt6 python-pyqt6 qt6-tools sip xsimd zug
 )
 optdepends=(
-	'poppler-qt5: PDF filter'
-	'python-pyqt5: for the Python plugins'
+	'poppler-qt6: PDF filter'
+	'python-pyqt6: for the Python plugins'
 	'python-legacy-cgi: for the Python plugins'
 	'libheif: HEIF filter'
 	'kseexpr: SeExpr generator layer'
-	'kimageformats5: PSD support'
+	'kimageformats: PSD support'
 	'libmypaint: support for MyPaint brushes'
 	'krita-plugin-gmic: GMic plugin'
 	'libjxl: JPEG-XL filter'
@@ -50,13 +50,15 @@ pkgver() {
 
 build() {
 	cmake -B build -S ${_pkgname} \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_WITH_QT6=ON \
 		-DBUILD_TESTING=OFF \
 		-DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON
 	cmake --build build --clean-first
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install build
+	cmake --install build --strip --prefix="${pkgdir}/usr"
 }
