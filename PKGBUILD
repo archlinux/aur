@@ -1,8 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-
 pkgname=topgrade-git
-pkgver=15.0.0.r28.g1958fe1
+pkgver=16.0.4.r33.g257d202
 pkgrel=1
 pkgdesc="Upgrade all the things"
 arch=('x86_64' 'aarch64')
