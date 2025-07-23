@@ -12,8 +12,10 @@ options=('!strip' '!debug')
 depends=('fuse2')
 source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Cherry-Studio-${pkgver}-${arch}.AppImage"
   "${_pkgname}.desktop"
-  "${_pkgname}.png")
+  "${_pkgname}.png"
+  "${pkgname}.sh")
 sha256sums=('SKIP'
+  'SKIP'
   'SKIP'
   'SKIP')
 conflicts=("$_pkgname")
@@ -30,9 +32,8 @@ package() {
   install -Dm755 "${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
   # Install icon
   install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
-
   # Install desktop file
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
-  ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  # Install cherry-studio-bin.sh
+  install -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }

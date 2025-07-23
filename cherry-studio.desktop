@@ -5,3 +5,4 @@ Comment=🍒 Cherry Studio is a desktop client that supports for multiple LLM pr
 Exec=/usr/bin/cherry-studio
 Icon=/usr/share/icons/hicolor/256x256/apps/cherry-studio.png
 Categories=Utility;
+StartupWMClass=CherryStudio
