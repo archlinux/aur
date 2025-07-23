@@ -2,7 +2,7 @@
 pkgname=awsaml-bin
 _pkgname=Awsaml
 pkgver=4.0.0
-_electronversion=26
+_electronversion=31
 pkgrel=1
 pkgdesc="An application for providing automatically rotated temporary AWS credentials.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
