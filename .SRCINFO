@@ -11,6 +11,7 @@ pkgbase = wootility
 	depends = hicolor-icon-theme
 	depends = zlib
 	noextract = wootility-5.0.6.AppImage
+	options = !strip
 	source = wootility-5.0.6.AppImage::https://api.wooting.io/public/wootility/download?os=linux&version=5.0.6
 	source = 70-wooting.rules
 	b2sums = 01f4997054be96dcbee8bbb6d4f68874d23bb1507898337e4e4165c6c417f183cca947b4d7fb98e2500a4c85011e95b1d2d45c993aa1949bb5122452d97367d9
