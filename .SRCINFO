@@ -9,7 +9,7 @@ pkgbase = sreda
 	replaces=('armgs')
 	source = https://dl.armgs.team/downloads/linux/x64/${pkgver}/sreda.tar.xz
 	source = sreda.desktop
-	sha256sums = eb10f019bfd7573d6e6e48f748ce5e68500d52f4f7ac3553008faeeb22312ed2
+	sha256sums = ef25495acd90d471ae8a31426b0529be52740a65925a5056ed95f29a8daa1ee9
 	sha256sums = 4cd9a7f70e029a3501af880f4839ad1a52de104ad989e1b0aa1817bfa90675aa
 
 pkgname = sreda

@@ -1,8 +1,8 @@
 # Maintainer: Yakov P potapovj(at)gmail(dot)com
 # Maintainer: KUHTOXO oxomhuk@gmail.com
 pkgname=sreda
-pkgver=24.5.4.48124
-pkgrel=3
+pkgver=24.11.4.55437
+pkgrel=1
 pkgdesc="Service for interaction between employees in organizations."
 arch=('x86_64')
 url="https://sreda.digital.gov.ru/"
@@ -19,7 +19,7 @@ source=(
 	"sreda.desktop"
 )
 sha256sums=(
-	'eb10f019bfd7573d6e6e48f748ce5e68500d52f4f7ac3553008faeeb22312ed2'
+	'ef25495acd90d471ae8a31426b0529be52740a65925a5056ed95f29a8daa1ee9'
 	'4cd9a7f70e029a3501af880f4839ad1a52de104ad989e1b0aa1817bfa90675aa'
 )
 
