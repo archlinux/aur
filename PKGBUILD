@@ -11,11 +11,11 @@ license=('MIT')
 makedepends=('go')
 provides=("${pkgname%++}")
 conflicts=("${pkgname%++}")
-source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/isacikgoz/tldr/archive/refs/tags/v$_pkgver.tar.gz")
+source=("$pkgname-${_pkgver}.tar.gz"::"https://github.com/isacikgoz/tldr/archive/refs/tags/v${_pkgver}.tar.gz")
 sha256sums=('d40e1c602d84acc67cdee3b9bed001fb8ec198c7049c1d05eb071ab05af66c19')
 
 prepare() {
-  cd "${pkgname%++}-$_pkgver"
+  cd "${pkgname%++}-${_pkgver}"
   export GOPATH="$srcdir/gopath"
 
   # download dependencies
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname%++}-$_pkgver"
+  cd "${pkgname%++}-${_pkgver}"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%++}-$_pkgver"
+  cd "${pkgname%++}-${_pkgver}"
   install -Dm755 "build/${pkgname%++}" -t "$pkgdir/usr/bin"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
