@@ -3,14 +3,14 @@
 _reponame=2ship2harkinian
 pkgbase=2s2h-git
 pkgname=(2s2h-git 2s2h-otr-exporter-git)
-pkgver=1.1.2.r88.g09b778c5d
+pkgver=2.0.0.r0.g5139d60c4
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 #url="https://shipofharkinian.com/"
 url="https://github.com/HarbourMasters/${_reponame}"
-_depends_2s2h=("sdl2" "zenity" "libzip" "libpng")
+_depends_2s2h=("sdl2" "zenity" "libpng" "libogg" "libvorbis" "opus" "opusfile")
 _depends_2s2h_otr_exporter=("libpng")
-_depends_lus=("fmt" "spdlog" "tinyxml2")
+_depends_lus=("libzip" "fmt" "spdlog" "tinyxml2")
 depends=("${_depends_2s2h[@]}" "${_depends_2s2h_otr_exporter[@]}" "${_depends_lus[@]}")
 makedepends=("git" "cmake" "ninja" "python" "curl" "lsb-release" "boost" "nlohmann-json")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
