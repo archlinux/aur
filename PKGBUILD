@@ -24,23 +24,24 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/gale"
+	export RUSTUP_TOOLCHAIN=stable
 
-	if command -v rustup >/dev/null 2>&1; then
-		echo "Detected rustup, setting stable as default toolchain..."
-		rustup default stable
-	fi
+	cd "$srcdir/gale"
+	pnpm install
+
+	cd "src-tauri"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/gale"
-
 	export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=lld"
 	export CC=clang
 	export CXX=clang++
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 
-	pnpm install
-	cargo tauri build --no-bundle
+	cd "$srcdir/gale"
+	cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
