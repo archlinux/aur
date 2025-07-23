@@ -1,0 +1,5 @@
+[sc-controller]
+source = "github"
+github = "C0rn3j/sc-controller"
+use_max_tag = true
+prefix = "v"
