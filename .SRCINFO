@@ -1,6 +1,6 @@
 pkgbase = ansible-core-git
 	pkgdesc = Radically simple IT automation platform
-	pkgver = r54906.8b9ddf55447
+	pkgver = r55058.a0d56d2f4f3
 	pkgrel = 1
 	url = https://github.com/ansible/ansible
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = ansible-core-git
 	replaces = ansible-core
 	replaces = python-ansible
 	source = ansible-core-git::git+https://github.com/ansible/ansible.git
-	source = relax_setuptools_version_requirements.patch
+	source = relax_strict_dependencies_upper_bound.patch
 	sha512sums = SKIP
-	sha512sums = a1cc609a8020bb4dca0b6b4c0bb53a4ff0648b79a3e98334e2dbd9584abf565366040c8fe40bbe2c929aed2123565a8ceba22ed60ae5a2ba08e6a7e92ece703b
+	sha512sums = 7b5364f9ea28bd8ed5d01a3fa43304e922a94946df1495874b4c0b58ea30da10f1c848f93f5e8e485497f3a23a5b0007705bdab2a854d76a9be528738615d0bd
 
 pkgname = ansible-core-git

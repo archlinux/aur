@@ -9,7 +9,7 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-core-git
-pkgver=r54906.8b9ddf55447
+pkgver=r55058.a0d56d2f4f3
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -30,17 +30,16 @@ optdepends=('sshpass: for ssh connections with password'
             'python-setuptools: for module to manage Python libarary dependencies')
 makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 source=($pkgname::git+https://github.com/ansible/ansible.git
-        'relax_setuptools_version_requirements.patch')
+        'relax_strict_dependencies_upper_bound.patch')
 sha512sums=('SKIP'
-            'a1cc609a8020bb4dca0b6b4c0bb53a4ff0648b79a3e98334e2dbd9584abf565366040c8fe40bbe2c929aed2123565a8ceba22ed60ae5a2ba08e6a7e92ece703b')
+            '7b5364f9ea28bd8ed5d01a3fa43304e922a94946df1495874b4c0b58ea30da10f1c848f93f5e8e485497f3a23a5b0007705bdab2a854d76a9be528738615d0bd')
 
 prepare() {
   cd "$pkgname"
 
-  # Temporary patch to allow building with latest setuptools
-  # Currently, upstream has set the upper version version bound for it at `< 72.1.0`
-  # See https://github.com/ansible/ansible/blob/devel/pyproject.toml#L2
-  patch -Np1 < "${srcdir}/relax_setuptools_version_requirements.patch"
+  # Upstream is applying very strict upper bound version requirements for some dependencies (e.g. setuptools, wheel & resolvelib)
+  # We relax those to avoid unexpected / unnecessary build failures
+  patch -Np1 < "${srcdir}/relax_strict_dependencies_upper_bound.patch"
 }
 
 pkgver() {
@@ -51,11 +50,25 @@ pkgver() {
 build() {
   cd "${srcdir}"/${pkgname}
   python -m build --wheel --no-isolation
+  python packaging/cli-doc/build.py man --output-dir man
+}
+
+check() {
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  # tests require upstream wrapper to find ansible-core internals: https://github.com/ansible/ansible/issues/80472
+  cd "${pkgname}"
+  # we do not have libselinux packaged
+  rm -v test/units/module_utils/basic/test_selinux.py
+  bin/ansible-test units --python "${python_version}" --truncate 0
 }
 
 package() {
   cd ${pkgname}
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 COPYING -t "${pkgdir}"/usr/share/doc/${pkgname}/
+  install -Dm 644 man/ansible*1 -t "${pkgdir}/usr/share/man/man1/"
+  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm 644 licenses/MIT-license.txt "${pkgdir}/usr/share/licenses/${pkgname}/MIT-license.txt"
+  install -Dm 644 licenses/simplified_bsd.txt "${pkgdir}/usr/share/licenses/${pkgname}/simplified_bsd.txt"
 }
