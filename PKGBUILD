@@ -56,6 +56,5 @@ package() {
     'gpu-screen-recorder'              # AUR
     'gpu-screen-recorder-notification' # AUR
   )
-  replaces=("$_pkgname")
   meson install -C build --destdir "$pkgdir"
 }

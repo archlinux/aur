@@ -39,4 +39,3 @@ pkgname = gpu-screen-recorder-ui-git
 	depends = wayland
 	depends = gpu-screen-recorder
 	depends = gpu-screen-recorder-notification
-	replaces = gpu-screen-recorder-ui
