@@ -41,7 +41,7 @@ echo -e "${BLUE}      ./ooosssso++osssssso+\`         ${BOLD}WM:${RESET} HopiumW
 echo -e "${BLUE}     .oossssso-\`\`\`\`/ossssss+\`        ${BOLD}Terminal:${RESET} Terminal of Regret"
 echo -e "${BLUE}    -osssssso.      :ssssssso.       ${BOLD}CPU:${RESET} Imaginary (thinking hard...)"
 echo -e "${BLUE}   :osssssss/        osssso+++.\     ${BOLD}GPU:${RESET} Integrated Depression"
-echo -e "${BLUE}  /ossssssss/        +ssssooo/-      ${BOLD}Memory:${RESET} ${MEMORY_MB}MB (user-defined)"
+echo -e "${BLUE}  /ossssssss/        +ssssooo/-      ${BOLD}Memory:${RESET} ${MEMORY_MB}MB (user-defined-sadness)"
 echo -e "${BLUE} \`/ossssso+/:-        -:/+osssso+-"
 echo -e "${BLUE}\`+sso+:-\`                 \`.-/+oso:"
 echo -e "${BLUE}\`++:.                           \`-/+/"
