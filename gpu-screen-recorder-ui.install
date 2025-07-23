@@ -1,0 +1,13 @@
+post_install() {
+    setcap cap_setuid+ep usr/bin/gsr-global-hotkeys
+    echo "If you have previously installed the flatpak version of GPU Screen Recorder then run these commands or you may have a setup conflict:"
+    echo "  systemctl stop --user gpu-screen-recorder-ui"
+    echo "  rm ~/.local/share/systemd/user/gpu-screen-recorder-ui.service"
+    echo "  systemctl --user daemon-reload"
+    echo "You can start the overlay UI and add it to system startup by running 'systemctl enable --now --user gpu-screen-recorder-ui', or just run 'gsr-ui' to run it once. Press Alt+Z to show/hide the UI"
+}
+
+post_upgrade() {
+    setcap cap_setuid+ep usr/bin/gsr-global-hotkeys
+    echo "GPU Screen Recorder UI has updated. Run 'systemctl restart --user gpu-screen-recorder-ui' to use the new version of the software without rebooting"
+}
