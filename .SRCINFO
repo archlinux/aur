@@ -1,6 +1,6 @@
 pkgbase = superslicer-prerelease-bin
 	pkgdesc = G-code generator for 3D printers (Prusa, Voron, Creality, etc.) (binary AppImage)
-	pkgver = 2.7.61.6
+	pkgver = 2.7.61.7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
@@ -8,15 +8,15 @@ pkgbase = superslicer-prerelease-bin
 	license = AGPL3
 	depends = zlib
 	depends = fuse3
-	provides = superslicer=1:2.7.61.6
+	provides = superslicer=1:2.7.61.7
 	conflicts = superslicer
 	conflicts = superslicer-git
 	conflicts = superslicer-prerelease
 	replaces = slic3r++
-	noextract = SuperSlicer-ubuntu_22.04-2.7.61.6.AppImage
+	noextract = SuperSlicer-ubuntu_22.04-2.7.61.7.AppImage
 	options = !strip
 	options = !debug
-	source = https://github.com/supermerill/SuperSlicer/releases/download/2.7.61.6/SuperSlicer-ubuntu_22.04-2.7.61.6.AppImage
-	sha256sums = 03894038b0c9cd5dee961db3d72081e945d183601d58c2162bce822d4a70923f
+	source = https://github.com/supermerill/SuperSlicer/releases/download/2.7.61.7/SuperSlicer-ubuntu_22.04-2.7.61.7.AppImage
+	sha256sums = 164df08ea08b34bc62259ba61254e31baef045b3e5ee87a6e4f2334eaba7e8c9
 
 pkgname = superslicer-prerelease-bin
