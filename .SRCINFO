@@ -1,0 +1,13 @@
+pkgbase = tree-sitter-cmake
+	pkgdesc = CMake grammar for tree-sitter
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/uyha/tree-sitter-cmake
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	provides = libtree-sitter-cmake
+	source = tree-sitter-cmake-0.7.1::https://github.com/uyha/tree-sitter-cmake/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 6ef4df3b92b1b62d52674ffd5b70cf35b38bb77657da5f975f0b282228045b61
+
+pkgname = tree-sitter-cmake
