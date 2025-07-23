@@ -8,14 +8,14 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "server.md")
-sha256sums=('1d68f75ad3bc6a61056d3dc3fe0d634e0a53bfdb1379111bd7824ffffc3fb3ed'
+sha256sums=('9f83f5167e0a4b8537409c98dbf87a2ceccb4105aaccfca887ced1b6bcd652b4'
             '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
