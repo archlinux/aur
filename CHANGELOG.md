@@ -5,8 +5,116 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 This project attempts to adhere to [Semantic Versioning](http://semver.org/) since `1.7.0`.
 Versions since `1.7.0` only track ABI breaks and not API breaks.
+Versions since `2.0.0` only track API breaks and no longer guarantee ABI compatibility.
 
 ## [Unreleased]
+
+## [2.1.1] - 2025-04-02
+### Fixed
+- Fixed headers which were not self-contained.
+
+## [2.1.0] - 2025-04-01
+### Changed
+- `TCODHeightMap` is now safe to copy/move and can be swapped.
+
+### Deprecated
+- These functions have been deprecated by replacements:
+  - `TCOD_console_set_char` -> `TCOD_console_put_rgb`
+  - `TCOD_console_set_char_background` -> `TCOD_console_put_rgb`
+  - `TCOD_console_set_char_foreground` -> `TCOD_console_put_rgb`
+  - `TCOD_console_put_char` -> `TCOD_console_put_rgb`
+  - `TCOD_console_put_char_ex` -> `TCOD_console_put_rgb`
+  - `TCOD_console_printf` -> `TCOD_printf_rgb`
+  - `TCOD_console_printf_ex` -> `TCOD_printf_rgb`
+  - `TCOD_console_printf_rect` -> `TCOD_printf_rgb`
+  - `TCOD_console_printf_rect_ex` -> `TCOD_printf_rgb`
+  - `TCOD_console_printf_frame` -> `TCOD_console_draw_frame_rgb` & `TCOD_printf_rgb`
+  - `TCOD_console_printn_frame` -> `TCOD_console_draw_frame_rgb` & `TCOD_printn_rgb`
+  - `TCOD_console_vprintf` -> `TCOD_vprintf_rgb`
+  - `TCOD_console_vprintf_rect` -> `TCOD_vprintf_rgb`
+  - `TCOD_console_rect` -> `TCOD_console_draw_rect_rgb`
+  - `TCOD_console_hline` -> `TCOD_console_draw_rect_rgb`
+  - `TCOD_console_vline` -> `TCOD_console_draw_rect_rgb`
+- `TCODHeightMap::copy` was replaced by value assignment.
+
+### Fixed
+- Fixed crashes on screen capture.
+- Logged messages were missing a trailing newline.
+
+## [2.0.0] - 2025-03-20
+### Added
+- Cmake scripts now have the `LIBTCOD_INSTALL` option to disable installation.
+  [#153](https://github.com/libtcod/libtcod/issues/153)
+- Added `TCOD_renderer_init_sdl3` which takes `SDL_PropertiesID` parameters.
+
+### Changed
+- Switched from SDL2 to SDL3.
+- Several functions have been moved inline, this will break the ABI.
+- Provisional gui tools moved into the `tcod::gui` namespace.
+- `TCODConsole::data` changed from protected to private.
+- Renamed utility macros such as `MAX`, `MIN`, `ABS`, `CLAMP` and `LERP` to use `TCOD_` prefix.
+- `TCOD_renderer_init_sdl2` `renderer_flags` parameter changed to just `vsync`.
+- Libtcod library versions are no longer ABI compatible. Versions indicate API compatibility instead.
+
+### Deprecated
+- `TCOD_ContextParams.tcod_version` is deprecated and should no longer be set.
+
+### Fixed
+- `const` was missing from `TCOD_sys_update_char` image parameter.
+- Prevent key modifiers from getting stuck when the root console is reinitialized.
+- Fixed crash on `TCODPath` and `TCODDijkstra` move operations.
+  [#159](https://github.com/libtcod/libtcod/issues/159)
+
+### Removed
+- Removed long deprecated `libtcodpy` Python package.
+
+## [1.24.0] - 2023-05-26
+### Added
+- New `TCODImage::getSize()` overload which returns a value instead of taking output references.
+- New `TCODColor::genMap` overload which supports constexpr.
+- `TCODZip` has new `get` and `put` functions with their supported types as overloads.
+  This includes some types from the new API and C++ types such as `std::optional<std::string>` as an alternative to getting a char pointer.
+- `TCODZip` can now load and save paths using `<filesystem>` types.
+- Added `tcod::ImagePtr`.
+- Added functions to manually set context pixel-to-tile conversions in cases where it can't be set automatically.
+- New overloads to `TCODBsp` which can take function callbacks directly.
+
+### Changed
+- `TCODRandom` is now a movable, non-copyable object.
+- `TCODConsole` can now be default constructed.
+
+### Fixed
+- Constructing `TCODConsole` from `tcod::ConsolePtr` no longer causes a bad free.
+- Memory leak when loading images with `TCODZip`.
+- Memory leak with tileset atlases belonging to contexts.
+
+## [1.23.1] - 2022-11-09
+### Changed
+- Code Page 437: Character 0x7F is now assigned to 0x2302 (HOUSE).
+  [#134](https://github.com/libtcod/libtcod/pull/134)
+- ``TCOD_RENDERER_GLSL``, ``TCOD_RENDERER_OPENGL``, ``TCOD_RENDERER_SDL``, and ``TCOD_RENDERER_OPENGL2`` now alias to the ``TCOD_RENDERER_SDL2`` renderer.
+  [#137](https://github.com/libtcod/libtcod/pull/137)
+
+### Deprecated
+- All color constants have been deprecated.
+
+### Fixed
+- Forced all renderers to ``TCOD_RENDERER_SDL2`` to fix rare graphical artifacts with OpenGL.
+  [#112](https://github.com/libtcod/libtcod/issues/112)
+  [#83](https://github.com/libtcod/libtcod/issues/83)
+
+### Removed
+- Removed GLAD dependencies.
+
+## [1.23.0] - 2022-10-22
+### Added
+- Added new C print functions: ``TCOD_printf_rgb``, ``TCOD_printn_rgb``, and ``TCOD_vprintf_rgb``.
+  [#133](https://github.com/libtcod/libtcod/pull/133)
+- Added a default constructor for ``TCODImage``.
+
+### Fixed
+- Functions getting the size of an image now handle null pointers consistently.
+- Will no longer try to include ``<utf8proc.h>`` when Unicode support is disabled.
 
 ## [1.22.3] - 2022-09-09
 ### Added

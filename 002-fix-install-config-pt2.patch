@@ -1,0 +1,31 @@
+--- ./src/CMakeLists.txt	2025-07-23 15:16:48.623938343 +0200
++++ ./src/CMakeLists.txt	2025-07-23 15:21:28.252332157 +0200
+@@ -104,6 +104,7 @@
+ 
+ target_include_directories(${PROJECT_NAME} INTERFACE
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
++    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+ )
+ 
+ if(LIBTCOD_THREADS AND NOT CMAKE_DISABLE_FIND_PACKAGE_Threads)
+@@ -148,11 +149,6 @@
+         COMPONENT Library
+     )
+     include(CMakePackageConfigHelpers)
+-    get_filename_component(
+-        INSTALL_FULL_INCLUDEDIR
+-        ${CMAKE_INSTALL_INCLUDEDIR}
+-        REALPATH BASE_DIR ${CMAKE_CURRENT_BINARY_DIR}
+-    )
+     install(
+         EXPORT ${PROJECT_NAME}Targets
+         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}
+@@ -161,7 +157,7 @@
+     configure_package_config_file(${PROJECT_NAME}Config.cmake.in
+         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+         INSTALL_DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}
+-        PATH_VARS INSTALL_FULL_INCLUDEDIR)
++        PATH_VARS CMAKE_INSTALL_INCLUDEDIR)
+     write_basic_package_version_file(
+         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+         COMPATIBILITY SameMajorVersion

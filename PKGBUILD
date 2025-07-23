@@ -7,7 +7,7 @@
 
 pkgname=libtcod
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
 url="https://github.com/libtcod/libtcod"
@@ -16,8 +16,22 @@ depends=('sdl3' 'zlib')
 makedepends=('cmake')
 provides=("${pkgname}.so")
 changelog=CHANGELOG.md
-source=("https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ee9cc60140f480f72cb2321d5aa50beeaa829b0a4a651e8a37e2ba938ea23caa')
+source=(
+  "https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz"
+  '001-fix-install-config-pt1.patch'
+  '002-fix-install-config-pt2.patch'
+)
+sha256sums=(
+  'ee9cc60140f480f72cb2321d5aa50beeaa829b0a4a651e8a37e2ba938ea23caa'
+  'SKIP'
+  'SKIP'
+)
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/001-fix-install-config-pt1.patch"
+  patch -Np1 -i "${srcdir}/002-fix-install-config-pt2.patch"
+}
 
 build() {
   export CFLAGS+=" ${CPPFLAGS}"

@@ -1,0 +1,21 @@
+--- ./src/libtcodConfig.cmake.in	2025-07-23 15:16:48.630408863 +0200
++++ ./src/libtcodConfig.cmake.in	2025-07-23 15:21:29.249343251 +0200
+@@ -1,17 +1,9 @@
+ @PACKAGE_INIT@
+ 
+-find_package(SDL3 QUIET)
+-find_package(ZLIB QUIET)
+-find_package(lodepng-c QUIET)
+-find_package(utf8proc QUIET)
+-find_package(unofficial-utf8proc QUIET)
+-
+-set_and_check(LIBTCOD_INCLUDE_DIR "@PACKAGE_INSTALL_FULL_INCLUDEDIR@")
++set_and_check(LIBTCOD_INCLUDE_DIR "@PACKAGE_CMAKE_INSTALL_INCLUDEDIR@")
+ 
+ include(${CMAKE_CURRENT_LIST_DIR}/libtcodTargets.cmake)
+ 
+-target_include_directories(libtcod::libtcod INTERFACE "@PACKAGE_INSTALL_FULL_INCLUDEDIR@")
+-
+ set(LIBTCOD_LIBRARY libtcod::libtcod)
+ 
+ check_required_components(libtcod)
