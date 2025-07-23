@@ -1,0 +1,12 @@
+pkgbase = squirrel304
+	pkgdesc = Major release 3.0.4 of the light-weight scripting language that fits in the size, memory bandwidth, and real-time requirements of applications like video games
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = http://www.squirrel-lang.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/squirrel/squirrel_3_0_4_stable.tar.gz
+	sha256sums = 6a3706accf9872aafea1eb3f3f3018b135e2671033824ccebf0735a98b2440a5
+
+pkgname = squirrel304
