@@ -1,7 +1,7 @@
 # Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
 pkgname=karton-git
-pkgver=0.1.prealpha.r31.07a4d62
+pkgver=0.1.prealpha.r33.8492016
 pkgrel=1
 pkgdesc='A libvirt-based Virtual Machine Manager for KDE'
 arch=(x86_64)
@@ -14,6 +14,7 @@ depends=(gcc-libs
          ki18n
          kiconthemes
          kirigami
+	 kirigami-addons
          libosinfo
          libvirt
          qqc2-desktop-style
