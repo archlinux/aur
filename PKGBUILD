@@ -7,7 +7,7 @@ pkgver=2.26
 pkgrel=1
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
-license=('LicenseRef-IntelSgx')
+license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
 makedepends=(dpkg findutils patchelf)
 depends=('glibc' 'gcc-libs' 'bash' 'protobuf')
 optdepends=(
@@ -24,7 +24,7 @@ b2sums=('19160e74631e1c70db43c43165b381c0523eb1703ce9fa0efec317d81e2fc3cb28d3fd7
 package() {
   find "${srcdir}"/sgx_debian_local_repo -name "*.deb" -exec dpkg-deb -x {} "${pkgdir}" \;
 
-  # license
+  # composed license
   install -Dm644 "${pkgdir}"/usr/share/doc/libsgx-enclave-common/copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   _fix_non_standard_paths # namcap rule: directoryname
@@ -34,7 +34,7 @@ package() {
 
 # Move files to standard Arch Linux folders
 _fix_non_standard_paths() {
-  # /etc/udev is for user files, packages should use /usr/lib instead
+  # /etc/udev is for user files, packages should use /usr/lib/udev instead
   install -d -m755 "${pkgdir}"/usr/lib/udev
   mv "${pkgdir}"/etc/udev/rules.d "${pkgdir}"/usr/lib/udev/rules.d
   rmdir "${pkgdir}"/etc/udev
@@ -43,7 +43,7 @@ _fix_non_standard_paths() {
   mv "${pkgdir}"/usr/lib/"${CARCH}"-linux-gnu/*.so* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}"/usr/lib/"${CARCH}"-linux-gnu
 
-  # Debian supports an actual /lib folder, which in Arch is just a symlink to /usr/lib
+  # Debian supports a separate /lib folder, which in Arch is just a symlink to /usr/lib
   mv "${pkgdir}"/lib/systemd/system/*.service "${pkgdir}"/usr/lib/systemd/system/
   rmdir "${pkgdir}"/lib/systemd/system "${pkgdir}"/lib/systemd "${pkgdir}"/lib
 
