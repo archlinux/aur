@@ -5,20 +5,20 @@
 
 pkgname=electrumx-git
 _pkgname=electrumx
-pkgver=1.16.0.r2029.0256e97
-pkgrel=2
+pkgver=1.18.0.r2147.bef68fa
+pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet (git version)"
 arch=('any')
 depends=('leveldb'
-         'python>=3.7'
-         'python-aiorpcx-git>=0.23.0' 'python-aiorpcx-git<0.25.0'
+         'python>=3.10'
+         'python-aiorpcx-git>=0.25.0' 'python-aiorpcx-git<0.26.0'
          'python-attrs'
          'python-plyvel'
          'python-pylru'
          'python-aiohttp>=3.3.0' 'python-aiohttp<4.0.0'
          'python-websockets'
          )
-makedepends=('python-setuptools' 'git')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
             'electrum: Bitcoin thin client'
             'python-rapidjson<2.0: Alternative JSON parsing library for improved performance'
@@ -44,7 +44,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -55,13 +55,13 @@ package() {
   install -Dm 644 LICENCE -t "$pkgdir/usr/share/licenses/$_pkgname"
 
   install -dm 755 "$pkgdir/usr/share/doc/$_pkgname"
-  cp -dpr --no-preserve=ownership README.rst contrib docs/* "$pkgdir/usr/share/doc/$_pkgname"
+  cp -dpr --no-preserve=ownership README.md contrib docs/* "$pkgdir/usr/share/doc/$_pkgname"
 
   install -Dm 600 "$srcdir/electrumx.conf" -t "$pkgdir/etc/electrumx"
 
   install -Dm 644 "$srcdir/electrumx.service" -t "$pkgdir/usr/lib/systemd/system"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   mv "$pkgdir/usr/bin/electrumx_server" "$pkgdir/usr/bin/electrumx-server"
   mv "$pkgdir/usr/bin/electrumx_rpc" "$pkgdir/usr/bin/electrumx-rpc"

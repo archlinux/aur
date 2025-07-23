@@ -1,16 +1,19 @@
 pkgbase = electrumx-git
 	pkgdesc = Server implementation for the Electrum wallet (git version)
-	pkgver = 1.16.0.r2029.0256e97
-	pkgrel = 2
+	pkgver = 1.18.0.r2147.bef68fa
+	pkgrel = 1
 	url = https://github.com/spesmilo/electrumx
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = git
 	depends = leveldb
-	depends = python>=3.7
-	depends = python-aiorpcx-git>=0.23.0
-	depends = python-aiorpcx-git<0.25.0
+	depends = python>=3.10
+	depends = python-aiorpcx-git>=0.25.0
+	depends = python-aiorpcx-git<0.26.0
 	depends = python-attrs
 	depends = python-plyvel
 	depends = python-pylru
