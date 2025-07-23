@@ -2,7 +2,7 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.73
+pkgver=5.25.74
 _electronversion=32
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -26,7 +26,7 @@ source=(
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('38911ceb8184f62b9ec37d9222e67eb22934ceac855c28a260425fd9eff928a7'
+sha256sums=('9ba497d698f6a13122436fb8fcbec872beabd69b46e4752eb7d1daeb54c794d2'
             '165291deda7ce854a2cb1bf0fda0c0186c165f35be1d727ffe5285b4d36acca3'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
