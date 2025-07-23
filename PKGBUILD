@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=openai-codex-rust
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Lightweight coding agent that runs in your terminal (Rust rewrite)"
 url="https://github.com/openai/codex"
@@ -15,7 +15,7 @@ conflicts=('openai-codex' 'openai-codex-bin' 'codex')
 options=('!debug')
 
 source=("https://github.com/openai/codex/archive/refs/tags/rust-v${pkgver}.tar.gz")
-sha256sums=('f8cfe4d38efc0e297d44f33cb17c744977b25076e7c4d85e3d038c402bc36441')
+sha256sums=('1894e1331e14fd44cc6f3ba497faa47527d77b19b72bd961b1619bad3f81bc2b')
 
 prepare() {
   cd "${srcdir}/codex-rust-v${pkgver}/codex-rs"
