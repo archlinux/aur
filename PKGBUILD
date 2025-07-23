@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lgr
-_pkgver=0.4.4
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A Fully Featured Logging Framework"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0804a98afca9506aab1ea2cde5db7c8a')
-b2sums=('189b16dda16e14af967f053506c9be341cd691e8bd7e17fa19223260e92687cd6e40abee16f161aaccc7a1dd9089176541897bcf87aec3cd5f1f84b31eb329df')
+md5sums=('fbe51331d79e570af84cb2ebeba9e1c0')
+b2sums=('52b94565543f5e1ff88214cb98024ba53bc236c30bddeb39d5056bdbf07210e7d7d43406d374161667a23c9a954dacdfe670e742281cb422bdf85649b7b8e22c')
 
 build() {
   mkdir build
