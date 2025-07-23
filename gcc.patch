@@ -1,0 +1,40 @@
+From 4f897dba9ecfbeea94e1ebed22ce7f321b5462a3 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Thu, 22 May 2025 18:18:15 +0200
+Subject: [PATCH] i#7493 GCC-15: Specify language dialet when checking type
+ existence
+
+Existence of types may vary between language versions. For example, bool
+is turned into a builtin type in C23, but is defined in stdbool.h only
+in pre-C23 specifications.
+
+Let's specify the C dialet used by our main codebase, GNU C99,
+explicitly when checking for existence of types, to keep probed results
+aligned with configuration used for building.
+
+Issue: #7493
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c8b078a328b..1c63cb0f8e0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -797,6 +797,8 @@ if (UNIX) # unlikely to be an issue on Windows
+   # and set DR_DO_NOT_DEFINE_*
+   # Note that for later gcc uint and ushort seem to be "soft typedefs":
+   # defined, but overridable: ?!?
++  set(CMAKE_ORIG_C_FLAGS "${CMAKE_C_FLAGS}")
++  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+   include(CheckTypeSize)
+   CHECK_TYPE_SIZE(uint DR_DO_NOT_DEFINE_uint)
+   CHECK_TYPE_SIZE(ushort DR_DO_NOT_DEFINE_ushort)
+@@ -821,6 +823,7 @@ if (UNIX) # unlikely to be an issue on Windows
+       message(FATAL_ERROR "incompatible \"_Bool\" type is larger than 1 byte")
+     endif (NOT ${DR__Bool_EXISTS} EQUAL 1)
+   endif (DR__Bool_EXISTS)
++  set(CMAKE_C_FLAGS "${CMAKE_ORIG_C_FLAGS}")
+ endif (UNIX)
+ 
+ ###########################################################################

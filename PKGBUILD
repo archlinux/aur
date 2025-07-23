@@ -2,7 +2,7 @@
 _pkgname=dynamorio
 pkgname=$_pkgname-git
 pkgdesc="A dynamic instrumentation tool platform"
-pkgver=10.93.r6456.577db95d9
+pkgver=11.90.r6882.9514e16a6
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/DynamoRIO/dynamorio"
@@ -16,14 +16,12 @@ source=(
     "${pkgname}::git+${url}.git"
     "git+https://github.com/intel/libipt.git"
     "git+https://github.com/madler/zlib.git"
-    "0001-fix-compilation-with-gcc-14.patch"
+    "gcc.patch"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '67f72650333680dffada443c424573214a6740b5bfabc92b012a44455ce4fb82'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '13a03a2e6d2d2bd79d261e778c276e2cd27a98815d0a8e41633ef207aa6860b1')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -39,10 +37,17 @@ prepare() {
     git config submodule.third_party/libipt.url "$srcdir/libipt"
     git config submodule.third_party/zlib.url "$srcdir/zlib"
     git -c protocol.file.allow=always submodule update
-    patch --forward --strip=1 --input=../0001-fix-compilation-with-gcc-14.patch
+
+    git config user.name "aur"
+    git config user.email "aur@example.com"
+
+    # i#7493 GCC-15: Specify language dialet when checking type existence
+    git am "$srcdir/gcc.patch"
 }
 
 build() {
+    CFLAGS+=" -Wno-error=array-bounds"
+    export CFLAGS="$CFLAGS"
     cmake -B build-debug -S "${srcdir}/${pkgname}" \
         -DDEBUG=ON \
         -DCMAKE_INSTALL_PREFIX="/opt/${pkgname}"
