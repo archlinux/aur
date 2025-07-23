@@ -34,18 +34,10 @@ makedepends=(gprbuild
 
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/langkit-master-2025_07_23.zip
-        https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/adasat-26.0w-20250407-164DB-src.tar.gz
-        0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch
-        rid_pipes_import.patch
-        rid_pipes_import_2.patch
-        rid_pipes_import_3.patch)
+        https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/adasat-26.0w-20250407-164DB-src.tar.gz)
         
 sha256sums=(8f0aca19f958be68a859d759ebd421d6d0859e6d13c4f250f5d6708a250f27fd
-            2a483826bb98c9350522280e6ae481e8ff4fb01f28f880d45628cc6fa6be9e0c
-            dddf397b5a2de8b0bb45fb4d8cf49d6440911e92594cda8c1af1e045c348c547
-            45fa992c40577a9f523ec9427faf9f6021cd391fdb42dcf701e096355923cb04
-            3b24fde60aa485c1bf90645f0285c323070df3864ab7a29191379f0ae87d3ea4
-            513fe19703c01f16e62ef0dd1574f1845decaeb9f868b58583be6b0bf8606430)
+            2a483826bb98c9350522280e6ae481e8ff4fb01f28f880d45628cc6fa6be9e0c)
 
 
 prepare()
@@ -74,9 +66,9 @@ build()
 
     # Build the Langkit_Support library, used by all Langkit-generated libraries.
     #
-    python manage.py build-langkit-support \
-        --library-types=static,static-pic,relocatable        \
-        --build-mode=prod                  \
+    python manage.py build-langkit-support            \
+        --library-types=static,static-pic,relocatable \
+        --build-mode=prod                             \
         --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
        
@@ -96,7 +88,6 @@ package()
     python manage.py install-langkit-support          \
         $PREFIX                                       \
         --library-types=static,static-pic,relocatable                   
-#        --build-mode=prod                             
         
 
     python -m langkit.scripts.lkm install -c lkt/langkit.yaml $pkgdir/usr --library-types=static,static-pic,relocatable --disable-all-mains
@@ -115,6 +106,7 @@ package()
     install -D -m644 \
        LICENSE.txt   \
        $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
+
 
     # Install the documentation.
     #
