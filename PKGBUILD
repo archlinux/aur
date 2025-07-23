@@ -4,7 +4,7 @@
 
 _pkgname=dbeaver
 pkgname=${_pkgname}-git
-pkgver=24.2.3.265.g5c0cd0c580
+pkgver=25.0.4.302.g3ec5ce1122
 pkgrel=1
 pkgdesc='Free universal SQL Client for developers and database administrators. Community Edition. Git version.'
 arch=('x86_64')
@@ -30,6 +30,7 @@ source=(
 	"${_pkgname}.profile.gz"
 	"${_pkgname}.hook"
 	"${_pkgname}.install"
+	"jvm.config"
 )
 sha512sums=(
 	'SKIP'
@@ -40,6 +41,7 @@ sha512sums=(
 	'fdc14586fc82bdbfad5b43f0fbd440856071f7acffc5003f3fa3f6b22022658de04d158026964f7b0de032f5563367afe9a08c80a090ddad86b33feb0dcfb6e7'
 	'855fd0a6236d00bb70c2a33273c077ecccaf5645e231d7364d78a626349e0746caa9fd4e522281a4d7f6cc1db1b2afdbc996df54780be5edcc462ce6814381a5'
 	'6565d17f9f0f75fd8f58df4989cebcf03ecd19a9a8547769e445c0012d380e6c31ae793221307f2386cef81b018e5e7026d5a2a7c4bc52ec98d0aca32c52d94d'
+	'f7e272418a679c424e0fb2f190f4c160b31bed637ec50217c272c46d321d79bfdff668b12115dade60eb0b8fd7d67ddf505456f2e437ecf3f1a468b6d47a4e40'
 )
 
 install="${_pkgname}.install"
@@ -56,6 +58,11 @@ prepare() {
 		gzip -9 >"${srcdir}/${pkgname}.profile.gz"
 
 	cd "${srcdir}/${_pkgname}"
+
+	# Fix limits for JAXP00010003 and JAXP00010004
+	# https://github.com/google/google-java-format/issues/1210#issuecomment-2555910311
+	mkdir -p "${srcdir}/${_pkgname}/.mvn"
+	cp "${srcdir}/jvm.config" "${srcdir}/${_pkgname}/.mvn/"
 
 	export MAVEN_OPTS="-Xmx2048m"
 	mvn --batch-mode validate
@@ -77,6 +84,19 @@ package() {
 
 	# Move into the target directory
 	cd "target/products/org.jkiss.dbeaver.core.product/linux/gtk/${CARCH}"
+
+	# Removed different architectures libraries
+	for _dir in aix-ppc aix-ppc64 darwin-aarch64 darwin-x86-64 \
+		dragonflybsd-x86-64 freebsd-aarch64 freebsd-x86 freebsd-x86-64 \
+		linux-aarch64 linux-arm linux-armel linux-loongarch64 linux-mips64el \
+		linux-ppc linux-ppc64le linux-riscv64 linux-s390x linux-x86 \
+		openbsd-x86 openbsd-x86-64 \
+		sunos-sparc sunos-sparcv9 sunos-x86 sunos-x86-64 \
+		win32 win32-aarch64 win32-x86 win32-x86-64
+	do
+		rm -r "dbeaver/plugins/com.sun.jna_5.17.0.v20250316-1700/com/sun/jna/${_dir}"
+	done
+
 
 	# Initially install everything into /usr/lib/dbeaver
 	install -m 755 -d "${pkgdir}/usr/lib"

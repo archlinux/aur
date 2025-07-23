@@ -1,6 +1,6 @@
 pkgbase = dbeaver-git
 	pkgdesc = Free universal SQL Client for developers and database administrators. Community Edition. Git version.
-	pkgver = 24.2.3.265.g5c0cd0c580
+	pkgver = 25.0.4.302.g3ec5ce1122
 	pkgrel = 1
 	url = https://dbeaver.io
 	install = dbeaver.install
@@ -16,7 +16,7 @@ pkgbase = dbeaver-git
 	optdepends = dbeaver-plugin-office: To export data in Microsoft Office Excel format
 	optdepends = dbeaver-plugin-svg-format: To save diagrams in SVG format
 	optdepends = webkit2gtk: To preview spatial data
-	provides = dbeaver=24.2.3.265.g5c0cd0c580
+	provides = dbeaver=25.0.4.302.g3ec5ce1122
 	conflicts = dbeaver
 	source = git+https://github.com/dbeaver/dbeaver.git
 	source = git+https://github.com/dbeaver/dbeaver-common.git
@@ -26,6 +26,7 @@ pkgbase = dbeaver-git
 	source = dbeaver.profile.gz
 	source = dbeaver.hook
 	source = dbeaver.install
+	source = jvm.config
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -34,5 +35,6 @@ pkgbase = dbeaver-git
 	sha512sums = fdc14586fc82bdbfad5b43f0fbd440856071f7acffc5003f3fa3f6b22022658de04d158026964f7b0de032f5563367afe9a08c80a090ddad86b33feb0dcfb6e7
 	sha512sums = 855fd0a6236d00bb70c2a33273c077ecccaf5645e231d7364d78a626349e0746caa9fd4e522281a4d7f6cc1db1b2afdbc996df54780be5edcc462ce6814381a5
 	sha512sums = 6565d17f9f0f75fd8f58df4989cebcf03ecd19a9a8547769e445c0012d380e6c31ae793221307f2386cef81b018e5e7026d5a2a7c4bc52ec98d0aca32c52d94d
+	sha512sums = f7e272418a679c424e0fb2f190f4c160b31bed637ec50217c272c46d321d79bfdff668b12115dade60eb0b8fd7d67ddf505456f2e437ecf3f1a468b6d47a4e40
 
 pkgname = dbeaver-git

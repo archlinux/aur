@@ -8,3 +8,4 @@
 !.gitignore
 !.gitattributes
 !dbeaver.profile.gz
+!jvm.config
