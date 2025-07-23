@@ -1,5 +1,5 @@
 pkgbase = squirrel304
-	pkgdesc = Major release 3.0.4 of the light-weight scripting language that fits in the size, memory bandwidth, and real-time requirements of applications like video games
+	pkgdesc = Major release 3.0.4 of the light-weight scripting language that fits in the size, memory bandwidth, and real-time requirements of applications like video games. Installs itself in /bin/squirrel304
 	pkgver = 3.0.4
 	pkgrel = 1
 	url = http://www.squirrel-lang.org/
