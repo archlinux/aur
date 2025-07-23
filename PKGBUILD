@@ -2,7 +2,7 @@
 
 pkgname=gnatcoll-gnatinspect
 pkgdesc='GNAT Components Collection - the gnatinspect tool.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 epoch=1
 
@@ -14,10 +14,10 @@ depends=(gnatcoll-readline gnatcoll-xref)
 makedepends=(gprbuild)
 
 _repo_name=gnatcoll-db
-_source_dir=$_repo_name-$pkgver-20240505-16412-src
+_source_dir=gnatcoll-db-26.0w-20250416-16353-src
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$_repo_name-$pkgver-20240408-1639A-src.tar.gz)
-sha256sums=(66f30323be6cec6fc68cc58aa46a162c61196a2b9d44992f041599d3970afe35)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatcoll-db-26.0w-20250409-16317-src.tar.gz)
+sha256sums=(fe4367a13407bb0d300dda10fbca26ffd5fa9d13121625f37b38d998e728d649)
 
 
 build()
@@ -31,6 +31,15 @@ build()
 
     make setup BUILD=PROD prefix=/usr
     make -j1 GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
+
+
+    # Build documentation.
+    #
+    cd $srcdir/$_source_dir
+    
+    make -C docs html latexpdf      \
+         1> build-docs-warnings.log \
+         2> build-docs-errors.log 
 }
 
 
@@ -42,6 +51,15 @@ package()
     # the same installed project files at the same time.
     #
     make prefix="$pkgdir/usr" install -j1
+
+
+    # Install the documentation.
+    #
+    mkdir -p $pkgdir/usr/share/doc/$pkgname
+    
+    cp -r ../docs/_build/html                  $pkgdir/usr/share/doc/$pkgname
+    cp    ../docs/_build/latex/gnatcoll-db.pdf $pkgdir/usr/share/doc/$pkgname
+    
 
     # Install the license.
     #
