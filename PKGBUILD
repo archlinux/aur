@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=qiskit-addon-obp
 pkgname=python-${_name}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An addon to reduce the depth of circuits with operator backpropagation"
 arch=(any)
@@ -10,6 +10,7 @@ license=(Apache-2.0)
 depends=(
     python-numpy
     python-qiskit
+    python-qiskit-ibm-runtime
     python-matplotlib
 )
 makedepends=(
@@ -23,7 +24,7 @@ checkdepends=(
     python-qiskit-addon-utils
 )
 source=($_name-$pkgver.tar.gz::https://github.com/Qiskit/$_name/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('b1966dca7a0a4906cb0283f522a683d225b4b6934e432e90634cbebc912a54c387823d90cfb036d6eea0dbd798343605d17753cef7c115e96f924ef993311c27')
+b2sums=('d4e750ca660f8670623fff8933a255ab4f6795b83c6aafb2ff6a6c599512092f7f4e031fc213ed266ad79b768d4cdaa06447d5d90071576e42992529f2c9573d')
 
 build() {
     cd $_name-$pkgver

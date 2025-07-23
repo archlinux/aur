@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-addon-obp
 	pkgdesc = An addon to reduce the depth of circuits with operator backpropagation
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-addon-obp
 	arch = any
@@ -13,8 +13,9 @@ pkgbase = python-qiskit-addon-obp
 	makedepends = python-hatchling
 	depends = python-numpy
 	depends = python-qiskit
+	depends = python-qiskit-ibm-runtime
 	depends = python-matplotlib
-	source = qiskit-addon-obp-0.2.0.tar.gz::https://github.com/Qiskit/qiskit-addon-obp/archive/refs/tags/0.2.0.tar.gz
-	b2sums = b1966dca7a0a4906cb0283f522a683d225b4b6934e432e90634cbebc912a54c387823d90cfb036d6eea0dbd798343605d17753cef7c115e96f924ef993311c27
+	source = qiskit-addon-obp-0.3.0.tar.gz::https://github.com/Qiskit/qiskit-addon-obp/archive/refs/tags/0.3.0.tar.gz
+	b2sums = d4e750ca660f8670623fff8933a255ab4f6795b83c6aafb2ff6a6c599512092f7f4e031fc213ed266ad79b768d4cdaa06447d5d90071576e42992529f2c9573d
 
 pkgname = python-qiskit-addon-obp
