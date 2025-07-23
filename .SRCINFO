@@ -1,6 +1,6 @@
 pkgbase = python-ipyvuetify
 	pkgdesc = Jupyter widgets based on vuetify UI components
-	pkgver = 1.11.2
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://github.com/widgetti/ipyvuetify
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-ipyvuetify
 	makedepends = python-wheel
 	depends = python>=3.8
 	depends = python-ipyvue
-	noextract = ipyvuetify-1.11.2-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/i/ipyvuetify/ipyvuetify-1.11.2-py2.py3-none-any.whl
-	sha256sums = 6456372d661da82edab32b51f373046773dd67ad4610de4c272dda2561fb5980
+	noextract = ipyvuetify-1.11.3-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/i/ipyvuetify/ipyvuetify-1.11.3-py2.py3-none-any.whl
+	sha256sums = fa83aaf9f4ce669172d532094d60bd7c40d3cb9c5d6bb2f4a14565da2b09a8d8
 
 pkgname = python-ipyvuetify

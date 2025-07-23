@@ -2,7 +2,7 @@
 
 _name=ipyvuetify
 pkgname=python-${_name,,}
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="Jupyter widgets based on vuetify UI components"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
-sha256sums=(6456372d661da82edab32b51f373046773dd67ad4610de4c272dda2561fb5980)
+sha256sums=(fa83aaf9f4ce669172d532094d60bd7c40d3cb9c5d6bb2f4a14565da2b09a8d8)
 
 noextract=("$_whl")
 package() {
