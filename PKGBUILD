@@ -1,7 +1,7 @@
 # Maintainer: Spark Xia <legion_REMOVE_THIS_20220808&#64;gmail&#46;com>
 pkgname=longbridge-pro
 pkgver=0.4.0        # upstream “v0.4.0 Beta”
-pkgrel=2
+pkgrel=3
 pkgdesc="Longbridge Pro – professional trading platform"
 arch=('x86_64')
 options=('!emptydirs' '!debug')
