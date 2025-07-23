@@ -11,7 +11,6 @@ pkgbase = chromium-ffmpeg-codecs
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
-	makedepends = sed
 	depends = glibc
 	optdepends = slimjet: replace ffmpeg
 	optdepends = electron31: replace ffmpeg
@@ -29,7 +28,7 @@ pkgbase = chromium-ffmpeg-codecs
 	source = https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
 	source = fetch-soname-by-chromium.sh
 	source = 137.0.7151.138sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/01f23648c6b84de6c0f717fa4e1816f53b9ee72e/chromium/ffmpeg.sigs?format=TEXT
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1.sonames61.61.59-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	source = off-other-ffmpeg.hook
 	source = on-other-ffmpeg.install
 	sha256sums = 733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1

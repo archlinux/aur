@@ -19,7 +19,7 @@ license=('LGPL-2.1-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz fetch-soname-by-chromium.sh
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 #"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
-https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
@@ -30,22 +30,22 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '73c9e3d7685f291a5df13fd28dd04b6ffdc42ea73505cacbe6009c2cb5018be3')
 depends=(glibc)
 makedepends=(nasm
-diffutils gcc make patch sed) # base-devel
+diffutils gcc make patch) # base-devel
 optdepends=({slimjet,electron{31..36}}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 prepare() {
-  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > ${_chromium}sigs.txt 
-  #base64 -d ${_chrlow}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > ${_chromium}sigs.txt 
-  #diff ${_chromium}.sigs ${_chrlow}
+  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt 
+  #base64 -d ${_chrlow}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt 
+  #diff {,old}sigs.txt
   #./fetch-soname-by-chromium.sh $_chromium > so.txt
-  #./fetch-soname-by-chromium.sh $_chrlow > solow.txt
-  #diff so{,low}.txt
+  #./fetch-soname-by-chromium.sh $_chrlow > oldso.txt
+  #diff so{,old}.txt
 
-  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> ${_chromium}sigs.txt # only for opera
+  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   # mask symbols for binary size
   echo -e "{\nglobal:" > export.map
-  sed 's/$/;/' ${_chromium}sigs.txt >> export.map
+  sed 's/$/;/' sigs.txt >> export.map
   echo -e "local:\n*;\n};" >> export.map
   
   cd ffmpeg-$_ffver
@@ -71,20 +71,20 @@ build() {
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer ${LTOFLAGS}" \
-    --prefix="${srcdir}"/release \
-    --enable-{pic,asm,hardcoded-tables}
+    --enable-{pic,asm,hardcoded-tables} \
+    --libdir=/
 
-  make install
-  _symbols=$(cat ../${_chromium}sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
-  cd ../release
+  make DESTDIR=.. install
+  cd ..
+  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
-    ${_symbols} -Wl,--version-script=../export.map \
+    -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script=export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
 package(){
-  install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
+  install -Dm644 $_so "${pkgdir}"/usr/lib/$_so
   #install -d "${pkgdir}"/opt/vivaldi
   #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.5 # different soname
   # Block LD_PRELOAD
