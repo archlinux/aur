@@ -2,6 +2,7 @@
 BLUE="\e[34m"
 BOLD="\e[1m"
 RESET="\e[0m"
+PKG_COUNT=$(pacman -Q | wc -l)
 
 echo -e "${BLUE}                -\`                   ${RESET}$(whoami)@brokelaptop"
 echo -e "${BLUE}               .o+\`                  ${RESET} ---------------------"
@@ -9,7 +10,7 @@ echo -e "${BLUE}              \`ooo/                  ${BOLD}OS:${RESET} Arch Li
 echo -e "${BLUE}             \`+oooo:                 ${BOLD}Host:${RESET} Bedroom Floor"
 echo -e "${BLUE}            \`+oooooo:                ${BOLD}Kernel:${RESET} 0.00/hr"
 echo -e "${BLUE}            -+oooooo+:               ${BOLD}Uptime:${RESET} 14h (sleep not included)"
-echo -e "${BLUE}          \`/:-:++oooo+:              ${BOLD}Packages:${RESET} 1337 (none legal)"
+echo -e "${BLUE}          \`/:-:++oooo+:              ${BOLD}Packages:${RESET} $PKG_COUNT (none legal)"
 echo -e "${BLUE}         \`/++++/+++++++:             ${BOLD}Shell:${RESET} brokeBash 0.01"
 echo -e "${BLUE}        \`/++++++++++++++:            ${BOLD}Resolution:${RESET} CRT 640x480"
 echo -e "${BLUE}       \`/+++ooooooooooooo/\`          ${BOLD}DE:${RESET} Crying"
