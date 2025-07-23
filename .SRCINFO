@@ -1,0 +1,18 @@
+pkgbase = pdmaas-pro-bin
+	pkgdesc = A visual development platform for creating complex AI workflows using OpenAI assistants.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://www.yonsum.com/
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = electron29
+	depends = java-runtime
+	provides = pdmaas-pro=2.1.7
+	conflicts = pdmaas-pro
+	source = pdmaas-pro-2.1.7.deb::https://github.com/zxp19821005/My_AUR_Files/releases/download/pdmaas-pro/PDMaas-Pro-linux_amd64_v2.1.7.deb
+	source = pdmaas-pro.sh
+	sha256sums = feaf9d3b7e1c4f3f2e601bcf1c595fcc7fb7e3d628a7faf515e2caccc87454a8
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+
+pkgname = pdmaas-pro-bin
