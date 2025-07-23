@@ -1,7 +1,7 @@
 pkgbase = intel-sgx-psw-bin
 	pkgdesc = Intel® Software Guard Extensions Platform Software for Linux* OS
 	pkgver = 2.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/linux-sgx
 	arch = x86_64
 	license = BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty
@@ -11,7 +11,7 @@ pkgbase = intel-sgx-psw-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = bash
-	depends = protobuf
+	optdepends = protobuf-21: required for the AESM service
 	optdepends = nodejs: for running the SGX DCAP PCCS Server
 	optdepends = curl: required for SGX Remotte Attestation Service (RA)
 	optdepends = boost183: required by the TDX Quote Generation Service (QGS)

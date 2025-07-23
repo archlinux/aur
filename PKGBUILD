@@ -4,13 +4,14 @@
 pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
 pkgver=2.26
-pkgrel=1
+pkgrel=2
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
 makedepends=(dpkg findutils patchelf)
-depends=('glibc' 'gcc-libs' 'bash' 'protobuf')
+depends=('glibc' 'gcc-libs' 'bash')
 optdepends=(
+  'protobuf-21: required for the AESM service'
   'nodejs: for running the SGX DCAP PCCS Server'
   'curl: required for SGX Remotte Attestation Service (RA)'
   'boost183: required by the TDX Quote Generation Service (QGS)'
@@ -29,7 +30,6 @@ package() {
 
   _fix_non_standard_paths # namcap rule: directoryname
   _fix_binary_symlinks # namcap rule: symlink
-  _fix_wrong_protobuf_version
 }
 
 # Move files to standard Arch Linux folders
@@ -68,15 +68,4 @@ _fix_binary_symlinks() {
 
     ln -sf "${target}" "${symlink}"
   done
-}
-
-# Remove versioned protobuf from DT_NEEDED
-_fix_wrong_protobuf_version() {
-  # As of July 5, 2025, Arch Linux only provides libprotobuf.so.31,
-  # which is the latest version. Not sure how they got 32 here.
-  patchelf --replace-needed libprotobuf.so.32 libprotobuf.so \
-    "${pkgdir}"/opt/intel/sgx-aesm-service/aesm/libipc.so \
-    "${pkgdir}"/usr/lib/libsgx_epid.so.1.0.127.0 \
-    "${pkgdir}"/usr/lib/libsgx_launch.so.1.0.127.0 \
-    "${pkgdir}"/usr/lib/libsgx_quote_ex.so.1.1.127.0
 }
