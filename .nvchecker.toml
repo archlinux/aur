@@ -1,0 +1,5 @@
+[go-task-git]
+source = "manual"
+#source = "git"
+#git = "https://github.com/go-task/task.git"
+#prefix = "v"
