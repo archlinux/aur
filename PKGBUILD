@@ -1,16 +1,16 @@
 # Maintainer: Gavin Costello <gavcos at gmail dot com>
 # Contributor:
 pkgname=underscorejs
-_script=underscore
-pkgver=1.10.2
-pkgrel=2
+_script=underscore-esm
+pkgver=1.13.7
+pkgrel=1
 pkgdesc="Underscore is a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects."
 arch=(any)
-url=http://underscorejs.org
+url=https://underscorejs.org
 license=('MIT')
 source=("${url}/${_script}.js" "${url}/${_script}-min.js")
-md5sums=('3426062510c3cd72e1ab621e16a33b22'
-  '52caef864228e0b4ca9f97eced0ab2bb')
+md5sums=('a436fc54ca3d08a9af7201b1d24c8a83'
+  '1cbd21ca52e36a47077477d90df1e88c')
 
 package() {
   cd "${srcdir}"
