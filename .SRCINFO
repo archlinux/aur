@@ -1,0 +1,25 @@
+pkgbase = piki-git
+	pkgdesc = Unofficial Kirigami client for Pixiv
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MicrogamerCz/Piki
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = piqi
+	depends = kirigami
+	depends = kirigami-addons
+	depends = ki18n
+	depends = kconfig
+	depends = kwallet
+	depends = purpose
+	depends = futuresql
+	depends = kcoreaddons
+	depends = qt6-webengine
+	provides = piki
+	conflicts = piki
+	source = git+https://github.com/MicrogamerCz/Piki
+	sha256sums = SKIP
+
+pkgname = piki-git
