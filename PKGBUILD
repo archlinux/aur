@@ -5,7 +5,7 @@
 
 pkgname=gprbuild-bootstrap
 pkgdesc='Static GPRbuild to bootstrap XML/Ada and GPRbuild itself.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 epoch=1
 
@@ -16,18 +16,18 @@ license=(GPL3 custom)
 makedepends=(gcc-ada)
 provides=(gprbuild)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gprbuild-$pkgver-20240408-162DA-src.tar.gz
-        https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/xmlada-$pkgver-20240408-16316-src.tar.gz
-        https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gprconfig-kb-$pkgver-20240408-16484-src.tar.gz)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gprbuild-$pkgver-20250409-161CE-src.tar.gz
+        https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/xmlada-$pkgver-20250409-164C6-src.tar.gz
+        https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gprconfig-kb-$pkgver-20250409-164D6-src.tar.gz)
 
-sha256sums=(6c3cd17bc972ebcb470edefd1fa1d79f39fee902e4ca0251da56654dcb5c55ab
-            ffc933e16d16c694e8805ea27ff160846e9300ac97afea897a7f370e30e36c70
-            f8e3d74d9a0c5cb82256831603e00198dcfab7d7e5a0c5c8370a4a8ea7031f1f)
+sha256sums=(552425f2500fccde0297ec40e14b4806f63e6917fc143e17b1cc3e147ae4f79c
+            6fe70ad2a33ebef17f8655adebeae1c8b1c89cebe6eb737ec59deb8b64788fd7
+            68a1988ee078932b6b3ee203a69bd404391238ea86ce362d4c32a57d06222969)
 
 
-_gprbuild_src=gprbuild-$pkgver-20240505-164AB-src
-_gprconfig_kb_src=gprconfig-kb-$pkgver-20240505-16517-src
-_xmlada_src=xmlada-$pkgver-20240505-1649E-src
+_gprbuild_src=gprbuild-26.0w-20250416-16593-src
+_xmlada_src=xmlada-26.0w-20250416-1655F-src
+_gprconfig_kb_src=gprconfig-kb-26.0w-20250416-1665F-src
 
 
 prepare()

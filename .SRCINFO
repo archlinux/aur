@@ -1,6 +1,6 @@
 pkgbase = gprbuild-bootstrap
 	pkgdesc = Static GPRbuild to bootstrap XML/Ada and GPRbuild itself.
-	pkgver = 25.0w
+	pkgver = 26.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gprbuild
@@ -10,11 +10,11 @@ pkgbase = gprbuild-bootstrap
 	license = custom
 	makedepends = gcc-ada
 	provides = gprbuild
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gprbuild-25.0w-20240408-162DA-src.tar.gz
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/xmlada-25.0w-20240408-16316-src.tar.gz
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gprconfig-kb-25.0w-20240408-16484-src.tar.gz
-	sha256sums = 6c3cd17bc972ebcb470edefd1fa1d79f39fee902e4ca0251da56654dcb5c55ab
-	sha256sums = ffc933e16d16c694e8805ea27ff160846e9300ac97afea897a7f370e30e36c70
-	sha256sums = f8e3d74d9a0c5cb82256831603e00198dcfab7d7e5a0c5c8370a4a8ea7031f1f
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gprbuild-26.0w-20250409-161CE-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/xmlada-26.0w-20250409-164C6-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gprconfig-kb-26.0w-20250409-164D6-src.tar.gz
+	sha256sums = 552425f2500fccde0297ec40e14b4806f63e6917fc143e17b1cc3e147ae4f79c
+	sha256sums = 6fe70ad2a33ebef17f8655adebeae1c8b1c89cebe6eb737ec59deb8b64788fd7
+	sha256sums = 68a1988ee078932b6b3ee203a69bd404391238ea86ce362d4c32a57d06222969
 
 pkgname = gprbuild-bootstrap
