@@ -8,8 +8,8 @@ _pkgver="${pkgver}.100.0"
 pkgrel=2
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
-license=('LicenseRef-IntelSgx')
-makedepends=(bash bubblewrap)
+license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
+makedepends=(bubblewrap)
 depends=(gcc-libs python glibc bash openssl)
 optdepends=(
   'intel-sgx-psw: for hardware support'
@@ -25,10 +25,14 @@ prepare() {
 }
 
 package() {
+  # The installer uses a temporary makefile which fails if run in parallel.
   export MAKEFLAGS='-j1'
 
-  install -d -m755 "${pkgdir}"/opt
+  install -d "${pkgdir}"/opt
 
+  # The installer builds a folder in /tmp, then install the package from there, which is
+  # not allowed by makepkg. So bubblewrap is used here for a mini container with a
+  # separate /tmp for the installer. LD_PRELOAD causes some issues with bwrap, though.
   env -u LD_PRELOAD \
   bwrap --unshare-all --die-with-parent \
     --bind "${pkgdir}"/opt /opt \
@@ -41,5 +45,6 @@ package() {
     --ro-bind /lib64 /lib64 \
     /sgx_linux_x64_sdk.bin --prefix /opt/intel
 
+  # composed license
   install -Dm644 "${pkgdir}"/opt/intel/sgxsdk/licenses/License.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
