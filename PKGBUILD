@@ -2,7 +2,7 @@
 # Contributor: Daniel Hillenbrand < codeworkx at bbqlinux dot org >
 # Contributor: Filippo Falezza <filippo dot falezza at outlook dot it>
 
-pkgname=mipsel-linux-gnu-binutils
+pkgname=mipsel-linux-gnu-binutils-minimal
 _pkgname=binutils
 _target="mipsel-linux-gnu"
 pkgver=2.44
@@ -12,6 +12,8 @@ url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
 license=('GPL')
 depends=('xz')
+provides=('mipsel-linux-gnu-binutils')
+conflicts=('mipsel-linux-gnu-binutils')
 source=(https://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=(
 	'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
