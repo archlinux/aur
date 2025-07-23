@@ -1,8 +1,10 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=vtracer
-pkgver=0.6.4
-pkgrel=2
+# [2025-07-23]: The version is actually 0.6.11 but the GitHub releases vs tags vs actual file version(==PyPI version) is all over the place
+#               Sent an email off to the maintainer about it
+pkgver=0.6.5
+pkgrel=1
 pkgdesc="Convert PNG to SVG"
 arch=(x86_64)
 url="https://github.com/visioncortex/vtracer"
@@ -11,7 +13,7 @@ depends=('gcc-libs')
 options=('!lto')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visioncortex/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a4b554afe0384ddbdb5f96dde2d2e6f412493ae990acc32e0d71c4f8b63d8ba4')
+sha256sums=('a2e927a3cc4e8e3440862aeaef3d6d2c867c6557b270a55291fe1e6ae9706444')
 
 build() {
 	cd "${pkgname}-${pkgver}"

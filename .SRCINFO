@@ -1,14 +1,14 @@
 pkgbase = vtracer
 	pkgdesc = Convert PNG to SVG
-	pkgver = 0.6.4
-	pkgrel = 2
+	pkgver = 0.6.5
+	pkgrel = 1
 	url = https://github.com/visioncortex/vtracer
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
 	options = !lto
-	source = vtracer-0.6.4.tar.gz::https://github.com/visioncortex/vtracer/archive/0.6.4.tar.gz
-	sha256sums = a4b554afe0384ddbdb5f96dde2d2e6f412493ae990acc32e0d71c4f8b63d8ba4
+	source = vtracer-0.6.5.tar.gz::https://github.com/visioncortex/vtracer/archive/0.6.5.tar.gz
+	sha256sums = a2e927a3cc4e8e3440862aeaef3d6d2c867c6557b270a55291fe1e6ae9706444
 
 pkgname = vtracer
