@@ -1,4 +1,5 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Artyom Ivanov <zuodleq@gmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libgraphqlparser
@@ -9,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/graphql/libgraphqlparser"
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('git' 'cmake' 'python')
+makedepends=('git' 'cmake' 'python' 'python-fissix')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/graphql/$pkgname/archive/v$pkgver.tar.gz"
   'use_python3.patch'
@@ -22,7 +23,7 @@ prepare() {
 
   # Python 2 is super *super* _super_ EOL.
   patch -p1 -i ../use_python3.patch
-  2to3 \
+  python -m fissix \
     --write \
     --nobackups \
     ast
@@ -31,7 +32,8 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  cmake -DCTYPESGEN_FOUND=Off -DCMAKE_INSTALL_PREFIX=/usr .
+  # CMake version for building libgraphql outdated, so need to build with CMake>=3.5
+  cmake -DCTYPESGEN_FOUND=Off -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
