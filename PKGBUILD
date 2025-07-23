@@ -38,7 +38,7 @@ optdepends=(
   'bzip2: bzip2 compression'
   'cifs-utils: support CIFS'
   'connman: support for connman networking'
-  'cryptsetup: support for encrypted dm-crypt file systems'
+  'cryptsetup: support for encrypted with LUKS filesystems'
   'dash: allows use of dash (on your own risk)'
   'dbus: dbus-daemon dracut module'
   'dbus-broker: dbus-broker dracut module'
