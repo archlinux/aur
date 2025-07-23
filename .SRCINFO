@@ -1,0 +1,12 @@
+pkgbase = sybau
+	pkgdesc = A simple script to immediately shut your system's B-t-h A1503 up
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Arshdeep-singh-chahal/Sybau
+	arch = any
+	license = MIT
+	depends = systemd
+	source = Sybau.sh
+	md5sums = SKIP
+
+pkgname = sybau
