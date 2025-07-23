@@ -35,11 +35,11 @@ package() {
 
   # Desktop entry & icons
   install -Dm644 usr/share/applications/longbridge.desktop \
-    "${pkgdir}/usr/share/applications/longbridge-pro.desktop"
+    "${pkgdir}/usr/share/applications/longbridge.desktop"
   install -Dm644 usr/share/icons/hicolor/512x512/apps/longbridge.png \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/longbridge-pro.png"
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/longbridge.png"
   install -Dm644 usr/share/icons/hicolor/1024x1024/apps/longbridge.png \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/longbridge-pro.png"
+    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/longbridge.png"
 
   install -Dm644 ./LBPL-Platform_TnCs__31_Oct_2022-FINAL_.pdf \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
