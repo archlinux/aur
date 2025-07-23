@@ -10,7 +10,7 @@ pkgname=(gnatcoll-gmp
          gnatcoll-syslog
          gnatcoll-zlib)
 pkgdesc='GNAT Components Collection - Language and library bindings.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 epoch=1
 
@@ -21,15 +21,15 @@ license=(GPL3 custom)
 depends=(gnatcoll-core)
 makedepends=(python python-setuptools gprbuild libiconv syslog-ng)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgbase-$pkgver-20240408-162B5-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatcoll-bindings-26.0w-20250407-1614B-src.tar.gz
         fix-python2-dont-cache-prefix-during-install.patch
         fix-python3-dont-cache-prefix-during-install.patch)
 
-sha256sums=(08b9b1145ff3b7b40a56e0a0172ea945acf4d0fa176f343db346047a73b0cf7b
+sha256sums=(0fba013f90280dfeb0ccfd3e80965b8797858fcd2c58603c50478dae9cd4d59d
             3c01d8f03f3b9702b4ffb9c668f3bbf33f6908fb8f7a4ce55092cc784d637dc4
             78e6493e38e74d1a2b246de9a50395f07e8d35cb0e7a3694cb62ef2d57d13286)
 
-_source_dir=$pkgbase-$pkgver-20240505-16461-src
+_source_dir=gnatcoll-bindings-26.0w-20250416-16602-src
 
 
 prepare()
