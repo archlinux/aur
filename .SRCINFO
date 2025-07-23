@@ -1,7 +1,7 @@
 pkgbase = python-tslearn
 	pkgdesc = A machine learning toolkit dedicated to time-series data
-	pkgver = 0.6.3
-	pkgrel = 4
+	pkgver = 0.6.4
+	pkgrel = 1
 	url = https://github.com/tslearn-team/tslearn
 	arch = any
 	license = BSD-2-Clause
@@ -15,7 +15,7 @@ pkgbase = python-tslearn
 	depends = python-numba
 	depends = python-joblib
 	depends = python-tensorflow
-	source = https://files.pythonhosted.org/packages/source/t/tslearn/tslearn-0.6.3.tar.gz
-	sha256sums = c855c0b784b42dc4c50f4eaf524ec7ed658037e86fc14af38ca3b66c75dd6adb
+	source = https://files.pythonhosted.org/packages/source/t/tslearn/tslearn-0.6.4.tar.gz
+	sha256sums = 9efcd8afe3ef55186f57f4c3ccb45ae353d6f85f7aea2e420032c34a99345705
 
 pkgname = python-tslearn
