@@ -7,6 +7,6 @@ pkgbase = brokefetch
 	license = MIT
 	depends = bash
 	source = brokefetch.sh::https://raw.githubusercontent.com/Szerwigi1410/brokefetch/main/brokefetch.sh
-	md5sums = SKIP
+	md5sums = 7386a82f9573d77b67a8d381a0e06108
 
 pkgname = brokefetch

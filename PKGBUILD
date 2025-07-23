@@ -14,3 +14,4 @@ package() {
   install -Dm755 "$srcdir/brokefetch.sh" "$pkgdir/usr/bin/brokefetch"
 }
 
+md5sums=('7386a82f9573d77b67a8d381a0e06108')
