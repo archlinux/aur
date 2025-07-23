@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-git
-pkgver=13.0.r17.g0b78052
+pkgver=13.0.r161.g6c1ed75
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'zlib' 'bash' 'hicolor-icon-theme' 'wine')
+depends=('glibc' 'gcc-libs' 'zlib' 'bash' 'hicolor-icon-theme' 'wine' 'dotnet-runtime')
 makedepends=('dotnet-sdk-bin' #dotnet-sdk-bin
 		'git' 'gendesk')
 options=(!strip !debug)
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname/CLI"
-	dotnet publish -r linux-x64
+	dotnet publish -r linux-x64 --self-contained false
 
 	cd "$srcdir/$pkgname/GUI"
 	dotnet publish -r win-x64 -p:EnableWindowsTargeting=true
