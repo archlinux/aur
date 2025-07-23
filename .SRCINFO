@@ -1,6 +1,6 @@
 pkgbase = rapidraw-bin
 	pkgdesc = GPU-accelerated RAW image editor built with performance in mind
-	pkgver = 1.2.10
+	pkgver = 1.2.11
 	pkgrel = 1
 	url = https://github.com/CyberTimon/RapidRAW
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rapidraw-bin
 	depends = libsoup3
 	provides = rapidraw
 	conflicts = rapidraw
-	source = https://github.com/CyberTimon/RapidRAW/releases/download/v1.2.10/03_RapidRAW_v1.2.10_ubuntu-24.04_amd64.deb
-	sha256sums = a043221cb0f9cf4cd0ea96ed3294231cdf9e9929490ec57fb799ac9ca69b8cdd
+	source = https://github.com/CyberTimon/RapidRAW/releases/download/v1.2.11/03_RapidRAW_v1.2.11_ubuntu-24.04_amd64.deb
+	sha256sums = f6afa6fef643915b868339d92143ca0d35248948e013a76041d7afd74cb116f3
 
 pkgname = rapidraw-bin
