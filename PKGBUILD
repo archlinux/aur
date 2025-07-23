@@ -1,15 +1,15 @@
 # Maintainer: Herbert Knapp <herbert.knapp vivaldi.net>
 pkgname="true-combat-elite-bin"
 pkgver=0.49b
-pkgrel=3
-pkgdesc="Tactical 3D multiplayer 1st person shooter in the style of Counter Strike, Urban Terror based on Enemy Territory id3 engine."
+pkgrel=4
+pkgdesc="Tactical multiplayer FPS like Counter Strike, Urban Terror. Based on Enemy Territory."
 arch=('i686' 'x86_64')
 url="http://www.truecombatelite.com/"
 license=('unknown')
 options=(!strip)
 source=('true-combat-elite-0.49b-linux.tar.xz::https://web.archive.org/web/20230927175150if_/https://pomf2.lain.la/f/m3epnqj6.tar.xz')
 sha256sums=('74d71667082ea08b49a61551611dccab4a161b80dae3cf0dd5a7802e7e10d254')
-depends=('lib32-libstdc++5' 'lib32-sdl12-compat')
+depends=('lib32-libstdc++5' 'lib32-sdl12-compat' 'lib32-alsa-lib' 'lib32-libpulse' 'lib32-alsa-plugins')
 prepare() {
   tar xvf true-combat-elite-0.49b-linux.tar.xz
 }
