@@ -10,7 +10,7 @@ depends=()
 makedepends=('git' 'cargo')
 provides=("${pkgname}")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=("8b04fea42d1af9bd780b0f24b5742fc5ef91dfa78d83b2604717951099eb2b47")
+sha256sums=("d10fc80632e7ca87087cd1062bc05d1bc909dd59d71b738db5986b30241a73c4")
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
