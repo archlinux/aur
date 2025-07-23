@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/jax-ml/jax/'
@@ -16,14 +16,19 @@ depends=(
 makedepends=('gcc14' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 _bazel_ver=7.4.1
 source=("jax-${pkgver}.tar.gz::$url/archive/refs/tags/jax-v${pkgver}.tar.gz"
-        "bazel-${_bazel_ver}-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/${_bazel_ver}/bazel-${_bazel_ver}-linux-x86_64")
+        "bazel-${_bazel_ver}-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/${_bazel_ver}/bazel-${_bazel_ver}-linux-x86_64"
+        'jaxlib.diff')
 noextract=("bazel-${_bazel_ver}-linux-x86_64")
 sha256sums=('518966801e4402667e77915c2dc7cf1a178a80e22ff253204a837f207a87fcde'
-            'c97f02133adce63f0c28678ac1f21d65fa8255c80429b588aeeba8a1fac6202b')
+            'c97f02133adce63f0c28678ac1f21d65fa8255c80429b588aeeba8a1fac6202b'
+            'SKIP')
 
 prepare() {
     ln -sf $(readlink bazel-${_bazel_ver}-linux-x86_64) $srcdir/jax-jax-v${pkgver}/build
     chmod +x $srcdir/bazel-${_bazel_ver}-linux-x86_64
+
+    cd $srcdir/jax-jax-v$pkgver
+    patch -p 1 -i ../jaxlib.diff
 }
 
 build() {
