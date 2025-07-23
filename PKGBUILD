@@ -1,5 +1,5 @@
 pkgname=swordfish-git
-pkgver=r3.44cec52
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A pkill-like CLI tool with more control over process management."
 arch=('x86_64')
@@ -10,6 +10,7 @@ makedepends=('git' 'gcc' 'make')
 provides=('swordfish')
 conflicts=('swordfish')
 source=("git+$url")
+upstream_url="https://github.com/Foox-dev/swordfish"
 md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/swordfish"
