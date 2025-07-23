@@ -1,6 +1,6 @@
 pkgbase = m3uget
 	pkgdesc = Multi-threaded M3U8 stream downloader
-	pkgver = 1.0.02
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/OlexiyOdarchuk/m3uget
 	arch = x86_64
