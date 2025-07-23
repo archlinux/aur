@@ -1,6 +1,6 @@
 pkgbase = gprbuild-toolbox
 	pkgdesc = Meta builder toolbox for multi-language systems.
-	pkgver = 25.0w
+	pkgver = 26.0w
 	pkgrel = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = gprbuild-toolbox
 	depends = gprbuild
 	depends = gprtools
 	depends = gprname
-	depends = gprslave
 	depends = libgpr
 
 pkgname = gprbuild-toolbox
