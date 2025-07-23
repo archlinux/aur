@@ -14,10 +14,10 @@ _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/
 source=( "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
-sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
+sha256sums=('0000000000000000000000000000000000000000000000000000000000000000'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
-conflicts[0]='SKIP'
+sha256sums[0]='SKIP'
 depends=(glibc)
 makedepends=(nasm git
 diffutils gcc make patch) # base-devel
