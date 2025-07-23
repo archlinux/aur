@@ -1,24 +1,26 @@
-#!/bin/bash
-cat << "EOF"
-                -`                    oliwier7@brokelaptop 
-               .o+`                   --------------------- 
-              `ooo/                   OS: Arch Linux (Unpaid Edition)
-             `+oooo:                  Host: Bedroom Floor
-            `+oooooo:                 Kernel: 0.00/hr
-            -+oooooo+:                Uptime: 14h (sleep not included)
-          `/:-:++oooo+:               Packages: 1337 (none legal)
-         `/++++/+++++++:              Shell: brokeBash 0.01
-        `/++++++++++++++:             Resolution: CRT 640x480
-       `/+++ooooooooooooo/`           DE: Crying
-      ./ooosssso++osssssso+`          WM: HopiumWM
-     .oossssso-````/ossssss+`         Terminal: Terminal of Regret
-    -osssssso.      :ssssssso.        CPU: Imaginary (thinking hard...)
-   :osssssss/        osssso+++.       GPU: Integrated Depression
-  /ossssssss/        +ssssooo/-       Memory: 512MB (half sadness)
- `/ossssso+/:-        -:/+osssso+-    
-`+sso+:-`                 `.-/+oso:    
-`++:.                           `-/+/
-`.`                                `
+!/bin/bash
+BLUE="\e[34m"
+BOLD="\e[1m"
+RESET="\e[0m"
 
-BROKEFETCH 🥀
-EOF
+echo -e "${BLUE}                -\`                   ${RESET}$(whoami)@brokelaptop"
+echo -e "${BLUE}               .o+\`                  ${RESET} ---------------------"
+echo -e "${BLUE}              \`ooo/                  ${BOLD}OS:${RESET} Arch Linux (Unpaid Edition)"
+echo -e "${BLUE}             \`+oooo:                 ${BOLD}Host:${RESET} Bedroom Floor"
+echo -e "${BLUE}            \`+oooooo:                ${BOLD}Kernel:${RESET} 0.00/hr"
+echo -e "${BLUE}            -+oooooo+:               ${BOLD}Uptime:${RESET} 14h (sleep not included)"
+echo -e "${BLUE}          \`/:-:++oooo+:              ${BOLD}Packages:${RESET} 1337 (none legal)"
+echo -e "${BLUE}         \`/++++/+++++++:             ${BOLD}Shell:${RESET} brokeBash 0.01"
+echo -e "${BLUE}        \`/++++++++++++++:            ${BOLD}Resolution:${RESET} CRT 640x480"
+echo -e "${BLUE}       \`/+++ooooooooooooo/\`          ${BOLD}DE:${RESET} Crying"
+echo -e "${BLUE}      ./ooosssso++osssssso+\`         ${BOLD}WM:${RESET} HopiumWM"
+echo -e "${BLUE}     .oossssso-\`\`\`\`/ossssss+\`        ${BOLD}Terminal:${RESET} Terminal of Regret"
+echo -e "${BLUE}    -osssssso.      :ssssssso.       ${BOLD}CPU:${RESET} Imaginary (thinking hard...)"
+echo -e "${BLUE}   :osssssss/        osssso+++.\     ${BOLD}GPU:${RESET} Integrated Depression"
+echo -e "${BLUE}  /ossssssss/        +ssssooo/-      ${BOLD}Memory:${RESET} 512MB (half sadness)"
+echo -e "${BLUE} \`/ossssso+/:-        -:/+osssso+-"
+echo -e "${BLUE}\`+sso+:-\`                 \`.-/+oso:"
+echo -e "${BLUE}\`++:.                           \`-/+/"
+echo -e "${BLUE}\`.\`                                \`"
+
+echo -e "${BOLD}BROKEFETCH 🥀${RESET}"
