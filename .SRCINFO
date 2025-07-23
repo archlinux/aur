@@ -9,7 +9,7 @@ pkgbase = texlive-awesome-cv-git
 	depends = texlive-bin
 	provides = Awesome-CV
 	source = Awesome-CV::git+https://github.com/posquit0/Awesome-CV.git
-	source = 1.patch::1.patch
+	source = 1.patch
 	sha512sums = SKIP
 	sha512sums = 3458788ea7550fd96d424e90e968404f282c2f9703518fd18c10c40edead0e9bd5f0e1db6b71004dad51c49f165833623343a7410d0c0cda04d6a9863d8455c1
 
