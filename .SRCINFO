@@ -7,6 +7,7 @@ pkgbase = kfd
 	license = GPL-3.0
 	makedepends = gcc
 	makedepends = make
+	depends = glibc
 	provides = kfd
 	source = git+https://github.com/giovanni-iannaccone/kfd.git
 	sha256sums = SKIP

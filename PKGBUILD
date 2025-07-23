@@ -11,6 +11,7 @@ license=('GPL-3.0')
 
 provides=("${pkgname}")
 makedepends=('gcc' 'make')
+depends=('glibc')
 
 source=("git+https://github.com/${_pkgauthor}/${pkgname}.git")
 sha256sums=('SKIP')
