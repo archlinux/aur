@@ -1,6 +1,6 @@
 pkgbase = personalanimelist
 	pkgdesc = Minimal TUI anime list that stays on your computer. Supports Kitsu integration.
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/IntoTheGNU/PersonalAnimeList
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = personalanimelist
 	makedepends = go>=1.22
 	depends = glibc
 	depends = sqlite
-	source = https://codeberg.org/IntoTheGNU/PersonalAnimeList/archive/1.0.tar.gz
-	md5sums = 9dd1a820ed966e776f18dab5d88c7b3a
+	source = https://codeberg.org/IntoTheGNU/PersonalAnimeList/archive/1.0.1.tar.gz
+	md5sums = cbf4b8e1c2de9ad600c3190b9253d1c4
 
 pkgname = personalanimelist

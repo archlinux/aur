@@ -1,7 +1,7 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="personalanimelist"
-pkgver="1.0"
+pkgver="1.0.1"
 pkgrel="1"
 pkgdesc="Minimal TUI anime list that stays on your computer. Supports Kitsu integration."
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('git' 'go>=1.22')
 license=('GPL')
 url="https://codeberg.org/IntoTheGNU/PersonalAnimeList"
 source=("https://codeberg.org/IntoTheGNU/PersonalAnimeList/archive/${pkgver/rc/-rc}.tar.gz")
-md5sums=('9dd1a820ed966e776f18dab5d88c7b3a')
+md5sums=('cbf4b8e1c2de9ad600c3190b9253d1c4')
 
 build (){
 	cd "${pkgname}" || exit 1
