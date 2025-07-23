@@ -4,7 +4,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=opencv-docs
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library docs"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 url="http://opencv.org/"
 
 source=("$pkgname-$pkgver.tar.xz::https://docs.opencv.org/$pkgver.tar.xz")
-sha256sums=(52c8eeb8cd2cb3b6b77007c7a5f13a312b8b194ad0d92c136368c8ddbe758af9)
+sha256sums=(39b61d918ba30b4340c60d80006400e9dd521eba49d7f98dca4b53eae1efb043)
 
 build() {
   cd "$srcdir/$pkgver"
