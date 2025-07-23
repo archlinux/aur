@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-mistral-common
 _pkgname=mistral-common
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="set of tools to help you work with Mistral models"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 )
 source=("https://files.pythonhosted.org/packages/source/m/mistral-common/mistral_common-${pkgver}.tar.gz")
 
-sha256sums=('597a38b9c7094c8cfe9130d775a0480e24919971163d2e54f817c3968e5bf671')
+sha256sums=('964c7fc573f65e1e4befd306e99dad626604a1285ba78e88095815a6f3947cba')
 
 build() {
   cd "mistral_common-${pkgver}"
