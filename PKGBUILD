@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spsComps
-_pkgver=0.3.3.0
+_pkgver=0.3.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.3.0
+pkgver=0.3.4.0
 pkgrel=1
 pkgdesc="'systemPipeShiny' UI and Server Components"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c84feab61bcc8873b97a5b95da162decba1e4b1f045b2a16ab24989f78140dfa')
+sha256sums=('a8e3257583507f2a8163e730d94843cc161658dd9298317bd49c2fd55ef4c9d0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
