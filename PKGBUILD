@@ -11,15 +11,15 @@ provides=('catppuccinifier-gui')
 conflicts=('catppuccinifier-gui')
 depends=('cmake' 'libadwaita' 'webkit2gtk' 'base-devel' 'curl' 'wget' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 makedepends=('git')
-source=("https://github.com/lighttigerXIV/${_pkgname}/releases/download/${pkgver}/Catppuccinifer-Linux-${pkgver}.tar.xz")
-md5sums=('4616926942c4800928fd81a88c1e77bf')
+source=("https://github.com/lighttigerXIV/${_pkgname}/releases/download/${pkgver}/Catppuccinifier-Linux-${pkgver}.tar.xz")
+md5sums=('dc22be6a6e454df229daa11c8fa42c9b')
 
 build() {
-  tar -xf "Catppuccinifer-Linux-${pkgver}.tar.xz"
+  tar -xf "Catppuccinifier-Linux-${pkgver}.tar.xz"
 }
 
 package() {
-  cd "${srcdir}/Catppuccinifer-Linux-${pkgver}/installation-files"
+  cd "${srcdir}/Catppuccinifier-Linux-${pkgver}/installation-files"
   #desktop file
   desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications" "Catppuccinifier.desktop"
   #binary
