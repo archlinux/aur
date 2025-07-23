@@ -1,6 +1,6 @@
 pkgbase = osc-git
 	pkgdesc = Command line client for the openSUSE Build Service
-	pkgver = 1.1.3.r4474.d089e878
+	pkgver = 1.18.0.r5495.c5d482c6
 	pkgrel = 1
 	url = https://github.com/openSUSE/osc
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = osc-git
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
-	depends = python-m2crypto
+	depends = python-cryptography
 	depends = diffstat
 	optdepends = obs-build: required to run local builds
 	optdepends = obs-service-format_spec_file: for running the format_spec_file source service
