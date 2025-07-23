@@ -1,49 +1,68 @@
-# Maintainer: Fernando Ortiz <nandub+arch [at] nandub.info>
-# Contributor: Mark Laws <mdl [at] 60hz.org>
-
-_pkgname=gale
+# Maintainer: yobson <contact@yobson.xyz>
 pkgname=gale-git
-epoch=1
-pkgver=1.1.r18.ga576a1e
+pkgdesc='A lightweight mod manager for Thunderstore'
+pkgver=1.9.1.r835.07568df
 pkgrel=1
-pkgdesc="A distributed, real-time instant messaging system"
-arch=('i686' 'x86_64')
-url="http://gale.org"
-license=('GPL2')
-depends=('bash' 'gc' 'openssl' 'adns' 'glib2' 'tcl')
-makedepends=('git')
-install="${_pkgname}.install"
-source=("${_pkgname}::git+https://github.com/grawity/${_pkgname}.git")
-sha1sums=('SKIP')
+arch=('x86_64')
+url='https://github.com/Kesomannen/gale'
+license=('GPL-3.0-or-later')
+makedepends=('git' 'base-devel' 'cargo' 'cargo-tauri' 'pnpm')
+depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'openssl' 'pango' 'sqlite' 'hicolor-icon-theme')
+source=('git+https://github.com/Kesomannen/gale.git' 'Gale.desktop')
+sha256sums=('SKIP' '014a3c5a5a773fc0846e0c08df29e327dee4f05c3a9977dbf853fb7a2910d4f4')
+conflicts=('gale-bin')
 
 pkgver() {
-  cd ${_pkgname}
-  git describe --tags | sed 's/^v//; s/-/.r/; s/-/./g'
+	cd "$srcdir/gale"
+
+	local tag rev commit
+	tag=$(git describe --tags --abbrev=0)
+	rev=$(git rev-list --count HEAD)
+	commit=$(git rev-parse --short HEAD)
+
+	echo "${tag}.r${rev}.${commit}"
 }
 
 prepare() {
-  cd ${_pkgname}
+	cd "$srcdir/gale"
 
-  if [[ ! -f configure ]]; then
-    ./bootstrap
-  fi
+	if command -v rustup >/dev/null 2>&1; then
+		echo "Detected rustup, setting stable as default toolchain..."
+		rustup default stable
+	fi
 }
 
 build() {
-  cd ${_pkgname}
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make -C liboop liboop-tcl.la liboop-glib2.la liboop-rl.la liboop-adns.la #without this line build fails
-  make -C libgale libgale.la # without this line build fails
-  make # parallel builds seem to be broken
+	cd "$srcdir/gale"
+
+	export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=lld"
+	export CC=clang
+	export CXX=clang++
+
+	pnpm install
+	cargo tauri build --no-bundle
 }
 
 package() {
-  cd ${_pkgname}
+	install -Dm644 "$srcdir/Gale.desktop" "$pkgdir/usr/share/applications/Gale.desktop"
 
-  make DESTDIR="$pkgdir" install
-  # install fails if sbindir = bindir
-  mv -f "$pkgdir/usr/sbin/gksign" "$pkgdir/usr/bin/"
-  rmdir "$pkgdir/usr/sbin"
+	cd "$srcdir/gale"
+
+	install -Dm755 "src-tauri/target/release/gale" "$pkgdir/usr/bin/gale"
+	install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/gale.png"
+	install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/gale.png"
+	install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/gale.png"
 }
 
-# vim: set ts=2 sw=2 et:
+post_install() {
+	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}

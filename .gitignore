@@ -1,6 +1,4 @@
-*.bak
-*.gz
-*.xz
-src
-pkg
-gale
+gale/
+pkg/
+src/
+*.tar.zst
