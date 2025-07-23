@@ -1,6 +1,6 @@
 pkgbase = kumono
 	pkgdesc = Media ripper for coomer.su and kemono.su
-	pkgver = 0.47.0
+	pkgver = 0.47.1
 	pkgrel = 1
 	url = https://github.com/APT37/kumono
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = kumono
 	conflicts = kumono-bin
 	conflicts = kumono-git
 	options = !lto
-	source = kumono-0.47.0.tar.gz::https://github.com/APT37/kumono/archive/refs/tags/0.47.0.tar.gz
-	sha256sums = c4a155ea1d7a02f3b7da1cb7a9b36e9898840d46cc2e9e9b506400e7991c7784
+	source = kumono-0.47.1.tar.gz::https://github.com/APT37/kumono/archive/refs/tags/0.47.1.tar.gz
+	sha256sums = 054fc67fdeead1db05155ae5a9ae17af9fa9fb8fe43af2f87d6704f7fc2e3c25
 
 pkgname = kumono
