@@ -6,7 +6,7 @@ pkgname=mipsel-linux-gnu-binutils-minimal
 _pkgname=binutils
 _target="mipsel-linux-gnu"
 pkgver=2.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -20,7 +20,6 @@ sha256sums=(
   'b8e0b848b8f615a02b5f91d2f6992db0c062689bc7d4d0fee68edfaf34dee29f'
 )
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
-_sysroot="/usr/lib/${_target}"
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
@@ -34,16 +33,23 @@ build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
   ./configure \
-    "--prefix=${_sysroot}" \
-    "--bindir=/usr/bin" "--program-prefix=${_target}-" \
-    "--with-sysroot=${_sysroot}" \
-    "--target=${_target}" "--build=$CHOST" "--host=$CHOST" \
+    --prefix=/usr \
+    --target=${_target} \
+    --with-sysroot \
+    --with-float=soft \
+    --disable-nls \
     --disable-werror \
-    "--disable-nls" \
-    --with-gcc --with-gnu-as --with-gnu-ld \
+    --with-gcc \
+    --with-gnu-as \
+    --with-gnu-ld \
     --without-included-gettext
 
-  make all
+  make
+}
+
+check() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  make -k check
 }
 
 package() {
@@ -51,19 +57,7 @@ package() {
 
   make DESTDIR=${pkgdir} install
 
-  msg "Removing duplicit files..."
-  # remove these files as they are already in the system
-  # (with native binutils)
-  rm -Rf ${pkgdir}${_sysroot}/share/{man,info}
-  # remove conflicting binaries
-  find ${pkgdir}/usr/bin/ -type f -not -name 'mipsel-linux-gnu-*' -delete
-
-  msg "Creating out-of-path executables..."
-  # symlink executables to single directory with no-arch-prefix name
-  mkdir -p ${pkgdir}/usr/bin/${_target}/;
-  cd ${pkgdir}/usr/bin/${_target}/;
-  for bin in ${pkgdir}/usr/bin/${_target}-*; do
-    bbin=`basename "$bin"`;
-    ln -s "/usr/bin/${bbin}" `echo "$bbin" | sed "s#^${_target}-##"`;
-  done
+  find "$pkgdir" -name '*.la' -delete
+  find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
+  rm -rf $pkgdir/usr/share/{man,info}
 }
