@@ -2,16 +2,19 @@
 
 pkgbase=jdk-lts
 pkgname=('jre-lts' 'jdk-lts' 'jdk-lts-doc')
-pkgver=21.0.7
-_build=8
-_hash=8fe202bfe6c4465583b1dc9710c4fade
+pkgver=21.0.8
+_build=12
+_hash=c927acdc99414b95a38389e236910a05
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
 license=('LicenseRef-Custom')
-makedepends=('python-html2text')
+makedepends=(
+    'python-html2text'
+    # to satisfy pkgcheck:
+    'alsa-lib')
 source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux-x64_bin.tar.gz"
         "https://download.oracle.com/otn_software/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
         "jdk-${_majver}_doc-license.html"::"https://download.oracle.com/otndocs/jcp/java_se-${_majver}-final-spec/license.html"
@@ -22,8 +25,8 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_48.png'
         'LICENSE')
 noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('267b10b14b4e5fada19aca3be3b961ce4f81f1bd3ffcd070e90a5586106125eb'
-            '759159dbdb6c5c5a2daafda36a91c58a98b41143a8c090261f6b5b7f6242cfe9'
+sha256sums=('d87272944278713fc7a120cf024d2818d136b5debc750aa17045e3c6f045b867'
+            'fc03fa72cf54cd4738b72d58c0ed1ef67ceb374d5db881856d829d503d816f01'
             '080b638b37434d08474ce95f3e31c006e655a3383c0cd8058d18e492299f9cbb'
             '27787e721ff5ef02a4bfa13981f8fedbc5c6220213ed11854729fdb638964891'
             '341394d1886716676bd6416c678779418c68429fad47f48324c0644773ae1c44'
@@ -34,11 +37,21 @@ sha256sums=('267b10b14b4e5fada19aca3be3b961ce4f81f1bd3ffcd070e90a5586106125eb'
 
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
-_jre_deps=('java-runtime-common' 'ca-certificates-utils' 'freetype2' 'libx11' 'libxext'
-           'libxi' 'libxtst' 'libxrender')
-_jre_optdeps=('alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
-              'gtk3: for the Gtk+ 3 look and feel - desktop usage')
+_jre_deps=(
+    'java-runtime-common'
+    'ca-certificates-utils'
+    'freetype2'
+    'glibc'
+    'libx11'
+    'libxext'
+    'libxi'
+    'libxtst'
+    'libxrender'
+    'zlib')
+_jre_optdeps=(
+    'alsa-lib: for basic sound support'
+    'gtk2: for the Gtk+ 2 look and feel - desktop usage'
+    'gtk3: for the Gtk+ 3 look and feel - desktop usage')
 _jre_provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
                "jre${_majver}-jdk=${pkgver}-${pkgrel}"
                "java-runtime-headless=${_majver}" "java-runtime-headless-jdk=${_majver}"
