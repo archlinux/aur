@@ -11,7 +11,7 @@ CONFIG_FILE="$HOME/.config/brokefetch/config"
 # Jeśli nie ma configu – utwórz domyślny
 if [[ ! -f "$CONFIG_FILE" ]]; then
     mkdir -p "$(dirname "$CONFIG_FILE")"
-    echo -e "RAM_GB=4\nUPTIME_OVERRIDE=0" > "$CONFIG_FILE"
+    echo -e "RAM_MB=128\nUPTIME_OVERRIDE=0" > "$CONFIG_FILE"
 fi
 
 # Wczytaj wartości z configu
@@ -25,7 +25,7 @@ else
 fi
 
 # RAM
-MEMORY_MB=$(( RAM_GB * 1024 ))
+MEMORY_MB=$(( RAM_MB * 1 ))
 
 echo -e "${BLUE}                -\`                   ${RESET}$(whoami)@brokelaptop"
 echo -e "${BLUE}               .o+\`                  ${RESET} ---------------------"
@@ -47,5 +47,5 @@ echo -e "${BLUE}\`+sso+:-\`                 \`.-/+oso:"
 echo -e "${BLUE}\`++:.                           \`-/+/"
 echo -e "${BLUE}\`.\`                                \`"
 
-echo -e "${BOLD}BROKEFETCH 🥀 1.5 ${RESET}"
+echo -e "${BOLD}BROKEFETCH 🥀 1.6 ${RESET}"
 
