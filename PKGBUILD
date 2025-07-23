@@ -1,7 +1,7 @@
 # Maintainer: Needed!
 
 pkgname=samrewritten-git
-pkgver=r68.dacac70
+pkgver=20250722.1.r0.gac0f1bc
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
