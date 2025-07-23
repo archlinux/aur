@@ -2,7 +2,7 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
-pkgver=0.12.2
+pkgver=0.12.4
 _electronversion=34
 pkgrel=1
 pkgdesc="An privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.(Prebuilt version.Use system-wide electron)"
@@ -37,8 +37,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('093868951fd549c14cefcf335256cd4132419a25817185b91e4a3a6f0165009b')
-sha256sums_x86_64=('015ab19a2da00b9d44596a904ed25c3f7c64b1a854ebb58caacf9f0551ddf02e')
+sha256sums_aarch64=('64239e63aa8726b6947600576c2088453950143ea35ce1aa01156236ed6e4eef')
+sha256sums_x86_64=('093d77c4a5bcb4634a8e5964d70de79284179604537aed76650d432975cec920')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
