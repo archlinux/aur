@@ -3,14 +3,14 @@
 pkgname=chartjs
 _script=Chart.js
 _scriptmin=Chart.min.js
-pkgver=2.9.3
-pkgrel=1
+pkgver=4.5.0
+pkgrel=2
 pkgdesc="Simple HTML5 Charts using the canvas element"
 arch=(any)
 url="http://www.chartjs.org"
 license=('MIT')
-source=("https://github.com/${pkgname}/${_script}/releases/download/v${pkgver}/${_script}" "https://github.com/${pkgname}/${_script}/releases/download/v${pkgver}/${_scriptmin}") 
-md5sums=('aa0d045c7eefcedf60a4e27a6c613d19' 'b5c2301eb15826bf38c9bdcaa3bbe786')
+source=("https://github.com/${pkgname}/${_script}/releases/download/v${pkgver}/${_script}")
+md5sums=('c52bf63ae2f06076876a488aa608772a')
 
 package() {
   cd "${srcdir}"
