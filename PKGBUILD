@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=2.5.0.r21.g975046d
+pkgver=2.6.0.r0.g40759ca
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
@@ -9,9 +9,14 @@ url="https://apps.gnome.org/Dialect"
 license=('GPL-3.0-or-later')
 depends=(
   'gst-python'
+  'gstreamer'
+  'gtk4'
+  'gtksourceview5'
   'libadwaita'
+  'libsecret'
   'libsoup3'
   'libspelling'
+  'python-beautifulsoup4'
   'python-dbus'
   'python-gobject'
   'python-gtts'
@@ -47,7 +52,7 @@ build() {
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
