@@ -64,3 +64,6 @@ Add logging for exceptions
 Dump JSON with indent of 2
 
 
+Change directory to root before syncing
+
+
