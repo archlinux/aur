@@ -1,5 +1,4 @@
-# Nay work - https://gitlab.archlinux.org/archlinux/devtools/-/issues/248
 [vtracer]
 source = "github"
 github = "visioncortex/vtracer"
-use_latest_release = true
+use_max_tag = true
