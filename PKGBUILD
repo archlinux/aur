@@ -1,7 +1,7 @@
 # Maintainer: Popolon <popolon at popolon dot org>
 # Maintainer: Fwsgonzo 
 pkgname=libriscv
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc='RISC-V userspace emulator library'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/libriscv/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('6417d2b0908ecfe590ea90bc364c6e21f9d8fcbfeef67a09f72e38765427e8d3')
+sha256sums=('21b5a56159d8007a158993f4fe193130756b4700eae7f6ae5dd535e5ba82b964')
 
 # Workaround for linking against the installed library
 CXXFLAGS+=" -ffat-lto-objects "
