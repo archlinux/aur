@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.63.2
+pkgver=1.63.3
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -11,7 +11,6 @@ pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
 # nodejs-lts-iron works again: https://github.com/eclipse-theia/theia/pull/15212
 # Also, nodejs 23.9 seems to work too.
-#depends=('nodejs>=20.17.0' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 depends=('nodejs-lts-jod' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'gcc' 'git' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
