@@ -2,16 +2,16 @@
 # Contributor:
 pkgname=backbonejs
 _script=backbone
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Backbone is a JavaScript library with a RESTful JSON interface, and is based on the model-view-presenter (MVP) application design paradigm."
 arch=(any)
-url=http://backbonejs.org
+url=https://backbonejs.org
 license=('MIT')
 depends=()
 source=("$url/$_script.js" "$url/$_script-min.js")
-md5sums=('222432686a333255fd0f9b8fa4d4e713' 
-  '93a2e442d9ea4e6bfc6fe8789d7277f6')
+md5sums=('ddc851aaace75f11a91f1db004b0299f' 
+  'd7041bc26b0268d6e8de5324e28be45f')
 
 package() {
   cd "${srcdir}"
