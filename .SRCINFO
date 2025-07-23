@@ -1,6 +1,6 @@
 pkgbase = miniupnpd-nft-git
 	pkgdesc = Lightweight UPnP IGD daemon with nftables support
-	pkgver = 2.3.4.r15.ge0fd153
+	pkgver = 2.3.9.r64.g51ba388
 	pkgrel = 1
 	url = https://miniupnp.tuxfamily.org
 	arch = i686
@@ -21,8 +21,6 @@ pkgbase = miniupnpd-nft-git
 	conflicts = miniupnpd
 	backup = etc/miniupnpd/miniupnpd.conf
 	source = git+https://github.com/miniupnp/miniupnp.git
-	source = miniupnpd.service
 	sha256sums = SKIP
-	sha256sums = e4fb18c389feb752fd844ffee534775d67e643e854202483922381672c299d28
 
 pkgname = miniupnpd-nft-git
