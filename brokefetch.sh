@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 BLUE="\e[34m"
 BOLD="\e[1m"
 RESET="\e[0m"
