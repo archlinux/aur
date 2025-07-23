@@ -3,7 +3,7 @@
 pkgbase='python-jupyterlite'
 pkgname=('python-jupyterlite')
 _module='jupyterlite'
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="tools for building JupyterLite sites"
 url="https://github.com/jupyterlite/jupyterlite"
@@ -20,7 +20,7 @@ makedepends=('python-pip' 'python-wheel' 'python-flit' 'python-installer')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-sha256sums=('0caed5531e1c25dabf335aad78d6979998a0e5505228bfe618fdf96aeb067f75')
+sha256sums=('d37a2b98eb15e319d7df56c0e2f535d72bd06eabe13e2f180e13cf8e26b9eeab')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
