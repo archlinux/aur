@@ -2,7 +2,7 @@
 
 pkgname=gnatcoll-core
 pkgdesc='Gnat components collection - Core packages.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 epoch=1
 
@@ -16,10 +16,10 @@ makedepends=(gprbuild-toolbox
              python-sphinx_rtd_theme
              texlive-meta)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240408-16118-src.tar.gz)
-sha256sums=(5b683fcc693205b25148cbd2f9adb50e0075bb75cdc867c595efc8dc70ade7fc)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatcoll-core-26.0w-20250410-161C5-src.tar.gz)
+sha256sums=(e8192694d4a957c0257302e3ff4f6aad93a03fb7b5a05462ab0ef96e67a73724)
 
-_gnatcoll_core_src=gnatcoll-core-25.0w-20240505-162D8-src
+_gnatcoll_core_src=gnatcoll-core-26.0w-20250417-16242-src
 
 
 build()
@@ -30,13 +30,11 @@ build()
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
     ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
-    make setup BUILD=PROD prefix=/usr
-    make -j1 GPRBUILD_OPTIONS="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
+    make -j1 BUILD=PROD GPRBUILD_OPTIONS="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
-    make -C docs html latexpdf   \
-         1> build-docs-1.log     \
-         2> build-docs-2.log
-         
+    make -C docs html latexpdf      \
+         1> build-docs-warnings.log \
+         2> build-docs-errors.log
 }
 
 
@@ -48,6 +46,15 @@ package()
     # the same installed project files at the same time.
     #
     make -j1 prefix="$pkgdir/usr" install
+    
+    
+    # Install the documentation.
+    #
+    mkdir -p $pkgdir/usr/share/doc/$pkgname
+    
+    cp -r docs/_build/html               $pkgdir/usr/share/doc/$pkgname
+    cp    docs/_build/latex/GNATColl.pdf $pkgdir/usr/share/doc/$pkgname
+    
     
     # Install the license.
     #
