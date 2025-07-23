@@ -1,23 +1,15 @@
-From 09e8cbb3e56187c4cdb40becd403325755ac244a Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
-Date: Thu, 1 May 2025 16:59:49 +0000
-Subject: [PATCH] Fix build with GCC 15
+From a3fce4b3ee9371eeb7b300fa7e9f291d93986db3 Mon Sep 17 00:00:00 2001
+From: Integral <integral@member.fsf.org>
+Date: Sat, 7 Jun 2025 10:13:22 +0800
+Subject: [PATCH] fix: resolve build errors
 
-GCC 15 defaults to the C23 standard, where functions declarations
-without parameters are interpreted as having no parameters:
-https://gcc.gnu.org/gcc-15/porting_to.html#c23-fn-decls-without-parameters
-
-Declare the `gpointer = void*` parameter for `g_thread_new` callbacks
-to avoid a build failure due to `-Wincompatible-pointer-types`.
-
-Fixes: #468
 ---
  src/ui/ui.c | 10 +++++-----
  src/ui/ui.h |  4 ++--
  2 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/src/ui/ui.c b/src/ui/ui.c
-index 3be83e9..0d83c69 100644
+index 3be83e9..57c943f 100644
 --- a/src/ui/ui.c
 +++ b/src/ui/ui.c
 @@ -131,7 +131,7 @@ static ConfigValues configValues;
@@ -25,7 +17,7 @@ index 3be83e9..0d83c69 100644
  
  
 -static void *stopHp() {
-+static void *stopHp(gpointer data) {
++static void *stopHp(void *) {
      if(running_info[0]!=NULL){
          gtk_label_set_label(label_status,"Stopping ...");
          start_pb_pulse();
@@ -34,7 +26,7 @@ index 3be83e9..0d83c69 100644
  }
  
 -void* init_running_info(){
-+void* init_running_info(gpointer data){
++void* init_running_info(void *){
  
      clear_running_info();
      lock_all_views(TRUE);
@@ -61,7 +53,7 @@ index 3be83e9..0d83c69 100644
  }
  
 diff --git a/src/ui/ui.h b/src/ui/ui.h
-index bd6aef7..ee7cf7a 100644
+index bd6aef7..a8bb2be 100644
 --- a/src/ui/ui.h
 +++ b/src/ui/ui.h
 @@ -48,7 +48,7 @@ static void* run_create_hp_shell(void *cmd);
@@ -69,7 +61,7 @@ index bd6aef7..ee7cf7a 100644
  void init_interface_list();
  
 -void* init_running_info();
-+void* init_running_info(gpointer data);
++void* init_running_info(void *);
  
  static gboolean update_progress_in_timeout (gpointer pbar);
  
@@ -78,7 +70,7 @@ index bd6aef7..ee7cf7a 100644
  static void on_create_hp_clicked(GtkWidget *widget,gpointer data);
  
 -static void *stopHp();
-+static void *stopHp(gpointer data);
++static void *stopHp(void *);
  
  static int init_config_val_input(ConfigValues* cv);
  
