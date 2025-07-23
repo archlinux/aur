@@ -4,50 +4,57 @@
 
 _browser=vivaldi-snapshot
 pkgname=${_browser}-ffmpeg-codecs
-pkgver=138.0.7204.55
+pkgver=138.0.7204.143
 _vivaldi_major_version=7.5
 _commit=dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2
 #_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${pkgver}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-pkgrel=3
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for ${_browser}"
 arch=('x86_64')
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=(glibc)
-makedepends=(gcc diffutils nasm sed git)
+makedepends=(nasm git)
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}")
 sha256sums=('8708023dc5aec3ebd5e05677b3f44d7676e287bfc755937bcd6356876e8415e6')
 
 prepare() {
   cd chromium-ffmpeg
+  # List used functions
+  grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > sigs.txt
+  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # for opera. Some one may want use this binary. Effect for size is few.
+  echo -e "{\nglobal:" > ../export.map
+  sed 's/$/;/' sigs.txt >> ../export.map
+  echo -e "local:\n*;\n};" >> ../export.map
   # Use native opus decoder not in kAllowedAudioCodecs at
   # https://github.com/chromium/chromium/blob/${_pkgver}/media/ffmpeg/ffmpeg_common.cc
   sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
+  #diff libavcodec/opus/dec.c{.bak,} || :
 }
 
 build() {
   cd chromium-ffmpeg
-  # https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
+  # See BUILD.gn and chromium/config/Chrome/linux/x64/
+  # removed codecs: pcm_alaw,pcm_f32le,pcm_mulaw,pcm_s16be,pcm_s24be,pcm_s24le,pcm_s32le,pcm_u8
   ./configure \
-    --disable-{all,autodetect,programs,doc,iconv,network} \
+    --disable-{debug,all,autodetect,doc,iconv,network,symver} \
+    --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-swresample \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
-    --enable-decoder=vorbis,opus,flac,pcm_s16le,pcm_s24le,mp3,aac,h264 \
+    --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="$LTOFLAGS" \
-    --prefix="${srcdir}"/release \
-    --enable-hardcoded-tables \
-    --enable-{pic,asm} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
+    --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
+    --enable-{pic,asm,hardcoded-tables} \
+    --prefix="${srcdir}"/release
 
-  make
   make install
-
+  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
-    -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
+  gcc $LTOFLAGS -shared $LDFLAGS \
+    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script=../export.map \
     -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
 
