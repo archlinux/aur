@@ -2,3 +2,4 @@ gale/
 pkg/
 src/
 *.tar.zst
+*.log
