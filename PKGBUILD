@@ -2,7 +2,7 @@
 
 pkgname=libvss
 pkgdesc='A high level string and text processing library for Ada.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 epoch=1
 
@@ -14,20 +14,21 @@ license=(Apache)
 depends=(xmlada)
 makedepends=(gprbuild)
          
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/vss-25.0w-20240408-1642F-src.tar.gz)
-sha256sums=(0c7aeaebcbacfb9fbb584ad769a179ee7771fc17f4a56cfe145b6d0b4de98bf0)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/vss-26.0w-20250409-16384-src.tar.gz)
+sha256sums=(30a79999a5667313e402147329bafb4806e7759bc49c7a0b06d9aa81910722f4)
 
 
 build()
 {
-   cd $srcdir/vss-25.0w-20240505-162CF-src
+   cd $srcdir/vss-26.0w-20250416-16621-src
+   
    make build-all-libs
 }
 
 
 package()
 {
-   cd $srcdir/vss-25.0w-20240505-162CF-src
+   cd $srcdir/vss-26.0w-20250416-16621-src
 
    make DESTDIR=$pkgdir install-all-libs
 
