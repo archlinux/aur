@@ -1,6 +1,6 @@
 # Maintainer: Oliwier <your_email@domain.com>
 pkgname=brokefetch
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A sad, funny alternative to neofetch"
 arch=('any')
