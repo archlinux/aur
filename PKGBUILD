@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Emilua-easybox"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/emilua/easybox"
-license=('boost')
+license=('MIT-0')
 depends=('emilua')
 makedepends=('git' 'meson' 'boost')
 source=("${pkgname}::git+https://gitlab.com/emilua/easybox.git#tag=v${pkgver}"
