@@ -1,7 +1,7 @@
 # Maintainer: yobson <contact@yobson.xyz>
 pkgname=gale-git
 pkgdesc='A lightweight mod manager for Thunderstore'
-pkgver=1.9.1.r835.07568df
+pkgver=1.9.1.r836.fe9d955
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Kesomannen/gale'
