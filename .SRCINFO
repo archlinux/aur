@@ -6,7 +6,6 @@ pkgbase = gale-git
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = base-devel
 	makedepends = cargo
 	makedepends = cargo-tauri
 	makedepends = pnpm
