@@ -1,6 +1,6 @@
 pkgbase = flogo
 	pkgdesc = Create and run programs using flow charts
-	pkgver = 1.0.2.r145.d443d7b
+	pkgver = 1.0.3.r174.81af9b0
 	pkgrel = 1
 	url = https://fdossena.com?p=flogo/index.frag
 	arch = x86_64
