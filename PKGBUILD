@@ -20,14 +20,14 @@ sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
 conflicts[0]='SKIP'
 depends=(glibc)
 makedepends=(nasm git
-diffutils gcc make patch sed) # base-devel
+diffutils gcc make patch) # base-devel
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
-  # Lust used funcs
-  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > ${_chromium}sigs.txt
+  # List used funcs
   base64 -d sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt
-  diff {${_chromium},git}sigs.txt || echo ffmpeg.sigs was changed at upstream. Please OOD $pkgname
+  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt
+  diff {,old}sigs.txt || echo ffmpeg.sigs was changed. Please OOD $pkgname
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   echo -e "{\nglobal:" > export.map
   sed 's/$/;/' sigs.txt >> export.map
@@ -60,20 +60,20 @@ build() {
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition ${LTOFLAGS}" \
-    --prefix="${srcdir}"/release \
-    --enable-{pic,asm,hardcoded-tables}
+    --enable-{pic,asm,hardcoded-tables} \
+    --libdir=/
 
-  make install
-  _symbols=$(cat ../sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
-  cd ../release
+  make DESTDIR=.. install
+  cd ..
+  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
-    ${_symbols} -Wl,--version-script=../export.map \
+    -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script=export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
 package(){
-  install -Dm644 release/$_so "${pkgdir}"/usr/lib/${pkgname}/$_so
+  install -Dm644 $_so "${pkgdir}"/usr/lib/${pkgname}/$_so
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   for n in 7.5 7.6 7.7 7.8 7.9 8.0; do
     ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
