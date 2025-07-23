@@ -1,6 +1,6 @@
 pkgbase = kworkflow-git
 	pkgdesc = CLI tool for kernel development
-	pkgver = 0.5.r88.gf984b81
+	pkgver = 0.9.r0.g8358ca2e
 	pkgrel = 1
 	url = https://github.com/kworkflow/kworkflow
 	install = kw.install
