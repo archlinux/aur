@@ -2,7 +2,7 @@
 
 pkgname=python-p115client
 _name=${pkgname#python-}
-pkgver=0.0.5.15.12.1
+pkgver=0.0.5.15.13
 pkgrel=1
 epoch=
 pkgdesc="Python 115 webdisk client."
@@ -53,7 +53,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('d7ba0c93b0425524093d36532d8585d318496eaec6ca17c2cdba7370f4e6b54a')
+sha256sums=('f4916636afcb2c797ef4e2e46ee24e544ac67066d22ea6eaac8178035c01eb7e')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
