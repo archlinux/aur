@@ -2,12 +2,12 @@
 _pkgname=ValveResourceFormat
 pkgname=source2viewer
 pkgver=13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
-depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme')
+depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme' 'dotnet-runtime')
 makedepends=('dotnet-sdk-bin' 'gendesk')
 options=(!strip !debug)
 conflicts=('valveresourceformat')
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver/CLI"
-	dotnet publish -r linux-x64
+	dotnet publish -r linux-x64 --self-contained false
 
 	cd "$srcdir/$_pkgname-$pkgver/GUI"
 	dotnet publish -r win-x64 -p:EnableWindowsTargeting=true
