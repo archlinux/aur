@@ -1,7 +1,7 @@
-pkgbase = auto-brightness-ddcutil
-	pkgdesc = Automatic monitor brightness adjustment based on sunrise/sunset times (requires DDC/CI enabled)
-	pkgver = 1.0.0
-	pkgrel = 3
+pkgbase = monitor-remote-control
+	pkgdesc = Remote monitor control via DDC/CI with GUI interface for brightness, color, input switching and auto-brightness
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/DonutsDelivery/Auto-Brightness
 	arch = any
 	license = MIT
@@ -9,7 +9,10 @@ pkgbase = auto-brightness-ddcutil
 	depends = python
 	depends = python-requests
 	depends = ddcutil
+	depends = python-pyqt6
+	depends = kirigami
+	depends = python-monitor-control
 	source = git+https://github.com/DonutsDelivery/Auto-Brightness.git
 	sha256sums = SKIP
 
-pkgname = auto-brightness-ddcutil
+pkgname = monitor-remote-control
