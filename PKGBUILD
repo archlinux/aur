@@ -11,13 +11,13 @@ depends=()
 provides=('catppuccinifier')
 conflicts=('catppuccinifier')
 makedepends=('unzip')
-source=("https://github.com/lighttigerXIV/${_pkgname}/releases/download/${pkgver}/Catppuccinifer-Linux-${pkgver}.tar.xz")
-md5sums=('4616926942c4800928fd81a88c1e77bf')
+source=("https://github.com/lighttigerXIV/${_pkgname}/releases/download/${pkgver}/Catppuccinifier-Linux-${pkgver}.tar.xz")
+md5sums=('dc22be6a6e454df229daa11c8fa42c9b')
 
 build() {
-  tar -xf "Catppuccinifer-Linux-${pkgver}.tar.xz"
+  tar -xf "Catppuccinifier-Linux-${pkgver}.tar.xz"
 }
 
 package() {
-  install -Dm755 "${srcdir}/Catppuccinifer-Linux-${pkgver}/installation-files/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+  install -Dm755 "${srcdir}/Catppuccinifier-Linux-${pkgver}/installation-files/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }

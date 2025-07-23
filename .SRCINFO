@@ -7,7 +7,7 @@ pkgbase = catppuccinifier-cli-bin
 	makedepends = unzip
 	provides = catppuccinifier
 	conflicts = catppuccinifier
-	source = https://github.com/lighttigerXIV/catppuccinifier/releases/download/9.0.0/Catppuccinifer-Linux-9.0.0.tar.xz
-	md5sums = 4616926942c4800928fd81a88c1e77bf
+	source = https://github.com/lighttigerXIV/catppuccinifier/releases/download/9.0.0/Catppuccinifier-Linux-9.0.0.tar.xz
+	md5sums = dc22be6a6e454df229daa11c8fa42c9b
 
 pkgname = catppuccinifier-cli-bin
