@@ -1,0 +1,15 @@
+pkgbase = vglog-filter
+	pkgdesc = A log filtering tool for Valgrind logs.
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/eserlxl/vglog-filter
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	source = https://github.com/eserlxl/vglog-filter/releases/download/1.0.0/vglog-filter-1.0.0.tar.gz
+	validpgpkeys = F677BC1E3BD7246E
+	b2sums = b637c7efe74fa5132184b56d1f4871e11cbe02bb4426055c6c784a53e722ea79f99ad0889e10e0884c3336c9e765bfd63ecc36c7ea4bc83095c4dc03578b5679
+
+pkgname = vglog-filter
