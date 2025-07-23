@@ -3,16 +3,19 @@
 
 pkgbase=jdk
 pkgname=('jre' 'jdk' 'jdk-doc')
-pkgver=24.0.1
-_build=9
-_hash=24a58e0e276943138bf3e963e6291ac2
+pkgver=24.0.2
+_build=12
+_hash=fdc5d0102fe0414db21410ad5834341f
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
 license=('LicenseRef-Custom')
-makedepends=('python-html2text')
+makedepends=(
+    'python-html2text'
+    # to satisfy pkgcheck:
+    'alsa-lib')
 source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux-x64_bin.tar.gz"
         "https://download.oracle.com/otn_software/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
         "jdk-${_majver}_doc-license.html"::"https://download.oracle.com/otndocs/jcp/java_se-${_majver}-final-spec/license.html"
@@ -23,8 +26,8 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_48.png'
         'LICENSE')
 noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('07096b29c65feb393972870347f36021be421a74c1800be468b3c19f04e8e943'
-            '8d1a811454d3764a6c2967b4dd53911630ec37a9ff6feb9bfc94b8318044d3cb'
+sha256sums=('5f9f7c4ca2a6cef0f18a27465e1be81bddd8653218f450a329a2afc9bf2a1dd8'
+            '3e951976ad0b1324186a4c01a211df8463d7d14cb0bf9d0239b4aa7e0a8db9a3'
             '44bea749af7428ea023df090874a6826743f387a1e2333edad48ae584989a954'
             'a9506d9fa86f02fe86f47529a15e16e24eeb553970d93be9eec7eb1225a91f4f'
             '8870bed1172bd0189c67bcf0f26d36f706cd5d10eb878836be25ca2577d898ca'
@@ -44,10 +47,10 @@ _jre_deps=(
     'libxext'
     'libxi'
     'libxtst'
-    'libxrender')
+    'libxrender'
+    'zlib')
 _jre_optdeps=(
     'alsa-lib: for basic sound support'
-    'gtk2: for the Gtk+ 2 look and feel - desktop usage'
     'gtk3: for the Gtk+ 3 look and feel - desktop usage')
 _jre_provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
                "jre${_majver}-jdk=${pkgver}-${pkgrel}"

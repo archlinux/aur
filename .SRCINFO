@@ -1,14 +1,15 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 24.0.1
+	pkgver = 24.0.2
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
-	noextract = jdk-24.0.1_doc-all.zip
-	source = https://download.oracle.com/java/24/archive/jdk-24.0.1_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/24.0.1+9/24a58e0e276943138bf3e963e6291ac2/jdk-24.0.1_doc-all.zip
+	makedepends = alsa-lib
+	noextract = jdk-24.0.2_doc-all.zip
+	source = https://download.oracle.com/java/24/archive/jdk-24.0.2_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/24.0.2+12/fdc5d0102fe0414db21410ad5834341f/jdk-24.0.2_doc-all.zip
 	source = jdk-24_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-24-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -16,8 +17,8 @@ pkgbase = jdk
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 07096b29c65feb393972870347f36021be421a74c1800be468b3c19f04e8e943
-	sha256sums = 8d1a811454d3764a6c2967b4dd53911630ec37a9ff6feb9bfc94b8318044d3cb
+	sha256sums = 5f9f7c4ca2a6cef0f18a27465e1be81bddd8653218f450a329a2afc9bf2a1dd8
+	sha256sums = 3e951976ad0b1324186a4c01a211df8463d7d14cb0bf9d0239b4aa7e0a8db9a3
 	sha256sums = 44bea749af7428ea023df090874a6826743f387a1e2333edad48ae584989a954
 	sha256sums = a9506d9fa86f02fe86f47529a15e16e24eeb553970d93be9eec7eb1225a91f4f
 	sha256sums = 8870bed1172bd0189c67bcf0f26d36f706cd5d10eb878836be25ca2577d898ca
@@ -38,15 +39,15 @@ pkgname = jre
 	depends = libxi
 	depends = libxtst
 	depends = libxrender
+	depends = zlib
 	optdepends = alsa-lib: for basic sound support
-	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=24
 	provides = java-runtime-jdk24
-	provides = jre24-jdk=24.0.1-1
+	provides = jre24-jdk=24.0.2-1
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-jdk=24
-	provides = jre24-jdk-headless=24.0.1-1
+	provides = jre24-jdk-headless=24.0.2-1
 	conflicts = jdk
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
@@ -79,20 +80,20 @@ pkgname = jdk
 	depends = libxtst
 	depends = libxrender
 	depends = zlib
+	depends = zlib
 	depends = hicolor-icon-theme
 	optdepends = alsa-lib: for basic sound support
-	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=24
 	provides = java-environment-jdk=24
-	provides = jdk24-jdk=24.0.1-1
+	provides = jdk24-jdk=24.0.2-1
 	provides = jre=24
 	provides = java-runtime=24
 	provides = java-runtime-jdk24
-	provides = jre24-jdk=24.0.1-1
+	provides = jre24-jdk=24.0.2-1
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-jdk=24
-	provides = jre24-jdk-headless=24.0.1-1
+	provides = jre24-jdk-headless=24.0.2-1
 	conflicts = jre
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
