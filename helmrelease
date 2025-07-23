@@ -47,7 +47,7 @@ function _parse_hr_subcommand() {
       if [[ "$clusterConnected" == true ]]; then
         commands+=("--dry-run=server")
       else
-        info "Not connected to cluster, template might not be the exact result"
+        info "Not connected to cluster, template result might not be accurate"
       fi
       validCommand=true
       ;;
@@ -111,6 +111,7 @@ function helmrelease() {
   local releaseName
   local helmReleaseYaml
   local numberOfHelmReleases
+  local numberOfValuesFromItems
   local values
   local index
   local sourceParameter
@@ -160,9 +161,9 @@ function helmrelease() {
   fi
 
   numberOfHelmReleases=$(<<< "$yaml" | yq -ers 'map(select(.kind == "HelmRelease")) | length')
-  if [[ "$numberOfHelmReleases" -lt 1 ]]; then
+  if (( numberOfHelmReleases < 1 )); then
     err 'There are no HelmReleases in the input'
-  elif [[ "$numberOfHelmReleases" -gt 1 ]] && [[ -z "$index" ]]; then
+  elif (( numberOfHelmReleases > 1 )) && [[ -z "$index" ]]; then
     if [[ "$subCommand" == "install" ]]; then
       info 'You can only install 1 HelmReleases at the same time, but you can do `-$index`;'
       <<<"$yaml" printIndices
@@ -174,7 +175,7 @@ function helmrelease() {
       elif [[ "$subCommand" = "diff" ]]; then
         kubectl diff -f - || true
       fi
-      for index in {0..$((numberOfHelmReleases - 1))}; do
+      for index in {0..$(( numberOfHelmReleases - 1 ))}; do
         if [[ "$subCommand" = "template" ]]; then
           echo ---
         fi
@@ -184,7 +185,7 @@ function helmrelease() {
   else
     index="${index:-0}"
   fi
-  if [[ "$index" -ge "$numberOfHelmReleases" ]]; then
+  if (( index >= numberOfHelmReleases )); then
     info "index '$index' is out of range"
     <<<"$yaml" printIndices
     exit 1
@@ -193,10 +194,10 @@ function helmrelease() {
   helmReleaseYaml=$(_hr_getYaml "$yaml" "$index" HelmRelease)
   namespace=$(_hr_getNamespace "$helmReleaseYaml")
   remoteKubeconfig="$(<<< "$helmReleaseYaml" | yq -r '.spec.kubeConfig.secretRef.name // empty')"
-  if ! [[ -z "$remoteKubeconfig" ]] && ( [[ "$subCommand" != template ]] || [[ "$clusterConnected" == true ]] ); then
+  if [[ ! -z "$remoteKubeconfig" ]] && ( [[ "$subCommand" != template ]] || [[ "$clusterConnected" == true ]] ); then
     REMOTE_KUBECONFIG="$(mktemp)"
     trap "rm -f \"$REMOTE_KUBECONFIG\"" EXIT
-    kubectl --namespace=$(<<<"$helmReleaseYaml" | yq -r '.metadata.namespace') get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
+    kubectl --namespace=$namespace get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
   fi
   releaseName=$(_hr_getReleaseName "$helmReleaseYaml")
   case "$subCommand" in
@@ -205,6 +206,42 @@ function helmrelease() {
       ;;
     *)
       values=$(<<< "$helmReleaseYaml" | yq -y -r .spec.values)
+      numberOfValuesFromItems=$(<<< "$helmReleaseYaml" | yq -r '.spec.valuesFrom | length')
+      if (( numberOfValuesFromItems > 0 )); then
+        local valuesFromItem
+        local valuesFromItemKind
+        local valuesFromItemName
+        local valuesFromItemTargetPath
+        local valuesFromItemValuesKey
+        local valuesFromYaml
+        local valuesFromItemResource
+        for index in {0..$(( numberOfValuesFromItems - 1 ))}; do
+          valuesFromItem="$(<<< "$helmReleaseYaml" | yq -er ".spec.valuesFrom[$index]")"
+          valuesFromItemKind="$(<<< "$valuesFromItem" | yq -er .kind)"
+          valuesFromItemName="$(<<< "$valuesFromItem" | yq -er .name)"
+          valuesFromItemValuesKey="$(<<< "$valuesFromItem" | yq -er '.valuesKey // "values.yaml"')"
+          valuesFromItemTargetPath="$(<<< "$valuesFromItem" | yq -er '.targetPath // ""')"
+          if valuesFromYaml=$(_hr_getYaml "$yaml" "" "$valuesFromItemKind") || ! valuesFromItemResource=$(<<< "$valuesFromYaml" | yq -erys "map(select( (.metadata.namespace == \"$namespace\") and (.metadata.name == \"$valuesFromItemName\") ))[0] // empty"); then
+            if [[ "$clusterConnected" == true ]]; then
+              if ! valuesFromItemResource=$(kubectl --namespace=$namespace get $valuesFromItemKind $valuesFromItemName -o yaml | yq -er --arg valuesFromItemValuesKey "$valuesFromItemValuesKey" '.data[$valuesFromItemValuesKey]'); then
+                info "ValuesFrom resource '$namespace/$valuesFromItemKind/$valuesFromItemName' not found in cluster nor in input or doesn't contain '$valuesFromItemValuesKey', template result might not be accurate"
+              fi
+            else
+              info "Cannot get source resource '$namespace/$valuesFromItemKind/$valuesFromItemName' from cluster when not connected"
+            fi
+          fi
+          if [[ ! -z "$valuesFromItemResource" ]]; then
+            if [[ "$valuesFromItemKind" == Secret ]]; then
+              valuesFromItemResource="$(<<< "$valuesFromItemResource" | base64 -d)"
+            fi
+            if [[ "$valuesFromItemTargetPath" == "" ]]; then
+              values="$(<<< "$values" | yq -er --argjson valuesFromItemResource "$valuesFromItemResource" '. * $valuesFromItemResource')"
+            else
+              values="$(<<< "$values" | yq -er --arg valuesFromItemResource "$valuesFromItemResource" --arg valuesFromItemTargetPath "$valuesFromItemTargetPath" 'setpath($valuesFromItemTargetPath | split("."); $valuesFromItemResource)')"
+            fi
+          fi
+        done
+      fi
       if [[ -e "$sourceParameter" ]]; then
         KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" ${namespace:+--namespace=$namespace} $releaseName "$sourceParameter" --values <(<<< "$values") ${@}
       elif <<< "$helmReleaseYaml" | yq -e '.apiVersion == "helm.fluxcd.io/v1"' > /dev/null; then
