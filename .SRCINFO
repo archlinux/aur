@@ -1,7 +1,7 @@
 pkgbase = longbridge-pro
 	pkgdesc = Longbridge Pro – professional trading platform
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://longbridge.com/desktop
 	arch = x86_64
 	license = LicenseRef-Longbridge-Proprietary
