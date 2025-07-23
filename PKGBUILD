@@ -2,7 +2,7 @@
 
 _name=jaxlib
 pkgname=python-${_name,,}-bin
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='XLA library for JAX - binary package'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ _whl=${_name//-/_}-$pkgver-$_py-${_py}-manylinux2014_$CARCH.whl
 source_x86_64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_whl}")
 source_aarch64=(${source_x86_64[@]//x86_64/aarch64}) # require substitution for correct .SRCINFO generation on x86_64
 
-sha256sums_x86_64=(f94163f14c8fd3ba93ae14b631abacf14cb031bba0b59138869984b4d10375f8)
-sha256sums_aarch64=(70498837caf538bd458ff6858c8bfd404db82015aba8f663670197fa9900ff02)
+sha256sums_x86_64=(df31664a53c13a9263bca0e8c39e0380a0ccae0b1c125376df63a480d9cb2087)
+sha256sums_aarch64=(5b7393c8694a17ed522e9553e06791dd76b4789b3448d085d0ed4ffbad77a2e7)
 
 noextract=("$_whl")
 package() {
