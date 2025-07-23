@@ -2,7 +2,7 @@
 
 pkgname=dynamic-power-daemon
 pkgver=4.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload; with DBus control, per-user helpers and Qt tray UI"
 arch=('any')
 url="https://github.com/evertvorster/dynamic-power-daemon"
