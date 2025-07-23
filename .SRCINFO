@@ -1,12 +1,12 @@
 pkgbase = mysql-connector-java
 	pkgdesc = Java library to connect to MySQL
-	pkgver = 9.3.0
+	pkgver = 9.4.0
 	pkgrel = 1
 	url = https://dev.mysql.com/downloads/connector/j/
 	arch = any
 	license = GPL-2.0-or-later
 	depends = java-environment
-	source = https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-9.3.0.tar.gz
-	sha512sums = a1dfdbae99dd537b31798daf61a6794c131dee11955674b09fcdeebc43e20c8ac3d730fb12f2be505e9a20d9f50aeb41b03a8fc70f5822a87ba4a8e3d3f47786
+	source = https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-9.4.0.tar.gz
+	sha512sums = 57db259a45b6b060c93f8252d5e9d1998534033db9b0ade8409bb72890701017d411482c8b11eb25c84d18bf8301c57ca200177b2e3e019f1be32e17304bc2fd
 
 pkgname = mysql-connector-java
