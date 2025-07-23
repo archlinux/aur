@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OlexiyOdarchuk/m3uget/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f58718109b6b836cbc48122e7ada0c247b75305027ce75b666503797cba216c')
+sha256sums=('1c62b94796209ed60ab1133a3e81507add3fea8ea05dfc81adf7d5a3aa87b180')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
