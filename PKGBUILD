@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-easybox
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Emilua-easybox"
 arch=('i686' 'x86_64')
