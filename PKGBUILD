@@ -1,7 +1,7 @@
 # Maintainer: Isabel <isabel@isabelroses.com>
 pkgname=catppuccinifier-bin
 _pkgname=catppuccinifier
-pkgver=9.0.0 # renovate: datasource=github-tags depName=lighttigerXIV/catppuccinifier
+pkgver=9.1.0 # renovate: datasource=github-tags depName=lighttigerXIV/catppuccinifier
 pkgrel=1
 pkgdesc="An application to catppuccinifiy your images."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('catppuccinifier' 'catppuccinifier-gui')
 depends=('cmake' 'libadwaita' 'webkit2gtk' 'base-devel' 'curl' 'wget' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 makedepends=('git')
 source=("https://github.com/lighttigerXIV/${_pkgname}/releases/download/${pkgver}/Catppuccinifier-Linux-${pkgver}.tar.xz")
-md5sums=('dc22be6a6e454df229daa11c8fa42c9b')
+md5sums=('5dbd9ff23d534f097fd41f8affb4af3e')
 
 build() {
   tar -xf "Catppuccinifier-Linux-${pkgver}.tar.xz"
