@@ -1,0 +1,27 @@
+pkgbase = vlc-plugin-luajit-git
+	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player
+	pkgver = 4.0.0.r34284.gf4f3baf
+	pkgrel = 1
+	url = https://github.com/videolan/vlc
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = lua51
+	makedepends = luajit
+	makedepends = meson
+	options = !emptydirs
+	options = !lto
+	source = vlc.github::git+https://github.com/videolan/vlc.git
+	sha256sums = SKIP
+
+pkgname = vlc-plugin-luajit-git
+	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player - Lua scripting plugins (LuaJIT)
+	depends = libvlc
+	depends = libvlccore.so
+	depends = luajit
+	optdepends = lua-socket: for http interface
+	provides = vlc-luajit
+	provides = vlc-plugin-lua
+	conflicts = vlc-luajit
+	conflicts = vlc-plugin-lua
