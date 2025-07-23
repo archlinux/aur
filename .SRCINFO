@@ -1,0 +1,13 @@
+pkgbase = windowlist
+	pkgdesc = Polybar custom module - List all open windows, click to switch focus or minimize
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tuurep/windowlist
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = glibc
+	source = windowlist-0.1.0.tar.gz::https://github.com/tuurep/windowlist/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = de3ad6673d6e36840cac147a4fda276dc92cad1501533a3db4334eb0f99b964f
+
+pkgname = windowlist
