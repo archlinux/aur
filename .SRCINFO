@@ -1,0 +1,19 @@
+pkgbase = katana-bin
+	pkgdesc = A next-generation crawling and spidering framework
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/katana
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = katana
+	conflicts = katana
+	source_x86_64 = https://github.com/projectdiscovery/katana/releases/download/v1.2.0/katana_1.2.0_linux_amd64.zip
+	sha256sums_x86_64 = fd2e7bc996e70f70c980acd56a69d6695b0d87beef05d7af786259eb29b76ba3
+	source_i686 = https://github.com/projectdiscovery/katana/releases/download/v1.2.0/katana_1.2.0_linux_386.zip
+	sha256sums_i686 = 494bd98d6443482d542632f0a998f9c3732a19d25e6527a0c9a4b606d4695e15
+	source_aarch64 = https://github.com/projectdiscovery/katana/releases/download/v1.2.0/katana_1.2.0_linux_arm64.zip
+	sha256sums_aarch64 = 8fc2c591113f888757e6cfc72c3d945a76489404ee53f753c61078d1c6bc7ba0
+
+pkgname = katana-bin
