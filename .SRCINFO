@@ -1,6 +1,6 @@
 pkgbase = gnatcoll-sqlite
 	pkgdesc = GNAT Components Collection - SQLite database support.
-	pkgver = 25.0w
+	pkgver = 26.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-db
@@ -10,7 +10,7 @@ pkgbase = gnatcoll-sqlite
 	license = custom
 	makedepends = gprbuild
 	depends = gnatcoll-sql
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gnatcoll-db-25.0w-20240408-1639A-src.tar.gz
-	sha256sums = 66f30323be6cec6fc68cc58aa46a162c61196a2b9d44992f041599d3970afe35
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatcoll-db-26.0w-20250409-16317-src.tar.gz
+	sha256sums = fe4367a13407bb0d300dda10fbca26ffd5fa9d13121625f37b38d998e728d649
 
 pkgname = gnatcoll-sqlite
