@@ -1,5 +1,24 @@
 pkgbase = gpu-screen-recorder-gtk-git
-	pkgver = 0
-	pkgrel = 0
+	pkgdesc = Frontend for gpu-screen-recorder, a shadowplay-like screen recorder
+	pkgver = 5.7.7.r0.g32b9725
+	pkgrel = 1
+	url = https://git.dec05eba.com/gpu-screen-recorder-gtk
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = desktop-file-utils
+	makedepends = git
+	makedepends = gtk-update-icon-cache
+	makedepends = meson
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libx11
+	provides = gpu-screen-recorder-gtk
+	conflicts = gpu-screen-recorder-gtk
+	source = gpu-screen-recorder-gtk::git+https://repo.dec05eba.com/gpu-screen-recorder-gtk
+	sha256sums = SKIP
 
 pkgname = gpu-screen-recorder-gtk-git
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libx11
+	depends = gpu-screen-recorder
