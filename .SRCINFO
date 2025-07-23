@@ -1,0 +1,11 @@
+pkgbase = festival-systemd
+	pkgdesc = Systemd unit setting a Festival Service for Speech Dispatcher
+	pkgver = 1.0
+	pkgrel = 1
+	install = festival-systemd.install
+	arch = any
+	depends = festival-freebsoft-utils
+	options = !strip
+	options = !debug
+
+pkgname = festival-systemd

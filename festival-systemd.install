@@ -1,0 +1,3 @@
+post_install() {
+  echo "Remember start the service after of installation, this is a user service"
+}
