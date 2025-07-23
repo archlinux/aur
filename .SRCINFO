@@ -1,6 +1,6 @@
 pkgbase = python-streamlit-aggrid
 	pkgdesc = A Streamlit component for the AG Grid JavaScript library
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://pypi.org/project/streamlit-aggrid
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-streamlit-aggrid
 	depends = python-pandas
 	depends = python-simplejson
 	depends = python-streamlit
-	source = https://files.pythonhosted.org/packages/source/s/streamlit_aggrid/streamlit_aggrid-1.1.6.tar.gz
-	b2sums = 292a544024c34de5a7b5d1f2065d03b02721f61f7d1d6e976e4a02378d6eb8a4bf0c694fe6b84278dfc0ed4f302728bc1e74589daab283a5cd13707c35dd4dfc
+	source = https://files.pythonhosted.org/packages/source/s/streamlit_aggrid/streamlit_aggrid-1.1.7.tar.gz
+	b2sums = f3556f34812497a40e5dac7199ad1e21141f059974099a4ee6bb5365c0627e8035ab7f6a7de0936ea162151c0e3889553d0bd240ac323a7c75d67d830738c3f1
 
 pkgname = python-streamlit-aggrid
