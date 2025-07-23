@@ -1,0 +1,12 @@
+diff -ura oolite-git/GNUmakefile oolite-git.new/GNUmakefile
+--- oolite-git/GNUmakefile	2025-07-23 13:11:05.455875374 +0200
++++ oolite-git.new/GNUmakefile	2025-07-23 13:13:31.051663849 +0200
+@@ -75,7 +75,7 @@
+     ADDITIONAL_CFLAGS            = -Wall -DLINUX -DNEED_STRLCPY `sdl-config --cflags` `nspr-config --cflags`
+ 
+     ifeq ($(ESPEAK),yes)
+-        ADDITIONAL_OBJC_LIBS     += -lespeak
++        ADDITIONAL_OBJC_LIBS     += -lespeak-ng
+         ADDITIONAL_OBJCFLAGS     += -DHAVE_LIBESPEAK=1
+         GNUSTEP_OBJ_DIR_NAME     := $(GNUSTEP_OBJ_DIR_NAME).spk
+     endif

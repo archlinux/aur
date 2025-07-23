@@ -3,16 +3,15 @@
 
 pkgname=oolite-git
 pkgver=1.91.0.7684.250719.75e511b.r0.75e511b31
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
 license=('GPL-2.0-or-later')
 groups=('game')
-depends=(espeak gnustep-base glu nspr openal
-         libpng14 gcc-libs libglvnd glibc zlib sdl12-compat bash
-         libvorbis)
-makedepends=(gnustep-make curl zip libx11 gcc-objc git)
+depends=(bash gcc-libs libglvnd libx11 glibc zlib gnustep-base
+          espeak-ng libpng14 glu nspr openal sdl12-compat libvorbis)
+makedepends=(gnustep-make gcc-objc git)
 source=(oolite-git::git+https://github.com/OoliteProject/oolite
         git+https://github.com/OoliteProject/oolite-binary-resources.git
         git+https://github.com/OoliteProject/oolite-mac-components
@@ -25,6 +24,7 @@ source=(oolite-git::git+https://github.com/OoliteProject/oolite
         git+https://github.com/OoliteProject/oolite-windows-dependencies.git
         oolite-git.sh
         linux-force-use-of-libpng14.patch
+        linux_force_espeak-ng.patch
 )
 
 sha512sums=('SKIP'
@@ -38,7 +38,8 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             '9eacfddce04dcc91df12038be04387abd508e2e16248561d15c92c173d5b94a363d6b8fa4df644c07732b2cb484aaa0c11b7a07e56295e2d30a87de59f760aef'
-            'd0b77a8375bdaadef9a79d287abcb2941b6b50e9e7f8d400d89ec384eaacabaa12353d5d3432b8e8714bae687c3026748e781ab104cc6ad96b81590cf6eac743')
+            'd0b77a8375bdaadef9a79d287abcb2941b6b50e9e7f8d400d89ec384eaacabaa12353d5d3432b8e8714bae687c3026748e781ab104cc6ad96b81590cf6eac743'
+            'ab1062b9669b51b133824e6c0fdd0cd6d7f2c0ba88db41c1cfbb001626b1e0bcbf93d883f11a873d7d7e0d05311808d9b317fd7a0ce08a6ab7b72667cd3c71da')
 
 pkgver() {
   git -C oolite-git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
@@ -60,6 +61,7 @@ prepare(){
   git config submodule.deps/Windows-deps.url "$srcdir"/oolite-windows-dependencies
   git -c protocol.file.allow=always submodule update
   patch -Np1 -i "$srcdir"/linux-force-use-of-libpng14.patch
+  patch -Np1 -i "$srcdir"/linux_force_espeak-ng.patch
 }
 
 
