@@ -5,7 +5,7 @@
 
 pkgname=ladybird
 pkgver=20250612
-pkgrel=1
+pkgrel=2
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
@@ -20,12 +20,14 @@ source=(
   "git+https://github.com/microsoft/vcpkg.git#commit=89dc8be6dbcf18482a5a1bf86a2f4615c939b0fb" # 2025-06-02 (vcpkg.json:builtin-baseline)
   "ladybird.desktop"
   "hb-fc-whole-archive.patch"
+  "new-tab.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  'SKIP'
-  'SKIP'
+  'c83838259b1b8cf1c7118b706286c99977223439bbcc056694e2952708bf2350'
+  'e830f31f65032f3aa8443f3e906241e762b6cc191c9372dbcd1111985a4e3929'
+  '7f50eb833838df5fcd1fc0aa0eea986ed93cd670c283dad4ac5276e7c9e3ffbe'
 )
 
 build() {
@@ -41,6 +43,8 @@ build() {
   fi
 
   patch ladybird/UI/Qt/CMakeLists.txt < hb-fc-whole-archive.patch
+  patch ladybird/Base/res/ladybird/about-pages/newtab.html < new-tab.patch
+  sed -i -e "s/COMMIT_HASH/$(git -C ladybird show -s --format=%H)/" -e "s/COMMIT_DATE/$(git -C ladybird show -s --format=%ci)/" ladybird/Base/res/ladybird/about-pages/newtab.html
 
   cmake \
     --preset Release \
