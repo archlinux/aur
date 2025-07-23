@@ -2,7 +2,7 @@
 
 pkgname=walker
 pkgver=0.13.10
-pkgrel=2
+pkgrel=3
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('any')
