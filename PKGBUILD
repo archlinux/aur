@@ -6,7 +6,7 @@ pkgver=107.r8010
 pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
-url='https://github.com/dracut-ng/dracut'
+url='https://github.com/dracut-ng/dracut-ng'
 license=('GPL-2.0-or-later')
 depends=(
   'bash'
@@ -27,6 +27,7 @@ makedepends=(
   'asciidoc'
   'bash-completion'
   'git'
+  'rust'
 )
 optdepends=(
   'binutils: --uefi option support'
@@ -70,7 +71,6 @@ optdepends=(
   'plymouth: plymouth boot splash'
   'qrencode: systemd-bsod'
   'rng-tools: enable rngd service to help generating entropy early during boot'
-  'rust: dracut cpio'
   'rsyslog: enable logging with rsyslog'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
   'systemd: systemd'
@@ -89,7 +89,7 @@ source=(
   60-dracut-remove.hook
 )
 sha512sums=('SKIP'
-            '734999ef753ebc0a67660d2359d640a328d8da08e681ac1c5cb5349d267d11d83d07de6bbebb714d93e4ddf9059315e23be56e1c8e6738fb7bafd64462d0e526'
+            '1935e69f9992ae3e693c4c1e402f4459cbc3b75f379e2781db63dc7b1a5ba2520fa53cc3b4397276610e07df23ea1be0eb2b56da79c0574b55c4e3fb16a4e44b'
             '8f8c3a892094dca621db8f18c73501b4f316692d82bb05fc193d772d51c935eb85e0e8a45a2ae6285432421d3733077e74ab4803a722507147cc6e012b374b6d'
             'eea03d26c34b54984cf04a30fd4166814757258d67cd0cd72bbc9d69f0ebae8cd181290b0f2a1d43c24b39b19b802936ff6374205fa721d34e152db0aca5179e'
             '5f8f6f04081061d36cd331737b40a8f523319f0d05d92308c0967de97266c27d3dd901da49ce0850f12c2cd95e5eb19ba6219b5d8a1d075c010420be1900f803')
@@ -118,8 +118,9 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
 
-  ./configure \
-    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
+  ./configure  \
+    --sysconfdir=/etc
+
   make
 }
 

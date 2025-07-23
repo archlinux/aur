@@ -8,6 +8,7 @@ while read -r line; do
 		kver="${line#'usr/lib/modules/'}"
 		kver="${kver%'/pkgbase'}"
 
+		echo "--> Building initramfs for ${pkgbase} (${kver})"
 		install -Dm0644 "/${line%'/pkgbase'}/vmlinuz" "/boot/vmlinuz-${pkgbase}"
 		dracut "${args[@]}" --hostonly "/boot/initramfs-${pkgbase}.img" --kver "$kver"
 	fi
