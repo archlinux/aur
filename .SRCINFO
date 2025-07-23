@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-mlrt-ncnn-runtime
+	pkgdesc = Plugin for VapourSynth: mlrt (Vulkan ncnn runtime)
+	pkgver = v15.12
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vs-mlrt
+	arch = x86_64
+	license = GPL-3.0
+	depends = vapoursynth
+	depends = protobuf
+	depends = onnx
+	depends = ncnn
+	provides = vapoursynth-plugin-mlrt
+	conflicts = vapoursynth-plugin-mlrt
+	source = vsncnn-linux-x64.zip::https://files.bluefalcon.cc/vsncnn-linux-x64.zip
+	source = scripts.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.12/scripts.v15.12.7z
+	source = models.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.12/models.v15.12.7z
+	sha256sums = edd4fa27b877f3b2e4dcbc57a758de89829bd44b60ff5f451c8ecfeaff1894bd
+	sha256sums = 4e707fb9d7f5ce13571d47ee07dc489347bfc76d39d5821428db8fcd89b16b97
+	sha256sums = acaeb63191ab0b54307c9ca68cb6a9ec5278205f602241aeb1dabade7c2344da
+
+pkgname = vapoursynth-plugin-mlrt-ncnn-runtime
