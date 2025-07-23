@@ -7,8 +7,8 @@ _OTRExporter_commit=41052efcdf8df8e67517cc93da8975fcd4e14af9
 
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=9.0.1
-pkgrel=2
+pkgver=9.0.4
+pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "zenity" "libzip" "libpng")
@@ -20,13 +20,11 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "libultraship-${_lus_commit:0:8}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_lus_commit}.tar.gz"
         "ZAPDTR-${_ZAPDTR_commit:0:8}.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
         "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
-        "1467-c23-build-fixes.patch::https://github.com/HarbourMasters/Shipwright/pull/5467.patch"
         "soh.desktop")
-sha256sums=('3262ba07b01684352b43ea2c551355cb077055503392cc0c63ca5fff9e680781'
+sha256sums=('64f898c88749219e5fc4ee7cc57267689e4898a79652e731c195a8d87189c6f8'
             '0e257911cb69080451c475aac27f78912219d6f2514d661069b7551207dfaf36'
             'e52682090897c015b129c2a701a47553da648980e1e1e829248e1ad0ff6f3bee'
             '176ad7bc15d476a271645fb2646450de977cd24d800530baf76b382424f6eb5d'
-            'd6cde40646fd6e7ffe1328a5d8b9e31874c1f80aa25aeec35f404aa32627d9b6'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
@@ -64,9 +62,6 @@ prepare() {
       return 1
     fi
   fi
-
-  # PR 5467: GCC 15 compatibility fixes
-  patch -Np1 -i "${srcdir}/1467-c23-build-fixes.patch"
 }
 
 build() {
