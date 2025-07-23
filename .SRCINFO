@@ -1,0 +1,20 @@
+pkgbase = python-quadprog
+	pkgdesc = Solve a strictly convex quadratic program
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/quadprog/quadprog
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python>=3.9
+	depends = python-numpy
+	depends = glibc
+	options = !debug
+	source = https://files.pythonhosted.org/packages/source/q/quadprog/quadprog-0.1.13.tar.gz
+	sha256sums = 9d6dd32f2762f29b840fb83741d11e527ddf48745f63b79caad0e530b4a6a0ff
+
+pkgname = python-quadprog
