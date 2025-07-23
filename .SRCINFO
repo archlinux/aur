@@ -1,6 +1,6 @@
 pkgbase = python-niaaml-gui
 	pkgdesc = GUI for NiaAML Python package
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/NiaAML-GUI
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-niaaml-gui
 	depends = python-niaaml
 	depends = python-qtawesome
 	depends = python-pyqt6
-	source = NiaAML-GUI-0.3.2.tar.gz::https://github.com/firefly-cpp/NiaAML-GUI/archive/0.3.2.tar.gz
-	sha512sums = 970330c1a2855f34839793e01ba53d5f98f2010cf81e04068b2e7f71d139530e16fe0ab2e043535f87e64f2d1f9192849da34b241384761178f3a71b99a200cf
+	source = NiaAML-GUI-0.4.0.tar.gz::https://github.com/firefly-cpp/NiaAML-GUI/archive/0.4.0.tar.gz
+	sha512sums = 2d9a7dac73a9b905886fa9a7921b6ddca2297a65160ce2513bb6b0218fe881bf978c32bab2ba017e4f48df4cf031b941d1cc50693d2cf6a49e6d358a432d8a0c
 
 pkgname = python-niaaml-gui
