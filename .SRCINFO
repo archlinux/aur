@@ -1,14 +1,13 @@
 pkgbase = cpat
 	pkgdesc = A curses based solitaire/patience collection of 9 games
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = http://cpat.sourceforge.net/
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = GPL2
 	depends = ncurses
-	source = https://master.dl.sourceforge.net/project/cpat/cpat/1.4.1/cpat-1.4.1.tar.gz
-	sha256sums = 48b9a67cf5b8c9ce0b65de2d75c2086e37067bfa9b401f3d660465f1fd863327
+	source = https://master.dl.sourceforge.net/project/cpat/v1.4.2/cpat-1.4.2.tar.gz
+	sha256sums = be255b694db5b48e2553ed16a12cd15bcd5a50fcc222424a8c947f04f1053b67
 
 pkgname = cpat
-
