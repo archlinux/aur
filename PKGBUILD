@@ -1,18 +1,18 @@
 pkgname=dpdk-lts
-pkgver=24.11.1
+pkgver=25.07
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=($CARCH)
 url='http://dpdk.org'
 license=(
-  BSD-3-Clause
-  GPL-2.0-only
+  'BSD-3-Clause AND GPL-2.0-only'
 )
 provides=(${pkgname%-lts})
 conflicts=(${pkgname%-lts})
 options=()
 depends=(
   sh
+  bpf
   dtc
   gcc-libs
   glibc
@@ -23,6 +23,7 @@ depends=(
   libelf
   libpcap
   libxdp
+  isa-l
   numactl
   rdma-core
   openssl
@@ -31,7 +32,6 @@ depends=(
   zlib
   #AUR
   dlpack
-  isa-l
 )
 makedepends=(
   doxygen
@@ -46,16 +46,14 @@ checkdepends=()
 source=(
   "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
-sha256sums=('bcae7d42c449fc456dfb279feabcbe0599a29bebb2fe2905761e187339d96b8e')
+sha256sums=('6886cbedc350bb8cbef347d10367d6259e36435627fbb27d578adbdc0d3b410d')
 
 prepare() {
-  meson subprojects download --sourcedir="${srcdir}/dpdk-stable-$pkgver"
+  meson subprojects download --sourcedir="${srcdir}/dpdk-$pkgver"
 }
 
 build() {
-  #   cd dpdk-$pkgver
-  #   make T=x86_64-native-linuxapp-gcc
-  cd "${srcdir}/dpdk-stable-$pkgver"
+  cd "${srcdir}/dpdk-$pkgver"
   arch-meson build
   ninja -C build
 }
@@ -67,8 +65,5 @@ build() {
 # }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C ${srcdir}/dpdk-stable-$pkgver/build install
-  #   cd dpdk-$pkgver
-  #   make DESTDIR="$pkgdir" prefix=/usr sbindir=bin install T=x86_64-native-linuxapp-gcc
-  #   cp -a "$pkgdir"/lib/ "$pkgdir"/usr/ && rm -rf "$pkgdir"/lib/
+  DESTDIR="${pkgdir}" ninja -C ${srcdir}/dpdk-$pkgver/build install
 }
