@@ -2,14 +2,14 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang-bin
-pkgver=2025.11
+pkgver=2025.13
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
 license=('MIT')
 source=("$url/releases/download/v$pkgver/slang-$pkgver-linux-$CARCH.tar.gz")
-sha256sums=('07a1ec459507b5bbbcd4a1f7f9af3415c1e3beefecfc4ef393359d818fccaec7')
+sha256sums=('eccac06d2db71aaf57a8b7f39be092586e74b3ed95bad362f598e50f8d8ce92c')
 depends=(glslang)
 conflicts=(shader-slang shader-slang-git)
 provides=(shader-slang)
