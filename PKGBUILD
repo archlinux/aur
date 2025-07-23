@@ -1,7 +1,7 @@
 # Maintainer: kamisaki
 # Description: 🚀🌠 A minimal, fast, and customizable prompt written in Go
 pkgname=pulsarship
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="🚀🌠 A minimal, fast, and customizable prompt written in Go"
 arch=('x86_64')
@@ -10,7 +10,6 @@ license=('GPL3')
 depends=()
 makedepends=('go' 'git')
 
-optdepends=()
 source=(
     "git+https://github.com/xeyossr/pulsarship.git#tag=v${pkgver}"
 )

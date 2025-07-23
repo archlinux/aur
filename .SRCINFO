@@ -1,6 +1,6 @@
 pkgbase = pulsarship
 	pkgdesc = 🚀🌠 A minimal, fast, and customizable prompt written in Go
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/xeyossr/pulsarship
 	arch = x86_64
