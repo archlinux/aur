@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Jon Nordby <jononor@gmail.com>
 pkgname=uf2-utils-git
 pkgver=r8.3ca6d14
 pkgrel=2
