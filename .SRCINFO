@@ -1,7 +1,7 @@
 pkgbase = walker-bin
 license = MIT
 pkgdesc = wayland application runner
-pkgver = 0.13.9
+pkgver = 0.13.10
 pkgrel = 1
 depends = gtk4-layer-shell
 depends = libvips
@@ -10,9 +10,12 @@ optdepends = wl-clipboard: for clipboard module
 optdepends = libqalculate: for calculator module
 url = https://github.com/abenz1267/walker
 arch = x86_64
+arch = aarch64
 provides = walker
 conflicts = walker
-source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.12.26.gz
-sha256sums_x86_64 = cc4f25fa436760d4bae606b74cdf01b2876c8f5b3fc88be2db78da0668b39dc3
+source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.13.10/walker_v0.13.10_Linux_x86_64.tar.gz
+source_aarch64 = https://github.com/abenz1267/walker/releases/download/v0.13.10/walker_v0.13.10_Linux_arm64.tar.gz
+sha256sums_x86_64 = 4cb7afa9a0ac4e5c0044197cf39acb8daa4b9571fa2aa6a31d021c687d27fc6c
+sha256sums_aarch64 = 75743a4809e70719c47d27ea3a2ba32fb9fd8cc5e1ab80289ddfb5e14dfa3bbe
 
 pkgname = walker-bin
