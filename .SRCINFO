@@ -1,7 +1,7 @@
 pkgbase = electron36-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 36.7.1
-	pkgrel = 2
+	pkgver = 36.7.3
+	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
@@ -17,21 +17,21 @@ pkgbase = electron36-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron36=36.7.1
+	provides = electron36=36.7.3
 	conflicts = electron36
-	noextract = electron36-chromedriver-36.7.1-x86_64.zip
-	noextract = electron36-36.7.1-x86_64.zip
-	source_aarch64 = electron36-chromedriver-36.7.1-aarch64.zip::https://github.com/electron/electron/releases/download/v36.7.1/chromedriver-v36.7.1-linux-arm64.zip
-	source_aarch64 = electron36-36.7.1-aarch64.zip::https://github.com/electron/electron/releases/download/v36.7.1/electron-v36.7.1-linux-arm64.zip
-	sha256sums_aarch64 = f629a35f5ee5ce902581ae4d4cdfacbd25dc72573805abe8484f28a6b7f74abe
-	sha256sums_aarch64 = 7511e5e62393f5ee1a7e97c39b0c6d78e5d083817d5589d6c07a2924dd9c277a
-	source_armv7h = electron36-chromedriver-36.7.1-armv7h.zip::https://github.com/electron/electron/releases/download/v36.7.1/chromedriver-v36.7.1-linux-armv7l.zip
-	source_armv7h = electron36-36.7.1-armv7h.zip::https://github.com/electron/electron/releases/download/v36.7.1/electron-v36.7.1-linux-armv7l.zip
-	sha256sums_armv7h = b9db0483bdff794d08cdd0e30a861b6b9e31a94f99b37893f2a7fbc6069e74ff
-	sha256sums_armv7h = 089ebc98b798398b0413afb04836ad8c9db2adc4c41057ba4089e50e7f485c38
-	source_x86_64 = electron36-chromedriver-36.7.1-x86_64.zip::https://github.com/electron/electron/releases/download/v36.7.1/chromedriver-v36.7.1-linux-x64.zip
-	source_x86_64 = electron36-36.7.1-x86_64.zip::https://github.com/electron/electron/releases/download/v36.7.1/electron-v36.7.1-linux-x64.zip
-	sha256sums_x86_64 = 1a6f7a0df64475a467b20548ab41c8576781b5e34a6bf74751c7384623acd2fb
-	sha256sums_x86_64 = 315da2bc92bf40bcab5b1da28778048fb5f4eeca75bcc78e0f25cda1773e094e
+	noextract = electron36-chromedriver-36.7.3-x86_64.zip
+	noextract = electron36-36.7.3-x86_64.zip
+	source_aarch64 = electron36-chromedriver-36.7.3-aarch64.zip::https://github.com/electron/electron/releases/download/v36.7.3/chromedriver-v36.7.3-linux-arm64.zip
+	source_aarch64 = electron36-36.7.3-aarch64.zip::https://github.com/electron/electron/releases/download/v36.7.3/electron-v36.7.3-linux-arm64.zip
+	sha256sums_aarch64 = cd9ada2f39c376e56f095d1c1f76505ce499e8a40a4127e508abca173bbf37e3
+	sha256sums_aarch64 = 6ee195e05592fde3c5a2245203ac9a9e9c7118cbbf1d6c097db339ed5457732e
+	source_armv7h = electron36-chromedriver-36.7.3-armv7h.zip::https://github.com/electron/electron/releases/download/v36.7.3/chromedriver-v36.7.3-linux-armv7l.zip
+	source_armv7h = electron36-36.7.3-armv7h.zip::https://github.com/electron/electron/releases/download/v36.7.3/electron-v36.7.3-linux-armv7l.zip
+	sha256sums_armv7h = 90e9ac552f98b1cff1da096d747685e4abca4dd2cf610c5ab2f60a7f29f714b6
+	sha256sums_armv7h = 72fd25c965a350abdf99f8e0a4bfca7ecf6eb154cb95912139665f37a76f6d54
+	source_x86_64 = electron36-chromedriver-36.7.3-x86_64.zip::https://github.com/electron/electron/releases/download/v36.7.3/chromedriver-v36.7.3-linux-x64.zip
+	source_x86_64 = electron36-36.7.3-x86_64.zip::https://github.com/electron/electron/releases/download/v36.7.3/electron-v36.7.3-linux-x64.zip
+	sha256sums_x86_64 = 9f9956aeb6ab5650e7731eb4aa507cabd96eee0755ca7884bd18b89d50ed06a0
+	sha256sums_x86_64 = 3a9c36c64a38dd3ff959e9f1ba6ead43509d62c6f0948e71d3f575727b05ad96
 
 pkgname = electron36-bin
