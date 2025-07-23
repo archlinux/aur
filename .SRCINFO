@@ -1,0 +1,14 @@
+pkgbase = kfd
+	pkgdesc = Generator of useful keys for developers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/giovanni-iannaccone/kfd
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gcc
+	makedepends = make
+	provides = kfd
+	source = git+https://github.com/giovanni-iannaccone/kfd.git
+	sha256sums = SKIP
+
+pkgname = kfd
