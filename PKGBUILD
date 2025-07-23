@@ -1,7 +1,7 @@
 # Maintainer: yobson <contact@yobson.xyz>
 pkgname=gale-git
 pkgdesc='A lightweight mod manager for Thunderstore'
-pkgver=1.9.1.r836.fe9d955
+pkgver=1.9.1.r1.gfe9d955
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Kesomannen/gale'
@@ -15,13 +15,7 @@ provides=('gale')
 
 pkgver() {
 	cd "$srcdir/gale"
-
-	local tag rev commit
-	tag=$(git describe --tags --abbrev=0)
-	rev=$(git rev-list --count HEAD)
-	commit=$(git rev-parse --short HEAD)
-
-	echo "${tag}.r${rev}.${commit}"
+	git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
