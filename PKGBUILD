@@ -4,6 +4,7 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=networkmanager-libreswan
+# Current version can be found over at https://download.gnome.org/sources/NetworkManager-libreswan/
 pkgver=1.2.24
 pkgrel=1
 pkgdesc="NetworkManager IPSec VPN plugin for Libreswan"
