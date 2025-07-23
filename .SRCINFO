@@ -1,18 +1,20 @@
 pkgbase = spacefm-gtk2-bin
 	pkgdesc = SpaceFM binary package from debian bullseye, GTK2 version
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/bookworm/amd64/spacefm
 	arch = x86_64
 	license = GPL-2.0-only
-	depends = gtk2
+	depends = gtk3
 	depends = startup-notification
 	depends = ffmpegthumbnailer
 	provides = spacefm
 	conflicts = spacefm
-	conflicts = spacefm-gtk2
+	conflicts = spacefm-gtk3
 	conflicts = spacefm-gtk3-bin
 	source = http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm_1.0.6-5_amd64.deb
+	source = https://www.dave-blair.de/projects/ui-assets.tar.gz
 	sha256sums = 86ff5d420fd75ab032029760d25969060f8c8dfc584f664308e2862cad2c936a
+	sha256sums = 8500677665655a1a5d472ca1e1c36cb76b027d075f8f690b403503ebcaad1c32
 
 pkgname = spacefm-gtk2-bin
