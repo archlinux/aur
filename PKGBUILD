@@ -1,8 +1,8 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=dynamic-power-daemon
-pkgver=4.1.6
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 pkgdesc="Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload; with DBus control, per-user helpers and Qt tray UI"
 arch=('any')
 url="https://github.com/evertvorster/dynamic-power-daemon"
