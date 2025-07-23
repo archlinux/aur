@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shinden-client-bin
 _pkgname=Shinden.Client
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Unofficial client for the polish anime websites. It allows you to watch anime without being exposed to ads and pop-ups.(Prebuilt version)"
 arch=("x86_64")
@@ -15,10 +15,10 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Tsugumik/shinden-client/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/app-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Tsugumik/shinden-client/app-v${pkgver}/LICENSE"
 )
-sha256sums=('53736f6c0db526226148c69ef0ab1d2f78fcddee45086ff1324f9e5fff8bf21b'
+sha256sums=('df64fb37b25b0c7d7ba8ae50e01b430ada1d7db3450f27a69e2376951a3e3dea'
             'fce4e2ea584ea650e48248400d92e98b522cf58d15bde4b1e55345817fe8bc91')
 prepare() {
     sed -i -e "
