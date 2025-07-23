@@ -12,12 +12,13 @@ url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=${_chromium}.sonames${_codec}.${_format}.${_util}
 pkgrel=2
+_so=libffmpeg.so
 pkgdesc='Add codecs to Opera (vendored ffmpeg with same sonames)'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm git
-diffutils gcc make sed) # base-devel
+diffutils gcc make) # base-devel
 # tarball has unstable csum
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
@@ -27,10 +28,11 @@ sha256sums=('30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
             'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 
 prepare() {
+  echo Use chromium-ffmpeg-codecs instead of $pkgname.
   cd chromium-ffmpeg
-  grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > sigs.txt
-  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
-  # mask symbols for binary size
+  # List used funcs
+  grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > ../sigs.txt
+  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> ../sigs.txt # only for opera
   echo -e "{\nglobal:" > ../export.map
   sed 's/$/;/' sigs.txt >> ../export.map
   echo -e "local:\n*;\n};" >> ../export.map
@@ -53,25 +55,25 @@ build() {
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
-    --prefix="${srcdir}"/release
+    --libdir=/
 
-  make install
+  make DESTDIR=.. install
+  cd ..
   _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
-  cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
-    ${_symbols} -Wl,--version-script=../export.map \
-    -lm -Wl,-Bsymbolic -o libffmpeg.so
+    -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script=export.map \
+    -lm -Wl,-Bsymbolic -o $_so
 }
 
 package(){
-  install -Dm644 release/libffmpeg.so "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so"
+  install -Dm644 $_so -t "$pkgdir"/usr/lib/opera/lib_extra
   # Block LD_PRELOAD which might breaks external apps
   install -Dm644 off-opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # symlink
   conflicts=(opera-{beta,developer}-ffmpeg-codecs)
   provides=(opera-{beta,developer}-ffmpeg-codecs)
   install -d "$pkgdir"/usr/lib/opera-{beta,developer}/lib_extra
-  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-beta/lib_extra/libffmpeg.so
-  ln -svf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/usr/lib/opera-developer/lib_extra/libffmpeg.so
+  ln -svf /usr/lib/opera/lib_extra/$_so -t "$pkgdir"/usr/lib/opera-beta/lib_extra
+  ln -svf /usr/lib/opera/lib_extra/$_so -t "$pkgdir"/usr/lib/opera-developer/lib_extra
 }
