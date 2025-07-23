@@ -4,7 +4,7 @@ _pkgname=PDMaas-Pro
 pkgver=2.1.7
 _electronversion=29
 pkgrel=1
-pkgdesc="A visual development platform for creating complex AI workflows using OpenAI assistants.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Enterprise level data model design platform, supporting multi brand databases.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'

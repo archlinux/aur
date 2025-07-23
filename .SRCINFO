@@ -1,5 +1,5 @@
 pkgbase = pdmaas-pro-bin
-	pkgdesc = A visual development platform for creating complex AI workflows using OpenAI assistants.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Enterprise level data model design platform, supporting multi brand databases.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://www.yonsum.com/
