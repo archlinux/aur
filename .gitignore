@@ -1,6 +1,7 @@
 /*
 !/*.desktop
 !/*.install
+!/*.patch
 !/*.sh
 !/*.sysusers
 !/*.tmpfiles
