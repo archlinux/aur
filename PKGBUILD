@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qlcMatrix
-_pkgver=0.9.8
+_pkgver=0.9.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('29b54f102b72f2f2d8b2c015d965920a')
-b2sums=('355187c9458f34bcfc0d1f5021c557abfdff6ba5ea0a42d79b6fa3e5a465596cf1d3bdd14dc8848ed63552bd1190a5641b102181bba9dfb0ebb8a73134ec226a')
+md5sums=('aeb107f57e3012bbe64cfef64e7f470c')
+b2sums=('78554d519ed8891e6b8af8ca1f522df2377bb642da019dd01adff5b73c5f688d4cd51f90b4ee41eaa8e8dfaa2ffd5330dc1f432380de5b727972726321b71164')
 
 build() {
   mkdir build
