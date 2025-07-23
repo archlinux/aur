@@ -2,7 +2,7 @@
 
 _name=solara
 pkgname=python-${_name,,}
-pkgver=1.49.0
+pkgver=1.50.1
 pkgrel=1
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
@@ -54,9 +54,9 @@ _server_whl="${_server_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_whl}"
         "https://files.pythonhosted.org/packages/py3/${_ui_name::1}/$_ui_name/${_ui_whl}"
         "https://files.pythonhosted.org/packages/py3/${_server_name::1}/$_server_name/${_server_whl}")
-sha256sums=(51e00cf7e6d0b55bfdafb8010466dc367da394c4d1e801f4c7d132f19083bb3f
-57f94508d2bcc382f43e7b7228051597d0a2ce95db73926da895e85c3d359204
-be97fa39dc28365cd5f25ff87fb63366dea3f6e62fe572ca83214938307bb6e9)
+sha256sums=(970a47fcb6723d84df21be4111f7a0d4e82c9fc7302b40aab468cb6c525422e1
+            7cf9d7cfac7fc6e66341cf5476a12b8d6f915366c380bbb8b4caf9290f103899
+            62418f6a1d76f7fd15356238c65c8fc9c8000a238502051c191345f233b2c8f4)
 
 
 noextract=("$_whl"
