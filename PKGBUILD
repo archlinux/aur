@@ -4,7 +4,7 @@
 # Contributor: Joel Schaerer <joel.schaerer@laposte.net>
 
 pkgname=textext
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Re-editable LaTeX graphics for Inkscape"
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(git)
 optdepends=('typst: for typst compiler support')
 source=("git+https://github.com/${pkgname}/${pkgname}.git?signed#tag=${pkgver}")
 validpgpkeys=('32746E27876C1E5418BBBF7F7A9964831E98EED5') # Jan Winkler <enceladus@posteo.de>
-sha512sums=('c22192edd6cf4e47125b1e649f0e3a5b7a73cb22f058462ddcbd0b4c9c39510c756e2c459c01e2bad1164bc93d2a4454058e590e9f0a3791a1dd42092d50544a')
+sha512sums=('9205843834fb0147db703c66ce8579b1ec91b98ce39d8ecf50a73cac0a81311d07995720bb5510a46cfec0ea39aafca8b000dfc41d916e08dfb082b6c106378f')
 
 package() {
   cd ${pkgname}
