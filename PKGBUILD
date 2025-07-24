@@ -30,6 +30,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   patch -p1 < ../663.patch
+  patch -p1 < ../cmake.patch
   cd src/python
   ./swig.sh
 }
