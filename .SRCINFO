@@ -1,0 +1,26 @@
+pkgbase = openseeface-git
+	pkgdesc = OpenSeeFace - Robust realtime face and facial landmark tracking on CPU with Unity integration. (Includes facetracker)
+	pkgver = 1.20.4.r57.gdee5bb7
+	pkgrel = 1
+	url = https://github.com/emilianavt/OpenSeeFace
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-poetry
+	depends = python-numpy
+	depends = python-flatbuffers
+	depends = python-onnxruntime
+	depends = python-opencv
+	depends = python-pillow
+	depends = python-protobuf
+	optdepends = python-opencv-cuda: for CUDA optimizations
+	optdepends = onnxruntime-opt: for AVX2 CPU optimizations
+	optdepends = onnxruntime-opt-rocm: for ROCm and AVX2 CPU optimizations
+	optdepends = onnxruntime-rocm: for ROCm
+	source = git+https://github.com/emilianavt/OpenSeeFace.git
+	md5sums = SKIP
+
+pkgname = openseeface-git
