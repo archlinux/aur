@@ -5,7 +5,7 @@
 
 pkgname=base91
 pkgver=0.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc='An advanced method for encoding binary data to ASCII text'
 arch=('i686' 'x86_64')
 url='http://base91.sourceforge.net/'
