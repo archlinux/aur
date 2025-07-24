@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=rust-hypervisor-firmware
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Rust Hypervisor Firmware"
 url="https://github.com/cloud-hypervisor/rust-hypervisor-firmware"
@@ -13,7 +13,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   cargo build --locked --release \
       --target ${CARCH}-unknown-none.json \
-      -Zbuild-std=core,alloc \
+      -Zbuild-std=core \
       -Zbuild-std-features=compiler-builtins-mem
 }
 
@@ -22,4 +22,4 @@ package() {
         "${srcdir}/${pkgname}-${pkgver}/target/${CARCH}-unknown-none/release/hypervisor-fw"
 }
 
-sha512sums=('0e499c695c822b6cc5be82478c1b51c4f51e7cd46be10608acc34d9d3e0aee12cb0333310e918b3e3901b20bdbbfd858fc43bb35d16075fb02f213108a9b5cb0')
+sha512sums=('367c01cae3e93c19b869c9b2af67d23d1d74601741472531f3e77428eb609da805f59512a7e2270b0944e8d39a9ff15f6ab9364a61f5d371153d16e52e48f4d5')
