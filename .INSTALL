@@ -1,0 +1,11 @@
+post_install() {
+	echo If you don\'t have\/install at least one of those display-managers listed below\, Then, The command won\'t work\.
+}
+
+pre_remove() {
+	sudo rm -rf /usr/bin/gui-cli-toggle*
+}
+
+post_remove() {
+	sudo rm -rf /usr/bin/gui-cli-toggle*
+}

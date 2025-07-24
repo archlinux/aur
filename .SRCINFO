@@ -1,0 +1,22 @@
+pkgbase = gui-cli-toggle
+	pkgdesc = A script to toggle between multi-user and graphical targets
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.github.com/glitt3ring/gui-cli-toggle.git
+	install = .INSTALL
+	arch = any
+	license = unknown
+	depends = sudo
+	depends = systemd
+	depends = bash
+	depends = make
+	optdepends = gdm: GNOME Display Manager
+	optdepends = sddm: KDE Display Manager
+	optdepends = lightdm: Lightweight Display Manager
+	optdepends = lxdm: LXDE Display Manager
+	optdepends = xdm: X Display Manager
+	optdepends = ly: TUI Display Manager
+	source = git+https://www.github.com/glitt3ring/gui-cli-toggle.git
+	sha256sums = SKIP
+
+pkgname = gui-cli-toggle
