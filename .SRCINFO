@@ -1,0 +1,14 @@
+pkgbase = x16-prompt
+	pkgdesc = 16x Prompt (AppImage version) - an AI coding tool by 16x Engineer
+	pkgver = 0.0.138
+	pkgrel = 1
+	url = https://prompt.16x.engineer/
+	arch = x86_64
+	license = unknown
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = 16x+Prompt-0.0.138.AppImage::https://download.16x.engineer/16x+Prompt-0.0.138.AppImage
+	sha256sums = 6df64a6d219a93080f0fc06e81c7de00
+
+pkgname = x16-prompt
