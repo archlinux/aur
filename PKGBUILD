@@ -22,9 +22,9 @@ source_x86_64=("${pkgname%-bin}-linux-amd64.tar.xz::$url/-/releases/$_tag/downlo
 source_aarch64=("${pkgname%-bin}-linux-arm64.tar.xz::$url/-/releases/$_tag/downloads/${pkgname%-bin}-linux-arm64.tar.xz"
                "LICENSE::$_license_url")
 
-sha256sums_x86_64=('b6875dcd382dc41014eef9723f6fb765b3d27c7ca736730e68aa0f762f0810eb'
+sha256sums_x86_64=('ad125f52a4b9ac91093c0ee5afe97df23d2d53de712d2226376376b5fc65b0e1'
                    'ef33a32348e2f527ff6b3d923e75a8f96e7a72de51b6665f2f79fffd991c938f')
-sha256sums_aarch64=('86ba3cae6c40d8788cac88d39694149e5443f095d99f5016adbd9c1311faa9c2'
+sha256sums_aarch64=('adc55caffb8ff218f4362a0fc02581188552548bc1f8c7e475eec72ce15b49ac'
                     'ef33a32348e2f527ff6b3d923e75a8f96e7a72de51b6665f2f79fffd991c938f')
 
 package() {
