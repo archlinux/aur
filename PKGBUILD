@@ -16,10 +16,10 @@ sha256sums_x86_64=('c3f4b491093a68486d68a0434e66d1d83eb8e03694f29d3eb9472309dd48
 sha256sums_i386=('11276401db56438c0f68411f5cc9fc3f967af177e06bbd37d55a977b24ba2447')
 sha256sums_i686=('11276401db56438c0f68411f5cc9fc3f967af177e06bbd37d55a977b24ba2447')
 sha256sums_aarch64=('052f0f2d7f407f2f36876b5edee9aab8cb625a28e3b01b6448b126d354a19598')
-source_x86_64=("$url/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-x64.tar.xz")
-source_i386=("$url/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i686.tar.xz")
-source_i686=("$url/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-i686.tar.xz")
-source_aarch64=("$url/$pkgver-$pkgrel/-/raw/main/nxengine-evo-linux-arm64.tar.xz")
+source_x86_64=("$url/$pkgver-1/-/raw/main/nxengine-evo-linux-x64.tar.xz")
+source_i386=("$url/$pkgver-1/-/raw/main/nxengine-evo-linux-i686.tar.xz")
+source_i686=("$url/$pkgver-1/-/raw/main/nxengine-evo-linux-i686.tar.xz")
+source_aarch64=("$url/$pkgver-1/-/raw/main/nxengine-evo-linux-arm64.tar.xz")
 
 
 package() {
