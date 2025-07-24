@@ -1,7 +1,7 @@
 maintainer=user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Spectral warping wavetable synth."
 # arch=('x86_64' 'i686')
 arch=('x86_64')
