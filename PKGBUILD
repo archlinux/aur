@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy
 _pkgname=Witsy
-pkgver=2.12.0
+pkgver=2.12.1
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ef0b8c2ec00c178764ae2ad4ca72be819515c372ddf291907e800460b7201779'
+sha256sums=('b99aa845a4cba2f3c2f38cb06958f77732bc278ad7b689310408c579b2c600e2'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
