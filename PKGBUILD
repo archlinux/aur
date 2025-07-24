@@ -19,7 +19,7 @@ license=('LGPL-2.1-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz fetch-soname-by-chromium.sh
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 #"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
-https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${_ffver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
@@ -61,6 +61,7 @@ build() {
   cd ffmpeg-$_ffver
   # ${_url}/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # BUILD.gn
+  # todo: disable logging to drop 0.1 MB
   ./configure \
     --disable-{debug,all,autodetect,doc,iconv,network,symver} \
     --disable-{error-resilience,faan,iamf} \
