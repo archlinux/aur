@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=HeadsetStatus
+Exec=HeadsetStatus
+Icon=audio-headset
+Categories=Audio;Utility;
+StartupNotify=false 
