@@ -2,7 +2,7 @@
 
 pkgname=templates_parser
 pkgdesc='Ada tools to create templated text streams, such as dynamic HTML documents.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 
 url=https://github.com/AdaCore/templates-parser
@@ -20,13 +20,13 @@ makedepends=(gprbuild
              python-sphinx_rtd_theme
              texlive-binextra)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240408-16376-src.tar.gz)
-sha256sums=(65231004bed392fea5abbab64993046e2a73e8419dc44bfa80018d295d211c91)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/templates_parser-26.0w-20250409-163F7-src.tar.gz)
+sha256sums=(8d182b3fb6d630668dae8203eb2a8fe2db692c40d83dde344192590339f2ab1f)
 
 
 build()
 {
-  cd $srcdir/$pkgname-$pkgver-20240505-1653B-src
+  cd $srcdir/templates_parser-26.0w-20250416-163C5-src
 
   PROCESSORS=0 \
   make DEFAULT_LIBRARY_TYPE=relocatable prefix=$pkgdir/usr setup
@@ -34,15 +34,17 @@ build()
   PROCESSORS=0 \
   make
 
-  make build-doc
+  make build-doc                  \
+       1> build-docs-warnings.log \
+       2> build-docs-errors.log 
 }
 
 
 package()
 {
-  cd $srcdir/$pkgname-$pkgver-20240505-1653B-src
+  cd $srcdir/templates_parser-26.0w-20250416-163C5-src
 
-  make install
+  make -j1 install
 
   # Install the licenses.
   #
