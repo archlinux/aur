@@ -1,7 +1,7 @@
 # Maintainer: kati dev <katifetchs@gmail.com>
 
 pkgname=katifetch
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Highly customizable system info tool, easier to configure than Neofetch or Fastfetch"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ximimoments/katifetch"
 license=('MIT')
 depends=('bash')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ximimoments/katifetch/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fe2f2c7dc4b6e469e74230f69a587169483fb6edbca402bc37ee697a3515bd6d')
+sha256sums=('d109188c55be71a8f2328a5c2c3f78ebc9811f4a990e213f8734bbffedd82709')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
