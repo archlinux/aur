@@ -1,7 +1,7 @@
 # Maintainer: Igor Shimanogov <shimanogov.in@phystech.edu>
 
 pkgname=runal
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='text-based creative coding environment for the terminal'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('71172ceda9e163fd07c74fee85890d667fec18c97b5537f93bb50d45304d72df')
+sha256sums=('d31c2ad9d4138fa86071e565c17b7446a57ede100e1ef0079b8174316ec534bd')
 
 prepare(){
   cd "$pkgname-$pkgver"

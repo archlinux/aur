@@ -1,13 +1,13 @@
 pkgbase = runal
 	pkgdesc = text-based creative coding environment for the terminal
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/emprcl/runal
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = runal-0.6.0.tar.gz::https://github.com/emprcl/runal/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 71172ceda9e163fd07c74fee85890d667fec18c97b5537f93bb50d45304d72df
+	source = runal-0.7.0.tar.gz::https://github.com/emprcl/runal/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = d31c2ad9d4138fa86071e565c17b7446a57ede100e1ef0079b8174316ec534bd
 
 pkgname = runal
