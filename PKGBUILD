@@ -186,11 +186,11 @@ _src_linux=linux-${_kernel_major}
 # Package information
 pkgbase=linux-clear
 pkgver=${_kernel_major}.${_kernel_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux kernel with patches from Clear Linux which allow for higher performance."
 arch=("x86_64")
-url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
-license=(GPL-2.0-only)
+url="https://git.staropensource.de/StarOpenSource/Linux-Tachyon"
+license=("GPL-2.0-only")
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 [ -n "${_use_llvm_lto}" ] && makedepends+=("clang" "llvm" "lld")
 options=("!strip" "!debug")
@@ -199,7 +199,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
+  "cl-linux::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 

@@ -31,6 +31,7 @@ function print_fork_cta() {
     echo "   https://git.staropensource.de/StarOpenSource/Linux-Tachyon"
     echo ""
     echo "   Thank you for using this package!"
+    echo "   (this notice will be removed once we are able to sustain the fork)"
 }
 
 
