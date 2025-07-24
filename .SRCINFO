@@ -1,0 +1,27 @@
+pkgbase = discord-canary-with-stable-dot-desktop
+	pkgdesc = All-in-one voice and text chat for gamers - Canary build with Discord stable "discord.desktop" file name, to fix notifications and unread message badges
+	pkgver = 0.0.727
+	pkgrel = 1
+	url = https://discord.com
+	arch = x86_64
+	license = custom
+	optdepends = libpulse: PulseAudio support
+	optdepends = libappindicator-gtk3: Systray indicator support
+	optdepends = xdg-utils: For opening URLs and files
+	optdepends = libunity: For unread message badges
+	conflicts = discord
+	options = !debug
+	options = !strip
+	source = https://dl-canary.discordapp.net/apps/linux/0.0.727/discord-canary-0.0.727.tar.gz
+	source = LICENSE-0.0.727.html::https://discordapp.com/terms
+	source = OSS-LICENSES-0.0.727.html::https://discordapp.com/licenses
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = discord-canary-with-stable-dot-desktop
+	depends = libnotify
+	depends = libxss
+	depends = nspr
+	depends = nss
+	depends = gtk3
