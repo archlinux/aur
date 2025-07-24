@@ -28,4 +28,7 @@ package() {
     ## license seems to not be included anymore
 	# install -D -m644 "${pkgdir}/usr/share/doc/vital/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+    # mkdir -p "${pkgdir}/usr/share/{applications,pixmaps}"
+    install -D -m644 "../vital.desktop" "${pkgdir}/usr/share/applications/vital.desktop"
+    install -D -m644 "../vital.png" "${pkgdir}/usr/share/pixmaps/vital.png"
 }

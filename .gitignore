@@ -3,3 +3,6 @@
 !/PKGBUILD
 !/*.install
 !/.SRCINFO
+
+!/vital.desktop
+!/vital.png
