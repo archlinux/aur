@@ -22,13 +22,13 @@ source=(
   "fchat-horizon-v$pkgver.tar.gz::https://github.com/Fchat-Horizon/Horizon/releases/download/v$pkgver/F-Chat.Horizon-linux-x64.tar.gz"
   "$_pkgname.sh"
   "$_pkgname.desktop"
-  "https://github.com/Fchat-Horizon/Horizon/blob/f947ca475fbb2edc2f724c39f90448963c1b06bc/electron/build/icon.png"
-  'https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE'
+  "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/f947ca475fbb2edc2f724c39f90448963c1b06bc/electron/build/icon.png"
+  "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE"
 )
 sha256sums=('4de6e96c56572f934d85387c9a4039e56812b579ea7b6a9a9070d00511207fb3'
             '6853b8e9d7ce674b063fe277c98fc9dcec4be4949731e6134a5f134d48892be5'
             '0f72b54ea25738958366465dd4ddc359a9d4105897f8a8b35bfe64b1a406b44f'
-            '6edeacdd4af5364254f25432174ebe79a74c14d80e9458c9de1edf9d19e8f313'
+            '79c24919dcaa51f2907af9beb3fdf3ec0703e662ae2434d8e7fe28e15ae29b02'
             'b13bdf6682ae4d90990ebbd3b1472b91001b20c49c87d4366cc3cadb4dc084b4')
 
 package() {
