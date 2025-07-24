@@ -2,7 +2,7 @@
 
 pkgname=all-ada
 pkgdesc='A meta package which installs all Ada tools and components.'
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 
 arch=(x86 x86_64)
@@ -42,7 +42,6 @@ depends=(adacurses
          gprbuild
          gprbuild-toolbox
          gpr
-         gpr-unit-provider
          gtkada
          ini_file_manager
          inotify-ada
@@ -56,7 +55,7 @@ depends=(adacurses
          parse_args
          polyorb
          sdlada
-#         spark2014
+         spark2014-bin
          templates_parser
          vulkada
          xmlada)
