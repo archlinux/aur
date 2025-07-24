@@ -3,15 +3,15 @@
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='fuc-bin'
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='Fast Unix Commands: Performance focused alternatives to cp(1) and rm(1) (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/SUPERCILEX/fuc'
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 provides=('cpz' 'fuc' 'rmz')
 conflicts=("${provides[@]}")
-_readme='https://raw.githubusercontent.com/SUPERCILEX/fuc/master/README.md'
+_readme="README-$pkgver.md::https://raw.githubusercontent.com/SUPERCILEX/fuc/master/README.md"
 source_aarch64=(
   "cpz-aarch64-$pkgver::$url/releases/download/$pkgver/aarch64-unknown-linux-gnu-cpz"
   "rmz-aarch64-$pkgver::$url/releases/download/$pkgver/aarch64-unknown-linux-gnu-rmz"
@@ -33,18 +33,18 @@ package() {
     install -vDm0755 "$_exe-$CARCH-$pkgver" "$pkgdir/usr/bin/$_exe"
   done
 
-  install -vDm0644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 sha256sums_aarch64=(
-  'e1a9c7bb59c94047ed54f835cdf5852e8b438cc37f6f2c3918f0ba900add8d8e'
-  '262284f5d250f97a4f2da1c31003a305a50a9cfbcc90237979fff740390d0d02'
+  '9fb5eabcb32133c909d06547fc10007cd16252887e1b95b5a534eb7b6799a897'
+  '1ac8e83a0242938b10bd6a37ebd1b96d92896f84547aead32f3608c3e5ff733d'
   'SKIP'
 )
 
 sha256sums_x86_64=(
-  '6b093d6029c98cb29d26f7e0737ce5e33b286dca8b7eb9be12ae5ccabfeb9df6'
-  'f5d96c847c1f2bb9d1ae548393570912d24ad3f5a4b1024d2728787b363c667e'
+  'fac6c8f4081b7c54ae5e68ae8c9b37ac840a8b763faedae4636f3554ce9749d8'
+  '9017131f24a6a619568316d3cf1aabbf4fb8297d8082b11fd2b6817436876a3b'
   'SKIP'
 )
 
