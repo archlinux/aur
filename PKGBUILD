@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@proton.me>
 
 _themename=urbanlifestyle
 pkgname=${_themename}-sddm-theme
