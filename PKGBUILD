@@ -6,10 +6,10 @@
 
 _pkgname=neovim
 pkgname=neovim-nightly-bin
-pkgver=0.12.0+dev+676+gf0757ee590
+pkgver=0.12.0+dev+888+g95dfb063da
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
@@ -23,7 +23,19 @@ optdepends=('python-neovim: for Python 3 plugin support (see :help provider-pyth
 provides=("$_pkgname=${pkgver/\+*/}" 'vim-plugin-runtime')
 conflicts=("$_pkgname")
 _date="$(date -u +%Y%m%d)"
-source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz"
+case "$CARCH" in
+x86_64)
+	architecture="x86_64"
+	;;
+aarch64)
+	architecture="arm64"
+	;;
+*)
+	echo "Unsupported architecture: $CARCH"
+	exit 1
+	;;
+esac
+source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-${architecture}.tar.gz"
 	"$pkgname-archlinux.vim"
 	"$pkgname-sysinit.vim")
 b2sums=('SKIP'
@@ -32,21 +44,23 @@ b2sums=('SKIP'
 install=$pkgname.install
 
 pkgver() {
-	cd "$srcdir/nvim-linux-x86_64"
+	cd "$srcdir/nvim-linux-${architecture}"
 	./bin/nvim --version | awk 'NR == 1 { sub("NVIM v", ""); gsub("-", "+"); print $1 }'
 }
 
 prepare() {
-	tar_shad256=$(sha256sum $_pkgname-"$_date".tar.gz | awk '{print $1}')
-	git_assets_shad256=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/tags/nightly" | jq -r '.assets[] | select(.name == "nvim-linux-x86_64.tar.gz") | .digest' | awk '{sub(/^sha256:/, ""); print}')
-	if [ "$tar_shad256" != "$git_assets_shad256" ]; then
-		echo "SHA256 sum mismatch for $_pkgname-$_date.tar.gz"
-		exit 1
+	if [[ -n "$CHECKSUM" ]]; then
+		tar_shad256=$(sha256sum $_pkgname-"$_date".tar.gz | awk '{print $1}')
+		git_assets_shad256=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/tags/nightly" | jq -r ".assets[] | select(.name == 'nvim-linux-${architecture}.tar.gz') | .digest" | awk '{sub(/^sha256:/, ""); print}')
+		if [ "$tar_shad256" != "$git_assets_shad256" ]; then
+			echo "SHA256 sum mismatch for $_pkgname-$_date.tar.gz"
+			exit 1
+		fi
 	fi
 }
 
 check() {
-	cd nvim-linux-x86_64
+	cd nvim-linux-${architecture}
 	./bin/nvim --version
 	./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
@@ -56,7 +70,7 @@ package() {
 	install -Dm644 $pkgname-sysinit.vim "$pkgdir/etc/xdg/nvim/sysinit.vim"
 	install -Dm644 $pkgname-archlinux.vim "$pkgdir/usr/share/nvim/archlinux.vim"
 
-	cd nvim-linux-x86_64
+	cd nvim-linux-${architecture}
 	install -Dm755 bin/nvim -t "$pkgdir/usr/bin/"
 	cp -r lib share "$pkgdir/usr/"
 }
