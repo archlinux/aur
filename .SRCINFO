@@ -29,6 +29,7 @@ pkgbase = borg2
 	depends = xxhash
 	depends = libdeflate
 	depends = python-borgstore=0.3.0
+	depends = python-borghash=0.1.0
 	provides = borg
 	provides = borgbackup
 	conflicts = borg

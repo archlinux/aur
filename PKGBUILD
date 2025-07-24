@@ -9,6 +9,7 @@
 pkgname=borg2
 _pkgname=borgbackup
 _borgstore_pkgver=0.3.0
+_borghash_pkgver=0.1.0
 pkgver=2.0.0b18
 pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
@@ -25,6 +26,7 @@ depends=(
 	'xxhash'
 	'libdeflate'
 	"python-borgstore=${_borgstore_pkgver}"
+	"python-borghash=${_borghash_pkgver}"
 )
 makedepends=(
 	'cython'
