@@ -18,7 +18,7 @@ sha256sums=('ef5edb4285293c77162374e15f01f3540c7f511f6d9ab5b7244c4b01eb8512de'
             '296914106dac2d07c9ce2bc92a91568830534332e9bf7554ea591f22efa357df'
             'b5646657a1abcbc8963067d7c17fe699b948c47fb27dbc18c512b2e3aa7086f1')
 
-noextract=("${pkgname}-${pkgver}-${pkgrel}.sh")
+noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
 prepare() {
   # extract icons from jar
