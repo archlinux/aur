@@ -1,12 +1,12 @@
 pkgbase = wstbld
 	pkgdesc = web site builder
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 0
 	url = https://github.com/colin-i/wstbld
 	arch = x86_64
 	license = 0BSD
 	makedepends = ocompiler
-	source = wstbld-1.2-0.tar.gz::https://github.com/colin-i/wstbld/archive/wstbld-1.2-0.tar.gz
-	sha256sums = dcba20d0d4fe3ab99854c123791107eff69573fe30a8412c531457a143afea95
+	source = wstbld-1.3-0.tar.gz::https://github.com/colin-i/wstbld/archive/wstbld-1.3-0.tar.gz
+	sha256sums = e9b13dc42b0a2c9799effabd139b47c139baa9023e1f19070398a96954d4ce84
 
 pkgname = wstbld
