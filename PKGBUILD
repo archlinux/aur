@@ -1,8 +1,8 @@
 # Maintainer: Serene-Arc <https://aur.archlinux.org/account/serene-arc>
 
 pkgname=cargo-screeps
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Build tool for deploying Rust WASM code to Screeps game servers"
 url="https://github.com/rustyscreeps/cargo-screeps/"
 license=("MIT")
@@ -11,7 +11,7 @@ makedepends=('git' 'cargo')
 provides=("cargo-screeps")
 conflicts=("cargo-screeps")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyscreeps/cargo-screeps/archive/refs/tags/cargo-screeps-$pkgver.tar.gz")
-sha256sums=("1e4b00a49368420d6602daa86d79dd76a0f8a6fefa0780578183782811cbc1d9")
+sha256sums=('98a62c00f843af6f04ff6868a9e4c34d19747edd387b0f0951a3c94ad8b6986e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgname-$pkgver"
