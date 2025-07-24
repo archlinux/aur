@@ -1,0 +1,22 @@
+pkgbase = complex-dwm-slock-git
+	pkgdesc = An enhanced, secure, and visually appealing screen locker for DWM and other X11 environments.
+	pkgver = 0.r11.g5b95024
+	pkgrel = 1
+	url = https://github.com/fam007e/Complex_DWM_SLock
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	depends = libxft
+	depends = imlib2
+	depends = pam
+	provides = Complex_DWM_SLock
+	conflicts = Complex_DWM_SLock
+	source = git+https://github.com/fam007e/Complex_DWM_SLock.git
+	sha256sums = SKIP
+
+pkgname = complex-dwm-slock-git
