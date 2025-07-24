@@ -1,13 +1,13 @@
 pkgbase = xcursor-breeze
 	pkgdesc = KDE Plasma 6 'Breeze' cursor theme. This package is for usage in non-KDE Plasma desktops.
-	pkgver = 6.3.3
+	pkgver = 6.4.3
 	pkgrel = 1
 	epoch = 1
 	url = https://kde.org/plasma-desktop
 	arch = any
 	license = GPL-2.0-or-later
 	conflicts = breeze
-	source = http://download.kde.org/stable/plasma/6.3.3/breeze-6.3.3.tar.xz
-	b2sums = b49cd5ca0e8d94582b723513ef61ef16ee5e6aff802873558814801e41431cb562a6e1b4f3a46f3544b2723ec920b9ea7b0a48accf088cf2e141f77b8e89e471
+	source = http://download.kde.org/stable/plasma/6.4.3/breeze-6.4.3.tar.xz
+	b2sums = 2cae42b6dc4aa86735b62716bf373f10a5fae8ea9bc525fc64e842f3df00a5c57eafdb2a8b8f7e163b09e70871160fdf3a705fb88d3a7c592b73402f6bfa4845
 
 pkgname = xcursor-breeze
