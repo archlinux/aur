@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredoramos@duck.com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@proton.me>
 
 _binname=asdf
 _pkgname=${_binname}-vm
