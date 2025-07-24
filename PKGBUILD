@@ -11,8 +11,8 @@ source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWNeoZh
         *.md)
 changelog='changelog.txt'
 conflicts=('ttf-lxgw-neo-zhisong')
-sha256sums=('67112a5bc8ed092b51c7d3db487cb500ed419a257e0ea87163384c1db17fa193'
-            'dab0b4cead75a2390dc155c54ac73ca15cb52f4f20e62b6703647be2b1caf8a2'
+sha256sums=('08e5b5d91917a2229e9afe54ab616c864c641622dcc9692d02909de98faf85e6'
+            '6899786fac1fde0c392e10f72f31af13dce7b227dd52a9beb1cd1b76235892b3'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
