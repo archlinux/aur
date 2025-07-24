@@ -1,0 +1,13 @@
+pkgbase = stormy
+	pkgdesc = minimal, customizable, and neofetch-like weather CLI
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/ashish0kumar/stormy
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = stormy-0.3.2.tar.gz::https://github.com/ashish0kumar/stormy/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = c9eeb65dafcc34b884d4fc895ed16d748be31ba735db12b73288fd1a1a7cb62e
+
+pkgname = stormy
