@@ -1,6 +1,6 @@
 pkgbase = ada-web-server
 	pkgdesc = A complete embeddable web application framework for Ada.
-	pkgver = 24.0.0
+	pkgver = 25.1.0
 	pkgrel = 1
 	epoch = 1
 	url = http://libre.adacore.com/tools/aws
@@ -15,11 +15,9 @@ pkgbase = ada-web-server
 	depends = openssl
 	depends = python
 	provides = aws
-	source = aws.tar.gz::https://github.com/AdaCore/aws/archive/refs/tags/v24.0.0.tar.gz
-	source = templates-parser.tar.gz::https://github.com/AdaCore/templates-parser/archive/refs/tags/v24.0.0.tar.gz
-	source = Makefile.patch
-	sha256sums = SKIP
-	sha256sums = 28caf00cfd7039f91055c726c91c45483fefae20eafaef3a91cb026e4343ee97
-	sha256sums = SKIP
+	source = aws.tar.gz::https://github.com/AdaCore/aws/archive/refs/tags/v25.1.0.tar.gz
+	source = templates-parser.tar.gz::https://github.com/AdaCore/templates-parser/archive/refs/tags/v25.0.0.tar.gz
+	sha256sums = 1fa8ba1128506f5b5ff8722a7fb0df8cb804147324e04c3d63c74954200d4735
+	sha256sums = 03cd620c658aee3c2d69be0a8369e45666dc51d25d3cb580b77c4ad471446041
 
 pkgname = ada-web-server

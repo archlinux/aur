@@ -2,7 +2,7 @@
 
 pkgname=ada-web-server
 epoch=1
-pkgver=24.0.0
+pkgver=25.1.0
 pkgrel=1
 pkgdesc='A complete embeddable web application framework for Ada.'
 
@@ -14,29 +14,26 @@ groups=(gcc-ada)
 depends=(gnatcoll-core
          openssl
          python)
+         
 makedepends=(gprbuild
              texlive-meta
              python-sphinx)
 
 provides=(aws)
-
+                    
 source=(aws.tar.gz::https://github.com/AdaCore/aws/archive/refs/tags/v$pkgver.tar.gz
-        templates-parser.tar.gz::https://github.com/AdaCore/templates-parser/archive/refs/tags/v$pkgver.tar.gz
-        Makefile.patch)
+        templates-parser.tar.gz::https://github.com/AdaCore/templates-parser/archive/refs/tags/v25.0.0.tar.gz)
 
-sha256sums=(SKIP
-            28caf00cfd7039f91055c726c91c45483fefae20eafaef3a91cb026e4343ee97
-            SKIP)
+sha256sums=(1fa8ba1128506f5b5ff8722a7fb0df8cb804147324e04c3d63c74954200d4735
+            03cd620c658aee3c2d69be0a8369e45666dc51d25d3cb580b77c4ad471446041)
 
 
 prepare()
 {
     cd $srcdir/aws-$pkgver
 
-    patch -Np0 -i $srcdir/Makefile.patch
-
     rmdir templates_parser
-    ln -s $srcdir/templates-parser-24.0.0 templates_parser
+    ln -s $srcdir/templates-parser-25.0.0 templates_parser
 }
 
 
@@ -48,14 +45,15 @@ build()
     PRJ_BUILD=Release make DEBUG=false build
 
     cd $srcdir/aws-$pkgver
+    
     PRJ_BUILD=Release DEBUG=false make -j1 prefix=/usr SOCKET=openssl setup
     PRJ_BUILD=Release DEBUG=false make -j1 build
 
     cd $srcdir/aws-$pkgver/docs
-    make -j1 html latexpdf    \
-    1> build_docs-1.log       \
-    2> build_docs-2.log       \
     
+    make -j1 html latexpdf        \
+       1> build_docs-warnings.log \
+       2> build_docs-errors.log
 }
 
 
