@@ -1,13 +1,13 @@
 pkgbase = xapp-thumbnailers
 	pkgdesc = Thumbnailers for GTK Desktop Environments
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/linuxmint/xapp-thumbnailers
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
-	source = xapp-thumbnailers-1.2.7.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.2.7.tar.gz
-	sha256sums = 00eda2aee83035e94c5fabe14e129c75da1f8475ad9068658a023eaf9dd545c8
+	source = xapp-thumbnailers-1.2.8.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.2.8.tar.gz
+	sha256sums = ab7f5dd93ead3c638be92f8d625882b7579a22ae4e3423ebe280660a88cd9811
 
 pkgname = xapp-thumbnailers-common
 	pkgdesc = Common files for XApp thumbnailers
