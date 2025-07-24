@@ -40,6 +40,6 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build\
+  DESTDIR="${pkgdir}" cmake --install build
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
