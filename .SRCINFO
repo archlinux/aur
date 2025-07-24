@@ -1,0 +1,15 @@
+pkgbase = slider-cli
+	pkgdesc = Command-line implementation and Golang library for the RAMMB/CIRA SLIDER satellite image viewer
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/colinmcintosh/SLIDER-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = glibc
+	source = slider-cli-0.5.1.tar.gz::https://github.com/colinmcintosh/SLIDER-cli/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 5790a3b0c63c2bf36af60153884eddb144007e6dd9d897a5579a9356b910ce70
+
+pkgname = slider-cli
