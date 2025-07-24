@@ -1,7 +1,7 @@
 pkgbase = zen-browser-bitwarden
 	pkgdesc = Bitwarden browser extension for Firefox
-	pkgver = 2025.6.1
-	pkgrel = 2
+	pkgver = 2025.7.0
+	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
 	groups = zen-browser-addons
@@ -11,7 +11,7 @@ pkgbase = zen-browser-bitwarden
 	makedepends = unzip
 	makedepends = zip
 	makedepends = git
-	source = zen-browser-bitwarden::git+https://github.com/bitwarden/clients.git#tag=browser-v2025.6.1
-	b2sums = 076b096d60b88e90f97603d09e197bd4bfa94489cd95d7b4ddf793d3bd8d988f5383d84b802b79f75b915f637df9dec09fee5f5c9519e2f1b9af44b766c82907
+	source = zen-browser-bitwarden::git+https://github.com/bitwarden/clients.git#tag=browser-v2025.7.0
+	b2sums = 537c9d63ea7ad04dff32b6ad0529188aa3761244ce70d74a8138acf2dac6fb719da53bb1d84063bc9e8eb38f37a6eb2347d8419774067836377167f766a6766a
 
 pkgname = zen-browser-bitwarden
