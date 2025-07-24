@@ -1,6 +1,6 @@
 # Maintainer: Aydin Rahbaran <codewizaard@proton.me>
 pkgname=basteh
-pkgver=0.0.4
+pkgver=0.0.2
 pkgrel=2
 pkgdesc="GTK GUI frontend for pacman"
 arch=('x86_64')
@@ -18,7 +18,7 @@ build() {
 
 package() {
   # Binary
-  install -Dm755 "$srcdir/$pkgname/basteh" "$pkgdir/usr/bin/basteh"
+  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/basteh"
 
   # Icon
   install -Dm644 "$srcdir/$pkgname/basteh_minimal.jpg" "$pkgdir/usr/share/icons/basteh_minimal.jpg"
