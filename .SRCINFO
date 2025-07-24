@@ -1,8 +1,7 @@
 pkgbase = openclonk-git
 	pkgdesc = Multiplayer-action-tactic-skill game
-	pkgver = 7.0.r3173.g701bcf38c
+	pkgver = 9.0.alpha.r499
 	pkgrel = 1
-	epoch = 1
 	url = http://openclonk.org
 	arch = i686
 	arch = x86_64
@@ -27,4 +26,3 @@ pkgbase = openclonk-git
 	sha256sums = SKIP
 
 pkgname = openclonk-git
-
