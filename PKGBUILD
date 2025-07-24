@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=299.250722.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
 url="https://tuta.com/secure-email"
@@ -34,6 +34,7 @@ prepare() {
 
   # Correct path for desktop file, remove unneeded desktop file keys
   desktop-file-edit --set-key=Exec --set-value='"/opt/tutanota-desktop/Tuta Mail"' \
+    --set-icon="${pkgname%-bin}" \
     --remove-key="X-AppImage-Version" \
     "squashfs-root/Tuta Mail.desktop"
 }
@@ -53,9 +54,11 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/${pkgname%-bin}/Tuta Mail" "$pkgdir/usr/bin/${pkgname%-bin}"
 
-  install -Dm644 "squashfs-root/Tuta Mail.desktop" -t \
-    "$pkgdir/usr/share/applications/"
+  install -Dm644 "squashfs-root/Tuta Mail.desktop" \
+    "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 
-  install -d "$pkgdir/usr/share/icons/"
-  cp -r squashfs-root/usr/share/icons/hicolor/ "$pkgdir/usr/share/icons/"
+  for i in 64 512; do
+    install -Dm644 "squashfs-root/usr/share/icons/hicolor/${i}x${i}/apps/Tuta Mail.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-bin}.png"
+  done
 }

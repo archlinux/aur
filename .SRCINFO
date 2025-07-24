@@ -1,7 +1,7 @@
 pkgbase = tutanota-desktop-bin
 	pkgdesc = The desktop client for Tutanota, the secure e-mail service.
 	pkgver = 299.250722.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tuta.com/secure-email
 	arch = x86_64
 	license = GPL-3.0-or-later
