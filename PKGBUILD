@@ -2,8 +2,8 @@
 
 pkgname=lal-refactor
 pkgdesc='A collection of source code refactoring tools for the Ada.'
-pkgver=25.0w
-pkgrel=2
+pkgver=26.0w
+pkgrel=1
 epoch=1
 
 url=https://github.com/AdaCore/lal-refactor
@@ -14,24 +14,13 @@ license=(Apache)
 depends=(gcc-ada adasat)
 makedepends=(gprbuild)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240505-16130-src.tar.gz
-        rid_wae_flag.patch)
-sha256sums=(5de03fc76f3765c33a73395cbd510118bd01fc5f5d065277447eebb109d94c57
-            50672aaa9d35fd5bd41a96ba0f3055b95421dd42bb856848bc98b3337a81e9e4)
-
-
-prepare()
-{
-    cd $srcdir/$pkgname-$pkgver-20240505-16130-src
-    
-    patch -Np0 -i $srcdir/rid_wae_flag.patch
-}
-
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/lal-refactor-26.0w-20250416-165F5-src.tar.gz)
+sha256sums=(35f8ceb361923a80171570ab585532e1a1870f76bbe59208540501183a0ca022)
 
 
 build()
 {
-   cd $srcdir/$pkgname-$pkgver-20240505-16130-src
+   cd $srcdir/lal-refactor-26.0w-20250416-165F5-src
 
    export LIBRARY_TYPE=relocatable
 
@@ -42,7 +31,7 @@ build()
 
 package()
 {
-   cd $srcdir/$pkgname-$pkgver-20240505-16130-src
+   cd $srcdir/lal-refactor-26.0w-20250416-165F5-src
 
    PREFIX=$pkgdir/usr \
    make install
