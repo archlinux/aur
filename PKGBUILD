@@ -3,7 +3,7 @@
 pkgname=python-face
 _name=${pkgname#python-}
 _py=py3
-pkgver=22.0.0
+pkgver=24.0.0
 pkgrel=1
 pkgdesc="Straightforward CLI parsing and dispatching microframework"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'd5d692f90bc8f5987b636e47e36384b9bbda499aaf0a77aa0b0bbe834c76923d'
+  '611e29a01ac5970f0077f9c577e746d48c082588b411b33a0dd55c4d872949f6'
 )
 
 build() {

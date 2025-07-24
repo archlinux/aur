@@ -1,13 +1,13 @@
 pkgbase = python-face
 	pkgdesc = Straightforward CLI parsing and dispatching microframework
-	pkgver = 22.0.0
+	pkgver = 24.0.0
 	pkgrel = 1
 	url = https://github.com/mahmoud/face
 	arch = any
 	license = BSD-3
 	makedepends = python-setuptools
 	depends = python-boltons
-	source = https://files.pythonhosted.org/packages/source/f/face/face-22.0.0.tar.gz
-	sha256sums = d5d692f90bc8f5987b636e47e36384b9bbda499aaf0a77aa0b0bbe834c76923d
+	source = https://files.pythonhosted.org/packages/source/f/face/face-24.0.0.tar.gz
+	sha256sums = 611e29a01ac5970f0077f9c577e746d48c082588b411b33a0dd55c4d872949f6
 
 pkgname = python-face
