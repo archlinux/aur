@@ -1,15 +1,17 @@
 pkgbase = cflow
 	pkgdesc = A C program flow analyzer
 	pkgver = 1.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gnu.org/software/cflow/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
-	source = https://ftpmirror.gnu.org/cflow/cflow-1.7.tar.xz
-	source = https://ftpmirror.gnu.org/cflow/cflow-1.7.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/cflow/cflow-1.7.tar.xz
+	source = https://ftp.gnu.org/gnu/cflow/cflow-1.7.tar.xz.sig
+	source = cflow-1.7-decl.patch
 	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
 	b2sums = 0d015f66a1cdeb5119d09c6a81231414362bb5a130d744a4532f3eac7de54f05472716afdcf244d413f510f2f955655654192ef467c56588a09a69b064bd43b7
 	b2sums = SKIP
+	b2sums = 6e437f391ff3dbf2dacce2b9982f481b75295482882a438170ab6b90d9d1091ea53f010d61dba8657d2555b1431ab112f484fa5d016d8ffa394e59c64788b039
 
 pkgname = cflow
