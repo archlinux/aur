@@ -1,15 +1,20 @@
 pkgbase = bin-bin
-	pkgdesc = A paste bin written in Rust. Github Release Binary.
-	pkgver = 1.0.2
+	pkgdesc = Effortless binary manager
+	pkgver = 0.23.0
 	pkgrel = 1
-	url = https://github.com/w4/bin
+	url = https://github.com/marcosnils/bin
 	arch = x86_64
-	license = WTFPL
+	arch = aarch64
+	license = MIT
+	provides = bin
 	conflicts = bin
-	source = https://github.com/w4/bin/releases/download/v1.0.2/bin-v1.0.2-x86_64-unknown-linux-gnu.tar.gz
-	source = bin.service
-	sha256sums = f8166e15d921bc8c67ae1c16777ea73dba4275197a9f1073645529ebe6f36a53
-	sha256sums = 4cb0c08af068637bb9c6330d41f34defc4173a863c2e2dd33f06fbffccfd80dc
+	source = LICENSE-0.23.0::https://raw.githubusercontent.com/marcosnils/bin/v0.23.0/LICENSE
+	source = README-0.23.0.md::https://raw.githubusercontent.com/marcosnils/bin/v0.23.0/README.md
+	sha256sums = 73624cfa33d3785e80ae8d5402f9857396c0cb3e9d945615a603b50eb0d04a99
+	sha256sums = 0567d747e97d968140b87e7ff02eebb439dd9be4ec57eb8b2f04df01293a9c47
+	source_x86_64 = bin-0.23.0-x86_64::https://github.com/marcosnils/bin/releases/download/v0.23.0/bin_0.23.0_linux_amd64
+	sha256sums_x86_64 = 2d2e20031402ee567ed42fef8ae052092a0f6333bda3e5a6ad4af7b8eed92f11
+	source_aarch64 = bin-0.23.0-aarch64::https://github.com/marcosnils/bin/releases/download/v0.23.0/bin_0.23.0_linux_arm64
+	sha256sums_aarch64 = db1a52a46d91088d45eae82cc2dc9f800fb1fa298240daa3695e267ebd53a75a
 
 pkgname = bin-bin
-
