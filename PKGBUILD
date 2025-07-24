@@ -34,7 +34,7 @@ prepare() {
   grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > ../sigs.txt
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> ../sigs.txt # only for opera
   echo -e "{\nglobal:" > ../export.map
-  sed 's/$/;/' sigs.txt >> ../export.map
+  sed 's/$/;/' ../sigs.txt >> ../export.map
   echo -e "local:\n*;\n};" >> ../export.map
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
@@ -53,6 +53,7 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
+    --extra-cflags="-DCHROMIUM_NO_LOGGING" \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
     --libdir=/
