@@ -1,5 +1,8 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
+# Note: This package will not build correctly if it has already been installed.
+#       Use 'sudo pacman -Rsc langkit' before building.
+
 pkgname=langkit
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 pkgver=26.0w
@@ -32,17 +35,16 @@ makedepends=(gprbuild
              python-pycodestyle
              python-railroad-diagrams)
 
-
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/langkit-master-2025_07_23.zip
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/langkit-26.0w-20250409-164FD-src.tar.gz
         https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/adasat-26.0w-20250407-164DB-src.tar.gz)
         
-sha256sums=(8f0aca19f958be68a859d759ebd421d6d0859e6d13c4f250f5d6708a250f27fd
+sha256sums=(1431a98951187465d660d5743089b514b7d58907244debf47e318859c392615e
             2a483826bb98c9350522280e6ae481e8ff4fb01f28f880d45628cc6fa6be9e0c)
 
 
 prepare()
 {
-   cd $srcdir/langkit-master
+   cd $srcdir/langkit-26.0w-20250417-16252-src
    
    ln -s $srcdir/adasat-26.0w-20250416-164FF-src langkit/adasat
 }
@@ -51,17 +53,11 @@ prepare()
 
 build()
 {
-    cd $srcdir/langkit-master
+    cd $srcdir/langkit-26.0w-20250417-16252-src
 
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
     ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
-
-
-    ## Build the Liblktlang support library
-    #
-    python manage.py make --no-mypy                   \
-                          --library-types=static,static-pic,relocatable
 
 
     # Build the Langkit_Support library, used by all Langkit-generated libraries.
@@ -71,34 +67,40 @@ build()
         --build-mode=prod                             \
         --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
+
+    python manage.py make --no-mypy --library-types=static,static-pic,relocatable
+
+    python setup.py build
        
     # Building docs are currently broken.
     #
-#   make -C doc html
+#    make -C doc html
 }
 
 
 package()
 {
-   cd $srcdir/langkit-master
+    cd $srcdir/langkit-26.0w-20250417-16252-src
 
-
-    export PREFIX=$pkgdir/usr
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
     python manage.py install-langkit-support          \
-        $PREFIX                                       \
-        --library-types=static,static-pic,relocatable                   
-        
-
-    python -m langkit.scripts.lkm install -c lkt/langkit.yaml $pkgdir/usr --library-types=static,static-pic,relocatable --disable-all-mains
+        --library-types=static,static-pic,relocatable \
+        --build-mode=prod                             \
+        $pkgdir/usr
 
 
-    mkdir -p $pkgdir/usr/lib/python3.13/site-packages
-    
+    python -m langkit.scripts.lkm install                \
+           -c lkt/langkit.yaml                           \
+           $pkgdir/usr                                   \
+           --library-types=static,static-pic,relocatable \
+           --disable-all-mains
+
+
     mv $pkgdir/usr/python/liblktlang            \
        $pkgdir/usr/lib/python3.13/site-packages
        
-#    rm -fr $pkgdir/usr/python
+    rm -fr $pkgdir/usr/python
 
 
     # Install the license.
@@ -117,5 +119,4 @@ package()
 #    done
 #
 #    popd
-
 }

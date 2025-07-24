@@ -27,9 +27,9 @@ pkgbase = langkit
 	depends = python
 	depends = adasat
 	depends = prettier-ada
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/langkit-master-2025_07_23.zip
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/langkit-26.0w-20250409-164FD-src.tar.gz
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/adasat-26.0w-20250407-164DB-src.tar.gz
-	sha256sums = 8f0aca19f958be68a859d759ebd421d6d0859e6d13c4f250f5d6708a250f27fd
+	sha256sums = 1431a98951187465d660d5743089b514b7d58907244debf47e318859c392615e
 	sha256sums = 2a483826bb98c9350522280e6ae481e8ff4fb01f28f880d45628cc6fa6be9e0c
 
 pkgname = langkit
