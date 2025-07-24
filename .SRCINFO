@@ -1,18 +1,20 @@
 pkgbase = vsd
 	pkgdesc = Download video streams served over HTTP from websites, HLS and DASH playlists
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clitic/vsd
 	arch = x86_64
 	arch = aarch64
 	license = (MIT OR Apache-2.0) AND GPL-2.0-or-later
 	makedepends = cargo
+	makedepends = git
 	optdepends = ffmpeg: required for transmuxing and transcoding streams
 	optdepends = chromium: required for capture and collect subcommands
 	options = !lto
-	source = vsd-0.4.0.tar.gz::https://github.com/clitic/vsd/archive/vsd-0.4.0.tar.gz
-	source = vsd-0.4.0-bento4.tar.gz::https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-641.tar.gz
-	b2sums = c536abe235ea5c4b9312e4878b62cedee625573d7da3428898f381f87bb3c7f3556a5fa6410cc2ff31d51213db3f92944cd232576002becadb9d56242b96bde7
-	b2sums = 8bec91edcba170917de5941d94fecbc2028d4503651e7863b5c6a5d24bbe442b7a5d53644770d3221c28c5a9f2a2620c04e836f748660a808e27e157db93b117
+	source = vsd-0.4.0::git+https://github.com/clitic/vsd#commit=9179761749afbed2a3486cc926e36a260f6fb340?signed
+	source = vsd-0.4.0-bento4::git+https://github.com/axiomatic-systems/Bento4#commit=dc264854d1f76c370b65b18d9f303a95f7f21ab1
+	validpgpkeys = 53813687899090166819E1C14D9937BFFDFF8577
+	b2sums = 4697433a1eae0f75200927b14f198c3cf234b3fa920712870a07b03228b814a3a11d007e52f75ea17d86611ab8f6f1f757dee1e6d0ea43359861104a5575c166
+	b2sums = a7dcf2e4e0ad17fe18d6c30d85a5358dcd9d5a8a8ed2c614ea5dcc435b0cfab479197453b0ae01667f4a6eaf9d2e750a4708de4a6205ea1e5fa83fea3fed4f2d
 
 pkgname = vsd

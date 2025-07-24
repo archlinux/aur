@@ -1,34 +1,37 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vsd'
 pkgver='0.4.0'
-pkgrel='1'
+_commit='9179761749afbed2a3486cc926e36a260f6fb340'
+pkgrel='2'
 pkgdesc='Download video streams served over HTTP from websites, HLS and DASH playlists'
 arch=('x86_64' 'aarch64')
 url="https://github.com/clitic/$pkgname"
 license=('(MIT OR Apache-2.0) AND GPL-2.0-or-later')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 optdepends=(
 	'ffmpeg: required for transmuxing and transcoding streams'
 	'chromium: required for capture and collect subcommands'
 )
 options=('!lto')
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/vsd-$pkgver.tar.gz"
-	"$pkgname-$pkgver-bento4.tar.gz::https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-641.tar.gz"
+	"$pkgname-$pkgver::git+$url#commit=$_commit?signed"
+	"$pkgname-$pkgver-bento4::git+https://github.com/axiomatic-systems/Bento4#commit=dc264854d1f76c370b65b18d9f303a95f7f21ab1"
 )
-b2sums=('c536abe235ea5c4b9312e4878b62cedee625573d7da3428898f381f87bb3c7f3556a5fa6410cc2ff31d51213db3f92944cd232576002becadb9d56242b96bde7'
-        '8bec91edcba170917de5941d94fecbc2028d4503651e7863b5c6a5d24bbe442b7a5d53644770d3221c28c5a9f2a2620c04e836f748660a808e27e157db93b117')
+b2sums=('4697433a1eae0f75200927b14f198c3cf234b3fa920712870a07b03228b814a3a11d007e52f75ea17d86611ab8f6f1f757dee1e6d0ea43359861104a5575c166'
+        'a7dcf2e4e0ad17fe18d6c30d85a5358dcd9d5a8a8ed2c614ea5dcc435b0cfab479197453b0ae01667f4a6eaf9d2e750a4708de4a6205ea1e5fa83fea3fed4f2d')
+validpgpkeys=('53813687899090166819E1C14D9937BFFDFF8577') # Apoorv Sachan <clitic21@gmail.com> (https://github.com/clitic.gpg)
 
-_sourcedirectory="$pkgname-vsd-$pkgver"
+_sourcedirectory="$pkgname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	export RUSTUP_TOOLCHAIN='stable'
 	_cargotarget="$(rustc -vV | sed -n 's/host: //p')"
 
-	# Move the Bento4 repo to the correct location
-	rm -rf 'bento4-src/Bento4/'
-	mv '../Bento4-1.6.0-641/' 'bento4-src/Bento4/'
+	# Provide Bento4 submodule
+	git submodule init 'bento4-src/Bento4'
+	git config 'submodule.bento4-src/Bento4.url' "$srcdir/$pkgname-$pkgver-bento4/"
+	git -c protocol.file.allow=always submodule update 'bento4-src/Bento4'
 
 	# Fetch dependencies
 	cargo fetch --locked --target "$_cargotarget"
