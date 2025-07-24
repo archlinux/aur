@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('electron36' 'lutris' 'pulse-native-provider')
 makedepends=('npm' 'git')
 source=("git+https://github.com/andrew-ld/lutris-gamepad-ui" "lutris-gamepad-ui.sh" "lutris-gamepad-ui.desktop")
-sha256sums=('SKIP' '74487e3d566056f43346c8f8587458104886c999c942462ce86f03f18ee4557c' 'fbb78ffe31da8ed401574e11b10ded372967fb70bec835a06de16ab7f99b9a3f')
+sha256sums=('SKIP' 'a58200a7a8ac0194bc69593689ea9bf50d06a094b54b2a35bd45864b5c6c3ea9' 'fbb78ffe31da8ed401574e11b10ded372967fb70bec835a06de16ab7f99b9a3f')
 
 pkgver() {
     cd "$_pkgname"
