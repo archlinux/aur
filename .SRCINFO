@@ -1,6 +1,6 @@
 pkgbase = lutris-gamepad-ui-git
 	pkgdesc = A simple, TV-friendly, gamepad-navigable frontend for Lutris
-	pkgver = 0.1.5.r8.gb10ab0d
+	pkgver = 0.1.6.r6.g9b8a8f8
 	pkgrel = 1
 	url = https://github.com/andrew-ld/lutris-gamepad-ui
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = lutris-gamepad-ui-git
 	sha256sums = fbb78ffe31da8ed401574e11b10ded372967fb70bec835a06de16ab7f99b9a3f
 
 pkgname = lutris-gamepad-ui-git
-
