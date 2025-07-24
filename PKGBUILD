@@ -3,7 +3,7 @@
 
 pkgname=florist
 pkgdesc='An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding.'
-pkgver=2024
+pkgver=2025
 pkgrel=1
 
 arch=(i686 x86_64)
@@ -45,7 +45,11 @@ build()
   cd $srcdir/$pkgname
 
   ./configure --prefix=$pkgdir/usr --with-build-type=Production
-  PROCESSORS=$(nproc) make
+  
+  PROCESSORS=$(nproc) \
+  make
+  
+#  make rm-doc     # Requires gnatdoc.
 }
 
 
