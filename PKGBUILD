@@ -1,10 +1,11 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Crestwave <crest.wave@yahoo.com>
 # Contributor: unrealapex <unrealapex@proton.me>
 
 pkgname=fff
 pkgver=2.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Simple and fast file manager'
 arch=(any)
 url='https://github.com/dylanaraps/fff'
