@@ -19,6 +19,7 @@ depends=(libadalang-tools
          ada_spawn
          ada-libfswatch
          gpr
+         gnatformat
          gnatdoc)
 
 makedepends=(gprbuild)

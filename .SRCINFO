@@ -15,6 +15,7 @@ pkgbase = ada_language_server
 	depends = ada_spawn
 	depends = ada-libfswatch
 	depends = gpr
+	depends = gnatformat
 	depends = gnatdoc
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/ada_language_server-master.zip
 	source = lsp-gpr_files.adb-patch
