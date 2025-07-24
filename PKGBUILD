@@ -7,7 +7,7 @@ pkgdesc="Unity Version Control (formerly Plastic SCM) originally developed by CÃ
 arch=('x86_64')
 url="https://www.plasticscm.com/plastic-for-linux"
 license=('LicenseRef-UnityVersionControl')
-depends=('e2fsprogs' 'gcc-libs' 'glibc' 'icu' 'keyutils' 'krb5>=1.10.' 'lttng-ust' 'zlib>=1.1.4')
+depends=('e2fsprogs' 'gcc-libs' 'glibc' 'icu' 'keyutils' 'krb5' 'lttng-ust' 'zlib')
 groups=('plasticscm-complete' 'plasticscm-client-complete')
 options=('!strip') # stripping seems to break the cm binary
 source=("https://plastic-releases.s3.eu-west-2.amazonaws.com/releases/${pkgver}/plasticscm/linux/PlasticSCM-${pkgver}-linux-client-core.tar.gz")
