@@ -19,9 +19,7 @@ source=("git+https://github.com/quickfix/quickfix.git"
     663.patch)
 sha256sums=('SKIP'
             '48061022832c0eb44a4d37bc618853a66856f98277aa5a33cfd829d0a0e1891a'
-            'bfb6a425c0e3d06dbc7155b2ab0f06284a50bd28b606a659b4dcd5ff3cd1a9e4'
-            '4253682bf316c4e079a067d1ab580d51d3febaee3f724fb33db4886508c90050'
-            '3d8ef13562f82408329b73195fe90806438bc4d45d0a695b978f5d393d53a8a3')
+            'bfb6a425c0e3d06dbc7155b2ab0f06284a50bd28b606a659b4dcd5ff3cd1a9e4')
 options=(!lto)
 
 pkgver() {
