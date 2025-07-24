@@ -1,0 +1,29 @@
+From 482245700c1daed34b6356984ed8451f9ae49401 Mon Sep 17 00:00:00 2001
+From: Qingwei Zhang <qzhang.canada@gmail.com>
+Date: Fri, 4 Jul 2025 17:58:10 -0400
+Subject: [PATCH] fix: correct undeclared variable 'd' in
+ SSLSocketInitiator::doConnect
+
+Replaced incorrect reference to 'd' with the correct parameter name 'dictionary'
+in SSLSocketInitiator::doConnect. This resolves a compilation error due to the
+use of an undeclared variable.
+---
+ src/C++/SSLSocketInitiator.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/C++/SSLSocketInitiator.cpp b/src/C++/SSLSocketInitiator.cpp
+index 0855529a5..6fa53d250 100644
+--- a/src/C++/SSLSocketInitiator.cpp
++++ b/src/C++/SSLSocketInitiator.cpp
+@@ -292,9 +292,9 @@ void SSLSocketInitiator::doConnect(const SessionID &sessionID, const Dictionary
+     Log *log = session->getLog();
+ 
+     HostDetails host = m_hostDetailsProvider.getHost(sessionID, dictionary);
+-    if (d.has(RECONNECT_INTERVAL)) // ReconnectInterval in [SESSION]
++    if (dictionary.has(RECONNECT_INTERVAL)) // ReconnectInterval in [SESSION]
+     {
+-      m_reconnectInterval = d.getInt(RECONNECT_INTERVAL);
++      m_reconnectInterval = dictionary.getInt(RECONNECT_INTERVAL);
+     }
+ 
+     log->onEvent(

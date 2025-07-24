@@ -1,0 +1,57 @@
+diff -urN quickfix-orig/CMakeLists.txt quickfix/CMakeLists.txt
+--- quickfix-orig/CMakeLists.txt	2025-07-14 15:01:23.616317066 -0400
++++ quickfix/CMakeLists.txt	2025-07-14 15:02:37.997602010 -0400
+@@ -77,11 +77,8 @@
+ endif()
+ 
+ if (HAVE_PYTHON)
+-  find_package(PythonLibs REQUIRED)
+-  include_directories(${PYTHON_INCLUDE_DIRS})
+-elseif (HAVE_PYTHON3)
+-  find_package(PythonLibs 3 REQUIRED)
+-  include_directories(${PYTHON_INCLUDE_DIRS})
++  find_package(Python COMPONENTS Interpreter Development)
++  include_directories(${Python_INCLUDE_DIRS})
+ endif ()
+ 
+ add_subdirectory(src)
+@@ -104,4 +101,4 @@
+ configure_file(cmake_config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/quickfix/config.h @ONLY)
+ 
+ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/spec/ DESTINATION share/quickfix FILES_MATCHING PATTERN "FIX*.xml")
+- 
+\ No newline at end of file
++ 
+diff -urN quickfix-orig/src/CMakeLists.txt quickfix/src/CMakeLists.txt
+--- quickfix-orig/src/CMakeLists.txt	2025-07-14 15:01:23.996323887 -0400
++++ quickfix/src/CMakeLists.txt	2025-07-14 15:02:53.867877567 -0400
+@@ -43,7 +43,5 @@
+ endif()
+ 
+ if (HAVE_PYTHON)
+-add_subdirectory(python)
+-elseif (HAVE_PYTHON3)
+ add_subdirectory(python3)
+ endif ()
+diff -urN quickfix-orig/src/python3/CMakeLists.txt quickfix/src/python3/CMakeLists.txt
+--- quickfix-orig/src/python3/CMakeLists.txt	2025-07-14 15:01:24.046324781 -0400
++++ quickfix/src/python3/CMakeLists.txt	2025-07-14 15:36:07.526870048 -0400
+@@ -10,7 +10,7 @@
+ 
+ target_include_directories(${quickfix_python_lib_name} PRIVATE ${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/src/C++)
+ 
+-target_link_libraries(${quickfix_python_lib_name} ${PROJECT_NAME})
++target_link_libraries(${quickfix_python_lib_name} ${PROJECT_NAME} ${Python_LIBRARIES})
+ 
+ if (HAVE_SSL)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAVE_SSL=1")
+@@ -19,7 +19,7 @@
+ 
+ set_target_properties(${quickfix_python_lib_name} PROPERTIES VERSION ${quickfix_python_VERSION} SOVERSION ${quickfix_python_VERSION_MAJOR} PREFIX "")
+ 
+-install(TARGETS ${quickfix_python_lib_name} DESTINATION lib/python3)
+-install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/python/ DESTINATION lib/python3
++install(TARGETS ${quickfix_python_lib_name} DESTINATION ${Python_SITELIB})
++install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/python/ DESTINATION ${Python_SITEARCH} 
+         FILES_MATCHING PATTERN "quickfix*.py"
+         PATTERN test EXCLUDE)
