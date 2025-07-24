@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Chocolate Quake
+Type=Application
+Icon=/usr/share/pixmaps/chocolate-quake.ico
+Comment=Conservative Quake I source port
+Exec=chocolate-quake
+Path=/usr/share/games/quake
+Terminal=false
+StartupNotify=false
