@@ -1,0 +1,61 @@
+--- bin/spack	2025-07-25 01:09:39.027283539 +0200
++++ bin/spack	2025-07-25 01:07:33.000000000 +0200
+@@ -26,24 +26,37 @@
+ 
+ import os
+ import sys
+-
+-min_python3 = (3, 6)
+-
+-if sys.version_info[:2] < min_python3:
+-    v_info = sys.version_info[:3]
+-    msg = "Spack requires Python %d.%d or higher " % min_python3
+-    msg += "You are running spack with Python %d.%d.%d." % v_info
+-    sys.exit(msg)
+-
+-# Find spack's location and its prefix.
+-spack_file = os.path.realpath(os.path.expanduser(__file__))
+-spack_prefix = os.path.dirname(os.path.dirname(spack_file))
+-
+-# Allow spack libs to be imported in our scripts
+-sys.path.insert(0, os.path.join(spack_prefix, "lib", "spack"))
+-
+-from spack.main import main  # noqa: E402
+-
+-# Once we've set up the system path, run the spack main method
+-if __name__ == "__main__":
+-    sys.exit(main())
++if os.environ["USER"] != "spack":
++    # Modified script, pkexec to `spack` user
++    env = os.environ.copy()
++    # removing user-specific environement variables
++    for var in ["USER", "HOME", "LOGNAME"]:
++        if var in env:
++            env.pop(var)
++    arg_list = ["/usr/bin/pkexec", "--user", "spack", "/usr/bin/env"]
++    arg_list += [var + "=" + value for var, value in env.items()]
++    arg_list.append(sys.argv[0])
++    arg_list += sys.argv[1:]
++    os.execv("/usr/bin/pkexec", arg_list)
++else:
++    # Original script
++    min_python3 = (3, 6)
++
++    if sys.version_info[:2] < min_python3:
++        v_info = sys.version_info[:3]
++        msg = "Spack requires Python %d.%d or higher " % min_python3
++        msg += "You are running spack with Python %d.%d.%d." % v_info
++        sys.exit(msg)
++
++    # Find spack's location and its prefix.
++    spack_file = os.path.realpath(os.path.expanduser(__file__))
++    spack_prefix = os.path.dirname(os.path.dirname(spack_file))
++
++    # Allow spack libs to be imported in our scripts
++    sys.path.insert(0, os.path.join(spack_prefix, "lib", "spack"))
++
++    from spack.main import main  # noqa: E402
++
++    # Once we've set up the system path, run the spack main method
++    if __name__ == "__main__":
++        sys.exit(main())

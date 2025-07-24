@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
@@ -17,19 +17,19 @@ source=(
         spack.pkrules
         spack.sh
         spack.csh
-        spack.bin.py
         spack.env.sh.patch
+        spack.patch
       )
 sha256sums=(
-        'SKIP'
+        '70dceb9abdf1225d596714522a0fc4d0290e8c5496f1bae8192ffe611b60cfa1'
         'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
         'db0cc4a4ab32e6ee2e5c32898c69a0f0ce05b4e3c605beb024b5463c46e3710f'
         '1f2c4c6b8841d927fa4056206b8e5603719c0d829586ff0937efaa935d054376'
         '7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356'
         '0bddb0a0f1d470509f44c3031041ab0de5472de84f58c90d4b6c91e6782cb6a2'
         '7b427625d7890dbc0ae493da095a4d7de47742fd3b02e3f42d7ee52e3599a4ac'
-        '6fc5d3f1df24f76dec188cba5fe4688148b4d1ff7acfb8ada24a9a480353f51f'
-        'bcde5253c94d2117fec9cc96f52924c99588b06a052782c22a1f3bc6da3043e8'
+        'd7a700e62d55008c11af88d368977a5947e541cb279c2ed6a70be967f8e699be'
+        '55dc48adbba01c953e9be97c8dbca3c1e04fe11aecef37d7a5e0536ea8ea0132'
 )
 _spackcfg=etc/spack/defaults/config.yaml
 _spacksetenv_sh=share/spack/setup-env.sh
@@ -56,6 +56,7 @@ package() {
   PYTHON_VERSION=`python -c "import sys; print (f'{sys.version_info[0]}.{sys.version_info[1]}', end='')"`
   pushd ${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/
   patch -p0 < ${srcdir}/spack.env.sh.patch
+  patch -p0 < ${srcdir}/spack.patch
   popd
 
   pushd ${srcdir}
@@ -64,11 +65,14 @@ package() {
 
   install -Dm 644 ${pkgname}.sysusers ${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf
   install -Dm 644 ${pkgname}.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
-  mv ${pkgdir}/usr/bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}-nouser
-  install -Dm 755 ${pkgname}.bin.py ${pkgdir}/usr/bin/${pkgname}
+  pushd ${pkgdir}
+  rm usr/bin/spack
+  ln -s /usr/lib/python${PYTHON_VERSION}/site-packages/bin/spack usr/bin/spack
+  popd
 
   install -Dm 644 ${pkgname}.pkrules ${pkgdir}/usr/share/polkit-1/rules.d/${pkgname}.rules
   install -Dm 644 ${pkgname}.pkaction ${pkgdir}/usr/share/polkit-1/actions/org.archlinux.pkexec.spack.policy
+
   # Fix mode to match polkit.
   install -d -o root -g polkitd -m 755 ${pkgdir}/usr/share/polkit-1/rules.d
   popd
