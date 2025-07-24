@@ -1,0 +1,16 @@
+pkgbase = ttf-source-code-pro-nerd-fonts
+	pkgdesc = SauceCodePro Nerd Font: Patched Source Code Pro font with Nerd Fonts icon set, suitable for terminals and UI environments with ligature support
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/adobe-fonts/source-code-pro
+	arch = any
+	license = custom
+	provides = SourceCodeProNerdFont
+	provides = SauceCodeProNerdFont
+	provides = ttf-source-code-pro-nerd-fonts
+	provides = ttf-sauce-code-pro-nerd-fonts
+	conflicts = ttf-sauce-code-pro-nerd-font
+	source = sourceCodePro-3.4.0.tar.xz::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/SourceCodePro.tar.xz
+	sha256sums = d52d97b66c4c5d6d9d99c88df55148faf39738f244485026f22f8e47407744f4
+
+pkgname = ttf-source-code-pro-nerd-fonts

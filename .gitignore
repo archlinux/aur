@@ -1,0 +1,5 @@
+*.zst
+src
+pkg
+*.tar.xz
+.history/
