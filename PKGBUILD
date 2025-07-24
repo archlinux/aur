@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://github.com/Hcode00/hpaper"
 license=('GPL')
 makedepends=('go')
-depends=('swaybg>0')
+optdepends=('swaybg: Backend for Sway window manager'
+           'hyprpaper: Backend for Hyprland window manager')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v0.5.tar.gz")
 sha256sums=('1194e76e1cf4b3decc5766c59ed6b526a8ea580c86920a8ba928f6e5ab2816f4')
