@@ -1,7 +1,7 @@
 # Contributor: Rod Kay     <charlie5 on #ada at irc.libera.chat>
 
 pkgname=adacurses
-pkgver=20240427
+pkgver=20250720
 pkgrel=1
 pkgdesc="An Ada binding to the 'ncurses' C library."
 
@@ -14,7 +14,7 @@ makedepends=(gcc-ada)
 source=(https://invisible-mirror.net/archives/AdaCurses/current/AdaCurses-$pkgver.tgz
         adacurses.gpr.in)
 
-sha256sums=(573ba82dd80f66469064dfcbbfcb2262be1a7730efa71f6542204790a2779e72
+sha256sums=(21abe7a9230d2f1d8af2314716d18a0d0cf8ce296db1d50505e31651b2f54600
             3d722aac3df43e5baad8ee1054de86a4d3c41b234efdff97ae2bac0ee22e3b4a)
 
 PREFIX=/usr
@@ -57,6 +57,10 @@ package()
   sed "s|@PREFIX@|${PREFIX}|g"   \
       "$srcdir/adacurses.gpr.in" \
     > "${pkgdir}${PREFIX}/share/gpr/adacurses.gpr"
+
+
+  make -C doc install.html
+
 
   # Install the license.
   #
