@@ -3,7 +3,7 @@
 _pkgname=Trezor-Suite
 _upkgname=trezor-suite
 pkgname=trezor-suite-appimage
-pkgver=25.6.3
+pkgver=25.7.4
 pkgrel=1
 pkgdesc="desktop app for Trezor hardware wallets"
 arch=('x86_64' 'arm64')
@@ -15,11 +15,11 @@ noextract=("$_pkgname-$pkgver.AppImage")
 options=(!strip)
 validpgpkeys=('EB483B26B078A4AA1B6F425EE21B6950A2ECB65C')
 
-#source=("https://github.com/trezor/trezor-suite/releases/download/v$pkgver/$_pkgname-$pkgver-linux-$arch.AppImage"{,.asc})
-source=("https://data.trezor.io/suite/releases/desktop/latest/$_pkgname-$pkgver-linux-$arch.AppImage"
-        "satoshilabs-2021-signing-key::https://trezor.io/security/satoshilabs-2021-signing-key.asc")
-sha256sums=('0d427d8aaeccab44e736df5e605caae6df32d3ace6b04d0ddad81fbeae3c5e71'
-            '19e34555c5f1e1eca31d841682c104c3b5a94ae2001d830cd26dddcc01775bc6')
+source=("https://github.com/trezor/trezor-suite/releases/download/v$pkgver/$_pkgname-$pkgver-linux-$arch.AppImage"{,.asc})
+#source=("https://data.trezor.io/suite/releases/desktop/latest/$_pkgname-$pkgver-linux-$arch.AppImage"
+#        "satoshilabs-2021-signing-key::https://trezor.io/security/satoshilabs-2021-signing-key.asc")
+sha256sums=('21892d46fbf74e4d59b35e4e536d0d5fe69ef96fa4c3686117652c72eacbecd5'
+            'SKIP')
 
 prepare() {
     cd "${srcdir}"
