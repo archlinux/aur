@@ -1,0 +1,5 @@
+[vet]
+source = "github"
+github = "vet-run/vet"
+use_latest_release = true
+prefix = "v"

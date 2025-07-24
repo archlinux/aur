@@ -1,0 +1,21 @@
+pkgbase = vet
+	pkgdesc = A command-line tool that acts as a safety net for the risky curl | bash pattern
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vet-run/vet
+	arch = any
+	license = MIT
+	checkdepends = bats
+	checkdepends = bats-assert
+	checkdepends = bats-support
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = diffutils
+	depends = less
+	optdepends = bat: syntax-highlighting pager for script review
+	optdepends = shellcheck: for linting downloaded scripts
+	source = vet-1.0.0.tar.gz::https://github.com/vet-run/vet/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = 0d1119c2dae24c86adfc0034e527ef2eb811282a76af7c84254107643a4477e69f0d1de83746aa9427ef122546397532f26c1b39b692cd935ed881f75fda3556
+
+pkgname = vet
