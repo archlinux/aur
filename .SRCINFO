@@ -1,6 +1,6 @@
 pkgbase = emilua-easybox
 	pkgdesc = Emilua-easybox
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/emilua/easybox
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = emilua-easybox
 	makedepends = meson
 	makedepends = boost
 	depends = emilua
-	source = emilua-easybox::git+https://gitlab.com/emilua/easybox.git#tag=v0.1.1
+	source = emilua-easybox::git+https://gitlab.com/emilua/easybox.git#tag=v0.1.2
 	source = kafel::git+https://github.com/google/kafel.git#tag=20231004
 	source = kafel-patch.zip::https://wrapdb.mesonbuild.com/v2/kafel_20231004-1/get_patch
 	md5sums = SKIP
