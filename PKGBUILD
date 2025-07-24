@@ -22,6 +22,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+    # Apply python 3.13 patch
+    git am < "../../0001-Patch-for-Python-3.13.patch"
     python -m build --wheel --no-isolation
 }
 

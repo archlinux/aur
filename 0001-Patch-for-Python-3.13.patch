@@ -1,0 +1,36 @@
+From 7c1a8855472dc0c9de9f28ad8a3fa78757b23d91 Mon Sep 17 00:00:00 2001
+From: Radu Potop <radu@wooptoo.com>
+Date: Tue, 10 Jun 2025 20:51:58 +0100
+Subject: [PATCH] Patch for Python 3.13
+
+---
+ dr14tmeter/audio_file_reader.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dr14tmeter/audio_file_reader.py b/dr14tmeter/audio_file_reader.py
+index 2d1faf6..c294bc0 100644
+--- a/dr14tmeter/audio_file_reader.py
++++ b/dr14tmeter/audio_file_reader.py
+@@ -85,8 +85,8 @@ class AudioFileReader:
+         tmp_dir = tempfile.gettempdir()
+         tmp_file = os.path.join(tmp_dir, file) + ".wav"
+ 
+-        file_name = re.sub("(\"|`|\$)", r"\\\1", file_name)
+-        tmp_file = re.sub("(\"|`|\$)", r"_xyz_", tmp_file)
++        file_name = re.sub("(\"|`|\\$)", r"\\\1", file_name)
++        tmp_file = re.sub("(\"|`|\\$)", r"_xyz_", tmp_file)
+ 
+         full_command = full_command + " " + \
+             self.get_cmd_options(file_name, tmp_file)
+@@ -133,7 +133,7 @@ class AudioFileReader:
+ 
+             sample_type = "int%d" % (target.sample_width * 8)
+ 
+-            target.Y = numpy.fromstring(X, dtype=sample_type).reshape(
++            target.Y = numpy.frombuffer(X, dtype=sample_type).reshape(
+                 nframes, target.channels)
+ 
+             wave_read.close()
+-- 
+2.50.1
+
