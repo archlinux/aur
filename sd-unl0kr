@@ -18,9 +18,9 @@ build() {
     add_file '/etc/unl0kr.conf'
 
     add_file '/usr/lib/udev/hwdb.bin'
-    add_file '/usr/lib/udev/libinput-device-group'
-    add_file '/usr/lib/udev/libinput-fuzz-extract'
-    add_file '/usr/lib/udev/libinput-fuzz-to-zero'
+    add_binary '/usr/lib/udev/libinput-device-group'
+    add_binary '/usr/lib/udev/libinput-fuzz-extract'
+    add_binary '/usr/lib/udev/libinput-fuzz-to-zero'
     map add_udev_rule \
         '60-evdev.rules' \
         '60-input-id.rules' \
