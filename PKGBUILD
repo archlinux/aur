@@ -3,7 +3,7 @@
 _pkgname=qqc2-desktop-style-git
 pkgname=qqc2-desktop-style-git
 pkgver=r1211.3070190
-pkgrel=1
+pkgrel=0
 pkgdesc='A style for Qt Quick Controls 2 to make it follow your desktop theme - Git Version'
 arch=(any)
 url='https://invent.kde.org/frameworks/qqc2-desktop-style'
