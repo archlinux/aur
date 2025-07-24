@@ -1,7 +1,7 @@
 # Maintainer: Ivan Reutov <nujievik@gmail.com>
 
 pkgname=mux-media
-pkgver=0.13.4
+pkgver=0.13.5
 pkgrel=1
 pkgdesc="A simple automated solution for muxing media (e.g. video, audio, subtitles)."
 arch=("x86_64")
@@ -12,18 +12,18 @@ makedepends=("git" "rustup")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("a8a1687eec2673379b50eef74bc0edcc6daaef632ae1e21b4d4c15405e023f7b")
+sha256sums=("70bf9ea6c3553e6b959d4735c4b08289096ec8bb16b75b652c59413833df94b0")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
   if [[ -n "$RUN_TESTS" ]]; then
     echo "Running tests because RUN_TESTS is set"
-    cargo test --release --locked
+    cargo test --release
   else
     echo "Skipping tests (set RUN_TESTS=1 to enable)"
   fi
