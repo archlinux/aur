@@ -1,0 +1,15 @@
+pkgbase = duckietv-bin
+	pkgdesc = DuckieTV is a Bittorrent searching and tv tracker
+	pkgver = 20250611
+	pkgrel = 1
+	url = https://github.com/DuckieTV/Nightlies
+	arch = x86_64
+	license = FreeBeer
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	options = !debug
+	source_x86_64 = https://github.com/DuckieTV/Nightlies/releases/download/nightly-202506111858/DuckieTV-202506111858-linux-x64.tar.gz
+	sha256sums_x86_64 = 1a9c8e62755cc2e6a738b93bffbff1f246d7025f6f0d7f71d2cb7f5c0a4154bd
+
+pkgname = duckietv-bin
