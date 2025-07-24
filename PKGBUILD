@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@proton.me>
 # Contributor: reflexing <reflexing@reflexing.ru>
 # Contributor: Alexander Zubkov <green@msu.ru>
 # Contributor: nsf
