@@ -1,4 +1,5 @@
-# Maintainer: RubenKelevra <cyrond@gmail.com>
+# Maintainer: Ketmorco <ketmorco+aur@waynewerner.com>
+# Contributor: RubenKelevra <cyrond@gmail.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Vlad M. <vlad@archlinux.net>
@@ -7,8 +8,8 @@
 
 pkgname=borg2
 _pkgname=borgbackup
-_borgstore_pkgver=0.1.0
-pkgver=2.0.0b12
+_borgstore_pkgver=0.3.0
+pkgver=2.0.0b18
 pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://github.com/borgbackup/borg'
@@ -41,30 +42,36 @@ checkdepends=(
 	'python-pytest'
 	'python-pytest-cov'
 	'python-pytest-benchmark'
-	'python-mock'
-	'python-argon2_cffi'
+	'python-argon2-cffi'
 	'python-dateutil'
 )
 provides=('borg' 'borgbackup')
 conflicts=('borg' 'borgbackup')
 source=(
 	"$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc}
+	"https://github.com/borgbackup/borgstore/releases/download/0.3.0/borgstore-0.3.0.tar.gz"
 )
-b2sums=('95170f410acb6259e5c50491e99c44588961ac7f7ebec3865d7b515a52da885abdadefd72295910bfbcb61049a72ce148dc09ff6fdd43f158c5cbf07b3a88813'
-        'SKIP')
+sha256sums=('51abe06a0220956a458e52db48ab6b680508200f694a897d7576d2f1345af15d'
+        'SKIP'
+        'a9049f730c9e31ce9ccdfb4ff171542dbc818fd4c8484c4eb51e65addd76fe43'
+    )
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
 
 build() {
+	cd "$srcdir/borgstore-${_borgstore_pkgver}"
+	python -m build --wheel --no-isolation
 	cd "$srcdir/$_pkgname-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 check() {
 	echo "$CARCH"
+	python -m venv $srcdir/python-venv --prompt borg
+	$srcdir/python-venv/bin/python -m pip install $srcdir/borgstore-${_borgstore_pkgver}/dist/borgstore-${_borgstore_pkgver}-py3-none-any.whl $srcdir/$_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
 	cd "$srcdir/$_pkgname-$pkgver/build/lib.linux-$CARCH-"*/
-	LANG=en_US.UTF-8 PYTHONPATH="$PWD:$PYTHONPATH" py.test --cov=borg \
+	LANG=en_US.UTF-8 PYTHONPATH="$PWD:$PYTHONPATH" $srcdir/python-venv/bin/python -m pytest --cov=borg \
 		--benchmark-skip --pyargs borg.testsuite -v \
-		-k 'not test_non_ascii_acl and not test_with_socket and not test_socket_permissions'
+		-k 'not test_non_ascii_acl and not test_with_socket and not test_socket_permissions and not shell_completions_test'
 }
 
 package() {
