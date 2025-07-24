@@ -18,3 +18,4 @@ pkgbase = lutris-gamepad-ui-git
 	sha256sums = fbb78ffe31da8ed401574e11b10ded372967fb70bec835a06de16ab7f99b9a3f
 
 pkgname = lutris-gamepad-ui-git
+
