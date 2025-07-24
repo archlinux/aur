@@ -15,8 +15,8 @@ depends=(gcc-ada
 makedepends=(gprbuild-toolbox
              python-sphinx
              python-sphinx_rtd_theme
-             texlive-meta
-             gnatdoc)
+             texlive-meta)
+#             gnatdoc)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gtkada-26.0w-20250416-16402-src.tar.gz
         Makefile.in-patch)
@@ -49,7 +49,7 @@ build()
     #
     make -j1 GPRBUILD_SWITCHES="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
-    make docs
+#    make docs
 }
 
 
