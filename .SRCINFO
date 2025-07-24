@@ -1,6 +1,6 @@
 pkgbase = ocaml-eio
 	pkgdesc = Effects-based direct-style IO for multicore OCaml
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/ocaml-multicore/eio
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ocaml-eio
 	checkdepends = ocaml-mdx>=2.4.1
 	checkdepends = ocaml-yojson>=2.0.2
 	makedepends = dune>=3.9.0
-	depends = ocaml>=5.1.0
+	depends = ocaml>=5.2.0
 	depends = ocaml-bigstringaf>=0.9.0
 	depends = ocaml-cstruct>=6.0.1
 	depends = ocaml-domain-local-await>=0.1.0
@@ -28,7 +28,7 @@ pkgbase = ocaml-eio
 	depends = ocaml-psq>=0.2.0
 	depends = ocaml-uring>=0.9
 	options = !strip
-	source = ocaml-eio-1.2.tar.gz::https://github.com/ocaml-multicore/eio/archive/v1.2.tar.gz
-	b2sums = 1d2ea772a5399067df33dac9692374ebe6834912b7abc59d8612cc16c2365fe4b0a9602439a07985473f612ff953dabed7bb51e619fac7103dacd952373b954b
+	source = ocaml-eio-1.3.tar.gz::https://github.com/ocaml-multicore/eio/archive/v1.3.tar.gz
+	b2sums = 633250d8abe0460b124b4b59a201ff77ce15c4834e371aef7087ad0434697880d4c3d8d59bb03759ff22ac167d0d8a7b6616c2a49bdc1692d9f33829d29fe162
 
 pkgname = ocaml-eio
