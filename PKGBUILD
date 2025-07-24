@@ -3,7 +3,7 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.6.2
+pkgver=9.7.0
 pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
@@ -37,8 +37,8 @@ optdepends=(
       'slepc: Scalable library for Eigenvalue problem computations'
       'sundials: Suite of nonlinear differential/algebraic equation solvers'
       'symengine: Fast symbolic manipulation library'
-      # taskflow is not as well supported as TBB yet, so prefer TBB
-      # 'taskflow-git: Simple resource-aware task scheduler'
+      # The version of taskflow in the AUR is too old for deal.II
+      # 'cpp-taskflow: Simple resource-aware task scheduler'
       'tbb: High level abstract threading library'
       'trilinos: algorithms for the solution of large-scale scientific problems'
       'suitesparse: A collection of sparse matrix libraries'
@@ -50,7 +50,7 @@ makedepends=('cmake')
 options=(!lto !debug !strip)
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('aad6d6f578baa51b0a66f21ea8113d3b49cc6d7e')
+sha256sums=('398ffbb5de1ea52b88a47aaa54a253ad58ee4e810a8c5aa0a0f549ecb1bc4c6c')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 _installation_prefix=/usr
@@ -80,7 +80,9 @@ build() {
   # explicitly disallow bundled packages: this disables bundled copies of boost,
   # intel-tbb, part of suitesparse, and muparser, which are all available in the
   # standard repositories
-  cmake_configuration_flags=" -DDEAL_II_ALLOW_BUNDLED=OFF"
+  cmake_configuration_flags=" -DDEAL_II_ALLOW_BUNDLED=OFF -DDEAL_II_FORCE_BUNDLED_TASKFLOW=ON"
+
+  cmake_configuration_flags+=" -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
 
   # deal.II does not use more aggressive search paths (which we need) for MPI
   # unless we explicitly enable it, so check for MPI and then turn it on:
@@ -89,13 +91,11 @@ build() {
       cmake_configuration_flags+=" -DDEAL_II_WITH_MPI=ON"
   fi
 
-  # See if PETSc was configured to use 64 bit indices:
-  if [ -n "${PETSC_DIR+x}" ]
+  if pacman -Qs trilinos >/dev/null
   then
-      if grep '^#define PETSC_USE_64BIT_INDICES 1' "$PETSC_DIR/include/petscconf.h" >/dev/null
-      then
-         cmake_configuration_flags+=" -DDEAL_II_WITH_64BIT_INDICES=ON"
-      fi
+      # The default AUR Trilinos build does not support 32-bit indices anymore so
+      # switch to 64-bit. deal.II works with both 32 and 64-bit PETSc indices.
+      cmake_configuration_flags+=" -DDEAL_II_WITH_64BIT_INDICES=ON -DTRILINOS_DIR=/usr/"
   fi
 
   # deal.II cannot find MKL unless we specify where its header is
@@ -131,11 +131,7 @@ build() {
   # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
   # default. If you want to add more flags or disable specific packages, then
   # refer to the deal.II manual.
-  #
-  # Work around a deal.II + Trilinos 14 bug by explicitly providing the Trilinos
-  # root directory
   cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$_installation_prefix \
-        -DTRILINOS_DIR=/usr/                                                    \
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
         -DDEAL_II_SHARE_RELDIR="share/${pkgname}/"                              \
         -DDEAL_II_EXAMPLES_RELDIR=share/"${pkgname}/examples/"                  \

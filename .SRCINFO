@@ -1,6 +1,6 @@
 pkgbase = deal-ii
 	pkgdesc = An Open Source Finite Element Differential Equations Analysis Library
-	pkgver = 9.6.2
+	pkgver = 9.7.0
 	pkgrel = 1
 	url = https://www.dealii.org/
 	install = deal-ii.install
@@ -38,7 +38,7 @@ pkgbase = deal-ii
 	options = !lto
 	options = !debug
 	options = !strip
-	source = https://github.com/dealii/dealii/releases/download/v9.6.2/dealii-9.6.2.tar.gz
-	sha1sums = aad6d6f578baa51b0a66f21ea8113d3b49cc6d7e
+	source = https://github.com/dealii/dealii/releases/download/v9.7.0/dealii-9.7.0.tar.gz
+	sha256sums = 398ffbb5de1ea52b88a47aaa54a253ad58ee4e810a8c5aa0a0f549ecb1bc4c6c
 
 pkgname = deal-ii
