@@ -1,6 +1,6 @@
 pkgbase = gnatdoc
 	pkgdesc = GNAT documentation generation tool.
-	pkgver = 25.0w
+	pkgver = 26.0w
 	pkgrel = 1
 	url = https://github.com/AdaCore/gnatdoc
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = gnatdoc
 	makedepends = gprbuild
 	depends = gnatcoll-core
 	depends = markdown
-	depends = gpr-unit-provider
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gnatdoc4-25.0w-20240505-164DF-src.tar.gz
-	sha256sums = ea43e0d912549db2e39c3c897be5faa0c433a14b0875130804b5dd6c032ace8b
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatdoc4-26.0w-20250416-1629F-src.tar.gz
+	sha256sums = 7bb7ad55a9c7a91e2ca896532780f9cef610275f446fa33a385d923a8ebb6550
 
 pkgname = gnatdoc
