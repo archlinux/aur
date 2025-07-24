@@ -3,7 +3,7 @@
 # Contributor: lyoko, Tom Nguyen
 
 pkgname=networkmanager-ssh
-pkgver=1.2.12
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="OpenSSH VPN support for NetworkManager"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=()
 
 source=(${pkgname}::"git+https://github.com/danfruehauf/NetworkManager-ssh.git#tag=${pkgver}"
         "nm-ssh-service.name")
-md5sums=('d032fda77e8a4b0e3a646b6dc96a6a27'
+md5sums=('373bd0b68c9b39b61a84eea69781308d'
          'df217faa2823494c3fd83e778540e880')
 
 prepare() {
