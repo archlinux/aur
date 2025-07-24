@@ -2,7 +2,7 @@
 
 pkgname=twlauncher-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 _version=${pkgver/rc/-rc}
 pkgdesc="Launcher for most popular Teeworlds clients."
 arch=('x86_64')
