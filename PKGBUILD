@@ -26,7 +26,16 @@ build() {
   [[ -d build ]] && rm -rf build
   mkdir build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DGENERATE_SRS_SECRET=OFF -DCONFIG_DIR=/etc/$pkgname -DINIT_FLAVOR=systemd
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DGENERATE_SRS_SECRET=OFF \
+            -DCONFIG_DIR=/etc/$pkgname \
+            -DINIT_FLAVOR=systemd \
+            -DTESTS_WITH_ASAN=OFF
+  # fix for autoconf version mismatch, thanks to drzee for the solution
+  cd _deps/confuse-src/
+  autoreconf --force --install
+  cd ../..
   make all
 }
 
