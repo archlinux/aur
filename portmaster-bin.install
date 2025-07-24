@@ -1,0 +1,98 @@
+post_install() {
+    echo "[+] Post-Install: Setting up Portmaster"
+
+    echo "[ ] Stopping old service (if exists)"
+    systemctl stop portmaster.service 2>/dev/null || true
+    systemctl disable portmaster.service 2>/dev/null || true
+
+    # Migration from v1
+    OLD_INSTALLATION_DIR="/opt/safing/portmaster"
+    MIGRATED_FILE_FLAG="$OLD_INSTALLATION_DIR/migrated.txt"
+    if [ -d "$OLD_INSTALLATION_DIR" ]; then
+        if [ ! -e "$MIGRATED_FILE_FLAG" ]; then
+            echo "[ ] Starting migration from v1 ..."
+
+            # Migrate config
+            echo "[ ] Migration from v1: Copying V1 configuration"
+            mkdir -p /var/lib/portmaster
+            cp -r $OLD_INSTALLATION_DIR/databases /var/lib/portmaster 2>/dev/null || true
+            cp -r $OLD_INSTALLATION_DIR/config.json /var/lib/portmaster/config.json 2>/dev/null || true
+
+            # Remove V1 files (except configuration)
+            echo "[ ] Migration from v1: Removing V1 files"
+            rm -fr $OLD_INSTALLATION_DIR/exec
+            rm -fr $OLD_INSTALLATION_DIR/logs
+            rm -fr $OLD_INSTALLATION_DIR/updates
+            rm -fr $OLD_INSTALLATION_DIR/databases/cache
+            rm -fr $OLD_INSTALLATION_DIR/databases/history.db
+
+            for file in $OLD_INSTALLATION_DIR/*; do
+                if [ -f "$file" ] && [ "$(basename "$file")" != "config.json" ]; then
+                    rm -f "$file"
+                fi
+            done
+
+            mkdir -p $(dirname "$MIGRATED_FILE_FLAG")
+            touch $MIGRATED_FILE_FLAG
+            echo "[ ] Migration from v1 complete"
+        fi
+    fi
+
+    # Fix SELinux permissions if applicable
+    if command -v semanage >/dev/null 2>&1; then
+        echo "[ ] Fixing SELinux permissions"
+        semanage fcontext -a -t bin_t -s system_u $(realpath /usr/lib)'/portmaster/portmaster-core' || :
+        restorecon -R /usr/lib/portmaster/portmaster-core 2>/dev/null >&2 || :
+    fi
+
+    echo "[ ] Initializing binary files"
+    ln -sf /usr/lib/portmaster/portmaster-ui-start.sh /usr/bin/portmaster    
+
+    echo "[ ] Enabling service"
+    systemctl daemon-reload
+    systemctl enable portmaster.service
+}
+
+post_upgrade() {
+    echo "[+] Post-Upgrade: Updating Portmaster"
+    
+    # Always ensure symlink is correct after upgrade
+    ln -sf /usr/lib/portmaster/portmaster-ui-start.sh /usr/bin/portmaster
+    
+    # Restart the service after upgrade
+    systemctl daemon-reload
+    systemctl try-restart portmaster.service
+}
+
+pre_remove() {
+    echo "[+] Pre-Remove: Stopping Portmaster services"
+
+    systemctl stop portmaster.service
+    systemctl disable portmaster.service
+}
+
+post_remove() {
+    echo "[+] Post-Remove: Cleaning up Portmaster"
+    
+    # Remove SELinux permissions if applicable
+    if command -v semanage >/dev/null 2>&1; then
+        echo "[ ] Removing SELinux permissions"
+        semanage fcontext --delete $(realpath /usr/lib)'/portmaster/portmaster-core' 2>/dev/null || :
+    fi
+
+    # Remove symlink
+    rm -f /usr/bin/portmaster    
+
+    # Remove everything from '/var/lib/portmaster'
+    echo "[ ] Removing Portmaster data"
+    rm -rf /var/lib/portmaster || echo "[-] Failed to remove /var/lib/portmaster"
+    
+    systemctl daemon-reload
+
+    # Remove V1 migration flag (if exists)
+    MIGRATED_FILE_FLAG="/opt/safing/portmaster/migrated.txt"
+    if [ -e "$MIGRATED_FILE_FLAG" ]; then
+        echo "[ ] Removing V1 migration flag"
+        rm -f "$MIGRATED_FILE_FLAG"
+    fi
+}
