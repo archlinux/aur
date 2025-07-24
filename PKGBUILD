@@ -58,7 +58,7 @@ optdepends=('flatpak: Flatpak packages support'
             'fwupd: firmware update support'
             'packagekit-qt6: to manage packages from Arch Linux repositories (not recommended, use at your own risk)')
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz)
-sha256sums=('f34cea438a8a0ae0bb6fd13e4164d49c7a2a9857e204300ccc276f2d5f898230')
+sha256sums=('c2dd8238aaa8c801a12c6f29d70f24467bad59209c5fc8fae97cbbbac45dde10')
 
 build() {
   cmake -B build -S $_pkgname-$pkgver \
