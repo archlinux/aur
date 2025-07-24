@@ -9,7 +9,7 @@ license=(BSD)
 depends=(suitesparse)
 makedepends=(cmake gcc-fortran python)
 source=(https://github.com/LLNL/sundials/archive/v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=('e1615959e196db6d6c45121deece402275eb10a8b6b4896182d532317dcebb2a')
+sha256sums=('3f84277b73922507beae83439b6a234d855fd53ba1f61728111968dea5fac29b')
 provides=(sundials)
 conflicts=(sundials)
 
