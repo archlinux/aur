@@ -1,28 +1,47 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64-git
-pkgver=2024.12.1.r0.gb49e10e
+pkgver=2024.12.1.r5.gd8c969c
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus (git version)'
 arch=('x86_64')
 url='https://simple64.github.io/'
 license=('GPL-3.0-only')
-depends=('hidapi' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2' 'sdl2_net'
-         'vulkan-icd-loader' 'zlib' 'hicolor-icon-theme')
-optdepends=('7zip: for 7z/zip and VRU support'
-            'discord-game-sdk: for Discord support'
-            'vosk-api: for VRU support (voice recognition unit)')
-makedepends=('git' 'cmake' 'ninja' 'discord-game-sdk' 'icoutils' 'zip' 'vosk-api')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'hicolor-icon-theme'
+    'hidapi'
+    'libpng'
+    'qt6-base'
+    'qt6-websockets'
+    'sdl2'
+    'sdl2_net'
+    'vulkan-icd-loader'
+    'zlib')
+optdepends=(
+    '7zip: for 7z/zip and VRU support'
+    'discord-game-sdk: for Discord support'
+    'vosk-api: for VRU support (voice recognition unit)')
+makedepends=(
+    'cmake'
+    'discord-game-sdk'
+    'git'
+    'icoutils'
+    'ninja'
+    'vosk-api'
+    'vulkan-headers'
+    'zip')
 provides=('simple64' 'm64p-git')
 conflicts=('simple64' 'm64p-git' 'mupen64plus')
 replaces=('m64p-git')
 source=('git+https://github.com/simple64/simple64.git'
-        'simple64-cheat-parser'::'git+https://github.com/simple64/cheat-parser.git'
+        'simple64-cheat-parser'::'git+https://github.com/simple64/cheat-parser.git#commit=3b46bfc6cf12468d8766da3f2f46635111ff0505'
         '010-simple64-remove-bundled-discord-and-vosk.patch'
         '020-simple64-fix-paths.patch'
         'simple64.desktop')
 sha256sums=('SKIP'
-            'SKIP'
+            'e01ff9369f637edb2c2b715a58cafc9ae7d8202d6c4f29edc3c35866250a3b8f'
             '6bc5bc2123ea4a69acebe18d2d33676f35b850d2011fc3f9e83078567ef2d9c9'
             '99436fff936a1b6994fec0c9dcf938625af7eaea80b20e44040577edc0996f26'
             'e188400b7de70ada7fbdec90f4bafbddd5f20f408fbb8ced1886508d9740e89f')
