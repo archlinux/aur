@@ -1,6 +1,6 @@
 _pkgname=auto-mcs
 pkgname=$_pkgname-bin
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Cross-platform Minecraft server manager"
 arch=(x86_64 aarch64)
@@ -15,9 +15,9 @@ sha256sums=(
     "0cbd55618dba89b1b9edcaef98b433276fa8e943941c7af1ff5013e5e47a3833"
 )
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-linux-$pkgver.zip")
-sha256sums_x86_64=("4e278f5d027ac2959632a2efcc6cab3e53dbcfa4c9afd5c2dcdb68cf172d457b")
+sha256sums_x86_64=("1cb805162eeb265466d2bdc3f26dde87d9cdb697fd4a9d2cae07ca9d56ad0de3")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-linux-arm64-$pkgver.zip")
-sha256sums_aarch64=("6d84cad330d22326c2ac37d66dd37ea7a0187436972d41694a404bcd8d37341e")
+sha256sums_aarch64=("486528d93bbf0710f85cf16548b2440063ead67c9864323fef3f1d4115588599")
 
 package() {
     cd "${srcdir}"
