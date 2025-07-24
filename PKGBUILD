@@ -1,7 +1,7 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
 url="https://github.com/AlexanderVanhee/Gradia"
@@ -11,6 +11,7 @@ depends=(
     'gtk4>=4.12.0'
     'libadwaita>=1.5.0'
     'libportal>=0.9.1'
+    'gtksourceview5>=5.16.0'
     'python'
     'python-gobject>=3.48.0'
     'python-pillow'
