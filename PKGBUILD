@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc="A cross platform mDNS-Browser app written in Rust using tauri and leptos "
 arch=('x86_64')
@@ -10,13 +10,13 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('df8afc1931db1380e93568903e72424a5ebd05ddfc8880e57b4ff89f823b7cac')
+sha256sums=('7bd7c282d4952a70ee9219037a10b0d182910cd4a00ce69c647669eb6639a0b0')
 _builddir="$pkgname-$pkgname-v$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
     export RUSTUP_TOOLCHAIN=stable
     cargo --locked install trunk@0.21.14 --no-default-features --features rustls
-    cargo --locked install tauri-cli@2.7.0
+    cargo --locked install tauri-cli@2.7.1
     cargo --locked install cargo-auditable@0.7.0
     rustup toolchain install $RUSTUP_TOOLCHAIN --target wasm32-unknown-unknown --profile minimal --no-self-update
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
