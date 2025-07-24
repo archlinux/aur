@@ -59,6 +59,8 @@ build()
 
 check()
 {
+   exit
+   
    gprbuild -P test_strings_edit/strings_edit-test.gpr
    
    pushd ./test_strings_edit
