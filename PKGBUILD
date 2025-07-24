@@ -12,7 +12,7 @@ _pkgver=1.21.0-rc.1
 
 # makepkg doesn't support hyphens in pkgver, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncompromising wilderness survival sandbox game (unstable branch)"
 arch=("x86_64")
 url="https://www.vintagestory.at/"
@@ -22,10 +22,12 @@ options=("!strip")
 source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_pkgver.tar.gz"
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "$_pkgname.desktop"
-        "vsmodinstall-handler.desktop")
+        "vsmodinstall-handler.desktop"
+		"fontconfig.conf")
 md5sums=("4e5a6cb948c6215cbff03055300fc233"
-         "34784dd754e0a7d0e4033a3da89742cd"
-         "dde267f52d41fb90641b6405dccb5cd3")
+         "97e27a3d0283b0f01176cdd6fa5dcf53"
+         "dde267f52d41fb90641b6405dccb5cd3"
+		 "698441836af7385df922c922b08b7606")
 
 prepare() {
 	# Remove install script provided by developers
@@ -44,9 +46,11 @@ package() {
 	install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
 	install -Dm644 vsmodinstall-handler.desktop "$pkgdir"/usr/share/applications/"$pkgname"-modinstall-handler.desktop
 	# Copy fonts to /usr/share/fonts
-	install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF/ "$_pkgname"/assets/game/fonts/*.ttf
+	#install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF/ "$_pkgname"/assets/game/fonts/*.ttf
 	# Copy all other application files
 	cp -rdp --no-preserve=ownership "$_pkgname" "$pkgdir"/usr/share/"$pkgname"
+	# Copy over fontconfig.conf to not rely on system installed fonts
+	install -Dm644 "fontconfig.conf" "$pkgdir"/usr/share/"$pkgname"/fontconfig.conf
 	# Create a symlink to run the game from terminal
 	install -dm 755 "$pkgdir"/usr/bin/ # Create directory first (required)
 	ln -s /usr/share/"$pkgname"/Vintagestory "$pkgdir"/usr/bin/"$pkgname"
