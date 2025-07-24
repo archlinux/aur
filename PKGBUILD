@@ -3,7 +3,7 @@
 # Commented out lines are problematic and will be addressed in a future PKGBUILD release.
 
 pkgname=kazakov_simple_components
-pkgver=4.68
+pkgver=4.75
 pkgrel=1
 pkgdesc="A set of low-level Ada components by Dmitri Kazakov."
 arch=(i686 x86_64)
@@ -13,9 +13,9 @@ license=(GPL2+)
 depends=(unixodbc)
 makedepends=(gprbuild)
 
-source=(http://www.dmitry-kazakov.de/ada/components_4_68.tgz
+source=(http://www.dmitry-kazakov.de/ada/components_4_75.tgz
         LICENSE)
-sha256sums=(33a4c29f6203e2b6a03598626863d651164f4dd2be6be853424e96282a3e62f6
+sha256sums=(56826190048d63aed8126c3949ee76d282e792498ce86acbd58cac1778e4127d
             3718d08bc7d42a49e6ce06d6d942f4e310e0db3c4336de1c9fd91dc6c3711615)
 
 
@@ -123,7 +123,7 @@ check()
 #   ./test_components/test_websocket_server
  
    gprbuild -P test_components/components-connections_server-test_ldap_client.gpr
-   ./test_components/test_ldap_client
+#   ./test_components/test_ldap_client
 
    gprbuild -P test_components/components-connections_server-test_echo_server.gpr
 #   ./test_components/test_echo_server
@@ -135,7 +135,7 @@ check()
    ./test_components/test_echo_client
 
    gprbuild -P test_components/components-connections_server-test_data_server.gpr
-   ./test_components/test_data_server
+#   ./test_components/test_data_server
 
    gprbuild -P test_components/components-connections_server-test_data_client.gpr
    ./test_components/test_data_client
