@@ -1,2 +1,3 @@
-*.pkg.tar.xz
-*.rpm
+*
+!.SRCINFO
+!PKGBUILD
