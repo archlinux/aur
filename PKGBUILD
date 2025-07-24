@@ -3,11 +3,11 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=8.0.5.r207.g53efc22a2
+pkgver=9.0.2.r182.g237dcfec7
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
-_depends_soh=("sdl2" "sdl2_net" "zenity" "libzip" "libpng")
+_depends_soh=("sdl2" "sdl2_net" "zenity" "libzip" "libpng" "libogg" "libvorbis" "opus" "opusfile")
 _depends_soh_otr_exporter=("libpng")
 _depends_lus=("fmt" "spdlog" "tinyxml2")  # libzip could be placed here, but ZAPD.out didn't made to use it
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}" "${_depends_lus[@]}")
