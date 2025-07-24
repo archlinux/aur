@@ -1,6 +1,6 @@
 pkgbase = python-gradio
 	pkgdesc = Python library for easily interacting with trained machine learning models.
-	pkgver = 5.38.0
+	pkgver = 5.38.1
 	pkgrel = 1
 	url = https://github.com/gradio-app/gradio
 	arch = any
@@ -68,9 +68,9 @@ pkgbase = python-gradio
 	optdepends = python-mcp: mcp
 	optdepends = python-pydantic: mcp
 	noextract = gradio_pdf-0.0.22-py3-none-any.whl
-	source = https://github.com/gradio-app/gradio/archive/refs/tags/gradio@5.38.0.tar.gz
+	source = https://github.com/gradio-app/gradio/archive/refs/tags/gradio@5.38.1.tar.gz
 	source = https://files.pythonhosted.org/packages/py3/g/gradio-pdf/gradio_pdf-0.0.22-py3-none-any.whl
-	sha256sums = 357ffead8738922ee27ce826299742733fa5321bf52a2fdc4d325d3f40b8f755
+	sha256sums = b6dcdd079306ad3be6d8988a9beca97f18b42567a611a902be9a174cb674e549
 	sha256sums = 6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5
 
 pkgname = python-gradio
