@@ -4,7 +4,7 @@
 
 pkgname=retroarch-assets-sounds
 pkgver=528
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='XMB menu sounds for RetroArch'
 arch=(any)
