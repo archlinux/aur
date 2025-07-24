@@ -2,7 +2,7 @@
 
 pkgname=markdown
 pkgdesc='A markdown parser for Ada.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 
 url=https://github.com/AdaCore/markdown
@@ -12,20 +12,20 @@ license=(Apache)
 depends=(libvss)
 makedepends=(gprbuild-toolbox)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240505-16475-src.tar.gz)
-sha256sums=(1b3799eecd41f5e0777110cdbc0fe5a523712f975e8217dd7b8c75b42f48ebf4)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/markdown-26.0w-20250417-1614C-src.tar.gz)
+sha256sums=(55b7f37fcf1d16c40586a781e4dec319acafc1a75b1f43c19e7b6a96cf10c553)
 
 
 build()
 {
-    cd $srcdir/$pkgname-$pkgver-20240505-16475-src
+    cd $srcdir/markdown-26.0w-20250417-1614C-src
     BUILD_MODE=prod make all
 }
 
 
 package()
 {
-    cd $srcdir/$pkgname-$pkgver-20240505-16475-src
+    cd $srcdir/markdown-26.0w-20250417-1614C-src
 
     make BUILD_MODE=prod \
          DESTDIR=$pkgdir \
