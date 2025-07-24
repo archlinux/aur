@@ -1,6 +1,6 @@
 pkgbase = gpr
 	pkgdesc = Parser for Ada GPR project files.
-	pkgver = 25.0w
+	pkgver = 26.0w
 	pkgrel = 1
 	url = https://github.com/AdaCore/gpr
 	arch = i686
@@ -17,13 +17,9 @@ pkgbase = gpr
 	depends = python-funcy
 	depends = python-mako
 	depends = python-docutils
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gpr2-25.0w-20240409-162B5-src.tar.gz
-	source = rid_testsuite_reference_in_docgen_target_in_Makefile.patch
-	sha256sums = dd893997839c5242cf2d8d1482de603ac509ece06b67a1f480b2dbfba4c6b8d6
-	sha256sums = f7222c11e9292dc0a378f925cbdb1a9dfbcfaf599063517affca87827db9d8dd
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gpr2-26.0w-20250409-1629D-src.tar.gz
+	sha256sums = f1312f74ae8e3f7093bd0ca955da2c4d075ae2d4546ed1339e10c8b75d8cd86d
 
 pkgname = gpr
 
 pkgname = gpr2tools
-	provides = gprtools
-	conflicts = gprtools
