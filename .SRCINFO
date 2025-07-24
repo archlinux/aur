@@ -1,7 +1,7 @@
 pkgbase = rofi-firefox-profiles
 	pkgdesc = Launch Firefox with a selected profile using rofi
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shanten/rofi-firefox-profiles
 	arch = any
 	license = MIT
