@@ -1,7 +1,7 @@
 maintainer=user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Spectral warping wavetable synth."
 # arch=('x86_64' 'i686')
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('alsa-lib>=1.0.16' 'freetype2>=2.2.1' 'gcc-libs' 'gcc>=3.3.1' 'glib2>=2
 # options=('!strip' '!emptydirs')
 install=${pkgname}.install
 pkgname_deb="VitalInstaller"
-source_x86_64=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/bonecountysheriff/${pkgname_deb}/releases/download/${pkgver}/${pkgname_deb}.deb")
-sha512sums_x86_64=('2dab6a8ae5b17d607acebcba971913612d03eb9f606dd9b4a5fca948824c05f077b9de56f5699057fd8cbc350efd0678aca8a3a07ea0cba14df743ebf542c629')
+source_x86_64=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/bonecountysheriff/${pkgname_deb}/releases/download/${pkgver}-${pkgrel}/${pkgname_deb}.deb")
+sha512sums_x86_64=('b0a118d04989f5fb8a64dc5651cfd22f0a2e6742f4f7b805a3e317b336189eca9aa3bd9afb444c0d8c2b62dad1904ab57df6695144692497ca7faabbc50c1e17')
 
 package() {
     # echo $pkgdir
