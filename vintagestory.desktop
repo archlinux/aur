@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
+Categories=Game;
 Name=Vintage Story
 Comment=Uncompromising wilderness survival sandbox game
 Icon=/usr/share/pixmaps/vintagestory.xpm
 Exec=/usr/bin/vintagestory
 Path=/usr/share/vintagestory
 NoDisplay=false
-Categories=Game;
-StartupNotify=false
 Terminal=false
-StartupWMClass=Vintage Story
+StartupNotify=false
+StartupWMClass=Vintagestory
