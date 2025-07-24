@@ -1,0 +1,20 @@
+pkgbase = archivemount-ng-git
+	pkgdesc = FUSE based filesystem for mounting compressed archives (new upstream)
+	pkgver = 1b.r1.gbf14b8b
+	pkgrel = 1
+	url = https://git.sr.ht/~nabijaczleweli/archivemount-ng
+	arch = x86_64
+	license = 0BSD AND LGPL-2.0-or-later
+	makedepends = git
+	depends = fuse3
+	depends = gcc-libs
+	depends = glibc
+	depends = libarchive
+	provides = archivemount
+	provides = archivemount-ng
+	conflicts = archivemount
+	conflicts = archivemount-ng
+	source = git+https://git.sr.ht/~nabijaczleweli/archivemount-ng
+	sha256sums = SKIP
+
+pkgname = archivemount-ng-git
