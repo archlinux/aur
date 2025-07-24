@@ -10,8 +10,8 @@ url=https://github.com/onox/inotify-ada
 arch=(i686 x86_64)
 license=(Apache License 2.0)
 
-depends=(gcc-ada alire)
-makedepends=(gprbuild)
+depends=(gcc-ada)
+makedepends=(gprbuild alire)
 
 source=(https://github.com/onox/inotify-ada/archive/refs/tags/v$pkgver.tar.gz)
 sha256sums=(49362b9ea81718a3c5385d0b6eccdd55fcce26f897a0eb887fd657c84ad3bf79)
