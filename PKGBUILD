@@ -6,7 +6,7 @@
 #    curl "https://storage.yandexcloud.net/yandexcloud-yc/release/stable"
 
 pkgname=yandex-cloud-bin
-pkgver=0.154.0
+pkgver=0.155.0
 pkgrel=1
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
@@ -14,19 +14,28 @@ url='https://cloud.yandex.ru/docs/cli/'
 license=('unknown')
 provides=('yandex-cloud')
 source=("yc-$pkgver::https://storage.yandexcloud.net/yandexcloud-yc/release/${pkgver}/linux/amd64/yc")
-sha256sums=('264e13d6e51c7d8bdfeced0729a30da74a5da08612fcc1be427abe696dc3027d')
+sha256sums=('6e7e36a48440a3be7ee94a7db47968a7962e7bb748d0c8f9ce9a456e29cb0598')
+
+prepare() {
+    mkdir -p "${pkgname}-${pkgver}"
+    chmod +x "yc-${pkgver}"
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ../yc-${pkgver} completion bash > yc
+    ../yc-${pkgver} completion fish > yc.fish
+    ../yc-${pkgver} completion zsh > _yc
+    ../yc-${pkgver} components post-update
+    cp /usr/bin/docker-credential-yc .
+}
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    cp "yc-$pkgver" "$pkgdir/usr/bin/yc"
-    chmod +x "$pkgdir/usr/bin/yc"
-
-    $pkgdir/usr/bin/yc components post-update > /dev/null 2>&1
-    rm -rf $pkgdir/usr/*.inc
-
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions"
-    $pkgdir/usr/bin/yc completion bash > "$pkgdir/usr/share/bash-completion/completions/yc"
-
-    mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
-    $pkgdir/usr/bin/yc completion zsh > "$pkgdir/usr/share/zsh/site-functions/_yc"
+    cd "${pkgname}-${pkgver}"
+    # install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "../yc-${pkgver}" "$pkgdir/usr/bin/yc"
+    install -Dm755 'docker-credential-yc' "$pkgdir/usr/bin/docker-credential-yc"
+    install -Dm644 yc "$pkgdir/usr/share/bash-completion/completions/yc"
+    install -Dm644 yc.fish "$pkgdir/usr/share/fish/vendor_completions.d/yc.fish"
+    install -Dm644 _yc "$pkgdir/usr/share/zsh/site_functions/_yc"
 }
