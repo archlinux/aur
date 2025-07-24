@@ -17,17 +17,22 @@ source=(https://www.ahven-framework.com/releases/ahven-2.8.tar.gz)
 sha256sums=(6ead94fbd1b95454e959cc2a343acfb2f733bcbf10d9a286214d1dec1b9e8e0c)
 
 
-build() 
+build()
 {
   cd $srcdir/$pkgname-$pkgver
+  
   make prefix=/usr
-  make prefix=/usr docs
+  
+  make prefix=/usr docs           \
+       1> build_docs-warnings.log \
+       2> build_docs-errors.log
 }
 
 
 check() 
 {
   cd $srcdir/$pkgname-$pkgver
+  
   make check
 }
 
@@ -35,6 +40,7 @@ check()
 package() 
 {
   cd $srcdir/$pkgname-$pkgver
+  
   make DESTDIR=$pkgdir install
 
   # Install the license.
