@@ -3,7 +3,7 @@
 _pkgauthor=hidehic0
 _pkgname=acc_utils
 pkgname=${_pkgname}-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=0
 pkgdesc="A tool with enhanced functionality using files created by atcoder-cli"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('bash')
 # install=acc_utils.install
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
-sha256sums=('a1095a88ae91c24ec640321c178d1b103b93d65db9e03e2ffdc78015b10c8f28')
+sha256sums=('4317801c6e0482288361f80c3124e6799c860be3e45c83e140d3f3d53e14f1ce')
 
 build() {
   cd "${srcdir}/" || exit
