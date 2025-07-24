@@ -1,10 +1,11 @@
 pkgbase = btrfs-data-recovery-git
 	pkgdesc = Tools for btrfs data recovery
-	pkgver = v1.0.0.r0.gcecfbf5
+	pkgver = v1.0.0.r4.g882264a
 	pkgrel = 1
 	url = https://github.com/davispuh/btrfs-data-recovery
 	arch = x86_64
 	license = UNLICENSE
+	makedepends = git
 	makedepends = rubygems
 	makedepends = ldc
 	makedepends = dub
