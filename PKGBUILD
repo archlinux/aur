@@ -4,16 +4,16 @@
 _projectname='azure-identity'
 pkgname="python-$_projectname"
 pkgver='1.23.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Microsoft Azure Identity Client Library for Python'
 arch=('any')
 url='https://github.com/Azure/azure-sdk-for-python'
 license=('MIT')
 depends=('python>=3.9.0' 'python-azure-core>=1.31.0' 'python-cryptography>=2.5.0' 'python-msal>=1.30.0' 'python-msal-extensions>=1.2.0' 'python-typing_extensions>=4.0.0')
 makedepends=('python-setuptools')
-# $pkgrel added to make sure our cached source file doesn't get used, as upstream replaced the tag
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/${_projectname}_$pkgver.tar.gz")
-b2sums=('16c8f2cd93da387a53266a71ee6a85673dd62a9addd2ab5a3a2ad3981884d8dd300d0218311e5aa62bbd6c03387c43162c569c39d18162f6e9bd1c82a4783bf7')
+# $pkgrel added to make sure our cached source file doesn't get used, as the previous pkgrels were invalid
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/${_projectname}_$pkgver.tar.gz")
+b2sums=('e40090d46239db09c7b67f1d081ddafbf29cbe6c7732b9dbc396048c78e49d454a70abc60863e7cef0bca1bbe994fb6c559e7b8e3971b180dce27b5d60236c94')
 
 _sourcedirectory="azure-sdk-for-python-${_projectname}_$pkgver/sdk/identity/$_projectname"
 
