@@ -4,19 +4,24 @@
 _pkgname=valhalla
 pkgname=$_pkgname
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
 depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'libspatialite' 'luajit' 'chrono-date' 'gdal')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost')
-source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver")
-sha256sums=('SKIP')
+source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver"
+        "fix-cxxopts-cstdint.patch")
+sha256sums=('SKIP'
+            'acadf0436ebe1932cd742201b16ce2d26f3f0bc2a8cddd7ee18e14534b81c2ce')
 
 prepare() {
   cd "$_pkgname-$pkgver"
   git submodule update --init --recursive
+
+  # Fix missing cstdint include in cxxopts
+  patch -Np1 -i ../fix-cxxopts-cstdint.patch
 
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
