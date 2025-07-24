@@ -2,7 +2,7 @@
 
 pypiname=terminal_tetris
 pkgname=terminal-tetris
-pkgver=0.0.6
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A simple Tetris game for the terminal."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build')
 # Use the _pypiname variable to build the correct download URL
 source=("$pypiname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$pypiname/$pypiname-$pkgver.tar.gz")
 
-sha256sums=('763512e9d3f65d18feacf0c9d22aa8b7d58fc0ad02f9ee4a79643243515a1bd7')
+sha256sums=('cc0fe8f333b5e5aa8d67ca6a99e9ad8c3e9db6786e4c704da12d3d9a6551c708')
 
 # This function installs the package into a temporary directory ($pkgdir).
 package() {
