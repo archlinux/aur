@@ -3,8 +3,8 @@
 pkgname=intellij-idea-community-edition-bin
 _pkgname=${pkgname%-bin}
 pkgrel=1
-_buildver=251.26927.53
-_majorver=2025.1.3
+_buildver=251.27812.12
+_majorver=2025.1.4
 pkgver="${_majorver}_${_buildver}"
 jbr_ver=21.0.6
 jbr_build=aarch64-b895
@@ -32,8 +32,8 @@ source_aarch64=("https://download.jetbrains.com/idea/ideaIC-${_majorver}-aarch64
                  "fsnotifier-${pkgver}::https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
 sha256sums=('64746b03736aa97c0917ac8b96d135dae7891834b845e2b0b8442b1b5c2c48ab'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('f9f794a23cc623425bfef201c0a674c56090a24215fe71ebfaf6ba27226990c5')
-sha256sums_aarch64=('7a6d75ba101304fb2b416ae4ba6e04373a9c1c1a9419d2fff2dfb86d761d27fb'
+sha256sums_x86_64=('9235cbba6d16f8084c4c09aa1fbae15e7c2f903be4e78108d16393cfcc1761be')
+sha256sums_aarch64=('e7b100fce39d2eafa2211c057cbb83bce01f8e3d398e9ba21d19f8e8d6442e32'
                     '04fbf6d6a0e15f8bc0ae8ff9fdcf80995eb2ce6be1ef6f543618ba66d86498e5'
                     'aa812c5acac06435217b9018aa3e187a3546ea8d3cf136481a2d50aee4b9b23a')
 
