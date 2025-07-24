@@ -2,7 +2,7 @@
 
 pkgname=rofi-firefox-profiles
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Launch Firefox with a selected profile using rofi"
 arch=('any')
 url="https://github.com/shanten/rofi-firefox-profiles"

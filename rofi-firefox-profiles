@@ -57,7 +57,7 @@ def resolve_profile_paths(profiles, base_dir, debug=False):
 
 def show_rofi_menu(profiles, theme, debug=False):
     profile_names = "\n".join(profile['name'] for profile in profiles)
-    cmd = ['rofi', '-dmenu', '-p', 'Select Firefox Profile']
+    cmd = ['rofi', '-dmenu', '-p', 'Select Firefox Profile: ']
     if theme:
         cmd.extend(['-theme', theme])
 
