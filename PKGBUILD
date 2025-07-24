@@ -1,4 +1,4 @@
-# Maintainer:  Michael           <https://aur.archlinux.org/account/michael_wzq>
+# Maintainer:  Michael           (https://aur.archlinux.org/account/michael_wzq)
 # Contributor: Bradley O'Connell <bradleyocon@gmail.com>
 # Contributor: Brodi             <me@brodi.space>
 # shellcheck disable=SC2034,SC2154
@@ -24,11 +24,11 @@ makedepends=(
 provides=("$pkgname")
 #source=("${url}/archive/refs/tags/v${pkgver}-${_pkgrel}.tar.gz")
 source=(
-    "git+${url}.git#commit=2e509cfc8b1ae16c7c7a0cdc8d6f51636505c779"
-    "git+https://github.com/45Drives/houston-common.git#commit=7921c2120e992569307c14e4c9e0089df10ce686"
+    "git+https://github.com/45Drives/cockpit-file-sharing.git#commit=d4c26106fc875a700343abbd45f56fcbfe5c3103"
+    "git+https://github.com/45Drives/houston-common.git#commit=b550603ae3df6e8d884f2d748298a172e7d47257"
 )
-b2sums=('db143fbf598af868b13cd6c9d9a234b309585aea557f6e381d5815e8bdc82d1557a9538eda2dbc708df2b693c745fc25fdc9655badcdacf55b3634df58f36d35'
-        '7371ec80b3afc7f347cf7c9c3217bdc3c5493fc2a1dd6a2883f6a86e9887612f662c7ad705875f07f60729d45a55fc37fe37b267888d91688e5656325b2ac9e8')
+b2sums=('da6f9d6918c3d7a46439d49ec3f7c566977c92e032e02a0668cebc10de71a130f184d4eb7c85e46091bf6bd4fc4b2a2e08f7bde9018c021be126704ea3186a42'
+        '5f16cded4b5c6fcfd11cb2e743f050356f9abfd0681e654d576ab3038d648313e05f28cfac6909f941a03878229c0755eaa782a05c8afab1f8b4ebaf6d6f2dd7')
 
 prepare() {
     cd "$pkgname" || exit 1
