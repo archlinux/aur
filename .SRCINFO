@@ -1,7 +1,7 @@
 pkgbase = python-polling
 	pkgdesc = Powerful polling utility in Python
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justiniso/polling
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-polling
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/justiniso/polling.git#commit=a636656ddcde99bffd1fc0d84cd000a3e6eb7baf
-	b2sums = 8bf912aaf6ac9e3538d2b4ac7103ee8fb8a3eef1816f357bbadf02f5a1a6203ec7173d94ea80490651803db9e07201c677fe4ec1494f01cadd32dbc9fe8b5b3f
+	source = https://files.pythonhosted.org/packages/source/p/polling/polling-0.3.2.tar.gz
+	sha256sums = 3afd62320c99b725c70f379964bf548b302fc7f04d4604e6c315d9012309cc9a
 
 pkgname = python-polling
