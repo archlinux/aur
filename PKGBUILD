@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=blockmodeling
-_pkgver=1.1.5
+_pkgver=1.1.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Generalized and Classical Blockmodeling of Valued Networks"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-sna
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('58c7580702e7f216874c71bcb94cbdce')
-b2sums=('f0dec0f1401d8c97e194fd6452955e3285948c3bfd3a20fd2e7a62b5286f5ec3217e3a4f707c844395203ded18d32cbfc2e012482ebba08e36d0c8322f4f17ae')
+md5sums=('b749d0134d50870965e9c15e3b1f1ebf')
+b2sums=('6dff8fdad29ae0bbdd55109e0f3b4f386df9908ae534334846c488daa4a3419ddf687b6cd1f80f6ad3b7a7194a66d9fbef5bea8bb10327b02046626e24905c29')
 
 build() {
   mkdir build
