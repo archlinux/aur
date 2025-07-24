@@ -2,7 +2,7 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=107.r8031
+pkgver=107.r8032
 pkgrel=1
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   'pkgconf'
   'procps-ng'
   'sed'
-  'udev'
+  'systemd'
   'util-linux'
 )
 makedepends=(
@@ -73,7 +73,6 @@ optdepends=(
   'rng-tools: enable rngd service to help generating entropy early during boot'
   'rsyslog: enable logging with rsyslog'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
-  'systemd: systemd'
   'systemd-ukify: Unified Kernel Image'
   'squashfs-tools: support for building a squashed initramfs'
   'tar: live tar image'
@@ -84,16 +83,19 @@ provides=('initramfs')
 backup=('etc/dracut.conf')
 source=(
   git+${url}.git
+  1348.patch::${url}/commit/5941ff7.patch # fix: load essential storage kernel modules in sloppy hostonly mode
+  1425.patch::${url}/commit/8b993db.patch # fix(systemd-sysext): enable initrd-specific units
+  1453.patch::${url}/commit/aaa3595.patch # fix(generic.conf): increase ordering for generic.conf
   dracut-{install,remove}.script
   90-dracut-install.hook
   60-dracut-remove.hook
 )
-sha512sums=('SKIP'
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
             '1935e69f9992ae3e693c4c1e402f4459cbc3b75f379e2781db63dc7b1a5ba2520fa53cc3b4397276610e07df23ea1be0eb2b56da79c0574b55c4e3fb16a4e44b'
             '8f8c3a892094dca621db8f18c73501b4f316692d82bb05fc193d772d51c935eb85e0e8a45a2ae6285432421d3733077e74ab4803a722507147cc6e012b374b6d'
             'eea03d26c34b54984cf04a30fd4166814757258d67cd0cd72bbc9d69f0ebae8cd181290b0f2a1d43c24b39b19b802936ff6374205fa721d34e152db0aca5179e'
             '5f8f6f04081061d36cd331737b40a8f523319f0d05d92308c0967de97266c27d3dd901da49ce0850f12c2cd95e5eb19ba6219b5d8a1d075c010420be1900f803')
-b2sums=('SKIP'
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
         '8f60cac605eea34d663c7ca22b616ba07c70a81d61135b364793d31ce294ce49a32452ea109b73fe36b83784587c7bfcf6f5d3cd7e6efc002f8e7ee63c0225ab'
         '43657d862aa6c1d7fae4f511b0715ad56a2988e43890921ffaf0ee3e1ac9418aaae789524c5cf50d1dc44a4164525a9cbc590a2e41336037115b3409902e8ecd'
         '402a6d72fd2acf28e2d6745e7e2a34bd17b551e56be412895f76aeeaeace67daa754351a8430151dbd6979b329fea93a610dc4f48114d4a8b503e519adfe8298'
@@ -111,6 +113,13 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # apply all patches
+  for p in ../*.patch ; do
+    patch -Np1 < $p
+    P=$(echo $p | sed 's/^\.\.\///g' | sed 's/\.patch$//g')
+    S=$(cat ../$p | grep 'Subject:' | sed 's/^Subject:\ \[PATCH\]\ //g')
+  done
 
   # remove dracut modules not meant for arch x86_64
   for f in cms cio_ignore ppcmac zipl \
