@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('mpv' 'fzf' 'chafa')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('')
+sha256sums=('5b99a95298f8d82b094aae04aeb87464169a2d8e169fa6a41db4c3045814eea6')
 
 build() {
   cd "$srcdir/GopherTube-$pkgver"
