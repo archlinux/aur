@@ -1,7 +1,7 @@
 pkgbase = phonon-gstreamer
 	pkgdesc = Phonon GStreamer backend for Qt5
 	pkgver = 4.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://community.kde.org/Phonon
 	arch = x86_64
 	license = LGPL
