@@ -3,24 +3,25 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=softethervpn
-pkgver=v4.42_9798
-pkgrel=2
+pkgver=v4.44_9807
+releasedate=2025.04.16
+pkgrel=1
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://www.softether.org/"
 license=('Apache')
 depends=('bash' 'openssl' 'zlib')
-source=("https://www.softether-download.com/files/softether/${pkgver//_/-}-rtm-2023.06.30-tree/Source_Code/softether-src-${pkgver//_/-}-rtm.tar.gz"
+source=("https://www.softether-download.com/files/softether/${pkgver//_/-}-rtm-${releasedate}-tree/Source_Code/softether-src-${pkgver//_/-}-rtm.tar.gz"
         'aarch64.patch'
         'linux_32bit.patch'
         'linux_64bit.patch'
         'softethervpn-bridge.service'
         'softethervpn-client.service'
         'softethervpn-server.service')
-md5sums=('bd70e9ae9a19c3f227c26d731503cc7f'
+md5sums=('4905b5bf4b66b4b97a01dcbc6770b098'
          '8b92f69f9d8d852a3739d0e48bad0454'
-         '576277be87dd458c8d889d24a0072abe'
-         '1b3d536da4b9fa9a79f113089c13252e'
+         '105f9c01688152265bc4a12787ea29be'
+         'f292f5b2afae004e3c6442c32fe7f92a'
          '1d54c0065ae8947bd8455b9e2050c1af'
          'a1134fea991e6e00dc4910b1be16dc73'
          'b54b4f68d56555ddfffc50c2c399624f')
