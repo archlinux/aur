@@ -18,10 +18,17 @@ build() {
     add_file '/etc/unl0kr.conf'
 
     add_file '/usr/lib/udev/hwdb.bin'
+    add_file '/usr/lib/udev/libinput-device-group'
+    add_file '/usr/lib/udev/libinput-fuzz-extract'
+    add_file '/usr/lib/udev/libinput-fuzz-to-zero'
     map add_udev_rule \
         '60-evdev.rules' \
         '60-input-id.rules' \
-        '70-mouse.rules'
+        '65-libwacom.rules' \
+        '70-mouse.rules' \
+        '70-touchpad.rules' \
+        '80-libinput-device-groups.rules' \
+        '90-libinput-fuzz-override.rules'
 
     add_full_dir '/usr/share/libinput'
     add_full_dir '/usr/share/X11/xkb'

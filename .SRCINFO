@@ -1,7 +1,7 @@
 pkgbase = buffybox
 	pkgdesc = A suite of graphical applications for the terminal
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.postmarketos.org/postmarketOS/buffybox/
 	arch = x86_64
 	arch = aarch64

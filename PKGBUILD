@@ -2,7 +2,7 @@
 
 pkgname=buffybox
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of graphical applications for the terminal"
 url="https://gitlab.postmarketos.org/postmarketOS/buffybox/"
 arch=('x86_64' 'aarch64')
