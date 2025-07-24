@@ -2,7 +2,7 @@
 
 pkgname=gtkada
 pkgdesc='Ada bindings for the Gtk+ library.'
-pkgver=25.0w
+pkgver=26.0w
 pkgrel=1
 epoch=1
 
@@ -18,24 +18,18 @@ makedepends=(gprbuild-toolbox
              texlive-meta
              gnatdoc)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240505-16451-src.tar.gz
-        Makefile.in-patch
-        docs_Makefile-patch)
-sha256sums=(8ef936617886625a9fd98316b0db7226521a0e6637b25d1d92bab99fac99ce7e
-            f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4
-            65b8f2d56ad688b369ae13446e9c4a839604ab6b1836aa85a385f59515d54f03)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gtkada-26.0w-20250416-16402-src.tar.gz
+        Makefile.in-patch)
+sha256sums=(8ce12d3093544959a15c66e48652b45fbbe8f76c79a2ffab26cb7dbfb98f7dc0
+            f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4)
 
-_gtkada_src=gtkada-$pkgver-20240505-16451-src
+_gtkada_src=gtkada-26.0w-20250416-16402-src
 
 
 prepare()
 {
     cd $srcdir/$_gtkada_src
     patch -Np1 -i ../Makefile.in-patch
-
-    # Gnatdoc appears broken when trying to build reference manual docs. Disabling til fixed.
-    #
-    patch -Np0 -i ../docs_Makefile-patch
 }
 
 
