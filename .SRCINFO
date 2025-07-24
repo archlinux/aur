@@ -1,6 +1,6 @@
 pkgbase = below
 	pkgdesc = A time traveling resource monitor for modern Linux systems
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/facebookincubator/below
 	install = below.install
@@ -13,9 +13,9 @@ pkgbase = below
 	depends = libelf
 	depends = zlib
 	options = !lto
-	source = below-0.9.0.tar.gz::https://github.com/facebookincubator/below/archive/refs/tags/v0.9.0.zip
+	source = below-0.10.0.tar.gz::https://github.com/facebookincubator/below/archive/refs/tags/v0.10.0.zip
 	source = below.install
-	sha256sums = d45c8edbaae1df61cf2436c923e20392bff72598e8f3f0244f880d1e875cf349
+	sha256sums = 95517e0f727762d16dc56a9ce4d534b5a525bd46e7c978cab5272e6f26a5b557
 	sha256sums = af3057fcf8bf411522d76cf5def98b6c871687002b44236a9fe34bf8a47d95c2
 
 pkgname = below

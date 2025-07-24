@@ -4,7 +4,7 @@
 # ci|skipcheck|
 
 pkgname=below
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A time traveling resource monitor for modern Linux systems"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.zip"
   "below.install"
 )
-sha256sums=('d45c8edbaae1df61cf2436c923e20392bff72598e8f3f0244f880d1e875cf349'
+sha256sums=('95517e0f727762d16dc56a9ce4d534b5a525bd46e7c978cab5272e6f26a5b557'
             'af3057fcf8bf411522d76cf5def98b6c871687002b44236a9fe34bf8a47d95c2')
 
 prepare() {
