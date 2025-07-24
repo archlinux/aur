@@ -1,7 +1,7 @@
 # Maintainer: Igor Shimanogov <shimanogov.in@phystech.edu>
 
 pkgname=froggit
-pkgver=0.3.3
+pkgver=0.3.4
 _pkgver="$pkgver-beta"
 pkgrel=1
 pkgdesc='simplify your Git workflow with visual feedback, keyboard-driven controls, and a streamlined experience'
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('44d07eae29d02e0c5277314ac300681bcda300fcaff48f50d6e1e527249fe833')
+sha256sums=('080dd338f25c6c72e477ee006462bc6fe00fdc437603ef981dba0213f8b0c8e1')
 
 prepare(){
   cd "$pkgname-$_pkgver"
