@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bilibili-manga-downloader
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="哔哩哔哩漫画 bilibili漫画 B漫 的多线程下载器，带图形界面、导出cbz"
 arch=($CARCH)
@@ -24,23 +24,25 @@ depends=(
 )
 makedepends=(
     rust
+    git
     cargo-tauri
     pnpm
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ccfc4157cb555860a4fd6ee88f556b9cf0c09d03a3ee1ff1c673f46ca6062116')
+source=("${pkgname}::git+${url}#tag=v${pkgver}")
+sha256sums=('ce24957dd048dd1dacc39764b822edeca652627d9dbdf924c5063c450bde78f0')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}/src-tauri"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
     export CARGO_HOME="${srcdir}/.cargo"
     {
         echo -e '\n'
@@ -59,12 +61,12 @@ build() {
 }
 
 # check() {
-#     cd "${srcdir}/${pkgname}-${pkgver}/"
+#     cd "${srcdir}/${pkgname}/"
 #     cargo test --release --all-features
 # }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     install -Dvm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
     install -Dvm755 src-tauri/target/release/${pkgname} -t ${pkgdir}/usr/bin
