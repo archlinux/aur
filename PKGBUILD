@@ -2,7 +2,7 @@
 # Contributor: kumax <>
 # Contributor: Lehmaning
 pkgname=biliup-app-bin
-pkgver=0.5.3
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Bilibili presents on all major platforms client side, supports multi-p submission, manuscript editing.(Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 )
 source=(
 	"${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('88650aabdf4d752d9256f9020d48096044b44a790f48bfee064b4b0b707a77f6')
+sha256sums=('7a71c5eecfaf5f8b12eaf5e75b64f01606ffa466c0bceee6ca1f05effeb24274')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g

@@ -1,15 +1,15 @@
 pkgbase = biliup-app-bin
 	pkgdesc = Bilibili presents on all major platforms client side, supports multi-p submission, manuscript editing.(Prebuilt version)
-	pkgver = 0.5.3
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://biliup.github.io/biliup-app
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = biliup-app=0.5.3
+	provides = biliup-app=0.6.7
 	conflicts = biliup-app
-	source = biliup-app-0.5.3.rpm::https://github.com/biliup/biliup-app/releases/download/app-v0.5.3/biliup-app-0.5.3-1.x86_64.rpm
-	sha256sums = 88650aabdf4d752d9256f9020d48096044b44a790f48bfee064b4b0b707a77f6
+	source = biliup-app-0.6.7.rpm::https://github.com/biliup/biliup-app/releases/download/app-v0.6.7/biliup-app-0.6.7-1.x86_64.rpm
+	sha256sums = 7a71c5eecfaf5f8b12eaf5e75b64f01606ffa466c0bceee6ca1f05effeb24274
 
 pkgname = biliup-app-bin
