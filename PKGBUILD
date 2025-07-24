@@ -3,13 +3,14 @@
 pkgname=froggit
 pkgver=0.3.4
 _pkgver="$pkgver-beta"
-pkgrel=1
+pkgrel=2
 pkgdesc='simplify your Git workflow with visual feedback, keyboard-driven controls, and a streamlined experience'
 arch=('x86_64')
 url="https://github.com/thewizardshell/$pkgname"
 license=('MIT')
 makedepends=('go')
-depends=('glibc')
+depends=('glibc' 'ttf-nerd-fonts-symbols-mono' 'git')
+optdepends=('github-cli: GitHub integration')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
 sha256sums=('080dd338f25c6c72e477ee006462bc6fe00fdc437603ef981dba0213f8b0c8e1')
 
