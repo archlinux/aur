@@ -1,13 +1,13 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=rust-hypervisor-firmware
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust Hypervisor Firmware"
 url="https://github.com/cloud-hypervisor/rust-hypervisor-firmware"
 arch=('x86_64' 'aarch64')
 license=('Apache:2.0')
 makedepends=('rust')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
