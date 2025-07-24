@@ -1,6 +1,6 @@
 # Maintainer: mewset <@mewset github>
 pkgname=headsetstatus
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fast Linux tray app for headset battery and connection status (Qt6, UPower, FontAwesome)"
 arch=('x86_64')
