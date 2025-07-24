@@ -1,7 +1,7 @@
 pkgbase = python-njulogin
 	pkgdesc = The Nanjing University login module, which can be used to login to the various campus web sites
-	pkgver = 3.4.3
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/Do1e/NJUlogin
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-njulogin
 	depends = python-pycryptodome>=3.21.0
 	depends = python-onnxruntime>=1.20.0
 	depends = python-cryptography>=43.0.0
-	source = python-njulogin-3.4.3.tar.gz::https://files.pythonhosted.org/packages/6a/d4/d81e0299b5b645492d1e33746794436f04a5f52cdeb7708c8a4cd73e568f/njulogin-3.4.3.tar.gz
-	sha256sums = e0f4cbcfe08be62ad0a88832ac5506fb35418f73f131d6c1c7c592615ca696c1
+	source = python-njulogin-3.5.0.tar.gz::https://files.pythonhosted.org/packages/b1/09/846ea3f17ebd363cf2a15f6bdfcdb3aef3cc504c4128c10e9bf7aac1bf96/njulogin-3.5.0.tar.gz
+	sha256sums = 8644acc436c360530f53e203fc7da017ab1e80c1f6df40cab61cc8c7aa650b67
 
 pkgname = python-njulogin
