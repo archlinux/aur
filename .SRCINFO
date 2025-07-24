@@ -1,6 +1,6 @@
 pkgbase = zulu-17-bin
 	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
-	pkgver = 17.0.15
+	pkgver = 17.0.16
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = zulu-17-bin.install
@@ -17,11 +17,11 @@ pkgbase = zulu-17-bin
 	provides = java-runtime-headless-openjdk=17
 	provides = java-runtime=17
 	provides = java-runtime-openjdk=17
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.58.21-ca-jdk17.0.15-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 04bc646a45ba9c762b4200f33abe63b632f829783e841209a03fab08a34c1361
-	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.58.21-ca-jdk17.0.15-linux_i686.tar.gz
-	sha256sums_i686 = 38f2538d74699eeb2dc6b2e599aa0e219af7508c9b52303b07c41c4294e48361
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.58.21-ca-jdk17.0.15-linux_x64.tar.gz
-	sha256sums_x86_64 = 0d8a0f58daef02e8014bc47fae4526b038125493c6fb2a90653fcda6e8b71984
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.60.17-ca-jdk17.0.16-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 1cbb51dc9400814b8fbb79252762af5eba1f556e558128f2a4fca906b2ed04c8
+	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.60.17-ca-jdk17.0.16-linux_i686.tar.gz
+	sha256sums_i686 = 38c9435861639b21bbcd4cc5db4159ab10c16005a387bd7d4bda474f01bf777a
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.60.17-ca-jdk17.0.16-linux_x64.tar.gz
+	sha256sums_x86_64 = e70822e4b77a9ffd57015b55f4bb645bba97b8f5247a792eceb95dbc7a5a55ab
 
 pkgname = zulu-17-bin
