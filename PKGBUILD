@@ -15,11 +15,11 @@
 
 : ${_build_limit_cores:=false}
 
-: ${_commit:=7d0eabd3a938adef5aa0764c2b421653adef1962}
+: ${_commit:=984a997914030720cd503488d1009e854124cfbc}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.0.15
+pkgver=11.29.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
