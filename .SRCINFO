@@ -9,7 +9,7 @@ pkgbase = mongodb-compass-readonly-git
 	arch = aarch64
 	license = SSPL-1.0
 	makedepends = git
-	makedepends = npm>=10.2.4
+	makedepends = npm>=11.4.1
 	makedepends = python
 	makedepends = unzip
 	depends = electron37
