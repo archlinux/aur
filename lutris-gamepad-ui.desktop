@@ -5,3 +5,4 @@ Exec=/usr/bin/lutris-gamepad-ui
 Terminal=false
 Type=Application
 Icon=lutris-gamepad-ui
+StartupWMClass=lutris-gamepad-ui
