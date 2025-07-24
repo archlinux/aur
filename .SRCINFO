@@ -15,7 +15,7 @@ pkgbase = discord-canary-with-stable-dot-desktop
 	source = https://dl-canary.discordapp.net/apps/linux/0.0.727/discord-canary-0.0.727.tar.gz
 	source = LICENSE-0.0.727.html::https://discordapp.com/terms
 	source = OSS-LICENSES-0.0.727.html::https://discordapp.com/licenses
-	sha512sums = SKIP
+	sha512sums = 8dc51b5ff8c9066be921673b070844bf067d14cc29980b0d9c670544aecc9862f89ca19df0b0e6be2af74a0a06bc558ea166aadefb8cacc288e5ad0467d0155a
 	sha512sums = SKIP
 	sha512sums = SKIP
 

@@ -9,7 +9,7 @@
 
 pkgname="discord-canary-with-stable-dot-desktop"
 _discordbuild=discord-canary
-__discordbuildfancyname=DiscordCanary
+_discordbuildfancyname=DiscordCanary
 pkgver=0.0.727
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers - Canary build with Discord stable \"discord.desktop\" file name, to fix notifications and unread message badges"
@@ -24,27 +24,27 @@ optdepends=('libpulse: PulseAudio support'
 source=("https://dl-canary.discordapp.net/apps/linux/$pkgver/$_discordbuild-$pkgver.tar.gz"
         "LICENSE-$pkgver.html::https://discordapp.com/terms"
         "OSS-LICENSES-$pkgver.html::https://discordapp.com/licenses")
-sha512sums=('SKIP'
+sha512sums=('8dc51b5ff8c9066be921673b070844bf067d14cc29980b0d9c670544aecc9862f89ca19df0b0e6be2af74a0a06bc558ea166aadefb8cacc288e5ad0467d0155a'
             'SKIP'
             'SKIP')
 conflicts=("discord") # because it overrides the default discord.desktop file
 
 prepare() {
-  cd $__discordbuildfancyname
+  cd $_discordbuildfancyname
   sed -i "s|Exec=.*|Exec=/usr/bin/$_discordbuild|" $_discordbuild.desktop
 }
 
 package() {
   depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
   install -d "$pkgdir"/opt/$_discordbuild
-  cp -a $__discordbuildfancyname/. "$pkgdir"/opt/$_discordbuild
+  cp -a $_discordbuildfancyname/. "$pkgdir"/opt/$_discordbuild
 
-  chmod 755 "$pkgdir"/opt/$_discordbuild/$__discordbuildfancyname
+  chmod 755 "$pkgdir"/opt/$_discordbuild/$_discordbuildfancyname
 
   rm "$pkgdir"/opt/$_discordbuild/postinst.sh
 
   install -d "$pkgdir"/usr/bin
-  ln -s /opt/$_discordbuild/$__discordbuildfancyname "$pkgdir"/usr/bin/$_discordbuild
+  ln -s /opt/$_discordbuild/$_discordbuildfancyname "$pkgdir"/usr/bin/$_discordbuild
 
   install -d "$pkgdir"/usr/share/applications
   # use "discord.desktop" instead of "discord-canary.desktop" to avoid issues with unread notification badges
