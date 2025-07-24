@@ -4,8 +4,8 @@
 # Contributor: Jens Adam <jra@byte.cx>
 
 pkgname=lazarus-gtk2
-_lazarus_tag=4_0
-pkgver=4.0
+_lazarus_tag=4_2
+pkgver=4.2
 pkgrel=1
 url='http://www.lazarus.freepascal.org/'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'MPL-1.1')
@@ -13,7 +13,7 @@ arch=('x86_64')
 makedepends=('fpc' 'fpc-src' 'gtk2' 'rsync')
 options=(!makeflags libtool staticlibs !strip)
 source=("https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_${_lazarus_tag}/lazarus-lazarus_${_lazarus_tag}.tar.bz2")
-sha512sums=('9b770c6db42dad960940fe99ce7cd34ff1924906d6dcc4f01182d0b271a0e8cda2348b7c494d37ed200e631df80c9bf704a77963342f0084919d5050867951c9')
+sha512sums=('f17113a0ebff4f4228c5b9ad9a724f4e3c891a23b9b606a0a0a0ada934b07f61797c3f3b62f8ed1658ed11455a38cd159c55d02694006fb72c34d64102026966')
 
 build() {
   cd "lazarus-lazarus_${_lazarus_tag}"
