@@ -8,7 +8,6 @@ pkgbase = retroarch-assets-sounds
 	groups = libretro
 	license = CC-BY-NC-3.0
 	makedepends = git
-	depends = retroarch
 	source = git+https://github.com/libretro/retroarch-assets.git#commit=fb39cdde6dfaea2c98218d28c71b14afc632fa03
 	sha256sums = 68d6e88510d6af203cc5cfee0c21bc13c79b921a4109462acc73606d9e3a000d
 

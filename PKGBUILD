@@ -11,7 +11,7 @@ arch=(any)
 url=http://www.libretro.com/
 license=(CC-BY-NC-3.0)
 groups=(libretro)
-depends=(retroarch)
+depends=()
 makedepends=(git)
 _commit=fb39cdde6dfaea2c98218d28c71b14afc632fa03
 source=(git+https://github.com/libretro/retroarch-assets.git#commit=${_commit})
