@@ -1,12 +1,16 @@
 pkgbase = stompbox-jack
 	pkgdesc = Guitar amplification and effects library (headless JACK client)
 	pkgver = 0.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikeoliphant/stompbox
 	arch = x86_64
 	arch = aarch64
 	groups = pro-audio
 	license = GPL-3.0-only
+	license = BSD-3-Clause
+	license = MIT
+	license = Unlicense
+	license = Zlib
 	makedepends = git
 	makedepends = libjack.so
 	depends = glibc

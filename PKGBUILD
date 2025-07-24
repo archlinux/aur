@@ -3,11 +3,11 @@
 _upstream_name='stompbox'
 pkgname="${_upstream_name}-jack"
 pkgver='0.1.15'
-pkgrel=1
+pkgrel=2
 pkgdesc='Guitar amplification and effects library (headless JACK client)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mikeoliphant/${_upstream_name}"
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Unlicense' 'Zlib')
 groups=('pro-audio')
 depends=('glibc' 'gcc-libs' 'jack')
 makedepends=('git' 'libjack.so')
@@ -71,7 +71,21 @@ package() {
   install -D -m 755 stompbox-jack/stompbox-jack -t "${pkgdir}/usr/bin/"
 
   cd "${srcdir}/${_main_src_dir}/"
-  pwd
-  ls -1
   install -D -m 644 CREDITS.md README.md -t "${pkgdir}/usr/share/docs/${_upstream_name}/"
+
+  install_license() {
+    local dep=$1
+    local lic_dir="${pkgdir}/usr/share/licenses/${_upstream_name}/"
+    install -D -m 644 "${dep}/LICENSE" "${lic_dir}/LICENSE_${dep}"
+  }
+
+  cd "${srcdir}/${_main_src_dir}/Dependencies/"
+  install_license NeuralAudio
+  install_license r8brain-free-src
+  install_license dr_libs
+
+  cd "${srcdir}/${_main_src_dir}/Dependencies/NeuralAudio/deps/"
+  install_license NeuralAmpModelerCore
+  install_license RTNeural
+  install_license math_approx
 }
