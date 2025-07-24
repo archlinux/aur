@@ -9,8 +9,8 @@ arch=('any')
 url="https://github.com/averyvisentin/terminal-tetris"
 license=('MIT')
 
-depends=('python-blessed')
-makedepends=('python-setuptools') # Only setuptools is needed for this method
+depends=('python-blessed' 'python-installer')
+makedepends=('python-setuptools' 'base-devel') # Only setuptools is needed for this method
 
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pypiname::1}/$_pypiname/$_pypiname-$pkgver.tar.gz")
 sha256sums=('cc0fe8f333b5e5aa8d67ca6a99e9ad8c3e9db6786e4c704da12d3d9a6551c708')
