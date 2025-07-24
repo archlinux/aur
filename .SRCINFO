@@ -16,7 +16,7 @@ pkgbase = mongodb-compass
 	depends = libmongocrypt>=1.12.0
 	depends = libsecret
 	depends = lsb-release
-	depends = nodejs>=18.19.1
+	depends = nodejs>=20.16.0
 	optdepends = org.freedesktop.secrets
 	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-1.46.6.tar.gz::https://github.com/mongodb-js/compass/archive/v1.46.6.tar.gz

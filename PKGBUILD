@@ -10,7 +10,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron37'
-depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
+depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
 makedepends=('git' 'npm>=11.4.1' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 backup=('etc/mongodb-compass.conf')
