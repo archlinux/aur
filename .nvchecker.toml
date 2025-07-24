@@ -1,6 +1,6 @@
 [pyside2]
 source = 'debianpkg'
 debianpkg = 'pyside2'
-suite='sid'
-from_pattern='-'
-to_pattern='+'
+suite = 'sid'
+from_pattern = '-'
+to_pattern = '+'
