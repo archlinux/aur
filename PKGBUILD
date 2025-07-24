@@ -2,8 +2,8 @@
 
 pkgname=libadalang
 pkgdesc="A high performance semantic engine for the Ada programming language."
-pkgver=25.0w
-pkgrel=2
+pkgver=26.0w
+pkgrel=1
 epoch=2
 
 url=https://github.com/AdaCore/libadalang
@@ -20,52 +20,49 @@ makedepends=(gprbuild
              python-docutils
              python-sphinx)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240411-16289-src.tar.gz)
-sha256sums=(8001e19340b0aedea84952d0e09f0c814ec39a7dde82cbf840d860221d3d7eb4)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/libadalang-26.0w-20250409-16393-src.tar.gz)
+sha256sums=(35582ae22714fdbf0a8228dae2be2ca058568d550fec389a435873ce9ff64416)
+
 
 
 build()
 {
-  cd $srcdir/$pkgname-$pkgver-20240506-162EA-src
+  cd $srcdir/libadalang-26.0w-20250417-16134-src
 
   ADA_FLAGS="$CFLAGS"
   ADA_FLAGS="${ADA_FLAGS//-Wformat}"
   ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
-#  patch -Np0 -i $srcdir/rid_pipes_import.patch
 
-  python manage.py generate
-  python manage.py build                          \
-    --library-types=static,static-pic,relocatable \
-    --build-mode=prod                             \
-    --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
+  python -m langkit.scripts.lkm generate 
 
+  python -m langkit.scripts.lkm build \
+         --library-types=static,static-pic,relocatable
+
+#  make -C user_manual newhtml
 #  make -C dev_manual html
-
-  cd build/python
-  python setup.py build
 }
+
 
 
 package()
 {
-  cd $srcdir/$pkgname-$pkgver-20240506-162EA-src
+  cd $srcdir/libadalang-26.0w-20250417-16134-src
 
-  python manage.py                                \
-    install                                       \
-    --library-types=static,static-pic,relocatable \
-    --build-mode=prod                             \
-    $pkgdir/usr
-
+  python -m langkit.scripts.lkm install \
+            $pkgdir/usr --library-types=static,static-pic,relocatable
+  
+  
   # Install the developers manual.
   #
-  pushd dev_manual/_build/html
+#  pushd dev_manual/_build/html
 
-  for file in $(find . -type f); do
-      install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
-  done
+#  for file in $(find . -type f); do
+#      install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
+#  done
 
-  popd
+#  popd
+
 
   # Install the license.
   #
@@ -73,15 +70,25 @@ package()
      LICENSE.txt    \
      $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 
-  # Install the Python binding
+
+  # Install the Python binding.
   #
   cd build/python
   python setup.py install --root=$pkgdir --optimize=1 --skip-build
 
-  rm -fr $pkgdir/usr/python
+  mv $pkgdir/usr/python/libadalang \
+     $pkgdir/usr/lib/python3.13/site-packages
 
-  # Fix ocaml bindings location
+  rm -fr $pkgdir/usr/python
+  
+
+  # Fix ocaml bindings location.
   #
   mkdir -p $pkgdir/usr/lib/ocaml
   mv $pkgdir/usr/ocaml $pkgdir/usr/lib/ocaml/libadalang
+  
+  
+  # Rid Java files which are installed by langkit.
+  #
+  rm -fr  $pkgdir/usr/java
 }
