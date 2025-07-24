@@ -6,8 +6,8 @@
 _plugin=file-sharing
 _pkgrel=3
 pkgname="cockpit-${_plugin}"
-pkgver="4.2.10"
-pkgrel=2
+pkgver="4.2.13"
+pkgrel=1
 pkgdesc="A Cockpit plugin to easily manage samba and NFS file sharing."
 arch=("any")
 url="https://github.com/45Drives/cockpit-file-sharing"
