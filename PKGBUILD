@@ -9,8 +9,8 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.0.16
-pkgrel=1
+pkgver=12.0.15
+pkgrel=3
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
 license=('MPL-2.0')
@@ -40,7 +40,7 @@ source=(
 )
 
 sha256sums=(
-  'd70fed6bdb0061fa1e238f3db32d9fc87472147b644b08f158f0476bb42346a8'
+  '7abca82cf6913fd2ad2df82cad4a7de1aa04bb9dd814aee10d7a2909a0470a00'
   'fe7b8f694b7d24721b06821a1d7c7640815ffbf706d536dbf14b8c8a538bd5be'
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
 )
