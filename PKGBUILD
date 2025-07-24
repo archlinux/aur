@@ -1,7 +1,7 @@
 # Maintainer : Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=i3wsr
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A small program to change the name of an i3/sway workspace based on its contents."
 url="https://github.com/roosta/i3wsr"
@@ -30,4 +30,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-b2sums=('2ebc166916acc5305ba897b0e1d7b072df9ecef81c766e8e50a999e851ef1e7415c195bd56a5a9055aca071be031d9d33f4df3c1ae0a9a5de7c1c1b8876f2394')
+b2sums=('4b6b6bbe95d6c41877e19d82a5524543fb3c39b364b0627f8034cc37558adb9e96ed202f6b79dd37d16e576197d21798c2b35eac3d621eae46e98aebd9ff70c7')
