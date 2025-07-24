@@ -2,10 +2,10 @@
 
 pkgname=nnss
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Network Namespace setup using SSH SOCKS proxy'
 arch=('any')
-license=('MPL')
+license=('MPL-2.0')
 depends=('tun2socks')
 url="https://gitea.balki.me/balki/$pkgname"
 source=("git+$url.git#tag=v$pkgver")
