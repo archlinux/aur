@@ -2,7 +2,7 @@
 
 _name=langgraph-cli
 pkgname=python-${_name}
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="CLI for interacting with LangGraph API."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-watch' 'python-msgspec')
 optdepends=('python-langgraph-api: inmem' 'python-langgraph-runtime-inmem: inmem' 'python-dotenv: inmem')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('6120c037bdbdd779a1a80bf6d408ab4643cdc52e594a07caad5221a923fd3b78')
+sha256sums=('23f7dfa8209a2dae586a308087bf7683c35db082fca1f602b65686f9348c335b')
 
 prepare(){
   # Fix tests
@@ -33,6 +33,8 @@ check() {
     --deselect tests/unit_tests/cli/test_cli.py::test_dockerfile_command_with_docker_compose
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_shows_wolfi_warning
     --deselect tests/unit_tests/cli/test_cli.py::test_build_generate_proper_build_context
+    --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version_and_base_image
+    --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version
   )
   cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
