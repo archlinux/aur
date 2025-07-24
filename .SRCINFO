@@ -1,7 +1,7 @@
 pkgbase = cervisia
 	pkgdesc = CVS Frontend
 	pkgver = 25.04.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/cervisia/
 	arch = x86_64
 	groups = kde-applications
@@ -19,6 +19,7 @@ pkgbase = cervisia
 	depends = kdbusaddons5
 	depends = kdesu5
 	depends = ki18n5
+	depends = kinit
 	depends = kio5
 	depends = kitemviews5
 	depends = knotifications5
