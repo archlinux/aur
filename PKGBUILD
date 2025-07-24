@@ -59,7 +59,7 @@ build()
 
 check()
 {
-   exit
+   return 0
    
    gprbuild -P test_strings_edit/strings_edit-test.gpr
    
