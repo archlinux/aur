@@ -1,7 +1,7 @@
 # Maintainer: Zhou Qiankang <wszqkzqk@qq.com>
 
 pkgname=live-photo-conv
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="A cross-platform tool to process live photos of Google Android"
 url="https://github.com/wszqkzqk/${pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
     "webp-pixbuf-loader: Support to save photos as .webp with GStreamer and GdkPixbuf backend"
 )
 source=("git+https://github.com/wszqkzqk/${pkgname}.git#tag=${pkgver}")
-sha256sums=('6f5f7bd55c06fa380baeae815380ef2f987398fc19d20abf5db1ac7e630b6938')
+sha256sums=('3642ab86cc0970f9113d1ae245c8fb66bd52447520124ea1772597de16e63e2c')
 
 build() {
     arch-meson "${pkgname}" build
