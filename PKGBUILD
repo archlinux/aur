@@ -14,7 +14,7 @@
 pkgbase=rxvt-unicode-cvs
 pkgname=('rxvt-unicode-cvs' 'rxvt-unicode-terminfo-cvs')
 pkgver=9.31.r20240204164417
-pkgrel=1
+pkgrel=2
 epoch=2
 arch=('x86_64')
 url='https://software.schmorp.de/pkg/rxvt-unicode.html'
