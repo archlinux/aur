@@ -1,3 +1,10 @@
+Mullvad Browser 14.5.5 - July 22 2025
+ * All Platforms
+   * Updated Firefox to 128.13.0esr
+   * Updated uBlock Origin to 1.65.0
+   * Bug 453: Rebase Mulvad Browser Stable onto 128.13.0esr [mullvad-browser]
+   * Bug 43993: Backport Security Fixes from Firefox 141 [tor-browser]
+
 Mullvad Browser 14.5.4 - June 23 2025
  * All Platforms
    * Updated Firefox to 128.12.0esr
