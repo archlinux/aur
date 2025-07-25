@@ -29,7 +29,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  go build "${go_flags[@]}" 
+  go build "${go_flags[@]}"
 }
 
 package() {
