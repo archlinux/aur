@@ -21,8 +21,8 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
         "$pkgname.desktop"
         "vsmodinstall-handler.desktop")
 md5sums=("c3ae5c4917f1c1ac532841da400b210a"
-         "a39924439c5046af82175b7fa5d42275"
-         "e77871150115253e0d8c31b77a274182")
+         "a28504f172f0fd92dedf83a5ee0069aa"
+         "8ccc9b49290dda21199b14ac3cd4ac7e")
 
 prepare() {
 	# Remove install script provided by developers
@@ -42,9 +42,10 @@ package() {
 	install -Dm644 vsmodinstall-handler.desktop "$pkgdir"/usr/share/applications/vsmodinstall-handler.desktop
 	# Copy fonts to /usr/share/fonts
 	install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF/ "$pkgname"/assets/game/fonts/*.ttf
-	# Copy all other application files
-	cp -rdp --no-preserve=ownership "$pkgname" "$pkgdir"/usr/share/"$pkgname"
+	# Copy all other application files (`/opt` is the right place to dump this)
+	install -dm 755 "$pkgdir"/opt # Create directory first (required)
+	cp -r --preserve=mode -t "$pkgdir"/opt "$pkgname"
 	# Create a symlink to run the game from terminal
-	install -dm 755 "$pkgdir"/usr/bin/ # Create directory first (required)
-	ln -s /usr/share/"$pkgname"/Vintagestory "$pkgdir"/usr/bin/"$pkgname"
+	install -dm 755 "$pkgdir"/usr/bin # Create directory first (required)
+	ln -s /opt/"$pkgname"/Vintagestory "$pkgdir"/usr/bin/"$pkgname"
 }
