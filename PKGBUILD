@@ -2,8 +2,8 @@
 # Contributor: Ash <xash at riseup d0t net>
 
 pkgname=lsfg-vk-git
-pkgver=r199.e67fcd3
-pkgrel=2
+pkgver=r247.614a2a1
+pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux via DXVK/Vulkan"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
@@ -42,6 +42,7 @@ source=(
 	'git+https://github.com/trailofbits/pe-parse'
 	'git+https://github.com/ToruNiina/toml11'
 	'git+https://github.com/raysan5/raylib'
+	'git+https://github.com/zeux/volk.git'
 
 	# Submodule of dxbc (referenced under a different name in upstream's CMakeLists.txt)
 	'spirv::git+https://github.com/KhronosGroup/SPIRV-Headers'
@@ -56,15 +57,16 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 )
 install=lsfg-vk.install
 
