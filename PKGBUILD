@@ -1,6 +1,6 @@
 # Maintainer: Ryushe <jaadynhumpries at gmail dot com>
 pkgname=hyprswap-git
-pkgver="r45.bb44c1e"
+pkgver=0
 pkgrel=1 # update when add dependencies (increment ++)
 pkgdesc="Monitor 'swapper' for Hyprland utilizing hyprsome's workspaces"
 arch=('x86_64')
