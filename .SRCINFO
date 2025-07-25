@@ -1,6 +1,6 @@
 pkgbase = vet
 	pkgdesc = A command-line tool that acts as a safety net for the risky curl pipe to bash pattern
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://getvet.sh/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = vet
 	depends = less
 	optdepends = bat: syntax-highlighting pager for script review
 	optdepends = shellcheck: for linting downloaded scripts
-	source = vet-1.0.1.tar.gz::https://github.com/vet-run/vet/archive/refs/tags/v1.0.1.tar.gz
-	b2sums = 5c2a711f4744915053714cd941b82cfd94efcf0363d029a067b267f8254dc0423cfbd73ec742b1ca76889f70f21852dc42116182433d709bacd723b2aaaed1c1
+	source = vet-1.0.2.tar.gz::https://github.com/vet-run/vet/archive/refs/tags/v1.0.2.tar.gz
+	b2sums = ab59591183233125fc9f3db2c39a79d0f7df2972543765f44fc2c04fc84caaab350e4872ac1e90bf5adadfcfb004d3aea5acf56e5d91ebfc049ec24e01d8420e
 
 pkgname = vet

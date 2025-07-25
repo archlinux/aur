@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 
 pkgname=vet
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A command-line tool that acts as a safety net for the risky curl pipe to bash pattern'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vet-run/vet/archive/refs/tags/v$pkgver.tar.gz"
 )
-b2sums=('5c2a711f4744915053714cd941b82cfd94efcf0363d029a067b267f8254dc0423cfbd73ec742b1ca76889f70f21852dc42116182433d709bacd723b2aaaed1c1')
+b2sums=('ab59591183233125fc9f3db2c39a79d0f7df2972543765f44fc2c04fc84caaab350e4872ac1e90bf5adadfcfb004d3aea5acf56e5d91ebfc049ec24e01d8420e')
 
 check() {
     cd $pkgname-$pkgver
