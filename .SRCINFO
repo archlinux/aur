@@ -1,0 +1,21 @@
+pkgbase = samurai-static
+	pkgdesc = ninja-compatible build tool written in C
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/michaelforney/samurai
+	arch = aarch64
+	arch = x86_64
+	license = ISC
+	license = Apache
+	license = MIT
+	makedepends = musl
+	makedepends = gcc
+	makedepends = make
+	makedepends = gzip
+	provides = samurai
+	conflicts = samurai
+	source = samurai-1.2.tar.gz::https://github.com/michaelforney/samurai/archive/1.2.tar.gz
+	sha256sums = 37a2d9f35f338c53387eba210bab7e5d8abe033492664984704ad84f91b71bac
+	b2sums = 31ec4e728a90bbbba49964487c1c682a8cf3684bf05962dc74a73f51a9e3b539e1b8044b24001c748cd75de51f91850671342d87cc3d27f03b5f50f857bd5965
+
+pkgname = samurai-static
