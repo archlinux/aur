@@ -3,7 +3,7 @@
 
 _pkgname="dracula-cursors"
 pkgname="$_pkgname-git"
-pkgver=4.0.0.r70.g6a4c251
+pkgver=4.0.0.r125.g9694897
 pkgrel=1
 pkgdesc="Dracula theme cursors"
 url="https://github.com/dracula/gtk"
@@ -13,6 +13,7 @@ arch=("any")
 makedepends=("git")
 
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
@@ -27,6 +28,6 @@ pkgver() {
 
 package() {
   install -dm755 "$pkgdir/usr/share/icons"
-  cp --reflink=auto -a "$_pkgsrc/kde/cursors/Dracula-cursors" "$pkgdir/usr/share/icons/"
+  cp -a "$_pkgsrc/kde/cursors/Dracula-cursors" "$pkgdir/usr/share/icons/"
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
