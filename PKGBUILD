@@ -8,7 +8,7 @@ _chromium=137.0.7151.138
 #_chrlow=126.0.6423.0
 _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 #_chrfflow=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chrlow}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-pkgver=${_ffver}.sonames${_codec}.${_format}.${_util}
+pkgver=${_ffver}.so${_codec}.${_format}.${_util}
 pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
@@ -17,6 +17,7 @@ url=https://ffmpeg.org/
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz fetch-soname-by-chromium.sh
+nolog.c
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 #"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${_ffver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
@@ -24,6 +25,7 @@ off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'e39c6d127cb7ed768eeebc5c388cf86967cfde855e6d99edc27daba8c412227c'
+            '4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030'
             'e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             '03263b84dfd79619d22a50538e0dc668a2a919d58471cde4d388f0999c66de22'
@@ -56,12 +58,13 @@ prepare() {
   # ${_url}/+/refs/heads/master/chromium/patches/README
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   # CHROMIUM_NO_LOGGING
-  #sed -i.bak -E \
-  #  -e "/^void\s+av_log\s*\(.*\)\s*$/,/^\s*\}\s*$/c#define av_log(...){}" \
-  #  -e "/^void\s+av_log_once\s*\(.*\)\s*$/,/^\s*\}\s*$/c#define av_log_once(...){}" \
-  #  -e "/^void\s+av_vlog\s*\(.*\)\s*$/,/^\s*\}\s*$/c#define av_vlog(...){}" \
-  # libavutil/log.c
-  # diff libavutil/log.c{.bak,}||:
+  sed -i.bak -E \
+    -e "/^void\s+av_log\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
+    -e "/^void\s+av_log_once\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
+    -e "/^void\s+av_vlog\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
+   libavutil/log.c
+  cat ../nolog.c >> libavutil/log.c
+  #diff libavutil/log.c{.bak,}
 }
 
 build() {
