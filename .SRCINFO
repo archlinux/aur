@@ -1,6 +1,6 @@
 pkgbase = mkdocs-include-markdown-plugin
 	pkgdesc = Mkdocs Markdown includer plugin.
-	pkgver = 7.1.5
+	pkgver = 7.1.6
 	pkgrel = 1
 	url = https://github.com/mondeja/mkdocs-include-markdown-plugin
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = mkdocs-include-markdown-plugin
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = mkdocs
 	depends = python-wcmatch
-	source = mkdocs-include-markdown-plugin-7.1.5.tar.gz::https://github.com/mondeja/mkdocs-include-markdown-plugin/archive/refs/tags/v7.1.5.tar.gz
-	sha256sums = 351b7a3b0718e6f13410b4d7ea884e6a2c8c22ab31ea2f5a57ff9c78fa467ed4
+	source = mkdocs-include-markdown-plugin-7.1.6.tar.gz::https://github.com/mondeja/mkdocs-include-markdown-plugin/archive/refs/tags/v7.1.6.tar.gz
+	sha256sums = 3a752a0e71d81e92c762d28f25b5e95a8ffd829da3dff14f2ba4bb630d5b0002
 
 pkgname = mkdocs-include-markdown-plugin
