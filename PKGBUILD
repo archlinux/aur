@@ -71,7 +71,6 @@ build() {
   cd ffmpeg-$_ffver
   # ${_url}/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # BUILD.gn
-  # todo: disable logging to drop 0.1 MB
   ./configure \
     --disable-{debug,all,autodetect,doc,iconv,network,symver} \
     --disable-{error-resilience,faan,iamf} \
