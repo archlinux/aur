@@ -1,0 +1,24 @@
+diff -ura oolite-source-1.90/src/Core/HeadUpDisplay.m oolite-source-1.90-new/src/Core/HeadUpDisplay.m
+--- oolite-source-1.90/src/Core/HeadUpDisplay.m	2020-08-29 12:05:58.000000000 +0200
++++ oolite-source-1.90-new/src/Core/HeadUpDisplay.m	2025-07-23 22:13:40.045391614 +0200
+@@ -839,7 +839,7 @@
+ 	
+ 	OOVerifyOpenGLState();
+ 	
+-	if (_crosshairWidth * lineWidth > 0)
++	if ((_crosshairWidth * lineWidth) > 0)
+ 	{
+ 		OOGL(GLScaledLineWidth(_crosshairWidth * lineWidth));
+ 		[self drawCrosshairs];
+diff -ura oolite-source-1.90/src/Core/OOPriorityQueue.m oolite-source-1.90-new/src/Core/OOPriorityQueue.m
+--- oolite-source-1.90/src/Core/OOPriorityQueue.m	2013-11-10 20:30:47.000000000 +0100
++++ oolite-source-1.90-new/src/Core/OOPriorityQueue.m	2025-07-23 22:15:29.288411495 +0200
+@@ -535,7 +535,7 @@
+ 	}
+ 	
+ 	[object autorelease];
+-	if (_count * 2 <= _capacity)  [self shrinkBuffer];
++	if ((_count * 2) <= _capacity)  [self shrinkBuffer];
+ }
+ 
+ 
