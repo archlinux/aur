@@ -13,8 +13,8 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=25.2.0_devel.205806.64ce37b2d98
-pkgrel=3
+pkgver=25.3.0_devel.209257.8e82bafae6f
+pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
@@ -29,7 +29,7 @@ conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver 
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 
 url="https://www.mesa3d.org"
-license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
+license=("MIT AND BSD-3-Clause AND SGI-B-2.0")
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
 )
 
@@ -78,7 +78,7 @@ build() {
        -D llvm=enabled \
        -D lmsensors=enabled \
        -D valgrind=disabled \
-       -D vulkan-layers=device-select,overlay \
+       -D vulkan-layers=device-select,overlay,anti-lag \
        -D tools=[] \
        -D zstd=enabled \
        -D microsoft-clc=disabled \
@@ -115,7 +115,7 @@ package_mesa-minimal-git() {
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
   
-    install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" mesa/docs/license.rst
+    install -m644 -Dt "$pkgdir"/usr/share/licenses/$pkgname mesa/docs/license.rst
 }
 
 # I dislike splitting packages, but rusticl has several dependencies that are not needed by other mesa components
