@@ -13,6 +13,7 @@ makedepends=("imagemagick" "nodejs-nativefier" "unzip")
 source=(
   "${pkgname}.png"
   "${pkgname}.desktop"
+  "chatgpt-autocleaner.js"
 )
 
 build() {
@@ -23,6 +24,7 @@ build() {
     --icon "${pkgname}.png" \
     --width "800px" \
     --height "600px" \
+    --inject "chatgpt-autocleaner.js" \
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
@@ -53,4 +55,5 @@ package() {
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
 sha256sums=('9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203'
-            '04ed8323dbdf9f2c4741fa05f171e2016feb9c51a5ca52917ab05785b71608f7')
+            '04ed8323dbdf9f2c4741fa05f171e2016feb9c51a5ca52917ab05785b71608f7'
+            '3042a510076617b1d5ee6d67676766851122b3f185b3cca2fdec0f5c51c041df')
