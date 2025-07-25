@@ -3,7 +3,7 @@
 
 pkgname=xplot
 pkgver=0.90.7.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Reads from a xpl file to generate plots"
 arch=('x86_64')
 url="http://www.xplot.org/"
@@ -16,6 +16,7 @@ sha256sums=('01ceac45540f2d01e6ffe368cc0e950f4bb7fe1d235efde5349a09199e662240')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  CFLAGS+=" -Wno-implicit-int -Wno-implicit-function-declaration -std=gnu17" \
   ./configure --prefix="${pkgdir}/usr"
   sed -e "s|mandir = \$(exec_prefix)/man/man1|mandir = \$(exec_prefix)/share/man/man1|" -i Makefile
   make
