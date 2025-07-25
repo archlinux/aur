@@ -1,6 +1,6 @@
 pkgbase = continuwuity-git
 	pkgdesc = a very cool, featureful fork of conduit (rust matrix homeserver)
-	pkgver = 0.5.0.5252.g4d69a1ad
+	pkgver = 0.5.0.5414.g4a83df5b
 	pkgrel = 1
 	epoch = 1
 	url = https://forgejo.ellis.link/continuwuation/continuwuity
