@@ -1,12 +1,12 @@
 # Maintainer: Mopigames <mopigames@proton.me>
 pkgname=vanilla-wiiu-git
-pkgver=continuous.15.g7788aeb
+pkgver=continuous.0.g67f7f6f
 pkgrel=1
 pkgdesc="A work-in-progress Wii U GamePad software clone for Linux"
 arch=('x86_64')
 url="https://github.com/vanilla-wiiu/vanilla"
 license=('GPL-2.0')
-depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'ffmpeg' 'libnl' 'sdl2' 'dhclient')
+depends=('ffmpeg' 'libnl' 'sdl2' 'sdl2_ttf' 'sdl2_image' 'openssl' 'libnm')
 makedepends=('git' 'cmake' 'make')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
@@ -27,14 +27,14 @@ build() {
 
 package() {
     cd "$pkgname/build"
-    install -Dm755 "bin/vanilla-gui" "$pkgdir/usr/bin/vanilla-gui"
+    install -Dm755 "bin/vanilla" "$pkgdir/usr/bin/vanilla"
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/vanilla-gui.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=Vanilla Wii U GamePad
 Comment=A work-in-progress Wii U GamePad software clone for Linux
-Exec=vanilla-gui
+Exec=vanilla
 Terminal=false
 Categories=Game;Emulator;
 EOF
