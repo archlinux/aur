@@ -2,7 +2,7 @@
 # Maintainer: Dominik Bühler <dom.buehler@outlook.com>
 
 pkgname='switchtube-downloader-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A lightweight CLI to download SwitchTube videos'
 url='https://github.com/domi413/SwitchTube-Downloader'
@@ -10,27 +10,16 @@ arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('SwitchTube-Downloader')
 conflicts=('SwitchTube-Downloader')
-depends=('unzip')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.0/switchtube-downloader_linux_arm64.zip")
-sha256sums_aarch64=('1ef1c47d66d46b839da8ae08231746ae99de47c3586617ef052274ab6135ead2')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.1/switchtube-downloader_linux_arm64.zip")
+sha256sums_aarch64=('4ea2b85605759cd8d9cc9d297b1533f004bf64f3a979b5d012ece221566ec4e6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.0/switchtube-downloader_linux_amd64.zip")
-sha256sums_x86_64=('f75760d44baae2a27a76d581b6b40c712448883d38f1184b2c6ecc4508ef8fad')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.1/switchtube-downloader_linux_amd64.zip")
+sha256sums_x86_64=('ccc6a8324b2b09fd64beebfc26c752ea2f793d467f6bf2ebdadfa68907210be8')
 
 package() {
-  # Extract the appropriate zip file based on architecture
-  case $CARCH in
-  x86_64)
-  unzip -o "./switchtube-downloader-v${pkgver}-linux-amd64.zip" -d "${srcdir}"
-  ;;
-  aarch64)
-  unzip -o "./switchtube-downloader-v${pkgver}-linux-arm64.zip" -d "${srcdir}"
-  ;;
-  esac
-
   # Install the binary, license, and documentation
-  install -Dm755 "./switchtube-downloader" -t "${pkgdir}/usr/bin"
-  install -Dm644 "./LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 "./README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm755 "${srcdir}/switchtube-downloader" -t "${pkgdir}/usr/bin"
+  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
