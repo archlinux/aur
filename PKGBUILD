@@ -7,8 +7,8 @@
 #
 pkgname=portmaster-stub-bin
 pkgver=1.0.0
-pkgrel=1
-pkgdesc='Privacy Suite and Firewall: Installer to download the current binaries'
+pkgrel=2
+pkgdesc='Privacy Suite and Firewall v1 (Legacy) - For latest Portmaster, use portmaster-bin package'
 arch=('x86_64')
 url='https://safing.io/portmaster'
 license=('AGPL3')

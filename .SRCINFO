@@ -1,7 +1,7 @@
 pkgbase = portmaster-stub-bin
-	pkgdesc = Privacy Suite and Firewall: Installer to download the current binaries
+	pkgdesc = Privacy Suite and Firewall v1 (Legacy) - For latest Portmaster, use portmaster-bin package
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://safing.io/portmaster
 	install = arch.install
 	arch = x86_64

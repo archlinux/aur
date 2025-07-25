@@ -1,6 +1,16 @@
 
 
 post_install() {
+    echo ""
+    echo "============================================================"
+    echo "NOTE: You have installed Portmaster v1 (Legacy version)"
+    echo ""
+    echo "For the latest Portmaster with new features and"
+    echo "improvements, consider installing:"
+    echo "  pacman -S portmaster-bin"
+    echo "============================================================"
+    echo ""
+
     log() {
         echo "$@" 
     }
