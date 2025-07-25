@@ -1,11 +1,11 @@
 # -*- mode: sh -*-
 
-# Maintainer: Gavin D. Howard <yzena.tech@gmail.com>
-# Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
+#  Maintainer: Gavin D. Howard <yzena.tech@gmail.com>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='bc-gh'
-pkgver=7.0.3
-pkgrel=3
+pkgver=7.1.0
+pkgrel=1
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
@@ -20,12 +20,12 @@ source=(
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
 )
 sha512sums=(
-  '40bd059eda5df30fe41a4683a51727af7c9d0df48eb795c3c0afff0740cb4b4e719a6135203ebacb27617d9721a78c24f3ec3107c676aafa2808f73313084cd7'
-  '5bbae9108b8c298fe6ccd4de6b18900d7e619f0165dd26f3e1b1ef15b1932b58627bb88f81426d7c266f3cdd838a4d50e08934b21e73e89801d725b1281ef0d2'
+  'f80e6cb0c331de58d0619ea0ec44d6cc55bd1229391c65c67e9fa413371db7991ba8ff086f5cacae309b9d8186ad0ec4a6ab82e75e52f3bbfb367b393e750c32'
+  '6817806f58cea70934a7c034884cc29daac266c953b6bae73f575de44be2abfb65d0e848873f567d901f348c637b830065f2fd250b847a1ba5d8dcb3b02ec619'
 )
 sha256sums=(
-  '91eb74caed0ee6655b669711a4f350c25579778694df248e28363318e03c7fc4'
-  'd06faa5c5441abe2dfd7ec964bec7d2ca99c6fb88aa81ac1541c8dab952fb73f'
+  '1f13663ba0f2435b684321714a4d0b9fff32bb951fc78dc7424cd69bba5c0d3a'
+  '2f4939e9a86222fff43e526933d40f5b35f2d0ee5e5547aa6be203bd1523559b'
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
