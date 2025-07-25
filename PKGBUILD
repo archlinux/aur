@@ -12,7 +12,7 @@ optdepends=() # optional dependencies
 provides=('package')
 conflicts=('hyprswap' 'hyprswap-bin')
 # install=proto.install # find in /usr/share/pacman/proto.install (hooks for installer)
-source=("hyprswap-git::git+https://github.com/Ryushe/hyprswap.git")
+source=("hyprswap-git::git+https://github.com/Ryushe/hyprswap.git#branch=main")
 sha256sums=('SKIP')
 md5sums=('SKIP')
 
