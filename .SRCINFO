@@ -1,17 +1,17 @@
 pkgbase = fchat-horizon-appimage
 	pkgdesc = An Opinionated F-Chat Fork (previously f-chat rising)
-	pkgver = 1.32.2
+	pkgver = 1.32.3
 	pkgrel = 1
 	url = https://github.com/Fchat-Horizon/Horizon
 	arch = x86_64
 	license = MIT
 	provides = fchat
 	conflicts = fchat
-	noextract = fchat-horizon-appimage-1.32.2.AppImage
+	noextract = fchat-horizon-appimage-1.32.3.AppImage
 	options = !strip
-	source_x86_64 = fchat-horizon-appimage-1.32.2.AppImage::https://github.com/Fchat-Horizon/Horizon/releases/download/v1.32.2/F-Chat.Horizon-linux-x86_64.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v1.32.2/LICENSE
-	sha256sums_x86_64 = 7386421370a52197975f6edcdb80ed06f9755237c2d8556b7509c3e47160e44c
+	source_x86_64 = fchat-horizon-appimage-1.32.3.AppImage::https://github.com/Fchat-Horizon/Horizon/releases/download/v1.32.3/F-Chat.Horizon-linux-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v1.32.3/LICENSE
+	sha256sums_x86_64 = 4b9c660f517b89e3f7b4f65cf7b732bdd90f17e5ff16d1ff9153d9c48288338f
 	sha256sums_x86_64 = SKIP
 
 pkgname = fchat-horizon-appimage
