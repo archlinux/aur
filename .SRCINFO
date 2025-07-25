@@ -1,6 +1,6 @@
 pkgbase = electron38-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 38.0.0alpha.9
+	pkgver = 38.0.0alpha.10
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron38-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron38=38.0.0alpha.9
+	provides = electron38=38.0.0alpha.10
 	conflicts = electron38
-	noextract = electron38-chromedriver-38.0.0alpha.9-x86_64.zip
-	noextract = electron38-38.0.0alpha.9-x86_64.zip
-	source_aarch64 = electron38-chromedriver-38.0.0alpha.9-aarch64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.9/chromedriver-v38.0.0-alpha.9-linux-arm64.zip
-	source_aarch64 = electron38-38.0.0alpha.9-aarch64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.9/electron-v38.0.0-alpha.9-linux-arm64.zip
-	sha256sums_aarch64 = ff69db2ad5e3ccd7fcaf7a6adebbba87a68f8de0dcbe4f686be5f436eeee1dd3
-	sha256sums_aarch64 = 0c103110169ac5215dd9a56faef4d37fc59052a333357e84cb72c0be82833f69
-	source_armv7h = electron38-chromedriver-38.0.0alpha.9-armv7h.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.9/chromedriver-v38.0.0-alpha.9-linux-armv7l.zip
-	source_armv7h = electron38-38.0.0alpha.9-armv7h.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.9/electron-v38.0.0-alpha.9-linux-armv7l.zip
-	sha256sums_armv7h = 7cf62985804d58bc20257289dcbb4a0a1ff4dc35956d48054234a11d4702baf5
-	sha256sums_armv7h = 0774bbe5bd8f00223dd28b5cfc6f25bccc881622761b4c39a4d49f065274bcdc
-	source_x86_64 = electron38-chromedriver-38.0.0alpha.9-x86_64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.9/chromedriver-v38.0.0-alpha.9-linux-x64.zip
-	source_x86_64 = electron38-38.0.0alpha.9-x86_64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.9/electron-v38.0.0-alpha.9-linux-x64.zip
-	sha256sums_x86_64 = 8dab8534eb34ec15677780ff174ec04b7bead93dbf6fb82f6961c3c8a67fcb74
-	sha256sums_x86_64 = cdc1f504b06fb2f96998d50370ca8e2723b7749a1a8d1ffb6665e3d4c2581b72
+	noextract = electron38-chromedriver-38.0.0alpha.10-x86_64.zip
+	noextract = electron38-38.0.0alpha.10-x86_64.zip
+	source_aarch64 = electron38-chromedriver-38.0.0alpha.10-aarch64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.10/chromedriver-v38.0.0-alpha.10-linux-arm64.zip
+	source_aarch64 = electron38-38.0.0alpha.10-aarch64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.10/electron-v38.0.0-alpha.10-linux-arm64.zip
+	sha256sums_aarch64 = a3c630551b7d3f34162bd0039774f13e644d1127c74c605078e6aaa947081760
+	sha256sums_aarch64 = 51dc5110fcf7973f6f10d5107459b290a17b94a425622ecc4c4b30f16957156f
+	source_armv7h = electron38-chromedriver-38.0.0alpha.10-armv7h.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.10/chromedriver-v38.0.0-alpha.10-linux-armv7l.zip
+	source_armv7h = electron38-38.0.0alpha.10-armv7h.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.10/electron-v38.0.0-alpha.10-linux-armv7l.zip
+	sha256sums_armv7h = 40a757783e25f7187d827b572942fcf9f7ce5614391ef9ba8ba71e8763daa4c3
+	sha256sums_armv7h = f786aca4ab1570375e2b38ee6fbaf798e727d282b4ea832fd921f29bb68cc421
+	source_x86_64 = electron38-chromedriver-38.0.0alpha.10-x86_64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.10/chromedriver-v38.0.0-alpha.10-linux-x64.zip
+	source_x86_64 = electron38-38.0.0alpha.10-x86_64.zip::https://github.com/electron/electron/releases/download/v38.0.0-alpha.10/electron-v38.0.0-alpha.10-linux-x64.zip
+	sha256sums_x86_64 = 7f87d2df4fb76d71f04800441145204db6cd3e5920e6694f163b8c97cba71ab4
+	sha256sums_x86_64 = 6b7fa4f6a59326ccdb9bb93cd96172631794ff8d15a5f43067919d17d2ba90de
 
 pkgname = electron38-bin
