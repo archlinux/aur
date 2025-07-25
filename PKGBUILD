@@ -12,14 +12,14 @@ provides=('SwitchTube-Downloader')
 conflicts=('SwitchTube-Downloader')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.1/switchtube-downloader_linux_arm64.zip")
-sha256sums_aarch64=('4ea2b85605759cd8d9cc9d297b1533f004bf64f3a979b5d012ece221566ec4e6')
+sha256sums_aarch64=('df00921f56b2a05fa182d3c70bc59a5b2cce864fdc768308b4734e91aa8bea11')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.1/switchtube-downloader_linux_amd64.zip")
-sha256sums_x86_64=('ccc6a8324b2b09fd64beebfc26c752ea2f793d467f6bf2ebdadfa68907210be8')
+sha256sums_x86_64=('83ca0591c7f723a25188ac322e59a842e9ce14f7cd3a73ce93fec8ed473d3c0e')
 
 package() {
   # Install the binary, license, and documentation
-  install -Dm755 "${srcdir}/switchtube-downloader" -t "${pkgdir}/usr/bin"
-  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 "${srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm755 "switchtube-downloader" -t "$pkgdir/usr/bin"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }

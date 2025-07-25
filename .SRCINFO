@@ -8,9 +8,9 @@ pkgbase = switchtube-downloader-bin
 	provides = SwitchTube-Downloader
 	arch = aarch64
 	source_aarch64 = https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.1/switchtube-downloader_linux_arm64.zip
-	sha256sums_aarch64 = 4ea2b85605759cd8d9cc9d297b1533f004bf64f3a979b5d012ece221566ec4e6
+	sha256sums_aarch64 = df00921f56b2a05fa182d3c70bc59a5b2cce864fdc768308b4734e91aa8bea11
 	arch = x86_64
 	source_x86_64 = https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.2.1/switchtube-downloader_linux_amd64.zip
-	sha256sums_x86_64 = ccc6a8324b2b09fd64beebfc26c752ea2f793d467f6bf2ebdadfa68907210be8
+	sha256sums_x86_64 = 83ca0591c7f723a25188ac322e59a842e9ce14f7cd3a73ce93fec8ed473d3c0e
 	
 pkgname = switchtube-downloader-bin
