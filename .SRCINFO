@@ -1,6 +1,6 @@
 pkgbase = sunshine-beta-bin
 	pkgdesc = A self-hosted game stream host for Moonlight
-	pkgver = 2025.721.150932
+	pkgver = 2025.724.160624
 	pkgrel = 1
 	url = https://app.lizardbyte.dev
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = sunshine-beta-bin
 	conflicts = sunshine-git
 	conflicts = sunshine-bin
 	replaces = sunshine-bin
-	source = sunshine-beta-bin-2025.721.150932.pkg.tar.zst::https://github.com/LizardByte/Sunshine/releases/download/v2025.721.150932/sunshine.pkg.tar.zst
-	source = sunshine-beta-bin-2025.721.150932.desktop::https://raw.githubusercontent.com/LizardByte/Sunshine/v2025.721.150932/packaging/linux/dev.lizardbyte.app.Sunshine.desktop
-	sha256sums = e376f163e7d0d7c98e66f992e33275b66dd30c90daf908123faf73b154f2d5bc
+	source = sunshine-beta-bin-2025.724.160624.pkg.tar.zst::https://github.com/LizardByte/Sunshine/releases/download/v2025.724.160624/sunshine.pkg.tar.zst
+	source = sunshine-beta-bin-2025.724.160624.desktop::https://raw.githubusercontent.com/LizardByte/Sunshine/v2025.724.160624/packaging/linux/dev.lizardbyte.app.Sunshine.desktop
+	sha256sums = 9305203f7f03a628fb3d5c589dd0714e74b5d4035a75e344466eacf9ebdd3aca
 	sha256sums = 733594073f27c818f89ae1b065943384806811f02048376b76f64ce9c8768229
 
 pkgname = sunshine-beta-bin
