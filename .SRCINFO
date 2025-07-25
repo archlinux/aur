@@ -1,0 +1,15 @@
+pkgbase = rusty-autoclicker-git
+	pkgdesc = A pure Rust portable auto clicker built for Linux, macOS & Windows
+	pkgver = v2.4.0.r0.g3066e11
+	pkgrel = 1
+	url = https://github.com/MrTanoshii/rusty-autoclicker
+	arch = x86_64
+	license = CC0
+	makedepends = git
+	makedepends = cargo
+	provides = rusty-autoclicker
+	conflicts = rusty-autoclicker
+	source = rusty-autoclicker::git+https://github.com/MrTanoshii/rusty-autoclicker.git
+	sha256sums = SKIP
+
+pkgname = rusty-autoclicker-git
