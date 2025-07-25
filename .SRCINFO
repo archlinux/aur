@@ -1,7 +1,7 @@
 pkgbase = memprocfs
 	pkgdesc = MemProcFS is an easy and convenient way of viewing physical memory as files in a virtual file system.
-	pkgver = 5.14
-	pkgrel = 11
+	pkgver = 5.15
+	pkgrel = 2
 	url = https://github.com/ufrisk/MemProcFS
 	arch = x86_64
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = memprocfs
 	depends = openssl
 	depends = libusb
 	optdepends = python: for python bindings
-	source_x86_64 = https://github.com/ufrisk/MemProcFS/releases/download/v5.14/MemProcFS_files_and_binaries_v5.14.11-linux_x64-20250501.tar.gz
-	sha256sums_x86_64 = c5f008eb788b70f773e0e5ef35dae24b9eeb0b9665b66e3a772325d4ec249f79
-	sha512sums_x86_64 = d58ce642c2ea8ebc10f773c5e14a54a77f14cef343a4fd974943d93221d8ba16ca7d8ca0a296530e0e8cbfe26e65e72afc22b9a002c105eff8571569d69f1ef0
-	source_aarch64 = https://github.com/ufrisk/MemProcFS/releases/download/v5.14/MemProcFS_files_and_binaries_v5.14.11-linux_aarch64-20250501.tar.gz
-	sha256sums_aarch64 = 4a3da260194514dec97855bd916ce77203530056fd2f97c26deea70a3d6f8a08
-	sha512sums_aarch64 = ce184ee7b7f984d813e5c381164c5e5b0e8961eb331e8f050fa973755e5a73e5776929536d6474417647f7a8e1fb571f6fab0d54c67aa89fe4b8a9b529afedc3
+	source_x86_64 = https://github.com/ufrisk/MemProcFS/releases/download/v5.15/MemProcFS_files_and_binaries_v5.15.2-linux_x64-20250711.tar.gz
+	sha256sums_x86_64 = 10bc558ca84eb49402311b8feebf51329c1b923cda62567a410c9d9c0770439e
+	sha512sums_x86_64 = 5880e4ac06bbc8fb9c002f4f5cbdd16b30d7cd86cd3a17dbb78c54bb73841f1da8c19e987544c367385978b8750b028d787dd9d55817d4483041d7f01b79c402
+	source_aarch64 = https://github.com/ufrisk/MemProcFS/releases/download/v5.15/MemProcFS_files_and_binaries_v5.15.2-linux_aarch64-20250711.tar.gz
+	sha256sums_aarch64 = 6c397eedf80a8d6bada938fc5d7ccfcd8cbfd0f479495d4b6d501bbca63faa7e
+	sha512sums_aarch64 = 342b6fe1858e258ec924cbe5eb0867f538a4cd6f1e9f283742c5d82acd4de8f834a7c15c9305022c3d3dc315941eb26606131ffdff2128d5be73cd9707f8fc4a
 
 pkgname = memprocfs
