@@ -1,6 +1,6 @@
 # Maintainer: Wai <waicool20@gmail.com>
 pkgname=fw-fanctrl-ui-git
-pkgver=r10.41a8751
+pkgver=r11.9d40c69
 pkgrel=1
 pkgdesc="Framework Fan Control UI"
 arch=('any')
@@ -28,6 +28,7 @@ package() {
 
   cp fw-fanctrl-ui.py "$install_dir"
   cp favicon.ico "$install_dir"
+  cp icon/*.png "$install_dir"
   cp fw-fanctrl-ui.desktop "$desktop_dir"
 }
 
