@@ -42,6 +42,5 @@ usr/lib/librtmp.so.1
 usr/lib/libssh.so.4
 usr/lib/libstdc++.so.6
 usr/lib/libtasn1.so.6
-usr/lib/libxerces-c-3.2.so
 usr/lib/libz.so.1
 usr/lib/libzstd.so.1
