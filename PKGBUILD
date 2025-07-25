@@ -1,11 +1,12 @@
 # Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 
 pkgname=pinfo-git
-pkgver=0.6.13.r37.g47a01b5
-pkgrel=2
+pkgver=0.6.13.r21.g4d635ab
+pkgrel=1
+epoch=2
 pkgdesc="A hypertext info file viewer"
 arch=('x86_64')
-url="https://github.com/nicolarevelant/pinfo"
+url="https://github.com/baszoetekouw/pinfo"
 license=('GPL-2.0-only')
 makedepends=('git' 'meson')
 depends=('ncurses' 'readline')
@@ -20,11 +21,16 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	arch-meson build
-	meson compile -C build
+	CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+	unset LDFLAGS
+	[ -x configure ] || ./autogen.sh
+	sed -i 's|nogroup|nobody|' src/pinforc.in src/utils.c
+	[ -f Makefile ] || ./configure --prefix=/usr --sysconfdir=/etc --enable-cursor --mandir=/usr/share/man --infodir=/usr/share/info
+	make
 }
 
 package() {
 	cd "$pkgname"
-	DESTDIR="$pkgdir" meson install -C build
+	make DESTDIR="$pkgdir" install
+	rm -f "$pkgdir/usr/share/info/dir"
 }
