@@ -8,7 +8,7 @@ url="https://github.com/tednaaa/$github_repo_name"
 license=("GPL3")
 depends=()
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$github_repo_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
