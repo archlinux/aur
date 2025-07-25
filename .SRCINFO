@@ -1,12 +1,12 @@
 pkgbase = dumber
 	pkgdesc = (un)numbering Mardown sections and add/remove tables of content
 	pkgver = 3.0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MichelBoucey/dumber
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = go
-	source = https://github.com/MichelBoucey/dumber/archive/refs/tags/v3.0.0.3.tar.gz
-	sha256sums = 164c01be6584655f6fd051b12bda109cf37ac5923547d5074e0e1be133b13e8b
+	source = git+https://github.com/MichelBoucey/dumber#tag=v3.0.0.3
+	sha256sums = 41e498408ee45fa09d53a5f3aab7e5f4beb24d47749465a296335f6ef361bab6
 
 pkgname = dumber
