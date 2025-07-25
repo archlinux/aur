@@ -12,8 +12,9 @@ pkgbase = wg2nd
 	license = GPL
 	makedepends = make
 	makedepends = gcc
+	makedepends = git
 	depends = libcap
-	source = git+git://git.flu0r1ne.net/wg2nd#tag=v0.2.1
+	source = git+https://git.flu0r1ne.net/wg2nd#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = wg2nd
