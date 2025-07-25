@@ -1,27 +1,38 @@
-# Maintainer: Tuhana GAYRETLİ <aur at tuhana dot me>
+# Maintainer: Parhammed <parhammed@gmail.com>
+# Contributor: Tuhana GAYRETLİ <aur at tuhana dot me>
 # shellcheck disable=SC2034,SC2148,SC2164,SC2154
 
 pkgname=kde-material-you-colors-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0.r55.gc076374
+branch='main'
+pkgver=1.10.1.r0.gd4c8998
 pkgrel=1
-pkgdesc='Automatic Material You Colors generator from your wallpaper for the Plasma Desktop - Git testing branch version'
+pkgdesc='Automatic Material You Colors generator from your wallpaper for the Plasma Desktop'
 arch=(x86_64)
-url='https://github.com/luisbocanegra/kde-material-you-colors/tree/testing'
+url='https://github.com/luisbocanegra/kde-material-you-colors'
 license=(GPL3)
-makedepends=(git)
-depends=(
-  dbus-python
-  python-numpy
-  python-material-color-utilities
+makedepends=(
+    'git' 
+    'extra-cmake-modules' 
+    'python-setuptools' 
+    'python-build' 
+    'python-installer' 
+    'python-wheel' 
+    'libplasma'
 )
-optdepends=(
-  'python-colr: colored hex codes printing'
-  'python-pywal: theme other programs using Material You Colors'
+depends=(
+    'python'
+    'python-dbus' 
+    'python-numpy'
+    'python-materialyoucolor'
+    'plasma5support'
+    'python-pillow' 
+    'python-pywal16'
 )
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("$pkgname::git+${url/\/tree\/testing/}.git#branch=testing")
+options=(!debug)
+source=("$pkgname::git+${url}.git#branch=$branch")
 sha256sums=(SKIP)
 
 pkgver() {
@@ -30,18 +41,19 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname/src"
-  python -m compileall ./**/*.py
+  cd "$srcdir/$pkgname"
+  # backend
+  python -m build --wheel --no-isolation
+  # plasmoid & screenshot helper
+  cmake -B build -S . \
+    -DINSTALL_PLASMOID=ON
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$pkgname/src"
-
-  install -Dm644 -t "$pkgdir/usr/share/applications" ./*.desktop
-  install -Dm644 -t "$pkgdir/usr/lib/$_pkgname" ./sample_config.conf
-  install -Dm755 -t "$pkgdir/usr/lib/$_pkgname" ./{*.py,$_pkgname}
-  install -Dm755 -t "$pkgdir/usr/lib/$_pkgname/utils" ./utils/*.py
-  install -d "$pkgdir/usr/bin"
-  ln -s /usr/lib/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname" ../README.md
+  cd "$srcdir/$pkgname"
+  # backend
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  # plasmoid & screenshot helper
+  DESTDIR="$pkgdir" cmake --install build
 }
