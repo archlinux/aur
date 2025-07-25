@@ -1,6 +1,6 @@
 pkgbase = vanilla-wiiu-git
 	pkgdesc = A work-in-progress Wii U GamePad software clone for Linux
-	pkgver = continuous.15.g7788aeb
+	pkgver = continuous.0.g67f7f6f
 	pkgrel = 1
 	url = https://github.com/vanilla-wiiu/vanilla
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = vanilla-wiiu-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
-	depends = qt6-base
-	depends = qt6-multimedia
-	depends = qt6-svg
 	depends = ffmpeg
 	depends = libnl
 	depends = sdl2
-	depends = dhclient
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = openssl
+	depends = libnm
 	source = vanilla-wiiu-git::git+https://github.com/vanilla-wiiu/vanilla
 	sha256sums = SKIP
 
