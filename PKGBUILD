@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=299.250722.0
-pkgrel=2
+pkgver=299.250725.1
+pkgrel=1
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
 url="https://tuta.com/secure-email"
@@ -19,8 +19,8 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://app.tuta.com/desktop/${pkgnam
         "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-release-$pkgver/tutao-pub.pem")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
-sha512sums=('d8201e90cd442f5a31d0421351e7cbd39149b5fdda863e357de48c279ab9994410aaf44dbd9f163aee9db9b9953008079b7048b6c1af4c671724ce6884e641f7'
-            '88c30b2bd503c4c3299283c6428906e0b4ba42d26bce66ac000846f03a7562676868e3fb313fd857bdcbb8946d52233fd354e16ba7b4eb2f55954e8ed4a35037'
+sha512sums=('b938c1f54abdfeb1b350210bdf349ed4cd0c492017f81b4ffdfca1784c09766b1d0c8f3c127135f94eb9f7a0c1bce1fe956997acf39fac008592e9b272635c48'
+            'f8d322352fe25ef568bb2283d3994e678ec032fe1a0e48bbe4d24487662e7fc62f5f6bb2beecfc999dd8baa5f3b4018e8cab876a4f1f11c2628b2218352ff37a'
             '7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45')
 
 prepare() {
@@ -33,10 +33,10 @@ prepare() {
   ./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
 
   # Correct path for desktop file, remove unneeded desktop file keys
-  desktop-file-edit --set-key=Exec --set-value='"/opt/tutanota-desktop/Tuta Mail"' \
-    --set-icon="${pkgname%-bin}" \
+  desktop-file-edit --set-key=Exec --set-value="/opt/${pkgname%-bin}/${pkgname%-bin}" \
     --remove-key="X-AppImage-Version" \
-    "squashfs-root/Tuta Mail.desktop"
+    --remove-key="X-Desktop-File-Install-Version" \
+    "squashfs-root/${pkgname%-bin}.desktop"
 }
 
 package() {
@@ -46,19 +46,17 @@ package() {
   cp -av squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
   chmod 4755 "$pkgdir/opt/${pkgname%-bin}/chrome-sandbox"
   rm -rf "$pkgdir/opt/${pkgname%-bin}/usr/"
-  rm "$pkgdir/opt/${pkgname%-bin}"/{"Tuta Mail.desktop",AppRun}
+  rm "$pkgdir/opt/${pkgname%-bin}"/{"${pkgname%-bin}".desktop,AppRun}
 
   # Fix permisssions
   chmod 644 "$pkgdir/opt/${pkgname%-bin}"/resources/app{.asar,-update.yml}
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/${pkgname%-bin}/Tuta Mail" "$pkgdir/usr/bin/${pkgname%-bin}"
+  ln -s "/opt/${pkgname%-bin}/${pkgname%-bin}" "$pkgdir/usr/bin/"
 
-  install -Dm644 "squashfs-root/Tuta Mail.desktop" \
-    "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
+  install -Dm644 "squashfs-root/${pkgname%-bin}.desktop" -t \
+    "$pkgdir/usr/share/applications/"
 
-  for i in 64 512; do
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/${i}x${i}/apps/Tuta Mail.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-bin}.png"
-  done
+  install -d "$pkgdir/usr/share/icons/"
+  cp -r squashfs-root/usr/share/icons/hicolor/ "$pkgdir/usr/share/icons/"
 }
