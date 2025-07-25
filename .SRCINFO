@@ -1,15 +1,14 @@
 pkgbase = dlt-viewer
 	pkgdesc = Diagnostic Log and Trace client viewer
-	pkgver = 2.20.3
+	pkgver = 2.28.0
 	pkgrel = 1
 	url = https://github.com/GENIVI/dlt-viewer/
 	arch = x86_64
 	arch = i686
-	license = GPLv2
-	depends = qt5-base
-	depends = qt5-serialport
-	source = git://github.com/GENIVI/dlt-viewer.git#commit=402d6d0dd87a1a82b36481bd8dc06bbcfbb44150
+	license = MPL-2.0
+	depends = qt6-base
+	depends = qt6-serialport
+	source = git+https://github.com/GENIVI/dlt-viewer.git#commit=300a20461e8f1505ff891b211b3b69dc28c04e9a
 	sha256sums = SKIP
 
 pkgname = dlt-viewer
-
