@@ -1,6 +1,6 @@
 pkgbase = modustoolbox-progtools
 	pkgdesc = Provides a cross-platform installation of several utilities that allow you to program flash on Infineon MCU and Kit devices.
-	pkgver = 1.4.0.1399
+	pkgver = 1.5.0.1534
 	pkgrel = 1
 	url = https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxprogtools
 	install = modustoolbox-progtools.install
@@ -31,7 +31,7 @@ pkgbase = modustoolbox-progtools
 	depends = libx11
 	depends = glibc
 	options = !strip
-	source = file://ModusToolboxProgtools_1.4.0.1399.deb
-	sha256sums = 355a387701600a0af35edbfa9ab6e93e47bf69226f97e3a4bcb2d7b6b6147d2f
+	source = file://ModusToolboxProgtools_1.5.0.1534.deb
+	sha256sums = a9a7646f5e055b345a01dbc9088fb747ed2bc8cb0e2776b8f58c79e90e8b53e3
 
 pkgname = modustoolbox-progtools
