@@ -1,14 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.1.0.r20.g98b5d650
+pkgver=1.1.1.r1.g20749cf0
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
 url='https://github.com/gopher64/gopher64/'
 license=('GPL-3.0-only')
 depends=(
-    'bzip2'
     'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
@@ -56,9 +55,11 @@ makedepends=(
 provides=('gopher64')
 conflicts=('gopher64')
 source=('git+https://github.com/gopher64/gopher64.git'
-        'git+https://github.com/gopher64/parallel-rdp-standalone.git')
+        'git+https://github.com/gopher64/parallel-rdp-standalone.git'
+        'gopher64.desktop')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10')
 
 prepare() {
     git -C gopher64 submodule init
@@ -98,6 +99,7 @@ check() {
 
 package() {
     find target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
+    install -D -m644 gopher64.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m644 gopher64/data/icon/gopher64_128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gopher64.png"
     install -D -m644 gopher64/data/icon/gopher64_256x256.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gopher64.png"
     install -D -m644 gopher64/data/icon/gopher64_512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gopher64.png"
