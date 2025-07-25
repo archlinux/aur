@@ -1,7 +1,7 @@
 pkgbase = openai-codex-git
 	pkgdesc = Lightweight coding agent that runs in your terminal
 	pkgver = r543
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openai/codex
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = openai-codex-git
 	makedepends = cargo
 	optdepends = git: for working with git repositories
 	optdepends = ripgrep: accelerated large-repo search
+	provides = openai-codex
+	conflicts = openai-codex
 	options = !lto
 	source = git+https://github.com/openai/codex.git
 	b2sums = SKIP

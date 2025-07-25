@@ -1,11 +1,13 @@
 # Maintainer: Jack Mahoney <jacksmahoney@gmail.com>
 pkgname=openai-codex-git
 pkgver=r543
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight coding agent that runs in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openai/codex"
 license=('Apache-2.0')
+provides=('openai-codex')
+conflicts=('openai-codex')
 depends=()
 makedepends=(
 	'cargo'
