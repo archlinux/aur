@@ -1,6 +1,6 @@
 pkgbase = python-failprint
 	pkgdesc = Run a command, print its output only if it fails.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://pawamoy.github.io/failprint
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-failprint
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/f/failprint/failprint-1.0.4.tar.gz
-	sha256sums = 29ddff27b49fe9e6905f12c2e23ce2d48499f1f5e6f80590034a82b51453c27c
+	source = https://files.pythonhosted.org/packages/source/f/failprint/failprint-1.0.5.tar.gz
+	sha256sums = f839cec1bf9eb94ca6685b2695a0946aabfe9059121a8edb774c98cf44858f52
 
 pkgname = python-failprint
 	depends = python>=3.9

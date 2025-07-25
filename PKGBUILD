@@ -6,7 +6,7 @@ _pyname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Run a command, print its output only if it fails."
 arch=('any')
@@ -26,7 +26,7 @@ checkdepends=('python-pytest-timeout'
               'mkdocstrings')
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('29ddff27b49fe9e6905f12c2e23ce2d48499f1f5e6f80590034a82b51453c27c')
+sha256sums=('f839cec1bf9eb94ca6685b2695a0946aabfe9059121a8edb774c98cf44858f52')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
