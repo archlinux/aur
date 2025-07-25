@@ -34,7 +34,8 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --libexecdir=/usr/lib \
+    --libexec=/usr/lib \
+    --libdir=/usr/${_target}/lib \
     --target=${_target} \
     --with-sysroot \
     --with-float=soft \
