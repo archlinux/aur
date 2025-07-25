@@ -9,17 +9,16 @@
 
 pkgname=portmaster-bin
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Privacy Suite and Firewall - installs the official prebuilt Portmaster binaries'
 arch=('x86_64')
 url='https://safing.io/portmaster'
 license=('AGPL3')
 provides=('portmaster')
 conflicts=('portmaster' 'portmaster-legacy-bin' 'portmaster-stub-bin' 'portmaster-stub-beta-bin')
-optdepends=('libappindicator-gtk3: for systray indicator')
 
 # Dependencies according to the Portmaster documentation: https://v2.tauri.app/distribute/aur/#writing-a-pkgbuild-file
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 
 source=("portmaster.desktop"
