@@ -2,7 +2,7 @@
 
 # Thanks to an old but deleted package, 'ht' is no longer available
 pkgname=ht-term
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='headless terminal: wrap any binary with a terminal interface'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ provides=(ht)
 conflicts=(ht)
 makedepends=('cargo')
 source=("ht-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f6e84d13de17834c673c75554b4737711483881388696b3f689ae9500ed0d3080b18ad4eb204f40c045f4a6bb09f945e9a127ce42d6d767f29c0ce94ea056e93')
+sha512sums=('bd6192874150f78909cdfa2f15f7ac97c386b3059a4f8ab560a33b4e556fd2a9ec90a96f3be9730f315d57282ac41dab0a0f46b94160b727ccdb62216a0f4cb3')
 
 build() {
   cd ht-$pkgver
