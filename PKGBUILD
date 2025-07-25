@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.3.2
+pkgver=4.3.4
 _electronversion=26
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="🔧Electron based open source toolbox, free integration of rich plug-ins.(Use system-wide electron) 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubick.vip/"
@@ -30,8 +30,8 @@ source=(
 	"${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('8b949640a99072a3ae91d4c4d730416662c6d089ddd2e79dcd3badb05860129b'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('c4e7bfe7b52a89e14136710c97270a70dd57465d3b0f22b58d1a6f4bdcce39cd'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
