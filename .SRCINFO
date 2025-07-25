@@ -1,7 +1,7 @@
 pkgbase = meowrch-tools
 	pkgdesc = Performance optimization tools and scripts for Meowrch distribution
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/meowrch/meowrch
 	install = meowrch-tools.install
 	arch = any
@@ -18,6 +18,6 @@ pkgbase = meowrch-tools
 	optdepends = mesa: for OpenGL/Vulkan optimizations with zink-run
 	optdepends = power-profiles-daemon: for power profile management
 	source = https://github.com/meowrch/meowrch/archive/refs/heads/v3.0.tar.gz
-	sha256sums = 8b1b82395212f047c86cf0c1d4fd38d4fc1064b6bbb2f603435bd6dd1e788996
+	sha256sums = f5026f1f0a9af685638d40a343a7647795f88833cb072fbf4a067e99de1131df
 
 pkgname = meowrch-tools
