@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.5.1
+pkgver=1.5.3
 _electron=electron36
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('0e689bb2b06adb2d8fb280954092b9aa06c9f954f457532e5a48660df8d83783'
+sha256sums=('a7528b1f65e315ee6fd713736c607aee7148be5c74ef0e0c037107e1d7ed25d0'
             '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
@@ -48,7 +48,7 @@ prepare() {
         jq ".build.electronVersion = \"$electronVersion\"" |
         sponge package.json
 
-    jq '.resolutions."node-abi"="^4.12.0"' package.json | sponge package.json
+    # jq '.resolutions."node-abi"="^4.12.0"' package.json | sponge package.json
 
     #  no auto update
     sed -i package.json -e "s|electron-builder --dir|& --p never|g"
