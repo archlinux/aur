@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.152
+pkgver=2.0.153
 _electronversion=37
 pkgrel=1
 pkgdesc="Displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e909966644f6bb9c8d72e44c76e2f3dbe8578fbd2805f86b86496f612c52cbbe'
+sha256sums=('676335636c7729a81ea68696e1b22de4743cff0862060d007e00b92664846af1'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
