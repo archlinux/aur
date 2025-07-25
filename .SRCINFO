@@ -1,15 +1,40 @@
-pkgbase = lightgbm
-	pkgdesc = A fast, distributed, high performance gradient boosting (GBT, GBDT, GBRT, GBM or MART) framework based on decision tree algorithms, used for ranking, classification and many other machine learning tasks.
+pkgbase = lightgbm-cl
+	pkgdesc = Distributed gradient boosting framework based on decision tree algorithms.
 	pkgver = 4.6.0
-	pkgrel = 2
-	url = https://github.com/microsoft/LightGBM
-	arch = aarch64
+	pkgrel = 3
+	url = https://github.com/Microsoft/LightGBM
 	arch = x86_64
 	license = MIT
+	makedepends = boost
 	makedepends = cmake
-	makedepends = gcc
-	options = !debug
-	source = git+https://github.com/microsoft/LightGBM.git#tag=v4.6.0
+	makedepends = ninja
+	makedepends = opencl-headers
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	makedepends = python-scikit-build-core
+	makedepends = eigen
+	makedepends = fmt
+	makedepends = python-pip
+	depends = opencl-icd-loader
+	depends = boost-libs
+	depends = openmpi
+	source = LightGBM-4.6.0::git+https://github.com/Microsoft/LightGBM.git#tag=v4.6.0
 	sha256sums = 1e2c2e8ebe9acb8b730e7ca56efddee3ee6bf11d2674efccf4bb27673e1529c0
 
-pkgname = lightgbm
+pkgname = lightgbm-cl
+	provides = lightgbm
+	conflicts = lightgbm
+
+pkgname = python-lightgbm-cl
+	depends = python-numpy
+	depends = python-scipy
+	optdepends = python-dask
+	optdepends = python-matplotlib
+	optdepends = python-pandas
+	optdepends = python-pyarrow
+	optdepends = python-scikit-learn
+	provides = python-lightgbm
+	conflicts = python-lightgbm
