@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Simulation tool for fractured and deformable porous media"
 arch=(x86_64)
 url="https://github.com/pmgbergen/${_base}"
-license=(MIT)
+license=(GPL-3.0-or-later)
 depends=(python-deepdiff gmsh python-matplotlib python-meshio python-networkx
 python-numba python-scipy python-seaborn python-shapely python-sympy python-typing_extensions)
 makedepends=(python-build python-installer python-setuptools python-wheel)
