@@ -22,7 +22,7 @@ sha256sums=(
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
 prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Hack - see native package for details
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
