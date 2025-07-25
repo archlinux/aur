@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A simple task runner."
 arch=('any')
@@ -26,11 +26,13 @@ makedepends=('python-pdm-backend'
 #            )
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
-              'python-failprint')
+              'python-failprint'
+              'python-griffe'
+              'mkdocstrings')
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-demo.svg::https://github.com/pawamoy/duty/raw/${pkgver}/demo.svg")
-sha256sums=('9e59f19edceb537da5291f7ebe830895f36e3ab20ec9eadc682e8a5308d2f2b2'
+sha256sums=('222ee72df3fa2c07c71d3e3c6d8ed58613cd40f3bacf529f10a10fe95ce50956'
             '59726640b93e61a9e70d3dedb79d6dc441fdbf5e43b2862895ee1d9449414893')
 
 #prepare() {
@@ -51,13 +53,14 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-duty() {
-    depends=('python>=3.9' 'python-failprint>1.0.0')
+    depends=('python>=3.9' 'python-failprint>=1.0.5')
     optdepends=('python-duty-doc: Documentation for python duty')
     cd ${srcdir}/${_pyname}-${pkgver}
 

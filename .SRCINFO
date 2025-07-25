@@ -1,21 +1,23 @@
 pkgbase = python-duty
 	pkgdesc = A simple task runner.
-	pkgver = 1.6.0
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://pawamoy.github.io/duty
 	arch = any
 	license = ISC
 	checkdepends = python-pytest
 	checkdepends = python-failprint
+	checkdepends = python-griffe
+	checkdepends = mkdocstrings
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/d/duty/duty-1.6.0.tar.gz
-	source = 1.6.0-demo.svg::https://github.com/pawamoy/duty/raw/1.6.0/demo.svg
-	sha256sums = 9e59f19edceb537da5291f7ebe830895f36e3ab20ec9eadc682e8a5308d2f2b2
+	source = https://files.pythonhosted.org/packages/source/d/duty/duty-1.6.2.tar.gz
+	source = 1.6.2-demo.svg::https://github.com/pawamoy/duty/raw/1.6.2/demo.svg
+	sha256sums = 222ee72df3fa2c07c71d3e3c6d8ed58613cd40f3bacf529f10a10fe95ce50956
 	sha256sums = 59726640b93e61a9e70d3dedb79d6dc441fdbf5e43b2862895ee1d9449414893
 
 pkgname = python-duty
 	depends = python>=3.9
-	depends = python-failprint>1.0.0
+	depends = python-failprint>=1.0.5
 	optdepends = python-duty-doc: Documentation for python duty
