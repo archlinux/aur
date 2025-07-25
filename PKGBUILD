@@ -1,4 +1,5 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
+# Updated with automatic SHA256 hash calculation
 pkgname=meowrch-settings
 pkgver=2.0.0
 pkgrel=3
@@ -13,7 +14,7 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'hdparm: for HDD performance optimizations')
 install=meowrch-settings.install
 source=("$url/archive/refs/heads/v3.0.tar.gz")
-sha256sums=('95e470f8cfb0a57afff91a97ec2996b7ed85a73c339581eae353b77a1f259996')
+sha256sums=('8aa35ff23e9347de665fda67220182fdb5a558fcaa47212199a46db93f88bfae')
 
 package() {
     cd "$srcdir/meowrch-3.0/aur-packages/meowrch-settings"
