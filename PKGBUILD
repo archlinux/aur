@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/obsidian-level-maker/Obsidian/archive/refs/tags/Obsidian-v21-20250407.tar.gz", "obsidian.desktop")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/obsidian-level-maker/Obsidian/archive/refs/tags/Obsidian-v21-20250407.tar.gz" "obsidian.desktop")
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP' 'SKIP')
 
