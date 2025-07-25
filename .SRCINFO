@@ -1,0 +1,25 @@
+pkgbase = nih-plug-git
+	pkgdesc = Rust VST3 and CLAP plugin collection by Robbert Van Der Helm
+	pkgver = r2245.ecfd6322
+	pkgrel = 1
+	url = https://github.com/robbert-vdh/nih-plug
+	arch = x86_64
+	groups = pro-audio
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python
+	makedepends = cargo-nightly
+	makedepends = libxcursor
+	makedepends = alsa-lib
+	makedepends = jack2
+	depends = glibc
+	depends = gcc-libs
+	depends = libglvnd
+	depends = xcb-util-wm
+	depends = libx11
+	provides = nih-plug
+	conflicts = nih-plug
+	source = nih-plug::git+https://github.com/robbert-vdh/nih-plug.git
+	sha256sums = SKIP
+
+pkgname = nih-plug-git
