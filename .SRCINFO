@@ -1,6 +1,6 @@
 pkgbase = lyrs-git
 	pkgdesc = Shows the lyrics of the track, playing on Spotify / YouTube Music.(Use system-wide electron)
-	pkgver = 0.26.0.r1.g0f26ad8
+	pkgver = 0.26.3.r0.g4a3cb36
 	pkgrel = 1
 	url = https://github.com/organization/lyrs
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = lyrs-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
-	depends = electron36
-	provides = lyrs=0.26.0
+	depends = electron37
+	provides = lyrs=0.26.3
 	conflicts = lyrs
 	source = lyrs.git::git+https://github.com/organization/lyrs.git
 	source = lyrs.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = lyrs-git

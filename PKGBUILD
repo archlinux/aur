@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrs-git
 _pkgname=Lyrs
-pkgver=0.26.0.r1.g0f26ad8
-_electronversion=36
+pkgver=0.26.3.r0.g4a3cb36
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="Shows the lyrics of the track, playing on Spotify / YouTube Music.(Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
