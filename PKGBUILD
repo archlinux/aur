@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrs-bin
 _pkgname=Lyrs
-pkgver=0.26.2
-_electronversion=36
+pkgver=0.26.3
+_electronversion=37
 pkgrel=1
 pkgdesc="Shows the lyrics of the track, playing on Spotify / YouTube Music.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('978e7dc7784bb7381bf82a4b610cdbf518343cc8a48a5259f601941065a975e4'
+sha256sums=('8728f8d23a40b646d6139fd9b7ac3f4d605dd0881055b55c9a698d5ed0113bad'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
