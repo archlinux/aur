@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=gopher64
+Comment=Nintendo64 emulator
+Exec=/usr/bin/gopher64
+Icon=gopher64
+StartupWMClass=gopher64
+Terminal=false
+StartupNotify=false
+Categories=Game;
