@@ -6,7 +6,7 @@ pkgname=mipsel-linux-gnu-binutils-minimal
 _pkgname=binutils
 _target="mipsel-linux-gnu"
 pkgver=2.44
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -34,6 +34,7 @@ build() {
 
   ./configure \
     --prefix=/usr \
+    --libexecdir=/usr/lib \
     --target=${_target} \
     --with-sysroot \
     --with-float=soft \
