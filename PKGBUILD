@@ -1,8 +1,8 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=gofarsi-bin
-pkgver=20250716_075240_837fbaf09
-_pkgver=2025.07.16-075240-837fbaf09
+pkgver=v20250724_184713_77eb96eb1
+_pkgver=2025.07.24-184713-77eb96eb1
 pkgrel=1
 pkgdesc="Free Persian Go programming language book"
 arch=('x86_64' 'aarch64')
@@ -15,11 +15,11 @@ conflicts=('gofarsi-book')
 case "$CARCH" in
   x86_64)
     _deb="book_${_pkgver}_linux_amd64.deb"
-    _sha256='f2efcd454c587498ddf48cfcb18702992a3d3d0deb38661683bd8730b71f830a'
+    _sha256='f2c78b6498a7cdef28a5c8631bd688ecebefaa9b7a085a48973f1b6138783e89'
     ;;
   aarch64)
     _deb="book_${_pkgver}_linux_arm64.deb"
-    _sha256='1235ba30ed17f37d83b4a8c0da72e06c6e7e673751520cf6f073c7dad5f29bbc'
+    _sha256='38644b4dbfa58aaf21f0b83130761b84bb67396a34a190999c4676646dd1e08f'
     ;;
   *)
     echo "Unsupported architecture: $CARCH"
