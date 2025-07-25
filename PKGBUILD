@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=drawio
-pkgver=28.0.5
+pkgver=28.0.7
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=("any")
@@ -10,7 +10,7 @@ license=("Apache")
 makedepends=('ant' 'npm')
 options=(!strip)
 source=("drawio-${pkgver}.tar.gz::https://github.com/jgraph/drawio/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2e51810839442b6b280b84e94e59af99ac8d57014f2c00b1d23f56305588800e5d6fdc8c1bb037a0862e4a5b7c34e3dfb6e15731b8b7ad5cb56488b69519557c')
+sha512sums=('62223ea9968c45b3ce1d7ecdfe84cb2680ae6e7654f1229757907289a0e0069d6c22c71ca964fdf6733b2649421c137004b8cfa380b8476d80acd2721fc76352')
 
 build() {
 #	cd "${srcdir}/${pkgname}-${pkgver}/etc/dependencies/"
