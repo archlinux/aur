@@ -3,11 +3,11 @@
 _pkgname=bestool
 pkgname=${_pkgname}-git
 pkgver=r93.d6607c0
-pkgrel=1
+pkgrel=2
 pkgdesc="BES2300 programming tool (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Ralim/${_pkgname}"
-license=('unknown')
+license=('MIT')
 makedepends=('cargo')
 source=("git+${url}.git")
 sha256sums=('SKIP')
