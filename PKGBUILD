@@ -6,7 +6,7 @@ pkgname=mipsel-linux-gnu-gcc
 _pkgname=gcc
 _target="mipsel-linux-gnu"
 pkgver=15.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
 arch=('x86_64')
@@ -27,17 +27,18 @@ validpgpkeys=(
 )
 
 prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Hack - see native package for details
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   CXXFLAGS="-Wno-error=format-security" ./configure \
     --prefix=/usr \
+    --libexecdir=/usr/lib \
     --target=${_target} \
     --enable-languages=c,c++ \
     --disable-nls \
@@ -58,9 +59,9 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install-gcc
+  make DESTDIR="${pkgdir}" install-gcc
 
   find "$pkgdir" -name '*.la' -delete
   find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
