@@ -17,13 +17,17 @@ depends=(
   'python-h2'
   'python-httpx'
 )
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/farrokhi/dnsdiag/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5504395f3849cb87d33b63fb812f321e14000511c07730afa6ea78d127b404fd')
 
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
