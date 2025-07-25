@@ -2,8 +2,8 @@
 # Contributor: Grigory Kirillov <txgk@bk.ru>
 
 pkgname=newsraft
-pkgver=0.31
-pkgrel=2
+pkgver=0.32
+pkgrel=1
 pkgdesc='Feed reader with text-based user interface'
 url='https://codeberg.org/newsraft/newsraft'
 arch=('x86_64')
