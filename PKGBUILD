@@ -3,7 +3,7 @@
 
 pkgname=evtx
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform parser for Windows XML EventLog Format"
 arch=('x86_64')
 url="https://github.com/omerbenamram/evtx"
@@ -13,7 +13,7 @@ makedepends=('cargo')
 changelog=CHANGELOG.md
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c9e827afd315c235873b6848a9c7ced0d5434225e1af391f8c9c66b63d7349ad')
+sha256sums=('e5f5221879a68b455a086653ab457f815544d1580e591f52d3b0ed5b4b24f328')
 
 prepare() {
   cd "$pkgname-$pkgver"
