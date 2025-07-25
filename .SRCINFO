@@ -1,0 +1,13 @@
+pkgbase = bestool-git
+	pkgdesc = BES2300 programming tool (git version)
+	pkgver = r93.d6607c0
+	pkgrel = 1
+	url = https://github.com/Ralim/bestool
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = cargo
+	source = git+https://github.com/Ralim/bestool.git
+	sha256sums = SKIP
+
+pkgname = bestool-git
