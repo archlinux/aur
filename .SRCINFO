@@ -1,5 +1,5 @@
 pkgbase = pawdance
-	pkgdesc = paws to paws, a stealth‑grade, post‑quantum SSH VPN
+	pkgdesc = paws to paws, a stealth-grade, post-quantum SSH VPN
 	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://git.protogen.engineering/racks/pawdance
