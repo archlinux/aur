@@ -5,7 +5,7 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-slab"
 )
-pkgver=33.2.2
+pkgver=33.2.7
 pkgrel=1
 pkgdesc='Custom build of Iosevka with lower line height (1.1 rem)'
 arch=('any')
@@ -14,7 +14,7 @@ license=('OFL-1.1')
 makedepends=('nodejs' 'npm' 'ttfautohint')
 source=("$pkgname-$pkgver.zip::https://github.com/be5invis/Iosevka/archive/refs/tags/v$pkgver.tar.gz"
         "private-build-plans.toml")
-sha256sums=('702109467f511dd78b7e162cc6702f921e2a3e397e3a409a3b4d2dab7eff3579'
+sha256sums=('ce176e4d7b7c0ac49210911af3c5216cf65113ca15082d9ec89110ed6cb7b62f'
             '2490dffd783e88ffd57689cb0f39eccfc58d916a757bbf0222aa1dfd9f121770')
 
 prepare() {
