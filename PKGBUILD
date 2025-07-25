@@ -21,7 +21,7 @@ b2sums=('0d1119c2dae24c86adfc0034e527ef2eb811282a76af7c84254107643a4477e69f0d1de
 check() {
     cd $pkgname-$pkgver
 
-    # Link system bats helpers since git submodules aren't in release tarball
+    # Use system bats helpers (normally git submodules, not present in release tarball)
     rm -rf tests/helpers
     mkdir -p tests/helpers
     ln -sf /usr/lib/bats/bats-assert tests/helpers/bats-assert
