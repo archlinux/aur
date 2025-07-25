@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn-client-manager
-pkgver=v4.38_9760
-_realpkgver=${pkgver//_/-}-rtm-2021.08.17
+pkgver=v4.44_9807
+_realpkgver=${pkgver//_/-}-rtm-2025.04.16
 _exe="softether-vpnclient-${_realpkgver}-windows-x86_x64-intel.exe"
 pkgrel=1
 pkgdesc="SoftEther VPN Client Manager"
@@ -16,7 +16,7 @@ source=("https://www.softether-download.com/files/softether/${_realpkgver}-tree/
         'vpncmgr.sh'
         'vpncmgr-remote.desktop'
         'vpncmgr-remote.sh')
-md5sums=('9fdb54a3cb0e7564c5de4d675146c500'
+md5sums=('002322a3adc9b1b9a8c35492624ec604'
          '98c8ca04d44309eb6902e6db718a78e3'
          '2700860e1d40d685894aa88b0e0d42f1'
          '72769397b0ca79ff92de136dbf8ec7ad'
