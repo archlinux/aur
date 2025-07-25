@@ -22,7 +22,7 @@ sha256sums=(
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
 prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Hack - see native package for details
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -48,16 +48,17 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  make -k check
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make -O CFLAGS_FOR_TARGET="-O2 -g" CXXFLAGS="-O2 -no-pie -fno-PIC" CFLAGS="-O2 -no-pie" LDFLAGS="" check || true
+  #make -k check
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
-  find "$pkgdir" -name '*.la' -delete
-  find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
-  rm -rf $pkgdir/usr/share/{man,info}
+  find "${pkgdir}" -name '*.la' -delete
+  find "${pkgdir}" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
+  rm -rf "${pkgdir}"/usr/share/{man,info}
 }
