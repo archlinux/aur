@@ -1,14 +1,13 @@
 pkgbase = perl-gd-barcode
 	pkgdesc = Create barcode image with GD
-	pkgver = 2.00
-	pkgrel = 3
+	pkgver = 2.01
+	pkgrel = 1
 	url = https://metacpan.org/dist/GD-Barcode
 	arch = any
 	license = Artistic-2.0
-	makedepends = perl-test2-suite>=0.000060
 	depends = perl-gd
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/GD-Barcode-2.00.tar.gz
-	sha512sums = 75ccaab47791e4d00dde058cd3914edd9b907760d4a007c6a26fbe664d7a14ba55981a345bae70b5d7f3d63589e0eaee4061753b9aba2b596a412b3fa5aeb67c
+	source = https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/GD-Barcode-2.01.tar.gz
+	sha512sums = 5e25e9effa1d7b56bd7086808e0bcc585f2842b2d46c349595ea3fae48cdab0b8c350752303548dbc640e0c4bdcce74c77f37732d634dd55e20f317d4bedaf79
 
 pkgname = perl-gd-barcode
