@@ -1,7 +1,7 @@
-# Maintainer: Benjamin Hennion <benjamin dot hennion at wanadoo dot fr>
+# Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-settings-git
-pkgver=v21.07.r9.ge9abd2c
-pkgrel=1
+pkgver=r1539.9247a29
+pkgrel=0
 pkgdesc="Settings application for Plasma Mobile"
 arch=('any')
 url="https://www.plasma-mobile.org/"
@@ -11,26 +11,20 @@ depends=('kio'
 	'ki18n' 
 	'plasma-workspace'
 	'kdeclarative' 
-	'plasma-framework' 
 	'kcmutils' 
 	'knotifications'
 	'kwindowsystem'
 	)
 
-makedepends=('cmake' 'extra-cmake-modules' 'git') 
-provides=('plasma-settings')
+makedepends=('cmake' 'extra-cmake-modules') 
 conflicts=('plasma-settings')
-replaces=()
-backup=()
-options=()
-install=
 source=('git+https://invent.kde.org/plasma-mobile/plasma-settings.git')
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/plasma-settings"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "plasma-settings"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
