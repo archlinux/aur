@@ -1,12 +1,12 @@
 pkgbase = python-pytest-retry
 	pkgdesc = Adds the ability to retry flaky tests in CI environments.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/str0zzapreti/pytest-retry
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-hatchling
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

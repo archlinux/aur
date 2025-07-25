@@ -3,7 +3,7 @@
 _name=pytest-retry
 pkgname=python-${_name}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds the ability to retry flaky tests in CI environments.'
 arch=('any')
 url='https://github.com/str0zzapreti/pytest-retry'
@@ -11,7 +11,7 @@ license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('f8d52339f01e949df47c11ba9ee8d5b362f5824dff580d3870ec9ae0057df80f')
 depends=('python' 'python-pytest')
-makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 
 build() {
