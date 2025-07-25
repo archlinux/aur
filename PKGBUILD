@@ -1,7 +1,7 @@
 # Maintainer: Jonas Kalsvik <jonas@kalsvik.no>
 pkgname="epicmickeylauncher"
 pkgver="0.5.2"
-pkgrel=10
+pkgrel=11
 epoch=
 pkgdesc="Mod Installer, Level Loader & Launcher for every Epic Mickey game."
 arch=('x86_64')
@@ -45,4 +45,4 @@ package() {
 	cp -r "${srcdir}/usr/share/icons/" "${pkgdir}/usr/share/icons/"
 }
 
-md5sums=('b9f34e6647c5234de4cd288c8205b1bc')
+md5sums=('b2105998db489ad0cad165f83ecd1420')
