@@ -1,0 +1,23 @@
+--- a/src/search.c
++++ b/src/search.c
+@@ -37,7 +37,7 @@ static void look_for(char *needle,int where,struct tree *child) {
+   char *haystack;
+   char *p;
+   char *args[2];
+-  char what[40][7],real[1024];
++  char what[40][16],real[1024];
+   int i;
+
+   for(next=child->child_list;next;next=next->next_peer) {
+@@ -60,9 +60,9 @@ static void look_for(char *needle,int where,struct tree *child) {
+       if(strstr(haystack,needle)) {
+         /* INsert stuff */
+         args[0] = next->label;
+-        snprintf(what[0],6,".%lu",next->subid);
++        snprintf(what[0],16,".%lu",next->subid);
+         for(i=1,tmp=next;tmp;tmp=tmp->parent,i++)
+-          snprintf(what[i],6,".%lu",tmp->subid);
++          snprintf(what[i],16,".%lu",tmp->subid);
+         *what[i] = 0x00;
+         *real = 0x00;
+         while(--i)
