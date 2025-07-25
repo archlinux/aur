@@ -11,11 +11,13 @@ _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 _chromium=138.0.7204.55
 _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-source=( "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
+source=("sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
+nolog.c
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
-sha256sums=('0000000000000000000000000000000000000000000000000000000000000000'
+sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
+            '4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 sha256sums[0]='SKIP'
 depends=(glibc)
@@ -39,7 +41,15 @@ prepare() {
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
-  diff libavcodec/opus/dec.c{.bak,} || :
+  diff libavcodec/opus/dec.c{.bak,}||:
+  # CHROMIUM_NO_LOGGING
+  sed -i.bak -E \
+    -e "/^void\s+av_log\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
+    -e "/^void\s+av_log_once\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
+    -e "/^void\s+av_vlog\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
+   libavutil/log.c
+  cat ../nolog.c >> libavutil/log.c
+  diff libavutil/log.c{.bak,}||:
   # soname
   grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
   grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h
