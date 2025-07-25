@@ -2,7 +2,7 @@
 
 pkgname=cromite-bin
 pkgver=138.0.7204.169
-pkgrel=1
+pkgrel=2
 _cromite_commit='bd85e1d8092b493c5aa87292c98065aba3087112'
 _launcher_ver=8
 pkgdesc='Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)'
@@ -55,6 +55,7 @@ package() {
 	local toplevel_files=(
 		chrome_100_percent.pak
 		chrome_200_percent.pak
+		chrome-wrapper
 		resources.pak
 		snapshot_blob.bin
 		icudtl.dat
@@ -62,7 +63,6 @@ package() {
 
 	local toplevel_binaries=(
 		chrome_sandbox
-		chrome-wrapper
 		chrome_crashpad_handler
 
 		# Qt
