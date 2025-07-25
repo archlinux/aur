@@ -1,0 +1,14 @@
+pkgbase = selx
+	pkgdesc = Minimal X11 selection tool
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://codeberg.org/NRK/selx
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	source = selx-1.2.0.tar.gz::https://codeberg.org/NRK/selx/archive/v1.2.0.tar.gz
+	sha256sums = a21d228da8c7ec9dc22219ec57a81c1a8dfc16140a443f98361fbedbc0cc9be0
+
+pkgname = selx
