@@ -1,8 +1,8 @@
-# Maintainer: Evgeniy Alekseev 
+# Maintainer: Evgeniy Alekseev
 
 pkgname=plasma6-applets-awesome-widgets
 _pkgname=awesome-widgets
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)"
 arch=('x86_64')
@@ -28,4 +28,4 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('763d53e3bdbdf8bc0f17e2c35695629fedb8650b15dba08091ed06bc31f34237')
+sha256sums=('8fd63135484a24711a4d2b6fe2808119605da10f326e36950d6fbb69a612a392')
