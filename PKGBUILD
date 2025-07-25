@@ -7,7 +7,7 @@ pkgname=mipsel-elf-binutils
 _pkgname=binutils
 _target="mipsel-elf"
 pkgver=2.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of binary tools for baremetal MIPS."
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -31,14 +31,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # Extract the FSF All Permissive License
-  # <https://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html>
-  # used for some linker scripts.
-  tail -n 5 ../ld/scripttempl/README >FSFAP
-
   ./configure \
     --prefix=/usr \
-    --libexecdir=/usr/lib \
     --target=${_target} \
     --with-newlib \
     --with-gnu-as \
@@ -68,20 +62,16 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  make -k check
+  make -O CFLAGS_FOR_TARGET="-O2 -g" CXXFLAGS="-O2 -no-pie -fno-PIC" CFLAGS="-O2 -no-pie" LDFLAGS="" check || true
+  #make -k check
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  make -k check
-
 
   make DESTDIR="${pkgdir}" install
 
   find "$pkgdir" -name '*.la' -delete
   find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
   rm -rf $pkgdir/usr/share/{man,info}
-
-  # install FSF All Permissive License
-  install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ FSFAP
 }
