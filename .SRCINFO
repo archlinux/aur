@@ -1,6 +1,6 @@
 pkgbase = hyprswap-git
 	pkgdesc = Monitor 'swapper' for Hyprland utilizing hyprsome's workspaces
-	pkgver = r47.7ee7b26
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/Ryushe/hyprswap
 	arch = x86_64
