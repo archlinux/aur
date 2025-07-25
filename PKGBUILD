@@ -6,7 +6,7 @@
 
 pkgname=pidgin-otr
 pkgver=4.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Off-the-Record Messaging plugin for Pidgin.'
 arch=('x86_64')
 license=('GPL')
@@ -22,14 +22,19 @@ b2sums=('e4ee9887d755f27f121c86337df596939eb1ae83ae91d1a396140be27558ee086cca54e
         'SKIP')
 validpgpkeys=(22DF3305DF56667CE15784FCF24DE08F42C2ABAD) # OTR Dev Team
 
+prepare() {
+  cd $pkgname-$pkgver
+  autoreconf -vif
+}
+
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }

@@ -1,7 +1,7 @@
 pkgbase = pidgin-otr
 	pkgdesc = Off-the-Record Messaging plugin for Pidgin.
 	pkgver = 4.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.cypherpunks.ca/otr/
 	arch = x86_64
 	license = GPL
