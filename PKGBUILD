@@ -27,16 +27,5 @@ build() {
 
 package() {
     cd "$pkgname/build"
-    install -Dm755 "bin/vanilla" "$pkgdir/usr/bin/vanilla"
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/vanilla-gui.desktop" <<EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Vanilla Wii U GamePad
-Comment=A work-in-progress Wii U GamePad software clone for Linux
-Exec=vanilla
-Terminal=false
-Categories=Game;Emulator;
-EOF
-
+    make DESTDIR="$pkgdir" install
 }
