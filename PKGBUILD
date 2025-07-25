@@ -30,15 +30,9 @@ package() {
 	install -d "$pkgdir/usr/bin/"
 	install -d "$pkgdir/usr/share/applications/"
 
-	_install_file=("$_exeName" "crunch.dll" "crunchunity.dll" "libcapstone.so" "libTexture2DDecoderNative.so" "Photino.Native.so")
-	for _file in *; do #${_install_file[@]}; do
+	for _file in *; do
 		install -Dm755 "$_file" "$pkgdir/opt/$_pkgname/$_file"
 	done
-
-	#if test [ ! -f "/opt/$_pkgname/AssetRipper.log" ]; then
-	#touch "AssetRipper.log"
-	#install -Dm666 "AssetRipper.log" "$pkgdir/opt/$_pkgname/AssetRipper.log"
-	#fi
 
 	install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 	install -D LogoReimaginedTransparent.png "$pkgdir/usr/share/icons/$_pkgname.png"
