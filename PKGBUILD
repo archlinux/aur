@@ -19,7 +19,6 @@ license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm git
 diffutils gcc make) # base-devel
-# tarball has unstable csum
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
 install=on-opera-ffmpeg.install
@@ -28,7 +27,7 @@ sha256sums=('30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
             'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 
 prepare() {
-  echo Use chromium-ffmpeg-codecs instead of $pkgname.
+  echo Use chromium-ffmpeg-codecs instead of $pkgname as this lacks some optimization configs.
   cd chromium-ffmpeg
   # List used funcs
   grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > ../sigs.txt
