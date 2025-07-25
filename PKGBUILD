@@ -26,28 +26,3 @@ package() {
 	nm -D "$pkgdir/usr/bin/chatterino"|grep $_icuorig|awk '{print $2 " " $2 | " sed s/'$_icuorig'$/'$_icumaj'/ "}' |tee  map.txt
 	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
 }
-
-_copr="""ABI incompatible yet. Is COPR build reliable?
-_pkgname='chatterino2-7tv'
-pkgname=${_pkgname}-bin
-pkgver=7.5.3
-_rpmrel=4
-pkgrel=4
-pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
-arch=('x86_64')
-url=https://github.com/SevenTV/chatterino7
-license=('MIT')
-depends=(hicolor-icon-theme libnotify openssl
-	qt6-{base,5compat,imageformats,svg} qtkeychain-qt6)
-optdepends=('streamlink: For piping streams to video players'
-			'qt6-wayland: Wayland support')
-provides=(chatterino)
-conflicts=(chatterino)
-source=(https://download.copr.fedorainfracloud.org/results/kada49/chatterino7/fedora-42-${arch}/08945165-chatterino7/chatterino7-${pkgver}-${_rpmrel}.${arch}.rpm)
-sha256sums=('20453076155623fc5128dbe3cb554f03ce1dd3db36e3947686c45af0f63cf44e')
-build() {
-	rm -r usr/{lib,share/metainfo} #gabadge
-}
-package() {
-	mv usr ${pkgdir}
-}"""
