@@ -1,7 +1,7 @@
 pkgname=hpaper
 pkgver=0.5
 pkgrel=2
-pkgdesc='Automated Wallpaper Management for Wayland Using Swaybg'
+pkgdesc='Advanced Wallpaper Management for Wayland'
 arch=('x86_64')
 url="https://github.com/Hcode00/hpaper"
 license=('GPL')
