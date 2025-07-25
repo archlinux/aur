@@ -2,12 +2,12 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=python-tl2cgen
-pkgbase=${pkgname#*-}
+_pkgname=${pkgname#*-}
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Universal model exchange and serialization format for decision tree forests"
 arch=($CARCH)
-url="https://github.com/dmlc/${pkgbase}"
+url="https://github.com/dmlc/${_pkgname}"
 license=('Apache-2.0')
 groups=()
 replaces=()
@@ -38,17 +38,17 @@ checkdepends=()
 optdepends=(
 	python-scikit-learn
 )
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('e7e29be473b9af6c6a606d537b2f7349767a465eaa86d5ee511b5b540b54322a')
 options=()
 
 prepare() {
-	cd "${pkgbase}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"
 	cmake -S . -B build -G Ninja
 }
 
 build() {
-	cd "${pkgbase}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"
 	ninja -C build
 
 	cd "./python"
@@ -56,6 +56,6 @@ build() {
 }
 
 package() {
-	cd "${pkgbase}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 }

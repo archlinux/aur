@@ -1,4 +1,4 @@
-pkgbase = tl2cgen
+pkgbase = python-tl2cgen
 	pkgdesc = Universal model exchange and serialization format for decision tree forests
 	pkgver = 1.0.0
 	pkgrel = 1
