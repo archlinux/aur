@@ -2,7 +2,7 @@
 # Contributor: Xuanwo
 pkgname=folo-bin
 _pkgname=Folo
-pkgver=0.6.2
+pkgver=0.6.3
 _electronversion=37
 pkgrel=1
 pkgdesc="Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5168a8b4985a4530eae098a71743943a3a7cdb32e1e50c05082dbe15957f6433'
+sha256sums=('0d5d12361f6b4aee7dfcbba2e0d3b5520c9ef8dd8add4a5f78458372248c00fa'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
