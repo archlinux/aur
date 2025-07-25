@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="A hypertext info file viewer"
 arch=('x86_64')
 url="https://github.com/baszoetekouw/pinfo"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('ncurses' 'readline')
 source=("pinfo-$pkgver.tgz::https://github.com/baszoetekouw/pinfo/archive/v$pkgver.tar.gz"
         gcc10-stringop.diff
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
 	unset LDFLAGS
 	[ -x configure ] || ./autogen.sh
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 	rm -f "$pkgdir/usr/share/info/dir"
 }
