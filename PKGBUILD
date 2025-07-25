@@ -2,7 +2,7 @@
 # Updated with automatic SHA256 hash calculation
 pkgname=meowrch-settings
 pkgver=2.0.0
-pkgrel=3
+pkgrel=5
 pkgdesc="System optimization settings for Meowrch distribution"
 arch=('any')
 url="https://github.com/meowrch/meowrch"
@@ -14,7 +14,7 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'hdparm: for HDD performance optimizations')
 install=meowrch-settings.install
 source=("$url/archive/refs/heads/v3.0.tar.gz")
-sha256sums=('8aa35ff23e9347de665fda67220182fdb5a558fcaa47212199a46db93f88bfae')
+sha256sums=('8b1b82395212f047c86cf0c1d4fd38d4fc1064b6bbb2f603435bd6dd1e788996')
 
 package() {
     cd "$srcdir/meowrch-3.0/aur-packages/meowrch-settings"
