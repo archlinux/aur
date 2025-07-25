@@ -1,0 +1,13 @@
+pkgbase = sxot
+	pkgdesc = Simple X11 screenshot tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://codeberg.org/NRK/sxot
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libx11
+	depends = libxfixes
+	source = sxot-0.2.0.tar.gz::https://codeberg.org/NRK/sxot/archive/v0.2.0.tar.gz
+	sha256sums = 84f1545471caf7e1de0fd92f6a100ac410596d6e5b8254389dd5c6f621624c33
+
+pkgname = sxot
