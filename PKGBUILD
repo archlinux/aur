@@ -1,6 +1,5 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
-
-_pkgname=qqc2-desktop-style-git
+_pkgname=qqc2-desktop-style
 pkgname=qqc2-desktop-style-git
 pkgver=r1211.3070190
 pkgrel=0
