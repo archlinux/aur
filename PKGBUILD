@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=25.2.0_devel.205806.64ce37b2d98
+pkgver=25.3.0_devel.209257.8e82bafae6f
 pkgrel=1
 arch=('x86_64')
 makedepends=(python-mako python-packaging lib32-libxml2 lib32-libx11 xorgproto lib32-gcc-libs lib32-libelf git lib32-libglvnd
@@ -31,7 +31,7 @@ conflicts=(lib32-mesa lib32-vulkan-intel lib32-vulkan-radeon lib32-libva-mesa-dr
 url="https://www.mesa3d.org"
 license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-                llvm32.native
+        llvm32.native
 )
 
 md5sums=('SKIP'
@@ -68,7 +68,7 @@ build () {
         -D vulkan-drivers=amd,swrast,intel \
         -D egl=enabled \
         -D gallium-extra-hud=true \
-        -D vulkan-layers=device-select,overlay \
+        -D vulkan-layers=device-select,overlay,anti-lag \
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gbm=enabled \
