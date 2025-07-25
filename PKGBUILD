@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libreoffice-extension-writingtool-bin
-pkgver=1.2
+pkgver=25.7
 pkgrel=1
 pkgdesc="WritingTool is a LibreOffice extension for LibreOffice that adds a writing assistant to text editing."
 arch=('any')
@@ -12,7 +12,7 @@ provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("https://github.com/writingtool-org/writingtool/releases/download/v${pkgver}/WritingTool-${pkgver}.oxt")
 noextract=("WritingTool-${pkgver}.oxt")
-sha256sums=('c807031702c4c87beb17d1ffe17c12027d462dd499c6d80349cd69d6c2d11ef8')
+sha256sums=('b5461316a8871b3cc9dbef87c5755c4160463a1d04f4bdab02250aa2193ad999')
 
 package() {
 	cd "$srcdir"
