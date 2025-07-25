@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=7.2.r315.geff4fc14cc
+pkgver=7.2.r1318.gbaaa55ce4d
 pkgrel=1
 epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/texinfo/"
 license=('GPL-3.0-or-later')
 depends=('ncurses' 'gzip' 'perl' 'sh')
-makedepends=('git' 'help2man')
+makedepends=('git' 'help2man' 'gperf')
 provides=('texinfo')
 conflicts=('texinfo')
 source=("$pkgname::git+https://git.savannah.gnu.org/git/texinfo.git"

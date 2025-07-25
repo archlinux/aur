@@ -1,6 +1,6 @@
 pkgbase = texinfo-git
 	pkgdesc = GNU documentation system for on-line information and printed output
-	pkgver = 7.2.r315.geff4fc14cc
+	pkgver = 7.2.r1318.gbaaa55ce4d
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gnu.org/software/texinfo/
@@ -9,6 +9,7 @@ pkgbase = texinfo-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = help2man
+	makedepends = gperf
 	depends = ncurses
 	depends = gzip
 	depends = perl
