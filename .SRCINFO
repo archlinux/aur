@@ -1,13 +1,14 @@
 pkgbase = suwayomi-server-preview-bin
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
 	pkgver = 2.0.1862
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/Suwayomi/Suwayomi-Server-preview
 	arch = any
 	license = MPL2
 	depends = java-runtime>=21
 	depends = libc++
 	optdepends = electron: running in Electron
+	optdepends = xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in X
 	provides = suwayomi
 	provides = suwayomi-server
 	provides = tachidesk
