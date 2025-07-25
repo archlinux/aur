@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stayreal-bin
 _pkgname=StayReal
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="An open-source, lightweight and privacy-focused alternative client for a popular authentic social network.(Prebuilt version)"
 arch=(
@@ -23,9 +23,9 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_dlurl}/workflows/nightly/main/${pkgname%-bin}-aarch64-unknown-linux-gnu-rpm.zip")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${_dlurl}/workflows/nightly/main/${pkgname%-bin}-armv7-unknown-linux-gnueabihf-rpm.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_dlurl}/workflows/nightly/main/${pkgname%-bin}-x86_64-unknown-linux-gnu-rpm.zip")
-sha256sums_aarch64=('98e6dc22a66a069e3679a1d13e2eddf642d27ce9ae73ebc48c909e056b61bf70')
-sha256sums_armv7h=('9a8b480021e2beaf71243cdba5afff44c7daf844bd24725a0af87bcb13d99759')
-sha256sums_x86_64=('0580a5f492ef1ee867c1940fb04fd896e9f160a5bb08eeaac933434f469f575c')
+sha256sums_aarch64=('560c8baf37d957738abd101d876866910ff96ef24397b2f606e41c375336fe83')
+sha256sums_armv7h=('b83d7822133928cf9818a6abbfa0830fbd1183acf901af104232b3a5dd081de4')
+sha256sums_x86_64=('936850834ddfa1bbaba8db52fb902c38631e9eb9d086bdd1f28bd8d8392ab87a')
 prepare() {
     bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-"*.rpm
 }
