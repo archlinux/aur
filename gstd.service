@@ -1,15 +1,21 @@
 [Unit]
-Description=GStreamer Daemon (User Service)
-After=graphical-session.target pipewire.socket pulseaudio.socket
-PartOf=graphical-session.target
+Description=GStreamer Daemon (User)
+After=graphical-session.target
 
 [Service]
 Type=simple
 EnvironmentFile=-/etc/conf.d/gstd
 ExecStart=/usr/bin/gstd $GSTD_OPTS
-ExecStop=/usr/bin/pkill -f "/usr/bin/gstd"
 Restart=on-failure
 RestartSec=5s
 
+# User service inherits XDG_RUNTIME_DIR from user session
+# But we can set a fallback just in case
+Environment=GST_REGISTRY=%h/.cache/gstd/registry.bin
+
+TimeoutStopSec=10s
+KillMode=mixed
+KillSignal=SIGTERM
+
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target

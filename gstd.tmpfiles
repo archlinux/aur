@@ -1,1 +1,7 @@
-d /var/log/gstd 0775 root gstd -
+# GStreamer Daemon temporary files and directories
+d /var/lib/gstd 0750 gstd gstd -
+d /var/log/gstd 0750 gstd gstd -
+d /run/gstd 0750 gstd gstd -
+
+# Cache directory with cleanup
+D /var/cache/gstd 0750 gstd gstd 1w

@@ -1,2 +1,27 @@
-# Configuration for gstd services
+# /etc/conf.d/gstd
+#
+# Configuration for GStreamer Daemon
+#
+# SECURITY WARNING: Binding to 0.0.0.0 allows remote access!
+# Only use 0.0.0.0 in trusted network environments.
+#
+# Common options:
+#   -e, --daemon          : Run as daemon (auto-enabled for system service)
+#   -q, --quiet          : Suppress startup messages
+#   --tcp-address=ADDR   : TCP bind address (default: localhost)
+#   --tcp-base-port=PORT : TCP base port (default: 5000)
+#   --enable-tcp-protocol: Enable TCP communication (recommended)
+#   --gst-debug=LEVEL    : Set GStreamer debug level (0-6, default: 0)
+#
+# For full options, run: gstd --help
+
+# Default configuration for both user and system services
 GSTD_OPTS="--enable-tcp-protocol --tcp-address=127.0.0.1 --tcp-base-port=5000"
+
+# Alternative configurations (uncomment as needed):
+#
+# For debugging:
+# GSTD_OPTS="--enable-tcp-protocol --tcp-address=127.0.0.1 --tcp-base-port=5000 --gst-debug=*:2"
+#
+# For remote access (SECURITY RISK):
+# GSTD_OPTS="--enable-tcp-protocol --tcp-address=0.0.0.0 --tcp-base-port=5000"
