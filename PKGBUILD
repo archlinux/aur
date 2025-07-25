@@ -8,12 +8,12 @@ url="https://astrobox.online/"
 license=('AGPL3')
 depends=('webkit2gtk' 'gtk3')
 options=('!debug')
-source=("https://vip.123pan.cn/1811888703/AstroBox/AstroBox_$pkgver_amd64.deb")
+source=("https://vip.123pan.cn/1811888703/AstroBox/AstroBox_${pkgver}_amd64.deb")
 sha256sums=('a7a92d8c81db9dc35d67553cf40a60f653754cfd24f0e2a3b640155760ed4c74')
 
 prepare() {
   # 提取deb包中的数据
-  ar x AstroBox_$pkgver_amd64.deb
+  ar x AstroBox_${pkgver}_amd64.deb
   tar -xf data.tar.gz
 }
 

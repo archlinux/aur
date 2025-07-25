@@ -8,7 +8,7 @@ pkgbase = astro-box
 	depends = webkit2gtk
 	depends = gtk3
 	options = !debug
-	source = https://vip.123pan.cn/1811888703/AstroBox/AstroBox_.deb
+	source = https://vip.123pan.cn/1811888703/AstroBox/AstroBox_1.0.1_amd64.deb
 	sha256sums = a7a92d8c81db9dc35d67553cf40a60f653754cfd24f0e2a3b640155760ed4c74
 
 pkgname = astro-box
