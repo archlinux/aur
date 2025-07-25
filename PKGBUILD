@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname=rubick-bin
-pkgver=4.3.2
+pkgver=4.3.4
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins.(Prebuilt version.Use system-wide electron) 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubickcenter.github.io/rubick/"
@@ -19,9 +19,13 @@ source=(
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/rubickCenter/rubick/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('b7cb415b67035ab47b160e4ce40762af67916d7645d80ad226109980f12a8a44'
+sha256sums=('37fe48e917e714dd489b87174cd61dc586371cd52d55846b94e5b9729c84694b'
             '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
 	sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -31,6 +35,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
 	bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
 	sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package(){
