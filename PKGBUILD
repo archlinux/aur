@@ -7,7 +7,7 @@ pkgname=mipsel-elf-binutils
 _pkgname=binutils
 _target="mipsel-elf"
 pkgver=2.44
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of binary tools for baremetal MIPS."
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -33,6 +33,8 @@ build() {
 
   ./configure \
     --prefix=/usr \
+    --libexec=/usr/lib \
+    --libdir=/usr/${_target}/lib \
     --target=${_target} \
     --with-newlib \
     --with-gnu-as \
@@ -71,7 +73,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  find "$pkgdir" -name '*.la' -delete
-  find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
-  rm -rf $pkgdir/usr/share/{man,info}
+  find "${pkgdir}" -name '*.la' -delete
+  find "${pkgdir}" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
+  rm -rf "${pkgdir}"/usr/share/{man,info}
 }
