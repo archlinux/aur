@@ -1,6 +1,6 @@
 pkgbase = bin-bin
 	pkgdesc = Effortless binary manager
-	pkgver = 0.23.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://github.com/marcosnils/bin
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = bin-bin
 	license = MIT
 	provides = bin
 	conflicts = bin
-	source = LICENSE-0.23.0::https://raw.githubusercontent.com/marcosnils/bin/v0.23.0/LICENSE
-	source = README-0.23.0.md::https://raw.githubusercontent.com/marcosnils/bin/v0.23.0/README.md
+	source = LICENSE-0.23.1::https://raw.githubusercontent.com/marcosnils/bin/v0.23.1/LICENSE
+	source = README-0.23.1.md::https://raw.githubusercontent.com/marcosnils/bin/v0.23.1/README.md
 	sha256sums = 73624cfa33d3785e80ae8d5402f9857396c0cb3e9d945615a603b50eb0d04a99
 	sha256sums = 0567d747e97d968140b87e7ff02eebb439dd9be4ec57eb8b2f04df01293a9c47
-	source_x86_64 = bin-0.23.0-x86_64::https://github.com/marcosnils/bin/releases/download/v0.23.0/bin_0.23.0_linux_amd64
-	sha256sums_x86_64 = 2d2e20031402ee567ed42fef8ae052092a0f6333bda3e5a6ad4af7b8eed92f11
-	source_aarch64 = bin-0.23.0-aarch64::https://github.com/marcosnils/bin/releases/download/v0.23.0/bin_0.23.0_linux_arm64
-	sha256sums_aarch64 = db1a52a46d91088d45eae82cc2dc9f800fb1fa298240daa3695e267ebd53a75a
+	source_x86_64 = bin-0.23.1-x86_64::https://github.com/marcosnils/bin/releases/download/v0.23.1/bin_0.23.1_linux_amd64
+	sha256sums_x86_64 = 3da665cb30e129d481ee79b87e01b7674cecdfb230171116ac9855694d094bec
+	source_aarch64 = bin-0.23.1-aarch64::https://github.com/marcosnils/bin/releases/download/v0.23.1/bin_0.23.1_linux_arm64
+	sha256sums_aarch64 = 545a04a0e76d7e2b6a8f5cb0140c1b87a8e27cb98cfbc13a9fd1857aacfd15cd
 
 pkgname = bin-bin
