@@ -4,7 +4,7 @@ pkgbase=tensorrt
 pkgname=(
     'tensorrt'
     'python-tensorrt')
-pkgver=10.12.0.36
+pkgver=10.13.0.35
 _cudaver=12.9
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
@@ -15,7 +15,7 @@ pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
-license=('Apache-2.0' 'LicenseRef-NVIDIA-SOFTWARE-DEVELOPMENT-KITS')
+license=('Apache-2.0 AND LicenseRef-TensorRT-LICENSE-AGREEMENT')
 makedepends=(
     'cmake'
     'cuda'
@@ -29,7 +29,7 @@ makedepends=(
     'python-wheel')
 source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tars/TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
         "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
-        'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
+        'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
         'git+https://github.com/onnx/onnx.git'
@@ -40,8 +40,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('26ac05cc6ad7a5642f9b7431174aa6ce36ba3fafc3fb606afc587bce32ef110d'
-            '271e1daed294e78ba736c09e86fdd14e552acc409857467e5abc087c95e200f8'
+sha256sums=('899ff39e237f1351fccac7f6891617f68cbab71c13a7d7c703184424bdbbf621'
+            '9c1c5e90b2beba34237cdab8989fa50595f8fdc06ec7edb3e86124c1da47ff9d'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -50,14 +50,14 @@ sha256sums=('26ac05cc6ad7a5642f9b7431174aa6ce36ba3fafc3fb606afc587bce32ef110d'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '4cef8fe3b326f44fc5413ddb85ae92db77bb1a303e4ed5a6d1c94396cc163788'
+            '42d46139486825242aa6db63b476f96ce52988978ff9dae67718f6be2d62efec'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
     # tensorrt git submodules
     git -C TensorRT submodule init
     git -C TensorRT config --local submodule.parsers/onnx.url         "${srcdir}/onnx-tensorrt"
-    git -C TensorRT config --local submodule.third_party/protobuf.url "${srcdir}/protobuf-protocolbuffers"
+    git -C TensorRT config --local submodule.third_party/protobuf.url "${srcdir}/protobuf"
     git -C TensorRT config --local submodule.third_party/cub.url      "${srcdir}/cub-nvlabs"
     git -C TensorRT -c protocol.file.allow='always' submodule update
     
@@ -102,7 +102,7 @@ build() {
     
     # python bindings
     local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[:2])')"
     local -x TENSORRT_MODULE='tensorrt'
     local -x PYTHON_MAJOR_VERSION="${_pyver%%.*}"
     local -x PYTHON_MINOR_VERSION="${_pyver#*.}"
@@ -127,6 +127,12 @@ build() {
     done
 }
 
+_package_license() {
+    install -D -m644 TensorRT/NOTICE -t "${1}/usr/share/licenses/${2}"
+    install -D -m644 TensorRT-LICENSE-AGREEMENT.txt "${1}/usr/share/licenses/${2}/TensorRT-LICENSE-AGREEMENT"
+    install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${1}/usr/share/licenses/${2}/ACKNOWLEDGEMENTS"
+}
+
 package_tensorrt() {
     depends=(
         'cuda'
@@ -143,13 +149,12 @@ package_tensorrt() {
     ln -s "libnvinfer_builder_resource.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so.${pkgver%%.*}"
     ln -s "libnvinfer_builder_resource.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so"
     
-    install -D -m644 TensorRT/NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 TensorRT-LICENSE-AGREEMENT.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
+    _package_license "$pkgdir" "$pkgname"
 }
+
 package_python-tensorrt() {
     pkgdesc+=' (python bindings and tools)'
-    license+=('LicenseRef-Custom')
+    license=("${license[0]} AND LicenseRef-Python-TensorRT-LICENSE-AGREEMENT")
     depends=(
         'gcc-libs'
         'glibc'
@@ -177,12 +182,10 @@ package_python-tensorrt() {
         python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
     done
     
-    install -D -m644 TensorRT/NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 TensorRT-LICENSE-AGREEMENT.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-SOFTWARE-DEVELOPMENT-KITS"
-    install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
+    _package_license "$pkgdir" "$pkgname"
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    ln -s "../../../lib/python${_pyver}/site-packages/tensorrt-${pkgver%.*}.dist-info/licenses/LICENSE.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python-tensorrt"
+    local _sitepkgs
+    _sitepkgs="$(python -c 'import site; print(site.getsitepackages()[0])')"
+    ln -sr "${pkgdir}${_sitepkgs}/tensorrt-${pkgver%.*}.dist-info/licenses/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/Python-TensorRT-LICENSE-AGREEMENT"
 }
