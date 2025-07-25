@@ -6,6 +6,7 @@ pkgbase = profile-sync-daemon-git
 	install = psd.install
 	arch = any
 	license = MIT
+	depends = git
 	depends = bash
 	depends = findutils
 	depends = procps-ng

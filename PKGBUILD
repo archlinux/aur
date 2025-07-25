@@ -5,13 +5,13 @@
 pkgname=profile-sync-daemon-git
 _pkgname=${pkgname/-git/}
 _branch=master
-pkgver=r751.cd8c2a3
+pkgver=6.50.r14.gbdea6f0
 pkgrel=1
 pkgdesc="Symlinks and syncs browser profile dirs to RAM"
 arch=('any')
 url="https://github.com/graysky2/profile-sync-daemon"
 license=('MIT')
-depends=('bash' 'findutils' 'procps-ng' 'rsync' 'systemd')
+depends=('git' 'bash' 'findutils' 'procps-ng' 'rsync' 'systemd')
 optdepends=('zsh-completions: for completion when using zsh'
             'fuse-overlayfs: for overlayfs mode')
 install="psd.install"
@@ -21,7 +21,8 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 --exclude='v*[a-zA-Z]*' \
+  | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -32,6 +33,6 @@ build() {
 package() {
   cd "$_pkgname"
   make DESTDIR="$pkgdir/" install
-  install -vDm 644 MIT "${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE"
-  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname/-git/}"
+  install -vDm 644 MIT "${pkgdir}/usr/share/licenses/${pkgname/}/LICENSE"
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname/}"
 }
