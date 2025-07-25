@@ -1,11 +1,12 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
 # Contributor: Shengqi Chen <i at harrychen dot xyz>
-# Maintainer: Liao Junxuan <mikeljx at 126 dot com>
+# Contributor: Liao Junxuan <mikeljx at 126 dot com>
+# Maintainer: Filippo Falezza <filippo dot falezza at outlook dot com>
 
 pkgname=mipsel-elf-gcc
 _pkgname=gcc
 _target="mipsel-elf"
-pkgver=14.1.0
+pkgver=15.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (for baremetal MIPS)"
 url="https://www.gnu.org/software/gcc/"
@@ -14,59 +15,62 @@ license=('GPL' 'LGPL' 'FDL' 'custom')
 depends=("${_target}-binutils")
 makedepends=("gcc-ada>=${pkgver:0:2}")
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
-source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840')
+source=(https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz{,.sig})
+sha256sums=(
+  'e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
+  '981a495a35fdc11e8f9762c2ebe93d250bbd6996618e8fe3d4ebb1f463df8ca9'
+)
+
+validpgpkeys=(
+  F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+  86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
+  13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+  D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
+)
 
 prepare() {
-    cd "$srcdir"/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    # Hack - see native package for details
-    sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+  # Hack - see native package for details
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 }
 
 build() {
-    CFLAGS=${CFLAGS/-Werror=format-security/}
-    CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    cd "$srcdir"/${_pkgname}-${pkgver}
-    mkdir -p gcc-build && cd gcc-build
-    ../configure \
-        --prefix=/usr --libexecdir=/usr/lib \
-        --target="${_target}" \
-        --with-newlib \
-        --with-gnu-as --with-gnu-ld \
-        --disable-nls \
-        --disable-decimal-float \
-        --disable-threads \
-        --disable-libatomic \
-        --disable-libgomp \
-        --disable-libquadmath \
-        --disable-libssp \
-        --disable-libvtv \
-        --disable-libstdcxx \
-        --enable-languages=c,c++ \
-        --disable-multilib --disable-libgcj \
-        --enable-lto --disable-werror \
-        --without-headers --disable-shared \
-        --enable-initfini-array
-    make
+  CXXFLAGS="-Wno-error=format-security" ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --target=${_target} \
+    --with-newlib \
+    --with-gnu-as \
+    --with-gnu-ld \
+    --disable-nls \
+    --disable-decimal-float \
+    --disable-threads \
+    --disable-libatomic \
+    --disable-libgomp \
+    --disable-libquadmath \
+    --disable-libssp \
+    --disable-libvtv \
+    --disable-libstdcxx \
+    --enable-languages=c,c++,fortran \
+    --disable-multilib \
+    --disable-libgcj \
+    --enable-lto \
+    --disable-werror \
+    --without-headers \
+    --disable-shared \
+    --enable-initfini-array
+  make all-gcc "inhibit_libc=true"
 }
 
 package() {
-    cd "$srcdir"/${_pkgname}-${pkgver}
-    cd gcc-build
-    make DESTDIR="$pkgdir" install
-    
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    find "$pkgdir"/usr/lib/gcc/$_target/ \
-       -type f -and \( -name \*.a -or -name \*.o \) \
-       -exec "${_target}"-strip '{}' \;
+  make DESTDIR="${pkgdir}" install-gcc
 
-    find "$pkgdir"/usr/bin/ "$pkgdir"/usr/lib/gcc/$_target/ \
-        -type f -and \( -executable \) -exec strip '{}' \;
-
-    # remove the documentation
-    rm -rf "$pkgdir"/usr/share
-    # remove unnecessary files
-    rm "$pkgdir"/usr/lib/libcc1.*
+  find "$pkgdir" -name '*.la' -delete
+  find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
+  rm -rf $pkgdir/usr/share/{man,info}
 }
