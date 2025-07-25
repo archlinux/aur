@@ -31,7 +31,6 @@ install=
 changelog=
 source=("https://github.com/Epic-Mickey-Launcher/launcher/releases/download/${pkgver}/Epic.Mickey.Launcher_${pkgver}_amd64.deb")
 noextract=()
-md5sums=("SKIP")
 validpgpkeys=()
 
 
@@ -45,4 +44,5 @@ package() {
 	install -Dm755 "usr/share/applications/epic-mickey-launcher.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	cp -r "${srcdir}/usr/share/icons/" "${pkgdir}/usr/share/icons/"
 }
+
 md5sums=('b9f34e6647c5234de4cd288c8205b1bc')
