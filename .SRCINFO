@@ -1,0 +1,15 @@
+pkgbase = kubectl-rook-ceph
+	pkgdesc = kubectl plugin for managing Rook Ceph
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/rook/kubectl-rook-ceph
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = kubectl-rook-ceph-0.9.4.tar.gz::https://github.com/rook/kubectl-rook-ceph/archive/refs/tags/v0.9.4.tar.gz
+	sha256sums = 178b12b7beb225243cdedc7bb43b7ae7b475c9ab365b23f4a785d5a4ff75042f
+	sha512sums = fc23e6a59000917ce40cafd553cbd246e21f336eaf873d47136f28ea342b628e0e761cff5f0d2fe7affc77467f67c37a709ae03ecbeeabe2c537022124ad1b15
+	b2sums = 2af021c5dae0304cbd126012dbadef916932db7ebce79d17d4b681627464d2bf1adebcd603f32979c0b5b4586621fcf5915e4fd65a9c761737ed2be75f920994
+
+pkgname = kubectl-rook-ceph
