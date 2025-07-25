@@ -1,5 +1,4 @@
-# Maintainer:F43nd1r <support@faendir.com>
-
+# Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-remotecontrollers-git
 pkgver=r512.0510b3e
 pkgrel=0
