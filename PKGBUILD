@@ -3,12 +3,12 @@
 
 pkgname=nut-monitor
 pkgver=2.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
 url="http://www.networkupstools.org/"
 license=('GPL3')
-depends=('nut' 'python' 'python-pyqt5' 'hicolor-icon-theme' 'python-telnetlib-313-and-up')
+depends=('nut' 'python' 'python-pyqt5' 'hicolor-icon-theme')
 makedepends=('desktop-file-utils')
 source=("http://www.networkupstools.org/source/2.8/nut-$pkgver.tar.gz")
 sha256sums=('d6ca17f0b39003bac7649eb17ab4a713e4d5fcaa8fd1aedca28357d59df095ed')
