@@ -13,7 +13,7 @@ makedepends=("b43-fwcutter>=015")
 conflicts=(${_basename_})
 install=${pkgname}.install
 options=(!emptydirs)
-source=(http://www.lwfinger.com/${_basename_}/broadcom-wl-${pkgver}.tar.bz2)
+source=(https://github.com/minios-linux/b43-firmware/releases/download/b43-firmware/broadcom-wl-5.100.138.tar.bz2)
 
 package() {
 	cd "${srcdir}"/broadcom-wl-${pkgver}
