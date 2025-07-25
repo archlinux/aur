@@ -1,6 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Christopher Snowhill <kode54@gmail.com>
 pkgname=wcm-git
-pkgver=0.6.0.r0.g5d935e0
+pkgver=0.9.0.r7.gb5b5aef
 pkgrel=1
 pkgdesc='Wayfire Config Manager'
 url=https://wayfire.org
@@ -10,7 +11,8 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(gtkmm3 wayfire-git wf-shell-git)
 makedepends=(wayland-protocols meson ninja git extra-cmake-modules)
-optdepends=("wayfire-plugins-extra: configuration for extra Wayfire plugins")
+optdepends=("wayfire-plugins-extra: configuration for extra Wayfire plugins"
+            "wdisplays: configuration for display modes")
 source=("${pkgname}::git+https://github.com/WayfireWM/wcm")
 sha512sums=('SKIP')
 
@@ -21,13 +23,15 @@ pkgver() {
   )
 }
 
+prepare() {
+  rm -rf build
+  arch-meson "${pkgname}" build
+}
+
 build () {
-	rm -rf build
-	arch-meson "${pkgname}" build
 	ninja -C build
 }
 
 package () {
 	DESTDIR="${pkgdir}" ninja -C build install
 }
-
