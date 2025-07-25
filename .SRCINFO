@@ -1,7 +1,7 @@
 pkgbase = vanilla-wiiu-git
 	pkgdesc = A work-in-progress Wii U GamePad software clone for Linux
 	pkgver = continuous.0.g67f7f6f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vanilla-wiiu/vanilla
 	arch = x86_64
 	license = GPL-2.0
