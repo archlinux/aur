@@ -2,7 +2,7 @@
 
 pkgname='opencoarrays'
 _name='OpenCoarrays'
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=4
 pkgdesc="A transport layer for coarray Fortran compilers."
 arch=('x86_64')
@@ -21,8 +21,9 @@ options=()
 install=
 changelog=
 noextract=()
-source=("https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${pkgver}/OpenCoarrays-${pkgver}.tar.gz")
-sha256sums=(e13f0dc54b966b0113deed7f407514d131990982ad0fe4dea6b986911d26890c)
+# source=("https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${pkgver}/OpenCoarrays-${pkgver}.tar.gz")
+source=("https://github.com/sourceryinstitute/OpenCoarrays/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=(50c8c2a99fecbd33e6be126d33bb43543d5aa035df9d6e31e323e5398a1029e3)
 
 
 prepare() {
