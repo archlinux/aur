@@ -58,9 +58,8 @@ prepare() {
 build() {
     cd "$srcdir/$_pkgname"
     mkdir -p build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    make
+    cmake -DCMAKE_BUILD_TYPE=Release -B build
+    cmake --build build
 }
 
 package() {
