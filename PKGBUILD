@@ -2,7 +2,7 @@
 # vim: ts=2 sw=2 et:
 
 pkgname=cfonts
-pkgver=1.2.0rust
+pkgver=1.3.0rust
 pkgrel=1
 pkgdesc='Sexy ANSI fonts for the console'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 makedepends=('rust' 'make')
 provides=('cfonts')
 source=("https://github.com/dominikwilkowski/cfonts/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8337423201558b43ae48e0749058a58623700cfb777288f3a520dcdb0d723a6f')
+sha256sums=('e9d4a5946242a42f34114cf3f0af077a89bf528adca64170749b4a4f9e2966a3')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/rust"
