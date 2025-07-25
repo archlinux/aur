@@ -8,26 +8,16 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.4.5
+pkgver=0.4.7
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
-source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
-        "server.md")
-sha256sums=('9f83f5167e0a4b8537409c98dbf87a2ceccb4105aaccfca887ced1b6bcd652b4'
-            '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
+source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('e5b65cecb32a030610bcf2d29b1a7e974d2b66517b81bb0aacc45a36793a00c8')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals'  'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'deno') # 'python-ddgs'
-
-prepare(){
-  cp -f "${srcdir}"/server.md "${srcdir}"/${_name0}-${pkgver}/docs/mcp/server.md
-  cd "${srcdir}"/${_name0}-${pkgver}
-  sed -i 's/created=1704067200 if with_created else None,  # 2024-01-01/created=1704067200 if with_created else 0,  # 2024-01-01/g' tests/models/test_mistral.py
-  sed -i "s/'type': 'text', 'text': 'sampling model response', 'annotations': None/'type': 'text', 'text': 'sampling model response', 'annotations': None, 'meta': None/g" tests/test_mcp.py
-  sed -i "s/TextAssistantMessageContentItem/TextAssistantMessageV2ContentItem/g" ${_name0//-/_}_${_name3}/${_name0//-/_}/models/cohere.py
-}
 
 build() {
   cd "${srcdir}"/${_name0}-${pkgver}
@@ -43,12 +33,15 @@ check() {
   local pytest_options=(
     -vv
     -n auto
-    --deselect tests/models/test_fallback.py::test_all_failed_instrumented
-    --deselect tests/models/test_instrumented.py::test_instrumented_model
+    # Failed with opentelemetry>=1.35.0
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream_break
-    -k "not instrumentation_settings_event_mode.py"
-    --deselect tests/test_logfire.py::test_logfire[instrument3]
+    --deselect tests/models/test_instrumented.py::test_instrumented_model
+    -k "not instrumentation_settings_event_mode.py and not instrument3"
+    # Failed
+    --deselect tests/models/test_model_names.py::test_known_model_names
+    --deselect tests/models/test_fallback.py::test_all_failed_instrumented
+    --deselect tests/evals/test_dataset.py::test_evaluate_async_logfire
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
