@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zhiximind-desktop-bin
 _debname=com.zhixi.desktop
-pkgver=3.3.14
+pkgver=3.3.14.2495
 _electronversion=22
 pkgrel=1
 pkgdesc="A mind mapping and mind mapping software present on all major platforms.(Prebuilt version.Use system-wide electron)知犀思维导图官方版"

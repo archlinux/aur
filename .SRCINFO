@@ -1,15 +1,15 @@
 pkgbase = zhiximind-desktop-bin
 	pkgdesc = A mind mapping and mind mapping software present on all major platforms.(Prebuilt version.Use system-wide electron)知犀思维导图官方版
-	pkgver = 3.3.14
+	pkgver = 3.3.14.2495
 	pkgrel = 1
 	url = https://www.zhixi.com
 	arch = x86_64
 	license = LicenseRef-Custom
 	depends = electron22
-	provides = zhiximind-desktop=3.3.14
+	provides = zhiximind-desktop=3.3.14.2495
 	conflicts = zhiximind-desktop
-	source = zhiximind-desktop-3.3.14.deb::https://www.zhixi.com/download/linux?channel=21C8B557
-	source = LICENSE-3.3.14.html::https://www.zhixi.com/user-agreement
+	source = zhiximind-desktop-3.3.14.2495.deb::https://www.zhixi.com/download/linux?channel=21C8B557
+	source = LICENSE-3.3.14.2495.html::https://www.zhixi.com/user-agreement
 	source = zhiximind-desktop.sh
 	sha256sums = afed878d7db0d4e947118ec996d83c820e54bf0608a91ea710152d6d893d4246
 	sha256sums = 22c9c41a47e08958da823996af7433ef79ab97fdedb424cf1e29834d21c9ce8d
