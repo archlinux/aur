@@ -1,0 +1,5 @@
+[python-porepy]
+source = "github"
+github = "pmgbergen/porepy"
+use_latest_release = "true"
+prefix = "v"

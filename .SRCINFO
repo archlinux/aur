@@ -1,0 +1,26 @@
+pkgbase = python-porepy
+	pkgdesc = Simulation tool for fractured and deformable porous media
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://github.com/pmgbergen/porepy
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-deepdiff
+	depends = gmsh
+	depends = python-matplotlib
+	depends = python-meshio
+	depends = python-networkx
+	depends = python-numba
+	depends = python-scipy
+	depends = python-seaborn
+	depends = python-shapely
+	depends = python-sympy
+	depends = python-typing_extensions
+	source = porepy-1.11.tar.gz::https://github.com/pmgbergen/porepy/archive/v1.11.tar.gz
+	sha512sums = 7f2425dfb29fc968f7d8b4aa71a7f62c6d296c999d4eacd6420bed77ee52d9f6281dae0bbb7c0a3c28f744eb40859dc3adbf74f4ec034d3f4a8426b89c0aa420
+
+pkgname = python-porepy
