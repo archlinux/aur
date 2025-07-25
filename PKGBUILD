@@ -1,7 +1,7 @@
 # Maintainer: effeffe <filippo dot falezza at outlook dot it>
 
 pkgname=osp-tracker
-pkgver=6.1.6
+pkgver=6.2.0
 arch=('x86_64')
 pkgrel=1
 pkgdesc='Tracker video analysis and modeling tool'
@@ -11,14 +11,14 @@ depends=('gtk2'
          'gconf'
          'java-runtime')
 makedepends=('xdg-user-dirs' 'xdg-utils')
-_runname="Tracker-${pkgver}-linux-64bit-installer.run"
+_runname="Tracker-${pkgver}-linux-x64-installer.run"
 source=(
   "${url}/installers/${_runname}"
   "tracker.sh"
   "tracker.desktop"
 )
 sha256sums=(
-  '73ea697e51ac67e052c0f7e51f2dc33ca91e66bdcac846ffa1892e5293c08b44'
+  'f2774f0829620b862b8a5d539e042b978664416f99282827aff56eb0bbe16778'
   '0c36e09d4f2e2ab8cd39ee1ed896ce96db217bd2eff7a8522d426e15acf93f8d'
   '73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b'
 )
