@@ -2,7 +2,7 @@
 # Contributor: /dev/rs0 <rs0@secretco.de.com>
 
 pkgname=urlcrazy
-pkgver=0.7.3
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 url="https://github.com/urbanadventurer/urlcrazy"
 depends=('ruby-json' 'ruby-colorize' 'ruby-async' 'ruby-async-dns' 'ruby-async-http')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('b04745000e2c27fd85f7b6af98bdac81b7d1685da87267fc47adea0735a42b95')
+sha256sums=('f80ae9b804318b4f03255cef862b5fe7c7e222472424f415ada49448e14d8132')
 
 
 package() {
