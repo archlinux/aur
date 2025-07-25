@@ -52,9 +52,16 @@ prepare() {
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
-  #diff libavcodec/opus/dec.c{.bak,} || :
+  #diff libavcodec/opus/dec.c{.bak,}||:
   # ${_url}/+/refs/heads/master/chromium/patches/README
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
+  # CHROMIUM_NO_LOGGING
+  sed -i.bak -E \
+    -e "/^void\s+av_log\s*\(.*\)\s*$/,/^\s*\}\s*$/c#define av_log(...){}" \
+    -e "/^void\s+av_log_once\s*\(.*\)\s*$/,/^\s*\}\s*$/c#define av_log_once(...){}" \
+    -e "/^void\s+av_vlog\s*\(.*\)\s*$/,/^\s*\}\s*$/c#define av_vlog(...){}" \
+   libavutil/log.c
+  # diff libavutil/log.c{.bak,}||:
 }
 
 build() {
