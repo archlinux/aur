@@ -1,7 +1,7 @@
 # Maintainer: Cyrille Pontvieux <cyrille@enialis.net>
 pkgname=python-ezchlog
 _pkgname=${pkgname#python-}
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Easy git branch friendly changelogs"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://gitlab.com/jrdasm/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('6645731df2b4f9dc524288b25c2f199280b7b8f2923286f8f41f137279f2e745')
+sha256sums=('400c8047d6c6ffd83934c3815dfd44a5a49e2d00d9ac049af8b0a89b29f8fbcc')
 
 build() {
 	cd "$_pkgname-v$pkgver"
