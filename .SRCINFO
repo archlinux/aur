@@ -1,6 +1,6 @@
 pkgbase = nextpnr-ice40-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for ice40
-	pkgver = 20250724_nextpnr_0.8_54_g356278d0
+	pkgver = 20250725_nextpnr_0.8_54_g356278d0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
