@@ -2,9 +2,9 @@
 
 pkgname=myueqf-reader
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Qualcomm bootctl HAL for Linux."
+pkgdesc="A simple TXT ebook reader"
 arch=($CARCH)
 url="https://github.com/myueqf/reader"
 license=('GPL-3.0-or-later')

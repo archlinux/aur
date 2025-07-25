@@ -1,7 +1,7 @@
 pkgbase = myueqf-reader
-	pkgdesc = Qualcomm bootctl HAL for Linux.
+	pkgdesc = A simple TXT ebook reader
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/myueqf/reader
 	arch = x86_64
 	license = GPL-3.0-or-later
