@@ -3,7 +3,7 @@
 pkgname=vet
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='A command-line tool that acts as a safety net for the risky curl | bash pattern'
+pkgdesc='A command-line tool that acts as a safety net for the risky curl pipe to bash pattern'
 arch=('any')
 url="https://github.com/vet-run/$pkgname"
 license=('MIT')
