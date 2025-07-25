@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggm
-_pkgver=2.5.1
+_pkgver=2.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,8 +15,8 @@ depends=(
   r-igraph
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db8c249f2c58705be639f0757e9dfaad')
-b2sums=('a10949cc802c3948d463f19d62c6342ce72daaccd8bf80a058574c88206c0ba1461e33a1950fde1dfbc687d65d8d83e73f0bde11fac119336d95b6deff5fd92b')
+md5sums=('67461530b539fe5d4adb00c5ca55eaa2')
+b2sums=('65984b85a056bfee8aa49dc14288ab2bfad6a0b5381c6f118d4b4f8df0ce12905ff28e9bfb2a2ae444393d0e9e98814109686d4608de60d53521185cc40dc022')
 
 build() {
   mkdir build
