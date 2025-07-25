@@ -1,7 +1,7 @@
 pkgbase = amneziavpn-bin
 	pkgdesc = Amnezia VPN Client
 	pkgver = 4.8.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amnezia-vpn/amnezia-client
 	install = amneziavpn.install
 	arch = x86_64

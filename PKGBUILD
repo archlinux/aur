@@ -2,7 +2,7 @@
 
 pkgname=amneziavpn-bin
 pkgver=4.8.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Amnezia VPN Client"
 arch=('x86_64')
 url="https://github.com/amnezia-vpn/amnezia-client"
@@ -36,13 +36,26 @@ prepare() {
     rm -f data.7z
   fi
 
+  # Clean up useless files containing hashes.
+  rm -f "$srcdir"/AmneziaVPN/client/bin/*.sha256
+
   # Fix desktop file
   sed -i 's#/usr/share/pixmaps/AmneziaVPN.png#AmneziaVPN#g' "$srcdir"/AmneziaVPN/AmneziaVPN.desktop
 }
 
 package() {
-  mkdir -p "$pkgdir"/{opt/AmneziaVPN,usr/bin}
-  cp -a "$srcdir"/AmneziaVPN/{client,service} "$pkgdir"/opt/AmneziaVPN/
+  for d in client service; do
+    for f in $(find "$srcdir"/AmneziaVPN/$d -type f -printf "%P\n"); do
+      install -Dm644 "$srcdir"/AmneziaVPN/$d/$f -T "$pkgdir"/opt/AmneziaVPN/$d/$f
+    done
+  done
+
+  pushd "$pkgdir"/opt/AmneziaVPN/
+    chmod +x client/{bin/{AmneziaVPN,ck-client,openvpn,ss-local,tun2socks,update-resolv-conf.sh,wireguard-go,xray},AmneziaVPN.sh}
+    chmod +x service/{bin/AmneziaVPN-service,AmneziaVPN-service.sh}
+  popd
+
+  mkdir -p "$pkgdir"/usr/bin
   ln -rs "$pkgdir"/opt/AmneziaVPN/client/AmneziaVPN.sh "$pkgdir"/usr/bin/AmneziaVPN
 
   install -Dm644 "$srcdir"/AmneziaVPN/AmneziaVPN.service -t "$pkgdir"/usr/lib/systemd/system/
