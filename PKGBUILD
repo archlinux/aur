@@ -9,8 +9,8 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.18.1
-pkgrel=5
+pkgver=1.19.3
+pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -36,7 +36,7 @@ makedepends=(
   snappy
   zlib
 )
-_tag=98a8583b1783af766423ec799e82d5829a7f496d
+_tag=a0cd10949c4c3738c47adce9f673700c13f08645
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
@@ -44,16 +44,22 @@ source=(
   git+https://github.com/discordapp/discord-rpc.git
   git+https://github.com/hrydgard/ppsspp-ffmpeg.git
   armips-filesystem::git+https://github.com/Kingcom/filesystem.git
-  git+https://github.com/KhronosGroup/glslang.git
+  ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
   git+https://github.com/rtissera/libchdr.git
+  git+https://github.com/hrydgard/ppsspp-lua.git
+  git+https://github.com/miniupnp/miniupnp.git
+  git+https://github.com/KhronosGroup/OpenXR-SDK.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/RetroAchievements/rcheevos.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   PPSSPPSDL.desktop
   PPSSPPQt.desktop
 )
-b2sums=('2cb74ec040e68c84701d48c2cdad7926d0a6660be3e8a7e9cc265788bdcc050375ad04d13c7750fa06a4e2f201c58fcb4886f849780f4b194c494afe3e5821e3'
+b2sums=('8154539137174d017efc2e17f7ecba5e8c7c350dfc909379b8928037e6f71820854580b6c7a6e6ff576ba34fc4d3a050fbf9df3244e16150bf4e2f80802fc7d6'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -76,12 +82,12 @@ pkgver() {
 prepare() {
   cd ppsspp
   sed 's|miniupnpc/include/|miniupnpc/|g' -i Core/Util/PortManager.h
-  for submodule in assets/lang ffmpeg; do
+  for submodule in ffmpeg assets/lang ext/glslang ext/lua; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,libchdr,rapidjson,rcheevos,SPIRV-Cross}; do
+  for submodule in ext/{armips,cpu_features,discord-rpc,libchdr,miniupnp,OpenXR-SDK,rapidjson,rcheevos,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
@@ -92,11 +98,6 @@ prepare() {
     git config submodule.${submodule}.url ../../../armips-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-# Fix build with sdl_ttf 2.24
-  cd ../..
-  git cherry-pick -n bd84c7bf7dcefc991aa2af14ca1f42f2c842c54b
-# Fix build with GCC 15
-  git -C ext/glslang cherry-pick -n e40c14a3e007fac0e4f2e4164fdf14d1712355bd
 }
 
 build() {
