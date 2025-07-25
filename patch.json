@@ -428,6 +428,9 @@
 		],
 		"GitHub.vscode-pull-request-github": [
 			"activeComment",
+			"chatParticipantAdditions",
+			"chatParticipantPrivate",
+			"chatSessionsProvider",
 			"codiconDecoration",
 			"codeActionRanges",
 			"commentingRangeHint",
@@ -444,6 +447,7 @@
 			"contribShareMenu",
 			"diffCommand",
 			"quickDiffProvider",
+			"remoteCodingAgents",
 			"shareProvider",
 			"tabInputTextMerge",
 			"tokenInformation",
@@ -494,7 +498,6 @@
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
 			"contribDebugCreateConfiguration",
-			"inlineEdit",
 			"inlineCompletionsAdditions",
 			"chatReferenceBinaryData",
 			"languageModelSystem",
@@ -502,7 +505,11 @@
 			"languageModelDataPart",
 			"chatStatusItem",
 			"taskProblemMatcherStatus",
-			"contribLanguageModelToolSets"
+			"contribLanguageModelToolSets",
+			"textDocumentChangeReason",
+			"resolvers",
+			"taskExecutionTerminal",
+			"dataChannels"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -518,9 +525,6 @@
 			"scmValidation",
 			"textSearchProvider",
 			"timeline"
-		],
-		"GitHub.copilot-nes": [
-			"inlineEdit"
 		],
 		"ms-python.gather": [
 			"notebookCellExecutionState"
@@ -599,6 +603,13 @@
 			"chatProvider"
 		],
 		"ms-autodev.vscode-autodev": [
+			"chatParticipantAdditions"
+		],
+		"codetrek.haystack-search": [
+			"fileSearchProvider",
+			"textSearchProvider2"
+		],
+		"vscjava.vscode-java-upgrade": [
 			"chatParticipantAdditions"
 		]
 	},
@@ -812,6 +823,7 @@
 		],
 		"microsoft": [
 			"vscode.git",
+			"github.copilot-chat",
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
