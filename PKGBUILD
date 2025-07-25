@@ -2,7 +2,7 @@
 
 pkgname=dhcpcd8-git
 pkgver=8.1.9.r7.g9095f26a
-pkgrel=3
+pkgrel=4
 pkgdesc="A DHCP and DHCPv6 client (8.x releases)"
 arch=('i686' 'x86_64')
 url="https://roy.marples.name/projects/dhcpcd/"
@@ -13,7 +13,7 @@ optdepends=('openresolv: resolvconf support')
 provides=("dhcpcd=$pkgver" 'dhcp-client')
 conflicts=('dhcpcd')
 backup=('etc/dhcpcd.conf')
-options=('emptydirs')
+options=('emptydirs' '!lto')
 source=("git+https://github.com/NetworkConfiguration/dhcpcd.git#branch=dhcpcd-8"
         "dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service"
         "dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service")
