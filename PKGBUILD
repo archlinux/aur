@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/gswww"
-  git describe --long --abbrev=7 | sed 's/-/.r/;s/-/./'
+  git describe --long --tag --abbrev=7 | sed 's/-/.r/;s/-/./'
 }
 
 prepare() {
