@@ -1,7 +1,7 @@
 pkgbase = mipsel-linux-gnu-binutils-minimal
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the MIPS architecture
 	pkgver = 2.44
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL

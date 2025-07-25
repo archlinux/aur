@@ -6,7 +6,7 @@ pkgname=mipsel-linux-gnu-binutils-minimal
 _pkgname=binutils
 _target="mipsel-linux-gnu"
 pkgver=2.44
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=(
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
 prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Hack - see native package for details
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
@@ -30,10 +30,11 @@ prepare() {
 
 build() {
 
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
+    --libexecdir=/usr/lib \
     --target=${_target} \
     --with-sysroot \
     --with-float=soft \
@@ -48,14 +49,14 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make -k check
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
   find "$pkgdir" -name '*.la' -delete
   find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
