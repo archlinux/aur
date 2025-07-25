@@ -4,7 +4,7 @@ pkgbase=python-griffe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Signatures for entire Python programs"
 arch=('any')
@@ -38,7 +38,7 @@ checkdepends=('python-pytest'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/mkdocstrings/griffe/raw/main/logo.svg")
 #       "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
-md5sums=('33ccf3cecdb164af4862cc73f1abe20d')
+md5sums=('62218449038c54be59a119a69e59fa3b')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
