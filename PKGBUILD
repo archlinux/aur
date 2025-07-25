@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('any')
 url="https://github.com/linuxmint/webapp-manager"
@@ -18,7 +18,7 @@ depends=(
   'xapp'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2d098765cc1d9124cceb4a32b06f38bd96a4e003d4a5bd8c83d850f34c877c73')
+sha256sums=('ec19cae538b3be743f98640933483f94be56e270fa0c0a6dd28182e14a9f3d86')
 
 prepare() {
   cd "$pkgname-$pkgver"
