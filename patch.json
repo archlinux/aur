@@ -428,6 +428,8 @@
 		],
 		"GitHub.vscode-pull-request-github": [
 			"activeComment",
+			"chatParticipantAdditions",
+			"chatParticipantPrivate",
 			"codiconDecoration",
 			"codeActionRanges",
 			"commentingRangeHint",
@@ -444,6 +446,7 @@
 			"contribShareMenu",
 			"diffCommand",
 			"quickDiffProvider",
+			"remoteCodingAgents",
 			"shareProvider",
 			"tabInputTextMerge",
 			"tokenInformation",
@@ -490,7 +493,6 @@
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
 			"contribDebugCreateConfiguration",
-			"inlineEdit",
 			"inlineCompletionsAdditions",
 			"chatReferenceBinaryData",
 			"languageModelSystem",
@@ -498,7 +500,9 @@
 			"languageModelDataPart",
 			"chatStatusItem",
 			"taskProblemMatcherStatus",
-			"contribLanguageModelToolSets"
+			"contribLanguageModelToolSets",
+			"textDocumentChangeReason",
+			"resolvers"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -593,6 +597,9 @@
 			"codeActionAI"
 		],
 		"ms-autodev.vscode-autodev": [
+			"chatParticipantAdditions"
+		],
+		"vscjava.vscode-java-upgrade": [
 			"chatParticipantAdditions"
 		]
 	},
@@ -803,6 +810,7 @@
 			"ms-azuretools.vscode-azure-github-copilot"
 		],
 		"microsoft": [
+			"github.copilot-chat",
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
