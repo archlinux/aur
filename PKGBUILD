@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=aio-creator-neo
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Design a custom app to control your smart home. Supports many vendors.'
 arch=('x86_64')
@@ -9,12 +9,15 @@ url='https://www.mediola.com/en/products#aio-creator-neo'
 license=('LicenseRef-eula')
 depends=(
   'bash'
+  'coreutils'
   'dxvk'
   'lib32-gnutls'
   'lib32-libxcomposite'
   'wine'
   'wine-mono'
   'wine-gecko'
+  'winetricks'
+  'zenity'
 )
 makedepends=('innoextract')
 options=('!debug' '!strip')
@@ -30,8 +33,8 @@ source=(
   'eula.md'
 )
 
-sha512sums=('a5924215012d0d3ebc12f180e9fd24d4f45753fbf49e6d335c575c83a21437894955cf48074b93b0058dbe4bb3d6eeb879bedfae4b6ca187c4f9ab158fb9d32e'
-            '308b84b654e63fe14cd68f6bb8fdeb1f0e7afe1b15127fa5779cbe40227c9a6616060b27e28e98505f72d26873379b6a3672fc98060f6e47e64667f81a91d500'
+sha512sums=('4465187fea388e81b13cd1347eb29485138b2d80379a2b589c6770282e43c4503ff874047fb710d026ec20dedd6b0a460dd976ba1d07e066e0d2b11e6cb70b67'
+            '9193c75fc94b5ed357eb7be603760a9bd881aac1f00270573a431d756935308317290dd5b34bd4f0c22cf0959b7a10cdeec14bfcb253d9a9a13aa3b6ae13b303'
             'c9110733aa9269fba458cb06b676f425455d4d1f0181b69e1a26345216802ae1ca2010915f75d3692dbb1ef5df9ac92986c3ee34322d9b9c96acf6e618c6ba5f')
 
 prepare() {
