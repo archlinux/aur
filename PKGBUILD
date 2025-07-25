@@ -15,7 +15,7 @@ url="https://github.com/Suwayomi/Suwayomi-Server-preview"
 license=("MPL2")
 depends=("java-runtime>=21" "libc++")
 optdepends=("electron: running in Electron"
-            "xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in X")
+    "xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode")
 provides=("suwayomi" "$_pkgname" "tachidesk" "tachidesk-server")
 conflicts=("tachidesk")
 _jar="$_PkgName-v$_pkgver.jar"

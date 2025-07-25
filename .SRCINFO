@@ -8,7 +8,7 @@ pkgbase = suwayomi-server-preview-bin
 	depends = java-runtime>=21
 	depends = libc++
 	optdepends = electron: running in Electron
-	optdepends = xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in X
+	optdepends = xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode
 	provides = suwayomi
 	provides = suwayomi-server
 	provides = tachidesk
