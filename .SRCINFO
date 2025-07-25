@@ -1,6 +1,6 @@
 pkgbase = python-arrow-adbc
 	pkgdesc = Database connectivity API standard for Arrow
-	pkgver = 18
+	pkgver = 19
 	pkgrel = 1
 	url = https://arrow.apache.org/adbc/current/index.html
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = python-arrow-adbc
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
-	source = python-arrow-adbc-18.tar.gz::https://github.com/apache/arrow-adbc/archive/refs/tags/apache-arrow-adbc-18.tar.gz
-	sha256sums = f1f80ade384c8185f67cf01ec0a30391cad1f2e09bdaffb018f9069849c3c50e
+	source = python-arrow-adbc-19.tar.gz::https://github.com/apache/arrow-adbc/archive/refs/tags/apache-arrow-adbc-19.tar.gz
+	sha256sums = 8e9ed5464ce06b144951f927ebd951f12338b8acdbd7b015ba2f2f49e9cff2aa
 
 pkgname = python-arrow-adbc
 	depends = python
