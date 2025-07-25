@@ -1,10 +1,10 @@
 pkgbase = geany-themes
-	pkgdesc = A collection of color schemes for Geany.
+	pkgdesc = A collection of color schemes for Geany. Only those not included in the geany package.
 	pkgver = 1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.geany.org/geany-themes/
 	arch = any
-	license = GPL
+	license = custom
 	depends = geany
 	source = geany-themes-1.24.tar.gz::https://github.com/geany/geany-themes/archive/refs/tags/1.24.tar.gz
 	b2sums = 8db169253c29aa7a4fb6eb6d881d5bb79ac3d14101e96bca6dcd7576c6d576c6f5632f30c209f67307a1e4b68bb7b619bf97e5195651003e0ca79f0efd37054c
