@@ -53,8 +53,8 @@ prepare() {
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   #diff libavcodec/opus/dec.c{.bak,} || :
-  # Drop this at 7.1.2 # https://lists.ffmpeg.org/pipermail/ffmpeg-devel/2025-May/343409.html
-  sed -i.bak  "s/h264_sei.o h2645_sei.o/h264_sei.o h2645_sei.o aom_film_grain.o/" libavcodec/Makefile
+  # ${_url}/+/refs/heads/master/chromium/patches/README
+  sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
 }
 
 build() {
