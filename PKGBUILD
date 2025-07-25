@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cytometree
-_pkgver=2.0.2
+_pkgver=2.0.6
 pkgname=r-${_pkgname,,}
-pkgver=2.0.2
-pkgrel=4
+pkgver=2.0.6
+pkgrel=1
 pkgdesc='Automated Cytometry Gating and Annotation'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cab16863fb203eac7b1d21436c6cb23fa5e225728b8839837ade563ace56e7a1')
+sha256sums=('415191be36e3d4cef5e0584645f80d2e17d06a969fa7dfa41af8cb059f84e50f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
