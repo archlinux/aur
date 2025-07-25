@@ -1,0 +1,19 @@
+pkgbase = autotag-bin
+	pkgdesc = Automatic tagging and renaming of TV show episodes and movies
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/jamerst/AutoTag
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	provides = autotag
+	conflicts = autotag
+	source = autotag-bin-4.0.0_linux-x64.zip::https://github.com/jamerst/AutoTag/releases/download/v4.0.0/autotag-4.0.0_linux-x64.zip
+	source = autotag-bin-4.0.0_linux-x64.LICENSE::https://github.com/jamerst/AutoTag/blob/v4.0.0/LICENSE
+	b2sums = 7d5d24ff39ba3bc7ca1f7d5d439b7fafea5e685d2c2c9f79f3237f24f902496d34d6a1f2be188c71a00c926ca755738e40e02241abbc3e7d52caaba36c70b99a
+	b2sums = edb75d05452af997be487e2ddf455dc4fb3ac9610106bb41fc78580490ce5436c7a991d3df9aa4402207e81a0a2287434fcda35f2567d9406a1bc0dd97be123d
+
+pkgname = autotag-bin
