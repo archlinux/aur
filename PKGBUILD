@@ -1,7 +1,7 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=fastanime
-pkgver=2.8.8
+pkgver=2.9.9
 pkgrel=1
 epoch=1
 pkgdesc="FastAnime, anime site experience from the terminal."
