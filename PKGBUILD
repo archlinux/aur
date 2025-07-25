@@ -3,8 +3,8 @@
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
 pkgver=v1.0.0.r31.g864656c
-pkgrel=1
-pkgdesc="bookmark manager: extension-free, multi-browser, realtime, local first"
+pkgrel=2
+pkgdesc="Blazing fast, realtime, extension-free, multi-browser, bookmark manager"
 arch=('i686' 'x86_64')
 makedepends=(git git-lfs go make sqlite)
 url='https://github.com/blob42/gosuki'

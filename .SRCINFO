@@ -1,7 +1,7 @@
 pkgbase = gosuki-git
-	pkgdesc = bookmark manager: extension-free, multi-browser, realtime, local first
+	pkgdesc = Blazing fast, realtime, extension-free, multi-browser, bookmark manager
 	pkgver = v1.0.0.r31.g864656c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blob42/gosuki
 	arch = i686
 	arch = x86_64
