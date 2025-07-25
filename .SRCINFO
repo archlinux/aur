@@ -1,11 +1,11 @@
 pkgbase = spacefm-gtk2-bin
 	pkgdesc = SpaceFM binary package from debian bullseye, GTK2 version
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://packages.debian.org/bookworm/amd64/spacefm
 	arch = x86_64
 	license = GPL-2.0-only
-	depends = gtk3
+	depends = gtk2
 	depends = startup-notification
 	depends = ffmpegthumbnailer
 	provides = spacefm
