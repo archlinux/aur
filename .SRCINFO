@@ -1,14 +1,14 @@
 pkgbase = r-plot3drgl
 	pkgdesc = Plotting Multi-Dimensional Data - Using 'rgl'
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=plot3Drgl
 	arch = any
 	license = GPL-3.0-or-later
 	depends = r-plot3d
 	depends = r-rgl
-	source = https://cran.r-project.org/src/contrib/plot3Drgl_1.0.4.tar.gz
-	md5sums = 4703ef94b1a0b6eed095071d280ac1e4
-	b2sums = 9d393e092cd4634630e516f9d04d3a3f0dc2007cc91fa1a2f5fe2c57652827c1840980c13a619af6d4d60ff1cf011daf89a0599be5b5082dfcf23cc987542ed5
+	source = https://cran.r-project.org/src/contrib/plot3Drgl_1.0.5.tar.gz
+	md5sums = c91d622b787f4e5c33910eea3547c481
+	b2sums = 0c48fc9736afdc8fa96cc68752b2e3b7fa99c337681da151311f1a200b7409e9538421d8dfaa4ad6a6ef9a57fb12072d414ad980a3b4453fb3eaab2f381ad86f
 
 pkgname = r-plot3drgl

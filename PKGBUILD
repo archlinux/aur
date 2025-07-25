@@ -3,10 +3,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=plot3Drgl
-_pkgver=1.0.4
+_pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Plotting Multi-Dimensional Data - Using 'rgl'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ depends=(
   r-rgl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4703ef94b1a0b6eed095071d280ac1e4')
-b2sums=('9d393e092cd4634630e516f9d04d3a3f0dc2007cc91fa1a2f5fe2c57652827c1840980c13a619af6d4d60ff1cf011daf89a0599be5b5082dfcf23cc987542ed5')
+md5sums=('c91d622b787f4e5c33910eea3547c481')
+b2sums=('0c48fc9736afdc8fa96cc68752b2e3b7fa99c337681da151311f1a200b7409e9538421d8dfaa4ad6a6ef9a57fb12072d414ad980a3b4453fb3eaab2f381ad86f')
 
 build() {
   mkdir build
