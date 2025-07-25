@@ -11,7 +11,7 @@ pkgbase = hyprswap-git
 	provides = package
 	conflicts = hyprswap
 	conflicts = hyprswap-bin
-	source = hyprswap-git::git+https://github.com/Ryushe/hyprswap.git
+	source = hyprswap-git::git+https://github.com/Ryushe/hyprswap.git#branch=main
 	md5sums = SKIP
 	sha256sums = SKIP
 
