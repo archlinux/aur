@@ -1,20 +1,20 @@
 # Maintainer: Cyrille Pontvieux <cyrille@enialis.net>
 pkgname=ezchlog
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Easy git branch friendly changelogs"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.com/jrdasm/ezchlog"
 license=('MIT')
-makedepends=('cargo' 'upx')
+makedepends=('cargo')
 source=("https://gitlab.com/jrdasm/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6645731df2b4f9dc524288b25c2f199280b7b8f2923286f8f41f137279f2e745')
+sha256sums=('400c8047d6c6ffd83934c3815dfd44a5a49e2d00d9ac049af8b0a89b29f8fbcc')
 
 build() {
 	cd "$pkgname-v$pkgver"
   sed -i '/^Python version$/,/^Add a changelog$/{/^Add a changelog$/!d}' README.md
 	cargo build --locked --release
-  upx --lzma --best -o $pkgname target/release/$pkgname
+  mv target/release/$pkgname $pkgname
 }
 
 package() {
