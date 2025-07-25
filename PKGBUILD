@@ -1,8 +1,9 @@
-# Maintainer: Mario Finelli <mario at finel dot li>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
+# Contributor: Mario Finelli <mario at finel dot li>
 
-_commit=81943d532dee24f8518f855dfb17160809abfdfb
+_commit=10bf0b27c5be81ee26c3a0d32e39b270f95329ce
 pkgname=vim-puppet
-pkgver=20220521
+pkgver=20240915
 pkgrel=1
 epoch=2
 pkgdesc="Puppet language syntax highlighting for vim."
@@ -11,7 +12,7 @@ url="https://github.com/rodjek/vim-puppet"
 license=('Apache')
 depends=('vim')
 source=("${url}/archive/$_commit.zip")
-sha256sums=('54a63e74e2b251b2e5ed25aeb72f18e92be17c79be215fea822ffebd50f2106e')
+sha256sums=('4bbeaf8e48f07949bd4e36f192950c0cadfcd72f60174061796c89d145aa1365')
 
 package() {
     cd "vim-puppet-$_commit"
