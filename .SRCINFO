@@ -1,12 +1,15 @@
 pkgbase = python-cymruwhois
 	pkgdesc = Client for the whois.cymru.com service
 	pkgver = 1.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://pythonhosted.org/cymruwhois
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
+	optdepends = python-memcached: optional caching in memcached
 	source = python-cymruwhois-1.6.tar.gz::https://github.com/JustinAzoff/python-cymruwhois/archive/refs/tags/1.6.tar.gz
 	sha256sums = 357bd4beaab4c857062984cfd6b85606e3ff6b39e6e5420f428961ab2a9f2434
 
