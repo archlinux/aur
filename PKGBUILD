@@ -2,7 +2,7 @@
 
 pkgname=nih-plug-git
 pkgver=r2245.ecfd6322
-pkgrel=1
+pkgrel=3
 pkgdesc="Rust VST3 and CLAP plugin collection by Robbert Van Der Helm"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/nih-plug"
