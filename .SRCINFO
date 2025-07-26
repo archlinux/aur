@@ -1,18 +1,18 @@
 pkgbase = chsrc-bin
 	pkgdesc = A cli tool to change source for every software on every platform
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/RubyMetric/chsrc
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = MIT
-	source = https://github.com/RubyMetric/chsrc/releases/download/v0.2.1/chsrc-x64-linux
-	source = https://raw.githubusercontent.com/RubyMetric/chsrc/v0.2.1/LICENSE-MIT.txt
-	source = https://github.com/RubyMetric/chsrc/raw/v0.2.1/doc/chsrc.1
-	source = https://github.com/RubyMetric/chsrc/raw/v0.2.1/doc/chsrc.texi
-	sha256sums = be5f43c0e9f7811da25db02859d390933ad166f04ac3d9cbc85744a5c94ea8ed
+	source = https://github.com/RubyMetric/chsrc/releases/download/v0.2.2/chsrc-x64-linux
+	source = https://raw.githubusercontent.com/RubyMetric/chsrc/v0.2.2/LICENSE-MIT.txt
+	source = https://github.com/RubyMetric/chsrc/raw/v0.2.2/doc/chsrc.1
+	source = https://github.com/RubyMetric/chsrc/raw/v0.2.2/doc/chsrc.texi
+	sha256sums = d8eef34aa1b8c924123a8bb5e1d1dee901d88cc3d6702b7b65eeb5c8add83412
 	sha256sums = 2efd2d4e273714f8ed1483342abb5e204291a7916dddf15f7049fd18f95b2528
-	sha256sums = bedb6fb145c3faaf161a7924a1a17a91678390ffd95907db9a500a90cff8410a
-	sha256sums = 0045f83c06026a648b78a40a16eab3ffdd47ac87324d0971a6e0636f5de7ffe4
+	sha256sums = 1ba2a334217c33c3c39105790587fddba1a653a4cd6bbf9dcbf77bf9d3eae9d6
+	sha256sums = 92f77cec027a42c3feac6d0fcdbcf49483a1cf7bc1d68061991ed055ba911bae
 
 pkgname = chsrc-bin
