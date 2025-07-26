@@ -4,23 +4,22 @@ post_install() {
   echo "  Internet Usage Monitor has been installed!"
   echo "=========================================================="
   echo
-  echo "IMPORTANT: To complete setup, run:"
+  echo "TO COMPLETE SETUP, RUN THIS COMMAND:"
   echo
-  echo "    internet-usage-monitor-setup"
+  echo "    /usr/bin/internet-monitor-setup"
   echo
-  echo "This will:"
-  echo "  • Create configuration files"
-  echo "  • Set up systemd service for monitoring"
-  echo "  • Configure desktop widget autostart"
-  echo "  • Start the monitoring daemon"
+  echo "(Just copy and paste the above command)"
   echo
-  echo "After setup, the Conky widget will appear on your desktop."
+  echo "This will automatically:"
+  echo "  ✓ Create configuration files"
+  echo "  ✓ Start the monitoring service"
+  echo "  ✓ Set up the desktop widget"
   echo "=========================================================="
   echo
   
   # Send desktop notification if possible
   if [ -n "${SUDO_USER}" ] && command -v sudo > /dev/null 2>&1; then
-    sudo -u "${SUDO_USER}" notify-send "Internet Usage Monitor" "Installation complete! Run 'internet-usage-monitor-setup' to finish setup." 2>/dev/null || true
+    sudo -u "${SUDO_USER}" notify-send "Internet Usage Monitor" "Run: /usr/bin/internet-monitor-setup" 2>/dev/null || true
   fi
 }
 
