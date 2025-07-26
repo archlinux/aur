@@ -7,7 +7,7 @@
 # Contributor: fuckotheclown <fuckotheclown@example.com>
 pkgname=bitchat-tui
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Secure, anonymous, peer-to-peer Bluetooth chat with terminal UI"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/vaibhav-mattoo/bitchat-tui"
@@ -24,7 +24,7 @@ validpgpkeys=()
 prepare() {
   cd "$pkgname-$pkgver"
   # Remove the vendored feature to use the system's dbus library
-  sed -i '/\[target.cfg(target_os = "linux")\].dependencies\]/{n;s/, features = \["vendored"\]//}' Cargo.toml
+  # sed -i '/\[target.cfg(target_os = "linux")\].dependencies\]/{n;s/, features = \["vendored"\]//}' Cargo.toml
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -32,10 +32,12 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # Set environment variables for proper D-Bus linking
+  # Ensure pkg-config can find dbus
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
   export DBUS_CFLAGS="$(pkg-config --cflags dbus-1)"
   export DBUS_LIBS="$(pkg-config --libs dbus-1)"
+  # Additional linking flags for dbus
+  export RUSTFLAGS="-L/usr/lib -ldbus-1"
   cargo build --frozen --release --all-features
 }
 
