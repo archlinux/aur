@@ -1,7 +1,7 @@
 # Maintainer: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=px4_drv-dkms-git
 _pkgname=px4_drv
-pkgver=r515.ee96863
+pkgver=r534.b4a6f9a
 pkgrel=1
 pkgdesc="PLEX PX-W3U4/W3PE4/Q3PE4 unofficial Linux driver"
 arch=('x86_64' 'aarch64')
