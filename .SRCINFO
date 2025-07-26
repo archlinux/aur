@@ -19,6 +19,6 @@ pkgbase = openai-chatgpt-nativefier
 	source = chatgpt-autocleaner.js
 	sha256sums = 9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203
 	sha256sums = 04ed8323dbdf9f2c4741fa05f171e2016feb9c51a5ca52917ab05785b71608f7
-	sha256sums = 3042a510076617b1d5ee6d67676766851122b3f185b3cca2fdec0f5c51c041df
+	sha256sums = 95b1ad35bc41d1b6c7cad1fe411ecc3d6749819d2a8a09da2dc5220af08e41b5
 
 pkgname = openai-chatgpt-nativefier
