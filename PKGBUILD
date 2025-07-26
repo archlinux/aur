@@ -2,7 +2,7 @@
 
 _name=lrxed
 pkgname=$_name-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A tui application for synchronising lyrics"
 arch=("x86_64" "aarch64")
@@ -11,10 +11,10 @@ license=("EUPL-1.2")
 provides=("$_name")
 conflicts=("$_name")
 depends=("gcc-libs" "alsa-lib")
-source_x86_64=("$url/releases/download/v$pkgver/$_name-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("$url/releases/download/v$pkgver/$_name-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=("4c744eeef8eef324632624cc4b5e381b4046f25e4a0c46aeba28a6cf6d19323b")
-sha256sums_aarch64=("9053a2c5e164bfe026d684d49072e61129cf9c936c17b65d86fb9c837314deeb")
+source_x86_64=("$url/releases/download/v$pkgver/$_name-v$pkgver-x86_64-linux.tar.gz")
+source_aarch64=("$url/releases/download/v$pkgver/$_name-v$pkgver-aarch64-linux.tar.gz")
+sha256sums_x86_64=("dcf4a2a7ecab33fbdde57af5f9b9d7a8f8e505c3da021685cff3e3995d59aedb")
+sha256sums_aarch64=("69a5b7e962ef86c1ef84d55cee106f66a214059b055e345800e59bfd639253da")
 
 package() {
   install -Dm755 "$_name" -t "$pkgdir/usr/bin"
