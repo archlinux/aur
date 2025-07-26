@@ -1,4 +1,5 @@
-# Maintainer: Cooper Pierce <cppierce@andrew.cmu.edu>
+# Maintainer: TwoFinger
+# Contributor: Cooper Pierce <cppierce@andrew.cmu.edu>
 pkgname=smlfmt
 pkgver=1.0.0
 pkgrel=1
