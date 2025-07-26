@@ -1,0 +1,13 @@
+pkgbase = fastnn
+	pkgdesc = A tool to quickly access a prediction neural network model
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/eshnd/fastnn
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pytorch
+	source = fastnn-1.0.0.tar.gz::https://github.com/eshnd/fastnn/archive/refs/tags/v1.0.0.tar.gz
+	sha512sums = 4dd4e6c9516754e9e0e6b1d2f3f40472c6ea002b808f6fe2afc3f5ee00599a0332b6dc972e660d6fc7d863bc02fd6fe9a7295cf8835d464147ef01dac236a780
+
+pkgname = fastnn
