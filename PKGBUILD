@@ -1,43 +1,53 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Jens Schwander <thomas747a@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Aleksy Grabowski <hurufu+arch@gmail.com>
 
 pkgname=python-pynng
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
-pkgdesc='Python bindings for Nanomsg Next Generation'
-arch=('x86_64')
+pkgdesc='Ergonomic bindings for nanomsg next generation (nng), in Python'
+arch=('x86_64' 'aarch64')
 url='https://github.com/codypiersall/pynng'
 license=('MIT')
-depends=('python-sniffio' 'python-cffi')
+depends=(
+    'python>=3.12'
+    'python-sniffio'
+)
 makedepends=(
-	'cmake'
-	'git'
-	'python-setuptools'
-	'python-pytest-runner')
+    'cmake'
+    'git' # Required by setup.py to clone nng and mbedtls
+    'ninja'
+    'python-setuptools'
+    'python-cffi'
+)
 checkdepends=(
-	'python-pytest-asyncio'
-	'python-pytest-curio'
-	'python-pytest-trio'
-	'python-curio'
-	'python-trio'
-	'python-mbed-host-tests')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('752bb38a0d00d9dc52f361479c44018d2ed508dd9841a595314a45d660b95570')
+    'python-pytest'
+    'python-pytest-asyncio'
+    'python-pytest-trio'
+)
+# The source line renames the downloaded file for consistency
+source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+# Confirmed correct checksum
+sha256sums=('4cbebde4951b197c44c99b6e8783a96fb7164581a827590eb775a4726461be55')
+
+# The directory name inside the tarball is pynng-0.8.1
+_sourcedir="pynng-$pkgver"
 
 build() {
-	cd "pynng-$pkgver"
-	python setup.py build
+    cd "$_sourcedir"
+    python setup.py build
 }
 
 check() {
-	cd "pynng-$pkgver"
-	local _ver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_ver" python setup.py pytest
+    cd "$_sourcedir"
+    # Add the just-built library to the path so pytest can find it
+    export PYTHONPATH="$srcdir/$_sourcedir/build/lib"
+    pytest
 }
 
 package() {
-	cd "pynng-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install -O1 --root="$pkgdir" --skip-build
-	install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    cd "$_sourcedir"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
