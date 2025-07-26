@@ -2,12 +2,12 @@
 
 pkgname=tbb-combo-native-agent
 pkgver=1.0.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Taiwan Business Bank combo native agent (臺灣企銀二合一元件)'
 arch=(any)
 url='https://ebank.tbb.com.tw/'
 license=(unknown)
-depends=(gnutls pcsclite sh)
+depends=(gnutls pcsclite sh wine)
 makedepends=(p7zip gendesk perl-image-exiftool)
 source=("Install_TbbComboNativeAgentHost-$pkgver.exe"::"https://ebank.tbb.com.tw/nb3/COMPONENT/component_download?componentPath=win&trancode=ComponentDownload"
         "$pkgname")
@@ -33,10 +33,6 @@ build() {
 }
 
 package() {
-  # Per https://bugs.winehq.org/show_bug.cgi?id=54661, 32-bit winscard.dll will be supported through wow64 thunks
-  # Keep wine-wow64 here, so that this package can be built with only official packages
-  depends+=(wine-wow64)
-
   install -Dm755 $pkgname -t "$pkgdir"/usr/bin
   install -Dm644 TbbComboNativeAgentHost.exe -t "$pkgdir"/usr/share/$pkgname
   install -Dm644 $pkgname.desktop -t "$pkgdir"/usr/share/applications
