@@ -1,8 +1,8 @@
 _name='phosh-osk-stub'
 pkgname="$_name"
-pkgver=0.38.0
+pkgver=0.48.0
 pkgrel=1
-pkgdesc="An experimental alternative OSK for phosh"
+pkgdesc="OSK for phosh"
 install="phosh-osk-stub.install"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/guidog/$_name"
@@ -14,17 +14,21 @@ depends=(
     fzf
     hunspell
     wayland-protocols
+    libhandy
+    presage
 )
 makedepends=(
     git
     meson
     cmake
+    glib2-devel
 )
 optdepends=(
-    'presage-git: predictive text entry'
     'govarnam: transliteration for Indian languages'
 )
-provides=(${_name})
+provides=(
+    ${_name}
+    stevia)
 conflicts=(
     ${_name}
 )
@@ -33,7 +37,7 @@ source=(
     "${_name}::git+$url#tag=v$pkgver"
     "phosh-osk-stub.install"
 )
-sha512sums=('aa03bb5a534cce45adef21a99732e9e5f75f535e4dc222572e0eeaac4d61f40de842d674a01b878f9fbd374655a611bf2f505db31c236c43b8fc30a836aa21b8'
+sha512sums=('c6a019184107aaefe75fef70f344435f4dffcd7a0cb44df6001aefec7d12828183f153a611649860bf25ed431e663810ea59eab296388d023a78e84028982d2d'
             '55ae71c3ba4bf2ccaf017c9a64554ddeda11c8fd67e907941a364869ef44aca97b4eb185a17cd25782c78d7c51151ae952c95f6970333dc4b8a5d691c8112b1c')
 
 
