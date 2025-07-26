@@ -2,10 +2,11 @@
 
 #  Maintainer: Gavin D. Howard <yzena.tech@gmail.com>
 # Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: emk2203 <erik dot koennecke at gmail dot com>
 
 pkgname='bc-gh'
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
@@ -41,7 +42,7 @@ build() {
 check() {
   cd "bc-$pkgver"
 
-  env LANG=C LC_ALL=C make check
+  env LANG=C LC_ALL=C make test
 }
 
 package() {
