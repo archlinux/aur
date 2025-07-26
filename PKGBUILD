@@ -6,13 +6,13 @@
 
 pkgname=yacreader-bin
 pkgver="9.15.0"
-pkgrel=1
+pkgrel=2
 _variant="2.fc42"
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection, binary version."
 arch=(x86_64)
 url="https://www.yacreader.com/"
 license=(GPL3)
-depends=(poppler-qt5 libunarr qt5-multimedia)
+depends=(poppler-qt5 libunarr qt5-multimedia qt5-quickcontrols)
 conflicts=(yacreader)
 provides=(yacreader)
 source_x86_64=("https://kojipkgs.fedoraproject.org//packages/yacreader/${pkgver}/${_variant}/x86_64/yacreader-${pkgver}-${_variant}.x86_64.rpm")
