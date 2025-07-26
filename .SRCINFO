@@ -1,6 +1,6 @@
 pkgbase = rdm
 	pkgdesc = A simple yet powerful dotfile manager powered by lua
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Rikaisan/rdm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rdm
 	depends = libgit2
 	depends = glibc
 	depends = gcc-libs
-	source = rdm-1.0.2.tar.gz::https://github.com/Rikaisan/rdm/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 3030aa1183647764eeab63d40ee44f51fbe4f15c4c45c6105202ace09261b6c1
+	source = rdm-1.0.3.tar.gz::https://github.com/Rikaisan/rdm/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 984b55560ab889242936aa8a4e834afeeb96e90343dcade9cff7c690d910107f
 
 pkgname = rdm
