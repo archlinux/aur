@@ -1,13 +1,13 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=gnofract4d-git
-pkgver=4.3.r197.g4202edc
+pkgver=4.4.r0.gf6208cd
 pkgrel=1
 pkgdesc='Create beautiful fractal images'
 arch=(any)
 url=https://fract4d.github.io/gnofract4d
 license=(BSD)
-depends=(gtk4 python-cairo python-gobject)
+depends=(gtk4 libjpeg libpng libxml2 python-cairo python-gobject)
 makedepends=(git meson)
 optdepends=('ffmpeg: to create videos')
 checkdepends=(python-pytest)
@@ -29,11 +29,13 @@ build() {
 
 check() {
   cd $pkgname
+  #meson test -C build
   ./test.py
 }
 
 package() {
   cd $pkgname
+  #install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 doc/${pkgname%-git}.1 -t "$pkgdir/usr/share/man/man1"
   meson install -C _build --destdir "$pkgdir"
 }
