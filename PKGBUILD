@@ -2,8 +2,8 @@
 
 _pkgname=fastanime
 pkgname="${_pkgname}-git"
-pkgver=2.9.9.r1.06506fb
-pkgrel=2
+pkgver=2.9.9.r2.159136c
+pkgrel=1
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
@@ -11,23 +11,18 @@ license=('Unlicense')
 makedepends=('python>=3.10' 'git' 'uv' 'python-installer')
 depends=('python'
          'python-click'
-         'python-fastapi'
-         'python-inquirerpy'
-         'libtorrent'
-         'python-plyer'
-         'python-pytest'
-         'python-requests'
-         'python-rich'
-         'python-thefuzz'
-         'yt-dlp'
-         'python-dbus'
-         'python-pypresence'
          'python-httpx'
-         'python-beautifulsoup4'
+         'python-inquirerpy'
+         'python-pydantic'
+         'python-rich'
+         'python-plyer'
+         'libtorrent'
          'python-lxml'
-         'python-pycryptodome'
-         'python-pydantic')
+         'python-pypresence'
+         'python-thefuzz'
+         'python-pycryptodome')
 optdepends=('mpv: video player'
+            'yt-dlp: download videos'
             'webtorrent-cli: nyaa torrents'
             'ffmpeg: download hls streams' 
             'rofi: alternative ui'
