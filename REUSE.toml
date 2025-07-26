@@ -1,0 +1,31 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-Add-av_stream_get_first_dts-for-Chromium.patch",
+    "0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch",
+    "fix_build_with_v4l2_1.30.patch",
+]
+SPDX-FileCopyrightText = "ffmpeg contributors"
+SPDX-License-Identifier = "GPL-3.0-only"
