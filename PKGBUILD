@@ -1,7 +1,7 @@
 # Maintainer: fdossena <info@fdossena.com>
 
 pkgname=flogo
-pkgver=1.0.3.r174.81af9b0
+pkgver=1.1.0.r198.9e255f8
 pkgrel=1
 pkgdesc='Create and run programs using flow charts'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=('electron')
 makedepends=('git' 'yarn')
 provides=('flogo')
-source=(git+https://github.com/adolfintel/flogo#branch=electron
+source=(git+https://github.com/adolfintel/flogo
         flogo.desktop
         flogo.sh
         flogo-mime.xml)
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   yarn --cache-folder "${srcdir}/yarn-cache" install
-  yarn --cache-folder "${srcdir}/yarn-cache" run buildlinux
+  yarn --cache-folder "${srcdir}/yarn-cache" run build-linux-x64 #architecture is actually irrelevant, we just need the app.asar file
 }
 
 package() {
@@ -36,8 +36,8 @@ package() {
 
   cd $pkgname
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "images/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm644 "images/icon_file.png" "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes/x-${pkgname}_file.png"
+  install -Dm644 "icons/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  install -Dm644 "icons/icon_file.png" "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes/x-${pkgname}_file.png"
   cd ..
 
 }

@@ -1,6 +1,6 @@
 pkgbase = flogo
 	pkgdesc = Create and run programs using flow charts
-	pkgver = 1.0.3.r174.81af9b0
+	pkgver = 1.1.0.r198.9e255f8
 	pkgrel = 1
 	url = https://fdossena.com?p=flogo/index.frag
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = flogo
 	makedepends = yarn
 	depends = electron
 	provides = flogo
-	source = git+https://github.com/adolfintel/flogo#branch=electron
+	source = git+https://github.com/adolfintel/flogo
 	source = flogo.desktop
 	source = flogo.sh
 	source = flogo-mime.xml
