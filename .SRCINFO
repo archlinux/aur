@@ -1,6 +1,6 @@
 pkgbase = rofimoji-git
 	pkgdesc = Emoji, unicode and general character picker for rofi and rofi-likes
-	pkgver = 6.5.0.r14.g167df25
+	pkgver = 6.6.0.r0.gfbc5045
 	pkgrel = 1
 	url = https://github.com/fdw/rofimoji
 	arch = any
@@ -25,7 +25,8 @@ pkgbase = rofimoji-git
 	optdepends = wmenu: for one of the Wayland selectors
 	optdepends = wofi: for one of the Wayland selectors
 	optdepends = wl-clipboard: for the Wayland clipboarder
-	optdepends = wtype: for the Wayland typer
+	optdepends = wtype: for one of the Wayland typers
+	optdepends = ydotool: for one of the Wayland typers
 	provides = rofimoji
 	conflicts = rofimoji
 	source = git+https://github.com/fdw/rofimoji.git

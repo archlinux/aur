@@ -2,7 +2,7 @@
 
 pkgname=rofimoji-git
 _name=${pkgname%-git}
-pkgver=6.5.0.r14.g167df25
+pkgver=6.6.0.r0.gfbc5045
 pkgrel=1
 pkgdesc='Emoji, unicode and general character picker for rofi and rofi-likes'
 arch=(any)
@@ -34,7 +34,8 @@ optdepends=(
   'wmenu: for one of the Wayland selectors'
   'wofi: for one of the Wayland selectors'
   'wl-clipboard: for the Wayland clipboarder'
-  'wtype: for the Wayland typer'
+  'wtype: for one of the Wayland typers'
+  'ydotool: for one of the Wayland typers'
 )
 provides=("$_name")
 conflicts=("$_name")
