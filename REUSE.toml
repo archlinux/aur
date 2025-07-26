@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "libofa-0.9.3-curl-7.21.patch",
+    "libofa-0.9.3-gcc-4.7.patch",
+    "libofa-gcc4.3.patch",
+    "libofa-gcc4.5.patch",
+    "libofa-gcc4.patch",
+]
+SPDX-FileCopyrightText = "libofa contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"
