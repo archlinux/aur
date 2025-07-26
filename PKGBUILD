@@ -26,7 +26,7 @@ _get_download_url() {
     elif curl --output /dev/null --silent --head --fail "$oss_url"; then
         echo "$oss_url"
     else
-        echo "ERROR: Neither download source is available for version $version" >&2
+        echo "ERROR: Neither download source is available for version ${pkgver}" >&2
         return 1
     fi
 }
