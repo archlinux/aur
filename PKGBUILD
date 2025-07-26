@@ -54,7 +54,7 @@ source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
         # "git+https://github.com/${_pkgname}/googletest"
 
         # Skia
-        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m102")
+        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m124")
 sha256sums=('SKIP'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'SKIP'
@@ -141,8 +141,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/skia"
-    bin/gn gen out/Clang --args='cc="clang" cxx="clang++" extra_ldflags=["-stdlib=libc++"] extra_cflags=["-stdlib=libc++"] is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'    
-    # bin/gn gen out/Clang --args='is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'
+    bin/gn gen out/Clang --args='cc="clang" cxx="clang++" extra_ldflags=["-stdlib=libc++"] extra_cflags=["-stdlib=libc++"] is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'
     ninja -C out/Clang skia modules
 
     cd "${srcdir}/${_pkgname}/build"
