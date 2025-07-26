@@ -1,0 +1,17 @@
+# Ignore build artifacts
+*.pkg.tar*
+*.log
+pkg/
+src/
+internet-usage-monitor/
+
+# Ignore backup files
+*.backup
+*~
+*.swp
+
+# Keep only essential files for AUR
+# PKGBUILD
+# .SRCINFO
+# *.install
+# *.patch (if any)

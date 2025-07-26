@@ -1,0 +1,66 @@
+post_install() {
+  echo
+  echo "=========================================================="
+  echo "  Internet Usage Monitor has been installed!"
+  echo "=========================================================="
+  echo
+  echo "IMPORTANT: To complete setup, run:"
+  echo
+  echo "    internet-usage-monitor-setup"
+  echo
+  echo "This will:"
+  echo "  • Create configuration files"
+  echo "  • Set up systemd service for monitoring"
+  echo "  • Configure desktop widget autostart"
+  echo "  • Start the monitoring daemon"
+  echo
+  echo "After setup, the Conky widget will appear on your desktop."
+  echo "=========================================================="
+  echo
+  
+  # Send desktop notification if possible
+  if [ -n "${SUDO_USER}" ] && command -v sudo > /dev/null 2>&1; then
+    sudo -u "${SUDO_USER}" notify-send "Internet Usage Monitor" "Installation complete! Run 'internet-usage-monitor-setup' to finish setup." 2>/dev/null || true
+  fi
+}
+
+post_upgrade() {
+  echo
+  echo ">>> Internet Usage Monitor has been upgraded."
+  echo ">>> Your configuration files have been preserved."
+  echo ">>> Run 'internet-usage-monitor-setup' if you need to reconfigure."
+  echo
+}
+
+pre_remove() {
+  # Stop services and processes for all users
+  echo ">>> Stopping Internet Usage Monitor services..."
+  
+  # Get all users who might have the service running
+  for user_home in /home/*; do
+    if [ -d "$user_home" ]; then
+      username=$(basename "$user_home")
+      
+      # Stop systemd service if running
+      if [ -f "$user_home/.config/systemd/user/internet-monitor.service" ]; then
+        su - "$username" -c "systemctl --user stop internet-monitor.service 2>/dev/null" || true
+        su - "$username" -c "systemctl --user disable internet-monitor.service 2>/dev/null" || true
+      fi
+    fi
+  done
+  
+  # Kill any remaining conky processes
+  pkill -f "conky.*conkyrc_internet" 2>/dev/null || true
+  pkill -f "internet-monitor" 2>/dev/null || true
+}
+
+post_remove() {
+  echo
+  echo ">>> Internet Usage Monitor has been removed."
+  echo ">>> To completely remove all data and configuration:"
+  echo ">>>   rm -rf ~/.config/internet-usage-monitor"
+  echo ">>>   rm -rf ~/.local/share/internet-usage-monitor"
+  echo ">>>   rm -f ~/.config/systemd/user/internet-monitor.service"
+  echo ">>>   rm -f ~/.config/autostart/internet-monitor-conky.desktop"
+  echo
+}
