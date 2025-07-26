@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=lobe-chat
-pkgver=1.104.2
+pkgver=1.104.3
 pkgrel=1
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
   "${pkgname}.service"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles")
-sha256sums=('e98f72ef318cbd2362aa11e03610519ab3c4516fec059caef349ef609895dc41'
+sha256sums=('57615d64480e414f3fd62eef4ea234e7bcc43a8830243e23966cb314a6e7bf83'
             '98d24ac4674757eb1e0b2e4be84bb871cbb0361752608090b49196aa044e51c1'
             '52b4cf31dff5e5e505d0a34ba8f3eec2837023ee03552d634a1e857e1a1ed983'
             '4205728d7528ccc94f2a9eb25655cf4bed59502be3726f17da814355c540f528'
