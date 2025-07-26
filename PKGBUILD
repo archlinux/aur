@@ -3,7 +3,7 @@
 pkgname=sunsetr-bin
 _realname=sunsetr # The actual binary name
 pkgver=0.6.1
-pkgrel=1          # Start with 1. Increment if you make PKGBUILD changes for the same pkgver later.
+pkgrel=2          # Start with 1. Increment if you make PKGBUILD changes for the same pkgver later.
 pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland (pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/psi4j/sunsetr"
@@ -20,7 +20,7 @@ _extracted_dir_name="${_realname}-v${pkgver}"
 _local_tarball_name="${_realname}-${pkgver}-x86_64-linux.tar.gz"
 
 source=("${_local_tarball_name}::${url}/releases/download/v${pkgver}/${_github_asset_filename}")
-sha256sums=('1ad097c49591306d3766686337d105ed667dc59d06c839a727f5e8bb5c1f058b')
+sha256sums=('f3e22702237aa6e836ef3b4710e4a617d68c71510d47c1bb98b98077c8acae39')
 
 package() {
     # The files are inside: ${srcdir}/${_extracted_dir_name}/
