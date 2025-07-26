@@ -2,7 +2,7 @@ pkgbase = phosh-osk-stub
 	pkgdesc = OSK for phosh
 	pkgver = 0.48.0
 	pkgrel = 1
-	url = https://gitlab.gnome.org/guidog/phosh-osk-stub
+	url = https://gitlab.gnome.org/guidog/stevia
 	install = phosh-osk-stub.install
 	arch = x86_64
 	arch = aarch64
@@ -22,7 +22,7 @@ pkgbase = phosh-osk-stub
 	provides = phosh-osk-stub
 	provides = stevia
 	conflicts = phosh-osk-stub
-	source = phosh-osk-stub::git+https://gitlab.gnome.org/guidog/phosh-osk-stub#tag=v0.48.0
+	source = phosh-osk-stub::git+https://gitlab.gnome.org/guidog/stevia#tag=v0.48.0
 	source = phosh-osk-stub.install
 	sha512sums = c6a019184107aaefe75fef70f344435f4dffcd7a0cb44df6001aefec7d12828183f153a611649860bf25ed431e663810ea59eab296388d023a78e84028982d2d
 	sha512sums = 55ae71c3ba4bf2ccaf017c9a64554ddeda11c8fd67e907941a364869ef44aca97b4eb185a17cd25782c78d7c51151ae952c95f6970333dc4b8a5d691c8112b1c

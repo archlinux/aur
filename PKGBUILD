@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="OSK for phosh"
 install="phosh-osk-stub.install"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/guidog/$_name"
+url="https://gitlab.gnome.org/guidog/stevia"
 license=('GPL-3.0-only')
 
 depends=(
