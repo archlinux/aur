@@ -8,7 +8,7 @@ url="https://reich.hms.harvard.edu/software"
 license=('custom')
 depends=('gsl' 'openblas' 'gcc-fortran')
 makedepends=('git' 'make')
-source=("admixtools-git::git+https://github.com/DReichLab/AdmixTools")
+source=("admixtools-git::git+https://github.com/Prowderypulp/AdmixTools")
 sha256sums=('SKIP')
 
 build() {
