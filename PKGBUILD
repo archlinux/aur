@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.15.7
+_kernver=6.15.8
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.15.7-arch1-1
+_KERNNAME=6.15.8-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-6.15.7.arch1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-headers-6.15.7.arch1-1-x86_64.pkg.tar.zst
-_docspkg=linux-docs-6.15.7.arch1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-6.15.8.arch1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-headers-6.15.8.arch1-1-x86_64.pkg.tar.zst
+_docspkg=linux-docs-6.15.8.arch1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('128eebc4b08de01bd66ebcfbf743c03390a4f9bea4cf85da8264f9714e7e1f25'
-            'fc70bf49de73029180d1b99a558d1d93e957624ca9ad182e53daae4cf95b380c'
-            'c0626465eba989363268ee6381e43672d9d53c0c588ee18fc00801093a75067b')
+sha256sums=('01fff2beecdad728d205dd66757dfe40e5678c69c8a199aac14ef70b2ad66f6a'
+            '72f6ae13cf215605b0f61ebc289b77c348529e259380d03313fda15d110d0f3f'
+            'e2342e4f350055d4ad96618be9d4c3cdd03a1e8d39d7a3620998a602c32e0431')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.15.7.arch1-1-bin() {
+package_linux6.15.8.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -71,7 +71,7 @@ package_linux6.15.7.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.15.7.arch1-1-headers-bin() {
+package_linux6.15.8.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -80,7 +80,7 @@ package_linux6.15.7.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.15.7.arch1-1-docs-bin() {
+package_linux6.15.8.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
