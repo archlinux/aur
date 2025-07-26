@@ -4,7 +4,7 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=1.9.2
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -23,7 +23,7 @@ conflicts=('xnviewmp')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-${pkgver}-linux-x64.tgz"
         'xnview.sh'
-        'xnviewmp.desktop'
+        'XnView.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
 sha256sums=('25B3B0E6FAC8DC4EAFEB02BB44C8CE7431BB2217E0921D5BFD250ED60BB32E6B'
@@ -110,7 +110,7 @@ package() {
   install -d -m755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgname}/xnview.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -D -m644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -D -m644 "${srcdir}/XnView.desktop" -t "${pkgdir}/usr/share/applications/"
   install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
