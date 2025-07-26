@@ -2,13 +2,13 @@
 
 _pkgname=karton-virt
 pkgname=$_pkgname-git
-pkgver=r30.fdfaef8
+pkgver=r36.976b74b
 pkgrel=1
 pkgdesc="A libvirt-based Virtual Machine Manager for KDE."
 arch=('x86_64')
 url="https://invent.kde.org/sitter/karton"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-declarative' 'libvirt' 'kirigami' 'kdeclarative' 'kcoreaddons' 'kcmutils' 'qqc2-desktop-style' 'vulkan-headers' 'vulkan-tools' 'virt-viewer' 'libosinfo')
+depends=('qt6-base' 'qt6-declarative' 'libvirt' 'kirigami' 'kdeclarative' 'kcoreaddons' 'kcmutils' 'qqc2-desktop-style' 'vulkan-headers' 'vulkan-tools' 'virt-viewer' 'libosinfo' 'qemu-desktop')
 makedepends=('git' 'extra-cmake-modules')
 # karton pkg went first on AUR, why not add virt next to it?
 provides=('karton-virt' 'karton')
