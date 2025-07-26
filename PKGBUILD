@@ -14,7 +14,7 @@
 # You can use TMPDIR in $srcdir by exporting TMPDIR_FIX with some value.
 
 pkgname=telegram-desktop-dev
-pkgver=5.14.3
+pkgver=5.16.6
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('x86_64')
@@ -31,7 +31,10 @@ depends=(
   'hicolor-icon-theme'
   'hunspell'
   'kcoreaddons'
+  'libavif'
   'libdispatch'
+  'libheif'
+  'libjxl'
   'libxcomposite'
   'libxdamage'
   'libxrandr'
@@ -74,7 +77,7 @@ optdepends=(
 )
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
-_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
+_td_commit=6d74326c5ce53aeb52496f157f0080d9b8515970
 source=(
     # Old approach, with many Git repos
     #"tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
@@ -85,8 +88,8 @@ source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
 )
-sha512sums=('1c8d6f3f858789c716bdaef8ef00896aac07ef8e6792489b80bf162b40db80dc2cf1831335269c4bc12e11c1b6326cbf8ffd40fc9d847c13196f540e15a1978d'
-            'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0')
+sha512sums=('897209e6129cf4af4b91ceae971ab7ee399b15a1260f16289183ca7993d4a8694a4b185109825aa547006757f24bc88e71d51c9d3403297fb591c254d9dba8c3'
+            '6dc6e684a0bf35bb83f6fa6579a0da82d604190b222f2cd2de9b8ef5b93f5f18ac9a8733e2c5cf2a64ed9933b346ea31e26a4bcc0039956280ec2deef9649457')
 
 prepare() {
   # Normal preparation here
