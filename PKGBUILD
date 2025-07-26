@@ -3,7 +3,7 @@
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=r258.e791ea0
+pkgver=r266.65d726c
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,8 +11,9 @@ url="https://github.com/sqzw-x/${_pkgname}"
 license=("GPL-3.0-or-later")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=("fontconfig" "freetype2" "libx11" "libxcb" "libxkbcommon" "libxkbcommon-x11" "libxcomposite" "libxext" "mpdecimal" "xcb-util-image" "xcb-util-keysyms" "xcb-util-renderutil" "xcb-util-wm")
-makedepends=("git" "python311")
+depends=("at-spi2-core" "cairo" "fontconfig" "freetype2" "gdk-pixbuf2" "gtk3" "libx11" "libxcb" "libxkbcommon" "libxkbcommon-x11"
+         "libxcomposite" "libxext" "mpdecimal" "pango" "xcb-util-image" "xcb-util-keysyms" "xcb-util-renderutil" "xcb-util-wm")
+makedepends=("git" "python" "uv")
 source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.desktop"
         "${_pkgname}.png")
@@ -27,20 +28,21 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    python3.11 -m venv .venv
-    source ./.venv/bin/activate
-    pip install pyinstaller
-    pip install -r requirements.txt
-    pyi-makespec -F \
-        -n "$_pkgname" \
-        -w main.py \
-        -p "./src" \
+    uv sync \
+        --frozen \
+        --no-cache \
+        --no-editable \
+        --no-install-project \
+        --active
+    source .venv/bin/activate
+    pyi-makespec \
         --add-data "resources:resources" \
-        --add-data "libs:." \
-        --hidden-import socks \
-        --hidden-import urllib3 \
-        --hidden-import _cffi_backend \
-        --collect-all curl_cffi
+        --collect-all "curl_cffi" \
+        --hidden-import "_cffi_backend" \
+        --name "${_pkgname}" \
+        --onefile \
+        --paths "./${_pkgname}" \
+        --windowed main.py
     pyinstaller "${_pkgname}.spec"
 }
 
