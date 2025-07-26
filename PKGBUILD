@@ -1,52 +1,47 @@
 # Maintainer: Tom Brown <tom@CarlsonSpeed.com>
-pkgname='videokit-kde'
-pkgver=0.2.4
+# Contributor: ChatGPT by OpenAI (https://openai.com/)
+pkgname=videokit-kde
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="KDE video utility suite that extends Dolphin context menus for transcoding, metadata, etc."
 arch=('any')
 url="https://github.com/TomB16/videokit-kde"
-license=('MIT')
-depends=('ffmpeg' 'mediainfo' 'bash' 'crudini' 'bashdev')  # Add any runtime deps here
+license=('GPL3')
+depends=('ffmpeg' 'mediainfo' 'bash' 'crudini' 'bashdev')
 makedepends=('git')
-source=("git+https://github.com/TomB16/videokit-kde.git#branch=master")  # Fetch from GitHub repo
-sha256sums=('SKIP')  # Don't need this when using Git as source
+source=("git+https://github.com/TomB16/videokit-kde.git#branch=master")
+sha256sums=('SKIP')
 
-
-#pkgver() {
-#  cd "$srcdir/$pkgname"
-#  git describe --tags --always | sed 's/^v//;s/-/./g'
-#}
-
+# Optional: Auto-generate pkgver from Git describe, if you tag versions
+# pkgver() {
+#   cd "$srcdir/$pkgname"
+#   git describe --tags | sed 's/^v//;s/-/./g'
+# }
 
 package() {
-  cd "$srcdir" || return 1
+  cd "$srcdir/$pkgname" || exit 1
 
   # Install scripts
-
-  for f in "$srcdir/$pkgname/src/"*; do
-    install -Dm755 "$f" "$pkgdir/usr/bin/$(basename "$f")"
+  install -d "$pkgdir/usr/bin"
+  for f in src/*; do
+    install -m755 "$f" "$pkgdir/usr/bin/"
   done
 
+  # Install .desktop service menu
+  install -Dm644 "videokit.desktop" "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
 
-  # Install .desktop file
-  install -Dm644 "$srcdir/$pkgname/videokit.desktop" "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
+  # Install icons
+  install -Dm644 "transcode.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/transcode.svg"
+  install -Dm644 "transcode.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/transcode.svg"
+  install -Dm644 "videokit.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/videokit.svg"
+  install -Dm644 "videokit.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/videokit.svg"
 
-  # Install service menu icons
+  # Install default config
+  install -Dm644 "videokit.conf" "$pkgdir/usr/share/videokit/videokit.conf"
 
-  install -Dm644 "$srcdir/$pkgname/transcode.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/transcode.svg"
-  install -Dm644 "$srcdir/$pkgname/transcode.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/transcode.svg"
-  install -Dm644 "$srcdir/$pkgname/videokit.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/videokit.svg"
-  install -Dm644 "$srcdir/$pkgname/videokit.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/videokit.svg"
+  # Install Transcode log spreadsheet
+  install -Dm644 "Transcode Log Analysis v0.01.ods" "$pkgdir/usr/share/videokit/Transcode/Transcode Log Analysis v0.01.ods"
 
-
-  # Install config file
-  install -Dm644 "$srcdir/$pkgname/videokit.conf" "$pkgdir/usr/share/videokit/videokit.conf"
-
-  # License
-  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Rebuild KDE service cache
-  if command -v kbuildsycoca5 &> /dev/null; then kbuildsycoca5; fi
-  if command -v kbuildsycoca6 &> /dev/null; then kbuildsycoca6; fi
-
+  # Install license
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
