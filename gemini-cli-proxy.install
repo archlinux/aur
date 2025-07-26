@@ -1,0 +1,21 @@
+post_install() {
+  echo "Install and configure gemini-cli first. Then execute:"
+  echo "gemini-cli-proxy --help"
+  echo "Optionally enable and start a per user service with:"
+  echo "  systemctl --user daemon-reload"
+  echo "  systemctl --user enable --now gemini-cli-proxy.service"
+  echo "Put optional environment variables in ~/.config/gemini-cli-proxy.env file"
+  echo "before starting the service."
+}
+
+post_upgrade() {
+  echo "The gemini-cli-proxy package was updated. Installation instructions reminder:"
+  post_install "$1"
+}
+
+post_remove() {
+  echo "The gemini-cli-proxy package was removed. If you had previously enabled"
+  echo "the service as a user, disable it now with:"
+  echo "  systemctl --user disable --now gemini-cli-proxy.service"
+  echo "  systemctl --user daemon-reload"
+}

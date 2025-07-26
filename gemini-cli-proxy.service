@@ -1,0 +1,9 @@
+[Unit]
+Description=Gemini CLI Proxy Service
+
+[Service]
+Type=simple
+# Load an optional per-user env file
+EnvironmentFile=-%h/.config/gemini-cli-proxy.env
+ExecStart=/usr/bin/gemini-cli-proxy
+Restart=on-failure
