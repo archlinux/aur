@@ -1,5 +1,5 @@
 pkgname=gemini-cli
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="An open-source AI agent that brings the power of Gemini directly into your terminal. "
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('Apache-2.0')
 makedepends=('npm')
 depends=('nodejs')
 source=("https://registry.npmjs.org/@google/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('6f599f49d64913fe0bcdbe869f5d64c82141583aa26e6144ae94190114528821')
+sha256sums=('bc1261732509b28226e3c5e94e6c33ca2e48251642f5bb8b2a685079ce39ac13')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
