@@ -1,6 +1,6 @@
 pkgbase = px4_drv-dkms-git
 	pkgdesc = PLEX PX-W3U4/W3PE4/Q3PE4 unofficial Linux driver
-	pkgver = r515.ee96863
+	pkgver = r534.b4a6f9a
 	pkgrel = 1
 	url = https://github.com/tsukumijima/px4_drv
 	install = px4_drv.install
