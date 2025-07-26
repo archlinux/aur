@@ -2,7 +2,7 @@
 # Maintainer: sunflowercx <1527981693@qq.com>
 
 pkgname=winegame
-pkgver=0.5.12.5
+pkgver=0.5.12.6
 pkgrel=1
 epoch=
 pkgdesc="开源游戏平台，帮您在UOS/Linux系统中运行Windows游戏"
@@ -56,8 +56,8 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=("https://file.winegame.net/packages/debian/0.5.12.5/net.winegame.client_0.5.12.5_amd64.deb")
-sha512sums=('555e9c461db9ea49d807843a5c5f4554e6ec04ead3f67525ec65e7cc7259863276c1d3f18ff6a3cd80cc122d13bbaebddeb403392d19af161afe06ad6ab5f776')
+source=("https://file.winegame.net/packages/debian/0.5.12.6/net.winegame.client_0.5.12.6_amd64.deb")
+sha512sums=('9fa634d3edf1ec5f216927677bef3efddf353397c1cc36ee207572d66207f00a7c04bc252d165154f235c195b03b4aee2b93ea2489c1cb56dc09286d0fed1e77')
 validpgpkeys=()
 
 package() {
