@@ -1,6 +1,6 @@
 pkgbase = lightning-image-viewer-git
 	pkgdesc = Fast and lightweight desktop image viewer
-	pkgver = 0.2.0.r0.gb50c855
+	pkgver = 0.3.0.r0.g6674155
 	pkgrel = 1
 	url = https://github.com/shatsky/lightning-image-viewer/
 	arch = aarch64

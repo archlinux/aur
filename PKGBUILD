@@ -1,6 +1,6 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 pkgname=lightning-image-viewer-git
-pkgver=0.2.0.r0.gb50c855
+pkgver=0.3.0.r0.g6674155
 pkgrel=1
 pkgdesc='Fast and lightweight desktop image viewer'
 arch=(aarch64 armv7h i686 pentium4 x86_64)
