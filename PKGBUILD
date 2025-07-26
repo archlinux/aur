@@ -4,11 +4,36 @@
 
 pkgname=libreport
 pkgver=2.17.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Generic library for reporting various problems'
 arch=('i686' 'x86_64')
-depends=('python-urllib3' 'python-requests' 'satyr' 'augeas' 'libtar' 'libffi' 'libnewt' 'gtk3' 'xmlto' 'xmlrpc-c' 'json-c' 'nss')
-makedepends=('intltool' 'asciidoc' 'python')
+depends=(
+'python-urllib3' 
+'python-requests' 
+'satyr' 
+'augeas' 
+'libtar' 
+'libffi' 
+'libnewt' 
+'gtk3' 
+'xmlto' 
+'xmlrpc-c' 
+'json-c' 
+'harfbuzz'
+'cairo'
+'pango'
+'glibc'
+'at-spi2-core'
+'curl'
+'libarchive'
+'libxmlrpc'
+'nss')
+makedepends=(
+'libxml2'
+'intltool' 
+'asciidoc' 
+'gdk-pixbuf2'
+'python')
 optdepends=('python: python 3.x bindings')
 url='https://github.com/abrt/libreport'
 license=('GPL-2.0-only')
