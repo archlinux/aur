@@ -1,7 +1,7 @@
 # Maintainer: dbgbgtf <dudududumaxver@outlook.com>
 # Maintainer: RocketDev <ma2014119@outlook.com>
 pkgname=ceccomp
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="A C-based seccomp analysis tool"
 arch=(x86_64)
@@ -14,12 +14,17 @@ depends=(
 makedepends=(git)
 
 source=("$pkgname"::git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v${pkgver}?signed)
-b2sums=('cbb30fd82f1851e351f9b10649a1713f316b3ce1bc28255ca7ea2695484402ef5d12ae20d6398438b1ab68416c801dc6de3b3c09d62233e424d560fdbb28f69f')
+b2sums=('c030d61435c8b8d4ecaef8a099844e8c1319faa4ccdccdfe6d7bbd8c5e3a92e28f87c6878e9cfeff1dd932274d7e410bb77b5a6903f003ae4b03f29d3eb09a79')
 
 validpgpkeys=(
     '0816A179BB09248F30468BD6542A0969B5CEDCDB' # dbgbgtf1 <dudududumaxver@outlook.com>
     'A7ACCC386C15E3C554D34B3EAB08F98092A456BB' # RocketDev <ma2014119@outlook.com>
 )
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    make clean
+}
 
 build() {
     cd "$srcdir/$pkgname"
