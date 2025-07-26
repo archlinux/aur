@@ -4,7 +4,7 @@
 pkgname=nextcloud-app-maps
 _name=maps
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenStreetMap layers including POIs"
 arch=('any')
 url="https://github.com/nextcloud/maps"
@@ -12,23 +12,26 @@ license=('GPL')
 depends=('nextcloud')
 makedepends=('ripgrep' 'yq' 'composer' 'npm')
 options=('!strip')
-#source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/maps/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e5d39faa2bc9463546f361a2fd4ef23be90373553ee4ff1aabe39c97d0ecc8cc')
+source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/maps/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('22ea51ca68ecf79e53894badce84d331e11235f066029e7597ea01699c1f74dd')
 
 _get_nextcloud_versions() {
-  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}-$pkgver/appinfo/info.xml"| sed 's/"//g')"
-  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}-$pkgver/appinfo/info.xml"| sed 's/"//g')"
+  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
+  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
   _app_max_major_version=$(expr ${_app_max_major_version} + 1)
 }
 
 prepare() {
-  cd "${srcdir}"/maps-$pkgver
+  cd "${srcdir}"/maps
+return
+
   sed -i 's|composer bin all install --ansi|composer bin all install --ansi --ignore-platform-reqs -n|g' composer.json
 }
 
 build() {
-  cd "${srcdir}"/maps-$pkgver
+  cd "${srcdir}"/maps
+return
 
   composer install --ignore-platform-reqs -n
   npm ci
@@ -88,5 +91,5 @@ package() {
   depends=("nextcloud>=${_app_min_major_version}" "nextcloud<${_app_max_major_version}")
 
   install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
-  cp -r "${srcdir}"/maps-$pkgver "${pkgdir}"/usr/share/webapps/nextcloud/apps/maps
+  cp -r "${srcdir}"/maps "${pkgdir}"/usr/share/webapps/nextcloud/apps/maps
 }
