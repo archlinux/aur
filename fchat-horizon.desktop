@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=F-Chat Horizon
+Name=Horizon
 StartupWMClass=horizon-electron
 Comment=A continuation of the heavily modified F-Chat Rising client.
 Exec=fchat-horizon %U

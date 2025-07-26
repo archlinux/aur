@@ -1,7 +1,7 @@
 pkgbase = fchat-horizon-bin
 	pkgdesc = A continuation of the heavily modified F-Chat Rising client. Uses system electron.
 	pkgver = 1.32.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fchat-Horizon/Horizon
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = fchat-horizon-bin
 	source = https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE
 	sha256sums = 4de6e96c56572f934d85387c9a4039e56812b579ea7b6a9a9070d00511207fb3
 	sha256sums = 6853b8e9d7ce674b063fe277c98fc9dcec4be4949731e6134a5f134d48892be5
-	sha256sums = 0f72b54ea25738958366465dd4ddc359a9d4105897f8a8b35bfe64b1a406b44f
+	sha256sums = 1402f1449db1349c38ebdf3b1d4d8091beeefdb6bc185a02de75befae4d4f5d0
 	sha256sums = 79c24919dcaa51f2907af9beb3fdf3ec0703e662ae2434d8e7fe28e15ae29b02
 	sha256sums = b13bdf6682ae4d90990ebbd3b1472b91001b20c49c87d4366cc3cadb4dc084b4
 
