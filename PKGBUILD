@@ -4,10 +4,12 @@
 : ${_commit:=aa955b8ae28314ae061613f0ddf13183a98aca03} # 0.1.r7465
 : ${_scripts:=scripts/deps}
 
+: ${_clang_ver=19}
+
 _pkgname="duckstation"
 pkgname="$_pkgname"
 pkgver=0.1.7465
-pkgrel=2
+pkgrel=3
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
@@ -21,9 +23,9 @@ depends=(
 )
 makedepends=(
   ## compiler
-  'clang'
-  'lld'
-  'llvm'
+  "clang${_clang_ver}"
+  "lld${_clang_ver}"
+  "llvm${_clang_ver}"
 
   ## build
   'cmake'
@@ -53,41 +55,31 @@ _source_duckstation() {
 }
 
 _source_backtrace() {
-  source+=(
-    "ianlancetaylor.libbacktrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  source+=("ianlancetaylor.libbacktrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git")
+  sha256sums+=('SKIP')
 }
 
 _source_cpuinfo() {
   _pkgsrc_cpuinfo="stenzek.cpuinfo"
-  source+=(
-    "$_pkgsrc_cpuinfo"::"git+https://github.com/stenzek/cpuinfo.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  source+=("$_pkgsrc_cpuinfo"::"git+https://github.com/stenzek/cpuinfo.git")
+  sha256sums+=('SKIP')
 }
 
 _source_discord_rpc() {
   _pkgsrc_discord_rpc="stenzek.discord-rpc"
-  source+=(
-    "$_pkgsrc_discord_rpc"::"git+https://github.com/stenzek/discord-rpc.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  source+=("$_pkgsrc_discord_rpc"::"git+https://github.com/stenzek/discord-rpc.git")
+  sha256sums+=('SKIP')
 }
 
 _source_lunasvg() {
-  _pkgsrc_lunasvg="stenzek.lunasvg"
+  _pkgsrc_lunasvg="sammycage.lunasvg"
   source+=(
-    "$_pkgsrc_lunasvg"::"git+https://github.com/stenzek/lunasvg.git"
+    "$_pkgsrc_lunasvg"::"git+https://github.com/sammycage/lunasvg.git#tag=v2.4.1"
+    "lunasvg_2.4.1_9af1ac7.patch"
   )
   sha256sums+=(
     'SKIP'
+    '2af757b02d8b172918a1a308195579ba7dfd5f8f742b2ce8012609d3bfbe6cc0'
   )
 }
 
@@ -101,31 +93,19 @@ _source_shaderc() {
   )
 
   _pkgsrc_shaderc="stenzek.shaderc"
-  source+=(
-    "$_pkgsrc_shaderc"::"git+https://github.com/stenzek/shaderc.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  source+=("$_pkgsrc_shaderc"::"git+https://github.com/stenzek/shaderc.git")
+  sha256sums+=('SKIP')
 }
 
 _source_soundtouch() {
   _pkgsrc_soundtouch="stenzek.soundtouch"
-  source+=(
-    "$_pkgsrc_soundtouch"::"git+https://github.com/stenzek/soundtouch.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  source+=("$_pkgsrc_soundtouch"::"git+https://github.com/stenzek/soundtouch.git")
+  sha256sums+=('SKIP')
 }
 
 _source_spirv_cross() {
-  source+=(
-    "khronosgroup.spirv-cross"::"git+https://github.com/KhronosGroup/SPIRV-Cross.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  source+=("khronosgroup.spirv-cross"::"git+https://github.com/KhronosGroup/SPIRV-Cross.git")
+  sha256sums+=('SKIP')
 }
 
 _prepare_backtrace() (
@@ -147,7 +127,7 @@ _prepare_discord_rpc() (
   local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
   echo "discord-rpc = $_version_discord_rpc"
   cd "$srcdir/$_pkgsrc_discord_rpc"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+  if ! git -c advice.detachedHead=false checkout -f "$_version_discord_rpc"; then
     echo "upstream deleted commit, using $(git rev-parse HEAD)"
   fi
 )
@@ -156,8 +136,9 @@ _prepare_lunasvg() (
   local _version_lunasvg=$(grep -E -m1 'LUNASVG=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LUNASVG=(\S+)$&\1&')
   echo "lunasvg = $_version_lunasvg"
   cd "$srcdir/$_pkgsrc_lunasvg"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
-    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+  if ! git -c advice.detachedHead=false checkout -f "$_version_lunasvg"; then
+    echo "commit does not exist, using $(git rev-parse HEAD) with patch"
+    patch -Np1 -F100 -i "$srcdir/lunasvg_2.4.1_9af1ac7.patch"
   fi
 )
 
@@ -166,7 +147,7 @@ _prepare_shaderc() (
   echo "shaderc = $_version_shaderc"
 
   cd "$srcdir/$_pkgsrc_shaderc"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+  if ! git -c advice.detachedHead=false checkout -f "$_version_shaderc"; then
     echo "upstream deleted commit, using $(git rev-parse HEAD)"
   fi
 
@@ -179,7 +160,7 @@ _prepare_soundtouch() (
   echo "soundtouch = $_version_soundtouch"
 
   cd "$srcdir/$_pkgsrc_soundtouch"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+  if ! git -c advice.detachedHead=false checkout -f "$_version_soundtouch"; then
     echo "upstream deleted commit, using $(git rev-parse HEAD)"
   fi
 )
@@ -422,6 +403,7 @@ _build_duckstation() {
     -DSoundTouch_DIR="$srcdir/deps/usr/lib/cmake/SoundTouch"
     -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo"
     -Dlunasvg_DIR="$srcdir/deps/usr/lib/cmake/lunasvg"
+    -Dplutovg_DIR="$srcdir/deps/usr/lib/cmake/plutovg"
     -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     -Wno-dev
   )
@@ -443,6 +425,8 @@ prepare() {
 }
 
 build() {
+  export PATH="/usr/lib/llvm${_clang_ver}/bin:$PATH"
+
   export CC CXX LDFLAGS
   CC="clang"
   CXX="clang++"
