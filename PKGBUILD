@@ -2,7 +2,7 @@
 
 pkgname=fastanime
 pkgver=2.9.9
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
@@ -21,7 +21,12 @@ depends=('python'
          'python-thefuzz'
          'yt-dlp'
          'python-dbus'
-         'python-pypresence')
+         'python-pypresence'
+         'python-httpx'
+         'python-beautifulsoup4'
+         'python-lxml'
+         'python-pycryptodome'
+         'python-pydantic')
 optdepends=('mpv: video player'
             'webtorrent-cli: nyaa torrents'
             'ffmpeg: download hls streams' 
