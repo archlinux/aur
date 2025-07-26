@@ -1,13 +1,13 @@
 # Maintainer: Huynh Thien Khiem <my_github_name 2000 at gmail dot com>
 _pkgname=euphonica
 pkgname=${_pkgname}-git
-pkgver=0.94.1.r320
+pkgver=0.96.1.r342
 pkgrel=1
 pkgdesc="Libadwaita MPD client with visualiser, wikis and synced lyrics"
 arch=("x86_64")
 url="https://github.com/htkhiem/euphonica"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'libpipewire' 'sqlite')
+depends=('libadwaita' 'libpipewire' 'sqlite' 'dbus' 'xdg-desktop-portal-gtk' 'dconf' 'openssl')
 makedepends=('git' 'meson' 'cargo' 'clang')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
