@@ -89,16 +89,15 @@ package() {
   cd "${srcdir}/${_reponame}-${_vertag}"
 
   # Create Directories
-  install -dm755 "${pkgdir}/${SHIP_PREFIX}"
-  install -dm755 "${pkgdir}/usr/bin/"
+  install -dm755 "${pkgdir}/${SHIP_PREFIX}" "${pkgdir}/usr/bin/"
 
   # Main executable & assets to /opt
-  cp -r build/Spaghettify \
+  cp -r build/yamls "${pkgdir}/${SHIP_PREFIX}"
+  install -m755 build/Spaghettify "${pkgdir}/${SHIP_PREFIX}"
+  install -m644 -t "${pkgdir}/${SHIP_PREFIX}" \
         build/config.yml \
-        build/yamls \
         build/spaghetti.o2r \
-        "${srcdir}/gamecontrollerdb.txt" \
-        "${pkgdir}/${SHIP_PREFIX}"
+        "${srcdir}/gamecontrollerdb.txt"
 
   # Link executable to /usr/bin, add to desktop entry & icons
   ln -s "${SHIP_PREFIX}/Spaghettify" "${pkgdir}/usr/bin/Spaghettify"
