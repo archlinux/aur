@@ -1,0 +1,32 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "sdl_mixer-double-free-crash.patch",
+    "sdl_mixer-fluidsynth-volume.patch",
+    "sdl_mixer-mikmod1.patch",
+    "sdl_mixer-mikmod2.patch",
+]
+SPDX-FileCopyrightText = "lib32-sdl_mixer contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"
