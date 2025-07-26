@@ -2,10 +2,10 @@ _name='phosh-osk-stub'
 pkgname="$_name-git"
 pkgver=0.35.0.r4.g59f99d7
 pkgrel=5
-pkgdesc="An experimental alternative OSK for phosh"
+pkgdesc="OSK for phosh"
 install="phosh-osk-stub.install"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/guidog/$_name"
+url="https://gitlab.gnome.org/guidog/stevia"
 license=('GPL-3.0-only')
 
 depends=(
@@ -13,17 +13,23 @@ depends=(
     gnome-desktop
     fzf
     hunspell
+    wayland-protocols
+    libhandy
+    presage
 )
 makedepends=(
     git
     meson
     cmake
+    glib2-devel
 )
 optdepends=(
-    'presage-git: predictive text entry'
     'govarnam: transliteration for Indian languages'
 )
-provides=(${_name})
+provides=(
+    ${_name}
+    stevia
+)
 conflicts=(
     ${_name}
 )
