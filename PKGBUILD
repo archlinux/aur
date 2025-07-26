@@ -1,12 +1,9 @@
 # Maintainer: GalileoLion <galileolion@example.com>
 
-# 动态获取版本信息
-_get_latest_version() {
-    curl -s "https://api.github.com/repos/andyyoungm/muenzo/releases/latest" | jq -r '.tag_name' | sed 's/^v//'
-}
+
 
 pkgname=noteey-bin
-pkgver=$(_get_latest_version)
+pkgver=1.27.1
 pkgrel=1
 pkgdesc="Noteey - A powerful note-taking application"
 arch=('x86_64')
@@ -20,8 +17,8 @@ makedepends=('p7zip' 'unzip' 'curl' 'jq' 'icoutils')
 # 获取下载URL - 支持两个源
 _get_download_url() {
     local version=$1
-    local github_url="https://github.com/andyyoungm/muenzo/releases/download/v${version}/Noteey-Setup-${version}.exe"
-    local oss_url="https://noteey.oss-cn-beijing.aliyuncs.com/Noteey-Setup-${version}.exe"
+    local github_url="https://github.com/andyyoungm/muenzo/releases/download/v${pkgver}/Noteey-Setup-${pkgver}.exe"
+    local oss_url="https://noteey.oss-cn-beijing.aliyuncs.com/Noteey-Setup-${pkgver}.exe"
 
     # 优先尝试GitHub，如果失败则使用OSS
     if curl --output /dev/null --silent --head --fail "$github_url"; then
