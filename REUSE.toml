@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "boost-1.88.patch",
+    "fixes_boost.patch",
+    "fixes_cgal.patch",
+    "fixes_nanosvg.patch",
+    "integrate_occtwrapper.patch",
+]
+SPDX-FileCopyrightText = "prusa-slicer contributors"
+SPDX-License-Identifier = "AGPL-3.0-only"
