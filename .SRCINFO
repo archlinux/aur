@@ -8,6 +8,6 @@ pkgbase = fastnn
 	depends = python
 	depends = python-pytorch
 	source = fastnn-1.0.0.tar.gz::https://github.com/eshnd/fastnn/archive/refs/tags/v1.0.0.tar.gz
-	md5sums = SKIP
+	md5sums = 9854a718867d8da69b11f3b7918ffc86
 
 pkgname = fastnn
