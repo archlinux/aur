@@ -1,7 +1,7 @@
 pkgbase = python-polling
 	pkgdesc = Powerful polling utility in Python
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/justiniso/polling
 	arch = any
 	license = MIT

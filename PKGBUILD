@@ -3,7 +3,7 @@
 pkgname=python-polling
 _name=${pkgname#python-}
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful polling utility in Python'
 url='https://github.com/justiniso/polling'
 depends=(
@@ -33,10 +33,11 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd "polling-$pkgver"
-	python -m pytest
-}
+# sdist does not include tests
+# check() {
+# 	cd "polling-$pkgver"
+# 	python -m pytest
+# }
 
 package() {
 	cd "polling-$pkgver"
