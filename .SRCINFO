@@ -1,6 +1,6 @@
 pkgbase = gr-satlab
 	pkgdesc = contains GNURadio blocks for Satlab SRS-3 and SRS-4 radios
-	pkgver = 20250319
+	pkgver = 20250722
 	pkgrel = 1
 	url = https://www.satlab.com/products/srs-4/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gr-satlab
 	makedepends = cmake
 	depends = gnuradio
 	depends = openssl
-	source = https://resources.satlab.com/software/gr-satlab/gr-satlab-v20250319.tar.xz
-	sha256sums = e76efdb2114d27e5102824d303e051b0fe361812b4b68cb5e7544b4ca834ff1a
+	source = https://resources.satlab.com/software/gr-satlab/gr-satlab-v20250722.tar.xz
+	sha256sums = 14aac1a0772be800ed4df3023f50d286712562be5e27ba8f05f89354fa60f4f3
 
 pkgname = gr-satlab
