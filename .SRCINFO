@@ -9,6 +9,6 @@ pkgbase = plasma6-wallpapers-blurredwallpaper
 	depends = plasma-workspace
 	conflicts = kdeplasma-blurredwallpaper-git
 	source = https://github.com/bouteillerAlan/blurredwallpaper/archive/refs/tags/v3.4.0.tar.gz
-	b2sums = dfb2b867240df37e3308d1bd30bfb4edee8a421e994b35c95fa4aee5c2c649cce2bd7bd46654f1cb552f1e3e96a55fdbea06568953d97fa8ba24c81811598873
+	b2sums = 8394a2a8767b752a391d84a0b20238dbbbdb71287d9b8fe76ce8ea5ae1424ba69b1f50b895652db38a3cb76b00455e8140dfbc46e015b713e3ece7ce5a43ec65
 
 pkgname = plasma6-wallpapers-blurredwallpaper
