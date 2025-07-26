@@ -1,6 +1,6 @@
 pkgbase = cwal-git
-	pkgdesc = A fast and lightweight command-line tool for generating dynamic color schemes from images (Git version)
-	pkgver = 0.1.0
+	pkgdesc = Blazing-fast pywal-like color palette generator written in C.
+	pkgver = 0.1.0.r0.g3028579
 	pkgrel = 1
 	url = https://github.com/nitinbhat972/cwal
 	arch = x86_64

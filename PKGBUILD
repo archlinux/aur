@@ -1,12 +1,11 @@
 # Maintainer: Nitin Bhat <nitinbhat972@gmail.com>
+
 pkgname=cwal-git
 _pkgname=cwal
-pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+
+pkgver=0.1.0.r0.g3028579
 pkgrel=1
-pkgdesc="A fast and lightweight command-line tool for generating dynamic color schemes from images (Git version)"
+pkgdesc="Blazing-fast pywal-like color palette generator written in C."
 arch=('x86_64')
 url="https://github.com/nitinbhat972/cwal"
 license=('GPL3')
@@ -17,20 +16,25 @@ conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    git describe --long --tags --abbrev=7 \
+        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}" || exit 1
     git sparse-checkout init --no-cone
     git sparse-checkout set '*' '!assets/'
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}" || exit 1
     cmake -B build
     cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}" || exit 1
     DESTDIR="${pkgdir}" cmake --install build
 }
-
