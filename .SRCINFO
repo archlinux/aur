@@ -1,0 +1,17 @@
+pkgbase = cwal-git
+	pkgdesc = A fast and lightweight command-line tool for generating dynamic color schemes from images (Git version)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nitinbhat972/cwal
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = imagemagick
+	depends = libimagequant
+	provides = cwal
+	conflicts = cwal
+	source = git+https://github.com/nitinbhat972/cwal.git
+	sha256sums = SKIP
+
+pkgname = cwal-git
