@@ -10,7 +10,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.0.2.r1018.g5346d3d49
+pkgver=4.0.2.r1215.g30ff3710a
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -43,6 +43,7 @@ makedepends=(
 checkdepends=(
   'expect'
   'procps-ng'
+  'python-black'
 )
 options=(!lto)
 provides=(
@@ -87,7 +88,7 @@ build() {
 
 check() {
   cd "$_gitname"
-  make -C build test
+  sh build_tools/check.sh
 }
 
 package() {
