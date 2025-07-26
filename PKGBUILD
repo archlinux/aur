@@ -2,7 +2,7 @@
 # Contributor: Joel Snape <aur@sna.pe>
 
 pkgname=rehex
-pkgver=0.63.0
+pkgver=0.63.2
 pkgrel=1
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else"
 arch=('x86_64')
