@@ -4,7 +4,7 @@
 
 pkgname='audiokit-kde'
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE audio utility suite that extends Dolphin context menus with format conversion, etc."
 arch=('any')
 url="https://github.com/TomB16/audiokit-kde"
