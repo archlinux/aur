@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name         ChatGPT AutoCleaner v2
+// @version      1.0
+// @description  Automatically removes old messages on the ChatGPT page, keeping only the latest 5
+// @author       Aleksey Maximov <amaxcz@gmail.com>
+// @match        https://chat.openai.com/*
+// @match        https://chatgpt.com/*
+// @grant        none
+// ==/UserScript==
+
+
 (function () {
     'use strict';
 
@@ -50,26 +61,26 @@
         panel.style.opacity = "0.95";
 
         panel.innerHTML = `
-          <div id="chatgpt-close" style="
-            position:absolute;
-            top:0px;
-            right:2px;
-            font-size:16px;
-            font-weight:bold;
-            color:#ccc;
-            cursor:pointer;
-          ">✖</div>
-          <label>
-            Keep <input id="chatgpt-keep-count" type="number" value="${stored.leaveOnly}" min="1"
-              style="width:36px; font-size:12px; padding:2px; background:#111; color:#fff; border:1px solid #555;"> messages
-          </label>
-          <br>
-          <label>
-            Interval <input id="chatgpt-interval" type="number" value="${stored.intervalSec}" min="1"
-              style="width:36px; font-size:12px; padding:2px; background:#111; color:#fff; border:1px solid #555;"> sec
-          </label>
-          <br>
-          <label><input type="checkbox" id="chatgpt-enabled" ${stored.enabled ? "checked" : ""}> Auto-clean enabled</label>
+            <div id="chatgpt-close" style="
+                position:absolute;
+                top:0px;
+                right:2px;
+                font-size:16px;
+                font-weight:bold;
+                color:#ccc;
+                cursor:pointer;
+            ">✖</div>
+            <label>
+                Keep <input id="chatgpt-keep-count" type="number" value="${stored.leaveOnly}" min="1"
+                style="width:48px; min-width:48px; padding:2px 6px 2px 4px; font-size:12px; background:#111; color:#fff; border:1px solid #555; box-sizing:border-box;"> messages
+            </label>
+            <br>
+            <label>
+                Interval <input id="chatgpt-interval" type="number" value="${stored.intervalSec}" min="1"
+                style="width:48px; min-width:48px; padding:2px 6px 2px 4px; font-size:12px; background:#111; color:#fff; border:1px solid #555; box-sizing:border-box;"> sec
+            </label>
+            <br>
+            <label><input type="checkbox" id="chatgpt-enabled" ${stored.enabled ? "checked" : ""}> Auto-clean enabled</label>
         `;
 
         toggleButton.onclick = () => {
@@ -153,4 +164,16 @@
     } else {
         window.addEventListener("DOMContentLoaded", injectUI);
     }
+
+    const observer = new MutationObserver(() => {
+        if (!document.getElementById("chatgpt-cleaner-wrapper")) {
+            injectUI();
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
+
 })();
