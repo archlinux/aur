@@ -1,6 +1,6 @@
 pkgbase = materialgram-bin
 	pkgdesc = Telegram Desktop based messenger with Material Design and additional features - Binary Version
-	pkgver = 5.16.4.1
+	pkgver = 5.16.6.1
 	pkgrel = 1
 	url = https://github.com/kukuruzka165/materialgram
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = materialgram-bin
 	provides = materialgram
 	conflicts = materialgram-git
 	options = !debug
-	source = https://github.com/kukuruzka165/materialgram/releases/download/v5.16.4.1/materialgram-v5.16.4.1.tar.gz
-	sha256sums = 90ca34f3e22a53773b93832a8bbe65aecaeb0696cdc4e1fc7540d53fc6fc86c1
+	source = https://github.com/kukuruzka165/materialgram/releases/download/v5.16.6.1/materialgram-v5.16.6.1.tar.gz
+	sha256sums = 3d77459d8ba563b956bd904014da0874b23084b4de0bd275d5769aa60859284c
 
 pkgname = materialgram-bin
