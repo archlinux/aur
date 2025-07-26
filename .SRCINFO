@@ -2,6 +2,7 @@ pkgbase = antimony-sandbox
 	pkgdesc = Sandbox Applications
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://github.com/kkernick/antimony
 	install = antimony.install
 	arch = any
 	license = Unlicense
