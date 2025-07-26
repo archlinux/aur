@@ -1,0 +1,35 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-Add-cmake-varaible-USE_ROCM_CK.patch",
+    "87773.patch",
+    "fix_cmake_prefix_path.patch",
+    "fix_include_system.patch",
+    "glog-0.7.patch",
+    "pytorch-rocm-jit.patch",
+    "use-system-libuv.patch",
+]
+SPDX-FileCopyrightText = "python-pytorch contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"
