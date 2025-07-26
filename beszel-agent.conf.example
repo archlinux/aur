@@ -1,2 +1,6 @@
+# https://beszel.dev/guide/environment-variables#agent
+
 PORT=45876
 KEY="ssh-ed25519 AAAA..."
+HUB_URL=https://beszel.domain.tld
+TOKEN=abcdef01-2345-...

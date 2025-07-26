@@ -1,7 +1,7 @@
 pkgbase = beszel-agent-bin
 	pkgdesc = Beszel monitoring agent
 	pkgver = 0.12.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/henrygd/beszel
 	arch = x86_64
 	arch = aarch64
@@ -21,7 +21,7 @@ pkgbase = beszel-agent-bin
 	sha256sums = a6c4b7aa094a1399d4dbaebb001ff4dff0c9448b0a51bab9ce1822eabdc170d5
 	sha256sums = 03f82109a98648c49417c3e0dd3990ae56e6010b33c7fc9c8e0263c80f090f69
 	sha256sums = 823448a308c7329431ae713ab98a5c8cea2a00528177f3d31aa3f5eb6c4a751e
-	sha256sums = 4b3c437ac2d8d61622ad23cd69977c23f3e7b9c74613c5dcabd96a37e7cc5b3a
+	sha256sums = fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2
 	source_x86_64 = https://github.com/henrygd/beszel/releases/download/v0.12.1/beszel-agent_linux_amd64.tar.gz
 	sha256sums_x86_64 = b89a0e79b151838183c66aa01977f3c03bdc50b2296e9ee43cea381b0aad4d1f
 	source_aarch64 = https://github.com/henrygd/beszel/releases/download/v0.12.1/beszel-agent_linux_arm64.tar.gz
