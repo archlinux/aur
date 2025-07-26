@@ -10,7 +10,7 @@ _pkgver_major=5
 _pkgver_minor=6
 _pkgver_patch=0
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
-pkgrel=0
+pkgrel=1
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
@@ -19,7 +19,7 @@ depends=('java-runtime' 'bash')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
 
-source=("https://www.archimatetool.com/downloads/archi/${pkgver}/Archi-Linux64-${pkgver}.tgz"
+source=("https://www.archimatetool.com/downloads/archi/${_pkgver_major}.${_pkgver_minor}/Archi-Linux64-${pkgver}.tgz"
   "${pkgname}.desktop"
   "LICENSE")
 sha1sums=('b1f3ca5087a9108f0c73ce6f6eb90e36e43ce8f9'
