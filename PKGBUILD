@@ -2,8 +2,8 @@
 
 pkgname=python-ed2k
 _name=${pkgname#python-}
-pkgver=0.0.2.1
-pkgrel=2
+pkgver=0.0.2.2
+pkgrel=1
 epoch=
 pkgdesc="Python ed2k hash module."
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('84eacfdf605087806a57d56e21cbea08dbcc75410ad51e567cf6e510367b4f83')
+sha256sums=('af3ff59fc7e71572b095f7246242ddc34d86da0582f081dafa87b3232be5a13a')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
