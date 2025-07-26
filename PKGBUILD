@@ -31,7 +31,7 @@ makedepends=('git' 'meson' 'ninja' 'cmake' 'vulkan-headers' 'doctest'
              'pkgconf' 'wayland-protocols' 'libxml2'
 )
 optdepends=('xorg-xeyes')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'wayland-compositor')
 conflicts=("${pkgname%-git}")
 replaces=()
 options=()

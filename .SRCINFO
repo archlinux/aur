@@ -44,6 +44,7 @@ pkgbase = wayfire-git
 	depends = libwlroots-0.19.so
 	optdepends = xorg-xeyes
 	provides = wayfire
+	provides = wayland-compositor
 	conflicts = wayfire
 	source = git+https://github.com/WayfireWM/wayfire
 	source = git+https://github.com/WayfireWM/wf-touch
