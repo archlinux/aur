@@ -4,12 +4,12 @@
 
 pkgname='audiokit-kde'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE audio utility suite that extends Dolphin context menus with format conversion, etc."
 arch=('any')
 url="https://github.com/TomB16/audiokit-kde"
 license=('GPL3')
-depends=('ffmpeg' 'shntool' 'cuetools')  # Add any runtime deps here
+depends=('ffmpeg' 'bashdev' 'shntool' 'cuetools')  # Add any runtime deps here
 makedepends=('git')
 source=("git+https://github.com/TomB16/audiokit-kde.git#branch=main")  # Fetch from GitHub repo
 sha256sums=('SKIP')  # Don't need this when using Git as source
