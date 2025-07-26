@@ -1,11 +1,11 @@
 pkgname=cookie-git
-pkgver=1.0.r0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Simple music player TUI"
 arch=('x86_64')
 url="https://github.com/FedGuy699/Cookie-Player"
 license=('GPL')
-depends=('ncurses')
+depends=('ncurses' 'curl' 'miniaudio')
 source=("git+https://github.com/FedGuy699/Cookie-Player.git")
 sha256sums=('SKIP')
 
