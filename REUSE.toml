@@ -1,0 +1,37 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "allow-ANGLEImplementation-kVulkan.patch",
+    "blink-fix-missing-stdlib-include.patch",
+    "compiler-rt-adjust-paths.patch",
+    "default_app-icon.patch",
+    "drop-flag-unsupported-by-clang17.patch",
+    "increase-fortify-level.patch",
+    "jinja-python-3.10.patch",
+    "REVERT-use-v8-Array-Iterate-for-converting-script-wrappables.patch",
+    "use-system-libraries-in-node.patch",
+]
+SPDX-FileCopyrightText = "electron31 contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"
