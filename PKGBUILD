@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Marcin Kornat <rarvolt@gmail.com>
 pkgname=labelle
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
@@ -43,7 +43,7 @@ source=(
         "91-dymo-labelmanager-pnp.rules"
         "dymo-labelmanager-pnp.conf"
 )
-sha512sums=('f6df41864c53fbfc5cd4cfb690b16a4c2e300c5da9cceba0c02652847a348dade72f8bc60f65d1218b48107ee30c6ab1edb9c46fd69712e14de90f280380e5ef'
+sha512sums=('26a6953f8d581355959a7a49cc9b3e767710512671a589024d630f08cb752d29eba031f0a1ecf7c82f65d3756af42015c03211b9bf7f2e5e8cadd1b7ca9588bb'
             '76c4d8b9b9abd6c9100b6d0032af0d3752fbb7827f2d3a8417b28d2b822b9f7956051163de015a26e0fa6c548851a0f73e74bea37d1c1583cc457a9dc6be6b68'
             'a73a5cd46e020d9d43d18cf52927085f055b9d3e77d5ed98f254e3fff07b053aff1125e931b2fd984f08dcb501d344544dc2de58adb66270455b4f482bc8f3f1')
 
