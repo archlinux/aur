@@ -1,58 +1,51 @@
-# Maintainer: Pedro Lucas <pedrolucasinvestidor62023@gmail.com>
+# Maintainer: pedrodev2025 <pedrolucasinvestidor.github@gmail.com>
+
 pkgname=navegadorpytech
-pkgver=0.0.2
-pkgrel=3
-pkgdesc="Um Navegador simples, seguro, leve e privado usando python e desenvolvido usando 100% tecnologias de codigo aberto!"
-arch=('any')
+pkgver=0.3
+pkgrel=1
+pkgdesc="Um navegador web simples e leve baseado em PyQt5 e QtWebEngine."
+arch=('x86_64')
 url="https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-"
-license=('GPL-3.0-or-later') # Licença SPDX oficial para GPLv3
-install="$pkgname.install" # <--- Importante: Garante que o script .install seja executado
-
-depends=('python' 'python-pip' 'base') # Dependências mínimas para venv e pip
-makedepends=()
-
-# O tarball contém navegador.py, e o ícone/desktop estão no mesmo diretório do PKGBUILD.
-source=(
-  "0.0.2.tar.gz::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/archive/refs/tags/0.0.2.tar.gz"
-  "navegadorpytechicon.png::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/releases/download/0.0.1/navegadorpytechicon.png"       # Adicionado aqui, pois está local e precisa ir para $srcdir
-  "navegadorpytechdesktop.desktop" # Adicionado aqui, pois está local e precisa ir para $srcdir
+license=('GPL')
+depends=(
+    'qt5-webengine'
+    'glibc'
 )
-# GERE ESSES CHECKSUMS COM `updpkgsums` após salvar este PKGBUILD e ter todos os arquivos.
-# Por enquanto, use 'SKIP'.
-sha256sums=('SKIP' # para 0.0.1.tar.gz
-            'SKIP' # para navegadorpytechicon.png
-            'SKIP') # para navegadorpytechdesktop.desktop
+
+# APONTANDO PARA OS ARQUIVOS INDIVIDUAIS NO GITHUB RELEASES
+# Formato: https://github.com/USUARIO/REPOSITORIO/releases/download/TAG/NOME_DO_ARQUIVO_ANEXADO
+# Certifique-se de que a TAG no GitHub é exatamente '0.3' (sem 'v') para a sua pkgver
+source=(
+    "https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/releases/download/${pkgver}/navegadorpytech"
+    "https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/releases/download/${pkgver}/navegador.desktop"
+    "https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/releases/download/${pkgver}/browser-icon.png"
+)
+
+# Gerar estes checksums um por um.
+# Exemplo: `sha256sum navegadorpytech` no diretório onde os arquivos são baixados.
+sha256sums=('b99d1cb41499879bd205e645177984fe8b4aebd51a20b79b3d380a0921042977'
+            'a421db782d3e30460e3e15ddb6dece919ab26676ef2f577146458ca4da03b825'
+            '1b5ce199f8ac63d238cc40418d0337edf355fa75ae1eb3f0c7d0d2b216edceb2')
 
 build() {
-  echo "Não há fase de build separada para este pacote Python."
+    # Não há nada para compilar, estamos usando binários pré-compilados.
+    :
 }
 
 package() {
-  set -ex # Ativa o modo de depuração e saída em caso de erro na fase package()
+    # Os arquivos baixados estarão diretamente em ${srcdir} (seu diretório de build temporário)
 
-  # O nome da pasta descompactada do tarball
-  _extracted_dir="Navegador-B-sico-E-Leve-Com-Python--$pkgver"
+    # Crie os diretórios de instalação
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/applications"
+    install -d "${pkgdir}/usr/share/pixmaps"
 
-  # Cria o diretório de instalação em /opt/
-  mkdir -p "$pkgdir/opt/$pkgname" # Padroniza para /opt/navegadorpytech/
-  mkdir -p "$pkgdir/opt/$pkgname/venv" # Cria a pasta do venv no pacote
+    # Copie o executável do PyInstaller
+    install -m755 "${srcdir}/navegadorpytech" "${pkgdir}/usr/bin/"
 
-  # Copia o script principal navegador.py do diretório descompactado do tarball
-  install -Dm755 "$srcdir/${_extracted_dir}/navegador.py" "$pkgdir/opt/$pkgname/navegador.py"
+    # Copie o arquivo .desktop
+    install -m644 "${srcdir}/navegador.desktop" "${pkgdir}/usr/share/applications/"
 
-  # Instala o ícone
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-  install -m644 "$srcdir/navegadorpytechicon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png" # Renomeia para pkgname.png por convenção
-
-  # Instala o desktop file
-  mkdir -p "$pkgdir/usr/share/applications/"
-  install -m644 "$srcdir/navegadorpytechdesktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" # Renomeia para pkgname.desktop por convenção
-
-  # Cria o script wrapper em /usr/bin/
-  mkdir -p "$pkgdir/usr/bin/"
-  cat > "$pkgdir/usr/bin/$pkgname" << 'EOF'
-#!/bin/bash
-/opt/navegadorpytech/venv/bin/python /opt/navegadorpytech/navegador.py "$@"
-EOF
-  chmod +x "$pkgdir/usr/bin/$pkgname"
+    # Copie o ícone
+    install -m644 "${srcdir}/browser-icon.png" "${pkgdir}/usr/share/pixmaps/browser-icon.png"
 }
