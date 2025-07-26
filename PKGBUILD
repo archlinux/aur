@@ -1,6 +1,6 @@
 # Maintainer: gilbus <aur (AT) tinkershell.eu>
 pkgname=workout-tracker
-pkgver=2.2.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities'
 url="https://github.com/jovandeginste/workout-tracker"
@@ -10,7 +10,7 @@ makedepends=('go' 'make' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	"${pkgname}.service"
 	"${pkgname}.env.dist")
-sha256sums=('c5c5034f6643994c892b7ca96ed57f80d02fe07bccecaddb301721ffe3a3a548'
+sha256sums=('4374fadbc517d4694000a8e41a58903a2c185cd906b1a8daeb6df11075d47521'
             '341941ad9a8ef27d09b3527058597709c9624d80d1319f36252aaa4e60073014'
             'b06f581b4d7ec4991b89ddad9547da284de49f3ad349186e4a2787e9daeb7930')
 backup=("etc/$pkgname/env")
