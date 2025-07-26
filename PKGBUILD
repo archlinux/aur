@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=moon
-pkgver=1.38.6
+pkgver=1.39.1
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -11,17 +11,15 @@ depends=('gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('889d0d9a75d27b4655178473904538976dcfd3753f88a14a6f4a4e2c7ac4f73c')
+sha256sums=('6d7892f7a9e7fcce0e9a070099806a90daac9a6240da09f78728a40a196e0fb0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN="stable"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN="stable"
   export CARGO_TARGET_DIR="target"
   cargo build --release --frozen
 
