@@ -2,7 +2,7 @@
 # Maintainer: ZachAR3 <Zach4R3@gmail.com>
 
 _pkgname=Eden
-pkgname="eden-bin-preview"
+pkgname="eden-preview-bin"
 pkgver=0.0.3_rc1
 _upstreamver=v0.0.3-rc1 # private var used for download URL since "-" isn't valid in pkgver
 pkgrel=1
