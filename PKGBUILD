@@ -1,5 +1,5 @@
 pkgname=paraview-qt6
-pkgver=5.13.2
+pkgver=5.13.3
 pkgrel=1
 pkgdesc="Parallel Visualization application using VTK (Qt6 version)"
 arch=(x86_64)
@@ -15,12 +15,12 @@ makedepends=(cmake boost mesa gcc-fortran ninja)
 conflicts=(paraview)
 provides=(paraview)
 source=(${url}/files/v${pkgver%.*}/ParaView-v${pkgver}.tar.xz)
-md5sums=('c1c3883e0cab2d132e8a4d43f29873e9')
+md5sums=('d6285629137d4bc21ac1f4507f90a20e')
 
 prepare() {
   cd ParaView-v${pkgver}
   # https://gitlab.kitware.com/paraview/paraview/-/issues/22806
-  patch -p1 -i ../../wl.patch
+  curl -L https://gitlab.kitware.com/paraview/paraview/-/merge_requests/7135.patch | patch -p1
 }
 
 build() {
