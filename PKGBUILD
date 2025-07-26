@@ -1,7 +1,7 @@
 # Maintainer: TwoFinger
 # Contributor: Cooper Pierce <cppierce@andrew.cmu.edu>
 pkgname=smlfmt
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='An auto-formatter for Standard ML'
 url='https://github.com/shwestrick/smlfmt'
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(MIT)
 makedepends=(mlton)
 source=($pkgname-$pkgver.tgz::$url/archive/refs/tags/v$pkgver.tar.gz)
-md5sums=(0c575c98db4a434eaddb10dd3d813f75)
+md5sums=(9502dec54c0047a1c831b461477201d8)
 
 build() {
     cd "$pkgname-$pkgver"
