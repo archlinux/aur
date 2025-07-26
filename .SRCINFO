@@ -7,7 +7,6 @@ pkgbase = cookie-git
 	license = GPL
 	depends = ncurses
 	depends = curl
-	depends = miniaudio
 	source = git+https://github.com/FedGuy699/Cookie-Player.git
 	sha256sums = SKIP
 

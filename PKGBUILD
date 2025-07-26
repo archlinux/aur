@@ -5,7 +5,7 @@ pkgdesc="Simple music player TUI"
 arch=('x86_64')
 url="https://github.com/FedGuy699/Cookie-Player"
 license=('GPL')
-depends=('ncurses' 'curl' 'miniaudio')
+depends=('ncurses' 'curl')
 source=("git+https://github.com/FedGuy699/Cookie-Player.git")
 sha256sums=('SKIP')
 
