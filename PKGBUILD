@@ -1,7 +1,7 @@
 # Maintainer: OrPudding <t3164473115@163.com>
 pkgname=astro-box
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=3
 pkgdesc="A multifunctional toolbox designed for Xiaomi Vela wearable devices"
 arch=('x86_64')
 url="https://astrobox.online/"
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('webkit2gtk' 'gtk3')
 options=('!debug')
 source=("https://vip.123pan.cn/1811888703/AstroBox/AstroBox_${pkgver}_amd64.deb")
-sha256sums=('a7a92d8c81db9dc35d67553cf40a60f653754cfd24f0e2a3b640155760ed4c74')
+sha256sums=('65afbde3ad0436a7cbeb33184ac9896e33a71a17a09c3445855d44b59df5ae7c')
 
 prepare() {
   # 提取deb包中的数据
