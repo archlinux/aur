@@ -1,0 +1,29 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "Revert-layer-shell-error-on-0-dimension-without-anch.patch",
+]
+SPDX-FileCopyrightText = "wlroots0.18 contributors"
+SPDX-License-Identifier = "MIT"
