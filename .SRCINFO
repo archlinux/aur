@@ -1,6 +1,6 @@
 pkgbase = reclaimed
 	pkgdesc = disk space utilization & cleanup application (python tui)
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/taylorwilsdon/reclaimed
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = reclaimed
 	depends = python-rich
 	depends = python-psutil
 	depends = python-textual
-	source = reclaimed-0.2.8.tar.gz::https://github.com/taylorwilsdon/reclaimed/archive/refs/tags/v0.2.8.tar.gz
-	sha256sums = 63ac4ed58630dcd78d06a2d802dbec276c4c6808c431cfdfc4f372aece2e26b3
+	source = reclaimed-0.2.9.tar.gz::https://github.com/taylorwilsdon/reclaimed/archive/refs/tags/v0.2.9.tar.gz
+	sha256sums = 0fb12a2cdfb53a9c5986a522ece9e33b3ceede49a53aa8d07b2794cfc12aa8a3
 
 pkgname = reclaimed

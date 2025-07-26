@@ -1,7 +1,7 @@
 # Maintainer: envolution
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=reclaimed
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="disk space utilization & cleanup application (python tui)"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   python-installer
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/taylorwilsdon/reclaimed/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('63ac4ed58630dcd78d06a2d802dbec276c4c6808c431cfdfc4f372aece2e26b3')
+sha256sums=('0fb12a2cdfb53a9c5986a522ece9e33b3ceede49a53aa8d07b2794cfc12aa8a3')
 
 build() {
   cd $pkgname-$pkgver
