@@ -8,7 +8,7 @@ url="https://github.com/eshnd/fastnn"
 license=('MIT')
 depends=('python' 'python-pytorch')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('9854a718867d8da69b11f3b7918ffc86')
+sha256sums=('e0b2ff07f108ef107c4cdffa7796b4565e407bae71e78e778e2afb725d1b3a9d')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 fastnn.py "$pkgdir/usr/bin/fastnn"
