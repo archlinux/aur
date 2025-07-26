@@ -1,6 +1,6 @@
 pkgbase = python-sse-starlette
 	pkgdesc = Server Sent Events (SSE) for Starlette and FastAPI
-	pkgver = 2.4.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/sysid/sse-starlette
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-sse-starlette
 	depends = uvicorn
 	depends = python-anyio
 	depends = python-starlette
-	source = python-sse-starlette-2.4.1.tar.gz::https://github.com/sysid/sse-starlette/archive/v2.4.1.tar.gz
-	sha256sums = c399a106459c6b1b6681d3214d35a263467aa675e6778b58d0088fecb88d3989
+	source = python-sse-starlette-3.0.0.tar.gz::https://github.com/sysid/sse-starlette/archive/v3.0.0.tar.gz
+	sha256sums = 78eba1d86a0631cb087ecf3563797fcc74dd9f50f9d5de2a7a23d331e0454b55
 
 pkgname = python-sse-starlette
