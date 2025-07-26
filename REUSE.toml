@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "vector-slicer-appstreamcli.patch",
+    "vector-slicer-dbus-activatable.patch",
+    "vector-slicer-desktop-categories.patch",
+    "vector-slicer-fix-template.patch",
+    "vector-slicer-prgname.patch",
+]
+SPDX-FileCopyrightText = "vector-slicer contributors"
+SPDX-License-Identifier = "MIT"
