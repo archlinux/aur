@@ -37,15 +37,14 @@ optdepends=({slimjet,electron{31..36}}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 prepare() {
+  # List used funcs
   base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt 
   #base64 -d ${_chrlow}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt 
   #diff {,old}sigs.txt
   #./fetch-soname-by-chromium.sh $_chromium > so.txt
   #./fetch-soname-by-chromium.sh $_chrlow > oldso.txt
   #diff so{,old}.txt
-
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
-  # mask symbols for binary size
   echo -e "{\nglobal:" > export.map
   sed 's/$/;/' sigs.txt >> export.map
   echo -e "local:\n*;\n};" >> export.map
@@ -57,6 +56,11 @@ prepare() {
   #diff libavcodec/opus/dec.c{.bak,}||:
   # ${_url}/+/refs/heads/master/chromium/patches/README
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
+  sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
+    -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c
+  #diff libavformat/oggdec.c{.bak,}||:
+  sed -i.bak 's/^int av_sscanf(.*/#define av_sscanf sscanf/' libavutil/avstring.h
+  #diff libavutil/avstring.h{.bak,}||:
   # CHROMIUM_NO_LOGGING
   sed -i.bak -E \
     -e "/^void\s+av_log\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
