@@ -1,0 +1,37 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "aalib-aalinuxkbd-return.patch",
+    "aalib-c99.patch",
+    "aalib-fix-aarender.patch",
+    "aalib-free-offset-pointer.patch",
+    "aalib-key-down-OOB.patch",
+    "aalib-m4.patch",
+    "aalib-mouse.patch",
+    "aalib-opaque-ncurses-fix.patch",
+    "aclocal-fixes.patch",
+]
+SPDX-FileCopyrightText = "lib32-aalib contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"
