@@ -2,7 +2,7 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
