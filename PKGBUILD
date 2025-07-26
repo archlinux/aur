@@ -1,7 +1,6 @@
 # Maintainer: Nitin Bhat <nitinbhat972@gmail.com>
 pkgname=cwal-git
 _pkgname=cwal
-pkgver=0.1.0
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
