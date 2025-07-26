@@ -2,7 +2,7 @@
 
 pkgname=transifex-cli-git
 pkgver=1.6.17.r0.ge7feea3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Transifex command-line client"
 arch=('i686' 'x86_64')
 url="https://github.com/transifex/cli"
@@ -11,7 +11,6 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=("transifex-cli=$pkgver")
 conflicts=('transifex-cli')
-options=('staticlibs')
 source=("git+https://github.com/transifex/cli.git")
 sha256sums=('SKIP')
 

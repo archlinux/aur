@@ -1,7 +1,7 @@
 pkgbase = transifex-cli-git
 	pkgdesc = The Transifex command-line client
 	pkgver = 1.6.17.r0.ge7feea3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/transifex/cli
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = transifex-cli-git
 	depends = glibc
 	provides = transifex-cli=1.6.17.r0.ge7feea3
 	conflicts = transifex-cli
-	options = staticlibs
 	source = git+https://github.com/transifex/cli.git
 	sha256sums = SKIP
 
