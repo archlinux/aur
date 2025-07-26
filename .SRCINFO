@@ -1,0 +1,13 @@
+pkgbase = protols
+	pkgdesc = Language Server for Protobuf and gRPC
+	pkgver = 0.12.7
+	pkgrel = 1
+	url = https://github.com/coder3101/protols
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	options = !lto
+	source = protols.tar.gz::https://github.com/coder3101/protols/archive/refs/tags/0.12.7.tar.gz
+	sha256sums = dbd77c9c531ce8d4d96c66fa72c1f379367452013caf36967886efcff3548ea9
+
+pkgname = protols
