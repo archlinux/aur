@@ -1,14 +1,14 @@
 # Maintainer: Kanehekili (mat dot wegmann at gmail dot com)
 pkgname=ytdownloader
-pkgver=1.4.7
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="GKT3 frontend for yt-dlp (the active branch of youtube-dl) with focus on best audio and video. Uses ffmpeg for joining audio & video"
 url="https://github.com/kanehekili/YoutubeDownloader"
 license=('GPL2' 'MIT')
 depends=('python' 'python-gobject' 'ffmpeg' 'yt-dlp')
 arch=('any')
-source=(https://github.com/kanehekili/YoutubeDownloader/releases/download/1.4.7/ytdownloader1.4.7.tar)
-md5sums=(8d9c0aef678cbfecb0608cf96e001542)
+source=(https://github.com/kanehekili/YoutubeDownloader/releases/download/1.5.0/ytdownloader1.5.0.tar)
+md5sums=(baf1e30d4d819238f2d5ad2190138bbf)
 
 package(){	
   cd ${srcdir}
