@@ -1,7 +1,7 @@
 pkgbase = docformatter
 	pkgdesc = Formats docstrings to follow PEP 257
 	pkgver = 1.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PyCQA/docformatter
 	arch = any
 	license = MIT
