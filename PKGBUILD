@@ -10,7 +10,7 @@
 pkgname=xnviewmp
 pkgver=1.9.2
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -23,7 +23,7 @@ depends=('qt5-multimedia')
 optdepends=('glib2: support for moving files to trash')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-${pkgver}-linux-x64.tgz"
-        'xnviewmp.desktop')
+        'XnView.desktop')
 sha256sums=('25B3B0E6FAC8DC4EAFEB02BB44C8CE7431BB2217E0921D5BFD250ED60BB32E6B'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A')
 
@@ -35,7 +35,7 @@ package() {
   cp -a "${srcdir}/XnView"/* "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/xnview.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -m644 "${srcdir}/XnView.desktop" "${pkgdir}/usr/share/applications/XnView.desktop"
   install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Clean up
