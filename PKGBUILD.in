@@ -2,8 +2,8 @@ _name="xknx"
 pkgname="python-$_name"
 pkgver=include(`version')dnl
 pkgrel=1
-pkgdesc="XKNX is the underlying library for the KNX integration in Home Assistant."
-arch=('x86_64')
+pkgdesc="An Asynchronous Library for the KNX protocol."
+arch=('any')
 url="https://github.com/XKNX/xknx"
 license=('MIT')
 source=("https://github.com/XKNX/$_name/archive/refs/tags/$pkgver.tar.gz"
@@ -25,4 +25,5 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

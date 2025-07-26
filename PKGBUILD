@@ -1,28 +1,24 @@
-_name="xknx"
-pkgname="python-$_name"
-pkgver=2.11.2
+# Maintainer: gergi
+pkgname=python-xknx
+pkgver=3.8.0
 pkgrel=1
-pkgdesc="XKNX is the underlying library for the KNX integration in Home Assistant."
-arch=('x86_64')
+pkgdesc="An Asynchronous Library for the KNX protocol"
+arch=('any')
 url="https://github.com/XKNX/xknx"
 license=('MIT')
-source=("https://github.com/XKNX/$_name/archive/refs/tags/$pkgver.tar.gz"
-        "0001-Unpin-setuptools.patch")
-sha256sums=('d090b4540d5021d0783b3276b50560956ab1d3c59aabc1d7261b829b18cb42d7'
-            '07bcfd9a0e4852b0d539a1a7dd8e50ab4908536bd8024f8ea9795f361a170325')
-makedepends=(python-build python-installer python-wheel python-setuptools)
-
-prepare() {
-    cd "$_name-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/0001-Unpin-setuptools.patch"
-}
+depends=('python>=3.10' 'python-cryptography' 'python-ifaddr')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-async-timeout: for Python < 3.11'
+            'python-typing-extensions: for Python < 3.11')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/XKNX/xknx/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('feaae741d4dd1c52765f77bbb51f1c5c70c858edd1592b4072070f19a2b35781')
 
 build() {
-    cd "$_name-$pkgver"
+    cd "$srcdir/xknx-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
+    cd "$srcdir/xknx-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
