@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = brave-bin
+
+[Action]
+Description = Applying Wayland fix to brave-bin...
+When = PostTransaction
+Exec = /usr/share/brave-wayland-hook/brave-wayland-fix.sh

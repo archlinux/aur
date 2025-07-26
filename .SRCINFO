@@ -1,0 +1,16 @@
+pkgbase = brave-wayland-hook
+	pkgdesc = A hook for brave-bin to enable Wayland support.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/your-repo/brave-wayland-hook
+	arch = any
+	license = MIT
+	depends = brave-bin
+	provides = brave-wayland-hook
+	conflicts = brave-wayland-hook
+	source = brave-wayland-fix.sh
+	source = brave-wayland.hook
+	sha256sums = dec285fdeaa2ce93973a35acb0ef23b270b3f5c1e0e6ec9a3052d004a07bed97
+	sha256sums = bc40ba8aa9827678d9b6ebaee6700c3d1a45ba229823d5becc6cddfa119d4d87
+
+pkgname = brave-wayland-hook
