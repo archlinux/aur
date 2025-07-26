@@ -1,6 +1,6 @@
 # Maintainer: Greboid <greboid@github>
 pkgname=tithon
-pkgver=0.0.38
+pkgver=0.0.39
 pkgrel=1
 pkgdesc="Modern IRC client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
         "git+https://github.com/greboid/tithon.git#tag=v${pkgver}"
         "launcher.sh"
        )
-sha256sums=('2ddae7cde33dac012a05eb86f283cd99aeb6f3d141a71b3b566a703af567bb58'
+sha256sums=('c6e9903069654e15415cca16b052f0dbdd43c2312483a14e005544fb598a4c0a'
             '96f891aa77f7374c9d40689add1ec8f5402915a08a70d820725d026fa8ec0f29')
 
 prepare() {
