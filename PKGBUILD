@@ -3,7 +3,7 @@
 _author=olrtg
 pkgname=emmet-language-server
 pkgver=2.7.0  # datasource=npm depName=@olrtg/emmet-language-server
-pkgrel=2
+pkgrel=1
 pkgdesc="A language server for emmet.io"
 arch=("any")
 url="https://www.npmjs.com/package/@$_author/$pkgname"
