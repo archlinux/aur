@@ -1,0 +1,3 @@
+[python-borgstore]
+source = "git"
+git = "https://github.com/borgbackup/borgstore.git"
