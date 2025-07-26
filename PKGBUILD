@@ -11,7 +11,7 @@ url=https://github.com/AdaCore/lal-refactor
 arch=(i686 x86_64)
 license=(Apache)
 
-depends=(gcc-ada adasat)
+depends=(gcc-ada adasat libadalang-tools)
 makedepends=(gprbuild)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/lal-refactor-26.0w-20250416-165F5-src.tar.gz)
