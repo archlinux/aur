@@ -3,7 +3,7 @@
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=r255.cd688fd
+pkgver=r258.e791ea0
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -12,7 +12,7 @@ license=("GPL-3.0-or-later")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=("fontconfig" "freetype2" "libx11" "libxcb" "libxkbcommon" "libxkbcommon-x11" "libxcomposite" "libxext" "mpdecimal" "xcb-util-image" "xcb-util-keysyms" "xcb-util-renderutil" "xcb-util-wm")
-makedepends=("git" "python39")
+makedepends=("git" "python311")
 source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.desktop"
         "${_pkgname}.png")
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    python3.9 -m venv .venv
+    python3.11 -m venv .venv
     source ./.venv/bin/activate
     pip install pyinstaller
     pip install -r requirements.txt
