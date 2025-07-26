@@ -2,12 +2,13 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero speechify speechmatics spitch tavus turn-detector)
+_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli speechify speechmatics spitch tavus turn-detector)
 pkgbase=python-${_name0}
 pkgname=(python-${_name0} ${_plugins[@]/#/python-${_name1}-})
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
-_plugins_pkgdesc=('Agent Framework plugin for services from Anthropic.'
+_plugins_pkgdesc=('Agent Framework plugin for anam.'
+                  'Agent Framework plugin for services from Anthropic.'
                   'Agent Framework plugin for AssemblyAI.'
                   'LiveKit Agents Plugin for services from AWS.'
                   'Agent Framework plugin for services from Azure.'
@@ -37,12 +38,14 @@ _plugins_pkgdesc=('Agent Framework plugin for services from Anthropic.'
                   'LiveKit Agents Plugin for Rime.'
                   "Agent Framework plugin for services using Sarvam.ai's API."
                   'Agent Framework Plugin for Silero.'
+                  'Agent Framework plugin for Simli.'
                   "Agent Framework plugin for voice synthesis with Speechify's API."
                   'Agent Framework plugin for Speechmatics.'
                   'spitch plugin template for LiveKit Agents.'
                   'Agent Framework plugin for Tavus.'
                   'End of utterance detection for LiveKit Agents.')
-_plugins_depends=("'python-livekit-agents' 'python-anthropic' 'python-httpx'"
+_plugins_depends=("'python-livekit-agents'"
+                  "'python-livekit-agents' 'python-anthropic' 'python-httpx'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-aioboto3' 'python-amazon-transcribe'"
                   "'python-livekit-agents' 'python-azure-cognitiveservices-speech'"
@@ -72,12 +75,14 @@ _plugins_depends=("'python-livekit-agents' 'python-anthropic' 'python-httpx'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-onnxruntime' 'python-numpy'"
+                  "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-spitch'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-transformers' 'python-numpy' 'python-onnxruntime' 'python-jinja'")
 _plugins__optdepends=(""
+                      ""
                       ""
                       "'python-aws-sdk-bedrock-runtime: realtime' 'python-boto3: realtime'"
                       ""
@@ -111,13 +116,14 @@ _plugins__optdepends=(""
                       ""
                       ""
                       ""
+                      ""
                       "")
 arch=('x86_64' 'aarch64')
 _repo='https://github.com/livekit/agents'
 license=('Apache-2.0')
 source=("${_repo}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
         "${_repo}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('c85c10d379c86aaf040c495f374c624b2000e913e6f741073e70ea22aafd112b'
+sha256sums=('8fc33cf7c71043259a6b236b24c89046d59ce28340fd80c360c72f244efb363e'
             '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
@@ -210,7 +216,9 @@ package_python-livekit-agents() {
               'python-livekit-plugins-sarvam: sarvam'
               'python-livekit-plugins-spitch: spitch'
               'python-livekit-plugins-inworld: inworld'
-              'python-livekit-plugins-hedra: hedra')
+              'python-livekit-plugins-hedra: hedra'
+              'python-livekit-plugins-anam: anam'
+              'python-livekit-plugins-simli: simli')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" ${_name0}/dist/*.whl
 }
