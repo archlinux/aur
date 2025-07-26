@@ -1,0 +1,40 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "python-nose-2to3.patch",
+    "python-nose-coverage4.patch",
+    "python-nose-no-use_2to3.patch",
+    "python-nose-py311-doctest.patch",
+    "python-nose-py311.patch",
+    "python-nose-py312.patch",
+    "python-nose-py35.patch",
+    "python-nose-py36.patch",
+    "python-nose-py38.patch",
+    "python-nose-readunicode.patch",
+    "python-nose-setuptools74.patch",
+    "python-nose-unicode.patch",
+]
+SPDX-FileCopyrightText = "python-nose contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"
