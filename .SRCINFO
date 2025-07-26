@@ -1,13 +1,13 @@
 pkgbase = hyprland-plugins
 	pkgdesc = Official plugins for Hyprland
-	pkgver = 0.50.0
+	pkgver = 0.50.1
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprland-plugins
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = hyprland
-	depends = hyprland=0.50.0
+	depends = hyprland=0.50.1
 	source = hyprland-plugins::git+https://github.com/hyprwm/hyprland-plugins.git#commit=d723e5b153b7990d36e62a425bda3768c41dd9eb
 	sha256sums = SKIP
 
