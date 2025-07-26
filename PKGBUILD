@@ -2,7 +2,7 @@
 
 pkgname=fastanime
 pkgver=2.9.9
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
@@ -11,23 +11,18 @@ license=('Unlicense')
 makedepends=('python>=3.10' 'python-installer' 'python-build')
 depends=('python'
          'python-click'
-         'python-fastapi'
-         'python-inquirerpy'
-         'libtorrent'
-         'python-plyer'
-         'python-pytest'
-         'python-requests'
-         'python-rich'
-         'python-thefuzz'
-         'yt-dlp'
-         'python-dbus'
-         'python-pypresence'
          'python-httpx'
-         'python-beautifulsoup4'
+         'python-inquirerpy'
+         'python-pydantic'
+         'python-rich'
+         'python-plyer'
+         'libtorrent'
          'python-lxml'
-         'python-pycryptodome'
-         'python-pydantic')
+         'python-pypresence'
+         'python-thefuzz'
+         'python-pycryptodome')
 optdepends=('mpv: video player'
+            'yt-dlp: download videos'
             'webtorrent-cli: nyaa torrents'
             'ffmpeg: download hls streams' 
             'rofi: alternative ui'
@@ -42,6 +37,7 @@ optdepends=('mpv: video player'
 provides=('fastanime')
 install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+patch=('fastanime-2.9.9-fix.patch')
 
 build() {
     cd "${srcdir}" || exit
