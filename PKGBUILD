@@ -3,8 +3,8 @@
 # Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=20.1.1
-_bldver=00008
+_semver=20.2.0
+_bldver=00012
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -19,13 +19,13 @@ depends=('python' 'gtk2' 'gtk3' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'libusb-
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS_${pkgver}_linux
-source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/${_semver}/${_archive}.zip"
+source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip"
 "LICENSE"
 "61-msp430uif.rules"
 "71-sd-permissions.rules"
 )
 
-md5sums=('24ed00d86c15dd48056c273c054c9b2e'
+md5sums=('1746d85b2295f95ed31195e224c71b35'
          'cf7222e486f8f1d2a0f99d3d946e1f01'
          '7c570e9f93da6f01986285db81d497ef'
          'af8a8c199be432919b4ca66106591c25')
