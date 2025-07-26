@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=myueqf-reader
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 epoch=
 pkgdesc="A simple TXT ebook reader"
 arch=($CARCH)
@@ -39,7 +39,7 @@ install=
 changelog=
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 noextract=()
-sha256sums=('54f14c7dec2fa1c8f1ccea9ffa7eecb61014264126cf05b6dc8850448e4b0b1c')
+sha256sums=('021fe793239020d356a9e6ce56ab5657d0ff098bb9a44b431cfc11a0d400c8b7')
 #validpgpkeys=()
 
 build() {
