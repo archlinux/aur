@@ -55,7 +55,7 @@ package() {
 </mime-info>
 EOF
 
-  install -Dm644 eden.xml "${pkgdir}/usr/share/mime/packages/eden.xml"
+  install -Dm644 eden-preview.xml "${pkgdir}/usr/share/mime/packages/eden-preview.xml"
 
   install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
   install -Dm644 "squashfs-root/org.eden_emu.eden.desktop" \
