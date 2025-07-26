@@ -23,11 +23,11 @@ build() {
 }
 
 check() {
-  local pytest_args=(
-    --deselect=tests/test_core/test_scanner.py::test_save_results
-  )
+  #local pytest_args=(
+  #  --deselect=tests/test_core/test_scanner.py::test_save_results
+  #)
   cd $pkgname-$pkgver
-  PYTHONPATH="$PWD" python -m pytest "${pytest_args[@]}"
+  PYTHONPATH="$PWD" python -m pytest # "${pytest_args[@]}"
 }
 
 package() {
