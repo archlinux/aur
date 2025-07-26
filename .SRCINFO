@@ -1,0 +1,14 @@
+pkgbase = vc-clock
+	pkgdesc = a lightweight Analog Clock applet
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = https://github.com/VC365/vc-clock
+	arch = x86_64
+	license = Proprietary
+	makedepends = git
+	depends = librsvg
+	depends = gtk2
+	source = git+https://github.com/VC365/vc-clock.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = vc-clock
