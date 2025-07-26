@@ -90,13 +90,16 @@ package() {
   install -dm755 "${pkgdir}/${SHIP_PREFIX}"
   install -dm755 "${pkgdir}/usr/bin/"
 
+  # Create Directories
+  install -dm755 "${pkgdir}/${SHIP_PREFIX}" "${pkgdir}/usr/bin/"
+
   # Main executable & assets to /opt
-  cp -r build/Starship \
+  cp -r build/assets "${pkgdir}/${SHIP_PREFIX}"
+  install -m755 build/Starship "${pkgdir}/${SHIP_PREFIX}"
+  install -m644 -t "${pkgdir}/${SHIP_PREFIX}" \
         build/config.yml \
-        build/assets \
         build/starship.o2r \
-        "${srcdir}/gamecontrollerdb.txt" \
-        "${pkgdir}/${SHIP_PREFIX}"
+        "${srcdir}/gamecontrollerdb.txt"
 
   # Link executable to /usr/bin, add to desktop entry & icons
   ln -s "${SHIP_PREFIX}/Starship" "${pkgdir}/usr/bin/StarshipSF64"
