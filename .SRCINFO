@@ -13,7 +13,6 @@ pkgbase = python-xknx
 	depends = python-cryptography
 	depends = python-ifaddr
 	optdepends = python-async-timeout: for Python < 3.11
-	optdepends = python-typing-extensions: for Python < 3.11
 	source = python-xknx-3.8.0.tar.gz::https://github.com/XKNX/xknx/archive/refs/tags/3.8.0.tar.gz
 	sha256sums = feaae741d4dd1c52765f77bbb51f1c5c70c858edd1592b4072070f19a2b35781
 
