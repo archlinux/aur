@@ -1,0 +1,20 @@
+pkgbase = antimony-sandbox
+	pkgdesc = Sandbox Applications
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = antimony.install
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = cargo
+	depends = findutils
+	depends = glibc
+	depends = bubblewrap
+	depends = libseccomp
+	depends = strace
+	depends = xdg-dbus-proxy
+	depends = sqlite
+	source = git+https://github.com/kkernick/antimony#tag=1.0.0
+	b2sums = SKIP
+
+pkgname = antimony-sandbox

@@ -1,0 +1,18 @@
+post_install() {
+  useradd -r antimony
+  post_upgrade
+}
+
+post_upgrade() {
+  chown antimony:antimony -R /usr/share/antimony
+
+  chown antimony:antimony /usr/bin/antimony
+  chmod ug+s /usr/bin/antimony
+  setcap cap_fowner+ep /usr/bin/antimony
+
+  setcap cap_audit_read+ep /usr/bin/antimony-monitor
+}
+
+post_remove() {
+  userdel antimony
+}
