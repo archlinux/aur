@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs-git
 # sparse checkout
 pkgver=7.2.r119684.g670089304a
-pkgrel=8
+pkgrel=9
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ffmpeg)"
 arch=('x86_64')
@@ -42,6 +42,12 @@ prepare() {
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   diff libavcodec/opus/dec.c{.bak,}||:
+  # ${_url}/+/refs/heads/master/chromium/patches/README
+  sed -i '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
+  sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
+    -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c
+  diff libavformat/oggdec.c{.bak,}||:
+  sed -i.bak 's/^int av_sscanf(.*/#define av_sscanf sscanf/' libavutil/avstring.h # not 8 kb
   # CHROMIUM_NO_LOGGING
   sed -i.bak -E \
     -e "/^void\s+av_log\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
