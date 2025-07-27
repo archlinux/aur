@@ -4,12 +4,17 @@
 # Based on package by Jelle van der Waa <jelle vdwaa nl>.
 pkgname=networkmanager-dispatcher-chrony
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dispatcher Script for chrony"
 arch=(any)
 license=('MIT')
 url='https://wiki.gnome.org/Projects/NetworkManager'
-depends=('networkmanager' 'chrony')
+depends=(
+  'networkmanager'
+  'chrony'
+  'which'
+  'sh'
+)
 backup=(etc/NetworkManager/dispatcher.d/10-chrony)
 changelog=ChangeLog
 source=('10-chrony' 'LICENSE')

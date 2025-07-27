@@ -1,13 +1,15 @@
 pkgbase = networkmanager-dispatcher-chrony
 	pkgdesc = Dispatcher Script for chrony
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	changelog = ChangeLog
 	arch = any
 	license = MIT
 	depends = networkmanager
 	depends = chrony
+	depends = which
+	depends = sh
 	backup = etc/NetworkManager/dispatcher.d/10-chrony
 	source = 10-chrony
 	source = LICENSE

@@ -1,3 +1,16 @@
+2025-07-28 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 2.3-2 :
+	Updated this ChangeLog
+	Added missing dependencies
+
+2025-07-28 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 2.3-1 :
+	Now checks for local loopback interface (`lo`) and aborts early.
+	Improved/updated NetworkManager connection checking.
+	(Thanks to vinicentus and HurricanePootis for submitting these!)
+
 2015-07-12 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 2.1-1 :
