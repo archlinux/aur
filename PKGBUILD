@@ -37,7 +37,6 @@ optdepends=('mpv: video player'
 provides=('fastanime')
 install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-patch=('fastanime-2.9.9-fix.patch')
 
 build() {
     cd "${srcdir}" || exit
