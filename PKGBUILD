@@ -15,7 +15,7 @@ sha256sums=(8cafa4a812079020839beaf0b133e08be6e47d6ffa1cf90f3417efdc7589c7a1)
 build() {
   cd $pkgname-v$pkgver
 
-  cmake -B build -D CMAKE_INSTALL_PREFIX="$pkgdir/usr"
+  cmake -B build -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D CMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
