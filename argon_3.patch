@@ -36,6 +36,7 @@ index 6c629a23e..ead2a8259 100644
  * jsmn::
  * minilzo::
  * libtasn1::
+ * libgcrypt::
  @end menu
 
 +@node Argon2
