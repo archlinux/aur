@@ -1,4 +1,5 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Phantasm <phantasm@centrum.cz>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint-lsp
 pkgver=2.0.1
