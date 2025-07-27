@@ -4,7 +4,7 @@
 # Contributor: Maciek Marciniak <mm2pl at kotmisia.pl>
 
 pkgname=obs-studio-with-websockets
-pkgver=31.0.4
+pkgver=31.1.1
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -12,8 +12,9 @@ url="https://obsproject.com"
 license=('GPL2')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils'
          'qt6-svg' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite'
-         'libdatachannel' 'uthash' 'ffnvcodec-headers' 'qrcodegencpp-cmake' 'websocketpp' 'asio')
-makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio' 'nlohmann-json')
+         'libdatachannel' 'uthash' 'ffnvcodec-headers')
+makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio' 'nlohmann-json'
+             'websocketpp' 'asio' 'qrcodegencpp-cmake' 'extra-cmake-modules')
 optdepends=('libfdk-aac: FDK AAC codec support'
             'libva-intel-driver: hardware encoding'
             'libva-mesa-driver: hardware encoding'
@@ -23,7 +24,7 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'v4l2loopback-dkms: virtual camera support')
 options=("!debug")
 source=($pkgname-$pkgver.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/$pkgver/obs-studio-$pkgver.tar.gz)
-sha256sums=('18da9b28e7d441d8d93458dfa8bc0b66350caf44414c544fc26f16d0f0a7b8ae')
+sha256sums=('4228526a9f96e2278d371f14f44c7762401b5ea1f9502c165e1fac6d76a41b41')
 provides=('obs-studio')
 
 build() {
