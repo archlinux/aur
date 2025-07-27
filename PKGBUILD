@@ -4,15 +4,15 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=ne
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc='The nice editor, a fast small powerful and simple to use editor'
 arch=(aarch64 i686 x86_64)
 url='http://ne.di.unimi.it'
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(ncurses texinfo)
-source=("https://github.com/vigna/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('977c5497c213526f796bbba540dbeb585eca248d5eded41063ceb57981a33b7d1954ae1c7a39287ff88288a05d7811630ca887e8ef7f08f237d19a9ba4be2d29')
+source=("https://github.com/vigna/ne/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('d96abc38f724d56d092a2c3d5c86e0abca2175c2180e17021e45d60a78de45cc14a8af75376ada8c2d78600fe75acd4edcfc70a1bf08f45fe1baf2e5092fc454')
 
 build() {
   cd ${pkgname}-${pkgver}
