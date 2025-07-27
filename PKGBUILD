@@ -90,6 +90,7 @@ source=(
   90-kernel-install-add.hook
   40-kernel-install-remove.hook
 )
+conflicts=("${pkgname%-git}")
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
             'e49b18780e1753cb8f5e6a978efc45712a82597437af7ce4ade5019fcd84269fae89fd36e16ea27f6a56f71001aecbe2653175bbff6c04eb88d38dfdc344bc6d'
             '564755b5a60d7ba4371c83429503a73fd04ea42011ba3e0c7f3e5df51108458afd6f75988a38d0ed0ceb626e4d7ba9c5e2a61fc6854463e05d51a91168b4b566'
@@ -143,6 +144,6 @@ package() {
 
   # pacman hooks
   install -Dm644 "${srcdir}"/90-kernel-install-add.hook "${srcdir}"/40-kernel-install-remove.hook \
-  	-t"${pkgdir}/usr/share/libalpm/hooks"
+    -t"${pkgdir}/usr/share/libalpm/hooks"
   install -Dm755 "${srcdir}"/kernel-install.sh "${pkgdir}/usr/share/libalpm/scripts/kernel-install"
 }
