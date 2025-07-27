@@ -1,12 +1,12 @@
 pkgbase = emu80-base
 	pkgdesc = Emulator for bunch of Soviet PCs. Assets package
-	pkgver = 4.0.521
+	pkgver = 4.0.535
 	pkgrel = 1
 	url = https://emu80.org/
 	arch = x86_64
 	license = GPL3
 	conflicts = emu80-qt<4.0.498
-	source = https://github.com/vpyk/emu80v4/archive/refs/tags/v4.0.521.tar.gz
-	sha256sums = c46324d1fc1bd42f7b116c1ffba60b92003c3cf89fcde4e498dbe8b1633d9fac
+	source = https://github.com/vpyk/emu80v4/archive/refs/tags/v4.0.535.tar.gz
+	sha256sums = e70dcb859327f518fca4a001c01fbc25dcadcac868ccba0ab36cca3e3e89b5bc
 
 pkgname = emu80-base
