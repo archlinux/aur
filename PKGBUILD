@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r9362.g9ab4e4d70
+pkgver=0.1.r9385.g3426bcdc7
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -90,6 +90,7 @@ noextract=(
 
 pkgver() {
     cd "$srcdir/$_pkgname"
+    git checkout 3426bcdc719b3f29f28508a0d4b42a02f58d980d
     git describe | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
