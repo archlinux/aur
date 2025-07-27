@@ -2,13 +2,13 @@
 
 pkgname=ethoscope-node
 pkgver=r2231.gbf320832
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
 makedepends=('git' 'gcc-fortran' 'rsync' 'wget' 'fping' ) 
-depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'python-ifaddr' 'python-numpy' 'python-scipy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython'  'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-zeroconf' 'python-cheroot' 'python-opencv')
+depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'sshpass' 'cloudflared')
 provides=('ethoscope')
 install="ethoscope-node.install"
 source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
@@ -25,10 +25,15 @@ package() {
   install -dm0755 $pkgdir/opt
   install -dm0755 $pkgdir/srv/git
   install -dm0755 $pkgdir/usr/lib/systemd/system
-  install -dm0755 $pkgdir/ethoscope_data/{results,videos,tmp}
+  install -dm0755 $pkgdir/ethoscope_data/{results,videos,cache,sensors}
   
   #create bare repo
-  git clone --bare https://github.com/gilestrolab/ethoscope.git "${pkgdir}/srv/git/ethoscope.git"
+  git clone --mirror https://github.com/gilestrolab/ethoscope.git "${pkgdir}/srv/git/ethoscope.git"
+  
+  #configure proper fetch refspec for bare repository
+  cd "${pkgdir}/srv/git/ethoscope.git"
+  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+  git fetch origin
   
   #setting python3 branch
   cd "${srcdir}/${pkgname}"
@@ -44,10 +49,15 @@ package() {
   
   # Install service files as symbolic links
   cd "${pkgdir}/usr/lib/systemd/system/"
-  ln -s /opt/${pkgname}/scripts/ethoscope_node.service ethoscope_node.service
-  ln -s /opt/${pkgname}/scripts/ethoscope_backup.service ethoscope_backup.service
-  ln -s /opt/${pkgname}/scripts/ethoscope_video_backup.service ethoscope_video_backup.service
-  ln -s /opt/${pkgname}/scripts/ethoscope_updater/ethoscope_update_node.service ethoscope_update_node.service
+  ln -s /opt/ethoscope/services/ethoscope_node.service ./
+  ln -s /opt/ethoscope/services/ethoscope_update_node.service ./
+  ln -s /opt/ethoscope/services/ethoscope_tunnel.service ./
+  ln -s /opt/ethoscope/services/ethoscope_sensor_virtual.service ./
+  ln -s /opt/ethoscope/services/ethoscope_backup_mysql.service ./
+  ln -s /opt/ethoscope/services/ethoscope_backup_sqlite.service ./
+  ln -s /opt/ethoscope/services/ethoscope_backup_unified.service ./
+  ln -s /opt/ethoscope/services/ethoscope_backup_video.service ./
+  ln -s /opt/ethoscope/services/virtuascope.service ./
 
 }
 
