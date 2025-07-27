@@ -1,9 +1,10 @@
 pkgbase = blackarch-helper
-	pkgdesc = Simple CLI helper to explore and install tools from the BlackArch repository
+	pkgdesc = TUI/CLI helper to manage and install tools from the BlackArch repository
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/x0rgus/blackarch-helper
 	arch = any
+	groups = blackarch
 	license = MIT
 	depends = bash
 	depends = fzf
@@ -12,10 +13,10 @@ pkgbase = blackarch-helper
 	source = blackarch-helper.1
 	source = blackarch-helper.bash-completion
 	source = _blackarch-helper
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = blackarch-helper
