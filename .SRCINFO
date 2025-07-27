@@ -1,13 +1,13 @@
 pkgbase = cstats
 	pkgdesc = Command-line RetroMC statistics tool
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/svgaming234/cstats
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-requests
-	source = https://github.com/svgaming234/cstats/releases/download/v0.8.0/cstats-v0.8.0-python.py
-	sha256sums = 40a5d9d0d45754641305325181c3a6b3e7e315550d0cb4c9325308f0585297fb
+	source = https://github.com/svgaming234/cstats/releases/download/v0.9.0/cstats-v0.9.0-python.py
+	sha256sums = 0d04ddba182bc61a4745d3a84d73eba42a12bb36076a8a91f5917c5f16aaa8ff
 
 pkgname = cstats
