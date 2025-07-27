@@ -1,0 +1,26 @@
+pkgbase = illogical-impulse-fonts-themes
+	pkgdesc = Illogical Impulse Fonts and Theming Dependencies
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = None
+	depends = adw-gtk-theme-git
+	depends = breeze
+	depends = breeze-plus
+	depends = darkly-bin
+	depends = eza
+	depends = fish
+	depends = fontconfig
+	depends = kde-material-you-colors
+	depends = kitty
+	depends = matugen-bin
+	depends = otf-space-grotesk
+	depends = starship
+	depends = ttf-gabarito-git
+	depends = ttf-jetbrains-mono-nerd
+	depends = ttf-material-symbols-variable-git
+	depends = ttf-readex-pro
+	depends = ttf-rubik-vf
+	depends = ttf-twemoji
+
+pkgname = illogical-impulse-fonts-themes
