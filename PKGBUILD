@@ -1,14 +1,14 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 pkgname=mydict-git
 _name="${pkgname%-git}"
-pkgver=r53.21e0578
+pkgver=r66.04668cf
 pkgrel=1
 pkgdesc="Simple & fast dictionary application powered by ODict"
 arch=(x86_64)
 url="https://github.com/jaxvanyang/mydict"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'gcc-libs' 'bzip2' 'libxkbcommon' 'xz' 'hicolor-icon-theme')
-makedepends=('git' 'just' 'cargo')
+depends=(glibc gcc-libs bzip2 libxkbcommon xz hicolor-icon-theme oniguruma)
+makedepends=(git just cargo)
 provides=("$_name")
 conflicts=("$_name")
 source=("$_name::git+$url.git")

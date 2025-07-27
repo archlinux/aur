@@ -14,6 +14,7 @@ pkgbase = mydict-git
 	depends = libxkbcommon
 	depends = xz
 	depends = hicolor-icon-theme
+	depends = oniguruma
 	provides = mydict
 	conflicts = mydict
 	source = mydict::git+https://github.com/jaxvanyang/mydict.git
