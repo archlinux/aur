@@ -2,7 +2,7 @@
 
 pkgname=libvips-notiff
 pkgver=8.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast image processing library with low memory needs"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -18,7 +18,7 @@ optdepends=('libheif: for heif module'
             'python: for vipsprofile'
             'libjxl: for jxl module')
 conflicts=('libvips')
-provides=('libvips=8.15.3')
+provides=('libvips')
 source=("https://github.com/libvips/libvips/releases/download/v$pkgver/vips-$pkgver.tar.xz")
 sha512sums=('04962e7d3fb8956c986f3aed7a10c4927195bc555a22c805a5b190c257e9e8b0fe97eddd0eb44e0e7d9047ba5671e96ac88f50a2597caa4f78c84ce1091541ff')
 
