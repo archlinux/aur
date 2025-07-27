@@ -1,0 +1,18 @@
+pkgbase = portgeist
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mfulz/portgeist
+	arch = x86_64
+	license = MIT
+	source = https://github.com/mfulz/portgeist/archive/refs/tags/v0.1.0.tar.gz
+	source = geistd.service
+	sha256sums = df2ad9c210e0c1774c8b8c0ddbf902182c364e9431982e7dc3405f9952469a1f
+	sha256sums = 0eefc52d1d8f175fb7d9eaa8c37af055a1e39e44f9d688b931e866c1136a6575
+
+pkgname = portgeist-geistctl
+	pkgdesc = CLI controller for Portgeist daemon
+	depends = glibc
+
+pkgname = portgeist-geistd
+	pkgdesc = Daemon for Portgeist proxy management
+	depends = glibc
