@@ -20,6 +20,8 @@ pkgver() {
 
 build() {
   cd $srcdir/$_pkgname
+  # Building a second time will fail as for some reason the makefile doesn't run the $(BIN) section after cleaning.
+  # Building a third time and subsequently ever other time however will run it correctly :shrug:.
   make build
 }
 
