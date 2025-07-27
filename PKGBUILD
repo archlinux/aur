@@ -1,7 +1,7 @@
 # Maintainer: Steffen Jaeckel <arch at jaeckel dot eu>
 
 pkgname=subsurface-appimage
-pkgver=6.0.5365
+pkgver=6.0.5404
 pkgrel=1
 pkgdesc="The free, open-source cross-platform dive log software. (AppImage version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("subsurface=${pkgver}")
 conflicts=('subsurface' 'subsurface-git')
 source=("https://subsurface-divelog.org/downloads/Subsurface-${pkgver}-CICD-release.AppImage"
         'subsurface.sh')
-sha256sums=('da80e1e9c921f6d7a104168d05d88516ab9aabcb404973e2472e574a33611ea0'
+sha256sums=('6622eaa54cafffb38729bb89899e77256debfdde3d9c2b88fa86a7863b09000a'
             '7694ff6ba4a998e4924d0a0f10481bf1ab27b1af23ca5cce190d0d873f966d48')
 options=(!strip !debug)
 _image="$(basename "${source[0]}")"
