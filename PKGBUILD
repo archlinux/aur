@@ -135,7 +135,7 @@ build() {
     cd "$srcdir"/"$pkgname"/build
     ../qemu-${_pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --extra-cflags="-march=native -mtune=native -O3 -flto=auto"
     make clean
-    make -j$(nproc) qemu-system-i386
+    make qemu-system-i386
 
     # Build Wrappers
     source /opt/watcom/owsetenv.sh
