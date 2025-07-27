@@ -1,0 +1,17 @@
+pkgbase = farrayinterop-git
+	pkgdesc = A header-only library that allows the use of Fortran arrays in C++
+	pkgver = 0.r0.g77c9dba
+	pkgrel = 1
+	url = https://github.com/AshLink95/FarrayInterop
+	arch = x86_64
+	license = MIT
+	checkdepends = gtest
+	makedepends = cmake
+	makedepends = git
+	depends = gcc
+	depends = gcc-libs
+	depends = gcc-fortran
+	source = farrayinterop-git::git+https://github.com/AshLink95/FarrayInterop.git
+	md5sums = SKIP
+
+pkgname = farrayinterop-git
