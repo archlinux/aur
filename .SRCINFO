@@ -1,0 +1,16 @@
+pkgbase = ignis-gvc-git
+	pkgdesc = A standalone libgvc for Ignis
+	pkgver = 0.1.0.r1.g03e1dde
+	pkgrel = 1
+	url = https://github.com/ignis-sh/ignis-gvc
+	arch = x86_64
+	license = MIT
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = glib2
+	depends = glib2-devel
+	depends = libpulse
+	source = git+https://github.com/ignis-sh/ignis-gvc
+	sha256sums = SKIP
+
+pkgname = ignis-gvc-git
