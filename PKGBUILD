@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 
 pkgname=phpactor
-pkgver="2025.04.17.0"
+pkgver="2025.07.25.0"
 pkgrel=1
 _tmppkgver="${pkgver}"
 pkgdesc="PHP completion, refactoring, introspection tool and language server"
@@ -14,7 +14,7 @@ optdepends=('composer: faster class location and more features'
   'git: faster refactorings in your repository scope')
 provides=(phpactor)
 source=("https://github.com/phpactor/phpactor/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("2ca6748b700195bc0daca8e3c4efa836007a053bfaa5762d4048876c6c0b1249")
+sha256sums=("bba5f773c8d3f71d5199fee76411badfe912b2a8bc9271d45cb69e3cd5b87da9")
 
 package() {
   cd "$srcdir/${pkgname}-${_tmppkgver}"
