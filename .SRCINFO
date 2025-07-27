@@ -1,19 +1,18 @@
 pkgbase = renamemytvseries-qt-bin
 	pkgdesc = Rename your TV-Series using TheTVDB (QT5 version)
-	pkgver = 2.1.8
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/
 	arch = x86_64
 	license = custom
 	depends = ffmpeg
 	depends = qt5pas
+	depends = qt5-base
 	provides = renamemytvseries
 	conflicts = renamemytvseries
 	source = LICENSE
-	source = https://www.tweaking4all.com/downloads/betas/RenameMyTVSeries-2.1.8-QT5-beta-Linux-64bit-shared-ffmpeg.tar.gz
-	source = RenameMyTVSeries.desktop
-	md5sums = c6618071446e1528f9080cbb2eb5913a
-	md5sums = bd93776a6f42c800ab028b64b9bf9ffd
-	md5sums = 23fd5d0d2b305c326a64ebc43e8f6740
+	source = https://www.tweaking4all.com/downloads/video/RenameMyTVSeries-2.3.5-QT5-Linux-x64-shared-ffmpeg.tar.xz
+	sha256sums = 986a80aff89e697188bb4eb9f8bfa511c1e933f1e2edd54a3315069c56fec160
+	sha256sums = acc006d1dcb805729d25e78f9ca0ddc9fdedac939af0344a14de71e3b32250f8
 
 pkgname = renamemytvseries-qt-bin
