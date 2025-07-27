@@ -1,6 +1,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
-# Maintainer: Siavosh Kasravi <siavosh.kasravi@gmail.com>
+# Maintainer: Christopher Price <pricechrispy at gmail dot com>
+# Contributor: Siavosh Kasravi <siavosh.kasravi@gmail.com>
 # Contributor: JustKidding <jk@vin.ovh>
 # Contributor: James P. Harvey <jamespharvey20 at gmail dot com>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
@@ -14,7 +15,7 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=8.0.11
+pkgver=8.0.12
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
@@ -39,7 +40,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb-4.4.29-no-enterprise.patch
 		boost_issue_402.patch
 )
-sha256sums=('420cf84825852ab2d9fb3b3889450d26a069ea4c0e29f8097b2809e0f11cc348'
+sha256sums=('0e9000bd8674e8b7c4f48906f6799f9604a1d61f79220cbb099b231a50ac05ea'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '3438f7f463b98270d1fe580b3153c19cff1c86c18745a40d4f2984e73086005e'
