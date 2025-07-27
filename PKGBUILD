@@ -2,8 +2,8 @@
 
 _name="arttime"
 pkgname="${_name}-git"
-pkgver=2.3.4
-pkgrel=12
+pkgver=2.4.0
+pkgrel=13
 pkgdesc="arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/$_name/wiki)"
 arch=('any')
 url="https://github.com/poetaman/${_name}"
@@ -12,6 +12,8 @@ depends=(
     'zsh>=5.7'
 )
 optdepends=('libnotify: for desktop notifications'
+            'less: for paging'
+            'fzf: for art selection'
             'diffutils: for systems where /etc/localtime is not a symlink and arttime needs to guess the timezone'
             'vorbis-tools: for sounds in case user has not installed pulseaudio or pipwire')
 conflicts=(${_name})
