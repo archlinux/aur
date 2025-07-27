@@ -3,8 +3,8 @@
 # Maintainer: Chuyan Zhang <develop@zcy.moe>
 
 _pkgname=tev
-pkgname=${_pkgname}
-pkgver=2.2
+pkgname=${_pkgname}-git
+pkgver=v2.3.2.r14.bbf2669
 pkgrel=1
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
@@ -15,8 +15,14 @@ makedepends=("clang" "cmake" "git" "ninja")
 provides=("tev")
 conflicts=("tev")
 install=
-source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
+source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
+
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
@@ -24,6 +30,8 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS="$CXXFLAGS -nostdinc++ -I/usr/include/c++/v1"
+
   cd "${_pkgname}/build" || exit 1
   cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
     -DCMAKE_C_COMPILER=clang \
