@@ -1,0 +1,26 @@
+pkgbase = ddper
+	pkgdesc = DDPER (unofficial DDNet client)
+	pkgver = 8.4
+	pkgrel = 1
+	url = https://ddper.ir
+	arch = x86_64
+	license = custom:Proprietary
+	depends = freetype2
+	depends = opusfile
+	depends = curl
+	depends = glew
+	depends = wavpack
+	depends = ffmpeg
+	depends = libnotify
+	depends = miniupnpc
+	depends = sqlite
+	depends = mariadb-libs
+	depends = vulkan-icd-loader
+	optdepends = discord-game-sdk: Enable rich presence in Discord desktop client.
+	provides = ddper
+	source = https://ddper.ir/client/linux/ddper-v8.4-linux_x86_64.tar.xz
+	source = https://ddper.ir/image/icon.png
+	sha256sums = 2f62ffd210aea3eb2f4015d7a59da35b3ecc1bf861a1df9aed7b7a1e70a8dac0
+	sha256sums = 6649746c0783e4187422125358126dc65f252330104143fa515ece61ed6aba8a
+
+pkgname = ddper
