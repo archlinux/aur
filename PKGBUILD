@@ -2,7 +2,7 @@
 pkgname=mydict-git
 _name="${pkgname%-git}"
 pkgver=r66.04668cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple & fast dictionary application powered by ODict"
 arch=(x86_64)
 url="https://github.com/jaxvanyang/mydict"
@@ -27,6 +27,7 @@ prepare() {
 
 build() {
 	cd "$_name"
+	RUSTFLAGS="-C link-arg=-lonig"
 	cargo build --frozen --release
 }
 
