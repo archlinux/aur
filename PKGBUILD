@@ -2,24 +2,21 @@
 
 _target=mipsel-linux-gnu
 pkgname="${_target}-binutils"
-pkgver=2.40
+pkgver=2.45
 pkgrel=1
-pkgdesc='Tools to assemble and manipulate binary and object files for the MIPSEL target (for the toolchain with GNU C library)'
+pkgdesc='Tools to assemble and manipulate binary and object files for the MIPSEL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('libelf' 'zlib')
-options=('!emptydirs' 'staticlibs' '!distcc' '!ccache')
-source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"{,.sig}
-        '010-binutils-build-fix.patch')
-sha256sums=('0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1'
-            'SKIP'
-            'fa145a2c8b0db6215b686a16873c236134322083d50e775afaf9f60a81dafbf3')
+options=('!ccache' '!distcc' '!emptydirs' 'staticlibs')
+source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"{,.sig})
+sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'
+            'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton
 
 prepare() {
     mkdir -p build
-    patch -d "binutils-${pkgver}" -Np1 -i "${srcdir}/010-binutils-build-fix.patch"
 }
 
 build() {
@@ -32,6 +29,7 @@ build() {
         --with-sysroot="/usr/${_target}" \
         --enable-cet \
         --enable-deterministic-archives \
+        --enable-new-dtags \
         --enable-gold \
         --enable-ld='default' \
         --enable-lto \
