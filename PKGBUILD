@@ -6,15 +6,16 @@
 pkgname=autotag-bin
 _pkgname=${pkgname%-bin}
 pkgver=4.0.0
-pkgrel=2
-pkgdesc="Automatic tagging and renaming of TV show episodes and movies"
+pkgrel=3
+pkgdesc='Automatic tagging and renaming of TV show episodes and movies'
 arch=('x86_64')
-url="https://github.com/jamerst/AutoTag"
+url='https://github.com/jamerst/AutoTag'
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=('!strip')
 source=(
 	"${pkgname}-${pkgver}_linux-x64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}_linux-x64.zip"
 	"${pkgname}-${pkgver}_linux-x64.LICENSE::https://raw.githubusercontent.com/jamerst/AutoTag/refs/tags/v${pkgver}/LICENSE"
