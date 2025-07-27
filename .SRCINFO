@@ -1,6 +1,6 @@
 pkgbase = dxvk-git
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)
-	pkgver = 2.3.1.r120.gfe9c875f
+	pkgver = 2.7.r8.g6a5544f03
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = dxvk-git
 	depends = lib32-vulkan-icd-loader
 	provides = dxvk
 	provides = d9vk
-	provides = dxvk=2.3.1.r120.gfe9c875f
+	provides = dxvk=2.7.r8.g6a5544f03
 	conflicts = d9vk
 	conflicts = dxvk
 	options = !strip
@@ -26,12 +26,12 @@ pkgbase = dxvk-git
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	source = setup_dxvk.sh
+	source = setup_dxvk.sh::https://aur.archlinux.org/cgit/aur.git/plain/setup_dxvk.sh?h=dxvk-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 778ec44acc09ac9c718354c9a96776b60bd4156dacf584e5c29b2c9697c76684
+	sha256sums = 2ca9ece1b6c36446e9f6955d3d03ab72b173c8f85539a2848febc51b38be705e
 
 pkgname = dxvk-mingw-git
 	arch = x86_64
