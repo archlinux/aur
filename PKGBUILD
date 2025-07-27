@@ -1,4 +1,4 @@
-# Maintainer: yuztra <panduodenk98 at gmail dot com>
+# Maintainer: yuztra <panduodenk98@gmail.com>
 # Contributor: Evan Goode <mail@evangoo.de>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
