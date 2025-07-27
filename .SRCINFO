@@ -1,7 +1,7 @@
 pkgbase = networkmanager-dispatcher-chrony
 	pkgdesc = Dispatcher Script for chrony
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	changelog = ChangeLog
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = networkmanager-dispatcher-chrony
 	backup = etc/NetworkManager/dispatcher.d/10-chrony
 	source = 10-chrony
 	source = LICENSE
-	sha256sums = 676cc8a1b770c4e4d6985d194e3bf82d47794809d49ffa2bfbb2190f10ed7885
+	sha256sums = 3af238e64049b60b32e46094fa9d42ed92192e8dee0989ac473de70b28e9fb51
 	sha256sums = 453e6920a08aa104baf245c81568050d075379af3944ae92b03d46d01e37d6cf
 
 pkgname = networkmanager-dispatcher-chrony
-
