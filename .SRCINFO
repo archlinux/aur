@@ -1,13 +1,15 @@
 pkgbase = realmd
 	pkgdesc = DBus service for joining hosts to Active Directory and FreeIPA realms
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freedesktop.org/software/realmd/
+	install = realmd.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = docbook-xsl
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = intltool
 	makedepends = python
 	makedepends = xmlto
@@ -20,6 +22,8 @@ pkgbase = realmd
 	optdepends = sssd: Active Directory, FreeIPA, LDAP client
 	optdepends = samba: traditional Active Directory client
 	source = https://gitlab.freedesktop.org/realmd/realmd/-/archive/0.17.1/realmd-0.17.1.tar.gz
+	source = realmd-arch-helper.sh
 	sha256sums = e8b51d5918418e9dc55006f0371831ab841f00a065baf2d001b6b5245f24a532
+	sha256sums = f73b6bf3edaa850c490f4c85353ecb56c836cd5a13f7ce11ae5921fbe568b7e4
 
 pkgname = realmd

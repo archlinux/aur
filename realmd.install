@@ -1,0 +1,9 @@
+post_install() {
+    echo "Running realmd helper script for sssd support..."
+    /usr/lib/realmd/realmd-arch-helper.sh --patch-config || echo "WARNING: failed to patch config for realmd helper script"
+}
+
+post_upgrade() {
+    echo "Running realmd helper script for sssd support..."
+    /usr/lib/realmd/realmd-arch-helper.sh --patch-config || echo "WARNING: failed to patch config for realmd helper script"
+}
