@@ -2,7 +2,7 @@
 # Based on the 'sddm-minesddm-theme-git' package by Jia Yin <lok-ation at outlook dot com>
 
 pkgname=sddm-minesddm-theme
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A Minecraft SDDM theme'
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL-3.0-only')
 depends=('sddm' 'qt5-quickcontrols2' 'layer-shell-qt5')
 makedepends=('git')
 source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('c61e476c42c4fb200d4c9e7890f0dfe311c0c5722d79f090cb2d3d652913487d1b5016cc60e1ce78f198a1af7eed92f551d94c251319d2b20f92d91083969416')
+b2sums=('a148d87c6d4f8d322162ddfed1a4780ad825825e3f624e93e877b3c4fbce3f17d38e05fd770bec707bfe802d80edc5adf2189b25457f4a7a76d906099f4dd9db')
 
 package() {
     cd $pkgname
