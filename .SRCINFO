@@ -1,19 +1,19 @@
 pkgbase = pscale-cli-bin
 	pkgdesc = The PlanetScale CLI
-	pkgver = 0.247.0
+	pkgver = 0.249.0
 	pkgrel = 1
 	url = https://github.com/planetscale/cli
 	license = Apache 2.0
 	conflicts = pscale
 	provides = pscale
 	arch = aarch64
-	source_aarch64 = https://github.com/planetscale/cli/releases/download/v0.247.0/pscale_0.247.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 9d835a02d744137e57b3c570f4ce278efa27006048e1de4c93e10f1b6023f27e
+	source_aarch64 = https://github.com/planetscale/cli/releases/download/v0.249.0/pscale_0.249.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4560236d6ab7c301dfa012c0227db6b18cb47c0672d07f62481f8e2908d72fee
 	arch = i686
-	source_i686 = https://github.com/planetscale/cli/releases/download/v0.247.0/pscale_0.247.0_linux_386.tar.gz
-	sha256sums_i686 = dfd9a606d6768171bf50d5069ff7a68506585bd199be64748435002c02fcd9a8
+	source_i686 = https://github.com/planetscale/cli/releases/download/v0.249.0/pscale_0.249.0_linux_386.tar.gz
+	sha256sums_i686 = 917e3d2850e06f16a4ed43b81226ed973d42be888f330b607f8626e06a0c2d88
 	arch = x86_64
-	source_x86_64 = https://github.com/planetscale/cli/releases/download/v0.247.0/pscale_0.247.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2f30ad905e6b311f6e114acccf3ced1b2644c1cefc0b28dad88bad1df4a8c08b
+	source_x86_64 = https://github.com/planetscale/cli/releases/download/v0.249.0/pscale_0.249.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8b5f031795b1cc32a6bcbdbe59c4dea7abb28b30a6fcdca487bb3042b4a322e5
 	
 pkgname = pscale-cli-bin
