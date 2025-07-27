@@ -1,7 +1,7 @@
 pkgname=kumono
 pkgver=0.48.3
-pkgrel=1
-pkgdesc='Media ripper for coomer.st and kemono.cr'
+pkgrel=2
+pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
 arch=('x86_64')
 makedepends=('git' 'cargo')
