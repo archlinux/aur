@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-sycl-f32
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)
-	pkgver = b5996
+	pkgver = b5997
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = llama.cpp-sycl-f32
 	options = lto
 	options = !debug
 	options = !buildflags
-	source = git+https://github.com/ggerganov/llama.cpp#tag=b5996
+	source = git+https://github.com/ggerganov/llama.cpp#tag=b5997
 	source = llama.cpp.conf
 	source = llama.cpp.service
-	sha256sums = f92aec247c41e5d3883bfe01c4dbcddfe95a6d72386373d8346f96bdd18dc977
+	sha256sums = e98828f30b940597453db6d042c08812ecce3eda460c4fc3a53e4383d695f8c6
 	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
 
