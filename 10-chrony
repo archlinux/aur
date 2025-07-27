@@ -18,17 +18,18 @@ nm_connected() {
   [ "$(nmcli networking connectivity check)" = 'full' ]
 }
 
+if [ "$INTERFACE" = "lo" ]; then
+  # Local interface, nothing to do, exit early
+  exit 0
+fi
+
 case "$STATUS" in
   up|vpn-up)
-    if [ "$INTERFACE" != "lo" ]; then
-      # Check for full connectivity, take online if connected
-      nm_connected && chrony_cmd online
-    fi
+    # Check for full connectivity, take online if connected
+    nm_connected && chrony_cmd online
   ;;
   down|vpn-down)
-    if [ "$INTERFACE" != "lo" ]; then
-      # Check for full connectivity, take offline if not connected
-      nm_connected || chrony_cmd offline
-    fi
+    # Check for full connectivity, take offline if not connected
+    nm_connected || chrony_cmd offline
   ;;
 esac
