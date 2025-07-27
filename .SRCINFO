@@ -9,7 +9,6 @@ pkgbase = ulauncher-git
 	checkdepends = desktop-file-utils
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python-setuptools-scm
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = python>=3.8
