@@ -1,8 +1,9 @@
 pkgbase = cecil-bin
 	pkgdesc = Static site generator
 	pkgver = 8.51.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cecil.app/
+	install = cecil-bin.install
 	arch = any
 	license = mit
 	depends = php>=8.1

@@ -1,0 +1,3 @@
+post_install() {
+    echo "Ensure php gd extension is enable in your php configuration."
+}
