@@ -1,0 +1,11 @@
+pkgbase = libtb-bin
+	pkgdesc = tbsys and tbnet devel
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hyx-web/libtb-bin/
+	arch = x86_64
+	depends = glibc
+	source = https://github.com/hyx-web/libtb/releases/download/dev/libtb.zip
+	sha256sums = SKIP
+
+pkgname = libtb-bin
