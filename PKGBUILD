@@ -1,6 +1,6 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 pkgname=7d2d-modlauncher-bin
-pkgver=5.4.0.0
+pkgver=5.4.0.3
 pkgrel=1
 pkgdesc="7 Days to Die Mod Launcher for Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 source=("https://github.com/The7D2DModLauncher/7D2DModLauncherV5/releases/download/${pkgver}/7D2DModLauncher-Linux.tar.gz"
         "7d2d-modlauncher.desktop"
         "icon.jpg")
-sha256sums=('b9fbe403676f0d86e8bc3a7b0bb627a8988a1423cacf8b4b9a29be44ceb685f0'
+sha256sums=('2f68c69105097bf2b7af2d1ab07e042bdff9372d7fba9510ff4073456f1303e0'
 'df15a6fd97be45d296f68698481869de386296f3cdb279fbde385751a01ba972'
 '3400314b953dc9b33eb8dad9b6bf60bcb3902ffa61ee352e231a4099da60de71'
 )
