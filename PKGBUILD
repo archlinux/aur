@@ -4,9 +4,10 @@
 ##	 The Trusted Domain Project has not updated OpenARC in years.
 ##	 This AUR package now tracks flowerysong's fork, which is
 ##	 currently maintained.
+
 pkgname=openarc
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source implementation of the ARC email authentication system"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
@@ -24,23 +25,24 @@ makedepends=('git' 'python-miltertest')
 conflicts=('openarc-git' 'openarc-legacy')
 provides=('libopenarc.so')
 source=("https://github.com/flowerysong/OpenARC/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "openarc.service"
         "openarc.sysusers"
         "openarc.tmpfiles"
+	"Patch01-Set-config-in-systemd-unit-file.patch"
 	"Patch02-Remove-config-for-other-OSs.patch"
 )
-#backup=('etc/openarc/openarc.conf')
+backup=('etc/openarc/openarc.conf')
 b2sums=('f25703bff38012ffc8d4e223671193ad0d6f910eea70c4e00b165fc928795bc0ad4ddefba59dcb78f0940c42651295f275c2b042896c34061f4f7c44a0c7cab8'
-        'c68fac3b34ed86048bf212c1b089bd70f950149053ecc23d07fd620d14e379817fd620d89ee89f4f50a95fed2cc231b5aa9c0121fd3e19d80883ad6ecbf1b6a3'
         '0e752b2322a8fcfd593ac03b4ec678b962530d7f390199ebe9aa98a3cba6a906e59f1dbe321cc5c9acb4bf92a670d1ab56ccbbf8e14d5c754f6467b416c54f25'
         '300b0f94ad747572b9f8b54304b7c784f8c3bbfd82f1ca65f49e3822a52fe16380326ec724fb02fffdbbedd5e064d4414d8810c571412a80327ee45885c3223c'
+        'f51ffb557e267e3ada10e208684ac11464b09a6af2f25ff2edb915c12b0803d0d13b1427da69b5d077a5d590dc74928ce4b1d49c826c203a797171cd4eddb40b'
         '1467a225fe4ad3169014bc1c85cf0eab70ed4da2eca2214f5aa35738990350099274814d3c9cc65b23590053dd83c76f2b47a17cd376237b4edc90852f9e16af')
 
 prepare() {
   cd "$srcdir"/"${pkgname}-${pkgver}"
   
+  patch -p1 -i ../Patch01-Set-config-in-systemd-unit-file.patch
   patch -p1 -i ../Patch02-Remove-config-for-other-OSs.patch
-
+  
   autoreconf -fvi
 }
 
@@ -51,7 +53,7 @@ build() {
      CC="gcc -std=gnu17" \
      --prefix=/usr \
      --sbindir=/usr/bin \
-     --sysconfdir="/etc/pkgname" \
+     --sysconfdir="/etc/$pkgname" \
      --localstatedir=/var \
      --disable-static
   make
@@ -70,7 +72,7 @@ package() {
   # systemd integration
   install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm644 "$srcdir/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "$srcdir/${pkgname}-${pkgver}/contrib/systemd/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
 
   # license
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
