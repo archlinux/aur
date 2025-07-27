@@ -1,14 +1,11 @@
 
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
-_codec=61
-_format=61
-_util=59
+_codecformatutil=61.61.59
 _chromium=137.0.7151.138
 #_chrlow=126.0.6423.0
 _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-#_chrfflow=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chrlow}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-pkgver=${_ffver}.so.${_codec}.${_format}.${_util}
+pkgver=${_ffver}.so.${_codecformatutil}
 pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M137- (non vendored ffmpeg)"
@@ -20,6 +17,8 @@ source=(${url}releases/ffmpeg-${_ffver}.tar.xz fetch-soname-by-chromium.sh
 nolog.c
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 #"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
+#"${_chromium}aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
+#"${_chromium}aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${_ffver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
@@ -27,6 +26,8 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'e39c6d127cb7ed768eeebc5c388cf86967cfde855e6d99edc27daba8c412227c'
             '4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030'
             'e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01'
+            'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
+            'bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             '03263b84dfd79619d22a50538e0dc668a2a919d58471cde4d388f0999c66de22'
             '73c9e3d7685f291a5df13fd28dd04b6ffdc42ea73505cacbe6009c2cb5018be3')
@@ -41,20 +42,20 @@ prepare() {
   base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt 
   #base64 -d ${_chrlow}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt 
   #diff {,old}sigs.txt
-  #./fetch-soname-by-chromium.sh $_chromium > so.txt
-  #./fetch-soname-by-chromium.sh $_chrlow > oldso.txt
-  #diff so{,old}.txt
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   echo -e "{\nglobal:" > export.map
   sed 's/$/;/' sigs.txt >> export.map
   echo -e "local:\n*;\n};" >> export.map
   
   cd ffmpeg-$_ffver
-  patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   #diff libavcodec/opus/dec.c{.bak,}||:
-  # ${_url}/+/refs/heads/master/chromium/patches/README
+  # Chromium patches
+  patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
+  #mkdir -p chromium/patches; base64 -d ../${_chromium}aacREADME.base64 > chromium/patches/README
+  #base64 -d ../${_chromium}aac.patch.base64 > aac.patch
+  #patch -Np1 -i aac.patch # -~0.2 MB
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c
