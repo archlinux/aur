@@ -15,7 +15,7 @@ pkgbase = winghexexplorer2
 	makedepends = qt6-translations
 	depends = qt6-base
 	optdepends = qt6-translations: translations
-	conflicts = winghexexplorer2
+	conflicts = winghexexplorer2-git
 	source = git+https://github.com/Wing-summer/WingHexExplorer2.git#tag=v2.2.3
 	sha256sums = SKIP
 
