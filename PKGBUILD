@@ -3,7 +3,7 @@
 
 _pkgname="rbspy"
 pkgname="${_pkgname}-bin"
-pkgver=0.35.0
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="Sampling profiler for Ruby"
 arch=('aarch64' 'x86_64')
@@ -20,8 +20,8 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('efd80fe8f170fd99b66d575ee1c4de9b3914b2ceff6bb607c1156fe7c88a90d6'
             '5705baf37fec97f83ce5e9624118a3479c4b1ed15f56e168c7f020700331a5df')
-sha256sums_aarch64=('e4c5197a27e92b099a12b4df460c4abe05f669113737d60478b1c44f45da4253')
-sha256sums_x86_64=('07465bff74a196b825dc1dbae4fdd7527e148b0bf9bcf94ee3b48459a4430c85')
+sha256sums_aarch64=('8c653eadf847f855deb05c7629669d4439c430a13d9b3bd4dc79b7b4db07c258')
+sha256sums_x86_64=('43319071117f60d4403dad21db37da8049ede7f14f1b5898121e6c5657cd2029')
 
 package() {
   cd "${srcdir}"
