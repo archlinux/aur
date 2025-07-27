@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 _pkgname="krohnkite"
 pkgname="kwin-scripts-krohnkite"
-pkgver=0.9.9.1
-pkgrel=2
+pkgver=0.9.9.2
+pkgrel=1
 pkgdesc="A dynamic tiling extension for KWin"
 url="https://github.com/anametologin/krohnkite"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=(
   'typescript'
 )
 source=("https://github.com/anametologin/krohnkite/archive/$pkgver.tar.gz")
-sha256sums=('003f91d7a5ad0fdb1587144ab3d0a256c32c902e798ca1ee23d3cfb2123682a0')
+sha256sums=('7a956b6cce1802f3ebd38beb0e6e9f895c3499462cdc52a25d6b74d4bccf2f3f')
 
 
 build() {
