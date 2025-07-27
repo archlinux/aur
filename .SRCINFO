@@ -1,0 +1,17 @@
+pkgbase = python-grpc-stubs
+	pkgdesc = Typing stubs for gRPC
+	pkgver = 1.53.0.6
+	pkgrel = 1
+	url = https://github.com/shabbyrobe/grpc-stubs
+	arch = any
+	license = MIT
+	checkdepends = mypy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-grpc-stubs-1.53.0.6.tar.gz::https://github.com/shabbyrobe/grpc-stubs/archive/refs/tags/1.53.0.6.tar.gz
+	sha256sums = f99ff314247c125ef7b15d929d1b2d97bc36178890d7a0d3b171a624463c48e4
+
+pkgname = python-grpc-stubs
