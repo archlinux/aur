@@ -1,13 +1,13 @@
 # Maintainer: corecathx <corecathx@proton.me>
 pkgname=legacy-launcher
-pkgver=1.0.0
+pkgver=latest
 pkgrel=1
 pkgdesc="Stable, fast and simple Minecraft Launcher."
 arch=('any')
 url="https://llaun.ch"
 license=('Other')
 depends=('java-runtime')
-source=("LegacyLauncher_legacy.jar::https://corecathx.github.io/downloads/LegacyLauncher_legacy.jar"
+source=("LegacyLauncher_legacy.jar::https://dl.llaun.ch/legacy/bootstrap"
         "legacy-launcher"
         "legacy-launcher.desktop"
         "legacy-launcher.png")
