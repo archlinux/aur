@@ -3,7 +3,7 @@ post_install() {
 #!/bin/bash
 
 # Link to the binary
-ln -sf '/opt/ElectronMail/electron-mail' '/usr/local/bin/electron-mail'
+ln -sf '/opt/ElectronMail/ElectronMail' '/usr/local/bin/electron-mail'
 
 # SUID chrome-sandbox for Electron 5+
 chmod 4755 '/opt/ElectronMail/chrome-sandbox' || true
