@@ -1,7 +1,7 @@
 # Maintainer: Cameron Otsuka <cameron@otsuka.haus>
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 pkgname=qotdd
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='quote of the day daemon'
 url='https://github.com/cotsuka/qotdd'
