@@ -1,6 +1,6 @@
 # Maintainer: Wisker <TheWisker@protonmail.com>
 pkgname=cavasik
-pkgver=v3.1.2
+pkgver=v3.1.3
 pkgrel=1
 pkgdesc="Audio visualizer based on CAVA"
 arch=('any')
@@ -20,7 +20,7 @@ changelog=
 source=("${pkgname}-${pkgver}::git+https://github.com/TheWisker/Cavasik#tag=${pkgver}")
 noextract=()
 validpgpkeys=()
-sha512sums=('a7d84e766f930cb61dbcae10e4193a72083f656ee0bd4b2b3f3e2bbd84c351de340c62818e561c45d66cc2f2fbefa15f307b7b2b666bb8a74c40fbb8ba25a3d8')
+sha512sums=('0763c47a55fda8535055a4621f63ab128743f13104d174e67922252f31a32f8b096b60f3e587e02dc0e89998c6f55d4cbb57b713fd9a998e260920eff2ca0f1e')
 
 build() {
     arch-meson "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}-${pkgver}/build"
