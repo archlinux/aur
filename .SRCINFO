@@ -21,7 +21,7 @@ pkgbase = ulauncher-git
 	optdepends = python-levenshtein: fuzzy search performance
 	provides = ulauncher
 	conflicts = ulauncher
-	source = ulauncher::git+https://github.com/Ulauncher/Ulauncher.git#branch=chore/1486-setup-py
+	source = ulauncher::git+https://github.com/Ulauncher/Ulauncher.git
 	sha256sums = SKIP
 
 pkgname = ulauncher-git

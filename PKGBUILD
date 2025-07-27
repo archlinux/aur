@@ -18,7 +18,7 @@ optdepends=('gtk-layer-shell: wayland layer shell integration' 'xapp: tray icon 
 install="ulauncher.install"
 provides=("ulauncher")
 conflicts=("ulauncher")
-source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git#branch=chore/1486-setup-py")
+source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git")
 
 sha256sums=('SKIP')
 
