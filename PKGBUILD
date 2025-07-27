@@ -1,7 +1,7 @@
 pkgname=kumono-git
 pkgver=vcs
-pkgrel=2
-pkgdesc='Media ripper for coomer.su and kemono.su'
+pkgrel=3
+pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
 arch=('x86_64')
 makedepends=('git' 'cargo')
