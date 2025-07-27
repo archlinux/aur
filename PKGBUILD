@@ -2,7 +2,7 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname="envman"
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Manage Environment Variable collections"
 arch=('aarch64' 'x86_64')
@@ -12,21 +12,29 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('caede64c35b93a5e260c3a6a5b65e67e3430cbe11a4e209c1cffc2a141752447')
+sha256sums=('0c24aa43951bf5fb69ff861b006c4b2684ab464aed49f725fc93a8b74ebd29fc')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  chmod -R ug+Xwr "${GOMODCACHE}"
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" .
 }
 
 check() {

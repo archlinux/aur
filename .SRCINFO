@@ -1,6 +1,6 @@
 pkgbase = envman
 	pkgdesc = Manage Environment Variable collections
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/bitrise-io/envman
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = envman
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = envman-2.5.3.tar.gz::https://github.com/bitrise-io/envman/archive/refs/tags/v2.5.3.tar.gz
-	sha256sums = caede64c35b93a5e260c3a6a5b65e67e3430cbe11a4e209c1cffc2a141752447
+	source = envman-2.5.4.tar.gz::https://github.com/bitrise-io/envman/archive/refs/tags/v2.5.4.tar.gz
+	sha256sums = 0c24aa43951bf5fb69ff861b006c4b2684ab464aed49f725fc93a8b74ebd29fc
 
 pkgname = envman
