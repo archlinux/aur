@@ -5,6 +5,7 @@ pkgbase = keepassxc-menu
 	url = https://github.com/Tyrolyean/keepassxc-menu
 	arch = x86_64
 	license = GPL-3.0
+	depends = tcl
 	optdepends = keepassxc
 	provides = keepassxc-menu
 	source = https://github.com/Tyrolyean/keepassxc-menu/archive/refs/tags/0.1.0.tar.gz
