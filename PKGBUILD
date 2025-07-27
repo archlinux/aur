@@ -2,7 +2,7 @@
 pkgname=brokefetch
 pkgver=1.6
 pkgrel=1
-pkgdesc="A sad, funny alternative to neofetch"
+pkgdesc="A sad, funny alternative to other fetching tools/"
 arch=('any')
 url="https://github.com/Szerwigi1410/brokefetch"
 license=('MIT')

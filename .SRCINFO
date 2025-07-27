@@ -1,5 +1,5 @@
 pkgbase = brokefetch
-	pkgdesc = A sad, funny alternative to neofetch
+	pkgdesc = A sad, funny alternative to other fetching tools.
 	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/Szerwigi1410/brokefetch
