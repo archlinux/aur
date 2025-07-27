@@ -1,0 +1,11 @@
+pkgbase = macos-tahoe-cursor
+	pkgdesc = Apple MacOS Tahoe Cursor for Linux.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://store.kde.org/p/2300466
+	arch = any
+	license = custom
+	source = macos-tahoe-cursor-v1.0.zip::https://github.com/witt-bit/MacOS-Tahoe-Cursor/releases/download/1.0/MacOS-Tahoe-Cursor.zip
+	sha256sums = 8440ba07efb16785e5b352c61eed90f2a6d3ad26ba61f88d768cb49fcf4f2877
+
+pkgname = macos-tahoe-cursor
