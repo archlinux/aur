@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Godot Preview
+Comment=Multi-platform 2D and 3D game engine (Preview/Beta)
+Exec=/usr/bin/godot-preview %f
+Icon=godot-preview
+Terminal=false
+Type=Application
+Categories=Development;Game;IDE;
+MimeType=application/x-godot-project;
+StartupWMClass=Godot
