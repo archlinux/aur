@@ -1,6 +1,6 @@
 pkgbase = mydict-git
 	pkgdesc = Simple & fast dictionary application powered by ODict
-	pkgver = r53.21e0578
+	pkgver = r66.04668cf
 	pkgrel = 1
 	url = https://github.com/jaxvanyang/mydict
 	arch = x86_64
