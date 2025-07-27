@@ -16,7 +16,7 @@ pkgbase = shatteredprism
 	makedepends = gamemode
 	depends = glibc
 	depends = gcc-libs
-	depends = java-runtime
+	depends = java-runtime>=17
 	depends = libgl
 	depends = qt6-base
 	depends = qt6-5compat

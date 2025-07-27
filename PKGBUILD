@@ -18,22 +18,22 @@ arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/LunaisLazier/ShatteredPrism'
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
 depends=(
-  glibc
-  gcc-libs
-  java-runtime
-  libgl
-  qt6-base
-  qt6-5compat
-  qt6-svg
-  qt6-imageformats
-  qt6-networkauth
-  quazip-qt6
-  zlib
-  hicolor-icon-theme
-  tomlplusplus
-  cmark
+  'glibc'
+  'gcc-libs'
+  'java-runtime>=17'
+  'libgl'
+  'qt6-base'
+  'qt6-5compat'
+  'qt6-svg'
+  'qt6-imageformats'
+  'qt6-networkauth'
+  'quazip-qt6'
+  'zlib'
+  'hicolor-icon-theme'
+  'tomlplusplus'
+  'cmark'
 )
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk scdoc ghc-filesystem gamemode)
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'jdk17-openjdk' 'scdoc' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
