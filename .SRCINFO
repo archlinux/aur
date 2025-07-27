@@ -1,6 +1,6 @@
 pkgbase = bin
 	pkgdesc = A paste bin written in Rust.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/w4/bin
 	arch = i686
@@ -8,10 +8,12 @@ pkgbase = bin
 	license = WTFPL
 	makedepends = rust
 	makedepends = clang
-	source = https://github.com/w4/bin/archive/v2.0.1.tar.gz
+	makedepends = zstd
+	options = !lto
+	source = https://github.com/w4/bin/archive/v2.0.2.tar.gz
 	source = bin.service
 	source = Rocket.toml
-	sha256sums = ad8080415b27e55ee7295e0f93107cba6e5903453ec005850be275303fc2c55d
+	sha256sums = c89890c165435d48237451632916acb345a91175ab1914c1ff01d041c35e01f5
 	sha256sums = baff25e9693ad10b482f2e4cc8c1f222f1076d0795cf03f40d595c448d00b56e
 	sha256sums = dd1f497805fecbaaa231d115234697f11ffe66ddc37b124326d4d83250b1d6a2
 
