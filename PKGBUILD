@@ -1,6 +1,6 @@
 # Maintainer: Éric Gillet <e+aur@linuxw.info>
 pkgname=python-knowit
-pkgver=0.5.6
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="Know better your media files"
 arch=('any')

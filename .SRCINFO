@@ -1,6 +1,6 @@
 pkgbase = python-knowit
 	pkgdesc = Know better your media files
-	pkgver = 0.5.6
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/ratoaq2/knowit
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-knowit
 	optdepends = mediainfo: Increase the number of supported formats and information (default provider)
 	optdepends = mkvtoolnix-cli: Increase the number of supported formats and information (mkvmerge)
 	optdepends = python-enzyme: Increase the number of supported formats and information
-	source = python-knowit-0.5.6.tar.gz::https://github.com/ratoaq2/knowit/archive/refs/tags/0.5.6.tar.gz
+	source = python-knowit-0.5.8.tar.gz::https://github.com/ratoaq2/knowit/archive/refs/tags/0.5.8.tar.gz
 	sha256sums = e42eabe7f4543cec6d9e8592b05103c48e81b2f371d4b1c0366f0f28c86cd98a
 	sha512sums = c064c2428300f0b2ee08e514e8deea2299f0aa9a552a7ac9ea914035e4e40666a21aa8d2256605d2c86c61592955f1e6b432d2cf43b7a34a3d1235d4b9971aaf
 	b2sums = da132883e7b4d15a2a21b22b05cb627859947f293a4611a853b2bd31341e4b317a5de42bb7ab48b64a340d96327cb579bb7722f1e875dfc58d1e26652844064c
