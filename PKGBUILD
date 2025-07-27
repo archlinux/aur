@@ -1,9 +1,9 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
-_base_ver=8
+_base_ver=9
 pkgname=grayjay-git
 _appname=Grayjay
-pkgver=7.r20.gb9ecbd9
-pkgrel=3
+pkgver=9.r15.g1f74766
+pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
