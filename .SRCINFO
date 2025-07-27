@@ -1,6 +1,6 @@
 pkgbase = throne-bin
 	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box)
-	pkgver = 1.0.0_beta.4
+	pkgver = 1.0.0_beta.5
 	pkgrel = 1
 	url = https://github.com/throneproj/Throne
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = throne-bin
 	source = Throne.sh
 	sha256sums = 1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d
 	sha256sums = 4d034e434659872f87950a9e91265eda5d7361bd805a660190bcd1aa05a65d4f
-	source_x86_64 = throne-1.0.0-beta.4-x86_64.zip::https://github.com/throneproj/Throne/releases/download/1.0.0-beta.4/Throne-1.0.0-beta.4-linux-amd64.zip
-	sha256sums_x86_64 = 4a7cb111d96c4d7171f5365bf9570eb3aa3562980bf230e8b5c7045afb63395b
-	source_aarch64 = throne-1.0.0-beta.4-aarch64.zip::https://github.com/throneproj/Throne/releases/download/1.0.0-beta.4/Throne-1.0.0-beta.4-linux-arm64.zip
-	sha256sums_aarch64 = a36441a3ffcf433e5d0f9eca542d5bd46a801abae65104277e9257c90960f2eb
+	source_x86_64 = throne-1.0.0-beta.5-x86_64.zip::https://github.com/throneproj/Throne/releases/download/1.0.0-beta.5/Throne-1.0.0-beta.5-linux-amd64.zip
+	sha256sums_x86_64 = 6440d023900ce2225d5d419af009905cbba58cb2272086faf3868ebf9375a914
+	source_aarch64 = throne-1.0.0-beta.5-aarch64.zip::https://github.com/throneproj/Throne/releases/download/1.0.0-beta.5/Throne-1.0.0-beta.5-linux-arm64.zip
+	sha256sums_aarch64 = 81fedc226978ce15df988db05231a952dcc3846ba9cef6f9c2f23ab394946ba7
 
 pkgname = throne-bin
