@@ -8,7 +8,7 @@ url="https://github.com/Wing-summer/WingHexExplorer2"
 
 arch=(x86_64 aarch64)
 license=(AGPL-3.0-only)
-conflicts=(winghexexplorer2)
+conflicts=(winghexexplorer2-git)
 
 depends=('qt6-base')
 makedepends=('git' 'cmake' 'gcc' 'clang' 'qt6-tools' 'qt6-translations')
