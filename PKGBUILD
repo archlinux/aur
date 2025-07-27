@@ -199,7 +199,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "cl-linux::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_clr}"
+  "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
@@ -227,7 +227,7 @@ _check_deprecated_settings() {
 
 _get_patches() {
     # set -x
-    local spec_file="${srcdir}/cl-linux/linux.spec"
+    local spec_file="${srcdir}/tachyon/linux.spec"
 
     # 1. Search for patches in the linux.spec file
     #    Matches lines starting exactly with: %patch followed immediately by digits.
@@ -279,7 +279,7 @@ _apply_patches() {
             fi
         fi
 
-        patch -Np1 -i "${srcdir}/cl-linux/${i}" || true
+        patch -Np1 -i "${srcdir}/tachyon/${i}" || true
     done
 
     # Patch with kernel_compiler_patch patches.
@@ -323,7 +323,7 @@ _update_defconfig() {
         cp -Tf "${startdir}/kconfig" ./.config
     else
         echo ":: Using configuration file \"${srcdir}/${pkgbase}/config\""
-        cp -Tf $srcdir/cl-linux/config ./.config
+        cp -Tf $srcdir/tachyon/config ./.config
     fi
 
     # Extra configuration
@@ -406,7 +406,7 @@ _update_defconfig() {
 
     # Run olddefconfig
     make ${BUILD_FLAGS[*]} olddefconfig
-    diff -u $srcdir/cl-linux/config .config || :
+    diff -u $srcdir/tachyon/config .config || :
 
     # Here we slightly break the config by removing one of the
     # members of the 'Processor family' selection.
