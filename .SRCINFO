@@ -1,6 +1,6 @@
 pkgbase = amazon-corretto-11
 	pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
-	pkgver = 11.0.27.6.1
+	pkgver = 11.0.28.6.1
 	pkgrel = 1
 	url = https://aws.amazon.com/corretto/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = amazon-corretto-11
 	provides = java-runtime=11
 	provides = java-environment=11
 	validpgpkeys = 6DC3636DAE534049C8B94623A122542AB04F24E3
-	source_x86_64 = https://corretto.aws/downloads/resources/11.0.27.6.1/amazon-corretto-11.0.27.6.1-linux-x64.tar.gz
-	source_x86_64 = https://corretto.aws/downloads/resources/11.0.27.6.1/amazon-corretto-11.0.27.6.1-linux-x64.tar.gz.sig
-	sha256sums_x86_64 = 0b4fd441b90471384af288ea7e927897114871c668ad292f4e982e7cb9f0cbf7
+	source_x86_64 = https://corretto.aws/downloads/resources/11.0.28.6.1/amazon-corretto-11.0.28.6.1-linux-x64.tar.gz
+	source_x86_64 = https://corretto.aws/downloads/resources/11.0.28.6.1/amazon-corretto-11.0.28.6.1-linux-x64.tar.gz.sig
+	sha256sums_x86_64 = 70734c46e0bbeb7f45b721756ba0b2f1f1e1ef85a11e10d5a488f06b257dadd9
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://corretto.aws/downloads/resources/11.0.27.6.1/amazon-corretto-11.0.27.6.1-linux-aarch64.tar.gz
-	source_aarch64 = https://corretto.aws/downloads/resources/11.0.27.6.1/amazon-corretto-11.0.27.6.1-linux-aarch64.tar.gz.sig
-	sha256sums_aarch64 = 679ab9f1f614d3ed000b61ccb5e0c06041c9ee29fb9c0ca1b598a9f23975cf85
+	source_aarch64 = https://corretto.aws/downloads/resources/11.0.28.6.1/amazon-corretto-11.0.28.6.1-linux-aarch64.tar.gz
+	source_aarch64 = https://corretto.aws/downloads/resources/11.0.28.6.1/amazon-corretto-11.0.28.6.1-linux-aarch64.tar.gz.sig
+	sha256sums_aarch64 = d82edb186e162d5f5c6d55516474e7d7c61302b29578bfc306d8c0f2c9bc1308
 	sha256sums_aarch64 = SKIP
 
 pkgname = amazon-corretto-11
