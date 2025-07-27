@@ -2,7 +2,7 @@
 
 _pkgname=pathlib-abc
 pkgname=python-${_pkgname}
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Python base classes for rich path objects"
 arch=(x86_64 aarch64)
@@ -17,7 +17,7 @@ makedepends=(
     python-hatchling
 )
 source=("https://github.com/barneygale/${_pkgname}/archive/refs/tags/${pkgver}.zip")
-b2sums=("4abbf4bc52809da4413f9df20ce7b7ac5e3a51e8d820e129f59a18ec158684332cd96ae6cf3a8697e6d4235300d1451ba62f26e8838d7c795433af119a148db7")
+b2sums=("5fb5a049fad58eaef18f83a1d04af00fc7769026ca04cb109ba7237a04e3ceb91ad347f8a0798b4ac66bdcae2426cc82e3f64d7775ed3bada3e5fdca8686e0b5")
 
 build() {
     cd "${_pkgname}-${pkgver}"
