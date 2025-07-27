@@ -1,7 +1,7 @@
 # Maintainer: Gelaechter <gelaechter at pommer dot info>
 pkgname=verinice
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Die moderne Open-Source GRC-Software"
 arch=("x86_64")
 url="https://github.com/SerNet/verinice"
@@ -18,6 +18,8 @@ sha256sums=('3ceffa78d248d393590cf18bbb557d0d82e1f23f68503d3749a3da09d6e82d60'
 build() {
 	cd "${srcdir}/verinice"
 	echo "Starting build..."
+	# Adjust JAXP limit (https://aur.archlinux.org/packages/verinice#comment-1033537)
+	export MAVEN_OPTS="-Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0"
 	./mvnw -Dtycho.disableP2Mirrors=true -DskipTests verify
 }
 

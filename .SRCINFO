@@ -1,7 +1,7 @@
 pkgbase = verinice
 	pkgdesc = Die moderne Open-Source GRC-Software
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SerNet/verinice
 	arch = x86_64
 	license = Apache-2.0
