@@ -1,7 +1,7 @@
 pkgbase = stylelint-lsp
 	pkgdesc = Stylelint Language Server
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bmatcuk/stylelint-lsp
 	arch = any
 	license = MIT
@@ -12,7 +12,9 @@ pkgbase = stylelint-lsp
 	depends = stylelint
 	depends = typescript
 	source = git+https://github.com/bmatcuk/stylelint-lsp.git#tag=v2.0.1?signed
+	source = pnpm-lockfile-version-mismatch.patch
 	validpgpkeys = BAAFE045FFA3EF32E994C33F744A40ED60D7626F
 	b2sums = 1ab1c858e96a5148fce31b617b01532b5fe140bc0220f4920095369b7fb02877c36153a1b4e48893dd56e8929b2fab2aae4d4237faf768deb45b0dba11f18e4f
+	b2sums = 6d06061723ff60ae8be01c067fab1cb633fa9e7fe92df6de9b36b75feb8ceafafbd3d1fe8c7aad4daf4c58e0e978430ac4e4eaa8b911556750634284d56fa2d2
 
 pkgname = stylelint-lsp
