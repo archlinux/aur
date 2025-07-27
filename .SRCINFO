@@ -1,0 +1,18 @@
+pkgbase = aml1
+	pkgdesc = Another Main Loop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/any1/aml
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = custom:ISC
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	provides = libaml.so.1
+	source = aml-v1.0.0.tar.gz::https://github.com/any1/aml/archive/v1.0.0.tar.gz
+	b2sums = 8d045db7d0317b48c164f6d7c40f887d94ec435730f870baf161ee8f7e99314b9bdd4d5311cce03ee5a0ee784c93558795d5e742f4832bbe295e2b66072a5196
+
+pkgname = aml1
