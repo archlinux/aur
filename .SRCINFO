@@ -1,14 +1,14 @@
 pkgbase = hyproled-git
-	pkgdesc = A hyprland shader utility to prevent OLED burn in.
-	pkgver = 0.1.0
-	pkgrel = 2
-	url = https://github.com/mklan/hyproled
-	arch = any
-	license = BSD 3
-	makedepends = git
-	depends = hyprland
-	depends = bash
-	source = git+https://github.com/mklan/hyproled.git
-	sha256sums = SKIP
+pkgdesc = A hyprland shader utility to prevent OLED burn in.
+pkgver = 0.1.1
+pkgrel = 2
+url = https://github.com/mklan/hyproled
+arch = any
+license = BSD 3
+makedepends = git
+depends = hyprland
+depends = bash
+source = git+https://github.com/mklan/hyproled.git
+sha256sums = SKIP
 
 pkgname = hyproled-git
