@@ -1,6 +1,6 @@
 pkgbase = pass-git-helper
 	pkgdesc = A git credential helper interfacing with pass, the standard unix password manager
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/languitar/pass-git-helper
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pass-git-helper
 	depends = python3
 	depends = pass
 	depends = python-xdg
-	source = https://github.com/languitar/pass-git-helper/archive/v3.3.0.tar.gz
-	sha256sums = d602ddf2ab45ecaa6ec50815f4468fdeafccfb979ac5191e541a53b54b658e33
+	source = https://github.com/languitar/pass-git-helper/archive/v3.3.1.tar.gz
+	sha256sums = 3e90c567b4cb6223aaca270c853328a4bc9fe0c22b7d3eae06f443301e4c394a
 
 pkgname = pass-git-helper
