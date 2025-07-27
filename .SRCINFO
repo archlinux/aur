@@ -71,6 +71,7 @@ pkgbase = dracut-git
 	optdepends = tpm2-tools: tpm2 support for e.g. LUKS
 	optdepends = xz: xz compression
 	provides = initramfs
+	conflicts = dracut
 	backup = etc/dracut.conf
 	source = git+https://github.com/dracut-ng/dracut.git
 	source = 1348.patch::https://github.com/dracut-ng/dracut/commit/5941ff7.patch
