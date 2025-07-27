@@ -1,50 +1,40 @@
-# Maintainer: redponike <proton (dot) me>
+# Contributor: redponike <proton (dot) me>
 # Contributor: Frederik Holm Strøm <aur@frederikstroem.com>
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 # Contributor: Aron Young <tkf6fkt at gmail dot com>
 
-_pkgname=Chatbox
-pkgname="chatbox-bin"
-pkgver=1.11.12
+pkgname=chatbox-bin
+pkgver=1.15.2
+_commit=e256b86463fd81e5aa70c44bd6d6d74ca6af8449
 pkgrel=1
 pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)"
 arch=('x86_64')
 url="https://chatboxai.app"
 license=('custom')
-depends=('fuse2')
-provides=("$pkgname")
-conflicts=("chatbox-appimage" "chatbox-git")
-options=(!strip)
-_appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
-_pkgid="xyz.chatboxapp.app"
-source=("https://download.chatboxai.app/releases/${_appimage}")
-noextract=("$_appimage")
-sha512sums=('c382c4ca4e234683ef136190dc3efeea43213d203ab450c30feb37223de0b57ee29907671bcb99413b6c76b3b2bd92b660384544057b3a0618fb8e62f4f9d838')
-
-prepare() {
-    # Make the AppImage executable
-    chmod +x "$_appimage"
-
-    # Extract the AppImage
-    "./$_appimage" --appimage-extract
-
-    # Update the Exec line in the desktop entry file
-    sed -i -E "s:Exec=.*:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/${_pkgid}.desktop"
-}
+depends=(bash glibc gcc-libs hicolor-icon-theme)
+conflicts=(chatbox)
+provides=(chatbox)
+source=("https://download.chatboxai.app/releases/Chatbox-${pkgver}-x86_64.AppImage"
+chatbox.sh
+"${pkgver}package.json::https://raw.githubusercontent.com/chatboxai/chatbox/${_commit}/package.json")
+sha512sums=('2995d5b9e6482faf8f05afaa905a337fc9332f39ffe0ede166ca0fffc6e33d212f41ab331f30e013de7df1c6d85f8ba17539162750ea4c9f14767f435827ccbe'
+            'fc658da6385c68c91254da09d2eb202fa059d731d31436359535e258658c1feb14d448fb7abb2c28d75fd5fb1f54ecbdc3e24962f6a4443a68df5030c01c77fc'
+            '4d79a88f1d9e4f988f670fffeae17ba8db7db2444df2fec1582186d6d9108964113c94133ec2ef1f9a852f450ecb300607b8c56987c3e2060263718fa047b74f')
 
 package() {
-    # Install the AppImage and create a symlink
-    install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
+  chmod +x Chatbox-${pkgver}-x86_64.AppImage
+  ./Chatbox-${pkgver}-x86_64.AppImage --appimage-extract *.desktop > /dev/null
+  ./Chatbox-${pkgver}-x86_64.AppImage --appimage-extract resources > /dev/null
+  ./Chatbox-${pkgver}-x86_64.AppImage --appimage-extract usr/share > /dev/null
 
-    # Install the desktop entry file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgid}.desktop" "${pkgdir}/usr/share/applications/${_pkgid}.desktop"
-
-    # Install the icon
-    install -dm755 "${pkgdir}/usr/share/pixmaps/"
-    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/${_pkgid}.png" "${pkgdir}/usr/share/pixmaps/${_pkgid}.png"
-
-    # License not provided by upstream - The developer was contacted / awaiting response
-    # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  _electron=electron$(grep -oP '"electron": "\^\K\d+' ${pkgver}package.json)
+  _electron=electron27 # workaround for missing pkg from repo
+  depends+=($_electron)
+  chmod -R 755 squashfs-root # workaround
+  mv squashfs-root/usr "$pkgdir"/usr
+  sed "s/@ELECTRON@/$_electron/" chatbox.sh | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/chatbox
+  sed "s|^Exec=.*|Exec=chatbox|" squashfs-root/xyz.chatboxapp.app.desktop | install -Dm644 /dev/stdin "$pkgdir"/usr/share/applications/xyz.chatboxapp.app.desktop
+  install -d "$pkgdir"/usr/lib
+  mv squashfs-root/resources "$pkgdir"/usr/lib/chatbox
+  # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
