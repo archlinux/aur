@@ -3,11 +3,11 @@
 pkgname=python-sacrebleu
 _pkg="${pkgname#python-}"
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reference BLEU implementation that auto-downloads test sets'
 arch=('any')
 url="https://github.com/mjpost/sacrebleu"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
 	'python-colorama'
 	'python-lxml'
@@ -31,6 +31,7 @@ check() {
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	python -m installer --compile-byte-code=1 --destdir="$pkgdir/" dist/*.whl
+    cd "$_pkg-$pkgver"
+    install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --compile-bytecode=1 --destdir="$pkgdir/" dist/*.whl
 }
