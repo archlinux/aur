@@ -1,6 +1,6 @@
 # Maintainer: Lucas <lucas.pr1@hotmail.com>
 pkgname=blackarch-helper
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple CLI helper to explore and install tools from the BlackArch repository"
 arch=('any')
