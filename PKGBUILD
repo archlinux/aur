@@ -56,7 +56,7 @@ package() {
   install -Dm644 "quickshell-check.hook" -t "$pkgdir/usr/share/libalpm/hooks"
   cd "$pkgname"
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 post_install() {
