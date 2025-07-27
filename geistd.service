@@ -1,0 +1,12 @@
+[Unit]
+Description=Portgeist Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/geistd
+Restart=on-failure
+User=nobody
+Group=nobody
+
+[Install]
+WantedBy=multi-user.target
