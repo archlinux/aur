@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2122.rc1.r30.g980f8e0
+pkgver=2122.rc1.r36.g00c0f01
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -38,7 +38,6 @@ makedepends=(
 	'spirv-headers'
 	'vulkan-headers'
 	'vulkan-memory-allocator'
-	'zstd'
 	'zydis'
 )
 provides=("$_pkgname=$pkgver")
@@ -58,8 +57,10 @@ source=(
 	"nihstro::git+https://github.com/neobrain/nihstro.git"
 	"teakra::git+https://github.com/wwylele/teakra.git"
 	"xbyak::git+https://github.com/herumi/xbyak.git"
+	"zstd::git+https://github.com/facebook/zstd.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -95,6 +96,7 @@ prepare() {
 	git config submodule.soundtouch.url ../$_pkgname-soundtouch
 	git config submodule.teakra.url ../teakra
 	git config submodule.xbyak.url ../xbyak
+	git config submodule.zstd.url ../zstd
 	git -c protocol.file.allow=always submodule update
 	cd externals/dynarmic
 	git config submodule.mcl.url ../../../$_pkgname-mcl
@@ -103,6 +105,8 @@ prepare() {
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
 	# use system spirv-headers in sirit
 	sed -i '1i find_package(SPIRV-Headers)' ../../externals/sirit/sirit/src/CMakeLists.txt
+	# fix zstd include
+	sed -i 's|zstd/contrib/seekable_format/\(zstd_seekable\.h\)|\1|' ../../src/common/zstd_compression.cpp
 }
 
 build() {
@@ -120,6 +124,7 @@ build() {
 		-D DISABLE_SYSTEM_LODEPNG=ON
 		-D DISABLE_SYSTEM_SOUNDTOUCH=ON
 		-D DISABLE_SYSTEM_XBYAK=ON
+		-D DISABLE_SYSTEM_ZSTD=ON
 		-D ENABLE_LTO=OFF
 		-D ENABLE_QT_TRANSLATION=ON
 		-D ENABLE_ROOM_STANDALONE=OFF
@@ -147,7 +152,6 @@ package() {
 		'libopenal.so'
 		'libssl.so'
 		'libusb-1.0.so'
-		'libzstd.so'
 		'libZydis.so'
 	)
 	cd $_pkgname
