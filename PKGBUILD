@@ -3,7 +3,7 @@
 pkgname=healthchecks
 _pkgver=3.9
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
 url="https://github.com/healthchecks/healthchecks"
@@ -27,7 +27,8 @@ source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "local_settings.py"
-        "settings.patch")
+        "settings.patch"
+        "webauthn.patch")
 sha256sums=('a003ba50a34f9888d924ff399c30fdf3f726f3eef6483f3de0aeca307e0eb781'
             'b3873cb0d45807e15b5bca7e11d1b1d72e6618409ca62b008eea2f84e78fd1b0'
             '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
@@ -39,12 +40,14 @@ sha256sums=('a003ba50a34f9888d924ff399c30fdf3f726f3eef6483f3de0aeca307e0eb781'
             '2407d81ae0224d5c394b35e20a3b29d138fbde3fdde951de9dfea44d97e73eca'
             'c04de046d176958b3705d751ac09cf018d395b6c37f38977ec4048a561d5041f'
             '4cb8857de8ef834e0e41eddc56a3e7bbab63adb210196642ca2544b48220f31d'
-            '86dbe0d8ac731908833848fdae056722f10a10647c5256eab4413e80663f23ca')
+            '86dbe0d8ac731908833848fdae056722f10a10647c5256eab4413e80663f23ca'
+            'a4400f9e7d3683fa23dd72b618af86b6f5fe1f8479843604c8aa05d973c2d57e')
 
 prepare () {
     cd "$pkgname-$_pkgver/hc"
     echo $(pwd)
     patch -p0 -i '../../settings.patch'
+    patch -p2 -i '../../webauthn.patch'
 }
     
 build() {

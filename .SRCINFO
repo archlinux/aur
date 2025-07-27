@@ -1,7 +1,7 @@
 pkgbase = healthchecks
 	pkgdesc = A cron monitoring service with a web-based dashboard, API, and notification integrations.
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/healthchecks/healthchecks
 	install = healthchecks.install
 	arch = any
@@ -40,6 +40,7 @@ pkgbase = healthchecks
 	source = healthchecks.tmpfiles
 	source = local_settings.py
 	source = settings.patch
+	source = webauthn.patch
 	sha256sums = a003ba50a34f9888d924ff399c30fdf3f726f3eef6483f3de0aeca307e0eb781
 	sha256sums = b3873cb0d45807e15b5bca7e11d1b1d72e6618409ca62b008eea2f84e78fd1b0
 	sha256sums = 355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc
@@ -52,5 +53,6 @@ pkgbase = healthchecks
 	sha256sums = c04de046d176958b3705d751ac09cf018d395b6c37f38977ec4048a561d5041f
 	sha256sums = 4cb8857de8ef834e0e41eddc56a3e7bbab63adb210196642ca2544b48220f31d
 	sha256sums = 86dbe0d8ac731908833848fdae056722f10a10647c5256eab4413e80663f23ca
+	sha256sums = a4400f9e7d3683fa23dd72b618af86b6f5fe1f8479843604c8aa05d973c2d57e
 
 pkgname = healthchecks
