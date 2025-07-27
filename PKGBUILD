@@ -1,10 +1,10 @@
 # Maintainer: jurplel <jurplel[at]interversehq[dotcom]>
 pkgname=qview
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="qView is a Qt image viewer designed with minimalism and usability in mind."
-arch=(any)
+arch=('i686' 'x86_64')
 url="https://interversehq.com/qview/"
 license=('GPL3')
 groups=()
