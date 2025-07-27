@@ -1,0 +1,17 @@
+pkgbase = python-pyzipper
+	pkgdesc = A Python library for creating and extracting ZIP files with AES encryption
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/danifus/pyzipper
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-cryptography
+	source = python-pyzipper-0.3.6.tar.gz::https://github.com/danifus/pyzipper/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = c4b0a4182a9e925a1b7d65fbbc161a2e4b469082b222f38b49a85b094433c668
+
+pkgname = python-pyzipper
