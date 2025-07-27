@@ -3,7 +3,7 @@
 _binname=xenia_canary
 _branchname=canary_experimental
 pkgname=xenia-canary-git
-pkgver=r7895.5e4a04f38
+pkgver=r7912.fe0e18466
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -25,7 +25,8 @@ depends=('capstone'
          'pugixml'
          'sdl2'
          'snappy'
-         'zarchive')
+         'zarchive'
+         'zlib-ng')
 conflicts=('xenia' 'xenia-git')
 provides=('xenia')
 # TODO: Use system installed deps for non-forked libs
@@ -64,7 +65,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
-            '212d2eff01802ece498a90b0e20c7506cc7667c85361c8192f896374b782b6ab')
+            'f6d57406379b3f3b31c0837ff5b614f1b05d6e376d0098cfbf0d57402840a3f8')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"

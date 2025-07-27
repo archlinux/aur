@@ -1,17 +1,17 @@
-From 17f720cb688fd275e67cefc212a493ff505fe586 Mon Sep 17 00:00:00 2001
+From 91aebdf40b33df91032dffd38058afa7ffd73773 Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
-Date: Sun, 11 May 2025 20:22:11 -0700
+Date: Wed, 21 May 2025 22:47:10 +0200
 Subject: [PATCH] Use system dependencies
 
 ---
- .gitmodules                                   | 41 +--------------
+ .gitmodules                                   | 43 +---------------
  premake5.lua                                  | 50 +++++++++++++------
  src/xenia/apu/sdl/premake5.lua                |  2 +-
  src/xenia/emulator.cc                         |  2 +-
  src/xenia/helper/sdl/premake5.lua             |  2 +-
  src/xenia/hid/sdl/premake5.lua                |  2 +-
- src/xenia/kernel/premake5.lua                 |  2 +-
- src/xenia/ui/premake5.lua                     |  4 +-
+ src/xenia/kernel/premake5.lua                 |  1 -
+ src/xenia/ui/premake5.lua                     |  2 +-
  third_party/SDL2                              |  1 -
  third_party/SDL2/include                      |  1 +
  third_party/SPIRV-Tools                       |  1 -
@@ -39,9 +39,9 @@ Subject: [PATCH] Use system dependencies
  third_party/xxhash/xxhash.h                   |  1 +
  third_party/zarchive                          |  1 -
  third_party/zarchive/include                  |  1 +
- third_party/zlib                              |  1 -
- third_party/zlib/zlib.h                       |  1 +
- 37 files changed, 60 insertions(+), 76 deletions(-)
+ third_party/zlib-ng                           |  1 -
+ third_party/zlib-ng/zlib-ng.h                 |  1 +
+ 37 files changed, 58 insertions(+), 77 deletions(-)
  delete mode 160000 third_party/SDL2
  create mode 120000 third_party/SDL2/include
  delete mode 160000 third_party/SPIRV-Tools
@@ -68,14 +68,14 @@ Subject: [PATCH] Use system dependencies
  create mode 120000 third_party/xxhash/xxhash.h
  delete mode 160000 third_party/zarchive
  create mode 120000 third_party/zarchive/include
- delete mode 160000 third_party/zlib
- create mode 120000 third_party/zlib/zlib.h
+ delete mode 160000 third_party/zlib-ng
+ create mode 120000 third_party/zlib-ng/zlib-ng.h
 
 diff --git a/.gitmodules b/.gitmodules
-index 58feb9936..1560702ae 100644
+index 2502770d6..1560702ae 100644
 --- a/.gitmodules
 +++ b/.gitmodules
-@@ -7,15 +7,9 @@
+@@ -7,16 +7,9 @@
  [submodule "third_party/binutils-ppc-cygwin"]
  	path = third_party/binutils-ppc-cygwin
  	url = https://github.com/benvanik/binutils-ppc-cygwin.git
@@ -87,11 +87,12 @@ index 58feb9936..1560702ae 100644
  	url = https://github.com/premake/premake-core.git
 -[submodule "third_party/snappy"]
 -	path = third_party/snappy
--	url = https://github.com/xenia-project/snappy.git
+-	url = https://github.com/google/snappy.git
+-	ignore = dirty
  [submodule "third_party/premake-export-compile-commands"]
  	path = third_party/premake-export-compile-commands
  	url = https://github.com/xenia-project/premake-export-compile-commands.git
-@@ -28,24 +22,9 @@
+@@ -29,24 +22,9 @@
  [submodule "third_party/aes_128"]
  	path = third_party/aes_128
  	url = https://github.com/openluopworld/aes_128.git
@@ -116,7 +117,7 @@ index 58feb9936..1560702ae 100644
  [submodule "third_party/disruptorplus"]
  	path = third_party/disruptorplus
  	url = https://github.com/xenia-canary/disruptorplus.git
-@@ -54,13 +33,10 @@
+@@ -55,13 +33,10 @@
  	url = https://github.com/microsoft/DirectXShaderCompiler.git
  [submodule "third_party/premake-cmake"]
  	path = third_party/premake-cmake
@@ -131,7 +132,7 @@ index 58feb9936..1560702ae 100644
  [submodule "third_party/FFmpeg"]
  	path = third_party/FFmpeg
  	url = https://github.com/xenia-canary/FFmpeg_radixsplit.git
-@@ -73,36 +49,21 @@
+@@ -74,37 +49,21 @@
  [submodule "third_party/FidelityFX-FSR"]
  	path = third_party/FidelityFX-FSR
  	url = https://github.com/GPUOpen-Effects/FidelityFX-FSR.git
@@ -159,9 +160,10 @@ index 58feb9936..1560702ae 100644
  [submodule "third_party/rapidcsv"]
  	path = third_party/rapidcsv
  	url = https://github.com/d99kris/rapidcsv.git
--[submodule "third_party/zlib"]
--	path = third_party/zlib
--	url = https://github.com/madler/zlib.git
+-[submodule "third_party/zlib-ng"]
+-	path = third_party/zlib-ng
+-	url = https://github.com/zlib-ng/zlib-ng.git
+-	ignore = dirty
 -[submodule "third_party/pugixml"]
 -	path = third_party/pugixml
 -	url = https://github.com/zeux/pugixml.git
@@ -169,7 +171,7 @@ index 58feb9936..1560702ae 100644
  	path = third_party/libusb
  	url = https://github.com/libusb/libusb.git
 diff --git a/premake5.lua b/premake5.lua
-index 548140fb9..5cff85700 100644
+index 6a4c9c986..25c6f002b 100644
 --- a/premake5.lua
 +++ b/premake5.lua
 @@ -1,6 +1,4 @@
@@ -195,7 +197,7 @@ index 548140fb9..5cff85700 100644
 +  pkg_config.all("sdl2")
 +  pkg_config.all("snappy")
 +  pkg_config.all("zarchive")
-+  pkg_config.all("zlib")
++  pkg_config.all("zlib-ng")
    links({
 -    "stdc++fs",
 +    "SDL2",
@@ -247,13 +249,13 @@ index 548140fb9..5cff85700 100644
 -  include("third_party/xxhash.lua")
 -  include("third_party/zarchive.lua")
 -  include("third_party/zstd.lua")
--  include("third_party/zlib.lua")
+-  include("third_party/zlib-ng.lua")
 -  include("third_party/pugixml.lua")
 +  -- include("third_party/snappy.lua")
 +  -- include("third_party/xxhash.lua")
 +  -- include("third_party/zarchive.lua")
 +  -- include("third_party/zstd.lua")
-+  -- include("third_party/zlib.lua")
++  -- include("third_party/zlib-ng.lua")
 +  -- include("third_party/pugixml.lua")
  
    if os.istarget("windows") then
@@ -268,7 +270,7 @@ index 548140fb9..5cff85700 100644
  
    -- Disable treating warnings as fatal errors for all third party projects, as
 diff --git a/src/xenia/apu/sdl/premake5.lua b/src/xenia/apu/sdl/premake5.lua
-index 8f0e9ab61..21bf598ba 100644
+index 77bf00131..208b109ef 100644
 --- a/src/xenia/apu/sdl/premake5.lua
 +++ b/src/xenia/apu/sdl/premake5.lua
 @@ -6,6 +6,7 @@ project("xenia-apu-sdl")
@@ -279,8 +281,8 @@ index 8f0e9ab61..21bf598ba 100644
    links({
      "xenia-apu",
      "xenia-base",
-@@ -15,4 +16,3 @@ project("xenia-apu-sdl")
-   defines({
+@@ -13,4 +14,3 @@ project("xenia-apu-sdl")
+     "SDL2",
    })
    local_platform_files()
 -  sdl2_include()
@@ -298,10 +300,10 @@ index a28b8b4ac..4b2e05150 100644
  #include "xenia/base/assert.h"
  #include "xenia/base/byte_stream.h"
 diff --git a/src/xenia/helper/sdl/premake5.lua b/src/xenia/helper/sdl/premake5.lua
-index fd13bd5aa..833928aa6 100644
+index 26058f713..c538827eb 100644
 --- a/src/xenia/helper/sdl/premake5.lua
 +++ b/src/xenia/helper/sdl/premake5.lua
-@@ -6,6 +6,7 @@ project("xenia-helper-sdl")
+@@ -6,8 +6,8 @@ project("xenia-helper-sdl")
    uuid("84b00ad3-fba3-4561-96c9-1f9993b14c9c")
    kind("StaticLib")
    language("C++")
@@ -309,13 +311,10 @@ index fd13bd5aa..833928aa6 100644
    links({
      "SDL2",
    })
-@@ -14,4 +15,3 @@ project("xenia-helper-sdl")
-   includedirs({
-   })
    local_platform_files()
 -  sdl2_include()
 diff --git a/src/xenia/hid/sdl/premake5.lua b/src/xenia/hid/sdl/premake5.lua
-index d29b0b606..6dc3b2019 100644
+index 15bcf4fca..9d011902c 100644
 --- a/src/xenia/hid/sdl/premake5.lua
 +++ b/src/xenia/hid/sdl/premake5.lua
 @@ -6,6 +6,7 @@ project("xenia-hid-sdl")
@@ -326,29 +325,28 @@ index d29b0b606..6dc3b2019 100644
    links({
      "xenia-base",
      "xenia-hid",
-@@ -15,4 +16,3 @@ project("xenia-hid-sdl")
-   defines({
+@@ -13,4 +14,3 @@ project("xenia-hid-sdl")
+     "SDL2",
    })
    local_platform_files()
 -  sdl2_include()
 diff --git a/src/xenia/kernel/premake5.lua b/src/xenia/kernel/premake5.lua
-index bd00330bc..e790907be 100644
+index f478c9f22..0aa3a02b2 100644
 --- a/src/xenia/kernel/premake5.lua
 +++ b/src/xenia/kernel/premake5.lua
-@@ -9,7 +9,7 @@ project("xenia-kernel")
+@@ -9,7 +9,6 @@ project("xenia-kernel")
    links({
      "aes_128",
      "fmt",
--    "zlib",
-+    "z",
+-    "zlib-ng",
      "pugixml",
      "xenia-apu",
      "xenia-base",
 diff --git a/src/xenia/ui/premake5.lua b/src/xenia/ui/premake5.lua
-index 5c55c8c88..f9637baf2 100644
+index 0640045a3..5b6424361 100644
 --- a/src/xenia/ui/premake5.lua
 +++ b/src/xenia/ui/premake5.lua
-@@ -16,7 +16,7 @@ project("xenia-ui")
+@@ -14,7 +14,7 @@ project("xenia-ui")
    removefiles({"windowed_app_main_*.cc"})
    filter("platforms:Android-*")
      -- Exports JNI functions.
@@ -357,13 +355,6 @@ index 5c55c8c88..f9637baf2 100644
  
    filter("platforms:Windows")
      links({
-@@ -30,4 +30,4 @@ project("xenia-ui")
-       "xcb",
-       "X11",
-       "X11-xcb"
--    })
-\ No newline at end of file
-+    })
 diff --git a/third_party/SDL2 b/third_party/SDL2
 deleted file mode 160000
 index e11183ea6..000000000
@@ -501,11 +492,11 @@ index 000000000..2dc728a92
 \ No newline at end of file
 diff --git a/third_party/snappy b/third_party/snappy
 deleted file mode 160000
-index 303cd2c64..000000000
+index 6af9287fb..000000000
 --- a/third_party/snappy
 +++ /dev/null
 @@ -1 +0,0 @@
--Subproject commit 303cd2c64c62c579a8592236f723b611afd3bc15
+-Subproject commit 6af9287fbdb913f0794d0148c6aa43b58e63c8e3
 diff --git a/third_party/snappy b/third_party/snappy
 new file mode 120000
 index 000000000..408ea0f82
@@ -575,20 +566,20 @@ index 000000000..408ea0f82
 @@ -0,0 +1 @@
 +/usr/include
 \ No newline at end of file
-diff --git a/third_party/zlib b/third_party/zlib
+diff --git a/third_party/zlib-ng b/third_party/zlib-ng
 deleted file mode 160000
-index 51b7f2abd..000000000
---- a/third_party/zlib
+index 860e4cff7..000000000
+--- a/third_party/zlib-ng
 +++ /dev/null
 @@ -1 +0,0 @@
--Subproject commit 51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf
-diff --git a/third_party/zlib/zlib.h b/third_party/zlib/zlib.h
+-Subproject commit 860e4cff7917d93f54f5d7f0bc1d0e8b1a3cb988
+diff --git a/third_party/zlib-ng/zlib-ng.h b/third_party/zlib-ng/zlib-ng.h
 new file mode 120000
-index 000000000..595c3ced9
+index 000000000..0199e157c
 --- /dev/null
-+++ b/third_party/zlib/zlib.h
++++ b/third_party/zlib-ng/zlib-ng.h
 @@ -0,0 +1 @@
-+/usr/include/zlib.h
++/usr/include/zlib-ng.h
 \ No newline at end of file
 -- 
 2.50.1
