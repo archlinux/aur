@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="tbsys and tbnet devel"
 arch=('x86_64')
 depends=('glibc')
-url="https://github.com/hyx-web/$pkgname/"
+url="https://github.com/hyx-web/libtb"
 source=(https://github.com/hyx-web/libtb/releases/download/dev/libtb.zip)
 
 build()
