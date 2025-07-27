@@ -2,7 +2,7 @@
 
 pkgname=alire
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
@@ -13,7 +13,7 @@ checkdepends=(python-e3-testsuite python-pexpect python-toml)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v$pkgver.tar.gz"
 alire.patch
 git+https://github.com/mosteo/aaa.git#commit=73d99ae1ff2f5210dc41c2ea7afebe600f9e9916
-git+https://github.com/pmderodat/ada-toml.git#commit=b0c9e6a6b96054b8afed14959e4140960285d552
+git+https://github.com/pmderodat/ada-toml.git#commit=f51ff9730aa916f33981db4589666577e9dd05c7
 git+https://github.com/mosteo/ajunitgen.git#commit=e5d01db5e7834d15c4066f0a8e33d780deae3cc9
 git+https://github.com/mosteo/ansi-ada#commit=0772e48d3e1f640829d142745a36b37edcd5470b
 git+https://github.com/alire-project/clic#commit=56bbdc008e16996b6f76e443fd0165a240de1b13
@@ -39,7 +39,7 @@ git+https://github.com/mosteo/yeison#commit=88b66242f8826fd4847e0ea06c7901b753e0
 b2sums=('8e508ecf9d74fdda3ad38bedda5a1ff94df7acfcbc946d43af3585b41c1c768526884de6c03514d6e84f170c7b242de5c9aa84f51aabb9cacfb1fbef40585052'
         '5870866bb9addb3f0a917fbd545ace2bb11deba66bde4fc498c011b8a5cda7b0ef473b4b36d5642779149aff595996bd0f05e16ef87436eac7b3649d8594b71d'
         '7f17381597b9c81ea3bd1d95132868340352b9bd811ff0e02cf620d6c01274e815e9e03cad94fb88ec77047d77506cf96c7a324d3d8f74c81fb0e9213497f01c'
-        '71225f0d02968f34063417b7ac7b1f7382578c76ff017d62a45b793074233b1342680db903c09112aa9bba085f60cfba0b68f6e73c90f3049eee80c7a83144db'
+        '038a071df787c88c5905c8d1bc594eebda2f837ad45b53177a051e953f4374f4400063717ee78f7d6d733452610b8d6aac0fc4437181aeb20245c69a756f02ce'
         'c46d3b2dbfb4cf36fccca90f4c546a5121e4be34c5b8cda45e65d4e7296840789bb4c8979155861ca7e386ba318df84f81b9551653bbf1953b475b23a294597d'
         '31ef7b6d8c7419f71bbc99119865f92d7af460861523fc5cfd294f8143303e7f72503c13795250637eecadd94050fe59313f440c0f4a4396c967af79b25a41cc'
         '3786dcc29c882c72f6c80d177acd0ca7a1a4a1313ee51da708e8f1b01def8d524be885d91481c3f92d8b3adb5aa752a1fcc4a31b497e319984c3204e180467da'
