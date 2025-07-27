@@ -3,7 +3,7 @@
 _pkgauthor=ddddddO
 _pkgname=packemon
 pkgname=${_pkgname}-bin
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces."
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgr
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_arm64.deb")
 sha256sums=('fdcd2452a52c79ce8d1a57390a43d60acddb1413696fc119ca124543f9d988f4'
             '65237ca5130490863f4bf99975534913aa147089064421ef96f54d09dd461530')
-sha256sums_x86_64=('dd80efe4ad7efe497c49d5439ccb6d2630bd4b4d35e013205e5fc72b551b2064')
-sha256sums_aarch64=('689a573c308aa0adbd223ba67b20ab5104d2531c33dedb1a6cf319f4f7146994')
+sha256sums_x86_64=('534454ca5685f4e12d3765101c2a1442ed7fbb4cdd2a005dc6c968db6fba0d87')
+sha256sums_aarch64=('3b8b62887e12939dc420189cc035a141d779e846501caa405314a83f28441ef4')
 
 
 package() {
