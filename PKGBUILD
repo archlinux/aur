@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=httpseal
 pkgname=${_pkgname}-git
-pkgver=r24.g01afcf7
+pkgver=r26.g9b74459
 pkgrel=1
 pkgdesc="A Linux command-line tool for intercepting and analyzing HTTPS/HTTP traffic from specific processes using namespace isolation and DNS hijacking."
 arch=(x86_64)
@@ -35,5 +35,5 @@ package() {
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
      
     # cd "${srcdir}/${_pkgname}" 
-    # install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

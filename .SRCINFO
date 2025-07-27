@@ -1,6 +1,6 @@
 pkgbase = httpseal-git
 	pkgdesc = A Linux command-line tool for intercepting and analyzing HTTPS/HTTP traffic from specific processes using namespace isolation and DNS hijacking.
-	pkgver = r24.g01afcf7
+	pkgver = r26.g9b74459
 	pkgrel = 1
 	url = https://github.com/hmgle/httpseal
 	install = httpseal.install
