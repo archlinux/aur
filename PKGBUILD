@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=12.0.0-beta.19
+_pkgver=12.0.0-beta.20
 
 __pkgname=firedragon
 pkgname=$__pkgname-catppuccin-beta
@@ -90,7 +90,7 @@ source=(
   firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
 )
 sha256sums=(
-  'bbcf4d86c8bb27b84d8908f6868f46f69fb4e56751f8406ad1d0d43d6d1caf6e'
+  'b7052d91f2d1a21da4c76c8663d050c98fcb3ab81d4e13dcd6259c1f1e956b73'
   '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
 )
 
@@ -114,6 +114,8 @@ prepare() {
   mkdir "${srcdir}/mozbuild"
 
   cd firedragon-source-v"${_pkgver}" || exit
+
+  export DENO_DIR="${srcdir}/deno"
 
   _deno install --allow-scripts --frozen
 
