@@ -1,7 +1,7 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
@@ -32,12 +32,12 @@ makedepends=(
   'pkgconf'
 )
 
-source=("$pkgname"-"$pkgver.tar.gz"::"$url/archive/v0.1.0.tar.gz"
+source=("$pkgname"-"$pkgver.tar.gz"::"$url/archive/v0.2.0.tar.gz"
   quickshell-check.hook)
 
-sha256sums=('5962043c7d4264cc7d71445dc86e175d0fbb1701ce390c24f92c6371e24bc127'
+sha256sums=('568291b2397e4859ebc8b1d5cdc60fead2ce2da2368342e5f35c19bb1e32834d'
             '8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083')
-b2sums=('70bc328a133b2d6b736d130228a90270e9941d150748497e3e4144568f2c524e726c788c6778b1f3f408a369144548edfe2d98caf4031ed4430b5d1c93d2a990'
+b2sums=('df62690c5cadc0945bded9574a10afe32a8b0ec6a34a131ba417916773460f81ebc9b722791106784c193a6f8df59a6881eeb57796eddca1c25db84645e49961'
         'c729d8c05d0490eda0a4095d831f7fe4f2873debe0dd3dbb0de41a801ed652a885de7048cecc26eaddec9d22e68a7d00552ad3f3db96d80041671192faf0afe0')
 
 build() {
@@ -56,5 +56,10 @@ package() {
   install -Dm644 "quickshell-check.hook" -t "$pkgdir/usr/share/libalpm/hooks"
   cd "$pkgname"
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+post_install() {
+    update-desktop-database -q
+    xdg-icon-resource forceupdate
 }
