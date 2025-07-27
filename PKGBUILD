@@ -5,7 +5,7 @@
 
 _pkgname=tt-kmd
 pkgname=${_pkgname}-dkms
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Tenstorrent Kernel Module"
 arch=(x86_64)
@@ -25,8 +25,8 @@ source=(
   "${_pkgname}-ttkmd-${pkgver}.tar.gz::https://github.com/tenstorrent/tt-kmd/archive/refs/tags/ttkmd-${pkgver}.tar.gz"
   dkms.conf
 )
-sha256sums=('11756bc3858fb755f74228b4c11de910e7401b3be54972214315e00afe2cd6bd'
-            '9b43b301e6795449ac710c7c337389383253988c8eaa7a213135356bccd1e9c1')
+sha256sums=('3996a4f53c8d1cc9559e84ba0a78966926d250697a651ffebc3e69266fad28fa'
+            '410ec93b8ea47bcf03b08924356c39b299ae5b1f13cf3f56335dbb1cd4fb7b4d')
 
 build() {
   cd "${_pkgname}-ttkmd-${pkgver}"
