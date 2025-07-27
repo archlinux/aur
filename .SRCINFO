@@ -1,6 +1,6 @@
 pkgbase = lsfg-vk-git
 	pkgdesc = Lossless Scaling Frame Generation on Linux
-	pkgver = r256.3c77bad
+	pkgver = r255.7c0c29c
 	pkgrel = 1
 	url = https://github.com/PancakeTAS/lsfg-vk
 	install = lsfg-vk.install
@@ -12,12 +12,16 @@ pkgbase = lsfg-vk-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
+	makedepends = rust
+	makedepends = cargo
 	depends = vulkan-icd-loader
 	depends = bash
 	depends = gcc-libs
+	depends = gtk4
+	depends = libadwaita
 	provides = lsfg-vk
 	conflicts = lsfg-vk
-	source = git+https://github.com/PancakeTAS/lsfg-vk
+	source = git+https://github.com/PancakeTAS/lsfg-vk#branch=release
 	sha256sums = SKIP
 
 pkgname = lsfg-vk-git
