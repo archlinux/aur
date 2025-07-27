@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r9385.g3426bcdc7
+pkgver=0.1.r9409.g168b80dd4
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -88,63 +88,75 @@ noextract=(
     patches.zip
 )
 
+_source_var=(
+    "stenzek.shaderc:SHADERC"
+    "spirv-cross:SPIRV_CROSS:SPIRV-Cross"
+    "stenzek.cpuinfo:CPUINFO"
+    "stenzek.discord-rpc:DISCORD_RPC"
+    "stenzek.soundtouch:SOUNDTOUCH"
+    "stenzek.plutosvg:PLUTOSVG"
+)
+
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git checkout 3426bcdc719b3f29f28508a0d4b42a02f58d980d
     git describe | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     # checkout correct versions of deps
-    flatpakdir=$srcdir/duckstation/scripts/packaging/flatpak
-    yq -cr '.modules[] | select(type == "string")' "$flatpakdir/org.duckstation.DuckStation.yaml" \
-      | while read -r dep ; do
-            local dep_name=$(yq -cr ".name" "$flatpakdir/$dep")
-            local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$flatpakdir/$dep")
-            for src in "${source[@]}"; do
-                local src_name=${src%%::*}
-                local src_url=${src##*::}
-                if [ "$src_name" = "$dep_name" ] || [ "$src_url" = "$dep_url" ]; then
-                    local dep_ver=$(yq -cr ".sources[0].tag // .sources[0].commit" "$flatpakdir/$dep")
-                    echo "Checking out $dep_ver for $src_name..."
-                    git -C "$srcdir/$src_name" checkout -q "$dep_ver"
-                fi
-            done
+    deps_script=$srcdir/duckstation/scripts/deps/build-dependencies-linux.sh
+    for src in "${source[@]}"; do
+        local src_name=${src%%::*}
+        for dep in "${_source_var[@]}"; do
+            local dep_name dep_var
+            IFS=':' read dep_name dep_var _ <<< "$dep"
+            if [ "$src_name" = "$dep_name" ]; then
+                local dep_ver
+                dep_ver=$(grep -Po "(?<=^$dep_var=).+" "$deps_script" )
+                echo "Checking out $dep_ver for $src_name..."
+                git -C "$srcdir/$src_name" checkout -q "$dep_ver"
+            fi
         done
+    done
 
     # bundle additional resources
-    cp ../cheats.zip ../patches.zip $srcdir/duckstation/data/resources
+    cp "$srcdir/cheats.zip" "$srcdir/patches.zip" "$srcdir/duckstation/data/resources"
 }
 
 build() {
-    # Build deps with cmake
-    flatpakdir=$srcdir/duckstation/scripts/packaging/flatpak
-    yq -cr '.modules[] | select(type == "string")' "$flatpakdir/org.duckstation.DuckStation.yaml" \
-      | while read -r dep ; do
-            local dep_name=$(yq -cr 'select(.buildsystem == "cmake-ninja").name' "$flatpakdir/$dep")
-            if [ -n "$dep_name" ]; then
-                local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$flatpakdir/$dep")
-                for src in "${source[@]}"; do
-                    local src_name=${src%%::*}
-                    local src_url=${src##*::}
-                    if [ "$src_name" = "$dep_name" ] || [ "$src_url" = "$dep_url" ]; then
-                        echo "Building $dep_name..."
-                        cmake -B "build-$dep_name" -S "$src_name" \
-                            -G Ninja \
-                            -DCMAKE_C_COMPILER=clang \
-                            -DCMAKE_CXX_COMPILER=clang++ \
-                            -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-                            -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-                            -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-                            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-                            -DCMAKE_INSTALL_PREFIX=/usr \
-                            $(yq -cr '[."config-opts"[] | select(. | test("_COMPILER") | not)] | join(" ")' "$flatpakdir/$dep")
-                        ninja -C "build-$dep_name"
-                        DESTDIR="$srcdir/deps" ninja -C "build-$dep_name" install
-                    fi
-                done
+    deps_script=$srcdir/duckstation/scripts/deps/build-dependencies-linux.sh
+    for src in "${source[@]}"; do
+        local src_name=${src%%::*}
+        for dep in "${_source_var[@]}"; do
+            local dep_name dep_var dep_dir
+            IFS=':' read dep_name dep_var dep_dir <<< "$dep"
+            if [ "$src_name" = "$dep_name" ]; then
+                [ -z "$dep_dir" ] && dep_dir=$dep_var
+                local dep_opts
+                dep_opts=$(
+                    awk -v dir="$dep_dir" -v var="$dep_var" '
+                      $0 ~ "^cd.+\\$" var {in_block=1; next}
+                      $0 ~ "^cd.+" dir {in_block=1; next}
+                      $0 ~ "^cd \\.\\." && in_block {in_block=0}
+                      in_block
+                    ' "$deps_script" | tr ' ' '\n' | grep '^-D' | grep -Ev '_COMPILER|_PREFIX_PATH|_INSTALL_PREFIX')
+
+                echo "Building $dep_name..."
+                cmake -B "build-$dep_name" -S "$src_name" \
+                    -G Ninja \
+                    -DCMAKE_C_COMPILER=clang \
+                    -DCMAKE_CXX_COMPILER=clang++ \
+                    -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+                    -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+                    -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+                    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+                    -DCMAKE_INSTALL_PREFIX=/usr \
+                    $dep_opts
+                ninja -C "build-$dep_name"
+                DESTDIR="$srcdir/deps" ninja -C "build-$dep_name" install
             fi
-      done
+        done
+    done
 
     echo "Building duckstation..."
 
@@ -160,22 +172,16 @@ build() {
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DCMAKE_PREFIX_PATH="$srcdir/deps/usr" \
-        -DCMAKE_BUILD_RPATH=/usr/lib/duckstation \
-        -DCMAKE_SKIP_RPATH=ON \
-        -DBUILD_NOGUI_FRONTEND=OFF \
-        -DBUILD_QT_FRONTEND=ON \
+        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/lib/duckstation" \
+        -DALLOW_INSTALL=ON \
         -Wno-dev
     ninja -C build
 }
 
 package() {
-    # Install everything into /usr/lib/duckstation
-    install -m 755 -d "${pkgdir}/usr/lib"
-    cp -drv --no-preserve='ownership' build/bin "${pkgdir}/usr/lib/${_pkgname}"
-    # Install bundled libraries
-    find "${srcdir}/deps/usr/lib" -name '*.so*' -exec cp -dv --no-preserve='ownership' '{}' "${pkgdir}/usr/lib/${_pkgname}/" \;
+    ninja -C build install
 
-    # rpath
+    # patch rpath
     patchelf --force-rpath --set-rpath "/usr/lib/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/$_pkgname-qt"
 
     # Install additional license
