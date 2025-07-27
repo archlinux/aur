@@ -1,12 +1,12 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r1552.bc8eda28
+pkgver=r1593.19e963a2
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
 url="https://github.com/RimSort/RimSort"
 license=("GPL3")
-makedepends=(python patchelf)
+makedepends=(python patchelf git)
 depends=(
     "python"
 )
