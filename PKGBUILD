@@ -2,14 +2,14 @@
 
 _pkgname=dynisland
 pkgname=$_pkgname-git
-pkgver=0.1.2.r2.gfb03410
+pkgver=0.1.4.r0.g98ad46d
 pkgrel=1
 pkgdesc="A Dynamic Island bar written in Rust"
 arch=('x86_64')
 url="https://github.com/cr3eperall/dynisland"
 license=('MIT')
-depends=('gtk4' 'gtk4-layer-shell')
-makedepends=('git' 'cargo') 
+depends=('gtk4' 'gtk4-layer-shell' 'mimalloc')
+makedepends=('git' 'cargo' 'mimalloc') 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
