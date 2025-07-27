@@ -9,7 +9,7 @@
 _pkgname="forkgram"
 pkgname="$_pkgname"
 pkgver=5.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -54,16 +54,9 @@ makedepends=(
   gperf    # for tde2e
   jemalloc # gio error when absent
   libtg_owt
-  microsoft-gsl
-  mm-common
   ninja
-  perl-xml-parser
-  plasma-wayland-protocols
-  python
-  python-packaging
   range-v3
   tl-expected
-  wayland-protocols
 )
 optdepends=(
   'webkit2gtk: embedded browser features'
