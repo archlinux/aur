@@ -12,7 +12,7 @@ url="http://ulauncher.io"
 license=('GPL3')
 # Note: python-xlib is not used directly, but needed by EWMH, which is vendored
 depends=('gtk3' 'webkit2gtk-4.1' 'python>=3.8' 'python-cairo' 'python-gobject' 'python-xlib')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools' 'make' 'nodejs' 'yarn')
 checkdepends=('desktop-file-utils')
 optdepends=('gtk-layer-shell: wayland layer shell integration' 'xapp: tray icon library - single click support' 'libappindicator-gtk3: tray icon library' 'python-levenshtein: fuzzy search performance')
 install="ulauncher.install"
