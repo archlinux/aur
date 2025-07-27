@@ -1,7 +1,7 @@
 # Maintainer: user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Spectral warping wavetable synth. Manual download of .deb installer required."
 arch=('x86_64')
 url="https://vital.audio"
@@ -16,15 +16,15 @@ versioned_filename_deb="${pkgname_deb}-${pkgver}.deb"
 
 
 prepare() {
+
 echo "The AUR moderators have prohibited mirroring ${filename_deb}, so unfortunately \
 the users will now be required to manually download the file on their own \
 from ${url}."
 
-echo "Please select the '${filename_deb}' file you manually downloaded from ${url} in the dialog box. \
-If you haven't done so already, cancel the dialog, download the file and run the setup again."
-
     # Check if the .deb source file already exists in the srcdir (PKGBUILD directory)
     if [[ ! -f "${srcdir}/${versioned_filename_deb}" ]]; then
+echo "Please select the '${filename_deb}' file you manually downloaded from ${url} in the dialog box. \
+If you haven't done so already, cancel the dialog, download the file and run the setup again."
 
 
         local downloaded_file=""
