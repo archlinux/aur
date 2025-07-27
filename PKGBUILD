@@ -40,8 +40,8 @@ package_grub-theme-minegrub() {
 	install -dm755 "${pkgdir}/usr/share/grub/themes"
 	cd "${srcdir}/${_projectname}-${pkgver}"
 	find minegrub -type f -exec install -Dm 644 "{}" "$pkgdir/usr/share/grub/themes/{}" \;
-	rm "${pkgdir}/usr/share/grub/themes/minegrub/update_theme.py"
-	rm "${pkgdir}/usr/share/grub/themes/minegrub/update_theme.py.orig"
+	rm -f "${pkgdir}/usr/share/grub/themes/minegrub/update_theme.py"
+	rm -f "${pkgdir}/usr/share/grub/themes/minegrub/update_theme.py.orig"
 
 	install -Dpm644 "${srcdir}/${_projectname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
