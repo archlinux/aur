@@ -76,3 +76,6 @@ Add update instruction to version check
 Add update instruction to version check
 
 
+Migrate to use custom rmtree
+
+
