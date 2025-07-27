@@ -1,0 +1,12 @@
+diff -ura healthchecks.orig/hc/lib/webauthn.py healthchecks.new/hc/lib/webauthn.py
+--- healthchecks.orig/hc/lib/webauthn.py	2025-07-27 16:58:41.398096099 -0400
++++ healthchecks.new/hc/lib/webauthn.py	2025-07-27 16:59:05.164928854 -0400
+@@ -14,7 +14,7 @@
+     UserVerificationRequirement,
+ )
+ 
+-fido2.features.webauthn_json_mapping.enabled = True
++#fido2.features.webauthn_json_mapping.enabled = True
+ 
+ 
+ class CreateHelper:
