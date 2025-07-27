@@ -1,7 +1,7 @@
-# Maintainer: hev <r@hev.cc>
+# Maintainer: hev <git@hev.cc>
 
 pkgname=sockstun
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="A high-performance and low-overhead tunnel over socks5 proxy (tun2socks)."
 arch=('x86_64')
