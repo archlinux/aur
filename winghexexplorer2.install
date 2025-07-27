@@ -1,0 +1,34 @@
+post_install() {
+    echo "Updating MIME database and icon cache..."
+
+    xdg-mime install /opt/WingHexExplorer2/share/x-winghex.xml
+    xdg-mime default com.wingsummer.winghexexplorer2.desktop application/x-winghex
+
+    xdg-icon-resource install --context mimetypes --size 32 /opt/WingHexExplorer2/share/winghexpro32.png application-x-winghex
+    xdg-icon-resource install --context mimetypes --size 64 /opt/WingHexExplorer2/share/winghexpro64.png application-x-winghex
+    xdg-icon-resource install --context mimetypes --size 128 /opt/WingHexExplorer2/share/winghexpro128.png application-x-winghex
+
+    update-mime-database /usr/share/mime
+    xdg-icon-resource forceupdate
+    gtk-update-icon-cache /usr/share/icons/hicolor
+    update-desktop-database /usr/share/applications
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Cleaning MIME database and icon cache..."
+
+    xdg-mime uninstall /opt/WingHexExplorer2/share/x-winghex.xml
+
+    xdg-icon-resource uninstall --context mimetypes --size 32 application-x-winghex
+    xdg-icon-resource uninstall --context mimetypes --size 64 application-x-winghex
+    xdg-icon-resource uninstall --context mimetypes --size 128 application-x-winghex
+
+    update-mime-database /usr/share/mime
+    xdg-icon-resource forceupdate
+    gtk-update-icon-cache /usr/share/icons/hicolor
+    update-desktop-database /usr/share/applications
+}
