@@ -1,0 +1,12 @@
+post_install() {
+  cat <<-EOF
+::
+:: sish needs some additional files to work, or you will get crashes.
+::
+::    $ cp -av /usr/share/sish .
+::    $ cd sish
+::    $ sish --http-address localhost:3000 --domain testing.ssi.sh
+::
+EOF
+}
+

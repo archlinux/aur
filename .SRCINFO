@@ -1,0 +1,17 @@
+pkgbase = sish
+	pkgdesc = HTTP(S)/WS(S)/TCP Tunnels to localhost using only SSH
+	pkgver = 2.20.0
+	pkgrel = 1
+	url = https://github.com/antoniomika/sish
+	install = sish.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = https://github.com/antoniomika/sish/archive/refs/tags/v2.20.0.tar.gz
+	sha256sums = 2f9ffefefe07f6d2c7b7f75885e748dee3dd63024242ca22f115c85259acc7d9
+
+pkgname = sish
