@@ -1,0 +1,5 @@
+post_install() {
+  echo '::: post-install : setting capabilities'
+  sh -c 'cd /usr/bin; sudo setcap cap_net_raw,cap_net_admin,cap_net_bind_service=+ep httpseal'
+  echo '::: post-install : done'
+}
