@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-humble-base
-pkgver=2024.08.07
-pkgrel=4
+pkgver=2025.07.21
+pkgrel=1
 _rosdist="Humble Hawksbill"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -37,9 +37,13 @@ conflicts=("ros2-${_rosdist_short}")
 source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.10.0.tar.gz::https://github.com/ros2/variants/archive/0.10.0.tar.gz"
+    "mcap_vendor_cstdint.patch"
+    "fastdds.patch"
 )
-sha256sums=('a842548afdb525d772fb9225d85032e7f06d39f46196fa728fdfcbcfd95bc7ed'
-            'df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6')
+sha256sums=('b82b15e9b186e9a0df2acb44c1a09d4bf2b24ded37a86e08115c32cefdecc89a'
+            'df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6'
+            'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
+            'c3362474bb6965fdb72746cbb9aa50e9e6b0788def4818aa4756164e881257fd')
 
 prepare() {
     # Clone the repos
@@ -56,9 +60,24 @@ prepare() {
     git -C "$srcdir/ros2/src/ros2/rosbag2" cherry-pick -n 65c889e1fa55dd85a148b27b8c27dadc73238e67
 
     # Support empy3 and empy4
+    git -C "$srcdir/ros2/src/ros2/rosidl" reset --hard HEAD
     git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n 5b4700c7e6ea61125ee4a4f98a9ec936eec4b4c1
     git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n b8381d955a111cdf8a52a0f1891cc55de5f19db1
     git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n e25750db3d7735947cad24f630d135ba02db5e59
+    git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n b3d84469b7a82ba63cf7ce3f708ba2db6b9d7607
+
+    # https://github.com/foxglove/mcap/pull/1371
+    git -C "$srcdir/ros2/src/ros2/rosbag2" checkout "mcap_vendor/src/main.cpp"
+    git -C "$srcdir/ros2/src/ros2/rosbag2" apply "$srcdir/mcap_vendor_cstdint.patch"
+
+    # https://github.com/eProsima/Fast-DDS/issues/5790
+    # https://github.com/eProsima/Fast-DDS/issues/5792
+    git -C "$srcdir/ros2/src/eProsima/Fast-DDS" checkout .
+    git -C "$srcdir/ros2/src/eProsima/Fast-DDS" apply "$srcdir/fastdds.patch"
+
+    # https://github.com/ros/urdfdom/pull/205
+    git -C "$srcdir/ros2/src/ros/urdfdom" checkout .
+    git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 4768260074a90510571810d7439113960a304d44
 }
 
 build() {
@@ -68,6 +87,8 @@ build() {
     # Remove D_FORTIFY_SOURCE to avoid compilation errors
     CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
+
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
     # Build
     # THIRDPARTY_Asio: This forces Fast-DDS to use its internal ASIO version.

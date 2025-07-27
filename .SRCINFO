@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-base
 	pkgdesc = A set of software libraries and tools for building robot applications (base variant)
-	pkgver = 2024.08.07
-	pkgrel = 4
+	pkgver = 2025.07.21
+	pkgrel = 1
 	url = https://index.ros.org/p/ros_base/#humble
 	arch = any
 	license = Apache
@@ -25,9 +25,13 @@ pkgbase = ros2-humble-base
 	depends = tinyxml
 	depends = tinyxml2
 	conflicts = ros2-humble
-	source = https://github.com/ros2/ros2/archive/release-humble-20240807.tar.gz
+	source = https://github.com/ros2/ros2/archive/release-humble-20250721.tar.gz
 	source = ros2-variants-0.10.0.tar.gz::https://github.com/ros2/variants/archive/0.10.0.tar.gz
-	sha256sums = a842548afdb525d772fb9225d85032e7f06d39f46196fa728fdfcbcfd95bc7ed
+	source = mcap_vendor_cstdint.patch
+	source = fastdds.patch
+	sha256sums = b82b15e9b186e9a0df2acb44c1a09d4bf2b24ded37a86e08115c32cefdecc89a
 	sha256sums = df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6
+	sha256sums = f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f
+	sha256sums = c3362474bb6965fdb72746cbb9aa50e9e6b0788def4818aa4756164e881257fd
 
 pkgname = ros2-humble-base
