@@ -1,45 +1,51 @@
-# Maintainer: Leandro Guedes <leanguedes@icloud.com>
+# Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
-_pkgname=eqk
-pkgname=${_pkgname}-git
-pkgver=1.0.0.r0.ga3dec55
+pkgname=eqk-git
+pkgver=1.0.0.r0.a3dec55
 pkgrel=1
-pkgdesc="Earthquake Data Fetcher in Go"
+pkgdesc='Earthquake Data Fetcher in Go'
 arch=('x86_64')
-url="https://github.com/mpinheir/eqk"
+url='https://github.com/mpinheir/eqk'
 license=('MIT')
-depends=(glibc)
-makedepends=(git go)
-source=("${_pkgname}::git+https://github.com/mpinheir/eqk")
+depends=(
+  glibc
+)
+makedepends=(
+  git
+  go
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/mpinheir/eqk.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    ( set -o pipefail
-        git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    )
+  cd "$srcdir/${pkgname%-git}"
+
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-    cd "$_pkgname"
-    mkdir -p build
+	cd "$srcdir/${pkgname%-git}"
+
+	mkdir -p build/
 }
 
 build() {
-    cd "$_pkgname"
+	cd "$srcdir/${pkgname%-git}"
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    go build -o build .
+	go build -o build .
 }
 
 package() {
-    cd "$_pkgname"
-    install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$srcdir/${pkgname%-git}"
+
+	install -Dm755 "build/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
