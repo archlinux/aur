@@ -24,7 +24,7 @@ package() {
 
   install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
