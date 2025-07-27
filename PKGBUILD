@@ -5,45 +5,68 @@
 # Contributor: Daniel Matos <daniel99matos at gmail dot com>
 # Contributor: Marco Donadoni <marcodonadoni at live dot it>
 # Contributor: Jeroen Rijken <jeroen dot rijken at gmail dot com>
+
 pkgname=archi
 _pkgver_major=5
 _pkgver_minor=6
 _pkgver_patch=0
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
 license=('MIT')
-depends=('java-runtime' 'bash')
+depends=('java-runtime' 'bash' 'curl')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
 
-source=("https://www.archimatetool.com/downloads/archi/${_pkgver_major}.${_pkgver_minor}/Archi-Linux64-${pkgver}.tgz"
-  "${pkgname}.desktop"
-  "LICENSE")
-sha1sums=('b1f3ca5087a9108f0c73ce6f6eb90e36e43ce8f9'
-          '9db2f9482f32c316c97a14a3345cb417f57945c2'
+# The first source is just a placeholder to avoid makepkg error.
+# The real archive is downloaded manually in prepare() with fallback support.
+source=("${pkgname}.desktop"
+        "LICENSE")
+sha1sums=('9db2f9482f32c316c97a14a3345cb417f57945c2'
           '99c2483de8ee9bd65693caab97d5ad16455ec835')
+
+prepare() {
+  cd "${srcdir}"
+
+  # Define the primary and fallback URLs
+  primary_url="https://www.archimatetool.com/downloads/archi/${pkgver}/Archi-Linux64-${pkgver}.tgz"
+  fallback_url="https://www.archimatetool.com/downloads/archi/${_pkgver_major}.${_pkgver_minor}/Archi-Linux64-${pkgver}.tgz"
+
+  echo "Attempting to download Archi archive..."
+
+  # Try downloading from the primary URL, fallback if it fails
+  if ! curl --fail --location --retry 3 -o "Archi-Linux64-${pkgver}.tgz" "$primary_url"; then
+    echo "Primary URL failed, trying fallback URL..."
+    if ! curl --fail --location --retry 3 -o "Archi-Linux64-${pkgver}.tgz" "$fallback_url"; then
+      echo "Error: Failed to download source archive from both URLs"
+      return 1
+    fi
+  fi
+
+  # Extract the downloaded archive
+  tar -xf "Archi-Linux64-${pkgver}.tgz"
+}
 
 package() {
   cd "${srcdir}"
 
-  # Docs
+  # Install documentation files
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   install -m644 Archi/docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  # Icon and desktop file
+  # Install icon and desktop entry
   install -Dm644 Archi/icon.xpm "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  # Copy binaries
+  # Remove unneeded files and install main application directory
   rm -R Archi/docs
   rm Archi/icon.xpm Archi/Archi.sh
   install -d "${pkgdir}/opt"
   cp -R Archi/ "${pkgdir}/opt/${pkgname}"
   chmod 755 "${pkgdir}/opt/${pkgname}/Archi"
 
-  # Install license
+  # Install license file
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
