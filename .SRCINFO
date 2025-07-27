@@ -1,15 +1,29 @@
 pkgbase = karton
-	pkgdesc = A tool to transparently run Linux programs on macOS or on another Linux distro, or a different architecture
-	pkgver = 1.0.0
+	pkgdesc = A libvirt-based Virtual Machine Manager for KDE
+	pkgver = git20250727
 	pkgrel = 1
-	url = https://karton.github.io/
-	arch = i686
+	url = https://invent.kde.org/sitter/karton
 	arch = x86_64
-	license = LGPL2.1
-	depends = docker
-	provides = karton
-	source = https://github.com/karton/karton/archive/v1.0.0.tar.gz
-	sha256sums = 90d8931ccc61a69c2fe3dc5a4754c67fa5ed5f00a71a89e432150f3cbff97e45
+	license = GPL-3.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kiconthemes
+	depends = kirigami
+	depends = kirigami-addons
+	depends = libosinfo
+	depends = libvirt
+	depends = qqc2-desktop-style
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = spice-gtk
+	source = git+https://invent.kde.org/sitter/karton#commit=976b74b5fb63b32faa3a2ccc4f489d43b04734bf
+	sha256sums = 3eaa2cb3b6bc6fe0b8ac88aa3cdb363433f1f4ce8b6c296d7817eba10f5cb407
 
 pkgname = karton
-
