@@ -1,8 +1,8 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com> 
 
 pkgname=puddletag
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='An audio tag editor for GNU/Linux'
 url="https://docs.${pkgname}.net/"
 license=('GPL-3.0-or-later')
@@ -22,8 +22,8 @@ optdepends=('chromaprint: AcoustID support'
             'python-levenshtein: faster duplicate matching'
             'python-lxml: additional tag sources' 
             'quodlibet: QuodLibet library support')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puddletag/puddletag/archive/${pkgver}.tar.gz")
-sha512sums=('a45d3586d6616cfa153fff52747aa7936368bbc56fd62c76e6f23d11fec9f089d801479f075002e77a4c79dcaf44ed567e81002d1d606670ef2a4ae09bb4219a')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('05190c3c03d25bde1c247929fa76036a1975565ca22484cfff195a0921310bcb1bbcbf254f69d96811866e900e81193040cd2a853c5301acbb8d0fe783f9e6ba')
 
 build() {
   cd "${pkgname}-${pkgver}"
