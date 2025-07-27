@@ -1,19 +1,19 @@
 pkgbase = skychart
 	pkgdesc = Free software to draw sky charts, also known as Cartes du Ciel. Beta version
-	pkgver = 4.3.4867
-	pkgrel = 4
+	pkgver = 4.3.4991
+	pkgrel = 2
 	url = http://www.ap-i.net/skychart/start
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = fpc
-	makedepends = lazarus-qt5
+	makedepends = lazarus-qt6
 	makedepends = wget
-	depends = qt5-base
+	depends = qt6-base
 	depends = xplanet
 	depends = libpasastro
-	depends = qt5pas
+	depends = qt6pas
 	optdepends = xplanet: for displaying textures on planets
-	source = https://build.archlinuxcn.org/~oldherl/files/skychart/skychart-4.3-4867-src.tar.xz
-	sha256sums = 914a1191d6829f25b304889d8f1533290d6b3d986ba8830680c939c53d622a8b
+	source = https://build.archlinuxcn.org/~oldherl/files/skychart/skychart-4.3-4991-src.tar.xz
+	sha256sums = 2d58f801872804b75ac7df3d585a447023768cce7fab8817602f3eea4f066906
 
 pkgname = skychart
