@@ -4,7 +4,7 @@
 
 pkgname=libreport
 pkgver=2.17.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Generic library for reporting various problems'
 arch=('i686' 'x86_64')
 depends=(
@@ -17,7 +17,7 @@ depends=(
 'libnewt' 
 'gtk3' 
 'xmlto' 
-'xmlrpc-c' 
+'libxmlrpc>=1:1.59.03-3' 
 'json-c' 
 'harfbuzz'
 'cairo'
@@ -27,9 +27,16 @@ depends=(
 'curl'
 'libarchive'
 'libxmlrpc'
+'libxml2'
+'zlib'
+'xz'
+'gcc-libs'
+'glib2'
+'icu'
+'gdk-pixbuf2'
+'systemd-libs'
 'nss')
 makedepends=(
-'libxml2'
 'intltool' 
 'asciidoc' 
 'gdk-pixbuf2'
