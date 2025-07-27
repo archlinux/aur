@@ -1,0 +1,22 @@
+pkgbase = vulnx-bin
+	pkgdesc = Modern CLI for exploring vulnerability data with powerful search, filtering, and analysis capabilities
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/cvemap
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = vulnx
+	conflicts = vulnx
+	source_aarch64 = vulnx-1.0.0-aarch64.zip::https://github.com/projectdiscovery/cvemap/releases/download/v1.0.0/vulnx_1.0.0_linux_arm64.zip
+	sha256sums_aarch64 = 48d5bc9ec7ef6dd1f2ae73b031f80c1d34d83af438f5e3ebf4d98168d133924e
+	source_armv7h = vulnx-1.0.0-armv7h.zip::https://github.com/projectdiscovery/cvemap/releases/download/v1.0.0/vulnx_1.0.0_linux_arm.zip
+	sha256sums_armv7h = e4a0f3717000746d1801aaea1475595ba2ed368806f0f16b106f6222fddae294
+	source_i686 = vulnx-1.0.0-i686.zip::https://github.com/projectdiscovery/cvemap/releases/download/v1.0.0/vulnx_1.0.0_linux_386.zip
+	sha256sums_i686 = 9beaba7a76cbad4e9d51c7107851b8151761b9eb13c1f76737eeac6bc9772a26
+	source_x86_64 = vulnx-1.0.0-x86_64.zip::https://github.com/projectdiscovery/cvemap/releases/download/v1.0.0/vulnx_1.0.0_linux_amd64.zip
+	sha256sums_x86_64 = 974078848469889dc253cd37a5bb00c352d67640be1467a88f6e69a77f965a24
+
+pkgname = vulnx-bin
