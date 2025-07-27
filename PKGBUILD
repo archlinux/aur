@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cdncheck"
-pkgver=1.1.28
+pkgver=1.1.29
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go>=1.19')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4bf0b6e7396986bc05c998d5c50a2b08a97743aea7e10506a50b9d0769b6dc59')
+sha256sums=('e1c56d5c8114ba0d332f329a63b709f4337b3bb799a2b88ca2d323680b510f49')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
