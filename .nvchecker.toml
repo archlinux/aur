@@ -1,4 +1,4 @@
-[wootility-appimage]
+[wootility]
 source = "httpheader"
 url = "https://api.wooting.io/public/wootility/download?os=linux"
 regex = "Wootility-((?:\\d|\\.)+)\\.AppImage"
