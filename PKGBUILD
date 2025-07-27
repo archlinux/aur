@@ -3,7 +3,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyxel
-pkgver=2.3.18
+pkgver=2.4.10
 pkgrel=1
 pkgdesc='Retro game development environment'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'glibc' 'python' 'sdl2')
 optdepends=('pyinstaller')
 makedepends=('cargo-nightly' 'clang' 'python-build' 'python-installer' 'python-maturin')
 source=("pyxel-$pkgver::https://github.com/kitao/pyxel/archive/v$pkgver.tar.gz")
-md5sums=('3029a3b1a97b99788afee85635050911')
+md5sums=('23f586a70ba4d8865839fe26da5e9984')
 
 options=('!debug')
 
