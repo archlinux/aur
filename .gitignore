@@ -1,3 +1,5 @@
 cecil*
 src/
 pkg/
+
+!cecil-bin.install
