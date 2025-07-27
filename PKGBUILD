@@ -18,17 +18,17 @@ arch=('x86_64')
 url="https://github.com/LunaisLazier/ShatteredPrism"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1')
 depends=(
-  glibc
-  gcc-libs
-  java-runtime
-  libgl
-  qt6-base
-  qt6-5compat
-  qt6-svg
-  qt6-imageformats
-  qt6-networkauth
-  zlib
-  hicolor-icon-theme
+  'glibc'
+  'gcc-libs'
+  'java-runtime>=17'
+  'libgl'
+  'qt6-base'
+  'qt6-5compat'
+  'qt6-svg'
+  'qt6-imageformats'
+  'qt6-networkauth'
+  'zlib'
+  'hicolor-icon-theme'
 )
 provides=('shatteredprism')
 conflicts=('shatteredprism')

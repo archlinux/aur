@@ -7,7 +7,7 @@ pkgbase = shatteredprism-bin
 	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1
 	depends = glibc
 	depends = gcc-libs
-	depends = java-runtime
+	depends = java-runtime>=17
 	depends = libgl
 	depends = qt6-base
 	depends = qt6-5compat
