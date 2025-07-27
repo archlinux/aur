@@ -9,7 +9,7 @@ url='https://github.com/AshLink95/FarrayInterop'
 license=('MIT')
 
 depends=('gcc' 'gcc-libs' 'gcc-fortran')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'ninja')
 checkdepends=('gtest')
 
 source=("${pkgname}::git+https://github.com/AshLink95/FarrayInterop.git")
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    cmake -S . -B build
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G Ninja -S . -B build
     cmake --build build -j 4
 }
 
@@ -38,7 +38,6 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    cmake --build build --target purge
 
     # Install headers
     install -Dm644 libdir/farray.hpp "$pkgdir/usr/include/farray.hpp"

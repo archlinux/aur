@@ -8,6 +8,7 @@ pkgbase = farrayinterop-git
 	checkdepends = gtest
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = gcc
 	depends = gcc-libs
 	depends = gcc-fortran
