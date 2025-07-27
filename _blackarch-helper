@@ -1,0 +1,60 @@
+#compdef blackarch-helper
+
+_blackarch_helper() {
+    local -a commands
+    local -a category_subcommands
+    local -a tool_subcommands
+    local state
+
+    commands=('category:Manage tool categories' 'tool:Manage individual tools' 'interactive:Open the interactive menu' 'help:Show the help message')
+    category_subcommands=('list:List all categories' 'install:Install an entire category')
+    tool_subcommands=('list:List all tools' 'search:Search for a tool' 'info:Show info for a tool')
+
+    _arguments -C \
+        '1: :->command' \
+        '2: :->subcommand' \
+        '3: :->argument'
+
+    case $state in
+        command)
+            _describe "command" commands
+            ;;
+        subcommand)
+            case $words[2] in
+                category)
+                    _describe "category subcommand" category_subcommands
+                    ;;
+                tool)
+                    _describe "tool subcommand" tool_subcommands
+                    ;;
+            esac
+            ;;
+        argument)
+            case $words[2] in
+                category)
+                    case $words[3] in
+                        install)
+                            # Dynamically generate category list
+                            local -a categories
+                            categories=($(pacman -Sg | grep '^blackarch-' | cut -d' ' -f1 | sort -u))
+                            _describe -t categories "category" categories
+                            ;;
+                    esac
+                    ;;
+                tool)
+                    case $words[3] in
+                        info)
+                            # Generating a list of all tools is too slow.
+                            _message "tool name (use 'tool search' to find one)"
+                            ;;
+                        search)
+                            _message "keyword to search for"
+                            ;;
+                    esac
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+_blackarch_helper "$@"

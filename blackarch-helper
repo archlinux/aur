@@ -1,0 +1,263 @@
+#!/usr/bin/env bash
+#
+# blackarch-helper
+# Simple CLI helper for BlackArch tools
+# Author: Lucas "x0rgus"
+# License: MIT
+# Repository: https://github.com/x0rgus/blackarch-helper
+
+
+## --- Color and Symbol Configuration ---
+COLOR_RESET=$'\033[0m'
+COLOR_GREEN=$'\033[0;32m'
+COLOR_YELLOW=$'\033[0;33m'
+COLOR_RED=$'\033[0;31m'
+COLOR_CYAN=$'\033[0;36m'
+COLOR_BOLD=$'\033[1m'
+
+# --- Logging Functions ---
+# Helper functions to standardize message output.
+
+einfo() { echo -e "${COLOR_GREEN}[INFO]${COLOR_RESET} $1"; }
+ewarn() { echo -e "${COLOR_YELLOW}[WARN]${COLOR_RESET} $1"; } >&2
+eerror() { echo -e "${COLOR_RED}[ERROR]${COLOR_RESET} $1"; } >&2
+edie() { eerror "$1"; exit 1; }
+
+# --- Core Functions ---
+
+# Check if the BlackArch repository is configured in pacman.conf
+check_blackarch_repo() {
+    if ! grep -q '^\[blackarch\]' /etc/pacman.conf; then
+        eerror "BlackArch repository not found in /etc/pacman.conf."
+        echo -e "\nPlease follow the installation instructions at:"
+        echo -e "${COLOR_CYAN}https://blackarch.org/guide.html${COLOR_RESET}\n"
+        exit 1
+    fi
+}
+
+# Check if fzf is installed
+check_fzf() {
+    if ! command -v fzf &>/dev/null; then
+        edie "fzf not found. Please install it with: sudo pacman -S fzf"
+    fi
+}
+
+# --- Logic Functions (Backend) ---
+
+# List all available BlackArch categories
+_list_all_categories() {
+    pacman -Sg | grep '^blackarch-' | cut -d' ' -f1 | sort -u
+}
+
+# List all tools in the BlackArch repository
+_list_all_tools() {
+    pacman -Sgg | grep '^blackarch-' | cut -d' ' -f2 | sort -u
+}
+
+# List tools in a specific category
+_list_tools_in_category() {
+    pacman -Sg "$1" | awk '{print $2}'
+}
+
+# --- Subcommand Functions (User Interface) ---
+
+# Handler for the 'category' command
+handle_category() {
+    local action="$1"
+    local category_name="$2"
+
+    case "$action" in
+        list)
+            einfo "Listing all BlackArch categories:"
+            _list_all_categories
+            ;;
+        install)
+            [[ -z "$category_name" ]] && edie "Usage: $0 category install <category-name>"
+            einfo "Installing all tools from the '$category_name' category..."
+            # shellcheck disable=SC2046
+            sudo pacman -S --needed --noconfirm $(_list_tools_in_category "$category_name")
+            einfo "Installation of category '$category_name' complete."
+            ;;
+        *)
+            eerror "Invalid subcommand for 'category'. Use 'list' or 'install'."
+            usage
+            exit 1
+            ;;
+    esac
+}
+
+# Handler for the 'tool' command
+handle_tool() {
+    local action="$1"
+    local tool_name="$2"
+
+    case "$action" in
+        list)
+            einfo "Listing all tools in the BlackArch repository..."
+            _list_all_tools
+            ;;
+        search)
+            [[ -z "$tool_name" ]] && edie "Usage: $0 tool search <keyword>"
+            einfo "Searching for tools with the keyword '$tool_name':"
+            _list_all_tools | grep -i --color=auto "$tool_name"
+            ;;
+        info)
+            [[ -z "$tool_name" ]] && edie "Usage: $0 tool info <tool-name>"
+            einfo "Displaying information for the tool '$tool_name':"
+            pacman -Si "$tool_name"
+            ;;
+        *)
+            eerror "Invalid subcommand for 'tool'. Use 'list', 'search', or 'info'."
+            usage
+            exit 1
+            ;;
+    esac
+}
+
+# Interactive menu with FZF
+interactive_menu() {
+    check_fzf
+    
+    # Main navigation loop (allows going back to the category menu)
+    while true; do
+        einfo "Select a category to explore (ESC to exit)"
+        local category
+        # 1. Category Menu
+        category=$(_list_all_categories | fzf --prompt="▶ Category: " --height=40% --border --header="Press ESC to exit the program.")
+        
+        # If the user pressed ESC in the category menu, fzf returns empty. We break the loop.
+        [[ -z "$category" ]] && break
+
+        # Loop for the tool view (allows going back from the tool list)
+        while true; do
+            einfo "Category: ${COLOR_CYAN}$category${COLOR_RESET}"
+            
+            # 2. Tool Menu
+            # --multi allows selecting multiple items with the TAB key.
+            # --expect=esc tells us if the ESC key was pressed, so we can "go back".
+            # The output of fzf with --expect is:
+            # line 1: the key that was pressed (e.g., esc) or empty (if enter was pressed)
+            # line 2...N: the selected items
+            local fzf_output
+            fzf_output=$(_list_tools_in_category "$category" | fzf \
+                --multi \
+                --prompt="▶ Tool: " \
+                --border \
+                --header="Use TAB to select. ENTER to install, ESC to go back." \
+                --expect=esc)
+
+            # If fzf's output is empty, the user cancelled with CTRL+C. Exit everything.
+            [[ -z "$fzf_output" ]] && break 2 # 'break 2' exits both the inner and outer loops
+
+            local key_pressed
+            key_pressed=$(head -n1 <<< "$fzf_output")
+            
+            # If the pressed key was ESC, we break the inner loop to go back to the category menu.
+            if [[ "$key_pressed" == "esc" ]]; then
+                break # Exits the tool loop, goes back to the category loop
+            fi
+
+            # Get only the tool names (ignores the first line which is the key)
+            local selected_tools
+            selected_tools=$(tail -n +2 <<< "$fzf_output")
+
+            # If no tools were selected, do nothing and show the tool list again.
+            if [[ -z "$selected_tools" ]]; then
+                ewarn "No tools selected. Press ESC to go back."
+                sleep 1
+                continue # Restarts the tool loop
+            fi
+
+            # 3. Confirmation
+            einfo "The following tools will be installed:"
+            echo -e "${COLOR_CYAN}${selected_tools}${COLOR_RESET}"
+            
+            read -p $'\e[33m[WARN]\e[0m Do you want to proceed with the installation? (y/N) ' -n 1 -r reply
+            echo # Move to the next line
+            
+            # 4. Installation
+            if [[ "$reply" =~ ^[Yy]$ ]]; then
+                einfo "Starting installation..."
+                # We need to pass the tools to pacman as separate arguments.
+                # shellcheck disable=SC2086
+                sudo pacman -S --needed --noconfirm ${selected_tools}
+                einfo "Installation complete. Press any key to continue."
+                read -n 1 -s
+            else
+                ewarn "Installation cancelled by the user."
+            fi
+            
+            # After the action (install or cancel), we return to the tool menu for the same category.
+            # If you wanted to go back to the category menu instead, change 'continue' to 'break'.
+            continue 
+
+        done # End of the tool loop
+    done # End of the category loop
+
+    einfo "Exiting blackarch-helper."
+}
+
+# Help/usage function
+usage() {
+    cat <<EOF
+
+${COLOR_BOLD}blackarch-helper${COLOR_RESET}: A CLI tool to explore the BlackArch repository.
+
+${COLOR_BOLD}USAGE:${COLOR_RESET}
+    blackarch-helper <command> <subcommand> [arguments]
+
+${COLOR_BOLD}COMMANDS:${COLOR_RESET}
+    ${COLOR_CYAN}category${COLOR_RESET}    Manage tool categories.
+        ${COLOR_YELLOW}list${COLOR_RESET}          Lists all available categories.
+        ${COLOR_YELLOW}install${COLOR_RESET} <cat>  Installs all tools from a category.
+
+    ${COLOR_CYAN}tool${COLOR_RESET}        Manage individual tools.
+        ${COLOR_YELLOW}list${COLOR_RESET}          Lists all tools in the repository.
+        ${COLOR_YELLOW}search${COLOR_RESET}  <str>  Searches for tools by keyword.
+        ${COLOR_YELLOW}info${COLOR_RESET}    <pkg>  Shows information about a tool (package).
+
+    ${COLOR_CYAN}interactive${COLOR_RESET}   Opens an interactive FZF menu to explore categories and tools.
+    ${COLOR_CYAN}help${COLOR_RESET}          Shows this help message.
+
+${COLOR_BOLD}EXAMPLES:${COLOR_RESET}
+    blackarch-helper category list
+    blackarch-helper tool search nmap
+    blackarch-helper tool info metasploit
+    sudo blackarch-helper category install blackarch-scanner
+
+EOF
+}
+
+# --- Main Execution ---
+
+# Initial check
+check_blackarch_repo
+
+# If no arguments are passed, default to the interactive menu
+if [[ $# -eq 0 ]]; then
+    interactive_menu
+    exit 0
+fi
+
+# Command Dispatcher
+case "$1" in
+    category)
+        # Pass the remaining arguments (from the second one on) to the handler
+        handle_category "${@:2}"
+        ;;
+    tool)
+        handle_tool "${@:2}"
+        ;;
+    interactive | fzf) # Keep 'fzf' as an alias
+        interactive_menu
+        ;;
+    help | --help | -h)
+        usage
+        ;;
+    *)
+        eerror "Unknown command '$1'."
+        # Simple "did you mean?". Just suggest the valid commands.
+        echo -e "\nValid commands are: ${COLOR_CYAN}category, tool, interactive, help${COLOR_RESET}"
+        exit 1
+        ;;
+esac
