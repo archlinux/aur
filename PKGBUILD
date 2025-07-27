@@ -1,9 +1,9 @@
 # Maintainer: AshLink <ashraf.zoubeh.123@gmail.com>
 
 pkgname=farrayinterop-git
-pkgver=0.r0.g77c9dba 
+pkgver=0.r0.ga5f0a51 
 pkgrel=1
-pkgdesc='A header-only library that allows the use of Fortran arrays in C++'
+pkgdesc='A library that allows the use of Fortran arrays in C++'
 arch=('x86_64')
 url='https://github.com/AshLink95/FarrayInterop'
 license=('MIT')
