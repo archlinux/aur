@@ -3,23 +3,39 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=12.4.9
+pkgver=12.4.10.2
 pkgrel=1
 pkgdesc="Audible audiobook manager: liberate your Library"
 arch=('x86_64')
 url="https://github.com/rmcrackan/Libation"
 license=('GPL-3.0-only')
-depends=('fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12')
+depends=('bash' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12')
 makedepends=('dotnet-sdk>=9')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5d9cb8c8da4051cafa7336f757e940628056f06abee9b3e49a4bea281578a2ad')
+sha256sums=('6be2ea7207399cfc55f779d5bdcceda22857bb6a441a783828a1c58b1eee816a')
 
 build() {
     cd "${pkgname^}-${pkgver}"
-    dotnet publish Source/LibationCli/LibationCli.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/LibationCli/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/LibationAvalonia/LibationAvalonia.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/LibationAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/HangoverAvalonia/HangoverAvalonia.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/HangoverAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/LoadByOS/LinuxConfigApp/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LibationAvalonia/LibationAvalonia.csproj \
+        --configuration Release \
+        --output build \
+        --runtime linux-x64 \
+        -p:PublishProfile=Source/LibationAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj \
+        --configuration Release \
+        --output build \
+        --runtime linux-x64 \
+        -p:PublishProfile=Source/LoadByOS/LinuxConfigApp/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LibationCli/LibationCli.csproj \
+        --configuration Release \
+        --output build \
+        --runtime linux-x64 \
+        -p:PublishProfile=Source/LibationCli/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/HangoverAvalonia/HangoverAvalonia.csproj \
+        --configuration Release \
+        --output build \
+        --runtime linux-x64 \
+        -p:PublishProfile=Source/HangoverAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
 }
 
 package() {
