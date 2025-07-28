@@ -1,10 +1,11 @@
 # Maintainer: Daniel Pierce <moofed@gmail.com>
+# Maintainer: gugah <gugaboy at rocketmail dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack
 pkgver=2023.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Head tracking software"
 arch=('x86_64')
 url="https://github.com/opentrack/opentrack/"
@@ -13,9 +14,17 @@ depends=('qt5-base' 'opencv')
 makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt5-tools' 'procps-ng')
 optdepends=('onnxruntime: neuralnet tracker')
 source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" 
-        "opentrack.desktop")
+        "opentrack.desktop"
+        "fix-process-list.patch")
 sha256sums=('ba5fea9da4b7d70162648e95ba6dcd8bed140519eb607a99a5daf1b00809f824'
-            '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f')
+            '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f'
+            'c5e8d0ae632152350019f56358a92112075eb57fdafaa124b0f781179b6e8ab1')
+
+prepare() {
+  cd opentrack-opentrack-$pkgver
+
+  patch -p1 < ../fix-process-list.patch
+}
 
 build() {
   cd opentrack-opentrack-$pkgver
