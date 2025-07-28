@@ -1,0 +1,16 @@
+pkgbase = dotfiles-installer-git
+	pkgdesc = Install dotfiles easy, fast and secure.
+	pkgver = 0.9.4.2.gdcc137b
+	pkgrel = 1
+	url = https://github.com/mylinuxforwork/dotfiles-installer
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = git
+	depends = glibc
+	source = dotfiles-installer-git::git+https://github.com/mylinuxforwork/dotfiles-installer.git
+	sha256sums = SKIP
+
+pkgname = dotfiles-installer-git
