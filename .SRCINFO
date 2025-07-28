@@ -1,18 +1,23 @@
 pkgbase = stmcufinder
 	pkgdesc = STM32 and STM8 product finder for desktops
 	pkgver = 6.1.0
-	pkgrel = 4
-	url = https://www.st.com/en/development-tools/st-mcu-finder.html
+	pkgrel = 5
+	url = https://www.st.com/en/development-tools/st-mcu-finder-pc.html
 	arch = x86_64
 	license = Commercial
+	makedepends = imagemagick
 	optdepends = stm32cubemx
 	options = !strip
-	source = en.st-mcu-finderlin-v6-1-0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group1/bc/e7/29/51/21/17/4a/9c/st-mcu-finderlin-v6-1-0/files/st-mcu-finderlin-v6-1-0.zip/jcr:content/translations/en.st-mcu-finderlin-v6-1-0.zip
+	source = local://en.st-mcu-finderlin-v6-1-0.zip
 	source = http_headers
 	source = stmcufinder.desktop
 	source = stmcufinder
+	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
+	source = https://www.st.com/resource/en/additional_license_terms/additional-license-tadditional-license-terms-for-st-mcu-finder-pc-v6-1-0.html
 	sha256sums = 0d0602f3a52526e395d5bc59c074cc35e9740bd83e3cccf2a25723a8c952f0ee
-	sha256sums = 953f713f671727c2ace080362533bee6c309575044e5542d10e332bc28908d5b
+	sha256sums = e512e091ce9677a97228389c30286a8bb07abaf798026f676d5d4b7dce199410
+	sha256sums = c8fe5f9dd6f44612c4015815201746d6a9df7fd912a4dbb864cd98d3fb570faf
+	sha256sums = dfc273dbd33c2db31feb4be198f8753cee3f23e57566829f6f53263b19f9f9ad
 	sha256sums = SKIP
 	sha256sums = SKIP
 

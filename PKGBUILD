@@ -3,38 +3,44 @@
 pkgname="stmcufinder"
 pkgver=6.1.0
 _pkg_file_name=en.st-mcu-finderlin-v6-1-0.zip
-pkgrel=4
+pkgrel=5
 pkgdesc="STM32 and STM8 product finder for desktops"
 arch=("x86_64")
+makedepends=('imagemagick')
 depends=()
 optdepends=("stm32cubemx")
 conflicts=()
-url="https://www.st.com/en/development-tools/st-mcu-finder.html"
+url="https://www.st.com/en/development-tools/st-mcu-finder-pc.html"
 license=('Commercial')
 options=(!strip)
 
-# Download file with list of URLs to files
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/st-mcu-finder-pc/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$_curl_req_url" )"
+if [ ! -f ${PWD}/${_pkg_file_name} ]; then
+	msg2 ""
+	msg2 "Package not found!"
+	msg2 "The ${pkgname} can be downloaded here: ${url}"
+	msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory (${PWD}) before build."
+	msg2 ""
+fi
 
-# Extract actual download link to the desired file
-_pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
-_pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
-_download_path="https://www.st.com""$_pkg_url"
-#echo $_download_path
+# Download cookies
+curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$url" > /dev/null
 
 DLAGENTS=("https::/usr/bin/curl \
-            -gqb '' --retry 3 --retry-delay 3 \
-            --cookie "${srcdir}http_cookies" \
-            -H "@${srcdir}http_headers" \
-            -o %o --compressed %u")
+              -gqb '' --retry 3 --retry-delay 3 \
+              --cookie "${srcdir}http_cookies" \
+              -H "@${srcdir}http_headers" \
+              -o %o --compressed %u")
 
-source=("${_pkg_file_name}"::"$_download_path"
+source=("local://${_pkg_file_name}"
 	"http_headers"
 	"stmcufinder.desktop"
-	"stmcufinder")
+	"stmcufinder"
+	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf"
+	"https://www.st.com/resource/en/additional_license_terms/additional-license-tadditional-license-terms-for-st-mcu-finder-pc-v${pkgver//./-}.html")	# fix needed
 sha256sums=('0d0602f3a52526e395d5bc59c074cc35e9740bd83e3cccf2a25723a8c952f0ee'
-	    '953f713f671727c2ace080362533bee6c309575044e5542d10e332bc28908d5b'
+	    'e512e091ce9677a97228389c30286a8bb07abaf798026f676d5d4b7dce199410'
+	    'c8fe5f9dd6f44612c4015815201746d6a9df7fd912a4dbb864cd98d3fb570faf'
+	    'dfc273dbd33c2db31feb4be198f8753cee3f23e57566829f6f53263b19f9f9ad'
 	    'SKIP'
 	    'SKIP')
 prepare(){
@@ -71,6 +77,11 @@ package() {
 	install -dm 755 "${pkgdir}/usr/bin/"
 	install -Dm 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/STMCUFinder"
+	
+	msg2 'Installation of license files'
+	install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm 644 -o root -g root "${srcdir}/dm00218346.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm 644 -o root -g root "${srcdir}/additional-license-tadditional-license-terms-for-st-mcu-finder-pc-v${pkgver//./-}.html" "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	msg2 'Fix folder permissions'
 	chmod 755 "${pkgdir}/opt/${pkgname}/jre"

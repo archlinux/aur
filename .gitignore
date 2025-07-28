@@ -6,3 +6,5 @@ src/
 *.pkg.tar.zst
 
 http_cookies
+*.pdf
+*.html
