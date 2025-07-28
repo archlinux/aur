@@ -10,7 +10,7 @@ license=(LGPL-2.1-or-later)
 depends=(file android-udev)
 makedepends=(cmake)
 conflicts=(android-file-transfer android-file-transfer-git)
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/whoozle/${pkgname%-cli}/archive/v${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/whoozle/${pkgname%-cli}-linux/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('0f366a8d659926d3859a8628d4f7592692389b060f67da9a936d19b252b42d96')
 build() {
   cd android-file-transfer-linux-$pkgver

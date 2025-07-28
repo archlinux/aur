@@ -11,7 +11,7 @@ pkgbase = android-file-transfer-cli
 	depends = android-udev
 	conflicts = android-file-transfer
 	conflicts = android-file-transfer-git
-	source = android-file-transfer-cli-4.5.tar.gz::https://github.com/whoozle/android-file-transfer/archive/v4.5.tar.gz
+	source = android-file-transfer-cli-4.5.tar.gz::https://github.com/whoozle/android-file-transfer-linux/archive/refs/tags/v4.5.tar.gz
 	sha256sums = 0f366a8d659926d3859a8628d4f7592692389b060f67da9a936d19b252b42d96
 
 pkgname = android-file-transfer-cli
