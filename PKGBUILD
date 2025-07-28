@@ -3,7 +3,7 @@ _pkgname=LocalAI
 pkgname=local-ai
 pkgver=3.2.3 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
-pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OPENBlas CPU optimizations)"
+pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
 arch=('x86_64')
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
