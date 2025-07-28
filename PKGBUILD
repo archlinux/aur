@@ -1,8 +1,8 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=bodyslide
-pkgver=5.7.0
-pkgrel=2
+pkgver=5.7.1
+pkgrel=1
 pkgdesc='BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.'
 arch=('x86_64')
 
@@ -19,7 +19,7 @@ makedepends=('cmake'
 	'fbx-sdk'
 )
 optdepends=('libxml2-legacy')
-source=("${pkgname}::git+https://github.com/wrb2012/BodySlide-and-Outfit-Studio.git"
+source=("bsos::https://github.com/ousnius/BodySlide-and-Outfit-Studio/archive/refs/tags/v${pkgver}.tar.gz"
 	'git+https://github.com/ousnius/nifly.git'
 	'BodySlide.desktop'
 	'OutfitStudio.desktop'
@@ -31,6 +31,8 @@ sha256sums=('SKIP'
 )
 
 prepare() {
+	tar xzvf bsos
+	mv BodySlide-and-Outfit-Studio-${pkgver} ${pkgname}
 	cp -rf nifly ${pkgname}/lib/
 }
 
