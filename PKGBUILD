@@ -2,12 +2,12 @@
 # Upstream: https://github.com/ClassIsland/ClassIsland
 
 pkgname="classisland"
-pkgver="1.7.103.0"
-pkgrel=4
+pkgver="1.7.104.0"
+pkgrel=1
 pkgdesc="ClassIsland - 适用于班级大屏的课表小工具。社区维护 AUR 包。"
 arch=('x86_64' 'aarch64')
 url='https://www.classisland.tech/'
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 options=('!strip' '!debug')
 conflicts=('classisland-git')
 
@@ -15,11 +15,11 @@ source=("LICENSE.txt" "launcher.sh")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' '751127b78f0b1d9d07ebbcd87ea8e27d1f96467861a4b7491b77132158587987')
 # x86_64文件信息
 source_x86_64=("https://ghfast.top/https://github.com/ClassIsland/ClassIsland/releases/download/${pkgver}/ClassIsland_app_linux_x64_selfContained_deb.deb")
-sha256sums_x86_64=("52f036c3e040a1ca956053cccb49efd3e9d271eba63d66b986a90c1d9ca352cc")
+sha256sums_x86_64=("b3106d408ec55c03ca62ab86e1f9120328bfe7509427483538933c75bf69b78a")
 
 # aarch64文件信息
 source_aarch64=("https://ghfast.top/https://github.com/ClassIsland/ClassIsland/releases/download/${pkgver}/ClassIsland_app_linux_arm64_selfContained_deb.deb")
-sha256sums_aarch64=("cfc9ae088ebf58a74f7d92d5d499f58f2463a5dee07b69d1e99378619bad2dda")
+sha256sums_aarch64=("a2e45e9eeb6ff6e3c849814e983aad7a38c75d6980a2f0763e75ffd02c0b6327")
 
 package() {
 	echo " <-> 欢迎使用 ClassIsland！"
