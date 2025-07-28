@@ -2,8 +2,8 @@
 
 pkgname=arenatracker-bin
 _pkgname=ArenaTracker
-pkgver=25.07.02
-pkgrel=2
+pkgver=25.07.03
+pkgrel=1
 pkgdesc="Tracks your Hearthstone Arena matches and cards."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/supertriodo/Arena-Tracker/"
@@ -43,6 +43,6 @@ package() {
     ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums=('42774b2b8a985df33056f484a19329a7939144f3d477ea5bc1262b933042834a'
+sha256sums=('7b867c606bf8a7cd93eae0840988be4e26da394f93731f8c39bfd83c8d613c3e'
             'ff78d1575d609ceaba0ed2c5b3753fc8df91f9c078d1b482ee9bc0581406464c'
             '2a558e937bef79cafa916dbf7d997eaf0b5e3c6d5bc93d46f55f074bd3597486')
