@@ -1,4 +1,4 @@
-From c28933300c7f231c73be544b6b4aa20f9b470444 Mon Sep 17 00:00:00 2001
+From 07d32c24cc264e2a746d8e5054159f9aa893edbc Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@valvesoftware.com>
 Date: Wed, 17 Oct 2018 04:13:37 -0700
 Subject: [PATCH] ntdll/loader: add support for overriding
@@ -89,7 +89,7 @@ index fa38f4b87ca..e2f3a5d1e44 100644
 +
  #endif /* __NTDLL_UNIX_PRIVATE_H */
 diff --git a/dlls/ntdll/unix/virtual.c b/dlls/ntdll/unix/virtual.c
-index e733e3ffdd6..0e28d79caca 100644
+index e733e3ffdd6..5fb33757d36 100644
 --- a/dlls/ntdll/unix/virtual.c
 +++ b/dlls/ntdll/unix/virtual.c
 @@ -4890,6 +4890,24 @@ static void virtual_release_address_space(void)
@@ -104,7 +104,7 @@ index e733e3ffdd6..0e28d79caca 100644
 +    {
 +        const char *str = getenv( "WINE_LARGE_ADDRESS_AWARE" );
 +
-+        needs_override = !str || atoi(str) == 1;
++        needs_override = (str ? atoi(str) == 1 : 0);
 +    }
 +    return needs_override;
 +}
