@@ -1,0 +1,4 @@
+*.xpi
+*.zst
+pkg
+src
