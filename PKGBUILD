@@ -5,12 +5,12 @@
 pkgname=pfusp-bin
 pkgver=2.2.2
 pkgvernodots=222
-pkgrel=2
+pkgrel=3
 pkgdesc='Fujitsu SP series Image Scanner Driver for SANE'
 url='http://imagescanner.fujitsu.com/global/dl/'
 arch=('x86_64')
 license=('custom')
-depends=('sane')
+depends=('sane' 'libxml2-legacy')
 
 source=("https://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/${pkgvernodots}/pfusp-ubuntu_${pkgver}_amd64.deb"        
         pfusp.pdf::"http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/221/P2U3-0210-04ENZ0.pdf"
