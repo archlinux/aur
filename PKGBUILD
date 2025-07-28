@@ -10,8 +10,8 @@ arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="http://rogue.rogueforge.net/rogue-5-4/"
 license=('custom')
 depends=('ncurses')
-source=("http://rogue.rogueforge.net/files/rogue5.4/rogue${pkgver}-src.tar.gz" "http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess")
-md5sums=('033288f46444b06814c81ea69d96e075' '7656db1151b730dc6c51cbfa83136071')
+source=("http://rogue.rogueforge.net/files/rogue5.4/rogue${pkgver}-src.tar.gz" "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD")
+md5sums=('033288f46444b06814c81ea69d96e075' '6dec0cbd49949c70115c12478f0b3a5c')
 
 prepare() {
   cd $pkgname$pkgver
@@ -22,11 +22,12 @@ prepare() {
   # Use wmove instead of trying to accesses fields of an opaque struct
   sed -i '/curscr->_curx = ox;/d' main.c
   sed -i 's/curscr->_cury = oy;/wmove(curscr, oy, ox);/' main.c
+
 }
 
 build() {
   cd $pkgname$pkgver
-  mv ../config.guess config.guess
+  mv '../?p=config.git;a=blob_plain;f=config.guess;hb=HEAD' config.guess
   CFLAGS="-g -O2 -std=gnu18" ./configure
   make
 }
