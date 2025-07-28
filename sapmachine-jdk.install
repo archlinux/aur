@@ -1,0 +1,31 @@
+post_install() {
+    echo ">>> Setting up SapMachine 11 JDK..."
+    
+    # Set as default Java if no other Java is set
+    if [ ! -e /usr/lib/jvm/default ]; then
+        ln -sf java-11-sapmachine /usr/lib/jvm/default
+        ln -sf java-11-sapmachine /usr/lib/jvm/default-runtime
+    fi
+    
+    echo ">>> SapMachine 11 JDK has been installed."
+    echo ">>> To use it as default, run:"
+    echo ">>>   sudo archlinux-java set java-11-sapmachine"
+    echo ">>> Current Java environment:"
+    archlinux-java status
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Check if this was the default JVM
+    if [ "$(readlink /usr/lib/jvm/default)" = "java-11-sapmachine" ]; then
+        # Remove the default links
+        rm -f /usr/lib/jvm/default
+        rm -f /usr/lib/jvm/default-runtime
+        echo ">>> SapMachine 11 was set as default JVM, please reconfigure with archlinux-java"
+    fi
+    
+    echo ">>> SapMachine 11 JDK has been removed."
+}
