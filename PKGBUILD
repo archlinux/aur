@@ -1,4 +1,5 @@
-#Maintainer: Kimiblock
+# Maintainer: aarto <aarto@aur.archlinux.org>
+# Contributor: Kimiblock
 
 pkgname=librewolf-extension-sponsorblock-bin
 url="https://github.com/ajayyy/SponsorBlock"
