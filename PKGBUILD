@@ -15,7 +15,8 @@ _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz fetch-soname-by-chromium.sh
 nolog.c
-#"no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
+"AVFMT_FLAG_NOVIDEOPARSE.patch.base64::${_url}/+/594bc6d3246fe6b293f253d07c8905c578cb75c9%5E%21/?format=TEXT"
+"no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 #"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
@@ -26,6 +27,8 @@ install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'e39c6d127cb7ed768eeebc5c388cf86967cfde855e6d99edc27daba8c412227c'
             '4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030'
+            '40b05c04cca3fa8901fb40bf95e3e3d938c7afd1eaa884209f8667359471246c'
+            '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             'e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01'
             'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
             'bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660'
@@ -54,8 +57,10 @@ prepare() {
   mkdir -p chromium/patches; base64 -d ../aacREADME.base64 > chromium/patches/README
   base64 -d ../aac.patch.base64 > aac.patch
   patch -Np1 -i aac.patch
-  #base64 -d ../no-xheaac-parser.patch.base64 > no-xheaac-parser.patch
-  #patch -Np1 -i no-xheaac-parser.patch
+  base64 -d ../no-xheaac-parser.patch.base64 > no-xheaac-parser.patch
+  patch -Np1 -i no-xheaac-parser.patch
+  base64 -d ../AVFMT_FLAG_NOVIDEOPARSE.patch.base64 > AVFMT_FLAG_NOVIDEOPARSE.patch
+  patch -Np1 -i AVFMT_FLAG_NOVIDEOPARSE.patch
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c # buggy or unused
