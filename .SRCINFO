@@ -20,11 +20,11 @@ pkgbase = abdownloadmanager-bin
 	depends = libxext
 	depends = libappindicator-gtk3
 	provides = abdownloadmanager
+	provides = ab-download-manager
 	conflicts = abdownloadmanager
+	conflicts = ab-download-manager
 	options = !debug
 	source = https://github.com/amir1376/abdownloadmanager/releases/download/v1.6.8/ABDownloadManager_1.6.8_linux_x64.tar.gz
-	source = ABDownloadManager.desktop
 	sha256sums = 355be492ca0a4b852da0619782590c6359ff124686fb277a5c30c4452c9b2725
-	sha256sums = 233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036
 
 pkgname = abdownloadmanager-bin
