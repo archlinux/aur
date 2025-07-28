@@ -7,7 +7,7 @@ pkgbase = stunner
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git::git+https://github.com/jaxxstorm/stunner#commit=143d3671ec2f0d9575164d9f65e2b8785da15c14
-	sha256sums = SKIP
+	source = stunner-0.0.12::git+https://github.com/jaxxstorm/stunner#tag=v0.0.12
+	b2sums = 44ac5c0dd9bf4e7d0e759c2b54cc8d78ae33afe5e2ef584a15ba95391cfb871b114f46ab737213603750c60194b7d81f48ba3ca675c42d611a6aff775f751295
 
 pkgname = stunner
