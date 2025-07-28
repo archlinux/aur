@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
@@ -24,7 +24,7 @@ source=(
   "https://github.com/wineasio/wineasio/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '13f20c7b3d45b474833e6c60cb58bcad7295e97dd39239bf00f85c02272cc0f4'
+  'f8bf74c871233f65e5befecc7b4f2629f2566f84e951e363af0ad51eae516a4c'
 )
 
 prepare(){
