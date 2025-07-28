@@ -1,0 +1,4 @@
+[rewaita]
+source = "git"
+git = "https://github.com/SwordPuffin/Rewaita.git"
+prefix = "v"
