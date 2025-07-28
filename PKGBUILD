@@ -30,8 +30,6 @@ prepare() {
 
 build() {
     sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
-    sed -i -E "s|Name=.*$|Name=${_pkgname^}|" "squashfs-root/${_pkgname}.desktop"
-    sed -i -E "s|^Icon=.*$|Icon=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
 
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX "${srcdir}/squashfs-root/usr"
