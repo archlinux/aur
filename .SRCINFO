@@ -1,5 +1,5 @@
 pkgbase = enc-dec-uricomp
-	pkgdesc = Provides encodeuricomponent <<< 'url' and decodeuricomponent <<< 'url' binaries
+	pkgdesc = Provides encodeuricomponent <<< 'url', decodeuricomponent <<< 'url' and trim <<< 'text' binaries
 	pkgver = 0.0.1
 	pkgrel = 0
 	url = https://gitverse.ru/naierchou/mybible-module-mgb

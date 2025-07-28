@@ -5,7 +5,7 @@ pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Provides encodeuricomponent <<< 'url' and decodeuricomponent <<< 'url' binaries"
+pkgdesc="Provides encodeuricomponent <<< 'url', decodeuricomponent <<< 'url' and trim <<< 'text' binaries"
 arch=('any')
 url="https://gitverse.ru/naierchou/mybible-module-mgb"
 license=('GPL-3')
@@ -13,6 +13,11 @@ depends=()
 makedepends=('go')
 source=("git+https://gitverse.ru/naierchou/enc-dec-uricomp.git")
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git rev-parse --short HEAD
+}
 
 build() {
   cd "$srcdir/${pkgname%-git}"
