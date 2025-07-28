@@ -1,16 +1,14 @@
 pkgbase = wf-recorder-gui
 	pkgdesc = Modern GUI for wf-recorder screen recorder
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ali205412/wf-recorder-gui
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	depends = gtk4
-	depends = libadwaita
 	depends = wf-recorder
-	source = wf-recorder-gui-0.2.0.tar.gz::https://github.com/ali205412/wf-recorder-gui/archive/v0.2.0.tar.gz
+	source = wf-recorder-gui-0.3.0.tar.gz::https://github.com/ali205412/wf-recorder-gui/archive/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = wf-recorder-gui
