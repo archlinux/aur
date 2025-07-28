@@ -10,7 +10,7 @@ pkgbase = ty
 	makedepends = python-installer
 	depends = python
 	options = !lto
-	source = git::git+https://github.com/astral-sh/ty#tag=0.0.1-alpha.16
+	source = ty-0.0.1_alpha.16::git+https://github.com/astral-sh/ty#tag=0.0.1-alpha.16
 	b2sums = 4e7fa768054f53befff2c849db8ac65a952c05baaacd7bb4ebca05ca11f6bf52784e83e04c454dcfe40737cd474439ed8fad8afdc5e1c9de17aac58dbe7265c6
 
 pkgname = ty
