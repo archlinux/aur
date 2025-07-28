@@ -1,5 +1,5 @@
 pkgbase = sc-controller-git
-	pkgdesc = User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers.
+	pkgdesc = User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers
 	pkgver = 0.4.9.4.r8.ae6593c
 	pkgrel = 1
 	url = https://github.com/C0rn3j/sc-controller

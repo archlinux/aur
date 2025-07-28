@@ -4,7 +4,7 @@
 pkgname=sc-controller-git
 pkgver=0.4.9.4.r8.ae6593c
 pkgrel=1
-pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers.'
+pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers'
 arch=('x86_64' 'aarch64')
 url='https://github.com/C0rn3j/sc-controller'
 license=('GPL-2.0-only')
