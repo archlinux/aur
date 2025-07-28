@@ -30,7 +30,6 @@ build() {
 
 package() {
 	_builddir="${srcdir}/${pkgname}-${pkgver}/build"
-#	install -Dm755 -t "${pkgdir}/usr/lib" "${_builddir}/libloot.s"*
 	install -Dm755 -t "${pkgdir}/usr/lib" "${_builddir}/libloot.so.${pkgver}"
 	ln -s "libloot.so.${pkgver}" "${pkgdir}/usr/lib/libloot.so.0"
 	ln -s "libloot.so.${pkgver}" "${pkgdir}/usr/lib/libloot.so"
@@ -41,5 +40,4 @@ package() {
 	install -Dm644 "${_builddir}/liblootConfig.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/liblootConfig.cmake"
 	install -Dm644 "${_builddir}/liblootConfigVersion.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/liblootConfigVersion.cmake"
 	cp "${_builddir}/CMakeFiles/Export/"*"/"*".cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/" # two liblootTarget*.cmake files
-#	find . "${pkgdir}"
 }
