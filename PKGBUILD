@@ -1,5 +1,5 @@
 # Maintainer: GaKu999 <gaku999 [at] posteo [dot] net>
-# Credits To: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # vim:ft=PKGBUILD:noet:ts=3:sw=3:
 
 pkgname=retroarch-assets-sounds
