@@ -1,7 +1,7 @@
 # Maintainer: hype-vhs <4498312-hypevhs@users.noreply.gitlab.com>
 # Maintainer: YTJVDCM <50657624+YTJVDCM@users.noreply.github.com>
 pkgname=vrc-get
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Open Source command line client of VRChat Package Manager"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(cargo dotnet-sdk)
 # most rust projects that link with native libs can't use lto
 options+=(!lto)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4d3821eb4047f7ee83a07a589e97a63608680a71200046d571f9db3320bf8d65')
+sha256sums=('a8d35448a01b70df0753dd264c096a32b21dc2bd2ef9b5a54423c4309c7aa3db')
 
 prepare() {
   cd "$pkgname-$pkgver"
