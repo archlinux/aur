@@ -1,11 +1,11 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.4.1"
+_godot_version="4.5.beta3"
 
 pkgname=gozen
-pkgver=0.3
-pkgrel=2 # Increment this if you change the PKGBUILD but not pkgver.
+pkgver=0.4.0
+pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -36,7 +36,7 @@ source=(
     "godot-editor.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}-stable/Godot_v${_godot_version}-stable_linux.x86_64.zip"
     "godot-templates.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}-stable/Godot_v${_godot_version}-stable_export_templates.tpz"
 )
-sha256sums=('b3b1fb5094e9dc6f3cb701388a632cd3c8998c3c697a3dc0d1d7708748f7125e'
+sha256sums=('620495cb0149143482aeb4a5f3f3dff23f97c6ce67deea56327ddef091cb6e95'
             'd6e382fb531019f85630c1f485a561a0d20c4a2344b6c3847735cfee7da812aa'
             '7a8d14ade489fd4d22f178193021fe8a876a9e51068ed4dde26dac3ae4c59a88')
 
@@ -52,19 +52,19 @@ prepare() {
 	sed -i '/\[dependencies\]/,$d' "src/gozen.gdextension"
 	
 	# Prepare Godot export templates directory structure.
-    if [ ! -d ~/.local/share/godot/export_templates/${_godot_version}.stable ]; then
+    if [ ! -d ~/.local/share/godot/export_templates/${_godot_version} ]; then
 		msg "Preparing Godot export templates ..."
-		mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version}.stable"
-		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version}.stable" "${srcdir}/godot-templates.tpz"
-		mv "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates/"* \
-		   "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/"
-		rmdir "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates"
+		mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version}"
+		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version}" "${srcdir}/godot-templates.tpz"
+		mv "$HOME/.local/share/godot/export_templates/${_godot_version}/templates/"* \
+		   "$HOME/.local/share/godot/export_templates/${_godot_version}/"
+		rmdir "$HOME/.local/share/godot/export_templates/${_godot_version}/templates"
     else
 		msg "Godot export templates found in cache."
 	fi
 	
 	# Make Godot editor executable.
-	chmod +x "${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64"
+	chmod +x "${srcdir}/Godot_v${_godot_version/./-}_linux.x86_64"
 }
 
 build() {
@@ -80,9 +80,9 @@ build() {
 	msg "Exporting Godot project for Linux..."
 	mkdir -p "${srcdir}/export_output"
 	
-	"${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64" \
+	"${srcdir}/Godot_v${_godot_version/./-}_linux.x86_64" \
 		--import "src/godot.project" --headless
-	"${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64" \
+	"${srcdir}/Godot_v${_godot_version/./-}_linux.x86_64" \
 		--headless --path "src" --export-release "Linux_x86_64" \
 	  	"${srcdir}/export_output/GoZen.x86_64"
 	
