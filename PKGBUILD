@@ -3,7 +3,7 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=14.2.2
+pkgver=14.2.4
 pkgrel=1
 pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('c802ce5cf72f3979cb4d3cc4aca56c536495d40c7154016595c4b6680d8ff520'
+sha256sums=('8357a491b3de6619742cdbf039c437ab52c304151fad97a1a0d5cac9b0c4b862'
             'a8945d93cacbe189b538da601b3f6ace0588c3b126236e763e8f2010005513bb'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
