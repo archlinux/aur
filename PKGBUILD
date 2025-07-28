@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=insightsql-bin
 _pkgname=InsightSQL
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Efficiently analyze Excel, CSV, Parquet files with Rust Polars SQL(Prebuilt version)一个可以使用polars SQL快速查看Excel、CSV和Parquet的工具,基于tauri"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tansen87/InsightSQL/v${pkgver}/LICENSE"
 )
-sha256sums=('54f68b539183abd3369fb9b498befd57348cfbf6395c3de519caa5cc32d8a6fd'
+sha256sums=('82342f9453b5f85ef27ec2d7cb593d06faf02c46412003e231866ac204233934'
             '40aef2075dd3e27889c8d2393daa9df182e5c7720d35cca6deec7b06354a805c')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
