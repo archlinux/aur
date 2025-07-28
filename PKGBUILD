@@ -3,7 +3,7 @@
 pkgname=jdownloader2
 pkgver=latest
 pkgrel=21
-pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and MEGA. Uses its own updater.'
+pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and MEGA. Uses its own updater'
 arch=('any')
 url='https://jdownloader.org/'
 # https://board.jdownloader.org/showthread.php?p=517795#post517795
