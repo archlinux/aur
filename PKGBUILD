@@ -4,7 +4,7 @@
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
 pkgver=2025.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('x86_64')
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -18,7 +18,6 @@ depends=(
 	'alsa-lib'
 	'gtk3'
 	'nss')
-makedepends=('coreutils')
 
 options=(!strip)
 source=(
