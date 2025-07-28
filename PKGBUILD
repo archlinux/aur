@@ -10,23 +10,23 @@
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-binutils"
-pkgver=2.44+r94+gfe459e33c676
-_commit=fe459e33c676883b5f28cc96c00e242973d906a9
+pkgver=2.45+r0+g2bc7af1ff773
+_commit=2bc7af1ff7732451b6a7b09462a815c3284f9613
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3 FSFAP)
-depends=(glibc libelf zlib zstd)
+depends=(glibc jansson libelf zlib zstd)
 makedepends=(gcc git glibc libelf zlib zstd)
-options=(!emptydirs !distcc !strip)
+options=(staticlibs !emptydirs !distcc !strip)
 source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit})
-sha256sums=('07a821f494fbb61dcf9e958f6f840eaa4a45c748c59415fd3ea1ec4b3326673c')
+sha256sums=('005763c1ecf23168be877788ed148467d31b1852ff15b27c0f69343c2a64652a')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 pkgver() {
   cd binutils-gdb
-  git describe --abbrev=12 --tags | sed 's/[^-]*-//;s/[^-]*-/&r/;s/-/+/g;s/_/./'
+  git describe --abbrev=12 --long --tags | sed 's/[^-]*-//;s/[^-]*-/&r/;s/-/+/g;s/_/./'
 }
 
 prepare() {
