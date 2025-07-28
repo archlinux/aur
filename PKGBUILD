@@ -4,7 +4,7 @@
 pkgname=nvflash
 pkgver=5.867
 pkgrel=3
-pkgdesc="A tool to update the the firmware of Nvidia display adapters."
+pkgdesc="A tool to update the the firmware of Nvidia display adapters"
 url="https://www.techpowerup.com/download/nvidia-nvflash/"
 arch=('x86_64' 'i686' 'aarch64')
 license=('unknown')
