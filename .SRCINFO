@@ -1,5 +1,5 @@
 pkgbase = loot
-	pkgdesc = A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games.
+	pkgdesc = A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games
 	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://loot.github.io
