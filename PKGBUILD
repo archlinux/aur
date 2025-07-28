@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rewaita
 pkgver=1.0.1
 pkgrel=1
