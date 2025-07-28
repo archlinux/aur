@@ -1,6 +1,6 @@
 pkgbase = megasync
 	pkgdesc = Official MEGA desktop application for syncing with MEGA Cloud Drive
-	pkgver = 5.14.0.2
+	pkgver = 5.14.0.3
 	pkgrel = 1
 	url = https://github.com/meganz/MEGAsync/
 	arch = x86_64
@@ -33,11 +33,11 @@ pkgbase = megasync
 	depends = qt5-x11extras
 	depends = sqlite
 	depends = zlib
-	source = git+https://github.com/meganz/MEGAsync.git#tag=v5.14.0.2_Linux
+	source = git+https://github.com/meganz/MEGAsync.git#tag=v5.14.0.3_Win
 	source = meganz-sdk::git+https://github.com/meganz/sdk.git
 	source = 010-megasync-sdk-fix-cmake-dependencies-detection.patch
 	source = 020-megasync-app-fix-cmake-dependencies-detection.patch
-	sha256sums = 2a7804473938cf8c91c6ce45c54f328136b56abd33e93de71fc2f5b215809cbd
+	sha256sums = df18283f5c075658d3d3e8fede27558444302beb2990c80edb1716245afef8cd
 	sha256sums = SKIP
 	sha256sums = 62e79d30acafdc13855851e64c4419d8ee4a0b213089ea352882b49413e549f4
 	sha256sums = a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171
