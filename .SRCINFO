@@ -1,7 +1,7 @@
 pkgbase = imgui-full
 	pkgdesc = Bloat-free Graphical User interface for C++
 	pkgver = 1.91.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocornut/imgui
 	arch = x86_64
 	license = MIT

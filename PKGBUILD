@@ -5,7 +5,7 @@ _vcpkg_sha=b02e341c927f16d991edbd915d8ea43eac52096c
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 pkgver=1.91.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
 arch=('x86_64')
@@ -33,6 +33,7 @@ build() {
     -DIMGUI_BUILD_GLUT_BINDING=ON \
     -DIMGUI_BUILD_SDL3_BINDING=ON \
     -DIMGUI_BUILD_SDL3_RENDERER_BINDING=ON \
+    -DIMGUI_BUILD_SDLGPU3_BINDING=ON \
     -DIMGUI_BUILD_VULKAN_BINDING=ON \
     -DIMGUI_BUILD_OPENGL2_BINDING=ON \
     -DIMGUI_BUILD_OPENGL3_BINDING=ON \
