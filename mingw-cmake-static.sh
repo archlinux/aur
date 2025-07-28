@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source mingw-env @TRIPLE@
+source @MINGW_ENV@ @TRIPLE@
 
 mingw_prefix=/usr/@TRIPLE@
 

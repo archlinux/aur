@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-cmake-static
 	pkgdesc = CMake wrapper for MinGW (mingw-w64, static)
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 9
 	url = https://github.com/martchus/pkgbuilds
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = mingw-w64-cmake
 	source = mingw-cmake-static.sh
 	source = toolchain-mingw-static.cmake
