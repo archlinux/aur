@@ -1,6 +1,6 @@
 pkgname=cookie-git
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple music player TUI"
 arch=('x86_64')
 url="https://github.com/FedGuy699/Cookie-Player"
