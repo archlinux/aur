@@ -27,9 +27,7 @@ makedepends=(
 	'python-installer'
 )
 conflicts=('scc')
-source=(
-	"${pkgname}-${pkgver}::git+https://github.com/C0rn3j/sc-controller.git#tag=v${pkgver}")
-#	"${pkgname}-${pkgver}.tar.gz::https://github.com/C0rn3j/sc-controller/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}::git+https://github.com/C0rn3j/sc-controller.git#tag=v${pkgver}")
 sha256sums=('b864fd0d1ab0c588c03a0ff44e8b3a3f026871e26a77f238014810e5447f8f0e')
 
 build() {
