@@ -7,7 +7,7 @@ pkgbase = tcpulse
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	source = git::git+https://github.com/yuuki/tcpulse#commit=39ebe8cade928f36d4bd938089f0dc550600c129
-	sha256sums = SKIP
+	source = tcpulse-0.8.2::git+https://github.com/yuuki/tcpulse#tag=v0.8.2
+	b2sums = 01e548712a5b4216f87b62ea7df0dcc0ad6d8fabed4e9923e45435f2112f5391d7a4547282c7ec41a9a8ad25f114f0829ccb8d79934f9886d431a11a5f01eaa7
 
 pkgname = tcpulse
