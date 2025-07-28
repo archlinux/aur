@@ -11,9 +11,9 @@ license=('unknown')
 depends=('fuse2')
 makedepends=('util-linux' 'findutils')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" 'wootility5-appimage' 'wootility-appimage' 'wootility3-appimage')
+conflicts=("${_pkgname}")
 options=(!strip)
-source=("https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/${_appimage}"
+source=("${_appimage}::https://api.wooting.io/public/wootility/download?os=linux&version=${pkgver//_/-}"
         '70-wooting.rules')
 b2sums=('12c9c43de0ab9054d93faba156cdf8ec6a98d209305c5314547a3030a8f669e77ac5f559ecf5846e5b99538c85289c1ae3bf9cf5b69e8e8e6dcf88fe35203239'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
