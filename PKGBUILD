@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: yaa110 <yaa110@gmail.com>
 pkgname=nomino-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Batch rename utility for developers.(Prebuilt version)'
 arch=('x86_64')
