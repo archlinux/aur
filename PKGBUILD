@@ -13,16 +13,25 @@ depends=("glibc" "java-runtime" "zlib" "alsa-lib" "libglvnd" "libxi" "freetype2"
 provides=("abdownloadmanager" "ab-download-manager")
 conflicts=("abdownloadmanager" "ab-download-manager")
 options=(!debug)
-source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
-        "${_pkgname}.desktop")
-sha256sums=("355be492ca0a4b852da0619782590c6359ff124686fb277a5c30c4452c9b2725"
-            "233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036")
+source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz")
+sha256sums=("355be492ca0a4b852da0619782590c6359ff124686fb277a5c30c4452c9b2725")
 
 package() {
     install -d "${pkgdir}/opt/"
     install -d "${pkgdir}/usr/share/"{applications,pixmaps}
 
-    install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     mv "${srcdir}/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
     mv "${srcdir}/${_pkgname}" "${pkgdir}/opt"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
+[Desktop Entry]
+Name=AB Download Manager
+Comment=Manage and organize your download files better than before
+GenericName=Download Manager
+Exec=/opt/${_pkgname}/bin/${_pkgname}
+Icon=ABDownloadManager
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+StartupWMClass=com-abdownloadmanager-desktop-AppKt
+EOF
 }
