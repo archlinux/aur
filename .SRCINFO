@@ -1,0 +1,13 @@
+pkgbase = zuse-git
+	pkgdesc = A sleek, minimal IRC client for your terminal written in Go with Bubble Tea framework
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/babycommando/zuse
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/babycommando/zuse.git
+	sha256sums = SKIP
+
+pkgname = zuse-git
