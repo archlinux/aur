@@ -2,7 +2,7 @@
 
 pkgname=python-recordclass
 _pkgname=recordclass
-pkgver=0.22.1
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Mutable variant of namedtuple"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('80a4c79270edb8fb55bcb96bec0159a292b485c997e2f33b38fdc9e8d6c0c315')
+sha256sums=('cd6391030709d1cb42c6a901aa1053411ae5baf8762a5eb763e220be2489b3c9')
 
 build(){
   cd "${_pkgname}-${pkgver}"

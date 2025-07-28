@@ -1,6 +1,6 @@
 pkgbase = python-recordclass
 	pkgdesc = Mutable variant of namedtuple
-	pkgver = 0.22.1
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://pypi.org/project/recordclass
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-recordclass
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-recordclass-0.22.1.tar.gz::https://pypi.io/packages/source/r/recordclass/recordclass-0.22.1.tar.gz
-	sha256sums = 80a4c79270edb8fb55bcb96bec0159a292b485c997e2f33b38fdc9e8d6c0c315
+	source = python-recordclass-0.23.1.tar.gz::https://pypi.io/packages/source/r/recordclass/recordclass-0.23.1.tar.gz
+	sha256sums = cd6391030709d1cb42c6a901aa1053411ae5baf8762a5eb763e220be2489b3c9
 
 pkgname = python-recordclass
