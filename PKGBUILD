@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-dashboard
 pkgver=25.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -47,6 +47,12 @@ build() {
 	-DWIVRN_BUILD_DASHBOARD=ON \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
+	-DWIVRN_USE_VAAPI=ON \
+	-DWIVRN_USE_X264=ON \
+	-DWIVRN_USE_NVENC=ON \
+	-DWIVRN_USE_VULKAN_ENCODE=ON \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/opencomposite:/opt/xrizer \
+	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
 	cmake --build build-dashboard
