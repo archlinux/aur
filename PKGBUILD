@@ -3,7 +3,7 @@
 pkgname=http-server-upload
 pkgver=3.0.0
 pkgrel=3
-pkgdesc="Zero-configuration command-line http server which provides a lightweight interface to upload files."
+pkgdesc="Zero-configuration command-line http server which provides a lightweight interface to upload files"
 arch=('any')
 url="https://github.com/crycode-de/http-server-upload"
 license=('MIT')
