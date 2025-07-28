@@ -5,7 +5,7 @@
 
 _pkgname=Chatbox
 pkgname="chatbox-appimage"
-pkgver=1.7.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ _appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
 _pkgid="xyz.chatboxapp.app"
 source=("https://download.chatboxai.app/releases/${_appimage}")
 noextract=("$_appimage")
-sha512sums=('2be11c9615a1743b1f3a8d9600e6a4538c9c5a6563bbcc2981183ab1964419a8d94f147687bdcc6ba4658d316bfb9613487180eda75a3a07033998fe6dff4a27')
+sha512sums=('2995d5b9e6482faf8f05afaa905a337fc9332f39ffe0ede166ca0fffc6e33d212f41ab331f30e013de7df1c6d85f8ba17539162750ea4c9f14767f435827ccbe')
 
 prepare() {
     # Make the AppImage executable
@@ -28,8 +28,9 @@ prepare() {
     # Extract the AppImage
     "./$_appimage" --appimage-extract
 
-    # Update the Exec line in the desktop entry file
+    # Update the Exec line in the desktop entry file and fix the icon.
     sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/${_pkgid}.desktop"
+    sed -i -E "s:StartupWMClass=Chatbox:StartupWMClass=${_pkgid}:" "squashfs-root/${_pkgid}.desktop"
 }
 
 package() {
