@@ -1,7 +1,8 @@
 pkgbase = openrocket-beta-bin
 	pkgdesc = A free and fully featured rocket flight simulator - 6 degrees of freedom, prerelease
-	pkgver = 24.12.RC.01
+	pkgver = 24.12
 	pkgrel = 1
+	epoch = 1
 	url = https://openrocket.info/
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,11 +11,11 @@ pkgbase = openrocket-beta-bin
 	depends = bash
 	provides = openrocket
 	conflicts = openrocket
-	noextract = OpenRocket-24.12.RC.01.jar
-	source = https://github.com/openrocket/openrocket/releases/download/release-24.12.RC.01/OpenRocket-24.12.RC.01.jar
+	noextract = OpenRocket-24.12.jar
+	source = https://github.com/openrocket/openrocket/releases/download/release-24.12/OpenRocket-24.12.jar
 	source = openrocket.sh
 	source = de_debian.tar.gz
-	sha256sums = 3d57db521d51ccdd537902280ea17b25212071c7a747c8ae3d46b16f6587d1d4
+	sha256sums = 4959b72f52f5f607941e9722abbb7b7f0c4a38ebbbf84204a329db9f31c4f897
 	sha256sums = 74ab605cb11161784d4af96d018eb88adf7a2e4a8b1088a64b94b1e8ec5e18d1
 	sha256sums = 62c4e739f82fa53fdae8a41f12bfb2828b77df89c8f48b1a790192a8e773cb98
 

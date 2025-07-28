@@ -1,7 +1,8 @@
 # Maintainer: Laura Demkowicz-Duffy <dev@demkowiczduffy.co.uk>
 pkgname=openrocket-beta-bin
 _pkgname=openrocket
-pkgver=24.12.RC.01
+epoch=1
+pkgver=24.12
 pkgrel=1
 pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom, prerelease"
 arch=('any')
@@ -15,7 +16,7 @@ source=("https://github.com/$_pkgname/$_pkgname/releases/download/release-$pkgve
 	"$_pkgname.sh"
 	"de_debian.tar.gz")
 noextract=("OpenRocket-$pkgver.jar")
-sha256sums=('3d57db521d51ccdd537902280ea17b25212071c7a747c8ae3d46b16f6587d1d4'
+sha256sums=('4959b72f52f5f607941e9722abbb7b7f0c4a38ebbbf84204a329db9f31c4f897'
             '74ab605cb11161784d4af96d018eb88adf7a2e4a8b1088a64b94b1e8ec5e18d1'
             '62c4e739f82fa53fdae8a41f12bfb2828b77df89c8f48b1a790192a8e773cb98')
 
