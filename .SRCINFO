@@ -1,7 +1,7 @@
 pkgbase = flatseal
-	pkgdesc = A permissions manager for Flatpak.
+	pkgdesc = A permissions manager for Flatpak
 	pkgver = 2.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tchx84/Flatseal/
 	arch = any
 	license = GPL-3.0-or-later

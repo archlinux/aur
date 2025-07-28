@@ -4,8 +4,8 @@
 _pkgname=Flatseal
 pkgname=flatseal
 pkgver=2.3.1
-pkgrel=3
-pkgdesc='A permissions manager for Flatpak.'
+pkgrel=4
+pkgdesc='A permissions manager for Flatpak'
 url="https://github.com/tchx84/Flatseal/"
 arch=('any')
 license=('GPL-3.0-or-later')
