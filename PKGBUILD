@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=doot-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A fast, simple and intuitive dotfiles manager that just gets the job done (binary release)"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ conflicts=('doot')
 depends=('git' 'git-crypt')
 optdepends=('diffutils: To display changes before overwriting a file')
 
-source_x86_64=("$pkgname-$pkgver-linux-x86_64::https://github.com/pol-rivero/doot/releases/download/0.6.1/doot-linux-x86_64")
-sha256sums_x86_64=('e384432d3a17bebd8f55c71a4f2660f63616d3440846f169010d685a12a9a9f8')
-source_aarch64=("$pkgname-$pkgver-linux-arm64::https://github.com/pol-rivero/doot/releases/download/0.6.1/doot-linux-arm64")
-sha256sums_aarch64=('32cb52b3c0cfd17355aff6284fdebf1c17e151eecafddb86b76e1c309ffad22f')
+source_x86_64=("$pkgname-$pkgver-linux-x86_64::https://github.com/pol-rivero/doot/releases/download/0.6.2/doot-linux-x86_64")
+sha256sums_x86_64=('b355f894cb3f82fcb3b9ecfceb02c77bdefa10636f870e08d780a20db2f7a6ed')
+source_aarch64=("$pkgname-$pkgver-linux-arm64::https://github.com/pol-rivero/doot/releases/download/0.6.2/doot-linux-arm64")
+sha256sums_aarch64=('3e5171b7b7b4a3a955495c860729f358e4993e50f298bc468a3c6396663cefc5')
 
 package() {
     # Install binary
