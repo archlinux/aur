@@ -1,4 +1,5 @@
 *.xpi
 *.zst
+LICENSE
 pkg
 src
