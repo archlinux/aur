@@ -1,0 +1,16 @@
+pkgbase = rdapcheck
+	pkgdesc = A simple RDAP library and command-line tool to check domain name availability in bulk.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Gadiguibou/rdapcheck
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = deno
+	provides = rdapcheck
+	conflicts = rdapcheck
+	options = !strip
+	source = rdapcheck-0.1.1.tar.gz::https://github.com/Gadiguibou/rdapcheck/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = c636b18a800ce078da5f564c97f2151d117d4aa1afda681f984563a2034c3824
+
+pkgname = rdapcheck
