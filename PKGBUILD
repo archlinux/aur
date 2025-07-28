@@ -1,44 +1,27 @@
-# Maintainer: Swapnanil1 <swapnanil.chrome333@passinbox.com>
+#Maintainer:  	ZorinArch < zorinarch at protonmail dot com >
 
-_basename=ab-download-manager
-pkgname=${_basename}-bin
-pkgver=1.6.6
-pkgrel=2
+pkgname=ab-download-manager-bin
+_pkgname=ABDownloadManager
+pkgver=1.6.8
+pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
-arch=('x86_64')
+arch=("x86_64")
 url="https://abdownloadmanager.com/"
-license=('Apache-2.0')
-# Add the options array to disable debug package creation
-options=('!debug')
-provides=("${_basename}")
-conflicts=("${_basename}")
-depends=(
-    'java-runtime'
-    'libxrender'
-    'libxtst'
-    'harfbuzz'
-    'fontconfig'
-    'libappindicator-gtk3'
-)
-optdepends=()
-source=(
-    "https://github.com/amir1376/ab-download-manager/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
-)
-sha256sums=('76db9055bb1fc728bbb28a5fd2051730a47cb88753eb7b316e987aa8c5382bfa')
+license=("Apache-2.0")
+depends=("glibc" "java-runtime" "zlib" "alsa-lib" "libglvnd" "libxi" "freetype2" "libxtst" "libxrender" "fontconfig" "libx11" "libxext" "libappindicator-gtk3")
+provides=("abdownloadmanager" "ab-download-manager")
+conflicts=("abdownloadmanager" "ab-download-manager")
+options=(!debug)
+source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
+        "${_pkgname}.desktop")
+sha256sums=("76db9055bb1fc728bbb28a5fd2051730a47cb88753eb7b316e987aa8c5382bfa"
+            "233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036")
 
 package() {
-    install -d "${pkgdir}/opt/${_basename}"
-    cd "${srcdir}/ABDownloadManager"
-    cp -r ./* "${pkgdir}/opt/${_basename}/"
-    install -Dm644 "${pkgdir}/opt/${_basename}/lib/ABDownloadManager.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/abdownloadmanager.png"
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/abdownloadmanager.desktop" <<EOF
-[Desktop Entry]
-Name=AB Download Manager
-Comment=A Download Manager that speeds up your downloads
-Exec=/opt/${_basename}/bin/ABDownloadManager
-Icon=abdownloadmanager
-Terminal=false
-Type=Application
-Categories=Network;FileTransfer;
-EOF
+    install -d "${pkgdir}/opt/"
+    install -d "${pkgdir}/usr/share/"{applications,pixmaps}
+
+    install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    mv "${srcdir}/${_pkgname}" "${pkgdir}/opt"
 }
