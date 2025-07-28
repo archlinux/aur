@@ -1,6 +1,6 @@
 pkgbase = cellframe-wallet
 	pkgdesc = Official Cellframe Wallet
-	pkgver = 4.1.3
+	pkgver = 4.1.8
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-wallet.install
@@ -17,7 +17,7 @@ pkgbase = cellframe-wallet
 	optdepends = cellframe-node: Support for local node management
 	provides = cellframe-wallet
 	options = !debug
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-wallet.git#commit=9c9f3c653a65308a99f98b39430416fc4d99b87d
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-wallet.git#commit=e7df4cd09be234c813189368a4da24d0df04492e
 	source = cellframe-wallet-tmpfiles.conf
 	md5sums = SKIP
 	md5sums = 8744d1d0af5e1456bfce710a4c36af64
