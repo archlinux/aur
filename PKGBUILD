@@ -9,7 +9,7 @@
 pkgname=oauth2-proxy
 pkgver=7.10.0
 pkgrel=1
-pkgdesc="A reverse proxy that provides authentication with Google, Keycloak, GitHub or other providers."
+pkgdesc="A reverse proxy that provides authentication with Google, Keycloak, GitHub and other providers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/oauth2-proxy/oauth2-proxy"
 license=('MIT')
