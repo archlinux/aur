@@ -1,0 +1,27 @@
+--- openarc-1.2.1/configure.ac	2025-01-07 00:09:10.000000000 +0200
++++ openarc-1.2.1/configure.ac.new	2025-04-06 18:37:46.579232331 +0200
+@@ -400,13 +400,6 @@
+     Makefile
+     contrib/Makefile
+     contrib/openarc-keygen.1
+-    contrib/init/Makefile
+-    contrib/init/generic/Makefile
+-    contrib/init/redhat/Makefile
+-    contrib/init/redhat/openarc
+-    contrib/init/solaris/Makefile
+-    contrib/spec/Makefile
+-    contrib/spec/openarc.spec
+     contrib/systemd/Makefile
+     contrib/systemd/openarc.service
+     libopenarc/openarc.pc
+--- openarc-1.2.1/contrib/Makefile.am	2025-01-07 00:09:10.000000000 +0200
++++ openarc-1.2.1/contrib/Makefile.am.new	2025-04-06 18:46:07.367413988 +0200
+@@ -1,7 +1,7 @@
+ # Copyright (c) 2010, 2011, 2016, The Trusted Domain Project.
+ # All rights reserved.
+ 
+-SUBDIRS = init spec systemd
++SUBDIRS = systemd
+ 
+ dist_bin_SCRIPTS = openarc-keygen
+ man_MANS = openarc-keygen.1

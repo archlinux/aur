@@ -1,0 +1,20 @@
+--- openarc-1.2.2/contrib/systemd/openarc.service.in	2025-07-27 21:06:15.788293198 +0200
++++ openarc-1.2.2/contrib/systemd/openarc.service.in.new	2025-07-27 21:05:32.938529327 +0200
+@@ -10,11 +10,16 @@
+ EnvironmentFile=-@sysconfdir@/sysconfig/openarc
+ RuntimeDirectory=openarc
+ RuntimeDirectoryMode=0750
+-ExecStart=@sbindir@/openarc -f $OPTIONS
++StateDirectory=openarc
++StateDirectoryMode=0750
++ConfigurationDirectory=openarc
++ConfigurationDirectoryMode=0750
++ExecStart=@sbindir@/openarc -f -c /etc/openarc/openarc.conf
+ ExecReload=/bin/kill -USR1 $MAINPID
+ Restart=on-abnormal
+ User=openarc
+ Group=openarc
++UMask=0007
+ ProtectSystem=strict
+ ProtectHome=true
+ 
