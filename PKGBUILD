@@ -7,7 +7,7 @@ _pkgname=loot
 # https://github.com/loot/libloot/releases
 pkgver=0.27.0
 pkgrel=1
-pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
+pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
