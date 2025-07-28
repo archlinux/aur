@@ -1,13 +1,13 @@
 pkgbase = tattoy-bin
 	pkgdesc = Text-based terminal compositor
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/tattoy-org/tattoy
 	arch = x86_64
 	license = MIT
 	provides = tattoy
 	conflicts = tattoy
-	source = https://github.com/tattoy-org/tattoy/releases/download/tattoy-v0.1.7/tattoy-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = a6d810feeb139fb79db0bfd8d4957715e917a831d214c716dacbd20f76b6262c
+	source = tattoy-v0.1.8.tar.gz::https://github.com/tattoy-org/tattoy/releases/download/tattoy-v0.1.8/tattoy-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = e3c26fe59d21ea3ba11a1d5ea7752e4516b168a13ebcba6c07a5178b21a2f3f1
 
 pkgname = tattoy-bin
