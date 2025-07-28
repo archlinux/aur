@@ -23,7 +23,7 @@ sha256sums=('32a7b84b2c9f6907f90aa244232545261d1b155afa909f49b5141bb617b8f75b'
             'f74e0a47c46aa33c708211acef3f0140c63c904c09b7eb97410276eec403803c'
             'f545fb2ea01de0e0fd9acbdaea1a125bbc769b3eeda11e1dffa6ae5c03568bf2'
             '6c189445c1b5c2cdd613c26186087ec6c4235ec2334abc7168e6ce7c84abf159'
-            'c8ab69285e5bdee59d32ebf32018bf8efb8ef1219ff0b20e8a2972efd21bc81e')
+            '8dda2b45ea02d6f259ff452b4e45ba91b35a15a31976131e1da558ec962980c2')
 
 package() {
     cd "$srcdir"
