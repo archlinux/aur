@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 7.0rc11
+	pkgver = 7.0rc12
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
@@ -11,17 +11,12 @@ pkgbase = portable
 	depends = coreutils
 	depends = awk
 	depends = xxd
-	depends = xorg-xauth
 	depends = xdg-user-dirs
 	depends = xorg-xhost
 	depends = zenity
 	depends = xdg-dbus-proxy
-	depends = nss
 	depends = bubblewrap
 	depends = util-linux
-	depends = libxcb
-	depends = nspr
-	depends = zlib
 	depends = glib2
 	depends = wayland
 	depends = dbus
@@ -35,11 +30,10 @@ pkgbase = portable
 	depends = grep
 	optdepends = at-spi2-core: accessibility
 	optdepends = orca: screen reader
-	optdepends = way-secure
 	provides = portable
 	options = !debug
 	options = !strip
-	source = portable::git+https://github.com/Kraftland/portable.git#tag=7.0rc11
-	md5sums = 008a14da6edd815befb759eed87297a3
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=7.0rc12
+	md5sums = 0657b9220381b238b83efd0007f5c3ff
 
 pkgname = portable

@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
 epoch=1
-pkgver=7.0rc11
+pkgver=7.0rc12
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -19,17 +19,12 @@ depends=(
 	"coreutils"
 	"awk"
 	"xxd"
-	"xorg-xauth"
 	"xdg-user-dirs"
 	"xorg-xhost"
 	"zenity"
 	"xdg-dbus-proxy"
-	"nss"
 	"bubblewrap"
 	"util-linux"
-	"libxcb"
-	"nspr"
-	"zlib"
 	"glib2"
 	"wayland"
 	"dbus"
@@ -46,7 +41,6 @@ depends=(
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
-	'way-secure'
 )
 
 makedepends+=(
@@ -57,7 +51,7 @@ checkdepends=()
 
 source=(portable::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('008a14da6edd815befb759eed87297a3')
+md5sums=('0657b9220381b238b83efd0007f5c3ff')
 
 
 function package() {
