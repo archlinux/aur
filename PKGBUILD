@@ -10,7 +10,7 @@ url="https://gitlab.com/linuxbombay/zamn-tc"
 depends=('gzdoom-bin' 'unzip' 'yad')
 makedepends=('unzip')
 source=("$url/zamn-tc/-/archive/$scriptver/zamntc-$scriptver.tar.bz2" "$url/archive/$pkgver/-/raw/main/zamntc-$pkgver.rar")
-sha256sums=('c1564d1f8807ed70979125ab2c9daebd89bc819a1d9759ecb025b47903b2e5a5'
+sha256sums=('1b665ae2df4336e3dec32e3164842b28cea351e24eb9f3396b2fd6769ca0939d'
             'af296cf8e97706d0361ef18eb6e43084e3b1004358fab8016d6097df22619f93')
 
 package() {
