@@ -1,0 +1,7 @@
+post_install() {
+  echo ':: ⚠️ The Package has been renamed to `ab-download-manager-bin` to align with the upstream name to avoid any conflicts. Please use it instead ⚠️'
+}
+
+post_upgrade() {
+  echo ':: ⚠️ The Package has been renamed to `ab-download-manager-bin` to align with the upstream name to avoid any conflicts. Please use it instead ⚠️'
+}

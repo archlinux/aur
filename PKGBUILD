@@ -3,7 +3,7 @@
 
 pkgname=abdownloadmanager-bin
 _pkgname=ABDownloadManager
-pkgver=1.6.6
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=("x86_64")
@@ -12,10 +12,11 @@ license=("Apache-2.0")
 depends=("glibc" "java-runtime" "zlib" "alsa-lib" "libglvnd" "libxi" "freetype2" "libxtst" "libxrender" "fontconfig" "libx11" "libxext" "libappindicator-gtk3")
 provides=("abdownloadmanager")
 conflicts=("abdownloadmanager")
+install=ABDownloadManager.install
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=("76db9055bb1fc728bbb28a5fd2051730a47cb88753eb7b316e987aa8c5382bfa"
+sha256sums=("355be492ca0a4b852da0619782590c6359ff124686fb277a5c30c4452c9b2725"
             "233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036")
 
 package() {
