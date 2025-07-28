@@ -1,5 +1,5 @@
 pkgname=emqutiti
-pkgver=0.1.0       # update when tagging a release
+pkgver=0.1.5       # update when tagging a release
 pkgrel=1
 pkgdesc="Terminal-based MQTT client written in Go"
 arch=('x86_64')
