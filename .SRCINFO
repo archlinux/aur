@@ -1,7 +1,7 @@
 pkgbase = wxgtk-git
 	pkgdesc = GTK+3 implementation of wxWidgets API for GUI
-	pkgver = 3.3.1.r0.g49c6810948
-	pkgrel = 1
+	pkgver = 3.3.1.r18.g55fd008650
+	pkgrel = 2
 	url = https://github.com/wxWidgets/wxWidgets
 	arch = x86_64
 	license = LicenseRef-wxWindows_Library_Licence
@@ -38,7 +38,7 @@ pkgname = wxwidgets-gtk3-git
 	depends = libmspack
 	depends = sdl2
 	optdepends = webkit2gtk-4.1: for webview support
-	provides = wxwidgets-gtk3
+	provides = wxwidgets-gtk3=3.3.1.r18.g55fd008650
 	conflicts = wxwidgets-gtk3
 
 pkgname = wxwidgets-qt5-git
@@ -48,7 +48,7 @@ pkgname = wxwidgets-qt5-git
 	depends = libmspack
 	depends = sdl2
 	depends = libtiff
-	provides = wxwidgets-qt5
+	provides = wxwidgets-qt5=3.3.1.r18.g55fd008650
 	conflicts = wxwidgets-qt5
 
 pkgname = wxwidgets-common-git

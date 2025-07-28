@@ -3,8 +3,8 @@
 
 pkgbase=wxgtk-git
 pkgname=(wxwidgets-gtk3-git wxwidgets-qt5-git wxwidgets-common-git)
-pkgver=3.3.1.r0.g49c6810948
-pkgrel=1
+pkgver=3.3.1.r18.g55fd008650
+pkgrel=2
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=(x86_64)
 url="https://github.com/wxWidgets/wxWidgets"
@@ -117,7 +117,7 @@ package_wxwidgets-gtk3-git() {
   pkgdesc='GTK+3 implementation of wxWidgets API for GUI'
   depends=(gtk3 gst-plugins-base-libs libsm wxwidgets-common-git libnotify libmspack sdl2)
   optdepends=('webkit2gtk-4.1: for webview support')
-  provides=(wxwidgets-gtk3)
+  provides=(wxwidgets-gtk3=${pkgver})
   conflicts=(wxwidgets-gtk3)
 
   DESTDIR="${pkgdir}" cmake --install build-gtk3
@@ -129,7 +129,7 @@ package_wxwidgets-gtk3-git() {
 package_wxwidgets-qt5-git() {
   pkgdesc='Qt5 implementation of wxWidgets API for GUI'
   depends=(qt5-base wxwidgets-common-git libmspack sdl2 libtiff)
-  provides=(wxwidgets-qt5)
+  provides=(wxwidgets-qt5=${pkgver})
   conflicts=(wxwidgets-qt5)
 
   DESTDIR="${pkgdir}" cmake --install build-qt5
