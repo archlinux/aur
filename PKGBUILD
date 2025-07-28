@@ -2,16 +2,16 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-binutils"
-pkgver=2.44
+pkgver=2.45
 pkgrel=1
 pkgdesc='Tools to assemble and manipulate binary and object files for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
 license=('GPL-3.0-or-later')
 depends=('libelf' 'zlib')
-options=('!emptydirs' 'staticlibs' '!distcc' '!ccache')
+options=('!ccache' '!distcc' '!emptydirs' 'staticlibs')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"{,.sig})
-sha256sums=('ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
+sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'
             'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton
 
@@ -29,6 +29,7 @@ build() {
         --with-sysroot="/usr/${_target}" \
         --enable-cet \
         --enable-deterministic-archives \
+        --enable-new-dtags \
         --enable-gold \
         --enable-ld='default' \
         --enable-lto \
