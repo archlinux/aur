@@ -1,14 +1,14 @@
 pkgbase = retroarch-assets-sounds
 	pkgdesc = XMB menu sounds for RetroArch
-	pkgver = 528
-	pkgrel = 2
+	pkgver = 532
+	pkgrel = 1
 	epoch = 1
 	url = http://www.libretro.com/
 	arch = any
 	groups = libretro
 	license = CC-BY-NC-3.0
 	makedepends = git
-	source = git+https://github.com/libretro/retroarch-assets.git#commit=fb39cdde6dfaea2c98218d28c71b14afc632fa03
-	sha256sums = 68d6e88510d6af203cc5cfee0c21bc13c79b921a4109462acc73606d9e3a000d
+	source = git+https://github.com/libretro/retroarch-assets.git#commit=2d24ef2972a709f870cc3f73853158fa2376f37d
+	sha256sums = 5b45e41d12ac657519ac1706f9b467f4f90f9881d5fa1f604e2e4987417e11e7
 
 pkgname = retroarch-assets-sounds
