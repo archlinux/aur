@@ -1,10 +1,10 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 
-pkgname=sapmachine11-jdk
-_majorver=11
-pkgver=11.0.14.1
+pkgname=sapmachine17-jdk
+_majorver=17
+pkgver=17.0.16
 pkgrel=1
-pkgdesc="SAP's patched build of OpenJDK 11"
+pkgdesc="SAP's patched build of OpenJDK 17"
 arch=('x86_64')
 url="https://sapmachine.io"
 license=('GPL2')
@@ -15,7 +15,7 @@ backup=()
 options=(!strip)
 install=sapmachine-jdk.install
 source=("https://github.com/SAP/SapMachine/releases/download/sapmachine-${pkgver}/sapmachine-jdk-${pkgver}_linux-x64_bin.tar.gz")
-sha256sums=('f9ec22c87c76671ee86bf5aecf5ea9fa1a5767c0d1fa96d331dd942215084ea9')
+sha256sums=('b53bed5cb59021aab585347bcf58d90a08473bc23829140966f931762da80f40')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-sapmachine
 
