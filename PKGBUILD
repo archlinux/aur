@@ -1,5 +1,5 @@
-#Maintainer: ZorinArch < zorinarch at protonmail dot com >
-#Contributor: HEx_404 < HEx_404x at proton dot me >
+# Maintainer: ZorinArch < zorinarch at protonmail dot com >
+# Contributor: HEx_404 < HEx_404x at proton dot me >
 
 pkgname=ab-download-manager-bin
 _pkgname=ABDownloadManager
