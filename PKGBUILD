@@ -15,7 +15,7 @@ conflicts=("abdownloadmanager" "ab-download-manager")
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=("76db9055bb1fc728bbb28a5fd2051730a47cb88753eb7b316e987aa8c5382bfa"
+sha256sums=("355be492ca0a4b852da0619782590c6359ff124686fb277a5c30c4452c9b2725"
             "233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036")
 
 package() {
