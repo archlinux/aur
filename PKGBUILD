@@ -1,6 +1,5 @@
 
 pkgname=chromium-ffmpeg-codecs-git
-# sparse checkout
 pkgver=7.2.r119684.g670089304a
 pkgrel=9
 _so=libffmpeg.so
@@ -11,15 +10,19 @@ _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 _chromium=138.0.7204.55
 _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-source=("sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
+source=("git+${url}.git"
+#"${_chromium}aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
+#"${_chromium}aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
+"sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 nolog.c
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
-sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
+sha256sums=('SKIP'
+            '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             '4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
-sha256sums[0]='SKIP'
+sha256sums[1]='SKIP'
 depends=(glibc)
 makedepends=(nasm git
 diffutils gcc make patch) # base-devel
@@ -31,18 +34,13 @@ prepare() {
   base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt
   diff {,old}sigs.txt || echo ffmpeg.sigs was changed. Please OOD $pkgname
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
-  echo -e "{\nglobal:" > export.map
-  sed 's/$/;/' sigs.txt >> export.map
-  echo -e "local:\n*;\n};" >> export.map
-  # sparse checkout
-  rm -rf ffmpeg
-  git clone --depth=1 ${url}
+  echo -e "{\nglobal:\n$(sed 's/$/;/' sigs.txt)\nlocal:\n*;\n};" |tee export.map
   cd ffmpeg
-  patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   diff libavcodec/opus/dec.c{.bak,}||:
-  # ${_url}/+/refs/heads/master/chromium/patches/README
+  # Chromium patches
+  patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
   sed -i '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c
