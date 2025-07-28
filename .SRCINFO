@@ -1,14 +1,15 @@
 pkgbase = swiftshader-git
 	pkgdesc = High-performance CPU-based implementation of the Vulkan graphics API12.
-	pkgver = r7019.67f5203051
+	pkgver = r7296.8802b4ec13
 	pkgrel = 1
 	url = https://swiftshader.googlesource.com/SwiftShader
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
+	depends = glibc
 	depends = gcc-libs
 	provides = swiftshader
 	provides = vulkan-driver
@@ -16,7 +17,7 @@ pkgbase = swiftshader-git
 	source = git+https://swiftshader.googlesource.com/SwiftShader#branch=master
 	source = git+https://github.com/google/cppdap
 	source = git+https://github.com/google/googletest.git
-	source = git+https://github.com/nlohmann/json.git
+	source = nlohmann-json::git+https://github.com/nlohmann/json.git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = git+https://github.com/powervr-graphics/Native_SDK.git
 	source = git+https://github.com/google/benchmark.git
