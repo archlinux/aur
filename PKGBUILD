@@ -2,8 +2,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.530
-pkgrel=2
+pkgver=8.3.531
+pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
 url="http://opencircuitdesign.com/magic/"
@@ -39,7 +39,7 @@ source=(
    "0002-makefile-ensure-objs-folder.patch"
 )
 
-b2sums=('624acd576fbe8928e5a58ca1198d2e939a5f4d572d42c6c8d3ba69aaf1f85c251693dbf56f3f8078d03e37c89b783cef5f5262eb29ed08e3b84a950e339952ba'
+b2sums=('59e6e3b63188bf7f0b49b648872eb35f772c1f71f0072c7d0900fecb07ffe078302ec0921e2ebc7aded940ad064027a56f98aef1c74aff28572a480450ceb572'
         '37eaa5bbaab691216ffc06485e6d5d934c74f63e74a876da5bedb0f9fd98f404abfbaa902b9fa979e276e38ba660b4049fbe3d6ff43b591e1d1d3fb2d128eb51'
         'd4f1518e6366c65201df29c50d03862744a8218d192ca510cca8954385f25e51d87a985bfa468347104db2ec767ba84bd58aaa25def2d230ea757e3b36ca600a')
 
