@@ -87,15 +87,11 @@ build() {
 	cd "${_gitname}-${pkgver}"
 	python -m compile_translations
 	python -m build --wheel
-#	bash compile-phazor.sh
-#	bash compile-phazor-pipewire.sh
 }
 
 package() {
 	cd "${_gitname}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
-
-	#cp -r assets templates theme t_modules lib "${pkgdir}/opt/${pkgname}"
 
 	for t in cs de es fr_FR fi hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv tr zh_CN; do
 		install -Dm644 src/tauon/locale/${t}/LC_MESSAGES/*.mo -t "${pkgdir}/usr/share/locale/${t}/LC_MESSAGES"
