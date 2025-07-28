@@ -1,5 +1,5 @@
 pkgbase = zoom-system-qt
-	pkgver = 6.5.5.3045
+	pkgver = 6.5.7.3298
 	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
@@ -8,20 +8,21 @@ pkgbase = zoom-system-qt
 	makedepends = binutils
 	optdepends = qt5-wayland: zoomus.conf xwayland=false
 	optdepends = qt5-webengine: SSO login
-	optdepends = ffmpeg: unused?
 	optdepends = xdg-desktop-portal-impl: Screen sharing,etc... for Wayland
 	optdepends = qt5-3d
 	optdepends = qt5-x11extras
 	optdepends = qt5-multimedia
 	optdepends = qt5-imageformats
 	optdepends = qt5-remoteobjects
+	optdepends = ffmpeg
 	optdepends = zoom-system-qt-cef: zoomus.conf disableCef=false
-	noextract = zoom-system-qt-6.5.5.3045-1-x86_64.pkg.tar
-	noextract = zoom-system-qt-cef-6.5.5.3045-1-x86_64.pkg.tar
+	noextract = zoom-system-qt-6.5.7.3298-1-x86_64.pkg.tar
+	noextract = zoom-system-qt-cef-6.5.7.3298-1-x86_64.pkg.tar
+	noextract = zoom_orig-6.5.7.3298.pkg.tar.xz
 	options = !strip
 	options = emptydirs
-	source = zoom_orig-6.5.5.3045.pkg.tar.xz::https://zoom.us/client/6.5.5.3045/zoom_x86_64.pkg.tar.xz
-	sha512sums = 0cd866b0c3f4e51b31f9f4e72b51a2308dfa71e1ff4a1d15c845d0db61c9c2aaa894b17b4abf01a1ab6245886930c491f19398b5207eb8dd1ebefe7ad8293e46
+	source = zoom_orig-6.5.7.3298.pkg.tar.xz::https://zoom.us/client/6.5.7.3298/zoom_x86_64.pkg.tar.xz
+	sha512sums = ce9c506a2a05995e13266a75065c8da37627042d20a9671460543b03a9a50fb5aa4cf5b195cc290c23c4604d56f3e63e4ad0e4cee704121b1b0addb2ca08f33e
 
 pkgname = zoom-system-qt
 	pkgdesc = Zoom Workspace client on system runtime
