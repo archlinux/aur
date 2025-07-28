@@ -2,7 +2,7 @@
 
 pkgname=python-pyromat
 _name=${pkgname#python-}
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Thermodynamic properties in Python"
 url="https://github.com/chmarti1/PYroMat"
@@ -12,7 +12,7 @@ depends=('python-numpy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=("git+https://github.com/chmarti1/PYroMat#tag=v$pkgver")
-sha256sums=('d0438b34276bd29a2fdfb9eef4b84240c228162f20359c620ac9977b5f8d2431')
+sha256sums=('7705459a33604dd1b567dae9df6caa5cfcb687c7aa3b735c6160486e4b62a79c')
 
 build() {
     cd "$srcdir/PYroMat"
