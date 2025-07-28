@@ -1,5 +1,5 @@
 type		= process
-command		= /bin/open-webui serve
+command		= /bin/bash -c "cd /opt/open-webui/backend && source ./venv/bin/activate && bash start.sh"
 env-file	= /usr/share/open-webui/open-webui.conf
 restart		= on-failure
 smooth-recovery = true

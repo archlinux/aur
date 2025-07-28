@@ -1,14 +1,14 @@
 # Maintainer: super <x6ji7ar9 at anonaddy dot me>
 
 pkgname=open-webui-dinit
-pkgver=2
+pkgver=3
 pkgrel=1
-pkgdesc='Dinit service scripts for Open WebUI'
+pkgdesc='Dinit service scripts for Open WebUI (venv)'
 arch=('any')
 license=('GPL-3.0')
-depends=('dinit')
+depends=('open-webui' 'dinit')
 source=('open-webui')
-sha256sums=('7e20258c19d290fda1da9205bdf81909889f473047be960dd223bea1dd6ba2a8')
+sha256sums=('bb0bda7ab4bba0bb591e6302e7d1ebc906c992c6c87dd330989298dce0dacb05')
 
 package() {
     install -Dm644 open-webui "$pkgdir/etc/dinit.d/open-webui"
