@@ -10,6 +10,7 @@ pkgbase = wootility5-beta
 	depends = fuse2
 	provides = wootility
 	conflicts = wootility
+	noextract = Wootility-5.1.0-beta.3.AppImage
 	options = !strip
 	source = Wootility-5.1.0-beta.3.AppImage::https://api.wooting.io/public/wootility/download?os=linux&version=5.1.0-beta.3
 	source = 70-wooting.rules
