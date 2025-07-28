@@ -1,5 +1,5 @@
 pkgbase = aax-bruteforce
-	pkgdesc = Bruteforce decrypt key for AAX files.
+	pkgdesc = Bruteforce decrypt key for AAX files
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/MaxMatti/aax-bruteforce/
