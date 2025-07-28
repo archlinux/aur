@@ -2,7 +2,7 @@
 # Contributor: N Fytilis <n-fit AT live.com>
 
 pkgname=ntfs2btrfs-git
-pkgver=20240115.r0.g1d55788
+pkgver=20250616.r0.g2b4e00a
 pkgrel=1
 pkgdesc="In-place conversion of Microsoft's NTFS filesystem to the open-source filesystem Btrfs"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = ntfs2btrfs-git
 	pkgdesc = In-place conversion of Microsoft's NTFS filesystem to the open-source filesystem Btrfs
-	pkgver = 20240115.r0.g1d55788
+	pkgver = 20250616.r0.g2b4e00a
 	pkgrel = 1
 	url = https://github.com/maharmstone/ntfs2btrfs
 	arch = x86_64
