@@ -22,7 +22,7 @@ package() {
 
     mv "${srcdir}/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
     mv "${srcdir}/${_pkgname}" "${pkgdir}/opt"
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.abdownloadmanager.desktop" <<EOF
 [Desktop Entry]
 Name=AB Download Manager
 Comment=Manage and organize your download files better than before
