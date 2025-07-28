@@ -1,0 +1,11 @@
+pkgbase = open-webui-dinit
+	pkgdesc = Dinit service scripts for Open WebUI
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL-3.0
+	depends = dinit
+	source = open-webui
+	sha256sums = 7e20258c19d290fda1da9205bdf81909889f473047be960dd223bea1dd6ba2a8
+
+pkgname = open-webui-dinit

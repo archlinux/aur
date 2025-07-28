@@ -1,0 +1,8 @@
+type		= process
+command		= /bin/open-webui serve
+env-file	= /usr/share/open-webui/open-webui.conf
+restart		= on-failure
+smooth-recovery = true
+logfile		= /var/log/dinit/open-webui.log
+waits-for	= loginready
+after		= network.target
