@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/theOfficeCat/izumi"
 license=('GPL3')
 depends=('ncurses')
-makedepends=('meson' 'ninja' 'git' 'python3' 'clang' 'llvm')
+makedepends=('meson' 'ninja' 'git' 'python3' 'clang' 'llvm' 'hotdoc' 'gtk-doc')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
