@@ -1,4 +1,4 @@
-# Maintainer: ZorinArch < zorinarch at protonmail dot com >
+# Maintainer: ZorinArch < zorinarch at proton dot me >
 
 _pkgname=crystal-dock
 pkgname=${_pkgname}-bin
