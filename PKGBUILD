@@ -2,8 +2,8 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 
 pkgname='linpack'
-_pkgver=2025.1.0_653
-_pkgid=850907
+_pkgver=2025.2.0_532
+_pkgid=861559
 pkgver=${_pkgver%%_*}
 _math_kernel_lib=${pkgver%%.0}
 pkgrel=1
@@ -16,7 +16,7 @@ options=('!strip')
 source=("https://downloadmirror.intel.com/${_pkgid}/l_onemklbench_p_${_pkgver}.tgz"
 	'linpack.conf'
 	'linpack_runme_xeon64')
-sha512sums=('7e49c799c1cdda8c0896232ecaae89b90f6d10502d07a5310c664ac538142ab5b0dea347067a05b4a847c2f501aa7afb0cf6d2afe631457fa55f4fb236e5fd6e'
+sha512sums=('299866be93c6ce3cc44841fa073485c16fd3d381e40023e14c52a539fbe7ce61bcc20704751bd242ff81f78f6b555fb88ae296bf98d974b3a85bac62b4d51faf'
             '69b049a3a1c0b674e471bc61e1f88f729db1dd454eb0bfc9adde7c3a4876bb396a91f57f19d5e1add906ee4282068d8cd0fa5f1a59bf8a96784846a3c9f63ab1'
             '3e880d4e0af8154ac1d591177e08ceda28f5ff5fbf698e47f99de8621e37137ecf26024048bd0ee81fc7af73ca8ae0deeb0a309325970a701ac5f13b571bdb60')
 
