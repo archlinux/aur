@@ -29,8 +29,8 @@ pkgbase = chromium-ffmpeg-codecs
 	source = fetch-soname-by-chromium.sh
 	source = nolog.c
 	source = 137.0.7151.138sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/01f23648c6b84de6c0f717fa4e1816f53b9ee72e/chromium/ffmpeg.sigs?format=TEXT
-	source = 137.0.7151.138aac.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT
-	source = 137.0.7151.138aacREADME.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT
+	source = aac.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT
+	source = aacREADME.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	source = off-other-ffmpeg.hook
 	source = on-other-ffmpeg.install

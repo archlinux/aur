@@ -15,10 +15,11 @@ _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz fetch-soname-by-chromium.sh
 nolog.c
+#"no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 #"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
-"${_chromium}aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
-"${_chromium}aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
+"aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
+"aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${_ffver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
@@ -50,9 +51,11 @@ prepare() {
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c #diff libavcodec/opus/dec.c{.bak,}||:
   # Chromium patches
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
-  mkdir -p chromium/patches; base64 -d ../${_chromium}aacREADME.base64 > chromium/patches/README
-  base64 -d ../${_chromium}aac.patch.base64 > aac.patch
+  mkdir -p chromium/patches; base64 -d ../aacREADME.base64 > chromium/patches/README
+  base64 -d ../aac.patch.base64 > aac.patch
   patch -Np1 -i aac.patch
+  #base64 -d ../no-xheaac-parser.patch.base64 > no-xheaac-parser.patch
+  #patch -Np1 -i no-xheaac-parser.patch
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c # buggy or unused
@@ -95,8 +98,6 @@ build() {
 
 package(){
   install -Dm644 $_so "${pkgdir}"/usr/lib/$_so
-  #install -d "${pkgdir}"/opt/vivaldi
-  #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.5 # different soname
   # Block LD_PRELOAD
   install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
