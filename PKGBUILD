@@ -1,7 +1,7 @@
 # Maintainer: Ian Lansdowne <idlansdowneatgmaildotcom>
 pkgname=nrel-sam-bin
 pkgrel=1
-pkgver=2025.4.16.r0.ssc.302
+pkgver=2025.4.16.r1.ssc.303
 pkgdesc='A free desktop application for techno-economic analysis of energy technologies'
 arch=(x86_64)
 url='https://sam.nrel.gov/'
@@ -9,8 +9,8 @@ license=('BSD-3-Clause')
 depends=()
 makedepends=('gendesk')
 conflicts=(nrel-sam)
-source=("sam-$pkgver.run::https://samrepo.nrelcloud.org/beta-releases/sam-linux-2025-4-16.run" 'file://SAM.png')
-sha256sums=('ce730c0ecbc8690c166dbb7187a644f7d6b8415b4d6e7ddb5d40400b79a391e0'
+source=("sam-$pkgver.run::https://samrepo.nrelcloud.org/beta-releases/sam-linux-2025-4-16-r1.run" 'file://SAM.png')
+sha256sums=('5f4e7061f8726aeb25d39bbf49bec56ef423dec578dfdfc278deae5aad603caa'
             '6a918ccd7f7ed5c103042482dc3ae73a8c69a75e80c909b20ffa41c33693c379')
 
 build() {
