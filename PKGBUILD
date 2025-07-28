@@ -10,25 +10,35 @@ url="https://github.com/kiwec/neosu"
 license=(GPL-3.0-only)
 depends=(acl libmd libglvnd glu libxrender libxrandr libx11 \
         libxfixes libxext libxi libxdmcp libxau libxcb util-linux-libs)
-options=(!strip) 
+options=(!strip)
 source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/kiwec/neosu/releases/download/v$pkgver/neosu-linux-x64.tar.gz"
   "$_pkgname.png"
   "$_pkgname.desktop"
+  "$_pkgname-soloud.desktop"
   "$_pkgname.sh"
 )
+
 sha256sums=('32a7b84b2c9f6907f90aa244232545261d1b155afa909f49b5141bb617b8f75b'
             'f74e0a47c46aa33c708211acef3f0140c63c904c09b7eb97410276eec403803c'
-            '1df21f7ae373bd549a0f277e5988ec2ba5f7d70af6cfead98b37c4002c8d4ae9'
-            '86b674bf648a0a5f78589e7913d670896edddd797ad23edcb9ca0ebefaabab77')
+            'f545fb2ea01de0e0fd9acbdaea1a125bbc769b3eeda11e1dffa6ae5c03568bf2'
+            '6c189445c1b5c2cdd613c26186087ec6c4235ec2334abc7168e6ce7c84abf159'
+            'c8ab69285e5bdee59d32ebf32018bf8efb8ef1219ff0b20e8a2972efd21bc81e')
 
 package() {
     cd "$srcdir"
 
+    # neosu currently creates its configuration files in the same folder
+    # as the executable, hence it's better to install it in one's $HOME/.local/share. 
+    XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
     # Installing binaries
-    install -dm755 "$pkgdir/opt/neosu"
-    cp -a "$srcdir/neosu"/* "$pkgdir/opt/neosu/"
-    chmod 755 "$pkgdir/opt/neosu/neosu"
+    install -dm755 "$pkgdir/$XDG_DATA_HOME/neosu"
+    cp -a "$srcdir/neosu"/* "$pkgdir/$XDG_DATA_HOME/neosu/"
+    chmod 755 "$pkgdir/$XDG_DATA_HOME/neosu/neosu"
+
+    # Resetting neosu folder ownership to user
+    chown -R $USER:$USER "$pkgdir/$XDG_DATA_HOME/neosu"
 
     # Installing script
     install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/neosu"
@@ -36,4 +46,5 @@ package() {
     # Install pixmap and desktop files
     install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/neosu.png"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/neosu.desktop"
+    install -Dm644 "$_pkgname-soloud.desktop" "$pkgdir/usr/share/applications/neosu-soloud.desktop"
 }
