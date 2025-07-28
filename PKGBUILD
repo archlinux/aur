@@ -80,7 +80,6 @@ source=(
 
 sha256sums=('SKIP'
             '76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a')
-#	'aacb63f571608210e69c5562eb8a9e3d1cb936bdee7a2eb8ffbc40f63888d8e8')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
@@ -89,10 +88,6 @@ pkgver() {
 
 prepare() {
 	cp -r kissfft-${_kissfftver}/* ${pkgname%-git}/src/phazor/kissfft/
-#	cp -r miniaudio-${_miniaudiocommit}/* ${pkgname%-git}/src/phazor/miniaudio/
-#	cd "${pkgname%-git}"
-#	patch -Np1 -i "${srcdir}"/phazor.patch
-#	patch -Rp1 -i "${srcdir}"/phazor.patch
 }
 
 build() {
