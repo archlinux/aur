@@ -1,0 +1,14 @@
+pkgbase = lyricify
+	pkgdesc = Terminal tool to display synced Spotify lyrics using playerctl and lrclib.net
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nouvborne/lyricify
+	arch = any
+	license = GPL3
+	depends = python
+	depends = playerctl
+	depends = python-requests
+	source = lyricify
+	sha256sums = SKIP
+
+pkgname = lyricify
