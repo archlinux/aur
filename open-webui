@@ -1,6 +1,7 @@
 type		= process
-command		= /bin/bash -c "cd /opt/open-webui/backend && source ./venv/bin/activate && bash start.sh"
-env-file	= /usr/share/open-webui/open-webui.conf
+command		= /bin/bash -c "source ./venv/bin/activate && bash start.sh"
+working-dir	= /opt/open-webui/backend
+run-as		= open-webui
 restart		= on-failure
 smooth-recovery = true
 logfile		= /var/log/dinit/open-webui.log
