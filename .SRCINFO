@@ -1,6 +1,6 @@
 pkgbase = cozy-desktop
 	pkgdesc = File synchronisation for Cozy Cloud on Desktop
-	pkgver = 3.42.0
+	pkgver = 3.43.1
 	pkgrel = 1
 	url = https://cozy-labs.github.io/cozy-desktop/
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = cozy-desktop
 	makedepends = node-gyp
 	makedepends = python
 	depends = electron31
-	source = https://github.com/cozy-labs/cozy-desktop/archive/v3.42.0/cozy-desktop-3.42.0.tar.gz
-	source = https://github.com/cozy-labs/cozy-desktop/releases/download/v3.42.0/Cozy-Drive-3.42.0-x86_64.AppImage
+	source = https://github.com/cozy-labs/cozy-desktop/archive/v3.43.1/cozy-desktop-3.43.1.tar.gz
+	source = Cozy-Drive-3.43.1-x86_64.AppImage::https://github.com/cozy-labs/cozy-desktop/releases/download/v3.43.1/Cozy-Drive-x86_64.AppImage
 	source = cozy-desktop.desktop
 	source = cozy-desktop.sh
-	sha256sums = b5162a219d7f0ab588ff3880f2c1357cfabae45f04d2d0e1946d1b76faef7d07
-	sha256sums = d4cb11c4ba7e2190288fdcaaa399f437591f458998476b632239e56d13eb287e
+	sha256sums = f4c3a233ea1ef71456e4038baac6f1400aae5d6dbca65863be1d6e483fa77b17
+	sha256sums = f96f237de1fa795ad1973e219b1413c5e3407a3ea7a0c43aaae270a760043e43
 	sha256sums = 563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a
 	sha256sums = a8783d3f6ce2da344ffe403f8e1a4f9da8de3b59e8bfda10e15a4ff5643244cf
 
