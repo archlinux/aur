@@ -5,7 +5,7 @@ pkgname="vconsole-colors"
 pkgdesc="Simple utilities for setvtrgb from kbd"
 
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 
 url="https://github.com/GaKu999/$pkgname"
 arch=("any")
