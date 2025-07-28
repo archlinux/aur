@@ -1,6 +1,6 @@
 pkgbase = russian-doom-git
 	pkgdesc = A limit-removing source port of Doom, Heretic and Hexen with enhancements and Russian translation (git version)
-	pkgver = 6.3~80
+	pkgver = 6.3~117
 	pkgrel = 1
 	url = https://github.com/Russian-Doom/russian-doom
 	arch = i686
