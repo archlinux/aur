@@ -6,14 +6,23 @@
 
 pkgname=dtach
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="emulates the detach feature of screen"
 arch=("x86_64")
 url="http://dtach.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
-source=(https://downloads.sourceforge.net/sourceforge/dtach/$pkgname-$pkgver.tar.gz)
-sha256sums=('32e9fd6923c553c443fab4ec9c1f95d83fa47b771e6e1dafb018c567291492f3')
+source=(https://downloads.sourceforge.net/sourceforge/dtach/$pkgname-$pkgver.tar.gz
+				dtach.patch
+			 )
+sha256sums=('32e9fd6923c553c443fab4ec9c1f95d83fa47b771e6e1dafb018c567291492f3'
+            '57e718ae56abaedb555a8bc6a33c2b7b9b91c40709c9bfea0cb9de47e2ed68f7')
+
+prepare() {
+	cd $pkgname-$pkgver
+
+	patch < ../dtach.patch
+}
 
 build() {
   cd $pkgname-$pkgver

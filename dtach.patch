@@ -1,0 +1,13 @@
+diff --git a/attach.c b/attach.c
+index 41a696c..e4a46bd 100644
+--- a/attach.c
++++ b/attach.c
+@@ -96,7 +96,7 @@ die(int sig)
+ 
+ /* Window size change. */
+ static RETSIGTYPE
+-win_change()
++win_change(int sig)
+ {
+ 	signal(SIGWINCH, win_change);
+ 	win_changed = 1;
