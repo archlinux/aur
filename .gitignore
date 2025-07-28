@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.editorconfig
+!wrapper.sh
+!fix-path.patch

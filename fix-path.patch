@@ -1,0 +1,12 @@
+diff --git a/bbaLib/BbaArchive.cs b/bbaLib/BbaArchive.cs
+index ae92b01..6f03a8e 100644
+--- a/bbaLib/BbaArchive.cs
++++ b/bbaLib/BbaArchive.cs
+@@ -247,6 +247,7 @@ namespace bbaLib
+             foreach (BbaFile f in this)
+             {
+                 string path = Path.Combine(folder, f.InternalPath);
++                path = path.Replace("\\", Path.DirectorySeparatorChar.ToString());
+                 Directory.CreateDirectory(Path.GetDirectoryName(path) ?? throw new ArgumentException("somehow path got messed up"));
+                 using (FileStream w = new(path, FileMode.Create, FileAccess.Write))
+                 {

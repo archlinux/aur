@@ -1,0 +1,17 @@
+pkgbase = bbatools5
+	pkgdesc = Command line tool to read/write SHoK bba/s5x archives
+	pkgver = 1.6.0.1
+	pkgrel = 1
+	url = https://github.com/mcb5637/bbaToolS5
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-8.0
+	depends = dotnet-runtime-8.0
+	source = bbatools5-1.6.0.1.tar.gz::https://github.com/mcb5637/bbaToolS5/archive/refs/tags/v1.6.0.1.tar.gz
+	source = wrapper.sh
+	source = fix-path.patch
+	sha256sums = 34b47ceeab2c0ea2cbd1b5bc8e7bd23d49d7c7dac871d363977dc814eed4d31f
+	sha256sums = 76adce4581ce5dd6a720fedfb467b27dee34abac8c110336f75294c20f668627
+	sha256sums = 8f823aad3a758de4f6330d09591d746e1038c0e8e53947f71db47c21041374fd
+
+pkgname = bbatools5
