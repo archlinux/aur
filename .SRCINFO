@@ -1,6 +1,6 @@
 pkgbase = motus
 	pkgdesc = A dead simple password generator
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/oleiade/motus
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = motus
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/oleiade/motus/archive/refs/tags/v0.3.1/motus-0.3.1.tar.gz
-	sha256sums = 2c803838a5d8c1cd7f82a120c9d9a46db65fdee824e0cdd94c055902055a09bf
+	source = https://github.com/oleiade/motus/archive/refs/tags/v0.4.0/motus-0.4.0.tar.gz
+	sha256sums = eaa547e0821906cba7553ff7a51309cc39d450b215748a907bd7db1614ce0c85
 
 pkgname = motus

@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=motus
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A dead simple password generator"
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ makedepends=('rust' 'cargo')
 depends=('glibc' 'gcc-libs')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('2c803838a5d8c1cd7f82a120c9d9a46db65fdee824e0cdd94c055902055a09bf')
+sha256sums=('eaa547e0821906cba7553ff7a51309cc39d450b215748a907bd7db1614ce0c85')
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${pkgname}-${pkgver}"
