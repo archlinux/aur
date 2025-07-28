@@ -1,8 +1,8 @@
 pkgname=zamntc
 _pkgname=ZamnTC
 pkgver=h2022.hotfix1
-pkgrel=1
-scriptver=1.0.0
+pkgrel=2
+scriptver=1.0.1
 pkgdesc="Zombies Ate My Neighbors TC recreated and powered by the GZDoom (Demo)"
 arch=('x86_64' 'aarch64')
 license=('GPL')
