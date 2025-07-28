@@ -1,0 +1,13 @@
+pkgbase = git-jot-git
+	pkgdesc = Emulate branch notes
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/mtth/git-jot
+	arch = any
+	license = MIT
+	makedepends = asciidoctor
+	depends = git
+	source = git+https://github.com/mtth/git-jot.git#branch=main
+	sha256sums = SKIP
+
+pkgname = git-jot-git
