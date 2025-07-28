@@ -1,0 +1,37 @@
+From 617fbfeac720552802bdb704d162d5de1f99ccdb Mon Sep 17 00:00:00 2001
+From: Vasiliy Stelmachenok <ventureo@cachyos.org>
+Date: Sun, 27 Jul 2025 22:34:45 +0300
+Subject: [PATCH] Do not handle IMAGE_FILE_LARGE_ADDRESS_AWARE on WoW64
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The header IMAGE_FILE_LARGE_ADDRESS_AWARE SOMEHOW breaks the work of a number of pirates and not
+very installers. Without WoW64 they aren't broken, just because IMAGE_FILE_LARGE_ADDRESS_AWARE is
+not processed, instead there is a hardcoded user_space_limit to 0x7fff0000 with which everything
+works. I don’t know what’s wrong with the Wine implementation, but I prefer all applications to work
+out of box. However, you can still force the use of LAA by using the WINE_LARGE_ADDRESS_AWARE
+environment variable.
+
+Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
+---
+ dlls/ntdll/unix/virtual.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/dlls/ntdll/unix/virtual.c b/dlls/ntdll/unix/virtual.c
+index c5d73456762..7edf597349e 100644
+--- a/dlls/ntdll/unix/virtual.c
++++ b/dlls/ntdll/unix/virtual.c
+@@ -4921,8 +4921,7 @@ BOOL WINAPI __wine_needs_override_large_address_aware(void)
+ 
+ static BOOL is_large_address_aware(void)
+ {
+-    return (main_image_info.ImageCharacteristics & IMAGE_FILE_LARGE_ADDRESS_AWARE)
+-           || __wine_needs_override_large_address_aware();
++    return __wine_needs_override_large_address_aware();
+ }
+ 
+ /***********************************************************************
+-- 
+2.50.1
+

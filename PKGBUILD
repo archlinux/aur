@@ -6,8 +6,8 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.12.r91.ge44737278a4
-pkgrel=3
+pkgver=10.12.r205.g5b5f7fa1045
+pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
@@ -25,6 +25,7 @@ source=(
   winecfg-Add-tweaks-tab-page.patch
   ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch
   Add-workarounds-for-game-launchers.patch
+  Do-not-handle-IMAGE_FILE_LARGE_ADDRESS_AWARE-on-WoW64.patch
 )
 
 sha256sums=(
@@ -32,7 +33,7 @@ sha256sums=(
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  '889ee2bd0da2042bf3dda13782cf85945f57512e043eace850a53a3fd0856516'
+  'dcce6c637ef38e399f6afcf67b4957f353ef793dfc2355fc9336429c41c76eea'
   'a7e69169f2869a71e6eed3fe01116629ea889c26d6a7c80b48945d88d9a2a09c'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
@@ -44,6 +45,7 @@ sha256sums=(
   '27e451af4e7d512c6247cf5d1b7ec4b31f67768469e707e37ac741468fde1d7f'
   'dddf208f2b44c38de87678fad6d3ef0ead3066acfb6540812af7d4f2b3b67f94'
   '07b0cbe87d08ce9272c15870acfc4f8a467990fc1b4405329e96d76c23f0fc58'
+  'ce5a5c7ca21d748ab1ae92730456023d00d7f90ec27d0fcd28836a8bc16000ba'
 )
 
 pkgdesc="Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)"
@@ -145,6 +147,9 @@ prepare() {
   # Patch from Proton. Works only if WINE_LARGE_ADDRESS_AWARE environment
   # variable is specified.
   patch -Np1 -i "${srcdir}/ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch"
+
+  # Fixes progress freezing for a number of installers, notably Fitgirl and Hatab repacks.
+  patch -Np1 -i "${srcdir}/Do-not-handle-IMAGE_FILE_LARGE_ADDRESS_AWARE-on-WoW64.patch"
 
   # Fix black windows in some launchers when using winewayland
   patch -Np1 -i "${srcdir}/Add-workarounds-for-game-launchers.patch"
