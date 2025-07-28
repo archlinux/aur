@@ -21,7 +21,7 @@ source=(
     "${_pkgname}-cli.sh"
 )
 md5sums=(
-    '96620c80ae6e7c2c96827b1f26ebc888'
+    'f92d983d30ef44f09b500be8f86dd291'
     '08b27001217b9732289cd0e33f8f8d58'
     '9f585ae635005d2b6fa0570eb69cc12f'
     '6f3f6858627577e698c95d46e74e7e63'
