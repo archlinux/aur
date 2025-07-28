@@ -1,0 +1,126 @@
+From 26ab414e926756b8315a92805d5fe2d72d651020 Mon Sep 17 00:00:00 2001
+From: Axel Spoerl <axel.spoerl@qt.io>
+Date: Tue, 17 Jun 2025 14:16:22 +0200
+Subject: [PATCH 30/31] Remove handling of unused tab bars in QMainWindowLayout
+
+Instead of keeping unused tab bars in a container, delete them right
+away.
+
+Fixes: QTBUG-137755
+Change-Id: Ie604cdb40145989df6c07714d742d83afd7c9d6f
+Reviewed-by: Samuel Gaist <samuel.gaist@idiap.ch>
+(cherry picked from commit 1b7dea55ea27737b6ad9613fd6eaceb5bda85c82)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 6694c0fbfce6426ad4b8e2ffe8794b41ee69e32f)
+---
+ src/widgets/widgets/qmainwindowlayout.cpp | 47 +++++------------------
+ src/widgets/widgets/qmainwindowlayout_p.h |  2 -
+ 2 files changed, 10 insertions(+), 39 deletions(-)
+
+diff --git a/src/widgets/widgets/qmainwindowlayout.cpp b/src/widgets/widgets/qmainwindowlayout.cpp
+index ce1bc208b43..fca090a86aa 100644
+--- a/src/widgets/widgets/qmainwindowlayout.cpp
++++ b/src/widgets/widgets/qmainwindowlayout.cpp
+@@ -1767,8 +1767,6 @@ void QMainWindowLayout::setDocumentMode(bool enabled)
+     // Update the document mode for all tab bars
+     for (QTabBar *bar : std::as_const(usedTabBars))
+         bar->setDocumentMode(_documentMode);
+-    for (QTabBar *bar : std::as_const(unusedTabBars))
+-        bar->setDocumentMode(_documentMode);
+ }
+ 
+ void QMainWindowLayout::setVerticalTabsEnabled(bool enabled)
+@@ -2048,7 +2046,6 @@ QMainWindowTabBar::~QMainWindowTabBar()
+     auto *mwLayout = qt_mainwindow_layout(mainWindow);
+     if (!mwLayout)
+         return;
+-    mwLayout->purgeTabBar(this);
+     mwLayout->usedTabBars.remove(this);
+ }
+ 
+@@ -2104,21 +2101,10 @@ bool QMainWindowLayout::isDockWidgetTabbed(const QDockWidget *dockWidget) const
+     return bar && bar->count() > 1;
+ }
+ 
+-void QMainWindowLayout::purgeTabBar(QTabBar *bar)
+-{
+-    Q_ASSERT(qobject_cast<QMainWindowTabBar *>(bar));
+-    bar->hide();
+-    while (bar->count() > 0)
+-        bar->removeTab(0);
+-    unusedTabBars.removeOne(bar);
+-}
+-
+ void QMainWindowLayout::unuseTabBar(QTabBar *bar)
+ {
+     Q_ASSERT(qobject_cast<QMainWindowTabBar *>(bar));
+-    Q_ASSERT(!unusedTabBars.contains(bar));
+-    unusedTabBars.append(bar);
+-    usedTabBars.remove(bar);
++    delete bar;
+ }
+ 
+ QTabBar *QMainWindowLayout::getTabBar()
+@@ -2132,21 +2118,16 @@ QTabBar *QMainWindowLayout::getTabBar()
+         activate();
+     }
+ 
+-    QTabBar *result = nullptr;
+-    if (!unusedTabBars.isEmpty()) {
+-        result = unusedTabBars.takeLast();
+-    } else {
+-        result = new QMainWindowTabBar(static_cast<QMainWindow *>(parentWidget()));
+-        result->setDrawBase(true);
+-        result->setElideMode(Qt::ElideRight);
+-        result->setDocumentMode(_documentMode);
+-        result->setMovable(true);
+-        connect(result, SIGNAL(currentChanged(int)), this, SLOT(tabChanged()));
+-        connect(result, &QTabBar::tabMoved, this, &QMainWindowLayout::tabMoved);
+-    }
++    QTabBar *bar = new QMainWindowTabBar(static_cast<QMainWindow *>(parentWidget()));
++    bar->setDrawBase(true);
++    bar->setElideMode(Qt::ElideRight);
++    bar->setDocumentMode(_documentMode);
++    bar->setMovable(true);
++    connect(bar, SIGNAL(currentChanged(int)), this, SLOT(tabChanged()));
++    connect(bar, &QTabBar::tabMoved, this, &QMainWindowLayout::tabMoved);
+ 
+-    usedTabBars.insert(result);
+-    return result;
++    usedTabBars.insert(bar);
++    return bar;
+ }
+ 
+ // Allocates a new separator widget if needed
+@@ -2747,14 +2728,6 @@ QMainWindowLayout::~QMainWindowLayout()
+     layoutState.deleteCentralWidgetItem();
+ 
+     delete statusbar;
+-
+-#if QT_CONFIG(dockwidget) && QT_CONFIG(tabwidget)
+-    // unusedTabBars contains unparented tab bars, which need to be removed manually.
+-    // ~QMainWindowTabBar() attempts to remove the bar from unusedTabBars
+-    // => move it out of the way first.
+-    const auto bars = std::move(unusedTabBars);
+-    qDeleteAll(bars);
+-#endif // QT_CONFIG(dockwidget) && QT_CONFIG(tabwidget)
+ }
+ 
+ void QMainWindowLayout::setDockOptions(QMainWindow::DockOptions opts)
+diff --git a/src/widgets/widgets/qmainwindowlayout_p.h b/src/widgets/widgets/qmainwindowlayout_p.h
+index 3f59f7d4524..49b40d2599e 100644
+--- a/src/widgets/widgets/qmainwindowlayout_p.h
++++ b/src/widgets/widgets/qmainwindowlayout_p.h
+@@ -551,9 +551,7 @@ public:
+ 
+     QTabBar *getTabBar();
+     void unuseTabBar(QTabBar *bar);
+-    void purgeTabBar(QTabBar *bar);
+     QSet<QTabBar*> usedTabBars;
+-    QList<QTabBar*> unusedTabBars;
+     bool verticalTabsEnabled;
+ 
+     QWidget *getSeparatorWidget();
+-- 
+2.50.1
+
