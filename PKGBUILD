@@ -3,7 +3,7 @@
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
 pkgver=4.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
 license=('GPL-2.0-or-later')
@@ -41,7 +41,10 @@ package() {
   cp -ar "${_pkgname%}-v$pkgver"/src/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
 
   install -Dm644 "${_pkgname%}-v$pkgver"/99-tuxedo-fix-infinity-flex-touchpanel-toggle.rules -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/99-tuxedo-fix-intel-gen13-sleep-state.rules -t "$pkgdir/etc/udev/rules.d/"
   install -Dm644 "${_pkgname%}-v$pkgver"/99-tuxedo-fix-nb02-touchpad-mouse.rules -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/99-tuxedo-fix-pulse-gen2-wakeup-through-nvme-controller.rules -t "$pkgdir/etc/rules.d/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/99-tuxedo-fix-realtek-rts522a-idle-behaviour.rules -t "$pkgdir/etc/rules.d/"
   install -Dm644 "${_pkgname%}-v$pkgver"/99-tuxedo-fix-systemd-led-bootdelay.rules -t "$pkgdir/etc/udev/rules.d/"
   install -Dm644 "${_pkgname%}-v$pkgver"/61-sensor-tuxedo.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d/"
   install -Dm644 "${_pkgname%}-v$pkgver"/61-keyboard-tuxedo.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d/"
