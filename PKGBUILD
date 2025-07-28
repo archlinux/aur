@@ -5,7 +5,7 @@ pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Provides encodeuricomponent <<< 'url', decodeuricomponent <<< 'url' and trim <<< 'text' binaries"
+pkgdesc="Provides encodeuricomponent, decodeuricomonent and trim which you can feed from stdin"
 arch=('any')
 url="https://gitverse.ru/naierchou/mybible-module-mgb"
 license=('GPL-3')
@@ -23,6 +23,7 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   go build -o build/encodeuricomponent ./cmd/encodeuricomponent
   go build -o build/decodeuricomponent ./cmd/decodeuricomponent
+  go build -o build/trim ./cmd/trim
 }
 
 package() {
