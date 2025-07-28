@@ -76,7 +76,7 @@ _pkgname='rustdesk'
 pkgname="${_pkgname}"
 _pkgver='1.4.1'
 pkgver="${_pkgver//-/.}"
-pkgrel=1
+pkgrel=2
 _HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
   '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
   '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
