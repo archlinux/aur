@@ -4,7 +4,7 @@
 
 pkgname=wootility
 pkgver=5.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility for configuring Wooting keyboards'
 arch=('x86_64')
 url="https://wooting.io/$pkgname"
