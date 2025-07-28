@@ -1,0 +1,16 @@
+pkgbase = abcrypt-cli-bin
+	pkgdesc = A simple, modern and secure file encryption tool
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/sorairolake/abcrypt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = abcrypt-cli
+	conflicts = abcrypt-cli
+	source_x86_64 = abcrypt-cli-0.5.1-x86_64.tar.zst::https://github.com/sorairolake/abcrypt/releases/download/abcrypt-cli-v0.5.1/abcrypt-v0.5.1-x86_64-unknown-linux-musl.tar.zst
+	sha256sums_x86_64 = effc8a68b4632055fe6d3f26e9a0010e687e6a4a824706cdff64d4e729ad2954
+	source_aarch64 = abcrypt-cli-0.5.1-aarch64.tar.zst::https://github.com/sorairolake/abcrypt/releases/download/abcrypt-cli-v0.5.1/abcrypt-v0.5.1-aarch64-unknown-linux-musl.tar.zst
+	sha256sums_aarch64 = 6cb8253655b6b39d018013e745d6b2681d9e50e4d2035cda867e8f558136b5fa
+
+pkgname = abcrypt-cli-bin
