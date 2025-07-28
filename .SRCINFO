@@ -1,0 +1,11 @@
+pkgbase = splash-cli-bin
+	pkgdesc = A simple, CLI to download Unsplash wallpapers. Nothing fancy — it just works.
+	pkgver = 4.1.4
+	pkgrel = 1
+	url = https://github.com/rawnly/splash-cli
+	arch = x86_64
+	license = All rights reserved
+	source = splash-cli-bin-4.1.4.tar.gz::https://github.com/rawnly/splash-cli/releases/download/4.1.4/splash_Linux_x86_64.tar.gz
+	sha256sums = 42a69c41356c5a7ec7d36ef0480a8fb8976f2742807c1748ac6af11996ab54cb
+
+pkgname = splash-cli-bin
