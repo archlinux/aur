@@ -1,4 +1,4 @@
-# Maintainer: ZorinArch < zorinarch at protonmail dot com >
+# Maintainer: ZorinArch < zorinarch at proton dot me >
 # Contributor: HEx_404 < HEx_404x at proton dot me >
 
 pkgname=ab-download-manager-bin
