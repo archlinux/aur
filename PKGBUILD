@@ -27,8 +27,6 @@ build() {
 
   commit=$(git ls-remote --tags https://github.com/mudler/LocalAI.git refs/tags/v${pkgver} | cut -f1)
 
-
-  echo $commit
   make protogen-go
   CGO_ENABLED=0 \
     go build \
