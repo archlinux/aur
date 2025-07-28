@@ -1,0 +1,10 @@
+# sources
+gitflow
+shFlags
+
+# build directories
+src
+pkg
+
+# package files
+*.pkg.tar.zst

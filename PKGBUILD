@@ -1,45 +1,40 @@
-# Contributor: delor <bartekpiech@gmail com>
+# Maintainer: Vitor Hideyoshi <vitor.h.n.batista@gmail.com>
 
 pkgname=gitflow-git
-pkgver=20130316
+_gitname=gitflow
+_branch_name=master
+pkgver=0.4.1.git.297.1ffb6b1
 pkgrel=1
 pkgdesc="Git extensions to provide high-level repository operations for Vincent Driessen's branching model."
+provides=('gitflow')
+conflicts=('gitflow' 'gitflow-avh')
 arch=('any')
-url="http://github.com/nvie/gitflow"
-license=('BSD')
+url="https://github.com/nvie/gitflow"
+license=('LGPL')
 depends=('git')
+source=("${_gitname}::git+${url}.git#branch=${_branch_name}"
+        "git+https://github.com/nvie/shFlags.git")
+sha256sums=('SKIP'
+            'SKIP')
 
-_gitroot="git://github.com/nvie/gitflow.git"
-_gitname="gitflow"
 
-build() {
-    msg "Connecting to GIT server"
-
-    if [ -d ${srcdir}/$_gitname ] ; then
-        cd ${srcdir}/$_gitname && git pull origin || return 1
-        msg "The local files are updated."
-    else
-        git clone $_gitroot $_gitname || return 1
-    fi
-
-    msg "GIT checkout done or server timeout"
-
-    msg "Getting submodule"
-
-    cd ${srcdir}/${_gitname}
-    git submodule init
-    git submodule update
-
-    msg "Submodule checkout done or server timeout"
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  source ./git-flow-version
+  echo ${GITFLOW_VERSION}.git.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
+
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+
+  git submodule init
+  git config submodule.shFlags.url "$srcdir/shFlags"
+  git -c protocol.file.allow=always submodule update
+}
+
 
 package() {
-    msg "Starting make"
-
-    cd "${srcdir}/${_gitname}"
-    make prefix=/${pkgdir}/usr install
-
-    install -Dm644 "$srcdir/$_gitname/LICENSE" \
-            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/${_gitname}"
+  make install prefix="${pkgdir}/usr/local"
 }
-
