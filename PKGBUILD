@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn-git
-pkgver=2.0.0.r1.g33b29ff
+pkgver=2.1.0.r9.gc226a96
 pkgrel=1
 _jrever=21
 _jdkver=21
@@ -36,6 +36,10 @@ pkgver() {
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
+}
+
+prepare() {
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
