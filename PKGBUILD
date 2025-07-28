@@ -10,7 +10,6 @@ provides=('xdg-desktop-portal-impl')
 depends=('xdg-desktop-portal' 'libinih')
 makedepends=('meson' 'scdoc' 'git')
 optdepends=(
-    'fzf: wrapper included'
     'kitty: default terminal for launching wrappers'
     'lf: wrapper included'
     'nnn: wrapper included'
