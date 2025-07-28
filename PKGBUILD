@@ -3,14 +3,12 @@
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-# Bump Chromiumver from opera:about if av{codec,format,util} have same major soname
-_codec=61
-_format=61
-_util=59
+# Bump Chromiumver from opera:about if libavcodec.so's have same major soname
+_codecformatutil=61.61.59
 _chromium=137.0.7151.138
 url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 _commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-pkgver=${_chromium}.sonames${_codec}.${_format}.${_util}
+pkgver=${_chromium}.sonames$_codecformatutil
 pkgrel=2
 _so=libffmpeg.so
 pkgdesc='Add codecs to Opera (vendored ffmpeg with same sonames)'
@@ -27,14 +25,12 @@ sha256sums=('30302075945c01c8d5d0ee1ca1d2958e6aadf5938bfdc7ba26cc4a524ecb8f3f'
             'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 
 prepare() {
-  echo Use chromium-ffmpeg-codecs instead of $pkgname as this lacks some optimization configs.
+  echo Use chromium-ffmpeg-codecs instead of $pkgname #as this lacks some optimization configs.
   cd chromium-ffmpeg
   # List used funcs
   grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > ../sigs.txt
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> ../sigs.txt # only for opera
-  echo -e "{\nglobal:" > ../export.map
-  sed 's/$/;/' ../sigs.txt >> ../export.map
-  echo -e "local:\n*;\n};" >> ../export.map
+  echo -e "{\nglobal:\n$(sed 's/$/;/' ../sigs.txt)\nlocal:\n*;\n};" > ../export.map
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   #diff libavcodec/opus/dec.c{.bak,} || :
