@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.531
+pkgver=8.3.532
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -36,15 +36,13 @@ _archive="${pkgname}-${pkgver}"
 source=(
    "${_archive}::git+${_git_url}#tag=${pkgver}"
    "0001-set_std_gnu17_default.patch"
-   "0002-makefile-ensure-objs-folder.patch"
 )
 
-b2sums=('59e6e3b63188bf7f0b49b648872eb35f772c1f71f0072c7d0900fecb07ffe078302ec0921e2ebc7aded940ad064027a56f98aef1c74aff28572a480450ceb572'
-        '37eaa5bbaab691216ffc06485e6d5d934c74f63e74a876da5bedb0f9fd98f404abfbaa902b9fa979e276e38ba660b4049fbe3d6ff43b591e1d1d3fb2d128eb51'
-        'd4f1518e6366c65201df29c50d03862744a8218d192ca510cca8954385f25e51d87a985bfa468347104db2ec767ba84bd58aaa25def2d230ea757e3b36ca600a')
+b2sums=('b657cc1c03df0dc708d193b1daee92fe79e1f9077ce81055123974dcfbbf4c11b9b6e4c84c43842d8bf237807f8aff39fa95ff29d630f35d227c70c77c8a2896'
+        '37eaa5bbaab691216ffc06485e6d5d934c74f63e74a876da5bedb0f9fd98f404abfbaa902b9fa979e276e38ba660b4049fbe3d6ff43b591e1d1d3fb2d128eb51')
 
 
-options=(!ccache !lto)
+options=()
 
 prepare() {
    cd "${_archive}"
@@ -52,10 +50,6 @@ prepare() {
    # See upstream issue: https://github.com/RTimothyEdwards/magic/issues/401
    # for more details about why we need to use C17 + GNU extensions
    patch -Np1 < "../0001-set_std_gnu17_default.patch"
-
-   # SCMOS techfiles doesn't get copied due to racyness of the makefile
-   # TODO: report upstream
-   patch -Np1 < "../0002-makefile-ensure-objs-folder.patch"
 
 }
 
