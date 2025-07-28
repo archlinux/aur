@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=Game;
+Comment=Third-party McOsu fork, with additional features
+Comment=Third-party McOsu fork, with additional features
+Exec=/usr/bin/neosu
+GenericName=
+GenericName=
+Icon=/usr/share/pixmaps/neosu.png
+MimeType=
+Name=neosu
+Name=neosu
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
