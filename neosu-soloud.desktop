@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=neosu
+Name=neosu (soloud)
 Icon=/usr/share/pixmaps/neosu.png
 Comment=Third-party McOsu fork, with additional features
 Exec=/usr/bin/neosu -sound soloud
