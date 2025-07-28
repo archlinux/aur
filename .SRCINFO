@@ -1,6 +1,6 @@
 pkgbase = arch-smart-update-checker
 	pkgdesc = Smart update checker for Arch Linux that shows relevant news before updating
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/NeatCode-Labs/arch-smart-update-checker
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = arch-smart-update-checker
 	optdepends = python-pytest: for running tests
 	optdepends = python-mypy: for type checking
 	optdepends = apparmor: for enhanced security using AppArmor profiles
-	source = arch-smart-update-checker-2.2.0.tar.gz::https://github.com/NeatCode-Labs/arch-smart-update-checker/releases/download/v2.2.0/arch-smart-update-checker-2.2.0-complete.tar.gz
-	sha256sums = bafa57acb75ce94174cf42cd4c7ee085a878d09ea93dd93f3ec38a0a7a60b77b
+	source = arch-smart-update-checker-2.2.1.tar.gz::https://github.com/NeatCode-Labs/arch-smart-update-checker/releases/download/v2.2.1/arch-smart-update-checker-2.2.1-complete.tar.gz
+	sha256sums = 484a9b3ef33e4e9c74b93fa8e88b7917b0ffc276ca2b8e0777df58663df11273
 
 pkgname = arch-smart-update-checker

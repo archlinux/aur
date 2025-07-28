@@ -1,7 +1,7 @@
 # Maintainer: NeatCode Labs <neatcodelabs@gmail.com>
 
 pkgname=arch-smart-update-checker
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Smart update checker for Arch Linux that shows relevant news before updating"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
     'apparmor: for enhanced security using AppArmor profiles'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-complete.tar.gz")
-sha256sums=('bafa57acb75ce94174cf42cd4c7ee085a878d09ea93dd93f3ec38a0a7a60b77b')
+sha256sums=('484a9b3ef33e4e9c74b93fa8e88b7917b0ffc276ca2b8e0777df58663df11273')
 
 build() {
     cd "$pkgname-$pkgver"
