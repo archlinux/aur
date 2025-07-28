@@ -20,8 +20,12 @@ b2sums=('01f4997054be96dcbee8bbb6d4f68874d23bb1507898337e4e4165c6c417f183cca947b
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
-    chmod +x $_appimage
-    ./$_appimage --appimage-extract
+    # Copy AppImage in case $SRCDEST is mounted with noexec
+    cp $_appimage $_appimage.copy
+    chmod +x $_appimage.copy
+    ./$_appimage.copy --appimage-extract $pkgname.desktop
+    ./$_appimage.copy --appimage-extract usr/share/icons
+    rm $_appimage.copy
 }
 
 build() {
