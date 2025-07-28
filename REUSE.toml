@@ -27,4 +27,4 @@ path = [
     "qt6-base-nostrip.patch",
 ]
 SPDX-FileCopyrightText = "qt6-base contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "0BSD"
