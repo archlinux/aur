@@ -1,0 +1,6 @@
+[sublime-merge]
+source = 'regex'
+url = 'https://www.sublimemerge.com/download'
+encoding = 'utf8'
+regex = 'Version:.*Build ([\d.]+)'
+sort_version_key = 'vercmp'
