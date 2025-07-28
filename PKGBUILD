@@ -43,6 +43,7 @@ build() {
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
       -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
+      -DUSE_LINK_GROUP=OFF \
       -DFEATURE_static_runtime=ON \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_windeployqt=OFF
