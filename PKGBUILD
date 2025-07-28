@@ -2,7 +2,7 @@
 
 _pkgname="gtk4-nocsd"
 pkgname="${_pkgname}-git"
-pkgver=r3.3e1c671
+pkgver=r5.ea89f78
 pkgrel=1
 pkgdesc="A small LD_PRELOAD library to disable CSD in GTK4 and LibAdwaita apps."
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=("libadwaita")
-makedepends=("git")
+makedepends=("git" "wayland" "wayland-protocols" "bash")
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  gcc -fPIC -shared -o libgtk4-nocsd.so GTK4-NoCSD.c $(pkg-config --cflags --libs libadwaita-1)
+  ./OffsetMiner.sh
 }
 
 package() {
