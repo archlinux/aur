@@ -30,7 +30,7 @@ build() {
   make protogen-go
   CGO_ENABLED=0 \
     go build \
-    -ldflags "-s -w -X github.com/mudler/LocalAI/internal.Version=${pkgver} \
+    -ldflags "-s -w -X github.com/mudler/LocalAI/internal.Version=v${pkgver} \
     -X github.com/mudler/LocalAI/internal.Commit=${commit}" \
     -o local-ai \
     .
