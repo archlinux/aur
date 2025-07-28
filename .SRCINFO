@@ -1,6 +1,6 @@
 pkgbase = wangle
 	pkgdesc = C++ networking library providing client/server abstractions for building services
-	pkgver = 2025.07.21.00
+	pkgver = 2025.07.28.00
 	pkgrel = 1
 	url = https://github.com/facebook/wangle
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = wangle
 	makedepends = cmake
 	makedepends = gtest
 	depends = double-conversion
-	depends = fizz=2025.07.21.00
+	depends = fizz=2025.07.28.00
 	depends = fmt
-	depends = folly=2025.07.21.00
+	depends = folly=2025.07.28.00
 	depends = gcc-libs
 	depends = gflags
 	depends = glibc
 	depends = google-glog
 	depends = openssl
 	provides = libwangle.so
-	source = wangle-2025.07.21.00.tar.gz::https://github.com/facebook/wangle/archive/v2025.07.21.00.tar.gz
-	sha256sums = c7407cf9e33c00d4cdd1fa96452638688c50402b6150eb7e42c9a5010eb78123
+	source = wangle-2025.07.28.00.tar.gz::https://github.com/facebook/wangle/archive/v2025.07.28.00.tar.gz
+	sha256sums = 9e18b2edcb4051c3acfdf153c79440b9aa23e5cf1fd277811b35f227184a6139
 
 pkgname = wangle
