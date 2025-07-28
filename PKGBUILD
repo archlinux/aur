@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
-pkgver=47.r6.g9379f86
+pkgver=50.r0.gc7cec79
 pkgrel=1
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
@@ -18,11 +18,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
 source=('git+https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager.git'
-        '60-awsm-ydotool-uinput.rules'
-        'initial-changes-for-styling-and-improvements.patch')
+        '60-awsm-ydotool-uinput.rules')
 sha256sums=('SKIP'
-            '9f3e96fd1d964f3e6564e0ef859f5e4f5b59059aa89b2654bb3fe2c9abed4f27'
-            'd993ba9109a3b510637ac22d4cd701ae7965d573fe3d88af5fa76383e8cbb062')
+            '9f3e96fd1d964f3e6564e0ef859f5e4f5b59059aa89b2654bb3fe2c9abed4f27')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -31,10 +29,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # GNOME 48 compatibility
-  # https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager/pull/120
-  patch -Np1 -i ../initial-changes-for-styling-and-improvements.patch
 }
 
 build() {
