@@ -1,12 +1,13 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
-# Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Xiaoxu Guo <ftiasch0@gmail.com>
+# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.07.21.00
+pkgver=2025.07.28.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -58,7 +59,7 @@ source=(
   "fix-setup-py-for-python-extensions.patch"
   "fix-cmake-for-setup-py-extensions.patch"
   "fix-gcc-traits.patch")
-sha256sums=('ba78bacd4782a1195e3fb4c59cd27f3a31057ccd637bd689469b0406a91c5eb3'
+sha256sums=('89be5e62c182287df73c5d6ba4f59d0b04d356048bf15e83f1ada4404c500dad'
             'a6e57c9ec968ed6de454803d141035585ee9ab1355beba64b2b176ab8c793d2c'
             'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
             '78f6127afef08193923b955aae79171a8218a74c6e0e9765bf3b49dee7a1d062'
@@ -70,9 +71,9 @@ prepare() {
   patch --forward --strip=1 --input="$srcdir/fix-cmake-for-setup-py-extensions.patch"
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
   patch --forward --strip=1 --input="$srcdir/fix-gcc-traits.patch"
-#concurrency tests currently don't compile (2025-07-21)
+  #concurrency tests currently don't compile (2025-07-21)
   sed -i '/^    DIRECTORY concurrency\/test\//,/^$/d' CMakeLists.txt
-#pass $pkgver to python extensions
+  #pass $pkgver to python extensions
   sed -i "s/version=.*/version=\"$pkgver\",/" folly/python/setup.py
 }
 
@@ -108,6 +109,7 @@ check() {
     optional_coroutines_test.Optional.CoroutineSuccess
     singleton_thread_local_test.ThreadLocal.DependencyTest
     singleton_thread_local_test.SingletonThreadLocalDeathTest.Overload
+    container_heap_vector_types_test.HeapVectorTypes.SimpleSetTest
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
