@@ -1,0 +1,16 @@
+pkgbase = randgen-bin
+	pkgdesc = Generate pseudo-random bytes
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/sorairolake/randgen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = randgen
+	conflicts = randgen
+	source_x86_64 = randgen-0.1.6-x86_64.tar.zst::https://github.com/sorairolake/randgen/releases/download/v0.1.6/randgen-v0.1.6-x86_64-unknown-linux-musl.tar.zst
+	sha256sums_x86_64 = 8e829cd5dcfddd288d61bd50fbf18e535ba8837e29e6fb6235be09f26e39a41d
+	source_aarch64 = randgen-0.1.6-aarch64.tar.zst::https://github.com/sorairolake/randgen/releases/download/v0.1.6/randgen-v0.1.6-aarch64-unknown-linux-musl.tar.zst
+	sha256sums_aarch64 = 05f64e126aa31a464b2ac9fdf4fc364bc33848723ff10b67bfd5d16f9a435e37
+
+pkgname = randgen-bin
