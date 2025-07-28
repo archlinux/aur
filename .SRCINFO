@@ -1,5 +1,5 @@
 pkgbase = deemix-git
-	pkgdesc = a deezer downloader built from the ashes of Deezloader Remix.
+	pkgdesc = a deezer downloader built from the ashes of Deezloader Remix
 	pkgver = r675.5f978acec7
 	pkgrel = 2
 	url = https://gitlab.com/RemixDev/deemix-py
