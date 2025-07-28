@@ -1,36 +1,23 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 # Contributor: Kimiblock
 
-pkgname=librewolf-extension-sponsorblock-bin
+_pkgname=librewolf-extension-sponsorblock
+pkgname=$_pkgname-bin
+_id='sponsorBlocker@ajay.app'
 url="https://github.com/ajayyy/SponsorBlock"
-pkgver=5.10.5
+pkgver=5.14
 pkgrel=1
-makedepends=("jq" "curl")
 pkgdesc="Skip YouTube video sponsors."
 arch=('any')
-license=('LGPL-3.0-or-later')
-_fileName='sponsorBlockerBETA@ajay.app.xpi'
+license=('GPL-3.0-or-later')
+depends=('librewolf')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+groups=('librewolf-addons')
+noextract=("$_id.xpi")
+source=("$_id.xpi::$url/releases/download/$pkgver/FirefoxSignedInstaller.xpi")
+b2sums=('699f08d167c64b235e72ca435778c8a38f54da3331b8b7664fe5af4968250178e2c7a6cae5fde33f1e5c8f6b93d1cb9b9b19cb4ed1fb3a50845f736568235733')
 
-function pkgver(){
-	_rawVersion=$(curl -s https://api.github.com/repos/ajayyy/SponsorBlock/releases/latest | jq .tag_name)
-	echo ${_rawVersion} | cut -c 2-$(expr ${#_rawVersion} - 1)
-}
-
-function package(){
-	mkdir -p "${pkgdir}"/usr/lib/librewolf/browser/extensions
-	_info "Downloading SponsorBlock ${pkgver}"
-	curl "https://github.com/ajayyy/SponsorBlock/releases/download/${pkgver}/FirefoxSignedInstaller.xpi" -o "${pkgdir}/usr/lib/librewolf/browser/extensions/${_fileName}" -L
-	chmod 0644 "${pkgdir}/usr/lib/librewolf/browser/extensions/${_fileName}"
-}
-
-function _info() {
-	if [ -f /usr/bin/pamac ]; then
-		echo "  ==> [Info]: $@"
-	else
-		all_off="$(tput sgr0)"
-		bold="${all_off}$(tput bold)"
-		blue="${bold}$(tput setaf 4)"
-		yellow="${bold}$(tput setaf 3)"
-		printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
-	fi
+package() {
+	install -Dm644 $_id.xpi "$pkgdir/usr/lib/librewolf/browser/extensions/$_id.xpi"
 }

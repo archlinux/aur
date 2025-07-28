@@ -1,11 +1,16 @@
 pkgbase = librewolf-extension-sponsorblock-bin
 	pkgdesc = Skip YouTube video sponsors.
-	pkgver = 5.10.5
+	pkgver = 5.14
 	pkgrel = 1
 	url = https://github.com/ajayyy/SponsorBlock
 	arch = any
-	license = LGPL-3.0-or-later
-	makedepends = jq
-	makedepends = curl
+	groups = librewolf-addons
+	license = GPL-3.0-or-later
+	depends = librewolf
+	provides = librewolf-extension-sponsorblock
+	conflicts = librewolf-extension-sponsorblock
+	noextract = sponsorBlocker@ajay.app.xpi
+	source = sponsorBlocker@ajay.app.xpi::https://github.com/ajayyy/SponsorBlock/releases/download/5.14/FirefoxSignedInstaller.xpi
+	b2sums = 699f08d167c64b235e72ca435778c8a38f54da3331b8b7664fe5af4968250178e2c7a6cae5fde33f1e5c8f6b93d1cb9b9b19cb4ed1fb3a50845f736568235733
 
 pkgname = librewolf-extension-sponsorblock-bin
