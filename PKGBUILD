@@ -6,7 +6,6 @@ _branch_name=master
 pkgver=0.4.1.git.297.1ffb6b1
 pkgrel=1
 pkgdesc="Git extensions to provide high-level repository operations for Vincent Driessen's branching model."
-provides=('gitflow')
 conflicts=('gitflow' 'gitflow-avh' 'gitflow-avh-git')
 arch=('any')
 url="https://github.com/nvie/gitflow"
