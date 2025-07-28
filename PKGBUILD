@@ -2,9 +2,8 @@
 # Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Tech <technetium1337 at gmail dot com>
 
-# Clean Chroot ccm Xeon(R) E-2146G 6c12t: ----> Total build time was 00:19:18
-# clean-chroot-manager doesn't use multi processing
-#export MAKEFLAGS="${MAKEFLAGS} -j$(nproc)"
+# Clean Chroot ccm Xeon(R) E-2146G 6c12t: ----> Total build time for 1.4.1-hwcodec was 00:21:24
+# Clean chroot build is smaller than the system build
 
 # 0 for PKGBUILD commands which may go out of date
 # 1 for build.py which should stay current
@@ -41,10 +40,20 @@ _fn_VCL() {
 # 1 for system flutter, version warned
 _opt_SYS_FLUTTER=0
 
-# hwcodec stopped working when it went from/to
-# 1.2.7 hwcodec v0.6.0 (https://github.com/21pages/hwcodec#89879f2f)
-# 1.3.0 hwcodec v0.7.0 (https://github.com/rustdesk-org/hwcodec#6abd1898)
+# hwcodec for H.264 H.265/HEVC stopped compiling when it went from/to
+# 1.2.7 hwcodec v0.6.0 builtin       (https://github.com/21pages/hwcodec#89879f2f)
+# 1.3.0 hwcodec v0.7.0 vcpkg::ffmpeg (https://github.com/rustdesk-org/hwcodec#6abd1898)
 # restored in 1.4.1
+#
+# To get H264 H265, rustdesk must be compiled with vcpkg::ffmpeg build modified by rustdesk.
+# libva and appropriate libva hardware driver must be installed and rebooted. See optdepends.
+# Client supports all soft codecs and compiled in hardware codecs.
+# Client hardware decode support (VAEntrypointVLD) preferred but not required.
+# Host offers all encode software codecs and only hardware codecs supported by hardware (VAEntrypointEncSlice).
+# Linux host may disable H265 even if supported by hardware. https://github.com/rustdesk/rustdesk/discussions/4095
+# Linux client does support H265, verified by connecting to a Windows host >= Skylake or Android.
+# Use libva-utils::vainfo to list supported hardware codecs VAProfileH264Main or VAProfileHEVCMain
+# https://wiki.archlinux.org/title/Hardware_video_acceleration
 _fn_hwcodec() {
   _opt_hwcodec_py=()
   _opt_hwcodec_fe=''
@@ -52,9 +61,10 @@ _fn_hwcodec() {
   if :; then
     _opt_hwcodec_py=('--hwcodec')
     _opt_hwcodec_fe=',hwcodec'
-    if [ "$(vercmp "${_pkgver}" "1.3.0")" -ge 0 ]; then
+    if [ "$(vercmp "$1" "1.3.0")" -ge 0 ]; then
       _opt_hwcodec_vc=('ffmpeg')
       makedepends+=('ffnvcodec-headers' 'amf-headers')
+      depends+=('zlib' 'libdrm')
     fi
   fi
 }
@@ -67,7 +77,7 @@ pkgname="${_pkgname}"
 _pkgver='1.4.1'
 pkgver="${_pkgver//-/.}"
 pkgrel=1
-_HBB=( # dates are retrieved from git fetch; tig
+_HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
   '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
   '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
   '1.3.9:20250328-81b932b7bfa2ff8bc60189625fd6538db2fa9ea1'
@@ -89,9 +99,17 @@ depends+=('xdg-user-dirs')
 depends+=('glibc' 'gcc-libs' 'glib2' 'libxtst' 'libepoxy' 'gdk-pixbuf2' 'cairo' 'at-spi2-core' 'dbus' 'gstreamer' 'pango' 'libx11' 'fontconfig' 'libxkbcommon' 'libpulse')
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
 makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
-makedepends+=('ninja' 'patchelf') # 'meson' 'pkgconf' # vcpkg makedepends are found in clean chroot. Some are not used.
+makedepends+=('ninja' 'patchelf') # 'meson' 'pkgconf' # vcpkg makedepends are found in clean chroot. Some tools cmake always uses its own.
 _fn_hwcodec "${_pkgver}" # makedepends
-options=('!makeflags' '!lto')
+if [ "${#_opt_hwcodec_py[@]}" -gt 0 ]; then
+  optdepends=( # lifted from libva::PKGBUILD
+    'intel-media-driver: h264 h265/HEVC support for Intel Quick Sync GPUs (>= Broadwell)'
+    'libva-intel-driver: h264 support for Intel Quick Sync GPUs (<= Haswell)'
+    'libva-mesa-driver: h264 h265/HEVC support for AMD and NVIDIA GPUs'
+    'libva-utils: vainfo query codec support'
+  )
+fi
+options=('!lto')
 _patches=(
   '0000-disable-update-check@rustdesk.patch'
   #'0001-extended_text-drop-version-for-flutter.3.22.3@rustdesk.patch' # https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/bridge.yml#L77
@@ -171,7 +189,7 @@ source+=("${_vcs[@]}")
     )
   fi
 ####
-md5sums=('84d2ca9b4abf0fa6809c353e146b3f75'
+md5sums=('86daae1bd101e61566af7c6728517861'
          'd7dd05d0ca5709c328ba8e0b15f180e1'
          '6acc4b5b14befec55ef84006b60c7ff5'
          'a77a4586f30f77de2eed63e160b3a051'
@@ -187,7 +205,7 @@ md5sums=('84d2ca9b4abf0fa6809c353e146b3f75'
          '03485098fb64a000a4f7cd97e468dfff'
          '4faa930d94db6f19d36dbbfbc5e86b5e'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('22050a73bd42e8b590a29786fbbea7ad49ae90f31cfd5664b114aec161f8a848'
+sha256sums=('5043af2f64e7b92d81d54d3c9ae6abb02c7e57e4eedb139674ba9e7ade6b142c'
             '1506802672283c3f9b39a7c81f7f880cae320553a59335f033919e93ec42e729'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
