@@ -2,7 +2,7 @@
 # Contributor: Michael J. Pento <mjpento@verizon.net>
 
 pkgname=artifactory-oss
-pkgver=7.90.13
+pkgver=7.117.7
 pkgrel=1
 pkgdesc='Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers'
 arch=('any')
@@ -31,6 +31,6 @@ package() {
   install -d "$pkgdir$artdir/app/run"
 }
 
-sha256sums=('55eb771ec4b85ff0a95cca486a8e58088c511b4d98c059030af4dfcecb145b66'
+sha256sums=('3583984083433e97a1483d08ecd6ba1b6f93869f992c050671f74e776069ad9a'
   '9daada205ad4b201f28f791a04f006aad2ab8885078700d710566d99dc176b3d'
   '7cbc5f68aca3343c2d7445859bcf215150f421dbe36b84c79279abdefb7988de')
