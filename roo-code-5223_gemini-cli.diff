@@ -1,0 +1,2177 @@
+*** /dev/null	2025-07-27 02:42:48.185765997 +0200
+--- Roo-Code-3.24.0-patched/packages/types/src/providers/gemini-cli.ts	2025-07-27 17:37:38.015929339 +0200
+***************
+*** 0 ****
+--- 1,110 ----
++ import type { ModelInfo } from "../model.js"
++ 
++ // Gemini CLI models with free tier pricing (all $0)
++ export type GeminiCliModelId = keyof typeof geminiCliModels
++ 
++ export const geminiCliDefaultModelId: GeminiCliModelId = "gemini-2.5-pro"
++ 
++ export const geminiCliModels = {
++ 	"gemini-2.0-flash-001": {
++ 		maxTokens: 8192,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-2.0-flash-thinking-exp-01-21": {
++ 		maxTokens: 65_536,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-2.0-flash-thinking-exp-1219": {
++ 		maxTokens: 8192,
++ 		contextWindow: 32_767,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-2.0-flash-exp": {
++ 		maxTokens: 8192,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-1.5-flash-002": {
++ 		maxTokens: 8192,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-1.5-flash-exp-0827": {
++ 		maxTokens: 8192,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-1.5-flash-8b-exp-0827": {
++ 		maxTokens: 8192,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-1.5-pro-002": {
++ 		maxTokens: 8192,
++ 		contextWindow: 2_097_152,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-1.5-pro-exp-0827": {
++ 		maxTokens: 8192,
++ 		contextWindow: 2_097_152,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-exp-1206": {
++ 		maxTokens: 8192,
++ 		contextWindow: 2_097_152,
++ 		supportsImages: true,
++ 		supportsPromptCache: false,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 	},
++ 	"gemini-2.5-flash": {
++ 		maxTokens: 64_000,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: true,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 		maxThinkingTokens: 24_576,
++ 		supportsReasoningBudget: true,
++ 	},
++ 	"gemini-2.5-pro": {
++ 		maxTokens: 64_000,
++ 		contextWindow: 1_048_576,
++ 		supportsImages: true,
++ 		supportsPromptCache: true,
++ 		inputPrice: 0,
++ 		outputPrice: 0,
++ 		maxThinkingTokens: 32_768,
++ 		supportsReasoningBudget: true,
++ 		requiredReasoningBudget: true,
++ 	},
++ } as const satisfies Record<string, ModelInfo>
+*** Roo-Code-3.24.0/packages/types/src/providers/index.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/packages/types/src/providers/index.ts	2025-07-27 18:00:51.442679813 +0200
+***************
+*** 4,9 ****
+--- 4,10 ----
+  export * from "./claude-code.js"
+  export * from "./deepseek.js"
+  export * from "./gemini.js"
++ export * from "./gemini-cli.js"
+  export * from "./glama.js"
+  export * from "./groq.js"
+  export * from "./huggingface.js"
+*** Roo-Code-3.24.0/src/api/index.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/api/index.ts	2025-07-27 18:02:37.189447100 +0200
+***************
+*** 15,20 ****
+--- 15,21 ----
+  	OllamaHandler,
+  	LmStudioHandler,
+  	GeminiHandler,
++ 	GeminiCliHandler,
+  	OpenAiNativeHandler,
+  	DeepSeekHandler,
+  	MoonshotHandler,
+***************
+*** 87,92 ****
+--- 88,95 ----
+  			return new LmStudioHandler(options)
+  		case "gemini":
+  			return new GeminiHandler(options)
++ 		case "gemini-cli":
++ 			return new GeminiCliHandler(options)
+  		case "openai-native":
+  			return new OpenAiNativeHandler(options)
+  		case "deepseek":
+*** /dev/null	2025-07-27 02:42:48.185765997 +0200
+--- Roo-Code-3.24.0-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-07-27 17:42:22.349647696 +0200
+***************
+*** 0 ****
+--- 1,329 ----
++ import { describe, it, expect, vi, beforeEach } from "vitest"
++ import { GeminiCliHandler } from "../gemini-cli"
++ import { geminiCliDefaultModelId, geminiCliModels } from "@roo-code/types"
++ import * as fs from "fs/promises"
++ import axios from "axios"
++ 
++ vi.mock("fs/promises")
++ vi.mock("axios")
++ vi.mock("google-auth-library", () => ({
++ 	OAuth2Client: vi.fn().mockImplementation(() => ({
++ 		setCredentials: vi.fn(),
++ 		refreshAccessToken: vi.fn().mockResolvedValue({
++ 			credentials: {
++ 				access_token: "refreshed-token",
++ 				refresh_token: "refresh-token",
++ 				token_type: "Bearer",
++ 				expiry_date: Date.now() + 3600 * 1000,
++ 			},
++ 		}),
++ 		request: vi.fn(),
++ 	})),
++ }))
++ 
++ describe("GeminiCliHandler", () => {
++ 	let handler: GeminiCliHandler
++ 	const mockCredentials = {
++ 		access_token: "test-access-token",
++ 		refresh_token: "test-refresh-token",
++ 		token_type: "Bearer",
++ 		expiry_date: Date.now() + 3600 * 1000,
++ 	}
++ 
++ 	beforeEach(() => {
++ 		vi.clearAllMocks()
++ 		;(fs.readFile as any).mockResolvedValue(JSON.stringify(mockCredentials))
++ 		;(fs.writeFile as any).mockResolvedValue(undefined)
++ 
++ 		// Set up default mock
++ 		;(axios.post as any).mockResolvedValue({
++ 			data: {},
++ 		})
++ 
++ 		handler = new GeminiCliHandler({
++ 			apiModelId: geminiCliDefaultModelId,
++ 		})
++ 
++ 		// Set up default mock for OAuth2Client request
++ 		handler["authClient"].request = vi.fn().mockResolvedValue({
++ 			data: {},
++ 		})
++ 
++ 		// Mock the discoverProjectId to avoid real API calls in tests
++ 		handler["projectId"] = "test-project-123"
++ 		vi.spyOn(handler as any, "discoverProjectId").mockResolvedValue("test-project-123")
++ 	})
++ 
++ 	describe("constructor", () => {
++ 		it("should initialize with provided config", () => {
++ 			expect(handler["options"].apiModelId).toBe(geminiCliDefaultModelId)
++ 		})
++ 	})
++ 
++ 	describe("getModel", () => {
++ 		it("should return correct model info", () => {
++ 			const modelInfo = handler.getModel()
++ 			expect(modelInfo.id).toBe(geminiCliDefaultModelId)
++ 			expect(modelInfo.info).toBeDefined()
++ 			expect(modelInfo.info.inputPrice).toBe(0)
++ 			expect(modelInfo.info.outputPrice).toBe(0)
++ 		})
++ 
++ 		it("should return default model if invalid model specified", () => {
++ 			const invalidHandler = new GeminiCliHandler({
++ 				apiModelId: "invalid-model",
++ 			})
++ 			const modelInfo = invalidHandler.getModel()
++ 			expect(modelInfo.id).toBe(geminiCliDefaultModelId)
++ 		})
++ 
++ 		it("should handle :thinking suffix", () => {
++ 			const thinkingHandler = new GeminiCliHandler({
++ 				apiModelId: "gemini-2.5-pro:thinking",
++ 			})
++ 			const modelInfo = thinkingHandler.getModel()
++ 			// The :thinking suffix should be removed from the ID
++ 			expect(modelInfo.id).toBe("gemini-2.5-pro")
++ 			// But the model should still have reasoning support
++ 			expect(modelInfo.info.supportsReasoningBudget).toBe(true)
++ 			expect(modelInfo.info.requiredReasoningBudget).toBe(true)
++ 		})
++ 	})
++ 
++ 	describe("OAuth authentication", () => {
++ 		it("should load OAuth credentials from default path", async () => {
++ 			await handler["loadOAuthCredentials"]()
++ 			expect(fs.readFile).toHaveBeenCalledWith(expect.stringMatching(/\.gemini[/\\]oauth_creds\.json$/), "utf-8")
++ 		})
++ 
++ 		it("should load OAuth credentials from custom path", async () => {
++ 			const customHandler = new GeminiCliHandler({
++ 				apiModelId: geminiCliDefaultModelId,
++ 				geminiCliOAuthPath: "/custom/path/oauth.json",
++ 			})
++ 			await customHandler["loadOAuthCredentials"]()
++ 			expect(fs.readFile).toHaveBeenCalledWith("/custom/path/oauth.json", "utf-8")
++ 		})
++ 
++ 		it("should refresh expired tokens", async () => {
++ 			const expiredCredentials = {
++ 				...mockCredentials,
++ 				expiry_date: Date.now() - 1000, // Expired
++ 			}
++ 			;(fs.readFile as any).mockResolvedValueOnce(JSON.stringify(expiredCredentials))
++ 
++ 			await handler["ensureAuthenticated"]()
++ 
++ 			expect(handler["authClient"].refreshAccessToken).toHaveBeenCalled()
++ 			expect(fs.writeFile).toHaveBeenCalledWith(
++ 				expect.stringMatching(/\.gemini[/\\]oauth_creds\.json$/),
++ 				expect.stringContaining("refreshed-token"),
++ 			)
++ 		})
++ 
++ 		it("should throw error if credentials file not found", async () => {
++ 			;(fs.readFile as any).mockRejectedValueOnce(new Error("ENOENT"))
++ 
++ 			await expect(handler["loadOAuthCredentials"]()).rejects.toThrow("errors.geminiCli.oauthLoadFailed")
++ 		})
++ 	})
++ 
++ 	describe("project ID discovery", () => {
++ 		it("should use provided project ID", async () => {
++ 			const customHandler = new GeminiCliHandler({
++ 				apiModelId: geminiCliDefaultModelId,
++ 				geminiCliProjectId: "custom-project",
++ 			})
++ 
++ 			const projectId = await customHandler["discoverProjectId"]()
++ 			expect(projectId).toBe("custom-project")
++ 			expect(customHandler["projectId"]).toBe("custom-project")
++ 		})
++ 
++ 		it("should discover project ID through API", async () => {
++ 			// Create a new handler without the mocked discoverProjectId
++ 			const testHandler = new GeminiCliHandler({
++ 				apiModelId: geminiCliDefaultModelId,
++ 			})
++ 			testHandler["authClient"].request = vi.fn().mockResolvedValue({
++ 				data: {},
++ 			})
++ 
++ 			// Mock the callEndpoint method
++ 			testHandler["callEndpoint"] = vi.fn().mockResolvedValueOnce({
++ 				cloudaicompanionProject: "discovered-project-123",
++ 			})
++ 
++ 			const projectId = await testHandler["discoverProjectId"]()
++ 			expect(projectId).toBe("discovered-project-123")
++ 			expect(testHandler["projectId"]).toBe("discovered-project-123")
++ 		})
++ 
++ 		it("should onboard user if no existing project", async () => {
++ 			// Create a new handler without the mocked discoverProjectId
++ 			const testHandler = new GeminiCliHandler({
++ 				apiModelId: geminiCliDefaultModelId,
++ 			})
++ 			testHandler["authClient"].request = vi.fn().mockResolvedValue({
++ 				data: {},
++ 			})
++ 
++ 			// Mock the callEndpoint method
++ 			testHandler["callEndpoint"] = vi
++ 				.fn()
++ 				.mockResolvedValueOnce({
++ 					allowedTiers: [{ id: "free-tier", isDefault: true }],
++ 				})
++ 				.mockResolvedValueOnce({
++ 					done: false,
++ 				})
++ 				.mockResolvedValueOnce({
++ 					done: true,
++ 					response: {
++ 						cloudaicompanionProject: {
++ 							id: "onboarded-project-456",
++ 						},
++ 					},
++ 				})
++ 
++ 			const projectId = await testHandler["discoverProjectId"]()
++ 			expect(projectId).toBe("onboarded-project-456")
++ 			expect(testHandler["projectId"]).toBe("onboarded-project-456")
++ 			expect(testHandler["callEndpoint"]).toHaveBeenCalledTimes(3)
++ 		})
++ 	})
++ 
++ 	describe("completePrompt", () => {
++ 		it("should complete prompt successfully", async () => {
++ 			handler["authClient"].request = vi.fn().mockResolvedValue({
++ 				data: {
++ 					candidates: [
++ 						{
++ 							content: {
++ 								parts: [{ text: "Test response" }],
++ 							},
++ 						},
++ 					],
++ 				},
++ 			})
++ 
++ 			const result = await handler.completePrompt("Test prompt")
++ 			expect(result).toBe("Test response")
++ 		})
++ 
++ 		it("should handle empty response", async () => {
++ 			handler["authClient"].request = vi.fn().mockResolvedValue({
++ 				data: {
++ 					candidates: [],
++ 				},
++ 			})
++ 
++ 			const result = await handler.completePrompt("Test prompt")
++ 			expect(result).toBe("")
++ 		})
++ 
++ 		it("should filter out thinking parts", async () => {
++ 			handler["authClient"].request = vi.fn().mockResolvedValue({
++ 				data: {
++ 					candidates: [
++ 						{
++ 							content: {
++ 								parts: [{ text: "Thinking...", thought: true }, { text: "Actual response" }],
++ 							},
++ 						},
++ 					],
++ 				},
++ 			})
++ 
++ 			const result = await handler.completePrompt("Test prompt")
++ 			expect(result).toBe("Actual response")
++ 		})
++ 
++ 		it("should handle API errors", async () => {
++ 			handler["authClient"].request = vi.fn().mockRejectedValue(new Error("API Error"))
++ 
++ 			await expect(handler.completePrompt("Test prompt")).rejects.toThrow("errors.geminiCli.completionError")
++ 		})
++ 	})
++ 
++ 	describe("createMessage streaming", () => {
++ 		it("should handle streaming response with reasoning", async () => {
++ 			// Create a mock Node.js readable stream
++ 			const { Readable } = require("stream")
++ 			const mockStream = new Readable({
++ 				read() {
++ 					this.push('data: {"candidates":[{"content":{"parts":[{"text":"Hello"}]}}]}\n\n')
++ 					this.push(
++ 						'data: {"candidates":[{"content":{"parts":[{"thought":true,"text":"thinking..."}]}}]}\n\n',
++ 					)
++ 					this.push(
++ 						'data: {"candidates":[{"content":{"parts":[{"text":" world"}]}}],"usageMetadata":{"promptTokenCount":10,"candidatesTokenCount":5}}\n\n',
++ 					)
++ 					this.push("data: [DONE]\n\n")
++ 					this.push(null) // End the stream
++ 				},
++ 			})
++ 
++ 			handler["authClient"].request = vi.fn().mockResolvedValue({
++ 				data: mockStream,
++ 			})
++ 
++ 			const stream = handler.createMessage("System", [])
++ 			const chunks: any[] = []
++ 
++ 			for await (const chunk of stream) {
++ 				chunks.push(chunk)
++ 			}
++ 
++ 			// Check we got the expected chunks
++ 			expect(chunks).toHaveLength(4) // 2 text chunks, 1 reasoning chunk, 1 usage chunk
++ 
++ 			// Filter out only text chunks (not reasoning chunks)
++ 			const textChunks = chunks.filter((c) => c.type === "text").map((c) => c.text)
++ 			expect(textChunks).toEqual(["Hello", " world"])
++ 
++ 			// Check reasoning chunk
++ 			const reasoningChunks = chunks.filter((c) => c.type === "reasoning")
++ 			expect(reasoningChunks).toHaveLength(1)
++ 			expect(reasoningChunks[0].text).toBe("thinking...")
++ 
++ 			// Check usage chunk
++ 			const usageChunks = chunks.filter((c) => c.type === "usage")
++ 			expect(usageChunks).toHaveLength(1)
++ 			expect(usageChunks[0]).toMatchObject({
++ 				type: "usage",
++ 				inputTokens: 10,
++ 				outputTokens: 5,
++ 				totalCost: 0,
++ 			})
++ 		})
++ 
++ 		it("should handle rate limit errors", async () => {
++ 			handler["authClient"].request = vi.fn().mockRejectedValue({
++ 				response: {
++ 					status: 429,
++ 					data: { error: { message: "Rate limit exceeded" } },
++ 				},
++ 			})
++ 
++ 			const stream = handler.createMessage("System", [])
++ 
++ 			await expect(async () => {
++ 				for await (const _chunk of stream) {
++ 					// Should throw before yielding
++ 				}
++ 			}).rejects.toThrow("errors.geminiCli.rateLimitExceeded")
++ 		})
++ 	})
++ 
++ 	describe("countTokens", () => {
++ 		it("should fall back to base provider implementation", async () => {
++ 			const content = [{ type: "text" as const, text: "Hello world" }]
++ 			const tokenCount = await handler.countTokens(content)
++ 
++ 			// Should return a number (tiktoken fallback)
++ 			expect(typeof tokenCount).toBe("number")
++ 			expect(tokenCount).toBeGreaterThan(0)
++ 		})
++ 	})
++ })
+*** /dev/null	2025-07-27 02:42:48.185765997 +0200
+--- Roo-Code-3.24.0-patched/src/api/providers/gemini-cli.ts	2025-07-27 17:43:23.960929815 +0200
+***************
+*** 0 ****
+--- 1,419 ----
++ import type { Anthropic } from "@anthropic-ai/sdk"
++ import { OAuth2Client } from "google-auth-library"
++ import * as fs from "fs/promises"
++ import * as path from "path"
++ import * as os from "os"
++ import axios from "axios"
++ 
++ import { type ModelInfo, type GeminiCliModelId, geminiCliDefaultModelId, geminiCliModels } from "@roo-code/types"
++ 
++ import type { ApiHandlerOptions } from "../../shared/api"
++ import { t } from "../../i18n"
++ 
++ import { convertAnthropicContentToGemini, convertAnthropicMessageToGemini } from "../transform/gemini-format"
++ import type { ApiStream } from "../transform/stream"
++ import { getModelParams } from "../transform/model-params"
++ 
++ import type { SingleCompletionHandler, ApiHandlerCreateMessageMetadata } from "../index"
++ import { BaseProvider } from "./base-provider"
++ 
++ // OAuth2 Configuration (from Cline implementation)
++ const OAUTH_CLIENT_ID = "681255809395-oo8ft2oprdrnp9e3aqf6av3hmdib135j.apps.googleusercontent.com"
++ const OAUTH_CLIENT_SECRET = "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"
++ const OAUTH_REDIRECT_URI = "http://localhost:45289"
++ 
++ // Code Assist API Configuration
++ const CODE_ASSIST_ENDPOINT = "https://cloudcode-pa.googleapis.com"
++ const CODE_ASSIST_API_VERSION = "v1internal"
++ 
++ interface OAuthCredentials {
++ 	access_token: string
++ 	refresh_token: string
++ 	token_type: string
++ 	expiry_date: number
++ }
++ 
++ export class GeminiCliHandler extends BaseProvider implements SingleCompletionHandler {
++ 	protected options: ApiHandlerOptions
++ 	private authClient: OAuth2Client
++ 	private projectId: string | null = null
++ 	private credentials: OAuthCredentials | null = null
++ 
++ 	constructor(options: ApiHandlerOptions) {
++ 		super()
++ 		this.options = options
++ 
++ 		// Initialize OAuth2 client
++ 		this.authClient = new OAuth2Client(OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_REDIRECT_URI)
++ 	}
++ 
++ 	private async loadOAuthCredentials(): Promise<void> {
++ 		try {
++ 			const credPath = this.options.geminiCliOAuthPath || path.join(os.homedir(), ".gemini", "oauth_creds.json")
++ 			const credData = await fs.readFile(credPath, "utf-8")
++ 			this.credentials = JSON.parse(credData)
++ 
++ 			// Set credentials on the OAuth2 client
++ 			if (this.credentials) {
++ 				this.authClient.setCredentials({
++ 					access_token: this.credentials.access_token,
++ 					refresh_token: this.credentials.refresh_token,
++ 					expiry_date: this.credentials.expiry_date,
++ 				})
++ 			}
++ 		} catch (error) {
++ 			throw new Error(t("common:errors.geminiCli.oauthLoadFailed", { error }))
++ 		}
++ 	}
++ 
++ 	private async ensureAuthenticated(): Promise<void> {
++ 		if (!this.credentials) {
++ 			await this.loadOAuthCredentials()
++ 		}
++ 
++ 		// Check if token needs refresh
++ 		if (this.credentials && this.credentials.expiry_date < Date.now()) {
++ 			try {
++ 				const { credentials } = await this.authClient.refreshAccessToken()
++ 				if (credentials.access_token) {
++ 					this.credentials = {
++ 						access_token: credentials.access_token!,
++ 						refresh_token: credentials.refresh_token || this.credentials.refresh_token,
++ 						token_type: credentials.token_type || "Bearer",
++ 						expiry_date: credentials.expiry_date || Date.now() + 3600 * 1000,
++ 					}
++ 					// Optionally save refreshed credentials back to file
++ 					const credPath =
++ 						this.options.geminiCliOAuthPath || path.join(os.homedir(), ".gemini", "oauth_creds.json")
++ 					await fs.writeFile(credPath, JSON.stringify(this.credentials, null, 2))
++ 				}
++ 			} catch (error) {
++ 				throw new Error(t("common:errors.geminiCli.tokenRefreshFailed", { error }))
++ 			}
++ 		}
++ 	}
++ 
++ 	/**
++ 	 * Call a Code Assist API endpoint
++ 	 */
++ 	private async callEndpoint(method: string, body: any, retryAuth: boolean = true): Promise<any> {
++ 		try {
++ 			const res = await this.authClient.request({
++ 				url: `${CODE_ASSIST_ENDPOINT}/${CODE_ASSIST_API_VERSION}:${method}`,
++ 				method: "POST",
++ 				headers: {
++ 					"Content-Type": "application/json",
++ 				},
++ 				responseType: "json",
++ 				data: JSON.stringify(body),
++ 			})
++ 			return res.data
++ 		} catch (error: any) {
++ 			console.error(`[GeminiCLI] Error calling ${method}:`, error)
++ 			console.error(`[GeminiCLI] Error response:`, error.response?.data)
++ 			console.error(`[GeminiCLI] Error status:`, error.response?.status)
++ 			console.error(`[GeminiCLI] Error message:`, error.message)
++ 
++ 			// If we get a 401 and haven't retried yet, try refreshing auth
++ 			if (error.response?.status === 401 && retryAuth) {
++ 				await this.ensureAuthenticated() // This will refresh the token
++ 				return this.callEndpoint(method, body, false) // Retry without further auth retries
++ 			}
++ 
++ 			throw error
++ 		}
++ 	}
++ 
++ 	/**
++ 	 * Discover or retrieve the project ID
++ 	 */
++ 	private async discoverProjectId(): Promise<string> {
++ 		// If we already have a project ID, use it
++ 		if (this.options.geminiCliProjectId) {
++ 			this.projectId = this.options.geminiCliProjectId
++ 			return this.projectId
++ 		}
++ 
++ 		// If we've already discovered it, return it
++ 		if (this.projectId) {
++ 			return this.projectId
++ 		}
++ 
++ 		// Start with a default project ID (can be anything for personal OAuth)
++ 		const initialProjectId = "default"
++ 
++ 		// Prepare client metadata
++ 		const clientMetadata = {
++ 			ideType: "IDE_UNSPECIFIED",
++ 			platform: "PLATFORM_UNSPECIFIED",
++ 			pluginType: "GEMINI",
++ 			duetProject: initialProjectId,
++ 		}
++ 
++ 		try {
++ 			// Call loadCodeAssist to discover the actual project ID
++ 			const loadRequest = {
++ 				cloudaicompanionProject: initialProjectId,
++ 				metadata: clientMetadata,
++ 			}
++ 
++ 			const loadResponse = await this.callEndpoint("loadCodeAssist", loadRequest)
++ 
++ 			// Check if we already have a project ID from the response
++ 			if (loadResponse.cloudaicompanionProject) {
++ 				this.projectId = loadResponse.cloudaicompanionProject
++ 				return this.projectId as string
++ 			}
++ 
++ 			// If no existing project, we need to onboard
++ 			const defaultTier = loadResponse.allowedTiers?.find((tier: any) => tier.isDefault)
++ 			const tierId = defaultTier?.id || "free-tier"
++ 
++ 			const onboardRequest = {
++ 				tierId: tierId,
++ 				cloudaicompanionProject: initialProjectId,
++ 				metadata: clientMetadata,
++ 			}
++ 
++ 			let lroResponse = await this.callEndpoint("onboardUser", onboardRequest)
++ 
++ 			// Poll until operation is complete with timeout protection
++ 			const MAX_RETRIES = 30 // Maximum number of retries (60 seconds total)
++ 			let retryCount = 0
++ 
++ 			while (!lroResponse.done && retryCount < MAX_RETRIES) {
++ 				await new Promise((resolve) => setTimeout(resolve, 2000))
++ 				lroResponse = await this.callEndpoint("onboardUser", onboardRequest)
++ 				retryCount++
++ 			}
++ 
++ 			if (!lroResponse.done) {
++ 				throw new Error(t("common:errors.geminiCli.onboardingTimeout"))
++ 			}
++ 
++ 			const discoveredProjectId = lroResponse.response?.cloudaicompanionProject?.id || initialProjectId
++ 			this.projectId = discoveredProjectId
++ 			return this.projectId as string
++ 		} catch (error: any) {
++ 			console.error("Failed to discover project ID:", error.response?.data || error.message)
++ 			throw new Error(t("common:errors.geminiCli.projectDiscoveryFailed"))
++ 		}
++ 	}
++ 
++ 	/**
++ 	 * Parse Server-Sent Events from a stream
++ 	 */
++ 	private async *parseSSEStream(stream: NodeJS.ReadableStream): AsyncGenerator<any> {
++ 		let buffer = ""
++ 
++ 		for await (const chunk of stream) {
++ 			buffer += chunk.toString()
++ 			const lines = buffer.split("\n")
++ 			buffer = lines.pop() || ""
++ 
++ 			for (const line of lines) {
++ 				if (line.startsWith("data: ")) {
++ 					const data = line.slice(6).trim()
++ 					if (data === "[DONE]") continue
++ 
++ 					try {
++ 						const parsed = JSON.parse(data)
++ 						yield parsed
++ 					} catch (e) {
++ 						console.error("Error parsing SSE data:", e)
++ 					}
++ 				}
++ 			}
++ 		}
++ 	}
++ 
++ 	async *createMessage(
++ 		systemInstruction: string,
++ 		messages: Anthropic.Messages.MessageParam[],
++ 		metadata?: ApiHandlerCreateMessageMetadata,
++ 	): ApiStream {
++ 		await this.ensureAuthenticated()
++ 		const projectId = await this.discoverProjectId()
++ 
++ 		const { id: model, info, reasoning: thinkingConfig, maxTokens } = this.getModel()
++ 
++ 		// Convert messages to Gemini format
++ 		const contents = messages.map(convertAnthropicMessageToGemini)
++ 
++ 		// Prepare request body for Code Assist API - matching Cline's structure
++ 		const requestBody: any = {
++ 			model: model,
++ 			project: projectId,
++ 			request: {
++ 				contents: [
++ 					{
++ 						role: "user",
++ 						parts: [{ text: systemInstruction }],
++ 					},
++ 					...contents,
++ 				],
++ 				generationConfig: {
++ 					temperature: this.options.modelTemperature ?? 0.7,
++ 					maxOutputTokens: this.options.modelMaxTokens ?? maxTokens ?? 8192,
++ 				},
++ 			},
++ 		}
++ 
++ 		// Add thinking config if applicable
++ 		if (thinkingConfig) {
++ 			requestBody.request.generationConfig.thinkingConfig = thinkingConfig
++ 		}
++ 
++ 		try {
++ 			// Call Code Assist streaming endpoint using OAuth2Client
++ 			const response = await this.authClient.request({
++ 				url: `${CODE_ASSIST_ENDPOINT}/${CODE_ASSIST_API_VERSION}:streamGenerateContent`,
++ 				method: "POST",
++ 				params: { alt: "sse" },
++ 				headers: {
++ 					"Content-Type": "application/json",
++ 				},
++ 				responseType: "stream",
++ 				data: JSON.stringify(requestBody),
++ 			})
++ 
++ 			// Process the SSE stream
++ 			let lastUsageMetadata: any = undefined
++ 
++ 			for await (const jsonData of this.parseSSEStream(response.data as NodeJS.ReadableStream)) {
++ 				// Extract content from the response
++ 				const responseData = jsonData.response || jsonData
++ 				const candidate = responseData.candidates?.[0]
++ 
++ 				if (candidate?.content?.parts) {
++ 					for (const part of candidate.content.parts) {
++ 						if (part.text) {
++ 							// Check if this is a thinking/reasoning part
++ 							if (part.thought === true) {
++ 								yield {
++ 									type: "reasoning",
++ 									text: part.text,
++ 								}
++ 							} else {
++ 								yield {
++ 									type: "text",
++ 									text: part.text,
++ 								}
++ 							}
++ 						}
++ 					}
++ 				}
++ 
++ 				// Store usage metadata for final reporting
++ 				if (responseData.usageMetadata) {
++ 					lastUsageMetadata = responseData.usageMetadata
++ 				}
++ 
++ 				// Check if this is the final chunk
++ 				if (candidate?.finishReason) {
++ 					break
++ 				}
++ 			}
++ 
++ 			// Yield final usage information
++ 			if (lastUsageMetadata) {
++ 				const inputTokens = lastUsageMetadata.promptTokenCount ?? 0
++ 				const outputTokens = lastUsageMetadata.candidatesTokenCount ?? 0
++ 				const cacheReadTokens = lastUsageMetadata.cachedContentTokenCount
++ 				const reasoningTokens = lastUsageMetadata.thoughtsTokenCount
++ 
++ 				yield {
++ 					type: "usage",
++ 					inputTokens,
++ 					outputTokens,
++ 					cacheReadTokens,
++ 					reasoningTokens,
++ 					totalCost: 0, // Free tier - all costs are 0
++ 				}
++ 			}
++ 		} catch (error: any) {
++ 			console.error("[GeminiCLI] API Error:", error.response?.status, error.response?.statusText)
++ 			console.error("[GeminiCLI] Error Response:", error.response?.data)
++ 
++ 			if (error.response?.status === 429) {
++ 				throw new Error(t("common:errors.geminiCli.rateLimitExceeded"))
++ 			}
++ 			if (error.response?.status === 400) {
++ 				throw new Error(
++ 					t("common:errors.geminiCli.badRequest", {
++ 						details: JSON.stringify(error.response?.data) || error.message,
++ 					}),
++ 				)
++ 			}
++ 			throw new Error(t("common:errors.geminiCli.apiError", { error: error.message }))
++ 		}
++ 	}
++ 
++ 	override getModel() {
++ 		const modelId = this.options.apiModelId
++ 		// Handle :thinking suffix before checking if model exists
++ 		const baseModelId = modelId?.endsWith(":thinking") ? modelId.replace(":thinking", "") : modelId
++ 		let id =
++ 			baseModelId && baseModelId in geminiCliModels ? (baseModelId as GeminiCliModelId) : geminiCliDefaultModelId
++ 		const info: ModelInfo = geminiCliModels[id]
++ 		const params = getModelParams({ format: "gemini", modelId: id, model: info, settings: this.options })
++ 
++ 		// Return the cleaned model ID
++ 		return { id, info, ...params }
++ 	}
++ 
++ 	async completePrompt(prompt: string): Promise<string> {
++ 		await this.ensureAuthenticated()
++ 		const projectId = await this.discoverProjectId()
++ 
++ 		try {
++ 			const { id: model } = this.getModel()
++ 
++ 			const requestBody = {
++ 				model: model,
++ 				project: projectId,
++ 				request: {
++ 					contents: [{ role: "user", parts: [{ text: prompt }] }],
++ 					generationConfig: {
++ 						temperature: this.options.modelTemperature ?? 0.7,
++ 					},
++ 				},
++ 			}
++ 
++ 			const response = await this.authClient.request({
++ 				url: `${CODE_ASSIST_ENDPOINT}/${CODE_ASSIST_API_VERSION}:generateContent`,
++ 				method: "POST",
++ 				headers: {
++ 					"Content-Type": "application/json",
++ 				},
++ 				data: JSON.stringify(requestBody),
++ 			})
++ 
++ 			// Extract text from response
++ 			const responseData = response.data as any
++ 			if (responseData.candidates && responseData.candidates.length > 0) {
++ 				const candidate = responseData.candidates[0]
++ 				if (candidate.content && candidate.content.parts) {
++ 					const textParts = candidate.content.parts
++ 						.filter((part: any) => part.text && !part.thought)
++ 						.map((part: any) => part.text)
++ 						.join("")
++ 					return textParts
++ 				}
++ 			}
++ 
++ 			return ""
++ 		} catch (error) {
++ 			if (error instanceof Error) {
++ 				throw new Error(t("common:errors.geminiCli.completionError", { error: error.message }))
++ 			}
++ 			throw error
++ 		}
++ 	}
++ 
++ 	override async countTokens(content: Array<Anthropic.Messages.ContentBlockParam>): Promise<number> {
++ 		// For OAuth/free tier, we can't use the token counting API
++ 		// Fall back to the base provider's tiktoken implementation
++ 		return super.countTokens(content)
++ 	}
++ }
+*** Roo-Code-3.24.0/src/api/providers/index.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/api/providers/index.ts	2025-07-27 18:03:15.754996503 +0200
+***************
+*** 7,12 ****
+--- 7,13 ----
+  export { MoonshotHandler } from "./moonshot"
+  export { FakeAIHandler } from "./fake-ai"
+  export { GeminiHandler } from "./gemini"
++ export { GeminiCliHandler } from "./gemini-cli"
+  export { GlamaHandler } from "./glama"
+  export { GroqHandler } from "./groq"
+  export { HuggingFaceHandler } from "./huggingface"
+*** Roo-Code-3.24.0/src/i18n/locales/ca/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/ca/common.json	2025-07-27 18:18:53.308950850 +0200
+***************
+*** 81,86 ****
+--- 81,96 ----
+  			"stoppedWithReason": "Claude Code s'ha aturat per la raó: {{reason}}",
+  			"apiKeyModelPlanMismatch": "Les claus API i els plans de subscripció permeten models diferents. Assegura't que el model seleccionat estigui inclòs al teu pla."
+  		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "No s'han pogut carregar les credencials OAuth. Si us plau, autentica't primer: {{error}}",
++ 			"tokenRefreshFailed": "No s'ha pogut actualitzar el token OAuth: {{error}}",
++ 			"onboardingTimeout": "L'operació d'onboarding ha esgotat el temps després de 60 segons. Si us plau, torna-ho a provar més tard.",
++ 			"projectDiscoveryFailed": "No s'ha pogut descobrir l'ID del projecte. Assegura't d'estar autenticat amb 'gemini auth'.",
++ 			"rateLimitExceeded": "S'ha superat el límit de velocitat. S'han assolit els límits del nivell gratuït.",
++ 			"badRequest": "Sol·licitud incorrecta: {{details}}",
++ 			"apiError": "Error de l'API Gemini CLI: {{error}}",
++ 			"completionError": "Error de compleció de Gemini CLI: {{error}}"
++ 		},
+  		"mode_import_failed": "Ha fallat la importació del mode: {{error}}"
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/de/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/de/common.json	2025-07-27 18:20:41.373672004 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Claude Code Prozess wurde mit Code {{exitCode}} beendet. Fehlerausgabe: {{output}}",
+  			"stoppedWithReason": "Claude Code wurde mit Grund gestoppt: {{reason}}",
+  			"apiKeyModelPlanMismatch": "API-Schlüssel und Abonnement-Pläne erlauben verschiedene Modelle. Stelle sicher, dass das ausgewählte Modell in deinem Plan enthalten ist."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Fehler beim Laden der OAuth-Anmeldedaten. Bitte authentifiziere dich zuerst: {{error}}",
++ 			"tokenRefreshFailed": "Fehler beim Aktualisieren des OAuth-Tokens: {{error}}",
++ 			"onboardingTimeout": "Onboarding-Vorgang nach 60 Sekunden abgebrochen. Bitte versuche es später erneut.",
++ 			"projectDiscoveryFailed": "Projekt-ID konnte nicht ermittelt werden. Stelle sicher, dass du mit 'gemini auth' authentifiziert bist.",
++ 			"rateLimitExceeded": "Anfragenlimit überschritten. Die Limits des kostenlosen Tarifs wurden erreicht.",
++ 			"badRequest": "Ungültige Anfrage: {{details}}",
++ 			"apiError": "Gemini CLI API-Fehler: {{error}}",
++ 			"completionError": "Gemini CLI Vervollständigungsfehler: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/en/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/en/common.json	2025-07-27 18:22:01.592722357 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Claude Code process exited with code {{exitCode}}. Error output: {{output}}",
+  			"stoppedWithReason": "Claude Code stopped with reason: {{reason}}",
+  			"apiKeyModelPlanMismatch": "API keys and subscription plans allow different models. Make sure the selected model is included in your plan."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Failed to load OAuth credentials. Please authenticate first: {{error}}",
++ 			"tokenRefreshFailed": "Failed to refresh OAuth token: {{error}}",
++ 			"onboardingTimeout": "Onboarding operation timed out after 60 seconds. Please try again later.",
++ 			"projectDiscoveryFailed": "Could not discover project ID. Make sure you're authenticated with 'gemini auth'.",
++ 			"rateLimitExceeded": "Rate limit exceeded. Free tier limits have been reached.",
++ 			"badRequest": "Bad request: {{details}}",
++ 			"apiError": "Gemini CLI API error: {{error}}",
++ 			"completionError": "Gemini CLI completion error: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/es/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/es/common.json	2025-07-27 18:23:29.174685282 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "El proceso de Claude Code terminó con código {{exitCode}}. Salida de error: {{output}}",
+  			"stoppedWithReason": "Claude Code se detuvo por la razón: {{reason}}",
+  			"apiKeyModelPlanMismatch": "Las claves API y los planes de suscripción permiten diferentes modelos. Asegúrate de que el modelo seleccionado esté incluido en tu plan."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Error al cargar credenciales OAuth. Por favor autentícate primero: {{error}}",
++ 			"tokenRefreshFailed": "Error al actualizar token OAuth: {{error}}",
++ 			"onboardingTimeout": "La operación de incorporación expiró después de 60 segundos. Inténtalo de nuevo más tarde.",
++ 			"projectDiscoveryFailed": "No se pudo descubrir el ID del proyecto. Asegúrate de estar autenticado con 'gemini auth'.",
++ 			"rateLimitExceeded": "Límite de velocidad excedido. Se han alcanzado los límites del nivel gratuito.",
++ 			"badRequest": "Solicitud incorrecta: {{details}}",
++ 			"apiError": "Error de API de Gemini CLI: {{error}}",
++ 			"completionError": "Error de completado de Gemini CLI: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/fr/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/fr/common.json	2025-07-27 18:24:33.164927409 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Le processus Claude Code s'est terminé avec le code {{exitCode}}. Sortie d'erreur : {{output}}",
+  			"stoppedWithReason": "Claude Code s'est arrêté pour la raison : {{reason}}",
+  			"apiKeyModelPlanMismatch": "Les clés API et les plans d'abonnement permettent différents modèles. Assurez-vous que le modèle sélectionné est inclus dans votre plan."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Échec du chargement des identifiants OAuth. Veuillez vous authentifier d'abord : {{error}}",
++ 			"tokenRefreshFailed": "Échec du renouvellement du token OAuth : {{error}}",
++ 			"onboardingTimeout": "L'opération d'intégration a expiré après 60 secondes. Veuillez réessayer plus tard.",
++ 			"projectDiscoveryFailed": "Impossible de découvrir l'ID du projet. Assurez-vous d'être authentifié avec 'gemini auth'.",
++ 			"rateLimitExceeded": "Limite de débit dépassée. Les limites du niveau gratuit ont été atteintes.",
++ 			"badRequest": "Requête incorrecte : {{details}}",
++ 			"apiError": "Erreur API Gemini CLI : {{error}}",
++ 			"completionError": "Erreur de complétion Gemini CLI : {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/hi/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/hi/common.json	2025-07-27 18:25:45.214073959 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Claude Code प्रक्रिया कोड {{exitCode}} के साथ समाप्त हुई। त्रुटि आउटपुट: {{output}}",
+  			"stoppedWithReason": "Claude Code इस कारण से रुका: {{reason}}",
+  			"apiKeyModelPlanMismatch": "API कुंजी और सब्सक्रिप्शन प्लान अलग-अलग मॉडल की अनुमति देते हैं। सुनिश्चित करें कि चयनित मॉडल आपकी योजना में शामिल है।"
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "OAuth क्रेडेंशियल लोड करने में विफल। कृपया पहले प्रमाणीकरण करें: {{error}}",
++ 			"tokenRefreshFailed": "OAuth टोकन रीफ्रेश करने में विफल: {{error}}",
++ 			"onboardingTimeout": "ऑनबोर्डिंग ऑपरेशन 60 सेकंड बाद टाइमआउट हो गया। कृपया बाद में पुनः प्रयास करें।",
++ 			"projectDiscoveryFailed": "प्रोजेक्ट ID खोजने में असमर्थ। सुनिश्चित करें कि आप 'gemini auth' के साथ प्रमाणित हैं।",
++ 			"rateLimitExceeded": "दर सीमा पार हो गई। मुफ्त टियर की सीमा पहुंच गई है।",
++ 			"badRequest": "गलत अनुरोध: {{details}}",
++ 			"apiError": "Gemini CLI API त्रुटि: {{error}}",
++ 			"completionError": "Gemini CLI पूर्णता त्रुटि: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/id/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/id/common.json	2025-07-27 18:28:17.070274782 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Proses Claude Code keluar dengan kode {{exitCode}}. Output error: {{output}}",
+  			"stoppedWithReason": "Claude Code berhenti karena alasan: {{reason}}",
+  			"apiKeyModelPlanMismatch": "Kunci API dan paket berlangganan memungkinkan model yang berbeda. Pastikan model yang dipilih termasuk dalam paket Anda."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Gagal memuat kredensial OAuth. Silakan autentikasi terlebih dahulu: {{error}}",
++ 			"tokenRefreshFailed": "Gagal memperbarui token OAuth: {{error}}",
++ 			"onboardingTimeout": "Operasi onboarding habis waktu setelah 60 detik. Silakan coba lagi nanti.",
++ 			"projectDiscoveryFailed": "Tidak dapat menemukan ID proyek. Pastikan Anda terautentikasi dengan 'gemini auth'.",
++ 			"rateLimitExceeded": "Batas kecepatan terlampaui. Batas tingkat gratis telah tercapai.",
++ 			"badRequest": "Permintaan tidak valid: {{details}}",
++ 			"apiError": "Kesalahan API Gemini CLI: {{error}}",
++ 			"completionError": "Kesalahan penyelesaian Gemini CLI: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/it/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/it/common.json	2025-07-27 18:29:30.072346111 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Il processo Claude Code è terminato con codice {{exitCode}}. Output di errore: {{output}}",
+  			"stoppedWithReason": "Claude Code si è fermato per il motivo: {{reason}}",
+  			"apiKeyModelPlanMismatch": "Le chiavi API e i piani di abbonamento consentono modelli diversi. Assicurati che il modello selezionato sia incluso nel tuo piano."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Impossibile caricare le credenziali OAuth. Autenticati prima: {{error}}",
++ 			"tokenRefreshFailed": "Impossibile aggiornare il token OAuth: {{error}}",
++ 			"onboardingTimeout": "L'operazione di onboarding è scaduta dopo 60 secondi. Riprova più tardi.",
++ 			"projectDiscoveryFailed": "Impossibile scoprire l'ID del progetto. Assicurati di essere autenticato con 'gemini auth'.",
++ 			"rateLimitExceeded": "Limite di velocità superato. I limiti del livello gratuito sono stati raggiunti.",
++ 			"badRequest": "Richiesta non valida: {{details}}",
++ 			"apiError": "Errore API Gemini CLI: {{error}}",
++ 			"completionError": "Errore di completamento Gemini CLI: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/ja/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/ja/common.json	2025-07-27 18:30:53.070208529 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Claude Code プロセスがコード {{exitCode}} で終了しました。エラー出力：{{output}}",
+  			"stoppedWithReason": "Claude Code が理由により停止しました：{{reason}}",
+  			"apiKeyModelPlanMismatch": "API キーとサブスクリプションプランでは異なるモデルが利用可能です。選択したモデルがプランに含まれていることを確認してください。"
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "OAuth認証情報の読み込みに失敗しました。まず認証してください: {{error}}",
++ 			"tokenRefreshFailed": "OAuthトークンの更新に失敗しました: {{error}}",
++ 			"onboardingTimeout": "オンボーディング操作が60秒でタイムアウトしました。後でもう一度お試しください。",
++ 			"projectDiscoveryFailed": "プロジェクトIDを発見できませんでした。'gemini auth'で認証されていることを確認してください。",
++ 			"rateLimitExceeded": "レート制限を超過しました。無料プランの制限に達しています。",
++ 			"badRequest": "不正なリクエスト: {{details}}",
++ 			"apiError": "Gemini CLI APIエラー: {{error}}",
++ 			"completionError": "Gemini CLI補完エラー: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/ko/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/ko/common.json	2025-07-27 18:31:37.450608689 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Claude Code 프로세스가 코드 {{exitCode}}로 종료되었습니다. 오류 출력: {{output}}",
+  			"stoppedWithReason": "Claude Code가 다음 이유로 중지되었습니다: {{reason}}",
+  			"apiKeyModelPlanMismatch": "API 키와 구독 플랜에서 다른 모델을 허용합니다. 선택한 모델이 플랜에 포함되어 있는지 확인하세요."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "OAuth 자격 증명을 로드하지 못했습니다. 먼저 인증하세요: {{error}}",
++ 			"tokenRefreshFailed": "OAuth 토큰을 새로 고치지 못했습니다: {{error}}",
++ 			"onboardingTimeout": "온보딩 작업이 60초 후 시간 초과되었습니다. 나중에 다시 시도하세요.",
++ 			"projectDiscoveryFailed": "프로젝트 ID를 찾을 수 없습니다. 'gemini auth'로 인증되었는지 확인하세요.",
++ 			"rateLimitExceeded": "속도 제한을 초과했습니다. 무료 등급 제한에 도달했습니다.",
++ 			"badRequest": "잘못된 요청: {{details}}",
++ 			"apiError": "Gemini CLI API 오류: {{error}}",
++ 			"completionError": "Gemini CLI 완성 오류: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/nl/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/nl/common.json	2025-07-27 18:32:30.648896556 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Claude Code proces beëindigd met code {{exitCode}}. Foutuitvoer: {{output}}",
+  			"stoppedWithReason": "Claude Code gestopt om reden: {{reason}}",
+  			"apiKeyModelPlanMismatch": "API-sleutels en abonnementsplannen staan verschillende modellen toe. Zorg ervoor dat het geselecteerde model is opgenomen in je plan."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Kan OAuth-referenties niet laden. Authenticeer eerst: {{error}}",
++ 			"tokenRefreshFailed": "Kan OAuth-token niet vernieuwen: {{error}}",
++ 			"onboardingTimeout": "Onboarding-operatie is na 60 seconden verlopen. Probeer het later opnieuw.",
++ 			"projectDiscoveryFailed": "Kan project-ID niet ontdekken. Zorg ervoor dat je geauthenticeerd bent met 'gemini auth'.",
++ 			"rateLimitExceeded": "Snelheidslimiet overschreden. Gratis tier limieten zijn bereikt.",
++ 			"badRequest": "Ongeldig verzoek: {{details}}",
++ 			"apiError": "Gemini CLI API-fout: {{error}}",
++ 			"completionError": "Gemini CLI voltooiingsfout: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/pl/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/pl/common.json	2025-07-27 18:33:23.100201091 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Proces Claude Code zakończył się kodem {{exitCode}}. Wyjście błędu: {{output}}",
+  			"stoppedWithReason": "Claude Code zatrzymał się z powodu: {{reason}}",
+  			"apiKeyModelPlanMismatch": "Klucze API i plany subskrypcji pozwalają na różne modele. Upewnij się, że wybrany model jest zawarty w twoim planie."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Nie udało się załadować danych uwierzytelniających OAuth. Najpierw się uwierzytelnij: {{error}}",
++ 			"tokenRefreshFailed": "Nie udało się odświeżyć tokenu OAuth: {{error}}",
++ 			"onboardingTimeout": "Operacja wdrażania przekroczyła limit czasu po 60 sekundach. Spróbuj ponownie później.",
++ 			"projectDiscoveryFailed": "Nie można odkryć ID projektu. Upewnij się, że jesteś uwierzytelniony za pomocą 'gemini auth'.",
++ 			"rateLimitExceeded": "Przekroczono limit szybkości. Osiągnięto limity darmowego poziomu.",
++ 			"badRequest": "Nieprawidłowe żądanie: {{details}}",
++ 			"apiError": "Błąd API Gemini CLI: {{error}}",
++ 			"completionError": "Błąd uzupełniania Gemini CLI: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/pt-BR/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/pt-BR/common.json	2025-07-27 18:34:11.833560292 +0200
+***************
+*** 81,86 ****
+--- 81,96 ----
+  			"processExitedWithError": "O processo Claude Code saiu com código {{exitCode}}. Saída de erro: {{output}}",
+  			"stoppedWithReason": "Claude Code parou pela razão: {{reason}}",
+  			"apiKeyModelPlanMismatch": "Chaves de API e planos de assinatura permitem modelos diferentes. Certifique-se de que o modelo selecionado esteja incluído no seu plano."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Falha ao carregar credenciais OAuth. Por favor, autentique-se primeiro: {{error}}",
++ 			"tokenRefreshFailed": "Falha ao atualizar token OAuth: {{error}}",
++ 			"onboardingTimeout": "A operação de integração expirou após 60 segundos. Por favor, tente novamente mais tarde.",
++ 			"projectDiscoveryFailed": "Não foi possível descobrir o ID do projeto. Certifique-se de estar autenticado com 'gemini auth'.",
++ 			"rateLimitExceeded": "Limite de taxa excedido. Os limites do nível gratuito foram atingidos.",
++ 			"badRequest": "Solicitação inválida: {{details}}",
++ 			"apiError": "Erro da API Gemini CLI: {{error}}",
++ 			"completionError": "Erro de conclusão do Gemini CLI: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/ru/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/ru/common.json	2025-07-27 18:35:07.656832001 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Процесс Claude Code завершился с кодом {{exitCode}}. Вывод ошибки: {{output}}",
+  			"stoppedWithReason": "Claude Code остановился по причине: {{reason}}",
+  			"apiKeyModelPlanMismatch": "API-ключи и планы подписки позволяют использовать разные модели. Убедитесь, что выбранная модель включена в ваш план."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Не удалось загрузить учетные данные OAuth. Сначала выполните аутентификацию: {{error}}",
++ 			"tokenRefreshFailed": "Не удалось обновить токен OAuth: {{error}}",
++ 			"onboardingTimeout": "Операция подключения истекла через 60 секунд. Пожалуйста, попробуйте позже.",
++ 			"projectDiscoveryFailed": "Не удалось обнаружить идентификатор проекта. Убедитесь, что вы аутентифицированы с помощью 'gemini auth'.",
++ 			"rateLimitExceeded": "Превышен лимит скорости. Достигнуты лимиты бесплатного уровня.",
++ 			"badRequest": "Неверный запрос: {{details}}",
++ 			"apiError": "Ошибка API Gemini CLI: {{error}}",
++ 			"completionError": "Ошибка завершения Gemini CLI: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/tr/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/tr/common.json	2025-07-27 18:35:54.149229679 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Claude Code işlemi {{exitCode}} koduyla çıktı. Hata çıktısı: {{output}}",
+  			"stoppedWithReason": "Claude Code şu nedenle durdu: {{reason}}",
+  			"apiKeyModelPlanMismatch": "API anahtarları ve abonelik planları farklı modellere izin verir. Seçilen modelin planınıza dahil olduğundan emin olun."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "OAuth kimlik bilgileri yüklenemedi. Lütfen önce kimlik doğrulaması yapın: {{error}}",
++ 			"tokenRefreshFailed": "OAuth token yenilenemedi: {{error}}",
++ 			"onboardingTimeout": "Onboarding işlemi 60 saniye sonra zaman aşımına uğradı. Lütfen daha sonra tekrar deneyin.",
++ 			"projectDiscoveryFailed": "Proje ID'si keşfedilemedi. 'gemini auth' ile kimlik doğrulaması yaptığınızdan emin olun.",
++ 			"rateLimitExceeded": "Hız sınırı aşıldı. Ücretsiz seviye sınırlarına ulaşıldı.",
++ 			"badRequest": "Geçersiz istek: {{details}}",
++ 			"apiError": "Gemini CLI API hatası: {{error}}",
++ 			"completionError": "Gemini CLI tamamlama hatası: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/vi/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/vi/common.json	2025-07-27 18:36:40.281635475 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"processExitedWithError": "Tiến trình Claude Code thoát với mã {{exitCode}}. Đầu ra lỗi: {{output}}",
+  			"stoppedWithReason": "Claude Code dừng lại vì lý do: {{reason}}",
+  			"apiKeyModelPlanMismatch": "Khóa API và gói đăng ký cho phép các mô hình khác nhau. Đảm bảo rằng mô hình đã chọn được bao gồm trong gói của bạn."
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "Không thể tải thông tin xác thực OAuth. Vui lòng xác thực trước: {{error}}",
++ 			"tokenRefreshFailed": "Không thể làm mới token OAuth: {{error}}",
++ 			"onboardingTimeout": "Thao tác onboarding đã hết thời gian chờ sau 60 giây. Vui lòng thử lại sau.",
++ 			"projectDiscoveryFailed": "Không thể khám phá ID dự án. Đảm bảo bạn đã xác thực bằng 'gemini auth'.",
++ 			"rateLimitExceeded": "Đã vượt quá giới hạn tốc độ. Đã đạt đến giới hạn của gói miễn phí.",
++ 			"badRequest": "Yêu cầu không hợp lệ: {{details}}",
++ 			"apiError": "Lỗi API Gemini CLI: {{error}}",
++ 			"completionError": "Lỗi hoàn thành Gemini CLI: {{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/zh-CN/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/zh-CN/common.json	2025-07-27 18:37:31.308981872 +0200
+***************
+*** 82,87 ****
+--- 82,97 ----
+  			"processExitedWithError": "Claude Code 进程退出，退出码：{{exitCode}}。错误输出：{{output}}",
+  			"stoppedWithReason": "Claude Code 停止，原因：{{reason}}",
+  			"apiKeyModelPlanMismatch": "API 密钥和订阅计划支持不同的模型。请确保所选模型包含在您的计划中。"
++ 		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "加载 OAuth 凭据失败。请先进行身份验证：{{error}}",
++ 			"tokenRefreshFailed": "刷新 OAuth Token 失败：{{error}}",
++ 			"onboardingTimeout": "入门操作在 60 秒后超时。请稍后重试。",
++ 			"projectDiscoveryFailed": "无法发现项目 ID。请确保已使用 'gemini auth' 进行身份验证。",
++ 			"rateLimitExceeded": "API 请求频率限制已超出。免费层级限制已达到。",
++ 			"badRequest": "请求错误：{{details}}",
++ 			"apiError": "Gemini CLI API 错误：{{error}}",
++ 			"completionError": "Gemini CLI 补全错误：{{error}}"
+  		}
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/i18n/locales/zh-TW/common.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/i18n/locales/zh-TW/common.json	2025-07-27 18:38:30.270230955 +0200
+***************
+*** 77,82 ****
+--- 77,92 ----
+  			"stoppedWithReason": "Claude Code 停止，原因：{{reason}}",
+  			"apiKeyModelPlanMismatch": "API 金鑰和訂閱方案允許不同的模型。請確保所選模型包含在您的方案中。"
+  		},
++ 		"geminiCli": {
++ 			"oauthLoadFailed": "無法載入 OAuth 憑證。請先進行驗證：{{error}}",
++ 			"tokenRefreshFailed": "無法重新整理 OAuth 權杖：{{error}}",
++ 			"onboardingTimeout": "新手導引操作在 60 秒後逾時。請稍後再試。",
++ 			"projectDiscoveryFailed": "無法發現專案 ID。請確保您已使用 'gemini auth' 進行驗證。",
++ 			"rateLimitExceeded": "超過速率限制。已達到免費層級限制。",
++ 			"badRequest": "錯誤的請求：{{details}}",
++ 			"apiError": "Gemini CLI API 錯誤：{{error}}",
++ 			"completionError": "Gemini CLI 完成錯誤：{{error}}"
++ 		},
+  		"mode_import_failed": "匯入模式失敗：{{error}}"
+  	},
+  	"warnings": {
+*** Roo-Code-3.24.0/src/shared/checkExistApiConfig.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/src/shared/checkExistApiConfig.ts	2025-07-27 18:39:38.647365277 +0200
+***************
+*** 5,12 ****
+  		return false
+  	}
+  
+! 	// Special case for human-relay, fake-ai, and claude-code providers which don't need any configuration.
+! 	if (config.apiProvider && ["human-relay", "fake-ai", "claude-code"].includes(config.apiProvider)) {
+  		return true
+  	}
+  
+--- 5,12 ----
+  		return false
+  	}
+  
+! 	// Special case for human-relay, fake-ai, claude-code and gemini-cli providers which don't need any configuration.
+! 	if (config.apiProvider && ["human-relay", "fake-ai", "claude-code", "gemini-cli"].includes(config.apiProvider)) {
+  		return true
+  	}
+  
+*** Roo-Code-3.24.0/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-27 18:43:11.531698650 +0200
+***************
+*** 17,22 ****
+--- 17,23 ----
+  	anthropicDefaultModelId,
+  	claudeCodeDefaultModelId,
+  	geminiDefaultModelId,
++ 	geminiCliDefaultModelId,
+  	deepSeekDefaultModelId,
+  	moonshotDefaultModelId,
+  	mistralDefaultModelId,
+***************
+*** 57,62 ****
+--- 58,64 ----
+  	ClaudeCode,
+  	DeepSeek,
+  	Gemini,
++ 	GeminiCli,
+  	Glama,
+  	Groq,
+  	HuggingFace,
+***************
+*** 289,294 ****
+--- 291,297 ----
+  				"claude-code": { field: "apiModelId", default: claudeCodeDefaultModelId },
+  				"openai-native": { field: "apiModelId", default: openAiNativeDefaultModelId },
+  				gemini: { field: "apiModelId", default: geminiDefaultModelId },
++ 				"gemini-cli": { field: "apiModelId", default: geminiCliDefaultModelId },
+  				deepseek: { field: "apiModelId", default: deepSeekDefaultModelId },
+  				moonshot: { field: "apiModelId", default: moonshotDefaultModelId },
+  				mistral: { field: "apiModelId", default: mistralDefaultModelId },
+***************
+*** 451,456 ****
+--- 454,463 ----
+  				<Gemini apiConfiguration={apiConfiguration} setApiConfigurationField={setApiConfigurationField} />
+  			)}
+  
++ 			{selectedProvider === "gemini-cli" && (
++ 				<GeminiCli apiConfiguration={apiConfiguration} setApiConfigurationField={setApiConfigurationField} />
++ 			)}
++ 
+  			{selectedProvider === "openai" && (
+  				<OpenAICompatible
+  					apiConfiguration={apiConfiguration}
+*** Roo-Code-3.24.0/webview-ui/src/components/settings/constants.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/constants.ts	2025-07-27 18:44:44.485544932 +0200
+***************
+*** 7,12 ****
+--- 7,13 ----
+  	deepSeekModels,
+  	moonshotModels,
+  	geminiModels,
++ 	geminiCliModels,
+  	mistralModels,
+  	openAiNativeModels,
+  	vertexModels,
+***************
+*** 22,27 ****
+--- 23,29 ----
+  	deepseek: deepSeekModels,
+  	moonshot: moonshotModels,
+  	gemini: geminiModels,
++ 	"gemini-cli": geminiCliModels,
+  	mistral: mistralModels,
+  	"openai-native": openAiNativeModels,
+  	vertex: vertexModels,
+***************
+*** 35,40 ****
+--- 37,43 ----
+  	{ value: "anthropic", label: "Anthropic" },
+  	{ value: "claude-code", label: "Claude Code" },
+  	{ value: "gemini", label: "Google Gemini" },
++ 	{ value: "gemini-cli", label: "Gemini CLI" },
+  	{ value: "deepseek", label: "DeepSeek" },
+  	{ value: "moonshot", label: "Moonshot" },
+  	{ value: "openai-native", label: "OpenAI" },
+*** /dev/null	2025-07-27 02:42:48.185765997 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-07-27 17:50:35.756857270 +0200
+***************
+*** 0 ****
+--- 1,81 ----
++ import { useCallback } from "react"
++ import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
++ 
++ import type { ProviderSettings } from "@roo-code/types"
++ 
++ import { useAppTranslation } from "@src/i18n/TranslationContext"
++ import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
++ 
++ import { inputEventTransform } from "../transforms"
++ 
++ type GeminiCliProps = {
++ 	apiConfiguration: ProviderSettings
++ 	setApiConfigurationField: (field: keyof ProviderSettings, value: ProviderSettings[keyof ProviderSettings]) => void
++ }
++ 
++ export const GeminiCli = ({ apiConfiguration, setApiConfigurationField }: GeminiCliProps) => {
++ 	const { t } = useAppTranslation()
++ 
++ 	const handleInputChange = useCallback(
++ 		<K extends keyof ProviderSettings, E>(
++ 			field: K,
++ 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,
++ 		) =>
++ 			(event: E | Event) => {
++ 				setApiConfigurationField(field, transform(event as E))
++ 			},
++ 		[setApiConfigurationField],
++ 	)
++ 
++ 	return (
++ 		<>
++ 			<VSCodeTextField
++ 				value={apiConfiguration?.geminiCliOAuthPath || ""}
++ 				onInput={handleInputChange("geminiCliOAuthPath")}
++ 				placeholder="~/.gemini/oauth_creds.json"
++ 				className="w-full">
++ 				<label className="block font-medium mb-1">{t("settings:providers.geminiCli.oauthPath")}</label>
++ 			</VSCodeTextField>
++ 			<div className="text-sm text-vscode-descriptionForeground -mt-2">
++ 				{t("settings:providers.geminiCli.oauthPathDescription")}
++ 			</div>
++ 
++ 			<div className="text-sm text-vscode-descriptionForeground mt-3">
++ 				{t("settings:providers.geminiCli.description")}
++ 			</div>
++ 
++ 			<div className="text-sm text-vscode-descriptionForeground mt-2">
++ 				{t("settings:providers.geminiCli.instructions")}{" "}
++ 				<code className="text-vscode-textPreformat-foreground">gemini</code>{" "}
++ 				{t("settings:providers.geminiCli.instructionsContinued")}
++ 			</div>
++ 
++ 			<VSCodeLink
++ 				href="https://github.com/google-gemini/gemini-cli?tab=readme-ov-file#quickstart"
++ 				className="text-vscode-textLink-foreground hover:text-vscode-textLink-activeForeground mt-2 inline-block">
++ 				{t("settings:providers.geminiCli.setupLink")}
++ 			</VSCodeLink>
++ 
++ 			<div className="mt-3 p-3 bg-vscode-editorWidget-background border border-vscode-editorWidget-border rounded">
++ 				<div className="flex items-center gap-2 mb-2">
++ 					<i className="codicon codicon-warning text-vscode-notificationsWarningIcon-foreground" />
++ 					<span className="font-semibold text-sm">{t("settings:providers.geminiCli.requirementsTitle")}</span>
++ 				</div>
++ 				<ul className="list-disc list-inside space-y-1 text-sm text-vscode-descriptionForeground">
++ 					<li>{t("settings:providers.geminiCli.requirement1")}</li>
++ 					<li>{t("settings:providers.geminiCli.requirement2")}</li>
++ 					<li>{t("settings:providers.geminiCli.requirement3")}</li>
++ 					<li>{t("settings:providers.geminiCli.requirement4")}</li>
++ 					<li>{t("settings:providers.geminiCli.requirement5")}</li>
++ 				</ul>
++ 			</div>
++ 
++ 			<div className="mt-3 flex items-center gap-2">
++ 				<i className="codicon codicon-check text-vscode-notificationsInfoIcon-foreground" />
++ 				<span className="text-sm text-vscode-descriptionForeground">
++ 					{t("settings:providers.geminiCli.freeAccess")}
++ 				</span>
++ 			</div>
++ 		</>
++ 	)
++ }
+*** /dev/null	2025-07-27 02:42:48.185765997 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-07-27 17:51:06.694491854 +0200
+***************
+*** 0 ****
+--- 1,169 ----
++ import { render, screen, fireEvent } from "@testing-library/react"
++ import { describe, it, expect, vi } from "vitest"
++ 
++ import type { ProviderSettings } from "@roo-code/types"
++ 
++ import { GeminiCli } from "../GeminiCli"
++ 
++ // Mock the translation hook
++ vi.mock("@src/i18n/TranslationContext", () => ({
++ 	useAppTranslation: () => ({
++ 		t: (key: string) => key,
++ 	}),
++ }))
++ 
++ // Mock VSCodeLink to render as a regular anchor tag
++ vi.mock("@vscode/webview-ui-toolkit/react", async () => {
++ 	const actual = await vi.importActual("@vscode/webview-ui-toolkit/react")
++ 	return {
++ 		...actual,
++ 		VSCodeLink: ({ children, href, ...props }: any) => (
++ 			<a href={href} {...props}>
++ 				{children}
++ 			</a>
++ 		),
++ 	}
++ })
++ 
++ describe("GeminiCli", () => {
++ 	const mockSetApiConfigurationField = vi.fn()
++ 	const defaultProps = {
++ 		apiConfiguration: {} as ProviderSettings,
++ 		setApiConfigurationField: mockSetApiConfigurationField,
++ 	}
++ 
++ 	beforeEach(() => {
++ 		vi.clearAllMocks()
++ 	})
++ 
++ 	it("renders all required elements", () => {
++ 		render(<GeminiCli {...defaultProps} />)
++ 
++ 		// Check for OAuth path input
++ 		expect(screen.getByText("settings:providers.geminiCli.oauthPath")).toBeInTheDocument()
++ 		expect(screen.getByPlaceholderText("~/.gemini/oauth_creds.json")).toBeInTheDocument()
++ 
++ 		// Check for description text
++ 		expect(screen.getByText("settings:providers.geminiCli.description")).toBeInTheDocument()
++ 
++ 		// Check for instructions - they're in the same div but broken up by the code element
++ 		// Find all elements that contain the instruction parts
++ 		const instructionsDivs = screen.getAllByText((_content, element) => {
++ 			// Check if this element contains all the expected text parts
++ 			const fullText = element?.textContent || ""
++ 			return (
++ 				fullText.includes("settings:providers.geminiCli.instructions") &&
++ 				fullText.includes("gemini") &&
++ 				fullText.includes("settings:providers.geminiCli.instructionsContinued")
++ 			)
++ 		})
++ 		// Find the div with the correct classes
++ 		const instructionsDiv = instructionsDivs.find(
++ 			(div) =>
++ 				div.classList.contains("text-sm") &&
++ 				div.classList.contains("text-vscode-descriptionForeground") &&
++ 				div.classList.contains("mt-2"),
++ 		)
++ 		expect(instructionsDiv).toBeDefined()
++ 		expect(instructionsDiv).toBeInTheDocument()
++ 
++ 		// Also verify the code element exists
++ 		const codeElement = screen.getByText("gemini")
++ 		expect(codeElement).toBeInTheDocument()
++ 		expect(codeElement.tagName).toBe("CODE")
++ 
++ 		// Check for setup link
++ 		expect(screen.getByText("settings:providers.geminiCli.setupLink")).toBeInTheDocument()
++ 
++ 		// Check for requirements
++ 		expect(screen.getByText("settings:providers.geminiCli.requirementsTitle")).toBeInTheDocument()
++ 		expect(screen.getByText("settings:providers.geminiCli.requirement1")).toBeInTheDocument()
++ 		expect(screen.getByText("settings:providers.geminiCli.requirement2")).toBeInTheDocument()
++ 		expect(screen.getByText("settings:providers.geminiCli.requirement3")).toBeInTheDocument()
++ 		expect(screen.getByText("settings:providers.geminiCli.requirement4")).toBeInTheDocument()
++ 		expect(screen.getByText("settings:providers.geminiCli.requirement5")).toBeInTheDocument()
++ 
++ 		// Check for free access note
++ 		expect(screen.getByText("settings:providers.geminiCli.freeAccess")).toBeInTheDocument()
++ 	})
++ 
++ 	it("displays OAuth path from configuration", () => {
++ 		const apiConfiguration: ProviderSettings = {
++ 			geminiCliOAuthPath: "/custom/path/oauth.json",
++ 		}
++ 
++ 		render(<GeminiCli {...defaultProps} apiConfiguration={apiConfiguration} />)
++ 
++ 		const oauthInput = screen.getByDisplayValue("/custom/path/oauth.json")
++ 		expect(oauthInput).toBeInTheDocument()
++ 	})
++ 
++ 	it("calls setApiConfigurationField when OAuth path is changed", () => {
++ 		render(<GeminiCli {...defaultProps} />)
++ 
++ 		const oauthInput = screen.getByPlaceholderText("~/.gemini/oauth_creds.json")
++ 
++ 		// Simulate input event with VSCodeTextField
++ 		fireEvent.input(oauthInput, { target: { value: "/new/path.json" } })
++ 
++ 		// Check that setApiConfigurationField was called
++ 		expect(mockSetApiConfigurationField).toHaveBeenCalledWith("geminiCliOAuthPath", "/new/path.json")
++ 	})
++ 
++ 	it("renders setup link with correct href", () => {
++ 		render(<GeminiCli {...defaultProps} />)
++ 
++ 		const setupLink = screen.getByText("settings:providers.geminiCli.setupLink")
++ 		expect(setupLink).toHaveAttribute(
++ 			"href",
++ 			"https://github.com/google-gemini/gemini-cli?tab=readme-ov-file#quickstart",
++ 		)
++ 	})
++ 
++ 	it("shows OAuth path description", () => {
++ 		render(<GeminiCli {...defaultProps} />)
++ 
++ 		expect(screen.getByText("settings:providers.geminiCli.oauthPathDescription")).toBeInTheDocument()
++ 	})
++ 
++ 	it("renders all requirements in a list", () => {
++ 		render(<GeminiCli {...defaultProps} />)
++ 
++ 		const listItems = screen.getAllByRole("listitem")
++ 		expect(listItems).toHaveLength(5)
++ 		expect(listItems[0]).toHaveTextContent("settings:providers.geminiCli.requirement1")
++ 		expect(listItems[1]).toHaveTextContent("settings:providers.geminiCli.requirement2")
++ 		expect(listItems[2]).toHaveTextContent("settings:providers.geminiCli.requirement3")
++ 		expect(listItems[3]).toHaveTextContent("settings:providers.geminiCli.requirement4")
++ 		expect(listItems[4]).toHaveTextContent("settings:providers.geminiCli.requirement5")
++ 	})
++ 
++ 	it("applies correct styling classes", () => {
++ 		render(<GeminiCli {...defaultProps} />)
++ 
++ 		// Check for styled warning box
++ 		const warningBox = screen.getByText("settings:providers.geminiCli.requirementsTitle").closest("div.mt-3")
++ 		expect(warningBox).toHaveClass("bg-vscode-editorWidget-background")
++ 		expect(warningBox).toHaveClass("border-vscode-editorWidget-border")
++ 		expect(warningBox).toHaveClass("rounded")
++ 		expect(warningBox).toHaveClass("p-3")
++ 
++ 		// Check for warning icon
++ 		const warningIcon = screen.getByText("settings:providers.geminiCli.requirementsTitle").previousElementSibling
++ 		expect(warningIcon).toHaveClass("codicon-warning")
++ 		expect(warningIcon).toHaveClass("text-vscode-notificationsWarningIcon-foreground")
++ 
++ 		// Check for check icon
++ 		const checkIcon = screen.getByText("settings:providers.geminiCli.freeAccess").previousElementSibling
++ 		expect(checkIcon).toHaveClass("codicon-check")
++ 		expect(checkIcon).toHaveClass("text-vscode-notificationsInfoIcon-foreground")
++ 	})
++ 
++ 	it("renders instructions with code element", () => {
++ 		render(<GeminiCli {...defaultProps} />)
++ 
++ 		const codeElement = screen.getByText("gemini")
++ 		expect(codeElement.tagName).toBe("CODE")
++ 		expect(codeElement).toHaveClass("text-vscode-textPreformat-foreground")
++ 	})
++ })
+*** Roo-Code-3.24.0/webview-ui/src/components/settings/providers/index.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/providers/index.ts	2025-07-27 18:45:24.198053596 +0200
+***************
+*** 4,9 ****
+--- 4,10 ----
+  export { ClaudeCode } from "./ClaudeCode"
+  export { DeepSeek } from "./DeepSeek"
+  export { Gemini } from "./Gemini"
++ export { GeminiCli } from "./GeminiCli"
+  export { Glama } from "./Glama"
+  export { Groq } from "./Groq"
+  export { HuggingFace } from "./HuggingFace"
+*** Roo-Code-3.24.0/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-27 18:46:45.624048712 +0200
+***************
+*** 12,17 ****
+--- 12,19 ----
+  	moonshotModels,
+  	geminiDefaultModelId,
+  	geminiModels,
++ 	geminiCliDefaultModelId,
++ 	geminiCliModels,
+  	mistralDefaultModelId,
+  	mistralModels,
+  	openAiModelInfoSaneDefaults,
+***************
+*** 169,174 ****
+--- 171,181 ----
+  			const info = geminiModels[id as keyof typeof geminiModels]
+  			return { id, info }
+  		}
++ 		case "gemini-cli": {
++ 			const id = apiConfiguration.apiModelId ?? geminiCliDefaultModelId
++ 			const info = geminiCliModels[id as keyof typeof geminiCliModels]
++ 			return { id, info }
++ 		}
+  		case "deepseek": {
+  			const id = apiConfiguration.apiModelId ?? deepSeekDefaultModelId
+  			const info = deepSeekModels[id as keyof typeof deepSeekModels]
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ca/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-07-27 18:50:25.446349644 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Per defecte: claude",
+  			"maxTokensLabel": "Tokens màxims de sortida",
+  			"maxTokensDescription": "Nombre màxim de tokens de sortida per a les respostes de Claude Code. El valor per defecte és 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Aquest proveïdor utilitza l'autenticació OAuth de l'eina Gemini CLI i no requereix claus d'API.",
++ 			"oauthPath": "Ruta de Credencials OAuth (opcional)",
++ 			"oauthPathDescription": "Ruta al fitxer de credencials OAuth. Deixa buit per utilitzar la ubicació per defecte (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Si encara no t'has autenticat, executa",
++ 			"instructionsContinued": "al teu terminal primer.",
++ 			"setupLink": "Instruccions de Configuració de Gemini CLI",
++ 			"requirementsTitle": "Requisits Importants",
++ 			"requirement1": "Primer, necessites instal·lar l'eina Gemini CLI",
++ 			"requirement2": "Després, executa gemini al teu terminal i assegura't d'iniciar sessió amb Google",
++ 			"requirement3": "Només funciona amb comptes personals de Google (no comptes de Google Workspace)",
++ 			"requirement4": "No utilitza claus d'API - l'autenticació es gestiona via OAuth",
++ 			"requirement5": "Requereix que l'eina Gemini CLI estigui instal·lada i autenticada primer",
++ 			"freeAccess": "Accés gratuït via autenticació OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/de/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/de/settings.json	2025-07-27 18:52:28.437846171 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Standard: claude",
+  			"maxTokensLabel": "Maximale Ausgabe-Tokens",
+  			"maxTokensDescription": "Maximale Anzahl an Ausgabe-Tokens für Claude Code-Antworten. Standard ist 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Dieser Anbieter verwendet OAuth-Authentifizierung vom Gemini CLI-Tool und benötigt keine API-Schlüssel.",
++ 			"oauthPath": "OAuth-Anmeldedaten-Pfad (optional)",
++ 			"oauthPathDescription": "Pfad zur OAuth-Anmeldedaten-Datei. Leer lassen, um den Standardort zu verwenden (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Falls du dich noch nicht authentifiziert hast, führe bitte",
++ 			"instructionsContinued": "in deinem Terminal zuerst aus.",
++ 			"setupLink": "Gemini CLI Setup-Anweisungen",
++ 			"requirementsTitle": "Wichtige Anforderungen",
++ 			"requirement1": "Zuerst musst du das Gemini CLI-Tool installieren",
++ 			"requirement2": "Dann führe gemini in deinem Terminal aus und stelle sicher, dass du dich mit Google anmeldest",
++ 			"requirement3": "Funktioniert nur mit persönlichen Google-Konten (nicht mit Google Workspace-Konten)",
++ 			"requirement4": "Verwendet keine API-Schlüssel - Authentifizierung wird über OAuth abgewickelt",
++ 			"requirement5": "Erfordert, dass das Gemini CLI-Tool zuerst installiert und authentifiziert wird",
++ 			"freeAccess": "Kostenloser Zugang über OAuth-Authentifizierung"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/en/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/en/settings.json	2025-07-27 18:53:37.244006655 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Default: claude",
+  			"maxTokensLabel": "Max Output Tokens",
+  			"maxTokensDescription": "Maximum number of output tokens for Claude Code responses. Default is 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "This provider uses OAuth authentication from the Gemini CLI tool and does not require API keys.",
++ 			"oauthPath": "OAuth Credentials Path (optional)",
++ 			"oauthPathDescription": "Path to the OAuth credentials file. Leave empty to use the default location (~/.gemini/oauth_creds.json).",
++ 			"instructions": "If you haven't authenticated yet, please run",
++ 			"instructionsContinued": "in your terminal first.",
++ 			"setupLink": "Gemini CLI Setup Instructions",
++ 			"requirementsTitle": "Important Requirements",
++ 			"requirement1": "First, you need to install the Gemini CLI tool",
++ 			"requirement2": "Then, run gemini in your terminal and make sure you Log in with Google",
++ 			"requirement3": "Only works with personal Google accounts (not Google Workspace accounts)",
++ 			"requirement4": "Does not use API keys - authentication is handled via OAuth",
++ 			"requirement5": "Requires the Gemini CLI tool to be installed and authenticated first",
++ 			"freeAccess": "Free tier access via OAuth authentication"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/es/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/es/settings.json	2025-07-27 18:54:41.172227517 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Por defecto: claude",
+  			"maxTokensLabel": "Tokens máximos de salida",
+  			"maxTokensDescription": "Número máximo de tokens de salida para las respuestas de Claude Code. El valor predeterminado es 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Este proveedor usa autenticación OAuth de la herramienta Gemini CLI y no requiere claves API.",
++ 			"oauthPath": "Ruta de Credenciales OAuth (opcional)",
++ 			"oauthPathDescription": "Ruta al archivo de credenciales OAuth. Deja vacío para usar la ubicación predeterminada (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Si aún no te has autenticado, por favor ejecuta",
++ 			"instructionsContinued": "en tu terminal primero.",
++ 			"setupLink": "Instrucciones de Configuración de Gemini CLI",
++ 			"requirementsTitle": "Requisitos Importantes",
++ 			"requirement1": "Primero, necesitas instalar la herramienta Gemini CLI",
++ 			"requirement2": "Luego, ejecuta gemini en tu terminal y asegúrate de iniciar sesión con Google",
++ 			"requirement3": "Solo funciona con cuentas personales de Google (no cuentas de Google Workspace)",
++ 			"requirement4": "No usa claves API - la autenticación se maneja vía OAuth",
++ 			"requirement5": "Requiere que la herramienta Gemini CLI esté instalada y autenticada primero",
++ 			"freeAccess": "Acceso gratuito vía autenticación OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/fr/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-07-27 18:55:54.674332593 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Défaut : claude",
+  			"maxTokensLabel": "Jetons de sortie max",
+  			"maxTokensDescription": "Nombre maximum de jetons de sortie pour les réponses de Claude Code. La valeur par défaut est 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Ce fournisseur utilise l'authentification OAuth de l'outil Gemini CLI et ne nécessite pas de clés API.",
++ 			"oauthPath": "Chemin des Identifiants OAuth (optionnel)",
++ 			"oauthPathDescription": "Chemin vers le fichier d'identifiants OAuth. Laissez vide pour utiliser l'emplacement par défaut (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Si vous ne vous êtes pas encore authentifié, veuillez exécuter",
++ 			"instructionsContinued": "dans votre terminal d'abord.",
++ 			"setupLink": "Instructions de Configuration Gemini CLI",
++ 			"requirementsTitle": "Exigences Importantes",
++ 			"requirement1": "D'abord, vous devez installer l'outil Gemini CLI",
++ 			"requirement2": "Ensuite, exécutez gemini dans votre terminal et assurez-vous de vous connecter avec Google",
++ 			"requirement3": "Fonctionne uniquement avec les comptes Google personnels (pas les comptes Google Workspace)",
++ 			"requirement4": "N'utilise pas de clés API - l'authentification est gérée via OAuth",
++ 			"requirement5": "Nécessite que l'outil Gemini CLI soit installé et authentifié d'abord",
++ 			"freeAccess": "Accès gratuit via l'authentification OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/hi/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-07-27 18:58:44.081272979 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "डिफ़ॉल्ट: claude",
+  			"maxTokensLabel": "अधिकतम आउटपुट टोकन",
+  			"maxTokensDescription": "Claude Code प्रतिक्रियाओं के लिए आउटपुट टोकन की अधिकतम संख्या। डिफ़ॉल्ट 8000 है।"
++ 		},
++ 		"geminiCli": {
++ 			"description": "यह प्रदाता Gemini CLI टूल से OAuth प्रमाणीकरण का उपयोग करता है और API कुंजियों की आवश्यकता नहीं है।",
++ 			"oauthPath": "OAuth क्रेडेंशियल पथ (वैकल्पिक)",
++ 			"oauthPathDescription": "OAuth क्रेडेंशियल फ़ाइल का पथ। डिफ़ॉल्ट स्थान (~/.gemini/oauth_creds.json) का उपयोग करने के लिए खाली छोड़ें।",
++ 			"instructions": "यदि आपने अभी तक प्रमाणीकरण नहीं किया है, तो कृपया पहले",
++ 			"instructionsContinued": "को अपने टर्मिनल में चलाएं।",
++ 			"setupLink": "Gemini CLI सेटअप निर्देश",
++ 			"requirementsTitle": "महत्वपूर्ण आवश्यकताएं",
++ 			"requirement1": "पहले, आपको Gemini CLI टूल इंस्टॉल करना होगा",
++ 			"requirement2": "फिर, अपने टर्मिनल में gemini चलाएं और सुनिश्चित करें कि आप Google से लॉग इन करें",
++ 			"requirement3": "केवल व्यक्तिगत Google खातों के साथ काम करता है (Google Workspace खाते नहीं)",
++ 			"requirement4": "API कुंजियों का उपयोग नहीं करता - प्रमाणीकरण OAuth के माध्यम से संभाला जाता है",
++ 			"requirement5": "Gemini CLI टूल को पहले इंस्टॉल और प्रमाणित करने की आवश्यकता है",
++ 			"freeAccess": "OAuth प्रमाणीकरण के माध्यम से मुफ्त पहुंच"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/id/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/id/settings.json	2025-07-27 18:59:43.968545703 +0200
+***************
+*** 414,419 ****
+--- 414,434 ----
+  			"placeholder": "Default: claude",
+  			"maxTokensLabel": "Token Output Maks",
+  			"maxTokensDescription": "Jumlah maksimum token output untuk respons Claude Code. Default adalah 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Penyedia ini menggunakan autentikasi OAuth dari alat Gemini CLI dan tidak memerlukan kunci API.",
++ 			"oauthPath": "Jalur Kredensial OAuth (opsional)",
++ 			"oauthPathDescription": "Jalur ke file kredensial OAuth. Biarkan kosong untuk menggunakan lokasi default (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Jika Anda belum melakukan autentikasi, jalankan",
++ 			"instructionsContinued": "di terminal Anda terlebih dahulu.",
++ 			"setupLink": "Petunjuk Pengaturan Gemini CLI",
++ 			"requirementsTitle": "Persyaratan Penting",
++ 			"requirement1": "Pertama, Anda perlu menginstal alat Gemini CLI",
++ 			"requirement2": "Kemudian, jalankan gemini di terminal Anda dan pastikan Anda masuk dengan Google",
++ 			"requirement3": "Hanya berfungsi dengan akun Google pribadi (bukan akun Google Workspace)",
++ 			"requirement4": "Tidak menggunakan kunci API - autentikasi ditangani melalui OAuth",
++ 			"requirement5": "Memerlukan alat Gemini CLI diinstal dan diautentikasi terlebih dahulu",
++ 			"freeAccess": "Akses gratis melalui autentikasi OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/it/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/it/settings.json	2025-07-27 19:00:40.377860990 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Predefinito: claude",
+  			"maxTokensLabel": "Token di output massimi",
+  			"maxTokensDescription": "Numero massimo di token di output per le risposte di Claude Code. Il valore predefinito è 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Questo provider utilizza l'autenticazione OAuth dallo strumento Gemini CLI e non richiede chiavi API.",
++ 			"oauthPath": "Percorso Credenziali OAuth (opzionale)",
++ 			"oauthPathDescription": "Percorso al file delle credenziali OAuth. Lascia vuoto per utilizzare la posizione predefinita (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Se non ti sei ancora autenticato, esegui",
++ 			"instructionsContinued": "nel tuo terminale prima.",
++ 			"setupLink": "Istruzioni di Configurazione Gemini CLI",
++ 			"requirementsTitle": "Requisiti Importanti",
++ 			"requirement1": "Prima, devi installare lo strumento Gemini CLI",
++ 			"requirement2": "Poi, esegui gemini nel tuo terminale e assicurati di accedere con Google",
++ 			"requirement3": "Funziona solo con account Google personali (non account Google Workspace)",
++ 			"requirement4": "Non utilizza chiavi API - l'autenticazione è gestita tramite OAuth",
++ 			"requirement5": "Richiede che lo strumento Gemini CLI sia installato e autenticato prima",
++ 			"freeAccess": "Accesso gratuito tramite autenticazione OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ja/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-07-27 19:01:35.162196270 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "デフォルト：claude",
+  			"maxTokensLabel": "最大出力トークン",
+  			"maxTokensDescription": "Claude Codeレスポンスの最大出力トークン数。デフォルトは8000です。"
++ 		},
++ 		"geminiCli": {
++ 			"description": "このプロバイダーはGemini CLIツールからのOAuth認証を使用し、APIキーは必要ありません。",
++ 			"oauthPath": "OAuth認証情報パス（オプション）",
++ 			"oauthPathDescription": "OAuth認証情報ファイルへのパス。デフォルトの場所（~/.gemini/oauth_creds.json）を使用する場合は空のままにしてください。",
++ 			"instructions": "まだ認証していない場合は、まず",
++ 			"instructionsContinued": "をターミナルで実行してください。",
++ 			"setupLink": "Gemini CLI セットアップ手順",
++ 			"requirementsTitle": "重要な要件",
++ 			"requirement1": "まず、Gemini CLIツールをインストールする必要があります",
++ 			"requirement2": "次に、ターミナルでgeminiを実行し、Googleでログインすることを確認してください",
++ 			"requirement3": "個人のGoogleアカウントでのみ動作します（Google Workspaceアカウントは不可）",
++ 			"requirement4": "APIキーは使用しません - 認証はOAuthで処理されます",
++ 			"requirement5": "Gemini CLIツールが最初にインストールされ、認証されている必要があります",
++ 			"freeAccess": "OAuth認証による無料アクセス"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ko/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-07-27 19:02:29.645535439 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "기본값: claude",
+  			"maxTokensLabel": "최대 출력 토큰",
+  			"maxTokensDescription": "Claude Code 응답의 최대 출력 토큰 수. 기본값은 8000입니다."
++ 		},
++ 		"geminiCli": {
++ 			"description": "이 공급자는 Gemini CLI 도구의 OAuth 인증을 사용하며 API 키가 필요하지 않습니다.",
++ 			"oauthPath": "OAuth 자격 증명 경로 (선택사항)",
++ 			"oauthPathDescription": "OAuth 자격 증명 파일의 경로입니다. 기본 위치(~/.gemini/oauth_creds.json)를 사용하려면 비워두세요.",
++ 			"instructions": "아직 인증하지 않았다면",
++ 			"instructionsContinued": "를 터미널에서 먼저 실행하세요.",
++ 			"setupLink": "Gemini CLI 설정 지침",
++ 			"requirementsTitle": "중요한 요구사항",
++ 			"requirement1": "먼저 Gemini CLI 도구를 설치해야 합니다",
++ 			"requirement2": "그 다음 터미널에서 gemini를 실행하고 Google로 로그인했는지 확인하세요",
++ 			"requirement3": "개인 Google 계정에서만 작동합니다 (Google Workspace 계정 불가)",
++ 			"requirement4": "API 키를 사용하지 않습니다 - 인증은 OAuth를 통해 처리됩니다",
++ 			"requirement5": "Gemini CLI 도구가 먼저 설치되고 인증되어야 합니다",
++ 			"freeAccess": "OAuth 인증을 통한 무료 액세스"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/nl/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-07-27 19:03:33.647767964 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Standaard: claude",
+  			"maxTokensLabel": "Max Output Tokens",
+  			"maxTokensDescription": "Maximaal aantal output-tokens voor Claude Code-reacties. Standaard is 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Deze provider gebruikt OAuth-authenticatie van de Gemini CLI-tool en vereist geen API-sleutels.",
++ 			"oauthPath": "OAuth-referentiepad (optioneel)",
++ 			"oauthPathDescription": "Pad naar het OAuth-referentiebestand. Laat leeg om de standaardlocatie te gebruiken (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Als je nog niet bent geauthenticeerd, voer dan eerst",
++ 			"instructionsContinued": "uit in je terminal.",
++ 			"setupLink": "Gemini CLI Setup-instructies",
++ 			"requirementsTitle": "Belangrijke vereisten",
++ 			"requirement1": "Eerst moet je de Gemini CLI-tool installeren",
++ 			"requirement2": "Voer vervolgens gemini uit in je terminal en zorg ervoor dat je inlogt met Google",
++ 			"requirement3": "Werkt alleen met persoonlijke Google-accounts (geen Google Workspace-accounts)",
++ 			"requirement4": "Gebruikt geen API-sleutels - authenticatie wordt afgehandeld via OAuth",
++ 			"requirement5": "Vereist dat de Gemini CLI-tool eerst wordt geïnstalleerd en geauthenticeerd",
++ 			"freeAccess": "Gratis toegang via OAuth-authenticatie"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/pl/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-07-27 19:04:29.864103329 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Domyślnie: claude",
+  			"maxTokensLabel": "Maksymalna liczba tokenów wyjściowych",
+  			"maxTokensDescription": "Maksymalna liczba tokenów wyjściowych dla odpowiedzi Claude Code. Domyślnie 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Ten dostawca używa uwierzytelniania OAuth z narzędzia Gemini CLI i nie wymaga kluczy API.",
++ 			"oauthPath": "Ścieżka danych uwierzytelniających OAuth (opcjonalne)",
++ 			"oauthPathDescription": "Ścieżka do pliku danych uwierzytelniających OAuth. Pozostaw puste, aby użyć domyślnej lokalizacji (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Jeśli jeszcze się nie uwierzytelniłeś, uruchom najpierw",
++ 			"instructionsContinued": "w swoim terminalu.",
++ 			"setupLink": "Instrukcje konfiguracji Gemini CLI",
++ 			"requirementsTitle": "Ważne wymagania",
++ 			"requirement1": "Najpierw musisz zainstalować narzędzie Gemini CLI",
++ 			"requirement2": "Następnie uruchom gemini w swoim terminalu i upewnij się, że logujesz się przez Google",
++ 			"requirement3": "Działa tylko z osobistymi kontami Google (nie z kontami Google Workspace)",
++ 			"requirement4": "Nie używa kluczy API - uwierzytelnianie jest obsługiwane przez OAuth",
++ 			"requirement5": "Wymaga, aby narzędzie Gemini CLI było najpierw zainstalowane i uwierzytelnione",
++ 			"freeAccess": "Darmowy dostęp przez uwierzytelnianie OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-27 19:05:24.761452959 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Padrão: claude",
+  			"maxTokensLabel": "Tokens de saída máximos",
+  			"maxTokensDescription": "Número máximo de tokens de saída para respostas do Claude Code. O padrão é 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Este provedor usa autenticação OAuth da ferramenta Gemini CLI e não requer chaves de API.",
++ 			"oauthPath": "Caminho das Credenciais OAuth (opcional)",
++ 			"oauthPathDescription": "Caminho para o arquivo de credenciais OAuth. Deixe vazio para usar o local padrão (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Se você ainda não se autenticou, execute",
++ 			"instructionsContinued": "no seu terminal primeiro.",
++ 			"setupLink": "Instruções de Configuração do Gemini CLI",
++ 			"requirementsTitle": "Requisitos Importantes",
++ 			"requirement1": "Primeiro, você precisa instalar a ferramenta Gemini CLI",
++ 			"requirement2": "Em seguida, execute gemini no seu terminal e certifique-se de fazer login com o Google",
++ 			"requirement3": "Funciona apenas com contas pessoais do Google (não contas do Google Workspace)",
++ 			"requirement4": "Não usa chaves de API - a autenticação é tratada via OAuth",
++ 			"requirement5": "Requer que a ferramenta Gemini CLI seja instalada e autenticada primeiro",
++ 			"freeAccess": "Acesso gratuito via autenticação OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ru/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-07-27 19:06:25.300734389 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "По умолчанию: claude",
+  			"maxTokensLabel": "Макс. выходных токенов",
+  			"maxTokensDescription": "Максимальное количество выходных токенов для ответов Claude Code. По умолчанию 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Этот провайдер использует OAuth-аутентификацию из инструмента Gemini CLI и не требует API-ключей.",
++ 			"oauthPath": "Путь к учетным данным OAuth (необязательно)",
++ 			"oauthPathDescription": "Путь к файлу учетных данных OAuth. Оставьте пустым для использования местоположения по умолчанию (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Если вы еще не прошли аутентификацию, выполните",
++ 			"instructionsContinued": "в вашем терминале сначала.",
++ 			"setupLink": "Инструкции по настройке Gemini CLI",
++ 			"requirementsTitle": "Важные требования",
++ 			"requirement1": "Сначала вам нужно установить инструмент Gemini CLI",
++ 			"requirement2": "Затем запустите gemini в вашем терминале и убедитесь, что вы вошли в Google",
++ 			"requirement3": "Работает только с личными аккаунтами Google (не с аккаунтами Google Workspace)",
++ 			"requirement4": "Не использует API-ключи - аутентификация обрабатывается через OAuth",
++ 			"requirement5": "Требует, чтобы инструмент Gemini CLI был сначала установлен и аутентифицирован",
++ 			"freeAccess": "Бесплатный доступ через OAuth-аутентификацию"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/tr/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-07-27 19:07:16.783122312 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Varsayılan: claude",
+  			"maxTokensLabel": "Maksimum Çıktı Token sayısı",
+  			"maxTokensDescription": "Claude Code yanıtları için maksimum çıktı token sayısı. Varsayılan 8000'dir."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Bu sağlayıcı Gemini CLI aracından OAuth kimlik doğrulaması kullanır ve API anahtarları gerektirmez.",
++ 			"oauthPath": "OAuth Kimlik Bilgileri Yolu (isteğe bağlı)",
++ 			"oauthPathDescription": "OAuth kimlik bilgileri dosyasının yolu. Varsayılan konumu kullanmak için boş bırakın (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Henüz kimlik doğrulaması yapmadıysanız, önce",
++ 			"instructionsContinued": "komutunu terminalinizde çalıştırın.",
++ 			"setupLink": "Gemini CLI Kurulum Talimatları",
++ 			"requirementsTitle": "Önemli Gereksinimler",
++ 			"requirement1": "Önce Gemini CLI aracını yüklemeniz gerekir",
++ 			"requirement2": "Sonra terminalinizde gemini çalıştırın ve Google ile giriş yaptığınızdan emin olun",
++ 			"requirement3": "Sadece kişisel Google hesaplarıyla çalışır (Google Workspace hesapları değil)",
++ 			"requirement4": "API anahtarları kullanmaz - kimlik doğrulama OAuth ile yapılır",
++ 			"requirement5": "Gemini CLI aracının önce yüklenmesi ve kimlik doğrulaması yapılması gerekir",
++ 			"freeAccess": "OAuth kimlik doğrulaması ile ücretsiz erişim"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/vi/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-07-27 19:08:13.206450539 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "Mặc định: claude",
+  			"maxTokensLabel": "Số token đầu ra tối đa",
+  			"maxTokensDescription": "Số lượng token đầu ra tối đa cho các phản hồi của Claude Code. Mặc định là 8000."
++ 		},
++ 		"geminiCli": {
++ 			"description": "Nhà cung cấp này sử dụng xác thực OAuth từ công cụ Gemini CLI và không yêu cầu khóa API.",
++ 			"oauthPath": "Đường dẫn Thông tin xác thực OAuth (tùy chọn)",
++ 			"oauthPathDescription": "Đường dẫn đến tệp thông tin xác thực OAuth. Để trống để sử dụng vị trí mặc định (~/.gemini/oauth_creds.json).",
++ 			"instructions": "Nếu bạn chưa xác thực, vui lòng chạy",
++ 			"instructionsContinued": "trong terminal của bạn trước.",
++ 			"setupLink": "Hướng dẫn Thiết lập Gemini CLI",
++ 			"requirementsTitle": "Yêu cầu Quan trọng",
++ 			"requirement1": "Trước tiên, bạn cần cài đặt công cụ Gemini CLI",
++ 			"requirement2": "Sau đó, chạy gemini trong terminal của bạn và đảm bảo bạn đăng nhập bằng Google",
++ 			"requirement3": "Chỉ hoạt động với tài khoản Google cá nhân (không phải tài khoản Google Workspace)",
++ 			"requirement4": "Không sử dụng khóa API - xác thực được xử lý qua OAuth",
++ 			"requirement5": "Yêu cầu công cụ Gemini CLI được cài đặt và xác thực trước",
++ 			"freeAccess": "Truy cập miễn phí qua xác thực OAuth"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-27 19:09:03.084855941 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "默认：claude",
+  			"maxTokensLabel": "最大输出 Token",
+  			"maxTokensDescription": "Claude Code 响应的最大输出 Token 数量。默认为 8000。"
++ 		},
++ 		"geminiCli": {
++ 			"description": "此提供商使用 Gemini CLI 工具的 OAuth 身份验证，不需要 API 密钥。",
++ 			"oauthPath": "OAuth 凭据路径（可选）",
++ 			"oauthPathDescription": "OAuth 凭据文件的路径。留空以使用默认位置（~/.gemini/oauth_creds.json）。",
++ 			"instructions": "如果您尚未进行身份验证，请先运行",
++ 			"instructionsContinued": "在您的终端中。",
++ 			"setupLink": "Gemini CLI 设置说明",
++ 			"requirementsTitle": "重要要求",
++ 			"requirement1": "首先，您需要安装 Gemini CLI 工具",
++ 			"requirement2": "然后，在终端中运行 gemini 并确保使用 Google 登录",
++ 			"requirement3": "仅适用于个人 Google 账户（不支持 Google Workspace 账户）",
++ 			"requirement4": "不使用 API 密钥 - 身份验证通过 OAuth 处理",
++ 			"requirement5": "需要先安装并验证 Gemini CLI 工具",
++ 			"freeAccess": "通过 OAuth 身份验证免费访问"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-27 19:09:56.670216447 +0200
+***************
+*** 410,415 ****
+--- 410,430 ----
+  			"placeholder": "預設：claude",
+  			"maxTokensLabel": "最大輸出 Token",
+  			"maxTokensDescription": "Claude Code 回應的最大輸出 Token 數量。預設為 8000。"
++ 		},
++ 		"geminiCli": {
++ 			"description": "此提供商使用 Gemini CLI 工具的 OAuth 身份驗證，不需要 API 金鑰。",
++ 			"oauthPath": "OAuth 憑證路徑（可選）",
++ 			"oauthPathDescription": "OAuth 憑證檔案的路徑。留空以使用預設位置（~/.gemini/oauth_creds.json）。",
++ 			"instructions": "如果您尚未進行身份驗證，請先執行",
++ 			"instructionsContinued": "在您的終端機中。",
++ 			"setupLink": "Gemini CLI 設定說明",
++ 			"requirementsTitle": "重要要求",
++ 			"requirement1": "首先，您需要安裝 Gemini CLI 工具",
++ 			"requirement2": "然後，在終端機中執行 gemini 並確保使用 Google 登入",
++ 			"requirement3": "僅適用於個人 Google 帳戶（不支援 Google Workspace 帳戶）",
++ 			"requirement4": "不使用 API 金鑰 - 身份驗證透過 OAuth 處理",
++ 			"requirement5": "需要先安裝並驗證 Gemini CLI 工具",
++ 			"freeAccess": "透過 OAuth 身份驗證免費存取"
+  		}
+  	},
+  	"browser": {
+*** Roo-Code-3.24.0/webview-ui/src/utils/validate.ts	2025-07-26 06:41:33.000000000 +0200
+--- Roo-Code-3.24.0-patched/webview-ui/src/utils/validate.ts	2025-07-27 19:10:53.031543114 +0200
+***************
+*** 72,77 ****
+--- 72,80 ----
+  				return i18next.t("settings:validation.apiKey")
+  			}
+  			break
++ 		case "gemini-cli":
++ 			// OAuth-based provider, no API key validation needed
++ 			break
+  		case "openai-native":
+  			if (!apiConfiguration.openAiNativeApiKey) {
+  				return i18next.t("settings:validation.apiKey")
