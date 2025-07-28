@@ -3,18 +3,22 @@
 
 pkgbase=wxgtk-git
 pkgname=(wxwidgets-gtk3-git wxwidgets-qt5-git wxwidgets-common-git)
-pkgver=3.2.2.r98.g3b236b8ffd
+pkgver=3.3.1.r0.g49c6810948
 pkgrel=1
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=(x86_64)
-url='https://www.wxwidgets.org'
-license=('custom: wxWindows Library Licence')
-makedepends=(git cmake gst-plugins-base glu webkit2gtk libnotify qt5-base sdl2 libmspack)
-source=("git+https://github.com/wxWidgets/wxWidgets.git#branch=3.2"
+url="https://github.com/wxWidgets/wxWidgets"
+license=(LicenseRef-wxWindows_Library_Licence)
+makedepends=(git cmake gst-plugins-base glu webkit2gtk-4.1 libnotify qt5-base sdl2 libmspack gspell) #gnome-vfs
+source=("git+https://github.com/wxWidgets/wxWidgets.git"
         "git+https://github.com/wxWidgets/Catch.git"
         "git+https://github.com/wxWidgets/pcre.git"
-        "git+https://github.com/wxWidgets/nanosvg.git")
+        "git+https://github.com/wxWidgets/nanosvg.git"
+		"git+https://github.com/wxWidgets/scintilla.git"
+        "wxWidgets-lexilla::git+https://github.com/wxWidgets/lexilla.git")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -35,11 +39,25 @@ prepare() {
   git config submodule.3rdparty/nanosvg.url "${srcdir}/nanosvg"
   git -c protocol.file.allow=always submodule update --init 3rdparty/nanosvg
 
+  git config submodule.src/stc/scintilla.url "${srcdir}/scintilla"
+  git -c protocol.file.allow=always submodule update --init src/stc/scintilla
+
+  git config submodule.src/stc/lexilla.url "${srcdir}/wxWidgets-lexilla"
+  git -c protocol.file.allow=always submodule update --init src/stc/lexilla
+
+  #git submodule init
+  #git config submodule.PATH/NAME.url "${srcdir}/NAME"
+  #git config submodule.PATH/NAME.url "${srcdir}/NAME"
+  #git config submodule.PATH/NAME.url "${srcdir}/NAME"
+  #git config submodule.src/stc/scintilla.url "${srcdir}/scintilla"
+  #git config submodule.src/stc/lexilla.url "${srcdir}/wxWidgets-lexilla"
+  #git -c protocol.file.allow=always submodule update
+
   ./autogen.sh
 }
 
 build() {
-  cmake -B build-gtk3 -S wxWidgets \
+  cmake -B build-gtk3 -S wxWidgets -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DwxBUILD_TOOLKIT=gtk3 \
@@ -53,10 +71,12 @@ build() {
     -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_PRIVATE_FONTS=ON \
-    -DwxUSE_GTKPRINT=ON
+    -DwxUSE_GTKPRINT=ON \
+	-DwxUSE_LIBGNOMEVFS=OFF
+
   cmake --build build-gtk3
 
-  cmake -B build-qt5 -S wxWidgets \
+  cmake -B build-qt5 -S wxWidgets -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DwxBUILD_TOOLKIT=qt \
@@ -70,6 +90,7 @@ build() {
     -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_PRIVATE_FONTS=ON
+
   cmake --build build-qt5
 
 # Run configure to generate the Makefile, cmake doesn't install translations
@@ -83,26 +104,26 @@ package_wxwidgets-common-git() {
   provides=(wxwidgets-common)
   conflicts=(wxwidgets-common)
 
-  DESTDIR="$pkgdir" cmake --install build-gtk3
-  rm -r "$pkgdir"/usr/{bin/wx-config,lib/{cmake,wx,libwx_gtk*}}
-  install -Dm644 wxWidgets/wxwin.m4 -t "$pkgdir"/usr/share/aclocal
+  DESTDIR="${pkgdir}" cmake --install build-gtk3
+  rm -r "${pkgdir}"/usr/{bin/wx-config,lib/{cmake,wx,libwx_gtk*}}
+  install -Dm644 wxWidgets/wxwin.m4 -t "${pkgdir}"/usr/share/aclocal
 # Install translations
-  make DESTDIR="$pkgdir" -C wxWidgets locale_install
+  make DESTDIR="${pkgdir}" -C wxWidgets locale_install
 
-  install -Dm644 wxWidgets/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 wxWidgets/docs/licence.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_wxwidgets-gtk3-git() {
   pkgdesc='GTK+3 implementation of wxWidgets API for GUI'
   depends=(gtk3 gst-plugins-base-libs libsm wxwidgets-common-git libnotify libmspack sdl2)
-  optdepends=('webkit2gtk: for webview support')
+  optdepends=('webkit2gtk-4.1: for webview support')
   provides=(wxwidgets-gtk3)
   conflicts=(wxwidgets-gtk3)
 
-  DESTDIR="$pkgdir" cmake --install build-gtk3
-  rm -r "$pkgdir"/usr/{include,lib/libwx_base*,bin/wxrc*}
+  DESTDIR="${pkgdir}" cmake --install build-gtk3
+  rm -r "${pkgdir}"/usr/{include,lib/libwx_base*,bin/wxrc*}
 
-  install -Dm644 wxWidgets/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 wxWidgets/docs/licence.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_wxwidgets-qt5-git() {
@@ -111,14 +132,14 @@ package_wxwidgets-qt5-git() {
   provides=(wxwidgets-qt5)
   conflicts=(wxwidgets-qt5)
 
-  DESTDIR="$pkgdir" cmake --install build-qt5
-  rm -r "$pkgdir"/usr/{include,lib/libwx_base*,bin/wxrc*}
-  mv "$pkgdir"/usr/bin/wx-config{,-qt} # Conflicts with wx-gtk3
+  DESTDIR="${pkgdir}" cmake --install build-qt5
+  rm -r "${pkgdir}"/usr/{include,lib/libwx_base*,bin/wxrc*}
+  mv "${pkgdir}"/usr/bin/wx-config{,-qt} # Conflicts with wx-gtk3
   # Rename cmake files for coinstallability
-  mv "$pkgdir"/usr/lib/cmake/wxWidgets{,Qt}
-  for _f in "$pkgdir"/usr/lib/cmake/wxWidgetsQt/*; do
+  mv "${pkgdir}"/usr/lib/cmake/wxWidgets{,Qt}
+  for _f in "${pkgdir}"/usr/lib/cmake/wxWidgetsQt/*; do
     mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsQt/')
   done
 
-  install -Dm644 wxWidgets/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 wxWidgets/docs/licence.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
