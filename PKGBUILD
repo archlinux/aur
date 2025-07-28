@@ -7,16 +7,16 @@ url="https://github.com/marang/goemqutiti"
 license=('MIT')
 depends=()
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("goemqutiti-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "goemqutiti-$pkgver"
   go build -o emqutiti
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "goemqutiti-$pkgver"
   install -Dm755 emqutiti "$pkgdir/usr/bin/emqutiti"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
