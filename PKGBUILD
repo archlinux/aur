@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn-bin
 _pkgname="Before Dawn"
-pkgver=0.35.0
+pkgver=0.37.0
 _electronversion=35
 pkgrel=1
 pkgdesc="A desktop screensaver app using web technologies.(Prebuilt version.Use system-wide electron)"
@@ -25,9 +25,13 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/muffinista/before-dawn/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('964aee91bab83632a417ecc6149adcc3d8030b25b7653264c18e36958ed8e5cb'
+sha256sums=('c58a74f59ecf4e7fc80a97b7763797ba4a43838a4e87e0b455d8faaccb8e5e22'
             '2f9c033e00d3ac09f44d4819c7701eae9c37ca21ca1da29f3488eadc1b3c3c51'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,6 +41,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/Amusement/System;Utility/g
