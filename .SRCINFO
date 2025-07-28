@@ -1,6 +1,6 @@
 pkgbase = hypnotix
 	pkgdesc = An IPTV streaming application with support for live TV, movies and series.
-	pkgver = 4.9
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = hypnotix
 	depends = python-unidecode
 	depends = xapp
 	depends = yt-dlp
-	source = hypnotix-4.9.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/4.9.tar.gz
-	sha256sums = c482202f3f57187be85374927c0d89cba478fa9fa0752dc0b56d261efbe2f0f8
+	source = hypnotix-5.0.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/5.0.tar.gz
+	sha256sums = 5f82c78163319206406e4e3c7392b4cddb9233b647c27cf9680a8a87f98aee82
 
 pkgname = hypnotix
