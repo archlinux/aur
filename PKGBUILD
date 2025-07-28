@@ -1,6 +1,6 @@
 # Maintainer: bashuser30 <bashuser30@mailbox.org>
 pkgname=dl-distro
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Bash script for downloading and verifying OS images."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('gnupg'
             'minisign: Void Linux verification'
             'signify: OpenBSD verification')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('7886d8fc7f4b4f82eb61fa2721497c8c5fc48dd651a0d148ce62f7754d324125')
+sha256sums=('417d4e55a04d7efa36411f7bff93207146d88964434887e4f62f0853f4335937')
 
 package() {
 	cd "$srcdir/$pkgname"
