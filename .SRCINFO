@@ -1,7 +1,7 @@
 pkgbase = chatbox-appimage
 	pkgdesc = User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)
 	pkgver = 1.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chatboxai.app
 	arch = x86_64
 	license = GPL-3.0

@@ -1,12 +1,9 @@
-# Maintainer: Frederik Holm Strøm <aur@frederikstroem.com>
-
-# Chatbox website: https://chatboxai.app/
-# Chatbox GitHub: https://github.com/Bin-Huang/chatbox
+# Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 _pkgname=Chatbox
 pkgname="chatbox-appimage"
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)"
 arch=('x86_64')
 url="https://chatboxai.app"
