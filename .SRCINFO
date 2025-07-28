@@ -1,0 +1,18 @@
+pkgbase = keepc
+	pkgdesc = CLI note taking app for commands! Coded in Rust.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/nickcat1/keepc
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	optdepends = nano: text editing support
+	provides = keepc
+	conflicts = keepc
+	source = keepc-0.1.3.tar.gz::https://github.com/nickcat1/keepc/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 492b1facb5c5f8b2177802d6dacf9776876281738bd946d31cfc6c9297ec4412
+
+pkgname = keepc
