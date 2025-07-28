@@ -1,0 +1,17 @@
+pkgbase = quickbench
+	pkgdesc = Quick and easy benchmarking of command-line programs
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/simonmichael/quickbench
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = ghc
+	makedepends = stack
+	depends = gmp
+	depends = glibc
+	options = !debug
+	options = !lto
+	source = https://github.com/simonmichael/quickbench/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 0b6050bcd920961d3039ca6ea41a562c0e922a2d8f323867fc13cce2138e9e5d
+
+pkgname = quickbench
