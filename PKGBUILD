@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=adabag
-_pkgver=5.0
+_pkgver=5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Applies Multiclass AdaBoost.M1, SAMME and Bagging"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-mlbench
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('675cf557792d970a2115e0f7a44f4954')
-b2sums=('adbf7343284dc1fec87f54898ff720be13409ee4830c394f9036870016ed36f9d0be0ea8ba546a004ca17fc49fbfd25d485ac504746dbef32284d7ebc4bad7d7')
+md5sums=('bbb73fbe0e71223af73d350fd049e233')
+b2sums=('6a44ecfc18f2fa902c785d4c088dce8b0ac85f65e130df92777227fad3d54206cdd11c0899a5a5fa4f4384098d737788e82b79ba07afdbe8050588bb0756bdf4')
 
 build() {
   mkdir build
