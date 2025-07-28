@@ -24,7 +24,6 @@ prepare() {
     cp "${_appimage}" "${_appimage}.copy"
     chmod +x "${_appimage}.copy"
     "./${_appimage}.copy" --appimage-extract "${_pkgname}.desktop"
-    "./${_appimage}.copy" --appimage-extract "${_pkgname}.png"
     "./${_appimage}.copy" --appimage-extract usr/share/icons
     rm "${_appimage}.copy"
 }
@@ -33,6 +32,9 @@ build() {
     sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
     sed -i -E "s|Name=.*$|Name=${_pkgname^}|" "squashfs-root/${_pkgname}.desktop"
     sed -i -E "s|^Icon=.*$|Icon=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
+
+    # Fix permissions; .AppImage permissions are 700 for all directories
+    chmod -R a-x+rX "${srcdir}/squashfs-root/usr"
 }
 
 package() {
@@ -42,7 +44,8 @@ package() {
 
     # Install desktop entry and icon
     install -Dpm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dpm644 "squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+    install -d "${pkgdir}/usr/share/"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
     # Install udev rules
     install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-${_pkgname}.rules"
