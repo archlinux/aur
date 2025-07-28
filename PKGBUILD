@@ -15,7 +15,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
@@ -26,7 +26,7 @@ conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("da868cd1ba29975b22354cb02e33f8fee49bc5ac08094285db1ce209db6e6c81")
+sha256sums=("ed4aed4f540e53ff2174621a13c176cdee6a9774f9fe8f744fb63f7a698e1b0a")
 
 build() {
     tar -xvzf v$pkgver.tar.gz
