@@ -7,7 +7,7 @@
 
 pkgname=wine-pure-git
 pkgver=10.12.r91.ge44737278a4
-pkgrel=2
+pkgrel=3
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
@@ -21,7 +21,6 @@ source=(
   0003-wineboot-On-prefix-upgrade-update-win10-build-number.patch
   0004-wineboot-Generate-better-DigitalProductId.patch
   0005-wineboot-Load-root-certificates-on-prefix-update.patch
-  Avoid-winemenubuilder-to-startup-explorer.exe.patch
   kernelbase-Fix-uninitialized-structs-in-OpenThread.patch
   winecfg-Add-tweaks-tab-page.patch
   ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch
@@ -41,7 +40,6 @@ sha256sums=(
   '69b120ed11e07270db4e4378c8ad42d1bae418a6f8a10d98dc031ab9af0d1130'
   '236d3f562d1ce05ae9d372cd606acb0dab545579fcecae9cf14df1c253fff574'
   '771777eb4d60ef99588ed33657270533893de9a3f0c010d1fc6898ba3ec8ed74'
-  '261f59b60bdb9d4adecdb2c6cc1f0089e65e9dbd2141b4bfa91d8875716a01b1'
   'ab84b21a5b2ee097ff19c6ccf029fc25d2e43f04987e8e0e24a8ef7aeb1af322'
   '27e451af4e7d512c6247cf5d1b7ec4b31f67768469e707e37ac741468fde1d7f'
   'dddf208f2b44c38de87678fad6d3ef0ead3066acfb6540812af7d4f2b3b67f94'
@@ -136,9 +134,6 @@ prepare() {
   # Make keyboard shortcuts independent of layout
   # https://bugs.winehq.org/show_bug.cgi?id=30984
   patch -Np1 -i "${srcdir}/winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch"
-
-  # Fixes "The explorer process failed to start" issue
-  #patch -Np1 -i "${srcdir}/Avoid-winemenubuilder-to-startup-explorer.exe.patch"
 
   # Fixes struct alignment inside kernelbase.OpenThread()
   # Fixes: Hogwarts Legacy
