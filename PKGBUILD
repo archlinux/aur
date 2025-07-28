@@ -4,7 +4,7 @@
 pkgname=miniaudio-git
 pkgver=3574.4a5b74b
 pkgrel=1
-pkgdesc='Single file audio playback and capture library.'
+pkgdesc='Single file audio playback and capture library'
 arch=('any')
 url='https://github.com/mackron/miniaudio'
 license=('MIT')
