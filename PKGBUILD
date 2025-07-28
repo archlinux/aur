@@ -4,9 +4,9 @@ _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.4.13_linux1
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.5.1
+_zhpkgver=3.5.2
 _electronversion=32
-pkgrel=7
+pkgrel=8
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.(Use system-wide electron).Github Desktop 汉化版."
 arch=(
     'aarch64'
@@ -38,7 +38,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('05080a5fa8b41d28f2e196912f2520b60d55d1171746a71f9c7a5bbd2398c7dd'
+sha256sums=('b35841dfe1be90a7b5b5e606e92ec3da1348fb61c4462c80f6dbce90eb354045'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 sha256sums_aarch64=('8914f985013da02e36de63b65fc252dc86fd9326497f0cf3f49402017fe1006f')
