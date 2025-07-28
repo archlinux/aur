@@ -1,6 +1,6 @@
 pkgbase = open-webui-dinit
 	pkgdesc = Dinit service scripts for Open WebUI
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	arch = any
 	license = GPL-3.0
