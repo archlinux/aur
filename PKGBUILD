@@ -2,7 +2,7 @@
 
 pkgname=sc-controller
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/C0rn3j/sc-controller'
@@ -26,7 +26,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 )
-conflicts=("${pkgname}-git" 'scc')
+conflicts=('scc')
 source=(
 	"${pkgname}-${pkgver}::git+https://github.com/C0rn3j/sc-controller.git#tag=v${pkgver}")
 #	"${pkgname}-${pkgver}.tar.gz::https://github.com/C0rn3j/sc-controller/archive/v${pkgver}.tar.gz")
