@@ -1,0 +1,4 @@
+[sikulixide-bin]
+source = "git"
+git = "https://github.com/RaiMan/SikuliX1.git"
+prefix = "v"

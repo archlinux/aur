@@ -17,7 +17,7 @@ makedepends=('unzip' 'gendesk')
 provides=('sikulixide' 'sikulix')
 source=(
 	"${pkgname}-${pkgver}.jar::https://launchpad.net/sikuli/sikulix/${pkgver}/+download/sikulixide-${pkgver}.jar"
-	"LICENSE::https://github.com/RaiMan/SikuliX1/raw/master/LICENSE")
+	"sikulixide-bin_LICENSE::https://github.com/RaiMan/SikuliX1/raw/master/LICENSE")
 noextract=("${pkgname}-${pkgver}.jar")
 sha256sums=(
 	'f4b0b50c8e413094e78cd1d8fed02ae65f62f8c53ed00da0562fdedf4acff729'
@@ -33,7 +33,7 @@ package() {
 	echo "#!/bin/sh
 	exec /usr/bin/java -jar '/usr/share/java/${pkgname%-bin}/${pkgname%-bin}-${pkgver}.jar' "\$@"" > "${pkgname%-bin}"
 	install -Dm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 sikulixide-bin_LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 icons/sikulix.png "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 	gendesk -f -n \
 		--pkgname "${pkgname%-bin}" \
