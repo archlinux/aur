@@ -1,0 +1,54 @@
+From c7a14f8661ea9ceab4845f901b3903939f05f77b Mon Sep 17 00:00:00 2001
+From: Cristian Le <cristian.le@qt.io>
+Date: Thu, 19 Jun 2025 17:12:46 +0200
+Subject: [PATCH 31/31] Drop CMAKE_SYSTEM_VERSION from modules json if Linux
+
+In order to make the project build reproducible it should not record
+transient information of the build host.
+
+The linux kernel is not encoded in the source, and the value from the
+modules.json does not seem to be used anywhere, so we can drop it for
+now.
+
+Fixes: QTBUG-136060
+Change-Id: Ic157d66d47040b080e9121fd065a8d60d489f586
+Reviewed-by: Alexandru Croitor <alexandru.croitor@qt.io>
+Reviewed-by: Joerg Bornemann <joerg.bornemann@qt.io>
+---
+ cmake/ModuleDescription.json.in | 2 +-
+ cmake/QtModuleHelpers.cmake     | 6 +++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/ModuleDescription.json.in b/cmake/ModuleDescription.json.in
+index e8b58387d9e..5d41bc8e377 100644
+--- a/cmake/ModuleDescription.json.in
++++ b/cmake/ModuleDescription.json.in
+@@ -1,5 +1,5 @@
+ {
+-    "schema_version": 2,
++    "schema_version": 3,
+     "name": "${target}",
+     "repository": "${lower_case_project_name}",
+     "version": "${PROJECT_VERSION}",${extra_module_information}
+diff --git a/cmake/QtModuleHelpers.cmake b/cmake/QtModuleHelpers.cmake
+index cd66af3f474..6f07dc419bd 100644
+--- a/cmake/QtModuleHelpers.cmake
++++ b/cmake/QtModuleHelpers.cmake
+@@ -1463,9 +1463,13 @@ ${indent3}\"name\": \"${platform_name}\",")
+             string(APPEND platforms_information "
+ ${indent3}\"variant\": \"${platform_variant}\",")
+         endif()
+-        if(NOT "${CMAKE_SYSTEM_VERSION}" STREQUAL "")
++        if(NOT "${CMAKE_SYSTEM_VERSION}" STREQUAL "" AND
++            NOT platform_name STREQUAL "Linux")
+             string(APPEND platforms_information "
+ ${indent3}\"version\": \"${CMAKE_SYSTEM_VERSION}\",")
++        else()
++            string(APPEND platforms_information "
++${indent3}\"version\": null,")
+         endif()
+         string(APPEND platforms_information "
+ ${indent3}\"compiler_id\": \"${CMAKE_CXX_COMPILER_ID}\",
+-- 
+2.50.1
+

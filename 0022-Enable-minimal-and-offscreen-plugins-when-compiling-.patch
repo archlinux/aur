@@ -1,0 +1,35 @@
+From d9758ea82cc7859028406fcab5b5e9a15925e5ee Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 9 Jun 2025 21:15:42 +0200
+Subject: [PATCH 22/31] Enable minimal and offscreen plugins when compiling for
+ Android
+
+Those platform plugins are very useful to run "graphical" code from
+services, e.g. to render a QIcon to use it as icon of a foreground service
+notification.
+
+Change-Id: I1ebc70aa7c68c68ab690df030f1462f5e9d4ab54
+---
+ src/plugins/platforms/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/platforms/CMakeLists.txt b/src/plugins/platforms/CMakeLists.txt
+index 69071a22c24..6c035387187 100644
+--- a/src/plugins/platforms/CMakeLists.txt
++++ b/src/plugins/platforms/CMakeLists.txt
+@@ -4,10 +4,10 @@
+ if(ANDROID)
+     add_subdirectory(android)
+ endif()
+-if(NOT ANDROID AND NOT WASM)
++if(NOT WASM)
+     add_subdirectory(minimal)
+ endif()
+-if(QT_FEATURE_freetype AND NOT ANDROID AND NOT WASM)
++if(QT_FEATURE_freetype AND NOT WASM)
+     add_subdirectory(offscreen)
+ endif()
+ if(QT_FEATURE_xcb)
+-- 
+2.50.1
+

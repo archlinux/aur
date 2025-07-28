@@ -13,7 +13,7 @@
 pkgname=mingw-w64-qt6-base
 _qtver=6.9.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -53,29 +53,49 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0018-Allow-handling-Android-activity-lifecycle-by-user-pr.patch'
         '0019-Avoid-compile-error-due-to-inconsistent-use-of-noexc.patch'
         '0020-Allow-keeping-Android-app-in-background-with-QtQuick.patch'
-        '0021-Allow-resuming-native-app-when-Android-activity-is-r.patch')
+        '0021-Allow-resuming-native-app-when-Android-activity-is-r.patch'
+        '0022-Enable-minimal-and-offscreen-plugins-when-compiling-.patch'
+        '0023-Allow-configuring-use-of-OpenSSL-in-QPasswordDigesto.patch'
+        '0024-Http2-fix-handling-incoming-frames-on-locally-reset-.patch'
+        '0025-Http2-Explicitly-send-RST_STREAM-on-cancelled-reques.patch'
+        '0026-Http2ProtocolHandler-fix-logic-error-with-potential-.patch'
+        '0027-QMainWindowTabBar-Use-QPointer-for-mainWindow-member.patch'
+        '0028-QMainWindowTabBar-dockAt-avoid-nullptr-access.patch'
+        '0029-Centralise-usage-of-unused-tab-bars-in-QMainWindowLa.patch'
+        '0030-Remove-handling-of-unused-tab-bars-in-QMainWindowLay.patch'
+        '0031-Drop-CMAKE_SYSTEM_VERSION-from-modules-json-if-Linux.patch')
 sha256sums=('40caedbf83cc9a1959610830563565889878bc95f115868bbf545d1914acf28e'
-            '4dd316eff8b4e5c393175aae84accfb6bbfbdd92ce89a65e04e6d71095121521'
-            'f7f7bdcda47181f47c83c9e3653f9f2b1b6d5d7433e5e7f31e29a6b5b6cb4988'
-            'e9cb8ce8872f6618f547b3de62fc265ad0517d457c3410ae38f0c41b588c46a2'
-            '61395a0faaf2d88194aa1ca6144e8b2d789f0b08c0fdb23adc84548a76215541'
-            '29b58e0d6687b955827c078c7d32766cb8a6fab8201fc0aeb4d9598e43ff6db1'
-            'b688ed710b5450c0b1110da73b51df5dc9e719e39d161b927056f963e9e90542'
-            'e5fec53b66b0db5cb6a8db4f805ddef8e960e98579be3aa8d1df417ff5489a87'
-            'a1d6bd511ab47f23aa1b5df3f13bbcdc455153e2abcc241d586942b681016eb0'
-            '88eb2d9743f16ee26a2d44c261a24bb3aa46ac9275d65d11576e0dda75a0a4a1'
-            'cfb5467f1460ae0dab38c58cc80b63d726fffe894101f686ed853c153c9f7a0f'
-            '44b412f26d18439c06977ac0af3db6e7fdf4cb868b1cac449907ad58b52ae258'
-            '9a4d98a64e2a04b0b48b13b8e66664be98ca57bebd4b242e5184f72534d80825'
-            '5ffc584862c97e5b607ec8c6bf4d88244ae6a93d62e901c5e34b37c6fe57c7fe'
-            '4cc11e63f9d49019be1c2cc1ca074714276a4f14bb4518e409cd29f2573aebce'
-            '08811df307fce23fe65cebf4077d4502f4708d7d0d026adf6e6919fc524cf33d'
-            '8e6f42f62f9dbad86181d488f3f13641bf85073860a84e5f1be225cfb696aa92'
-            '9c946d99e810d200dde147da5c545863acfe720f99efc351eee8ca40cbc0d25d'
-            'e54dd30aea47ba060915c8ff365f870c1352c87b582234f49fc248bc74afb82a'
-            '7fb16759c8ce8cedb6aa6453da8fc20003d76a59a98090dc87b13fb50607c1e4'
-            '52dd592b7a08ba1dd90965c5670e121cb1569c1004215afc12b7452388cdde9c'
-            'd6982440a6d7ee110d4f5f7006ae4531f0f9a5e4ebfe01b1d2008bd423524240')
+            'e46f347a1c963a2210fc2fdc578b721077e5477c0c13518392e3deb2467810bd'
+            '29ce2fb8f840c855ee4879fc64cc06ebfbb7f59d13ebddc189ed4ac8f02db58e'
+            'e3225d0a12c8653a6b8bd263497364cffb4df997b7dceb04ee9adc5487177efb'
+            'c8ba162438fe83d33dedbcb81b5340982986fc47d2739e6e5f516936c80725ab'
+            'afd633ee64ceff42bdfcec110fc7e98ae159b32882d5582c4008b2940ee9c0aa'
+            '28e5c7b53c39405ed99895ffd24339365a9ccd049d11631bb40638e4faeaaa86'
+            '7051fb181af18f2ea3a424b7b43d989914332fe7f1ec5d9685ca9343679ecec8'
+            '6d8eb3582f440623f7ee7c677fddb62e10c402b17d990a18d8d9a30065485af3'
+            'a2cc47aa484d31c51ab866deed79027d8977b0af9d3dc7ece33e236e2692c5cb'
+            '53c9dab824074d1708aa35e9cb65d4f9daf0f3b571b5145925245210abca9c53'
+            '9930bab3041d7cf0df7f781f3535733882af1ff8968479452d091c26c491add9'
+            '35e91c03bf2ce3980d9aedcb46b510c4aa4bc2bfedbbdd8e822447b34473b194'
+            '9c21ba02c6aa78bfef6e0626f72706d532f1d7fcb70d86b9b4a0eb3836590570'
+            'b1e66ed8551624bb53b76db632c51b9be2f9e9656d3b272cc5c3611121c15517'
+            '1ada35a687288c774c3110b56f2237a919ab0c3db18dff2f8cd06f1d51a706de'
+            'a1e661b9afcfd40b9ecf513a2402dfad1937185d42744fca00b459b8918e9384'
+            'cf8e74c294a6557e0d0bd530bd47c6b929d1ff0c036569546793e7ea3866858d'
+            'ad7556f3b086f8d9c932c42cccf4758a4ab9ebfd2810667886208331b7812a56'
+            '3d28eb6163cbeeaff1547b3f2942f32267f34fddcdbf0c909f51337cb609164a'
+            'e3a84e7580c3258105d2f9491ddf48a40dd180af111d5cea26eaf8428daf5897'
+            '9111714e550c26a5b6dac2111a337b283365e4d5fd4152318d2008729911df36'
+            'c3bf9af44b28c4647c53ee52edb54731978ecf9feb898ab1c748dab9458f7948'
+            '85620d00fed3c66ddc01a3940966fdb36a74545d893591110e8f2e8f4fa39aef'
+            '568dc067e534fc7e2b981bef3657b57205cdcefee2a4d9081ba1d72dfa945b46'
+            '8891c163bf98cb3ef4a15bd643a7c53878c8e8b755fc90a42bc6104b9cdc638b'
+            '8f6ad2a373a6c20287f93584f7261537eddf0296643f76cd51ad0a8473440ec8'
+            'b98db26c341941031ed3169b8aed6326154a572abc0487c91980ef1739d6ad0d'
+            'ae6a8dd9d329b7d715babf734ef71bd0ccb257c80ad17d4b269407481590d8ed'
+            '8a9700e7c99351108ca6b6e1f4c9d72bd42e555b0f6c76a796f8ef8a0fc8dee6'
+            '6d2a0aa75000ba3b7ae4a08d99120d53055abb49c69ade2438e5b314e21326a0'
+            '5e29465d3cc67b23d9b8c7ca9e0d3807b393745795df4bd719481fb43bd89db1')
 
 # disable i686 build because 32-bit Windows is generally not supported by upstream and
 # it does not build anymore as of GCC 14 (probably due to commit 9a19fa8b616f83474c35cc5b34a3865073ced829)
