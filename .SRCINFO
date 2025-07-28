@@ -1,10 +1,10 @@
 pkgbase = a4tech-bloody-driver-git
-	pkgdesc = Linux driver for a4tech bloody mouse series.
+	pkgdesc = Linux driver for a4tech bloody mouse series
 	pkgver = r18.5a19d1f0
 	pkgrel = 1
 	url = https://gitlab.com/C0rn3j/a4tech_bloody_p85_driver
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-base
@@ -16,4 +16,3 @@ pkgbase = a4tech-bloody-driver-git
 	sha256sums = 2ee35d38f86e6f39eb0093d09f75030e478146bc0a56bbdbb45822c77c0e9d18
 
 pkgname = a4tech-bloody-driver-git
-
