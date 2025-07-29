@@ -2,18 +2,20 @@
 
 _pkgname=clienteafirma
 pkgname=autofirma-git
-pkgver=r6855.d5868a024
+pkgver=r7056.5f877c0cd
 pkgrel=1
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
 license=('GPL-2.0-or-later AND EUPL-1.1')
-depends=('java-runtime=11')
-makedepends=('git' 'java-environment=11' 'maven')
+depends=('java-runtime=17')
+makedepends=('git' 'java-environment=17' 'maven')
 conflicts=('autofirma' 'autofirma-bin')
 provides=('autofirma')
 source=("${_pkgname}::git+https://github.com/ctt-gob-es/${_pkgname}.git"
-        "${_pkgname}-external::git+https://github.com/ctt-gob-es/${_pkgname}-external.git#commit=cd4447d7ecd53279f2f70fbff13a2d0a3d718768"
+        "${_pkgname}-external::git+https://github.com/ctt-gob-es/${_pkgname}-external.git"
+        "jmulticard::git+https://github.com/ctt-gob-es/jmulticard.git"
+        "Java-WebSocket::git+https://github.com/TooTallNate/Java-WebSocket.git"
         "autofirma"
         "autofirma.desktop"
         "autofirma.js"
@@ -21,7 +23,9 @@ source=("${_pkgname}::git+https://github.com/ctt-gob-es/${_pkgname}.git"
         "EUPL-1.1.txt")
 b2sums=('SKIP'
         'SKIP'
-        '2eca1245aa7e44228fac9fbb871b90d765402ebdfeaa476fa807e7bdaedb039353980c5fdfaf560ecc943386bbee90d4ae048b85b516b4653bf699328d10fc87'
+        'SKIP'
+        'SKIP'
+        '7884602cbe5dd33aa903fd63780458395c1fbf069973db76d4c3210f5d85a66fa4a0745864f6fec6f5637177dc4d4cc94f7040119dda3a146b9af89a058b0b59'
         'cbedb1aff6ea64e44569d4a3249bd3707a5bc2fadf956ab27f62a71198cfed3f07170f40965bbbd2b4b9a587d165fe8b6a19c3f85aa87eaf8c5897d899d9b6e8'
         '835597fed89382057b48f01537dacc43aeef342372678fbeb6d486c6cded7ee41911b910e200e7c1c34bd1cbb0e25854e6e56dea68115bcde759b84d2d0a6147'
         '3397abf9b38b8e187ec7a1fa59e91c974568d520a2604487aa5dda56c590756560d38d46152ed5765eb6746956265107a7ff8d448f9090dc7f75a2b74d36513b'
@@ -34,16 +38,22 @@ pkgver() {
 
 prepare() {
   # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/320
-  export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
   # Build external libraries
   cd "${_pkgname}-external"
+  mvn clean install -Dmaven.test.skip=true
+  cd ..
+  cd "jmulticard"
+  mvn clean install -Dmaven.test.skip=true
+  cd ..
+  cd "Java-WebSocket"
   mvn clean install -Dmaven.test.skip=true
   # FIX: end 223
 }
 
 build() {
   cd "${_pkgname}"
-  export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
   mvn clean install -Dmaven.test.skip=true
   mvn clean install -Denv=install -Dmaven.test.skip=true
 }
@@ -53,7 +63,7 @@ package() {
     "${pkgdir}/usr/bin/autofirma"
   install -Dm644 "autofirma.js" \
     "${pkgdir}/usr/lib/firefox/defaults/pref/autofirma.js"
-  install -Dm644 "${_pkgname}/afirma-simple/target/AutoFirma.jar" \
+  install -Dm644 "${_pkgname}/afirma-simple/target/autofirma.jar" \
     "${pkgdir}/usr/share/java/autofirma/autofirma.jar"
   install -Dm644 "autofirma.svg" \
     "${pkgdir}/usr/share/pixmaps/autofirma.svg"
