@@ -1,14 +1,15 @@
 pkgbase = elephant
-	pkgdesc = Notetaker with a classic interface.
-	pkgver = 55
+	pkgdesc = general purpose datasource and executor
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = http://elephant.mine.nu/
-	arch = any
-	license = Apache
-	depends = java-environment
-	depends = bash
-	source = https://github.com/jusu/Elephant/releases/download/V55/elephant55_jar.zip
-	sha256sums = ce9364be1c1a9b84dbbe6fce15b9dc8fc282b974bf8bf03f3361315e0929bd15
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = elephant
+	conflicts = elephant
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 480839a4fa06df8c7c34bc91d7804da7c604b64abf5c531f7067f93dcedd7ce4
 
 pkgname = elephant
-
