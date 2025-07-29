@@ -1,0 +1,40 @@
+pkgbase = xlibre-xf86-video-nouveau
+	pkgdesc = Official XLibre fork of X.Org Open Source 3D acceleration driver for nVidia cards
+	pkgver = 1.0.18.1
+	pkgrel = 2
+	url = https://github.com/X11Libre
+	arch = x86_64
+	arch = aarch64
+	groups = xlibre-drivers
+	license = MIT
+	makedepends = xlibre-xserver
+	makedepends = xlibre-xserver-common
+	makedepends = xlibre-xserver-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=28.0
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = binutils
+	makedepends = fakeroot
+	makedepends = findutils
+	makedepends = gawk
+	makedepends = gcc
+	makedepends = gettext
+	makedepends = gzip
+	makedepends = libtool
+	makedepends = m4
+	makedepends = make
+	makedepends = patch
+	makedepends = pkgconf
+	depends = mesa
+	depends = libdrm
+	depends = glibc
+	provides = xf86-video-nouveau
+	conflicts = xf86-video-nouveau
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-VIDEODRV_VERSION<28
+	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	options = !debug
+	source = https://github.com/X11Libre/xf86-video-nouveau/archive/refs/tags/xlibre-xf86-video-nouveau-1.0.18.1.tar.gz
+	sha256sums = 5db8a77b4e24af7d74f2e08b6eb27959230b210cf2baf486c43f1defc0406611
+
+pkgname = xlibre-xf86-video-nouveau
