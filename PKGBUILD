@@ -1,5 +1,5 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
-pkgname="kwin-effect-rounded-corners"
+pkgname="kwin-effect-rounded-corners-x11"
 pkgver=0.7.2
 pkgrel=1
 pkgdesc="Rounds the corners of your windows (x11)"
