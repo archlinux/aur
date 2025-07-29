@@ -6,7 +6,7 @@ _download_dotnet_version=9.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc12.r0.gcc8dbeb3f
+pkgver=3.0.0.rc16.r1.gece1768b2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -49,7 +49,7 @@ source=(
     )
 sha256sums=('SKIP'
             'SKIP'
-            'df5a8c3e5edf0484ea1069d62ff66052ab0fe053276b3685b726d773822fe0ab'
+            'f4466ae2f443b82cc9d865a1ed53630639b55d19bb358905587483303eccdb50'
             '2a906c968f25e7e8a8fd949a7f024da7277bf31098371bdb066b8d422982fa8a'
             'SKIP'
             'SKIP'
@@ -71,7 +71,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 
-declare -Arg _plugins=(
+declare -Ag _plugins=(
     [BD.WTTS.Client.Plugins.Accelerator]=Accelerator
     [BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
     [BD.WTTS.Client.Plugins.Authenticator]=Authenticator
