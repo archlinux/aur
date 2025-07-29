@@ -1,11 +1,11 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.5.beta3"
+_godot_version="4.5-beta3"
 
 pkgname=gozen-git
 pkgver=20250623.r150.ge481a06
-pkgrel=4
+pkgrel=1
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -32,8 +32,8 @@ optdepends=(
 )
 source=(
 	"git+https://github.com/VoylinsGamedevJourney/GoZen.git"
-    "godot-editor.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}-stable/Godot_v${_godot_version}-stable_linux.x86_64.zip"
-    "godot-templates.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}-stable/Godot_v${_godot_version}-stable_export_templates.tpz"
+    "godot-editor.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
+    "godot-templates.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
 
 pkgver() {
@@ -58,19 +58,19 @@ prepare() {
 	sed -i '/\[dependencies\]/,$d' "src/gozen.gdextension"
 	
 	# Prepare Godot export templates directory structure.
-    if [ ! -d ~/.local/share/godot/export_templates/${_godot_version}.stable ]; then
+    if [ ! -d ~/.local/share/godot/export_templates/${_godot_version/-/.} ]; then
 		msg "Preparing Godot export templates ..."
-		mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version}.stable"
-		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version}.stable" "${srcdir}/godot-templates.tpz"
-		mv "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates/"* \
-		   "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/"
-		rmdir "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates"
+		mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}"
+		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}" "${srcdir}/godot-templates.tpz"
+		mv "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/templates/"* \
+		   "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/"
+		rmdir "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/templates"
     else
 		msg "Godot export templates found in cache."
 	fi
 	
 	# Make Godot editor executable.
-	chmod +x "${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64"
+	chmod +x "${srcdir}/Godot_v${_godot_version}_linux.x86_64"
 }
 
 build() {
@@ -86,9 +86,9 @@ build() {
 	msg "Exporting Godot project for Linux..."
 	mkdir -p "${srcdir}/export_output"
 	
-	"${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64" \
+	"${srcdir}/Godot_v${_godot_version}_linux.x86_64" \
 		--import "src/godot.project" --headless
-	"${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64" \
+	"${srcdir}/Godot_v${_godot_version}_linux.x86_64" \
 		--headless --path "src" --export-release "Linux_x86_64" \
 	  	"${srcdir}/export_output/GoZen.x86_64"
 	
@@ -123,9 +123,10 @@ package() {
 	ln -s "/opt/${pkgname}/GoZen.x86_64" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "MANUAL.md" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
-	install -Dm644 "gozen.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 "assets/gozen_icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
-	install -Dm644 "assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+	install -Dm644 "assets/linux/gozen.desktop" "${pkgdir}/usr/share/applications/gozen.desktop"
+	install -Dm644 "assets/linux/gozen.xml" "${pkgdir}/usr/share/mime/packages/gozen.xml"
+	install -Dm644 "assets/linux/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
+	install -Dm644 "assets/linux/gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
 }
 sha256sums=('SKIP'
             'd6e382fb531019f85630c1f485a561a0d20c4a2344b6c3847735cfee7da812aa'
