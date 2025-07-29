@@ -3,7 +3,7 @@
 
 _pkgname=juledoc
 pkgname="$_pkgname-git"
-pkgver=rdfd441e
+pkgver=r4a2acb9
 pkgrel=1
 pkgdesc='Jule code documentation generator'
 arch=('x86_64' 'aarch64' 'i386')
@@ -26,7 +26,7 @@ build() {
   cd "$_pkgname"
   mkdir -p bin
   echo "Building $_pkgname for $CARCH..."
-  julec --opt-deadcode -o "bin/$_pkgname" ./src
+  julec --opt-deadcode -p --opt L2 -o "bin/$_pkgname" ./src
 }
 
 check() {

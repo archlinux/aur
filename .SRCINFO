@@ -1,6 +1,6 @@
 pkgbase = juledoc-git
 	pkgdesc = Jule code documentation generator
-	pkgver = rdfd441e
+	pkgver = r4a2acb9
 	pkgrel = 1
 	url = https://github.com/julelang/juledoc
 	arch = x86_64
