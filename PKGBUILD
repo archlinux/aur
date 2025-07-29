@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Maestri <umpire274@gmail.com>
 
 pkgname=rfortune
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A Rust-based clone of the classic 'fortune' command"
 arch=('x86_64')
