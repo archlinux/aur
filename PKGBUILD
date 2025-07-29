@@ -5,7 +5,7 @@
 
 pkgname=openobex
 pkgver=1.7.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Implementation of the OBject EXchange (OBEX) protocol"
 url="http://dev.zuckschwerdt.org/openobex/"
 arch=('x86_64' 'i686')
@@ -41,6 +41,7 @@ build() {
   mkdir build
   cd build
   cmake .. \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
