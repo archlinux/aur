@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Social Stream Ninja
+Comment=Standalone application for capturing social media streams
+Exec=socialstreamninja %U
+Terminal=false
+Type=Application
+Icon=socialstreamninja
+Categories=Network;AudioVideo;
+StartupNotify=true
+MimeType=x-scheme-handler/https;x-scheme-handler/http;
