@@ -1,6 +1,6 @@
 # Maintainer: Rikka <ayasa0520@gmail.com>
 pkgname=waydroid-helper
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A GUI application for Waydroid configuration and extension installation"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('bindfs: shared folders support')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ffed545e0e60c929a9369eda4817ff6ea14bdf009f1551ab7bc0f474dd82816d')
+sha256sums=('465defbe5bb1f142289104a48bdb0cab5833f0aa0afd61964456bfd34dafa97a')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
