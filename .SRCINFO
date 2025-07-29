@@ -1,0 +1,17 @@
+pkgbase = yestty-git
+	pkgdesc = Tricks apps into thinking that they are reading from / writing to a TTY.
+	pkgver = r10.be9c14a
+	pkgrel = 1
+	url = https://github.com/heather7283/yestty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	provides = yestty
+	source = git+https://github.com/heather7283/yestty
+	sha256sums = SKIP
+
+pkgname = yestty-git
