@@ -3,7 +3,7 @@
 pkgbase=lucide-font
 pkgname=({eot,ttf,woff,woff2}-"${pkgbase}")
 _fontname=Lucide
-pkgver=0.532.0
+pkgver=0.533.0
 pkgrel=1
 pkgdesc='Beautiful & consistent icon toolkit made by the community.'
 arch=("any")
@@ -14,7 +14,7 @@ source=(
     "${pkgbase}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${pkgbase}-${pkgver}.zip"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lucide-icons/lucide/${pkgver}/LICENSE"
 )
-sha256sums=('1906e134f2e4220bbcfc45aafd8822205891bdc03104e257be9a76c5ed3837df'
+sha256sums=('92bffa7a07322318e54b7ab52edcac9edf369c4ff293c1871a501a614637ee11'
             '1e7290b35280a048667bbf0ebabac1c7fd52a75300e8b2946ac165715997f2bc')
 function _package {
     local _pkgname=$1
