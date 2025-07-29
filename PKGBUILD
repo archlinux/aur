@@ -4,7 +4,7 @@ pkgname=mipsel-linux-gnu-gcc91
 _pkgname=gcc
 _target="mipsel-linux-gnu"
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
 arch=('x86_64')
@@ -32,6 +32,12 @@ build() {
 
   CXXFLAGS="-Wno-error=format-security" ./configure \
     --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --libdir=/usr/${_target}/lib \
+    --datadir=/usr/${_target}/share \
+    --datarootdir=/usr/${_target}/share \
+    --build=$CHOST \
+    --host=$CHOST \
     --target=${_target} \
     --enable-languages=c,c++ \
     --disable-nls \
