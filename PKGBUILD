@@ -25,7 +25,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/bash
-exec /usr/bin/electron /opt/$pkgname "\$@"
+exec /usr/bin/electron35 /opt/$pkgname "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
