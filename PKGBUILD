@@ -1,7 +1,7 @@
 # Maintainer: shtrophci <aur at shtrophic dot net>
 
 pkgname=attic
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="personal webarchive"
 arch=(x86_64 aarch64)
