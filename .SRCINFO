@@ -1,20 +1,22 @@
 pkgbase = crush-bin
-	pkgdesc = TODO
-	pkgver = 0.0.1
+	pkgdesc = A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
+	pkgver = 0.1.3
 	pkgrel = 1
-	url = https://charm.sh/
+	url = https://charm.sh/crush
 	license = MIT
+	conflicts = crush
+	provides = crush
 	arch = aarch64
-	source_aarch64 = https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a565fd4b51d0a046f38f32b989fb6a245e5087b0f1c3dc76f5b05ea2721d5077
+	source_aarch64 = https://github.com/charmbracelet/crush/releases/download/v0.1.3/crush_0.1.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ef5794cdc6e50944bcb1bf79838dbac961d16077dbe51100138aced5d56d4344
 	arch = armv7h
-	source_armv7h = https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_arm.tar.gz
-	sha256sums_armv7h = 3a0382cccd4a43339bb3ca9441461d42fe2057cc4742b21f4239f2a6eae97fef
+	source_armv7h = https://github.com/charmbracelet/crush/releases/download/v0.1.3/crush_0.1.3_Linux_armv7.tar.gz
+	sha256sums_armv7h = 69538969545188600a5e597d725a925cc8c581172cacc52a1a7a93fab6611b5f
 	arch = i686
-	source_i686 = https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_i386.tar.gz
-	sha256sums_i686 = 708d27fdccc3afe98cf054d2097b91e260123d373ecc07e92cba085d763bc456
+	source_i686 = https://github.com/charmbracelet/crush/releases/download/v0.1.3/crush_0.1.3_Linux_i386.tar.gz
+	sha256sums_i686 = 45be36ef0ee10301266262d892c8a6bc1e8040d5e7e10d9da66b2768702c6c1a
 	arch = x86_64
-	source_x86_64 = https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 06312a833be1296622a3be5c45dc3c034f2f83df61f158abdcc62b704d7a923f
-
+	source_x86_64 = https://github.com/charmbracelet/crush/releases/download/v0.1.3/crush_0.1.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 56385bb5a487d96fbc4fa24bbeb3ad541565cab34c90a96ef26f260348b4ac28
+	
 pkgname = crush-bin
