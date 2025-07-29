@@ -20,6 +20,6 @@ pkgbase = xmcl-electron-bin
 	source_x86_64 = app_x86_64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.51.2/app-0.51.2-linux.asar.gz
 	sha256sums_x86_64 = aa55e9b665f3850d8b0c12f56eae5032dafe63ab23a5c22ff2d5d8c1eb79e0a9
 	source_aarch64 = app_aarch64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.51.2/app-0.51.2-linux-arm64.asar.gz
-	sha256sums_aarch64 = aa55e9b665f3850d8b0c12f56eae5032dafe63ab23a5c22ff2d5d8c1eb79e0a9
+	sha256sums_aarch64 = 9540dc0a4e1af7bb3ab78112c101da2a8f3794cf44f18ce13f73d1a7835dcef0
 
 pkgname = xmcl-electron-bin

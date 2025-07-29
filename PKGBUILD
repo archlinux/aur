@@ -30,7 +30,7 @@ sha256sums=(
     '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010'
 )
 sha256sums_x86_64=('aa55e9b665f3850d8b0c12f56eae5032dafe63ab23a5c22ff2d5d8c1eb79e0a9')
-sha256sums_aarch64=('aa55e9b665f3850d8b0c12f56eae5032dafe63ab23a5c22ff2d5d8c1eb79e0a9')
+sha256sums_aarch64=('9540dc0a4e1af7bb3ab78112c101da2a8f3794cf44f18ce13f73d1a7835dcef0')
 
 package() {
     install -Dm 644 ${srcdir}/app_${CARCH}.asar ${pkgdir}/usr/lib/xmcl/xmcl.asar
