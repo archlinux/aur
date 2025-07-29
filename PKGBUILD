@@ -2,7 +2,7 @@
 
 pkgname=openlist-git
 pkgver=dev
-pkgrel=1
+pkgrel=2
 pkgdesc="A new AList Fork to Anti Trust Crisis"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenListTeam/OpenList"
@@ -68,8 +68,8 @@ build() {
 
 package() {
     install -Dm755 openlist ${pkgdir}/usr/bin/openlist
-    install -Dm644 openlist.service -t ${pkgdir}/usr/lib/systemd/system/openlist.service
-    install -Dm644 config.json -t ${pkgdir}/etc/openlist/config.json
+    install -Dm644 openlist.service -t ${pkgdir}/usr/lib/systemd/system/
+    install -Dm644 config.json -t ${pkgdir}/etc/openlist/
     install -Dm644 openlist.sysusers ${pkgdir}/usr/lib/sysusers.d/openlist.conf
     install -Dm644 openlist.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/openlist.conf
 }
