@@ -52,7 +52,7 @@ prepare() {
 }
 
 build() {
-    cp "$srcdir/../overridden_config.toml" sulis/overridden_config.toml
+    cp "$startdir/overridden_config.toml" sulis/overridden_config.toml
     _srcdir="$PWD"
     cd "sulis"
     RUSTUP_TOOLCHAIN=stable cargo build --release --workspace --locked --all-features --target-dir="${_srcdir}/target" --config overridden_config.toml
