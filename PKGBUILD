@@ -5,7 +5,7 @@ _godot_version="4.5-beta3"
 
 pkgname=gozen
 pkgver=0.4.0
-pkgrel=2 # Increment this if you change the PKGBUILD but not pkgver.
+pkgrel=3 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -37,8 +37,8 @@ source=(
     "godot-templates.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
 sha256sums=('620495cb0149143482aeb4a5f3f3dff23f97c6ce67deea56327ddef091cb6e95'
-            'd6e382fb531019f85630c1f485a561a0d20c4a2344b6c3847735cfee7da812aa'
-            '7a8d14ade489fd4d22f178193021fe8a876a9e51068ed4dde26dac3ae4c59a88')
+            'f27a58f8dd09f078d8aecc6f8e3eb1b97f9678e410e03f29df3a08800983e2bf'
+            '3967cc917d5ff21c34573341035b47d2a3db800b2acde6a17f570f081f7b835c')
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
@@ -62,8 +62,9 @@ prepare() {
     else
 		msg "Godot export templates found in cache."
 	fi
-	
-	# Make Godot editor executable.
+
+	msg "Extracting Godot editor..."
+	unzip -o "${srcdir}/godot-editor.zip" -d "${srcdir}"
 	chmod +x "${srcdir}/Godot_v${_godot_version}_linux.x86_64"
 }
 
