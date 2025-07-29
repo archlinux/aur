@@ -1,0 +1,36 @@
+pkgbase = robotraconteur-companion
+	pkgdesc = Robot Raconteur C++ Companion Library
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/robotraconteur/robotraconteur_companion
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake>=3.5.1
+	makedepends = boost>=1.58.0
+	makedepends = openssl
+	makedepends = zlib
+	makedepends = gtest
+	makedepends = base-devel
+	makedepends = yaml-cpp
+	makedepends = eigen
+	makedepends = librobotraconteur-devel
+	makedepends = robotraconteurgen
+	source = RobotRaconteurCompanion-0.4.2-Source.tar.gz
+	sha256sums = SKIP
+
+pkgname = librobotraconteur-companion0.4
+	pkgdesc = Robot Raconteur C++ companion runtime library
+	depends = 
+
+pkgname = librobotraconteur-companion-devel
+	pkgdesc = Robot Raconteur C++ companion development files
+	depends = librobotraconteur-companion0.4
+	depends = boost>=1.58.0
+	depends = cmake
+	depends = base-devel
+	depends = openssl
+	depends = yaml-cpp
+	depends = eigen
+	depends = librobotraconteur-devel
+	depends = robotraconteurgen
