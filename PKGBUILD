@@ -1,6 +1,6 @@
 # Maintainer: JD Flamm <superlama01@gmail.com>
 pkgname=huion-keydial-mini-driver
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="User space driver for Huion Keydial Mini bluetooth device"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 provides=('huion-keydial-mini')
 conflicts=('huion-keydial-mini')
 source=("https://github.com/Triforcey/huion-keydial-mini-uinput/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b2a1b5056dd3770253d8882ff5325f1510686f34fe81aa4a718a8c40b9652695')
+sha256sums=('97a0e3a552ed5e4803281e569dc05b20e34cef608cfd46d6696985cf014beb35')
 options=(!strip !debug)
 
 
