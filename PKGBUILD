@@ -6,7 +6,7 @@
 pkgbase=rustdesk-appimage
 pkgname=(rustdesk-appimage)
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required."
 url="https://github.com/rustdesk/rustdesk"
 license=('AGPL-3.0-only')
@@ -18,10 +18,10 @@ optdepends=(
     'libayatana-appindicator: tray icon'
 )
 options=('!strip')
-source_x86_64=("${pkgbase%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-x86_64.AppImage")
-source_aarch64=("${pkgbase%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('e01f2103f9fa0fb125277905bd8a10f10da9708c60c27b21626c249976e3bf16')
-sha256sums_aarch64=('fb89053717d07a8fae95fef50590915452f05689c7f06b5ddf656f248cbbaefe')
+source_x86_64=("${pkgbase%-appimage}-${pkgver}-${pkgrel}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-x86_64.AppImage")
+source_aarch64=("${pkgbase%-appimage}-${pkgver}-${pkgrel}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-aarch64.AppImage")
+sha256sums_x86_64=('d00b68d5cd15d3a383677cd1f8f9b1abdc984859f21ec9976547a31b65887ca5')
+sha256sums_aarch64=('817ad39f7d1e0723fea71c15f1cd6381fae5f43936dbc45a0c39b1aa38c1d270')
 _install_path="/opt/appimages"
 
 prepare() {
