@@ -1,7 +1,7 @@
 # Maintainer: Hua <majicdh@gmail.com>
 
 pkgname=server-box-bin
-pkgver=1.0.1130
+pkgver=1.0.1201
 pkgrel=1
 pkgdesc="ServerBox - A flutter app that helps you connect to your server."
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('fuse2')
 conflicts=('server-box')
 provides=('server-box')
 options=(!strip)
-source=("https://github.com/lollipopkit/flutter_server_box/releases/download/v1.0.1130/ServerBox_1128_amd64.appimage")
-sha256sums=('4349e8ea8089d7f18e5eaaed12e111b3556fd10f41eb9036d51cd1c88d52e535')
+source=("https://github.com/lollipopkit/flutter_server_box/releases/download/v1.0.1201/ServerBox_1201_amd64.AppImage")
+sha256sums=('22222e9d335765f605a35e09e4f6818989de866259c39f0863ea7d413b983cce')
 
 prepare() {
     chmod +x "$srcdir/ServerBox_1128_amd64.appimage"
