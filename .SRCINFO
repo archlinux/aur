@@ -1,0 +1,13 @@
+pkgbase = gdox
+	pkgdesc = Gdox is a tool that does amazing things
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = libfoo
+	depends = libbar
+	sha512sums = SKIP
+
+pkgname = gdox
