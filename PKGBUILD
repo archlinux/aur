@@ -7,7 +7,7 @@ pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX
 arch=('x86_64')
 url="https://xmcl.app/"
 license=('MIT')
-depends=('electron34')
+depends=('electron36')
 makedepends=()
 checkdepends=()
 optdepends=(
@@ -23,7 +23,7 @@ source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pk
     "xmcl.desktop"
 )
 
-sha256sums=('SKIP'
+sha256sums=('f0b0bb974c04d045bf4cdf77d7bbf8ed3ac997ed03e18448454d25da269a8e36'
     'SKIP'
     '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010'
 )
@@ -35,6 +35,6 @@ package() {
     install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/xmcl" <<EOF
 #!/usr/bin/bash
-exec electron34 /usr/lib/xmcl/xmcl.asar "\$@"
+exec electron36 /usr/lib/xmcl/xmcl.asar "\$@"
 EOF
 }
