@@ -4,12 +4,12 @@
 # Contributer: Aviana Cruz <gwencroft@proton.me>
 
 pkgname="droidcam-obs-plugin"
-pkgver="2.3.4"
+pkgver="2.4.0"
 pkgrel="1"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
 url="https://dev47apps.com/obs/"
-_tag="57503761b3546fdf07d2403f9b94b76c8d7e654e"
+_tag="fa19a229f9155e52c58cbf9ce99541e26a64293d"
 srcurl="https://github.com/dev47apps/droidcam-obs-plugin.git"
 license=('GPL')
 depends=("obs-studio" 'libusbmuxd' 'libjpeg-turbo' 'libimobiledevice')
