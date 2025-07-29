@@ -1,0 +1,13 @@
+[package]
+name = "nimra"
+version = "0.1.0"
+description = "A compiler"
+
+[workspace.lints.rust]
+warnings = "deny"
+rust_2024_compatibility = "deny"
+missing_docs = "deny"
+unsafe_code = "deny"
+
+[dependencies]
+tempfile = "3"
