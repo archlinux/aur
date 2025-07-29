@@ -2,7 +2,7 @@
 
 pkgname=boxunbox
 pkgver=0.2.2
-pkgrel=2
+pkgrel=1
 pkgdesc='A Rust-based alternative to GNU stow'
 url='https://github.com/dablenparty/boxunbox'
 license=('0BSD')
