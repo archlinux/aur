@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/X11Libre"
 license=('MIT')
 install=$_pkgname.install
-pkgdesc="Libre fork of X.Org Intel i810/i830/i915/945G/G965+ video drivers"
+pkgdesc="Official Libre fork of X.Org Intel i810/i830/i915/945G/G965+ video drivers"
 depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9'
          'libxcb' 'libxfixes' 'libxshmfence' 'libdrm' 'libxrender'
          'libx11' 'libxdamage' 'libxext' 'libpciaccess' 'glibc')
