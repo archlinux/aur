@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=netbird-bin
-pkgver=0.51.2
+pkgver=0.52.0
 pkgrel=1
 pkgdesc='WireGuard-based mesh network'
 url='https://netbird.io'
@@ -13,24 +13,24 @@ conflicts=(netbird)
 depends=(glibc)
 optdepends=('resolvconf: Private DNS')
 replaces=(wiretrustee-bin)
+install='netbird.install'
 
-source=(
-  'environment'
-  'netbird@.service'
-)
-sha256sums=('128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
-            '5941598ba3698d9a47d06eceb17b6a92d5b37197108b1bb130d02841c8455d05')
-sha256sums_i686=('50d4a3ab8dafa171e32a9a9f6a5efa5972b72efc9a0064c2085fd1a68f1452cb')
-sha256sums_x86_64=('14052f26cfaef796429b5e4e956feaf7063a604048a3f6f6ed88cab79cd67353')
-sha256sums_aarch64=('81794e420c12520a7a5b707e41dd94a76ab268ebd4115cb3c4b2fcfccf4703a9')
-sha256sums_armv6h=('14e619ae29acbd7b47b3a7122bc8890f5bee2680f0f71d71198875c3d53b060f')
+_base_raw="https://raw.githubusercontent.com/netbirdio/netbird/refs/tags/v$pkgver/"
+_base_bin="https://github.com/netbirdio/netbird/releases/download/v$pkgver/netbird_${pkgver}_linux"
 
-_base_url="https://github.com/netbirdio/netbird/releases/download/v$pkgver/netbird_${pkgver}_linux"
+source=("$_base_raw/release_files/systemd/env"
+        "$_base_raw/release_files/systemd/netbird@.service")
+source_i686=("${_base_bin}_386.tar.gz")
+source_x86_64=("${_base_bin}_amd64.tar.gz")
+source_aarch64=("${_base_bin}_arm64.tar.gz")
+source_armv6h=("${_base_bin}_armv6.tar.gz")
 
-source_i686=("${_base_url}_386.tar.gz")
-source_x86_64=("${_base_url}_amd64.tar.gz")
-source_aarch64=("${_base_url}_arm64.tar.gz")
-source_armv6h=("${_base_url}_armv6.tar.gz")
+sha256sums=('7c6f8f6ec95969fc555e7abc55f7f775196446d315c5080adab4a1a6f0b173e3'
+            '8e8e5423a14df61b5b78daac0761ec9be5e43e60d3fcb7ffe6994e57c1f92036')
+sha256sums_i686=('7e0323bd3fe7e3bfce16eb36c8003945e8348d57bf154e8318c1bb9e3e062104')
+sha256sums_x86_64=('dc53a27d0510895f95123108cea5ac6841258cdefb9b802f1e41f37e9aec40ec')
+sha256sums_aarch64=('f1f9d60ec9f1291f50bb34fafa1e4e21cc40c11343965dbaf9790a4f10086758')
+sha256sums_armv6h=('5e4c00ec95637fc55a62b62eacf8d4ede478f92b7bc4a3de044c374b36b53d57')
 
 prepare() {
   # try to generate completions if the binary is runnable on current CPU
@@ -47,7 +47,7 @@ package() {
   install -Ddm755 -o root -g root "$pkgdir/etc/netbird"
 
   # environment file
-  install -Dm644 environment "$pkgdir/etc/default/netbird"
+  install -Dm644 env "$pkgdir/etc/default/netbird"
 
   # systemd unit
   install -Dm644 netbird@.service \
