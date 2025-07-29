@@ -1,7 +1,7 @@
 pkgbase = vital-synth
 	pkgdesc = Spectral warping wavetable synth. Manual download of .deb installer required.
 	pkgver = 1.5.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://vital.audio
 	install = vital-synth.install
 	arch = x86_64

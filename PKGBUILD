@@ -1,7 +1,7 @@
 # Maintainer: user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Spectral warping wavetable synth. Manual download of .deb installer required."
 arch=('x86_64')
 url="https://vital.audio"
@@ -55,14 +55,14 @@ If you haven't done so already, cancel the dialog, download the file and run the
     ar x "${srcdir}/${versioned_filename_deb}"
 
     # Extract data.tar.gz (the actual package contents)
-    if [[ -f "data.tar.gz" ]]; then
-        tar xzf data.tar.gz
-    elif [[ -f "data.tar.xz" ]]; then # In case it's xz compression
-        tar xJf data.tar.xz
-    else
-        error "Could not find data.tar.gz or data.tar.xz inside ${versioned_filename_deb}. Please check the .deb file."
-        exit 1
-    fi
+    # if [[ -f "data.tar.gz" ]]; then
+    #     tar xzf data.tar.gz
+    # elif [[ -f "data.tar.xz" ]]; then # In case it's xz compression
+    #     tar xJf data.tar.xz
+    # else
+    #     error "Could not find data.tar.gz or data.tar.xz inside ${versioned_filename_deb}. Please check the .deb file."
+    #     exit 1
+    # fi
 }
 
 package() {
@@ -71,7 +71,15 @@ package() {
     # ls
 
 	## Extract package data
-	tar xf data.tar.gz -C "${pkgdir}"
+	# tar xf data.tar.gz -C "${pkgdir}"
+    if [[ -f "data.tar.gz" ]]; then
+        tar xzf data.tar.gz -C "${pkgdir}"
+    elif [[ -f "data.tar.xz" ]]; then # In case it's xz compression
+        tar xJf data.tar.xz -C "${pkgdir}"
+    else
+        error "Could not find data.tar.gz or data.tar.xz inside ${versioned_filename_deb}. Please check the .deb file."
+        exit 1
+    fi
 
     ## license seems to not be included anymore
 	# install -D -m644 "${pkgdir}/usr/share/doc/vital/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
