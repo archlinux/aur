@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=textshaping
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4723981f9cb381f266f2ea31c7ead77b')
-b2sums=('0175900cbb5322898fe13f0b906ab42106515ac9cc5fbdd34d2e740b74e12f1e9bab67a838c0411133881d4c0947f6472b7f559f4906ce5acc5762d9ad41c8f3')
+md5sums=('61da72a677ec91df4b2235ec6317a995')
+b2sums=('d35df45b7ae5db796f9253c97e2996eb9d6a39539096db6f8c951e72c7ecc62570b68921c8fd610037899ecf9c6f67e3aea41c1a00a6f72515a033c3e68a963b')
 
 build() {
   mkdir build
