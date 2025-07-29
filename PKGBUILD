@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
@@ -12,7 +12,7 @@ depends=('enet' 'fmt' 'ffmpeg' 'opus' 'libusb' 'libva' 'qt6-webengine' 'brotli' 
 makedepends=('git' 'cmake' 'nlohmann-json' 'vulkan-headers' 'vulkan-utility-libraries' 'clang' 'llvm' 'gamemode' 'renderdoc' 'lld' 'ninja' 'qt6-multimedia' 'qt6-tools' 'spirv-headers' 'doxygen' 'stb' 'boost' 'rapidjson')
 optdepends=('gamemode: Gamemoded support')
 options=('!debug' '!lto')
-source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=v$pkgver-rc1"
+source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=v$pkgver-rc2"
 	"git+https://github.com/mozilla/cubeb.git"
 	"git+https://github.com/Lizzie841/xbyak.git"
 	"git+https://github.com/xiph/opus.git"
@@ -29,20 +29,14 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=v$pkgver-rc1"
 	"git+https://github.com/eggert/tz.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
 	# Cubeb submodules
-	"git+https://github.com/google/googletest.git"
 	"git+https://github.com/arsenm/sanitizers-cmake.git"
-	"git+https://github.com/mozilla/cubeb-coreaudio-rs.git"
-	"git+https://github.com/mozilla/cubeb-pulse-rs.git"
 	# Sirit submodule
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 )
 
 # Note: Submodules not needed to build were excluded: enet, libusb, Vulkan-Headers (used system), libadrenotools, breakpad, oboe, oaknut
 
-sha256sums=('c912da1277b997456751f0aa7c82e5ffd03152ffad6f2d6686579730313eabf5'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+sha256sums=('002ec37061a35d93a8e75e3e86ca53643041f2b8c545eb9dcd061acec88a88db'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -81,10 +75,7 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 
 	cd "$srcdir/$pkgname/externals/cubeb"
-	git config submodule.googletest.url "$srcdir/googletest"
 	git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-	git config submodule.src/cubeb-coreaudio-rs.url "$srcdir/cubeb-coreaudio-rs"
-	git config submodule.src/cubeb-pulse-rs.url "$srcdir/cubeb-pulse-rs"
 	git -c protocol.file.allow=always submodule update
 }
 build() {

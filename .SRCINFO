@@ -1,7 +1,7 @@
 pkgbase = eden
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://eden-emulator.github.io/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -48,7 +48,7 @@ pkgbase = eden
 	optdepends = gamemode: Gamemoded support
 	options = !debug
 	options = !lto
-	source = git+https://git.eden-emu.dev/eden-emu/eden#tag=v0.0.3-rc1
+	source = git+https://git.eden-emu.dev/eden-emu/eden#tag=v0.0.3-rc2
 	source = git+https://github.com/mozilla/cubeb.git
 	source = git+https://github.com/Lizzie841/xbyak.git
 	source = git+https://github.com/xiph/opus.git
@@ -64,15 +64,9 @@ pkgbase = eden
 	source = git+https://github.com/zyantific/zydis.git
 	source = git+https://github.com/eggert/tz.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git
-	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
-	source = git+https://github.com/mozilla/cubeb-coreaudio-rs.git
-	source = git+https://github.com/mozilla/cubeb-pulse-rs.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	sha256sums = c912da1277b997456751f0aa7c82e5ffd03152ffad6f2d6686579730313eabf5
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 002ec37061a35d93a8e75e3e86ca53643041f2b8c545eb9dcd061acec88a88db
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
