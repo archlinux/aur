@@ -1,0 +1,4 @@
+[wardrobe]
+source = "git"
+git = "https://github.com/SwordPuffin/Wardrobe.git"
+prefix = "v"

@@ -1,0 +1,20 @@
+pkgbase = wardrobe
+	pkgdesc = Desktop customization utility
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/SwordPuffin/Wardrobe
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = dconf
+	depends = gnome-autoar
+	depends = gtk4
+	depends = libadwaita
+	depends = libportal-gtk4
+	depends = libsoup3
+	depends = python-gobject
+	depends = xdg-utils
+	source = Wardrobe-1.1.2.tar.gz::https://github.com/SwordPuffin/Wardrobe/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 51a34c01d7e9bbad7360b8979abe5486eb1fb2907df31cabb93ee2c28f1b0a8c
+
+pkgname = wardrobe
