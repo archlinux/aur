@@ -21,5 +21,5 @@ build() {
 
 package() {
     cd "$srcdir/PYroMat"
-    python -m installer --destdir="$pkgdir" "$srcdir/PYroMat/dist/PYroMat-$pkgver-py3-none-any.whl"
+    python -m installer --destdir="$pkgdir" "$srcdir/PYroMat/dist/pyromat-$pkgver-py3-none-any.whl"
 }
