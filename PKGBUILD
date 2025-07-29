@@ -2,7 +2,7 @@
 _appname=qaxbrowser
 _pkgname="${_appname}-safe-stable"
 pkgname=qianxin-browser-stable
-pkgver=1.0.45966.7
+pkgver=1.0.45966.7_1
 pkgrel=1
 pkgdesc="奇安信可信浏览器国密开发者专版"
 arch=(
@@ -22,8 +22,8 @@ depends=(
     'libxkbcommon'
     'mesa'
 )
-source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_dlurl}/[qsigned]${_pkgname}_${pkgver}-1_arm64.deb")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_dlurl}/[qsigned]${_pkgname}_${pkgver}-1_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_dlurl}/[qsigned]${_pkgname}_${pkgver//_/-}_arm64.deb")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_dlurl}/[qsigned]${_pkgname}_${pkgver//_/-}_amd64.deb")
 source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
