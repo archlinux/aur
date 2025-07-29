@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=moneydance-bin
 _pkgname=Moneydance
-pkgver=2024.4.5253
-pkgrel=2
+pkgver=2024.4
+pkgrel=1
 pkgdesc="An easy to use and full-featured personal finance app that doesn't compromise your privacy. "
 arch=('x86_64')
 url="https://infinitekind.com/moneydance"
@@ -26,7 +26,15 @@ source=(
 sha256sums=('8657753d048e3248ad5df34667be4692ff42c82164131d0a82ec4a2fabe0a67a')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Finance;Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --comment="Powerful, private, personal finance software" \
+        --categories="Finance;Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin}" \
+        --custom="Keywords=money,budget,budgeting,finance,finances,accounting,investing,investment,stocks,exchangerates,prices,quicken EOS"
+    echo "StartupWMClass=moneydance" >> "${srcdir}/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{lib/"${pkgname%-bin}",bin}
