@@ -1,6 +1,6 @@
 pkgbase = attic
 	pkgdesc = personal webarchive
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://git.sr.ht/~shtrophic/attic
 	install = attic.install
@@ -12,11 +12,11 @@ pkgbase = attic
 	depends = gcc-libs
 	depends = openssl
 	backup = etc/attic.env
-	source = attic-0.2.1.tar.gz::https://git.sr.ht/~shtrophic/attic/archive/0.2.1.tar.gz
-	source = attic-0.2.1.tar.gz.asc::https://git.sr.ht/~shtrophic/attic/archive/0.2.1.tar.gz.asc
+	source = attic-0.2.2.tar.gz::https://git.sr.ht/~shtrophic/attic/archive/0.2.2.tar.gz
+	source = attic-0.2.2.tar.gz.asc::https://git.sr.ht/~shtrophic/attic/archive/0.2.2.tar.gz.asc
 	source = sysusers.conf
 	validpgpkeys = 10F1CC925057D456798EBF9C1B3EB6FE2D338B4A
-	sha256sums = 856a4cf319e401d710f54ccbafcd571b4590a2eaad74e458f9ca37f49d7294b5
+	sha256sums = 649a1bc1393b3e2a4aee06e07b5bf3e81041bf45936855d7733b51131f480823
 	sha256sums = SKIP
 	sha256sums = cc4a7514bfa3b9de6ac4ba0b79d80c2f2ae0827b756e397bd2675a09b89eaea2
 

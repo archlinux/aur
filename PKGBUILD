@@ -1,7 +1,7 @@
 # Maintainer: shtrophci <aur at shtrophic dot net>
 
 pkgname=attic
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="personal webarchive"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz.asc::$url/archive/$pkgver.tar.gz.asc"
 	sysusers.conf)
-sha256sums=('856a4cf319e401d710f54ccbafcd571b4590a2eaad74e458f9ca37f49d7294b5'
+sha256sums=('649a1bc1393b3e2a4aee06e07b5bf3e81041bf45936855d7733b51131f480823'
             'SKIP'
             'cc4a7514bfa3b9de6ac4ba0b79d80c2f2ae0827b756e397bd2675a09b89eaea2')
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
