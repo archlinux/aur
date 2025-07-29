@@ -2,7 +2,7 @@
 
 _pkgname=vkpeak
 pkgname=${_pkgname}-bin
-pkgver="20240505"
+pkgver="20250531"
 pkgrel="2"
 pkgdesc="A tool which profiles Vulkan devices to find their peak capacities. (Binary Package)"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 
 source_x86_64=("https://github.com/nihui/vkpeak/releases/download/${pkgver}/vkpeak-${pkgver}-ubuntu.zip")
 
-sha256sums_x86_64=("4a5b06915e1c03c8adad4593abb4012d4eb927d4aa3f0c90f0879d98c90ac674")
+sha256sums_x86_64=("5d233c230d4dc14c43e76da3feb4a7374f9e79d0a0bbea00b1b8f33f6ac07eaf")
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"

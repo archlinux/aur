@@ -1,13 +1,13 @@
 pkgbase = vkpeak-bin
 	pkgdesc = A tool which profiles Vulkan devices to find their peak capacities. (Binary Package)
-	pkgver = 20240505
+	pkgver = 20250531
 	pkgrel = 2
 	url = https://github.com/nihui/vkpeak
 	arch = x86_64
 	license = MIT
 	provides = vkpeak
 	conflicts = vkpeak
-	source_x86_64 = https://github.com/nihui/vkpeak/releases/download/20240505/vkpeak-20240505-ubuntu.zip
-	sha256sums_x86_64 = 4a5b06915e1c03c8adad4593abb4012d4eb927d4aa3f0c90f0879d98c90ac674
+	source_x86_64 = https://github.com/nihui/vkpeak/releases/download/20250531/vkpeak-20250531-ubuntu.zip
+	sha256sums_x86_64 = 5d233c230d4dc14c43e76da3feb4a7374f9e79d0a0bbea00b1b8f33f6ac07eaf
 
 pkgname = vkpeak-bin
