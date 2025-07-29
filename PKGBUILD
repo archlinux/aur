@@ -3,7 +3,7 @@
 
 _pkgname=julefmt
 pkgname="$_pkgname-git"
-pkgver=rb9c85a0
+pkgver=rbcfc6ff
 pkgrel=1
 pkgdesc='Jule code formatter'
 arch=('x86_64' 'aarch64' 'i386')
@@ -26,7 +26,7 @@ build() {
   cd "$_pkgname"
   mkdir -p bin
   echo "Building $_pkgname for $CARCH..."
-  julec --opt-deadcode -o "bin/$_pkgname" ./src
+  julec --opt-deadcode -p --opt L2 -o "bin/$_pkgname" ./src
 }
 
 check() {
