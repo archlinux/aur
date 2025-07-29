@@ -1,7 +1,7 @@
 pkgbase = xwayland-satellite-git
 	pkgdesc = Xwayland outside your Wayland - git version
 	pkgver = 0.6.r19.gba78881
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Supreeeme/xwayland-satellite
 	arch = x86_64
 	license = MPL-2.0
@@ -12,7 +12,7 @@ pkgbase = xwayland-satellite-git
 	depends = glibc
 	depends = libxcb
 	depends = xcb-util-cursor
-	depends = xorg-server-xwayland
+	depends = xorg-xwayland
 	provides = xwayland-satellite
 	conflicts = xwayland-satellite
 	source = git+https://github.com/Supreeeme/xwayland-satellite.git
