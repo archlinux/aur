@@ -76,6 +76,8 @@ build() {
 package() {
   cd "$_pkg"
   make DESTDIR="$pkgdir" install
+  # installed for no reason, conflicting with official arch package `gf2x`
+  rm -rv "$pkgdir/usr/include/gf2x.h" "$pkgdir/usr/include/gf2x/" "$pkgdir/usr/lib/cado-nfs-3.0.0/gf2x/"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
