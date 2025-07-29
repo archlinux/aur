@@ -1,0 +1,19 @@
+[Unit]
+Description=Mullvad WireGuard SOCKS5 Proxy (%i)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/mullvad-socks5-proxy start %i
+ExecStop=/usr/bin/mullvad-socks5-proxy stop %i
+ExecReload=/usr/bin/mullvad-socks5-proxy restart %i
+TimeoutStartSec=30
+TimeoutStopSec=15
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

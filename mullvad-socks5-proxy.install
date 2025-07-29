@@ -1,0 +1,11 @@
+post_install() {
+    printf "This package needs configuration!\n"
+    printf "Go to the Wireguard configuration page on your Mullvad account\n"
+    printf "and download the configuration files for the servers you want.\n\n"
+    printf "Extract the ZIP archive to /etc/mullvad-socks5-proxy\n"
+    printf "Each file will be named <server-name>.conf\n\n"
+    printf "Start the proxy with systemctl start mullvad-socks5-proxy@<server-name>.service\n\n"
+    printf "The SOCKS5 proxy listens on port 1080 by default. To change it, edit <server-name>.conf\n"
+    printf "and add a section like below:\n\n"
+    printf "[Custom]\nSOCKS5Port = 1080\n\n"
+}
