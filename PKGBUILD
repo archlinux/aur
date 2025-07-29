@@ -4,6 +4,7 @@ _pkgname=vs-launcher
 _pkgver=1.5.5
 _appimage="${_pkgname}-${_pkgver}.AppImage"
 
+pkgbase="${_pkgname}"
 pkgname="${_pkgname}-appimage"
 pkgver="${_pkgver}"
 pkgrel=1
@@ -31,17 +32,18 @@ package() {
 
     # Install .desktop file
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
-        [Desktop Entry]
-        Name=VS Launcher
-        Exec=${_pkgname} %U
-        Terminal=false
-        Type=Application
-        Icon=${_pkgname}
-        StartupWMClass=VS Launcher
-        X-AppImage-Version=${pkgver}
-        Comment=Unofficial Vintage Story Launcher for... Vintage Story :)
-        Categories=Game;
-        EOF
+[Desktop Entry]
+Name=VS Launcher
+Exec=${_pkgname} %U
+Terminal=false
+Type=Application
+Icon=${_pkgname}
+StartupWMClass=VS Launcher
+X-AppImage-Version=${pkgver}
+Comment=Unofficial Vintage Story Launcher for... Vintage Story :)
+Categories=Game;
+EOF
+
 
 
     # Install icons of multiple sizes

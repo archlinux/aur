@@ -1,4 +1,4 @@
-pkgbase = vs-launcher-appimage
+pkgbase = vs-launcher
 	pkgdesc = Unofficial launcher and version manager for Vintage Story
 	pkgver = 1.5.5
 	pkgrel = 1
