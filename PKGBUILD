@@ -1,6 +1,6 @@
 # Maintainer: Éric Gillet <e+aur@linuxw.info>
 pkgname=python-knowit
-pkgver=0.5.8
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="Know better your media files"
 arch=('any')
@@ -34,9 +34,9 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/ratoaq2/knowit/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('4e8b81e44b359648ea9b3b31c8859a5c83484c8f2dc2d9005a447fa36134dea5')
-sha512sums=('e86b415538eb0ba4cb67c59661ba3866710fe1fa6d0f43022e718fc675882414dacb2d98bc0a9a08feea984d4427870bb13198edd613db99695ba9b3a4b9120b')
-b2sums=('bed94cacc2af339640d86016c6d1e4c43316c6144a3bd0dfb7c80df44d191b838949a59d7baf5a15a05f973d40917e71f0694aa4756bb728e3a00fadbd9c0c51')
+sha256sums=('99f10f53f2c0dd9588d8790433ae4810335c1db21433cca047f789cfae9d5f8a')
+sha512sums=('0dcb272f502feecdf006c16e372145bc90ca0aba963252944be468b7ef8ddf5586f4ae8e1260f36949a5f40bd37e89292faeb0d3c1cbd33d68f1387fba48c210')
+b2sums=('4c41f74c10fe788f352da26ca41d7c169b2681b3f6717692ff8923b7f8756a1c56ecccc2f62633be4ee36d8289e4b362f928f9eb2e57c6ff6c4fc32e8ef16651')
 
 build() {
 	cd "knowit-$pkgver"
