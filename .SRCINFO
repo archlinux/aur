@@ -1,5 +1,5 @@
 pkgbase = performa
-	pkgdesc = A multi-server monitoring system with a web based UI
+	pkgdesc = A multi-server monitoring system
 	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/jhuckaby/performa

@@ -3,7 +3,7 @@
 pkgname=performa
 pkgver=1.1.4
 pkgrel=1
-pkgdesc="A multi-server monitoring system with a web based UI"
+pkgdesc="A multi-server monitoring system"
 arch=('any')
 url="https://github.com/jhuckaby/performa"
 license=('MIT')
