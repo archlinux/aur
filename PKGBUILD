@@ -6,7 +6,7 @@
 
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('any')
@@ -18,8 +18,8 @@ source=("https://files.dyne.org/?file=tomb/releases/Tomb-$pkgver.tar.gz"
         "_tomb")
 
 # The first hash comes from the .sha file
-sha256sums=('2bb54cc92adb769e555a548697819862474368beb9386cb421545691af567a8e'
-            '89df658b39777f1eb86f9844eca8bc2f904a99d666b6bfa179757213b81c6686'
+sha256sums=('0f78fb78b19edba944dae1a67c8abb9041e33a1805d5b8b0c72b4424019f0590'
+            'f2ecff9c2ebe6aacf15b81e0dbf250e4ec4c5f43e38871335877d810d5a2f188'
             'SKIP'
             '8007bc208fdac3fbd7a61320b48c4c8073639b478fcc410145a3792986aca9e8')
 
