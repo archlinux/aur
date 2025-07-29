@@ -1,7 +1,10 @@
 
 pkgname=chromium-ffmpeg-codecs-git
-pkgver=7.2.r119684.g670089304a
-pkgrel=9
+pkgver=7.2.r120402.g7c5319e692
+#pkgver() {
+  #printf '%s.r%s.g%s' $(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }') $(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }') $(git -C ffmpeg rev-parse --short HEAD)
+#}
+pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ffmpeg)"
 arch=('x86_64')
@@ -11,16 +14,20 @@ license=('LGPL-2.1-or-later')
 _chromium=138.0.7204.55
 _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 source=("git+${url}.git"
-#"${_chromium}aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
-#"${_chromium}aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
 "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 nolog.c
+"no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
+"aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
+"aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
 sha256sums=('SKIP'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             '4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030'
+            '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
+            'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
+            'bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 sha256sums[1]='SKIP'
 depends=(glibc)
@@ -41,6 +48,11 @@ prepare() {
   diff libavcodec/opus/dec.c{.bak,}||:
   # Chromium patches
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
+  mkdir -p chromium/patches; base64 -d ../aacREADME.base64 > chromium/patches/README
+  base64 -d ../aac.patch.base64 > aac.patch
+  patch -Np1 -i aac.patch
+  base64 -d ../no-xheaac-parser.patch.base64 > no-xheaac-parser.patch
+  patch -Np1 -i no-xheaac-parser.patch
   sed -i '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c
