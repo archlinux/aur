@@ -1,0 +1,46 @@
+pkgbase = xlibre-xf86-input-wacom
+	pkgdesc = Official XLibre fork of X.Org Wacom tablet driver
+	pkgver = 1.2.3.1
+	pkgrel = 2
+	url = https://github.com/X11Libre
+	arch = x86_64
+	arch = aarch64
+	groups = xlibre-drivers
+	license = GPL-2.0-or-later
+	makedepends = xlibre-xserver
+	makedepends = xlibre-xserver-common
+	makedepends = xlibre-xserver-devel
+	makedepends = X-ABI-XINPUT_VERSION=26.0
+	makedepends = xorgproto
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = binutils
+	makedepends = fakeroot
+	makedepends = findutils
+	makedepends = gawk
+	makedepends = gcc
+	makedepends = gettext
+	makedepends = gzip
+	makedepends = libtool
+	makedepends = m4
+	makedepends = make
+	makedepends = patch
+	makedepends = pkgconf
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libx11
+	depends = glibc
+	provides = xf86-input-wacom
+	conflicts = xf86-input-wacom
+	conflicts = X-ABI-XINPUT_VERSION<26
+	conflicts = X-ABI-XINPUT_VERSION>=27
+	options = !debug
+	source = https://github.com/X11Libre/xf86-input-wacom/archive/refs/tags/xlibre-xf86-input-wacom-1.2.3.1.tar.gz
+	source = aggregate.patch
+	sha256sums = 961f7b229e79e585a85b59be395e54392c00a3766204de95af832d2fa59207ed
+	sha256sums = 1fca9985ac7cee6ea27956839c38f1c2b6b2cefc6bf51747378d1f93f9504b1c
+
+pkgname = xlibre-xf86-input-wacom
