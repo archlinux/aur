@@ -1,12 +1,12 @@
 # Maintainer: Aayush Kumar <aayush214.kumar@gmail.com>
 pkgname=torrcli
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A cli based torrent client built with libtorrent"
 arch=('x86_64')
 url="https://github.com/aayushkdev/torrcli"
 license=('MIT')
-depends=('python' 'python-pip' 'libtorrent-rasterbar' 'python-rich' 'systemd')
+depends=('python' 'python-pip' 'libtorrent-rasterbar' 'python-rich' 'python-torrfetch' 'systemd')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 install="torrcli.install"
 source=(
