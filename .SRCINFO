@@ -1,6 +1,6 @@
 pkgbase = flclash-bin
 	pkgdesc = A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free.
-	pkgver = 0.8.86
+	pkgver = 0.8.87
 	pkgrel = 1
 	url = https://github.com/chen08209/FlClash
 	arch = aarch64
@@ -8,14 +8,13 @@ pkgbase = flclash-bin
 	license = GPL-3.0-only
 	depends = libayatana-appindicator
 	depends = libkeybinder3
-	depends = zenity
-	provides = flclash=0.8.86
+	provides = flclash=0.8.87
 	conflicts = flclash
 	source = flclash.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = flclash-0.8.86-aarch64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-arm64.deb
-	sha256sums_aarch64 = 6620867dd411578486a52fa7d5e1933e6686221c0e1ec061d75bfe69f7ef9cf7
-	source_x86_64 = flclash-0.8.86-x86_64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-amd64.deb
-	sha256sums_x86_64 = c0cdbca73d95bf99e4be56bbf242869105da64dcc62e410af068051159b6044d
+	source_aarch64 = flclash-0.8.87-aarch64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.87/FlClash-0.8.87-linux-arm64.deb
+	sha256sums_aarch64 = d57d8696f67b65164687f1b02c8b2cb7b157fb2fb697397d6fbea234d5a4e55b
+	source_x86_64 = flclash-0.8.87-x86_64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.87/FlClash-0.8.87-linux-amd64.deb
+	sha256sums_x86_64 = eba232b188b0251df26891a1242b0265587fb671d3025641da54bd39d949a5c5
 
 pkgname = flclash-bin
