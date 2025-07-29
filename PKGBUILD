@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codequill-bin
 _pkgname=CodeQuill
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Organize, edit, and preview code efficiently.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/The-Best-Codes/codequill/v${pkgver}/LICENSE"
 )
-sha256sums=('ae4632d5c93f5dbcae62945325d817c1f1d3c3f86dbb1f68f09e13701bd8bb0b'
+sha256sums=('735581f410b91377238de8d962d4dc207b814f15945104b1f16fd7412f92ccac'
             'e2622fda505a7eabcf269cffe9708431c6704d9fc8dbfaef1d642dad323cea9c')
 prepare() {
     sed -i "s/Categories=/Categories=Development;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
