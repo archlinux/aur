@@ -18,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     'alist.tmpfiles'
     'alist.sysusers'
     'config.json')
-sha256sums=('501ec60e6837d13da6722227a4dcad4a3b815d337e6b7f54ce116fa7e9333559'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+sha256sums=('0a73786ca46cfaf9b33596e42d125a2b8d917232e07b98550271fe8ae7a70334'
+            'ecd49cd8cb9b8681adb92a7969240c24ed4dd63ad261649cc4ebe78b506122bd'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
