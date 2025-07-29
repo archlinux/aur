@@ -37,7 +37,6 @@ prepare() {
 build() {
   cd "${srcdir}/paraview"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DPARAVIEW_USE_PYTHON=OFF \
@@ -51,15 +50,14 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
-      ..
-    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
-    popd
+      -B build-${_arch} .
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make -C build-${_arch}
   done
 }
 
