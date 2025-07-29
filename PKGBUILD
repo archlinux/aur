@@ -4,7 +4,7 @@
 
 _target=arm-linux-gnueabi
 pkgname=$_target-binutils
-pkgver=2.44
+pkgver=2.45
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM GNU EABI little-endian target'
 arch=('x86_64' 'i686' 'armv7h')
@@ -12,7 +12,7 @@ url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha512sums=('d1783e109c28c5706bacadf31d2652afe8f09ca3dfa6fb8b4e530904280207b2e1825d202faa92ff753e4ee6261a68a8429be4cd564446c6e040d75f6c2afc2d'
+sha512sums=('b804005b94fd8d77f055716c90709e3f08a4c2f2f3beae9260ca43843d0903121a27429425c766fada3c9b15cfd51d37146e6f8f41ffb1e9840bfb90929ee523'
             'SKIP')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
