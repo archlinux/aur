@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-rail-route
-pkgver=2.3.21
+pkgver=2.3.22
 pkgrel=1
 pkgdesc='Design and automate your own railway network. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -29,7 +29,7 @@ source=(
   "${_shortname}.bash"
 )
 
-sha512sums=('3a63d112151910fb19bece723f4e0224a6e21fa2470b6b647763e28a847b29d4b2f06f7aa28041881ced91e747117ac61525ddd77af1db335815a56c2a0ac684'
+sha512sums=('c266c33e915df8ea740e6e558107748d3c0b344ee169ea3ac632e76be4c0da15766c795d6581ce89772c81ac0db2bff40c22567496a11fd31dd77e488d25ce63'
             '2ca22352d18d7409cd68a47434d499c0f01fccff998ed890e893cad284eae2cc798d1c3fdb2a669642feb87fda5b5ac2f934b6afd59fec5b277b6e8f999c197b'
             'aadace0dcf1f13359966cae76dde2b125187480501d2ac6d6569327ecece78f91f881bf74c207703a63477de86b7d537aa40b553d73e8d7aa79fef2e13376d8a')
 
