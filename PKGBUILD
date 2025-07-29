@@ -2,7 +2,7 @@
 
 pkgname="hyprcap"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/alonso-herreros/hyprcap"
 pkgdesc="A utility to easily capture screenshots and recordings in Hyprland"
 license=('GPL-3.0-only')

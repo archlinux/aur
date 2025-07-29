@@ -1,7 +1,7 @@
 pkgbase = hyprcap
 	pkgdesc = A utility to easily capture screenshots and recordings in Hyprland
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alonso-herreros/hyprcap
 	arch = any
 	license = GPL-3.0-only
