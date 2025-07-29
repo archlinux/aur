@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.532
+pkgver=8.3.533
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -37,8 +37,7 @@ source=(
    "${_archive}::git+${_git_url}#tag=${pkgver}"
    "0001-set_std_gnu17_default.patch"
 )
-
-b2sums=('b657cc1c03df0dc708d193b1daee92fe79e1f9077ce81055123974dcfbbf4c11b9b6e4c84c43842d8bf237807f8aff39fa95ff29d630f35d227c70c77c8a2896'
+b2sums=('04ab86926e69c999ff209f0a50bcff9f559a5e241351faf214a7f5da343ea26dcb3baa63e6655c5124bcede17ba84ab9815588f35ffda1b78aace59b0b2fbc01'
         '37eaa5bbaab691216ffc06485e6d5d934c74f63e74a876da5bedb0f9fd98f404abfbaa902b9fa979e276e38ba660b4049fbe3d6ff43b591e1d1d3fb2d128eb51')
 
 
