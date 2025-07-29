@@ -1,7 +1,7 @@
 # Maintainer: DonutsDelivery <megusta52@proton.me>
 pkgname=monitor-remote-control
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Remote monitor control via DDC/CI with GUI interface for brightness, color, input switching and auto-brightness"
 arch=('any')
 url="https://github.com/DonutsDelivery/Auto-Brightness"
