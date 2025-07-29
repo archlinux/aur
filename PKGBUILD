@@ -1,7 +1,7 @@
 # Maintainer: Nicola Mori (nicolamori at aol dot com)
 # Contributor: Lorenzo Nizzi <lorenzo.nizzi.grifi at gmail dot com>
 pkgname=gosign
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="Nuovo tool di firma e rinnovo online per i certificati digitali emessi da InfoCert"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'bzip2' 'cairo' 'curl' 'd
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://rinnovofirma.infocert.it/gosign/download/linux/latest/GoSign-Desktop-installer-linux.deb")
-sha512sums=('62714950082149d9c89834c52da64e403c87682b2e569294381a9a80e9ac3e9e7230382630941f5521f367be5ae20a9db0c71e73707a2dc0572bcffb03ec0c51')
+sha512sums=('91be5da1ff834b4719f391fd121123ceedbd194a44e23e7128958db695b3840207ceb5ef1771f7aca8ddcd8c4ce340c4425684bfa33f5c121e68a3fbf003dd6c')
 
 package(){
 
