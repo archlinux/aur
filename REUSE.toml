@@ -17,6 +17,12 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    ".gitignore",
+    "nvidia-drm-outputclass.conf",
+    "nvidia-sleep.conf",
+    "nvidia.rules",
+    "systemd-homed-override.conf",
+    "systemd-suspend-override.conf",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
@@ -27,4 +33,4 @@ path = [
     "0002-Add-IBT-support.patch",
 ]
 SPDX-FileCopyrightText = "nvidia-utils contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "MIT AND GPL-2.0-only"
