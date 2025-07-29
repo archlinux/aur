@@ -3,8 +3,8 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=2.1.3.r0.g391164b
-_electronversion=30
+pkgver=2.1.4.r0.ga79db1d
+_electronversion=37
 _nodeversion=20
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -99,7 +99,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/* -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/{app.asar.unpacked,etcher-util,*.js} "${pkgdir}/usr/lib/${pkgname%-git}"
     _icon_sizes=(16x16 32x32 48x48 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/iconset/${_icons}.png" \
