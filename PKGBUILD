@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Bernardello <aleberna at erine dot eu>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=tattoy
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Text-based terminal compositor"
 url="https://github.com/tattoy-org/tattoy"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=(cargo)
 depends=('glibc' 'gcc-libs' 'dbus' 'libxcb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tattoy-org/tattoy/archive/refs/tags/tattoy-v${pkgver}.tar.gz")
-b2sums=('fc95ad5dc2c9753bdb841b08b58c0e36630f44409c8e01c73704f496f636e96d16fbde7fe819bd5dbb56c43ef58b946cb0113c64683b97e65509dfea79b54ba4')
+b2sums=('79c3e1ca8b9e92eb75f561f5e974aac0b5a4d82568b0360d3a6cf07a30cd60470f038eddc735ad56c41e1d2875a0b235ce84e992be97e7d2221b386fd3c90271')
 # https://github.com/tattoy-org/tattoy/archive/refs/tags/tattoy-v0.1.4.tar.gz
 
 prepare() {
@@ -26,7 +26,7 @@ build() {
     cargo build --frozen --release --all-features --manifest-path "$srcdir/$pkgname-$pkgname-v$pkgver/Cargo.toml"
 }
 
-# checks fail in v0.1.6
+# checks fail in v0.1.8
 # check() {
 #     cd "$srcdir/$pkgname-$pkgname-v$pkgver"
 #     export RUSTUP_TOOLCHAIN=stable
@@ -35,4 +35,5 @@ build() {
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0644 "$srcdir/$pkgname-$pkgname-v$pkgver/LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
