@@ -1,7 +1,7 @@
 pkgbase = qtvsplayer-bin
 	pkgdesc = Read local video files of Hikvision devices and display blue, green and red vectors.(Prebuilt version)
-	pkgver = 1.0.52_6
-	pkgrel = 2
+	pkgver = 1.0.52_8
+	pkgrel = 1
 	url = https://github.com/surfzoid/QtVsPlayer
 	arch = aarch64
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = qtvsplayer-bin
 	depends = libx11
 	depends = libglvnd
 	depends = openal
-	provides = qtvsplayer=1.0.52_6
+	provides = qtvsplayer=1.0.52_8
 	conflicts = qtvsplayer
 	source = qtvsplayer.sh
 	sha256sums = bf4d06acb51b2b677a5d01fce315343fc787fe38618d2a26acc2f0701996073b
-	source_aarch64 = qtvsplayer-1.0.52_6-aarch64.rpm::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.52-6/QtVsPlayer-1.0.52-6.surf.mlo.aarch64.rpm
-	sha256sums_aarch64 = 54b422fc6aae74d13b96222a212bba9273067a5bdc2a2796b51aa662ece46a7b
-	source_x86_64 = qtvsplayer-1.0.52_6-x86_64.rpm::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.52-6/QtVsPlayer-1.0.52-6.surf.mlo.x86_64.rpm
-	sha256sums_x86_64 = 6cdd77d0f287672879d736b2803da203d515314bda12ecce59be90fd5ed8544e
+	source_aarch64 = qtvsplayer-1.0.52_8-aarch64.rpm::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.52-8/QtVsPlayer-1.0.52-8.surf.mlo.aarch64.rpm
+	sha256sums_aarch64 = eaa2414c0789bcb0aa84148a4c771625852b740a241f69c9e5514b06b54e71c4
+	source_x86_64 = qtvsplayer-1.0.52_8-x86_64.rpm::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.52-8/QtVsPlayer-1.0.52-8.surf.mlo.x86_64.rpm
+	sha256sums_x86_64 = a08bbc1d14b1765dbf34909c4bdc2c1eb9f945d688aafc7b7d12bc9592cc6d9c
 
 pkgname = qtvsplayer-bin

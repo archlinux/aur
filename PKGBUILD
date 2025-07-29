@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtvsplayer-bin
 _pkgname=QtVsPlayer
-pkgver=1.0.52_6
-pkgrel=2
+pkgver=1.0.52_8
+pkgrel=1
 pkgdesc="Read local video files of Hikvision devices and display blue, green and red vectors.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.surf.mlo.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.surf.mlo.x86_64.rpm")
 sha256sums=('bf4d06acb51b2b677a5d01fce315343fc787fe38618d2a26acc2f0701996073b')
-sha256sums_aarch64=('54b422fc6aae74d13b96222a212bba9273067a5bdc2a2796b51aa662ece46a7b')
-sha256sums_x86_64=('6cdd77d0f287672879d736b2803da203d515314bda12ecce59be90fd5ed8544e')
+sha256sums_aarch64=('eaa2414c0789bcb0aa84148a4c771625852b740a241f69c9e5514b06b54e71c4')
+sha256sums_x86_64=('a08bbc1d14b1765dbf34909c4bdc2c1eb9f945d688aafc7b7d12bc9592cc6d9c')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/
