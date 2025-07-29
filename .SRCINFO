@@ -1,6 +1,6 @@
 pkgbase = cwal-git
 	pkgdesc = Blazing-fast pywal-like color palette generator written in C.
-	pkgver = 0.1.0.abc1234
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/nitinbhat972/cwal
 	arch = any
