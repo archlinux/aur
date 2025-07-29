@@ -1,6 +1,6 @@
 pkgbase = mdfried
 	pkgdesc = A markdown viewer for the terminal that renders images and big headers
-	pkgver = 0.12.4
+	pkgver = 0.12.6
 	pkgrel = 1
 	url = https://github.com/benjajaja/mdfried
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mdfried
 	makedepends = cmake
 	depends = gcc-libs
 	options = !lto
-	source = mdfried-0.12.4.tar.gz::https://github.com/benjajaja/mdfried/archive/v0.12.4.tar.gz
-	sha512sums = b21ad167ae9fcf5eb4ac90e3562b6e3a5a9a9b8324ddf285ee9dcac94ae510340c27074fa2dd690dbf18d26e4623b9a2b0c0f28fe417c990d27044f7a1f53639
+	source = mdfried-0.12.6.tar.gz::https://github.com/benjajaja/mdfried/archive/v0.12.6.tar.gz
+	sha512sums = bad0cb65b21efc1e824aa78be043161c6626df93dba80df49e2fde87eee23b95a959d213ff71036891c9d028dcaa264cfe936c0602cd4ddaa52cc02dead3baca
 
 pkgname = mdfried
