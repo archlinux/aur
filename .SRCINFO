@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-video-intel
-	pkgdesc = Official Libre fork of X.Org Intel i810/i830/i915/945G/G965+ video drivers
+	pkgdesc = Official Xlibre fork of X.Org Intel i810/i830/i915/945G/G965+ video drivers
 	pkgver = 3.0.0.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
