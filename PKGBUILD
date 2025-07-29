@@ -9,8 +9,8 @@
 # Contributor: a32633 <brunofernandes@ua.pt>
 
 pkgname='omnetpp'
-pkgver=6.1.0
-_pkgver=6.1
+pkgver=6.2.0
+_pkgver=6.2.0
 pkgrel=1
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 arch=('x86_64')
@@ -31,7 +31,8 @@ depends=('libxml2'
          'python-pandas'
          'python-scipy'
          'python-tzdata'
-         'python-posix_ipc')
+         'python-posix_ipc'
+         'ipython')
 makedepends=('wget'
              'cmake'
              'clang>=17.0.6'
@@ -46,7 +47,8 @@ makedepends=('wget'
              'python-posix_ipc'
              'bison'
              'flex'
-             'perl')
+             'perl'
+             'ipython')
 optdepends=('osgearth: geospatial API with 3D rendering')
 provides=('omnetpp')
 conflicts=('omnetpp')
@@ -57,7 +59,7 @@ source=(
   OMNeT++.desktop
   omnetpp.sh)
 
-sha512sums=('4a41c9f08d36eaa2202a820fd1058df7ecc03de42547669919e5fe07f2e36d0e4dbc84f062ed6e80a8a406142cdb550f7819d252920f1f792c7a07953f9463a5'
+sha512sums=('6c8eeeeab0760084361220935c35da7423c99d18cd2b49a36c9cf82d27363e3b9522d6b60a9a679d2b3856bae6772e36d628ba76923cfc79ec30c577107df4e6'
   '064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1'
   'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1')
 
