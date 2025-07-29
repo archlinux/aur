@@ -23,7 +23,7 @@ depends=(
 _pkgsrc="$pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext::$url/archive/v$pkgver.$_pkgext")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('f6350dba69a3bfa21353d3cf3bf41b776d56c0c98cb11d23b650441b7256a614')
 
 package() {
   cd "$srcdir/$_pkgsrc"
