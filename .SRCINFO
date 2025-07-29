@@ -1,6 +1,6 @@
 pkgbase = huion-keydial-mini-driver
 	pkgdesc = User space driver for Huion Keydial Mini bluetooth device
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Triforcey/huion-keydial-mini-uinput
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = huion-keydial-mini-driver
 	conflicts = huion-keydial-mini
 	options = !strip
 	options = !debug
-	source = https://github.com/Triforcey/huion-keydial-mini-uinput/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = faf59011a881eeefd1a62950c79daca946216066a3b90368d38b737c2ba03e44
+	source = https://github.com/Triforcey/huion-keydial-mini-uinput/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 992203cf9eb2f9bcc274f37a4c796cdd6d260fec0766f5f03c0507f9cebdeb03
 
 pkgname = huion-keydial-mini-driver
