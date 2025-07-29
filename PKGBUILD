@@ -1,9 +1,9 @@
 # Maintainer: zotan <aur@zotan.email>
 
-_pkgver=v2025.1-beta5.patch2.security2
+_pkgver=v2025.1-beta5.patch3.security2
 
 pkgname=iceshrimp.net-bin
-pkgver=2025.1.beta5.patch2.security2
+pkgver=2025.1.beta5.patch3.security2
 pkgrel=1
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
@@ -39,8 +39,8 @@ sha512sums=('cfb7adf7e9f0d9d05ab89b2237ddf1ef4135ed9dde463e96c7cd94e03e497a85c77
             '0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa'
             '0a0467df278f3bd739114725b373f5ec6c7296f609f0a9bcb4f8142b44856fc63e32f76390adf757005035dc691a4c54a662cc8a287572b61e215c29e3d3cbf2'
             '6e17d76acea901a753d2be261e17fc4113351b17f060c9eaf5cb878d6b6ab38c26efb3982411454626be4a0d21845e74ebef5efe18b11ac19b52e9c55442466a')
-sha512sums_x86_64=('553bf992936a76315df8db251ee501b2f8b8e11ab91f684a9da96ca55faead11abbeba461cab2e3e786a92317fbaa948e8471535bceaf93ac65024c80cea9ce9')
-sha512sums_aarch64=('c7c50818382e4f8946576a2a114566b4fc19c0fe34addc1527903848bb9e072a60564288caa0d77e0a3fb3d9db90ef955b2d804931e3e50ad5d54ed5b68d81a6')
+sha512sums_x86_64=('dda61024e645641b3863c9a34f3e93f18aca8a97af1924d84af7598bcee3eddfff478fea6955663b58522c9eec406881fce07516bdd14e246f0e5e01510d814f')
+sha512sums_aarch64=('37bc57320b908b5146ad67ceb6bcd6e41cd3823148dd2da2348790ae59e7e324271a22d09eaba44c5cc62c754548e7da012d989186b2d1e05d32b69a4e855644')
 
 pkgver() {
   local res
