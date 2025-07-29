@@ -1,14 +1,14 @@
 # Maintainer: cookie <coookieuniverse@gmail.com>
 pkgname=staruml
-pkgver=6.3.3
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="A sophisticated software modeler"
 arch=('x86_64')
 url="http://staruml.io/"
 license=('custom:staruml')
 depends=('libxss' 'libxtst' 'nss' 'alsa-lib' 'gtk2')
-source=("$pkgname-${pkgver}_amd64.deb::https://staruml.io/api/download/releases-v6/StarUML_${pkgver}_amd64.deb")
-sha256sums=('582b0c59b43457be843b09596aaa5e7331a0eaa405cfbc427f2331677175c3fa')
+source=("$pkgname-${pkgver}_amd64.deb::https://staruml.io/api/download/releases-v7/StarUML_${pkgver}_amd64.deb")
+sha256sums=('cf6e6a784d86f45d35d08135585c702227d8aa8c23078769503811837f11b507')
 
 prepare() {
     # Extract package data

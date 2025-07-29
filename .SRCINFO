@@ -1,6 +1,6 @@
 pkgbase = staruml
 	pkgdesc = A sophisticated software modeler
-	pkgver = 6.3.3
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = http://staruml.io/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = staruml
 	depends = nss
 	depends = alsa-lib
 	depends = gtk2
-	source = staruml-6.3.3_amd64.deb::https://staruml.io/api/download/releases-v6/StarUML_6.3.3_amd64.deb
-	sha256sums = 582b0c59b43457be843b09596aaa5e7331a0eaa405cfbc427f2331677175c3fa
+	source = staruml-7.0.0_amd64.deb::https://staruml.io/api/download/releases-v7/StarUML_7.0.0_amd64.deb
+	sha256sums = cf6e6a784d86f45d35d08135585c702227d8aa8c23078769503811837f11b507
 
 pkgname = staruml
