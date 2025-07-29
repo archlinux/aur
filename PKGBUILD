@@ -28,12 +28,12 @@ depends=(
 )
 makedepends=('rust' 'cargo' 'gendesk')
 source=(
-	"sulis::git+https://github.com/Grokmoo/sulis.git"
-	'sulis.png'
+    "sulis::git+https://github.com/Grokmoo/sulis.git"
+    'sulis.png'
 )
 sha256sums=(
-	'SKIP'
-	'7bffe4886ea6dc139135790f8711611a1cccdc8d3b318ae18ff3227e915c604d'
+    'SKIP'
+    '7bffe4886ea6dc139135790f8711611a1cccdc8d3b318ae18ff3227e915c604d'
 )
 options=('!lto')
 conflicts=(
@@ -42,8 +42,8 @@ conflicts=(
 )
 
 pkgver() {
-	cd sulis
-	git log -1 HEAD --format='%(describe:tags,abbrev=0).%cs' |  sed 's/\([^-]*-g\)/r\1/;s/-//g'
+    cd sulis
+    git log -1 HEAD --format='%(describe:tags,abbrev=0).%cs' |  sed 's/\([^-]*-g\)/r\1/;s/-//g'
 }
 
 prepare() {
@@ -59,18 +59,18 @@ build() {
 }
 
 package() {
-	install -Dm755 'target/release/main' -T "${pkgdir}/opt/sulis/sulis"
-	install -Dm755 'target/release/editor' -T "${pkgdir}/opt/sulis/editor"
+    install -Dm755 'target/release/main' -T "${pkgdir}/opt/sulis/sulis"
+    install -Dm755 'target/release/editor' -T "${pkgdir}/opt/sulis/editor"
 	
-	install -Dm644 'sulis.desktop' -t "${pkgdir}/usr/share/applications"
-	install -Dm644 'sulis-editor.desktop' -t "${pkgdir}/usr/share/applications"
-	install -Dm644 'sulis.png' -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 'sulis.desktop' -t "${pkgdir}/usr/share/applications"
+    install -Dm644 'sulis-editor.desktop' -t "${pkgdir}/usr/share/applications"
+    install -Dm644 'sulis.png' -t "${pkgdir}/usr/share/pixmaps"
 
-	cd "sulis"
-	install -Dm644 'config.sample.yml' -t "${pkgdir}/opt/sulis"
-	cp -r 'data' "${pkgdir}/opt/sulis/"
-	cp -r 'campaigns' "${pkgdir}/opt/sulis/"
-	cp -r 'mods' "${pkgdir}/opt/sulis/"
+    cd "sulis"
+    install -Dm644 'config.sample.yml' -t "${pkgdir}/opt/sulis"
+    cp -r 'data' "${pkgdir}/opt/sulis/"
+    cp -r 'campaigns' "${pkgdir}/opt/sulis/"
+    cp -r 'mods' "${pkgdir}/opt/sulis/"
 	
-	install -Dm644 'docs/GPLv3-LICENSE' "${pkgdir}/usr/share/licenses/sulis/LICENSE"
+    install -Dm644 'docs/GPLv3-LICENSE' "${pkgdir}/usr/share/licenses/sulis/LICENSE"
 }
