@@ -1,6 +1,6 @@
 pkgbase = gozen-git
 	pkgdesc = A minimalistic video editor (git)
-	pkgver = 20250623.r150.ge481a06
+	pkgver = 20250728
 	pkgrel = 1
 	url = https://github.com/VoylinsGamedevJourney/GoZen
 	arch = x86_64
