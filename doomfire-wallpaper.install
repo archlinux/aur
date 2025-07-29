@@ -1,4 +1,11 @@
 post_install() {
-  echo "==> To finish setup, run: dfpaper setup"
-  echo "==> This will create your config and systemd user service."
+  echo -e "\033[1;33m"
+  echo "=============================================================="
+  echo "  IMPORTANT: Finalize setup by running: dfpaper setup"
+  echo "  This will create your config and systemd user service."
+  echo "=============================================================="
+  echo "  Attempting to run dfpaper setup now..."
+  echo "=============================================================="
+  echo -e "\033[0m"
+  dfpaper setup
 }
