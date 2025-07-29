@@ -1,6 +1,6 @@
 pkgbase = vscodium-electron-bin
 	pkgdesc = VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)
-	pkgver = 1.102.24914
+	pkgver = 1.102.35058
 	pkgrel = 1
 	url = https://vscodium.com/
 	arch = aarch64
@@ -13,24 +13,24 @@ pkgbase = vscodium-electron-bin
 	depends = ripgrep
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
-	provides = vscodium=1.102.24914
-	provides = codium=1.102.24914
+	provides = vscodium=1.102.35058
+	provides = codium=1.102.35058
 	conflicts = vscodium-electron
 	conflicts = vscodium
 	conflicts = codium
 	conflicts = vscodium-insiders
 	conflicts = vscodium-marketplace
-	source = LICENSE-1.102.24914::https://raw.githubusercontent.com/VSCodium/vscodium/1.102.24914/LICENSE
+	source = LICENSE-1.102.35058::https://raw.githubusercontent.com/VSCodium/vscodium/1.102.35058/LICENSE
 	source = vscodium-electron.js
 	source = vscodium-electron.sh
 	sha256sums = ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057
 	sha256sums = 7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf
 	sha256sums = 164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26
-	source_aarch64 = vscodium-electron-1.102.24914-aarch64.rpm::https://github.com/VSCodium/vscodium/releases/download/1.102.24914/codium-1.102.24914-el8.aarch64.rpm
-	sha256sums_aarch64 = ff9c712f9af0e5c48fe57aa8ba2ff96e623f533d244d23f0fca3fe92fb7b441e
-	source_armv7h = vscodium-electron-1.102.24914-armv7h.rpm::https://github.com/VSCodium/vscodium/releases/download/1.102.24914/codium-1.102.24914-el8.armv7hl.rpm
-	sha256sums_armv7h = 4beaf10004f9dd637e53674b706c1d4ac708d9451d79bcbcca03d1bc9788ea0e
-	source_x86_64 = vscodium-electron-1.102.24914-x86_64.rpm::https://github.com/VSCodium/vscodium/releases/download/1.102.24914/codium-1.102.24914-el8.x86_64.rpm
-	sha256sums_x86_64 = 00079d0c4f2e680f0eef7215a9dbadb7c66b9fd77b994177cfb2067a2c8526e0
+	source_aarch64 = vscodium-electron-1.102.35058-aarch64.rpm::https://github.com/VSCodium/vscodium/releases/download/1.102.35058/codium-1.102.35058-el8.aarch64.rpm
+	sha256sums_aarch64 = 3a9d213f838452f3cdc42b773ca0cba1a410ed1e25e78c27c72f0ed81f88b410
+	source_armv7h = vscodium-electron-1.102.35058-armv7h.rpm::https://github.com/VSCodium/vscodium/releases/download/1.102.35058/codium-1.102.35058-el8.armv7hl.rpm
+	sha256sums_armv7h = 320ef5abf3f0a8eca72a35122e0037fbf0f9b8be7681d5a526c8e09eab411a59
+	source_x86_64 = vscodium-electron-1.102.35058-x86_64.rpm::https://github.com/VSCodium/vscodium/releases/download/1.102.35058/codium-1.102.35058-el8.x86_64.rpm
+	sha256sums_x86_64 = 45d3fc8399b78edd37768e0b41ac0679876d35b67dc9cde3696253554928ef8a
 
 pkgname = vscodium-electron-bin
