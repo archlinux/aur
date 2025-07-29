@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stackzy-bin
 _pkgname=Stackzy
-pkgver=1.2.8
-pkgrel=2
+pkgver=1.2.9
+pkgrel=1
 pkgdesc="A cross-platform desktop application to identify libraries used inside an android application. Made possible by Compose Desktop.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/theapache64/stackzy"
@@ -22,19 +22,19 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('544fd741c36cc8ee8a272b230af660989831e3e117b9aca49c3066b9ba9aec0b'
+sha256sums=('484b4fc4f6e3f11c22991aa784995ebab7c1e398085880d654f48a583db224a5'
             '0b2d50b001b1fa7a0a1a18e86827b31f13dabc8258e39c54266cb9ab6210f568')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${pkgname%-bin}\/bin\/${_pkgname}/${pkgname%-bin}/g
         s/\/opt\/${pkgname%-bin}\/lib\/${_pkgname}.png/${pkgname%-bin}/g
         s/Unknown/Development;/g
-    " -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
+    " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
