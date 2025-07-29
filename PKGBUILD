@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=alist
-pkgver=3.46.2
-_web_pkgver=3.46.0 # renovate: datasource=github-tags depName=alist-org/alist-web
+pkgver=3.47.0
+_web_pkgver=3.46.0
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64' 'riscv64' 'loong64')
