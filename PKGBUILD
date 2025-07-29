@@ -77,6 +77,7 @@ pkgname="${_pkgname}"
 _pkgver='1.4.1'
 pkgver="${_pkgver//-/.}"
 pkgrel=2
+_sfx='-pr3'
 _HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
   '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
   '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
@@ -118,7 +119,7 @@ _patches=(
 install="${pkgname}.install"
 _srcdir="${pkgname}-${_pkgver}"
 source=(
-  "${_srcdir}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
+  "${_srcdir}${_sfx}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
   "${_patches[@]}"
   '0003-mkvparser.cc-cstdint.patch'
 )
@@ -189,7 +190,7 @@ source+=("${_vcs[@]}")
     )
   fi
 ####
-md5sums=('86daae1bd101e61566af7c6728517861'
+md5sums=('621663863c75196f2611a1165573390e'
          'd7dd05d0ca5709c328ba8e0b15f180e1'
          '6acc4b5b14befec55ef84006b60c7ff5'
          'a77a4586f30f77de2eed63e160b3a051'
@@ -205,7 +206,7 @@ md5sums=('86daae1bd101e61566af7c6728517861'
          '03485098fb64a000a4f7cd97e468dfff'
          '4faa930d94db6f19d36dbbfbc5e86b5e'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('5043af2f64e7b92d81d54d3c9ae6abb02c7e57e4eedb139674ba9e7ade6b142c'
+sha256sums=('c6b9f1160e7ec4ebf604c15145cb0146ae5ff658a530060a89807dc2af086b32'
             '1506802672283c3f9b39a7c81f7f880cae320553a59335f033919e93ec42e729'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
