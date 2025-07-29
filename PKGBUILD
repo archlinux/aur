@@ -4,7 +4,7 @@ pkgname=spreet
 pkgdesc="Create spritesheets from SVGs"
 url="https://github.com/flother/spreet"
 
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/flother/spreet/refs/heads/master/LICENCE"
 )
 b2sums=(
-    "fb4b9b7884e5f8c018ef45c0e1b593882779692d70c1fc3a2fa94f15a49bcddf5e8fa7cc381675f5255b24b14450c9b14766be5e52f088579b94317e7e3766ec"
+    "14ac21ac39c0f3bc7ca2fc68c2cc7e1bfc820c777ae83977e8d061fd20424e374547794af0e2eb902e45e3d699edb4f1132c92bf0b5d8743c17eb69ca288ca83"
     "665632494d1da73aa6ba01c6fd1088d43e48615d371aac0b739191a4bef8696e1365420eeff67ecec8289301e0b0a102dacd80c771c782733da2881334a04638"
 )
 
