@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-kilted-base
-pkgver=2025.05.23
-pkgrel=4
+pkgver=2025.07.28
+pkgrel=1
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -41,14 +41,12 @@ conflicts=(
 source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.12.0.tar.gz::https://github.com/ros2/variants/archive/0.12.0.tar.gz"
-    "console_bridge_vendor_cmake4.patch"
     "fastdds.patch"
     "mcap_vendor_cstdint.patch"
     "rosidl_cstdint.patch"
 )
-sha256sums=('79ab777f61b6928933d02c4560f3a6ce00edb0b57521947a450170fb1b03b567'
+sha256sums=('b289c53e97d924209efb9ed9c6f30caafde965fa1c72a039e39a528fcc9045b3'
             '5089bf2dea8368020243d40a2b513405cd060aacc42de6fae2289c1a87f74f99'
-            'd2b905b6dccc972cdc83a9c1410bf15494dcc22c888bb2ccf36497b25bd9134b'
             '42228a501fb2647c5c127906eed329145d4a1d81fe626e50e80c6a4cc53729e3'
             'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
             '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c')
@@ -66,10 +64,6 @@ prepare() {
 
     printf "Patching sources\n"
 
-    # https://github.com/ros/console_bridge/issues/100
-    git -C "$srcdir/ros2/src/ros2/console_bridge_vendor" checkout CMakeLists.txt
-    git -C "$srcdir/ros2/src/ros2/console_bridge_vendor" apply "$srcdir/console_bridge_vendor_cmake4.patch"
-
     # https://github.com/eProsima/Fast-DDS/issues/5790
     # https://github.com/eProsima/Fast-DDS/issues/5792
     git -C "$srcdir/ros2/src/eProsima/Fast-DDS" checkout .
@@ -82,17 +76,6 @@ prepare() {
     # https://github.com/ros2/rosidl/pull/864
     git -C "$srcdir/ros2/src/ros2/rosidl" checkout .
     git -C "$srcdir/ros2/src/ros2/rosidl" apply "$srcdir/rosidl_cstdint.patch"
-
-    # Patches for iceoryx cpptoml dependency
-    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" checkout .
-    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick -n 2a2c00bbbc3d42ff91492f8b16b44289c4dc4e58
-    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick -n a3458f823008ffc65868e884b82a3da5a93366f9
-    git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick -n b99ac0c434e799b5b03087ec38a6709d7bbedb63
-
-    # Patches for rmw_zenoh
-    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" checkout .
-    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" cherry-pick -n 5199759f9d1849affc1e5236f0cf24c65c70e00b
-    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" cherry-pick -n fce38ddb99358dad479a184442292682c8590423
 
     # Disable the zenoh/transport_tls feature (TLS/QUIC secure transports)
     # This is because GCC LTO is incompatible with the LLVM LTO
@@ -108,6 +91,8 @@ build() {
     # Remove D_FORTIFY_SOURCE to avoid compilation errors
     CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
+
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
     # Build
     # THIRDPARTY_Asio: This forces Fast-DDS to use its internal ASIO version.
