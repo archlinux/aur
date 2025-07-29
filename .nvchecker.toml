@@ -1,0 +1,5 @@
+[adguardhome-bin]
+source = "github"
+github = "AdguardTeam/AdGuardHome"
+use_latest_release = true
+prefix = "v"
