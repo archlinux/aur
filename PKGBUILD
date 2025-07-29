@@ -1,5 +1,5 @@
 pkgname=kathara
-pkgver=3.7.9
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A lightweight container-based network emulation tool."
 arch=('any')
