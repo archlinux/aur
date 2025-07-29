@@ -1,6 +1,6 @@
 pkgbase = clj-kondo-bin
 	pkgdesc = A minimal and opinionated linter for Clojure code that sparks joy.
-	pkgver = 2025.07.26
+	pkgver = 2025.07.28
 	pkgrel = 1
 	url = https://github.com/borkdude/clj-kondo
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = clj-kondo-bin
 	provides = clj-kondo
 	conflicts = clj-kondo
 	options = !debug
-	source_x86_64 = clj-kondo-bin-2025.07.26-linux-static-amd64.zip::https://github.com/borkdude/clj-kondo/releases/download/v2025.07.26/clj-kondo-2025.07.26-linux-static-amd64.zip
-	sha256sums_x86_64 = 5827b360522202d23b8493d7d3eb1929780348083615680571dc839649bf2e3a
-	source_aarch64 = clj-kondo-bin-2025.07.26-linux-aarch64.zip::https://github.com/borkdude/clj-kondo/releases/download/v2025.07.26/clj-kondo-2025.07.26-linux-aarch64.zip
-	sha256sums_aarch64 = 46a94585c4d49909c42d2528d6bdf689978ce9c89e096b97fe7efec26c2a0535
+	source_x86_64 = clj-kondo-bin-2025.07.28-linux-static-amd64.zip::https://github.com/borkdude/clj-kondo/releases/download/v2025.07.28/clj-kondo-2025.07.28-linux-static-amd64.zip
+	sha256sums_x86_64 = d6449daf243516fdc703f0629cb077ddfbe1981a5e21a3d1421708f22d1b6ce7
+	source_aarch64 = clj-kondo-bin-2025.07.28-linux-aarch64.zip::https://github.com/borkdude/clj-kondo/releases/download/v2025.07.28/clj-kondo-2025.07.28-linux-aarch64.zip
+	sha256sums_aarch64 = fda8c18d17f3262d139ab7079a94782804281fce497bfe414e892b969d3b74c9
 
 pkgname = clj-kondo-bin
