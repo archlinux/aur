@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=12.0.0-beta.20
+_pkgver=12.0.0-beta.21
 
 __pkgname=firedragon
 pkgname=${__pkgname}-beta
@@ -90,7 +90,7 @@ source=(
   firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
 )
 sha256sums=(
-  'b7052d91f2d1a21da4c76c8663d050c98fcb3ab81d4e13dcd6259c1f1e956b73'
+  '1d0c838aecae2de29a4988ce8dc1d0764b5d373f58bb7666d043efd7c7fff8d2'
   '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
 )
 
