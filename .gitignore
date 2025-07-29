@@ -1,0 +1,11 @@
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!geforce-infinity.sh
+!geforce-infinity.desktop

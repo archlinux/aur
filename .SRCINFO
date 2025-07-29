@@ -1,0 +1,17 @@
+pkgbase = geforce-infinity
+	pkgdesc = A next-gen application designed to enhance the GeForce NOW experience.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://geforce-infinity.xyz
+	arch = x86_64
+	license = MIT
+	makedepends = nvm
+	depends = electron37
+	source = GeForce-Infinity-1.1.3.tar.gz::https://github.com/AstralVixen/GeForce-Infinity/archive/refs/tags/1.1.3.tar.gz
+	source = geforce-infinity.sh
+	source = geforce-infinity.desktop
+	sha256sums = fe1ee39d44a2efcde19857d3735d8ff4de94eaeedb6f36b7fea1c91035e956c1
+	sha256sums = 426e8f155c4f2273201ad33d0c0521c35bbea2259a11cb018572d6ca8b40b82d
+	sha256sums = f08641bfacf156ba083bf4b0967d20ca8c9e16c077771996ea7e1de06881be05
+
+pkgname = geforce-infinity
