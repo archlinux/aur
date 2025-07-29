@@ -2,9 +2,9 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c"
-pkgver=0.1.5
+pkgver=0.1.6
 _pkgver="$_pkgname$pkgver"
-_irsha='4a3bf4fc84b53aa607855df6635d95d3e310f7ad'
+_irsha='aebbd12c0f89f6a04f856f3e23d5ea39741c3e0f'
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -16,10 +16,10 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 source_x86_64=("$_pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/$_irsha/src/linux-amd64.cpp")
 source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/$_irsha/src/linux-arm64.cpp")
 source_i386=("$_pkgname-ir-$pkgver-i386.cpp::$_url_raw/$_irsha/src/linux-i386.cpp")
-sha256sums=('c2f2ef08a2ca578b5e7a78387f2beae20e6eaa9faf8064b1015a16fe4bbd01ae')
-sha256sums_x86_64=('a37749046c77c3ce0372a5df377a67f98e9195d8e6568f7ec192f1f13106e8d3')
-sha256sums_aarch64=('acc54f624da667d63c398312fdf78790014b1898b9dce778655a2e23d8890189')
-sha256sums_i386=('16e3594e4d85c4fd3596d6d954e55e05db83c7cc7b30691858cfbce545519670')
+sha256sums=('0fb93dc0e60ea8e5403ac3015fdcbed798525b614924b61bbe32621ce6dff5ac')
+sha256sums_x86_64=('66c33a2a045dd08e2d2ef6b142729af091457ed460a3c530ad7b173ac4bfcf48')
+sha256sums_aarch64=('e570d28d64c5876adaa6657a894567e0de7d73c87a806c10d6b8bea779cdb5a7')
+sha256sums_i386=('13bfefaebd30f4967f25660bdeb836de2369b74a6802ea8384ff74d456b30800')
 depends=('glibc' 'gcc-libs')
 makedepends=('clang')
 optdepends=('clang: clang backend support'
@@ -43,6 +43,10 @@ build() {
         -Wno-everything \
         -fwrapv \
         -ffloat-store \
+        -fno-fast-math \
+        -fno-rounding-math \
+        -ffp-contract=fast \
+        -fexcess-precision=standard \
         -DNDEBUG \
         -fomit-frame-pointer \
         -fno-strict-aliasing \
