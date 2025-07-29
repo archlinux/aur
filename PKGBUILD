@@ -9,7 +9,7 @@ pkgver=20241219.cb69f536e
 pkgrel=1
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
 arch=('x86_64')
-url="http://cado-nfs.gforge.inria.fr/"
+url="https://gitlab.inria.fr/cado-nfs/${_pkg}"
 license=('LGPL2')
 # We configure with optional curl, hwloc, gmp-ecm.
 # Configuring with hwloc makes binaries in linalg/bwc depend on it.
@@ -20,7 +20,7 @@ optdepends=('curl: for cado-nfs-client.py'
             'perl: for bwc.pl')
 conflicts=('cado-nfs')
 provides=('cado-nfs')
-source=("git+https://gitlab.inria.fr/cado-nfs/${_pkg}.git"
+source=("git+${url}.git"
         fmt.patch)
 sha384sums=('SKIP'
             '493abdd5b33bb202eb6f159bd399cf947f6c8a082fc23ba4fcf79dadcc07fbc8ef5989b0a5580cdb7537346af713d374')
