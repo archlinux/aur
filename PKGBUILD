@@ -2,8 +2,9 @@
 
 pkgbase=libosal
 pkgname=libosal
-pkgver=0.0.5
-pkgrel=2
+_tagname=0.1.0-rev6
+pkgver="${_tagname//-/_}"
+pkgrel=1
 pkgdesc="libosal is an operating system abstraction layer Library. It's purpose is to write os-independent code for easy portability between different systems and architectures."
 arch=($CARCH)
 url="https://github.com/robert-burger/libosal"
@@ -15,19 +16,18 @@ replaces=()
 depends=(glibc)
 makedepends=(
     cmake
-    pkgconf)
+    git
+    pkgconf
+)
 checkdepends=()
 optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('74528bcac168feb45feffe3178887ee566d38d1a04a58b73f4806b2fdd56e6e3')
+source=("${pkgname}::git+${url}.git#tag=${_tagname}")
+sha256sums=('67d18308c6bf7a53171a25fd5907bca65d519f7a55acf7efade97e86b8099f22')
 options=()
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
-    #     autoreconf -is
-    #     ./configure --prefix=/usr
-    #     make
-
+    cd "${srcdir}/${pkgname}/"
+    echo "VERSION = ${_tagname}" >project.properties
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     # gcc build
     #     cmake -DCMAKE_BUILD_TYPE=Release \
@@ -35,6 +35,7 @@ build() {
         -DBUILD_FOR_PLATFORM="POSIX" \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -B build \
         -Wno-dev
 
@@ -42,13 +43,13 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     #     make check
     ctest --test-dir build --output-on-failure
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install "${srcdir}"/${pkgname}-${pkgver}/build
+    DESTDIR="${pkgdir}" cmake --install "${srcdir}"/${pkgname}/build
     #     cd "${srcdir}/${pkgname}-${pkgver}"
     #     make DESTDIR=${pkgdir} install
 }
