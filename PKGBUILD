@@ -2,8 +2,8 @@
 # Contributor: peace4all <markspost at rocketmail dot com>
 
 pkgname=unified-remote-server
-pkgver=3.13.0.2505
-build=2505
+pkgver=3.14.0.2574
+build=2574
 pkgrel=1
 pkgdesc="Unified Remote Server"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 license=('freeware')
 install=$pkgname.install
 source=("https://www.unifiedremote.com/static/builds/server/linux-x64/$build/urserver-$pkgver.deb" "urserver.service")
-sha256sums=('588596ed242597b5e9f09c24f900ee72a33a4d2f48fd6f4afb5f3e48300af42b' '2a2a6118aa028a4ca38638845d1b8d408d57332f3b88c02ff00d5c7f5321428a' )
+sha256sums=('4e44711e7b489e4cf8d3a54394ea5a77358e4de53e0a091740d7076707d93ac8' '2a2a6118aa028a4ca38638845d1b8d408d57332f3b88c02ff00d5c7f5321428a' )
 
 package() {
 	cd ${srcdir}
