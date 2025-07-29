@@ -39,6 +39,11 @@ build() {
   CXXFLAGS="-Wno-error=format-security" ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
+    --libdir=/usr/${_target}/lib \
+    --datadir=/usr/${_target}/share \
+    --datarootdir=/usr/${_target}/share \
+    --build=$CHOST \
+    --host=$CHOST \
     --target=${_target} \
     --enable-languages=c,c++ \
     --disable-nls \
