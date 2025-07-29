@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-input-libinput-preupgrade
-	pkgdesc = Official Xlibre fork of X.Org generic input driver for the xorg server based on libinput
+	pkgdesc = Official Xlibre fork of X.Org generic input driver for the xorg server based on libinput - ONLY for UPGRADES
 	pkgver = 1.5.0.0
 	pkgrel = 2
 	url = https://github.com/X11Libre
