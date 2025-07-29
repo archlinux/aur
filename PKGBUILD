@@ -2,7 +2,7 @@
 
 pkgname=attic
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="personal webarchive"
 arch=(x86_64 aarch64)
 url=https://git.sr.ht/~shtrophic/attic
@@ -16,10 +16,13 @@ sha256sums=('2ba38212a528e208fe0ae3209252e1d4e2b49ee423c9f1b7b3f00c96a9641c17'
             'SKIP')
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
 
+backup=("etc/$pkgname.env")
+install="$pkgname.install"
+
 prepare() {
 	cd "$pkgname-$pkgver"
 
-	sed -i 's|/path/to/content|/var/lib/attic|' attic.service
+	sed -i 's|/path/to/content|/var/lib/attic|' attic.service attic.env
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -39,5 +42,7 @@ package() {
 	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
 	install -Dm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm600 "$pkgname.env" -t "$pkgdir/etc"
+	
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

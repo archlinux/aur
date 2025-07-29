@@ -1,0 +1,3 @@
+post_install() {
+    sed -i "s|changeme|$(openssl rand -base64 32)|" /etc/attic.env
+}
