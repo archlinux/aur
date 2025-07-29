@@ -1,6 +1,6 @@
 pkgbase = hail
 	pkgdesc = A better speedrun timer
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://codeberg.org/periwinkle/hail
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = hail
 	depends = freetype2
 	depends = fontconfig
 	depends = gcc-libs
-	source = hail-0.2.1.tar.gz::https://codeberg.org/periwinkle/hail/archive/0.2.1.tar.gz
+	source = hail-0.2.2.tar.gz::https://codeberg.org/periwinkle/hail/archive/0.2.2.tar.gz
 	source = hail.desktop
-	sha256sums = 67cf779fb032e95123ee6ecf31d42d1620f5f7ebacb633ca81a30b4002f1d228
-	sha256sums = SKIP
+	sha256sums = 73465eb7686cff43c4359dbe6e4bef155beadbece90234ea6b2012ac00465b00
+	sha256sums = 59ee22051362a35f081747901f1319ec28108ceb51d1c572889f37cad51d1a82
 
 pkgname = hail
