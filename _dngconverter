@@ -1,6 +1,6 @@
 #compdef dngconverter
 
-# see: https://wwwimages.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/dng_commandline.pdf
+# see: https://community.adobe.com/havfw69955/attachments/havfw69955/camera-raw/23452/1/DNG%20Converter%20Command%20Line.pdf
 
 _dngconverter(){
   local opts=('-d[directory]:directory:_directories'
