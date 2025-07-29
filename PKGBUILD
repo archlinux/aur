@@ -1,7 +1,7 @@
 # Maintainer: user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Spectral warping wavetable synth. Manual download of .deb installer required."
 arch=('x86_64')
 url="https://vital.audio"
@@ -14,8 +14,8 @@ pkgname_deb="VitalInstaller" # The base name of the .deb file
 filename_deb="${pkgname_deb}.deb" # The full filename expected
 # versioned_filename_deb="${pkgname_deb}-${pkgver}.deb"
 
-# source_x86_64=("${filename_deb}")
-# sha512sums_x86_64=('SKIP')
+source_x86_64=("file://${filename_deb}")
+sha512sums_x86_64=('SKIP')
 
 prepare() {
 
@@ -23,16 +23,16 @@ echo "The AUR moderators have prohibited mirroring ${filename_deb}, so unfortuna
 the users will now be required to manually download the file on their own \
 from ${url}."
     
-    if [[ -f "${srcdir}/${filename_deb}" ]]; then
-        true
-    elif [[ -f "${filename_deb}" ]]; then
-        cp "${filename_deb}" "${srcdir}/"
-    else
-        error "${filename_deb} not found."
-    fi
+    # if [[ -f "${srcdir}/${filename_deb}" ]]; then
+    #     true
+    # elif [[ -f "${filename_deb}" ]]; then
+    #     cp "${filename_deb}" "${srcdir}/"
+    # else
+    #     error "${filename_deb} not found."
+    # fi
 
-    cd "${srcdir}"
-    ar x "${filename_deb}"
+    # cd "${srcdir}"
+    # ar x "${filename_deb}"
 
 }
 
