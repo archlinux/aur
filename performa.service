@@ -1,0 +1,17 @@
+[Unit]
+Description=A multi-server monitoring system
+After=network.target
+
+[Service]
+Type=forking
+User=root
+# The following PIDfile is the default location, 
+# please modify it if necessary
+PIDFile=/opt/performa/logs/performa.pid
+ExecStart=/opt/performa/bin/control.sh start
+ExecStop=/opt/performa/bin/control.sh stop
+# Waiting for PIDfile genegrted
+ExecStartPost=/bin/sleep 1
+
+[Install]
+WantedBy=multi-user.target

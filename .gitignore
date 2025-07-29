@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!performa.install
+!performa.service
+!PKGBUILD
+!.SRCINFO

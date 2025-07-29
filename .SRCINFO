@@ -1,0 +1,22 @@
+pkgbase = performa
+	pkgdesc = A multi-server monitoring system with a web based UI
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/jhuckaby/performa
+	install = performa.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = bash
+	depends = zsh
+	depends = nodejs
+	depends = python
+	provides = performa
+	backup = opt/performa/conf/config.json
+	backup = usr/lib/systemd/system/performa.service
+	source = https://github.com/jhuckaby/performa/archive/refs/tags/v1.1.4.tar.gz
+	source = performa.service
+	sha256sums = 4028bf67371e69fe49adb4169c10443942e07d28a40e74234c14f24037fadca0
+	sha256sums = 6d17185565ce6015abf2fb976cf1bfc407ab605f48c3c5280e44cf05159a3f23
+
+pkgname = performa

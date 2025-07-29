@@ -1,0 +1,24 @@
+post_install() {
+    cat << EOF
+
+Performa installed.
+Please review the configuration file at /opt/performa/conf/config.json.
+And please review systemd service file at /usr/lib/systemd/system/performa.service.
+Next, if this is a master server, type: 'sudo /opt/performa/bin/control.sh setup' to init storage.
+Then, to start the service, type: 'sudo systemctl start performa.service'.
+For full docs, please visit: http://github.com/jhuckaby/performa.
+
+Enjoy!
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+Performa upgraded.
+Please review the configuration file at /opt/performa/conf/config.json.
+For full docs, please visit: http://github.com/jhuckaby/performa.
+
+EOF
+}
