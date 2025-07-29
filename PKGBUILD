@@ -6,8 +6,8 @@
 pkgname=mipsel-elf-binutils
 _pkgname=binutils
 _target="mipsel-elf"
-pkgver=2.44
-pkgrel=3
+pkgver=2.45
+pkgrel=1
 pkgdesc="A collection of binary tools for baremetal MIPS."
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -16,8 +16,8 @@ checkdepends=(dejagnu debuginfod bc)
 depends=(glibc zstd libelf)
 source=(https://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=(
-  'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
-  'b8e0b848b8f615a02b5f91d2f6992db0c062689bc7d4d0fee68edfaf34dee29f'
+  'c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'
+  '987526135ba5e4c0269b397525d613ff9c737ec0cadf176e6b20d87ac6f7c073'
 )
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
@@ -33,8 +33,12 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --libexec=/usr/lib \
+    --libexecdir=/usr/lib \
     --libdir=/usr/${_target}/lib \
+    --datadir=/usr/${_target}/share \
+    --datarootdir=/usr/${_target}/share \
+    --build=$CHOST \
+    --host=$CHOST \
     --target=${_target} \
     --with-newlib \
     --with-gnu-as \
@@ -75,5 +79,4 @@ package() {
 
   find "${pkgdir}" -name '*.la' -delete
   find "${pkgdir}" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
-  rm -rf "${pkgdir}"/usr/share/{man,info}
 }
