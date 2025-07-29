@@ -1,0 +1,20 @@
+pkgbase = font-bakoma
+	pkgdesc = The CM and AMS fonts distributed by CTAN
+	pkgver = 20050616
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/bakoma-fonts
+	arch = any
+	license = Unlicense
+	makedepends = unzip
+	depends = fontconfig
+	provides = font-bakoma
+	source = https://mirrors.ctan.org/fonts/cm/ps-type1/bakoma.zip
+	source = license.html::https://www.ctan.org/license/other-free
+	sha256sums = 6fb67f2fdaf5846fe81734d04d69096b847d2b41ca6da7923a9a73437e588734
+	sha256sums = SKIP
+
+pkgname = otf-bakoma
+	pkgdesc = The CM and AMS fonts distributed by CTAN (OTF)
+
+pkgname = ttf-bakoma
+	pkgdesc = The CM and AMS fonts distributed by CTAN (TTF)
