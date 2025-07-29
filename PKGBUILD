@@ -2,7 +2,7 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-glibc"
-pkgver=2.41
+pkgver=2.42
 pkgrel=1
 pkgdesc='GNU C library for the MIPS64EL target with multilib ABI'
 arch=('any')
@@ -10,11 +10,11 @@ url='https://www.gnu.org/software/libc/'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 depends=("${_target}-linux-api-headers")
 makedepends=("${_target}-gcc-bootstrap" 'python')
-options=('!emptydirs' '!strip' 'staticlibs' '!lto' '!debug')
+options=('!debug' '!emptydirs' '!lto' 'staticlibs' '!strip')
 source=("https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz"{,.sig}
         'sdt-config.h'
         'sdt.h')
-sha256sums=('a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
+sha256sums=('d1775e32e4628e64ef930f435b67bb63af7599acb6be2b335b9f19f16509f17f'
             'SKIP'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
             '774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70')
