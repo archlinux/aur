@@ -1,7 +1,7 @@
 pkgbase = ruyi
 	pkgdesc = RuyiSDK Package Manager
 	pkgver = 0.38.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruyisdk/ruyi
 	arch = any
 	license = Apache-2.0
@@ -13,6 +13,7 @@ pkgbase = ruyi
 	depends = python-argcomplete
 	depends = python-arpy
 	depends = python-certifi
+	depends = python-fastjsonschema
 	depends = python-jinja
 	depends = python-packaging
 	depends = python-pygit2

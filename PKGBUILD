@@ -2,7 +2,7 @@
 
 pkgname=ruyi
 pkgver=0.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc="RuyiSDK Package Manager"
 arch=(any)
 url="https://github.com/ruyisdk/ruyi"
@@ -12,6 +12,7 @@ depends=(
   'python-argcomplete'
   'python-arpy'
   'python-certifi'
+  'python-fastjsonschema'
   'python-jinja'
   'python-packaging'
   'python-pygit2'
