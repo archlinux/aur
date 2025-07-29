@@ -1,17 +1,17 @@
 pkgbase = animu-bin
 	pkgdesc = An easy to use desktop application for watching anime.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/Owca525/animu
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron34
+	depends = electron37
 	depends = python
-	provides = animu=0.5.6
+	provides = animu=0.5.7
 	conflicts = animu
-	source = animu-0.5.6.deb::https://github.com/Owca525/animu/releases/download/v0.5.6/animu-0.5.6.deb
+	source = animu-0.5.7.deb::https://github.com/Owca525/animu/releases/download/v0.5.7/animu-0.5.7.deb
 	source = animu.sh
-	sha256sums = 354adff9170164c3abc540329ffc87509111f6be36e6d6dd211a326ce99397d9
+	sha256sums = 3ecc318f1c33c35eb4bf6cdf4e7a5249f228218289d90a3a7435065014328df1
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = animu-bin
