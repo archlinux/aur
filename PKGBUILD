@@ -6,7 +6,7 @@ _pkgname=classisland
 _appname=cn.classisland.app
 pkgver=1.7.104.0.r1.g91f0355
 pkgrel=1
-pkgdesc="Class schedule displaying tool for interactive whiteboards in classrooms."
+pkgdesc="适用于班级大屏的课表小工具（最新开发构建）。Class schedule displaying tool for interactive whiteboards in classrooms. (Built from latest Git commit)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ClassIsland/ClassIsland"
 _branch="dev"
@@ -16,8 +16,8 @@ depends=(
     'bash'
     'dotnet-runtime-8.0'
     'fontconfig'
-    'glibc'
     'gcc-libs'
+    'glibc'
     'hicolor-icon-theme'
 )
 makedepends=(

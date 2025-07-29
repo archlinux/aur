@@ -1,5 +1,5 @@
 pkgbase = classisland-git
-	pkgdesc = Class schedule displaying tool for interactive whiteboards in classrooms.
+	pkgdesc = 适用于班级大屏的课表小工具（最新开发构建）。Class schedule displaying tool for interactive whiteboards in classrooms. (Built from latest Git commit)
 	pkgver = 1.7.104.0.r1.g91f0355
 	pkgrel = 1
 	url = https://github.com/ClassIsland/ClassIsland
@@ -12,8 +12,8 @@ pkgbase = classisland-git
 	depends = bash
 	depends = dotnet-runtime-8.0
 	depends = fontconfig
-	depends = glibc
 	depends = gcc-libs
+	depends = glibc
 	depends = hicolor-icon-theme
 	provides = classisland=1.7.104.0
 	conflicts = classisland
