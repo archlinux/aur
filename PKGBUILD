@@ -2,8 +2,8 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-_rpmversion=7.5.3735.34-1
-pkgver=7.5.3735.34
+_rpmversion=7.6.3765.3-1
+pkgver=7.6.3765.3
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
@@ -23,7 +23,7 @@ depends=(
     'shared-mime-info'
     'hicolor-icon-theme'
 )
-makedepends=('w3m' 'imagemagick')
+makedepends=('w3m')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
     'org.freedesktop.secrets: better secret storage in gnome-keyring or kwallet'
@@ -37,7 +37,7 @@ optdepends=(
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm"
         '0001-add-support-for-user-flags.patch')
-sha512sums=('d44ccd261456b92a97c03f175ae1b180fc0b7443a6bea2a3b29d98b4193dbb362476f07a5ef9c0f9010225f1d6db6817e6720c69b8d203629f60a043d49260aa'
+sha512sums=('39a87f8d10f8269a864df8c5858d54b4c2207aabe1ec89b45fdce59ba12736db02abd8677a63953af37ddd7497c7aec979ba8820c620afcb8e2859c8566fd5f6'
             'a9bdab0fb0f394af17d1b126bae2d0cdc55e63eaa6eaf36eb994735047d3d7bc5000d75ab930f74b76b283c5addefbd4e4e63c5e4f2908bd53c270e73641c19d')
 
 package() {
@@ -59,27 +59,9 @@ package() {
         ln -s /opt/$pkgname/$pkgname "$binf"
     fi
 
-    # 256 and 24 are proper colored icons
-    for res in 128 64 48 32; do
-        magick convert "$pkgdir/opt/$pkgname/product_logo_256.png" \
-            -resize ${res}x${res} \
-            "$pkgdir/opt/$pkgname/product_logo_$res.png"
-    done
-    for res in 22 16; do
-        convert "$pkgdir/opt/$pkgname/product_logo_24.png" \
-            -resize ${res}x${res} \
-            "$pkgdir/opt/$pkgname/product_logo_$res.png"
-    done
-
-    # install icons
-    for res in 16 22 24 32 48 64 128 256; do
-        install -Dm644 "$pkgdir/opt/$pkgname/product_logo_${res}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$pkgname.png"
-    done
-
-    # install global icon in case hicolor theme gets bypassed
-    install -Dm644 "$pkgdir/opt/$pkgname/product_logo_256.png" \
-        "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    # Vivaldi has different design for each size of icons. Avoid using them.
+    install -d "$pkgdir/usr/share/pixmaps"
+    ln -sf /opt/${pkgname}/product_logo_256.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 
     # license
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
