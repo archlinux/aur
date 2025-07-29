@@ -7,4 +7,4 @@ Exec=/usr/bin/watt-toolkit
 Icon=watt-toolkit
 Categories=Network;Utility
 Keywords=Steam;Steam++;WattToolkit
-StartupWMClass=steam++
+StartupWMClass=Steam++
