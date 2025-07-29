@@ -28,4 +28,4 @@ path = [
     "0003-kernel-5.18.patch",
 ]
 SPDX-FileCopyrightText = "bbswitch contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-2.0-only"
