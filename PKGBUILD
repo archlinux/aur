@@ -2,7 +2,7 @@
 # Contributor: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.30.0
+pkgver=1.30.2
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
@@ -24,7 +24,7 @@ optdepends=('ffmpeg: Pixiv Ugoira conversion'
             'python-truststore: Support using system certificates')
 source=(git+"${url}".git#tag=v"${pkgver}"?signed)
 validpgpkeys=(3E09F5908333DD83DBDCE7375680CA389D365A88) #Mike Fährmann
-sha512sums=('2d353b42f87babd681dadffa12752073c9b821994291c00bedfd212e29541b3a79350fc73aef6a34b72abc937394603591c324044b41b770963466382f8cddf3')
+sha512sums=('7b761b7e006cf6b91921b6704c0a049314fac9321f74287679cddfdc7571da91fa5dcc6ae81f09760634f49c3cee7b195b098f52e00c09e52b539427cee7959c')
 
 prepare() {
     # Clean out old wheels etc.
@@ -45,5 +45,5 @@ package() {
     cd ${pkgname}
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" docs/{configuration.rst,formatting.md,gallery-dl-example.conf}
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" docs/{configuration.rst,formatting.md,gallery-dl-example.conf} CHANGELOG.md
 }
