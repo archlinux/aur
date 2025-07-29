@@ -2,7 +2,7 @@
 
 pkgname="hyprcap"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 url="https://github.com/alonso-herreros/hyprcap"
 pkgdesc="A utility to easily capture screenshots and recordings in Hyprland"
 license=('GPL-3.0-only')
@@ -23,7 +23,7 @@ depends=(
 _pkgsrc="$pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext::$url/archive/v$pkgver.$_pkgext")
-sha256sums=('97de5278d6c6c339a6a2ec8f823bfdd0f32b4cf9335b6833f5ae808ba8ff21e6')
+sha256sums=('0aed62024d3155b4fba95e784c1412e67c99ad565739b4203bab57a736ce861a')
 
 package() {
   cd "$srcdir/$_pkgsrc"
