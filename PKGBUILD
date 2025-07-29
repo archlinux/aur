@@ -2,7 +2,7 @@
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=speedynote-git
-pkgver=0.4.10.1.r2.g5290122
+pkgver=0.7.1.r0.g99dcf07
 pkgrel=1
 pkgdesc="A simple note app with good performance and PDF import support"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'qt5-tools')
 provides=('speedynote')
 conflicts=('speedynote' 'speedynote-bin')
 source=(
-  "git+$url.git#branch=linux"
+  "git+$url.git"
   "speedynote.desktop"
   "speedynote.png"
 )
@@ -49,7 +49,7 @@ package() {
   install -Dm755 build/NoteApp "$pkgdir/usr/bin/speedynote"
 
   # install translations
-  install -Dm644 build/app_*.qm -t "$pkgdir/usr/share/speedynote/translations/"
+  # install -Dm644 build/app_*.qm -t "$pkgdir/usr/share/speedynote/translations/"
 
   # install license
   install -Dm644 "SpeedyNote/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
