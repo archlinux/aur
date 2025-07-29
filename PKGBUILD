@@ -2,7 +2,7 @@
 
 pkgname=elephant-desktopapplications
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='desktopapplications provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ sha256sums=('480839a4fa06df8c7c34bc91d7804da7c604b64abf5c531f7067f93dcedd7ce4')
 
 build() {
     cd elephant-${pkgver}/internal/providers/desktopapplications
-    go build -buildmode=plugin
+    go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
