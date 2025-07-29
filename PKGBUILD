@@ -2,7 +2,7 @@
 
 pkgname=attic
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="personal webarchive"
 arch=(x86_64 aarch64)
 url=https://git.sr.ht/~shtrophic/attic

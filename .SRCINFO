@@ -1,7 +1,7 @@
 pkgbase = attic
 	pkgdesc = personal webarchive
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~shtrophic/attic
 	arch = x86_64
 	arch = aarch64
