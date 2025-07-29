@@ -47,22 +47,24 @@ makedepends=(
 optdepends=(
   'python-openai: required for openai protocols'
   'python-prometheus_client: Prometheus instrumentation library for Python applications'
-  'prometheus-fastapi-instrumentator: Prometheus fastapi implementation'
+  'python-prometheus-fastapi-instrumentator: Prometheus fastapi implementation'
   'python-pillow: required for image processing'
-  'python-tiktonek: required for DBRX tokenizer'
-  'python-lm-format-enforcer: required for JSON/REGEX llm output'
   'python-outlines: guided text generation'
   'python-lark: parsing toolkit'
-  'python-xgrammar: flexible structured generation'
   'python-typing_extensions: typing hints'
   'python-partial-json-parser: parse partial JSON output'
   'python-msgspec: JSON/MessagePack library with validation'
   'python-mistral-common: mistral tools for opencv'
   'python-einops: required for QWen2-VL models'
   'python-compressed-tensors: required to load compressed tensor files'
-  'python-depyf: required for debugging and profiling with complilation config'
   'python-torchaudio: required for image processor of minicpm-o-2.6'
-  'python-datasets: tools to benchmark scripts')
+  'python-datasets: tools to benchmark scripts'
+#not currently in aur
+  'python-xgrammar: flexible structured generation'
+  'python-depyf: required for debugging and profiling with complilation config'
+  'python-tiktoken: required for DBRX tokenizer'
+  'python-lm-format-enforcer: required for JSON/REGEX llm output'
+  )
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('44f535b941d2447e817b32fca6ded58041e9e6e5f4984c97e045db66dac798c3')
