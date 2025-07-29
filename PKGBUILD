@@ -5,7 +5,7 @@ pkgname=classisland-git
 _pkgname=classisland
 _appname=cn.classisland.app
 pkgver=1.7.104.0.r1.g91f0355
-pkgrel=1
+pkgrel=2
 pkgdesc="适用于班级大屏的课表小工具（最新开发构建）。Class schedule displaying tool for interactive whiteboards in classrooms. (Built from latest Git commit)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ClassIsland/ClassIsland"
@@ -63,7 +63,6 @@ package() {
     cp -r "${srcdir}/ClassIsland/out/ClassIsland" "${pkgdir}/opt"
     mv "${pkgdir}/opt/ClassIsland" "${pkgdir}/opt/${_pkgname}"
     printf "deb" > "${pkgdir}/opt/${_pkgname}/PackageType"
-    install -Dm644 "${srcdir}/ClassIsland/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/ClassIsland/ClassIsland/Assets/AppLogo_AppLogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
     install -Dm644 "${srcdir}/ClassIsland/ClassIsland/Assets/ShortcutTemplates/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
     sed -i "s/{0}/${pkgver}/" "${pkgdir}/usr/share/applications/${_appname}.desktop"
