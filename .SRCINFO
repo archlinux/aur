@@ -1,0 +1,27 @@
+pkgbase = animepahe-dl
+	pkgdesc = A Python-based tool to download anime from AnimePahe, featuring both a Command-Line Interface (CLI) and a Graphical User Interface (GUI).
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ayushjaipuriyar/animepahe-dl
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	depends = python
+	depends = ffmpeg
+	depends = fzf
+	depends = nodejs
+	depends = python-beautifulsoup4
+	depends = python-pyfzf
+	depends = python-pycryptodome
+	depends = python-tqdm
+	depends = python-urllib3
+	depends = python-pyqt6
+	depends = python-platformdirs
+	depends = python-loguru
+	depends = python-plyer
+	depends = python-questionary
+	source = git+https://github.com/ayushjaipuriyar/animepahe-dl.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = animepahe-dl
