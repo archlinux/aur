@@ -2,7 +2,7 @@
 
 pkgname="hyprcap"
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 url="https://github.com/alonso-herreros/hyprcap"
 pkgdesc="A utility to easily capture screenshots and recordings in Hyprland"
 license=('GPL-3.0-only')
@@ -18,6 +18,9 @@ depends=(
   'slurp'
   'hyprpicker' # To freeze the screen
   'wl-clipboard'
+)
+optdepends=(
+  'fuzzel'
 )
 
 _pkgsrc="$pkgname-$pkgver"
