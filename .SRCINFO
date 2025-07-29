@@ -1,12 +1,13 @@
 pkgbase = wrk
 	pkgdesc = Modern HTTP benchmarking tool
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wg/wrk/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = Apache
+	makedepends = make
 	depends = openssl
 	depends = luajit
 	options = !makeflags
