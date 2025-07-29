@@ -1,0 +1,15 @@
+pkgbase = steam-kde-vrr-toggle
+	pkgdesc = A Steam wrapper to toggle VRR/Adaptive-Sync on a per-game basis in KDE Plasma (Wayland).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tdawe1/steam-kde-vrr-toggle
+	arch = any
+	license = 0BSD
+	depends = bash
+	depends = jq
+	depends = kscreen
+	optdepends = steam: For launching games
+	source = steam-kde-vrr-toggle-1.0.0.tar.gz::https://github.com/tdawe1/steam-kde-vrr-toggle/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = steam-kde-vrr-toggle
