@@ -5,7 +5,12 @@ pkgbase = avbroot
 	url = https://github.com/chenxiaolong/avbroot
 	arch = x86_64
 	license = GPL
-	source = https://github.com/chenxiaolong/avbroot/releases/download/v3.17.2/avbroot-3.17.2-x86_64-unknown-linux-gnu.zip
-	sha256sums = dac4a572380e1797105c4c9dab15d1b73a333b2482f8aa487f6251406c10dabd
+	makedepends = rust
+	makedepends = gcc
+	makedepends = git
+	depends = glibc
+	options = !debug
+	source = https://github.com/chenxiaolong/avbroot/archive/refs/tags/v3.17.2.tar.gz
+	sha256sums = 91e12373159138ea960d4cbe72d27a4bf31cfeb8697a845b8e8b92faa103fb85
 
 pkgname = avbroot
