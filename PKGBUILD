@@ -3,10 +3,10 @@
 pkgname=cwal-git
 _pkgname=cwal
 
-pkgver=0.1.0.r0.g3028579
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Blazing-fast pywal-like color palette generator written in C."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/nitinbhat972/cwal"
 license=('GPL3')
 depends=('imagemagick' 'libimagequant')
@@ -20,12 +20,6 @@ pkgver() {
     cd "$srcdir/$_pkgname"
     git describe --long --tags --abbrev=7 \
         | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${srcdir}/${_pkgname}" || exit 1
-    git sparse-checkout init --no-cone
-    git sparse-checkout set '*' '!assets/'
 }
 
 build() {
