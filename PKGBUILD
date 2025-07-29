@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=updo
-pkgver=0.2.3
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Uptime monitoring CLI tool with alerting and advanced settings"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('16774b52541947d117afba37f98f6800ff8f9164848ede522b00def8fdfb0546')
+sha256sums=('d027df36df12d366ca3db4a709d46a96917a746cf9db87219cef062c4e418bc8')
 
 prepare(){
     cd "$pkgname-$pkgver"
