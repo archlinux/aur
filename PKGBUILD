@@ -12,8 +12,8 @@ depends=(glibc gcc-libs openssl)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz.asc::$url/archive/$pkgver.tar.gz.asc")
-sha256sums=('16d29270cf92cbf87c100c9dea3209b21c2b0f023eef128d5e7ce2c26757358a'
-	'SKIP')
+sha256sums=('2ba38212a528e208fe0ae3209252e1d4e2b49ee423c9f1b7b3f00c96a9641c17'
+            'SKIP')
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
 
 prepare() {
