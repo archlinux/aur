@@ -1,0 +1,8 @@
+pkgbase = libgendesktop
+	pkgdesc = Simple Electron GUI for Library Genesis with extra features.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+
+pkgname = libgendesktop
