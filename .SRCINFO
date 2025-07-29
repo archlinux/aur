@@ -1,13 +1,13 @@
 pkgbase = rfortune
 	pkgdesc = A Rust-based clone of the classic 'fortune' command
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/umpire274/rFortune
 	arch = x86_64
 	license = MIT
 	provides = rfortune
 	conflicts = rfortune
-	source = rfortune-0.2.0.tar.gz::https://github.com/umpire274/rFortune/releases/download/v0.2.0/rfortune-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	source = rfortune-0.2.1.tar.gz::https://github.com/umpire274/rFortune/releases/download/v0.2.1/rfortune-0.2.1-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = ea2e3bb42de6583a3d7bd725bf4a3c04f093133f84e0909edddee67dd554ca30
 
 pkgname = rfortune
