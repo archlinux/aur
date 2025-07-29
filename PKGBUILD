@@ -3,7 +3,7 @@
 __pkgname=jule
 _pkgname="${__pkgname}c"
 pkgname="$_pkgname-git"
-pkgver=0.1.4+r.4eed9775
+pkgver=0.1.6+r.fd2b1fe4
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -47,6 +47,13 @@ build() {
         -Wno-everything \
         -fwrapv \
         -ffloat-store \
+        -fno-fast-math \
+        -fno-rounding-math \
+        -ffp-contract=fast \
+        -fexcess-precision=standard \
+        -DNDEBUG \
+        -fomit-frame-pointer \
+        -fno-strict-aliasing \
         -o "bin/$_pkgname-dev"
 
     echo "Building $_pkgname for $CARCH..."
