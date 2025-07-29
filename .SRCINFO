@@ -5,7 +5,7 @@ pkgbase = xmcl-electron-bin
 	url = https://xmcl.app/
 	arch = x86_64
 	license = MIT
-	depends = electron34
+	depends = electron36
 	optdepends = jre11-openjdk: Recommended for Minecraft 1.12(17w13a)-1.17(21w18a)
 	optdepends = jre17-openjdk: Recommended for Minecraft 1.17(21w19a)-1.20
 	optdepends = jre21-openjdk: Recommended for Minecraft 1.21
@@ -15,7 +15,7 @@ pkgbase = xmcl-electron-bin
 	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.51.1/app-0.51.1-linux.asar.gz
 	source = https://github.com/Voxelum/x-minecraft-launcher/blob/v0.51.1/xmcl-electron-app/icons/dark@256x256.png?raw=true
 	source = xmcl.desktop
-	sha256sums = SKIP
+	sha256sums = f0b0bb974c04d045bf4cdf77d7bbf8ed3ac997ed03e18448454d25da269a8e36
 	sha256sums = SKIP
 	sha256sums = 2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010
 
