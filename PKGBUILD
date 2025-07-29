@@ -1,26 +1,43 @@
-# Contributor: Beneldr <beneldr (dot) aur (at) gmail (dot) com>
+# Maintainer: shtrophci <aur at shtrophic dot net>
 
 pkgname=attic
-pkgver=0.16
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='A deduplicating backup program for efficient and secure backups.'
-arch=('i686' 'x86_64')
-url='https://attic-backup.org/'
-license=('BSD')
-depends=('openssl' 'python-msgpack')
-optdepends=('python-llfuse: Mounting backups as a FUSE filesystem')
-makedepends=('python-sphinx')
-source=("https://pypi.python.org/packages/source/A/Attic/Attic-${pkgver}.tar.gz")
-sha256sums=('6650cd28072101c2e05941e77b93a62f91da6179785e4e4b4880916c469bba2c')
+pkgdesc="personal webarchive"
+arch=(x86_64 aarch64)
+url=https://git.sr.ht/~shtrophic/attic
+license=(AGPL-3.0-or-later)
+
+depends=(glibc gcc-libs openssl)
+makedepends=(cargo)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.asc::$url/archive/$pkgver.tar.gz.asc")
+sha256sums=('16d29270cf92cbf87c100c9dea3209b21c2b0f023eef128d5e7ce2c26757358a'
+	'SKIP')
+validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
+
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	sed -i 's|/path/to/content|/var/lib/attic|' attic.service
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "$srcdir/Attic-$pkgver/docs"
-  PYTHONPATH=.. make man
+	cd "$pkgname-$pkgver"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
-  cd "$srcdir/Attic-$pkgver"
-  install -D -m644 "docs/_build/man/attic-deduplicatingarchiver.1" "$pkgdir/usr/share/man/man1/attic.1"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python3 setup.py -q install --root="$pkgdir" --optimize=1
+	cd "$pkgname-$pkgver"
+
+	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+	install -Dm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
