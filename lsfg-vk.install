@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+
+# determine the real invoking user/home
+_user="${SUDO_USER:-$(logname 2>/dev/null)}"
+_home="$(getent passwd "$_user" | cut -d: -f6)"
+_data_home="${XDG_DATA_HOME:-$_home/.local/share}"
+_config_home="${XDG_CONFIG_HOME:-$_home/.config}"
+
+# search known locations prefixes for Lossless.dll
+if [[ -z "$steam_dll" ]]; then
+    prefixes=(
+        "$_data_home/Steam/steamapps/common"
+        "$_home/.steam/steam/steamapps/common"
+        "$_home/.steam/root/steamapps/common"
+        "$_home/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common"
+        "$_home/snap/steam/common/.local/share/Steam/steamapps/common"
+    )
+
+    for prefix in "${prefixes[@]}"; do
+        candidate="$prefix/Lossless Scaling/Lossless.dll"
+        if [[ -f "$candidate" ]]; then
+            steam_dll="$candidate"
+            break
+        fi
+    done
+fi
+
+user_manifest="$_data_home/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json"
+user_library="$_home/.local/lib/liblsfg-vk.so"
+
+incorrect_version() {
+    case "$1" in
+          1.6.0.0 \
+        | 2.8.2.0 \
+        | 2.9.0.0 \
+        | 2.10.0.0 \
+        | 2.11.0.0 \
+        | 2.12.0.0 \
+        | 2.13.2.0 \
+        | 3.0.0.1 \
+        | 3.1.0.2)
+        return 0 ;; # old versions
+        *)
+        return 1 ;;  # latest version
+    esac
+}
+
+# extracts the ProductVersion string from the dll
+get_product_version() {
+    local file="$1"
+    strings -e l "$file" 2>/dev/null | awk '/^ProductVersion$/ { getline; print; exit }'
+}
+
+check_steam_install() {
+    if [ ! -f "$steam_dll" ]; then
+        echo "================================================================================================================================="
+        echo "==  WARNING: Lossless Scaling DLL not found in any of the expected locations!                                                  =="
+        echo "==  Please install the latest version via Steam.                                                                               =="
+        echo "==                                                                                                                             =="
+        echo "==  It should be installed by Steam under any of the following paths:                                                          =="
+
+        for prefix in "${prefixes[@]}"; do
+            echo "==    $prefix/Lossless Scaling/Lossless.dll"
+        done
+
+        echo "==                                                                                                                             =="
+        echo "==  If you've installed it under a different path, please set the env var:                                                     =="
+        echo "==    LSFG_DLL_PATH=\"/your/path/Lossless.dll\"                                                                                  =="
+    else
+        version="$(get_product_version "$steam_dll")"
+        if incorrect_version "$version"; then
+            echo "================================================================================================================================="
+            echo "==  WARNING: Lossless Scaling version mismatch!                                                                                =="
+            echo "==    Installed version: $version"
+            echo "==                                                                                                                             =="
+            echo "==  Please install the latest build via Steam:                                                                                 =="
+            echo "==    Library → Lossless Scaling → Properties → Betas → None                                                                   =="
+        fi
+    fi
+}
+
+check_local_install() {
+    residuals=()
+    [ -f "$user_manifest" ] && residuals+=("$user_manifest")
+    [ -f "$user_library" ]  && residuals+=("$user_library")
+
+    if [ "${#residuals[@]}" -gt 0 ]; then
+        echo "================================================================================================================================="
+        echo "==  WARNING: Found residual files from previous local install:                                                                 =="
+        for file in "${residuals[@]}"; do
+            echo "==    $file  "
+        done
+        echo "==                                                                                                                             =="
+        echo "==  You can remove them with:                                                                                                  =="
+        printf "==    rm"
+        for file in "${residuals[@]}"; do
+            printf " \"%s\"" "$file"
+        done
+        echo ""
+    fi
+}
+
+post_install() {
+    check_steam_install
+    check_local_install
+
+    echo "================================================================================================================================="
+    echo "==  To enable lsfg-vk, you can either use the environment variables listed here:                                               =="
+    echo "==    https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk#legacy-environment-variables                      =="
+    echo "==                                                                                                                             =="
+    echo "==  Or the new config system, located at:                                                                                      =="
+    echo "==    $_config_home/lsfg-vk/conf.toml"
+    echo "==  WARNING: The config is generated only after launching at least 1 vulkan app!                                               =="
+    echo "==                                                                                                                             =="
+    echo "==  For more usage instructions, refer to the lsfg-vk wiki:                                                                    =="
+    echo "==    https://github.com/PancakeTAS/lsfg-vk/wiki/Configuring-lsfg%E2%80%90vk                                                   =="
+    echo "================================================================================================================================="
+}
+
+post_upgrade() {
+    post_install
+}
