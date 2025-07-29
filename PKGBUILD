@@ -3,7 +3,8 @@
 pkgname=mipsel-linux-gnu-gcc91
 _pkgname=gcc
 _target="mipsel-linux-gnu"
-pkgver=9.1.0
+_pkgver=9
+pkgver=${_pkgver}.1.0
 pkgrel=2
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
@@ -11,7 +12,6 @@ arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('libmpc' 'xz' "${_target}-binutils")
 makedepends=('gmp' 'mpfr')
-conflicts=('mipsel-linux-gnu-gcc')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz) #{,.sig})
 sha256sums=(
@@ -31,11 +31,13 @@ build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
   CXXFLAGS="-Wno-error=format-security" ./configure \
+    --program-suffix=-${_pkgver} \
+    --program-prefix=${_target}- \
     --prefix=/usr \
     --libexecdir=/usr/lib \
-    --libdir=/usr/${_target}/lib \
-    --datadir=/usr/${_target}/share \
-    --datarootdir=/usr/${_target}/share \
+    --libdir=/usr/${_target}-${pkgver}/lib \
+    --datadir=/usr/${_target}-${pkgver}/share \
+    --datarootdir=/usr/${_target}-${pkgver}/share \
     --build=$CHOST \
     --host=$CHOST \
     --target=${_target} \

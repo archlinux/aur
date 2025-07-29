@@ -12,7 +12,6 @@ pkgbase = mipsel-linux-gnu-gcc91
 	depends = libmpc
 	depends = xz
 	depends = mipsel-linux-gnu-binutils
-	conflicts = mipsel-linux-gnu-gcc
 	options = !ccache
 	options = !distcc
 	options = !emptydirs
