@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=systemfonts
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,6 +16,7 @@ depends=(
   freetype2
   r-jsonlite
   r-lifecycle
+  r-base64enc
 )
 makedepends=(
   r-cpp11
@@ -32,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('310de95eee9968a5665e4a9baf62a151')
-b2sums=('c7399efdce7a1a917a6990648a59755a7b2de80a8cc0be33aa3c2784277a05c1388cea0946a571f8be7f9bd902f687b40dd0c9a24131bab5f889bc967457e91f')
+md5sums=('d106198eb1265eb1ab6114e080667e43')
+b2sums=('bb600545beaa6a5d0dcab780f91aea9e61575b8ee303551a5b3462afee1941f523f1050cc6e68f63a2d353e80e7dec7a61cc13a0b4b574624d21375ad6c3fe8c')
 
 build() {
   mkdir build
