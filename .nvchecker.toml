@@ -1,4 +1,4 @@
 [gnome-shell-extension-forge]
 source = "git"
 git = "https://github.com/forge-ext/forge.git"
-prefix = "v47-"
+prefix = "v48-"
