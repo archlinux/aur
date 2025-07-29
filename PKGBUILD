@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=pdserv
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="The PdServ library provides process data communication mechanisms for Linux real-time applications in user space (i. e. using RT-PREEMPT). The main focus is placed on providing a process-data interface without interfering real-time operation."
 arch=($CARCH)
@@ -36,13 +36,14 @@ options=()
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('30bdbbbee81362b282c608b206a4f60f3b5ad274f76d992fcbe412686f6a82a4')
+sha256sums=('99bcf63e90abd06628afe59ae5cdc6dfa8f9a5e60ad9c1482128a0d250992dfb')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DPAM_SERVICE_DIR=/etc/security \
+	 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev \
         -B build \
         -G Ninja

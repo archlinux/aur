@@ -1,6 +1,6 @@
 pkgbase = pdserv
 	pkgdesc = The PdServ library provides process data communication mechanisms for Linux real-time applications in user space (i. e. using RT-PREEMPT). The main focus is placed on providing a process-data interface without interfering real-time operation.
-	pkgver = 3.3.1
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://gitlab.com/etherlab.org/pdserv
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = pdserv
 	optdepends = pdcom: The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data.
 	provides = pdserv
 	conflicts = pdserv
-	source = pdserv-3.3.1.tar.gz::https://gitlab.com/etherlab.org/pdserv/-/archive/3.3.1/pdserv-3.3.1.tar.gz
-	sha256sums = 30bdbbbee81362b282c608b206a4f60f3b5ad274f76d992fcbe412686f6a82a4
+	source = pdserv-3.4.0.tar.gz::https://gitlab.com/etherlab.org/pdserv/-/archive/3.4.0/pdserv-3.4.0.tar.gz
+	sha256sums = 99bcf63e90abd06628afe59ae5cdc6dfa8f9a5e60ad9c1482128a0d250992dfb
 
 pkgname = pdserv
