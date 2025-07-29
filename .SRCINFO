@@ -1,6 +1,6 @@
 pkgbase = imagefanreloaded-avalonia-bin
 	pkgdesc = ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing.(Prebuilt version)
-	pkgver = 1.2025.07.28
+	pkgver = 1.2025.07.30
 	pkgrel = 1
 	url = https://github.com/mihnea-radulescu/imagefanreloaded
 	arch = aarch64
@@ -11,15 +11,15 @@ pkgbase = imagefanreloaded-avalonia-bin
 	makedepends = gendesk
 	depends = fontconfig
 	depends = dotnet-runtime
-	provides = imagefanreloaded-avalonia=1.2025.07.28
+	provides = imagefanreloaded-avalonia=1.2025.07.30
 	conflicts = imagefanreloaded-avalonia
 	options = !strip
 	options = staticlibs
 	source = imagefanreloaded-avalonia.sh
 	sha256sums = 6aca7dfd3abf71dd91e7b5d6a6d78084c8d52cf5df2564d3889b07e6621940c4
-	source_aarch64 = imagefanreloaded-avalonia-1.2025.07.28-aarch64.tar.gz::https://github.com/mihnea-radulescu/imagefanreloaded/releases/download/1.2025.07.28/ImageFanReloaded_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 87a7370f7bff146b170d550900c65bef2567c67d8e5463da5866fc859db554e2
-	source_x86_64 = imagefanreloaded-avalonia-1.2025.07.28-x86_64.tar.gz::https://github.com/mihnea-radulescu/imagefanreloaded/releases/download/1.2025.07.28/ImageFanReloaded_Linux_x64.tar.gz
-	sha256sums_x86_64 = 1a36c9bcde6a0d292194763f086c1f81d9d59befe4b3ced4ce05a48fa7b96007
+	source_aarch64 = imagefanreloaded-avalonia-1.2025.07.30-aarch64.tar.gz::https://github.com/mihnea-radulescu/imagefanreloaded/releases/download/1.2025.07.30/ImageFanReloaded_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 575804fa1c27f7d95fd59adb7f71d1d02a6b32852606430ad6fdf62cb3581739
+	source_x86_64 = imagefanreloaded-avalonia-1.2025.07.30-x86_64.tar.gz::https://github.com/mihnea-radulescu/imagefanreloaded/releases/download/1.2025.07.30/ImageFanReloaded_Linux_x64.tar.gz
+	sha256sums_x86_64 = 5ed365dd3c86fce798ccacbd205ecdfd8e12d393defc3b008c2b97277b925844
 
 pkgname = imagefanreloaded-avalonia-bin
