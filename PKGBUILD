@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrically-bin
 _pkgname=Lyrically
-pkgver=0.5.0
+pkgver=0.6.0
 _electronversion=30
 pkgrel=1
 pkgdesc="Music player inspired by Lyric Speaker.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,11 @@ source=(
 sha256sums=('c379a0625ed7e1ef8c867af8b57049bbe7a5616b6d4702257e339505e6761779'
             'ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a'
             '9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/${_pkgname}-linux-x64/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,6 +37,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     gendesk -f -n -q \
         --pkgname="${pkgname%-bin}" \
         --pkgdesc="${pkgdesc}" \
