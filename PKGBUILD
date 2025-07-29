@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=runitor-git
-pkgver=v1.3.0.beta.2.r7.ge92b933
+pkgver=v1.4.1.r0.g99c5526
 _binver=v0.7.0
 pkgrel=1
 pkgdesc="A command runner with healthchecks.io integration"
