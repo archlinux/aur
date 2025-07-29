@@ -1,0 +1,13 @@
+pkgbase = vs-launcher-appimage
+	pkgdesc = Unofficial launcher and version manager for Vintage Story
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://github.com/XurxoMF/vs-launcher
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source = vs-launcher-1.5.5.AppImage::https://github.com/XurxoMF/vs-launcher/releases/download/1.5.5/vs-launcher-1.5.5.AppImage
+	sha256sums = e5c9826bad2277a82d7d88cd3993b4e8f3bb46834ce45b9b79af63da406b1840
+
+pkgname = vs-launcher-appimage
