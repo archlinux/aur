@@ -22,8 +22,8 @@ source=(
     "https://github.com/Voxelum/x-minecraft-launcher/blob/v${pkgver}/xmcl-electron-app/icons/dark@256x256.png?raw=true"
     "xmcl.desktop"
 )
-source_x86_64=("app_${CARCH}.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux.asar.gz")
-source_aarch64=("app_${CARCH}.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux-arm64.asar.gz")
+source_x86_64=("app_x86_64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux.asar.gz")
+source_aarch64=("app_aarch64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux-arm64.asar.gz")
 
 sha256sums=(
     'SKIP'
