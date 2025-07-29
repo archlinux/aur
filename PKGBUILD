@@ -1,7 +1,7 @@
 # Maintainer: tyrolyean <tyrolyean@tyrolyean.net>
 # Co-Maintainer: danihek <danihek07@gmail.com>
 pkgname=hellwal
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="fast, extensible color palette generator"
 arch=('i686' 'x86_64' 'arm' 'aarch64' 'riscv')
@@ -12,17 +12,10 @@ source=(
 	"https://github.com/danihek/${pkgname}/archive/refs/tags/v${pkgver}/v${pkgver}.tar.gz"
 	)
 
-sha256sums=(
-	'a33d1c5257fe4b42e92cac7f055c6ed1a3e857fe52ab435924b316947d55e200'
-	)
+md5sums=('c4e0412002b82e5946823d8386fdb1f3')
+sha256sums=('ad5bd1e4ec7fc747179b4e20e655c1857f3da80c56ce3f82de835aa73550a7a4')
+sha512sums=('b2906b232343452cd7fdfe6dee8d78a874aef5d63013b8baa0032e47dbdda0d93f145ce04671b2a11cc3c1763863ec728e944fbe8c4f56333374c23d0b1c7df5')
 
-sha512sums=(
-	'1df251c85117c5f808c732ee0e2b72cabda04943d7a398b5fc4a8cd5dece7fd43309fae5cb9b72b02b23b001ea494738eb98c622646c33dba45a42d8d977b12a'
-	)
-
-md5sums=(
-	'5eedf31814a60bb03d51d39cae2c9c5c'
-	)
 
 build() {
 	cd ${pkgname}-${pkgver}
@@ -59,6 +52,11 @@ package() {
 	install -D ${pkgname}-${pkgver}/templates/variablesfish.fish $pkgdir/usr/share/docs/${pkgname}/templates/variablesfish.fish
 	install -D ${pkgname}-${pkgver}/templates/waybar-colors.css $pkgdir/usr/share/docs/${pkgname}/templates/waybar-colors.css
 	install -D ${pkgname}-${pkgver}/templates/zathura-colors $pkgdir/usr/share/docs/${pkgname}/templates/zathura-colors
+	install -D ${pkgname}-${pkgver}/templates/hellpaper.conf $pkgdir/usr/share/docs/${pkgname}/templates/hellpaper.conf
+	install -D ${pkgname}-${pkgver}/templates/kitty-colors.conf $pkgdir/usr/share/docs/${pkgname}/templates/kitty-colors.conf
+	install -D ${pkgname}-${pkgver}/templates/qt-colors.conf $pkgdir/usr/share/docs/${pkgname}/templates/qt-colors.conf
+	install -D ${pkgname}-${pkgver}/templates/micro-colors.micro $pkgdir/usr/share/docs/${pkgname}/templates/micro-colors.micro
+	install -D ${pkgname}-${pkgver}/templates/gtk.css $pkgdir/usr/share/docs/${pkgname}/templates/gtk.css
 
 	# themes
 	install -D ${pkgname}-${pkgver}/themes/catppuccin.hellwal $pkgdir/usr/share/docs/${pkgname}/themes/catppuccin.hellwal
