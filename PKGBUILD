@@ -1,11 +1,11 @@
 # vim:set ft=sh ts=2 sw=2 et:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
-# Contributor: Oech3
+# Contributor: oech3
 
 _browser=vivaldi-snapshot
 pkgname=${_browser}-ffmpeg-codecs
-pkgver=138.0.7204.143
-_vivaldi_major_version=7.5
+pkgver=138.0.7204.173
+_vivaldi_major_version=7.6
 _commit=dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2
 #_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${pkgver}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgrel=1
@@ -21,15 +21,15 @@ sha256sums=('8708023dc5aec3ebd5e05677b3f44d7676e287bfc755937bcd6356876e8415e6')
 prepare() {
   cd chromium-ffmpeg
   # List used functions
-  grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > sigs.txt
-  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # for opera. Some one may want use this binary. Effect for size is few.
-  echo -e "{\nglobal:" > ../export.map
-  sed 's/$/;/' sigs.txt >> ../export.map
-  echo -e "local:\n*;\n};" >> ../export.map
+  grep -oP '\bav[a-z0-9_]*(?=\s*\()' chromium/ffmpeg.sigs > "${srcdir}/sigs.txt"
+  echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> "${srcdir}/sigs.txt" # for opera. Some one may want use this binary. Effect for size is few.
+  echo -e "{\nglobal:" > "${srcdir}/export.map"
+  sed 's/$/;/' "${srcdir}/sigs.txt" >> "${srcdir}/export.map"
+  echo -e "local:\n*;\n};" >> "${srcdir}/export.map"
   # Use native opus decoder not in kAllowedAudioCodecs at
   # https://github.com/chromium/chromium/blob/${_pkgver}/media/ffmpeg/ffmpeg_common.cc
-  sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
-  #diff libavcodec/opus/dec.c{.bak,} || :
+  sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
+  diff libavcodec/opus/dec.c{.bak,} || :
 }
 
 build() {
@@ -45,20 +45,21 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
+    --extra-cflags="-DCHROMIUM_NO_LOGGING" \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer $LTOFLAGS" \
     --enable-{pic,asm,hardcoded-tables} \
-    --prefix="${srcdir}"/release
+    --libdir=/
 
-  make install
-  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
-  cd ../release
+  make DESTDIR="${srcdir}" install
+  cd "${srcdir}"
+  _symbols=$(cat "${srcdir}/sigs.txt" | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--start-group lib/libav{codec,format,util}.a lib/libswresample.a -Wl,--end-group \
-    ${_symbols} -Wl,--version-script=../export.map \
+    -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
+    ${_symbols} -Wl,--version-script="${srcdir}/export.map" \
     -lm -Wl,-Bsymbolic -o libffmpeg.so
 }
 
 package(){
-  install -Dm644 release/libffmpeg.so \
+  install -Dm644 libffmpeg.so \
     "$pkgdir/opt/${_browser}/libffmpeg.so.$_vivaldi_major_version"
 }
