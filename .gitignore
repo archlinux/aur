@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!classisland.sh
+!PKGBUILD
+!LICENSE
+!classisland.install
