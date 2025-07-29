@@ -1,0 +1,43 @@
+pkgbase = xlibre-xf86-video-qxl
+	pkgdesc = Official XLibre fork of X.Org X11 qxl video driver
+	pkgver = 0.1.6.1
+	pkgrel = 2
+	url = https://github.com/X11Libre
+	arch = x86_64
+	arch = aarch64
+	groups = xlibre-drivers
+	license = MIT
+	makedepends = xlibre-xserver
+	makedepends = xlibre-xserver-common
+	makedepends = xlibre-xserver-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=28.0
+	makedepends = spice-protocol
+	makedepends = xorgproto
+	makedepends = libcacard
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = binutils
+	makedepends = fakeroot
+	makedepends = findutils
+	makedepends = gawk
+	makedepends = gcc
+	makedepends = gettext
+	makedepends = gzip
+	makedepends = libtool
+	makedepends = m4
+	makedepends = make
+	makedepends = patch
+	makedepends = pkgconf
+	depends = spice
+	depends = libxfont2
+	depends = glibc
+	optdepends = python: for Xspice
+	provides = xf86-video-qxl
+	conflicts = xf86-video-qxl
+	conflicts = X-ABI-VIDEODRV_VERSION<28
+	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	options = !debug
+	source = https://github.com/X11Libre/xf86-video-qxl/archive/refs/tags/xlibre-xf86-video-qxl-0.1.6.1.tar.gz
+	sha256sums = a9bd98c9126428b084a8409f01e8486f59bc8d91bb38029453f4b2365303c498
+
+pkgname = xlibre-xf86-video-qxl
