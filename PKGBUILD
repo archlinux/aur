@@ -1,7 +1,7 @@
 # Maintainer: user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Spectral warping wavetable synth. Manual download of .deb installer required."
 arch=('x86_64')
 url="https://vital.audio"
@@ -77,6 +77,6 @@ package() {
 	# install -D -m644 "${pkgdir}/usr/share/doc/vital/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # mkdir -p "${pkgdir}/usr/share/{applications,pixmaps}"
-    install -D -m644 "../vital.desktop" "${pkgdir}/usr/share/applications/vital.desktop"
-    install -D -m644 "../vital.png" "${pkgdir}/usr/share/pixmaps/vital.png"
+    install -D -m644 "${srcdir}/../vital.desktop" "${pkgdir}/usr/share/applications/vital.desktop"
+    install -D -m644 "${srcdir}/../vital.png" "${pkgdir}/usr/share/pixmaps/vital.png"
 }
