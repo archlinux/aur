@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for 0cc-famitracker by Difarem
 pkgname=dn-famitracker-bin
 pkgver=0.5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of 0cc-FamiTracker (a NES tracker) that incorporates numerous fixes and features.'
 arch=('x86_64')
 url="https://github.com/Dn-Programming-Core-Management/Dn-FamiTracker"
@@ -18,7 +18,7 @@ noextract=($_filename.7z)
 md5sums=('85aa6c84d09a64c986019f2527708d35'
          '4fbafd091e31f5cbc28e3a01e5366415'
          '34e9e42b24132376511e0768bf9cf77c'
-         '2e155ab213a93fe4b9ad0d75f8e53b91')
+         '547a10be0a6296eb1c0243da45e93d14')
 
 prepare() {
   7z x $_filename.7z -o$srcdir/$_filename
