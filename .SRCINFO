@@ -1,23 +1,23 @@
 pkgbase = autofirma-bin
 	pkgdesc = Cliente de firma electrónica ofrecido por la Administración Pública
-	pkgver = 1.8.3
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://firmaelectronica.gob.es/
 	arch = any
 	license = GPL-2.0-or-later AND EUPL-1.1
-	depends = java-runtime=11
+	depends = java-runtime=17
 	provides = autofirma
 	conflicts = autofirma
 	conflicts = autofirma-git
 	options = !debug
 	options = !emptydirs
-	source = autofirma-bin-1.8.3.zip::https://estaticos.redsara.es/comunes/autofirma/1/8/3/AutoFirma_Linux_Debian.zip
+	source = autofirma-bin-1.9.zip::https://firmaelectronica.gob.es/content/dam/firmaelectronica/descargas-software/autofirma19/Autofirma_Linux_Debian.zip
 	source = autofirma
 	source = autofirma.desktop
 	source = autofirma.js
 	source = autofirma.svg
-	b2sums = 6abe7fe295eba4ee18978736e2b788dbdfe4e5aba6aacf5281b734c54edacd0e16c7ee6a0b097f9fb9f10fe008acf184cf24031b73ac8e0010934ed437a60bd5
-	b2sums = 2eca1245aa7e44228fac9fbb871b90d765402ebdfeaa476fa807e7bdaedb039353980c5fdfaf560ecc943386bbee90d4ae048b85b516b4653bf699328d10fc87
+	b2sums = 227def57c2c3e61a845446f8378de8cb5003b32c893f1819cc05dfbbb7dd39ad50d3f69fefedf62167367cb4ef9e0a0de877af92c53425fde57e828aff84107f
+	b2sums = 7884602cbe5dd33aa903fd63780458395c1fbf069973db76d4c3210f5d85a66fa4a0745864f6fec6f5637177dc4d4cc94f7040119dda3a146b9af89a058b0b59
 	b2sums = cbedb1aff6ea64e44569d4a3249bd3707a5bc2fadf956ab27f62a71198cfed3f07170f40965bbbd2b4b9a587d165fe8b6a19c3f85aa87eaf8c5897d899d9b6e8
 	b2sums = 835597fed89382057b48f01537dacc43aeef342372678fbeb6d486c6cded7ee41911b910e200e7c1c34bd1cbb0e25854e6e56dea68115bcde759b84d2d0a6147
 	b2sums = 3397abf9b38b8e187ec7a1fa59e91c974568d520a2604487aa5dda56c590756560d38d46152ed5765eb6746956265107a7ff8d448f9090dc7f75a2b74d36513b
