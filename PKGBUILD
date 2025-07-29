@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas
 _pkgname=Commas
-pkgver=0.39.2
+pkgver=0.39.3
 _electronversion=37
 _nodever=22
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ca205e71473f29a869c3ac1fceed4bb96e5e64fb7de6b245b580cefcd3a02aa4'
+sha256sums=('bd0f3f6346351914d5b3842fbe3afab560bc168c7bdfd5c72fc76387abf7b1ba'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
