@@ -25,7 +25,7 @@ makedepends=(
 provides=('huion-keydial-mini')
 conflicts=('huion-keydial-mini')
 source=("https://github.com/Triforcey/huion-keydial-mini-uinput/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('97a0e3a552ed5e4803281e569dc05b20e34cef608cfd46d6696985cf014beb35')
+sha256sums=('faf59011a881eeefd1a62950c79daca946216066a3b90368d38b737c2ba03e44')
 options=(!strip !debug)
 
 
