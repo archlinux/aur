@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove
-pkgver=202507131
-pkgrel=2
+pkgver=202507301
+pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/b47208be4713551e2047cc45ec3f84bcfb87d352/archives/dove-linux.zip")
-sha512sums=('0fdbac521337179c1d28e21c457dbd9ba87ad46bfb757b049eade22879098d0ca92c8cf9c8825543db49d521aae447a9049c17626f97f7bc45f7914f6641aff3')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/f9ee6d8a0097ebb095094d78693367c2d4b12abe/archives/dove-linux.zip")
+sha512sums=('1064bdbbf4895bcde495b75975dcd8898ccdf383b7aefac18feaa1d243e2c5063ffff36dbf4bacf0d0758d629c367f1f0e99a645914405c92a4b3d7d7be0538e')
 makedepends=('unzip')
 
 pkgver() {
