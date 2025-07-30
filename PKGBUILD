@@ -3,7 +3,7 @@
 pkgname=python-vllm-bin
 _pkgname=vllm
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -36,19 +36,22 @@ depends=(
   python-pyzmq
   python-blake3
   python-cloudpickle
-  python-huggingface-hub)
+  python-triton python-huggingface-hub
+  python-gguf
+  python-prometheus-fastapi-instrumentator
+  python-partial-json-parser
+  python-watchfiles
+  )
 
 optdepends=(
   'cuda: use nvidia GPU'
   'cuda-tools: use nvidia GPU'
   'python-openai: required for openai protocols'
   'python-prometheus_client: Prometheus instrumentation library for Python applications'
-  'python-prometheus-fastapi-instrumentator: Prometheus fastapi implementation'
   'python-pillow: required for image processing'
   'python-outlines: guided text generation'
   'python-lark: parsing toolkit'
   'python-typing_extensions: typing hints'
-  'python-partial-json-parser: parse partial JSON output'
   'python-msgspec: JSON/MessagePack library with validation'
   'python-mistral-common: mistral tools for opencv'
   'python-einops: required for QWen2-VL models'
