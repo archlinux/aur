@@ -1,7 +1,7 @@
 pkgbase = lsfg-vk-bin
 	pkgdesc = Lossless Scaling Frame Generation on Linux
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PancakeTAS/lsfg-vk
 	install = lsfg-vk.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = lsfg-vk-bin
 	depends = libadwaita
 	provides = lsfg-vk
 	conflicts = lsfg-vk
+	options = !strip
 	source = https://github.com/PancakeTAS/lsfg-vk/releases/download/v0.9.0/lsfg-vk-0.9.0.x86_64.tar.zst
 	source = LICENSE
 	sha256sums = 1c2d8bf46088b4cfd5d7daa7c3d653abe0c4b46c7bb10f11a7f1bf9453f07fd5
