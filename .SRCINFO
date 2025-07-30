@@ -1,6 +1,6 @@
 pkgbase = luahbtex
 	pkgdesc = The LuaTeX project's main objective is to provide an open and configurable variant of TeX while at the same time offering downward compatibility
-	pkgver = 1.17.0
+	pkgver = 1.23.3
 	pkgrel = 1
 	url = https://www.luatex.org/
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = luahbtex
 	arch = arm
 	arch = aarch64
 	license = GPL2
-	source = https://gitlab.lisn.upsaclay.fr/texlive/luatex/-/archive/1.17.0/luatex-1.17.0.zip
+	source = https://gitlab.lisn.upsaclay.fr/texlive/luatex/-/archive/1.23.3/luatex-1.23.3.zip
 	source = fix-LUA_ROOT.patch
-	sha256sums = 93c927256be8f6cd87f5d8745a1f8210513f52b19cfa269736f67626c43865ff
-	sha256sums = SKIP
+	sha256sums = 9b9b0a7ddda3b92516b946a0618a4ff28748e14c94bc94d46f3faf00047024be
+	sha256sums = 1874de144770f9c9bed4b6d0848121607070a9590110a40b89714d374b109c3c
 
 pkgname = luahbtex

@@ -2,7 +2,7 @@
 # Maintainer: Wu, Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=luatex
 pkgname=luahbtex
-pkgver=1.17.0
+pkgver=1.23.3
 pkgrel=1
 pkgdesc="The LuaTeX project's main objective is to provide an open and configurable variant of TeX while at the same time offering downward compatibility"
 arch=(i686 x86_64 arm aarch64)
@@ -10,7 +10,8 @@ url=https://www.luatex.org/
 license=(GPL2)
 source=("https://gitlab.lisn.upsaclay.fr/texlive/luatex/-/archive/$pkgver/luatex-$pkgver.zip"
 	fix-LUA_ROOT.patch)
-sha256sums=('93c927256be8f6cd87f5d8745a1f8210513f52b19cfa269736f67626c43865ff' SKIP)
+sha256sums=('9b9b0a7ddda3b92516b946a0618a4ff28748e14c94bc94d46f3faf00047024be'
+            '1874de144770f9c9bed4b6d0848121607070a9590110a40b89714d374b109c3c')
 
 prepare() {
 	cd "$_pkgname-$pkgver" || return 1
