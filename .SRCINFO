@@ -1,6 +1,6 @@
 pkgbase = python-uqbar
 	pkgdesc = Tools for building documentation with Sphinx, Graphviz and LaTeX
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/josiah-wolf-oberholtzer/uqbar
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-uqbar
 	depends = python-sphinx
 	depends = python-unidecode
 	depends = python-black
-	source = python-uqbar-0.9.1.tar.gz::https://github.com/josiah-wolf-oberholtzer/uqbar/archive/v0.9.1.tar.gz
-	sha512sums = 3e470860b04afe87ace82ef7ca167fe05d6d44c12d924f8d8842db21efe9b723c260634c8ee041577831232a6397f231f094f45df91696a6f798f8ef5c231fb0
+	source = python-uqbar-0.9.3.tar.gz::https://github.com/josiah-wolf-oberholtzer/uqbar/archive/v0.9.3.tar.gz
+	sha512sums = 0f9c17a15f270eb6a714af2735c8b686542aacada24e44155345d41a993c341124ce9cf549b345fea5eb7a1af26ab777aef874182ca4c1cb3e7756b4ae925071
 
 pkgname = python-uqbar
