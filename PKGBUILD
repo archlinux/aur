@@ -12,7 +12,7 @@ optdepends=('hyprland: for automatic screen detection'
             'sway: compatible wayland compositor'
             'wayfire: compatible wayland compositor')
 source=("wayland-bongocat-$pkgver.tar.gz::https://github.com/saatvik333/wayland-bongocat/archive/v$pkgver.tar.gz")
-sha256sums=('66dc40c8aeac594eed62bbbb0a5de82308f79eb2d1969d6a6311b5490ebcfeb2')
+sha256sums=('8341e80cc19b7cdd5f38a56f2efc21562db02c0fc92acd77d1e580220b384411')
 
 build() {
     cd "$srcdir/wayland-bongocat-$pkgver"
