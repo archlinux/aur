@@ -1,7 +1,7 @@
 pkgbase = netstate
 	pkgdesc = Run hooks on network state changes
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/mtth/netstate
 	arch = x86_64
 	license = MIT
