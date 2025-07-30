@@ -2,7 +2,7 @@
 
 _name="graphviz"
 pkgname="lib32-${_name}"
-pkgver=13.0.1
+pkgver=13.1.1
 pkgrel=1
 pkgdesc="Graph visualization software (32-bit)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('libcdt.so' 'libcgraph.so' 'libgvc.so' 'libgvpr.so' 'libpathplan.so'
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz"
         'ghostscript918.patch')
-sha256sums=('b91a80434f34986c47410b490d15ab1bd87fc7fea4e130161c8f029c548055a3'
+sha256sums=('2183297bc5030951fed6c0511b39712057126d2098baa02fd914b09b5a19b820'
             '0083d126e27f2223ec4226fc1d71c9c84106968a0fdf65de838aee1e4882bfdb')
 
 prepare() {
@@ -87,7 +87,7 @@ build() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-	./autogen.sh NOCONFIG
+  ./autogen.sh NOCONFIG
   ./configure "${configure_options[@]}"
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' 'libtool' # Fix overlinking
