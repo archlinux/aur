@@ -1,0 +1,18 @@
+pkgbase = lottieconverter
+	pkgdesc = Simple, dummy lottie converter
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/sot-tech/LottieConverter
+	arch = x86_64
+	license = LGPL-v2.1
+	makedepends = git
+	makedepends = cmake
+	depends = rlottie
+	depends = libpng
+	depends = giflib
+	provides = lottieconverter
+	replaces = lottieconverter
+	source = lottieconverter::git+https://github.com/sot-tech/LottieConverter.git#tag=v0.2
+	sha256sums = SKIP
+
+pkgname = lottieconverter
