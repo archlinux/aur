@@ -3,7 +3,7 @@
 _pkgname=lottieconverter
 pkgname=lottieconverter
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, dummy lottie converter'
 arch=('x86_64')
 url='https://github.com/sot-tech/LottieConverter'
@@ -12,13 +12,8 @@ makedepends=('git' 'cmake')
 depends=('rlottie' 'libpng' 'giflib')
 provides=(${_pkgname})
 replaces=(${_pkgname})
-source=(${_pkgname}::"git+https://github.com/sot-tech/LottieConverter.git#tag=v${pkgver}")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=(${_pkgname}::"git+https://github.com/sot-tech/LottieConverter.git#tag=r${pkgver}")
+sha256sums=('21acf3b34c7ba5763f8c838e80778a9baa41950116c08e9a63f49eb6fd7a3d59')
 
 prepare() {
     cd "${_pkgname}"
