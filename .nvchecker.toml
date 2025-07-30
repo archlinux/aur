@@ -1,0 +1,3 @@
+[python-mmh3]
+source = "pypi"
+pypi = "mmh3"
