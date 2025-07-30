@@ -2,9 +2,9 @@
 
 _name=langgraph
 pkgname=python-${_name}
-pkgver=0.6.0
+pkgver=0.6.1
 _cliver=0.3.6
-_inmemver=0.6.3
+_inmemver=0.6.5
 pkgrel=1
 pkgdesc="Building stateful, multi-actor applications with LLMs."
 arch=('any')
@@ -19,9 +19,9 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
         "https://files.pythonhosted.org/packages/py3/l/langgraph-cli/langgraph_cli-${_cliver}-py3-none-any.whl"
         "https://files.pythonhosted.org/packages/py3/l/langgraph-runtime-inmem/langgraph_runtime_inmem-${_inmemver}-py3-none-any.whl") # Prevent cercular dependencies
 noextract=("langgraph_cli-${_cliver}-py3-none-any.whl" "langgraph_runtime_inmem-${_inmemver}-py3-none-any.whl")
-sha256sums=('8a920c05aab6d1d2415078b9619d6c81f663a7619bcc4232b9715f9b877072f2'
+sha256sums=('e4399ac5ad0b70f58fa28d6fe05a41b84c15959f270d6d1a86edab4e92ae148b'
             '86aebbb81cde5492f80ddecce3c814ccf492debf17212b185b718e6f6cdb7c88'
-            '6bc8bdc5806846e490ce84637317775d1ffef2c81b2705a80d7df1c282ca743d')
+            'ce34d55f539e30387f8e1f7421e483a526500f67d624d680a4a59b800e3e93cd')
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
