@@ -1,7 +1,7 @@
 pkgbase = papis
 	pkgdesc = Command-line document and bibliography manager
-	pkgver = 0.14.1
-	pkgrel = 2
+	pkgver = 0.14.1+PR1018
+	pkgrel = 3
 	url = https://github.com/papis/papis
 	arch = any
 	license = GPL-3.0-or-later
@@ -50,6 +50,8 @@ pkgbase = papis
 	optdepends = python-sphinx-click: for papis.sphinx_ext (used by some plugins)
 	optdepends = python-pytest: for papis.testing (used by some plugins)
 	source = papis-0.14.1::https://github.com/papis/papis/archive/refs/tags/v0.14.1.tar.gz
+	source = papis-PR1018.patch::https://github.com/papis/papis/pull/1018.patch
 	sha256sums = 592b9ad2296019062922ed7f573c8c70c02fcc3b92e518fea47a00088753f440
+	sha256sums = b3b5a97c7af2c9c6e3f0bd993a93e61c6b34f72f4774766612aec907277e4ad3
 
 pkgname = papis

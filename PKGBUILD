@@ -2,8 +2,9 @@
 # Maintainer: Stefan Gehr <stefan@gehr.xyz>
 
 pkgname=papis
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.14.1+PR1018
+_pkgver=0.14.1
+pkgrel=3
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -75,11 +76,30 @@ checkdepends=(
     'python-whoosh'
 )
 
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('592b9ad2296019062922ed7f573c8c70c02fcc3b92e518fea47a00088753f440')
+source=("${pkgname}-${_pkgver}::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('592b9ad2296019062922ed7f573c8c70c02fcc3b92e518fea47a00088753f440'
+            'b3b5a97c7af2c9c6e3f0bd993a93e61c6b34f72f4774766612aec907277e4ad3')
+prs=(
+  1018 # Support python-click 8.2.0
+)
+for pr in "${prs[@]}"; do
+    source+=("${pkgname}-PR$pr.patch::$url/pull/$pr.patch")
+done
+
+pkgver() {
+  echo "$_pkgver"+PR"$(export IFS=+; echo "${prs[*]}")"
+}
+
+prepare() {
+  cd "${pkgname}-${_pkgver}"
+
+  for pr in "${prs[@]}"; do
+    patch -p1 < "../${pkgname}-PR$pr.patch"
+  done
+}
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
 
   python -m build --wheel --no-isolation
 
@@ -95,7 +115,7 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
 
   local site_packages
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
@@ -107,6 +127,6 @@ check() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
