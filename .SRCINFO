@@ -1,0 +1,24 @@
+pkgbase = swarmfm-player
+	pkgdesc = A tauri app that runs a iframe of the youtube stream known as swarmfm.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gwashark/swarmfm-player
+	install = swarmfm-player.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = gst-libav
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/Nagol12344/swarmfm-player/releases/download/temp-patch-2/swarmfm_1.0.0_amd64.deb
+	sha256sums_x86_64 = f2c0edaf5dbfba72f33e8c8a9318138f58d6b586e1f6c4bce30adda4fb97cb43
+
+pkgname = swarmfm-player
