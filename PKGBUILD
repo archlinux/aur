@@ -20,7 +20,7 @@ source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefi
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefix}_arm64.deb")
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_md5_prefix}/${_src_prefix}_loongarch64.deb")
 source=("linuxqq.sh" "start.sh" "portable-config" "qq.desktop")
-sha512sums=('cf9358aada690b8ecc141ed168b05ca828ea220df91dc71084cfc23d90b62331aad6e50c4a7b18d73934be14718b90b57bb3adf3b173cb5edbcea84b9739c8af'
+sha512sums=('5d3155d5a3e3ef3ba5469b834e8e04bbc4510f192590e37f8ed38c500818af1c4239e89c1743d8ade7e83bb753a59066027c006be52c30154c4fa74f518487e1'
             'b6a955e64b69d98776346a5ec154d119e1acdc3bba364bf01bdcd6119ce20933f326d40990e7e477c3b7c741beb50e22da4ad2d6880538256245bdc31dcede0e'
             'f9a9ca63c44fe7ae4a238cc913506e86d712a7ba079a4840a8d00434bcfb3312ffe0914d894a39bf5d412d792a9ca4a402e6b5db42c8a1f69c525bc37c7e884c'
             '2e8d6f87849a59458bb9e5f297cb73a9c9fe4eb24a39e5c45cbbd2c0ba5d628f6378a707b2734873a3765693a096c7cae21edd582a04fc5a2d70fddd7e2906d4')
