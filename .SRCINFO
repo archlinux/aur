@@ -1,5 +1,5 @@
 pkgbase = gemini-cli-proxy-git
-	pkgdesc = OpenAI-compatible API wrapper for Gemini CLI
+	pkgdesc = OpenAI-compatible API wrapper for Gemini CLI.
 	pkgver = r15.3e99ede
 	pkgrel = 6
 	url = https://github.com/nettee/gemini-cli-proxy
