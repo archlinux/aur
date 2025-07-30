@@ -1,5 +1,5 @@
-*** /dev/null	2025-07-27 02:42:48.185765997 +0200
---- Roo-Code-3.24.0-patched/packages/types/src/providers/gemini-cli.ts	2025-07-27 17:37:38.015929339 +0200
+*** /dev/null	2025-07-28 18:58:27.647410268 +0200
+--- Roo-Code-3.25.2-patched/packages/types/src/providers/gemini-cli.ts	2025-07-27 17:37:38.015929339 +0200
 ***************
 *** 0 ****
 --- 1,110 ----
@@ -113,8 +113,8 @@
 + 		requiredReasoningBudget: true,
 + 	},
 + } as const satisfies Record<string, ModelInfo>
-*** Roo-Code-3.24.0/packages/types/src/providers/index.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/packages/types/src/providers/index.ts	2025-07-27 18:00:51.442679813 +0200
+*** Roo-Code-3.25.2/packages/types/src/providers/index.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/packages/types/src/providers/index.ts	2025-07-27 18:00:51.442679813 +0200
 ***************
 *** 4,9 ****
 --- 4,10 ----
@@ -125,8 +125,8 @@
   export * from "./glama.js"
   export * from "./groq.js"
   export * from "./huggingface.js"
-*** Roo-Code-3.24.0/src/api/index.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/api/index.ts	2025-07-27 18:02:37.189447100 +0200
+*** Roo-Code-3.25.2/src/api/index.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/api/index.ts	2025-07-27 18:02:37.189447100 +0200
 ***************
 *** 15,20 ****
 --- 15,21 ----
@@ -148,8 +148,8 @@
   		case "openai-native":
   			return new OpenAiNativeHandler(options)
   		case "deepseek":
-*** /dev/null	2025-07-27 02:42:48.185765997 +0200
---- Roo-Code-3.24.0-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-07-27 17:42:22.349647696 +0200
+*** /dev/null	2025-07-28 18:58:27.647410268 +0200
+--- Roo-Code-3.25.2-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-07-27 17:42:22.349647696 +0200
 ***************
 *** 0 ****
 --- 1,329 ----
@@ -482,8 +482,8 @@
 + 		})
 + 	})
 + })
-*** /dev/null	2025-07-27 02:42:48.185765997 +0200
---- Roo-Code-3.24.0-patched/src/api/providers/gemini-cli.ts	2025-07-27 17:43:23.960929815 +0200
+*** /dev/null	2025-07-28 18:58:27.647410268 +0200
+--- Roo-Code-3.25.2-patched/src/api/providers/gemini-cli.ts	2025-07-27 17:43:23.960929815 +0200
 ***************
 *** 0 ****
 --- 1,419 ----
@@ -906,8 +906,8 @@
 + 		return super.countTokens(content)
 + 	}
 + }
-*** Roo-Code-3.24.0/src/api/providers/index.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/api/providers/index.ts	2025-07-27 18:03:15.754996503 +0200
+*** Roo-Code-3.25.2/src/api/providers/index.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/api/providers/index.ts	2025-07-27 18:03:15.754996503 +0200
 ***************
 *** 7,12 ****
 --- 7,13 ----
@@ -918,13 +918,13 @@
   export { GlamaHandler } from "./glama"
   export { GroqHandler } from "./groq"
   export { HuggingFaceHandler } from "./huggingface"
-*** Roo-Code-3.24.0/src/i18n/locales/ca/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/ca/common.json	2025-07-27 18:18:53.308950850 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/ca/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/ca/common.json	2025-07-30 05:08:00.715929260 +0200
 ***************
-*** 81,86 ****
---- 81,96 ----
-  			"stoppedWithReason": "Claude Code s'ha aturat per la raó: {{reason}}",
-  			"apiKeyModelPlanMismatch": "Les claus API i els plans de subscripció permeten models diferents. Assegura't que el model seleccionat estigui inclòs al teu pla."
+*** 93,98 ****
+--- 93,108 ----
+  			"generate_complete_prompt": "Error de finalització de Gemini: {{error}}",
+  			"sources": "Fonts:"
   		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "No s'han pogut carregar les credencials OAuth. Si us plau, autentica't primer: {{error}}",
@@ -939,14 +939,14 @@
   		"mode_import_failed": "Ha fallat la importació del mode: {{error}}"
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/de/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/de/common.json	2025-07-27 18:20:41.373672004 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/de/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/de/common.json	2025-07-30 05:10:35.892057431 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Claude Code Prozess wurde mit Code {{exitCode}} beendet. Fehlerausgabe: {{output}}",
-  			"stoppedWithReason": "Claude Code wurde mit Grund gestoppt: {{reason}}",
-  			"apiKeyModelPlanMismatch": "API-Schlüssel und Abonnement-Pläne erlauben verschiedene Modelle. Stelle sicher, dass das ausgewählte Modell in deinem Plan enthalten ist."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Fehler beim Generieren des Kontext-Streams von Gemini: {{error}}",
+  			"generate_complete_prompt": "Fehler bei der Vervollständigung durch Gemini: {{error}}",
+  			"sources": "Quellen:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Fehler beim Laden der OAuth-Anmeldedaten. Bitte authentifiziere dich zuerst: {{error}}",
@@ -960,14 +960,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/en/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/en/common.json	2025-07-27 18:22:01.592722357 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/en/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/en/common.json	2025-07-30 05:11:39.239316743 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Claude Code process exited with code {{exitCode}}. Error output: {{output}}",
-  			"stoppedWithReason": "Claude Code stopped with reason: {{reason}}",
-  			"apiKeyModelPlanMismatch": "API keys and subscription plans allow different models. Make sure the selected model is included in your plan."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Gemini generate context stream error: {{error}}",
+  			"generate_complete_prompt": "Gemini completion error: {{error}}",
+  			"sources": "Sources:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Failed to load OAuth credentials. Please authenticate first: {{error}}",
@@ -981,14 +981,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/es/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/es/common.json	2025-07-27 18:23:29.174685282 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/es/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/es/common.json	2025-07-30 05:13:16.552200422 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "El proceso de Claude Code terminó con código {{exitCode}}. Salida de error: {{output}}",
-  			"stoppedWithReason": "Claude Code se detuvo por la razón: {{reason}}",
-  			"apiKeyModelPlanMismatch": "Las claves API y los planes de suscripción permiten diferentes modelos. Asegúrate de que el modelo seleccionado esté incluido en tu plan."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Error del stream de contexto de generación de Gemini: {{error}}",
+  			"generate_complete_prompt": "Error de finalización de Gemini: {{error}}",
+  			"sources": "Fuentes:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Error al cargar credenciales OAuth. Por favor autentícate primero: {{error}}",
@@ -1002,14 +1002,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/fr/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/fr/common.json	2025-07-27 18:24:33.164927409 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/fr/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/fr/common.json	2025-07-30 05:14:06.980630865 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Le processus Claude Code s'est terminé avec le code {{exitCode}}. Sortie d'erreur : {{output}}",
-  			"stoppedWithReason": "Claude Code s'est arrêté pour la raison : {{reason}}",
-  			"apiKeyModelPlanMismatch": "Les clés API et les plans d'abonnement permettent différents modèles. Assurez-vous que le modèle sélectionné est inclus dans votre plan."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Erreur du flux de contexte de génération Gemini : {{error}}",
+  			"generate_complete_prompt": "Erreur d'achèvement de Gemini : {{error}}",
+  			"sources": "Sources :"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Échec du chargement des identifiants OAuth. Veuillez vous authentifier d'abord : {{error}}",
@@ -1023,14 +1023,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/hi/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/hi/common.json	2025-07-27 18:25:45.214073959 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/hi/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/hi/common.json	2025-07-30 05:14:57.580064756 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Claude Code प्रक्रिया कोड {{exitCode}} के साथ समाप्त हुई। त्रुटि आउटपुट: {{output}}",
-  			"stoppedWithReason": "Claude Code इस कारण से रुका: {{reason}}",
-  			"apiKeyModelPlanMismatch": "API कुंजी और सब्सक्रिप्शन प्लान अलग-अलग मॉडल की अनुमति देते हैं। सुनिश्चित करें कि चयनित मॉडल आपकी योजना में शामिल है।"
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "जेमिनी जनरेट कॉन्टेक्स्ट स्ट्रीम त्रुटि: {{error}}",
+  			"generate_complete_prompt": "जेमिनी समापन त्रुटि: {{error}}",
+  			"sources": "स्रोत:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth क्रेडेंशियल लोड करने में विफल। कृपया पहले प्रमाणीकरण करें: {{error}}",
@@ -1044,14 +1044,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/id/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/id/common.json	2025-07-27 18:28:17.070274782 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/id/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/id/common.json	2025-07-30 05:15:51.463467262 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Proses Claude Code keluar dengan kode {{exitCode}}. Output error: {{output}}",
-  			"stoppedWithReason": "Claude Code berhenti karena alasan: {{reason}}",
-  			"apiKeyModelPlanMismatch": "Kunci API dan paket berlangganan memungkinkan model yang berbeda. Pastikan model yang dipilih termasuk dalam paket Anda."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Kesalahan aliran konteks pembuatan Gemini: {{error}}",
+  			"generate_complete_prompt": "Kesalahan penyelesaian Gemini: {{error}}",
+  			"sources": "Sumber:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Gagal memuat kredensial OAuth. Silakan autentikasi terlebih dahulu: {{error}}",
@@ -1065,14 +1065,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/it/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/it/common.json	2025-07-27 18:29:30.072346111 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/it/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/it/common.json	2025-07-30 05:17:31.835367175 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Il processo Claude Code è terminato con codice {{exitCode}}. Output di errore: {{output}}",
-  			"stoppedWithReason": "Claude Code si è fermato per il motivo: {{reason}}",
-  			"apiKeyModelPlanMismatch": "Le chiavi API e i piani di abbonamento consentono modelli diversi. Assicurati che il modello selezionato sia incluso nel tuo piano."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Errore del flusso di contesto di generazione Gemini: {{error}}",
+  			"generate_complete_prompt": "Errore di completamento Gemini: {{error}}",
+  			"sources": "Fonti:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Impossibile caricare le credenziali OAuth. Autenticati prima: {{error}}",
@@ -1086,14 +1086,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/ja/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/ja/common.json	2025-07-27 18:30:53.070208529 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/ja/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/ja/common.json	2025-07-30 05:18:31.501720149 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Claude Code プロセスがコード {{exitCode}} で終了しました。エラー出力：{{output}}",
-  			"stoppedWithReason": "Claude Code が理由により停止しました：{{reason}}",
-  			"apiKeyModelPlanMismatch": "API キーとサブスクリプションプランでは異なるモデルが利用可能です。選択したモデルがプランに含まれていることを確認してください。"
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Gemini 生成コンテキスト ストリーム エラー: {{error}}",
+  			"generate_complete_prompt": "Gemini 完了エラー: {{error}}",
+  			"sources": "ソース:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth認証情報の読み込みに失敗しました。まず認証してください: {{error}}",
@@ -1107,14 +1107,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/ko/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/ko/common.json	2025-07-27 18:31:37.450608689 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/ko/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/ko/common.json	2025-07-30 05:19:11.017294131 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Claude Code 프로세스가 코드 {{exitCode}}로 종료되었습니다. 오류 출력: {{output}}",
-  			"stoppedWithReason": "Claude Code가 다음 이유로 중지되었습니다: {{reason}}",
-  			"apiKeyModelPlanMismatch": "API 키와 구독 플랜에서 다른 모델을 허용합니다. 선택한 모델이 플랜에 포함되어 있는지 확인하세요."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Gemini 생성 컨텍스트 스트림 오류: {{error}}",
+  			"generate_complete_prompt": "Gemini 완료 오류: {{error}}",
+  			"sources": "출처:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth 자격 증명을 로드하지 못했습니다. 먼저 인증하세요: {{error}}",
@@ -1128,14 +1128,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/nl/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/nl/common.json	2025-07-27 18:32:30.648896556 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/nl/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/nl/common.json	2025-07-30 05:19:57.611794114 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Claude Code proces beëindigd met code {{exitCode}}. Foutuitvoer: {{output}}",
-  			"stoppedWithReason": "Claude Code gestopt om reden: {{reason}}",
-  			"apiKeyModelPlanMismatch": "API-sleutels en abonnementsplannen staan verschillende modellen toe. Zorg ervoor dat het geselecteerde model is opgenomen in je plan."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Fout bij het genereren van contextstream door Gemini: {{error}}",
+  			"generate_complete_prompt": "Fout bij het voltooien door Gemini: {{error}}",
+  			"sources": "Bronnen:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Kan OAuth-referenties niet laden. Authenticeer eerst: {{error}}",
@@ -1149,14 +1149,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/pl/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/pl/common.json	2025-07-27 18:33:23.100201091 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/pl/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/pl/common.json	2025-07-30 05:20:43.565303231 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Proces Claude Code zakończył się kodem {{exitCode}}. Wyjście błędu: {{output}}",
-  			"stoppedWithReason": "Claude Code zatrzymał się z powodu: {{reason}}",
-  			"apiKeyModelPlanMismatch": "Klucze API i plany subskrypcji pozwalają na różne modele. Upewnij się, że wybrany model jest zawarty w twoim planie."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Błąd strumienia kontekstu generowania Gemini: {{error}}",
+  			"generate_complete_prompt": "Błąd uzupełniania Gemini: {{error}}",
+  			"sources": "Źródła:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Nie udało się załadować danych uwierzytelniających OAuth. Najpierw się uwierzytelnij: {{error}}",
@@ -1170,14 +1170,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/pt-BR/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/pt-BR/common.json	2025-07-27 18:34:11.833560292 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/pt-BR/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/pt-BR/common.json	2025-07-30 05:21:51.854577482 +0200
 ***************
-*** 81,86 ****
---- 81,96 ----
-  			"processExitedWithError": "O processo Claude Code saiu com código {{exitCode}}. Saída de erro: {{output}}",
-  			"stoppedWithReason": "Claude Code parou pela razão: {{reason}}",
-  			"apiKeyModelPlanMismatch": "Chaves de API e planos de assinatura permitem modelos diferentes. Certifique-se de que o modelo selecionado esteja incluído no seu plano."
+*** 93,98 ****
+--- 93,108 ----
+  			"generate_stream": "Erro de fluxo de contexto de geração do Gemini: {{error}}",
+  			"generate_complete_prompt": "Erro de conclusão do Gemini: {{error}}",
+  			"sources": "Fontes:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Falha ao carregar credenciais OAuth. Por favor, autentique-se primeiro: {{error}}",
@@ -1191,14 +1191,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/ru/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/ru/common.json	2025-07-27 18:35:07.656832001 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/ru/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/ru/common.json	2025-07-30 05:22:34.346127931 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Процесс Claude Code завершился с кодом {{exitCode}}. Вывод ошибки: {{output}}",
-  			"stoppedWithReason": "Claude Code остановился по причине: {{reason}}",
-  			"apiKeyModelPlanMismatch": "API-ключи и планы подписки позволяют использовать разные модели. Убедитесь, что выбранная модель включена в ваш план."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Ошибка потока контекста генерации Gemini: {{error}}",
+  			"generate_complete_prompt": "Ошибка завершения Gemini: {{error}}",
+  			"sources": "Источники:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Не удалось загрузить учетные данные OAuth. Сначала выполните аутентификацию: {{error}}",
@@ -1212,14 +1212,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/tr/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/tr/common.json	2025-07-27 18:35:54.149229679 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/tr/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/tr/common.json	2025-07-30 05:23:14.053709109 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Claude Code işlemi {{exitCode}} koduyla çıktı. Hata çıktısı: {{output}}",
-  			"stoppedWithReason": "Claude Code şu nedenle durdu: {{reason}}",
-  			"apiKeyModelPlanMismatch": "API anahtarları ve abonelik planları farklı modellere izin verir. Seçilen modelin planınıza dahil olduğundan emin olun."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Gemini oluşturma bağlam akışı hatası: {{error}}",
+  			"generate_complete_prompt": "Gemini tamamlama hatası: {{error}}",
+  			"sources": "Kaynaklar:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth kimlik bilgileri yüklenemedi. Lütfen önce kimlik doğrulaması yapın: {{error}}",
@@ -1233,14 +1233,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/vi/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/vi/common.json	2025-07-27 18:36:40.281635475 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/vi/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/vi/common.json	2025-07-30 05:23:56.332264420 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"processExitedWithError": "Tiến trình Claude Code thoát với mã {{exitCode}}. Đầu ra lỗi: {{output}}",
-  			"stoppedWithReason": "Claude Code dừng lại vì lý do: {{reason}}",
-  			"apiKeyModelPlanMismatch": "Khóa API và gói đăng ký cho phép các mô hình khác nhau. Đảm bảo rằng mô hình đã chọn được bao gồm trong gói của bạn."
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_stream": "Lỗi luồng ngữ cảnh tạo Gemini: {{error}}",
+  			"generate_complete_prompt": "Lỗi hoàn thành Gemini: {{error}}",
+  			"sources": "Nguồn:"
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Không thể tải thông tin xác thực OAuth. Vui lòng xác thực trước: {{error}}",
@@ -1254,14 +1254,14 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/zh-CN/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/zh-CN/common.json	2025-07-27 18:37:31.308981872 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/zh-CN/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/zh-CN/common.json	2025-07-30 05:24:33.045879230 +0200
 ***************
-*** 82,87 ****
---- 82,97 ----
-  			"processExitedWithError": "Claude Code 进程退出，退出码：{{exitCode}}。错误输出：{{output}}",
-  			"stoppedWithReason": "Claude Code 停止，原因：{{reason}}",
-  			"apiKeyModelPlanMismatch": "API 密钥和订阅计划支持不同的模型。请确保所选模型包含在您的计划中。"
+*** 94,99 ****
+--- 94,109 ----
+  			"generate_stream": "Gemini 生成上下文流错误：{{error}}",
+  			"generate_complete_prompt": "Gemini 完成错误：{{error}}",
+  			"sources": "来源："
 + 		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "加载 OAuth 凭据失败。请先进行身份验证：{{error}}",
@@ -1275,13 +1275,13 @@
   		}
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/i18n/locales/zh-TW/common.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/i18n/locales/zh-TW/common.json	2025-07-27 18:38:30.270230955 +0200
+*** Roo-Code-3.25.2/src/i18n/locales/zh-TW/common.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/i18n/locales/zh-TW/common.json	2025-07-30 05:25:32.661255511 +0200
 ***************
-*** 77,82 ****
---- 77,92 ----
-  			"stoppedWithReason": "Claude Code 停止，原因：{{reason}}",
-  			"apiKeyModelPlanMismatch": "API 金鑰和訂閱方案允許不同的模型。請確保所選模型包含在您的方案中。"
+*** 89,94 ****
+--- 89,104 ----
+  			"generate_complete_prompt": "Gemini 完成錯誤：{{error}}",
+  			"sources": "來源："
   		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "無法載入 OAuth 憑證。請先進行驗證：{{error}}",
@@ -1296,8 +1296,8 @@
   		"mode_import_failed": "匯入模式失敗：{{error}}"
   	},
   	"warnings": {
-*** Roo-Code-3.24.0/src/shared/checkExistApiConfig.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/src/shared/checkExistApiConfig.ts	2025-07-27 18:39:38.647365277 +0200
+*** Roo-Code-3.25.2/src/shared/checkExistApiConfig.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/src/shared/checkExistApiConfig.ts	2025-07-27 18:39:38.647365277 +0200
 ***************
 *** 5,12 ****
   		return false
@@ -1317,8 +1317,8 @@
   		return true
   	}
   
-*** Roo-Code-3.24.0/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-27 18:43:11.531698650 +0200
+*** Roo-Code-3.25.2/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-27 18:43:11.531698650 +0200
 ***************
 *** 17,22 ****
 --- 17,23 ----
@@ -1362,8 +1362,8 @@
   			{selectedProvider === "openai" && (
   				<OpenAICompatible
   					apiConfiguration={apiConfiguration}
-*** Roo-Code-3.24.0/webview-ui/src/components/settings/constants.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/constants.ts	2025-07-27 18:44:44.485544932 +0200
+*** Roo-Code-3.25.2/webview-ui/src/components/settings/constants.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/components/settings/constants.ts	2025-07-27 18:44:44.485544932 +0200
 ***************
 *** 7,12 ****
 --- 7,13 ----
@@ -1394,8 +1394,8 @@
   	{ value: "deepseek", label: "DeepSeek" },
   	{ value: "moonshot", label: "Moonshot" },
   	{ value: "openai-native", label: "OpenAI" },
-*** /dev/null	2025-07-27 02:42:48.185765997 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-07-27 17:50:35.756857270 +0200
+*** /dev/null	2025-07-28 18:58:27.647410268 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-07-27 17:50:35.756857270 +0200
 ***************
 *** 0 ****
 --- 1,81 ----
@@ -1480,8 +1480,8 @@
 + 		</>
 + 	)
 + }
-*** /dev/null	2025-07-27 02:42:48.185765997 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-07-27 17:51:06.694491854 +0200
+*** /dev/null	2025-07-28 18:58:27.647410268 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-07-27 17:51:06.694491854 +0200
 ***************
 *** 0 ****
 --- 1,169 ----
@@ -1654,8 +1654,8 @@
 + 		expect(codeElement).toHaveClass("text-vscode-textPreformat-foreground")
 + 	})
 + })
-*** Roo-Code-3.24.0/webview-ui/src/components/settings/providers/index.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/components/settings/providers/index.ts	2025-07-27 18:45:24.198053596 +0200
+*** Roo-Code-3.25.2/webview-ui/src/components/settings/providers/index.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/components/settings/providers/index.ts	2025-07-27 18:45:24.198053596 +0200
 ***************
 *** 4,9 ****
 --- 4,10 ----
@@ -1666,8 +1666,8 @@
   export { Glama } from "./Glama"
   export { Groq } from "./Groq"
   export { HuggingFace } from "./HuggingFace"
-*** Roo-Code-3.24.0/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-27 18:46:45.624048712 +0200
+*** Roo-Code-3.25.2/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-27 18:46:45.624048712 +0200
 ***************
 *** 12,17 ****
 --- 12,19 ----
@@ -1693,11 +1693,11 @@
   		case "deepseek": {
   			const id = apiConfiguration.apiModelId ?? deepSeekDefaultModelId
   			const info = deepSeekModels[id as keyof typeof deepSeekModels]
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ca/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-07-27 18:50:25.446349644 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/ca/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-07-30 05:29:42.552660015 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Per defecte: claude",
   			"maxTokensLabel": "Tokens màxims de sortida",
   			"maxTokensDescription": "Nombre màxim de tokens de sortida per a les respostes de Claude Code. El valor per defecte és 8000."
@@ -1719,11 +1719,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/de/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/de/settings.json	2025-07-27 18:52:28.437846171 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/de/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/de/settings.json	2025-07-30 05:30:32.149147763 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Standard: claude",
   			"maxTokensLabel": "Maximale Ausgabe-Tokens",
   			"maxTokensDescription": "Maximale Anzahl an Ausgabe-Tokens für Claude Code-Antworten. Standard ist 8000."
@@ -1745,11 +1745,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/en/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/en/settings.json	2025-07-27 18:53:37.244006655 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/en/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/en/settings.json	2025-07-30 05:31:28.234569396 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 420,425 ****
+--- 420,440 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximum number of output tokens for Claude Code responses. Default is 8000."
@@ -1771,11 +1771,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/es/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/es/settings.json	2025-07-27 18:54:41.172227517 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/es/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/es/settings.json	2025-07-30 05:32:17.133065852 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Por defecto: claude",
   			"maxTokensLabel": "Tokens máximos de salida",
   			"maxTokensDescription": "Número máximo de tokens de salida para las respuestas de Claude Code. El valor predeterminado es 8000."
@@ -1797,11 +1797,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/fr/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-07-27 18:55:54.674332593 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/fr/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-07-30 05:32:56.456661343 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Défaut : claude",
   			"maxTokensLabel": "Jetons de sortie max",
   			"maxTokensDescription": "Nombre maximum de jetons de sortie pour les réponses de Claude Code. La valeur par défaut est 8000."
@@ -1823,11 +1823,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/hi/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-07-27 18:58:44.081272979 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/hi/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-07-30 05:33:34.237273043 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "डिफ़ॉल्ट: claude",
   			"maxTokensLabel": "अधिकतम आउटपुट टोकन",
   			"maxTokensDescription": "Claude Code प्रतिक्रियाओं के लिए आउटपुट टोकन की अधिकतम संख्या। डिफ़ॉल्ट 8000 है।"
@@ -1849,11 +1849,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/id/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/id/settings.json	2025-07-27 18:59:43.968545703 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/id/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/id/settings.json	2025-07-30 05:34:26.763733695 +0200
 ***************
-*** 414,419 ****
---- 414,434 ----
+*** 425,430 ****
+--- 425,445 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Token Output Maks",
   			"maxTokensDescription": "Jumlah maksimum token output untuk respons Claude Code. Default adalah 8000."
@@ -1875,11 +1875,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/it/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/it/settings.json	2025-07-27 19:00:40.377860990 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/it/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/it/settings.json	2025-07-30 05:35:11.572274019 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Predefinito: claude",
   			"maxTokensLabel": "Token di output massimi",
   			"maxTokensDescription": "Numero massimo di token di output per le risposte di Claude Code. Il valore predefinito è 8000."
@@ -1901,11 +1901,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ja/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-07-27 19:01:35.162196270 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/ja/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-07-30 05:35:50.513874822 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "デフォルト：claude",
   			"maxTokensLabel": "最大出力トークン",
   			"maxTokensDescription": "Claude Codeレスポンスの最大出力トークン数。デフォルトは8000です。"
@@ -1927,11 +1927,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ko/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-07-27 19:02:29.645535439 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/ko/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-07-30 05:36:33.621433208 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "기본값: claude",
   			"maxTokensLabel": "최대 출력 토큰",
   			"maxTokensDescription": "Claude Code 응답의 최대 출력 토큰 수. 기본값은 8000입니다."
@@ -1953,11 +1953,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/nl/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-07-27 19:03:33.647767964 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/nl/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-07-30 05:37:08.070120823 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Standaard: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximaal aantal output-tokens voor Claude Code-reacties. Standaard is 8000."
@@ -1979,11 +1979,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/pl/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-07-27 19:04:29.864103329 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/pl/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-07-30 05:37:43.745219726 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Domyślnie: claude",
   			"maxTokensLabel": "Maksymalna liczba tokenów wyjściowych",
   			"maxTokensDescription": "Maksymalna liczba tokenów wyjściowych dla odpowiedzi Claude Code. Domyślnie 8000."
@@ -2005,11 +2005,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-27 19:05:24.761452959 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-30 05:38:48.868752461 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Padrão: claude",
   			"maxTokensLabel": "Tokens de saída máximos",
   			"maxTokensDescription": "Número máximo de tokens de saída para respostas do Claude Code. O padrão é 8000."
@@ -2031,11 +2031,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/ru/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-07-27 19:06:25.300734389 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/ru/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-07-30 05:39:29.443746402 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "По умолчанию: claude",
   			"maxTokensLabel": "Макс. выходных токенов",
   			"maxTokensDescription": "Максимальное количество выходных токенов для ответов Claude Code. По умолчанию 8000."
@@ -2057,11 +2057,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/tr/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-07-27 19:07:16.783122312 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/tr/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-07-30 05:40:15.093729579 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Varsayılan: claude",
   			"maxTokensLabel": "Maksimum Çıktı Token sayısı",
   			"maxTokensDescription": "Claude Code yanıtları için maksimum çıktı token sayısı. Varsayılan 8000'dir."
@@ -2083,11 +2083,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/vi/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-07-27 19:08:13.206450539 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/vi/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-07-30 05:40:49.434059748 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "Mặc định: claude",
   			"maxTokensLabel": "Số token đầu ra tối đa",
   			"maxTokensDescription": "Số lượng token đầu ra tối đa cho các phản hồi của Claude Code. Mặc định là 8000."
@@ -2109,11 +2109,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-27 19:09:03.084855941 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-30 05:41:12.804065675 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "默认：claude",
   			"maxTokensLabel": "最大输出 Token",
   			"maxTokensDescription": "Claude Code 响应的最大输出 Token 数量。默认为 8000。"
@@ -2135,11 +2135,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-27 19:09:56.670216447 +0200
+*** Roo-Code-3.25.2/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-30 05:42:11.444067923 +0200
 ***************
-*** 410,415 ****
---- 410,430 ----
+*** 421,426 ****
+--- 421,441 ----
   			"placeholder": "預設：claude",
   			"maxTokensLabel": "最大輸出 Token",
   			"maxTokensDescription": "Claude Code 回應的最大輸出 Token 數量。預設為 8000。"
@@ -2161,8 +2161,8 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.24.0/webview-ui/src/utils/validate.ts	2025-07-26 06:41:33.000000000 +0200
---- Roo-Code-3.24.0-patched/webview-ui/src/utils/validate.ts	2025-07-27 19:10:53.031543114 +0200
+*** Roo-Code-3.25.2/webview-ui/src/utils/validate.ts	2025-07-30 00:09:48.000000000 +0200
+--- Roo-Code-3.25.2-patched/webview-ui/src/utils/validate.ts	2025-07-27 19:10:53.031543114 +0200
 ***************
 *** 72,77 ****
 --- 72,80 ----

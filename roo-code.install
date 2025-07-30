@@ -1,6 +1,6 @@
 post_install() {
   echo "Manually install or upgrade with:"
-  echo "    code --install-extension /usr/share/roo-code/roo-cline-3.24.0.vsix"
+  echo "    code --install-extension /usr/share/roo-code/roo-cline-3.25.2.vsix"
   echo "If the extension was installed previously, you might have to add the '--force' switch."
 }
 
