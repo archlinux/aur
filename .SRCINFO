@@ -4,6 +4,7 @@ pkgbase = crush
 	pkgrel = 1
 	arch = aarch64
 	arch = x86_64
+	license = FSL-1.1-MIT
 	depends = git
 	makedepends = go
 	makedepends = git
