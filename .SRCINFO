@@ -1,6 +1,6 @@
 pkgbase = r-inext
 	pkgdesc = Interpolation and Extrapolation for Species Diversity
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=iNEXT
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = r-inext
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/iNEXT_3.0.1.tar.gz
-	md5sums = 1cc313937b3f3f3eb86c094dea0c54b9
-	b2sums = 5b56b746da5935edae098a5972f0161e231411d5939d21d324d9870435eb40ffe4a8ef32e862ed639bea7c76432f647a175180e3c46536ed67a967222ae1c6ad
+	source = https://cran.r-project.org/src/contrib/iNEXT_3.0.2.tar.gz
+	md5sums = 8de69efe440d8933e1c843103c2a0ef3
+	b2sums = 01a197ed9940a4f786161108af14c159ead165b136a0c38a5fca3639e0c1b59f9c68eafe79b47cf6d1595bb42eeefe11830dbad02bddb4a889bea306842f8f7a
 
 pkgname = r-inext

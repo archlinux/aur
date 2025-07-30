@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iNEXT
-_pkgver=3.0.1
+_pkgver=3.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1cc313937b3f3f3eb86c094dea0c54b9')
-b2sums=('5b56b746da5935edae098a5972f0161e231411d5939d21d324d9870435eb40ffe4a8ef32e862ed639bea7c76432f647a175180e3c46536ed67a967222ae1c6ad')
+md5sums=('8de69efe440d8933e1c843103c2a0ef3')
+b2sums=('01a197ed9940a4f786161108af14c159ead165b136a0c38a5fca3639e0c1b59f9c68eafe79b47cf6d1595bb42eeefe11830dbad02bddb4a889bea306842f8f7a')
 
 build() {
   mkdir build
