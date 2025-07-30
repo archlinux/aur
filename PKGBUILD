@@ -3,15 +3,23 @@
 pkgname=mysqltuner
 pkgver=2.6.2
 _tag='d49a40a594add5c04e60b5347c1d06e8f60cecff'
-pkgrel=2
+pkgrel=3
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
 url='http://www.mysqltuner.com'
 license=('GPL')
 makedepends=('git' 'discount')
 depends=('perl')
-source=("mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=${_tag}")
-sha256sums=('f54ce0c4180e89eee4bb9b281df85076d26882e0b9c9be1ac4e244d2b61f56bf')
+source=("mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=${_tag}"
+	"mariadb-versions.patch")
+sha256sums=('f54ce0c4180e89eee4bb9b281df85076d26882e0b9c9be1ac4e244d2b61f56bf'
+            '45fa7666fa8386d37d092c4ffd226504088e1e0d605bb67df3c0bca02ea584fd')
+
+
+prepare() {
+	cd mysqltuner/
+	patch -i ../mariadb-versions.patch mysqltuner.pl
+}
 
 build() {
 	cd mysqltuner/

@@ -1,0 +1,13 @@
+--- mysqltuner.pl
++++ mysqltuner.pl
+@@ -2535,7 +2535,9 @@
+         or mysql_version_eq( 10, 6 )
+         or mysql_version_eq( 10, 11 )
+         or mysql_version_eq( 11, 4 )
+-        or mysql_version_eq( 11, 6 ) )
++        or mysql_version_eq( 11, 6 )
++        or mysql_version_eq( 11, 7 )
++        or mysql_version_eq( 11, 8 ) )
+     {
+         goodprint "Currently running supported MySQL version "
+           . $myvar{'version'} . "";
