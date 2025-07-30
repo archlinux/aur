@@ -16,7 +16,7 @@ pkgbase = classisland
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !debug
-	source = git+https://github.com/ClassIsland/ClassIsland.git#branch=dev
+	source = git+https://github.com/ClassIsland/ClassIsland.git#tag=1.7.104.0
 	source = git+https://github.com/ClassIsland/EdgeTtsSharp.git#branch=classisland-v2
 	source = classisland.sh
 	sha256sums = SKIP
