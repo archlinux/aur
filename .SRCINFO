@@ -1,6 +1,6 @@
 pkgbase = python-gnocchiclient
 	pkgdesc = Python bindings to the Gnocchi API
-	pkgver = 7.1.0
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://github.com/gnocchixyz/python-gnocchiclient
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-gnocchiclient
 	depends = python-monotonic
 	depends = python-dateutil
 	depends = python-debtcollector
-	source = https://files.pythonhosted.org/packages/source/g/gnocchiclient/gnocchiclient-7.1.0.tar.gz
-	sha512sums = 389a9cefea17b2341cb26683e3aa45993b4f57a021ebb09ab4d527e683dd61c93c1bad8e5fa522ed07eee4feb9ecd83b078971ff363b9913ff321d63523cd695
+	source = https://files.pythonhosted.org/packages/source/g/gnocchiclient/gnocchiclient-7.2.0.tar.gz
+	sha512sums = 02f63821c7267b851090cb1cae9d1b2b953e921ad4299f563bf242d85b8ee4faf1401197f8d587a0035d0e4c0cf2ebaf6da655c67069b53595bd650a865a25ba
 
 pkgname = python-gnocchiclient
