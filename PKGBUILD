@@ -1,7 +1,7 @@
 # Maintainer: Deltara <boided420 at gmail dot com>
 _pkgname="bigpemu"
 pkgname="${_pkgname}-bin"
-pkgver=1.18
+pkgver=1.19
 pkgrel=0
 pkgdesc="The World's Prefurred Large Pussycat Emulator"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 	"${pkgname}.desktop"
 )
 md5sums=(
-	"b247c4d777c42e671cea1d978ae9ae3c"
+	"c6e010f982716145ddec0cd0a7400af2"
 	"c3af4065cc25b5a9c976954d868f6924"
 )
 
