@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-tools' 'qt6-declarative' 'upower' 'ttf-font-awesome')
 makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('130ba536e9d7d24a8e70908e2a9f07ea2e45093aa1e14d52327f97546d7c095c')
 
 build() {
   cd "$srcdir/headsetstatus-$pkgver"

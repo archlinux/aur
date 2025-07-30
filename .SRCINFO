@@ -13,6 +13,6 @@ pkgbase = headsetstatus
 	depends = upower
 	depends = ttf-font-awesome
 	source = headsetstatus-1.0.3.tar.gz::https://github.com/mewset/headsetstatus/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = SKIP
+	sha256sums = 130ba536e9d7d24a8e70908e2a9f07ea2e45093aa1e14d52327f97546d7c095c
 
 pkgname = headsetstatus
