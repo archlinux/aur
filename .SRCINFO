@@ -13,9 +13,9 @@ pkgbase = nifskope-bin
 	source = https://github.com/fo76utils/nifskope/blob/develop/res/nifskope.png?raw=true
 	source = NifSkope.desktop
 	source = vnd.gamebryo-nif.xml
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 4272b3c3d9ba9ecffcf8144ea376053fbb2e7546c09727ebd95061443a3781e1
-	sha256sums = SKIP
+	sha256sums = 14b51b1a29d9ba61f237d21ebed61f24e8c4119904fa67ce91f270eae363758c
+	sha256sums = 27e11322eff6f06bd1f8ff9ab41cafeb9cae51a22da2796ad761d9e9b2295fe7
+	sha256sums = 71a7456c085f0af9e6b01c685d32f4b24e131200f97e67c1380db19d4191f4d1
+	sha256sums = 7931c6edab17833624ca1471f91540df5b622d1697a3c74440c344a4a0144315
 
 pkgname = nifskope-bin
