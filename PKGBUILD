@@ -83,22 +83,17 @@ provides=('initramfs')
 backup=('etc/dracut.conf')
 source=(
   git+${url}.git
-  1387.patch::${url}/commit/919a337.patch # fix: load essential storage kernel modules in sloppy hostonly mode
+  1387.patch::${url}/commit/919a337.patch # allow the use of $kernel in initrdname= config
   1425.patch::${url}/commit/8b993db.patch # fix(systemd-sysext): enable initrd-specific units
+  1480.patch::${url}/commit/1a57ad7.patch # base module failure if root password is already set
   kernel-install.sh
   90-kernel-install-add.hook
   40-kernel-install-remove.hook
 )
 conflicts=("${pkgname%-git}")
-sha512sums=('SKIP' 'SKIP' 'SKIP'
-            'e49b18780e1753cb8f5e6a978efc45712a82597437af7ce4ade5019fcd84269fae89fd36e16ea27f6a56f71001aecbe2653175bbff6c04eb88d38dfdc344bc6d'
-            '564755b5a60d7ba4371c83429503a73fd04ea42011ba3e0c7f3e5df51108458afd6f75988a38d0ed0ceb626e4d7ba9c5e2a61fc6854463e05d51a91168b4b566'
-            '1f1901712f168157c9caa25ba594e54a399125c554e3cda44aff8aa303b532038f52d10bd374a340e803ad0535e66ad2a1f2158361f6af2ebb4c7f56ef108592')
-b2sums=('SKIP' 'SKIP' 'SKIP'
-        'e99bcf7bdf4d5092c3928fc0bf77db1dffd1a827f35c71a1dd300982713daa8b9c8f68997bb95dddad16fff860ad0990faaa68b80334374eeef791cdedc34b78'
-        '6e7d3a07074b46190e2d9c0bc94c11dc631cc86d8413a80d1ad49dfb1c973e98718dd241a0155eedbc1d7749880730066504a915bc175f67f7915372d62b9676'
-        '3452b73ac812a225a218ff261e6105be7d2c6f9d9e2743d647ba2f209da21a5a7bd616f8a3a28c7967a715e7efcb9c84134d3e209c85785c2ef6f81109251681')
-
+sha512sums=('SKIP'
+            'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd "${pkgname%-git}"
 
