@@ -1,7 +1,7 @@
 # Maintainer: Deltara <boided420 at gmail dot com>
 _pkgname="ocelot-desktop"
 pkgname="${_pkgname}-bin"
-pkgver=1.12.0
+pkgver=1.13.1
 pkgrel=0
 pkgdesc="OpenComputers emulator focused on accuracy"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.jar")
 md5sums=(
-	"326be85864f5f9fe5eee7bda41acc297"
+	"e89a120717b6346fb535edb25070e7d0"
 	"37a46aedc8266fcdae3576f64085d8cd"
 	"fdd97c173e32dcb4d3045f3f0f7f59a4"
 	"199a49c7ea149bfa763fb030cc469494"
