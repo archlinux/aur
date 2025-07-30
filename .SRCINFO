@@ -1,0 +1,15 @@
+pkgbase = dirlink
+	pkgdesc = A Tiny CLI Tool For Faster Command Line File System Navigation
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = https://github.com/BravestCheetah/DirLink
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+	depends = python
+	depends = python-pyperclip
+	source = https://github.com/BravestCheetah/DirLink/releases/download/1.0.1/1.0.1.tar.gz
+	sha256sums = 08fdaba98e941ed6a5d5524063e8bcd8e05e825a53387deacc12a66d048cf981
+
+pkgname = dirlink
