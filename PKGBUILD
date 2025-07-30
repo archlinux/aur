@@ -2,8 +2,8 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=hpklinux
-pkgver=4.20.46
-pkgrel=3
+pkgver=4.20.48
+pkgrel=1
 pkgdesc='AudioScience HPI (ASIHPI) user space libraries and tools'
 arch=(aarch64 x86_64)
 url='https://www.audioscience.com/internet/download/linux_drivers.htm'
@@ -16,7 +16,7 @@ optdepends=('python: for python bindings'
             'python-docopt: for dab_data and dabtest scripts')
 source=("https://www.audioscience.com/internet/download/drivers/released/v${pkgver//./\/}/${pkgname}_$pkgver.tar.gz"
         'python.patch')
-sha256sums=('7fb89509c5de487d33ac1fdff6adaa95215712613b841784954d546ca82b969c'
+sha256sums=('a4a041a756ee934c1a91d369712d68f417657b5db8d1db28c0131e68b33c8ebe'
             '922832e6c35ed4f55ad7de6138d9fe92fb6add684646471d0b9e616f96802cd7')
 
 prepare() {
