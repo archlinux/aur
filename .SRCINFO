@@ -1,7 +1,7 @@
 pkgbase = webcamoid
 	pkgdesc = Webcamoid is a full featured webcam capture application.
 	pkgver = 9.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webcamoid.github.io/
 	install = webcamoid.install
 	arch = i686
@@ -42,7 +42,7 @@ pkgbase = webcamoid
 	optdepends = portaudio: Audio playback
 	optdepends = sdl3: Audio playback
 	optdepends = libuvc: Camera capture
-	optdepends = qt5-multimedia: Camera capture
+	optdepends = qt6-multimedia: Camera capture
 	optdepends = polkit: Root privileges for virtual camera module
 	provides = webcamoid
 	conflicts = webcamoid

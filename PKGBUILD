@@ -2,7 +2,7 @@
 
 pkgname=webcamoid
 pkgver=9.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
 license=('GPL')
@@ -25,7 +25,7 @@ optdepends=('v4l-utils: Extra formats support for webcams'
             'portaudio: Audio playback'
             'sdl3: Audio playback'
             'libuvc: Camera capture'
-            'qt5-multimedia: Camera capture'
+            'qt6-multimedia: Camera capture'
             'polkit: Root privileges for virtual camera module')
 makedepends=('alsa-lib'
              'cmake'
