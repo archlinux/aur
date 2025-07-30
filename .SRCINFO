@@ -1,0 +1,32 @@
+pkgbase = mango-git
+	pkgdesc = A Wayland compositor with smooth animation
+	pkgver = r517.6b2ef05
+	pkgrel = 3.3
+	url = https://github.com/DreamMaoMao/mango
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = fakeroot
+	makedepends = debugedit
+	makedepends = base-devel
+	makedepends = wayland-protocols>=1.41
+	depends = glibc
+	depends = wayland>=1.23.1
+	depends = libinput>=1.27.1
+	depends = libdrm
+	depends = pixman
+	depends = libxkbcommon
+	depends = pcre2
+	depends = wlroots-0.19-mao-git
+	depends = scenefx-git
+	provides = mango
+	provides = wayland-compositor
+	conflicts = mango
+	conflicts = mango-git
+	conflicts = mango-next-git
+	source = mango-git::git+https://github.com/DreamMaoMao/mango.git
+	md5sums = SKIP
+
+pkgname = mango-git
