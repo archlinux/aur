@@ -2,6 +2,6 @@
 source = "github"
 github = "p0n1/epub_to_audiobook"
 prefix = "v"
-use_release_name=true
+use_release_name=false
 use_latest_release=true
 include_prereleases=false
