@@ -1,6 +1,6 @@
 pkgbase = python-paraview-trame-components
 	pkgdesc = Macro components for ParaView
-	pkgver = 0.14.0
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/Kitware/paraview-trame-components
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-paraview-trame-components
 	depends = python-trame-vtk
 	depends = python-trame-vuetify
 	depends = python-trame-components
-	source = paraview-trame-components-0.14.0.tar.gz::https://github.com/Kitware/paraview-trame-components/archive/v0.14.0.tar.gz
-	sha512sums = d9e620867a8fa37b71e110f36fa131dfad97a8d92ababb9bd3685e8a75c5fb166cc30b0571ecd15cfda6e02528148ea4af98259ff22a523b3370e3bd40502604
+	source = paraview-trame-components-0.14.2.tar.gz::https://github.com/Kitware/paraview-trame-components/archive/v0.14.2.tar.gz
+	sha512sums = cb94969a9bcc971086a6b69aea05e4dae44a22961433dbf5796b41d3608e2899b570c9d2778182a586b05a753cc4e5afa399109553a0c0b4dc547eca949f0690
 
 pkgname = python-paraview-trame-components

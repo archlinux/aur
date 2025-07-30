@@ -2,7 +2,7 @@
 _base=paraview-trame-components
 pkgname=python-${_base}
 pkgdesc="Macro components for ParaView"
-pkgver=0.14.0
+pkgver=0.14.2
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(python-trame python-trame-vtk python-trame-vuetify python-trame-components)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d9e620867a8fa37b71e110f36fa131dfad97a8d92ababb9bd3685e8a75c5fb166cc30b0571ecd15cfda6e02528148ea4af98259ff22a523b3370e3bd40502604')
+sha512sums=('cb94969a9bcc971086a6b69aea05e4dae44a22961433dbf5796b41d3608e2899b570c9d2778182a586b05a753cc4e5afa399109553a0c0b4dc547eca949f0690')
 
 prepare() {
   sed -i 's/^semantic-release/#semantic-release/' ${_base}-${pkgver}/pyproject.toml
