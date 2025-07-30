@@ -1,19 +1,23 @@
 # Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui at riseup dot net>
 
 pkgname=ntfysh
-pkgver=2.11.0
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST "
 arch=("x86_64")
 url="https://ntfy.sh"
 license=('GPL2')
 makedepends=('go' 'git' 'npm' 'nodejs')
-conflicts=(ntfysh-bin ntfy)
+conflicts=(
+	ntfysh-bin
+	ntfy
+	)
 backup=('etc/ntfy/server.yml' 'etc/ntfy/client.yml')
-source=("$pkgname::git+https://github.com/binwiederhier/ntfy.git#tag=v$pkgver"
+source=(
+	"$pkgname::git+https://github.com/binwiederhier/ntfy.git#tag=v$pkgver"
 	"ntfy.sysusers"
         )
-b2sums=('df22c8fff5b13d40880c0b5cbd5ce5644ac67e0a11a32faa7ad2b097850e10ad3dc904e3183504ebe841c7f5c1d72947423c7fbf585cb4d6d41a2e2911c47c4d'
+b2sums=('938d5b439ac326d6bee2d3f949d0d99d950c0ba4f6e9f50444f2d2d3f1b9ac276badfa856b789dede4f02417b0724a4bb790133f0a803af97a9fc2b569ac5c6f'
         '958bdfc80eeb8ed62508593a94b379d7c099373a4ed2af3eaeedebdca05519378e2bc20940950db4f848be0575cebe16bcb79b794133e8f4467418f8e34278ca')
 
 build() {
