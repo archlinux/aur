@@ -1,0 +1,35 @@
+_user="${SUDO_USER:-$(logname 2>/dev/null)}"
+_home="$(getent passwd "$_user" | cut -d: -f6)"
+
+print_usage_hint() {
+  echo
+  echo "==> To run Xenia Canary from the terminal, use the provided helper"
+  echo "    script by running: xenia-canary-bin"
+  echo "==> Or run it from your application menu (Xenia Canary desktop entry)"
+  echo
+  echo "==> Xenia Canary will store its files (cache, logs and configfile) in:"
+  echo "    $_home/.xenia-canary"
+  echo
+}
+
+post_install() {
+  print_usage_hint
+  echo "==> NOTE:"
+  echo "    This is a preview build and might not auto-update itself"
+  echo "    If you're using an AUR helper like yay, the package should update"
+  echo "    when you check for updates normally"
+  echo
+  echo "    If not, you will need to periodically reinstall this package manually"
+  echo
+}
+
+post_upgrade() {
+  print_usage_hint
+}
+
+post_remove() {
+  echo
+  echo "==> Xenia Canary has been removed"
+  echo "==> You may also remove the ~/.xenia-canary directory manually if needed"
+  echo
+}
