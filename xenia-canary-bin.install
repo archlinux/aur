@@ -1,5 +1,7 @@
 _user="${SUDO_USER:-$(logname 2>/dev/null)}"
 _home="$(getent passwd "$_user" | cut -d: -f6)"
+_data_home="${XDG_DATA_HOME:-$_home/.local/share}"
+/home/ash/.local/share/Xenia
 
 print_usage_hint() {
   echo
@@ -7,8 +9,10 @@ print_usage_hint() {
   echo "    script by running: xenia-canary-bin"
   echo "==> Or run it from your application menu (Xenia Canary desktop entry)"
   echo
-  echo "==> Xenia Canary will store its files (cache, logs and configfile) in:"
+  echo "==> Xenia Canary will store its cache and logs in:"
   echo "    $_home/.xenia-canary"
+  echo "==> The configfile and userprefs are stored in:"
+  echo "    $_data_home/Xenia"
   echo
 }
 
