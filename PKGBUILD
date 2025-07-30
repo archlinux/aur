@@ -8,7 +8,7 @@
 _name=sonic-pi
 
 pkgname=sonic-pi-git
-pkgver=v4.6.0.r12.ge5da6b3
+pkgver=v5.1.0 # Because someone bumped the version to high ??
 pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 
