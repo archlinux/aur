@@ -2,7 +2,7 @@
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname="ibazel"
-pkgver=0.26.7
+pkgver=0.26.8
 pkgrel=1
 pkgdesc="Tool for building Bazel targets when source files change."
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ makedepends=("git" "python")
 depends=("bazel")
 conflicts=('ibazel-bin' 'ibazel-git')
 _bazelisk_pkgver="1.25.0"
-_commit='9df3a83ea729564569be19bc395e459eae7b52c7'
+_commit='dcf15c8dc62c4d564914c5431f0fb84515631f7f'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 source_x86_64=(
   "bazelisk-bin-x86_64-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-amd64"
