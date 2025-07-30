@@ -1,0 +1,15 @@
+pkgbase = chromashift
+	pkgdesc = A output colorizer for your favorite commands
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Nadim147c/ChromaShift
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	provides = chromashift
+	conflicts = chromashift-git
+	conflicts = chromashift-bin
+	source = https://github.com/Nadim147c/ChromaShift/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 31dc9a09f002635c923ea8fc4f9afa361c6d9f1c24811295f6a23de0d414777d
+
+pkgname = chromashift
