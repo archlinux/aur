@@ -6,7 +6,7 @@
 
 _pkgname=teleport
 pkgname=teleport-client-bin
-pkgver=18.1.0
+pkgver=18.1.1
 pkgrel=1
 pkgdesc="Client-only (tsh, tctl) binary package for teleport"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,9 +18,9 @@ conflicts=('teleport' 'teleport-client' 'tctl' 'tsh')
 source_x86_64=("teleport-bin-${pkgver}-x86_64.tar.gz::https://cdn.teleport.dev/teleport-v${pkgver}-linux-amd64-bin.tar.gz")
 source_armv7h=("teleport-bin-${pkgver}-armv7h.tar.gz::https://cdn.teleport.dev/teleport-v${pkgver}-linux-arm-bin.tar.gz")
 source_aarch64=("teleport-bin-${pkgver}-aarch64.tar.gz::https://cdn.teleport.dev/teleport-v${pkgver}-linux-arm64-bin.tar.gz")
-sha256sums_x86_64=('b54c22c76be968afc5c3caee5aa95a302a715d2fb76519ba31481dbba3f86dab')
-sha256sums_armv7h=('6ea166e03d98377fe5cd79b8af57512a0a9a406196aa95453294327222e1b902')
-sha256sums_aarch64=('54cf2467a91495bf6e7e7c7fde16d847832e43332cd1df90aa92e33158d63ef9')
+sha256sums_x86_64=('30ff44370d4aa82fe110ddf8533e16368490d215ec48ced96e8cb5f662a884f0')
+sha256sums_armv7h=('2e1e1ff8569fd90d187d20045e6abb9a91bde1767788bb88d7fe6ce7d43372a4')
+sha256sums_aarch64=('93a251fc77dc9157e0031c6a99d5282dab12ad60aa0899d5d8ce9bee6af83c50')
 
 package() {
     cd "${srcdir}/${_pkgname}"
