@@ -4,7 +4,7 @@
 
 
 pkgname=codeql
-pkgver=2.22.1
+pkgver=2.22.2
 pkgrel=1
 epoch=
 pkgdesc="The CLI tool for GitHub's CodeQL"
@@ -24,7 +24,7 @@ options=(!strip)
 install=
 changelog=
 source=("$pkgname-v$pkgver.zip::https://github.com/github/codeql-cli-binaries/releases/download/v$pkgver/codeql-linux64.zip")
-sha256sums=('87f73c0ce1c71e5eb1aeaf93442c95ac67250515a08a6949c8d30946d92ce2ab')
+sha256sums=('ba430d55bc10dd666241e23ac900d5ffad033c7da4c334634e0da7f1ca3abe39')
 
 noextract=()
 
