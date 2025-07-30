@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.9.7.rc0.r0.g35fda7b4af55
+pkgver=0.10.0.r0.g8afa6e83f2ca
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -11,7 +11,7 @@ conflicts=(ollama)
 provides=("ollama=${pkgver%%.r*}")
 depends=(comgr gcc-libs "hip-runtime-amd>=6.3.2" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi' 'amdgpu_top: tool that shows AMD GPU utilization')
-makedepends=(git gcc-libs "go>=1.23" "hip-runtime-amd>=6.3.2" hipblas hipblas-common hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
+makedepends=(cmake git gcc-libs "go>=1.23" "hip-runtime-amd>=6.3.2" hipblas hipblas-common hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
 source=(git+$url#branch=main
         ollama.service
         sysusers.conf
