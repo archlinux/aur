@@ -1,4 +1,5 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: fk29g <fk29g.uphill912@slmails.com>
+# Previous-Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 # Previous-Maintainer: dmadisetti <madisetti at pm dot me>
 # Previous-Maintainer: TabulateJarl8 <tabulatejarl8 at gmail dot com>
 
