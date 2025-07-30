@@ -8,6 +8,8 @@ packages:
     - cargo
     - pipewire
     - pulseaudio
+environment:
+  RUSTFLAGS: -j1
 tasks:
 - build: |
     cd aur-pulseshitter
