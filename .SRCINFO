@@ -1,6 +1,6 @@
 pkgbase = kraken_desktop
 	pkgdesc = Kraken crypto exchange desktop application
-	pkgver = 1.6.3
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://www.kraken.com/desktop
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = kraken_desktop
 	provides = kraken_desktop
 	source = kraken.png
 	sha256sums = 6fc49c5128736ffa958ded6d12f3a1fa819bce5b563e768d479ca01a67517148
-	source_aarch64 = kraken_desktop-1.6.3-aarch64.zip::https://desktop-downloads.kraken.com/latest/kraken-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 1dca05fa1d70eff7c25ad04bcab48228b2f88d434824872f1231bdef422cf9a3
-	source_armv7 = kraken_desktop-1.6.3-armv7.zip::https://desktop-downloads.kraken.com/latest/kraken-armv7-unknown-linux-gnueabihf.zip
-	sha256sums_armv7 = 2bb434be4062d73d0d865131279ebe5ade61e69ffcba72cc8884ba4d728e3d41
-	source_x86_64 = kraken_desktop-1.6.3-x86_64.zip::https://desktop-downloads.kraken.com/latest/kraken-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = d1e1da0f149b7382715b540185ce4c657dad98deb3514a78e108304269c55949
+	source_aarch64 = kraken_desktop-1.7.0-aarch64.zip::https://desktop-downloads.kraken.com/latest/kraken-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 51ffa4d3a430c793915d6ae90fc7cf2f1270fca614a84ec5a471d33406bc28bd
+	source_armv7 = kraken_desktop-1.7.0-armv7.zip::https://desktop-downloads.kraken.com/latest/kraken-armv7-unknown-linux-gnueabihf.zip
+	sha256sums_armv7 = b6866ea6d4e12a4701558858239f1b6df6fda0037211bf6c606f4040cf008680
+	source_x86_64 = kraken_desktop-1.7.0-x86_64.zip::https://desktop-downloads.kraken.com/latest/kraken-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = eb64f729e56b4740a427807b78c165edcecd3c262bcca77ba8c784ffe638ab95
 
 pkgname = kraken_desktop
