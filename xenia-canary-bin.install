@@ -1,7 +1,6 @@
 _user="${SUDO_USER:-$(logname 2>/dev/null)}"
 _home="$(getent passwd "$_user" | cut -d: -f6)"
 _data_home="${XDG_DATA_HOME:-$_home/.local/share}"
-/home/ash/.local/share/Xenia
 
 print_usage_hint() {
   echo
