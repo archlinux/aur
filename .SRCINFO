@@ -1,6 +1,6 @@
 pkgbase = python-trakit
 	pkgdesc = Guess additional information from titles in media tracks
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/ratoaq2/trakit
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = python-trakit
 	optdepends = mediainfo: Increase the number of supported formats and information (default provider)
 	optdepends = mkvtoolnix-cli: Increase the number of supported formats and information (mkvmerge)
 	optdepends = python-enzyme: Increase the number of supported formats and information
-	source = python-trakit-0.2.4.tar.gz::https://github.com/ratoaq2/trakit/archive/refs/tags/0.2.4.tar.gz
-	sha256sums = 34a1a905f9b8b9ce06ea88b01b62596416df2d351e642c821c7cb0cf9ba7a1f4
-	sha512sums = 30368a90a5f687fc23835d996300306fb77a99aee3d1339e37ca215489f77f365c0bcf2bee5bd037c851a6d4ed05254e21de224564a308d36339f93bc240ddc6
-	b2sums = 1e5447ac2ea1ba4834ca9a3c423051402aa3cb68c27dba8fd6d3d4ef2e73722a8aa3acf3b38715540280abf13a7e8b9d9758b450e41d6696d2816ca341e1cf77
+	source = python-trakit-0.2.5.tar.gz::https://github.com/ratoaq2/trakit/archive/refs/tags/0.2.5.tar.gz
+	sha256sums = 43108201f0a18a037d4a511ef10bfe24b712ae58cfe704df8bc9e757b7b9d619
+	sha512sums = 152a1124201646fb1ff5186c4026237eab7dfbdaf66136fed9967eb3a28c939b0bdda8ff777dfd0571b2455675ed313fbf118d6d3cfc2675def6da1a72cfe9b0
+	b2sums = 48f91051f2532b3b9c8a4b1cdb44ebe052bdb5270d9a2de3f4ff44329e6a38492074581153281dd932cb0299f57410a29f58371c0cb8933cd9f9870d92e88baa
 
 pkgname = python-trakit
