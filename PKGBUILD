@@ -3,7 +3,7 @@
 pkgname=python-essentials-openapi
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=
 pkgdesc="Classes to generate OpenAPI Documentation v3 and v2, in JSON and YAML."
@@ -44,7 +44,7 @@ checkdepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('dbaf03130048e5522043b32f16b1f13deafa5b37449a698912c20b651d823588')
+sha256sums=('70b06d80a8d9cb7634b702903cfe8fcfc48e6fc054e744eab514bb7bc37f00c9')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
