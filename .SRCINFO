@@ -1,0 +1,22 @@
+pkgbase = ntfydesktop
+	pkgdesc = Subscribe to topics from any ntfy server and receive notifications natively on the desktop.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/emmaexe/ntfyDesktop
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	depends = curl
+	depends = qt6-base
+	depends = kcoreaddons
+	depends = ki18n
+	depends = knotifications
+	depends = kxmlgui
+	source = https://github.com/emmaexe/ntfyDesktop/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 6f9a87e8959f6b4a87e24bd9db1b9797f8386d22e02e386a18e7bdbb66a1e96d
+
+pkgname = ntfydesktop
