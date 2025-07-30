@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=107.r8040
-pkgrel=2
+pkgver=107.r8048
+pkgrel=1
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut"
@@ -24,7 +24,7 @@ depends=(
   'util-linux'
 )
 makedepends=(
-  'asciidoc'
+  'asciidoctor'
   'bash-completion'
   'git'
   'rust'
@@ -82,17 +82,13 @@ optdepends=(
 provides=('initramfs')
 backup=('etc/dracut.conf')
 source=(
-  1387.patch::${url}/commit/919a337.patch # allow the use of $kernel in initrdname= config
-  1425.patch::${url}/commit/8b993db.patch # fix(systemd-sysext): enable initrd-specific units
-  1480.patch::${url}/commit/9de0a92.patch # base module failure if root password is already set
   git+${url}.git
   dracut-{install,remove}.script
   90-dracut-install.hook
   60-dracut-remove.hook
 )
 conflicts=("${pkgname%-git}")
-sha512sums=('SKIP' 'SKIP' 'SKIP' # number of patches
-            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd "${pkgname%-git}"
 
@@ -105,13 +101,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # apply all patches
-  for p in ../*.patch ; do
-    patch -Np1 < $p
-    P=$(echo $p | sed 's/^\.\.\///g' | sed 's/\.patch$//g')
-    S=$(cat ../$p | grep 'Subject:' | sed 's/^Subject:\ \[PATCH\]\ //g')
-  done
 
   # remove dracut modules not meant for arch x86_64
   for f in cms cio_ignore ppcmac zipl \
