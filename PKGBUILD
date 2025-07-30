@@ -2,12 +2,12 @@
 _projectname=enola
 pkgname=enola-bin
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 arch=("x86_64")
 pkgdesc="CLI tool to hunt down social media accounts by username across social networks"
 url="https://github.com/TheYahya/enola"
 provides=("$_projectname")
-replaces=("$_projectname")
+conflicts=("$_projectname")
 license=("MIT")
 source=("$_projectname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_projectname}_${pkgver}_linux_amd64.tar.gz"
         "$_projectname-LICENSE::https://raw.githubusercontent.com/TheYahya/$_projectname/refs/heads/main/LICENSE")
