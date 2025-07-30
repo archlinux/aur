@@ -1,7 +1,7 @@
 # Maintainer: Saatvik <saatvik333sharma@gmail.com>
 pkgname=bongocat
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland overlay that displays an animated bongo cat reacting to keyboard input"
 arch=('x86_64' 'aarch64')
 url="https://github.com/saatvik333/wayland-bongocat"
