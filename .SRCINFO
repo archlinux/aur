@@ -1,0 +1,14 @@
+pkgbase = python-json-cmd-server
+	pkgdesc = Library for creating a json based server/client application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/NikolasK-source-pythonlib/json-command-server
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cryptography
+	source = git+https://gitlab.com/NikolasK-source-pythonlib/json-command-server.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = python-json-cmd-server
