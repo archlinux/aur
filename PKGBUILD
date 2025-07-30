@@ -2,8 +2,8 @@
 
 pkgbase="xlibre-server"
 pkgname=("${pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
-pkgver=25.0.0.5
-pkgrel=2
+pkgver=25.0.0.7
+pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
 license=('LicenseRef-Adobe-Display-PostScript' 'BSD-3-Clause' 'LicenseRef-DEC-3-Clause' 
@@ -22,7 +22,7 @@ options=('!emptydirs')
 _pkgsrc="xserver-xlibre-xserver-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-xserver-${pkgver}.tar.gz"
         "xvfb-run"{,.1}) # with updates from FC master
-b2sums=('51e04cc6668b0f37492bbf35ab2160b4b008ee0aa9e51d96505849811b91c174aab69756a99a5a4f2352ba123cf4487ed922f7c109c31d28de79fad4e7af7a57'
+b2sums=('27706354b2ee3e0c28c94a7d32d9616b256e31994d8644d8a766e08390291ff7bea4da0b2a1c5cbe0e67935bdc3665a385bb1191678bd49493c6a600d984a6fe'
         '58c48ed893be841d14d3a09c9e1092a6da7bcb7fb773e1bf634c50a12e51ea3ad4aeba3843164a2834ee9f8ea95a7bca8b3ce8196a5328ce782724c082cb416f'
         '0e3738e099ee2b958df3e5a5adbdfcbd1150ad64645fdae70d74b50123c3f3d43f9f95f5e4bac82bf5c72b3deb978655b8c3177d37de0bd0a2a6e0e343863511')
 
