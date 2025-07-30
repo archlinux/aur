@@ -8,48 +8,55 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=5.3.0.prealpha.3290.g35bad92f7c
+pkgver=6.0.0.prealpha.r64523.e088026ad5
 pkgrel=1
-pkgdesc='A full-featured free digital painting studio. Git version.'
+pkgdesc='A full-featured free digital painting studio. Qt 6 git version.'
 arch=('x86_64')
 url='https://krita.org'
 license=('GPL-3.0-only')
 
 depends=(
 	exiv2 ffmpeg fftw fontconfig freetype2 fribidi gcc-libs giflib glibc gsl
-	harfbuzz imath kcompletion kconfig kcoreaddons kcrash kguiaddons ki18n
-	kitemviews kitemmodels kwidgetsaddons kwindowsystem lcms2 libjpeg-turbo
-	libkdcraw libpng libtiff libunibreak libwebp libx11 mlt opencolorio openexr
+	harfbuzz imath kcolorscheme kcompletion kconfig kcoreaddons kcrash kguiaddons
+	ki18n kitemviews kitemmodels kwidgetsaddons kwindowsystem lcms2 libjpeg-turbo
+	libkdcraw libpng libtiff libunibreak libwebp mlt sdl2 opencolorio openexr
 	openjpeg2 qt6-base qt6-svg quazip-qt6 zlib
 )
 makedepends=(
-	git boost eigen extra-cmake-modules immer kdoctools kseexpr lager libheif
-	libjxl libmypaint poppler-qt6 python-pyqt6 qt6-tools sip xsimd zug
+	git ninja boost eigen extra-cmake-modules immer kdoctools kseexpr-qt6-git lager libheif
+	libjxl libmypaint poppler-qt6 python-pyqt6 qt6-tools sip xsimd zug vulkan-headers
 )
 optdepends=(
 	'poppler-qt6: PDF filter'
 	'python-pyqt6: for the Python plugins'
 	'python-legacy-cgi: for the Python plugins'
 	'libheif: HEIF filter'
-	'kseexpr: SeExpr generator layer'
+	'kseexpr-qt6-git: SeExpr generator layer'
 	'kimageformats: PSD support'
 	'libmypaint: support for MyPaint brushes'
 	'krita-plugin-gmic: GMic plugin'
 	'libjxl: JPEG-XL filter'
 )
 provides=("${_pkgname}=${pkgver}")
-conflicts=(calligra-krita krita-il10n krita)
+conflicts=("${_pkgname}" "${_pkgname}-qt6-git")
 
 source=("git+https://invent.kde.org/graphics/${_pkgname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
-	git describe --long --tags 2>/dev/null | sed -r 's/^v//;s/-/./g'
+	printf "%s.r%s.%s" \
+		"$(
+			grep 'set(KRITA_VERSION_STRING' CMakeLists.txt | \
+			sed -nE 's/.*set\(KRITA_VERSION_STRING *"([0-9]+)\.([0-9]+)\.([^"]+)"\).*/\1.\2.\3/p' | \
+			grep -E '^[6-9]\.|^[1-9][0-9]+\.' | sed -r 's/-/./g' \
+		)" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short=10 HEAD)"
 }
 
 build() {
-	cmake -B build -S ${_pkgname} \
+	cmake -B build -S ${_pkgname} -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
