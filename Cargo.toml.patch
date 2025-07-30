@@ -1,0 +1,12 @@
+Index: pulseshitter-3.0.0/Cargo.toml
+===================================================================
+--- pulseshitter-3.0.0.orig/Cargo.toml
++++ pulseshitter-3.0.0/Cargo.toml
+@@ -1,6 +1,6 @@
+ [package]
+ name = "pulseshitter"
+-version = "2.1.1"
++version = "3.0.0"
+ edition = "2021"
+ 
+ [profile.profiling]
