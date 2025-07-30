@@ -2,11 +2,12 @@
 
 pkgname=elephant-desktopapplications
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='desktopapplications provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
 license=('MIT')
+depends=('elephant')
 makedepends=('go')
 conflicts=('elephant-desktopapplications')
 provides=('elephant-desktopapplications')
