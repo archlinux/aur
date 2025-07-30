@@ -1,14 +1,5 @@
 {
-    "policies": {
-      "DisableAppUpdate": true,
-      "Homepage": {
-        "URL": "https://zen-browser.app/",
-        "Locked": false
-      },
-      "DNSOverHTTPS": {
-        "Enabled": true,
-        "Locked": false
-      }
-    }
+  "policies": {
+    "DisableAppUpdate": true
   }
-  
+}
