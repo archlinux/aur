@@ -2,8 +2,8 @@
 # Contributor: Germán Osella Massa <gosella@gmail.com>
 _base=mpld3
 pkgname=python-${_base}
-pkgver=0.5.10
-pkgrel=2
+pkgver=0.5.11
+pkgrel=1
 pkgdesc="D3 Viewer for Matplotlib"
 arch=(any)
 url="https://${_base}.github.io"
@@ -12,7 +12,7 @@ depends=(python-jinja python-matplotlib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('3c5426e4413ce57fdf388af5fdfaae3ec4496da56e2ac0576a98b1246cedc646ccec61c8b96a381bb150512378de39e997133c190f7ae8d3872ea627933a0857')
+sha512sums=('f83c517cd86ca8487f895630a136b22ac8f040eb119b5eab23d7e05f7be894ef3edd67339f3e02344822678c4d6841fd75916b90eca3d739912d78edad79a942')
 
 build() {
   cd ${_base}-${pkgver}
