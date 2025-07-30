@@ -23,7 +23,7 @@ package() {
     cd "$srcdir/wayland-bongocat-$pkgver"
 
     # Install the binary
-    install -Dm755 bongocat "$pkgdir/usr/bin/bongocat"
+    install -Dm755 build/bongocat "$pkgdir/usr/bin/bongocat"
 
     # Install example configuration
     install -Dm644 bongocat.conf "$pkgdir/usr/share/bongocat/bongocat.conf.example"
