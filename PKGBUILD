@@ -1,22 +1,18 @@
+# Maintainer: ilovemikael <itsmeguys2247@gmail.com>
+
+# PKGBUILD 'forked' from electron*-bin [https://aur.archlinux.org/packages/waybar-git] by
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
-
-## options
-: ${_use_sodeps:=false}
-
-: ${_with_cava:=false}
-
 _pkgname="waybar"
-pkgname="$_pkgname-git"
-pkgver=0.12.0.r218.g4730fc4
+pkgname="$_pkgname-minimal-git"
+pkgver=0.13.0.r41.g0776e69
 pkgrel=1
-pkgdesc="Highly customizable Wayland bar for Sway and Wlroots based compositors"
+pkgdesc="Highly customizable bar for Sway, wlroots-based, and other Wayland compositors; PKGBUILD tweaked minutely to eliminate (potentially) unnecessary dependency on gpsd."
 url='https://github.com/Alexays/Waybar'
 license=('MIT')
 arch=('x86_64')
 
 depends=(
   'fmt'
-  'gpsd'
   'gtk-layer-shell'
   'gtkmm3'
   'jack'
@@ -75,16 +71,12 @@ pkgver() {
 build() {
   local _meson_args=(
     -Dexperimental=true
+    -Dgps=disabled
+    -Dcava=disabled
   )
-
-  if [ "${_with_cava::1}" != "t" ]; then
-    _meson_args+=(-Dcava=disabled)
-  fi
-
   if ((!"${CHECKFUNC:-0}")); then
     _meson_args+=(-Dtests=disabled)
   fi
-
   arch-meson "${_meson_args[@]}" "$_pkgsrc" build
   meson compile -C build
 }
@@ -94,22 +86,6 @@ check() {
 }
 
 package() {
-  if [[ "${_use_sodeps::1}" == "t" ]]; then
-    eval "depends+=(
-      'libatkmm-1.6.so'
-      'libcairomm-1.0.so'
-      'libfmt.so'
-      'libgtk-3.so'
-      'libjack.so'
-      'libjsoncpp.so'
-      'libpipewire-0.3.so'
-      'libsndio.so'
-      'libspdlog.so'
-      'libudev.so'
-      'libupower-glib.so'
-    )"
-  fi
-
   meson install -C build --destdir "$pkgdir"
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
