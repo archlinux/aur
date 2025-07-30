@@ -1,6 +1,6 @@
 pkgbase = python-snakemake-interface-storage-plugins
 	pkgdesc = Common functions and classes for Snakemake and its plugins
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://github.com/snakemake/snakemake-interface-storage-plugins
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-snakemake-interface-storage-plugins
 	depends = python-wrapt
 	depends = python-reretry
 	depends = python-throttler
-	source = snakemake-interface-storage-plugins-4.2.1.tar.gz::https://github.com/snakemake/snakemake-interface-storage-plugins/archive/refs/tags/v4.2.1.tar.gz
-	sha256sums = 649c760926fe7d0b1643fb650f2d0eda24909d94d2633d29bd2e438fd20742fe
+	source = snakemake-interface-storage-plugins-4.2.2.tar.gz::https://github.com/snakemake/snakemake-interface-storage-plugins/archive/refs/tags/v4.2.2.tar.gz
+	sha256sums = 56f9d3f3847a1736a50e9d53f6c87322ac8803f88b7bb0f972a7998ecae21da1
 
 pkgname = python-snakemake-interface-storage-plugins
