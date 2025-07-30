@@ -1,6 +1,6 @@
 # Maintainer: solstiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=virt-v2v
-pkgver=2.7.4
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Convert a guest image to use with KVM"
 arch=(x86_64)
@@ -23,7 +23,7 @@ fi
 source=("https://download.libguestfs.org/virt-v2v/${pkgver:0:3}-${_dirname}/virt-v2v-${pkgver}.tar.gz" "virt-v2v.install")
 install=virt-v2v.install
 
-sha256sums=('fe122d92b78f851e9d3a40b3cdab3d2340384089f1da720d18b83bd5f1309d5b'
+sha256sums=('5808990149330fc8d1a94312978be77a7a6b18b11d7676c522e99b283486edc8'
             '6235d47396e8e193a80de17825fe337f18ab0bb6ffb4a61f204bea57e5a90f7d')
 
 build() {
