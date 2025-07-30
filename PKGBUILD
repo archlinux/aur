@@ -2,7 +2,7 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-avr-core
-pkgver=1.8.6
+pkgver=1.8.6 # renovate: datasource=github-tags depName=arduino/ArduinoCore-avr
 pkgrel=1
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any')
