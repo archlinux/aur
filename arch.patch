@@ -1,0 +1,69 @@
+From 78036a09b9d2c7a1cd4bdcd532249c237d2c3ea7 Mon Sep 17 00:00:00 2001
+From: Gon Solo <gonsolo@gmail.com>
+Date: Wed, 30 Jul 2025 12:17:50 +0200
+Subject: [PATCH] fix.
+
+---
+ ctypeslib/__init__.py | 25 +++++++++++++++++++------
+ 1 file changed, 19 insertions(+), 6 deletions(-)
+
+diff --git a/ctypeslib/__init__.py b/ctypeslib/__init__.py
+index 7774a27..8d3326f 100644
+--- a/ctypeslib/__init__.py
++++ b/ctypeslib/__init__.py
+@@ -11,6 +11,7 @@ and providing tools for handling errors and exceptions that may occur when calli
+ import ctypes
+ import os
+ import re
++import subprocess
+ import sys
+ import warnings
+ from ctypes.util import find_library
+@@ -18,11 +19,24 @@ from ctypes.util import find_library
+ import importlib.metadata
+ from importlib.metadata import PackageNotFoundError
+ 
+-try:
+-    __version__ = importlib.metadata.version('ctypeslib22')
+-except PackageNotFoundError:
+-    __version__ = 'Please install the latest version of this python package'
++def get_clang_version():
++    try:
++        # Führt den Befehl 'clang --version' aus
++        output = subprocess.check_output(['clang', '--version'], text=True, stderr=subprocess.STDOUT)
++
++        # Sucht mit einem regulären Ausdruck nach der Versionsnummer
++        match = re.search(r"clang version (\S+)", output)
++        if match:
++            return match.group(1)
++        else:
++            return "Version not found in output."
+ 
++    except FileNotFoundError:
++        return "Clang is not installed or not in PATH."
++    except subprocess.CalledProcessError as e:
++        return f"Error executing clang command: {e}"
++
++__version__ = get_clang_version()
+ 
+ def __find_clang_libraries():
+     """ configure python-clang to use the local clang library """
+@@ -99,14 +113,13 @@ def __configure_clang_cindex():
+         return __library_path
+     return None
+ 
+-
+ # check which clang python module is available
+ # check which clang library is available
+ try:
+     from clang import cindex
+     from ctypeslib.codegen.codegenerator import translate, translate_files
+ 
+-    __clang_py_version__ = importlib.metadata.version('clang')
++    __clang_py_version__ = get_clang_version()
+     __clang_library_filename = __configure_clang_cindex()
+     if __clang_library_filename is None:
+         warnings.warn("Could not find the clang library. please install llvm libclang", RuntimeWarning)
+-- 
+2.50.1
+
