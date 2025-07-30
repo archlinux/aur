@@ -1,6 +1,6 @@
 # Maintainer: ilovemikael <itsmeguys2247@gmail.com>
 
-# PKGBUILD 'forked' from electron*-bin [https://aur.archlinux.org/packages/waybar-git] by
+# PKGBUILD 'forked' from [https://aur.archlinux.org/packages/waybar-git] by
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
 _pkgname="waybar"
 pkgname="$_pkgname-minimal-git"
