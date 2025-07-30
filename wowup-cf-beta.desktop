@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=WowUp CF Beta
+Terminal=false
+Icon=/usr/share/pixmaps/wowup_logo_cf_beta.png
+Comment=Word of Warcraft addon updater (Beta version)
+Exec=/usr/bin/wowup-cf-beta %U
+Categories=Game;Application;
+MimeType=x-scheme-handler/wowup;
