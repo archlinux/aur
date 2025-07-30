@@ -3,7 +3,7 @@
 pkgname=python-vllm
 _pkgname=vllm
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -34,10 +34,16 @@ depends=(
   python-pyzmq
   python-blake3
   python-cloudpickle
-  python-huggingface-hub)
+  python-huggingface-hub
+  python-gguf
+  python-prometheus-fastapi-instrumentator
+  python-partial-json-parser
+  python-watchfiles
+  python-triton
+  )
 makedepends=(
   git
-  gcc13
+  gcc14
   cmake
   python-installer
   python-setuptools
@@ -47,12 +53,10 @@ makedepends=(
 optdepends=(
   'python-openai: required for openai protocols'
   'python-prometheus_client: Prometheus instrumentation library for Python applications'
-  'python-prometheus-fastapi-instrumentator: Prometheus fastapi implementation'
   'python-pillow: required for image processing'
   'python-outlines: guided text generation'
   'python-lark: parsing toolkit'
   'python-typing_extensions: typing hints'
-  'python-partial-json-parser: parse partial JSON output'
   'python-msgspec: JSON/MessagePack library with validation'
   'python-mistral-common: mistral tools for opencv'
   'python-einops: required for QWen2-VL models'
@@ -71,9 +75,9 @@ sha256sums=('44f535b941d2447e817b32fca6ded58041e9e6e5f4984c97e045db66dac798c3')
 _jobs=$(($(nproc) / 2))
 prepare() {
   #not much luck setting CC env flags, so manually linking and pathing - this only exists for building
-  mkdir -p gcc13/bin
-  ln -sf /usr/bin/gcc-13 $srcdir/gcc13/bin/gcc
-  ln -sf /usr/bin/g++-13 $srcdir/gcc13/bin/g++
+  mkdir -p gcc14/bin
+  ln -sf /usr/bin/gcc-14 $srcdir/gcc14/bin/gcc
+  ln -sf /usr/bin/g++-14 $srcdir/gcc14/bin/g++
   sed -i 's/\(PYTHON_SUPPORTED_VERSIONS\s*"3.9" "3.10" "3.11" "3.12"\)/\1 "3.13"/' "$_pkgname/CMakeLists.txt"
 }
 
