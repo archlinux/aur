@@ -6,3 +6,9 @@ e.g.:
 For a total of 8 thread during simulation
 EOF
 }
+
+post_upgrade() {
+	cat << EOF
+Remember to rebuild your plugins with the 'buildxyceplugin.sh' script!
+EOF
+}

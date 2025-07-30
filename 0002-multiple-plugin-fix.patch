@@ -1,0 +1,72 @@
+From 40f2ae39a9ca956a3d5757bef3d77aa5f2bcfdc5 Mon Sep 17 00:00:00 2001
+From: Tom Russo <russo@bogodyn.org>
+Date: Thu, 26 Jun 2025 16:49:23 -0600
+Subject: [PATCH] Allow plugin feature to load more than two plugins
+
+The "-plugin" feature is supposed to take a comma separated list of
+plugin shared libraries and load them all.  As noted in GH-148 and in
+an older Google Groups posting, it only worked for one or two, not for
+three or more.
+
+Multiple solutions to this problem have been posted.  This commit
+implements a generic "splitArg" function that will split a string on
+any given delimeter and return a vector of the split-out strings.
+
+It then replaces the convoluted "-param" loop with a simple loop over
+the vector.
+
+Closes GH-148.
+---
+ src/CircuitPKG/N_CIR_Xyce.C | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/src/CircuitPKG/N_CIR_Xyce.C b/src/CircuitPKG/N_CIR_Xyce.C
+index 2e4f498d..3a85927d 100644
+--- a/src/CircuitPKG/N_CIR_Xyce.C
++++ b/src/CircuitPKG/N_CIR_Xyce.C
+@@ -48,6 +48,8 @@
+ #include <stdexcept>
+ #include <ctime>
+ #include <numeric>
++#include <vector>
++#include <algorithm>
+ #if (__cplusplus>=201703L)
+ #include <filesystem>
+ #endif
+@@ -286,6 +288,20 @@ struct TimeStatePairsOp: public Device::DeviceInstanceOp
+   std::map<std::string, std::vector< std::pair<double,int> > > &      TimeStateMap_;
+ };
+ 
++// Split the string s into a vector of strings at the given delimeter
++void splitArg(const std::string &s, const char delim,
++            std::vector<std::string> &out)
++{
++    std::string::size_type beg = 0;
++    for (auto end = 0; (end = s.find(delim, end)) != std::string::npos; ++end)
++    {
++        out.push_back(s.substr(beg, end - beg));
++        beg = end + 1;
++    }
++
++    out.push_back(s.substr(beg));
++}
++
+ } // namespace <unnamed>
+ 
+ 
+@@ -895,10 +911,12 @@ Simulator::RunStatus Simulator::initializeEarly(
+   if (commandLine_.argExists(std::string("-plugin")))
+   {
+     const std::string plugin = commandLine_.getArgumentValue("-plugin");
+-    
+-    for (std::string::size_type i = 0, j = plugin.find_first_of(", "); i != std::string::npos; i = (j == std::string::npos ? j : j + 1), j = plugin.find_first_of(", ", i))
++
++    std::vector<std::string> pluginNames;
++    splitArg(plugin,',',pluginNames);
++    for (auto &s : pluginNames)
+     {
+-      Device::registerPlugin(plugin.substr(i, j).c_str());
++      Device::registerPlugin(s.c_str());
+     }
+   }
+   Report::safeBarrier(comm_);

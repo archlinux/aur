@@ -1,0 +1,104 @@
+From 1214299f52b3ffb4e563597940392a74ae77a792 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar@gmail.com>
+Date: Wed, 30 Jul 2025 18:26:48 +0200
+Subject: [PATCH] fix latex doc build
+
+This uses the public "model" for compiling
+the Latex to pdf manuals (reference and user-guide)
+
+---
+ doc/Reference_Guide/Xyce_RG.tex | 26 ++++++++++++++------------
+ doc/Users_Guide/Xyce_UG.tex     | 26 ++++++++++++++------------
+ 2 files changed, 28 insertions(+), 24 deletions(-)
+
+diff --git a/doc/Reference_Guide/Xyce_RG.tex b/doc/Reference_Guide/Xyce_RG.tex
+index c8a71351..7475678d 100644
+--- a/doc/Reference_Guide/Xyce_RG.tex
++++ b/doc/Reference_Guide/Xyce_RG.tex
+@@ -9,10 +9,10 @@
+ 
+ % When compiling at Sandia, uncomment 'sand' and SANDreport
+ % Outside of Sandia, uncomment 'report' and scrreprt:
+-\documentclass[11pt,report]{SANDreport}
+-\usepackage[sand]{optional}
+-%\documentclass[11pt,letterpaper]{scrreprt}
+-%\usepackage[report]{optional}
++%\documentclass[11pt,report]{SANDreport}
++%\usepackage[sand]{optional}
++\documentclass[11pt,letterpaper]{scrreprt}
++\usepackage[report]{optional}
+ 
+ \usepackage{Xyce}
+ \usepackage{makeidx,ltxtable, multirow}
+@@ -56,14 +56,16 @@ Xyce_RG_dist
+ % Set the title, author, and date
+ %
+ \title{\XyceTitle{} Parallel Electronic Simulator\\Reference Guide, Version 7.10}
+-\SANDauthor{Eric R. Keiter,
+-            Richard L. Schiek,
+-            Heidi K. Thornquist,\\
+-            Ting Mei,
+-            Jason C. Verley,
+-            Karthik V. Aadithya,\\
+-            Joshua D. Schickling,
+-            Gary L. Hennigan
++\opt{sand}{
++	\SANDauthor{Eric R. Keiter,
++	            Richard L. Schiek,
++	            Heidi K. Thornquist,\\
++	            Ting Mei,
++	            Jason C. Verley,
++	            Karthik V. Aadithya,\\
++	            Joshua D. Schickling,
++	            Gary L. Hennigan
++	}
+ }
+ \date{}
+ 
+diff --git a/doc/Users_Guide/Xyce_UG.tex b/doc/Users_Guide/Xyce_UG.tex
+index c7008177..5bb35b7b 100644
+--- a/doc/Users_Guide/Xyce_UG.tex
++++ b/doc/Users_Guide/Xyce_UG.tex
+@@ -9,10 +9,10 @@
+ 
+ % When compiling at Sandia, uncomment 'sand' and SANDreport
+ % Outside of Sandia, uncomment 'report' and scrreprt:
+-\documentclass[11pt,report]{SANDreport}
+-\usepackage[sand]{optional}
+-%\documentclass[11pt,letterpaper]{scrreprt}
+-%\usepackage[report]{optional}
++%\documentclass[11pt,report]{SANDreport}
++%\usepackage[sand]{optional}
++\documentclass[11pt,letterpaper]{scrreprt}
++\usepackage[report]{optional}
+ 
+ \usepackage{Xyce}
+ \usepackage{makeidx,ltxtable, multirow}
+@@ -77,14 +77,16 @@
+ % Set the title, author, and date
+ %
+ \title{\XyceTitle{} Parallel Electronic Simulator\\Users' Guide, Version \XyceVersionVar}
+-\SANDauthor{Eric R. Keiter,
+-            Richard L. Schiek,
+-            Heidi K. Thornquist,\\
+-            Ting Mei,
+-            Jason C. Verley,
+-            Karthik V. Aadithya,\\
+-            Joshua D. Schickling,
+-            Gary L. Hennigan
++\opt{sand}{
++	\SANDauthor{Eric R. Keiter,
++	            Richard L. Schiek,
++	            Heidi K. Thornquist,\\
++	            Ting Mei,
++	            Jason C. Verley,
++	            Karthik V. Aadithya,\\
++	            Joshua D. Schickling,
++	            Gary L. Hennigan
++	}
+ }
+ \date{}
+ 
+-- 
+2.50.1
+
