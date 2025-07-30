@@ -28,7 +28,7 @@ _clangbuild=
 
 pkgbase=kodi-ext-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=21.1.0r65761.29f57cdbbe0
+pkgver=21.2.0r65944.3845c09a81b
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://kodi.tv"
@@ -79,10 +79,13 @@ prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir -p "$srcdir/kodi-build"
 
-  cd "$_gitname"
+  cd "$startdir/$_gitname"
 
-  _lastbranch=$(git branch --all --sort='-*authordate' | tail -2 | head -1)
-  git reset --hard ${_lastbranch}
+  _lastbranch=$(git branch --all --sort='-*authordate' | tail -2 | head -1 | tr -d ' ')
+
+  cd "$srcdir/$_gitname"
+
+  git reset --hard remotes/origin/${_lastbranch}
 
   echo "=============================="
   echo "Building branch ${_lastbranch}"
