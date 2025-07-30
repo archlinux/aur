@@ -1,0 +1,13 @@
+pkgbase = invoker-trainer
+	pkgdesc = CLI trainer for Invoker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Yujonpradhananga/invoker-trainer
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = invoker-trainer-1.0.0.tar.gz::https://github.com/Yujonpradhananga/invoker-trainer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = invoker-trainer
