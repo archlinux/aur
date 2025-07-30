@@ -6,7 +6,7 @@
 _pkgname=steam-tui
 pkgname=${_pkgname}-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust TUI client for steamcmd"
 arch=('x86_64')
 url="https://github.com/dmadisetti/steam-tui"
