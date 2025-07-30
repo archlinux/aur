@@ -3,7 +3,7 @@
 _target="mips-elf"
 pkgname=$_target-binutils
 pkgver=2.45
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS ELF (bare-metal) architecture"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
@@ -13,7 +13,7 @@ replaces=('cross-mips-elf-binutils')
 conflicts=('cross-mips-elf-binutils')
 provides=('cross-mips-elf-binutils')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha256sums=('8a3eb4b10e7053312790f21ee1a38f7e2bbd6f4096abb590d3429e5119592d96'
+sha256sums=('1393f90db70c2ebd785fb434d6127f8888c559d5eeb9c006c354b203bab3473e'
             'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')	# Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
