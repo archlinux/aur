@@ -28,7 +28,7 @@ optdepends=(
 )
 makedepends=(
     'gnome-common'
-    'intltool'
+    'meson'
     'vala'
 )
 provides=(
@@ -48,24 +48,14 @@ sha256sums=(
     '6284948fbd3e64d0a2dd7f8bb08c980c9a5944fa8a63fabb0aee4a64728324c7'
 )
 
-prepare() {
-    cd "${_pkgname}-${pkgver}"
-    NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
     cd "${_pkgname}-${pkgver}"
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --sbindir=/usr/bin \
-        --libexecdir=/usr/lib/lightdm
-    make
+    arch-meson build
 }
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+    meson install -C build --destdir "$pkgdir"
 
     # Download latest Bing wallpaper from internet
     # Credits to https://forum.linuxconfig.org/t/how-to-download-bing-wallpaper-with-bash-shell-one-liner/3457
