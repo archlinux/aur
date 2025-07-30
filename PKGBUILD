@@ -4,7 +4,7 @@
 # Contributor: Erus <erus.iluvatar@gmail.com>
 
 pkgname=ttf-mac-fonts-all
-pkgver=.
+pkgver=20100901.134
 pkgrel=1
 pkgdesc='Mac fonts including Lucida Grande, Apple Garamond and other fonts from Apple'
 arch=('any')
