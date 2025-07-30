@@ -1,8 +1,8 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=fastanime
-pkgver=2.9.9
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 epoch=1
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
