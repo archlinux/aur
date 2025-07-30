@@ -3,8 +3,8 @@
 # Temporary Maintainer: bluetail
 pkgname=vmware-host-modules-dkms-fix-git
 _pkgname=vmware-host-modules
-pkgver=w17.6.3.r17.g6797e55
-_branch_version=17.6.3
+pkgver=17.6.3.r17.g6797e55
+_branchversion=17.6.3
 url="https://github.com/philipl/vmware-host-modules"
 pkgrel=1
 epoch=2
@@ -20,13 +20,14 @@ source=(
   dkms-vmmon.conf
   dkms-vmnet.conf
 )
-sha256sums=('bb0fd21a22040350f38488961af72081f3085980255063e3534358684a16f8bb'
+sha256sums=('SKIP'
             'ed52e41b8f2b525915d47c350f4e6dec064b01d6f894e32b513a01e0f1162c4d'
             'b218e4ec45f5c2f960333d209442a0a98fa525ee034947c0be724f2f77d0a4a9')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/^workstation-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # Get the latest tag and commit info
+  printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^workstation-//;s/^w//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -35,11 +36,13 @@ prepare() {
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/src/vmmon-1"
-  install -dm755 "${pkgdir}/usr/src/vmnet-1"
-  cp -r "${srcdir}/${_pkgname}/vmmon-only/"* "${pkgdir}/usr/src/vmmon-1/"
-  cp -r "${srcdir}/${_pkgname}/vmnet-only/"* "${pkgdir}/usr/src/vmnet-1/"
+  install -dm755 "${pkgdir}/usr/src/vmmon-${_branchversion}"
+  install -dm755 "${pkgdir}/usr/src/vmnet-${_branchversion}"
+  
+  cp -r "${srcdir}/${_pkgname}/vmmon-only/"* "${pkgdir}/usr/src/vmmon-${_branchversion}/"
+  cp -r "${srcdir}/${_pkgname}/vmnet-only/"* "${pkgdir}/usr/src/vmnet-${_branchversion}/"
+  
   # Install DKMS configs
-  cp "${srcdir}/dkms-vmmon.conf" "${pkgdir}/usr/src/vmmon-1/dkms.conf"
-  cp "${srcdir}/dkms-vmnet.conf" "${pkgdir}/usr/src/vmnet-1/dkms.conf"
+  cp "${srcdir}/dkms-vmmon.conf" "${pkgdir}/usr/src/vmmon-${_branchversion}/dkms.conf"
+  cp "${srcdir}/dkms-vmnet.conf" "${pkgdir}/usr/src/vmnet-${_branchversion}/dkms.conf"
 }
