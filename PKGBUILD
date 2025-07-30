@@ -2,7 +2,7 @@
 
 pkgname=helm-ls-bin
 _binname=helm_ls
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Language server for Helm'
 license=(MIT)
@@ -11,7 +11,7 @@ url="https://github.com/mrjosh/helm-ls"
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/mrjosh/helm-ls/v$pkgver/LICENSE")
 source_x86_64=("$_binname-$pkgver::$url/releases/download/v$pkgver/helm_ls_linux_amd64")
 sha256sums=('69fcf81ef258076793149979fba61e50f6fc64273c8192472ba7ab18f1616d71')
-sha256sums_x86_64=('69f89f71bb5ccaa5f847480f72cc3e0da376e185ff54129e1b7924f41092defd')
+sha256sums_x86_64=('020b80ce338e26fc06213b351862f57640a66f0f520704620901add928439711')
 
 arch=(x86_64)
 depends=(glibc)
