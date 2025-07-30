@@ -1,7 +1,7 @@
 pkgbase = xenia-canary-bin
 	pkgdesc = Xenia Canary is an experimental fork of the Xenia emulator.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xenia-canary
 	install = xenia-canary-bin.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = xenia-canary-bin
 	conflicts = xenia-git
 	conflicts = xenia-canary-git
 	options = !strip
-	source = xenia_canary_linux-.tar.gz::https://github.com/xenia-canary/xenia-canary-releases/releases/download//xenia_canary_linux.tar.gz
+	source = xenia_canary_linux-43d206d.tar.gz::https://github.com/xenia-canary/xenia-canary-releases/releases/download/43d206d/xenia_canary_linux.tar.gz
 	source = https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/1024.png
 	source = https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/512.png
 	source = https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/256.png
