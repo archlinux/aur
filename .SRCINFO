@@ -1,12 +1,12 @@
 pkgbase = godot-beta-bin
 	pkgdesc = Godot Engine Beta - Prebuilt binary from GitHub
-	pkgver = 4.5beta3
+	pkgver = 4.5beta4
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/godotengine/godot-builds/releases/download/4.5-beta3/Godot_v4.5-beta3_linux.x86_64.zip
+	source = https://github.com/godotengine/godot-builds/releases/download/4.5-beta4/Godot_v4.5-beta4_linux.x86_64.zip
 	source = godot-beta.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
