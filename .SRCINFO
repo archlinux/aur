@@ -12,6 +12,7 @@ pkgbase = python-adios4dolfinx
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-fenics-dolfinx
+	depends = python-packaging
 	depends = adios2
 	source = adios4dolfinx-0.9.4.tar.gz::https://github.com/jorgensd/adios4dolfinx/archive/v0.9.4.tar.gz
 	sha512sums = aa74641ffd05e56cae35735dcc1d0190f51f7af187a7c6ce6513c24b48e4bba9ea67d6914ee2bd838d0d7c2b89dc1c8a3b5fc21cd4733df218f42c6871d4c7d2
