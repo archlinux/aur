@@ -6,7 +6,7 @@
 
 pkgname=discord-bwrap
 _pkgname=Discord
-pkgver=0.0.102
+pkgver=0.0.103
 pkgrel=1
 epoch=1
 pkgdesc="All-in-one voice and text chat for gamers. Sandboxed for privacy."
@@ -23,7 +23,7 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz"
         "portable-config"
         "discord.sh"
         "discord.desktop")
-sha512sums=('a040994b92deb07743139aa5c5084c0123a5fd55be0fd0f949d79f56e62250e7c10935e48c0301a499b9d3a86fb3bd9e1dc183a3223f447db4bab004baa36d57'
+sha512sums=('ac6b299df72a14cbd5ae33f4cdb7aca4d39f7925b3f1ea170bd82b71b403d7acb5397c03c020de959196fe2dcf4114274fb2fad6656df85fd54253eb2d5fa2c1'
             '8a94548591a27f3d710b3f74c34a641131dc439f981f0f1e9dbd7a8fc8dfe3e29204ff0d6b87cd565bfebbbdb7190b631b1177df34958047acbafe5b483ef9e9'
             'a881db4d5f76c8f2f869b0565e6e757b0c462341d2911b24aa8da67e21dbe739fc38ede18486d42a179644a8389355654408d7947ffd6ef0052a4360fb15d91f'
             '2bbac6cd293e231ae93b0f58eecd6a6217b8299d2dbbe2d06a329297fa353506f6e90070aef363445ebd863c0d302bebb7d4af48a4858c25c1ef9b3924feb53b')
