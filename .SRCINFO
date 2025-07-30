@@ -1,6 +1,6 @@
 pkgbase = python-types-markdown
 	pkgdesc = Typing stubs for Markdown
-	pkgver = 3.8.0.20250415
+	pkgver = 3.8.0.20250708
 	pkgrel = 1
 	url = https://github.com/python/typeshed
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-types-markdown
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types_markdown/types_markdown-3.8.0.20250415.tar.gz
-	sha256sums = 98ab13587d1177769d93e55586d3dc97047df75bc6e37ce4074666f5dd4212ba
+	source = https://files.pythonhosted.org/packages/source/t/types_markdown/types_markdown-3.8.0.20250708.tar.gz
+	sha256sums = 28690251fe90757f5a99cd671c79502bc2de07aef2d35fe54117c3b1c799804a
 
 pkgname = python-types-markdown
