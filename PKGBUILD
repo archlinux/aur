@@ -22,9 +22,9 @@ build() {
     TAG=$(git describe --tags)
     COMMIT=$(git rev-parse --short HEAD)
     BUILDTIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-    BUILDENV=$(go version)
+    GO_BUILDENV=$(go version)
 
-    LDFLAGS="-X main.version=${pkgver} -X main.tag=${TAG} -X main.commit=${COMMIT} -X main.buildTime=${BUILDTIME} -X main.buildEnv=${BUILDENV}"
+    LDFLAGS="-X main.version=${pkgver} -X main.tag=${TAG} -X main.commit=${COMMIT} -X main.buildTime=${BUILDTIME} -X main.buildEnv=${GO_BUILDENV}"
 
     # Build the binary with dynamic LDFLAGS
     go mod tidy
