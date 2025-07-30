@@ -34,7 +34,7 @@ build() {
 
 check(){
     cd "$pkgname-$pkgver-stable" || exit
-    
+
     # Currently, 4 test cases unrelated to the outwiker source code are failing.  Ignoring them
     # doesn't seem to affect the application's performance.
     pytest --maxfail=4 || true
