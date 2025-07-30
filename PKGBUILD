@@ -4,7 +4,7 @@
 
 _pkgname="droidcam-obs-plugin"
 pkgname="${_pkgname}-bin"
-pkgver="2.3.4"
+pkgver="2.4.0"
 pkgrel="1"
 pkgdesc="Plugin for DroidCam OBS"
 arch=("x86_64" "i686")
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}-git" "${_pkgname}")
 provides=("${_pkgname}")
 pkgstem="${_pkgname%-plugin}"
 source=("https://github.com/dev47apps/droidcam-obs-plugin/releases/download/${pkgver}/droidcam_obs_${pkgver}_linux_flatpak.zip")
-sha256sums=('dd16cfefb35740d31e4881cdf6b1974c911f5149c3f1c61b4f0dc3942fda717c')
+sha256sums=('2f5ad8eded1b3d46bf23300591b2dab13264a9f71a1836efe0d3fdae56ef57c7')
 options=(!debug)
 
 package() {
