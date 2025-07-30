@@ -18,10 +18,10 @@ PKGEXT='.pkg.tar'
 _pkgname=chromium
 pkgname=chromium-no-extras
 
-pkgver=138.0.7204.168
+pkgver=138.0.7204.183
 pkgrel=1
 _launcher_ver=8
-_manual_clone=0
+_manual_clone=1
 _system_clang=1
 pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
@@ -48,7 +48,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('6bed1331466779b55aa2f378957b3d9e82a7ec416c2b573e55e2bed30cbb9aea'
+sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             'bafb04282db0ae19d4e42e022fdccfafb424f18406e5b893475dc18bf4bd8f9e'
@@ -135,8 +135,10 @@ prepare() {
   # Fixes for building with libstdc++ instead of libc++
 
   # Link to system tools required by the build
-  mkdir third_party/node/linux/node-linux-x64/bin
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  if (( ! _manual_clone )); then
+    mkdir third_party/node/linux/node-linux-x64/bin
+    ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  fi
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
   if (( !_system_clang )); then
@@ -227,6 +229,14 @@ build() {
       "clang_version=\"$_clang_version\""
       #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     )
+
+    if (( _manual_clone )); then
+      _flags+=('chrome_pgo_phase=0')
+    else
+      _flags+=(
+        #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      )
+    fi
 
     # Allow the use of nightly features with stable Rust compiler
     # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
