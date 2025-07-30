@@ -1,30 +1,33 @@
+# Maintainer: Tycho Bosley <tychob at foxthree dot net>
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kevin Baxmann <kvbx@kvbx.de>
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=sqlcl
-pkgver='24.2.0.180.1721'
+pkgver='25.2.2.199.0918'
 pkgrel=1
 pkgdesc='SQL Developer command line interface for Oracle'
 arch=('any')
 url='https://www.oracle.com/database/sqldeveloper/technologies/sqlcl'
 license=('custom')
 changelog=CHANGELOG.md
-depends=('bash' 'java-runtime>=8')
-source=("$pkgname-$pkgver.zip::https://download.oracle.com/otn_software/java/sqldeveloper/$pkgname-$pkgver.zip"
-        "$pkgname.sh")
-sha256sums=('db670b59f784a899b8f0a7940c320c3a73eefd1f28100b413419f7b257cc1801'
-            '34c5f2be48639dcd8ec9f38f950916a394ae399a0e583fbde4020acdccf951e0')
+depends=('bash' 'java-runtime>=17')
+source=("$pkgname-$pkgver.zip::https://download.oracle.com/otn_software/java/sqldeveloper/$pkgname-$pkgver.zip")
+sha256sums=('62c20426441779520006c0973417d3e9665bad7babd61a046458fdec9bc61d5f')
 
 package() {
-  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-
   install -Dm644 "$pkgname/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$pkgname/THIRD-PARTY-LICENSES.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  rm "$pkgname"/{LICENSE.txt,THIRD-PARTY-LICENSES.txt,NOTICES.txt} "$pkgname"/bin/sql.exe
+  install -d "${pkgdir}/usr/bin"
+  install -d "$pkgdir/opt/$pkgname/bin"
+  install -d "$pkgdir/opt/$pkgname/lib/ext"
+  install -m 755 ${pkgname}/bin/sql "${pkgdir}/opt/${pkgname}/bin"
+  install -m 644 ${pkgname}/bin/*.txt "${pkgdir}/opt/${pkgname}/bin"
+  install -m 644 ${pkgname}/lib/*.jar "${pkgdir}/opt/${pkgname}/lib"
+  install -m 644 ${pkgname}/lib/ext/*.jar "${pkgdir}/opt/${pkgname}/lib/ext"
 
-  install -d "$pkgdir/opt/$pkgname/"
-  cp -a "$pkgname"/* "$pkgdir/opt/$pkgname/"
+  ln -s /opt/sqlcl/bin/sql "${pkgdir}/usr/bin/sql"
+  ln -s /opt/sqlcl/bin/sql "${pkgdir}/usr/bin/sqlcl"
 }

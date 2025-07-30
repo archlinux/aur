@@ -1,3 +1,6 @@
+# New Features and Issues Fixed in 25.2.1
+  https://www.oracle.com/tools/sqlcl/sqlcl-relnotes-25.2.1.html
+
 # New Features in 24.2.0
 
 - Commands added to create and manage a list of directories you can shortcut to through a directory stack.
