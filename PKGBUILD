@@ -22,9 +22,7 @@ sha512sums=('fa4585beeb62d89ed337fa651c5fcc0be0416c72f214312dcb01ccb872a7d651d76
 sha512sums_x86_64=('0b69d7ebd45d425417bb92b6629015c7dcd73fd41843081c051c428513d254deb4fbcbf54bc240271a4a92b823f3fb12b78d45b291b7101cfb0b96832e356143')
 
 package() {
-	install -Dm755 "${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
-
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm755 "${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
