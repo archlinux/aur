@@ -1,12 +1,12 @@
 pkgbase = cmdcreate
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/Meme-Supplier/cmdcreate
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v0.4.2
+	source = git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v0.4.3
 	sha256sums = SKIP
 
 pkgname = cmdcreate
