@@ -5,7 +5,7 @@ _godot_version="4.5-beta3"
 
 pkgname=gozen
 pkgver=0.4.0
-pkgrel=3 # Increment this if you change the PKGBUILD but not pkgver.
+pkgrel=4 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -33,8 +33,8 @@ optdepends=(
 source=(
 	# NOTE: Change -alpha once going into beta
 	"git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v${pkgver}-alpha"
-    "godot-editor.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
-    "godot-templates.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
+    "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
+    "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
 sha256sums=('620495cb0149143482aeb4a5f3f3dff23f97c6ce67deea56327ddef091cb6e95'
             'f27a58f8dd09f078d8aecc6f8e3eb1b97f9678e410e03f29df3a08800983e2bf'
@@ -55,7 +55,7 @@ prepare() {
     if [ ! -d ~/.local/share/godot/export_templates/${_godot_version/-/.} ]; then
 		msg "Preparing Godot export templates ..."
 		mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}"
-		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}" "${srcdir}/godot-templates.tpz"
+		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}" "${srcdir}/godot-templates-${_godot_version}.tpz"
 		mv "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/templates/"* \
 		   "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/"
 		rmdir "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/templates"
@@ -64,7 +64,7 @@ prepare() {
 	fi
 
 	msg "Extracting Godot editor..."
-	unzip -o "${srcdir}/godot-editor.zip" -d "${srcdir}"
+	unzip -o "${srcdir}/godot-editor-${_godot_version}.zip" -d "${srcdir}"
 	chmod +x "${srcdir}/Godot_v${_godot_version}_linux.x86_64"
 }
 
