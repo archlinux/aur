@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b6035
+pkgver=b6037
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -32,7 +32,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('b0837cd1e4daebdd93edb01575d34059b21dbdacafc8ea5380de3ac19e1a1cf6'
+sha256sums=('aed9309e7a318099ae5e04001e772ac2a59eb92e8d58e371c25d079f3287edc3'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
