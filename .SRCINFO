@@ -1,6 +1,6 @@
 pkgbase = python-langgraph-runtime-inmem
 	pkgdesc = Inmem implementation for the LangGraph API server.
-	pkgver = 0.6.3
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://pypi.org/project/langgraph-runtime-inmem/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-langgraph-runtime-inmem
 	depends = python-sse-starlette
 	depends = python-starlette
 	depends = python-langgraph-checkpoint
-	source = https://files.pythonhosted.org/packages/source/l/langgraph-runtime-inmem/langgraph_runtime_inmem-0.6.3.tar.gz
-	sha256sums = b60f93aea9f390d6f0a9ccaee82d805f9ecebae78a0d98296ea8d67da1200c96
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-runtime-inmem/langgraph_runtime_inmem-0.6.5.tar.gz
+	sha256sums = ce59aa2d9bdb66d680989f174e7638988b59c3b0e70927c071777e69b59d9c50
 
 pkgname = python-langgraph-runtime-inmem
