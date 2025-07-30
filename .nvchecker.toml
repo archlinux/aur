@@ -1,0 +1,4 @@
+[lsfg-vk]
+source = "git"
+git = "https://github.com/PancakeTAS/lsfg-vk.git"
+prefix = "v"

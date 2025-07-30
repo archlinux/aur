@@ -1,0 +1,9 @@
+post_install() {
+  echo ""
+  echo "NOTE: This requires purchasing Lossless Scaling on Steam:"
+  echo "https://store.steampowered.com/app/993090/Lossless_Scaling/"
+  echo ""
+  echo "See the main website for more details:"
+  echo "https://losslessscaling.com/"
+  echo ""
+}
