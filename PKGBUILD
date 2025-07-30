@@ -2,7 +2,7 @@
 
 _name=tempest
 pkgname=python-tempest
-pkgver=41.0.0
+pkgver=44.0.0
 pkgrel=1
 pkgdesc='OpenStack Integration Testing'
 arch=(any)
@@ -18,7 +18,7 @@ depends=(python-pbr python-cliff python-jsonschema python-testtools
          python-defusedxml python-fasteners)
 checkdepends=(python-hacking python-oslotest)
 source=("https://tarballs.opendev.org/openstack/tempest/$_name-$pkgver.tar.gz")
-sha512sums=('aa5065dbb7431b5cf5d93075083e74eb6c811c759f109ac9ceee7cc45240b84c091f84542a3455cf686f84e359a17f99154ec417ee7003bb01c7ef191f6dcc27')
+sha512sums=('859b3ea3eee5717337bd054807c5a7841f5512aab7c312e0ff0123645b18f2411865943651414ded619022059e929607bdc6c05cf352fc233a2974d0c50e6b79')
 
 export PBR_VERSION=$pkgver
 
