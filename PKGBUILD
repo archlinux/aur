@@ -4,10 +4,11 @@
 : ${_use_sodeps:=false}
 
 : ${_with_cava:=false}
+: ${_with_gpsd:=false}
 
 _pkgname="waybar"
 pkgname="$_pkgname-git"
-pkgver=0.12.0.r218.g4730fc4
+pkgver=0.13.0.r41.g0776e69
 pkgrel=1
 pkgdesc="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 url='https://github.com/Alexays/Waybar'
@@ -16,7 +17,6 @@ arch=('x86_64')
 
 depends=(
   'fmt'
-  'gpsd'
   'gtk-layer-shell'
   'gtkmm3'
   'jack'
@@ -53,6 +53,9 @@ optdepends=(
 if [[ "${_with_cava::1}" == "t" ]]; then
   depends+=('libcava') # AUR
 fi
+if [[ "${_with_gpsd::1}" == "t" ]]; then
+  depends+=('gpsd')
+fi
 
 provides=("$_pkgname=${pkgver%.g*}")
 conflicts=("$_pkgname")
@@ -81,7 +84,11 @@ build() {
     _meson_args+=(-Dcava=disabled)
   fi
 
-  if ((!"${CHECKFUNC:-0}")); then
+  if [ "${_with_gpsd::1}" != "t" ]; then
+    _meson_args+=(-Dgps=disabled)
+  fi
+
+  if ((!CHECKFUNC)); then
     _meson_args+=(-Dtests=disabled)
   fi
 
@@ -90,7 +97,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs --no-rebuild --suite waybar
 }
 
 package() {
