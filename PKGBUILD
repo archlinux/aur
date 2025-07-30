@@ -10,14 +10,14 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=138.0.7204.168
+pkgver=138.0.7204.183
 pkgrel=1
 _launcher_ver=8
-_manual_clone=0
+_manual_clone=1
 _system_clang=1
 # ungoogled chromium variables
 _uc_usr=ungoogled-software
-_uc_ver=138.0.7204.168-1
+_uc_ver=138.0.7204.183-1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -49,8 +49,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         0001-ozone-wayland-implement-text_input_manager-fixes.patch
         0001-vaapi-flag-ozone-wayland.patch
         chromium-138-nodejs-version-check.patch)
-sha256sums=('6bed1331466779b55aa2f378957b3d9e82a7ec416c2b573e55e2bed30cbb9aea'
-            'd05050b9a7c6db82e131a0142c26e066542084dad8a915ef2cd4f82a7acc801a'
+sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
+            'd0220de7aba2334449ae1ba69f906f42d47c9a02a3448bf7c64b2d2e4c6cfe53'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'bafb04282db0ae19d4e42e022fdccfafb424f18406e5b893475dc18bf4bd8f9e'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
@@ -154,8 +154,10 @@ prepare() {
     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
   # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin/ third_party/jdk/current/bin/
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  if (( ! _manual_clone )); then
+    mkdir -p third_party/node/linux/node-linux-x64/bin/ third_party/jdk/current/bin/
+    ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  fi
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
@@ -236,6 +238,14 @@ build() {
       "clang_version=\"$_clang_version\""
       #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     )
+
+    if (( _manual_clone )); then
+      _flags+=('chrome_pgo_phase=0')
+    else
+      _flags+=(
+        #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      )
+    fi
 
     # Allow the use of nightly features with stable Rust compiler
     # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
