@@ -2,20 +2,21 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.56b0
+pkgver=0.57b0
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('1cdbd8ce0f7ab232ccec3f2d2bee3aa1c0be36af001b65f361a82786c3a71d1786587ac2382ddd678ea37d1fa30dd23b0dd28eb3d51a278513d6f6c6ebc923b8')
+b2sums=('40877dec1ba2ce52fc6e6a43e057a788b06766665aa72b15e54d35547d56c760ca2edfd5b0a73d637c46f753e1573f9edf559ea7ecc7874176694ccde28da562')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
     "python-opentelemetry-exporter-prometheus-remote-write"
     "python-opentelemetry-exporter-richconsole"
     "python-opentelemetry-instrumentation-google-genai"
+    "python-opentelemetry-instrumentation-langchain"
     "python-opentelemetry-instrumentation-openai-v2"
     "python-opentelemetry-instrumentation-vertexai"
     "python-opentelemetry-instrumentation-aiohttp-client"
@@ -84,6 +85,7 @@ _pkgdescs=(
     "Prometheus Remote Write Metrics Exporter for OpenTelemetry"
     "Rich Console Exporter for OpenTelemetry"
     "OpenTelemetry"
+    "OpenTelemetry Official Langchain instrumentation"
     "OpenTelemetry Official OpenAI instrumentation"
     "OpenTelemetry Official VertexAI instrumentation"
     "OpenTelemetry aiohttp client instrumentation"
@@ -152,6 +154,7 @@ _urls=(
     "${_url}/tree/main/exporter/opentelemetry-exporter-prometheus-remote-write"
     "${_url}/tree/main/exporter/opentelemetry-exporter-richconsole"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-google-genai"
+    "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-langchain"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiohttp-client"
@@ -222,6 +225,7 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-typing_extensions"
@@ -288,6 +292,7 @@ _optdepends=(
     ""
     ""
     "python-google-genai"
+    "python-langchain"
     "python-openai"
     "python-google-cloud-aiplatform"
     "python-aiohttp"
