@@ -8,8 +8,8 @@ arch=(x86_64)
 url="https://github.com/inducer/${_base}"
 license=(MIT)
 depends=(python-pytools python-pymbolic python-genpy python-cgen python-islpy
-  python-codepy python-colorama python-mako python-pyrsistent python-immutables)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+  python-codepy python-colorama python-mako python-constantdict python-typing_extensions)
+makedepends=(python-build python-installer python-hatchling python-wheel)
 # checkdepends=(python-pytest python-pyopencl)
 optdepends=('python-pyopencl: for PyOpenCL support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
