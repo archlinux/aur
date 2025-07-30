@@ -86,14 +86,14 @@ source=(
   1387.patch::${url}/commit/919a337.patch # allow the use of $kernel in initrdname= config
   1425.patch::${url}/commit/8b993db.patch # fix(systemd-sysext): enable initrd-specific units
   1480.patch::${url}/commit/1a57ad7.patch # base module failure if root password is already set
-  kernel-install.sh
-  90-kernel-install-add.hook
-  40-kernel-install-remove.hook
+  dracut-{install,remove}.script
+  90-dracut-install.hook
+  60-dracut-remove.hook
 )
 conflicts=("${pkgname%-git}")
 sha512sums=('SKIP'
             'SKIP' 'SKIP' 'SKIP'
-            'SKIP' 'SKIP' 'SKIP')
+            'SKIP' 'SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd "${pkgname%-git}"
 
@@ -137,7 +137,7 @@ package() {
   DESTDIR="$pkgdir" make install
 
   # pacman hooks
-  install -Dm644 "${srcdir}"/90-kernel-install-add.hook "${srcdir}"/40-kernel-install-remove.hook \
-    -t"${pkgdir}/usr/share/libalpm/hooks"
-  install -Dm755 "${srcdir}"/kernel-install.sh "${pkgdir}/usr/share/libalpm/scripts/kernel-install"
+  install -Dm755 "${srcdir}"/dracut-install.script "${pkgdir}"/usr/share/libalpm/scripts/dracut-install
+  install -Dm755 "${srcdir}"/dracut-remove.script "${pkgdir}"/usr/share/libalpm/scripts/dracut-remove
+  install -Dm644 -t "${pkgdir}"/usr/share/libalpm/hooks "${srcdir}"/*.hook
 }
