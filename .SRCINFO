@@ -1,0 +1,15 @@
+pkgbase = bluesync
+	pkgdesc = Sync Bluetooth LinkKey from Windows registry and apply it in Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Anuvind-ap/bluesync
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = ntfs-3g
+	depends = chntpw
+	optdepends = bluez: to restart Bluetooth and manage devices
+	source = bluesync
+	sha256sums = SKIP
+
+pkgname = bluesync
