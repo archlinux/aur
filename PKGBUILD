@@ -3,7 +3,7 @@
 pkgname=python-partial-json-parser
 _pkgname=partial_json_parser
 pkgver=0.2.1.1.post6
-pkgrel=1
+pkgrel=2
 pkgdesc="customizable library for parsing partial JSON strings"
 arch=('any')
 url='https://github.com/promplate/partial-json-parser'
@@ -12,6 +12,7 @@ makedepends=(
   python-build
   python-installer
   python-wheel
+  python-pdm-backend
 )
 source=("https://files.pythonhosted.org/packages/source/p/${_pkgname//_/-}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('43896b68929678224cbbe4884a6a5fe9251ded4b30b8b7d7eb569e5feea93afc')
