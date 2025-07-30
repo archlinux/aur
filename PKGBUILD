@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.10.4
+pkgver=1.11.3
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -10,25 +10,25 @@ url='https://github.com/theislab/scanpy'
 license=(BSD)
 depends=(
 	'python-anndata>=0.8'
-	'python-numpy>=1.23'
-	'python-matplotlib>=3.6'
-	'python-pandas>=1.5'
-	'python-scipy>=1.8'
-	'python-seaborn>=0.13'
-	'python-h5py>=3.6'
+	'python-numpy>=1.24.1'
+	'python-matplotlib>=3.7.5'
+	'python-pandas>=1.5.3'
+	'python-scipy>=1.8.1'
+	'python-seaborn>=0.13.2'
+	'python-h5py>=3.7'
 	python-tqdm
-	'python-scikit-learn>=1.1'
-	'python-statsmodels>=0.13'
+	'python-scikit-learn>=1.1.3'
+	'python-statsmodels>=0.14.4'
 	'python-patsy>=1.0.1'
-	'python-networkx>=2.7'
+	'python-networkx>=2.7.1'
 	python-natsort
 	python-joblib
-	'python-numba>=0.56'
-	'python-umap-learn>=0.5.1'
+	'python-numba>=0.57.1'
+	'python-umap-learn>=0.5.6'
 	'python-pynndescent>=0.5.13'
 	'python-packaging>=21.3'
-	python-session-info
-	'python-legacy-api-wrap>=1.4'
+	python-session-info2
+	'python-legacy-api-wrap>=1.4.1'
 )
 optdepends=(
 	'python-igraph: PAGA support (also transitively needed for Louvain/Leiden)'
@@ -48,7 +48,7 @@ optdepends=(
 )
 makedepends=(python-hatch python-hatch-vcs python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('2682fbbe2e4106c349472feebef08e174062fb666db4c94123758c6a7a470396')
+sha256sums=('ead448f112bb07351897531c24e05627f4b3e0bee0c02f50adf378f4e08e338b')
 
 build() {
 	cd "$pkgname-$pkgver"
