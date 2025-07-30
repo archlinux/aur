@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=aget
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Minimalistic AUR helper'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(BSD)
 depends=(git)
 makedepends=(go)
 source=("git+$url#tag=v$pkgver")
-b2sums=('8446c06ad85ee7e98c1475799b15d79dc8ed57640c47c71174f864730b9ce18496635550105e6223b33772c84328dfd065fce2dd52a643b1a0b108ce58294667')
+b2sums=('b3220cbb5bac42bcfa7615463539707177623815fcbccd9311be999e8e65f404196f5a97a1a1dbca0c3610d4c0eee6415397a27aa4a1990fc84570fb3da6a601')
 
 build() {
   cd $pkgname
