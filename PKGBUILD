@@ -1,6 +1,6 @@
 # Maintainer: Steven! Ragnarök <steven@nuclearsandwich.com>
 pkgname=tokay
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Tokay is a programming language designed for ad-hoc parsing."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://tokay.dev"
 license=('MIT')
 makedepends=('rust>=1.85')
 source=("https://github.com/tokay-lang/tokay/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2e0b009b73ac44696eb32c6bd1070f1ad027d791344b117db3eb167f3b6a0f8f')
+sha256sums=('c94a571a5e1cf2ad0937ee1100a5333c857af2af07583e7543d391f86aa36af1')
 
 build() {
 	cd "$pkgname-$pkgver"
