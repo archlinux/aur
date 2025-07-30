@@ -1,7 +1,7 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 pkgname=nocodb
-pkgver=0.263.8
-pkgrel=3
+pkgver=0.264.1
+pkgrel=1
 pkgdesc="A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface."
 arch=('x86_64' 'aarch64')
 url="https://nocodb.com"
@@ -26,16 +26,14 @@ source=(
     "nocodb.install"
 )
 sha256sums=('SKIP'
-    'SKIP'
-    'SKIP'
-)
+            '6cf8d416e52a2183901cf48a00f8847cd8da7097f203a3ced5266e8f6c50f6b5'
+            'f6f2c9c594a6b416fb7cf9e6bb1173236076764f42850ca3f0f66e61201ffa69')
 options=('!debug' '!strip')
 
 prepare() {
     export NODE_OPTIONS="--max_old_space_size=16384"
     export NODE_ENV=production
     cd ${srcdir}/nocodb
-    echo "node-linker=hoist" >>.npmrc
     pnpm --filter=nocodb-sdk install && pnpm --filter=nocodb-sdk run build
     pnpm --filter=nocodb --filter=nc-gui --filter=playwright install
 }
@@ -51,6 +49,7 @@ build() {
     pnpm --filter=nocodb run docker:build
     ## only ship nocodb workspace prod deps with node_modules (1.9GB -> 400MB)
     rm -rf node_modules ./packages/nocodb/node_modules
+    echo "node-linker=hoist" >>.npmrc
     pnpm install \
         --prefer-offline \
         --prod \

@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Delegate=true
 Type=exec
-KillMode=process
+KillMode=mixed
 ## for more information, visit
 ## https://nocodb.com/docs/self-hosting/environment-variables
 Environment="NC_DB=pg://127.0.0.1:5432?u=postgres&p=PASSWORD&d=db_name"
