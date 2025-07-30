@@ -6,10 +6,16 @@
 _product="MATLAB"
 _name="$(echo "${_product}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d '()')"
 pkgbase="${_name}"
-pkgname=({,java-}"${pkgbase}")
-pkgver=R2025a.25.1.0.2943329
-_pkgver="$(sed -E 's/^(R20[0-9]{2}[ab]).*/\1/' <<< "${pkgver}")"
-pkgrel=6
+pkgname=(
+  "${pkgbase}"
+  "java-${pkgbase}"
+  "${pkgbase}-gcc"
+  "${pkgbase}-gcc-fortran"
+)
+pkgver=R2025a+25.1.0.2973910
+_release="${pkgver%%+*}"
+_version="${pkgver##*+}"
+pkgrel=1
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
@@ -98,8 +104,8 @@ depends=(
 
   'sh'
 )
-makedepends=('gendesk' 'inotify-tools' 'matlab-mpm>=2025.1') # "matlab-mpm-version>=${_pkgver}" 'patchelf'
-source=("${pkgbase}_jenv.hook")
+makedepends=('gendesk' 'inotify-tools' "matlab-mpm-release>=${_release}") # 'patchelf'
+source=("matlab_jenv.hook")
 sha256sums=('396187ed4f1a516327fbce96140114983a17d6e64988f0c5d95d036353c0fe51')
 
 declare -Ag _deps=(
@@ -302,7 +308,7 @@ prepare() {
 
   echo "  -> Downloading archives using MPM. This will take a while..."
   TMPDIR="${srcdir}/tmp" matlab-mpm download \
-    --release="${_pkgver}" \
+    --release="${_release}" \
     --destination="${srcdir}/download" \
     --products="${_product// /_}" \
     --platforms="glnxa64" \
@@ -324,7 +330,8 @@ prepare() {
     --source="${srcdir}/download" \
     --destination="${srcdir}/install" \
     --products="${_product// /_}" \
-    --no-jre
+    --no-jre \
+    --no-gpu # is this needed?
   ret=$?
 
   if (( ret != 0 )); then
@@ -347,7 +354,7 @@ pkgver() {
   local rel ver
   rel="$(sed -n 's:.*<release>\(.*\)</release>.*:\1:p' VersionInfo.xml)"
   ver="$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' VersionInfo.xml)"
-  echo "$rel.$ver"
+  echo "$rel+$ver"
 }
 
 build() {
@@ -359,7 +366,7 @@ build() {
     --name "${_product}" \
     --comment 'Programming and numeric computing platform' \
     --exec "${pkgbase} -desktop -useStartupFolderPref" \
-    --icon "/opt/MATLAB/${_pkgver}/bin/glnxa64/cef_resources/matlab_icon.png" \
+    --icon "/opt/MATLAB/${_release}/bin/glnxa64/cef_resources/matlab_icon.png" \
     --categories 'Development;Education;Science;Mathematics;IDE' \
     --mimetypes 'application/x-matlab-data;text/x-matlab'
 
@@ -380,8 +387,9 @@ build() {
   for dep in "${!_deps[@]}"; do
     echo "    -> Removing bundled ${dep} libraries..."
     for lib in ${_deps[$dep]}; do
-      rm -vf "$lib.so"*
-      rm -f "$lib".rights
+      find . -maxdepth 1 -type f -name "${lib}.so*" -exec \
+        rm -vf "{}" +
+      rm -f "$lib.so"* "$lib".rights
     done
   done
 
@@ -421,6 +429,15 @@ build() {
   ln -vsf "/usr/bin/Xvfb" "Xvfb/glnxa64/bin/Xvfb"
   rm -f "Xvfb/glnxa64/Xvfb.rights"
 
+  echo "    -> Modifying GCC version used by MEX..."
+  cd "${srcdir}/install/bin/glnxa64/mexopts"
+  find . -type f -name '*.xml' -exec \
+    sed -e "s|/usr/local|/usr|g" \
+        -e "s|gcc|gcc-${pkgabse}|g" \
+        -e "s|g++|g++-${pkgabse}|g" \
+        -e "s|gfortran|gfortran-${pkgabse}|g" \
+        -i "{}" +
+
   # cd "${srcdir}/install"
   # echo "  -> Fixing unnecessary permissions..."
   # find . -type f -executable \( -name '*.a' -o -name '*.rights' \) -exec \
@@ -441,69 +458,123 @@ package_matlab() {
     # 'intel-oneapi-basekit'
     # 'intel-oneapi-compiler-shared-runtime'
     'libcups: printing support'
+    'matlab-gcc: GCC runtime dependency'
+    'matlab-gcc-fortran: GFortran runtime dependency'
     'matlab-batch: start MATLAB non-interactively using a batch licensing token'
     'matlab-mpm: package manager'
     'patchelf: clear the executable stack after the install'
     'perl'
     'python-matlabengine: Python bindings'
   )
-  provides=("${pkgname}-version=${_pkgver}")
+  provides=("${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
   install="${pkgname}.install"
 
   cd "${srcdir}"
   echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
-  # install -vdm755 "${pkgdir}/opt/MATLAB/${_pkgver}"
+  # install -vdm755 "${pkgdir}/opt/MATLAB/${_release}"
   install -vdm755 "${pkgdir}/opt/MATLAB"
-  install -vdm777 "${pkgdir}/opt/MATLAB/${_pkgver}" # :(
-  mv install/* "${pkgdir}/opt/MATLAB/${_pkgver}"
+  install -vdm777 "${pkgdir}/opt/MATLAB/${_release}" # :(
+  mv install/* "${pkgdir}/opt/MATLAB/${_release}"
 
   echo "  -> Installing desktop file..."
   install -vDm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
 
   echo "  -> Installing license..."
   install -vd "${pkgdir}/usr/share/licenses/${pkgbase}"
-  ln -vsf "/opt/MATLAB/${_pkgver}/license_agreement.txt" \
+  ln -vsf "/opt/MATLAB/${_release}/license_agreement.txt" \
     "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.txt"
 
   echo "  -> Installing symlinks..."
   install -vd "${pkgdir}/usr/bin"
   cd "${pkgdir}/usr/bin"
   for bin in matlab matlab_jenv; do
-    ln -vsf "/opt/MATLAB/${_pkgver}/bin/${bin}" "${bin}"
+    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${bin}"
+    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${bin}-${_release}"
   done
   # owned by miktex, ...
   for bin in mex mexext; do
-    ln -vsf "/opt/MATLAB/${_pkgver}/bin/${bin}" "${pkgbase}-${bin}"
+    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${pkgbase}-${bin}"
+    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${pkgbase}-${bin}-${_release}"
   done
   for bin in MathWorksCrashReporter MathWorksLicenseDeactivation \
              MathWorksProductAuthorizer MathWorksProductUninstaller; do
-    ln -vsf "/opt/MATLAB/${_pkgver}/bin/glnxa64/${bin}" "${bin}"
+    ln -vsf "/opt/MATLAB/${_release}/bin/glnxa64/${bin}" "${bin}"
+    ln -vsf "/opt/MATLAB/${_release}/bin/glnxa64/${bin}" "${bin}-${_release}"
   done
 }
 
 package_java-matlab() {
   pkgdesc+=" (Java components)"
   # https://www.mathworks.com/support/requirements/openjdk.html
-  depends=('java-environment-openjdk<=21' 'java-environment-openjdk>=8' "${pkgbase}=${epoch}:${pkgver}-${pkgrel}")
-  provides=("${pkgname}-version=${_pkgver}")
+  depends=('java-environment<=21' 'java-environment>=8' "${pkgbase}=${epoch}:${pkgver}-${pkgrel}")
+  provides=("${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
   install="${pkgname}.install"
 
   cd "${srcdir}"
   echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
-  # install -vdm755 "${pkgdir}/opt/MATLAB/${_pkgver}"
+  # install -vdm755 "${pkgdir}/opt/MATLAB/${_release}"
   install -vdm755 "${pkgdir}/opt/MATLAB"
-  install -vdm777 "${pkgdir}/opt/MATLAB/${_pkgver}" # :(
-  mv install-java/* "${pkgdir}/opt/MATLAB/${_pkgver}"
+  install -vdm777 "${pkgdir}/opt/MATLAB/${_release}" # :(
+  mv install-java/* "${pkgdir}/opt/MATLAB/${_release}"
 
   echo "  -> Installing Java environment hook..."
-  install -vDm644 "${pkgbase}_jenv.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgbase}_jenv.hook"
+  install -vDm644 "matlab_jenv.hook" "${pkgdir}/usr/share/libalpm/hooks/matlab_jenv.hook"
+}
+
+# https://www.mathworks.com/support/requirements/supported-compilers-linux.html
+_gccs=(8 9 11 12 13)
+_gcc="10"
+for ver in "${_gccs[@]}"; do
+  pkgname+=("${pkgbase}-gcc${ver}")
+  
+  eval "
+package_${pkgbase}-gcc${ver}() {
+  pkgdesc+=' (GCC${ver} runtime dependency)'
+  arch=('any')
+  depends=('${pkgbase}=${epoch}:${pkgver}-${pkgrel}' 'gcc${ver}')
+  provides=('matlab-gcc=${ver}' 'matlab-gcc-release=${_release}' 'matlab-gcc-version=${_version}') # TODO?
+  conflicts=('matlab-gcc')
+
+  install -vdm755 \"\${pkgdir}/usr/bin\"
+  cd \"\${pkgdir}/usr/bin\"
+  ln -vsf '/usr/bin/gcc-${ver}' 'gcc-matlab'
+  ln -vsf '/usr/bin/gcc-${ver}' 'gcc-matlab-${_release}'
+  ln -vsf '/usr/bin/g++-${ver}' 'g++-matlab'
+  ln -vsf '/usr/bin/g++-${ver}' 'g++-matlab-${_release}'
+}"
+done
+
+package_matlab-gcc() {
+  pkgdesc+=" (GCC runtime dependency)"
+  arch=('any')
+  depends=("${pkgbase}=${epoch}:${pkgver}-${pkgrel}" "gcc${_gcc}")
+  provides=("${pkgname}=${_gcc}" "${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
+
+  install -vdm755 "${pkgdir}/usr/bin"
+  cd "${pkgdir}/usr/bin"
+  ln -vsf "/usr/bin/gcc-${_gcc}" "gcc-matlab"
+  ln -vsf "/usr/bin/gcc-${_gcc}" "gcc-matlab-${_release}"
+  ln -vsf "/usr/bin/g++-${_gcc}" "g++-matlab"
+  ln -vsf "/usr/bin/g++-${_gcc}" "g++-matlab-${_release}"
+}
+
+package_matlab-gcc-fortran() {
+  pkgdesc+=" (GFortran runtime dependency)"
+  arch=('any')
+  depends=("${pkgbase}=${epoch}:${pkgver}-${pkgrel}" "gcc${_gcc}-fortran")
+  provides=("${pkgname}=${_gcc}" "${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
+
+  install -vdm755 "${pkgdir}/usr/bin"
+  cd "${pkgdir}/usr/bin"
+  ln -vsf "/usr/bin/gfortran-${_gcc}" "gfortran-matlab"
+  ln -vsf "/usr/bin/gfortran-${_gcc}" "gfortran-matlab-${_release}"
 }
 
 # echo "  -> Modifying MPM input settings..."
-# cp "/usr/share/matlab-mpm/input/${_pkgver}.txt" "input.txt"
+# cp "/usr/share/matlab-mpm/input/${_release}.txt" "input.txt"
 # sed -e "s|^# updateLevel=.*|updateLevel=0|g" \
 #     -e "s|^# destinationFolder=.*|destinationFolder=${srcdir}/download|" \
-#     -e "s|#product.${_product}$|product.${_product}|g" \
+#     -e "s|^#product.${_product}$|product.${_product}|g" \
 #     -i "input.txt"
 # matlab-mpm download \
 #   --inputfile ./input.txt
