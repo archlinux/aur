@@ -1,7 +1,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=jfcord-appimage
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="An Jellyfin rich presence client for Discord"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 source=(
   "https://github.com/Chicken/JFCord/releases/download/v${pkgver}/jfcord-${pkgver}.AppImage"
 )
-sha512sums=('d7a3dfacadb02080d04f10e5cbb408639f249fb118c40e93493d512a2912ead01bba075aa5c3f4e1bbe59d0dcc2b952661fb91b80446bf26f9b6004063e5405c')
+sha512sums=('355b46cea64f78d41014f2522605cbaaec9e6e51955c818612a91dadfd45964ed2c59bd5195075e8f6bbf4064855b03c58490f5ba2d9e3e70666f8a865653359')
 
 _appimage_name="jfcord-${pkgver}.AppImage"
 _appname="jfcord"
