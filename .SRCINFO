@@ -1,5 +1,5 @@
 pkgbase = ttf-mac-fonts-all
-	pkgdesc = Mac fonts including Lucida Grande, Apple Garamond and other fonts from Apple
+	pkgdesc = Mac fonts including Lucida Grande, Apple Garamond and some extra fonts from Apple
 	pkgver = 20100901.134
 	pkgrel = 1
 	url = https://www.apple.com/safari/

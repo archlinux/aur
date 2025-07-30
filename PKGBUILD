@@ -6,7 +6,7 @@
 pkgname=ttf-mac-fonts-all
 pkgver=20100901.134
 pkgrel=1
-pkgdesc='Mac fonts including Lucida Grande, Apple Garamond and other fonts from Apple'
+pkgdesc='Mac fonts including Lucida Grande, Apple Garamond and some extra fonts from Apple'
 arch=('any')
 url='https://www.apple.com/safari/'
 license=('custom')
