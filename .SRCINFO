@@ -1,0 +1,23 @@
+pkgbase = wlsbg
+	pkgdesc = Wallpaper tool with shader support for Wayland compositors
+	pkgver = 1.1.0.r0.ga919baf
+	pkgrel = 1
+	url = https://github.com/Sublimeful/wlsbg
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = scdoc
+	makedepends = git
+	depends = wayland
+	depends = cairo
+	depends = mesa
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	provides = wlsbg
+	conflicts = wlsbg
+	source = wlsbg::git+https://github.com/Sublimeful/wlsbg.git
+	b2sums = SKIP
+
+pkgname = wlsbg
