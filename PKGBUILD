@@ -1,4 +1,4 @@
-# Maintainer: Bryan Perdrizat <perso@garage-c0.re>
+# Maintainer: Brany <code@garage-c0.re>
 # Contributor: Robert Pannick <rwpannick@gmail.com>
 # Contributor: Nigel Michki <nigeil@yahoo.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
