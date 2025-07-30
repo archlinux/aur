@@ -5,7 +5,7 @@ _godot_version="4.5-beta3"
 
 pkgname=gozen-git
 pkgver=20250728
-pkgrel=1
+pkgrel=3
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -32,8 +32,8 @@ optdepends=(
 )
 source=(
 	"git+https://github.com/VoylinsGamedevJourney/GoZen.git"
-    "godot-editor.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
-    "godot-templates.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
+    "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
+    "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
 
 pkgver() {
@@ -61,7 +61,7 @@ prepare() {
     if [ ! -d ~/.local/share/godot/export_templates/${_godot_version/-/.} ]; then
 		msg "Preparing Godot export templates ..."
 		mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}"
-		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}" "${srcdir}/godot-templates.tpz"
+		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}" "${srcdir}/godot-templates-${_godot_version}.tpz"
 		mv "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/templates/"* \
 		   "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/"
 		rmdir "$HOME/.local/share/godot/export_templates/${_godot_version/-/.}/templates"
@@ -69,7 +69,8 @@ prepare() {
 		msg "Godot export templates found in cache."
 	fi
 	
-	# Make Godot editor executable.
+	msg "Extracting Godot editor..."
+	unzip -o "${srcdir}/godot-editor-${_godot_version}.zip" -d "${srcdir}"
 	chmod +x "${srcdir}/Godot_v${_godot_version}_linux.x86_64"
 }
 
@@ -129,5 +130,5 @@ package() {
 	install -Dm644 "assets/linux/gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
 }
 sha256sums=('SKIP'
-            'd6e382fb531019f85630c1f485a561a0d20c4a2344b6c3847735cfee7da812aa'
-            '7a8d14ade489fd4d22f178193021fe8a876a9e51068ed4dde26dac3ae4c59a88')
+            'f27a58f8dd09f078d8aecc6f8e3eb1b97f9678e410e03f29df3a08800983e2bf'
+            '3967cc917d5ff21c34573341035b47d2a3db800b2acde6a17f570f081f7b835c')
