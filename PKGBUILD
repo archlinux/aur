@@ -15,14 +15,19 @@ source=("https://github.com/lollipopkit/flutter_server_box/releases/download/v1.
 sha256sums=('22222e9d335765f605a35e09e4f6818989de866259c39f0863ea7d413b983cce')
 
 prepare() {
-    chmod +x "$srcdir/ServerBox_1128_amd64.appimage"
+    # 动态获取 AppImage 文件名
+    appimage_file=$(basename "${source[0]}")
+    chmod +x "$srcdir/$appimage_file"
     cd "$srcdir"
 
     # 提取AppImage内容
-    ./"ServerBox_1128_amd64.appimage" --appimage-extract
+    ./"$appimage_file" --appimage-extract
 }
 
 package() {
+    # 动态获取 AppImage 文件名
+    appimage_file=$(basename "${source[0]}")
+    
     # 创建目录
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
@@ -30,7 +35,7 @@ package() {
     install -dm755 "$pkgdir/opt/$pkgname"
 
     # 安装主程序
-    install -Dm755 "$srcdir/ServerBox_1128_amd64.appimage" "$pkgdir/opt/$pkgname/server-box.AppImage"
+    install -Dm755 "$srcdir/$appimage_file" "$pkgdir/opt/$pkgname/server-box.AppImage"
 
     # 创建启动脚本
     cat > "$pkgdir/usr/bin/server-box" << EOL
@@ -80,7 +85,7 @@ EOL
 
         # 检查预定义位置
         ICON_FOUND=0
-        for ICON_PATH in ""; do
+        for ICON_PATH in "${ICON_LOCATIONS[@]}"; do
             if [ -f "$ICON_PATH" ]; then
                 echo "找到图标: $ICON_PATH"
 
@@ -133,14 +138,15 @@ EOL
             fi
         fi
 
-        # 如果仍然没有找到图标，则提取AppImage自身作为图标
+        # 如果仍然没有找到图标，则尝试从AppImage本身提取
         if [ $ICON_FOUND -eq 0 ]; then
             echo "在AppImage中未找到图标，尝试从AppImage本身提取..."
             if command -v pngtopnm &> /dev/null && command -v pnmtopng &> /dev/null; then
-                "$srcdir/ServerBox_1128_amd64.appimage" --appimage-extract *.png 2>/dev/null || true
-                if [ -f "$srcdir/squashfs-root/*.png" ]; then
-                    install -Dm644 "$srcdir/squashfs-root/*.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$APP_NAME.png"
-                    install -Dm644 "$srcdir/squashfs-root/*.png" "$pkgdir/usr/share/pixmaps/$APP_NAME.png"
+                "$srcdir/$appimage_file" --appimage-extract *.png 2>/dev/null || true
+                if find "$srcdir/squashfs-root" -name "*.png" | grep -q .; then
+                    ICON_PATH=$(find "$srcdir/squashfs-root" -name "*.png" | head -n 1)
+                    install -Dm644 "$ICON_PATH" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$APP_NAME.png"
+                    install -Dm644 "$ICON_PATH" "$pkgdir/usr/share/pixmaps/$APP_NAME.png"
                     ICON_FOUND=1
                 fi
             fi
