@@ -5,10 +5,10 @@ pkgver=v1.2.r17.g41e842a
 pkgrel=1
 pkgdesc="Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager"
 arch=(x86_64)
-url="https://laborejo.org/patroneo.git"
+url="ssh://aur@aur.archlinux.org/patroneo-git.git"
 license=('GPL')
 groups=()
-depends=('python' 'python-pyqt5' 'ttf-dejavu')
+depends=('libcalfbox-lss' 'python' 'python-pyqt5' 'ttf-dejavu')
 makedepends=('git' 'nuitka')
 optdepends=('non-session-manager: required to run Patroneo'
             'raysession-git: alternative to non-session-manager')

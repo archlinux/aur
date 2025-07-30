@@ -2,11 +2,12 @@ pkgbase = patroneo-git
 	pkgdesc = Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager
 	pkgver = v1.2.r17.g41e842a
 	pkgrel = 1
-	url = https://laborejo.org/patroneo.git
+	url = ssh://aur@aur.archlinux.org/patroneo-git.git
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = nuitka
+	depends = libcalfbox-lss
 	depends = python
 	depends = python-pyqt5
 	depends = ttf-dejavu
@@ -20,4 +21,3 @@ pkgbase = patroneo-git
 	md5sums = SKIP
 
 pkgname = patroneo-git
-
