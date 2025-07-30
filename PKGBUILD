@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=8.2.1
+pkgver=8.3.0
 pkgrel=0
 epoch=
 pkgdesc='Modern N64 Emulator'
@@ -33,7 +33,7 @@ makedepends=(
 	'qt5-tools'
 )
 checkdepends=()
-optdepends=()
+optdepends=('noto-fonts-cjk')
 provides=()
 conflicts=()
 replaces=()
@@ -41,9 +41,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog='parallel-launcher.changelog'
-source=('https://gitlab.com/-/project/22150690/uploads/b72ddf0282defc8f9fc09587e4aaf4c0/parallel-launcher-8.2.1.tar.gz')
+source=('https://gitlab.com/-/project/22150690/uploads/2e76ba01343c58efd076346d0970aac5/parallel-launcher-8.3.0.tar.gz')
 noextract=()
-sha256sums=('c23dfaff391d599ba89920ce2272db1be42bd07e5e89f05e9a2de3c6ef68ee0e')
+sha256sums=('a16b5d8accfbc4320bc0aed1b40d4d4c75bd0a1c13f2950896451f6b6a6ed4a9')
 validpgpkeys=()
 
 build() {

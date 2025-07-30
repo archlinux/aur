@@ -1,3 +1,12 @@
+### v8.3.0 (Wed Jul 30 2025)
+* Parallel Launcher now supports cloud saves when RHDC integration is enabled. This feature can be turned on and off in settings
+* Users running the 32-bit version of Parallel Launcher on a 64-bit Windows machine will now be prompted to switch to the 64-bit version. If the 32-bit version of RetroArch or ParallelN64 is found while running the 64-bit version of Parallel Launcher, the correct 64-bit version will be downloaded to replace it.
+* If a Japanese character is encountered in the IS Viewer window, the font will now automatically switch to another monospace font that better handles JP characters
+* Fixed a bug where the IS Viewer window would open at the wrong size on machines using desktop UI scaling
+* Fixed the Japanese translations using a fallback bitmap font instead of the intended smooth font on Windows
+* Fixed an oversight that could cause the basic save editor to appear for vanilla SM64 instead of the more comprehensive SM64 save file editor when RHDC integration is enabled
+* Fixed the SM64 save editor corrupting vanilla SM64 save files
+
 ### v8.2.1 (Sun Jul 6 2025)
 * Fixed a regression from v8.0.0 that broke some libpl integrations
 * Fixed the IS Viewer window not properly alternating background colours once the max history size is reached
