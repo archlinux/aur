@@ -1,0 +1,25 @@
+pkgbase = fido2-manage-git
+	pkgdesc = Tool allowing to manage FIDO2.1 devices over USB or NFC, including Passkey (resident keys) management
+	pkgver = r104.679b85b
+	pkgrel = 1
+	url = https://github.com/Token2/fido2-manage
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = zlib
+	makedepends = pkg-config
+	depends = libfido2
+	depends = libcbor
+	depends = pcsclite
+	depends = openssl
+	depends = systemd-libs
+	depends = tk
+	depends = python
+	depends = bash
+	optdepends = pcsc-tools: for smart card reader utilities
+	provides = fido2-manage
+	source = git+https://github.com/Token2/fido2-manage.git
+	sha256sums = SKIP
+
+pkgname = fido2-manage-git
