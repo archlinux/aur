@@ -23,7 +23,7 @@ source=("${_pkgname}::git+${url}.git"
 sha1sums=('SKIP'
           'eb54d5f0ba8a99dd31f3be168b5ff5ee27ae2d32'
           '91b7bd64597cb9d62a4d898f0243fc6da9d09786'
-          'acde099d92d2f2945957a32a925f229dbe5610b3'
+          'd94d74dd91d6b47cb8e70d5dea7b2fba39de2395'
           'dec97fad5e49155ece2cfc7af25987268100a279')
 
 pkgver() {
