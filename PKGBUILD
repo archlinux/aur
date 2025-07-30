@@ -46,10 +46,6 @@ optdepends=(
   'otf-font-awesome: Icons in the default configuration'
 )
 
-if [[ "${_with_cava::1}" == "t" ]]; then
-  depends+=('libcava') # AUR
-fi
-
 provides=("$_pkgname=${pkgver%.g*}")
 conflicts=("$_pkgname")
 
