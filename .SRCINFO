@@ -1,0 +1,17 @@
+pkgbase = ttf-mac-fonts-all
+	pkgdesc = Mac fonts including Lucida Grande, Apple Garamond and other fonts from Apple
+	pkgver = .
+	pkgrel = 1
+	url = https://www.apple.com/safari/
+	install = ttf-mac-fonts-all.install
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python
+	conflicts = macfonts
+	source = ttf-mac-fonts-all::git+https://github.com/apple-fonts-extra/fonts.git
+	source = http://images.apple.com/legal/sla/docs/SafariWindows.pdf
+	sha256sums = SKIP
+	sha256sums = d1c9697ea430a3ddad6548c7b9c961c4b06f9da5a5ba1f1007fe998b3354df4a
+
+pkgname = ttf-mac-fonts-all
