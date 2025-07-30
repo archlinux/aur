@@ -82,18 +82,17 @@ optdepends=(
 provides=('initramfs')
 backup=('etc/dracut.conf')
 source=(
-  git+${url}.git
   1387.patch::${url}/commit/919a337.patch # allow the use of $kernel in initrdname= config
   1425.patch::${url}/commit/8b993db.patch # fix(systemd-sysext): enable initrd-specific units
-  1480.patch::${url}/commit/1a57ad7.patch # base module failure if root password is already set
+  1480.patch::${url}/commit/9de0a92.patch # base module failure if root password is already set
+  git+${url}.git
   dracut-{install,remove}.script
   90-dracut-install.hook
   60-dracut-remove.hook
 )
 conflicts=("${pkgname%-git}")
-sha512sums=('SKIP'
-            'SKIP' 'SKIP' 'SKIP'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' # number of patches
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd "${pkgname%-git}"
 
