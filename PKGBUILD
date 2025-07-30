@@ -11,7 +11,7 @@ license=("GPL-2.0")
 arch=("x86_64")
 provides=("hyprviz")
 conflicts=("hyprviz")
-source=("https://github.com/timasoft/hyprviz.git/releases/download/v$pkgver/hyprviz-$pkgver-x86_64.tar.gz")
+source=("https://github.com/timasoft/hyprviz/releases/download/v$pkgver/hyprviz-$pkgver-x86_64.tar.gz")
 sha256sums=("f21fdb65a0fc9f5d0a10c86b0815cd51b4429f4a0f9d87b442cb61e518be652c")
 
 package() {
