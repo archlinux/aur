@@ -1,0 +1,17 @@
+pkgbase = omcp-git
+	pkgdesc = A powerful CLI client that connects Ollama language models to Model Context Protocol servers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Av32000/OMCP
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	options = !debug
+	options = !lto
+	source = https://github.com/Av32000/OMCP/archive/v1.0.0/omcp-git-1.0.0.tar.gz
+	sha256sums = aa2dda65c15ede6c7131eefd03eaddf2c62037d3535ece88b79af147da3797ce
+
+pkgname = omcp-git
