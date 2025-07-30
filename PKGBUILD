@@ -1,6 +1,6 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=sui-mainnet-bin
-pkgver=1.52.2
+pkgver=1.52.3
 pkgrel=1
 pkgdesc="Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language"
 arch=("x86_64" "aarch64")
@@ -12,8 +12,8 @@ provides=("sui")
 source_x86_64=("$url/releases/download/mainnet-v$pkgver/sui-mainnet-v$pkgver-ubuntu-x86_64.tgz")
 source_aarch64=("$url/releases/download/mainnet-v$pkgver/sui-mainnet-v$pkgver-ubuntu-aarch64.tgz")
 
-sha256sums_x86_64=('861dea5fc22c38f275c4bdc49b933d258446f30269838124ade93a8bc6a4b8ba')
-sha256sums_aarch64=('e18da9a886a24b3f3b68db743c537b1cddd1d7f70936ba1fd423918e13106fc1')
+sha256sums_x86_64=('cca2aaa18c7781bf5b7af7d9055fc6a281f24f0a43820ac2e10db3e9657ba927')
+sha256sums_aarch64=('cf94480df8e5470fb9ee05f89c635c5ce45594a258407758f7e792d5239c4ff9')
 
 package() {
     binaries=(
