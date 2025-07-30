@@ -1,5 +1,7 @@
 [Desktop Entry]
-Name=awakened-poe-trade
+Name=Awakened PoE Trade
+Comment=Path of Exile app for price checking
 Exec=/usr/bin/awakened-poe-trade
 Icon=/usr/share/pixmaps/awakened-poe-trade.ico
 Type=Application
+Categories=Utility;Game;GameTool;
