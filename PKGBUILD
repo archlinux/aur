@@ -1,18 +1,40 @@
-pkgname=matlab-documentation
-pkgver=24.1.0.2508561
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+pkgname="matlab-documentation"
+pkgver=R2025a+25.1.0.2934551
+_release="${pkgver%%+*}"
+_version="${pkgver##*+}"
 pkgrel=1
-pkgdesc="MATLAB documentation"
+epoch=1
+pkgdesc="A high-level language for numerical computation and visualization (documentation)"
 arch=('any')
-url="https://www.mathworks.com/help/releases/R2024a/install/ug/install-documentation-on-offline-machines.html"
-license=('custom')
-source=('R2024a_Doc_Linux.iso::https://www.mathworks.com/doc-iso-r2024a-linux')
-md5sums=('e22b320bb5dc4dbc542281583a7016be')
+url="https://www.mathworks.com/help/install/ug/install-documentation-on-offline-machines.html"
+license=('custom:MATLAB EULA')
+depends=("matlab-release=${_release}")
+_pkgsrc="${pkgname}-${_release}"
+source=("${_pkgsrc}.iso::https://www.mathworks.com/doc-iso-${_release,,}-linux")
+sha256sums=('SKIP')
+
+prepare() {
+  chmod -R ug+Xwr "${srcdir}"
+}
 
 pkgver() {
-    sed --quiet 's|\s*<version>\(.*\)</version>\s*|\1|p' "$srcdir/VersionInfo.xml"
+  cd "${srcdir}"
+  local rel ver
+  rel="$(sed -n 's:.*<release>\(.*\)</release>.*:\1:p' VersionInfo.xml)"
+  ver="$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' VersionInfo.xml)"
+  echo "$rel+$ver"
 }
 
 package() {
-    mkdir -p $pkgdir/opt/MATLAB/R2024a
-    $srcdir/bin/glnxa64/mpm install-doc --matlabroot="/opt/MATLAB/R2024a" --destination="$pkgdir/opt/MATLAB/R2024a"
+  cd "${srcdir}/bin/glnxa64"
+  ./mpm install-doc --matlabroot="/opt/MATLAB/${_release}" --destination="${pkgdir}/opt/MATLAB/${_release}"
+
+  # cd "${pkgdir}"
+  # find . -type f | while read -r filepath; do
+  #   if [[ -e "${filepath#.}" ]]; then
+  #     mv -v "$filepath" "$filepath.append"
+  #   fi
+  # done
 }
