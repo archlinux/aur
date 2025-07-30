@@ -2,11 +2,12 @@
 
 pkgname=elephant-files
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='files provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
 license=('MIT')
+depends=('fd' 'elephant')
 makedepends=('go')
 conflicts=('elephant-files')
 provides=('elephant-files')
