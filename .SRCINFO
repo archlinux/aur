@@ -1,9 +1,8 @@
 pkgbase = art-rawconverter-imageio
 	pkgdesc = add on for ART raw converter to support more image formats
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
-	epoch = 1
-	url = https://art.pixls.us
+	url = https://github.com/artpixls/ART-imageio/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -21,7 +20,7 @@ pkgbase = art-rawconverter-imageio
 	depends = perl-image-exiftool
 	depends = siril
 	depends = libavif
-	source = art-rawconverter-imageio::git+https://github.com/artpixls/art-imageio.git#tag=1.1
-	sha256sums = SKIP
+	source = art-rawconverter-imageio::https://github.com/artpixls/ART-imageio/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = ce6de6aaabbada878cdb354647d80c898cce8088b0f9ea04f3fea687a6e3fe09
 
 pkgname = art-rawconverter-imageio
