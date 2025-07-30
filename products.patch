@@ -1,6 +1,6 @@
 diff --unified --recursive --text a/system76driver/products.py b/system76driver/products.py
---- a/system76driver/products.py	2025-07-30 17:26:11.588916487 -0600
-+++ b/system76driver/products.py	2025-07-30 17:29:21.937130189 -0600
+--- a/system76driver/products.py	2025-07-30 17:39:21.889460448 -0600
++++ b/system76driver/products.py	2025-07-30 17:41:18.664643668 -0600
 @@ -29,33 +29,28 @@
      'addw1': {
          'name': 'Adder WS',
@@ -35,7 +35,63 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
          ],
      },
  
-@@ -424,7 +419,6 @@
+@@ -376,63 +371,54 @@
+     'gaze14': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i8042_nomux,
+         ],
+     },
+     'gaze15': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i8042_nomux,
+         ],
+     },
+     'gaze16-3050': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.blacklist_psmouse,
+         ],
+     },
+     'gaze16-3060': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.blacklist_psmouse,
+         ],
+     },
+     'gaze16-3060-b': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.blacklist_psmouse,
+         ],
+     },
+     'gaze17-3050': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.blacklist_psmouse,
+         ],
+     },
+     'gaze17-3060-b': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.blacklist_psmouse,
+         ],
+     },
+     'gaze18': {
+         'name': 'Gazelle',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.remove_blacklist_psmouse,
+         ],
+     },
      'gaze20': {
          'name': 'Gazelle',
          'drivers': [
@@ -43,3 +99,71 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
          ],
      },
      'gazu1': {
+@@ -801,27 +787,23 @@
+         'name': 'Oryx Pro',
+         'drivers': [
+             actions.hda_probe_mask,
+-            actions.blacklist_nvidia_i2c,
+         ],
+     },
+     'oryp6': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i915_initramfs,
+         ],
+     },
+     'oryp7': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i915_initramfs,
+         ],
+     },
+     'oryp8': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.blacklist_psmouse,
+             actions.i915_initramfs,
+         ],
+@@ -829,7 +811,6 @@
+     'oryp9': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i915_initramfs,
+             actions.blacklist_psmouse,
+         ],
+@@ -837,7 +818,6 @@
+     'oryp10': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i915_initramfs,
+             actions.blacklist_psmouse,
+         ],
+@@ -845,7 +825,6 @@
+     'oryp11': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i915_initramfs,
+             actions.remove_blacklist_psmouse,
+         ],
+@@ -853,7 +832,6 @@
+     'oryp12': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i915_initramfs,
+             actions.remove_blacklist_psmouse,
+         ],
+@@ -1131,7 +1109,6 @@
+     'serw13': {
+         'name': 'Serval WS',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+             actions.i915_initramfs,
+             actions.remove_blacklist_psmouse,
+         ],
