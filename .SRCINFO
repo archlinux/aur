@@ -3,7 +3,7 @@ pkgbase = xlibre-is-xorg
 	pkgver = 25.0.0.7
 	pkgrel = 1
 	arch = any
-	license = GPL
+	license = MIT
 	depends = xlibre-server
 	provides = xorg-server
 

@@ -5,5 +5,5 @@ pkgrel=1
 arch=(any)
 provides=('xorg-server')
 depends=('xlibre-server')
-license=('GPL')
+license=('MIT')
 pkgdesc="Provide xorg-server when xlibre-server exists"
