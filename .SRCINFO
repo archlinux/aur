@@ -1,0 +1,14 @@
+pkgbase = enola
+	pkgdesc = CLI tool to hunt down social media accounts by username across social networks
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/TheYahya/enola
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = enola
+	conflicts = enola
+	source = enola-0.4.0.tar.gz::https://github.com/TheYahya/enola/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 3d1e08662a2a535773379b24d40c542fac406318c8ea6db6d6c191dfd0f2f703
+
+pkgname = enola
