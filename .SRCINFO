@@ -1,13 +1,13 @@
 pkgbase = gemini-cli
 	pkgdesc = An open-source AI agent that brings the power of Gemini directly into your terminal.
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/google-gemini/gemini-cli
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.14.tgz
-	sha256sums = bc1261732509b28226e3c5e94e6c33ca2e48251642f5bb8b2a685079ce39ac13
+	source = https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.15.tgz
+	sha256sums = 414a5d0fc16c4c3f08dec8ad97e2d887254008fa4fdd2bc3aa32122329eb7879
 
 pkgname = gemini-cli
