@@ -2,8 +2,8 @@
 
 _name=langgraph-prebuilt
 pkgname=python-${_name}
-pkgver=0.6.0
-_langgraphver=0.6.0
+pkgver=0.6.1
+_langgraphver=0.6.1
 pkgrel=1
 pkgdesc="Library with high-level APIs for creating and executing LangGraph agents and tools."
 arch=('any')
@@ -15,8 +15,8 @@ _langgraph_depends=('python-langgraph-sdk' 'python-xxhash' 'python-pydantic')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-watcher' ${_langgraph_depends[@]} 'python-langgraph-checkpoint-sqlite' 'python-langgraph-checkpoint-postgres' 'python-syrupy' )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz"
         "https://files.pythonhosted.org/packages/py3/l/langgraph/langgraph-${_langgraphver}-py3-none-any.whl") # Prevent cercular dependencies
-sha256sums=('15b97f9d6f4cd5a2c460f6e75774098b22ba03ac9c21c283493d49e586a3863b'
-            'fd8596c2469902f41df627b155a4d3e30fd782f728dcbd6f526a213c630514e2')
+sha256sums=('574c409113e02d3c58157877c5ea638faa80647b259027647ab88830d7ecef00'
+            '2736027faeb6cd5c0f1ab51a5345594cfcb5eb5beeb5ac1799a58fcecf4b4eae')
 noextract=("langgraph-${_langgraphver}-py3-none-any.whl")
 
 build() {
