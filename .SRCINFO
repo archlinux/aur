@@ -1,0 +1,20 @@
+pkgbase = python-ctypeslib
+	pkgdesc = A Python library for generating ctypes bindings from C code
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/trolldbois/ctypeslib
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = clang
+	source = git+https://github.com/trolldbois/ctypeslib.git#tag=v2.4.0
+	source = arch.patch
+	sha256sums = 2e0ede1275db5b3bf933ab955692deb61b1cec05b59545571043be5f2e8af890
+	sha256sums = f668507dc1017264ee7ac433c50e3e40e401590373f34f1d9627f3a3f4b73d14
+
+pkgname = python-ctypeslib
