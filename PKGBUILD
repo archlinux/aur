@@ -4,7 +4,7 @@
 
 pkgname=lobe-chat
 pkgver=1.106.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
 url="https://github.com/lobehub/${pkgname}"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
   "${pkgname}.tmpfiles")
 sha256sums=('dae56268c9b9b0ab19ef3682c973d5fce54e4d6cab70971c6760f8a86e3bb176'
             '98d24ac4674757eb1e0b2e4be84bb871cbb0361752608090b49196aa044e51c1'
-            '52b4cf31dff5e5e505d0a34ba8f3eec2837023ee03552d634a1e857e1a1ed983'
+            '43143b06b5418e718fafa404999f6f1266a8f11c7427d93b81a23a2a0b348595'
             '4205728d7528ccc94f2a9eb25655cf4bed59502be3726f17da814355c540f528'
             'b370a660e91eacd7fee44691ff8de4446f4c8f36634a2d96a2f982b5fea9a0a6'
             '2e5323c4dc10d815cf3ffcee0fb9fa33dba5c95b2c28055e4c5b4f551bdc5049')
