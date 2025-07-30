@@ -1,9 +1,10 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgbase=cubeb
 pkgname=('cubeb' 'cubeb-docs')
-pkgver=20250529
-_commit=78ee5f0efaaa395e3e1806e8ef85dcb15c7c063d
+pkgver=20250728
+_commit=fdb3bc1038530cc573b65b5d11ab075aef0ad3af
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -16,7 +17,7 @@ source=(git+$url#commit=$_commit
 	git+https://github.com/arsenm/sanitizers-cmake.git
 	git+https://github.com/mozilla/cubeb-coreaudio-rs.git
 	git+https://github.com/mozilla/cubeb-pulse-rs.git)
-b2sums=('ff979da0500d3170301bf3099919ca68fca6e3d84f4facce247a64760b6e35ce769d2d68890f2dfc10da0ff3ea4df8e74bfa2d61cbe414a3336078a6c89ea0e5'
+b2sums=('38343ff5a1ec174f1937060ec3a6f547329ab21659c6036f1ba51485ef432e8164cf48f3c28ed0e6599ef0a84d243d5f404424700dc2d27e783d7b7a3f9918bd'
         'SKIP'
         'SKIP'
         'SKIP'
