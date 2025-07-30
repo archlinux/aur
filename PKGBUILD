@@ -2,16 +2,16 @@
 
 _pkgname=midimonster
 pkgname=${_pkgname}-git
-pkgver=v0.1.r1.ga0831a2
+pkgver=v0.6.r44.gc247b03
 pkgrel=1
 pkgdesc="Multi-protocol translation software (ArtNet, MIDI, OSC, JACK MIDI/CV ...)"
 arch=('x86_64' 'i686')
 url="https://github.com/cbdevnet/midimonster"
 license=('BSD')
 depends=('pkg-config' 'gcc' 'make' 'alsa-lib' 'libevdev' 'lua' 'jack')
-makedepends=()
-provides=()
-conflicts=()
+makedepends+=(git)
+provides=('midimonster')
+conflicts=('midimonster')
 source=("git+https://github.com/cbdevnet/midimonster")
 sha256sums=('SKIP')
 
