@@ -1,0 +1,14 @@
+pkgbase = proton-authenticator-bin
+	pkgdesc = Proton Authenticator is an open-source TOTP authenticator from Proton (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://proton.me/authenticator
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	provides = proton-authenticator
+	conflicts = proton-authenticator
+	source = https://proton.me/download/authenticator/linux/ProtonAuthenticator_1.0.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = proton-authenticator-bin
