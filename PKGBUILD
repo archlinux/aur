@@ -1,18 +1,18 @@
-# Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=the-entertainment
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Entertainment - Kentucky Route Zero"
 arch=(i686 x86_64)
 url="http://kentuckyroutezero.com/the-entertainment/"
 license=('custom')
 depends=(libgl)
-source=(http://kentuckyroutezero.com/the-entertainment/TheEntertainment_Linux.zip
+source=(https://sloth.cardboard.computer/zero/supermarine-walrus/TheEntertainment-Linux.zip
         the-entertainment.desktop
         the-entertainment.png)
-md5sums=('025c9455b1501ab029c979c22c0a4d45'
-         'ea2aaac64fb39dc1bd7b843447d15a1a'
-         '0419c3664dfb775393b30459d6d2d0a8')
+sha256sums=('b2a09ad6b423f4d1a92192af41971677de99334a0c31d6c7fc5f837ad559959e'
+            '4594e2440ee680880bd8bf058ff77feed2a0ac4ae3c8c74bfe1ba22db0f71217'
+            '1fe7153cf8f10a74c94798da813319efbb806a23de5f43c14696002b8ce79757')
 
 package() {
   cd "${srcdir}"
