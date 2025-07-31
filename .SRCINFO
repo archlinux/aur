@@ -1,7 +1,7 @@
 pkgbase = wordrnd
 	pkgdesc = An utterly useless package that just generates random UNIX sentences and Clippy with no rules made out of pure boredom and curiosity. Please vote for my package because I don't know what I'm doing.
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/gducpm/wordrnd
 	arch = x86_64
 	license = GPL3
