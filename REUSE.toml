@@ -28,4 +28,4 @@ path = [
     "freeimage-unbundle.patch",
 ]
 SPDX-FileCopyrightText = "freeimage contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-3.0-only"
