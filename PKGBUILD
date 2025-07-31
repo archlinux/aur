@@ -1,34 +1,28 @@
 # Maintainer: Sosuke Inaba <mail[at]daizu[dot]dev>
 
 pkgname=ttf-moralerspace
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A composite font of IBM Plex Sans JP and Monaspace"
 arch=(any)
 url="https://github.com/yuru7/moralerspace"
 license=(custom:SIL)
 source=("$url/releases/download/v$pkgver/Moralerspace_v$pkgver.zip"
-        "$url/releases/download/v$pkgver/MoralerspaceNF_v$pkgver.zip"
         "$url/releases/download/v$pkgver/MoralerspaceJPDOC_v$pkgver.zip"
         "$url/releases/download/v$pkgver/MoralerspaceHW_v$pkgver.zip"
-        "$url/releases/download/v$pkgver/MoralerspaceHWNF_v$pkgver.zip"
         "$url/releases/download/v$pkgver/MoralerspaceHWJPDOC_v$pkgver.zip"
         "https://raw.githubusercontent.com/yuru7/moralerspace/v$pkgver/LICENSE")
-sha256sums=('863fce87c21d1dc1feebfe9c3fe307621858cf393a8c52503bd11bd7576e817e'
-            '07a47b320adee33140562f2b0aeb3f853e5fd86760fbeaa1036bb8d19ad433a6'
-            '46581e9c3f2f41da4601649a9dacf54e0551b06a35ebea56b8760cb9358dde0f'
-            '7d7be182d13930ef6710ec1de61adc5bf9740b8d9754cfd5260bca3f4239c8f5'
-            'b4518ceede759315cbe45ed2249a38595f023ac6ed43edf20b570e7d8090baa6'
-            '8aeea6616801f4860649944359814297048c081323c8406f530a5826ea1263a6'
+sha256sums=('56175ee16373ba1a3d2fd5ec46f3b0b6bf0412be7db1481ec7dee757f2e3d557'
+            '5abe6465910b1253a5de57bf32e79d2d268f5efea6c9ec9a668c6ea610a16f73'
+            '500a7774297c829265ebd472b6d8c1159cfb3e9daa4ca0570170af541b991b7d'
+            '3598729cb4693ff74fe32695fac167991d6bee55fc1649281aab64f311624907'
             '9d23767271951afeaddbe5de4dec5d1cb60456c06f45e4d04fbb9ab517d79e30')
 
 package() {
     install -d $pkgdir/usr/share/fonts/TTF
     install -m644 Moralerspace_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
-    install -m644 MoralerspaceNF_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
     install -m644 MoralerspaceJPDOC_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
     install -m644 MoralerspaceHW_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
-    install -m644 MoralerspaceHWNF_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
     install -m644 MoralerspaceHWJPDOC_v$pkgver/*.ttf $pkgdir/usr/share/fonts/TTF
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }
