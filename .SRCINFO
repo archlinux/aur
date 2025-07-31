@@ -1,0 +1,16 @@
+pkgbase = libretro-ffmpeg-git
+	pkgdesc = FFmpeg core for libretro/RetroArch
+	pkgver = r65594.072d953b01
+	pkgrel = 1
+	url = https://github.com/libretro/RetroArch/tree/master/cores/libretro-ffmpeg
+	arch = x86_64
+	groups = libretro
+	license = GPL-3.0
+	makedepends = git
+	depends = ffmpeg
+	provides = libretro-ffmpeg
+	conflicts = libretro-ffmpeg
+	source = RetroArch::git+https://github.com/libretro/RetroArch.git
+	sha256sums = SKIP
+
+pkgname = libretro-ffmpeg-git
