@@ -5,10 +5,13 @@ pkgver=0.3.43
 pkgrel=1
 pkgdesc="Standalone version of Social Stream Ninja - Electron-based application for capturing social media streams"
 arch=('x86_64')
+provides=('socialstreamninja')
+conflicts=('socialstreamninja-bin' 'socialstreamninja-git')
 url="https://github.com/steveseguin/ssn_app"
 license=('GPL3')
-depends=('fuse2' 'gtk3' 'nss' 'libxss' 'libnotify' 'libxtst' 'xdg-utils')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/steveseguin/ssn_app/releases/download/v${pkgver}/socialstreamninja_linux_v${pkgver}_x86_64.AppImage"
+depends=('fuse' 'zlib' 'glibc')
+optdepends=('gtk3: GTK integration' 'nss: Network security services' 'libxss: X11 screensaver extension' 'libnotify: Desktop notifications' 'libxtst: X11 testing')
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/steveseguin/social_stream/releases/download/${pkgver}/socialstreamninja_linux_v${pkgver}_x86_64.AppImage"
         "socialstreamninja.desktop")
 sha256sums=('SKIP'
             'SKIP')
@@ -17,34 +20,27 @@ options=('!strip')
 
 prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
+    "./${pkgname}-${pkgver}.AppImage" --appimage-extract
 }
 
 package() {
-    # Install AppImage
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    # Install extracted AppImage contents
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}/"
     
-    # Extract icon from AppImage
-    cd "${srcdir}"
-    "./${pkgname}-${pkgver}.AppImage" --appimage-extract socialstreamninja.png >/dev/null 2>&1 || \
-    "./${pkgname}-${pkgver}.AppImage" --appimage-extract usr/share/icons/hicolor/256x256/apps/socialstreamninja.png >/dev/null 2>&1 || \
-    "./${pkgname}-${pkgver}.AppImage" --appimage-extract socialstream.png >/dev/null 2>&1
-    
-    # Install icon
-    if [ -f "squashfs-root/socialstreamninja.png" ]; then
-        install -Dm644 "squashfs-root/socialstreamninja.png" "${pkgdir}/usr/share/pixmaps/socialstreamninja.png"
-    elif [ -f "squashfs-root/usr/share/icons/hicolor/256x256/apps/socialstreamninja.png" ]; then
-        install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/socialstreamninja.png" "${pkgdir}/usr/share/pixmaps/socialstreamninja.png"
-    elif [ -f "squashfs-root/socialstream.png" ]; then
-        install -Dm644 "squashfs-root/socialstream.png" "${pkgdir}/usr/share/pixmaps/socialstreamninja.png"
-    fi
+    # Fix permissions
+    chmod -R u=rwX,go=rX "${pkgdir}/opt/${pkgname}"
+    chmod +x "${pkgdir}/opt/${pkgname}/socialstreamninja"
     
     # Install desktop file
     install -Dm644 "${srcdir}/socialstreamninja.desktop" "${pkgdir}/usr/share/applications/socialstreamninja.desktop"
     
+    # Install icon
+    if [ -f "${srcdir}/squashfs-root/socialstreamninja.png" ]; then
+        install -Dm644 "${srcdir}/squashfs-root/socialstreamninja.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/socialstreamninja.png"
+    fi
+    
     # Create executable symlink
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/socialstreamninja"
-    
-    # Clean up
-    rm -rf "${srcdir}/squashfs-root"
+    ln -s "/opt/${pkgname}/socialstreamninja" "${pkgdir}/usr/bin/socialstreamninja"
 }

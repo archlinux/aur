@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Social Stream Ninja
 Comment=Standalone application for capturing social media streams
-Exec=socialstreamninja %U
+Exec=/opt/socialstreamninja/socialstreamninja %U
 Terminal=false
 Type=Application
 Icon=socialstreamninja
