@@ -21,6 +21,15 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	# https://github.com/mborgerding/kissfft/pull/107
+	sed -i 's/mkdir/mkdir -p/' Makefile
+	# https://github.com/mborgerding/kissfft/pull/101
+	sed -i 's/VERSION 3.3/VERSION 3.10/' kissfft-config.cmake.in
+		# https://github.com/mborgerding/kissfft/pull/109
+	sed -i 's/VERSION 3.6/VERSION 3.10/' CMakeLists.txt
+	# https://github.com/mborgerding/kissfft/pull/108
+	sed -i 's/PythonInterp/Python3/' test/CMakeLists.txt
+
 	# Our makefile gets overwritten, save it so we can copy it back
 	cp Makefile Makefile.bak
 
