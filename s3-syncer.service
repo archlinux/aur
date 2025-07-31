@@ -9,7 +9,8 @@ EnvironmentFile=/etc/s3-syncer/config.env
 Environment=RCLONE_TEMP_DIR=/run/s3-syncer/rclone-tmp
 
 ExecStart=/usr/bin/s3-syncer
-DynamicUser=yes
+User=s3-syncer
+Group=s3-syncer
 
 StateDirectory=s3-syncer
 LogsDirectory=s3-syncer
