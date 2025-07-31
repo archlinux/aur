@@ -1,0 +1,24 @@
+pkgbase = fightcade2-bin
+	pkgdesc = The best way to play your favorite retro games with or against any other player in the world.
+	pkgver = 2.1.45
+	pkgrel = 1
+	url = https://www.fightcade.com/
+	arch = x86_64
+	license = MIT
+	depends = rsync
+	depends = wine
+	depends = wine-mono
+	depends = lib32-mpg123
+	depends = lib32-libxss
+	depends = lib32-libcurl-gnutls
+	depends = libcurl-gnutls
+	depends = libzip
+	depends = miniupnpc
+	depends = lua53
+	depends = gtk3
+	source = https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
+	source = fightcade2.sh
+	sha256sums = 9880cbfa9b6e4a4eceab750c1d825d3c753ae4b1f84b53df421829e1423c50be
+	sha256sums = 0f2432a8f3c74b8ea8c768c90251bfae67e1e022528bf0a303aa0de8e38ba0b8
+
+pkgname = fightcade2-bin
