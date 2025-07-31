@@ -2,10 +2,10 @@
 pkgname=piano-trainer-bin
 _pkgname='Piano Trainer'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Memorize piano scales with ease! A piano practice program w/ MIDI support. Consider it an interactive reference manual 🎹.(Prebuilt version)"
 arch=('x86_64')
-url="hhttps://zaneh.itch.io/piano-trainer"
+url="https://zaneh.itch.io/piano-trainer"
 _ghurl="https://github.com/ZaneH/piano-trainer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
