@@ -1,6 +1,6 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 pkgname=ydb-cli-bin
-pkgver=2.22.1
+pkgver=2.24.1
 pkgrel=1
 pkgdesc='YDB CLI is the client-side command line interface for YDB databases.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('curl')
 YDB_STORAGE_URL='https://storage.yandexcloud.net/yandexcloud-ydb'
 
 source=("ydb-${pkgver}::${YDB_STORAGE_URL}/release/${pkgver}/linux/amd64/ydb")
-sha256sums=('847a0e30152d892bf6828b31b1c23cca993a1f80ff5dc31d24bbc58c6f7e1b70')
+sha256sums=('866c4175ff3a99e55be6cac9f0031fc96a05faef14420ff0d1fa9d74f5e9dcfc')
 
 package() {
     install -D "${srcdir}/ydb-${pkgver}" "${pkgdir}/usr/bin/ydb"
