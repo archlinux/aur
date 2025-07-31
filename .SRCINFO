@@ -1,11 +1,15 @@
 pkgbase = kissfft-git
 	pkgdesc = A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid
-	pkgver = 376.f5f2a3b
+	pkgver = 383.9feadb9
 	pkgrel = 2
 	url = https://github.com/mborgerding/kissfft
 	arch = any
 	license = BSD-3-Clause
 	makedepends = git
+	makedepends = cmake
+	makedepends = fftw
+	makedepends = libpng
+	makedepends = python
 	provides = kissfft
 	conflicts = kissfft
 	source = git+https://github.com/mborgerding/kissfft.git

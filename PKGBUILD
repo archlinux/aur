@@ -3,7 +3,7 @@
 pkgname=kissfft-git
 _pkgname=kissfft
 pkgver=383.9feadb9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid'
 arch=('any')
 url='https://github.com/mborgerding/kissfft'
@@ -21,13 +21,36 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	cmake \
-		-DCMAKE_INSTALL_PREFIX=/tmp/1234 \
-		-DKISSFFT_OPENMP=ON
-#		-DKISSFFT_STATIC=ON \
-#$		-DKISSFFT_DATATYPE=int16_t \
-	make all
-	make install
+	# Our makefile gets overwritten, save it so we can copy it back
+	cp Makefile Makefile.bak
+
+	_cmake_configs=(
+		"KISSFFT_OPENMP=ON;KISSFFT_DATATYPE=float"
+		"KISSFFT_OPENMP=OFF;KISSFFT_DATATYPE=float"
+		"KISSFFT_OPENMP=ON;KISSFFT_DATATYPE=double"
+		"KISSFFT_OPENMP=OFF;KISSFFT_DATATYPE=double"
+		"KISSFFT_OPENMP=ON;KISSFFT_DATATYPE=int16_t"
+		"KISSFFT_OPENMP=OFF;KISSFFT_DATATYPE=int16_t"
+		"KISSFFT_OPENMP=ON;KISSFFT_DATATYPE=int32_t"
+		"KISSFFT_OPENMP=OFF;KISSFFT_DATATYPE=int32_t"
+		# SIMD (requires SSE instruction set support on target CPU)
+		"KISSFFT_OPENMP=ON;KISSFFT_DATATYPE=simd"
+		"KISSFFT_OPENMP=OFF;KISSFFT_DATATYPE=simd"
+	)
+	for _config in "${_cmake_configs[@]}"; do
+		_cmake_args=""
+		IFS=';' read -ra _pairs <<< "${_config}"
+		for _pair in "${_pairs[@]}"; do
+			_cmake_args="${_cmake_args} -D${_pair}"
+		done
+
+		cp Makefile.bak Makefile
+		rm -rf /tmp/1234
+		cmake -DCMAKE_INSTALL_PREFIX=/tmp/1234 ${_cmake_args}
+		make all
+		make install
+	done
+	rm -rf /tmp/1234
 }
 
 package() {
@@ -41,9 +64,23 @@ package() {
 	install -Dm644 LICENSES/BSD-3-Clause "${pkgdir}/usr/share/licenses/kissfft-git/LICENSE"
 
 	install -dm755 "${pkgdir}/usr/share/pkgconfig"
-	ls -lah .
-	install -Dm644 "kissfft-int16_t-openmp.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-int16_t-openmp.pc"
-	install -Dm644 "libkissfft-int16_t-openmp.so" "${pkgdir}/usr/lib/libkissfft-int16_t-openmp.so"
-	install -Dm644 "libkissfft-int16_t-openmp.so.131" "${pkgdir}/usr/lib/libkissfft-int16_t-openmp.so.131"
-	install -Dm644 "libkissfft-int16_t-openmp.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-int16_t-openmp.so.131.1.0"
+
+	_data_types=(
+		"float"
+		"double"
+		"int16_t"
+		"int32_t"
+		"simd"
+	)
+	for _data_type in "${_data_types[@]}"; do
+		install -Dm644 "kissfft-${_data_type}.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}.pc"
+		install -Dm644 "libkissfft-${_data_type}.so" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so"
+		install -Dm644 "libkissfft-${_data_type}.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131"
+		install -Dm644 "libkissfft-${_data_type}.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131.1.0"
+
+		install -Dm644 "kissfft-${_data_type}-openmp.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}-openmp.pc"
+		install -Dm644 "libkissfft-${_data_type}-openmp.so" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so"
+		install -Dm644 "libkissfft-${_data_type}-openmp.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131"
+		install -Dm644 "libkissfft-${_data_type}-openmp.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131.1.0"
+	done
 }
