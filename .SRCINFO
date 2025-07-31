@@ -9,6 +9,6 @@ pkgbase = wordrnd
 	makedepends = make
 	depends = glibc
 	source = wordrnd-1.0.1.tar.gz::https://github.com/gducpm/wordrnd/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 7617d0cee8d4d3b04f3f7afc90abda3df93f60af279d6eaf3894391176e172dd
+	sha256sums = c0827706a8dbc35123232e5098abe8c878006fcaae58266af9f3dd06a8576ca2
 
 pkgname = wordrnd

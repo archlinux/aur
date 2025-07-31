@@ -12,7 +12,7 @@ license=('GPL3') #license
 depends=('glibc') #run dependencies
 makedepends=('gcc' 'make') #build dependencies
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz") #downloaded tarball name + tarball dest
-sha256sums=("7617d0cee8d4d3b04f3f7afc90abda3df93f60af279d6eaf3894391176e172dd") #sha256 checksum
+sha256sums=("c0827706a8dbc35123232e5098abe8c878006fcaae58266af9f3dd06a8576ca2") #sha256 checksum
 
 build() {
 	cd "$pkgname-$pkgver"
