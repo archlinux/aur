@@ -3,7 +3,7 @@
 
 pkgname=stabilitymatrix-git
 _pkgname=StabilityMatrix
-pkgver=2.14.2
+pkgver=2.14.3
 _pkgver=${pkgver%%+*}
 _pkgver=${_pkgver/+/.} #reduce to 2.13.1.r5629
 pkgrel=1
