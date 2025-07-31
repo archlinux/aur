@@ -1,0 +1,9 @@
+[Unit]
+Description=Trackpad is too damn big
+
+[Service]
+ExecStart=/usr/bin/titdb -d /dev/input/event8
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

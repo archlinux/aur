@@ -1,0 +1,16 @@
+pkgbase = titdb-git
+	pkgdesc = Trackpad Is Too Damn Big (TITDB) is a utility designed to customize trackpad behavior on Linux
+	pkgver = v1.0.0.r5.g78e3e47
+	pkgrel = 1
+	url = https://github.com/tascvh/trackpad-is-too-damn-big
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	source = git+https://github.com/tascvh/trackpad-is-too-damn-big
+	source = titdb.service
+	sha256sums = SKIP
+	sha256sums = 9553f82b476c45a84c5f911b508adc39dbd28b2ed20f3e300f3c0c77c1a44fd3
+
+pkgname = titdb-git
