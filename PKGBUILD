@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 target/release/raur "$pkgdir/usr/bin/raur-helper"
+  install -Dm755 target/release/raur "$pkgdir/usr/bin/raur"
 }
