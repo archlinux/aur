@@ -2,7 +2,7 @@
 # Contributor: Romain Bazile <gromain.baz@gmail.com>
 
 pkgname=opencpn-plugin-weatherrouting
-pkgver=1.15.18.6
+pkgver=1.15.33.2
 pkgrel=1
 pkgdesc="Weather routing plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,13 @@ license=("GPL3" "CCPL:by")
 depends=('opencpn')
 makedepends=('cmake')
 url="https://opencpn.org/OpenCPN/plugins/weatherroute.html"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/weather_routing_pi/archive/refs/tags/v${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz")
-b2sums=('db1c6f237f1547c6c2e4475290895dbdcd9a17ab01b367a633ae54dc8cc2988835b0e2cef6539dab19af8d7e3f9536b07f2d96774aa70a653b72be6727dc91fe' '24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/weather_routing_pi/archive/refs/tags/v${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/433aed02b6dbf1b34709e44aea038f5c853bec79.tar.gz" "stdint.patch")
+b2sums=('0817f0c28e4545ed70c90f1d4c5c87c7e7b0587a1d76ca6f433512d17372bd25d97254193628f2b0fbd674b002d02bf53891337661e1f58d7ae8865466cea7d5' '796d27913c7b13797def24998232f1b58f9482e376d53d6ea89e500294919220fc32ea4ef4400485cf6ae816ca919f6fb34ad0d5decf5072e04cf1561299ef1f'  '5e2554dc67a86bb530b5987ec4b311a2b561a035c6920d4db8e4036d0b99234553871e9a2dde194ce0274296fecb1d0738465f3419f73b887674a232c7ee2932')
 
 prepare() {
-  cp -r opencpn-libs-a001083af21de2e3faa970b245877a5ee5899aba/* weather_routing_pi-${pkgver}/opencpn-libs
+  cp -r opencpn-libs-433aed02b6dbf1b34709e44aea038f5c853bec79/* weather_routing_pi-${pkgver}/opencpn-libs
+  cd weather_routing_pi-${pkgver}
+  patch --strip=1 --input=../stdint.patch
 }
 
 build() {
