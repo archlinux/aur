@@ -3,8 +3,7 @@
 
 pkgname="xenia-canary-bin"
 _binary="xenia_canary"
-pkgver=latest
-_pkgver=$( echo $(curl -s "https://api.github.com/repos/xenia-canary/xenia-canary-releases/releases/latest" | grep tag_name) | cut -b 14-20 )
+pkgver=$( echo $(curl -s "https://api.github.com/repos/xenia-canary/xenia-canary-releases/releases/latest" | grep tag_name) | cut -b 14-20 )
 pkgrel=4
 pkgdesc="Xenia Canary is an experimental fork of the Xenia emulator."
 arch=('x86_64')
@@ -19,10 +18,10 @@ depends=(
   'sdl2'
   'zlib')
 makedepends=()
-_target="xenia_canary_linux-${_pkgver}.tar.gz"
+_target="xenia_canary_linux-${pkgver}.tar.gz"
 conflicts=('xenia-git' 'xenia-canary-git')
 provides=('xenia')
-source=("${_target}::https://github.com/xenia-canary/xenia-canary-releases/releases/download/${_pkgver}/xenia_canary_linux.tar.gz"
+source=("${_target}::https://github.com/xenia-canary/xenia-canary-releases/releases/download/${pkgver}/xenia_canary_linux.tar.gz"
         'https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/1024.png'
         'https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/512.png'
         'https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/256.png'
