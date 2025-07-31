@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+!/usr/bin/bash
 
 # This is your Application ID, avoid conflict
 appID="com.usebottles.bottles"
@@ -29,5 +29,3 @@ gameMode="true"
 
 # Wake the application using D-Bus calls towards StatusNotifiers.
 dbusWake="false"
-
-# Below you can set envs that will be imported into the application sandbox
