@@ -15,7 +15,6 @@ depends=('erlang-common_test'
          'erlang-erl_interface'
          'erlang-eunit'
          'erlang-parsetools')
-optdepends=('rebar3-zsh: ZSH completion')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
 makedepends=('git')
@@ -39,6 +38,19 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  install -Dm0755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
-  install -Dm0644 "apps/rebar/priv/shell-completion/bash/rebar3" "${pkgdir}/usr/share/bash-completion/completions/rebar3"
+  install -vDm755 -t "${pkgdir}/usr/bin" rebar3
+  install -vDm644 -t "${pkgdir}/usr/lib/erlang/lib/rebar-${pkgver}/ebin" \
+    _build/bootstrap/lib/rebar/ebin/*.beam \
+    _build/bootstrap/lib/rebar/ebin/rebar.app
+
+  install -vDm644 -t "${pkgdir}/usr/share/bash-completion/completions" \
+    apps/rebar/priv/shell-completion/bash/rebar3
+  install -vDm644 -t "${pkgdir}/usr/share/zsh/site-functions" \
+    apps/rebar/priv/shell-completion/zsh/_rebar3
+  install -vDm644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" \
+    apps/rebar/priv/shell-completion/fish/rebar3.fish
+
+  install -vDm644 -t "${pkgdir}/usr/share/man/man1" manpages/rebar3.1
+  install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}" \
+    README.md rebar.config.sample THANKS
 }
