@@ -4,7 +4,7 @@
 pkgname=rebar3-git
 pkgver=5385.4594b00f
 pkgrel=1
-pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
+pkgdesc="Erlang build tool that makes it easy to compile and test Erlang applications and releases"
 arch=('any')
 url="https://github.com/erlang/rebar3"
 license=('Apache-2.0')
