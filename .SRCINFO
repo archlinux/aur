@@ -1,13 +1,15 @@
 pkgbase = ghq-gst-bin
 	pkgdesc = Additional commands for ghq
 	pkgver = 5.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uetchy/gst
 	changelog = CHANGELOG
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = ghq>=1.8.0
+	provides = ghq-gst
+	conflicts = ghq-gst
 	source_x86_64 = https://github.com/uetchy/gst/releases/download/v5.0.5/gst_5.0.5_linux_amd64.tar.gz
 	sha256sums_x86_64 = 79185bb0c866218d138934b09fcbd03815bfdf87786c5f0e82a1ab88f3658cae
 	sha512sums_x86_64 = b03e504f010ccd729a78fe2be905e70232857422b36320ecd41c86ba2babaa7930b1b4934d671980efc76aa79b0ddc8176c10f6fc59087907b14141a249bd82a

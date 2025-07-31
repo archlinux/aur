@@ -2,12 +2,14 @@
 
 pkgname=ghq-gst-bin
 pkgver=5.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional commands for ghq"
 arch=("x86_64" "aarch64")
 url="https://github.com/uetchy/gst"
 license=("Apache-2.0")
 depends=("ghq>=1.8.0")
+provides=("ghq-gst")
+conflicts=("ghq-gst")
 changelog="CHANGELOG"
 source_x86_64=("https://github.com/uetchy/gst/releases/download/v${pkgver}/gst_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/uetchy/gst/releases/download/v${pkgver}/gst_${pkgver}_linux_arm64.tar.gz")
