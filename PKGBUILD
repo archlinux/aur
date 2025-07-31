@@ -9,7 +9,7 @@ url="https://github.com/PancakeTAS/lsfg-vk"
 license=('MIT')
 depends=(
   'gtk4'
-	'libadwaita'
+  'libadwaita'
   'vulkan-icd-loader'
 )
 makedepends=(
