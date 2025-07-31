@@ -1,6 +1,6 @@
 pkgbase = dv-processing
 	pkgdesc = Generic algorithms for event cameras.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://gitlab.com/inivation/dv/dv-processing/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = dv-processing
 	depends = libbacktrace-git
 	depends = python
 	depends = python-numpy
-	source = https://release.inivation.com/processing/dv-processing-2.0.1.tar.gz
-	sha256sums = 4944115d1e6b902b1f2dfe904f44add95262300a82f03da7585ec7863b5d5212
+	source = https://release.inivation.com/processing/dv-processing-2.0.2.tar.gz
+	sha256sums = 3d3c0eb3e4ee3f144929c0cc3c733443b9afecf2a37413a9a00e86cd7990e8cb
 
 pkgname = dv-processing

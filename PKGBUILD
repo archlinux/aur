@@ -1,7 +1,7 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=dv-processing
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Generic algorithms for event cameras."
 url="https://gitlab.com/inivation/dv/$pkgname/"
@@ -16,12 +16,12 @@ replaces=()
 options=()
 source=("https://release.inivation.com/processing/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('4944115d1e6b902b1f2dfe904f44add95262300a82f03da7585ec7863b5d5212')
+sha256sums=('3d3c0eb3e4ee3f144929c0cc3c733443b9afecf2a37413a9a00e86cd7990e8cb')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DDVP_ENABLE_TESTS=ON -DDVP_ENABLE_SAMPLES=OFF -DDVP_ENABLE_UTILITIES=ON -DDVP_ENABLE_BENCHMARKS=OFF -DDVP_ENABLE_PYTHON=ON .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DDVP_ENABLE_TESTS=ON -DDVP_ENABLE_SAMPLES=OFF -DDVP_ENABLE_UTILITIES=ON -DDVP_ENABLE_BENCHMARKS=OFF -DDVP_ENABLE_PYTHON=ON -DDVP_UDEV_INSTALL=ON .
 
 	make
 }
