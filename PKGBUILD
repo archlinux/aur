@@ -7,8 +7,8 @@ pkgname=(
   webkitgtk-6.0-devel
   webkitgtk-6.0-docs-devel
 )
-pkgver=2.49.3
-pkgrel=2
+pkgver=2.49.4
+pkgrel=1
 pkgdesc="Web content engine for GTK (development release)"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -110,9 +110,9 @@ makedepends=(
 source=(
   $url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
 )
-sha256sums=('25f465bd1f7d615da9f5089575c58c8fbaf26d951de6adc569690e59319d72c1'
+sha256sums=('5b3e758f4cef804e227516a9bf1fe30ce88df6285d1a60d60926dec5bc5463e4'
             'SKIP')
-b2sums=('9b207405c16b1c6289463ca3a2b3a695dfada19b2c469e1aeb98866361c93e3e2ac843726756d08388e1bfb8c67d2297e7432847c24737707282d10003945fac'
+b2sums=('376acbb34e42f1b76a43bc18354c98931cf4e8284774c8200139e795ec7ca7e031146cfc553cac09fab9c77df3973579afa81ab085f3ce1192fcbbf86d206d19'
         'SKIP')
 validpgpkeys=(
   # https://www.webkitgtk.org/verifying.html
