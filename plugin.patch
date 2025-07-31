@@ -1,33 +1,6 @@
---- a/model/src/plugin_loader.cpp
-+++ b/model/src/plugin_loader.cpp
-@@ -492,15 +492,15 @@ bool PluginLoader::LoadPluginCandidate(const wxString& file_name,
-   if (!base_plugin_path.EndsWith(wxFileName::GetPathSeparator()))
-     base_plugin_path += wxFileName::GetPathSeparator();
- 
--  if (!g_bportable) {
--    if (base_plugin_path.IsSameAs(plugin_file_path)) {
--      if (!IsSystemPluginPath(file_name.ToStdString())) {
--        DEBUG_LOG << "Skipping plugin " << file_name << " in "
--                  << g_BasePlatform->GetPluginDir();
--        return false;
--      }
--    }
--  }
-+  // if (!g_bportable) {
-+  //   if (base_plugin_path.IsSameAs(plugin_file_path)) {
-+  //     if (!IsSystemPluginPath(file_name.ToStdString())) {
-+  //       DEBUG_LOG << "Skipping plugin " << file_name << " in "
-+  //                 << g_BasePlatform->GetPluginDir();
-+  //       return false;
-+  //     }
-+  //   }
-+  // }
- 
-   if (!IsSystemPluginPath(file_name.ToStdString()) && safe_mode::get_mode()) {
-     DEBUG_LOG << "Skipping plugin " << file_name << " in safe mode";
 --- a/gui/src/OCPNPlatform.cpp
 +++ b/gui/src/OCPNPlatform.cpp
-@@ -1317,6 +1317,30 @@ void OCPNPlatform::SetDefaultOptions(void) {
+@@ -1321,6 +1321,30 @@ void OCPNPlatform::SetDefaultOptions(void) {
      pConfig->SetPath(_T ( "/Settings/WMM" ));
      pConfig->Write(_T ( "ShowIcon" ), true);
      pConfig->Write(_T ( "ShowLiveIcon" ), true);
@@ -58,3 +31,34 @@
    }
  #endif
  
+--- a/model/src/plugin_loader.cpp
++++ b/model/src/plugin_loader.cpp
+@@ -559,17 +559,17 @@ bool PluginLoader::LoadPluginCandidate(const wxString& file_name,
+   if (!base_plugin_path.EndsWith(wxFileName::GetPathSeparator()))
+     base_plugin_path += wxFileName::GetPathSeparator();
+ 
+-  if (!g_bportable) {
+-    if (base_plugin_path.IsSameAs(plugin_file_path)) {
+-      if (!IsSystemPluginPath(file_name.ToStdString())) {
+-        DEBUG_LOG << "Skipping plugin " << file_name << " in "
+-                  << g_BasePlatform->GetPluginDir();
+-
+-        ClearLoadStamp(plugin_loadstamp.ToStdString());  // Not a fatal error
+-        return false;
+-      }
+-    }
+-  }
++  // if (!g_bportable) {
++  //   if (base_plugin_path.IsSameAs(plugin_file_path)) {
++  //     if (!IsSystemPluginPath(file_name.ToStdString())) {
++  //       DEBUG_LOG << "Skipping plugin " << file_name << " in "
++  //                 << g_BasePlatform->GetPluginDir();
++  //
++  //       ClearLoadStamp(plugin_loadstamp.ToStdString());  // Not a fatal error
++  //       return false;
++  //     }
++  //   }
++  // }
+ 
+   if (!IsSystemPluginPath(file_name.ToStdString()) && safe_mode::get_mode()) {
+     DEBUG_LOG << "Skipping plugin " << file_name << " in safe mode";
