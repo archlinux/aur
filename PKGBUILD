@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 # Contributor: s-adi-dev <adi@s-adi.dev>
 
 pkgname=hyprshot-gui
