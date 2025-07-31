@@ -1,0 +1,15 @@
+pkgbase = raur-helper-git
+	pkgdesc = Simple AUR helper written in Rust
+	pkgver = 1b7421b
+	pkgrel = 1
+	url = https://github.com/hsdcc/raur
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = raur
+	conflicts = raur
+	source = raur-helper-git::git+https://github.com/hsdcc/raur
+	md5sums = SKIP
+
+pkgname = raur-helper-git
