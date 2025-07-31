@@ -1,10 +1,6 @@
 # Maintainer: Ming Li <mingmillennium@gmail.com>
-# 
-# Optimized PKGBUILD for pomodoro-timer v1.0.0
-# - Zero core dependencies (runs with pure Python standard library)
-# - All advanced features are optional dependencies
-#
-pkgname=pomodoro-timer
+
+pkgname=m2k-pomodoro-timer
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A lightweight Pomodoro timer with zero dependencies - runs with pure Python"
