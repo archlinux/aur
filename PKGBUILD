@@ -15,7 +15,6 @@ source=("${pkgname}-${_tag}.tar.gz::https://github.com/jupp0r/${pkgname}/release
 sha256sums=("62bc2cc9772db2314dbaae506ae2a75c8ee897dab053d8729e86a637b018fdb6")
 
 prepare() {
-  cd ""
   cd "${pkgname}-with-submodules"
   mkdir -p build
   cd build
