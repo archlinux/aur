@@ -9,7 +9,7 @@
 pkgname=google-chrome-bin
 pkgver=138.0.7204.183
 pkgrel=1
-pkgdesc="The popular web browser by Google (Stable Channel)"
+pkgdesc="Precompiled binary for the popular web browser by Google (Stable Channel)."
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
