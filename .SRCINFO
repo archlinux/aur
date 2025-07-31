@@ -1,11 +1,11 @@
 pkgbase = multi-git-status
 	pkgdesc = Show uncommited, untracked and unpushed changes in multiple Git repositories.
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/fboender/multi-git-status
 	arch = any
 	license = MIT
-	source = https://github.com/fboender/multi-git-status/archive/2.2.tar.gz
-	md5sums = 3135e32e3fdf065ef54acf38470effe9
+	source = https://github.com/fboender/multi-git-status/archive/2.3.tar.gz
+	md5sums = d7fc5f0daf398f6d63eb679894e7424d
 
 pkgname = multi-git-status
