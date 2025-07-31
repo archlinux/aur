@@ -64,7 +64,7 @@ package() {
 
   make DESTDIR=${pkgdir} install-gcc
 
-  find "$pkgdir" -name '*.la' -delete
-  find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
-  rm -rf $pkgdir/usr/share/{man,info}
+  find "${pkgdir}" -name '*.la' -delete
+  find "${pkgdir}" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
+  rm -rf ${pkgdir}/usr/${_target}-${pkgver}/share/info/dir
 }
