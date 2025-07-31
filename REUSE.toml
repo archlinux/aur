@@ -17,13 +17,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "i7z-qt5.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-    "i7z-qt5.patch",
-]
-SPDX-FileCopyrightText = "i7z contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"

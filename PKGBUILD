@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Nathan O <ndowens.aur at gmail dot com>
 
 pkgname=i7z
@@ -6,7 +6,7 @@ pkgver=0.27.2.git1
 pkgrel=8
 pkgdesc="A better i7 (and now i3, i5) reporting tool for Linux"
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('ncurses')
 makedepends=('qt5-base' 'git' 'clang')
 optdepends=('qt5-base: for i7z-gui')
