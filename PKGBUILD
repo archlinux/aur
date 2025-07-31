@@ -2,7 +2,7 @@
 
 pkgname=pulseshitter
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Adds audio to your Discord video stream"
 arch=('i686' 'x86_64')
 url="https://github.com/Enitoni/$pkgname"
@@ -29,7 +29,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    # Disable warnings
     cargo build --frozen --release --all-features
 }
 
@@ -37,7 +36,6 @@ check() {
     cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
 
-    # Disable warnings
     cargo test --frozen --all-features
 }
 

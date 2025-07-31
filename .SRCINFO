@@ -1,7 +1,7 @@
 pkgbase = pulseshitter
 	pkgdesc = Adds audio to your Discord video stream
 	pkgver = 3.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Enitoni/pulseshitter
 	arch = i686
 	arch = x86_64
