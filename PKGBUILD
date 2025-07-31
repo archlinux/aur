@@ -1,0 +1,32 @@
+# Maintainer: stag-enterprises < x [at] stag [dot] lol >
+
+pkgname=helix-ghost-bin
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Ghosttext client for Helix (and others like kakoune, micro, nano)"
+arch=("x86_64" "aarch64" "i686")
+url="https://github.com/rahji/helix-ghost"
+license=("MIT")
+optdepends=("helix: default editor supported")
+provides=("helix-ghost")
+conflicts=("helix-ghost")
+changelog="CHANGELOG"
+source_x86_64=("https://github.com/rahji/helix-ghost/releases/download/${pkgver}/helix-ghost_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/rahji/helix-ghost/releases/download/${pkgver}/helix-ghost_${pkgver}_linux_arm64.tar.gz")
+source_i686=("https://github.com/rahji/helix-ghost/releases/download/${pkgver}/helix-ghost_${pkgver}_linux_386.tar.gz")
+sha256sums_x86_64=('2bef4c87be27ea2ee8270f9be4cfea97dcc6276969669674beb5e217d1cc98c7')
+sha256sums_aarch64=('0a4f9df4e6e29087e0df8695ecc98da4c04b157bbebfa487284976a2103aed0c')
+sha256sums_i686=('5850b8386a962cd9c777c2418d0f3fcb0a65b14212962e3a0eceb77ba73e1cea')
+sha512sums_x86_64=('37caae1aaac598f734d59a8c9044dd7c38af0459357a0a653400cc981c9901104ba0bbc29f3fc16c2b96fd193dec0e535251bd92e93e9be13bb2d7cc33210f35')
+sha512sums_aarch64=('6404c65af068f846b65242ae86746d63aaeb486b9f4a79e6ed1f6ed07450d72af41ee74017dbe4e7fdb79550b5171f7ae452e77f873e76e1b4cb13b81ed2b14c')
+sha512sums_i686=('1ae5fe38dddcb1cace84172119f223fb3bab83c6edf5e369c7b005240902826d0bc239294ea659b55980a63e75b2b309684ac9be44c160668d8173052d372c56')
+b2sums_x86_64=('02109d49e6ae5e70e57547f82dd638a49d18a427a2b6a29a663410e2ea8a30b214a199826284d8efdcfe310e21c6d8880131541e16fab18fa95ec404c094ed04')
+b2sums_aarch64=('dbbc20418e3facd92e8a61e65709859657bf41dc50fbe9a25747af090de8917422e1b57628f1a4bf15c28501dd0ef4c0bf0fbbb522e4c8de196bf94caec69f20')
+b2sums_i686=('60b836a6cc2d1b97ff71b6b13cea0f53139c05a2f154e2950593815f4c7d6d5a6cba3f276836df77766c410f1156cc5497b860dd0fb1bf1978aab3d89b92cf3e')
+
+package() {
+     cd "$srcdir"
+     install -Dm755 helix-ghost "$pkgdir/usr/bin/helix-ghost"
+     install -Dm644 README.md   "$pkgdir/usr/share/doc/helix-ghost-bin/README.md"
+     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/helix-ghost-bin/LICENSE"
+}
