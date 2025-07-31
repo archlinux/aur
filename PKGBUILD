@@ -2,7 +2,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=gnome-session-properties
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Session Properties Tool"
 arch=('x86_64')
 url="https://www.gnome.org"
@@ -17,7 +17,7 @@ makedepends=(
   'gtk-doc'
   'intltool'
 )
-source=("https://download-fallback.gnome.org/sources/gnome-session/${pkgver%.*}/gnome-session-${pkgver}.tar.xz"
+source=("https://download.gnome.org/core/${pkgver%.*}/${pkgver}/sources/gnome-session-${pkgver}.tar.xz"
         # Patch too large to upload to aurweb
         'https://raw.githubusercontent.com/yochananmarqos/pkgbuilds/master/gnome-session-properties/0001-Remove-unneeded-stuff.patch'
         '0002-Fix-GTK-3.14-incompatibilities.patch')
