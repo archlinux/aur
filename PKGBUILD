@@ -2,9 +2,9 @@
 # erm good package :))))
 
 pkgname=wordrnd #name
-pkgver=1.0.0 #version
-pkgrel=2 #pkgbuild version
-pkgdesc="An utterly useless package that just generates random UNIX sentences and Clippy with no rules made out of pure boredom and curiosity" #because why not
+pkgver=1.0.1 #version
+pkgrel=3 #pkgbuild version
+pkgdesc="An utterly useless package that just generates random UNIX sentences and Clippy with no rules made out of pure boredom and curiosity. Please vote for my package because I don't know what I'm doing." #lol
 arch=('x86_64') #architecture
 keywords=('random' 'clippy' 'joke' 'gducpm' 'word' 'generator' 'gen')
 url="https://github.com/gducpm/wordrnd" #repo link
