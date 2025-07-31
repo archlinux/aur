@@ -6,7 +6,7 @@ pkgname=mipsel-linux-gnu-binutils-minimal
 _pkgname=binutils
 _target="mipsel-linux-gnu"
 pkgver=2.45
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -66,5 +66,5 @@ package() {
 
   find "${pkgdir}" -name '*.la' -delete
   find "${pkgdir}" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
-  rm -rf "${pkgdir}"/usr/share/{man,info}
+  rm -rf "${pkgdir}"/usr/mipsel-linux-gnu/share/info/dir
 }
