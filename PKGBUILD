@@ -2,9 +2,9 @@
 
 pkgname='crush'
 pkgver=0.1.8
-pkgrel=1
-pkgdesc=''
-url=''
+pkgrel=2
+pkgdesc='A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.'
+url='https://charm.sh/crush'
 arch=('aarch64' 'x86_64')
 license=('FSL-1.1-MIT')
 provides=('crush')
