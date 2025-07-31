@@ -1,10 +1,10 @@
-# Maintainer: artist for the official Xlibre project
+# Maintainer: artist for Xlibre
 
 pkgname=xlibre-xf86-video-amdgpu
 _pkgname=xf86-video-amdgpu
-pkgver=23.0.0.2
-pkgrel=2
-pkgdesc="Official XLibre fork of X.Org amdgpu video driver"
+pkgver=23.0.0.3
+pkgrel=1
+pkgdesc="XLibre fork of X.Org amdgpu video driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
 license=('MIT')
@@ -19,29 +19,35 @@ groups=('xlibre-drivers')
 options=('!debug')
 
 build() {
-  case "$CARCH" in
-    "x86_64")
-      CFLAGS=" -march=x86-64"
-      ;;
-    "aarch64")
-      CFLAGS=" -march=aarch64"
-      ;;
-    *)
-      CFLAGS=" -march=native"
-      ;;
-  esac
+  if [[ ! "$CFLAGS" == *"-march="* ]]; then
+    case "$CARCH" in
+      "x86_64")
+        CFLAGS+=" -march=x86-64"
+        ;;
+      "aarch64")
+        CFLAGS+=" -march=aarch64"
+        ;;
+      *)
+        CFLAGS+=" -march=native"
+        ;;
+    esac
+  fi
   CFLAGS+=" -mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security"
   CFLAGS+=" -fstack-clash-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
   LDFLAGS=" -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,lazy -Wl,-z,relro -Wl,-z,pack-relative-relocs"
-  if [[ $CARCH != 'aarch64' ]]; then
-    CFLAGS+=" -fcf-protection"
+  if [[ $CARCH == 'aarch64' ]]; then
+    CFLAGS=${CFLAGS/-fcf-protection}
   fi
   if [[ "$pkgname" == *"xf86-input"* ]]; then
     CFLAGS+=" -fno-plt"
     LDFLAGS+=" -Wl,-z,now"
+  else
+    CFLAGS=${CFLAGS/-fno-plt}
   fi
   if [[ "$pkgname" == *"xf86-video-intel"* ]]; then
+    CFLAGS=${CFLAGS/-flto*}
     CFLAGS+=" -fno-lto"
+    LDFLAGS=${CFLAGS/-flto*}
     LDFLAGS+=" -fno-lto"
   fi
   CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
@@ -67,4 +73,4 @@ package() {
   install -Dm644 "${srcdir}"/${_pkgname}-${pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-sha256sums=('4b5014ccb5bf484e316638e1954c83c78037a297a9796dfe1d8590ce32ba4fcc')
+sha256sums=('06e4bd89fa48f43dcfe27a5761ac2283ca41d2bb72e8f4a3af51998b3290ba40')
