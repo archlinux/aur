@@ -3,7 +3,7 @@
 # Contributor: Hannes Graeuler < hgraeule [at] uos [dot] de >
 
 pkgname=sfcgal
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('cgal' 'boost-libs' 'gmp' 'mpfr' 'openscenegraph')
 #replaces=('sfcgal')
 makedepends=('git' 'cmake' 'boost')
 source=("https://gitlab.com/Oslandia/sfcgal/-/archive/v${pkgver}/SFCGAL-v${pkgver}.tar.gz")
-sha256sums=('cb73a0496c61a5c7bf0ccc68c42e4378bfc441b242e9dee894067e24d2e21d0f')
+sha256sums=('bb6bb77ddb58523d8c229764de23699f99c1a7011d873419afd2a67df85602a2')
 
 build() {
   cd "${srcdir}/SFCGAL-v${pkgver}"
