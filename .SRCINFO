@@ -1,6 +1,6 @@
 pkgbase = capstone-git
 	pkgdesc = A lightweight multi-platform, multi-architecture disassembly framework.
-	pkgver = 20250706.5292.56db8c2b6
+	pkgver = 20250730.5302.ccbc41d3d
 	pkgrel = 1
 	url = http://www.capstone-engine.org/
 	arch = i686
