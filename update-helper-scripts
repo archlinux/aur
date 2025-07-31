@@ -14,9 +14,9 @@ package-exists-fast() {
     return 1
 }
 
-update_keyrings() {
-	local packages=("archlinux-keyring" "chaotic-keyring" "garuda-hotfixes")
-	if $PACMAN -Qq blackarch-keyring &>/dev/null; then
+update_keyring_packages() {
+	local packages=("archlinux-keyring" "chaotic-keyring")
+	if package-exists-fast blackarch-keyring; then
 		packages+=("blackarch-keyring")
 	fi
 	if [ -n "$($PACMAN -Qu "${packages[@]}" 2>&1)" ]; then
@@ -26,6 +26,13 @@ update_keyrings() {
 		return 1
 	fi
 	return 0
+}
+
+update_hotfix_package() {
+	if [ -n "$($PACMAN -Qu garuda-hotfixes 2>&1)" ]; then
+		echo -e "\n\033[1;33m-->\033[1;34m Applying garuda-hotfixes before starting full system update..\033[0m"
+		SNAP_PAC_SKIP=y SKIP_AUTOSNAP= $PACMAN -S --needed --noconfirm garuda-hotfixes || return 0
+	fi
 }
 
 # If we are dealing with a more legacy garuda install, we should auto install expect to get auto-pacman working.
@@ -135,7 +142,8 @@ pre-update-routines() {
 	set -euo pipefail
 
 	local exit_code=0
-	update_keyrings || exit_code=2
+	update_keyring_packages || exit_code=2
+	update_hotfix_package
 	install_expect || exit_code=1
 	update_hotfixes || exit_code=1
 
