@@ -1,7 +1,7 @@
 pkgbase = simple_backup
 	pkgdesc = Simple backup script that uses rsync to copy files
 	pkgver = 4.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.shouldnt.work/fuxino/simple_backup
 	arch = any
 	license = GPL-3.0-or-later
