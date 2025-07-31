@@ -1,7 +1,7 @@
 pkgbase = linux-tachyon
 	pkgdesc = Linux kernel with patches from Linux Tachyon (formerly Linux Clear) which allow for higher performance.
 	pkgver = 6.15.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.staropensource.de/StarOpenSource/Linux-Tachyon
 	arch = x86_64
 	license = GPL-2.0-only
@@ -44,9 +44,11 @@ pkgname = linux-tachyon
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	provides = KSMBD-MODULE
+	conflicts = linux-clear
 	replaces = linux-clear
 
 pkgname = linux-tachyon-headers
 	pkgdesc = Linux kernel with patches from Linux Tachyon (formerly Linux Clear) which allow for higher performance. This package includes header files and scripts for building kernel modules.
 	depends = pahole
+	conflicts = linux-clear-headers
 	replaces = linux-clear-headers
