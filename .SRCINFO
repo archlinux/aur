@@ -1,7 +1,7 @@
 pkgbase = termcap
 	pkgdesc = Enables programs to use display computer terminals in a device-independent manner
 	pkgver = 1.3.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.catb.org/~esr/terminfo/
 	arch = i686
 	arch = x86_64
