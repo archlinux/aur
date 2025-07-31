@@ -3,7 +3,7 @@
 
 pkgname=stabilitymatrix-git
 _pkgname=StabilityMatrix
-pkgver=2.14.3
+pkgver=2.14.3+r6249+gaa7e3a1a6
 _pkgver=${pkgver%%+*}
 _pkgver=${_pkgver/+/.} #reduce to 2.13.1.r5629
 pkgrel=1
@@ -11,8 +11,14 @@ pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('x86_64')
 url='https://github.com/LykosAI/StabilityMatrix'
 license=('AGPL-3.0-or-later')
-depends=('dotnet-runtime-9.0' 'libxcrypt-compat')
-makedepends=('dotnet-sdk-9.0' 'git')
+depends=(
+  dotnet-runtime 
+  libxcrypt-compat
+  gcc-libs
+  glibc
+  fontconfig
+)
+makedepends=('dotnet-sdk' 'git')
 provides=('stabilitymatrix')
 conflicts=('stabilitymatrix')
 source=(
