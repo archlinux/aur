@@ -1,0 +1,4 @@
+[knowte]
+source = "git"
+git = "https://github.com/digimezzo/knowte.git"
+prefix = "v"
