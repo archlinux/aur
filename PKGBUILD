@@ -2,7 +2,7 @@
 # Contributor: guenael
 
 pkgname=opencpn-plugin-draw
-pkgver=1.8.58.0
+pkgver=1.8.60.0
 pkgrel=1
 pkgdesc="Drawing Plugin to allow extra objects to be drawn and used within OCPN"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,13 @@ license=("GPL2")
 depends=('opencpn')
 makedepends=('cmake')
 url="https://opencpn.org/OpenCPN/plugins/draw.html"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jongough/ocpn_draw_pi/archive/refs/tags/v${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/3a6300a8be3b3480c6737375b5c7866ec76238ab.tar.gz")
-b2sums=('172dc6e452d19eef73a411f9ed5ddcefca0ffacb141d252a78be572be3bf16dc22dbee3c47d5806c1ac86cf8674208db5497f7642acc26444999fd987cb16f9d' 'cf324bec209f2e6d9982f8d441575520eb100d18eda6d1bfbaf488f9ddacc9943704b693767036790451ec780bf6c060f7570e9c757d21e4980c8ff558abd299')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jongough/ocpn_draw_pi/archive/refs/tags/v${pkgver}.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/3d56fe895583c06e66679ce76f66e781dfa740e0.tar.gz" "stdint.patch")
+b2sums=('eb1f024e2066e50d9a114b5c4f8a6bfe03823fbdf2e192882efb737afa03cbbb37ed2c4ba96f6a07809e4640a9646548bc4c965905f71e2d58bf2aa6717dc482' '52a4491ac88fc7c70106d2a3f35c9403134bb5fa82c5487e3312636c8fa963dd3a4d829cb3ecb1e670b43b0731d3255c9af0175ad941462a530524c34e8a7ab1' '5e2554dc67a86bb530b5987ec4b311a2b561a035c6920d4db8e4036d0b99234553871e9a2dde194ce0274296fecb1d0738465f3419f73b887674a232c7ee2932')
 
 prepare() {
-  cp -r opencpn-libs-3a6300a8be3b3480c6737375b5c7866ec76238ab/* ocpn_draw_pi-${pkgver}/opencpn-libs
+  cp -r opencpn-libs-3d56fe895583c06e66679ce76f66e781dfa740e0/* ocpn_draw_pi-${pkgver}/opencpn-libs
+  cd ocpn_draw_pi-${pkgver}
+  patch --strip=1 --input=../stdint.patch
 }
 
 build() {
