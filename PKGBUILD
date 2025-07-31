@@ -8,6 +8,7 @@ pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, St
 arch=('x86_64' 'aarch64')
 url='https://github.com/mborgerding/kissfft'
 license=('BSD-3-Clause') # TODO fix SPDX
+depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'fftw' 'libpng' 'python')
 conflicts=('kissfft')
 provides=('kissfft')
