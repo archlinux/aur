@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=3.4.5.r0.g0320da9
-_electronversion=34
-_nodeversion=20
+pkgver=4.0.0.r0.g0cee8ee
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A versatile game management software designed to provide a unified interface for recording, managing, and synchronizing your gaming journey.(Use system-wide electron)"
 arch=('x86_64')
