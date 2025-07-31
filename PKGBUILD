@@ -71,8 +71,8 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   cd "$pkgname"
-	install -Dm755 "ui/target/release/$pkgname-ui" -t "$pkgdir/usr/bin/"
-	install -Dm644 "ui/rsc/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
-	install -Dm644 ui/rsc/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_app_id}.png"
+  install -Dm755 "ui/target/release/$pkgname-ui" -t "$pkgdir/usr/bin/"
+  install -Dm644 "ui/rsc/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 ui/rsc/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_app_id}.png"
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
