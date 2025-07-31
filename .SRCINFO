@@ -1,6 +1,6 @@
 pkgbase = r-proc
 	pkgdesc = Display and Analyze ROC Curves
-	pkgver = 1.18.5
+	pkgver = 1.19.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pROC
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-proc
 	optdepends = r-tcltk
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/pROC_1.18.5.tar.gz
-	sha256sums = 5593c841a6df5a2f2d209d0c14401971eb9427092ed9c3ac2059273807b42c89
+	source = https://cran.r-project.org/src/contrib/pROC_1.19.0.1.tar.gz
+	sha256sums = f161ed071a3c45192f0faf4ab37237f12bed9334e954e5e041ba98078c70e619
 
 pkgname = r-proc
