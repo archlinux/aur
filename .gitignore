@@ -1,0 +1,5 @@
+*.log
+*.deb
+src/
+pkg/
+*.pkg.*
