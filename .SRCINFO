@@ -1,6 +1,6 @@
 pkgbase = nimra
 	pkgdesc = A compiler written in rust
-	pkgver = 6
+	pkgver = 7
 	pkgrel = 1
 	url = https://github.com/krisvih32/nimra
 	arch = any
@@ -9,9 +9,6 @@ pkgbase = nimra
 	makedepends = cargo
 	makedepends = git
 	makedepends = sudo
-	depends = libgcc_s.so=1-64
-	depends = ld-linux-x86-64.so=2-64
-	depends = libc.so=6-64
 	source = git+https://github.com/krisvih32/nimra.git#branch=stable
 	sha256sums = SKIP
 

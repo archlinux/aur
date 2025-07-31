@@ -1,7 +1,7 @@
 # Maintainer:  Vihaan Krishnan <opensourcecontributer@gmail.com>
 # Contributor: Vihaan Krishnan <opensourcecontributer@gmail.com>
 pkgname=nimra
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc="A compiler written in rust"
 arch=('any')
