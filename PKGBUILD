@@ -1,6 +1,6 @@
 # Maintainer: lovefromhsd <lovefromhsd@proton.me>
 
-pkgname=raur-helper
+pkgname=raur-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="Simple AUR helper written in Rust"
@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 target/release/raur "$pkgdir/usr/bin/raur"
+  install -Dm755 target/release/raur "$pkgdir/usr/bin/raur-helper"
 }
