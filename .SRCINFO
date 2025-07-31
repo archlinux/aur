@@ -1,6 +1,6 @@
 pkgbase = zig-waybar-contrib
 	pkgdesc = Lightweight Waybar modules built with Zig
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/erffy/zig-waybar-contrib
 	arch = x86_64
