@@ -1,5 +1,5 @@
 pkgname=stable-diffusion.cpp-vulkan-git
-pkgver=r242.1896b28
+pkgver=r252.f6b9aa1
 pkgrel=1
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=("MIT")
@@ -20,18 +20,18 @@ url="https://github.com/leejet/stable-diffusion.cpp"
 provides=("stable-diffusion.cpp")
 conflicts=("stable-diffusion.cpp")
 source=("git+https://github.com/leejet/stable-diffusion.cpp.git"
-        "git+https://github.com/ggerganov/ggml.git"
-        "001-fix-shared-lib-install.diff")
+        "git+https://github.com/ggerganov/ggml.git")
+        # "001-fix-shared-lib-install.diff")
 sha256sums=('SKIP'
-            'SKIP'
-            '24954814b385350ca52e7ee5b29f89e66ade873aadb27cd302bfa6ce50ef11a3')
+            'SKIP')
+            # '24954814b385350ca52e7ee5b29f89e66ade873aadb27cd302bfa6ce50ef11a3')
 
 prepare() {
     cd "$srcdir/stable-diffusion.cpp"
     git submodule init
     git config submodule.ggml.url "$srcdir/ggml"
     git -c protocol.file.allow=always submodule update
-    git apply ../001-fix-shared-lib-install.diff
+    # git apply ../001-fix-shared-lib-install.diff
 }
 
 pkgver() {

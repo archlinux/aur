@@ -1,6 +1,6 @@
 pkgbase = stable-diffusion.cpp-vulkan-git
 	pkgdesc = Stable Diffusion and Flux in pure C/C++ (Vulkan version)
-	pkgver = r242.1896b28
+	pkgver = r252.f6b9aa1
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
@@ -17,9 +17,7 @@ pkgbase = stable-diffusion.cpp-vulkan-git
 	conflicts = stable-diffusion.cpp
 	source = git+https://github.com/leejet/stable-diffusion.cpp.git
 	source = git+https://github.com/ggerganov/ggml.git
-	source = 001-fix-shared-lib-install.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 24954814b385350ca52e7ee5b29f89e66ade873aadb27cd302bfa6ce50ef11a3
 
 pkgname = stable-diffusion.cpp-vulkan-git
