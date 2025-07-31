@@ -1,6 +1,6 @@
 pkgbase = urlcrazy
 	pkgdesc = Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/urbanadventurer/urlcrazy
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = urlcrazy
 	depends = ruby-async
 	depends = ruby-async-dns
 	depends = ruby-async-http
-	source = urlcrazy-0.8.1.tar.gz::https://github.com/urbanadventurer/urlcrazy/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = f80ae9b804318b4f03255cef862b5fe7c7e222472424f415ada49448e14d8132
+	source = urlcrazy-0.8.2.tar.gz::https://github.com/urbanadventurer/urlcrazy/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 0e5cf3c396b9c0f413fbf4ec8861dc964a5b4a01182883c0a88b1f0ffe85dec0
 
 pkgname = urlcrazy
