@@ -1,6 +1,6 @@
 pkgbase = doomtools-bin
 	pkgdesc = Set of command-line utilities for building projects or for other things related to Doom Engine games.
-	pkgver = 2025.07.27.025526380
+	pkgver = 2025.07.31.032043939
 	pkgrel = 1
 	url = https://mtrop.github.io/DoomTools/
 	arch = any
@@ -21,10 +21,10 @@ pkgbase = doomtools-bin
 	provides = wadtex
 	provides = wtexlist
 	provides = wtexscan
-	source = https://github.com/MTrop/DoomTools/releases/download/2025.07.27-RELEASE/doomtools-bash-2025.07.27.025526380.tar.gz
+	source = https://github.com/MTrop/DoomTools/releases/download/2025.07.31-RELEASE/doomtools-bash-2025.07.31.032043939.tar.gz
 	source = template.sh
 	source = doomtools.desktop
-	sha256sums = 909687d2bf3ce68cf56a95029945964229a726b294fa43b112546a93a170d1b1
+	sha256sums = 5165f70cd1239459f59bf98d6c89c9dc3eada805e62794db03025baec3c7740c
 	sha256sums = dab435a5096090c2106875966bec76f357721b27542e9ed2a276df1bc608b673
 	sha256sums = e90aecc14f66eed27b8afe409de6f058a285f8eee84a8af207b0398b5450cf57
 
