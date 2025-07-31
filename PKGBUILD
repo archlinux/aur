@@ -5,13 +5,13 @@
 _pkgname=tev
 pkgname=${_pkgname}
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
 url="https://github.com/Tom94/tev"
 license=('LicenseRef-BSD')
-depends=("hicolor-icon-theme" "jbigkit" "libc++" "libc++abi" "libdeflate" "libglvnd" "libpng" "libwebp" "libxrandr" "libxinerama" "libxcursor" "libxi")
-makedepends=("clang" "cmake" "git" "ninja")
+depends=("hicolor-icon-theme" "jbigkit" "libc++" "libc++abi" "libdeflate" "libglvnd" "libpng" "libwebp" "libxrandr" "libxinerama" "libxcursor" "libxi" "libxkbcommon" "wayland")
+makedepends=("clang" "cmake" "git" "ninja" "wayland-protocols")
 provides=("tev")
 conflicts=("tev")
 install=
