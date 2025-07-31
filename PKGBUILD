@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=firmware-manager-git
 _app_id=com.system76.FirmwareManager
-pkgver=0.1.5.r12.g3c542bd
+pkgver=0.1.5.r15.ga45bdc7
 pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ source=('git+https://github.com/pop-os/firmware-manager.git'
         "${_app_id}.policy"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '310e872ec56f13764615795dbcc30e3ab8b0e4329c0d1fe34bd5aa73bc602535'
+            '3d268c7f9675af3d7f661f141ee165e4ed5471ba0961bf7755059a423cac5319'
             'fb8395e19bfd54f756dad1d073135c5b41caa2ad27ee0621350fba50b2e7363b')
 
 pkgver() {
