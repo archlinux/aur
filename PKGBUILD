@@ -1,8 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 # Contributor: winlu <derwinlu@gmail.com>
 
-_pkgname=rebar3
-pkgname=${_pkgname}-git
+pkgname=rebar3-git
 pkgver=5385.4594b00f
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
@@ -11,24 +10,24 @@ url="https://github.com/erlang/rebar3"
 license=('Apache-2.0')
 depends=('erlang-nox')
 optdepends=('rebar3-zsh: ZSH completion')
-conflicts=('rebar3')
-provides=('rebar3')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 makedepends=('git')
-source=("$_pkgname::git+https://github.com/erlang/rebar3.git")
+source=("git+https://github.com/erlang/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${pkgname%-git}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${pkgname%-git}"
   HOME="." ./bootstrap
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -Dm0755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
-  install -Dm0644 "apps/rebar/priv/shell-completion/bash/rebar3" "$pkgdir/usr/share/bash-completion/completions/rebar3"
+  cd "${srcdir}/${pkgname%-git}"
+  install -Dm0755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+  install -Dm0644 "apps/rebar/priv/shell-completion/bash/rebar3" "${pkgdir}/usr/share/bash-completion/completions/rebar3"
 }

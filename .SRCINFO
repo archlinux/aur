@@ -10,7 +10,7 @@ pkgbase = rebar3-git
 	optdepends = rebar3-zsh: ZSH completion
 	provides = rebar3
 	conflicts = rebar3
-	source = rebar3::git+https://github.com/erlang/rebar3.git
+	source = git+https://github.com/erlang/rebar3.git
 	sha256sums = SKIP
 
 pkgname = rebar3-git
