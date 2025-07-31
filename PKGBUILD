@@ -123,6 +123,8 @@ build() {
   # fix build breakage introduced with gcc-12.1.0-1
   export CFLAGS+=" -Wno-error"
   export CXXFLAGS+=" -Wno-error"
+  export CFLAGS+=" -Wno-array-parameter"
+  export CXXFLAGS+=" -Wno-array-parameter"
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
 ###
