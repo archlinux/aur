@@ -13,7 +13,7 @@ _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU accelera
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
-license=('BSD')
+license=('BSD-3-Clause-Modification')
 depends=('google-glog' 'gflags' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'python-sympy' 'protobuf' 'qt6-base' 'eigen'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'

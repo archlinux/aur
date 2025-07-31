@@ -17,6 +17,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "test.py"
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
@@ -32,4 +33,4 @@ path = [
     "use-system-libuv.patch",
 ]
 SPDX-FileCopyrightText = "python-pytorch contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "BSD-3-Clause-Modification"
