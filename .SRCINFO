@@ -1,6 +1,6 @@
 pkgbase = lalalai
 	pkgdesc = Vocal remover and instrumental AI splitter
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://www.lalal.ai/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lalalai
 	provides = lalalai
 	conflicts = lalalai
 	options = !strip
-	source = lalalai_2.9.0.154-1_amd64.deb::https://d.lalal.ai/app/lalalai_2.9.0.154-1_amd64.deb?source=aur
+	source = lalalai_2.9.1.158-1_amd64.deb::https://d.lalal.ai/app/lalalai_2.9.1.158-1_amd64.deb?source=aur
 	source = lalalai.desktop
-	sha1sums = ba31fd465738dbc9bcc0aa8b8fb77f0978025b23
+	sha1sums = 0b24966f90c66231ce0dc04ff1559070ad8ec295
 	sha1sums = 8a9bb46e43e65ed1dd427de04fdb432904256b84
 
 pkgname = lalalai
