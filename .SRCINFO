@@ -1,12 +1,12 @@
 pkgbase = jailer
 	pkgdesc = Database Subsetting and Relational Data Browsing Tool
-	pkgver = 16.7
+	pkgver = 16.7.1
 	pkgrel = 1
 	url = https://github.com/Wisser/Jailer
 	arch = x86_64
 	license = Apache
 	depends = java-runtime>=8
-	source = jailer-16.7.deb::https://github.com/Wisser/Jailer/releases/download/v16.7/jailer-database-tools_16.7-x64.deb
-	b2sums = 2294f8d590febb599c9f74d5199871f62304304f0d6f8ecbd725c12a51ff638e22fff181ace764af307ea3f4adb4968d0e80747d268f64cffd554a0c93330d20
+	source = jailer-16.7.1.deb::https://github.com/Wisser/Jailer/releases/download/v16.7.1/jailer-database-tools_16.7.1-x64.deb
+	b2sums = 0bccc8ae9d9b869452cc19101d11ef10a045906fb320ce067dbc9606114f5610905fb07ad60a749bde7cdbd8664ec4df12a4ac13d3bebf5b11ed297225270749
 
 pkgname = jailer
