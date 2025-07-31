@@ -1,6 +1,6 @@
 pkgbase = opencpn-plugin-celestial-navigation
 	pkgdesc = Implements nautical almanac for sun, moon, planets, and various navigational stars. Plugin for OpenCPN.
-	pkgver = 2.4.41.0
+	pkgver = 2.4.65.0
 	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/celestialnav.html
 	arch = x86_64
@@ -8,9 +8,11 @@ pkgbase = opencpn-plugin-celestial-navigation
 	license = GPL3
 	makedepends = cmake
 	depends = opencpn
-	source = opencpn-plugin-celestial-navigation-2.4.41.0.tar.gz::https://github.com/rgleason/celestial_navigation_pi/archive/refs/tags/v2.4.41.0.tar.gz
-	source = opencpn-plugin-celestial-navigation-2.4.41.0-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz
-	b2sums = 7ee0be24e217396b11a69705bd1b71fece55bfbc55ea0490a1178406e71e7b3044b3c146b281493e9b2141488eb5de6818d7150aceb13d9ae4885a102ede015a
-	b2sums = 24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa
+	source = opencpn-plugin-celestial-navigation-2.4.65.0.tar.gz::https://github.com/rgleason/celestial_navigation_pi/archive/refs/tags/v2.4.65.0.tar.gz
+	source = opencpn-plugin-celestial-navigation-2.4.65.0-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/433aed02b6dbf1b34709e44aea038f5c853bec79.tar.gz
+	source = stdint.patch
+	b2sums = 575b05ded2933223e595106fbc4fb98c563a6c200237c385dde239168767cf096a7c99c5fb64f33d517580ae44bc583bf6b9a01bab54d53d0eae619d7218c52e
+	b2sums = 796d27913c7b13797def24998232f1b58f9482e376d53d6ea89e500294919220fc32ea4ef4400485cf6ae816ca919f6fb34ad0d5decf5072e04cf1561299ef1f
+	b2sums = 5e2554dc67a86bb530b5987ec4b311a2b561a035c6920d4db8e4036d0b99234553871e9a2dde194ce0274296fecb1d0738465f3419f73b887674a232c7ee2932
 
 pkgname = opencpn-plugin-celestial-navigation

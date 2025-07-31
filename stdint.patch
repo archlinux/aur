@@ -1,0 +1,13 @@
+# fixed in next release, see https://github.com/OpenCPN/opencpn-libs/issues/21
+--- a/opencpn-libs/api-18/ocpn_plugin.h
++++ b/opencpn-libs/api-18/ocpn_plugin.h
+@@ -59,6 +59,8 @@
+ #include <vector>
+ #include <unordered_map>
+ 
++#include <cstdint>
++
+ class wxGLContext;
+ 
+ //    This is the most modern API Version number
+
