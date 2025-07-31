@@ -1,7 +1,7 @@
 # Maintainer: Aydin Rahbaran <codewizaard@proton.me>
 pkgname=basteh
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.4
+pkgrel=3
 pkgdesc="GTK GUI frontend for pacman"
 arch=('x86_64')
 url="https://github.com/sahandlinux/basteh"
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname/Basteh"
-  gcc main.c -o basteh `pkg-config --cflags --libs gtk+-3.0`
+  gcc main.c -o basteh $(pkg-config --cflags --libs gtk+-3.0)
 }
 
 package() {
