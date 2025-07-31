@@ -1,4 +1,5 @@
-# Maintainer: Bart Louwers <sleeping@emeel.net>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: Bart Louwers <sleeping@emeel.net>
 pkgname=multi-git-status
 pkgver=2.2
 pkgrel=1
