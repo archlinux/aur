@@ -1,0 +1,21 @@
+pkgbase = osmo-uecups-git
+	pkgdesc = Osmocom UE simulation control/user plane separation
+	pkgver = 0.2.2.r14.g6cb3ba1
+	pkgrel = 1
+	url = https://osmocom.org/projects/osmo-uecups/wiki
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = jansson
+	depends = libnl
+	depends = lksctp-tools
+	depends = libosmocore-git
+	depends = libosmo-netif-git
+	provides = osmo-uecups=0.2.2.r14.g6cb3ba1
+	conflicts = osmo-uecups
+	backup = etc/osmocom/osmo-uecups.cfg
+	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-uecups.git
+	sha256sums = SKIP
+
+pkgname = osmo-uecups-git
