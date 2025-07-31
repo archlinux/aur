@@ -9,31 +9,33 @@ depends=('glibc')
 provides=('proton-authenticator')
 conflicts=('proton-authenticator')
 source=("https://proton.me/download/authenticator/linux/ProtonAuthenticator_${pkgver}_amd64.deb")
-sha256sums=('SKIP')  # Use the real hash if desired
+sha256sums=('SKIP')
 
 package() {
     ar x ProtonAuthenticator_${pkgver}_amd64.deb
     bsdtar -xf data.tar.gz -C "${pkgdir}"
 
-    # Desktop entry fix
-    install -Dm644 "${pkgdir}/opt/ProtonAuthenticator/ProtonAuthenticator.desktop" \
-      "${pkgdir}/usr/share/applications/proton-authenticator.desktop"
+    # Create desktop entry manually
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/proton-authenticator.desktop" <<EOF
+[Desktop Entry]
+Name=Proton Authenticator
+Comment=Secure TOTP authenticator from Proton
+Exec=/opt/ProtonAuthenticator/ProtonAuthenticator
+Icon=proton-authenticator
+Terminal=false
+Type=Application
+Categories=Utility;Security;
+EOF
 
-    # Adjust Exec and Icon fields
-    sed -i \
-      -e 's|^Exec=.*|Exec=/opt/ProtonAuthenticator/ProtonAuthenticator|' \
-      -e 's|^Icon=.*|Icon=proton-authenticator|' \
-      "${pkgdir}/usr/share/applications/proton-authenticator.desktop"
-
-    # Install icon (assumes it's named icon.png, adjust if needed)
+    # Install icon if present
     if [[ -f "${pkgdir}/opt/ProtonAuthenticator/icon.png" ]]; then
         install -Dm644 "${pkgdir}/opt/ProtonAuthenticator/icon.png" \
-          "${pkgdir}/usr/share/icons/hicolor/256x256/apps/proton-authenticator.png"
+            "${pkgdir}/usr/share/icons/hicolor/256x256/apps/proton-authenticator.png"
     fi
 
-    # Optional: Add launcher to PATH
+    # Add symlink to /usr/bin
     install -d "${pkgdir}/usr/bin"
     ln -s /opt/ProtonAuthenticator/ProtonAuthenticator \
-      "${pkgdir}/usr/bin/proton-authenticator"
+        "${pkgdir}/usr/bin/proton-authenticator"
 }
 
