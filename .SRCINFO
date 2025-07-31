@@ -9,6 +9,7 @@ pkgbase = nimra
 	makedepends = cargo
 	makedepends = git
 	makedepends = sudo
+	depends = glibc
 	source = git+https://github.com/krisvih32/nimra.git#branch=stable
 	sha256sums = SKIP
 
