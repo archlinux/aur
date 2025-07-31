@@ -6,6 +6,7 @@ pkgdesc="A gtk-based widget framework for wl-roots based compositors"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/def1de/wwidgt"
 license=('MIT')
+options=('!debug')
 depends=('gtk4' 'gtk4-layer-shell' 'libxml2' 'curl' 'glib2')
 makedepends=('cmake' 'ninja' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/def1de/wwidgt/archive/v${pkgver}.tar.gz")
@@ -13,8 +14,6 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-
-    rm -rf build
 
     cmake -S . -B build \
         -G Ninja \
