@@ -1,12 +1,13 @@
 pkgbase = tauon-music-box-git
 	pkgdesc = A modern music player
-	pkgver = 7.9.0.r30.a5d00df1
-	pkgrel = 3
+	pkgver = 8.1.3.r7.8d64bef5
+	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = miniaudio
+	makedepends = kissfft
 	makedepends = git
 	makedepends = pkg-config
 	makedepends = python-build
@@ -57,8 +58,6 @@ pkgbase = tauon-music-box-git
 	optdepends = librespot: Spotify audio playback
 	conflicts = tauon-music-box
 	source = tauon-music-box::git+https://github.com/Taiko2k/Tauon.git
-	source = kissfft-131.1.0.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/131.1.0.tar.gz
 	sha256sums = SKIP
-	sha256sums = 76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a
 
 pkgname = tauon-music-box-git
