@@ -1,0 +1,4 @@
+[prql]
+source = "github"
+github = "PRQL/prql"
+use_latest_release = true
