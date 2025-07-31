@@ -219,7 +219,7 @@ build() {
         done
     )
     if rm opt/vrcx/resources/VRCX.png 2>/dev/null; then
-        ln -s ../../../../../../usr/share/icons/hicolor/256x256/apps/vrcx.png \
+        ln -s ../../../usr/share/icons/hicolor/256x256/apps/vrcx.png \
             opt/vrcx/resources/VRCX.png
     fi
     if rm opt/vrcx/resources/app.asar.unpacked/build/Electron/VRCX.png 2>/dev/null; then
