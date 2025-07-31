@@ -1,7 +1,7 @@
 pkgbase = r-ggformula
 	pkgdesc = Formula Interface to the Grammar of Graphics
-	pkgver = 0.12.0
-	pkgrel = 3
+	pkgver = 0.12.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggformula
 	arch = any
 	license = MIT
@@ -32,8 +32,8 @@ pkgbase = r-ggformula
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggformula_0.12.0.tar.gz
-	md5sums = 8eee6fba1dc5081b680ecd4ae73c42b4
-	b2sums = a6b768aec50214bf45ba706ee5946c66b84602d610dac4a11aa6164acfaea457fb292b5b33ca36d53602a1469475a1bfe430d9e5afe2633323382f5d9f7575be
+	source = https://cran.r-project.org/src/contrib/ggformula_0.12.2.tar.gz
+	md5sums = 0c76f76c6efb488674b6004a0f357c3e
+	b2sums = cf3f7d1bbc4d6dc5dc1d09be1e8aa16762e7fbaa3e35dd47b6a65baa491c4f7aa0f4cf8d653d6baf5b7fd31d98964da02b7217b636eb77455f876401ffd4d081
 
 pkgname = r-ggformula
