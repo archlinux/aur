@@ -1,9 +1,12 @@
 # Maintainer: envolution
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|envset_aur_llamacpp_build_universal=true|
+
+: ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp
-pkgver=b6047
+pkgver=b6050
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
@@ -30,7 +33,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('b9f1204f5b9a97f19d88ff74ea2d8bb8eac8949c7391cdee1a3f4164687ff25a'
+sha256sums=('61b16eae9f5c0e77edf94d566c754a71712f8e032d4e5a943d5fcda3706bbbb7'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
@@ -57,6 +60,14 @@ build() {
     -DGGML_BUILD_SERVER=ON
     -Wno-dev
   )
+  if [[ ${aur_llamacpp_build_universal} == true ]]; then
+    echo "Building universal binary [aur_llamacpp_build_universal == true]"
+    _cmake_options+=(
+      -DGGML_BACKEND_DL=ON
+      -DGGML_NATIVE=OFF
+      -DGGML_CPU_ALL_VARIANTS=ON
+    )
+  fi
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
