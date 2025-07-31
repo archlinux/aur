@@ -1,6 +1,6 @@
 pkgbase = rebar3-git
 	pkgdesc = Erlang build tool that makes it easy to compile and test Erlang applications and releases
-	pkgver = 5385.4594b00f
+	pkgver = 5471.56c955c8
 	pkgrel = 1
 	url = https://github.com/erlang/rebar3
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = rebar3-git
 	depends = erlang-erl_interface
 	depends = erlang-eunit
 	depends = erlang-parsetools
-	provides = rebar3=5385.4594b00f
+	provides = rebar3=5471.56c955c8
 	conflicts = rebar3
 	source = git+https://github.com/erlang/rebar3.git
 	sha256sums = SKIP

@@ -2,7 +2,7 @@
 # Contributor: winlu <derwinlu@gmail.com>
 
 pkgname=rebar3-git
-pkgver=5385.4594b00f
+pkgver=5471.56c955c8
 pkgrel=1
 pkgdesc="Erlang build tool that makes it easy to compile and test Erlang applications and releases"
 arch=('any')
