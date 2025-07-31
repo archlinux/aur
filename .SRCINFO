@@ -1,14 +1,14 @@
 pkgbase = wordrnd
-	pkgdesc = An utterly useless package that just generates random UNIX sentences and Clippy with no rules made out of pure boredom and curiosity
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = An utterly useless package that just generates random UNIX sentences and Clippy with no rules made out of pure boredom and curiosity. Please vote for my package because I don't know what I'm doing.
+	pkgver = 1.0.1
+	pkgrel = 3
 	url = https://github.com/gducpm/wordrnd
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
-	source = wordrnd-1.0.0.tar.gz::https://github.com/gducpm/wordrnd/archive/refs/tags/v1.0.0.tar.gz
+	source = wordrnd-1.0.1.tar.gz::https://github.com/gducpm/wordrnd/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = 7617d0cee8d4d3b04f3f7afc90abda3df93f60af279d6eaf3894391176e172dd
 
 pkgname = wordrnd
