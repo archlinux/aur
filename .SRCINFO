@@ -1,6 +1,6 @@
 pkgbase = opencpn-plugin-weatherfax
 	pkgdesc = Open image files directly, or decode audio faxes to an image. Plugin for OpenCPN.
-	pkgver = 1.9.111.1
+	pkgver = 1.10.17.0
 	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/weatherfax.html
 	arch = x86_64
@@ -10,9 +10,11 @@ pkgbase = opencpn-plugin-weatherfax
 	makedepends = git
 	depends = opencpn
 	optdepends = rtl-sdr: decode from rtlsdr
-	source = opencpn-plugin-weatherfax-1.9.111.1.tar.gz::https://github.com/rgleason/weatherfax_pi/archive/refs/tags/v1.9.111.1.tar.gz
-	source = opencpn-plugin-weatherfax-1.9.111.1-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz
-	b2sums = 5230f7199ad4de77e62830c7319363e5d0f416c4ea9c81611d6b3e0b87d4c130563a08bdde2f9228d2ec3ec0bf05d5486409da6569b0d13d0cb5d51663c01907
-	b2sums = 24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa
+	source = opencpn-plugin-weatherfax-1.10.17.0.tar.gz::https://github.com/rgleason/weatherfax_pi/archive/refs/tags/v1.10.17.0.tar.gz
+	source = opencpn-plugin-weatherfax-1.10.17.0-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/c1d82631756056437edc58235d9e1ff68b46ddf3.tar.gz
+	source = stdint.patch
+	b2sums = bbd375a4eb608637fd2fd035880877dfdef3dbff1772f8a6b2ed7746a93ba1881962d554db5d24232f8fa15c077f644f5331e51cb008d09bb5136b5aff238620
+	b2sums = 009b51f58e65af83db8212d39a86d69d98c48888318926e9bd1f0fac48f800e1cd6151e213ef8c241ff46b4c6dad1e435efb19d76d0af5850f3c0836b598defc
+	b2sums = 5e2554dc67a86bb530b5987ec4b311a2b561a035c6920d4db8e4036d0b99234553871e9a2dde194ce0274296fecb1d0738465f3419f73b887674a232c7ee2932
 
 pkgname = opencpn-plugin-weatherfax
