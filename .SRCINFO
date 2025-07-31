@@ -1,6 +1,6 @@
 pkgbase = roo-code-gemini-cli
 	pkgdesc = A whole dev team of LLM agents in your VS Code, Cursor or other compatible editor. Patched to add gemini-cli as a LLM provider.
-	pkgver = 3.25.3
+	pkgver = 3.25.4
 	pkgrel = 1
 	url = https://github.com/RooCodeInc/Roo-Code
 	install = roo-code.install
@@ -12,9 +12,9 @@ pkgbase = roo-code-gemini-cli
 	optdepends = gemini-cli
 	provides = roo-code
 	conflicts = roo-code
-	source = roo-code-3.25.3.tar.gz::https://github.com/RooCodeInc/Roo-Code/archive/refs/tags/v3.25.3.tar.gz
+	source = roo-code-3.25.4.tar.gz::https://github.com/RooCodeInc/Roo-Code/archive/refs/tags/v3.25.4.tar.gz
 	source = roo-code-5223_gemini-cli.diff
-	sha256sums = d424f63d2337ce7b639d3cb76b101e87ca4b6dfb69a0937e78454264dd310199
-	sha256sums = 6c7384c4a4c144cda44089deebb41ce9f0044ce6192daf32c8a79adc04413758
+	sha256sums = b7a83acbd1b289a0770aeae92fe7120ccdb7f2a5aeeb2a301b4bc4420b8b1807
+	sha256sums = c7ddc615da3cf7994e54589a8112123abaf495e605a8272ce90d87a1fcc53202
 
 pkgname = roo-code-gemini-cli
