@@ -1,7 +1,7 @@
 # Maintainer: wintersnowgod <git.xerox732@passinbox.com>
 pkgname=grub-hook-ca
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hooks to install and generate grub using the method for CA signing of bootloader and remove grub completely from system upon its uninstallation."
 arch=('any')
 license=('GPL')
@@ -10,7 +10,7 @@ optdepends=("grub: The Bootloader"
             "sbctl: To sign secureboot")
 source=(grub
         grub-{grub_generate,vmlinuz_generate,remove}.hook)
-sha256sums=('180a4711e9dc9dc47fb972091d87246c846b7aa5c431e1c5c973fcbd806ce4bd'
+sha256sums=('7b7f752df37a85212ca5eace034614b89c9faeafa6c96c58ec22fbe2475a7380'
             '6eb015989f4bbd928550b3bc2c8434d4a92409bcb0e9dc91b89c967d11cbba46'
             'de0da36d2f5b46f26b4181a24c74c57b880b5c102158d4855b07710e13f3c7f2'
             '88c26842f4a361a494ebe426d3a624b7d256d648acde1a9854f56f38b16277ec')

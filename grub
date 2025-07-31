@@ -29,7 +29,10 @@ remove(){
       fi
     fi
     # Remove efibootmgr GRUB entries
-    /usr/bin/efibootmgr -b $(/usr/bin/efibootmgr | /usr/bin/grep GRUB | /usr/bin/awk '{print $1}' | /usr/bin/sed 's/Boot\([0-9]*\)\*/\1/') -B >/dev/null
+    if /usr/bin/efibootmgr | /usr/bin/grep -qi GRUB; then
+      BOOTNUM=$(/usr/bin/efibootmgr | /usr/bin/awk '/GRUB/{print $1}' | /usr/bin/sed 's/Boot\([0-9]*\).*/\1/' | head -n1)
+      /usr/bin/efibootmgr -b "$BOOTNUM" -B >/dev/null
+    fi
 }
 
 case "$1" in
