@@ -2,7 +2,7 @@
 
 pkgname='liteloader-qqnt-llonebot-bin'
 _pkgname='LiteLoaderQQNT-LLOneBot-bin'
-pkgver='4.9.1'
+pkgver='4.9.4'
 pkgrel=1
 pkgdesc='一种插件，支持 OneBot 11 和 Satori 协议'
 arch=('any')
@@ -13,7 +13,7 @@ provides=("liteloader-qqnt-llonebot")
 conflicts=("liteloader-qqnt-llonebot")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/LLOneBot.zip")
-sha256sums=('86341f99ab9632b4251490dd120ef2a9fd709945d3d84cae16d53bdc078610bb')
+sha256sums=('a06a88a8716295457e22807ad75c9a7e72a48f8f54dfe03138a538e999ede300')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoaderQQNT/plugins/LLOneBot"
