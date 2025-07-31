@@ -1,12 +1,13 @@
 pkgbase = rune-editor
 	pkgdesc = A modern CLI text editor that bridges the gap between nano's simplicity and advanced features
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/exec/rune
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = oniguruma
 	provides = rune
 	conflicts = rune-git
 	source = rune-editor-0.2.1.tar.gz::https://github.com/exec/rune/archive/refs/tags/v0.2.1.tar.gz
