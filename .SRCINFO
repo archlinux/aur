@@ -1,0 +1,17 @@
+pkgbase = aurscan
+	pkgdesc = Automatically scan AUR packages with ClamAV before building them with Paru.
+	pkgver = r1.fe967983
+	pkgrel = 1
+	url = https://gitlab.com/MayESchaefer/aurscan
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = paru
+	depends = bash
+	depends = clamav
+	depends = pacman
+	depends = findutils
+	source = git+https://gitlab.com/MayESchaefer/aurscan
+	md5sums = SKIP
+
+pkgname = aurscan-git
