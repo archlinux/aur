@@ -1,12 +1,12 @@
 pkgbase = nrfutil
 	pkgdesc = unified command line utility for Nordic products
-	pkgver = 8.0.0
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://www.nordicsemi.com/Products/Development-tools/nRF-Util
 	arch = x86_64
 	license = custom
-	optdepends = jlink-software-and-documentation: for most commands (e.g. device)
-	source = https://files.nordicsemi.com/ui/api/v1/download?repoKey=swtools&path=external/nrfutil/packages/nrfutil/nrfutil-x86_64-unknown-linux-gnu-8.0.0.tar.gz
-	sha256sums = 5a51b15259fc4bf84f0ec4c65466bca9389671f11ac3d6cbdc2b8aa859d60a70
+	optdepends = jlink-software-and-documentation: for some commands (e.g. device)
+	source = https://files.nordicsemi.com/ui/api/v1/download?repoKey=swtools&path=external/nrfutil/packages/nrfutil/nrfutil-x86_64-unknown-linux-gnu-8.1.0.tar.gz
+	sha256sums = c79d5e56a9ac2872febf339389fb308eaca7a5530df5c1654d4220727fd4517b
 
 pkgname = nrfutil
