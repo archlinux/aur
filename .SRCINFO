@@ -1,6 +1,6 @@
 pkgbase = sonic-pi-git
 	pkgdesc = The Live Coding Music Synth for Everyone
-	pkgver = v5.1.0
+	pkgver = v4.6.0.r12.ge5da6b3
 	pkgrel = 1
 	url = http://sonic-pi.net/
 	arch = i686
