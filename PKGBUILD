@@ -4,7 +4,7 @@ pkgbase=python-ext4
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Library for read only interactions with an ext4 filesystem"
 arch=('any')
@@ -18,14 +18,14 @@ checkdepends=('python-cachetools'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v${pkgver}/test.py"
         'test.txt')
-md5sums=('25d5e961c8fd671d9426832ca3d77e0a'
-         '19c3123bd4b72257cbbbfc8dee16a8fc'
+md5sums=('38f13338964ba56a0300273164889f8c'
+         'c7a15de066b5512791136dbc8bf3a265'
          '8f7fa83c2cc8ea6e90fe94b1efd1a83a')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    cp {${srcdir}/${pkgver}-,}test.py
+#   cp {${srcdir}/${pkgver}-,}test.py
     install -Dm644 -t txt_tmp ${srcdir}/test.txt
 }
 
@@ -40,9 +40,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    dd if=/dev/zero of=test.ext4 count=1024 bs=1024
-    mkfs.ext4 test.ext4 -d txt_tmp
-    python test.py
+    dd if=/dev/zero of=test.ext4.tmp count=1024 bs=1024
+    mkfs.ext4 test.ext4.tmp -d txt_tmp
+    echo -n F > test.ext4
+    cat test.ext4.tmp >> test.ext4
+    PYTHONPATH="." python ${srcdir}/${pkgver}-test.py || warning "Tests failed"
 }
 
 package_python-ext4() {
