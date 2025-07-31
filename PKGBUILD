@@ -1,6 +1,6 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
-pkgver=122.1.9.api1.17.r2.b459d85
+pkgver=122.1.9.api1.18.r1073.1760523d
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
@@ -15,8 +15,9 @@ conflicts=('jcef-jetbrains')
 pkgver() {
     cd jcef
     ver=$(cat build.xml | grep \"jcef.version\" | cut -d \" -f 4 | sed "s/\(.*\)-.*-chromium-.*-api-\(.*\)/\1.api\2/g")
-    count=$(git log $(git rev-list -1 HEAD build.xml)..HEAD | grep commit | wc -l)
-    printf "$ver.r$count.%s" "$(git rev-parse --short HEAD)"
+    count=$(git rev-list --count HEAD)
+    sha=$(git rev-parse --short HEAD)
+    echo "$ver.r$count.$sha"
 }
 
 build() {
