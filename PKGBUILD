@@ -126,6 +126,8 @@ build() {
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
 ###
+  unset CFLAGS CXXFLAGS
+
   if [[ $CARCH = "armv7h" ]]; then
     # we use -mcpu=cortex-a53 rather than cortex-a72 to maximize RPi 3B and RPi 4B/400 compatibility
     # in a single package which is consistent with how LibreELEC is currently built, see:
