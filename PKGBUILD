@@ -5,8 +5,8 @@
 pkgname=simple_backup-git
 _pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
-pkgver=4.1.5.r1.g2a37eb4
-pkgrel=2
+pkgver=4.1.6.r3.gc715188
+pkgrel=1
 url="https://git.shouldnt.work/fuxino/${_pkgname}"
 install=simple_backup.install
 arch=('any')
