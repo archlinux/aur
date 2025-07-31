@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/vrcx/vrcx "$@"
+exec /opt/vrcx/vrcx --no-sandbox --ozone-platform-hint=auto --no-install "$@"

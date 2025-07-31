@@ -2,7 +2,7 @@
 Type=Application
 Name=VRCX
 Version=@PACKAGE_VERSION@
-Exec=vrcx --no-sandbox --ozone-platform-hint=auto --no-install %u
+Exec=vrcx %u
 Terminal=false
 Icon=vrcx
 StartupWMClass=VRCX
