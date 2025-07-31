@@ -1,0 +1,26 @@
+--- kasumi-unicode-2.6/KasumiMainWindow.cxx	2021-07-14 14:50:25.000000000 +0900
++++ kasumi-unicode/KasumiMainWindow.cxx	2025-07-31 20:20:50.513419722 +0900
+@@ -377,7 +377,22 @@
+                                        "before Kasumi quits?"));
+     switch(gtk_dialog_run (GTK_DIALOG (dialog))){
+     case GTK_RESPONSE_YES:
+-      dictionary->store();
++      try {
++        dictionary->store();
++      } catch (KasumiException e) {
++        /* Do not call gtk_message_dialog_new without parent window as handleException() does.
++	 * It causes a crash in GObject.
++	 * https://bugzilla.redhat.com/show_bug.cgi?id=1936817
++	 */
++        GtkWidget *dlg = gtk_message_dialog_new (GTK_WINDOW(mWindow),
++                                                 GTK_DIALOG_DESTROY_WITH_PARENT,
++                                                 GTK_MESSAGE_ERROR,
++                                                 GTK_BUTTONS_CLOSE,
++                                                 "%s",
++                                                 e.getMessage().c_str());
++        gtk_dialog_run (GTK_DIALOG (dlg));
++        gtk_widget_destroy (dlg);
++      }
+       break;
+     case GTK_RESPONSE_NO:
+       break;

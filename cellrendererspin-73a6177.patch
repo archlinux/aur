@@ -1,0 +1,24 @@
+--- kasumi-unicode-2.6/cellrendererspin.c	2021-07-14 14:50:25.000000000 +0900
++++ kasumi-unicode/cellrendererspin.c	2025-07-31 20:20:50.513419722 +0900
+@@ -74,8 +74,8 @@
+                                                               GdkEvent             *event,
+                                                               GtkWidget            *widget,
+                                                               const gchar          *path,
+-                                                              GdkRectangle         *background_area,
+-                                                              GdkRectangle         *cell_area,
++                                                              const GdkRectangle   *background_area,
++                                                              const GdkRectangle   *cell_area,
+                                                               GtkCellRendererState  flags);
+ 
+ struct _GCRSpinInfo
+@@ -308,8 +308,8 @@
+                                       GdkEvent             *event,
+                                       GtkWidget            *widget,
+                                       const gchar          *path,
+-                                      GdkRectangle         *background_area,
+-                                      GdkRectangle         *cell_area,
++                                      const GdkRectangle   *background_area,
++                                      const GdkRectangle   *cell_area,
+                                       GtkCellRendererState  flags)
+ {
+   GtkCellRendererText *celltext;

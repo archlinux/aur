@@ -1,0 +1,14 @@
+--- kasumi-unicode-2.6/po/ja.po	2021-07-14 14:50:25.000000000 +0900
++++ kasumi-unicode/po/ja.po	2025-07-31 20:20:50.521419978 +0900
+@@ -17,9 +17,9 @@
+ 
+ #: KasumiWord.cxx:191 KasumiWord.cxx:214
+ msgid ""
+-"Sound must consist of only Hiragana characters. You have entered invalid "
++"You have entered invalid "
+ "character: "
+-msgstr "読みにひらがな以外の文字を入力することはできません: "
++msgstr "無効な文字を入力しました: "
+ 
+ #: KasumiMainWindow.cxx:81
+ msgid "Kasumi"

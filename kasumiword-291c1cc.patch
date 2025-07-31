@@ -1,0 +1,20 @@
+--- kasumi-unicode-2.6/KasumiWord.cxx	2021-07-14 14:50:25.000000000 +0900
++++ kasumi-unicode/KasumiWord.cxx	2025-07-31 20:20:50.513419722 +0900
+@@ -188,7 +188,7 @@
+ 
+     if(invalidChar != ""){
+ 	string message;
+-	message = string(_("Sound must consist of only Hiragana characters. You have entered invalid character: "));
++	message = string(_("You have entered invalid character: "));
+ 	message += invalidChar;
+ 	throw KasumiException(message, ERR_DIALOG, ALERT_ONLY);
+     }
+@@ -211,7 +211,7 @@
+ 
+     if(invalidChar != ""){
+ 	string message;
+-	message = string(_("Sound must consist of only Hiragana characters. You have entered invalid character: "));
++	message = string(_("You have entered invalid character: "));
+ 	message += invalidChar;
+ 	throw KasumiException(message, ERR_DIALOG, ALERT_ONLY);
+     }
