@@ -55,4 +55,7 @@ package() {
 		"${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
 	install -vDm755 "${srcdir}/baidunetdisk-wrapper.sh" "${pkgdir}/usr/bin/baidunetdisk"
 	install -vDm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/com.baidu.pan/config"
+	mv \
+		"${pkgdir}/usr/share/applications/baidunetdisk.desktop" \
+		"${pkgdir}/usr/share/applications/com.baidu.pan.desktop"
 }
