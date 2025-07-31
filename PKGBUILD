@@ -3,7 +3,7 @@
 
 pkgname=wordrnd #name
 pkgver=1.0.1 #version
-pkgrel=3 #pkgbuild version
+pkgrel=2 #pkgbuild version
 pkgdesc="An utterly useless package that just generates random UNIX sentences and Clippy with no rules made out of pure boredom and curiosity. Please vote for my package because I don't know what I'm doing." #lol
 arch=('x86_64') #architecture
 keywords=('random' 'clippy' 'joke' 'gducpm' 'word' 'generator' 'gen')
