@@ -1,7 +1,7 @@
 # Maintainer: Ms. Haze <ms-haze@riseup.net>
 pkgname=aurscan-git
 pkgver=r1.fe967983
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scan AUR packages with ClamAV before building them with Paru."
 url="https://gitlab.com/MayESchaefer/aurscan"
 license=("GPL-3.0-or-later")
