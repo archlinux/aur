@@ -1,6 +1,6 @@
 # Maintainer: def1de <iliakat.kr@gmail.com>
 pkgname=wwidgt
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A gtk-based widget framework for wl-roots based compositors"
 arch=('x86_64' 'i686' 'aarch64')
