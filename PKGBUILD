@@ -1,10 +1,12 @@
-# Maintainer: Lucas <lucas.pr1@hotmail.com>
+# This file is part of BlackArch Linux ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
 pkgname=blackarch-helper
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Helper to find, inspect, and build BlackArch packages from source using makepkg."
 arch=('any')
-url="https://github.com/x0rgus/blackarch-helper"
+url='https://github.com/x0rgus/blackarch-helper'
 license=('MIT')
 depends=('bash' 'curl' 'fzf')
 source=("${pkgname}"
