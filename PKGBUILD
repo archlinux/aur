@@ -1,6 +1,6 @@
 # Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
 pkgname=gsocket-git
-pkgver=1.4.22.r13.gfbe5983
+pkgver=1.4.43.r3.g232e2b6
 pkgrel=1
 pkgdesc='Allows two users behind NAT/Firewall to establish a TCP connection with each other.'
 url='https://github.com/hackerschoice/gsocket'
@@ -13,15 +13,16 @@ conflicts=('gsocket')
 provides=('gsocket')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/$pkgname/"
+  cd "${srcdir}/${pkgname}/"
   ./bootstrap
-  ./configure --prefix=$pkgdir/usr
+  ./configure --prefix="${pkgdir}"/usr --sysconfdir="${pkgdir}"/etc
   make install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/gsocket/LICENSE"
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/gsocket/
+  install -Dm 644 README.md -t "${pkgdir}"/usr/share/licenses/gsocket/
 }
 

@@ -1,6 +1,6 @@
 pkgbase = gsocket-git
 	pkgdesc = Allows two users behind NAT/Firewall to establish a TCP connection with each other.
-	pkgver = 1.4.22.r13.gfbe5983
+	pkgver = 1.4.43.r3.g232e2b6
 	pkgrel = 1
 	url = https://github.com/hackerschoice/gsocket
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = gsocket-git
 	md5sums = SKIP
 
 pkgname = gsocket-git
-
