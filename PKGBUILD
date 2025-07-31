@@ -6,7 +6,7 @@
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Stable%20updates
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-stable" | awk '/Version/{print $2}' | cut -d '-' -f1
 
-pkgname=google-chrome-bin
+pkgname=google-chrome-stable
 pkgver=138.0.7204.183
 pkgrel=1
 pkgdesc="Precompiled binary for the popular web browser by Google (Stable Channel)."
@@ -30,7 +30,7 @@ optdepends=(
 	'kwallet: for storing passwords in KWallet'
 )
 options=('!emptydirs' '!strip')
-install=$pkgname.install
+install=google-chrome-bin.install
 makedepends=('python')
 _channel=stable
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
