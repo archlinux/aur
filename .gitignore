@@ -1,0 +1,4 @@
+src/
+pkg/
+solarized-sddm-theme
+*.pkg.tar.zst
