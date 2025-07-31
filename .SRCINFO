@@ -1,6 +1,6 @@
 pkgbase = user-updater
 	pkgdesc = A simple bash tool for automatic system updates using topgrade, featuring a background systemd service and a lightweight GUI to notify users of ongoing updates
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://codeberg.org/marvin1099/user_updater
 	install = user_updater.install
