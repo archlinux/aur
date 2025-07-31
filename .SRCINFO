@@ -14,7 +14,7 @@ pkgbase = osmo-uecups-git
 	depends = libosmo-netif-git
 	provides = osmo-uecups=0.2.2.r14.g6cb3ba1
 	conflicts = osmo-uecups
-	backup = etc/osmocom/osmo-uecups.cfg
+	backup = etc/osmocom/osmo-uecups-daemon.cfg
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-uecups.git
 	sha256sums = SKIP
 

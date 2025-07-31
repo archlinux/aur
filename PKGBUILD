@@ -15,7 +15,7 @@ depends=('jansson'
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
-backup=('etc/osmocom/osmo-uecups.cfg')
+backup=('etc/osmocom/osmo-uecups-daemon.cfg')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
