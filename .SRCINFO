@@ -1,0 +1,21 @@
+pkgbase = wwidgt
+	pkgdesc = A gtk-based widget framework for wl-roots based compositors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/def1de/wwidgt
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libxml2
+	depends = curl
+	depends = glib2
+	source = wwidgt-1.0.0.tar.gz::https://github.com/def1de/wwidgt/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = wwidgt
