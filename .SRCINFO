@@ -1,7 +1,7 @@
 pkgbase = zsh-komander
 	pkgdesc = Minimalistic zsh-theme...
-	pkgver = v1
-	pkgrel = 2
+	pkgver = v1p1
+	pkgrel = 1
 	url = https://github.com/stikundra-murtsi/zsh-komander
 	install = zsh-komander.install
 	arch = any

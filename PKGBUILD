@@ -1,8 +1,8 @@
 #Maintainer: Stikkot
 
 pkgname=zsh-komander
-pkgver=v1
-pkgrel=2
+pkgver=v1p1
+pkgrel=1
 pkgdesc="Minimalistic zsh-theme..."
 arch=('any')
 url="https://github.com/stikundra-murtsi/zsh-komander"
