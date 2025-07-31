@@ -170,7 +170,7 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     -Dlibdvdcss_URL="$srcdir/$pkgbase-libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
-    -DENABLE_DVDCSS=ON
+    -DENABLE_DVDCSS=OFF
   )
 
   echo "building kodi"
