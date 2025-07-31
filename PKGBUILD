@@ -6,7 +6,7 @@ pkgname=mipsel-linux-gnu-gcc
 _pkgname=gcc
 _target="mipsel-linux-gnu"
 pkgver=15.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
 arch=('x86_64')
@@ -70,5 +70,5 @@ package() {
 
   find "${pkgdir}" -name '*.la' -delete
   find "${pkgdir}" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
-  rm -rf "${pkgdir}"/usr/mipsel-linux-gnu/share/info/dir
+  rm -rf ${pkgdir}/usr/${_target}/share/info/dir
 }
