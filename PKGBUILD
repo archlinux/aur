@@ -1,10 +1,12 @@
-# Contributor: Gesh <gesh@gesh.uni.cx>
-# Maintainer: Stefan Gehr <stefan@gehr.xyz>
+# Maintainer: Gesh <gesh@gesh.uni.cx>
+# Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
+# Contributor: Stefan Gehr <stefan@gehr.xyz>
+# Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=papis
 pkgver=0.14.1+PR1018
 _pkgver=0.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
