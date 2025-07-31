@@ -1,10 +1,10 @@
 pkgbase = quik
 	pkgdesc = Trading terminal in Wine
 	pkgver = 12.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arqatech.com/ru/products/quik/terminals/user-applications/quik-workstation/
 	arch = x86_64
-	depends = wine
+	depends = wine<=10.8
 	noextract = keygen.zip
 	source = https://arqatech.com/upload/iblock/0de/quik_12.5.0_upd.zip
 	source = ftp://ftp.quik.ru/public/updates/10.2/StratVolat_3.0.5_upd.zip

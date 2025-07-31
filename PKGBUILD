@@ -1,7 +1,7 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
 pkgver=12.5.0
-pkgrel=1
+pkgrel=2
 stratver=3.0.5
 trustver=2.10.0
 btradever=1.2.1002
@@ -9,7 +9,7 @@ pkgdesc="Trading terminal in Wine"
 url="https://arqatech.com/ru/products/quik/terminals/user-applications/quik-workstation/"
 arch=('x86_64')
 noextract=('keygen.zip')
-depends=('wine')
+depends=('wine<=10.8')
 
 source=(
 "https://arqatech.com/upload/iblock/0de/quik_${pkgver}_upd.zip"
