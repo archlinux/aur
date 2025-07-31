@@ -8,7 +8,7 @@ pkgname=(
   $pkgbase-signal
   $pkgbase-relay
 )
-pkgver=0.52.1
+pkgver=0.52.2
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -26,7 +26,7 @@ source=(
   'netbird-relay.env'
   'netbird-relay.service'
 )
-sha256sums=('fa3c537fd85423a54a51971f3cd0b8c916292eadd041e81436e8459c8d310989'
+sha256sums=('0c798932bed1b1c2dbe1de692efad7f60c875caee2da9fa797de5b4740b8a0e5'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '2fa681ef862bfa609d62596e730ff5fbfa706fedca801556cd18a97f349e039f'
             '80cd7b6a22087a83c1332c15693d8a18b780ef5ecf3fbc562af28d1a623eef3b'
@@ -39,7 +39,7 @@ sha256sums=('fa3c537fd85423a54a51971f3cd0b8c916292eadd041e81436e8459c8d310989'
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
   mkdir -p build
-  go mod download
+  go mod download -x
 }
 
 build() {
