@@ -1,7 +1,7 @@
 # Maintainer: OrPudding <t3164473115@163.com>
 pkgname=astro-box
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.2.0fix
+pkgrel=5
 pkgdesc="A multifunctional toolbox designed for Xiaomi Vela wearable devices"
 arch=('x86_64')
 url="https://astrobox.online/"
@@ -9,21 +9,21 @@ license=('AGPL3')
 depends=('webkit2gtk' 'gtk3' 'jq')
 
 # 定义蓝奏云链接和密码变量 (方便更新)
-_share_url="https://searchstars.lanzoue.com/iDIyw3231wxa"
-_pwd="db62"
+_share_url="https://searchstars.lanzoue.com/i8iwr328p22d"
+_pwd="huxj"
 
 options=('!debug')
 # 使用固定的API响应文件名并跳过校验
-source=("api-response.json::https://api.dwo.cc/api/zhi?type=down&url=${_share_url}&pwd=${_pwd}")
+source=("api-response${pkgver}.json::https://api.dwo.cc/api/zhi?type=down&url=${_share_url}&pwd=${_pwd}")
 # 跳过 API 响应的校验
 sha256sums=('SKIP')
 
 # 定义 deb 包的校验和
-_deb_sha256sum='df347eee8a7877a8d6c7dcdc5553e81c82aedc6de7b048272fbb7a8ea6bdad4e'
+_deb_sha256sum='4a48229d024315e667197166eed898c53a37a0a542c529c877743d3ca8672d41'
 
 prepare() {
   # 解析API响应获取直链
-  direct_url="$(jq -r '.data.url' "api-response.json")"
+  direct_url="$(jq -r '.data.url' "api-response${pkgver}.json")"
   
   # 下载deb包
   echo "获取直链: $direct_url"

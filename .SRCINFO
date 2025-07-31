@@ -1,7 +1,7 @@
 pkgbase = astro-box
 	pkgdesc = A multifunctional toolbox designed for Xiaomi Vela wearable devices
-	pkgver = 1.1.0
-	pkgrel = 4
+	pkgver = 1.2.0fix
+	pkgrel = 5
 	url = https://astrobox.online/
 	arch = x86_64
 	license = AGPL3
@@ -9,7 +9,7 @@ pkgbase = astro-box
 	depends = gtk3
 	depends = jq
 	options = !debug
-	source = api-response.json::https://api.dwo.cc/api/zhi?type=down&url=https://searchstars.lanzoue.com/iDIyw3231wxa&pwd=db62
+	source = api-response1.2.0fix.json::https://api.dwo.cc/api/zhi?type=down&url=https://searchstars.lanzoue.com/i8iwr328p22d&pwd=huxj
 	sha256sums = SKIP
 
 pkgname = astro-box
