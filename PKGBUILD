@@ -1,8 +1,9 @@
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b6039
+pkgver=b6040.r6045.g94933c8c2
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -16,8 +17,6 @@ depends=(
   hipblas
   openmp
   python
-  python-numpy
-  python-sentencepiece
   rocblas
 )
 makedepends=(
@@ -25,18 +24,38 @@ makedepends=(
   git
   rocm-hip-sdk
 )
-optdepends=(python-pytorch)
+optdepends=(
+  'python-numpy: needed for convert_hf_to_gguf.py'
+  'python-safetensors: needed for convert_hf_to_gguf.py'
+  'python-sentencepiece: needed for convert_hf_to_gguf.py'
+  'python-pytorch: needed for convert_hf_to_gguf.py'
+  'python-transformers: needed for convert_hf_to_gguf.py'
+)
 provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml)
 options=(lto !debug)
 source=(
-  "git+${url}#tag=${pkgver}"
+  "git+${url}"
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('c12620a1337446f1dad32e4dbf9b0670fd82ec4085b3fd95d6facb2adb48ca3d'
-            '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
+sha256sums=(
+  'SKIP'
+  '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
+  '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
+)
+
+pkgver() {
+  cd "$_pkgname"
+
+  local _latest_tag
+  _latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0")
+
+  # 格式化为：<最新标签>.r<总提交数>.g<短哈希>
+  printf "%s.r%s.g%s" "$_latest_tag" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 
 build() {
   export CC=/opt/rocm/llvm/bin/clang
