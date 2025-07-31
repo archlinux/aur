@@ -144,7 +144,7 @@ build() {
 #  CXXFLAGS+="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
 ###
 
-export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
+#export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
   _args=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
