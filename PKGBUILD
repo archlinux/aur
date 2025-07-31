@@ -2,7 +2,7 @@
 
 pkgname=dynamic-power-daemon
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload; with DBus control, per-user helpers and Qt tray UI"
 arch=('any')
 url="https://github.com/evertvorster/dynamic-power-daemon"
@@ -17,6 +17,7 @@ depends=(
   'python-inotify-simple'
   'python-setproctitle'
   'python-dbus-next'
+  'python-systemd'
   'kscreen'
   'qt6-base'
   'qt6-tools'
