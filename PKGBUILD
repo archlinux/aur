@@ -2,7 +2,7 @@
 
 pkgname=lightdm-slick-greeter-mint-theme
 _pkgname=slick-greeter
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A slick-looking LightDM greeter. With additional options enabled"
 arch=('x86_64')
@@ -15,19 +15,19 @@ depends=(
     'libcanberra'
     'libxext'
     'lightdm-guest'
-    'lightdm-settings'
     'mint-themes'
     'pixman'
-    'python'
+    'python-gobject'
+    'xapp'
     'xorg-server'
 )
 optdepends=(
     'cinnamon-styles-artwork: enable full artwork theme in Cinnamon'
+    'lightdm-settings: allow configuration of slick-greeter'
     'mint-l-theme: enable additional Mint themes'
     'numlockx: enable numerical keypad on supported keyboard'
 )
 makedepends=(
-    'gnome-common'
     'meson'
     'vala'
 )
@@ -44,23 +44,17 @@ source=(
     "${_pkgname}.conf"
 )
 sha256sums=(
-    'ad39c23ef07f37215ed8fb775472b5a1abadf810967ea62751ebf73b72544e84'
+    '3c1d5c32ec7088ae8ae03cdd8af848a9213cd46e3dcbf47705f6c17fbb66ce5b'
     '6284948fbd3e64d0a2dd7f8bb08c980c9a5944fa8a63fabb0aee4a64728324c7'
 )
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    arch-meson build
+    arch-meson "${_pkgname}-${pkgver}" build
+    meson compile -C build
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    meson install -C build --destdir "$pkgdir"
-
-    # Download latest Bing wallpaper from internet
-    # Credits to https://forum.linuxconfig.org/t/how-to-download-bing-wallpaper-with-bash-shell-one-liner/3457
-    cd "${srcdir}"
-    wget -O slick-greeter.jpg "http://www.bing.com/$(wget -q -O- https://binged.it/2ZButYc | sed -e 's/<[^>]*>//g' | cut -d / -f2 | cut -d \& -f1)"
+    meson install -C build --no-rebuild --destdir "$pkgdir"
 
     # adjust launcher name
     mv "${pkgdir}/usr/share/xgreeters/${_pkgname}.desktop" \
@@ -69,7 +63,12 @@ package() {
     # Install default conf
     install -Dm644 "${srcdir}/${_pkgname}.conf" -t "${pkgdir}/etc/lightdm/"
 
+    # Download latest Bing wallpaper from internet
+    # Credits to https://forum.linuxconfig.org/t/how-to-download-bing-wallpaper-with-bash-shell-one-liner/3457
+    cd "${srcdir}"
+    wget -O slick-greeter.png "http://www.bing.com/$(wget -q -O- https://binged.it/2ZButYc | sed -e 's/<[^>]*>//g' | cut -d / -f2 | cut -d \& -f1)"
+
     # Installing downloaded Bing wallpaper as slick-greeter wallpaper
-    install -Dm644 "${srcdir}/${_pkgname}.jpg" -t "${pkgdir}/usr/share/${_pkgname}/"
+    install -Dm644 "${srcdir}/${_pkgname}.png" -t "${pkgdir}/usr/share/${_pkgname}/"
 }
 
