@@ -1,4 +1,6 @@
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: envolution
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=llama.cpp
 pkgver=b6039
@@ -11,26 +13,30 @@ depends=(
   curl
   gcc-libs
   glibc
-  python
-  python-numpy
-  python-sentencepiece
 )
 makedepends=(
   cmake
-  git
 )
-optdepends=(python-pytorch)
+optdepends=(
+  'python-numpy: needed for convert_hf_to_gguf.py'
+  'python-safetensors: needed for convert_hf_to_gguf.py'
+  'python-sentencepiece: needed for convert_hf_to_gguf.py'
+  'python-pytorch: needed for convert_hf_to_gguf.py'
+  'python-transformers: needed for convert_hf_to_gguf.py'
+)
 conflicts=(libggml ggml)
-options=(lto !debug)
 source=(
-  "git+${url}#tag=${pkgver}"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('c12620a1337446f1dad32e4dbf9b0670fd82ec4085b3fd95d6facb2adb48ca3d'
+sha256sums=('c6fd7993b4c7ba3d01bd6ec7e85b518c205a2d3453150d1791b04cde29b27da1'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
+prepare(){
+  ln -sf "${pkgname}-${pkgver}" llama.cpp
+}
 build() {
   local _cmake_options=(
     -B build
@@ -54,10 +60,6 @@ build() {
   cmake --build build
 }
 
-# check() {
-#   ctest --test-dir build --output-on-failure -L 'main|curl' --verbose --timeout 900
-# }
-
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 
@@ -66,3 +68,4 @@ package() {
   install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
   install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
 }
+# vim:set ts=2 sw=2 et:
