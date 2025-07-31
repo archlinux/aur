@@ -1,0 +1,12 @@
+pkgbase = ttf-google-sans-code-vf
+	pkgdesc = Google Sans Code font family (Variable weight, TTF)
+	pkgver = 6.000
+	pkgrel = 1
+	url = https://github.com/googlefonts/googlesans-code
+	arch = any
+	license = OFL
+	depends = fontconfig
+	source = GoogleSansCode-v6.000.zip::https://github.com/googlefonts/googlesans-code/releases/download/v6.000/GoogleSansCode-v6.000.zip
+	sha256sums = 54c2b5bbb68159838106e7d1cffb2e8ceb8f7b46b93f730603b36519a6125bbb
+
+pkgname = ttf-google-sans-code-vf
