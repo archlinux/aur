@@ -1,11 +1,11 @@
-# Contributor: Gesh <gesh@gesh.uni.cx>
-# Maintainer: Julian Hauser <julian at julianhauser.com>
-# PKGBUILD adapted from papis, maintained by JP-Ellis <josh@jpellis.me>
+# Maintainer: Gesh <gesh@gesh.uni.cx>
+# Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
+# Contributor: Julian Hauser <julian at julianhauser.com>
 
 pkgname=papis-git
 _pkgname=papis
 pkgver=0.14.1.r62.g848a58b3
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
