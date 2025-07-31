@@ -9,6 +9,6 @@ pkgbase = proton-authenticator-bin
 	provides = proton-authenticator
 	conflicts = proton-authenticator
 	source = https://proton.me/download/authenticator/linux/ProtonAuthenticator_1.0.0_amd64.deb
-	sha256sums = SKIP
+	sha256sums = 462e94eedb906b99dd7b8be36a040a7df5a01976d9b4034d99ea61d57e8f16e3
 
 pkgname = proton-authenticator-bin
