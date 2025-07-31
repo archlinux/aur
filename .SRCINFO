@@ -23,6 +23,7 @@ pkgbase = svp-bin
 	optdepends = python-websockets: youtube-dl extension - For downloading over websocket
 	optdepends = vlc: Video player
 	provides = svp
+	conflicts = svp
 	options = !strip
 	source = https://www.svp-team.com/files/svp4-linux.4.6.263.tar.bz2
 	sha256sums = 1f24435451d59936a7fd28b7423190a42df36b7d306b2d747741e4efda171bdf
