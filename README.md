@@ -1,4 +1,4 @@
-# linux-tachyon
+# linux-tachyon (formerly linux-clear)
 This repository contains the `PKGBUILD` file required for building the `linux-tachyon` and `linux-tachyon-headers` packages.
 You can find this package [on the AUR](https://aur.archlinux.org/pkgbase/linux-tachyon).
 
