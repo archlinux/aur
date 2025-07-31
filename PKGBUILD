@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=1.21.3
+pkgver=1.27.20
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -62,6 +62,7 @@ package() {
 
   # Set log storage path
   _editConfig '.root.elos.EventLogging.Plugins.JsonBackend.Config.StoragePath = "/var/log/elos/elos.json"'
+  _editConfig '.root.elos.EventLogging.Plugins.JsonBackend.Config.MaxSize = 1000000000'
 
 
   # set default syslog mapping rule
@@ -69,6 +70,6 @@ package() {
 
   # hook up with systemd's journald as syslog service
   _editConfig 'del(.root.elos.Scanner.Plugins.SyslogScanner.Config.SyslogPath)'
-  _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.UseSystemdSocket = true'
+  _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.UseSystemdSocket = false'
 }
-sha256sums=('ca90f5a061216fa7915a538062b881046271aee0f5ab15502cb43db4f2af0349')
+sha256sums=('6063b77d55ef558638b6df7eccd593aa3f2d0aebb0ce20d4acb16959cce99019')
