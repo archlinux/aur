@@ -1,18 +1,16 @@
 pkgbase = limits-and-demonstrations
 	pkgdesc = A Lula Chamberlain Retrospective - Kentucky Route Zero
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kentuckyroutezero.com/limits-and-demonstrations/
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libgl
-	source = http://kentuckyroutezero.com/limits-and-demonstrations/LimitsAndDemonstrations_LINUX.zip
+	source = https://sloth.cardboard.computer/zero/supermarine-walrus/TheEntertainment-Linux.zip
 	source = limits-and-demonstrations.desktop
 	source = limits-and-demonstrations.png
-	md5sums = 427775cc193f58d225f06fb3fbdfeaad
-	md5sums = ba5859dc49a124c21654711b325dedd9
-	md5sums = 2377b27b5c95bba8fc7c6cd2ea92fe25
+	sha256sums = b2a09ad6b423f4d1a92192af41971677de99334a0c31d6c7fc5f837ad559959e
+	sha256sums = e555c2a0fba95522552807e9601c06dde31cb499166310f173381c75def1bc1a
+	sha256sums = 601a62c0aa84259e8e6001f94e00adbaf5fffdbdc4426d60a3a26d70b69ab01b
 
 pkgname = limits-and-demonstrations
-

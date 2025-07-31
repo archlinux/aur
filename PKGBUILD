@@ -1,18 +1,18 @@
-# Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=limits-and-demonstrations
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lula Chamberlain Retrospective - Kentucky Route Zero"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://kentuckyroutezero.com/limits-and-demonstrations/"
 license=('custom')
 depends=(libgl)
-source=(http://kentuckyroutezero.com/limits-and-demonstrations/LimitsAndDemonstrations_LINUX.zip
+source=(https://sloth.cardboard.computer/zero/supermarine-walrus/TheEntertainment-Linux.zip
         limits-and-demonstrations.desktop
         limits-and-demonstrations.png)
-md5sums=('427775cc193f58d225f06fb3fbdfeaad'
-         'ba5859dc49a124c21654711b325dedd9'
-         '2377b27b5c95bba8fc7c6cd2ea92fe25')
+sha256sums=('b2a09ad6b423f4d1a92192af41971677de99334a0c31d6c7fc5f837ad559959e'
+            'e555c2a0fba95522552807e9601c06dde31cb499166310f173381c75def1bc1a'
+            '601a62c0aa84259e8e6001f94e00adbaf5fffdbdc4426d60a3a26d70b69ab01b')
 
 package() {
   cd "${srcdir}"
