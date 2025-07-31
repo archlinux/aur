@@ -1,0 +1,15 @@
+pkgbase = foundryvtt-cli
+	pkgdesc = The official Foundry VTT CLI
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/foundryvtt/foundryvtt-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = fvtt
+	options = !strip
+	source = https://github.com/foundryvtt/foundryvtt-cli/archive/refs/tags/1.1.0.zip
+	sha256sums = 598695bbd65fa2e3f0b6d82bfa005043dca9d09ec08619e7f8d86b902d7f2bde
+
+pkgname = foundryvtt-cli
