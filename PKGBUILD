@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=7.0.r3.ge4861af2
+pkgver=7.0.r6.g29300072
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -11,6 +11,7 @@ license=(GPL-3.0-or-later)
 provides=(portable)
 groups=()
 options=(!debug !strip)
+conflicts=(portable)
 
 makedepends+=(git)
 

@@ -1,6 +1,6 @@
 pkgbase = portable-git
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 7.0.r3.ge4861af2
+	pkgver = 7.0.r6.g29300072
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
@@ -32,6 +32,7 @@ pkgbase = portable-git
 	optdepends = at-spi2-core: accessibility
 	optdepends = orca: screen reader
 	provides = portable
+	conflicts = portable
 	options = !debug
 	options = !strip
 	source = portable::git+https://github.com/Kraftland/portable.git
