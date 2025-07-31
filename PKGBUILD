@@ -3,9 +3,10 @@
 
 pkgname=wordrnd #name
 pkgver=1.0.0 #version
-pkgrel=1 #pkgbuild version
+pkgrel=2 #pkgbuild version
 pkgdesc="An utterly useless package that just generates random UNIX sentences and Clippy with no rules made out of pure boredom and curiosity" #because why not
 arch=('x86_64') #architecture
+keywords=('random' 'clippy' 'joke' 'gducpm' 'word' 'generator' 'gen')
 url="https://github.com/gducpm/wordrnd" #repo link
 license=('GPL3') #license
 depends=('glibc') #run dependencies
