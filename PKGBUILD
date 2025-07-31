@@ -1,14 +1,14 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.info>
 
 pkgname=buildnumber-generator
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Generate version specific build numbers from build IDs (e.g. GitLab CI_PIPELINE_IID)"
 url="https://gitlab.com/NikolasK-source/buildnumber-generator"
 license=('GPLv3')
 arch=('any')
 makedepends=('python-setuptools')
-depends=('python' 'python-colorlog' 'python-cryptography')
+depends=('python' 'python-colorlog' 'python-cryptography' 'python-json-cmd-server')
 source=("git+https://gitlab.com/NikolasK-source/buildnumber-generator.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
