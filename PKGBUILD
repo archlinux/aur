@@ -2,7 +2,7 @@
 # Contributor: Wilson E. Alvarez <wilson.e.alvarez@rubonnek.com>
 _pkgname="forgejo-runner"
 pkgname="$_pkgname-bin"
-pkgver=7.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Continuous integration for Forgejo"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=("$_pkgname-$pkgver-LICENSE::https://code.forgejo.org/forgejo/runner/raw/
 source_x86_64=("$_pkgname-$pkgver::https://code.forgejo.org/forgejo/runner/releases/download/v$pkgver/$_pkgname-$pkgver-linux-amd64")
 source_aarch64=("$_pkgname-$pkgver::https://code.forgejo.org/forgejo/runner/releases/download/v$pkgver/$_pkgname-$pkgver-linux-arm64")
 sha256sums=('76b00148813a25e79dd9a4dd555eb1b4d25a99eab51fcbd8e5660ee69918a18c')
-sha256sums_x86_64=('e9560a57a35624633deef7a24efa9e0817a808955e22967774be6ddab0519c0e')
-sha256sums_aarch64=('e9560a57a35624633deef7a24efa9e0817a808955e22967774be6ddab0519c0e')
+sha256sums_x86_64=('320475cd824c05f8b6c19a216aa906b401edd55b74ddce631401393786bdd07b')
+sha256sums_aarch64=('320475cd824c05f8b6c19a216aa906b401edd55b74ddce631401393786bdd07b')
 
 package() {
     install -Dm644 "$_pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
