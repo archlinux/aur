@@ -2,7 +2,7 @@
 
 pkgname=ik-llama.cpp
 _pkgname=ik_llama.cpp
-pkgver=1.0
+pkgver=r3826.ae0ba31f
 pkgrel=1
 pkgdesc="llama.cpp fork with additional SOTA quants and improved performance (OpenBLAS Backend)"
 arch=(x86_64 armv7h aarch64)
@@ -28,6 +28,7 @@ conflicts=(
     llama.cpp-vulkan
     llama.cpp-cuda
     llama.cpp-hip
+    ik-llama.cpp-cuda
 )
 provides=(llama.cpp)
 
@@ -56,9 +57,9 @@ build() {
         -DGGML_BUILD_TESTS=OFF
         -DGGML_BLAS=ON
         -DGGML_BLAS_VENDOR=OpenBLAS
-        -DGGML_CCACHE=OFF
         -DGGML_LTO=ON
         -DGGML_RPC=ON
+        -DGGML_NATEVE=ON
         -Wno-dev
     )
     cmake "${_cmake_options[@]}"
