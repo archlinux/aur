@@ -26,21 +26,25 @@
 : ${_clang:=false}
 
 # others
-: ${_commit:=64f4d84e7407581808875ef93340ddadf976114e} # 0.6.7.2r133
+: ${_commit=07ee6581e1ba1c748e7a2fb838f0fc00bc4b7ba9} # 0.6.7.2.r327
 
-## basic info
 _pkgname="retroshare"
 pkgname="$_pkgname"
 pkgver=0.6.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
 license=('AGPL-3.0-or-later')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 
 depends=(
+  'botan2'
+  'bzip2'
+  'hicolor-icon-theme'
+  'json-c'
   'libxss'
   'miniupnpc'
+  'openssl'
   'qt5-multimedia'
   'qt5-x11extras'
   'sqlcipher'
@@ -58,156 +62,143 @@ optdepends=(
 )
 
 # Add extra dependencies
-if [[ "${_plugin_voip::1}" =~ 't|y|1' ]]; then
+if [[ "${_plugin_voip::1}" == "t" ]]; then
   depends+=('ffmpeg' 'opencv3-opt')
 fi
 
-if [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]]; then
+if [[ "${_plugin_feedreader::1}" == "t" ]]; then
   depends+=('curl' 'libxslt')
 fi
 
-if [[ "${_jsonapi::1}" =~ 't|y|1' ]]; then
+if [[ "${_jsonapi::1}" == "t" ]]; then
   makedepends+=('doxygen')
 fi
 
-if [[ "${_clang::1}" =~ 't|y|1' ]]; then
+if [[ "${_clang::1}" == "t" ]]; then
   makedepends+=('clang')
 fi
 
-if [[ "${_autologin::1}" =~ 't|y|1' ]]; then
+if [[ "${_autologin::1}" == "t" ]]; then
   depends+=('libsecret')
 fi
 
 _source_main() {
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  source=("$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}")
   sha256sums=('SKIP')
 }
 
 _source_retroshare() {
-  source+=(
-    'retroshare.openpgp-sdk'::'git+https://github.com/RetroShare/OpenPGP-SDK.git'
-    'retroshare.bitdht'::'git+https://github.com/RetroShare/BitDHT.git'
+  local _sources_add=(
+    'retroshare.bitdht'::'git+https://github.com/RetroShare/BitDHT.git'::'libbitdht'
+    'retroshare.openpgp-sdk'::'git+https://github.com/RetroShare/OpenPGP-SDK.git'::'openpgpsdk'
 
-    'commonmark.cmark'::'git+https://github.com/commonmark/cmark.git'
-    'corvusoft.restbed'::'git+https://github.com/Corvusoft/restbed.git'
-    'i2p.libsam3'::'git+https://github.com/i2p/libsam3.git'
-    'retroshare.jni.hpp'::'git+https://github.com/RetroShare/jni.hpp.git'
-    'retroshare.libretroshare'::'git+https://github.com/RetroShare/libretroshare.git'
-    'retroshare.obs'::'git+https://github.com/RetroShare/OBS.git'
-    'retroshare.rsnewwebui'::'git+https://github.com/RetroShare/RSNewWebUI.git'
-    'tencent.rapidjson'::'git+https://github.com/Tencent/rapidjson.git'
-    'truvorskameikin.udp-discovery-cpp'::'git+https://github.com/truvorskameikin/udp-discovery-cpp.git'
+    'commonmark.cmark'::'git+https://github.com/commonmark/cmark.git'::'supportlibs/cmark'
+    'corvusoft.restbed'::'git+https://github.com/Corvusoft/restbed.git'::'supportlibs/restbed'
+    'i2p.libsam3'::'git+https://github.com/i2p/libsam3.git'::'supportlibs/libsam3'
+    'retroshare.jni.hpp'::'git+https://github.com/RetroShare/jni.hpp.git'::'supportlibs/jni.hpp'
+    'retroshare.libretroshare'::'git+https://github.com/RetroShare/libretroshare.git'::'libretroshare'
+    'retroshare.obs'::'git+https://github.com/RetroShare/OBS.git'::'build_scripts/OBS'
+    'retroshare.rsnewwebui'::'git+https://github.com/RetroShare/RSNewWebUI.git'::'retroshare-webui'
+    'rnpgp.rnp'::'git+https://github.com/rnpgp/rnp.git'::'supportlibs/librnp'
+    'tencent.rapidjson'::'git+https://github.com/Tencent/rapidjson.git'::'supportlibs/rapidjson'
+    #'truvorskameikin.udp-discovery-cpp'::'git+https://github.com/truvorskameikin/udp-discovery-cpp.git'::'supportlibs/udp-discovery-cpp'
   )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
 
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
+  local _p _idx _src _sm_prep _sm_func
+  for _p in ${_sources_add[@]}; do
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
+    sha256sums+=('SKIP')
+  done
+
+  eval "_prepare_retroshare() (
+    cd \"\$srcdir/\$_pkgsrc\"
+    local _submodules=(${_sm_prep[@]})
+    _submodule_update
+
+    # out of tree
+    git submodule update --init --recursive --depth=1 supportlibs/udp-discovery-cpp
+  )"
 }
 
-_source_rapidjson() {
-  source+=(
-    'google.googletest'::'git+https://github.com/google/googletest.git'
+_source_rnpgp_rnp() {
+  local _sources_add=(
+    'rnpgp.sexpp'::'git+https://github.com/rnpgp/sexpp.git'::'src/libsexpp'
   )
-  sha256sums+=(
-    'SKIP'
-  )
+
+  local _p _idx _src _sm_prep _sm_func
+  for _p in ${_sources_add[@]}; do
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
+    sha256sums+=('SKIP')
+  done
+
+  eval "_prepare_rnpgp_rnp() (
+    cd \"\$srcdir/\$_pkgsrc\"
+    cd 'supportlibs/librnp'
+    local _submodules=(${_sm_prep[@]})
+    _submodule_update
+  )"
 }
 
-_source_restbed() {
-  source+=(
-    'corvusoft.asio-dependency'::'git+https://github.com/corvusoft/asio-dependency.git'
-    'corvusoft.catch-dependency'::'git+https://github.com/corvusoft/catch-dependency.git'
-    'corvusoft.openssl-dependency'::'git+https://github.com/corvusoft/openssl-dependency.git'
+_source_tencent_rapidjson() {
+  local _sources_add=(
+    'google.googletest'::'git+https://github.com/google/googletest.git'::'thirdparty/gtest'
   )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
+
+  local _p _idx _src _sm_prep _sm_func
+  for _p in ${_sources_add[@]}; do
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
+    sha256sums+=('SKIP')
+  done
+
+  eval "_prepare_tencent_rapidjson() (
+    cd \"\$srcdir/\$_pkgsrc\"
+    cd 'supportlibs/rapidjson'
+    local _submodules=(${_sm_prep[@]})
+    _submodule_update
+  )"
 }
-
-_prepare_retroshare() (
-  cd "${srcdir:?}/$_pkgsrc"
-  local _submodules=(
-    'retroshare.openpgp-sdk'::'openpgpsdk'
-    'retroshare.bitdht'::'libbitdht'
-
-    'commonmark.cmark'::'supportlibs/cmark'
-    'corvusoft.restbed'::'supportlibs/restbed'
-    'i2p.libsam3'::'supportlibs/libsam3'
-    'retroshare.jni.hpp'::'supportlibs/jni.hpp'
-    'retroshare.libretroshare'::'libretroshare'
-    'retroshare.obs'::'build_scripts/OBS'
-    'retroshare.rsnewwebui'::'retroshare-webui'
-    'tencent.rapidjson'::'supportlibs/rapidjson'
-    'truvorskameikin.udp-discovery-cpp'::'supportlibs/udp-discovery-cpp'
-  )
-  _submodule_update
-)
-
-_prepare_rapidjson() (
-  cd "${srcdir:?}/$_pkgsrc"
-  cd "supportlibs/rapidjson"
-  local _submodules=(
-    'google.googletest'::'thirdparty/gtest'
-  )
-  _submodule_update
-)
-
-_prepare_restbed() (
-  cd "${srcdir:?}/$_pkgsrc"
-  cd "supportlibs/restbed"
-  local _submodules=(
-    'corvusoft.asio-dependency'::'dependency/asio'
-    'corvusoft.catch-dependency'::'dependency/catch'
-    'corvusoft.openssl-dependency'::'dependency/openssl'
-  )
-  _submodule_update
-)
 
 _source_main
 
 _source_retroshare
-_source_rapidjson
-_source_restbed
+_source_rnpgp_rnp
+_source_tencent_rapidjson
 
 prepare() {
   _submodule_update() {
     local _module
     for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
-  _prepare_retroshare
-  _prepare_rapidjson
-  _prepare_restbed
-
-  # fix miniupnpc
-  git -C "$_pkgsrc/libretroshare" checkout -f c54e0266e4483797c1d6bacee6f563979d683464
+  _run_if_exists _prepare_retroshare
+  _run_if_exists _prepare_rnpgp_rnp
+  _run_if_exists _prepare_tencent_rapidjson
 }
 
 build() {
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
   cd "$_pkgsrc"
 
   # remove unwanted plugins
-  if [[ ! "${_plugin_voip::1}" =~ 't|y|!' ]]; then
+  if [ "${_plugin_voip::1}" != "t" ]; then
     sed -i '/VOIP \\/d' plugins/plugins.pro
   fi
-  if [[ ! "$_plugin_feedreader" =~ 't|y|1' ]]; then
+  if [ "$_plugin_feedreader" != "t" ]; then
     sed -i '/FeedReader/d' plugins/plugins.pro
   fi
 
@@ -216,38 +207,38 @@ build() {
     CONFIG+=release
   )
 
-  if [[ "${_jsonapi::1}" =~ 't|y|1' ]]; then
+  if [[ "${_jsonapi::1}" == "t" ]]; then
     _qmake_options+=(
       CONFIG+=rs_jsonapi
     )
   fi
 
-  if [[ "${_clang::1}" =~ 't|y|1' ]]; then
+  if [[ "${_clang::1}" == "t" ]]; then
     _qmake_options+=(
       -spec linux-clang
       CONFIG+=c++11
     )
   fi
 
-  if [[ "${_autologin::1}" =~ 't|y|1' ]]; then
+  if [[ "${_autologin::1}" == "t" ]]; then
     _qmake_options+=(
       CONFIG+=rs_autologin
     )
   fi
 
-  if [[ "${_nativ_dialogs::1}" =~ 't|y|1' ]]; then
+  if [[ "${_nativ_dialogs::1}" == "t" ]]; then
     _qmake_options+=(
       CONFIG+=rs_use_native_dialogs
     )
   fi
 
-  if [[ "${_plugin_voip::1}" =~ 't|y|1' ]] || [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]]; then
+  if [[ "${_plugin_voip::1}" == "t" ]] || [[ "${_plugin_feedreader::1}" == "t" ]]; then
     _qmake_options+=(
       CONFIG+=retroshare_plugins
     )
   fi
 
-  if [[ "${_wiki::1}" =~ 't|y|1' ]]; then
+  if [[ "${_wiki::1}" == "t" ]]; then
     _qmake_options+=(
       CONFIG+=wikipoos
     )
@@ -271,4 +262,10 @@ build() {
 package() {
   cd "$_pkgsrc"
   make INSTALL_ROOT="$pkgdir" install
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }

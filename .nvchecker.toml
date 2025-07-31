@@ -1,0 +1,4 @@
+[retroshare]
+source = "git"
+git = "https://github.com/retroshare/retroshare.git"
+prefix = "v"
