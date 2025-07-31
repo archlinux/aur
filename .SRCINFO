@@ -1,0 +1,17 @@
+pkgbase = libretro-xmil-git
+	pkgdesc = Sharp X1 core for libretro
+	pkgver = r286.6a52dc2
+	pkgrel = 1
+	url = https://github.com/libretro/xmil-libretro
+	arch = x86_64
+	arch = aarch64
+	groups = libretro
+	license = BSD-3-Clause
+	makedepends = git
+	depends = glibc
+	provides = libretro-xmil
+	conflicts = libretro-xmil
+	source = git+https://github.com/libretro/xmil-libretro.git
+	sha256sums = SKIP
+
+pkgname = libretro-xmil-git
