@@ -1,7 +1,7 @@
 pkgbase = rune-editor
 	pkgdesc = A modern CLI text editor that bridges the gap between nano's simplicity and advanced features
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/exec/rune
 	arch = x86_64
 	license = MIT

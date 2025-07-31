@@ -1,7 +1,7 @@
 # Maintainer: Dylan <dylanh@aur.archlinux.org>
 pkgname=rune-editor
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern CLI text editor that bridges the gap between nano's simplicity and advanced features"
 arch=('x86_64')
 url="https://github.com/exec/rune"
@@ -18,6 +18,7 @@ build() {
     export PKG_CONFIG_PATH=/usr/lib/pkgconfig
     export ONIG_LIB_DIR=/usr/lib
     export ONIG_INCLUDE_DIR=/usr/include
+    export RUSTFLAGS="-L /usr/lib -l onig"
     cargo build --release --locked
 }
 
