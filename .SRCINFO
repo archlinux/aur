@@ -1,0 +1,18 @@
+pkgbase = mutsu-git
+	pkgdesc = Emulator for Fujitsu FM-7 series computers
+	pkgver = 649.b5e6905
+	pkgrel = 1
+	url = https://github.com/captainys/77AVEMU/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	provides = mutsu-git
+	source = git+https://github.com/captainys/77AVEMU.git
+	source = git+https://github.com/captainys/TOWNSEMU.git
+	source = git+https://github.com/captainys/public.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mutsu-git
