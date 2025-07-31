@@ -8,13 +8,13 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('bf22633210bf7efe070cc453b05aabe5758d7fad21d0fd09cb42e3d0b3d68164')
+sha256sums=('2be778f8dcf2c7d07c57ae4d7abb1619ff82b61889b31efb9ee53323f0a7b2d7')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals'  'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'deno') # 'python-ddgs'
