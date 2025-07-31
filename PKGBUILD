@@ -1,7 +1,7 @@
 # Maintainer: Syaddad Ali Sulaiman Hakim <contact@mail.whysadad.com>
 pkgname=upnote-appimage
 _pkgname=UpNote
-pkgver=9.12.9
+pkgver=9.12.10
 pkgrel=1
 pkgdesc="Cross-platform note-taking application"
 arch=('x86_64')
