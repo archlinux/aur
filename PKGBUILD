@@ -30,7 +30,7 @@ source=("${pkgname}-${pkgver}-${_commit}-x86_64.deb::http://repository.spotify.c
 sha512sums=('571533058e96a1e6519d851413ca5528b159f195fb9f8f483799bde087ad24b75b770f529273b3167a81f4bfa1d842523a8c3d56b68d4a29fb51e83583cbd9a2'
             '990ef8d561d596cccc780f1e365e71bc94f561fd05c236828aa0cba1fbb151bc622358c866794303bc5d9daf01299b2fcf9375f1b8d23ca110928f7cdb8bfa78'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            '8c863523160b77577f3b13727d3e2388249956244906736f91c68441aff61d92327cd3bebc42c0d8665a87a0e7ecd910aa8b7ecb0529f8b326bc2f153009bda2')
+            '313ef74414af7acc6d8d586589a6d0ea2dddda6bd363050c1ca89130623309a38269cc8b4eb15a8fdfd164e61634fc52222f4867ab1aa1e7742523035651b2c4')
 
 #prepare() {
 #
@@ -64,5 +64,15 @@ package() {
     # Fix permissions
     chmod -R go-w "${pkgdir}"
     install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/com.spotify.player/config"
+    echo '''[Desktop Entry]
+Type=Application
+Name=Spotify Music
+GenericName=Stub for MPRIS
+Icon=spotify
+TryExec=spotify
+Exec=spotify --uri=%u
+Terminal=false
+NoDisplay=true
+Categories=Audio;Music;Player;AudioVideo;''' >"${pkgdir}/usr/share/applications/spotify.desktop"
 }
 
