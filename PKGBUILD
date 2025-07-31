@@ -1,7 +1,7 @@
 # Maintainer:  Vihaan Krishnan <opensourcecontributer@gmail.com>
 # Contributor: Vihaan Krishnan <opensourcecontributer@gmail.com>
 pkgname=nimra
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="A compiler written in rust"
 arch=('any')
@@ -17,6 +17,6 @@ build() {
 }
 package() {
     cd "$srcdir/nimra"
-    sudo install -Dm755 $srcdir/../target/release/nimra "/usr/bin/nimra"
-    sudo install -Dm644 $srcdir/../LICENSE "/usr/share/licenses/$pkgname/LICENSE"
+    sudo install -Dm755 $srcdir/target/release/nimra "/usr/bin/nimra"
+    sudo install -Dm644 $srcdir/LICENSE "/usr/share/licenses/$pkgname/LICENSE"
 }

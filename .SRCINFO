@@ -1,6 +1,6 @@
 pkgbase = nimra
 	pkgdesc = A compiler written in rust
-	pkgver = 7
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/krisvih32/nimra
 	arch = any
