@@ -1,12 +1,11 @@
 pkgbase = libdinitctl
 	pkgdesc = Library to interact with dinit's client protocol
 	pkgver = 0_git20250206
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chimera-linux/libdinitctl
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = meson
-	makedepends = linux-headers
 	makedepends = pkgconf
 	source = libdinitctl.tar.gz::https://github.com/chimera-linux/libdinitctl/archive/a3111b9b7fa4174518f2b696e67e1ef664e16589.tar.gz
 	sha256sums = 9b9b50404a8835dc6c8000c41a093cdcd83c784690275f5b3872ec991faeeacc
