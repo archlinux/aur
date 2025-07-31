@@ -1,7 +1,7 @@
 # Maintainer: Lobo Torres <lobo@quiltro.org>
 
 pkgname=loko-git
-pkgver=0.12.1.r11.60ba632
+pkgver=0.12.2.r21.19daaf4
 pkgrel=1
 pkgdesc="An optimizing R6RS Scheme compiler"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=("EUPL-1.2-or-later")
 makedepends=("chez-scheme" "akku")
 options=(!strip)
 conflicts=("loko")
-source=("git+https://scheme.fail/git/loko.git/")
+source=("git+https://gitlab.com/weinholt/loko.git")
 sha256sums=('SKIP')
 
 pkgver()
@@ -21,7 +21,7 @@ pkgver()
 build()
 {
     cd loko
-    make BOOTSTRAPSCHEME="chez-script" SCHEMESCRIPT="chez-script" PREFIX="/usr"
+    make -j1 PREFIX="/usr" loko
 }
 
 package()
