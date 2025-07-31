@@ -14,6 +14,7 @@ pkgbase = profile-sync-daemon-git
 	depends = systemd
 	optdepends = zsh-completions: for completion when using zsh
 	optdepends = fuse-overlayfs: for overlayfs mode
+	provides = profile-sync-daemon
 	conflicts = profile-sync-daemon
 	source = git+https://github.com/graysky2/profile-sync-daemon.git#branch=master
 	b2sums = SKIP

@@ -15,6 +15,7 @@ depends=('git' 'bash' 'findutils' 'procps-ng' 'rsync' 'systemd')
 optdepends=('zsh-completions: for completion when using zsh'
             'fuse-overlayfs: for overlayfs mode')
 install="psd.install"
+provides=(profile-sync-daemon)
 conflicts=(profile-sync-daemon)
 source=("git+https://github.com/graysky2/profile-sync-daemon.git#branch=$_branch")
 b2sums=('SKIP')
