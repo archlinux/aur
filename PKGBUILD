@@ -61,7 +61,8 @@ _gitname='xbmc'
 _codename=master
 
 options=(!lto)
-_libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
+#https://github.com/xbmc/libdvdcss/archive/refs/tags/1.4.3-Next-Omega-Alpha3.tar.gz
+_libdvdcss_version="1.4.3-Next-Omega-Alpha3"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
 source=("git+https://github.com/xbmc/xbmc.git#branch=$_codename"
