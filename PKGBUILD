@@ -1,18 +1,57 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: Ming Li <mingmillennium@gmail.com>
+# 
+# Optimized PKGBUILD for pomodoro-timer v1.0.0
+# - Zero core dependencies (runs with pure Python standard library)
+# - All advanced features are optional dependencies
+#
+pkgname=pomodoro-timer
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
+pkgdesc="A lightweight Pomodoro timer with zero dependencies - runs with pure Python"
 arch=('any')
-url="https://github.com/philc/vimium"
+url="https://github.com/ming2k/pomodoro-timer"
 license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+optdepends=(
+    'python-gobject: GTK4 modern interface support'
+    'python-cairo: GTK4 modern interface support'
+    'gtk4: GTK4 modern interface support'
+    'libadwaita: GTK4 modern interface support'
+    'python-sounddevice: Enhanced audio with PipeWire support'
+    'python-numpy: Enhanced audio generation'
+    'pipewire: Modern audio backend'
+    'pulseaudio-utils: Audio playback (paplay)'
+    'alsa-utils: Audio playback (aplay)'
+    'ffmpeg: Audio playback fallback'
+    'mplayer: Audio playback fallback'
+    'libnotify: Native desktop notifications (notify-send)'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-package() {
-    mkdir -p "$pkgdir/usr/share/"
+build() {
+    cd "$pkgname-$pkgver"
+    
+    # Build wheel package - no external dependencies needed!
+    python -m build --wheel --no-isolation
+}
 
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+package() {
+    cd "$pkgname-$pkgver"
+    
+    # Install the Python package
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    
+    # Install desktop file
+    install -Dm644 pomodoro-timer.desktop "$pkgdir/usr/share/applications/pomodoro-timer.desktop"
+    
+    # Install icon
+    install -Dm644 pomodoro-timer.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pomodoro-timer.svg"
+    
+    # Install license (if exists)
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+    
+    # Install README and documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
