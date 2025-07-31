@@ -1,13 +1,13 @@
 pkgbase = slidev-cli
 	pkgdesc = Presentation Slides for Developers
-	pkgver = 52.0.0
+	pkgver = 52.1.0
 	pkgrel = 1
 	url = https://sli.dev
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/@slidev/cli/-/cli-52.0.0.tgz
-	sha512sums = ed0e71ff124ff4ea7c738ba900784ce2979be70d5019901acb0ca6a54d6017e1d821ac33696aad0529e631f2eab9f55b45df2aff783eae5e9b9b7af6b5e78157
+	source = https://registry.npmjs.org/@slidev/cli/-/cli-52.1.0.tgz
+	sha512sums = 68dd7981785459cf540ba0815d46da58878e604d26bd4e03b8e8e9d04b81ae8a83f23a520ca8d02aabafd24204b3426c2329a03a97db38ff476b5c6e64dd047b
 
 pkgname = slidev-cli
