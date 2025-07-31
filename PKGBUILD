@@ -226,7 +226,6 @@ _check_deprecated_settings() {
 }
 
 _get_patches() {
-    # set -x
     local spec_file="${srcdir}/tachyon/linux.spec"
 
     # 1. Search for patches in the linux.spec file
@@ -262,7 +261,6 @@ _get_patches() {
 
 # Applies all patches
 _apply_patches() {
-    set -x
     # Patch with kernel version patches
     patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
 
