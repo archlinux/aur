@@ -1,17 +1,17 @@
 pkgbase = knowte-git
 	pkgdesc = Cross platform note taking application
-	pkgver = 3.0.0.r12.gb86ef565
-	pkgrel = 2
+	pkgver = 3.0.0.r28.gc54dbf7
+	pkgrel = 1
 	url = https://github.com/digimezzo/knowte
-	arch = x86_64
-	license = GPL3
-	makedepends = gendesk
-	makedepends = nvm
+	arch = any
+	license = GPL-3.0-only
 	makedepends = git
-	provides = knowte=3.0.0
+	makedepends = libxcrypt-compat
+	makedepends = nvm
+	depends = electron
+	provides = knowte=3.0.0.r28
 	conflicts = knowte
 	source = knowte::git+https://github.com/digimezzo/knowte.git
 	sha256sums = SKIP
 
 pkgname = knowte-git
-	depends = electron
