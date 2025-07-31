@@ -3,7 +3,7 @@
 
 pkgname=gallery-dl
 pkgver=1.30.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
 url=https://github.com/mikf/gallery-dl
@@ -11,17 +11,22 @@ license=(GPL-2.0-or-later)
 depends=(python python-requests)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
 checkdepends=(yt-dlp)
-optdepends=('ffmpeg: Pixiv Ugoira conversion'
-            'yt-dlp: Video downloads'
-            'youtube-dl: Video downloads'
-            'python-pysocks: SOCKS proxy support'
-            'python-brotli: Brotli compression support'
-            'python-brotlicffi: Brotli compression support'
-            'python-yaml: YAML configuration file support'
-            'python-toml: TOML configuration file support for Python<3.11'
-            'python-secretstorage: GNOME keyring passwords for --cookies-from-browser'
-            'python-psycopg: PostgreSQL support'
-            'python-truststore: Support using system certificates')
+optdepends=(
+    'yt-dlp: HLS/DASH video downloads, ytdl integration'
+    'youtube-dl: HLS/DASH video downloads, ytdl integration'
+    'ffmpeg: Pixiv Ugoira conversion'
+    'mkvmerge: Accurate Ugoira frame timecodes'
+    'python-pysocks: SOCKS proxy support'
+    'python-brotli: Brotli compression support'
+    'python-brotlicffi: Brotli compression support'
+    'python-zstandard: Zstandard compression support'
+    'python-yaml: YAML configuration file support'
+    'python-toml: TOML configuration file support for Python<3.11'
+    'python-secretstorage: GNOME keyring passwords for --cookies-from-browser'
+    'python-psycopg: PostgreSQL support'
+    'python-truststore: Support using system certificates'
+    'python-jinja: Jinja template support'
+)
 source=(git+"${url}".git#tag=v"${pkgver}"?signed)
 validpgpkeys=(3E09F5908333DD83DBDCE7375680CA389D365A88) #Mike Fährmann
 sha512sums=('7b761b7e006cf6b91921b6704c0a049314fac9321f74287679cddfdc7571da91fa5dcc6ae81f09760634f49c3cee7b195b098f52e00c09e52b539427cee7959c')
