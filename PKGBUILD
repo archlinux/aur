@@ -125,7 +125,7 @@ build() {
   export CXXFLAGS+=" -Wno-error"
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
-export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
+#export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
   _args=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
