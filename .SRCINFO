@@ -1,11 +1,11 @@
 pkgbase = anthy-unicode
 	pkgdesc = Hiragana text to Kana Kanji mixed text Japanese input method
 	pkgver = 1.0.0.20240502
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fujiwarat/anthy-unicode
 	arch = x86_64
-	license = LGPL
-	license = GPL
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-only
 	makedepends = emacs
 	provides = anthy
 	conflicts = anthy
