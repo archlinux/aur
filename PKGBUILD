@@ -4,7 +4,7 @@
 
 _gemname=clamp
 pkgname="ruby-${_gemname}"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='a minimal framework for command-line utilities'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('4f6a99a8678d51abbf1650263a74d1ac50939edc11986271431d2e03a0d7a022')
+sha256sums=('ab7487e7258098a7327b376cdb3896f3f73c663b8ce80af5cd625c699369f2cf')
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
