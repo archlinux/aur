@@ -1,6 +1,6 @@
 # Maintainer: lovefromhsd <lovefromhsd@proton.me>
 
-pkgname=raur-git
+pkgname=raur-helper
 pkgver=1.0
 pkgrel=1
 pkgdesc="Simple AUR helper written in Rust"
