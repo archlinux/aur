@@ -8,7 +8,6 @@ arch=('any')
 url="https://github.com/krisvih32/nimra"
 license=('AGPL-3.0-or-later')
 makedepends=('make' 'cargo' 'git' 'sudo')
-depends=('libgcc_s.so=1-64' 'ld-linux-x86-64.so=2-64' 'libc.so=6-64')
 source=("git+https://github.com/krisvih32/nimra.git#branch=stable")
 sha256sums=('SKIP')
 build() {
