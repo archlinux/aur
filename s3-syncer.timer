@@ -1,0 +1,11 @@
+[Unit]
+Description=Run s3-syncer every hour
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+AccuracySec=1m
+Unit=s3-syncer.service
+
+[Install]
+WantedBy=timers.target

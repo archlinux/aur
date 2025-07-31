@@ -1,0 +1,26 @@
+[Unit]
+Description=Sync local files to S3 using rclone
+Wants=s3-syncer.timer
+
+[Service]
+Type=oneshot
+
+EnvironmentFile=/etc/s3-syncer/config.env
+Environment=RCLONE_TEMP_DIR=/run/s3-syncer/rclone-tmp
+
+ExecStart=/usr/bin/s3-syncer
+DynamicUser=yes
+
+StateDirectory=s3-syncer
+LogsDirectory=s3-syncer
+RuntimeDirectory=s3-syncer
+
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+ExecStartPre=/usr/bin/flock -n /run/s3-syncer/s3-syncer.lock -c true
+
+[Install]
+WantedBy=multi-user.target

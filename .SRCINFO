@@ -1,0 +1,21 @@
+pkgbase = s3-syncer
+	pkgdesc = Periodic rclone-based S3 mirror syncer with systemd integration
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = rclone
+	backup = etc/s3-syncer/config.env
+	backup = etc/s3-syncer/rclone.conf
+	source = s3-syncer.sh
+	source = s3-syncer.service
+	source = s3-syncer.timer
+	source = config.env
+	source = rclone.conf
+	sha256sums = 20d06058693d55af45e966b4a511f4a4d49ef4bf84cb29d4bbad7469b9e3929b
+	sha256sums = ddc6dbaa01322c0b4a6c67661a6409271fae80dd9a37df374bd502dc3628e3e2
+	sha256sums = 9eb497b6563e8a367b590bfe8c12ec71558ef94e2a1295da6ad1539c8f3e275f
+	sha256sums = 86829fc712ba186e566a9200c4e045bce26f00f4f4f216ad701a3f1648bae439
+	sha256sums = 794cdb953eaccbdf4012045ca623700abdf60ed6ee7d3d4b4c4e2db0cc57f205
+
+pkgname = s3-syncer
