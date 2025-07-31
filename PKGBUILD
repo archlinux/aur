@@ -174,8 +174,8 @@
 # Kernel version
 _kernel_major=6.15
 _kernel_minor=8
-# Clear Linux patches version
-_clr=6.15.7-1591
+# Tachyon patches version
+_tachyon=6.15.7-1591
 # kernel_compiler_patch version
 _kernelcompilerpatch="20250612"
 # kernel_compiler_patch name
@@ -184,10 +184,10 @@ _kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.15-rc1+.patch"
 _src_linux=linux-${_kernel_major}
 
 # Package information
-pkgbase=linux-clear
+pkgbase=linux-tachyon
 pkgver=${_kernel_major}.${_kernel_minor}
 pkgrel=4
-pkgdesc="Linux kernel with patches from Clear Linux which allow for higher performance."
+pkgdesc="Linux kernel with patches from Linux Tachyon which allow for higher performance."
 arch=("x86_64")
 url="https://git.staropensource.de/StarOpenSource/Linux-Tachyon"
 license=("GPL-2.0-only")
@@ -199,7 +199,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_clr}"
+  "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_tachyon}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
@@ -268,7 +268,7 @@ _apply_patches() {
     echo "-${pkgrel}" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    # Patch with Clear Linux patches
+    # Patch with Tachyon patches
     for i in $(_get_patches); do
         echo "Applying $i"
         if [ -n "${_use_llvm_lto}" ]; then
