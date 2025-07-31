@@ -3,7 +3,7 @@
 pkgname=kissfft-git
 _pkgname=kissfft
 pkgver=383.9feadb9
-pkgrel=2
+pkgrel=4
 pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid'
 arch=('any')
 url='https://github.com/mborgerding/kissfft'
@@ -54,12 +54,12 @@ build() {
 		done
 
 		cp Makefile.bak Makefile
-		rm -rf /tmp/1234
-		cmake -DCMAKE_INSTALL_PREFIX=/tmp/1234 ${_cmake_args}
+		# Without this the project only builds the first (or last?) thing and nothing else
+		rm -rf CMakeFiles cmake_install.cmake
+		cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" ${_cmake_args}
 		make all
-		make install
+		PREFIX="${srcdir}/usr" make install
 	done
-	rm -rf /tmp/1234
 }
 
 package() {
@@ -82,14 +82,14 @@ package() {
 		"simd"
 	)
 	for _data_type in "${_data_types[@]}"; do
-		install -Dm644 "kissfft-${_data_type}.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}.pc"
-		install -Dm644 "libkissfft-${_data_type}.so" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so"
-		install -Dm644 "libkissfft-${_data_type}.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131"
+		install -Dm644 "build/kissfft-${_data_type}.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}.pc"
+		ln -s "libkissfft-${_data_type}.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so"
+		ln -s "libkissfft-${_data_type}.so.131.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131"
 		install -Dm644 "libkissfft-${_data_type}.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131.1.0"
 
-		install -Dm644 "kissfft-${_data_type}-openmp.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}-openmp.pc"
-		install -Dm644 "libkissfft-${_data_type}-openmp.so" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so"
-		install -Dm644 "libkissfft-${_data_type}-openmp.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131"
+		install -Dm644 "build/kissfft-${_data_type}-openmp.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}-openmp.pc"
+		ln -s "libkissfft-${_data_type}-openmp.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so"
+		ln -s "libkissfft-${_data_type}-openmp.so.131.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131"
 		install -Dm644 "libkissfft-${_data_type}-openmp.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131.1.0"
 	done
 }
