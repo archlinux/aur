@@ -1,4 +1,5 @@
 # Maintainer: Paul Etherton <paul at pjetherton dot co dot uk>
+
 pkgname=crush-git
 pkgver=0.1.0.r377.cf689a8
 pkgrel=1
