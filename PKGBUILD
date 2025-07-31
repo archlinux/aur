@@ -8,7 +8,7 @@
 # Which in turn is based on extra/electron* by
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
-_pkgname=electron38
+_pkgname=electron39
 pkgname=electron-nightly-bin
 _pkgver=39.0.0-nightly.20250729
 pkgver="${_pkgver/-}"
