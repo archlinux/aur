@@ -47,7 +47,6 @@ prepare() {
 
 build() {
   cd ${_base}
-  #export CMAKE_POLICY_VERSION_MINIMUM=3.5
   python build_binaries.py
   python -m build --wheel --skip-dependency-check --no-isolation
 }
