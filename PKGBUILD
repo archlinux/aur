@@ -57,8 +57,8 @@ build() {
 		# Without this the project only builds the first (or last?) thing and nothing else
 		rm -rf CMakeFiles cmake_install.cmake
 		cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" ${_cmake_args}
-		make all
-		PREFIX="${srcdir}/usr" make install
+		make -C build all
+		#PREFIX="${srcdir}/usr" make install
 	done
 }
 
@@ -85,11 +85,11 @@ package() {
 		install -Dm644 "build/kissfft-${_data_type}.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}.pc"
 		ln -s "libkissfft-${_data_type}.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so"
 		ln -s "libkissfft-${_data_type}.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131"
-		install -Dm644 "libkissfft-${_data_type}.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131.1.0"
+		install -Dm644 "build/libkissfft-${_data_type}.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}.so.131.1.0"
 
 		install -Dm644 "build/kissfft-${_data_type}-openmp.pc" "${pkgdir}/usr/share/pkgconfig/kissfft-${_data_type}-openmp.pc"
 		ln -s "libkissfft-${_data_type}-openmp.so.131" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so"
 		ln -s "libkissfft-${_data_type}-openmp.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131"
-		install -Dm644 "libkissfft-${_data_type}-openmp.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131.1.0"
+		install -Dm644 "build/libkissfft-${_data_type}-openmp.so.131.1.0" "${pkgdir}/usr/lib/libkissfft-${_data_type}-openmp.so.131.1.0"
 	done
 }
