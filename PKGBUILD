@@ -12,7 +12,7 @@ depends=("paru" "bash" "clamav" "pacman" "findutils")
 makedepends=("git")
 
 package() {
-    cd "$srcdir/pacupdate"
+    cd "$srcdir/aurscan"
     install -Dm755 --no-target-directory "scan.sh" "${pkgdir}/usr/bin/aurscan"
     echo "Remember to add \"PreBuildCommand = aurscan\" to the \"[bin]\" section of your paru.conf (usually \"~/.config/paru/paru.conf\")"
 }
