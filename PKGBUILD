@@ -2,12 +2,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.19552.r348.g4e4b072
+pkgver=4.20469.r159.g948dce9
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
-license=('GPL-2.0-only')
+license=('GPL-3.0-or-later')
 _pydeps=(
   bitarray
   pyaudio
@@ -29,16 +29,12 @@ depends=(
   'bluez-libs'
   'gd'
   'qt5-base')
-makedepends=('git'
+makedepends=(
+  'git'
   'arm-none-eabi-gcc'
   'arm-none-eabi-newlib'
   'qt5-tools'
   'pkgconf'
-  #   'readline'
-  #   'bzip2'
-  #   'lz4'
-  #   'lua'
-  #   'libwhereami'
 )
 # checkdepends=(
 #   python-pyopenssl
@@ -46,7 +42,7 @@ makedepends=('git'
 #   python-pip
 #   python-pipx
 #   )
-options=(!buildflags)
+options=(!buildflags !strip)
 provides=('proxmark3' 'proxmark3-iceman')
 conflicts=('proxmark3' 'proxmark3-iceman')
 replaces=($pkgname'-generic' $pkgname'-rdv4')
