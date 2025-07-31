@@ -4,8 +4,8 @@
 
 pkgname=vim-dracula-git
 _pkgname=vim-dracula
-pkgver=2.0.0.r103.g65f4225
-pkgrel=2
+pkgver=2.0.0.r104.gd4b0823
+pkgrel=1
 pkgdesc="A dark theme for Vim"
 arch=('any')
 url="https://draculatheme.com/vim"
