@@ -8,7 +8,7 @@ pkgbase = rebar3-git
 	makedepends = git
 	depends = erlang-nox
 	optdepends = rebar3-zsh: ZSH completion
-	provides = rebar3
+	provides = rebar3=5385.4594b00f
 	conflicts = rebar3
 	source = git+https://github.com/erlang/rebar3.git
 	sha256sums = SKIP
