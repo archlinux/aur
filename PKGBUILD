@@ -1,4 +1,4 @@
-# Maintainer: Suprit S Jahagirdar <supritsj05@gmail.com>
+# Maintainer: Suprit S Jahagirdar <supritsj.d@gmail.com>
 pkgname=fortitude-bin
 pkgver=0.7.3
 pkgrel=1
