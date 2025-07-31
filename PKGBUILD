@@ -30,7 +30,7 @@ prepare() {
 	# Allow a minor protocol violation until phosh is fixed
 	# Without this patch, phosh crashes at startup
 	# See https://gitlab.gnome.org/World/Phosh/phoc/-/merge_requests/294
-	# Patch taken from https://sources.debian.org/patches/wlroots/0.19.0~rc2-1/Revert-layer-shell-error-on-0-dimension-without-anchors.patch/
+	# Patch taken from https://sources.debian.org/patches/wlroots/0.19.0-1/Revert-layer-shell-error-on-0-dimension-without-anchors.patch/
 	patch -Np1 -i "${srcdir}/Revert-layer-shell-error-on-0-dimension-without-anch.patch"
 }
 

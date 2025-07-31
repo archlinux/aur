@@ -25,5 +25,5 @@ SPDX-License-Identifier = "0BSD"
 path = [
     "Revert-layer-shell-error-on-0-dimension-without-anch.patch",
 ]
-SPDX-FileCopyrightText = "wlroots0.19 contributors"
-SPDX-License-Identifier = "MIT"
+SPDX-FileCopyrightText = "Debian contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later"
