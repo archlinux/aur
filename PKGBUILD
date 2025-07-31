@@ -32,6 +32,11 @@ build() {
   HOME="." ./bootstrap
 }
 
+check() {
+  cd "${srcdir}/${pkgname%-git}"
+  ./rebar3 ct
+}
+
 package() {
   cd "${srcdir}/${pkgname%-git}"
   install -Dm0755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
