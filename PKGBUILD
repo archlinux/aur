@@ -502,6 +502,7 @@ _package() {
     optdepends=("wireless-regdb: to set the correct wireless channels of your country"
                 "linux-firmware: firmware images needed for some devices")
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
+    replaces=("linux-clear")
     install=linux.install
 
     cd "${_src_linux}" || exit 1
@@ -527,6 +528,7 @@ _package() {
 _package-headers() {
     pkgdesc="${pkgdesc} This package includes header files and scripts for building kernel modules."
     depends=("pahole")
+    replaces=("linux-clear-headers")
 
     cd "${_src_linux}" || exit 1
     local "builddir=${pkgdir}/usr/lib/modules/$(<version)/build"
