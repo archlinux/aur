@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keiran@keircn.com>
 pkgname=karu
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A command-line tool for downloading and watching anime"
 arch=('x86_64')
