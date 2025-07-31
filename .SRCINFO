@@ -1,6 +1,6 @@
 pkgbase = beet-summarize-git
 	pkgdesc = Summarize your beets library
-	pkgver = r82.72d7482
+	pkgver = r84.993f74b
 	pkgrel = 1
 	url = https://github.com/steven-murray/beet-summarize
 	arch = any

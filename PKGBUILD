@@ -5,7 +5,7 @@
 pkgname=beet-summarize-git
 _pkgname=beet-summarize
 pkgdesc='Summarize your beets library'
-pkgver=r82.72d7482
+pkgver=r84.993f74b
 pkgrel=1
 url="https://github.com/steven-murray/${_pkgname}"
 arch=('any')
