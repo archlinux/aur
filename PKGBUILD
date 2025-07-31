@@ -2,7 +2,7 @@
 
 pkgname=git-monitor-git
 _pkgname=git-monitor
-pkgver=r42.da822db
+pkgver=r46.4322bcd
 pkgrel=1
 pkgdesc='Monitor Git repositories for new commits'
 arch=('x86_64')
