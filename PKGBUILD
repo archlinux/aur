@@ -1,10 +1,13 @@
 # Maintainer: envolution
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|envset_aur_llamacpp_build_universal=true|
+
+: ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp-cuda-f16
 _pkgname="${pkgname%-cuda-f16}"
-pkgver=b6047
+pkgver=b6052
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -34,7 +37,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('b9f1204f5b9a97f19d88ff74ea2d8bb8eac8949c7391cdee1a3f4164687ff25a'
+sha256sums=('229eb49e4afc69df3eb52e45c7fe9e54a41d1f6a1c0c804ad8cde2ae4f22a0ce'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
@@ -65,9 +68,17 @@ build() {
     -DGGML_RPC=ON
     -DGGML_CUDA=ON
     -DGGML_CUDA_F16=ON
-    -DGGML_NATIVE=ON
+    -DGGML_BUILD_SERVER=ON
     -Wno-dev
   )
+  if [[ ${aur_llamacpp_build_universal} == true ]]; then
+    echo "Building universal binary [aur_llamacpp_build_universal == true]"
+    _cmake_options+=(
+      -DGGML_BACKEND_DL=ON
+      -DGGML_NATIVE=OFF
+      -DGGML_CPU_ALL_VARIANTS=ON
+    )
+  fi
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
