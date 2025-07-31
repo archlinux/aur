@@ -4,7 +4,7 @@
 
 pkgname=heynote-bin
 _pkgname=Heynote
-pkgver=2.3.3
+pkgver=2.4.0
 _electronversion=35
 pkgrel=1
 pkgdesc="A dedicated scratchpad for developers"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/heyman/heynote/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3f2e3fa8313b96de2d6b055dc65e3d729f236ccbabb365295be0eccfeb1d7aaa'
+sha256sums=('1567769ca97bdb66aa535aed38a842bed1f15746a168811091f44ed8dc2d6959'
             'd78b14a03247374515264208d64b975e100af8a2fd0464afa07f76ca199700a7'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
