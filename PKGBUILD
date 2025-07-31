@@ -5,24 +5,24 @@
 _releases=(R2017b R2018a R2018b R2019a R2019b R2020a R2020b R2021a R2021b
            R2022a R2022b R2023a R2023b R2024a R2024b)
 _release=R2025a
-_pkgver=2025.1
+_version=2025.1
 _commit="8d84924e79d5d0caa42892a2d4c85c0d3b3fdf87" # 2025.1
 
 _name="mpm"
 pkgname="matlab-${_name}"
-pkgver="${_pkgver}+${_release}"
-pkgrel=4
+pkgver="${_version}+${_release}"
+pkgrel=5
 pkgdesc="MATLAB Package Manager"
 arch=('x86_64')
 url="https://www.mathworks.com/products/mpm.html"
 _url="https://github.com/mathworks-ref-arch/matlab-dockerfile"
 license=('custom:MATLAB EULA')
-provides=("${pkgname}-release=${_release}")
+provides=("${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
 depends=('ca-certificates' 'glibc' 'unzip')
-_pkgsrc="${pkgname}-${_pkgver}"
+_pkgsrc="${pkgname}-${_version}"
 source=("${_pkgsrc}-README.md::${_url}/raw/${_commit}/MPM.md"
         "${pkgname}-${_release}-input.txt::${_url}/raw/refs/heads/main/mpm-input-files/${_release}/mpm_input_${_release,,}.txt")
-source_x86_64=("${_pkgsrc}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}")
+source_x86_64=("${_pkgsrc}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_version}/glnxa64/${_name}")
 for _rel in "${_releases[@]}"; do
   source+=("${pkgname}-${_rel}-input.txt::${_url}/raw/refs/heads/main/mpm-input-files/${_rel}/mpm_input_${_rel,,}.txt")
 done
