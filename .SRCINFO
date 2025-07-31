@@ -1,4 +1,4 @@
-pkgbase = google-chrome-stable
+pkgbase = chrome
 	pkgdesc = Precompiled binary for the popular web browser by Google (Stable Channel).
 	pkgver = 138.0.7204.183
 	pkgrel = 1
@@ -28,4 +28,4 @@ pkgbase = google-chrome-stable
 	sha512sums = a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396
 	sha512sums = SKIP
 
-pkgname = google-chrome-stable
+pkgname = chrome
