@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=llama.cpp
-pkgver=b6039
+pkgver=b6045
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
@@ -30,7 +30,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('c6fd7993b4c7ba3d01bd6ec7e85b518c205a2d3453150d1791b04cde29b27da1'
+sha256sums=('f8db5a8291f34635c14b23d2215c3932509f6c9cfa0de6c7d5b75a10106c512c'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
