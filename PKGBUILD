@@ -1,5 +1,4 @@
 # Maintainer: Ming Li <mingmillennium@gmail.com>
-
 pkgname=m2k-pomodoro-timer
 pkgver=1.0.0
 pkgrel=1
@@ -17,7 +16,6 @@ optdepends=(
     'python-sounddevice: Enhanced audio with PipeWire support'
     'python-numpy: Enhanced audio generation'
     'pipewire: Modern audio backend'
-    'pulseaudio-utils: Audio playback (paplay)'
     'alsa-utils: Audio playback (aplay)'
     'ffmpeg: Audio playback fallback'
     'mplayer: Audio playback fallback'
@@ -27,14 +25,14 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "pomodoro-timer-$pkgver"
     
     # Build wheel package - no external dependencies needed!
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "pomodoro-timer-$pkgver"
     
     # Install the Python package
     python -m installer --destdir="$pkgdir" dist/*.whl
