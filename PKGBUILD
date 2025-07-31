@@ -41,6 +41,6 @@ pkgver() {
 package() {
   cd ulauncher || exit
   export PYTHONHASHSEED=0
-  env PATH="$(getconf PATH)" python -m pip install --ignore-installed --root="$pkgdir" --prefix=/usr --no-deps *.whl
+  env PATH="$(getconf PATH)" python -m pip install --root-user-action=ignore --ignore-installed --root="$pkgdir" --prefix=/usr --no-deps *.whl
   find $pkgdir -type d -name __pycache__ | xargs rm -rf
 }
