@@ -15,9 +15,9 @@ PROMPT="$vnv$usr$pc$pw> "
 
 tgusr() {
 if [[ -z "$usr" && -z "$pc" ]]; then
-	usr="$USER "
+	usr="%n "
 elif [[ -z "$usr" && -n "$pc" ]]; then
-	usr=$USER"@"
+	usr="%n@"
 else
 	usr=""
 fi
@@ -27,13 +27,13 @@ zle reset-prompt
 
 tgpc() {
 if [[ -z "$pc" && -z "$usr" ]]; then
-	pc="$(uname -n) "
+	pc="%m "
 elif [[ -n "$pc" && -n "$usr" ]]; then
 	pc=""
-	usr="$USER "
+	usr="%n "
 elif [[ -z "$pc" && -n "$usr" ]]; then
-	pc="$(uname -n) "
-	usr=$USER"@"
+	pc="%m "
+	usr="%n@"
 else
 	pc=""
 fi
@@ -43,7 +43,7 @@ zle reset-prompt
 
 tgpwd() {
 if [[ -z "$pw" ]]; then
-	pw="$(pwd) "
+	pw="%d "
 else
 	pw=""
 fi
