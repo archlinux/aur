@@ -1,6 +1,6 @@
 pkgbase = pikatorrent-bin
 	pkgdesc = BitTorrent client ⚡. For mobile, desktop & server.(Prebuilt version)
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://www.pikatorrent.com/
 	arch = aarch64
@@ -11,17 +11,17 @@ pkgbase = pikatorrent-bin
 	depends = gtk3
 	depends = openssl
 	depends = mpv
-	provides = pikatorrent=0.13.0
+	provides = pikatorrent=0.14.0
 	conflicts = pikatorrent
 	options = !strip
 	options = !emptydirs
-	source = pikatorrent-0.13.0.png::https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.13.0/assets/favicon.png
+	source = pikatorrent-0.14.0.png::https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.14.0/assets/favicon.png
 	source = pikatorrent.sh
 	sha256sums = 8310a77ea2a7bbb3fdfeba4b073d59cc54b8e40d553ec4553d0bd668cc4b931a
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = pikatorrent-0.13.0-aarch64.zip::https://github.com/G-Ray/pikatorrent/releases/download/v0.13.0/PikaTorrent-v0.13.0-linux-arm64.zip
-	sha256sums_aarch64 = 9c15d91700bee29a68981c2f4f97e2309708b34fbfce580bf7cc99835e4a56d7
-	source_x86_64 = pikatorrent-0.13.0-x86_64.zip::https://github.com/G-Ray/pikatorrent/releases/download/v0.13.0/PikaTorrent-v0.13.0-linux-x64.zip
-	sha256sums_x86_64 = 25e22a4461341dc866d593cf2cc96b034dbe37c144213ae8978c36b36742e40d
+	source_aarch64 = pikatorrent-0.14.0-aarch64.zip::https://github.com/G-Ray/pikatorrent/releases/download/v0.14.0/PikaTorrent-v0.14.0-linux-arm64.zip
+	sha256sums_aarch64 = 0b42e98e8d98f35620114b0ec2ce818af7975835d49c5cb9af64cf1192e89d7d
+	source_x86_64 = pikatorrent-0.14.0-x86_64.zip::https://github.com/G-Ray/pikatorrent/releases/download/v0.14.0/PikaTorrent-v0.14.0-linux-x64.zip
+	sha256sums_x86_64 = ed4ae71960030a9c594fa3f975673f390458119912d4ca87728a62c6988184e2
 
 pkgname = pikatorrent-bin

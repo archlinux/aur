@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="BitTorrent client ⚡. For mobile, desktop & server.(Prebuilt version)"
 arch=(
@@ -34,8 +34,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.zip")
 sha256sums=('8310a77ea2a7bbb3fdfeba4b073d59cc54b8e40d553ec4553d0bd668cc4b931a'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('9c15d91700bee29a68981c2f4f97e2309708b34fbfce580bf7cc99835e4a56d7')
-sha256sums_x86_64=('25e22a4461341dc866d593cf2cc96b034dbe37c144213ae8978c36b36742e40d')
+sha256sums_aarch64=('0b42e98e8d98f35620114b0ec2ce818af7975835d49c5cb9af64cf1192e89d7d')
+sha256sums_x86_64=('ed4ae71960030a9c594fa3f975673f390458119912d4ca87728a62c6988184e2')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
