@@ -1,5 +1,4 @@
-# Contributor: Orion-zhen
-# Maintainer: Orion-zhen
+# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 
 pkgname=clipse-git
 _pkgname=clipse
@@ -9,7 +8,10 @@ pkgdesc="Configurable TUI clipboard manager for Unix"
 arch=("any")
 url="https://github.com/savedra1/clipse"
 license=("MIT")
-makedepends=("go")
+makedepends=(
+    "go"
+    "git"
+)
 optdepends=(
     "xclip"
     "wl-clipboard"
