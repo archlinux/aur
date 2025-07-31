@@ -19,7 +19,7 @@ post_install() {
   print_usage_hint
   echo "==> NOTE:"
   echo "    This is a preview build and will NOT auto-update"
-  echo "    If you're using an AUR helper like yay, you will need to"
+  echo "==> If you're using an AUR helper like yay, you will need to"
   echo "    periodically reinstall this package manually to update it"
   echo
 }
