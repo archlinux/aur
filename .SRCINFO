@@ -4,6 +4,7 @@ pkgbase = java-openjdk-bin
 	pkgrel = 1
 	url = https://jdk.java.net/24
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	depends = java-environment-common
 	depends = java-runtime-common
@@ -15,7 +16,9 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=24
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	source = https://download.java.net/java/GA/jdk24.0.2/fdc5d0102fe0414db21410ad5834341f/12/GPL/openjdk-24.0.2_linux-x64_bin.tar.gz
-	sha256sums = 635050717feab0e4c283c8e90e79e944a2b65a3b6b21f1d37dcaadad4cc29548
+	source_x86_64 = https://download.java.net/java/GA/jdk24.0.2/fdc5d0102fe0414db21410ad5834341f/12/GPL/openjdk-24.0.2_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 635050717feab0e4c283c8e90e79e944a2b65a3b6b21f1d37dcaadad4cc29548
+	source_aarch64 = https://download.java.net/java/GA/jdk24.0.2/fdc5d0102fe0414db21410ad5834341f/12/GPL/openjdk-24.0.2_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = 1c2164216387c2f5cbacc7e96ecaa51168d954ac3805312b0a7d4d1e2726f58a
 
 pkgname = java-openjdk-bin

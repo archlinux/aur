@@ -9,7 +9,7 @@ _buildver='12'
 pkgver="${_fullver}.u${_buildver}"
 pkgrel=1
 pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://jdk.java.net/${_majorver}"
 license=('GPL2')
 depends=('java-environment-common' 'java-runtime-common' 'ca-certificates-utils' 'nss')
@@ -21,8 +21,10 @@ provides=(
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("https://download.java.net/java/GA/jdk${_fullver}/fdc5d0102fe0414db21410ad5834341f/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
-sha256sums=('635050717feab0e4c283c8e90e79e944a2b65a3b6b21f1d37dcaadad4cc29548')
+source_x86_64=("https://download.java.net/java/GA/jdk${_fullver}/fdc5d0102fe0414db21410ad5834341f/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
+source_aarch64=("https://download.java.net/java/GA/jdk${_fullver}/fdc5d0102fe0414db21410ad5834341f/${_buildver}/GPL/openjdk-${_fullver}_linux-aarch64_bin.tar.gz")
+sha256sums_x86_64=('635050717feab0e4c283c8e90e79e944a2b65a3b6b21f1d37dcaadad4cc29548')
+sha256sums_aarch64=('1c2164216387c2f5cbacc7e96ecaa51168d954ac3805312b0a7d4d1e2726f58a')
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk-bin"
 
 package() {
