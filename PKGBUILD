@@ -14,7 +14,7 @@ optdepends=(
     'yt-dlp: HLS/DASH video downloads, ytdl integration'
     'youtube-dl: HLS/DASH video downloads, ytdl integration'
     'ffmpeg: Pixiv Ugoira conversion'
-    'mkvmerge: Accurate Ugoira frame timecodes'
+    'mkvtoolnix-cli: Accurate Ugoira frame timecodes'
     'python-pysocks: SOCKS proxy support'
     'python-brotli: Brotli compression support'
     'python-brotlicffi: Brotli compression support'
