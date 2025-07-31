@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=138.0.7204.168
+pkgver=138.0.7204.183
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -40,7 +40,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('6bed1331466779b55aa2f378957b3d9e82a7ec416c2b573e55e2bed30cbb9aea'
+sha256sums=('1a676378743c37859af0fc51e0bb7ccd4c43a8031751b0f9fa7f95798e6960f2'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             'bafb04282db0ae19d4e42e022fdccfafb424f18406e5b893475dc18bf4bd8f9e'
@@ -70,7 +70,7 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            'd05050b9a7c6db82e131a0142c26e066542084dad8a915ef2cd4f82a7acc801a')
+            'd0220de7aba2334449ae1ba69f906f42d47c9a02a3448bf7c64b2d2e4c6cfe53')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -176,8 +176,11 @@ prepare() {
     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
   # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  if (( ! _manual_clone )); then
+    mkdir -p third_party/node/linux/node-linux-x64/bin
+    ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  fi
+  mkdir -p third_party/jdk/current/bin
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
@@ -258,8 +261,14 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       "clang_version=\"$_clang_version\""
-      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     )
+    if (( _manual_clone )); then
+      _flags+=('chrome_pgo_phase=0')
+    else
+      _flags+=(
+        #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      )
+    fi
 
     # Allow the use of nightly features with stable Rust compiler
     # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
