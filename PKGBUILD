@@ -2,7 +2,7 @@
 # Contributor: Romain Bazile <gromain.baz@gmail.com>
 
 pkgname=opencpn-plugin-polar
-pkgver=1.2.31.0
+pkgver=1.2.37.0
 pkgrel=1
 pkgdesc="Polar creation plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,13 @@ license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake')
 url="https://opencpn.org/OpenCPN/plugins/polar.html"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/polar_pi/archive/refs/tags/v$pkgver.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz")
-b2sums=('4bd0c4cfb1a1259b15e9f66bbdeccb5d803d78562ccd89f681100e4843108448cbde509c2c49d9e9874c525a7f53b4e5758b819fbc1d230edbaf513d311212ec' '24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rgleason/polar_pi/archive/refs/tags/v$pkgver.tar.gz" "$pkgname-$pkgver-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/c1d82631756056437edc58235d9e1ff68b46ddf3.tar.gz" "stdint.patch")
+b2sums=('e1dcd2ab95fe28455bc854bb96efb8cf92429fcc83bf6b33e97c9d171b89e91f5e359fe781efe7dff2bfb51b5af445ebe2ab0b31ba540545d9a8f32d0c062e0b' '009b51f58e65af83db8212d39a86d69d98c48888318926e9bd1f0fac48f800e1cd6151e213ef8c241ff46b4c6dad1e435efb19d76d0af5850f3c0836b598defc' '5e2554dc67a86bb530b5987ec4b311a2b561a035c6920d4db8e4036d0b99234553871e9a2dde194ce0274296fecb1d0738465f3419f73b887674a232c7ee2932')
 
 prepare() {
-  cp -r opencpn-libs-a001083af21de2e3faa970b245877a5ee5899aba/* polar_pi-$pkgver/opencpn-libs
+  cp -r opencpn-libs-c1d82631756056437edc58235d9e1ff68b46ddf3/* polar_pi-$pkgver/opencpn-libs
+  cd polar_pi-$pkgver/
+  patch --strip=1 --input=../stdint.patch
 }
 
 build() {
