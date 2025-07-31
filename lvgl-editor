@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/opt/lvgl-editor/AppRun "$@"

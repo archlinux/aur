@@ -1,0 +1,14 @@
+pkgbase = lvgl-editor-bin
+	pkgdesc = LVGL editor (AppImage)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://lvgl.io/editor
+	arch = x86_64
+	license = UNLICENSED
+	options = !strip
+	source = https://github.com/lvgl/lvgl_editor/releases/download/v.0.3.0/LVGL_Editor-0.3.0-linux.zip
+	source = lvgl-editor
+	sha256sums = 6dd79435f4402d15cf45147109ee30f53641f9cd0af839285e88c982f4febf2b
+	sha256sums = e6f3d47b68410a1cd27ac3d5bd10dd660ff0659dab7a48d94c06c8380fcadcff
+
+pkgname = lvgl-editor-bin
