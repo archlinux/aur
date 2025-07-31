@@ -6,7 +6,13 @@ pkgbase = rebar3-git
 	arch = any
 	license = Apache-2.0
 	makedepends = git
-	depends = erlang-nox
+	depends = erlang-common_test
+	depends = erlang-core
+	depends = erlang-dialyzer
+	depends = erlang-edoc
+	depends = erlang-erl_interface
+	depends = erlang-eunit
+	depends = erlang-parsetools
 	optdepends = rebar3-zsh: ZSH completion
 	provides = rebar3=5385.4594b00f
 	conflicts = rebar3

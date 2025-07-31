@@ -8,7 +8,13 @@ pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP princip
 arch=('any')
 url="https://github.com/erlang/rebar3"
 license=('Apache-2.0')
-depends=('erlang-nox')
+depends=('erlang-common_test'
+         'erlang-core'
+         'erlang-dialyzer'
+         'erlang-edoc'
+         'erlang-erl_interface'
+         'erlang-eunit'
+         'erlang-parsetools')
 optdepends=('rebar3-zsh: ZSH completion')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
