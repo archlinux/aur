@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pdf-guru-anki-git
 _pkgname='PDF Guru'
-pkgver=latest.r4.gba759c0
+pkgver=latest.r8.gf67a40f
 _nodeversion=20
 pkgrel=1
 pkgdesc="A PDF-centric multi-functional office learning toolbox software, including four major functions: PDF practical toolbox, Anki card creation artifact, Anki strongest assistant, video note artifact."
@@ -48,9 +48,14 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}.git"
+    _ensure_local_nvm
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Office" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git}"
     install -dm755 build/bin
     export CGO_ENABLED=1
     export GO111MODULE=on
@@ -89,12 +94,12 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.git/build/bin/"{pdf,"${_pkgname}"} -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/bin/"{ocr.py,"${_pkgname}.upx"} -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/bin/ocr.py" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -dm755 "${pkgdir}/usr/bin"
     ln -sf "/usr/lib/${pkgname%-git}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
     touch "${pkgdir}/usr/lib/${pkgname%-git}/config.json"
     chmod 666 "${pkgdir}/usr/lib/${pkgname%-git}/config.json"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

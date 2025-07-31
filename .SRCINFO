@@ -1,6 +1,6 @@
 pkgbase = pdf-guru-anki-git
 	pkgdesc = A PDF-centric multi-functional office learning toolbox software, including four major functions: PDF practical toolbox, Anki card creation artifact, Anki strongest assistant, video note artifact.
-	pkgver = latest.r4.gba759c0
+	pkgver = latest.r8.gf67a40f
 	pkgrel = 1
 	url = https://guru.kevin2li.top/
 	arch = any
