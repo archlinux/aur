@@ -1,18 +1,18 @@
 pkgbase = prometheus-cpp
 	pkgdesc = Prometheus Client Library for Modern C++
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupp0r/prometheus-cpp
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	makedepends = clang
 	depends = glibc
 	depends = gcc-libs
 	depends = curl
 	depends = zlib
+	depends = benchmark
 	source = prometheus-cpp-v1.3.0.tar.gz::https://github.com/jupp0r/prometheus-cpp/releases/download/v1.3.0/prometheus-cpp-with-submodules.tar.gz
 	sha256sums = 62bc2cc9772db2314dbaae506ae2a75c8ee897dab053d8729e86a637b018fdb6
 
