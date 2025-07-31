@@ -1,13 +1,13 @@
 # Maintainer: Dylan <dylanh@aur.archlinux.org>
 pkgname=rune-editor
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern CLI text editor that bridges the gap between nano's simplicity and advanced features"
 arch=('x86_64')
 url="https://github.com/exec/rune"
 license=('MIT')
 depends=('oniguruma')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'pkgconf')
 provides=('rune')
 conflicts=('rune-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/exec/rune/archive/refs/tags/v$pkgver.tar.gz")
@@ -15,6 +15,9 @@ sha256sums=('70e0ad45846d2d63dab4ecdecfc865c4a49b957c6aaa2a7316303ac7e5da8c3b')
 
 build() {
     cd "rune-$pkgver"
+    export PKG_CONFIG_PATH=/usr/lib/pkgconfig
+    export ONIG_LIB_DIR=/usr/lib
+    export ONIG_INCLUDE_DIR=/usr/include
     cargo build --release --locked
 }
 
