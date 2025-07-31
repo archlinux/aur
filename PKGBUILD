@@ -2,7 +2,7 @@
 # Contributor: s-adi-dev <adi@s-adi.dev>
 
 pkgname=hyprshot-gui
-pkgver=r18.7cc2d5a
+pkgver=r19.2f37759
 pkgrel=1
 pkgdesc="A simple GTK-based GUI for Hyprshot, designed to provide an easy way to capture and manage screenshots on Hyprland."
 arch=('any')

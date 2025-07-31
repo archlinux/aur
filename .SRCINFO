@@ -1,6 +1,6 @@
 pkgbase = hyprshot-gui
 	pkgdesc = A simple GTK-based GUI for Hyprshot, designed to provide an easy way to capture and manage screenshots on Hyprland.
-	pkgver = r18.7cc2d5a
+	pkgver = r19.2f37759
 	pkgrel = 1
 	url = https://github.com/s-adi-dev/hyprshot-gui
 	arch = any
