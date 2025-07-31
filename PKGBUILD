@@ -1,7 +1,7 @@
 _base=FMPy
 pkgname=python-${_base,,}-sundials6
 _gitcommit=dcff3e7193701a282b09293e4fdb1d4a8ce7419b
-pkgver=0.3.22
+pkgver=0.3.25
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
@@ -47,6 +47,7 @@ prepare() {
 
 build() {
   cd ${_base}
+  #export CMAKE_POLICY_VERSION_MINIMUM=3.5
   python build_binaries.py
   python -m build --wheel --skip-dependency-check --no-isolation
 }
