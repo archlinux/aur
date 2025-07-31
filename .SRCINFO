@@ -17,7 +17,6 @@ pkgbase = m2k-pomodoro-timer
 	optdepends = python-sounddevice: Enhanced audio with PipeWire support
 	optdepends = python-numpy: Enhanced audio generation
 	optdepends = pipewire: Modern audio backend
-	optdepends = pulseaudio-utils: Audio playback (paplay)
 	optdepends = alsa-utils: Audio playback (aplay)
 	optdepends = ffmpeg: Audio playback fallback
 	optdepends = mplayer: Audio playback fallback
