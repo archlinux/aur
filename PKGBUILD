@@ -172,9 +172,9 @@ build() {
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
     -DENABLE_DVDCSS=ON
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
   echo "building kodi"
   cmake "${_args[@]}" ../"$_gitname"
   make
