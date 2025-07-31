@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/fboender/multi-git-status'
 license=('MIT')
 source=("https://github.com/fboender/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('d7fc5f0daf398f6d63eb679894e7424d')
+sha256sums=('2634b4b8b3d69a397f5462ec1d72a77d5b395f363ed8e1aabfbf7e5e4172f93f')
 
 package() {
 	cd "$pkgname-$pkgver"
