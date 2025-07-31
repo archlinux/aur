@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.29.7.r170.gb0d7de3
+pkgver=1.30.2.r20.g952fcb1
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
@@ -10,17 +10,22 @@ license=(GPL-2.0-or-later)
 depends=(python python-requests)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
 checkdepends=(yt-dlp)
-optdepends=('ffmpeg: Pixiv Ugoira conversion'
-            'yt-dlp: Video downloads'
-            'youtube-dl: Video downloads'
-            'python-pysocks: SOCKS proxy support'
-            'python-brotli: Brotli compression support'
-            'python-brotlicffi: Brotli compression support'
-            'python-yaml: YAML configuration file support'
-            'python-toml: TOML configuration file support for Python<3.11'
-            'python-secretstorage: GNOME keyring passwords for --cookies-from-browser'
-            'python-psycopg: PostgreSQL support'
-            'python-truststore: Support using system certificates')
+optdepends=(
+    'yt-dlp: HLS/DASH video downloads, ytdl integration'
+    'youtube-dl: HLS/DASH video downloads, ytdl integration'
+    'ffmpeg: Pixiv Ugoira conversion'
+    'mkvmerge: Accurate Ugoira frame timecodes'
+    'python-pysocks: SOCKS proxy support'
+    'python-brotli: Brotli compression support'
+    'python-brotlicffi: Brotli compression support'
+    'python-zstandard: Zstandard compression support'
+    'python-yaml: YAML configuration file support'
+    'python-toml: TOML configuration file support for Python<3.11'
+    'python-secretstorage: GNOME keyring passwords for --cookies-from-browser'
+    'python-psycopg: PostgreSQL support'
+    'python-truststore: Support using system certificates'
+    'python-jinja: Jinja template support'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
