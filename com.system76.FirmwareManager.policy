@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
-  <action id="org.freedesktop.policykit.pkexec.run-gparted">
+  <action id="org.freedesktop.policykit.pkexec.run-firmware-manager">
     <description>Run Firmware Manager</description>
     <message>Authentication is required to run Firmware Manager</message>
     <defaults>
