@@ -1,6 +1,6 @@
 # Maintainer: creations <creations@creations.works>
 pkgname=navithingy-git
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="A Navidrome client built with Tauri and Svelte."
 arch=("$CARCH")
