@@ -10,8 +10,14 @@ pkgdesc="Extends nose.plugins.cover to add Cobertura-style XML reports"
 url="https://pypi.python.org/pypi/nosexcover"
 license=('MIT')
 arch=('any')
-depends=('python-nose' 'python-coverage')
-makedepends=('python-setuptools' 'python-nose' 'python-coverage')
+depends=(
+  'python'
+  'python-coverage'
+  'python-nose'
+)
+makedepends=(
+  'python-setuptools'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cmheisel/nose-xcover/archive/v$pkgver.tar.gz")
 sha512sums=('e606e89b75d51c728d1487200f4a38afe1af93defabe6bd847b80d597374e7bb10abc2e5c8e6778bbd4f17ba8b8d7a601864a8277cd14437ee94a9e04996cf22')
 

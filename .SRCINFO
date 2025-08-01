@@ -6,10 +6,9 @@ pkgbase = python-nosexcover
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-nose
-	makedepends = python-coverage
-	depends = python-nose
+	depends = python
 	depends = python-coverage
+	depends = python-nose
 	source = python-nosexcover-1.0.11.tar.gz::https://github.com/cmheisel/nose-xcover/archive/v1.0.11.tar.gz
 	sha512sums = e606e89b75d51c728d1487200f4a38afe1af93defabe6bd847b80d597374e7bb10abc2e5c8e6778bbd4f17ba8b8d7a601864a8277cd14437ee94a9e04996cf22
 
