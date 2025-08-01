@@ -3,7 +3,7 @@
 _pkggit=terramate
 
 pkgname=terramate-bin
-pkgver=0.11.6
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation."
 arch=('x86_64')
@@ -11,11 +11,18 @@ url="https://github.com/terramate-io/terramate"
 conflicts=('terramate')
 provides=('terramate')
 license=('MPL-2')
-source=("https://github.com/terramate-io/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('b5ff792adf771de07a2adf3fc76c718643b4a4096dd0ea73eda369003aecdc40')
+source=(
+  "https://github.com/terramate-io/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_x86_64.tar.gz"
+  "https://github.com/terramate-io/${_pkggit}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=('SKIP' 'SKIP')
+
+depends=()
+makedepends=()
 
 package() {
   cd "${srcdir}"
   install -Dm755 ${_pkggit} ${pkgdir}/usr/bin/${_pkggit}
-  install -D -m 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 ${_pkggit}-ls ${pkgdir}/usr/bin/${_pkggit}-ls
+  install -D -m 644 "${srcdir}/${_pkggit}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
