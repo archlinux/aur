@@ -1,7 +1,7 @@
 pkgbase = terramate-bin
 	pkgdesc = Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation.
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/terramate-io/terramate
 	arch = x86_64
 	license = MPL-2
