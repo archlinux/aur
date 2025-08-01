@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass
 	pkgdesc = The official GUI for MongoDB
-	pkgver = 1.46.6
+	pkgver = 1.46.7
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -19,14 +19,14 @@ pkgbase = mongodb-compass
 	depends = nodejs>=20.16.0
 	optdepends = org.freedesktop.secrets
 	backup = etc/mongodb-compass.conf
-	source = mongodb-compass-1.46.6.tar.gz::https://github.com/mongodb-js/compass/archive/v1.46.6.tar.gz
+	source = mongodb-compass-1.46.7.tar.gz::https://github.com/mongodb-js/compass/archive/v1.46.7.tar.gz
 	source = update-dependencies.diff
 	source = hadron-build-ffmpeg.diff
 	source = fix-argv.diff
 	source = mongodb-compass.conf
-	b2sums = 511c71014e133b5c5d5691d4f7937ba28f5c0df9fa4db026479c802829a017ccdd1b591913f062e2217ae4230709def361e2037a31f2c4fc308dbccd18166df0
-	b2sums = 5ab361071c348ff7528d12431ccda107b8ff967cca45e388bbb9b2a73be16d10d606a384323192bcce730e95338cfb3d2f8d8089ffd520f6af03f5a8db100dbe
-	b2sums = 339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef
+	b2sums = eb8401f75820264b57d35e79a6ab3b9c77f839e5a07f9bf36e61864ac35ef36805e3b7157ec9189c72b4a6c70695511424e354a53fc78172ce4ed02bfd7ec5ef
+	b2sums = 22ad8b99af87ef82c780f54cb207341d97340ae977a772f69448279432c15a740476d7a1700a2c9b0eadcd66bdccbba2d872ce4620cc87c911ca16de82a9228c
+	b2sums = c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1
 	b2sums = 416e82d97116bbb4c8ad00837a81608a3b18fba4fffa9adebbabc4583124da96f9c6632645de5a9b234ccdb0436030928546c8c1a897081da8bbd12fef95249e
 	b2sums = 42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec
 
