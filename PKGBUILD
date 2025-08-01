@@ -415,7 +415,6 @@ _update_defconfig() {
 
     # Run olddefconfig
     make ${BUILD_FLAGS[*]} olddefconfig
-    diff -u ${srcdir}/tachyon/config .config || :
 
     # Here we slightly break the config by removing one of the
     # members of the 'Processor family' selection.
