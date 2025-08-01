@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: carstene1ns <arch.carsten@teibes.de>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 
 pkgname=lib32-sdl2_mixer
 pkgver=2.8.0
