@@ -24,18 +24,18 @@
 : ${_build_limit_cores:=false}
 
 ## update
-_icver="128.12.0"
-_commit="7286181cbff5c4b98ed9246366a85ae1fbc8f54d"
-_icsum="1f6d7577828c0c2eedcb4d761b6b7e7fbaa8d300f1ef866a761247991ee8a622"
-_ffsum="2bedeb86c6cb16cd3fce88d42ae4e245bafe2c6e9221ba8e445b8e02e89d973f"
+_icver="128.13.0"
+_commit="b73acfe395ea849fcd15c9886a7f4631f2b6f82b"
+_icsum="921ef441a212abef5ea5412beb3acff8ca7aed0ae10882dec5605f5dc44d4814"
+_ffsum="a4aad0a9aefae5f14ff68fd9854d4af54d04b341a54b1a6465555f0b635042f4"
 
 ## package
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="$_icver"
-pkgrel=3
+pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
-url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
+url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
 arch=('x86_64')
 
@@ -157,10 +157,6 @@ _make_icecat() (
 
   bsdtar xf "$srcdir/firefox-${pkgver}esr.source.tar.xz"
   mv "$_pkgsrc_firefox" "$srcdir/$_pkgsrc_gnuzilla/output/$_pkgsrc"
-
-  echo "Preparing translations..."
-  local L10N_PREFS_DIR="browser/chrome/browser/preferences"
-  local L10N_DTD_FILE="advanced-scripts.dtd"
 
   echo "Patching sources..."
 
