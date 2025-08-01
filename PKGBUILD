@@ -312,27 +312,30 @@ _get_patches() {
 _apply_patches() {
     _info "Applying patches"
     
-    # Patch with kernel version patches
-    patch -Np1 -patch ../patch-${_kernel_major}.${_kernel_minor} || true
+    # Patch with kernel update patch
+    _info "Applying kernel update patch"
+    patch -sNp1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
 
     # Set version
     echo "-${pkgrel}" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # Patch with Tachyon patches
+    _info "Parsing linux.spec for patch list"
     for __patch in $(_get_patches); do
         _info "Applying '${__patch}'"
         if [ -n "${_use_llvm_lto}" ]; then
             [ "${__patch}" == "0133-novector.patch" ] && continue
         fi
 
-        patch -Np1 -patch "${srcdir}/tachyon/${__patch}" || true
+        patch -sNp1 -i "${srcdir}/tachyon/${__patch}" || true
     done
 
     # Patch with kernel_compiler_patch patches.
     # Do this before any defconfig invocations so we
     # have all of the extra selectable uarches ready and selectable
-    patch -Np1 -patch "${srcdir}/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
+    _info "Applying the kernel compiler patch"
+    patch -sNp1 -i "$srcdir/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
 }
 
 
