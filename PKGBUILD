@@ -1,6 +1,6 @@
 # Maintainer: Jian Qiang Wu <Qiangwu2000@gmail.com>
 pkgname=wlsbg
-pkgver=1.1.1.r0.g69079f4
+pkgver=2.0.0.r0.g444e6f3
 pkgrel=1
 pkgdesc="Wallpaper tool with shader support for Wayland compositors"
 arch=("x86_64")
@@ -8,9 +8,7 @@ url="https://github.com/Sublimeful/wlsbg"
 license=("MIT")
 depends=(
   "wayland"
-  "cairo"
   "mesa"
-  "gdk-pixbuf2"
   "glib2"
   "glibc"
 )
