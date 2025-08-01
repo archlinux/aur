@@ -1,36 +1,42 @@
-# Maintainer: angelsl
-pkgname=bannertool-git
-pkgver=1488384336.59046e2
+# Maintainer: Pk11 <pk11@outlook.jp>
+# Contributor: angelsl
+
+_pkgname='bannertool'
+pkgname="$_pkgname-git"
+pkgver=r79.51dac92
 pkgrel=1
-pkgdesc=" A tool for creating 3DS banners. "
-arch=('i686' 'x86_64')
-url="https://github.com/Steveice10/bannertool"
+pkgdesc="A tool for creating 3DS banners."
+arch=('x86_64')
+url="https://github.com/Epicpkmn11/bannertool"
 license=('MIT')
-sha256sums=('SKIP' 'SKIP')
+makedepends=('git' 'zip')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-_gitroot='https://github.com/Steveice10/bannertool.git'
-_gitname='bannertool'
-
-source=("${_gitname}::git+${_gitroot}"
-        "buildtools::git+https://github.com/Steveice10/buildtools.git")
+source=("$pkgname::git+${url}"
+				"git+https://github.com/Steveice10/buildtools")
+sha1sums=('SKIP' 'SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
-    git log --pretty=format:"%ad.%h" --date=format:"%s" -1
+	cd "$srcdir/$pkgname"
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/$_gitname"
-    git submodule init
-    git config submodule.buildtools.url "$srcdir/buildtools"
-    git submodule update
+	cd "$srcdir/$pkgname"
+	git submodule init
+	git config submodule.buildtools.url "$srcdir/buildtools"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$pkgname"
 	make
 }
 
 package() {
-	install -D "$srcdir/$_gitname/output/linux-$CARCH/bannertool" "$pkgdir/usr/bin/bannertool"
+	cd "$srcdir/$pkgname"
+	install -D "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	cd output/linux-$CARCH
+	install -Dm755 bannertool "$pkgdir/usr/bin/$_pkgname"
 }
