@@ -1,6 +1,6 @@
 pkgname=stutui
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist terminal‐based study timer and stopwatch with daily logging, built on ncurses."
 arch=('x86_64')
 url="https://gitlab.com/sizinicin/stutui"
@@ -8,7 +8,7 @@ license=('GPL3')
 depends=('ncurses')
 makedepends=('gcc')
 
-source=("git+ssh://git@gitlab.com/sizinicin/stutui.git")
+source=("git+https://git@gitlab.com/sizinicin/stutui.git")
 sha256sums=('SKIP')
 
 build() {
