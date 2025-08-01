@@ -1,6 +1,6 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 pkgname=nocodb
-pkgver=0.264.1
+pkgver=0.264.2
 pkgrel=1
 pkgdesc="A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface."
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ prepare() {
     export NODE_ENV=production
     cd ${srcdir}/nocodb
     pnpm --filter=nocodb-sdk install && pnpm --filter=nocodb-sdk run build
-    pnpm --filter=nocodb --filter=nc-gui --filter=playwright install
+    pnpm --filter=nocodb --filter=nc-gui install
 }
 
 build() {
@@ -45,7 +45,7 @@ build() {
     rm -rf ${srcdir}/app
     cp -r ${srcdir}/nocodb ${srcdir}/app && cd ${srcdir}/app
     pnpm run integrations:build && pnpm run registerIntegrations ##comment this if pkgver<=0.262
-    pnpm --filter=nc-gui run build:copy
+    #pnpm --filter=nc-gui run build:copy
     pnpm --filter=nocodb run docker:build
     ## only ship nocodb workspace prod deps with node_modules (1.9GB -> 400MB)
     rm -rf node_modules ./packages/nocodb/node_modules
