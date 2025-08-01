@@ -1,7 +1,7 @@
 # Maintainer: Sourcegraph <support@sourcegraph.com>
 
 pkgbase=ampcode-com
-pkgname=amp
+pkgname=ampcode-com
 pkgver=0.0.1754024802
 pkgrel=1
 pkgdesc="An agentic coding tool, in research preview from Sourcegraph"
