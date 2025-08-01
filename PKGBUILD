@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b6052.r6052.gdaf2dd788
+pkgver=b6055.r6055.gba42794c9
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -32,16 +32,8 @@ optdepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml)
 options=(lto !debug)
-source=(
-  "git+${url}"
-  llama.cpp.conf
-  llama.cpp.service
-)
-sha256sums=(
-  'SKIP'
-  '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-  '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
-)
+source=("git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -82,7 +74,4 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
-  install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
 }
