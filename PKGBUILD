@@ -321,7 +321,6 @@ _apply_patches() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # Patch with Tachyon patches
-    _info "Parsing linux.spec for patch list"
     for __patch in $(_get_patches); do
         _info "Applying '${__patch}'"
         if [ -n "${_use_llvm_lto}" ]; then
