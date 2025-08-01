@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034 disable=SC2048 disable=SC2086 disable=SC2154
 
+
 # This PKGBUILD is/was authored by:
 # - JeremyStarTM <jeremystartm@staropensource.de>
 # - yarost12 <yaro330@gmail.com>
 # - Josip Ponjavic <josipponjavic at gmail dot com>
 #
 # For a list of maintainers see MAINTAINERS.md
+
 
 ### BUILD OPTIONS
 # You can modify these settings by executing "env _<setting>=<value> makepkg"
@@ -183,6 +185,7 @@ _kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.15-rc1+.patch"
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
+
 # Package information
 pkgbase=linux-tachyon
 pkgver=${_kernel_major}.${_kernel_minor}
@@ -192,24 +195,50 @@ arch=("x86_64")
 url="https://git.staropensource.de/StarOpenSource/Linux-Tachyon"
 license=("GPL-2.0-only")
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
-[ -n "${_use_llvm_lto}" ] && makedepends+=("clang" "llvm" "lld")
 options=("!strip" "!debug")
-[ "${_debug}" == "y" ] && options=("!strip")
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_tachyon}"
-  "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
+    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
+    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
+    "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
+    "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_tachyon}"
+    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
+
+# Integrity & signature verification
+# -> SHA-256 checksums of the package's sources
+#    These need to be updated each release; see the 'source' array 
+sha256sums=(
+    "7586962547803be7ecc4056efc927fb25214548722bd28171172f3599abb9764"
+    "SKIP"
+    "effa3deecc0266054731349ecabb68455f125c7be2f88fd21a841080fd30a4c8"
+    "SKIP"
+    "91adc6bf4b263480399d24a7640e11b0302d4b411910ee99eee2788b34bd297a"
+)
+
+# -> Kernel PGP signer fingerprints
+#    Taken from https://www.kernel.org/signature.html
+validpgpkeys=(
+  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds (torvalds@kernel.org)
+  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman (gregkh@kernel.org)
+  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
+  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
+)
+
+
+# Update package information and build flags based on build settings
+[ -n "${_use_llvm_lto}" ] && makedepends+=("clang" "llvm" "lld")
+[ "${_debug}" == "y" ] && options=("!strip")
 [ -n "${_use_llvm_lto}" ] && BUILD_FLAGS=("LLVM=1" "LLVM_IAS=1")
 
+
+# Set kernel build properties
 export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
-export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @${SOURCE_DATE_EPOCH}})"
 
-# Check for deprecated settings
+
+## Checks for deprecated settings.
 _check_deprecated_settings() {
     if [ -n "${_update_kconfig_on_reuse}" ]; then
         warning "Please switch to using '_optimize_defconfig' flag instead of '_update_kconfig_on_reuse'"
@@ -225,6 +254,7 @@ _check_deprecated_settings() {
     true
 }
 
+## Parses the linux.spec file for patches to apply
 _get_patches() {
     # Get the list of patches from the file, ignore the comments
     grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list.txt
@@ -232,44 +262,48 @@ _get_patches() {
     grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
 }
 
-# Applies all patches
+
+## Invokes '_get_patches' and applies them as well as KCC
 _apply_patches() {
     # Patch with kernel version patches
-    patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
+    patch -Np1 -patch ../patch-${_kernel_major}.${_kernel_minor} || true
 
     # Set version
     echo "-${pkgrel}" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # Patch with Tachyon patches
-    for i in $(_get_patches); do
-        echo "Applying $i"
+    for patch in $(_get_patches); do
+        echo "Applying ${patch}"
         if [ -n "${_use_llvm_lto}" ]; then
-            if [ "${i}" == "0133-novector.patch" ] ; then
+            if [ "${patch}" == "0133-novector.patch" ] ; then
                 continue
             fi
         fi
 
-        patch -Np1 -i "${srcdir}/tachyon/${i}" || true
+        patch -Np1 -patch "${srcdir}/tachyon/${patch}" || true
     done
 
     # Patch with kernel_compiler_patch patches.
     # Do this before any defconfig invocations so we
     # have all of the extra selectable uarches ready and selectable
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
+    patch -Np1 -patch "${srcdir}/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
 }
 
-# Allows user to modify the kernel config
+
+## Runs *config based on the user's wishes.
 _modify_defconfig() {
-    [ -n "$_makemenuconfig" ] && make ${BUILD_FLAGS[*]} menuconfig
-    [ -n "$_makexconfig" ] && make ${BUILD_FLAGS[*]} xconfig
-    [ -n "$_makenconfig" ] && make ${BUILD_FLAGS[*]} nconfig
+    [ -n "${_makemenuconfig}" ] && make ${BUILD_FLAGS[*]} menuconfig
+    [ -n "${_makexconfig}" ] && make ${BUILD_FLAGS[*]} xconfig
+    [ -n "${_makenconfig}" ] && make ${BUILD_FLAGS[*]} nconfig
 
     # Don't crash if all three are false
     true
 }
 
-# Copies the kernel config
+
+## Verifies the kernel configuration version
+## and copies the current kernel configuration, if wanted.
 _copy_defconfig() {
     local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
     [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
@@ -286,7 +320,9 @@ _copy_defconfig() {
     fi
 }
 
-# Updates the kernel config
+
+## Modifies the kernel configuration and displays a
+## selection of subarches (if left unspecified by the user).
 _update_defconfig() {
     # Copy configuration file (if found)
     if [ -f "${startdir}/kconfig" ]; then
@@ -294,18 +330,18 @@ _update_defconfig() {
         cp -Tf "${startdir}/kconfig" ./.config
     else
         echo ":: Using configuration file \"${srcdir}/${pkgbase}/config\""
-        cp -Tf $srcdir/tachyon/config ./.config
+        cp -Tf ${srcdir}/tachyon/config ./.config
     fi
 
     # Extra configuration
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
-                -e IKCONFIG \
-                -e IKCONFIG_PROC \
-                -u RT_GROUP_SCHED
+                   -e IKCONFIG \
+                   -e IKCONFIG_PROC \
+                   -u RT_GROUP_SCHED
     # Power management and ACPI options
     scripts/config -e ACPI_REV_OVERRIDE_POSSIBLE \
-                -e ACPI_TABLE_UPGRADE
+                   -e ACPI_TABLE_UPGRADE
     # Virtualization
     scripts/config -e KVM_SMM
     # General architecture-dependent options
@@ -316,34 +352,34 @@ _update_defconfig() {
     scripts/config -e NETFILTER_INGRESS
     # Device Drivers
     scripts/config -e FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
-                -e DELL_SMBIOS_SMM \
-                -m PATA_JMICRON \
-                -E SOUND SOUND_OSS_CORE \
-                -e SND_OSSEMUL \
-                -M SND_OSSEMUL SND_MIXER_OSS \
-                -M SND_MIXER_OSS SND_PCM_OSS \
-                -E SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                -m AGP -M AGP AGP_INTEL -M AGP_INTEL AGP_VIA
+                   -e DELL_SMBIOS_SMM \
+                   -m PATA_JMICRON \
+                   -E SOUND SOUND_OSS_CORE \
+                   -e SND_OSSEMUL \
+                   -M SND_OSSEMUL SND_MIXER_OSS \
+                   -M SND_MIXER_OSS SND_PCM_OSS \
+                   -E SND_PCM_OSS SND_PCM_OSS_PLUGINS \
+                   -m AGP -M AGP AGP_INTEL -M AGP_INTEL AGP_VIA
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config -e SECTION_MISMATCH_WARN_ONLY
     # File systems
     scripts/config -m NTFS3_FS \
-                -e NTFS3_LZX_XPRESS \
-                -e NTFS3_FS_POSIX_ACL
+                   -e NTFS3_LZX_XPRESS \
+                   -e NTFS3_FS_POSIX_ACL
     scripts/config -m SMB_SERVER \
-                -e SMB_SERVER_SMBDIRECT \
-                -e SMB_SERVER_CHECK_CAP_NET_ADMIN \
-                -e SMB_SERVER_KERBEROS5
+                   -e SMB_SERVER_SMBDIRECT \
+                   -e SMB_SERVER_CHECK_CAP_NET_ADMIN \
+                   -e SMB_SERVER_KERBEROS5
     # Security options
     scripts/config -e SECURITY_SELINUX \
-                -e SECURITY_SELINUX_BOOTPARAM \
-                -e SECURITY_SMACK \
-                -e SECURITY_SMACK_BRINGUP \
-                -e SECURITY_SMACK_NETFILTER \
-                -e SECURITY_SMACK_APPEND_SIGNALS \
-                -e SECURITY_TOMOYO \
-                -e SECURITY_APPARMOR \
-                -e SECURITY_YAMA
+                   -e SECURITY_SELINUX_BOOTPARAM \
+                   -e SECURITY_SMACK \
+                   -e SECURITY_SMACK_BRINGUP \
+                   -e SECURITY_SMACK_NETFILTER \
+                   -e SECURITY_SMACK_APPEND_SIGNALS \
+                   -e SECURITY_TOMOYO \
+                   -e SECURITY_APPARMOR \
+                   -e SECURITY_YAMA
     # Security options -> Landlock options
     scripts/config -e SECURITY_LANDLOCK
     # Library routines
@@ -351,7 +387,7 @@ _update_defconfig() {
 
     # EDAC enablement for modern CPUs
     scripts/config -e EDAC_AMD64 \
-                -e EDAC_IGEN6
+                   -e EDAC_IGEN6
 
     # Enable LLVM compilation
     [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
@@ -365,26 +401,26 @@ _update_defconfig() {
 
     # Enable or disable debug settings
     [ "${_debug}" == "y" ] && scripts/config -e DEBUG_INFO \
-                                            -e DEBUG_INFO_BTF \
-                                            -e DEBUG_INFO_DWARF4 \
-                                            -e PAHOLE_HAS_SPLIT_BTF \
-                                            -e DEBUG_INFO_BTF_MODULES
+                                             -e DEBUG_INFO_BTF \
+                                             -e DEBUG_INFO_DWARF4 \
+                                             -e PAHOLE_HAS_SPLIT_BTF \
+                                             -e DEBUG_INFO_BTF_MODULES
     [ "${_debug}" == "n" ] && scripts/config -d DEBUG_INFO \
-                                            -d DEBUG_INFO_BTF \
-                                            -d DEBUG_INFO_DWARF4 \
-                                            -d PAHOLE_HAS_SPLIT_BTF \
-                                            -d DEBUG_INFO_BTF_MODULES
+                                             -d DEBUG_INFO_BTF \
+                                             -d DEBUG_INFO_DWARF4 \
+                                             -d PAHOLE_HAS_SPLIT_BTF \
+                                             -d DEBUG_INFO_BTF_MODULES
 
     # Run olddefconfig
     make ${BUILD_FLAGS[*]} olddefconfig
-    diff -u $srcdir/tachyon/config .config || :
+    diff -u ${srcdir}/tachyon/config .config || :
 
     # Here we slightly break the config by removing one of the
     # members of the 'Processor family' selection.
     # This causes oldconfig to always invoke that selection.
-    sed -i '/CONFIG_GENERIC_CPU/d' .config || :
+    sed -patch '/CONFIG_GENERIC_CPU/d' .config || :
     # For a slim chance that someone is building X86_32
-    sed -i '/CONFIG_M686/d' .config || :
+    sed -patch '/CONFIG_M686/d' .config || :
 
     case ${_subarch} in
         "")
@@ -407,12 +443,13 @@ _update_defconfig() {
 
             # We're only interested in stderr
             {
-                local __ERROR=$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&$out)
+                local __ERROR=$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&${out})
             } {out}>/dev/null
 
-            # Invoke echo to sanitize the __ERROR, it can contain a newline or a \r
-            # symbol, thus breaking the script
-            if [ -n "$(echo $__ERROR)" ]; then
+            # Invoke echo to sanitize the __ERROR, it can contain a
+            # newline or a \r symbol, thus breaking the script.
+            # shellcheck disable=SC2116
+            if [ -n "$(echo ${__ERROR})" ]; then
                 warning "Selected subarch: ${_subarch} is not supported"
                 exit
             fi
@@ -431,7 +468,8 @@ _update_defconfig() {
     esac
 }
 
-# Prepares the installation
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#prepare()
 prepare() {
     cd "${_src_linux}" || exit 1
 
@@ -462,13 +500,15 @@ prepare() {
     make -s kernelrelease > version
 }
 
-# Build kernel
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#build()
 build() {
     cd "${_src_linux}" || exit 1
     make ${BUILD_FLAGS[*]} all
 }
 
-# Packages the kernel package
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#package()
 _package() {
     pkgdesc="${pkgdesc} This package includes the kernel and compiled modules."
     depends=("coreutils" "kmod" "initramfs")
@@ -496,7 +536,8 @@ _package() {
     rm "${modulesdir}"/build
 }
 
-# Packages the headers package
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#package()
 _package-headers() {
     pkgdesc="${pkgdesc} This package includes header files and scripts for building kernel modules."
     depends=("pahole")
@@ -539,7 +580,7 @@ _package-headers() {
     # Remove redundant architectures
     local arch
     for arch in "${builddir}"/arch/*/; do
-        [[ $arch = */x86/ ]] && continue
+        [[ ${arch} = */x86/ ]] && continue
         echo "Removing $(basename "${arch}")"
         rm -r "${arch}"
     done
@@ -556,43 +597,31 @@ _package-headers() {
     # Strip build tools
     local file
     while read -rd "" file; do
-        case "$(file -Sib "$file")" in
+        case "$(file -Sib "${file}")" in
             application/x-sharedlib\;*)      # Libraries (.so)
-                strip -v $STRIP_SHARED "$file" ;;
+                strip -v ${STRIP_SHARED} "${file}" ;;
             application/x-archive\;*)        # Libraries (.a)
-                strip -v $STRIP_STATIC "$file" ;;
+                strip -v ${STRIP_STATIC} "${file}" ;;
             application/x-executable\;*)     # Binaries
-                strip -v $STRIP_BINARIES "$file" ;;
+                strip -v ${STRIP_BINARIES} "${file}" ;;
             application/x-pie-executable\;*) # Relocatable binaries
-                strip -v $STRIP_SHARED "$file" ;;
+                strip -v ${STRIP_SHARED} "${file}" ;;
         esac
     done < <(find "${builddir}" -type f -perm -u+x ! -name vmlinux -print0)
 
     # Strip vmlinux
-    strip -v $STRIP_STATIC "${builddir}/vmlinux"
+    strip -v ${STRIP_STATIC} "${builddir}/vmlinux"
 
     # Add symlink to build directory
-    mkdir -p "$pkgdir/usr/src"
-    ln -sr "${builddir}" "$pkgdir/usr/src/$pkgbase"
+    mkdir -p "${pkgdir}/usr/src"
+    ln -sr "${builddir}" "${pkgdir}/usr/src/${pkgbase}"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#"$pkgbase"}")
-    _package${_p#"$pkgbase"}
+
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+for _package in "${pkgname[@]}"; do
+  eval "package_${_package}() {
+    $(declare -f "_package${_package#"${pkgbase}"}")
+    _package${_package#"${pkgbase}"}
   }"
 done
-
-# Taken from https://www.kernel.org/signature.html
-validpgpkeys=(
-  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds (torvalds@kernel.org)
-  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman (gregkh@kernel.org)
-  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
-  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
-)
-sha256sums=("7586962547803be7ecc4056efc927fb25214548722bd28171172f3599abb9764"
-            "SKIP"
-            "effa3deecc0266054731349ecabb68455f125c7be2f88fd21a841080fd30a4c8"
-            "SKIP"
-            "91adc6bf4b263480399d24a7640e11b0302d4b411910ee99eee2788b34bd297a")
