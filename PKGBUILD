@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Baptiste Daroussin <baptiste.daroussin@gmail.com>
