@@ -34,8 +34,13 @@ provides=(llama.cpp)
 
 options=(lto !debug)
 
-source=("git+${url}")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
+
+prepare() {
+    cd "$srcdir"
+    git clone --single-branch --branch main "${url}" "${_pkgname}"
+}
 
 pkgver() {
     cd "$_pkgname"
