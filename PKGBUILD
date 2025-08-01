@@ -6,8 +6,9 @@
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
 pkgver=47.0.0.0
-_libffmpegver=0.101.1
-pkgrel=1
+# curl -s https://nwjs.io/versions.json | jq -r 'limit(1; .versions[] | select(.components.chromium | startswith("137.")) | .version)'
+_libffmpegver=0.100.1
+pkgrel=2
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -42,7 +43,7 @@ source=(
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
 sha256sums=('aa6b60b18565a15b5571fddf857484bb2af643e4710a9adcf70f460f7e31e128'
-            'a570f6644cca949982ab5542468b9ec6b1fc76baca50d8852dcbe74f4d33d2ea')
+            'f97bd8f332bf1e5ac4f1d89f78c9dcfac9b2dbec9d02a29dfbb9d9d6c971e72e')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
@@ -71,4 +72,5 @@ package() {
     install -Dm644 "${srcdir}/usr/share/menu/${pkgname}.menu" -t "${pkgdir}/usr/share/menu"
     install -Dm644 "${srcdir}/usr/share/gnome-control-center/default-apps/${pkgname}.xml" \
         -t "${pkgdir}/usr/share/gnome-control-center/default-apps"
+    chmod 4755 "${pkgdir}/usr/lib/${pkgname}/${pkgname}-sandbox"
 }
