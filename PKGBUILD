@@ -5,7 +5,7 @@
 
 pkgname=edb-debugger
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
@@ -21,7 +21,8 @@ sha256sums=('04382485a60eb585f7dfa72993ee2dd2753564556a4abbfd747ec44809a0ad0c'
 prepare() {
   cmake -S$pkgname -Bbuild -Wno-deprecated \
         -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" \
-        -DDEFAULT_PLUGIN_DIR="/usr/lib/edb/"
+        -DDEFAULT_PLUGIN_DIR="/usr/lib/edb/" \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 }
 
 build() {
