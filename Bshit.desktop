@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bshit
+Version=1.0
+Exec="/usr/local/bin/Bshit"
+Type=Application
+Categories=AudioVideo
+Terminal=false
+Comment=你看你大坝进度条的cpp实现
+Icon=Bshit.png
