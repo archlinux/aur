@@ -46,7 +46,7 @@ Categories=Utility;Settings;
 StartupNotify=true
 EOF
 
-  # REMOVE rogue mimeinfo.cache if it sneaked in
+  # Remove mimeinfo cache file
   rm -f "$pkgdir/usr/share/applications/mimeinfo.cache"
 }
 
