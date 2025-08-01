@@ -1,0 +1,16 @@
+pkgbase = wayland-boomer-git
+	pkgdesc = zoomer application for linux, wayland alternative for tsoding's X11 boomer
+	pkgver = r25.4b51ff7
+	pkgrel = 1
+	url = https://github.com/lsck0/wayland-boomer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	depends = glfw
+	optdepends = grim: one example of a screenshot tool
+	optdepends = wl-clipboard: for clipboard screenshot support
+	source = git+https://github.com/lsck0/wayland-boomer.git
+	md5sums = SKIP
+
+pkgname = wayland-boomer-git
