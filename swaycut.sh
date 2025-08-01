@@ -100,7 +100,7 @@ function grab_window() {
     slurp -r <<< "$boxes"
 }
 
-function args() {
+function parse_args() {
     local options=$(getopt -o hf:o:m:ds --long help,filename:,output-folder:,mode:,clipboard-only,debug,silent -- "$@")
     eval set -- "$options"
 
@@ -156,7 +156,7 @@ SILENT=0
 FILENAME="$(date +'Sway-screenshot_%Y-%m-%d-%H:%M:%S.png')"
 [ -z "$SWAY_SCREENSHOT_DIR" ] && SAVEDIR=${XDG_PICTURES_DIR:=~} || SAVEDIR=${SWAY_SCREENSHOT_DIR}
 
-args $0 "$@"
+parse_args $0 "$@"
 
 SAVE_FULLPATH="$SAVEDIR/$FILENAME"
 [ $CLIPBOARD -eq 0 ] && log "Saving in: %s\n" "$SAVE_FULLPATH"
