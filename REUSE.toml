@@ -17,13 +17,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "qt5-quick3d-assimp-5.1.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-    "qt5-quick3d-assimp-5.1.patch",
-]
-SPDX-FileCopyrightText = "qt5-quick3d contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
