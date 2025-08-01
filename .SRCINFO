@@ -8,6 +8,7 @@ pkgbase = robosync
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = pkg-config
 	depends = zstd
 	source = https://crates.io/api/v1/crates/robosync/1.0.3/download
 	sha256sums = cf22f06c324cd0c0d340c0aa13b607adf26c79f6eaeccf57c9513d47dcaa97bc
