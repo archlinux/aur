@@ -3,7 +3,7 @@
 pkgname=eigenwallet-bin
 _pkgver=3.0.0
 pkgver=${_pkgver/-/.}
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="λ eigenwallet (previously UnstoppableSwap) is a GUI for trustless cross-chain XMR<>BTC Atomic Swaps."
 arch=('x86_64')
@@ -19,9 +19,9 @@ optdepends=(
 	'eigenwallet-developertools-bin: developer & maker tools for eigenwallet'
 )
 # Usually _pkgver
-pkgrelease=("${_pkgver}-beta.2")
+pkgrelease=("${_pkgver}-beta.3")
 source=("https://github.com/EigenWallet/core/releases/download/${pkgrelease}/EigenWallet_${pkgrelease}_amd64.deb")
-sha256sums=('89d91d521c1d801c3e9923de717650b826030855da4695c68c17496d535503f7')
+sha256sums=('4c88d95ba94a9a6f3db1a3315573beb767f239df0eb113317fc4536792d0a825')
 validpgpkeys=()
 
 package() {
