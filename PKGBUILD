@@ -21,6 +21,13 @@ makedepends=(
     cmake
     git
 )
+optdepends=(
+    'python-numpy: needed for convert_hf_to_gguf.py'
+    'python-safetensors: needed for convert_hf_to_gguf.py'
+    'python-sentencepiece: needed for convert_hf_to_gguf.py'
+    'python-pytorch: needed for convert_hf_to_gguf.py'
+    'python-transformers: needed for convert_hf_to_gguf.py'
+)
 conflicts=(
     libggml
     ggml
@@ -29,6 +36,8 @@ conflicts=(
     llama.cpp-cuda
     llama.cpp-hip
     ik-llama.cpp-cuda
+    ik-llama.cpp-hip
+    ik-llama.cpp-vulkan
 )
 provides=(llama.cpp)
 
@@ -64,7 +73,7 @@ build() {
         -DGGML_BLAS_VENDOR=OpenBLAS
         -DGGML_LTO=ON
         -DGGML_RPC=ON
-        -DGGML_NATEVE=ON
+        -DGGML_NATIVE=ON
         -Wno-dev
     )
     cmake "${_cmake_options[@]}"
