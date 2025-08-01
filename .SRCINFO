@@ -1,0 +1,12 @@
+pkgbase = yujons-counter-strafe-trainer
+	pkgdesc = A terminal-based counter-strafe mechanics trainer for tactical FPS games like Counter-Strike 2 and Valorant
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Yujonpradhananga/yujons-counter-strafe-trainer
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = yujons-counter-strafe-trainer-1.0.0.tar.gz::https://github.com/Yujonpradhananga/yujons-counter-strafe-trainer/archive/v1.0.0.tar.gz
+	sha256sums = 520cf8e52a5c20aed7f5cd55baa07eda7b814f4065b7720cdd0d0fe406c26c4a
+
+pkgname = yujons-counter-strafe-trainer
