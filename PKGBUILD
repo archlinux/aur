@@ -33,6 +33,7 @@ depends=(
 	'ffmpeg'
 	'flac'
 	'gtk3'
+	'kissfft' # AUR, only -git is packaged
 	'noto-fonts-extra'
 	'noto-fonts'
 	'sdl3_image'
@@ -50,7 +51,6 @@ depends=(
 
 makedepends=(
 	'miniaudio' # AUR, only -git is packaged, which happens to be identical to the latest available release as of 2024-11-22 since it's a year old
-	'kissfft' # AUR, only -git is packaged
 	'git'
 	'pkg-config'
 	'python-build'
