@@ -30,10 +30,6 @@ pkgbase = llama.cpp-hip
 	options = lto
 	options = !debug
 	source = git+https://github.com/ggerganov/llama.cpp
-	source = llama.cpp.conf
-	source = llama.cpp.service
 	sha256sums = SKIP
-	sha256sums = e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec
-	sha256sums = c090beede58ec9b8eeac9dc1e54291994d1385bbe87ea109ac48a445ba688750
 
 pkgname = llama.cpp-hip
