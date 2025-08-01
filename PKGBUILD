@@ -1,5 +1,5 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Bill Fraser <wfraser@codewise.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
