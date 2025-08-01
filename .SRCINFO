@@ -1,18 +1,19 @@
 pkgbase = terraboard
 	pkgdesc = A web dashboard to inspect Terraform States.
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/camptocamp/terraboard/
 	arch = x86_64
 	license = Apache-2
 	makedepends = go>=1.21
 	makedepends = git
-	makedepends = gzip
-	makedepends = tar
 	makedepends = gcc
+	makedepends = make
+	depends = glibc
 	provides = terraboard
 	conflicts = terraboard-bin
-	source = terraboard-v2.3.0.tar.gz::https://github.com/camptocamp/terraboard/archive/v2.3.0.tar.gz
-	sha256sums = 821b98cdf530d66ce491bcfd3d82e0993bb5b2e8a2f3f04ff3d63d23ab4f1b77
+	source = terraboard-v2.4.0.tar.gz::https://github.com/camptocamp/terraboard/archive/v2.4.0.tar.gz
+	source = terraboard.service
+	sha256sums = SKIP
 
 pkgname = terraboard

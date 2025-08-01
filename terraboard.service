@@ -1,0 +1,31 @@
+[Unit]
+Description=Terraboard - Terraform State Dashboard
+Documentation=https://github.com/camptocamp/terraboard
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=terraboard
+Group=terraboard
+ExecStart=/usr/bin/terraboard --config-file /etc/terraboard/terraboard.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=terraboard
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/terraboard /var/log/terraboard /tmp
+
+# Environment
+Environment=TERRABOARD_LOG_LEVEL=info
+Environment=TERRABOARD_LOG_FORMAT=plain
+
+[Install]
+WantedBy=multi-user.target
