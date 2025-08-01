@@ -2,7 +2,7 @@
 
 _pkgname="annotator"
 pkgname="$_pkgname-git"
-pkgver=2.0.0.r0.g4c953af
+pkgver=2.0.0.r7.g935cb65
 pkgrel=1
 pkgdesc="Image annotation for Elementary OS"
 url='https://github.com/phase1geo/Annotator'
@@ -10,17 +10,26 @@ license=("GPL-3.0-or-later")
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 
 depends=(
+  'cairo'
+  'dconf'
+  'gdk-pixbuf2'
+  'glib2'
   'granite7'
+  'graphene'
+  'gtk4'
+  'hicolor-icon-theme'
+  'libgee'
   'libportal-gtk4'
+  'libxml2'
+  'pango'
 )
 makedepends=(
   'git'
-  'gtk3'
   'meson'
   'vala'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname=${pkgver%%.g*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"

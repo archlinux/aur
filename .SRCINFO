@@ -1,6 +1,6 @@
 pkgbase = annotator-git
 	pkgdesc = Image annotation for Elementary OS
-	pkgver = 2.0.0.r0.g4c953af
+	pkgver = 2.0.0.r7.g935cb65
 	pkgrel = 1
 	url = https://github.com/phase1geo/Annotator
 	arch = aarch64
@@ -10,12 +10,21 @@ pkgbase = annotator-git
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = gtk3
 	makedepends = meson
 	makedepends = vala
+	depends = cairo
+	depends = dconf
+	depends = gdk-pixbuf2
+	depends = glib2
 	depends = granite7
+	depends = graphene
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libgee
 	depends = libportal-gtk4
-	provides = annotator=2.0.0
+	depends = libxml2
+	depends = pango
+	provides = annotator=2.0.0.r7
 	conflicts = annotator
 	source = annotator::git+https://github.com/phase1geo/Annotator.git
 	sha256sums = SKIP
