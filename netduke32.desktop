@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=NetDuke32
+Comment=Advanced Duke Nukem 3D multiplayer engine
+Icon=netduke32
+Exec=netduke32
+Categories=Game;Shooter;
+Terminal=false
+StartupNotify=false

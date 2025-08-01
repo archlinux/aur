@@ -1,0 +1,12 @@
+_user="${SUDO_USER:-$(logname 2>/dev/null)}"
+_home="$(getent passwd "$_user" | cut -d: -f6)"
+_config_home="${XDG_CONFIG_HOME:-$_home/.config}"
+
+post_install() {
+  echo "Remember you need 'Duke Nukem 3D' data files to play. You can put them under"
+  echo "'/usr/share/games/netduke32/' for all users or '${_config_home}/netduke32/' for yourself."
+}
+
+post_upgrade() {
+  post_install
+}

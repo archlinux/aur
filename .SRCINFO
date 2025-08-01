@@ -1,0 +1,27 @@
+pkgbase = netduke32
+	pkgdesc = An advanced Duke Nukem 3D source port with improved multiplayer functionality
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://voidpoint.io/StrikerTheHedgefox/eduke32-csrefactor
+	install = netduke32.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = mesa
+	makedepends = glu
+	makedepends = git
+	depends = libvpx
+	depends = sdl2
+	depends = flac
+	depends = libvorbis
+	depends = alsa-lib
+	optdepends = freepats-general-midi: a free soundfont for music
+	optdepends = fluidsynth: alternative midi sequencer
+	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
+	source = netduke32::git+https://voidpoint.io/StrikerTheHedgefox/eduke32-csrefactor.git#tag=NetDuke32_v1.2.1
+	source = netduke32.png
+	source = netduke32.desktop
+	sha256sums = 4347a3dba92502b7e9e0c775226501ab974b7f92153b7660cacf03b6f179595e
+	sha256sums = 1654ddd36ec513ceb91adac09ecd5986f176612384d897b58cf70385a96882a3
+	sha256sums = dcd83d9b403cc5fa51a4bd8848c8341009aac0ed1b97b2ed504be2f870e4bbee
+
+pkgname = netduke32
