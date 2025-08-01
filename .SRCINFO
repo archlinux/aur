@@ -1,22 +1,22 @@
 pkgbase = electron-fiddle-bin
 	pkgdesc = :electron: 🚀 The easiest way to get started with Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.36.6
+	pkgver = 0.37.2
 	pkgrel = 1
 	url = https://electronjs.org/fiddle
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = electron33
-	provides = electron-fiddle=0.36.6
+	depends = electron36
+	provides = electron-fiddle=0.37.2
 	conflicts = electron-fiddle
 	source = electron-fiddle.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = electron-fiddle-0.36.6-aarch64.rpm::https://github.com/electron/fiddle//releases/download/v0.36.6/electron-fiddle-0.36.6-1.arm64.rpm
-	sha256sums_aarch64 = 6385de64ceec5ef5ba35c765da4f6fdeb00484e541aa8fcc60b2933660719968
-	source_armv7h = electron-fiddle-0.36.6-armv7h.rpm::https://github.com/electron/fiddle//releases/download/v0.36.6/electron-fiddle-0.36.6-1.armv7hl.rpm
-	sha256sums_armv7h = 51e6df7e16eeac1ac0422b3649f212bc63f3708142ffa9a95aff9cd0ca1becb6
-	source_x86_64 = electron-fiddle-0.36.6-x86_64.rpm::https://github.com/electron/fiddle//releases/download/v0.36.6/electron-fiddle-0.36.6-1.x86_64.rpm
-	sha256sums_x86_64 = ac7b55ced87524b795e5896802a0a28caab6dc1aea98b0e97c59b0ed2955a86d
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = electron-fiddle-0.37.2-aarch64.rpm::https://github.com/electron/fiddle//releases/download/v0.37.2/electron-fiddle-0.37.2-1.arm64.rpm
+	sha256sums_aarch64 = dae97b9a4e534df10725d3f4886ce257b927c5d18dd34c2652cc17e875152096
+	source_armv7h = electron-fiddle-0.37.2-armv7h.rpm::https://github.com/electron/fiddle//releases/download/v0.37.2/electron-fiddle-0.37.2-1.armv7hl.rpm
+	sha256sums_armv7h = 9bdc8333ca56a5353bd30b66a62a3f6312eedc91c4de6a3b538bd8e3e4e7d394
+	source_x86_64 = electron-fiddle-0.37.2-x86_64.rpm::https://github.com/electron/fiddle//releases/download/v0.37.2/electron-fiddle-0.37.2-1.x86_64.rpm
+	sha256sums_x86_64 = b704b8699fb62fb8c90e3e027e70406014a1afde9552c42cb7634d62e19fc12d
 
 pkgname = electron-fiddle-bin
