@@ -1,7 +1,7 @@
 pkgbase = otter-launcher
 	pkgdesc = A rust-based cli/tui launcher built for keyboard-centric users, featuring vi & emacs keybinds, ascii decoration, etc
 	pkgver = 0.5.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kuokuo123/otter-launcher
 	arch = x86_64
 	license = GPL-3.0
