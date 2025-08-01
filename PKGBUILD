@@ -1,25 +1,37 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-# This package installs the latest SickChill release
-
-# To install another SickChill release:
-# - Comment out pkgver()
-# - Set the release in variable pkgver: pkgver=<release>
-# - Set the same release number at the end of the "pip install" line,
-#   by changing "sickchill" to "sickchill==$pkgver"
+# This package installs the latest SickChill release, not the latest commit
 #
-# To install the latest commit:
-# - Comment out pkgver()
-# - Set some descriptive label in variable pkgver: pkgver=latest
-# - Change "sickchill" to "git+https://github.com/SickChill/sickchill.git"
-#   to install the latest from the default branch
-# - Or change "sickchill" to "git+https://github.com/SickChill/sickchill.git@develop"
-#   to install the latest from the 'develop' branch
-# )
-
-# This "PIP install" package is similar to a VCS package:
-# it has a pkgver() function and a reinstall updates the package.
+# This "PIP install" package is similar to a VCS package.
+# It has a pkgver() function and a reinstall updates the package.
 # That is the only reason why this package ends on "-git".
+
+# To install another SickChill release version:
+#
+#   - Comment out pkgver()
+#
+#   - Set the release number in variable pkgver: pkgver=<release>
+#
+#   - Set the same release number at the end of the "pip install" line,
+#     by changing "sickchill" to "sickchill==$pkgver"
+
+# To install the latest commit version:
+#
+#   - Replace pkgver() with:
+#
+#         pkgver() {
+#           printf '%(%Y%m%d)T.latest' '-1'
+#         }
+#
+#   - Add "git" to "makedepends"
+#
+#   - Change the end of the "pip install" line from "sickchill" to either one of:
+#
+#     - "git+https://github.com/SickChill/sickchill.git"
+#       to install the latest from the default git branch
+#
+#     - "git+https://github.com/SickChill/sickchill.git@develop"
+#       to install the latest from the "develop" git branch
 
 pkgname=sickchill-git
 pkgver=2024.3.1.r0
@@ -27,20 +39,23 @@ pkgrel=1
 pkgdesc='Automatic video library manager for TV shows'
 arch=(any)
 url=https://sickchill.github.io
-license=(GPL3)
+license=(GPL-3.0-or-later)
 makedepends=(jq python-virtualenv)
-optdepends=('libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
-            'unrar: for RAR files')
+optdepends=(
+  'libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
+  'unrar: for RAR files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
 install=$pkgname.install
-source=(sickchill.service
-        sickchill.sysusers
-        sickchill.tmpfiles)
-sha256sums=('b417284472d804e634c0dcaac2876ca164ad9a485f947e0f05798d0ce1136d59'
-            'aaeb298c9717da8b28853ed15509fb8428d975ae49e8737ebcec15caab9f0978'
-            '2069f15e18fc7dd0f0f25b623f2067fc9028b1ca4122021a62364aa39914f88f')
+source=(
+  sickchill.service
+  sickchill.sysusers
+  sickchill.tmpfiles)
+sha256sums=(
+  'b417284472d804e634c0dcaac2876ca164ad9a485f947e0f05798d0ce1136d59'
+  'aaeb298c9717da8b28853ed15509fb8428d975ae49e8737ebcec15caab9f0978'
+  '2069f15e18fc7dd0f0f25b623f2067fc9028b1ca4122021a62364aa39914f88f')
 
 pkgver() {
   local version
@@ -53,18 +68,18 @@ build() {
   export XDG_CACHE_HOME=cache/pip
   VIRTUALENV_OVERRIDE_APP_DATA=cache/virtualenv virtualenv build
   PIP_CONFIG_FILE=/dev/null build/bin/pip install \
-      --ignore-installed --isolated --cache-dir=cache --prefix=. --root=build \
-      --default-timeout=60 --disable-pip-version-check --no-warn-script-location --progress-bar=off \
-      setuptools sickchill
+    --ignore-installed --isolated --cache-dir=cache --prefix=. --root=build \
+    --default-timeout=60 --disable-pip-version-check --no-warn-script-location --progress-bar=off \
+    setuptools sickchill
 
   sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill
 }
 
 package() {
   install -Dm644 sickchill.service -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 sickchill.sysusers   "$pkgdir/usr/lib/sysusers.d/sickchill.conf"
-  install -Dm644 sickchill.tmpfiles   "$pkgdir/usr/lib/tmpfiles.d/sickchill.conf"
+  install -Dm644 sickchill.sysusers "$pkgdir/usr/lib/sysusers.d/sickchill.conf"
+  install -Dm644 sickchill.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/sickchill.conf"
 
   install -dm755 "$pkgdir/opt/sickchill"
-  cp -a build    "$pkgdir/opt/sickchill/app"
+  cp -a build "$pkgdir/opt/sickchill/app"
 }
