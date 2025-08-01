@@ -235,7 +235,7 @@ function helmrelease() {
               valuesFromItemResource="$(<<< "$valuesFromItemResource" | base64 -d)"
             fi
             if [[ "$valuesFromItemTargetPath" == "" ]]; then
-              values="$(<<< "$values" | yq -er --argjson valuesFromItemResource "$valuesFromItemResource" '. * $valuesFromItemResource')"
+              values="$(<<< "$values" | yq -er --argjson valuesFromItemResource "$(yq -e . <<<"$valuesFromItemResource")" '. * $valuesFromItemResource')"
             else
               values="$(<<< "$values" | yq -er --arg valuesFromItemResource "$valuesFromItemResource" --arg valuesFromItemTargetPath "$valuesFromItemTargetPath" 'setpath($valuesFromItemTargetPath | split("."); $valuesFromItemResource)')"
             fi
