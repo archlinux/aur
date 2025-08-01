@@ -1,29 +1,30 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk>
+# Maintainer: Sourcegraph <support@sourcegraph.com>
+
+pkgbase=ampcode
 pkgname=ampcode
-_npmname="@sourcegraph/amp"
-pkgver=0.0.1751990659.g94e814
+pkgver=0.0.1754024802
 pkgrel=1
-pkgdesc="CLI for Amp, an agentic coding tool in research preview from Sourcegraph"
-arch=('any')
-url="https://github.com/sourcegraph/amp"
-license=('Apache-2.0')
-depends=('nodejs>=18')
-makedepends=('npm')
+pkgdesc="An agentic coding tool, in research preview from Sourcegraph"
+arch=('x86_64' 'aarch64')
+url="https://ampcode.com"
+license=('custom:proprietary')
+depends=('ripgrep')
 provides=('amp')
-optdepends=(
-	'git: allow Amp to use git'
-	'github-cli: interact with GitHub'
-	'glab: interact with GitLab'
-	'ripgrep: enhanced file search'
-)
-_npmver=${pkgver//.g/-g}
-source=("https://registry.npmjs.org/$_npmname/-/amp-$_npmver.tgz")
-b2sums=('ecfc63b2e30250b9268551c4cee42ec452a88bdb11b6b696ef16bc40ca5c8fb7f6988589063eafb9fcee720fb0fce823883db19be907152874ee060180e77570')
-noextract=("amp-$_npmver.tgz")
+replaces=('sourcegraph-amp')
+conflicts=('amp')
+options=('!strip')
+
+source_x86_64=("amp-0.0.1754024802-x86_64::https://github.com/sourcegraph/amp-cli/releases/download/v0.0.1754024802/amp-linux-x64")
+source_aarch64=("amp-0.0.1754024802-aarch64::https://github.com/sourcegraph/amp-cli/releases/download/v0.0.1754024802/amp-linux-arm64")
+
+sha256sums_x86_64=('aabef5e6484aed7d2226f23160a3e08e98a0a9fe178f47c10ac25decde966f4e')
+sha256sums_aarch64=('a1bb4b2a82d1bd94c68bc596e5b5bb356561c7f86835c6fca7be0603e1012161')
 
 package() {
-	npm install -g --prefix "${pkgdir}/usr" "${srcdir}/amp-$_npmver.tgz"
-
-	# Install README as license documentation since no LICENSE file exists
-	install -Dm644 "${pkgdir}/usr/lib/node_modules/$_npmname/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/README.md"
+    # The downloaded binary needs to be renamed to amp for installation
+    if [[ "$CARCH" == "x86_64" ]]; then
+        install -Dm755 "${srcdir}/amp-0.0.1754024802-x86_64" "${pkgdir}/usr/bin/amp"
+    elif [[ "$CARCH" == "aarch64" ]]; then
+        install -Dm755 "${srcdir}/amp-0.0.1754024802-aarch64" "${pkgdir}/usr/bin/amp"
+    fi
 }
