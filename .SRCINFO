@@ -1,19 +1,17 @@
 pkgbase = neoplayer-bin
 	pkgdesc = A module player built with Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
-	url = https://github.com/lucmsilva651/NeoPlayer
+	url = https://nightly.link/lucmsilva651/NeoPlayer/workflows/build/main
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = electron37
-	provides = neoplayer=1.3.0
+	provides = neoplayer=1.3.1
 	conflicts = neoplayer
 	options = !emptydirs
-	source = neoplayer-1.3.0.zip::https://github.com/lucmsilva651/NeoPlayer/releases/download/v1.3.0/neoplayer-linux.zip
-	source = neoplayer-1.3.0.png::https://raw.githubusercontent.com/lucmsilva651/NeoPlayer/v1.3.0/src/assets/icons/png/512x512.png
+	source = neoplayer-1.3.1.rpm::https://github.com/lucmsilva651/NeoPlayer/releases/download/v1.3.1/neoplayer-1.3.1-1.x86_64.rpm
 	source = neoplayer.sh
-	sha256sums = 06528225391635133317c31b2fca7639d41320f967ac92ddbc79492ef06f5c8f
-	sha256sums = 833d907571bd88c4b9c11751ccfeb7b6d501aa646d2b57a082f9b9723e2999f9
+	sha256sums = 9ce9ddfad382255ce7a24220367cb17b82297c7d82e16feff8740f397ab0ab89
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = neoplayer-bin
