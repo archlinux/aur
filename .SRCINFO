@@ -28,7 +28,6 @@ pkgbase = ik-llama.cpp-cuda
 	conflicts = llama.cpp-cuda
 	conflicts = llama.cpp-hip
 	conflicts = ik-llama.cpp
-	conflicts = ik-llama.cpp-hip
 	conflicts = ik-llama.cpp-vulkan
 	options = lto
 	options = !debug
