@@ -13,7 +13,7 @@ sha256sums=('90b57c662b565407196cbbc26385eed00e095a4856a1da5f34c64c47f678a60c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
