@@ -1,0 +1,20 @@
+pkgbase = ssh2incus
+	pkgdesc = SSH server for Incus instances
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://ssh2incus.com/
+	install = ssh2incus.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = just
+	optdepends = incus
+	backup = etc/default/ssh2incus
+	source = ssh2incus-0.6::git+https://github.com/mobydeck/ssh2incus.git#tag=0.6
+	sha256sums = SKIP
+	source_x86_64 = amd64.patch
+	sha256sums_x86_64 = 276c724b106316d9845626c154950cff087a5c56ca635d94ff2bcfffb646ae58
+	source_aarch64 = arm64.patch
+	sha256sums_aarch64 = 7701caa5ecb4e4927b2afcbc3b45aeba30739c59b5d3a3a7aa5dc451895fc3e2
+
+pkgname = ssh2incus

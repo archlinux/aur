@@ -1,0 +1,64 @@
+diff --git a/server/sftp-server-binary/sftp-server-binary.go b/server/sftp-server-binary/sftp-server-binary.go
+index 7e2e3ca..708c093 100644
+--- a/server/sftp-server-binary/sftp-server-binary.go
++++ b/server/sftp-server-binary/sftp-server-binary.go
+@@ -6,8 +6,6 @@ import (
+ )
+ 
+ var (
+-	//go:embed bin/ssh2incus-sftp-server-arm64.gz
+-	arm64Bytes []byte
+ 	//go:embed bin/ssh2incus-sftp-server-amd64.gz
+ 	amd64Bytes []byte
+ 
+@@ -15,9 +13,6 @@ var (
+ )
+ 
+ func init() {
+-	if len(arm64Bytes) == 0 {
+-		panic("arm64Bytes is empty")
+-	}
+ 	if len(amd64Bytes) == 0 {
+ 		panic("amd64Bytes is empty")
+ 	}
+@@ -29,8 +24,6 @@ func BinName() string {
+ 
+ func BinBytes(arch string) ([]byte, error) {
+ 	switch arch {
+-	case "arm64", "aarch64":
+-		return arm64Bytes, nil
+ 	case "amd64", "x86_64", "x64", "x86-64", "x86":
+ 		return amd64Bytes, nil
+ 	default:
+diff --git a/server/stdio-proxy-binary/stdio-proxy-binary.go b/server/stdio-proxy-binary/stdio-proxy-binary.go
+index fe7c0b8..133df90 100644
+--- a/server/stdio-proxy-binary/stdio-proxy-binary.go
++++ b/server/stdio-proxy-binary/stdio-proxy-binary.go
+@@ -6,8 +6,6 @@ import (
+ )
+ 
+ var (
+-	//go:embed bin/ssh2incus-stdio-proxy-arm64.gz
+-	arm64Bytes []byte
+ 	//go:embed bin/ssh2incus-stdio-proxy-amd64.gz
+ 	amd64Bytes []byte
+ 
+@@ -15,9 +13,6 @@ var (
+ )
+ 
+ func init() {
+-	if len(arm64Bytes) == 0 {
+-		panic("arm64Bytes is empty")
+-	}
+ 	if len(amd64Bytes) == 0 {
+ 		panic("amd64Bytes is empty")
+ 	}
+@@ -29,8 +24,6 @@ func BinName() string {
+ 
+ func BinBytes(arch string) ([]byte, error) {
+ 	switch arch {
+-	case "arm64", "aarch64":
+-		return arm64Bytes, nil
+ 	case "amd64", "x86_64", "x64", "x86-64", "x86":
+ 		return amd64Bytes, nil
+ 	default:
