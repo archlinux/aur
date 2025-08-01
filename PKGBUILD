@@ -5,9 +5,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=8.1.3
-pkgrel=1
-_kissfftver=131.1.0
-_miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
+pkgrel=2
 pkgdesc="A modern music player"
 arch=('x86_64' 'aarch64')
 url="https://tauonmusicbox.rocks"
@@ -48,7 +46,8 @@ depends=(
 )
 
 makedepends=(
-	'pkg-config'
+	'miniaudio' # AUR, only -git is packaged, which happens to be identical to the latest available release as of 2024-11-22 since it's a year old
+	'kissfft' # AUR, only -git is packaged
 	'git'
 	'pkg-config'
 	'python-build'
@@ -68,19 +67,15 @@ optdepends=(
 	'librespot: Spotify audio playback'      # AUR
 )
 
-source=(
-	"${_gitname}-${pkgver}.tar.gz::https://github.com/Taiko2k/Tauon/archive/v${pkgver}.tar.gz"
-	"kissfft-${_kissfftver}.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/${_kissfftver}.tar.gz"
-	"miniaudio-${_miniaudiocommit}.tar.gz::https://github.com/mackron/miniaudio/archive/${_miniaudiocommit}.tar.gz"
-)
+source=("${_gitname}-${pkgver}.tar.gz::https://github.com/Taiko2k/Tauon/archive/v${pkgver}.tar.gz")
 
-sha256sums=('fc9bf9c8c3790d660d7c2cd1b1b9b682f0fadd2eca14ac359ec0f93cbe090e92'
-            '76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a'
-            'aacb63f571608210e69c5562eb8a9e3d1cb936bdee7a2eb8ffbc40f63888d8e8')
+sha256sums=('fc9bf9c8c3790d660d7c2cd1b1b9b682f0fadd2eca14ac359ec0f93cbe090e92')
 
 prepare() {
-	cp -r kissfft-${_kissfftver}/* ${_gitname}-${pkgver}/src/phazor/kissfft/
-	cp -r miniaudio-${_miniaudiocommit}/* ${_gitname}-${pkgver}/src/phazor/miniaudio/
+	# Use system kissfft instead of the expected cloned repository
+	cd "${_gitname}-${pkgver}"
+	sed -i 's|"src/phazor/kissfft/kiss_fftr.c", "src/phazor/kissfft/kiss_fft.c", ||g' pyproject.toml
+	sed -i 's|"samplerate"|"kissfft-float", "samplerate"|g' pyproject.toml
 }
 
 build() {
