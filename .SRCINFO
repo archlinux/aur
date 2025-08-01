@@ -1,7 +1,7 @@
 pkgbase = kumono-git
 	pkgdesc = Media ripper for coomer and kemono
 	pkgver = vcs
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/APT37/kumono
 	arch = x86_64
 	license = MIT-0
@@ -11,7 +11,7 @@ pkgbase = kumono-git
 	conflicts = kumono
 	conflicts = kumono-bin
 	options = !lto
-	source = kumono-git-vcs-5::git+https://github.com/APT37/kumono
+	source = kumono-vcs::git+https://github.com/APT37/kumono
 	sha256sums = SKIP
 
 pkgname = kumono-git
