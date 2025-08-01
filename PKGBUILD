@@ -2,7 +2,7 @@
 
 pkgname=openai-chatgpt-nativefier
 pkgver=37.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="OpnenAI ChatGPT desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://chatgpt.com/"
@@ -56,4 +56,4 @@ package() {
 }
 sha256sums=('9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203'
             '04ed8323dbdf9f2c4741fa05f171e2016feb9c51a5ca52917ab05785b71608f7'
-            '5c4d864bf833a80893692da5e74e67c580f5fc26d715e43b8dd47daeac83d116')
+            '4484d72dc9143d5bd6b221d6ab01bc4c228205f1439b59f59c8246665913b72d')

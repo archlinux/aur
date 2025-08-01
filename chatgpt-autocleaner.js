@@ -2,7 +2,7 @@
 // @name         ChatGPT AutoCleaner v2
 // @namespace    81e29c9d-b6e3-4210-b862-c93cb160f09a
 // @version      1.0
-// @description  Automatically removes old messages on the ChatGPT page, keeping only the latest 5
+// @description  Automatically removes old messages on the ChatGPT page, keeping only the latest
 // @author       Aleksey Maximov <amaxcz@gmail.com>
 // @license      MIT
 // @match        https://chat.openai.com/*
@@ -18,7 +18,7 @@
         if (document.getElementById("chatgpt-cleaner-panel")) return;
 
         const defaults = {
-            leaveOnly: 5,
+            leaveOnly: 10,
             intervalSec: 10,
             enabled: false
         };

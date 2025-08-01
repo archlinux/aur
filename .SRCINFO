@@ -1,7 +1,7 @@
 pkgbase = openai-chatgpt-nativefier
 	pkgdesc = OpnenAI ChatGPT desktop app (electron)
 	pkgver = 37.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chatgpt.com/
 	arch = armv7l
 	arch = i686
@@ -19,6 +19,6 @@ pkgbase = openai-chatgpt-nativefier
 	source = chatgpt-autocleaner.js
 	sha256sums = 9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203
 	sha256sums = 04ed8323dbdf9f2c4741fa05f171e2016feb9c51a5ca52917ab05785b71608f7
-	sha256sums = 5c4d864bf833a80893692da5e74e67c580f5fc26d715e43b8dd47daeac83d116
+	sha256sums = 4484d72dc9143d5bd6b221d6ab01bc4c228205f1439b59f59c8246665913b72d
 
 pkgname = openai-chatgpt-nativefier
