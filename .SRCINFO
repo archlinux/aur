@@ -1,6 +1,6 @@
 pkgbase = qrhythmcafe
 	pkgdesc = A desktop version of rhythm.cafe to download levels directly into the Rhythm Doctor levels folder
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/chocolateimage/qrhythmcafe
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = qrhythmcafe
 	depends = python
 	depends = python-pyqt6
 	depends = python-requests
+	depends = python-pyyaml
 	depends = python-gobject
 	depends = glib2
-	source = qrhythmcafe-1.0.1.tar.gz::https://github.com/chocolateimage/qrhythmcafe/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 4271566d295f38d2f57a6b88c42ae55faf2cf3d668f6bbc282bdced3fb3323ca
+	source = qrhythmcafe-1.1.0.tar.gz::https://github.com/chocolateimage/qrhythmcafe/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 80154681f8d3e1138d88e5745249538030881f10fd59037a3f6c45543a6deed1
 
 pkgname = qrhythmcafe
