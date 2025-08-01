@@ -1,11 +1,12 @@
-# Maintainer: pikl <me@pikl.uk>
+# Maintainer: Robert Schiele <rschiele@gmail.com>
+# Contributor: pikl <me@pikl.uk>
 # Contributor: Markus Hartung <mail@hartmark.se>
 # Contributor: Kevin Lewis <aur AT kevin DOT oakaged DOT io>
 # Contributor: Jason Lenz <Jason@Lenzplace.org>
 _pkgname=oscar
 pkgname=oscar
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CrimsonNape/OSCAR-code"
@@ -26,7 +27,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/CrimsonNape/OSCAR-code/-/archive/v${pkgver}/OSCAR-code-v${pkgver}.tar.gz"
   'oscar.desktop'
 )
-sha256sums=('900af74f6e9b36cd1bb7e32d65fb7a5b1de3157d6c3416d63fa9bf527b94d2dd'
+sha256sums=('0282f4e8347c3e52911be1809eae8832da64e961cae9c968278a0a6fbceb5d51'
             '6b2f735622f218e2ac5ef61475886fadfeeedd5f15b04fa0d54451162ee394ad')
 
 build() {
