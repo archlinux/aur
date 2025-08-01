@@ -1,6 +1,6 @@
 pkgbase = stu
 	pkgdesc = TUI for AWS S3
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/lusingander/stu
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stu
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = stu-0.7.2.tar.gz::https://github.com/lusingander/stu/archive/v0.7.2.tar.gz
-	sha512sums = 0d252d257e491892a7208b6e189352b2be020d558b977463551a6a3efce7d6808f7621758c09a7f0c4f206a058e142194c3fb6d64c96a3d2314cc9eb00174cca
+	source = stu-0.7.3.tar.gz::https://github.com/lusingander/stu/archive/v0.7.3.tar.gz
+	sha512sums = 33a4dcc0b2f48da25d760c2479d4d59c19012bf64f2502b584242b2e929ee51039178dc0e7c5a4f00601ab5bc419a1689b2e1d997b90c6881b752d356b607a04
 
 pkgname = stu
