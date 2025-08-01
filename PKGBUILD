@@ -1,6 +1,6 @@
 # Maintainer: Max Harmathy <harmathy@alumni.tum.de>
 pkgname=openstack_cli
-pkgver=0.12.4
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="CLI for the OpenStack written in Rust"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
 conflicts=('osc')
 options=('!lto')
 source=("git+$url.git#tag=$pkgname-v$pkgver")
-sha256sums=('c5dc88ab17a088cb6d8ab719f2358504801dd486e1904b7dd1381f9cb2b7123a')
+sha256sums=('2bc66f86f7b0e5542cf75db0e8248b032b10a186401fae14436bd3c7fe4f7f46')
 
 build() {
   cd openstack
