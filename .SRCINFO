@@ -1,6 +1,6 @@
 pkgbase = stan-desktop
 	pkgdesc = Unnofficial Stan desktop application
-	pkgver = 1.0.9.aurpatch.2
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/stan-desktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = stan-desktop
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/stan-desktop/application/-/archive/1.0.9.aurpatch.2/application-1.0.9.aurpatch.2.tar.bz2
-	sha256sums = d6504f3bcfe21ff52a2362ea9a14d6e45c27d380b87ca12639aae0e24c663def
+	source = https://gitlab.com/linuxbombay/stan-desktop/application/-/archive/1.0.10/application-1.0.10.tar.bz2
+	sha256sums = e679d8eea3667e869bde6c9400af95ba2df111783c24d3ab0a509f503054c729
 
 pkgname = stan-desktop

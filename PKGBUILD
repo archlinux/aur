@@ -2,7 +2,7 @@ pkgname=stan-desktop
 _pkgname=Stan-desktop
 pkgrlname=stan
 _pkgrlname=Stan
-pkgver=1.0.9.aurpatch.2
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Unnofficial Stan desktop application"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('d6504f3bcfe21ff52a2362ea9a14d6e45c27d380b87ca12639aae0e24c663def')
+sha256sums=('e679d8eea3667e869bde6c9400af95ba2df111783c24d3ab0a509f503054c729')
 
 package() {
     cd "$srcdir/application-$pkgver"
