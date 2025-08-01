@@ -1,5 +1,5 @@
 pkgname=installer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple TUI installer tool written in Go"
 arch=('x86_64')
