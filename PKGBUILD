@@ -2,7 +2,7 @@
 pkgname=printnotes-bin
 _pkgname=printnotes
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform markdown notes app inspired by Google Keep and Obsidian.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/RoBoT095/printnotes"
@@ -30,7 +30,10 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/application-vnd.appimage/${pkgname%-bin}/g" "${srcdir}/squashfs-root/com.${pkgname%-bin}.${pkgname%-bin}.desktop"
+    sed -i -e "
+        s/usr\/bin\///g
+        s/application-vnd.appimage/${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/com.${pkgname%-bin}.${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

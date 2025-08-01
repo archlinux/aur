@@ -1,7 +1,7 @@
 pkgbase = printnotes-bin
 	pkgdesc = A cross-platform markdown notes app inspired by Google Keep and Obsidian.(Prebuilt version)
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RoBoT095/printnotes
 	arch = x86_64
 	license = GPL-3.0-only
