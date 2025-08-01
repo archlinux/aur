@@ -7,7 +7,7 @@ makedepends=(git cmake ninja)
 pkgdesc="你看你大坝进度条的cpp实现"
 arch=("x86_64")
 depends=(ffmpeg qt6-base)
-license=("/usr/share/licenses/spdx/GPL-3.0-or-later.txt")
+license=("GPL-3.0")
 source=("${pkgname}::git+https://github.com/yichun822/Bshit.git#branch=master"
         "Bshit.desktop"
         "Bshit.png")
