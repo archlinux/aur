@@ -3,8 +3,8 @@
 # Contributor: Marcel Robitaille <mail [at] marcelrobitaille.me>
 
 pkgname=rust-motd
-pkgver=1.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Beautiful, useful, configurable MOTD generation with zero runtime dependencies'
 arch=(x86_64)
 url=https://github.com/rust-motd/rust-motd
@@ -15,7 +15,7 @@ conflicts=($pkgname-bin)
 depends=()
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::https://github.com/rust-motd/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('f72516241a7b9649c70f905bfae5fb40fc2c900d895a7fcaec66c8a5187da8ee')
+sha256sums=('4004d135a27b8116cf7420927847ffe2dd047db98689da4a66f157ee6d6793b8')
 options=()
 
 prepare() {
