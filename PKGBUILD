@@ -247,38 +247,40 @@ export "KBUILD_BUILD_USER=${pkgbase}"
 export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @${SOURCE_DATE_EPOCH}})"
 
 
+## Logs a message.
+##
+## This method is internal and should not be used directly.
+##
+## Arguments: <str:ANSI color code> <str:level name> <str:message...>
+_log() {
+    COLOR_CODE="${1}"
+    LEVEL_NAME="${2}"
+    shift 2
+    
+    if [ -z "${_disable_colorful_logging}" ]; then
+        echo -en "\e[1;${COLOR_CODE}m:: ${LEVEL_NAME}: \e[0m\e[0;${COLOR_CODE}m"
+        echo -n "${*}"
+        echo -e "\e[0m"
+    else
+        echo -en ":: ${LEVEL_NAME}: "
+        echo "${*}"
+    fi
+}
+
 ## Logs an informational message.
 ##
 ## Arguments: <str:message...>
-_info() {
-    if [ -z "${_disable_colorful_logging}" ]; then
-        echo -e "\e[1;37m:: INFO: \e[0m\e[0;37m${*}\e[0m"
-    else
-        echo -e ":: INFO: ${*}"
-    fi
-}
+_info() { _log "37" "INFO" "${*}"; }
 
 ## Logs a warning message.
 ##
 ## Arguments: <str:message...>
-_warning() {
-    if [ -z "${_disable_colorful_logging}" ]; then
-        echo -e "\e[1;33m:: WARNING: \e[0m\e[0;33m${*}\e[0m"
-    else
-        echo -e ":: WARNING: ${*}"
-    fi
-}
+_warning() { _log "33" "WARN" "${*}"; }
 
 ## Logs an error message.
 ##
 ## Arguments: <str:message...>
-_error() {
-    if [ -z "${_disable_colorful_logging}" ]; then
-        echo -e "\e[1;31m:: ERROR: \e[0m\e[0;31m${*}\e[0m"
-    else
-        echo -e ":: ERROR: ${*}"
-    fi
-}
+_error() { _log "31" "ERR!" "${*}"; }
 
 
 ## Checks for deprecated settings.
