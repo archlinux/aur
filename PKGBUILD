@@ -4,7 +4,7 @@ _pkggit=terramate
 
 pkgname=terramate-bin
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation."
 arch=('x86_64')
 url="https://github.com/terramate-io/terramate"
