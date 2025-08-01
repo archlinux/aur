@@ -226,37 +226,8 @@ _check_deprecated_settings() {
 }
 
 _get_patches() {
-    local spec_file="${srcdir}/tachyon/linux.spec"
-
-    # 1. Search for patches in the linux.spec file
-    #    Matches lines starting exactly with: %patch followed immediately by digits.
-    #    This implicitly ignores commented-out lines.
-    # 2. Pipe the grep output to sed to extract the patch number.
-    #    Captures the digits immediately following '%patch'.
-    local applied_patch_numbers=$(grep -E '^%patch[0-9]+' $spec_file | sed -E 's/^%patch([0-9]+).*/\1/')
-
-    # Check if any patch numbers were found
-    if [ -z "$applied_patch_numbers" ]; then
-        error "No applied '%patchXXXX' directives found in the %prep section."
-        exit 0
-    fi
-
-    # 4. Iterate through the extracted patch numbers
-    while IFS= read -r num; do
-        # 5. For each number, find the corresponding uncommented 'PatchXXXX:' line.
-        #    Grep for lines starting exactly with 'Patch', the number, ':', and optional whitespace.
-        patch_line=$(grep -E "^Patch${num}:[[:space:]]*" "$spec_file")
-
-        # 6. Check if a corresponding PatchXXXX line was found
-        if [ -n "$patch_line" ]; then
-            # 7. Extract the filename part after the first ': ' delimiter.
-            #    Remove the "Patch0XXX: " prefix using bash substr removal
-            echo "${patch_line#Patch[0-9]*:[[:space:]]}"
-        else
-            # Output a warning if the definition line is missing (shouldn't happen with valid spec files)
-            warning "Warning: Could not find definition line 'Patch${num}:' for applied patch number $num"
-        fi
-    done <<< "$applied_patch_numbers" # Feed the numbers into the loop
+    # Get the list of patches from the file, ignore the comments
+    grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list.txt
 }
 
 # Applies all patches
