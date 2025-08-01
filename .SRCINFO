@@ -1,13 +1,16 @@
 pkgbase = waybar-lyric-git
-	pkgdesc = Get lyrics of currently playling song on waybar
-	pkgver = 0.6.1.r0.g3d82e2b
-	pkgrel = 1
+	pkgdesc = A waybar module for song lyric
+	pkgver = 0.10.0.r48.g90959cb
+	pkgrel = 2
 	url = https://github.com/Nadim147c/waybar-lyric
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	provides = waybar-lyric
+	conflicts = waybar-lyric
+	conflicts = waybar-lyric-bin
 	source = waybar-lyric::git+https://github.com/Nadim147c/waybar-lyric.git
 	sha256sums = SKIP
 
