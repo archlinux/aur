@@ -1,7 +1,7 @@
 pkgbase = python-taichi
 	pkgdesc = Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs
-	pkgver = 1.7.3
-	pkgrel = 2
+	pkgver = 1.7.4
+	pkgrel = 1
 	url = https://github.com/taichi-dev/taichi
 	arch = x86_64
 	license = Apache-2.0
@@ -23,8 +23,7 @@ pkgbase = python-taichi
 	depends = python-pillow
 	depends = python-colorama
 	depends = python-dill
-	options = !debug
-	source = git+https://github.com/taichi-dev/taichi.git#tag=v1.7.3
+	source = git+https://github.com/taichi-dev/taichi.git#tag=v1.7.4
 	source = taichi.patch
 	b2sums = SKIP
 	b2sums = SKIP

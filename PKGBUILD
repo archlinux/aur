@@ -2,8 +2,8 @@
 # Maintainer: crl <crl18039102576 at 126 dot com>
 
 pkgname=python-taichi
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.7.4
+pkgrel=1
 pkgdesc='Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs'
 url='https://github.com/taichi-dev/taichi'
 arch=('x86_64')
@@ -32,7 +32,6 @@ makedepends=(
 _tag="v$pkgver"
 source=("git+$url.git#tag=$_tag" "taichi.patch")
 b2sums=('SKIP' 'SKIP')
-options=(!debug)
 
 prepare() {
     cd "$srcdir/taichi"
