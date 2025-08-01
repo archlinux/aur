@@ -1,34 +1,17 @@
-# Maintainer: Anirudh Konduru <anirudhmkonduru@gmail.com>
+# Maintainer: Geoffrey Huntley <ghuntley@ghuntley.com>
 
-_npmname=@sourcegraph/amp
-_npmver=0.0.1754025639-g92e8af # renovate: datasource=npm depName=@sourcegraph/amp
-_basename=amp
-pkgname=sourcegraph-amp # All lowercase
-pkgver=${_npmver//-/_}
+# DEPRECATED: This package has been replaced by ampcode-com
+# Please install ampcode-com instead: pacman -S ampcode-com
+
+pkgname=sourcegraph-amp
+pkgver=deprecated
 pkgrel=1
-pkgdesc="CLI for Amp, an agentic coding tool in research preview from Sourcegraph."
-arch=(any)
-url="https://ampcode.com/"
-license=('custom')
-depends=('nodejs')
-makedepends=('npm')
-optdepends=()
-source=(https://registry.npmjs.org/$_npmname/-/$_basename-$_npmver.tgz)
-noextract=($_basename-$_npmver.tgz)
-sha1sums=('eab74586b669c361edf1c5af9fc746eda5caf328')
+pkgdesc='DEPRECATED: Replaced by ampcode-com package'
+arch=('any')
+url='https://ampcode.com'
+license=('custom:proprietary')
+depends=()
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" "$_npmname@$_npmver"
-
-  # Remove references to build directories
-  # https://wiki.archlinux.org/title/Node.js_package_guidelines#Package_contains_reference_to_$srcdir/$pkgdir
-  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-
-  chown -R root:root "$pkgdir"
+    echo 'This package is deprecated. Please install ampcode-com instead.' > ${pkgdir}/deprecated.txt
 }
-
-# vim:set ts=2 sw=2 et:

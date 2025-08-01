@@ -1,14 +1,9 @@
 pkgbase = sourcegraph-amp
-	pkgdesc = CLI for Amp, an agentic coding tool in research preview from Sourcegraph.
-	pkgver = 0.0.1754025639_g92e8af
+	pkgdesc = DEPRECATED: Replaced by ampcode-com package
+	pkgver = deprecated
 	pkgrel = 1
-	url = https://ampcode.com/
+	url = https://ampcode.com
 	arch = any
-	license = custom
-	makedepends = npm
-	depends = nodejs
-	noextract = amp-0.0.1754025639-g92e8af.tgz
-	source = https://registry.npmjs.org/@sourcegraph/amp/-/amp-0.0.1754025639-g92e8af.tgz
-	sha1sums = eab74586b669c361edf1c5af9fc746eda5caf328
+	license = custom:proprietary
 
 pkgname = sourcegraph-amp
