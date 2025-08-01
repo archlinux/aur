@@ -1,13 +1,13 @@
 # Maintainer: Malo1301
 pkgname=yelp-gtk4-git
 pkgver=42.2r96.ga00f5972  # dynamically updated, see line 20
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4 + Libadwaita port of Yelp, the GNOME help viewer"
 arch=('x86_64')
 url="https://gitlab.gnome.org/knuxify/yelp"
 license=('GPL')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'gsettings-desktop-schemas' 'yelp-xsl' 'yelp-tools' 'libxml2')
-makedepends=('git' 'meson' 'ninja' 'itstool')
+makedepends=('git' 'meson' 'ninja' 'itstool' 'glib2-devel')
 conflicts=('yelp')
 provides=('yelp')
 replaces=('yelp')
