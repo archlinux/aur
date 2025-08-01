@@ -1,19 +1,20 @@
 pkgbase = cockroachdb-bin
 	pkgdesc = Cloud-native, distributed SQL database
-	pkgver = 25.2.2
+	pkgver = 25.2.4
 	pkgrel = 1
 	url = https://www.cockroachlabs.com
 	arch = x86_64
 	license = LicenseRef-CockroachDB
 	makedepends = patchelf
 	depends = glibc
-	provides = cockroachdb=25.2.2
+	depends = sh
+	provides = cockroachdb=25.2.4
 	conflicts = cockroachdb
 	options = !debug
 	backup = etc/default/cockroach
-	source = cockroachdb-25.2.2.tar.gz::https://binaries.cockroachdb.com/cockroach-v25.2.2.linux-amd64.tgz
-	source = LICENSE-25.2.2::https://github.com/cockroachdb/cockroach/raw/v25.2.2/LICENSE
-	sha256sums = b0f695dfa6002834fbeeed0be2f5bf0d2b457b0a245724c3104078ed04549644
+	source = cockroachdb-25.2.4.tar.gz::https://binaries.cockroachdb.com/cockroach-v25.2.4.linux-amd64.tgz
+	source = LICENSE-25.2.4::https://github.com/cockroachdb/cockroach/raw/v25.2.4/LICENSE
+	sha256sums = 7b433d00bb57d9947dc9931058b16f44ff31dd2a25ed625233c3bf62e4413b58
 	sha256sums = cb4f34a516b09ec1815bd8376a34de7ea5e6da06c70bed756110943ad1b340e4
 
 pkgname = cockroachdb-bin
