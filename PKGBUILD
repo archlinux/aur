@@ -3,7 +3,7 @@
 pkgname=eigenwallet-developertools-bin
 _pkgver=3.0.0
 pkgver=${_pkgver/-/.}
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps"
 arch=('x86_64')
@@ -20,13 +20,13 @@ provides=(eigenwallet-developertools asb swap)
 backup=()
 options=()
 # Usually _pkgver
-pkgrelease=("${_pkgver}-beta")
+pkgrelease=("${_pkgver}-beta.3")
 source=(
 	"https://github.com/eigenwallet/core/releases/download/${pkgrelease}/swap_${pkgrelease}_Linux_x86_64.tar"
 	"https://github.com/eigenwallet/core/releases/download/${pkgrelease}/asb_${pkgrelease}_Linux_x86_64.tar"
 )
-sha256sums=('923e55e5e9d4e8e618f8c2aa8b30c46e656434f04075482b8af4fd38359fa96b'
-            'ab24b461e2b5908a6f8dddfec50654f36a38ab4d593353747923c4616b36769b')
+sha256sums=('3ed91d10d84bd9d42f66023e9dae1a92618c11a93f219dfa211ea56700a6a457'
+            '1d975de8146c5dba8dffbdefb13067863eb87476720bcf1738b2de905e9f7ea4')
 validpgpkeys=()
 
 prepare() {
