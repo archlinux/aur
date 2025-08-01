@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Simon Sapin <simon dot sapin at exyr dot org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
