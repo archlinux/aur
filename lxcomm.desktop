@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=LXCOMM
+Exec=lxcomm
+Type=Application
+Icon=lxcomm
+Categories=Game;
+StartupWMClass=lxcomm

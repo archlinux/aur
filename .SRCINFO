@@ -1,0 +1,23 @@
+pkgbase = lxcomm-bin
+	pkgdesc = Mod browser, downloader and manager made for XCOM2(WOTC) on Linux
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/PhantomShift/lxcomm
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = steamcmd
+	provides = lxcomm
+	conflicts = lxcomm
+	source = lxcomm.desktop
+	source = https://raw.githubusercontent.com/PhantomShift/lxcomm/refs/tags/v0.3.0/LICENSE-MIT
+	source = lxcomm.svg::https://raw.githubusercontent.com/PhantomShift/lxcomm/refs/tags/v0.3.0/assets/lxcomm_icon.svg
+	sha256sums = 45f16be98e145170cf64df874baeddb4936e5beb95cf62ef9db75c515b43fa19
+	sha256sums = 53329bb76818eea16336345770e10cb8c088894d09885d2cd38c1837f9e63d70
+	sha256sums = 9448cfe1cee692c09177164b16ed32e54517be633130a79d8fae34b1fcd6d5c9
+	source_x86_64 = https://github.com/PhantomShift/lxcomm/releases/download/v0.3.0/lxcomm-v0.3.0-Linux-GNU-x86_64.tar.gz
+	sha256sums_x86_64 = 15f04637ce0f00adb4e0fdf8ebfed510fa5abda918f685412ce0f3796aa1a1d5
+	source_aarch64 = https://github.com/PhantomShift/lxcomm/releases/download/v0.3.0/lxcomm-v0.3.0-Linux-GNU-aarch64.tar.gz
+	sha256sums_aarch64 = 87b6c5e40b42395ee4d180caa0c966b8fa237bc3c4561d219447e42f87088fe7
+
+pkgname = lxcomm-bin
