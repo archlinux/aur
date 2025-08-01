@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-shimmer-desktop-bin
 _pkgname='Firefly Shimmer'
-pkgver=2.2.1
+pkgver=2.2.2
 _electronversion=27
 pkgrel=1
 pkgdesc="Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions.(Prebuilt version.Use system-wide electron)"
@@ -17,15 +17,16 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/desktop-shimmer-${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('89625c9ff187984fc21364f9b767eab961f2e71facf6a1b417f4ab0e9ca83a4b'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('80fdd10d6d9be30bb992906b23c1e637fd61bb7426e1aa8af8207457dfb47779'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/desktop" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -38,6 +39,7 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/=desktop/=${pkgname%-bin}/g
