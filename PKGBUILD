@@ -1,7 +1,7 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.info>
 
 pkgname=python-json-cmd-server
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Library for creating a json based server/client application"
 url="https://gitlab.com/NikolasK-source-pythonlib/json-command-server"
