@@ -276,9 +276,7 @@ _apply_patches() {
     for patch in $(_get_patches); do
         echo "Applying ${patch}"
         if [ -n "${_use_llvm_lto}" ]; then
-            if [ "${patch}" == "0133-novector.patch" ] ; then
-                continue
-            fi
+            [ "${patch}" == "0133-novector.patch" ] && continue
         fi
 
         patch -Np1 -patch "${srcdir}/tachyon/${patch}" || true
@@ -305,10 +303,12 @@ _modify_defconfig() {
 ## Verifies the kernel configuration version
 ## and copies the current kernel configuration, if wanted.
 _copy_defconfig() {
+    # Check if running kernel is compatible with the new kernel
     local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
     [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
         warning "Major version was updated, you should regen the defconfig"
 
+    # Copy running kernel configuration
     if [ -s /proc/config.gz ]; then
         # modprobe configs
         zcat /proc/config.gz > ./.config
@@ -446,8 +446,8 @@ _update_defconfig() {
                 local __ERROR=$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&${out})
             } {out}>/dev/null
 
-            # Invoke echo to sanitize the __ERROR, it can contain a
-            # newline or a \r symbol, thus breaking the script.
+            # Invoke echo to sanitize the __ERROR as it can contain
+            # newlines or carriage returns, thus breaking the script.
             # shellcheck disable=SC2116
             if [ -n "$(echo ${__ERROR})" ]; then
                 warning "Selected subarch: ${_subarch} is not supported"
@@ -529,8 +529,9 @@ _package() {
     echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
 
     # Install modules
-    ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 \
-        DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+    # We specify DEPMOD=/doesnt/exist here to suppress depmod
+    ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" \
+        INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist modules_install
 
     # Remove build directory
     rm "${modulesdir}"/build
@@ -581,8 +582,8 @@ _package-headers() {
     local arch
     for arch in "${builddir}"/arch/*/; do
         [[ ${arch} = */x86/ ]] && continue
-        echo "Removing $(basename "${arch}")"
         rm -r "${arch}"
+        echo "Removing '$(basename "${arch}")'"
     done
 
     # Remove documentation
@@ -598,13 +599,13 @@ _package-headers() {
     local file
     while read -rd "" file; do
         case "$(file -Sib "${file}")" in
-            application/x-sharedlib\;*)      # Libraries (.so)
+            application/x-sharedlib\;*)       # Libraries (.so)
                 strip -v ${STRIP_SHARED} "${file}" ;;
-            application/x-archive\;*)        # Libraries (.a)
+            application/x-archive\;*)         # Libraries (.a)
                 strip -v ${STRIP_STATIC} "${file}" ;;
-            application/x-executable\;*)     # Binaries
+            application/x-executable\;*)      # Binaries
                 strip -v ${STRIP_BINARIES} "${file}" ;;
-            application/x-pie-executable\;*) # Relocatable binaries
+            application/x-pie-executable\;*)  # Relocatable binaries
                 strip -v ${STRIP_SHARED} "${file}" ;;
         esac
     done < <(find "${builddir}" -type f -perm -u+x ! -name vmlinux -print0)
