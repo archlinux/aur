@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b6055.r6055.gba42794c9
+pkgver=b6055.r.g
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -32,8 +32,13 @@ optdepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml)
 options=(lto !debug)
-source=("git+${url}")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
+
+prepare() {
+  cd "$srcdir"
+  git clone --depth 1 --single-branch --branch master "${url}" "${_pkgname}"
+}
 
 pkgver() {
   cd "$_pkgname"
@@ -41,10 +46,8 @@ pkgver() {
   local _latest_tag
   _latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0")
 
-  # 格式化为：<最新标签>.r<总提交数>.g<短哈希>
-  printf "%s.r%s.g%s" "$_latest_tag" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  # 格式化为：<最新标签>
+  printf "%s.r%s.g%s" "$_latest_tag"
 }
 
 build() {
