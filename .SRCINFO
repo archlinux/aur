@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-amdgpu
 	pkgdesc = XLibre amdgpu video driver
-	pkgver = 23.0.0.1
-	pkgrel = 2
+	pkgver = 23.0.0.3
+	pkgrel = 1
 	url = https://github.com/X11Libre/xf86-video-amdgpu
 	arch = aarch64
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = xlibre-video-amdgpu
 	conflicts = xorg-server<1.20.0
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	source = xf86-video-amdgpu-xlibre-xf86-video-amdgpu-23.0.0.1.tar.gz::https://github.com/X11Libre/xf86-video-amdgpu/archive/refs/tags/xlibre-xf86-video-amdgpu-23.0.0.1.tar.gz
-	b2sums = bbfb405c507081c4b827057a6d55bc6cc97d6cae8a00ca313164ef55cebb0e917c079155dc021dafcdb0aa89ce1a05f0a9529ec2cc9ef4362bbaf36edc08e7a9
+	source = xf86-video-amdgpu-xlibre-xf86-video-amdgpu-23.0.0.3.tar.gz::https://github.com/X11Libre/xf86-video-amdgpu/archive/refs/tags/xlibre-xf86-video-amdgpu-23.0.0.3.tar.gz
+	b2sums = 2d8038fb0571b9e0ab4e31c71396e55da181a387b4ec9fe34e2763ff3e6647282d52063755649f585cf73d8271c481d3e8a1f279919fd6b639e39de96be22fa6
 
 pkgname = xlibre-video-amdgpu

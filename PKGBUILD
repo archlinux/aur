@@ -2,8 +2,8 @@
 
 _basename="xf86-video-amdgpu"
 pkgname="${_basename//xf86/xlibre}"
-pkgver=23.0.0.1
-pkgrel=2
+pkgver=23.0.0.3
+pkgrel=1
 pkgdesc="XLibre amdgpu video driver"
 arch=('aarch64' 'x86_64')
 url="https://github.com/X11Libre/${_basename}"
@@ -15,7 +15,7 @@ conflicts=("${_basename}" 'xorg-server<1.20.0' 'X-ABI-VIDEODRV_VERSION<28' 'X-AB
 groups=('xlibre-drivers')
 _pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-b2sums=('bbfb405c507081c4b827057a6d55bc6cc97d6cae8a00ca313164ef55cebb0e917c079155dc021dafcdb0aa89ce1a05f0a9529ec2cc9ef4362bbaf36edc08e7a9')
+b2sums=('2d8038fb0571b9e0ab4e31c71396e55da181a387b4ec9fe34e2763ff3e6647282d52063755649f585cf73d8271c481d3e8a1f279919fd6b639e39de96be22fa6')
 
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
