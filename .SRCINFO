@@ -1,13 +1,13 @@
 pkgbase = turso-bin
 	pkgdesc = Limbo is a work-in-progress, in-process OLTP database management system, compatible with SQLite.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/tursodatabase/turso
 	arch = x86_64
 	license = MIT
 	provides = turso
 	conflicts = turso
-	source_x86_64 = turso-bin-0.1.2.tar.xz::https://github.com/tursodatabase/turso/releases/download/v0.1.2/turso_cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = cebab94860315d8a95724f2b12562402e7c4d6be6ad213b783b805a34b1ad2c8
+	source_x86_64 = turso-bin-0.1.3.tar.xz::https://github.com/tursodatabase/turso/releases/download/v0.1.3/turso_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a4f90f5dbcf9c693d0165c4b1236766911b69bb91e9374faa4eefca8e4703988
 
 pkgname = turso-bin
