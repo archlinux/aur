@@ -17,9 +17,9 @@ checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 noextract=()
-source+=(https://files.pythonhosted.org/packages/fa/41/914f18e114bd92de7c45fc9749bea605f15f014065d6f40f73eaf17d1c14/vocabsieve-0.12.4-py3-none-any.whl)
-md5sums+=(7fb241fa8f8dc1428deac777dda34d49)
-noextract+=(vocabsieve-0.12.4-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/51/75/4ed11b9931bc490d36d95ad57b53b7388708a9cf8e465557c076652945b8/vocabsieve-0.12.5-py3-none-any.whl)
+md5sums+=(a72bc18be9a98424a3cb528767e14d2c)
+noextract+=(vocabsieve-0.12.5-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(1ebbd3e34237af26da5dc08a4e440464)
 
