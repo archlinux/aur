@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /opt/openshock-desktop
+exec ./OpenShock.Desktop "$@"

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OpenShock Desktop
+Version=@PACKAGE_VERSION@
+Exec=openshock-desktop %u
+Terminal=false
+Icon=openshock-desktop
+StartupWMClass=OpenShock.Desktop
+Comment=An OpenShock application with module support
+Categories=Network;Utility;
+MimeType=x-scheme-handler/openshock;
