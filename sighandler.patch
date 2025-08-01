@@ -1,0 +1,11 @@
+--- a/mpssh.c	2014-06-30 16:39:33.000000000 +1000
++++ b/mpssh.c	2025-08-01 10:02:45.207844907 +1000
+@@ -77,7 +77,7 @@
+  * hanler for the SIG_CHLD signal.
+  */
+ void
+-reap_child()
++reap_child(int sig)
+ {
+     int pid;
+     int ret;
