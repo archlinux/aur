@@ -4,7 +4,7 @@ _pkgname=Claude-Desktop
 pkgver=1.0.0
 _electronversion=25
 _nodeversion=20
-pkgrel=10
+pkgrel=11
 pkgdesc="An Electron-based desktop application for Claude2(unofficial).Use system-wide electron."
 arch=('any')
 url="https://github.com/Karenina-na/Claude-Desktop"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('00a2026a797aae057e1b3f4e4f01c88909c399713f454347d8140af186dc2d82'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -50,7 +50,7 @@ prepare() {
         echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=10"
+        echo "maxsockets=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
