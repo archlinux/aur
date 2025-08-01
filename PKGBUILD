@@ -1,6 +1,6 @@
 # Maintainer: Jian Qiang Wu <Qiangwu2000@gmail.com>
 pkgname=wlsbg
-pkgver=2.0.0.r0.g444e6f3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Wallpaper tool with shader support for Wayland compositors"
 arch=("x86_64")
@@ -22,11 +22,6 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}::git+${url}.git")
 b2sums=("SKIP")
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
-}
 
 build() {
   arch-meson "$pkgname" build
