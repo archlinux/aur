@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b6055.r.g
+pkgver=b6056
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -47,7 +47,7 @@ pkgver() {
   _latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0")
 
   # 格式化为：<最新标签>
-  printf "%s.r%s.g%s" "$_latest_tag"
+  printf "%s" "$_latest_tag"
 }
 
 build() {
