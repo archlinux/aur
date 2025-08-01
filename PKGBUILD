@@ -10,7 +10,7 @@ depends=(
     'alsa-lib'
     'espeak-ng'
 )
-makedepends=('go>=1.24' 'pacutils')
+makedepends=('go>=1.24')
 checkdepends=('go>=1.24')
 options=(!debug)
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
