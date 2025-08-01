@@ -4,7 +4,7 @@
 
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.25.6
+pkgver=1.25.7
 pkgrel=1
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://github.com/artpixls/ART"
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 _pkgsrc="ART-$pkgver-linux64"
 _pkgext="tar.xz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('520126536c31c16426c7032aceacbe2049f9874125d20da01c43a3ffba00d917')
+sha256sums=('4759695a5e1696cdc6f613903ed053a87d50b62fc5d9c38ccdc3dcd8e61ad8ed')
 
 prepare() {
   cat "$_pkgsrc/share/applications/ART.desktop" \
