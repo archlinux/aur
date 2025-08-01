@@ -20,6 +20,13 @@ makedepends=(
     cmake
     git
 )
+optdepends=(
+    'python-numpy: needed for convert_hf_to_gguf.py'
+    'python-safetensors: needed for convert_hf_to_gguf.py'
+    'python-sentencepiece: needed for convert_hf_to_gguf.py'
+    'python-pytorch: needed for convert_hf_to_gguf.py'
+    'python-transformers: needed for convert_hf_to_gguf.py'
+)
 conflicts=(
     libggml
     ggml
@@ -28,6 +35,8 @@ conflicts=(
     llama.cpp-cuda
     llama.cpp-hip
     ik-llama.cpp
+    ik-llama.cpp-hip
+    ik-llama.cpp-vulkan
 )
 provides=(llama.cpp)
 
