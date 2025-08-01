@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
