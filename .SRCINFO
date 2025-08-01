@@ -1,0 +1,12 @@
+pkgbase = cookc
+	pkgdesc = A single file build system written in C
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/hanion/cook
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	source = https://github.com/hanion/cook/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 2957ed51ef8e42f16493a9a34a46584b0cec51690f3e541fe6f20ba103378560
+
+pkgname = cookc
