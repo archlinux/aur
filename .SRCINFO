@@ -1,9 +1,11 @@
 pkgbase = sourcegraph-amp
-	pkgdesc = DEPRECATED: Replaced by ampcode-com package
+	pkgdesc = [DEPRECATED] This package has been renamed to "ampcode". Please install "ampcode" instead.
 	pkgver = deprecated
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ampcode.com
 	arch = any
 	license = custom:proprietary
+	depends = ampcode
+	provides = amp
 
 pkgname = sourcegraph-amp
