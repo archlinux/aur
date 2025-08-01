@@ -2,26 +2,24 @@
 # contact me via AUR or archlinux forums
 project='pymavlink'
 pkgname=python-${project}-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r3057.533161c4
+pkgver=r3217.fcaa2c7d
 pkgrel=1
 pkgdesc="python MAVLink interface and utilities"
-arch=('x86_64')
+arch=('x86_64' 'powerpc64le')
 url="https://github.com/ArduPilot/pymavlink/"
 license=('LGPL v3')
 groups=()
 depends=('python-lxml')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'cython')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "python2-pymavlink" "python2-pymavlink-git")
 replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/mavlink/mavlink/'
-        'remove_future.patch')
+source=('git+https://github.com/mavlink/mavlink/')
 noextract=()
-sha256sums=('SKIP'
-            'fd40cd52c581012bd2aca700e54e37d3b14d159f8e6a61c7d2be76f91eb98874')
+sha256sums=('SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
@@ -30,8 +28,6 @@ prepare() {
     cd "$srcdir/mavlink"
     git submodule init
     git submodule update
-    cd "$srcdir/mavlink/${project}"
-    git apply < "$srcdir"/remove_future.patch
 }
 
 pkgver() {
