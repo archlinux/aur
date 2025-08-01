@@ -1,6 +1,6 @@
 pkgbase = tartube
 	pkgdesc = A GUI front-end for youtube-dl, yt-dlp and other compatible video downloaders
-	pkgver = 2.5.156
+	pkgver = 2.5.164
 	pkgrel = 1
 	url = https://github.com/axcore/tartube
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = tartube
 	optdepends = python-moviepy: support for detecting length of some videos
 	optdepends = python-playsound: play alarm when a livestream starts
 	optdepends = streamlink: support for downloading livestreams
-	source = tartube-2.5.156.tar.gz::https://github.com/axcore/tartube/archive/v2.5.156.tar.gz
-	sha256sums = a37260886324420b5e8fcfc482ce15fa1fb1d163cf2998cef55d55ff4a97dad7
+	source = tartube-2.5.164.tar.gz::https://github.com/axcore/tartube/archive/v2.5.164.tar.gz
+	sha256sums = 7ed8832b1f39ff1e8316649358a6934988b6da7dbc4bfea4475d2c646708fe80
 
 pkgname = tartube
