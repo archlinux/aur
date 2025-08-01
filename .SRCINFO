@@ -1,0 +1,19 @@
+pkgbase = gmap-bin
+	pkgdesc = Git repository analysis tool for churn and heatmap visualization
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/seeyebe/gmap
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = gmap
+	conflicts = gmap
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/seeyebe/gmap/0.3.3/LICENSE
+	source = README-0.3.3.md::https://raw.githubusercontent.com/seeyebe/gmap/0.3.3/README.md
+	sha256sums = 497f5a540ff944524f538287b72cd75b69a29ab90964620f29b6acaa7c434451
+	sha256sums = 367673bef71000a477c7deeec88e714ad0e08201037b1e57d241a9e36a207e50
+	source_x86_64 = https://github.com/seeyebe/gmap/releases/download/0.3.3/gmap-linux-0.3.3.zip
+	sha256sums_x86_64 = 069eb5d666da3e748621135ba82ac15904e0acbea3b1118ea0b360743b46b74e
+
+pkgname = gmap-bin
