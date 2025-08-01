@@ -5,7 +5,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=8.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern music player"
 arch=('x86_64' 'aarch64')
 url="https://tauonmusicbox.rocks"
@@ -27,6 +27,7 @@ depends=(
 	'python-dbus'
 	'python-natsort'
 	'python-websocket-client'
+	'kissfft' # AUR, only -git is packaged
 	'libnotify'
 	'ffmpeg'
 	'flac'
@@ -47,7 +48,6 @@ depends=(
 
 makedepends=(
 	'miniaudio' # AUR, only -git is packaged, which happens to be identical to the latest available release as of 2024-11-22 since it's a year old
-	'kissfft' # AUR, only -git is packaged
 	'git'
 	'pkg-config'
 	'python-build'
