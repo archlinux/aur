@@ -1,6 +1,6 @@
 pkgbase = libvirt
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 11.5.0
+	pkgver = 11.6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://libvirt.org/
@@ -110,11 +110,11 @@ pkgbase = libvirt
 	backup = etc/logrotate.d/libvirtd.lxc
 	backup = etc/logrotate.d/libvirtd.qemu
 	backup = etc/sasl2/libvirt.conf
-	source = git+https://gitlab.com/libvirt/libvirt.git#tag=v11.5.0
-	sha256sums = a4d71b1780f0220c117991f8e9605927377616fb9cd2850ddd1588c5bd30f0d3
+	source = git+https://gitlab.com/libvirt/libvirt.git#tag=v11.6.0
+	sha256sums = 04665cf4965e1d28aec18b332b4675ec45c5762c7842c1254ff266cabd1a23f0
 
 pkgname = libvirt
-	provides = libvirt=11.5.0
+	provides = libvirt=11.6.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
@@ -122,7 +122,7 @@ pkgname = libvirt
 
 pkgname = libvirt-storage-gluster
 	pkgdesc = Libvirt Gluster storage backend
-	depends = libvirt=11.5.0
+	depends = libvirt=11.6.0
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
@@ -132,7 +132,7 @@ pkgname = libvirt-storage-gluster
 
 pkgname = libvirt-storage-iscsi-direct
 	pkgdesc = Libvirt iSCSI-direct storage backend
-	depends = libvirt=11.5.0
+	depends = libvirt=11.6.0
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
