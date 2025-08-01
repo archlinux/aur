@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-instant-workspace-switcher-git
+	pkgdesc = Disable Workspace Switch Animation for GNOME 40+
+	pkgver = r21.875e22f
+	pkgrel = 1
+	url = https://github.com/amalantony/gnome-shell-extension-instant-workspace-switcher
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = gnome-shell
+	source = gnome-shell-extension-instant-workspace-switcher-git::git+https://github.com/amalantony/gnome-shell-extension-instant-workspace-switcher.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-instant-workspace-switcher-git
