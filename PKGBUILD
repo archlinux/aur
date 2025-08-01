@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LOBSTAHS
-_pkgver=1.33.0
+_pkgver=1.34.1
 pkgname=r-${_pkgname,,}
-pkgver=1.33.0
+pkgver=1.34.1
 pkgrel=1
 pkgdesc='Lipid and Oxylipin Biomarker Screening through Adduct Hierarchy Sequences'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('063235f3e5bf7c9499330c6cff7852e03e39f00f36bc87a0e308c1c9e7540272')
+sha256sums=('8c1920d73d9f3bf8c5d4bd9d3b8ba0306c59382ff76b24af2bc70cae51283505')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
