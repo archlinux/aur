@@ -1,7 +1,7 @@
 pkgbase = peguni_draem-la
 	pkgdesc = Peguni Draem'la: Whispered Companion - Text-based virtual pet simulator in Lua
 	pkgver = 0.1.9b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Veridian-Zenith/peguni_draem-la
 	arch = any
 	license = 0BSD
