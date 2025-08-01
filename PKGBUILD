@@ -1,4 +1,4 @@
-# Maintainer: sim0n <aur.direction446@aleeas.com>
+# Maintainer: sim0n <aur dot direction446 at aleeas dot com>
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
 pkgver=1.12.0.rc.3.reF1nd
