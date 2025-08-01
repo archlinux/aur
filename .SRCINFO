@@ -1,0 +1,20 @@
+pkgbase = svt-av1-essential-git
+	pkgdesc = A no-nonsense SVT-AV1 encoder fork with sensible defaults and Quality of Life improvements
+	pkgver = 3.1.0.Essential.r0.g0d3bca9c
+	pkgrel = 1
+	url = https://github.com/nekotrix/SVT-AV1-Essential
+	arch = x86_64
+	license = BSD
+	license = custom: Alliance for Open Media Patent License 1.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = nasm
+	depends = glibc
+	provides = svt-av1
+	provides = svt-av1-git
+	conflicts = svt-av1
+	conflicts = svt-av1-git
+	source = git+https://github.com/nekotrix/SVT-AV1-Essential
+	sha256sums = SKIP
+
+pkgname = svt-av1-essential-git
