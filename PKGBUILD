@@ -25,7 +25,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}" || exit 1
     cmake -B build
-    cmake --build build
+    sudo cmake --build build
 }
 
 package() {
