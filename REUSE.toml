@@ -26,4 +26,4 @@ path = [
     "0001-fix-format-security-error-from-gcc.patch",
 ]
 SPDX-FileCopyrightText = "leafpad contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-2.0-or-later"
