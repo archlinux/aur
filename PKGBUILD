@@ -104,7 +104,7 @@ prepare() {
   fi
 
   if [[ $CARCH == "armv7h" ]]; then
-    echo "Patching for gcc14 bug for armv7h"
+      echo "Patching for gcc14 bug for armv7h"
     # Error: bad immediate value for 8-bit offset
     sed -i 's/class CGameLoop : protected CThread/class CGameLoop : virtual protected CThread/' \
         "$srcdir/$_gitname/xbmc/cores/RetroPlayer/playback/GameLoop.h"
@@ -125,26 +125,13 @@ build() {
   # fix build breakage introduced with gcc-12.1.0-1
   export CFLAGS+=" -Wno-error"
   export CXXFLAGS+=" -Wno-error"
-  export CFLAGS+=" -Wno-array-parameter"
-  export CXXFLAGS+=" -Wno-array-parameter"
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
-###
-#  unset CFLAGS CXXFLAGS
-#
-#  if [[ $CARCH = "armv7h" ]]; then
-#    # we use -mcpu=cortex-a53 rather than cortex-a72 to maximize RPi 3B and RPi 4B/400 compatibility
-#    # in a single package which is consistent with how LibreELEC is currently built, see:
-#    # https://github.com/LibreELEC/LibreELEC.tv/commit/8e6605f6da56f25a00272b1cbacb93d40200153f#commitcomment-46341034
-#    CFLAGS="-mcpu=cortex-a53 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
-#  elif [[ $CARCH = "aarch64" ]]; then
-#    # note that we use a value of cortex-a53 here to allow RPi3 and RPi4 to use the same package
-#    # consistent with rationale of previous comment
-#    CFLAGS="-mcpu=cortex-a53"
-#  fi
-#  CFLAGS+=" -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection"
-#  CXXFLAGS+="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-###
+  if [[ $CARCH = "armv7h" ]]; then
+    _platform="wayland gbm"
+  else
+    _platform="x11 wayland gbm"
+  fi
 
 export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
   _args=(
@@ -168,7 +155,7 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     -DENABLE_VAAPI=ON
     -DENABLE_VDPAU=ON
     -DAPP_RENDER_SYSTEM=gles
-    -DCORE_PLATFORM_NAME="wayland gbm"
+    -DCORE_PLATFORM_NAME="${_platform}"
     -Dlibdvdcss_URL="$srcdir/$pkgbase-libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
