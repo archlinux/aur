@@ -1,41 +1,55 @@
 # Maintainer: Neurofibromin <125222560+Neurofibromin@users.noreply.github.com>
 # Contributor: Neurofibromin <125222560+Neurofibromin@users.noreply.github.com>
 pkgname=mfaomp
-pkgver=0.4.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Multiple Files At Once Media Player"
 arch=('x86_64')
 url="https://github.com/Neurofibromin/mfaomp"
 license=('GPL-3.0-or-later')
 depends=(
-  'libvlc'
+    'vlc'
+    'vlc-plugins-all'
+    'libvlc'
+    'qt6-base'
+    'qt6-multimedia'
+    'qt6-webengine'
+    'gcc-libs'
+    'libglvnd'
+    'glibc'
+    'boost'
+    'ffmpeg'
+    'sdl2-compat'
 )
 makedepends=(
-  'cmake'
-  'pkgconf'
-  'qt6-webengine'
-  'qt6-base'
-  'qt6-multimedia'
+    'cmake'
+    'gcc'
+    'pkgconf'
+    'qt6-base'
+    'qt6-multimedia'
+    'qt6-webengine'
+    'boost'
+    'ffmpeg'
+    'sdl2-compat'
+    'libvlc'
+    'git'
 )
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d475aaa39153ffc24f56d0c99d31df8d4e40c53b8a41b9c568704d86d04a05dee5842d189924a1ea2a95baf0f6732e9879660827d3d60645029f5a6e1ce413f5')
+b2sums=('9b6a197ec5af390cdad8bfd9fae0a33565e0793cdb1fca3f8848f9c53041f45310b16a255e22a550b33f27083b75ca037a25ffba3c5ca172920942c1d0d3332f')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 }
 
 build() {
-  cmake -S "$srcdir/$pkgname-$pkgver" -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_STANDARD=23 \
-    -DCMAKE_CXX_STANDARD_REQUIRED=ON
-  cmake --build build
+    cmake -S "$srcdir/$pkgname-$pkgver" -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DENABLE_CATCH=OFF
+    cmake --build build
 }
 
 package() {
-  cmake --install build --prefix "$pkgdir/usr"
-  # TODO: cmake doesn't do this, but maybe it should?
-  install -Dm644 "$srcdir/$pkgname-$pkgver/mfaomp.desktop" "$pkgdir/usr/share/applications/mfaomp.desktop"
+    cmake --install build --prefix "$pkgdir/usr"
 }
