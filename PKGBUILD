@@ -1,21 +1,21 @@
 # Maintainer:
 # Contributor: copygirl <copygirl@mcft.net>
 
-: ${_pkgtype:=-git}
+: ${_java_ver:=17}
 
 _pkgname="mindustry"
-pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=146.r1528.ge3ad75f
-pkgrel=2
+pkgbase="$_pkgname-git"
+pkgver=150.1.r32.gdb7aba8
+pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
 arch=('any')
 
 makedepends=(
+  "java-environment=${_java_ver:?}"
   'alsa-lib'
-  'archlinux-java-run' # AUR
-  'java-environment=17'
+  'git'
   'libicns'
 )
 
@@ -47,8 +47,8 @@ build() {
   # skip android subproject; see settings.gradle
   unset ANDROID_HOME JITPACK
 
-  JAVA_HOME=$(archlinux-java-run --min 17 --max 17 --feature jdk --java-home) \
-    ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
+  JAVA_HOME="/usr/lib/jvm/java-${_java_ver}-openjdk" \
+    ./gradlew --warning-mode=all --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
 
   cd core/assets/icons
   icns2png --extract icon.icns
@@ -97,6 +97,7 @@ _package_mindustry-server() {
   install -Dm755 "server/build/libs/server-release.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
 }
 
+_pkgtype=${pkgbase#$_pkgname}
 pkgname=("$_pkgname${_pkgtype:-}" "$_pkgname-server${_pkgtype:-}")
 
 for _p in "${pkgname[@]}"; do
