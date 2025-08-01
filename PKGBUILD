@@ -2,12 +2,6 @@
 #
 # Based on PKGBUILD for https://aur.archlinux.org/packages/canon-pixma-mg2200-complete
 # That example shows how to add support for a scanner driver as well if desired.
-#
-#
-# You have to run `sudo ln -s /usr/lib/libxml2.so.16 /usr/lib/libxml2.so.2`
-# to get this to work. The drivers depend on an old libxml2
-# version, but it seems like the ABI incompat is not that
-# bad and it still works with the new version.
 
 pkgname=canon-tr8600-series
 pkgver=6.10
@@ -21,7 +15,7 @@ license=('custom')
 makedepends=('deb2targz') # 'sed')
 
 if [ ${CARCH} = 'x86_64' ]; then
-  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff' 'libxml2' 'gtk2')
+  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff' 'libxml2' 'gtk2' 'libxml2-legacy')
 fi
 
 source=(
