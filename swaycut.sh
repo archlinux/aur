@@ -79,7 +79,7 @@ function grab_region() {
 }
 
 function grab_window() {
-    local clients=`swaymsg -t get_tree | jq -r '[.. | ((.nodes? // empty) + (.floating_nodes? // empty))[] | select(.visible and .pid)]'`
+    local clients=`swaymsg -t get_tree | jq -r '[.. | select(.type? == "con" and .visible == true and .name? != null and (.app_id? != null or .window_properties? != null))]'`
     log "Clients: %s\n" "$clients"
     # Generate boxes for each visible window and send that to slurp
     # through stdin
