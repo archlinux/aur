@@ -198,7 +198,7 @@ _src_linux=linux-${_kernel_major}
 # Package information
 pkgbase=linux-tachyon
 pkgver=${_kernel_major}.${_kernel_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux kernel with patches from Linux Tachyon (formerly Linux Clear) which allow for higher performance."
 arch=("x86_64")
 url="https://git.staropensource.de/StarOpenSource/Linux-Tachyon"

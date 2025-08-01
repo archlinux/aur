@@ -1,7 +1,7 @@
 pkgbase = linux-tachyon
 	pkgdesc = Linux kernel with patches from Linux Tachyon (formerly Linux Clear) which allow for higher performance.
 	pkgver = 6.15.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.staropensource.de/StarOpenSource/Linux-Tachyon
 	arch = x86_64
 	license = GPL-2.0-only
@@ -21,7 +21,7 @@ pkgbase = linux-tachyon
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.15.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.15.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.15.8.xz
-	source = tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=6.15.7-1591
+	source = tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=6.15.7-1592
 	source = more-uarches-20250612.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20250612.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
