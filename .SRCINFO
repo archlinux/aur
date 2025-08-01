@@ -9,6 +9,6 @@ pkgbase = gmap
 	makedepends = cargo
 	makedepends = git
 	source = gmap-0.3.3.tar.gz::https://github.com/seeyebe/gmap/archive/refs/tags/0.3.3.tar.gz
-	sha256sums = d256671cbbcba2f1b297237551cce06e387ef524268860eb07bca34c48d85d2c
+	sha256sums = a53ef4474409df65bbe600b2c239776e498a06a956143c7d7f2fcef03dd32f2e
 
 pkgname = gmap
