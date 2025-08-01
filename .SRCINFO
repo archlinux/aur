@@ -1,6 +1,6 @@
 pkgbase = mindustry
 	pkgdesc = A sandbox tower defense game
-	pkgver = 149
+	pkgver = 150.1
 	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = mindustry
 	makedepends = java-environment=17
 	makedepends = alsa-lib
 	makedepends = libicns
-	source = mindustry-149.tar.gz::https://github.com/Anuken/Mindustry/archive/v149.tar.gz
-	source = mindustry-arc-149.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v149.tar.gz
-	sha256sums = 6c1d756904ee1d9d52e7e32beadeb607d4686cb61bbc31620dbfca7318c15a62
-	sha256sums = 10336426df1d0ae17201d7d8b4fedb7481914684b047bdc3ca7f478d8a9a4b08
+	source = mindustry-150.1.tar.gz::https://github.com/Anuken/Mindustry/archive/v150.1.tar.gz
+	source = mindustry-arc-150.1.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v150.1.tar.gz
+	sha256sums = e4dcca6850a933498df777e16d7bc8b59ac674084a07ed470e2e3dc4b135078c
+	sha256sums = 4b302881a9dcc74956669dcb2e5d9d4111ee66abbf4b1c47152b2789b387319f
 
 pkgname = mindustry
 	depends = hicolor-icon-theme

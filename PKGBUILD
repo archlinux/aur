@@ -5,7 +5,7 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname"
-pkgver=149
+pkgver=150.1
 pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
@@ -27,8 +27,8 @@ source=(
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
 )
 sha256sums=(
-  '6c1d756904ee1d9d52e7e32beadeb607d4686cb61bbc31620dbfca7318c15a62'
-  '10336426df1d0ae17201d7d8b4fedb7481914684b047bdc3ca7f478d8a9a4b08'
+  'e4dcca6850a933498df777e16d7bc8b59ac674084a07ed470e2e3dc4b135078c'
+  '4b302881a9dcc74956669dcb2e5d9d4111ee66abbf4b1c47152b2789b387319f'
 )
 
 prepare() {
@@ -91,6 +91,7 @@ _package_mindustry-server() {
   install -Dm755 "server/build/libs/server-release.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
 }
 
+_pkgtype=${pkgbase#$_pkgname}
 pkgname=("$_pkgname${_pkgtype:-}" "$_pkgname-server${_pkgtype:-}")
 
 for _p in "${pkgname[@]}"; do
