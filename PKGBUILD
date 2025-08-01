@@ -35,7 +35,7 @@ provides=(llama.cpp)
 options=(lto !debug)
 
 source=("git+${url}")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
