@@ -3,9 +3,9 @@
 
 # last/latest/longest "longterm maintenance" kernel releases
 # https://www.kernel.org/category/releases.html
-# 6.6 Greg Kroah-Hartman & Sasha Levin 2023-10-29 Dec, 2026
-_LLL_VER=6.6
-_LLL_SUBVER=72
+# 6.12 Greg Kroah-Hartman & Sasha Levin  2024-11-17  Dec, 2026
+_LLL_VER=6.12
+_LLL_SUBVER=40
 
 #PKGEXT='.pkg.tar'
 
@@ -61,12 +61,13 @@ _Xanmod_PATCH_SRC="https://master.dl.sourceforge.net/project/xanmod/releases/lts
 
 # CJKTTY patch
 # https://github.com/Gentoo-zh/linux-cjktty
-#_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
-#_CJKTTY_PATCH_SRC="cjktty-${_LLL_VER}.patch::${_CJKTTY_PATCH_URL}"
 # https://github.com/zhmars/cjktty-patches
-# TODO 6.12 test https://github.com/zhmars/cjktty-patches/forks
-_CJKTTY_COMMIT=b43d618da6d6536338761a5fc7c9c377c318fb9e
-_CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v6.x/cjktty-${_LLL_VER}.patch"
+# https://github.com/shmilee/linux-lts-cjktty-patches
+_CJKTTY_COMMIT=2423f83adf02516fbce67b6734506abcfe332927
+_CJKTTY_PATCH=(
+  "https://github.com/shmilee/linux-lts-cjktty-patches/raw/${_CJKTTY_COMMIT}/cjktty-${_LLL_VER}.0.patch"
+  "https://github.com/shmilee/linux-lts-cjktty-patches/raw/${_CJKTTY_COMMIT}/font-headers/Unifont15.1-font_cjk_16x16.h.patch.gz"
+)
 _CJKTTY_PATCH_PATCH=()
 
 _PATHSET_DESC="Xanmod patches, cjktty"
@@ -80,29 +81,31 @@ _MORE_PATCH=(
 
 pkgbase=linux-shmilee
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
-#pkgver=${_LLL_VER}.$((_LLL_SUBVER+1)) # 6.1.18 -> 6.1.19
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=2
+pkgrel=1
 pkgdesc="Linux-shmilee x64${_psABI_level}"
 url="https://www.kernel.org/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  xmlto python-sphinx python-yaml graphviz imagemagick
   #texlive-latexextra
 )
 if [ "$_localmodcfg" = "y" ]; then
   makedepends+=(modprobed-db)
 fi
-options=('!strip')
+options=(
+  !debug
+  !strip
+)
 _srcname=linux-${_LLL_VER}
 source=(
   https://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.{xz,sign}
   #https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.{xz,sign} # in Xanmod
   ${_Xanmod_PATCH_SRC}
   #${_Xanmod_PATCH_PATCH[@]}
-  ${_CJKTTY_PATCH_SRC}
+  ${_CJKTTY_PATCH[@]}
   ${_CJKTTY_PATCH_PATCH[@]}
   ${_MORE_PATCH[@]}
   config         # the main kernel config file
@@ -112,10 +115,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
+sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             'SKIP'
-            'a3180d219d513ccf11eb6243824a3207871798cc11c37a9e8bd7c9db2bdf3285'
-            '47a008c8b3b684330f2b80beeaca20105ab3afcded9530b28b078821bd062ba6'
+            '8c0ccb29085778e8c129965c43439f110415a5ef2762306a92682cdc63b8e3e8'
+            'dd78d56eeddb61e152a31cd059148122963f423153f5274cb7b2bc026c6b74aa'
+            'ab67a7d55b06dfa9a23dc20db8b34f58732c753dc62a480b984bbac5c5323cf4'
             'a8162641380b2681622d0f3c40ce130c9fd1cf6e176b5db18b95ba83609fbcf8')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -129,11 +133,12 @@ prepare() {
   patch -Np1 -i ../patch-${_LLL_VER}.${_LLL_SUBVER}-xanmod${_XanMod_VER}
 
   msg2 "Patching with Gentoo-zh/linux-cjktty patches..."
-  cp "../cjktty-${_LLL_VER}.patch" "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
+  cp "../cjktty-${_LLL_VER}.0.patch" "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
   for p in ${_CJKTTY_PATCH_PATCH[@]}; do
     patch -Ni ../$p "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
   done
   patch -Np1 -i "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
+  patch -Np1 -i "../Unifont15.1-font_cjk_16x16.h.patch"
 
   local src
   for src in "${_MORE_PATCH[@]}"; do
@@ -254,15 +259,20 @@ prepare() {
 
 build() {
   cd $_srcname
-  make htmldocs all
+  make htmldocs &
+  local pid_docs=$!
+  make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
+  wait "${pid_docs}"
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules with ${_PATHSET_DESC} and binder enabled"
   depends=(coreutils kmod mkinitcpio)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
+              'scx-scheds: to use sched-ext schedulers'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES NTSYNC-MODULE WIREGUARD-MODULE KSMBD-MODULE)
   #replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
@@ -278,9 +288,14 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
-    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
   # https://github.com/archlinux/svntogit-packages/commit/a65a47973b7676de60add0f40277900a91c115f1
+  if [ "$_use_zstd" = "n" ]; then
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+      DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+  else
+    ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+      DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+  fi
 
   # remove build link
   rm "$modulesdir"/build
@@ -299,6 +314,7 @@ _package-headers() {
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
@@ -327,6 +343,10 @@ _package-headers() {
 
   msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  echo "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+    link=  # Suppress build-id symlinks
 
   msg2 "Removing unneeded architectures..."
   local arch

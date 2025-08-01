@@ -6,6 +6,7 @@ patch-?.*.*.sign
 
 patch-*xanmod?.xz
 cjktty-?.*.patch
+*-font_cjk_??x??*.patch.gz
 11??-*.patch
 
 pkg/*
