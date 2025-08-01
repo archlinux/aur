@@ -5,17 +5,20 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-binutils
-pkgver=2.44
+pkgver=2.45
 pkgrel=1
-_commit=57f3676f3e5266829a91880d61143ab9ecd617bd
+_commit=2bc7af1ff7732451b6a7b09462a815c3284f9613
 pkgdesc='A set of programs to assemble and manipulate binary and object files for armv7l'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('glibc' 'zlib' 'elfutils')
 makedepends=('git')
-source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit})
-sha256sums=('ce1bfbcefa6413e42d80fcd92966e78a7b53c0039d44a5220b6727957017643c')
+source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit}
+  gold-warn-unsupported.patch
+)
+sha256sums=('005763c1ecf23168be877788ed148467d31b1852ff15b27c0f69343c2a64652a'
+            '2d430b66f84a19c154725ec535280c493be1d34f1a90f95208dce02fecd0e4e4')
 
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
