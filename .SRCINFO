@@ -1,0 +1,20 @@
+pkgbase = gitwatch-rs-bin
+	pkgdesc = CLI to watch a git repo and automatically commit changes
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/croissong/gitwatch-rs
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = libgit2
+	depends = openssl
+	provides = gitwatch
+	conflicts = gitwatch
+	source = gitwatch-rs-bin-0.1.1.tar.gz::https://github.com/croissong/gitwatch-rs/archive/v0.1.1.tar.gz
+	source = gitwatch-x86_64-unknown-linux-gnu-0.1.1.tar.gz::https://github.com/croissong/gitwatch-rs/releases/download/v0.1.1/gitwatch-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 487f44aa8f9598215711a59624463dcba2a5f09392b847833fd7f29a86c3da70
+	sha256sums = e988e130b7f4429eb817467f6c53ca8f9b9f77dfbb66a6e5a31f5728bf9810f1
+
+pkgname = gitwatch-rs-bin
