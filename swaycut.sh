@@ -29,7 +29,7 @@ Modes:
 EOF
 }
 
-function Print() {
+function log() {
     if [ $DEBUG -eq 0 ]; then
         return 0
     fi
@@ -47,7 +47,7 @@ function send_notification() {
 }
 
 function save_geometry() {
-    Print "Geometry: %s\n" "${1}"
+    log "Geometry: %s\n" "${1}"
 
     if [ $CLIPBOARD -eq 0 ]; then
         mkdir -p "$SAVEDIR"
@@ -92,11 +92,11 @@ function grab_region() {
 
 function grab_window() {
     local clients=`swaymsg -t get_tree | jq -r '[.. | ((.nodes? // empty) + (.floating_nodes? // empty))[] | select(.visible and .pid)]'`
-    Print "Clients: %s\n" "$clients"
+    log "Clients: %s\n" "$clients"
     # Generate boxes for each visible window and send that to slurp
     # through stdin
     local boxes="$(echo $clients | jq -r '.[] | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height) \(.name)"')"
-    Print "Boxes:\n%s\n" "$boxes"
+    log "Boxes:\n%s\n" "$boxes"
     slurp -r <<< "$boxes"
 }
 
@@ -140,7 +140,7 @@ function args() {
     done
 
     if [ -z $OPTION ]; then
-        Print "A mode is required\n\nAvailable modes are:\n\toutput\n\tregion\n\twindow\n"
+        log "A mode is required\n\nAvailable modes are:\n\toutput\n\tregion\n\twindow\n"
         exit 2
     fi
 }
@@ -159,5 +159,5 @@ FILENAME="$(date +'Sway-screenshot_%Y-%m-%d-%H:%M:%S.png')"
 args $0 "$@"
 
 SAVE_FULLPATH="$SAVEDIR/$FILENAME"
-[ $CLIPBOARD -eq 0 ] && Print "Saving in: %s\n" "$SAVE_FULLPATH"
+[ $CLIPBOARD -eq 0 ] && log "Saving in: %s\n" "$SAVE_FULLPATH"
 begin_grab $OPTION
