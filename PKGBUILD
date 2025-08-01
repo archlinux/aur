@@ -10,7 +10,7 @@ makedepends=(git cargo)
 options=(!debug)
 backup=("etc/otter-launcher/config.toml")
 source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.5.5.tar.gz")
-sha256sums=('670e8e6c6ef42a0519bbb786ef582487a84e06820fd76b7cfb0ec621d2480ee9')
+sha256sums=('c1e28f84389883ecbfcc18e7b84afe0e39a0ccecd2ae66480ad3209a7aaaa5f3')
 
 build() {
 	cd "$pkgname-$pkgver"
