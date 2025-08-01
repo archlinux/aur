@@ -57,7 +57,7 @@ prepare() {
         --pkgdesc="${pkgdesc}" \
         --categories="Development" \
         --name="${pkgname%-git}" \
-        --exec="${pkgname} %U"
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
