@@ -25,7 +25,5 @@ pkgbase = ik-llama.cpp-cuda
 	conflicts = ik-llama.cpp
 	options = lto
 	options = !debug
-	source = git+https://github.com/ikawrakow/ik_llama.cpp
-	sha256sums = SKIP
 
 pkgname = ik-llama.cpp-cuda
