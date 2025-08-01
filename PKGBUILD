@@ -3,7 +3,7 @@
 
 pkgname=python-pudb-git
 _pkgname=pudb
-pkgver=2025.1.r7.g341c3c0
+pkgver=2025.1.r16.g117bd41
 pkgrel=1
 pkgdesc="A full-screen, console-based Python debugger"
 url="https://documen.tician.de/pudb/"
@@ -16,6 +16,7 @@ depends=(
   'python-jedi'
   'python-packaging'
   'python-pygments'
+  'python-typing_extensions'
   'python-urwid'
   'python-urwid_readline'
 )
