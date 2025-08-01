@@ -11,11 +11,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP') 
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/installer-go-master"
     go build -o installer
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/installer-go-master"
     install -Dm755 installer "$pkgdir/usr/bin/installer"
 }
