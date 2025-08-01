@@ -1,10 +1,10 @@
 # Maintainer: rzhli <tayuebuliuhen@gmail.com>
-# Contributor: skychan <diufanshu@gmail.com>
+# Contributor: rzhli <tayuebuliuhen@gmail.com>
 
 pkgname='ftnn-desktop'
-pkgver='15.22.12108'
+pkgver='15.26.12508'
 pkgrel=1
-pkgdesc="FTNN 富途牛牛桌面版（官方 .deb 封装）"
+pkgdesc="FTNN富途牛牛桌面版"
 arch=('x86_64')
 url="https://www.futunn.com/"
 license=('unknown')
@@ -36,6 +36,7 @@ package() {
 [Desktop Entry]
 Name=FTNN 富途牛牛
 Comment=Trade Hong Kong, US, and China A-shares
+export QT_SCALE_FACTOR=1.5 # 尝试 1.25, 1.5, 2.0 等值
 Exec=ftnn
 Icon=ftnn
 Terminal=false
