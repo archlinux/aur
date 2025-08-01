@@ -1,7 +1,7 @@
 pkgbase = ffbox-bin
 	pkgdesc = An user-friendly ffmpeg GUI.(Prebuilt version.Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳
 	pkgver = 4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ttqftech/FFBox
 	arch = x86_64
 	license = LicenseRef-custom
@@ -13,7 +13,6 @@ pkgbase = ffbox-bin
 	source = ffbox-4.5.deb::https://github.com/ttqftech/FFBox/releases/download/v4.5/Linux_x86-64_FFBox_4.5.deb
 	source = ffbox.sh
 	sha256sums = 6ed4a00097554c36a01dea76ead098918c26249c549da3483762865dcc71d01d
-	sha256sums = 59d94bf34308bdbed4d9b1c624fb2e736fb9b07765e1e13e8e5e2f18a39dba23
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = ffbox-bin

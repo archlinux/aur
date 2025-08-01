@@ -3,7 +3,7 @@ pkgname=ffbox-bin
 _pkgname=FFBox
 pkgver=4.5
 _electronversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="An user-friendly ffmpeg GUI.(Prebuilt version.Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
 arch=('x86_64')
 url="https://github.com/ttqftech/FFBox"
@@ -22,8 +22,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6ed4a00097554c36a01dea76ead098918c26249c549da3483762865dcc71d01d'
-            '59d94bf34308bdbed4d9b1c624fb2e736fb9b07765e1e13e8e5e2f18a39dba23'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,6 +36,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     sed -i -e "
         s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g
