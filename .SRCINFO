@@ -1,6 +1,6 @@
 pkgbase = chatbox-git
 	pkgdesc = User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...).Use system-wide electron.一个 AI 模型桌面客户端，支持 ChatGPT、Claude、Google Gemini、Ollama 等主流模型.
-	pkgver = 0.10.4.r78.gc96db21
+	pkgver = 0.10.4.r205.g85a1619
 	pkgrel = 1
 	url = https://chatboxai.app/
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = chatbox-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron23
+	depends = electron26
 	optdepends = ollama: Use your local Ollama model
 	provides = chatbox=0.10.4
 	conflicts = chatbox
 	source = chatbox.git::git+https://github.com/Bin-Huang/chatbox.git
 	source = chatbox.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = chatbox-git
