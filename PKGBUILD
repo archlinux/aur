@@ -15,6 +15,15 @@
 # instead of modifying the PKGBUILD file. Here's an example:
 # env _makemenuconfig=y _copyfinalconfig=y _subarch=30 makepkg
 
+# Toggles colorful log messages.
+#
+# We unfortunately have no way of checking whether the
+# terminal supports colors because 'makepkg' unsets
+# the 'CI' and 'COLORTERM' variables before we can read them.
+#
+# Set to anything but null to deactivate.
+: "${_disable_colorful_logging:=""}"
+
 # Tweak kernel options prior to a build via menuconfig.
 #
 # Set to anything but null to activate.
@@ -236,6 +245,40 @@ validpgpkeys=(
 export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
 export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @${SOURCE_DATE_EPOCH}})"
+
+
+## Logs an informational message.
+##
+## Arguments: <str:message...>
+_info() {
+    if [ -z "${_disable_colorful_logging}" ]; then
+        echo -e "\e[1;37m:: INFO: \e[0m\e[0;37m${*}\e[0m"
+    else
+        echo -e ":: INFO: ${*}"
+    fi
+}
+
+## Logs a warning message.
+##
+## Arguments: <str:message...>
+_warning() {
+    if [ -z "${_disable_colorful_logging}" ]; then
+        echo -e "\e[1;33m:: WARNING: \e[0m\e[0;33m${*}\e[0m"
+    else
+        echo -e ":: WARNING: ${*}"
+    fi
+}
+
+## Logs an error message.
+##
+## Arguments: <str:message...>
+_error() {
+    if [ -z "${_disable_colorful_logging}" ]; then
+        echo -e "\e[1;31m:: ERROR: \e[0m\e[0;31m${*}\e[0m"
+    else
+        echo -e ":: ERROR: ${*}"
+    fi
+}
 
 
 ## Checks for deprecated settings.
