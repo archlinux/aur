@@ -1,8 +1,8 @@
 pkgbase = drop-oss-app
 	pkgdesc = Arch native client for Drop
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://wiki.droposs.org/
+	url = https://docs.droposs.org/
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = yarn
@@ -18,9 +18,7 @@ pkgbase = drop-oss-app
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	depends = openssl-1.1
-	depends = openssl
-	source = https://codeload.github.com/Drop-OSS/drop-app/tar.gz/refs/tags/dev-v0.2.1-beta
+	source = https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = e167cd86dd995c9079a1e6bf613b37e2745ba4c2dab32843d1836e3e6acc417e
 
 pkgname = drop-oss-app
