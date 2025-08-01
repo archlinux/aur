@@ -3,7 +3,7 @@ pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
 pkgver=25.7.4
 _electronversion=35
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -16,6 +16,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'trezor-udev'
 )
 makedepends=(
     'asar'
