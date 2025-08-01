@@ -1,12 +1,12 @@
 pkgname=kumono
 pkgver=0.54.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
 arch=('x86_64')
 makedepends=('git' 'cargo')
 license=('MIT-0')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('86b526ea6e9bcc2eca6e7ddc916e230215111c4791ae3037b17d425093fff782')
 options=('!lto')
 provides=('kumono')
@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver-$pkgrel"
 	install -Dm755 'target/release/kumono' -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 'README.md' -t "$pkgdir/usr/share/doc/$pkgname"
