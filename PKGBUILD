@@ -7,7 +7,7 @@ pkgrel=11
 pkgdesc='Converter for raw files; utility and GIMP plugin'
 url='https://sourceforge.net/projects/nufraw/'
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('bzip2' 'cfitsio' 'exiv2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'gtk2' 'gtkimageview' 'jasper'
          'lcms2' 'lensfun' 'libjpeg-turbo' 'libpng' 'libtiff' 'zlib')
 makedepends=('gimp')
