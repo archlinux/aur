@@ -20,3 +20,17 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "org.kde.development.appdata.xml",
+]
+SPDX-FileCopyrightText = "KDE contributors"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = [
+    "kdesdk-devenv-dependencies.svg",
+]
+SPDX-FileCopyrightText = "KDE contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later"
