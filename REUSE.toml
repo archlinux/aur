@@ -27,4 +27,4 @@ path = [
     "freetype-pkgconfig.patch",
 ]
 SPDX-FileCopyrightText = "lib32-sdl_ttf contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "Zlib"

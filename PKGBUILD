@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Esa lakaniemi <esalaka@gmail.com>
 
 _pkgbasename=sdl_ttf
@@ -8,7 +8,7 @@ pkgrel=9
 pkgdesc="A library that allows you to use TrueType fonts in your SDL applications (32-bit)"
 url="https://www.libsdl.org/projects/SDL_ttf/"
 arch=(x86_64)
-license=(custom)
+license=('Zlib')
 depends=(lib32-sdl lib32-freetype2 $_pkgbasename)
 source=(https://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-$pkgver.tar.gz
         freetype-pkgconfig.patch
