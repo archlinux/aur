@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=anthropic-claude-nativefier
-pkgver=37.2.4
+pkgver=37.2.5
 pkgrel=1
 pkgdesc="Anthropic Claude desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
