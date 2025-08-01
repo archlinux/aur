@@ -2,7 +2,7 @@
 
 _pkgname=lutgen
 pkgname=$_pkgname-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A blazingly fast interpolated LUT utility for arbitrary and popular color palettes."
 url="https://github.com/ozwaldorf/lutgen-rs"
@@ -12,7 +12,7 @@ provides=("lutgen")
 conflicts=("lutgen")
 source=("LICENSE" "https://github.com/ozwaldorf/lutgen-rs/releases/download/lutgen-v$pkgver/lutgen-cli-v$pkgver-x86_64-unknown-linux-gnu")
 sha256sums=('f007afaeba32931337b4be155b3f8094cce9248dece43ebe53bf2579fe26a330'
-            'd744cd4bb6033e252cff8918417f60825d080f2f24fade1fd42a1eed8be96b81')
+            '957597460b98ad762a6817dcf06045df1e16acf23f263254ab37e36f0634f76e')
 
 package() {
     mv lutgen-cli-v$pkgver-x86_64-unknown-linux-gnu lutgen
