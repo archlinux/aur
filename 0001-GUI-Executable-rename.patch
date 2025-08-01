@@ -1,0 +1,25 @@
+From 4dfa9f34cfad2359d9fb99b6be1a22b16b2153f1 Mon Sep 17 00:00:00 2001
+From: Martin Piatka <piatka@cesnet.cz>
+Date: Fri, 1 Aug 2025 10:26:15 +0200
+Subject: [PATCH] GUI: Executable rename
+
+---
+ gui/QT/window/ultragrid_window.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gui/QT/window/ultragrid_window.cpp b/gui/QT/window/ultragrid_window.cpp
+index a451592e3..75a7050b9 100644
+--- a/gui/QT/window/ultragrid_window.cpp
++++ b/gui/QT/window/ultragrid_window.cpp
+@@ -621,7 +621,7 @@ QString UltragridWindow::findUltragridExecutable() {
+ 		CFRelease(cfPath);
+ 		return bundlePath + "/Contents/MacOS/uv";
+ #else
+-		return QString("uv");
++		return QString("ultragrid");
+ #endif
+ 	}
+ }
+-- 
+2.50.1
+

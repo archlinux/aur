@@ -1,6 +1,6 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=v1.9.r1545.g7c882baa9
+pkgver=v1.9.r1556.gef0a54f6f
 pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
@@ -41,13 +41,20 @@ provides=('ultragrid')
 conflicts=('ultragrid')
 options=('debug')
 
-source=("${pkgname}::git+https://github.com/CESNET/UltraGrid")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/CESNET/UltraGrid"
+        0001-GUI-Executable-rename.patch)
+sha256sums=('SKIP'
+            '5f1acfb6cdf7134bf3af97dad056565b4d8f9fe4008a8e6955135e6777e63d5d')
 
 pkgver() {
   cd "$pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$pkgname"
+    patch -Np1 -i ../0001-GUI-Executable-rename.patch
 }
 
 build() {
