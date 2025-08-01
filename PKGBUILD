@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=configuradorfnmt
-pkgver=4.0.6
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="Tool for request keys and certificates of FNMT"
 arch=('any')
@@ -10,11 +10,11 @@ license=('LicenseRef-FNMT')
 depends=('java-runtime>=17')
 optdepends=('icedtea-web: If the certificate renewal does not work, install this')
 options=('!debug' '!emptydirs')
-source=("${pkgname}-${pkgver}-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_${pkgver}_amd64.deb"
+source=("${pkgname}-${pkgver}-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_${pkgver}.amd64.deb"
         "${pkgname}.desktop"
         "${pkgname}")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
-b2sums=('30952b7d6c414adfe1d2b191c231a0d94412c4f628ca7494c5a10276f33ebee65eb2976ba46c9c0d1f171382999a492950cb9210616f6a9c2a97e96dce14fcc1'
+b2sums=('39adb59f0b64c84b10e75a2c3728fa5f509b169050c80a7c12e1b08753416eba99ba47ce64d02b6e7e2fba59b6c2e71374225db55fe68a027b7b9de561e97c5c'
         '668221fb76264ab2d77d1417fec8032a498d369e7f5005c713a3b9a5244f91afd203f7644c12b4f72984634ffac897e04b32bbaf3cf7626ef81743736b9a9db2'
         '28a4fb76e9026edfc05d860a3a835744b363c289ccaf770f9a781c851f2f8345a6a925f4a74b187a427c49ae690763de1710e25db5729235c4ef4c584dc1fc49')
 
