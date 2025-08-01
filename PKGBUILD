@@ -1,7 +1,7 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
-pkgver=1.12.0.rc.3
+pkgver=1.12.0.rc.3.reF1nd
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
@@ -21,6 +21,12 @@ sha256sums=(SKIP
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta")
 
 backup=("etc/$_pkgname/config.json")
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  go run ./cmd/internal/read_tag | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 
 _tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale
 build(){
