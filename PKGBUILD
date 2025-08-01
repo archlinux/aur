@@ -6,7 +6,7 @@
 _pkgname=oscar
 pkgname=oscar
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CrimsonNape/OSCAR-code"
@@ -30,10 +30,15 @@ source=(
 sha256sums=('0282f4e8347c3e52911be1809eae8832da64e961cae9c968278a0a6fbceb5d51'
             '6b2f735622f218e2ac5ef61475886fadfeeedd5f15b04fa0d54451162ee394ad')
 
+prepare() {
+  cd "${srcdir}/OSCAR-code-v${pkgver}"
+  sed -i -e 's/" ) + appName/oscar" )/' oscar/SleepLib/common.cpp
+}
+
 build() {
   cd "${srcdir}/OSCAR-code-v${pkgver}"
   qmake OSCAR_QT.pro
-  make -j$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
+  make
 }
 
 package() {

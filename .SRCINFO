@@ -1,7 +1,7 @@
 pkgbase = oscar
 	pkgdesc = Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project.
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/CrimsonNape/OSCAR-code
 	arch = i686
 	arch = x86_64
