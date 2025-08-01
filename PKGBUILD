@@ -3,7 +3,7 @@
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=r266.65d726c
+pkgver=r271.7838c62
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,8 +11,27 @@ url="https://github.com/sqzw-x/${_pkgname}"
 license=("GPL-3.0-or-later")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=("at-spi2-core" "cairo" "fontconfig" "freetype2" "gdk-pixbuf2" "gtk3" "libx11" "libxcb" "libxkbcommon" "libxkbcommon-x11"
-         "libxcomposite" "libxext" "mpdecimal" "pango" "xcb-util-image" "xcb-util-keysyms" "xcb-util-renderutil" "xcb-util-wm")
+depends=(
+    "at-spi2-core"
+    "cairo"
+    "ffmpeg"
+    "fontconfig"
+    "freetype2"
+    "gdk-pixbuf2"
+    "gtk3"
+    "libx11"
+    "libxcb"
+    "libxkbcommon"
+    "libxkbcommon-x11"
+    "libxcomposite"
+    "libxext"
+    "mpdecimal"
+    "pango"
+    "xcb-util-image"
+    "xcb-util-keysyms"
+    "xcb-util-renderutil"
+    "xcb-util-wm"
+)
 makedepends=("git" "python" "uv")
 source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.desktop"
