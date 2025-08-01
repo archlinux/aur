@@ -2,7 +2,7 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname='Hugin Messenger'
-pkgver=1.0.5
+pkgver=1.0.6
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -27,8 +27,8 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('e49d745eeba29410770af239e8effd3918285dca1d0a86c258b62c3cbba3b675'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('4a531da96c6c86018d01f17b703cde99f3dc492384106a2082f41330382e4e6f'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
