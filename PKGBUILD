@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=sonyheadphonesclient-bluetooth-bin
 _pkgname=sonyheadphonesclient-bluetooth
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 provides=("sonyheadphonesclient-bluetooth")
 conflicts=("sonyheadphonesclient-bluetooth")
@@ -15,7 +15,7 @@ source=(
   "LICENSE-$pkgver"::"$url/raw/refs/tags/$pkgver/LICENSE"
 )
 sha256sums=(
-  "bdf2c39d1853a2f7166e4d513ba7923165b11e79ab96a8df48cace8f1e246663"
+  "b19773e3fd40fd979e52e70f0a1f623f576cefe2d0b2f44b90c43e9783e84b6b"
   '0b3db3e11db69b6d0de551cb7d9a56cc65be7f8fd912bcf6bae61ba57df36c34'
 )
 
