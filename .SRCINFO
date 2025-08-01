@@ -1,0 +1,16 @@
+pkgbase = cloak-bin
+	pkgdesc = Securely inject environment variables into trusted subprocesses
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/DavidHoenisch/cloak
+	license = MIT
+	conflicts = cloak
+	provides = cloak
+	arch = aarch64
+	source_aarch64 = https://github.com/DavidHoenisch/cloak/releases/download/v0.2.7/cloak_0.2.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = e717895f3bba6d68bbd1ae99d044e20fe3fe50a251972231c7fbb29898a109ba
+	arch = x86_64
+	source_x86_64 = https://github.com/DavidHoenisch/cloak/releases/download/v0.2.7/cloak_0.2.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = bd320f0a8ef5a0b93f4ef102f76c510bd66650a09ac513b5d9a0194cfeefff10
+	
+pkgname = cloak-bin
