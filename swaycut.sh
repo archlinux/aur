@@ -67,19 +67,7 @@ function save_geometry() {
 }
 
 function begin_grab() {
-    local option=$1
-    case $option in
-        output)
-            local geometry=`grab_output`
-            ;;
-        region)
-            local geometry=`grab_region`
-            ;;
-        window)
-            local geometry=`grab_window`
-            ;;
-    esac
-    save_geometry "${geometry}"
+    save_geometry "$(grab_$1)"
 }
 
 function grab_output() {
