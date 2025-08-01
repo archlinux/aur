@@ -186,7 +186,7 @@
 _kernel_major=6.15
 _kernel_minor=8
 # Tachyon patches version
-_tachyon=6.15.7-1591
+_tachyon=6.15.7-1592
 # kernel_compiler_patch version
 _kernelcompilerpatch="20250612"
 # kernel_compiler_patch name
