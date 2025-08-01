@@ -3,7 +3,7 @@ pkgname=mailspring-bin
 _pkgname=Mailspring
 pkgver=1.16.0
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://getmailspring.com/"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d7fea401e4b4849faf68dfcf19cfb47b0c4d02fe8e7e00ca73022ba4e28798ee'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
