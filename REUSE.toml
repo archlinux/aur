@@ -27,4 +27,4 @@ path = [
     "0002-exiv2-error.patch",
 ]
 SPDX-FileCopyrightText = "gimp-nufraw contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-2.0-or-later"
