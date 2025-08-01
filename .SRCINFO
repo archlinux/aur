@@ -1,0 +1,31 @@
+pkgbase = mangowc-git
+	pkgdesc = A Wayland compositor with smooth animation
+	pkgver = r736.2b74dee
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/mangowc
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = fakeroot
+	makedepends = debugedit
+	makedepends = base-devel
+	makedepends = wayland-protocols>=1.41
+	depends = glibc
+	depends = wayland>=1.23.1
+	depends = libinput>=1.27.1
+	depends = libdrm
+	depends = pixman
+	depends = libxkbcommon
+	depends = pcre2
+	depends = wlroots-0.19-mao-git
+	depends = scenefx-git
+	provides = mangowc
+	provides = wayland-compositor
+	conflicts = mangowc
+	conflicts = mangowc-git
+	source = mangowc-git::git+https://github.com/DreamMaoMao/mangowc.git
+	md5sums = SKIP
+
+pkgname = mangowc-git
