@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=terramate
-pkgver=0.5.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation."
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://github.com/terramate-io/terramate"
 conflicts=('terramate-bin')
 provides=('terramate')
 license=('MPL-2')
-makedepends=('go>=1.18' 'git' 'gzip' 'tar' 'gcc')
-source=("https://github.com/terramate-io/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ba61a8cd832aba3bb644d1def5f5b9a3f42641aedcd46dc029e0f5a2cdaf058a')
+makedepends=('go>=1.21' 'git' 'gzip' 'tar' 'gcc')
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/terramate-io/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -29,5 +29,4 @@ package() {
   install -Dm755 build/${pkgname} ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  cp -rv docs/* ${pkgdir}/usr/share/doc/${pkgname}/
 }
