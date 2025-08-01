@@ -18,14 +18,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --tags --abbrev=7 \
-        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 build() {
     cd "${srcdir}/${_pkgname}" || exit 1
     cmake -B build
-    sudo cmake --build build
+    cmake --build build
 }
 
 package() {
