@@ -1,6 +1,6 @@
 pkgbase = raylib-oldgl-git
 	pkgdesc = Simple and easy-to-use game programming library (OpenGL 2.1)
-	pkgver = 5.0
+	pkgver = 5.5
 	pkgrel = 1
 	url = http://github.com/raysan5/raylib
 	arch = armv7a
@@ -17,7 +17,7 @@ pkgbase = raylib-oldgl-git
 	makedepends = xorg-xinput
 	provides = raylib
 	conflicts = raylib
-	source = raylib-oldgl-git-5.0.tar.gz::http://github.com/raysan5/raylib/archive/refs/tags/5.0.tar.gz
+	source = raylib-oldgl-git-5.5.tar.gz::http://github.com/raysan5/raylib/archive/refs/tags/5.5.tar.gz
 	sha256sums = 98f049b9ea2a9c40a14e4e543eeea1a7ec3090ebdcd329c4ca2cf98bc9793482
 
 pkgname = raylib-oldgl-git
