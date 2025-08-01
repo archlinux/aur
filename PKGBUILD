@@ -1,6 +1,6 @@
 # Maintainer: fk29g <fk29g.uphill912@slmails.com>
 pkgname=tmux-sessionizer
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A tool for opening git repositories as tmux sessions"
 arch=("x86_64")
@@ -12,7 +12,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 options=("!lto") # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("37cceae77bad373452d08b990065e7d1e8ed7b038a0af126aa4403332364530e")
+sha256sums=('c3205764f70c8e7f94a1b32eccbc22e402cd9ab28c54d06b405073cae185bdd8')
 
 build() {
     cd "$pkgname-$pkgver"
