@@ -1,19 +1,12 @@
 pkgbase = ampcode-com
-	pkgdesc = An agentic coding tool, in research preview from Sourcegraph
+	pkgdesc = [DEPRECATED] This package has been renamed to 'ampcode'. Please install 'ampcode' instead.
 	pkgver = 0.0.1754024802
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ampcode.com
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = custom:proprietary
-	depends = ripgrep
+	depends = ampcode
 	provides = amp
-	conflicts = amp
 	replaces = sourcegraph-amp
-	options = !strip
-	source_x86_64 = amp-0.0.1754024802-x86_64::https://github.com/sourcegraph/amp-cli/releases/download/v0.0.1754024802/amp-linux-x64
-	sha256sums_x86_64 = aabef5e6484aed7d2226f23160a3e08e98a0a9fe178f47c10ac25decde966f4e
-	source_aarch64 = amp-0.0.1754024802-aarch64::https://github.com/sourcegraph/amp-cli/releases/download/v0.0.1754024802/amp-linux-arm64
-	sha256sums_aarch64 = a1bb4b2a82d1bd94c68bc596e5b5bb356561c7f86835c6fca7be0603e1012161
 
 pkgname = ampcode-com
