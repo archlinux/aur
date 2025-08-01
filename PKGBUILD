@@ -4,7 +4,7 @@
 
 _pkgname=raylib
 pkgname=raylib-oldgl-git
-pkgver=5.0
+pkgver=5.5
 pkgrel=1
 pkgdesc='Simple and easy-to-use game programming library (OpenGL 2.1)'
 arch=('armv7a' 'aarch64' 'i686' 'x86_64')
