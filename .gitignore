@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.zst
+*.log
+joyful/
+src/
+pkg/
