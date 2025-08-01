@@ -4,7 +4,7 @@ pkgname="my-${_pkgname}-bin"
 _appname=YesPlayMusic
 pkgver=0.4.20
 _electronversion=13
-pkgrel=2
+pkgrel=3
 pkgdesc="A third party music player for Netease Music.(Prebuilt version.Use system-wide electron)高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。"
 arch=(
     'aarch64'
@@ -31,11 +31,15 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/stark81/my_yesplaymusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('58ca0d87d53ea8afd6fed7b393eaf30060034debe576c44ce7a9e4111668dd65'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 sha256sums_aarch64=('00e50275dbda1858b9a0f286817b9e210bdf0d02ce3b190a2156a3f6722ea003')
 sha256sums_armv7h=('f9201e43f899c85c3ac37a560a237d639a4c99ce1dd2712468f022623701fd35')
 sha256sums_x86_64=('7e02adb2168949de0c86b547202575fda7faf2431f8669f6b07fe8919d1dada6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_appname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -45,6 +49,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_appname}\/${_pkgname} %U/${pkgname%-bin} %U/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
