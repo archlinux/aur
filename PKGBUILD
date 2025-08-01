@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=markdown2pdf
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Convert markdown to pdf (a md to pdf transpiler)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ca427d4469163deecd9f4d3d5d8acba0d7c915d9965060df47a9741c1f9fdb391b6cd3bf0131e9fe83db65aea6c1e396c20da95d0ba1784f9f9a2d29695e05cf')
+sha512sums=('929ef17bd4f17dfb8816301acad66a4be16f7a997df286e5870535c357a17b6e084f2b05a8dfc0131d4ff2fae33f8464de0f0fbf24634f98861eaa3bf0ffcd8c')
 
 prepare() {
   cd "$pkgname-$pkgver"
