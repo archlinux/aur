@@ -10,6 +10,7 @@ pkgbase = ampcode
 	provides = amp
 	conflicts = amp
 	replaces = sourcegraph-amp
+	replaces = ampcode-com
 	options = !strip
 	source_x86_64 = amp-0.0.1754024802-x86_64::https://github.com/sourcegraph/amp-cli/releases/download/v0.0.1754024802/amp-linux-x64
 	sha256sums_x86_64 = aabef5e6484aed7d2226f23160a3e08e98a0a9fe178f47c10ac25decde966f4e

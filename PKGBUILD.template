@@ -10,7 +10,7 @@ url="https://ampcode.com"
 license=('custom:proprietary')
 depends=('ripgrep')
 provides=('amp')
-replaces=('sourcegraph-amp')
+replaces=('sourcegraph-amp' 'ampcode-com')
 conflicts=('amp')
 options=('!strip')
 
