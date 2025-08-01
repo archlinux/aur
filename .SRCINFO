@@ -1,0 +1,14 @@
+pkgbase = zfs_snapmount-git
+	pkgdesc = Script for mounting zfs snapshot recursively
+	pkgver = r19.9944142
+	pkgrel = 1
+	url = https://github.com/alvistar/zfs_snapmount
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = zfs_snapmount-git
+	conflicts = zfs_snapmount-git
+	source = git+https://github.com/alvistar/zfs_snapmount.git
+	sha256sums = SKIP
+
+pkgname = zfs_snapmount-git
