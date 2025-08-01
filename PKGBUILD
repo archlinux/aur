@@ -79,11 +79,11 @@ build() {
       -DGGML_CPU_ALL_VARIANTS=ON
     )
   else
-    # we lose GGML_NATIVE_DEFAULT due to how makepkg includes
+    # we lose GGML_NATIVE_DEFAULT due to how makepkg including
     # $SOURCE_DATE_EPOCH in ENV
     _cmake_options+=(
       -DGGML_NATIVE=ON
-    )
+    )    
   fi
   cmake "${_cmake_options[@]}"
   cmake --build build
