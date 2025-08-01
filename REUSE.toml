@@ -17,13 +17,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "no-qmake.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-    "no-qmake.patch",
-]
-SPDX-FileCopyrightText = "qt5-doc contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
