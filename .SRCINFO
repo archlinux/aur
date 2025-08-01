@@ -1,8 +1,9 @@
 pkgbase = ssh2incus-bin
 	pkgdesc = SSH server for Incus instances
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ssh2incus.com/
+	install = ssh2incus.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only

@@ -1,7 +1,7 @@
 # Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 pkgname='ssh2incus-bin'
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH server for Incus instances"
 arch=(
   'x86_64'
@@ -13,6 +13,7 @@ depends=()
 optdepends=('incus')
 
 backup=('etc/default/ssh2incus')
+install=ssh2incus.install
 conflicts=('ssh2incus')
 
 source=(
@@ -47,8 +48,4 @@ package() {
   install -Dm644 "$srcdir/ssh2incus.service" "$pkgdir/usr/lib/systemd/system/ssh2incus.service"
   install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/ssh2incus/README.md"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/ssh2incus/LICENSE"
-}
-
-post_install() {
-  /usr/bin/systemctl --system daemon-reload
 }

@@ -1,0 +1,3 @@
+post_install() {
+	/usr/bin/systemctl --system daemon-reload
+}
