@@ -1,7 +1,7 @@
 # Maintainer: tblFlip <root@tblflipde>
 
 pkgname=woomer
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 
 pkgdesc="Zoomer application for Wayland inspired by tsoding's boomer"
@@ -29,7 +29,7 @@ source=(
 )
 
 sha256sums=(
-	"0e53ca0576c71a5931e75a45e734f2acacc0592260a06316b4b5a82a19faadac"
+	"2666c09e5b070dfbc52bd82c107a5e5a0f7cb6206bf9f5457dde1daae8da8ff2"
 )
 
 prepare() {
@@ -43,13 +43,13 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 	export CFLAGS="${CFLAGS//-flto=auto/}"
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
 	cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --frozen
 }
 
 package() {
