@@ -2,13 +2,13 @@
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
-pkgver=0.9
-pkgrel=4
+pkgver=1.0rc1
+pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('qt5-base' 'libusb' 'hidapi' 'mbedtls2')
+depends=('glibc' 'gcc-libs' 'qt5-base' 'libusb' 'hidapi' 'mbedtls2' 'hicolor-icon-theme')
 makedepends=('pkgconf' 'qt5-tools')
 optdepends=('i2c-tools: mainboard & RAM access'
             'openrazer-driver-dkms: for Razer devices')
@@ -16,11 +16,11 @@ optdepends=('i2c-tools: mainboard & RAM access'
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/commit/8e6e5c1becdd610cd9206bbdcf5616ce4b43e0f1
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/merge_requests/668
 options=('!lto')
-source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/OpenRGB-release_$pkgver.tar.gz"
+source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_$pkgver/OpenRGB-release_candidate_1.0rc1.tar.gz"
         openrgb-modules-load.conf
         openrgb.tmpfiles
         openrgb.service)
-sha256sums=('2e62799339b72b6d3afc4792e6ff39487583210bb5ddde93e2daa38ae35381c2'
+sha256sums=('8199abc3f6d0000ce831e4af60b90539ed625df596416c82945ff80a81ca361a'
             'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2'
             'e86604e9604d59cddcc13de60b71c0e652cd1f9b56d89de36b2158509849e51c'
             '6bf907e94783751f80b2c26bab66e59ee290428fcbed9c1ddceeab67692f3ade')
@@ -33,14 +33,14 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
   export LDFLAGS="$LDFLAGS -L/usr/lib/mbedtls2" # props to AndyRTR for linking to mbedtls2 fix
 
-  cd "$srcdir/OpenRGB-release_$pkgver"
+  cd "$srcdir/OpenRGB-release_candidate_$pkgver"
   sed -i 's|rules.path=/lib|rules.path=/usr/lib|g' OpenRGB.pro
   qmake INCLUDEPATH+="/usr/include/mbedtls2" OpenRGB.pro
   make
 }
 
 package() {
-  cd "$srcdir/OpenRGB-release_$pkgver"
+  cd "$srcdir/OpenRGB-release_candidate_$pkgver"
   make INSTALL_ROOT="$pkgdir" install
   install -Dm644 "$srcdir"/openrgb-modules-load.conf "$pkgdir"/usr/lib/modules-load.d/openrgb.conf
   install -Dm644 "$srcdir"/openrgb.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/openrgb.conf
