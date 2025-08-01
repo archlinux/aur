@@ -1,24 +1,15 @@
 pkgbase = gnome-search-providers-vscode
 	pkgdesc = Add VSCode workspaces to Gnome search
-	pkgver = 2.5.2
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://codeberg.org/swsnr/gnome-search-providers-vscode
 	arch = x86_64
 	license = EUPL-1.2
 	makedepends = rust
 	makedepends = just
+	makedepends = git
 	depends = sqlite
-	source = https://codeberg.org/swsnr/gnome-search-providers-vscode/releases/download/v2.5.2/gnome-search-providers-vscode-v2.5.2.tar.zst
-	source = gnome-search-providers-vscode-v2.5.2.tar.zst.sshsig::https://codeberg.org/swsnr/gnome-search-providers-vscode/releases/download/v2.5.2/gnome-search-providers-vscode-v2.5.2.tar.zst.sig
-	source = https://codeberg.org/swsnr/gnome-search-providers-vscode/releases/download/v2.5.2/gnome-search-providers-vscode-v2.5.2-vendor.tar.zst
-	source = gnome-search-providers-vscode-v2.5.2-vendor.tar.zst.sshsig::https://codeberg.org/swsnr/gnome-search-providers-vscode/releases/download/v2.5.2/gnome-search-providers-vscode-v2.5.2-vendor.tar.zst.sig
-	source = config.toml
-	source = allowed-signers
-	sha256sums = d5c9296e6e6b440301e6691dc6e23c490e1103cd3d1a7b831a2125871814b9fa
-	sha256sums = 609c9c40dd11510005dcf2fc08c47380fb6e9764459820f7053967871d413575
-	sha256sums = 1c04d02db5467c3bfaeb27e19133ef71010aabb3b1475989ca39fb8f52ce9006
-	sha256sums = bc4bd91e09fcc27a44dcb4b4036df91f6fd8f9f25bae26376fb6e2dd6547001e
-	sha256sums = 8dc330c974e99a362fd8d27f5d76f485da9559f80d576e0fd9ffb1779e4dd881
-	sha256sums = 2691054f647923a439befd20624c23e9cf2c0c0c300dccd33ceaa052b9fbb5ce
+	source = git+https://codeberg.org/swsnr/gnome-search-providers-vscode#tag=v2.5.3
+	sha256sums = aa910f15364fb50e9e28ab80401f13d764be293a3ae34386aad6579dca138b4f
 
 pkgname = gnome-search-providers-vscode
