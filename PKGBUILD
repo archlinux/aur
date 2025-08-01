@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: M0Rf30
 # Contributor: Samsagax <samsagax@gmail.com>
 
@@ -9,7 +9,7 @@ pkgrel=760
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('x86_64')
 url="https://github.com/Bumblebee-Project/bbswitch"
-license=('GPL')
+license=('GPL-2.0-only')
 makedepends=('linux-headers')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz"
         0001-proc_ops-struct.patch 0002-kernel-5.7.patch 0003-kernel-5.18.patch)
