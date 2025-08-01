@@ -2,7 +2,7 @@
 
 pkgname=autofirma-bin
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.zip::https://firmaelectronica.gob.es/content/dam/f
         "autofirma.js"
         "autofirma.svg")
 b2sums=('227def57c2c3e61a845446f8378de8cb5003b32c893f1819cc05dfbbb7dd39ad50d3f69fefedf62167367cb4ef9e0a0de877af92c53425fde57e828aff84107f'
-        '7884602cbe5dd33aa903fd63780458395c1fbf069973db76d4c3210f5d85a66fa4a0745864f6fec6f5637177dc4d4cc94f7040119dda3a146b9af89a058b0b59'
+        'e5dd47f4c6fe0185a354ad11fd753f48ca45c2446d9c901bed72d838a3491bf2a7eabfc49955e6ffeddb3279a1a781e3b6e3e5ee20addf6e16f99879cbc8f20c'
         'cbedb1aff6ea64e44569d4a3249bd3707a5bc2fadf956ab27f62a71198cfed3f07170f40965bbbd2b4b9a587d165fe8b6a19c3f85aa87eaf8c5897d899d9b6e8'
         '835597fed89382057b48f01537dacc43aeef342372678fbeb6d486c6cded7ee41911b910e200e7c1c34bd1cbb0e25854e6e56dea68115bcde759b84d2d0a6147'
         '3397abf9b38b8e187ec7a1fa59e91c974568d520a2604487aa5dda56c590756560d38d46152ed5765eb6746956265107a7ff8d448f9090dc7f75a2b74d36513b')

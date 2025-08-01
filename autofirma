@@ -1,5 +1,5 @@
 #! /bin/bash
-_autofirma_dir="${HOME}/.afirma/AutoFirma"
+_autofirma_dir="${HOME}/.afirma/Autofirma"
 _autofirma_ca="${_autofirma_dir}/AutoFirma_ROOT.cer"
 _autofirma_pfx="${_autofirma_dir}/autofirma.pfx"
 _cert_days="3650"
