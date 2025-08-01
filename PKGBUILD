@@ -273,13 +273,13 @@ _apply_patches() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # Patch with Tachyon patches
-    for patch in $(_get_patches); do
-        echo "Applying ${patch}"
+    for __patch in $(_get_patches); do
+        echo "Applying ${__patch}"
         if [ -n "${_use_llvm_lto}" ]; then
-            [ "${patch}" == "0133-novector.patch" ] && continue
+            [ "${__patch}" == "0133-novector.patch" ] && continue
         fi
 
-        patch -Np1 -patch "${srcdir}/tachyon/${patch}" || true
+        patch -Np1 -patch "${srcdir}/tachyon/${__patch}" || true
     done
 
     # Patch with kernel_compiler_patch patches.
@@ -304,8 +304,10 @@ _modify_defconfig() {
 ## and copies the current kernel configuration, if wanted.
 _copy_defconfig() {
     # Check if running kernel is compatible with the new kernel
-    local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
-    [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
+    local __current_major_ver
+    __current_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
+    
+    [ "${__current_major_ver}" != "${_kernel_major}" ] &&
         warning "Major version was updated, you should regen the defconfig"
 
     # Copy running kernel configuration
@@ -443,7 +445,8 @@ _update_defconfig() {
 
             # We're only interested in stderr
             {
-                local __ERROR=$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&${out})
+                local __ERROR
+                __ERROR="$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&${out})"
             } {out}>/dev/null
 
             # Invoke echo to sanitize the __ERROR as it can contain
@@ -518,15 +521,15 @@ _package() {
     install=linux.install
 
     cd "${_src_linux}" || exit 1
-    local "modulesdir=${pkgdir}/usr/lib/modules/$(<version)"
+    local "__modulesdir=${pkgdir}/usr/lib/modules/$(<version)"
 
     # Create boot image
     # systemd expects to find the kernel there to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "${modulesdir}/vmlinuz"
+    install -Dm644 "$(make -s image_name)" "${__modulesdir}/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
-    echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
+    echo "${pkgbase}" | install -Dm644 /dev/stdin "${__modulesdir}/pkgbase"
 
     # Install modules
     # We specify DEPMOD=/doesnt/exist here to suppress depmod
@@ -534,7 +537,7 @@ _package() {
         INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist modules_install
 
     # Remove build directory
-    rm "${modulesdir}"/build
+    rm "${__modulesdir}"/build
 }
 
 
@@ -544,78 +547,78 @@ _package-headers() {
     depends=("pahole")
 
     cd "${_src_linux}" || exit 1
-    local "builddir=${pkgdir}/usr/lib/modules/$(<version)/build"
+    local "__builddir=${pkgdir}/usr/lib/modules/$(<version)/build"
 
-    install -Dt "${builddir}" -m644 .config Makefile Module.symvers System.map \
+    install -Dt "${__builddir}" -m644 .config Makefile Module.symvers System.map \
         localversion.* version vmlinux
-    install -Dt "${builddir}/kernel" -m644 kernel/Makefile
-    install -Dt "${builddir}/arch/x86" -m644 arch/x86/Makefile
-    cp -t "${builddir}" -a scripts
+    install -Dt "${__builddir}/kernel" -m644 kernel/Makefile
+    install -Dt "${__builddir}/arch/x86" -m644 arch/x86/Makefile
+    cp -t "${__builddir}" -a scripts
 
     # Required when STACK_VALIDATION is enabled
-    install -Dt "${builddir}/tools/objtool" tools/objtool/objtool
+    install -Dt "${__builddir}/tools/objtool" tools/objtool/objtool
 
     # Required when DEBUG_INFO_BTF_MODULES is enabled
-    [ -f tools/bpf/resolve_btfids/resolve_btfids ] && install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    [ -f tools/bpf/resolve_btfids/resolve_btfids ] && install -Dt "${__builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
-    cp -t "${builddir}" -a include
-    cp -t "${builddir}/arch/x86" -a arch/x86/include
-    install -Dt "${builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+    cp -t "${__builddir}" -a include
+    cp -t "${__builddir}/arch/x86" -a arch/x86/include
+    install -Dt "${__builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-    install -Dt "${builddir}/drivers/md" -m644 drivers/md/*.h
-    install -Dt "${builddir}/net/mac80211" -m644 net/mac80211/*.h
+    install -Dt "${__builddir}/drivers/md" -m644 drivers/md/*.h
+    install -Dt "${__builddir}/net/mac80211" -m644 net/mac80211/*.h
 
     # https://bugs.archlinux.org/task/13146
-    install -Dt "${builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+    install -Dt "${__builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
     # https://bugs.archlinux.org/task/20402
-    install -Dt "${builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-    install -Dt "${builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-    install -Dt "${builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+    install -Dt "${__builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+    install -Dt "${__builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+    install -Dt "${__builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
     # https://bugs.archlinux.org/task/71392
-    install -Dt "${builddir}/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+    install -Dt "${__builddir}/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-    find . -name 'Kconfig*' -exec install -Dm644 {} "${builddir}/{}" \;
+    find . -name 'Kconfig*' -exec install -Dm644 {} "${__builddir}/{}" \;
 
     # Remove redundant architectures
-    local arch
-    for arch in "${builddir}"/arch/*/; do
-        [[ ${arch} = */x86/ ]] && continue
-        rm -r "${arch}"
-        echo "Removing '$(basename "${arch}")'"
+    local __arch
+    for __arch in "${__builddir}/arch/"*/; do
+        [[ ${__arch} = */x86/ ]] && continue
+        echo "Removing '$(basename "${__arch}")'"
+        rm -r "${__arch}"
     done
 
     # Remove documentation
-    rm -r "${builddir}/Documentation"
+    rm -r "${__builddir}/Documentation"
 
     # Remove broken symlinks
-    find -L "${builddir}" -type l -printf "Removing %P\n" -delete
+    find -L "${__builddir}" -type l -printf "Removing %P\n" -delete
 
     # Remove loose objects
-    find "${builddir}" -type f -name '*.o' -printf "Removing %P\n" -delete
+    find "${__builddir}" -type f -name '*.o' -printf "Removing %P\n" -delete
 
     # Strip build tools
-    local file
-    while read -rd "" file; do
-        case "$(file -Sib "${file}")" in
+    local __file
+    while read -rd "" __file; do
+        case "$(file -Sib "${__file}")" in
             application/x-sharedlib\;*)       # Libraries (.so)
-                strip -v ${STRIP_SHARED} "${file}" ;;
+                strip -v ${STRIP_SHARED} "${__file}" ;;
             application/x-archive\;*)         # Libraries (.a)
-                strip -v ${STRIP_STATIC} "${file}" ;;
+                strip -v ${STRIP_STATIC} "${__file}" ;;
             application/x-executable\;*)      # Binaries
-                strip -v ${STRIP_BINARIES} "${file}" ;;
+                strip -v ${STRIP_BINARIEreS} "${__file}" ;;
             application/x-pie-executable\;*)  # Relocatable binaries
-                strip -v ${STRIP_SHARED} "${file}" ;;
+                strip -v ${STRIP_SHARED} "${__file}" ;;
         esac
-    done < <(find "${builddir}" -type f -perm -u+x ! -name vmlinux -print0)
+    done < <(find "${__builddir}" -type f -perm -u+x ! -name vmlinux -print0)
 
     # Strip vmlinux
-    strip -v ${STRIP_STATIC} "${builddir}/vmlinux"
+    strip -v ${STRIP_STATIC} "${__builddir}/vmlinux"
 
     # Add symlink to build directory
     mkdir -p "${pkgdir}/usr/src"
-    ln -sr "${builddir}" "${pkgdir}/usr/src/${pkgbase}"
+    ln -sr "${__builddir}" "${pkgdir}/usr/src/${pkgbase}"
 }
 
 
