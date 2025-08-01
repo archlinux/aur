@@ -1,19 +1,19 @@
 pkgbase = bdash-bin
 	pkgdesc = Simple SQL Client for lightweight data analysis.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.17.1
-	pkgrel = 5
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://github.com/bdash-app/bdash
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron14
-	provides = bdash=1.17.1
+	provides = bdash=1.18.0
 	conflicts = bdash
-	source = bdash-1.17.1.AppImage::https://github.com/bdash-app/bdash/releases/download/v1.17.1/Bdash-1.17.1.AppImage
-	source = LICENSE-1.17.1::https://raw.githubusercontent.com/bdash-app/bdash/v1.17.1/LICENSE
+	source = bdash-1.18.0-x86_64.AppImage::https://github.com/bdash-app/bdash/releases/download/v1.18.0/Bdash-1.18.0.AppImage
+	source = LICENSE-1.18.0::https://raw.githubusercontent.com/bdash-app/bdash/v1.18.0/LICENSE
 	source = bdash.sh
-	sha256sums = dfa9852595e0c27cbec316dfd69a3851af19f74a7359767eae8139bf487f443b
+	sha256sums = e03ee037d71b9cae00246b1880fcc700f1a213e4639bc4404263ff9026140e8a
 	sha256sums = 44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = bdash-bin
