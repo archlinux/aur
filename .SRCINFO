@@ -1,6 +1,6 @@
 pkgbase = persian-fonts
 	pkgdesc = Meta package to install all Persian fonts.
-	pkgver = 20250729
+	pkgver = 20250801
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -23,5 +23,6 @@ pkgbase = persian-fonts
 	depends = sorena-fonts
 	depends = estedad-mad-fonts
 	depends = unixel-fonts
+	depends = arad-fonts
 
 pkgname = persian-fonts

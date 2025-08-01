@@ -1,6 +1,6 @@
 # Maintainer: misano <me@mirsobhan.ir>
 pkgname=persian-fonts
-pkgver=20250729
+pkgver=20250801
 pkgrel=1
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
@@ -26,5 +26,6 @@ depends=('behdad-fonts'
          'sorena-fonts'
          'estedad-mad-fonts'
          'unixel-fonts'
+         'arad-fonts'
 )
 # vim:set ts=4 sw=4 et:
