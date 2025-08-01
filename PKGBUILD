@@ -37,7 +37,7 @@ sha256sums=('eb8f01c6975220e11cbc9d5ea122204219939f335b9bf7771d14b86ad94ec38e'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
-prepare(){
+prepare() {
   ln -sf "${pkgname}-${pkgver}" llama.cpp
 }
 build() {
@@ -67,7 +67,14 @@ build() {
       -DGGML_NATIVE=OFF
       -DGGML_CPU_ALL_VARIANTS=ON
     )
+  else
+    # we lose GGML_NATIVE_DEFAULT due to how makepkg including
+    # $SOURCE_DATE_EPOCH in ENV
+    _cmake_options+=(
+      -DGGML_NATIVE=ON
+    )
   fi
+
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
