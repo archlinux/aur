@@ -1,6 +1,6 @@
 # Maintainer: RoboSync Team <robosync@example.com>
 pkgname=robosync
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="High-performance file synchronization with intelligent concurrent processing"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('b8701be190073e481f67b8e6e0fb4baf63a5df9b735f1ee76b66fda7ab95dc78')
+sha256sums=("cf22f06c324cd0c0d340c0aa13b607adf26c79f6eaeccf57c9513d47dcaa97bc")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
