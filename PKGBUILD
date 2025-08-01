@@ -2,14 +2,14 @@
 
 _name=mcp
 pkgname=python-${_name}
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
 license=('MIT')
 source=("${_name}-${pkgver}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('347d5e5b173249fa71c6729435e302f1bcea467890bb7308931595664ec0ec90')
+sha256sums=('577e6a8643c1527caf0a5865161a2a6e77f8cc441effed3b6c3d7ba08135d897')
 depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-python-multipart' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn' 'python-jsonschema')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'ruff' 'python-trio' 'python-pytest-flakefinder' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-dirty-equals' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv')
