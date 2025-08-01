@@ -1,0 +1,17 @@
+pkgbase = waybar-lyric
+	pkgdesc = A waybar module for song lyric
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Nadim147c/waybar-lyric
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = waybar-lyric
+	conflicts = waybar-lyric-git
+	conflicts = waybar-lyric-bin
+	source = https://github.com/Nadim147c/waybar-lyric/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = waybar-lyric
