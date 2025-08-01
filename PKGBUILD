@@ -1,6 +1,6 @@
 pkgname=kumono-git
 pkgver=vcs
-pkgrel=4
+pkgrel=5
 pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
 arch=('x86_64')
@@ -13,14 +13,14 @@ provides=('kumono')
 conflicts=('kumono' 'kumono-bin')
 
 build() {
-	cd $pkgname
+	cd "$pkgname-$pkgver-$pkgrel"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release
 }
 
 package() {
-	cd "$pkgname-$pkgver-$pkgrel::git+$url"
+	cd "$pkgname-$pkgver-$pkgrel"
 	install -Dm755 'target/release/kumono' -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 'README.md' -t "$pkgdir/usr/share/doc/$pkgname"
