@@ -1,0 +1,14 @@
+pkgbase = robosync
+	pkgdesc = High-performance file synchronization with intelligent concurrent processing
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/roethlar/robosync
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = robosync-1.0.2.tar.gz::https://github.com/roethlar/robosync/archive/v1.0.2.tar.gz
+	sha256sums = 90b57c662b565407196cbbc26385eed00e095a4856a1da5f34c64c47f678a60c
+
+pkgname = robosync
