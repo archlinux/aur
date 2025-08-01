@@ -4,7 +4,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.0.2.r188.g7db5eb8
+pkgver=0.0.2.r253.g6fd10fd
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -19,7 +19,6 @@ options=('!debug' 'lto')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
 		"git+https://github.com/mozilla/cubeb.git"
 		"git+https://github.com/yhirose/cpp-httplib.git"
-		"git+https://github.com/libsdl-org/SDL.git"
 		"git+https://github.com/xiph/opus.git"
 		"git+https://github.com/arun11299/cpp-jwt.git"
 		"git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
@@ -53,7 +52,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -61,7 +59,7 @@ pkgver() {
 }
 prepare() {
 	cd "$srcdir/$_pkgname"
-	for _submodule in opus SDL cubeb VulkanMemoryAllocator cpp-jwt cpp-httplib xbyak;
+	for _submodule in opus cubeb VulkanMemoryAllocator cpp-jwt cpp-httplib xbyak;
 		do
 		git config submodule.$_submodule.url ../$_submodule
 		done
