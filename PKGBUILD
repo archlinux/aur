@@ -3,7 +3,7 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/"
@@ -41,7 +41,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-    '01c910d5634c69a7efdec46e0a17d473d2328767f001d4dc0b5c4b48e585c8bd'
+    '55f1a390e5f3f075b221c7d91fb10258ad978db786c7930eba06eb45d28753fe'
 )
 
 prepare() {
@@ -59,7 +59,7 @@ build() {
 check() {
     cd "$_pypi-$pkgver"
     python -m venv --system-site-packages test-env
-    test-env/bin/python -m installer "dist/Cartopy-$pkgver-"*.whl
+    test-env/bin/python -m installer "dist/cartopy-$pkgver-"*.whl
 
     # Run the tests that are included in the wheel. Trying to run the tests in the
     # source directory often seems to import files from the source, rather than from
@@ -74,7 +74,7 @@ check() {
 
 package() {
     cd "$_pypi-$pkgver"
-    python -m installer --destdir="$pkgdir" "dist/Cartopy-$pkgver-"*.whl
+    python -m installer --destdir="$pkgdir" "dist/cartopy-$pkgver-"*.whl
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
     # Remove tests from final package.
