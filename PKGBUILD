@@ -1,8 +1,8 @@
 # Maintainer: ivanmara
 # Contributor: ivanmara
 pkgname=gentoo-color-bash
-pkgver=2025.05.28
-_id=68c208ecd6b805ebc7796d2b71ceef4614179a2d  # 2024-06-20 size: 2209
+pkgver=2025.08.01
+_id=b39e66dce51adbe2ccef98dbd7e321c6c2e6b835  # 2025-05-04 size: 2190
 pkgrel=1
 
 pkgdesc='Gentoo color terminal and bash command prompt. Looks very nice.'
@@ -10,8 +10,9 @@ arch=('any')
 url='https://www.gentoo.org'
 license=('GPL')
 optdepends=('bash: Shell needed to make use of this package')
-source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color.bash?id=${_id}")
-sha256sums=('579af0d935be990abc00fc54eeb7439d64b49ca4a1636e16eff950a91a8c76f2')
+options=('!debug')
+source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color-r2.bash?id=${_id}")
+sha256sums=('189766ac49f48880ce2507971fc3d8e15449976042d938bf6c6ad77e73793958')
 install=${pkgname}.install.sh
 
 _usage='
