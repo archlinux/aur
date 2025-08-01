@@ -1,0 +1,4 @@
+wayland*
+src/
+pkg/
+bongocat*

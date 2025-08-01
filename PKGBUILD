@@ -1,6 +1,6 @@
 # Maintainer: Saatvik <saatvik333sharma@gmail.com>
 pkgname=bongocat
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated bongo cat reacting to keyboard input"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('hyprland: for automatic screen detection'
             'sway: compatible wayland compositor'
             'wayfire: compatible wayland compositor')
 source=("wayland-bongocat-$pkgver.tar.gz::https://github.com/saatvik333/wayland-bongocat/archive/v$pkgver.tar.gz")
-sha256sums=('f04d9e751ece6b8efa3f7d133241b890ea2df40197559bf81c57e74cd8e1ba5d')
+sha256sums=('6f5feb1fde7aaf4c9375bf30f8806a74e3ad9f5da5f45afede67c021dfc74cff')
 
 build() {
     cd "$srcdir/wayland-bongocat-$pkgver"
