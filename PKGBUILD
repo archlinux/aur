@@ -537,7 +537,7 @@ _package() {
         INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist modules_install
 
     # Remove build directory
-    rm "${__modulesdir}"/build
+    rm -vrf "${__modulesdir}"/build
 }
 
 
