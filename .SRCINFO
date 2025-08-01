@@ -1,7 +1,7 @@
 pkgbase = gopeed-bin
 	pkgdesc = High speed downloader that supports all platforms.(Prebuilt version)
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gopeed.com/
 	arch = aarch64
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = gopeed-bin
 	conflicts = gopeed
 	source = gopeed.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = gopeed-1.7.1-x86_64.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.7.1/Gopeed-v1.7.1-linux-amd64.deb
-	sha256sums_aarch64 = 4db53a5acc5b9809dfd28393ce4399a46eb17d73eb2d5e69fe224a123acaca7b
+	source_aarch64 = gopeed-1.7.1-aarch64.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.7.1/Gopeed-v1.7.1-linux-arm64.deb
+	sha256sums_aarch64 = c217b1be9efd369d57ea9b82df9226024694f2612029b6e06b9c6b869ca0fc4b
+	source_x86_64 = gopeed-1.7.1-x86_64.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.7.1/Gopeed-v1.7.1-linux-amd64.deb
+	sha256sums_x86_64 = 4db53a5acc5b9809dfd28393ce4399a46eb17d73eb2d5e69fe224a123acaca7b
 
 pkgname = gopeed-bin
