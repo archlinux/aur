@@ -1,5 +1,5 @@
 pkgname=ferronweb
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Ferron web server"
 arch=('x86_64' 'i686' 'armv7' 'aarch64' 'riscv64')
@@ -9,11 +9,11 @@ depends=('libcap')
 makedepends=('unzip')
 backup=('etc/ferron.yaml')
 install=ferron.install
-_sha256sums_x86_64='18b9605e97bb0c48c5d86905c3cf7bc37a5b21c34b6778bd160eb0e28295b9ba'
-_sha256sums_i686='d8727fe96c758f777d8f3c8f676c3036ea0500276fa17cc9d79b03ef11663e94'
-_sha256sums_armv7='c6433baf57448ab38bde6f4e6f03f3c8d0b1285d8fbd07200e624f100f00e140'
-_sha256sums_aarch64='fc4f698dcbce301c69a0a778766a0c13e8641edfc3db4cc63a6905f0df012ab2'
-_sha256sums_riscv64='37c98687793526a85458184443c1a7f3b09b1c80af1dd0aeaaa35f65af19e65e'
+_sha256sums_x86_64='ae7a5504ec6810c25055ca351c49096133493a49e004ecf1b7380c6378297378'
+_sha256sums_i686='3d331b16fadc8d4da03b303542a0fe4bae22dc66341add197d2bd7f8a86f256d'
+_sha256sums_armv7='6e41bdce373dc2459346fe5a327f6e9e19cfec4062d3cf1080081ca9480517e3'
+_sha256sums_aarch64='59e35518031e23f9e897916d0d5d16d67b9844ba90c3ae62d6927201a49d5608'
+_sha256sums_riscv64='bc322aadb79b67c8b3a3ea0e10515aac6c5976c4e842b7451b9f5df2d96ea6e4'
 case "$CARCH" in
     x86_64) 
         _arch="x86_64" 
