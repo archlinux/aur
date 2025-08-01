@@ -5,7 +5,7 @@
 
 pkgname=applecommander
 _pkgname=AppleCommander
-pkgver=1.9.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Tool that manipulates Apple ][ disk images"
 arch=(any)
@@ -17,20 +17,11 @@ makedepends=(gradle "java-environment>=11")
 source=(https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz
         applecommander-ac.sh
         applecommander-acx.sh
-        applecommander-gui.sh
-        0001-Update-to-Gradle-8.1.1.patch)
-sha256sums=('9047e79af4de04f65e958ee6db46ca6134ae29a30857525214a15f68362a0640'
+        applecommander-gui.sh)
+sha256sums=('bd01c682b8ca3727fde82d5f5059a5124f697daaf1affd0e2eaa7807e3fe8767'
             'd7b1ddd2d4bf0eb5a1fd595352cd36b645f1342e1da427a01579bef779b29714'
             '35bfb9831c1f0411a2ea60b7f33c671dda4accbb413ac94ae8320450d9325a42'
-            '034f41f16c0200e398c3a019359c6c30978eb857fec4e5eb97948f962e79e0dc'
-            '4d1aa733d4a3fc06e19b36cbd2b22ee6180218fbeb0ec357a7f13bc2318542f2')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-
-  # https://github.com/AppleCommander/AppleCommander/pull/105
-  patch -p1 < "$srcdir"/0001-Update-to-Gradle-8.1.1.patch
-}
+            '034f41f16c0200e398c3a019359c6c30978eb857fec4e5eb97948f962e79e0dc')
 
 build() {
   cd "${_pkgname}-${pkgver}"
