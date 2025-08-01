@@ -6,13 +6,14 @@ pkgdesc="High-performance file synchronization with intelligent concurrent proce
 arch=('x86_64' 'aarch64')
 url="https://github.com/roethlar/robosync"
 license=('MIT')
-depends=()
+depends=('zstd')
 makedepends=('rust' 'cargo')
 source=("https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=("cf22f06c324cd0c0d340c0aa13b607adf26c79f6eaeccf57c9513d47dcaa97bc")
+sha256sums=('cf22f06c324cd0c0d340c0aa13b607adf26c79f6eaeccf57c9513d47dcaa97bc')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+    export ZSTD_SYS_USE_PKG_CONFIG=1
     cargo build --release
 }
 
