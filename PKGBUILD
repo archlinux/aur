@@ -1,15 +1,11 @@
 # Maintainer:
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
-## links
-# https://pyinfra.com/
-# https://github.com/pyinfra-dev/pyinfra
-
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=3.3.1
+pkgver=3.4.1
 pkgrel=1
-pkgdesc="automate infrastructure super fast at massive scale"
+pkgdesc="Automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
 license=('MIT')
 arch=('any')
@@ -24,6 +20,7 @@ depends=(
   'python-packaging'
   'python-paramiko'
   'python-typeguard'
+  'python-typing_extensions'
 )
 makedepends=(
   'python-build'
@@ -35,7 +32,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext")
-sha256sums=('6490bba47b0182b0c79b3c915bf1f1058be874af4a7edcb95f1ef990f4a44e22')
+sha256sums=('c2fff4dc1c45513180a7324db609d5b4d3a32d2765032f9daf6d441c83fbfe35')
 
 prepare() {
   cd "$_pkgsrc"
