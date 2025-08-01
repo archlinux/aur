@@ -1,0 +1,14 @@
+pkgbase = python-daftlistings
+	pkgdesc = A library that enables programmatic interaction with daft.ie. Daft.ie has nationwide coverage and contains about 80% of the total available properties in Ireland.
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://pypi.org/project/daftlistings/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-folium
+	source = https://files.pythonhosted.org/packages/2c/75/951187f49eca8070dd1b7dbe1de35c45f2e6fd7565149d407c51eebd770f/daftlistings-2.0.5.tar.gz
+	sha256sums = 1c5bc3bd4fe9dae2ca38ef841c7630a6dfdcf49db550372de739c17bd34a052f
+
+pkgname = python-daftlistings
