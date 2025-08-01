@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=transformerlab-bin
 _pkgname=Transformer-Lab
-pkgver=0.20.5
+pkgver=0.20.7
 _electronversion=26
 pkgrel=1
 pkgdesc="Open Source Application for Advanced LLM Engineering: interact, train, fine-tune, and evaluate large language models on your own computer.(Prebuilt version.Use system-wide electron)"
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('2075236f9bbf85e034303ad52c45323cd2be00af2abceab56aef86f79018afdd')
-sha256sums_x86_64=('4a488e96c0492913422fd62b94ace0ff3bafc94c4239a1fb1c0d45c1357145d1')
+sha256sums_aarch64=('d9193718ed1a06b648ae5c4ef58b1e9fa71bf4089b991bca74329356c5512ede')
+sha256sums_x86_64=('32d849d9bbad8293c2df6190f4e0d73f3a939e20ff9a7652dd15a878e51b6501')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
