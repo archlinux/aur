@@ -1,6 +1,6 @@
 pkgbase = linux-hardened-git
 	pkgdesc = Security-Hardened Linux
-	pkgver = 6.14.r1337641.g27e15960936d
+	pkgver = 6.15.8.r1355855.gbdb1abd80dcb
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -25,13 +25,13 @@ pkgbase = linux-hardened-git
 	makedepends = texlive-latexextra
 	options = !debug
 	options = !strip
-	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=6.14?signed
+	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=6.15?signed
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = 9875be8419c28bdeed2c0018ad25bdc3bd2dceb135c85d9d826a3a315de05513
+	sha256sums = c0e037b65618a3406474eeb2f8f820204ca66b223956b54ea0003b20c4b4486c
 
 pkgname = linux-hardened-git
 	pkgdesc = The Security-Hardened Linux kernel and modules
