@@ -1,6 +1,6 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=uamp
-pkgver=0.5.12
+pkgver=0.5.13
 pkgrel=1
 pkgdesc="Universal Advanced Music Player written in rust."
 arch=(x86_64)
