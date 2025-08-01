@@ -308,6 +308,8 @@ _get_patches() {
 
 ## Invokes '_get_patches' and applies them as well as KCC
 _apply_patches() {
+    _info "Applying patches"
+    
     # Patch with kernel version patches
     patch -Np1 -patch ../patch-${_kernel_major}.${_kernel_minor} || true
 
@@ -317,8 +319,7 @@ _apply_patches() {
 
     # Patch with Tachyon patches
     for __patch in $(_get_patches); do
-        echo "Applying '${__patch}'"
-        
+        _info "Applying '${__patch}'"
         if [ -n "${_use_llvm_lto}" ]; then
             [ "${__patch}" == "0133-novector.patch" ] && continue
         fi
@@ -355,6 +356,7 @@ _copy_defconfig() {
 
     # Copy running kernel configuration
     if [ -s /proc/config.gz ]; then
+        _info "Copying configuration from running kernel"
         # modprobe configs
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
@@ -379,6 +381,7 @@ _update_defconfig() {
     fi
 
     # Extra configuration
+    _info "Updating kernel configuration"
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
                    -e IKCONFIG \
@@ -457,6 +460,7 @@ _update_defconfig() {
                                              -d DEBUG_INFO_BTF_MODULES
 
     # Run olddefconfig
+    _info "Executing 'make olddefconfig'"
     make ${BUILD_FLAGS[*]} olddefconfig
 
     # Here we slightly break the config by removing one of the
@@ -528,6 +532,7 @@ prepare() {
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "${_localmodcfg}" ]; then
         if [ -e "${HOME}/.config/modprobed.db" ]; then
+            _info "Applying the modprobed database"
             make ${BUILD_FLAGS[*]} LSMOD=${HOME}/.config/modprobed.db localmodconfig
         else
             _info "No modprobed.db file was found at ${HOME}/.config, skipping"
