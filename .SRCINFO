@@ -1,0 +1,15 @@
+pkgbase = prefine-git
+	pkgdesc = A command-line tool for downloading and watching anime (git version)
+	pkgver = r17.565ac13
+	pkgrel = 1
+	url = https://github.com/priory-io/prefine
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = prefine
+	conflicts = prefine
+	source = prefine-git::git+https://github.com/priory-io/prefine.git
+	sha256sums = SKIP
+
+pkgname = prefine-git
