@@ -1,6 +1,6 @@
 pkgbase = ttac
 	pkgdesc = Аналог cat и других UNIX утилит.
-	pkgver = 0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/CHAYKA43/Ttac
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Alexander <chayka43@inbox.ru>
 pkgname=ttac
-pkgver=0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Аналог cat и других UNIX утилит."
 arch=('x86_64')
