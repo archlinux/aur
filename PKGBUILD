@@ -6,7 +6,10 @@ pkgdesc="CLI for the OpenStack written in Rust"
 arch=('x86_64')
 url="https://github.com/gtema/openstack"
 license=('Apache-2.0')
-depends=()
+depends=(
+  'gcc-libs'
+  'glibc'
+)
 makedepends=(
   'cargo'
   'git'
