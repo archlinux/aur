@@ -127,8 +127,8 @@ build() {
   export CXXFLAGS+=" -Wno-error"
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
-  if [[ $CARCH = "armv7h" ]]; then
-    _platform="wayland gbm"
+  if [[ $CARCH == "armv7h" ]]; then
+    _platform="gbm"
   else
     _platform="x11 wayland gbm"
   fi
