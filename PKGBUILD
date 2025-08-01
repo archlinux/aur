@@ -228,6 +228,8 @@ _check_deprecated_settings() {
 _get_patches() {
     # Get the list of patches from the file, ignore the comments
     grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list.txt
+    # Experimental patches
+    grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
 }
 
 # Applies all patches
