@@ -1,0 +1,14 @@
+pkgbase = python-opcua-widgets
+	pkgdesc = OPC-UA Widgets
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/FreeOpcUa/opcua-widgets
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-opcua-asyncio
+	depends = python-pyqt5
+	source = https://files.pythonhosted.org/packages/py3/o/opcua-widgets/opcua_widgets-0.6.1-py3-none-any.whl
+	sha256sums = c0ef82f9f169f6bf1ff639906d2d8d2a4ec1618186845345bf2de18278c15199
+
+pkgname = python-opcua-widgets
