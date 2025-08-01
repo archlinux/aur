@@ -7,7 +7,7 @@ pkgbase = installer
 	license = MIT
 	makedepends = go
 	depends = yay
-	source = installer-1.0.0.tar.gz::https://github.com/leithXD/installer-go/archive/v1.0.0.tar.gz
+	source = installer-1.0.0.tar.gz::https://github.com/leithXD/installer-go/archive/refs/heads/master.tar.gz
 	sha256sums = SKIP
 
 pkgname = installer

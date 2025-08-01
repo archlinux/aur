@@ -7,15 +7,15 @@ url="https://github.com/leithXD/installer-go"
 license=('MIT')
 depends=('yay') 
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/heads/master.tar.gz")
 sha256sums=('SKIP') 
 
 build() {
-    cd "$srcdir/installer-go-master"
+    cd "$srcdir"/installer-go-*
     go build -o installer
 }
 
 package() {
-    cd "$srcdir/installer-go-master"
+    cd "$srcdir"/installer-go-*
     install -Dm755 installer "$pkgdir/usr/bin/installer"
 }
