@@ -4,7 +4,7 @@
 # ex-Contributor: xsmile
 
 pkgname=nessus
-pkgver=10.9.1
+pkgver=10.9.2
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
@@ -13,28 +13,28 @@ makedepends=('inetutils')
 license=('custom')
 url="https://www.tenable.com/downloads/nessus"
 install=${pkgname}.install
-source=("nessus-${pkgver}-fc38.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/26037/download?i_agree_to_tenable_license_agreement=true"
+source=("nessus-${pkgver}-fc38.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/26146/download?i_agree_to_tenable_license_agreement=true"
         nessus.desktop
         nessus.sh
         LICENSE)
-b2sums=('55c000e7d8b23f03bd47123be88fffe2ca239a5b001ab8bb4502e5930df56c19fc2ba6b7dfb605a4c506db44776fcef16ed575e54cb240797a85e0625e3fa796'
+b2sums=('224a62588a7f91eae1dc81fc5f018727ab0d3580065507e2131d70180d93407e07cc28d6bac6b8dc327d0bc5b0f70ec5f8601f3373acee83a391163dd123d441'
         'e9f6346d0c2b444c71f0673a9dd22f4298abf1ccc4500fa2db4439627844106e3d523cda976411aa243f56711b691a12ac228809cdae038371607db11a44dd61'
         'fbc6b44c6722e48b26011314d3cd2a44780ef94965db159ef1a35743e371927ec4927a9da2db9ebbb9714fc3a0a30fa4d785b23aa76e4a8a1e446a515fc1bcdd'
         '2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1')
 
 package() {
-  install -Dm755 $pkgname.sh "$pkgdir/etc/profile.d/$pkgname.sh"
+  install -Dm755 "$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
 
   mkdir -p "$pkgdir/etc/ld.so.conf.d" "$pkgdir/usr/share" "$pkgdir/opt/${pkgname}" \
-           "$pkgdir/usr/lib"
+    "$pkgdir/usr/lib"
 
   cp -a usr/lib "$pkgdir/usr"
 
   # path to libraries
-  echo /opt/${pkgname}/lib > "$pkgdir/etc/ld.so.conf.d/${pkgname}.conf"
+  echo "/opt/${pkgname}/lib" > "$pkgdir/etc/ld.so.conf.d/${pkgname}.conf"
 
   # main files
-  cp -a opt/${pkgname}/{bin,com,etc,lib,sbin,var} "$pkgdir/opt/${pkgname}"
+  cp -a "opt/${pkgname}/"{bin,com,etc,lib,sbin,var} "$pkgdir/opt/${pkgname}"
 
   # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
