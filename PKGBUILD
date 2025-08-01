@@ -19,12 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/ruuda/rcl.git#tag=v${pkgver}?signed")
+# TODO: Append ?signed again, when releases are signed with a non-revoked key.
+source=("git+https://github.com/ruuda/rcl.git#tag=v${pkgver}")
 noextract=()
 sha256sums=('8e04b49f36525098e5e616d02d1e53d49360bd535f47c86c84b975ba9771ecf3')
-# The key has been revoked, but the v0.9.0 tag is signed with it nonetheless.
-# Build with --skippgpcheck for now.
-# validpgpkeys=(28EEB492BE15FF2DC93BCE865F231E540599697D) # Ruud van Asseldonk <dev@veniogames.com>
+# TODO: Restore on the next release.
+# validpgpkeys=(94F3C99316DFFDE10FBA6939284FE5A783926532) # Ruud van Asseldonk <dev@veniogames.com>
 
 prepare() {
 	cd "${pkgname}"

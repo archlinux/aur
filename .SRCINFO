@@ -9,7 +9,7 @@ pkgbase = rcl
 	makedepends = git
 	makedepends = python
 	makedepends = rustup
-	source = git+https://github.com/ruuda/rcl.git#tag=v0.9.0?signed
+	source = git+https://github.com/ruuda/rcl.git#tag=v0.9.0
 	sha256sums = 8e04b49f36525098e5e616d02d1e53d49360bd535f47c86c84b975ba9771ecf3
 
 pkgname = rcl
