@@ -6,9 +6,9 @@
 # Contributor: Adam Rustler
 pkgname=prepros-bin
 _pkgname=Prepros
-pkgver=7.26.0
+pkgver=7.27.0
 _electronversion=25
-pkgrel=3
+pkgrel=1
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://prepros.io"
@@ -18,7 +18,6 @@ depends=(
     'perl'
     'ruby'
     'libva>=2.20.0'
-    'nodejs'
     '7zip'
 )
 options=('!strip')
@@ -26,8 +25,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://downloads.prepros.io/v7/${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aa1f29308b2ed5c4335f18c1690fd6b3fed8b3a1dbd8803cab64934c1173cbe7'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('37590c8b560a2eca91adda708246fb2d3f6c6d9b57d8147ed79406092d029933'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,12 +40,13 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@prepros/node/node_modules/7zip-bin/"{linux/{arm*,ia32},mac,win}
+    _get_electron_version
+    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@prepros/node/node_modules/7zip-bin/"{linux/{arm*,ia32},mac,win} \
+        "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@prepros/ruby/node_modules/7zip-bin/"{linux/{arm*,ia32},mac,win} \
+        "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@sbspk/mozjpeg-bin/vendor/"{darwin-*,win32-*} \
+        "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@sbspk/pngquant-bin/vendor/"{darwin-*,win32-*}
     ln -sf "/usr/bin/7za" "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@prepros/node/node_modules/7zip-bin/linux/x64/7za"
-    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@prepros/ruby/node_modules/7zip-bin/"{linux/{arm*,ia32},mac,win}
     ln -sf "/usr/bin/7za" "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@prepros/ruby/node_modules/7zip-bin/linux/x64/7za"
-    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@sbspk/mozjpeg-bin/vendor/"{darwin-*,win32-*}
-    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/@sbspk/pngquant-bin/vendor/"{darwin-*,win32-*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
