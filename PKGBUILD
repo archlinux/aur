@@ -37,7 +37,6 @@ conflicts=(
     llama.cpp-hip
     ik-llama.cpp
     ik-llama.cpp-cuda
-    ik-llama.cpp-hip
 )
 provides=(llama.cpp)
 
