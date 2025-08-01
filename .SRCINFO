@@ -1,4 +1,4 @@
-pkgbase = amp
+pkgbase = ampcode-com
 	pkgdesc = An agentic coding tool, in research preview from Sourcegraph
 	pkgver = 0.0.1754024802
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = amp
 	source_aarch64 = amp-0.0.1754024802-aarch64::https://github.com/sourcegraph/amp-cli/releases/download/v0.0.1754024802/amp-linux-arm64
 	sha256sums_aarch64 = a1bb4b2a82d1bd94c68bc596e5b5bb356561c7f86835c6fca7be0603e1012161
 
-pkgname = amp
+pkgname = ampcode-com
