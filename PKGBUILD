@@ -8,7 +8,7 @@
 readonly _version_frappe="v15.75.0"
 
 pkgname="erpnext"
-pkgver="15.72.1"
+pkgver="15.72.2"
 pkgrel="1"
 pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
@@ -25,7 +25,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
     "${pkgname}.sh"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles")
-sha512sums=("4f782ffd691ddf237f3d94812d7f53cb3713f2e1ecf0fbb84e602646b84abef0d0ee063ddabb55675a4f798d838736080933be6463a432b483804eaf132a6c5c"
+sha512sums=("1a844047bb6acc5c6ceb09330b5022bdc791cb98c1fa2b5936fa329c68f0b68112b5351c6013d8fbb9dddb607a17f17e6a7504c7172be7a144f7eb3ece53f3f6"
     "70baf45505c3cd21886fd7c820b528c655c5fa8c382f7991092ea14846eb42f43a8899232610f2dc213ea6a3cc6ead43130c083de676ecd4c93caca9283aa36e"
     "d8614473bd72404bec058981d2c9c3a91ed08b931539236a5d22209e5fdc6dc044ea719c8ed336bd8e64a49508cd290a5431bf339b87b0331bd9ede1d055e8ce"
     "661ca81b73544884c3024ec2c5fad689101c72f7467cf7720934bdded67eecdb666096365c4f8abe20c2fd13a1a5c831a990490872024fe3093e35459be8d47b")
