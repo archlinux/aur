@@ -3,7 +3,7 @@
 
 pkgname=cypher-shell
 pkgver="2025.07.0"
-pkgrel=2
+pkgrel=1
 pkgdesc="A command line shell where you can execute Cypher against an instance of Neo4j"
 arch=('any')
 url="https://github.com/neo4j/${pkgname}"
