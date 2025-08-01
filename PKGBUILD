@@ -284,14 +284,14 @@ _error() {
 ## Checks for deprecated settings.
 _check_deprecated_settings() {
     if [ -n "${_update_kconfig_on_reuse}" ]; then
-        warning "Please switch to using '_optimize_defconfig' flag instead of '_update_kconfig_on_reuse'"
+        _warning "Please switch to using '_optimize_defconfig' flag instead of '_update_kconfig_on_reuse'"
         _optimize_defconfig="y"
     fi
     if [ -n "${_reuse_current}" ]; then
-        warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
+        _warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
         _use_current="y"
     fi
-    [ -n "${_show_compile}" ] && warning "'_show_compile' is no longer supported"
+    [ -n "${_show_compile}" ] && _warning "'_show_compile' is no longer supported"
 
     # To avoid an error
     true
@@ -317,7 +317,8 @@ _apply_patches() {
 
     # Patch with Tachyon patches
     for __patch in $(_get_patches); do
-        echo "Applying ${__patch}"
+        echo "Applying '${__patch}'"
+        
         if [ -n "${_use_llvm_lto}" ]; then
             [ "${__patch}" == "0133-novector.patch" ] && continue
         fi
@@ -347,11 +348,10 @@ _modify_defconfig() {
 ## and copies the current kernel configuration, if wanted.
 _copy_defconfig() {
     # Check if running kernel is compatible with the new kernel
-    local __current_major_ver
-    __current_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
-    
-    [ "${__current_major_ver}" != "${_kernel_major}" ] &&
-        warning "Major version was updated, you should regen the defconfig"
+    local __current_major_version
+    __current_major_version="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
+    [ "${__current_major_version}" != "${_kernel_major}" ] &&
+        _warning "Major version was updated, you should regen the defconfig"
 
     # Copy running kernel configuration
     if [ -s /proc/config.gz ]; then
@@ -359,8 +359,8 @@ _copy_defconfig() {
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
     else
-        warning "Your kernel was not compiled with IKCONFIG_PROC."
-        warning "Unable to read kernel configuration, aborting."
+        _warning "Your kernel was not compiled with IKCONFIG_PROC."
+        _warning "Unable to read kernel configuration, aborting."
         exit
     fi
 }
@@ -371,11 +371,11 @@ _copy_defconfig() {
 _update_defconfig() {
     # Copy configuration file (if found)
     if [ -f "${startdir}/kconfig" ]; then
-        echo ":: Using configuration file \"${startdir}/kconfig\""
+        _info "Using configuration file \"${startdir}/kconfig\""
         cp -Tf "${startdir}/kconfig" ./.config
     else
-        echo ":: Using configuration file \"${srcdir}/${pkgbase}/config\""
-        cp -Tf ${srcdir}/tachyon/config ./.config
+        _info "Using configuration file \"${srcdir}/${pkgbase}/config\""
+        cp -Tf $srcdir/tachyon/config ./.config
     fi
 
     # Extra configuration
@@ -495,8 +495,8 @@ _update_defconfig() {
             # newlines or carriage returns, thus breaking the script.
             # shellcheck disable=SC2116
             if [ -n "$(echo ${__ERROR})" ]; then
-                warning "Selected subarch: ${_subarch} is not supported"
-                exit
+                _warning "Selected subarch: ${_subarch} is not supported"
+                exit 1
             fi
             ;;
         *)
@@ -506,8 +506,8 @@ _update_defconfig() {
                 scripts/config -e "${_subarch}"
                 make "${BUILD_FLAGS[@]}" olddefconfig
             else
-                warning "Unrecognized subarch value: ${_subarch}"
-                exit
+                _warning "Unrecognized subarch value: ${_subarch}"
+                exit 1
             fi
             ;;
     esac
@@ -530,7 +530,7 @@ prepare() {
         if [ -e "${HOME}/.config/modprobed.db" ]; then
             make ${BUILD_FLAGS[*]} LSMOD=${HOME}/.config/modprobed.db localmodconfig
         else
-            echo ":: No modprobed.db file was found at ${HOME}/.config, skipping"
+            _info "No modprobed.db file was found at ${HOME}/.config, skipping"
         fi
     fi
 
@@ -627,7 +627,7 @@ _package-headers() {
     local __arch
     for __arch in "${__builddir}/arch/"*/; do
         [[ ${__arch} = */x86/ ]] && continue
-        echo "Removing '$(basename "${__arch}")'"
+        _info "Removing '$(basename "${__arch}")'"
         rm -r "${__arch}"
     done
 
