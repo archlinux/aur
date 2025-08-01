@@ -8,8 +8,8 @@ url="https://github.com/roethlar/robosync"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/roethlar/robosync/archive/v$pkgver.tar.gz")
-sha256sums=('90b57c662b565407196cbbc26385eed00e095a4856a1da5f34c64c47f678a60c')
+source=("https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha256sums=('b8701be190073e481f67b8e6e0fb4baf63a5df9b735f1ee76b66fda7ab95dc78')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
