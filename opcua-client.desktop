@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FreeOpcUa Client
+Comment=OPC-UA Client GUI
+Exec=/usr/bin/opcua-client
+Terminal=false
+StartupNotify=false
+Categories=Application;
