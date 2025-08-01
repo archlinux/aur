@@ -1,7 +1,7 @@
 # Maintainer: Kuokuo123 <kuoyu1204@gmail.com>
 pkgname="otter-launcher"
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A rust-based cli/tui launcher built for keyboard-centric users, featuring vi & emacs keybinds, ascii decoration, etc"
 arch=("x86_64")
 url="https://github.com/kuokuo123/otter-launcher"
