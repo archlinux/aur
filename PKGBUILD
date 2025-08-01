@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Mihai Militaru <mihai.militaru@gmx.com>
