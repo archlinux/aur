@@ -11,7 +11,7 @@ provides=('terramate')
 license=('MPL-2')
 makedepends=('go>=1.21' 'git' 'gzip' 'tar' 'gcc')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/terramate-io/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('18cb41ae505793c1699fa98f052325c82f967ce2ddf7b5b3bada60c4076b41e5')
 
 build() {
 	cd "${pkgname}-${pkgver}"

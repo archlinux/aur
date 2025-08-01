@@ -13,6 +13,6 @@ pkgbase = terramate
 	provides = terramate
 	conflicts = terramate-bin
 	source = terramate-v0.11.0.tar.gz::https://github.com/terramate-io/terramate/archive/v0.11.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 18cb41ae505793c1699fa98f052325c82f967ce2ddf7b5b3bada60c4076b41e5
 
 pkgname = terramate
