@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hf
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Cross-platform hidden file library and utility"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache-2.0' 'CC-BY-4.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('53508aeb7c230593065f3775a08582a7dd382eb080f5de3f8264b0247997c818431815b0732fd735c4bdcc3b95fade5b935fa454bbec288dcbd272f9323a1f5d')
+sha512sums=('25dba5ed4f89132b683cae7d7263a498b349f89211696fbc16de8834eb60a0376d4ed497c4f97d2f57e6d0bfa043103d315bd07abe3c9b238731b79075ef4169')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -22,7 +22,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release # --frozen
-  local compgen="target/release/$pkgname --generate-completion"
+  local compgen="target/release/$pkgname completion"
   $compgen bash >"completions/$pkgname"
   $compgen fish >"completions/$pkgname.fish"
   $compgen zsh >"completions/_$pkgname"
