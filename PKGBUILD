@@ -1,5 +1,5 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=lib32-sdl2_ttf
