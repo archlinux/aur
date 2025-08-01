@@ -2,7 +2,7 @@
 
 pkgname=terraboard
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web dashboard to inspect Terraform States."
 arch=('x86_64')
 url="https://github.com/camptocamp/terraboard/"
@@ -13,7 +13,8 @@ makedepends=('go>=1.21' 'git' 'gcc' 'make')
 depends=('glibc')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/camptocamp/${pkgname}/archive/v${pkgver}.tar.gz"
         "terraboard.service")
-sha256sums=('SKIP')
+sha256sums=('98235ca2b84b1d1667647c617851c13fd35095f7afdb861d9952bc20c5ab0304'
+            '09fa8a80bcdcede55fcea39916fad19a53e42d797bef283b392a43b2727853c5')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
