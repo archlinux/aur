@@ -3,7 +3,7 @@ pkgname=gui-butler
 pkgver=2.3.4
 _electronversion=28
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project.(Use system-wide electron)"
 arch=('x86_64')
 url="https://seansleblanc.itch.io/gui-butler"
@@ -88,5 +88,5 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
