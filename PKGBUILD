@@ -1,14 +1,15 @@
 # Maintainer : Cooper <cooptheloop8 at gmail dot com>
 
 pkgname="wretch"
-pkgver="1.3.4"
+pkgver="1.3.5"
 pkgrel=1
 pkgdesc="A simple Fetch CLI program Built with Rust"
 arch=("x86_64")
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/thesillyboi/wretch/archive/refs/tags/v$pkgver.tar.gz")
 url="https://github.com/thesillyboi/wretch"
 makedepends=("rustup" "git")
-sha512sums=('7e42a297ed1f22a8c2def64336d2abe8a7a9faf5f7fdc7d20d40da752a912dc7bda5ddcb2c3dcbc7fe692602923ff93b366f06dc861b1c74b028ce0ad4979e4f')
+packagedepends=("gcc-libs" "glibc")
+sha512sums=('b828203e3c315791befb693febffb8319ebd471ac99c1f06e4d7b05232cfa59dfaeb436be6fa4852111b0c451577a54528f7d29d414f75ecfa298d929ccb58a9')
 license=("GPL-3.0-or-later")
 build() {
     cd "${srcdir}/$pkgname-$pkgver"
@@ -16,7 +17,11 @@ build() {
 }
 package() {
     cd "${srcdir}/$pkgname-$pkgver"
-    mkdir -p "${pkgdir}/usr/bin"
-    cp target/release/wretch "${pkgdir}/usr/bin/"
-    chmod +x "${pkgdir}/usr/bin/wretch"
+
+    install -Dm755 target/release/wretch "${pkgdir}/usr/bin/${pkgname}"
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
