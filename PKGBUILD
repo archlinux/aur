@@ -38,9 +38,6 @@ prepare() {
 
     # Remove X-AppImage-Version from .desktop file
     sed -i '/AppImage/d' "squashfs-root/${_app_name}.desktop"
-
-    # Correct Name for .desktop file
-    sed -i -r 's/Name=.+/Name=Grist Desktop/' "squashfs-root/${_app_name}.desktop"
 }
 
 package() {
