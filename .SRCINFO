@@ -1,6 +1,6 @@
 pkgbase = adbenq-git
-	pkgdesc = Control your BenQ TV like a boss 🖥️✨
-	pkgver = v0.2.4alpha.gc68a390
+	pkgdesc = General utility to manage your ANDROID TV. Tailored for BENQ TVs
+	pkgver = v0.2.4.r0.gc68a390
 	pkgrel = 1
 	url = https://github.com/Zarox28/ADBenQ
 	arch = any
