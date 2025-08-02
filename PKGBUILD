@@ -7,6 +7,7 @@
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2025.710.0
+_pkgtag=$pkgver-lazer
 pkgrel=2
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
@@ -22,7 +23,7 @@ provides=(osu-lazer)
 conflicts=(osu-lazer)
 options=(!strip !debug)
 source=(
-  "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$pkgver-lazer/osu.AppImage"
+  "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$_pkgtag/osu.AppImage"
   "icon.png"
   "https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
   "osu-lazer.desktop"
