@@ -1,0 +1,21 @@
+pkgbase = python-mtga-helper-git
+	pkgdesc = CLI application to parse log files from MTGA and analyse them using 17lands data
+	pkgver = 0.1.0.64.d3cceb8
+	pkgrel = 1
+	url = https://github.com/lubosz/python-mtga-helper
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-xdg-base-dirs
+	depends = python-scipy
+	depends = python-requests
+	depends = python-numpy
+	depends = python-tabulate
+	depends = python-termcolor>=3.1.0
+	source = git+https://github.com/lubosz/python-mtga-helper.git
+	sha256sums = SKIP
+
+pkgname = python-mtga-helper-git
