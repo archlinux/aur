@@ -129,10 +129,7 @@ function parse_args() {
     fi
 }
 
-if [ -z $1 ]; then
-    Help
-    exit
-fi
+[[ $# -eq 0 ]] && Help && exit
 
 CLIPBOARD=0
 DEBUG=0
@@ -140,7 +137,7 @@ SILENT=0
 FILENAME="$(date +'swaycut_%Y-%m-%d_%H-%M-%S.png')"
 SAVEDIR="${SWAY_SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}}/Screenshots"
 
-parse_args $0 "$@"
+parse_args "$@"
 
 SAVE_FULLPATH="$SAVEDIR/$FILENAME"
 [ $CLIPBOARD -eq 0 ] && log "Saving in: %s\n" "$SAVE_FULLPATH"
