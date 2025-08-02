@@ -12,7 +12,7 @@ source=("https://github.com/iamnotmega/reskin/archive/refs/tags/${pkgver}.tar.gz
 sha256sums=('2ba8cd382bc1f5c67a0a1ae211659963c72106b1bd38662ca6c7e5ff47a9380a')
 
 build() {
-  cd "$srcdir/reskin/src-tauri"
+  cd "$srcdir/$pkgver/src-tauri"
 
   npm install
   npm run build
@@ -27,11 +27,11 @@ package() {
   install -Dm755 "target/release/reskin" "$pkgdir/usr/bin/reskin"
 
   # Install license and readme
-  install -Dm644 "$srcdir/reskin/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/reskin/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "$srcdir/$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   # Install icon (svg)
-  install -Dm644 "$srcdir/reskin/public/assets/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/reskin.svg"
+  install -Dm644 "$srcdir/$pkgver/public/assets/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/reskin.svg"
 
   # Create .desktop file
   install -d "$pkgdir/usr/share/applications"
