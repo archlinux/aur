@@ -1,9 +1,4 @@
-LICENSE
-src
-pkg
-wezterm*
-squashfs-root
-freetype2
-harfbuzz
-libpng
-zlib
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
