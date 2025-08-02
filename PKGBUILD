@@ -1,4 +1,4 @@
-# based on https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/blob/368e65e7385e3854efe2a272f73b12f293d2d365/PKGBUILD
+# based on https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/blob/a99214c27c32ccd2dac7ccbf40179827c8ea2969/PKGBUILD
 
 # -- Arch credits
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -18,7 +18,7 @@ pkgname=(
   mutter-git
   mutter-docs-git
 )
-pkgver=48.2+r40+g4d194b8e1
+pkgver=49.alpha.1+r46+g96d4e7c3c
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -97,17 +97,20 @@ makedepends=(
   wayland-protocols
 )
 source=(
-  'git+https://gitlab.gnome.org/GNOME/mutter.git'
-  'git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3'
+  "git+$url.git"
 )
 b2sums=(
   'SKIP'
-  'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
 )
 
 pkgver() {
   cd mutter
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd mutter
+  meson subprojects download gvdb
 }
 
 build() {
@@ -121,9 +124,6 @@ build() {
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
-
-  # Inject gvdb
-  export MESON_PACKAGE_CACHE_DIR="$srcdir"
 
   arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
@@ -140,8 +140,9 @@ _pick() {
 }
 
 package_mutter-git() {
-  provides=(mutter libmutter-16.so)
+  provides=(mutter libmutter-17.so)
   conflicts=(mutter)
+  optdepends=('bash-completion: Bash completions for gdctl')
 
   meson install -C build --destdir "$pkgdir"
 
