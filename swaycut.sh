@@ -19,7 +19,7 @@ Options:
   -m, --mode <mode>         capture mode: output, window, region
   -o, --output-folder <dir> directory to save the screenshot
   -f, --filename <name>     custom filename
-  --clipboard-only          copy to clipboard, don’t save
+  --clipboard-only          copy to clipboard, don't save
   -s, --silent              suppress notification
   -d, --debug               enable debug logs
   -h, --help                show this help
