@@ -1,4 +1,5 @@
 # Maintainer: Cyberczy <czysheep@gmail.com>
+# Contributor: Regniox <regniox@outlook.com>
 
 pkgbase="maplemono"
 pkgname=(
@@ -14,7 +15,7 @@ pkgname=(
   "maplemono-variable"
   "maplemono-woff2"
 )
-pkgver="7.4"
+pkgver="7.5"
 pkgrel="1"
 pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line"
 url="https://github.com/subframe7536/maple-font"
@@ -33,17 +34,17 @@ source=(
   "MapleMono-Variable-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMono-Variable.zip"
   "MapleMono-Woff2-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMono-Woff2.zip"
 )
-sha256sums=('a5885688e07d446a1ffb7532e4a955806b4746da0f8e42875bf6ae9447edacdf'
-            'b83845bda4bc0b3d06878b8f747c461c1fa26e79a33e0a376ebc3545ecae6e3a'
-            '9b439e9c48a77ea3b314f77d27ef61be6956672a3d80de3c2acbed9d22596d0c'
-            'd47d4090c684fb21b65a5a78371bcabbdcff5449d2c862d55475fb60af5894a8'
-            'd43ee801cbaba52dcf090464cbe4a96f6974cf68fe67132acd0a8b7425c0a690'
-            'a8f00a7cd0fdaf962899f290c92ea53bb050c30a3817e2aa41d5fb26bf4433d6'
-            'e9997db270ceb20be8b304c86bc76a471fa9600cbd379c90e09eb6aafb1d94ab'
-            '75dcc60cb083ef7faaa5d9a063e836cdb93474d76c2c5d5d03dcaec37c734d2d'
-            '820009abd4a0f22d655e913a69d36a8555c91f903537b75eaec90dfd94e7f8a1'
-            '60a5ad52fcf7686ac48e2844cdc8eaea0286d3116944aaa2496e9c19f86fb32f'
-            '34f9e25f8ede492b7aa69eea8aa861aba12969c0432b1956b22c114e8c93d84d')
+sha256sums=('49fc3a94aa07f3c0441cb3115be876880c9d69ea6a8a5b72f41f97be9a3b598e'
+            '02ef49fed39a67fd6306ef9828ac915b3aa14b94a4cefb5bbabf4702df93f537'
+            '3bd076e9e0a0cd48397fe836abe4c299c34245a0c4ee043c5653159626f3e085'
+            '206e1064d5611ffb18f8950088b54ffef4e8d53858c28205bd7d5c02b6180ba3'
+            '2d496c8a5ac02daf3477d9a10e193c694489e9fa8d26193628b51086d5ee07a4'
+            '51da1afc4ae7d2803bf38849c720e9a11c2c9f4accdcdef9eb9224bdb098628f'
+            'd25858996a461d5b33f17a78313b91bba293c63a3746ebb4323cec69144f6380'
+            '286dcb5effa533a3aa73439846b4f22883283f8d33509ac2843a3cfb8ff6d45d'
+            '495b9a8691f4a041dd378a318b6d57f819ac86751d3f599c6937a38bce6fdcbc'
+            '2a9b0c9b1f76708f690fcc9a014c93b6c945b6af02a59ee21125b7799b742f15'
+            'da9e9b013fceff6321f2ecf53a27635e196c66eb12a5e3b0e461ae78f0266e90')
 noextract=(
   "MapleMono-CN-unhinted-$pkgver.zip"
   "MapleMono-CN-$pkgver.zip"
