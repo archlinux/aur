@@ -55,10 +55,8 @@ function save_geometry() {
         # outside the monitor
         magick $output -trim +repage $output
         wl-copy < "$output"
-        send_notification $output
-        [ -z "$COMMAND" ] || {
-            "${COMMAND[@]}" "$output"
-        }
+        send_notification "$output"
+        [ ${#COMMAND[@]} -gt 0 ] && "${COMMAND[@]}" "$output"
     else
         wl-copy < <(grim -g "${1}" - | magick - -trim +repage -)
     fi
@@ -140,7 +138,7 @@ CLIPBOARD=0
 DEBUG=0
 SILENT=0
 FILENAME="$(date +'swaycut_%Y-%m-%d_%H-%M-%S.png')"
-[ -z "$SWAY_SCREENSHOT_DIR" ] && SAVEDIR=${XDG_PICTURES_DIR:=~} || SAVEDIR=${SWAY_SCREENSHOT_DIR}
+SAVEDIR="${SWAY_SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}}/Screenshots"
 
 parse_args $0 "$@"
 
