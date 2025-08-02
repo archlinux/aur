@@ -1,0 +1,4 @@
+[near-cli-rs]
+source = "git"
+git = "https://github.com/near/near-cli-rs.git"
+prefix = "v"
