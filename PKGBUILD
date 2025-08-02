@@ -2,7 +2,7 @@
 
 pkgname=fortunate
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fortune-mod powered motivational app that delivers uplifting quotes and thoughtful messages."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/fortunate"
