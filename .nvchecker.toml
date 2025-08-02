@@ -1,0 +1,6 @@
+[cloudreverb]
+source = "github"
+github = "xunil-cloud/CloudReverb"
+include_regex = '^v\d+(\.\d+)+$'
+use_max_tag = true
+prefix = "v"
