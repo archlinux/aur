@@ -15,11 +15,13 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.6.3
-_buildver=24583834
+pkgver=17.6.4
+_buildver=24832109
 _pkgver=${pkgver}_${_buildver}
-pkgrel=6
+pkgrel=2
 _tools_version=12.5.0-24276846
+_legacy_cdn_ver=17.6.3
+_legacy_cdn_buildver=24583834
 _legacy_ver=17.5.2
 _legacy_buildver=23775571
 _legacy_tools_version=12.4.0_23259341
@@ -63,14 +65,17 @@ backup=(
   'etc/vmware/config'
   'etc/conf.d/vmware'
 )
+
+DLAGENTS=("https::/usr/bin/curl -fLC - --connect-to softwareupdate-prod.broadcom.com:443:softwareupdate-prod.broadcom.com.cdn.cloudflare.net:443 --retry 3 --retry-delay 3 -o %o %u")
+
 source=(
-  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+  "VMware-Workstation-${pkgver}-${_buildver}.${CARCH}.bundle::https://archive.org/download/vmware-workstation-full-${pkgver}-${_buildver}.${CARCH}/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}.bundle"
   "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linux-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
   "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
   "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
   "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "vmware-tools-windows-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-  "vmware-tools-windows-x86-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-x86-${_tools_version/_/-}.${CARCH}.component.tar"
+  "vmware-tools-windows-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_cdn_ver}/${_legacy_cdn_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+  "vmware-tools-windows-x86-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_cdn_ver}/${_legacy_cdn_buildver}/linux/packages/vmware-tools-windows-x86-${_tools_version/_/-}.${CARCH}.component.tar"
   "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
   "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
 
@@ -91,8 +96,9 @@ source=(
   'Makefile'
   'vmmon.patch'
   'vmnet.patch'
+  'linux6_15.patch'
 )
-sha256sums=('4f3b643068bbd6e4c864e1b434cfef080faa18382b988d012dc4738094a73e74'
+sha256sums=('64fbfbaeacc48865468114362a2bbaade9110cc9e87bc3bd938396ba7f19a9bd'
             'd862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4'
             'd79f79f17e5f37399046d16be3967e0cff3c9474e2cb6ea3f2c3ebea3ff68cea'
             '4643fff3ed4f8af5a56a1c4c2084fa7327d78e58ee9b0687b98390a4b4a1ac14'
@@ -111,10 +117,11 @@ sha256sums=('4f3b643068bbd6e4c864e1b434cfef080faa18382b988d012dc4738094a73e74'
             '6114cab1760bd1393de2ed16d9bc6f01c013a706e1b0a0a7fc34156d6adb7ae9'
             '8534321485f16783a70f8ce78ca04599756a98b955b046af623910e1ee6e412c'
             '452c1bfebac52f4808ba5f4bf2fc3eae9858f8745d60c13d3c46e7550a3e1eb1'
-            '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
+            '7ba8cbdb1981a9a714b4068e651cc7a20ab358dddf6cab68519d9f324ea800b3'
             '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
             '32ae0ba7836c2212b819e3e7ec3f96667c1ac6d5083003eab1e794f0c032f640'
-            '74453f184ff57390ea0696144f0fc767cc875635595c964d5d5e7924a01c82d8')
+            '74453f184ff57390ea0696144f0fc767cc875635595c964d5d5e7924a01c82d8'
+            '2411268a37a2aac03ea1e8b38e2da3fc31a232161f92cad824d98d9873b2586d')
 options=(!strip emptydirs !debug)
 
 if [ -z "$_remove_vmware_keymaps_dependency" ]; then
@@ -404,6 +411,7 @@ fi
     msg "Patching $module module for DKMS"
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
   done
+  patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_15.patch"
 
   rm -r "$pkgdir/usr/lib/vmware/modules/source"
 
