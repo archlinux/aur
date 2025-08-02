@@ -1,3 +1,5 @@
 [python-safetensors]
-source="pypi"
-pypi="safetensors"
+source = 'github'
+github = 'huggingface/safetensors'
+use_latest_release = true
+prefix = 'v'
