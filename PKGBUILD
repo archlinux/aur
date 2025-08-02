@@ -3,15 +3,14 @@
 pkgname=xlibre-xf86-video-fbdev
 _pkgname=xf86-video-fbdev
 pkgver=0.5.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Official XLibre fork of X.Org framebuffer video driver"
 arch=(x86_64 aarch64)
 license=('X11')
 url="https://github.com/X11Libre"
 depends=('glibc')
 makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0'
-  'xorgproto' 'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils'
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf')
+  'xorgproto')
 conflicts=(${_pkgname} 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 source=("${url}/${_pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
 groups=('xlibre-drivers')
