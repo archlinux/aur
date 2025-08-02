@@ -22,7 +22,7 @@ optdepends=(
     'libnotify: Native desktop notifications (notify-send)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ec3862be2330da586336bfbc9887793c69c5c4c7')
+sha256sums=('SKIP')
 
 build() {
     cd "pomodoro-timer-$pkgver"
@@ -34,37 +34,8 @@ build() {
 package() {
     cd "pomodoro-timer-$pkgver"
     
-    # Create stow-compatible directory structure
-    install -dm755 "$pkgdir/home/ming/stow/pomodoro-timer/bin"
-    install -dm755 "$pkgdir/home/ming/stow/pomodoro-timer/lib/python3.13/site-packages"
-    
-    # Copy source files to stow directory (including audio resources)
-    cp -r src/pomodoro_timer "$pkgdir/home/ming/stow/pomodoro-timer/lib/python3.13/site-packages/"
-    
-    # Create launcher script
-    cat > "$pkgdir/home/ming/stow/pomodoro-timer/bin/pomodoro-timer" << 'EOF'
-#!/usr/bin/env python3
-"""
-Pomodoro Timer launcher script for Stow installation
-"""
-
-import sys
-import os
-
-# Add the stow installation path to Python path
-stow_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-site_packages = os.path.join(stow_path, 'lib', 'python3.13', 'site-packages')
-sys.path.insert(0, site_packages)
-
-# Import and run the main function
-from pomodoro_timer.main import main
-
-if __name__ == "__main__":
-    main()
-EOF
-    
-    # Make launcher script executable
-    chmod +x "$pkgdir/home/ming/stow/pomodoro-timer/bin/pomodoro-timer"
+    # Install the wheel using python-installer
+    python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install desktop file
     install -Dm644 pomodoro-timer.desktop "$pkgdir/usr/share/applications/pomodoro-timer.desktop"
