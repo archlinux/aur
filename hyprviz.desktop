@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=HyprViz
+Comment=GUI for configuring Hyprland, written in blazingly fast Rust!
+Exec=/usr/bin/hyprviz
+Icon=preferences-system
+Type=Application
+Terminal=false
+Categories=Utility;
