@@ -1,6 +1,6 @@
 pkgbase = netsleuth-git
 	pkgdesc = A simple utility for the calculation and analysis of IP subnet values, designed to simplify network configuration tasks.
-	pkgver = v1.0.5.r3.g0de97d2
+	pkgver = v1.1.1.r3.g2df361d
 	pkgrel = 1
 	url = https://github.com/vmkspv/netsleuth
 	arch = any

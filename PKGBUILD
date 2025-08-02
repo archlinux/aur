@@ -1,10 +1,10 @@
-# Maintainer: Hoream <hoream@qq.com>
+# Maintainer: Lyna Stral <testerthe60@gmail.com>
 
 _pkgname=netsleuth
-pkgname=netsleuth-git
-pkgver=v1.0.5.r3.g0de97d2
+pkgname="$_pkgname"-git
+pkgver=v1.1.1.r3.g2df361d
 pkgrel=1
-pkgdesc=' A simple utility for the calculation and analysis of IP subnet values, designed to simplify network configuration tasks.'
+pkgdesc='A simple utility for the calculation and analysis of IP subnet values, designed to simplify network configuration tasks.'
 url="https://github.com/vmkspv/netsleuth"
 arch=('any')
 license=('GPL3')
@@ -29,4 +29,3 @@ package() {
     DESTDIR="$pkgdir" meson install -C build
     chmod +x ${pkgdir}/usr/bin/${_pkgname}
 }
-
