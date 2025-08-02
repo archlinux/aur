@@ -3,15 +3,14 @@
 pkgname=xlibre-xf86-input-elographics
 _pkgname=xf86-input-elographics
 pkgver=1.4.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Official XLibre fork of X.Org Elographics TouchScreen input driver"
 arch=(x86_64 aarch64)
 license=('MIT')
 url="https://github.com/X11Libre"
 depends=('glibc')
 makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-XINPUT_VERSION=26.0'
-  'xorgproto' 'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils' 
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf')
+  'xorgproto')
 conflicts=(${_pkgname} 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
 provides=(${_pkgname})
 groups=('xlibre-drivers')
