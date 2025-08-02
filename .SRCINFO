@@ -1,21 +1,24 @@
 pkgbase = python-mfusepy
 	pkgdesc = Ctypes bindings for the high-level API in libfuse 2 and 3
-	pkgver = 1.1.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/mxmlnkn/mfusepy
 	arch = any
 	license = ISC
 	checkdepends = python-pytest
+	checkdepends = python-ioctl-opt
 	checkdepends = fuse2
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mfusepy/mfusepy-1.1.1.tar.gz
-	source = 1.1.1-memory.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v1.1.1/examples/memory.py
-	source = 1.1.1-memory_nullpath.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v1.1.1/examples/memory_nullpath.py
-	md5sums = c28c666bfc19373ba963e7fbacf17438
-	md5sums = d4067f9d49797f7bcb8417592151c692
-	md5sums = 549b20a28c3dffed3c3f12787533acad
+	source = https://files.pythonhosted.org/packages/source/m/mfusepy/mfusepy-3.0.0.tar.gz
+	source = 3.0.0-loopback.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v3.0.0/examples/loopback.py
+	source = 3.0.0-memory.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v3.0.0/examples/memory.py
+	source = 3.0.0-memory_nullpath.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v3.0.0/examples/memory_nullpath.py
+	md5sums = 576731287e262395740eb99bac06760c
+	md5sums = ac52b031e874bfcb7f30f5a332115ad2
+	md5sums = 4b43775856dbebafe0e4905443079459
+	md5sums = ddd0c493d32978665a9ebda215a94bea
 
 pkgname = python-mfusepy
 	depends = python>=3.9

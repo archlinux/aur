@@ -4,7 +4,7 @@ pkgbase=python-mfusepy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Ctypes bindings for the high-level API in libfuse 2 and 3"
 arch=('any')
@@ -14,15 +14,19 @@ makedepends=('python-setuptools'
              'python-build'
              'python-installer')  # wheel required by new setuptools
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
+              'python-ioctl-opt'
               'fuse2')
 #             'fuse3')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "${pkgver}-loopback.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/loopback.py"
         "${pkgver}-memory.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/memory.py"
         "${pkgver}-memory_nullpath.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/memory_nullpath.py"
     )
-md5sums=('c28c666bfc19373ba963e7fbacf17438'
-         'd4067f9d49797f7bcb8417592151c692'
-         '549b20a28c3dffed3c3f12787533acad')
+md5sums=('576731287e262395740eb99bac06760c'
+         'ac52b031e874bfcb7f30f5a332115ad2'
+         '4b43775856dbebafe0e4905443079459'
+         'ddd0c493d32978665a9ebda215a94bea')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
