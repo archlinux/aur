@@ -19,10 +19,10 @@ pkgbase = ulauncher-git
 	depends = python>=3.8
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-xlib
 	optdepends = gtk-layer-shell: wayland layer shell integration
-	optdepends = xapp: tray icon library - single click support
-	optdepends = libappindicator-gtk3: tray icon library
+	optdepends = python-xlib: support for raising running apps (x11 only)
+	optdepends = libappindicator-gtk3: tray icon support (x11 or wayland)
+	optdepends = xapp: alternative tray icon library that supports single click to activate (x11 only)
 	optdepends = python-levenshtein: fuzzy search performance
 	provides = ulauncher
 	conflicts = ulauncher

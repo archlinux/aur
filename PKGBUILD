@@ -10,11 +10,15 @@ pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
 license=('GPL3')
-# Note: python-xlib is not used directly, but needed by EWMH, which is vendored
-depends=('gtk3' 'webkit2gtk-4.1' 'python>=3.8' 'python-cairo' 'python-gobject' 'python-xlib')
+depends=('gtk3' 'webkit2gtk-4.1' 'python>=3.8' 'python-cairo' 'python-gobject')
 makedepends=('git' 'python-setuptools' 'python-pip' 'python-wheel' 'make' 'nodejs' 'yarn')
 checkdepends=('desktop-file-utils')
-optdepends=('gtk-layer-shell: wayland layer shell integration' 'xapp: tray icon library - single click support' 'libappindicator-gtk3: tray icon library' 'python-levenshtein: fuzzy search performance')
+optdepends=('gtk-layer-shell: wayland layer shell integration'
+  # Note: python-xlib is not used directly, but needed by EWMH, which is vendored
+  'python-xlib: support for raising running apps (x11 only)'
+  'libappindicator-gtk3: tray icon support (x11 or wayland)'
+  'xapp: alternative tray icon library that supports single click to activate (x11 only)'
+  'python-levenshtein: fuzzy search performance')
 install="ulauncher.install"
 provides=("ulauncher")
 conflicts=("ulauncher")
