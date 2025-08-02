@@ -27,7 +27,7 @@ pkgbase = mihomo-party
 	options = !lto
 	source = mihomo-party-1.8.0.tar.gz::https://github.com/mihomo-party-org/mihomo-party/archive/refs/tags/v1.8.0.tar.gz
 	source = mihomo-party.sh
-	sha256sums = a8584e0131922f7236f49dd1ace4f1ae1d9d1b5f725781185452218797710135
+	sha256sums = 3cd7f7e6ad01887fac3d4c933490f3a229152dffe40fcd380a3523ebf2bb5b36
 	sha256sums = f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282
 
 pkgname = mihomo-party
