@@ -1,8 +1,8 @@
 # Maintainer: Michele Palazzi <sysdadmin@m1k.cloud>
 
 pkgname=plex-htpc
-pkgver=1.71.0.334
-_pkghash=aaf6bcca
+pkgver=1.71.1.346
+_pkghash=f62ce923
 pkgrel=1
 pkgdesc="Plex HTPC client for linux"
 arch=('x86_64')
@@ -62,7 +62,7 @@ source=("https://artifacts.plex.tv/plex-htpc-stable/$pkgver-$_pkghash/linux/Plex
   "https://github.com/flathub/tv.plex.PlexHTPC/raw/master/tv.plex.PlexHTPC.desktop"
   "https://github.com/flathub/tv.plex.PlexHTPC/raw/master/tv.plex.PlexHTPC.png"
 )
-sha256sums=('d40740f6ae27eb2384e481e66fdfa4bb542562c7f1aedb7a8fe4f08a9ded40f0'
+sha256sums=('ea1baab13c406272ace83e9407c59f647b8367b6067ef3bf2983470b67a9eb9d'
             '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
             'b98d1ba9191e346a256f1c838051b2d547f638558d79898df8b1707c7cabe487'
             '069cdf95608a46af4313bdffb281df37819e77c4e371c1e1667af889f0f325a2')
