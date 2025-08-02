@@ -1,0 +1,18 @@
+pkgbase = tylex-git
+	pkgdesc = A simple, rofi/dmenu-based text expander for tiling window managers.
+	pkgver = 0.1.0.r0.g9797402
+	pkgrel = 1
+	url = https://github.com/raoeus/tylex
+	arch = any
+	license = MIT
+	depends = bash
+	depends = jq
+	depends = xdotool
+	optdepends = rofi: for a modern, fuzzy-finding menu
+	optdepends = dmenu: for a classic, minimalist menu
+	provides = tylex
+	conflicts = tylex
+	source = tylex-git::git+https://github.com/raoeus/tylex.git
+	sha256sums = SKIP
+
+pkgname = tylex-git
