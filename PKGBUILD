@@ -3,7 +3,7 @@
 pkgname=python-borgstore
 _name=${pkgname#python-}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A experimental key/value store implementation, supporting multiple backends'
 arch=('any')
 url='https://github.com/borgbackup/borgstore'
