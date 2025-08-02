@@ -3,14 +3,13 @@
 pkgname=xlibre-xf86-input-vmmouse
 _pkgname=xf86-input-vmmouse
 pkgver=13.2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Official XLibre fork of X.Org VMWare Mouse input driver"
 arch=(x86_64 aarch64)
 license=('custom')
 url="https://github.com/X11Libre"
 makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-XINPUT_VERSION=26.0'
-  'xorgproto' 'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils' 
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf')
+  'xorgproto')
 conflicts=(${_pkgname} 'xorg-server<21.1.1' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
 provides=(${_pkgname})
 source=("${url}/${_pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
