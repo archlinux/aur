@@ -1,12 +1,14 @@
-# Maintainer: Grafcube <grafcube at disroot dot org>
+# Maintainer: envolution
+# Contributor: Grafcube <grafcube at disroot dot org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 _pkgname=docopt-ng
 pkgname=python-${_pkgname}
 pkgver=0.9.0
 pkgrel=1
-pkgdesc="Jazzband-maintained fork of docopt, the humane command line arguments parser."
+pkgdesc="Jazzband fork of docopt, the humane command line arguments parser"
 url="https://github.com/jazzband/docopt-ng"
-depends=(python python-regex)
+depends=(python)
 makedepends=(git python-build python-pdm-backend python-installer python-wheel)
 license=('MIT')
 arch=('any')
@@ -22,4 +24,6 @@ build() {
 package() {
 	cd "${_pkgname}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE-MIT -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
+# vim:set ts=2 sw=2 et:
