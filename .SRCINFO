@@ -1,0 +1,19 @@
+pkgbase = tagalong-git
+	pkgdesc = Sheet music viewer with special integration for Barbershop tags
+	pkgver = 1.0.r0.gad584b3
+	pkgrel = 1
+	url = https://github.com/vimpostor/tagalong
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = imagemagick
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	source = git+https://github.com/vimpostor/tagalong.git
+	md5sums = SKIP
+
+pkgname = tagalong-git
