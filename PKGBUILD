@@ -16,7 +16,7 @@ source=("aurroamer" "LICENSE")
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
