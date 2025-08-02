@@ -1,0 +1,41 @@
+pkgname='dankmaterialshell-git'
+pkgver=0.0.1
+pkgrel=1
+pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
+arch=('any')
+url='https://github.com/bbedward/DankMaterialShell'
+license=('MIT')
+depends=('quickshell-git' 'networkmanager' 'ttf-material-symbols-variable'
+         'inter-font' 'ttf-fira-code')
+optdepends=('matugen-bin: Dynamic wallpaper-based theming'
+            'ddcutil: External monitor brightness control'
+            'brightnessctl: Laptop display brightness control'
+            'wl-clipboard: Copy functionality for PIDs and other elements'
+            'cliphist: Clipboard history functionality'
+            'cava: Audio visualizer'
+            'qt5ct: Qt5 application theming'
+            'qt6ct: Qt6 application theming')
+makedepends=('git')
+provides=('dankmaterialshell')
+conflicts=('dankmaterialshell')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+    
+    # Install shell files to quickshell config directory
+    install -dm755 "$pkgdir"/etc/xdg/quickshell/DankMaterialShell
+    cp -r ./* "$pkgdir"/etc/xdg/quickshell/DankMaterialShell/
+    
+    # Install documentation
+    install -Dm644 README.md "$pkgdir"/usr/share/doc/dankmaterialshell/README.md
+    
+    # Remove git files from installation
+    rm -rf "$pkgdir"/etc/xdg/quickshell/DankMaterialShell/.git*
+}
