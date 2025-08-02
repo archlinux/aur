@@ -6,7 +6,7 @@
 
 pkgname='nb'
 pkgver=7.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -28,6 +28,7 @@ optdepends=(
   'eza'
   'ffmpeg' # For ffplay
   'imagemagick'
+  'glow'
   'gnupg'
   'highlight'
   'links'

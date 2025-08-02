@@ -1,7 +1,7 @@
 pkgbase = nb
 	pkgdesc = A command-line note-taking, bookmarking, archiving, and knowledge base application
 	pkgver = 7.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xwmx/nb
 	arch = any
 	license = AGPL-3.0-or-later
@@ -19,6 +19,7 @@ pkgbase = nb
 	optdepends = eza
 	optdepends = ffmpeg
 	optdepends = imagemagick
+	optdepends = glow
 	optdepends = gnupg
 	optdepends = highlight
 	optdepends = links
