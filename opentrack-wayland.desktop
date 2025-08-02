@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Opentrack
+Name=Opentrack - Wayland
 Comment=Head tracking software
-Exec=opentrack
+Exec=opentrack --platform xcb
 Icon=/usr/share/doc/opentrack/contrib/cute-octopus-vector-material_15-1831.jpg
 Terminal=false
 StartupNotify=true

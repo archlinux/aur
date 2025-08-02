@@ -5,7 +5,7 @@
 
 pkgname=opentrack
 pkgver=2023.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Head tracking software"
 arch=('x86_64')
 url="https://github.com/opentrack/opentrack/"
@@ -15,9 +15,11 @@ makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt5-tools' 'procps-ng')
 optdepends=('onnxruntime: neuralnet tracker')
 source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" 
         "opentrack.desktop"
+        "opentrack-wayland.desktop"
         "fix-process-list.patch")
 sha256sums=('ba5fea9da4b7d70162648e95ba6dcd8bed140519eb607a99a5daf1b00809f824'
-            '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f'
+            'cf717d146a89c7373ec9b393164898db6ea32790f1ce1948c90bc1d4e2f4bb98'
+            'b42816a28ecf72a66e6815810cd8565277e77a2eeb1f987e3e046b297170a279'
             'c5e8d0ae632152350019f56358a92112075eb57fdafaa124b0f781179b6e8ab1')
 
 prepare() {
@@ -55,5 +57,5 @@ package() {
   DESTDIR="$pkgdir" ninja install
 
   install -Dm644 $srcdir/opentrack.desktop $pkgdir/usr/share/applications/opentrack.desktop
+  install -Dm644 $srcdir/opentrack-wayland.desktop $pkgdir/usr/share/applications/opentrack-wayland.desktop
 }
-
