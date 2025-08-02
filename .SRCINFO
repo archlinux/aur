@@ -1,0 +1,26 @@
+pkgbase = axiom-git
+	pkgdesc = A professional Wayland compositor with GPU-accelerated effects and advanced window management
+	pkgver = 2.0.1.r0.gd611cfd
+	pkgrel = 2
+	url = https://github.com/GeneticxCln/Axiom
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	depends = wayland
+	depends = wlroots0.19
+	depends = libxkbcommon
+	depends = glibc
+	optdepends = waybar: status bar integration
+	optdepends = rofi: application launcher
+	optdepends = alacritty: recommended terminal emulator
+	optdepends = foot: lightweight terminal emulator
+	optdepends = kitty: GPU-accelerated terminal emulator
+	provides = axiom
+	conflicts = axiom
+	source = axiom-git::git+https://github.com/GeneticxCln/Axiom.git
+	sha256sums = SKIP
+
+pkgname = axiom-git
