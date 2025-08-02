@@ -1,10 +1,13 @@
 # Maintainer: aserdevyt <aserdevyt@outlook.com>
 pkgname=ash-shell-git
 pkgver() {
-  cd "$srcdir/ash-shell"
+  cd "$srcdir/ash-shell" 2>/dev/null || cd ash-shell 2>/dev/null || return 1
+
+  # Try to describe version with tag, else fallback to commit hash
   git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/./g' || \
-    echo "0.0.0.$(git rev-parse --short HEAD)"
+    echo "0.0.0.$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 }
+
 pkgrel=1
 pkgdesc="A modern, secure, feature-rich Linux shell written in C"
 arch=('x86_64')
