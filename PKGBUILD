@@ -1,8 +1,9 @@
 # Maintainer: Alex <your-email@domain.com>
+# WARNING: THIS PACKAGE IS DEPRECATED AND NON-FUNCTIONAL
 pkgname=axiom-git
 pkgver=2.0.1.r1.g7677325
-pkgrel=1
-pkgdesc="A professional Wayland compositor with GPU-accelerated effects and advanced window management"
+pkgrel=2
+pkgdesc="[DEPRECATED] Non-functional Wayland compositor project - DO NOT INSTALL"
 arch=('x86_64')
 url="https://github.com/GeneticxCln/Axiom"
 license=('GPL-3.0-or-later')

@@ -1,7 +1,7 @@
 pkgbase = axiom-git
-	pkgdesc = A professional Wayland compositor with GPU-accelerated effects and advanced window management
+	pkgdesc = [DEPRECATED] Non-functional Wayland compositor project - DO NOT INSTALL
 	pkgver = 2.0.1.r1.g7677325
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GeneticxCln/Axiom
 	arch = x86_64
 	license = GPL-3.0-or-later
