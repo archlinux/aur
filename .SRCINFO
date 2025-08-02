@@ -1,0 +1,17 @@
+pkgbase = ash-shell-git
+	pkgdesc = A modern, secure, feature-rich Linux shell written in C
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/aserdevyt/ash-shell
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = readline
+	optdepends = kitty: proper Unicode/font rendering inside the shell
+	source = git+https://github.com/aserdevyt/ash-shell.git
+	md5sums = SKIP
+
+pkgname = ash-shell-git
