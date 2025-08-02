@@ -12,7 +12,7 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.52.1
+pkgver=1.54.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
@@ -38,6 +38,7 @@ makedepends=(
   libmm-glib
   libndp
   libnewt
+  libnvme
   libpsl
   libteam
   meson
@@ -65,7 +66,7 @@ checkdepends=(
 source=(
   "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git?signed#tag=${pkgver/[a-z]/-&}"
 )
-b2sums=('0af9767688f43ccdca335c1655f4a0b7b2f0568f965b7cfc268aad63a4dfa0f0d9b86746a72e5d27923f0fb8fe8cc74d429fe977c10edea3b24dd47497d021b1')
+b2sums=('b0bb870e19216ac15b9902007502c16a7bf3d72620f76479fc8ff43acfeb5bceb1b7822293603975a99d42ab05b3b522b87a184af154a0b382423639804d1b76')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>
@@ -76,6 +77,7 @@ validpgpkeys=(
   E472337703D0C46002928B5790617850A125DE59 # Stanislas FAYE <sfaye@redhat.com>
   49EA7C670E0850E7419514F629C2366E4DFC5728 # Thomas Haller <thaller@redhat.com>
   07F9AEC86144386D9576210B66A44781B4EBC2D0 # Íñigo Huguet <ihuguet@redhat.com>
+  8D1F4C471D38D59A56301CEBE1974C8D8DD6ED2A # Filip Pokryvka <fpokryvk@redhat.com>
 )
 
 prepare() {
@@ -148,6 +150,7 @@ package_networkmanager() {
     libndp
     libnewt
     libnm
+    libnvme
     libpsl
     libteam
     mobile-broadband-provider-info
