@@ -1,7 +1,7 @@
 pkgbase = lib32-sbc
 	pkgdesc = Bluetooth Subband Codec (SBC) library (32-bit)
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/pub/scm/bluetooth/sbc.git
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,6 @@ pkgbase = lib32-sbc
 	depends = lib32-glibc
 	depends = sbc
 	source = git+https://git.kernel.org/pub/scm/bluetooth/sbc.git#commit=8dc5d5ba381512ad5b1afa45c63ec6b0a3833244
-	b2sums = SKIP
+	b2sums = c4b37f680dbae34bd39fe9b5db9a8240d982f77bb83b961f6dbd504c55f861c43dcf6a84b29a5622aacaf3e29fa0086fbb67e64b1ba2868bd6b9297f64f0154b
 
 pkgname = lib32-sbc
