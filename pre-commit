@@ -1,5 +1,7 @@
 #!/bin/sh
 
-pwd
-makepkg --printsrcinfo > .SRCINFO
-git add .SRCINFO
+if git diff --cached --name-only | grep -q PKGBUILD; then
+  echo "rebuilding .SRCINFO"
+  makepkg --printsrcinfo > .SRCINFO
+  git add .SRCINFO
+fi
