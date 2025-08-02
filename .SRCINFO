@@ -1,6 +1,6 @@
 pkgbase = domake
 	pkgdesc = Docker make
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/gportay/domake
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = domake
 	makedepends = asciidoctor
 	makedepends = bash-completion
 	depends = bash
-	source = domake-2.tar.gz::https://github.com/gportay/domake/archive/2.tar.gz
+	source = domake-3.tar.gz::https://github.com/gportay/domake/archive/3.tar.gz
 	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
-	sha256sums = bc93dc89527e52d25f6533924e24a961787e6efbd7305ea92615458f5e3fe30e
+	sha256sums = eabcf53d059aa390931c3a45d685dbc4ed121d8a8ff97493c1cf554734726343
 
 pkgname = domake
 	depends = bash
@@ -20,5 +20,35 @@ pkgname = domake
 
 pkgname = domake-docker-make
 	pkgdesc = Docker CLI plugin for domake
+	depends = bash
+	depends = domake
+
+pkgname = domake-linux-amd64
+	pkgdesc = Docker shell for linux/amd64 platform
+	depends = bash
+	depends = domake
+
+pkgname = domake-linux-arm64
+	pkgdesc = Docker shell for linux/arm64 platform
+	depends = bash
+	depends = domake
+
+pkgname = domake-linux-arm
+	pkgdesc = Docker shell for linux/arm platform
+	depends = bash
+	depends = domake
+
+pkgname = domake-linux-ppc64le
+	pkgdesc = Docker shell for linux/ppc64le platform
+	depends = bash
+	depends = domake
+
+pkgname = domake-linux-riscv64
+	pkgdesc = Docker shell for linux/riscv64 platform
+	depends = bash
+	depends = domake
+
+pkgname = domake-linux-s390x
+	pkgdesc = Docker shell for linux/s390x platform
 	depends = bash
 	depends = domake
