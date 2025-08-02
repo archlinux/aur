@@ -1,0 +1,4 @@
+[beetcamp]
+source = "github"
+github = "snejus/beetcamp"
+use_max_tag = true
