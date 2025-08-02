@@ -8,8 +8,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="wallust"
 pkgname="$_pkgname-git"
-pkgver=3.1.0.r4.g7ff46aa
-pkgrel=2
+pkgver=3.4.0.r9.g0a0e7c0
+pkgrel=1
 pkgdesc="Generate colors from an image"
 url="https://codeberg.org/explosion-mental/wallust"
 license=('MIT')
@@ -21,7 +21,6 @@ depends=(
 makedepends=(
   'cargo'
   'git'
-  'make'
 )
 optdepends=(
   'imagemagick'
@@ -51,7 +50,7 @@ prepare() {
 
 build() {
   cd "$_pkgsrc"
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 package() {
