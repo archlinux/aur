@@ -3,32 +3,29 @@
 
 _basename=libsrtp
 pkgname=lib32-libsrtp
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 epoch=1
 pkgdesc="Library for SRTP (Secure Realtime Transport Protocol) (32-bit)"
 url="https://github.com/cisco/libsrtp"
-arch=('x86_64')
+arch=(x86_64)
 license=(BSD-3-Clause)
-depends=('lib32-glibc' 'lib32-nss' 'libsrtp')
-makedepends=('git' 'lib32-libpcap' 'meson')
-checkdepends=('procps-ng')
-_commit=fd08747fa6800b321d53e15feb34da12dc697dee  # tags/v2
-source=("git+https://github.com/cisco/libsrtp#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd $_basename
-
-    git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
+depends=(
+    lib32-glibc
+    lib32-nss
+    libsrtp
+)
+makedepends=(
+    git
+    lib32-libpcap
+    meson
+)
+checkdepends=(procps-ng)
+source=("git+https://github.com/cisco/libsrtp#tag=v$pkgver")
+b2sums=('4e72d8ddb6ff1056331377001b575e59973acf27ac8fcdfe5d08e4f44f3702012e8af7da9970de3a0e4643aa1139fcce4af3df3c31258ac8c5b35420b67aa9dd')
 
 prepare() {
     cd $_basename
-
-    # Fixup pkgver: There are proper tags like v2.4.4
-    # but also "moving tags" like v2 and v2.4 that aren't stable
-    git tag | grep -Pv '^v\d+\.\d+\.\d+$' | xargs git tag -d
 }
 
 build() {
@@ -38,7 +35,6 @@ build() {
 
     local meson_options=(
         --libdir=lib32 \
-        --buildtype release \
         -D crypto-library=nss \
         -D crypto-library-kdf=disabled \
         -D doc=disabled
@@ -56,7 +52,7 @@ check() {
 package() {
     meson install -C build --destdir "$pkgdir"
 
-    install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_basename/LICENSE
+    install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "$_basename/LICENSE"
 
     cd "$pkgdir"/usr
 
