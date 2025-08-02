@@ -1,5 +1,6 @@
 [unifi]
-source = 'regex'
-url = 'http://dl-origin.ubnt.com/unifi/debian/dists/stable/ubiquiti/binary-amd64/Packages'
-encoding = 'utf8'
-regex = 'Version: ([\d.]+)-'
+source = 'jq'
+url = 'https://fw-update.ubnt.com/api/firmware?filter=eq~~product~~unifi-controller&filter=eq~~platform~~unix&filter=eq~~channel~~release&sort=-version&limit=1'
+filter = '._embedded.firmware[0].version'
+from_pattern = 'v([\d.]+)+.*'
+to_pattern = '\1'
