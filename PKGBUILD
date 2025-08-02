@@ -3,15 +3,13 @@
 pkgname=xlibre-xf86-video-nouveau
 _pkgname=xf86-video-nouveau
 pkgver=1.0.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Official XLibre fork of X.Org Open Source 3D acceleration driver for nVidia cards"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
 license=('MIT')
 depends=('mesa' 'libdrm' 'glibc')
-makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0'
-  'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils'
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf')
+makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0')
 conflicts=(${_pkgname} 'xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 provides=(${_pkgname})
 groups=('xlibre-drivers')
