@@ -1,5 +1,5 @@
 helpl="
-				hyprsession.sh version 1.1
+				hyprsession.sh version 1.2
 				==========================
     Usage
     -----
@@ -142,7 +142,9 @@ if	[[ $1 == "load" || $1 == "run" || $1 == "boot" ]];		then
 	if	[[ $1 != "load" ]];		then
 		while true; do
 			sleep $autosave
-			save
+			if [[ $(echo "hyprctl clients" | wc -m) != "15" ]]; then
+				hyprsession.sh save
+			fi
 		done
 	fi
 	exit 0
