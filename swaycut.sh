@@ -6,7 +6,7 @@ AVAILABLE_MODES=(output window region)
 
 function Help() {
     cat <<EOF
-Usage: sway-screenshot [options ..] -m [mode] -- [command]
+Usage: swaycut [options ..] -m [mode] -- [command]
 
 Minimal screenshot utility for Sway.
 
@@ -20,7 +20,7 @@ Options:
   -d, --debug           print debug information
   -s, --silent          don't send notification when screenshot is saved
   --clipboard-only      copy screenshot to clipboard and don't save image in disk
-  -- [command]          open screenshot with a command of your choosing. e.g. sway-screenshot -m window -- mirage
+  -- [command]          open screenshot with a command of your choosing. e.g. swaycut -m window -- mirage
 
 Modes:
   output                take screenshot of an entire monitor
@@ -42,7 +42,7 @@ function send_notification() {
         return 0
     fi
     notify-send "Screenshot saved" \
-                "Image saved in <i>${1}</i> and copied to the clipboard." \
+                "Image saved to <i>${1}</i> and copied to the clipboard." \
                 -i "${1}"
 }
 
@@ -141,7 +141,7 @@ fi
 CLIPBOARD=0
 DEBUG=0
 SILENT=0
-FILENAME="$(date +'Sway-screenshot_%Y-%m-%d-%H:%M:%S.png')"
+FILENAME="$(date +'swaycut_%Y-%m-%d-%H:%M:%S.png')"
 [ -z "$SWAY_SCREENSHOT_DIR" ] && SAVEDIR=${XDG_PICTURES_DIR:=~} || SAVEDIR=${SWAY_SCREENSHOT_DIR}
 
 parse_args $0 "$@"
