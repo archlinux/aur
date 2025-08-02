@@ -2,7 +2,7 @@
 # Description: 🚀🌠 A minimal, fast, and customizable prompt written in Go
 
 pkgname=pulsarship
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="🚀🌠 A minimal, fast, and customizable prompt written in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -45,7 +45,7 @@ package() {
 
     install -dm755 "$_bash" "$_fish" "$_zsh"
 
-    ./build/pulsarship -v > "$_bash/pulsarship"
-    ./build/pulsarship -v > "$_fish/pulsarship.fish"
-    ./build/pulsarship -v > "$_zsh/_pulsarship"
+    ./build/pulsarship -v >"$_bash/pulsarship"
+    ./build/pulsarship -v >"$_fish/pulsarship.fish"
+    ./build/pulsarship -v >"$_zsh/_pulsarship"
 }
