@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=proto
-pkgver=0.51.4
+pkgver=0.51.5
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
@@ -12,17 +12,15 @@ optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5a55cd763f8782201c259c6009468178605586d671f13e3e838a96d03f595e7f')
+sha256sums=('e3e25a7c315a0a82a43ffb2471cad06f256dfe3ad5c24fc893e24a4002817cf9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN="stable"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN="stable"
   export CARGO_TARGET_DIR="target"
   cargo build --release --frozen
 
