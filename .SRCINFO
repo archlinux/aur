@@ -1,6 +1,6 @@
 pkgbase = vcvrack-sicko-cv
 	pkgdesc = SickoCV VCV Rack modules
-	pkgver = 2.7.5
+	pkgver = 2.7.6
 	pkgrel = 1
 	url = https://github.com/sickozell/SickoCV
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = vcvrack-sicko-cv
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/sickozell/SickoCV#tag=v2.7.5
-	sha256sums = 3e1ae61c8317ce0f9656ade56715e887a0244fa1c1c38054926b3464eeda8546
+	source = git+https://github.com/sickozell/SickoCV#tag=v2.7.6
+	sha256sums = 0a730880852900b1a3224ffc4d1375c30ecc2896ef053d172b0f099ba0647c6a
 
 pkgname = vcvrack-sicko-cv
