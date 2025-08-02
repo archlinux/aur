@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcevcdec-git
-pkgver=4.0.0.r0.g49183ed
-pkgrel=2
+pkgver=4.0.1.r0.g14199e8
+pkgrel=1
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) (git version)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -34,11 +34,8 @@ build() {
     cmake -B build -S LCEVCdec \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DVN_SDK_AVX2:BOOL='OFF' \
         -DVN_SDK_EXECUTABLES:BOOL='OFF' \
-        -DVN_SDK_SAMPLE_SOURCE:BOOL='OFF' \
-        -DVN_SDK_SIMD:BOOL='ON' \
-        -DVN_SDK_SSE:BOOL='ON' \
+        -DVN_SDK_SIMD:BOOL='OFF' \
         -DVN_SDK_UNIT_TESTS:BOOL='OFF' \
         -Wno-dev
     cmake --build build
@@ -48,5 +45,4 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/doc/LCEVCdec_SDK/licenses"/{COPYING,LICENSE.md} "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm "${pkgdir}/usr/share/doc/LCEVCdec_SDK/README.md"
 }
