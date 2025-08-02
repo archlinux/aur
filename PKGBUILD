@@ -1,5 +1,6 @@
-# Maintainer: 
+# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
+
 pkgname=proton-mail-bin
 pkgver=1.8.1
 pkgrel=1
