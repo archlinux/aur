@@ -9,7 +9,34 @@ pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar
 arch=('x86_64')
 url='https://proton.me'
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'gtk3' 'gvfs' 'libdrm' 'libnotify' 'nss' 'xdg-utils')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'gvfs'
+    'libcups'
+    'libdrm'
+    'libnotify'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+    'xdg-utils'
+)
 optdepends=(
     'kde-cli-tools: file deletion support (kioclient5)'
     'libgnome-keyring'
