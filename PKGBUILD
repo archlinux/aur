@@ -2,7 +2,7 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
@@ -28,13 +28,12 @@ sha256sums_armv6h=('d9c9be1f9d024ade7096347214cdebb5955ec9f7d1f88a01e4ef27f486d9
 sha256sums_mips64=('733b8feb34a81df78d5c69eeccad9088a48f4df3096bce9f38aec01fb9e43c0c')
 sha256sums_riscv64=('298796d27d54dd17bb67ecb4dfd00a06332ee7557d2491e5e8931e43fdb73382')
 
-source_x86_64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64.tar.gz")
-source_aarch64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_arm64.tar.gz")
-source_armv7h=("${url}/releases/download/v${pkgver}/beszel-agent_linux_arm.tar.gz")
+source_x86_64=("beszel-agent_linux_amd64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64.tar.gz")
+source_aarch64=("beszel-agent_linux_arm64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm64.tar.gz")
+source_armv7h=("beszel-agent_linux_arm-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm.tar.gz")
 source_armv6h=("${source_armv7h[@]}")
-source_mips64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_mips64.tar.gz")
-source_riscv64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_riscv64.tar.gz")
-
+source_mips64=("beszel-agent_linux_mips64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_mips64.tar.gz")
+source_riscv64=("beszel-agent_linux_riscv64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_riscv64.tar.gz")
 
 package() {
   cd "$srcdir"
