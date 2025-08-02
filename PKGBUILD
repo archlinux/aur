@@ -1,7 +1,7 @@
 # Maintainer: Jia Yin<lok-ation at outlook dot com>
 
 pkgname=sddm-minesddm-theme-git
-pkgver=v1.2.1.r0.g9771dae
+pkgver=v2.1.0.r0.gfd0a2f3
 pkgrel=1
 pkgdesc='A Minecraft themed SDDM.'
 arch=('any')
@@ -19,8 +19,7 @@ pkgver() {
 }
 
 package() {
-	cd "$pkgname"
-	mkdir -p "$pkgdir/usr/share/sddm/themes"
-	cp -R minesddm "$pkgdir/usr/share/sddm/themes/"
-	chmod -R 755 "$pkgdir/usr/share/sddm/themes/minesddm"
+  # Thanks to zephyrdrh <zephyrdrh at gmx dot de> for providing the method.
+  cd "$pkgname"
+  find minesddm -type f -exec install -Dm 644 "{}" "$pkgdir/usr/share/sddm/themes/{}" \;
 }
