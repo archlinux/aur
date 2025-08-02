@@ -6,10 +6,10 @@ pkgdesc="A modern Linux desktop theming app for browsing, applying, and managing
 arch=('x86_64')
 url="https://github.com/iamnotmega/reskin"
 license=('Apache-2.0')
-depends=('webkit2gtk')
+depends=('webkit2gtk-4.1' 'xdg-utils')
 makedepends=('npm' 'nodejs' 'rust' 'cargo' 'git' 'desktop-file-utils')
-source=("git+https://github.com/iamnotmega/reskin.git")
-sha256sums=('SKIP') # Skipping for git source
+source=("https://github.com/iamnotmega/reskin/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('2ba8cd382bc1f5c67a0a1ae211659963c72106b1bd38662ca6c7e5ff47a9380a')
 
 build() {
   cd "$srcdir/reskin/src-tauri"
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/reskin/src-tauri"
+  cd "$srcdir/$pkgver/src-tauri"
 
   # Install binary
   install -Dm755 "target/release/reskin" "$pkgdir/usr/bin/reskin"
@@ -45,13 +45,4 @@ Type=Application
 Categories=Utility;Settings;
 StartupNotify=true
 EOF
-
-  # Remove mimeinfo cache file
-  rm -f "$pkgdir/usr/share/applications/mimeinfo.cache"
 }
-
-post_install() {
-  # Refresh desktop database cache for icons and .desktop files
-  update-desktop-database -q
-}
-
