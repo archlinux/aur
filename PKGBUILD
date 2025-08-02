@@ -5,15 +5,13 @@ _orgpkgname=xlibre-xf86-input-libinput
 _pkgname=xf86-input-libinput
 pkgver=1.5.0.0
 _pkgver=1.5.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Xlibre fork of X.Org generic input driver for the xorg server based on libinput - ONLY for UPGRADES"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 url="https://github.com/X11Libre"
 depends=('libinput' 'glibc')
 makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION' 
-  'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils' 
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf'
   'libxi' 'libx11' 'xorgproto' 'libxfont2')
 conflicts=(${_pkgname} ${_orgpkgname} 'xorg-server<1.19.0')
 provides=(${_pkgname} ${_orgpkgname})
