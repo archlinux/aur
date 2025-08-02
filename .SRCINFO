@@ -1,6 +1,6 @@
 pkgbase = gtk4-nocsd-git
 	pkgdesc = A small LD_PRELOAD library to disable CSD in GTK4 and LibAdwaita apps.
-	pkgver = r7.318a939
+	pkgver = r11.adaa149
 	pkgrel = 1
 	url = https://codeberg.org/MorsMortium/gtk4-nocsd
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = gtk4-nocsd-git
 	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = bash
+	makedepends = weston
 	depends = libadwaita
 	provides = gtk4-nocsd
 	conflicts = gtk4-nocsd
