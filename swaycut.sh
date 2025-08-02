@@ -59,7 +59,7 @@ function save_geometry() {
         wl-copy < "$output"
         send_notification $output
         [ -z "$COMMAND" ] || {
-            "$COMMAND" "$output"
+            "${COMMAND[@]}" "$output"
         }
     else
         wl-copy < <(grim -g "${1}" - | magick - -trim +repage -)
@@ -121,7 +121,7 @@ function parse_args() {
                 ;;
             --)
                 shift # Skip -- argument
-                COMMAND=${@:2}
+                COMMAND=("${@}")
                 break;;
         esac
         shift
