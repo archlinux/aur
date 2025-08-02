@@ -30,7 +30,7 @@ pkgbase = mihomo-party-electron
 	source = mihomo-party-1.8.0.tar.gz::https://github.com/mihomo-party-org/mihomo-party/archive/refs/tags/v1.8.0.tar.gz
 	source = mihomo-party.desktop
 	source = mihomo-party.sh
-	sha256sums = a8584e0131922f7236f49dd1ace4f1ae1d9d1b5f725781185452218797710135
+	sha256sums = 3cd7f7e6ad01887fac3d4c933490f3a229152dffe40fcd380a3523ebf2bb5b36
 	sha256sums = 96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844
 	sha256sums = 560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382
 
