@@ -3,15 +3,14 @@
 pkgname=xlibre-xf86-input-wacom
 _pkgname=xf86-input-wacom
 pkgver=1.2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Official XLibre fork of X.Org Wacom tablet driver"
 arch=(x86_64 aarch64)
 url="https://github.com/X11Libre"
 license=('GPL-2.0-or-later')
 depends=('libxi' 'libxinerama' 'libxrandr' 'libx11' 'glibc')
 makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-XINPUT_VERSION=26.0'
-  'xorgproto' 'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils' 'gawk' 'gcc' 'gettext'
-  'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf' 'meson' 'gobject-introspection')
+  'xorgproto')
   # for tests:
   #'python-libevdev' 'python-pytest' 'python-yaml' 'python-gobject' 'python-attrs'
 conflicts=("$_pkgname" 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
