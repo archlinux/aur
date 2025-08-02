@@ -23,8 +23,8 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "0001-use-default-prefix-for-binary-install-dir.patch",
     "program-suffix.patch",
+    "systemd-unit-conflicts.diff",
 ]
 SPDX-FileCopyrightText = "lib32-pcsclite contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "BSD-3-Clause"
