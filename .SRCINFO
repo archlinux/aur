@@ -1,0 +1,14 @@
+pkgbase = libgff
+	pkgdesc = A simple libraryfication of the GFF/GTF parsing code used in GFFRead
+	pkgver = 2.0.0
+	pkgrel = 0
+	url = https://github.com/COMBINE-lab/libgff
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	source = libgff-2.0.0.tar.gz::https://github.com/COMBINE-lab/libgff/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 7656b19459a7ca7d2fd0fcec4f2e0fd0deec1b4f39c703a114e8f4c22d82a99c
+
+pkgname = libgff
