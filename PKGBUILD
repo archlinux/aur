@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcevcdec
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -18,7 +18,7 @@ makedepends=(
     'rapidjson')
 options=('!emptydirs')
 source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}")
-sha256sums=('0113f50cdde2e07bbad9bf643a0921865b2fc04ee2e23964f74e713e027dd4e4')
+sha256sums=('6abae32b06a6486dcce785512fe7542f04da4ad18b9772eeddc587be0f960500')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -28,11 +28,8 @@ build() {
     cmake -B build -S LCEVCdec \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DVN_SDK_AVX2:BOOL='OFF' \
         -DVN_SDK_EXECUTABLES:BOOL='OFF' \
-        -DVN_SDK_SAMPLE_SOURCE:BOOL='OFF' \
-        -DVN_SDK_SIMD:BOOL='ON' \
-        -DVN_SDK_SSE:BOOL='ON' \
+        -DVN_SDK_SIMD:BOOL='OFF' \
         -DVN_SDK_UNIT_TESTS:BOOL='OFF' \
         -Wno-dev
     cmake --build build
@@ -42,5 +39,4 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/doc/LCEVCdec_SDK/licenses"/{COPYING,LICENSE.md} "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm "${pkgdir}/usr/share/doc/LCEVCdec_SDK/README.md"
 }
