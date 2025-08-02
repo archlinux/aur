@@ -30,7 +30,7 @@ pkgbase = sheepshaver-kanjitalk755-git
 	source = sheepshaver.desktop
 	source = sheepshaver.png
 	md5sums = SKIP
-	md5sums = ed74f0359247de898b1f62c3a0a7600e
+	md5sums = 26488a7f4c93b78589e985c343d9ced6
 	md5sums = 943c2a7455b58eff55dcf10627469609
 
 pkgname = sheepshaver-kanjitalk755-git
