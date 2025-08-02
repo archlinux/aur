@@ -1,7 +1,7 @@
 pkgbase = libgff
-	pkgdesc = A simple libraryfication of the GFF/GTF parsing code used in GFFRead
+	pkgdesc = GFF/GTF parsing from gffread as a library
 	pkgver = 2.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/COMBINE-lab/libgff
 	arch = x86_64
 	license = BSL-1.0

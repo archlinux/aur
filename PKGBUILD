@@ -1,8 +1,8 @@
 # maintainer: bipin <kbipinkumar@pm.me>
 pkgname=libgff
 pkgver=2.0.0
-pkgrel=0
-pkgdesc="A simple "libraryfication" of the GFF/GTF parsing code used in GFFRead"
+pkgrel=1
+pkgdesc="GFF/GTF parsing from gffread as a library"
 arch=(x86_64)
 url="https://github.com/COMBINE-lab/libgff"
 license=('BSL-1.0')
