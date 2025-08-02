@@ -1,10 +1,11 @@
 pkgbase = adbenq-git
 	pkgdesc = Control your BenQ TV like a boss 🖥️✨
-	pkgver = v0.2.0.r7.g2b5a07e
+	pkgver = v0.2.4alpha.gc68a390
 	pkgrel = 1
 	url = https://github.com/Zarox28/ADBenQ
 	arch = any
 	license = AGPLv3
+	makedepends = git
 	depends = python
 	depends = python-pip
 	depends = pyside6
@@ -12,7 +13,7 @@ pkgbase = adbenq-git
 	depends = android-tools
 	depends = python-platformdirs
 	provides = adbenq
-	source = adbenq::git+https://github.com/Zarox28/ADBenQ.git
+	source = adbenq::git+https://github.com/Zarox28/ADBenQ
 	sha256sums = SKIP
 
 pkgname = adbenq-git

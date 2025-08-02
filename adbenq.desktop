@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=ADBenQ
-Comment=Control your BenQ TV like a boss 🖥️✨ 
-Exec=python /opt/adbenq/main.py
+Comment=General utility to manage your ANDROID TV. Tailored for BENQ TVs
+Exec=/usr/bin/adbenq
 Icon=adbenq
 Terminal=false
 Categories=System;Monitor;Utility;Internet

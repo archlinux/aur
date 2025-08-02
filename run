@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+python /opt/adbenq/main.py
