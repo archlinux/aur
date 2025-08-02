@@ -3,7 +3,7 @@
 pkgname='zoi'
 _tag='Prod-Beta-3.2.7'
 pkgver=3.2.7_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Package Manager & Environment Setup Tool"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi"
@@ -23,7 +23,7 @@ optdepends=(
 source=("$url/-/archive/$_tag/Zoi-$_tag.tar.gz"
         "LICENSE::$url/-/raw/main/LICENSE")
 sha512sums=('29e6e9b3bb30ef24f3655f0ce9427853f8a40f0a3f0378655296ce3994b39fea681fee2e95c4fccb37f6d0ef83372fdae25030c37bb100a08590aa4f5afc6bf9'
-            'cc2dd6697f330b0269594e6906577f51846eb317a9f98c4334fad8bdd827f79221d286101ec11f097b56f910396ad6f7831c447e7b40019ecf39c487c65436b9')
+            'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
 
 build() {
   cd "$srcdir/$_pkgname_cap-$_tag"
