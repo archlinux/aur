@@ -1,4 +1,6 @@
 *
-!PKGBUILD
-!.SRCINFO
 !.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!LICENSE
+!PKGBUILD

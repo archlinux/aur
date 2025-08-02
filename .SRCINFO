@@ -1,5 +1,5 @@
 pkgbase = python-borgstore
-	pkgdesc = Borg Backup key-value store backend
+	pkgdesc = A experimental key/value store implementation, supporting multiple backends
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/borgbackup/borgstore
@@ -9,9 +9,12 @@ pkgbase = python-borgstore
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	depends = python
+	optdepends = python-boto3: S3 backend
+	optdepends = python-botocore: S3 backend
+	optdepends = python-paramiko: sftp backend
+	optdepends = python-requests: rclone backend
 	source = https://github.com/borgbackup/borgstore/releases/download/0.3.0/borgstore-0.3.0.tar.gz
-	sha256sums = a9049f730c9e31ce9ccdfb4ff171542dbc818fd4c8484c4eb51e65addd76fe43
+	b2sums = a7da50ec044f33e489dadae8805ef2e25fd7368a4d43359ab538e6ab03c3bbd1d15eb338ef00678d8ae5b5b11e3a388ec0b154abc2646b46e525124b92dc7611
 
 pkgname = python-borgstore
