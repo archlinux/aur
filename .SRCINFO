@@ -29,8 +29,8 @@ pkgbase = mihomo-party-electron-bin
 	sha256sums = 96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844
 	sha256sums = 560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382
 	source_x86_64 = mihomo-party-1.8.0-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.8.0/mihomo-party-linux-1.8.0-amd64.deb
-	sha256sums_x86_64 = c3592e6042766a404f898ed148d6161aab469ee95722aa8143c3d754b3f98fbd
+	sha256sums_x86_64 = 7effb71eced1ca27457481a396cbf9f7260011d1459ba7af1c8f1cb763c147ee
 	source_aarch64 = mihomo-party-1.8.0-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.8.0/mihomo-party-linux-1.8.0-arm64.deb
-	sha256sums_aarch64 = bf7a325c365c62a51091aef7146f25beb63081856be77ad424f571f5ad6d5e1f
+	sha256sums_aarch64 = 59517c301bf1b1334e29875a1174e19154b952cfac84cfdc70b4cb0a897e004e
 
 pkgname = mihomo-party-electron-bin
