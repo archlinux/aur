@@ -1,7 +1,7 @@
 pkgbase = chatterino2-bin
 	pkgdesc = A chat client for Twitch.tv.
 	pkgver = 2.5.3
-	pkgrel = 16
+	pkgrel = 17
 	url = https://github.com/chatterino/chatterino2
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = chatterino2-bin
 	provides = chatterino
 	conflicts = chatterino
 	options = !strip
-	source = chatterino2-bin-2.5.3-16.tar.zst::https://github.com/Chatterino/pkg/releases/download/stable-20250801T012940/chatterino-arch-linux-x86_64.tar.zst
-	sha256sums = 3a8eae0f09345d34798d50b240b1dd04a2e80f7f1be88346ac3d9b46d6bd85bf
+	source = chatterino2-bin-2.5.3-17.tar.zst::https://github.com/Chatterino/pkg/releases/download/stable-20250802T011905/chatterino-arch-linux-x86_64.tar.zst
+	sha256sums = a77f99960b0d2549079b3f1bb635a0fed4630a0b578cf5ceb902ceb782c50548
 
 pkgname = chatterino2-bin
