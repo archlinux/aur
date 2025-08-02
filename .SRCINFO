@@ -1,0 +1,20 @@
+pkgbase = aurroamer
+	pkgdesc = interactive terminal based package browser for both official and aur packages using fzf
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/aurroamer
+	arch = any
+	license = MIT
+	depends = bash
+	depends = fzf
+	depends = curl
+	optdepends = yay: AUR helper support
+	optdepends = paru: AUR helper support
+	optdepends = trizen: AUR helper support
+	optdepends = pikaur: AUR helper support
+	source = aurroamer.sh
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aurroamer
