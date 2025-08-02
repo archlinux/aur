@@ -1,6 +1,6 @@
 pkgbase = ampcode
 	pkgdesc = An agentic coding tool, in research preview from Sourcegraph
-	pkgver = 0.0.1754093976
+	pkgver = 0.0.1754094990
 	pkgrel = 1
 	url = https://ampcode.com
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ampcode
 	replaces = sourcegraph-amp
 	replaces = ampcode
 	options = !strip
-	source_x86_64 = ampcode-0.0.1754093976-x86_64::https://packages.ampcode.com/binaries/v0.0.1754093976/amp-linux-x64
-	sha256sums_x86_64 = 3bdb7fae4264ccd3a3d300ad71ddc748a8b0814a0c12d35b98c162f4ce017a0a
-	source_aarch64 = ampcode-0.0.1754093976-aarch64::https://packages.ampcode.com/binaries/v0.0.1754093976/amp-linux-arm64
-	sha256sums_aarch64 = 801519a16a47c81202862fbfe00381f587134730fe51e97ead2fcb08f186b807
+	source_x86_64 = ampcode-0.0.1754094990-x86_64::https://packages.ampcode.com/binaries/v0.0.1754094990/amp-linux-x64
+	sha256sums_x86_64 = a56d295638caf1dba657118a02520ffbaada1090d4b449539df853345dbdc96e
+	source_aarch64 = ampcode-0.0.1754094990-aarch64::https://packages.ampcode.com/binaries/v0.0.1754094990/amp-linux-arm64
+	sha256sums_aarch64 = d4a77b0fe9fcef5c6862e3d4b7e634319574b0750ad1135c1c764b25acbdf7d1
 
 pkgname = ampcode
