@@ -1,6 +1,6 @@
 pkgbase = kwin-git
 	pkgdesc = An easy to use, but flexible, composited Window Manager
-	pkgver = 6.0.80_r26284.g2491fb1b2b
+	pkgver = 6.4.80_r29185.ge1d01fef87
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
@@ -36,6 +36,7 @@ pkgbase = kwin-git
 	depends = kirigami-git
 	depends = kitemmodels-git
 	depends = knewstuff-git
+	depends = knighttime-git
 	depends = knotifications-git
 	depends = kpackage-git
 	depends = kquickcharts-git
