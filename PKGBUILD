@@ -12,6 +12,7 @@ _java_version=17
 depends=(
     'bash'
     'grep'
+    'tar'
     'java-environment>='${_java_version}
     'limine'
     'mkinitcpio'
