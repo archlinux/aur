@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.7.2
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '0d762dc7cd20c64f8abd049be1dde79bb0ae21df7f96dfdbb00eb21e95f0c097'
+  '44dc716ccce8b196f52038ba29c1669e174b19f17146f0435a22cf6440a9720c'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -50,10 +50,17 @@ build() {
   sed -i '/"packageManager":.*,/d' ./package.json
   sed -i 's/"portal:/"file:/' ./package.json
   sed -i 's/npm://' ./package.json
+  sed -i 's#"@zip.js/zip.js": "patch:.*,$#"@zip.js/zip.js": "2.7.60",#' ./package.json
+  sed -i 's#"resolutions": {#"resolutions": {"binary-install": "1.0.1",#' ./package.json
   sed -i 's/yarn install/NODE_ENV=development yarn install/' ./scripts/build
   sed -i '/^corepack/d' ./scripts/build
   sed -i 's/\.git#commit=/.git#/' package.json
   sed -i 's#/usr/local/emsdk/emsdk_env.sh#/usr/bin/emsdk_env.sh#' ../render-wasm/build
+
+  yarn install
+  pushd node_modules/@zip.js/zip.js/
+  patch -p1 < "${srcdir}/${_pkgbase}-${pkgver}/frontend/.yarn/patches/@zip.js-zip.js"*
+  popd
 
   rustup install $RUST_VERSION
   rustup default $RUST_VERSION
