@@ -1,30 +1,35 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.3.3.r32.g44d0471
+pkgver=1.3.3.r46.gd07ddfc
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL-3.0-or-later')
 depends=(
+  'coreutils'
   'glu'
+  'libnotify'
   'mangohud'
+  'pciutils'
+  'polkit'
   'qt6pas'
 )
 makedepends=(
   'git'
   'lazarus'
-  'xmlstarlet'
+#  'xmlstarlet'
 )
 checkdepends=(
   'appstream'
   'desktop-file-utils'
 )
 optdepends=(
+  'git: Clone reshade repository'
   'mesa-utils: OpenGL preview'
-  'ttf-dejavu: recommended font'
-  'ttf-ubuntu-font-family: recommended font'
+  'vkbasalt: Configure vkBasalt'
   'vulkan-tools: Vulkan preview'
+  'zenergy-dkms: Display AMD CPU power'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
