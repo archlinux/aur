@@ -5,7 +5,7 @@ pkgver=2.1.27501.20250112
 pkgrel=1
 pkgdesc="A port of the ToupTek Photonics's PC software ToupLite for Linux"
 arch=('i686' 'x86_64')
-url="http://touptek.com/download/showdownload.php?lang=en&id=28"
+url="https://www.touptekphotonics.com/download/?dlID=2"
 depends=(fontconfig dbus libglvnd libxrender freetype2)
 license=('custom')
 source_x86_64=("ToupTekToupLite.x64-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/software/ToupTekToupLite.x64.tar.bz2")

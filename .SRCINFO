@@ -2,7 +2,7 @@ pkgbase = touplite
 	pkgdesc = A port of the ToupTek Photonics's PC software ToupLite for Linux
 	pkgver = 2.1.27501.20250112
 	pkgrel = 1
-	url = http://touptek.com/download/showdownload.php?lang=en&id=28
+	url = https://www.touptekphotonics.com/download/?dlID=2
 	arch = i686
 	arch = x86_64
 	license = custom
