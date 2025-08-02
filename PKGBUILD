@@ -1,7 +1,7 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=copymanga-downloader-bin
 pkgdesc="拷贝漫画 copymanga 的多线程下载器"
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/lanyeeee/copymanga-downloader"
