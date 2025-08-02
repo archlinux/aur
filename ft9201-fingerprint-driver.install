@@ -1,0 +1,12 @@
+post_install() {
+  cat<<EOF
+
+The ft9201 kernel module will be available on reboot.
+To load it now, run "modprobe ft9201" as root.
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

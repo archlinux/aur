@@ -1,0 +1,16 @@
+pkgbase = ft9201-fingerprint-driver-dkms-git
+	pkgdesc = The Focal-systems.Corp FT9201Fingerprint.̚ kernel modules (DKMS)
+	pkgver = r13.41c7aa6
+	pkgrel = 1
+	url = https://github.com/banianitc/ft9201-fingerprint-driver
+	install = ft9201-fingerprint-driver.install
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	conflicts = ft9201-fingerprint-driver
+	source = git+https://github.com/banianitc/ft9201-fingerprint-driver.git
+	source = dkms.conf
+	b2sums = SKIP
+	b2sums = 089e3aa7ee055e839329408c7d8cecc7b5f754940cde74a9540de39d5e75dac646b94a34012b433d388eaae7876cbed2831c7f4d238151904e407c04b863a33d
+
+pkgname = ft9201-fingerprint-driver-dkms-git

@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!dkms.conf
+!ft9201-fingerprint-driver.install
+!PKGBUILD
