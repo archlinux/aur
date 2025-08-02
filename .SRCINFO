@@ -1,6 +1,6 @@
 pkgbase = m2k-pomodoro-timer
 	pkgdesc = A lightweight Pomodoro timer with zero dependencies - runs with pure Python
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ming2k/pomodoro-timer
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = m2k-pomodoro-timer
 	optdepends = ffmpeg: Audio playback fallback
 	optdepends = mplayer: Audio playback fallback
 	optdepends = libnotify: Native desktop notifications (notify-send)
-	source = m2k-pomodoro-timer-1.0.0.tar.gz::https://github.com/ming2k/pomodoro-timer/archive/v1.0.0.tar.gz
+	source = m2k-pomodoro-timer-1.0.1.tar.gz::https://github.com/ming2k/pomodoro-timer/archive/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = m2k-pomodoro-timer
