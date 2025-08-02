@@ -1,0 +1,22 @@
+pkgbase = walltone-git
+	pkgdesc = Wallpaper and theme management application
+	pkgver = r40.gd20a29a
+	pkgrel = 1
+	url = https://github.com/kasper24/walltone
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	depends = nss
+	depends = libsecret
+	depends = swaybg
+	depends = mpvpaper
+	depends = linux-wallpaperengine
+	depends = cage
+	depends = grim
+	depends = wayland-utils
+	source = walltone-git::git+https://github.com/kasper24/walltone.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = walltone-git
