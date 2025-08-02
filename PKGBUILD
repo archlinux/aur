@@ -54,6 +54,6 @@ build() {
 package() {
   install -Dm755 "$srcdir/macemu/SheepShaver/src/Unix/SheepShaver" "$pkgdir/usr/bin/sheepshaver-kanjitalk755"
   install -Dm644 "$srcdir/sheepshaver-kanjitalk755.desktop" "$pkgdir/usr/share/applications/sheepshaver-kanjitalk755.desktop"
-  install -Dm644 "$srcdir/sheepshaver-icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/sheepshaver-kanjitalk755.png"
+  install -Dm644 "$srcdir/sheepshaver-icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/sheepshaver-kanjitalk755.png"
 }
 
