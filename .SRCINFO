@@ -1,0 +1,16 @@
+pkgbase = python-optuna-integration
+	pkgdesc = Optuna integration modules with third-party libraries.
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://optuna-integration.readthedocs.io/
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-optuna
+	source = https://github.com/optuna/optuna-integration/archive/refs/tags/v4.4.0.tar.gz
+	sha256sums = a8f534dd13cb705de20fb5dcc1701854179fcb81aacb822369dd70012d356cfa
+
+pkgname = python-optuna-integration
