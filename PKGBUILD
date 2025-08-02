@@ -7,7 +7,7 @@ pkgdesc="O Downtube é um downloader de vídeos do YouTube, minimalista, simples
 # 'any' é apropriado para aplicativos Node.js puros.
 arch=('any')
 url="https://github.com/pedrodev2025/Downtube" # Sem .git no final para a URL do projeto
-license=('GPL-3.0-or-later') # Use um identificador SPDX válido
+license=('MIT') # Use um identificador SPDX válido
 
 # Dependências de tempo de execução.
 # yt-dlp é uma dependência externa que o downtube provavelmente usa.
