@@ -1,8 +1,8 @@
 # Maintainer: Pedro Dev <pedrolucasinvestidor.github@gmail.com>
 pkgname=gnome-icon-theme
-pkgver=3.9.5
+pkgver=3.12.0
 pkgrel=8
-url_pkgver=3.9
+url_pkgver=3.12
 pkgdesc="GNOME icon theme"
 arch=(any)
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache' 'gnome-icon-theme-symbolic')
@@ -12,7 +12,7 @@ license=('GPL')
 options=('!emptydirs')
 source=("https://download.gnome.org/sources/$pkgname/$url_pkgver/$pkgname-$pkgver.tar.xz"
         "0001-configure.ac-Do-not-manually-set-localedir.patch")
-sha256sums=('c1140e680326d581047495a75f9d7204e967eb065886c19758b4365af5b69036'
+sha256sums=('359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a'
             '02e47f80f36904071d7377d7b06083e3ce5f70c9b1ce2d190ac4a1bb90efcac8')
 
 prepare() {
