@@ -2,7 +2,7 @@
 # Maintainer: Youssef Fathy <youssefessamasu@gmail.com>
 
 pkgname='go-pray-bin'
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Prayer times CLI to remind you to Go pray'
 url='https://github.com/0xzer0x/go-pray'
@@ -12,8 +12,8 @@ provides=('go-pray')
 conflicts=('go-pray')
 depends=('alsa-lib')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/0xzer0x/go-pray/releases/download/v0.1.12/go-pray_linux_x86_64.tar.gz")
-sha256sums_x86_64=('02de9f1710f9f47a0194c37edf714fbe28cd89c333b6a46d991aead80514aa6f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/0xzer0x/go-pray/releases/download/v0.1.13/go-pray_linux_x86_64.tar.gz")
+sha256sums_x86_64=('9b5fa71311244c7c8352950b6a18494b3126bc9d0ba38fbb083b80c69d5eff54')
 
 package() {
   # bin
