@@ -1,7 +1,7 @@
 # Maintainer: Crazybrain <crazybrain plus aur at tuta dot com>
 
 pkgname=ss14.launcher
-pkgver=0.32.1
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64')
@@ -14,10 +14,10 @@ source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Lau
         "https://github.com/space-wizards/Robust.LoaderApi/archive/86a02eef163156fe899eb498acd488e8d7063a0e.zip"
         'spacestation14.svg'::'https://raw.githubusercontent.com/space-wizards/asset-dump/master/icon.svg'
         'ss14.launcher.desktop')
-sha256sums=('7c504ad6f72ff284f5a03cff06d6156939115b9b0b9bfae085e91a751e700aca'
+sha256sums=('f29bb354b67d2dc8555e3a867ebb1f559a4413a88e33921e44fe4469d9828eb6'
             '3af8d3f2439791365ebe6643ccec3697a2e7e1de65b45fd197f56d8bf81da12e'
             'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e'
-            '4d68643cccbbb78dd92a14b37edf5476eaa48d5d523ef0d3fbf78f591b1f9ac2')
+            '53d7aa0900c8a68f7161a7865f10d09046ec33cb916dfd47659a27ed9864f049')
 
 prepare() {
     # link the submodule
