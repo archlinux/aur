@@ -1,5 +1,6 @@
 # Maintainer: kamisaki
 # Description: 🚀🌠 A minimal, fast, and customizable prompt written in Go
+
 pkgname=pulsarship
 pkgver=0.2.2
 pkgrel=1
@@ -10,29 +11,41 @@ license=('GPL3')
 depends=()
 makedepends=('go' 'git')
 
-source=(
-    "git+https://github.com/xeyossr/pulsarship.git#tag=v${pkgver}"
-)
+source=("git+https://github.com/xeyossr/pulsarship.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/$pkgname"
 
-    # Fetch version, tag, commit, build time, and build environment dynamically
-    TAG=$(git describe --tags)
-    COMMIT=$(git rev-parse --short HEAD)
-    BUILDTIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-    GO_BUILDENV=$(go version)
+    export TAG=$(git describe --tags)
+    export COMMIT=$(git rev-parse --short HEAD)
+    export BUILDTIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+    export GO_BUILDENV=$(go version)
 
-    LDFLAGS="-X 'main.version=${pkgver}' -X 'main.tag=${TAG}' -X 'main.commit=${COMMIT}' -X 'main.buildTime=${BUILDTIME}' -X 'main.buildEnv=${GO_BUILDENV}'"
+    LDFLAGS="-X 'main.version=${pkgver}' \
+             -X 'main.tag=${TAG}' \
+             -X 'main.commit=${COMMIT}' \
+             -X 'main.buildTime=${BUILDTIME}' \
+             -X 'main.buildEnv=${GO_BUILDENV}'"
 
-    # Build the binary with dynamic LDFLAGS
-    go mod tidy
-    go build -ldflags "${LDFLAGS}" -o pulsarship
+    mkdir -p build
+    go build -ldflags "$LDFLAGS" -o build/pulsarship
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
-    # Install the binary to /usr/bin/
-    install -Dm755 "${srcdir}/${pkgname}/pulsarship" "${pkgdir}/usr/bin/${pkgname}"
+    cd "$srcdir/$pkgname"
+
+    install -Dm755 "build/pulsarship" "$pkgdir/usr/bin/$pkgname"
+
+    [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    _bash="$pkgdir/usr/share/bash-completion/completions"
+    _fish="$pkgdir/usr/share/fish/vendor_completions.d"
+    _zsh="$pkgdir/usr/share/zsh/site-functions"
+
+    install -dm755 "$_bash" "$_fish" "$_zsh"
+
+    ./build/pulsarship -v > "$_bash/pulsarship"
+    ./build/pulsarship -v > "$_fish/pulsarship.fish"
+    ./build/pulsarship -v > "$_zsh/_pulsarship"
 }
