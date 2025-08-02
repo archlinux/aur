@@ -3,15 +3,13 @@
 pkgname=xlibre-xf86-video-amdgpu
 _pkgname=xf86-video-amdgpu
 pkgver=23.0.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc="XLibre fork of X.Org amdgpu video driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
 license=('MIT')
 depends=('mesa' 'libdrm' 'glibc')
-makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0'
-  'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils'
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf')
+makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0')
 conflicts=(${_pkgname} 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 provides=(${_pkgname})
 source=("${url}/${_pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
