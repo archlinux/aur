@@ -1,6 +1,6 @@
 # Maintainer: sprobie <sprobie1@gmail.com>
 pkgname=mkbrr
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='A tool to create, modify and inspect torrent files'
 arch=('x86_64' 'aarch64' 'armv')
@@ -10,7 +10,7 @@ makedepends=('go')
 provides=('mkbrr')
 conflicts=('mkbrr')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/autobrr/mkbrr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0f8ab9b80e2f3ca5861b02b886002a498d7afdc0dfdbb870a273962865f49fb9')
+sha256sums=('cb8062dba919678573111f518c74f96ac253440dceebf36ed4cce4a73908d9ed')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
