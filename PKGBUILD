@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-intel
 _pkgname=xf86-video-intel
 pkgver=3.0.0.1
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64)
 url="https://github.com/X11Libre"
 license=('MIT')
@@ -13,8 +13,7 @@ depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9'
          'libxcb' 'libxfixes' 'libxshmfence' 'libdrm' 'libxrender'
          'libx11' 'libxdamage' 'libxext' 'libpciaccess' 'glibc')
 makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0'
-  'libxv' 'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils'
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf'
+  'libxv'
   # additional deps for intel-virtual-output
   'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss')
 optdepends=('libxrandr: for intel-virtual-output'
