@@ -6,10 +6,10 @@
 
 pkgname=victoriametrics-agent
 _name=VictoriaMetrics
-pkgver=1.121.0 # don't forget to update _buildinfo
+pkgver=1.122.0 # don't forget to update _buildinfo
 pkgrel=1
 pkgdesc='Agent for Victoria Metrics, a fast, cost-effective and scalable time series database'
-_buildinfo=b1003c0
+_buildinfo=f5fcfd8
 arch=(x86_64)
 url='https://victoriametrics.github.io'
 license=(Apache-2.0)
@@ -22,7 +22,7 @@ source=("victoriametrics-$pkgver.tar.gz::https://github.com/VictoriaMetrics/Vict
         'victoriametrics-agent.default'
         'victoriametrics.sysusers'
         'victoriametrics-agent.tmpfiles')
-b2sums=('0a276f32788a325b0cfbcb6cc40275b1e64687e5c461f6e9c734a333a81c0ad90376473959ffca5713814c322740077c652774e828cb06f80683e3dcbce4a477'
+b2sums=('4820f518c46f0268947af981c0b7fa0b2ad21f52d43326dc8d3f5b4354a400e8794b6d57d63c366282685e39be56d7b343d460d3e4b4bc0d53cbf8e4e71e1592'
         '3d6ed6ecd42dd4fc449de5a601b6977dff6c1e802977710a442fbd422b92b484dbd6f0f8703e2ed5cd394c6b69694f7fa3046062d897f5110b19b585a67dad77'
         'e1344542a24c0039b61bf906fb5270d4d82340dcf0afe8d973ce850587093163454436c9e47ba3793d4796de16a7163ab904311e20bd810a9f97ad949bba72c5'
         'ef92fc1e9be0380fb7781d553ac0d967e880bfab33d22842aed23cf88ca247c3f2e1fcddfc1e503f3ec51c0977749b8fa7b01d768dc9a59a679fc80743187e0e'
