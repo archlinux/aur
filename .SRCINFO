@@ -1,6 +1,6 @@
 pkgbase = hostapd-git
 	pkgdesc = User space daemon for access point and authentication servers
-	pkgver = 2.11.r529.gee41bacfa
+	pkgver = 2.11.r957.g4bc754d9c
 	pkgrel = 1
 	url = https://w1.fi/hostapd/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = hostapd-git
 	depends = libnl
 	depends = openssl
 	depends = sqlite
-	provides = hostapd=2.11.r529.gee41bacfa
+	provides = hostapd=2.11.r957.g4bc754d9c
 	conflicts = hostapd
-	options = staticlibs
+	options = !lto
 	backup = etc/hostapd/hostapd.accept
 	backup = etc/hostapd/hostapd.conf
 	backup = etc/hostapd/hostapd.deny

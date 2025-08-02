@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=hostapd-git
-pkgver=2.11.r529.gee41bacfa
+pkgver=2.11.r957.g4bc754d9c
 pkgrel=1
 pkgdesc="User space daemon for access point and authentication servers"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git')
 provides=("hostapd=$pkgver")
 conflicts=('hostapd')
 backup=(etc/hostapd/hostapd.{accept,conf,deny,eap_user,radius_clients,vlan,wpa_psk})
-options=('staticlibs')
+options=('!lto')
 source=("git+https://w1.fi/hostap.git"
         "config::https://gitlab.archlinux.org/archlinux/packaging/packages/hostapd/-/raw/main/config?ref_type=heads"
         "hostapd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/hostapd/-/raw/main/hostapd.service?ref_type=heads"
