@@ -1,7 +1,7 @@
 pkgbase = python-hashtools
 	pkgdesc = Python hash tools.
-	pkgver = 0.0.3.3
-	pkgrel = 2
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = https://pypi.org/project/python-hashtools
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = python-hashtools
 	conflicts = python-hashtools
 	options = !strip
 	options = !debug
-	source = python_hashtools-0.0.3.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_hashtools/python_hashtools-0.0.3.3.tar.gz
-	sha256sums = f12e0b1d02bee20558b353ed9e1a72930e2a06d9df1c172d3e4db3921ca39bb4
+	source = python_hashtools-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_hashtools/python_hashtools-0.0.4.tar.gz
+	sha256sums = 4abef27a5a4a5cc3a2c1c054fc70a4a7324342388ca0dd6dbe6a6b7f791e78b5
 
 pkgname = python-hashtools
