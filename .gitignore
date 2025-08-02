@@ -3,3 +3,4 @@ pkg
 *.pkg.tar.*
 *.log
 *.tar.gz
+fix-build-on*.diff
