@@ -4,15 +4,14 @@ pkgname=xlibre-xf86-video-ati
 _pkgname=xf86-video-ati
 _pkgname2=xfree-xf86-video-ati
 pkgver=22.0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org ati video driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
 license=('MIT')
 depends=('mesa' 'libpciaccess' 'libdrm' 'glibc')
 makedepends=('xlibre-xserver' 'xlibre-xserver-common' 'xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0'
-  'xorgproto' 'autoconf' 'automake' 'binutils' 'fakeroot' 'findutils'
-  'gawk' 'gcc' 'gettext' 'gzip' 'libtool' 'm4' 'make' 'patch' 'pkgconf')
+  'xorgproto')
 conflicts=(${_pkgname} 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 provides=(${_pkgname})
 groups=('xlibre-drivers')
