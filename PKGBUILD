@@ -3,13 +3,35 @@
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
-pkgver=r888.b08e6ba
+pkgver=r1274.d4e17153
 pkgrel=1
 arch=('any')
-depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-lxml' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests' 'python-requests-oauthlib' 'python-text-unidecode' 'python-rich' 'python-textual' 'python-markdown-it-py' 'python-mdit_py_plugins' 'python-linkify-it-py')
+depends=(
+    'python'
+    'python-bibtexparser'
+    'python-beautifulsoup4'
+    'python-lxml'
+    'python-ruamel-yaml'
+    'python-pylatexenc'
+    'python-requests'
+    'python-requests-oauthlib'
+    'python-text-unidecode'
+    'python-rich'
+    'python-textual'
+    'python-markdown-it-py'
+    'python-mdit_py_plugins'
+    'python-linkify-it-py'
+)
 optdepends=('python-regex')
 license=('MIT')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-setuptools'
+    'ruby-ronn-ng'
+)
 provides=('cobib')
 conflicts=('cobib')
 pkgdesc="Console Bibliography"
