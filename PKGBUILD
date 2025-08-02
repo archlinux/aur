@@ -1,4 +1,5 @@
 # Maintainer: Cyberczy <czysheep@gmail.com>
+# Contributor: Regniox <regniox@outlook.com>
 
 pkgbase="maplemononormal"
 pkgname=(
@@ -14,7 +15,7 @@ pkgname=(
   "maplemononormal-variable"
   "maplemononormal-woff2"
 )
-pkgver="7.4"
+pkgver="7.5"
 pkgrel="1"
 pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line"
 url="https://github.com/subframe7536/maple-font"
@@ -33,17 +34,17 @@ source=(
   "MapleMonoNormal-Variable-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMonoNormal-Variable.zip"
   "MapleMonoNormal-Woff2-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMonoNormal-Woff2.zip"
 )
-sha256sums=('84d25f86c6b1467cefff763c1b369fe729bd5f10c4c953ab2d1dc4f45a4597cb'
-            '4a84b9d8bd3da36a99972285b9104ee45e0f297045005c48eb1a5ce047f55c77'
-            'bdb58819097983f38a145d142b79b6454677d1bbb71ff6edcd77b431b264e480'
-            '6dc1fd2cc2cc68a27903ef7df78caf6cca14360cf8def4140d3b36d3461e1e7e'
-            'c96d7945fec613c432e587bd40604c2e66be2b1d8a8fede5fd2000ce904b83c9'
-            '120de129c1e4b25b2f1b39090eb864c8dd08018ae31c9f9eaf3140540bbf2b48'
-            '3d5b182ff31d0fb697dcfe6461a7daff1c11f38076b86e53ccc7e2ee2d513963'
-            'bed107281bf482323a22ecd706665c515252e9f3cd1ff1c9aa8855641c173745'
-            '62450d979f679654d071ad43ba3f6986edb4acb3224d299c097734465b8a967e'
-            '8b4b2522b054c005d98fa55550152c13237e9b24a020125c0392cbee205a9810'
-            '538c383ea47c602d07a2d0ecfeb1ee5127f6f1606728d9d51def05b4ef0c0870')
+sha256sums=('6ee1638126b1d4064dc1db31abbcc2e25297c3fb5b79b9ea213c7f234846f9a8'
+            '000e6b476a8677665728a35a79e43869454cfbdc576e263f1058bd620a81317d'
+            'd3eee9ae7b04fb70c8f035435a580605320aa533e876bda67916b66f6c736a7e'
+            '947b79da06fcdaf6c14fcee346799f8ba99a618e220961c42ebb2191f30c8005'
+            '72591bd191ae67c3a1d6991d7bcba6bf4ea42d9fedf4e95afd51b44abb7dd1f2'
+            'd2a358e43c24450e40a17a075770fcbc73a678db93b6cfa5a3f9ea047b1e2a7c'
+            'd20627cb628a60fce4618ef19e9520e81abff7a34ec086b4ec46dc7339a7fdaa'
+            'dddbe4cb8f86c3cb0167af2acd50e474627bab8cf2c80a4f4aada73932ba5a53'
+            '9b7d07b5645a82ae4cea1797a1d2530ab4fdfb82b3fa6914bfa33ac70f31494d'
+            '17c7baf8ec9d73797e07030b513288fd60019e143669a30cb0cf0c174ee412da'
+            'e49d0bcbe7152f6f48ec2946381def451ae0d82662e0034aa8cb683b14af9e17')
 noextract=(
   "MapleMonoNormal-CN-unhinted-$pkgver.zip"
   "MapleMonoNormal-CN-$pkgver.zip"
