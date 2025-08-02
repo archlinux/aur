@@ -5,30 +5,35 @@
 # Contributor: Adam <adam900710@gmail.com>
 
 pkgname=lib32-libass
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.17.4
+pkgrel=1
 pkgdesc='A portable library for SSA/ASS subtitles rendering (32 bit)'
 arch=(x86_64)
 url=https://github.com/libass/libass/
 license=(BSD)
-depends=(lib32-fontconfig lib32-freetype2 lib32-fribidi lib32-glib2 lib32-glibc lib32-harfbuzz libass)
-makedepends=(git nasm)
-_tag=915599d88e951e34079383cf926d2731bb45cea1
-source=(git+https://github.com/libass/libass.git?signed#tag=${_tag})
-validpgpkeys=(5458C3100671F252B0F4C7708079D18C21AAAAFF  # Oleg Oshmyan (Chortos-2) <chortos@inbox.lv>
-              5EE63F2A71BF132CFE3567E1DFFE615F2824C720) # Oneric <oneric@oneric.de>
-b2sums=(SKIP)
+depends=(
+    lib32-fontconfig
+    lib32-freetype2
+    lib32-fribidi
+    lib32-glibc
+    lib32-harfbuzz
+    libass
+)
+makedepends=(
+    git
+    nasm
+)
+source=(git+https://github.com/libass/libass.git?signed#tag=${pkgver})
+validpgpkeys=(
+  5458C3100671F252B0F4C7708079D18C21AAAAFF # Oleg Oshmyan (Chortos-2) <chortos@inbox.lv>
+  5EE63F2A71BF132CFE3567E1DFFE615F2824C720 # Oneric <oneric@oneric.de>
+)
+b2sums=('e7790a6318205c8f3383d205acd9befe779014f17ef8d51c37ca19086efba25cf12d22b0af1eeec7e795e9dd824924ebc569ef6c6518276c9dbe10a26337ed27')
 
 prepare() {
     cd libass
 
     ./autogen.sh
-}
-
-pkgver() {
-    cd libass
-
-    git describe --tags
 }
 
 build() {
