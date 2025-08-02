@@ -1,0 +1,12 @@
+pkgbase = quickmix
+	pkgdesc = mix together a webpage without the hassle
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~conger/quickmix
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://git.sr.ht/~conger/quickmix/archive/v0.1.0.tar.gz
+	sha256sums = 0d490a94a19a15f9aa58d7ba9bed345c47d9155b071daef18b17386dedd1dc30
+
+pkgname = quickmix
