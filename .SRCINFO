@@ -1,0 +1,15 @@
+pkgbase = hydectl-bin
+	pkgdesc = a CLI tool for managing HyDE configurations and scripts.
+	pkgver = 25.7.4
+	pkgrel = 1
+	url = https://github.com/HyDE-Project/hydectl
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = curl
+	depends = hyprland
+	provides = hydectl
+	conflicts = hydectl
+	source = https://github.com/HyDE-Project/hydectl/releases/download/v25.7.4/hydectl_25.7.4_linux_amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = hydectl-bin
