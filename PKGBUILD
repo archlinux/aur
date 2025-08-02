@@ -1,7 +1,7 @@
 # Maintainer: rintim <rintim@foxmail.com>
 
 pkgname=sdkman-bin
-pkgver=5.19.0
+pkgver=5.20.0
 _nativepkgver=0.7.4
 pkgrel=1
 pkgdesc="The Software Development Kit Manager Command Line Interface"
@@ -66,7 +66,7 @@ package() {
     install -Dm755 "${srcdir}/$_zipnativedir/libexec"/* -t "$pkgdir/$_sdkmandir/libexec"
 }
 
-sha256sums_x86_64=('3a9657b7cccc21998055520efd11c76faadaa73cac863c34094a7b9cb5eb67a9'
+sha256sums_x86_64=('09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a'
                    '2ac9e1e53289c065d8442bcdb4a2a2fa6e9034c49ffd1443f5ce0937556ff6ba')
-sha256sums_aarch64=('3a9657b7cccc21998055520efd11c76faadaa73cac863c34094a7b9cb5eb67a9'
+sha256sums_aarch64=('09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a'
                     '82153f4463295d0ec658278ef4dbfce0670203f7bb15c3472d0ace09301c9da5')
