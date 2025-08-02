@@ -1,6 +1,6 @@
 pkgname=nerdfonts-installer-bin
-pkgver=2025.07.08.1
-pkgrel=2
+pkgver=2025.08.02.1
+pkgrel=1
 pkgdesc="Executable binary to install Nerd Fonts"
 arch=('x86_64')
 url="https://github.com/fam007e/nerd_fonts_installer"
