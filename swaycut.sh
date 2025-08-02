@@ -6,26 +6,24 @@ AVAILABLE_MODES=(output window region)
 
 function Help() {
     cat <<EOF
-Usage: swaycut [options ..] -m [mode] -- [command]
+Usage: swaycut [options] -m <mode> -- [command]
 
 Minimal screenshot utility for Sway.
 
-It allows taking screenshots of windows, regions and monitors which are saved to a folder of your choosing and copied to your clipboard.
+Modes:
+  output       capture full monitor
+  window       capture active window
+  region       capture selected region
 
 Options:
-  -h, --help            show help message
-  -m, --mode            one of: output, window, region
-  -o, --output-folder   directory in which to save screenshot
-  -f, --filename        the file name of the resulting screenshot
-  -d, --debug           print debug information
-  -s, --silent          don't send notification when screenshot is saved
-  --clipboard-only      copy screenshot to clipboard and don't save image in disk
-  -- [command]          open screenshot with a command of your choosing. e.g. swaycut -m window -- mirage
-
-Modes:
-  output                take screenshot of an entire monitor
-  window                take screenshot of an open window
-  region                take screenshot of selected region
+  -m, --mode <mode>         capture mode: output, window, region
+  -o, --output-folder <dir> directory to save the screenshot
+  -f, --filename <name>     custom filename
+  --clipboard-only          copy to clipboard, don’t save
+  -s, --silent              suppress notification
+  -d, --debug               enable debug logs
+  -h, --help                show this help
+  -- [command]              open screenshot with given command. e.g. swaycut -m window -- mirage
 EOF
 }
 
