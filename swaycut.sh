@@ -141,7 +141,7 @@ fi
 CLIPBOARD=0
 DEBUG=0
 SILENT=0
-FILENAME="$(date +'swaycut_%Y-%m-%d-%H:%M:%S.png')"
+FILENAME="$(date +'swaycut_%Y-%m-%d_%H-%M-%S.png')"
 [ -z "$SWAY_SCREENSHOT_DIR" ] && SAVEDIR=${XDG_PICTURES_DIR:=~} || SAVEDIR=${SWAY_SCREENSHOT_DIR}
 
 parse_args $0 "$@"
