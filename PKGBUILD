@@ -56,6 +56,9 @@ package() {
     mv "$pkgdir"/usr/lib/* "$pkgdir/opt"
     rm -rf "$pkgdir/usr/lib"
 
+    # Fix permissions on misc files
+    chmod go-w "$pkgdir"/opt/$_name/resources/*
+
     # Replace binary symlink
     ln -sf /opt/$_name/Proton\ Mail\ Beta "$pkgdir/usr/bin/$_name"
 
