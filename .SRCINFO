@@ -12,6 +12,6 @@ pkgbase = hyprviz-bin
 	provides = hyprviz
 	conflicts = hyprviz
 	source = https://github.com/timasoft/hyprviz/releases/download/v0.3.5/hyprviz-0.3.5-x86_64.tar.gz
-	sha256sums = e7df1b9e8badceb362a15cd7604135c6c97b0b5d7f05be7d063797a2158234e7
+	sha256sums = 406a0917671e1b5f89cb057eb96d9c89b46f048ef513fa19356c13202552ea69
 
 pkgname = hyprviz-bin
