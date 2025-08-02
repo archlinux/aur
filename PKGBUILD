@@ -1,22 +1,31 @@
+# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+
 pkgname=proton-authenticator-bin
+_name=${pkgname%-bin}
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Proton Authenticator is an open-source TOTP authenticator from Proton (prebuilt binary)"
+pkgdesc='An open source and end-to-end encrypted 2FA app. Securely sync and backup your 2FA codes easily.'
 arch=('x86_64')
-url="https://proton.me/authenticator"
-license=('GPL3')
-depends=('glibc')
-depends+=('webkit2gtk-4.1')
-makedepends+=('webkit2gtk-4.1')
-provides=('proton-authenticator')
-conflicts=('proton-authenticator')
+url='https://proton.me/authenticator'
+license=('GPL-3.0-or-later')
+depends=(
+    'cairo'
+    'gcc-libs'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libsoup3'
+    'pango'
+    'webkit2gtk-4.1'
+)
+makedepends=('libarchive')
+provides=("$_name")
+conflicts=("$_name")
 source=("https://proton.me/download/authenticator/linux/ProtonAuthenticator_${pkgver}_amd64.deb")
-sha256sums=('462e94eedb906b99dd7b8be36a040a7df5a01976d9b4034d99ea61d57e8f16e3')
+b2sums=('424e7cf4f8283414d7c7f9b5b4cef0f1ec20eecbacb7d914d155e3a38d82121c8e6c72595d19e676d271962fd13a0992ea5218bfc6082dda896fbe4a8f5f4fb3')
 
 package() {
-    ar x ProtonAuthenticator_${pkgver}_amd64.deb
-    bsdtar -xf data.tar.gz -C "${pkgdir}"
-
-    
+    bsdtar -xvf data.tar.gz -C "$pkgdir/"
 }
-
