@@ -1,6 +1,6 @@
 pkgbase = schedtoold-git
 	pkgdesc = daemon for automatically adjusting process scheduling
-	pkgver = r1.b063cb7
+	pkgver = r5.c6c6e15
 	pkgrel = 1
 	url = https://github.com/kotarac/schedtoold
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = schedtoold-git
 	makedepends = cargo
 	depends = schedtool
 	conflicts = schedtoold
-	source = schedtoold::git+https://github.com/kotarac/schedtoold.git#branch=main
+	source = schedtoold::git+https://github.com/kotarac/schedtoold.git#branch=master
 	sha512sums = SKIP
 
 pkgname = schedtoold-git

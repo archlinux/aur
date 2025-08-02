@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=schedtoold-git
-pkgver=r1.b063cb7
+pkgver=r5.c6c6e15
 pkgrel=1
 pkgdesc='daemon for automatically adjusting process scheduling'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/kotarac/schedtoold'
 conflicts=('schedtoold')
 depends=('schedtool')
 makedepends=('cargo')
-source=('schedtoold::git+https://github.com/kotarac/schedtoold.git#branch=main')
+source=('schedtoold::git+https://github.com/kotarac/schedtoold.git#branch=master')
 sha512sums=('SKIP')
 
 pkgver() {
