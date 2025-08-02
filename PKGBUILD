@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-input-evdev
 _pkgname=xf86-input-evdev
 pkgver=2.11.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Official XLibre fork of X.Org evdev input driver"
 arch=(x86_64 aarch64)
 url="https://github.com/X11Libre"
@@ -19,29 +19,35 @@ source=("${url}/${_pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
 options=('!debug')
 
 build() {
-  case "$CARCH" in
-    "x86_64")
-      CFLAGS=" -march=x86-64"
-      ;;
-    "aarch64")
-      CFLAGS=" -march=aarch64"
-      ;;
-    *)
-      CFLAGS=" -march=native"
-      ;;
-  esac
+  if [[ ! "$CFLAGS" == *"-march="* ]]; then
+    case "$CARCH" in
+      "x86_64")
+        CFLAGS+=" -march=x86-64"
+        ;;
+      "aarch64")
+        CFLAGS+=" -march=aarch64"
+        ;;
+      *)
+        CFLAGS+=" -march=native"
+        ;;
+    esac
+  fi
   CFLAGS+=" -mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security"
   CFLAGS+=" -fstack-clash-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
   LDFLAGS=" -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,lazy -Wl,-z,relro -Wl,-z,pack-relative-relocs"
-  if [[ $CARCH != 'aarch64' ]]; then
-    CFLAGS+=" -fcf-protection"
+  if [[ $CARCH == 'aarch64' ]]; then
+    CFLAGS=${CFLAGS/-fcf-protection}
   fi
   if [[ "$pkgname" == *"xf86-input"* ]]; then
     CFLAGS+=" -fno-plt"
     LDFLAGS+=" -Wl,-z,now"
+  else
+    CFLAGS=${CFLAGS/-fno-plt}
   fi
   if [[ "$pkgname" == *"xf86-video-intel"* ]]; then
+    CFLAGS=${CFLAGS/-flto*}
     CFLAGS+=" -fno-lto"
+    LDFLAGS=${CFLAGS/-flto*}
     LDFLAGS+=" -fno-lto"
   fi
   CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
