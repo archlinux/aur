@@ -1,0 +1,12 @@
+pkgbase = libdivide
+	pkgdesc = A header-only C/C++ library for optimizing integer division.
+	pkgver = 5.2.0
+	pkgrel = 0
+	url = https://libdivide.com/
+	arch = any
+	license = BSL-1.0
+	makedepends = cmake
+	source = libdivide-5.2.0.tar.gz::https://github.com/ridiculousfish/libdivide/archive/refs/tags/v5.2.0.tar.gz
+	sha256sums = 73ae910c4cdbda823b7df2c1e0e1e7427464ebc43fc770b1a30bb598cb703f49
+
+pkgname = libdivide
