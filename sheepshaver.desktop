@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=SheepShaver (kanjitalk755)
+Name=SheepShaver
 Comment=PowerPC Macintosh emulator
 Exec=sheepshaver-kanjitalk755
-Icon=sheepshaver-kanjitalk755
+Icon=sheepshaver
 Terminal=false
 Type=Application
 Categories=Emulator;System;
