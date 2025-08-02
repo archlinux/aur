@@ -14,8 +14,8 @@ replaces=('sourcegraph-amp' 'ampcode')
 conflicts=('amp')
 options=('!strip')
 
-source_x86_64=("${pkgname}-${pkgver}-x86_64::https://packages.ampcode.com/binaries/v${pkgver}/amp-linux-x64")
-source_aarch64=("${pkgname}-${pkgver}-aarch64::https://packages.ampcode.com/binaries/v${pkgver}/amp-linux-arm64")
+source_x86_64=("${pkgname}-${pkgver}-x86_64::https://packages.ampcode.com/binaries/cli/v${pkgver}/amp-linux-x64")
+source_aarch64=("${pkgname}-${pkgver}-aarch64::https://packages.ampcode.com/binaries/cli/v${pkgver}/amp-linux-arm64")
 
 sha256sums_x86_64=('a56d295638caf1dba657118a02520ffbaada1090d4b449539df853345dbdc96e')
 sha256sums_aarch64=('d4a77b0fe9fcef5c6862e3d4b7e634319574b0750ad1135c1c764b25acbdf7d1')
