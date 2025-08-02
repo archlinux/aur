@@ -4,7 +4,7 @@
 pkgname=proton-mail-bin
 _name=${pkgname%-bin}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('x86_64')
 url='https://proton.me'
