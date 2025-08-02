@@ -1,0 +1,14 @@
+pkgbase = python-lib3to6
+	pkgdesc = Build universally compatible Python packages from a substantial subset of Python 3.8
+	pkgver = 202110.1050
+	pkgrel = 1
+	url = https://github.com/mbarkhau/lib3to6
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/mbarkhau/lib3to6/archive/refs/tags/v202110.1050-b0.tar.gz
+	sha256sums = 7a06fb724473dda87ccea6e84b251f20a6bb4cc9679b7e05e0e5116be701706a
+
+pkgname = python-lib3to6
