@@ -4,7 +4,7 @@
 
 pkgname=tmuxinator
 pkgver=3.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -21,14 +21,11 @@ optdepends=('zsh-completions: for ZSH completion')
 options=('!emptydirs')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-  "xdg.patch"
 )
-sha256sums=('56dc5ca39d11bad38f7fb602ce412a0f564dc0757765ad105a2cccbe84fcd2ca'
-            'bf91cc99026b1b465b00085512138df4717123ebb841acfb935c80162d14b0ba')
+sha256sums=('56dc5ca39d11bad38f7fb602ce412a0f564dc0757765ad105a2cccbe84fcd2ca')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -p1 < ../xdg.patch
 }
 
 build() {
