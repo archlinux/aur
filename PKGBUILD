@@ -2,18 +2,32 @@
 
 _basename=libde265
 pkgname=lib32-libde265
-pkgver=1.0.11
+pkgver=1.0.16
 pkgrel=1
 pkgdesc='Open h.265 video codec implementation (32-bit)'
 arch=(x86_64)
 url='https://github.com/strukturag/libde265'
-license=(LGPL3)
-depends=(lib32-gcc-libs libde265)
-source=(https://github.com/strukturag/libde265/releases/download/v$pkgver/$_basename-$pkgver.tar.gz)
-sha256sums=('2f8f12cabbdb15e53532b7c1eb964d4e15d444db1be802505e6ac97a25035bab')
+license=(LGPL-3.0-or-later)
+depends=(
+    lib32-gcc-libs
+    lib32-glibc
+    libde265
+)
+makedepends=(
+    git
+)
+source=(git+https://github.com/strukturag/libde265#tag=v$pkgver)
+sha256sums=('103ad98bbfbee5e93011c5197c9106ce849e2479e3ce2a49edf5882b15654015')
+
+prepare() {
+    cd $_basename
+
+    ./autogen.sh
+}
+
 
 build() {
-    cd $_basename-$pkgver
+    cd $_basename
 
     export CC='gcc -m32'
     export CXX='g++ -m32'
@@ -30,7 +44,7 @@ build() {
 }
 
 package() {
-    cd $_basename-$pkgver
+    cd $_basename
 
     make DESTDIR="$pkgdir" install
 
