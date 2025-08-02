@@ -1,6 +1,6 @@
 # Maintainer: Zach Rice <bynxmusic@gmail.com>
 pkgname=tylex-git
-pkgver=0.1.0.r0.g$(git rev-parse --short HEAD)
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A simple, rofi/dmenu-based text expander for tiling window managers."
 arch=('any')
