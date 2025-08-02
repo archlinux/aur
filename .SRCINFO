@@ -1,15 +1,18 @@
 pkgbase = lib32-libdc1394
 	pkgdesc = Library to control IEEE 1394 based cameras (32 bit)
 	pkgver = 2.2.7
-	pkgrel = 1
-	url = http://sourceforge.net/projects/libdc1394/
+	pkgrel = 2
+	url = https://damien.douxchamps.net/ieee1394/libdc1394/
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = lib32-libxv
+	makedepends = lib32-sdl
 	depends = lib32-glibc
 	depends = lib32-libraw1394
 	depends = lib32-libusb
 	depends = libdc1394
-	source = https://downloads.sourceforge.net/libdc1394/libdc1394-2.2.7.tar.gz
-	sha256sums = 537ceb78dd3cef271a183f4a176191d1cecf85f025520e6bd3758b0e19e6609f
+	source = libdc1394::git+https://git.code.sf.net/p/libdc1394/code#tag=V_2_2_7
+	b2sums = 2e4c03c6f7c96734230e452e9088abcc54907eabd81eebb0862f192e2d1c3c6d3f65d92a75cc95323f9bf4d1490b52043bbb0c1776619cac8cace44306e354d2
 
 pkgname = lib32-libdc1394
