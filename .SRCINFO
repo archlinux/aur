@@ -1,6 +1,6 @@
 pkgbase = mutter-git
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 48.2+r40+g4d194b8e1
+	pkgver = 49.alpha.1+r46+g96d4e7c3c
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -74,13 +74,12 @@ pkgbase = mutter-git
 	depends = wayland
 	depends = xorg-xwayland
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git
-	source = git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3
 	b2sums = SKIP
-	b2sums = f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf
 
 pkgname = mutter-git
+	optdepends = bash-completion: Bash completions for gdctl
 	provides = mutter
-	provides = libmutter-16.so
+	provides = libmutter-17.so
 	conflicts = mutter
 
 pkgname = mutter-docs-git
