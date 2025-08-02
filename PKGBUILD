@@ -1,6 +1,6 @@
 pkgname=typhoon
-pkgver=0.9.95
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
 url="https://github.com/archisman-panigrahi/typhoon"
