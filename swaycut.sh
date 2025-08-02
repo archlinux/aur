@@ -23,7 +23,7 @@ Options:
   -s, --silent              suppress notification
   -d, --debug               enable debug logs
   -h, --help                show this help
-  -- [command]              open screenshot with given command. e.g. swaycut -m window -- mirage
+  -- [command]              open screenshot with given command. e.g. swaycut -m window -- feh
 EOF
 }
 
