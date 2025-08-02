@@ -14,9 +14,10 @@ if [[ "${1-}" == "--help" || "${1-}" == "-h" ]]; then
     echo "  aurroamer              launch interactive mode"
     echo "  aurroamer --version    show version"
     echo "  aurroamer --help       show this message"
-    echo 
+    echo
     exit 0
 fi
+
 aurpackages=$(mktemp)
 repopackages=$(mktemp)
 total=$(mktemp)
@@ -29,6 +30,13 @@ for helper in yay paru trizen pikaur; do
         break
     fi
 done
+
+if ! command -v pactree > /dev/null; then
+    pactree=1
+    echo "warning: pactree from pacman-contrib is missing, you wont be able to view dependency trees"
+else
+    pactree=0
+fi
 
 if [[ -z "$aur_helper" ]]; then
     echo "warning: no supported aur helper found — aur packages cannot be interacted with"
@@ -87,14 +95,13 @@ echo "3) all"
 read -rp "> " mode
 case "$mode" in
     1)
-        while IFS= read -r pkg; do printf "[official]   %s\n" "$pkg"; done < "$repopackages" > "$total"
+        fzf_input=$(awk '{printf "[official] %s\n", $0}' "$repopackages")
         ;;
     2)
-        while IFS= read -r pkg; do printf "[aur]        %s\n" "$pkg"; done < "$aurpackages" > "$total"
+        fzf_input=$(awk '{printf "[aur]      %s\n", $0}' "$aurpackages")
         ;;
     3)
-        while IFS= read -r pkg; do printf "[aur]        %s\n" "$pkg"; done < "$aurpackages" > "$total"
-        while IFS= read -r pkg; do printf "[official]   %s\n" "$pkg"; done < "$repopackages" >> "$total"
+        fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") )
         ;;
     *)
         exit 0
@@ -102,30 +109,26 @@ case "$mode" in
 esac
 
 echo
-read -rp "browse selected packages with fzf? [y/N] " confirm
-[[ ! "$confirm" =~ ^[Yy]$ ]] && exit 0
-
-if ! command -v fzf > /dev/null; then
-    echo "fzf is not installed"
-    exit 1
-fi
+sleep 1
 
 while true; do
-    selection=$(<"$total" fzf)
+    selection=$(echo "$fzf_input" | fzf  --prompt="Select package >> ")
     [[ -z "$selection" ]] && break
 
     pkgtype=$(awk '{print $1}' <<< "$selection")
     pkgname=$(awk '{print $2}' <<< "$selection")
+
     clear
     echo "you selected: $pkgname $pkgtype"
     echo
+    sleep 1
 
     while true; do
         echo "choose an option:"
         echo "1) preview package info"
         echo "2) install package"
-        echo "3) back to package list"
-        read -rp "> " choice
+        echo "4) back to package list"
+        read -rp ">> " choice
 
         case "$choice" in
             1)
