@@ -1,25 +1,35 @@
 pkgname=nerdfonts-installer-bin
 pkgver=2025.07.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Executable binary to install Nerd Fonts"
 arch=('x86_64')
 url="https://github.com/fam007e/nerd_fonts_installer"
 license=('MIT')
-depends=('curl' 'unzip' 'fontconfig' 'shc') 
-source=("https://github.com/fam007e/nerd_fonts_installer/releases/download/v${pkgver}/nerdfonts-installer-${pkgver}.tar.gz")
-sha256sums=('0779f0757eba0593d39b6d590564aea8d10ba95a1c26a300cc17a6b6f6179dc2')
+depends=('curl' 'unzip' 'fontconfig')
+makedepends=('shc')
+source=("nerdfonts_installer.sh")
+sha256sums=('SKIP')
 
 build() {
-    # Change to the directory where the script is located
-    cd "$srcdir/.."
+    cd "$srcdir"
     
-    # Compile the script into a binary
+    # The script should already be here, just make sure it's executable
+    chmod +x nerdfonts_installer.sh
+    
+    # Compile the script into a binary using shc
     shc -f nerdfonts_installer.sh -o nerdfonts-installer
+    
+    # Verify the binary was created
+    if [ ! -f "nerdfonts-installer" ]; then
+        echo "Error: Failed to create nerdfonts-installer binary"
+        return 1
+    fi
+    
+    echo "Successfully compiled nerdfonts-installer binary"
 }
 
 package() {
-    # Change to the directory where the compiled binary is located
-    cd "$srcdir/.."
+    cd "$srcdir"
     
     # Install the generated binary to the appropriate directory
     install -Dm755 "nerdfonts-installer" "$pkgdir/usr/bin/nerdfonts-installer"
