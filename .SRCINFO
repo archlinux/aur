@@ -1,6 +1,6 @@
 pkgbase = chatgpt.sh
 	pkgdesc = Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more
-	pkgver = 0.108.7
+	pkgver = 0.108.8
 	pkgrel = 1
 	url = https://gitlab.com/fenixdragao/shellchatgpt
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = chatgpt.sh
 	optdepends = libreoffice: dump doc files as text
 	optdepends = dialog: file picker (kdialog, zenity, vifm, ranger, nnn)
 	optdepends = yt-dlp: dump YouTube captions
-	source = chatgpt.sh-0.108.7::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=f493210b3e6c841f1d24cd3d56419b750fe65c9b
+	source = chatgpt.sh-0.108.8::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=5e6b01453ab34f3c778e75ab4fbef74fde95eadd
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
