@@ -6,32 +6,34 @@ pkgbase = python-reproject
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = cython>=3.0.4
+	makedepends = cython>=3.1
 	makedepends = python-setuptools-scm
 	makedepends = python-extension-helpers
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-tomli
-	makedepends = python-numpy
+	makedepends = python-numpy>=2
 	makedepends = python-sphinx-astropy
 	makedepends = python-matplotlib
 	makedepends = python-astropy-healpix
 	makedepends = python-dask
 	makedepends = python-scipy
+	makedepends = python-pyavm
 	makedepends = python-pyvo
 	source = https://files.pythonhosted.org/packages/source/r/reproject/reproject-0.14.1.tar.gz
 	md5sums = a09c29e849824d5867d614bfdc530730
 
 pkgname = python-reproject
-	depends = python>=3.10
+	depends = python>=3.11
 	depends = python-numpy>=1.23
 	depends = python-cloudpickle
 	depends = python-dask>=2021.8
-	depends = python-fsspec
+	depends = python-fsspec>=2021.8
 	depends = python-scipy>=1.9
 	depends = python-astropy>=5.0
 	depends = python-astropy-healpix>=1.0
-	depends = python-zarr
+	depends = python-pillow>=10.0
+	depends = python-pyavm>=0.9.6
+	depends = python-zarr>=2.11.0
 	optdepends = python-shapely>=1.6: For some of the mosaicking functionality
 	optdepends = python-reproject-doc: Documentation for Reproject
 	optdepends = python-pytest-astropy: For testing

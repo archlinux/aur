@@ -9,18 +9,19 @@ pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
 url="http://reproject.readthedocs.io"
 license=('BSD-3-Clause')
-makedepends=('cython>=3.0.4'
+makedepends=('cython>=3.1'
              'python-setuptools-scm'
              'python-extension-helpers'
              'python-build'
              'python-installer'
-             'python-tomli'
-             'python-numpy'
+#            'python-tomli'
+             'python-numpy>=2'
              'python-sphinx-astropy'
              'python-matplotlib'
              'python-astropy-healpix'
              'python-dask'
              'python-scipy'
+             'python-pyavm'
              'python-pyvo')  # wheel required by new setuptools
 #            'python-mimeparse')    # numpy for package itself
 #checkdepends=('python-pytest-arraydiff'
@@ -62,19 +63,21 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    # Cost more than 10 min
-#    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -vv -l -ra --color=yes -o console_output_style=count --remote-data #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #}
 
 package_python-reproject() {
-    depends=('python>=3.10'
+    depends=('python>=3.11'
              'python-numpy>=1.23'
              'python-cloudpickle'
              'python-dask>=2021.8'
-             'python-fsspec'
+             'python-fsspec>=2021.8'
              'python-scipy>=1.9'
              'python-astropy>=5.0'
              'python-astropy-healpix>=1.0'
-             'python-zarr')
+             'python-pillow>=10.0'
+             'python-pyavm>=0.9.6'
+             'python-zarr>=2.11.0')
     optdepends=('python-shapely>=1.6: For some of the mosaicking functionality'
                 'python-reproject-doc: Documentation for Reproject'
                 'python-pytest-astropy: For testing')
