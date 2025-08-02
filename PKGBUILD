@@ -3,7 +3,7 @@ pkgname=sheepshaver-kanjitalk755-git
 pkgver=r3554.94a9f6cc
 pkgrel=1
 pkgdesc="PowerPC Mac emulator from kanjitalk755's fork of SheepShaver (JIT/non-JIT, GTK3 + SDL2)"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/kanjitalk755/macemu"
 license=('GPL')
 depends=(
@@ -36,12 +36,14 @@ source=(
   "sheepshaver-kanjitalk755.desktop"
   "sheepshaver-icon.png"
 )
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP'
+  'ed74f0359247de898b1f62c3a0a7600e'
+  '943c2a7455b58eff55dcf10627469609')
 
-pkgver() {
-  cd "$srcdir/macemu"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+  pkgver() {
+    cd "$srcdir/macemu"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  }
 
 build() {
   cd "$srcdir/macemu/SheepShaver/src/Unix"
