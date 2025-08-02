@@ -7,6 +7,13 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20250801
+
+### Deleted
+
+- AC_META_CERTIFICADO_DIGITAL_CD.crt
+- AC_PREMIUM_CERTIFICADORA_DIGITAL_CD.crt
+
 ## 20250704
 
 ### Deleted
