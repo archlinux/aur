@@ -3,38 +3,39 @@
 
 _basename=wildmidi
 pkgname=lib32-wildmidi
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
-pkgdesc='Open Source MIDI Synthesizer (32-bit)'
-arch=('x86_64')
-url="http://www.mindwerks.net/projects/wildmidi/"
-license=('LGPL3')
-depends=('lib32-alsa-lib' 'wildmidi')
-makedepends=('cmake')
-source=(https://github.com/psi29a/wildmidi/archive/wildmidi-${pkgver}.tar.gz)
-sha256sums=('116c0f31d349eaa74a630ed5a9a17b6a351204877a4ed9fb9aacd9dbd7f6c874')
-
-prepare() {
-    cd "$_basename-$_basename-$pkgver/src"
-
-    sed -i -e 's|IF (CMAKE_LIBRARY_ARCHITECTURE)|IF (false)|' CMakeLists.txt
-}
+pkgdesc='Simple software MIDI player which has a core softsynth library (32-bit)'
+arch=(x86_64)
+url='https://github.com/Mindwerks/wildmidi'
+license=('GPL-3.0-or-later AND LGPL-3.0-or-later')
+depends=(
+    lib32-alsa-lib
+    lib32-glibc
+    wildmidi
+)
+makedepends=(
+    cmake
+    git
+    ninja
+)
+source=("git+https://github.com/Mindwerks/wildmidi.git#tag=$_basename-$pkgver")
+b2sums=(33100dfb9a7df1ee516083f90d7a2600e1c79117093dba568df540fd602da408cfe8373bea7363efbc893b1db943c681887e44b00f0861c1b29ac037d4b019f7)
 
 build() {
     export CC='gcc -m32'
     export CXX='c++ -m32'
     export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-    cmake -B build -S "$_basename-$_basename-$pkgver" \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -S $_basename -B build -G Ninja \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_LIBDIR=lib32
 
     cmake --build build
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build
 
     cd "$pkgdir"/usr
 
