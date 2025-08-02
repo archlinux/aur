@@ -1,8 +1,8 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=dynamic-power-daemon
-pkgver=4.5.1
-pkgrel=2
+pkgver=4.5.2
+pkgrel=1
 pkgdesc="Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload; with DBus control, per-user helpers and Qt tray UI"
 arch=('any')
 url="https://github.com/evertvorster/dynamic-power-daemon"
@@ -22,10 +22,10 @@ depends=(
   'qt6-base'
   'qt6-tools'
   'power-profiles-daemon'
+  'kscreen'
 )
 optdepends=(
   'asusctl: panel overdrive toggle on Asus laptops'
-  'kscreen-doctor: get and set screen refresh rates'
 )
 source=("https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
