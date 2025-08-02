@@ -1,0 +1,19 @@
+pkgbase = ecaludp
+	pkgdesc = UDP traffic implementation for eCAL
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/eclipse-ecal/ecaludp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = recycle
+	makedepends = gtest
+	depends = asio
+	depends = gcc-libs
+	depends = glibc
+	source = ecaludp-0.1.2.tar.gz::https://github.com/eclipse-ecal/ecaludp/archive/v0.1.2.tar.gz
+	source = Findrecycle.cmake
+	sha256sums = 960b743694ff712d1a23e8427ddd56e3e415003a991e2e4431093a81da6ff770
+	sha256sums = 1f45b144bf6c9813006633f1179fc489100c1a9f8105f73d4181da56bcf6b121
+
+pkgname = ecaludp
