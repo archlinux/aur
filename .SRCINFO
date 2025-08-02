@@ -1,0 +1,16 @@
+pkgbase = easytier-gui-bin
+	pkgdesc = A simple, decentralized mesh VPN with WireGuard support.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/EasyTier/EasyTier
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	source_x86_64 = https://github.com/EasyTier/EasyTier/releases/download/v2.4.0/easytier-gui_2.4.0_amd64.deb
+	sha256sums_x86_64 = 4d212ba61971e16995b193cb8417f75af1cfa5ad24eb6fc9989826619d0f3d77
+	source_aarch64 = https://github.com/EasyTier/EasyTier/releases/download/v2.4.0/easytier-gui_2.4.0_arm64.deb
+	sha256sums_aarch64 = 433f6f0dd4e353401a31819ef4f1df9dc950855189ef30b1fc5fdd3a59054edf
+
+pkgname = easytier-gui-bin
