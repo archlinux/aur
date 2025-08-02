@@ -1,33 +1,47 @@
-# Creator: Dimitris Kiziridis <ragouel at outlook dot com>
-# Maintainer: Artem Vasilev <artem.vasilev@rwth-aachen.de>
-# Maintainer: gardenapple <mailbox@appl.garden>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Artem Vasilev <artem.vasilev@rwth-aachen.de>
+# Contributor: gardenapple <mailbox@appl.garden>
 
 pkgname=duckstation-qt-bin
 _pkgname="${pkgname%-bin}"
 _fullname=org.duckstation.DuckStation
-pkgver=0.1.r8675
+pkgver=0.1.r9226
 pkgrel=1
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
 url='https://github.com/stenzek/duckstation'
 license=('CC-BY-NC-ND-4.0')
 provides=("$_pkgname" 'duckstation')
+conflicts=("$_pkgname" 'duckstation')
+depends=('hicolor-icon-theme' 'mesa' 'glibc' 'gcc-libs')
 options=('!strip')
-noextract=("${_pkgname}-${pkgver}.AppImage")
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/stenzek/duckstation/releases/download/v0.1-8675/DuckStation-x64.AppImage")
-sha256sums=('7acd6a074fa8fb8c21c73c9abcb01e6d9d0742cee0b38ba0e6e36f6a904d8279')
+source=("${_pkgname}-${pkgver}-x64.AppImage::https://github.com/stenzek/duckstation/releases/download/v${pkgver/.r/-}/DuckStation-x64.AppImage"
+	"${_pkgname}-${pkgver}-x64-SSE2.AppImage::$url/releases/download/v${pkgver/.r/-}/Duckstation-x64-SSE2.AppImage")
+sha256sums=('e57768e0f719a94df7b0291262c42e6de4dbb851c70f5c6073bc16958da9ae2d'
+            'a444f0c1e161fb3804a7a0e51b46d86f87ba3e3b71ed3537fb187bc1884b567e')
 
 package() {
-	chmod 755 "$srcdir/${_pkgname}-${pkgver}.AppImage"
-	"$srcdir/${_pkgname}-${pkgver}.AppImage" --appimage-extract
-	install -Dm644 "squashfs-root/${_fullname}.png" -t "$pkgdir/usr/share/pixmaps"
+	cd "$srcdir"
+	if grep -E "sse4_1|sse4_2" /proc/cpuinfo >/dev/null
+	then
+
+		chmod 755 "$srcdir/${_pkgname}-${pkgver}-x64.AppImage"
+		"$srcdir/${_pkgname}-${pkgver}-x64.AppImage" --appimage-extract
+	else
+		chmod 755 "$srcdir/${_pkgname}-${pkgver}-x64-SSE2.AppImage"
+		"$srcdir/${_pkgname}-${pkgver}-x64-SSE2.AppImage" --appimage-extract
+	fi
+	install -Dm644 "squashfs-root/${_fullname}.png" -t "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 	install -Dm644 "squashfs-root/${_fullname}.desktop" -t "$pkgdir/usr/share/applications"
 	install -d "$pkgdir/opt"
 	cp -avR squashfs-root/ "$pkgdir/opt/$_pkgname"
 	cat <<- EOF > "${_pkgname}.sh"
-		#!/bin/sh
+		#!/usr/bin/env sh
 		cd /opt/$_pkgname && ./AppRun
 	EOF
 	install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/$_pkgname"
 	find "$pkgdir/opt/$_pkgname" -type d -exec chmod 755 {} +
+	cd "$pkgdir/opt/$_pkgname"
+	rm $_fullname.desktop $_fullname.png .DirIcon
 }
