@@ -1,0 +1,10 @@
+pkgbase = hyprsession-sh
+	pkgdesc = Simple, functional session manager
+	pkgver = 1.2
+	pkgrel = 1
+	arch = any
+	license = aGPL3
+	source = hyprsession.sh
+	sha256sums = SKIP
+
+pkgname = hyprsession-sh
