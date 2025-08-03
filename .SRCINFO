@@ -1,12 +1,12 @@
 pkgbase = oauth2l
-	pkgdesc = Simple CLI for interacting with Google API authentication
-	pkgver = 1.3.0
+	pkgdesc = Google official CLI for interacting with Google API authentication
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/google/oauth2l
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = go
-	source = oauth2l-1.3.0.tar.gz::https://github.com/google/oauth2l/archive/refs/tags/v1.3.0.tar.gz
-	b2sums = 83044b616e65881d54b78bd8e6d9ec6890cd3087a91c8574a976aa2f5f1ed1ac4fa2d50fd9d438a8b608d53af2a56e232c304cc2c984ac3b582fffdfe2ca01df
+	source = oauth2l-1.3.3.tar.gz::https://github.com/google/oauth2l/archive/refs/tags/v1.3.3.tar.gz
+	b2sums = ccca81cf1d73c84f3808110be049c96ac460691c737950db0a52b741c708491ed08df8d38f1791ecd333638e50d993aaeb6e70212cd1baaab9fb4c85f086f325
 
 pkgname = oauth2l

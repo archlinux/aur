@@ -1,0 +1,4 @@
+[oauth2l]
+source = 'git'
+git = 'https://github.com/google/oauth2l.git'
+prefix = 'v'
