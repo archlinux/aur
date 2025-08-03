@@ -1,0 +1,5 @@
+[fsharplint-bin]
+source = "github"
+github = "fsprojects/FSharpLint"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,23 @@
+pkgbase = fsharplint-bin
+	pkgdesc = Lint tool for F#
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://fsprojects.github.io/FSharpLint/
+	arch = any
+	license = MIT
+	depends = dotnet-runtime-9.0
+	depends = sh
+	provides = fsharplint
+	conflicts = fsharplint
+	source = fsharplint-0.26.0.nupkg::https://github.com/fsprojects/FSharpLint/releases/download/v0.26.0/dotnet-fsharplint.0.26.0.nupkg
+	source = fsharplint-0.26.0-CHANGELOG.md::https://github.com/fsprojects/FSharpLint/raw/refs/tags/v0.26.0/CHANGELOG.md
+	source = fsharplint-0.26.0-README.md::https://github.com/fsprojects/FSharpLint/raw/refs/tags/v0.26.0/README.md
+	source = fsharplint-0.26.0-LICENSE::https://github.com/fsprojects/FSharpLint/raw/refs/tags/v0.26.0/LICENSE
+	source = fsharplint.sh
+	sha256sums = be7c1a30d8dbbae834cfaa7a001fc63e5ef719366147731374a148eb4a63acfd
+	sha256sums = 3b8eb2e3233d8d55ba14882681e61ea84a9c273051d63e44843a65d8d7222ba0
+	sha256sums = b6c948d984c0ab5f051d8f6931656ab5f44aebe9bb5f94ce10d0e2587a48fb91
+	sha256sums = 444b89818cfef1c9087bc85dd6c69e962884c66fe32dfaca32322bee8e8dedd6
+	sha256sums = 5b9e89ddefc37d5dca2766f534752657aa7b00cde61a3fdcce422bc3d18cf927
+
+pkgname = fsharplint-bin
