@@ -11,10 +11,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ivfiev/$pkgname/archive/ref
 md5sums=('fa743d0bfc6e1e3cbb0dd769b054db10')
 
 build() {
-		cd "$srcdir/$pkgname-$pkgver"
-		make
+	cd "$srcdir/$pkgname-$pkgver"
+	make
 }
 
 package() {
-    install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
