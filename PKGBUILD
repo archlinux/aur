@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.20469.r159.g948dce9
+pkgver=4.20469.r164.g0e95c62
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
@@ -24,11 +24,13 @@ depends=(
   'perl'
   'python'
   "${_pydeps[@]/#/python-}"
-  'libsndfile'
-  'bluez'
+  #   'libsndfile'
+  #   'bluez'
   'bluez-libs'
   'gd'
-  'qt5-base')
+  'qt5-base'
+  'openssl'
+)
 makedepends=(
   'git'
   'arm-none-eabi-gcc'
