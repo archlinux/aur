@@ -1,0 +1,6 @@
+[fornax-bin]
+source = "github"
+github = "ionide/Fornax"
+use_latest_release = true
+# exclude_regex = ".*beta.*"
+prefix = "v"

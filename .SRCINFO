@@ -1,0 +1,23 @@
+pkgbase = fornax-bin
+	pkgdesc = Scriptable static site generator using type safe F# DSL to define page templates
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://ionide.io/Tools/fornax.html
+	arch = x86_64
+	license = MIT
+	depends = dotnet-runtime-6.0
+	depends = sh
+	provides = fornax
+	conflicts = fornax
+	source = fornax-0.15.1.nupkg::https://github.com/ionide/Fornax/releases/download/v0.15.1/Fornax.0.15.1.nupkg
+	source = fornax-0.15.1-CHANGELOG.md::https://github.com/ionide/Fornax/raw/refs/tags/v0.15.1/CHANGELOG.md
+	source = fornax-0.15.1-README.md::https://github.com/ionide/Fornax/raw/refs/tags/v0.15.1/README.md
+	source = fornax-0.15.1-LICENSE.md::https://github.com/ionide/Fornax/raw/refs/tags/v0.15.1/LICENSE.md
+	source = fornax.sh
+	sha256sums = 5b1ac536983009afd5386c9b88bf879bc3c28e4cb783e5708c89826988752352
+	sha256sums = db23f19f52e3e0b56dd32138ff3e566658d37236ab5d5d7cef9cef73b53f541e
+	sha256sums = 12e7b8329ec96f21d339ad2662afcb4b600b7577ffa96c3c5d8b686c0a916722
+	sha256sums = e36af2669100520ba3318e44afce954492013875b916d78de9d3e93a41c8d736
+	sha256sums = b075b4a61f0cdce2de559834cae2db9b1be9c5b9e35cf26793bf04295abb79bf
+
+pkgname = fornax-bin
