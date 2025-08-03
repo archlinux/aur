@@ -129,7 +129,7 @@ build() {
 
   if [[ $CARCH == "armv7h" ]]; then
     _platform="wayland gbm"
-    export CFLAGS="-mcpu=cortex-a53 -mfpu=neon-fp-armv8 -mfloat-abi=hard -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection"
+#    export CFLAGS="-mcpu=cortex-a53 -mfpu=neon-fp-armv8 -mfloat-abi=hard -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection"
   else
     _platform="x11 wayland gbm"
   fi
@@ -162,6 +162,7 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
     -DENABLE_DVDCSS=ON
+    -DENABLE_NEON=ON
   )
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
