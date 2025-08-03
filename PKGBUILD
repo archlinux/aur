@@ -4,9 +4,9 @@ _Name="FAKE"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=6.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform F# build automation system"
-arch=('any')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://fake.build"
 _url="https://github.com/fsprojects/${_Name}"
 license=('Apache-2.0')
@@ -28,10 +28,25 @@ sha256sums=('737b518f147ddb82677cf3f7ba64cc5a9be3d69a4e89771972e7860150645ba4'
             'fa064a1fffee2c23d98fa4e50b4c94d6686f9306ff168314c40b45d4e553bd51'
             '1e92f382e5f318cc08ea46aad321d04e69e6b151eeb1039a4f3848c8f71d86a7')
 
+if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
+elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
+elif [ "${CARCH}" = 'i686'    ]; then _msarch=x86;
+elif [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64; fi
+
+prepare() {
+  cd "${srcdir}"
+  mkdir -p "${_pkgsrc}-any"
+  bsdtar -xf "${_pkgsrc}-any.zip" -C "${_pkgsrc}-any"
+
+  cd "${_pkgsrc}-any/runtimes"
+  find . -mindepth 1 -maxdepth 1 -type d ! -name "linux-${_msarch}" -exec \
+    rm -rf "{}" +
+}
+
 package() {
   cd "${srcdir}"
   install -vd "${pkgdir}/usr/lib/${_pkgname}"
-  bsdtar -xf "${_pkgsrc}-any.zip" -C "${pkgdir}/usr/lib/${_pkgname}"
+  cp -vr --no-preserve=ownership "${_pkgsrc}-any"/* "${pkgdir}/usr/lib/${_pkgname}"
 
   install -vDm755 "${_pkgname}.sh"         "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "${_pkgsrc}-README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
