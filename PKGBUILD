@@ -1,8 +1,9 @@
-# Maintainer: Nicolas F. <aur@fratti.ch>
+# Maintainer: Matthias Mailänder <matthias@mailaender.name>
+# Contributor: Nicolas F. <aur@fratti.ch>
 pkgname=zopfli-git
-pkgver=1.0.3.r7.g831773b
-pkgrel=3
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+pkgver=1.0.3.r9.gccf9f05
+pkgrel=1
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'powerpc' 'powerpc64' 'powerpc64le' 'riscv64')
 url="https://github.com/google/zopfli"
 pkgdesc="Compression algorithm library, git version"
 license=('Apache')
