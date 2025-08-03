@@ -128,7 +128,8 @@ build() {
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
   if [[ $CARCH == "armv7h" ]]; then
-    _platform="gbm"
+    _platform="wayland gbm"
+    export CFLAGS="-mcpu=cortex-a53 -mfpu=neon-fp-armv8 -mfloat-abi=hard -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection"
   else
     _platform="x11 wayland gbm"
   fi
