@@ -1,6 +1,6 @@
 pkgbase = spotdl
 	pkgdesc = Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found).
-	pkgver = 4.2.11
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/spotDL/spotify-downloader
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = spotdl
 	provides = python-spotdl
 	conflicts = python-spotdl
 	replaces = python-spotdl
-	source = spotdl-4.2.11.tar.gz::https://github.com/spotDL/spotify-downloader/archive/v4.2.11.tar.gz
-	b2sums = dd7c2f6101ab8807f45e40cf4710eb0c77686d9194945ee1d6bc6f656c291f6c555682dd21cec42520e3720e6970cad9dfc9990a191ed4407cc535e587cdc6e8
+	source = spotdl-4.3.0.tar.gz::https://github.com/spotDL/spotify-downloader/archive/v4.3.0.tar.gz
+	b2sums = b34e8ca7541a589e2391ee15c7c51feb10d51945bfe64ed0cd475fb3931ea176ffd4c711d0b47d47de4ff7be9d790eeb32b06680f39b33a4bb02d912ea4f2b89
 
 pkgname = spotdl
