@@ -7,7 +7,7 @@ pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
 arch=(i686 x86_64 aarch64)
 url="https://github.com/DeedleFake/trayscale"
 license=('MIT')
-depends=('gtk4' 'libadwaita>=1:1.6')
+depends=('gtk4' 'libadwaita>=1:1.7')
 makedepends=('go>=2:1.24.0' 'gobject-introspection')
 optdepends=('tailscale: provides daemon that manages connection')
 provides=(trayscale)

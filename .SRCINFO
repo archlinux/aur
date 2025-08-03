@@ -10,7 +10,7 @@ pkgbase = trayscale
 	makedepends = go>=2:1.24.0
 	makedepends = gobject-introspection
 	depends = gtk4
-	depends = libadwaita>=1:1.6
+	depends = libadwaita>=1:1.7
 	optdepends = tailscale: provides daemon that manages connection
 	provides = trayscale
 	source = https://github.com/DeedleFake/trayscale/archive/refs/tags/v0.18.2.tar.gz
