@@ -1,6 +1,6 @@
 pkgbase = whisparr-nightly-bin
 	pkgdesc = Adult movie organizer/manager for usenet and torrent users (nightly builds)
-	pkgver = 2.0.0.1171
+	pkgver = 2.0.0.1197
 	pkgrel = 1
 	url = https://whisparr.com
 	install = whisparr.install
@@ -40,11 +40,11 @@ pkgbase = whisparr-nightly-bin
 	sha256sums = cc241da00a2941ce3f37d918590e53366c8423b6385a23298adf7a82c65bedff
 	sha256sums = dfe5d421bc8c8bd9cfd46ee0183e61b572c28d31c8114dded887998bc432d22b
 	sha256sums = 0b235aed73eb0155d77c485ccff415e82e520d27013ba498ac70574e7106a762
-	source_x86_64 = Whisparr.nightly.2.0.0.1171.linux-core-x64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.1171&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = 678faa502fcccc37629c6120572e5fa1d5443a0b78f70082f3d458598fe4647b
-	source_aarch64 = Whisparr.nightly.2.0.0.1171.linux-core-arm64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.1171&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = 6f2e8845f75c6eac1274bff175d190b2c9f74a2ee4378f16e023a389f101988b
-	source_armv7h = Whisparr.nightly.2.0.0.1171.linux-core-arm.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.1171&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = aec47ae1c6c8db996be5824e9f3115d868a2207246d5bac852b8bc93bc7187dd
+	source_x86_64 = Whisparr.nightly.2.0.0.1197.linux-core-x64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.1197&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = 3daea553533f8b36858f142b7648cf78634e9c16db275fc70ae5bf0fc5c3b225
+	source_aarch64 = Whisparr.nightly.2.0.0.1197.linux-core-arm64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.1197&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = 399bbf2113285dc85ae66410709d1ffa19e826f061fc65618747740694465300
+	source_armv7h = Whisparr.nightly.2.0.0.1197.linux-core-arm.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.1197&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = b1ece90ce24f3a23ca254131636731dd318b06159f9856a49360a75385865ac5
 
 pkgname = whisparr-nightly-bin
