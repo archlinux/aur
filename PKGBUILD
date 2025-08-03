@@ -1,7 +1,7 @@
 # Maintainer: khing0_0 <bong.kook.khan@gmail.com>
 # Contributor:
 
-pkgbase='hyprgrass'
+_pkgname='hyprgrass'
 pkgname='hyprgrass-git'
 pkgver=v0.8.2.r618.g21bc4eb.hypr8244389
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('hyprland-git')
 conflicts=('hyprgrass')
 makedepends=('git' 'meson' 'ninja')
-source=("$pkgbase::git+https://github.com/horriblename/hyprgrass.git#branch=main")
+source=("$_pkgname::git+https://github.com/horriblename/hyprgrass.git#branch=main")
 sha256sums=('SKIP')
 
 show_install_reminder() {
@@ -32,7 +32,7 @@ show_install_reminder() {
 }
 
 pkgver() {
-    cd "$srcdir/$pkgbase" || exit
+    cd "$srcdir/$_pkgname" || exit
 
     # Get the installed Hyprland commit hash
     local hyprland_commit=""
@@ -108,7 +108,7 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/$_pkgname"
 
     echo "Building hyprgrass plugin..."
 
@@ -160,7 +160,7 @@ build() {
 }
 
 package_hyprgrass-git() {
-    cd "$srcdir/$pkgbase" || exit
+    cd "$srcdir/$_pkgname" || exit
 
     # Check for the plugin in the correct build location
     if [[ -f build/src/libhyprgrass.so ]]; then

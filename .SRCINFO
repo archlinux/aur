@@ -1,4 +1,4 @@
-pkgbase = hyprgrass
+pkgbase = hyprgrass-git
 	pkgdesc = hyprland plugin for touch screen gestures
 	pkgver = v0.8.2.r618.g21bc4eb.hypr8244389
 	pkgrel = 1
