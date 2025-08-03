@@ -1,0 +1,13 @@
+pkgbase = almalinux-wallpapers
+	pkgdesc = Official AlmaLinux 10 wallpapers (day and night versions)
+	pkgver = 10.0
+	pkgrel = 1
+	url = https://almalinux.org
+	arch = any
+	license = CC-BY-SA
+	depends = xdg-user-dirs
+	noextract = almalinux-logos-100.3-3.el10_0.src.rpm
+	source = https://vault.almalinux.org/10.0/AppStream/Source/Packages/almalinux-logos-100.3-3.el10_0.src.rpm
+	md5sums = SKIP
+
+pkgname = almalinux-wallpapers
