@@ -1,0 +1,15 @@
+pkgbase = avocado
+	pkgdesc = Vector Drawable optimization tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alexjlockwood/avocado
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = nodejs-avocado
+	noextract = avocado-1.0.0.tgz
+	source = https://registry.npmjs.org/avocado/-/avocado-1.0.0.tgz
+	sha256sums = 4af9e6851f9fb5e1b1ec10be8501abec188934ce89590be802c68e8dc6604e08
+
+pkgname = avocado
