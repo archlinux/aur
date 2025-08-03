@@ -1,6 +1,6 @@
 pkgbase = python-pyngrok
 	pkgdesc = A Python wrapper for ngrok
-	pkgver = 7.2.12
+	pkgver = 7.2.13
 	pkgrel = 1
 	url = https://github.com/alexdlaird/pyngrok
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pyngrok
 	makedepends = python-setuptools
 	depends = python-pyaml
 	conflicts = ngrok
-	source = python-pyngrok::git+https://github.com/alexdlaird/pyngrok.git#tag=7.2.12
-	sha256sums = 49b5b9b0c7b22bdae092ea74d06918db8f7b69d9fa7020841a480675ffb43ce9
+	source = python-pyngrok::git+https://github.com/alexdlaird/pyngrok.git#tag=7.2.13
+	sha256sums = c0c508fa1bffcac170fedb6f00fefb645bf7c78c2770671adb2e4c89b93ded3b
 
 pkgname = python-pyngrok
