@@ -10,7 +10,8 @@ source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
         "git+https://github.com/nestybox/dockerfiles.git#commit=f27a6f2b4a97377f932968d2897ba1603680036a"
         "git+https://github.com/nestybox/sysbox-fs.git#commit=6a8d71f54e7570e5297af89ff24ed3bafa61659f"
-        "git+https://github.com/nestybox/fuse.git#commit=45cd9a3d884448418546d8eaa54ee7d772e576d6"
+        # FIXME Workaround for https://github.com/nestybox/sysbox/issues/957, undo once fixed.
+        "fuse::git+https://github.com/joanbm/sysbox-fuse-workaround-for-issue-957.git#commit=45cd9a3d884448418546d8eaa54ee7d772e576d6"
         "git+https://github.com/nestybox/sysbox-ipc.git#commit=f05151f4b4c1df63d7fd241577ca032905c1bd0e"
         "git+https://github.com/nestybox/sysbox-libs.git#commit=6faf00c74d45f7bdff0d1930fe8590c17a2d0a8b"
         "git+https://github.com/nestybox/sysbox-mgr.git#commit=aaeff6c5dc70c137e62166474a309ca5fc42d044"
