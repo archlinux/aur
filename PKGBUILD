@@ -1,4 +1,3 @@
-
 pkgname=glace-git
 pkgver=0.0.1+git
 pkgrel=1
@@ -16,11 +15,13 @@ sha256sums=('SKIP')  # Skip checksum verification for git sources
 build() {
   cd "${srcdir}/glace"
 
+  git checkout hyprland
+
   # Ensure build directory is clean
   rm -rf build
 
   # Setup the build directory with meson
-  meson setup build -Dbuildtype=release --wipe
+  meson setup build --prefix=/usr -Dbuildtype=release --wipe
 }
 
 # Install the package
