@@ -3,7 +3,7 @@
 pkgname=gql-bin
 _pkgname=${pkgname%-bin}
 _pkgbinary=gitql
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Git Query language (GQL) is an SQL like language to perform queries on .git files"
 url="https://github.com/AmrDeveloper/GQL"
@@ -23,10 +23,10 @@ sha256sums=('538a5a5e065de1fe693ebf72cf3c0c69656d4438663ff4aefbd59a4a63bc683f'
             '54db543e154bb141ec97966aa8add22a23910af719b3557b8040e8940e94844f'
             'ab676df3728c0813f8d7ad2ddcc07fba94ff0970293a7a6f28bcfaa6b0696e95'
             'af4ac8b60c924c903e093e862bfa490127221ba058713ab6163662cde9312632'
-            '8da9c100d4a08bac4593460c02098a3a83cda3199f85a6aec69f1cc0e9495bc3'
+            'd018258832dfdf27d7ab063fcf64e022e7f78f99a5abc958be0fc935cd3d76b2'
             'c8e12f62115ab9962711b84bc396adbf75dfc3c4c7e309b37fed1742567bcb0d')
-sha256sums_x86_64=('a78497ac07a58ca5cc44eafcaafde952a2fb4fe4b74e31aba43ed27f79a5f1b1')
-sha256sums_aarch64=('cfa6ddd566896bdd773ed33f620b771d0031979865a623c146c24ac0b8dc7a14')
+sha256sums_x86_64=('c48ea24fd4aa2f3e20ff31b57b5bdc5ea98f8dfa6915c564318d1c07cdae9d27')
+sha256sums_aarch64=('34b09107d05c4ffd168feddfffc090fbb35bc3477ade22449dd8311ea0c0db15')
 
 package() {
   install -vDm755 "$srcdir/${_pkgname}_${pkgver}_${arch}" "$pkgdir/usr/bin/${_pkgbinary}"
