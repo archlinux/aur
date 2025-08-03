@@ -1,0 +1,23 @@
+pkgbase = fantomas-bin
+	pkgdesc = F# source code formatter
+	pkgver = 7.0.3
+	pkgrel = 1
+	url = https://fsprojects.github.io/fantomas/
+	arch = any
+	license = Apache-2.0
+	depends = dotnet-runtime-8.0
+	depends = sh
+	provides = fantomas
+	conflicts = fantomas
+	source = fantomas-7.0.3.nupkg::https://github.com/fsprojects/fantomas/releases/download/v7.0.3/fantomas.7.0.3.nupkg
+	source = fantomas-7.0.3-CHANGELOG.md::https://github.com/fsprojects/fantomas/raw/refs/tags/v7.0.3/CHANGELOG.md
+	source = fantomas-7.0.3-README.md::https://github.com/fsprojects/fantomas/raw/refs/tags/v7.0.3/README.md
+	source = fantomas-7.0.3-LICENSE.md::https://github.com/fsprojects/fantomas/raw/refs/tags/v7.0.3/LICENSE.md
+	source = fantomas.sh
+	sha256sums = afbd4a0372c5ce5d31633d191364414b2db881032e0a3ceb1b532c8a2e79a227
+	sha256sums = 4a5732d393c6d1cd311807fd22ecaf04745cd4f6c1c32913c2a2892ecf453070
+	sha256sums = d221b9cccf3821eadcc95cd45c3ed18cd20c41e00831df15cee095bc5237123a
+	sha256sums = afbf346a88919ce664b55a0078d385dfbd26c11b3f74043928055e99aea1eb6c
+	sha256sums = a913c19f26ef163d08ac01ed700f00968c256271f08bfbbf6b2461e66ed2e769
+
+pkgname = fantomas-bin

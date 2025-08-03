@@ -1,0 +1,5 @@
+[fantomas-bin]
+source = "github"
+github = "fsprojects/fantomas"
+use_latest_release = true
+prefix = "v"
