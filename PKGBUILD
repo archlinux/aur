@@ -1,6 +1,6 @@
 # Maintainer: Zach Rice <bynxmusic@gmail.com>
 pkgname=tylex-git
-pkgver=latest
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A simple, rofi/dmenu-based text expander for tiling window managers."
 arch=('any')
@@ -9,11 +9,13 @@ license=('MIT')
 depends=(
     'bash'
     'jq'
-    'rofi'
-    'rofi-wayland'
-    'dmenu'
     'xdotool'
     'wtype'
+)
+optdepends=(
+    'rofi: For X11 sessions'
+    'rofi-wayland: For Wayland sessions (replaces rofi)'
+    'dmenu: Fallback launcher'
 )
 provides=("tylex")
 conflicts=("tylex")
