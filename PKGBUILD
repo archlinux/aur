@@ -24,6 +24,7 @@ makedepends=('libarchive')
 provides=("$_name")
 conflicts=("$_name")
 source=("https://proton.me/download/authenticator/linux/ProtonAuthenticator_${pkgver}_amd64.deb")
+sha512sums=('d384ba2c16a342d2acb4a35c654d76123c476289ca41a033c863edd6865efca4140491de3231ac31549e3148f964d9c389fd967ef91b4896e74529f9f494b6e6')
 b2sums=('424e7cf4f8283414d7c7f9b5b4cef0f1ec20eecbacb7d914d155e3a38d82121c8e6c72595d19e676d271962fd13a0992ea5218bfc6082dda896fbe4a8f5f4fb3')
 
 package() {
