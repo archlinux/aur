@@ -5,11 +5,11 @@ _pkgname=SOEM
 
 pkgname=soem
 pkgver=2.0.0.r0.g304d1c0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple Open EtherCAT Master Library"
 arch=('x86_64')
 url="https://openethercatsociety.github.io/doc/soem"
-license=('GPL-2.0-only')
+license=('GPL-3.0-only')
 makedepends=('cmake' 'git')
 depends=()
 source=("git+https://github.com/OpenEtherCATsociety/SOEM.git#commit=${_commit}")
