@@ -1,4 +1,5 @@
-# Maintainer: nemesys <nemstar zoho com>
+# Maintainer: Doridian <archlinux at doridian dot net>
+# Contributor: nemesys <nemstar zoho com>
 # Contributor: Heiko Baums <heiko@baums-on-web.de>
 # Contributor: Kurt J. Bosch <kjb-temp-2009 at alpenjodel.de>
 
