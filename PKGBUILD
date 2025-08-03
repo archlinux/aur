@@ -23,9 +23,8 @@ sha512sums=(
 
 prepare() {
 
-echo "The AUR moderators have prohibited mirroring ${filename_deb}, so unfortunately \
-the users will now be required to manually download the file on their own \
-from ${url}."
+    echo "The AUR moderators have prohibited mirroring ${filename_deb}, so unfortunately \
+the users will now be required to manually download the file on their own from ${url}."
 
 }
 
