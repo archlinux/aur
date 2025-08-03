@@ -14,8 +14,8 @@ arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'jq')
+depends=('glibc' 'gcc-libs' 'libx11' 'bzip2' 'vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'libvdpau' 'libva.so' 'libva-drm.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip' 'jq')
 # Experimental conditional check, might be removed in favor of alvr-nvidia-git,
 if _nvidia_check; then
 	makedepends+=('cuda' 'ffnvcodec-headers')
