@@ -9,7 +9,7 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.1.7.8"
+pkgver="6.2.0.5"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             '1728ccf7d02974b779ec794df400fec57b9a98869d319bea7f98d6c1ce4a9d3e'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
-            '636f3a125071cabfcb0c3828c6f9b0ec613789ab846ff71448d1a6eb110aee3f')
+            '3f84136fda8fb2def850f2aca1fd4535f85488273dd8b0737e60fd6febb41b00')
 
 prepare() {
     cd ${srcdir}/asf/ArchiSteamFarm/overlay/variant-base/linux
