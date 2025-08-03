@@ -9,7 +9,7 @@ pkgdesc="A userspace implementation of a splash screen for Linux (formerly known
 arch=('x86_64')
 url="https://sourceforge.net/projects/fbsplash.berlios/"
 license=('GPL')
-depends=('miscsplashutils' 'freetype2' 'libjpeg' 'libpng' 'libmng' 'lcms' 'gpm') 
+depends=('miscsplashutils' 'freetype2' 'libjpeg' 'libpng' 'libmng' 'gpm')
 optdepends=('linux-fbcondecor: enable console background images'
             'fbsplash-extras: additional functionality like daemon icons'
             'fbset: framebuffer setup utility'
@@ -27,7 +27,16 @@ source=(https://master.dl.sourceforge.net/project/fbsplash.berlios/splashutils-$
         fbsplash.initcpio_hook
         fbcondecor.daemon
         fbcondecor.conf
-	fbsplash-freetype-fix.patch)
+        fbsplash-freetype-fix.patch
+        fix-implicit-definitions.patch
+        fix-duplicate-variable-name.patch)
+
+prepare() {
+  cd "$srcdir/splashutils-$pkgver"
+  sed -e '/lcms/d' -i configure.ac
+  rm -fv configure
+  autoreconf -fiv
+}
 
 build() {
   cd "$srcdir/splashutils-$pkgver"
@@ -38,7 +47,7 @@ build() {
   sed -e 's,fbsplash_lib_init(fbspl_bootup),fbsplash_lib_init(fbspl_undef),' -i src/fbcon_decor_ctl.c
 
   # switch fprintf to fputs
-  sed -i '696,696 s/fprintf/fputs/g' src/libfbsplash.c
+  sed -i '696,696 s/fprintf(fp_fifo, cmd)/fputs(cmd, fp_fifo)/g' src/libfbsplash.c
 
   # fix libdir
   sed -i "s:/lib/splash/cache:/usr/lib/splash/cache:g" debian/splashutils.dirs
@@ -56,12 +65,17 @@ build() {
   sed -i "s:@libdir@/splash:/usr/lib/splash:g" src/fbsplash.h.in
 
   sed -i '17 a #include <sys/sysmacros.h>' src/common.c
+  sed -i '22 a #include <sys/mount.h>' src/kernel.c
+  sed -i '22 a #include <sys/stat.h>' src/kernel.c
 
   # fix set_event_dev call for initcpio usage (if evdev module is there)
   patch -Np2 -i "$srcdir/splash_start_initcpio.patch"
 
   # patch to fix freetype error when compiling by removing static freetype.
   patch -Np1 -i "$srcdir/fbsplash-freetype-fix.patch"
+
+  patch -Np1 -i "$srcdir/fix-implicit-definitions.patch"
+  patch -Np1 -i "$srcdir/fix-duplicate-variable-name.patch"
 
   export LIBS="-lbz2"
   export LDFLAGS+=" -z muldefs"
@@ -110,4 +124,6 @@ md5sums=('2a16704c4adde97b58812cd89e3f2342'
          'f65cf94d4d4959bb44cda5fa634ab405'
          '4b1bc27908fd763c57d8137035418d5c'
          'b3db9d4fd902b62ac9e38589677e2d16'
-         '64cf5c9a86b595733e8f2f428a183419')
+         '64cf5c9a86b595733e8f2f428a183419'
+         '1a97697f8217e0641a832fefdd51486a'
+         '80a16dea21de6dabb94c265b0d8bd263')

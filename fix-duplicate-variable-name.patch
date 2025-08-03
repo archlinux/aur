@@ -1,0 +1,53 @@
+--- a/src/fbcon_decor_ctl.c
++++ b/src/fbcon_decor_ctl.c
+@@ -37,7 +37,7 @@ static struct option options[] = {
+ 	{ "quiet",  no_argument, NULL, 'q'},
+ };
+ 
+-enum { none, setpic, on, off, setcfg, getcfg, getstate } arg_task;
++enum { none, setpic, on, off, setcfg, getcfg, getstate } arg_task2;
+ 
+ struct cmd {
+ 	char *name;
+@@ -94,7 +94,7 @@ int fbcondecor_main(int argc, char **arg
+ 		exit(1);
+ 	}
+ 
+-	arg_task = none;
++	arg_task2 = none;
+ 	arg_vc = -1;
+ 
+ 	while ((c = getopt_long(argc, argv, "c:t:hvq", options, NULL)) != EOF) {
+@@ -117,7 +117,7 @@ int fbcondecor_main(int argc, char **arg
+ 		case 'c':
+ 			for (i = 0; i < sizeof(cmds) / sizeof(struct cmd); i++) {
+ 				if (!strcmp(optarg, cmds[i].name)) {
+-					arg_task = cmds[i].value;
++					arg_task2 = cmds[i].value;
+ 					break;
+ 				}
+ 			}
+@@ -140,12 +140,12 @@ int fbcondecor_main(int argc, char **arg
+ 		}
+ 	}
+ 
+-	if (arg_task == none) {
++	if (arg_task2 == none) {
+ 		usage();
+ 		return 0;
+ 	}
+ 
+-	switch (arg_task) {
++	switch (arg_task2) {
+ 	/* Only load the theme if it will actually be used. */
+ 	case setpic:
+ 	case setcfg:
+@@ -161,7 +161,7 @@ int fbcondecor_main(int argc, char **arg
+ 	if (arg_vc == -1)
+ 		arg_vc = 0;
+ 
+-	switch (arg_task) {
++	switch (arg_task2) {
+ 
+ 	case on:
+ 		err = fbcon_decor_setstate(FBCON_DECOR_IO_ORIG_USER, arg_vc, 1);
