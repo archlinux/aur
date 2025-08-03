@@ -1,14 +1,13 @@
 # Maintainer: user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=11
+pkgrel=12
 pkgdesc="Spectral warping wavetable synth. Manual download of .deb installer required."
 arch=('x86_64')
 url="https://vital.audio"
 license=('LicenseRef-EULA')
 provides=('vital')
 depends=('alsa-lib>=1.0.16' 'freetype2>=2.2.1' 'gcc-libs' 'gcc>=3.3.1' 'glib2>=2.12.0' 'glibc>=2.17' 'libcurl-gnutls>=7.16.2' 'libgl' 'libglvnd' 'libsecret>=0.7' 'zenity')
-install=${pkgname}.install
 
 filename_deb="VitalInstaller.deb"
 
