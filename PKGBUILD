@@ -1,20 +1,25 @@
 # Maintainer: m00nw4tch3r <m00nwtchr at duck dot com>
+# Maintainer: PLYSHKA <koraser at keemail dot me>
 
 function _nvidia_check() {
-	pacman -Qi nvidia &>/dev/null
+	pacman -Qi nvidia-utils &>/dev/null
 }
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev01.r2947.b0cdb1ad
-pkgrel=2
+pkgver=21.0.0_dev10.r3216.33a90ab7
+pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
 depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers' 'jq')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'jq')
+# Experimental conditional check, might be removed in favor of alvr-nvidia-git,
+if _nvidia_check; then
+	makedepends+=('cuda' 'ffnvcodec-headers')
+fi
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname"::'git+https://github.com/alvr-org/ALVR.git'
@@ -58,6 +63,8 @@ build() {
 	export FIREWALL_SCRIPT_DIR="$ALVR_ROOT_DIR/share/alvr/"
 
 	if _nvidia_check; then
+		source /etc/profile
+		export NVCC_APPEND_FLAGS+='-std=c++14'
 		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
 	else
 		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
@@ -102,7 +109,6 @@ package() {
 	cp -ar icons/* "$pkgdir/usr/share/icons/"
 
 	# Firewall
-	install -Dm644 alvr/xtask/firewall/alvr-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
 	install -Dm644 alvr/xtask/firewall/ufw-alvr -t "$pkgdir/etc/ufw/applications.d/"
 
 	install -Dm755 alvr/xtask/firewall/alvr_fw_config.sh -t "$pkgdir/usr/share/alvr/"
