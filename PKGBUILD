@@ -2,7 +2,7 @@
 
 pkgname=min-bin
 pkgver=1.35.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Min is a fast, minimal browser that protects your privacy."
 arch=(
     'aarch64'

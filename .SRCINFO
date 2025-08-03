@@ -1,7 +1,7 @@
 pkgbase = min-bin
 	pkgdesc = Min is a fast, minimal browser that protects your privacy.
 	pkgver = 1.35.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minbrowser/min
 	arch = aarch64
 	arch = armv7h
@@ -10,8 +10,6 @@ pkgbase = min-bin
 	depends = gtk3
 	depends = nss
 	depends = libxss
-	provides = min
-	conflicts = min
 	options = !strip
 	source_aarch64 = min-1.35.1-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.35.1/min-1.35.1-arm64.deb
 	sha256sums_aarch64 = SKIP
