@@ -1,0 +1,39 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+    "*.sh",
+    ".gitignore",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-acpi-proc-idle-skip-dummy-wait.patch",
+    "0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch",
+    "0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch",
+    "0007-workaround_hardware_decoding_amdgpu.patch",
+    "0008-amd-tablet-sfh.patch",
+    "0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch",
+    "0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch",
+    "0011-amdgpu-adjust_plane_init_off_by_one.patch",
+    "config",
+]
+SPDX-FileCopyrightText = "linux-g14 contributors"
+SPDX-License-Identifier = "GPL-2.0-only"
