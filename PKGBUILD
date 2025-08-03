@@ -2,7 +2,7 @@
 
 pkgname=osse-core
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="OpenSource Search Engine Core Library"
 
 arch=('x86_64')
