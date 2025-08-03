@@ -40,7 +40,7 @@ makedepends=(
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
-  'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
+  'python-simplejson' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
   'libdisplay-info' 'tinyxml2' 'pcre'
   # wayland
@@ -155,6 +155,7 @@ build() {
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
     -DENABLE_DVDCSS=ON
     -DCORE_PLATFORM_NAME="x11 wayland gbm"
+    -DENABLE_AIRTUNES=OFF
   )
 
   if [[ $CARCH == "armv7h" ]]; then
@@ -184,7 +185,7 @@ package_kodi-ext-git() {
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
     'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'mariadb-libs'
     'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
-    'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
+    'smbclient' 'sqlite' 'taglib' 'tinyxml'
     'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput' 'pcre'
     # external
     'ffmpeg' 'flatbuffers'
