@@ -1,21 +1,32 @@
-# Maintainer: Sashanoraa <sasha@noraa.gay>
+# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 
 pkgname=kitty-img
-pkgver=0.1.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Print images inline in kitty"
-arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
-url="https://sr.ht/~zethra/kitty-img/"
+pkgdesc='Print images inline in kitty'
+arch=('aarch64' 'armv7h' 'i686' 'pentium4' 'x86_64')
+url='https://git.sr.ht/~zethra/kitty-img'
 license=('MIT')
-source=("https://git.sr.ht/~zethra/kitty-img/archive/$pkgver.tar.gz")
-makedepends=('rust' 'cargo')
-sha256sums=('49dd64b4b353a85a16488f9a293bafb7b68b811ef2fa8d7d24116e32e5854fe8')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~zethra/kitty-img/archive/$pkgver.tar.gz")
+b2sums=('9161017e6ae41e3d0ad69701f053f27e7d4d6da1ea97c01ce43ad63473aefc646a64c194c881db7bef95d896ddd4ac6adb389db0afbdaebc4c2ee9aae5c4f5f3')
+
+prepare() {
+    cd $pkgname-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --locked
+    cd $pkgname-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 package() {
-    install -D -m755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    cd $pkgname-$pkgver
+    install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
