@@ -1,6 +1,6 @@
 pkgname=glace-git
-pkgver=0.0.2+git
-pkgrel=2
+pkgver=0.0.4+git
+pkgrel=4
 pkgdesc="Glace is a GObject library to manage Wayland clients and retrieve information about them"
 arch=('x86_64')
 url="https://github.com/Fabric-Development/glace"
@@ -14,6 +14,8 @@ sha256sums=('SKIP')  # Skip checksum verification for git sources
 # Build the package using Meson
 build() {
   cd "${srcdir}/glace"
+
+  git checkoyt hyprland
 
   # Ensure build directory is clean
   rm -rf build
