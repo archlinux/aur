@@ -7,7 +7,7 @@ pkgrel=6
 pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mborgerding/kissfft'
-license=('BSD-3-Clause') # TODO fix SPDX
+license=('BSD-3-Clause')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'fftw' 'libpng' 'python')
 conflicts=('kissfft' 'kissfft-clang-git')
@@ -77,7 +77,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/kissfft/"
 	install -m644 ./*.c "${pkgdir}/usr/lib/kissfft/"
 
-	install -Dm644 LICENSES/BSD-3-Clause "${pkgdir}/usr/share/licenses/kissfft-git/LICENSE"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	install -dm755 "${pkgdir}/usr/share/pkgconfig"
 
