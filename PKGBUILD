@@ -15,8 +15,6 @@ sha256sums=('SKIP')  # Skip checksum verification for git sources
 build() {
   cd "${srcdir}/glace"
 
-  git checkout hyprland
-
   # Ensure build directory is clean
   rm -rf build
 
