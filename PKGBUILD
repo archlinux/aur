@@ -37,6 +37,7 @@ depends=(
     'pango'
     'xdg-utils'
 )
+makedepends=('libarchive')
 optdepends=(
     'kde-cli-tools: file deletion support (kioclient5)'
     'libgnome-keyring'

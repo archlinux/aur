@@ -5,6 +5,7 @@ pkgbase = proton-mail-bin
 	url = https://proton.me
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = libarchive
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
