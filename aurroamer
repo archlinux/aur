@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# aurroamer - package browser in bash, because why not
+# copyright (c) 2025 therock
+# SPDX-License-Identifier: MIT
 set -euo pipefail
 
 VERSION="1.0.0"
