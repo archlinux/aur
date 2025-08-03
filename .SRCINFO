@@ -1,6 +1,6 @@
 pkgbase = mindomo-bin
 	pkgdesc = Mindomo is an online collaborative mind mapping, concept mapping and outlining software for visualizing and organizing information.
-	pkgver = 11.0.5
+	pkgver = 11.0.8
 	pkgrel = 1
 	url = https://mindomo.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mindomo-bin
 	provides = mindomo
 	conflicts = mindomo
 	options = !strip
-	source_x86_64 = https://mindomo.com/download/11.0/Mindomo_v.11.0.5_x64.AppImage
-	sha256sums_x86_64 = 5a6183807c29c23e43ab5bd6c7ae36c6aac4cc09b0152f4c395c38cc5ce0e97f
+	source_x86_64 = https://mindomo.com/download/11.0/Mindomo_v.11.0.8_x64.AppImage
+	sha256sums_x86_64 = 14dd8b1af85aba038c54dbd58baedd0a83ee7875ebb413cfe4ef60e56f779aa1
 
 pkgname = mindomo-bin
