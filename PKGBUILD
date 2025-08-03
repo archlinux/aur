@@ -6,16 +6,13 @@
 
 _pkgname="knowte"
 pkgname="$_pkgname-git"
-pkgver=3.0.0.r28.gc54dbf7
+pkgver=3.0.1.r0.g3ca0d90
 pkgrel=1
 pkgdesc="Cross platform note taking application"
 url="https://github.com/digimezzo/knowte"
 license=('GPL-3.0-only')
 arch=('any')
 
-depends=(
-  'electron'
-)
 makedepends=(
   'git'
   'libxcrypt-compat'
@@ -65,6 +62,8 @@ package() {
   if [[ -z "$_install_path" || "$_install_path" == /* || "$_install_path" = "usr/lib" ]]; then
     _install_path="usr/share"
   fi
+
+  depends=('electron')
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env bash
