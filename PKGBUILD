@@ -8,9 +8,9 @@ url="https://github.com/therock444/aurroamer"
 license=('MIT')
 depends=('bash' 'fzf' 'pacman')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('302f79d070c5035cb59f51f516beb6ec3bc52487309394ab08616540f1934152')
+sha256sums=('7d4a417349c1315ad1600bc84850d6022b1a0f6ce8c189cda63b34a33fab3105')
 
 package() {
-  install -Dm755 "$pkgname-$pkgver/aurroamer" "$pkgdir/usr/bin/aurroamer"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/aurroamer" "$pkgdir/usr/bin/aurroamer"
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

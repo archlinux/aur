@@ -9,6 +9,6 @@ pkgbase = aurroamer
 	depends = fzf
 	depends = pacman
 	source = aurroamer-2.0.1.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 302f79d070c5035cb59f51f516beb6ec3bc52487309394ab08616540f1934152
+	sha256sums = 7d4a417349c1315ad1600bc84850d6022b1a0f6ce8c189cda63b34a33fab3105
 
 pkgname = aurroamer
