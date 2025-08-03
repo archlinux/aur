@@ -1,11 +1,11 @@
 pkgname=aurroamer
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive terminal-based package browser for both official and AUR packages using fzf"
 arch=('any')
 url="https://aur.archlinux.org/packages/aurroamer"
 license=('MIT')
-depends=('bash' 'fzf' 'curl')
+depends=('bash' 'fzf' 'curl' 'gzip')
 optdepends=(
     'yay: AUR helper support'
     'paru: AUR helper support'

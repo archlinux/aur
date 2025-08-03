@@ -7,15 +7,37 @@ if [[ "${1-}" == "--version" || "${1-}" == "-v" ]]; then
     exit 0
 fi
 
+refresh_cache=false
+if [[ "${1-}" == "--refresh" || "${1-}" == "-r" ]]; then
+    refresh_cache=true
+fi
+
 if [[ "${1-}" == "--help" || "${1-}" == "-h" ]]; then
     echo "aurroamer - browse AUR and official packages with fzf"
     echo
-    echo "usage:"
-    echo "  aurroamer              launch interactive mode"
-    echo "  aurroamer --version    show version"
-    echo "  aurroamer --help       show this message"
-    echo
+    echo "  usage:"
+    echo "  aurroamer                    launch interactive mode"
+    echo "  aurroamer --version / -v     show version"
+    echo "  aurroamer --help / -h        show this message"
+    echo "  aurroamer --clear / -c       clears stored package list cache"
+    echo "  aurroamer --refresh / -r     skips the cache prompt and refreshes"
     exit 0
+fi
+
+cachedaur="$HOME/.cache/aurroamer-cache.txt"
+
+if [[ "${1-}" == "--clear" || "${1-}" == "-c" ]]; then
+    echo "deleting cached package list"
+    if ! rm "$cachedaur"; then
+        echo "no cache to delete, or other error"
+        exit 1
+    fi
+    exit 0
+fi
+
+if ! [ -t 1 ]; then
+    echo "error: aurroamer requires an interactive terminal"
+    exit 1
 fi
 
 aurpackages=$(mktemp)
@@ -31,11 +53,9 @@ for helper in yay paru trizen pikaur; do
     fi
 done
 
-if ! command -v pactree > /dev/null; then
-    pactree=1
-    echo "warning: pactree from pacman-contrib is missing, you wont be able to view dependency trees"
-else
-    pactree=0
+if ! command -v fzf > /dev/null; then
+    echo "error: fzf is required but not installed"
+    exit 1
 fi
 
 if [[ -z "$aur_helper" ]]; then
@@ -46,9 +66,17 @@ else
     sleep 1
 fi
 
-cachedaur="$HOME/.cache/pkgbrowser-aur.txt"
-echo "checking for cached aur package list"
 if [[ -f "$cachedaur" ]]; then
+echo "checking for cached aur package list"
+if [[ "$refresh_cache" == true ]]; then
+    echo "refreshing package list"
+    if ! curl -Lsk https://aur.archlinux.org/packages.gz | gunzip > "$aurpackages"; then
+        echo "failed to fetch aur packages"
+        exit 1
+    fi
+    mkdir -p "$(dirname "$cachedaur")"
+    cp "$aurpackages" "$cachedaur"
+elif [[ -f "$cachedaur" ]]; then
     echo "cached aur package list found"
     echo "use cached list instead of downloading? it may be outdated [Y/n]"
     read -rp ">> " usecache
@@ -62,6 +90,7 @@ if [[ -f "$cachedaur" ]]; then
         fi
         cp "$aurpackages" "$cachedaur"
     fi
+fi  
 else
     echo "downloading list of all known aur packages"
     if ! curl -Lsk https://aur.archlinux.org/packages.gz | gunzip > "$aurpackages"; then
@@ -112,7 +141,7 @@ echo
 sleep 1
 
 while true; do
-    selection=$(echo "$fzf_input" | fzf  --prompt="Select package >> ")
+    selection=$(echo "$fzf_input" | fzf  --prompt="Search >> ")
     [[ -z "$selection" ]] && break
 
     pkgtype=$(awk '{print $1}' <<< "$selection")
@@ -127,7 +156,7 @@ while true; do
         echo "choose an option:"
         echo "1) preview package info"
         echo "2) install package"
-        echo "4) back to package list"
+        echo "3) back to package list"
         read -rp ">> " choice
 
         case "$choice" in
@@ -175,4 +204,3 @@ while true; do
         esac
     done
 done
-
