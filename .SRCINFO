@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-harfbuzz
 	pkgdesc = OpenType text shaping engine (mingw-w64)
-	pkgver = 11.2.1
+	pkgver = 11.3.3
 	pkgrel = 1
 	url = https://harfbuzz.github.io/
 	arch = any
@@ -19,12 +19,12 @@ pkgbase = mingw-w64-harfbuzz
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://github.com/harfbuzz/harfbuzz?signed#tag=11.2.1
+	source = git+https://github.com/harfbuzz/harfbuzz?signed#tag=11.3.3
 	validpgpkeys = 053D20F17CCCA9651B2C6FCB9AB24930C0B997A2
 	validpgpkeys = 9F377DDB6D3153A48EB3EB1E63CC496475267693
 	validpgpkeys = 2277650A4E8BDFE4B7F6BE419FEE04E5D3531115
 	validpgpkeys = EACF64F53455E2771BA661A4803B21859F015E4E
-	b2sums = 0fe4c46f4456f3bb64af37620c5d1723bc0b4704ae0c7f3e83f89c73fb1ce0dfd2457bfae374826a2e5e1436269a933b297d7c95fba05d94a401171a57f5da65
+	b2sums = cb0c33adc7a4565d86ebb6161494e43b992875f9d4006724ceba68f6d55efef34322a1fb189eed1410237ee97a79f72d64b53fe0d80afd17358d611e6bcb5811
 
 pkgname = mingw-w64-harfbuzz
 
