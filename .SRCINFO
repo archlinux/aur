@@ -1,0 +1,26 @@
+pkgbase = fake-bin
+	pkgdesc = Cross platform F# build automation system
+	pkgver = 6.1.3
+	pkgrel = 1
+	url = https://fake.build
+	arch = any
+	license = Apache-2.0
+	depends = dotnet-runtime-6.0
+	depends = sh
+	provides = fake
+	conflicts = fake
+	noextract = fake-6.1.3-any.zip
+	source = fake-6.1.3-any.zip::https://github.com/fsprojects/FAKE/releases/download/6.1.3/fake-dotnetcore-portable.zip
+	source = fake-6.1.3-README.md::https://github.com/fsprojects/FAKE/raw/refs/tags/6.1.3/README.md
+	source = fake-6.1.3-LICENSE.txt::https://github.com/fsprojects/FAKE/raw/refs/tags/6.1.3/License.txt
+	source = fake-6.1.3.bash::https://github.com/fsprojects/FAKE/raw/refs/tags/6.1.3/completion/bash/fake-completion.bash
+	source = fake-6.1.3.powershell::https://github.com/fsprojects/FAKE/raw/refs/tags/6.1.3/completion/powershell/posh-fake.psm1
+	source = fake.sh
+	sha256sums = 737b518f147ddb82677cf3f7ba64cc5a9be3d69a4e89771972e7860150645ba4
+	sha256sums = d67208f0b909d1a0fcb5ae82a0f524de1bd01c767c7041d0d801b6374b70f5dd
+	sha256sums = 84bc6641335ca2e7ff35969943f15fd37e9772f097f7591faea160d3fa814800
+	sha256sums = 9a6f62e564b44627a8e1268fa600b715c8412d5c98ecaf294401ea45879f54a4
+	sha256sums = fa064a1fffee2c23d98fa4e50b4c94d6686f9306ff168314c40b45d4e553bd51
+	sha256sums = 1e92f382e5f318cc08ea46aad321d04e69e6b151eeb1039a4f3848c8f71d86a7
+
+pkgname = fake-bin
