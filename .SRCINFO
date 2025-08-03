@@ -1,14 +1,14 @@
 pkgbase = vencord
 	pkgdesc = The cutest Discord client mod
-	pkgver = 1.12.7
+	pkgver = 1.12.9
 	pkgrel = 1
 	url = https://vencord.dev
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = pnpm
-	source = git+https://github.com/Vendicated/Vencord.git#tag=v1.12.7
-	sha256sums = 8c42b42c0c8ae5cc97b6ae9681eafa3221637a8113dd61fc3dfbf74029f4eb6c
+	source = git+https://github.com/Vendicated/Vencord.git#tag=v1.12.9
+	sha256sums = 87beb772fee743330e7499d1f63923a566350204ef98a359058c15b4119d2459
 
 pkgname = vencord
 	install = vencord.install
@@ -35,7 +35,3 @@ pkgname = firefox-developer-edition-vencord
 pkgname = librewolf-vencord
 	install = vencord.install
 	depends = librewolf
-
-pkgname = zen-browser-vencord
-	install = vencord.install
-	depends = zen-browser

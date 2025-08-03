@@ -5,11 +5,10 @@ pkgname=(
   firefox-vencord
   firefox-developer-edition-vencord
   librewolf-vencord
-  zen-browser-vencord
 )
 pkgbase=vencord
 _pkgname=Vencord
-pkgver=1.12.7
+pkgver=1.12.9
 pkgrel=1
 pkgdesc="The cutest Discord client mod"
 arch=(any)
@@ -21,7 +20,7 @@ makedepends=(
   pnpm
 )
 source=("git+$_ghurl.git#tag=v$pkgver")
-sha256sums=('8c42b42c0c8ae5cc97b6ae9681eafa3221637a8113dd61fc3dfbf74029f4eb6c')
+sha256sums=('87beb772fee743330e7499d1f63923a566350204ef98a359058c15b4119d2459')
 
 prepare() {
   cd "$srcdir"/$_pkgname
@@ -82,13 +81,4 @@ package_librewolf-vencord() {
 
   cd "$srcdir"/$_pkgname/dist
   install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/librewolf/browser/extensions/vencord-firefox@vendicated.dev.xpi
-}
-
-package_zen-browser-vencord() {
-  depends=(zen-browser)
-  install=vencord.install
-
-  cd "$srcdir"/$_pkgname/dist
-  #install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/zen-browser/browser/extensions/vencord-firefox@vendicated.dev.xpi
-  install -Dm644 extension-firefox.zip "$pkgdir"/opt/zen-browser-bin/browser/extensions/vencord-firefox@vendicated.dev.xpi
 }

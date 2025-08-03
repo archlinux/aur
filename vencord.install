@@ -14,7 +14,13 @@ Chromium browsers:
 2. Enable "Developer Mode"
 3. Click "Load unpacked" and select the directory /usr/lib/vencord-chromium
 
-Firefox and Firefox forks:
+Firefox and Firefox forks (except Zen):
 Nothing to do, the extension should already be activated by default
+
+Zen:
+1. Head to "about:config"
+2. Search for "xpinstall.signatures.required" and change it to "false"
+3. Go to "about:addons" and click the gear icon below the search field
+4. Select "Install Add-on From File..." and select the file /usr/lib/firefox/browser/extensions/vencord-firefox@vendicated.dev.xpi
 "
 }
