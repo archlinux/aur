@@ -1,16 +1,15 @@
 pkgbase = limine-booster
 	pkgdesc = Automates Limine bootloader entries for kernels using Booster
-	pkgver = 1.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/abshka/limine-booster
-	install = limine-booster.install
 	arch = any
 	license = GPL3
 	depends = booster
 	depends = limine
 	optdepends = intel-ucode: For automatic detection and inclusion of Intel microcode
 	optdepends = amd-ucode: For automatic detection and inclusion of AMD microcode
-	source = https://github.com/abshka/limine-booster/archive/v1.0.1.tar.gz
-	sha256sums = 7fa240e887c8555c5377398718f8940ac28ba26b7362c81f635fc128b1407e96
+	source = https://github.com/abshka/limine-booster/archive/v2.1.0.tar.gz
+	sha256sums = c966fe90fb07ae98909695125f788a904628061d53f1259dbbec607f82d4197f
 
 pkgname = limine-booster

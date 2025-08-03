@@ -1,7 +1,6 @@
 # Maintainer: Alexander Belov markelofaleksei@gmail.com
-
 pkgname=limine-booster
-pkgver=1.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Automates Limine bootloader entries for kernels using Booster"
 arch=('any')
@@ -10,21 +9,14 @@ license=('GPL3')
 depends=('booster' 'limine')
 optdepends=('intel-ucode: For automatic detection and inclusion of Intel microcode'
             'amd-ucode: For automatic detection and inclusion of AMD microcode')
-# This is the standard way to package a project with its own install script.
-install="${pkgname}.install"
-# The source now points to a specific release tarball on GitHub.
-# This is the standard and required practice for AUR.
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('7fa240e887c8555c5377398718f8940ac28ba26b7362c81f635fc128b1407e96')
+sha256sums=('c966fe90fb07ae98909695125f788a904628061d53f1259dbbec607f82d4197f')
 
-# The prepare() function is used to perform actions on the source code
-# before building. Here, we can set the correct permissions if needed.
 prepare() {
     cd "$pkgname-$pkgver"
     chmod +x limine-booster-update
 }
 
-# The package() function now installs files from the extracted source directory.
 package() {
     cd "$pkgname-$pkgver"
 
