@@ -1,6 +1,6 @@
 pkgbase = tylex-git
 	pkgdesc = A simple, rofi/dmenu-based text expander for tiling window managers.
-	pkgver = 0.1.0
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/raoeus/tylex
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = tylex-git
 	depends = bash
 	depends = jq
 	depends = rofi
+	depends = rofi-wayland
 	depends = dmenu
 	depends = xdotool
 	depends = wtype
