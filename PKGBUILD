@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -27,6 +27,14 @@ build() {
   gem install --no-document --no-user-install -i $_gemdir rake
   bundle config --local path "vendor/bundle"
   bundle config --local without "test"
+
+  # Workaround for build failure with gcc 15
+  bundle config --local build.gio2 "--with-cflags=-Wno-incompatible-pointer-types"
+  bundle config --local build.glib2 "--with-cflags=-Wno-incompatible-pointer-types"
+  bundle config --local build.gtk3 "--with-cflags=-Wno-incompatible-pointer-types"
+  bundle config --local build.gobject-introspection "--with-cflags=-Wno-incompatible-pointer-types"
+  bundle config --local build.pango "--with-cflags=-Wno-incompatible-pointer-types"
+
   bundle install
 
   rm -rf $_gemdir/{build_info,cache,doc}
