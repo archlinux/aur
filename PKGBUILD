@@ -2,7 +2,7 @@
 
 _base=firebase-admin-python
 pkgname=python-firebase-admin
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="The Firebase Admin Python SDK enables server-side (backend) Python developers to integrate Firebase into their services and applications."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 depends=('python-cachecontrol' 'python-google-api-core' 'python-google-api-python-client' 'python-google-cloud-firestore' 'python-google-cloud-storage' 'python-pyjwt')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('7deb2234efd1253166d7f35f58beff76e3798ecbfa44047451bbba59c4ac9fda7f616bd06c413c8c3da88bd4035c6b3821276385fc338bb7175468602faa5b47')
+b2sums=('d77cc0027f38a2118babf3f96446e5ffacff91de24e8dc432a083aebd989a3df1a7e699ddb1b6ca64b98b8c5363d58e37193ad683d6139113df663432c5538a2')
 
 build() {
   cd "${_base}-${pkgver}"

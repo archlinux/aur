@@ -1,6 +1,6 @@
 pkgbase = python-firebase-admin
 	pkgdesc = The Firebase Admin Python SDK enables server-side (backend) Python developers to integrate Firebase into their services and applications.
-	pkgver = 7.0.0
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/firebase/firebase-admin-python
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-firebase-admin
 	depends = python-google-cloud-firestore
 	depends = python-google-cloud-storage
 	depends = python-pyjwt
-	source = python-firebase-admin-7.0.0.tar.gz::https://github.com/firebase/firebase-admin-python/archive/refs/tags/v7.0.0.tar.gz
-	b2sums = 7deb2234efd1253166d7f35f58beff76e3798ecbfa44047451bbba59c4ac9fda7f616bd06c413c8c3da88bd4035c6b3821276385fc338bb7175468602faa5b47
+	source = python-firebase-admin-7.1.0.tar.gz::https://github.com/firebase/firebase-admin-python/archive/refs/tags/v7.1.0.tar.gz
+	b2sums = d77cc0027f38a2118babf3f96446e5ffacff91de24e8dc432a083aebd989a3df1a7e699ddb1b6ca64b98b8c5363d58e37193ad683d6139113df663432c5538a2
 
 pkgname = python-firebase-admin
