@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.0.110
+pkgver=7.0.130
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     systray.patch
     systray-buttons-fix.patch
     quit.patch)
-sha256sums=('2f33dbd89a96d5cc76702022d160afd17565db656c4da4c0d08b8191e1efe62b'
+sha256sums=('f86b381ba1941c94b722cafb903649299ff9cb7aa942f89554b1b0f86f693303'
             'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
             'a86306a0f6b1c346cf5967d8cf39cd690bb2ea8a1d9fff3e232743295b6d7779'
             '8eddebb9274e66051b55728e3b73263c0a2d288f70fc6c15917a604a08f7f705'
