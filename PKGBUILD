@@ -1,6 +1,6 @@
 pkgname=glace-git
 pkgver=0.0.2+git
-pkgrel=1
+pkgrel=2
 pkgdesc="Glace is a GObject library to manage Wayland clients and retrieve information about them"
 arch=('x86_64')
 url="https://github.com/Fabric-Development/glace"
