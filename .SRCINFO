@@ -1,0 +1,21 @@
+pkgbase = periodic-table-cli-js
+	pkgdesc = An interactive Periodic Table of Elements app for the console (NodeJS)
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/spirometaxas/periodic-table-cli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = glibc
+	depends = nodejs
+	provides = periodic-table-cli
+	conflicts = periodic-table-cli
+	noextract = periodic-table-cli-2.1.2.tgz
+	source = https://registry.npmjs.org/periodic-table-cli/-/periodic-table-cli-2.1.2.tgz
+	source = https://raw.githubusercontent.com/spirometaxas/periodic-table-cli/v2.1.2/LICENSE
+	source = https://raw.githubusercontent.com/spirometaxas/periodic-table-cli/v2.1.2/README.md
+	b2sums = da18a71d1c8274474b965d409675e728e7af6c242e056722613e688fb88706345c0586e47d978ab8a4d281a6d9363786bbd7b7524c09944bf6ff6c1505c33bfd
+	b2sums = f28d55b22b73e7eb788e355f847d63e9a74b323a254c4854664d3e6f1344dc7020073be511f4a80582d806af640c50330550f13f788e42fb71e4c97b04164d58
+	b2sums = 966d27b4372222f97bff666804659a71bb990fb8fc67943364a84224115f3e940d4311fab0408b26edc4258932ea4f10759db9b2b1db36af25d2673f706d79ab
+
+pkgname = periodic-table-cli-js
