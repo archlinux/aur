@@ -4,12 +4,12 @@
 pkgname=alvr-nvidia
 _pkgname=${pkgname%-nvidia}
 pkgver=20.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
-depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
+depends=('glibc' 'gcc-libs' 'libx11' 'bzip2' 'vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'libvdpau' 'libva.so' 'libva-drm.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers' 'cuda')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
