@@ -1,6 +1,6 @@
 pkgbase = plymouth-git
 	pkgdesc = Graphical boot splash screen (git version)
-	pkgver = 24.004.60.r88.ga0e8b6cf
+	pkgver = 24.004.60.r142.g287ae4de
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/Plymouth/
 	install = plymouth.install

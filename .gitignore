@@ -1,0 +1,10 @@
+src
+pkg
+plymouth
+*.tar.xz
+.vscode
+linux
+test
+*.tar.zst
+*.sig
+LICENSES
