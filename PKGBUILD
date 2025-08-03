@@ -29,4 +29,8 @@ b2sums=('424e7cf4f8283414d7c7f9b5b4cef0f1ec20eecbacb7d914d155e3a38d82121c8e6c725
 
 package() {
     bsdtar -xvf data.tar.gz -C "$pkgdir/"
+
+    # Fix display issue on Wayland+Nvidia and X11
+    sed -i 's/Exec=proton-authenticator/Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 proton-authenticator/' \
+        "$pkgdir/usr/share/applications/Proton Authenticator.desktop"
 }
