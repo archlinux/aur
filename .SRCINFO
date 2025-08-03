@@ -19,7 +19,6 @@ pkgbase = chromium-ffmpeg-codecs-git
 	source = git+https://git.ffmpeg.org/ffmpeg.git
 	source = sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT
 	source = 138.0.7204.55sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2/chromium/ffmpeg.sigs?format=TEXT
-	source = nolog.c
 	source = no-xheaac-parser.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT
 	source = aac.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT
 	source = aacREADME.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT
@@ -27,7 +26,6 @@ pkgbase = chromium-ffmpeg-codecs-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341
-	sha256sums = 4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030
 	sha256sums = 95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05
 	sha256sums = ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234
 	sha256sums = bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660

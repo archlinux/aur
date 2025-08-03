@@ -16,7 +16,6 @@ _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/
 source=("git+${url}.git"
 "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
-nolog.c
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
 "aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
@@ -24,7 +23,6 @@ https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001
 sha256sums=('SKIP'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
-            '4e7935e940003dd8eceff4884b535a26c8f87e12dcb15e29ee04c73e72faf030'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
             'bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660'
@@ -59,12 +57,11 @@ prepare() {
   diff libavformat/oggdec.c{.bak,}||:
   sed -i.bak 's/^int av_sscanf(.*/#define av_sscanf sscanf/' libavutil/avstring.h # not 8 kb
   # CHROMIUM_NO_LOGGING
-  sed -i.bak -E \
-    -e "/^void\s+av_log\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
-    -e "/^void\s+av_log_once\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
-    -e "/^void\s+av_vlog\s*\(.*\)\s*$/,/^\s*\}\s*$/d" \
-   libavutil/log.c
-  cat ../nolog.c >> libavutil/log.c
+  _av_log=$(grep 'void av_log(' libavutil/log.c)
+  _av_log_once=$(grep 'void av_log_once(' libavutil/log.c)
+  _av_vlog=$(grep 'void av_vlog(' libavutil/log.c)
+  sed -i.bak -E "/^void\s+(av_log|av_log_once|av_vlog)\s*\(.*\)\s*$/,/^\s*\}\s*$/d" libavutil/log.c
+  echo -e "${_av_log}{}\n${_av_log_once}{}\n${_av_vlog}{}" >> libavutil/log.c
   diff libavutil/log.c{.bak,}||:
   # soname
   grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
@@ -101,8 +98,8 @@ build() {
 package(){
   install -Dm644 $_so "${pkgdir}"/usr/lib/${pkgname}/$_so
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
-  for n in 7.5 7.6 7.7 7.8 7.9 8.0; do
-    ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
-    ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
+  for _n in 7.5 7.6 7.7 7.8 7.9 8.0; do
+    ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi/${_so}.$_n
+    ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$_n
   done
 }
