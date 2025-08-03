@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/ad-si/TaskLite/releases/download/v${pkgver}/tasklite_linux_${arch}.zip")
 noextract=()
-sha256sums=('fab70c3874e9ee38864f3eb23d0b826956e0d6ce90baa6a27a881cf7ffba1c68')
+sha256sums=('cec201eb783678b4bd66718717bf599c15aa4084be5ec0f137d12230e1dbce1b')
 validpgpkeys=()
 
 prepare() {

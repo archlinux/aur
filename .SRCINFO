@@ -1,12 +1,12 @@
 pkgbase = tasklite-bin
 	pkgdesc = The CLI task manager for power users
-	pkgver = 0.4.0.0
+	pkgver = 0.5.0.0
 	pkgrel = 1
 	url = https://tasklite.org/
 	arch = x86_64
 	license = AGPL-3.0
 	makedepends = unzip
-	source = https://github.com/ad-si/TaskLite/releases/download/v0.4.0.0/tasklite_linux_x86_64.zip
-	sha256sums = fab70c3874e9ee38864f3eb23d0b826956e0d6ce90baa6a27a881cf7ffba1c68
+	source = https://github.com/ad-si/TaskLite/releases/download/v0.5.0.0/tasklite_linux_x86_64.zip
+	sha256sums = cec201eb783678b4bd66718717bf599c15aa4084be5ec0f137d12230e1dbce1b
 
 pkgname = tasklite-bin
