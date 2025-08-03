@@ -3,7 +3,7 @@
 # Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 
 pkgname=pdfposter
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Print large posters on multiple sheets'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(python-pypdf)
 makedepends=(python-{build,installer,setuptools,wheel})
 checkdepends=(python-pytest)
 source=("https://gitlab.com/pdftools/pdfposter/-/archive/v${pkgver}/pdfposter-v${pkgver}.tar.bz2")
-b2sums=('73e98104c36f78b8a9f08b5b4ead64e8faad6f17e97d20878beb739170ab4187a268b08f5d43a11c1b9ba86f7e6949816664258c50fe3085eab5bf04b22ecc45')
+b2sums=('a8351acd1ce5a7df03de15fcf9ef11dc8976ce7997d493fe12d1037f900ea10e76bb994c6cc2fa36c23f0ab6693fcbe414c326b670ee63f044d630215dc5db82')
 
 build() {
   cd ${pkgname}-v${pkgver}
