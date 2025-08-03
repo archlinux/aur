@@ -1,9 +1,9 @@
 # Maintainer: ZilloweZ <zillowez@gmail.com>
 
 pkgname='zoi-bin'
-_tag='Prod-Beta-3.3.0'
-pkgver=3.3.0_beta
-pkgrel=2
+_tag='Prod-Beta-3.3.1'
+pkgver=3.3.1_beta
+pkgrel=1
 pkgdesc="Universal Package Manager & Environment Setup Tool (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi"
@@ -15,7 +15,6 @@ optdepends=(
     'bash-completion: for bash shell completion'
     'zsh: for zsh shell completion'
     'fish: for fish shell completion'
-    'bat: for prettier viewing files'
     'less: for viewing files'
 )
 _license_url='http://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/raw/main/LICENSE'
@@ -25,9 +24,9 @@ source_x86_64=("${pkgname%-bin}-linux-amd64.tar.zst::$url/-/releases/$_tag/downl
 source_aarch64=("${pkgname%-bin}-linux-arm64.tar.zst::$url/-/releases/$_tag/downloads/${pkgname%-bin}-linux-arm64.tar.zst"
                "LICENSE::$_license_url")
 
-sha512sums_x86_64=('1e8e6c66e9329a4cc267e4564bd9da1dc41aaa48a395bf4d5b6a5d09a6f28a078bd9cf155c8e7ba6d1d52bf18d8229d677a119920ccfc5ba3e3e55605a49a2c6'
+sha512sums_x86_64=('cd998555b033dc7de42e31c42d276b05689527d9f01f0854536135c9d4270b04208775e467406ce40c1e187316067b2db22630687c1611e629f2a77407b6ada7'
                    'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
-sha512sums_aarch64=('333706e892e0b764cd9c5f41e3c7d4b241417e56a087f058c4bbd33908c8950859a5eb8f533baeb28029eebeb03669bd02bbef028c12bfaa02a741dcef1a5970'
+sha512sums_aarch64=('b6d8d9d72637a07cb784a3558ad00a4d1c2832e485f56a96f14a325bffec11b9848719c15b3eaa2630ee49e3fc639624ed747927164a87238150a944ffe7de20'
                     'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
 
 package() {
