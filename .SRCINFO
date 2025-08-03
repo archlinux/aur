@@ -1,0 +1,21 @@
+pkgbase = mtsp3
+	pkgdesc = MTSP3 (Music Terminal Shell Player) - a pro terminal-based music player with streaming and playlist support and more
+	pkgver = 3.0.1
+	pkgrel = 3
+	url = https://github.com/almezali/mtsp-v3.0.1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = mpv
+	depends = socat
+	depends = dialog
+	depends = sqlite3
+	depends = ffmpeg
+	depends = jq
+	depends = youtube-dl
+	depends = fzf
+	depends = curl
+	source = git+https://github.com/almezali/mtsp-v3.0.1.git#branch=main
+	md5sums = SKIP
+
+pkgname = mtsp3
