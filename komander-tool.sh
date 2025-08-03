@@ -13,7 +13,7 @@ case $param in
 		fi
 		echo "Autoinstall zsh-komander theme..."
 		chsh -s /bin/zsh
-		sudo mv "${path}/zsh-komander.zsh" "$HOME/.zshrc"
+		sudo cp "${path}/zsh-komander.zsh" "$HOME/.zshrc"
 		echo "End installing..."
 		;;
 	help)
