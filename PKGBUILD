@@ -1,9 +1,9 @@
 # Maintainer: ZilloweZ <zillowez@gmail.com>
 
 pkgname='zoi'
-_tag='Prod-Beta-3.3.0'
-pkgver=3.3.0_beta
-pkgrel=2
+_tag='Prod-Beta-3.3.1'
+pkgver=3.3.1_beta
+pkgrel=1
 pkgdesc="Universal Package Manager & Environment Setup Tool"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi"
@@ -16,13 +16,12 @@ optdepends=(
     'bash-completion: for bash shell completion'
     'zsh: for zsh shell completion'
     'fish: for fish shell completion'
-    'bat: for prettier viewing files'
     'less: for viewing files'
 )
 
 source=("$url/-/archive/$_tag/Zoi-$_tag.tar.gz"
         "LICENSE::$url/-/raw/main/LICENSE")
-sha512sums=('8408ffd19b1dc7c13b57636e639befc63f924728296063daff55f480313caac554d8422c7e79e19cbd6bbf56dff935d11c71536a650d9767bac86b7c6ae2ae35'
+sha512sums=('96d4ea7bbdf9f3cf1d72e1e117db114aa40e74a1ecfff2f03a02b84f462efad72659404d7a03b542c391ab886ac1edc2a5ac57c62c018f2328b8a4116fa59859'
             'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
 
 build() {
