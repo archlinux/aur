@@ -5,7 +5,7 @@ _pkgname=SOEM
 
 pkgname=soem
 pkgver=2.0.0.r0.g304d1c0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Open EtherCAT Master Library"
 arch=('x86_64')
 url="https://openethercatsociety.github.io/doc/soem"
@@ -41,4 +41,16 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}/build"
   DESTDIR="${pkgdir}" make install
+  cd "${pkgdir}"
+  # scripts
+  mv usr/scripts/* usr/bin
+  rmdir usr/scripts
+  # cmake
+  install -dm755 usr/lib/cmake/${pkgname}
+  mv usr/cmake/* usr/lib/cmake/${pkgname}
+  rmdir usr/cmake
+  # licenses
+  install -dm755 usr/share/licenses/${pkgname}
+  mv usr/LICENSE.md usr/share/licenses/${pkgname}
+  rm usr/README.md
 }

@@ -1,7 +1,7 @@
 pkgbase = soem
 	pkgdesc = Simple Open EtherCAT Master Library
 	pkgver = 2.0.0.r0.g304d1c0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openethercatsociety.github.io/doc/soem
 	arch = x86_64
 	license = GPL-2.0-only
