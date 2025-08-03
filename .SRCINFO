@@ -1,6 +1,6 @@
 pkgbase = hyprgrass-git
 	pkgdesc = hyprland plugin for touch screen gestures
-	pkgver = v0.8.2.r618.g21bc4eb.hypr8244389
+	pkgver = v0.8.2.r618.21bc4eb
 	pkgrel = 1
 	url = https://github.com/horriblename/hyprgrass
 	arch = x86_64

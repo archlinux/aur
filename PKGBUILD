@@ -2,8 +2,8 @@
 # Contributor:
 
 _pkgname='hyprgrass'
-pkgname='hyprgrass-git'
-pkgver=v0.8.2.r618.g21bc4eb.hypr8244389
+pkgname="$_pkgname-git"
+pkgver=v0.8.2.r618.21bc4eb
 pkgrel=1
 pkgdesc='hyprland plugin for touch screen gestures'
 arch=('x86_64')
@@ -86,22 +86,21 @@ pkgver() {
 
     # Include hyprland commit in version if we have it
     if [[ -n "$hyprland_commit" ]]; then
-        local hypr_short=$(echo "$hyprland_commit" | cut -c1-7)
         if [[ -n "$hyprgrass_version" ]]; then
-            echo "${hyprgrass_version}.r${git_commit_count}.g${git_short_hash}.hypr${hypr_short}"
+            echo "${hyprgrass_version}.r${git_commit_count}.${git_short_hash}"
         else
-            echo "r${git_commit_count}.g${git_short_hash}.hypr${hypr_short}"
+            echo "r${git_commit_count}.${git_short_hash}"
         fi
     else
         # Fallback without hyprland commit info
         if [[ -n "$hyprgrass_version" ]]; then
-            echo "${hyprgrass_version}.r${git_commit_count}.g${git_short_hash}"
+            echo "${hyprgrass_version}.r${git_commit_count}.${git_short_hash}"
         else
             local git_version=$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
             if [[ -n "$git_version" ]]; then
                 echo "$git_version"
             else
-                echo "r${git_commit_count}.g${git_short_hash}"
+                echo "r${git_commit_count}.${git_short_hash}"
             fi
         fi
     fi
