@@ -6,6 +6,7 @@ pkgbase = tasklite-bin
 	arch = x86_64
 	license = AGPL-3.0
 	makedepends = unzip
+	provides = tasklite
 	source = https://github.com/ad-si/TaskLite/releases/download/v0.5.0.0/tasklite_linux_x86_64.zip
 	sha256sums = cec201eb783678b4bd66718717bf599c15aa4084be5ec0f137d12230e1dbce1b
 
