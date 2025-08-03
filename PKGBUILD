@@ -3,7 +3,7 @@
 pkgname=proton-authenticator-bin
 _name=${pkgname%-bin}
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source and end-to-end encrypted 2FA app. Securely sync and backup your 2FA codes easily.'
 arch=('x86_64')
 url='https://proton.me/authenticator'
