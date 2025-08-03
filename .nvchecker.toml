@@ -1,0 +1,5 @@
+[fsautocomplete-bin]
+source = "github"
+github = "ionide/FsAutoComplete"
+use_latest_release = true
+prefix = "v"
