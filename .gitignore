@@ -1,0 +1,15 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
+*.tar.xz
+download
+
+# Crate downloads
+*.crate
+
+# Backup files
+*.bak
+*~
