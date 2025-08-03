@@ -1,7 +1,7 @@
 pkgbase = fbsplash
 	pkgdesc = A userspace implementation of a splash screen for Linux (formerly known as gensplash)
 	pkgver = 1.5.4.4
-	pkgrel = 17
+	pkgrel = 18
 	url = https://sourceforge.net/projects/fbsplash.berlios/
 	install = fbsplash.install
 	arch = x86_64
