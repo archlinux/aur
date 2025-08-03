@@ -1,14 +1,14 @@
 pkgbase = mad-pascal
 	pkgdesc = Mad-Pascal (MP) is a 32-bit Turbo Pascal compiler for Atari XE/XL
-	pkgver = 1.6.9
-	pkgrel = 4
+	pkgver = 1.7.3
+	pkgrel = 1
 	url = https://github.com/tebe6502/Mad-Pascal
 	arch = x86_64
 	license = unknown
 	makedepends = fpc
 	depends = glibc
 	provides = mad-pascal
-	source = https://github.com/tebe6502/Mad-Pascal/archive/refs/tags/v1.6.9.tar.gz
-	sha256sums = b966351bd6fb990704a8bdc5b895b4f1de9e83450d2cc734ca5e9d50e19f03f2
+	source = https://github.com/tebe6502/Mad-Pascal/archive/refs/tags/v1.7.3.tar.gz
+	sha256sums = d411a098e90e1b99afddcb0df703d8d8cbf4b76734202943338f3f64d4ed1d04
 
 pkgname = mad-pascal
