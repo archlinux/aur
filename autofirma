@@ -1,4 +1,5 @@
 #! /bin/bash
+_java_version="17"
 _autofirma_dir="${HOME}/.afirma/Autofirma"
 _autofirma_ca="${_autofirma_dir}/AutoFirma_ROOT.cer"
 _autofirma_pfx="${_autofirma_dir}/autofirma.pfx"
@@ -132,5 +133,13 @@ unset _autofirma_dir _cert_days
 trust_ca
 
 # Run app
-/usr/lib/jvm/java-17-openjdk/bin/java -jar \
-  /usr/share/java/autofirma/autofirma.jar $@
+_java=(/usr/lib/jvm/java-${_java_version}-openjdk/bin/java \
+  /usr/lib/jvm/*${_java_version}*/bin/java)
+while [ ! -x "${_java[0]}" ]; do
+  _java=("${_java[@]:1}")
+  [ ${#_java[@]} -le 0 ] && \
+    echo "Cannot find any Java ${_java_version} binary in /usr/lib/jvm/*${_java_version}*/bin/java.
+Please make sure you are using an official Java package from Arch Linux." && \
+    exit 1
+done
+${_java[0]} -jar /usr/share/java/autofirma/autofirma.jar $@
