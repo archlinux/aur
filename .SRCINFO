@@ -39,6 +39,7 @@ pkgbase = proton-mail-bin
 	provides = proton-mail
 	conflicts = proton-mail
 	source = ProtonMail-desktop-beta-1.8.1.deb::https://proton.me/download/mail/linux/1.8.1/ProtonMail-desktop-beta.deb
-	sha256sums = 43397439a3ced8e02029beed3167e44b20f2c6f15d88e9cbf42588e73da774c3
+	sha512sums = 31635456313c2fb4d41172eeaffe779484cb690fcd70cab56ded52064017bef227ea25ed98d9fc7f602200b97b04532b344c35081dfb3a847720f510101b8939
+	b2sums = 490011373e001f00affa131a870a8cf246022df4be54b47bb2cb1aa4606b65d56f94bae2b67a16e1935d5ae3d6df51dd69bc4a3c3339e1977823f53e65844ebd
 
 pkgname = proton-mail-bin
