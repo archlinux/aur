@@ -1,0 +1,18 @@
+pkgbase = hiprompt-gtk
+	pkgdesc = GTK4 prompter for Himitsu
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hiprompt-gtk
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = hare
+	makedepends = hare-gi
+	makedepends = hare-adwaita
+	makedepends = hare-gtk4-layer-shell
+	depends = himitsu
+	source = hiprompt-gtk-0.9::https://git.sr.ht/~sircmpwn/hiprompt-gtk/archive/0.9.tar.gz
+	sha256sums = 879bebb24ce66ff92ba28844efcbb39ae8bb514f745e2ea894ef7d8f72d69c15
+
+pkgname = hiprompt-gtk
