@@ -1,59 +1,146 @@
-# Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
+# Maintainer: DownerCase <downercase8 (at) gmail (dot) com>
 
-pkgname=ecal
-pkgver=5.13.3
+pkgbase=ecal
+pkgname=("${pkgbase}"{,'-app','-samples'})
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
-arch=('x86_64' 'armv7h')
+arch=('x86_64')
 url="https://github.com/eclipse-ecal/ecal"
-license=('Apache')
-depends=('curl' 'protobuf' 'python' 'python-protobuf' 'qt5-base' 'qwt' 'hdf5' 'yaml-cpp')
-makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'patchelf' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
-sha256sums=('4b8ab72ee66b5b19506f66c52a03f3523fea9bfccbf3fa3747fab4ea5c5b000f')
-backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
+license=('Apache-2.0')
+makedepends=(
+	git
+	cmake
+	asio
+	curl
+	ecaludp # AUR
+	fineftp-server # AUR
+	ftxui # AUR
+	hdf5
+	protobuf
+	qt6-base
+	qwt
+	recycle # AUR
+	spdlog
+	tclap
+	tcp_pubsub # AUR
+	termcolor # AUR
+	tinyxml2
+	yaml-cpp
+)
+_tag=f088f51926bc0ff942cb0323ca9fc3de4258f660
+source=(
+	"$pkgbase-$pkgver::git+https://github.com/eclipse-ecal/ecal.git#tag=$_tag"
+	"FindCMakeFunctions.cmake"
+	"Findrecycle.cmake"
+	"Findasio.cmake"
+	"protobuf-30-compat.patch"
+	"static_app_helpers.patch"
+	"hdf5_target.patch"
+	"fix_mirror_server_name_clash.patch"
+	"fix-component-for-apps.patch"
+)
+sha256sums=('5b659f1034fab768c04c35063adf6fc747de76edbf348cc1d3976b9e06f940a7'
+            '7772a07a3be74dd249eecd8f058e79956755c99cc507bdc79221676e37523807'
+            'e8d90f45fad48dee0a5ce4196966a260176f23c766918c0fb493cde509b9a452'
+            'a19e5ed8b675bf416fd6013e382043b1c0e7e9552605eb3aba92661e0a56cd30'
+            'eabede2d59f92f9644bd0e6ee68d09040299fb1fe709621f172c141822416430'
+            'fbe08b8aa4dfd4e017ad5d3dd40591c09c6f5b74d5a57469cd953ad2ced4d443'
+            'e38a25c01eaeac394c918dc6e6c65a836d5235f0460b84c293d8eb078374ba6d'
+            'd1eff2178649bf40d27c277b5160074f7f67d5eb79d6ed4cdfdea3f5df52c619'
+            '5dcbd71e570c742b48463f6eac46cc1300ad8da0de440be81758d70e9696cc90')
 
 prepare() {
-    :
+	cd "$pkgbase-$pkgver"
+	patch -Np1 -i ../protobuf-30-compat.patch
+	patch -Np1 -i ../static_app_helpers.patch
+	patch -Np1 -i ../hdf5_target.patch
+	patch -Np1 -i ../fix_mirror_server_name_clash.patch
+	patch -Np1 -i ../fix-component-for-apps.patch
 }
 
 build() {
-    cd "${pkgname}"
-    mkdir -p _build
-    cd _build
-    cmake -E env CXXFLAGS="-Wno-error=restrict" \
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-             -DCMAKE_BUILD_TYPE=Release \
-             -DBUILD_PY_BINDING=ON \
-             -DBUILD_STANDALONE_PY_WHEEL=ON \
-             -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
-             -DECAL_THIRDPARTY_BUILD_CURL=OFF \
-             -DECAL_THIRDPARTY_BUILD_HDF5=OFF \
-             -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-             -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON
-    make
+	local cmake_options=(
+		-S "$pkgbase-$pkgver"
+		-B build
+		-DCMAKE_BUILD_TYPE=None
+		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc
+		-DBUILD_SHARED_LIBS=ON
+		# Package fixes
+		-DCMAKE_MODULE_PATH="$srcdir"
+		-Dasio_INCLUDE_DIR=/usr/include/
+		## Abseil (via Protobuf) needs a consistent C++ standard across the project
+		-DCMAKE_CXX_STANDARD=17
+		## Makes CMake prefer protobuf's config over its own FindProtobuf which doesn't work for eCAL
+		-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON
+		# Explicitly configure pacakge
+		## Enable sub-components
+		-DECAL_BUILD_APPS=ON
+		-DECAL_BUILD_C_BINDING=ON
+		##TODO: Enable Python bindings as of 6.0.0 it places the Python modules
+		## at /usr/ecal/*.so
+		## The bindings currently expect to be built by scikit-build-core
+		-DECAL_BUILD_PY_BINDING=OFF
+		-DECAL_BUILD_SAMPLES=ON
+		-DECAL_USE_FTXUI=ON
+		-DECAL_USE_HDF5=ON
+		-DECAL_USE_QT=ON
+		## Overriden: Don't install source files for samples
+		-DECAL_INSTALL_SAMPLE_SOURCES=OFF
+	)
+	cmake "${cmake_options[@]}"
+	cmake --build build
 }
 
-package() {
-    install -D -m644 "${srcdir}"/"${pkgname}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/asio/LICENSE_1_0.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/asio/LICENSE_1_0.txt
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/capnproto/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/capnproto/LICENSE
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/convert-utf/license.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/convert-utf/license.txt
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/google-flatbuffers/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/google-flatbuffers/LICENSE.txt
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/google-protobuf/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/google-protobuf/LICENSE
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/google-test/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/google-test/LICENSE
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/npcap/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/npcap/LICENSE
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/google-test/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/google-test/LICENSE
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/qt/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/qt/LICENSE
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/simpleini/LICENCE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/simpleini/LICENCE.txt
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/spdlog/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/spdlog/LICENSE
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/tclap/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/tclap/COPYING
-    install -D -m644 "${srcdir}"/"${pkgname}"/licenses/termcolor/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/thirdparty/termcolor/LICENSE
-    cd "${pkgname}"
-    cd _build
-    DESTDIR="$pkgdir" make install
-    cd python
-    python -m build --wheel --no-isolation
-    python -m installer --destdir="${pkgdir}" dist/*.whl   
+package_ecal() {
+	depends=(
+		gcc-libs
+		glibc
+		ecaludp # AUR
+		hdf5
+		protobuf
+		tcp_pubsub # AUR
+		yaml-cpp
+	)
+	backup=('etc/ecal/ecal.yaml' 'etc/ecal/ecaltime.yaml')
+
+	install -D -m644 "${srcdir}"/"${pkgbase}-${pkgver}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+	DESTDIR="$pkgdir" cmake --install build --component Unspecified
+	DESTDIR="$pkgdir" cmake --install build --component configuration
+	DESTDIR="$pkgdir" cmake --install build --component sdk
 }
+
+package_ecal-app() {
+	pkgdesc="First-party tools for eCAL"
+	depends=(
+		gcc-libs
+		glibc
+		ecal # AUR
+		curl
+		fineftp-server # AUR
+		hicolor-icon-theme
+		protobuf
+		qt6-base
+		qwt
+		spdlog
+		tinyxml2
+		yaml-cpp
+	)
+	DESTDIR="$pkgdir" cmake --install build --component app
+	install -D -m644 "${srcdir}"/"${pkgbase}-${pkgver}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+}
+
+package_ecal-samples() {
+	pkgdesc="Sample eCAL applications"
+	depends=(
+		gcc-libs
+		glibc
+		ecal # AUR
+		protobuf
+		qt6-base
+	)
+	DESTDIR="$pkgdir" cmake --install build --component samples
+	install -D -m644 "${srcdir}"/"${pkgbase}-${pkgver}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+}
+

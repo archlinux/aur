@@ -1,0 +1,82 @@
+diff --git a/app/play/play_gui/CMakeLists.txt b/app/play/play_gui/CMakeLists.txt
+index 1682c828f..9c51e4ecf 100644
+--- a/app/play/play_gui/CMakeLists.txt
++++ b/app/play/play_gui/CMakeLists.txt
+@@ -274,8 +274,12 @@ ecal_install_app(${PROJECT_NAME} START_MENU_NAME "eCAL Player")
+ # install files required for linux mimetypes and icon
+ if (UNIX)
+     INSTALL (FILES "${CMAKE_CURRENT_LIST_DIR}/mimetype/ecal-play.xml"
+-            DESTINATION "${CMAKE_INSTALL_DATADIR}/mime/packages/")
++            DESTINATION "${CMAKE_INSTALL_DATADIR}/mime/packages/"
++            COMPONENT app
++    )
+ 
+     INSTALL (FILES "${CMAKE_CURRENT_LIST_DIR}/mimetype/application-ecalmeas.svg"
+-            DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/Humanity/scalable/mimetypes/")
++            DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/Humanity/scalable/mimetypes/"
++            COMPONENT app
++    )
+ endif()
+diff --git a/app/rec/rec_gui/CMakeLists.txt b/app/rec/rec_gui/CMakeLists.txt
+index ef690c4d5..0808da1e7 100644
+--- a/app/rec/rec_gui/CMakeLists.txt
++++ b/app/rec/rec_gui/CMakeLists.txt
+@@ -310,8 +310,12 @@ ecal_install_app(${PROJECT_NAME} START_MENU_NAME "eCAL Recorder")
+ # install files required for linux mimetypes and icon
+ if (UNIX)
+     INSTALL (FILES "${CMAKE_CURRENT_LIST_DIR}/mimetype/ecal-rec.xml"
+-            DESTINATION "${CMAKE_INSTALL_DATADIR}/mime/packages/")
++            DESTINATION "${CMAKE_INSTALL_DATADIR}/mime/packages/"
++            COMPONENT app
++    )
+ 
+     INSTALL (FILES "${CMAKE_CURRENT_LIST_DIR}/mimetype/application-ecalrec.svg"
+-            DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/Humanity/scalable/mimetypes/")
++            DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/Humanity/scalable/mimetypes/"
++            COMPONENT app
++    )
+ endif()
+diff --git a/app/sys/sys_gui/CMakeLists.txt b/app/sys/sys_gui/CMakeLists.txt
+index 7b66f7822..80bf706d1 100644
+--- a/app/sys/sys_gui/CMakeLists.txt
++++ b/app/sys/sys_gui/CMakeLists.txt
+@@ -264,10 +264,14 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY FOLDER app/sys)
+ # install files required for linux mimetypes and icon
+ if (UNIX)
+     INSTALL (FILES "${CMAKE_CURRENT_LIST_DIR}/mimetype/ecal-sys.xml"
+-            DESTINATION "${CMAKE_INSTALL_DATADIR}/mime/packages/")
++            DESTINATION "${CMAKE_INSTALL_DATADIR}/mime/packages/"
++            COMPONENT app
++    )
+ 
+     INSTALL (FILES "${CMAKE_CURRENT_LIST_DIR}/mimetype/application-ecalsys.svg"
+-            DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/Humanity/scalable/mimetypes/")
++            DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/Humanity/scalable/mimetypes/"
++            COMPONENT app
++    )
+ endif()
+ 
+-ecal_install_app(${PROJECT_NAME} START_MENU_NAME "eCAL Sys")
+\ No newline at end of file
++ecal_install_app(${PROJECT_NAME} START_MENU_NAME "eCAL Sys")
+diff --git a/cmake/helper_functions/ecal_install_functions.cmake b/cmake/helper_functions/ecal_install_functions.cmake
+index f805b5973..ff9de67e1 100644
+--- a/cmake/helper_functions/ecal_install_functions.cmake
++++ b/cmake/helper_functions/ecal_install_functions.cmake
+@@ -85,10 +85,14 @@ function(ecal_install_app TARGET_NAME)
+                    COPYONLY)
+ 
+    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/appmenu/ecal_${TARGET_NAME}.png"
+-           DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/hicolor/256x256/apps/")
++           DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/hicolor/256x256/apps/"
++           COMPONENT app
++   )
+ 
+     INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/appmenu/ecal_${TARGET_NAME}.desktop"
+-            DESTINATION "${CMAKE_INSTALL_DATADIR}/applications/")
++            DESTINATION "${CMAKE_INSTALL_DATADIR}/applications/"
++            COMPONENT app
++    )
+   endif()
+ ecal_install_pdbs(TARGET ${TARGET_NAME} DESTINATION "${eCAL_install_app_dir}" COMPONENT app)       
+ endfunction()

@@ -1,0 +1,27 @@
+diff --git a/ecal/samples/cpp/services/mirror_client/CMakeLists.txt b/ecal/samples/cpp/services/mirror_client/CMakeLists.txt
+index e8cce56a4..90184fb92 100644
+--- a/ecal/samples/cpp/services/mirror_client/CMakeLists.txt
++++ b/ecal/samples/cpp/services/mirror_client/CMakeLists.txt
+@@ -18,7 +18,7 @@
+ 
+ cmake_minimum_required(VERSION 3.15)
+ 
+-project(mirror_client)
++project(mirror_client_cpp)
+ 
+ find_package(eCAL REQUIRED)
+ 
+diff --git a/ecal/samples/cpp/services/mirror_server/CMakeLists.txt b/ecal/samples/cpp/services/mirror_server/CMakeLists.txt
+index 292e33c57..0e0ec1193 100644
+--- a/ecal/samples/cpp/services/mirror_server/CMakeLists.txt
++++ b/ecal/samples/cpp/services/mirror_server/CMakeLists.txt
+@@ -18,7 +18,8 @@
+ 
+ cmake_minimum_required(VERSION 3.15)
+ 
+-project(mirror_server)
++# The target name mirror_server is used by HDF5
++project(mirror_server_cpp)
+ 
+ find_package(eCAL REQUIRED)
+ 

@@ -1,0 +1,85 @@
+diff --git a/app/play/play_core/CMakeLists.txt b/app/play/play_core/CMakeLists.txt
+index b978dcca9..bd8634cd7 100644
+--- a/app/play/play_core/CMakeLists.txt
++++ b/app/play/play_core/CMakeLists.txt
+@@ -43,7 +43,8 @@ set(source_files
+   src/measurement_container.h
+ ) 
+ 
+-add_library(${PROJECT_NAME} ${source_files})
++# Internal helper library for eCAL applications
++add_library(${PROJECT_NAME} STATIC ${source_files})
+ add_library(eCAL::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+ 
+ target_include_directories(${PROJECT_NAME} PRIVATE src)
+diff --git a/app/rec/rec_client_core/CMakeLists.txt b/app/rec/rec_client_core/CMakeLists.txt
+index e6b2aaf07..049b8f616 100644
+--- a/app/rec/rec_client_core/CMakeLists.txt
++++ b/app/rec/rec_client_core/CMakeLists.txt
+@@ -78,7 +78,8 @@ if (ECAL_USE_CURL)
+         )
+ endif()
+ 
+-add_library (${PROJECT_NAME} ${source_files})
++# Internal helper library for eCAL applications
++add_library (${PROJECT_NAME} STATIC ${source_files})
+ add_library (eCAL::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+ 
+ target_include_directories(${PROJECT_NAME} PRIVATE src)
+diff --git a/app/rec/rec_server_core/CMakeLists.txt b/app/rec/rec_server_core/CMakeLists.txt
+index 8092dc0a1..5685471ec 100644
+--- a/app/rec/rec_server_core/CMakeLists.txt
++++ b/app/rec/rec_server_core/CMakeLists.txt
+@@ -56,7 +56,8 @@ set(source_files
+     src/recorder/remote_recorder.h
+ ) 
+ 
+-add_library (${PROJECT_NAME} ${source_files})
++# Internal helper library for eCAL applications
++add_library (${PROJECT_NAME} STATIC ${source_files})
+ add_library (eCAL::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+ 
+ target_include_directories(${PROJECT_NAME} PRIVATE src)
+diff --git a/app/sys/sys_client_core/CMakeLists.txt b/app/sys/sys_client_core/CMakeLists.txt
+index 47d703ef4..388215af0 100644
+--- a/app/sys/sys_client_core/CMakeLists.txt
++++ b/app/sys/sys_client_core/CMakeLists.txt
+@@ -34,7 +34,8 @@ set(source_files
+   src/task.cpp
+ ) 
+ 
+-add_library (${PROJECT_NAME} ${source_files})
++# Internal helper library for eCAL applications
++add_library (${PROJECT_NAME} STATIC ${source_files})
+ add_library (eCAL::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+ 
+ target_include_directories(${PROJECT_NAME} PRIVATE src)
+diff --git a/app/sys/sys_core/CMakeLists.txt b/app/sys/sys_core/CMakeLists.txt
+index 9ad5abd70..fcb874aa4 100644
+--- a/app/sys/sys_core/CMakeLists.txt
++++ b/app/sys/sys_core/CMakeLists.txt
+@@ -74,7 +74,8 @@ set(ecalsyscore_src
+   src/task/task_group.cpp
+ )
+ 
+-add_library(${PROJECT_NAME} ${ecalsyscore_src})
++# Internal helper library for eCAL applications
++add_library(${PROJECT_NAME} STATIC ${ecalsyscore_src})
+ add_library(eCAL::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+ 
+ target_include_directories(${PROJECT_NAME}
+diff --git a/app/mon/mon_plugins/monitor_tree_view/CMakeLists.txt b/app/mon/mon_plugins/monitor_tree_view/CMakeLists.txt
+index 2e86602c2..a12512b57 100644
+--- a/app/mon/mon_plugins/monitor_tree_view/CMakeLists.txt
++++ b/app/mon/mon_plugins/monitor_tree_view/CMakeLists.txt
+@@ -37,7 +37,8 @@ set(source_files
+ 
+ set(CMAKE_AUTOMOC ON)
+ 
+-add_library(${PROJECT_NAME} ${source_files})
++# Internal helper library for eCAL plugins
++add_library(${PROJECT_NAME} STATIC ${source_files})
+ add_library(eCAL::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+ 
+ target_include_directories(${PROJECT_NAME} PUBLIC src)
+
