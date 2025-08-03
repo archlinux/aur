@@ -127,13 +127,6 @@ build() {
   export CXXFLAGS+=" -Wno-error"
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
-  if [[ $CARCH == "armv7h" ]]; then
-    _platform="wayland gbm"
-#    export CFLAGS="-mcpu=cortex-a53 -mfpu=neon-fp-armv8 -mfloat-abi=hard -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection"
-  else
-    _platform="x11 wayland gbm"
-  fi
-
 export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
   _args=(
     -DCMAKE_BUILD_TYPE=Release
@@ -162,8 +155,24 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
     -DENABLE_DVDCSS=ON
-    -DENABLE_NEON=OFF
+#    -DENABLE_NEON=OFF
   )
+
+  if [[ $CARCH == "armv7h" ]]; then
+    _args+=(
+      -DCORE_PLATFORM_NAME="wayland gbm"
+      -DWITH_ARCH=arm
+    }
+  elif [[ $CARCH == "aarch64" ]]; then
+    _args+=(
+      -DCORE_PLATFORM_NAME="x11 wayland gbm"
+      -DWITH_ARCH=aarch64
+    }
+  else
+    _args+=(
+      -DCORE_PLATFORM_NAME="x11 wayland gbm"
+    }
+  fi
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
   echo "building kodi"
