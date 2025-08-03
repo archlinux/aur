@@ -155,6 +155,7 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     -DENABLE_VAAPI=ON
     -DENABLE_VDPAU=ON
     -DAPP_RENDER_SYSTEM=gles
+    -DGBM_RENDER_SYSTEM=gles
     -DCORE_PLATFORM_NAME="${_platform}"
     -Dlibdvdcss_URL="$srcdir/$pkgbase-libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
