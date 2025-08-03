@@ -9,6 +9,5 @@ pkgbase = almalinux-wallpapers
 	noextract = almalinux-logos-100.3-3.el10_0.src.rpm
 	source = https://vault.almalinux.org/10.0/AppStream/Source/Packages/almalinux-logos-100.3-3.el10_0.src.rpm
 	sha256sums = 6a735fb00d5a93fc53fa68fe3bab780605bb1f99706e5ed381e2e3fa557b7717
-	sha256sums = 05d0187bb0ae9505a92c9bbb86ed28278a5d3d0ed441e12ac401c2a7921acefc
 
 pkgname = almalinux-wallpapers
