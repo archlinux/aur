@@ -5,6 +5,7 @@ pkgbase = yozefu
 	url = https://github.com/MAIF/yozefu
 	arch = x86_64
 	license = Apache-2.0
+	checkdepends = git
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = clang

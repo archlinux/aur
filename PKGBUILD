@@ -11,6 +11,7 @@ url="https://github.com/MAIF/yozefu"
 license=('Apache-2.0')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'cmake' 'clang' 'gcc14')
+checkdepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" "gcc-14.patch")
 sha512sums=('7b949fad8815395f8e99cc072d1e464d8616eafec62d524404e5d95c5cd460f9e165b09398050212f9d5d88f11bfb8b9a006a9ee401279aac752cb8dfe1f998a'
   'a188a12240442cc48cb208a9aac18dea32834d601c0c6dbb1cdcb36b98dc763aff80efb920024aeba5984429e7bc4736fbea3ab71c1eb56e2b8241d2b0e9f34b')
@@ -31,7 +32,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen -- --skip 'command::create_filter::test_success'
+  cargo test --frozen
 }
 
 package() {
