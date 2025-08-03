@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 build() {
     echo -e "\033[33mBuilds Package...\033[0m"
-    cd "OSSE-Core-$pkgver"
+    cd "OSSE-Core-$pkgver-$pkgrel"
     mkdir -p build
     cd build
 
@@ -31,7 +31,7 @@ build() {
 
 package() {
     echo -e "\033[33mInstalls Package...\033[0m"
-    cd "OSSE-Core-$pkgver/build"
+    cd "OSSE-Core-$pkgver-$pkgrel/build"
     make DESTDIR="$pkgdir" install
 
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
