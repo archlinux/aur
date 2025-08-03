@@ -1,6 +1,6 @@
 pkgbase = robosync
 	pkgdesc = High-performance file synchronization with intelligent concurrent processing
-	pkgver = 1.0.8
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/roethlar/robosync
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = robosync
 	makedepends = cargo
 	makedepends = pkg-config
 	depends = zstd
-	source = https://crates.io/api/v1/crates/robosync/1.0.8/download
-	sha256sums = e044ff5f65851b4272efc02c88bc3e8fbfd0fdfc0fcb35a1c086e09e859aa3a2
+	source = https://crates.io/api/v1/crates/robosync/1.0.10/download
+	sha256sums = 8c6b2276ac13e9e3f373c1fde88c621594beb94d0019b313943c3b9383bae622
 
 pkgname = robosync
