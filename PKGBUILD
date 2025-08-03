@@ -4,7 +4,7 @@
 
 pkgname=miscsplashutils
 pkgver=0.1.8
-pkgrel=5
+pkgrel=6
 pkgdesc='Miscellaneous framebuffer utilities including fbres and fbtruetype'
 arch=('i686' 'x86_64')
 url='http://dev.gentoo.org/~spock/projects/gensplash/'
