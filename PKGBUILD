@@ -1,23 +1,16 @@
-# Maintainer: therock
+# Maintainer : therock
 pkgname=aurroamer
-pkgver=2.0
+pkgver=2.0.0
 pkgrel=6
-pkgdesc="An interactive terminal-based package browser for both official and AUR packages using fzf"
+pkgdesc="Interactive terminal-based browser for AUR and official packages"
 arch=('any')
-url="https://aur.archlinux.org/packages/aurroamer"
+url="https://github.com/therock444/aurroamer"
 license=('MIT')
-depends=('bash' 'fzf' 'curl' 'gzip')
-optdepends=(
-    'yay: AUR helper support'
-    'paru: AUR helper support'
-    'trizen: AUR helper support'
-    'pikaur: AUR helper support'
-)
-source=("aurroamer" "LICENSE")
-sha256sums=('SKIP' 'SKIP')
+depends=('bash' 'fzf' 'pacman')
+makedepends=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6c30f6319e777705a741990b63249331fed23dbebffbe1035b9b617623485a03')
 
 package() {
-install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
-install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname-$pkgver/aurroamer" "$pkgdir/usr/bin/aurroamer"
 }
-
