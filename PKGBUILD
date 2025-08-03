@@ -2,7 +2,7 @@
 
 pkgbase='nps'
 pkgname=('nps' 'npc')
-pkgver=0.30.4
+pkgver=0.30.5
 pkgrel=1
 pkgdesc="A lightweight, high-performance intranet penetration proxy with web UI"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ source=(
   "npc.service"
   "nps.service"
 )
-sha256sums=('0e472e7ec591a09e93c0999a3ff6c0e02ab83cef50c3126893fc8599366bf63f'
+sha256sums=('ec14d0e236373aab086e469ca07498d069d95345365f358b8a9f79e32560c2d2'
             'c668c61dc1d61f87c75430277c4962e71860ab066d3acaaab578b811b781b33e'
             'da9a34b86e9d9f42c0fb57f23b887de89d9de0d7c6a0f6fb34d6741755d35237')
 
