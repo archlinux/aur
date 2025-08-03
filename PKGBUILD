@@ -1,6 +1,6 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-gi
-pkgver=r39.eac0271
+pkgver=0.1.0
 pkgrel=1
 license=("MPL2")
 pkgdesc="GObject Introspection code generator for Hare"
@@ -17,12 +17,7 @@ depends=(
 
 arch=("x86_64" "aarch64")
 url="https://git.sr.ht/~yerinalexey/hare-gi"
-source=("${pkgname}::git+https://git.sr.ht/~yerinalexey/hare-gi")
-
-pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~yerinalexey/hare-gi/archive/${pkgver}.tar.gz")
 
 build() {
 	cd "$srcdir/$pkgname"
@@ -34,4 +29,4 @@ package() {
 	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
-sha256sums=('SKIP')
+sha256sums=('3d70fde77c07be396d5e7cfc1344e72a3fb4b1ce8a58eeb938bd792c6a1a452e')
