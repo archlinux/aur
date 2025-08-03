@@ -1,0 +1,17 @@
+pkgbase = hare-gtk4-layer-shell
+	pkgdesc = Hare bindings for libgtk4-layer-shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-gtk4-layer-shell
+	arch = x86_64
+	arch = aarch64
+	license = MPL2
+	makedepends = git
+	depends = hare
+	depends = hare-gi
+	depends = gtk4-layer-shell
+	provides = hare-gtk4-layer-shell
+	source = hare-gtk4-layer-shell-0.1.0::https://git.sr.ht/~sircmpwn/hare-gtk4-layer-shell/archive/0.1.0.tar.gz
+	sha256sums = 0264500c71b716483bb9dd8c26f979bdabec01d46d988b329eaeb1f93c4a9d41
+
+pkgname = hare-gtk4-layer-shell
