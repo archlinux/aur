@@ -1,0 +1,15 @@
+pkgbase = nuke
+	pkgdesc = The AKEless Build System for C#/.NET
+	pkgver = 9.0.4
+	pkgrel = 1
+	url = https://nuke.build
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-8.0
+	depends = dotnet-runtime-8.0
+	options = !strip
+	options = !debug
+	source = nuke-9.0.4.tar.gz::https://github.com/nuke-build/nuke/archive/refs/tags/9.0.4.tar.gz
+	b2sums = 80250d5ae27d001fbc5722ec0a62373cd6096318ccaddd27e7a5d0975aef917827759d34ba1c3f2518ba697df47d2fa5273e77450e044299b4f51e37e50a720d
+
+pkgname = nuke

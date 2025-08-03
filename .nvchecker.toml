@@ -1,0 +1,4 @@
+[nuke]
+source = "git"
+git = "https://github.com/nuke-build/nuke.git"
+prefix = "v"
