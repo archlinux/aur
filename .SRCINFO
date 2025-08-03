@@ -1,6 +1,6 @@
 pkgbase = glace-git
 	pkgdesc = Glace is a GObject library to manage Wayland clients and retrieve information about them
-	pkgver = 0.0.1+git
+	pkgver = 0.0.2+git
 	pkgrel = 1
 	url = https://github.com/Fabric-Development/glace
 	arch = x86_64
