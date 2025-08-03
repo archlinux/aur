@@ -1,6 +1,6 @@
 # Maintainer: Mohammed Chelouti <m.chelouti@bluewin.ch>
 pkgname=tasklite-bin
-pkgver='0.4.0.0'
+pkgver='0.5.0.0'
 pkgrel=1
 epoch=
 pkgdesc="The CLI task manager for power users"
