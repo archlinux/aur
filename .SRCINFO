@@ -1,0 +1,20 @@
+pkgbase = ura-git
+	pkgdesc = A dynamic tiling Wayland compositor
+	pkgver = r58.771e2ab
+	pkgrel = 1
+	url = https://github.com/levinion/ura
+	arch = any
+	license = GPLv3
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = nlohmann-json
+	depends = luajit
+	depends = glibc
+	depends = sol2
+	depends = pixman
+	provides = ura
+	conflicts = ura
+	source = ura::git+https://github.com/levinion/ura.git
+	sha256sums = SKIP
+
+pkgname = ura-git
