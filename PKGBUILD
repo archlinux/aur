@@ -21,6 +21,7 @@ pkgver() {
 build() {
   cd "$srcdir/zopfli"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_BUILD_TYPE=None \
         -DZOPFLI_BUILD_SHARED=ON \
         -Wno-dev \
