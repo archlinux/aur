@@ -11,7 +11,7 @@ depends=(
     'glibc'
 )
 source=("meshcmd::https://alt.meshcentral.com/meshagents?meshcmd=6")
-b2sums=('3285d6178db98163ef4ce60ab8ad3e3e371f94fc27f6b518c741f175d8ead89c013de85cfad736d7cb9c5146f66ff98f7ce8502bcf60d97be8f5bf9105fe1cea')
+b2sums=('7b3ccabb29faa6e8204494f33c8f30f4251299791bc8382b2186a9c382c4956464d2eb8a5fe31b48d3cfade82d6621f803e1aa8481bcdae821cb59bcf5e737b3')
 
 package() {
     install -Dm755 "meshcmd" "${pkgdir}/usr/bin/meshcmd"
