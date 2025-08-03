@@ -3,14 +3,14 @@
 pkgname=kissfft-git
 _pkgname=kissfft
 pkgver=383.9feadb9
-pkgrel=5
+pkgrel=6
 pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mborgerding/kissfft'
 license=('BSD-3-Clause') # TODO fix SPDX
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'fftw' 'libpng' 'python')
-conflicts=('kissfft')
+conflicts=('kissfft' 'kissfft-clang-git')
 provides=('kissfft')
 source=('git+https://github.com/mborgerding/kissfft.git')
 sha256sums=('SKIP')
@@ -18,6 +18,13 @@ sha256sums=('SKIP')
 pkgver() {
 	cd kissfft
 	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	if [[ "${CC}" == "clang" ]]; then
+		echo "≪This package does not support building with clang, use kissfft-clang-git instead≫" >&2
+		exit 1
+	fi
 }
 
 build() {
@@ -55,8 +62,7 @@ build() {
 		done
 
 		cp Makefile.bak Makefile
-		# Without this the project only builds the first (or last?) thing and nothing else
-		rm -rf CMakeFiles cmake_install.cmake
+		# shellcheck disable=SC2086
 		cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" ${_cmake_args}
 		make -C build all
 		#PREFIX="${srcdir}/usr" make install
