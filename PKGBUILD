@@ -78,7 +78,7 @@ for p in $(shopt -s nullglob; echo *.patch) ; do
 done
 
 prepare() {
-####  [[ -d kodi-build ]] && rm -rf kodi-build
+  [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir -p "$srcdir/kodi-build"
 
   cd "$startdir/$_gitname"
@@ -127,7 +127,8 @@ build() {
   export CXXFLAGS+=" -Wno-error"
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
-export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
+# export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
+
   _args=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -168,10 +169,6 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
       -DWITH_ARCH=aarch64
       -DWITH_CPU=aarch64
     )
-#  else
-#    _args+=(
-#      -DCORE_PLATFORM_NAME="x11 wayland gbm"
-#    )
   fi
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
