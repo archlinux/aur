@@ -8,7 +8,7 @@ function _nvidia_check() {
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
 pkgver=21.0.0_dev10.r3216.33a90ab7
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
