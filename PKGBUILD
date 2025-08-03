@@ -2,8 +2,8 @@
 _pkgname=delance-runtime
 pkgname=delance-langserver
 # If patch >= 100, update _pkgver only
-_pkgver="2024.4.104"
-pkgver="2024.4.1.r104"
+_pkgver="2025.6.103"
+pkgver="2025.6.6.r103"
 pkgrel=1
 pkgdesc="A spear to the Python language server built with black magic"
 arch=(any)
@@ -12,7 +12,7 @@ license=('0BSD')
 depends=(nodejs)
 makedepends=(npm jq)
 source=("https://git.sr.ht/~self/${_pkgname}/archive/v${_pkgver}.tar.gz")
-sha256sums=('69e31712772c18a2deaa87ee0f0c680dde2b62ac0daad9fff6b056195a30594a')
+sha256sums=('09c2eca1cb3b5ae52ce10cecb38d30ba08ae95c0b1886d6ee97c781982abd605')
 
 build() {
 	cd "$_pkgname-v$_pkgver"
