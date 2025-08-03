@@ -4,9 +4,9 @@
 # Contributor: Daurnimator <daurnimator@archlinux.org>
 pkgname=mingw-w64-luajit
 # LuaJIT has a "rolling release" where you should follow git HEAD
-_commit=f9140a622a0c44a99efb391cc1c2358bc8098ab7
+_commit=871db2c84ecefd70a850e03a6c340214a81739f0
 # The patch version is the timestamp of the above git commit, obtain via `git show -s --format=%ct`
-_ct=1748459687
+_ct=1753364724
 pkgver="2.1.${_ct}"
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
@@ -16,7 +16,7 @@ license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('gcc-libs' 'lib32-gcc-libs' 'mingw-w64-gcc')
 source=("LuaJIT-${_commit}.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/${_commit}.tar.gz")
-sha256sums=('2d3f26c3261f46ae59d3e9489c632e3910f2033c657a24a90666ee0acf032463')
+sha256sums=('ab3f16d82df6946543565cfb0d2810d387d79a3a43e0431695b03466188e2680')
 options=('!strip' '!buildflags' staticlibs)
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
