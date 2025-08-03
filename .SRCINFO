@@ -1,7 +1,7 @@
 pkgbase = krunner-steam-git
 	pkgdesc = Launch Steam games from Krunner
 	pkgver = r16.da5747c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xTibor/krunner-steam.git
 	install = krunner-steam.install
 	arch = any

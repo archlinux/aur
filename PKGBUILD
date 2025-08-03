@@ -4,7 +4,7 @@
 _pkgname=krunner-steam
 pkgname=$_pkgname-git
 pkgver=r16.da5747c
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch Steam games from Krunner"
 arch=('any')
 url="https://github.com/xTibor/krunner-steam.git"
