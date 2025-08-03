@@ -1,0 +1,16 @@
+pkgbase = sysauth
+	pkgdesc = Simple authentication popup
+	pkgver = 2025.08.03
+	pkgrel = 1
+	url = https://github.com/System64fumo/sysauth
+	arch = aarch64
+	arch = x86_64
+	groups = sysshell
+	license = WTFPL
+	depends = gtkmm-4.0
+	depends = gtk4-layer-shell
+	depends = polkit
+	source = git+https://github.com/System64fumo/sysauth
+	sha256sums = SKIP
+
+pkgname = sysauth
