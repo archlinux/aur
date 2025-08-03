@@ -1,4 +1,4 @@
-.*.tar.zst
 krunner-steam/
 pkg/
 src/
+*.pkg.tar.zst
