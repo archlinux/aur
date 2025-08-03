@@ -1,0 +1,5 @@
+[python-pykickstart]
+source = "github"
+github = "pykickstart/pykickstart"
+use_latest_release = true
+prefix = "r"
