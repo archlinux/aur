@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/swaycut-git/
+/*.pkg.tar.zst
