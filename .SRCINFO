@@ -1,0 +1,12 @@
+pkgbase = git-mediate
+	pkgdesc = Tool to help resolving git conflicts
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Peaker/git-mediate
+	arch = any
+	license = GPL2
+	makedepends = stack
+	source = git-mediate-1.1.0.tar.gz::https://github.com/Peaker/git-mediate/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = f8bacc2d041d1bef9288bebdb20ab2ee6fbd7d37d4e23c84f8dda27ff5b8ba59
+
+pkgname = git-mediate
