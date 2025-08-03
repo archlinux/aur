@@ -21,6 +21,9 @@ post_install() {
 
 post_upgrade() {
   systemctl --quiet daemon-reload
+  # Starting 2.2.10, we switched to .opt-1.pyc and own them.
+  # Drop all .pyc, but not .opt-1.pyc.
+  find /usr/share/yabsnap -type f -name "*.pyc" ! -name "*.opt-1.pyc" -exec rm -f {} +
 }
 
 pre_remove() {
