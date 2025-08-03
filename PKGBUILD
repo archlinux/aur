@@ -2,7 +2,7 @@
 
 pkgname=osse-core
 pkgver=0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="OpenSource Search Engine Core Library"
 
 arch=('x86_64')
@@ -19,25 +19,27 @@ sha256sums=('SKIP')
 
 build() {
     echo -e "\033[33mBuilds Package...\033[0m"
-    cd "OSSE-Core-$pkgver-$pkgrel"
-    mkdir -p build
-    cd build
 
-    echo -e "\033[33mBuilds OSSE Core Library\033[0m"
-    cmake .. \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_INCLUDEDIR=include
-    make
+    local cmake_options=(
+        -B build
+        -S "OSSE-Core-$pkgver-$pkgrel"
+
+        # Options for CMAKE
+        -DCMAKE_INSTALL_PREFIX=/usr
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
+
     echo -e "\033[34mBuild Done\033[0m"
 }
 
 package() {
     echo -e "\033[33mInstalls Package...\033[0m"
-    cd "OSSE-Core-$pkgver-$pkgrel/build"
-    make DESTDIR="$pkgdir" install
 
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir" cmake --install build
+
+    install -Dm644 "OSSE-Core-$pkgver-$pkgrel/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
     echo -e "\033[34mInstallation Done\033[0m"
 }
