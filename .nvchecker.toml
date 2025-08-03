@@ -1,4 +1,4 @@
-[archivemount-ng]
+[kitty-img]
 source = "cmd"
 cmd = '''
 git ls-remote --tags https://git.sr.ht/~zethra/kitty-img \
