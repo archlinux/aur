@@ -1,6 +1,7 @@
+# Maintainer: therock
 pkgname=aurroamer
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc="An interactive terminal-based package browser for both official and AUR packages using fzf"
 arch=('any')
 url="https://aur.archlinux.org/packages/aurroamer"

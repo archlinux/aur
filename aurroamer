@@ -4,15 +4,30 @@
 # SPDX-License-Identifier: MIT
 set -euo pipefail
 
-VERSION="1.0.0"
+VERSION="1.1-1"
 if [[ "${1-}" == "--version" || "${1-}" == "-v" ]]; then
     echo "aurroamer $VERSION"
     exit 0
 fi
 
-refresh_cache=false
+cachedaur="$HOME/.cache/aurroamer-cache.txt"
+
+download_aur_list() {
+    echo "downloading list of all known aur packages"
+    if ! curl -Lsk https://aur.archlinux.org/packages.gz | gunzip > "$aurpackages"; then
+        echo "failed to fetch aur packages"
+        exit 1
+    fi
+    mkdir -p "$(dirname "$cachedaur")"
+    cp "$aurpackages" "$cachedaur"
+}
+
 if [[ "${1-}" == "--refresh" || "${1-}" == "-r" ]]; then
-    refresh_cache=true
+    echo "refreshing package list"
+    aurpackages=$(mktemp)
+    download_aur_list
+    echo "cache refreshed"
+    exit 0
 fi
 
 if [[ "${1-}" == "--help" || "${1-}" == "-h" ]]; then
@@ -22,12 +37,11 @@ if [[ "${1-}" == "--help" || "${1-}" == "-h" ]]; then
     echo "  aurroamer                    launch interactive mode"
     echo "  aurroamer --version / -v     show version"
     echo "  aurroamer --help / -h        show this message"
-    echo "  aurroamer --clear / -c       clears stored package list cache"
-    echo "  aurroamer --refresh / -r     skips the cache prompt and refreshes"
+    echo "  aurroamer --clear / -c       clears stored AUR package list cache"
+    echo "  aurroamer --refresh / -r     skips the cache prompt and refreshes the cache	"
+    echo "  aurroamer --search <term>    search for packages by name, skips package type selection"
     exit 0
 fi
-
-cachedaur="$HOME/.cache/aurroamer-cache.txt"
 
 if [[ "${1-}" == "--clear" || "${1-}" == "-c" ]]; then
     echo "deleting cached package list"
@@ -46,15 +60,20 @@ fi
 aurpackages=$(mktemp)
 repopackages=$(mktemp)
 total=$(mktemp)
+trap 'rm -f "$aurpackages" "$repopackages" "$total"; exit 130' INT
 trap 'rm -f "$aurpackages" "$repopackages" "$total"' EXIT
 
-aur_helper=""
-for helper in yay paru trizen pikaur; do
-    if command -v "$helper" > /dev/null; then
-        aur_helper="$helper"
-        break
-    fi
-done
+detect_aur_helper() {
+    for helper in yay paru trizen pikaur; do
+        if command -v "$helper" > /dev/null; then
+            echo "$helper"
+            return
+        fi
+    done
+    echo ""
+}
+
+aur_helper=$(detect_aur_helper)
 
 if ! command -v fzf > /dev/null; then
     echo "error: fzf is required but not installed"
@@ -69,45 +88,32 @@ else
 fi
 
 if [[ -f "$cachedaur" ]]; then
-echo "checking for cached aur package list"
-if [[ "$refresh_cache" == true ]]; then
-    echo "refreshing package list"
-    if ! curl -Lsk https://aur.archlinux.org/packages.gz | gunzip > "$aurpackages"; then
-        echo "failed to fetch aur packages"
-        exit 1
-    fi
-    mkdir -p "$(dirname "$cachedaur")"
-    cp "$aurpackages" "$cachedaur"
-elif [[ -f "$cachedaur" ]]; then
-    echo "cached aur package list found"
-    echo "use cached list instead of downloading? it may be outdated [Y/n]"
-    read -rp ">> " usecache
-    if [[ ! "$usecache" =~ ^[Nn]$ ]]; then
-        cp "$cachedaur" "$aurpackages"
+    echo "checking for cached aur package list"
+    if [[ "$refresh_cache" == true ]]; then
+        echo "refreshing package list"
+        download_aur_list
     else
-        echo "downloading list of all known aur packages"
-        if ! curl -Lsk https://aur.archlinux.org/packages.gz | gunzip > "$aurpackages"; then
-            echo "failed to fetch aur packages"
-            exit 1
+        echo "cached aur package list found"
+        echo "use cached list instead of downloading? it may be outdated [Y/n]"
+        read -rp ">> " usecache
+        if [[ ! "$usecache" =~ ^[Nn]$ ]]; then
+            cp "$cachedaur" "$aurpackages"
+        else
+            download_aur_list
         fi
-        cp "$aurpackages" "$cachedaur"
     fi
-fi  
 else
-    echo "downloading list of all known aur packages"
-    if ! curl -Lsk https://aur.archlinux.org/packages.gz | gunzip > "$aurpackages"; then
-        echo "failed to fetch aur packages"
-        exit 1
-    fi
-    mkdir -p "$(dirname "$cachedaur")"
-    cp "$aurpackages" "$cachedaur"
+    download_aur_list
 fi
 
 echo "making a list of known official packages"
 if ! pacman -Slq > "$repopackages"; then
-    echo "failed to fetch official packages"
+    echo "failed to get official packages"
     exit 1
 fi
+
+sort -o "$aurpackages" "$aurpackages"
+sort -o "$repopackages" "$repopackages"
 
 aur_count=$(wc -l < "$aurpackages")
 repo_count=$(wc -l < "$repopackages")
@@ -118,37 +124,44 @@ echo "aur package count: $aur_count"
 echo "total package count: $total_count"
 
 echo
-echo "browse which packages?"
-echo "1) official only"
-echo "2) aur only"
-echo "3) all"
-read -rp ">> " mode
-case "$mode" in
-    1)
-        fzf_input=$(awk '{printf "[official] %s\n", $0}' "$repopackages")
-        ;;
-    2)
-        fzf_input=$(awk '{printf "[aur]      %s\n", $0}' "$aurpackages")
-        ;;
-    3)
-        fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") )
-        ;;
-    *)
-        exit 0
-        ;;
-esac
+if [[ "${1-}" == "--search" || "${1-}" == "-s" ]]; then
+    search_term="$2"
+    echo "searching for packages matching: $search_term"
+    sleep 1
+    fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") | grep -i "$search_term" )
+else
+    echo "browse which packages?"
+    echo "1) official only"
+    echo "2) aur only"
+    echo "3) all"
+    read -rp ">> " mode
+    case "$mode" in
+        1)
+            fzf_input=$(awk '{printf "[official] %s\n", $0}' "$repopackages")
+            ;;
+        2)
+            fzf_input=$(awk '{printf "[aur]      %s\n", $0}' "$aurpackages")
+            ;;
+        3)
+            fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") )
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
+fi
 
 echo
 
 while true; do
-    selection=$(echo "$fzf_input" | fzf  --prompt="Search >> ")
+    selection=$(echo "$fzf_input" | fzf --prompt="Search >> ")
     [[ -z "$selection" ]] && break
 
-    pkgtype=$(awk '{print $1}' <<< "$selection")
-    pkgname=$(awk '{print $2}' <<< "$selection")
+    pkgtype=$(cut -d ' ' -f1 <<< "$selection")
+    pkgname=$(cut -d ' ' -f2- <<< "$selection")
 
     clear
-    echo "you selected: $pkgname $pkgtype"
+    echo "you selected: $pkgtype $pkgname"
     echo
     sleep 1
 
@@ -188,7 +201,6 @@ while true; do
                         echo "no aur helper available"
                     fi
                 fi
-                echo
                 read -n 1 -s -r -p "press any key to return"
                 clear
                 ;;
