@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b6067
+pkgver=b6075
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -71,6 +71,7 @@ build() {
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DGGML_HIP=ON
+    -DGGML_CUDA_FA_ALL_QUANTS=ON
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
