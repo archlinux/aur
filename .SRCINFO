@@ -1,0 +1,20 @@
+pkgbase = pasgtk4-git
+	pkgdesc = Modern Pascal bindings for GTK4 with LibAdwaita support (development version)
+	pkgver = r3.a332458
+	pkgrel = 1
+	url = https://github.com/AnmiTaliDev/pasgtk4
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	optdepends = gnome-themes-extra: Additional themes
+	optdepends = adwaita-icon-theme: Default icons
+	provides = pasgtk4
+	conflicts = pasgtk4
+	source = git+https://github.com/AnmiTaliDev/pasgtk4.git
+	sha256sums = SKIP
+
+pkgname = pasgtk4-git
