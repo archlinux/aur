@@ -20,7 +20,7 @@ _phpbase="74"
 _suffix=""
 pkgver="7.4.33"
 pkgbase_rc=""
-pkgrel="9"
+pkgrel="10"
 pkgbase="php74"
 pkgdesc="PHP 7.4.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -125,12 +125,7 @@ pkgname=(
     "php74-ffi"
     "php74-opcache"
 )
-source=(
-    "make-tests.patch"
-    "php-makefile-patcher.php"
-    "php-apache.conf"
-    "pear-config-patcher.php"
-    "https://php.net/distributions/php-${pkgver}.tar.xz"
+_patches=(
     "libxml-pear.patch"
     "php-libxml.patch"
     "libxml-21200-php-7.0.patch"
@@ -142,6 +137,15 @@ source=(
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php7.4.patch"
+    'libxml-ATTRIBUTE_UNUSED-2.patch'
+)
+source=(
+    "make-tests.patch"
+    "php-makefile-patcher.php"
+    "php-apache.conf"
+    "pear-config-patcher.php"
+    "https://php.net/distributions/php-${pkgver}.tar.xz"
+    "${_patches[@]}"
 )
 depends=(
 )
@@ -203,19 +207,6 @@ makedepends=(
     "libffi"
 )
 arch=(
-)
-_patches=(
-    "libxml-pear.patch"
-    "php-libxml.patch"
-    "libxml-21200-php-7.0.patch"
-    "icu-74-php-7.4.patch"
-    "litespeed-phpheader.patch"
-    "mysql-socket-php7.1.patch"
-    "php74-enchant.patch"
-    "debian-php-7.4.patch"
-    "php-phpinfo.patch"
-    "timezonedb-guess.patch"
-    "timezonedb-php7.4.patch"
 )
 _sapi_depends=(
     "libxml2"
@@ -515,7 +506,7 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=gnu17"
     export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     if ((_phpbase <= 73)); then
         export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration -fpermissive"
@@ -1509,4 +1500,5 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'c30ff6fcf75b0c0068f3d49fde8024719b3677f104d93232e52c5358c840c0f5'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
-            '6ef318bf8d53a2288d037e3284f4dbfc26c36fd2ecc7d62e3d5036c19ec0a707')
+            '6ef318bf8d53a2288d037e3284f4dbfc26c36fd2ecc7d62e3d5036c19ec0a707'
+            '7356932e3120c261a7a912480de85d32af92e5ca8f54343aeb6df13e24f5955b')

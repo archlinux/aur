@@ -1,0 +1,18 @@
+ATTRIBUTE_UNUSED
+php_libxml_output_buffer_create_filename
+
+diff -pNaru5 a/ext/libxml/libxml.c b/ext/libxml/libxml.c
+--- a/ext/libxml/libxml.c	2025-06-05 00:56:42.896602580 -0400
++++ b/ext/libxml/libxml.c	2025-06-05 00:57:27.933510840 -0400
+@@ -34,10 +34,11 @@
+ #include "ext/standard/info.h"
+ #include "ext/standard/file.h"
+ 
+ #if HAVE_LIBXML
+ 
++#include <ansidecl.h>
+ #include <libxml/parser.h>
+ #include <libxml/parserInternals.h>
+ #include <libxml/tree.h>
+ #include <libxml/uri.h>
+ #include <libxml/xmlerror.h>
