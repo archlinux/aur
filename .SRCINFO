@@ -1,0 +1,15 @@
+pkgbase = wl_shimeji-plugin-kwinsupport
+	pkgdesc = Plugin for wl_shimeji that enables window interaction when running under kwin_wayland
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/CluelessCatBurger/wl_shimeji.kwinsupport
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	makedepends = uthash
+	depends = wl_shimeji
+	depends = libsystemd
+	source = wl_shimeji-plugin-kwinsupport::git+https://github.com/CluelessCatBurger/wl_shimeji.kwinsupport.git
+	sha256sums = SKIP
+
+pkgname = wl_shimeji-plugin-kwinsupport
