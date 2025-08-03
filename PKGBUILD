@@ -25,7 +25,7 @@ build() {
     cmake --build build/ --clean-first
 }
 
-test() {
+check() {
     cd "$srcdir/sleef-${pkgver}"
     ctest --test-dir build/
 }
