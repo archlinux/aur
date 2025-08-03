@@ -24,7 +24,6 @@ https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${_ffve
 off-other-ffmpeg.hook on-other-ffmpeg.install)
 install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
-            'e39c6d127cb7ed768eeebc5c388cf86967cfde855e6d99edc27daba8c412227c'
             '40b05c04cca3fa8901fb40bf95e3e3d938c7afd1eaa884209f8667359471246c'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             'e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01'
