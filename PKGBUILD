@@ -155,25 +155,23 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
     -DENABLE_DVDCSS=ON
-#    -DENABLE_NEON=OFF
+    -DCORE_PLATFORM_NAME="x11 wayland gbm"
   )
 
   if [[ $CARCH == "armv7h" ]]; then
     _args+=(
-      -DCORE_PLATFORM_NAME="wayland gbm"
       -DWITH_ARCH=arm
       -DWITH_CPU=arm
     )
   elif [[ $CARCH == "aarch64" ]]; then
     _args+=(
-      -DCORE_PLATFORM_NAME="x11 wayland gbm"
       -DWITH_ARCH=aarch64
       -DWITH_CPU=aarch64
     )
-  else
-    _args+=(
-      -DCORE_PLATFORM_NAME="x11 wayland gbm"
-    )
+#  else
+#    _args+=(
+#      -DCORE_PLATFORM_NAME="x11 wayland gbm"
+#    )
   fi
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
