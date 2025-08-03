@@ -5,10 +5,10 @@
 pkgname='python-fastfeedparser-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.3.7.r57.2da82e8
+pkgver=0.4.1.r67.1f9f5c5
 pkgrel=2
 epoch=1
-pkgdesc='High performance RSS, Atom and RDF parser in Python (built from latest git commit)'
+pkgdesc='High performance RSS, Atom and RDF parser in Python (development version)'
 arch=('any')
 url='https://github.com/kagisearch/fastfeedparser'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -22,6 +22,7 @@ makedepends=(
 )
 depends=(
   'python>=3.7'
+  'python-brotli'
   'python-dateparser'
   'python-dateutil'
   'python-lxml'
