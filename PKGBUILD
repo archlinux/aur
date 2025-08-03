@@ -10,8 +10,9 @@ license=('Apache')
 makedepends=('git' 'cmake')
 depends=('glibc' 'gcc-libs')
 source=('git+https://github.com/google/zopfli.git')
-provides=('libzopfli.so' 'libzopflipng.so')
+provides=('zopfli' 'libzopfli.so' 'libzopflipng.so')
 replaces=('zopflipng-git' 'libzopfli-git' 'libzopflipng-git')
+conflicts=('zopfli')
 md5sums=('SKIP')
 
 pkgver() {
