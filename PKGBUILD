@@ -1,7 +1,7 @@
 # Maintainer: ltdk <usr@ltdk.xyz>
 pkgname=kak-fzf-git
-pkgver=r350.95b12b1
-pkgrel=2
+pkgver=r357.092bcb8
+pkgrel=1
 pkgdesc='FZF for kakoune'
 arch=(any)
 url="https://github.com/andreyorst/fzf.kak"
