@@ -3,7 +3,7 @@
 
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
@@ -19,20 +19,20 @@ source=(
 )
 # shellcheck disable=SC2059
 source_i686=(
-    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20241213213040 i386)"
+    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20250802074912 i386)"
 )
 # shellcheck disable=SC2059
 source_x86_64=(
-    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20241213213121 x86_64)"
+    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20250803084623 x86_64)"
 )
 sha256sums=(
     SKIP
 )
 sha256sums_i686=(
-    b94826b05f681227c838827e57120893e71bfc71f643590b89a7e44b62752416
+    6eb840b8bbb47c0c090e34a05bab522a61f2eb80096987ed3e15c9e49078f128
 )
 sha256sums_x86_64=(
-    95fa3282ed73ce5a2682d9c45f4dee7268b9c77c95875841f817145fcb8f8c75
+    4c1729aeae2ba9b0118319dcc0243548c3e1eaeab1dbcbbb2b7cd16234de35a6
 )
 options=(
     !debug
@@ -80,6 +80,7 @@ package() {
         ccid
         gcc-libs
         glibc
+        openssl-1.1
         pcsclite
         qt5-base
         qt5-svg
