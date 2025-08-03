@@ -10,12 +10,12 @@ arch=("x86_64")
 url="https://github.com/spirometaxas/periodic-table-cli"
 license=("MIT")
 
-depends=("glibc" "nodejs")
+depends=("nodejs")
 optdepends=()
 makedepends=("npm")
-conflicts=("$_npmname-py")
-conflicts=("$_npmname")
-provides=("$_npmname")
+conflicts=("${_npmname}-py")
+conflicts=("${_npmname}")
+provides=("${_npmname}")
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 		"https://raw.githubusercontent.com/spirometaxas/periodic-table-cli/v${pkgver}/LICENSE"
