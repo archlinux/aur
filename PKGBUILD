@@ -1,7 +1,7 @@
 # Maintainer: user981257923
 pkgname=vital-synth
 pkgver=1.5.5
-pkgrel=10
+pkgrel=11
 pkgdesc="Spectral warping wavetable synth. Manual download of .deb installer required."
 arch=('x86_64')
 url="https://vital.audio"
@@ -16,10 +16,10 @@ source=(
     "file://${filename_deb}" 
     "vital.desktop" 
     "vital.png")
-# sha512sums_x86_64=(
-#     'SKIP' 
-#     'SKIP' 
-#     'SKIP')
+sha512sums=(
+    'SKIP' 
+    'SKIP' 
+    'SKIP')
 
 prepare() {
 
