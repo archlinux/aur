@@ -2,13 +2,13 @@
 # Contributor: Digimezzo <raphael@digimezzo.com>
 
 ## options
-: ${_nodeversion=16}
+: ${_nodeversion=}
 : ${_install_path:=usr/share}
 
 _pkgname="knowte"
 pkgname="$_pkgname"
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Cross platform note taking application"
 url="https://github.com/digimezzo/knowte"
 license=('GPL-3.0-only')
@@ -22,7 +22,7 @@ makedepends=(
 _pkgsrc="$_pkgname-${pkgver%%.r*}"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v${pkgver%%.r*}.$_pkgext")
-sha256sums=('32247fbec85fcd9340e35bcb0c2655e216899ac568e7dbe91844a873da280f64')
+sha256sums=('be86752933f4d029af2f6b19021ff1baf7c21fefc7805f8a4ccc0dbd4c150ec9')
 
 _nvm_env() {
   export HOME="$SRCDEST/node-home"
@@ -35,11 +35,6 @@ _nvm_env() {
 }
 
 prepare() {
-  # allow any npm version
-  sed -E \
-    -e 's&("(npm|node)"): ".*"(,?)$&\1: ">=1.0.0"\3&' \
-    -i "$_pkgsrc/package.json"
-
   # minimize packages
   sed -E \
     -e 's&\[.*pacman.*\]&'"['pacman']&" \
