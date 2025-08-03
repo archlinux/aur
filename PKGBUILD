@@ -9,8 +9,8 @@ pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to you
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
-depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'cuda' 'libpipewire')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers')
+depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers' 'cuda')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver"
@@ -46,7 +46,9 @@ build() {
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
 	export FIREWALL_SCRIPT_DIR="$ALVR_ROOT_DIR/share/alvr/"
 
-	# export CC=gcc-12 CXX=g++-12
+	source /etc/profile
+	export NVCC_APPEND_FLAGS+='-std=c++14'
+
 	cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
 
 	cargo build \
