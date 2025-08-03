@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-wallet"
 pkgver=4.1.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Cellframe Wallet"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -24,7 +24,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	cmake -B build -DCMAKE_BUILD_TYPE=None
+	cmake -B build -DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types"
 	cmake --build build
 }
 
