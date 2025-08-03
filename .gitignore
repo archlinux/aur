@@ -1,6 +1,5 @@
+kakoune-cd/
 pkg/
 src/
 *.log
-*.pkg.tar.zst
-*.tar.xz
-kakoune-cd/
+*.tar*
