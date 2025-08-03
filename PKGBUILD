@@ -2,7 +2,7 @@
 
 pkgname=osse-core
 pkgver=0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="OpenSource Search Engine Core Library"
 
 arch=('x86_64')
@@ -27,7 +27,8 @@ build() {
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_INCLUDEDIR=include
     make
     echo -e "\033[34mBuild Done\033[0m"
 }
