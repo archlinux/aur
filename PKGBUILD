@@ -1,7 +1,7 @@
 # Maintainer: Incognitux <incognitux at proton mail dot com>
 
 pkgname=nvibrant-bin
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Nvidia Digital Vibrance on Wayland (binary release)"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=("python-installer")
 _name=${pkgname%-bin}
 
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('7383d7b35c8723269fb28528f95f0c0923623142ef439634a1a7ae41641a9cf8')
+sha256sums=('7f494d8228a2c2632dcf287fa08d2516c1d31ff5017a45325e5d73ecd00a352c')
 
 package(){
   python -m installer --destdir="$pkgdir" ${_name}-${pkgver}-py3-none-any.whl
