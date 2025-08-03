@@ -5,7 +5,7 @@ _pkgrel=06
 _file=gtk-wave-cleaner-${_pkgver}-${_pkgrel}
 pkgname=gwc
 pkgver=${_pkgver}_${_pkgrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="Gtk Wave Cleaner is a digital audio editor to denoise, dehiss and amplify audio files"
 arch=("i686" "x86_64")
 url="http://gwc.sourceforge.net/"
@@ -27,7 +27,9 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_file}"
-    make || make # fixes problem with missing generated machine.h
+    # CFLAGS cannot be set during configure because they are not passed when building e.g. dmacheps
+    CFLAGS="$(sed -n "/^CFLAGS = /s/CFLAGS = //p" Makefile)"
+    make -j1 CFLAGS="${CFLAGS} -std=gnu17 -Wno-implicit-function-declaration -Wno-int-conversion -Wno-incompatible-pointer-types"
 }
 
 package() {
