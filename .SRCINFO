@@ -1,0 +1,13 @@
+pkgbase = catproccpuinfogrepmhz
+	pkgdesc = A tool for monitoring CPU frequencies and power usage.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ivfiev/catproccpuinfogrepmhz
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	source = catproccpuinfogrepmhz-0.1.0.tar.gz::https://github.com/ivfiev/catproccpuinfogrepmhz/archive/refs/tags/0.1.0.tar.gz
+	md5sums = fa743d0bfc6e1e3cbb0dd769b054db10
+
+pkgname = catproccpuinfogrepmhz
