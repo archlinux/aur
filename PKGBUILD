@@ -3,7 +3,7 @@
 # Contributor: Schala
 
 pkgname=mingw-w64-wxmsw
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (mingw-w64)"
 arch=(any)
@@ -20,7 +20,7 @@ options=(staticlibs !strip !buildflags)
 conflicts=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 provides=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-b2sums=('ed18cf931f1027e46ac438db9d16da3465aed99e92fbee74953d2f4496a89147db6a6200290379de5319aef4e7281f63b5254fc1f493979d26959b0d98091255')
+b2sums=('8ab4a557cf4cd2f78e5dd62cc158abc4ae84e03e4b4b112115c1562188955253ff8f772aa6180809662fa08fa1b4df41982e4fd91ec2725f2a0013154c07d471')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -83,9 +83,6 @@ package() {
     # Install translations
     cd "${srcdir}/wxWidgets-${pkgver}/build-locale-${_arch}"
     make DESTDIR="$pkgdir" locale_install
-
-    # FIXME: move DLL to bin/
-    mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin/
 
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
