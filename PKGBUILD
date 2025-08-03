@@ -2,7 +2,7 @@
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 _base=cloud-nuke
 pkgname=${_base}-bin
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="AWS cloud account cleaning tool"
 url="https://github.com/gruntwork-io/${_base}"
@@ -13,9 +13,9 @@ provides=("${_base}")
 source_x86_64=(${_base}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_base}_linux_amd64)
 source_i386=(${_base}-${pkgver}-i386::${url}/releases/download/v${pkgver}/${_base}_linux_386)
 source_aarch64=(${_base}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${_base}_linux_arm64)
-sha512sums_x86_64=('2b4ff06baeedc607c19fc48b3bc20212a0c98ac741e5b154a51e702ec5cb80360c2b95e58b7d1e0008b62f80367b7968f7743ce9a6c71ad0bac9b9ae3f54f0dc')
-sha512sums_i386=('04f09a85512d5da7a757e50e5e0d3fd65adb4e4a56e8298dc494858fced197f5115139fd5a1c8f89c967fd095e74fc82927eec7890cbe31b9191115dcb5bd5fa')
-sha512sums_aarch64=('4f9f4933f094352ef4197f73c3636d176c17c370f3922d25927c0afb3be2c111f1b1483799beb2b020bec5e447f30131b4672f1bf5f1ae410ba000b24adfbaab')
+sha512sums_x86_64=('b9040c4711aed634568395161eb63666281842e5b426ace69f0ab7b561f3bfb83f333db323d965a03e66562efeb562d4b31066a4fc66e8817e1c1fd9a94494ac')
+sha512sums_i386=('7c1b29a8ea2a59fc6265bc76a2855e5fbdfbf38ffe180e635ec085a5be771b9f45c9959c1287b2738971a72d65004a62ec8be61117f3233cbdfa2905d57b9a34')
+sha512sums_aarch64=('3e7f9648b74dc4489ca00218abed0362e2562857a8bf8288f0e77bc8bd5d2a381dc438537b70b10d0917061157c49e80cd3388cd25bb81b0d8cbda8f365a0e09')
 
 package() {
   install -Dm755 ${_base}-${pkgver}-${CARCH} "$pkgdir/usr/bin/${_base}"
