@@ -1,6 +1,5 @@
+case.kak/
 pkg/
 src/
 *.log
-*.pkg.tar.zst
-*.tar.xz
-case.kak/
+*.tar*
