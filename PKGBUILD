@@ -10,7 +10,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
 pkgver=12.0.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
 license=('MPL-2.0')
@@ -42,7 +42,7 @@ source=(
 sha256sums=(
   '7abca82cf6913fd2ad2df82cad4a7de1aa04bb9dd814aee10d7a2909a0470a00'
   'fe7b8f694b7d24721b06821a1d7c7640815ffbf706d536dbf14b8c8a538bd5be'
-  '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
+  '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
 
 package() {
@@ -59,16 +59,15 @@ package() {
   ln -sf "$_pkgname" "$pkgdir/$_install_path/$_pkgname/${_pkgname}-bin"
 
   # icons
-  for i in 32 64 128 256 512; do
+  for i in 32 48 64 128 256 512; do
     local _icon_dest="$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
-    install -dm755 "$_icon_dest"
+    mkdir -pm755 "$_icon_dest"
     magick "$_pkgname.png" \
       -resize "${i}x${i}" \
       -define png:compression-filter=0 \
       -define png:compression-level=9 \
       -define png:compression-strategy=0 \
-      -type palette \
-      "$_icon_dest/$_pkgname.png"
+      png8:"$_icon_dest/$_pkgname.png"
     chmod 644 "$_icon_dest/$_pkgname.png"
   done
 
