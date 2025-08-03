@@ -2,7 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=lorax
-pkgver=43.9
+_pkgver=43.9-1
+pkgver=43.9.1
 pkgrel=1
 pkgdesc="Tools for creating images, including the Anaconda boot.iso, live disk images, iso's, and filesystem images."
 arch=('any')
@@ -15,6 +16,8 @@ depends=(
     'python-selinux'
     'python-psutil'
     'python-pycdio'
+    'python-pykickstart'
+    'rpm-tools'
 )
 makedepends=(
     'python-build'
@@ -23,7 +26,7 @@ makedepends=(
     'python-wheel'
     'tar')
 backup=('etc/lorax/lorax.conf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/weldr/lorax/archive/refs/tags/lorax-${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/weldr/lorax/archive/refs/tags/lorax-${_pkgver}.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
 b2sums=('d88e5fc5561e413a712c0b8afb528bd60a04973cfc862374cb49e6915ee5552491d813ae7e0f42a448e891a0f40da13713949dd39d8cb0f09b01f56bdf854dec')
 
