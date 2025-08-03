@@ -1,0 +1,14 @@
+pkgbase = ruby-eventmachine-proxy
+	pkgdesc = Minimal HTTPS (CONNECT) proxy server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/soylent/eventmachine-proxy
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-eventmachine
+	options = !emptydirs
+	source = ruby-eventmachine-proxy-1.0.0.tar.gz::https://github.com/soylent/eventmachine-proxy/archive/v1.0.0.tar.gz
+	sha256sums = 5498bb89a8d622a182e4ecf705896e02c522aeec480df115db3d9d2ef9be30ce
+
+pkgname = ruby-eventmachine-proxy
