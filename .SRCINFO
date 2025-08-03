@@ -16,6 +16,7 @@ pkgbase = python-phiflow
 	makedepends = python-wheel
 	depends = python-phiml
 	depends = python-matplotlib
+	depends = python-packaging
 	source = PhiFlow-3.4.0.tar.gz::https://github.com/tum-pbs/PhiFlow/archive/3.4.0.tar.gz
 	sha512sums = 0c4c8b3097dff79962a5cc47fe76f917a4e3bac479a8ab3c9a1689e4dddfd5f3e3e195953762d4e0cca271c3634a0d1cb9517f24f7cd2497a396ef42662be026
 
