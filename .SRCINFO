@@ -1,6 +1,6 @@
 pkgbase = python-pina-mathlab
 	pkgdesc = Physics-Informed Neural networks for Advanced modeling
-	pkgver = 0.2.2.post2507
+	pkgver = 0.2.2.post2508
 	pkgrel = 1
 	url = https://github.com/mathLab/PINA
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pina-mathlab
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pytorch-lightning
-	source = PINA-0.2.2.post2507.tar.gz::https://github.com/mathLab/PINA/archive/refs/tags/v0.2.2.post2507.tar.gz
-	sha512sums = 15d1d198bd6d632e23d5d553ce62269da95d6590bc38ca59debf3dc0fa4e01c3143b83d250ef0aa822bb2cff04b46aeb70a6e3c16de8d759558c78d02a4a99a4
+	source = PINA-0.2.2.post2508.tar.gz::https://github.com/mathLab/PINA/archive/refs/tags/v0.2.2.post2508.tar.gz
+	sha512sums = 1cb6372f0331149237bd1c5a0fb9934d5b10e6dd02bd292b97dd9184c5ceb1125608254789575095f7b44e1763c62441fd45a5ca1b4ad0ccfb70b2ed84a25cb6
 
 pkgname = python-pina-mathlab
