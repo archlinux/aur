@@ -1,0 +1,7 @@
+[lorax]
+source = "git"
+git = "https://github.com/weldr/lorax.git"
+include_regex = "^lorax-.*"
+prefix = "lorax-"
+from_pattern = '([\d.]+).([\d.]+)-([\d.]+)'
+to_pattern = '\1.\2.\3'

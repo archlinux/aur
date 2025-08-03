@@ -1,42 +1,46 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=lorax
-pkgver=37.0.post1
-_ver=${pkgver/.post/-}
+pkgver=43.9
 pkgrel=1
-pkgdesc="Set of tools for creating bootable images"
+pkgdesc="Tools for creating images, including the Anaconda boot.iso, live disk images, iso's, and filesystem images."
 arch=('any')
 url="https://github.com/weldr/lorax"
-license=('GPL')
-depends=('python-mako' 'python-pycdio' 'dnf' 'python-selinux')
+license=('GPL-2.0-only')
+depends=(
+    'python'
+    'python-mako'
+    'dnf5'
+    'python-selinux'
+    'python-psutil'
+    'python-pycdio'
+)
 makedepends=(
-	'git'
-	'python-build'
-	'python-installer'
-	'python-wheel')
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+    'tar')
 backup=('etc/lorax/lorax.conf')
-changelog=
-source=("$pkgname::git+$url#tag=lorax-$_ver?signed"
-        'remove-datafiles.patch')
-sha256sums=('SKIP'
-            '78b76fb64e72f5c1a1142feedb8558dd2b4b17c79f52724b9f4b110d098859d0')
-validpgpkeys=('B4C6B451E4FA8B4232CA191E117E8C168EFE3A7F') ## Brian C. Lane
+source=("$pkgname-$pkgver.tar.gz::https://github.com/weldr/lorax/archive/refs/tags/lorax-${pkgver}.tar.gz")
+noextract=("$pkgname-$pkgver.tar.gz")
+b2sums=('d88e5fc5561e413a712c0b8afb528bd60a04973cfc862374cb49e6915ee5552491d813ae7e0f42a448e891a0f40da13713949dd39d8cb0f09b01f56bdf854dec')
 
 prepare() {
-	patch -p1 -d "$pkgname" < remove-datafiles.patch
-	## who writes versions like this
-	echo "num = '$pkgver'" > "$pkgname/src/pylorax/version.py"
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
 }
 
-build() {
-	cd "$pkgname"
-	python -m build --wheel --no-isolation
+build(){
+    cd "$pkgname-$pkgver" || exit
+    python -m build --wheel --no-isolation
 }
 
-package() {
-	cd "$pkgname"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -D src/{,s}bin/* -t "$pkgdir/usr/bin/"
-	install -Dm644 docs/man/*.1 -t "$pkgdir/usr/share/man/man1/"
-	install -Dm644 etc/lorax.conf -t "$pkgdir/etc/$pkgname/"
+package(){
+    cd "$pkgname-$pkgver" || exit
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D src/bin/* -t "$pkgdir/usr/bin/"
+    install -Dm644 docs/man/*.1 -t "$pkgdir/usr/share/man/man1/"
+    install -Dm644 etc/lorax.conf -t "$pkgdir/etc/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
 }

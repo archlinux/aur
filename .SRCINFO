@@ -1,23 +1,24 @@
 pkgbase = lorax
-	pkgdesc = Set of tools for creating bootable images
-	pkgver = 37.0.post1
+	pkgdesc = Tools for creating images, including the Anaconda boot.iso, live disk images, iso's, and filesystem images.
+	pkgver = 43.9
 	pkgrel = 1
 	url = https://github.com/weldr/lorax
 	arch = any
-	license = GPL
-	makedepends = git
+	license = GPL-2.0-only
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = tar
+	depends = python
 	depends = python-mako
-	depends = python-pycdio
-	depends = dnf
+	depends = dnf5
 	depends = python-selinux
+	depends = python-psutil
+	depends = python-pycdio
+	noextract = lorax-43.9.tar.gz
 	backup = etc/lorax/lorax.conf
-	source = lorax::git+https://github.com/weldr/lorax#tag=lorax-37.0-1?signed
-	source = remove-datafiles.patch
-	validpgpkeys = B4C6B451E4FA8B4232CA191E117E8C168EFE3A7F
-	sha256sums = SKIP
-	sha256sums = 78b76fb64e72f5c1a1142feedb8558dd2b4b17c79f52724b9f4b110d098859d0
+	source = lorax-43.9.tar.gz::https://github.com/weldr/lorax/archive/refs/tags/lorax-43.9.tar.gz
+	b2sums = d88e5fc5561e413a712c0b8afb528bd60a04973cfc862374cb49e6915ee5552491d813ae7e0f42a448e891a0f40da13713949dd39d8cb0f09b01f56bdf854dec
 
 pkgname = lorax
