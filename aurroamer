@@ -60,10 +60,9 @@ fi
 
 if [[ -z "$aur_helper" ]]; then
     echo "warning: no supported aur helper found — aur packages cannot be interacted with"
-    sleep 2
+    sleep 1
 else
     echo "using aur helper: $aur_helper"
-    sleep 1
 fi
 
 if [[ -f "$cachedaur" ]]; then
@@ -115,13 +114,12 @@ echo "official package count: $repo_count"
 echo "aur package count: $aur_count"
 echo "total package count: $total_count"
 
-sleep 1
 echo
 echo "browse which packages?"
 echo "1) official only"
 echo "2) aur only"
 echo "3) all"
-read -rp "> " mode
+read -rp ">> " mode
 case "$mode" in
     1)
         fzf_input=$(awk '{printf "[official] %s\n", $0}' "$repopackages")
@@ -138,7 +136,6 @@ case "$mode" in
 esac
 
 echo
-sleep 1
 
 while true; do
     selection=$(echo "$fzf_input" | fzf  --prompt="Search >> ")
@@ -179,7 +176,6 @@ while true; do
             2)
                 clear
                 echo "[installing $pkgname]"
-                sleep 1
                 if [[ "$pkgtype" == "[official]" ]]; then
                     sudo pacman -S "$pkgname"
                 elif [[ "$pkgtype" == "[aur]" ]]; then
