@@ -2,7 +2,7 @@
 # Maintainer: Miguel Useche <migueluseche@skatox.com>
 pkgname=kim6
 pkgver=0.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Kde Image Menu to compress, resize, convert, rename and much more (for KDE Plasma 6)"
 arch=(i686 x86_64)
 url="https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/"
