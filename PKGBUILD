@@ -8,7 +8,11 @@ license=('CC-BY-SA')
 depends=('xdg-user-dirs')
 source=("https://vault.almalinux.org/10.0/AppStream/Source/Packages/almalinux-logos-100.3-3.el10_0.src.rpm")
 noextract=('almalinux-logos-100.3-3.el10_0.src.rpm')
-md5sums=('SKIP')
+sha256sums=(
+  '6a735fb00d5a93fc53fa68fe3bab780605bb1f99706e5ed381e2e3fa557b7717'
+  '05d0187bb0ae9505a92c9bbb86ed28278a5d3d0ed441e12ac401c2a7921acefc'
+)
+
 
 prepare() {
   bsdtar -xf almalinux-logos-100.3-3.el10_0.src.rpm
@@ -18,7 +22,6 @@ prepare() {
 package() {
   install -dm755 "$pkgdir/usr/share/backgrounds/almalinux"
 
-  # Install the day and night wallpapers
   install -m644 almalinux-logos-100.3/backgrounds/almalinux-day.jpg "$pkgdir/usr/share/backgrounds/almalinux/"
   install -m644 almalinux-logos-100.3/backgrounds/almalinux-night.jpg "$pkgdir/usr/share/backgrounds/almalinux/"
 }
