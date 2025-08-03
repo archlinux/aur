@@ -1,8 +1,8 @@
 # Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
 
 pkgname=box
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Create a box around incoming text'
 arch=('x86_64')
 url="https://github.com/AlphaLynx0/$pkgname"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('69255f34e0d792aa1211afa37cd3532bf47066bc0b11126c707987cac342e42e191bdb884875b362e28800b4283c366387a56554e8bcd03678ef9a13cc69d00c')
+b2sums=('8dcd4f4d4f97604ae0880fc3085b6b2cd5ad31c6b81defa0bf2a87834b7a6f6c218ac494725288b75dbe681075e3c7f599fc7256578d0f702234d3b0292118dd')
 
 build() {
     cd $pkgname-$pkgver
