@@ -1,0 +1,9 @@
+diff -rupN miscsplashutils-0.1.8/usleep.c miscsplashutils-0.1.8-fixed/usleep.c
+--- miscsplashutils-0.1.8/usleep.c	2006-07-14 12:05:43.000000000 -0700
++++ miscsplashutils-0.1.8-fixed/usleep.c	2025-08-01 12:01:45.196006143 -0700
+@@ -1,4 +1,5 @@
+ #include <unistd.h>
++#include <stdlib.h>
+ 
+ int main(int argc, char **argv)
+ {

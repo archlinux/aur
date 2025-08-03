@@ -9,7 +9,9 @@ pkgbase = miscsplashutils
 	depends = freetype2
 	source = miscsplashutils-0.1.8.tar.bz2
 	source = miscsplashutils-freetype-fix.patch
+	source = include-stdlib.patch
 	md5sums = 0a9505c5c5ed169e6158d2c1b06ff40b
 	md5sums = 05285f0a2b42e206e20e2973e69bd4c8
+	md5sums = d7474b7d087bcc95018461f20b905c47
 
 pkgname = miscsplashutils

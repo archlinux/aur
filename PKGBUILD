@@ -11,16 +11,21 @@ url='http://dev.gentoo.org/~spock/projects/gensplash/'
 sourcecode_url='http://distfiles.gentoo.org/distfiles/${pkgname}-${pkgver}.tar.bz2'
 license=('GPL')
 depends=('freetype2')
+
 source=("${pkgname}-${pkgver}.tar.bz2" 
-	'miscsplashutils-freetype-fix.patch')
+        'miscsplashutils-freetype-fix.patch'
+        'include-stdlib.patch')
+
 md5sums=('0a9505c5c5ed169e6158d2c1b06ff40b'
-         '05285f0a2b42e206e20e2973e69bd4c8')
+         '05285f0a2b42e206e20e2973e69bd4c8'
+         'd7474b7d087bcc95018461f20b905c47')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   #Fix for static freetype and /usr/bin directory corrections.
   patch -p1 -i "${srcdir}/miscsplashutils-freetype-fix.patch"
+  patch -p1 -i "${srcdir}/include-stdlib.patch"
 
   make
 }
