@@ -1,7 +1,7 @@
 # Maintainer: Yamashiro <dev cosmicheron com>
 
 pkgname='retro-crisis-gdv-ntsc'
-pkgver='20250801'
+pkgver='20250802'
 pkgrel='1'
 arch=('any')
 pkgdesc='CRT shader preset for Libretro based on Guest Advanced NTSC'
@@ -9,7 +9,7 @@ url='https://github.com/RetroCrisis/Retro-Crisis-GDV-NTSC'
 license=('GPL-3.0-only')
 depends=('libretro-shaders-slang')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/Retro.Crisis.GDV-NTSC.$(sed 's/./&./6;s/./&./4' <<<"$pkgver").zip")
-b2sums=('e9a93dba54cac4643229ca5af20114312da98c81d79f0c31fb14a57bc6d7fe2ce08e5a5146ad61b069281ae51edd426a1ad426d20890646a465b2ebc60a0940d')
+b2sums=('08d0b80caf633703bfd4141e7544b61075e1d4179cba154074fc1b63343d4eec98d21bcbe58a12fcea09b49196c3f95fd15f7c56ec1964ef36db87b9f466ca16')
 options=('!debug' '!strip')
 
 package() {
