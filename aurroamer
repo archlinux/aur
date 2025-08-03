@@ -173,7 +173,7 @@ while true; do
                     fi
                 fi
                 echo
-                read -rp "press any key to return"
+                read -n 1 -s -r -p "press any key to return"
                 clear
                 ;;
             2)
@@ -190,7 +190,7 @@ while true; do
                     fi
                 fi
                 echo
-                read -rp "press any key to return"
+                read -n 1 -s -r -p "press any key to return"
                 clear
                 ;;
             3)
@@ -199,7 +199,7 @@ while true; do
                 ;;
             *)
                 echo "invalid option"
-                read -rp "press any key to return"
+                read -n 1 -s -r -p "press any key to return"
                 ;;
         esac
     done
