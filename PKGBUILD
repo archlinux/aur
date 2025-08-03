@@ -1,7 +1,7 @@
 # Maintainer: Marcin Nowak <marcin [dot] j [dot] nowak (at) gmail [dot] com>
 
 pkgname=mads
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="MADS is a multi-pass crossassembler designed for 6502 and 65816 processors"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
     )
 
 sha256sums=(
-    '78ca9c4ad907362dc1142f4c6116767cc8c2a426044079269652040f01477363'
+    'd09949a63145e2c8489a620fe5541670daac91f38581ec68197685e229372d76'
     )
 license=('unknown')
 provides=('mads')
