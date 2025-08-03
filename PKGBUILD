@@ -1,20 +1,21 @@
 # Maintainer: m00nw4tch3r <m00nwtchr at duck dot com>
+# Maintainer: PLYSHKA <koraser at keemail dot me>
 
 pkgname=alvr
-pkgver=20.13.0
+pkgver=20.14.1
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver"
 		"git+https://github.com/ValveSoftware/openvr.git"
 )
-md5sums=('79249a6dd2c0d6060fc622362e829ec8'
+md5sums=('d5b0186e8f872520d1820e8452635568'
          'SKIP')
 options=('!lto')
 
