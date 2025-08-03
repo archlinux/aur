@@ -1,10 +1,11 @@
 pkgbase = klar
-	pkgdesc = Minimalist On-Screen Display (OSD) that shows visual indicators for brightness, audio, and power events
-	pkgver = 0.1.0
+	pkgdesc = Minimalist OSD that shows visual indicators for brightness, audio, and power events
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/isaksamsten/klar
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
@@ -15,7 +16,7 @@ pkgbase = klar
 	depends = libadwaita
 	depends = gtk4-layer-shell
 	depends = gtk4
-	source = https://github.com/isaksamsten/klar/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = c7af6dbbe4196099602a03c9017b44ccae4ef567515bbd40776f490ab96c26a9
+	source = git+https://github.com/isaksamsten/klar.git#tag=bf45ed3da50fc4ba72f60118f6f2956292dc992f
+	sha256sums = 90f39f9ade0dcf96888e5e511c3c3bf335df415bfaa0e96a898be6356a2d910e
 
 pkgname = klar
