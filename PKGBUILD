@@ -2,7 +2,7 @@
 
 pkgname=python-hashtools
 _name=${pkgname//-/_}
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 epoch=
 pkgdesc="Python hash tools."
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('4abef27a5a4a5cc3a2c1c054fc70a4a7324342388ca0dd6dbe6a6b7f791e78b5')
+sha256sums=('f996bcc13c0320ecfdb0c348cbdf9990bec70457ab2bb07bd2f290af412a8d1e')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
