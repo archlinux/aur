@@ -2,7 +2,7 @@
 
 _pkgname="cdncheck"
 pkgname="${_pkgname}-bin"
-pkgver=1.1.29
+pkgver=1.1.30
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -15,10 +15,10 @@ source_aarch64=("${_pkgsrc}-aarch64.zip::${url}/releases/download/v${pkgver}/${_
 source_armv7h=("${_pkgsrc}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm.zip")
 source_i686=("${_pkgsrc}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.zip")
 source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.zip")
-sha256sums_aarch64=('7012ce0ee69dc78c8fc82f6fec4d2308ddef249025f5c1ca23ae203cf2a2f065')
-sha256sums_armv7h=('efe46dab0119fe33bb822e763f758522ae77b523a0ee1053e48723cd38063988')
-sha256sums_i686=('3a03f4ad79123ac455a86cd20e70e3e9d0f595b52dc8d9b0f040b9b1e2aa92a8')
-sha256sums_x86_64=('59aed8157e65a7edb44b300c33104728ae9f608bf8282c81c4ab8bb503d7b081')
+sha256sums_aarch64=('7c0aaf66a331b704c39fbd6e7b4738eb213ca7166a292c626d8ec1289080da44')
+sha256sums_armv7h=('0adb3b90a3f5fb460177d62727213737bafd815ba7d2b7cb0576fc90e1daadee')
+sha256sums_i686=('ac4cc38760458a8a93dfb6f87a2f7e40dcc1c94e26764795d2510a62537b42ff')
+sha256sums_x86_64=('3d5db76bb48a6ac4437d4d575b330e9b82518897debfae3e90730fadeb66ad63')
 
 package() {
   cd "${srcdir}"
