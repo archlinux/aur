@@ -1,13 +1,19 @@
 pkgbase = tk-itk
 	pkgdesc = OOP extension for Tk
-	pkgver = 4.1.0
-	pkgrel = 4
-	url = http://incrtcl.sourceforge.net/itk/
+	pkgver = 4.2.3
+	pkgrel = 1
+	url = https://github.com/tcltk/itk
 	arch = x86_64
-	license = custom
+	license = LPL-1.02
+	checkdepends = xorg-server-xvfb
+	checkdepends = noto-fonts
+	makedepends = git
 	depends = tcl
 	depends = tk
-	source = ftp://ftp.tcl.tk/pub/tcl/itcl/itk4.1.0.tar.gz
-	sha256sums = da646199222efdc4d8c99593863c8d287442ea5a8687f95460d6e9e72431c9c7
+	options = !emptydirs
+	source = tk-itk-4.2.3.tar.gz::https://github.com/tcltk/itk/archive/refs/tags/itk-4-2-3.tar.gz
+	source = git+https://github.com/tcltk/tclconfig.git
+	sha256sums = bc5ed347212fce403e04d3161cd429319af98da47effd3e32e20d2f04293b036
+	sha256sums = SKIP
 
 pkgname = tk-itk

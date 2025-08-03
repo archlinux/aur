@@ -1,0 +1,6 @@
+[tk-itk]
+source = "git"
+git = "https://github.com/tcltk/itk.git"
+include_regex = '^itk-[0-9-]+'
+from_pattern = '^itk-([0-9]+)-([0-9]+)-([0-9]+)$'
+to_pattern = '\1.\2.\3'
