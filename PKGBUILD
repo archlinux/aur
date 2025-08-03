@@ -1,10 +1,10 @@
 pkgname='dankmaterialshell-git'
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('any')
 url='https://github.com/bbedward/DankMaterialShell'
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('quickshell-git' 'networkmanager' 'ttf-material-symbols-variable'
          'inter-font' 'ttf-fira-code')
 optdepends=('matugen-bin: Dynamic wallpaper-based theming'
