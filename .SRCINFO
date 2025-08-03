@@ -1,0 +1,16 @@
+pkgbase = hyprgrass
+	pkgdesc = hyprland plugin for touch screen gestures
+	pkgver = v0.8.2.r618.g21bc4eb.hypr8244389
+	pkgrel = 1
+	url = https://github.com/horriblename/hyprgrass
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = hyprland-git
+	conflicts = hyprgrass
+	source = hyprgrass::git+https://github.com/horriblename/hyprgrass.git#branch=main
+	sha256sums = SKIP
+
+pkgname = hyprgrass-git
