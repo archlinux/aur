@@ -78,7 +78,7 @@ for p in $(shopt -s nullglob; echo *.patch) ; do
 done
 
 prepare() {
-  [[ -d kodi-build ]] && rm -rf kodi-build
+####  [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir -p "$srcdir/kodi-build"
 
   cd "$startdir/$_gitname"
