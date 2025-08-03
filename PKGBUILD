@@ -1,6 +1,6 @@
 pkgname=paramountplus
 _pkgname=ParamountPlus
-pkgver=1.0.9.aurpatch.2
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Unnofficial ParamountPlus desktop application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('90a87b15f39913cb44c3b625ef5bf841d6f6ba00bd907f606cf6cf760ca1e85c')
+sha256sums=('240db54971d1fd9821538352dba9048d96babd44f12f42b0deb614e871dc71a5')
 
 package() {
     cd "$srcdir/application-$pkgver"
