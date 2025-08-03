@@ -5,9 +5,9 @@ pkgrel=1
 pkgdesc="Faster enum reflection for C++17 since I don't want to wait for C++26 reflection."
 arch=('any')
 url="https://github.com/ZXShady/enchantum"
-license=('GPL3')
+license=('MIT')
 depends=()
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("git+https://github.com/ZXShady/enchantum.git")
 md5sums=('SKIP')
 
