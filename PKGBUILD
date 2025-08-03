@@ -1,7 +1,7 @@
 # Maintainer: Maxime “pep” Buquet <archlinux@bouah.net>
 # Package based on aur/forgejo-runner-bin and aur/act-runner.
 pkgname="forgejo-runner"
-pkgver=7.0.0
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Continous integration for Forgejo"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=(
 	"forgejo-runner::git+https://code.forgejo.org/forgejo/runner#tag=v$pkgver"
 	"forgejo-runner.service"
 )
-sha256sums=('e067adfeb1425787faac6d619daf191e92db20f76001f2bddf38e3ab6019af5e'
+sha256sums=('810dec32ef55e4a23063121e2c517746cd005d79f28640725d1f3db0f76b00e0'
             '693925cda2ad678f5e03d3196468f1304db42d4d74df3376979d8f35a0fb86d0')
 
 prepare() {
