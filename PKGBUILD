@@ -4,7 +4,7 @@
 pkgname=proton-mail-bin
 _name=${pkgname%-bin}
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('x86_64')
 url='https://proton.me'
@@ -45,7 +45,7 @@ optdepends=(
     'trash-cli: file deletion support (trash-put)'
 )
 provides=("$_name")
-conflicts=("$_name" 'protonmail-desktop')
+conflicts=("$_name")
 source=("ProtonMail-desktop-beta-$pkgver.deb::$url/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb")
 sha256sums=('43397439a3ced8e02029beed3167e44b20f2c6f15d88e9cbf42588e73da774c3')
 
