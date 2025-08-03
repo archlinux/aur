@@ -1,6 +1,6 @@
 # Maintainer: edo hikmahtiar <edohikmahtiar@me.com>
 pkgname=mameuix
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Modern GUI frontend for MAME arcade emulator with thread pool performance and enhanced UI"
 arch=('x86_64')
