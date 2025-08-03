@@ -1,4 +1,5 @@
-# Maintainer: nemesys <nemstar at zoho dot com>
+# Maintainer: Doridian <archlinux at doridian dot net>
+# Contributor: nemesys <nemstar zoho com>
 # Contributor: Heiko Baums <heiko@baums-on-web.de>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
