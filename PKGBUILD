@@ -4,7 +4,7 @@
 pkgname=lorax
 _pkgver=43.9-1
 pkgver=43.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for creating images, including the Anaconda boot.iso, live disk images, iso's, and filesystem images."
 arch=('any')
 url="https://github.com/weldr/lorax"
@@ -46,4 +46,5 @@ package(){
     install -Dm644 docs/man/*.1 -t "$pkgdir/usr/share/man/man1/"
     install -Dm644 etc/lorax.conf -t "$pkgdir/etc/$pkgname/"
     install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
+    cp -r share/templates.d "$pkgdir/usr/share/$pkgname/"
 }
