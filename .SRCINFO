@@ -1,7 +1,7 @@
 pkgbase = aurroamer
 	pkgdesc = An interactive terminal-based package browser for both official and AUR packages using fzf
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://aur.archlinux.org/packages/aurroamer
 	arch = any
 	license = MIT

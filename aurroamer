@@ -4,19 +4,30 @@
 # SPDX-License-Identifier: MIT
 set -euo pipefail
 
-VERSION="2.0.0-2"
+VERSION="2.0.0-3"
 if [[ "${1-}" == "--version" || "${1-}" == "-v" ]]; then
     echo "aurroamer $VERSION"
     exit 0
 fi
 
-hooks_dir="$HOME/.config/aurroamer/hooks.d"
-favorites_file="$HOME/.config/aurroamer/favorites.txt"
+aurpackages=$(mktemp)
+repopackages=$(mktemp)
+total=$(mktemp)
 
-[[ -d "$hooks_dir" ]] || mkdir -p "$hooks_dir"
-[[ -f "$favorites_file" ]] || touch "$favorites_file"
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/aurroamer"
+hooks_dir="$config_dir/hooks.d"
+favorites_file="$config_dir/favorites.txt"
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}"
+cachedaur="$cache_dir/aurroamer-cache.txt"
 
-cachedaur="$HOME/.cache/aurroamer-cache.txt"
+mkdir -p "$hooks_dir"
+touch "$favorites_file"
+
+cleanup() {
+    rm -f "$aurpackages" "$repopackages" "$total"
+}
+trap 'cleanup; exit 130' INT
+trap 'cleanup' EXIT
 
 download_aur_list() {
     echo "downloading list of all known aur packages"
@@ -44,20 +55,20 @@ if [[ "${1-}" == "--help" || "${1-}" == "-h" ]]; then
     echo "  aurroamer --version / -v     show version"
     echo "  aurroamer --help / -h        show this message"
     echo "  aurroamer --clear / -c       clears stored AUR package list cache"
-    echo "  aurroamer --refresh / -r     skips the cache prompt and refreshes the cache	"
+    echo "  aurroamer --refresh / -r     skips the cache prompt and refreshes the cache"
     echo "  aurroamer --search <term>    search for packages by name, skips package type selection"
     echo
     echo "  hint: to select multiple packages in fzf, use tab"
     echo "  hint: you can add post install hooks to a specific package in ~/.config/aurroamer/hooks.d"
-    echo "  hint: with the format hook_pkgname"
-    echo "  hint: the favorited packages file is loacted at /.config/aurroamer/favorites.txt"
+    echo "  hint: with the format post_install_pkgname"
+    echo "  hint: the favorited packages file is located at ~/.config/aurroamer/favorites.txt"
     echo
     exit 0
 fi
 
 if [[ "${1-}" == "--clear" || "${1-}" == "-c" ]]; then
     echo "deleting cached package list"
-    if ! rm "$cachedaur"; then
+    if ! rm "$cachedaur" 2>/dev/null; then
         echo "no cache to delete, or other error"
         exit 1
     fi
@@ -68,12 +79,6 @@ if ! [ -t 1 ]; then
     echo "error: aurroamer requires an interactive terminal"
     exit 1
 fi
-
-aurpackages=$(mktemp)
-repopackages=$(mktemp)
-total=$(mktemp)
-trap 'rm -f "$aurpackages" "$repopackages" "$total"; exit 130' INT
-trap 'rm -f "$aurpackages" "$repopackages" "$total"' EXIT
 
 detect_aur_helper() {
     for helper in yay paru trizen pikaur; do
@@ -97,15 +102,21 @@ if [[ -z "$aur_helper" ]]; then
     sleep 1
 else
     echo "using aur helper: $aur_helper"
-fi      
-        echo "cached aur package list found"
-        echo "use cached list instead of downloading? it may be outdated [Y/n]"
-        read -rp ">> " usecache
-        if [[ ! "$usecache" =~ ^[Nn]$ ]]; then
-            cp "$cachedaur" "$aurpackages"
-        else
-            download_aur_list
-        fi
+fi
+
+echo "cached aur package list found"
+if [ -t 0 ]; then
+    echo "use cached list instead of downloading? it may be outdated [Y/n]"
+    read -rp ">> " usecache
+else
+    usecache="y"
+fi
+
+if [[ ! "$usecache" =~ ^[Nn]$ ]]; then
+    cp "$cachedaur" "$aurpackages"
+else
+    download_aur_list
+fi
 
 echo "making a list of known official packages"
 if ! pacman -Slq > "$repopackages"; then
@@ -113,8 +124,8 @@ if ! pacman -Slq > "$repopackages"; then
     exit 1
 fi
 
-sort -o "$aurpackages" "$aurpackages"
-sort -o "$repopackages" "$repopackages"
+sort -o "$aurpackages" "$aurpackages" > /dev/null
+sort -o "$repopackages" "$repopackages" > /dev/null
 
 aur_count=$(wc -l < "$aurpackages")
 repo_count=$(wc -l < "$repopackages")
@@ -129,7 +140,7 @@ if [[ "${1-}" == "--search" || "${1-}" == "-s" ]]; then
     search_term="$2"
     echo "searching for packages matching: $search_term"
     sleep 1
-    fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") | grep -i "$search_term" )
+    fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") | grep -iF "$search_term" )
 else
     echo "browse which packages?"
     echo "1) official only"
@@ -138,22 +149,22 @@ else
     echo "4) favorites"
     read -rp ">> " mode
     case "$mode" in
-    1)
-        fzf_input=$(awk '{printf "[official] %s\n", $0}' "$repopackages")
-        ;;
-    2)
-        fzf_input=$(awk '{printf "[aur]      %s\n", $0}' "$aurpackages")
-        ;;
-    3)
-        fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") )
-        ;;
-    4)
-        fzf_input=$(cat "$favorites_file")
-        ;;
-    *)
-        exit 0
-        ;;
-esac
+        1)
+            fzf_input=$(awk '{printf "[official] %s\n", $0}' "$repopackages")
+            ;;
+        2)
+            fzf_input=$(awk '{printf "[aur]      %s\n", $0}' "$aurpackages")
+            ;;
+        3)
+            fzf_input=$( (awk '{printf "[aur]      %s\n", $0}' "$aurpackages"; awk '{printf "[official] %s\n", $0}' "$repopackages") )
+            ;;
+        4)
+            fzf_input=$(cat "$favorites_file")
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
 fi
 
 echo
@@ -233,7 +244,7 @@ while true; do
                     clear
                     for line in "${selected_lines[@]}"; do
                         pkgname=$(cut -d ' ' -f2- <<< "$line")
-                        sed -i "^$pkgname$"d "$favorites_file"
+                        sed -i "^$pkgname\$"d "$favorites_file" > /dev/null
                     done
                     echo "packages removed from favorites"
                     read -n 1 -s -r -p "press any key to return"
@@ -325,7 +336,7 @@ while true; do
                     ;;
                 5)
                     clear
-                    sed -i "^$pkgname$"d "$favorites_file" > /dev/null
+                    sed -i "^$pkgname\$"d "$favorites_file" > /dev/null
                     echo "$pkgname removed from favorites"
                     read -n 1 -s -r -p "press any key to return"
                     clear
