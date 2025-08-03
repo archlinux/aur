@@ -28,11 +28,6 @@ source=(
 sha256sums=('3996a4f53c8d1cc9559e84ba0a78966926d250697a651ffebc3e69266fad28fa'
             '410ec93b8ea47bcf03b08924356c39b299ae5b1f13cf3f56335dbb1cd4fb7b4d')
 
-build() {
-  cd "${_pkgname}-ttkmd-${pkgver}"
-  make
-}
-
 package() {
   _kernelmodule=tenstorrent
 
