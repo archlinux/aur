@@ -162,16 +162,16 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     _args+=(
       -DCORE_PLATFORM_NAME="wayland gbm"
       -DWITH_ARCH=arm
-    }
+    )
   elif [[ $CARCH == "aarch64" ]]; then
     _args+=(
       -DCORE_PLATFORM_NAME="x11 wayland gbm"
       -DWITH_ARCH=aarch64
-    }
+    )
   else
     _args+=(
       -DCORE_PLATFORM_NAME="x11 wayland gbm"
-    }
+    )
   fi
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
