@@ -1,6 +1,6 @@
 pkgbase = ttac
 	pkgdesc = Аналог cat и других UNIX утилит.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/CHAYKA43/Ttac
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = ttac
 	makedepends = dub
 	makedepends = git
 	makedepends = dmd
-	depends = ldc
-	depends = libevent
+	depends = xclip
 	provides = ttac
 	conflicts = ttac
 	replaces = ttac
