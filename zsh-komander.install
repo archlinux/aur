@@ -1,4 +1,0 @@
-post_install() {
-	echo "(ru) Для остальной настройки zsh-comander надо ввести команду konamder-setup..."
-	echo "(en) For the rest of the zsh-comander configuration, you need to enter the command konamder-setup..."
-}
