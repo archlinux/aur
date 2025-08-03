@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="OpenSource Search Engine Core Library"
 
 arch=('x86_64')
-license=('Apache')
+license=('Apache 2.0')
 
 depends=()
 makedepends=('cmake' 'make' 'gcc')
