@@ -2,7 +2,7 @@
 
 pkgname=linux-arctis-manager
 _pkgname=Linux-Arctis-Manager
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A replacement for SteelSeries GG software, to manage your Arctis device on Linux! "
 arch=('x86_64')
@@ -12,10 +12,12 @@ license=('GPL-3.0-only')
 makedepends=(python-pipenv)
 checkdepends=()
 source=("https://github.com/elegos/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6a6d8f625ad4b217f5fc882434b7c50b6768627ea52d0eec23610672bfa9b4b')
+sha256sums=('581d370106b458fe3d4952df202864714b53d463e795525d04fec186782fd266')
 
 prepare(){
 	cd "$_pkgname-$pkgver"
+	sed -i -e "s/lib64/lib/" arctis-manager.spec
+	sed -i -e "/Version=/ s/=.*/=$pkgver/" ArctisManager.desktop
 }
 
 build() {
@@ -30,19 +32,20 @@ package() {
 	cd "$_pkgname-$pkgver"
 
 	# Binaries
-	install -D -t $pkgdir/usr/bin/ dist/arctis-manager 
-	install -D -t $pkgdir/usr/bin/ dist/arctis-manager-launcher
+	install -D -t "$pkgdir"/usr/bin/ dist/arctis-manager 
+	install -D -t "$pkgdir"/usr/bin/ dist/arctis-manager-launcher
 
 
 	# Desktop
-	install -D -t $pkgdir/usr/share/applications/ ArctisManager.desktop
+	install -D -t "$pkgdir"/usr/share/applications/ ArctisManager.desktop
 
 	# Icons
-	install -D -t $pkgdir/usr/share/icons/hicolor/scalable/apps/ arctis_manager/images/steelseries_logo.svg
+	install -D -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps/ arctis_manager/images/steelseries_logo.svg
 
 	# Udev
-	install -D -t $pkgdir/usr/lib/udev/rules.d/ udev/91-steelseries-arctis.rules
+	install -D -t "$pkgdir"/usr/lib/udev/rules.d/ udev/91-steelseries-arctis.rules
 
 	# Systemd
-	install -D -t $pkgdir/usr/lib/systemd/user/ systemd/arctis-manager.service
+	install -D -t "$pkgdir"/usr/lib/systemd/user/ systemd/arctis-manager.service
 }
+
