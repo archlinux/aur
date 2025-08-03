@@ -2,7 +2,7 @@
 
 pkgname=osse-core
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenSource Search Engine Core Library"
 
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=()
 makedepends=('cmake' 'make' 'gcc')
 
 url="https://github.com/Xtarii/OSSE-Core"
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver-$pkgrel.tar.gz")
 sha256sums=('SKIP')
 
 
