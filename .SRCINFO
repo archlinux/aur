@@ -1,7 +1,7 @@
 pkgbase = fselect-bin
 	pkgdesc = Find files with SQL-like queries
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jhspetersson/fselect
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = fselect-bin
 	conflicts = fselect
 	source_x86_64 = fselect-0.9.0-x86_64-linux-musl.gz::https://github.com/jhspetersson/fselect/releases/download/0.9.0/fselect-x86_64-linux-musl.gz
 	source_x86_64 = fselect-0.9.0.1::https://raw.githubusercontent.com/jhspetersson/fselect/0.9.0/docs/fselect.1
-	source_x86_64 = fselect-0.9.0-usage.md::https://raw.githubusercontent.com/jhspetersson/fselect/docs/usage.md
+	source_x86_64 = fselect-0.9.0-usage.md::https://raw.githubusercontent.com/jhspetersson/fselect/0.9.0/docs/usage.md
 	source_x86_64 = fselect-0.9.0-fselect-completion.bash::https://raw.githubusercontent.com/jhspetersson/fselect/0.9.0/fselect-completion.bash
 	sha256sums_x86_64 = 1ef4e1d07a99d798031b297eeadb8fd8709f693298191f23d0ef3025e02bc00a
 	sha256sums_x86_64 = ec52d0b798ce759c0f50b87ab78666472263e56eb8bd33f0abb5d2e66321b876

@@ -3,7 +3,7 @@
 pkgname=fselect-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Find files with SQL-like queries'
 url="https://github.com/jhspetersson/${_pkgname}"
 license=('MIT')
@@ -16,7 +16,7 @@ source_x86_64=(
     # man page
     "${_pkgname}-${pkgver}.1::https://raw.githubusercontent.com/jhspetersson/${_pkgname}/${pkgver}/docs/${_pkgname}.1"
     # more detailed document on usage
-    "${_pkgname}-${pkgver}-usage.md::https://raw.githubusercontent.com/jhspetersson/${_pkgname}/docs/usage.md"
+    "${_pkgname}-${pkgver}-usage.md::https://raw.githubusercontent.com/jhspetersson/${_pkgname}/${pkgver}/docs/usage.md"
     # bash completions
     "${_pkgname}-${pkgver}-fselect-completion.bash::https://raw.githubusercontent.com/jhspetersson/${_pkgname}/${pkgver}/fselect-completion.bash"
 )
