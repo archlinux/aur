@@ -162,7 +162,7 @@ export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
     -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
     -DENABLE_DVDCSS=ON
-    -DENABLE_NEON=ON
+    -DENABLE_NEON=OFF
   )
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
