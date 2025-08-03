@@ -3,7 +3,7 @@
 _pkgname="local-ai"
 pkgname="${_pkgname}-bin"
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
 arch=('aarch64' 'x86_64')
 url="https://localai.io"

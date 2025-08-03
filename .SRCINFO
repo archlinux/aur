@@ -1,7 +1,7 @@
 pkgbase = local-ai-bin
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://localai.io
 	arch = aarch64
 	arch = x86_64
