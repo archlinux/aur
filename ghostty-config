@@ -1,0 +1,115 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /home/purian23/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+# Material 3 Expressive Dark Theme with #0061a4 accent
+
+# Font Configuration
+font-family = Fira Code
+font-size = 12
+
+# Window Configuration
+window-decoration = false
+window-padding-x = 12
+window-padding-y = 12
+background-opacity = 0.90
+background-blur-radius = 32
+
+# Cursor Configuration
+cursor-style = block
+cursor-style-blink = true
+cursor-color = #0061a4
+cursor-text = #ffffff
+
+# Material 3 Expressive Dark Color Palette
+#background = #1a1c1e
+#foreground = #e3e8ef
+
+# Selection
+#selection-background = #0061a4
+#selection-foreground = #ffffff
+
+# Material 3 ANSI Colors
+#palette = 0=#1a1c1e
+#palette = 1=#f28b82
+#palette = 2=#81c995
+#palette = 3=#f9c74f
+#palette = 4=#8ab4f8
+#palette = 5=#c58af9
+#palette = 6=#42a5f5
+#palette = 7=#e3e8ef
+#palette = 8=#44464f
+#palette = 9=#ffb4ab
+#palette = 10=#a6f4c5
+#palette = 11=#fdd663
+#palette = 12=#0061a4
+#palette = 13=#6750a4
+#palette = 14=#4dd0e1
+#palette = 15=#f8fafc
+
+# Scrollback
+scrollback-limit = 3023
+
+# Terminal features
+mouse-hide-while-typing = true
+copy-on-select = true
+confirm-close-surface = false
+
+# Key bindings for common actions
+#keybind = ctrl+c=copy_to_clipboard
+#keybind = ctrl+v=paste_from_clipboard
+keybind = ctrl+shift+n=new_window
+keybind = ctrl+t=new_tab
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+zero=reset_font_size
+
+# Material 3 UI elements
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #44464f
+
+# Tab configuration
+gtk-titlebar = false
+
+# Shell integration
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,no-cursor
+keybind = shift+enter=text:\n
+
+
+config-file = ./config-dankcolors
