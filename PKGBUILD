@@ -7,6 +7,12 @@ arch=('any')
 url="https://github.com/therock444/aurroamer"
 license=('MIT')
 depends=('bash' 'fzf' 'pacman' 'gzip')
+optdepends=(
+  'yay: AUR helper support'
+  'paru: AUR helper support'
+  'trizen: AUR helper support'
+  'pikaur: AUR helper support'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7d4a417349c1315ad1600bc84850d6022b1a0f6ce8c189cda63b34a33fab3105')
 
