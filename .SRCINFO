@@ -1,0 +1,18 @@
+pkgbase = periodic-table-cli-py
+	pkgdesc = An interactive Periodic Table of Elements app for the console (Python)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/spirometaxas/periodic-table-cli-py
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	provides = periodic-table-cli
+	conflicts = periodic-table-cli-js
+	source = https://files.pythonhosted.org/packages/da/da/9a2e8af1c993b06923e0bad3951ee5a8eabf61f90d56e35ce343043ea969/periodic-table-cli-2.1.1.tar.gz
+	sha256sums = e7e44e97ac30e92760bebd586a2893b823270396524358ffb1d68de2f8713d40
+
+pkgname = periodic-table-cli-py
