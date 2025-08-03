@@ -39,6 +39,52 @@ download_aur_list() {
     cp "$aurpackages" "$cachedaur"
 }
 
+preview_package() {
+    local pkgtype="$1"
+    local pkgname="$2"
+    echo "[previewing $pkgname]"
+    if [[ "$pkgtype" == "[official]" ]]; then
+        pacman -Si --color=always "$pkgname"
+    elif [[ "$pkgtype" == "[aur]" && -n "$aur_helper" ]]; then
+        "$aur_helper" -Si "$pkgname"
+    fi
+}
+
+install_package() {
+    local pkgtype="$1"
+    local pkgname="$2"
+    echo "[installing $pkgname]"
+    if [[ "$pkgtype" == "[official]" ]]; then
+        sudo pacman -S "$pkgname"
+    elif [[ "$pkgtype" == "[aur]" && -n "$aur_helper" ]]; then
+        "$aur_helper" -S "$pkgname"
+    fi
+    run_post_install_hook "$pkgname"
+}
+
+run_post_install_hook() {
+    local pkgname="$1"
+    local hook="$hooks_dir/post_install_$pkgname"
+    if [[ -x "$hook" ]]; then
+        echo "post-install hook found for $pkgname"
+        echo "WARNING: running arbitrary code from $hook"
+        echo "do you want to run this? [y/N]"
+        read -rp ">> " run_hook
+        if [[ "$run_hook" =~ ^[Yy]$ ]]; then
+            "$hook"
+        else
+            echo "skipping hook"
+        fi
+    fi
+}
+
+require_binary() {
+    if ! command -v "$1" > /dev/null; then
+        echo "error: required binary '$1' is not installed"
+        exit 1
+    fi
+}
+
 if [[ "${1-}" == "--refresh" || "${1-}" == "-r" ]]; then
     echo "refreshing package list"
     aurpackages=$(mktemp)
@@ -48,21 +94,21 @@ if [[ "${1-}" == "--refresh" || "${1-}" == "-r" ]]; then
 fi
 
 if [[ "${1-}" == "--help" || "${1-}" == "-h" ]]; then
-    echo "aurroamer - browse AUR and official packages with fzf"
-    echo
-    echo "  usage:"
-    echo "  aurroamer                    launch interactive mode"
-    echo "  aurroamer --version / -v     show version"
-    echo "  aurroamer --help / -h        show this message"
-    echo "  aurroamer --clear / -c       clears stored AUR package list cache"
-    echo "  aurroamer --refresh / -r     skips the cache prompt and refreshes the cache"
-    echo "  aurroamer --search <term>    search for packages by name, skips package type selection"
-    echo
-    echo "  hint: to select multiple packages in fzf, use tab"
-    echo "  hint: you can add post install hooks to a specific package in ~/.config/aurroamer/hooks.d"
-    echo "  hint: with the format post_install_pkgname"
-    echo "  hint: the favorited packages file is located at ~/.config/aurroamer/favorites.txt"
-    echo
+    cat <<EOF
+aurroamer - browse AUR and official packages with fzf
+
+  usage:
+    aurroamer                    launch interactive mode
+    aurroamer --version / -v     show version
+    aurroamer --help / -h        show this message
+    aurroamer --clear / -c       clears stored AUR package list cache
+    aurroamer --refresh / -r     skips the cache prompt and refreshes the cache
+    aurroamer --search <term>    search for packages by name
+
+  hint: to select multiple packages in fzf, use tab
+  hint: post-install hooks: ~/.config/aurroamer/hooks.d/post_install_<pkgname>
+  hint: favorites are stored in ~/.config/aurroamer/favorites.txt
+EOF
     exit 0
 fi
 
@@ -92,10 +138,8 @@ detect_aur_helper() {
 
 aur_helper=$(detect_aur_helper)
 
-if ! command -v fzf > /dev/null; then
-    echo "error: fzf is required but not installed"
-    exit 1
-fi
+require_binary fzf
+require_binary pacman
 
 if [[ -z "$aur_helper" ]]; then
     echo "warning: no supported aur helper found — aur packages cannot be interacted with"
@@ -104,17 +148,22 @@ else
     echo "using aur helper: $aur_helper"
 fi
 
-echo "cached aur package list found"
-if [ -t 0 ]; then
-    echo "use cached list instead of downloading? it may be outdated [Y/n]"
-    read -rp ">> " usecache
-else
-    usecache="y"
-fi
+if [[ -f "$cachedaur" ]]; then
+    echo "cached aur package list found"
+    if [ -t 0 ]; then
+        echo "use cached list instead of downloading? it may be outdated [Y/n]"
+        read -rp ">> " usecache
+    else
+        usecache="y"
+    fi
 
-if [[ ! "$usecache" =~ ^[Nn]$ ]]; then
-    cp "$cachedaur" "$aurpackages"
+    if [[ ! "$usecache" =~ ^[Nn]$ ]]; then
+        cp "$cachedaur" "$aurpackages"
+    else
+        download_aur_list
+    fi
 else
+    echo "no cached aur package list found"
     download_aur_list
 fi
 
@@ -197,43 +246,31 @@ while true; do
                 1)
                     clear
                     line="${selected_lines[0]}"
-                    pkgtype=$(cut -d ' ' -f1 <<< "$line")
-                    pkgname=$(cut -d ' ' -f2- <<< "$line")
-                    echo "[previewing $pkgname]"
-                    if [[ "$pkgtype" == "[official]" ]]; then
-                        pacman -Si --color=always "$pkgname"
-                    elif [[ "$pkgtype" == "[aur]" && -n "$aur_helper" ]]; then
-                        "$aur_helper" -Si "$pkgname"
-                    fi
+                    pkgtype="${line%% *}"
+                    pkgname="${line#* }"
+                    pkgname="${pkgname#"${pkgname%%[![:space:]]*}"}"
+                    preview_package "$pkgtype" "$pkgname"
                     read -n 1 -s -r -p "press any key to return"
                     ;;
                 2)
                     clear
                     for line in "${selected_lines[@]}"; do
-                        pkgtype=$(cut -d ' ' -f1 <<< "$line")
-                        pkgname=$(cut -d ' ' -f2- <<< "$line")
-                        echo "[installing $pkgname]"
-                        if [[ "$pkgtype" == "[official]" ]]; then
-                            sudo pacman -S "$pkgname"
-                        elif [[ "$pkgtype" == "[aur]" && -n "$aur_helper" ]]; then
-                            "$aur_helper" -S "$pkgname"
-                        fi
-                        hook="$hooks_dir/post_install_$pkgname"
-                        if [[ -x "$hook" ]]; then
-                            echo "running post-install hook for $pkgname"
-                            "$hook"
-                        fi
+                        pkgtype="${line%% *}"
+                        pkgname="${line#* }"
+                        pkgname="${pkgname#"${pkgname%%[![:space:]]*}"}"
+                        install_package "$pkgtype" "$pkgname"
                     done
                     read -n 1 -s -r -p "press any key to return"
                     ;;
                 3)
                     clear
-                    break  # Exit the multi-select inner loop, go back to fzf
+                    break
                     ;;
                 4)
                     clear
                     for line in "${selected_lines[@]}"; do
-                        pkgname=$(cut -d ' ' -f2- <<< "$line")
+                        pkgname="${line#* }"
+                        pkgname="${pkgname#"${pkgname%%[![:space:]]*}"}"
                         echo "$pkgname" >> "$favorites_file"
                     done
                     sort -u -o "$favorites_file" "$favorites_file"
@@ -243,8 +280,9 @@ while true; do
                 5)
                     clear
                     for line in "${selected_lines[@]}"; do
-                        pkgname=$(cut -d ' ' -f2- <<< "$line")
-                        sed -i "^$pkgname\$"d "$favorites_file" > /dev/null
+                        pkgname="${line#* }"
+                        pkgname="${pkgname#"${pkgname%%[![:space:]]*}"}"
+                        sed -i "\|^$(printf '%s' "$pkgname")\$|d" "$favorites_file"
                     done
                     echo "packages removed from favorites"
                     read -n 1 -s -r -p "press any key to return"
@@ -254,8 +292,9 @@ while true; do
                     official_pkgs=()
                     aur_pkgs=()
                     for line in "${selected_lines[@]}"; do
-                        pkgtype=$(cut -d ' ' -f1 <<< "$line")
-                        pkgname=$(cut -d ' ' -f2- <<< "$line")
+                        pkgtype="${line%% *}"
+                        pkgname="${line#* }"
+                        pkgname="${pkgname#"${pkgname%%[![:space:]]*}"}"
                         if [[ "$pkgtype" == "[official]" ]]; then
                             official_pkgs+=("$pkgname")
                         elif [[ "$pkgtype" == "[aur]" ]]; then
@@ -279,8 +318,9 @@ while true; do
         done
     else
         line="${selected_lines[0]}"
-        pkgtype=$(cut -d ' ' -f1 <<< "$line")
-        pkgname=$(cut -d ' ' -f2- <<< "$line")
+        pkgtype="${line%% *}"
+        pkgname="${line#* }"
+        pkgname="${pkgname#"${pkgname%%[![:space:]]*}"}"
 
         while true; do
             echo "choose an option:"
@@ -297,28 +337,13 @@ while true; do
             case "$choice" in
                 1)
                     clear
-                    echo "[previewing $pkgname]"
-                    if [[ "$pkgtype" == "[official]" ]]; then
-                        pacman -Si --color=always "$pkgname"
-                    elif [[ "$pkgtype" == "[aur]" && -n "$aur_helper" ]]; then
-                        "$aur_helper" -Si "$pkgname"
-                    fi
+                    preview_package "$pkgtype" "$pkgname"
                     read -n 1 -s -r -p "press any key to return"
                     clear
                     ;;
                 2)
                     clear
-                    echo "[installing $pkgname]"
-                    if [[ "$pkgtype" == "[official]" ]]; then
-                        sudo pacman -S "$pkgname"
-                    elif [[ "$pkgtype" == "[aur]" && -n "$aur_helper" ]]; then
-                        "$aur_helper" -S "$pkgname"
-                    fi
-                    hook="$hooks_dir/post_install_$pkgname"
-                    if [[ -x "$hook" ]]; then
-                        echo "running post-install hook for $pkgname"
-                        "$hook"
-                    fi
+                    install_package "$pkgtype" "$pkgname"
                     read -n 1 -s -r -p "press any key to return"
                     clear
                     ;;
@@ -336,7 +361,7 @@ while true; do
                     ;;
                 5)
                     clear
-                    sed -i "^$pkgname\$"d "$favorites_file" > /dev/null
+                    sed -i "\|^$(printf '%s' "$pkgname")\$|d" "$favorites_file"
                     echo "$pkgname removed from favorites"
                     read -n 1 -s -r -p "press any key to return"
                     clear
@@ -350,3 +375,4 @@ while true; do
         done
     fi
 done
+
