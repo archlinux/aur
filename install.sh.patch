@@ -1,0 +1,16 @@
+--- install.sh	2025-07-29 23:43:34.000000000 -0500
++++ install.sh	2025-08-01 21:54:22.234761709 -0500
+@@ -17,7 +17,7 @@
+ # along with Foobar; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+-kdeinstdir=`qmake6 -query QT_INSTALL_PREFIX`
++kdeinstdir=$_prefix`qmake6 -query QT_INSTALL_PREFIX` 
+ 
+ cp src/kim*.desktop $kdeinstdir/share/kio/servicemenus
+ cp src/bin/kim* $kdeinstdir/bin/
+@@ -39,4 +39,3 @@
+ cp README.md $kdeinstdir/share/doc/kim/
+ 
+ 
+-echo "KIM6 has been installed. Good bye."
