@@ -11,7 +11,7 @@ pkgver=4.2.3
 pkgrel=1
 pkgdesc="OOP extension for Tk"
 url="https://github.com/tcltk/itk"
-license=('LPL-1.02')
+license=('TCL')
 arch=('x86_64')
 
 depends=('tcl' 'tk')
