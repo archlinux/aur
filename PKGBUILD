@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-vesa
 _pkgname=xf86-video-vesa
 pkgver=2.6.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org vesa video driver"
 arch=(x86_64 aarch64)
 license=('MIT')
@@ -23,7 +23,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
