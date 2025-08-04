@@ -2,22 +2,36 @@
 # Contributor: Dan McCurry <dan.mccurry at linux dot com>
 
 pkgname=oh-brother-git
-pkgver=r58.078f8ba
-pkgrel=1
+pkgver=r60.d7cd5b0
+pkgrel=2
 pkgdesc="A simple cross-platform utility written in Python which can update Brother printer firmwares."
 arch=('any')
 url="https://github.com/CauldronDevelopmentLLC/oh-brother"
 license=('GPL2')
 makedepends=('git')
-depends=('python-pysnmp')
+depends=(
+	'python-pysnmplib'
+	'python-pyasyncore'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/CauldronDevelopmentLLC/oh-brother.git")
-md5sums=('SKIP')
+source=(
+	"1-importlib.patch"
+	"${pkgname%-git}::git+https://github.com/CauldronDevelopmentLLC/oh-brother.git"
+)
+sha256sums=(
+	'c6b5147f51157fbe4942580bcc0f1c2cdbf1458a0d06dedf2f5ca4d93509b57c'
+	'SKIP'
+)
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    patch -Np1 -i ../1-importlib.patch
 }
 
 package() {
