@@ -1,0 +1,4 @@
+[myriad]
+source = "git"
+git = "https://github.com/MoiraeSoftware/Myriad.git"
+prefix = "v"
