@@ -1,6 +1,6 @@
 pkgbase = hp-muteled
 	pkgdesc = Fix mute LED on hp laptops with the quirk that exists in the kernel
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 0
 	url = https://github.com/Vilez0/hp-muteled
 	install = hp-muteled.install
@@ -11,7 +11,7 @@ pkgbase = hp-muteled
 	depends = dkms
 	provides = hp-muteled
 	conflicts = hp-muteled
-	source = hp-muteled::git+https://github.com/Vilez0/hp-muteled.git#tag=0.1
+	source = hp-muteled::git+https://github.com/Vilez0/hp-muteled.git#tag=0.1.1
 	sha256sums = SKIP
 
 pkgname = hp-muteled

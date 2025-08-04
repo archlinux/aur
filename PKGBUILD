@@ -2,9 +2,9 @@
 
 _pkgbase=hp-muteled
 pkgname=${_pkgbase}
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=0
-pkgdesc="HP muteled fix"
+pkgdesc="Fix mute LED on hp laptops with the quirk that exists in the kernel"
 url="https://github.com/Vilez0/hp-muteled"
 license=('GPL')
 arch=('x86_64')
