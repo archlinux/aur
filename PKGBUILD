@@ -16,7 +16,7 @@ optdepends=('edge-stable' 'google-chrome')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-prepare() {
+pkgver() {
     cd "${_pkgname}"
     printf "%s.%s" "$(jq -r .version package.json)" "$(git rev-list --count HEAD)"
 }
