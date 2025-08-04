@@ -1,0 +1,2 @@
+SUBSYSTEM=="usb", ATTRS{idVendor}=="138a", ATTRS{idProduct}=="0090", ATTRS{dev}=="*", TEST=="power/control", ATTR{power/control}="auto", MODE="0660", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="138a", ATTRS{idProduct}=="0090", ENV{LIBFPRINT_DRIVER}="vfs0090"
