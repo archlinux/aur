@@ -1,7 +1,7 @@
 # Maintainer: XielQ <offical.gamerboytr@yandex.com>
 pkgname=bombkurdistan-git
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple game where you can bomb kurdistan'
 arch=('x86_64')
 url='https://github.com/XielQs/BombKurdistan'
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
-  git submodule update --init --recursive
+  git submodule update --init --recursive --progress --verbose
 }
 
 pkgver() {
@@ -32,6 +32,20 @@ package() {
   install -Dm755 bombkurdistan "$pkgdir/usr/lib/$pkgname/bombkurdistan"
   cp -r assets "$pkgdir/usr/lib/$pkgname/assets"
 
+  install -d "${pkgdir}/usr/share/applications"
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/bombkurdistan.desktop" <<EOF
+[Desktop Entry]
+Name=BombKurdistan
+Comment=A simple game where you bomb kurdistan
+Exec=/usr/bin/bombkurdistan
+Icon=bombkurdistan
+Terminal=false
+Type=Application
+Categories=Game;
+EOF
+
+  install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/bombkurdistan.png"
+
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/bombkurdistan" <<EOF
 #!/bin/bash
@@ -40,3 +54,4 @@ cd /usr/lib/$pkgname
 EOF
   chmod +x "$pkgdir/usr/bin/bombkurdistan"
 }
+sha256sums=('SKIP')

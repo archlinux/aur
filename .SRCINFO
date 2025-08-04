@@ -1,7 +1,11 @@
 pkgbase = bombkurdistan-git
 	pkgdesc = A simple game where you can bomb kurdistan
 	pkgver = 1.0.11
+<<<<<<< HEAD
 	pkgrel = 1
+=======
+	pkgrel = 2
+>>>>>>> 8238df5 (added .desktop)
 	url = https://github.com/XielQs/BombKurdistan
 	arch = x86_64
 	license = MIT
