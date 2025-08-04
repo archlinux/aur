@@ -1,0 +1,5 @@
+[csharpier-bin]
+source = "github"
+github = "belav/csharpier"
+use_latest_release = true
+prefix = "v"
