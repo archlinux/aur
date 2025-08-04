@@ -9,7 +9,7 @@ arch=('any')
 url="https://mtrop.github.io/DoomTools/"
 license=('MIT')
 provides=(decohack dmxconv doomfetch doomtools rookscript wadscript wswantbl wtexport dimgconv doommake wadmerge wadtex wtexlist wtexscan)
-depends=('java-runtime')
+depends=('java-runtime>=8')
 makedepends=('imagemagick')
 source=(
 	"https://github.com/MTrop/DoomTools/releases/download/${_pkgdate}-RELEASE/doomtools-bash-${pkgver}.tar.gz"
