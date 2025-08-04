@@ -1,0 +1,18 @@
+pkgbase = obs-doom-transition-git
+	pkgdesc = Plugin for OBS Studio adding a DOOM 93 like transition (screen-melting)
+	pkgver = 1.4.1.b2eff58
+	pkgrel = 1
+	url = https://github.com/LucienHH/obs-doom-transition
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = pacman-contrib
+	depends = obs-studio
+	depends = glibc
+	options = debug
+	source = obs-doom-transition::git+https://github.com/LucienHH/obs-doom-transition
+	sha256sums = SKIP
+
+pkgname = obs-doom-transition-git
