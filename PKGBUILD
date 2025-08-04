@@ -1,19 +1,17 @@
-# Maintainer: a13xie <rostik.medved@gmail.com>
+# Maintainer: k8ie <k8ie@mcld.eu>
 pkgname='proidcm'
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 _filename="${pkgname}-${pkgver}-0.amd64"
 pkgdesc="Graphical utility for managing ProID Smart Cards"
-makedepends=(jq)
 depends=(libproidplus-gui qt6-base)
 arch=('x86_64')
 url="https://proid.cz/"
 license=('custom:EULA')
+source=("${pkgname}-${pkgver}-0.amd64.deb.zip::https://monetplusappcenter.blob.core.windows.net/packages/1aba3679-25ec-4ca2-b854-c787550a6753/1.0.2/proidcm-1.0.2-0.amd64.deb.zip?sv=2025-01-05&spr=https&se=2025-08-04T11%3A04%3A55Z&sr=b&sp=r&sig=%2FMeS%2B%2F2Mbs8rHnZf1%2FEipUysYXtndsqAfP5fXAzpzQk%3D")
+sha256sums=('f6bbe248c96a8b84132d99154eaa845f71b5fcbbb844fa13f3c8d4c5ea0b6eea')
 
 prepare () {
-	_downloadurl=$(curl -X 'GET' 'https://api.appcenter.ms/v0.1/public/sdk/apps/df6ee913-ddd5-45dc-b900-d552dd6b70cf/distribution_groups/9c35c8de-3b0d-4643-9920-f373d1c42bba/releases/latest' -H 'accept: application/json' | jq '.download_url' | tr -d '"')
-	# echo $_downloadurl
-	curl $_downloadurl -L --insecure --output "$_filename.deb.zip"
 	mkdir "$srcdir/$pkgname"
 	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/${_filename}.deb.zip"
 	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/$pkgname/${_filename}.deb"
