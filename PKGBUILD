@@ -11,7 +11,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 license=("MIT")
 makedepends=("git" "pnpm")
-optdepends=('edge' 'google-chrome')
+optdepends=('edge-stable' 'google-chrome')
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=('15b93b1878778fe9b4b1bb552781780007e83b4d02f15ded346717cb1b9bd93f')
 
