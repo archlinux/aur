@@ -1,0 +1,14 @@
+pkgbase = brcmfmac-suspend
+	pkgdesc = Systemd service to unload/reload brcmfmac for reliable suspend (Broadcom WiFi workaround)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/title/Broadcom_wireless
+	install = brcmfmac-suspend.install
+	arch = any
+	license = MIT
+	depends = networkmanager
+	optdepends = linux-firmware: required firmware for brcmfmac
+	source = brcmfmac-suspend.service
+	sha256sums = SKIP
+
+pkgname = brcmfmac-suspend

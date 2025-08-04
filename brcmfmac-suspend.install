@@ -1,0 +1,7 @@
+post_install() {
+  echo "==> Run 'systemctl enable brcmfmac-suspend.service' to activate the suspend fix"
+}
+
+post_remove() {
+  systemctl disable brcmfmac-suspend.service
+}

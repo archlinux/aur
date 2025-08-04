@@ -1,0 +1,15 @@
+[Unit]
+Description=Unload and reload brcmfmac for reliable suspend
+Before=sleep.target
+After=NetworkManager.service
+Requires=NetworkManager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/bash -c 'sleep 2 && exec /usr/bin/modprobe -r brcmfmac'
+ExecStop=/usr/bin/modprobe brcmfmac
+
+[Install]
+WantedBy=sleep.target
+
