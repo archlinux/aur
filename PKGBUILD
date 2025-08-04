@@ -5,7 +5,7 @@
 #
 
 pkgname=minipro-git
-pkgver=0.7.3.r10.gcd86e1d
+pkgver=0.7.4.r1.gabb7d48
 pkgrel=1
 
 pkg_name_ver="${pkgname}-${pkgver}"
@@ -35,7 +35,8 @@ build()
 {
   cd "${srcdir}/${pkgname}"
   # temporary fix - use clang (19.1.7) as it is less picky compared to gcc (15.1.1)
-  make PREFIX="/usr" CC=clang CXX=clang++
+  #make PREFIX="/usr" CC=clang CXX=clang++
+  make PREFIX="/usr"
 }
 
 package()
