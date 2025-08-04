@@ -1,10 +1,10 @@
 pkgbase = chromium-ffmpeg-codecs-git
-	pkgdesc = Add codecs to Chromium M138+ (non vendored ffmpeg)
-	pkgver = 7.2.r120402.g7c5319e692
+	pkgdesc = Add codecs to Chromium M138+ (libfdk-aac)
+	pkgver = 7.2.r120480.gceaa8ed96b
 	pkgrel = 1
 	url = https://git.ffmpeg.org/ffmpeg
 	arch = x86_64
-	license = LGPL-2.1-or-later
+	license = custom:libfdk-aac, GPL3
 	makedepends = nasm
 	makedepends = git
 	makedepends = diffutils
@@ -12,6 +12,8 @@ pkgbase = chromium-ffmpeg-codecs-git
 	makedepends = make
 	makedepends = patch
 	depends = glibc
+	depends = libfdk-aac
+	depends = opus
 	provides = vivaldi-ffmpeg-codecs
 	provides = vivaldi-snapshot-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs
@@ -19,16 +21,10 @@ pkgbase = chromium-ffmpeg-codecs-git
 	source = git+https://git.ffmpeg.org/ffmpeg.git
 	source = sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT
 	source = 138.0.7204.55sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2/chromium/ffmpeg.sigs?format=TEXT
-	source = no-xheaac-parser.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT
-	source = aac.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT
-	source = aacREADME.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341
-	sha256sums = 95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05
-	sha256sums = ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234
-	sha256sums = bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660
 	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
 
 pkgname = chromium-ffmpeg-codecs-git
