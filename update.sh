@@ -1,10 +1,10 @@
 #! /bin/bash
 
+set -eu
+
 decodeURL() {
     printf "%b\n" "$(sed 's/+/ /g; s/%\([0-9a-f][0-9a-f]\)/\\x\1/gi;')"
 }
-
-set -eu
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 cd $SCRIPT_DIR

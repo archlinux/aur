@@ -1,5 +1,6 @@
 pkg/
 src/
+Zotero-*.tar.xz
 Zotero-*.tar.bz2
 zotero-beta-*.pkg.tar.*
 version.txt
