@@ -2,7 +2,7 @@
 
 _pkgname=ndeftool
 pkgname=${_pkgname}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A command line utility to create, modify and print NDEF Records."
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nfcpy/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6f7c68d858e54a181639f10346a589166a09edb6a513cd8e55ada9cead64aac0')
+sha256sums=('942e563f6e9cb217de3bf593dca0749e374dbd908bac7699f3abeb4833ce6197')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
