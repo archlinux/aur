@@ -1,6 +1,6 @@
 pkgbase = ghost-chat
 	pkgdesc = A standalone, multi-platform Twitch.tv, Kick.com chat as an overlay on windowed/windowed full-screen applications.Use system-wide electron.
-	pkgver = 3.6.2
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://github.com/Enubia/ghost-chat
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = ghost-chat
 	makedepends = nvm
 	makedepends = curl
 	makedepends = git
-	depends = electron35
+	depends = electron37
 	conflicts = ghost-chat
-	source = ghost-chat-3.6.2::git+https://github.com/Enubia/ghost-chat#tag=v3.6.2
+	source = ghost-chat-3.6.3::git+https://github.com/Enubia/ghost-chat#tag=v3.6.3
 	source = ghost-chat.sh
-	sha256sums = f91594e14208a790369c72345508953a53148dede150d1101898c20700afd0dd
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 666a3c7ac38723d94bfa66f4a23b12e141815bc7b9ab7948d52924da09acc2d0
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = ghost-chat
