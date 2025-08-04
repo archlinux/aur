@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.15pre+33+g7b30f93
+pkgver=4.15pre+454+g2f52f73
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,8 +14,7 @@ depends=('bzip2'
          'libgl'
          'libvpx>=1.14'
          'openal'
-         'sdl2'
-         'zmusic>=1.1.14')
+         'sdl2')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -31,7 +30,8 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
-            'xorg-xmessage: crash dialog (other)')
+            'xorg-xmessage: crash dialog (other)'
+            'zmusic-git: System-level ZMusic instead of static compile (requires cmake option change)')
 optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
 provides=('gzdoom')
@@ -39,9 +39,13 @@ conflicts=('gzdoom')
 replaces=('gzdoom1-git' 'gzdoom-legacy-git')
 options=(!lto)
 source=('gzdoom::git+https://github.com/coelckers/gzdoom.git'
+        'ZWidget::git+https://github.com/dpjudas/ZWidget.git'
+        'ZMusic::git+https://github.com/ZDoom/ZMusic.git'
         'gzdoom.desktop'
         '0001-Enforce-file-paths.patch')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
             'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811')
 
@@ -50,8 +54,16 @@ pkgver() {
     git describe --tags --abbrev=7 --match '[Gg]*' | sed -r 's/^[Gg]//;s/-/+/g'
 }
 
+## the "upstream broke again section" quick fix area!
+
+## Force format-security errors to be bypassed.
+# CFLAGS+=" -Wno-error=format-security"
+# CXXFLAGS+=" -Wno-error=format-security"
+
 prepare() {
     cd gzdoom
+    git subtree pull --prefix=libraries/ZMusic "$srcdir/ZMusic" master --squash
+    git subtree pull --prefix=libraries/ZWidget "$srcdir/ZWidget" master --squash
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
 }
 
@@ -67,7 +79,8 @@ build() {
           -D INSTALL_SOUNDFONT_PATH=share/gzdoom \
           -D INSTALL_RPATH=/usr/lib \
           -D DYN_GTK=OFF \
-          -D DYN_OPENAL=OFF
+          -D DYN_OPENAL=OFF \
+          -D FORCE_INTERNAL_ZMUSIC=ON
     make -C build
 }
 

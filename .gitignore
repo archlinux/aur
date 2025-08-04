@@ -1,4 +1,6 @@
 /gzdoom
+/ZMusic
+/ZWidget
 /pkg/
 /src/
 /*.pkg.tar.*
