@@ -1,0 +1,5 @@
+[husky-bin]
+source = "github"
+github = "alirezanet/husky.net"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,19 @@
+pkgbase = husky-bin
+	pkgdesc = Code generator for F#
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://alirezanet.github.io/Husky.Net/
+	arch = any
+	license = MIT
+	depends = dotnet-runtime-9.0
+	depends = sh
+	provides = husky
+	conflicts = husky
+	source = husky-0.7.2.nupkg::https://globalcdn.nuget.org/packages/husky.0.7.2.nupkg?packageVersion=0.7.2
+	source = husky-0.7.2-LICENSE::https://github.com/alirezanet/husky.net/raw/refs/tags/v0.7.2/LICENSE
+	source = husky.sh
+	sha256sums = 13dc04338991b9808ed5c876a840d02da15e79b546962183b0a06c660a216b16
+	sha256sums = c48257bf48a7afec6f36a79f286343f75404545ae5ba93d04a90d84f9f801539
+	sha256sums = 0cf517982f6b9aa27117bdd4241d04c80dc97ceea01713d1b83d3c61eda36f28
+
+pkgname = husky-bin
