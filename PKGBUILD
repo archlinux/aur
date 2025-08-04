@@ -2,9 +2,9 @@
 # Maintainer: i4 <admin@i4.cn>
 # Maintainer: taotieren <admin@taotieren.com>
 pkgname=i4tools-bin
-pkgver=3.08.001
+pkgver=3.08.002
 pkgrel=1
-epoch=2
+epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
 arch=('x86_64')
 url="https://www.i4.cn/pro_pc.html"
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-bin}_v${pkgver}.rpm::https://d-updater.i4.cn/i4linux/deb/${pkgname%-bin}_v${pkgver}.rpm"
     "https://www.i4.cn/copyright.html"
 )
-sha256sums=('65c871f5ebc13539ecc5ec4a2532458a7fe8077f770d20dc496e4a22b5412a41'
+sha256sums=('3e5846ea51c59825f7f2b099dad7bf78d92000ed9800bc0184134b68e4cb991b'
             '9c94e78ce7f822c06f7c2f866ee8c72e64853b9478cf8c20008cca0e7ba9eec1')
 
 package() {
