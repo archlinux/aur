@@ -5,7 +5,7 @@ _orgpkgname=xlibre-xf86-input-libinput
 _pkgname=xf86-input-libinput
 pkgver=1.5.0.0
 _pkgver=1.5.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official Xlibre fork of X.Org generic input driver for the xorg server based on libinput - ONLY for UPGRADES"
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -26,7 +26,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
