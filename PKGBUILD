@@ -1,6 +1,6 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=hades2-savefile-editor
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Savefile Editor for the game Hades II'
 url='https://github.com/jakobhellermann/hades2-tools'
@@ -10,7 +10,7 @@ depends=('hicolor-icon-theme' 'glibc' 'gcc-libs')
 arch=('x86_64' 'armv7h' 'aarch64')
 _archive="hades2-tools-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('f1bfbbcfa5827ab02f1b773b777c81e859caebfa8f40d4b98bd0f6337f8f4134')
+sha256sums=('0c30a645f81263b0ea378a3b05d18b36458fa8df8cf9bfa112737e41cc7ae086')
 
 prepare() {
     cd "$_archive"
