@@ -47,11 +47,10 @@ EOF
   install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/bombkurdistan.png"
 
   install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/bombkurdistan" <<EOF
+  cat >"$pkgdir/usr/bin/bombkurdistan" <<EOF
 #!/bin/bash
 cd /usr/lib/$pkgname
 ./bombkurdistan
 EOF
   chmod +x "$pkgdir/usr/bin/bombkurdistan"
 }
-sha256sums=('SKIP')
