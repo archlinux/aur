@@ -1,0 +1,5 @@
+[trx2junit-bin]
+source = "github"
+github = "gfoidl/trx2junit"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,19 @@
+pkgbase = trx2junit-bin
+	pkgdesc = Transforms XML from trx-Testresults to JUnit-Testresults / trx to JUnit XML and the other way round
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/gfoidl/trx2junit
+	arch = any
+	license = MIT
+	depends = dotnet-runtime-8.0
+	depends = sh
+	provides = trx2junit
+	conflicts = trx2junit
+	source = trx2junit-2.1.0.nupkg::https://globalcdn.nuget.org/packages/trx2junit.2.1.0.nupkg?packageVersion=2.1.0
+	source = trx2junit-2.1.0-LICENSE::https://github.com/gfoidl/trx2junit/raw/refs/tags/v2.1.0/LICENSE
+	source = trx2junit.sh
+	sha256sums = d05c1f4c4086cad74e5fe9706426239a94cc2ada9f04893ac6e37e15575ea4af
+	sha256sums = 21a3e82baadca8e993d19f11b93b7cb7e4b58ef11061a3165f4019ea6370c96a
+	sha256sums = 1ad695e1ae6a3ac1ceab3149a79e36d72119344129aa22c12d28b93754ea9765
+
+pkgname = trx2junit-bin
