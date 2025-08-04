@@ -3,52 +3,32 @@
 
 pkgname=gnome-extra-meta
 pkgver=48
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install gnome-extra'
 arch=(any)
 url='https://www.gnome.org/'
 license=(GPL)
 depends=(
-  accerciser
-  cheese
-  d-spy
+  chatty
   dconf-editor
   devhelp
+  d-spy
   endeavour
-  eog
-  evolution
   file-roller
-  geary
   ghex
-  gitg
-  glade
-  gnome-2048
   gnome-boxes
   gnome-builder
+  gnome-calls
   gnome-chess
-  gnome-devel-docs
-  gnome-dictionary
-  gnome-games
-  gnome-klotski
   gnome-mahjongg
   gnome-mines
-  gnome-multi-writer
   gnome-nibbles
-  gnome-notes
-  gnome-photos
-  gnome-recipes
+  gnome-robots
   gnome-sound-recorder
   gnome-sudoku
-  gnome-taquin
-  gnome-terminal
-  gnome-tetravex
   gnome-tweaks
-  hitori
-  iagno
   lightsoff
-  polari
   quadrapassel
-  seahorse
+  swell-foop
   sysprof
-  tali
 )
