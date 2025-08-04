@@ -1,6 +1,6 @@
 pkgbase = zoi
 	pkgdesc = Universal Package Manager & Environment Setup Tool
-	pkgver = 3.3.1_beta
+	pkgver = 3.3.4_beta
 	pkgrel = 1
 	url = https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = zoi
 	optdepends = less: for viewing files
 	provides = zoi
 	conflicts = zoi
-	source = https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/archive/Prod-Beta-3.3.1/Zoi-Prod-Beta-3.3.1.tar.gz
+	source = https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/archive/Prod-Beta-3.3.4/Zoi-Prod-Beta-3.3.4.tar.gz
 	source = LICENSE::https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/raw/main/LICENSE
-	sha512sums = 96d4ea7bbdf9f3cf1d72e1e117db114aa40e74a1ecfff2f03a02b84f462efad72659404d7a03b542c391ab886ac1edc2a5ac57c62c018f2328b8a4116fa59859
+	sha512sums = bd3511cccb38374bf1cbf18ffbc08711f3e75ea4ae601c6a9d542eb1b85ee1a147fb224a7a65a3d684904976c021a6f63a5f1b7aa1637c6ab7ee932f821c545f
 	sha512sums = b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb
 
 pkgname = zoi
