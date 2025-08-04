@@ -1,13 +1,13 @@
 pkgbase = rsunset-bin
 	pkgdesc = A customizable filter that can adjust brightness based on accurate sun times
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://codeberg.org/mrfantome/rsunset
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = rsunset
 	conflicts = rsunset
-	source = https://codeberg.org/mrfantome/rsunset/releases/download/0.2.1/rsunset-0.2.1-x86_64.tar.gz
-	sha256sums = 2d2c7246be3f98b371a93537504b3c836b8bf87e4ecce6ba5fce09db44812ae6
+	source = https://codeberg.org/mrfantome/rsunset/releases/download/0.2.2/rsunset-0.2.2-x86_64.tar.gz
+	sha256sums = 8f1380781cc780e7c8ad175bff7bb22d7e6bf70c54cc7f747a89a1d39849bbe9
 
 pkgname = rsunset-bin
