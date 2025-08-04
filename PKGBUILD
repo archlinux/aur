@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Brian Thompson <brianrobt@pm.me>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=alist
 pkgver=3.48.0
-_web_pkgver=3.46.0
-pkgrel=1
+_web_pkgver=3.48.0
+pkgrel=2
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64' 'riscv64' 'loong64')
 url="https://github.com/AlistGo/alist"
@@ -19,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     'alist.sysusers'
     'config.json')
 sha256sums=('fb01566b5c69b388cab8425fc3cd82d859e0227c5f4d6df35200b69c5deccae3'
-            'ecd49cd8cb9b8681adb92a7969240c24ed4dd63ad261649cc4ebe78b506122bd'
+            '759779d2027e03e6bf9f0f6ea9cb45c849f235f8d24c4e21b5ffb78782303821'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
