@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-video-sisusb
 	pkgdesc = Official XLibre fork of X.org SiS USB video driver
 	pkgver = 0.9.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64
