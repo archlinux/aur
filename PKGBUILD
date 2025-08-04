@@ -7,7 +7,7 @@
 # Submitter: Anders Lund <anders at alweb dot dk>
 
 pkgname=opencpn
-pkgver=5.12.0
+pkgver=5.12.2
 pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('gpsd: GPS position support')
 makedepends=('cmake' 'lsb-release')
 url="http://opencpn.org"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenCPN/OpenCPN/archive/Release_${pkgver}.tar.gz" "plugin.patch" "shapelib.patch")
-b2sums=('0db703ff85d92aa0d26f136fe72d7ab218126586cf69a2247f38a2bd46fe40e22819165077796e1d6ad780ca1ce0ff840804105f034b7882a06f582ebcfbb310' 'cde7210609eb215495ca4d0cae5323b96a533b1c6db3d44a72e255a79af1eed8156086f858edd795284217c16b66fca3bf2e813130b54add60029505a6871cc9' '957f2763875789ff75f6fe1d386005f992c45f9dce52a63cceeba26df1315e298025b0bab3e9ac680031e5112bfd92ade340a6228d4271f3758df4a3f936abe4')
+b2sums=('4c328383d697df20f26adada4df51ce0024a49c3b2bec95987a1faf1af8e32f051c9c08ff92f943d214d721ed572108f04fdfdf494fca5c0206634f3cdd6e71f' 'cde7210609eb215495ca4d0cae5323b96a533b1c6db3d44a72e255a79af1eed8156086f858edd795284217c16b66fca3bf2e813130b54add60029505a6871cc9' '957f2763875789ff75f6fe1d386005f992c45f9dce52a63cceeba26df1315e298025b0bab3e9ac680031e5112bfd92ade340a6228d4271f3758df4a3f936abe4')
 
 prepare() {
   cd OpenCPN-Release_${pkgver}
