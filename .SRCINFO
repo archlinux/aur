@@ -1,5 +1,5 @@
 pkgbase = ioxclient
-	pkgdesc = Manage Environment Variable collections
+	pkgdesc = CLI tool meant for assisting application development for Cisco's IOx platforms
 	pkgver = 1.17.0.0
 	pkgrel = 1
 	url = https://developer.cisco.com/docs/iox/what-is-ioxclient/

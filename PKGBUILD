@@ -3,7 +3,7 @@
 pkgname="ioxclient"
 pkgver=1.17.0.0
 pkgrel=1
-pkgdesc="Manage Environment Variable collections"
+pkgdesc="CLI tool meant for assisting application development for Cisco's IOx platforms"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://developer.cisco.com/docs/iox/what-is-ioxclient/"
 license=('custom:Cisco EULA')
