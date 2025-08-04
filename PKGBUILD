@@ -2,7 +2,7 @@
 
 pkgname=zmeventnotification
 pkgver=6.1.29.ga306ad2
-pkgrel=2
+pkgrel=3
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
 url='https://github.com/ZoneMinder/zmeventnotification'
