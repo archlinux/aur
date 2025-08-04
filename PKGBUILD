@@ -3,7 +3,7 @@
 _reponame="PT-depiler"
 pkgname="${_reponame,,}"
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), based on PT-Plugin-Plus and Manifest v3."
 arch=("any")
 url="https://github.com/pt-plugins/${_reponame}"
