@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-input-wacom
 	pkgdesc = Official XLibre fork of X.Org Wacom tablet driver
 	pkgver = 1.2.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64
