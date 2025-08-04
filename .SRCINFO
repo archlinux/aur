@@ -1,37 +1,41 @@
 pkgbase = lib32-nvidia-utils-beta
 	pkgdesc = NVIDIA drivers utilities (32-bit, beta version)
-	pkgver = 575.64.05
+	pkgver = 580.65.06
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = nvidia-utils-beta>=575.64.05
+	makedepends = nvidia-utils-beta>=580.65.06
 	options = !strip
 	options = !emptydirs
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/575.64.05/NVIDIA-Linux-x86_64-575.64.05.run
-	sha256sums = 85f2b50f912261c1917a0b2cf7e1f9743affd008fdc0f209f4d5563f774d502d
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/580.65.06/NVIDIA-Linux-x86_64-580.65.06.run
+	sha256sums = 04b10867af585e765cfbfdcf39ed5f4bd112375bebab0172eaa187c6aa5024ff
 
 pkgname = lib32-nvidia-utils-beta
-	depends = lib32-zlib
 	depends = lib32-gcc-libs
+	depends = lib32-glibc
 	depends = lib32-libglvnd
-	depends = nvidia-utils-beta>=575.64.05
+	depends = lib32-libx11
+	depends = lib32-libxext
+	depends = lib32-zlib
+	depends = nvidia-utils-beta>=580.65.06
 	optdepends = lib32-opencl-nvidia-beta: for OpenCL support
-	provides = lib32-nvidia-utils=575.64.05
+	provides = lib32-nvidia-utils=580.65.06
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
-	provides = lib32-nvidia-libgl=575.64.05
-	provides = lib32-nvidia-libgl-beta=575.64.05
+	provides = lib32-nvidia-libgl=580.65.06
+	provides = lib32-nvidia-libgl-beta=580.65.06
 	conflicts = lib32-nvidia-utils
 	conflicts = lib32-nvidia-libgl
 	replaces = lib32-nvidia-libgl
 
 pkgname = lib32-opencl-nvidia-beta
 	pkgdesc = OpenCL implemention for NVIDIA (32-bit, beta version)
-	depends = lib32-zlib
 	depends = lib32-gcc-libs
-	depends = lib32-nvidia-utils-beta>=575.64.05
+	depends = lib32-glibc
+	depends = lib32-nvidia-utils-beta>=580.65.06
+	depends = lib32-zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia=575.64.05
+	provides = lib32-opencl-nvidia=580.65.06
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia

@@ -8,7 +8,7 @@
 
 pkgbase=lib32-nvidia-utils-beta
 pkgname=('lib32-nvidia-utils-beta' 'lib32-opencl-nvidia-beta')
-pkgver=575.64.05
+pkgver=580.65.06
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (32-bit, beta version)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=("nvidia-utils-beta>=${pkgver}") # to avoid conflict during installa
 options=('!strip' '!emptydirs')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
-sha256sums=('85f2b50f912261c1917a0b2cf7e1f9743affd008fdc0f209f4d5563f774d502d')
+sha256sums=('04b10867af585e765cfbfdcf39ed5f4bd112375bebab0172eaa187c6aa5024ff')
 
 # create soname links
 _create_links() {
@@ -43,8 +43,13 @@ prepare() {
 
 package_lib32-opencl-nvidia-beta() {
     pkgdesc='OpenCL implemention for NVIDIA (32-bit, beta version)'
-    depends=('lib32-zlib' 'lib32-gcc-libs' "lib32-nvidia-utils-beta>=${pkgver}")
-    optdepends=('opencl-headers: headers necessary for OpenCL development')
+    depends=(
+        'lib32-gcc-libs'
+        'lib32-glibc'
+        "lib32-nvidia-utils-beta>=${pkgver}"
+        'lib32-zlib')
+    optdepends=(
+        'opencl-headers: headers necessary for OpenCL development')
     provides=("lib32-opencl-nvidia=${pkgver}" 'lib32-opencl-driver')
     conflicts=('lib32-opencl-nvidia')
     
@@ -60,8 +65,16 @@ package_lib32-opencl-nvidia-beta() {
 }
 
 package_lib32-nvidia-utils-beta() {
-    depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' "nvidia-utils-beta>=${pkgver}")
-    optdepends=('lib32-opencl-nvidia-beta: for OpenCL support')
+    depends=(
+        'lib32-gcc-libs'
+        'lib32-glibc'
+        'lib32-libglvnd'
+        'lib32-libx11'
+        'lib32-libxext'
+        'lib32-zlib'
+        "nvidia-utils-beta>=${pkgver}")
+    optdepends=(
+        'lib32-opencl-nvidia-beta: for OpenCL support')
     provides=("lib32-nvidia-utils=${pkgver}" 'lib32-vulkan-driver' 'lib32-opengl-driver'
               "lib32-nvidia-libgl=${pkgver}" "lib32-nvidia-libgl-beta=${pkgver}")
     conflicts=('lib32-nvidia-utils' 'lib32-nvidia-libgl')
