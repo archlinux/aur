@@ -3,7 +3,7 @@
 pkgname=windterm-bin
 _pkgname=WindTerm
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)"
 arch=('x86_64')
 license=('Apache-2.0')
@@ -34,7 +34,10 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed "s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin} %U/g" -i "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop"
+    sed -i -e "
+        s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin} %U/g
+        s/StartupWMClass=Code/StartupWMClass=${_pkgname}/g
+    " "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop"
     find "${srcdir}/${_pkgname}_${pkgver}/terminal" -type d \( -name macos -o -name windows -o -name cmd -o -name powershell -o -name wsl \) -exec rm -rf {} +
     find "${srcdir}/${_pkgname}_${pkgver}/" -type d -exec chmod 755 {} \;
     find "${srcdir}/${_pkgname}_${pkgver}/global" -type f -exec chmod 644 {} \;
