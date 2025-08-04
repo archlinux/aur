@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=knowte-bin
 _pkgname=Knowte
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=17
-pkgrel=6
+pkgrel=1
 pkgdesc="A note taking application that allows you to quickly and easily organize and find your notes.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/digimezzo/knowte"
@@ -17,8 +17,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6f7ad45262020e24c66536d627442b27601109d434e0d5870de2d48519fe2750'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('b4b67da2ea2c686e21d58d932356b4809b98d912e0fe4ca18a8e30f69412b2dd'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -27,7 +31,8 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    _get_electron_version
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
