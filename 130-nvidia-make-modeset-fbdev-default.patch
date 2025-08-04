@@ -1,5 +1,5 @@
---- a/kernel/nvidia-drm/nvidia-drm-linux.c
-+++ b/kernel/nvidia-drm/nvidia-drm-linux.c
+--- a/kernel-open/nvidia-drm/nvidia-drm-linux.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-linux.c
 @@ -31,7 +31,7 @@
  
  MODULE_PARM_DESC(
@@ -9,9 +9,9 @@
  module_param_named(modeset, nv_drm_modeset_module_param, bool, 0400);
  
  #if defined(NV_DRM_FBDEV_AVAILABLE)
---- a/kernel/nvidia-drm/nvidia-drm-os-interface.c
-+++ b/kernel/nvidia-drm/nvidia-drm-os-interface.c
-@@ -41,7 +41,7 @@
+--- a/kernel-open/nvidia-drm/nvidia-drm-os-interface.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-os-interface.c
+@@ -38,7 +38,7 @@
  #include <drm/drmP.h>
  #endif
  

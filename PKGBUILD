@@ -9,7 +9,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=575.64.05
+pkgver=580.65.06
 pkgrel=1
 pkgdesc='NVIDIA kernel modules - module sources (beta version)'
 arch=('x86_64')
@@ -23,13 +23,11 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch'
         '120-nvidia-linux-rt-gift.patch'
-        '130-nvidia-make-modeset-fbdev-default.patch'
-        '140-nvidia-linux6.15-fix.patch')
-sha256sums=('f261d894c33cdd64da46c092458ca1e510dd08c0edda7458dd15c786887ccf75'
-            'fe18809bbafe658dd270b907ae593e53f9218851670ef0058b5262768b5ae453'
+        '130-nvidia-make-modeset-fbdev-default.patch')
+sha256sums=('f0e965509ff08810de9b0f5ed9faa98a6bd3d4d7e00e7b5ac8da6cfee5dcfc13'
+            '6e86594cb7b23eaff9a28bc7896b764a7f1c3d85b7e0be916399d210fba7734f'
             '291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b'
-            'f120d0d474647edf722859615d95a0ed726a5bfd9525b211a9b803ca52efded0'
-            'd9642cf160d5ccd8afc144969fbb7686876e515be67a6e5ef89a46b74e37f347')
+            '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e')
 
 prepare() {
     # extract the source file
@@ -40,11 +38,13 @@ prepare() {
     patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-change-dkms-conf.patch"
     patch -d "$_pkg" -Np1 -i "${srcdir}/120-nvidia-linux-rt-gift.patch"
     patch -d "$_pkg" -Np1 -i "${srcdir}/130-nvidia-make-modeset-fbdev-default.patch"
-    patch -d "$_pkg" -Np1 -i "${srcdir}/140-nvidia-linux6.15-fix.patch"
 }
 
 package() {
-    depends=('dkms' "nvidia-utils-beta=${pkgver}" 'libglvnd')
+    depends=(
+        'dkms'
+        'libglvnd'
+        "nvidia-utils-beta=${pkgver}")
     
     install -d -m755 "${pkgdir}/usr/src"
     cp -dr --no-preserve='ownership' "${_pkg}/kernel" "${pkgdir}/usr/src/nvidia-${pkgver}"
