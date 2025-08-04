@@ -8,6 +8,7 @@ pkgbase = samrewritten-git
 	makedepends = cargo
 	makedepends = gtk4
 	makedepends = pkg-config
+	makedepends = git
 	depends = gtk4
 	optdepends = libadwaita: for Adwaita styling
 	source = git+https://github.com/PaulCombal/SamRewritten.git
