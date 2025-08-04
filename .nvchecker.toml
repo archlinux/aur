@@ -1,0 +1,4 @@
+[ioxclient]
+source = "regex"
+url = "https://developer.cisco.com/docs/iox/iox-resource-downloads/#downloads"
+regex = "ioxclient_(.*)_linux_amd64.tar.gz"
