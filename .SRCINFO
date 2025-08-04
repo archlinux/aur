@@ -1,11 +1,12 @@
 pkgbase = pt-depiler
-	pkgdesc = Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), based on PT-Plugin-Plus and Manifest v3.
+	pkgdesc = A web extension that can improve the efficiency of PT sites, based on PT-Plugin-Plus and Manifest v3.
 	pkgver = 0.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pt-plugins/PT-depiler
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = jq
 	makedepends = pnpm
 	optdepends = edge-stable
 	optdepends = google-chrome
