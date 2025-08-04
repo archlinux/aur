@@ -12,7 +12,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 license=("MIT")
 makedepends=("git" "jq" "pnpm")
-optdepends=('firefox' 'google-chrome' 'microsoft-edge')
+optdepends=('edge' 'google-chrome')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -25,7 +25,6 @@ build() {
     cd "${_pkgname}"
     pnpm install
     pnpm build:dist
-    pnpm build:dist-firefox
 }
 
 package() {
@@ -33,10 +32,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
     cd dist-chrome
-    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/chrome/"{} \;
-
-    cd ../dist-firefox
-    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/firefox/"{} \;
-
-    ln -s chrome "${pkgdir}/usr/share/${_pkgname}/edge"
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/"{} \;
 }
