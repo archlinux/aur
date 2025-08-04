@@ -2,7 +2,7 @@
 
 _npmname='@google/clasp'
 pkgname="nodejs-google-clasp"
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Develop Apps Script Projects locally'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm')
 optdepends=('typescript: autocompletion and linting')
 source=("https://registry.npmjs.org/$_npmname/-/${_npmname##*/}-$pkgver.tgz")
 noextract=("${_npmname##*/}-$pkgver.tgz")
-sha256sums=('24563e211a078154f9d6d50b43a8cfbd096ec241ae8a02434dfa46ef8a9fda5c')
+sha256sums=('e91781c018a3c01de460ff1a63e6151487d0fe25b670e234280aebcbcc57ebb4')
 
 build() {
     # Due to npm permission issues, install in build and copy files in package.
