@@ -2,7 +2,7 @@
 
 _pkgname="cvise"
 pkgname="$_pkgname-git"
-pkgver=2.11.0.r30.gf560d02
+pkgver=2.11.0.r95.gb4ef7d7
 pkgrel=1
 pkgdesc="Super-parallel Python port of the C-Reduce"
 url="https://github.com/marxin/cvise"
@@ -12,13 +12,13 @@ arch=('x86_64')
 depends=(
   'clang'
   'flex'
-  'python'
   'python-chardet'
   'python-jsonschema'
   'python-pebble' # AUR
   'python-psutil'
   'python-pytest'
   'python-zstandard'
+  'tree-sitter-cli'
   'unifdef'
 )
 makedepends=(
@@ -26,6 +26,7 @@ makedepends=(
   'git'
   'llvm'
   'ninja'
+  'python'
 )
 optdepends=('colordiff')
 
@@ -63,5 +64,17 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  # specify python version to prevent untracked pyc files
+  local _pyver_major _pyver_minor
+  _pyver_major=$(python -c 'import sys; print(sys.version_info.major)')
+  _pyver_minor=$(python -c 'import sys; print(sys.version_info.minor)')
+
+  eval "depends+=(
+    'python>=${_pyver_major}.${_pyver_minor}'
+    'python<${_pyver_major}.$((_pyver_minor + 1))'
+  )"
+
+  # generate pyc files
   python -m compileall -f -p / -s "$pkgdir" "$pkgdir/"
 }
