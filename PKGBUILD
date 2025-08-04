@@ -2,7 +2,7 @@
 
 pkgname=cynthion-firmware-bin
 _pypi_name=cynthion
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Firmware for the Great Scott Gadgets Cynthion (pre-built from PyPI)'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pypi_name::1}/${_pypi_name}/${_pypi_name}-${pkgver}.tar.gz"
 )
 
-sha512sums=('ac24a6cf5d25672aad0f25c05fa2c6de0270d590854e87574de01825fbe47c0272b3d2067920cb125b88e548937622a3df31809fceba292e3feeeec94ea4c5bf')
+sha512sums=('e76a551ba1dc33a841a658d75e9329f76320eaff93c31086b80a8c1704dcb83b531067346c8eec2263fff0a4bf70e7c841d6cafa8791ed8c46352bea8f0aeb9b')
 
 package() {
   cd "${_pypi_name}-${pkgver}"
