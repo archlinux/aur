@@ -1,10 +1,8 @@
-# Maintainer: Alex thetan1735 at protonmail dot com
-# Contributor: ohfp/lsf <lsf at pfho dot net>
-
+# Maintainer: Pedro Dev <pedrolucasinvestidor.github@gmail.com>
 pkgname=librewolf-kde-appmenu
 _pkgname=librewolf
-pkgver=139.0
-pkgrel=2
+pkgver=141.0
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. KDE-appmenu applied"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -83,13 +81,13 @@ source=(
   "unity-menubar.patch"
 )
 
-sha256sums=('8e630a8a78a9fb2febb14fcc0d5b3991b8f21aca401362f6105100e495540339'
+sha256sums=('59bbd2e298e56c96dd8879df2b2220d385f40d9e49d7aa843f036e9bdff61e1f'
             'ad86df1837a4b369a9e19f07a42af81178dc8d87166ba7d3b56fe8a8235fd5ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            'abfd58b5296c16642a99e0dba7f27366d6b532306e13458d7d9d1217344f7108'
+            'e6c33e08d0c839723a2379337251ab23bdb26a92edd9d5910986cf0301b3bd08'
+            'ce4ebd0b0bf19a292c6d4f199e05878b67bc45ec040916bcc84c50bb87367243')
 
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
