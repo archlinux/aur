@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-video-qxl
 	pkgdesc = Official XLibre fork of X.Org X11 qxl video driver
 	pkgver = 0.1.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64
