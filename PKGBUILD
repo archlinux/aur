@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grist-desktop
 _pkgname='Grist Desktop'
-pkgver=0.3.2
+pkgver=0.3.3
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -31,8 +31,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('17762bae89ede62b9a4ff9c6bae038ca0cd49a5fa53c76b355cbc1ff266ec3d8'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('ded85072dd73ab86eaf448c59f4ff3221ed1768603baf798a5b6b308058aaf4c'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
