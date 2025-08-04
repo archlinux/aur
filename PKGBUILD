@@ -1,5 +1,5 @@
 pkgname=dude
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=1
 epoch=
 pkgdesc='A single-binary helper that discovers, previews and removes pacman orphans'
