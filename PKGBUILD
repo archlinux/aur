@@ -1,24 +1,34 @@
 # Maintainer: Paolo De Donato <dedonato95@hotmail.it>
 
 pkgname=labwc-noxwayland
-pkgver=0.8.4
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (without XWayland)'
 url="https://github.com/labwc/labwc"
 arch=('x86_64')
 license=('GPL-2.0-only')
-depends=(cairo glibc glib2 libinput libpng librsvg libsfdo libwlroots-0.18.so libxkbcommon libxml2 pango pixman ttf-font wayland hicolor-icon-theme)
+depends=(cairo glibc glib2 libinput libpng librsvg libsfdo libwlroots-0.19.so libxkbcommon libxml2 pango pixman ttf-font wayland hicolor-icon-theme)
+# cmocka needed to run unit tests
 makedepends=(git meson scdoc wayland-protocols)
 optdepends=("bemenu: default launcher via Alt+F3")
 conflicts=(labwc)
 provides=(labwc)
 source=("git+https://github.com/labwc/labwc#tag=${pkgver}")
-b2sums=('ba631a9c5ff6cd1a4178620641dbb8823d20af90cc5b1c705ad0fa70786c6099e95cb04a5b18642aa203964b2bec418e0569b94b1a60543dfd7dbec866c9e0fa')
+b2sums=('3c1a2eb42f86ab2859ed746ba7e836089446f718a4b31467c509a0d7eebb964219768a45d7138c4802c44dd6f9a5024084097292bb3c1e7cd2e3eee8ed331417')
 
+prepare() {
+    meson subprojects download --sourcedir=labwc
+}
 
 build() {
-  arch-meson -Dman-pages=enabled -Dxwayland=disabled labwc build
+  arch-meson -Dman-pages=enabled -Dxwayland=disabled --wrap-mode=nodownload labwc build
+  # arch-meson -Dman-pages=enabled -Dxwayland=disabled -Dtest=enabled --wrap-mode=nodownload labwc build
+  # test compilation broken at 0.9.1
   meson compile -C build
+}
+
+check() {
+    meson test --print-errorlogs -C build
 }
 
 package() {

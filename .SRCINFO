@@ -1,6 +1,6 @@
 pkgbase = labwc-noxwayland
 	pkgdesc = stacking wayland compositor with look and feel from openbox (without XWayland)
-	pkgver = 0.8.4
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = labwc-noxwayland
 	depends = libpng
 	depends = librsvg
 	depends = libsfdo
-	depends = libwlroots-0.18.so
+	depends = libwlroots-0.19.so
 	depends = libxkbcommon
 	depends = libxml2
 	depends = pango
@@ -27,7 +27,7 @@ pkgbase = labwc-noxwayland
 	optdepends = bemenu: default launcher via Alt+F3
 	provides = labwc
 	conflicts = labwc
-	source = git+https://github.com/labwc/labwc#tag=0.8.4
-	b2sums = ba631a9c5ff6cd1a4178620641dbb8823d20af90cc5b1c705ad0fa70786c6099e95cb04a5b18642aa203964b2bec418e0569b94b1a60543dfd7dbec866c9e0fa
+	source = git+https://github.com/labwc/labwc#tag=0.9.1
+	b2sums = 3c1a2eb42f86ab2859ed746ba7e836089446f718a4b31467c509a0d7eebb964219768a45d7138c4802c44dd6f9a5024084097292bb3c1e7cd2e3eee8ed331417
 
 pkgname = labwc-noxwayland
