@@ -3,7 +3,7 @@
 
 pkgname=gnome-meta
 pkgver=48
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install GNOME'
 arch=(any)
 url='https://www.gnome.org/'
@@ -35,7 +35,6 @@ depends=(
   gnome-session
   gnome-settings-daemon
   gnome-shell
-  gnome-shell-extensions
   gnome-software
   gnome-system-monitor
   gnome-text-editor

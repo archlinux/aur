@@ -1,7 +1,7 @@
 pkgbase = gnome-meta
 	pkgdesc = Meta package to install GNOME
 	pkgver = 48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnome.org/
 	arch = any
 	license = GPL
@@ -31,7 +31,6 @@ pkgbase = gnome-meta
 	depends = gnome-session
 	depends = gnome-settings-daemon
 	depends = gnome-shell
-	depends = gnome-shell-extensions
 	depends = gnome-software
 	depends = gnome-system-monitor
 	depends = gnome-text-editor
