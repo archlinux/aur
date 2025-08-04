@@ -1,6 +1,6 @@
 pkgbase = cppman-git
 	pkgdesc = C++ 98/11/14/17/20 manual pages for Linux, with source from cplusplus.com and cppreference.com.
-	pkgver = 0.5.7.r2.gaf8f0a5
+	pkgver = 0.5.9.r2.g77b48da
 	pkgrel = 1
 	url = https://github.com/aitjcize/cppman
 	arch = any
