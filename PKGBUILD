@@ -1,7 +1,7 @@
 # Maintainer: therock
 pkgname=aurroamer
-pkgver=2.1.0
-pkgrel=8
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Interactive terminal-based browser for AUR and official packages"
 arch=('any')
 url="https://github.com/therock444/aurroamer"
@@ -14,7 +14,7 @@ optdepends=(
   'pikaur: AUR helper support'
 )
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v$pkgver-$pkgrel.tar.gz")
-sha256sums=('1cd6a5dc1046074337f155c42cab50b35f30b98538442a2a0672b916523c7860')
+sha256sums=('8b294e1cbc86654defd60498593f0092a044c2f0c0c691020405bc69315fdea8')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver-$pkgrel/aurroamer" "$pkgdir/usr/bin/aurroamer"
