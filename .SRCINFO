@@ -1,14 +1,14 @@
 pkgbase = osufetch-bin
 	pkgdesc = Minimal terminal osu! profile viewer
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/kartavkun/osufetch
 	arch = x86_64
-	license = GPL-3.0
+	license = MIT
 	depends = glibc
 	provides = osufetch
 	conflicts = osufetch
-	source = osufetch::https://github.com/kartavkun/osufetch/releases/download/v1.1.0/osufetch
-	sha256sums = 6633348af522d76d332e57c6400ba62ad512c7ffc9fa63bbd137026cda8d69fc
+	source = osufetch::https://github.com/kartavkun/osufetch/releases/download/v1.2.0/osufetch
+	sha256sums = 9fd849ff2ba96a5df93d06488a8f94afec87a864c888d3083ffa325804c12560
 
 pkgname = osufetch-bin
