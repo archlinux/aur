@@ -1,12 +1,14 @@
 # Maintainer: XielQ <offical.gamerboytr@yandex.com>
 pkgname=bombkurdistan-git
 pkgver=1.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple game where you can bomb kurdistan'
 arch=('x86_64')
 url='https://github.com/XielQs/BombKurdistan'
 license=('MIT')
 makedepends=('git' 'make' 'gcc' 'cmake')
+conflicts=('bombkurdistan' 'bombkurdistan-bin')
+replaces=('bombkurdistan-bin')
 source=("${pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
