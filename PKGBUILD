@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-input-vmmouse
 _pkgname=xf86-input-vmmouse
 pkgver=13.2.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org VMWare Mouse input driver"
 arch=(x86_64 aarch64)
 license=('custom')
@@ -23,7 +23,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
