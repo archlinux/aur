@@ -1,0 +1,18 @@
+pkgbase = bombkurdistan-bin
+	pkgdesc = A simple game where you can bomb kurdistan
+	pkgver = 1.0.11
+	pkgrel = 3
+	url = https://github.com/XielQs/BombKurdistan
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	provides = bombkurdistan
+	conflicts = bombkurdistan
+	conflicts = bombkurdistan-git
+	replaces = bombkurdistan-git
+	source = https://github.com/XielQs/BombKurdistan/releases/download/v1.0.11/bombkurdistan_linux.zip
+	sha256sums = 4ca576434639833cc5601360c3ff081b8aafabc36613d62061ac54d77f889544
+
+pkgname = bombkurdistan-bin
