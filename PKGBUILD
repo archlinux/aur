@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-amdgpu
 _pkgname=xf86-video-amdgpu
 pkgver=23.0.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="XLibre fork of X.Org amdgpu video driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
@@ -23,7 +23,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
