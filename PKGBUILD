@@ -1,12 +1,13 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
-# Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Xiaoxu Guo <ftiasch0@gmail.com>
+# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.07.28.00
+pkgver=2025.08.04.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -58,11 +59,11 @@ source=(
   "fix-setup-py-for-python-extensions.patch"
   "fix-cmake-for-setup-py-extensions.patch"
   "fix-gcc-traits.patch")
-sha256sums=('89be5e62c182287df73c5d6ba4f59d0b04d356048bf15e83f1ada4404c500dad'
-  'a6e57c9ec968ed6de454803d141035585ee9ab1355beba64b2b176ab8c793d2c'
-  'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
-  '78f6127afef08193923b955aae79171a8218a74c6e0e9765bf3b49dee7a1d062'
-  'f958f12379e301cff2a0983124696c3c40746da8964799a27d3601b1d5c8575a')
+sha256sums=('6d60a7b61c9fc70d66593163382416870ae4fd6260887f8d103a32454d3b6c9c'
+            'a6e57c9ec968ed6de454803d141035585ee9ab1355beba64b2b176ab8c793d2c'
+            'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
+            '78f6127afef08193923b955aae79171a8218a74c6e0e9765bf3b49dee7a1d062'
+            'f958f12379e301cff2a0983124696c3c40746da8964799a27d3601b1d5c8575a')
 
 prepare() {
   cd $pkgname
