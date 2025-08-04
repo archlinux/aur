@@ -1,6 +1,6 @@
 pkgbase = joyful
 	pkgdesc = Joystick remapper
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://codeberg.org/annabunches/joyful
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = joyful
 	depends = alsa-lib
 	depends = espeak-ng
 	options = !debug
-	source = https://codeberg.org/annabunches/joyful/archive/joyful-0.0.2.tar.gz
-	sha256sums = a735e2928eb2208122ebfff27653ea002dc4a3712bd5b83c96a0814614a41c59
+	source = https://codeberg.org/annabunches/joyful/archive/joyful-0.0.3.tar.gz
+	sha256sums = b8bbf02ab5ead48fe57aac4d7fe54a21b51d017b9c4a1ed23929403f67e2a128
 
 pkgname = joyful
