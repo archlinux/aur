@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-themes
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='A collection of Mint themes.'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 )
 options=('!strip')
 source=("${pkgname}_${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('f45797f4dab9b6823b75cf599cca62edd28ecb1562d95c5ce4cbed77465bd894')
+sha256sums=('cf66091f33d4b13802998a4f11370a8f9f2cd3a7d408095752ca1477918df084')
 
 build() {
     cd "$pkgname"
