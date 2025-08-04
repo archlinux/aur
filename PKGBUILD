@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat-git
 _pkgname=GhostChat
-pkgver=3.5.0.r1.gdf03770
-_electronversion=36
+pkgver=3.6.3.r0.g66f41be
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications.Use system-wide electron."
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -81,12 +81,14 @@ prepare() {
     sed -i "s/out\/release\/\${version}/release/g" app/configs/electron-builder.config.cjs
     cp app/public/icons/icon-512x125.png app/public/icons/icon-512x512.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" app/package.json
+    NODE_ENV=development    pnpm install --frozen-lockfile
+    cd "${srcdir}/${pkgname%-git}.git/app"
     NODE_ENV=development    pnpm install
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "${srcdir}/${pkgname%-git}.git/app"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpm -r build:vue
+    NODE_ENV=production     pnpm run build:vue
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config app/configs/electron-builder.config.cjs"
 }
 package() {
