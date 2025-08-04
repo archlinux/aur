@@ -3,7 +3,7 @@
 _sdk=8.0
 _Name="PixiEditor"
 pkgname="${_Name,,}"
-pkgver=2.0.1.3
+pkgver=2.0.1.6
 pkgrel=1
 pkgdesc="All-in-one solution for 2D image editing"
 arch=('aarch64' 'x86_64') # 'armv7h'
@@ -16,9 +16,9 @@ options=('!strip' '!debug' 'staticlibs')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${_Name}.desktop")
-b2sums=('c3d9a26b8e2d4703f0d843eda5099a43a56e07af0e7bdbfa3512ab68c8c0ed5de7c039193a17081a03d22a70d1fe9fcca0a2d4700daeb5380bbe46773ea2c3c6'
+b2sums=('6a98213ddd5b1c3aaed761595c7d28e580e7d4fb964597f60d39d8e1073d97b04f33a32f17577a64112e9e5fa67169565f91cdc9adb4c8f7f0408480f8b8e2ea'
         'b9be9f4a0b1ad75b01ebc6a6b57966df3343f0de09ee7ffde3f05dfba140fc6c0e638573c863fad8a77b359039ac3aaba875650226b5df9fa3ec05ba9686fdd0'
-        'd6aac4c28d033f9a1ff70a76ab95efd4dd22b331042928d0b341f4696046195648ae638a5fea1830b2699f5e8624d882f8ddb83062ee864deffb5af95d7e0f05'
+        'e58d64540c5393f4bd39e42ea9327742e2a7b4f1db7fa9982f93fc79c7f938184775c67503af2cda0c5a5a3b1fbe75401fc066e4dc1e52ba17c253e715fb245a'
         'ad0072c26e1c326f0769dd5cfe98b637615819fb905a0a5131cad42f58d3db47f218ba071ee1b63a34c7b0bc8d747d6f8464a74ae79f4bd0d9e063dcc6d4085c'
         'a65a5d3e647578ca1fdb01a2695cbb86fec8aadce56806691bb9c83348b23456cde5b26338c955a32c1516ecdcb159c8e2cbb90bc7572ce59b7be49bde9b2f5e'
         '0bd548a65742cfdbcd28bf782f730e40e0c3b56c975351d97c237e14001997ebbab1f553ced7ea54e5a81de2f121346eb3c2aed7b09dfe8e426897aceb412697')
@@ -27,7 +27,7 @@ declare -rAg _modules_name_map=(
   # PixiEditor
   [src/PixiDocks]=https://github.com/PixiEditor/PixiDocks/archive/87c3164a739b529dbbce199a7af761cbd11e5a58.tar.gz
   [src/PixiParser]=https://github.com/PixiEditor/PixiParser/archive/d7a83f53f4a0e6a0e0d011cb045ab1f2075e759b.tar.gz
-  [src/Drawie]=https://github.com/PixiEditor/Drawie/archive/539a77bffc3ec75ae99d101434280c176fea80df.tar.gz
+  [src/Drawie]=https://github.com/PixiEditor/Drawie/archive/0145d4583f4ac2e20a4658e451e841a9f8397a9e.tar.gz
   [src/ColorPicker]=https://github.com/PixiEditor/ColorPicker/archive/db8aaff273239b21bf4c6f99b0162dcd1d742533.tar.gz
 )
 
@@ -91,9 +91,10 @@ for _uri in "${_modules_name_map[@]}"; do
 done
 unset _source_str _uri
 
-if   [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64;
+if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
-elif [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64; fi
+elif [ "${CARCH}" = 'i686'    ]; then _msarch=x86;
+elif [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64; fi
 
 _srcenv() {
   export NUGET_PACKAGES="${srcdir}/.nuget"
