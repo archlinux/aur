@@ -3,7 +3,7 @@
 
 _pkgname='hyprgrass'
 pkgname="$_pkgname-git"
-pkgver=v0.8.2.r618.21bc4eb
+pkgver=v0.8.2.r623.ed60bc8.hypr1b86d35
 pkgrel=1
 pkgdesc='hyprland plugin for touch screen gestures'
 arch=('x86_64')
@@ -34,80 +34,33 @@ show_install_reminder() {
 pkgver() {
     cd "$srcdir/$_pkgname" || exit
 
-    # Get the installed Hyprland commit hash
+    # Get Hyprland commit hash
     local hyprland_commit=""
     if command -v hyprland >/dev/null 2>&1; then
-        hyprland_commit=$(hyprland --version 2>/dev/null | grep -oP 'commit \K[a-f0-9]{40}' || echo "")
+        hyprland_commit=$(hyprland --version 2>/dev/null | grep -oP 'commit \K[0-9a-f]{40}' || echo "")
     fi
-
-    # Fallback to hyprctl if hyprland --version doesn't work
     if [[ -z "$hyprland_commit" ]] && command -v hyprctl >/dev/null 2>&1; then
-        hyprland_commit=$(hyprctl version 2>/dev/null | grep -oP 'commit \K[a-f0-9]{40}' || echo "")
+        hyprland_commit=$(hyprctl version 2>/dev/null | grep -oP 'commit \K[0-9a-f]{40}' || echo "")
     fi
 
-    # Parse hyprpm.toml for commit pins
-    local target_commit=""
-    if [[ -f hyprpm.toml ]] && [[ -n "$hyprland_commit" ]]; then
-        # Extract the matching hyprgrass commit from hyprpm.toml
-        target_commit=$(awk -v hypr_commit="$hyprland_commit" '
-            /commit_pins\s*=/ { in_pins=1; next }
-            in_pins && /^\s*\]/ { in_pins=0 }
-            in_pins && /^\s*\["[a-f0-9]{40}",/ {
-                # Extract hyprland commit from line
-                if (match($0, /"([a-f0-9]{40})"/, hypr_arr)) {
-                    if (hypr_arr[1] == hypr_commit) {
-                        # Extract hyprgrass commit
-                        if (match($0, /"[a-f0-9]{40}",\s*"([a-f0-9]{40})"/, grass_arr)) {
-                            print grass_arr[1]
-                            exit
-                        }
-                    }
-                }
-            }
-        ' hyprpm.toml)
-    fi
-
-    # Checkout the appropriate commit
-    if [[ -n "$target_commit" ]]; then
-        git checkout "$target_commit" >/dev/null 2>&1 || git checkout main >/dev/null 2>&1
-    else
-        git checkout main >/dev/null 2>&1 || git checkout HEAD >/dev/null 2>&1
-    fi
-
-    # Get the current hyprgrass version from VERSION file
+    # Get hyprgrass version and commit info
     local hyprgrass_version=""
     if [[ -f VERSION ]]; then
         hyprgrass_version=$(cat VERSION | tr -d '\n\r')
     fi
-
-    # Get git commit info for revision
     local git_commit_count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
     local git_short_hash=$(git rev-parse --short=7 HEAD 2>/dev/null || echo "unknown")
 
-    # Include hyprland commit in version if we have it
+    # Compose version string with hyprland hash
     if [[ -n "$hyprland_commit" ]]; then
-        if [[ -n "$hyprgrass_version" ]]; then
-            echo "${hyprgrass_version}.r${git_commit_count}.${git_short_hash}"
-        else
-            echo "r${git_commit_count}.${git_short_hash}"
-        fi
+        echo "${hyprgrass_version}.r${git_commit_count}.${git_short_hash}.hypr${hyprland_commit:0:7}"
     else
-        # Fallback without hyprland commit info
-        if [[ -n "$hyprgrass_version" ]]; then
-            echo "${hyprgrass_version}.r${git_commit_count}.${git_short_hash}"
-        else
-            local git_version=$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
-            if [[ -n "$git_version" ]]; then
-                echo "$git_version"
-            else
-                echo "r${git_commit_count}.${git_short_hash}"
-            fi
-        fi
+        echo "${hyprgrass_version}.r${git_commit_count}.${git_short_hash}"
     fi
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname" || exit
 
     echo "Building hyprgrass plugin..."
 
@@ -115,9 +68,6 @@ build() {
     local hyprland_commit=""
     if command -v hyprland >/dev/null 2>&1; then
         hyprland_commit=$(hyprland --version 2>/dev/null | grep -oP 'commit \K[a-f0-9]{40}' || echo "")
-    fi
-    if [[ -z "$hyprland_commit" ]] && command -v hyprctl >/dev/null 2>&1; then
-        hyprland_commit=$(hyprctl version 2>/dev/null | grep -oP 'commit \K[a-f0-9]{40}' || echo "")
     fi
 
     local target_commit=""
