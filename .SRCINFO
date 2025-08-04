@@ -1,17 +1,17 @@
 pkgbase = zinnia-python
 	pkgdesc = Simple, customizable and portable online hand recognition system based on Support Vector Machines, Python bindings
-	pkgver = 0.06
+	pkgver = 0.07
 	pkgrel = 1
-	url = http://zinnia.sourceforge.net/
+	url = https://github.com/silverhikari/zinnia/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python2
-	depends = python2
+	makedepends = python
+	makedepends = swig
+	depends = python
 	depends = zinnia>=0.06
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/project/zinnia/zinnia/0.06/zinnia-0.06.tar.gz
-	sha256sums = ece3af93f937282971634fd81d3e997f848e8cfa958220e26a4564ca064ac20b
+	source = https://github.com/silverhikari/zinnia/archive/0.07/zinnia-0.07.tar.gz
+	sha256sums = 0200c6f91ad2825e0f15ba73fd40aefa1ce9d45e77acf30831424bc01331a106
 
 pkgname = zinnia-python
-
