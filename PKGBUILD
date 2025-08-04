@@ -9,14 +9,14 @@ pkgdesc="A 3D platform game based on the bully rodent in Big Buck Bunny"
 url="http://www.yofrankie.org/"
 license=("CCPL")
 arch=('any')
-depends=('libjpeg6-turbo' 'python2')
+depends=('libjpeg6-turbo' 'python')
 conflicts=("yofrankie-demo-glsl")
 source=("yofrankie.desktop" \
 	"yofrankie.sh"
 	"yofrankie.png" \
 	"http://download.blender.org/apricot/yofrankie_${pkgver/./_}b_bge.zip")
 md5sums=('d95468f23f1b41bc33ced8cd58c908de'
-         'db35b001da266610609ae20fae5ee71e'
+         '9ef707dbf7ee92eede64cd29e314261a'
          '0c80203d56bd4bbbc5f1e74c8e32a54a'
          '863924c515b483adfa5f63e8d982b5c2')
 
