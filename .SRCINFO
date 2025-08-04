@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-input-libinput
 	pkgdesc = Official Xlibre fork of X.Org generic input driver for the xorg server based on libinput
 	pkgver = 1.5.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64
