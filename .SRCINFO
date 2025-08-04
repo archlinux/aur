@@ -1,6 +1,6 @@
 pkgbase = rustdesk-git
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
-	pkgver = 1.4.1.r10622.g52bfc02
+	pkgver = 1.4.1.r10636.gf32591c
 	pkgrel = 1
 	url = https://rustdesk.com/
 	install = rustdesk-git.install
@@ -56,6 +56,12 @@ pkgbase = rustdesk-git
 	depends = fontconfig
 	depends = libxkbcommon
 	depends = libpulse
+	depends = zlib
+	depends = libdrm
+	optdepends = intel-media-driver: h264 h265/HEVC support for Intel Quick Sync GPUs (>= Broadwell)
+	optdepends = libva-intel-driver: h264 support for Intel Quick Sync GPUs (<= Haswell)
+	optdepends = libva-mesa-driver: h264 h265/HEVC support for AMD and NVIDIA GPUs
+	optdepends = libva-utils: vainfo query codec support
 	provides = rustdesk=1.4.1
 	conflicts = rustdesk
 	noextract = meson-1.6.1.tar.gz
@@ -66,7 +72,6 @@ pkgbase = rustdesk-git
 	noextract = webmproject-libvpx-v1.15.0.tar.gz
 	noextract = xiph-opus-v1.5.2.tar.gz
 	noextract = ffmpeg-ffmpeg-n7.1.tar.gz
-	options = !makeflags
 	options = !lto
 	source = git+https://github.com/rustdesk/rustdesk.git
 	source = git+https://github.com/rustdesk/hbb_common.git
@@ -82,7 +87,7 @@ pkgbase = rustdesk-git
 	source = webmproject-libvpx-v1.15.0.tar.gz::https://github.com/webmproject/libvpx/archive/refs/tags/v1.15.0.tar.gz
 	source = xiph-opus-v1.5.2.tar.gz::https://github.com/xiph/opus/archive/refs/tags/v1.5.2.tar.gz
 	source = ffmpeg-ffmpeg-n7.1.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n7.1.tar.gz
-	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.27.4-stable.tar.xz
+	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.5-stable.tar.xz
 	source = flutter_rust_bridge-1.80.1.tar.gz::https://github.com/fzyzcjy/flutter_rust_bridge/archive/refs/tags/v1.80.1.tar.gz
 	md5sums = SKIP
 	md5sums = SKIP
@@ -98,7 +103,7 @@ pkgbase = rustdesk-git
 	md5sums = 6d2b7b8e1c06f4b10ae63ca22491f8a4
 	md5sums = 557a08d88aa605ee6cf4156686ce4cc2
 	md5sums = 03485098fb64a000a4f7cd97e468dfff
-	md5sums = 4faa930d94db6f19d36dbbfbc5e86b5e
+	md5sums = a3efc04e00cede00296f1a0dc323e8d1
 	md5sums = cc8e5418ff0c163228aabbe385ba2596
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -114,7 +119,7 @@ pkgbase = rustdesk-git
 	sha256sums = e935eded7d81631a538bfae703fd1e293aad1c7fd3407ba00440c95105d2011e
 	sha256sums = 9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404
 	sha256sums = 7ddad2d992bd250a6c56053c26029f7e728bebf0f37f80cf3f8a0e6ec706431a
-	sha256sums = 64df4273de625433c7ba41967932b782f5f9abf3199db8330782d64508379344
+	sha256sums = a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae
 	sha256sums = 5c1494e79024de228a9f383c8e52e45b042cd0cf24f4b0f47ee4d5448938b336
 
 pkgname = rustdesk-git

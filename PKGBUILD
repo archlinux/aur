@@ -3,14 +3,37 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Tech <technetium1337 at gmail dot com>
+# Contributor: patlefort
 
 # 0 for PKGBUILD commands which may go out of date
 # 1 for build.py which should stay current
 _opt_BUILD_PY=0
 
-# 0 for download vcpkg, set _opt_VCPKG_COMMIT_ID
-# 1 for system vcpkg, ignore _opt_VCPKG_COMMIT_ID
-_opt_SYS_VCPKG=0
+#vercmp --help > /dev/null 2>&1 || vercmp() { echo '0'; } # compatible with namcap sandbox
+# namcap sandbox won't let us run pacman /usr/bin/vercmp so we'll rewrite it
+# No need to change vercmp that namcap doesn't see
+# $1 is the complex version, could be 1.4.1.r10629.g7a3e67e
+# $2 is the simple version, always 3 dotted numbers 1.4.1
+_vercmp() {
+  local pla pra rv='0' i
+  IFS='.' read -ra pla <<< "${1##.r*}"
+  IFS='.' read -ra pra <<< "$2"
+  for ((i = 0 ; i < "${#pra[@]}" ; i++ )); do
+    if [ "${pla[i]}" -lt "${pra[i]}" ]; then
+      rv='-1'
+      break
+    elif [ "${pla[i]}" -gt "${pra[i]}" ]; then
+      rv='1'
+      break
+    fi
+  done
+  printf '%s' "${rv}"
+}
+#_vercmp '1.3.7' '1.4.1'; exit 1
+#_vercmp '1.4.1.r10629.g7a3e67e' '1.4.1'; exit 1
+#_vercmp '1.4.2' '1.4.1'; exit 1
+
+# _opt_SYS_VCPKG is removed. We will never be able to use the system vcpkg.
 _opt_VCPKG_COMMIT_ID=''
 # Select from list an item which matches pkgver. This allows to compile recent versions without excessive PKGBUILD hacking.
 # $1: pkgver
@@ -24,7 +47,7 @@ _fn_VCL() {
     _v="$1"
     _v1="${_v%%:*}"
     _v2="${_v#*:}"
-    if [ "$(vercmp "${_q}" "${_v1}")" "${_t}" 0 ]; then
+    if [ "$(_vercmp "${_q}" "${_v1}")" "${_t}" 0 ]; then
       _vx="${_v}"
       _vy="${_v2}"
     fi
@@ -40,14 +63,28 @@ _fn_VCL() {
 # Flutter has more advanced UI
 _opt_FLUTTER=1
 
-# 0 for package flutter, version checked
-# 1 for system flutter, version warned
-_opt_SYS_FLUTTER=0
+# _opt_SYS_FLUTTER is removed. We will never be able to use the system installed version
 
-# hwcodec stopped working when it went from/to
-# 1.2.7 hwcodec v0.6.0 (https://github.com/21pages/hwcodec#89879f2f)
-# 1.3.0 hwcodec v0.7.0 (https://github.com/rustdesk-org/hwcodec#6abd1898)
+# 0 for package flutter
+# 1 for fvm flutter
+_opt_FVM_FLUTTER=0
+
+_opt_NICE='nice -n1'
+
+# hwcodec for H.264 H.265/HEVC stopped compiling when it went from/to
+# 1.2.7 hwcodec v0.6.0 builtin       (https://github.com/21pages/hwcodec#89879f2f)
+# 1.3.0 hwcodec v0.7.0 vcpkg::ffmpeg (https://github.com/rustdesk-org/hwcodec#6abd1898)
 # restored in 1.4.1
+#
+# To get H264 H265, rustdesk must be compiled with vcpkg::ffmpeg build modified by rustdesk.
+# libva and appropriate libva hardware driver must be installed and rebooted. See optdepends.
+# Client supports all soft codecs and compiled in hardware codecs.
+# Client hardware decode support (VAEntrypointVLD) preferred but not required.
+# Host offers all encode software codecs and only hardware codecs supported by hardware (VAEntrypointEncSlice).
+# Linux host may disable H265 even if supported by hardware. https://github.com/rustdesk/rustdesk/discussions/4095
+# Linux client does support H265, verified by connecting to a Windows host >= Skylake or Android.
+# Use libva-utils::vainfo to list supported hardware codecs VAProfileH264Main or VAProfileHEVCMain
+# https://wiki.archlinux.org/title/Hardware_video_acceleration
 _fn_hwcodec() {
   _opt_hwcodec_py=()
   _opt_hwcodec_fe=''
@@ -55,9 +92,10 @@ _fn_hwcodec() {
   if :; then
     _opt_hwcodec_py=('--hwcodec')
     _opt_hwcodec_fe=',hwcodec'
-    if [ "$(vercmp "${_pkgver}" "1.3.0")" -ge 0 ]; then
+    if [ "$(_vercmp "$1" "1.3.0")" -ge 0 ]; then
       _opt_hwcodec_vc=('ffmpeg')
       makedepends+=('ffnvcodec-headers' 'amf-headers')
+      depends+=('zlib' 'libdrm')
     fi
   fi
 }
@@ -68,9 +106,10 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.4.1.r10622.g52bfc02
+pkgver=1.4.1.r10636.gf32591c
 pkgrel=1
-_HBB=( # dates are retrieved from git fetch; tig
+_sfx='-pr3'
+_HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
   '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
   '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
   '1.3.9:20250328-81b932b7bfa2ff8bc60189625fd6538db2fa9ea1'
@@ -78,7 +117,7 @@ _HBB=( # dates are retrieved from git fetch; tig
   '1.4.1:20250718-f91459c4ab80fc3cfdef0882b2af51f984bc914c'
 )
 _pkgver="${pkgver%.r*}"
-_pkgverhbb="$(_fn_VCL "${_pkgver}" -eq "${_HBB[@]}")"; unset _HBB; test "$(vercmp "${_pkgver}" '1.3.7')" -lt 0 -o ! -z "${_pkgverhbb}" || exit 1
+_pkgverhbb="$(_fn_VCL "${_pkgver}" -eq "${_HBB[@]}")"; unset _HBB; test "$(_vercmp "${_pkgver}" '1.3.7')" -lt 0 -o ! -z "${_pkgverhbb}" || exit 1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://rustdesk.com/'
@@ -93,9 +132,17 @@ depends+=('xdg-user-dirs')
 depends+=('glibc' 'gcc-libs' 'glib2' 'libxtst' 'libepoxy' 'gdk-pixbuf2' 'cairo' 'at-spi2-core' 'dbus' 'gstreamer' 'pango' 'libx11' 'fontconfig' 'libxkbcommon' 'libpulse')
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
 makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
-makedepends+=('ninja' 'patchelf') # 'meson' 'pkgconf' # vcpkg makedepends are found in clean chroot. Some are not used.
+makedepends+=('ninja' 'patchelf') # 'meson' 'pkgconf' # vcpkg makedepends are found in clean chroot. Some tools cmake always uses its own.
 _fn_hwcodec "${_pkgver}" # makedepends
-options=('!makeflags' '!lto')
+if [ "${#_opt_hwcodec_py[@]}" -gt 0 ]; then
+  optdepends=( # lifted from libva::PKGBUILD
+    'intel-media-driver: h264 h265/HEVC support for Intel Quick Sync GPUs (>= Broadwell)'
+    'libva-intel-driver: h264 support for Intel Quick Sync GPUs (<= Haswell)'
+    'libva-mesa-driver: h264 h265/HEVC support for AMD and NVIDIA GPUs'
+    'libva-utils: vainfo query codec support'
+  )
+fi
+options=('!lto')
 _patches=(
   '0000-disable-update-check@rustdesk.patch'
   #'0001-extended_text-drop-version-for-flutter.3.22.3@rustdesk.patch' # https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/bridge.yml#L77
@@ -104,7 +151,7 @@ _patches=(
 install="${pkgname}.install"
 _srcdir="${pkgname}-${_pkgver}"
 source=(
-  "${_srcdir}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
+  "${_srcdir}${_sfx}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
   "${_patches[@]}"
   '0003-mkvparser.cc-cstdint.patch'
 )
@@ -116,9 +163,7 @@ unset _pkgverhbb
 _vcs=(
 )
 _srcdirvc='vcpkg'
-if [ "${_opt_SYS_VCPKG}" -ne 0 ]; then
-  makedepends+=('vcpkg')
-else
+if :; then
   _VCL=(
     '1.2.7:#commit=20240614-f7423ee180c4b7f40d43402c2feb3859161ef625' # last version that worked with hwcodec
     '1.3.0:#commit=20240712-1de2026f28ead93ff1773e6e680387643e914ea1'
@@ -156,19 +201,16 @@ source+=("${_vcs[@]}")
 if [ "${_opt_FLUTTER}" -eq 0 ]; then
   source+=("https://raw.github.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so")
 else
-  if [ "${_opt_SYS_FLUTTER}" -eq 0 ]; then
     _FLX=(
-      '9.9.9:3.16.9' # 1.3.0
-      '1.2.7:3.19.6' # 1.3.1
-      '9.9.9:3.22.3' # 1.3.3
-      '1.4.1:3.27.4' # none
+      '1.2.7:3.19.6'
+      #'1.3.3:3.24.5' # flutter_rust_bridge won't build
+      '1.4.1:3.24.5'  # 3.27.4 also works
     )
     _FLUVER="$(_fn_VCL "${_pkgver}" -ge "${_FLX[@]}")"; unset _FLX # https://docs.flutter.dev/release/archive
+  if [ "${_opt_FVM_FLUTTER}" -eq 0 ]; then
     source+=(
       "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUVER}-stable.tar.xz"
     )
-  else
-    makedepends+=('flutter')
   fi
   if :; then
     _FRBVER='1.80.1'
@@ -179,8 +221,8 @@ else
   fi
 fi
 ####
-md5sums=('SKIP'
-         'SKIP'
+md5sums=('621663863c75196f2611a1165573390e'
+         'd7dd05d0ca5709c328ba8e0b15f180e1'
          '6acc4b5b14befec55ef84006b60c7ff5'
          'a77a4586f30f77de2eed63e160b3a051'
          '379cfba8479c2a92e05e3b855d1e6901'
@@ -193,10 +235,10 @@ md5sums=('SKIP'
          '6d2b7b8e1c06f4b10ae63ca22491f8a4'
          '557a08d88aa605ee6cf4156686ce4cc2'
          '03485098fb64a000a4f7cd97e468dfff'
-         '4faa930d94db6f19d36dbbfbc5e86b5e'
+         'a3efc04e00cede00296f1a0dc323e8d1'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('c6b9f1160e7ec4ebf604c15145cb0146ae5ff658a530060a89807dc2af086b32'
+            '1506802672283c3f9b39a7c81f7f880cae320553a59335f033919e93ec42e729'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
             '359046f24f8a81b96a198000a1cfd7934c1f4870b2a1306e13f65694cefef68f'
@@ -209,7 +251,7 @@ sha256sums=('SKIP'
             'e935eded7d81631a538bfae703fd1e293aad1c7fd3407ba00440c95105d2011e'
             '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
             '7ddad2d992bd250a6c56053c26029f7e728bebf0f37f80cf3f8a0e6ec706431a'
-            '64df4273de625433c7ba41967932b782f5f9abf3199db8330782d64508379344'
+            'a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae'
             '5c1494e79024de228a9f383c8e52e45b042cd0cf24f4b0f47ee4d5448938b336')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
@@ -261,21 +303,13 @@ _vcpkg=(libvpx libyuv opus aom)
 _prepare_vc() {
   msg '_prepare_vc'
   set -u
-  if [ "${_opt_SYS_VCPKG}" -ne 0 ] && [ ! -d 'vcpkg' ]; then
-    local _vcp='/opt/vcpkg'
-    if [ ! -d "${_vcp}" ]; then
-      _vcp='/usr/lib/vcpkg'
-    fi
-    set +u; msg2 "Copy ${_vcp}"; set -u
-    cp -pr "${_vcp}" .
-  fi
   mkdir -p "${_srcdirvc}/downloads"
   if [ "${#_vcs[@]}" -gt 0 ]; then
     cp -p "${_vcs[@]}" "${_srcdirvc}/downloads"
   fi
 
   # Check commit ID
-  if [ "${_opt_SYS_VCPKG}" -eq 0 ] && [ ! -z "${_opt_VCPKG_COMMIT_ID}" ]; then
+  if :; then # [ ! -z "${_opt_VCPKG_COMMIT_ID}" ]; then
     local _vcc
     local _pyvcc="
 import yaml
@@ -329,31 +363,26 @@ _dpr_check() {
 _flutter_check() {
   set +u; msg '_flutter_check'; set -u
   if [ "${_opt_FLUTTER}" -ne 0 ]; then
+    pushd "${_srcdir}"
     local _FLUTTER_VERSION
     local _pyfv="
 import yaml
 import io
-#with open('.github/workflows/flutter-build.yml', 'r') as stream:
-with open('.github/workflows/bridge.yml', 'r') as stream:
+with open('.github/workflows/flutter-build.yml', 'r') as stream:
+#with open('.github/workflows/bridge.yml', 'r') as stream:
     data_loaded = yaml.safe_load(stream)
 #print(data_loaded.get('env').keys())
 print(data_loaded.get('env').get('FLUTTER_VERSION'))
 "
     _FLUTTER_VERSION="$(python -c "${_pyfv}")"
-    if [ "${_opt_SYS_FLUTTER}" -ne 0 ]; then
-      local _FLUVER
-      _FLUVER="$(pacman -Q flutter)"
-      _FLUVER="${_FLUVER##* }"
-      _FLUVER="${_FLUVER%%-*}"
-    fi
     if [ "${_FLUTTER_VERSION}" != "${_FLUVER}" ]; then
-      if [ "${_opt_SYS_FLUTTER}" -ne 0 ]; then
+      if [ "${_opt_FVM_FLUTTER}" -ne 0 ]; then
         set +u; msg2 "Warning: expected Flutter version is ${_FLUTTER_VERSION}"; set -u
         _FLUTTER_VERSION="${_FLUVER}"
       else
         printf 'Flutter version has changed to %s from %s\n' "${_FLUTTER_VERSION}" "${_FLUVER}"
-        #set +u
-        #false
+        set +u
+        false
       fi
     fi
     set +u; msg2 "FLUTTER_VERSION=${_FLUTTER_VERSION}"; set -u
@@ -380,6 +409,7 @@ print(data_loaded.get('env').get('FLUTTER_RUST_BRIDGE_VERSION'))
       false
     fi
     set +u; msg2 "flutter_rust_bridge=${_flutter_rust_bridge}"; set -u
+    popd
   fi
 }
 
@@ -406,6 +436,11 @@ def systemecho(cmd):
   fi
 }
 
+_fn_setvars() {
+  _FVC="${SRCDEST}/fvm-cache" # Default cache folder for fvm-3.2.1 is ~/fvm, not ~/.fvm as you'd expect and the docs seem to indicate.
+  _FBIN="${srcdir}/flutterbin"
+}
+
 prepare() {
   _dpr_check
   #rm -rf ~/'.cache/vcpkg/archives' ~/'.vcpkg'
@@ -414,25 +449,51 @@ prepare() {
   cp -pr . "${srcdir}/${_srcdirvc}/ports/" # the default vcpkg::ffmpeg build does not produce the correct libraries or codecs libavcodec.a libavutil.a libavformat.a. Use Rustdesk mods
   popd > /dev/null
   set -u
+  _flutter_check
   if [ "${_opt_FLUTTER}" -ne 0 ]; then
-    if [ "${_opt_SYS_FLUTTER}" -ne 0 ]; then
-      set +u; msg2 'Copy /opt/flutter'; set -u
-      rm -rf 'flutter'
-      if [ -d '/opt/flutter' ]; then
-        cp -pr '/opt/flutter' .
-      else
-        cp -pr '/usr/lib/flutter' .
-      fi
+    local _FVC _FBIN; _fn_setvars
+    if [ "${_opt_FVM_FLUTTER}" -ne 0 ]; then
+      set +u; msg2 "fvm cache to ${_FVC}"; set -u
+      FVM_CACHE_PATH="${_FVC}" \
+      fvm install "${_FLUVER}"
+      ln -s "${_FVC}/versions/${_FLUVER}" 'flutter'
     fi
     if [ ! -d 'flutter_rust_bridge' ]; then
       ln -s "flutter_rust_bridge-${_FRBVER}" 'flutter_rust_bridge'
       test -d 'flutter_rust_bridge'
     fi
-  fi
-  cd "${_srcdir}"
-  _flutter_check
-  _mod_py
+    mkdir -p "${_FBIN}"
+    pushd "${_FBIN}"
+    cat > 'flutter' << EOF
+#!/usr/bin/bash
 
+# https://github.com/flutter/flutter/issues/59533
+# Gets rid of all the unnecessary downloads
+
+#_FBIN="${_FBIN}"
+#export PATH="\${PATH/\${_FBIN}:/}"
+
+echo '#flutter --no-version-check' "\$@"
+${srcdir}/flutter/bin/flutter --no-version-check "\$@"
+EOF
+    chmod 755 'flutter'
+    cat > 'dart' << EOF
+#!/usr/bin/bash
+
+# dart doesn't do a version check. Let's reveal the commands.
+
+#_FBIN="${_FBIN}"
+#export PATH="\${PATH/\${_FBIN}:/}"
+
+echo '#dart' "\$@"
+${srcdir}/flutter/bin/dart "\$@"
+EOF
+    chmod 755 'dart'
+    popd
+  fi
+
+  cd "${_srcdir}"
+  _mod_py
   if rmdir 'libs/hbb_common'; then
     pushd 'libs' > /dev/null
     test -d "${srcdir}/${_srcdirhb}"
@@ -489,58 +550,33 @@ build() {
     #--only-downloads
   )
   #export CMAKE_POLICY_VERSION_MINIMUM='3.5'
-  nice -n1 "${_srcdirvc}/vcpkg" install "${_vcextra[@]}" --x-install-root="${VCPKG_ROOT}/installed" "${_vcpkg[@]}" "${_opt_hwcodec_vc[@]}"
+  ${_opt_NICE} "${_srcdirvc}/vcpkg" install "${_vcextra[@]}" --x-install-root="${VCPKG_ROOT}/installed" "${_vcpkg[@]}" "${_opt_hwcodec_vc[@]}"
 
   cd "${_srcdir}"
   if [ "${_opt_FLUTTER}" -eq 0 ]; then
     set +u; msg2 'Build rustdesk Sciter'; set -u
     if [ "${_opt_BUILD_PY}" -ne 0 ]; then
-      nice ./build.py --hwcodec
+      ${_opt_NICE} ./build.py --hwcodec
     else
       set -x
       git checkout src/ui/common.tis
       python3 res/inline-sciter.py
       # RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
-      nice cargo build --release --features 'inline,hwcodec'
+      ${_opt_NICE} cargo build --release --features 'inline,hwcodec'
       set +x
     fi
   else
     set +u; msg2 'Build rustdesk Flutter'; set -u
     set -x
     export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation: " | cut -d' ' -f4-)/include"
-    local _oldpath="${PATH}"
     export CARGO_INCREMENTAL=0
-    export PATH="${srcdir}/flutter/bin:${_oldpath}"
-    pushd "${PATH%%:*}"
-    if [ ! -s 'flutter-NVC' ]; then
-      mv 'flutter' 'flutter-NVC'
-      cat > 'flutter' << EOF
-#!/usr/bin/bash
-
-# https://github.com/flutter/flutter/issues/59533
-# Gets rid of all the unnecessary downloads
-
-echo '#flutter --no-version-check' "\$@"
-flutter-NVC --no-version-check "\$@"
-EOF
-      chmod 755 'flutter'
-    fi
-    if [ ! -s 'dart-NVC' ]; then
-      mv 'dart' 'dart-NVC'
-      cat > 'dart' << EOF
-#!/usr/bin/bash
-
-# dart doesn't do a version check. Let's reveal the commands.
-
-echo '#dart' "\$@"
-dart-NVC "\$@"
-EOF
-      chmod 755 'dart'
-    fi
-    popd
+    local _FVC _FBIN; _fn_setvars
+    export PATH="${_FBIN}:${srcdir}/flutter/bin:${PATH}"
+    flutter --disable-analytics
+    dart --disable-analytics
     flutter doctor
     dart pub global activate ffigen --version 5.0.1
-    pushd "${srcdir}/flutter_rust_bridge/frb_codegen"; nice -n1 cargo install --path . ; popd
+    pushd "${srcdir}/flutter_rust_bridge/frb_codegen"; ${_opt_NICE} cargo install --path . ; popd
     pushd flutter ; flutter clean; flutter pub get ; popd
     local _CGdefault=~/.cargo
     local _CARGO_HOME_RUSTDESK="${CARGO_HOME:-${_CGdefault}}"
@@ -549,18 +585,18 @@ EOF
       find "${_CARGO_HOME_RUSTDESK}/git" -type 'f' -name 'mkvparser.cc' -execdir sh -c "patch --no-backup-if-mismatch -Nup0 -i \"${srcdir}/0003-mkvparser.cc-cstdint.patch\"; rm -f mkvparser.cc.rej; true" ';'
     fi
     if [ "${_opt_BUILD_PY}" -ne 0 ]; then
-      nice -n1 ./build.py --flutter "${_opt_hwcodec_py[@]}"
+      ${_opt_NICE} ./build.py --flutter "${_opt_hwcodec_py[@]}"
     else
       git checkout src/ui/common.tis
       #if ! \
-      nice -n1 cargo build --features flutter${_opt_hwcodec_fe} --lib --release
+      ${_opt_NICE} cargo build --features flutter${_opt_hwcodec_fe} --lib --release
       #then
       #  set +u; msg2 'Move patch, get out the way (dynamic fix for unnecessary __builtin_va_list)'; set -u
       #  sed -E -e '/__builtin_va_list/ s:^:// :g' -i target/release/build/pam-sys-*/out/bindings.rs
-      #  nice cargo build --features flutter --lib --release
+      #  ${_opt_NICE} cargo build --features flutter --lib --release
       #fi
       pushd flutter
-      nice -n1 flutter build linux --release
+      ${_opt_NICE} flutter build linux --release
       popd
     fi
     set +x
@@ -571,7 +607,7 @@ EOF
 # This rebuilds the entire package
 check_disabled() {
   cd "${_srcdir}"
-  nice -n1 cargo test --release
+  ${_opt_NICE} cargo test --release
 }
 
 package() {
