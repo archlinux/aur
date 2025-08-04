@@ -40,10 +40,10 @@ package() {
 
 
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{'256x256/apps','48x48/apps','32x32/apps','16x16/apps'}
-    magick convert "$icon" -resize 256x265 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/$bin.png"
-    magick convert "$icon" -resize 48x48 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/$bin.png"
-    magick convert "$icon" -resize 32x32 "${pkgdir}/usr/share/icons/hicolor/32x32/apps/$bin.png"
-    magick convert "$icon" -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/$bin.png"
+    magick "$icon" -resize 256x265 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/$bin.png"
+    magick "$icon" -resize 48x48 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/$bin.png"
+    magick "$icon" -resize 32x32 "${pkgdir}/usr/share/icons/hicolor/32x32/apps/$bin.png"
+    magick "$icon" -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/$bin.png"
 
     install -Dm 644 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
 }
