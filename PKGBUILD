@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spie-bin
 _pkgname=SPIE
-pkgver=0.4.0
-_electronversion=33
-pkgrel=2
+pkgver=0.5.0
+_electronversion=34
+pkgrel=1
 pkgdesc="A minimal serial monitor application using Electron, Node SerialPort and Ionic/Angular.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/robsonos/spie"
@@ -18,9 +18,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/robsonos/spie/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('14361e10a8adf05aa3966ae3ffdf9c1b62e27245d2ea6a7ee2cc70ae6432fc6e'
+sha256sums=('ab44504e7be1cd9d8d50914ed177ff67604080e9f6ea2a795b1c4624f69b27e9'
             '2f5007c3cf090c9851c50bcfa349730ca9ed47f48b40b7fa5b48739599774ac3'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/\${productName}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -30,7 +34,9 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -type d \( -name "android-*" -o -name "darwin-*" -o -name "win32-*" -o -name "linux-arm*" \) -exec rm -rf {} +
+    _get_electron_version
+    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -type d \
+        \( -name "android-*" -o -name "darwin-*" -o -name "win32-*" -o -name "linux-arm*" \) -exec rm -rf {} +
     sed -i -e "
         s/\"\/opt\/SPIE\/\${productName}\"/${pkgname%-bin}/g
         s/Icon=\${productName}/Icon=${pkgname%-bin}/g
