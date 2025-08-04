@@ -9,7 +9,7 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.16.5
-_subver=4
+_subver=5
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 epoch=5
@@ -35,9 +35,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('5e51f8658323c67dd6f9a359d76d225c0a72268f4fd0a8dc2f42a22541fe5038')
-sha256sums_x86_64=('d7b706fab0adfe0af12ea0cfd6e1fbddbfc74bc3a82e03db22758d18b9269de9')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('89f32334193da5fc176e3a8d2366dd84dcf5953285bd9075b8779c10ee7ca458')
+sha256sums_x86_64=('58decd42461905a29e22013f9af52098a9c74581a000c5e67a67bdd9d6f55e3a')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
