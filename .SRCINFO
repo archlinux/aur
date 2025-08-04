@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-video-dummy
 	pkgdesc = Official XLibre fork of X.Org dummy video driver
 	pkgver = 0.4.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64
