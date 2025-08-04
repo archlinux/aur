@@ -5,7 +5,7 @@
    "$schema": "https://json.schemastore.org/chrome-manifest",
    "name": "Refined GitHub",
 -  "version": "25.4.8",
-+  "version": "25.7.16",
++  "version": "25.8.4",
    "description": "Simplifies the GitHub interface and adds useful features",
    "homepage_url": "https://github.com/refined-github/refined-github",
    "manifest_version": 3,

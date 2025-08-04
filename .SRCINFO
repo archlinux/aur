@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-refined-github-bin
 	pkgdesc = Simplifies the GitHub interface and adds many useful features
-	pkgver = 25.7.16
+	pkgver = 25.8.4
 	pkgrel = 1
 	url = https://addons.mozilla.org/addon/refined-github-/
 	install = firefox-extension-refined-github-bin.install
@@ -9,12 +9,12 @@ pkgbase = firefox-extension-refined-github-bin
 	license = MIT
 	makedepends = zip
 	depends = firefox>=126.0
-	noextract = firefox-extension-refined-github-bin-25.7.16.xpi
-	source = firefox-extension-refined-github-bin-25.7.16.xpi::https://addons.mozilla.org/firefox/downloads/file/4470107/refined_github-25.7.16.xpi
+	noextract = firefox-extension-refined-github-bin-25.8.4.xpi
+	source = firefox-extension-refined-github-bin-25.8.4.xpi::https://addons.mozilla.org/firefox/downloads/file/4470107/refined_github-25.8.4.xpi
 	source = add-id.patch
 	source = fix-version.patch
 	sha256sums = 4e07f83622497c5ea1e2fb39f94d910233cdf467a562df4b37dc39adea6fba47
 	sha256sums = 63f81ef3d15dcbe9fef8903ba704f0549f64f34e50e0b0491493db4d5473c852
-	sha256sums = 7935440ad19f8677bf67ac8c2b0399d17164655bd292fc010563f119134926fa
+	sha256sums = 504b170a7f24e713289db20c95407558e1a9f083afe6dd79e4081ae168f44bf9
 
 pkgname = firefox-extension-refined-github-bin
