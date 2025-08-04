@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-input-elographics
 _pkgname=xf86-input-elographics
 pkgver=1.4.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org Elographics TouchScreen input driver"
 arch=(x86_64 aarch64)
 license=('MIT')
@@ -24,7 +24,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
