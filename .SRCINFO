@@ -1,7 +1,7 @@
 pkgbase = opscripts
 	pkgdesc = scripts
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vcup/opscripts
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = opscripts
 	optdepends = tcpdump: grab ipv6 prefix to add them to route table
 	backup = etc/opscripts/mdns-ifonly.ifnames
 	backup = etc/opscripts/append-routes-when-dev.nuon
+	backup = etc/opscripts/mdns-ifonly.ifnames
 	source = opscripts::git+https://github.com/vcup/opscripts
 	sha512sums = SKIP
 
