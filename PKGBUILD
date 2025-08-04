@@ -1,5 +1,5 @@
 pkgname=fluyer
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Music Player"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/Fluyer_${pkgver}_amd64.deb")
-sha256sums_x86_64=('841c6110f0dddf436bcbdef16716fc9a5b1ff235fbbb4bb1021365e25fa90954')
+sha256sums_x86_64=('f6af9881eb4bb3816c3f49958a42e0b0236767b4d5d39238f88c58686835a9f1')
 package() {
   tar -xvf data.tar.gz -C "${pkgdir}"
 }
