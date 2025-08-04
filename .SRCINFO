@@ -1,6 +1,6 @@
 pkgbase = hyprviz-bin
 	pkgdesc = GUI for configuring Hyprland!
-	pkgver = 0.3.6
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/timasoft/hyprviz
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hyprviz-bin
 	depends = hyprland
 	provides = hyprviz
 	conflicts = hyprviz
-	source = https://github.com/timasoft/hyprviz/releases/download/v0.3.6/hyprviz-0.3.6-x86_64.tar.gz
-	sha256sums = 5c0d21176c930bbe6cf11cba453fca2eecfc01ddfc11b3419fa4a897aed04175
+	source = https://github.com/timasoft/hyprviz/releases/download/v0.4.0/hyprviz-0.4.0-x86_64.tar.gz
+	sha256sums = 0c8cbfbe6086721acffad802496fc07ec73b43097783e852fc5992b93b6c8ae0
 
 pkgname = hyprviz-bin
