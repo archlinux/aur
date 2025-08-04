@@ -5,7 +5,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=ortp
-pkgver=5.4.12
+pkgver=5.4.33
 pkgrel=1
 pkgdesc='A Real-time Transport Protocol (RTP) library'
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(AGPL-3.0-only)
 depends=(bctoolbox)
 makedepends=(cmake doxygen)
 source=(https://gitlab.linphone.org/BC/public/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('73500254f630861a8c2f213cd5fdde698b2cae915d15cdb7c38e220ad05da933')
+sha256sums=('3fe417bef58c234c195c3218d14b0e006d916f303c3333e322ea8f6d6dc07787')
 
 prepare() {
   sed '/WARN_AS_ERROR/d' -i $pkgname-$pkgver/ortp.doxygen.in
