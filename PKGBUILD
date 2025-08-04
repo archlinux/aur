@@ -2,7 +2,7 @@
 pkgname=go-chroma-bin
 _pkgname=chroma
 _binname=chroma
-pkgver=2.19.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="A general purpose syntax highlighter in pure Go"
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,9 +12,9 @@ provides=("${_binname}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname%-bin}-$pkgver-linux-amd64.tar.gz")
 source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname%-bin}-$pkgver-linux-386.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname%-bin}-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('2c056f78843d194b97954b991970d4dc96699cf96d98080fd46ff97d9b2abd37')
-sha256sums_i686=('3d5016070c7ab170af3930760807edc7a13574703e817ccf51ec48e376725bfa')
-sha256sums_aarch64=('3b12dd848def492a5844d9dfdf2e741f8738be2448677200c754907bc41ea602')
+sha256sums_x86_64=('dc7eae4ec392da599c90c1f5bf628f9510cdbc7950a2795a2519d777a375f6e4')
+sha256sums_i686=('7012a07dea038cd8331cd1d5a293f718e1cc8af7eecc9b7b783d0d41709ff566')
+sha256sums_aarch64=('9c1b65cdaa1d80d25db0884f0976e9130a21d3dc2e3e33452c3302b7ed3a7531')
 
 package() {
     install -Dm755 "${_binname}" -t "${pkgdir}/usr/bin"
