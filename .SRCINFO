@@ -1,0 +1,20 @@
+pkgbase = python-pysnmplib
+	pkgdesc = This is a pure-Python, open source and free implementation of v1/v2c/v3 SNMP engine
+	pkgver = 5.0.24
+	pkgrel = 1
+	url = https://github.com/pysnmp/pysnmp
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-pysmi
+	depends = python-pycryptodomex
+	depends = python-pyasn1
+	conflicts = python-pysnmp
+	source = https://github.com/pysnmp/pysnmp/archive/refs/tags/v5.0.24.tar.gz
+	sha512sums = 21960c2ad4f9ba5433a5cb1a218b96b6590aa55bea41cde63e89bacb0e15a148ecd2636097ec85929f167ebc00244775e73e4e61e00c8b3e125b11246cbfdc59
+
+pkgname = python-pysnmplib

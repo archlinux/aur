@@ -1,0 +1,4 @@
+[python-pysnmplib]
+source = "git"
+git = "https://github.com/pysnmp/pysnmp.git"
+prefix = "v"
