@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-nouveau
 _pkgname=xf86-video-nouveau
 pkgver=1.0.18.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org Open Source 3D acceleration driver for nVidia cards"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
@@ -23,7 +23,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
