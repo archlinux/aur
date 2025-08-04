@@ -2,7 +2,7 @@ pkgbase = mwc-git
 	pkgdesc = tiling wayland compositor based on wlroots and scenefx
 	pkgver = r275.b8e4c36
 	pkgrel = 1
-	url = https://github.com/dqrk0jeste/mwc
+	url = https://github.com/nikoloc/mwc
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -25,7 +25,7 @@ pkgbase = mwc-git
 	provides = mwc
 	provides = wayland-compositor
 	conflicts = mwc
-	source = mwc-git::git+https://github.com/dqrk0jeste/mwc.git
+	source = mwc-git::git+https://github.com/nikoloc/mwc.git
 	md5sums = SKIP
 
 pkgname = mwc-git

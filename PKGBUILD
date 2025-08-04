@@ -5,7 +5,7 @@ pkgver=r275.b8e4c36
 pkgrel=1
 pkgdesc='tiling wayland compositor based on wlroots and scenefx'
 arch=('x86_64')
-url='https://github.com/dqrk0jeste/mwc'
+url='https://github.com/nikoloc/mwc'
 license=(MIT)
 depends=(
   glibc
@@ -27,7 +27,7 @@ optdepends=(
 )
 provides=(mwc wayland-compositor)
 conflicts=(mwc)
-source=("$pkgname::git+https://github.com/dqrk0jeste/mwc.git")
+source=("$pkgname::git+https://github.com/nikoloc/mwc.git")
 md5sums=('SKIP')
 
 pkgver() {
