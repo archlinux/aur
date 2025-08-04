@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=marker-git
-pkgver=2023.05.02.r21.g2091b45
+pkgver=2023.05.02.r27.g5866118
 pkgrel=1
 pkgdesc="Markdown editor for linux made with Gtk+-3.0"
 arch=('x86_64')
 url="https://fabiocolacio.xyz/Marker"
 license=('GPL-3.0-or-later')
 depends=(
+  'gtk3'
   'gtksourceview3'
   'gtkspell3'
   'webkit2gtk-4.1'
@@ -29,14 +30,12 @@ source=('git+https://github.com/fabiocolacio/Marker.git'
         'git+https://github.com/Mandarancio/scidown.git'
         'git+https://github.com/Mandarancio/charter.git'
         'git+https://github.com/codeplea/tinyexpr.git'
-        'add_gi18n_h.patch'
-        'fix-incompatible-pointer-type.patch')
+        'add_gi18n_h.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a549a622d3d58936643f4932235711c03a38550d09266e1863a936e41618b661'
-            '84ac0e9030efeb413daa4fec218fbbdcde4d137fd0d39178301a1fe9a6708a32')
+            'a549a622d3d58936643f4932235711c03a38550d09266e1863a936e41618b661')
 
 pkgver() {
   cd Marker
@@ -56,10 +55,6 @@ prepare() {
   sed -i 's|file:///usr/share/javascript/mathjax/MathJax.js|file:///usr/share/mathjax2/MathJax.js|' src/marker-markdown.c
 
   patch -Np1 -i ../add_gi18n_h.patch
-
-  # Fix incompatible pointer type
-  # https://github.com/fabiocolacio/Marker/pull/427
-  patch -Np1 -i ../fix-incompatible-pointer-type.patch
 
   cd src/scidown
   git submodule init
@@ -83,7 +78,7 @@ build() {
 
 check() {
   cd Marker
-  appstreamcli validate --no-net data/*.appdata.xml || :
+  appstreamcli validate --no-net data/*.appdata.xml
   desktop-file-validate data/*.desktop
 }
 

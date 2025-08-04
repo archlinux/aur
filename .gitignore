@@ -8,4 +8,3 @@
 !.nvchecker.toml
 !LICENSE
 !add_gi18n_h.patch
-!fix-incompatible-pointer-type.patch
