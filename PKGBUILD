@@ -2,7 +2,7 @@
 
 pkgname=regexxer
 pkgver=0.10
-pkgrel=12
+pkgrel=13
 pkgdesc='Interactive search and replace tool for GNOME'
 arch=(x86_64)
 url='https://regexxer.sourceforge.net/'
@@ -52,7 +52,7 @@ prepare() {
   # Port to gtksourceviewmm4
   git apply -3 ../regexxer-gtksourceviewmm4.patch
 
-  autoreconf -fi
+  autoreconf -fi -I /usr/share/gettext/m4/
 }
 
 build() {
