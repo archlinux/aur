@@ -7,10 +7,10 @@
 _pkgname=plakar_cleaner
 pkgname=${_pkgname}-git
 pkgver=0.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Tool for retain plakar backup by retention policies"
 arch=(any)
-url="https://auxilium.spn.109"
+url="https://plakar_cleaner.spn.109"
 license=('Apache-2')
 groups=()
 provides=("$_pkgname")
