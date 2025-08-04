@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OpenOTP
+Comment=A feature-rich, secure OTP (One-Time Password) generator app
+GenericName=OTP Generator
+Exec=openotp
+Icon=openotp
+Terminal=false
+StartupNotify=true
+Categories=Utility;Security;
+Keywords=otp;totp;hotp;authenticator;2fa;two-factor;security;
+MimeType=x-scheme-handler/otpauth;
+StartupWMClass=openotp
