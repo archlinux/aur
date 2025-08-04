@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('webkit2gtk-4.1' 'xdg-utils')
 makedepends=('npm' 'nodejs' 'rust' 'cargo' 'git' 'desktop-file-utils')
 source=("https://github.com/iamnotmega/reskin/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2ba8cd382bc1f5c67a0a1ae211659963c72106b1bd38662ca6c7e5ff47a9380a')
+sha256sums=('a3ec1e2b3f0a7ac6cdf9757c96c06682fec8c7f81955a5bf5066c434c5d51d50')
 
 build() {
   cd "$srcdir/reskin-$pkgver/src-tauri"
