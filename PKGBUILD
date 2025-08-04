@@ -4,23 +4,23 @@
 # Contributor: Dan Vratil
 
 pkgname=nvidia-beta
-pkgver=575.64.05
+pkgver=580.65.06
 pkgrel=1
 pkgdesc="NVIDIA kernel module (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('LicenseRef-Custom')
-makedepends=('linux-headers' 'dkms')
+makedepends=(
+    'dkms'
+    'linux-headers')
 provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}" 'NVIDIA-MODULE')
 conflicts=('nvidia')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
-        '110-nvidia-change-dkms-conf.patch'
-        '140-nvidia-linux6.15-fix.patch')
-sha256sums=('f261d894c33cdd64da46c092458ca1e510dd08c0edda7458dd15c786887ccf75'
-            'fe18809bbafe658dd270b907ae593e53f9218851670ef0058b5262768b5ae453'
-            'd9642cf160d5ccd8afc144969fbb7686876e515be67a6e5ef89a46b74e37f347')
+        '110-nvidia-change-dkms-conf.patch')
+sha256sums=('f0e965509ff08810de9b0f5ed9faa98a6bd3d4d7e00e7b5ac8da6cfee5dcfc13'
+            '6e86594cb7b23eaff9a28bc7896b764a7f1c3d85b7e0be916399d210fba7734f')
 
 prepare() {
     # extract the source file
@@ -30,7 +30,6 @@ prepare() {
     ln -s kernel "${_pkg}/nvidia-${pkgver}"
     
     patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-change-dkms-conf.patch"
-    patch -d "$_pkg" -Np1 -i "${srcdir}/140-nvidia-linux6.15-fix.patch"
 }
 
 build() {
@@ -38,7 +37,10 @@ build() {
 }
 
 package() {
-    depends=('linux' "nvidia-utils-beta=${pkgver}" 'libglvnd')
+    depends=(
+        'libglvnd'
+        'linux'
+        "nvidia-utils-beta=${pkgver}")
     
     local _kernver
     _kernver="$(</usr/src/linux/version)"
