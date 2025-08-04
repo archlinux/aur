@@ -1,7 +1,7 @@
 pkgbase = aurroamer
 	pkgdesc = Interactive terminal-based browser for AUR and official packages
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/therock444/aurroamer
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = aurroamer
 	optdepends = paru: AUR helper support
 	optdepends = trizen: AUR helper support
 	optdepends = pikaur: AUR helper support
-	source = aurroamer-2.2.0-1.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v2.2.0-1.tar.gz
-	sha256sums = 8b294e1cbc86654defd60498593f0092a044c2f0c0c691020405bc69315fdea8
+	source = aurroamer-2.2.0-2.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v2.2.0-2.tar.gz
+	sha256sums = f7dba7f09b2d339083c0973cbc347687b75b02efdd4b47874ede4c769bfd36b5
 
 pkgname = aurroamer
