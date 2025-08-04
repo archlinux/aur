@@ -1,6 +1,6 @@
 pkgbase = ibazel
 	pkgdesc = Tool for building Bazel targets when source files change.
-	pkgver = 0.26.8
+	pkgver = 0.26.10
 	pkgrel = 1
 	url = https://github.com/bazelbuild/bazel-watcher
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ibazel
 	depends = bazel
 	conflicts = ibazel-bin
 	conflicts = ibazel-git
-	source = ibazel::git+https://github.com/bazelbuild/bazel-watcher.git#commit=dcf15c8dc62c4d564914c5431f0fb84515631f7f
+	source = ibazel::git+https://github.com/bazelbuild/bazel-watcher.git#commit=e0b777594e09b964dc0d048667ff2f3083c85def
 	sha256sums = SKIP
 	source_x86_64 = bazelisk-bin-x86_64-1.25.0::https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
 	sha256sums_x86_64 = fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4
