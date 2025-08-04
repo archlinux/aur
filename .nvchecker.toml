@@ -1,0 +1,3 @@
+[eclipse-installer]
+source="cmd"
+cmd="python .nvchecker.py"

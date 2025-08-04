@@ -2,6 +2,7 @@
 # Contributor: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
 pkgver=2025.06
+_pkgver=${pkgver/./-}
 pkgrel=1
 pkgdesc="Automates the installation and update of Eclipse development environments"
 arch=('aarch64' 'x86_64')
@@ -16,20 +17,14 @@ source=(
 	'eclipse-installer.desktop'
 )
 source_x86_64=(
-    'https://download.eclipse.org/oomph/epp/2025-06/R/eclipse-inst-jre-linux64.tar.gz'
+    "https://download.eclipse.org/oomph/epp/$_pkgver/R/eclipse-inst-jre-linux64.tar.gz"
 )
 source_aarch64=(
-    'https://download.eclipse.org/oomph/epp/2025-06/R/eclipse-inst-jre-linux-aarch64.tar.gz'
+    "https://download.eclipse.org/oomph/epp/$_pkgver/R/eclipse-inst-jre-linux-aarch64.tar.gz"
 )
-sha256sums=(
-	'bb24472355cdd2dff1d9af45190d5fadf989f071458ff33a19e723b66fe85d84'
-)
-sha256sums_x86_64=(
-    '7db637c05407098baa051b47469c21eb6fe5163846c9b72736404063a29b15eb'
-)
-sha256sums_aarch64=(
-    'a8a9839a94ed57aea4060bc215393290801a2471f7b47106d20c04c2c934d9bb'
-)
+sha256sums=('bb24472355cdd2dff1d9af45190d5fadf989f071458ff33a19e723b66fe85d84')
+sha256sums_aarch64=('a8a9839a94ed57aea4060bc215393290801a2471f7b47106d20c04c2c934d9bb')
+sha256sums_x86_64=('7db637c05407098baa051b47469c21eb6fe5163846c9b72736404063a29b15eb')
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
