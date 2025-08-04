@@ -1,12 +1,12 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast
-pkgver=0.31.0
-pkgrel=4
+pkgver=0.32.1
+pkgrel=1
 _pkgname_snapweb=snapweb
-_snapweb_version=0.8.0
+_snapweb_version=0.9.1
 pkgdesc="Synchronous multi-room audio player"
-arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
 depends=(alsa-lib avahi libvorbis flac opus expat libsoxr libpulse jack)
@@ -20,20 +20,17 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "${_pkgname_snapweb}-${_snapweb_version}.zip::https://github.com/badaix/snapweb/releases/download/v${_snapweb_version}/snapweb.zip"
         "snapcast.sysusers"
         "snapcast.tmpfiles"
-        "snapcast.install"
-        "Fix-build-failure-with-boost-1.88.0.patch")
+        "snapcast.install")
 noextract=("${_pkgname_snapweb}-${_snapweb_version}.zip")
-sha256sums=('d38d576f85bfa936412413b6860875ba3b462a8e67405f3984a0485778f2fdac'
-            '71078f94d87e44881c7bf6491456d528420a69ae09f1ae115dd6c48c03c2a65c'
+sha256sums=('66a353f29ff232714ab317ca28462137423d6ef9ea5aba08f6d9ca5cc2a7fea7'
+            '5a63936b2ce9ce29eac7760b78a8e3013cb0ec95c5ca140d68261143f826dfb5'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
-            '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f'
-            '0a8f1de5dbb3f12306f4719826050faf058f103833bafa6e81af9121eb4f7894')
+            '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f')
 
 prepare() {
     mkdir -p ${_pkgname_snapweb}-${_snapweb_version}
     bsdtar -xf ${_pkgname_snapweb}-${_snapweb_version}.zip -C ${_pkgname_snapweb}-${_snapweb_version}
-    patch -d $pkgname-$pkgver -Np1 -i ../Fix-build-failure-with-boost-1.88.0.patch
 }
 
 build() {
