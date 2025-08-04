@@ -10,7 +10,7 @@ depends=('glibc')
 provides=('osufetch')
 conflicts=('osufetch')
 source=("osufetch::${url}/releases/download/v${pkgver}/osufetch")
-sha256sums=('9fd849ff2ba96a5df93d06488a8f94afec87a864c888d3083ffa325804c12560')
+sha256sums=('0f7e2c6680259370f04838c552db6f9b2c96b8c8157a4613a947395e1cd5cf22')
 
 package() {
   install -Dm755 "$srcdir/osufetch" "$pkgdir/usr/bin/osufetch"
