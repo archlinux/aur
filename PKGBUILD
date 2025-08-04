@@ -1,8 +1,8 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=eigenwallet-developertools-bin
-_pkgver=3.0.0
-pkgver=${_pkgver/-/.}
+_pkgver="3.0.0-beta.5"
+pkgver=${_pkgver/-beta./.}
 pkgrel=7
 epoch=
 pkgdesc="λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps"
@@ -19,11 +19,9 @@ optdepends=(
 provides=(eigenwallet-developertools asb swap)
 backup=()
 options=()
-# Usually _pkgver
-pkgrelease=("${_pkgver}-beta.5")
 source=(
-	"https://github.com/eigenwallet/core/releases/download/${pkgrelease}/swap_${pkgrelease}_Linux_x86_64.tar"
-	"https://github.com/eigenwallet/core/releases/download/${pkgrelease}/asb_${pkgrelease}_Linux_x86_64.tar"
+	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/swap_${_pkgver}_Linux_x86_64.tar"
+	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/asb_${_pkgver}_Linux_x86_64.tar"
 )
 sha256sums=('9a5e47c47635bb46b4a0bd964bd4aa270095787381e3c8b349cc2687a2f23fed'
             'd1f740d5d31c22d1a9e364b0a18266352a4dc3c33272908277adce21e5f87699')

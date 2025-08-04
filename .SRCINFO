@@ -1,6 +1,6 @@
 pkgbase = eigenwallet-developertools-bin
 	pkgdesc = λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps
-	pkgver = 3.0.0
+	pkgver = 3.0.0.5
 	pkgrel = 7
 	url = https://eigenwallet.org/
 	arch = x86_64
