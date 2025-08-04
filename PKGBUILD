@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bsky-electron-bin
 _pkgname='Bluesky Electron Client'
-pkgver=0.3.1
-_electronversion=35
+pkgver=0.4.1
+_electronversion=37
 pkgrel=1
 pkgdesc="${_pkgname}.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -24,9 +24,13 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}_linux_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}_linux_x86_64.rpm")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('2da53d57c7e67f8e735bd0114e6c599d39df4e5fad6977ee57143d3ec9241a53')
-sha256sums_x86_64=('624b60e6144b4ba33462da81d712322faef1b7ff41813001cfdc9282809649cd')
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('8ee17ac7c0a81a3b011f0f1710d1414341e1245bf3b924f4903c9ff1c1884d57')
+sha256sums_x86_64=('d0c3641a437084544a67a56be19ec01fc2b3f4c6659ff08b0ec1cc8efe61718c')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -35,7 +39,8 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    _get_electron_version
+    sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
