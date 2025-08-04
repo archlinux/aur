@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.153
+pkgver=2.0.154
 _electronversion=37
 pkgrel=1
 pkgdesc="Displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)"
@@ -20,9 +20,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('676335636c7729a81ea68696e1b22de4743cff0862060d007e00b92664846af1'
+sha256sums=('13cc5833d48a9d5fcc986d5f722205c3baa2bb06a0ac099997ea5beaaae2614c'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/${pkgname%-bin}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
