@@ -1,6 +1,6 @@
 pkgbase = wireshark-minecraft-dissector
 	pkgdesc = Wireshark dissector for Minecraft protocols.
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/Nickid2018/MC_Dissector
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wireshark-minecraft-dissector
 	makedepends = cmake
 	depends = wireshark-cli>=4.4.0
 	depends = cjson
-	source = https://github.com/Nickid2018/MC_Dissector/archive/v1.3.4.tar.gz
-	sha256sums = 6f8f0b7feb3b72bd0182735dacb543440a430f6dd6103d061dc40fba2edc056e
+	source = https://github.com/Nickid2018/MC_Dissector/archive/v1.3.5.tar.gz
+	sha256sums = 19330fb8c80577b91abf45e1ac5e33199a8169ea107d0a947902b2d45334ac04
 
 pkgname = wireshark-minecraft-dissector
