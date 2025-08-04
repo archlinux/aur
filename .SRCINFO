@@ -1,7 +1,7 @@
 pkgbase = bombkurdistan-git
 	pkgdesc = A simple game where you can bomb kurdistan
 	pkgver = 1.0.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/XielQs/BombKurdistan
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,9 @@ pkgbase = bombkurdistan-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = cmake
+	conflicts = bombkurdistan
+	conflicts = bombkurdistan-bin
+	replaces = bombkurdistan-bin
 	source = bombkurdistan-git::git+https://github.com/XielQs/BombKurdistan.git
 	sha256sums = SKIP
 
