@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 sha256sums[1]='SKIP'
 depends=(glibc libfdk-aac opus)
 makedepends=(nasm git
-diffutils gcc make patch) # base-devel
+diffutils gcc make patch pkgconf) # base-devel
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
@@ -68,7 +68,7 @@ build() {
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-libfdk-aac --enable-libopus \
-    --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
+    --enable-demuxer=ogg,matroska,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,libopus,flac,pcm_s16le,mp3,libfdk_aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition ${LTOFLAGS}" \

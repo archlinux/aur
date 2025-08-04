@@ -11,6 +11,7 @@ pkgbase = chromium-ffmpeg-codecs-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
+	makedepends = pkgconf
 	depends = glibc
 	depends = libfdk-aac
 	depends = opus
