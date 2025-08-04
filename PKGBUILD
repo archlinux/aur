@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-intel
 _pkgname=xf86-video-intel
 pkgver=3.0.0.1
-pkgrel=4
+pkgrel=5
 arch=(x86_64 aarch64)
 url="https://github.com/X11Libre"
 license=('MIT')
@@ -41,7 +41,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
