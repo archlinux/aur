@@ -154,9 +154,6 @@ overview {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-spawn-at-startup "nm-applet"
-spawn-at-startup "polkit-gnome-authentication-agent-1"
-spawn-at-startup "gnome-keyring-daemon" "--start" "--components=gpg,pkcs11,secrets,ssh"
 spawn-at-startup "qs" "-c" "DankMaterialShell"
 
 environment {
@@ -467,8 +464,4 @@ binds {
     // === System Controls ===
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+P { power-off-monitors; }
-}
-
-debug {
-    wait-for-frame-completion-in-pipewire
 }

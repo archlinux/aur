@@ -1,9 +1,8 @@
 # dank-niri-git - Complete Dank Material Shell Environment with built-in niri
-# Maintainer: Your Name <your.email at domain dot com>
 : ${_sccache:=}
 pkgname='dank-niri-git'
-pkgver=r2235.91b6a11
-pkgrel=1
+pkgver=0.0.1
+pkgrel=2
 pkgdesc='Complete niri desktop environment with DankMaterialShell, themes, and all dependencies'
 arch=(x86_64 aarch64)
 url='https://github.com/bbedward/DankMaterialShell'
@@ -18,12 +17,12 @@ depends=('dankmaterialshell-git'
          'cava'
          'qt5ct'
          'qt6ct'
-         'breeze'
-         'breeze5'
          'xdg-desktop-portal-gtk'
+         'xdg-desktop-portal-gnome'
          'gnome-keyring'
          'polkit-gnome'
          # niri dependencies
+         'makepkg-git-lfs-proto'
          'cairo'
          'glib2'
          'libdisplay-info'
@@ -34,7 +33,6 @@ depends=('dankmaterialshell-git'
          'pango'
          'pixman'
          'seatd')
-optdepends=('xdg-desktop-portal-gnome: screencasting support')
 makedepends=('git' 'clang' 'rust' 'makepkg-git-lfs-proto' 'git-lfs')
 [[ -n ${_sccache} ]] && makedepends+=(sccache)
 provides=('dank-niri' 'niri')
