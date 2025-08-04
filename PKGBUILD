@@ -1,0 +1,42 @@
+# Maintainer: devome <evinedeng@hotmail.com>
+
+_reponame="PT-depiler"
+_pkgname="${_reponame,,}"
+pkgname="${_pkgname}-git"
+pkgver=0.0.4.925
+pkgrel=1
+pkgdesc="Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), based on PT-Plugin-Plus and Manifest v3."
+arch=("any")
+url="https://github.com/pt-plugins/${_reponame}"
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+license=("MIT")
+makedepends=("git" "jq" "pnpm")
+optdepends=('firefox' 'google-chrome' 'microsoft-edge')
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "${_pkgname}"
+    printf "%s.%s" "$(jq -r .version package.json)" "$(git rev-list --count HEAD)"
+}
+
+build() {
+    cd "${_pkgname}"
+    pnpm install
+    pnpm build:dist
+    pnpm build:dist-firefox
+}
+
+package() {
+    cd "${_pkgname}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+    cd dist-chrome
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/chrome/"{} \;
+
+    cd ../dist-firefox
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/firefox/"{} \;
+
+    ln -s chrome "${pkgdir}/usr/share/${_pkgname}/edge"
+}
