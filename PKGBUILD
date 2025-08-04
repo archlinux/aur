@@ -1,7 +1,7 @@
 # Maintainer: therock
 pkgname=aurroamer
 pkgver=2.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Interactive terminal-based browser for AUR and official packages"
 arch=('any')
 url="https://github.com/therock444/aurroamer"
@@ -13,10 +13,10 @@ optdepends=(
   'trizen: AUR helper support'
   'pikaur: AUR helper support'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('792976e64a7f26158fc572edb14975c54d593b71ae5e6db9b7722d7a4a9531e8')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/therock444/aurroamer/archive/refs/tags/v$pkgver-$pkgrel.tar.gz")
+sha256sums=('15ad69f7fb514b5eaa69419caa6723ccfe83e7f0c71b5e18f25fb0bd3508a4c9')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/aurroamer" "$pkgdir/usr/bin/aurroamer"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/$pkgname-$pkgver-$pkgrel/aurroamer" "$pkgdir/usr/bin/aurroamer"
+  install -Dm644 "$srcdir/$pkgname-$pkgver-$pkgrel/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
