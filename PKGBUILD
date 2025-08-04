@@ -2,7 +2,7 @@
 
 _pkgname="gtk4-nocsd"
 pkgname="${_pkgname}-git"
-pkgver=r11.adaa149
+pkgver=r12.9f6efad
 pkgrel=1
 pkgdesc="A small LD_PRELOAD library to disable CSD in GTK4 and LibAdwaita apps."
 arch=("x86_64")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}/Source"
-  ./Build.sh
+  XDG_RUNTIME_DIR="${srcdir}/${pkgname}/Source" ./Build.sh
 }
 
 package() {
