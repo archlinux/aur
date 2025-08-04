@@ -3,7 +3,7 @@
 
 _pkgbase=rtl8852au
 pkgname=rtl8852au-dkms-git
-pkgver=r109.a9bb48f
+pkgver=r110.db4fa82
 pkgrel=1
 pkgdesc="The WiFi driver for Realtek chipsets RTL8832AU and RTL8852AU (e.g. ASUS USB-AX56, D-Link DW-AX1850, TP-Link AX1800) "
 arch=('x86_64')
