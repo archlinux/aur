@@ -3,7 +3,7 @@
 
 pkgname=mapillary_tools-git
 _pkgname=mapillary_tools
-pkgver=r1619.b562167
+pkgver=r1746.008bdc16
 pkgrel=1
 pkgdesc="Library for processing and uploading geotagged images to Mapillary"
 url="https://github.com/mapillary/mapillary_tools"
@@ -19,7 +19,7 @@ depends=(
   'python-tqdm'
   'python-typing_extensions'
 )
-makedepends=(git python-setuptools)
+makedepends=(git python-build python-installer python-wheel)
 provides=(mapillary_tools)
 license=('BSD')
 arch=('any')
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 build() {
   cd $srcdir/${pkgname}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 pkgver() {
@@ -38,5 +38,5 @@ pkgver() {
 
 package() {
   cd $srcdir/${pkgname}
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
