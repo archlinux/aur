@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.16.5
-_subver=4
+_subver=5
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 _nodeversion=22
@@ -38,8 +38,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('4f412f1a6a3b291bcda32e859aaa1f854b03213817e842f638739d88aae28a27'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('3bbdfb6c8c6031d1d27d0b6e4265d5165e136b38528c6cfe2018c68151730f84'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -47,6 +47,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -55,7 +56,6 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -64,10 +64,13 @@ prepare() {
         #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "cache-dir=${srcdir}/.pnpm_cache"
+        echo "store-dir=${srcdir}/.pnpm_store"
+        echo "virtual-store-dir=${srcdir}/.pnpm_store"
         echo "shamefully-hoist=true"
         echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -78,6 +81,10 @@ prepare() {
         sed -i "s/mkdir tmp/mkdir tmp \&\& cp ..\/..\/..\/.npmrc tmp/g" tools/fix-other.sh
     fi
     sed -i "s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g" conf/build.json
+    sed -i -e "
+        /packageManager/d
+        37s/\},/\}/
+    " package.json
     NODE_ENV=development    pnpm install
 }
 build() {
