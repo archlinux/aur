@@ -1,7 +1,7 @@
-# Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
+# Maintainer: Tsaitang  <Tsaitang404 at gmail dot com>
 pkgname="trilium-next-server-bin"
 pkgver=0.97.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Trilium Notes Server Next version"
 arch=('x86_64')
 url="https://github.com/TriliumNext/Trilium"
