@@ -3,7 +3,7 @@
 
 pkgname=yozefu
 _pkgname=yozf
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="A TUI for exploring data in Kafka clusters"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'cmake' 'clang' 'gcc14')
 checkdepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" "gcc-14.patch")
-sha512sums=('7b949fad8815395f8e99cc072d1e464d8616eafec62d524404e5d95c5cd460f9e165b09398050212f9d5d88f11bfb8b9a006a9ee401279aac752cb8dfe1f998a'
-  'a188a12240442cc48cb208a9aac18dea32834d601c0c6dbb1cdcb36b98dc763aff80efb920024aeba5984429e7bc4736fbea3ab71c1eb56e2b8241d2b0e9f34b')
+sha512sums=('1b7f22a08231733f26bead49df254d2f8ea232a91faada5d78ed485527e9f7984f76113dc9ceff5de198ba9dcf26491e73d70f119fbd3f3a8257b01ac683f11c'
+  '230e9b45f98b18b40254fba2b6afbcb8e4add50b06264977989ac4549009bd4e89d7c37f384fe7c107a288bbeb2695b8fe0e06cbd0790904f568f5bdddbfd133')
 options=('!lto')
 
 prepare() {
@@ -27,12 +27,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+  RUSTFLAGS="--cfg tokio_unstable" cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen
+  RUSTFLAGS="--cfg tokio_unstable" cargo test --frozen
 }
 
 package() {
