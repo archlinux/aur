@@ -1,0 +1,32 @@
+diff --git a/cmake/Modules/Findlibstadenio.cmake b/cmake/Modules/Findlibstadenio.cmake
+index 3dea8b67..4addebf5 100644
+--- a/cmake/Modules/Findlibstadenio.cmake
++++ b/cmake/Modules/Findlibstadenio.cmake
+@@ -10,15 +10,15 @@ find_path(STADEN_INCLUDE_DIR io_lib
+ 	HINTS ${STADEN_ROOT} ENV STADEN_ROOT
+   PATH_SUFFIXES include)
+ 
+-find_library(STADEN_LIBRARY NAMES staden-read libstaden-read 
++find_library(STADEN_LIBRARY NAMES staden-read libstaden-read
+   HINTS ${STADEN_ROOT} ENV STADEN_ROOT PATH_SUFFIXES lib lib64)
+ 
+ find_library(HTSCODEC_LIBRARY NAMES htscodecs libhtscodecs
+   HINTS ${STADEN_ROOT} ENV STADEN_ROOT PATH_SUFFIXES lib lib64)
+ 
+ if(STADEN_INCLUDE_DIR)
+-  set(_version_regex "^#define[ \t]+PACKAGE_VERSION[ \t]+\"([^\"]+)\".*")
+-  file(STRINGS "${STADEN_INCLUDE_DIR}/io_lib/io_lib_config.h"
++  set(_version_regex "^#define[ \t]+IOLIB_VERSION[ \t]+\"([^\"]+)\".*")
++  file(STRINGS "${STADEN_INCLUDE_DIR}/io_lib/version.h"
+     STADEN_VERSION REGEX "${_version_regex}")
+   string(REGEX REPLACE "${_version_regex}" "\\1"
+     STADEN_VERSION "${STADEN_VERSION}")
+@@ -27,7 +27,7 @@ endif()
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(libstadenio DEFAULT_MSG
+-                                  STADEN_LIBRARY 
++                                  STADEN_LIBRARY
+                                   STADEN_INCLUDE_DIR
+                                   STADEN_VERSION)
+ 
