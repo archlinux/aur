@@ -10,7 +10,7 @@ pkgdesc="Add codecs to Chromium M138+ (libfdk-aac)"
 arch=('x86_64')
 url=https://git.ffmpeg.org/ffmpeg
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
-license=('custom:libfdk-aac, GPL3')
+license=('LGPL-2.1-or-later') # https://wiki.hydrogenaudio.org/index.php?title=Fraunhofer_FDK_AAC
 _chromium=138.0.7204.55
 _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 source=("git+${url}.git"
