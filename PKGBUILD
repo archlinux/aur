@@ -3,7 +3,7 @@
 pkgname=evolution-etesync-git
 _pkgname=evolution-etesync
 pkgver=1.0.0.r5.gc90f7d8
-pkgrel=3
+pkgrel=4
 pkgdesc="EteSync (end-to-end encrypted sync) plugin for Evolution"
 arch=(x86_64)
 url="https://gitlab.gnome.org/GNOME/evolution-etesync/"
@@ -22,14 +22,11 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake --build build
 }
 
 package() {
   cd "$_pkgname"
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
