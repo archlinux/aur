@@ -7,8 +7,11 @@ pkgbase = dude
 	license = MIT
 	license = Apache
 	makedepends = cargo
+	depends = gcc-libs
+	depends = pacman
+	depends = glibc
 	optdepends = libnotify: desktop notifications
 	source = dude-0.1.0.tar.gz::https://github.com/seeyebe/dude/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = a451641cd1679f824973ea69bc3f20f7f24e0a4e84085e85065e0edc83a86d9f
 
 pkgname = dude

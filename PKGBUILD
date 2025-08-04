@@ -6,11 +6,17 @@ pkgdesc='A single-binary helper that discovers, previews and removes pacman orph
 arch=('x86_64')
 url='https://github.com/seeyebe/dude'
 license=('MIT' 'Apache')
-depends=()
+depends=(gcc-libs pacman glibc)
 makedepends=('cargo')
 optdepends=('libnotify: desktop notifications')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a451641cd1679f824973ea69bc3f20f7f24e0a4e84085e85065e0edc83a86d9f')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
   cd "$pkgname-$pkgver"
