@@ -3,7 +3,7 @@
 # Helpful URL: https://whisparr.servarr.com/v1/update/nightly?version=0.0.0.0&os=linux&runtime=netcore&arch=x64&includeMajorVersion=true
 
 pkgname=whisparr-nightly-bin
-pkgver=2.0.0.1201
+pkgver=2.0.0.1203
 pkgrel=1
 pkgdesc='Adult movie organizer/manager for usenet and torrent users (nightly builds)'
 arch=(x86_64 aarch64 armv7h)
@@ -51,9 +51,9 @@ sha256sums=('50da66b86fb42b6457a84c61fe02af5845599fd67f538c79457713795d96d8ed'
             'cc241da00a2941ce3f37d918590e53366c8423b6385a23298adf7a82c65bedff'
             'dfe5d421bc8c8bd9cfd46ee0183e61b572c28d31c8114dded887998bc432d22b'
             '0b235aed73eb0155d77c485ccff415e82e520d27013ba498ac70574e7106a762')
-sha256sums_x86_64=('b2610907b468afe3f9761c462b6d81f8fbb05aca6448d8e644d28596e25a76f5')
-sha256sums_aarch64=('642853e4ffca09be8b954cba1527b3e53cf5f4beb48499abb5b731381dff9103')
-sha256sums_armv7h=('60265feab85a95f43507b7945c74da08e623b261b0659e9f136f5d980bd63184')
+sha256sums_x86_64=('81702702aacd1d47a490aff8bf5c7af6d22ccd30cf572faa8d3f0bac97da4925')
+sha256sums_aarch64=('80063bca22f7360d67406178f16df7e9b080278d662ad679b36bb6693be96c06')
+sha256sums_armv7h=('4aa55699fa0ba374936eed2ceb57b414f99659f05da06d0288eaa7a4ba79041f')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/whisparr/bin"
