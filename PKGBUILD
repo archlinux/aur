@@ -2,13 +2,13 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
 _pkgver=1.16.5
-_subver=2
+_subver=5
 release_tag="${_pkgver}-${_subver}"
 pkgver="${_pkgver}.${_subver}"
 pkgrel=1
 pkgdesc="Bilibili official desktop client.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=('x86_64' 'aarch64' 'loong64')
-url="https://github.com/msojocs/bilibili-linux"
+url="https://bgithub.xyz/msojocs/bilibili-linux"
 license=('MIT')
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
@@ -17,7 +17,7 @@ _install_path="/opt/${pkgname}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-arm64.AppImage")
 source_loong64=("${pkgname}-${pkgver}-loong64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-loong64.AppImage")
-source=("LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license")
+source=("LICENSE::https://raw.bgithub.xyz/msojocs/bilibili-linux/master/license")
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 sha256sums_loong64=('SKIP')
