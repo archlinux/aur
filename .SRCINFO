@@ -1,6 +1,6 @@
 pkgbase = dunst-timer
 	pkgdesc = A Python script for setting timers with progress bar notifications in Dunst
-	pkgver = 1.00.07
+	pkgver = 1.00.08
 	pkgrel = 1
 	url = https://github.com/bitSheriff/dunst-timer
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dunst-timer
 	makedepends = pyinstaller
 	depends = python
 	depends = dunst
-	source = https://github.com/bitSheriff/dunst-timer/archive/v1.00.07.tar.gz
-	sha256sums = 61bd275f2896ed6c707a063af909bbb1ec714fc8c122d02192310f7eb67ca04b
+	source = https://github.com/bitSheriff/dunst-timer/archive/v1.00.08.tar.gz
+	sha256sums = 768a7043544a2afc02405af1bd40adaf42e3199e67152e4e9209e3bac5790429
 
 pkgname = dunst-timer
