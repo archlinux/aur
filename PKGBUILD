@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-input-evdev
 _pkgname=xf86-input-evdev
 pkgver=2.11.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org evdev input driver"
 arch=(x86_64 aarch64)
 url="https://github.com/X11Libre"
@@ -24,7 +24,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
