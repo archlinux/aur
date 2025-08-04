@@ -1,0 +1,13 @@
+pkgbase = pkger-v
+	pkgdesc = A Pro Package Manager with beautiful UI and local package support
+	pkgver = 0.1.38
+	pkgrel = 7
+	url = https://github.com/almezali/pkger
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt5
+	source = pkger-v-0.1.38.tar.gz::https://github.com/almezali/pkger/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = pkger-v
