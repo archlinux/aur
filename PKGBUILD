@@ -2,7 +2,7 @@
 pkgbase=snapx
 pkgname=(snapx snapx-ui)
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Screenshot tool that handles images, text, and video (fork of ShareX)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BrycensRanch/SnapX"
@@ -53,11 +53,7 @@ package_snapx() {
     )
 
     cd "$pkgbase"
-    ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --skip compile
-    rm -f "${pkgdir}/usr/bin/snapx-ui"
-    rm -f "${pkgdir}/usr/lib/snapx/snapx-ui"
-    rm -f "${pkgdir}/usr/lib/snapx/libSkiaSharp.so"
-    rm -f "${pkgdir}/usr/lib/snapx/libHarfBuzzSharp.so"
+    ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --assembly snapx --skip compile
 }
 
 package_snapx-ui() {
@@ -65,11 +61,5 @@ package_snapx-ui() {
     depends=('snapx')
 
     cd "$pkgbase"
-    ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --skip compile
-
-    # Keep the files only for Avalonia UI
-    rm -rf "${pkgdir}/usr/share"
-    rm -f "${pkgdir}/usr/bin/snapx"
-    rm -f "${pkgdir}/usr/lib/snapx/snapx"
-    rm -f "${pkgdir}/usr/lib/snapx/libe_sqlite3.so"
+    ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --assembly snapx-ui --skip compile
 }
