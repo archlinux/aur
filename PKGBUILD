@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.0.74
+pkgver=1.0.75
 _electronversion=37
 pkgrel=1
 pkgdesc="Desktop app for Jasper KM. Uses electron to wrap a docker compose config.(Prebuilt version.Use system-wide electron)"
@@ -25,9 +25,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cjmalloy/jasper-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4bf68aaa8fc677abc8528a8300760dc84518d7fa1329fc50cf5dfd3b3f7eedc'
+sha256sums=('93ab1f5556b64943095753b73c52a2488e4b92fed57de9a579295b3ace24cb66'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${_appname}-app" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
