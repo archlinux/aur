@@ -1,0 +1,13 @@
+pkgbase = moonpalace
+	pkgdesc = A debugging proxy to capture, inspect, and troubleshoot Moonshot AI API calls
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/MoonshotAI/moonpalace
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	source = moonpalace-0.12.0.tar.gz::https://github.com/MoonshotAI/moonpalace/archive/v0.12.0.tar.gz
+	sha256sums = a8a16600f85ba94f900f45156a6381ad3c8ddc2ef0e6c46d4292f704ab8ebf20
+
+pkgname = moonpalace
