@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-video-fbdev
 	pkgdesc = Official XLibre fork of X.Org framebuffer video driver
 	pkgver = 0.5.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64

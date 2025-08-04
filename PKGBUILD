@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-fbdev
 _pkgname=xf86-video-fbdev
 pkgver=0.5.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org framebuffer video driver"
 arch=(x86_64 aarch64)
 license=('X11')
@@ -23,7 +23,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
