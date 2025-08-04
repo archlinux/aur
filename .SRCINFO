@@ -1,0 +1,21 @@
+pkgbase = netpump
+	pkgdesc = Tiny websocket proxy tunnel
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/soylent/netpump
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-em-websocket
+	depends = ruby-base64
+	depends = ruby-eventmachine-proxy
+	provides = ruby-netpump
+	provides = weblink
+	provides = ruby-weblink
+	conflicts = ruby-weblink
+	conflicts = weblink
+	options = !emptydirs
+	source = netpump-1.0.0.tar.gz::https://github.com/soylent/netpump/archive/v1.0.0.tar.gz
+	sha256sums = e0897fad7465aa7f13d096e696df78896ac5c8d1335012b5aeed756d028e5433
+
+pkgname = netpump
