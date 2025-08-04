@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-voodoo
 _pkgname=xf86-video-voodoo
 pkgver=1.2.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org 3dfx Voodoo1/Voodoo2 2D video driver"
 arch=(x86_64 aarch64)
 url="https://github.com/X11Libre"
@@ -24,7 +24,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
