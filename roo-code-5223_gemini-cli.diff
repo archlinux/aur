@@ -1,5 +1,5 @@
-*** /dev/null	2025-07-31 18:55:08.114785537 +0200
---- Roo-Code-3.25.4-patched/packages/types/src/providers/gemini-cli.ts	2025-07-27 17:37:38.015929339 +0200
+*** /dev/null	2025-08-01 00:15:01.869113811 +0200
+--- Roo-Code-3.25.6-patched/packages/types/src/providers/gemini-cli.ts	2025-07-27 17:37:38.015929339 +0200
 ***************
 *** 0 ****
 --- 1,110 ----
@@ -113,11 +113,11 @@
 + 		requiredReasoningBudget: true,
 + 	},
 + } as const satisfies Record<string, ModelInfo>
-*** Roo-Code-3.25.4/packages/types/src/providers/index.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/packages/types/src/providers/index.ts	2025-07-31 19:36:22.885969443 +0200
+*** Roo-Code-3.25.6/packages/types/src/providers/index.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/packages/types/src/providers/index.ts	2025-08-04 14:11:36.442461895 +0200
 ***************
-*** 4,9 ****
---- 4,10 ----
+*** 5,10 ****
+--- 5,11 ----
   export * from "./claude-code.js"
   export * from "./deepseek.js"
   export * from "./gemini.js"
@@ -125,11 +125,11 @@
   export * from "./glama.js"
   export * from "./groq.js"
   export * from "./huggingface.js"
-*** Roo-Code-3.25.4/src/api/index.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/api/index.ts	2025-07-31 19:09:36.263953348 +0200
+*** Roo-Code-3.25.6/src/api/index.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/api/index.ts	2025-08-04 14:11:36.442554511 +0200
 ***************
-*** 15,20 ****
---- 15,21 ----
+*** 16,21 ****
+--- 16,22 ----
   	OllamaHandler,
   	LmStudioHandler,
   	GeminiHandler,
@@ -138,8 +138,8 @@
   	DeepSeekHandler,
   	MoonshotHandler,
 ***************
-*** 89,94 ****
---- 90,97 ----
+*** 90,95 ****
+--- 91,98 ----
   			return new LmStudioHandler(options)
   		case "gemini":
   			return new GeminiHandler(options)
@@ -148,8 +148,8 @@
   		case "openai-native":
   			return new OpenAiNativeHandler(options)
   		case "deepseek":
-*** /dev/null	2025-07-31 18:55:08.114785537 +0200
---- Roo-Code-3.25.4-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-07-27 17:42:22.349647696 +0200
+*** /dev/null	2025-08-01 00:15:01.869113811 +0200
+--- Roo-Code-3.25.6-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-07-27 17:42:22.349647696 +0200
 ***************
 *** 0 ****
 --- 1,329 ----
@@ -482,8 +482,8 @@
 + 		})
 + 	})
 + })
-*** /dev/null	2025-07-31 18:55:08.114785537 +0200
---- Roo-Code-3.25.4-patched/src/api/providers/gemini-cli.ts	2025-07-27 17:43:23.960929815 +0200
+*** /dev/null	2025-08-01 00:15:01.869113811 +0200
+--- Roo-Code-3.25.6-patched/src/api/providers/gemini-cli.ts	2025-07-27 17:43:23.960929815 +0200
 ***************
 *** 0 ****
 --- 1,419 ----
@@ -906,11 +906,11 @@
 + 		return super.countTokens(content)
 + 	}
 + }
-*** Roo-Code-3.25.4/src/api/providers/index.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/api/providers/index.ts	2025-07-31 19:09:36.264563642 +0200
+*** Roo-Code-3.25.6/src/api/providers/index.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/api/providers/index.ts	2025-08-04 14:11:36.442976031 +0200
 ***************
-*** 8,13 ****
---- 8,14 ----
+*** 9,14 ****
+--- 9,15 ----
   export { MoonshotHandler } from "./moonshot"
   export { FakeAIHandler } from "./fake-ai"
   export { GeminiHandler } from "./gemini"
@@ -918,13 +918,13 @@
   export { GlamaHandler } from "./glama"
   export { GroqHandler } from "./groq"
   export { HuggingFaceHandler } from "./huggingface"
-*** Roo-Code-3.25.4/src/i18n/locales/ca/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/ca/common.json	2025-07-30 05:08:00.715929260 +0200
+*** Roo-Code-3.25.6/src/i18n/locales/ca/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/ca/common.json	2025-08-04 14:11:36.443087645 +0200
 ***************
-*** 93,98 ****
---- 93,108 ----
-  			"generate_complete_prompt": "Error de finalització de Gemini: {{error}}",
-  			"sources": "Fonts:"
+*** 103,108 ****
+--- 103,118 ----
+  			"noResponseBody": "Error de l'API de Cerebras: No hi ha cos de resposta",
+  			"completionError": "Error de finalització de Cerebras: {{error}}"
   		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "No s'han pogut carregar les credencials OAuth. Si us plau, autentica't primer: {{error}}",
@@ -939,15 +939,14 @@
   		"mode_import_failed": "Ha fallat la importació del mode: {{error}}"
   	},
   	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/de/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/de/common.json	2025-07-30 05:10:35.892057431 +0200
+*** Roo-Code-3.25.6/src/i18n/locales/de/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/de/common.json	2025-08-04 14:39:39.848293869 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Fehler beim Generieren des Kontext-Streams von Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Fehler bei der Vervollständigung durch Gemini: {{error}}",
   			"sources": "Quellen:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Fehler beim Laden der OAuth-Anmeldedaten. Bitte authentifiziere dich zuerst: {{error}}",
 + 			"tokenRefreshFailed": "Fehler beim Aktualisieren des OAuth-Tokens: {{error}}",
@@ -957,18 +956,18 @@
 + 			"badRequest": "Ungültige Anfrage: {{details}}",
 + 			"apiError": "Gemini CLI API-Fehler: {{error}}",
 + 			"completionError": "Gemini CLI Vervollständigungsfehler: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/en/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/en/common.json	2025-07-30 05:11:39.239316743 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API-Authentifizierung fehlgeschlagen. Bitte überprüfe, ob dein API-Schlüssel gültig und nicht abgelaufen ist.",
+  			"accessForbidden": "Cerebras API-Zugriff verweigert. Dein API-Schlüssel hat möglicherweise keinen Zugriff auf das angeforderte Modell oder die Funktion.",
+*** Roo-Code-3.25.6/src/i18n/locales/en/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/en/common.json	2025-08-04 14:41:13.139023992 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Gemini generate context stream error: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Gemini completion error: {{error}}",
   			"sources": "Sources:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Failed to load OAuth credentials. Please authenticate first: {{error}}",
 + 			"tokenRefreshFailed": "Failed to refresh OAuth token: {{error}}",
@@ -978,18 +977,18 @@
 + 			"badRequest": "Bad request: {{details}}",
 + 			"apiError": "Gemini CLI API error: {{error}}",
 + 			"completionError": "Gemini CLI completion error: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/es/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/es/common.json	2025-07-30 05:13:16.552200422 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API authentication failed. Please check your API key is valid and not expired.",
+  			"accessForbidden": "Cerebras API access forbidden. Your API key may not have access to the requested model or feature.",
+*** Roo-Code-3.25.6/src/i18n/locales/es/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/es/common.json	2025-08-04 14:41:53.044125837 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Error del stream de contexto de generación de Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Error de finalización de Gemini: {{error}}",
   			"sources": "Fuentes:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Error al cargar credenciales OAuth. Por favor autentícate primero: {{error}}",
 + 			"tokenRefreshFailed": "Error al actualizar token OAuth: {{error}}",
@@ -999,18 +998,18 @@
 + 			"badRequest": "Solicitud incorrecta: {{details}}",
 + 			"apiError": "Error de API de Gemini CLI: {{error}}",
 + 			"completionError": "Error de completado de Gemini CLI: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/fr/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/fr/common.json	2025-07-30 05:14:06.980630865 +0200
-***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Erreur du flux de contexte de génération Gemini : {{error}}",
-  			"generate_complete_prompt": "Erreur d'achèvement de Gemini : {{error}}",
-  			"sources": "Sources :"
 + 		},
+  		"cerebras": {
+  			"authenticationFailed": "Falló la autenticación de la API de Cerebras. Verifica que tu clave de API sea válida y no haya expirado.",
+  			"accessForbidden": "Acceso prohibido a la API de Cerebras. Tu clave de API puede no tener acceso al modelo o función solicitada.",
+*** Roo-Code-3.25.6/src/i18n/locales/fr/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/fr/common.json	2025-08-04 14:42:47.148282045 +0200
+***************
+*** 91,96 ****
+--- 91,106 ----
+  			"generate_complete_prompt": "Erreur d'achèvement de Gemini : {{error}}",
+  			"sources": "Sources :"
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Échec du chargement des identifiants OAuth. Veuillez vous authentifier d'abord : {{error}}",
 + 			"tokenRefreshFailed": "Échec du renouvellement du token OAuth : {{error}}",
@@ -1020,18 +1019,18 @@
 + 			"badRequest": "Requête incorrecte : {{details}}",
 + 			"apiError": "Erreur API Gemini CLI : {{error}}",
 + 			"completionError": "Erreur de complétion Gemini CLI : {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/hi/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/hi/common.json	2025-07-30 05:14:57.580064756 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Échec de l'authentification de l'API Cerebras. Vérifiez que votre clé API est valide et n'a pas expiré.",
+  			"accessForbidden": "Accès interdit à l'API Cerebras. Votre clé API peut ne pas avoir accès au modèle ou à la fonction demandée.",
+*** Roo-Code-3.25.6/src/i18n/locales/hi/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/hi/common.json	2025-08-04 14:43:16.833974607 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "जेमिनी जनरेट कॉन्टेक्स्ट स्ट्रीम त्रुटि: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "जेमिनी समापन त्रुटि: {{error}}",
   			"sources": "स्रोत:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth क्रेडेंशियल लोड करने में विफल। कृपया पहले प्रमाणीकरण करें: {{error}}",
 + 			"tokenRefreshFailed": "OAuth टोकन रीफ्रेश करने में विफल: {{error}}",
@@ -1041,18 +1040,18 @@
 + 			"badRequest": "गलत अनुरोध: {{details}}",
 + 			"apiError": "Gemini CLI API त्रुटि: {{error}}",
 + 			"completionError": "Gemini CLI पूर्णता त्रुटि: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/id/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/id/common.json	2025-07-30 05:15:51.463467262 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API प्रमाणीकरण विफल हुआ। कृपया जांचें कि आपकी API कुंजी वैध है और समाप्त नहीं हुई है।",
+  			"accessForbidden": "Cerebras API पहुंच निषेध। आपकी API कुंजी का अनुरोधित मॉडल या सुविधा तक पहुंच नहीं हो सकती है।",
+*** Roo-Code-3.25.6/src/i18n/locales/id/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/id/common.json	2025-08-04 14:43:55.362715566 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Kesalahan aliran konteks pembuatan Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Kesalahan penyelesaian Gemini: {{error}}",
   			"sources": "Sumber:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Gagal memuat kredensial OAuth. Silakan autentikasi terlebih dahulu: {{error}}",
 + 			"tokenRefreshFailed": "Gagal memperbarui token OAuth: {{error}}",
@@ -1062,18 +1061,18 @@
 + 			"badRequest": "Permintaan tidak valid: {{details}}",
 + 			"apiError": "Kesalahan API Gemini CLI: {{error}}",
 + 			"completionError": "Kesalahan penyelesaian Gemini CLI: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/it/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/it/common.json	2025-07-30 05:17:31.835367175 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Autentikasi API Cerebras gagal. Silakan periksa apakah kunci API Anda valid dan belum kedaluwarsa.",
+  			"accessForbidden": "Akses API Cerebras ditolak. Kunci API Anda mungkin tidak memiliki akses ke model atau fitur yang diminta.",
+*** Roo-Code-3.25.6/src/i18n/locales/it/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/it/common.json	2025-08-04 14:45:52.838697029 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Errore del flusso di contesto di generazione Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Errore di completamento Gemini: {{error}}",
   			"sources": "Fonti:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Impossibile caricare le credenziali OAuth. Autenticati prima: {{error}}",
 + 			"tokenRefreshFailed": "Impossibile aggiornare il token OAuth: {{error}}",
@@ -1083,18 +1082,18 @@
 + 			"badRequest": "Richiesta non valida: {{details}}",
 + 			"apiError": "Errore API Gemini CLI: {{error}}",
 + 			"completionError": "Errore di completamento Gemini CLI: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/ja/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/ja/common.json	2025-07-30 05:18:31.501720149 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Autenticazione API Cerebras fallita. Verifica che la tua chiave API sia valida e non scaduta.",
+  			"accessForbidden": "Accesso API Cerebras negato. La tua chiave API potrebbe non avere accesso al modello o alla funzione richiesta.",
+*** Roo-Code-3.25.6/src/i18n/locales/ja/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/ja/common.json	2025-08-04 14:46:43.949966132 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Gemini 生成コンテキスト ストリーム エラー: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Gemini 完了エラー: {{error}}",
   			"sources": "ソース:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth認証情報の読み込みに失敗しました。まず認証してください: {{error}}",
 + 			"tokenRefreshFailed": "OAuthトークンの更新に失敗しました: {{error}}",
@@ -1104,18 +1103,18 @@
 + 			"badRequest": "不正なリクエスト: {{details}}",
 + 			"apiError": "Gemini CLI APIエラー: {{error}}",
 + 			"completionError": "Gemini CLI補完エラー: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/ko/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/ko/common.json	2025-07-30 05:19:11.017294131 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API認証が失敗しました。APIキーが有効で期限切れではないことを確認してください。",
+  			"accessForbidden": "Cerebras APIアクセスが禁止されています。あなたのAPIキーは要求されたモデルや機能にアクセスできない可能性があります。",
+*** Roo-Code-3.25.6/src/i18n/locales/ko/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/ko/common.json	2025-08-04 14:46:41.134947820 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Gemini 생성 컨텍스트 스트림 오류: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Gemini 완료 오류: {{error}}",
   			"sources": "출처:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth 자격 증명을 로드하지 못했습니다. 먼저 인증하세요: {{error}}",
 + 			"tokenRefreshFailed": "OAuth 토큰을 새로 고치지 못했습니다: {{error}}",
@@ -1125,18 +1124,18 @@
 + 			"badRequest": "잘못된 요청: {{details}}",
 + 			"apiError": "Gemini CLI API 오류: {{error}}",
 + 			"completionError": "Gemini CLI 완성 오류: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/nl/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/nl/common.json	2025-07-30 05:19:57.611794114 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API 인증에 실패했습니다. API 키가 유효하고 만료되지 않았는지 확인하세요.",
+  			"accessForbidden": "Cerebras API 액세스가 금지되었습니다. API 키가 요청된 모델이나 기능에 액세스할 수 없을 수 있습니다.",
+*** Roo-Code-3.25.6/src/i18n/locales/nl/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/nl/common.json	2025-08-04 14:47:08.441141022 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Fout bij het genereren van contextstream door Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Fout bij het voltooien door Gemini: {{error}}",
   			"sources": "Bronnen:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Kan OAuth-referenties niet laden. Authenticeer eerst: {{error}}",
 + 			"tokenRefreshFailed": "Kan OAuth-token niet vernieuwen: {{error}}",
@@ -1146,18 +1145,18 @@
 + 			"badRequest": "Ongeldig verzoek: {{details}}",
 + 			"apiError": "Gemini CLI API-fout: {{error}}",
 + 			"completionError": "Gemini CLI voltooiingsfout: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/pl/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/pl/common.json	2025-07-30 05:20:43.565303231 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API-authenticatie mislukt. Controleer of je API-sleutel geldig is en niet verlopen.",
+  			"accessForbidden": "Cerebras API-toegang geweigerd. Je API-sleutel heeft mogelijk geen toegang tot het gevraagde model of de functie.",
+*** Roo-Code-3.25.6/src/i18n/locales/pl/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/pl/common.json	2025-08-04 14:47:30.754323128 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Błąd strumienia kontekstu generowania Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Błąd uzupełniania Gemini: {{error}}",
   			"sources": "Źródła:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Nie udało się załadować danych uwierzytelniających OAuth. Najpierw się uwierzytelnij: {{error}}",
 + 			"tokenRefreshFailed": "Nie udało się odświeżyć tokenu OAuth: {{error}}",
@@ -1167,18 +1166,18 @@
 + 			"badRequest": "Nieprawidłowe żądanie: {{details}}",
 + 			"apiError": "Błąd API Gemini CLI: {{error}}",
 + 			"completionError": "Błąd uzupełniania Gemini CLI: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/pt-BR/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/pt-BR/common.json	2025-07-30 05:21:51.854577482 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Uwierzytelnianie API Cerebras nie powiodło się. Sprawdź, czy twój klucz API jest ważny i nie wygasł.",
+  			"accessForbidden": "Dostęp do API Cerebras zabroniony. Twój klucz API może nie mieć dostępu do żądanego modelu lub funkcji.",
+*** Roo-Code-3.25.6/src/i18n/locales/pt-BR/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/pt-BR/common.json	2025-08-04 14:47:51.257507998 +0200
 ***************
-*** 93,98 ****
---- 93,108 ----
-  			"generate_stream": "Erro de fluxo de contexto de geração do Gemini: {{error}}",
+*** 95,100 ****
+--- 95,110 ----
   			"generate_complete_prompt": "Erro de conclusão do Gemini: {{error}}",
   			"sources": "Fontes:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Falha ao carregar credenciais OAuth. Por favor, autentique-se primeiro: {{error}}",
 + 			"tokenRefreshFailed": "Falha ao atualizar token OAuth: {{error}}",
@@ -1188,18 +1187,18 @@
 + 			"badRequest": "Solicitação inválida: {{details}}",
 + 			"apiError": "Erro da API Gemini CLI: {{error}}",
 + 			"completionError": "Erro de conclusão do Gemini CLI: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/ru/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/ru/common.json	2025-07-30 05:22:34.346127931 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Falha na autenticação da API Cerebras. Verifique se sua chave de API é válida e não expirou.",
+  			"accessForbidden": "Acesso à API Cerebras negado. Sua chave de API pode não ter acesso ao modelo ou recurso solicitado.",
+*** Roo-Code-3.25.6/src/i18n/locales/ru/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/ru/common.json	2025-08-04 14:48:10.843699053 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Ошибка потока контекста генерации Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Ошибка завершения Gemini: {{error}}",
   			"sources": "Источники:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Не удалось загрузить учетные данные OAuth. Сначала выполните аутентификацию: {{error}}",
 + 			"tokenRefreshFailed": "Не удалось обновить токен OAuth: {{error}}",
@@ -1209,18 +1208,18 @@
 + 			"badRequest": "Неверный запрос: {{details}}",
 + 			"apiError": "Ошибка API Gemini CLI: {{error}}",
 + 			"completionError": "Ошибка завершения Gemini CLI: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/tr/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/tr/common.json	2025-07-30 05:23:14.053709109 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Ошибка аутентификации Cerebras API. Убедитесь, что ваш API-ключ действителен и не истек.",
+  			"accessForbidden": "Доступ к Cerebras API запрещен. Ваш API-ключ может не иметь доступа к запрашиваемой модели или функции.",
+*** Roo-Code-3.25.6/src/i18n/locales/tr/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/tr/common.json	2025-08-04 14:48:32.822928963 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Gemini oluşturma bağlam akışı hatası: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Gemini tamamlama hatası: {{error}}",
   			"sources": "Kaynaklar:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "OAuth kimlik bilgileri yüklenemedi. Lütfen önce kimlik doğrulaması yapın: {{error}}",
 + 			"tokenRefreshFailed": "OAuth token yenilenemedi: {{error}}",
@@ -1230,18 +1229,18 @@
 + 			"badRequest": "Geçersiz istek: {{details}}",
 + 			"apiError": "Gemini CLI API hatası: {{error}}",
 + 			"completionError": "Gemini CLI tamamlama hatası: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/vi/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/vi/common.json	2025-07-30 05:23:56.332264420 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API kimlik doğrulama başarısız oldu. API anahtarınızın geçerli olduğunu ve süresi dolmadığını kontrol edin.",
+  			"accessForbidden": "Cerebras API erişimi yasak. API anahtarınız istenen modele veya özelliğe erişimi olmayabilir.",
+*** Roo-Code-3.25.6/src/i18n/locales/vi/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/vi/common.json	2025-08-04 14:48:54.551171096 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
-  			"generate_stream": "Lỗi luồng ngữ cảnh tạo Gemini: {{error}}",
+*** 91,96 ****
+--- 91,106 ----
   			"generate_complete_prompt": "Lỗi hoàn thành Gemini: {{error}}",
   			"sources": "Nguồn:"
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "Không thể tải thông tin xác thực OAuth. Vui lòng xác thực trước: {{error}}",
 + 			"tokenRefreshFailed": "Không thể làm mới token OAuth: {{error}}",
@@ -1251,18 +1250,18 @@
 + 			"badRequest": "Yêu cầu không hợp lệ: {{details}}",
 + 			"apiError": "Lỗi API Gemini CLI: {{error}}",
 + 			"completionError": "Lỗi hoàn thành Gemini CLI: {{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/zh-CN/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/zh-CN/common.json	2025-07-30 05:24:33.045879230 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Xác thực API Cerebras thất bại. Vui lòng kiểm tra khóa API của bạn có hợp lệ và chưa hết hạn.",
+  			"accessForbidden": "Truy cập API Cerebras bị từ chối. Khóa API của bạn có thể không có quyền truy cập vào mô hình hoặc tính năng được yêu cầu.",
+*** Roo-Code-3.25.6/src/i18n/locales/zh-CN/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/zh-CN/common.json	2025-08-04 14:49:13.280390725 +0200
 ***************
-*** 94,99 ****
---- 94,109 ----
-  			"generate_stream": "Gemini 生成上下文流错误：{{error}}",
+*** 96,101 ****
+--- 96,111 ----
   			"generate_complete_prompt": "Gemini 完成错误：{{error}}",
   			"sources": "来源："
-+ 		},
+  		},
 + 		"geminiCli": {
 + 			"oauthLoadFailed": "加载 OAuth 凭据失败。请先进行身份验证：{{error}}",
 + 			"tokenRefreshFailed": "刷新 OAuth Token 失败：{{error}}",
@@ -1272,14 +1271,15 @@
 + 			"badRequest": "请求错误：{{details}}",
 + 			"apiError": "Gemini CLI API 错误：{{error}}",
 + 			"completionError": "Gemini CLI 补全错误：{{error}}"
-  		}
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/i18n/locales/zh-TW/common.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/i18n/locales/zh-TW/common.json	2025-07-30 05:25:32.661255511 +0200
++ 		},
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API 身份验证失败。请检查你的 API 密钥是否有效且未过期。",
+  			"accessForbidden": "Cerebras API 访问被禁止。你的 API 密钥可能无法访问请求的模型或功能。",
+*** Roo-Code-3.25.6/src/i18n/locales/zh-TW/common.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/i18n/locales/zh-TW/common.json	2025-08-04 14:57:04.716687562 +0200
 ***************
-*** 89,94 ****
---- 89,104 ----
+*** 90,95 ****
+--- 90,105 ----
   			"generate_complete_prompt": "Gemini 完成錯誤：{{error}}",
   			"sources": "來源："
   		},
@@ -1293,11 +1293,11 @@
 + 			"apiError": "Gemini CLI API 錯誤：{{error}}",
 + 			"completionError": "Gemini CLI 完成錯誤：{{error}}"
 + 		},
-  		"mode_import_failed": "匯入模式失敗：{{error}}"
-  	},
-  	"warnings": {
-*** Roo-Code-3.25.4/src/shared/checkExistApiConfig.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/src/shared/checkExistApiConfig.ts	2025-07-27 18:39:38.647365277 +0200
+  		"cerebras": {
+  			"authenticationFailed": "Cerebras API 驗證失敗。請檢查您的 API 金鑰是否有效且未過期。",
+  			"accessForbidden": "Cerebras API 存取被拒絕。您的 API 金鑰可能無法存取所請求的模型或功能。",
+*** Roo-Code-3.25.6/src/shared/checkExistApiConfig.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/src/shared/checkExistApiConfig.ts	2025-07-27 18:39:38.647365277 +0200
 ***************
 *** 5,12 ****
   		return false
@@ -1317,8 +1317,8 @@
   		return true
   	}
   
-*** Roo-Code-3.25.4/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-07-31 19:09:36.266829089 +0200
+*** Roo-Code-3.25.6/webview-ui/src/components/settings/ApiOptions.tsx	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-08-04 14:11:36.445407790 +0200
 ***************
 *** 18,23 ****
 --- 18,24 ----
@@ -1330,8 +1330,8 @@
   	moonshotDefaultModelId,
   	mistralDefaultModelId,
 ***************
-*** 60,65 ****
---- 61,67 ----
+*** 62,67 ****
+--- 63,69 ----
   	DeepSeek,
   	Doubao,
   	Gemini,
@@ -1340,8 +1340,8 @@
   	Groq,
   	HuggingFace,
 ***************
-*** 293,298 ****
---- 295,301 ----
+*** 296,301 ****
+--- 298,304 ----
   				"claude-code": { field: "apiModelId", default: claudeCodeDefaultModelId },
   				"openai-native": { field: "apiModelId", default: openAiNativeDefaultModelId },
   				gemini: { field: "apiModelId", default: geminiDefaultModelId },
@@ -1350,8 +1350,8 @@
   				doubao: { field: "apiModelId", default: doubaoDefaultModelId },
   				moonshot: { field: "apiModelId", default: moonshotDefaultModelId },
 ***************
-*** 461,466 ****
---- 464,473 ----
+*** 464,469 ****
+--- 467,476 ----
   				/>
   			)}
   
@@ -1362,11 +1362,11 @@
   			{selectedProvider === "openai" && (
   				<OpenAICompatible
   					apiConfiguration={apiConfiguration}
-*** Roo-Code-3.25.4/webview-ui/src/components/settings/constants.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/components/settings/constants.ts	2025-07-31 19:17:44.171742137 +0200
+*** Roo-Code-3.25.6/webview-ui/src/components/settings/constants.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/components/settings/constants.ts	2025-08-04 14:11:36.445518216 +0200
 ***************
-*** 7,12 ****
---- 7,13 ----
+*** 8,13 ****
+--- 8,14 ----
   	deepSeekModels,
   	moonshotModels,
   	geminiModels,
@@ -1375,8 +1375,8 @@
   	openAiNativeModels,
   	vertexModels,
 ***************
-*** 25,30 ****
---- 26,32 ----
+*** 27,32 ****
+--- 28,34 ----
   	doubao: doubaoModels,
   	moonshot: moonshotModels,
   	gemini: geminiModels,
@@ -1385,17 +1385,17 @@
   	"openai-native": openAiNativeModels,
   	vertex: vertexModels,
 ***************
-*** 39,44 ****
---- 41,47 ----
-  	{ value: "anthropic", label: "Anthropic" },
+*** 42,47 ****
+--- 44,50 ----
   	{ value: "claude-code", label: "Claude Code" },
+  	{ value: "cerebras", label: "Cerebras" },
   	{ value: "gemini", label: "Google Gemini" },
 + 	{ value: "gemini-cli", label: "Gemini CLI" },
   	{ value: "doubao", label: "Doubao" },
   	{ value: "deepseek", label: "DeepSeek" },
   	{ value: "moonshot", label: "Moonshot" },
-*** /dev/null	2025-07-31 18:55:08.114785537 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-07-27 17:50:35.756857270 +0200
+*** /dev/null	2025-08-01 00:15:01.869113811 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-07-27 17:50:35.756857270 +0200
 ***************
 *** 0 ****
 --- 1,81 ----
@@ -1480,8 +1480,8 @@
 + 		</>
 + 	)
 + }
-*** /dev/null	2025-07-31 18:55:08.114785537 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-07-27 17:51:06.694491854 +0200
+*** /dev/null	2025-08-01 00:15:01.869113811 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-07-27 17:51:06.694491854 +0200
 ***************
 *** 0 ****
 --- 1,169 ----
@@ -1654,11 +1654,11 @@
 + 		expect(codeElement).toHaveClass("text-vscode-textPreformat-foreground")
 + 	})
 + })
-*** Roo-Code-3.25.4/webview-ui/src/components/settings/providers/index.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/components/settings/providers/index.ts	2025-07-31 19:09:36.267626983 +0200
+*** Roo-Code-3.25.6/webview-ui/src/components/settings/providers/index.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/components/settings/providers/index.ts	2025-08-04 14:11:36.445780628 +0200
 ***************
-*** 5,10 ****
---- 5,11 ----
+*** 6,11 ****
+--- 6,12 ----
   export { DeepSeek } from "./DeepSeek"
   export { Doubao } from "./Doubao"
   export { Gemini } from "./Gemini"
@@ -1666,11 +1666,11 @@
   export { Glama } from "./Glama"
   export { Groq } from "./Groq"
   export { HuggingFace } from "./HuggingFace"
-*** Roo-Code-3.25.4/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-07-31 19:09:36.267758778 +0200
+*** Roo-Code-3.25.6/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-08-04 14:11:36.445874431 +0200
 ***************
-*** 12,17 ****
---- 12,19 ----
+*** 14,19 ****
+--- 14,21 ----
   	moonshotModels,
   	geminiDefaultModelId,
   	geminiModels,
@@ -1680,8 +1680,8 @@
   	mistralModels,
   	openAiModelInfoSaneDefaults,
 ***************
-*** 173,178 ****
---- 175,185 ----
+*** 188,193 ****
+--- 190,200 ----
   			const info = geminiModels[id as keyof typeof geminiModels]
   			return { id, info }
   		}
@@ -1693,11 +1693,11 @@
   		case "deepseek": {
   			const id = apiConfiguration.apiModelId ?? deepSeekDefaultModelId
   			const info = deepSeekModels[id as keyof typeof deepSeekModels]
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/ca/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-07-31 19:09:36.267928568 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/ca/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-08-04 14:11:36.445994356 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Per defecte: claude",
   			"maxTokensLabel": "Tokens màxims de sortida",
   			"maxTokensDescription": "Nombre màxim de tokens de sortida per a les respostes de Claude Code. El valor per defecte és 8000."
@@ -1719,11 +1719,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/de/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/de/settings.json	2025-07-31 19:09:36.268237276 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/de/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/de/settings.json	2025-08-04 14:11:36.446141592 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Standard: claude",
   			"maxTokensLabel": "Maximale Ausgabe-Tokens",
   			"maxTokensDescription": "Maximale Anzahl an Ausgabe-Tokens für Claude Code-Antworten. Standard ist 8000."
@@ -1745,11 +1745,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/en/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/en/settings.json	2025-07-31 19:09:36.268439124 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/en/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/en/settings.json	2025-08-04 14:11:36.446273391 +0200
 ***************
-*** 424,429 ****
---- 424,444 ----
+*** 433,438 ****
+--- 433,453 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximum number of output tokens for Claude Code responses. Default is 8000."
@@ -1771,11 +1771,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/es/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/es/settings.json	2025-07-31 19:09:36.268537744 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/es/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/es/settings.json	2025-08-04 14:11:36.446414690 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Por defecto: claude",
   			"maxTokensLabel": "Tokens máximos de salida",
   			"maxTokensDescription": "Número máximo de tokens de salida para las respuestas de Claude Code. El valor predeterminado es 8000."
@@ -1797,11 +1797,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/fr/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-07-31 19:09:36.268887940 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/fr/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-08-04 14:11:36.446546489 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Défaut : claude",
   			"maxTokensLabel": "Jetons de sortie max",
   			"maxTokensDescription": "Nombre maximum de jetons de sortie pour les réponses de Claude Code. La valeur par défaut est 8000."
@@ -1823,11 +1823,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/hi/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-07-31 19:09:36.269113534 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/hi/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-08-04 14:11:36.446698474 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "डिफ़ॉल्ट: claude",
   			"maxTokensLabel": "अधिकतम आउटपुट टोकन",
   			"maxTokensDescription": "Claude Code प्रतिक्रियाओं के लिए आउटपुट टोकन की अधिकतम संख्या। डिफ़ॉल्ट 8000 है।"
@@ -1849,11 +1849,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/id/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/id/settings.json	2025-07-31 19:09:36.269340317 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/id/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/id/settings.json	2025-08-04 14:11:36.446858771 +0200
 ***************
-*** 429,434 ****
---- 429,449 ----
+*** 438,443 ****
+--- 438,458 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Token Output Maks",
   			"maxTokensDescription": "Jumlah maksimum token output untuk respons Claude Code. Default adalah 8000."
@@ -1875,11 +1875,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/it/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/it/settings.json	2025-07-31 19:09:36.269536228 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/it/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/it/settings.json	2025-08-04 14:11:36.446982258 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Predefinito: claude",
   			"maxTokensLabel": "Token di output massimi",
   			"maxTokensDescription": "Numero massimo di token di output per le risposte di Claude Code. Il valore predefinito è 8000."
@@ -1901,11 +1901,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/ja/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-07-31 19:09:36.269768947 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/ja/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-08-04 14:11:36.447128306 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "デフォルト：claude",
   			"maxTokensLabel": "最大出力トークン",
   			"maxTokensDescription": "Claude Codeレスポンスの最大出力トークン数。デフォルトは8000です。"
@@ -1927,11 +1927,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/ko/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-07-31 19:09:36.270002853 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/ko/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-08-04 14:11:36.447260106 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "기본값: claude",
   			"maxTokensLabel": "최대 출력 토큰",
   			"maxTokensDescription": "Claude Code 응답의 최대 출력 토큰 수. 기본값은 8000입니다."
@@ -1953,11 +1953,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/nl/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-07-31 19:09:36.270223699 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/nl/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-08-04 14:11:36.447389530 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Standaard: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximaal aantal output-tokens voor Claude Code-reacties. Standaard is 8000."
@@ -1979,11 +1979,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/pl/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-07-31 19:09:36.270440982 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/pl/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-08-04 14:11:36.447511831 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Domyślnie: claude",
   			"maxTokensLabel": "Maksymalna liczba tokenów wyjściowych",
   			"maxTokensDescription": "Maksymalna liczba tokenów wyjściowych dla odpowiedzi Claude Code. Domyślnie 8000."
@@ -2005,11 +2005,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-07-31 19:09:36.270537785 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-08-04 14:11:36.447629381 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Padrão: claude",
   			"maxTokensLabel": "Tokens de saída máximos",
   			"maxTokensDescription": "Número máximo de tokens de saída para respostas do Claude Code. O padrão é 8000."
@@ -2031,11 +2031,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/ru/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-07-31 19:09:36.270974099 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/ru/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-08-04 14:11:36.447777804 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "По умолчанию: claude",
   			"maxTokensLabel": "Макс. выходных токенов",
   			"maxTokensDescription": "Максимальное количество выходных токенов для ответов Claude Code. По умолчанию 8000."
@@ -2057,11 +2057,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/tr/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-07-31 19:09:36.271231752 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/tr/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-08-04 14:11:36.447973722 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Varsayılan: claude",
   			"maxTokensLabel": "Maksimum Çıktı Token sayısı",
   			"maxTokensDescription": "Claude Code yanıtları için maksimum çıktı token sayısı. Varsayılan 8000'dir."
@@ -2083,11 +2083,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/vi/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-07-31 19:09:36.271446660 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/vi/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-08-04 14:11:36.448131644 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "Mặc định: claude",
   			"maxTokensLabel": "Số token đầu ra tối đa",
   			"maxTokensDescription": "Số lượng token đầu ra tối đa cho các phản hồi của Claude Code. Mặc định là 8000."
@@ -2109,11 +2109,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-07-31 19:09:36.271537806 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-08-04 14:11:36.448263444 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "默认：claude",
   			"maxTokensLabel": "最大输出 Token",
   			"maxTokensDescription": "Claude Code 响应的最大输出 Token 数量。默认为 8000。"
@@ -2135,11 +2135,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-07-31 19:09:36.271887164 +0200
+*** Roo-Code-3.25.6/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-08-04 14:11:36.448409491 +0200
 ***************
-*** 425,430 ****
---- 425,445 ----
+*** 434,439 ****
+--- 434,454 ----
   			"placeholder": "預設：claude",
   			"maxTokensLabel": "最大輸出 Token",
   			"maxTokensDescription": "Claude Code 回應的最大輸出 Token 數量。預設為 8000。"
@@ -2161,8 +2161,8 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.25.4/webview-ui/src/utils/validate.ts	2025-07-31 06:13:24.000000000 +0200
---- Roo-Code-3.25.4-patched/webview-ui/src/utils/validate.ts	2025-07-27 19:10:53.031543114 +0200
+*** Roo-Code-3.25.6/webview-ui/src/utils/validate.ts	2025-08-02 03:32:16.000000000 +0200
+--- Roo-Code-3.25.6-patched/webview-ui/src/utils/validate.ts	2025-08-04 14:11:36.448528230 +0200
 ***************
 *** 72,77 ****
 --- 72,80 ----

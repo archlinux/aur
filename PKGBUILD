@@ -2,7 +2,7 @@
 
 pkgname=roo-code-gemini-cli
 _pkgname=roo-code
-pkgver=3.25.4
+pkgver=3.25.6
 pkgrel=1
 pkgdesc="A whole dev team of LLM agents in your VS Code, Cursor or other compatible editor. Patched to add gemini-cli as a LLM provider."
 arch=('any')
@@ -14,8 +14,8 @@ provides=('roo-code')
 conflicts=('roo-code')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'roo-code-5223_gemini-cli.diff')
-sha256sums=('b7a83acbd1b289a0770aeae92fe7120ccdb7f2a5aeeb2a301b4bc4420b8b1807'
-            'c7ddc615da3cf7994e54589a8112123abaf495e605a8272ce90d87a1fcc53202')
+sha256sums=('a4a917681f6c7b1ad089d9deccc2ec943e7837610db8bbd94f3e260c5b2f9202'
+            'e20de86b007063eee8e4a82ed36e0eb1dcf3907573f11ef45bd15222a3ea92e3')
 install=${_pkgname}.install
 
 prepare() {
