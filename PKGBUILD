@@ -3,7 +3,7 @@
 
 pkgname=openmohaa
 pkgver=0.82.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open re-implementation of Medal of Honor: Allied Assault "
 arch=('i686' 'x86_64')
 url="https://github.com/openmoh/openmohaa"
@@ -22,7 +22,7 @@ makedepends=(
 _relstage="beta"
 options=(!debug !lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openmoh/openmohaa/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3a72a4e4c706459347e3fe4d1cf69930d48979dc8933fe10e2eab08402d5c9b9')
+sha256sums=('e616f1ac5668153b0397ece8554b7dd79f2f72f35fa2d64f022bd20a86bf2fba')
 
 build() {
   local cmake_options=(
