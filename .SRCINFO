@@ -9,6 +9,7 @@ pkgbase = dank-niri-git
 	makedepends = git
 	makedepends = clang
 	makedepends = rust
+	makedepends = makepkg-git-lfs-proto
 	makedepends = git-lfs
 	depends = dankmaterialshell-git
 	depends = ghostty

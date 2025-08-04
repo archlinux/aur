@@ -35,7 +35,7 @@ depends=('dankmaterialshell-git'
          'pixman'
          'seatd')
 optdepends=('xdg-desktop-portal-gnome: screencasting support')
-makedepends=('git' 'clang' 'rust' 'git-lfs')
+makedepends=('git' 'clang' 'rust' 'makepkg-git-lfs-proto' 'git-lfs')
 [[ -n ${_sccache} ]] && makedepends+=(sccache)
 provides=('dank-niri' 'niri')
 conflicts=('dank-niri' 'niri' 'niri-git' 'niri-bin')
