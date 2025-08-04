@@ -2,21 +2,19 @@
 # Maintainer: Christian Hoff <https://github.com/choff>
 # Contributor: Tobias Martin <tm-x at gmx dot net>
 
-_commit=7e31e5d818386c7c8fe9b43916dc5e1844ac7b9a
+_commit=1434f1ebf74135a99d17e83f25d8e23908efc4cf
 
 pkgname=binder_linux-dkms
 pkgver=6.16
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url='https://github.com/choff/anbox-modules'
 pkgdesc='Android kernel driver fork by @choff in DKMS format, binder only.'
 license=("GPL3")
 conflicts=("anbox-modules-dkms")
 depends=("dkms")
-source=("anbox-modules-${_commit}.tar.gz::https://github.com/choff/anbox-modules/archive/${_commit}.tar.gz"
-        "fix-build-on-6.16.diff::https://github.com/choff/anbox-modules/pull/24.diff")
-sha256sums=('9e9700eb69b27a2c0f271cf23fb09033dc959ab983f3bd4cc5e373d23c39e9a5'
-            '4a08c3d6eeb65abf3fdb6f79f8fdbd90ab308979d5942cbd18859a41073d43e5')
+source=("anbox-modules-${_commit}.tar.gz::https://github.com/choff/anbox-modules/archive/${_commit}.tar.gz")
+sha256sums=('0e75230fc0b34e2e75a3cb3b6a9347105d4f0ba14f4449c8131084ffbb359da5')
 prepare(){
     cd "${srcdir}/anbox-modules-${_commit}"
     find "${srcdir}" -mindepth 1 -maxdepth 1 -type l \( -name "*.patch" -o -name "*.diff" \) \
