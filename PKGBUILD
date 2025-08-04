@@ -1,16 +1,17 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Nils Czernia <nils at czserverde dot de>
+# Ex-Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Carsten Feuls <archlinux at carstenfeuls dot de>
 
 pkgname=fllog
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="An Amateur Radio Logbook"
-arch=('i686' 'x86_64')
-url="http://www.w1hkj.com"
+arch=('x86_64')
+url="https://www.w1hkj.org"
 license=('GPL')
 depends=('fltk')
 source=("https://downloads.sourceforge.net/project/fldigi/fllog/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('b6a6bde5964c3e59fa6c5ad88c9965db76c8e8ef9464de7dc260d483a94467260f244b47ca89e17b3015558a3564662a96530817eafc615a2895d84032d9695a')
+sha512sums=('fb562adef4ad7c85dfb9e1c32be65885b9a299c53d975445cf04e542fb5af914ee1842f4a5d95b71b49fa296c54810262ac28f86b698225b5457f1a49086ec3f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
