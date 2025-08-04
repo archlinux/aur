@@ -1,0 +1,15 @@
+pkgbase = brplot-git
+	pkgdesc = Better real time plot - plotting lines that are sent to stdin
+	pkgver = v0.0.5.r0.gb02ef20
+	pkgrel = 1
+	url = https://github.com/branc116/brplot
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	depends = glibc
+	provides = brplot
+	source = git+https://github.com/branc116/brplot.git#tag=v0.0.5
+	sha256sums = SKIP
+
+pkgname = brplot-git
