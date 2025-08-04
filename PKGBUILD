@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=575.64.05
+pkgver=580.65.06
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('85f2b50f912261c1917a0b2cf7e1f9743affd008fdc0f209f4d5563f774d502d'
+sha256sums=('04b10867af585e765cfbfdcf39ed5f4bd112375bebab0172eaa187c6aa5024ff'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             '9c60bfe357cd1faf20f9167a6d42bfa724747805c1f12a1b603eb5ff57a523df'
             'f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07'
@@ -57,7 +57,19 @@ prepare() {
 
 package_nvidia-settings-beta() {
     pkgdesc='Tool for configuring the NVIDIA graphics driver (beta version)'
-    depends=("nvidia-utils-beta>=${pkgver}" 'gtk3')
+    depends=(
+        'at-spi2-core'
+        'cairo'
+        'glib2'
+        'glibc'
+        'gdk-pixbuf2'
+        'gtk3'
+        'hicolor-icon-theme'
+        'libx11'
+        'libxext'
+        "nvidia-utils-beta>=${pkgver}"
+        'pango'
+        'wayland')
     provides=("nvidia-settings=${pkgver}" "nvidia-settings-beta=${pkgver}")
     conflicts=('nvidia-settings')
     
@@ -76,8 +88,12 @@ package_nvidia-settings-beta() {
 
 package_opencl-nvidia-beta() {
     pkgdesc='OpenCL implemention for NVIDIA (beta version)'
-    depends=('zlib' "nvidia-utils-beta>=${pkgver}")
-    optdepends=('opencl-headers: headers necessary for OpenCL development')
+    depends=(
+        'glibc'
+        "nvidia-utils-beta>=${pkgver}"
+        'zlib')
+    optdepends=(
+        'opencl-headers: headers necessary for OpenCL development')
     provides=("opencl-nvidia=${pkgver}" 'opencl-driver')
     conflicts=('opencl-nvidia')
     
@@ -94,11 +110,22 @@ package_opencl-nvidia-beta() {
 }
 
 package_nvidia-utils-beta() {
-    depends=('libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
-    optdepends=('nvidia-settings-beta: for the configuration tool'
-                'opencl-nvidia-beta: for OpenCL support'
-                'xorg-server: for Xorg support'
-                'xorg-server-devel: for nvidia-xconfig')
+    depends=(
+        'bash'
+        'egl-gbm'
+        'egl-wayland'
+        'egl-x11'
+        'gcc-libs'
+        'glibc'
+        'libglvnd'
+        'libx11'
+        'libxext'
+        'openssl')
+    optdepends=(
+        'nvidia-settings-beta: for the configuration tool'
+        'opencl-nvidia-beta: for OpenCL support'
+        'xorg-server: for Xorg support'
+        'xorg-server-devel: for nvidia-xconfig')
     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' "nvidia-libgl=${pkgver}"
               "nvidia-libgl-beta=${pkgver}")
     conflicts=('nvidia-utils' 'nvidia-libgl')
