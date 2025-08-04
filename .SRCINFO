@@ -1,7 +1,7 @@
 pkgbase = wealthfolio-bin
 	pkgdesc = A Beautiful and Boring Investment Tracker, with Local Data Storage. No Subscriptions, No Cloud.
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wealthfolio.app/
 	arch = x86_64
 	license = AGPL-3.0
@@ -9,6 +9,7 @@ pkgbase = wealthfolio-bin
 	depends = wget
 	depends = webkit2gtk
 	depends = gtk3
+	depends = webkit2gtk-4.1
 	provides = wealthfolio-bin
 	conflicts = wealthfolio-bin
 	source = Wealthfolio_1.1.6_amd64.deb::https://github.com/afadil/wealthfolio/releases/download/v1.1.6/Wealthfolio_1.1.6_amd64.deb

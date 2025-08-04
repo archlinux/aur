@@ -2,14 +2,14 @@
 pkgname=wealthfolio-bin
 _pkgname=Wealthfolio
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Beautiful and Boring Investment Tracker, with Local Data Storage. No Subscriptions, No Cloud."
 arch=('x86_64')
 url="https://wealthfolio.app/"
 license=('AGPL-3.0')
 groups=()
-depends=('curl' 'wget' 'webkit2gtk' 'gtk3')
+depends=('curl' 'wget' 'webkit2gtk' 'gtk3' 'webkit2gtk-4.1')
 makedepends=()
 checkdepends=()
 optdepends=()
