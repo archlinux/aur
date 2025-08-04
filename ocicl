@@ -1,0 +1,3 @@
+#!/usr/bin/env -S sbcl --core /usr/lib/ocicl/ocicl.core --script
+(uiop:restore-image)
+(ocicl:main)

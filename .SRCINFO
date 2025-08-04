@@ -1,15 +1,18 @@
 pkgbase = ocicl
 	pkgdesc = OCI-based ASDF system distribution and management tool for Common Lisp
-	pkgver = 1.0.19
+	pkgver = 2.6.5
 	pkgrel = 1
 	url = https://github.com/ocicl/ocicl
 	arch = any
 	license = MIT
-	makedepends = sbcl
-	depends = oras
+	depends = sbcl
 	provides = ocicl
 	options = !strip
-	source = https://github.com/ocicl/ocicl/archive/refs/tags/v1.0.19.tar.gz
-	sha512sums = 0ce34eb66bd1aa75d49afc7d02bf9e3e1a000c5e8c2a34ea575e3b53232ebb194e86813fbc1f96621570ff5e159528a01d2f4833a4bdc51585ed5f7936836e5d
+	source = https://github.com/ocicl/ocicl/archive/refs/tags/v2.6.5.tar.gz
+	source = build.lisp
+	source = ocicl
+	sha512sums = 5a4d949fa88e5ea42111681e46b8baa66d17108e5959b59232dae1fe1e6138e13edb5dbceac1cd3798fb1814f1afb779f7122620e50fbcf74830e265f577794e
+	sha512sums = c47e4c5ccaf5b89ad018e94ade68a4861773b7080205f7379bfbc73a87657c199fa8d0eff3a94525ce318f639c99902ab241b855cea76d29cef056038cb5505e
+	sha512sums = 0397db5e37e3c3892854122a83915d5837cb669686c43a4451fa77e2065a601fbc95ecd58f9884b8d8c94f8782eb0f2c454a5310043b82dc6bc7171bc10a20c9
 
 pkgname = ocicl
