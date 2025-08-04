@@ -2,9 +2,9 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
-epoch=2
+_epoch=2
 pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloud-fs/cloud-fs.github.io"
@@ -31,16 +31,16 @@ install=${pkgname}.install
 source=(
     "LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
     "${pkgname}.install"
-    "${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-x86_64-${pkgver}.tgz"
-    "${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz"
+    "${pkgname}-${_epoch}-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${_epoch}-linux-x86_64-${pkgver}.tgz"
+    "${pkgname}-${_epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${_epoch}-linux-aarch64-${pkgver}.tgz"
 )
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
             'f2d0bffedcfcb542ee07eef4f797dc848703f6d63f0d7b837a89a190dcc09780'
-            '47713ee6a2a4bd4d2f77071357d5565f91a9cbae93194990f24479fc7863460d'
-            '7c456b1a44b96ed5949cb8a638122d2b367c738ca3247833727d735e1d8f199d')
+            '8baf98a197c215a55c17b5ceef03e8f001295342eb0f86dcb08a8b373fd5dda3'
+            '055fb8eee267bc7fc66a9cfb7400a75c8338f71eeefcc4dd6d7885446ab60d57')
 noextract=(
-    ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
-    ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
+    ${pkgname}-${_epoch}-x86_64-${pkgver}.tgz
+    ${pkgname}-${_epoch}-aarch64-${pkgver}.tgz)
 
 _install_path="opt/${pkgname}"
 
@@ -50,7 +50,7 @@ package() {
         "${pkgdir}"/media/clouddrive \
         "${pkgdir}"/media/clouddrive-dav
 
-    bsdtar -xf "${pkgname}-${epoch}-${CARCH}-${pkgver}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
+    bsdtar -xf "${pkgname}-${_epoch}-${CARCH}-${pkgver}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
 
     #     sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
 
