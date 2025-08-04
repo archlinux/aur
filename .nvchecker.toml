@@ -1,0 +1,5 @@
+[python-pybase64]
+source = 'github'
+github = 'mayeut/pybase64'
+prefix = 'v'
+use_latest_release = true
