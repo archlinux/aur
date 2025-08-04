@@ -4,7 +4,7 @@ pkgname=xlibre-xf86-video-ati
 _pkgname=xf86-video-ati
 _pkgname2=xfree-xf86-video-ati
 pkgver=22.0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Official XLibre fork of X.Org ati video driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
@@ -31,7 +31,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"

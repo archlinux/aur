@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-video-ati
 	pkgdesc = Official XLibre fork of X.Org ati video driver
 	pkgver = 22.0.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64
