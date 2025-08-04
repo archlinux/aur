@@ -1,0 +1,5 @@
+[myriad-bin]
+source = "github"
+github = "MoiraeSoftware/Myriad"
+use_latest_release = true
+prefix = "v"

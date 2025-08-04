@@ -1,0 +1,21 @@
+pkgbase = myriad-bin
+	pkgdesc = Code generator for F#
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/MoiraeSoftware/Myriad
+	arch = any
+	license = Apache-2.0
+	depends = dotnet-runtime-6.0
+	depends = sh
+	provides = myriad
+	conflicts = myriad
+	source = myriad-0.8.3.nupkg::https://github.com/MoiraeSoftware/Myriad/releases/download/v0.8.3/Myriad.0.8.3.nupkg
+	source = myriad-0.8.3-CHANGELOG.md::https://github.com/MoiraeSoftware/Myriad/raw/refs/tags/v0.8.3/CHANGELOG.md
+	source = myriad-0.8.3-LICENSE::https://github.com/MoiraeSoftware/Myriad/raw/refs/tags/v0.8.3/LICENSE
+	source = myriad.sh
+	sha256sums = fca39a9956f0ef5a21db2988b28d482e4b09c826aabe1ed6abfaf4944dbf39a1
+	sha256sums = 2aa34e08c464831a3e03a352efb9c8c795093b29144bc008312137f2277663d6
+	sha256sums = d1215c39b4ce818077f6409ad4b3980e548b0b71d2d746d7043d1eb47223bd68
+	sha256sums = 6ec0047276c867e62803fe798fd9a3762096a08a7e6ddfca4b3b9c9057b0b0d7
+
+pkgname = myriad-bin
