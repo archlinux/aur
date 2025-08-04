@@ -2,21 +2,22 @@
 
 _name="raidrive"
 pkgname="${_name}cli"
-pkgver=2025.5.7
-pkgrel=2
+pkgver=2025.7.0
+pkgrel=1
 pkgdesc="Use cloud storage services as if they were USB drives on your computer"
 arch=('aarch64' 'x86_64')
 url="https://www.raidrive.com"
 license=('custom:Freemium')
 depends=('gcc-libs' 'glibc' 'zlib') # 'fuse3'
 options=('!debug' '!strip')
+install="${pkgname}.install"
 _pkgsrc="${_name}-${pkgver}"
 source_aarch64=("${_pkgsrc}-aarch64.deb::https://app.raidrive.com/deb/pool/main/${_name::1}/${_name}/${_pkgsrc//-/_}-linux_arm64.deb")
 source_x86_64=("${_pkgsrc}-x86_64.deb::https://app.raidrive.com/deb/pool/main/${_name::1}/${_name}/${_pkgsrc//-/_}-linux_amd64.deb")
 noextract=("${source_aarch64[@]%%::*}"
            "${source_x86_64[@]%%::*}")
-sha256sums_aarch64=('85db165b5a0d2e584674e107a9e2dd634dcdf7bca7404a92d9401fe5f63d3e7e')
-sha256sums_x86_64=('bde064e452ac86c38c2f60a506e109cee2a4fa42f157a82d35b8e6016ac49272')
+sha256sums_aarch64=('b0c473d439b2ce21e71403b15052dd2010dbef3908515729e1384d11e126236c')
+sha256sums_x86_64=('55d3c10a0600dac70076d3364d622bab786a75935bb5ec9e33954435d3cb06ca')
 
 prepare() {
   cd "${srcdir}"
