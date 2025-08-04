@@ -22,21 +22,18 @@ backup=('etc/zoneminder/zmeventnotification.ini'
         'etc/zoneminder/es_rules.json')
 install=${pkgname}.install
 source=("https://github.com/ZoneMinder/${pkgname}/archive/a306ad2dbe87c5ace3d0ba89d9d4235fd489424b.zip"
+        'https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names'
         # YOLOv3
         'https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg'
-        'https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names'
         'https://pjreddie.com/media/files/yolov3.weights'
         # YOLOv3 Tiny
         'https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3-tiny.cfg'
-        #'https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names'
         'https://pjreddie.com/media/files/yolov3-tiny.weights'
         # YOLOv4
         'https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolov4.cfg'
-        #'https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names'
         'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights'
         # YOLOv4 Tiny
         'https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolov4-tiny.cfg'
-        #"https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names'
         'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights'
         # Google Coral Edge TPU
         'https://dl.google.com/coral/canned_models/coco_labels.txt'
@@ -45,11 +42,11 @@ source=("https://github.com/ZoneMinder/${pkgname}/archive/a306ad2dbe87c5ace3d0ba
         'https://github.com/google-coral/test_data/raw/master/ssdlite_mobiledet_coco_qat_postprocess_edgetpu.tflite'
         )
 sha256sums=('7522c9dad4cceac65934dabe64195ccd94e73301888713c7d4f19c186e853586'
-            '22489ea38575dfa36c67a90048e8759576416a79d32dc11e15d2217777b9a953'
             '634a1132eb33f8091d60f2c346ababe8b905ae08387037aed883953b7329af84'
-            '523e4e69e1d015393a1b0a441cef1d9c7659e3eb2d7e15f793f060a21b32f297'
+            '22489ea38575dfa36c67a90048e8759576416a79d32dc11e15d2217777b9a953'
+            'de149461080e401b7abf01268fd14bff9c1684f1efe06f06e30aa146c3c4f1ee'
             '84eb7a675ef87c906019ff5a6e0effe275d175adb75100dcb47f0727917dc2c7'
-            'dccea06f59b781ec1234ddf8d1e94b9519a97f4245748a7d4db75d5b7080a42c'
+            'de149461080e401b7abf01268fd14bff9c1684f1efe06f06e30aa146c3c4f1ee'
             'a6d0f8e5c62cc8378384f75a8159b95fa2964d4162e33351b00ac82e0fc46a34'
             'e8a4f6c62188738d86dc6898d82724ec0964d0eb9d2ae0f0a9d53d65d108d562'
             'f858e3724962eedf3ac44e3b6cb3f0c3d9ed067c306bb831f539c578b924c90e'
@@ -111,6 +108,8 @@ package() {
 
     install -m644 coco_labels.txt                                           ${pkgdir}/var/lib/${pkgname}/models/coral_edgetpu/coco_indexed.names
     install -m644 ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite    ${pkgdir}/var/lib/${pkgname}/models/coral_edgetpu
+    install -m644 ssd_mobilenet_v2_face_quant_postprocess_edgetpu.tflite    ${pkgdir}/var/lib/${pkgname}/models/coral_edgetpu
+    install -m644 ssdlite_mobiledet_coco_qat_postprocess_edgetpu.tflite     ${pkgdir}/var/lib/${pkgname}/models/coral_edgetpu
 
     # Move the rest of the files into place
     cd ${pkgname}-a306ad2dbe87c5ace3d0ba89d9d4235fd489424b
