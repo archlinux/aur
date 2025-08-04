@@ -2,7 +2,6 @@
 # Contributor: jacko <obri.jack.02@gmail.com>
 
 # BUILD INSTRUCTIONS:
-#
 # 1. Log in to nxp.com
 # 2. Go to https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER
 # 3. Click on "Download" and download the current version
@@ -11,7 +10,7 @@
 # 6. Build
 
 pkgname=linkserver
-pkgver=25.6.131
+pkgver=25.7.33
 pkgrel=1
 pkgdesc="A utility for launching and managing GDB servers for NXP debug probes, which also provides a command-line target flash programming capabilities."
 arch=('x86_64')
@@ -21,7 +20,7 @@ depends=('bash' 'bzip2' 'expat' 'gcc-libs' 'glibc' 'libusb' 'openssl-1.1' 'syste
     'libxfixes' 'libpng' 'libxcb' 'libxcursor' 'tk' 'libbsd' 'tcl' 'util-linux-libs' 'libxrender' 'freetype2')
 _source="LinkServer_${pkgver}.${arch}.deb.bin"
 source=("file://${_source}")
-sha256sums=('2194c61b35cd06c01c3d448147607152f78337cf0cde6990ec5d105afc6c7778')
+sha256sums=('d939c0dc98d2baccedfe7d39da9b99d2e311dd7f9675437642cd862bd717b3ff')
 options=('!strip')
 
 prepare() {
