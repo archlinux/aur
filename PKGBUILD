@@ -4,7 +4,7 @@ pkgname=xlibre-xf86-input-synaptics
 _pkgname=xf86-input-synaptics
 pkgver=1.10.0.1
 _pkgver=1.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Official XLibre fork of X.Org Synaptics driver for notebook touchpads"
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -27,7 +27,7 @@ build() {
         CFLAGS+=" -march=x86-64"
         ;;
       "aarch64")
-        CFLAGS+=" -march=aarch64"
+        CFLAGS+=" -march=armv8-a"
         ;;
       *)
         CFLAGS+=" -march=native"
