@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vutronmusic
 _pkgname=VutronMusic
-pkgver=2.3.6
+pkgver=2.3.7
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('81b987729bc7e419460f17fe1339133d20e918caef95035050b6d40905451334'
+sha256sums=('1218f2bf86fa3cbf3a264d2b1dbe137e43b61b451f26c055a426d704cb133d7e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
