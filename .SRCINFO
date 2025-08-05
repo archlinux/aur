@@ -1,6 +1,6 @@
 pkgbase = perimeter81
 	pkgdesc = Perimeter81 agent application
-	pkgver = 10.0.1.88
+	pkgver = 10.0.3.933
 	pkgrel = 1
 	url = https://support.perimeter81.com/docs/downloading-the-agent
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = perimeter81
 	depends = systemd
 	depends = netcat
 	options = !strip
-	source = https://static.perimeter81.com/agents/linux/Perimeter81_9.0.1.843.deb
+	source = https://static.perimeter81.com/agents/linux/Perimeter81_10.0.3.933.deb
 	source = perimeter81helper.service
 	source = LICENSE
-	md5sums = da4011020de6fc036d1bb574376b9c84
-	md5sums = 089b611fb1ecbd3e39e2d2d391743205
-	md5sums = 64c25ccc5446c93c6073a418f664d3d5
+	sha256sums = faca3092e5a501f6a44bb356130fc50e5ee97a36aee6f059d1e2dcd712cefdc6
+	sha256sums = 3a081715b806d54b09d65f17c0f38c0ce40d99b9157555f6c63245afcc702baf
+	sha256sums = c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731
 
 pkgname = perimeter81
