@@ -1,7 +1,6 @@
 # Maintainer: KafCoppelia <k740677208@gmail.com>
 
 # BUILD INSTRUCTIONS:
-#
 # 1. Go to https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup and login with your Infineon account.
 # 2. Click on "Download" and download the current version
 # 3. Download the .deb package and place it in the same directory as the PKGBUILD
@@ -9,8 +8,8 @@
 
 _pkgname=ModusToolboxSetup
 pkgname=modustoolbox-setup
-_pkgver=1.3
-pkgver=${_pkgver}.0.1017
+_pkgver=1.4
+pkgver=${_pkgver}.0.1161
 pkgrel=1
 pkgdesc="The fastest and easiest way to install and update your ModusToolbox environment. Choose the tools, packs and patches you \
     need and add associated packages such as ModusToolbox Machine Learning and ModusToolbox Programming Tools."
@@ -21,7 +20,7 @@ depends=('fontconfig' 'libwebp' 'libglvnd' 'dbus' 'libxkbcommon' 'libxkbcommon-x
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup"
 _source="${_pkgname}Installer_${pkgver}_linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('e6f9f7ddb7d140ed31fc89c304deaab1f3baad89721f128928409ddf2b84f197')
+sha256sums=('3039d248b551b3b8dcaa16db28775d20aac5d48f661a6bbd255bb5219b92a8c0')
 options=('!strip')
 
 
