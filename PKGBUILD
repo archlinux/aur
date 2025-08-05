@@ -1,25 +1,30 @@
-# Maintainer: Felix Leblanc <felix.leblanc1305@gmail.com>
+# Maintainer: TexturedPolak <rafal200725@gmail.com>
+# Contributor: Felix Leblanc <felix.leblanc1305@gmail.com>
 _name=tinytag
 pkgname=python-$_name
-pkgver=1.6.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Read music meta data and length of MP3, OGG, FLAC and Wave files"
 arch=('any')
 url="https://pypi.python.org/pypi/tinytag/"
-license=('GPL')
+license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
+makedepends=(python-build python-installer python-wheel python-flit-core)
 source=("https://github.com/devsnd/$_name/archive/$pkgver.tar.gz")
-md5sums=('183731563cf2fe9e104be86595e937ae')
+md5sums=('067070a4dadad0aa255b50c973f45b25')
 validpgpkeys=()
 
-check() {
-    cd "$srcdir/$_name-$pkgver"
-    python runtests.py
+prepare(){
+	cd $_name-$pkgver/$_name
+	# Deleting not necessary files 
+	rm -r {icons,tests}
 }
 
-package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 || return 1
+build(){
+	cd $_name-$pkgver
+	python -m build --wheel --no-isolation
+}
+package(){
+	cd $_name-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

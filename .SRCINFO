@@ -1,14 +1,16 @@
 pkgbase = python-tinytag
 	pkgdesc = Read music meta data and length of MP3, OGG, FLAC and Wave files
-	pkgver = 1.6.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/tinytag/
 	arch = any
-	license = GPL
-	checkdepends = python-pytest
-	makedepends = python-setuptools
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
 	depends = python
-	source = https://github.com/devsnd/tinytag/archive/1.6.0.tar.gz
-	md5sums = 183731563cf2fe9e104be86595e937ae
+	source = https://github.com/devsnd/tinytag/archive/2.1.1.tar.gz
+	md5sums = 067070a4dadad0aa255b50c973f45b25
 
 pkgname = python-tinytag
