@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=servicemaster-bin
 _pkgname=ServiceMaster
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="Linux systemd administration tool with nice TUI written in C.(Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.toml::https://raw.githubusercontent.com/Lennart1978/servicemaster/V${pkgver}/servicemaster.toml"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Lennart1978/servicemaster/V${pkgver}/LICENSE"
 )
-sha256sums=('218ae8a5c5b658f2fa1d00f1686e21814a6099f09547e8a97084e60a7513cde4'
+sha256sums=('0e6816f380c1dbc211dd729fef78cdf6bef7000bc6589bf14c0d1a78bd23d4b8'
             '8311bf54a53b6bc0f194f30da38120e494fef26a0d33121318d26a62be09f0bc'
             '3c3947f498eab4fbf76ee274f3dd6a902e5b3b03f0780ba4b6808fba6c5b9924')
 package() {
