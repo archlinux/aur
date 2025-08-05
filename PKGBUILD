@@ -3,7 +3,7 @@
 
 pkgname=otree
 pkgver=0.4.1
-_commit=c519c1d59700fb8d35d5b694327cdb5328c8a002
+_commit=3bf009ade932386f2639e611c2f4a6fd4213ee0a
 pkgrel=1
 pkgdesc="Object Tree TUI Viewer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit")
-sha512sums=('583aa6fd9421b61c68e566ac969925fa5bbf973ae8890d68268b8c33bced0c6ba4690357faa269f8058469f2a0fda3cddc449c0b6dbb74878a1967c7370d57ad')
+sha512sums=('4dd89fdf0eb00d0b1b01462249591924165a0e84881df7a47336c86b42348ac18798f53d521990948e04609e904471636d8ecc08b2f23361f505199d70c5d752')
 
 prepare() {
   cd "$pkgname-$pkgver"
