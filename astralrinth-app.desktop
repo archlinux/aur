@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AstralRinth
+Comment=Modrinth Launcher fork by Astralium
+Exec=astralrinth-app %u
+Icon=astralrinth-app
+Terminal=false
+Type=Application
+Categories=Game;Utility;
+MimeType=application/zip+x-astralrinth-mrpack;
