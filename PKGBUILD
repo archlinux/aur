@@ -1,6 +1,6 @@
 pkgname=mingw-w64-wine
 pkgver=1
-pkgrel=10
+pkgrel=11
 arch=('any')
 pkgdesc="Wine wrapper for MinGW (mingw-w64)"
 # https://bugs.archlinux.org/task/77413
