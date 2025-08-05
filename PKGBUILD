@@ -4,7 +4,7 @@
 
 pkgname=aegisub-git
 pkgver=3.4.2.r118.d1acdbfe2
-pkgrel=1
+pkgrel=2
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
 url=http://www.aegisub.org
@@ -45,7 +45,6 @@ prepare() {
   cd Aegisub
   meson subprojects download luajit
   meson subprojects packagefiles --apply luajit
-  sed "/subdir('tests')/d" -i meson.build
 }
 
 pkgver() {
@@ -59,6 +58,7 @@ build() {
   arch-meson Aegisub build \
     -Dluajit:default_library=static \
     -Db_lto=false \
+    -Dtests=false \
     -Dopenal=disabled \
     -Dportaudio=disabled \
     -Denable_update_checker=false
