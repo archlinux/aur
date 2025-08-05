@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.4.11
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.4.11::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.4.11
-	sha256sums = 902300b0136dfb93da2c78eda8d9d22195c6eac0872b5c15dfa62f815c965154
+	source = pydantic-ai-0.5.0::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.5.0
+	sha256sums = 405c59921df15d04b4d204ebc93e35492bf9f3fec940a823b7c2fff250c92a2a
 
 pkgname = python-pydantic-graph
 	pkgdesc = Graph and state machine librarys.
@@ -78,6 +78,7 @@ pkgname = python-pydantic-ai-slim
 	optdepends = python-fasta2a: a2a
 	optdepends = python-ag-ui-protocol: ag-ui
 	optdepends = python-starlette: ag-ui
+	optdepends = python-tenacity: retries
 
 pkgname = python-pydantic-ai-examples
 	pkgdesc = Examples of how to use PydanticAI and what it can do.
@@ -89,6 +90,8 @@ pkgname = python-pydantic-ai-examples
 	depends = python-requests
 	depends = python-groq
 	depends = python-anthropic
+	depends = python-ag-ui-protocol
+	depends = python-starlette
 	depends = python-pydantic-evals
 	depends = python-asyncpg
 	depends = python-fastapi
@@ -106,6 +109,9 @@ pkgname = python-pydantic-ai-examples
 	depends = python-typer
 	depends = python-dotenv
 	depends = python-modal
+	depends = python-duckdb
+	depends = python-datasets
+	depends = python-pandas
 
 pkgname = python-pydantic-ai
 	pkgdesc = Agent Framework / shim to use Pydantic with LLMs.
@@ -130,6 +136,7 @@ pkgname = python-pydantic-ai
 	depends = python-pydantic-evals
 	depends = python-ag-ui-protocol
 	depends = python-starlette
+	depends = python-tenacity
 	optdepends = python-pydantic-ai-examples: examples
 	optdepends = python-logfire: logfire
 	optdepends = python-fasta2a: a2a
