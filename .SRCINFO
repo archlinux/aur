@@ -1,7 +1,7 @@
 pkgbase = systemd-cron-next-git
 	pkgdesc = Systemd generator to generate timers/services from crontab and anacrontab files
 	pkgver = 1.0.2.r22.gfe1f4a6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/systemd-cron/systemd-cron-next
 	arch = i686
 	arch = x86_64
