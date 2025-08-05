@@ -13,10 +13,11 @@ conflicts=('modrinth-app-bin' 'modrinth-app-git' 'modrinth-app' 'astralrinth-bin
 install=${pkgname}.install
 
 source=(
-    "https://git.astralium.su/didirus/AstralRinth/releases/download/AR-0.10.304/AstralRinth%20App_0.10.304_amd64.deb"
+    "AstralRinth_App_${pkgver}_amd64.deb::https://git.astralium.su/didirus/AstralRinth/releases/download/AR-${pkgver}/AstralRinth%20App_${pkgver}_amd64.deb"
     "astralrinth-app"
     "astralrinth-file-extensions.xml"
 )
+
 sha512sums=(
     '2a1747e7a70bdf467f77211827fa855b0d5c6d25e2675406cf77a5dc8f11be43f2b8df72cedc90936b924e5279441fd0c88dafc486183e29db16b6d75fbee98f'
     '9bd0a35204fb4bae20b0bec5382410556ce4eb3649c95b44fb6b4f852ac71526bace6a457d5f3e7c84e7959d24f9dc2a0c746af783d79c5d635b834991cec35a'
@@ -24,7 +25,7 @@ sha512sums=(
 )
 
 prepare() {
-    bsdtar -xf "${srcdir}/AstralRinth App_0.10.304_amd64.deb"
+    bsdtar -xf "${srcdir}/AstralRinth_App_${pkgver}_amd64.deb"
     tar -xf "${srcdir}/data.tar.*"
 }
 
