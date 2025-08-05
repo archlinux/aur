@@ -6,7 +6,7 @@
 
 pkgname='snazy-bin'
 pkgver=0.58.0
-pkgrel=1
+pkgrel=2
 pkgdesc='snazy - a snazzy json log viewer'
 url='https://github.com/chmouel/snazy'
 arch=('aarch64' 'x86_64')
@@ -14,11 +14,11 @@ license=('Apache 2.0')
 provides=('snazy')
 conflicts=('snazy')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.57.1/snazy-v0.57.1-linux-arm64.tar.gz")
-sha256sums_aarch64=('c44b1c3fabc298bc0da8f2a7aec136efe862ebba190392a67d4b95b5c6077b13')
-sha256sums_x86_64=('f15571361ca4cfbb52dc7b170c0be6f3f762a039bb39e52f7c4e7f15fde347d0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/snazy/releases/download/${pkgver}/snazy-v${pkgver}-linux-arm64.tar.gz")
+sha256sums_aarch64=('fe0d131e5fe2327dcd6d5f77b41036330596e1c0423430f08b08a36f7476a70b')
+sha256sums_x86_64=('24f1393939d910fda05300b4139839da84834cc3a28fbede41e6a10b87cd4b7b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.57.1/snazy-v0.57.1-linux-amd64.tar.gz")
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/${pkgver}/snazy-v${pkgver}-linux-amd64.tar.gz")
 
 package() {
 	install -Dm755 "./snazy" "${pkgdir}/usr/bin/snazy"
