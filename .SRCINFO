@@ -1,7 +1,7 @@
 pkgbase = crossplane
 	pkgdesc = Reliable and fast NGINX configuration file parser
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nginxinc/crossplane
 	arch = x86_64
 	license = Apache-2.0
