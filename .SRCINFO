@@ -13,7 +13,7 @@ pkgbase = nepdate
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	depends = qt6-declarative
-	source = nepdate-1.0.tar.gz::https://github.com/khumnath/nepdate/archive/refs/tags/v1.0.tar.gz
-	sha256sums = fd551e74e1572470d154e681d00a302d48b490a5310b8e03f467c07703c92f84
+	source = nepdate-1.0.tar.gz::https://github.com/khumnath/nepdate/archive/524477dbe6fb92f836a63d00ff7006e6c6a74072.tar.gz
+	sha256sums = 547a1a9db0ee62ea03d3ace2bdb5ab28c30bc65dcc616739434a58dd2f84e913
 
 pkgname = nepdate
