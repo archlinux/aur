@@ -9,6 +9,7 @@ pkgbase = melonds-bin
 	makedepends = git
 	depends = qt6-base
 	depends = qt6-multimedia
+	depends = qt6-svg
 	depends = sdl2
 	depends = enet
 	depends = libx11
