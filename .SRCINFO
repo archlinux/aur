@@ -7,6 +7,7 @@ pkgbase = clangd-bin
 	license = Apache-2.0
 	optdepends = clang
 	optdepends = gcc
+	provides = clangd
 	conflicts = clangd
 	options = !debug
 	source = https://github.com/clangd/clangd/releases/download/20.1.8/clangd-linux-20.1.8.zip

@@ -5,14 +5,20 @@ pkgver=20.1.8
 pkgrel=1
 pkgdesc='clangd language server'
 arch=('any')
+
+# URL del proyecto oficial de clangd
 url="https://github.com/clangd/clangd"
+
+# Licencia de clangd
 license=('Apache-2.0')
+
 depends=()
 
 # Compiladores opcionales
 optdepends=('clang' 'gcc')
 
 conflicts=('clangd')
+provides=('clangd')
 
 options=('!debug')
 
