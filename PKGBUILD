@@ -3,7 +3,7 @@
 _realname=rift
 pkgname=${_realname}-bin
 pkgver=4.40.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The RIFT Intel Fusion Tool, for Eve Online"
 arch=('x86_64')
 
@@ -26,7 +26,7 @@ depends=(
 )
 
 optdepends=(
-  'xwayland'
+  'xorg-xwayland'
 )
 
 provides=("${_realname}")
