@@ -1,0 +1,12 @@
+pkgbase = osc52
+	pkgdesc = Copy string through osc52
+	pkgver = r3479.g52e00f2b9
+	pkgrel = 1
+	url = https://chromium.googlesource.com/apps/libapps/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	source = osc52::git+https://chromium.googlesource.com/apps/libapps.git
+	sha256sums = SKIP
+
+pkgname = osc52
