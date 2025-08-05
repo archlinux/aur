@@ -37,9 +37,18 @@ _binname="ModrinthApp"
 package() {
   cd "$srcdir"
 
-  install -Dm755 "usr/bin/${_binname}" "${pkgdir}/opt/astralrinth-app/astralrinth-app"
+  # App binary
+  install -Dm755 "./usr/bin/${_binname}" "${pkgdir}/opt/astralrinth-app/astralrinth-app"
+
+  # Launcher script
   install -Dm755 "astralrinth-app" "${pkgdir}/usr/bin/astralrinth-app"
+
+  # MIME type
   install -Dm644 "astralrinth-file-extensions.xml" "${pkgdir}/usr/share/mime/packages/astralrinth-file-extensions.xml"
+
+  # Desktop entry
   install -Dm644 "astralrinth-app.desktop" "${pkgdir}/usr/share/applications/astralrinth-app.desktop"
+
+  # Icon
   install -Dm644 "astralrinth-icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/astralrinth-app.png"
 }
