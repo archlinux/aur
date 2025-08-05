@@ -1,0 +1,12 @@
+pkgbase = vulnx
+	pkgdesc = Modern CLI for exploring vulnerability data with powerful search, filtering, and analysis capabilities
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/cvemap
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = vulnx-1.0.0.tar.gz::https://github.com/projectdiscovery/cvemap/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 76146c23e94493106c9d9bc6f039b33e182415d0a35e5adf43b83f1712cf8d35
+
+pkgname = vulnx
