@@ -26,7 +26,6 @@ sha512sums=(
 
 prepare() {
     bsdtar -xf "${srcdir}/AstralRinth_App_${pkgver}_amd64.deb"
-    tar -xf "${srcdir}/data.tar.*"
 }
 
 _binname="ModrinthApp"
