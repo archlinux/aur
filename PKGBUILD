@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.39.0
+pkgver=5.40.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -11,21 +11,17 @@ license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz"
         "https://files.pythonhosted.org/packages/py3/g/gradio-pdf/gradio_pdf-0.0.22-py3-none-any.whl") # Prevent cercular dependencies
 noextract=('gradio_pdf-0.0.22-py3-none-any.whl')
-sha256sums=('9c4b45504862fdef720186d5595e17729b1491e9e694fc86ce9dc0dfea8b28f9'
+sha256sums=('ecef41822e9c7d948f8d25bcba45b935bcb000abc36b1debfc91306eb487d295'
             '6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5')
 depends=('python' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-brotli' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel' 'pnpm')
-checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras' 'python-openai')
+checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras')
 optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp')
 
 prepare(){
   cd "${srcdir}"/${_name}-${_name}-${pkgver}
   sed -i 's/"pnpm": "^9"/"pnpm": "^10"/g' package.json # Use pnpm 10
   rm -rf test/test_docker # Remove tests that need docker
-  # Fix test_mcp_mount_gradio_app test
-  sed -i '248i\    import anyio' test/test_mcp.py
-  sed -i '249i\    from sse_starlette.sse import AppStatus' test/test_mcp.py
-  sed -i '250i\    AppStatus.should_exit_event = anyio.Event()' test/test_mcp.py
 }
 
 build() {
@@ -46,8 +42,6 @@ check() {
     --deselect test/test_tunneling.py::test_setup_custom_tunnel
     # Failed
     --deselect test/test_blocks.py::test_post_process_file_blocked
-    --deselect test/test_pipelines.py::test_text_to_text_model_from_pipeline
-    --deselect test/test_pipelines.py::test_interface_in_blocks
   )
   cd "${srcdir}"/${_name}-${_name}-${pkgver}
   ulimit -n 8192
