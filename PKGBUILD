@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2122.rc1.r36.g00c0f01
+pkgver=2123.beta2.r1.g05aa6af
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -101,7 +101,7 @@ prepare() {
 	cd externals/dynarmic
 	git config submodule.mcl.url ../../../$_pkgname-mcl
 	git -c protocol.file.allow=always submodule update
-	# fix for missing submodules
+	# ignore unneeded missing submodules
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
 	# use system spirv-headers in sirit
 	sed -i '1i find_package(SPIRV-Headers)' ../../externals/sirit/sirit/src/CMakeLists.txt
@@ -133,6 +133,11 @@ build() {
 		-D USE_SYSTEM_LIBS=ON
 		-Wno-dev
 	)
+	local flags
+	IFS=' ' read -r -a flags <<< "$CXXFLAGS"
+	if ! g++ "${flags[@]}" -dM -E - < /dev/null | grep -q __SSE4_2__; then
+		options+=(-D ENABLE_SSE42=OFF)
+	fi
 	cd $_pkgname
 	cmake "${options[@]}" -B build
 	cmake --build build
