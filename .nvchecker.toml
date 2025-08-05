@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/inspircd/inspircd.git"
 prefix = "v"
+exclude_regex='.*[A-za-z][A-za-z].*'
