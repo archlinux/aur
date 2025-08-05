@@ -1,19 +1,20 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: crueter <crueter at crueter dot x y z>
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
 pkgver=0.0.2.r272.g9634342
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden')
-depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'libusb' 'libva' 'qt6-webengine' 'brotli' 'speexdsp' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'openssl' 'zstd' 'glibc' 'boost-libs' 'libvdpau' 'libx11' 'libdrm')
-makedepends=('git' 'cmake' 'cpm-git' 'mold' 'catch2' 'spirv-tools' 'wireless_tools' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'boost' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen')
+depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'libusb' 'libva' 'qt6-webengine' 'brotli' 'speexdsp' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'openssl' 'zstd' 'boost-libs' 'libvdpau' 'libx11' 'libdrm')
+makedepends=('git' 'cmake' 'mold' 'spirv-tools' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'boost' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
 options=('lto' '!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git")
@@ -32,6 +33,8 @@ build() {
 		-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=OFF \
+		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
 		-DYUZU_USE_BUNDLED_VCPKG=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
@@ -55,8 +58,6 @@ package() {
 	do
 		install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
 	done
-	rm -rf $pkgdir/usr/include/dynarmic
-	rm -rf $pkgdir/usr/lib/cmake/dynarmic
 }
 
 
