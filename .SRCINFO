@@ -1,7 +1,7 @@
 pkgbase = hyproled-git
 pkgdesc = A hyprland shader utility to prevent OLED burn in.
-pkgver = 0.1.1
-pkgrel = 3
+pkgver = 0.1.2
+pkgrel = 4
 url = https://github.com/mklan/hyproled
 arch = any
 license = BSD 3
