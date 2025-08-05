@@ -1,7 +1,7 @@
 pkgbase = slopecraft-portable
-	pkgdesc = Map Pixel Art Generator for Minecraft. Sandboxed by Portable
+	pkgdesc = Map Pixel Art Generator for Minecraft. Sandboxed by Portable, w/ auto updates.
 	pkgver = 5.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SlopeCraft/SlopeCraft
 	arch = armv7h
 	arch = aarch64

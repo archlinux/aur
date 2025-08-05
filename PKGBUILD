@@ -4,8 +4,8 @@
 _pkgname=slopecraft
 pkgname=${_pkgname}-portable
 pkgver=5.3.1
-pkgrel=1
-pkgdesc="Map Pixel Art Generator for Minecraft. Sandboxed by Portable"
+pkgrel=2
+pkgdesc="Map Pixel Art Generator for Minecraft. Sandboxed by Portable, w/ auto updates."
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/SlopeCraft/SlopeCraft"
 license=('GPL3')
@@ -73,7 +73,7 @@ Keywords=SlopeCraft;''' >"${pkgdir}/usr/share/applications/com.github.SlopeCraft
     echo '''#!/usr/bin/bash
     export _portableConfig=com.github.SlopeCraft
     exec portable -- $@''' >"${pkgdir}/usr/bin/SlopeCraft"
-   
+
 	install -d "${pkgdir}/usr/lib/portable/info/com.github.SlopeCraft.MapViewer"
 	echo '''#!/usr/bin/bash
 appID="com.github.SlopeCraft.MapViewer"
@@ -102,7 +102,7 @@ Keywords=SlopeCraft;''' >"${pkgdir}/usr/share/applications/com.github.SlopeCraft
     echo '''#!/usr/bin/bash
     export _portableConfig=com.github.SlopeCraft.MapViewer
     exec portable -- $@''' >"${pkgdir}/usr/bin/MapViewer"
-    
+
 	install -d "${pkgdir}/usr/lib/portable/info/com.github.SlopeCraft.VisualCraft"
 	echo '''#!/usr/bin/bash
 appID="com.github.SlopeCraft.VisualCraft"
@@ -131,7 +131,7 @@ Keywords=SlopeCraft;''' >"${pkgdir}/usr/share/applications/com.github.SlopeCraft
     echo '''#!/usr/bin/bash
     export _portableConfig=com.github.SlopeCraft.VisualCraft
     exec portable -- $@''' >"${pkgdir}/usr/bin/VisualCraft"
-    
+
 	install -d "${pkgdir}/usr/lib/portable/info/com.github.SlopeCraft.imageCutter"
 	echo '''#!/usr/bin/bash
 appID="com.github.SlopeCraft.imageCutter"
@@ -162,4 +162,3 @@ Keywords=SlopeCraft;''' >"${pkgdir}/usr/share/applications/com.github.SlopeCraft
     exec portable -- $@''' >"${pkgdir}/usr/bin/imageCutter"
 	chmod 755 -R "${pkgdir}/usr/bin"
 }
-
