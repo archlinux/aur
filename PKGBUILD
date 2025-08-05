@@ -1,8 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=tags
-pkgver=1.2
-_commit=93e8a5b42a16eea8e3034b823a8b977b57865c64
+pkgver=1.3
 pkgrel=1
 pkgdesc='A simple text tagger'
 url="https://github.com/phastmike/tags"
@@ -11,11 +10,11 @@ arch=('x86_64' 'aarch64')
 depends=('json-glib' 'libadwaita')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('a218e40998964c1a57bd1755851c8c7d2c664e64777c25ef7e1cde3b3789c509')
 
 build() {
-  arch-meson tags build
+  arch-meson tags-$pkgver build
   meson compile -C build
 }
 
@@ -25,5 +24,5 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 tags/COPYING -t "$pkgdir/usr/share/licenses/tags"
+  install -Dm644 tags-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/tags"
 }

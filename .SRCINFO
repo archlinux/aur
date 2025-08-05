@@ -1,6 +1,6 @@
 pkgbase = tags
 	pkgdesc = A simple text tagger
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/phastmike/tags
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tags
 	makedepends = vala
 	depends = json-glib
 	depends = libadwaita
-	source = git+https://github.com/phastmike/tags.git#commit=93e8a5b42a16eea8e3034b823a8b977b57865c64
-	sha256sums = SKIP
+	source = https://github.com/phastmike/tags/archive/refs/tags/1.3.tar.gz
+	sha256sums = a218e40998964c1a57bd1755851c8c7d2c664e64777c25ef7e1cde3b3789c509
 
 pkgname = tags
