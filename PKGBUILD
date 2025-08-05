@@ -2,7 +2,7 @@
 pkgname=astralrinth-app-bin
 pkgver=0.10.304
 pkgrel=1
-pkgdesc="A fork of the Modrinth Launcher developed by Astralium"
+pkgdesc="A fork of the Modrinth Launcher developed by didirus"
 arch=('x86_64')
 url="https://git.astralium.su/didirus/AstralRinth"
 license=('GPL-3.0-only')

@@ -1,5 +1,5 @@
 pkgbase = astralrinth-app-bin
-	pkgdesc = A fork of the Modrinth Launcher developed by Astralium
+	pkgdesc = A fork of the Modrinth Launcher developed by didirus
 	pkgver = 0.10.304
 	pkgrel = 1
 	url = https://git.astralium.su/didirus/AstralRinth
