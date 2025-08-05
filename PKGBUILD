@@ -8,8 +8,8 @@ pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to you
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'libx11' 'bzip2' 'vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'libvdpau' 'libva.so' 'libva-drm.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip')
+depends=('glibc' 'gcc-libs' 'libx11' 'bzip2' 'vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'libva.so' 'libva-drm.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip' 'alsa-lib')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver"
