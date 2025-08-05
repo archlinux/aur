@@ -2,7 +2,7 @@
 pkgname=servicebus-browser-bin
 _appname='@service-bus-browsersource'
 _pkgname='Servicebus Browser'
-pkgver=0.12.5
+pkgver=1.0.0
 _electronversion=33
 pkgrel=1
 pkgdesc="A cross platform tool to manage your Azure Service Bus instances.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,12 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('00a22734a19f113fd30e76bcf819b900007b36fb26c9841d07b09ce2f8ca44ce'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('c7265193692c617722f493878ef3f0802811c3cb18bb2538f0e2503a4fdf2955'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -35,6 +39,7 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
