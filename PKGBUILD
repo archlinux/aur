@@ -3,7 +3,7 @@
 _reponame="PT-depiler"
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-git"
-pkgver=0.0.4.926
+pkgver=0.0.4.928
 pkgrel=1
 pkgdesc="A web extension that can improve the efficiency of PT sites, based on PT-Plugin-Plus and Manifest v3."
 arch=("any")
