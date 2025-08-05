@@ -1,16 +1,17 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 pkgname=nocodb
-pkgver=0.264.2
+pkgver=0.264.3
 pkgrel=1
 pkgdesc="A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface."
 arch=('x86_64' 'aarch64')
 url="https://nocodb.com"
 license=('AGPL-3.0-or-later')
-depends=('nodejs>=20.0.1')
+depends=('nodejs>=20.0.1'
+    'libvips'
+)
 makedepends=('pnpm'
     'node-gyp'
     'python'
-    'libvips'
 )
 optdepends=('postgresql: recommended database'
     'litestream'
