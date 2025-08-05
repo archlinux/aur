@@ -1,6 +1,6 @@
 pkgbase = annobin
 	pkgdesc = A binary annotation and examination package.
-	pkgver = 12.96
+	pkgver = 12.98
 	pkgrel = 1
 	url = https://sourceware.org/annobin
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = annobin
 	license = GPL3
 	depends = rpm-tools
 	optdepends = gcc: gcc plugin
-	source = annobin-12.96.tar.xz::https://nickc.fedorapeople.org/annobin-12.96.tar.xz
-	sha256sums = ec86b826290a917400be408a21e641447dd54ac6fb3c063a3848a55da301fed2
+	source = annobin-12.98.tar.xz::https://nickc.fedorapeople.org/annobin-12.98.tar.xz
+	sha256sums = f31b46219f7947fce12abb6a114b0b9c4f7a19af834a5ab376be15e0c4fbdc8b
 
 pkgname = annobin
