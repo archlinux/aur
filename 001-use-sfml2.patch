@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index 45f42dc..6d940a5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -239,10 +239,8 @@ ifeq ($(WINDOWS_STATIC),1)
+  FE_WINDOWS_COMPILE=1
+
+ else
+-
+- LIBS += -lsfml-graphics \
+-	-lsfml-window \
+-	-lsfml-system
++ CXXFLAGS += $(shell $(PKG_CONFIG) --cflags --silence-errors sfml-graphics sfml-window sfml-system)
++ LIBS += $(shell $(PKG_CONFIG) --libs --silence-errors sfml-graphics sfml-window sfml-system)
+ endif
+
+ ifneq ($(NO_SWF),1)

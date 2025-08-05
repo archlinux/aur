@@ -3,13 +3,13 @@
 _gitname=attract
 _gitbranch=master
 pkgname=${_gitname}-git
-pkgver=2.0.0.r9
+pkgver=2.7.0.r17
 pkgrel=1
 pkgdesc="A graphical front-end for command line emulators that hides the underlying operating system and is intended to be controlled with a joystick or gamepad."
 arch=('i686' 'x86_64')
 url="http://www.attractmode.org/"
 license=('GPL3')
-depends=('sfml' 'openal' 'ffmpeg' 'fontconfig' 'libxinerama' 'libarchive')
+depends=('sfml2' 'openal' 'ffmpeg' 'fontconfig' 'libxinerama' 'libarchive')
 makedepends=('git')
 conflicts=('attract')
 provides=('attract')
@@ -19,12 +19,14 @@ source=("${_gitname}::git+https://github.com/mickelson/${_gitname}.git#branch=${
 	"https://github.com/mickelson/${pkgname%-*}/releases/download/v1.6.2/ATTRACT.MODE.intro.16-9.v6.1080p.mp4"
 	"https://github.com/mickelson/${pkgname%-*}/releases/download/v1.6.2/ATTRACT.MODE.intro.4-3.v6.1080p.mp4"
 	"${_gitname}.desktop"
-	"${install}")
+	"${install}"
+	001-use-sfml2.patch)
 sha1sums=('SKIP'
 	'37885c5f2e6194e689c36eb88c43bd5bb23363d0'
 	'445bb161b9c06749347974b6c19c846d86b00ceb'
 	'cf599edbff2962b5ff0a77560a95d80cec828264'
-	'284afdf55086f2a626d5ab617240ff74cea30f53')
+	'284afdf55086f2a626d5ab617240ff74cea30f53'
+	'8da390d998e67245df9f1f81eb3705f9f8490347')
 
 pkgver() {
 	cd "${_gitname}"
@@ -32,9 +34,15 @@ pkgver() {
 	printf "%s.r%s\n" "$(echo ${tag} | sed 's/^v//;s/-/./g')" "$(git rev-list --count ${tag}..HEAD)"
 }
 
+prepare() {
+	cd "${_gitname}"
+	patch -p1 -i ../001-use-sfml2.patch
+}
+
 build() {
 	cd "${_gitname}"
-	make prefix=/usr
+	export PKG_CONFIG_PATH=/usr/lib/pkgconfig/sfml2
+	make EXTRA_CXXFLAGS="-Wl,-rpath=$(pkg-config --variable=libdir sfml-all)" prefix=/usr
 }
 
 package() {
