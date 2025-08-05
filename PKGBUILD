@@ -2,13 +2,13 @@
 # Contributor: Henrik Juul Pedersen <henrikjuul AT gmail>
 
 pkgname=libiec61850
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="libIEC61850 provides a server and client library for IEC 61850"
 arch=('x86_64' 'i686')
 url="http://libiec61850.com/"
 license=('GPLv3')
-makedepends=('cmake' 'mbedtls')
+makedepends=('cmake')
 _mbedtls_pkgver=3.6.0
 _mbedtls=mbedtls-${_mbedtls_pkgver}
 _srcname=${pkgname}-${pkgver}
@@ -16,7 +16,7 @@ source=("https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v$_mbedtls_pkgver
         "https://github.com/mz-automation/libiec61850/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=('32c500e73ee878e193e7d66bf5e4c34fb42bb968a6c9f9488aa466b16f6f3bff'
-            '0dd0adc7f13215e961d22511bcb1dadfdbdaab969f11a0d975775a6ebdff8099')
+            '64113483eea8aec4f18cef9f8bb3c872585b2c67566824c4373db257bcc7bf8e')
 
 prepare()
 {
