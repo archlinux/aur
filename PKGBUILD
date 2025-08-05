@@ -2,11 +2,11 @@
 pkgname=beetcamp
 pkgdesc='Plugin for beets to use Bandcamp as an autotagger source'
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 url=https://github.com/snejus/beetcamp
 arch=(any)
 license=(GPL2)
-depends=(beets python-pycountry python-requests python-ordered-set)
+depends=(beets python-pycountry python-httpx python-packaging)
 makedepends=(python-build python-poetry-core)
 checkdepends=(python-poetry git)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
@@ -20,7 +20,7 @@ prepare () {
 	git init
 	git config user.name 'Mr. Pink'
 	git config user.email 'mr@pink.me'
-	git commit --allow-empty -m'Dummy commit'
+	git -c commit.gpgsign=false commit --allow-empty -m'Dummy commit'
 
 	poetry install
 }
