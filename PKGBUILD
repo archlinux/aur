@@ -1,6 +1,6 @@
 pkgname=drg_mod_integration-notag-bin
-pkgver=0.2.13
-pkgrel=1
+pkgver=0.2.14
+pkgrel=2
 pkgdesc="Deep Rock Galactic mod loader and integration (Strappazzon fork)"
 arch=("x86_64")
 url="https://github.com/Strappazzon/drg-mint-notag"
@@ -14,8 +14,8 @@ source=(
     "drg_mod_integration.desktop"
 )
 sha256sums=(
-    '1279c8cfa18562869d465abbef3bda5e0f0a83330e7f66b1b3958d6430faf52f'
-    '1d5630a17ac4c362a398b1a71b16a2a5cff451b4095861f735805ae08f3ac328'
+    '0b8f12ae9327f96fefa0559a7ae409d4c3956fce4e53c90ce137d0acf8bb8a77'
+    '4a10c10b4c55ce32aafea630fbfc57e7f06b81ef55fa7bc2e7fbd9945cc2f9b0'
 )
 package() {
     cd "$srcdir/drg_mod_integration-x86_64-unknown-linux-gnu"
