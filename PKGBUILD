@@ -12,7 +12,7 @@ provides=("hyprviz")
 conflicts=("hyprviz")
 depends=("gtk4" "glib2" "desktop-file-utils" "hyprland")
 source=("https://github.com/timasoft/hyprviz/releases/download/v$pkgver/hyprviz-$pkgver-x86_64.tar.gz")
-sha256sums=("62d1c133b4d9fd05d875f9c2c7a817ecbb4ce63c8bb76c8feefec43cc52c0a7d")
+sha256sums=("239fb5771885b19c8951680cabd5aadef19947483f7336ba077f63b62b389cd9")
 
 package() {
     install -Dm755 hyprviz -t "$pkgdir/usr/bin"
