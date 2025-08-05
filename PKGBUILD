@@ -9,7 +9,7 @@
 # Contributor: Marcus Andersson <mackilanu@gmail.com>
 
 pkgname=vagrant
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -17,14 +17,14 @@ url="https://vagrantup.com"
 license=('BUSL-1.1')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
-         'ruby' 'xz' 'perl')
+  'ruby' 'xz' 'perl')
 makedepends=('git' 'go')
 optdepends=('dnsmasq: if using libvirt')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz"
-        "git+https://github.com/hashicorp/vagrant-installers.git#commit=7bcf4d4")
-sha256sums=('417e5f1a2ec7064d94f857a4a6c394ef938fa3acbbfcba106c5d7bd63c5f0efb'
+  "git+https://github.com/hashicorp/vagrant-installers.git#commit=7bcf4d4")
+sha256sums=('0156a0bd929b553e115ab08976c9210014ee9d133db416f9fa3a2f60cfd517ed'
             '6a12657a82226a942ca57f5b3a6f3684d312fe1ef6f876dfb6c246b7e757aa26')
 
 prepare() {
@@ -72,7 +72,7 @@ package() {
   install -d "$pkgdir"/usr/{bin,share/bash-completion/completions,share/zsh/site-functions}
   install -Dm644 "$INSTALLERS_DIR"/common/gemrc "$EMBEDDED_DIR"/etc/gemrc
 
-  echo "{ \"vagrant_version\": \"$pkgver\" }" > "$EMBEDDED_DIR"/manifest.json
+  echo "{ \"vagrant_version\": \"$pkgver\" }" >"$EMBEDDED_DIR"/manifest.json
 
   gem install $pkgname-$pkgver.gem \
     --no-document --no-user-install --install-dir "$EMBEDDED_DIR"/gems
