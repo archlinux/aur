@@ -1,7 +1,7 @@
 # Maintainer: Oleg Plakhotniuk <olegus8@gmail.com>
 pkgname=webgetpics
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sets random pictures from web search as X background."
 arch=('any')
 url="http://www.webgetpics.org"

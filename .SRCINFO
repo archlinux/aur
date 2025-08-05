@@ -1,7 +1,7 @@
 pkgbase = webgetpics
 	pkgdesc = Sets random pictures from web search as X background.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webgetpics.org
 	arch = any
 	license = custom
