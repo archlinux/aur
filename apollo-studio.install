@@ -1,4 +1,9 @@
 post_install() {
   echo "Updating MIME database..."
   update-mime-database /usr/share/mime
+  sudo ln -s /opt/apollo-studio/Apollo/bin/Release/net5.0/linux-x64/publish/Apollo /usr/bin/apollo-launchpad
+  sudo rm /opt/apollo-studio/Apollo/bin/Release/net5.0/linux-x64/publish/Apollo.deps.json 
+  sudo rm /opt/apollo-studio/Apollo/bin/Release/net5.0/linux-x64/Apollo.deps.json
+  sudo cp Apollo.deps.json /opt/apollo-studio/Apollo/bin/Release/net5.0/linux-x64/
+  sudo cp Apollo.deps.json /opt/apollo-studio/Apollo/bin/Release/net5.0/linux-x64/publish/
 }

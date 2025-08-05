@@ -1,7 +1,7 @@
 pkgbase = apollo-studio-launchpad
 	pkgdesc = Apollo Studio - audio project editor
 	pkgver = 1.8.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jacobeagle/apollo-studio-build-AUR
 	install = apollo-studio.install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = apollo-studio-launchpad
 	depends = openssl-1.1
 	depends = dotnet-sdk-5.0-bin
 	source = https://github.com/Jacobeagle/apollo-studio-build-AUR/releases/download/1.8.16/apollo-studio-1.8.16.tar.gz
-	sha256sums = dc0ebc4eb80e6f2618178af7376c7f4f226d3a5633467bdcfab071871cec9a7d
+	source = apollo-studio.install
+	sha256sums = 4a0c192d5051159d5215db298f0a7fde2fce2cdcbdbf439cc89729d206ef6c38
+	sha256sums = f66e85690be8abda87ad0a220b47879bafe3990d5ec607f266834bba0a64518d
 
 pkgname = apollo-studio-launchpad
