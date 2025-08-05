@@ -1,0 +1,15 @@
+pkgbase = csharpier
+	pkgdesc = An opinionated code formatter for C#
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://csharpier.com
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	depends = aspnet-runtime-10.0
+	options = !strip
+	options = !debug
+	source = csharpier-1.1.1.tar.gz::https://github.com/belav/csharpier/archive/refs/tags/1.1.1.tar.gz
+	b2sums = 7909b77ee047d0ef64947434efb49c859a957b9cadf135cb5e70f9c601fdf6136a4bac927e3461d91d01e0957126d1fde480483c9d73a78154def5b1405fe697
+
+pkgname = csharpier
