@@ -1,0 +1,84 @@
+#! /usr/bin/bash
+
+# Written by PKGBUILD
+
+declare -r pkgname=
+declare -r pkgver=
+declare -r pkgrel=
+
+###
+
+broadcast=0
+use_environment=0
+use_global_config=1
+
+while :; do
+  case $1 in
+  --broadcast)
+    broadcast=1
+    ;;
+  --use_environment)
+    use_environment=1
+    ;;
+  --skip-global-config)
+    use_global_config=0
+    ;;
+  *)
+    break
+    ;;
+  esac
+  shift
+done
+
+if ((!use_environment)); then
+  app_name=$pkgname
+  message="Kwin was updated. It is necessary to rebuild $pkgname."
+  icon=update-medium
+  urgency=normal
+  action="Execute configured function"
+else
+  eval "$declare_do_rebuild"
+fi
+
+if ((use_global_config)); then
+  global_config=/etc/$pkgname/reminder.conf
+
+  if [[ -f $global_config ]]; then
+    source "$global_config"
+  fi
+fi
+
+if ((!broadcast)); then
+  local_config=$(systemd-path user-configuration --suffix="/$pkgname/reminder.conf")
+
+  if [[ -f $local_config ]]; then
+    source "$local_config"
+  fi
+
+  if declare -F do_rebuild >/dev/null; then
+    show_action=1
+  else
+    unset show_action
+  fi
+
+  eval "$(notify-send --icon="$icon" --app-name="$app_name" "$message" --urgency="$urgency" ${show_action:+--action="do_rebuild=$action"})"
+else
+  passed_env=(
+    --setenv=app_name="$app_name"
+    --setenv=message="$message"
+    --setenv=icon="$icon"
+    --setenv=urgency="$urgency"
+    --setenv=action="$action"
+    --setenv=declare_do_rebuild="$(declare -pf do_rebuild 2>/dev/null)"
+  )
+
+  for user in ${users:-$(who | cut -d " " -f1 | sort -u)}; do
+    systemd-run \
+      "${passed_env[@]}" \
+      --description="${app_name:+$app_name: }send rebuild reminder" \
+      --machine="${user}@.host" \
+      --user \
+      --no-block \
+      "$(realpath "${BASH_SOURCE[0]}")" --use-environment --skip-global-config
+  done
+fi

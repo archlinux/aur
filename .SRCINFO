@@ -1,7 +1,7 @@
 pkgbase = inputactions-kwin
 	pkgdesc = Mouse and touchpad gestures for Plasma 6 Wayland
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taj-ny/InputActions
 	install = inputactions-kwin.install
 	arch = x86_64
@@ -20,8 +20,16 @@ pkgbase = inputactions-kwin
 	depends = kcmutils
 	depends = kcoreaddons
 	depends = ki18n
+	optdepends = libnotify: to send a reminder when this package needs to be rebuild
 	provides = inputactions
+	backup = etc/inputactions-kwin/reminder.conf
 	source = inputactions-kwin-0.7.0.src.tar.gz::https://github.com/taj-ny/InputActions/archive/refs/tags/v0.7.0.tar.gz
+	source = send-rebuild-reminder
+	source = reminder.conf
+	source = rebuild-reminder.hook
 	sha256sums = d96936b6ee8bceefe5e15e3af5034d9291177513ca6edbf0dcdb00591ba5c5d1
+	sha256sums = 4bf8bc322e5be1a8f2e50d9e47490b7a8b30e0bd754cb79f3ab1f5960b081f63
+	sha256sums = 57a1e6c7c230c9149e85db13c5dc9f76a4e49c643a03f299750ddc977b36548a
+	sha256sums = 72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13
 
 pkgname = inputactions-kwin

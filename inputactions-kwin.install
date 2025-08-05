@@ -1,3 +1,3 @@
 post_install() {
-  echo "Some features need additional setup: https://github.com/taj-ny/InputActions?tab=readme-ov-file#additional-setup-optional"
+  echo "$(tput bold)Info:$(tput sgr0) Some features need additional setup: https://wiki.inputactions.org/v${1%%-*}/getting-started/installation/index.html#additional-setup-optional"
 }

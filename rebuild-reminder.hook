@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = kwin
+
+[Action]
+Description = Reminding to rebuild $pkgname
+When = PostTransaction
+Depends = libnotify
+Exec = /usr/share/libalpm/scripts/send-rebuild-reminder --broadcast
