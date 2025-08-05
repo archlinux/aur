@@ -1,6 +1,6 @@
 # Maintainer: link2xt <link2xt@testrun.org>
 pkgname=deltatouch-git
-pkgver=r524.e4f3924
+pkgver=r560.fe158c2
 pkgrel=1
 pkgdesc="Delta Chat client using Lomiri UI toolkit"
 arch=(x86_64)
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=(git+https://codeberg.org/lk108/deltatouch.git#commit=e4f39241844c4b8ecd1fb396fd9ab01111a2aa55)
+source=(git+https://codeberg.org/lk108/deltatouch.git#commit=fe158c2b2d7fd218720df4cc9c54f2c3e86816d7)
 noextract=()
 sha256sums=('SKIP')
 
