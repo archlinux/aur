@@ -1,6 +1,6 @@
 pkgbase = aegisub-git
 	pkgdesc = A general-purpose subtitle editor with ASS/SSA support
-	pkgver = 3.4.2.r118.d1acdbfe2
+	pkgver = 3.4.2.r119.e600e4780
 	pkgrel = 1
 	url = http://www.aegisub.org
 	arch = x86_64
