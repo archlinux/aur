@@ -1,8 +1,15 @@
+ALL_OFF="$(tput sgr0)"
+YELLOW="${BOLD}$(tput setaf 3)"
+WHITE="${BOLD}$(tput setaf 7)"
+
+_warning_root() {
+  local _warning="sunshine has full root access"
+  printf "${YELLOW}WARNING: ${WHITE}%s${ALL_OFF}\n" "$_warning"
+}
+
 do_setcap() {
+  _warning_root
   setcap cap_sys_admin+p $(readlink -f usr/bin/sunshine)
-  echo
-  echo "WARNING: sunshine has full root access"
-  echo
 }
 
 do_udev_reload() {
