@@ -4,7 +4,7 @@
 pkgname=koala-clash-bin
 _pkgname=koala-clash
 _gitpkgname=clash-verge-rev-lite
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Fork of Clash Verge Rev | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,9 +19,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pk
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/Koala.Clash_arm64.deb")
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/Koala.Clash_armhf.deb")
 
-sha256sums_x86_64=('9b21d95b360f4671858413ebaa0d640824e54832f6547268827d9467c47510a2')
-sha256sums_aarch64=('76af0861ed7a1f4401877de16ab8c356f4e2b7c57eee01981f269ca7c764f3b9')
-sha256sums_armv7h=('483481d7488fe874e1f9818ed13fd8f6532a3e59ddc3213cbe3e5eeb5ba26e7d')
+sha256sums_x86_64=('be6820bb9b32ecdf1a9036b6042acb7c3b3f6096eff4d1f7098a7cdbe090132d')
+sha256sums_aarch64=('5c953aaabb62079b6bbc52eda24a9abc5667ea8e660049f2fadf4a83f8fc082a')
+sha256sums_armv7h=('2380ee3b0f59a912f5cffb769635bf3bf5bf7ce3da577b2487c5cd7dee91fa7f')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
