@@ -2,19 +2,15 @@
   "dns": {
     "servers": [
       {
+        "type": "tls",
         "tag": "google",
-        "address": "tls://8.8.8.8"
+        "server": "8.8.8.8"
       },
       {
+        "type": "udp",
         "tag": "local",
-        "address": "223.5.5.5",
-        "detour": "direct"
-      }
-    ],
-    "rules": [
-      {
-        "outbound": "any",
-        "server": "local"
+        "detour": "direct",
+        "server": "223.5.5.5"
       }
     ],
     "strategy": "ipv4_only"
@@ -46,6 +42,7 @@
         "outbound": "direct"
       }
     ],
-    "auto_detect_interface": true
+    "auto_detect_interface": true,
+    "default_domain_resolver": "local"
   }
 }

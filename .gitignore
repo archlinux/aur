@@ -9,4 +9,5 @@
 !sing-box.service
 !sing-box@.service
 !sing-box.sysusers
-!sing-box.tmpfiles
+!sing-box-split-dns.xml
+!sing-box.rules
