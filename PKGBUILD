@@ -2,8 +2,8 @@
 
 pkgname=xlibre-xf86-video-amdgpu
 _pkgname=xf86-video-amdgpu
-pkgver=23.0.0.3
-pkgrel=4
+pkgver=23.0.0.4
+pkgrel=1
 pkgdesc="XLibre fork of X.Org amdgpu video driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
@@ -71,4 +71,4 @@ package() {
   install -Dm644 "${srcdir}"/${_pkgname}-${pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-sha256sums=('06e4bd89fa48f43dcfe27a5761ac2283ca41d2bb72e8f4a3af51998b3290ba40')
+sha256sums=('75eafbeab745a5225740b76365a78053d1124e39268c626c7e20bbd72a446de9')
