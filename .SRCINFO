@@ -1,4 +1,4 @@
-pkgbase = apollo-studio
+pkgbase = apollo-studio-launchpad
 	pkgdesc = Apollo Studio - audio project editor
 	pkgver = 1.8.16
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = apollo-studio
 	source = https://github.com/Jacobeagle/apollo-studio-build-AUR/releases/download/1.8.16/apollo-studio-1.8.16.tar.gz
 	sha256sums = dc0ebc4eb80e6f2618178af7376c7f4f226d3a5633467bdcfab071871cec9a7d
 
-pkgname = apollo-studio
+pkgname = apollo-studio-launchpad

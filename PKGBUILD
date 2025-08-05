@@ -1,4 +1,4 @@
-pkgname=apollo-studio
+pkgname=apollo-studio-launchpad
 pkgver=1.8.16
 pkgrel=1
 pkgdesc="Apollo Studio - audio project editor"
