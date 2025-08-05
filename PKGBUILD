@@ -2,7 +2,7 @@
 
 pkgname=thinkfan-ui
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A small gui app for Linux to control the fan speed and monitor temps on a ThinkPad"
 arch=('x86_64')
 url="https://github.com/zocker-160/thinkfan-ui"
@@ -29,7 +29,7 @@ package() {
   install -D -m644 linux_packaging/thinkfan-ui.desktop -t "$pkgdir/usr/share/applications"
 
   install -D -m644 linux_packaging/modules-load.conf "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
-  install -D -m644 linux_packaging/thinkpad_acpi.conf -t "$pkgdir/usr/lib/modprobe.d"
+  install -D -m644 linux_packaging/thinkpad_acpi.conf "$pkgdir/usr/lib/modprobe.d/thinkpad_acpi_thinkfan_ui.conf"
 
   # fix python version to prevent untracked pyc files
   # force users to rebuild when Python version updates
