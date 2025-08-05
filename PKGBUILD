@@ -2,22 +2,22 @@
 
 _name=ffmpy
 pkgname=python-${_name}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A simple Python wrapper for FFmpeg."
 arch=(any)
 url="https://github.com/Ch00k/ffmpy"
 license=(MIT)
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e8a6dfb3d88f13dd6cc5f55dae116a6ec2cf95e5ebf802bd0bfc5d6b0c23df4d')
+sha256sums=('d612337a5eb130fbc9dc40fbddb726fedc0f2227e204467a581aacd7e59fbff0')
 depends=('python' 'ffmpeg')
 makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-cov')
+checkdepends=('python-pytest')
 optdepends=('python-psutil: psutil')
 
 build() {
   cd "${srcdir}"/${_name}-${pkgver}
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {

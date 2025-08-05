@@ -1,12 +1,11 @@
 pkgbase = python-ffmpy
 	pkgdesc = A simple Python wrapper for FFmpeg.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Ch00k/ffmpy
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
@@ -14,7 +13,7 @@ pkgbase = python-ffmpy
 	depends = python
 	depends = ffmpeg
 	optdepends = python-psutil: psutil
-	source = https://github.com/Ch00k/ffmpy/archive/refs/tags/0.6.0.tar.gz
-	sha256sums = e8a6dfb3d88f13dd6cc5f55dae116a6ec2cf95e5ebf802bd0bfc5d6b0c23df4d
+	source = https://github.com/Ch00k/ffmpy/archive/refs/tags/0.6.1.tar.gz
+	sha256sums = d612337a5eb130fbc9dc40fbddb726fedc0f2227e204467a581aacd7e59fbff0
 
 pkgname = python-ffmpy
