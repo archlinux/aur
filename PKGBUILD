@@ -1,55 +1,31 @@
-# Maintainer: PoDiax <szymonender@gmail.com>
+# Maintainer: XurxoMF <xurxomf@xurxomf.xyz>
 
-_pkgname=vs-launcher
-_pkgver=1.5.5
-_appimage="${_pkgname}-${_pkgver}.AppImage"
-
-pkgbase="${_pkgname}"
-pkgname="${_pkgname}-appimage"
-pkgver="${_pkgver}"
+pkgname=vs-launcher
+pkgbase=vs-launcher
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="Unofficial launcher and version manager for Vintage Story"
 arch=('x86_64')
-url="https://github.com/XurxoMF/vs-launcher"
-license=('MIT')
-depends=('fuse2')
-options=(!strip)
-source=("${_appimage}::https://github.com/XurxoMF/vs-launcher/releases/download/${_pkgver}/${_appimage}")
-sha256sums=('e5c9826bad2277a82d7d88cd3993b4e8f3bb46834ce45b9b79af63da406b1840')
+url="https://vsldocs.xurxomf.xyz/"
+license=('custom')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'ffmpeg' 'dotnet-runtime-7.0' 'dotnet-runtime-8.0')
+source=("https://github.com/XurxoMF/vs-launcher/releases/download/$pkgver/vs-launcher-$pkgver.deb")
+sha256sums=('fa584d5c849ff82ab6132257310e04b9a4c5a72d59de16679c023acce8ea77ce')
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    bsdtar -xf "$srcdir/vs-launcher-$pkgver.deb"
+    mkdir -p "$srcdir/vs-launcher"
+    bsdtar -xf "$srcdir/data.tar.xz" -C "$srcdir/vs-launcher"
+
+    cp ../LICENSE "$srcdir/"
+    cp ../vs-launcher-wrapper "$srcdir/"
+    cp ../vs-launcher.desktop "$srcdir/"
 }
 
 package() {
-    # Install AppImage into /opt
-    install -Dm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
+    cp -R "$srcdir/vs-launcher/." "$pkgdir"
 
-    # Create symlink to run via terminal
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
-
-    # Install .desktop file
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
-[Desktop Entry]
-Name=VS Launcher
-Exec=${_pkgname} %U
-Terminal=false
-Type=Application
-Icon=${_pkgname}
-StartupWMClass=VS Launcher
-X-AppImage-Version=${pkgver}
-Comment=Unofficial Vintage Story Launcher for... Vintage Story :)
-Categories=Game;
-EOF
-
-
-
-    # Install icons of multiple sizes
-    for size in 16 32 48 64 128 256; do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png"
-    done
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$srcdir/vs-launcher-wrapper" "$pkgdir/usr/bin/vs-launcher-wrapper"
+    install -Dm644 "$srcdir/vs-launcher.desktop" "$pkgdir/usr/share/applications/vs-launcher.desktop"
 }
-

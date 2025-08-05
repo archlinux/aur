@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Running VS Launcher"
+UPDATE=false "/opt/VS Launcher/vs-launcher" "$@"
+echo "VS Launcher closed: $?"
