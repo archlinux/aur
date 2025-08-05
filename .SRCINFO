@@ -1,6 +1,6 @@
 pkgbase = python-h5netcdf
 	pkgdesc = Pythonic interface to netCDF4 via h5py
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://h5netcdf.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-h5netcdf
 	depends = python-h5py
 	depends = python-packaging
 	optdepends = python-h5pyd: open remote datasets using the HDF REST interface
-	source = https://files.pythonhosted.org/packages/source/h/h5netcdf/h5netcdf-1.6.3.tar.gz
-	sha256sums = a8fededcc30f933389168ece94963bee54545546772d9e4dccadbb990dd5651e
+	source = https://files.pythonhosted.org/packages/source/h/h5netcdf/h5netcdf-1.6.4.tar.gz
+	sha256sums = 83db7e5eb9b822bed2c79050d6cf8f36ecbd1039f4252bd90fab200edcaaf67d
 
 pkgname = python-h5netcdf
