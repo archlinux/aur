@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=1.4.10
+pkgver=1.4.11
 pkgrel=1
 pkgdesc="Application for importing and transferring Pokémon between save files.(Prebuilt version)"
 arch=(
-    #'aarch64'
+    'aarch64'
     'x86_64'
 )
 url="https://github.com/andrewbenington/OpenHome"
@@ -16,9 +16,10 @@ depends=(
     'gtk3'
     'webkit2gtk-4.1'
 )
-#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_x86_64=('86087c7ed185ddf086d68814136046ec2ce030f9300ffe1116c27916d9ca0ac0')
+sha256sums_aarch64=('c9ac2d44c182620721ad6a3ffdbccdbbb9754a36ff4c35c5bfc4a163b899fb63')
+sha256sums_x86_64=('4d7bab27cdb9abf8ec3db1d4bf56b1b783e6ce8fe268b1fbc8cd365a1cbb342f')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
