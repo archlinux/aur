@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-video-amdgpu
-	pkgdesc = XLibre fork of X.Org amdgpu video driver
+	pkgdesc = Official XLibre fork of X.Org amdgpu video driver
 	pkgver = 23.0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/X11Libre
 	arch = x86_64
 	arch = aarch64
