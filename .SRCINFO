@@ -1,13 +1,13 @@
 pkgbase = stackit-cli
 	pkgdesc = a command-line interface for the STACKIT services
-	pkgver = 0.32.0
+	pkgver = 0.37.7
 	pkgrel = 1
 	url = https://github.com/stackitcloud/stackit-cli
 	arch = x86_64
 	arch = arm64
 	license = Apache2
 	makedepends = go
-	source = https://github.com/stackitcloud/stackit-cli/archive/refs/tags/v0.32.0.tar.gz
-	sha256sums = 1ed734cd930fda7af009de359f7c8b4072437b115b5c6fcd7fc48692eecfa227
+	source = https://github.com/stackitcloud/stackit-cli/archive/refs/tags/v0.37.7.tar.gz
+	sha256sums = 8699acb7e896b8a063ed67a399750d0eb29eb433fb67189026461ef5debe628b
 
 pkgname = stackit-cli
