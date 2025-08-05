@@ -25,4 +25,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   DESTDIR="$pkgdir" meson install -C build
+  # Remove file that conflicts with pinta package
+  rm -f "$pkgdir/usr/share/icons/hicolor/scalable/actions/help-website-symbolic.svg"
 }
