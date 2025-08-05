@@ -3,16 +3,19 @@
 post_install() {
   echo ":: This package doesn't replace the existing gcc.mo"
   echo "   It creates a new folder named \"ja_JP_kawaii\" in the \"/usr/share/locale/\" directory"
-  echo "   gcc.mo in the \"LC_MESSAGES/\" directory"
-  echo "   Need to set the environment variable LANGUAGE makes GCC kawaii"
-  echo "   "
-  echo "   这个包没有替换原有的 gcc.mo"
-  echo "   而是在 \"/usr/share/locale/\" 目录下新建了一个 \"ja_JP_kawaii\" 文件夹"
-  echo "   gcc.mo 在 \"LC_MESSAGES/\" 目录中"
-  echo "   需要设置环境变量 LANGUAGE 让 GCC 变可爱"
-
+  echo "   with a gcc.mo in the \"LC_MESSAGES/\" directory"
+  echo "   You need to set the environment variable LANGUAGE=ja_JP_kawaii to make GCC kawaii"
+  echo ""
+  echo "   このパッケージは元の gcc.mo を置き換えません"
+  echo "   \"/usr/share/locale/\" に \"ja_JP_kawaii\" フォルダを新たに作成し、"
+  echo "   その中の \"LC_MESSAGES/\" ディレクトリに gcc.mo を配置します"
+  echo "   環境変数 LANGUAGE=ja_JP_kawaii を設定すれば、GCCが可愛くなります！"
+  echo ""
+  echo "   使い方の例："
+  echo "     export LANGUAGE=ja_JP_kawaii"
+  echo "     gcc --version"
 }
 
 post_upgrade() {
   post_install
-} 
+}

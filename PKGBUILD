@@ -3,7 +3,7 @@
 
 _pkgname=kawaii-gcc
 pkgname="$_pkgname-git"
-pkgver=r29.9504dad
+pkgver=r35.3b43056
 pkgrel=1
 provides=("$_pkgname")
 pkgdesc='GCCコンパイラーを可愛くしましょう！Make your GCC compiler kawaii. '
@@ -22,10 +22,11 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    make
+    mkdir -p build
+    msgfmt -o build/ja-kawaii.mo src/ja-kawaii.po
 }
 
 package() {
     cd "$_pkgname"
-    install -Dm644 "build/ja-kawaii.mo" -t "$pkgdir/usr/share/locale/ja_JP_kawaii/LC_MESSAGES"
+    install -Dm644 "build/ja-kawaii.mo" "$pkgdir/usr/share/locale/ja_JP_kawaii/LC_MESSAGES/gcc.mo"
 }
