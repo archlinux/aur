@@ -10,6 +10,7 @@ pkgbase = newelle
 	depends = gtksourceview5
 	depends = libadwaita
 	depends = portaudio
+	depends = python-beautifulsoup4
 	depends = python-expandvars
 	depends = python-gobject
 	depends = python-gpt4all
@@ -24,6 +25,8 @@ pkgbase = newelle
 	depends = python-pylatexencpython-pydub
 	depends = python-requests
 	depends = python-speechrecognition
+	depends = python-tldextract
+	depends = webkitgtk-6.0
 	source = https://github.com/qwersyk/Newelle/archive/refs/tags/1.0.1.tar.gz
 	sha256sums = fcf48743e1f2bb69277dce4a9327e134175e2cdc2eae889aeb6127348077d17d
 
