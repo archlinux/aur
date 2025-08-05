@@ -1,9 +1,9 @@
-# Maintainer: Leo <i@setuid0.dev>
+# Maintainer: Leo <i@hardrain980.cm>
 # Contributor: Jonas Schürmann <jonasschuermann@aol.de>
 # Contributor: condy <condy0919[at]gmail[dot]com>
 
 pkgname=psysh
-pkgver=0.12.9
+pkgver=0.12.10
 pkgrel=1
 pkgdesc="A REPL for PHP"
 url="https://psysh.org/"
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/bobthecow/psysh/releases/download/v${pkgver}/psysh-v${pkgver}.tar.gz"
 	"LICENSE_v${pkgver}::https://raw.githubusercontent.com/bobthecow/psysh/v${pkgver}/LICENSE"
 )
-sha256sums=('67c4f2c1c3fcf32177b0b740f0cf97818e6abc888ab2bfbde8a270b72371d630' SKIP)
+sha256sums=('f72a352f9f744fca3a01c5078269ee303d7eb775514c108a9404bc4927418190' SKIP)
 
 package() {
 	cd "${srcdir}"
