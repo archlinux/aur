@@ -5,7 +5,7 @@
 _pkgname=libfprint
 pkgname=libfprint-vfs009x-git
 pkgver=1.94.9.r1.gbb222b3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 arch=(x86_64)
 url="https://gitlab.archlinux.org/gugah/libfprint"
@@ -27,7 +27,7 @@ source=(
 )
 md5sums=('SKIP'
          '5a8e609f8cbdaef0f7bd0004924da503'
-         '4aab6d39963c84067f43d1a45854557e')
+         '5b32962b32e30519c28905f2ed1c6d4f')
 
 
 prepare() {
