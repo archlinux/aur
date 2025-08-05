@@ -1,0 +1,152 @@
+--- configure
++++ configure
+@@ -20363,7 +20363,7 @@
+ int
+ main ()
+ {
+-#if !NC_HAS_NC4
++#if !NC_HAS_HDF5
+ # error
+ #endif
+ 
+
+--- hdf5_plugins/GRANULARBG/src/H5Zgranularbg.c
++++ hdf5_plugins/GRANULARBG/src/H5Zgranularbg.c
+@@ -70,7 +70,7 @@
+ #define CCR_FLT_PRM_PSN_NSD 0 /* [nbr] Ordinal position of NSD in parameter list (cd_params array) */
+ #define CCR_FLT_PRM_PSN_DATUM_SIZE 1 /* [nbr] Ordinal position of datum_size in parameter list (cd_params array) */
+ #define CCR_FLT_PRM_PSN_HAS_MSS_VAL 2 /* [nbr] Ordinal position of missing value flag in parameter list (cd_params array) */
+-#define CCR_FLT_PRM_PSN_MSS_VAL 3 /* [nbr] Ordinal position of missing value in parameter list (cd_params array) NB: Missing value (_FillValue) uses two cd_params slots so it can be single or double-precision. Single-precision values are read as first 4-bytes starting at cd_params[4] (and cd_params[5] is ignored), while double-precision values are read as first 8-bytes starting at cd_params[4] and ending with cd_params[5]. */
++#define CCR_FLT_PRM_PSN_MSS_VAL 3 /* [nbr] Ordinal position of missing value in parameter list (cd_params array) NB: Missing value (NC_FillValue) uses two cd_params slots so it can be single or double-precision. Single-precision values are read as first 4-bytes starting at cd_params[4] (and cd_params[5] is ignored), while double-precision values are read as first 8-bytes starting at cd_params[4] and ending with cd_params[5]. */
+ 
+ /* Compatibility tokens and typedefs retain source-code compatibility between NCO and filter
+    These tokens mimic netCDF/NCO code but do not rely on or interfere with either */
+@@ -443,7 +443,7 @@
+ 
+   switch(type){
+   case NC_FLOAT:
+-    /* Missing value for comparison is _FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
++    /* Missing value for comparison is NC_FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
+     if(has_mss_val) mss_val_cmp_flt=*mss_val.fp; else mss_val_cmp_flt=NC_FILL_FLOAT;
+     bit_xpl_nbr_sgn=bit_xpl_nbr_sgn_flt;
+     u32_ptr=op1.ui32p;
+@@ -473,7 +473,7 @@
+     } /* !idx */
+     break; /* !NC_FLOAT */
+   case NC_DOUBLE:
+-    /* Missing value for comparison is _FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
++    /* Missing value for comparison is NC_FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
+     if(has_mss_val) mss_val_cmp_dbl=*mss_val.dp; else mss_val_cmp_dbl=NC_FILL_FLOAT;
+     bit_xpl_nbr_sgn=bit_xpl_nbr_sgn_dbl;
+     u64_ptr=op1.ui64p;
+
+--- hdf5_plugins/BITGROOM/src/H5Zbitgroom.c
++++ hdf5_plugins/BITGROOM/src/H5Zbitgroom.c
+@@ -70,7 +70,7 @@
+ #define CCR_FLT_PRM_PSN_NSD 0 /* [nbr] Ordinal position of NSD in parameter list (cd_params array) */
+ #define CCR_FLT_PRM_PSN_DATUM_SIZE 1 /* [nbr] Ordinal position of datum_size in parameter list (cd_params array) */
+ #define CCR_FLT_PRM_PSN_HAS_MSS_VAL 2 /* [nbr] Ordinal position of missing value flag in parameter list (cd_params array) */
+-#define CCR_FLT_PRM_PSN_MSS_VAL 3 /* [nbr] Ordinal position of missing value in parameter list (cd_params array) NB: Missing value (_FillValue) uses two cd_params slots so it can be single or double-precision. Single-precision values are read as first 4-bytes starting at cd_params[4] (and cd_params[5] is ignored), while double-precision values are read as first 8-bytes starting at cd_params[4] and ending with cd_params[5]. */
++#define CCR_FLT_PRM_PSN_MSS_VAL 3 /* [nbr] Ordinal position of missing value in parameter list (cd_params array) NB: Missing value (NC_FillValue) uses two cd_params slots so it can be single or double-precision. Single-precision values are read as first 4-bytes starting at cd_params[4] (and cd_params[5] is ignored), while double-precision values are read as first 8-bytes starting at cd_params[4] and ending with cd_params[5]. */
+ 
+ /* Compatibility tokens and typedefs retain source-code compatibility between NCO and filter
+    These tokens mimic netCDF/NCO code but do not rely on or interfere with either */
+@@ -443,7 +443,7 @@
+ 
+   switch(type){
+   case NC_FLOAT:
+-    /* Missing value for comparison is _FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
++    /* Missing value for comparison is NC_FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
+     if(has_mss_val) mss_val_cmp_flt=*mss_val.fp; else mss_val_cmp_flt=NC_FILL_FLOAT;
+     bit_xpl_nbr_sgn=bit_xpl_nbr_sgn_flt;
+     bit_xpl_nbr_zro=bit_xpl_nbr_sgn-prc_bnr_xpl_rqr;
+@@ -466,7 +466,7 @@
+ 	u32_ptr[idx]|=msk_f32_u32_one;
+     break; /* !NC_FLOAT */
+   case NC_DOUBLE:
+-    /* Missing value for comparison is _FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
++    /* Missing value for comparison is NC_FillValue (if any) otherwise default NC_FILL_FLOAT/DOUBLE */
+     if(has_mss_val) mss_val_cmp_dbl=*mss_val.dp; else mss_val_cmp_dbl=NC_FILL_DOUBLE;
+     bit_xpl_nbr_sgn=bit_xpl_nbr_sgn_dbl;
+     bit_xpl_nbr_zro=bit_xpl_nbr_sgn-prc_bnr_xpl_rqr;
+
+--- src/ccr.c
++++ src/ccr.c
+@@ -70,7 +70,7 @@
+  * sign of the input value, where DR might produce slightly different masks.
+  * Another difference is that GBG uses the BitRound rounding method, rather
+  * than reconstructing the scalar quantization at bin center.
+- * Similar to BitGroom, GBG ignores the value zero, and the _FillValue.
++ * Similar to BitGroom, GBG ignores the value zero, and the NC_FillValue.
+  * GBG quantizes a few more bits than BitGroom from the raw number yet
+  * still maintains the precision guarantee, thus the quantization error 
+  * of GBG is larger than BitGroom. GBG improves compression ratios 
+@@ -386,7 +386,7 @@
+  * NC_DOUBLE. Attempts to set the BitGroom filter for other variable
+  * types through the C/Fortran API return an error (NC_EINVAL). The
+  * filter does not quantize values equal to the value of the
+- * _FillValue attribute, if any. The main difference between the
++ * NC_FillValue attribute, if any. The main difference between the
+  * BitGroom algorithm as implemented in the CCR and in NCO is that the
+  * NCO version will not quantize the values of "coordinate-like"
+  * variables (e.g., latitude, longitude, time) as defined in the NCO
+@@ -596,7 +596,7 @@
+  * sign of the input value, where DR might produce slightly different masks.
+  * Another difference is that GBG uses the BitRound rounding method, rather
+  * than reconstructing the scalar quantization at bin center.
+- * Similar to BitGroom, GBG ignores the value zero, and the _FillValue.
++ * Similar to BitGroom, GBG ignores the value zero, and the NC_FillValue.
+  * GBG quantizes a few more bits than BitGroom from the raw number yet
+  * still maintains the precision guarantee, thus the quantization error 
+  * of GBG is larger than BitGroom. GBG improver compression rations 
+@@ -611,7 +611,7 @@
+  * NC_DOUBLE. Attempts to set the GranularBG filter for other variable
+  * types through the C/Fortran API return an error (NC_EINVAL). The
+  * filter does not quantize values equal to the value of the
+- * _FillValue attribute, if any. The main difference between the
++ * NC_FillValue attribute, if any. The main difference between the
+  * GranularBG algorithm as implemented in the CCR and in NCO is that the
+  * NCO version will not quantize the values of "coordinate-like"
+  * variables (e.g., latitude, longitude, time) as defined in the NCO
+
+--- test/tst_bitgroom.c
++++ test/tst_bitgroom.c
+@@ -553,9 +553,9 @@
+ 
+         /* Create the variables. */
+         if (nc_def_var(ncid, VAR_NAME, NC_FLOAT, NDIM1, &dimid, &varid)) ERR;
+-	if (nc_put_att_float(ncid, varid, _FillValue, NC_FLOAT, 1, &custom_fill_float)) ERR;
++	if (nc_put_att_float(ncid, varid, NC_FillValue, NC_FLOAT, 1, &custom_fill_float)) ERR;
+         if (nc_def_var(ncid, VAR_NAME2, NC_DOUBLE, NDIM1, &dimid, &varid2)) ERR;
+-	if (nc_put_att_double(ncid, varid2, _FillValue, NC_DOUBLE, 1, &custom_fill_double)) ERR;
++	if (nc_put_att_double(ncid, varid2, NC_FillValue, NC_DOUBLE, 1, &custom_fill_double)) ERR;
+ 
+         /* Set up quantization. */
+         if (nc_def_var_bitgroom(ncid, varid, nsd_out)) ERR;
+
+--- test/tst_granularbg.c
++++ test/tst_granularbg.c
+@@ -553,9 +553,9 @@
+ 
+         /* Create the variables. */
+         if (nc_def_var(ncid, VAR_NAME, NC_FLOAT, NDIM1, &dimid, &varid)) ERR;
+-	if (nc_put_att_float(ncid, varid, _FillValue, NC_FLOAT, 1, &custom_fill_float)) ERR;
++	if (nc_put_att_float(ncid, varid, NC_FillValue, NC_FLOAT, 1, &custom_fill_float)) ERR;
+         if (nc_def_var(ncid, VAR_NAME2, NC_DOUBLE, NDIM1, &dimid, &varid2)) ERR;
+-	if (nc_put_att_double(ncid, varid2, _FillValue, NC_DOUBLE, 1, &custom_fill_double)) ERR;
++	if (nc_put_att_double(ncid, varid2, NC_FillValue, NC_DOUBLE, 1, &custom_fill_double)) ERR;
+ 
+         /* Set up quantization. */
+         if (nc_def_var_granularbg(ncid, varid, nsd_out)) ERR;
+
+--- ChangeLog
++++ ChangeLog
+@@ -24,7 +24,7 @@
+ 
+ 2020-09-13  Charlie Zender  <zender@uci.edu>
+ 
+-	* BitGroom filter correctly handles _FillValue
++	* BitGroom filter correctly handles NC_FillValue
+ 
+ 2020-09-12  Charlie Zender  <zender@uci.edu>
+ 
