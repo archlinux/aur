@@ -1,13 +1,13 @@
 pkgbase = crush-git
 	pkgdesc = A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal - git version
-	pkgver = 0.1.11r0.g2c82ed28
-	pkgrel = 1
+	pkgver = 0.2.1r30.g889b1765
+	pkgrel = 2
 	url = https://github.com/charmbracelet/crush
 	arch = x86_64
 	license = FSL-1.1-MIT
 	makedepends = go
 	makedepends = git
-	provides = crush=0.1.11r0.g2c82ed28
+	provides = crush=0.2.1r30.g889b1765
 	conflicts = crush-bin
 	conflicts = crush
 	source = crush::git+https://github.com/charmbracelet/crush.git

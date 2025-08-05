@@ -3,8 +3,8 @@
 _pkgname="crush"
 pkgname="${_pkgname}-git"
 _user="charmbracelet"
-pkgver=0.1.11r0.g2c82ed28
-pkgrel=1
+pkgver=0.2.1r30.g889b1765
+pkgrel=2
 pkgdesc="A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal - git version"
 arch=('x86_64')
 url="https://github.com/${_user}/${_pkgname}"
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     # Use number of commits and latest short hash as version
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/r/;s/-/./'
+    git describe --long --tags --match "v*" 2>/dev/null | sed 's/^v//;s/-/r/;s/-/./'
 }
 
 prepare() {
