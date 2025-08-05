@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dapr-cli-bin
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='Command-line tools for Dapr'
 arch=('x86_64' 'aarch64')
