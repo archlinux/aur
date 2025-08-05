@@ -60,7 +60,8 @@ build() {
     -Dluajit:default_library=static \
     -Db_lto=false \
     -Dopenal=disabled \
-    -Dportaudio=disabled
+    -Dportaudio=disabled \
+    -Denable_update_checker=false
   meson compile -C build
 }
 
