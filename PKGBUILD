@@ -1,18 +1,17 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
-: ${_cuda_gcc_version:=14}
+: ${_cuda_gcc_version:=$(LC_ALL=C pacman -Si cuda | grep -Pom1 '^Depends On\s*:.*\bgcc\K[0-9]+\b')}
 
 pkgname=sunshine-git
-pkgver=2025.615.34501.r0.g958d783
+pkgver=2025.805.150726.r0.g03bb53d
 pkgrel=1
 pkgdesc="A self-hosted GameStream host for Moonlight"
 url="https://github.com/LizardByte/Sunshine"
 license=('GPL-3.0-only')
 arch=('x86_64')
 
-install=sunshine-git.install
-
 depends=(
+  'gtk3'
   'icu'
   'libayatana-appindicator'
   'libcap'
@@ -39,10 +38,13 @@ optdepends=(
   'cuda: Nvidia GPU encoding support'
   'intel-media-driver: Intel GPU encoding support'
   'libva-mesa-driver: AMD GPU encoding support'
+  'nvidia-utils: Nvidia GPU encoding support'
 )
 
 provides=(sunshine)
 conflicts=(sunshine)
+
+install=sunshine-git.install
 
 source=(
   git+https://github.com/LizardByte/Sunshine.git#branch=master
@@ -50,15 +52,12 @@ source=(
   git+https://gitlab.com/eidheim/Simple-Web-Server.git
   git+https://github.com/LizardByte/Virtual-Gamepad-Emulation-Client.git
   git+https://github.com/miniupnp/miniupnp.git
-  git+https://github.com/FFmpeg/nv-codec-headers.git
   git+https://github.com/michaeltyson/TPCircularBuffer.git
   git+https://github.com/LizardByte/build-deps.git
   git+https://github.com/sleepybishop/nanors.git
   git+https://github.com/cgutman/enet.git
 )
-
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -81,16 +80,25 @@ pkgver() {
 
 prepare() {
   cd Sunshine
-  rm -f third-party/ffmpeg-windows-x86_64
-  rm -f third-party/ffmpeg-macos-x86_64
-  rm -f third-party/ffmpeg-macos-aarch64
-  rm -f third-party/ffmpeg-linux-aarch64
+
+  local i _unwanted=(
+    packaging/linux/flatpak/deps/flatpak-builder-tools
+    packaging/linux/flatpak/deps/shared-modules
+    third-party/doxyconfig
+    third-party/nv-codec-headers
+  )
+
+  for i in "${_unwanted[@]}"; do
+    if [ -e "$i" ]; then
+      git rm -r "$i"
+    fi
+  done
+
   git submodule init
   git config submodule.third-party/moonlight-common-c.url "${srcdir}/moonlight-common-c"
   git config submodule.third-party/Simple-Web-Server.url "${srcdir}/Simple-Web-Server"
   git config submodule.third-party/ViGEmClient.url "${srcdir}/Virtual-Gamepad-Emulation-Client"
   git config submodule.third-party/miniupnp.url "${srcdir}/miniupnp"
-  git config submodule.third-party/nv-codec-headers.url "${srcdir}/nv-codec-headers"
   git config submodule.third-party/TPCircularBuffer.url "${srcdir}/TPCircularBuffer"
   git config submodule.third-party/ffmpeg-linux-x86_64.url "${srcdir}/build-deps"
   git config submodule.third-party/nanors.url "${srcdir}/nanors"
@@ -109,14 +117,55 @@ prepare() {
     fi
   done
 
+  ## disable unwanted macros
+  sed 's&macro(find_package)&macro(_disable_find_package)&' -i cmake/macros/common.cmake
+
   ## fix for miniupnpc 2.3.3
   sed '1i #include <cstddef>' -i src/upnp.cpp
+
+  ## fix for boost 1.88
+  sed -E 's&(Boost CONFIG) \S+ EXACT\b&\1&' -i cmake/dependencies/Boost_Sunshine.cmake
+
+  sed -E 's&<boost/process.hpp>&"'"${srcdir}"'/boost_process_v1.hpp"&' \
+    -i src/platform/common.h
+
+  sed -E 's&(namespace bp = boost::process);&\1::v1;&' \
+    -i src/platform/linux/misc.cpp
+
+  sed -E 's&<boost/process/v1.hpp>&"'"${srcdir}"'/boost_process_v1.hpp"&' \
+    -i src/platform/linux/misc.cpp \
+    src/process.h
+
+  install -Dm644 /dev/stdin "$srcdir/boost_process_v1.hpp" << END
+#ifndef BOOST_PROCESS_V1_HPP
+#define BOOST_PROCESS_V1_HPP
+#include <boost/process/v1/args.hpp>
+#include <boost/process/v1/async.hpp>
+#include <boost/process/v1/async_system.hpp>
+#include <boost/process/v1/group.hpp>
+#include <boost/process/v1/child.hpp>
+#include <boost/process/v1/cmd.hpp>
+#include <boost/process/v1/env.hpp>
+#include <boost/process/v1/environment.hpp>
+#include <boost/process/v1/error.hpp>
+#include <boost/process/v1/exe.hpp>
+#include <boost/process/v1/group.hpp>
+#include <boost/process/v1/handles.hpp>
+#include <boost/process/v1/io.hpp>
+#include <boost/process/v1/pipe.hpp>
+#include <boost/process/v1/shell.hpp>
+#include <boost/process/v1/search_path.hpp>
+#include <boost/process/v1/spawn.hpp>
+#include <boost/process/v1/system.hpp>
+#include <boost/process/v1/start_dir.hpp>
+#endif //BOOST_PROCESS_V1_HPP
+END
 }
 
 build() {
-  pushd Sunshine
-  npm install
-  popd
+  export BRANCH="master"
+  export BUILD_VERSION="${pkgver}"
+  export COMMIT="$(git -C Sunshine rev-parse HEAD)"
 
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
