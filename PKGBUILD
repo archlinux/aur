@@ -45,7 +45,7 @@ build() {
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-swresample \
-    --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
+    --enable-demuxer=ogg,matroska,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-DCHROMIUM_NO_LOGGING" \
