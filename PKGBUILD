@@ -2,7 +2,7 @@
 
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
@@ -48,7 +48,7 @@ provides=(
     'libbitwuzlals.so'
     'libbitwuzla.so'
 )
-b2sums=('6d3c6ee92b4e38d8a1a65ccc42d7003967c448efb9c604d98a0ada70682ae90eab5bdffa753e148a481ae17f1548da04ebd74e59185f5ff3a32c8a398494b43d'
+b2sums=('5bc5177930e073ae3d9dcbf5504f25f4af07f67fc03292a85ecc6e709f8e035086307f1aa54be4d2fd17e030049165a4b787e9b2f4270d06c27c27dfe34c1609'
         '09f384aaa2ebbec1e70a5122bae2f2019b71a41f691312048dc59dd7c253c2eb07e669ab71decc492fdf58b933b55b0036da7bb54eb1afe0774ee28aca63f199'
         'af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda')
 options=('!lto')
