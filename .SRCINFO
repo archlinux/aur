@@ -1,6 +1,6 @@
 pkgbase = aws-lc
 	pkgdesc = general-purpose cryptographic library maintained by the AWS Cryptography team for AWS
-	pkgver = 1.56.0
+	pkgver = 1.57.0
 	pkgrel = 1
 	url = https://github.com/aws/aws-lc
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = aws-lc
 	depends = gcc-libs
 	optdepends = libunwind: For extra tests
 	optdepends = clang: Alternative for gcc (gcc preferred by upstream)
-	source = https://github.com/aws/aws-lc/archive/refs/tags/v1.56.0.tar.gz
-	b2sums = 8addd20b777c22b3b9ed33ad8c9fa48ad8dca4a2da954eb920616367b557009e0dcf766661548b45d3884ca43f5ca0627982512c2f5b561214cd59be4cdc6821
+	source = aws-lc-1.57.0.tar.gz::https://github.com/aws/aws-lc/archive/refs/tags/v1.57.0.tar.gz
+	b2sums = bc62aa726cabeabef64bae7edaba57478ab944a3b33722bb9ce4562a1247cf7a6d4fe7e02197f0311af636f14efca27d0e5fd2de76ebb5eee76d84c295633c8f
 
 pkgname = aws-lc
