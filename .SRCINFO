@@ -9,8 +9,8 @@ pkgbase = icingadb-web
 	arch = any
 	license = GPL
 	depends = icingaweb2>=2.9
-	depends = icinga-php-library>=0.14.1
-	depends = icinga-php-thirdparty>=0.12
+	depends = icinga-php-library>=0.17.0
+	depends = icinga-php-thirdparty>=0.13.0
 	provides = icingadb-web
 	provides = icingaweb2-module-icingadb
 	backup = etc/icingaweb2/modules/icingadb/commandtransports.ini
