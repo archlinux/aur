@@ -1,14 +1,15 @@
 pkgbase = snmalloc
 	pkgdesc = Message passing based allocator
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/microsoft/snmalloc
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = glibc
+	depends = gcc-libs
 	provides = snmalloc
-	source = snmalloc-0.7.1.tar.gz::https://github.com/microsoft/snmalloc/archive/refs/tags/0.7.1.tar.gz
-	sha256sums = 91824fdf553f03cf6ef8be57f29f1d4f79cd651667455e9fe4af8b7c09e705d3
+	source = snmalloc-0.7.2.tar.gz::https://github.com/microsoft/snmalloc/archive/refs/tags/0.7.2.tar.gz
+	sha256sums = 580e4a1445f6a6a294728363856cea6b4a6ae40fc42e02d9687271bed9c5386b
 
 pkgname = snmalloc

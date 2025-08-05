@@ -2,19 +2,19 @@
 
 _pkgauthor=microsoft
 pkgname=snmalloc
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Message passing based allocator"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('MIT')
 
-depends=('glibc')
-makedepends=('cmake')
+depends=('glibc' 'gcc-libs')
 provides=("${pkgname}")
+makedepends=('cmake')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('91824fdf553f03cf6ef8be57f29f1d4f79cd651667455e9fe4af8b7c09e705d3')
+sha256sums=('580e4a1445f6a6a294728363856cea6b4a6ae40fc42e02d9687271bed9c5386b')
 
 build() {
   cd "${pkgname}-${pkgver}" || exit 1
