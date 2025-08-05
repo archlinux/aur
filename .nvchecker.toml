@@ -1,0 +1,5 @@
+[rapicgen-bin]
+source = "github"
+github = "christianhelle/apiclientcodegen"
+use_latest_release = true
+prefix = "v"

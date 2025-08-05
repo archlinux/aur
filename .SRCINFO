@@ -1,0 +1,23 @@
+pkgbase = rapicgen-bin
+	pkgdesc = Generates API client code from OpenAPI specs using templates via command-line
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://christianhelle.com/apiclientcodegen/
+	arch = any
+	license = GPL-3.0-only
+	depends = dotnet-runtime-8.0
+	depends = sh
+	provides = rapicgen
+	conflicts = rapicgen
+	source = rapicgen-1.29.0.nupkg::https://globalcdn.nuget.org/packages/rapicgen.1.29.0.nupkg?packageVersion=1.29.0
+	source = rapicgen-1.29.0-CHANGELOG.md::https://github.com/christianhelle/apiclientcodegen/raw/refs/tags/1.29.0/CHANGELOG.md
+	source = rapicgen-1.29.0-README.md::https://github.com/christianhelle/apiclientcodegen/raw/refs/tags/1.29.0/README.md
+	source = rapicgen-1.29.0-LICENSE::https://github.com/christianhelle/apiclientcodegen/raw/refs/tags/1.29.0/LICENSE
+	source = dotnet-tool-common.sh
+	sha256sums = 406b838a93d647e8e0ffbdd5d83dedd9898b89f4fd4a0dfc93a6fe189bbcdda4
+	sha256sums = 736090a5205159cae5b94b57bff3ff8d919edc7b887712cf6f47c079407e5a64
+	sha256sums = 6e028a74a837d50ad061d6ed8c238e042ee2a39cb28678cfb3634a228d82b069
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = b3329b46f618290380c6b9d7436fa9ca19efc269af5a8b4fb06263daaaaa5ad1
+
+pkgname = rapicgen-bin
