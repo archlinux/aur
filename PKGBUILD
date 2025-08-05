@@ -8,14 +8,14 @@ function _nvidia_check() {
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
 pkgver=21.0.0_dev10.r3216.33a90ab7
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('glibc' 'gcc-libs' 'libx11' 'bzip2' 'vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'libva.so' 'libva-drm.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip' 'jq' 'alsa-lib')
+depends=('glibc' 'gcc-libs' 'libx11' 'bzip2' 'vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'libva.so' 'libva-drm.so' 'bash' 'hicolor-icon-theme' 'libpipewire' 'alsa-lib')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'libxrandr' 'nasm' 'unzip' 'jq')
 # Experimental conditional check, might be removed in favor of alvr-nvidia-git,
 if _nvidia_check; then
 	makedepends+=('cuda' 'ffnvcodec-headers')
