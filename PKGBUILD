@@ -2,18 +2,19 @@
 _projectname='inputmodule-rs'
 pkgname='python-inputmodule'
 pkgver='0.2.0'
-pkgrel='3'
+_commit='d9f18afb31d00a294e7bbb7395e2226b213b6733'
+pkgrel='4'
 pkgdesc='Python-based command line utility and library to control Framework Laptop 16 input modules'
 arch=('any')
 url="https://github.com/FrameworkComputer/$_projectname"
 license=('MIT')
-depends=('inputmodule-udev' 'python>=3.7.0' 'python-getkey' 'python-opencv' 'python-pillow' 'python-pyserial' 'python-pysimplegui')
+depends=('inputmodule-udev' 'python>=3.7.0' 'python-getkey' 'python-opencv' 'python-pillow' 'python-pygame' 'python-pyserial' 'tk')
 makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-installer' 'python-wheel')
 provides=("ledmatrixctl=$pkgver" "ledmatrixgui=$pkgver")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('8664ff4aa73cda06e57c73c740d56f4f2d64b236b88c8cb1199e09703cad050c5b3693ed8b11de224c8b6689d0d7f01b57cbf150070b30aa00587332f6c406f6')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+b2sums=('bf6dc302db4440c9de4109fe47e02fb8997d2b09eee8b9ea375daf74e9e79c42e07ba497e46cc5b53c7b82385689eb293a74f16f7268344ad8754adcb44f2cba')
 
-_sourcedirectory="$_projectname-$pkgver/python"
+_sourcedirectory="$_projectname-$_commit/python"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -22,7 +23,7 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	_checkoutput="$(python -B -m 'inputmodule.cli' --help)"
+	_checkoutput="$(python -c 'from inputmodule.cli import main_cli; main_cli()' --help)"
 	printf '%s\n' "$_checkoutput"
 	printf '%s\n' "$_checkoutput" | grep -q 'Display a string on the LCD Display$'
 }
