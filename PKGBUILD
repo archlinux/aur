@@ -2,7 +2,7 @@
 
 pkgname=matlock
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen lock program for X like The Matrix'
 arch=('x86_64' 'aarch64')
 url="https://git.sujal.tv/tvsujal/matlock"
