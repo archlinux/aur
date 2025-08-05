@@ -4,20 +4,21 @@
 pkgname="d-feet"
 _commit_rel="53b495c93e2bd00811ba0b7f6583b8f256994e9d" # 0.3.16
 _commit="f9bd21197c0dcdea6a25fb4fcfd303e56ead714b" # r16
-pkgver="0.3.17+r16+g${_commit::7}"
-pkgrel=3
+pkgver="0.3.16+r16+g${_commit::7}"
+pkgrel=1
+epoch=1
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/Archive/d-feet"
 license=('GPL-2.0-or-later')
 depends=('dconf' 'glib2' 'gtk3>=3.9.4' 'hicolor-icon-theme' 'libwnck3' 'python'
-         'python-configparser' 'python-gobject')
+         'python-gobject') # 'python-configparser'
 makedepends=('gobject-introspection>=0.9.6' 'meson>=0.50' 'python-pycodestyle'
              'yelp-tools')
 # checkdepends=('xorg-server-xvfb')
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${url}/-/archive/${_commit}/${_pkgsrc}.tar.gz"
-        "${pkgname}_meson_drop_unused_argument.patch::https://sources.debian.org/data/main/${pkgname::1}/${pkgname}/0.3.16-4/debian/patches/meson-drop-unused-argument-for-i18n.merge_file.patch"
+        "${pkgname}_meson_drop_unused_argument.patch"
         "${pkgname}_python3_syntax.patch"
         "${pkgname}_meson_specify_project_language.patch")
 sha512sums=('2517966922d9392401273dff6ed4465b050c458fa66b9b727b2663c44ed40fce9444d8126595208a755839f0350fdbdd32a418a5ee702aace9c7679a89c8ddb8'
@@ -27,25 +28,31 @@ sha512sums=('2517966922d9392401273dff6ed4465b050c458fa66b9b727b2663c44ed40fce944
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "../${pkgname}_meson_drop_unused_argument.patch"
-  patch -Np1 -i "../${pkgname}_python3_syntax.patch"
-  patch -Np1 -i "../${pkgname}_meson_specify_project_language.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_meson_drop_unused_argument.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_python3_syntax.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_meson_specify_project_language.patch"
 }
 
 build() {
+  local meson_options=(
+    "${_pkgsrc}"
+    "${_pkgsrc}/build"
+    -D tests=false
+  )
+
   cd "${srcdir}"
-  arch-meson "${_pkgsrc}" build
-  ninja -C build
+  arch-meson "${meson_options[@]}"
+  meson compile -C "${_pkgsrc}/build"
 }
 
 # check() {
 #   cd "${srcdir}"
-#   xvfb-run meson test -C build --print-errorlogs
+#   xvfb-run meson test -C "${_pkgsrc}/build" --print-errorlogs
 # }
 
 package() {
   cd "${srcdir}"
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
   cd "${_pkgsrc}"
   # python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
