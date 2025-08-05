@@ -1,5 +1,14 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Wed, 4 Jun 2025 14:01:41 +0200
+Subject: [PATCH] Fix build with gpgme 2.0
+
+---
+ tool/seahorse-pgp-operation.c | 1 -
+ 1 file changed, 1 deletion(-)
+
 diff --git a/tool/seahorse-pgp-operation.c b/tool/seahorse-pgp-operation.c
-index 1c01c13..f1c459a 100644
+index 1c01c1393b40..f1c459a9253e 100644
 --- a/tool/seahorse-pgp-operation.c
 +++ b/tool/seahorse-pgp-operation.c
 @@ -300,7 +300,6 @@ event_cb (void *data, gpgme_event_io_t type, void *type_data)

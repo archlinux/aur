@@ -23,8 +23,7 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "0001-meson-Use-dependency-for-gpme.patch",
-    "gpgme-2.0.patch",
+    "*.patch",
 ]
 SPDX-FileCopyrightText = "seahorse-nautilus contributors"
 SPDX-License-Identifier = "GPL-2.0-or-later"
