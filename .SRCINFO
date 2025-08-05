@@ -1,7 +1,7 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern music player
-	pkgver = 8.1.3
-	pkgrel = 3
+	pkgver = 8.1.4
+	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
 	arch = aarch64
@@ -54,7 +54,7 @@ pkgbase = tauon-music-box
 	optdepends = python-tekore: Spotify feature support
 	optdepends = python-tidalapi: Tidal feature support
 	optdepends = librespot: Spotify audio playback
-	source = Tauon-8.1.3.tar.gz::https://github.com/Taiko2k/Tauon/archive/v8.1.3.tar.gz
-	sha256sums = fc9bf9c8c3790d660d7c2cd1b1b9b682f0fadd2eca14ac359ec0f93cbe090e92
+	source = Tauon-8.1.4.tar.gz::https://github.com/Taiko2k/Tauon/archive/v8.1.4.tar.gz
+	sha256sums = dbdfb54f97b79ce2058559bbbbe91ca804747645efc93d12aaf1c5b00b80af53
 
 pkgname = tauon-music-box
