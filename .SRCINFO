@@ -1,7 +1,7 @@
 pkgbase = dank-niri-git
 	pkgdesc = Complete niri desktop environment with DankMaterialShell, themes, and all dependencies
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bbedward/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -35,6 +35,7 @@ pkgbase = dank-niri-git
 	depends = mesa
 	depends = pango
 	depends = pixman
+	depends = accountsservice
 	depends = seatd
 	provides = dank-niri
 	provides = niri

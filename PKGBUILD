@@ -2,7 +2,7 @@
 : ${_sccache:=}
 pkgname='dank-niri-git'
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete niri desktop environment with DankMaterialShell, themes, and all dependencies'
 arch=(x86_64 aarch64)
 url='https://github.com/bbedward/DankMaterialShell'
@@ -32,6 +32,7 @@ depends=('dankmaterialshell-git'
          'mesa'
          'pango'
          'pixman'
+         'accountsservice'
          'seatd')
 makedepends=('git' 'clang' 'rust' 'makepkg-git-lfs-proto' 'git-lfs')
 [[ -n ${_sccache} ]] && makedepends+=(sccache)
