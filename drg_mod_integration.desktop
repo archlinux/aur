@@ -2,7 +2,7 @@
 Name=DRG Mod Integration
 Comment=Deep Rock Galactic mod loader and integration
 Exec=env -u WAYLAND_DISPLAY drg_mod_integration
-Icon=utilities-terminal
+Icon=drg_mod_integration
 Terminal=false
 Type=Application
 Categories=Game;
