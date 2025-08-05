@@ -2,7 +2,7 @@
 
 pkgname='exult'
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A project to recreate Ultima 7 for modern operating systems, using the game's original plot, data, and graphics files"
 arch=('x86_64')
 url='https://exult.sourceforge.io'
@@ -20,7 +20,7 @@ prepare() {
 
     autoreconf -v -i
 
-    ./configure --prefix=/usr --disable-static --with-timidity='/etc/timidity++/timidity.cfg'
+    ./configure --prefix=/usr --disable-static --with-timidity='/etc/timidity/timidity.cfg'
 }
 
 build() {
