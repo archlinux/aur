@@ -1,12 +1,14 @@
 pkgbase = qwen-code
-	pkgdesc = qwen-code is a coding agent that lives in digital world (fork of gemini-cli).
+	pkgdesc = cli coding agent (fork of gemini-cli)
 	pkgver = 0.0.5_nightly.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QwenLM/qwen-code
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
+	noextract = qwen-code-0.0.5-nightly.1.tgz
 	source = https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.0.5-nightly.1.tgz
 	sha256sums = 8614e31432725be2fd46a6983c2af5a1a06e6c687df834ceef5fd514a56618f5
 

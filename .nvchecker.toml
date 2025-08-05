@@ -1,0 +1,7 @@
+[qwen-code]
+source = 'github'
+github = 'QwenLM/qwen-code'
+use_latest_release = true
+prefix = 'v'
+from_pattern = '-'
+to_pattern = '_'
