@@ -1,6 +1,6 @@
 # Maintainer: snafu
 pkgname=env-modules
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
@@ -11,16 +11,16 @@ groups=()
 depends=('tcl>=7.4' 'procps')
 makedepends=('less')
 checkdepends=('dejagnu')
-optdepends=()
+optdepends=('nagelfar''python-sphinx')
 provides=()
 conflicts=(env-modules)
 replaces=(env-modules)
 options=()
 install=env-modules.install
 changelog=
-source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('ad0e360c7adc2515a99836863d98499b3ad89cd7548625499b20293845b040cb')
+sha256sums=('41b60fd0b8a5b996fa927f840cef1234cf54f28eb0168b633317927b7371028e')
 validpgpkeys=()
 
 # Install locations:
@@ -34,7 +34,7 @@ backup=("${config_path:1}/${moduledir}/init/modulerc")
 build() {
     cd "modules-$pkgver"
 
-    ./configure \
+    conf=(
         --prefix="" \
         --bindir=/usr/bin \
         --libdir=/usr/lib \
@@ -51,8 +51,16 @@ build() {
         --disable-set-binpath \
         --disable-set-manpath \
         --enable-example-modulefiles \
-        --enable-doc-instal
+        --enable-doc-install \
+    )
 
+    if type -p nagelfar > /dev/null; then
+        conf+=(
+            --with-tcl-linter=$(which nagelfar)
+        )
+    fi
+
+    ./configure "${conf[@]}"
     make
 }
 

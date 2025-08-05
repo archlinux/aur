@@ -1,0 +1,4 @@
+pkg/
+src/
+env-modules-*.pkg.tar.zst
+env-modules-*.tar.gz
