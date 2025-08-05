@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor <me@cordor.dev>
 pkgname=savestate-bin
 pkgver=1.4.2c
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A versatile game save backup manager, featuring Steam detection, Minecraft support, drag & drop, desktop shortcuts and emulator compatible."
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/Matteo842/SaveState/releases/download/$pkgver/SaveState-$pkgver-Linux.zip"
+	"$pkgname-$pkgver.zip::https://github.com/Matteo842/SaveState/releases/download/$pkgver/SaveState-$pkgver-Linux.zip"
 	"SaveState.png::https://github.com/Matteo842/SaveState/blob/$pkgver/icon.png?raw=true"
 )
 noextract=()
