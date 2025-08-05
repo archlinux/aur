@@ -2,8 +2,8 @@
 
 _name=spitch
 pkgname=python-${_name}
-pkgver=1.33.0
-_spitch_spitchapi_spec=620c502208147d650a4a7ec01e13078344fe6f96ec26f1cb334d7f4ce12f1dce
+pkgver=1.34.0
+_spitch_spitchapi_spec=5e0436ccb10d6dd0c81922ac81c4e41e702b7385b74b58f69781e7858c120b82
 pkgrel=1
 pkgdesc='The official Python library for the spitch API.'
 arch=('any')
@@ -11,8 +11,8 @@ url='https://github.com/spi-tch/spitch-python'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "https://storage.googleapis.com/stainless-sdk-openapi-specs/babs-technologies/${_name}-${_spitch_spitchapi_spec}.yml")
-sha256sums=('d72e9d428fc840d06f8240e19b1e9d9713189dd6a9728ca14b0624192a90b93e'
-            '620c502208147d650a4a7ec01e13078344fe6f96ec26f1cb334d7f4ce12f1dce')
+sha256sums=('acdc916ef2c980e9470e220ef517c36fd6b9315df0181829946ba1b502731732'
+            '5e0436ccb10d6dd0c81922ac81c4e41e702b7385b74b58f69781e7858c120b82')
 depends=('python' 'python-httpx' 'python-pydantic' 'python-typing_extensions' 'python-anyio' 'python-distro' 'python-sniffio')
 makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-nest-asyncio' 'python-pytest-xdist' 'npm' 'nodejs-lts-jod')
@@ -32,9 +32,6 @@ check() {
   export DEFER_PYDANTIC_BUILD=false
   local pytest_options=(
     -vv
-    # Need to be fixed by developer
-    --deselect tests/api_resources/test_speech.py
-    --deselect tests/api_resources/test_text.py
   )
   cd "${srcdir}"/${_name}-python-${pkgver}
   trap 'pkill "npm exec prism"' EXIT
