@@ -1,7 +1,7 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
 pkgname="icingadb-web"
-pkgver="1.2.1"
+pkgver="1.2.2"
 pkgrel=1
 epoch=0
 pkgdesc="Provides a graphical interface to your Icinga monitoring "
@@ -38,7 +38,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "fd58c1340816db48e548d318965fc5d394e373bb22509992115a1c1e4ec81cc1"
+    "5137bb68328d6aa7baa843bc9f8f6fba21afa957d454aeeb93f97f8942b6fa74"
     "SKIP"
     "SKIP"
     "SKIP"
