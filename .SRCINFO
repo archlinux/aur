@@ -1,7 +1,7 @@
 pkgbase = websploit
 	pkgdesc = An open source project for, social engineering works, scanning, crawling and analysis, automatic exploiter, and network attacks
 	pkgver = 4.0.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/f4rih/websploit
 	arch = any
 	license = Unknown

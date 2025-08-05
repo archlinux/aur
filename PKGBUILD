@@ -1,9 +1,10 @@
-# Maintainer: Ari Mizrahi <codemunchies at debugsecurity dot com>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
+# Contributor: Ari Mizrahi <codemunchies at debugsecurity dot com>
 # Contributor: ArchAssault Project <https://www.archassault.org>
 
 pkgname=websploit
 pkgver=4.0.4
-pkgrel=2
+pkgrel=1
 pkgdesc="An open source project for, social engineering works, scanning, crawling and analysis, automatic exploiter, and network attacks"
 arch=('any')
 url='https://github.com/f4rih/websploit'
