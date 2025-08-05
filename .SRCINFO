@@ -1,17 +1,18 @@
 pkgbase = prasmoid
 	pkgdesc = The All in One Development Toolkit for KDE Plasmoids. Build, test, and manage your plasmoids with unparalleled ease and efficiency.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/PRASSamin/prasmoid
 	arch = x86_64
 	license = MIT
-	makedepends = jq
 	depends = plasma-sdk
 	depends = git
 	depends = qt6-declarative
-	source = https://github.com/PRASSamin/prasmoid/archive/refs/tags/v0.0.2.tar.gz
-	source = install.patch
-	sha256sums = 087ef3698d2b36d55dffb67005cd1411de0f140ec5288aa94663f7a7bd9fd9fe
-	sha256sums = c7c5ad6175548627758108157410dcf18956f690ae89b8f071717f9d8dfd6b9d
+	source = https://github.com/PRASSamin/prasmoid/releases/download/v0.0.3/prasmoid
+	source = https://raw.githubusercontent.com/PRASSamin/prasmoid/refs/tags/v0.0.3/LICENSE.md
+	source = https://raw.githubusercontent.com/PRASSamin/prasmoid/refs/tags/v0.0.3/README.md
+	sha256sums = 72e4c2b772188ff7ac3ac1b210238a2b9aff1ef8a2844f11df999a44990dcc96
+	sha256sums = 1f3c5281949e670ffb5efacaae5acd3160eaa5ff1b19c0eab57987581f34fd93
+	sha256sums = dd454961c774a1b92546cb3c5567c7f9d3a4191f195860a07478fbd845c93003
 
 pkgname = prasmoid
