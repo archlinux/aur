@@ -4,7 +4,7 @@
 pkgname=apk-editor-studio-bin
 _appname=application-vnd.android.package-archive
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful yet easy to use APK reverse-engineering tool.(Prebuilt version)"
 arch=('x86_64')
 provides=("${pkgname%-bin}")
@@ -33,7 +33,7 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4b20d5ea5fd9cfab3810600c9b1c07398705d90ef4a36bba1c9f7f32f7ee7027'
@@ -43,15 +43,16 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,plugins} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,share} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/share/"{applications,doc,icons}
     install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/share/${pkgname%-bin}" "${pkgdir}/usr/share"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512)

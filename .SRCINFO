@@ -1,7 +1,7 @@
 pkgbase = apk-editor-studio-bin
 	pkgdesc = A powerful yet easy to use APK reverse-engineering tool.(Prebuilt version)
 	pkgver = 1.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://qwertycube.com/apk-editor-studio/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,7 +18,7 @@ pkgbase = apk-editor-studio-bin
 	conflicts = apk-editor-studio
 	options = !strip
 	options = !emptydirs
-	source = apk-editor-studio-1.7.2.AppImage::https://github.com/kefir500/apk-editor-studio/releases/download/v1.7.2/apk-editor-studio_linux_1.7.2.AppImage
+	source = apk-editor-studio-1.7.2-x86_64.AppImage::https://github.com/kefir500/apk-editor-studio/releases/download/v1.7.2/apk-editor-studio_linux_1.7.2.AppImage
 	source = apk-editor-studio.sh
 	sha256sums = 4b20d5ea5fd9cfab3810600c9b1c07398705d90ef4a36bba1c9f7f32f7ee7027
 	sha256sums = b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863
