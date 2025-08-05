@@ -1,0 +1,17 @@
+pkgbase = t9plusledcontrol-git
+	pkgdesc = LED controler for T9 plus mini PC
+	pkgver = r15.4a9259a
+	pkgrel = 1
+	url = https://github.com/cwt/LED
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	depends = glibc
+	provides = t9plusledcontrol
+	conflicts = t9plusledcontrol
+	options = !debug
+	source = t9plusledcontrol::git+https://github.com/cwt/LED
+	b2sums = SKIP
+
+pkgname = t9plusledcontrol-git
