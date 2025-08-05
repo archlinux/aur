@@ -1,6 +1,6 @@
 pkgbase = chromium-ffmpeg-codecs-git
 	pkgdesc = Add codecs to Chromium M138+ (libfdk-aac)
-	pkgver = 7.2.r120480.gceaa8ed96b
+	pkgver = 7.2.r120510.g8be539b022
 	pkgrel = 1
 	url = https://git.ffmpeg.org/ffmpeg
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = chromium-ffmpeg-codecs-git
 	makedepends = pkgconf
 	depends = glibc
 	depends = libfdk-aac
-	depends = opus
 	provides = vivaldi-ffmpeg-codecs
 	provides = vivaldi-snapshot-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs

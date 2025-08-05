@@ -1,6 +1,6 @@
 
 pkgname=chromium-ffmpeg-codecs-git
-pkgver=7.2.r120480.gceaa8ed96b
+pkgver=7.2.r120510.g8be539b022
 #pkgver() {
 #  printf '%s.r%s.g%s' $(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }') $(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }') $(git -C ffmpeg rev-parse --short HEAD)
 #}
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 sha256sums[1]='SKIP'
-depends=(glibc libfdk-aac opus)
+depends=(glibc libfdk-aac)
 makedepends=(nasm git
 diffutils gcc make patch pkgconf) # base-devel
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
@@ -35,7 +35,10 @@ prepare() {
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   echo -e "{\nglobal:\n$(sed 's/$/;/' sigs.txt)\nlocal:\n*;\n};" |tee export.map
   cd ffmpeg
-  # Use libfdk-aac not in kAllowedAudioCodecs
+  # Use native opus not in kAllowedAudioCodecs (faster than libopus)
+  sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
+  diff libavcodec/opus/dec.c{.bak,}||:
+  # Use libfdk-aac (no advantage?)
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"aac\",/" libavcodec/libfdk-aacdec.c
   diff libavcodec/libfdk-aacdec.c{.bak,}||:
   # Chromium patches
@@ -67,9 +70,9 @@ build() {
     --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
-    --enable-libfdk-aac --enable-libopus \
+    --enable-swresample --enable-libfdk-aac \
     --enable-demuxer=ogg,matroska,wav,flac,mp3,mov,aac \
-    --enable-decoder=vorbis,libopus,flac,pcm_s16le,mp3,libfdk_aac,h264 \
+    --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,libfdk_aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition ${LTOFLAGS}" \
     --enable-{pic,asm,hardcoded-tables} \
@@ -79,9 +82,9 @@ build() {
   cd ..
   _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
-    -Wl,--start-group libav{codec,format,util}.a -Wl,--end-group \
+    -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
     ${_symbols} -Wl,--version-script=export.map \
-    -lopus -lfdk-aac -lm -Wl,-Bsymbolic -o $_so
+    -lfdk-aac -lm -Wl,-Bsymbolic -o $_so
 }
 
 package(){
