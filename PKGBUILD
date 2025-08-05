@@ -1,15 +1,15 @@
 # Maintainer: wintersnowgod <git.xerox732@passinbox.com>
 pkgname=nepdate
 pkgdesc='Standalone Nepali calendar widget and converter for Bikram Sambat and Gregorian calendars.'
-pkgver=2.0.8
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/khumnath/nepdate"
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-base')
-makedepends=('cmake')
-license=('AGPL-3.0-only')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-base' 'qt6-declarative')
+makedepends=('cmake' 'qt6-shadertools' 'qt6-tools')
+license=('GPL-3.0-or-later')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4c5a36123c33b5272222c17c8a5f087d61077b1f0e13ce622dfd7a8324de759c')
+sha256sums=('fd551e74e1572470d154e681d00a302d48b490a5310b8e03f467c07703c92f84')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -24,26 +24,19 @@ build() {
 
 package() {
     #install binary
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/nepdate-calendar" "${pkgdir}/usr/bin/nepdate-calendar"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/nepdate-widget" "${pkgdir}/usr/bin/nepdate-widget"
-    #install icons
-    install -Dm644 "$srcdir/${pkgname}-${pkgver}/resources/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/nepdate.svg"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/nepdate" "${pkgdir}/usr/bin/nepdate"
     #make .desktop file
     install -d "${pkgdir}/usr/share/applications"
     echo "[Desktop Entry]
+[Desktop Entry]
+Categories=Utility;Calendar;
+Comment=Nepali Calendar Application
+Icon=calendar
+Exec=/usr/bin/nepdate
 Name=Nepdate Calendar
-Comment=Standalone Nepali Calendar and Converter. Right click to open widget.
-Exec=nepdate-calendar
-Icon=nepdate
+StartupNotify=true
+StartupWMClass=NepaliCalendar
 Terminal=false
 Type=Application
-Categories=Utility;
-StartupWMClass=nepdate-calendar
-Actions=OpenNepdateWidget;
-
-[Desktop Action OpenNepdateWidget]
-Name=Nepdate Widget
-Exec=env QT_QPA_PLATFORM=xcb nepdate-widget
-Icon=nepdate
-" > "${pkgdir}/usr/share/applications/nepdate.desktop"
+NoDisplay=true" > "${pkgdir}/usr/share/applications/nepdate.desktop"
 }
