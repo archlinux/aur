@@ -1,7 +1,7 @@
 pkgbase = libsoup
 	pkgdesc = HTTP client/server library for GNOME
 	pkgver = 2.74.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/libsoup
 	arch = x86_64
 	license = LGPL-2.0-or-later

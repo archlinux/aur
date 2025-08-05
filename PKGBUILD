@@ -7,7 +7,7 @@ pkgname=(
   libsoup-docs
 )
 pkgver=2.74.3
-pkgrel=3
+pkgrel=4
 pkgdesc="HTTP client/server library for GNOME"
 url="https://wiki.gnome.org/Projects/libsoup"
 arch=(x86_64)
@@ -46,6 +46,10 @@ b2sums=('9f2a278482af7ab851aa08b69f59bdd9de8187cac8cb2ac0d904ff087155afaadab2538
 
 prepare() {
   cd libsoup
+
+  # Update to branch HEAD for CVE fixes
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/libsoup/-/issues/1
+  git cherry-pick -n 2.74.3..5739a090529209c2afc13f482256573bcd9ce940
 
   # https://gitlab.gnome.org/GNOME/libsoup/-/issues/120
   git apply -3 ../0001-Disable-flaky-test.patch
