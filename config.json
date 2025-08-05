@@ -4,12 +4,12 @@
       {
         "type": "tls",
         "tag": "google",
+        "detour": "ss-out",
         "server": "8.8.8.8"
       },
       {
         "type": "udp",
         "tag": "local",
-        "detour": "direct",
         "server": "223.5.5.5"
       }
     ],
@@ -23,6 +23,15 @@
     }
   ],
   "outbounds": [
+    {
+      "type": "shadowsocks",
+      "tag": "ss-out",
+      "server": "127.0.0.1",
+      "server_port": 1080,
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "8JCsPssfgS8tiRwiMlhARg==",
+      "network": "tcp"
+    },
     {
       "type": "direct",
       "tag": "direct"

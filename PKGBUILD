@@ -2,7 +2,7 @@
 
 pkgname="sing-box-bin"
 pkgver="1.12.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="The universal proxy platform (binary version)"
 provides=("sing-box")
 conflicts=("sing-box" "sing-box-beta" "sing-box-git")
@@ -24,7 +24,7 @@ sha256sums=('a828ee277711a6b376c8cf4c9a1f73458ca39ef262dd9d2a726f63111ff19e09'
             '3131e799142a007edd45ba7de92b535ca8405b2b28957016a2153448d798060e'
             '927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405'
             '77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71'
-            'bbc8829989149961e3658b6419160623a5145b738149af9b5c62d575d0aacf37')
+            '44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6')
 sha256sums_x86_64=('f59b1253ae0143997cb46915af30d14a33431dcbd7e39edacfcde8d73050faaf')
 sha256sums_armv7h=('ae30c7c3ef11a9351f3f2f40672ecf48ddc6393bd0cdb760ee8cb508f10a812d')
 sha256sums_aarch64=('90e8b40320971db689b789ab95f54e9762bc24250f29ba59012049ab7867f456')
