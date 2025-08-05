@@ -1,19 +1,18 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=legacyfox
-_pkgname=LegacyFox-mirror-of-git.gir.st
-pkgver=4.0
-pkgrel=2
+pkgver=5.0
+pkgrel=1
 pkgdesc="Legacy bootstrapped extensions for Firefox 65 and beyond"
 arch=('any')
 url="https://gir.st/blog/legacyfox.htm"
 license=('MPL-2.0')
 depends=('firefox')
-_commit=312a791
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/girst/LegacyFox-mirror-of-git.gir.st/archive/v$pkgver.tar.gz")
-sha256sums=('4480a7396e5729e8c304daaa2e0e2426c884f8416250f55640219923802d1fbd')
+_commit=836dade
+source=("LegacyFox-v$pkgver-$_commit.tar.gz::https://git.gir.st/LegacyFox.git/snapshot/v$pkgver.tar.gz")
+sha256sums=('bde9fe55e6ba270f2f929e52373f870a9b5e68cdbb693853e8cdf2b86f1a5eae')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/LegacyFox-v$pkgver-$_commit"
   install -Dm644 -t "$pkgdir/usr/lib/firefox" config.js legacy.manifest
   install -Dm644 defaults/pref/config-prefs.js "$pkgdir/usr/lib/firefox/defaults/pref/config-prefs.js"
   install -Dm644 legacy/BootstrapLoader.sys.mjs "$pkgdir/usr/lib/firefox/legacy/BootstrapLoader.sys.mjs"
