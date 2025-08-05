@@ -1,16 +1,17 @@
 pkgbase = pypy3-pybind11
 	pkgdesc = A lightweight header-only library that exposes C++ types in Python and vice versa
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pybind11.readthedocs.org
 	arch = any
 	license = BSD-3-Clause
-	makedepends = cmake
 	makedepends = boost
+	makedepends = cmake
 	makedepends = eigen
-	makedepends = pypy3-setuptools
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-scikit-build-core
 	depends = pypy3
-	optdepends = pypy3-setuptools: for python bindings
 	source = https://github.com/pybind/pybind11/archive/v3.0.0/pypy3-pybind11-3.0.0.tar.gz
 	sha512sums = a68a5eb3253db771308ed0922852207e6dc9a3089ad055ba3ccd36690f68b93cad98cc1a3ab822eb653153af2eeef10e6f6272b93314b2da1119e17f6c63337b
 
