@@ -2,7 +2,7 @@
 
 pkgname=python-pyngrok
 _name=${pkgname#python-}
-pkgver=7.2.13
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="A Python wrapper for ngrok"
 url="https://github.com/alexdlaird/pyngrok"
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 conflicts=('ngrok')
 
 source=("$pkgname::git+https://github.com/alexdlaird/pyngrok.git#tag=$pkgver")
-sha256sums=('c0c508fa1bffcac170fedb6f00fefb645bf7c78c2770671adb2e4c89b93ded3b')
+sha256sums=('532b96b250e5a3920487785524677aa7b0ce5022027fb8675ad850e0b4484401')
 
 build() {
     python -m build --wheel --no-isolation --outdir "$srcdir/dest-$pkgver" "$srcdir/$pkgname"
