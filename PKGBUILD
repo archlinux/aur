@@ -6,69 +6,72 @@
 # Contributor: Florian Pritz <bluewind at jabber dot ccc dot de>
 # Contributor: Peter Wu <peter@lekensteyn.nl>
 
-_pkgbase=wireshark
-pkgbase="${_pkgbase}-libsmi"
-pkgname=("${pkgbase}-cli" "${pkgbase}-qt")
-pkgver=4.4.7
+pkgbase=wireshark
+pkgname=('wireshark-libsmi-cli' 'wireshark-libsmi-qt')
+pkgver=4.4.8
 pkgrel=1
 pkgdesc='Network traffic and protocol analyzer/sniffer with SNMP OID resolution'
 url='https://www.wireshark.org/'
 arch=('x86_64')
 license=('GPL-2.0-only')
 makedepends=(
-  'asciidoctor'
-  'bcg729'
-  'brotli'
-  'c-ares'
-  'cmake'
-  'desktop-file-utils'
-  'doxygen'
-  'gcc-libs'
-  'glib2'
-  'glibc'
-  'gnutls'
-  'hicolor-icon-theme'
-  'krb5'
-  'libcap'
-  'libgcrypt'
-  'libmaxminddb'
-  'libnghttp2'
-  'libnl'
-  'libpcap'
-  'libsmi'
-  'libssh'
-  'libxml2'
-  'libxslt'
-  'lua53'
-  'lz4'
-  'minizip'
-  'ninja'
-  'opus'
-  'python'
-  'qt6-5compat'
-  'qt6-multimedia'
-  'qt6-svg'
-  'qt6-tools'
-  'sbc'
-  'snappy'
-  'spandsp'
-  'speexdsp'
-  'zlib-ng'
-  'zstd'
+  asciidoctor
+  bcg729
+  brotli
+  c-ares
+  cmake
+  desktop-file-utils
+  doxygen
+  gcc-libs
+  git
+  glib2
+  glibc
+  gnutls
+  hicolor-icon-theme
+  krb5
+  libcap
+  libgcrypt
+  libmaxminddb
+  libnghttp2
+  libnl
+  libpcap
+  libsmi
+  libssh
+  libxml2
+  libxslt
+  lua53
+  lz4
+  minizip
+  ninja
+  opus
+  python
+  qt6-5compat
+  qt6-multimedia
+  qt6-svg
+  qt6-tools
+  sbc
+  snappy
+  spandsp
+  speexdsp
+  zlib-ng
+  zstd
 )
 options=('!emptydirs')
-source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
-        wireshark.sysusers)
-sha512sums=('5fdebdc25a59383b0c27632aac61c57fef9ba12ea0929a1af76c23e713b8b7e4162ba382301fbf2bb63940226ad235a2b5f7c1fe5a0a21ee722dd4c2348da0eb'
+source=(
+  "git+https://gitlab.com/wireshark/wireshark.git#tag=v${pkgver}"
+  wireshark.sysusers
+)
+sha512sums=('dd840eb050645ef3dff3f36be0b701fdef5cca40352043dc608ad90541bba7e07e7f95b7f93eff2a48a9019218780142d384c37e4512981ad5f965a9f2128c5c'
             '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
-b2sums=('9813d67e8e8fb7a8c4fb2bbb7d4a541a0f5a80ef3ea47c097b5488798dcb518bdd6db644438348b1110f15126761fa8fbe3c3f8e0f8fea781cdfa918a84c057d'
+b2sums=('4744cb986b30d449c1c1e2dd45a556514975e4f1cb80059bd279f7a83c4911d9e970a506f6dfbd10a214d6aa15db64c0952c779e7f406fd4d2cc4a61ceea375a'
         '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c')
 
 build() {
-  cd ${_pkgbase}-${pkgver}
+  cd ${pkgbase}
   cmake \
     -B build \
     -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
     -DVCSVERSION_OVERRIDE="Git v${pkgver} packaged as ${pkgver}-${pkgrel}" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -119,7 +122,7 @@ package_wireshark-libsmi-cli() {
   conflicts=(wireshark wireshark-cli)
   provides=(libwireshark.so libwiretap.so libwsutil.so wireshark-cli)
 
-  cd ${_pkgbase}-${pkgver}
+  cd ${pkgbase}
   DESTDIR="${pkgdir}" ninja -C build install
   DESTDIR="${pkgdir}" cmake --install build --component Development
 
@@ -167,7 +170,7 @@ package_wireshark-libsmi-qt() {
   replaces=(wireshark wireshark-gtk wireshark-common)
   conflicts=(wireshark wireshark-gtk wireshark-common wireshark-qt)
 
-  cd ${_pkgbase}-${pkgver}
+  cd ${pkgbase}
   install -d "${srcdir}/staging"
   DESTDIR="${srcdir}/staging" ninja -C build install
 
