@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dapr-cli-bin
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='Command-line tools for Dapr'
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ source_x86_64=("dapr-cli-$pkgver-linux-amd64.tar.gz::${url}/releases/download/v$
 "dapr-cli-$pkgver-linux-amd64.tar.gz.sha256::${url}/releases/download/v${pkgver}/dapr_linux_amd64.tar.gz.sha256")
 source_aarch64=("dapr-cli-$pkgver-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/dapr_linux_arm64.tar.gz"
 "dapr-cli-$pkgver-linux-arm64.tar.gz.sha256::${url}/releases/download/v${pkgver}/dapr_linux_arm64.tar.gz.sha256")
-sha256sums_x86_64=('4680ad905ebe2b709e2139b1bda4e8d7ab1beedd601a4240f92c9e8a4a4296ad'
-                   'ea6e52c867bf7cb15cc995d0e90049a20b4d0cbf5ee3a02f4989efbcd22d34d3')
-sha256sums_aarch64=('d40248c9183a73104bccf850902a7cae59ba81a27e01bce1490eda2958962bd2'
-                    'ebb8d1b8cb9771e53f9bb833f3e72547c1905afb05fb20c10fcdf1089cc195b7')
+sha256sums_x86_64=('09328bc0e4353036b824c2ec9cf7cabf4d75b4fc00ca02d80ae3e4374ee27eda'
+                   '49a4270d1b2af32aab3589a7ffa739a8589d6e7399e2c44d82eef30bd3e583cc')
+sha256sums_aarch64=('b49244701a191c1e843211383703be9f2cd086a1db259c9789672f7e4e82ad55'
+                    'a108fa896b5c1c44808e4669f002cb30803cbf226b63e96987f033114877b59a')
 
 package() {
     install -Dm755 dapr "$pkgdir/usr/bin/dapr"
