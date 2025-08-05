@@ -1,6 +1,6 @@
 # Maintainer: kartavkun <nikitarobezhko@yandex.ru>
 pkgname=osufetch-bin
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Minimal terminal osu! profile viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 provides=('osufetch')
 conflicts=('osufetch')
 source=("osufetch::${url}/releases/download/v${pkgver}/osufetch")
-sha256sums=('f6aeeaed9e619faaa0ad1245d0fc8fb06e5f8250d8bcbc9d488f3d90b082781b')
+sha256sums=('98d25086507caec5d707e22163275fa9df0f128600a49698c82fe83b67b31104')
 
 package() {
   install -Dm755 "$srcdir/osufetch" "$pkgdir/usr/bin/osufetch"
