@@ -1,3 +1,7 @@
+[ 1.0.3 ]
+==================================================
+Enable use-dev-tty crossterm feature to prevent macOS infinite loop
+
 [ 1.0.2 ]
 ==================================================
 Check for keyboard enhancement flags support before enabling them
