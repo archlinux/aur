@@ -1,18 +1,16 @@
 # Maintainer: Sujal Vijayaraghavan <email at sujal dot tv>
 
-
 pkgname=matlock
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Screen lock program for X like The Matrix'
 arch=('x86_64' 'aarch64')
-url="https://gitlab.sujal.tv/tvsujal/matlock"
+url="https://git.sujal.tv/tvsujal/matlock"
 license=('MIT')
 makedepends=('git')
 depends=('libxext' 'libxrandr')
-source=("http://gitlab.sujal.tv/tvsujal/matlock/-/archive/${pkgver}/${pkgname}-${pkgver}.tar")
-sha256sums=('24e3dd74d39a70075ea17ee479b4203b3853472c7ec86aec39e7cf0d7d3f4275')
-
+source=("https://git.sujal.tv/tvsujal/matlock/-/archive/${pkgver}/${pkgname}-${pkgver}.tar")
+sha256sums=('d45a52ce530b9b49977d1f8f6cf13fcac9d295234f57dbff37be3cd56c3557cb')
 
 build() {
     rm -rf ${pkgname}
@@ -20,7 +18,6 @@ build() {
     cd ${pkgname}
     make
 }
-
 
 package() {
     cd $pkgname
