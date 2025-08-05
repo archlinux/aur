@@ -1,8 +1,8 @@
 # Maintainer: ZilloweZ <zillowez@gmail.com>
 
 pkgname='zoi-bin'
-_tag='Prod-Beta-3.4.0'
-pkgver=3.4.0_beta
+_tag='Prod-Beta-3.4.1'
+pkgver=3.4.1_beta
 pkgrel=1
 pkgdesc="Universal Package Manager & Environment Setup Tool (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ source_x86_64=("${pkgname%-bin}-linux-amd64.tar.zst::$url/-/releases/$_tag/downl
 source_aarch64=("${pkgname%-bin}-linux-arm64.tar.zst::$url/-/releases/$_tag/downloads/${pkgname%-bin}-linux-arm64.tar.zst"
                "LICENSE::$_license_url")
 
-sha512sums_x86_64=('e4434a6ac3a9cd2849f64cbe4d40d8ac18472ad2ff1311c9c1a1e11fe6d139479409c548db3ac6ee4306fd1c74f3f5e2bd86455ec54dd23c9ee4d313da897f7a'
+sha512sums_x86_64=('2a4a53b4378b0930214cb6e0c39cf5927d093ad81354d30bf6a931baec731fd1fa641fe4cc1c004fc5186cd81b857e9ad141fe29e14dad900a5f63aec85d1a43'
                    'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
-sha512sums_aarch64=('5530a1824555856d63f008a8a2c3af6d8183abd98b4a901a8cc984e9b417af63ed9fb661ee01b103ceac159f62221f606b58c34e47663a8441df98cbca331392'
+sha512sums_aarch64=('e9650572e26fae8fc1a0835771237f7d50046eccdb3ed6e97c22f60752c2d0dc3efeb353dc90fd2ca8dbb0f571190fb70e300bf8416924680c041907b5a85d59'
                     'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
 
 package() {
