@@ -2,7 +2,7 @@
 
 pkgname=crossplane
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Reliable and fast NGINX configuration file parser"
 arch=('x86_64')
 url="https://github.com/nginxinc/crossplane"
@@ -22,4 +22,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir"
+  mkdir -p "$pkgdir"/usr/share/{doc/"$pkgname",licenses/"$pkgname"}
+  install -Dm644 AUTHORS.rst  README.md "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE NOTICE "$pkgdir/usr/share/licenses/$pkgname"
 }
