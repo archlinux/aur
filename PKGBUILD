@@ -3,8 +3,9 @@
 pkgname=martin
 pkgdesc="A tile server able to generate and serve vector tiles on the fly"
 url="https://maplibre.org/martin/"
+_git_organisation=maplibre
 
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -23,16 +24,16 @@ options=("!lto")
 backup=("etc/${pkgname}/config.yaml")
 
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/maplibre/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}-${pkgver}-LICENSE-APACHE::https://github.com/maplibre/martin/raw/refs/tags/v${pkgver}/LICENSE-APACHE"
-    "${pkgname}-${pkgver}-LICENSE-MIT::https://github.com/maplibre/martin/raw/refs/tags/v${pkgver}/LICENSE-MIT"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/${_git_organisation}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}-LICENSE-APACHE::https://github.com/${_git_organisation}/${pkgname}/raw/refs/tags/v${pkgver}/LICENSE-APACHE"
+    "${pkgname}-${pkgver}-LICENSE-MIT::https://github.com/${_git_organisation}/${pkgname}/raw/refs/tags/v${pkgver}/LICENSE-MIT"
     "${pkgname}.service"
     "${pkgname}.sysusers.d"
     "${pkgname}-config.yaml"
 )
 b2sums=(
-    "ae841fa3cae0bc63bf5d60cd429e94ee8775fcd7801ac3deb1be6004d03f9003d24f31dd606ee6b74efa2d6e53537ef0e665f1a3df50a1268cb9a92e9407989b"
-    "21fadd835dd2d39db33e007a95f4ce46277c5c87902a6e8a530673ceab9b4d13246fb80f93906e9cc684db6e35f6ead13cf71c553468f3a07df6e1c7d9b85b4b"
+    "20ed3c1b0d61c5b2617f89269dd1be3845668a916cbf6cda72b474220eaf191d7717aa0a6f82ccf126f6109b2d7862164212a39a5783b29e92de21d1df844588"
+    "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
     "c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca"
     "24e80b2adf58036276b6026e41914bc4ee4ca107f8a7bb62afc271273d975997632130a21a400819d9182a28e68309c814fcb908c2edcfd05ae2ff23209c4f24"
