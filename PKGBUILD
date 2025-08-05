@@ -2,12 +2,12 @@
 
 pkgname=pulse-visualizer-git
 pkgver=1.0.r100.g6ddb8a5
-pkgrel=4
+pkgrel=5
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire (latest git)"
 arch=('any')
 url="https://github.com/Beacroxx/pulse-visualizer"
 license=('MIT')
-depends=('sdl2' 'fftw' 'freetype2' 'glew' 'yaml-cpp')
+depends=('sdl2' 'fftw' 'freetype2' 'glew' 'yaml-cpp' 'libebur128')
 makedepends=('cmake' 'ninja' 'clang' 'git')
 optdepends=('libpulse: PulseAudio support' 'libpipewire: PipeWire support')
 source=("git+https://github.com/Beacroxx/pulse-visualizer.git")
