@@ -1,6 +1,6 @@
 pkgbase = salvador
 	pkgdesc = A bash script that will help you maintain your AUR packages
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://gitlab.com/dpeukert/salvador
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = salvador
 	optdepends = curl: nvchecker functionality
 	optdepends = jq: nvchecker functionality
 	optdepends = nvchecker: nvchecker functionality
-	source = salvador-3.3.0.tar.gz::https://gitlab.com/dpeukert/salvador/-/archive/3.3.0/salvador-3.3.0.tar.gz
-	b2sums = 6086a618f0b3d4d5dd84a95949ca065fc2c330ea0c4a3a83eaec08809772638323688af9323356e4b339e5a60996080035661519d32546112bba7556d97ea204
+	source = salvador-3.3.1.tar.gz::https://gitlab.com/dpeukert/salvador/-/archive/3.3.1/salvador-3.3.1.tar.gz
+	b2sums = 0e89b82110394740d2680c90e33e52ef4dba73ac46215fdd07444cd8de30eb92bacde9d149d59e7ff9d9e661c2ec2b0b6e6c59fe6504f18786c1e9c4c2f55c71
 
 pkgname = salvador
