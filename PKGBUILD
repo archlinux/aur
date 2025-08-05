@@ -2,9 +2,9 @@
 
 pkgbase=libosal
 pkgname=libosal
-_tagname=0.1.0-rev6
+_tagname=0.1.1-rev0
 pkgver="${_tagname//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="libosal is an operating system abstraction layer Library. It's purpose is to write os-independent code for easy portability between different systems and architectures."
 arch=($CARCH)
 url="https://github.com/robert-burger/libosal"
@@ -22,7 +22,7 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("${pkgname}::git+${url}.git#tag=${_tagname}")
-sha256sums=('67d18308c6bf7a53171a25fd5907bca65d519f7a55acf7efade97e86b8099f22')
+sha256sums=('0611a1e28b044c3766033c7f21274c1415df2a1f900af50ce21a94e9a7aa499d')
 options=()
 
 build() {
