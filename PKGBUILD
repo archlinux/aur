@@ -9,7 +9,7 @@ url="https://git.sujal.tv/tvsujal/matlock"
 license=('MIT')
 makedepends=('git')
 depends=('libxext' 'libxrandr')
-source=("https://git.sujal.tv/tvsujal/matlock/-/archive/${pkgver}/${pkgname}-${pkgver}.tar")
+source=("https://git.sujal.tv/tvsujal/matlock/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar")
 sha256sums=('d45a52ce530b9b49977d1f8f6cf13fcac9d295234f57dbff37be3cd56c3557cb')
 
 build() {
