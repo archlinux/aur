@@ -2,7 +2,7 @@
 # Maintainer: Giovanni Harting
 
 pkgname=zwave-js-ui
-pkgver=11.0.0
+pkgver=11.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Full featured Z-Wave Control Panel UI and MQTT gateway"
@@ -19,7 +19,7 @@ source=("https://github.com/zwave-js/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname.tmpfiles"
 	"$pkgname.service"
 	"$pkgname.install")
-b2sums=('c24f1f9d1a0f00e95b9d20149c280a7e4f72ff068074bbfce25a17f4f93f4b43e15cb2491029d0b6fc260e322167ed98c6ce5410a2d2ebd1289333df0cad818e'
+b2sums=('378dd2215b110d3da018935946b200b9b504bbf56f7529b215d93bcba4a9153d82291dfb9cd8227c44aa5065094bf572ce02b04da3b843dd347c661bdb1375be'
         '20fe5b3391e8ef54b7047c082b183e492bea4b6b9dac11ebfa69e98ca6f6889cfde7a55897f6a6a8d91a2753a3a316cde8c4802d4e23a65bf421eeac8a2725fe'
         'e2d3de5e1446f5b1f7c97581a0fa66022050993399d23afba63079ba6c690f995708dffca442170da44abc526103143fbecb94e95a9b7d85fcbf37b3fc49db5e'
         '8b2c0b4e3659297e311f7f3ae69d337cddfc6dc55a5edc4f39bf8a26bc728cfb7ca5fe56d89e253d17d74646336f53d5cacac5b18cc94f2be8fd29ff900615de'
