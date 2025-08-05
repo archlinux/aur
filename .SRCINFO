@@ -5,6 +5,7 @@ pkgbase = libtb-bin
 	url = https://github.com/hyx-web/libtb
 	arch = x86_64
 	depends = glibc
+	provides = libtb=1.0.0
 	source = https://github.com/hyx-web/libtb/releases/download/dev/libtb.zip
 	sha256sums = SKIP
 
