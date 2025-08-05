@@ -1,0 +1,31 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "hedgewars-server-hg-bump-network-dep.patch",
+    "hedgewars-server-hg-mtl2.3.patch",
+    "hedgewars-server-hg-server-build-cabal.patch",
+]
+SPDX-FileCopyrightText = "hedgewars contributors"
+SPDX-License-Identifier = "GPL-2.0"

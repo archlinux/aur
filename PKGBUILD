@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Turn-based strategy artillery game similiar to Worms (Server component)"
 arch=('x86_64')
 url="https://hedgewars.org"
-license=('GPL' 'custom')
+license=('GPL-2.0' 'custom')
 depends=('ghc-libs' 'haskell-entropy' 'haskell-sha' 'haskell-random' 'haskell-regex-tdfa'
          'haskell-sandi' 'haskell-hslogger' 'haskell-network' 'haskell-network-bsd'
          'haskell-utf8-string' 'haskell-vector')
@@ -52,5 +52,5 @@ package() {
   cd "$pkgname"/gameServer
 
   runhaskell Setup copy --destdir="$pkgdir"
-  install -D -m644 ../COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -D -m644 ../Fonts-LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/Fonts-LICENSE.txt
 }
