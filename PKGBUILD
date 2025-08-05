@@ -10,7 +10,7 @@ arch=('any')
 depends=('gtksourceview5' 'libadwaita' 'portaudio' 'python-beautifulsoup4' 'python-expandvars'
          'python-gobject' 'python-gpt4all' 'python-gtts' 'python-lxml-html-clean'
          'python-matplotlib' 'python-newspaper' 'python-numpy' 'python-pillow'
-         'python-pyaudio' 'python-pygame' 'python-pylatexenc''python-pydub'
+         'python-pyaudio' 'python-pygame' 'python-pylatexenc' 'python-pydub'
          'python-requests' 'python-speechrecognition' 'python-tldextract'
          'webkitgtk-6.0')
 makedepends=('git' 'meson')
