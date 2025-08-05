@@ -2,7 +2,7 @@
 
 pkgname=petoicamp-opencat
 _name=OpenCat
-pkgver=1.2.5
+pkgver=1.2.6beta
 pkgrel=1
 epoch=
 pkgdesc="OpenCat is the open-source Arduino and Raspberry Pi-based quadruped robotic pet framework developed by Petoi, the maker of futuristic programmable robotic pets."
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.install"
 )
 noextract=(${_name}-${pkgver}.tar.gz)
-sha256sums=('7f9b29db452ef895495aef5b7bae01e6a2dd8db039b990f1a01b97d684638b31'
+sha256sums=('abfff61cb2b86df0e5634b61d475ab7b0f6d40dd8988aa9c26593f18deb38942'
             'ec31192b3c1ba2ce71975c5b55c9e48bdc7eafb25c3de05846129ee79315291c')
 
 package() {
