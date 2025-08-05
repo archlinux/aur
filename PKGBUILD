@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=otree
-pkgver=0.4.0
+pkgver=0.4.1
 _commit=c519c1d59700fb8d35d5b694327cdb5328c8a002
 pkgrel=1
 pkgdesc="Object Tree TUI Viewer"
