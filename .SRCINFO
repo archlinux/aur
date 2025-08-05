@@ -1,0 +1,15 @@
+pkgbase = crossplane
+	pkgdesc = Reliable and fast NGINX configuration file parser
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/nginxinc/crossplane
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-tox
+	checkdepends = pypy
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/nginxinc/crossplane/archive/refs/tags/v0.5.8.tar.gz
+	sha256sums = e4992f267b3fd6318334140a842131daa37124f6d0c4f9300c836d21949ec70e
+
+pkgname = crossplane
