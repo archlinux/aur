@@ -6,7 +6,12 @@ pkgbase = musiccli
 	arch = any
 	license = MIT
 	depends = python
-	source = testpython.py
-	md5sums = SKIP
+	depends = python-requests
+	depends = python-dotenv
+	depends = python-beautifulsoup4
+	depends = python-ytmusicapi
+	depends = python-rich
+	source = musiccli.py
+	sha256sums = SKIP
 
 pkgname = musiccli
