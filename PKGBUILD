@@ -2,7 +2,7 @@
 pkgname=nepdate
 pkgdesc='Standalone Nepali calendar widget and converter for Bikram Sambat and Gregorian calendars.'
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 _commithash=524477dbe6fb92f836a63d00ff7006e6c6a74072
 arch=(x86_64)
 url="https://github.com/khumnath/nepdate"
@@ -29,7 +29,6 @@ package() {
     #make .desktop file
     install -d "${pkgdir}/usr/share/applications"
     echo "[Desktop Entry]
-[Desktop Entry]
 Categories=Utility;Calendar;
 Comment=Nepali Calendar Application
 Icon=calendar
@@ -38,6 +37,5 @@ Name=Nepdate Calendar
 StartupNotify=true
 StartupWMClass=NepaliCalendar
 Terminal=false
-Type=Application
-NoDisplay=true" > "${pkgdir}/usr/share/applications/nepdate-calendar.desktop"
+Type=Application" > "${pkgdir}/usr/share/applications/nepdate-calendar.desktop"
 }
