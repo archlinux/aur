@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "azure-storage-fuse": {
-      "version": "2.4.2",
-      "gitref": "refs/tags/blobfuse2-2.4.2",
-      "url": "https://github.com/Azure/azure-storage-fuse/releases/tag/blobfuse2-2.4.2"
+      "version": "2.5.0",
+      "gitref": "refs/tags/blobfuse2-2.5.0",
+      "url": "https://github.com/Azure/azure-storage-fuse/releases/tag/blobfuse2-2.5.0"
     }
   }
 }
