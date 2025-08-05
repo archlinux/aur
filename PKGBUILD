@@ -5,7 +5,7 @@ _name0=logfire
 pkgbase=python-${_name0}
 _pydanticaiver=0.4.2
 pkgname=(python-${_name1} python-${_name0})
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -14,7 +14,7 @@ source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-${_pydanticaiver}-py3-none-any.whl"
         "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl") # Prevent cercular dependencies
 noextract=("pydantic_graph-${_pydanticaiver}-py3-none-any.whl" "pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl")
-sha256sums=('c51d818a9eda672d06ca36a881d1702a89736821246996253ab205f2318a2d87'
+sha256sums=('100df306f5a16a8824a648ca24e8645af99cb2038b8cb102c3360668516b770b'
             '6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2'
             '1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475')
 depends=('python')
