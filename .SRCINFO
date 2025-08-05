@@ -1,0 +1,19 @@
+pkgbase = koteyscanner
+	pkgdesc = Многофункциональный порт-сканер с котиком - красивый, быстрый и удобный инструмент для сетевого сканирования
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dozaxcx/koteyscanner
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	depends = gcc-libs
+	source = koteyscanner.cpp
+	source = LICENSE
+	source = README.md
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = koteyscanner
