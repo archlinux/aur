@@ -6,7 +6,7 @@ pkgdesc="Sets random pictures from web search as X background."
 arch=('any')
 url="http://www.webgetpics.org"
 license=('custom')
-depends=('curl' 'python2' 'wget' 'imagemagick' 'feh')
+depends=('curl' 'python' 'wget' 'imagemagick' 'feh')
 source=("git+https://github.com/webgetpics/webgetpics#tag=${pkgver}")
 md5sums=('SKIP')
 
