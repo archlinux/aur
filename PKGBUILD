@@ -1,7 +1,7 @@
 pkgname=ura-git
 _pkgname=ura
-pkgver=r66.8e111b0
-pkgrel=1
+pkgver=r67.15cdf0b
+pkgrel=3
 pkgdesc="A highly customizable Wayland compositor driven by Lua"
 url="https://github.com/levinion/ura"
 arch=("any")
@@ -38,6 +38,8 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -d "$pkgdir/etc/$_pkgname"
+  install -Dm644 "assets/init.lua" "$pkgdir/etc/$_pkgname/"
   install -Dm644 "assets/$_pkgname.desktop" "$pkgdir/usr/share/wayland-sessions/$_pkgname.desktop"
   install -d "$pkgdir/usr/share/lua/5.1/"
   cp -r "lua/$_pkgname" "$pkgdir/usr/share/lua/5.1/"
