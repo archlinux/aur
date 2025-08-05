@@ -13,6 +13,7 @@ license=('Apache-2.0')
 makedepends=('npm')
 depends=('nodejs')
 source=("https://registry.npmjs.org/@qwen-code/$pkgname/-/$pkgname-$_pkgver.tgz")
+options=(!lto !strip !debug)
 noextract=("$pkgname-$_pkgver.tgz")
 sha256sums=('8614e31432725be2fd46a6983c2af5a1a06e6c687df834ceef5fd514a56618f5')
 

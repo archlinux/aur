@@ -9,6 +9,9 @@ pkgbase = qwen-code
 	makedepends = npm
 	depends = nodejs
 	noextract = qwen-code-0.0.5-nightly.1.tgz
+	options = !lto
+	options = !strip
+	options = !debug
 	source = https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.0.5-nightly.1.tgz
 	sha256sums = 8614e31432725be2fd46a6983c2af5a1a06e6c687df834ceef5fd514a56618f5
 
