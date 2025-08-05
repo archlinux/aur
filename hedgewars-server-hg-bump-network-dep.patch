@@ -1,0 +1,21 @@
+
+# HG changeset patch
+# User Sergey Alirzaev <zl29ah@gmail.com>
+# Date 1667666925 -3600
+# Node ID eb52cf05e454e45c69800c68647055acf27d971c
+# Parent  0cd6996cd4c82a9275fb4f4eea4bf60c6ac7599e
+GameServer: bump network dependency
+
+diff -r 0cd6996cd4c8 -r eb52cf05e454 gameServer/hedgewars-server.cabal
+--- a/gameServer/hedgewars-server.cabal	Sun Nov 06 17:27:28 2022 +0100
++++ b/gameServer/hedgewars-server.cabal	Sat Nov 05 17:48:45 2022 +0100
+@@ -22,7 +22,8 @@
+     containers,
+     vector,
+     bytestring,
+-    network >= 2.3 && < 3.0,
++    network >= 2.3 && < 3.2,
++    network-bsd >= 2.8.1 && < 2.9,
+     random,
+     time,
+     mtl >= 2,
