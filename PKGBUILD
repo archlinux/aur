@@ -1,6 +1,6 @@
 # Maintainer: fk29g <fk29g.uphill912@slmails.com>
 pkgname="genpw"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Minimal password generator for Linux using /dev/urandom"
 arch=("any")
@@ -11,7 +11,7 @@ conflicts=("$pkgname")
 optdepends=("xclip: for copying passwords to clipboard on X11"
             "wl-clipboard: for copying passwords to clipboard on Wayland")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('526dd52707ea0203c9caabb10694a707f0a2b81401bd8ec0f53b126f6de048c9')
+sha256sums=('c43a20c25d8c030a5dc64b346fcae9251867db5bd2ef96b26200e3c6f44c8a25')
 
 package() {
     cd "$pkgname-$pkgver"
