@@ -1,10 +1,11 @@
 pkgbase = python-inputmodule
 	pkgdesc = Python-based command line utility and library to control Framework Laptop 16 input modules
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/FrameworkComputer/inputmodule-rs
 	arch = any
 	license = MIT
+	makedepends = imagemagick
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
