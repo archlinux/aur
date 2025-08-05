@@ -11,8 +11,8 @@ license=("GPL")
 groups=()
 depends=(
     "icingaweb2>=2.9"
-    "icinga-php-library>=0.14.1"
-    "icinga-php-thirdparty>=0.12"
+    "icinga-php-library>=0.17.0"
+    "icinga-php-thirdparty>=0.13.0"
 )
 makedepends=()
 optdepends=()
