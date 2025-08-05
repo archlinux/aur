@@ -1,17 +1,18 @@
 pkgbase = ammo-git
-	pkgdesc = Almost Manual Mod Organizer - Linux MO for Bethesda Games
-	pkgver = 0.1.0.r461.b28e50e
+	pkgdesc = Almost Manual Mod Organizer - The Definitive CLI Mod Manager for Linux
+	pkgver = 0.1.0.r541.7d05c60
 	pkgrel = 1
 	url = https://github.com/cyberrumor/ammo
 	arch = any
 	license = GPL-2.0-only
 	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = 7zip
 	provides = ammo
-	source = git+https://github.com/cyberrumor/ammo.git#commit=b28e50e4cbd5152ee8ab89a48c6d862a77ea024e
+	source = git+https://github.com/cyberrumor/ammo.git#commit=7d05c601a69678e5e760cd83be92ac3b2637db8c
 	sha512sums = SKIP
 
 pkgname = ammo-git

@@ -2,18 +2,18 @@
 
 pkgname=ammo-git
 _pkgname=ammo
-pkgver=0.1.0.r461.b28e50e
+pkgver=0.1.0.r541.7d05c60
 _pkgver=0.1.0
-_commit=b28e50e4cbd5152ee8ab89a48c6d862a77ea024e
+_commit=7d05c601a69678e5e760cd83be92ac3b2637db8c
 pkgrel=1
-pkgdesc="Almost Manual Mod Organizer - Linux MO for Bethesda Games"
+pkgdesc="Almost Manual Mod Organizer - The Definitive CLI Mod Manager for Linux"
 url="https://github.com/cyberrumor/ammo"
 license=('GPL-2.0-only')
 arch=('any')
 depends=('python' '7zip')
 provides=('ammo')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-pytest-cov')
 source=("git+https://github.com/cyberrumor/ammo.git#commit=$_commit")
 sha512sums=('SKIP')
 
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$_pkgname"
-  python -m pytest
+  python -m pytest -cov
 }
 
 package() {
