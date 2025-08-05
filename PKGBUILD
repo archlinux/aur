@@ -1,7 +1,7 @@
 # Maintainer: Eugene Gershnik <gershnik@hotmail.com>
 pkgname='wsdd-native'
 pkgver='1.21'
-pkgrel=1
+pkgrel=2
 pkgdesc='WS-Discovery Host Daemon. Makes your machine visible in Network view of Windows Explorer'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gershnik/wsdd-native'
@@ -11,7 +11,7 @@ makedepends=('cmake>=3.25' 'make' 'gcc>=11.3' 'git' 'patch' 'tar' 'libsystemd')
 conflicts=('wsdd')
 backup=('etc/wsddn.conf')
 source=(
-    "wsddn-v$pkgver.tgz::https://github.com/gershnik/wsdd-native/tarball/48a4ce831d7d953d00be9488bbd25e56a9617faa"
+    "wsddn-v$pkgver.tgz::https://github.com/gershnik/wsdd-native/tarball/v$pkgver"
     "argum-v2.6.tgz::https://github.com/gershnik/argum/tarball/v2.6"
     "asio-1.30.2.tgz::https://downloads.sourceforge.net/asio/asio-1.30.2.tar.gz"
     "fmt-11.2.0.tgz::https://github.com/fmtlib/fmt/tarball/11.2.0"
@@ -26,6 +26,8 @@ source=(
 )
 noextract=("${source[@]%%::*}")
 
+_fetched_deps=( )
+
 prepare() {
     local u
     for u in ${source[@]}; do
@@ -35,21 +37,20 @@ prepare() {
         mkdir "$comp"
         tar -C "$comp" --strip-components=1 --warning=no-unknown-keyword -xzf $tgz
         if [ $comp != "wsddn" ]; then
-            _fetched_deps="$_fetched_deps $comp"
+            _fetched_deps+=( "$comp" )
         fi
     done
 }
 
 build() {
-    local fetch_sources='-DFETCHCONTENT_FULLY_DISCONNECTED=ON'
+    local fetch_sources=( '-DFETCHCONTENT_FULLY_DISCONNECTED=ON' )
     local comp
-    for comp in $_fetched_deps
-    do
-        fetch_sources="$fetch_sources -DFETCHCONTENT_SOURCE_DIR_${comp^^}=$srcdir/$comp"
+    for comp in "${_fetched_deps[@]}"; do
+        fetch_sources+=( "-DFETCHCONTENT_SOURCE_DIR_${comp^^}=$srcdir/$comp" )
     done
 
     cd wsddn
-    cmake -S . -B out -DCMAKE_BUILD_TYPE=None $fetch_sources
+    cmake -S . -B out -DCMAKE_BUILD_TYPE=None "${fetch_sources[@]}"
     cmake --build out
     cp installers/wsddn.conf out/
     sed -i "s/{RELOAD_INSTRUCTIONS}/# sudo systemctl restart wsddn\n/g" out/wsddn.conf
@@ -68,7 +69,7 @@ package() {
 
 }
 
-sha256sums=('0731cbc199dff6695034f4c24af0b362bdffe70109b5ac485246a24aaf6fdbd9'
+sha256sums=('ba605604e450248da81c6336fd51f0ca894a65bcdce0301e488ba81ffa5b577f'
             '72b2b6805da7bf022e8111f3c2f3ed08ae6c23daa0ad336de56f2bd133d653c4'
             '12e7bb4dada8bc1191de9d550a59ee658ce4e645ffc97c911c099ab4e8699d55'
             '15b7d9723d16e6ecbf83438a1611a2910879eaa5bc8d0e0fd8197c2f18f993be'
