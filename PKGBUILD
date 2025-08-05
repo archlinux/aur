@@ -7,10 +7,10 @@
 _pkgname=pk_web
 pkgname=${_pkgname}-git
 pkgver=0.2.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Web UI for plakar backup tool"
 arch=(any)
-url="https://plakar_web.spn.109"
+url="https://plakar-web-ui.spn109.fr"
 license=('Apache-2')
 groups=()
 provides=("$_pkgname")
