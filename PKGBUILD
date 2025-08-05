@@ -3,7 +3,7 @@
 pkgname=python-http-response
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=
 pkgdesc="Python http response utils."
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e6c0d7513cc55facc16929fff6210c6fa7fa632306c3795d5cbe380ebc15da2c')
+sha256sums=('775aa0fbadb752265d7b0cc1e7a238beccb7b57b355ad47d923e038d3df73c65')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

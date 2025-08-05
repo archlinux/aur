@@ -1,6 +1,6 @@
 pkgbase = python-http-response
 	pkgdesc = Python http response utils.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://pypi.org/project/http_response
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-http-response
 	conflicts = python-http-response
 	options = !strip
 	options = !debug
-	source = http_response-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/h/http_response/http_response-0.0.3.tar.gz
-	sha256sums = e6c0d7513cc55facc16929fff6210c6fa7fa632306c3795d5cbe380ebc15da2c
+	source = http_response-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/h/http_response/http_response-0.0.4.tar.gz
+	sha256sums = 775aa0fbadb752265d7b0cc1e7a238beccb7b57b355ad47d923e038d3df73c65
 
 pkgname = python-http-response
