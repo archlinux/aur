@@ -14,7 +14,7 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.52.1
+pkgver=1.54.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -37,6 +37,7 @@ makedepends=(
   libmm-glib
   libndp
   libnewt
+  libnvme
   libpsl
   libteam
   meson
@@ -63,7 +64,7 @@ checkdepends=(
 )
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=${pkgver/[a-z]/-&}"
         "$pkgbase.install")
-b2sums=('0af9767688f43ccdca335c1655f4a0b7b2f0568f965b7cfc268aad63a4dfa0f0d9b86746a72e5d27923f0fb8fe8cc74d429fe977c10edea3b24dd47497d021b1'
+b2sums=('b0bb870e19216ac15b9902007502c16a7bf3d72620f76479fc8ff43acfeb5bceb1b7822293603975a99d42ab05b3b522b87a184af154a0b382423639804d1b76'
         '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
 
 prepare() {
@@ -135,6 +136,7 @@ package_networkmanager-iwd() {
     libndp
     libnewt
     libnm-iwd
+    libnvme
     libpsl
     libteam
     mobile-broadband-provider-info
