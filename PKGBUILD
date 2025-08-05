@@ -1,8 +1,8 @@
 # Maintainer: Dinamyc <dinamycdinamyc at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
-pkgver=2.101.0
-pkgrel=1
+pkgver=2.106.5
+pkgrel=0
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bepass-org/oblivion-desktop"
@@ -17,15 +17,15 @@ source_aarch64=("${pkgname%-bin}-${pkgver//_/-}-arm64.deb::${url}/releases/downl
 source=("https://raw.githubusercontent.com/bepass-org/${pkgname%-bin}/refs/tags/v${pkgver//_/-}/LICENSE.md")
 
 sha256sums=('1030cbd64a888ed7b945ba92fa9468fc3f29176e86f046f5cc620c68a6cfde64')
-sha256sums_x86_64=('10fa3de45e9617b2393dcc5b4fd5e5999e92fcf21573b6a9ed27d79d16f30c0f')
-sha256sums_aarch64=('9900a704062ca853d55818f2e8cf54784b93ef200857d37104e218cf825f5dfb')
+sha256sums_x86_64=('feda8baa8951fe716b7067702484a381366e2abc4fa686f7792ca9548ac8a16b')
+sha256sums_aarch64=('40effcafcae9e1edf39c51342dc3d60040d291a0b265afa5f9855020da381cd6')
 
+options=(!debug !strip)
 
 package() {
 	cd "${pkgdir}"
 
 	bsdtar -xf "${srcdir}/data.tar.xz"
 	install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
-
 }
 # vim:set ts=4 sw=4 et:
