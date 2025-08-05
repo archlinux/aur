@@ -1,1 +1,4 @@
-pt-plugin-plus
+/pkg
+/src
+*.pkg.tar.*
+/pt-plugin-plus
