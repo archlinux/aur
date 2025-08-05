@@ -9,6 +9,8 @@ url="https://wayback.freedesktop.org/"
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'wlroots0.19' 'glibc' 'xorg-xwayland' 'scdoc')
 makedepends=('git' 'meson' 'wayland-protocols')
+conflicts=('wayback-x11')
+provides=('wayback-x11')
 source=("git+https://gitlab.freedesktop.org/wayback/wayback.git")
 sha256sums=('SKIP')
 
