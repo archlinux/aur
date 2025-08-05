@@ -3,7 +3,7 @@
 _name=litproxy
 pkgname=python-${_name}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, Easy-to-Use Python Proxy Management Library'
 arch=(any)
 url="https://github.com/OEvortex/Webscout"
@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "${_name}-${pkgver}"
-  python -m build --wheel --no-isolation
+  python -m installer --destdir="${pkgdir}" "dist/${_name}-${pkgver}-py3-none-any.whl"
 }
 
 # vim:set ts=2 sw=2 et:
