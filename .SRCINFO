@@ -1,7 +1,7 @@
 pkgbase = python-vllm-bin
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -37,6 +37,8 @@ pkgbase = python-vllm-bin
 	depends = python-prometheus-fastapi-instrumentator
 	depends = python-partial-json-parser
 	depends = python-watchfiles
+	depends = python-diskcache
+	depends = python-pybase64
 	optdepends = cuda: use nvidia GPU
 	optdepends = cuda-tools: use nvidia GPU
 	optdepends = python-openai: required for openai protocols
