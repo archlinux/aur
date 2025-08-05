@@ -10,7 +10,7 @@ depends=('doas')
 provides=('doasedit')
 conflicts=('doasedit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('39c86886dd166bc373f1b81cb549b46bd54d9b52cdd2bcf0696cd08ddbd50a4e')
+sha256sums=('de7dfc450568d14f1ff473aa4a50a0d0505e188e117cc12cf3a2b0ea5da8af10')
 
 package() {
 	cd doasedit
