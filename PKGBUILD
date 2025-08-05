@@ -11,7 +11,7 @@
 
 _pkgname="qtile"
 pkgname="$_pkgname-git"
-pkgver=0.29.0.r55.gfd6b2cd
+pkgver=0.33.0.r20.gfd1a397
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager"
 url="https://github.com/qtile/qtile"
@@ -28,6 +28,7 @@ depends=(
   python-cairocffi
   python-cffi
   python-gobject
+  python-isort
   python-xcffib
 )
 
@@ -46,17 +47,20 @@ checkdepends=(
   imagemagick
   lm_sensors
   procps-ng
+  python-anyio
   python-bowler
   python-dbus-fast
   python-gobject
   python-isort
   python-libcst
   python-pytest
+  python-pytest-xdist
   python-xdg
   xorg-server-xephyr
   xorg-server-xvfb
   xorg-xrandr
   xorg-xwayland
+  xterm
 )
 optdepends=(
   'alsa-utils: for volume widget'
@@ -97,33 +101,27 @@ pkgver() {
   git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
-build() {
+build() (
   export PKG_CONFIG_PATH="/usr/lib/wlroots${_wlrver:?}/pkgconfig:$PKG_CONFIG_PATH"
   export CFLAGS+=" $(pkg-config --cflags wlroots)"
   export LDFLAGS+=" $(pkg-config --libs wlroots)"
 
   cd "$_pkgsrc"
+  PYTHONPATH="$PWD" python "./libqtile/backend/wayland/cffi/build.py"
   python -m build --no-isolation --wheel
+)
 
-  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export LC_TYPE=en_US.UTF-8
-  export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
-
-  python -m installer --destdir=test_dir dist/*.whl
-  ./scripts/ffibuild -v
-}
-
-check() {
+check() (
   local pytest_options=(
     -vv
     --backend x11
     --backend wayland
-    # disable failing tests: https://github.com/qtile/qtile/issues/4762
-    --deselect "test/backend/x11/test_window.py::test_urgent_hook_fire[wayland-2]"
-    --deselect "test/widgets/test_clock.py::test_clock_datetime_timezone"
-    --deselect "test/widgets/test_clock.py::test_clock_pytz_timezone"
-    --deselect "test/widgets/test_clock.py::test_clock_dateutil_timezone"
-    --deselect "test/widgets/test_clock.py::test_clock_change_timezones"
+    ## disable failing tests
+    #--deselect "test/backend/x11/test_window.py::test_urgent_hook_fire[wayland-2]"
+    #--deselect "test/widgets/test_clock.py::test_clock_datetime_timezone"
+    #--deselect "test/widgets/test_clock.py::test_clock_pytz_timezone"
+    #--deselect "test/widgets/test_clock.py::test_clock_dateutil_timezone"
+    #--deselect "test/widgets/test_clock.py::test_clock_change_timezones"
   )
 
   cd "$_pkgsrc"
@@ -132,12 +130,13 @@ check() {
   export LC_TYPE=en_US.UTF-8
   export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
 
-  pytest "${pytest_options[@]}" || true
-}
+  python -m installer --destdir=test_dir dist/*.whl
+  pytest -n $(nproc) "${pytest_options[@]}" || true
+)
 
 package() {
   cd "$_pkgsrc"
-  cp -a --reflink=auto test_dir/* "$pkgdir/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 CHANGELOG README.rst libqtile/resources/default_config.py \
