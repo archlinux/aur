@@ -10,6 +10,6 @@ pkgbase = gamebreaker
 	depends = sdl2_image
 	depends = sdl2_ttf
 	source = GameBreaker-0.0.7.tar.gz::https://github.com/elpoeprod/GameBreaker/archive/v0.0.7.tar.gz
-	md5sums = 187966a6f3832870754084d1da67863b
+	md5sums = a8c5b6f7cb74fd391bd0eb3667c269e2
 
 pkgname = gamebreaker
