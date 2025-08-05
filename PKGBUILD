@@ -1,5 +1,6 @@
 # shellcheck shell=bash
-# Maintainer: Chinmay Dalal <w5vwg64uy at relay dot firefox dot com>
+# Maintainer: Gunnar Bretthauer <taijian@posteo.de>
+# Contributor: Chinmay Dalal <w5vwg64uy at relay dot firefox dot com>
 
 pkgname=powertop-git
 _pkgname=powertop
