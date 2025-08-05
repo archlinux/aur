@@ -3,7 +3,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
-pkgver=3.4.2.r98.17ea2947a
+pkgver=3.4.2.r118.d1acdbfe2
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
@@ -36,6 +36,8 @@ makedepends=(
   mesa
   meson
 )
+provides=(aegisub)
+conflicts=(aegisub)
 source=(git+https://github.com/TypesettingTools/Aegisub.git)
 b2sums=('SKIP')
 
