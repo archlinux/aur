@@ -2,8 +2,8 @@
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 
 pkgname=ubports-installer
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 _nodeversion=18
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ makedepends=('nvm')
 options=('!strip' '!emptydirs')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubports/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b2d0eb5eda80f552a933781df08010709616c322900531417d71a40787d5928b')
+sha256sums=('55538e2e275ee26cfb042cd260a7c3953de61fc712a4179fec08c5ff07a1ef0a')
 
 _srcdir="$pkgname-$pkgver"
 
