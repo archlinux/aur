@@ -1,0 +1,18 @@
+pkgbase = pypy3-scikit-build-core
+	pkgdesc = Build backend for CMake based projects
+	pkgver = 0.11.5
+	pkgrel = 1
+	url = https://github.com/scikit-build/scikit-build-core
+	arch = any
+	license = Apache-2.0
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-hatch-vcs
+	depends = cmake
+	depends = ninja
+	depends = pypy3-packaging
+	depends = pypy3-pathspec
+	source = scikit-build-core-0.11.5.tar.gz::https://github.com/scikit-build/scikit-build-core/archive/v0.11.5.tar.gz
+	sha512sums = f48e9fdd817a07ac6cc3eb38a36be31f7696b11b1dd958c62f8626b0412b6d1813d8c7aed386aba1d3ea6424ab5ace96b4684d65c410d87fc7f76a5959be38ff
+
+pkgname = pypy3-scikit-build-core

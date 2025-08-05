@@ -1,0 +1,5 @@
+[pypy3-scikit-build-core]
+source = "github"
+github = "scikit-build/scikit-build-core"
+use_latest_release = "true"
+prefix = "v"
