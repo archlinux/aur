@@ -1,5 +1,5 @@
 pkgbase = python-livekit-agents
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.2.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.2/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = 8fc33cf7c71043259a6b236b24c89046d59ce28340fd80c360c72f244efb363e
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.3.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.3/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = a27423ff25010ff7a867d7c6a66d37050ba171d582da4bc0650b5230664b2e75
 	sha256sums = 6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396
 
 pkgname = python-livekit-agents
