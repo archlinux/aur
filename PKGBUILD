@@ -3,7 +3,7 @@
 pkgname=python-vllm
 _pkgname=vllm
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -40,6 +40,8 @@ depends=(
   python-partial-json-parser
   python-watchfiles
   python-triton
+  python-diskcache
+  python-pybase64
   )
 makedepends=(
   git

@@ -1,7 +1,7 @@
 pkgbase = python-vllm
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -43,6 +43,8 @@ pkgbase = python-vllm
 	depends = python-partial-json-parser
 	depends = python-watchfiles
 	depends = python-triton
+	depends = python-diskcache
+	depends = python-pybase64
 	optdepends = python-openai: required for openai protocols
 	optdepends = python-prometheus_client: Prometheus instrumentation library for Python applications
 	optdepends = python-pillow: required for image processing
