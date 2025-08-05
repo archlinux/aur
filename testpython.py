@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import re
 import json
@@ -27,23 +28,6 @@ shuffle = False
 # File paths
 FAV_FILE = "favorites.json"
 QUEUE_FILE = "queue.json"
-
-def display_logo():
-    # Text art logo
-    logo = """
-    ______ _____  ________  ____      
-    |  _  \  _  ||  _  |  \/  ( )     
-    | | | | | | || | | | .  . |/ ___  
-    | | | | | | || | | | |\/| | / __| 
-    | |/ /\ \_/ /\ \_/ / |  | | \__ \ 
-    |___/  \___/  \___/\_|  |_/ |___/ 
-    """
-    print(logo)
-
-if __name__ == "__main__":
-    display_logo()
-    # Your app's code continues here...
-
 
 # Clean song title for better matching
 def clean_title(title):
