@@ -3,7 +3,7 @@
 
 pkgname=alvr
 pkgver=20.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
