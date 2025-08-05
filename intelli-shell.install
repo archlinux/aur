@@ -1,0 +1,8 @@
+post_install() {
+	cat <<EOF
+==> To enable IntelliShell for your shell, add the following to your config:
+==> Bash: eval "$(intelli-shell init bash)"
+==> Zsh: eval "$(intelli-shell init zsh)"
+==> Fish: intelli-shell init fish | source
+EOF
+}
