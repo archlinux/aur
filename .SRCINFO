@@ -1,16 +1,15 @@
 pkgbase = lib60870
 	pkgdesc = lib60870 library for IEC 60870-5 based protocols in C
-	pkgver = 2.3.4
+	pkgver = 2.3.6
 	pkgrel = 1
 	url = https://www.mz-automation.de
 	arch = x86_64
 	arch = i686
 	license = GPLv3
 	makedepends = cmake
-	makedepends = mbedtls
 	source = https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.2/mbedtls-3.6.2.tar.bz2
-	source = https://github.com/mz-automation/lib60870/archive/refs/tags/v2.3.4.tar.gz
+	source = https://github.com/mz-automation/lib60870/archive/refs/tags/v2.3.6.tar.gz
 	sha256sums = 8b54fb9bcf4d5a7078028e0520acddefb7900b3e66fec7f7175bb5b7d85ccdca
-	sha256sums = 09a2acd3241168c23e0d6653a0cde689d2b6f4b22d7c0e3b18b38c7a728ad77d
+	sha256sums = c0eaca55cda11d81017a83876091d3f3dcf2d60671bdb7ada7c29371ce146d09
 
 pkgname = lib60870

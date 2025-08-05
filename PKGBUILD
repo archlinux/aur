@@ -1,13 +1,13 @@
 # Maintainer: Farzin Monsef <farzin [at] inphraz [dot] ir>
 
 pkgname=lib60870
-pkgver=2.3.4
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="lib60870 library for IEC 60870-5 based protocols in C"
 arch=('x86_64' 'i686')
 url="https://www.mz-automation.de"
 license=('GPLv3')
-makedepends=('cmake' 'mbedtls')
+makedepends=('cmake')
 _mbedtls_pkgver=3.6.2
 _mbedtls_shortver=3.6
 _mbedtls=mbedtls-${_mbedtls_pkgver}
@@ -16,7 +16,7 @@ source=("https://github.com/Mbed-TLS/mbedtls/releases/download/$_mbedtls/$_mbedt
         "https://github.com/mz-automation/lib60870/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=('8b54fb9bcf4d5a7078028e0520acddefb7900b3e66fec7f7175bb5b7d85ccdca'
-            '09a2acd3241168c23e0d6653a0cde689d2b6f4b22d7c0e3b18b38c7a728ad77d')
+            'c0eaca55cda11d81017a83876091d3f3dcf2d60671bdb7ada7c29371ce146d09')
 
 prepare()
 {
@@ -28,6 +28,7 @@ build() {
     mkdir -p ${_srcname}/build
     cd ${_srcname}/build
     cmake .. \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTS=OFF
