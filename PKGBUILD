@@ -3,8 +3,8 @@
 pkgname=xlibre-xf86-video-amdgpu
 _pkgname=xf86-video-amdgpu
 pkgver=23.0.0.4
-pkgrel=1
-pkgdesc="XLibre fork of X.Org amdgpu video driver"
+pkgrel=2
+pkgdesc="Official XLibre fork of X.Org amdgpu video driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/X11Libre"
 license=('MIT')
