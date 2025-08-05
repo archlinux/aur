@@ -1,0 +1,20 @@
+pkgbase = koteyfetch
+	pkgdesc = Красивая системная утилита с котиком для отображения информации о системе
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dozaxcx/koteyfetch
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	depends = gcc-libs
+	depends = curl
+	source = koteyfetch.cpp
+	source = LICENSE
+	source = README.md
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = koteyfetch
