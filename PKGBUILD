@@ -1,7 +1,7 @@
 pkgname=apollo-studio-launchpad
 pkgver=1.8.16
 pkgrel=2
-pkgdesc="Apollo Studio - audio project editor"
+pkgdesc="Apollo Studio - standalone editor and live playback engine for Launchpad light effects"
 arch=('x86_64')
 url="https://github.com/Jacobeagle/apollo-studio-build-AUR"
 license=('custom')
