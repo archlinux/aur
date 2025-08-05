@@ -1,7 +1,7 @@
 pkgbase = eden-git
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 0.0.2.r272.g9634342
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://eden-emulator.github.io/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = eden-git
 	makedepends = cmake
 	makedepends = mold
 	makedepends = spirv-tools
+	makedepends = catch2
 	makedepends = wireless_tools
 	makedepends = vulkan-headers
 	makedepends = vulkan-utility-libraries
