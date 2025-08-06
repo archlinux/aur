@@ -4,11 +4,13 @@
 pkgname=expressvpn-beta
 _name=expressvpn
 pkgver=4.1.1.10039
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'aarch64')
-depends=('bash' 'dbus' 'gcc-libs' 'glib2' 'glibc' 'iptables' 'libatomic_ops' 'libcap-ng'
-         'libnl' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'psmisc' 'zlib')
+depends=('bash' 'dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'iptables' 'libatomic_ops'
+         'libcap-ng' 'libice' 'libnl' 'libsm' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'psmisc'
+         'qt6-3d' 'qt6-base' 'qt6-declarative' 'qt6-declarative' 'qt6-lottie' 'qt6-quicktimeline'
+         'qt6-scxml' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-wayland' 'zlib')
 provides=('expressvpn')
 conflicts=('expressvpn')
 url="https://expressvpn.com"
@@ -51,4 +53,6 @@ package() {
 
   install -Dm644 "${srcdir}/expressvpn.sysusers" "${pkgdir}/usr/lib/sysusers.d/expressvpn.conf"
   install -Dm644 installfiles/expressvpn-service.service "${pkgdir}/usr/lib/systemd/system/expressvpn-service.service"
+
+  install -Dm644 "expressvpnfiles/share/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt" 
 }
