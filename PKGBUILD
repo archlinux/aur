@@ -1,33 +1,34 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: George Stelle <stelleg@gmail.com>
+# Maintainer: fft
+# Contributor: George Stelle <stelleg@gmail.com>
 pkgname=argobots-git
-pkgver=v1.0a1.r46.g8394f8a
+pkgver=v1.2.r4.gbb6faac
 pkgrel=1
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgdesc="Lightweight, low-level threading and tasking framework"
+pkgdesc='Lightweight, low-level threading and tasking framework'
 arch=('x86_64')
-url=""
-license=('GPL')
-source=("$pkgname"::"git+https://github.com/pmodels/argobots.git")
-noextract=()
+url="argobots.org"
+license=('LicenseRef-UChicago-Argonne')
+source=("${pkgname}"::git+https://github.com/pmodels/argobots.git)
 md5sums=('SKIP')
-makedepends=('git automake autoconf gcc libtool')
+makedepends=(automake autoconf git libtool)
 
 build() {
-	cd "$pkgname"
+  cd "${pkgname}"
   ./autogen.sh
-	./configure --prefix=/usr
-	make
+  ./configure --prefix=/usr
+  make
+}
+
+check() {
+  cd "${pkgname}/test"
+  make check
 }
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
+  cd "${pkgname}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
