@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-bin
 _pkgname=DeepChat
-pkgver=0.2.8
+pkgver=0.2.9
 _electronversion=35
 pkgrel=1
 pkgdesc="A smart assistant that connects powerful AI to your personal world.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f204012e7d9a7a89e7443020a0b3ac6401e0a65f458004f67ab406588b249373'
+sha256sums=('5a7e1ed5ea08ac8ebb964a9a702280fb83c82fbf645a1c12d590f7c9a306cf62'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
