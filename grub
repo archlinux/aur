@@ -12,6 +12,7 @@ grub_generate() {
     fi
     # create config
     /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
+    # secureboot signing
     [[ -f /usr/bin/sbctl ]] && /usr/bin/sbctl sign-all -g
 }
 
@@ -20,23 +21,7 @@ vmlinuz_generate() {
     /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
 }
 
-remove(){
-    # Remove /boot grub entries
-    /usr/bin/rm -rf /boot/grub /boot/EFI/GRUB
-    if [[ -f /boot/EFI/BOOT/BOOTX64.EFI ]]; then
-      if strings /boot/EFI/BOOT/BOOTX64.EFI | grep -qi grub; then
-        /usr/bin/rm -rf /boot/EFI/BOOT/BOOTX64.EFI
-      fi
-    fi
-    # Remove efibootmgr GRUB entries
-    if /usr/bin/efibootmgr | /usr/bin/grep -qi GRUB; then
-      BOOTNUM=$(/usr/bin/efibootmgr | /usr/bin/awk '/GRUB/{print $1}' | /usr/bin/sed 's/Boot\([0-9]*\).*/\1/' | head -n1)
-      /usr/bin/efibootmgr -b "$BOOTNUM" -B >/dev/null
-    fi
-}
-
 case "$1" in
   grub_generate) grub_generate ;;
   vmlinuz_generate) vmlinuz_generate ;;
-  remove) remove ;;
 esac
