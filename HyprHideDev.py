@@ -42,6 +42,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     if args.reset:
-         os.system(f"hyprhide-gui-main --luanched --set-version {VERSION}")
+         os.system(f"hyprhide-gui-main --launched --set-version {VERSION}")
     else:
         main()
