@@ -128,4 +128,4 @@ n | N) exit 1 ;;
 esac
 
 git add PKGBUILD .SRCINFO
-git commit -m "Update $PKGNAME to version $new_version"
+git commit -m "Update $PKGNAME to version $full_version"
