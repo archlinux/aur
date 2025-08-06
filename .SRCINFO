@@ -1,8 +1,8 @@
 pkgbase = plakar_cleaner-git
 	pkgdesc = Tool for retain plakar backup by retention policies
 	pkgver = 0.2.1
-	pkgrel = 1
-	url = https://plakar-cleaner.spn109.fr/
+	pkgrel = 2
+	url = https://spn109.fr/pc
 	arch = any
 	license = Apache-2
 	makedepends = git
