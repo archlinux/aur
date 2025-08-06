@@ -478,7 +478,7 @@ class HyprHideAppInitWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("HyprHide Setup")
-        self.setFixedSize(560, 420)
+        self.setFixedSize(560, 520)
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, True)
         self.setWindowFlag(Qt.WindowType.Tool)
 
