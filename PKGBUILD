@@ -1,15 +1,15 @@
 # Maintainer: András WACHA <awacha@gmail.com>
 pkgname=ifeffit
-pkgver=1.2.final
-pkgrel=2
+pkgver=1.2.11c
+pkgrel=1
 pkgdesc="XAFS analysis program"
 arch=('i686' 'x86_64')
-url="http://cars9.uchicago.edu/ifeffit/"
+url="https://millenia.cars.aps.anl.gov/ifeffit/"
 license=('GPL')
 depends=('pgplot')
 makedepends=('gcc-fortran')
-source=("https://github.com/newville/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('8708de3ea387cd0a47c7a1a4b5cf8e8e')
+source=("https://master.dl.sourceforge.net/project/${pkgname}/${pkgname}/1.2.11/${pkgname}-1.2.11c.tar.gz")
+md5sums=('f5654d2ef4908bf2aeb2eec27994f965')
 
 
 prepare() {
