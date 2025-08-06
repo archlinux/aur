@@ -1,5 +1,5 @@
 pkgname=ayllu
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Ayllu Forge"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
 	"$pkgname-$pkgver::https://ayllu-forge.org/ayllu/ayllu/refs/archive/$pkgver.tar.gz"
 )
 
-sha256sums=("1d4cff32a8b927228198c326c4831a07d528dece8b1183dc35fc98479596a2d1")
+sha256sums=("f761da5740aa7da683276bb3ba1363995d38ae34abb7c3530f1f71476d80f360")
 # See: https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 
@@ -35,6 +35,7 @@ build() {
 }
 
 package() {
+	SRC_ROOT="${srcdir}/${pkgname}-${pkgver}"
 	install -Dm755 \
 		"${srcdir}/target/release/ayllu" "${pkgdir}/usr/bin/ayllu"
 	install -Dm755 \
@@ -44,13 +45,16 @@ package() {
 	install -Dm755 \
 		"${srcdir}/target/release/ayllu-keys" "${pkgdir}/usr/bin/ayllu-keys"
 	install -Dm644 \
-		"${srcdir}/ayllu/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+		"${SRC_ROOT}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 \
-		"${srcdir}/ayllu/config.example.toml" "${pkgdir}/etc/ayllu/config.example.toml"
+		"${SRC_ROOT}/config.example.toml" "${pkgdir}/etc/ayllu/config.example.toml"
 	install -Dm644 \
-		"${srcdir}/ayllu/contrib/systemd/system/ayllu.service" \
+		"${SRC_ROOT}/contrib/systemd/ayllu-sysusers.conf" \
+		"${pkgdir}/usr/lib/sysusers.d/ayllu.conf"
+	install -Dm644 \
+		"${SRC_ROOT}/contrib/systemd/system/ayllu.service" \
 		"${pkgdir}/usr/lib/systemd/system/ayllu.service"
 	install -Dm644 \
-		"${srcdir}/ayllu/contrib/systemd/user/ayllu.service" \
+		"${SRC_ROOT}/contrib/systemd/user/ayllu.service" \
 		"${pkgdir}/usr/lib/systemd/user/ayllu.service"
 }
