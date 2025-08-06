@@ -1,24 +1,24 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-_base=precice-config-visualizer-gui
-pkgname=${_base}
+_base=config-visualizer-gui
+pkgname=precice-${_base}
 pkgdesc="A GUI tool for visualizing a preCICE configuration file as a dot file"
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 arch=(any)
-url="https://github.com/precice/${_base/precice-/}"
-license=(GPL-3.0-or-later)
-depends=(precice-config-visualizer xdot)
-makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(${_base/precice-/}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('577362ceae626a1e523bcec15ea105bc66e89382bf95143a14626deaf52fb06a7f7b939cd685786faea7758d8ac658bd8ab1474e2c8ccc786f686bcce8773338')
+url="https://github.com/precice/${_base}"
+license=(MIT)
+depends=(xdot python-gobject precice-config-visualizer)
+makedepends=(python-build python-installer python-setuptools-git-versioning git)
+source=(git+${url}.git#tag=v${pkgver})
+sha512sums=('0a515781e6dcfa8465068db83820394a07bf7db6d656646db487f12cf54641c036fea5ef688ae681f43dc8b8fa76c24c31a3992586d1b18a499b0f58b6256758')
 
 build() {
-  cd ${_base/precice-/}-${pkgver}
+  cd ${_base}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd ${_base/precice-/}-${pkgver}
+  cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
