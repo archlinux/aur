@@ -9,7 +9,6 @@ pkgbase = run0-sudo-shim-git
 	makedepends = rust
 	provides = sudo
 	conflicts = sudo
-	replaces = sudo
 	source = run0-sudo-shim-git::git+https://github.com/LordGrimmauld/run0-sudo-shim
 	sha256sums = SKIP
 

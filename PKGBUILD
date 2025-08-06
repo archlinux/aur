@@ -10,7 +10,6 @@ license=('BSD-3-Clause')
 makedepends=('git' 'rust')
 provides=('sudo')
 conflicts=('sudo')
-replaces=('sudo')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
