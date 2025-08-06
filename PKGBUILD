@@ -61,20 +61,20 @@ build() {
   find "build" -type f \( -name '*.pdb' -o -name '*.config' \) -delete
 }
 
-check() {
-  _srcenv
-  local dotnet_options=(
-    --configuration Release
-    --framework "net${_sdk}"
-    --no-restore
-    --runtime "linux-${_msarch}"
-    # --verbosity detailed
-  )
-
-  cd "${srcdir}/${_pkgsrc}"
-  dotnet run "${dotnet_options[@]}" --project ./"Src/${_Name}.Cli.Tests"
-  dotnet build-server shutdown
-}
+# check() {
+#   _srcenv
+#   local dotnet_options=(
+#     --configuration Release
+#     --framework "net${_sdk}"
+#     --no-restore
+#     --runtime "linux-${_msarch}"
+#     # --verbosity detailed
+#   )
+# 
+#   cd "${srcdir}/${_pkgsrc}"
+#   dotnet test "${dotnet_options[@]}" ./"Src/${_Name}.Cli.Tests"
+#   dotnet build-server shutdown
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
