@@ -7,7 +7,7 @@
 
 pkgbase=ollama-amd-igpu
 pkgname=(ollama-amd-igpu ollama-amd-igpu-rocm ollama-amd-igpu-cuda ollama-amd-igpu-docs)
-pkgver=0.11.0
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm, patched for AMD iGPUs'
 arch=(x86_64)
