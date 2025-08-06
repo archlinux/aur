@@ -1,6 +1,6 @@
 pkgname=mihomo-party-git
 _pkgname=${pkgname%-git}
-pkgver=1.8.1.r2.g1dfa872
+pkgver=1.8.2.r2.g8c6c6a6
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -41,6 +41,7 @@ package() {
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
     chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
+    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-smart
     install -Dm755 "${srcdir}/../${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
     sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
