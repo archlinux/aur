@@ -19,10 +19,8 @@ pkgbase = chromium-ffmpeg-codecs-git
 	conflicts = vivaldi-ffmpeg-codecs
 	conflicts = vivaldi-snapshot-ffmpeg-codecs
 	source = git+https://git.ffmpeg.org/ffmpeg.git
-	source = sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT
 	source = 138.0.7204.55sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2/chromium/ffmpeg.sigs?format=TEXT
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341
 	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40

@@ -14,22 +14,19 @@ license=('LGPL-2.1-or-later') # https://wiki.hydrogenaudio.org/index.php?title=F
 _chromium=138.0.7204.55
 _chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 source=("git+${url}.git"
-"sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
 sha256sums=('SKIP'
-            '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
-            '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
-            'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
-sha256sums[1]='SKIP'
+'65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
+'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc libfdk-aac)
 makedepends=(nasm git
 diffutils gcc make patch pkgconf) # base-devel
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
-  # List used funcs
-  base64 -d sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt
+  # List used funcs.
+  curl -Ls ${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT | base64 -d | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt # Skip checksum
   base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt
   diff {,old}sigs.txt || echo ffmpeg.sigs was changed. Please OOD $pkgname
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
