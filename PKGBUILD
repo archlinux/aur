@@ -1,14 +1,15 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=firefox-portable
-pkgver=141.0
-pkgrel=3
+pkgver=141.0.2
+pkgrel=1
 epoch=1
 pkgdesc="Firefox sandboxed by portable"
 arch=('any')
 url="https://github.com/Kraftland/portable"
 license=('GPL-3.0-or-later')
 groups=()
+provides=(firefox)
 options=(!debug !strip)
 depends=("portable")
 conflicts=("firefox")
