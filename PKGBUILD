@@ -2,7 +2,7 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-big
-pkgver=4.19
+pkgver=4.20
 pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
@@ -24,14 +24,10 @@ changelog=
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fang64/hamclock/archive/refs/tags/v${pkgver}.tar.gz"
   "hamclock.desktop"
-  "no-libgpio.patch"
-  "no-updates.patch"
 )
 noextract=()
-sha256sums=('370d1f020c06028b35fc12a63ac26be2ab75c46b2319593349018beb5e5587df'
-            'df56e16e9bfab4a6259fd8e9fdffbe8f8d24ff395d2d27434dfd4bfe4adfa85d'
-            '2fee906da830600a480e7ba1a83318a2485b241689b3d186ee04e56887da2dd3'
-            '52f46793691a6ce620f3f7d81e09b369689ec4bebd0cd7da6abd3dc684727fd2')
+sha256sums=('612a49653ae4d4edd43e6840d1de513b536772ffc6d347821fed76a962cfbd0f'
+            'df56e16e9bfab4a6259fd8e9fdffbe8f8d24ff395d2d27434dfd4bfe4adfa85d')
 validpgpkeys=()
 
 prepare() {
@@ -40,14 +36,19 @@ prepare() {
 	# Add -AUR to version
 	sed -i 's/";/-AUR";/g' ESPHamClock/version.cpp
 
+	# Set NO_UPGRADE definition
+	sed -i '18 i CXXFLAGS += -DNO_UPGRADE' ESPHamClock/Makefile
+
 	# Patch Routine to prevent libgpio issues; hamclock was built to
 	# support libgpio 1.x not, anything post libgpio 2.x. Discussed with
 	# Elwood; just going to disable support until an alternative is
 	# implemented in hamclock.
-	patch -Np1 -i ../no-libgpio.patch
+	# UPDATE: libgpio check is in now patch is no longer needed
+	# patch -Np1 -i ../no-libgpio.patch
 
 	# Do not check for/install updates
-	patch -Np1 -i ../no-updates.patch
+	# UPDATE: No longer needed just need a definition in the Makefile
+	# patch -Np1 -i ../no-updates.patch
 }
 
 build() {
