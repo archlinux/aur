@@ -1,5 +1,5 @@
 pkgname=dude
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc='A single-binary helper that discovers, previews and removes pacman orphans'
@@ -10,7 +10,7 @@ depends=(gcc-libs pacman glibc)
 makedepends=('cargo')
 optdepends=('libnotify: desktop notifications')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a451641cd1679f824973ea69bc3f20f7f24e0a4e84085e85065e0edc83a86d9f')
+sha256sums=('f5dace30ae13ebe017db0d2e630cc9e02eef2549c74e6b0602e17c939ebe9f15')
 
 prepare() {
   cd "$pkgname-$pkgver"
