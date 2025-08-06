@@ -1,15 +1,13 @@
 pkgbase = lemonbar
 	pkgdesc = A featherweight, lemon-scented, bar based on xcb.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LemonBoy/bar
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = pod2man
 	depends = libxcb
-	provides = lemonbar
-	conflicts = lemonbar
 	source = https://github.com/LemonBoy/bar/archive/v1.5.tar.gz
 	sha256sums = bc8defe0ce6e4c1b16fd6ba3080a08e4502d6cf9d09440186044eae6b2d7460d
 
