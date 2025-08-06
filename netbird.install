@@ -1,0 +1,18 @@
+# shellcheck shell=bash
+
+post_upgrade() {
+  local old=$2
+
+  if [[ "$(vercmp "$old" 0.53.0)" -lt 0 ]]; then
+    cat <<-MSG
+>>>
+>>> netbird is now using systemd units provided by upstream.
+>>>
+>>> The old configs were written before upstream started shipping their own
+>>> systemd units, which is why they're not 100% drop-in compatible.
+>>>
+>>> Please check your configuration and adjust as necessary.
+>>>
+MSG
+  fi
+}
