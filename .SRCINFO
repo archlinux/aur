@@ -1,0 +1,23 @@
+pkgbase = python-pegen
+	pkgdesc = PEG parser generator for Python
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/we-like-parsers/pegen
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-flask
+	makedepends = python-flask-wtf
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-sphinx
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-furo
+	makedepends = python-wheel
+	depends = python
+	source = python-pegen-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pegen/pegen-0.3.0.tar.gz
+	sha256sums = 8cb30cee508a95c573aa256ed2cfa80ef8f561b90264c70e7de5afc50b4ac87d
+
+pkgname = python-pegen
