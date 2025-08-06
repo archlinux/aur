@@ -4,7 +4,7 @@
 _pkgname="toilet-fonts"
 pkgname="$_pkgname"
 pkgver=1.1 # 23.03.2014
-pkgrel=1
+pkgrel=2
 url="http://www.figlet.org/fontdb.cgi"
 pkgdesc="Additional asciiart fonts for toilet"
 arch=('any')
@@ -27,14 +27,16 @@ sha256sums=(
 )
 
 package() {
-  local _dest _dir _fn
-  find "$srcdir" -iname '*.flf' \
-    | while IFS= read -r target; do
-      _dest="usr/share/figlet"
-      _dir="$(dirname "$target")"
-      _fn="$(basename "$target")"
-      if [[ ! -e "/$_dest/$_fn" ]] && toilet -d "$_dir" -f "$_fn" test &> /dev/null; then
-        install -Dm644 "$target" -t "$pkgdir/$_dest/"
-      fi
-    done
+  local _files _target _dest _dir _fn
+  mapfile -d '' -t _files < <(find "$srcdir" -type f -iname '*.flf' -print0)
+
+  for _target in "${_files[@]}"; do
+    _dest="usr/share/figlet"
+    _dir=$(dirname "$_target")
+    _fn=$(basename "$_target")
+
+    if toilet -d "$_dir" -f "$_fn" test &> /dev/null; then
+      install -Dm644 "$_target" -t "$pkgdir/$_dest/"
+    fi
+  done
 }
