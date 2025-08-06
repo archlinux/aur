@@ -1,0 +1,30 @@
+pkgbase = emilua-epoll
+	pkgdesc = Lua execution engine
+	pkgver = 0.11.7
+	pkgrel = 1
+	url = https://gitlab.com/emilua/emilua
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = cereal
+	makedepends = re2c
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = luajit
+	depends = boost-libs
+	depends = fmt
+	depends = openssl
+	depends = ncurses
+	depends = serd
+	depends = sord
+	depends = libcap
+	provides = emilua
+	conflicts = emilua
+	source = emilua-epoll::git+https://gitlab.com/emilua/emilua.git#tag=v0.11.7
+	md5sums = SKIP
+
+pkgname = emilua-epoll
