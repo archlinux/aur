@@ -1,9 +1,9 @@
 # Maintainer: wintersnowgod <git.xerox732@passinbox.com>
 pkgname=grub-hook-ca
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hooks to install and generate grub using the method for CA signing of bootloader."
-arch=('any')
+arch=('x86_64')
 license=('GPL')
 depends=("bash" "grub")
 optdepends=("sbctl: To sign secureboot")
