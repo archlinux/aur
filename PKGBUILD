@@ -4,7 +4,7 @@
 # Maintainer: Jakub Jirutka <jakub@jirutka.cz>
 _pkgname=doas-sudo-shim
 pkgname=doas-sudo-shim-k
-pkgver=0.1.2.1k
+pkgver=0.1.2.1
 pkgrel=1
 pkgdesc="Wrapper for sudo which utilizes doas (includes -k flag to ensure makepkg compatibility)"
 arch=(any)
@@ -18,11 +18,11 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/mckaygerhard/doas-sudo-shi
 sha256sums=('32719b1bd71d9f47137723ca8fd40c276aff728a910624bb38e35c66d4f132bc')
 
 build() {
-  cd doas-sudo-shim-fclivaz42-master 
+  cd "$_pkgname-$pkgver" 
   make man
 }
 
 package() {
-  cd doas-sudo-shim-fclivaz42-master
+  cd "$_pkgname-$pkgver"
   make install DESTDIR="$pkgdir" PREFIX=/usr
 }
