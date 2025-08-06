@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=python-wpiformat-git
-pkgver=2024.48
+pkgver=2025.34
 pkgrel=1
 pkgdesc="Linters and formatters for ensuring WPILib's source code conforms to its style guide"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-pytest')
 provides=('python-wpiformat')
 conflicts=('python-wpiformat')
 source=(git+https://github.com/wpilibsuite/styleguide)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/styleguide"
