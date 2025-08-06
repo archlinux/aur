@@ -1,0 +1,18 @@
+pkgbase = terminal-rain-lightning-c-git
+	pkgdesc = A terminal rain and lightning animation written in C using ncurses
+	pkgver = aaba4ff
+	pkgrel = 1
+	url = https://github.com/Kutaygb/terminal-rain-lightning-c
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	provides = terminal-rain-lightning-c
+	conflicts = terminal-rain-lightning-c
+	source = git+https://github.com/Kutaygb/terminal-rain-lightning-c.git
+	sha256sums = SKIP
+
+pkgname = terminal-rain-lightning-c-git
