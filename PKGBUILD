@@ -4,11 +4,11 @@
 _pkgbase=wl-mirror
 pkgname=wl-mirror-git
 pkgver=0.18.3.r0.gd324810
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple Wayland output mirror client"
 url="https://github.com/Ferdi265/wl-mirror"
 arch=(x86_64)
-license=(GPL3+)
+license=(GPL-3.0-or-later)
 provides=("wl-mirror=${pkgver%%.r*}")
 conflicts=('wl-mirror')
 depends=(
@@ -73,4 +73,13 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  install -dm755 "$pkgdir/usr/share/zsh/site-functions" \
+                 "$pkgdir/usr/share/bash-completion/completions"
+
+  cd "$pkgname-$pkgver"
+  install -Dm644 scripts/completions/zsh-completions/* \
+    -t "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm644 scripts/completions/bash-completions/* \
+    -t "$pkgdir/usr/share/bash-completion/completions"
 }
