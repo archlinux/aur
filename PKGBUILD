@@ -25,7 +25,7 @@ depends=(
 source=(
     "${pkgver}package.json::https://raw.githubusercontent.com/Legcord/Legcord/refs/tags/v${pkgver}/package.json"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Legcord/Legcord/v${pkgver}/license.txt"
-    "${pkgname%-bin}.sh"
+    "run.sh.in"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7l.rpm")
@@ -42,7 +42,7 @@ prepare() {
       echo Wrong electron version.
       exit 1
     fi
-    sed "s/@ELECRTON@/electron${_electron_major_ver}/" "${srcdir}/${pkgname%-bin}.sh" > run.sh
+    sed "s/@ELECTRON@/electron${_electron_major_ver}/" "${srcdir}/run.sh.in" > run.sh
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     case "${CARCH}" in
         aarch64)
