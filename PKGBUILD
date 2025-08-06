@@ -3,7 +3,7 @@
 pkgname=python-aiohttp-client-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 epoch=
 pkgdesc="aiohttp request extension."
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('1d192bf619e6b0521da7c2a482b580ff2efc677c778f4c208ddeb244cb4ca3f9')
+sha256sums=('c322cc049c4f687b141d2b06c8f40a4c2210f2e7fd7e50d3fb27302053486320')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
