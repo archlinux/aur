@@ -11,7 +11,7 @@ import commentjson
 from PyQt6.QtGui import QFont, QPixmap, QIcon, QCursor
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QLabel,
-    QScrollArea,QCheckBox,QPushButton
+    QScrollArea,QCheckBox,QPushButton,QSpinBox, QGroupBox,QHBoxLayout
 )
 from PyQt6.QtCore import (
     Qt, QTimer, QPropertyAnimation, QEasingCurve,pyqtSignal
@@ -33,10 +33,10 @@ elif os.path.exists("config.cfg"):
 else:
     print("Please create a config.cfg file, or install this properly ")
 
-JUMP_TO_MOUSE = config.get('GUI', 'JUMP_TO_MOUSE', fallback=False)
-X_OFFEST = config.get('GUI', 'X_OFFEST', fallback=-240)
-Y_OFFSET = config.get('GUI', 'Y_OFFSET', fallback=160)
-
+JUMP_TO_MOUSE = config.get('GUI', 'jump_to_mouse', fallback=False)
+X_OFFEST = int(config.get('GUI', 'x_offset', fallback=-240))
+Y_OFFSET = int(config.get('GUI', 'y_offset', fallback=160))
+print(JUMP_TO_MOUSE)
 
 HIDE_DIR = os.path.expanduser("~/.local/share/hypr-hide")
         
@@ -260,7 +260,7 @@ class HiddenWindowItem(QWidget):
             print("I did this right")
             pass
         else:
-            
+
             self.run_cmd("hyprctl dispatch togglefloating")
         print(f"Window floating state = {check_state_c['floating']}")
 
@@ -365,15 +365,17 @@ class HyprHideApp(QWidget):
         x = min(pos.x(), screen.width() - win_width)
         y = min(pos.y() + 20, screen.height() - win_height)
         print(f"Moving mouse to {x},{y}")
-        if JUMP_TO_MOUSE == True:
+        print(type(JUMP_TO_MOUSE))
+        if JUMP_TO_MOUSE == 'True':
             if(pos.x()+X_OFFEST > win_width or pos.x()+X_OFFEST < 0):
                 # break
                 pass
-            elif(pos.y()+Y_OFFEST > win_height or pos.y()+Y_OFFEST < 0):
+            elif(pos.y()+Y_OFFSET > win_height or pos.y()+Y_OFFSET < 0):
                 # break
                 pass
         # self.run_cmd(f"hyprctl dispatch moveactive {x} {y}")
-            result = subprocess.run(f"hyprctl dispatch moveactive {pos.x()+X_OFFEST} {pos.y()+Y_OFFSET}", shell=True, capture_output=True, text=True)
+            print("MOVE")
+            result = subprocess.run(f"hyprctl dispatch moveactive {x+int(X_OFFEST)} {y+int(Y_OFFSET)}", shell=True, capture_output=True, text=True)
         # return result.stdout.strip(), result.stderr.strip(), result.returncode
         self.move(x, y)
 
@@ -449,7 +451,7 @@ class HyprHideAppInitWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("HyprHide Setup")
-        self.setFixedSize(460, 300)
+        self.setFixedSize(560, 420)
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, True)
         self.setWindowFlag(Qt.WindowType.Tool)
 
@@ -477,55 +479,108 @@ class HyprHideAppInitWindow(QWidget):
             }
         """)
 
-        self.layout = QVBoxLayout()
-        self.layout.setContentsMargins(20, 20, 20, 20)
-        self.setLayout(self.layout)
+        main_layout = QVBoxLayout()
+        main_layout.setContentsMargins(20, 20, 20, 20)
+        main_layout.setSpacing(15)
+        self.setLayout(main_layout)
 
-        self.label = QLabel("Initial Setup")
-        self.layout.addWidget(self.label)
-        
-        # Thumbnails checkbox
-        self.cb_thumbnails = QCheckBox("Enable thumbnails for hidden windows(Currently not used option)")
+        # Title label
+        title_label = QLabel("Initial Setup")
+        title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(title_label)
+
+        # --- Thumbnails option ---
+        self.cb_thumbnails = QCheckBox("Enable thumbnails for hidden windows (Currently unused)")
         self.cb_thumbnails.setChecked(True)
-        self.layout.addWidget(self.cb_thumbnails)
+        main_layout.addWidget(self.cb_thumbnails)
 
-        # Jump-to-mouse checkbox
-        self.cb_jump_mouse = QCheckBox("Enable jump-to-mouse positioning (experimental)")
-        self.cb_jump_mouse.setToolTip("Buggy. Moves app near cursor using X/Y offset.")
-        self.layout.addWidget(self.cb_jump_mouse)
+        # --- Dropdown mode group ---
+        dropdown_group = QGroupBox("Dropdown Mode")
+        dropdown_group.setStyleSheet("QGroupBox { font-weight: bold; }")
+        dropdown_layout = QVBoxLayout()
+        dropdown_group.setLayout(dropdown_layout)
 
-        # Waybar detection
+        self.cb_jump_mouse = QCheckBox("Enable Dropdown mode(experimental)")
+        self.cb_jump_mouse.setToolTip("Moves window to mouse position. Only use if GUI is launched from a bar")
+        dropdown_layout.addWidget(self.cb_jump_mouse)
+
+        # Offsets inputs with spinboxes for better UX
+        offset_layout = QHBoxLayout()
+        self.x_offset = QSpinBox()
+        self.x_offset.setRange(-1000, 1000)
+        self.x_offset.setPrefix("X: ")
+        self.x_offset.setEnabled(False)
+        self.x_offset.setToolTip("Horizontal offset in pixels")
+        offset_layout.addWidget(self.x_offset)
+
+        self.y_offset = QSpinBox()
+        self.y_offset.setRange(-1000, 1000)
+        self.y_offset.setPrefix("Y: ")
+        self.y_offset.setEnabled(False)
+        self.y_offset.setToolTip("Vertical offset in pixels")
+        offset_layout.addWidget(self.y_offset)
+
+        dropdown_layout.addLayout(offset_layout)
+        main_layout.addWidget(dropdown_group)
+
+        self.cb_jump_mouse.stateChanged.connect(self.toggle_offset_inputs)
+
+        # --- Integration group ---
+        integration_group = QGroupBox("Integrations")
+        integration_group.setStyleSheet("QGroupBox { font-weight: bold; }")
+        integration_layout = QVBoxLayout()
+        integration_group.setLayout(integration_layout)
+
+        # Waybar
         self.cb_waybar = QCheckBox("Integrate with Waybar")
-        self.cb_waybar.setToolTip("Show HyprHide in Waybar if it's installed")
+        self.cb_waybar.setToolTip("Show HyprHide in Waybar if installed")
         if not self.is_waybar_installed():
             self.cb_waybar.setEnabled(False)
             self.cb_waybar.setToolTip("Waybar not detected on system")
-        self.layout.addWidget(self.cb_waybar)
-        #Hyprland detection
-        
+        integration_layout.addWidget(self.cb_waybar)
 
-        # Connect checkbox toggle to enable/disable keybind input
-        self.cb_hyprland = QCheckBox("Integrate with Hyprland")
-        self.cb_hyprland.setToolTip("Add Keybinds for Hyprland(experimental)")
+        # Hyprland
+        self.cb_hyprland = QCheckBox("Integrate with Hyprland (experimental)")
+        self.cb_hyprland.setToolTip("Add keybinds for Hyprland")
         if not self.is_hyprland_installed():
             self.cb_hyprland.setEnabled(False)
             self.cb_hyprland.setToolTip("Hyprland not detected on system")
-        self.layout.addWidget(self.cb_hyprland)
+        integration_layout.addWidget(self.cb_hyprland)
+
         self.keybind_input = QLineEdit()
-        self.keybind_input.setPlaceholderText("Enter keybind like SUPER,H")
-        self.keybind_input.setEnabled(False)  # Initially disabled
-        self.layout.addWidget(self.keybind_input)
+        self.keybind_input.setPlaceholderText("Enter keybind (e.g. SUPER,H)")
+        self.keybind_input.setEnabled(False)
+        integration_layout.addWidget(self.keybind_input)
+
         self.cb_hyprland.stateChanged.connect(self.toggle_keybind_input)
-        
+
+        main_layout.addWidget(integration_group)
+
+        # Spacer to push buttons to bottom
+        main_layout.addStretch()
+
         # Save button
         self.btn_save = QPushButton("Finish Setup")
         self.btn_save.clicked.connect(self.save_config_and_launch)
-        self.layout.addWidget(self.btn_save)
-        self.label = QLabel("Important\n\tmin.sh is at /usr/bin/hyprhide-min\n\tYou should either bind it to a \n\t\tkeybind, or create another way to trigger it")
-        self.layout.addWidget(self.label)
+        main_layout.addWidget(self.btn_save)
+
+        # Info label
+        info_text = (
+            "Important:\n"
+            "\tmin.sh is at /usr/bin/hyprhide-min\n"
+            "\tYou should bind it to a keybind,\n"
+            "\tor create another way to trigger it."
+        )
+        info_label = QLabel(info_text)
+        info_label.setStyleSheet("font-weight: normal;")
+        # main_layout.addWidget(info_label)
     def toggle_keybind_input(self, state):
         print("HELLI",state)
         self.keybind_input.setEnabled(state == 2)
+    def toggle_offset_inputs(self,state):
+        self.x_offset.setEnabled(state == 2)
+        self.y_offset.setEnabled(state == 2)
+
     def is_waybar_installed(self):
         return any(os.access(os.path.join(path, "waybar"), os.X_OK) for path in os.environ["PATH"].split(os.pathsep))
     def is_hyprland_installed(self):
@@ -600,8 +655,8 @@ class HyprHideAppInitWindow(QWidget):
         config["GUI"] = {
             "THUMBNAILS": str(self.cb_thumbnails.isChecked()),
             "JUMP_TO_MOUSE": str(self.cb_jump_mouse.isChecked()),
-            "X_OFFEST": str(X_OFFEST),
-            "Y_OFFSET": str(Y_OFFSET),
+            "X_OFFEST": str(self.x_offset.value()),
+            "Y_OFFSET": str(self.y_offset.value()),
         }
         config["WAYBAR"] = {"ENABLED": str(self.cb_waybar.isChecked())}
 
