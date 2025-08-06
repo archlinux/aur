@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=hyperrogue
-pkgver=13.0y
+pkgver=13.1
 pkgrel=1
 pkgdesc="You are a lone outsider in a strange, non-Euclidean hyperbolic world"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(
   "hyperrogue-$pkgver.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v${pkgver}.tar.gz"
   "hyperrogue.sh"
 )
-sha256sums=('3f547704203eaf8eaa6f5ca88fc1dfa6ea339ebdaf17fd7fc83955c69093376c'
+sha256sums=('fc3da7b6e265ccdcc96a256eead3b30cf5b21bc7d87557a874973e599082b66a'
             'd8b6b3d6d8bfe7d7ce97e2fd2a35d148505890dc9c6ea972a7ecb2453245b032')
 
 build() {
