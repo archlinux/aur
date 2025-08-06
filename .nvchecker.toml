@@ -1,0 +1,5 @@
+[precice-config-check]
+source = "github"
+github = "precice/config-check"
+use_max_tag = "true"
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = precice-config-check
+	pkgdesc = Python tool that checks a preCICE configuration file for logical errors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/precice/config-check
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-git-versioning
+	makedepends = git
+	depends = precice-config-graph
+	source = git+https://github.com/precice/config-check.git#tag=v1.0.0
+	sha512sums = 1f504367cf071c917efe89580c48df541e2f6f25a0c12954096c5d2634e2d8831a1ba059f28e16b00b8b1386dd264f5ac2c4a54edf71f60bc066c420af84d3ed
+
+pkgname = precice-config-check
