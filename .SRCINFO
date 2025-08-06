@@ -5,6 +5,7 @@ pkgbase = twincan
 	url = https://github.com/JP-Makers/
 	arch = any
 	license = MIT
+	depends = qt6-base
 	provides = twincan
 	conflicts = twincan
 	source = TwinCAN.tar.gz::https://github.com/JP-Makers/TwinCAN/releases/download/v1.0.0/TwinCAN.tar.gz

@@ -8,6 +8,7 @@ pkgdesc='DBC compare Tool'
 arch=('any')
 url='https://github.com/JP-Makers/'
 license=('MIT')
+depends=("qt6-base")
 provides=($pkgname)
 conflicts=($pkgname)
 source=("$_pkgname.tar.gz::https://github.com/JP-Makers/$_pkgname/releases/download/v$pkgver/$_pkgname.tar.gz")
@@ -19,9 +20,9 @@ pkgver() {
 }
 
 package() {
-	cd $_pkgname
-	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
-	install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    cd $_pkgname
+    install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+    install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
     install -Dm644 "$_pkgname.svg" -t "$pkgdir/usr/share/icons/$_pkgname/"
     install -Dm755 "$_pkgname" -t "$pkgdir/usr/bin/"
 }
