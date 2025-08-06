@@ -5,7 +5,7 @@
 
 pkgname=siril
 pkgver='1.2.6'
-pkgrel=2
+pkgrel=3
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 url="https://www.siril.org/"
 arch=('x86_64')
@@ -33,13 +33,12 @@ sha256sums=('312f82e78599f796d163a6d1c90589df1ed920b9ff2bb7ab5b808e43872817fa'
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/"
-  pwd
   patch -p1 < ../../siril-1.2.6-linkage.patch
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
-  meson setup --prefix /usr --buildtype release _build
+  meson setup --prefix /usr -Denable-libcurl=yes --buildtype release _build
   ninja -C _build
 }
 
