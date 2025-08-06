@@ -1,6 +1,6 @@
 pkgbase = gradia
 	pkgdesc = Make your screenshots ready for the world.
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/AlexanderVanhee/Gradia
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = gradia
 	depends = python-pillow
 	depends = python-pillow-avif-plugin
 	depends = python-cairo
-	source = gradia-1.8.0.zip::https://github.com/AlexanderVanhee/Gradia/archive/a37ecdcf257708a5ba32e4162d02315bbfa7b377.zip
+	source = gradia-1.9.0.zip::https://github.com/AlexanderVanhee/Gradia/archive/965378c159abb9cb8cbd862157368de4bb9f665f.zip
 	source = pillow_avif.patch
-	sha256sums = d4f990f2472dbc31bb4424ef768bc0ac0df105894a747a237a202ea41212473d
+	sha256sums = 0c9b1709093b5aac21d5272ec4b0bb676df96a47ee52c32c2f5876e4f4985c3c
 	sha256sums = 5080f87f3b2f2b7360c6afebe333e7b8b09ef2017cc0f20b95d364df83bf3528
 
 pkgname = gradia
