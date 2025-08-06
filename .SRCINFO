@@ -1,0 +1,16 @@
+pkgbase = apollo-studio-launchpad
+	pkgdesc = Apollo Studio - standalone editor and live playback engine for Launchpad light effects
+	pkgver = 1.8.16
+	pkgrel = 2
+	url = https://github.com/Jacobeagle/apollo-studio-build-AUR
+	install = apollo-studio.install
+	arch = x86_64
+	license = custom
+	depends = openssl-1.1
+	depends = dotnet-sdk-5.0-bin
+	source = https://github.com/Jacobeagle/apollo-studio-build-AUR/releases/download/1.8.16/apollo-studio-1.8.16.tar.gz
+	source = apollo-studio.install
+	sha256sums = 4a0c192d5051159d5215db298f0a7fde2fce2cdcbdbf439cc89729d206ef6c38
+	sha256sums = f66e85690be8abda87ad0a220b47879bafe3990d5ec607f266834bba0a64518d
+
+pkgname = apollo-studio-launchpad
