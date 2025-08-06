@@ -1,14 +1,14 @@
 # Maintainer: Olivier Le Moal <mail@olivierlemoal.fr>
 pkgname='python-cryptomobile'
-pkgver=r26.c17b23a
+pkgver=r74.b13e59b
 pkgrel=1
 pkgdesc="This toolkit implements python wrappers around 3G and LTE encryption and integrity protection algorithms, COMP128, Milenage and TUAK authentication algorithms."
 arch=(any)
-url="https://github.com/P1sec/CryptoMobile"
+url="https://github.com/mitshell/CryptoMobile"
 license=('GPL')
 makedepends=('git')
 depends=('python')
-source=('pycrate::git+https://github.com/P1sec/CryptoMobile#branch=master')
+source=('pycrate::git+https://github.com/mitshell/CryptoMobile#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
