@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/SourcewareLab/Toney"
 license=('MIT')
 depends=()
-makedepends=('go')
+makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SourcewareLab/Toney/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP') 
 
@@ -21,7 +21,3 @@ package() {
   install -Dm755 "toney" "$pkgdir/usr/bin/toney"
 }
 
-pkgver() {
-  cd "$srcdir/Toney"
-  git describe --tags --long | sed 's/^v//;s/-/./g'
-}
