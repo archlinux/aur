@@ -1,0 +1,21 @@
+pkgbase = precice-cli
+	pkgdesc = A unified command line interface for preCICE tools
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/precice/cli
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-git-versioning
+	makedepends = git
+	depends = precice-config-visualizer
+	depends = precice-config-format
+	depends = precice-profiling
+	depends = precice-config-check
+	depends = precice-case-generate
+	source = git+https://github.com/precice/cli.git#tag=v0.2.0
+	sha512sums = c5a6f4e47a5f3449f3f55629c7a2bda810eaa9160839a3981c5e89f6c176cf716b27416a64311927a38cb01c65ef893cfc00379a7580a0f9de9f6f5d2fa3d399
+
+pkgname = precice-cli

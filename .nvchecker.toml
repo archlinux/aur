@@ -1,0 +1,5 @@
+[precice-cli]
+source = "github"
+github = "precice/cli"
+use_latest_release = "true"
+prefix = "v"
