@@ -3,7 +3,7 @@
 
 pkgname=dapr-cli-bin
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tools for Dapr'
 arch=('x86_64' 'aarch64')
 url='https://github.com/dapr/cli'
