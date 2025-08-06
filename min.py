@@ -87,20 +87,20 @@ if fullscreen == 1:
 # If not floating, toggle floating ON
 if floating is not True:
     log("Window is not floating, toggling floating ON...")
-    run("hyprctl dispatch togglefloating", capture=False)
-    time.sleep(0.3)
+    run(f"hyprctl dispatch togglefloating address:{address}", capture=False)
+    # time.sleep(0.3)
     # Recheck floating state
     clients = json.loads(run("hyprctl clients -j"))
     floating_after = next((c.get("floating") for c in clients if c["address"] == address), None)
     log(f"Floating after toggle: {floating_after}")
     if floating_after != True:
         log("Floating toggle did not apply, trying again...")
-        run(f"hyprctl dispatch togglefloating {address}", capture=False)
+        run(f"hyprctl dispatch togglefloating address:{address}", capture=False)
         time.sleep(0.3)
 
 # Focus the window
 log(f"Focusing window {address}...")
-run(f"hyprctl dispatch focuswindow address={address}", capture=False)
+run(f"hyprctl dispatch focuswindow address:{address}", capture=False)
 time.sleep(0.3)
 
 # Save window info

@@ -219,13 +219,15 @@ class HiddenWindowItem(QWidget):
             self.run_cmd("hyprctl dispatch togglefloating")
         self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
         focused = self.get_focused_window()
-        if focused != self.address:
-            max_tries = len(self.get_hyprctl_clients())
-            success = self.cycle_until_focused(self.address,max_tries=max_tries)
-            if not success:
+        self.run_cmd(f"hyprctl dispatch focuswindow address:{self.address}")
+        focused = self.get_focused_window()
+        # if focused != self.address:
+            # max_tries = len(self.get_hyprctl_clients())
+            # success = self.cycle_until_focused(self.address,max_tries=max_tries)
+            # if not success:
                 
-                print("Failed to focus window after cycling")
-                return
+            #     print("Failed to focus window after cycling")
+            #     return
         self.run_cmd(f"hyprctl dispatch moveactive {self.x} {self.y}")
         self.run_cmd("hyprctl dispatch togglefloating")
         if(self.was_floating == client_data['floating']):
@@ -235,7 +237,7 @@ class HiddenWindowItem(QWidget):
             # while(self.x !=client_data['at'][0] and self.y != client_data['at'][0]):
             print(f"Window disired pos: {self.x}:{self.y} vs {client_data['at'][0]}:{client_data['at'][1]}")
             self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
-            success = self.cycle_until_focused(self.address)
+            self.run_cmd(f"hyprctl dispatch focuswindow address:{self.address}")
             # if(success):
             #     self.run_cmd(f"hyprctl dispatch moveactive {self.x} {self.y}")
                 # client_data = get_client_by_address(self.address)
