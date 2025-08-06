@@ -1,0 +1,4 @@
+[wasi-sdk-bin]
+source = "git"
+git = "https://github.com/WebAssembly/wasi-sdk.git"
+prefix = "wasi-sdk-"
