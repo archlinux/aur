@@ -2,16 +2,16 @@
 
 _pkgname="clang_complete"
 pkgname="vim-clang-complete-git"
-pkgver=v1.8.r334.gc7f5673
-pkgrel=2
+pkgver=v1.8.r380.g75946de
+pkgrel=1
 pkgdesc='Plugin which uses clang for accurately completing C and C++ code. Git version.'
 arch=(any)
 url='https://github.com/Rip-Rip/clang_complete'
 license=(custom)
-depends=(vim clang python2)
+depends=(vim-plugin-runtime clang python)
 makedepends=(git)
 conflicts=(vim-clang-complete)
-source=(git://github.com/Rip-Rip/clang_complete
+source=(git+https://github.com/Rip-Rip/clang_complete
 	set_default_library_path.patch)
 md5sums=(SKIP
 	c217f1489facdd8148bb5c3453380404)
@@ -30,8 +30,6 @@ prepare() {
 package() {
 	cd ${srcdir}/clang_complete
 
-	# apparently script uses python2
-	sed -i 's@#!/usr/bin/env python@#!/usr/bin/env python2@' bin/cc_args.py
 
 	# creating directories 
 	install -d -m 755 ${pkgdir}/usr/share/vim/vimfiles/bin
