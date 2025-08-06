@@ -2,7 +2,7 @@
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 pkgname="python-llm-ollama"
 _name=${pkgname#python-}
-pkgver="0.12.0"
+pkgver="0.13.0"
 pkgrel=1
 pkgdesc="LLM plugin providing access to models running on an Ollama server"
 arch=("any")
