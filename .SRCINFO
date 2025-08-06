@@ -1,0 +1,13 @@
+pkgbase = termagotchi-bin
+	pkgdesc = A terminal-based Tamagotchi simulation written in Go, featuring a beautiful TUI interface.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ezeoleaf/termagotchi
+	arch = x86_64
+	license = MIT
+	provides = termagotchi
+	conflicts = termagotchi
+	source_x86_64 = termagotchi-bin-0.1.0-x86_64::https://github.com/ezeoleaf/termagotchi/releases/download/v0.1.0/termagotchi-linux-amd64
+	sha256sums_x86_64 = ba069ecba718ec64bda7d9e5eab78afe0071564a980c37c7efaba6ae7ad42ca6
+
+pkgname = termagotchi-bin
