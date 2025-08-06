@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pyqt5' 'python-flask' 'python-werkzeug')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-pip: for installing optional dependencies like nbformat for Jupyter notebook support')
-source=("TextMerger-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pierspad/TextMerger/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
