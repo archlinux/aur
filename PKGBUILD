@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=netbird-bin
-pkgver=0.52.2
+pkgver=0.53.0
 pkgrel=1
 pkgdesc='WireGuard-based mesh network'
 url='https://netbird.io'
@@ -27,10 +27,10 @@ source_armv6h=("${_base_bin}_armv6.tar.gz")
 
 sha256sums=('7c6f8f6ec95969fc555e7abc55f7f775196446d315c5080adab4a1a6f0b173e3'
             '8e8e5423a14df61b5b78daac0761ec9be5e43e60d3fcb7ffe6994e57c1f92036')
-sha256sums_i686=('6673824c759b8f21e285d3b90919096b2fca6af0f50a11304b44f6304ec21d88')
-sha256sums_x86_64=('12a85585add0841bde86141d415a9d3924ef2c557b2ee3bd0ab909abbe17da21')
-sha256sums_aarch64=('1048b1dfc44fa0ffe84c82d43458efe4ddc11fe182c981ad702a89affc64b0c1')
-sha256sums_armv6h=('465cda6e7480b7abdc395c81b64b51734fa6b876793de5c7b123821f51c6fe56')
+sha256sums_i686=('f41f6faa72d90baafc48624690e735240fae750df0599a7973fbb9055536ea87')
+sha256sums_x86_64=('585122af9451076f620b838299020f985c33568f72d4491b2582122fddd80247')
+sha256sums_aarch64=('10ed36b9f959819b0877573969a75cfcf06a5efa981bfbe64c5fdede4931e17f')
+sha256sums_armv6h=('6b491438af44b8ba6318ff3a19cdfd48dfbc4865fb10ed989fae73dfa5045833')
 
 prepare() {
   # try to generate completions if the binary is runnable on current CPU
