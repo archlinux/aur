@@ -4,30 +4,30 @@ _base=profiling
 pkgname=precice-${_base}
 pkgdesc="A tool for post-processing and analyzing preCICE profiling data"
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/precice/${_base}"
 license=(MIT)
 depends=(python-typing_extensions python-orjson python-polars python-matplotlib graphviz)
 makedepends=(python-build python-installer python-setuptools-git-versioning git)
 checkdepends=(python-pytest)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5848df8f88309231fb780fa6fd1767c8b0e343f9a5747cbc52b041cd8451ed1dd8a7c3db54acdba9d84ca918de386f3e1d88e5a213cfa36d0d52996e93bd42aa')
+source=(git+${url}.git#tag=v${pkgver})
+sha512sums=('b022a15a36fab46975774f4135f78e1de9838fb0dd70d94008af62c8c28ae81249d66eaea83b20d034a8e8fb34e78a73a0bd06f4294fd6972fe921af1a4df9b7')
 
 build() {
-  cd ${_base}-${pkgver}
+  cd ${_base}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd ${_base}-${pkgver}
+  cd ${_base}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest tests
 }
 
 package() {
-  cd ${_base}-${pkgver}
+  cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
