@@ -5,11 +5,12 @@ pkgbase = python-tinytag
 	url = https://pypi.python.org/pypi/tinytag/
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-flit-core
-	depends = python
+	makedepends = python-flit-core>=3.2.0-1
+	depends = python>=3.7.0-1
 	source = https://github.com/devsnd/tinytag/archive/2.1.1.tar.gz
 	md5sums = 067070a4dadad0aa255b50c973f45b25
 

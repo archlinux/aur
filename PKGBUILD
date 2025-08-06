@@ -8,23 +8,33 @@ pkgdesc="Read music meta data and length of MP3, OGG, FLAC and Wave files"
 arch=('any')
 url="https://pypi.python.org/pypi/tinytag/"
 license=('MIT')
-depends=('python')
-makedepends=(python-build python-installer python-wheel python-flit-core)
+depends=('python>=3.7.0-1')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit-core>=3.2.0-1')
+checkdepends=('python-pytest')
 source=("https://github.com/devsnd/$_name/archive/$pkgver.tar.gz")
 md5sums=('067070a4dadad0aa255b50c973f45b25')
 validpgpkeys=()
 
 prepare(){
-	cd $_name-$pkgver/$_name
-	# Deleting not necessary files 
-	rm -r {icons,tests}
+	# Make source dist from repo
+	cd $_name-$pkgver
+        python -m build --sdist --no-isolation
+        tar -xzf dist/*.tar.gz
 }
 
 build(){
-	cd $_name-$pkgver
+	# Build wheel
+	cd $_name-$pkgver/$_name-$pkgver
 	python -m build --wheel --no-isolation
 }
+
+check(){
+	# Run tests
+	cd $_name-$pkgver/$_name
+	python -m pytest tests
+}
+
 package(){
-	cd $_name-$pkgver
+	cd $_name-$pkgver/$_name-$pkgver
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
