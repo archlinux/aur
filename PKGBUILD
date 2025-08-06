@@ -1,7 +1,7 @@
 # Maintainer: Max Shaughnessy <max@mshaugh.com>
 
 pkgname=dnscontrol-bin
-pkgver=4.22.0
+pkgver=4.23.0
 pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (binary release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/StackExchange/dnscontrol/releases/download/v${pkgver}/dnscontrol_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('027e8bb41b3ac84bb17e406a4d6c769eac54fe3b0a22823550860cc8a835f803')
+sha256sums=('d31fbcc423de3368a45ec0bba8a5626a553c8a2d760977749489977b5361f9b1')
 
 build() {
 	./dnscontrol shell-completion zsh > completions.zsh
