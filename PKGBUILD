@@ -32,7 +32,7 @@ check() {
 
 package() {
     cd $pkgname-$pkgver
-    install -Dm755 target/release/libpam_ssh_agent.so -t "$pkgdir/usr/lib/security/"
+    install -Dm755 target/release/libpam_ssh_agent.so -T "$pkgdir/usr/lib/security/pam_ssh_agent.so"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
