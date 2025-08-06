@@ -11,7 +11,6 @@ def get_version():
 VERSION = get_version()
 config = configparser.ConfigParser()
 user_config_path = os.path.expanduser("~/.config/hyprhide/config.cfg")
-# default_config_path = "/usr/share/hyprhide/config.cfg"
 
 if os.path.exists(user_config_path):
     config.read(user_config_path)
