@@ -10,6 +10,7 @@ pkgbase = pulsemeeter-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-babel
 	depends = pipewire-pulse
 	depends = gtk3
 	depends = libayatana-appindicator
