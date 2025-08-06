@@ -1,0 +1,4 @@
+[gitfourchette]
+source = "git"
+git = "https://github.com/jorio/gitfourchette.git"
+prefix = "v"
