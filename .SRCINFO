@@ -1,6 +1,6 @@
 pkgbase = python-behave
 	pkgdesc = Behaviour-driven development, Python style
-	pkgver = 1.2.7.dev8
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/behave/behave
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-behave
 	depends = python-cucumber-tag-expressions
 	depends = python-parse-type
 	depends = python-colorama
-	source = https://github.com/behave/behave/archive/v1.2.7.dev8/python-behave-1.2.7.dev8.tar.gz
-	sha512sums = d191a110a28960a4a23c94dcb4326c6bc1c3b53029e5cd54f0435dfa9c0f82b4c85e827e91344a529df7a5dd45a4736862b25c5f93996bff07937a8bd0af9979
+	source = https://github.com/behave/behave/archive/v1.3.0/python-behave-1.3.0.tar.gz
+	sha512sums = 8ef01b66f491aa69677da93bef41057ec47f40ff9661b9c8f3896c167cc9d2c0c6facc8af11bf2a0fc2e2963d047a164b0d9b6539824e330efca95f5d2c63fef
 
 pkgname = python-behave
