@@ -1,6 +1,6 @@
 pkgbase = falcond
 	pkgdesc = Advanced Linux gaming performance daemon
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/PikaOS-Linux/falcond
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = falcond
 	makedepends = zig>=0.14
 	conflicts = falcond-bin
 	conflicts = falcond-git
-	source = falcond-1.1.6.tar.gz::https://github.com/PikaOS-Linux/falcond/archive/refs/tags/v1.1.6.tar.gz
-	sha256sums = 971cd6e5c5ad734cd0be3261b74c0e202318b183765db7ed789ab3f4ce38884c
+	source = falcond-1.1.7.tar.gz::https://github.com/PikaOS-Linux/falcond/archive/refs/tags/v1.1.7.tar.gz
+	sha256sums = 034d2c89210a2403bb24c4de7f17557a049ce75f4c243effbd55ef66f0fe67f1
 
 pkgname = falcond
