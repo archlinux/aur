@@ -1,7 +1,7 @@
 pkgbase = intel-compute-runtime-legacy
 	pkgdesc = Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (legacy platforms)
-	pkgver = 24.35.30872.22
-	pkgrel = 4
+	pkgver = 24.35.30872.36
+	pkgrel = 1
 	url = https://github.com/intel/compute-runtime/
 	arch = x86_64
 	license = MIT
@@ -13,17 +13,17 @@ pkgbase = intel-compute-runtime-legacy
 	depends = glibc
 	depends = intel-gmmlib-legacy
 	depends = intel-graphics-compiler-legacy
-	optdepends = libva: for cl_intel_va_api_media_sharing
 	optdepends = libdrm: for cl_intel_va_api_media_sharing
-	provides = intel-compute-runtime=24.35.30872.22
+	optdepends = libva: for cl_intel_va_api_media_sharing
+	provides = intel-compute-runtime=24.35.30872.36
 	provides = opencl-driver
 	provides = level-zero-driver
 	conflicts = intel-compute-runtime
 	options = !lto
-	source = https://github.com/intel/compute-runtime/archive/24.35.30872.22/intel-compute-runtime-legacy-24.35.30872.22.tar.gz
+	source = https://github.com/intel/compute-runtime/archive/24.35.30872.36/intel-compute-runtime-legacy-24.35.30872.36.tar.gz
 	source = 010-intel-compute-runtime-disable-werror.patch
 	source = 020-intel-compute-runtime-gcc15-fix.patch
-	sha256sums = 924781eba2268aaf3f2f5286006e219f8adff9b985a327ccf6acc39b7a00acc5
+	sha256sums = 3325aa7830e628c7d0f129434351830cca28e11e5793cef67f71d1c2927fea71
 	sha256sums = b98774fd019281d3a9bd6109d9fbaaae866e2ae4581397b582cdf454a29433e5
 	sha256sums = c0b9270af11ae418c98c54b91ee932de2040935a6649a8d4fcb5ff8c38b1f4ef
 
