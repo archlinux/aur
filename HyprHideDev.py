@@ -32,7 +32,7 @@ def main():
         run_file_true = os.path.expanduser(run_file)
         os.system(f"python {run_file_true} --launched --set-version {VERSION}-DEV")
     else:
-        os.system(f"hyprhide-gui-main --luanched --set-version {VERSION}")
+        os.system(f"hyprhide-gui-main --launched --set-version {VERSION}")
 
 if __name__ == "__main__":
    
