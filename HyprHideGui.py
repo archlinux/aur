@@ -190,22 +190,25 @@ class HiddenWindowItem(QWidget):
 
     def on_restore_clicked(self):
         addr = self.address
-        if addr.startswith("0x"):
-            addr = addr[2:]
+        # if addr.startswith("0x"):
+        #     addr = addr[2:]
         client_data = get_client_by_address(self.address)
         print(f"Restoring window {self.title} at {self.x},{self.y} on workspace {self.workspace}")
         print(f"Window floating state = {self.was_floating}")
         window_floating_state_before_move = self.was_floating
+        print(self.workspace)
         self.run_cmd(f"hyprctl dispatch workspace {self.workspace}")
         time.sleep(0.3)
 
-        self.run_cmd(f"hyprctl dispatch focuswindow address:0x{addr}")
+        self.run_cmd(f"hyprctl dispatch focuswindow address:{addr}")
         time.sleep(0.3)
-
+        self.run_cmd(f"hyptclt dispatch movetoworkspace {self.workspace}, {addr}")
+        test_data = get_client_by_address(addr)
+        print(test_data["workspace"])
         focused = self.get_focused_window()
         if focused != self.address:
             print("Direct focus failed, cycling to locate window...")
-            max_tries = len(self.get_hyprctl_clients())
+            max_tries = len(get_hyprctl_clients())
             success = self.cycle_until_focused(self.address,max_tries=max_tries)
             if not success:
                 check_client = get_client_by_address(self.address)
@@ -217,7 +220,9 @@ class HiddenWindowItem(QWidget):
         
         if(client_data['floating'] == False):
             self.run_cmd("hyprctl dispatch togglefloating")
-        self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
+        if(test_data["workspace"]['id'] != self.workspace):
+            print("Move again")
+            self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
         focused = self.get_focused_window()
         self.run_cmd(f"hyprctl dispatch focuswindow address:{self.address}")
         focused = self.get_focused_window()
@@ -264,7 +269,7 @@ class HiddenWindowItem(QWidget):
 
             self.run_cmd("hyprctl dispatch togglefloating")
         print(f"Window floating state = {check_state_c['floating']}")
-
+        self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
         self.restore_complete.emit()
 def get_focused_monitor_geometry():
     result = subprocess.run("hyprctl monitors -j", shell=True, capture_output=True, text=True)
