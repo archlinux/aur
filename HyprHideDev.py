@@ -15,11 +15,12 @@ user_config_path = os.path.expanduser("~/.config/hyprhide/config.cfg")
 if os.path.exists(user_config_path):
     config.read(user_config_path)
 else:
+    os.mkdir(os.path.expanduser("~/.config/hyprhide/"))
     with open(user_config_path,"w") as f:
         # contents_to_write = "[DEV]\bdevmode"
         print("Done")
-    config.read(user_config_path)
-    config.set("DEV","devmode",False)
+    # config.read(user_config_path)
+    # config.set("DEV","devmode",'False')
 
 def main():
     IS_DEV_MODE = config.getboolean("DEV", "devmode", fallback=True)
