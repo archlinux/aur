@@ -1,7 +1,7 @@
 pkgbase = apollo-studio
 	pkgdesc = Apollo Studio - standalone editor and live playback engine for Launchpad light effects
 	pkgver = 1.8.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Jacobeagle/apollo-studio/
 	install = apollo-studio.install
 	arch = x86_64
