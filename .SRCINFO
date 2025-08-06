@@ -16,7 +16,7 @@ pkgbase = gzdoom-bin
 	depends = libwebp
 	depends = openal
 	depends = sdl2
-	depends = zmusic-bin>=1.1.8
+	depends = zmusic-bin
 	conflicts = gzdoom
 	conflicts = gzdoom-git
 	source_x86_64 = gzdoom-4.14.2-x64.tar.xz::https://gitlab.com/linuxbombay/gzdoom/binaries/4.14.2/-/raw/main/gzdoom-x64.tar.xz
