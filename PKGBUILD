@@ -1,12 +1,13 @@
 # Maintainer: Edmund Lodewijks <edmund@proteamail.com>
 
 # NOTES from the packager:
-# 1.) Upstream does not yet provide SONAMEs. Cf.: https://github.com/aws/aws-lc/issues/1098
+# 1.) Inital work is done on SONAMES since v1.57.0.
+#     Cf.: https://newreleases.io/project/github/aws/aws-lc/release/v1.57.0
 # 2.) Three binaries are installed into /usr/bin/aws-lc so that 'openssl' does not interfere
 #     with the binary from the package 'openssl'. Check with 'which openssl'.
 
 pkgname=aws-lc
-pkgver=1.57.0
+pkgver=1.57.1
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -30,7 +31,7 @@ optdepends=(
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('bc62aa726cabeabef64bae7edaba57478ab944a3b33722bb9ce4562a1247cf7a6d4fe7e02197f0311af636f14efca27d0e5fd2de76ebb5eee76d84c295633c8f')
+b2sums=('de04259d7dda6a7e72349106e23d344bd1c09a1f7655b05bed961db813cb5f8d8e438c8f89129489b4c18f7c74b785183f7cc5c2684ebf1e8f790e6d2da07c5f')
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -46,7 +47,8 @@ build() {
 	  -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
 	  -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
 	  -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
-	  -DCMAKE_INSTALL_RPATH=/usr/lib/aws-lc
+	  -DCMAKE_INSTALL_RPATH=/usr/lib/aws-lc \
+      -DENABLE_PRE_SONAME_BUILD=0
 
     ninja -C build -j $(nproc)
 }
@@ -61,6 +63,11 @@ package() {
     cd ${pkgname}-${pkgver}
     
     DESTDIR="$pkgdir" ninja -C build install
+
+    # Clean up installation
+    mkdir -p "$pkgdir/usr/lib/pkgconfig/$pkgname"
+    mv $pkgdir/usr/lib/$pkgname/pkgconfig/* "$pkgdir/usr/lib/pkgconfig/$pkgname/"
+    rm -rf "$pkgdir/usr/lib/$pkgname/ssl"
 
     # Documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
