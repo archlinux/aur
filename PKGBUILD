@@ -13,6 +13,8 @@ sha256sums=('c1867bcb6dc3f15aeb7a147de6722758d81c078ebd44b44b8861ddc0986a4724')
 
 prepare() {
     cd "$srcdir/Observer-$pkgver/app"
+    # Disable updater artifacts for AUR build to avoid signing errors
+    sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
     npm install
 }
 
@@ -23,16 +25,30 @@ build() {
     export CXX=g++
     export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
     export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
-    # Fix ring crate compilation issues
-    export CFLAGS="-fPIC -O2"
-    export CXXFLAGS="-fPIC -O2"
-    export LDFLAGS="-Wl,-z,now -Wl,-z,relro"
-    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS="-C target-cpu=native"
-    # Disable signing for packaging
+    
+    # Optimize for fastest build time
+    export CARGO_BUILD_JOBS=1
+    export MAKEFLAGS="-j1"
+    
+    # Set up Rust build profile for minimal optimization
+    export CARGO_PROFILE_RELEASE_DEBUG=false
+    export CARGO_PROFILE_RELEASE_LTO=false
+    export CARGO_PROFILE_RELEASE_OPT_LEVEL=0
+    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
+    export CARGO_PROFILE_RELEASE_PANIC="abort"
+    
+    # Disable signing
     unset TAURI_SIGNING_PRIVATE_KEY
     unset TAURI_SIGNING_PRIVATE_KEY_PASSWORD
-    # Force only deb bundle to avoid linking issues
-    npm run tauri:build -- --bundles deb
+    export TAURI_SIGNING_PRIVATE_KEY=""
+    export TAURI_SIGNING_PRIVATE_KEY_PASSWORD=""
+    
+    # First build frontend
+    npm run build
+    
+    # Then build the Tauri app
+    cd src-tauri
+    cargo build --release --bin app
 }
 
 package() {
