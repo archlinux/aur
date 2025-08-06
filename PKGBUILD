@@ -21,3 +21,7 @@ package() {
   install -Dm755 "toney" "$pkgdir/usr/bin/toney"
 }
 
+pkgver() {
+  cd "$srcdir/Toney"
+  git describe --tags --long | sed 's/^v//;s/-/./g'
+}
