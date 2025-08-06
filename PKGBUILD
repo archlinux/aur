@@ -1,7 +1,7 @@
 # Maintainer: Patrick Mang <aur at patrickmang dot de>
 
 pkgname=goscrobble
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A simple music scrobbler daemon for MPRIS-based music players."
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=("custom:MIT")
 depends=(dbus)
 makedepends=(go)
 source=("goscrobble-v${pkgver}.tar.gz::https://github.com/p-mng/goscrobble/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cbb2ec7cd7efe9b2cc0eeab778c68db4bb1aad15eb12a2812fe7086225bf02e4')
+sha256sums=('a4a34ee7a19dd32be0dfc8b31eab8966128b74a07b6b9fb61f7a038a6f717dc5')
 
 build() {
 	cd "${srcdir}/goscrobble-${pkgver}"
