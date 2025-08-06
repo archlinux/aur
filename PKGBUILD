@@ -4,8 +4,8 @@
 _slug=aridacity
 _name=aridacityVCV
 pkgname=vcvrack-aridacity
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Aridacity VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/cubeleco/aridacityVCV'
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cubeleco/$_name/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2ca0be3831de80384c745d8a7ad51600b76b0705c2e2ad39590ee15b630cf3c1')
+sha256sums=('5c605c1e8f7a3e28c7d792c49c993ccc4c7fdc8616a9c525017c100afa1f319a')
 
 build() {
   cd $_name-$pkgver
