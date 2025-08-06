@@ -2,7 +2,7 @@
 
 pkgname=python-enaml
 _pkg=enaml
-pkgver=0.15.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Declarative DSL for building rich user interfaces in Python'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 optdepends=('python-pyqt5' 'pyside2' 'python-pyqt6' 'pyside6')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/e/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('75ba5b120fe1a90418ff03103acdc6a25d1b044dc4e42bcc42cb7f2e76f6d95b')
+sha256sums=('4c584f7abc0bdf1746c087eb8ea1989e6322da22a7208462fe9579e31690c03e')
 
 prepare() {
 	cd "$_pkg-$pkgver"
