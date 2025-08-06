@@ -3,7 +3,7 @@
 
 pkgname=codon-bin
 pkgver=0.19.2
-pkgrel=2
+pkgrel=3
 pkgdesc='High-performance, zero-overhead, extensible Python compiler using LLVM'
 arch=(x86_64)
 url='https://github.com/exaloop/codon'
@@ -38,7 +38,7 @@ package() {
   install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-b2sums=('718328c0651e383b892e7c1f00b795f88c6f4775b02e3a2ba217873d105e51824f380ba55b8602d1698da12ee3609641a753a6aa7660d5d4df52ea855eca5ca7'
+b2sums=('751dc54eea16f18c88976bd30436c24dce3d2d03aa0e6c2ef323a4393738ef01c79739fc2c5073bdacd7f5282aa0c7b38af575209de9458085c10abcda571a81'
         'd7298581f1ba155d838e2b676e2371bc4197a45504292d855f42e660d2b5ef9cf6b42338b0cfcfd58ad67e59584b648b77eda6e8e4a6b6eff98023bf0ef54da4'
         '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85'
         'c9a8ac98fdeebacd0584bd89cb449b43400296c11c1c8a7dea2ebdd469000451e11d8daf42b9bbbe322eb016bd7e5d338b94f0e72594e6fccd0aaf329a14edc6')
