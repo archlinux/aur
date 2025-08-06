@@ -1,15 +1,15 @@
 pkgbase = matlock
-	pkgdesc = Screen lock program for X like The Matrix
-	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://git.sujal.tv/tvsujal/matlock
-	arch = x86_64
-	arch = aarch64
-	license = MIT
-	makedepends = git
-	depends = libxext
-	depends = libxrandr
-	source = http://git.sujal.tv/tvsujal/matlock/-/archive/v1.0.0/matlock-v1.0.0.tar
-	sha256sums = d45a52ce530b9b49977d1f8f6cf13fcac9d295234f57dbff37be3cd56c3557cb
+pkgdesc = Screen lock program for X like The Matrix
+pkgver = 1.0.0
+pkgrel = 3
+url = https://git.sujal.tv/tvsujal/matlock
+arch = x86_64
+arch = aarch64
+license = MIT
+makedepends = git
+depends = libxext
+depends = libxrandr
+source = http://git.sujal.tv/tvsujal/matlock/-/archive/v1.0.0/matlock-v1.0.0.tar
+sha256sums = d45a52ce530b9b49977d1f8f6cf13fcac9d295234f57dbff37be3cd56c3557cb
 
 pkgname = matlock

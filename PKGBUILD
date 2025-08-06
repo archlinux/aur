@@ -2,7 +2,7 @@
 
 pkgname=matlock
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Screen lock program for X like The Matrix'
 arch=('x86_64' 'aarch64')
 url="https://git.sujal.tv/tvsujal/matlock"
@@ -14,7 +14,7 @@ sha256sums=('d45a52ce530b9b49977d1f8f6cf13fcac9d295234f57dbff37be3cd56c3557cb')
 
 build() {
     rm -rf ${pkgname}
-    tar xf ${pkgname}-${pkgver}.tar --one-top-level=$pkgname --strip-components=1
+    tar xf ${pkgname}-v${pkgver}.tar --one-top-level=$pkgname --strip-components=1
     cd ${pkgname}
     make
 }
