@@ -1,6 +1,6 @@
 pkgbase = cherry-studio
 	pkgdesc = A desktop client that supports for multiple LLM providers.(Use system-wide electron)
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = cherry-studio
 	makedepends = python-setuptools
 	depends = electron36
 	optdepends = ollama: use local LLM server
-	source = cherry-studio-1.5.3.tar.gz::https://github.com/CherryHQ/cherry-studio/archive/refs/tags/v1.5.3.tar.gz
+	source = cherry-studio-1.5.4.tar.gz::https://github.com/CherryHQ/cherry-studio/archive/refs/tags/v1.5.4.tar.gz
 	source = cherry-studio.sh
-	sha256sums = a7528b1f65e315ee6fd713736c607aee7148be5c74ef0e0c037107e1d7ed25d0
+	sha256sums = ff5d656c82810fd745f9b0db57b9847e5f96b101d7dee0149050683602a409a4
 	sha256sums = 44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463
 
 pkgname = cherry-studio
