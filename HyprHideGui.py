@@ -202,7 +202,7 @@ class HiddenWindowItem(QWidget):
 
         self.run_cmd(f"hyprctl dispatch focuswindow address:{addr}")
         time.sleep(0.3)
-        self.run_cmd(f"hyptclt dispatch movetoworkspace {self.workspace}, {addr}")
+        self.run_cmd(f"hyptclt dispatch movetoworkspace {self.workspace}, address:{addr}")
         test_data = get_client_by_address(addr)
         print(test_data["workspace"])
         focused = self.get_focused_window()
@@ -222,7 +222,7 @@ class HiddenWindowItem(QWidget):
             self.run_cmd("hyprctl dispatch togglefloating")
         if(test_data["workspace"]['id'] != self.workspace):
             print("Move again")
-            self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
+            self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace},address:{addr}")
         focused = self.get_focused_window()
         self.run_cmd(f"hyprctl dispatch focuswindow address:{self.address}")
         focused = self.get_focused_window()
@@ -241,7 +241,7 @@ class HiddenWindowItem(QWidget):
             self.run_cmd("hyprctl dispatch togglefloating")
             # while(self.x !=client_data['at'][0] and self.y != client_data['at'][0]):
             print(f"Window disired pos: {self.x}:{self.y} vs {client_data['at'][0]}:{client_data['at'][1]}")
-            self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
+            self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace},address:{addr}")
             self.run_cmd(f"hyprctl dispatch focuswindow address:{self.address}")
             # if(success):
             #     self.run_cmd(f"hyprctl dispatch moveactive {self.x} {self.y}")
@@ -269,7 +269,7 @@ class HiddenWindowItem(QWidget):
 
             self.run_cmd("hyprctl dispatch togglefloating")
         print(f"Window floating state = {check_state_c['floating']}")
-        self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace}")
+        self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace},address:{addr}")
         self.restore_complete.emit()
 def get_focused_monitor_geometry():
     result = subprocess.run("hyprctl monitors -j", shell=True, capture_output=True, text=True)
