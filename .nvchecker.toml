@@ -1,4 +1,0 @@
-[legcord-bin]
-source = "git"
-git = "https://github.com/Legcord/Legcord.git"
-prefix = "v"
