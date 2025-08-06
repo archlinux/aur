@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.40.0
+pkgver=5.41.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz"
         "https://files.pythonhosted.org/packages/py3/g/gradio-pdf/gradio_pdf-0.0.22-py3-none-any.whl") # Prevent cercular dependencies
 noextract=('gradio_pdf-0.0.22-py3-none-any.whl')
-sha256sums=('ecef41822e9c7d948f8d25bcba45b935bcb000abc36b1debfc91306eb487d295'
+sha256sums=('8bb1f133e693f25499ff62532ce20ef8e394d0c5dbada84e6ef9e3e91afeea91'
             '6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5')
 depends=('python' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-brotli' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel' 'pnpm')
