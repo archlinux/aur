@@ -5,12 +5,12 @@
 
 pkgname=siril
 pkgver='1.2.6'
-pkgrel=3
+pkgrel=4
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 url="https://www.siril.org/"
 arch=('x86_64')
 license=('GPL3')
-depends=('gtk3' 'lcms2' 'cfitsio' 'wcslib' 'fftw' 'gsl' 'opencv' 'json-glib' 'ffms2')
+depends=('gtk3' 'cfitsio' 'wcslib' 'fftw' 'gsl' 'opencv' 'json-glib' 'ffms2')
 makedepends=('meson' 'cmake' 'ninja')
 optdepends=('gvfs: web access'
             'exiv2: get thumbnails from files'
@@ -33,6 +33,7 @@ sha256sums=('312f82e78599f796d163a6d1c90589df1ed920b9ff2bb7ab5b808e43872817fa'
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/"
+  pwd
   patch -p1 < ../../siril-1.2.6-linkage.patch
 }
 

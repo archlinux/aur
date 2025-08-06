@@ -1,7 +1,7 @@
 pkgbase = siril
 	pkgdesc = An astronomical image processing software for Linux. (IRIS clone)
 	pkgver = 1.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.siril.org/
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = siril
 	makedepends = cmake
 	makedepends = ninja
 	depends = gtk3
-	depends = lcms2
 	depends = cfitsio
 	depends = wcslib
 	depends = fftw
