@@ -1,6 +1,6 @@
 pkgbase = deezer-downloader
 	pkgdesc = Download music from Deezer and Spotify with a simple web frontend, through a local-hosted service written in Python
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/kmille/deezer-downloader
 	install = setup.install
@@ -22,7 +22,7 @@ pkgbase = deezer-downloader
 	depends = python-tomli
 	depends = python-urllib3
 	depends = python-magic
-	source = git+https://github.com/kmille/deezer-downloader#tag=v2.8.0
-	sha256sums = 4db2a724d95608052e514b7ff958b89d18e842e32c0d9051e5663185afd9632c
+	source = git+https://github.com/kmille/deezer-downloader#tag=v2.9.0
+	sha256sums = f4a988ddaab96ff5643c760a7fb497b68d174db8c87e82d4f4ce81f5394c5acd
 
 pkgname = deezer-downloader
