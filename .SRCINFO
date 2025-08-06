@@ -1,6 +1,6 @@
 pkgbase = canboatjs
 	pkgdesc = Native javascript NMEA 2000 decoder and encoder
-	pkgver = 3.9.1
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://github.com/canboat/canboatjs
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = canboatjs
 	makedepends = npm
 	provides = canboatjs
 	conflicts = canboatjs
-	noextract = canboatjs-3.9.1.tar.gz
-	source = canboatjs-3.9.1.tar.gz::https://github.com/canboat/canboatjs/archive/refs/tags/v3.9.1.tar.gz
-	sha256sums = 4a35551349ffccff71bc091154ac4d3f9c1ec5542c22854b2617c5bc306a7862
+	noextract = canboatjs-3.9.2.tar.gz
+	source = canboatjs-3.9.2.tar.gz::https://github.com/canboat/canboatjs/archive/refs/tags/v3.9.2.tar.gz
+	sha256sums = 9ad15292b98b1a9a679e73767f188b43a96bf1ae164081f160be49a942a863ab
 
 pkgname = canboatjs
