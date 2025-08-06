@@ -1,0 +1,54 @@
+# Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
+# Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+
+pkgname=expressvpn-beta
+_name=expressvpn
+pkgver=4.1.1.10039
+pkgrel=1
+pkgdesc="Proprietary VPN client for Linux"
+arch=('x86_64' 'aarch64')
+depends=('bash' 'dbus' 'gcc-libs' 'glib2' 'glibc' 'iptables' 'libatomic_ops' 'libcap-ng'
+         'libnl' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'psmisc' 'zlib')
+provides=('expressvpn')
+conflicts=('expressvpn')
+url="https://expressvpn.com"
+license=('LicenseRef-custom')
+options=(!strip)
+install=expressvpn.install
+_url="https://www.expressvpn.works/clients/linux"
+source=("${_url}/${_name}-linux-universal-${pkgver}.run"{,.asc}
+        expressvpn.sysusers)
+sha256sums=('8c743c890b6cf0f209e56ad02f6626f4ed7ad78a3a2405272411b37599cf89f2'
+            'SKIP'
+            '33ea79001be5dbc45122255c2fec4dd9e0396fdf19330b72fd770d33c398faf5')
+validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
+
+prepare() {
+  # Extract run file
+  sh expressvpn-linux-universal-${pkgver}.run --noexec --nox11 --target "${_name}-${pkgver}"
+}
+
+package() {
+  if [ "${CARCH}" == "x86_64" ]; then
+    cd "${_name}-${pkgver}/x64/"
+  elif [ "${CARCH}" == "aarch64" ]; then
+    cd "${_name}-${pkgver}/arm64/"
+  fi
+
+  install -dm755 "${pkgdir}/opt"
+  cp -a "expressvpnfiles/" "${pkgdir}/opt/expressvpn"
+  setcap 'cap_net_bind_service=+ep' "${pkgdir}/opt/expressvpn/bin/expressvpn-unbound"
+
+  install -dm755 "${pkgdir}/opt/expressvpn/"{etc,share,var}
+  install -dm755 "${pkgdir}/usr/bin"
+
+  install -Dm755 installfiles/error-notice.sh "${pkgdir}/opt/expressvpn/bin/error-notice.sh"
+  install -Dm644 installfiles/app-icon.png "${pkgdir}/usr/share/pixmaps/expressvpn.png"
+  install -Dm644 installfiles/expressvpn.desktop "${pkgdir}/usr/share/applications/expressvpn.desktop"
+
+  ln -sf ../../opt/expressvpn/bin/expressvpn-client "${pkgdir}/usr/bin/expressvpn-client"
+  ln -sf ../../opt/expressvpn/bin/expressvpnctl "${pkgdir}/usr/bin/expressvpnctl"
+
+  install -Dm644 "${srcdir}/expressvpn.sysusers" "${pkgdir}/usr/lib/sysusers.d/expressvpn.conf"
+  install -Dm644 installfiles/expressvpn-service.service "${pkgdir}/usr/lib/systemd/system/expressvpn-service.service"
+}
