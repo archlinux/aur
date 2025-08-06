@@ -6,8 +6,15 @@ pkgdesc="A Python script for setting timers with progress bar notifications in D
 arch=('any')
 url="https://github.com/bitSheriff/dunst-timer"
 license=('MIT')
-depends=('python' 'dunst')
-makedepends=('python' 'pyinstaller')
+depends=(
+    'python'
+    'dunst'
+)
+makedepends=(
+    'python'
+    'pyinstaller'
+    'python-altgraph'
+)
 source=("https://github.com/bitSheriff/dunst-timer/archive/v$pkgver.tar.gz")
 sha256sums=('768a7043544a2afc02405af1bd40adaf42e3199e67152e4e9209e3bac5790429')
 
