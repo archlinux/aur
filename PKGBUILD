@@ -11,7 +11,7 @@ _pkgname="duckstation"
 pkgbase="$_pkgname"
 pkgname=("$_pkgname" "$_pkgname-gpl")
 pkgver=0.1.7465
-pkgrel=4
+pkgrel=5
 pkgdesc="Playstation emulator"
 url="$_url/commits/$_commit"
 arch=('x86_64')
@@ -540,7 +540,7 @@ build() {
   CXX="clang++"
 
   local _ldflags=(${LDFLAGS})
-  LDFLAGS+="${_ldflags[@]} -fuse-ld=lld"
+  LDFLAGS+="${_ldflags[@]//*use-ld*/} -fuse-ld=lld"
 
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
@@ -556,6 +556,9 @@ build() {
 }
 
 package_duckstation-gpl() {
+  # add conflicts after meta package is retired
+  provides=("$_pkgname")
+
   # rpath
   patchelf --force-rpath --set-rpath '$ORIGIN' "build/bin/$_pkgname-qt"
   patchelf --force-rpath --set-rpath '$ORIGIN' "deps/usr/lib"/*.so

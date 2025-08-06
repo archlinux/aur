@@ -1,7 +1,7 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
 	pkgver = 0.1.7465
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/stenzek/duckstation/commits/aa955b8ae28314ae061613f0ddf13183a98aca03
 	arch = x86_64
 	license = GPL-3.0-only
@@ -90,3 +90,4 @@ pkgname = duckstation
 	depends = duckstation-gpl
 
 pkgname = duckstation-gpl
+	provides = duckstation
