@@ -1,16 +1,16 @@
 pkgname=apollo-studio
 pkgver=1.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Apollo Studio - standalone editor and live playback engine for Launchpad light effects"
 arch=('x86_64')
-url="https://github.com/Jacobeagle/apollo-studio-build-AUR"
+url="https://github.com/Jacobeagle/apollo-studio/"
 license=('custom')
 depends=('openssl-1.1' 'dotnet-sdk-5.0-bin')
 makedepends=()
-source=("https://github.com/Jacobeagle/apollo-studio/releases/download/${pkgver}/apollo-studio-${pkgver}.tar.gz"
+source=("https://github.com/Jacobeagle/apollo-studio/releases/download/${pkgver}/apollo-${pkgver}-linux.tar.gz"
 "apollo-studio.install")
-sha256sums=('4a0c192d5051159d5215db298f0a7fde2fce2cdcbdbf439cc89729d206ef6c38'
-            'f66e85690be8abda87ad0a220b47879bafe3990d5ec607f266834bba0a64518d')
+sha256sums=('912543917f7a0f710c081659d0dc5f6231d08df22a85388255b56db089c0eaed'
+            '23b38e8e4f3a9077e229c24f462513c8b56b5a4dc27bdf77fedcccc4f4b559d8')
 
 install=apollo-studio.install
 
@@ -21,9 +21,6 @@ package() {
 
   # Instalujemy plik desktop (menu)
   install -Dm644 "${srcdir}/apollo-launchpad.desktop" "$pkgdir/usr/share/applications/apollo-launchpad.desktop"
-
-  # Instalujemy ikonę SVG
-  install -Dm644 "${srcdir}/apollo-launchpad.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/apollo-studio.svg"
 
   # Instalujemy plik MIME
   install -Dm644 "${srcdir}/application-x-approj.xml" "$pkgdir/usr/share/mime/packages/application-x-approj.xml"
