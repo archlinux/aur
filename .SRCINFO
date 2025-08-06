@@ -7,6 +7,7 @@ pkgbase = pi-im-wayland
 	license = AGPL
 	makedepends = go
 	provides = pi-im
+	conflicts = pi-im
 	source = https://github.com/sunglocto/pi-im/archive/refs/tags/3.1a-r.tar.gz
 	sha256sums = e59ee05e0f2becc6f43c3397d75ed166c5523969eecda32b9b9ac774003faa66
 

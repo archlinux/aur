@@ -4,12 +4,14 @@ _pkgname=pi-im
 pkgname="${_pkgname}-wayland"
 pkgver=3.1a_r
 pkgrel=1
-provides=("${_pkgname}")
 pkgdesc='Experimental and extremely weird XMPP client written in Go. No solicitors.'
 url="https://github.com/sunglocto/${_pkgname}"
 arch=('x86_64')
 license=('AGPL')
 makedepends=('go')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
 source=("https://github.com/sunglocto/${_pkgname}/archive/refs/tags/${pkgver//_/-}.tar.gz")
 sha256sums=('e59ee05e0f2becc6f43c3397d75ed166c5523969eecda32b9b9ac774003faa66')
