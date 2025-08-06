@@ -7,10 +7,10 @@
 _pkgname=auxilium
 pkgname=${_pkgname}-git
 pkgver=0.1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Tool for parse args in many shell (bash, ksh,zsh)"
 arch=(any)
-url="https://auxilium.spn.109"
+url="https://spn109.fr/auxilium"
 license=('Apache-2')
 groups=()
 provides=("$_pkgname")
