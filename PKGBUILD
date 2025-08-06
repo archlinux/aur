@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron
 _pkgname=mihomo-party
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
     "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )
-sha256sums=("d8da71dc8998acb5c0b69afa9e241633f10892d0d1a403ad0e7d2ad17fe14329"
+sha256sums=("ca48feb9a45881e6d8f54a0827c5e6d8eb630259c709dee8dcbb9ad6ea647095"
 "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
 "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
 )
@@ -39,6 +39,7 @@ package() {
     cp -r $srcdir/${_pkgname}-${pkgver}/extra/files ${pkgdir}/opt/mihomo-party/resources/
     chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
+    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-smart
     install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${pkgdir}/opt/mihomo-party/resources/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
