@@ -1,7 +1,7 @@
 # Maintainer: Modelmat <modelmat@outlook.com.au>
 
 pkgname=python-frccontrol-git
-pkgver=2024.23
+pkgver=2025.5
 pkgrel=1
 pkgdesc="Provides SciPy wrappers that ease development of state-space models for the FIRST Robotics Competition."
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("BSD")
 depends=("python-matplotlib" "python-numpy" "python-scipy")
 makedepends=('python-build' 'python-installer' 'python-pytest')
 source=(git+https://github.com/calcmogul/frccontrol.git)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/frccontrol"
