@@ -3,7 +3,7 @@
 _pkgname=pi-im
 pkgname="${_pkgname}-wayland"
 pkgver=3.1a_r
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental and extremely weird XMPP client written in Go. No solicitors.'
 url="https://github.com/sunglocto/${_pkgname}"
 arch=('x86_64')
