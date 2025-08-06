@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-makemaker-dist-zilla-develop
-	pkgdesc = create bare-bones Makefile.PL files for use with dzil.
+	pkgdesc = Create bare-bones Makefile.PL files for use with dzil.
 	pkgver = 0.03
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/pod/ExtUtils::MakeMaker::Dist::Zilla::Develop
 	arch = any
 	license = LicenseRef-PerlArtistic
@@ -9,14 +9,14 @@ pkgbase = perl-extutils-makemaker-dist-zilla-develop
 	depends = perl-extutils-makemaker
 	options = !emptydirs
 	source = perl-extutils-makemaker-dist-zilla-develop-Develop.pm::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/lib/ExtUtils/MakeMaker/Dist/Zilla/Develop.pm
-	source = perl-extutils-makemaker-dist-zilla-develop-Changes::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/Changes?download=1
-	source = perl-extutils-makemaker-dist-zilla-develop-LICENSE::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/LICENSE?download=1
-	source = perl-extutils-makemaker-dist-zilla-develop-MANIFEST::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/MANIFEST?download=1
-	source = perl-extutils-makemaker-dist-zilla-develop-META.json::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/META.json?download=1
-	source = perl-extutils-makemaker-dist-zilla-develop-META.yml::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/META.yml?download=1
-	source = perl-extutils-makemaker-dist-zilla-develop-Makefile.PL::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/Makefile.PL?download=1
-	source = perl-extutils-makemaker-dist-zilla-develop-README::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/README?download=1
-	source = perl-extutils-makemaker-dist-zilla-develop-dist.ini::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/dist.ini?download=1
+	source = perl-extutils-makemaker-dist-zilla-develop-Changes::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/Changes
+	source = perl-extutils-makemaker-dist-zilla-develop-LICENSE::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/LICENSE
+	source = perl-extutils-makemaker-dist-zilla-develop-MANIFEST::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/MANIFEST
+	source = perl-extutils-makemaker-dist-zilla-develop-META.json::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/META.json
+	source = perl-extutils-makemaker-dist-zilla-develop-META.yml::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/META.yml
+	source = perl-extutils-makemaker-dist-zilla-develop-Makefile.PL::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/Makefile.PL
+	source = perl-extutils-makemaker-dist-zilla-develop-README::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/README
+	source = perl-extutils-makemaker-dist-zilla-develop-dist.ini::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/dist.ini
 	sha256sums = 022bbb3e3cb73e8a9b0e57bcd6c38a0ae80192ff4e8a7cb274d3e773b8f786c8
 	sha256sums = ff48f8c0dec4857abd094c464674609b206343a2a42e319748563418166739a9
 	sha256sums = a329c5b201efd3f99389fe5b1c468967f7e7226e93066f10f61ae48977c1389c

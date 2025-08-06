@@ -3,8 +3,8 @@
 _pkgname=perl-extutils-makemaker-dist-zilla-develop
 pkgname="${_pkgname}"
 pkgver=0.03
-pkgrel=4
-pkgdesc='create bare-bones Makefile.PL files for use with dzil.'
+pkgrel=5
+pkgdesc='Create bare-bones Makefile.PL files for use with dzil.'
 arch=(
   'any'
 )
@@ -21,14 +21,14 @@ checkdepends=()
 options+=('!emptydirs')
 source=(
   "${_pkgname}-Develop.pm::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/lib/ExtUtils/MakeMaker/Dist/Zilla/Develop.pm"
-  "${_pkgname}-Changes::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/Changes?download=1"
-  "${_pkgname}-LICENSE::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/LICENSE?download=1"
-  "${_pkgname}-MANIFEST::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/MANIFEST?download=1"
-  "${_pkgname}-META.json::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/META.json?download=1"
-  "${_pkgname}-META.yml::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/META.yml?download=1"
-  "${_pkgname}-Makefile.PL::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/Makefile.PL?download=1"
-  "${_pkgname}-README::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/README?download=1"
-  "${_pkgname}-dist.ini::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/raw/dist.ini?download=1"
+  "${_pkgname}-Changes::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/Changes"
+  "${_pkgname}-LICENSE::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/LICENSE"
+  "${_pkgname}-MANIFEST::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/MANIFEST"
+  "${_pkgname}-META.json::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/META.json"
+  "${_pkgname}-META.yml::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/META.yml"
+  "${_pkgname}-Makefile.PL::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/Makefile.PL"
+  "${_pkgname}-README::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/README"
+  "${_pkgname}-dist.ini::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-${pkgver}/dist.ini"
 )
 sha256sums=(
   '022bbb3e3cb73e8a9b0e57bcd6c38a0ae80192ff4e8a7cb274d3e773b8f786c8'
