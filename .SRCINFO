@@ -1,6 +1,6 @@
 pkgbase = gamebreaker
 	pkgdesc = Simple graphics engine for C++
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/elpoeprod/GameBreaker
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gamebreaker
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_ttf
-	source = GameBreaker-0.0.7.tar.gz::https://github.com/elpoeprod/GameBreaker/archive/v0.0.7.tar.gz
-	md5sums = a8c5b6f7cb74fd391bd0eb3667c269e2
+	source = GameBreaker-0.0.8.tar.gz::https://github.com/elpoeprod/GameBreaker/archive/v0.0.8.tar.gz
+	md5sums = 63b4542927fe3195d185747d42d8a464
 
 pkgname = gamebreaker
