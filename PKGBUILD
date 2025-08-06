@@ -1,8 +1,8 @@
 # Maintainer: Val V <scm(at)vaygr(dot)net>
 
 pkgname=fabric-ai
-_pkgname=fabric
-pkgver=1.4.210
+_pkgname=Fabric
+pkgver=1.4.273
 pkgrel=1
 pkgdesc="open-source framework for augmenting humans using AI"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3c567cb9b8a0b54060a3fb704cded98d93dbb20b9ae1bc72c9b261ca6db22533')
+sha256sums=('f3dac2f1be1b6135ce0464f328e54c6d3dd5556d1bacaeb28c75589f12fd3fd2')
 
 
 build() {
@@ -23,7 +23,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
 
-  go build -v
+  go build -v ./cmd/fabric
 }
 
 package() {
