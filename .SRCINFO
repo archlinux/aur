@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-bin
-	pkgver = 9.0.7.sdk303
+	pkgver = 9.0.8.sdk304
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -9,32 +9,32 @@ pkgbase = dotnet-core-bin
 	options = staticlibs
 	source = dotnet.sh
 	sha512sums = 768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.303/dotnet-sdk-9.0.303-linux-x64.tar.gz
-	sha512sums_x86_64 = e11518c184ab4f80b5d6411ecbca3e07e244a190e949e51ef73d36c521420f06107987947ada924618a44b9142caa097bd03659d973249f463aa5e58417ebfdc
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.303/dotnet-sdk-9.0.303-linux-arm.tar.gz
-	sha512sums_armv7h = 6d25cff8f67e68af98383522fb62285b8e0f835aa874b91d61d5bc35b904cb4f1bd66badf54db2e11bd2f72fb7d9541b900e243858a69637e172e1547d5cd66b
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.303/dotnet-sdk-9.0.303-linux-arm64.tar.gz
-	sha512sums_aarch64 = 8257338282e5ad9ec8530e6b1b70a5e235d9c4ab9b9be6d0548f61cdb0a55e715a9d766b55203ee01036e20ae9bd4e74ababfa1a7c94d45e89b2f314e90e999b
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.304/dotnet-sdk-9.0.304-linux-x64.tar.gz
+	sha512sums_x86_64 = b087828d595d0c6886bf652c69f3910303f455accb1ac956403f795080c55caf59732f3be0e31fc744aff13591a92e1efeb646ef3ca6165ed17a3cd12a67b229
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.304/dotnet-sdk-9.0.304-linux-arm.tar.gz
+	sha512sums_armv7h = d433286ec78115271107b5598fbccfbb9667590e1331852fbf31ec1487629cd606ad3d5c2fecd0ad94ccdb029317b7b29f3f55308b384ee72babdfda0657b6bc
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.304/dotnet-sdk-9.0.304-linux-arm64.tar.gz
+	sha512sums_aarch64 = 5ecf4b7cdc2fab6f7fa65a748e6e2f6bd5d04e160e57fee356d32253a88cacf97319237da1236647085505f706990cb616257d96caced1fb7686322e3fbd8f1d
 
 pkgname = dotnet-host-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (binary)
 	depends = gcc-libs
 	depends = glibc
 	provides = dotnet-host
-	provides = dotnet-host=9.0.7
+	provides = dotnet-host=9.0.8
 	conflicts = dotnet-host
 
 pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-bin
-	provides = aspnet-runtime=9.0.7
+	provides = aspnet-runtime=9.0.8
 	provides = aspnet-runtime-9.0
-	conflicts = aspnet-runtime=9.0.7
+	conflicts = aspnet-runtime=9.0.8
 	conflicts = aspnet-runtime-9.0
 
 pkgname = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary)
-	depends = dotnet-host>=9.0.7
+	depends = dotnet-host>=9.0.8
 	depends = gcc-libs
 	depends = glibc
 	depends = icu
@@ -42,9 +42,9 @@ pkgname = dotnet-runtime-bin
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=9.0.7
+	provides = dotnet-runtime=9.0.8
 	provides = dotnet-runtime-9.0
-	conflicts = dotnet-runtime=9.0.7
+	conflicts = dotnet-runtime=9.0.8
 	conflicts = dotnet-runtime-9.0
 
 pkgname = dotnet-sdk-bin
@@ -57,10 +57,10 @@ pkgname = dotnet-sdk-bin
 	depends = aspnet-runtime-bin
 	depends = aspnet-targeting-pack-bin
 	provides = dotnet-sdk-bin
-	provides = dotnet-sdk=9.0.7.sdk303
-	provides = dotnet-sdk-9.0=9.0.7.sdk303
+	provides = dotnet-sdk=9.0.8.sdk304
+	provides = dotnet-sdk-9.0=9.0.8.sdk304
 	conflicts = dotnet-sdk-bin
-	conflicts = dotnet-sdk=9.0.7.sdk303
+	conflicts = dotnet-sdk=9.0.8.sdk304
 	conflicts = dotnet-sdk-9.0
 
 pkgname = netstandard-targeting-pack-bin
@@ -73,15 +73,15 @@ pkgname = netstandard-targeting-pack-bin
 pkgname = dotnet-targeting-pack-bin
 	pkgdesc = The .NET Core targeting pack (binary)
 	depends = netstandard-targeting-pack-bin
-	provides = dotnet-targeting-pack=9.0.7
+	provides = dotnet-targeting-pack=9.0.8
 	provides = dotnet-targeting-pack-9.0
-	conflicts = dotnet-targeting-pack=9.0.7
+	conflicts = dotnet-targeting-pack=9.0.8
 	conflicts = dotnet-targeting-pack-9.0
 
 pkgname = aspnet-targeting-pack-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-bin
-	provides = aspnet-targeting-pack=9.0.7
+	provides = aspnet-targeting-pack=9.0.8
 	provides = aspnet-targeting-pack-9.0
-	conflicts = aspnet-targeting-pack=9.0.7
+	conflicts = aspnet-targeting-pack=9.0.8
 	conflicts = aspnet-targeting-pack-9.0
