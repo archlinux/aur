@@ -1,9 +1,10 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Benson Muite
 
 pkgname=python-atom
 _pkg=atom
-pkgver=0.8.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Memory efficient Python objects'
 arch=('x86_64')
@@ -20,7 +21,7 @@ makedepends=(
 	'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('3155b7a0a286cb5c2bff2929fc2341d071dc9169b0d0ff1f15450ddd57d24c57')
+sha256sums=('4ab93fc3cc7b6a078253b116e9f6235d2913eb9bb49adbc31a258e1017f2aee0')
 
 prepare() {
 	cd "$_pkg-$pkgver"
