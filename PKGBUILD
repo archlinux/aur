@@ -15,7 +15,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=25.2.0_devel.207057.b4b65822203.d41d8cd
+pkgver=25.3.0_devel.209833.e9292306dcd.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -119,6 +119,7 @@ prepare() {
 build() {
   local meson_options=(
     --cross-file lib32
+    -D display-info=disabled
     -D android-libbacktrace=disabled
     -D b_ndebug=true
     -D b_lto=false
