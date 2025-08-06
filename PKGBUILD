@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=deltatune-linux
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="DeltaTune ported to Linux. Show the currently playing song like the 'Field of Hopes and Dreams' pop-up from Deltarune Chapter 1."
@@ -14,7 +14,7 @@ provides=(deltatune)
 backup=()
 options=()
 source=("https://github.com/ThatOneCalculator/deltatune-linux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('633056e97c2074d1d862a2c7c13e1f7e0d4c222210f49147d971a20e59a2a058')
+sha256sums=('8b7f32fc64d12d06c34ba08a77268d0f71c947ef3cf25d284d61be3eca69b938')
 validpgpkeys=()
 
 package() {
