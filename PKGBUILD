@@ -1,7 +1,7 @@
 # Maintainer : Daniel Chesters <archlinux@coin-coin.xyz>
 # Contributor : Daniel Chesters <archlinux@coin-coin.xyz>
 pkgname=git-who
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Git blame for file trees"
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,5 +21,5 @@ package() {
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-b2sums=('f8a23650b2845e0a86b7341df9086d6dd8b47ec4f82c99cf98331696c0a5c38509de8e91ed5d0ce003849f3f200aa461f192320f4faeb313da805c0d59d09357')
+b2sums=('6f70a4f5a003b3036721fb052222e51aa184b1f430dd357ca321d232007d8e696d1631a5e85c821989613cf73b5d5838ddc922ba0a247e4f2bebcc574f3346c0')
 # vim:set ts=2 sw=2 et:
