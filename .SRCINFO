@@ -1,6 +1,6 @@
 pkgbase = ethersync-git
 	pkgdesc = Enables real-time co-editing of local text files.
-	pkgver = r634.9688e5c
+	pkgver = r1334.4ea4c27
 	pkgrel = 1
 	url = https://github.com/ethersync/ethersync
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = ethersync-git
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
+	options = !lto
 	source = ethersync-git::git+https://github.com/ethersync/ethersync
 	sha1sums = SKIP
 
