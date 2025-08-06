@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plex HTPC client for linux"
 arch=('x86_64')
 url='http://plex.tv'
-license=('unknown')
+license=('custom')
 depends=(libgl
   hicolor-icon-theme
   alsa-lib
