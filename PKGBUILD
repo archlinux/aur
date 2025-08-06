@@ -1,14 +1,15 @@
+# Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=cpulimit
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Limit cpu usage of a process in percentage. Actually sends SIGSTOP/SIGCONT POSIX signals to processes"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/opsengine/cpulimit'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/opsengine/$pkgname/archive/v$pkgver.tar.gz"
         '0000-fix-includes.patch')
@@ -21,7 +22,7 @@ prepare() {
 }
 
 build() {
-  make -C $pkgname-$pkgver
+  CFLAGS="$CFLAGS -std=gnu17" make -C $pkgname-$pkgver
 }
 
 package() {
