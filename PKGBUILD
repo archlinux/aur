@@ -2,45 +2,63 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.42.17
+pkgver=7.46.11
 _pkgtyp=stable
 pkgrel=1
 pkgdesc="Linux client of Lark Suite"
 arch=('x86_64')
 url="https://www.larksuite.com"
-license=('unknown')
-depends=('gtk3' 'libpulse' 'libmfx' 'alsa-lib')
+license=('LicenseRef-Lark-User-20250401')
+depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
+optdepends=('appmenu-gtk-module: Appmenu support')
+makedepends=('curl')
 replaces=('bytedance-lark-dev-bin')
 provides=('bytedance-lark' 'lark')
 options=('!emptydirs')
-install=${pkgname}.install
-source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10)
-DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\"")
-sha256sums=('7eeb1495f6488d9e754a76e0d962518591b043ecadcd8f3c6a66d51d27c3d269')
+source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
+	LICENSE.html::http://www.larksuite.com/en_us/user-terms-of-service)
+DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
+	'http::/usr/bin/curl -Lo %o %u')
+sha256sums=('cda569b554310873bff33317f779d7b71b6ae20e9036dcd02ce20af1db345d7b'
+	'd5d686c0deaf409cd0948dda4584138943fd21ed32d94c8ecd76a068c3d71e9c')
 
 package() {
-  # Extract package data
-  tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
+	# License
+	install -Dm644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 
-  # Modify files
-  cd "${pkgdir}"
+	# Extract package data
+	tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
 
-  ln -s bytedance-lark-${_pkgtyp} usr/bin/lark
+	# Modify files
+	cd "${pkgdir}"
 
-  sed -i 's/StartupNotify=true/StartupNotify=true\nStartupWMClass=lark/g' "${pkgdir}/usr/share/applications/bytedance-lark.desktop"
+	sed -i 's/StartupNotify=true/StartupNotify=true\nStartupWMClass=lark/g' "${pkgdir}/usr/share/applications/bytedance-lark.desktop"
 
-  sed -i "s/bytedance-lark-${_pkgtyp}/lark/g" "${pkgdir}/usr/share/applications/bytedance-lark.desktop"
-  sed -i "s/bytedance-lark-${_pkgtyp}/lark/g" "${pkgdir}/usr/share/menu/bytedance-lark.menu"
-  sed -i "s/bytedance-lark/lark/g" "${pkgdir}/usr/share/menu/bytedance-lark.menu"
-  sed -i 's/bytedance-lark/lark/g' "${pkgdir}/usr/share/appdata/bytedance-lark.appdata.xml"
-  sed -i 's/bytedance-lark/lark/g' "${pkgdir}/opt/bytedance/lark/bytedance-lark"
+	sed -i "s/bytedance-lark-${_pkgtyp}/lark/g" "${pkgdir}/usr/share/applications/bytedance-lark.desktop"
+	sed -i "s/bytedance-lark-${_pkgtyp}/lark/g" "${pkgdir}/usr/share/menu/bytedance-lark.menu"
+	sed -i "s/bytedance-lark/lark/g" "${pkgdir}/usr/share/menu/bytedance-lark.menu"
+	sed -i 's/bytedance-lark/lark/g' "${pkgdir}/usr/share/appdata/bytedance-lark.appdata.xml"
+	sed -i 's/bytedance-lark/lark/g' "${pkgdir}/opt/bytedance/lark/bytedance-lark"
 
-  mv "${pkgdir}"/usr/share/menu/{bytedance-,}lark.menu
-  mv "${pkgdir}"/usr/share/applications/{bytedance-,}lark.desktop
-  mv "${pkgdir}"/usr/share/appdata/{bytedance-,}lark.appdata.xml
-  mv "${pkgdir}"/usr/share/man/man1/{bytedance-lark-${_pkgtyp},lark}.1.gz
-  mv "${pkgdir}"/usr/share/doc/{bytedance-lark-${_pkgtyp},lark}
+	mv usr/share/menu/{bytedance-,}lark.menu
+	mv usr/share/applications/{bytedance-,}lark.desktop
+	mv usr/share/appdata/{bytedance-,}lark.appdata.xml
+	mv usr/share/man/man1/{bytedance-lark-${_pkgtyp},lark}.1.gz
+	mv usr/share/doc/{bytedance-lark-${_pkgtyp},lark}
 
-  # Fix directory permissions
-  find "${pkgdir}" -type d | xargs chmod 755
+	## Move non-standard /opt files to /usr/lib
+	install -d "usr/lib/lark/" && mv -T "opt/bytedance/lark" "usr/lib/lark"
+
+	### Update /usr/bin to point there
+	rm "usr/bin/bytedance-lark-${_pkgtyp}"
+	ln -s '/usr/lib/lark/bytedance-lark' "usr/bin/lark"
+
+	# Icons
+	for size in 16 24 32 48 64 128 256; do
+		install -d "usr/share/icons/hicolor/${size}x${size}/apps/"
+	    ln -s "/usr/lib/lark/product_logo_${size}.png" "usr/share/icons/hicolor/${size}x${size}/apps/bytedance-lark.png"
+	done
+
+	# Fix directory permissions
+	find "${pkgdir}" -type d -exec chmod 755 {} +
 }
