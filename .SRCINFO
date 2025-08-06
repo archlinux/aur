@@ -1,0 +1,15 @@
+pkgbase = brogue-ce-curses
+	pkgdesc = Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor.
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = https://github.com/tmewett/BrogueCE
+	arch = i686
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = sdl2_image
+	depends = sdl2
+	replaces = brogue-ce
+	source = brogue-ce-curses-1.14.1.tar.gz::https://github.com/tmewett/BrogueCE/archive/v1.14.1.tar.gz
+	md5sums = 952b9ac1b8c05d7489a30b9427bbb65e
+
+pkgname = brogue-ce-curses
