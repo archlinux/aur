@@ -1,6 +1,6 @@
 pkgbase = python-micro-manager-precice
 	pkgdesc = A tool which facilitates two-scale macro-micro coupled simulations using preCICE
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://precice.org/tooling-micro-manager-overview.html
 	arch = any
@@ -11,11 +11,14 @@ pkgbase = python-micro-manager-precice
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-git-versioning
 	makedepends = python-wheel
+	makedepends = git
 	depends = python-pyprecice
-	optdepends = python-scikit-learn: for crash handling by interpolation
+	depends = python-psutil
 	optdepends = python-h5py: for snapshot computations
-	source = micro-manager-0.6.0.tar.gz::https://github.com/precice/micro-manager/archive/v0.6.0.tar.gz
-	sha512sums = e1e829f2c4ad4f16b32294d5fefccdbc9a38496d4ea1243ce0a84f4c6af7516cf785ecdd373c93650f4da611acd826a29cd574e2344f2ff17ae98f0bb6deb89e
+	optdepends = python-scikit-learn: for crash handling by interpolation
+	source = git+https://github.com/precice/micro-manager.git#tag=v0.7.0
+	sha512sums = cd727d32cbd072a9bbe0f5b9ee8998e9b7626463af643a51dac3b3322fdec914c0977d68896721a65fa0a4434036b23e1c21065e1f0b2a3fb19d3322418c6439
 
 pkgname = python-micro-manager-precice
