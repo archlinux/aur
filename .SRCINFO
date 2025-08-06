@@ -1,6 +1,6 @@
 pkgbase = mathematica
 	pkgdesc = Computational software for mathematics, science, and engineering, with offline documentation included.
-	pkgver = 14.2.1
+	pkgver = 14.3.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = x86_64
@@ -62,11 +62,11 @@ pkgbase = mathematica
 	optdepends = zlib
 	options = !strip
 	options = !debug
-	source = Wolfram_14.2.1_LIN_Bndl.sh::https://account.wolfram.com/dl/WolframApp?version=14.2.1&platform=Linux&downloadManager=false
+	source = Wolfram_14.3.0_LIN_Bndl.sh::https://account.wolfram.com/dl/WolframApp?version=14.3&platform=Linux&downloadManager=false
 	source = remove-xdg-scripts.patch
 	source = insecure-runpath.list
-	sha256sums = 0dc65b7adaf9c0ede2fc391c860a6c5b74461df6b53ec940e1f2be6d143af018
+	sha256sums = 16f7175e28c639cb91035505c95bcf23247561a2bfaab90ca4bc5ffa6cfe03f7
 	sha256sums = 20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0
-	sha256sums = 5216ed7b2b53eb8f0bb3ab752d2e27b7e2a227c68ef2a5f0748652bbf4b9ba67
+	sha256sums = 6ff9e4d980719886d1f1f0a8a55ad1559fc21d91ef5082130c80e9e77e7e37cf
 
 pkgname = mathematica

@@ -9,7 +9,7 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
-pkgver=14.2.1
+pkgver=14.3.0
 _pkgver=${pkgver%.[0-9]}
 pkgrel=1
 pkgdesc="Computational software for mathematics, science, and engineering, with offline documentation included."
@@ -88,9 +88,9 @@ source=(
     "remove-xdg-scripts.patch"
     "insecure-runpath.list"
 )
-sha256sums=('0dc65b7adaf9c0ede2fc391c860a6c5b74461df6b53ec940e1f2be6d143af018'
+sha256sums=('16f7175e28c639cb91035505c95bcf23247561a2bfaab90ca4bc5ffa6cfe03f7'
             '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
-            '5216ed7b2b53eb8f0bb3ab752d2e27b7e2a227c68ef2a5f0748652bbf4b9ba67')
+            '6ff9e4d980719886d1f1f0a8a55ad1559fc21d91ef5082130c80e9e77e7e37cf')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't find any source files here, since this is a binary distribution.
 ## Here's a quick comparison on my machine:
@@ -124,7 +124,7 @@ options=(!strip !debug)
 _installdir='/opt/Mathematica'
 
 prepare() {
-    warning "Building Mathematica takes around 24GiB of space for 'makepkg'."
+    warning "Building Mathematica takes around 26GiB of space for 'makepkg'."
     warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
     # shellcheck disable=SC2312 # echo won't trigger errors
@@ -203,7 +203,7 @@ package() {
     install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     _fix_binary_symlinks # namcap rule: symlink
-    # _fix_insecure_runpath # namcap rule: rpath, runpath
+    _fix_insecure_runpath # namcap rule: rpath, runpath
     _fix_permissions # namcap rule: permissions
 }
 
