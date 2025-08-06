@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-legacy-bin
-pkgver=24.35.30872.22
+pkgver=24.35.30872.36
 _gmmver=22.5.0
 _gmmsover=12
-_igcver=1.0.17537.20
-_lzver="1.3.$(sed -E 's/([0-9]+\.){2}//' <<< "$pkgver")"
-pkgrel=3
+_igcver=1.0.17537.24
+_lzver="1.5.$(sed -E 's/([0-9]+\.){2}//' <<< "$pkgver")"
+pkgrel=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (legacy platforms; pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/compute-runtime/'
@@ -16,8 +16,8 @@ depends=(
     'glibc'
     "intel-graphics-compiler-legacy-bin=${_igcver}")
 optdepends=(
-    'libva: for cl_intel_va_api_media_sharing'
-    'libdrm: for cl_intel_va_api_media_sharing')
+    'libdrm: for cl_intel_va_api_media_sharing'
+    'libva: for cl_intel_va_api_media_sharing')
 provides=(
     "intel-compute-runtime=${pkgver}"
     "intel-compute-runtime-legacy=${pkgver}"
@@ -28,7 +28,7 @@ provides=(
 conflicts=(
     'intel-compute-runtime'
     'intel-gmmlib')
-options=('!strip' '!emptydirs')
+options=('!debug' '!emptydirs' '!strip')
 source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl-icd-legacy1_${pkgver}_amd64.deb"
         "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-level-zero-gpu-legacy1_${_lzver}_amd64.deb"
         "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm-dev_${_gmmver}_amd64.deb"
@@ -38,8 +38,8 @@ noextract=("intel-opencl-icd-legacy1_${pkgver}_amd64.deb"
            "intel-level-zero-gpu-legacy1_${_lzver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('1ac4639c148ab6c9db6bc5a7733ca40bac3782cccc5b3da8e8cb7da8e8f20b1b'
-            '54d42056c627dd36eaaf3dcfad5d80fb90e9c0d65e4a4d5ab8b0e8ed1277891b'
+sha256sums=('bbe71e4f414259e06a10cde72c29a2bd78d41b2bb2f6f8463b1806797fe66e85'
+            '40dfbd15ab62de036a00824b304a2aa1fa2d81ad60ef83da09cfe3c5a80c429f'
             'ca634ce51a9cac35010f363d34f84449ef1f20480ce6243920a80656754de932'
             'cc29d14df83cff1b3c6a66baa39257f0211b168ab43a99c2dc62a3734431bc23'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
