@@ -4,7 +4,7 @@
 _pkgname=slopecraft
 pkgname=${_pkgname}-portable
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Map Pixel Art Generator for Minecraft. Sandboxed by Portable, w/ auto updates."
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/SlopeCraft/SlopeCraft"
@@ -122,10 +122,10 @@ bindInputDevices="false"
 allowInhibit="false"
 allowGlobalShortcuts="true"''' >"${pkgdir}/usr/lib/portable/info/com.github.SlopeCraft.VisualCraft/config"
     echo '''[Desktop Entry]
-Name=MapViewer
+Name=VisualCraft
 Comment=Minecraft map browser
-Exec=MapViewer
-Icon=com.github.SlopeCraft.MapViewer.png
+Exec=VisualCraft
+Icon=com.github.SlopeCraft.VisualCraft.png
 Type=Application
 Keywords=SlopeCraft;''' >"${pkgdir}/usr/share/applications/com.github.SlopeCraft.VisualCraft.desktop"
     echo '''#!/usr/bin/bash
