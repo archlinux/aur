@@ -1,12 +1,13 @@
 # Maintainer: patataofcourse <patataofcourse@gmail.com>
 pkgname="tickompiler-bin"
 pkgver="1.10.0_hotfix"
-pkgrel=4
+pkgrel=5
 pkgdesc="Compiler/decompiler for Tickflow, a language for Rhythm Heaven Megamix"
 arch=("any")
 url="https://github.com/rhmodding/Tickompiler"
 license=('MIT')
 depends=("java-runtime=8" "bash")
+optdepends=("java-runtime-common: switching to java8")
 provides=("tickompiler")
 conflicts=()
 noextract=(
