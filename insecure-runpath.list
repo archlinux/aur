@@ -1,5 +1,6 @@
 SystemFiles/Components/TextSearch/Binaries/Linux-x86-64/libclucene-contribs-lib.so
 SystemFiles/Components/TextSearch/Binaries/Linux-x86-64/libclucene-core.so
+SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/WSM/Binaries/Linux-x86-64/WSMKernelX
 SystemFiles/Components/WolframCGL/LibraryResources/Linux-x86-64/libpcl_common.so
 SystemFiles/Components/WolframCGL/LibraryResources/Linux-x86-64/libpcl_features.so
 SystemFiles/Components/WolframCGL/LibraryResources/Linux-x86-64/libpcl_filters.so
@@ -9,12 +10,11 @@ SystemFiles/Components/WolframCGL/LibraryResources/Linux-x86-64/libpcl_sample_co
 SystemFiles/Components/WolframCGL/LibraryResources/Linux-x86-64/libpcl_search.so
 SystemFiles/Components/WolframCGL/LibraryResources/Linux-x86-64/libpcl_surface.so
 SystemFiles/Components/WolframCGL/LibraryResources/Linux-x86-64/libqhull_r.so
-SystemFiles/Components/WSMCore/SystemModeler/SystemFiles/WSM/Binaries/Linux-x86-64/WSMKernelX
 SystemFiles/Converters/Binaries/Linux-x86-64/PDF.exe
 SystemFiles/Libraries/Linux-x86-64/legacy.so
+SystemFiles/Libraries/Linux-x86-64/libWolframRTL.so
 SystemFiles/Libraries/Linux-x86-64/libcrypto.so.3
 SystemFiles/Libraries/Linux-x86-64/libssl.so.3
-SystemFiles/Libraries/Linux-x86-64/libWolframRTL.so
 SystemFiles/Links/Databases/Python/executables/Linux-x86-64/distribution/_internal/lib-dynload/_asyncio.cpython-310-x86_64-linux-gnu.so
 SystemFiles/Links/Databases/Python/executables/Linux-x86-64/distribution/_internal/lib-dynload/_bisect.cpython-310-x86_64-linux-gnu.so
 SystemFiles/Links/Databases/Python/executables/Linux-x86-64/distribution/_internal/lib-dynload/_blake2.cpython-310-x86_64-linux-gnu.so
@@ -87,6 +87,7 @@ SystemFiles/Links/ImageFileTools/LibraryResources/Linux-x86-64/libwebpdecoder.so
 SystemFiles/Links/ImageFileTools/LibraryResources/Linux-x86-64/libwebpdemux.so.2
 SystemFiles/Links/ImageFileTools/LibraryResources/Linux-x86-64/libwebpmux.so.3
 SystemFiles/Links/MongoLink/LibraryResources/Linux-x86-64/libmongoc-1.0.so.0
+SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/OpenCVLink.so
 SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/libopencv_calib3d.so
 SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/libopencv_core.so
 SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/libopencv_dnn.so
@@ -101,9 +102,8 @@ SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/libopencv_photo.so
 SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/libopencv_stitching.so
 SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/libopencv_video.so
 SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/libopencv_videoio.so
-SystemFiles/Links/OpenCVLink/LibraryResources/Linux-x86-64/OpenCVLink.so
 SystemFiles/Links/RLink/SystemFiles/Libraries/Linux-x86-64/AllVersions/libjri.so
 SystemFiles/Links/TinkerForgeWeatherStationTools/Binaries/Linux-x86-64/TinkerForgeWeatherStationTools.exe
+SystemFiles/Links/WhisperLink/LibraryResources/Linux-x86-64/libwhisper.so.1.5.5
 SystemFiles/Links/WhisperLink/LibraryResources/Linux-x86-64/libwhisper_cuda.so.1.5.5
 SystemFiles/Links/WhisperLink/LibraryResources/Linux-x86-64/libwhisper_noavx.so.1.5.5
-SystemFiles/Links/WhisperLink/LibraryResources/Linux-x86-64/libwhisper.so.1.5.5

@@ -4,6 +4,7 @@
 !.nvchecker.toml
 !.shellcheckrc
 !mksrcinfo
+!generate-insecure-runpath-list
 # actual package
 !PKGBUILD
 !remove-xdg-scripts.patch

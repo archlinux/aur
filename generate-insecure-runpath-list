@@ -1,0 +1,15 @@
+#!/usr/bin/bash -e
+
+# Build once without '_fix_insecure_runpath', then run this on the compressed package
+if [[ ! -f "$*" ]]; then
+    echo "No package provided"
+    exit 1
+fi
+
+# shellcheck disable=SC2312
+namcap -r rpath,runpath "$@" |\
+    grep -Ei 'Insecure\s+R(UN)?PATH' |\
+    sed -E 's/.*\((.*?)\)/\1/g' |\
+    sed -E "s#\s*'opt/Mathematica/(.*?)'\s*#\1\n#g" |\
+    sed '/^[[:space:]]*$/d' |\
+    LC_COLLATE=C sort | uniq > insecure-runpath.list

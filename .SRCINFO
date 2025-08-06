@@ -67,6 +67,6 @@ pkgbase = mathematica
 	source = insecure-runpath.list
 	sha256sums = 0dc65b7adaf9c0ede2fc391c860a6c5b74461df6b53ec940e1f2be6d143af018
 	sha256sums = 20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0
-	sha256sums = 8f808af5ee778bad8a78b4544bbda9854a06159b65f3368d508ebcaabf4bbadd
+	sha256sums = 5216ed7b2b53eb8f0bb3ab752d2e27b7e2a227c68ef2a5f0748652bbf4b9ba67
 
 pkgname = mathematica
