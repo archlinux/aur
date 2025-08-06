@@ -3,16 +3,16 @@
 
 pkgname=urw-classico
 pkgver=20250803
-pkgrel=1
+pkgrel=2
 pkgdesc="URW Classico font from CTAN (for texlive)"
 arch=("any")
 license=("AGPL-3.0-only")
 url="https://www.ctan.org/tex-archive/fonts/urw/classico"
 depends=("texlive-core")
-source=("https://mirrors.ctan.org/install/fonts/urw/classico.tds.zip"
+source=("https://sunsite.icm.edu.pl/pub/CTAN/install/fonts/urw/classico.tds.zip"
        "$pkgname.maps")
 noextract=("classico.tds.zip")
-sha256sums=('8223f78bb550a61f57ba85c16ab9852b01de1397da3043f99288f598b96e4adc'
+sha256sums=('52264926a1f087fe3ed2318540f1ab87de7ac4d1db2faf2adb9a03647f1fea4b'
             '48b27e6629fc71b5661325b63b31c95aafc1db7fd2a5f3a5993597d2ece89ff7')
 package() {
 
