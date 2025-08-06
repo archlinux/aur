@@ -1,8 +1,8 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
 	pkgver = 0.1.7465
-	pkgrel = 3
-	url = https://github.com/stenzek/duckstation
+	pkgrel = 4
+	url = https://github.com/stenzek/duckstation/commits/aa955b8ae28314ae061613f0ddf13183a98aca03
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = clang19
@@ -25,21 +25,68 @@ pkgbase = duckstation
 	depends = spirv-tools
 	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=aa955b8ae28314ae061613f0ddf13183a98aca03
 	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
-	source = stenzek.cpuinfo::git+https://github.com/stenzek/cpuinfo.git
-	source = stenzek.discord-rpc::git+https://github.com/stenzek/discord-rpc.git
+	source = pytorch.cpuinfo::git+https://github.com/pytorch/cpuinfo.git#commit=ca678952a9a8eaa6de112d154e8e104b22f9ab3f
+	source = cpuinfo-0001-Fix-building-as-a-shared-library.patch.zst
+	source = discord-rpc::git+https://github.com/discord/discord-rpc.git#commit=963aa9f3e5ce81a4682c6ca3d136cddda614db33
+	source = discord-rpc-0001-Reapply-shutdown-patch.patch.zst
+	source = discord-rpc-0002-Add-rapidjson-to-avoid-download.patch.zst
+	source = discord-rpc-0003-Tidy-up.patch.zst.001
+	source = discord-rpc-0003-Tidy-up.patch.zst.002
+	source = discord-rpc-0004-CMake-find_package-support.patch.zst
+	source = discord-rpc-0005-Default-visibility-to-hidden.patch.zst
 	source = sammycage.lunasvg::git+https://github.com/sammycage/lunasvg.git#tag=v2.4.1
-	source = lunasvg_2.4.1_9af1ac7.patch
-	source = stenzek.shaderc::git+https://github.com/stenzek/shaderc.git
-	source = stenzek.soundtouch::git+https://github.com/stenzek/soundtouch.git
+	source = lunasvg_2.4.1_9af1ac7.patch.zst
+	source = shaderc::git+https://github.com/google/shaderc.git#commit=6d2848321250a19641800f8afb07738f3b0b7f18
+	source = shaderc_6d28483_f60bb80.patch.zst.001
+	source = shaderc_6d28483_f60bb80.patch.zst.002
+	source = shaderc_6d28483_f60bb80.patch.zst.003
+	source = shaderc_6d28483_f60bb80.patch.zst.004
+	source = shaderc_6d28483_f60bb80.patch.zst.005
+	source = shaderc_6d28483_f60bb80.patch.zst.006
+	source = shaderc_6d28483_f60bb80.patch.zst.007
+	source = shaderc_6d28483_f60bb80.patch.zst.008
+	source = shaderc_6d28483_f60bb80.patch.zst.009
+	source = shaderc_6d28483_f60bb80.patch.zst.010
+	source = soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git#commit=7f35604eda445d4bb4006ca77a19a403af6838cd
+	source = soundtouch-0001-Local-changes.patch.zst
+	source = soundtouch-0002-Slim-down-for-downloads.patch.zst.001
+	source = soundtouch-0002-Slim-down-for-downloads.patch.zst.002
 	source = khronosgroup.spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 9263d020f6eb1e473db97b4b3205d794a56ae9c3ea6adf71a803632af98a29a4
 	sha256sums = SKIP
+	sha256sums = b211f546f7fd437502ad3bf8924d339f31ded5c98aa302af9dae0f03a017b903
+	sha256sums = 19f87a2dd2a2dda8bc7015c1718ea2c4be82ef4f9e510ce7a3ee340926960a83
+	sha256sums = 836a558c6201b4e2d3767aeccdb26da45993c3a5541bc83cc906a5148e4ea638
+	sha256sums = 5c860b369b2a886f1f3ed3d790216dd7e2e3c243ecd5bf179de23c7448366276
+	sha256sums = 525202180552883a1952ef92b044678a0681e454d5e03252e746adea369ff305
+	sha256sums = 614525f46189c5c6f40e5870290fafeacc313a49661367537decc27b939957b2
 	sha256sums = SKIP
-	sha256sums = 2af757b02d8b172918a1a308195579ba7dfd5f8f742b2ce8012609d3bfbe6cc0
+	sha256sums = eeae0e7897ee73a483e5c4955aa37807ff20ea3c226ec29c2b6d06038402c195
 	sha256sums = SKIP
+	sha256sums = ab6dab6f74fa12a5211df5755e4e60cb4830e884870ef4fa20a8ae6031b19029
+	sha256sums = 250ad209454bd83a8a0917083db50655648d80bc249df73503ee4a6e379f4256
+	sha256sums = 7bda4fdb018e41ba3ac744bc9bb7cd4a1d96a937893949de7a26c8982254c943
+	sha256sums = ff6a101a5be41c0271c83d8b257c719832b5263fc74571034b69c17a8d95a067
+	sha256sums = 56bb787e687e58c66a874d1a21a215d178ca2827be96b666f74909e63bf5b17f
+	sha256sums = 374af0d84d5a77d20be4708e3d1ade5b94ca4382b1f39edca2a5d8fd0902e03a
+	sha256sums = c0d888c358514701b174442597fb9a1621ae8266abbb81030cc750f6b7a3b18a
+	sha256sums = b71d4874ba30a8b560f69cca845d8c05e8c1af4b8fe9385de8620b5ed69feba5
+	sha256sums = 5eea083e12442bc400dcd3efa3f1ac8fe1589e9cfa4e77822820fba0654a1222
+	sha256sums = a15a1ac810631b73723e0738eff991899e60c0f8df782abaf6ef53285c6a2123
 	sha256sums = SKIP
+	sha256sums = cccd155ca6f3db3c343dcf665336f052117ea2fc2815bf085e6098fb211c8fe5
+	sha256sums = 8fb22b6ccb8cde000b32615c8c3e5c8f75e8ed422966aa55ecd013513abb4114
+	sha256sums = f7f082f47b0ceeb418a5a73cfb5fe2b548c60a98eedbd02d9674e3e1543568dc
 	sha256sums = SKIP
 
 pkgname = duckstation
+	pkgdesc = metapackage - migrate to duckstation-gpl
+	url = https://aur.archlinux.org/pkgbase/duckstation
+	arch = any
+	license = None
+	depends = duckstation-gpl
+
+pkgname = duckstation-gpl

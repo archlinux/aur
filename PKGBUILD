@@ -1,17 +1,19 @@
 # Maintainer:
 
 ## options
-: ${_commit:=aa955b8ae28314ae061613f0ddf13183a98aca03} # 0.1.r7465
 : ${_scripts:=scripts/deps}
-
 : ${_clang_ver=19}
 
+: ${_url:=https://github.com/stenzek/duckstation}
+: ${_commit:=aa955b8ae28314ae061613f0ddf13183a98aca03} # 0.1.r7465
+
 _pkgname="duckstation"
-pkgname="$_pkgname"
+pkgbase="$_pkgname"
+pkgname=("$_pkgname" "$_pkgname-gpl")
 pkgver=0.1.7465
-pkgrel=3
+pkgrel=4
 pkgdesc="Playstation emulator"
-url="https://github.com/stenzek/duckstation"
+url="$_url/commits/$_commit"
 arch=('x86_64')
 
 depends=(
@@ -46,7 +48,7 @@ _source_duckstation() {
   license=('GPL-3.0-only')
 
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  source=("$_pkgsrc"::"git+$_url.git#commit=$_commit")
   sha256sums=('SKIP')
 
   pkgver() {
@@ -60,26 +62,48 @@ _source_backtrace() {
 }
 
 _source_cpuinfo() {
-  _pkgsrc_cpuinfo="stenzek.cpuinfo"
-  source+=("$_pkgsrc_cpuinfo"::"git+https://github.com/stenzek/cpuinfo.git")
-  sha256sums+=('SKIP')
+  _pkgsrc_cpuinfo="pytorch.cpuinfo"
+  source+=(
+    "$_pkgsrc_cpuinfo"::"git+https://github.com/pytorch/cpuinfo.git#commit=ca678952a9a8eaa6de112d154e8e104b22f9ab3f"
+    "cpuinfo-0001-Fix-building-as-a-shared-library.patch.zst"
+  )
+  sha256sums+=(
+    'SKIP'
+    '9263d020f6eb1e473db97b4b3205d794a56ae9c3ea6adf71a803632af98a29a4'
+  )
 }
 
 _source_discord_rpc() {
-  _pkgsrc_discord_rpc="stenzek.discord-rpc"
-  source+=("$_pkgsrc_discord_rpc"::"git+https://github.com/stenzek/discord-rpc.git")
-  sha256sums+=('SKIP')
+  _pkgsrc_discord_rpc="discord-rpc"
+  source+=(
+    "$_pkgsrc_discord_rpc"::"git+https://github.com/discord/discord-rpc.git#commit=963aa9f3e5ce81a4682c6ca3d136cddda614db33"
+    "discord-rpc-0001-Reapply-shutdown-patch.patch.zst"
+    "discord-rpc-0002-Add-rapidjson-to-avoid-download.patch.zst"
+    "discord-rpc-0003-Tidy-up.patch.zst.001"
+    "discord-rpc-0003-Tidy-up.patch.zst.002"
+    "discord-rpc-0004-CMake-find_package-support.patch.zst"
+    "discord-rpc-0005-Default-visibility-to-hidden.patch.zst"
+  )
+  sha256sums+=(
+    'SKIP'
+    'b211f546f7fd437502ad3bf8924d339f31ded5c98aa302af9dae0f03a017b903'
+    '19f87a2dd2a2dda8bc7015c1718ea2c4be82ef4f9e510ce7a3ee340926960a83'
+    '836a558c6201b4e2d3767aeccdb26da45993c3a5541bc83cc906a5148e4ea638'
+    '5c860b369b2a886f1f3ed3d790216dd7e2e3c243ecd5bf179de23c7448366276'
+    '525202180552883a1952ef92b044678a0681e454d5e03252e746adea369ff305'
+    '614525f46189c5c6f40e5870290fafeacc313a49661367537decc27b939957b2'
+  )
 }
 
 _source_lunasvg() {
   _pkgsrc_lunasvg="sammycage.lunasvg"
   source+=(
     "$_pkgsrc_lunasvg"::"git+https://github.com/sammycage/lunasvg.git#tag=v2.4.1"
-    "lunasvg_2.4.1_9af1ac7.patch"
+    "lunasvg_2.4.1_9af1ac7.patch.zst"
   )
   sha256sums+=(
     'SKIP'
-    '2af757b02d8b172918a1a308195579ba7dfd5f8f742b2ce8012609d3bfbe6cc0'
+    'eeae0e7897ee73a483e5c4955aa37807ff20ea3c226ec29c2b6d06038402c195'
   )
 }
 
@@ -92,15 +116,49 @@ _source_shaderc() {
     'spirv-headers'
   )
 
-  _pkgsrc_shaderc="stenzek.shaderc"
-  source+=("$_pkgsrc_shaderc"::"git+https://github.com/stenzek/shaderc.git")
-  sha256sums+=('SKIP')
+  _pkgsrc_shaderc="shaderc"
+  source+=(
+    "$_pkgsrc_shaderc"::"git+https://github.com/google/shaderc.git#commit=6d2848321250a19641800f8afb07738f3b0b7f18"
+    "shaderc_6d28483_f60bb80.patch.zst.001"
+    "shaderc_6d28483_f60bb80.patch.zst.002"
+    "shaderc_6d28483_f60bb80.patch.zst.003"
+    "shaderc_6d28483_f60bb80.patch.zst.004"
+    "shaderc_6d28483_f60bb80.patch.zst.005"
+    "shaderc_6d28483_f60bb80.patch.zst.006"
+    "shaderc_6d28483_f60bb80.patch.zst.007"
+    "shaderc_6d28483_f60bb80.patch.zst.008"
+    "shaderc_6d28483_f60bb80.patch.zst.009"
+    "shaderc_6d28483_f60bb80.patch.zst.010"
+  )
+  sha256sums+=(
+    'SKIP'
+    'ab6dab6f74fa12a5211df5755e4e60cb4830e884870ef4fa20a8ae6031b19029'
+    '250ad209454bd83a8a0917083db50655648d80bc249df73503ee4a6e379f4256'
+    '7bda4fdb018e41ba3ac744bc9bb7cd4a1d96a937893949de7a26c8982254c943'
+    'ff6a101a5be41c0271c83d8b257c719832b5263fc74571034b69c17a8d95a067'
+    '56bb787e687e58c66a874d1a21a215d178ca2827be96b666f74909e63bf5b17f'
+    '374af0d84d5a77d20be4708e3d1ade5b94ca4382b1f39edca2a5d8fd0902e03a'
+    'c0d888c358514701b174442597fb9a1621ae8266abbb81030cc750f6b7a3b18a'
+    'b71d4874ba30a8b560f69cca845d8c05e8c1af4b8fe9385de8620b5ed69feba5'
+    '5eea083e12442bc400dcd3efa3f1ac8fe1589e9cfa4e77822820fba0654a1222'
+    'a15a1ac810631b73723e0738eff991899e60c0f8df782abaf6ef53285c6a2123'
+  )
 }
 
 _source_soundtouch() {
-  _pkgsrc_soundtouch="stenzek.soundtouch"
-  source+=("$_pkgsrc_soundtouch"::"git+https://github.com/stenzek/soundtouch.git")
-  sha256sums+=('SKIP')
+  _pkgsrc_soundtouch="soundtouch"
+  source+=(
+    "$_pkgsrc_soundtouch"::"git+https://codeberg.org/soundtouch/soundtouch.git#commit=7f35604eda445d4bb4006ca77a19a403af6838cd"
+    "soundtouch-0001-Local-changes.patch.zst"
+    "soundtouch-0002-Slim-down-for-downloads.patch.zst.001"
+    "soundtouch-0002-Slim-down-for-downloads.patch.zst.002"
+  )
+  sha256sums+=(
+    'SKIP'
+    'cccd155ca6f3db3c343dcf665336f052117ea2fc2815bf085e6098fb211c8fe5'
+    '8fb22b6ccb8cde000b32615c8c3e5c8f75e8ed422966aa55ecd013513abb4114'
+    'f7f082f47b0ceeb418a5a73cfb5fe2b548c60a98eedbd02d9674e3e1543568dc'
+  )
 }
 
 _source_spirv_cross() {
@@ -108,10 +166,21 @@ _source_spirv_cross() {
   sha256sums+=('SKIP')
 }
 
+_apply_split_patch() {
+  # $1 = basename
+  [ -z "$1" ] && return 1
+  cat "$srcdir/$1.patch.zst".[0-9]* > "$srcdir/$1.patch.zst"
+
+  # $2 = sha256sum
+  [ -n "$2" ] && sha256sum -c <<< "$2  $srcdir/$1.patch.zst"
+  zstd -dc "$srcdir/$1.patch.zst" | git apply --whitespace=nowarn
+}
+
 _prepare_backtrace() (
   local _version_backtrace=$(grep -E -m1 'LIBBACKTRACE=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LIBBACKTRACE=(\S+)$&\1&')
   echo "backtrace = $_version_backtrace"
   git -c advice.detachedHead=false -C "$srcdir/ianlancetaylor.libbacktrace" checkout -f "$_version_backtrace"
+  echo
 )
 
 _prepare_cpuinfo() (
@@ -119,8 +188,10 @@ _prepare_cpuinfo() (
   echo "cpuinfo = $_version_cpuinfo"
   cd "$srcdir/$_pkgsrc_cpuinfo"
   if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
-    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+    echo "using $(git rev-parse HEAD) with patch"
+    git apply "$srcdir/cpuinfo-0001-Fix-building-as-a-shared-library.patch"
   fi
+  echo
 )
 
 _prepare_discord_rpc() (
@@ -128,8 +199,14 @@ _prepare_discord_rpc() (
   echo "discord-rpc = $_version_discord_rpc"
   cd "$srcdir/$_pkgsrc_discord_rpc"
   if ! git -c advice.detachedHead=false checkout -f "$_version_discord_rpc"; then
-    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+    echo "using $(git rev-parse HEAD) with patch"
+    git apply --whitespace=nowarn "$srcdir/discord-rpc-0001-Reapply-shutdown-patch.patch"
+    git apply --whitespace=nowarn "$srcdir/discord-rpc-0002-Add-rapidjson-to-avoid-download.patch"
+    _apply_split_patch discord-rpc-0003-Tidy-up 94c60aea2ec1bf5ef044e28e2467fc4097a1abb182291f0b1364fd66ce8c7e65
+    git apply --whitespace=nowarn "$srcdir/discord-rpc-0004-CMake-find_package-support.patch"
+    git apply --whitespace=nowarn "$srcdir/discord-rpc-0005-Default-visibility-to-hidden.patch"
   fi
+  echo
 )
 
 _prepare_lunasvg() (
@@ -137,9 +214,10 @@ _prepare_lunasvg() (
   echo "lunasvg = $_version_lunasvg"
   cd "$srcdir/$_pkgsrc_lunasvg"
   if ! git -c advice.detachedHead=false checkout -f "$_version_lunasvg"; then
-    echo "commit does not exist, using $(git rev-parse HEAD) with patch"
-    patch -Np1 -F100 -i "$srcdir/lunasvg_2.4.1_9af1ac7.patch"
+    echo "using $(git rev-parse HEAD) with patch"
+    git apply "$srcdir/lunasvg_2.4.1_9af1ac7.patch"
   fi
+  echo
 )
 
 _prepare_shaderc() (
@@ -148,11 +226,13 @@ _prepare_shaderc() (
 
   cd "$srcdir/$_pkgsrc_shaderc"
   if ! git -c advice.detachedHead=false checkout -f "$_version_shaderc"; then
-    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+    echo "using $(git rev-parse HEAD) with patch"
+    _apply_split_patch shaderc_6d28483_f60bb80 a21bf487249f7c9cbe2f3cf48c9f21b440b4386694b4760bffe6307775e5e1fa
   fi
 
   sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
     -i CMakeLists.txt
+  echo
 )
 
 _prepare_soundtouch() (
@@ -161,8 +241,11 @@ _prepare_soundtouch() (
 
   cd "$srcdir/$_pkgsrc_soundtouch"
   if ! git -c advice.detachedHead=false checkout -f "$_version_soundtouch"; then
-    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+    echo "using $(git rev-parse HEAD) with patch"
+    git apply "$srcdir/soundtouch-0001-Local-changes.patch"
+    _apply_split_patch soundtouch-0002-Slim-down-for-downloads 8eb9c4cc05ee5efe7022585175e33ec00ab882a7320b412d7254457afe8c4a76
   fi
+  echo
 )
 
 _prepare_spirv_cross() (
@@ -178,6 +261,7 @@ _prepare_spirv_cross() (
     cd "khronosgroup.spirv-cross"
     git apply "$srcdir/spirv-cross-changes.patch"
   fi
+  echo
 )
 
 _prepare_duckstation() {
@@ -189,14 +273,22 @@ _prepare_duckstation() {
     -e 's@#if !__has_include\("scmversion/tag.h"\) && !defined\(_DEBUG\)@#if 0@' \
     -i "$_pkgsrc/src/duckstation-qt/autoupdaterdialog.cpp"
 
-  # update links
+  sed -E -e '/BindWidgetToBoolSetting/s&^(.*autoUpdateEnabled.*), true&\1, false&' \
+    -i "$_pkgsrc/src/duckstation-qt/setupwizarddialog.cpp"
+
+  sed -E -e '/<widget class="QCheckBox" name="autoUpdateEnabled">/a\
+      <property name="enabled"><bool>false</bool></property>' \
+    -i "$_pkgsrc/src/duckstation-qt/setupwizarddialog.ui"
+
+  # link to specific commit
+  # prevent issue reports to upstream
   sed -E \
     -e 's&^(\s*).*g_scm_tag_str.*g_scm_branch_str.*$&\1tr("%1").arg(QLatin1StringView(g_scm_tag_str)));&' \
     -e 's! &lt;stenzek@gmail.com&gt;!!' \
     -e 's& \| <a href="https://\S*discord\S+">.*?</a>&&' \
-    -e 's&"https://github.com/\S+/CONTRIBUTORS.md"&"'"$url/raw/${_commit}"'/CONTRIBUTORS.md"&' \
-    -e 's&"https://github.com/\S+/LICENSE"&"'"$url/raw/${_commit}"'/LICENSE"&' \
-    -e 's&"https://github.com/\S+/duckstation"&"'"$url/tree/${_commit}"'"&' \
+    -e 's&"https://github.com/\S+/CONTRIBUTORS.md"&"'"$_url/raw/${_commit}"'/CONTRIBUTORS.md"&' \
+    -e 's&"https://github.com/\S+/LICENSE"&"'"$_url/raw/${_commit}"'/LICENSE"&' \
+    -e 's&"https://github.com/\S+/duckstation"&"'"$_url/commits/${_commit}"'"&' \
     -i "$_pkgsrc/src/duckstation-qt/aboutdialog.cpp"
 
   sed -e '/addaction name="actionIssueTracker"/d' -i "$_pkgsrc/src/duckstation-qt/mainwindow.ui"
@@ -223,17 +315,34 @@ END
   # fix header
   cat >> "$_pkgsrc/src/scmversion/tag.h" << EOF
 #pragma once
-#define SCM_RELEASE_ASSET "$pkgname"
+#define SCM_RELEASE_ASSET "$_pkgname"
 #define SCM_RELEASE_TAGS {"latest", "preview"}
 #define SCM_RELEASE_TAG "latest"
 EOF
 
-  # fix script
+  # clarify this is GPL version
+  sed -E -e 's&(DuckStation) Version&\1 GPL&' \
+    -e 's&(DuckStation) (%1)&\1 GPL \2&' \
+    -i "$_pkgsrc/src/duckstation-qt/qthost.cpp"
+
+  sed -E -e 's&(DuckStation)&\1 GPL&g' \
+    -i "$_pkgsrc/src/core/fullscreen_ui.cpp" \
+    "$_pkgsrc/src/duckstation-qt/aboutdialog.cpp" \
+    "$_pkgsrc/src/duckstation-qt/aboutdialog.ui" \
+    "$_pkgsrc/src/duckstation-qt/mainwindow.ui" \
+    "$_pkgsrc/src/duckstation-qt/setupwizarddialog.ui" \
+    "$_pkgsrc/src/duckstation-qt/translations"/*.ts
+
+  # add unofficial build notice
+  sed -E -e 's@This wizard.*Interface Settings\.@This is an unofficial build based on the GPL commit from 2024-09-01.\&lt;/p\&gt;\&lt;p\&gt;Do not report issues to the original developer.@' \
+    -i "$_pkgsrc/src/duckstation-qt/setupwizarddialog.ui"
+
+  # fix version script
   install -Dm755 /dev/stdin "$_pkgsrc/src/scmversion/gen_scmversion.sh" << END
 #!/bin/sh
 HASH="$(git -C "$_pkgsrc" rev-parse HEAD)"
-BRANCH=""
-TAG="$_pkgver (AUR)"
+BRANCH="GPL"
+TAG="$_pkgver"
 DATE=$(git -C "$_pkgsrc" log -1 --date=iso8601-strict --format=%cd)
 
 cat > "scmversion.cpp" << EOF
@@ -399,11 +508,10 @@ _build_duckstation() {
     -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
     -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so"
-    -DShaderc_DIR="$srcdir/deps/usr/lib/cmake/Shaderc" # git
+    -DShaderc_DIR="$srcdir/deps/usr/lib/cmake/Shaderc"
     -DSoundTouch_DIR="$srcdir/deps/usr/lib/cmake/SoundTouch"
     -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo"
     -Dlunasvg_DIR="$srcdir/deps/usr/lib/cmake/lunasvg"
-    -Dplutovg_DIR="$srcdir/deps/usr/lib/cmake/plutovg"
     -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     -Wno-dev
   )
@@ -430,7 +538,9 @@ build() {
   export CC CXX LDFLAGS
   CC="clang"
   CXX="clang++"
-  LDFLAGS+=" -fuse-ld=lld"
+
+  local _ldflags=(${LDFLAGS})
+  LDFLAGS+="${_ldflags[@]} -fuse-ld=lld"
 
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
@@ -445,14 +555,14 @@ build() {
   _build_duckstation
 }
 
-package() {
+package_duckstation-gpl() {
   # rpath
   patchelf --force-rpath --set-rpath '$ORIGIN' "build/bin/$_pkgname-qt"
   patchelf --force-rpath --set-rpath '$ORIGIN' "deps/usr/lib"/*.so
 
   # main files
   install -dm755 "$pkgdir/opt/$_pkgname/"
-  cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
+  cp -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
   # libraries
   install -Dm644 "deps/usr/lib"/*.so* -t "$pkgdir/opt/$_pkgname/"
@@ -491,6 +601,15 @@ END
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+}
+
+package_duckstation() {
+  pkgdesc="metapackage - migrate to duckstation-gpl"
+  url="https://aur.archlinux.org/pkgbase/duckstation"
+  license=('None')
+  arch=('any')
+
+  depends=('duckstation-gpl')
 }
 
 _source_duckstation
