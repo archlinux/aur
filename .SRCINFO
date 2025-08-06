@@ -1,0 +1,16 @@
+pkgbase = precice-config-format
+	pkgdesc = A tool for consistently formatting a preCICE configuration file
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/precice/config-format
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-git-versioning
+	makedepends = git
+	depends = python-lxml
+	source = git+https://github.com/precice/config-format.git#tag=v2.0.0
+	sha512sums = 6a466ed1aaf47f4bef4daeaa2d42832a2cad7d18b38a9dfe07b74ceb7b1ae65a606dc85ae48dfd8939a4bbafa6db2b8d50d715642fa6a5a9ccd1d0139149bd90
+
+pkgname = precice-config-format
