@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-hipblas-portable
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM, portable build for old CPUs)
-	pkgver = 1.96.1
+	pkgver = 1.96.2
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = koboldcpp-hipblas-portable
 	optdepends = python-psutil: increasing the process CPU priority
 	optdepends = zenity: native file picker dialogs
 	optdepends = yad: native file picker dialogs
-	provides = koboldcpp=1.96.1
-	provides = koboldcpp-rocm=1.96.1
+	provides = koboldcpp=1.96.2
+	provides = koboldcpp-rocm=1.96.2
 	conflicts = koboldcpp
 	conflicts = koboldcpp-rocm
-	source = koboldcpp-hipblas-portable-1.96.1.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.96.1.tar.gz
+	source = koboldcpp-hipblas-portable-1.96.2.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.96.2.tar.gz
 	source = koboldcpp.desktop
 	source = koboldcpp.png
-	sha256sums = 90c72ca8be014724c418e75b8e5b9c2a5792907ecbc753f1ef411fa5c8368cc4
+	sha256sums = 12dfee7e11d2d62988b08d75aec1f375a47bd7a609405fb88be31a7210bee6bf
 	sha256sums = fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef
 	sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
