@@ -1,5 +1,5 @@
 pkgbase = windsurf
-	pkgver = 1.11.2
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://windsurf.com/
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = windsurf
 	optdepends = lsof: Terminal splitting
 	optdepends = vulkan-driver
 	options = !strip
-	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-1.11.2.deb
+	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-1.11.3.deb
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
-	sha256sums = 7266ba93b2477972db6091bf49b4ef125af8bf9c71e6ffceb5d01083967a784b
+	sha256sums = ddb98d33029b77a3b6a5b6932b1b2ca54a7a5a4747ea7ec481bc8aa513203020
 	sha256sums = 5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1
 
 pkgname = windsurf
