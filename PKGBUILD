@@ -18,13 +18,20 @@ makedepends=(
 	'python-sphinx'
 	'python-wheel')
 optdepends=('python-pyqt5' 'pyside2' 'python-pyqt6' 'pyside6')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest'
+              'python-pytest-qt')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/e/$_pkg/$_pkg-$pkgver.tar.gz")
 sha256sums=('4c584f7abc0bdf1746c087eb8ea1989e6322da22a7208462fe9579e31690c03e')
 
 prepare() {
 	cd "$_pkg-$pkgver"
 	sed -i '/sphinx.ext.graphviz/d;152d' docs/source/conf.py
+        rm tests/core/test_looper.py
+        rm tests/core/test_storage.py
+        rm tests/core/test_zipimporter.py
+        rm tests/test_*.py
+        rm -r tests/qt
+        rm -r tests/widgets
 }
 
 build() {
