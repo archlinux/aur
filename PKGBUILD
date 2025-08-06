@@ -2,7 +2,7 @@
 
 pkgname="pi-im"
 pkgver=3.1a_r
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental and extremely weird XMPP client written in Go. No solicitors.'
 url="https://github.com/sunglocto/${pkgname}"
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
 
-    go build -o "${pkgname}" .
+    go build -tags wayland -o "${pkgname}" .
 }
 
 package() {
