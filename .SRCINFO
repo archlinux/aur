@@ -1,6 +1,6 @@
 pkgbase = wl-mirror-git
 	pkgdesc = a simple Wayland output mirror client
-	pkgver = 0.18.1.r1.gf94a64d
+	pkgver = 0.18.3.r0.gd324810
 	pkgrel = 1
 	url = https://github.com/Ferdi265/wl-mirror
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = wl-mirror-git
 	optdepends = wmenu: for interactive selection of options in wl-present
 	optdepends = rofi: for interactively selecting options in wl-present
 	optdepends = dmenu: for interactive selection of options in wl-present
-	provides = wl-mirror=0.18.1
+	provides = wl-mirror=0.18.3
 	conflicts = wl-mirror
 	source = git+https://github.com/Ferdi265/wl-mirror
 	source = git+https://gitlab.freedesktop.org/wayland/wayland-protocols
