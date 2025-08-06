@@ -12,7 +12,7 @@ provides=('project-graph')
 conflicts=('project-graph-nightly-bin' 'project-graph-git')
 install=project-graph-bin.install
 source_x86_64=('https://github.com/LiRenTech/project-graph/releases/download/v2.0.0-beta.2/Project.Graph_2.0.0-beta.2_amd64.deb')
-sha256sums_x86_64=('34e474fd07b2ca2a607be6d434f37fd51d3b2e43f46e5db3606805c2f0848b76')
+sha256sums_x86_64=('ab8ee482d16c5d7bac24d18f5eb7494755eefe85bf84899abb7983b40f5e2805')
 package() {
   # Extract package data
   tar -xz -f data.tar.gz -C "${pkgdir}"
