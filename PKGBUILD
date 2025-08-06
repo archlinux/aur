@@ -2,7 +2,7 @@
 
 pkgname=sleipnirgroup-choreo
 pkgver=2025.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical tool for planning time-optimized trajectories for autonomous mobile robots in the FIRST Robotics Competition"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Choreo'
@@ -10,7 +10,7 @@ depends=('webkit2gtk')
 makedepends=('cargo' 'cmake' 'pnpm')
 license=('BSD')
 source=("git+https://github.com/SleipnirGroup/Choreo.git#tag=v${pkgver}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 prepare() {
   cd Choreo
