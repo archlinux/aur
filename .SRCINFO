@@ -1,6 +1,6 @@
 pkgbase = python-enaml
 	pkgdesc = Declarative DSL for building rich user interfaces in Python
-	pkgver = 0.15.2
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/nucleic/enaml
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = python-enaml
 	optdepends = pyside2
 	optdepends = python-pyqt6
 	optdepends = pyside6
-	source = python-enaml-0.15.2.tar.gz::https://files.pythonhosted.org/packages/source/e/enaml/enaml-0.15.2.tar.gz
-	sha256sums = 75ba5b120fe1a90418ff03103acdc6a25d1b044dc4e42bcc42cb7f2e76f6d95b
+	source = python-enaml-0.18.0.tar.gz::https://files.pythonhosted.org/packages/source/e/enaml/enaml-0.18.0.tar.gz
+	sha256sums = 4c584f7abc0bdf1746c087eb8ea1989e6322da22a7208462fe9579e31690c03e
 
 pkgname = python-enaml
