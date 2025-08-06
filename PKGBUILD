@@ -2,9 +2,9 @@
 
 pkgname="pi-im"
 pkgver=3.1a_r
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental and extremely weird XMPP client written in Go. No solicitors.'
-url='https://github.com/sunglocto/${pkgname}'
+url="https://github.com/sunglocto/${pkgname}"
 arch=('x86_64')
 license=('AGPL')
 makedepends=('go')
