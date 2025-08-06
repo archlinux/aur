@@ -1,19 +1,22 @@
 pkgbase = frappe-books-bin
 	pkgdesc = Modern desktop accounting for freelancers and small-businesses.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.32.0
+	pkgver = 0.33.1
 	pkgrel = 1
 	url = https://frappebooks.com/
+	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = asar
 	depends = electron22
-	provides = frappe-books=0.32.0
+	provides = frappe-books=0.33.1
 	conflicts = frappe-books
 	conflicts = frappebooks
 	options = !strip
-	source = frappe-books-0.32.0.rpm::https://github.com/frappe/books/releases/download/v0.32.0/frappe-books-0.32.0.x86_64.rpm
 	source = frappe-books.sh
-	sha256sums = 9318f45e7590521f62820f94c9909749cc9cb2ff83f87404e679a8fe7cd54ce1
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = frappe-books-0.33.1-aarch64.rpm::https://github.com/frappe/books/releases/download/v0.33.1/frappe-books-0.33.1.aarch64.rpm
+	sha256sums_aarch64 = ad107ed39c5088fc6c4ea24f242d4b6ab38cd44064096a3bd08dbe0a0fce065f
+	source_x86_64 = frappe-books-0.33.1-x86_64.rpm::https://github.com/frappe/books/releases/download/v0.33.1/frappe-books-0.33.1.x86_64.rpm
+	sha256sums_x86_64 = 1bf05c029a990ed5389a688f2b411148fc58b99b76ccfb7b26212f09d390fcac
 
 pkgname = frappe-books-bin
