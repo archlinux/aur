@@ -1,7 +1,7 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.info>
 
 pkgname=buildnumber-generator
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Generate version specific build numbers from build IDs (e.g. GitLab CI_PIPELINE_IID)"
 url="https://gitlab.com/NikolasK-source/buildnumber-generator"
@@ -10,6 +10,7 @@ arch=('any')
 makedepends=('python-setuptools')
 depends=('python' 'python-colorlog' 'python-cryptography' 'python-json-cmd-server')
 source=("git+https://gitlab.com/NikolasK-source/buildnumber-generator.git#tag=v${pkgver}")
+install=$pkgname.install
 
 sha256sums=('SKIP')
 
@@ -20,5 +21,8 @@ build() {
 
 package() {
     cd buildnumber-generator
+    install -vDm 644 systemd/$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -vDm 640 cfg_systemd.toml /etc/buildnumber-generator-server
+    install -vDm 644 systemd/$pkgname-sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
     python setup.py install --root="$pkgdir" --optimize=1
 }

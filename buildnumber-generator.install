@@ -1,0 +1,22 @@
+post_install() {
+    mkdir -p /srv/buildnumber-generator/
+    chown buildnumber-generator-server /srv/buildnumber-generator/
+    chown buildnumber-generator-server /etc/buildnumber-generator.toml
+    chmod 640 /etc/buildnumber-generator.toml
+
+    cat <<-EOM
+	:: You need to initialize the Buildnumber Database prior to starting
+	   the service.
+         - In '/etc/buildnumber-generator.toml' set 'database.initialize' to `true`
+         - Start the service:
+	        # systemctl enable --now buildnumber-generator.service
+         - In '/etc/buildnumber-generator.toml' set 'database.initialize' to `false`
+	EOM
+}
+
+post_upgrade() {
+    cat <<-EOM
+    :: buildnumber-generator was updated. Restart the service to use the new version:
+        # systemctl restart buildnumber-generator.service
+    EOM
+}
