@@ -1,7 +1,7 @@
 pkgbase = python-opcua-client
 	pkgdesc = OPC-UA Client GUI
 	pkgver = 0.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FreeOpcUa/opcua-client-gui
 	arch = any
 	license = GPL-3.0-only
@@ -11,6 +11,7 @@ pkgbase = python-opcua-client
 	depends = python-numpy
 	depends = python-opcua-asyncio
 	depends = python-opcua-widgets
+	optdepends = python-pyqtgraph: graph rendering
 	source = https://files.pythonhosted.org/packages/py3/o/opcua-client/opcua_client-0.8.4-py3-none-any.whl
 	source = opcua-client.desktop
 	sha256sums = 8ada075d24b5f4629e41f77024653ed38b1a2312c8d98fd349e91e7994ca3ae7

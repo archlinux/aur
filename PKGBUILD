@@ -3,9 +3,10 @@
 pkgname=python-opcua-client
 _name=${pkgname#python-}
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="OPC-UA Client GUI"
 depends=('python' 'python-pyqt5' 'python-numpy' 'python-opcua-asyncio' 'python-opcua-widgets')
+optdepends=('python-pyqtgraph: graph rendering')
 makedepends=('gendesk')
 arch=('any')
 url="https://github.com/FreeOpcUa/opcua-client-gui"
