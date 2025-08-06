@@ -1,6 +1,6 @@
 pkgbase = walker-bin
 	pkgdesc = wayland application runner
-	pkgver = 0.13.21
+	pkgver = 0.13.22
 	pkgrel = 1
 	url = https://github.com/abenz1267/walker
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = walker-bin
 	optdepends = libqalculate: for calculator module
 	provides = walker
 	conflicts = walker
-	source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.13.21/walker_v0.13.21_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c4b622e7ca09847981766867373e300af510cb06bb6d9e776ac87ec209092cd7
-	source_aarch64 = https://github.com/abenz1267/walker/releases/download/v0.13.21/walker_v0.13.21_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 127987ec8e0ac4c6c07171b996355c97fe102ebd68051d7c3ca43bd63c14884c
+	source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.13.22/walker_v0.13.22_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e04c65ddc667e91730453eb7325968d06b9604ccd58b2afe795fdc18b7d49e38
+	source_aarch64 = https://github.com/abenz1267/walker/releases/download/v0.13.22/walker_v0.13.22_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 72bd701c4020b9a652ff3e34a4b8d46390365760abbc6c83f308e9e57daff114
 
 pkgname = walker-bin
