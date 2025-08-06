@@ -4,8 +4,8 @@
 
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
-pkgver=2.3.0.r228.g4f2fad4e
-pkgrel=2
+pkgver=2.4.0.r0.g6f8aedef
+pkgrel=1
 pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/flanglet/kanzi-cpp'
@@ -25,7 +25,7 @@ prepare() {
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
