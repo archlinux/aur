@@ -1,0 +1,16 @@
+pkgbase = fortune-mod-sw
+	pkgdesc = Fortunes from Slackware Linux
+	pkgver = 2.17
+	pkgrel = 3
+	url = http://www.slackware.com/
+	install = fortune-mod-sw.install
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	options = !strip
+	options = !docs
+	options = !libtool
+	source = https://mirror.slackbuilds.org/slackware/slackware64-15.0/slackware64/y/bsd-games-2.17-x86_64-3.txz
+	sha256sums = ea5a758a039a0d7a928ffb1da1dc7094c3d9f859e921cdeb11430566fe398682
+
+pkgname = fortune-mod-sw

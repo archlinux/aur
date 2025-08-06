@@ -1,0 +1,5 @@
+post_install() {
+	echo "All Slackware fortune files names are suffixed with '-sw'."
+	echo "For default Slackware experience, add to your shell RC file:"
+	echo "    fortune fortunes-sw fortunes2-sw linuxcookie-sw"
+}
