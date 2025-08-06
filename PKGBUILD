@@ -92,7 +92,7 @@ source=(
 )
 sha256sums=('58d2eeabd46f898177323f2e3802e19af7311861d5abf4c0185313196a1805c7'
             '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
-            '8f808af5ee778bad8a78b4544bbda9854a06159b65f3368d508ebcaabf4bbadd')
+            '5216ed7b2b53eb8f0bb3ab752d2e27b7e2a227c68ef2a5f0748652bbf4b9ba67')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't find any source files here, since this is a binary distribution.
 ## Here's a quick comparison on my machine:
@@ -184,7 +184,7 @@ package() {
     install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     _fix_binary_symlinks # namcap rule: symlink
-    _fix_insecure_runpath # namcap rule: rpath, runpath
+    # _fix_insecure_runpath # namcap rule: rpath, runpath
     _fix_permissions # namcap rule: permissions
 }
 
@@ -222,6 +222,11 @@ _fix_insecure_runpath() {
     msg2 'Fixing insecure RPATH and RUNPATH on ELF files'
 
     while read -r elffile; do
+        if [[ ! -f "${installdir}/${elffile}" ]]; then
+            echo "Skipping file '${elffile}': not found"
+            continue
+        fi
+
         # remove all RPATHs and RUNPATHs that aren't relative to $ORIGIN
         # shellcheck disable=SC2312 # missing files are a non-issue
         safe_runpath="$(chrpath -l "${installdir}/${elffile}" |\
