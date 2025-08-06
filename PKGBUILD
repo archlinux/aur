@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=prompt-style
 pkgname=(lua{,51,52,53}-"$_pkgname")
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Lua plugin for powerlevel10k style prompt and WakaTime time tracking"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(luarocks)
 optdepends=('git: get project name')
 _revision=1
 source=("https://luarocks.org/manifests/freed-wu/$_pkgname-$pkgver-$_revision.src.rock")
-sha256sums=('aa7e19e52cc0ab65e7581724d9785ba6057495788f576dca3873f8841602c8ff')
+sha256sums=('d78d78b2214d4e7e9c37c332f8e5ab3521f70a5836931271b94c8e8cac56cbc3')
 _lua_version=5.4
 
 _package() {
