@@ -1,7 +1,7 @@
 pkgbase = intel-graphics-compiler-legacy
 	pkgdesc = Intel Graphics Compiler for OpenCL (legacy platforms)
-	pkgver = 1.0.17537.20
-	pkgrel = 3
+	pkgver = 1.0.17537.24
+	pkgrel = 1
 	url = https://github.com/intel/intel-graphics-compiler/
 	arch = x86_64
 	license = MIT
@@ -14,14 +14,14 @@ pkgbase = intel-graphics-compiler-legacy
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
-	provides = intel-graphics-compiler=1.0.17537.20
+	provides = intel-graphics-compiler=1.0.17537.24
 	provides = intel-opencl-clang=14
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
 	replaces = intel-opencl-clang
 	options = !emptydirs
 	options = !lto
-	source = https://github.com/intel/intel-graphics-compiler/archive/igc-1.0.17537.20/intel-graphics-compiler-legacy-1.0.17537.20.tar.gz
+	source = https://github.com/intel/intel-graphics-compiler/archive/igc-1.0.17537.24/intel-graphics-compiler-legacy-1.0.17537.24.tar.gz
 	source = git+https://github.com/intel/vc-intrinsics.git#tag=v0.19.0
 	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#commit=065a94408d01bacf2ee86443f56cfaa64fda1534
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v2023.6.rc1
@@ -29,7 +29,7 @@ pkgbase = intel-graphics-compiler-legacy
 	source = git+https://github.com/intel/opencl-clang.git#commit=470cf0018e1ef6fc92eda1356f5f31f7da452abc
 	source = git+https://github.com/llvm/llvm-project.git#tag=llvmorg-14.0.5
 	source = 010-intel-graphics-compiler-disable-werror.patch
-	sha256sums = 44e77384ea69215d0311a08393019323f1c30217c05c972be945f2aed7fbde53
+	sha256sums = b6e4c71d8b9c56337d67066f19162a55fd61d823e217364e929b0220954819ce
 	sha256sums = da3aca24eb2d3f15240fb8dbdc90c2e27f8a921a56ca33ab2c964e77555c754a
 	sha256sums = 35357c8a651cf421656328e17a005bed088091eb46a5402f7dd06e64361312aa
 	sha256sums = ad11e234110902f42c9e54d2f4bb014b64e280ac9428f4c03a04b8b4571112b8
