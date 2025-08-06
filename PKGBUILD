@@ -82,7 +82,7 @@ _MORE_PATCH=(
 pkgbase=linux-shmilee
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux-shmilee x64${_psABI_level}"
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -120,7 +120,7 @@ sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             '8c0ccb29085778e8c129965c43439f110415a5ef2762306a92682cdc63b8e3e8'
             'dd78d56eeddb61e152a31cd059148122963f423153f5274cb7b2bc026c6b74aa'
             'ab67a7d55b06dfa9a23dc20db8b34f58732c753dc62a480b984bbac5c5323cf4'
-            '098625e478a0248860923b217cd93a5d68a75d23326a0a7e7b131785b03656bd')
+            '77d17550cb795f66ce3518f6511ab389d5ae79d1974ae316956bc990d70a5c01')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
