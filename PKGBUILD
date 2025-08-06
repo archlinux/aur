@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <error@zhui.dev>
 # Contributor: Sean V Kelley <seanvk@posteo.de>
 pkgname=jitterdebugger-git
-pkgver=0.3.r69.g7af8bc7
+pkgver=0.3.r70.g045a274
 pkgrel=1
 pkgdesc="Real time response measurement tool"
 arch=('i686' 'x86_64')
@@ -30,6 +30,13 @@ pkgver() {
   cd "$srcdir/$pkgname"
   git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
 }
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  sed -i 's/JSCC = h5cc -shlib/JSCC = h5cc/' Makefile
+  sed -i 's|$(JSCC) \$\^ -o \$@|$(JSCC) $^ -lhdf5_hl -o $@|' Makefile
+}
+
 
 build() {
   export LD_RUN_PATH='$ORIGIN/lib/'
