@@ -3,7 +3,7 @@
 
 pkgname=codon-bin
 pkgver=0.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance, zero-overhead, extensible Python compiler using LLVM'
 arch=(x86_64)
 url='https://github.com/exaloop/codon'

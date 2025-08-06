@@ -1,7 +1,7 @@
 pkgbase = codon-bin
 	pkgdesc = High-performance, zero-overhead, extensible Python compiler using LLVM
 	pkgver = 0.19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/exaloop/codon
 	arch = x86_64
 	license = Apache-2.0
