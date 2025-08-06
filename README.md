@@ -51,6 +51,16 @@ systemctl suspend
 - Linux 6.5+
 - `brcmfmac` (from `linux-firmware` package)
 
+## 🔍 Want to Help Fix This For Real?
+
+If you’re affected by this issue, consider reporting it or contributing your experience to:
+
+- [Arch Wiki – Broadcom Wireless](https://wiki.archlinux.org/title/Broadcom_wireless)
+- Your device’s upstream kernel bug tracker
+- The `linux-firmware` or `brcmfmac` kernel maintainers
+
+The more data available, the higher the chance for a proper driver/kernel fix.
+
 ---
 
 ### 💬 Feedback
