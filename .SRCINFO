@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 138.0.7204.183
-	pkgrel = 2
+	pkgver = 139.0.7258.66
+	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -15,15 +15,9 @@ pkgbase = ungoogled-chromium
 	makedepends = pipewire
 	makedepends = rust
 	makedepends = rust-bindgen
-	makedepends = qt5-base
 	makedepends = qt6-base
 	makedepends = java-runtime-headless
 	makedepends = git
-	makedepends = python-httplib2
-	makedepends = python-pyparsing
-	makedepends = python-six
-	makedepends = npm
-	makedepends = rsync
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
@@ -58,13 +52,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=138.0.7204.183
-	provides = chromedriver=138.0.7204.183
+	provides = chromium=139.0.7258.66
+	provides = chromedriver=139.0.7258.66
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = fetch-chromium-release
-	source = ungoogled-chromium-138.0.7204.183-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/138.0.7204.183-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-139.0.7258.66-lite.tar.xz
+	source = ungoogled-chromium-139.0.7258.66-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/139.0.7258.66-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
@@ -75,10 +69,10 @@ pkgbase = ungoogled-chromium
 	source = 0001-ozone-wayland-implement-text_input_manager-fixes.patch
 	source = 0001-vaapi-flag-ozone-wayland.patch
 	source = chromium-138-nodejs-version-check.patch
-	sha256sums = 720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661
-	sha256sums = d0220de7aba2334449ae1ba69f906f42d47c9a02a3448bf7c64b2d2e4c6cfe53
+	sha256sums = 8cd37b224dba4fc5e3c8ac98cc278d17a713a3b5a2f1dbb241ad94caca83d630
+	sha256sums = 2708a275cc9408b975efcc7afa0a15223dcec47c87188e8516b74a21b9f45d5e
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	sha256sums = bafb04282db0ae19d4e42e022fdccfafb424f18406e5b893475dc18bf4bd8f9e
+	sha256sums = a6507371588ed4d87d6501220249264abfbcd814771cc1ba351e0ac6cc987400
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
 	sha256sums = e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374
 	sha256sums = 8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f
