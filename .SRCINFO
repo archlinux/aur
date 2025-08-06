@@ -1,7 +1,7 @@
 pkgbase = grub-hook-ca
 	pkgdesc = Pacman hooks to install and generate grub using the method for CA signing of bootloader.
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	install = grub-hook-ca.install
 	arch = x86_64
 	license = GPL
