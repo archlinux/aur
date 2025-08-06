@@ -2,7 +2,7 @@
 
 _pkgname=vgtranslate
 pkgname=vgtranslate-git
-pkgver=66.1b68c26
+pkgver=69.9aadad1
 pkgrel=1
 pkgdesc="VgTranslate service for retroarch"
 arch=('any')
@@ -10,8 +10,8 @@ url="http://gitlab.com/spherebeaker/vgtranslate"
 license=('GPL3')
 provides=('vgtranslate')
 conflicts=('vgtranslate')
-depends=('python2')
-makedepends=('git' 'python-setuptools' 'python2-setuptools')
+depends=('python')
+makedepends=('git' 'python-setuptools')
 source=("$pkgname"::'git+https://gitlab.com/spherebeaker/vgtranslate.git')
 md5sums=('SKIP')
 
@@ -23,13 +23,13 @@ pkgver()
 
 build() {
     cd "$pkgname"
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd "$srcdir/$pkgname"
     PYTHONPATH="$srcdir/$_pkgname/usr/bin/"
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1
     install -d "$pkgdir"/usr/share/$_pkgname/fonts
     install -Dm644 $srcdir/$pkgname/$_pkgname/*.* $pkgdir/usr/share/$_pkgname/
     install -Dm644 $srcdir/$pkgname/$_pkgname/fonts/*.* $pkgdir/usr/share/$_pkgname/fonts
