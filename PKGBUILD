@@ -4,7 +4,7 @@
 
 pkgname=obexftp
 pkgver=0.24.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A tool for transfer files to/from any OBEX enabled device"
 arch=('x86_64')
 url="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
@@ -33,6 +33,7 @@ build() {
   mkdir build
   cd build
   cmake "../${pkgname}-${pkgver}-Source" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
