@@ -3,12 +3,12 @@ _base=sentence-transformers
 pkgname=python-${_base}
 pkgver=5.1.0
 pkgrel=1
-pkgdesc="Multilingual text embeddings"
+pkgdesc="Embeddings, Retrieval, and Reranking"
 arch=(any)
 url="https://github.com/UKPLab/${_base}"
 license=(Apache-2.0)
 depends=(python-transformers python-tqdm python-pytorch python-scikit-learn
-  python-scipy python-huggingface-hub python-pillow)
+  python-scipy python-huggingface-hub python-pillow python-typing_extensions)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
