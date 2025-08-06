@@ -1,7 +1,7 @@
 # Maintainer: Thulinma <jaron@vietors.com>
 pkgname=mistserver
 pkgdesc="The MistServer media server toolkit"
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 license=('Unlicense')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ url="https://mistserver.org"
 depends=('srt' 'libsrtp' 'librist')
 makedepends=('meson')
 source=("https://github.com/DDVTECH/mistserver/archive/${pkgver}.tar.gz")
-md5sums=('f41e4045785c7502167286b7e4bb50c0')
+md5sums=('f1f3c11b02b1e4d0140cb1282c0ae6eb')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   echo ${pkgver} > VERSION
