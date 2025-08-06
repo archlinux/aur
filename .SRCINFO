@@ -1,6 +1,6 @@
 pkgbase = openmohaa-git
 	pkgdesc = Open re-implementation of Medal of Honor: Allied Assault
-	pkgver = 0.82.0.r30.6adeca6
+	pkgver = 0.82.1.r0.a72bc15
 	pkgrel = 1
 	url = https://github.com/openmoh/openmohaa
 	arch = i686
