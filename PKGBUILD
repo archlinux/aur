@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=distroshelf-git
-pkgver=r192.g34eeb8e
+pkgver=r196.g691729d
 pkgrel=1
 pkgdesc='A GUI for Distrobox Containers'
 url='https://github.com/ranfdev/DistroShelf'
