@@ -1,0 +1,12 @@
+[Unit]
+Description=Virtual serial port service
+After=local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/bash -c 'modprobe vtty && udevadm trigger --subsystem-match=tty'
+ExecStop=/usr/bin/modprobe -r vtty
+
+[Install]
+WantedBy=multi-user.target

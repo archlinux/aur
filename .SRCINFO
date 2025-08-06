@@ -1,0 +1,18 @@
+pkgbase = vtty
+	pkgdesc = Virtual TTY (serial port) kernel module with systemd service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/33671/vtty
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = dkms
+	depends = systemd
+	source = vtty::git+https://github.com/33671/vtty#branch=arch_dev
+	source = vtty.service
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vtty

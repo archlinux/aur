@@ -1,0 +1,14 @@
+pkg/
+src/
+*.pkg.tar.*
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.tmp
+vtty/
+*.bak
