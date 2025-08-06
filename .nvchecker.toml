@@ -1,0 +1,5 @@
+[precice-profiling]
+source = "github"
+github = "precice/profiling"
+use_latest_release = "true"
+prefix = "v"
