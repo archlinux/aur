@@ -1,6 +1,5 @@
 post_install() {
   echo "Updating MIME database..."
   update-mime-database /usr/share/mime
-  sudo rm /bin/apollo-studio /bin/apollo-launchpad
-  sudo ln -s /opt/apollo-studio/Apollo /usr/bin/apollo-studio
+  echo "I guess that's the end of installing that thing"
 }
