@@ -7,7 +7,7 @@
 
 pkgname=libmodsecurity2
 _name=modsecurity
-pkgver=2.9.11
+pkgver=2.9.12
 pkgrel=1
 pkgdesc='Cross platform web application firewall module for Apache httpd (v2)'
 arch=('x86_64')
@@ -35,7 +35,7 @@ conflicts=("libmodsecurity")
 source=(
   "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz" 
 )
-sha256sums=('1fe16eb96b6093f062cef73ec8b7ae481a59813766d49a7f5e4d1b85900e239e')
+sha256sums=('79ada8693303be3490201397344bf66900a45f07ae328bf6cf01ca99e5d135fa')
 
 prepare() {
   cd "${srcdir}/${_name}-v${pkgver}"
