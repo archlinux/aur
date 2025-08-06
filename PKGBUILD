@@ -4,8 +4,8 @@
 pkgname=gnome-shell-extension-gtile
 _uuid=gTile@vibou
 pkgver=64
-pkgrel=1
-_nodeversion=20
+pkgrel=2
+_nodeversion=22
 pkgdesc="A window tiling extension for GNOME Shell"
 arch=('any')
 url="https://github.com/gTile/gTile"
