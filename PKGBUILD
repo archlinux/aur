@@ -10,11 +10,10 @@ url="http://exvim.github.io/docs/"
 license=('unknown')
 groups=('vim-plugins')
 depends=(
-	'gvim'
+	'vim-plugin-runtime'
 	'ctags'
 	'gawk'
 	'python'
-	'python2'
 	'make'
 	'cscope'
 	'graphviz'
@@ -51,7 +50,7 @@ conflicts=(
 	'vim-visual_studio'
 	)
 
-provides=${conflicts}
+provides=(${conflicts})
 install=vimdoc.install
 source=(
     #"${pkgname}-${pkgver}.tar.gz::https://github.com/exvim/main/releases/download/v${pkgver}/exvim-v${pkgver}.tar.gz"

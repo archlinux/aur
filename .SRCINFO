@@ -7,11 +7,10 @@ pkgbase = vim-exvim
 	arch = any
 	groups = vim-plugins
 	license = unknown
-	depends = gvim
+	depends = vim-plugin-runtime
 	depends = ctags
 	depends = gawk
 	depends = python
-	depends = python2
 	depends = make
 	depends = cscope
 	depends = graphviz
@@ -38,4 +37,3 @@ pkgbase = vim-exvim
 	md5sums = 9590008f87bdd2f8e6669e279cb82c6e
 
 pkgname = vim-exvim
-
