@@ -1,18 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-legacy-bin
-pkgver=1.0.17537.20
+pkgver=1.0.17537.24
 _oclcommit=470cf0018e1ef6fc92eda1356f5f31f7da452abc
-pkgrel=2
+pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL (legacy platforms; pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT' 'Apache-2.0 WITH LLVM-exception')
-depends=('gcc-libs' 'zlib')
-makedepends=('git')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'zlib')
+makedepends=(
+    'git')
 provides=("intel-graphics-compiler=${pkgver}" 'intel-opencl-clang')
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
-options=('!strip' '!emptydirs')
+options=('!debug' '!emptydirs' '!strip')
 source=("https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-core_${pkgver}_amd64.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-media_${pkgver}_amd64.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-opencl-devel_${pkgver}_amd64.deb"
@@ -23,10 +27,10 @@ noextract=("intel-igc-core_${pkgver}_amd64.deb"
            "intel-igc-media_${pkgver}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}_amd64.deb"
            "intel-igc-opencl_${pkgver}_amd64.deb")
-sha256sums=('7f2af5b0e567a43625a748effb744d0b3c96acf805467d099e46eee617e11b2a'
-            '4a15d2a1565afb6d661c8e22f331c2e75ee3c3ed3e5b2ae3c7de8bea746235bb'
-            '68b2d6919dedd8df039ef1e980bb071e78af9c389b25d3d135cdf88ae96ca32e'
-            'ac2088331d55c7de15bd57373f73630e95b40e1275934bcfd96bf0c3e03769a7'
+sha256sums=('c1e1ecdfe2064c047c552651cfdcdafc504f2033afafba65654338b880048b67'
+            'c84a39c0bedfca461ceaf879c2830ec047bf1b2bd76b55421b4eec9409b5aae5'
+            '7a4e3c70d92ab9a5885ad787043163dd371476f8da7d739d68ea4caa183f5cda'
+            'dd016400f87fa2b6a9fa9fbcca7eb4a2629174a29de679709f9bec5cede88b0e'
             '19214ef9956892960ebd10c91f13cde103ccd270aa4681bdeeb048eb500cd165'
             '72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716')
 
@@ -42,7 +46,7 @@ package() {
     bsdtar -xf "igc-core-${pkgver}/data.tar.gz" -C "$pkgdir"
     bsdtar -xf "igc-media-${pkgver}/data.tar.gz" -C "$pkgdir"
     bsdtar -xf "igc-opencl-devel-${pkgver}/data.tar.gz" -C "$pkgdir"
-    bsdtar -xf "igc-opencl-${pkgver}/data.tar.zst" -C "$pkgdir"
+    bsdtar -xf "igc-opencl-${pkgver}/data.tar.gz" -C "$pkgdir"
     mv "${pkgdir}/usr/local"/{bin,include,lib} "${pkgdir}/usr"
     mv "${pkgdir}/usr/include"/opencl-c{,-base}.h "${pkgdir}/usr/include/igc"
     install -D -m644 opencl-clang/common_clang.h -t "${pkgdir}/usr/include/cclang"

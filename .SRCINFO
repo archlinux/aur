@@ -1,34 +1,36 @@
 pkgbase = intel-graphics-compiler-legacy-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (legacy platforms; pre-compiled binaries)
-	pkgver = 1.0.17537.20
-	pkgrel = 2
+	pkgver = 1.0.17537.24
+	pkgrel = 1
 	url = https://github.com/intel/intel-graphics-compiler/
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0 WITH LLVM-exception
 	makedepends = git
 	depends = gcc-libs
+	depends = glibc
 	depends = zlib
-	provides = intel-graphics-compiler=1.0.17537.20
+	provides = intel-graphics-compiler=1.0.17537.24
 	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
-	noextract = intel-igc-core_1.0.17537.20_amd64.deb
-	noextract = intel-igc-media_1.0.17537.20_amd64.deb
-	noextract = intel-igc-opencl-devel_1.0.17537.20_amd64.deb
-	noextract = intel-igc-opencl_1.0.17537.20_amd64.deb
-	options = !strip
+	noextract = intel-igc-core_1.0.17537.24_amd64.deb
+	noextract = intel-igc-media_1.0.17537.24_amd64.deb
+	noextract = intel-igc-opencl-devel_1.0.17537.24_amd64.deb
+	noextract = intel-igc-opencl_1.0.17537.24_amd64.deb
+	options = !debug
 	options = !emptydirs
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.20/intel-igc-core_1.0.17537.20_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.20/intel-igc-media_1.0.17537.20_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.20/intel-igc-opencl-devel_1.0.17537.20_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.20/intel-igc-opencl_1.0.17537.20_amd64.deb
+	options = !strip
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.24/intel-igc-core_1.0.17537.24_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.24/intel-igc-media_1.0.17537.24_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.24/intel-igc-opencl-devel_1.0.17537.24_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.17537.24/intel-igc-opencl_1.0.17537.24_amd64.deb
 	source = git+https://github.com/intel/opencl-clang.git#commit=470cf0018e1ef6fc92eda1356f5f31f7da452abc
 	source = LICENSE
-	sha256sums = 7f2af5b0e567a43625a748effb744d0b3c96acf805467d099e46eee617e11b2a
-	sha256sums = 4a15d2a1565afb6d661c8e22f331c2e75ee3c3ed3e5b2ae3c7de8bea746235bb
-	sha256sums = 68b2d6919dedd8df039ef1e980bb071e78af9c389b25d3d135cdf88ae96ca32e
-	sha256sums = ac2088331d55c7de15bd57373f73630e95b40e1275934bcfd96bf0c3e03769a7
+	sha256sums = c1e1ecdfe2064c047c552651cfdcdafc504f2033afafba65654338b880048b67
+	sha256sums = c84a39c0bedfca461ceaf879c2830ec047bf1b2bd76b55421b4eec9409b5aae5
+	sha256sums = 7a4e3c70d92ab9a5885ad787043163dd371476f8da7d739d68ea4caa183f5cda
+	sha256sums = dd016400f87fa2b6a9fa9fbcca7eb4a2629174a29de679709f9bec5cede88b0e
 	sha256sums = 19214ef9956892960ebd10c91f13cde103ccd270aa4681bdeeb048eb500cd165
 	sha256sums = 72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716
 
