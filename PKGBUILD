@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.com>
 
 pkgname=sbctl-dracut-conf
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Dracut-specific configuration for sbctl"
 arch=('any')
@@ -38,8 +38,8 @@ source=(
     "70-nvdimm.conf"
     "80-qemu.conf"
     "90-bluetooth.conf"
-    "60-dracut-remove.hook"
-    "90-dracut-install.hook"
+    "61-dracut-remove.hook"
+    "91-dracut-install.hook"
 )
 
 sha256sums=(
@@ -71,8 +71,8 @@ package() {
     install -m 755 "$srcdir/dracut-install.sh" "$pkgdir/usr/local/bin"
     install -m 755 "$srcdir/dracut-remove.sh" "$pkgdir/usr/local/bin"
 
-    install -m 644 "$srcdir/60-dracut-remove.hook" "$pkgdir/usr/share/libalpm/hooks"
-    install -m 644 "$srcdir/90-dracut-install.hook" "$pkgdir/usr/share/libalpm/hooks"
+    install -m 644 "$srcdir/61-dracut-remove.hook" "$pkgdir/usr/share/libalpm/hooks"
+    install -m 644 "$srcdir/91-dracut-install.hook" "$pkgdir/usr/share/libalpm/hooks"
 
     install -m 644 "$srcdir/00-base.conf" "$pkgdir/etc/dracut.conf.d"
     install -m 644 "$srcdir/01-cmdline.conf" "$pkgdir/etc/dracut.conf.d"
