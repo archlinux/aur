@@ -1,5 +1,5 @@
 pkgname=mihomo-party
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=("d8da71dc8998acb5c0b69afa9e241633f10892d0d1a403ad0e7d2ad17fe14329"
+sha256sums=("ca48feb9a45881e6d8f54a0827c5e6d8eb630259c709dee8dcbb9ad6ea647095"
 "f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282")
 options=('!lto')
 
@@ -36,6 +36,7 @@ package() {
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
     chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
+    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-smart
     install -Dm755 "${srcdir}/../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
