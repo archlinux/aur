@@ -2,22 +2,21 @@
 
 pkgname=clangd-bin
 pkgver=20.1.8
-pkgrel=1
-pkgdesc='clangd language server'
-arch=('any')
+pkgrel=2
+pkgdesc='Clangd Language Server'
+arch=('x86_64')
 
 # URL del proyecto oficial de clangd
 url="https://github.com/clangd/clangd"
 
 # Licencia de clangd
-license=('Apache-2.0')
+license=('Apache-2.0 with LLVM Exceptions')
 
 depends=()
 
-# Compiladores opcionales
-optdepends=('clang' 'gcc')
+optdepends=('gcc: Compiler without conflicts with clangd')
 
-conflicts=('clangd')
+conflicts=('clangd' 'clang')
 provides=('clangd')
 
 options=('!debug')
