@@ -1,6 +1,6 @@
 pkgbase = teamide-bin
 	pkgdesc = Integrate MySQL, Oracle, Kingbase, Dameng, Shentong databases, SSH, FTP, Redis, Zookeeper, Kafka, Elasticsearch, Mongodb, small tools and other management tools.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.6.36
+	pkgver = 2.6.37
 	pkgrel = 1
 	url = https://github.com/team-ide/teamide
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = teamide-bin
 	makedepends = fuse2
 	depends = electron22
 	depends = unixodbc
-	provides = teamide=2.6.36
+	provides = teamide=2.6.37
 	conflicts = teamide
-	source = teamide-2.6.36-x86_64.AppImage::https://github.com/team-ide/teamide/releases/download/v2.6.36/TeamIDE-linux-2.6.36.AppImage
+	source = teamide-2.6.37-x86_64.AppImage::https://github.com/team-ide/teamide/releases/download/v2.6.37/TeamIDE-linux-2.6.37.AppImage
 	source = teamide.sh
-	sha256sums = a180f61a48c974f2590e51d5e37e5b0e051923d7503d9ada91277af98bbdc830
+	sha256sums = fe76ed1ea9f6e038efaba5484288f84fe0bb1c94f5b920e24f7270f98f93389e
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = teamide-bin
