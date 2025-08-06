@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/${_base,,}-dev/${_base}"
 license=(BUSL-1.1)
 depends=(python-boto3 python-botocore python-cloudpickle python-graphviz
-  python-copulas python-ctgan python-deepecho python-rdt python-sdmetrics)
+  python-copulas python-ctgan python-deepecho python-rdt python-sdmetrics python-platformdirs python-yaml)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
