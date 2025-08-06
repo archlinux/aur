@@ -1,0 +1,5 @@
+[precice-case-generate]
+source = "github"
+github = "precice/case-generate"
+use_max_tag = "true"
+prefix = "v"
