@@ -1,25 +1,25 @@
 pkgbase = level-zero-legacy
 	pkgdesc = API for accessing low level interfaces in oneAPI platform devices (legacy platforms)
-	pkgver = 1.17.42
-	pkgrel = 3
+	pkgver = 1.17.44
+	pkgrel = 1
 	url = https://spec.oneapi.com/versions/latest/elements/l0/source/index.html
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	makedepends = opencl-headers
-	source = https://github.com/oneapi-src/level-zero/archive/v1.17.42/level-zero-legacy-1.17.42.tar.gz
-	sha256sums = 16ba86e9fee6699c5300bb0ef09cb0852cd261e2ddd9960f88df93d4d04a4829
+	source = https://github.com/oneapi-src/level-zero/archive/v1.17.44/level-zero-legacy-1.17.44.tar.gz
+	sha256sums = 14c8e2bece1e6f606192446957d15263f4514c538f8b19d524d694fdf24da7a5
 
 pkgname = level-zero-headers-legacy
 	pkgdesc = API for accessing low level interfaces in oneAPI platform devices (legacy platforms; headers)
 	arch = any
-	provides = level-zero-headers=1.17.42
+	provides = level-zero-headers=1.17.44
 	conflicts = level-zero-headers
 
 pkgname = level-zero-loader-legacy
 	pkgdesc = API for accessing low level interfaces in oneAPI platform devices (legacy platforms; loader)
 	depends = gcc-libs
 	depends = glibc
-	provides = level-zero-loader=1.17.42
+	provides = level-zero-loader=1.17.44
 	conflicts = level-zero-loader

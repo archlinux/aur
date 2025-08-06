@@ -1,16 +1,21 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=level-zero-legacy
-pkgname=('level-zero-headers-legacy' 'level-zero-loader-legacy')
-pkgver=1.17.42
-pkgrel=3
+pkgname=(
+    'level-zero-headers-legacy'
+    'level-zero-loader-legacy')
+pkgver=1.17.44
+pkgrel=1
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices (legacy platforms)'
 arch=('x86_64')
 url='https://spec.oneapi.com/versions/latest/elements/l0/source/index.html'
 license=('MIT')
-makedepends=('cmake' 'git' 'opencl-headers')
+makedepends=(
+    'cmake'
+    'git'
+    'opencl-headers')
 source=("https://github.com/oneapi-src/level-zero/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('16ba86e9fee6699c5300bb0ef09cb0852cd261e2ddd9960f88df93d4d04a4829')
+sha256sums=('14c8e2bece1e6f606192446957d15263f4514c538f8b19d524d694fdf24da7a5')
 
 prepare() {
     printf '%s\n' "${pkgver##*.}" > "level-zero-${pkgver}/VERSION_PATCH"
@@ -44,7 +49,9 @@ package_level-zero-headers-legacy() {
 
 package_level-zero-loader-legacy() {
     pkgdesc="$(sed 's/)/; loader)/' <<< "$pkgdesc")"
-    depends=('gcc-libs' 'glibc')
+    depends=(
+        'gcc-libs'
+        'glibc')
     provides=("level-zero-loader=${pkgver}")
     conflicts=('level-zero-loader')
     
