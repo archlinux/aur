@@ -1,6 +1,6 @@
 pkgbase = deltatune-linux
 	pkgdesc = DeltaTune ported to Linux. Show the currently playing song like the 'Field of Hopes and Dreams' pop-up from Deltarune Chapter 1.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/deltatune-linux
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = deltatune-linux
 	depends = quickshell
 	depends = playerctl
 	provides = deltatune
-	source = https://github.com/ThatOneCalculator/deltatune-linux/archive/refs/tags/0.0.1.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/ThatOneCalculator/deltatune-linux/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 1f7cf0b60b177275fbefdae07fabf95a9a5608742472bef9314625ad74c43f22
 
 pkgname = deltatune-linux
