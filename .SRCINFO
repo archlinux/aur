@@ -1,7 +1,7 @@
 pkgbase = qdrant-bin
 	pkgdesc = Vector Database for the next generation of AI applications - Binary
-	pkgver = 1.14.1
-	pkgrel = 2
+	pkgver = 1.15.1
+	pkgrel = 1
 	url = https://qdrant.tech/
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = qdrant-bin
 	depends = glibc
 	provides = qdrant
 	conflicts = qdrant
-	source = qdrant-1.14.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/qdrant/qdrant/releases/download/v1.14.1/qdrant-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 7d43068cce7477061a7bd91fd5e5e139e35cfacb09d0dcdc4f4a33ace7d782d8
+	source = qdrant-1.15.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/qdrant/qdrant/releases/download/v1.15.1/qdrant-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = edf1fed439685da4314cea8d50e26b12086d2a2d630627c046a80bd43c46eb63
 
 pkgname = qdrant-bin
