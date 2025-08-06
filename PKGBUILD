@@ -2,7 +2,7 @@
 
 pkgname=legcord-bin
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
 license=('OSL-3.0')

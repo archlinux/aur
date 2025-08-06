@@ -1,7 +1,7 @@
 pkgbase = legcord-bin
 	pkgdesc = Discord client with builtin client mod and theme support
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Legcord/Legcord
 	arch = x86_64
 	arch = aarch64
