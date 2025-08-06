@@ -10,7 +10,7 @@ depends=('python' 'python-pyqt5' 'python-flask' 'python-werkzeug')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-pip: for installing optional dependencies like nbformat for Jupyter notebook support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pierspad/TextMerger/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0cf0e706b9faf4bd4787506033551e328eb377887e607b7489de061c8ee41133')
 
 prepare() {
   cd "$srcdir/TextMerger-$pkgver"
