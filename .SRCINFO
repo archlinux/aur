@@ -1,8 +1,8 @@
 pkgbase = dispositio-git
 	pkgdesc = Tool for displaying tabula data r (from CSV, JSON or YAML) in terminal (or markdown or Texttile)> You can use it as a library.
 	pkgver = 0.0.2
-	pkgrel = 3
-	url = https://dispositio.spn.109
+	pkgrel = 4
+	url = https://spn109.fr/disposition
 	arch = any
 	license = Apache-2
 	makedepends = git

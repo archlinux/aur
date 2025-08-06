@@ -7,10 +7,10 @@
 _pkgname=dispositio
 pkgname=${_pkgname}-git
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for displaying tabula data r (from CSV, JSON or YAML) in terminal (or markdown or Texttile)> You can use it as a library."
 arch=(any)
-url="https://dispositio.spn.109"
+url="https://spn109.fr/disposition"
 license=('Apache-2')
 groups=()
 provides=("$_pkgname")
@@ -35,7 +35,7 @@ package()
 
     cd "${srcdir}/${pkgname}" || exit 1
     mkdir -p "${pkgdir}/usr/share/${_pkgname}/"
-    mkdir -p "${pkgdir}/usr/bin/ "
+    mkdir -p "${pkgdir}/usr/bin/"
     mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
     mkdir -p "${pkgdir}/usr/share/zsh/functions/Completion/Linux/"
     cp -R ./* "${pkgdir}/usr/share/${_pkgname}/"
