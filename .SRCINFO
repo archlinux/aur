@@ -14,7 +14,6 @@ pkgbase = faugus-launcher-git
 	depends = python-filelock
 	depends = python-vdf
 	depends = python-psutil
-	depends = umu-launcher
 	depends = imagemagick
 	depends = icoextract
 	depends = libayatana-appindicator
