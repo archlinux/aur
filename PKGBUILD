@@ -8,7 +8,7 @@
 
 _pkgname=discover
 pkgname=discover-snap
-pkgver=6.4.3
+pkgver=6.4.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI (with snap backend enabled)'
