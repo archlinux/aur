@@ -2,7 +2,7 @@
 # Contributor: Lionel Hernou <lionel.hernou@gmail.com>
 
 pkgname=netradiant-custom
-pkgver=20250216
+pkgver=20250805
 pkgrel=1
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('xorg-xwayland: required to use the application on a Wayland session
 provides=('h2data' 'mbspc' 'q2map' 'q3map2' 'qdata3')
 source=("git+https://github.com/Garux/${pkgname}.git#tag=${pkgver}"
         "${pkgname}.desktop")
-sha256sums=('7d62a5c60144ac31bc59f0494a0c0b8b376e1b8659169b6d0aaadab3c0bc4821'
+sha256sums=('2f02185ef3b61a771e0553a72d69620ae3e3f2f64e08b1f2538ed4f9061ffd09'
             'c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648')
 
 build () {
