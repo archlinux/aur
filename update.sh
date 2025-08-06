@@ -11,7 +11,6 @@ stable_channel="$(echo "$snap_res" | jq -e '."channel-map"[] | select(.channel.n
 
 new_revision="$(echo "$stable_channel" | jq -r '.revision')"
 new_version="$(echo "$stable_channel" | jq -r '.version')"
-new_sha384="$(echo "$stable_channel" | jq -r '.download."sha3-384"')"
 new_download="$(echo "$stable_channel" | jq -r '.download.url')"
 
 if [[ ! -f "${snap_id}_${new_revision}.snap" ]]; then
