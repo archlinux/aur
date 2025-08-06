@@ -1,0 +1,18 @@
+pkgbase = lib32-lindvd-bin
+	pkgdesc = LinDVD - The only official DVD player for Linux to legally unlock DVDs cucked with CSS for reading, from Mandriva Powerpack 2008 ISO
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://web.archive.org/web/20080123102609/http://www.intervideo.com/jsp/Product_Profile.jsp?p=LinDVD
+	install = lib32-lindvd-bin.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = lib32-libstdc++5
+	depends = lib32-libxcrypt-compat
+	depends = lib32-libxinerama
+	provides = lindvd
+	conflicts = lindvd
+	source = local://lindvd-1.2.6-8mdv2008.0.i586.rpm
+	sha256sums = f1f185125217e07b658abd60cf5b806fd0d2e20d82be2e55fd67ec7f231b60f1
+
+pkgname = lib32-lindvd-bin

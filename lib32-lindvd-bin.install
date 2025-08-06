@@ -1,0 +1,16 @@
+RED='\033[1;31m'
+NC='\033[0m'
+
+post_install() {
+	echo "Program will say it's version 1.2.5 ¯\\_(ツ)_/¯"
+	echo "To get /dev/dsp up, hit"
+	echo "# modprobe snd_pcm_oss"
+	echo "or use some different replacement."
+	echo "Program is hardcoded to /dev/cdrom."
+	echo "You'll have to adapt it with a hex editor to your liking for using it with another drive."
+	echo -e "${RED}>>> Attention: lindvd will set your DVD drive to region 1 without asking if the region is unset! <<<${NC}"
+}
+
+post_upgrade() {
+	post_install
+}
