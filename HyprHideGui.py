@@ -34,7 +34,7 @@ else:
     print("Please create a config.cfg file, or install this properly ")
 
 JUMP_TO_MOUSE = config.get('GUI', 'jump_to_mouse', fallback=False)
-X_OFFEST = int(config.get('GUI', 'x_offset', fallback=-240))
+X_OFFSET = int(config.get('GUI', 'x_offset', fallback=-240))
 Y_OFFSET = int(config.get('GUI', 'y_offset', fallback=160))
 print(JUMP_TO_MOUSE)
 
@@ -265,7 +265,23 @@ class HiddenWindowItem(QWidget):
         print(f"Window floating state = {check_state_c['floating']}")
 
         self.restore_complete.emit()
+def get_focused_monitor_geometry():
+    result = subprocess.run("hyprctl monitors -j", shell=True, capture_output=True, text=True)
+    if result.returncode != 0:
+        print(f"hyprctl error: {result.stderr}")
+        return {"x": 0, "y": 0, "width": 1920, "height": 1080}  # fallback
 
+    monitors = json.loads(result.stdout)
+    for monitor in monitors:
+        if monitor.get("focused", False):
+            return {
+                "x": monitor["x"],
+                "y": monitor["y"],
+                "width": monitor["width"],
+                "height": monitor["height"]
+            }
+    
+    return {"x": 0, "y": 0, "width": 1920, "height": 1080}  # fallback
 class HyprHideApp(QWidget):
     def __init__(self):
         super().__init__()
@@ -357,27 +373,37 @@ class HyprHideApp(QWidget):
             QTimer.singleShot(10, self.position_near_mouse)
             return
 
-        pos = QCursor.pos()
-        screen = QApplication.primaryScreen().availableGeometry()
+        pos = QCursor.pos()  # Global mouse pos
+        monitor = get_focused_monitor_geometry()
+
         win_width = self.frameGeometry().width()
         win_height = self.frameGeometry().height()
 
-        x = min(pos.x(), screen.width() - win_width)
-        y = min(pos.y() + 20, screen.height() - win_height)
-        print(f"Moving mouse to {x},{y}")
-        print(type(JUMP_TO_MOUSE))
+        # Offset adjustments
+        frame_offset_x = self.frameGeometry().x() - self.geometry().x()
+
+        # Clamp mouse position to monitor bounds
+        mouse_x = min(max(pos.x(), monitor["x"]), monitor["x"] + monitor["width"] - 1)
+        mouse_y = min(max(pos.y(), monitor["y"]), monitor["y"] + monitor["height"] - 1)
+
         if JUMP_TO_MOUSE == 'True':
-            if(pos.x()+X_OFFEST > win_width or pos.x()+X_OFFEST < 0):
-                # break
-                pass
-            elif(pos.y()+Y_OFFSET > win_height or pos.y()+Y_OFFSET < 0):
-                # break
-                pass
-        # self.run_cmd(f"hyprctl dispatch moveactive {x} {y}")
-            print("MOVE")
-            result = subprocess.run(f"hyprctl dispatch moveactive {x+int(X_OFFEST)} {y+int(Y_OFFSET)}", shell=True, capture_output=True, text=True)
-        # return result.stdout.strip(), result.stderr.strip(), result.returncode
-        self.move(x, y)
+            adjusted_x = mouse_x - frame_offset_x + X_OFFSET - 240
+
+            adjusted_y = mouse_y + (win_height // 4) + Y_OFFSET
+
+            # Clamp inside monitor bounds
+            adjusted_x = max(monitor["x"], min(adjusted_x, monitor["x"] + monitor["width"] - win_width))
+            adjusted_y = max(monitor["y"], min(adjusted_y, monitor["y"] + monitor["height"] - win_height))
+
+            print(f"Monitor bounds: {monitor}")
+            print(f"Adjusted X: {adjusted_x}, Adjusted Y: {adjusted_y}")
+            print(f"Moving screen to {adjusted_x},{adjusted_y}")
+            print(f"Mouse at {mouse_x},{mouse_y}")
+
+            result = subprocess.run(f"hyprctl dispatch moveactive {adjusted_x} {adjusted_y}",
+                                    shell=True, capture_output=True, text=True)
+            if result.returncode != 0:
+                print(f"hyprctl error: {result.stderr}")
 
 
 def insure_no_leftover_file():
@@ -490,7 +516,7 @@ class HyprHideAppInitWindow(QWidget):
         main_layout.addWidget(title_label)
 
         # --- Thumbnails option ---
-        self.cb_thumbnails = QCheckBox("Enable thumbnails for hidden windows (Currently unused)")
+        self.cb_thumbnails = QCheckBox("Enable thumbnails for hidden windows")
         self.cb_thumbnails.setChecked(True)
         main_layout.addWidget(self.cb_thumbnails)
 
@@ -655,7 +681,7 @@ class HyprHideAppInitWindow(QWidget):
         config["GUI"] = {
             "THUMBNAILS": str(self.cb_thumbnails.isChecked()),
             "JUMP_TO_MOUSE": str(self.cb_jump_mouse.isChecked()),
-            "X_OFFEST": str(self.x_offset.value()),
+            "X_OFFSET": str(self.x_offset.value()),
             "Y_OFFSET": str(self.y_offset.value()),
         }
         config["WAYBAR"] = {"ENABLED": str(self.cb_waybar.isChecked())}

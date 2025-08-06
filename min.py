@@ -4,9 +4,21 @@ import subprocess
 import time
 from datetime import datetime
 from pathlib import Path
-
+import configparser
 logfile = "/tmp/hypr-hide-debug.log"
+config = configparser.ConfigParser()
+user_config_path = os.path.expanduser("~/.config/hyprhide/config.cfg")
+default_config_path = "/usr/share/hyprhide/config.cfg"
 
+if os.path.exists(user_config_path):
+    config.read(user_config_path)
+elif os.path.exists(default_config_path):
+    config.read(default_config_path)
+elif os.path.exists("config.cfg"):
+    config.read("config.cfg")
+else:
+    print("Please create a config.cfg file, or install this properly ")
+USE_THUMBNAILS = config.get('GUI', 'thumbnails', fallback=False)
 def log(message):
     with open(logfile, "a") as f:
         f.write(message + "\n")
@@ -118,9 +130,10 @@ run(f"hyprctl dispatch focuswindow address:{address}", capture=False)
 time.sleep(0.1)
 
 # Take screenshot
-log(f"Taking screenshot at geometry: {x},{y} {w}x{h}")
-run(f"grim -g '{x},{y} {w}x{h}' '{screenshot_path}'", capture=False)
-log(f"Screenshot saved to {screenshot_path}")
+if(USE_THUMBNAILS =='True'):
+    log(f"Taking screenshot at geometry: {x},{y} {w}x{h}")
+    run(f"grim -g '{x},{y} {w}x{h}' '{screenshot_path}'", capture=False)
+    log(f"Screenshot saved to {screenshot_path}")
 
 # Move window offscreen
 run("hyprctl dispatch moveactive 5000 5000", capture=False)
