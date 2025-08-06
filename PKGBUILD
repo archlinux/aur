@@ -4,7 +4,7 @@
 _pkgbase=wl-mirror
 pkgname=wl-mirror-git
 pkgver=0.18.3.r0.gd324810
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple Wayland output mirror client"
 url="https://github.com/Ferdi265/wl-mirror"
 arch=(x86_64)
@@ -77,7 +77,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/zsh/site-functions" \
                  "$pkgdir/usr/share/bash-completion/completions"
 
-  cd "$pkgname-$pkgver"
+  cd "$_pkgbase"
   install -Dm644 scripts/completions/zsh-completions/* \
     -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 scripts/completions/bash-completions/* \
