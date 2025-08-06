@@ -4,12 +4,12 @@ _pkgname=tex_nine
 pkgname=vim-${_pkgname}
 pkgver=1.3.13
 _scriptid=22415
-pkgrel=1
+pkgrel=2
 pkgdesc="A semi-automatic LaTeX ftplugin with lots of firepower."
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=3508"
 license=('GPL')
-depends=('python2' 'vim')
+depends=('python' 'vim-plugin-runtime')
 optdepends=('texlive-bin: compile TeX files')
 groups=('vim-plugins')
 install=vimdoc.install
@@ -20,7 +20,6 @@ sha256sums=('3447255bb878d66cc4d87b6fe0f7f604f1e6f0f4b32bb2e33faa10aaa81f5ab3')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}/ftplugin/${_pkgname}"
-  sed -e 's|#!/usr/bin/python|#!/usr/bin/python2|' -i evince_dbus.py
 }
 
 package() {
