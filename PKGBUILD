@@ -3,7 +3,7 @@
 _pkgauthor=seeyebe
 _pkgname=dude
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A single-binary helper that discovers, previews and removes pacman orphans"
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=("LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver//0\.1\.0/0\.1\.1}-${arch[0]}-notify.tar.zst")
 sha256sums=('58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd'
             '6d9d4f05cee53e12936415b68727492c083f80073313787ab13b720d840bfb34'
-            'e485ffbfe774586afbeb1aaccbb967b9b216a67acb5aae6a35ec0b4cc263384a'
+            '83e55e082ef396c6b632f12ddbd576a1a0da16ff5985973f1fb8f1b4b98fa8ee'
             '7b9ef2f3db7150f04f4af8fe33ecad3d37a647f1bc0b5f21980617fd6989a863')
-sha256sums_x86_64=('30e281e47b9b7ff14f577b754713d98380683c0fc936f3bfc9cf1e1049ed4da0')
+sha256sums_x86_64=('cc35f686f4b647f62fc8fc186e279ac07ffc6790cc26434e0959f83fd0e08183')
 
 
 package() {
