@@ -4,19 +4,19 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=patch_12Jun2025.r3.g08d2856
+pkgver=patch_22Jul2025.r56.g173e796
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
-depends=('fftw' 'openmpi' 'ffmpeg' 'libpng' 'python' 'intel-oneapi-mkl')
+depends=('fftw' 'openmpi' 'ffmpeg' 'libpng' 'python')
 makedepends=('cmake>=3.1' 'git' 'python-pip' 'python-build')
 conflicts=('lammps')
 provides=('lammps')
 source=('git+https://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
-optdepends=('clang' 'python' 'python-mpi4py')
+optdepends=('clang' 'python-mpi4py')
 
 pkgver() {
     # https://wiki.archlinux.org/title/VCS_package_guidelines#Git
@@ -68,16 +68,15 @@ build() {
 
     cmake --build . -j $(($(nproc) - 1))
 
-    # phana
-    cd ../tools/phonon/
-    cmake -S . -B build
-    cmake --build build
-
     # python lib
-    cd ../../python/
+    cd ../python/
     rm -rf dist
     python -m build
 
+    # phana
+    # cd ../tools/phonon/
+    # cmake -S . -B build
+    # cmake --build build
 }
 
 package() {
@@ -92,18 +91,9 @@ package() {
     install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
     install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
 
-    install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
+    # install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
 
     # python lib
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ../python/dist/*.whl
-
-
-    # # 遍历以 lib 开头的文件
-    # for file in "${pkgdir}/usr/lib/lib"*; do
-    #     # 如果文件不是 liblammps，则删除
-    #     [[ "$(basename "$file")" == liblammps* ]] || rm -f "$file"
-    # done
-    # rm -f ${pkgdir}/usr/lib/ld-linux*
-
 
 }
