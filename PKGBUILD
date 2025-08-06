@@ -3,7 +3,7 @@
 # Contributor: Samega7Cattac <sameg7acattac@gmail.com>
 branch=1.4
 pkgname=open62541
-pkgver=v1.4.12_r23_g7adf88dc3
+pkgver=v1.4.13_r0_g484348f30
 pkgrel=1
 pkgdesc="An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages."
 arch=('any')
