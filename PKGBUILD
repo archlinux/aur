@@ -3,7 +3,7 @@
 pkgname=colmsg
 pkgver=3.2.2
 pkgrel=1
-pkgdesc='A CLI tool for 櫻坂46メッセージ, 日向坂46メッセージ, 乃木坂46メッセージ and 齋藤飛鳥メッセージ app.'
+pkgdesc='A CLI tool for '櫻坂46メッセージ', '日向坂46メッセージ', '乃木坂46メッセージ', '齋藤飛鳥メッセージ' and '白石麻衣メッセージ' app.'
 arch=(x86_64)
 url='https://github.com/proshunsuke/colmsg'
 license=(MIT)
