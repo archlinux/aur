@@ -1,5 +1,5 @@
 pkgbase = legcord-bin
-	pkgdesc = Discord client with builtin client mod and theme support.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Discord client with builtin client mod and theme support.
 	pkgver = 1.1.5
 	pkgrel = 3
 	url = https://legcord.app/
@@ -12,10 +12,12 @@ pkgbase = legcord-bin
 	depends = libpipewire
 	provides = legcord=1.1.5
 	conflicts = legcord
+	source = 1.1.5package.json::https://raw.githubusercontent.com/Legcord/Legcord/refs/tags/v1.1.5/package.json
 	source = LICENSE-1.1.5.txt::https://raw.githubusercontent.com/Legcord/Legcord/v1.1.5/license.txt
 	source = legcord.sh
+	sha256sums = 05e80f40571d170343a2b85bd89668e2559ec92459015d51d7e1ce62718e28d4
 	sha256sums = c2cba32542cf3a65813e83fdbd259020d6d62b6833aa18f38aec983837dc9e4d
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 5873a0fde454152dbfed5cf1404e352f5e01326bcd2182189c8a463bf2cbce72
 	source_aarch64 = legcord-1.1.5-aarch64.rpm::https://github.com/Legcord/Legcord/releases/download/v1.1.5/Legcord-1.1.5-linux-aarch64.rpm
 	sha256sums_aarch64 = de7d24bf3206f4eae8e502136b6f53eb7cb04593ad4902c2953273104aab0827
 	source_armv7h = legcord-1.1.5-armv7h.rpm::https://github.com/Legcord/Legcord/releases/download/v1.1.5/Legcord-1.1.5-linux-armv7l.rpm
