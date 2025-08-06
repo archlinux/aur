@@ -1,4 +1,4 @@
-pkgname=apollo-studio-launchpad
+pkgname=apollo-studio
 pkgver=1.8.16
 pkgrel=1
 pkgdesc="Apollo Studio - standalone editor and live playback engine for Launchpad light effects"
