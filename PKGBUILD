@@ -1,7 +1,7 @@
 # Maintainer: leux08 <contato@leux08.dev.br>
 pkgname=pixieditor-bin
 _pkgname=pixieditor
-pkgver=2.0.1.6
+pkgver=2.0.1.7
 pkgrel=1
 pkgdesc="Universal 2D Graphics Editor"
 arch=('x86_64')

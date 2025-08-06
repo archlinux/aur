@@ -1,11 +1,11 @@
 pkgbase = pixieditor-bin
 	pkgdesc = Universal 2D Graphics Editor
-	pkgver = 2.0.1.6
+	pkgver = 2.0.1.7
 	pkgrel = 1
 	url = https://pixieditor.net
 	arch = x86_64
 	license = LGPL-3.0
-	source = https://github.com/PixiEditor/PixiEditor/releases/download/2.0.1.6/PixiEditor-2.0.1.6-amd64-linux.tar.gz
+	source = https://github.com/PixiEditor/PixiEditor/releases/download/2.0.1.7/PixiEditor-2.0.1.7-amd64-linux.tar.gz
 	md5sums = 58f92137529266a7b753e3eba491bdbc
 
 pkgname = pixieditor-bin
