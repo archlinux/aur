@@ -1,11 +1,11 @@
 pkgbase = aacs-keydb-daily
 	pkgdesc = Contains the Key Database for the AACS Library (Daily Updates)
-	pkgver = 20250804034540
+	pkgver = 20250806033546
 	pkgrel = 1
 	url = http://fvonline-db.bplaced.net/
 	arch = any
 	depends = libaacs
-	source = keydb_eng-20250804034540.zip::https://web.archive.org/web/20250804034540/http://fvonline-db.bplaced.net/export/keydb_eng.zip
-	sha256sums = 094be661ef6a76dc6a6f8240b493d3ec800d5277ea96299cb52e1b9ac13a8cb4
+	source = keydb_eng-20250806033546.zip::http://web.archive.org/web/20250806033546/http://fvonline-db.bplaced.net/export/keydb_eng.zip
+	sha256sums = 879e15c9fb36fdaf2d248228fe30f22cb49dbbce73dab27c1d95c2365d7dce76
 
 pkgname = aacs-keydb-daily
