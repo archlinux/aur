@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=codedeploy-agent-bin
-pkgver=1.7.1_110
+pkgver=1.8.0_17
 pkgrel=1
 pkgdesc="AWS CodeDeploy is a deployment service that enables developers to automate the deployment of applications to instances and to update the applications as required. See: https://aws.amazon.com/documentation/codedeploy/ for details"
 arch=('x86_64')
@@ -11,8 +11,11 @@ depends=('ruby' 'ruby-erb')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/${pkgname%-bin}_${pkgver//_/-}_all.deb)
-md5sums=('ca819b889c0146b7484aa7598c977cfc')
+# Checksums
+sha256sums=('d42a3d5177d65ec5cadae03ce345c02af6864919e5cbbc55909b59bfc9fa52b8')
 noextract=()
+# We set options here to superseed the default makepkg.conf options. We dont whant debug build or strip debug info from the package. Its not relevant for a binary repackage of the upstream package.
+options=(!debug !strip)
 
 prepare() {
   cd "$srcdir"
