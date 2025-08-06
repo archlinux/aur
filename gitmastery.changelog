@@ -91,3 +91,6 @@ Migrate to use custom rmtree
 Fix github check
 
 
+Support ignore repo types
+
+
