@@ -21,7 +21,7 @@ pkgbase = brave-nightly-bin
 	source = brave-nightly-bin.sh
 	sha512sums = 191500db5dd9692d362745e0055f9ac570c7ca2043edcf3e2eb9dcf8039615022f3459c909ed29d89410886481723d2d439086f1938249674ea32654819190c4
 	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.83.19/brave-browser-nightly_1.83.19_amd64.deb
-	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = 2d2bc9b495373bda51fdc6e852934a7db9be9360ae5e793487e11463b629f41ea3430cc301f4f4c9eb13513808f58cdcb2deaf341e231206f87763ab9caae6b3
 	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.83.19/brave-browser-nightly_1.83.19_arm64.deb
 	sha512sums_aarch64 = f1a14d7741cdcb2404f257276c95c11f6648344f5b4ebee9151032e307250d55bed9b4ef85d5027f64d14dbc07691a34384e2402ae20c9d760e38467c24f733c
 
