@@ -2,7 +2,7 @@
 : ${_sccache:=}
 pkgname='dank-niri-git'
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete niri desktop environment with DankMaterialShell, themes, and all dependencies'
 arch=(x86_64 aarch64)
 url='https://github.com/bbedward/DankMaterialShell'
@@ -10,8 +10,6 @@ license=('GPL-3.0')
 depends=('dankmaterialshell-git'
          'ghostty'
          'matugen-bin'
-         'ddcutil'
-         'brightnessctl'
          'wl-clipboard'
          'cliphist'
          'cava'

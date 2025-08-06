@@ -1,7 +1,7 @@
 pkgbase = dank-niri-git
 	pkgdesc = Complete niri desktop environment with DankMaterialShell, themes, and all dependencies
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bbedward/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -14,8 +14,6 @@ pkgbase = dank-niri-git
 	depends = dankmaterialshell-git
 	depends = ghostty
 	depends = matugen-bin
-	depends = ddcutil
-	depends = brightnessctl
 	depends = wl-clipboard
 	depends = cliphist
 	depends = cava
