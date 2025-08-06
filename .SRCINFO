@@ -1,6 +1,6 @@
 pkgbase = bcunit
 	pkgdesc = Lightweight system for writing, administering, and running unit tests in C
-	pkgver = 5.4.9
+	pkgver = 5.4.29
 	pkgrel = 1
 	url = https://gitlab.linphone.org/BC/public/bcunit
 	arch = x86_64
