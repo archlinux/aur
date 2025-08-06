@@ -1,0 +1,5 @@
+[precice-config-graph]
+source = "github"
+github = "precice/config-graph"
+use_max_tag = "true"
+prefix = "v"
