@@ -1,7 +1,7 @@
 pkgbase = python-cudf
 	pkgdesc = cuDF - GPU DataFrame Library
-	pkgver = 25.06.00
-	pkgrel = 2
+	pkgver = 25.08.00
+	pkgrel = 1
 	url = https://github.com/rapidsai/cudf
 	arch = x86_64
 	license = Apache-2.0
@@ -20,10 +20,13 @@ pkgbase = python-cudf
 	depends = python-nvtx
 	depends = python-pynvjitlink
 	depends = python-pyarrow
-	source = https://github.com/rapidsai/cudf/archive/refs/tags/v25.06.00.tar.gz
+	depends = python-numba-cuda
+	source = https://github.com/rapidsai/cudf/archive/refs/tags/v25.08.00.tar.gz
 	source = missing-pkg.patch
-	sha256sums = 4fdcac02be1e0022643a1cd2afa9bae6091bb7d7525cdf0edb9d481bca737fa2
+	source = system-cccl.patch
+	sha256sums = 749e5d17b4a71eb5494b46dc5dbf5926957402eb736fded4d12496ef2e8f53d7
 	sha256sums = 72618631b71f51c4d0773f6964bb9bfe3a92ba0ebe5351fd7baedb56f833fcfa
+	sha256sums = 28b8feeb1365b7ef864881b35ebdb859ba151117ded6f34793c3d22e0bc693cd
 
 pkgname = python-cudf
 
@@ -36,5 +39,6 @@ pkgname = python-dask-cudf
 	depends = python-nvtx
 	depends = python-pynvjitlink
 	depends = python-pyarrow
+	depends = python-numba-cuda
 	depends = python-cudf
 	depends = python-dask-cuda

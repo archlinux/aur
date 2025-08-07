@@ -1,0 +1,12 @@
+--- src/cudf-25.08.00/python/cudf/udf_cpp/CMakeLists.txt	2025-08-07 01:50:56.000000000 +0800
++++ src/cudf-25.08.00/python/cudf/udf_cpp/CMakeLists.txt.new	2025-08-07 14:19:41.435985151 +0800
+@@ -41,8 +41,7 @@
+   )
+ endif()
+ 
+-include(${rapids-cmake-dir}/cpm/cccl.cmake)
+-rapids_cpm_cccl(BUILD_EXPORT_SET udf-exports INSTALL_EXPORT_SET udf-exports)
++find_package(CCCL REQUIRED)
+ 
+ add_library(cudf_strings_udf SHARED strings/src/strings/udf/udf_apis.cu)
+ target_include_directories(
