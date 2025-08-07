@@ -1,0 +1,4 @@
+[python-opnieuw]
+source = "git"
+git = "https://github.com/channable/opnieuw.git"
+prefix = "v"
