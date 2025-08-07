@@ -1,7 +1,7 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=textmerger
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="A Python GUI application for merging text files"
 arch=('any')
 url="https://github.com/pierspad/TextMerger"
@@ -10,7 +10,7 @@ depends=('python' 'python-pyqt5' 'python-flask' 'python-werkzeug')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-pip: for installing optional dependencies like nbformat for Jupyter notebook support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pierspad/TextMerger/archive/v$pkgver.tar.gz")
-sha256sums=('f2428dc0ead7cd44551aa2ae44f1056f980dabc2b93ca67a2f074bce16898d43')
+sha256sums=('c720206b99a7ddeb3f5fc440118b47a9c2c043dfba034559b12ca36667e570f2')
 
 prepare() {
   cd "$srcdir/TextMerger-$pkgver"
