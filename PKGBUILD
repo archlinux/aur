@@ -31,7 +31,7 @@ build() {
   clang ./src/main.c ./src/globals.c ./src/args.c ./src/controls.c ./src/image.c ./src/draw.c \
     -o wayland-boomer \
     -std=c23 -pedantic -Wall -Wextra -Wpedantic -ggdb -O3 -Wno-gnu \
-    -flto -lm -lglfw -L./vendor/ -lraylib \
+    -flto -lm -lglfw -I./vendor/ -L./vendor/ -lraylib \
     -DVERSION="\"$(git rev-parse HEAD)\""
 }
 
