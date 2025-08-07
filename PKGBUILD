@@ -45,14 +45,14 @@ pkgver() {
 build() {
 	cd "$srcdir"
   # GTK+ 3 version
-  [ -d gtk3 ] || cp -r $pkgbase-$pkgver gtk3
+  [ -d gtk3 ] || cp -r xarchiver gtk3
   cd gtk3
   ./configure --prefix=/usr --libexecdir=/usr/lib/xfce4
   make
 
   cd "$srcdir"
   # GTK+ 2 version
-  [ -d gtk2 ] || cp -r $pkgbase-$pkgver gtk2
+  [ -d gtk2 ] || cp -r xarchiver gtk2
   cd gtk2
   ./configure --prefix=/usr --libexecdir=/usr/lib/xfce4 --enable-gtk2
   make
