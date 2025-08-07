@@ -22,7 +22,7 @@ package() {
 [Desktop Entry]
 Name=CypherGate VPN
 Exec=/opt/CypherGate/cyphergate.elf
-Icon=/opt/CypherGate/Assets/logo.png
+Icon=/opt/CypherGate/Assets/icon.png
 Type=Application
 Categories=Network;Utility;
 EOF
