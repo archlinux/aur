@@ -1,5 +1,5 @@
 pkgbase = zzzfm-dpup
-	pkgdesc = Multi-panel tabbed file manager - gtk3 version
+	pkgdesc = Multi-panel tabbed file manager - wayland gtk3 version
 	pkgver = 1.0.7
 	pkgrel = 4
 	url = https://gitlab.com/skidoo/zzzfm
