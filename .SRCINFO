@@ -1,6 +1,6 @@
 pkgbase = runjs-bin
-	pkgdesc = The JavaScript playgroundfor your desktop, Explore and experiment with JavaScript and TypeScript, visualise your ideas and get instant feedback as you type.
-	pkgver = 3.0.3
+	pkgdesc = The JavaScript playground for your desktop, Explore and experiment with JavaScript and TypeScript, visualise your ideas and get instant feedback as you type.
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/lukehaas/RunJS
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = runjs-bin
 	provides = runjs
 	conflicts = runjs
 	conflicts = runjs-git
-	source_x86_64 = runjs-bin-3.0.3.deb::https://github.com/lukehaas/RunJS/releases/download/v3.0.3/runjs_3.0.3_amd64.deb
-	sha256sums_x86_64 = 9bf8083dbda0279a1c779c10c28ebfcfa7278e7479ffba316a5986ab97311a1e
-	source_aarch64 = runjs-bin-3.0.3.deb::https://github.com/lukehaas/RunJS/releases/download/v3.0.3/runjs_3.0.3_arm64.deb
-	sha256sums_aarch64 = 9bf8083dbda0279a1c779c10c28ebfcfa7278e7479ffba316a5986ab97311a1e
+	source_x86_64 = runjs-bin-3.1.2.deb::https://github.com/lukehaas/RunJS/releases/download/v3.1.2/runjs_3.1.2_amd64.deb
+	sha256sums_x86_64 = 677e3e18de6f36b58efba557788560b37071272cdf4345a066f4bd5810ccfec7
+	source_aarch64 = runjs-bin-3.1.2.deb::https://github.com/lukehaas/RunJS/releases/download/v3.1.2/runjs_3.1.2_arm64.deb
+	sha256sums_aarch64 = e58561fe8ac9b82ea3c6811abefc5087d740398680f1180408985a76ad143cff
 
 pkgname = runjs-bin
