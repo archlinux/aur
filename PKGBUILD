@@ -2,7 +2,7 @@
 
 _pyname=gwcs
 pkgname=python-${_pyname}-doc
-pkgver=0.25.0
+pkgver=0.25.2
 pkgrel=1
 pkgdesc="Documentation for Python GWCS module"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-matplotlib'
              'graphviz')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1861faed3f52d39d9c43cd77fc73e5e1')
+md5sums=('154ffb7782da132149943ad51fcf723b')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
