@@ -17,7 +17,7 @@ pkgbase = python-ju
 	depends = python-traitlets
 	depends = python-ipywidgets
 	depends = python-requests
-	depends = python-datamodel-code-generator
+	depends = datamodel-code-generator
 	source = ju.tar.gz::https://github.com/i2mint/ju/archive/refs/tags/0.1.27.tar.gz
 	sha512sums = 12e6e7f54043876ad38afc9c3ebbb044caaf93a1b547ad2ebc4d5c8560df0f9d22cd4d96552bda82c12871489b7d933bf764fb32cc9ab038ba4a54cec33a02ba
 
