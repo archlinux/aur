@@ -8,7 +8,7 @@ license=('MIT' 'GPL' 'LGPL')
 depends=('qt6-base' 'qt6-quicktimeline' 'qt6-webengine')
 makedepends=()
 source=("https://github.com/nemozz-hz/moonasst/archive/v$pkgver.tar.gz")
-sha256sums=('c440e4bbb887ad731f153c3cfb6c72e756c9aeaf1aea3d9c52bc40ab47c4d3a9')
+sha256sums=('c43e342bf61351930551044fd1dba384df4b741fec44a58f517e75a171d10470')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -42,7 +42,7 @@ package() {
 Name=Moonasst
 Comment=Moonasst Qt application
 Exec=/opt/exec/moonasst
-Icon=moonasst
+Icon=/usr/share/icons/hicolor/48x48/apps/moonasst.svg
 Terminal=false
 Type=Application
 Categories=Utility;
@@ -50,10 +50,8 @@ StartupWMClass=moonasst
 EOF
 	
 	# 如果有图标文件，安装图标
-	if [ -f "icons/moonasst.png" ]; then
-		install -Dm644 icons/moonasst.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/moonasst.png"
-	elif [ -f "moonasst.png" ]; then
-		install -Dm644 moonasst.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/moonasst.png"
+	if [ -f "moonasst.svg" ]; then
+		install -Dm644 moonasst.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/moonasst.svg"
 	fi
 		
 	# 创建符号链接到/usr/bin（让用户可以直接运行moonasst命令）
