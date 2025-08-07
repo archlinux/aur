@@ -11,6 +11,6 @@ pkgbase = moonasst
 	depends = qt6-quicktimeline
 	depends = qt6-webengine
 	source = https://github.com/nemozz-hz/moonasst/archive/v1.0.0.tar.gz
-	sha256sums = c440e4bbb887ad731f153c3cfb6c72e756c9aeaf1aea3d9c52bc40ab47c4d3a9
+	sha256sums = c43e342bf61351930551044fd1dba384df4b741fec44a58f517e75a171d10470
 
 pkgname = moonasst
