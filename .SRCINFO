@@ -1,15 +1,14 @@
 pkgbase = iris-emu
 	pkgdesc = Experimental PlayStation 2 Emulator
-	pkgver = 0.10a
+	pkgver = 0.13a
 	pkgrel = 1
 	url = https://github.com/allkern/iris
 	arch = x86_64
 	license = MIT
+	makedepends = clang
+	makedepends = cmake
 	makedepends = git
-	makedepends = make
-	makedepends = python
-	depends = sdl2
-	source = iris::git+https://github.com/allkern/iris.git#tag=0.10-alpha
+	source = iris::git+https://github.com/allkern/iris.git#tag=0.13-alpha
 	source = iris-emu.desktop
 	sha256sums = SKIP
 	sha256sums = 6dfc8a9ccf3229c52dea374de1697e2dc1084fcc237bc632d2a7c58246610304

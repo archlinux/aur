@@ -1,15 +1,14 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=iris-emu
-pkgver=0.10a
-_pkgver=0.10-alpha
+pkgver=0.13a
+_pkgver=0.13-alpha
 pkgrel=1
 pkgdesc="Experimental PlayStation 2 Emulator"
 arch=("x86_64")
 url="https://github.com/allkern/iris"
 license=("MIT")
-depends=("sdl2")
-makedepends=("git" "make" "python")
+makedepends=("clang" "cmake" "git")
 source=(
     "iris::git+${url}.git#tag=${_pkgver}"
     "iris-emu.desktop"
@@ -25,14 +24,23 @@ prepare() {
 }
 
 build() {
-    cd $srcdir/iris/gl3w
-    python gl3w_gen.py
-    cd ..
-    make -j$(nproc)
+    export CFLAGS="${CFLAGS/-Werror=format-security/}"
+    export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+    local cmake_options=(
+        -B build
+        -S .
+        -D CMAKE_C_COMPILER="clang"
+        -D CMAKE_CXX_COMPILER="clang++"
+        -D CMAKE_BUILD_TYPE="Release"
+        --fresh
+    )
+    cd $srcdir/iris
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 package() {
-    install -Dm755 $srcdir/iris/bin/iris $pkgdir/usr/bin/iris-emu
-    install -Dm644 $srcdir/iris/res/iris.png $pkgdir/usr/share/pixmaps/iris-emu.png
     install -Dm644 $srcdir/iris-emu.desktop -t $pkgdir/usr/share/applications
+    install -Dm755 $srcdir/iris/build/iris $pkgdir/usr/bin/iris-emu
+    install -Dm644 $srcdir/iris/res/iris.png $pkgdir/usr/share/pixmaps/iris-emu.png
 }
