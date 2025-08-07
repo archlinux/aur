@@ -1,8 +1,8 @@
 pkgname=mcp-devtools
 
-: "${_fragment:=tag=v0.22.0}"
+: "${_fragment:=tag=v0.23.0}"
 
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc='A modular MCP server that provides commonly used developer tools for AI coding agents'
 
@@ -15,7 +15,7 @@ makedepends=(git go)
 source=(
 	"git+$url.git#$_fragment"
 )
-sha256sums=('3440fca5238b0fbd337a74d27e5e4e270d5a44e01b3a1cc90c7c9f833d6fdc24')
+sha256sums=('8dc401d6807aab248e577f0483a4839afe22142fea8b6a39584d16702fcfd3a9')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
