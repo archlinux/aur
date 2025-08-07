@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-installer
-_tagname=1.6.6
+_tagname=1.6.7
 pkgver="${_tagname//-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc='玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store.'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps-web-store-installer'
@@ -37,7 +37,7 @@ optdepends=(
   "linglong-pica: deb package to Linglong package tool."
 )
 source=("${pkgname}::git+${url}.git#tag=v${_tagname}")
-sha256sums=('9ed8959c7c4e92976e92ded10ac7c6f112271ef3241ceee26e57e2109f6165d2')
+sha256sums=('6bde58936b4a7562dfe6b9470e69220c2bfd1bb6be442f5bcd429e95033ddafa')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
