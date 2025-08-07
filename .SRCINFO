@@ -5,7 +5,7 @@ pkgbase = perl-universal-ref
 	url = https://metacpan.org/release/UNIVERSAL-ref
 	arch = i686
 	arch = x86_64
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	makedepends = perl-test-simple>=0
 	depends = perl>=5.6
 	depends = perl-b-utils>=0

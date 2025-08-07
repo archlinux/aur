@@ -7,7 +7,7 @@ pkgdesc='Turns ref() into a multimethod'
 _dist='UNIVERSAL-ref'
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_dist"
-license=('PerlArtistic')
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=('perl>=5.6' 'perl-b-utils>=0' 'perl-xsloader>=0' 'perl-test-simple>=0')
 checkdepends=()
 makedepends=('perl-test-simple>=0')
