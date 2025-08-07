@@ -9,6 +9,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 	"go-build::https://github.com/go-nv/goenv/archive/master.tar.gz"
 )
+
 md5sums=('9d4b873e5271c5e5c413d7521c96ad32'
          '551b66bd78735c7ff6dc3aa8dbbcc754')
 
@@ -32,4 +33,3 @@ package() {
 
   echo "$pkgver" > "${pkgdir}/usr/lib/goenv/APP_VERSION"
 }
-
