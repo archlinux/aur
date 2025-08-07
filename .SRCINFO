@@ -1,7 +1,7 @@
 pkgbase = python-gr-framework
 	pkgdesc = A universal framework for cross-platform visualization applications (Python bindings).
-	pkgver = 1.27.0
-	pkgrel = 2
+	pkgver = 1.28.0
+	pkgrel = 1
 	url = https://gr-framework.org
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-gr-framework
 	depends = gr-framework
 	depends = python
 	depends = python-numpy
-	source = https://github.com/sciapp/python-gr/releases/download/v1.27.0/gr-1.27.0.tar.gz
-	sha256sums = 2c3d0a31b318f0e480e8400f44af05bc0bbda039f59ac90df9de6308fe5c881b
+	source = https://github.com/sciapp/python-gr/releases/download/v1.28.0/gr-1.28.0.tar.gz
+	sha256sums = 249214272fb53f8d72ede49f37ea891a4a7eec2328f7d5b90ff6a5fec10e1756
 
 pkgname = python-gr-framework
