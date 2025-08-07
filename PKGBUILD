@@ -1,6 +1,6 @@
 # Maintainer: Philip Meulengracht <the_meulengracht@hotmail.com>
 pkgname=vchef
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 _gitname=bake
 epoch=
@@ -23,13 +23,8 @@ source=(
 	"git+https://github.com/meulengracht/${_gitname}.git#tag=v${pkgver}"
 	"git+https://github.com/meulengracht/libgracht"
 	"git+https://github.com/Meulengracht/vali-rofs"
-	"git+https://github.com/umbrella-c/jansson"
-	"git+https://github.com/umbrella-c/zip"
-	"git+https://github.com/umbrella-c/zstd"
 )
 sha256sums=(
-	'SKIP'
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -40,10 +35,7 @@ prepare() {
     cd "${srcdir}/${_gitname}"
     git submodule init
     git submodule set-url -- libs/gracht $srcdir/libgracht
-    git submodule set-url -- libs/jansson $srcdir/jansson
     git submodule set-url -- libs/vafs $srcdir/vali-rofs
-    git submodule set-url -- libs/compression/zip $srcdir/zip
-    git submodule set-url -- libs/compression/zstd $srcdir/zstd
     git -c protocol.file.allow=always submodule update
     mkdir -p build
 }
