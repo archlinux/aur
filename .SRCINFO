@@ -1,0 +1,22 @@
+pkgbase = drawnix
+	pkgdesc = All in one open-source whiteboard tool with mind, flowchart, freehand and etc.All in one open-source whiteboard tool with mind, flowchart, freehand and etc.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/plait-board/drawnix
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = poppler
+	makedepends = ghostscript
+	depends = sh
+	depends = perl
+	depends = python
+	depends = python-fonttools
+	depends = nodejs
+	provides = drawnix
+	conflicts = drawnix
+	noextract = -0.2.1.tar.gz
+	source = drawnix-0.2.1.tar.gz::https://github.com/plait-board/drawnix/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 82d01e799c5f8dffa712e41ed293e78fe61d2fb2e1c8c4aab6ade227e3976eed
+
+pkgname = drawnix
