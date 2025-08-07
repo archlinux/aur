@@ -1,10 +1,11 @@
 # Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
 # Description: Builds Vinyl theme from https://github.com/ekaaty/vinyl-theme
+# PKGBUILD issues: https://github.com/DeltaCopy/vinyl-git-aur
 
 # basic info
 pkgname="vinyl-git"
 _pkgname="vinyl"
-pkgver=r59.b5916cf
+pkgver=r78.054c68c
 pkgrel=1
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
