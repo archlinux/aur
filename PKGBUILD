@@ -8,7 +8,7 @@ pkgname=("$pkgbase")
 pkgver=1.14.10b
 _zen_version=${pkgver//_/-}
 _firefox_version=141.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Experience tranquillity while browsing the web without people tracking you'
 url='https://zen-browser.app/'
 arch=('x86_64')
@@ -139,7 +139,7 @@ prepare() {
   # Apply patches
   msg2 "apply patches"
   git apply -3 "$srcdir"/*.zen.patch
-  #patch -Np1 -i ../0005-source-firefox-language-packs.patch
+  patch -Np1 -i ../0005-source-firefox-language-packs.patch
 
   msg2 "prepare dependencies"
   pnpm config set store-dir "$srcdir"/pnpm-store
