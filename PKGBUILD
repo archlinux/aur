@@ -4,7 +4,7 @@
 
 pkgname='python-frontmatter'
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse and manage posts with YAML (or other) frontmatter"
 arch=('any')
 url="https://pypi.org/project/python-frontmatter/"
@@ -12,7 +12,7 @@ license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('f0d26bc7456a2ad868a6b5e5df2d6ee4')
 depends=('python-toml' 'python-yaml')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 
 build() {
