@@ -1,0 +1,20 @@
+pkgbase = odhcpd-git
+	pkgdesc = OpenWrt DHCP Server
+	pkgver = r582.g4308384
+	pkgrel = 1
+	url = https://openwrt.org/docs/techref/odhcpd
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = libnl-tiny
+	depends = libubox
+	depends = uci
+	provides = odhcpd=r582.g4308384
+	conflicts = odhcpd
+	source = git+https://git.openwrt.org/project/odhcpd.git
+	sha256sums = SKIP
+
+pkgname = odhcpd-git
