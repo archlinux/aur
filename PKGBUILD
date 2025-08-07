@@ -10,7 +10,7 @@
 
 _basename=coccinelle
 pkgname=$_basename-git
-pkgver=1.3.0.r31.gf0ebfea
+pkgver=1.3.r168.gf2375b6
 pkgrel=1
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
@@ -19,9 +19,12 @@ license=('GPL-2.0-or-later')
 makedepends=(
     'ocaml'
     'ocaml-findlib'
+    'ocaml-menhir'
     'ocaml-num'
     'ocaml-pcre'
+    'ocaml-pyml'
     'ocaml-stdcompat'
+
 )
 depends=(
     'glibc'
@@ -35,6 +38,7 @@ checkdepends=(
 optdepends=(
     'ocaml: OCaml scripting feature'
     'ocaml-findlib: OCaml scripting feature'
+    'python-psycopg2: PostgreSQL support for Python bindings'
 )
 source=("git+https://gitlab.inria.fr/coccinelle/coccinelle.git")
 b2sums=('SKIP')
@@ -53,20 +57,24 @@ build() {
     ./autogen
 
     ./configure \
+	--enable-bytes \
+	--enable-dynlink \
+	--enable-menihr \
 	--enable-ocaml \
+	--enable-opt \
 	--enable-opt \
 	--enable-pcre \
 	--enable-pcre-syntax \
+	--enable-pyml \
 	--enable-python \
 	--enable-stdcompat \
 	\
 	--prefix=/usr \
 	--docdir=/usr/share/doc \
 	--libdir=/usr/lib/ocaml \
-	--mandir=/usr/share/man \
-    # TODO, no package yet
-    #  --enable-pyml \
-
+	--mandir=/usr/share/man
+	# TODO
+	# --enable-parmap
     make
 }
 
@@ -75,7 +83,7 @@ check() {
 
     # make check is interactive, so do it manually
 
-    ./spatch.opt --testall --no-update-score-file
+    ./spatch.opt --testall
 
     cd cpptests
     ../scripts/cpptests.sh
@@ -86,11 +94,15 @@ package() {
 
     make DESTDIR="$pkgdir/" MANDIR="/usr/share/man" install
 
+    # Emacs modes
+    install -Dm644 editors/emacs/cocci.el -t $pkgdir/usr/share/emacs/site-lisp
+    install -Dm644 editors/emacs/cocci-ediff.el -t $pkgdir/usr/share/emacs/site-lisp
+
+    # vim
+    install -Dm644 editors/vim/ftdetect/cocci.vim -t $pkgdir/usr/share/vim/vimfiles/ftdetect
+    install -Dm644 editors/vim/syntax/cocci.vim -t $pkgdir/usr/share/vim/vimfiles/syntax
+
     strip \
 	$pkgdir/usr/bin/spatch \
-	$pkgdir/usr/bin/spgen \
-	$pkgdir/usr/bin/spatch \
-	$pkgdir/usr/bin/spgen \
-	$pkgdir/usr/lib/ocaml/coccinelle/dllpyml_stubs.so \
-	$pkgdir/usr/lib/ocaml/coccinelle/dllpyml_stubs.so
+	$pkgdir/usr/bin/spgen
 }
