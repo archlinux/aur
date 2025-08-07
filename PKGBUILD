@@ -30,7 +30,7 @@ sha256sums=('1b7c12a5b1815797cac7257aa084b7172c175d0cc3831f6df6444c21efa5a098'
 validpgpkeys=()
 
 prepare() {
-	printf "%b" "\n--------------------------------------\nInstalled \e[1;34masb\e[0m, \e[1;34masb-controller\e[0m, and \e[1;34mswap\e[0m\n--------------------------------------\n"
+	printf "%b" "\n---------------------------------------\nInstalled \e[1;34masb\e[0m, \e[1;34masb-controller\e[0m, and \e[1;34mswap\e[0m\n---------------------------------------\n"
 }
 
 package() {
