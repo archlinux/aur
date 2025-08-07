@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/janbar/osmin"
 license=('GPL3')
 depends=('openmp' 'qt6-5compat' 'qt6-location' 'qt6-multimedia' 'qt6-sensors' 'qt6-svg' 'qt6-wayland' 'qt6-remoteobjects' 'glfw' 'glm')
-makedepends=('clang' 'cmake' 'double-conversion' 'git' 'glib2' 'md4c' 'tslib' 'xcb-util-image' 'xcb-util-keysyms' 'xdg-utils')
+makedepends=('clang' 'cmake' 'double-conversion' 'git' 'tslib' 'xcb-util-image' 'xcb-util-keysyms')
 source=( "git+https://github.com/janbar/osmin.git" )
 sha256sums=('SKIP')
 
