@@ -10,7 +10,7 @@ depends=()
 optdepends=()
 makedepends=('zig')
 source=("https://git.calitabby.net/vel/no/raw/branch/master/no.zig")
-sha256sums=('517b7aecf6f4246ac1c5128a3aa12d6ad310cf068883a96f28222a71ee3186fa')
+sha256sums=('SKIP')
 
 build() {
 	zig build-exe no.zig
