@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-bin
 _pkgname=Atlassify
-pkgver=1.22.0
+pkgver=1.23.0
 _electronversion=37
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar.(Prebuilt version.Use system-wide electron)"
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/setchy/atlassify/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('333db264660143b74576c1dd7333cc9faace083846ac8effc5c42f1b20956883'
+sha256sums=('3824ab4733152fbb71ca9a8d322517ae7e59126388a797e807504386a16d35f2'
             '2030af44675d6523de146944f48720295a82c2e89023ec6f579661e22ad8be2d'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
