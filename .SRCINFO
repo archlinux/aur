@@ -1,0 +1,16 @@
+pkgbase = moonasst
+	pkgdesc = Moonasst Qt application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nemozz-hz/moonasst
+	arch = x86_64
+	license = MIT
+	license = GPL
+	license = LGPL
+	depends = qt6-base
+	depends = qt6-quicktimeline
+	depends = qt6-webengine
+	source = https://github.com/nemozz-hz/moonasst/archive/v1.0.0.tar.gz
+	sha256sums = c440e4bbb887ad731f153c3cfb6c72e756c9aeaf1aea3d9c52bc40ab47c4d3a9
+
+pkgname = moonasst
