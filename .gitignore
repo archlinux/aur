@@ -1,0 +1,5 @@
+Choreo/
+src/
+pkg/
+*.deb
+*.tar.zst
