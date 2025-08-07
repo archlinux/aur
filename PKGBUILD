@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=0.0.1.r254.g791d6a0
+pkgver=0.1.0.r6.ged6e2ec
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
@@ -11,6 +11,8 @@ makedepends=('cmake' 'nanobind' 'python-build' 'python-installer' 'python-py-bui
 checkdepends=('python-pytest')
 license=('BSD')
 options=('!strip' 'staticlibs')
+provides=('sleipnirgroup-sleipnir')
+conflicts=('sleipnirgroup-sleipnir')
 source=('git+https://github.com/SleipnirGroup/Sleipnir')
 md5sums=('SKIP')
 
