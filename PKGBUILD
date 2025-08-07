@@ -91,8 +91,8 @@ source=(
 )
 
 sha512sums=('b8a682e844379daa7f7e77cc1da76be1c9d2a7fee4cd5c62fc1fa964de77ed47758fae915b9d0b41620c4b0a4566289f9bdf3a86762a2bf53348443e04f66e33'
-            '9839d645a473b5a344f8d6a18083c24df6ce9bd63b83d76075b3036b52296cbe0fb52e1465d59a339d45ac5f31a9462979505f95efa978d37090dff58ef7f6f6'
-            '4bf90b90a671370119fc64b13b2adbf19a0ac00496b9828d67ae821272bf9ccd8722c15a942a2bc063f0f0f59ad648d45b263b72d1aeac4a69c3caacf4171dc8'
+            '49dae3d434be051a6bfbc85b9f83e911280638b5d7c392455a05ecf5b1d369d867d99b017c39df6110505270103cdafd28afa2123dfabe167c0a39df290e8299'
+            '43b99463cdf021d6540449e93afb37796978321e57c8f857f16b96636f1a63460f5d82b5db302377eeefdd21e60f218d38fb33e512f6a8d33bd09d5fae146ac8'
             'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac')
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -172,9 +172,7 @@ check() {
   #
   echo >&2 'Running unit tests'
   env -i PATH="${PATH}" python -m pytest \
-    -k "not test_get_commit_message`
-      ` and not TestHelp`
-      ` and not test_check_for_dependencies_"
+    -k 'not test_get_commit_message and not TestHelp and not test_check_for_dependencies_'
 
   echo >&2 'Testing the executable'
   test-env/bin/${_gitpkgname} --version > actual.txt

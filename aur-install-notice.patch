@@ -1,7 +1,7 @@
-From 83128a2adb3c979d03edbeaf0913948a73f038fe Mon Sep 17 00:00:00 2001
+From 50dae429cb3e1f2e593f13044d9c19def2007445 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:02:50 +0200
-Subject: [PATCH 1/5] AUR-specific: replace auto-updater with a notice
+Subject: [PATCH 1/4] AUR-specific: replace auto-updater with a notice
 
 ---
  aider/versioncheck.py | 27 ++++-----------------------
@@ -52,13 +52,13 @@ index ac511a02..be67ef10 100644
  
  def check_version(io, just_check=False, verbose=False):
 -- 
-2.50.0
+2.50.1
 
 
-From 2a8fc2891c59f531d4613dab9a42f50d72c107c9 Mon Sep 17 00:00:00 2001
+From d86318cfc63e1fa9728a6d75fd4c8940a6c29e2a Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:03:36 +0200
-Subject: [PATCH 2/5] AUR-specific: replace `/help` feature installer
+Subject: [PATCH 2/4] AUR-specific: replace `/help` feature installer
 
 The interactive `/help` feature requires an optional package from the
 AUR. Replace the automatic installer with a notice that asks the user
@@ -120,20 +120,20 @@ index a58fde66..deaa7150 100644
      if module:
          try:
 -- 
-2.50.0
+2.50.1
 
 
-From feb79ce03b9b9ff3cfaacbf47ad6372419970ea7 Mon Sep 17 00:00:00 2001
+From 6cb8ed8c987f73a1856bdf4ad5a665735067f89f Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:04:12 +0200
-Subject: [PATCH 3/5] AUR-specific: replace google-aiplatform installer
+Subject: [PATCH 3/4] AUR-specific: replace google-aiplatform installer
 
 ---
  aider/models.py | 7 +++----
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index 27a483dd..77438d96 100644
+index b7e643c7..85ea63e0 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
@@ -145,7 +145,7 @@ index 27a483dd..77438d96 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -1171,11 +1171,10 @@ def check_for_dependencies(io, model_name):
+@@ -1173,11 +1173,10 @@ def check_for_dependencies(io, model_name):
  
      # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
      elif model_name.startswith("vertex_ai/"):
@@ -160,71 +160,21 @@ index 27a483dd..77438d96 100644
  
  
 -- 
-2.50.0
+2.50.1
 
 
-From a6cb3b805c674d19ce46102effee27d095336a51 Mon Sep 17 00:00:00 2001
+From f83fc4e0ea03f66bf6aeab87ec4e14a8cc552c31 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:04:52 +0200
-Subject: [PATCH 4/5] AUR-specific: replace main branch auto-upgrader
+Subject: [PATCH 4/4] AUR-specific: replace main branch auto-upgrader
 
 Ask user to download and install the `aider-chat-git` package if they
 wish to follow the main development branch.
 ---
- aider/versioncheck.py | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ aider/utils.py        | 62 -------------------------------------------
+ aider/versioncheck.py |  6 ++---
+ 2 files changed, 2 insertions(+), 66 deletions(-)
 
-diff --git a/aider/versioncheck.py b/aider/versioncheck.py
-index be67ef10..2a6c18c5 100644
---- a/aider/versioncheck.py
-+++ b/aider/versioncheck.py
-@@ -16,12 +16,10 @@ def install_from_main_branch(io):
-     Install the latest version of aider from the main branch of the GitHub repository.
-     """
- 
--    return utils.check_pip_install_extra(
-+    return utils.check_aur_package(
-         io,
-         None,
--        "Install the development version of aider from the main branch?",
--        ["git+https://github.com/Aider-AI/aider.git"],
--        self_update=True,
-+        "aider-chat-git",
-     )
- 
- 
--- 
-2.50.0
-
-
-From 31583222c3c3bdd55e60b8f85e17c38cce5b28b7 Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Thu, 3 Jul 2025 14:06:07 +0200
-Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
-
----
- aider/main.py  |  5 ++--
- aider/utils.py | 62 --------------------------------------------------
- 2 files changed, 2 insertions(+), 65 deletions(-)
-
-diff --git a/aider/main.py b/aider/main.py
-index afb3f836..da51b767 100644
---- a/aider/main.py
-+++ b/aider/main.py
-@@ -206,11 +206,10 @@ def check_gitignore(git_root, io, ask=True):
- 
- 
- def check_streamlit_install(io):
--    return utils.check_pip_install_extra(
-+    return utils.check_aur_package(
-         io,
-         "streamlit",
--        "You need to install the aider browser feature",
--        ["aider-chat[browser]"],
-+        "python-streamlit",
-     )
- 
- 
 diff --git a/aider/utils.py b/aider/utils.py
 index deaa7150..43918482 100644
 --- a/aider/utils.py
@@ -314,6 +264,25 @@ index deaa7150..43918482 100644
  def check_archlinux_package(io, module, archlinux_package):
      if module:
          try:
+diff --git a/aider/versioncheck.py b/aider/versioncheck.py
+index be67ef10..2a6c18c5 100644
+--- a/aider/versioncheck.py
++++ b/aider/versioncheck.py
+@@ -16,12 +16,10 @@ def install_from_main_branch(io):
+     Install the latest version of aider from the main branch of the GitHub repository.
+     """
+ 
+-    return utils.check_pip_install_extra(
++    return utils.check_aur_package(
+         io,
+         None,
+-        "Install the development version of aider from the main branch?",
+-        ["git+https://github.com/Aider-AI/aider.git"],
+-        self_update=True,
++        "aider-chat-git",
+     )
+ 
+ 
 -- 
-2.50.0
+2.50.1
 
