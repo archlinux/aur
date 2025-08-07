@@ -1,0 +1,14 @@
+pkgbase = folder-size
+	pkgdesc = A CLI tool to calculate folder sizes with options like symlink following and depth limits
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yourusername/folder-size
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	source = folder-size-0.1.0.tar.gz
+	sha256sums = bb4b459966021a4bc5020e1685fa1f29a44d1fa6883a7a6258f02a7f00e2d435
+
+pkgname = folder-size
