@@ -1,0 +1,4 @@
+[trx2junit]
+source = "git"
+git = "https://github.com/gfoidl/trx2junit.git"
+prefix = "v"
