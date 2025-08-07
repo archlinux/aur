@@ -1,0 +1,15 @@
+pkgbase = python-i2
+	pkgdesc = Python Mint creation, manipulation, and use
+	pkgver = 0.1.48
+	pkgrel = 1
+	url = https://github.com/i2mint/i2
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = i2.tar.gz::https://github.com/i2mint/i2/archive/refs/tags/0.1.48.tar.gz
+	sha512sums = f4fde601e9dc9a94568df17adf0a5828c210617ae84f3b2e70cbe42eebfccad844e959897a5d1564d58d91e66c93f95f560f8d5a949dd970d4e7b9fe41b15f98
+
+pkgname = python-i2
