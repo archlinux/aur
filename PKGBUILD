@@ -39,7 +39,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}"
   dotnet restore "${dotnet_options[@]}" ./"Src/${_Name}.Cli"
-  dotnet restore "${dotnet_options[@]}" ./"Src/${_Name}.Cli.Tests"
+  # dotnet restore "${dotnet_options[@]}" ./"Src/${_Name}.Cli.Tests"
 }
 
 build() {
