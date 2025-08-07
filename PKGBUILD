@@ -1,14 +1,14 @@
 # Maintainer: therock
 pkgname=the-house
-pkgver=1.0.1
-pkgrel=8
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A cursed command line casino suite. Russian roulette, blackjack, and more"
 arch=('any')
 url="https://github.com/therock444/the-house"
 license=('MIT')
 depends=('bash')
 source=("https://github.com/therock444/the-house/archive/refs/tags/${pkgname}-v${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('81396cc89cfca39d18c2d8599e7bca5562965aecf97a78bf1be8d71af0d99eef')
+sha256sums=('864ca1638d83cbe2da112814b9cbdcafc669a86d8098ecef0bfd6b43d07180aa')
 prepare() {
 mv "$srcdir/the-house-the-house-v$pkgver-$pkgrel" "$srcdir/$pkgname"
 }
