@@ -8,7 +8,7 @@ url="https://github.com/venoosoo/folder-size"
 license=('MIT')
 depends=('glibc')
 makedepends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz")
+source=("git+https://github.com/venoosoo/folder-size.git#tag=v${pkgver}")
 sha256sums=('bb4b459966021a4bc5020e1685fa1f29a44d1fa6883a7a6258f02a7f00e2d435')
 
 build() {
