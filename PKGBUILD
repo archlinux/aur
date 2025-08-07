@@ -1,7 +1,7 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 pkgname=vrcx
 pkgver=2025.06.30
-pkgrel=2
+pkgrel=3
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
@@ -20,7 +20,7 @@ sha256sums=(
 
 prepare() {
     cd "$srcdir/VRCX-$pkgver"
-    
+    echo "$pkgver" > Version
     npm ci
 }
 
