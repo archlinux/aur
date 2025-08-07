@@ -1,0 +1,26 @@
+pkgbase = jank-git
+	pkgdesc = The native Clojure dialect hosted on LLVM with seamless C++ interop.
+	pkgver = r1.4e696aa
+	pkgrel = 1
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = pkg-config
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = make
+	makedepends = python3
+	makedepends = libffi
+	makedepends = entr
+	makedepends = doctest
+	depends = gcc
+	depends = libzip
+	depends = lbzip2
+	depends = libxml2
+	depends = libedit
+	provides = jank
+	conflicts = jank
+	options = !buildflags
+
+pkgname = jank-git
