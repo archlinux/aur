@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=easytv-bin
 _pkgname=easyTV
-pkgver=2.9.0
+_zhsname='极简TV'
+pkgver=2.9.5
 pkgrel=1
 pkgdesc="A lightweight IPTV player, supports all platforms and Android TV big screens. Welcome to download and experience!(Prebuilt version)一款轻量级IPTV播放器"
 arch=('x86_64')
@@ -23,17 +24,23 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/aiyakuaile/easy_tv_live/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('94a98d6f1e15676a557da6200134c0fb7818e0152478debb68682af58f1bda67'
+sha256sums=('384f1bd46679f617a70f104ce4a253695273c896ca32afafb616e8456dfa8b9b'
             'ed29e69fccc7077eb337382e4b22599586eadb471e18198e59ad0c8219752be8'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${pkgname%-bin}/g
+        s/@runname@/easy_tv_live/g
     " "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --custom=Name[zh-CN]="${_zhsname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo;Video" \
+        --name="${pkgname%-bin}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
