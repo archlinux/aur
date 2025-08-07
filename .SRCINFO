@@ -1,0 +1,14 @@
+pkgbase = hyprland-plugin-easymotion-git
+	pkgdesc = A single dispatcher that brings up window labels and then allows you to execute a user-defined command when one of those labels is typed
+	pkgver = r82.c7b12e4
+	pkgrel = 1
+	url = https://github.com/zakk4223/hyprland-easymotion
+	arch = x86_64
+	license = BSD
+	makedepends = hyprland-git
+	makedepends = git
+	options = !debug
+	source = hyprland-plugin-easymotion-git::git+https://github.com/zakk4223/hyprland-easymotion.git
+	sha512sums = SKIP
+
+pkgname = hyprland-plugin-easymotion-git
