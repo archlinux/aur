@@ -1,0 +1,12 @@
+pkgbase = the-house
+	pkgdesc = A cursed command line casino suite. Russian roulette, blackjack, and more
+	pkgver = 1.0.1
+	pkgrel = 7
+	url = https://github.com/therock444/the-house
+	arch = any
+	license = MIT
+	depends = bash
+	source = https://github.com/therock444/the-house/archive/refs/tags/the-house-v1.0.1-7.tar.gz
+	sha256sums = 2d45f24d22edcf1d4f60571c886a54a00f8bce7630cef4d4dec58a1c242450fd
+
+pkgname = the-house
