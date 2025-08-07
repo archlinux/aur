@@ -4,7 +4,7 @@
 branch=1.4
 pkgname=open62541
 pkgver=v1.4.13_r0_g484348f30
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages."
 arch=('any')
 url="http://open62541.org/"
@@ -62,6 +62,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname/build"
 
-    make install
+    make DESTDIR="$pkgdir/" install
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
