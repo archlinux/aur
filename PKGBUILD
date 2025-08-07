@@ -1,12 +1,13 @@
 pkgname=playfin
-pkgver=r91.4b7d2d3
+pkgver=r92.4be4289
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
 url="https://github.com/AlexJonker/playfin"
 license=('MIT')
-depends=('mpv' 'python' 'python-requests')
-makedepends=('git' 'pyinstaller')
+depends=('mpv' 'python' 'python-requests' 'python-dotenv')
+makedepends=('git')
+checkdepends=(python-pytest)
 source=("git+$url.git")
 md5sums=('SKIP')
 
@@ -15,13 +16,29 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+
+
+prepare() {
+  # Clean out old wheels etc.
+  git -C "${pkgname%-git}" clean -dfx
+}
+
+build() {
+  cd "$srcdir/playfin"
+  make pypi-files
+  python devscripts/make_lazy_extractors.py
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$srcdir/playfin"
+  pytest -v -m "not download" -k 'not Websockets' # revert when extra/python-websockets updates to 13
+}
+
 package() {
   cd "$srcdir/playfin"
-
-  pyinstaller --onefile --strip --clean main.py -n playfin
-  
-  install -Dm755 "dist/playfin" "$pkgdir/usr/bin/playfin"
-
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -d "$pkgdir/usr/share/playfin/mpv_config"
   cp -r mpv_config/* "$pkgdir/usr/share/playfin/mpv_config/"
 }
+
