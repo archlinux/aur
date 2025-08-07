@@ -3,7 +3,7 @@
 # Contributor: rogueai <aur dot ax9kq at simplelogin dot com>
 
 pkgname=cie-middleware-bin
-pkgver=1.4.3.11
+pkgver=1.4.3.12
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux - Upstream Release"
 arch=('x86_64')
@@ -21,7 +21,7 @@ _gh_file_base="CIE-Middleware-${_gh_ver}"
 source=("https://github.com/italia/${pkgname%-bin}-linux/releases/download/${_gh_dir}/${_gh_file_base}.x86-64.tar.gz"
         'LICENSE')
 
-sha256sums=('4ffcd7e890dea02f40e3af33e1cd88aade0837ea888797d13489661b093952dd'
+sha256sums=('8a3bf7708f58fd73658b2a270d420f0c1a3ec9b9e1f09e3e24ac9de399e8eb25'
             'bf2723ca68a1f406557a3174f9195dbdc6171cbf8f7ad83f56546ac592a9ea8e')
 
 package() {
