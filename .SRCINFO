@@ -1,6 +1,6 @@
 pkgbase = libcudf
 	pkgdesc = cuDF - GPU DataFrame Library
-	pkgver = 25.06.00
+	pkgver = 25.08.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/cudf
 	arch = x86_64
@@ -20,16 +20,25 @@ pkgbase = libcudf
 	depends = zstd
 	depends = rapids-logger
 	depends = nvcomp
-	source = https://github.com/rapidsai/cudf/archive/refs/tags/v25.06.00.tar.gz
+	source = https://github.com/rapidsai/cudf/archive/refs/tags/v25.08.00.tar.gz
 	source = cuda-flags.patch
 	source = system-lib.patch
 	source = missing-pkg.patch
-	sha256sums = 4fdcac02be1e0022643a1cd2afa9bae6091bb7d7525cdf0edb9d481bca737fa2
+	sha256sums = 749e5d17b4a71eb5494b46dc5dbf5926957402eb736fded4d12496ef2e8f53d7
 	sha256sums = 565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b
-	sha256sums = 32fac59e66a87cbdaec3bb6fd146820da3a4786f13ab7c70e968be0af170850a
-	sha256sums = 8ca709d703becf7f4668f14163980c3fe5980d08d4a21d53cc46139037b907c1
+	sha256sums = 9e50cb3d7a30e876982ffa82f0b547421f07891227a1390f9d33f3310e077092
+	sha256sums = SKIP
 
 pkgname = libcudf
+	depends = cuda
+	depends = rmm
+	depends = nvtx3
+	depends = dlpack
+	depends = kvikio
+	depends = zstd
+	depends = rapids-logger
+	depends = nvcomp
+	depends = cucollections
 
 pkgname = python-pylibcudf
 	depends = cuda
