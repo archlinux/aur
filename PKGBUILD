@@ -12,7 +12,7 @@ source=("https://github.com/terpinedream/tuxagotchi-aur/archive/v${pkgver}.tar.g
 md5sums=('8a438a2372460aa9ebe5081dc0ba9e25')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/tuxagotchi-aur-$pkgver"
 
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -r textual_app assets *.py config.toml requirements.txt "$pkgdir/usr/lib/$pkgname"
