@@ -9,6 +9,6 @@ pkgbase = folder-size
 	makedepends = cargo
 	depends = glibc
 	source = git+https://github.com/venoosoo/folder-size.git#tag=v0.1.0
-	sha256sums = bb4b459966021a4bc5020e1685fa1f29a44d1fa6883a7a6258f02a7f00e2d435
+	sha256sums = 1800f19c2b0e02052732cf3c0ef19d4394535b4087b9588f5d57e87ce71121a1
 
 pkgname = folder-size
