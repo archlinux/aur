@@ -1,0 +1,17 @@
+*.tar
+*.tar.*
+*.zip
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+*.pkg*
+
+pkg/
+src/
+
+.DS_Store

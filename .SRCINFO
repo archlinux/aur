@@ -1,13 +1,13 @@
 pkgbase = terraboard-bin
 	pkgdesc = A web dashboard to inspect Terraform States.
-	pkgver = 2.2.0
-	pkgrel = 4
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/camptocamp/terraboard/
 	arch = x86_64
 	license = Apache-2
 	provides = terraboard
 	conflicts = terraboard
-	source = terraboard-bin-2.2.0_linux_amd64.zip::https://github.com/camptocamp/terraboard/releases/download/v2.2.0/terraboard_2.2.0_linux_amd64.zip
-	sha256sums = 4c490da80d6934a3830274ca01537981489c88fb95b26df52a66f79d2dbf3f58
+	source = terraboard-bin-2.4.0_linux_amd64.zip::https://github.com/camptocamp/terraboard/releases/download/v2.4.0/terraboard_2.4.0_linux_amd64.zip
+	sha256sums = 95a81427355d77b7d9a2cf977a5215abfd642029fbeb67694a80877e884e4e17
 
 pkgname = terraboard-bin
