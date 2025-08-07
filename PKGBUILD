@@ -1,8 +1,8 @@
 # Maintainer: Thomas Rijpstra <thomas at fourlights dot nl>
 pkgname=mkinitcpio-cmdline-pacman-hook
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="Pacman hook to trigger mkinicpio when /etc/cmdline, /etc/cmdline.d/* or /etc/kernel/cmdline is modified by packages"
+pkgrel=3
+pkgdesc="Pacman hook to trigger mkinicpio when /etc/cmdline, /etc/cmdline.d/* or /etc/kernel/cmdline is modified by packages. Useful when booting an Unified Kernel Image directly."
 arch=('any')
 url="https://github.com/trijpstra-fourlights/mkinitcpio-cmdline-pacman-hook"
 license=('MIT')

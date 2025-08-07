@@ -1,7 +1,7 @@
 pkgbase = mkinitcpio-cmdline-pacman-hook
-	pkgdesc = Pacman hook to trigger mkinicpio when /etc/cmdline, /etc/cmdline.d/* or /etc/kernel/cmdline is modified by packages
+	pkgdesc = Pacman hook to trigger mkinicpio when /etc/cmdline, /etc/cmdline.d/* or /etc/kernel/cmdline is modified by packages. Useful when booting an Unified Kernel Image directly.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trijpstra-fourlights/mkinitcpio-cmdline-pacman-hook
 	arch = any
 	license = MIT
