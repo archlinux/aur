@@ -2,7 +2,7 @@
 
 pkgbase=cuml
 pkgname=(libcuml python-cuml)
-pkgver=25.06.00
+pkgver=25.08.00
 pkgrel=1
 pkgdesc="cuML - RAPIDS Machine Learning Library"
 url="https://github.com/rapidsai/cuml"
@@ -17,7 +17,7 @@ source=(
     "missing-pkg.patch"
 )
 sha256sums=(
-    '02cd239d091ba9442a0e79ca0343fae727706c75800a4a8b32a312cb8b52c013'
+    'c40e6738633ae0feb6284888b1a844e536d3eb9f7abf24df1fa5c874d0c1c302'
     '4f166f88bd018ba552c78fc26e146f96b1fb78afa7a0eab2aa81c78835e9830f'
     'a876fafc0102dcaa43d331ec496e0a8f3f0af03071e0a691414a38219c384909'
     '53d5e9008bcc303034ea3bc4cf2f3f511c6adb6a9224a606385f6fb5c2e5f537'
@@ -60,7 +60,7 @@ package_libcuml() {
 }
 
 package_python-cuml() {
-    depends+=('python' 'python-pylibraft' 'python-cuvs' 'python-treelite' 'libcuml')
+    depends+=('python' 'python-pylibraft' 'python-cuvs' 'python-treelite' 'libcuml' 'python-scikit-learn')
     cd "$srcdir/$pkgbase-$pkgver/python/cuml"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
