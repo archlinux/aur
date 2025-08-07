@@ -2,7 +2,7 @@
 # Maintainer: Johannes Wellhöfer <johannes.wellhofer@gmail.com>
 
 pkgname=fstar-bin
-pkgver=2023.09.03
+pkgver=2025.06.20
 _subver=
 pkgrel=2
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
@@ -12,8 +12,8 @@ arch=('x86_64')
 depends=()
 provides=('fstar')
 conflicts=('fstar' 'fstar-git')
-source=("https://github.com/FStarLang/FStar/releases/download/v${pkgver}${_subver}/fstar_${pkgver}${_subver}_Linux_x86_64.tar.gz")
-sha256sums=('dfc06973afecc48f1a7bd4e593215b438095dcf3451a45e33a6190f0c36a50ca')
+source=("https://github.com/FStarLang/FStar/releases/download/v${pkgver}${_subver}/fstar-v${pkgver}${_subver}-Linux-x86_64.tar.gz")
+sha256sums=('3647ce071a213ece6557b82456a275e3dac0f683101a858b5812a783504a13b2')
 
 package() {
   cd "fstar"
