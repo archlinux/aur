@@ -1,0 +1,13 @@
+pkgbase = screentest-git
+	pkgdesc = Tesing the quality of CRT/LCD screens
+	pkgver = r89.ae99889
+	pkgrel = 1
+	url = https://github.com/sfs-pra/screentest
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	depends = gtk3
+	source = git+https://github.com/sfs-pra/screentest
+	sha256sums = SKIP
+
+pkgname = screentest-git
