@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=python-rapids-build-backend
-pkgver=0.3.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="RAPIDS-specific wrapper around PEP 517 build backends"
 url="https://github.com/rapidsai/rapids-build-backend"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python' 'python-packaging' 'python-rapids-dependency-file-generator')
 makedepends=('python-setuptools')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2342301ea6634c1e6c1989641693c0f48f0dbc92ec40e3c703cf3e75d233ff55')
+sha256sums=('8e026be30491a99a7cc2a1b4ef29778d79bdcebca1ba2ba5b1d7a1353cfb62b0')
 
 
 build() {
