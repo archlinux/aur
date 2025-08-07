@@ -1,0 +1,9 @@
+[Unit]
+Description=Gemini CLI OpenAI Proxy Service
+
+[Service]
+Type=simple
+# Load an optional per-user env file
+EnvironmentFile=-%h/.config/gemini-openai-proxy.env
+ExecStart=/usr/bin/gemini-openai-proxy
+Restart=on-failure

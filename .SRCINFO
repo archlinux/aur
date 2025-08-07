@@ -1,0 +1,21 @@
+pkgbase = gemini-openai-proxy-git
+	pkgdesc = Gemini CLI wrapper to serve Gemini models through an OpenAI-compatible API.
+	pkgver = r12.9d4b053
+	pkgrel = 1
+	url = https://github.com/Brioch/gemini-openai-proxy
+	install = gemini-openai-proxy.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	depends = ts-node
+	optdepends = gemini-cli
+	provides = gemini-openai-proxy
+	conflicts = gemini-openai-proxy
+	source = git+https://github.com/Brioch/gemini-openai-proxy.git
+	source = gemini-openai-proxy.service
+	sha256sums = SKIP
+	sha256sums = ba6fcee1f4e2526b17f1ba1b0b276bc114b5b1507d5502ac973a34cdfa06b59f
+
+pkgname = gemini-openai-proxy-git

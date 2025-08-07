@@ -1,0 +1,24 @@
+post_install() {
+  echo "Install and configure gemini-cli first. Then define environment variables"
+  echo "and execute:"
+  echo "    gemini-openai-proxy"
+  echo "Note, the environment variables are mandatory, refer to the examples in:"
+  echo "    /usr/share/gemini-openai-proxy/gemini-openai-proxy.env"
+  echo "Optionally enable and start a per user service with:"
+  echo "    systemctl --user daemon-reload"
+  echo "    systemctl --user enable --now gemini-openai-proxy.service"
+  echo "Put environment variables in ~/.config/gemini-openai-proxy.env file"
+  echo "before starting the service."
+}
+
+post_upgrade() {
+  echo "The gemini-openai-proxy package was updated. Installation instructions reminder:"
+  post_install "$1"
+}
+
+post_remove() {
+  echo "The gemini-openai-proxy package was removed. If you had previously enabled"
+  echo "the service as a user, disable it now with:"
+  echo "    systemctl --user disable --now gemini-openai-proxy.service"
+  echo "    systemctl --user daemon-reload"
+}
