@@ -31,7 +31,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.3.3.r0.g1af41fd203
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -42,10 +42,12 @@ conflicts=("zfs-dkms")
 makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "0001-only-build-the-module-in-dkms.conf.patch"
+        "linux616-remove-writepage-and-readahead_page.patch::https://github.com/openzfs/zfs/commit/46a407510054da0d0e4bd34b95fe59aded9fefab.patch?full_index=1"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check")
 sha256sums=('SKIP'
-            '3039da5ecb6fe5f7dbaab8492f73d59bcafb8b22bd267f9d72a3ce5e70f82113'
+            '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
+            '3a93ae54448377a2bfc64d10d7216496c2b4bb3ff8f9104c910b799369b14057'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f')
 
