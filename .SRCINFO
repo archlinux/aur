@@ -1,6 +1,6 @@
 pkgbase = wlsbg
 	pkgdesc = Wallpaper tool with shader support for Wayland compositors
-	pkgver = 3.1.0
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = https://github.com/Sublimeful/wlsbg
 	arch = x86_64
