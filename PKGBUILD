@@ -7,8 +7,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.7.1
-pkgrel=4
+pkgver=2.8.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -38,14 +38,13 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
         "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
         "${pkgname}-cutlass::git+https://github.com/NVIDIA/cutlass.git"
-        "${pkgname}-eigen::git+https://gitlab.com/libeigen/eigen.git"
         "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
         "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
         "${pkgname}-flash-attention::git+https://github.com/Dao-AILab/flash-attention.git"
         "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
         "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
-        "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
+        "${pkgname}-gloo::git+https://github.com/pytorch/gloo"
         "${pkgname}-googletest::git+https://github.com/google/googletest.git"
         "${pkgname}-ideep::git+https://github.com/intel/ideep"
         "${pkgname}-ittapi::git+https://github.com/intel/ittapi.git"
@@ -70,8 +69,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         fix_cmake_prefix_path.patch
         0001-Add-cmake-varaible-USE_ROCM_CK.patch
         )
-b2sums=('7b4eb8ef062393429f17cd617b28e1a1699fdd1099b5e84f333605092df251ee4b807fd40553bf56e11cc5b69dbafc5a4594c0ac5d14e0dd88bd11a5d2ecee71'
-        'SKIP'
+b2sums=('019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd26f4a9bdd4042c0b740600705ab4216a88b81a3ef6409874d43d87afc'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -142,7 +140,6 @@ prepare() {
   git config submodule."third_party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
   git config submodule."third_party/cudnn_frontend".url "${srcdir}/${pkgname}"-cudnn-frontend
   git config submodule."third_party/cutlass".url "${srcdir}/${pkgname}"-cutlass
-  git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen
   git config submodule."third_party/fbgemm".url "${srcdir}/${pkgname}"-fbgemm
   git config submodule."third_party/flash-attention".url "${srcdir}/${pkgname}"-flash-attention
   git config submodule."third_party/flatbuffers".url "${srcdir}/${pkgname}"-flatbuffers
