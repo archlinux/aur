@@ -75,6 +75,8 @@ build() {
 	--mandir=/usr/share/man
 	# TODO
 	# --enable-parmap
+
+    make
 }
 
 check() {
