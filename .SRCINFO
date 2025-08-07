@@ -4,13 +4,12 @@ pkgbase = colima-bin
 	pkgrel = 1
 	url = https://github.com/abiosoft/colima
 	arch = x86_64
-	arch = arm64
 	license = MIT
 	provides = colima
 	conflicts = colima
 	source = https://raw.githubusercontent.com/abiosoft/colima/v0.8.0/LICENSE
+	source = https://github.com/abiosoft/colima/releases/download/v0.8.0/colima-Linux-x86_64
 	sha256sums = e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea
-	source_x86_64 = https://github.com/abiosoft/colima/releases/download/v0.8.0/colima-Linux-x86_64
-	sha256sums_x86_64 = 8d02d2f7ae3454f1a97536a68f9153bdc67480acc47c9c6af9e8deb0cf3e3ea7
+	sha256sums = f4e78aba015707296ecb11311f71e6f9e2dcefc0f3f9274f8f2aa10a074f696b
 
 pkgname = colima-bin
