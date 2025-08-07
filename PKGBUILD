@@ -1,51 +1,79 @@
-# Maintainer: Br Anthony VanBerkum <anthonyvbop AT gmail DOT com>
+# 6.1.0 pkgrel 3 Changelog:
+#   - Cleaned up PKGBUILD
+#   - Don't install font sources
+#   - Simplify version number generation
+#   - Install License files
+#   - Softlink docs to /usr/share/doc (where one might look for docs)
+#   - Disable version number in exe
+
+
+# Maintainer: Edmund Lodewijks <edmund@proteamail.com>
+# Contributor: Br Anthony VanBerkum <anthonyvbop AT gmail DOT com>
 # Contributor: Br. Elijah Schwab (github - eschwab)
-pkgbase=gregorio-git
-pkgname=$pkgbase
-pkgver=5.2.0.r4342.8d81faff
+
+pkgname=gregorio-git
+_pkgname=gregorio
+pkgver=r4777.f2cd811
 pkgrel=1
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=http://gregorio-project.github.io
 arch=("i686" "x86_64")
-license=("GPL")
-makedepends=("git" "python" "fontforge")
-depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra")
-conflicts=("gregorio-svn" "gregorio" "gregoriotex")
+license=("GPL-3.0-only" "OFL-1.1" "GPL-3.0-with-font-exception")
+makedepends=(
+	"git"
+	"python"
+	"fontforge"
+)
+depends=(
+	"texlive-core"
+	"texlive-fontsextra"
+	"texlive-bin"
+	"texlive-formatsextra"
+	"texlive-latexextra"
+)
+conflicts=(
+	"gregorio-svn"
+	"gregorio"
+	"gregoriotex"
+)
 provides=("gregorio")
-source=("$pkgbase::git+https://github.com/gregorio-project/gregorio.git#branch=develop")
-sha256sums=("SKIP")
-
+source=(
+	"$_pkgname::git+https://github.com/gregorio-project/gregorio.git#branch=develop"
+)
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase/"
-  _version=$(python2 VersionManager.py -c | sed -e "s/-/_/g")
-  echo $_version.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$srcdir/$_pkgname/"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  msg "Configuring..."
-  cd "$srcdir/$pkgbase/"
-  autoreconf -f -i
-  ./configure --prefix=/usr/local || return 1
+  cd "$srcdir/$_pkgname/"
+
+  autoreconf -fi
+  ./configure \
+      --prefix=/usr 
 }
 
 build() {
-  msg "Compiling gregorio..."
-  cd "$srcdir/$pkgbase/"
-  make -j || return 1
-  msg "Building fonts..."
-  cd "$srcdir/$pkgbase/fonts/"
-  make -j really-all-fonts || return 1
+  cd "$srcdir/$_pkgname/"
+  make
+
+  cd "$srcdir/$_pkgname/fonts/"
+  make really-all-fonts
 }
 
 package() {
-  cd "$srcdir/$pkgbase/"
-  msg "Installing gregorio..."
-  make -j DESTDIR="$pkgdir/" install || return 1
-  msg "Installing TeX files..."
-  cd "$srcdir/$pkgbase/"
-  SKIP=docs ./install-gtex.sh dir:$pkgdir/usr/share/texmf || return 1
-  msg "Installing fonts..."
-  cd "$srcdir/$pkgbase/fonts"
-  texlua install_supp_fonts.lua $pkgdir/usr/share/texmf || return 1
+  cd "$srcdir/$_pkgname/"
+  make DESTDIR="$pkgdir/" install
+  
+  # Install TeX files (includes docs)
+  SKIP=docs,font-sources ./install-gtex.sh dir:$pkgdir/usr/share/texmf
+  
+  # Install fonts
+  cd "$srcdir/$_pkgname/fonts"
+  texlua install_supp_fonts.lua $pkgdir/usr/share/texmf
+
+  # Install license
+  install -Dm0755 $srcdir/$_pkgname/{COPYING.md,CONTRIBUTORS.md} -t $pkgdir/usr/share/licenses/$_pkgname
 }
