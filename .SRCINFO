@@ -1,6 +1,6 @@
 pkgbase = iredis
 	pkgdesc = Terminal client for Redis with auto-completion and syntax highlighting.
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/laixintao/iredis
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = iredis
 	depends = python-configobj
 	depends = python-click
 	depends = python-pendulum
-	source = https://files.pythonhosted.org/packages/source/i/iredis/iredis-1.15.1.tar.gz
-	sha256sums = b702e64ea665aa8472bcda0a388c1c555584014db00ad2cea318090d9a5ff818
+	source = https://files.pythonhosted.org/packages/source/i/iredis/iredis-1.15.2.tar.gz
+	sha256sums = c8f3279e09398abd1525ccf020e9f75a7152e3dae0e04769306f810a6f96fc60
 
 pkgname = iredis
