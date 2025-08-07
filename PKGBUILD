@@ -1,7 +1,11 @@
 # Packager: Sebastian Tobie <archlinux@sebastian-tobie.de>
 _channel="stable"
 
-pkgname="barmer-ecare-bin" pkgver=25.6.4 pkgrel=1 pkgdesc='Desktopanwendung für die Elektronische Patientenakte der BARMER' arch=('x86_64')
+pkgname="barmer-ecare-bin"
+pkgver=25.6.4
+pkgrel=1
+pkgdesc='Desktopanwendung für die Elektronische Patientenakte der BARMER'
+arch=('x86_64')
 url='https://www.barmer.de/unsere-leistungen/leistungen-a-z/online-services/ecare-elektronische-patientenakte/ecare-fuer-pc-laptop-1056418'
 license=('Proprietary')
 # These deps are the one retrieved from the barmer-ecare binary
