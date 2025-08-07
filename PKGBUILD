@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b6081
+pkgver=b6106
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -66,7 +66,9 @@ build() {
     -DGGML_BUILD_TESTS=OFF
     -DGGML_LTO=ON
     -DGGML_RPC=ON
-    -DGGML_VULKAN=1
+    -DGGML_VULKAN=ON
+    -DGGML_CUDA_FA_ALL_QUANTS=ON
+    -DGGML_NATIVE=ON
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
