@@ -1,0 +1,22 @@
+node_id = "dtn://changeme/"
+log_level = "Info"
+
+[Store]
+path = "/var/lib/dtn7"
+
+[Routing]
+algorithm = "epidemic"
+
+[Agents]
+#[Agents.REST]
+#address = "localhost:8080"
+
+[Agents.UNIX]
+address = "/run/dtn7/dtnd.socket"
+
+[[Listener]]
+type = "QUICL"
+address = ":35037"
+
+[Cron]
+dispatch ="10s"
