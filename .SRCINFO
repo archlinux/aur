@@ -1,0 +1,22 @@
+pkgbase = python-tabled
+	pkgdesc = A (key-value) data-object-layer to get (pandas) tables from a variety of sources with ease
+	pkgver = 0.1.25
+	pkgrel = 1
+	url = https://github.com/i2mint/tabled
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandas
+	depends = python-dol
+	depends = python-i2
+	depends = python-charset-normalizer
+	depends = python-pyarrow
+	depends = python-lxml
+	depends = python-numpy
+	source = tabled.tar.gz::https://github.com/i2mint/tabled/archive/refs/tags/0.1.25.tar.gz
+	sha512sums = 3097c757adeefaefc243237c70b9051a28dba16099580ccf909362ba0b599f28d8fe54c29ef7a559f130393645fd1014b226da73d7e3df67c74eb51cf4647295
+
+pkgname = python-tabled
