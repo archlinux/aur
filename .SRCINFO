@@ -1,4 +1,4 @@
-pkgbase = YTDL-Gui
+pkgbase = ytdl-gui
 	pkgdesc = Interface gráfica em Flutter para o yt-dlp
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -15,7 +15,7 @@ pkgbase = YTDL-Gui
 	depends = glib2
 	depends = xdg-utils
 	depends = hicolor-icon-theme
-	source = YTDL-Gui-1.0.0.tar.gz::https://github.com/iagolbdc/YTDL-Gui/archive/refs/tags/v1.0.0.tar.gz
+	source = ytdl-gui-1.0.0.tar.gz::https://github.com/iagolbdc/YTDL-Gui/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = YTDL-Gui
+pkgname = ytdl-gui

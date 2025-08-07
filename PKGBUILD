@@ -1,6 +1,6 @@
 # Maintainer: iagolbdc <iagoluancampelo@gmail.com>
 
-pkgname=YTDL-Gui
+pkgname=ytdl-gui
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Interface gráfica em Flutter para o yt-dlp"
