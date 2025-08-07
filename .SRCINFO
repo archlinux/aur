@@ -1,6 +1,6 @@
 pkgbase = libresprite-bin
 	pkgdesc = Animated sprite editor and pixel art tool
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/LibreSprite/LibreSprite
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libresprite-bin
 	provides = libresprite
 	conflicts = libresprite
 	options = !strip
-	source = LibreSprite-x86_64.zip::https://github.com/LibreSprite/LibreSprite/releases/download/v1.1/libresprite-development-linux-x86_64.zip
-	sha256sums = 19e08b852c76216ff6b890d837cc24ae54cf476a715d35ee7f030c845f2ccf83
+	source = LibreSprite-x86_64.AppImage::https://github.com/LibreSprite/LibreSprite/releases/download/v1.2/libresprite-anylinux-x86_64.AppImage
+	sha256sums = f8ee4145ba75fc13b16ec02f214d9b31b2a700ff02349bf58c96377d42573c38
 
 pkgname = libresprite-bin
