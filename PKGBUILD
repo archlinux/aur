@@ -4,7 +4,7 @@
 pkgname=larksuite-bin
 pkgver=7.46.11
 _pkgtyp=stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client of Lark Suite"
 arch=('x86_64')
 url="https://www.larksuite.com"
@@ -18,9 +18,9 @@ options=('!emptydirs')
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
 	LICENSE.html::http://www.larksuite.com/en_us/user-terms-of-service)
 DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
-	'http::/usr/bin/curl -Lo %o %u')
+	"http::/usr/bin/sh -c curl\ -L\ %u\ \|\ sed\ \'s/abUuid\":\"\[\^\"\]\*/abUuid\":\"418/\'\ \>\ %o")
 sha256sums=('cda569b554310873bff33317f779d7b71b6ae20e9036dcd02ce20af1db345d7b'
-	'd5d686c0deaf409cd0948dda4584138943fd21ed32d94c8ecd76a068c3d71e9c')
+            '2f9811a9849e20e6e0f321dd423d8be184751a61545acb501c64d444006dda35')
 
 package() {
 	# License
