@@ -1,0 +1,12 @@
+pkgbase = ipsaya
+	pkgdesc = ipsaya tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://ipsaya.id
+	arch = any
+	license = MIT
+	provides = ipsaya
+	source = ipsaya.sh
+	sha256sums = 7c6150b606f0c2040cffbbc6d2c52cd57d4eb4a15bddf5af7f771e20696a8baf
+
+pkgname = ipsaya
