@@ -10,7 +10,7 @@
 
 pkgname=coccinelle
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
 url="https://coccinelle.lip6.fr"
@@ -18,8 +18,10 @@ license=('GPL-2.0-or-later')
 makedepends=(
     'ocaml'
     'ocaml-findlib'
+    'ocaml-menhir'
     'ocaml-num'
     'ocaml-pcre'
+    'ocaml-pyml'
     'ocaml-stdcompat'
 )
 depends=(
@@ -32,8 +34,9 @@ checkdepends=(
     'ocaml'
 )
 optdepends=(
-    'ocaml: OCaml scripting feature'
     'ocaml-findlib: OCaml scripting feature'
+    'ocaml: OCaml scripting feature'
+    'python-psycopg2: PostgreSQL support for Python bindings'
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/coccinelle/${pkgname}/archive/${pkgver}.tar.gz"
@@ -54,21 +57,24 @@ build() {
     ./autogen
 
     ./configure \
+	--enable-bytes \
+	--enable-dynlink \
+	--enable-menihr \
 	--enable-ocaml \
+	--enable-opt \
 	--enable-opt \
 	--enable-pcre \
 	--enable-pcre-syntax \
+	--enable-pyml \
 	--enable-python \
 	--enable-stdcompat \
 	\
 	--prefix=/usr \
 	--docdir=/usr/share/doc \
 	--libdir=/usr/lib/ocaml \
-	--mandir=/usr/share/man \
-    # TODO, no package yet
-    #  --enable-pyml \
-
-    make
+	--mandir=/usr/share/man
+	# TODO
+	# --enable-parmap
 }
 
 check() {
@@ -87,11 +93,15 @@ package() {
 
     make DESTDIR="$pkgdir/" MANDIR="/usr/share/man" install
 
+    # Emacs modes
+    install -Dm644 editors/emacs/cocci.el -t $pkgdir/usr/share/emacs/site-lisp
+    install -Dm644 editors/emacs/cocci-ediff.el -t $pkgdir/usr/share/emacs/site-lisp
+
+    # vim
+    install -Dm644 editors/vim/ftdetect/cocci.vim -t $pkgdir/usr/share/vim/vimfiles/ftdetect
+    install -Dm644 editors/vim/syntax/cocci.vim -t $pkgdir/usr/share/vim/vimfiles/syntax
+
     strip \
 	$pkgdir/usr/bin/spatch \
-	$pkgdir/usr/bin/spgen \
-	$pkgdir/usr/bin/spatch \
-	$pkgdir/usr/bin/spgen \
-	$pkgdir/usr/lib/ocaml/coccinelle/dllpyml_stubs.so \
-	$pkgdir/usr/lib/ocaml/coccinelle/dllpyml_stubs.so
+	$pkgdir/usr/bin/spgen
 }
