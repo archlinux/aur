@@ -7,7 +7,7 @@ pkgdesc="A small, fast graphical web browser built on FLTK"
 arch=(x86_64)
 url="https://github.com/dillo-browser/dillo"
 license=('GPL')
-depends=('fltk' 'libjpeg' 'perl' 'openssl' 'libpng' 'gcc-libs' 'libxcursor'
+depends=('fltk1.3' 'libjpeg' 'perl' 'openssl' 'libpng' 'gcc-libs' 'libxcursor'
          'libxi' 'libxinerama')
 conflicts=('dillo')
 backup=(etc/dillo/{dillorc,dpidrc})
@@ -21,7 +21,8 @@ sha256sums=('SKIP'
 build() {
   cd "$srcdir/dillo"
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc
+  # FLTK 1.4 not yet supported
+  ./configure --prefix=/usr --sysconfdir=/etc FLTK_CONFIG=/usr/bin/fltk-config1.3
   make
 }
 
