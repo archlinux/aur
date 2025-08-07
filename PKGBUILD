@@ -5,7 +5,7 @@
 
 pkgname='git-remote-gcrypt'
 pkgver='1.5'
-pkgrel=1
+pkgrel=2
 pkgdesc='A git remote helper for GPG-encrypted remotes.'
 arch=(any)
 url='https://spwhitton.name/tech/code/git-remote-gcrypt/'
