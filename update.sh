@@ -37,6 +37,7 @@ makepkg --printsrcinfo > .SRCINFO
 
 # Clean up any .tar files
 rm -f Zotero*.tar.bz2
+rm -f Zotero*.tar.xz
 
 # Commit and push the changes
 git add -A
