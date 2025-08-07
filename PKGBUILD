@@ -13,7 +13,7 @@ depends=(
 	'dbus'
 	'ffmpeg'
 	'freetype2'
-	'icu73'
+	libicu{data,i18n,uc}.so=73
 	'libglvnd'
 	'opus'
 	'sdl3'

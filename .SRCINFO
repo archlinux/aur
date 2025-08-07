@@ -11,7 +11,9 @@ pkgbase = steamlink-bin
 	depends = dbus
 	depends = ffmpeg
 	depends = freetype2
-	depends = icu73
+	depends = libicudata.so=73
+	depends = libicui18n.so=73
+	depends = libicuuc.so=73
 	depends = libglvnd
 	depends = opus
 	depends = sdl3
@@ -19,7 +21,6 @@ pkgbase = steamlink-bin
 	depends = zlib
 	provides = steamlink=1.3.16.287
 	conflicts = steamlink
-	replaces = steamlink<=1.3.12.269
 	source = flathub.gpg
 	source = steamlink.sh
 	sha256sums = 8bdc20abc4e19c0796460beb5bfe0e7aa4138716999e19c6f2dbdd78cc41aeaa
