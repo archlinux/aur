@@ -1,0 +1,15 @@
+pkgbase = snd-hdspe-dkms-git
+	pkgdesc = A linux kernel module for RME HDSPe sound cards and extension modules (development branch)
+	pkgver = r218.5f205c3
+	pkgrel = 1
+	url = https://github.com/Schroedingers-Cat/snd-hdspe
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = dkms
+	provides = snd-hdspe-dkms
+	conflicts = snd-hdspe-dkms
+	source = git+https://github.com/Schroedingers-Cat/snd-hdspe.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = snd-hdspe-dkms-git
