@@ -3,11 +3,11 @@
 pkgname=vpkedit-bin
 pkgver=5.0.0.1
 pkgrel=1
-pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats (binary release)"
+pkgdesc="A CLI/GUI tool to create, read, and write several pack file formats (binary release)"
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
 arch=('x86_64')
-depends=('hicolor-icon-theme' 'xcb-util-cursor')
+depends=('hicolor-icon-theme' 'libglvnd' 'qt6-svg' 'xcb-util-cursor' 'qt6-base')
 provides=("vpkedit")
 conflicts=("vpkedit")
 source=("vpkedit-$pkgver.zip::$url/releases/download/v$pkgver/VPKEdit-Linux-Installer-DEB-gcc-Release.zip")
