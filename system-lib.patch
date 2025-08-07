@@ -1,6 +1,6 @@
---- src/cudf-25.06.00/cpp/CMakeLists.txt	2025-06-06 01:31:26.000000000 +0800
-+++ src/cudf-25.06.00/cpp/CMakeLists.txt.new	2025-06-22 23:44:51.583901087 +0800
-@@ -293,22 +293,22 @@
+--- src/cudf-25.08.00/cpp/CMakeLists.txt	2025-08-07 01:50:56.000000000 +0800
++++ src/cudf-25.08.00/cpp/CMakeLists.txt.new	2025-08-07 12:51:59.795415957 +0800
+@@ -277,25 +277,25 @@
  include(cmake/thirdparty/get_jitify.cmake)
  
  # find NVTX
@@ -26,8 +26,12 @@
 +find_package(dlpack REQUIRED)
  
  # find cuCollections, should come after including CCCL
- include(cmake/thirdparty/get_cucollections.cmake)
-@@ -322,14 +322,11 @@
+-include(cmake/thirdparty/get_cucollections.cmake)
++find_package(cuco REQUIRED)
+ 
+ # find or install GoogleTest
+ if(CUDF_BUILD_TESTUTIL)
+@@ -306,14 +306,11 @@
  include(cmake/Modules/JitifyPreprocessKernels.cmake)
  
  # find KvikIO
@@ -43,7 +47,7 @@
  # find zstd
  include(cmake/thirdparty/get_zstd.cmake)
  
-@@ -997,7 +994,7 @@
+@@ -969,7 +966,7 @@
  # Specify the target module library dependencies
  target_link_libraries(
    cudf

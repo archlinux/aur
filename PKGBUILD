@@ -2,7 +2,7 @@
 
 pkgbase=libcudf
 pkgname=(libcudf python-pylibcudf)
-pkgver=25.06.00
+pkgver=25.08.00
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
@@ -16,10 +16,10 @@ source=(
     "system-lib.patch" 
     "missing-pkg.patch")
 sha256sums=(
-    '4fdcac02be1e0022643a1cd2afa9bae6091bb7d7525cdf0edb9d481bca737fa2'
+    '749e5d17b4a71eb5494b46dc5dbf5926957402eb736fded4d12496ef2e8f53d7'
     '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
-    '32fac59e66a87cbdaec3bb6fd146820da3a4786f13ab7c70e968be0af170850a'
-    '8ca709d703becf7f4668f14163980c3fe5980d08d4a21d53cc46139037b907c1'
+    '9e50cb3d7a30e876982ffa82f0b547421f07891227a1390f9d33f3310e077092'
+    'SKIP'
 )
 
 _delete_file() {
@@ -70,6 +70,8 @@ build() {
 }
 
 package_libcudf() {
+    depends+=('cucollections')
+
     cd "$srcdir/cudf-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
     rm "$pkgdir/usr/lib/pkgconfig" -r
