@@ -1,6 +1,6 @@
 pkgbase = hyprhide
 	pkgdesc = A tool for hiding and showing windows in Hyprland using a PyQt6 GUI
-	pkgver = 2.3.1
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://github.com/KingVentrix007/hyprlandhide
 	arch = any
@@ -15,6 +15,8 @@ pkgbase = hyprhide
 	source = min.py
 	source = HyprHideDev.py
 	source = version.txt
+	source = hyprland_interface.py
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

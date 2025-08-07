@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# Imports
 import os
 import json
 import subprocess
@@ -9,6 +9,7 @@ import signal
 import configparser
 import commentjson
 import argparse
+import hyprland_interface
 from PyQt6.QtGui import QFont, QPixmap, QIcon, QCursor
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QLabel,
@@ -19,73 +20,44 @@ from PyQt6.QtCore import (
 )
 from PyQt6.QtWidgets import QGraphicsOpacityEffect
 from PyQt6.QtWidgets import QLineEdit, QGridLayout
+
+#Default Version info
 VERSION = "1.9.8"
 
+#Setup config parser
 config = configparser.ConfigParser()
-user_config_path = os.path.expanduser("~/.config/hyprhide/config.cfg")
-# default_config_path = "/usr/share/hyprhide/config.cfg"
 
+#Expand config path
+user_config_path = os.path.expanduser("~/.config/hyprhide/config.cfg")
+
+#Ensure Path exists
 if os.path.exists(user_config_path):
-    config.read(user_config_path)
-# elif os.path.exists(default_config_path):
-#     config.read(default_config_path)
+    config.read(user_config_path) # Load config path
 else:
+    #Print Error message
+    #Only known error here could be disk corruption
     print("Please create a config.cfg file, or install this properly ")
 
-JUMP_TO_MOUSE = config.get('GUI', 'jump_to_mouse', fallback=False)
-X_OFFSET = int(config.get('GUI', 'x_offset', fallback=-240))
-Y_OFFSET = int(config.get('GUI', 'y_offset', fallback=160))
-print(JUMP_TO_MOUSE)
-
-HIDE_DIR = os.path.expanduser("~/.local/share/hypr-hide")
-        
+#Load some configs
+JUMP_TO_MOUSE = config.get('GUI', 'jump_to_mouse', fallback=False) # Should the GUI move to the mouse
+X_OFFSET = int(config.get('GUI', 'x_offset', fallback=-240)) # the x offset from the mouse(mouse_x+X_OFFSET)
+Y_OFFSET = int(config.get('GUI', 'y_offset', fallback=160)) # the y offset from the mouse(mouse_y+Y_OFFSET)
 
 
-def get_hyprctl_clients():
-    try:
-        # Run hyprctl clients -j and capture output
-        result = subprocess.run(['hyprctl', 'clients', '-j'], capture_output=True, text=True, check=True)
-        
-        # Parse the output as JSON
-        clients = json.loads(result.stdout)
-        
-        return clients
-    except subprocess.CalledProcessError as e:
-        print(f"Error running hyprctl: {e}")
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
-    
-    return []
+HIDE_DIR = os.path.expanduser("~/.local/share/hypr-hide") # Dir where the .json and .png files go
 
-def get_client_by_address(address):
-    try:
-        # Run hyprctl clients -j
-        result = subprocess.run(['hyprctl', 'clients', '-j'], capture_output=True, text=True, check=True)
-        clients = json.loads(result.stdout)
-
-        # Search for the client with the given address
-        for client in clients:
-            if client.get("address") == address:
-                return client
-
-        print(f"No client found with address: {address}")
-    except subprocess.CalledProcessError as e:
-        print(f"Error running hyprctl: {e}")
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
-
-    return None
+# Internal Widget to display windows
 class HiddenWindowItem(QWidget):
-    restore_complete = pyqtSignal()
+    restore_complete = pyqtSignal() # Signal that connects to exit system
     def __init__(self, address, title, app_class, x, y, workspace,was_floating):
         super().__init__()
-        self.address = address
-        self.x = x
-        self.y = y
-        self.workspace = workspace
-        self.was_floating = was_floating
-        self.title = title
-        self.app_class = app_class
+        self.address = address # Window address to restore
+        self.x = x # X pos to put the window at
+        self.y = y # Y pos to put the window at
+        self.workspace = workspace # Workspace to put the window at
+        self.was_floating = was_floating # Wether or not the window was closed be
+        self.title = title # Title of the window
+        self.app_class = app_class # Class of the window
 
         # Sleek card background with subtle border and hover effect
         self.setStyleSheet("""
@@ -109,9 +81,10 @@ class HiddenWindowItem(QWidget):
                 font-size: 9pt;
             }
         """)
-        self.setWindowOpacity(0.95)
-        self.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.setWindowOpacity(0.95) # Make window slightly clear
+        self.setCursor(Qt.CursorShape.PointingHandCursor) # Set the cursor type
 
+        # Setup layout for window
         layout = QVBoxLayout()
         layout.setSpacing(6)
         layout.setContentsMargins(6, 6, 6, 6)
@@ -164,113 +137,74 @@ class HiddenWindowItem(QWidget):
             self.on_restore_clicked()
             self.close()
             
-
+    # Run a command(Becoming Deprecated)
     def run_cmd(self, cmd):
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
         return result.stdout.strip(), result.stderr.strip(), result.returncode
-
-    def get_focused_window(self):
-        out, _, _ = self.run_cmd("hyprctl activewindow -j")
-        try:
-            j = json.loads(out)
-            return j.get("address", "")
-        except Exception:
-            return ""
-
-    def cycle_until_focused(self, target_addr, max_tries=10):
-        tries = 0
-        while tries < max_tries:
-            focused = self.get_focused_window()
-            if focused == target_addr:
-                return True
-            self.run_cmd("hyprctl dispatch cyclenext")
-            time.sleep(0.2)
-            tries += 1
-        return False
-
+    # Function to restore the window
     def on_restore_clicked(self):
-        addr = self.address
-        # if addr.startswith("0x"):
-        #     addr = addr[2:]
-        client_data = get_client_by_address(self.address)
-        print(f"Restoring window {self.title} at {self.x},{self.y} on workspace {self.workspace}")
-        print(f"Window floating state = {self.was_floating}")
-        window_floating_state_before_move = self.was_floating
-        print(self.workspace)
-        self.run_cmd(f"hyprctl dispatch workspace {self.workspace}")
-        time.sleep(0.3)
+        client_data = hyprland_interface.get_client_info(self.address) # Ge the current client info
+        print(f"Restoring window {self.title} at {self.x},{self.y} on workspace {self.workspace}") # Debug output
+        print(f"Window floating state = {self.was_floating}") # Debug output
+        window_floating_state_before_move = self.was_floating # Create variable for ease of read
+        print(self.workspace) # Print workspace window should go to
+        hyprland_interface.set_current_workspace(workspace=self.workspace) # Set current workspace
+        time.sleep(0.3) # Minor delay
+        hyprland_interface.focus_window(self.address) # Set the window to be restored into focus(Might be redundant)
+        time.sleep(0.3) # Minor delay
+        hyprland_interface.move_win_to_workspace(self.address,self.workspace) # Move window to workspace
+        test_data = hyprland_interface.get_client_info(self.address) # Grab current state of window
+        print(test_data["workspace"]) # Debug output
+        if(client_data['floating'] == False): # Check if window is floating(need to be to move)
+            hyprland_interface.toggle_floating(self.address) # Set window to floating
+        if(test_data["workspace"]['id'] != self.workspace): # Check if window is on right workspace(Edge cases can move)
+            print("Move again") # Debug output
+            hyprland_interface.move_win_to_workspace(self.address,self.workspace)# Move window to workspace again
+        hyprland_interface.focus_window(self.address) # Focus window once more
+        hyprland_interface.move_window_local(self.address,self.x,self.y) # Attempt to move window(Hyprland dose not seem to honor this always)
 
-        self.run_cmd(f"hyprctl dispatch focuswindow address:{addr}")
-        time.sleep(0.3)
-        self.run_cmd(f"hyptclt dispatch movetoworkspace {self.workspace}, address:{addr}")
-        test_data = get_client_by_address(addr)
-        print(test_data["workspace"])
-        focused = self.get_focused_window()
-        if focused != self.address:
-            print("Direct focus failed, cycling to locate window...")
-            max_tries = len(get_hyprctl_clients())
-            success = self.cycle_until_focused(self.address,max_tries=max_tries)
-            if not success:
-                check_client = get_client_by_address(self.address)
-                if(check_client == None):
-                    print("Failed to focus window after cycling")
-                else:
-                    print("Okay, so what no")
-                return
+        #|------------------------------------------------------------|#
+        #| Window is now considered restored. We now do safety checks.|#
+        #|------------------------------------------------------------|#
         
-        if(client_data['floating'] == False):
-            self.run_cmd("hyprctl dispatch togglefloating")
-        if(test_data["workspace"]['id'] != self.workspace):
-            print("Move again")
-            self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace},address:{addr}")
-        focused = self.get_focused_window()
-        self.run_cmd(f"hyprctl dispatch focuswindow address:{self.address}")
-        focused = self.get_focused_window()
-        # if focused != self.address:
-            # max_tries = len(self.get_hyprctl_clients())
-            # success = self.cycle_until_focused(self.address,max_tries=max_tries)
-            # if not success:
-                
-            #     print("Failed to focus window after cycling")
-            #     return
-        self.run_cmd(f"hyprctl dispatch moveactive {self.x} {self.y}")
-        self.run_cmd("hyprctl dispatch togglefloating")
-        if(self.was_floating == client_data['floating']):
-            pass
-        else:
-            self.run_cmd("hyprctl dispatch togglefloating")
-            # while(self.x !=client_data['at'][0] and self.y != client_data['at'][0]):
-            print(f"Window disired pos: {self.x}:{self.y} vs {client_data['at'][0]}:{client_data['at'][1]}")
-            self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace},address:{addr}")
-            self.run_cmd(f"hyprctl dispatch focuswindow address:{self.address}")
-            # if(success):
-            #     self.run_cmd(f"hyprctl dispatch moveactive {self.x} {self.y}")
-                # client_data = get_client_by_address(self.address)
-        json_path = os.path.join(HIDE_DIR, f"{self.address}.json")
+        if(self.was_floating != client_data['floating']): # Insure window is in initial state(tiled/floating)
+            hyprland_interface.toggle_floating(self.address) # If not, toggle it
+        client_data = hyprland_interface.get_client_info(self.address) # Ge the current client info(Second time)
+        if(self.was_floating != client_data['floating']): # Do another check
+            hyprland_interface.toggle_floating(self.address) # Toggle window if states dont match
+        
+        #|------------------------------------------------------------|#
+        #| Safety checks are done. Now we clean up.                   |#
+        #|------------------------------------------------------------|#
+        
+        json_path = os.path.join(HIDE_DIR, f"{self.address}.json") # Get path of json file
         try:
-            os.remove(json_path)
+            os.remove(json_path) # Try remove it
         except Exception as e:
-            print(f"Failed to remove {json_path}: {e}")
+            print(f"Failed to remove {json_path}: {e}") # Error output
 
-        img_path = os.path.join(HIDE_DIR, f"{self.address}.png")
+        img_path = os.path.join(HIDE_DIR, f"{self.address}.png") # Get path of thumbnail
         try:
-            if os.path.exists(img_path):
-                os.remove(img_path)
+            if os.path.exists(img_path): # Check if it exists
+                os.remove(img_path) # Remove it
         except Exception as e:
-            print(f"Failed to remove screenshot {img_path}: {e}")
+            print(f"Failed to remove screenshot {img_path}: {e}") # Error output
 
-        print("Restore complete.")
-        check_state_c = get_client_by_address(self.address)
-        window_floating_state_after_move = check_state_c['floating']
-        if(window_floating_state_after_move == window_floating_state_before_move):
-            print("I did this right")
-            pass
+        print("Restore complete.") # Output
+
+        # One more final floating/tiled safety check
+        check_state_c = hyprland_interface.get_client_info(self.address) # get window info
+        window_floating_state_after_move = check_state_c['floating'] # Get current floating state
+        if(window_floating_state_after_move == window_floating_state_before_move): # check if they match
+            print("I did this right") # Positive Affirmations
         else:
+            hyprland_interface.toggle_floating(self.address) # Final attempt at setting the toggle state
 
-            self.run_cmd("hyprctl dispatch togglefloating")
-        print(f"Window floating state = {check_state_c['floating']}")
-        self.run_cmd(f"hyprctl dispatch movetoworkspacesilent {self.workspace},address:{addr}")
-        self.restore_complete.emit()
+        print(f"Window floating state = {check_state_c['floating']}")# Output floating state
+        hyprland_interface.move_win_to_workspace(self.address,self.workspace) # One final move to correct workspace
+        self.restore_complete.emit() # Emit completion code
+
+    
 def get_focused_monitor_geometry():
     result = subprocess.run("hyprctl monitors -j", shell=True, capture_output=True, text=True)
     if result.returncode != 0:
@@ -291,7 +225,8 @@ def get_focused_monitor_geometry():
 class HyprHideApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle(f"HyprHide {VERSION}")
+        self.title = f"HyprHide {VERSION}"
+        self.setWindowTitle(self.title)
         self.setFixedSize(460, 500)
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, True)
         self.setWindowFlag(Qt.WindowType.Tool)
@@ -322,7 +257,7 @@ class HyprHideApp(QWidget):
         self.window_items = []
         self.load_hidden_windows()
 
-        QTimer.singleShot(10, self.position_near_mouse)
+        # QTimer.singleShot(10, self.position_near_mouse)
 
     def load_hidden_windows(self):
         self.window_items.clear()
@@ -375,9 +310,9 @@ class HyprHideApp(QWidget):
         QApplication.quit()
 
     def position_near_mouse(self):
-        if not self.isVisible():
-            QTimer.singleShot(10, self.position_near_mouse)
-            return
+        # if not self.isVisible():
+        #     QTimer.singleShot(10, self.position_near_mouse)
+        #     return
 
         pos = QCursor.pos()  # Global mouse pos
         monitor = get_focused_monitor_geometry()
@@ -401,15 +336,23 @@ class HyprHideApp(QWidget):
             adjusted_x = max(monitor["x"], min(adjusted_x, monitor["x"] + monitor["width"] - win_width))
             adjusted_y = max(monitor["y"], min(adjusted_y, monitor["y"] + monitor["height"] - win_height))
 
-            print(f"Monitor bounds: {monitor}")
-            print(f"Adjusted X: {adjusted_x}, Adjusted Y: {adjusted_y}")
-            print(f"Moving screen to {adjusted_x},{adjusted_y}")
-            print(f"Mouse at {mouse_x},{mouse_y}")
+            # print(f"Monitor bounds: {monitor}")
+            # print(f"Adjusted X: {adjusted_x}, Adjusted Y: {adjusted_y}")
+            # print(f"Moving screen to {adjusted_x},{adjusted_y}")
+            # print(f"Mouse at {mouse_x},{mouse_y}")
 
-            result = subprocess.run(f"hyprctl dispatch moveactive {adjusted_x} {adjusted_y}",
-                                    shell=True, capture_output=True, text=True)
-            if result.returncode != 0:
-                print(f"hyprctl error: {result.stderr}")
+            # result = subprocess.run(f"hyprctl dispatch moveactive {adjusted_x} {adjusted_y}",
+            #                         shell=True, capture_output=True, text=True)
+            # if result.returncode != 0:
+            #     print(f"hyprctl error: {result.stderr}")
+            hyprhide_window = hyprland_interface.get_window_by_class_and_title(title=self.title,class_in="python3")
+            address_to_use = hyprhide_window['address']
+            active_workspace = hyprland_interface.get_active_workspace_id()
+            # hyprland_interface.move_win_to_workspace(address_to_use,active_workspace)
+            # hyprland_interface.set_current_workspace(active_workspace)
+            print("Move to mouse")
+            # active_workspace = hyprland_interface.get_active_workspace_id()
+            hyprland_interface.move_window_global(address_to_use,pos.x(),pos.y(),active_workspace)
 
 
 def insure_no_leftover_file():
@@ -422,7 +365,7 @@ def insure_no_leftover_file():
         if extension == '.json':
             json_files.append(f)
 
-    clients = get_hyprctl_clients()
+    clients = hyprland_interface.get_clients()
     client_files = [f"{i['address']}.json" for i in clients]
 
     for jf in json_files:
@@ -449,7 +392,7 @@ def safety_check_generate_missing_json_files():
             if c["at"][0] > 5000 or c["at"][1] > 5000
         ]
         for client in far_clients:
-            addr = client.get("address")
+            self.address = client.get("address")
             x, y = client.get("at", [0, 0])
             title = client.get("title", "Unknown")
             app_class = client.get("class", "Unknown")
@@ -457,14 +400,14 @@ def safety_check_generate_missing_json_files():
             floating = client.get("floating", False)
 
 
-            json_path = os.path.join(HIDE_DIR, f"{addr}.json")
+            json_path = os.path.join(HIDE_DIR, f"{self.address}.json")
             if os.path.exists(json_path):
                 continue
 
             # Check if window is near (5000, 5000)
             os.makedirs(HIDE_DIR, exist_ok=True)
             data = {
-                "address": addr,
+                "address": self.address,
                 "title": title,
                 "class": app_class,
                 "at": [x, y],
@@ -474,7 +417,7 @@ def safety_check_generate_missing_json_files():
             print(data)
             with open(json_path, "w") as f:
                 json.dump(data, f, indent=2)
-            print(f"[Safety Check] Created rudimentary file for: {addr}")
+            print(f"[Safety Check] Created rudimentary file for: {self.address}")
 
     except Exception as e:
         print(f"[Safety Check] Failed to check or create json: {e}")
@@ -774,3 +717,4 @@ if __name__ == "__main__":
         window.position_near_mouse()
         window.show()
         sys.exit(app.exec())
+#0x56090b1d9f60
