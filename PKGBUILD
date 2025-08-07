@@ -25,34 +25,24 @@ build() {
     export CXX=g++
     export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
     export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
-    
-    # Optimize for fastest build time
-    export CARGO_BUILD_JOBS=1
-    export MAKEFLAGS="-j1"
-    
-    # Set up Rust build profile for minimal optimization
-    export CARGO_PROFILE_RELEASE_DEBUG=false
-    export CARGO_PROFILE_RELEASE_LTO=false
-    export CARGO_PROFILE_RELEASE_OPT_LEVEL=0
-    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
-    export CARGO_PROFILE_RELEASE_PANIC="abort"
-    
-    # Disable signing
+    # Fix ring crate compilation issues
+    export CFLAGS="-fPIC -O2"
+    export CXXFLAGS="-fPIC -O2"
+    export LDFLAGS="-Wl,-z,now -Wl,-z,relro"
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS="-C target-cpu=native"
+    # Disable signing for packaging
     unset TAURI_SIGNING_PRIVATE_KEY
     unset TAURI_SIGNING_PRIVATE_KEY_PASSWORD
-    export TAURI_SIGNING_PRIVATE_KEY=""
-    export TAURI_SIGNING_PRIVATE_KEY_PASSWORD=""
-    
-    # First build frontend
-    npm run build
-    
-    # Then build the Tauri app
-    cd src-tauri
-    cargo build --release --bin app
+    # Force only deb bundle to avoid linking issues
+    npm run tauri:build -- --bundles deb
 }
 
 package() {
     cd "$srcdir/Observer-$pkgver"
     # Install the binary directly from the release build
     install -Dm755 "app/src-tauri/target/release/app" "$pkgdir/usr/bin/observer-ai"
+    
+    # Install the static files that Tauri expects
+    install -dm755 "$pkgdir/usr/lib/Observer/_up_"
+    cp -r "app/dist" "$pkgdir/usr/lib/Observer/_up_/"
 }
