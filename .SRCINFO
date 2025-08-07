@@ -1,6 +1,6 @@
 pkgbase = privatebin
 	pkgdesc = a minimalist, open source online pastebin where the server has zero knowledge of pasted data
-	pkgver = 1.7.6
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://privatebin.info
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = privatebin
 	depends = php
 	depends = php-gd
 	options = emptydirs
-	source = privatebin-1.7.6.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/1.7.6.tar.gz
-	md5sums = b5f61f22b6a3db54688db7d80a0c6a9d
+	source = privatebin-2.0.0.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/2.0.0.tar.gz
+	md5sums = a8023e580c855ca06d3cb429db5a2f02
 
 pkgname = privatebin
