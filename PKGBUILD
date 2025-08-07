@@ -1,16 +1,16 @@
-# Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
+# Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=updo
-pkgver=0.2.7
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Uptime monitoring CLI tool with alerting and advanced settings"
-arch=('i686' 'x86_64' 'armv6h' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Owloops/updo"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'zip')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d027df36df12d366ca3db4a709d46a96917a746cf9db87219cef062c4e418bc8')
+sha256sums=('386bb1db93659b5314b842981e902328faa69ad92c15320b5c7bc87cea38d453')
 
 prepare(){
     cd "$pkgname-$pkgver"
@@ -25,6 +25,7 @@ build() {
     export CGO_ENABLED=2
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     cd "$pkgname-$pkgver"
+    make build-lambda
 	go build -o "build/$pkgname"
 }
 
