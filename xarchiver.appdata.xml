@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.xarchiver</id>
+  <launchable type="desktop-id">xarchiver.desktop</launchable>
+  <name>Xarchiver</name>
+  <summary>A GTK+ only archive manager</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <description>
+    <p>Xarchiver is a lightweight desktop independent GTK+ frontend for manipulating xz, 7z, lzma, arj, bzip2, gzip, rar, tar, zip, rpm, lz4, compress, zstd, lzip, lrzip, lzop, lha and deb files. It allows you to create archives and add, extract, and delete files from them. Password protected archives in the arj, 7z, rar, zip and lrzip formats are supported.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://xarchiver.sourceforge.net/screenshots/main_window.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/ib/xarchiver/issues</url>
+  <url type="homepage">https://github.com/ib/xarchiver</url>
+</component>
