@@ -21,6 +21,7 @@ prepare() {
   osmscout_path="${pkgname}-${pkgver}/backend/libosmscout"
   rmdir "$osmscout_path"
   ln -sf "$PWD/libosmscout-${pkgname}-${osmscoutver}" "$osmscout_path"
+  ( cd "${pkgname}-${pkgver}" && patch -p1 <../../osmin.patch; )
 }
 
 build() {
