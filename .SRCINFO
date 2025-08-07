@@ -7,7 +7,6 @@ pkgbase = lib32-freearc-bin
 	license = GPL-2.0
 	depends = lib32-ncurses5-compat-libs
 	depends = lib32-gmp
-	conflicts = gmp4
 	conflicts = unarc
 	source = https://sourceforge.net/projects/freearc/files/FreeArc/FreeArc%200.51/FreeArc-0.51-linux-i386.tar.bz2/download
 	sha256sums = 9671d829a3961abc064721d25f10d109f7830cbd0d9dd9a6f6be72b3bbade6eb
