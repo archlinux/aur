@@ -2,7 +2,7 @@
 
 pkgname=niji-git
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable tool for theming linux systems"
 url="https://github.com/lina-roether/niji"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
@@ -24,7 +24,7 @@ prepare() {
 	git submodule init
 	git config submodule.colloid.url "$srcdir/Colloid-gtk-theme"
 	git -c protocol.file.allow=always submodule update
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --offline --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
