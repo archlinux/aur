@@ -1,5 +1,5 @@
 pkgbase = restohack
-	pkgdesc = A faithful restoration of the original 1984 Hack roguelike
+	pkgdesc = A faithful restoration of Hack v1.0.3 (1984), modernized and maintained
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Critlist/restoHack
