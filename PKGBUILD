@@ -2,7 +2,7 @@
 
 pkgname=git-branch-stash
 pkgdesc='Git add-on to manage snapshots of branch status'
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 url=https://github.com/gitext-rs/git-branch-stash
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(git gcc-libs glibc)
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('72ecc4b73ce310047b79e4fc7d3bbf615be6d6cdc9ed9c22b7204b7dfd1b4be4')
+sha256sums=('971f438dfd90189e1c53128fc6f13dc5ec8a9482d32c83fe513e9cc5bd6394c9')
 
 prepare () {
 	cd "$pkgname-$pkgver"
