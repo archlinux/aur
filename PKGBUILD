@@ -1,4 +1,4 @@
-# Packager: Sebastian Tobie <archlinux@sebastian-tobie.de>
+# Maintainer: Sebastian Tobie <archlinux@sebastian-tobie.de>
 _channel="stable"
 
 pkgname="barmer-ecare-bin"
