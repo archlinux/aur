@@ -26,3 +26,5 @@ bindPipewire="false"
 
 # Expose all GPUs. Takes boolean value, usually used in games.
 gameMode="true"
+
+qt5Compat="false"
