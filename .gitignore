@@ -1,0 +1,4 @@
+*.log
+*.pkg.*
+FjordLauncher/
+!.SRCINFO
