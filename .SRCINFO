@@ -1,6 +1,6 @@
 pkgbase = python-gwcs
 	pkgdesc = A python package for managing the World Coordinate System (WCS) of astronomical data
-	pkgver = 0.25.1
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = http://gwcs.readthedocs.io
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-gwcs
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-0.25.1.tar.gz
-	md5sums = a5b085300e050c874d8c494e911bb430
+	source = https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-0.25.2.tar.gz
+	md5sums = 154ffb7782da132149943ad51fcf723b
 
 pkgname = python-gwcs
 	depends = python>=3.11
