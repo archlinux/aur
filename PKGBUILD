@@ -5,9 +5,9 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=maya
-pkgver=2026.1
+pkgver=2026.2
 _majorver="${pkgver%%.*}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
 arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
@@ -85,9 +85,9 @@ depends=(
 optdepends=('opencl-driver: OpenCL support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://Maya${_majorver}_64-${pkgver}-4784.x86_64.rpm"
+source=("manual://Maya${_majorver}_64-${pkgver}-2565.x86_64.rpm"
         'application-home-workaround.patch')
-b2sums=('30fe2a6dfc9a9971dc5e1752a5d020fb0f2859c2b735cf7092d8897cf7164e7aa9f48d9ba1c838966efb68d5c23c8e2345dcf83172d9df6132363a08d51cd3a3'
+b2sums=('7ea12d7cc1a7332505211c87bbee9ae386f7a02cc17e6d8235d797ae710741854e2a2b317e27e31fc67c65dcf7c802d657456936a2e3e4f88fd6e19e7d58632a'
         'b4f09a64402e54e0067ca381efbc921a7f3cd595aef10135d423fc4a405b105b7cbd4d6907851cf9563cf02be3ec514d48d0a555a976f5daa7d4a66edee594ee')
 
 options=(!strip)
