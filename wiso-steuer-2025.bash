@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: Claudia Pellegrino
+# SPDX-License-Identifier: 0BSD
+
 set -eu
 
 APP_BASENAME='WISO2025'
