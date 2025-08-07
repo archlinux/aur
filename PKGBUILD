@@ -1,6 +1,6 @@
 # Maintainer: ThePirate42 <aur at thepirate42 dot org>
 
-_name=cosmograp
+_name=cosmograph
 
 pkgname=python-${_name}
 pkgver=0.0.47
