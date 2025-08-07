@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r2027.g117e34f8f
+pkgver=1.4.0.development.snapshot.006.r2169.gd1ecd382a
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -29,7 +29,6 @@ source=('git+https://github.com/mumble-voip/mumble.git'
         'git+https://github.com/mumble-voip/utfcpp.git'
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/Krzmbrzl/cmake-compiler-flags.git'
-        'git+https://github.com/Krzmbrzl/FindPythonInterpreter.git'
         'git+https://github.com/lipis/flag-icons.git'
         'git+https://github.com/microsoft/GSL.git'
         'git+https://github.com/nlohmann/json.git'
@@ -37,7 +36,7 @@ source=('git+https://github.com/mumble-voip/mumble.git'
         'git+https://github.com/wolfpld/tracy.git'
         'git+https://github.com/xiph/rnnoise.git'
         'git+https://github.com/xiph/speexdsp.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
@@ -52,7 +51,6 @@ prepare() {
   git config submodule.3rdparty/mach-override-src.url "$srcdir/mach_override"
   git config submodule.3rdparty/speexdsp.url "$srcdir/speexdsp"
   git config submodule.3rdparty/rnnoise-src.url "$srcdir/rnnoise"
-  git config submodule.3rdparty/FindPythonInterpreter.url "$srcdir/FindPythonInterpreter"
   git config submodule.3rdparty/tracy.url "$srcdir/tracy"
   git config submodule.3rdparty/nlohmann_json.url "$srcdir/json"
   git config submodule.3rdparty/gsl.url "$srcdir/GSL"
