@@ -1,7 +1,7 @@
 pkgbase = k2pdfopt
 	pkgdesc = Tool for optimizing PDF/DJVU files for mobile e-readers and smartphones.
 	pkgver = 2.55
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.willus.com/k2pdfopt
 	arch = i686
 	arch = x86_64

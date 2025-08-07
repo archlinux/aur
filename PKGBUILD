@@ -5,7 +5,7 @@
 
 pkgname=k2pdfopt
 pkgver=2.55
-pkgrel=3
+pkgrel=4
 pkgdesc='Tool for optimizing PDF/DJVU files for mobile e-readers and smartphones.'
 arch=('i686' 'x86_64')
 url='http://www.willus.com/k2pdfopt'
@@ -68,8 +68,8 @@ build() {
     [ -d '_build' ] && rm -r '_build'
     mkdir '_build'
     cd '_build'
-    PKG_CONFIG_PATH=../../ cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ..
-    cmake --build .
+    PKG_CONFIG_PATH=../../ cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+    cmake  --build .
 }
 
 package() {
