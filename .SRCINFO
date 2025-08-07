@@ -1,12 +1,12 @@
 pkgbase = popeye-bin
 	pkgdesc = A Kubernetes cluster resource sanitizer
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/derailed/popeye
 	arch = x86_64
 	license = Apache 2
 	provides = popeye
-	source = https://github.com/derailed/popeye/releases/download/v0.22.0/popeye_Linux_amd64.tar.gz
-	sha256sums = e43c6b80039f1e38ace65cb5b17f9180638e5b72f252c4a42df96a45a3308c47
+	source = https://github.com/derailed/popeye/releases/download/v0.22.1/popeye_Linux_amd64.tar.gz
+	sha256sums = d58a3c0ba45805d452c32628320eecdcb5172fd5f42c82e12aeecc7a17eb930b
 
 pkgname = popeye-bin
