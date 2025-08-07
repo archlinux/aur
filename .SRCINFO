@@ -1,18 +1,19 @@
 pkgbase = python-liblistenbrainz
 	pkgdesc = A simple Python library for the ListenBrainz Web API
-	pkgver = 0.5.6
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://listenbrainz.org/
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest
+	checkdepends = python-requests-mock
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python-requests
 	depends = python-importlib-metadata
-	source = python-liblistenbrainz::git+https://github.com/metabrainz/liblistenbrainz.git#tag=v0.5.6
+	source = python-liblistenbrainz::git+https://github.com/metabrainz/liblistenbrainz.git#tag=v0.6.0
 	sha512sums = SKIP
 
 pkgname = python-liblistenbrainz

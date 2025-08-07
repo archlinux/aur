@@ -1,7 +1,7 @@
 # Maintainer: Anna Schumaker <anna@nowheycreamery.com>
 
 pkgname=python-liblistenbrainz
-pkgver=0.5.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A simple Python library for the ListenBrainz Web API'
 url='https://listenbrainz.org/'
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 depends=('python-requests' 'python-importlib-metadata')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-requests-mock')
 optdepends=()
 source=("${pkgname}::git+https://github.com/metabrainz/liblistenbrainz.git#tag=v${pkgver}")
 sha512sums=('SKIP')
