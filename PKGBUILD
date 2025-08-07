@@ -11,7 +11,7 @@ _pkgname="duckstation"
 pkgbase="$_pkgname"
 pkgname=("$_pkgname" "$_pkgname-gpl")
 pkgver=0.1.7465
-pkgrel=5
+pkgrel=6
 pkgdesc="Playstation emulator"
 url="$_url/commits/$_commit"
 arch=('x86_64')
@@ -39,17 +39,30 @@ makedepends=(
   'qt6-tools'
   'qt6-wayland'
 
+  ## shaderc
+  'python'
+
   ## fixups
+  'imagemagick'
   'patchelf'
-  'patchutils' # filterdiff
 )
 
 _source_duckstation() {
   license=('GPL-3.0-only')
 
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$_url.git#commit=$_commit")
-  sha256sums=('SKIP')
+  source=(
+    "$_pkgsrc"::"git+$_url.git#commit=$_commit"
+    'dependencies.txt'
+    'mallard-box.png'
+    'mallard.png'
+  )
+  sha256sums=(
+    'SKIP'
+    '03121c93ac00b3283789a7820c2c90bc8e77781191298d8d67a76237775802c3'
+    '2cda88837aa49f849a32d13148048259577e5c788595aa1f8b78dafc1a72c62e'
+    '8a2d6c76473b324ef67ebca258d7b169c4f361a4f453056295af9c4f17fcb09f'
+  )
 
   pkgver() {
     echo "${pkgver:?}"
@@ -64,7 +77,7 @@ _source_backtrace() {
 _source_cpuinfo() {
   _pkgsrc_cpuinfo="pytorch.cpuinfo"
   source+=(
-    "$_pkgsrc_cpuinfo"::"git+https://github.com/pytorch/cpuinfo.git#commit=ca678952a9a8eaa6de112d154e8e104b22f9ab3f"
+    "$_pkgsrc_cpuinfo"::"git+https://github.com/pytorch/cpuinfo.git"
     "cpuinfo-0001-Fix-building-as-a-shared-library.patch.zst"
   )
   sha256sums+=(
@@ -76,7 +89,7 @@ _source_cpuinfo() {
 _source_discord_rpc() {
   _pkgsrc_discord_rpc="discord-rpc"
   source+=(
-    "$_pkgsrc_discord_rpc"::"git+https://github.com/discord/discord-rpc.git#commit=963aa9f3e5ce81a4682c6ca3d136cddda614db33"
+    "$_pkgsrc_discord_rpc"::"git+https://github.com/discord/discord-rpc.git"
     "discord-rpc-0001-Reapply-shutdown-patch.patch.zst"
     "discord-rpc-0002-Add-rapidjson-to-avoid-download.patch.zst"
     "discord-rpc-0003-Tidy-up.patch.zst.001"
@@ -98,7 +111,7 @@ _source_discord_rpc() {
 _source_lunasvg() {
   _pkgsrc_lunasvg="sammycage.lunasvg"
   source+=(
-    "$_pkgsrc_lunasvg"::"git+https://github.com/sammycage/lunasvg.git#tag=v2.4.1"
+    "$_pkgsrc_lunasvg"::"git+https://github.com/sammycage/lunasvg.git"
     "lunasvg_2.4.1_9af1ac7.patch.zst"
   )
   sha256sums+=(
@@ -118,7 +131,7 @@ _source_shaderc() {
 
   _pkgsrc_shaderc="shaderc"
   source+=(
-    "$_pkgsrc_shaderc"::"git+https://github.com/google/shaderc.git#commit=6d2848321250a19641800f8afb07738f3b0b7f18"
+    "$_pkgsrc_shaderc"::"git+https://github.com/google/shaderc.git"
     "shaderc_6d28483_f60bb80.patch.zst.001"
     "shaderc_6d28483_f60bb80.patch.zst.002"
     "shaderc_6d28483_f60bb80.patch.zst.003"
@@ -148,7 +161,7 @@ _source_shaderc() {
 _source_soundtouch() {
   _pkgsrc_soundtouch="soundtouch"
   source+=(
-    "$_pkgsrc_soundtouch"::"git+https://codeberg.org/soundtouch/soundtouch.git#commit=7f35604eda445d4bb4006ca77a19a403af6838cd"
+    "$_pkgsrc_soundtouch"::"git+https://codeberg.org/soundtouch/soundtouch.git"
     "soundtouch-0001-Local-changes.patch.zst"
     "soundtouch-0002-Slim-down-for-downloads.patch.zst.001"
     "soundtouch-0002-Slim-down-for-downloads.patch.zst.002"
@@ -166,101 +179,81 @@ _source_spirv_cross() {
   sha256sums+=('SKIP')
 }
 
-_apply_split_patch() {
-  # $1 = basename
+_apply_patches() {
   [ -z "$1" ] && return 1
-  cat "$srcdir/$1.patch.zst".[0-9]* > "$srcdir/$1.patch.zst"
+  for i in "$srcdir/$1"*.patch.zst.001; do
+    if [[ -f "$(readlink -f "$i")" && ! -e "${i%.001}" ]]; then
+      cat "${i%.001}".[0-9]* > "${i%.001}"
+    fi
+  done
 
-  # $2 = sha256sum
-  [ -n "$2" ] && sha256sum -c <<< "$2  $srcdir/$1.patch.zst"
-  zstd -dc "$srcdir/$1.patch.zst" | git apply --whitespace=nowarn
+  for i in "$srcdir/$1"*.patch.zst; do
+    if [ -f "$(readlink -f "$i")" ]; then
+      echo "Applying patch ${i%.zst}..."
+      zstdcat "$i" | git apply --whitespace=nowarn
+    fi
+  done
 }
 
 _prepare_backtrace() (
-  local _version_backtrace=$(grep -E -m1 'LIBBACKTRACE=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LIBBACKTRACE=(\S+)$&\1&')
+  local _version_backtrace=$(grep -E -m1 'LIBBACKTRACE=' dependencies.txt | sed -E -e 's&^\s*LIBBACKTRACE=(\S+)$&\1&')
   echo "backtrace = $_version_backtrace"
   git -c advice.detachedHead=false -C "$srcdir/ianlancetaylor.libbacktrace" checkout -f "$_version_backtrace"
   echo
 )
 
 _prepare_cpuinfo() (
-  local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
+  local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' dependencies.txt | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
   echo "cpuinfo = $_version_cpuinfo"
   cd "$srcdir/$_pkgsrc_cpuinfo"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
-    echo "using $(git rev-parse HEAD) with patch"
-    git apply "$srcdir/cpuinfo-0001-Fix-building-as-a-shared-library.patch"
-  fi
+  git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"
+  _apply_patches cpuinfo
   echo
 )
 
 _prepare_discord_rpc() (
-  local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
+  local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' dependencies.txt | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
   echo "discord-rpc = $_version_discord_rpc"
   cd "$srcdir/$_pkgsrc_discord_rpc"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_discord_rpc"; then
-    echo "using $(git rev-parse HEAD) with patch"
-    git apply --whitespace=nowarn "$srcdir/discord-rpc-0001-Reapply-shutdown-patch.patch"
-    git apply --whitespace=nowarn "$srcdir/discord-rpc-0002-Add-rapidjson-to-avoid-download.patch"
-    _apply_split_patch discord-rpc-0003-Tidy-up 94c60aea2ec1bf5ef044e28e2467fc4097a1abb182291f0b1364fd66ce8c7e65
-    git apply --whitespace=nowarn "$srcdir/discord-rpc-0004-CMake-find_package-support.patch"
-    git apply --whitespace=nowarn "$srcdir/discord-rpc-0005-Default-visibility-to-hidden.patch"
-  fi
+  git -c advice.detachedHead=false checkout -f "$_version_discord_rpc"
+  _apply_patches discord-rpc
   echo
 )
 
 _prepare_lunasvg() (
-  local _version_lunasvg=$(grep -E -m1 'LUNASVG=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LUNASVG=(\S+)$&\1&')
+  local _version_lunasvg=$(grep -E -m1 'LUNASVG=' dependencies.txt | sed -E -e 's&^\s*LUNASVG=(\S+)$&\1&')
   echo "lunasvg = $_version_lunasvg"
   cd "$srcdir/$_pkgsrc_lunasvg"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_lunasvg"; then
-    echo "using $(git rev-parse HEAD) with patch"
-    git apply "$srcdir/lunasvg_2.4.1_9af1ac7.patch"
-  fi
+  git -c advice.detachedHead=false checkout -f "$_version_lunasvg"
+  _apply_patches lunasvg
   echo
 )
 
 _prepare_shaderc() (
-  local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
+  local _version_shaderc=$(grep -E -m1 'SHADERC=' dependencies.txt | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
   echo "shaderc = $_version_shaderc"
-
   cd "$srcdir/$_pkgsrc_shaderc"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_shaderc"; then
-    echo "using $(git rev-parse HEAD) with patch"
-    _apply_split_patch shaderc_6d28483_f60bb80 a21bf487249f7c9cbe2f3cf48c9f21b440b4386694b4760bffe6307775e5e1fa
-  fi
+  git -c advice.detachedHead=false checkout -f "$_version_shaderc"
+  _apply_patches shaderc
 
-  sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
-    -i CMakeLists.txt
+  sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' -i CMakeLists.txt
   echo
 )
 
 _prepare_soundtouch() (
-  local _version_soundtouch=$(grep -E -m1 'SOUNDTOUCH=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SOUNDTOUCH=(\S+)$&\1&')
+  local _version_soundtouch=$(grep -E -m1 'SOUNDTOUCH=' dependencies.txt | sed -E -e 's&^\s*SOUNDTOUCH=(\S+)$&\1&')
   echo "soundtouch = $_version_soundtouch"
-
   cd "$srcdir/$_pkgsrc_soundtouch"
-  if ! git -c advice.detachedHead=false checkout -f "$_version_soundtouch"; then
-    echo "using $(git rev-parse HEAD) with patch"
-    git apply "$srcdir/soundtouch-0001-Local-changes.patch"
-    _apply_split_patch soundtouch-0002-Slim-down-for-downloads 8eb9c4cc05ee5efe7022585175e33ec00ab882a7320b412d7254457afe8c4a76
-  fi
+  git -c advice.detachedHead=false checkout -f "$_version_soundtouch"
+  _apply_patches soundtouch
   echo
 )
 
 _prepare_spirv_cross() (
-  local _version_spirv_cross=$(grep -E -m1 'SPIRV_CROSS=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SPIRV_CROSS=(\S+)$&\1&')
+  local _version_spirv_cross=$(grep -E -m1 'SPIRV_CROSS=' dependencies.txt | sed -E -e 's&^\s*SPIRV_CROSS=(\S+)$&\1&')
   echo "spirv-cross = $_version_spirv_cross"
-
-  git -c advice.detachedHead=false -C "$srcdir/khronosgroup.spirv-cross" checkout -f "$_version_spirv_cross"
-
-  if [ -e "$srcdir/$_pkgsrc/$_scripts/spirv-cross-changes.patch" ]; then
-    filterdiff "$srcdir/$_pkgsrc/$_scripts/spirv-cross-changes.patch" \
-      > spirv-cross-changes.patch
-
-    cd "khronosgroup.spirv-cross"
-    git apply "$srcdir/spirv-cross-changes.patch"
-  fi
+  cd "$srcdir/khronosgroup.spirv-cross"
+  git -c advice.detachedHead=false checkout -f "$_version_spirv_cross"
   echo
 )
 
@@ -280,11 +273,15 @@ _prepare_duckstation() {
       <property name="enabled"><bool>false</bool></property>' \
     -i "$_pkgsrc/src/duckstation-qt/setupwizarddialog.ui"
 
+  # adjust about dialog
   # link to specific commit
   # prevent issue reports to upstream
   sed -E \
     -e 's&^(\s*).*g_scm_tag_str.*g_scm_branch_str.*$&\1tr("%1").arg(QLatin1StringView(g_scm_tag_str)));&' \
-    -e 's! &lt;stenzek@gmail.com&gt;!!' \
+    -e 's&, focusing on &.&' \
+    -e '/^<p.*(Connor|icons8|%2<\/span>:).*\/p>/d' \
+    -e '/tr\("(Authors|Icon by)"\)/d' \
+    -e 's&>%4<&>%2<&' \
     -e 's& \| <a href="https://\S*discord\S+">.*?</a>&&' \
     -e 's&"https://github.com/\S+/CONTRIBUTORS.md"&"'"$_url/raw/${_commit}"'/CONTRIBUTORS.md"&' \
     -e 's&"https://github.com/\S+/LICENSE"&"'"$_url/raw/${_commit}"'/LICENSE"&' \
@@ -334,8 +331,24 @@ EOF
     "$_pkgsrc/src/duckstation-qt/translations"/*.ts
 
   # add unofficial build notice
-  sed -E -e 's@This wizard.*Interface Settings\.@This is an unofficial build based on the GPL commit from 2024-09-01.\&lt;/p\&gt;\&lt;p\&gt;Do not report issues to the original developer.@' \
+  local _notice_unofficial="This is an unofficial build based on the last GPL commit on 2024-09-01."
+  local _notice_dnr="Do not report issues to the original developer"
+
+  sed -E -e 's@This wizard.*Interface Settings\.@'"${_notice_unofficial}"'\&lt;/p\&gt;\&lt;p\&gt;'"${_notice_dnr}"'.@' \
     -i "$_pkgsrc/src/duckstation-qt/setupwizarddialog.ui"
+
+  sed -E \
+    -e 's&"playability, speed, and long-term maintainability\."&"</p><p>'"${_notice_unofficial}"'"&' \
+    -e 's&^(<p[^>]+>)  and other (.*contributors</a>)&\1'"${_notice_dnr}"' or \2.&' \
+    -i "$_pkgsrc/src/duckstation-qt/aboutdialog.cpp"
+
+  # change icon
+  install -Dm644 mallard-box.png "$_pkgsrc"/src/duckstation-qt/resources/icons/UpdateDuck.png
+  install -Dm664 mallard.png "$_pkgsrc"/data/resources/images/duck.png
+  install -Dm664 mallard.png "$_pkgsrc"/scripts/org.duckstation.DuckStation.png
+  magick mallard.png -resize 64x64 png8:"$_pkgsrc"/src/duckstation-qt/resources/icons/duck_64.png
+  magick mallard.png -resize 128x128 png8:"$_pkgsrc"/src/duckstation-qt/resources/icons/duck_128.png
+  magick mallard.png -resize 256x256 png8:"$_pkgsrc"/src/duckstation-qt/resources/icons/duck.png
 
   # fix version script
   install -Dm755 /dev/stdin "$_pkgsrc/src/scmversion/gen_scmversion.sh" << END

@@ -1,7 +1,7 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
 	pkgver = 0.1.7465
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/stenzek/duckstation/commits/aa955b8ae28314ae061613f0ddf13183a98aca03
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,8 +14,9 @@ pkgbase = duckstation
 	makedepends = ninja
 	makedepends = qt6-tools
 	makedepends = qt6-wayland
+	makedepends = python
+	makedepends = imagemagick
 	makedepends = patchelf
-	makedepends = patchutils
 	makedepends = spirv-headers
 	depends = libwebp
 	depends = libxrandr
@@ -24,19 +25,22 @@ pkgbase = duckstation
 	depends = glslang
 	depends = spirv-tools
 	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=aa955b8ae28314ae061613f0ddf13183a98aca03
+	source = dependencies.txt
+	source = mallard-box.png
+	source = mallard.png
 	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
-	source = pytorch.cpuinfo::git+https://github.com/pytorch/cpuinfo.git#commit=ca678952a9a8eaa6de112d154e8e104b22f9ab3f
+	source = pytorch.cpuinfo::git+https://github.com/pytorch/cpuinfo.git
 	source = cpuinfo-0001-Fix-building-as-a-shared-library.patch.zst
-	source = discord-rpc::git+https://github.com/discord/discord-rpc.git#commit=963aa9f3e5ce81a4682c6ca3d136cddda614db33
+	source = discord-rpc::git+https://github.com/discord/discord-rpc.git
 	source = discord-rpc-0001-Reapply-shutdown-patch.patch.zst
 	source = discord-rpc-0002-Add-rapidjson-to-avoid-download.patch.zst
 	source = discord-rpc-0003-Tidy-up.patch.zst.001
 	source = discord-rpc-0003-Tidy-up.patch.zst.002
 	source = discord-rpc-0004-CMake-find_package-support.patch.zst
 	source = discord-rpc-0005-Default-visibility-to-hidden.patch.zst
-	source = sammycage.lunasvg::git+https://github.com/sammycage/lunasvg.git#tag=v2.4.1
+	source = sammycage.lunasvg::git+https://github.com/sammycage/lunasvg.git
 	source = lunasvg_2.4.1_9af1ac7.patch.zst
-	source = shaderc::git+https://github.com/google/shaderc.git#commit=6d2848321250a19641800f8afb07738f3b0b7f18
+	source = shaderc::git+https://github.com/google/shaderc.git
 	source = shaderc_6d28483_f60bb80.patch.zst.001
 	source = shaderc_6d28483_f60bb80.patch.zst.002
 	source = shaderc_6d28483_f60bb80.patch.zst.003
@@ -47,12 +51,15 @@ pkgbase = duckstation
 	source = shaderc_6d28483_f60bb80.patch.zst.008
 	source = shaderc_6d28483_f60bb80.patch.zst.009
 	source = shaderc_6d28483_f60bb80.patch.zst.010
-	source = soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git#commit=7f35604eda445d4bb4006ca77a19a403af6838cd
+	source = soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git
 	source = soundtouch-0001-Local-changes.patch.zst
 	source = soundtouch-0002-Slim-down-for-downloads.patch.zst.001
 	source = soundtouch-0002-Slim-down-for-downloads.patch.zst.002
 	source = khronosgroup.spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
 	sha256sums = SKIP
+	sha256sums = 03121c93ac00b3283789a7820c2c90bc8e77781191298d8d67a76237775802c3
+	sha256sums = 2cda88837aa49f849a32d13148048259577e5c788595aa1f8b78dafc1a72c62e
+	sha256sums = 8a2d6c76473b324ef67ebca258d7b169c4f361a4f453056295af9c4f17fcb09f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9263d020f6eb1e473db97b4b3205d794a56ae9c3ea6adf71a803632af98a29a4
