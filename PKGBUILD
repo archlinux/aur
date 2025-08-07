@@ -4,7 +4,7 @@
 pkgname=cosmic-bg-git
 pkgver=1.0.0.alpha.7.r1.g1da843a
 pkgrel=1
-pkgdes="COSMIC session service which applies backgrounds to displays."
+pkgdesc="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
 license=('MPL-2.0')
