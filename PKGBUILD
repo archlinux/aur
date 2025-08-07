@@ -7,7 +7,7 @@ arch=('x86_64')
 url=https://sourceforge.net/projects/freearc/
 license=('GPL-2.0')
 depends=('lib32-ncurses5-compat-libs' 'lib32-gmp')
-conflicts=('gmp4')
+conflicts=('gmp4' 'unarc')
 source=("https://sourceforge.net/projects/freearc/files/FreeArc/FreeArc%20$pkgver/FreeArc-$pkgver-linux-i386.tar.bz2/download")
 package() {
 	cd "${srcdir}/FreeArc-$pkgver-linux-i386"
