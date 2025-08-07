@@ -1,0 +1,4 @@
+[libayatana-appindicator-glib]
+source = "github"
+github = "AyatanaIndicators/libayatana-appindicator-glib"
+use_max_tag = true
