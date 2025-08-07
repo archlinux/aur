@@ -1,7 +1,7 @@
 pkgbase = pluto-bin
 	pkgdesc = Pluto is a utility to help users find deprecated Kubernetes apiVersions in their code repositories and their helm releases.
 	pkgver = 5.22.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/FairwindsOps/pluto
 	arch = x86_64
 	license = Apache
