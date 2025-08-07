@@ -4,7 +4,7 @@
 pkgname=hunspell-nn
 _LOver=6.3.2
 pkgver=6.3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Spell checking support for Norwegian Nynorsk'
 arch=('any')
 url='http://no.speling.org/'

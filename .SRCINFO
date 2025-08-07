@@ -1,7 +1,7 @@
 pkgbase = hunspell-nn
 	pkgdesc = Spell checking support for Norwegian Nynorsk
 	pkgver = 6.3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://no.speling.org/
 	arch = any
 	license = GPL
@@ -13,4 +13,3 @@ pkgbase = hunspell-nn
 	sha256sums = e10e73d7978c137dca55c6d6326e47a5d0b37fe7968751cd74e28542f76d4009
 
 pkgname = hunspell-nn
-
