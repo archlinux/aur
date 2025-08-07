@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a00476b4..b76f6a22 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -76,7 +76,7 @@ rapids_find_package(
+ 
+ rapids_cpm_init()
+ 
+-include(cmake/thirdparty/get_cccl.cmake)
++find_package(CCCL REQUIRED)
+ 
+ ###################################################################################################
+ # - cuco target   ---------------------------------------------------------------------------------
+diff --git a/include/cuco/detail/__config b/include/cuco/detail/__config
+index c2cc9066..3e3aeeb2 100644
+--- a/include/cuco/detail/__config
++++ b/include/cuco/detail/__config
+@@ -29,10 +29,6 @@
+ #error "Support for extended device lambdas is required (nvcc flag --expt-extended-lambda)"
+ #endif
+ 
+-#if !defined(CCCL_VERSION) || (CCCL_VERSION < 3000000)
+-#error "CCCL version 3.0.0 or later is required"
+-#endif
+-
+ // WAR for libcudacxx/296
+ #define CUCO_CUDA_MINIMUM_ARCH _NV_FIRST_ARG(__CUDA_ARCH_LIST__)
+ 
