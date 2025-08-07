@@ -10,13 +10,13 @@
 # TODO split packages? nimbus/supervisor/ui ?
 
 pkgname=storm
-pkgver=2.2.0
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='Apache Storm is a free and open source distributed realtime computation system'
 arch=('any')
 url='https://storm.apache.org/'
 license=('Apache')
-depends=('java-runtime' 'python2' 'zookeeper')
+depends=('java-runtime' 'python' 'zookeeper')
 makedepends=('jq')
 provides=('apache-storm')
 backup=('etc/storm/storm_env.ini'
@@ -34,7 +34,7 @@ source=("${pkgname}-${pkgver}.tar.gz::$_closest_mirror"
         'systemd_storm-ui.service'
         'systemd_sysusers.d_storm.conf'
         'systemd_tmpfiles.d_storm.conf')
-sha256sums=('f621163f349a8e85130bc3d2fbb34e3b08f9c039ccac5474f3724e47a3a38675'
+sha256sums=('806d99aee53651ae449956d760ff438afb4f08dc22b23864d528195c27223c5b'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             '2dafe9352ed01fbe0c74ec6e29e0233a842c4fead7af38cd3540bf69c93a895c'
