@@ -1,0 +1,20 @@
+pkgbase = no
+	pkgdesc = Well yes, but actually no.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.calitabby.net/vel/no
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = Velicense
+	makedepends = zig
+	options = !lto
+	source = https://git.calitabby.net/vel/no/raw/branch/master/no.zig
+	sha256sums = 517b7aecf6f4246ac1c5128a3aa12d6ad310cf068883a96f28222a71ee3186fa
+
+pkgname = no
