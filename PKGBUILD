@@ -2,7 +2,7 @@
 
 pkgname=git-stack
 pkgdesc='Stacked branch management for Git'
-pkgver=0.10.19
+pkgver=0.10.20
 pkgrel=1
 url=https://github.com/gitext-rs/git-stack
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(git gcc-libs glibc)
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5823ac8de5340a3f53936054dd8397676fce0a9978daec3221d7e8724594c559')
+sha256sums=('2a1558b2016c5e310811ff83ae9088730e403c46f651b4c648ab6e41ec9d12d1')
 
 prepare () {
 	cd "$pkgname-$pkgver"
