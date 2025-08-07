@@ -1,6 +1,6 @@
 pkgbase = ssh-rdp-host-git
 	pkgdesc = Udev rules and dependencies for an ssh-rdp host
-	pkgver = r113.cb74075
+	pkgver = r130.ebf3d2b
 	pkgrel = 1
 	url = https://github.com/kokoko3k/ssh-rdp
 	install = ssh-rdp-host-git.install
@@ -12,7 +12,7 @@ pkgbase = ssh-rdp-host-git
 	depends = openssh
 	depends = netevent-git
 	depends = xorg-xdpyinfo
-	depends = pulseaudio
+	depends = pulse-native-provider
 	optdepends = ssh-rdp-git: bash script used on clients to connect
 	provides = ssh-rdp-host
 	conflicts = ssh-rdp-host
