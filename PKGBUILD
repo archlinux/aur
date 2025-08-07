@@ -1,7 +1,7 @@
 # Maintainer: Lina Roether <lina.roether@proton.me>
 
 pkgname=niji-git
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A customizable tool for theming linux systems"
 url="https://github.com/lina-roether/niji"
