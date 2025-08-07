@@ -1,5 +1,5 @@
 pkgname=playfin
-pkgver=r92.4be4289
+pkgver=r93.e943cf3
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
   # Clean out old wheels etc.
-  git -C "${pkgname%-git}" clean -dfx
+  git -C "$srcdir/playfin" clean -dfx
 }
 
 build() {
