@@ -2,4 +2,5 @@
 source = "github"
 github = "Aider-AI/aider"
 prefix = "v"
-use_latest_release = true
+exclude_regex = ".*\\.dev"
+use_max_tag = true
