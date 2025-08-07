@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=lima
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Linux virtual machines, typically on macOS, for running containerd."
 arch=('x86_64')
@@ -11,13 +11,13 @@ provides=('lima')
 license=('Apache')
 makedepends=('go>=1.18' 'git' 'gzip' 'tar' 'gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lima-vm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('82e9bfcfdf7423baaf4c712a3123237818c26b0f22abb38b73591b28a36b754e')
+sha256sums=('5dfd2d6010457bc9e3c255cffa26ffd0aea193f7806afb46cc15afe3e2a5b352')
 
 build() {
 	cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1
   export GOFLAGS="-buildmode=pie -buildvcs=false -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make minimal
+  make native
 }
 
 package() {
@@ -33,8 +33,8 @@ package() {
   install -Dm755 cmd/lima "${pkgdir}"/usr/bin/lima
 
   mkdir -p ${pkgdir}/usr/share/${pkgname}/templates/
-  install -Dm644 _output/share/lima/lima-guestagent.Linux-$(uname -m | sed -e s/arm64/aarch64/) \
-	${pkgdir}/usr/share/lima/${pkgname}-guestagent.Linux-$(uname -m | sed -e s/arm64/aarch64/)
+  install -Dm644 _output/share/lima/lima-guestagent.Linux-x86_64.gz \
+	${pkgdir}/usr/share/lima/${pkgname}-guestagent.Linux-x86_64.gz
   cp -rv templates/* ${pkgdir}/usr/share/${pkgname}/templates/
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}/
   cp -rv docs/* ${pkgdir}/usr/share/doc/${pkgname}/
