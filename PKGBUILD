@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove-flatpak
-pkgver=202507301
+pkgver=202508061
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/f9ee6d8a0097ebb095094d78693367c2d4b12abe/archives/dove-flatpak.zip")
-sha512sums=('f7ef37d3beb06c1d00f116d3fba9264c5590801b21a87061adb24aab98d051dddb4915ef74a8def4ea05dad094e1e984f1cc0e887e5ef8acd8bc8b9d6e635fee')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/5337d60760a5ebc532e1fcdca250fefa6db900f5/archives/dove-flatpak.zip")
+sha512sums=('41bb666bd9027a309235d612e150f9a630d9511c9f6ad3f7ee7ea6a6f4d8f8bbdc060e0656f8316364f4ba9c14491220caa192924683e2ef20675eb285467a39')
 makedepends=('unzip')
 
 pkgver() {
@@ -555,6 +555,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/minprivatemail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/minprivatemail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/miobox.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/miobox.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/miomio.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/miomio.jp"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/mit.edu" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/mit.edu"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/ml.murakami.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/ml.murakami.ne.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/ml.shibata.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/ml.shibata.ne.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/mnet.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/mnet.ne.jp"
@@ -600,6 +601,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/mx9.tiki.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/mx9.tiki.ne.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/mypec.eu" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/mypec.eu"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/myself.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/myself.com"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/myyahoo.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/myyahoo.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/narod.ru" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/narod.ru"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/natteliv.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/natteliv.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/netbruger.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/netbruger.dk"
@@ -779,6 +781,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/ready.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/ready.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/realtyagent.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/realtyagent.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/reborn.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/reborn.com"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/rediffmail.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/rediffmail.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/reggaefan.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/reggaefan.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/religious.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/religious.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/repairman.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/repairman.com"
@@ -928,6 +931,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/xp.wind.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/xp.wind.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/xs4all.nl" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/xs4all.nl"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/xtra.co.nz" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/xtra.co.nz"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/yahoo.co.in" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/yahoo.co.in"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/yahoo.co.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/yahoo.co.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/yahoo.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/yahoo.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/yahoo.com.ar" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/yahoo.com.ar"
