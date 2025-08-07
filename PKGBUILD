@@ -1,18 +1,20 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=nerdlog-bin
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Nerdlog: fast, remote-first, multi-host TUI log viewer with timeline histogram and no central server"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/dimonomid/nerdlog"
 license=("BSD-2-Clause")
 depends=(
     'glibc'
-    'libx11'
+)
+optdepends=(
+    'libx11: clipboard support'
 )
 source=("https://github.com/dimonomid/nerdlog/releases/download/v${pkgver}/nerdlog_${pkgver}_linux_amd64.tar.gz")
-b2sums=('cdeb4304fadfa8aedd818390adc3240a29398fe28fceddb797d2cd1938a470f44f85468f344811ed8285713101567550a8f77bb9a43cc72aaeeb0c802afb8a75')
+b2sums=('80f3a06719d231f1773b16d210f052f87eca3ac2560748a2f8ec00b208756e556b2c9be0963bbabd6fffc5071948499f07d47076e6232d7eb3413b955fb62297')
 
 package() {
     install -Dm755 "nerdlog" "${pkgdir}/usr/bin/nerdlog"
