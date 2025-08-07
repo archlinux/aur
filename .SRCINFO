@@ -1,0 +1,18 @@
+pkgbase = libnl-tiny-git
+	pkgdesc = Tiny OpenWrt fork of libnl
+	pkgver = r43.gc0df580
+	pkgrel = 1
+	url = https://git.openwrt.org/?p=project/libnl-tiny.git
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = libnl-tiny=r43.gc0df580
+	conflicts = libnl-tiny
+	options = staticlibs
+	source = git+https://git.openwrt.org/project/libnl-tiny.git
+	sha256sums = SKIP
+
+pkgname = libnl-tiny-git
