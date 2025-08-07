@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=dosage-tracker
-pkgver=1.9.9
+pkgver=1.9.10
 pkgrel=1
 pkgdesc="Medication tracker for Linux"
 url="https://github.com/diegopvlk/Dosage"
@@ -11,7 +11,7 @@ depends=('gjs' 'libadwaita' 'libportal')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a66bd03b17aeb53ece41dd503628df9c292b30daa0cf55f64dc968045f31e0c')
+sha256sums=('539c6bb037aa14154d32c17336c2f49dccb7574ba6d8519ab300e0be61110cbc')
 
 build() {
   arch-meson Dosage-$pkgver build
