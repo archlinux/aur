@@ -2,7 +2,7 @@
 
 _pkgname="bitrise"
 pkgname="${_pkgname}-bin"
-pkgver=2.32.1
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
 source_x86_64=("${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_pkgname}-Linux-x86_64")
 sha256sums=('50beabde262bb6069d8e751dc17ccaecc04c3d7451f8dcd8e684a6f16c964e04'
             'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
-sha256sums_x86_64=('3e807c54e23eaaa82a1ff10a36f91e52dbf6832bdfdb891fc81661bbfb49e027')
+sha256sums_x86_64=('0cd0170bc787112c1c2a39b6d04f75e391f65597ff8e5d9138e27b8318627b81')
 
 package() {
   cd "${srcdir}"
