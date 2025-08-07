@@ -1,6 +1,6 @@
 # Maintainer: terpinedream
 pkgname=tuxagotchi
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal companion that thrives on GitHub commits with Cava integration"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-textual' 'cava')
 makedepends=('python-setuptools')
 source=("https://github.com/terpinedream/tuxagotchi-aur/archive/v${pkgver}.tar.gz")
-md5sums=('8a438a2372460aa9ebe5081dc0ba9e25')
+md5sums=('efa12f621c3474e851f386d4f332c7ce')
 
 package() {
   cd "$srcdir/tuxagotchi-aur-$pkgver"
