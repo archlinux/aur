@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-wekan
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Client for interacting with the WeKan® REST-API"
 url="https://github.com/bastianwenske/python-wekan"
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('python' 'python-dateutil' 'python-requests')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'cython' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bastianwenske/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7d983af4cf638a5c9bab182ab66b2224473e8ed8ccfd55a528695f9ac469c433')
+sha256sums=('0e7be904c1cc79b1be5b565230b20516368ed60902597e95798779dcf0953e45')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

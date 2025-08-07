@@ -1,6 +1,6 @@
 pkgbase = python-wekan
 	pkgdesc = Client for interacting with the WeKan® REST-API
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/bastianwenske/python-wekan
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-wekan
 	depends = python
 	depends = python-dateutil
 	depends = python-requests
-	source = python-wekan-0.2.1.tar.gz::https://github.com/bastianwenske/python-wekan/archive/refs/tags/0.2.1.tar.gz
-	sha256sums = 7d983af4cf638a5c9bab182ab66b2224473e8ed8ccfd55a528695f9ac469c433
+	source = python-wekan-0.3.1.tar.gz::https://github.com/bastianwenske/python-wekan/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = 0e7be904c1cc79b1be5b565230b20516368ed60902597e95798779dcf0953e45
 
 pkgname = python-wekan
