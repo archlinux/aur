@@ -1,6 +1,6 @@
 pkgbase = soundfont-ensembles
 	pkgdesc = Soundfonts for Ensembles
-	pkgver = 0.0.3
+	pkgver = 0.0.3.2023.g778c352f
 	pkgrel = 1
 	url = https://gitlab.com/SubhadeepJasu/ensemblesgmsoundfont
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = soundfont-ensembles
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	source = ensemblesgmsoundfont-0.0.3.tar.gz::https://gitlab.com/SubhadeepJasu/ensemblesgmsoundfont/-/archive/v0.0.3/ensemblesgmsoundfont-v0.0.3.tar.gz
-	sha256sums = 0b5ecca24623dabc9ea546c49cc25ebb3f419d6b61c035c603133a1032a4f2bc
+	source = git+https://gitlab.com/SubhadeepJasu/ensemblesgmsoundfont.git#commit=778c352f943b8fdd80dd302ea5926bc14824c120
+	sha256sums = 24351db4dcf4651a94afff9b4af1599a35e75082fe7838fa2afa315a42d1d8d9
 
 pkgname = soundfont-ensembles
