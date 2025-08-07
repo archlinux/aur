@@ -13,16 +13,16 @@ sha256sums=('SKIP')
 
 
 build() {
-  cd "$srcdir/folder-size"
+  cd "$srcdir/folder-size/src/hello_rust"
   cargo build --release
 }
 
-
 package() {
-  cd "$srcdir/folder-size"
+  cd "$srcdir/folder-size/src/hello_rust"
   install -Dm755 "target/release/folder-size" "$pkgdir/usr/bin/folder-size"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
 
 
