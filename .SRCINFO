@@ -1,0 +1,17 @@
+pkgbase = ocaml-pyml
+	pkgdesc = OCaml bindings for Python 2 and Python 3
+	pkgver = 20250807
+	pkgrel = 1
+	url = https://github.com/ocamllibs/pyml
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = dune
+	makedepends = ocaml-stdcompat
+	depends = glibc
+	depends = ocaml
+	depends = python
+	options = !strip
+	source = ocaml-pyml-20250807.tar.gz::https://github.com/ocamllibs/pyml/archive/refs/tags/20250807.tar.gz
+	b2sums = 279c3ed46babc79114051426494b2fe83d1abec634e5e798b48d6f60889b7b29eaaf353d4655a50610cf82c0c11922d1bfa633d608087b51cb7ac8fe27be6470
+
+pkgname = ocaml-pyml
