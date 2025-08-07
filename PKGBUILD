@@ -1,3 +1,8 @@
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: JunYoung Gwak <aur@jgwak.com>
+# Contributor: Adam Ehlers Nyholm Thomsen <adament@adament.net>
+# Contributor: Sebastian Jug <seb@stianj.ug>ote-gcrypt'
+
 pkgname='git-remote-gcrypt'
 pkgver='1.5'
 pkgrel=1
