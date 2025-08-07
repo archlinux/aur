@@ -1,12 +1,12 @@
 pkgbase = karu
 	pkgdesc = A command-line tool for downloading and watching anime
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/keircn/karu
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = karu-0.1.5::git+https://github.com/keircn/karu.git#tag=v0.1.5
+	source = karu-0.2.0::git+https://github.com/keircn/karu.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = karu
