@@ -1,7 +1,7 @@
 # Maintainer: Philip Meulengracht <the_meulengracht@hotmail.com>
 pkgname=vchef
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 _gitname=bake
 epoch=
 pkgdesc="The CHEF Package Mangement System"
@@ -25,7 +25,6 @@ source=(
 	"git+https://github.com/Meulengracht/vali-rofs"
 )
 sha256sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
