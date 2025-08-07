@@ -1,5 +1,4 @@
 # Maintainer: Robert Manner <the_manni at users.sf.net>
-# The recipe is from manjaro with minor changes. Thanks for the original work!
 
 pkgname=osmin
 pkgver=1.14.3
