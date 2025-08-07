@@ -1,0 +1,4 @@
+[komodo]
+source = "git"
+git = "https://invent.kde.org/utilities/komodo.git"
+prefix = "v"

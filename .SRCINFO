@@ -1,0 +1,31 @@
+pkgbase = komodo
+	pkgdesc = Kirigami-based todo manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://invent.kde.org/utilities/komodo
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = reuse
+	makedepends = vulkan-headers
+	depends = gcc-libs
+	depends = glibc
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kdbusaddons
+	depends = kguiaddons
+	depends = ki18n
+	depends = kiconthemes
+	depends = kirigami
+	depends = kirigami-addons
+	depends = kitemmodels
+	depends = qqc2-desktop-style
+	depends = qt6-base
+	depends = qt6-declarative
+	source = komodo-1.0.0::git+https://invent.kde.org/utilities/komodo.git#tag=v1.0.0
+	sha256sums = 73bca8b9a13548dedc0bf5202808f3a6a0c4d402f92bd69fd3b8229b690a0701
+
+pkgname = komodo
