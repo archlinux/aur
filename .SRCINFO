@@ -1,7 +1,7 @@
 pkgbase = velodown-bin
 	pkgdesc = A blazing-fast download manager built with Rust and Tauri
 	pkgver = 0.3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mlm-games/velodown
 	arch = x86_64
 	license = MIT

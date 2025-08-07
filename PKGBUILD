@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=velodown-bin
 pkgver=0.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing-fast download manager built with Rust and Tauri"
 arch=('x86_64')
 url="https://github.com/mlm-games/velodown"
@@ -27,7 +27,7 @@ package() {
     
     # install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/velodown.png"
 
-    cat > "${pkgdir}/usr/share/applications/velodown.desktop" << DESKTOP_EOF
+    cat > "${srcdir}/velodown.desktop" << DESKTOP_EOF
 [Desktop Entry]
 Name=VeloDown
 Comment=A blazing-fast download manager built with Rust and Tauri
