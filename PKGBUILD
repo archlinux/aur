@@ -1,16 +1,16 @@
 pkgname=amphi-notes
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc='A note-taking app created by Amphi'
+pkgdesc='Cross-platform note-taking app that enables users to sync their data with a self-hosted server'
 url=https://amphi.site
 arch=('x86_64' 'aarch64')
 license=(APACHE)
 depends=(fuse2 mpv mimalloc)
 options=(!debug)
-source_x86_64=("${url}/releases/notes/notes-linux-x64-1.1.0.deb")
-source_aarch64=("${url}/releases/notes/notes-linux-arm64-1.1.0.deb")
-sha256sums_x86_64=("d509a37a7d23e0ad31a93b0330a0918f6fb800f03a1c35f382c736915e474ed3")
-sha256sums_aarch64=("8d028fde9cfaabf7b7418c63439aa9652ab913898a531036635490c81cb20e1b")
+source_x86_64=("${url}/releases/notes/notes-linux-x64-${pkgver}.deb")
+source_aarch64=("${url}/releases/notes/notes-linux-arm64-${pkgver}.deb")
+sha256sums_x86_64=("7e2cc3796875464ab20dc3ec494e280192871808c3830911db96f038056cb4a6")
+sha256sums_aarch64=("435d6bb354ff806299ed5f2e0134dfb2bfc2619772951e378b04cf2764d60326")
 _pkgdesktop="amphi-notes.desktop"
 
 
@@ -24,6 +24,15 @@ prepare() {
         exit 1
         fi
 }
+
+build() {
+    sed -i -E \
+		"s|Exec=notes|Exec=amphi-notes|" \
+		"${srcdir}/usr/share/applications/notes.desktop"
+
+	# Adjust .desktop to have it point to the correct icon
+	sed -i -E 's/^Icon=.+/Icon=amphi-notes/' "${srcdir}/usr/share/applications/notes.desktop"
+}
         
 package() {
 	# Desktop
@@ -34,12 +43,17 @@ package() {
 	install -dm644 "${pkgdir}/usr/share/icons/"
 	cp -a "${srcdir}/usr/share/icons" "${pkgdir}/usr/share"
 
+    for res in "128x128" "256x256"; do
+        mv "${pkgdir}/usr/share/icons/hicolor/${res}/apps/notes.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/amphi-notes.png"
+    done
+
 	# Executable
 	install -dm755 "${pkgdir}/opt/${pkgname}/"
 	cp -a "${srcdir}/usr/share/notes/." "${pkgdir}/opt/${pkgname}"
+	mv "${pkgdir}/opt/${pkgname}/notes" "${pkgdir}/opt/${pkgname}/amphi-notes"
 
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s \
-		"/opt/amphi-notes/notes" \
-		"${pkgdir}/usr/bin/notes"
+		"/opt/amphi-notes/amphi-notes" \
+		"${pkgdir}/usr/bin/amphi-notes"
 }

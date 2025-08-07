@@ -1,6 +1,6 @@
 pkgbase = amphi-notes
-	pkgdesc = A note-taking app created by Amphi
-	pkgver = 1.1.0
+	pkgdesc = Cross-platform note-taking app that enables users to sync their data with a self-hosted server
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://amphi.site
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = amphi-notes
 	depends = mpv
 	depends = mimalloc
 	options = !debug
-	source_x86_64 = https://amphi.site/releases/notes/notes-linux-x64-1.1.0.deb
-	sha256sums_x86_64 = d509a37a7d23e0ad31a93b0330a0918f6fb800f03a1c35f382c736915e474ed3
-	source_aarch64 = https://amphi.site/releases/notes/notes-linux-arm64-1.1.0.deb
-	sha256sums_aarch64 = 8d028fde9cfaabf7b7418c63439aa9652ab913898a531036635490c81cb20e1b
+	source_x86_64 = https://amphi.site/releases/notes/notes-linux-x64-1.1.1.deb
+	sha256sums_x86_64 = 7e2cc3796875464ab20dc3ec494e280192871808c3830911db96f038056cb4a6
+	source_aarch64 = https://amphi.site/releases/notes/notes-linux-arm64-1.1.1.deb
+	sha256sums_aarch64 = 435d6bb354ff806299ed5f2e0134dfb2bfc2619772951e378b04cf2764d60326
 
 pkgname = amphi-notes
