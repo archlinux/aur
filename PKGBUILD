@@ -6,7 +6,7 @@
 pkgbase=xarchiver-git
 pkgname=(xarchiver-git xarchiver-gtk2-git)
 pkgver=0.5.4.25.94.g8b56b0b3
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ frontend to various command line archivers"
 arch=(x86_64)
 url="https://github.com/ib/xarchiver"
