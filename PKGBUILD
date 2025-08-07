@@ -4,8 +4,8 @@
 # Maintainer: Luciano Ciccariello <luciano.ciccariello@docker.com>
 
 pkgname=docker-desktop
-pkgver=4.43.2
-_revision=199162
+pkgver=4.44.0
+_revision=201307
 pkgrel=1
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('docker-compose' 'docker-buildx')
 makedepends=('w3m')
 install='docker-desktop.install'
 source=("$pkgname-$pkgver-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/$_revision/$pkgname-x86_64.pkg.tar.zst")
-sha256sums=('d03dc5eba881d5f4f3c17c7f56e5148ab713d8f1330c7811586ca52c0762f3b7')
+sha256sums=('29f07de8780aa48d252573f7e22d71e4e6c77dc3232f16f464e3748540c4a22d')
 
 package() {
     install -d "${pkgdir}/usr/bin"
