@@ -1,12 +1,12 @@
 pkgbase = symm
 	pkgdesc = Simple symlink manager
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/tednaaa/symm
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = symm-0.3.0.tar.gz::https://github.com/tednaaa/symm/archive/v0.3.0.tar.gz
+	source = symm-0.4.0.tar.gz::https://github.com/tednaaa/symm/archive/v0.4.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = symm

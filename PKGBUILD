@@ -1,5 +1,5 @@
 pkgname=symm
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Simple symlink manager"
 arch=('x86_64')
