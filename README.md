@@ -1,6 +1,6 @@
-# restoHack: Bringing 1982 Hack Back from the Dead
+# restoHack: Bringing 1984 Hack Back from the Dead
 
-**restoHack** is a modern resurrection of *Hack*, the legendary 1982 roguelike that paved the way for *NetHack*. This isn’t a reimagining. This is preservation with a blowtorch and a scalpel. The goal: get the original code compiling, running, and dungeon-crawling like it did back when floppy disks were king, but on a 2025 toolchain.
+**restoHack** is a modern resurrection of *Hack*, the legendary 1984 roguelike that paved the way for *NetHack*. This isn’t a reimagining. This is preservation with a blowtorch and a scalpel. The goal: get the original code compiling, running, and dungeon-crawling like it did back when floppy disks were king, but on a 2025 toolchain.
 
 Think of it as a resto-mod. The soul stays vintage. The internals? Cleaned, modernized, and ready to play in 2025.
 
@@ -54,7 +54,7 @@ cmake .. && cmake --build .
 **"Game in progress" error?**
 
 ```bash
-rm -f hackdir/mjh.* hackdir/save/*  # Replace 'mjh' with your username
+rm -f hackdir/<username>.* hackdir/save/*  
 ./hack
 ```
 
@@ -159,19 +159,19 @@ And yes, it’s meant to be that way.
 
 * Start as any character class → Explore procedural dungeons → Fight monsters → Collect treasure → Save and resume → Die gloriously in authentic ASCII
 * Thoroughly tested. Rock-solid stability.
-* 100% Authentic. Complete original 1982 code preserved, only syntax modernized.
+* 100% Authentic. Complete original 1984 code preserved, only syntax modernized.
 * Performance optimized. Efficient execution on modern hardware.
 
 ### Release Status: Ready for Distribution
 
 * Perfect build system. Compiles cleanly on all platforms using CMake.
 * Complete documentation. Guides, notes, and usage instructions.
-* Historical preservation achieved. 100% authentic 1982 experience.
+* Historical preservation achieved. 100% authentic 1984 experience.
 * All K&R conversion completed. Entire codebase modernized.
 * Cross-platform testing completed. Verified on Linux, BSD, macOS.
 * AUR packaging and source release prepared.
 
-**Final Result:** A fully restored, perfectly playable 1982 Hack game running on modern systems with 100% authenticity and zero compromises. The restoration is complete and public-ready.
+**Final Result:** A fully restored, perfectly playable 1984 Hack game running on modern systems with 100% authenticity and zero compromises. The restoration is complete and public-ready.
 
 ---
 

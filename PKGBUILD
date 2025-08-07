@@ -2,7 +2,7 @@
 pkgname=restohack
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="A faithful restoration of the original 1982 Hack roguelike"
+pkgdesc="A faithful restoration of the original 1984 Hack roguelike"
 arch=('x86_64')
 url="https://github.com/Critlist/restoHack"
 license=('BSD')

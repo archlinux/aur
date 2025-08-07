@@ -1,0 +1,47 @@
+# Build files
+/build/
+*.pkg.tar*
+*.pkg.tar.zst
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.deb
+*.rpm
+*.tgz
+
+# Makepkg garbage
+/src/
+/pkg/
+*.log
+*.sig
+*.part
+*.upd
+*.bak
+*.swp
+*.swo
+*~
+
+# CMake build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+hack
+makedefs
+
+# IDE/editor junk
+.DS_Store
+*.kate-swp
+.idea/
+.vscode/
+*.user
+*.project
+*.ccls-cache/
+*.clangd/
+
+# Git metadata (never version your upstream .git)
+.git/
+
+# Avoid clutter from tools like `namcap` or pkgrel bump scripts
+*.namcap
+

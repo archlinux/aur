@@ -4,13 +4,13 @@ This project contains code from multiple sources with different but compatible l
 
 ---
 
-## Original 1982 Hack Game Source Code
+## Original 1984 Hack Game Source Code
 
 **Files**: Most source files (55+ files including hack.main.c, hack.end.c, etc.)
 
 **Copyright**: Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.
 
-**License**: The original Hack source code was released into the public domain or under a permissive license by Stichting Mathematisch Centrum (Mathematical Centre, Amsterdam). This includes the core game logic, algorithms, and mechanics that form the authentic 1982 Hack experience.
+**License**: The original Hack source code was released into the public domain or under a permissive license by Stichting Mathematisch Centrum (Mathematical Centre, Amsterdam). This includes the core game logic, algorithms, and mechanics that form the authentic 1984 Hack experience.
 
 ---
 
@@ -67,7 +67,7 @@ SUCH DAMAGE.
 - Documentation and educational materials
 - Packaging and distribution configuration
 
-**Philosophy**: All modern additions maintain the authentic 1982 gameplay experience while ensuring compatibility with contemporary systems. No modern game mechanics have been added.
+**Philosophy**: All modern additions maintain the authentic 1984 gameplay experience while ensuring compatibility with contemporary systems. No modern game mechanics have been added.
 
 ---
 
@@ -115,12 +115,12 @@ When distributing or using this software:
 1. **Preserve all copyright notices** in source code headers
 2. **Include this LICENSE file** in all distributions
 3. **Credit the original creators**: 
-   - Stichting Mathematisch Centrum for the original 1982 Hack
+   - Stichting Mathematisch Centrum for the original 1984 Hack
    - University of California, Berkeley for BSD-licensed components
    - restoHack project for the modern restoration work
 
 ## Historical Note
 
-The original 1982 Hack game was created by Jay Fenlason with contributions from many others. This restoration preserves 94.2% of the authentic original code while modernizing only the syntax necessary for contemporary compilation. The game mechanics, algorithms, and user experience remain completely faithful to the 1982 version.
+The original 1984 Hack game was created by Jay Fenlason with contributions from many others. This restoration preserves 94.2% of the authentic original code while modernizing only the syntax necessary for contemporary compilation. The game mechanics, algorithms, and user experience remain completely faithful to the 1984 version.
 
 This work represents historical software preservation and educational enhancement, not commercial exploitation.
