@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2123.beta2.r1.g05aa6af
+pkgver=2123.beta2.r5.g80f0c03
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -103,10 +103,10 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	# ignore unneeded missing submodules
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
-	# use system spirv-headers in sirit
-	sed -i '1i find_package(SPIRV-Headers)' ../../externals/sirit/sirit/src/CMakeLists.txt
 	# fix zstd include
 	sed -i 's|zstd/contrib/seekable_format/\(zstd_seekable\.h\)|\1|' ../../src/common/zstd_compression.cpp
+	# use system spirv-tools
+	sed -i '/spirv-tools/d' ../../externals/CMakeLists.txt
 }
 
 build() {
@@ -131,6 +131,7 @@ build() {
 		-D ENABLE_TESTS="$CHECKFUNC"
 		-D USE_DISCORD_PRESENCE=ON
 		-D USE_SYSTEM_LIBS=ON
+		-D USE_SYSTEM_SPIRV_HEADERS=ON
 		-Wno-dev
 	)
 	local flags
