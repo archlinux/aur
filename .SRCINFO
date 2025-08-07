@@ -1,16 +1,14 @@
 pkgbase = ocaml-stdcompat
 	pkgdesc = Compatibility module for OCaml standard library
-	pkgver = 19
-	pkgrel = 2
+	pkgver = 21.0
+	pkgrel = 1
 	url = https://github.com/thierry-martinez/stdcompat
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = ocaml-findlib
 	depends = glibc
-	depends = ocaml<5.3.0
-	source = ocaml-stdcompat-19.tar.gz::https://github.com/thierry-martinez/stdcompat/archive/refs/tags/v19.tar.gz
-	source = 0001-ocaml-5.2-support.patch::https://github.com/thierry-martinez/stdcompat/commit/05337180c722fbb54fd51aa40db82555f1aef54f.patch
-	b2sums = 4af97c355b98f63366d647a4a375bde43ffbf959a2c02132ab57457db4213b8f98a972bf99667dd53603b28235b4f853470c2117270ce42c6aa579a21dd148fb
-	b2sums = 39506328f05ad5d6236f18c6e1d0a9d1d2bc6ffd74159a4f67c3da3c11825166ae317fb3598f2cc970683098110cdc31dd28aaa53aff457054dc3fd084936eb2
+	depends = ocaml<5.4
+	source = ocaml-stdcompat-21.0.tar.gz::https://github.com/thierry-martinez/stdcompat/archive/refs/tags/21.0.tar.gz
+	b2sums = 6c973d9286e99650a7dd4ed605aaf6931ff8635370387d16dda86a30c69458d87ed7c7944b08b04b5a6de931e2c73eef3e96e263b49041ccc9ec200704531fc2
 
 pkgname = ocaml-stdcompat
