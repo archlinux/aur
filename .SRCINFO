@@ -1,7 +1,7 @@
 pkgbase = rmm
 	pkgdesc = RAPIDS Memory Manager
-	pkgver = 25.06.00
-	pkgrel = 2
+	pkgver = 25.08.00
+	pkgrel = 1
 	url = https://github.com/rapidsai/rmm
 	arch = x86_64
 	license = Apache-2.0
@@ -16,10 +16,10 @@ pkgbase = rmm
 	depends = cuda
 	depends = nvtx3
 	depends = rapids-logger
-	source = https://github.com/rapidsai/rmm/archive/refs/tags/v25.06.00.tar.gz
+	source = https://github.com/rapidsai/rmm/archive/refs/tags/v25.08.00.tar.gz
 	source = system-lib.patch
 	source = missing-pkg.patch
-	sha256sums = 719f9d06dcc929ef315627f1dc574077006e5c80c85e86ff8e8126e6aafac021
+	sha256sums = 6931f4de923b617af8c3b97505d79fd3b7b6b5492c1b5a8cd8bcfdc147cdf458
 	sha256sums = e6e7a0f4e069956eaa5de92a03a9d64c5d4bfbf12156eb0f69ca9f5d2f299ded
 	sha256sums = 9b10ca24bf8da07d02d188c80d18556cb450c3ea70510e4680d8ac7cdac72249
 
