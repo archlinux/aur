@@ -1,0 +1,20 @@
+pkgbase = zenvpn
+	pkgdesc = ZenVPN client
+	pkgver = 1.2.26
+	pkgrel = 1
+	url = https://zenvpn.net
+	arch = x86_64
+	license = custom:Proprietary
+	makedepends = dpkg
+	depends = electron25
+	depends = glibc
+	depends = iproute2
+	depends = libpcap
+	depends = sh
+	noextract = zenvpn-x86_64.deb
+	source = zenvpn.sh
+	sha256sums = f38be1d4f732d1dcf1b9705431de6f3eaae0e1616e81bc4f9cf7b566416545ca
+	source_x86_64 = zenvpn-x86_64.deb::https://app.zenvpn.net/downloads/linux/amd64/latest/
+	sha256sums_x86_64 = SKIP
+
+pkgname = zenvpn
