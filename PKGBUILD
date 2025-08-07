@@ -1,13 +1,12 @@
 pkgname=playfin
-pkgver=r94.526a53c
+pkgver=r95.572aecd
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
 url="https://github.com/AlexJonker/playfin"
 license=('MIT')
 depends=('mpv' 'python' 'python-requests' 'python-dotenv')
-makedepends=('git')
-checkdepends=(python-pytest)
+makedepends=('git' 'python-build' 'python-installer')
 source=("git+$url.git")
 md5sums=('SKIP')
 
@@ -25,14 +24,7 @@ prepare() {
 
 build() {
   cd "$srcdir/playfin"
-  make pypi-files
-  python devscripts/make_lazy_extractors.py
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$srcdir/playfin"
-  pytest -v -m "not download" -k 'not Websockets' # revert when extra/python-websockets updates to 13
 }
 
 package() {

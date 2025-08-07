@@ -1,12 +1,13 @@
 pkgbase = playfin
 	pkgdesc = Terminal-based Jellyfin player with MPV integration
-	pkgver = r94.526a53c
+	pkgver = r95.572aecd
 	pkgrel = 1
 	url = https://github.com/AlexJonker/playfin
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	depends = mpv
 	depends = python
 	depends = python-requests
