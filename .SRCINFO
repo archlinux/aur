@@ -1,0 +1,27 @@
+pkgbase = vrcx
+	pkgdesc = VRChat companion application built with Electron
+	pkgver = 2024.01.01
+	pkgrel = 1
+	url = https://github.com/vrcx-team/VRCX
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-9.0
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = dotnet-runtime-9.0
+	depends = electron
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = gconf
+	depends = libxrandr
+	depends = alsa-lib
+	provides = vrcx
+	conflicts = vrcx-git
+	source = vrcx-2024.01.01.tar.gz::https://github.com/vrcx-team/VRCX/archive/refs/tags/v2024.01.01.tar.gz
+	source = vrcx.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vrcx
