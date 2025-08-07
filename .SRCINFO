@@ -1,16 +1,20 @@
 pkgbase = ctrld-bin
 	pkgdesc = A highly configurable, multi-protocol DNS forwarding proxy
-	pkgver = 1.4.3
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/Control-D-Inc/ctrld
 	arch = x86_64
 	license = MIT
 	provides = ctrld
 	backup = etc/controld/ctrld.toml
-	source = https://github.com/Control-D-Inc/ctrld/releases/download/v1.4.3/ctrld_1.4.3_linux_amd64.tar.gz
+	source = https://github.com/Control-D-Inc/ctrld/releases/download/v1.4.5/ctrld_1.4.5_linux_amd64.tar.gz
+	source = README-1.4.5.md::https://raw.githubusercontent.com/Control-D-Inc/ctrld/v1.4.5/README.md
+	source = LICENSE-1.4.5::https://raw.githubusercontent.com/Control-D-Inc/ctrld/v1.4.5/LICENSE
 	source = ctrld.service
 	source = ctrld.toml
-	sha256sums = 604d7fcb8b246776ff745b20410831c593f1e7a5265404fa15076b833f8e433f
+	sha256sums = f77383f848b6ebc3a6439188bb9a53e1e40235b59619d302f2f7d6beeaa6c6a9
+	sha256sums = 631bf4ef5820d83e359f84b8bdba8e7eb0dc29cae5071f4e6f3d54b23e33e736
+	sha256sums = c8d4e7d3c2bfb448e6a03046456a9039e2b406592cddd939931c638ab47f01de
 	sha256sums = 0b1dd36bc9706f88949de821d84604cbc9a2534cd2f627ef5303bfc962af72cd
 	sha256sums = 40328c166a329b47072593998170544084725a47e20989be242bbc137d91cd0a
 
