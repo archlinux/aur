@@ -2,14 +2,14 @@ pkgbase = tuxagotchi
 	pkgdesc = Terminal companion that thrives on GitHub commits with Cava integration
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/terpinedream/tuxagotchi
+	url = https://github.com/terpinedream/tuxagotchi-aur
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-textual
 	depends = cava
-	source = tuxagotchi-1.0.0.tar.gz
-	md5sums = SKIP
+	source = https://github.com/terpinedream/tuxagotchi-aur/archive/v1.0.0.tar.gz
+	md5sums = 8a438a2372460aa9ebe5081dc0ba9e25
 
 pkgname = tuxagotchi
