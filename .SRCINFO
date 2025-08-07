@@ -1,6 +1,6 @@
 pkgbase = python-qh3
 	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/jawah/qh3
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = python-qh3
 	depends = gcc-libs
 	depends = glibc
 	depends = python>3.7
-	source = python-qh3-1.5.2.tar.gz::https://github.com/jawah/qh3/archive/refs/tags/v1.5.2.tar.gz
-	sha256sums = 890c389d8eacd295edc1c2e0c19da4a6d108e6fe991d0e2ce35249b9ec633c4f
+	source = python-qh3-1.5.3.tar.gz::https://github.com/jawah/qh3/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = c62e89110248f83bea898c20f3ff460efe6bee3ba3b9de1e63e38461faa1fc61
 
 pkgname = python-qh3
