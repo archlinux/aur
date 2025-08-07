@@ -1,0 +1,18 @@
+pkgbase = libideviceactivation
+	pkgdesc = A library to handle the activation process of iOS devices
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/libimobiledevice/libideviceactivation
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = GPL-3.0-or-later
+	depends = curl>=7.20
+	depends = glibc
+	depends = libimobiledevice>=1.3.0
+	depends = libplist>=2.2.0
+	depends = libxml2>=2.9
+	provides = libideviceactivation-1.0.so
+	source = libideviceactivation-1.1.1.tar.gz::https://github.com/libimobiledevice/libideviceactivation/archive/refs/tags/1.1.1.tar.gz
+	b2sums = 522fa23e508bffe878a77b2ca0afe15f62f4142331d9d3a64b380fb1e2dafab6b5e9ac21b5b52434b40d18402114a38a7c94ced592b9aea63d22df74596ea8fb
+
+pkgname = libideviceactivation

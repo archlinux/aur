@@ -1,0 +1,4 @@
+[libideviceactivation]
+source = "git"
+git = "https://github.com/libimobiledevice/libideviceactivation.git"
+prefix = "v"
