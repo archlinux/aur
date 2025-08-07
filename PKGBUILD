@@ -2,33 +2,29 @@
 
 pkgbase=libraft
 pkgname=(libraft python-pylibraft python-raft-dask)
-pkgver=25.06.00
-pkgrel=2
-pkgdesc="RAFT contains fundamental widely-used algorithms and primitives for machine learning and information retrieval. The algorithms are CUDA-accelerated and form building blocks for more easily writing high performance applications."
+pkgver=25.08.00
+pkgrel=1
+pkgdesc="Reusable Accelerated Functions and Tools for Vector Search and More"
 url="https://github.com/rapidsai/raft"
 arch=('x86_64')
 license=('Apache-2.0')
-depends=('cuda' 'rmm')
-makedepends=('cuda' 'python-setuptools' 'cmake' 'python-scikit-build-core' 'python-rapids-build-backend' 'ninja' 'cython')
-conflicts=('cutlass-headers') # libraft needs a specific version of cutlass-headers
+depends=(cuda rmm)
+makedepends=(cuda python-build python-installer python-wheel cmake python-scikit-build-core python-rapids-build-backend ninja cython)
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
-    "cython-fix.patch" 
     "system-lib.patch"
     "missing-pkg.patch"
     "missing-pkg-dask.patch"
 )
 sha256sums=(
-    '5bef9bf52c56f7efb0f120130bd1d6d493ee144f1f7328e02f0f70d5d5f2a33b'
-    '46a2f4263449606a650e6285bf9caa8f9ce236275431ce72545e1eca3332583a'
-    'b9441e008af77d3d197b1d699abd25eefc7656c78bd53da42b21b5f0504e2e69'
+    '032dce57b297e121352a1556bd9021410be30fcf319e158592f615e1990b2e58'
+    '55a7ef2a7e9d2e08d6bb5355743bdc97806660e222736a8a20028b103683fffc'
     '816ee0a489622a0f56cc479fabf20c79ef36eb81673d1da7fd0a649e372ff613'
-    'SKIP'
+    '40a7013af054a3d24690976a00cafe5901329a01af45c42938dcbbd4a39280ac'
 )
 
 prepare() {
     cd "$srcdir/raft-$pkgver"
-    patch -p1 < ../../cython-fix.patch
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/pylibraft/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
     patch -p1 "python/raft-dask/CMakeLists.txt" < "$srcdir/missing-pkg-dask.patch"
@@ -53,6 +49,7 @@ build() {
 }
 
 package_libraft() {
+    conflicts=(cutlass-headers) # libraft needs a specific version of cutlass-headers
     cd "$srcdir/raft-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
     rm "$pkgdir/usr/include/cuco" -r
@@ -60,7 +57,7 @@ package_libraft() {
 }
 
 package_python-pylibraft() {
-    depends+=('libraft' 'python' 'python-rmm' 'python-numpy' 'python-cuda')
+    depends+=(libraft python python-rmm python-numpy python-cuda)
     cd "$srcdir/raft-$pkgver/python/pylibraft"
     python -m installer --destdir="$pkgdir" dist/*.whl
     rm "$pkgdir/usr/lib/python3.13/site-packages/include" -rf
@@ -69,7 +66,7 @@ package_python-pylibraft() {
 }
 
 package_python-raft-dask() {
-    depends+=('libraft' 'python' 'python-dask-cuda' 'openucx' 'python-pylibraft' 'ucxx')
+    depends+=(libraft python python-dask-cuda openucx python-pylibraft ucxx)
     cd "$srcdir/raft-$pkgver/python/raft-dask"
     python -m installer --destdir="$pkgdir" dist/*.whl
     rm "$pkgdir/usr/lib/python3.13/site-packages/include" -rf
