@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-plasmavantage
 	pkgdesc = Plasmoid for KDE Plasma 6 for controlling certain features of Lenovo laptops.
 	pkgver = 0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Scias/plasmavantage
 	install = .install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = plasma6-applets-plasmavantage
 	depends = plasma5support
 	depends = plasma-workspace
 	depends = qt6-declarative
+	optdepends = lenovolegionlinux-git: Additional features for Lenovo Legion laptops
 	source = https://gitlab.com/Scias/plasmavantage/-/archive/0.29/plasmavantage-0.29.tar.gz
 	sha256sums = 93ac8416a83867319d76d30017b4c12e46da4b487001ad20bffd744eb8770b8d
 

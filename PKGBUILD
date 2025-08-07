@@ -3,7 +3,7 @@
 _gitpkgname=plasmavantage
 pkgname=plasma6-applets-plasmavantage
 pkgver=0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasmoid for KDE Plasma 6 for controlling certain features of Lenovo laptops."
 arch=(any)
 url="https://gitlab.com/Scias/$_gitpkgname"
@@ -16,6 +16,9 @@ depends=(
     plasma5support
     plasma-workspace
     qt6-declarative
+)
+optdepends=(
+    "lenovolegionlinux-git: Additional features for Lenovo Legion laptops"
 )
 source=("$url/-/archive/$pkgver/$_gitpkgname-$pkgver.tar.gz")
 sha256sums=('93ac8416a83867319d76d30017b4c12e46da4b487001ad20bffd744eb8770b8d')
