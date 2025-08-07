@@ -1,0 +1,3 @@
+post_install() {
+    echo "==> To enable password-less operation, you need to start/enable the plasmavantage-noroot service. (e.g systemctl enable --now plasmavantage-noroot.service)"
+}

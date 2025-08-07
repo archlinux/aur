@@ -1,0 +1,3 @@
+[plasma6-applets-plasmavantage]
+source = "git"
+git = "https://gitlab.com/Scias/plasmavantage.git"
