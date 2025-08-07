@@ -1,7 +1,7 @@
 pkgbase = zotero-beta-bin
 	pkgdesc = Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research.
 	pkgver = 8.0_beta.3_8355a9540
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zotero.org/support/dev_builds
 	arch = x86_64
 	arch = i686
