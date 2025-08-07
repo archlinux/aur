@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=velodown-bin
 pkgver=0.3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A blazing-fast download manager built with Rust and Tauri"
 arch=('x86_64')
 url="https://github.com/mlm-games/velodown"
@@ -11,22 +11,12 @@ optdepends=('libnotify: for desktop notifications')
 provides=('velodown')
 conflicts=('velodown')
 options=('!strip' '!emptydirs')
-# source=("https://raw.githubusercontent.com/mlm-games/velodown/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png")
- source_x86_64=("velodown-${pkgver}.AppImage::https://github.com/mlm-games/velodown/releases/download/v${pkgver}/velodown_${pkgver}_amd64.AppImage")
+source_x86_64=("velodown-${pkgver}.AppImage::https://github.com/mlm-games/velodown/releases/download/v${pkgver}/velodown_${pkgver}_amd64.AppImage")
 sha256sums_x86_64=('1f334e5a733c4f3c1203d5163bed806716acd664823b1c4d9ffff7de0d544831')
 noextract=("velodown-${pkgver}.AppImage")
 
 package() {
-    # install -d "${pkgdir}/usr/bin/"
-    # install -d "${pkgdir}/usr/share/applications/"
-    # install -d "${pkgdir}/usr/share/pixmaps/"
-    # install -d "${pkgdir}/opt/${pkgname}/"
-    # install -Dm755 "$srcdir/velodown-0.3.12-x64" "${pkgdir}/opt/${pkgname}/velodown"
-
-    # ln -s "/opt/${pkgname}/velodown" "${pkgdir}/usr/bin/velodown"
-    
-    # install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/velodown.png"
-
+    # Create desktop file
     cat > "${srcdir}/velodown.desktop" << DESKTOP_EOF
 [Desktop Entry]
 Name=VeloDown
@@ -50,13 +40,11 @@ DESKTOP_EOF
     # Extract AppImage for icons
     chmod +x "${srcdir}/velodown-${pkgver}.AppImage"
     "${srcdir}/velodown-${pkgver}.AppImage" --appimage-extract > /dev/null 2>&1
-}
 
-package() {
     # Install AppImage
     install -Dm755 "${srcdir}/velodown-${pkgver}.AppImage" "${pkgdir}/opt/velodown/velodown.AppImage"
     
-    # Create executable symlink
+    # Create executable wrapper
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/velodown" << WRAPPER_EOF
 #!/bin/bash
