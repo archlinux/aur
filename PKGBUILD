@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=quam_facere
 pkgname=${_pkgname}-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A comprehensive web-based system for managing IT procedures, operations, and team workflows"
 arch=(any)
@@ -42,11 +42,10 @@ package()
     mkdir -p "${pkgdir}/var/lib/${_pkgname}/"
     cp -R ./qf "${pkgdir}/usr/share/${_pkgname}/"
     cp run_wsgi.sh "${pkgdir}/usr/share/${_pkgname}/"
-    cp config.yaml "${pkgdir}/etc/${_pkgname}/"
+    cp gunicorn.conf.py "${pkgdir}/etc/${_pkgname}/"
     key=$(cat /dev/urandom | head -n 1 |tr -dc '[:alnum:]' |cut -c -32)
     sed -i -e "s/test_quam_facere/${key}/g" "${pkgdir}/etc/${_pkgname}/config.yaml"
     chmod +x "${pkgdir}/usr/share/${_pkgname}/qf/main.py"
-    chmod +x "${pkgdir}/usr/share/${_pkgname}/run_wsgi.sh"
     cat <<'eof' > ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service
 [Unit]
 Description=Quam Facere service
@@ -58,6 +57,6 @@ RestartSec=1
 User=qf
 SetLoginEnvironment=True
 WorkingDirectory=/usr/share/quam_facere/
-ExecStart=/usr/share/quam_facere/run_wsgi.sh
+ExecStart=/usr/bin/gunicorn qf:app
 eof
 }

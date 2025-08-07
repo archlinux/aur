@@ -1,6 +1,6 @@
 pkgbase = quam_facere-git
 	pkgdesc = A comprehensive web-based system for managing IT procedures, operations, and team workflows
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://spn109.fr/qf
 	install = install
@@ -22,7 +22,7 @@ pkgbase = quam_facere-git
 	provides = quam_facere
 	conflicts = quam_facere
 	backup = etc/quam_facere/config.yaml
-	source = quam_facere-git::git+https://codeberg.org/spn109/Quam_Facere.git#tag=v0.1.1
+	source = quam_facere-git::git+https://codeberg.org/spn109/Quam_Facere.git#tag=v0.1.2
 	md5sums = SKIP
 
 pkgname = quam_facere-git
