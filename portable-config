@@ -61,18 +61,5 @@ allowGlobalShortcuts="false"
 # Wake the application using D-Bus calls towards StatusNotifiers. Deprecated.
 dbusWake="false"
 
-########## Environment ##########
-
-# Below you can set envs that will be imported into the application sandbox
-
-LD_LIBRARY_PATH=/opt/netease/netease-cloud-music/libs
-QT_PLUGIN_PATH=/opt/netease/netease-cloud-music/plugins 
-QT_QPA_PLATFORM_PLUGIN_PATH=/opt/netease/netease-cloud-music/plugins/platforms
-QT_QPA_PLATFORM=xcb
-LD_PRELOAD=/opt/netease/netease-cloud-music/libnetease-patch.so
-
-
-
-
 
 

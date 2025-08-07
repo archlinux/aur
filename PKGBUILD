@@ -29,8 +29,8 @@ sha256sums=('1ee9f02842e6c2c8c79c48b2e932074f9c213a8eb4238e5e63f20438562fecbb'
             'ea2a9012e8b86ca5946a43f677f64f951f24984dfec523918bfef5eb9e4f0204'
             '27bfe871df38048dbf164dff966b38ff46654663489443ca5e2c47e2bbc6cc43'
             '770c8faed52f67d272b061cec36fed219e1479767a97ed58f2496a948d8178c3'
-            'a7814278f08e7832535d8b4af82d3830b0277c15689abc08c9b9e944e101d391'
-            'f9bf9f8e2b3c6335ad940f807b635f1c5ea54060f26d19c181adf320a8de207a')
+            '080a6771e74624f589ee2e0196f7e4fad741cfc048f668f47bc8621560b9dac5'
+            'f041f1256cf363a513927ff6f760fde458fd885d5cba8cd9a7fb4cfeb2471d18')
 
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
@@ -47,6 +47,7 @@ package() {
   install -D -m755 libnetease-patch.so ${pkgdir}/opt/netease/netease-cloud-music/libnetease-patch.so
   install -D -m755 netease-cloud-music.bash ${pkgdir}/opt/netease/netease-cloud-music/netease-cloud-music.bash
   install -D -m755 libtag.so.2 ${pkgdir}/opt/netease/netease-cloud-music/libs/libtag.so.2
+  install -d "${pkgdir}/opt/netease/netease-cloud-music/overlay"
   rm -r "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/applications"
   echo '''[Desktop Entry]
