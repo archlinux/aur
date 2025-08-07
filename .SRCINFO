@@ -1,4 +1,4 @@
-pkgbase = cyphergate-vpn-bin
+pkgbase = cyphergatevpn-bin
 	pkgdesc = Cross-platform VPN GUI for OpenVPN - Binary release
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = cyphergate-vpn-bin
 	source = https://github.com/Cypher-Monarch/CypherGate/releases/download/v1.0.0/CypherGate-Linux-v1.0.0.zip
 	sha256sums = SKIP
 
-pkgname = cyphergate-vpn-bin
+pkgname = cyphergatevpn-bin
