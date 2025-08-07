@@ -1,6 +1,6 @@
 pkgbase = restohack
-	pkgdesc = A faithful restoration of the original 1982 Hack roguelike
-	pkgver = 1.0.3
+	pkgdesc = A faithful restoration of the original 1984 Hack roguelike
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Critlist/restoHack
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = restohack
 	makedepends = git
 	depends = ncurses
 	depends = glibc
-	source = restohack::git+https://github.com/Critlist/restoHack.git
-	md5sums = SKIP
+	source = https://github.com/Critlist/restoHack/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = b0ae4e78e1b91e1fa91fad68ff5f9754e8171b1136d0c740a8907594047f19e4
 
 pkgname = restohack
