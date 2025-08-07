@@ -3,10 +3,9 @@ Operation = Install
 Operation = Upgrade
 Type = Package
 Target = grub
-Target = grub-git
 
 [Action]
-Description = Regenerating grub...
+Description = Installing grub...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/grub grub_generate
+Exec = /usr/share/libalpm/scripts/grub-install
 NeedsTargets

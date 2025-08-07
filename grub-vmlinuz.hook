@@ -6,7 +6,7 @@ Operation = Remove
 Target = usr/lib/modules/*/vmlinuz
 
 [Action]
-Description = Regenerating grub...
+Description = Regenerating grub config...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/grub vmlinuz_generate
+Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
 NeedsTargets
