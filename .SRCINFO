@@ -1,13 +1,12 @@
 pkgbase = python-sphinx-astropy
 	pkgdesc = Sphinx extensions and configuration specific to the Astropy project
-	pkgver = 1.9.1
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/astropy/sphinx-astropy
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-astropy-sphinx-theme
-	checkdepends = python-matplotlib
 	checkdepends = python-numpydoc
 	checkdepends = python-sphinxcontrib-jquery
 	checkdepends = python-sphinx-automodapi
@@ -17,12 +16,12 @@ pkgbase = python-sphinx-astropy
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.9.1.tar.gz
-	md5sums = da84468f9a8395216a22f8bdf292d43b
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_astropy/sphinx_astropy-1.10.tar.gz
+	md5sums = 61f702f3b73a165e3b74b5e36cda3ef9
 
 pkgname = python-sphinx-astropy
 	depends = python-packaging
-	depends = python-sphinx>=3.0.0
+	depends = python-sphinx>=4.0.0
 	depends = python-astropy-sphinx-theme
 	depends = python-sphinx-automodapi
 	depends = python-sphinx-gallery
