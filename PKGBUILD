@@ -2,7 +2,7 @@
 
 pkgname=libnl-tiny-git
 pkgver=r43.gc0df580
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny OpenWrt fork of libnl"
 arch=('i686' 'x86_64')
 url="https://git.openwrt.org/?p=project/libnl-tiny.git"
@@ -35,12 +35,6 @@ build() {
     -DCMAKE_POLICY_VERSION_MINIMUM="3.5" \
     ./
   cmake --build "_build"
-}
-
-check() {
-  cd "libnl-tiny"
-
-  #cmake --build "_build" --target test
 }
 
 package() {
