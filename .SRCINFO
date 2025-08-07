@@ -8,7 +8,7 @@ pkgbase = folder-size
 	makedepends = rust
 	makedepends = cargo
 	depends = glibc
-	source = git+https://github.com/venoosoo/folder-size.git#tag=v0.1.0
-	sha256sums = 1800f19c2b0e02052732cf3c0ef19d4394535b4087b9588f5d57e87ce71121a1
+	source = git+https://github.com/venoosoo/folder-size.git
+	sha256sums = SKIP
 
 pkgname = folder-size
