@@ -1,0 +1,15 @@
+pkgbase = grub-theme-minegrub-world-selection-git
+	pkgdesc = A grub theme in the style of the Minecraft singleplayer (sp) world selection screen!
+	pkgver = r104.3e0f8ff
+	pkgrel = 1
+	url = https://github.com/Lxtharia/minegrub-world-sel-theme
+	install = instructions.install
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = grub-theme-minegrub-world-selection
+	conflicts = grub-theme-minegrub-world-selection
+	source = repo::git+https://github.com/Lxtharia/minegrub-world-sel-theme.git#branch=main
+	sha256sums = SKIP
+
+pkgname = grub-theme-minegrub-world-selection-git

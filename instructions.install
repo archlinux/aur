@@ -1,0 +1,14 @@
+post_install() {
+  echo ""
+  echo "New minegrub-world-selection grub theme installed! To apply the theme, follow these steps:"
+  echo ""
+  echo " 1. Set the following values in /etc/default/grub:"
+  echo "      - GRUB_TERMINAL_OUTPUT=gfxterm"
+  echo "      - GRUB_THEME={{ GRUB_THEME_BASEDIR }}/minegrub-world-selection/theme.txt"
+	echo "        where {{ GRUB_THEME_BASEDIR }} is the interpreted grub themes folder (see printed value in prepare() stdout above)"
+	              # Sadly, the value cannot be read from the env at this point...
+  echo " 2. Rebuild your grub config:"
+  echo "      $ sudo grub-mkconfig -o /boot/grub/grub.cfg"
+  echo ""
+}
+
