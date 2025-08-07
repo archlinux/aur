@@ -1,0 +1,16 @@
+pkgbase = restohack
+	pkgdesc = A faithful restoration of the original 1982 Hack roguelike
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Critlist/restoHack
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = ncurses
+	depends = glibc
+	source = restohack::git+https://github.com/Critlist/restoHack.git
+	md5sums = SKIP
+
+pkgname = restohack
