@@ -1,23 +1,17 @@
 # Maintainer: Marc Straube <email@marcstraube.de>
 
-pkgname=hyprland-plugin-easymotion-git
-pkgbase=hyprland-plugin-easymotion
-pkgver=r74.80b1b3f
+pkgname=hyprland-plugin-easymotion
+pkgver=0.50.1
 pkgrel=1
 pkgdesc="A single dispatcher that brings up window labels and then allows you to execute a user-defined command when one of those labels is typed"
 arch=('x86_64')
 url="https://github.com/zakk4223/hyprland-easymotion"
 license=('BSD')
-source=(${pkgname}::git+https://github.com/zakk4223/hyprland-easymotion.git)
+source=(${pkgname}::git+https://github.com/zakk4223/hyprland-easymotion.git#commit=c7b12e4a8df83b0445799ffbecd64c3f20adb393)
 sha512sums=('SKIP')
-depends=('hyprland')
-makedepends=('git')
+depends=("hyprland=${pkgver}")
+makedepends=('git' 'hyprland')
 options=(!debug)
-
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
     cd "${srcdir}/${pkgname}"
@@ -27,6 +21,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     install -Dm755 hypreasymotion.so "$pkgdir/usr/lib/hypreasymotion.so"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-easymotion-git/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-easymotion/LICENSE"
 }
 
