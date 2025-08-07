@@ -2,7 +2,7 @@
 
 pkgname=python-dask-cuda
 _pkgname=dask-cuda
-pkgver=25.06.00
+pkgver=25.08.00
 pkgrel=1
 pkgdesc="Utilities for Dask and CUDA interactions"
 url="https://github.com/rapidsai/dask-cuda"
@@ -18,20 +18,13 @@ depends=(
     'python-zict'
     'python-pynvml'
 )
-makedepends=('python-setuptools' 'python-scikit-build-core' 'python-rapids-build-backend')
+makedepends=('python-setuptools' 'python-scikit-build-core' 'python-rapids-build-backend' 'python-build' 'python-installer' 'python-wheel')
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
 )
 sha256sums=(
-    'a1026ce6c5936912b10384919b445c9c7472faf270d70d97608e7e7de6477388'
+    '6fbe58737c1cd52dff090a1115587a609fbd6f76a1387a11d2d371a45b14ab8f'
 )
-
-# prepare() {
-#     cd "$srcdir/$pkgbase-$pkgver"
-#     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
-#     patch -p1 "cpp/src/common/cumlHandle.hpp" < "$srcdir/missing-include.patch"
-#     patch -p1 "python/cuml/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
-# }
 
 
 build() {
