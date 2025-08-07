@@ -2,8 +2,8 @@
 
 pkgname=python-developer_disk_image
 _pkgname=DeveloperDiskImage
-pkgver=0.0.4
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Home for both DeveloperDiskImage files (iOS < 17.0) and Personalized files (iOS >= 17.0)'
 arch=('any')
 url='https://github.com/doronz88/DeveloperDiskImage'
@@ -12,7 +12,7 @@ depends=('python' 'python-requests')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('49e3575dcec3f672b5279674613e4073057c492e08a427da90ff6fbdec9f72e7')
+sha256sums=('842b5e52632c168c2c0317a446491197b8a65d8b0b936de32564444b1dc3bc6c')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
