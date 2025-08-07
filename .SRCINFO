@@ -1,7 +1,7 @@
 pkgbase = vrcx
-	pkgdesc = VRChat companion application built with Electron
+	pkgdesc = Friendship management tool for VRChat (built with Electron)
 	pkgver = 2025.06.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vrcx-team/VRCX
 	arch = x86_64
 	license = MIT

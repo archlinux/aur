@@ -1,8 +1,8 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 pkgname=vrcx
 pkgver=2025.06.30
-pkgrel=1
-pkgdesc="VRChat companion application built with Electron"
+pkgrel=2
+pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
 license=('MIT')
