@@ -1,6 +1,6 @@
 pkgbase = cugraph
 	pkgdesc = cuGraph - RAPIDS Graph Analytics Library
-	pkgver = 25.06.00
+	pkgver = 25.08.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/cugraph
 	arch = x86_64
@@ -14,14 +14,16 @@ pkgbase = cugraph
 	makedepends = cython
 	depends = cuda
 	depends = libraft
-	source = https://github.com/rapidsai/cugraph/archive/refs/tags/v25.06.00.tar.gz
+	source = https://github.com/rapidsai/cugraph/archive/refs/tags/v25.08.00.tar.gz
 	source = system-lib.patch
 	source = missing-include.patch
 	source = missing-pkg.patch
-	sha256sums = 40a6df1b3f33b892ebab6e276d9e1a6b7797eb61420cdce52c0b9890710fb130
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = cuda-compile.cmake
+	sha256sums = 2feb532683afd595d9c2f86f867f9b5b281b1e972a42ecad75c93cc20472b854
+	sha256sums = 9821ee2560251e75fa72b6dffaafb3a5da32a918d735c85a12a09482cd66521f
+	sha256sums = cf9d3bbb9ac0a12c4883059ce23531c3f10886f65c8d2b4559fd7c5193d3940c
+	sha256sums = 3038711bdd2f8ec6638c3e0af0cec2c3fadf0013c9df87475d2e904ec3ebfdb4
+	sha256sums = 981f331cf8adb39ef25aff0c4e77f65e0732c45316a54abfa0ac4c9142d59c8d
 
 pkgname = cugraph
 
