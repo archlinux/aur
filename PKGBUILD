@@ -1,13 +1,16 @@
 # Maintainer: ask nickserv for milk on freenode
-# Maintainer: Denilson <denilsonsa@gmail.com>
+# Maintainer: Denilson <denilsonsa at gmail dot com>
 # Maintainer: oech3
 pkgname=soundfonts-aur-meta
-pkgver=20250530 # do not let $(date -u +"%Y%m%d")
+pkgver=20250601
+#pkgver(){
+  #date -u +"%Y%m%d"
+#}# do not comment out
 pkgrel=1
 pkgdesc="Meta package depending on all avaiable soundfonts"
 arch=('any')
 conflicts=(soundfont-opl3-fm-128m) # duplicated and cloudflare issue?
-optdepends=(soundfont-{ensembles,sso-sfz}:' wrong install path')
+optdepends=(soundfont-sso-sfz:' wrong install path')
 depends=(
   # Official repository
   'freepats-general-midi' # GM
@@ -15,6 +18,7 @@ depends=(
   # AUR
   'freepats-ydp-grand-piano' # Yamaha Disklavier Pro grand piano
   'soundfont-arachno' # GM+GS
+  'soundfont-ensembles'
   'soundfont-fatboy' # GM+GS
   'soundfont-generaluser' # GM+GS
   'soundfont-gmgsx' # GM?

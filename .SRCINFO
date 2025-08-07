@@ -1,12 +1,13 @@
 pkgbase = soundfonts-aur-meta
 	pkgdesc = Meta package depending on all avaiable soundfonts
-	pkgver = 20250530
+	pkgver = 20250601
 	pkgrel = 1
 	arch = any
 	depends = freepats-general-midi
 	depends = soundfont-fluid
 	depends = freepats-ydp-grand-piano
 	depends = soundfont-arachno
+	depends = soundfont-ensembles
 	depends = soundfont-fatboy
 	depends = soundfont-generaluser
 	depends = soundfont-gmgsx
@@ -22,7 +23,6 @@ pkgbase = soundfonts-aur-meta
 	depends = soundfont-unison
 	depends = soundfont-zelda3sf2
 	depends = soundfont-zeldamcsf2
-	optdepends = soundfont-ensembles: wrong install path
 	optdepends = soundfont-sso-sfz: wrong install path
 	conflicts = soundfont-opl3-fm-128m
 
