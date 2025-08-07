@@ -1,0 +1,6 @@
+## arg 1:  the new package version
+post_install() {
+	useradd --system -s /usr/bin/nologin qf
+    chown -R qf:qf "/var/lib/quam_facere/"
+    chown -R qf:qf "/etc/quam_facere/"
+}
