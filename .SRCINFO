@@ -1,0 +1,25 @@
+pkgbase = netease-cloud-music-portable
+	pkgdesc = Netease Cloud Music, converted from .deb package
+	pkgver = 1.2.1
+	pkgrel = 9
+	url = https://music.163.com
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	depends = gtk2
+	depends = gtk3
+	depends = libvlc
+	depends = taglib1
+	source = https://d1.music.126.net/dmusic/netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb
+	source = https://music.163.com/html/web2/service.html
+	source = patch.c
+	source = exclude.list
+	source = netease-cloud-music.bash
+	sha256sums = 1ee9f02842e6c2c8c79c48b2e932074f9c213a8eb4238e5e63f20438562fecbb
+	sha256sums = SKIP
+	sha256sums = 1080edde7cbd3716464598f80dd5c715737775bec9501740295a40c48236b109
+	sha256sums = 45ecec9b94872fac7ef5f07f31ab2d2fbf19412f43d865c6125be194d4ec0c86
+	sha256sums = 3b2c2e2251461d4ee0509ac00d1677d9fff3eaca24f90ef8678efba2c30ae95f
+	sha256sums = portable-config
+
+pkgname = netease-cloud-music-portable
