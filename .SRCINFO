@@ -1,0 +1,20 @@
+pkgbase = velodown-bin
+	pkgdesc = A blazing-fast download manager built with Rust and Tauri
+	pkgver = 0.3.12
+	pkgrel = 1
+	url = https://github.com/mlm-games/velodown
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	optdepends = libnotify: for desktop notifications
+	provides = velodown
+	conflicts = velodown
+	noextract = velodown-0.3.12.AppImage
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = velodown-0.3.12.AppImage::https://github.com/mlm-games/velodown/releases/download/v0.3.12/velodown_0.3.12_amd64.AppImage
+	sha256sums_x86_64 = 1f334e5a733c4f3c1203d5163bed806716acd664823b1c4d9ffff7de0d544831
+
+pkgname = velodown-bin
