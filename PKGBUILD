@@ -1,24 +1,28 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=proton-vpn-browser-extension
-pkgname=('firefox-extension-proton-vpn' 'proton-vpn-browser-extension')
-pkgver=1.2.7
+pkgname=(
+    'firefox-extension-proton-vpn'
+    'proton-vpn-browser-extension')
+pkgver=1.2.9
 pkgrel=1
-_commit=25636e43ade625660bc4feea41c96352af6c89aa
+_commit=f9baa6dc444ca4fc382ce1723dc66d40c12495e5
 pkgdesc='Proton VPN browser extension'
 arch=('any')
 url='https://protonvpn.com/'
 license=('GPL-3.0-only')
-makedepends=('git' 'npm' 'zip')
+makedepends=(
+    'git'
+    'npm'
+    'zip')
 source=("git+https://github.com/ProtonVPN/proton-vpn-browser-extension.git#commit=${_commit}")
-sha256sums=('ab2cfe64b250ae5edd308985d4f9e714b976d2241c4c990e8a36b4336b0759ec')
+sha256sums=('ea812dc5aaa9323b0c6d20fa09b37e7eaf983929500c8ca6417ef2a1d40f010a')
 
-#prepare() {
-#    npm ci --prefix "$pkgbase"
-#}
+prepare() {
+    npm ci --cache "${srcdir}/npm-cache" --prefix "$pkgbase"
+}
 
 build() {
-    npm install --prefix "$pkgbase"
     npm run pack-ff --prefix "$pkgbase"
     npm run build --prefix "$pkgbase"
 }
