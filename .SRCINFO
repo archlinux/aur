@@ -1,6 +1,6 @@
 pkgbase = fstar-bin
 	pkgdesc = A Higher-Order Effectful Language Designed for Program Verification
-	pkgver = 2023.09.03
+	pkgver = 2025.06.20
 	pkgrel = 2
 	url = https://fstar-lang.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fstar-bin
 	provides = fstar
 	conflicts = fstar
 	conflicts = fstar-git
-	source = https://github.com/FStarLang/FStar/releases/download/v2023.09.03/fstar_2023.09.03_Linux_x86_64.tar.gz
+	source = https://github.com/FStarLang/FStar/releases/download/v2025.06.20/fstar-v2025.06.20-Linux-x86_64.tar.gz
 	sha256sums = dfc06973afecc48f1a7bd4e593215b438095dcf3451a45e33a6190f0c36a50ca
 
 pkgname = fstar-bin
