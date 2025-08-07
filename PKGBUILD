@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Arias Mallo <rodarima@gmail.com>
 
 pkgname=dillo-git
-pkgver=v3.0.5.r4630.g1711ba8
+pkgver=v3.2.0.r60.g8429930
 pkgrel=1
 pkgdesc="A small, fast graphical web browser built on FLTK"
 arch=(x86_64)
