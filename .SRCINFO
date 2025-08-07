@@ -10,6 +10,7 @@ pkgbase = dillo-git
 	depends = perl
 	depends = openssl
 	depends = libpng
+	depends = libwebp
 	depends = gcc-libs
 	depends = libxcursor
 	depends = libxi

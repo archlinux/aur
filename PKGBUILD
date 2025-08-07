@@ -7,7 +7,7 @@ pkgdesc="A small, fast graphical web browser built on FLTK"
 arch=(x86_64)
 url="https://github.com/dillo-browser/dillo"
 license=('GPL')
-depends=('fltk1.3' 'libjpeg' 'perl' 'openssl' 'libpng' 'gcc-libs' 'libxcursor'
+depends=('fltk1.3' 'libjpeg' 'perl' 'openssl' 'libpng' 'libwebp' 'gcc-libs' 'libxcursor'
          'libxi' 'libxinerama')
 conflicts=('dillo')
 backup=(etc/dillo/{dillorc,dpidrc})
