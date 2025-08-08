@@ -6,22 +6,23 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-git
-pkgver=4.17.7+66+gc710d268
+pkgver=4.21.2+110+gf7f404cc0
 pkgrel=1
-pkgdesc='file manager for xfce'
+pkgdesc='File manager for Xfce (git checkout)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-license=('GPL')
-groups=('xfce4-devel')
+license=('GPL-2.0-or-later')
+groups=('xfce4-git')
 url='https://thunar.xfce.org'
-depends=('desktop-file-utils' 'exo>=4.17.0' 'gtk3' 'hicolor-icon-theme' 'libgudev'
-         'libexif' 'libnotify' 'libpng' 'libxfce4ui>=4.17.2' 'libxfce4util>=4.17.1')
-makedepends=('intltool' 'xfce4-panel' 'gtk-doc' 'gobject-introspection' 'xfce4-dev-tools' 'git')
+depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libgudev'
+         'libgexiv2' 'libnotify' 'libpng' 'libxfce4ui>=4.21.0' 'libxfce4util')
+makedepends=('meson' 'xfce4-dev-tools' 'xfce4-panel' 'gtk-doc' 'gobject-introspection')
 optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
-	        'xfce4-panel: trash applet'
-	        'tumbler: for thumbnail previews'
-	        'thunar-volman: manages removable devices'
-	        'thunar-archive-plugin: create and deflate archives'
-	        'thunar-media-tags-plugin: view/edit id3/ogg tags')
+            'xfce4-panel: trash applet'
+            'tumbler: for thumbnail previews'
+            'thunar-volman: manages removable devices'
+            'thunar-archive-plugin: create and deflate archives'
+            'thunar-media-tags-plugin: view/edit id3/ogg tags'
+            'catfish: file search')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
@@ -32,29 +33,17 @@ pkgver() {
   git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
-prepare() {
-    cd "${_pkgname}"
-    ./autogen.sh \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --libexecdir=/usr/lib \
-        --localstatedir=/var \
-        --disable-static \
-        --enable-gio-unix \
-        --enable-gudev \
-        --enable-exif \
-        --enable-pcre \
-        --enable-gtk-doc \
-        --disable-debug
-}
-
 build() {
-    cd "${_pkgname}"
-    make
+  local meson_options=(
+    -D gtk-doc=true
+    -D gudev=enabled
+    -D gexiv2=enabled
+  )
+
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-    cd "${_pkgname}"
-    make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
-
