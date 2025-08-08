@@ -1,29 +1,24 @@
 # Maintainer: Carneiro <gabriel dot chaves dot carneiro at gmail dot com>
 pkgname=pulsemeeter
-pkgver=1.2.14
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A pulseaudio audio routing application"
+pkgdesc="A pulseaudio and pipewire audio routing application"
 url="https://github.com/theRealCarneiro/pulsemeeter"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('gtk3' 'libappindicator-gtk3' 'python' 'python-gobject' 'python-appdirs' 'python-pulsectl' 'pulse-vumeter-git' 'noise-suppression-for-voice' 'swh-plugins')
+depends=('pipewire-pulse' 'gtk3' 'libayatana-appindicator' 'python' 'python-gobject' 'python-pydantic' 'python-pulsectl' 'python-pulsectl-asyncio')
 provides=('pulsemeeter')
-makedepends=('git' 'python-setuptools')
-optdepends=('glade: customize interface' 'pulseaudio' 'pipewire-pulse')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-babel')
+optdepends=('easyeffects')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=(12453797344223ed23344bd9c02c9f74)
+md5sums=(f6691a2233c633a2fcfc1a9ef749e748)
 
-pkgver(){
+build () {
 	cd $pkgname-$pkgver
-	printf "%s" $(python setup.py --version)
-}
-
-build() {
-	cd $pkgname-$pkgver
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd $pkgname-$pkgver
-	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
