@@ -1,11 +1,11 @@
 # Maintainer: initMayday <initMayday@protonmail.com>
-# GIT MASTER branch package (ie. stable)
+# Git master branch package
 
 _pkgname="dinit-user-spawn"
 pkgname="$_pkgname-master-git"
 pkgrel=1
 pkgver=r1.e03b690
-pkgdesc='Launches a user process dinit for you on login. This is the stable package.'
+pkgdesc='Launches a user process dinit for you on login'
 arch=('any')
 url='https://github.com/initMayday/dinit-user-spawn.git'
 makedepends=('meson' 'git')
