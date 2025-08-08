@@ -4,7 +4,7 @@
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 _pkgname=kuro
 pkgname=${_pkgname}-bin
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libnotify' 'libxtst' 'nss' 'libxss')
 provides=('kuro')
 conflicts=('kuro-appimage')
 source=("${url}/releases/download/v${pkgver}/kuro-${pkgver}.pacman")
-sha256sums=('49b928b0d807a71477ba1971741e30636d958bf2f650eebbc48c32bb5f869bb0')
+sha256sums=('8aa38532d57dcf613ac5999befc8336b4b29527d9b01f101a9d42f07d0c197fa')
 
 package() {
     # Install the application files in /opt
