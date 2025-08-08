@@ -4,7 +4,7 @@
 
 _pkgname='payme'
 pkgname="${_pkgname}-git"
-pkgver=1.2.3.r2.g4406134
+pkgver=1.2.4.r3.g5425749
 pkgrel=2
 pkgdesc='QR code generator (ASCII and PNG) for SEPA payments (development version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -35,6 +35,11 @@ build() {
 
   _pkgver=$(git describe --tags --abbrev=0 --always | sed 's/^v//g')
   _pkgrev=$(git rev-parse --verify --short HEAD)
+
+  case "Z$CARCH" in
+    # Fix “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK” error
+    'Zaarch64' | 'Zx86_64' ) export LDFLAGS="$LDFLAGS -Wl,-z,shstk" ;;
+  esac
 
   export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
