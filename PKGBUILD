@@ -10,7 +10,7 @@
 
 _pkgname="pamac"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.7.3.r0.g06c846c
+pkgver=11.7.3.r3.gf756a05
 pkgrel=1
 pkgdesc="Pamac package manager"
 url="https://github.com/manjaro/pamac"
@@ -29,26 +29,6 @@ _depends_pamac=(
 _depends_tray_gtk=(
   'gtk3'
 )
-
-if [ "${_build_appstream::1}" = "t" ]; then
-  _depends_libpamac+=(
-    'appstream'
-    'appstream-glib'
-    'archlinux-appstream-data'
-  )
-fi
-if [ "${_build_flatpak::1}" = "t" ]; then
-  _depends_libpamac+=(
-    'flatpak'
-  )
-fi
-if [ "${_build_snap::1}" = "t" ]; then
-  _depends_libpamac+=(
-    'snapd'
-    'snapd-glib'
-  )
-fi
-
 _make_cli=(
   'asciidoc'
 )
@@ -58,17 +38,38 @@ _make_libpamac=(
   'vala'
 )
 
+if [ "${_build_appstream::1}" = "t" ]; then
+  _depends_libpamac+=(
+    'appstream'
+    'appstream-glib'
+    'archlinux-appstream-data'
+  )
+fi
+if [ "${_build_flatpak::1}" = "t" ]; then
+  _make_libpamac+=(
+    'flatpak'
+  )
+  _opt_libpamac+=('flatpak: for flatpak support')
+fi
+if [ "${_build_snap::1}" = "t" ]; then
+  _depends_libpamac+=(
+    'snapd'
+    'snapd-glib'
+  )
+fi
+
 makedepends=(
   'git'
-  ${_depends_libpamac[@]}
-  ${_depends_pamac[@]}
-  ${_depends_tray_gtk[@]}
-  ${_make_cli[@]}
-  ${_make_libpamac[@]}
+  "${_depends_libpamac[@]}"
+  "${_depends_pamac[@]}"
+  "${_depends_tray_gtk[@]}"
+  "${_make_cli[@]}"
+  "${_make_libpamac[@]}"
 )
 optdepends=(
-  'polkit-gnome: needed for authentication in Cinnamon, Gnome'
+  "${_opt_libpamac}"
   'lxsession: needed for authentication in Xfce, LXDE etc.'
+  'polkit-gnome: needed for authentication in Cinnamon, Gnome'
 )
 
 _pkgsrc_pamac="$_pkgname"
@@ -169,9 +170,9 @@ build() (
 package() {
   pkgdesc+=" - library, gui, cli"
   depends=(
-    ${_depends_libpamac[@]}
-    ${_depends_pamac[@]}
-    ${_depends_tray_gtk[@]}
+    "${_depends_libpamac[@]}"
+    "${_depends_pamac[@]}"
+    "${_depends_tray_gtk[@]}"
   )
 
   local _pkgver_libpamac=$(git -C "$_pkgsrc_libpamac" describe --tags --abbrev=0)
