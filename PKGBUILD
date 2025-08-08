@@ -7,7 +7,7 @@
 _pkgname=quam_facere
 pkgname=${_pkgname}-git
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive web-based system for managing IT procedures, operations, and team workflows"
 arch=(any)
 url="https://spn109.fr/qf"
@@ -41,7 +41,7 @@ package()
     mkdir -p "${pkgdir}/etc/${_pkgname}/"
     mkdir -p "${pkgdir}/var/lib/${_pkgname}/"
     cp -R ./qf "${pkgdir}/usr/share/${_pkgname}/"
-    cp run_wsgi.sh "${pkgdir}/usr/share/${_pkgname}/"
+    cp config.yaml "${pkgdir}/etc/${_pkgname}/"
     cp gunicorn.conf.py "${pkgdir}/etc/${_pkgname}/"
     key=$(cat /dev/urandom | head -n 1 |tr -dc '[:alnum:]' |cut -c -32)
     sed -i -e "s/test_quam_facere/${key}/g" "${pkgdir}/etc/${_pkgname}/config.yaml"
