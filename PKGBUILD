@@ -2,7 +2,7 @@
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
 pkgver=0.19.49
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
 url="https://unmined.net/"
@@ -30,4 +30,7 @@ package() {
     chmod +x "$pkgdir/opt/unmined/unmined"
     chmod +x "$pkgdir/opt/unmined/"*.so
     install -D -m644 opt/unmined/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    
+    # Fix desktop file to set correct working directory
+    sed -i 's/^Path=$/Path=\/opt\/unmined/' "$pkgdir/usr/share/applications/uNmINeD.desktop"
 }
