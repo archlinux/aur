@@ -2,7 +2,7 @@
 
 _pkgname=catppuccin
 pkgname="python-$_pkgname"
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Soothing pastel theme for Python"
 arch=('any')
@@ -23,8 +23,8 @@ optdepends=(
   'python-matplotlib: For matplotlib integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/catppuccin/python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('71d93f57428bd2a722ec1ba19cded135e712d555b87a7d98f645eb72ebbe7851')
-b2sums=('260812648cbb397c38146c5f16374fb82157af8643b4af5ff3a179eefd4b4e53e65e1e5dc7549cfe79a065176ebaf42763bb2b008bf02295236c20d0b1973cad')
+sha256sums=('1cbdc52eead30a13aff85cc9f1285832ea1e145f59caf2157be3e997827eee2b')
+b2sums=('a160cd434997bcea10889ebfe772bd20716b731e71e3b45a9e23fc562bd433b1f0e35ec77e18dc5ff9961b11ede57eef81295a70137da8e704e9fc6795105859')
 
 prepare() {
   cd "python-$pkgver"
