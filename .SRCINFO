@@ -1,11 +1,11 @@
 pkgbase = toney
 	pkgdesc = Fast, lightweight, terminal-based note-taking app for the modern developer.
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/SourcewareLab/Toney
 	arch = x86_64
 	license = MIT
-	source = toney-2.0.1.tar.gz::https://github.com/SourcewareLab/Toney/archive/refs/tags/v2.0.1.tar.gz
+	source = toney-2.1.0.tar.gz::https://github.com/SourcewareLab/Toney/archive/refs/tags/v2.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = toney
