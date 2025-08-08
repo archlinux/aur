@@ -2,8 +2,8 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=rakarrack-plus
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Guitar Effects Processor'
 arch=(x86_64 aarch64)
 url='https://github.com/Stazed/rakarrack-plus'
@@ -15,7 +15,7 @@ optdepends=('lv2-host: for running LV2 plugins'
             'new-session-manager: for NSM support')
 groups=(lv2-plugins pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stazed/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b3dde2b08e436e88dcf7c4f69167dbaebd64337930154eedda36848065b4e879')
+sha256sums=('0665b8c205ed5e500e0c1ebafe870258636b071591b535ecf0a74f67e4819c44')
 
 build() {
   cmake -B build-$pkgname-$pkgver -S $pkgname-$pkgver \
