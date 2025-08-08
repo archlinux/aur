@@ -1,6 +1,6 @@
 pkgbase = folder-size
 	pkgdesc = A CLI tool to calculate folder sizes with options like symlink following and depth limits
-	pkgver = 0.1.0
+	pkgver = 0.1.0.4.g786a747
 	pkgrel = 1
 	url = https://github.com/venoosoo/folder-size
 	arch = x86_64
