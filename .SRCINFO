@@ -1,0 +1,21 @@
+pkgbase = rain-git
+	pkgdesc = Rain - Simple TUI player
+	pkgver = r58.55db709
+	pkgrel = 1
+	url = https://github.com/musdev13/rain
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = mpv
+	depends = taglib
+	depends = curl
+	depends = nlohmann-json
+	optdepends = yt-dlp: for YouTube Music
+	provides = rain
+	conflicts = rain
+	source = rain-git::git+https://github.com/musdev13/rain.git
+	md5sums = SKIP
+
+pkgname = rain-git
