@@ -3,7 +3,7 @@
 
 _gitname=zswap-cli
 pkgname="${_gitname}-nosystemd-git"
-pkgver=1.0.0+24.r489.20250613.473747c
+pkgver=1.0.0+41.r506.20250807.65f040b
 pkgrel=1
 pkgdesc="Command-line tool to control ZSwap Linux kernel module. Build without systemd dependency/ support. Latest git checkout."
 arch=('x86_64')
