@@ -1,0 +1,5 @@
+[certigo-bin]
+source = "github"
+github = "square/certigo"
+use_latest_release = true
+prefix = "v"
