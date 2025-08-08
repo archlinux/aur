@@ -1,0 +1,15 @@
+pkgbase = mrain-bin
+	pkgdesc = Rain - Simple TUI player
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/musdev13/rain
+	arch = x86_64
+	license = GPL3
+	depends = mpv
+	depends = curl
+	depends = taglib
+	optdepends = yt-dlp: for YouTube Music support
+	source = mrain-bin-1.0::https://github.com/musdev13/rain/releases/download/idk/rain
+	sha256sums = SKIP
+
+pkgname = mrain-bin
