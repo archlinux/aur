@@ -7,7 +7,7 @@ pkgname=opera-ffmpeg-codecs
 _codecformatutil=61.61.59
 _chromium=137.0.7151.138
 url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
-_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+_commit=$(curl -sL https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${_chromium}/DEPS?format=TEXT | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=${_chromium}.sonames$_codecformatutil
 pkgrel=2
 _so=libffmpeg.so
@@ -55,7 +55,7 @@ build() {
 
   make DESTDIR=.. install
   cd ..
-  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  _symbols=$(awk '{print "-Wl,-u," $1}' sigs.txt | paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
     ${_symbols} -Wl,--version-script=export.map \
