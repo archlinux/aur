@@ -56,7 +56,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  cmake --build build
+  cmake --build build --parallel
 }
 
 package() {
