@@ -1,6 +1,6 @@
 # Maintainer: Critlist <critlist at proton dot me>
 pkgname=restohack
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A faithful restoration of Hack v1.0.3 (1984), modernized and maintained"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/Critlist/restoHack"
 license=('BSD')
 depends=('ncurses' 'glibc')
 makedepends=('cmake' 'gcc' 'git')
-source=("https://github.com/Critlist/restoHack/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("b0ae4e78e1b91e1fa91fad68ff5f9754e8171b1136d0c740a8907594047f19e4")
+source=("restoHack-${pkgver}.tar.gz::https://github.com/Critlist/restoHack/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bfa37a2177473b1fd9fc11aa1f78adb38d3078624e9db620f9ef74961ffb994a')
 build() {
   cd "$srcdir/restoHack-${pkgver}"
   cmake -B build -DCMAKE_BUILD_TYPE=None
