@@ -1,5 +1,5 @@
 pkgname=folder-size
-pkgver=0.1.0
+pkgver=0.1.0.4.g786a747
 pkgrel=1
 pkgdesc="A CLI tool to calculate folder sizes with options like symlink following and depth limits"
 arch=('x86_64')
