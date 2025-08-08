@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=DBeaver Community Edition
+GenericName=UniversaL Database Manager
+Comment=Universal Database Manager and SQL Client.
+Path=/opt/dbeaver/
+Exec=/opt/dbeaver/dbeaver
+Icon=/opt/dbeaver/dbeaver.png
+Categories=IDE;Development
+Keywords=Database;SQL;IDE;JDBC;ODBC;MySQL;PostgreSQL
+StartupNotify=true
+StartupWMClass=DBeaver
+MimeType=application/sql

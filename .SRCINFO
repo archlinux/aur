@@ -1,0 +1,20 @@
+pkgbase = dbeaver-ce-jre-bin
+	pkgdesc = Free universal SQL Client for developers and database administrators (community edition, with bundled JRE)
+	pkgver = 25.1.4
+	pkgrel = 1
+	url = https://dbeaver.io/
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = libsecret
+	provides = dbeaver
+	conflicts = dbeaver
+	conflicts = dbeaver-ce-bin
+	options = !strip
+	source = https://github.com/dbeaver/dbeaver/releases/download/25.1.4/dbeaver-ce-25.1.4-linux.gtk.x86_64.tar.gz
+	source = dbeaver-ce.desktop
+	sha256sums = ff1701a849bcbe1a1f4ce46bd73433aee7d3b872fae7047624f78d4a2aea65e7
+	sha256sums = d2868335b94575e1958620d7a087cfa258a1ed23d67e5bacbb303e66d70ec4d2
+
+pkgname = dbeaver-ce-jre-bin
