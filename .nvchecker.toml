@@ -1,0 +1,5 @@
+[protoc-gen-validate-bin]
+source = "github"
+github = "bufbuild/protoc-gen-validate"
+use_latest_release = true
+prefix = "v"
