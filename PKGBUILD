@@ -2,7 +2,7 @@
 
 _author=olrtg
 pkgname=emmet-language-server
-pkgver=2.7.0  # datasource=npm depName=@olrtg/emmet-language-server
+pkgver=2.8.0  # datasource=npm depName=@olrtg/emmet-language-server
 pkgrel=1
 pkgdesc="A language server for emmet.io"
 arch=("any")
@@ -17,7 +17,7 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.tgz")
 
-sha256sums=('a654869a65a3a0ef8c04554e005bf6695c34f83e8e69452303be9fb3be100ea9'
+sha256sums=('34ccdf9a1a9a6ec4006c94d666872f264d29146d2a6270e5cbb642d9b5b0b274'
             'b6f2eebb6983c993a6e12614cc806838de3835ce8931e9f08e3538ee89ada3f1')
 
 package() {
