@@ -1,0 +1,21 @@
+pkgbase = froggit-bin
+	pkgdesc = Simplify your Git workflow with visual feedback, keyboard-driven controls, and a streamlined experience
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/thewizardshell/froggit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = froggit
+	conflicts = froggit
+	source = LICENSE-0.4.1::https://raw.githubusercontent.com/thewizardshell/froggit/v0.4.1-beta/LICENSE
+	source = README-0.4.1.md::https://raw.githubusercontent.com/thewizardshell/froggit/v0.4.1-beta/README.md
+	sha256sums = b871ca9318bdbb611164e4e2d53651960cda18d6579d785c97b2185508f8c338
+	sha256sums = 3e1e23f31427f7cc914a5de38b3d107c92da5a1410e70c143b957cbe139c11e7
+	source_x86_64 = froggit-x86_64-0.4.1.zip::https://github.com/thewizardshell/froggit/releases/download/v0.4.1-beta/linux-amd64.zip
+	sha256sums_x86_64 = f56e552ab04308305b430e808f2fcdfed19c842021893bfb24a3320d67d1a406
+	source_aarch64 = froggit-aarch64-0.4.1.zip::https://github.com/thewizardshell/froggit/releases/download/v0.4.1-beta/linux-arm64.zip
+	sha256sums_aarch64 = d5857ff93bf85beb7c2ab29a736321ca6f072734864d0eb8ed9af8d07b9c8f9f
+
+pkgname = froggit-bin
