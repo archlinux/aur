@@ -2,7 +2,7 @@
 pkgname=easytv-bin
 _pkgname=easyTV
 _zhsname='极简TV'
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="A lightweight IPTV player, supports all platforms and Android TV big screens. Welcome to download and experience!(Prebuilt version)一款轻量级IPTV播放器"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/aiyakuaile/easy_tv_live/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('384f1bd46679f617a70f104ce4a253695273c896ca32afafb616e8456dfa8b9b'
+sha256sums=('ecb12e6a717bd5838bdf6c0ea103c7f86f9c9f5fb2da1bc45121bfb5bd3331a9'
             'ed29e69fccc7077eb337382e4b22599586eadb471e18198e59ad0c8219752be8'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {

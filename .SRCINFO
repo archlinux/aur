@@ -1,6 +1,6 @@
 pkgbase = easytv-bin
 	pkgdesc = A lightweight IPTV player, supports all platforms and Android TV big screens. Welcome to download and experience!(Prebuilt version)一款轻量级IPTV播放器
-	pkgver = 2.9.5
+	pkgver = 2.9.6
 	pkgrel = 1
 	url = https://github.com/aiyakuaile/easy_tv_live
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = easytv-bin
 	depends = gtk3
 	depends = alsa-lib
 	depends = libpulse
-	provides = easytv=2.9.5
+	provides = easytv=2.9.6
 	conflicts = easytv
-	noextract = easytv-2.9.5.zip
-	source = easytv-2.9.5.zip::https://github.com/aiyakuaile/easy_tv_live/releases/download/2.9.5/easyTV-2.9.5-linux.zip
-	source = LICENSE-2.9.5::https://raw.githubusercontent.com/aiyakuaile/easy_tv_live/2.9.5/LICENSE
+	noextract = easytv-2.9.6.zip
+	source = easytv-2.9.6.zip::https://github.com/aiyakuaile/easy_tv_live/releases/download/2.9.6/easyTV-2.9.6-linux.zip
+	source = LICENSE-2.9.6::https://raw.githubusercontent.com/aiyakuaile/easy_tv_live/2.9.6/LICENSE
 	source = easytv.sh
-	sha256sums = 384f1bd46679f617a70f104ce4a253695273c896ca32afafb616e8456dfa8b9b
+	sha256sums = ecb12e6a717bd5838bdf6c0ea103c7f86f9c9f5fb2da1bc45121bfb5bd3331a9
 	sha256sums = ed29e69fccc7077eb337382e4b22599586eadb471e18198e59ad0c8219752be8
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
