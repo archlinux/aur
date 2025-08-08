@@ -1,21 +1,28 @@
 pkgbase = bubblewrap-git
-	pkgdesc = Unprivileged sandboxing tool
-	pkgver = v0.3.1.r6.g94147e2
+	pkgdesc = Low-level unprivileged sandboxing tool
+	pkgver = 0.11.0.r2.gd6180f2
 	pkgrel = 1
-	url = https://github.com/projectatomic/bubblewrap
-	install = bubblewrap.install
-	arch = x86_64
+	url = https://github.com/containers/bubblewrap
 	arch = i686
-	license = LGPL
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = libxslt
-	makedepends = docbook-xsl
+	arch = x86_64
+	license = LGPL-2.0-or-later
 	makedepends = git
-	provides = bubblewrap
+	makedepends = bash-completion
+	makedepends = docbook-xsl
+	makedepends = libxslt
+	makedepends = meson
+	depends = gcc-libs
+	depends = glibc
+	depends = libcap
+	provides = bubblewrap=0.11.0.r2.gd6180f2
 	conflicts = bubblewrap
-	source = bubblewrap-git::git+https://github.com/projectatomic/bubblewrap
-	sha512sums = SKIP
+	options = staticlibs
+	source = git+https://github.com/containers/bubblewrap.git
+	sha256sums = SKIP
 
 pkgname = bubblewrap-git
 
+pkgname = bubblewrap-suid-git
+	pkgdesc = Low-level unprivileged sandboxing tool (setuid variant)
+	provides = bubblewrap-suid=0.11.0.r2.gd6180f2
+	conflicts = bubblewrap-suid

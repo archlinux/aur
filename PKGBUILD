@@ -1,38 +1,63 @@
-pkgname='bubblewrap-git'
-pkgdesc='Unprivileged sandboxing tool'
-url='https://github.com/projectatomic/bubblewrap'
-license=('LGPL')
-pkgver=v0.3.1.r6.g94147e2
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+
+pkgbase=bubblewrap-git
+pkgname=('bubblewrap-git' 'bubblewrap-suid-git')
+pkgver=0.11.0.r2.gd6180f2
 pkgrel=1
-arch=('x86_64' 'i686')
-makedepends=('autoconf' 'automake' 'libxslt' 'docbook-xsl' 'git')
+pkgdesc="Low-level unprivileged sandboxing tool"
+arch=('i686' 'x86_64')
+url="https://github.com/containers/bubblewrap"
+license=('LGPL-2.0-or-later')
+depends=('gcc-libs' 'glibc' 'libcap')
+makedepends=('git' 'bash-completion' 'docbook-xsl' 'libxslt' 'meson')
+provides=("bubblewrap=$pkgver")
 conflicts=('bubblewrap')
-provides=('bubblewrap')
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
-install='bubblewrap.install'
+options=('staticlibs')
+source=("git+https://github.com/containers/bubblewrap.git")
+sha256sums=('SKIP')
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+
+pkgver() {
+  cd "bubblewrap"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
-prepare () {
-	cd "${pkgname}"
-	NOCONFIGURE=1 ./autogen.sh
+build() {
+  cd "bubblewrap"
+
+  meson setup \
+    --buildtype=plain \
+    --prefix="/usr" \
+    --sbindir="bin" \
+    -Ddefault_library="both" \
+    -Dselinux="disabled" \
+    "_build"
+  meson compile -C "_build"
 }
 
-build () {
-	cd "${pkgname}"
-	./configure --prefix=/usr --with-bash-completion-dir=/usr/share/bash-completion --with-priv-mode=setuid
-	make
+check() {
+  cd "bubblewrap"
+
+  #meson test -C "_build"
 }
 
-package () {
-	cd "${pkgname}"
-	make install DESTDIR="${pkgdir}"
+package_bubblewrap-git() {
+  cd "bubblewrap"
+
+  meson install -C "_build" --destdir "$pkgdir"
+}
+
+package_bubblewrap-suid-git() {
+  pkgdesc+=" (setuid variant)"
+  provides=("bubblewrap-suid=$pkgver")
+  conflicts=('bubblewrap-suid')
+
+  cd "bubblewrap"
+
+  meson install -C "_build" --destdir "$pkgdir"
+  chmod u+s "$pkgdir/usr/bin/bwrap"
 }
