@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=risuai-bin
 _pkgname=RisuAI
-pkgver=166.0.3
+pkgver=166.1.0
 pkgrel=1
 pkgdesc="Make your own story. User-friendly software for LLM roleplaying.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
     'python-pydantic'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('308b7e1300e1be5b09a0af79df16042884d555d6e69513c6ee7789c1a6ac0a5b')
+sha256sums=('a63c555a7e7c2862943d138b4ea82213de900af5a39a87ffd91319b91d87e723')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib"
