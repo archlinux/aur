@@ -1,4 +1,5 @@
 [prusa-slicer]
 source = "git"
 git = "https://github.com/prusa3d/PrusaSlicer.git"
-prefix = "v"
+prefix = "version_"
+include_regex = 'version_.*'
