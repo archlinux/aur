@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Modules for working with Valve's Source Engine file formats."
 arch=('x86_64')
 url="https://github.com/TeamSpen210/$_pkgname"
-license=('Apache-2.0')
+license=('MIT')
 
 depends=(
     "python-attrs"
