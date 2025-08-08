@@ -2,8 +2,8 @@
 
 _pkgname=ddplan
 pkgname="${_pkgname}-git"
-pkgver=0.1.0+r7.20160821.5d5d9d8
-pkgrel=2
+pkgver=1.0.0+r21.20250720.3ec001c
+pkgrel=1
 pkgdesc="Simple menubar application with timetables for trams, buses and trains in Dresden. (Dresdner Verkehrsbetriebe/ DVB backend.)"
 arch=(
   "any"

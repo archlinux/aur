@@ -1,14 +1,14 @@
 pkgbase = ddplan-git
 	pkgdesc = Simple menubar application with timetables for trams, buses and trains in Dresden. (Dresdner Verkehrsbetriebe/ DVB backend.)
-	pkgver = 0.1.0+r7.20160821.5d5d9d8
-	pkgrel = 2
+	pkgver = 1.0.0+r21.20250720.3ec001c
+	pkgrel = 1
 	url = https://github.com/4gray/ddplan
 	arch = any
 	license = custom: unspecified
 	makedepends = git
 	makedepends = npm
 	depends = electron
-	provides = ddplan=0.1.0+r7.20160821.5d5d9d8
+	provides = ddplan=1.0.0+r21.20250720.3ec001c
 	conflicts = ddplan
 	source = ddplan::git+https://github.com/4gray/ddplan.git
 	source = ddplan.sh
