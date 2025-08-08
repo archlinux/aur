@@ -1,11 +1,11 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 pkgname=newscheck
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Yet another Arch Linux news reader"
 url="https://github.com/xuanruiqi/newscheck"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xuanruiqi/newscheck/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a25b3558bfedcc75f5521c919b5d304eabd4849d8d223055964991f06583fe4')
+sha256sums=('bea50cf2d3261613bf9bfd57592fc2c41cf432ca2570888120ff96a19c21c0f9')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT')
 makedepends=('cargo' 'pandoc')
