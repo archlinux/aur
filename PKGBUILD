@@ -1,17 +1,17 @@
-# Maintainer: Talon <diablodev@googlegroups.com>
+# Maintainer: Bui Doan Quang Huy <qhuylovegd@gmail.com>
 pkgname=astralrinth-bin
-pkgver=0.9.3
-pkgrel=01
-pkgdesc="A fork of the Modrinth Launcher."
+pkgver=0.10.304
+pkgrel=1
+pkgdesc="A fork of the Modrinth Launcher developed by didirus"
 arch=('x86_64')
-url="https://github.com/DIDIRUS4/AstralRinth"
+url="https://git.astralium.su/didirus/AstralRinth"
 license=('GPL-3.0-only')
 depends=('openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup3' 'webkit2gtk-4.1' 'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm')
 optdepends=('xorg-xrandr: for older minecraft versions')
 options=('!strip' '!emptydirs' '!debug')
 conflicts=('modrinth-app-bin' 'modrinth-app-git' 'modrinth-app-ammipamge' 'modrinth-app')
 install=${pkgname}.install
-source=("https://github.com/DIDIRUS4/AstralRinth/releases/download/ARF-v${pkgver}/AstralRinth.App_${pkgver}${pkgrel}_amd64.deb"
+source=("AstralRinth_App_${pkgver}_amd64.deb::https://git.astralium.su/didirus/AstralRinth/releases/download/AR-${pkgver}/AstralRinth%20App_${pkgver}_amd64.deb"
         "astralrinth-app"
         "astralrinth-file-extensions.xml")
 sha512sums=('SKIP'
@@ -19,25 +19,17 @@ sha512sums=('SKIP'
             '38fedb2532850677ff638d5c7e20fbc78efc18b5deb26f77dfcc079b42f48f16473f0a27d7af183ef02ad3cd94729c86249bdac60b2bc1b25b47a1ebd2ba0c0d')
 
 prepare() {
-    cd "$srcdir/"
+    cd "$srcdir"
+    bsdtar -xf "${srcdir}/AstralRinth_App_${pkgver}_amd64.deb"
     tar xf data.tar.gz
 }
 
-_binname="ModrinthApp"
-package(){
-    cd "$srcdir"
-    find "./usr/share" -type f -print0 | while read -d $'\0' f; do
-        filename=$(basename -- "$f")
-        target="astralrinth-app.${filename##*.}"
-        dir=$(dirname -- "$f")
-        install -Dm644 "$f" "$pkgdir/$dir/$target"
-    done
-    sed -i \
-      -e "s/Exec=${_binname}/Exec=astralrinth-app %u/" \
-      -e "s/Icon=${_binname}/Icon=astralrinth-app/" \
-      -e "s/mrpack/x-modrinth-mrpack/" \
-      "${pkgdir}/usr/share/applications/astralrinth-app.desktop"
-    install -Dm755 "${srcdir}/usr/bin/${_binname}" "${pkgdir}/opt/astralrinth-app/astralrinth-app"
-    install -Dm755 "${srcdir}/astralrinth-app" "${pkgdir}/usr/bin/astralrinth-app"
-    install -Dm644 "${srcdir}/astralrinth-file-extensions.xml" "${pkgdir}/usr/share/mime/packages/astralrinth-file-extensios.xml"
+package() {
+  cd "$srcdir"
+  install -Dm755 "usr/bin/ModrinthApp" "${pkgdir}/opt/astralrinth-app/astralrinth-app"
+  install -Dm755 "astralrinth-app" "${pkgdir}/usr/bin/astralrinth-app"
+  install -Dm644 "astralrinth-file-extensions.xml" "${pkgdir}/usr/share/mime/packages/astralrinth-file-extensions.xml"
+  install -Dm644 "usr/share/applications/AstralRinth App.desktop" "${pkgdir}/usr/share/applications/astralrinth-app.desktop"
+  sed -i -e 's|Exec=ModrinthApp|Exec=astralrinth-app %u|' -e 's|Icon=ModrinthApp|Icon=astralrinth-app|' "${pkgdir}/usr/share/applications/astralrinth-app.desktop"
+  install -Dm644 "usr/share/icons/hicolor/128x128/apps/ModrinthApp.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/astralrinth-app.png"
 }
