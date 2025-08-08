@@ -1,6 +1,6 @@
 pkgbase = transformerlab-bin
 	pkgdesc = Open Source Application for Advanced LLM Engineering: interact, train, fine-tune, and evaluate large language models on your own computer.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.20.7
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://transformerlab.ai/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = transformerlab-bin
 	makedepends = asar
 	depends = electron26
 	optdepends = ollama: server GGUF models instead of llama.cpp
-	provides = transformerlab=0.20.7
+	provides = transformerlab=0.21.1
 	conflicts = transformerlab
-	source = LICENSE-0.20.7::https://raw.githubusercontent.com/transformerlab/transformerlab-app/v0.20.7/LICENSE
+	source = LICENSE-0.21.1::https://raw.githubusercontent.com/transformerlab/transformerlab-app/v0.21.1/LICENSE
 	source = transformerlab.sh
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = transformerlab-0.20.7-aarch64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.20.7/Transformer-Lab-0.20.7-arm64.AppImage
-	sha256sums_aarch64 = d9193718ed1a06b648ae5c4ef58b1e9fa71bf4089b991bca74329356c5512ede
-	source_x86_64 = transformerlab-0.20.7-x86_64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.20.7/Transformer-Lab-0.20.7.AppImage
-	sha256sums_x86_64 = 32d849d9bbad8293c2df6190f4e0d73f3a939e20ff9a7652dd15a878e51b6501
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = transformerlab-0.21.1-aarch64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.21.1/Transformer-Lab-0.21.1-arm64.AppImage
+	sha256sums_aarch64 = c9e74817ea04645afdf2a53dd4a0a611787224cc36849b6063e32db389f40269
+	source_x86_64 = transformerlab-0.21.1-x86_64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.21.1/Transformer-Lab-0.21.1.AppImage
+	sha256sums_x86_64 = 20d9992a675cf64e1e75ac2d8b72b227b415071cdbad429653748acd36485779
 
 pkgname = transformerlab-bin
