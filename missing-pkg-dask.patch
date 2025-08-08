@@ -1,12 +1,14 @@
 --- src/raft-25.06.00/python/raft-dask/CMakeLists.txt	2025-06-06 03:23:44.000000000 +0800
 +++ src/raft-25.06.00/python/raft-dask/CMakeLists.txt.new	2025-07-02 19:11:19.277731899 +0800
-@@ -25,10 +25,15 @@
+@@ -25,10 +25,17 @@
    LANGUAGES CXX CUDA
  )
  
 +find_package(nvtx3 REQUIRED)
 +find_package(rapids_logger REQUIRED)
 +find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
++find_package(CCCL REQUIRED)
 +
 +
  rapids_cpm_init()

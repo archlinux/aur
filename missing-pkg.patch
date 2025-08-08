@@ -1,27 +1,6 @@
---- src/raft-25.06.00/python/pylibraft/CMakeLists.txt	2025-06-06 03:23:44.000000000 +0800
-+++ src/raft-25.06.00/python/pylibraft/CMakeLists.txt.new	2025-06-23 22:08:05.873927390 +0800
-@@ -1,33 +1,47 @@
- # =============================================================================
- # Copyright (c) 2022-2024, NVIDIA CORPORATION.
- #
--# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
--# in compliance with the License. You may obtain a copy of the License at
-+# Licensed under the Apache License, Version 2.0 (the "License"); you may not
-+# use this file except in compliance with the License. You may obtain a copy of
-+# the License at
- #
- # http://www.apache.org/licenses/LICENSE-2.0
- #
--# Unless required by applicable law or agreed to in writing, software distributed under the License
--# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
--# or implied. See the License for the specific language governing permissions and limitations under
-+# Unless required by applicable law or agreed to in writing, software
-+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-+# License for the specific language governing permissions and limitations under
- # the License.
- # =============================================================================
- 
+--- src/raft-25.08.00/python/pylibraft/CMakeLists.txt	2025-08-07 02:33:45.000000000 +0800
++++ src/raft-25.08.00/python/pylibraft/CMakeLists.txt.new	2025-08-08 10:03:41.463232702 +0800
+@@ -15,6 +15,11 @@
  cmake_minimum_required(VERSION 3.30.4 FATAL_ERROR)
  
  include(../../cmake/rapids_config.cmake)
@@ -29,35 +8,20 @@
 +include(rapids-cpm)
 +include(rapids-export)
 +include(rapids-find)
- 
--# We always need CUDA for pylibraft because the raft dependency brings in a header-only cuco
--# dependency that enables CUDA unconditionally.
-+
-+# We always need CUDA for pylibraft because the raft dependency brings in a
-+# header-only cuco dependency that enables CUDA unconditionally.
- include(rapids-cuda)
- rapids_cuda_init_architectures(pylibraft)
- 
- project(
--  pylibraft
--  VERSION "${RAPIDS_VERSION}"
--  LANGUAGES CXX CUDA
--)
--
--# an installed version of raft contains the other necessary targets (like CCCL and cuco)
-+    pylibraft
-+    VERSION "${RAPIDS_VERSION}"
-+    LANGUAGES CXX CUDA)
-+
 +rapids_cpm_init()
-+
-+# an installed version of raft contains the other necessary targets (like CCCL
-+# and cuco)
+ 
+ # We always need CUDA for pylibraft because the raft dependency brings in a header-only cuco
+ # dependency that enables CUDA unconditionally.
+@@ -28,6 +32,12 @@
+ )
+ 
+ # an installed version of raft contains the other necessary targets (like CCCL and cuco)
 +find_package(CCCL REQUIRED)
 +find_package(rapids_logger REQUIRED)
 +find_package(nvtx3 REQUIRED)
 +include(../../cpp/cmake/thirdparty/get_cutlass.cmake)
 +find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
  find_package(raft "${RAPIDS_VERSION}" REQUIRED COMPONENTS raft compiled)
  
  include(rapids-cython-core)

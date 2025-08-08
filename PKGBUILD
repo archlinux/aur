@@ -3,13 +3,25 @@
 pkgbase=libraft
 pkgname=(libraft python-pylibraft python-raft-dask)
 pkgver=25.08.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Reusable Accelerated Functions and Tools for Vector Search and More"
 url="https://github.com/rapidsai/raft"
 arch=('x86_64')
 license=('Apache-2.0')
 depends=(cuda rmm)
-makedepends=(cuda python-build python-installer python-wheel cmake python-scikit-build-core python-rapids-build-backend ninja cython)
+makedepends=(
+    cuda
+    python-build
+    python-installer
+    python-wheel
+    cmake
+    python-scikit-build-core
+    python-rapids-build-backend
+    ninja
+    cython
+    cucollections
+    ucxx
+)
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
     "system-lib.patch"
@@ -18,9 +30,9 @@ source=(
 )
 sha256sums=(
     '032dce57b297e121352a1556bd9021410be30fcf319e158592f615e1990b2e58'
-    '55a7ef2a7e9d2e08d6bb5355743bdc97806660e222736a8a20028b103683fffc'
-    '816ee0a489622a0f56cc479fabf20c79ef36eb81673d1da7fd0a649e372ff613'
-    '40a7013af054a3d24690976a00cafe5901329a01af45c42938dcbbd4a39280ac'
+    'c2811f81ba80481060168141ba65b038ec3137ed4f93f3f46832e3631d550baf'
+    '3aaac5dc31520092ebce845e178eac077ceb399774606b90598213697a18956d'
+    '4f7f4fcfd242bf25055da26fd025f134f55ab91140910d7d64710a842281f46f'
 )
 
 prepare() {
@@ -50,10 +62,9 @@ build() {
 
 package_libraft() {
     conflicts=(cutlass-headers) # libraft needs a specific version of cutlass-headers
+    depends+=(cucollections)
     cd "$srcdir/raft-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
-    rm "$pkgdir/usr/include/cuco" -r
-    rm "$pkgdir/usr/lib/cmake/cuco" -r
 }
 
 package_python-pylibraft() {

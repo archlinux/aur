@@ -1,6 +1,6 @@
---- cpp/CMakeLists.txt	2025-06-06 03:23:44.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2025-08-01 14:58:04.498251873 +0800
-@@ -171,8 +171,9 @@
+--- src/raft-25.08.00/cpp/CMakeLists.txt	2025-08-07 02:33:45.000000000 +0800
++++ src/raft-25.08.00/cpp/CMakeLists.txt.new	2025-08-08 09:49:37.068387166 +0800
+@@ -171,12 +171,12 @@
  create_logger_macros(RAFT "raft::default_logger()" include/raft/core)
  
  # CCCL before rmm/cuco so we get the right version of CCCL
@@ -11,4 +11,9 @@
 +find_package(rapids_logger REQUIRED)
  include(cmake/thirdparty/get_cutlass.cmake)
  
- include(${rapids-cmake-dir}/cpm/cuco.cmake)
+-include(${rapids-cmake-dir}/cpm/cuco.cmake)
+-rapids_cpm_cuco(BUILD_EXPORT_SET raft-exports INSTALL_EXPORT_SET raft-exports)
++find_package(cuco REQUIRED)
+ 
+ if(BUILD_TESTS)
+   include(${rapids-cmake-dir}/cpm/gtest.cmake)
