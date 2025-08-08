@@ -6,7 +6,7 @@ _pkgname=("${_langs[@]/#/"${_pkgbase}-"}")
 pkgbase="${_pkgbase}-bin"
 pkgname=("${pkgbase}" "${_pkgname[@]/%/-bin}")
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Protoc plugin to generate polyglot message validators"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/bufbuild/${_pkgbase}"
@@ -34,7 +34,7 @@ for _lang in "${_langs[@]}"; do
   eval "
 package_${_pkgbase}-${_lang}-bin() {
   pkgdesc+=' - ${_lang} target'
-  depends=('${_pkgbase}')
+  depends=('${_pkgbase}=${pkgver}')
   provides=('${_pkgbase}-${_lang}')
   conflicts=('${_pkgbase}-${_lang}')
   
