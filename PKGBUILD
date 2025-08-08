@@ -3,15 +3,6 @@
 #
 # This PKGBUILD builds the 'alpaca-ai' application.
 # Before attempting to build this package, ensure all AUR dependencies are installed.
-# You can install them using an AUR helper like 'yay' or 'paru', for example:
-# yay -S python-openai python-youtube-transcript-api python-markitdown python-mammoth python-markdownify python-pptx python-pydub python-speechrecognition python-pathvalidate python-cobble python-magika
-# The maintainer of PKGBUILD has NO relationship with the developers of ollama and alpaca
-# Note: python-mammoth's check() function might fail due to test issues.
-# If you encounter issues with python-mammoth or python-markitdown builds,
-# you might need to manually edit their PKGBUILDs in ~/.cache/yay/ (or ~/.cache/paru/)
-# and add '!check' to the 'options' array to skip their test suite.
-# For example: options=(!debug !check)
-
 pkgname=alpaca-ai
 _pkgname=alpaca
 pkgver=7.5.5
@@ -66,6 +57,9 @@ depends=(
     python-pathvalidate        # AUR dependency (dependency of python-markitdown)
     python-cobble              # AUR dependency (dependency of python-markitdown)
     python-magika              # AUR dependency (dependency of python-markitdown)
+    libportal
+    python-opencv
+    python-duckduckgo-search
 )
 
 # List of build-time dependencies
