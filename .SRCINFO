@@ -1,0 +1,25 @@
+pkgbase = maxr
+	pkgdesc = OpenSource reimplementation for M.A.X.
+	pkgver = 0.2.17
+	pkgrel = 1
+	url = https://www.maxr.org
+	arch = x86_64
+	license = GPL-2.0-only AND CC-BY-SA-3.0
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2_mixer
+	depends = sdl2_net
+	depends = gcc-libs
+	depends = sdl2-compat
+	depends = glibc
+	depends = bash
+	source = git+https://github.com/maxr-dot-org/maxr.git#tag=4adca7eff33bcf229f506a90052c7c34cf51f5c3
+	source = git+https://github.com/oo13/spiritless_po.git#commit=5d729be
+	source = git+https://github.com/doctest/doctest.git#commit=ae7a135
+	source = git+https://github.com/nlohmann/json.git#commit=9cca280
+	b2sums = 771620fba2226555fd28bfaa5268956cabe7c25940f0e7fcf9ab6a88ed6e25a2b5a325e3a9fb41303263225c10a70fbbd01f65ef37b98dcdc896705c4ebdcda9
+	b2sums = 83c33b79a9bdc54b65b5ab11bd24118eb710f6196daac9eaab136ae2ec861dda8d46277e67a264a9e8e332b2158e9a6b160a212af1e3ef16e60e58b1bb92b680
+	b2sums = 4d808f831400e0e98f24aab8aa51b6af1ae16af341a87776335068099d3d0ddc25175f154ee5ba79a465ef878e952e8fe577f9e20e3bb82b3d95b87a893d58f8
+	b2sums = 8840eb8346065a766c5fff736b36d042ae746696183612c0fb5f6b10b873e29e8f3cc3594c20f0c2a76c59b4a25cbe6ca9825947cf751798b5b0ac60c4dccbd7
+
+pkgname = maxr

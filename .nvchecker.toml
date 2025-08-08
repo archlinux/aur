@@ -1,0 +1,5 @@
+[maxr]
+source = "github"
+github = "maxr-dot-org/maxr"
+prefix = "release-"
+use_latest_release = true

@@ -1,0 +1,10 @@
+*.tar
+*.zip
+*.zst
+*.log
+pkg
+src
+doctest/
+json/
+maxr/
+spiritless_po/
