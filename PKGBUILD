@@ -13,7 +13,7 @@ pkgbase="${_pkgbase}-git"
 pkgname=(
   "${_pkgbare}-common-git"
 )
-pkgver=0.0.0.2+26.r564.20250625.fc866af
+pkgver=0.0.0.2+34.r572.20250801.92b3513
 pkgrel=1
 pkgdesc="32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout."
 arch=('any')
