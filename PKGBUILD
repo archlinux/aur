@@ -1,10 +1,10 @@
 # Maintainer: initMayday <initMayday@protonmail.com>
-# GIT DEV branch package
+# Git dev branch package
 
 _pkgname="dinit-user-spawn"
 pkgname="$_pkgname-dev-git"
 pkgrel=1
-pkgver=r22.7e1026b
+pkgver=r24.a97bb3b
 pkgdesc='Launches a user process dinit for you on login'
 arch=('any')
 url='https://github.com/initMayday/dinit-user-spawn.git'

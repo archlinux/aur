@@ -1,6 +1,6 @@
 pkgbase = dinit-user-spawn-dev-git
 	pkgdesc = Launches a user process dinit for you on login
-	pkgver = r22.7e1026b
+	pkgver = r24.a97bb3b
 	pkgrel = 1
 	url = https://github.com/initMayday/dinit-user-spawn.git
 	install = dinit-user-spawn.install
