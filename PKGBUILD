@@ -13,8 +13,8 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('MIT')
 
 depends=('glibc')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname,,}")
+conflicts=("${_pkgname,,}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname,,}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname,,}_${pkgver}_linux_${_barch[1]}.tar.gz")
