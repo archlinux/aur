@@ -2,7 +2,7 @@
 
 _pkgname='python-libpcap'
 pkgname="${_pkgname}-git"
-pkgver=0.5.2.r127.20240926.2c99d75
+pkgver=0.5.3+1.r139.20250714.343c166
 pkgrel=1
 pkgdesc="Python binding for the libpcap C library."
 arch=(
