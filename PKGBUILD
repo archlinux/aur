@@ -41,7 +41,7 @@ package() {
 	app_bin="$pkgdir/opt/wtq/wtq"
 
 	install -Ddm755 $app_dir # Create install dir
-	cp -R $srcdir/windows-terminal-quake/_output/staging/linux-x64_self-contained  $app_dir # Copy app files to install dir
+	cp -R $srcdir/windows-terminal-quake/_output/staging/linux-x64_self-contained/* $app_dir # Copy app files to install dir
 	chmod -R 755 $app_dir
 
 	# Create symlink in /usr/bin
