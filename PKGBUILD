@@ -67,7 +67,7 @@ makedepends=(
   "${_make_libpamac[@]}"
 )
 optdepends=(
-  "${_opt_libpamac}"
+  "${_opt_libpamac[@]}"
   'lxsession: needed for authentication in Xfce, LXDE etc.'
   'polkit-gnome: needed for authentication in Cinnamon, Gnome'
 )
