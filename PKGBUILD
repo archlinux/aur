@@ -2,7 +2,7 @@
 
 pkgname=cursor-bin
 pkgver=1.4.2
-pkgrel=4
+pkgrel=6
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -33,12 +33,8 @@ package() {
   ln -svf /usr/bin/rg ${_app}/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open ${_app}/node_modules/open/xdg-open
 
-  _vscode=$(grep -oP '"vscodeVersion": "\K[^"]+' ${_app}/product.json)
-  # Insecure! Should be part of GitHub WF
-  # Allow packaging with other electron by sed'ding PKGBUILD
-  _electron=electron$(curl -Ls https://raw.githubusercontent.com/microsoft/vscode/refs/tags/${_vscode}/package-lock.json | grep -oP '"electron": *"[^\d]*\K\d+')
-  #curl -Ls https://github.com/microsoft/vscode/archive/refs/tags/${_vscode}.tar.gz | bsdtar -xf - vscode-${_vscode}/package-lock.json
-  #_electron=electron$(grep -oP '"electron": *"[^\d]*\K\d+' vscode-${_vscode}/package-lock.json)
+  # Electron version determined during build process
+  _electron=electron34
   echo $_electron
   depends+=($_electron)
   mv usr "${pkgdir}"/usr
