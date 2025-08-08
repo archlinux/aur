@@ -5,35 +5,56 @@ pkgdesc="Moonasst Qt application"
 arch=('x86_64')
 url="https://github.com/nemozz-hz/moonasst"
 license=('MIT' 'GPL' 'LGPL')
-depends=('qt6-base' 'qt6-quicktimeline' 'qt6-webengine')
+depends=('qt6-base' 'qt6-quicktimeline' 'qt6-webengine' 'qt6-svg' 'vulkan-devel')
 makedepends=()
 source=("https://github.com/nemozz-hz/moonasst/archive/v$pkgver.tar.gz")
-sha256sums=('c43e342bf61351930551044fd1dba384df4b741fec44a58f517e75a171d10470')
+sha256sums=('fc719503902732852b91d28f892b02761644d8060cb64443618ce5619adcbab9')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	
-	# 检查二进制文件是否存在
+	# 检查moonasst二进制文件是否存在
 	if [ ! -f "moonasst" ]; then
 		echo "错误: 找不到moonasst二进制文件"
 		echo "请确保在GitHub仓库的根目录中有moonasst可执行文件"
 		exit 1
 	fi
 	
-	# 检查二进制文件是否可执行
+	# 检查moonasst二进制文件是否可执行
 	if [ ! -x "moonasst" ]; then
 		echo "警告: moonasst文件不可执行，正在设置执行权限"
 		chmod +x moonasst
 	fi
 	
+	# 检查moonlight二进制文件是否存在
+	if [ ! -f "moonlight" ]; then
+		echo "错误: 找不到moonlight二进制文件"
+		echo "请确保在GitHub仓库的根目录中有moonlight可执行文件"
+		exit 1
+	fi
+	
+	# 检查moonlight二进制文件是否可执行
+	if [ ! -x "moonlight" ]; then
+		echo "警告: moonlight文件不可执行，正在设置执行权限"
+		chmod +x moonlight
+	fi
+	
 	# 创建目标目录
-	install -dm755 "$pkgdir/opt/exec"
+	install -dm775 "$pkgdir/opt/exec"
+	install -dm775 "$pkgdir/opt/exec/Moonlight Game Streaming Project"
 	
 	# 安装二进制文件
 	install -Dm755 moonasst "$pkgdir/opt/exec/moonasst"
+	install -Dm755 moonlight "$pkgdir/opt/exec/moonlight"
 	
 	# 设置正确的权限（可读可写可执行）
 	chmod 755 "$pkgdir/opt/exec/moonasst"
+	chmod 755 "$pkgdir/opt/exec/moonlight"
+	
+	# 安装moonlight配置文件
+	if [ -f "Moonlight.ini" ]; then
+		install -Dm644 Moonlight.ini "$pkgdir/opt/exec/Moonlight Game Streaming Project/Moonlight.ini"
+	fi
 	
 	# 创建桌面文件
 	install -dm755 "$pkgdir/usr/share/applications"
