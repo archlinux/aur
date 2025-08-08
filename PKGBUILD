@@ -1,7 +1,7 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 pkgname=vrcx
 pkgver=2025.06.30
-pkgrel=3
+pkgrel=4
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
@@ -9,6 +9,7 @@ license=('MIT')
 depends=('dotnet-runtime-9.0' 'electron' 'gtk3' 'nss' 'libxss' 'gconf' 'libxrandr' 'alsa-lib')
 makedepends=('dotnet-sdk-9.0' 'git' 'nodejs' 'npm' 'imagemagick')
 conflicts=('vrcx-bin')
+options=(!debug !lto)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vrcx-team/VRCX/archive/refs/tags/v$pkgver.tar.gz"
     "vrcx.desktop"
