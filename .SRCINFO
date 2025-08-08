@@ -1,7 +1,7 @@
 pkgbase = steamlink-bin
 	pkgdesc = Steam Link client (pre-compiled binary)
 	pkgver = 1.3.16.287
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.steampowered.com/remoteplay#anywhere
 	arch = x86_64
 	license = LicenseRef-Steam
@@ -21,6 +21,8 @@ pkgbase = steamlink-bin
 	depends = zlib
 	provides = steamlink=1.3.16.287
 	conflicts = steamlink
+	options = !debug
+	options = !lto
 	source = flathub.gpg
 	source = steamlink.sh
 	sha256sums = 8bdc20abc4e19c0796460beb5bfe0e7aa4138716999e19c6f2dbdd78cc41aeaa
