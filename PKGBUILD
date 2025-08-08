@@ -17,6 +17,8 @@ license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm git
 diffutils gcc make) # base-devel
+conflicts=(opera-{beta,developer}-ffmpeg-codecs)
+provides=(opera-{beta,developer}-ffmpeg-codecs)
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}"
 off-opera-ffmpeg.hook on-opera-ffmpeg.install)
 install=on-opera-ffmpeg.install
@@ -34,6 +36,9 @@ prepare() {
   # Use native opus decoder not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   #diff libavcodec/opus/dec.c{.bak,} || :
+  # https://git.ffmpeg.org/gitweb/ffmpeg.git/commit/1464930696f593320352a6f928fad6f50ade8f8b
+  sed -i.bak '/check_optflags*.-fno-tree-vectorize/d' configure
+  #diff configure{.bak,}||:
 }
 
 build() {
@@ -63,13 +68,7 @@ build() {
 }
 
 package(){
-  install -Dm644 $_so -t "$pkgdir"/usr/lib/opera/lib_extra
-  # Block LD_PRELOAD which might breaks external apps
+  install -Dm644 $_so "$pkgdir"/usr/lib/$_so
+  # Block LD_PRELOAD
   install -Dm644 off-opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
-  # symlink
-  conflicts=(opera-{beta,developer}-ffmpeg-codecs)
-  provides=(opera-{beta,developer}-ffmpeg-codecs)
-  install -d "$pkgdir"/usr/lib/opera-{beta,developer}/lib_extra
-  ln -svf /usr/lib/opera/lib_extra/$_so -t "$pkgdir"/usr/lib/opera-beta/lib_extra
-  ln -svf /usr/lib/opera/lib_extra/$_so -t "$pkgdir"/usr/lib/opera-developer/lib_extra
 }

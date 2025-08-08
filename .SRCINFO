@@ -12,6 +12,10 @@ pkgbase = opera-ffmpeg-codecs
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
+	provides = opera-beta-ffmpeg-codecs
+	provides = opera-developer-ffmpeg-codecs
+	conflicts = opera-beta-ffmpeg-codecs
+	conflicts = opera-developer-ffmpeg-codecs
 	source = chromium-ffmpeg::git+https://chromium.googlesource.com/chromium/third_party/ffmpeg.git#commit=01f23648c6b84de6c0f717fa4e1816f53b9ee72e
 	source = off-opera-ffmpeg.hook
 	source = on-opera-ffmpeg.install
@@ -20,7 +24,3 @@ pkgbase = opera-ffmpeg-codecs
 	sha256sums = f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820
 
 pkgname = opera-ffmpeg-codecs
-	provides = opera-beta-ffmpeg-codecs
-	provides = opera-developer-ffmpeg-codecs
-	conflicts = opera-beta-ffmpeg-codecs
-	conflicts = opera-developer-ffmpeg-codecs
