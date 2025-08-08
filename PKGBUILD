@@ -1,5 +1,5 @@
 pkgname=redmine-plugin-apijs
-pkgver=6.9.7
+pkgver=6.9.8
 pkgrel=1
 pkgdesc="Plugin for Redmine to display a gallery from attachments"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL2' 'MIT' 'OFL')
 depends=('redmine' 'python-pillow' 'scour' 'perl-image-exiftool')
 optdepends=('ffmpegthumbnailer: for video thumbnail support')
 source=("https://github.com/luigifab/redmine-apijs/archive/v${pkgver}/redmine-apijs-${pkgver}.tar.gz")
-sha256sums=("d2862c02cb17999453fd535d06fad7a716e87afab5e7b0d31d1d396a2c6c1699")
+sha256sums=("77f5f839bd30598390e48fd21d25516d517cc32aecf14edd6584e45d37cba138")
 
 prepare() {
   mv "redmine-apijs-$pkgver" "$pkgname-$pkgver"
