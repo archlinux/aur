@@ -1,5 +1,5 @@
 diff --git a/python/mujoco/CMakeLists.txt b/python/mujoco/CMakeLists.txt
-index 21ad154..42f6599 100644
+index 2f8da9e6..4f673c99 100644
 --- a/python/mujoco/CMakeLists.txt
 +++ b/python/mujoco/CMakeLists.txt
 @@ -132,7 +132,7 @@ endif()
@@ -20,22 +20,21 @@ index 21ad154..42f6599 100644
    PACKAGE_NAME
    Eigen3
    LIBRARY_NAME
-@@ -182,7 +182,7 @@ findorfetch(
- # ==================== PYBIND11 ================================================
+@@ -183,6 +183,7 @@ findorfetch(
+ option(MUJOCO_PYTHON_USE_SYSTEM_PYBIND11 "Use installed pybind11 version." OFF)
  findorfetch(
    USE_SYSTEM_PACKAGE
--  OFF
 +  ON
+   MUJOCO_PYTHON_USE_SYSTEM_PYBIND11
    PACKAGE_NAME
    pybind11
-   LIBRARY_NAME
 diff --git a/python/mujoco/__init__.py b/python/mujoco/__init__.py
-index d9e0e5c..9bf244e 100644
+index de578935..186cb9bd 100644
 --- a/python/mujoco/__init__.py
 +++ b/python/mujoco/__init__.py
-@@ -47,8 +47,8 @@ from mujoco._structs import *
- from mujoco.gl_context import *
- from mujoco.renderer import Renderer
+@@ -198,8 +198,8 @@ _specs.MjSpec.to_zip = to_zip
+ _structs.MjData.bind = _bind_data
+ _structs.MjModel.bind = _bind_model
  
 -HEADERS_DIR = os.path.join(os.path.dirname(__file__), 'include/mujoco')
 -PLUGINS_DIR = os.path.join(os.path.dirname(__file__), 'plugin')
@@ -45,19 +44,20 @@ index d9e0e5c..9bf244e 100644
  PLUGIN_HANDLES = []
  
 diff --git a/python/setup.py b/python/setup.py
-index bafabfc..e11aa17 100644
+index cebdec84..ec798295 100644
 --- a/python/setup.py
 +++ b/python/setup.py
-@@ -153,15 +153,15 @@ class BuildCMakeExtension(build_ext.build_ext):
-     (self._mujoco_library_path,
-      self._mujoco_include_path,
-      self._mujoco_plugins_path,
--     self._mujoco_framework_path) = self._find_mujoco()
-+     self._mujoco_framework_path) = "/usr/lib","/usr/include/mujoco","/usr/lib/mujoco/plugins",None
+@@ -151,15 +151,16 @@ class BuildCMakeExtension(build_ext.build_ext):
+         self._mujoco_include_path,
+         self._mujoco_plugins_path,
+         self._mujoco_framework_path,
+-    ) = self._find_mujoco()
++    #) = self._find_mujoco()
++    ) = ("/usr/lib","/usr/include/mujoco","/usr/lib/mujoco/plugins",None)
      self._configure_cmake()
      for ext in self.extensions:
        assert ext.name.startswith(EXT_PREFIX)
-       assert '.' not in ext.name[len(EXT_PREFIX):]
+       assert '.' not in ext.name[len(EXT_PREFIX) :]
        self.build_extension(ext)
 -    self._copy_external_libraries()
 -    self._copy_mujoco_headers()
@@ -69,7 +69,7 @@ index bafabfc..e11aa17 100644
        self._copy_mjpython()
  
 diff --git a/simulate/CMakeLists.txt b/simulate/CMakeLists.txt
-index 2358ef7..cae4aa4 100644
+index bd94acc3..42e53801 100644
 --- a/simulate/CMakeLists.txt
 +++ b/simulate/CMakeLists.txt
 @@ -80,6 +80,7 @@ if(MUJOCO_HARDEN)
@@ -80,7 +80,7 @@ index 2358ef7..cae4aa4 100644
  if(NOT TARGET lodepng)
    FetchContent_Declare(
      lodepng
-@@ -114,8 +115,13 @@ if(APPLE)
+@@ -115,8 +116,13 @@ if(APPLE)
  endif()
  target_include_directories(
    platform_ui_adapter PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
@@ -96,7 +96,7 @@ index 2358ef7..cae4aa4 100644
  if(SIMULATE_GLFW_DYNAMIC_SYMBOLS)
    target_compile_definitions(platform_ui_adapter PUBLIC mjGLFW_DYNAMIC_SYMBOLS)
 diff --git a/simulate/cmake/SimulateDependencies.cmake b/simulate/cmake/SimulateDependencies.cmake
-index fa539c2..eb0b95a 100644
+index 5141406c..2f413cae 100644
 --- a/simulate/cmake/SimulateDependencies.cmake
 +++ b/simulate/cmake/SimulateDependencies.cmake
 @@ -22,12 +22,12 @@ else()

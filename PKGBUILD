@@ -1,5 +1,5 @@
 pkgname=python-mujoco
-pkgver=3.0.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Mujoco's Python bindings"
 depends=('python' 'absl-py' 'python-glfw' 'python-numpy' 'python-opengl' 'mujoco')
@@ -9,15 +9,16 @@ url="https://github.com/deepmind/mujoco"
 license=('LGPL3')
 source=("https://github.com/deepmind/mujoco/archive/refs/tags/$pkgver.tar.gz"
 "mujoco.patch")
-sha256sums=('54fb3b5d2aaa068a5853b1384df0ff3d4eab45cc2fc958e82229979451299a45'
-            '3d6b5be9b65081e6bc18209f320c608b5e94b659c34483a4f49fb5bad56addd4')
+sha256sums=('6ab615adc0f6533cc9dbc63b8255017ee9a10d0c9ba1c4298ef948480e790946'
+            '2d260424c9738f2c4c9e3fd2bcefc5ca007e1514de24ebb5fa42ad084bb340fa')
 
 build() {
   cd "${srcdir}/mujoco-${pkgver}"
   patch -Np1 -i "${srcdir}/mujoco.patch"
   cd "${srcdir}/mujoco-${pkgver}/python"
-  PYTHONPATH="..:${PYTHONPATH}" python mujoco/codegen/generate_enum_traits.py > mujoco/enum_traits.h
-  PYTHONPATH="..:${PYTHONPATH}" python mujoco/codegen/generate_function_traits.py > mujoco/function_traits.h
+  PYTHONPATH="../python/mujoco:${PYTHONPATH}" python mujoco/codegen/generate_enum_traits.py > mujoco/enum_traits.h
+  PYTHONPATH="../python/mujoco:${PYTHONPATH}" python mujoco/codegen/generate_function_traits.py > mujoco/function_traits.h
+  PYTHONPATH="../python/mujoco:${PYTHONPATH}" python mujoco/codegen/generate_spec_bindings.py > mujoco/specs.cc.inc
   cp ../LICENSE .
   mkdir -p mujoco/cmake
   cp ../cmake/*.cmake mujoco/cmake
