@@ -1,6 +1,6 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv32-gnu-toolchain-elf-llvm-bin
-pkgver=2025.07.16
+pkgver=2025.08.08
 pkgrel=1
 pkgdesc="GNU toolchain for riscv32 ELF, including GCC and clang."
 arch=('x86_64')
@@ -16,10 +16,10 @@ optdepends=()
 makedepends=()
 options=(!strip)
 source=(
-  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.07.16/riscv32-elf-ubuntu-24.04-llvm-nightly-2025.07.16-nightly.tar.xz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.08.08/riscv32-elf-ubuntu-24.04-llvm-nightly-2025.08.08-nightly.tar.xz"
 )
 sha512sums=(
-  "c95cd37d447b08508e62dc979efbd50ab9b908bfc0337ebd1088269c44ab249412129b17ac4793eb1e792fb1735d3eb0abaf3ec9f0fefd56101f9ddfe1a42733"
+  "7cf2d76d8a9cd617654a014d5c87c2035271a305f148a656f8947134bb7404564cfe50196efbdf00957ed4067ed5f93a532d7e42831dc62b860a24a330215202"
 )
 
 package() {
