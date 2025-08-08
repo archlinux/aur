@@ -1,19 +1,19 @@
-pkgname='linuxtoys'
-pkgver='3.2'
+pkgname='linuxtoys-bin'
+pkgver='4.2'
 pkgrel=1
 arch=('x86_64')
-depends=(bash curl wget libnewt base-devel git)
+depends=(bash curl wget zenity base-devel git)
 makedepends=()
-conflicts=(linuxtoys)
-provides=("linuxtoys=$pkgver")
+conflicts=(linuxtoys-bin)
+provides=("linuxtoys-bin=$pkgver")
 install=linuxtoys.install
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('b9b82375995b24c42c64841b33d3162ffb9511653008e525086c87678a7036a2')
+sha256sums=('50f6bcfecb78e1422b7f44e59bd971155a8ff062ce164259509b155691c9a543')
 
 package() {
 
     mkdir -p ${pkgdir}/usr
-    cp -rf ${srcdir}/linuxtoys-${pkgver}/{bin,share} ${pkgdir}/usr
+    cp -rf ${srcdir}/linuxtoys-${pkgver}/usr/{bin,share} ${pkgdir}/usr
     chmod +x "${pkgdir}/usr/bin/linuxtoys.sh"
 
 }
