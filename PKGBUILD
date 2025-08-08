@@ -2,7 +2,7 @@
 
 _pkgname="protoc-gen-go"
 pkgname="${_pkgname}-bin"
-pkgver=1.36.6
+pkgver=1.36.7
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=('aarch64' 'i686' 'x86_64')
@@ -13,22 +13,19 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
-        "${_pkgsrc}-PATENTS::${url}/raw/refs/tags/v${pkgver}/PATENTS")
+        "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.linux.arm64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.linux.386.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.linux.amd64.tar.gz")
 sha256sums=('12156774520d841d748bcd4acba1ad6b24952f2766ceb5e873c32653a9ab3a2e'
-            '4835612df0098ca95f8e7d9e3bffcb02358d435dbb38057c844c99d7f725eb20'
-            '96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc')
-sha256sums_aarch64=('ce394a61feddaedb3a252df9b0882b6b525fa4f7362234de2b496cf8f6dd8543')
-sha256sums_i686=('5f7ddd97e45712c334d4cc7891f0621145f35e130bf73717853a07c0c5e38bad')
-sha256sums_x86_64=('4aa784e52dd6b4a3d48ec33c0927e243032f2f444ab5da1fe934328c791ccd88')
+            '4835612df0098ca95f8e7d9e3bffcb02358d435dbb38057c844c99d7f725eb20')
+sha256sums_aarch64=('380018bb5d59308b3f1ee8ba54e72607b81ce13dcd1abee9cf95447a1b856d5e')
+sha256sums_i686=('676a1ef3ab3bd8181f204f7b24fd13a907be2c8cb266ef53be8569f70502e2b4')
+sha256sums_x86_64=('343d749a98c23bebe1f2f05270c720e064037dab2b0dcc22330eb770f7710d46')
 
 package() {
   cd "${srcdir}"
   install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "${_pkgsrc}-PATENTS"   "${pkgdir}/usr/share/doc/${_pkgname}/PATENTS"
-  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
