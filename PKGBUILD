@@ -1,11 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=cursor-cli
-# extracted from local install script
-_ver_hash=$(sed -nE 's|.*downloads\\.cursor\\.com/lab/([0-9a-f]{40})/.*|\\1|p' "${startdir}/install" | head -n1)
-if [[ ! "${_ver_hash}" =~ ^[0-9a-f]{40}$ ]]; then
-    echo "PKGBUILD: failed to extract _ver_hash from install" >&2
-    exit 1
-fi
+# extracted from https://cursor.com/install
+_ver_hash=32c684dc5c8a0e364043db77d4e5b9a5dc1e2d3b
 pkgver=20250808.0.32c684dc5c8a0e364043db77d4e5b9a5dc1e2d3b
 pkgrel=1
 pkgdesc="Cursor Agent CLI - AI-powered code assistant"
@@ -13,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://cursor.com"
 license=('LicenseRef-Cursor')
 # note: there are no deps - they bundle node in the tarball
-source=('LICENSE' 'install')
+source=('LICENSE')
 source_x86_64=("cursor-cli-${_ver_hash}-${CARCH}.tar.gz:https://downloads.cursor.com/lab/${_ver_hash}/linux/x64/agent-cli-package.tar.gz")
 source_aarch64=("cursor-cli-${_ver_hash}-${CARCH}.tar.gz:https://downloads.cursor.com/lab/${_ver_hash}/linux/arm64/agent-cli-package.tar.gz")
 b2sums=('7079c023e03ea4d78b067ed0f22b5cc1982c306721b2ea6be3c7f73bbbe0e8f05b148fd6571902b838464ee80a787ef7be73135c622f0a4fdb16c38429ced8d6')
