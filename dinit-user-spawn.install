@@ -1,0 +1,5 @@
+post_install() {
+    echo "==> RUN:"
+    echo "==> dinitctl enable dinit-user-spawn"
+    echo "==> as root, to enable this service"
+}
