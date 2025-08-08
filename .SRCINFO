@@ -1,6 +1,6 @@
 pkgbase = python-ecdysys
 	pkgdesc = Python CLI to update your system packages
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://pypi.org/project/ecdysys
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-ecdysys
 	optdepends = flatpak: flatpak support
 	provides = ecdysys
 	conflicts = ecdysys
-	source = https://files.pythonhosted.org/packages/py3/e/ecdysys/ecdysys-0.1.7-py3-none-any.whl
-	sha256sums = 7222689bd5920568a0fcdcda44388b404be8f21fa9d0708d64c08c721031ac89
+	source = https://files.pythonhosted.org/packages/py3/e/ecdysys/ecdysys-0.1.8-py3-none-any.whl
+	sha256sums = 0cf032269234de673a88e093e64b01f6bbad4869ba41fda93bf29d1db9c51b23
 
 pkgname = python-ecdysys
