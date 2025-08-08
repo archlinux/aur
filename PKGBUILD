@@ -9,7 +9,7 @@
 _name=naiveproxy
 pkgname=${_name}-bin
 
-pkgver=138.0.7204.35_1
+pkgver=139.0.7258.62_1
 pkgrel=1
 _pkgver=${pkgver//_/-}
 
@@ -38,8 +38,6 @@ declare -Ag _archmap=(
     ['i686']='x86'
     ['aarch64']='arm64'
     ['armv7h']='arm'
-    ['mips64el']='mips64el'
-    ['mipsel']='mipsel'
 )
 
 backup=('etc/naiveproxy/config.json')
@@ -67,27 +65,19 @@ for _a in "${!_archmap[@]}"; do
     declare -ag "source_${_a}="'("${_s[@]}")'
 done
 
-sha256sums_aarch64=('e65f5bf76c976023d67c028e0b8b72ab6897208b7925f9392be4c5783e04ee37'
+sha256sums_aarch64=('5750b33203fe75eccb38166e76925f5ead16001e1074333ec4a0774339c91226'
                     '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                     '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                     '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_i686=('5e45d7699db53c9a01fdf5a6f5ec1d2e3b3c258ca9596c66457486a07bd807c9'
+sha256sums_i686=('a51ce3cb08aa95ffaeadaa0005312ed1ed41852efc4034458069734efeae4d21'
                  '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                  '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                  '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_mips64el=('32ac2a1aa74de7a7a0ce5460434e5a8a4e1eef56c9516b9ed6b3cb32aab5bb19'
-                     '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
-                     '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
-                     '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_mipsel=('570fcef35507a95228962074794f8cb8674b0d368d6f5c4229f2e11707fd2e20'
+sha256sums_x86_64=('8ebc03c173cf06d9f9810d029567f93ffdfd992735d14245f40a8a0a2ec234a4'
                    '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                    '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                    '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_x86_64=('493a61ea9f65317efa2760bbcd3feb5aecabc543fe71a3f7d6ca59a620c8ed52'
-                   '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
-                   '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
-                   '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_armv7h=('161fa624867e90f04b8e77e986d97617b86c06ec8f21477018f8f1bce16e6a7b'
+sha256sums_armv7h=('7f4f6a50e0352c35a24a60608425776ef2011314e3c7b38c3e3c55deded94c5a'
                    '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                    '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                    '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
