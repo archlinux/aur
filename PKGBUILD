@@ -4,7 +4,7 @@
 _pkgname="dinit-user-spawn"
 pkgname="$_pkgname-dev-git"
 pkgrel=1
-pkgver=r9.fcdca67
+pkgver=r22.7e1026b
 pkgdesc='Launches a user process dinit for you on login'
 arch=('any')
 url='https://github.com/initMayday/dinit-user-spawn.git'
@@ -16,6 +16,7 @@ license=('AGPL-3.0-or-later')
 source=("$_pkgname::git+$url#branch=dev")
 sha256sums=('SKIP')
 builddir='build-release'
+install='dinit-user-spawn.install'
 
 pkgver() {
     cd "$_pkgname"
@@ -31,8 +32,5 @@ build() {
 package() {
     cd "$_pkgname"
     meson install -C "$builddir" --destdir="$pkgdir"
-    install -Dm644 "dinit-user-spawn.service" "$pkgdir/usr/lib/dinit.d/dinit-user-spawn"
-    echo "RUN:"
-    echo "dinitctl enable dinit-user-spawn"
-    echo "as root, to enable this service"
+    install -Dm644 "dinit-user-spawn.service" "$pkgdir/usr/lib/dinit.d/dinit-user-spawn" 
 }

@@ -1,8 +1,9 @@
 pkgbase = dinit-user-spawn-dev-git
 	pkgdesc = Launches a user process dinit for you on login
-	pkgver = r9.fcdca67
+	pkgver = r22.7e1026b
 	pkgrel = 1
 	url = https://github.com/initMayday/dinit-user-spawn.git
+	install = dinit-user-spawn.install
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = meson
