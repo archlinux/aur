@@ -5,12 +5,12 @@
 
 pkgname=rocketchat-desktop
 pkgver=4.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron'
 arch=(any)
 url=https://github.com/RocketChat/Rocket.Chat.Electron
 license=(MIT)
-_electron=electron36
+_electron=electron37
 depends=("$_electron" nodejs libvips)
 makedepends=(node-gyp yarn asar python-distutils-extra openjpeg2)
 install=rocketchat-desktop.install
@@ -21,7 +21,6 @@ sha256sums=('17e85d1d47656656109ade90498d3cd9038a1cf1206f39878820f51b65ce16da'
 # validpgpkeys=('9EA06BE6FD613A03') # Tasso Evangelista
 
 prepare() {
-    _ver="$(</usr/lib/${_electron}/version)"
     cd "Rocket.Chat.Electron-$pkgver"
     yarn install
 }
@@ -34,7 +33,7 @@ build() {
     yarn build
     yarn run electron-builder --linux --"${!CARCH}" --dir \
          -c.electronDist=/usr/lib/"$_electron" \
-         -c.electronVersion="$_ver"
+         -c.electronVersion="$(</usr/lib/${_electron}/version)"
 }
 
 package() {
