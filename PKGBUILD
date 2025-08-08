@@ -1,7 +1,7 @@
 # Maintainer: XielQ <offical.gamerboytr@yandex.com>
 pkgname=bombkurdistan-bin
-pkgver=1.0.11
-pkgrel=3
+pkgver=1.1.9
+pkgrel=1
 pkgdesc='A simple game where you can bomb kurdistan'
 arch=('x86_64')
 url='https://github.com/XielQs/BombKurdistan'
@@ -11,7 +11,7 @@ provides=('bombkurdistan')
 conflicts=('bombkurdistan' 'bombkurdistan-git')
 replaces=('bombkurdistan-git')
 source=("${url}/releases/download/v${pkgver}/bombkurdistan_linux.zip")
-sha256sums=('4ca576434639833cc5601360c3ff081b8aafabc36613d62061ac54d77f889544')
+sha256sums=('bdc215f312f84d728c3c54ecb31b48b8845375381b269b5177535bf8a184672f')
 
 package() {
   cd "$srcdir"
