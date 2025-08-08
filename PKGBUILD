@@ -1,6 +1,6 @@
 # Maintainer: Vincent Jousse <vincent@jousse.org> - https://vincent.jousse.org
 pkgname=pomodorolm-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Multi-platform pomodoro tracker with a nice looking UI, inspired by Pomotroid"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('alsa-lib' 'gtk3' 'hicolor-icon-theme' 'glibc' 'webkit2gtk-4.1' 'libsoup' 'cairo' 'glib2' 'pango' 'gcc-libs' 'gdk-pixbuf2' 'libayatana-appindicator')
 provides=('pomodorolm')
 source=("https://github.com/vjousse/pomodorolm/releases/download/app-v$pkgver/pomodorolm_${pkgver}_amd64.deb")
-sha256sums=('efdd60e3accaed9c0ef95a084aad24b84d9c1bac8bb055f7566e1f09e8b58337')
+sha256sums=('db281f16433a193f6a799cb06bdddc7ac9317a2715292c028b512bfd2c2361a2')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
