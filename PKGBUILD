@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-app-icons-taskbar
 _pkgbase=aztaskbar
 pkgver=30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple app icon taskbar. Show running apps and favorites on the main panel."
 arch=('any')
 url="https://gitlab.com/AndrewZaech/aztaskbar"
@@ -26,6 +26,7 @@ package() {
 
   install -Dm644 -t "${_destdir}" metadata.json *.js *.css
   cp -r --no-preserve=ownership,mode media "${_destdir}"
+  cp -r --no-preserve=ownership,mode settings "${_destdir}"
   install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" schemas/*.xml
 
   cd locale
