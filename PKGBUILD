@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=jellyfin-tui
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Music streaming TUI client for Jellyfin'
 arch=('x86_64')
 url="https://github.com/dhonus/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a0c4c5d132c45d499c1f394696f8b12ad9e9166a5a4f2cbf5eac7f9101817b3d')
+sha256sums=('53aa8bf9212126e7666848564e80461c6a743364b8e786d9c7a0dc3c33c7d40d')
 depends=('openssl' 'mpv' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('cargo' 'pkgconf' 'sqlite')
 
@@ -33,6 +33,8 @@ package() {
   install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 src/extra/jellyfin-tui.desktop \
+    "$pkgdir/usr/share/applications/jellyfin-tui.desktop"
 }
 
 # vim: ts=2 sw=2 et:
