@@ -1,30 +1,32 @@
 pkgbase = parole-git
 	pkgdesc = Modern media player based on the GStreamer framework (git checkout)
-	pkgver = 4.15.0
+	pkgver = 4.20.0+106+g77acd986
 	pkgrel = 1
 	url = https://gitlab.xfce.org/apps/parole/-/blob/master/README.md
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv7h
-	groups = xfce4-goodies
-	license = GPL
-	makedepends = intltool
+	groups = xfce4-goodies-git
+	license = GPL-2.0-or-later
 	makedepends = python
+	makedepends = glib2-devel
 	makedepends = git
 	makedepends = xfce4-dev-tools
+	makedepends = meson
+	makedepends = gtk-doc
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = libnotify
 	depends = libxfce4ui
 	depends = dbus-glib
+	depends = taglib
 	optdepends = gst-libav: Extra media codecs
 	optdepends = gst-plugins-bad: Extra media codecs
 	optdepends = gst-plugins-ugly: Extra media codecs
-	provides = parole=4.15.0
+	provides = parole=4.20.0
 	conflicts = parole
 	source = parole::git+https://gitlab.xfce.org/apps/parole
 	sha256sums = SKIP
 
 pkgname = parole-git
-
