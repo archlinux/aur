@@ -2,7 +2,7 @@
 
 _base=usaddress
 pkgname=python-${_base}
-pkgver=0.5.15
+pkgver=0.5.16
 pkgrel=1
 pkgdesc="A python library for parsing unstructured United States address strings into address components."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-crfsuite'  'python-probableparsing')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-parserator')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('83dbdd94c6063e874d006669a3e88cbad7ee47df6bbe843b114694c1aedca0d47685fd0340045ad000d73561746deb7df59f09d23d6d4441c4e53e3e9b580f68')
+b2sums=('469f6056dcc38e948fe37ff0209626335c16ee5a5228acbc241fa22cd9cb97c4123721aa2883b3521dd622bbc21e9902e5a85770b60be0fe97103fc192cae728')
 
 build() {
   cd "${_base}-${pkgver}"
