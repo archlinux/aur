@@ -1,0 +1,17 @@
+pkgbase = ovpn-status-git
+	pkgdesc = OVPN's status page in the terminal.
+	pkgver = vcs
+	pkgrel = 1
+	url = https://github.com/APT37/ovpn-status
+	arch = x86_64
+	license = MIT-0
+	makedepends = git
+	makedepends = cargo
+	provides = ovpn-status
+	conflicts = ovpn-status
+	conflicts = ovpn-status-bin
+	options = !lto
+	source = ovpn-status-vcs::git+https://github.com/APT37/ovpn-status
+	sha256sums = SKIP
+
+pkgname = ovpn-status-git
