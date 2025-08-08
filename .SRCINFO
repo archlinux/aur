@@ -1,7 +1,7 @@
 pkgbase = photoprism
 	pkgdesc = AI-Powered Photos App for the Decentralized Web
 	pkgver = 250707
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/photoprism/photoprism
 	arch = x86_64
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = photoprism
 	replaces = photoprism-facenet
 	replaces = photoprism-nasnet
 	replaces = photoprism-nsfw
+	backup = etc/photoprism/defaults.yml
 	source = photoprism-250707-d28b3101e.tar.gz::https://github.com/photoprism/photoprism/archive/refs/tags/250707-d28b3101e.tar.gz
 	source = https://dl.photoprism.app/tensorflow/facenet.zip
 	source = https://dl.photoprism.app/tensorflow/nasnet.zip

@@ -6,7 +6,7 @@ pkgname=photoprism
 pkgver=250707
 _commit=d28b3101e
 _pkgver="${pkgver}-${_commit}"
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -32,6 +32,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service"
         "defaults.yml")
+backup=("etc/${pkgname}/defaults.yml")
 conflicts=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
 replaces=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
 b2sums=('42fdb6d35c43f4863faf30bfa2ab6a9005e7534544070565b152ec61ebed356e05c093058f3939043fb7dbcf36e187978edb67c3b70195cdce6b314d73c54d09'
