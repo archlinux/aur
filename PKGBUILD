@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=bandcamp-dl-git
-pkgver=v0.0.16.r0.gcdf24c0
+pkgver=v0.0.17.r40.g7c8c24e
 pkgrel=1
 pkgdesc="Download audio from bandcamp.com"
 arch=('any')
@@ -14,7 +14,6 @@ depends=(
   'python-chardet'
   'python-demjson3'
   'python-docopt'
-  'python-mock'
   'python-mutagen'
   'python-requests'
   'python-unicode-slugify'
@@ -40,6 +39,6 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname/-git/}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 643 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm 643 UNLICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
