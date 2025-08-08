@@ -1,6 +1,6 @@
 pkgbase = tumbler-git
 	pkgdesc = D-Bus service for applications to request thumbnails (git checkout)
-	pkgver = 4.19.1+7+g6adedd8
+	pkgver = 4.21.0+10+gfd32d11
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/tumbler/start
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = tumbler-git
 	arch = aarch64
 	arch = armv7h
 	groups = xfce4-git
-	license = GPL2
-	license = LGPL
+	license = GPL-2.0-or-later
 	makedepends = ffmpegthumbnailer
 	makedepends = freetype2
 	makedepends = libgsf
@@ -19,6 +18,8 @@ pkgbase = tumbler-git
 	makedepends = xfce4-dev-tools
 	makedepends = git
 	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = gtk-doc
 	depends = gdk-pixbuf2
 	depends = libxfce4util
 	optdepends = ffmpegthumbnailer: for video thumbnails
@@ -27,7 +28,7 @@ pkgbase = tumbler-git
 	optdepends = libopenraw: for RAW thumbnails
 	optdepends = freetype2: for font thumbnails
 	optdepends = libgepub: for epub thumbnails
-	provides = tumbler=4.19.1
+	provides = tumbler=4.21.0
 	conflicts = tumbler
 	source = tumbler::git+https://gitlab.xfce.org/xfce/tumbler.git
 	sha256sums = SKIP

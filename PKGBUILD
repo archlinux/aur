@@ -4,16 +4,16 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-git
-pkgver=4.19.1+7+g6adedd8
+pkgver=4.21.0+10+gfd32d11
 pkgrel=1
 pkgdesc="D-Bus service for applications to request thumbnails (git checkout)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://docs.xfce.org/xfce/tumbler/start"
-license=('GPL2' 'LGPL')
+license=('GPL-2.0-or-later')
 groups=('xfce4-git')
 depends=('gdk-pixbuf2' 'libxfce4util')
 makedepends=('ffmpegthumbnailer' 'freetype2' 'libgsf' 'libopenraw' 'poppler-glib'
-             'libgepub' 'xfce4-dev-tools' 'git' 'glib2-devel')
+             'libgepub' 'xfce4-dev-tools' 'git' 'glib2-devel' 'meson' 'gtk-doc')
 optdepends=('ffmpegthumbnailer: for video thumbnails'
             'poppler-glib: for PDF thumbnails'
             'libgsf: for ODF thumbnails'
@@ -31,16 +31,14 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --disable-debug \
-    --disable-gstreamer-thumbnailer
-  make
+  local meson_options=(
+    -D gtk-doc=true
+  )
+
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
