@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=CGE7
+Comment=MZ-700 Character Graphics Editor
+Exec=cge7
+Icon=cge7
+Terminal=false
+Categories=Wine;Graphics;Development;

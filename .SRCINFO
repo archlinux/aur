@@ -1,0 +1,21 @@
+pkgbase = cge7-bin
+	pkgdesc = MZ-700 Character Graphics Editor
+	pkgver = 0.24
+	pkgrel = 1
+	url = http://www.maroon.dti.ne.jp/youkan/mz700/index.html
+	arch = x86_64
+	arch = i686
+	depends = wine
+	depends = winetricks
+	source = http://www.maroon.dti.ne.jp/youkan/mz700/CGE7.zip
+	source = mz700fon.dat
+	source = cge7
+	source = cge7.desktop
+	source = cge7.png
+	md5sums = 8f723fb0837d9f74a5e21bfbff8ea7b9
+	md5sums = 5d4fa8ac653e0fa7a28bd10d2180bdc8
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = cge7-bin

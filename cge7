@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# WINE Launcher script for CGE7
+
+export WINEPREFIX=~/.cge7
+export CGE7DIR=/usr/share/cge7 # installation dir for AUR package
+export SAVEFILE=$WINEPREFIX/savefile
+export LC_ALL=ja_JP.UTF-8
+
+# configure registry
+configure() {
+    winetricks -q fakejapanese
+    touch $SAVEFILE # ensures that we don't repeat configuration process
+}
+
+
+if [ "$1" = "--mkpfx" ]; then # Force reconfigure prefix
+    configure
+    exit 0
+elif [ "$1" = "--erase" ]; then # delete all data in prefix
+    rm -rf $WINEPREFIX
+    exit 0
+elif [ "$1" = "--help" ]; then # show command info
+    cat << EOF
+CGE7 Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2025? youkan
+
+Usage:
+    cge7 [--mkpfx] [--erase] [--help]
+
+    --mkpfx: Re-configure WINE prefix
+    --erase: Erase all data in WINE prefix
+    --help: Show this screen
+
+EOF
+    exit 0
+elif [ ! -f "$SAVEFILE" ]; then # first boot
+    configure
+else
+    echo ""
+fi
+
+cd $CGE7DIR
+wine CGE7.exe # no args
