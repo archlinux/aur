@@ -1,5 +1,5 @@
 pkgname=no
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Well yes, but actually no."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')

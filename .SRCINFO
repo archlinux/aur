@@ -1,6 +1,6 @@
 pkgbase = no
 	pkgdesc = Well yes, but actually no.
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://git.calitabby.net/vel/no
 	arch = i686
