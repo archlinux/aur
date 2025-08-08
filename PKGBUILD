@@ -1,18 +1,21 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: katt <magunasu.b97@gmail.com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=check-manifest
-pkgver=0.49
-pkgrel=2
+pkgver=0.50
+pkgrel=1
 pkgdesc='Check MANIFEST.in in a Python package for completeness'
 arch=(any)
 url='https://github.com/mgedmin/check-manifest'
 license=(MIT)
-depends=(python-build python-setuptools python-toml)
+depends=('python>=3.8' python-build python-setuptools python-toml)
+# Require python 3.8+ to get get rid of python-mock
+# https://github.com/mgedmin/check-manifest/pull/158
 makedepends=(python-installer python-wheel)
-checkdepends=(git python-mock python-pytest subversion)
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('64a640445542cf226919657c7b78d02d9c1ca5b1c25d7e66e0e1ff325060f416')
+checkdepends=(git python-pytest subversion)
+source=($pkgname-$pkgver.tar.gz::"$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('66d6a3523e7732d9e671bf4b2f9061787ddd354d8ee0717abe09f0e99b905e00')
 
 build() {
   cd $pkgname-$pkgver
