@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-full-git
-pkgver=r1354.06ba190
+pkgver=r1668.58b6b9d
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -73,7 +73,7 @@ pkgver() {
 
 build() {
 	cd "WiVRn"
-	cmake -B build-dashboard . \
+	cmake -B build . \
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DWIVRN_BUILD_SERVER=ON \
 	-DWIVRN_BUILD_WIVRNCTL=ON \
@@ -84,14 +84,17 @@ build() {
 	-DWIVRN_USE_X264=ON \
 	-DWIVRN_USE_NVENC=ON \
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
-	-DOVR_COMPAT_SEARCH_PATH=/opt/opencomposite:/opt/xrizer \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
-	cmake --build build-dashboard
+	cmake --build build
 }
 
 package() {
 	cd "WiVRn"
-	DESTDIR="$pkgdir" cmake --install build-dashboard
+	DESTDIR="$pkgdir" cmake --install build
+
+	mkdir -p $pkgdir/usr/lib/environment.d
+	echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 > $pkgdir/usr/lib/environment.d/wivrn.conf
 }
