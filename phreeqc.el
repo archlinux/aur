@@ -367,7 +367,8 @@ with no args, if that value is non-nil."
 ;  (setq font-lock-keywords phreeqc-font-lock-keywords)
 ;  (folding-add-to-marks-list 'phreeqc-output-mode "Reading input"  "End of")
   ;; (folding-add-to-marks-list 'phreeqc-mode "TITLE" "END" nil t)
-  (run-hooks 'phreeqc-mode-hook))
+  (run-hooks 'phreeqc-mode-hook)
+  (turn-on-font-lock))
 
 (defun phreeqc-output-mode ()
   "Major mode for visiting PHREEQC output files."
@@ -394,11 +395,11 @@ with no args, if that value is non-nil."
   (add-hook 'after-revert-hook (lambda nil
                                  (if (phreeqc-run-fail-p)
                                      (phreeqc-goto-error)
-                                   (font-lock-fontify-buffer)
+                                   (turn-on-font-lock)
 ;;                                   (folding-mode t)
 ;;                                   (folding-shift-in t)
                                    )
-                                 (font-lock-fontify-buffer)) t)
+                                 (turn-on-font-lock)) t)
 
   (read-only-mode t)
   (auto-revert-mode t)
@@ -407,7 +408,7 @@ with no args, if that value is non-nil."
     ;;    (folding-mode t)
     )
   (toggle-truncate-lines t)
-  (font-lock-fontify-buffer))
+  (turn-on-font-lock))
 
 
 ;; Functions
