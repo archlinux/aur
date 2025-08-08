@@ -1,47 +1,93 @@
-# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
+# Maintainer: Brody <archfan at brodix dot de>
+# Contributor: D. Can Celasun <can[at]dcc[dot]im>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
+_pkgname=nut
 pkgname=nut-monitor
 pkgver=2.8.3
-pkgrel=4
-pkgdesc="GUI to manage devices connected a NUT server"
-arch=('any')
-url="http://www.networkupstools.org/"
-license=('GPL3')
-depends=('nut' 'python' 'python-pyqt5' 'hicolor-icon-theme')
-makedepends=('desktop-file-utils')
-source=("http://www.networkupstools.org/source/2.8/nut-$pkgver.tar.gz")
-sha256sums=('d6ca17f0b39003bac7649eb17ab4a713e4d5fcaa8fd1aedca28357d59df095ed')
+pkgrel=5
+pkgdesc='GUI to manage devices connected a NUT server'
+arch=(any)
+url=http://www.networkupstools.org/
+_ghurl=https://github.com/networkupstools/${_pkgname}
+license=(GPL-3.0-or-later)
+depends=(
+  hicolor-icon-theme
+  nut
+  python
+  python-pyqt5
+)
+makedepends=(
+  desktop-file-utils
+  git
+)
+source=(${_pkgname}::git+${_ghurl}.git#tag=v${pkgver})
+sha256sums=('51420f9eafca094b82a4986ca78edf767efb0bd9b87cfcb69d91d0a714be96ad')
 
 prepare() {
-  cd "$srcdir/nut-$pkgver"
+  cd ${_pkgname}
 
-  sed -i 's|os.path.dirname( sys.argv\[0\] )|"/usr/share/nut-monitor"|' scripts/python/app/NUT-Monitor-py3qt5.in
+  ./autogen.sh
+
+  sed \
+    's|os.path.dirname( sys.argv\[0\] )|"/usr/share/nut-monitor"|' \
+    -i scripts/python/app/NUT-Monitor-py3qt5.in
 }
 
 build() {
-  cd "$srcdir/nut-$pkgver"
+  # configuration adopted from the nut package
+  local _configure_args
+  _configure_args=(
+    --prefix=/usr
+    --datadir=/usr/share/nut
+    --libexecdir=/usr/lib/nut
+    --sbindir=/usr/bin
+    --sysconfdir=/etc/nut
+    --with-altpidpath=/run/nut
+    --with-cgipath=/usr/share/nut/cgi
+    --with-drvpath=/usr/lib/nut
+    --with-htmlpath=/usr/share/nut/html
+    --with-pidpath=/run/nut
+    --with-statepath=/var/lib/nut
+    --without-python2
+  )
+
+  cd ${_pkgname}
 
   ./configure \
-    --prefix=/usr \
-    --without-python2
+    "${_configure_args[@]}"
 }
 
 package() {
-  cd "$srcdir/nut-$pkgver"
-  install -v -d -m 755 ${pkgdir}/usr/{bin,share/{appdata,nut-monitor/{pixmaps,ui,icons/256x256}}}
-  install -m 755 scripts/python/app/NUT-Monitor-py3qt5 ${pkgdir}/usr/bin
-  install -m 644 scripts/python/app/nut-monitor.appdata.xml ${pkgdir}/usr/share/appdata
-  install -m 644 scripts/python/app/pixmaps/* ${pkgdir}/usr/share/nut-monitor/pixmaps
-  install -m 644 scripts/python/app/ui/*.ui ${pkgdir}/usr/share/nut-monitor/ui
-  install -m 644 scripts/python/app/icons/256x256/nut-monitor.png ${pkgdir}/usr/share/nut-monitor/icons/256x256
+  cd ${_pkgname}/scripts/python/app
 
-  for size in {48x48,64x64,256x256,scalable}; do
-    install -v -d -m 755 ${pkgdir}/usr/share/icons/hicolor/${size}/apps
-    install -m 644 scripts/python/app/icons/${size}/* ${pkgdir}/usr/share/icons/hicolor/${size}/apps
+  install -Dm755 -t "${pkgdir}"/usr/bin \
+    NUT-Monitor-py3qt5
+
+  install -Dm644 -t "${pkgdir}"/usr/share/appdata \
+    nut-monitor.appdata.xml
+
+  install -Dm644 -t "${pkgdir}"/usr/share/${pkgname}/pixmaps \
+    pixmaps/*
+
+  install -Dm644 -t "${pkgdir}"/usr/share/${pkgname}/ui \
+    ui/*.ui
+
+  install -Dm644 -t "${pkgdir}"/usr/share/${pkgname}/icons/256x256 \
+    icons/256x256/nut-monitor.png
+
+  local _res
+  for _res in 48x48 64x64 256x256 scalable; do
+    install -Dm644 -t "${pkgdir}"/usr/share/icons/hicolor/${_res}/apps \
+      icons/${_res}/*
   done
 
-  desktop-file-install --dir=$pkgdir/usr/share/applications scripts/python/app/nut-monitor-py3qt5.desktop
+  desktop-file-install \
+    --dir="${pkgdir}"/usr/share/applications \
+    nut-monitor-py3qt5.desktop
 
-  ln -s NUT-Monitor-py3qt5 ${pkgdir}/usr/bin/nut-monitor
+  ln -sr "${pkgdir}"/usr/bin/NUT-Monitor-py3qt5 \
+    "${pkgdir}"/usr/bin/${pkgname}
 }
+
+# vim: ts=2 sw=2 et:
