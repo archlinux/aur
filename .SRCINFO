@@ -1,22 +1,22 @@
 pkgbase = calmly-writer-bin
 	pkgdesc = An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface.
-	pkgver = 2.0.59
+	pkgver = 2.0.60
 	pkgrel = 1
 	url = https://www.calmlywriter.com
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron34
-	provides = calmly-writer=2.0.59
+	provides = calmly-writer=2.0.60
 	conflicts = calmly-writer
 	options = !strip
 	source = LICENSE.html::https://www.calmlywriter.com/eula.htm
 	source = calmly-writer.sh
 	sha256sums = ab9ee67a02dca392372a108443df43587671306b91e2d91923728ba770a37e83
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = calmly-writer_2.0.59-aarch64.rpm::https://www.calmlywriter.com/releases/linux/rpm/arm64/calmly-writer-2.0.59.arm64.rpm
-	sha256sums_aarch64 = 0cf986158f4ac827e989624814d7bc5265c722da78a88924641985cc57ef5242
-	source_x86_64 = calmly-writer_2.0.59-x86_64.rpm::https://www.calmlywriter.com/releases/linux/rpm/x64/calmly-writer-2.0.59.x86_64.rpm
-	sha256sums_x86_64 = 1eb4b3c000ed82a10d69477c17b180ec592ca26bc96eaaebee7871b9d19ea996
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = calmly-writer_2.0.60-aarch64.rpm::https://www.calmlywriter.com/releases/linux/rpm/arm64/calmly-writer-2.0.60.arm64.rpm
+	sha256sums_aarch64 = 9a48a3b28679d83a1883e82c06ffae994daeed70e7a5f26802488658f08f2101
+	source_x86_64 = calmly-writer_2.0.60-x86_64.rpm::https://www.calmlywriter.com/releases/linux/rpm/x64/calmly-writer-2.0.60.x86_64.rpm
+	sha256sums_x86_64 = 49394a074d9b25d7c42fab83b3547dd1c5b97ad94adf03643bd90648c44dce7c
 
 pkgname = calmly-writer-bin
