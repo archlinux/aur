@@ -1,11 +1,11 @@
 pkgbase = tksqlite
 	pkgdesc = TkSQLite is a GUI database manager for SQLite implemented by Tcl/Tk.
 	pkgver = 0.5.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://reddog.s35.xrea.com/wiki/TkSQLite.html
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	depends = tcl>=8.5.0
 	depends = tk>=8.5.0
 	depends = tktable>=2.9
