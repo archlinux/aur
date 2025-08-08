@@ -1,4 +1,4 @@
-pkgbase = fortune-mod-mlp-CrystalSplitter
+pkgbase = fortune-mod-mlp-crystalsplitter
 	pkgdesc = Fortune quotes from My Little Pony Friendship is Magic. Quotes come from ponysay. (CrystalSplitter fork)
 	pkgver = 3.0.3.36.82db8cf0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = fortune-mod-mlp-CrystalSplitter
 	source = git+https://github.com/CrystalSplitter/ponysay-modern.git
 	md5sums = SKIP
 
-pkgname = fortune-mod-mlp-CrystalSplitter
+pkgname = fortune-mod-mlp-crystalsplitter

@@ -1,7 +1,7 @@
 
 # Maintainer : Zenn <mine.minefis@gmail.com>
 
-pkgname=fortune-mod-mlp-CrystalSplitter
+pkgname=fortune-mod-mlp-crystalsplitter
 _gitname=ponysay-modern
 _gitrepo=https://github.com/CrystalSplitter/ponysay-modern.git
 pkgver=3.0.3.36.82db8cf0
