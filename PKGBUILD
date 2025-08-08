@@ -1,4 +1,4 @@
-# Maintainer: AromaXR <aromaxr@arch-linux.pro>
+# Maintainer: Numeri <numeri@numeri.dev>
 pkgbase=hyprupld
 pkgname=hyprupld-git
 pkgver=r0.g0000000
