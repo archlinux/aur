@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=openvaf-reloaded
 pkgver=r747.d878f55
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
 	"x86_64"
@@ -25,7 +25,7 @@ makedepends=(
 optdepends=(
 	"python: For running verilogae to obtain equations of compact models"
 )
-options=()
+options=(!lto)
 provides=("openvaf-r")
 
 _commit="d878f5519b1767b64c6ebeb4d67e29e7cd46e60b" # FIXME: No releases yet - use a specific commit for now
