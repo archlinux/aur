@@ -11,7 +11,7 @@ pkgbase = moonasst
 	depends = qt6-quicktimeline
 	depends = qt6-webengine
 	depends = qt6-svg
-	depends = vulkan-devel
+	depends = vulkan-headers
 	source = https://github.com/nemozz-hz/moonasst/archive/v1.0.0.tar.gz
 	sha256sums = fc719503902732852b91d28f892b02761644d8060cb64443618ce5619adcbab9
 
