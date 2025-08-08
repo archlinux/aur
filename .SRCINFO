@@ -1,0 +1,18 @@
+pkgbase = avcpp-git
+	pkgdesc = Wrapper for the FFmpeg that simplify usage it from C++ projects
+	pkgver = r409.50cec73
+	pkgrel = 1
+	url = https://github.com/h4tr3d/avcpp
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = ffmpeg
+	provides = avcpp
+	conflicts = avcpp
+	source = git+https://github.com/h4tr3d/avcpp.git
+	sha256sums = SKIP
+
+pkgname = avcpp-git
