@@ -42,7 +42,7 @@ package() {
 Name=Moonasst
 Comment=Moonasst Qt application
 Exec=/opt/exec/moonasst
-Icon=/usr/share/icons/hicolor/48x48/apps/moonasst.svg
+Icon=/usr/share/icons/moonasst.png
 Terminal=false
 Type=Application
 Categories=Utility;
@@ -50,8 +50,8 @@ StartupWMClass=moonasst
 EOF
 	
 	# 如果有图标文件，安装图标
-	if [ -f "moonasst.svg" ]; then
-		install -Dm644 moonasst.svg "$pkgdir/usr/share/icons/hicolor/48x48/apps/moonasst.svg"
+	if [ -f "moonasst.png" ]; then
+		install -Dm644 moonasst.png "$pkgdir/usr/share/icons/moonasst.png"
 	fi
 		
 	# 创建符号链接到/usr/bin（让用户可以直接运行moonasst命令）
@@ -64,7 +64,7 @@ EOF
 echo "正在卸载moonasst..."
 sudo rm -f /usr/bin/moonasst
 sudo rm -f /usr/share/applications/moonasst.desktop
-sudo rm -f /usr/share/icons/hicolor/48x48/apps/moonasst.svg
+sudo rm -f /usr/share/icons/moonasst.png
 sudo rm -rf /opt/exec/moonasst
 echo "moonasst已卸载"
 EOF
