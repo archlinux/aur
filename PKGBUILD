@@ -4,11 +4,12 @@
 pkgname=jj-bin
 _pkgname=jj
 pkgver=1.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="JSON Stream Editor (command line utility)"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/tidwall/jj"
+conflicts=('jujutsu')
 source=("$url/raw/master/LICENSE"
         "$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-amd64.tar.gz")
 b2sums=('362bfbf974e40ad4d1b2c6997de0458cda2334cbca7e1659fede9d5e50d6e2f8cf0762b2a49ab4cf8044fdecd3517682d08f9bc79c0ca2b525c9a7639b154d57'
