@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.3.4
+pkgver=4.3.5
 _electronversion=26
 _nodeversion=18
 pkgrel=1
@@ -30,8 +30,8 @@ source=(
 	"${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('c4e7bfe7b52a89e14136710c97270a70dd57465d3b0f22b58d1a6f4bdcce39cd'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('d8dacb565018a3ae31d3c0cef478663ae6aac698b38e51873e23d31c972b9e3f'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
