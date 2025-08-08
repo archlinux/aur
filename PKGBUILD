@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tascvh/trackpad-is-too-damn-big"
 license=('GPL')
 groups=()
-depends=()
+depends=('gcc14')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -23,7 +23,7 @@ changelog=
 source=('git+https://github.com/tascvh/trackpad-is-too-damn-big'
         titdb.service)
 sha256sums=('SKIP'
-            '9553f82b476c45a84c5f911b508adc39dbd28b2ed20f3e300f3c0c77c1a44fd3')
+            'b0ce5607bd4aa5e09128c9a182819c67a357188db5d6d15c3f3a41e04c74361f')
 
 noextract=()
 
@@ -44,6 +44,8 @@ build() {
 
   mkdir -p build
   cd build
+  export CC=/usr/bin/gcc-14
+  export CXX=/usr/bin/g++-14
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   cmake --build .
 }

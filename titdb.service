@@ -2,7 +2,7 @@
 Description=Trackpad is too damn big
 
 [Service]
-ExecStart=/usr/bin/titdb -d /dev/input/event8
+ExecStart=/bin/bash -c 'DEVICE=$$(libinput list-devices | grep -A 10 -B 2 -i Touchpad | grep -oP "/dev/input/event\\d+"); /usr/bin/titdb -d "$$DEVICE"'
 Restart=on-failure
 
 [Install]
