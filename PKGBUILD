@@ -1,4 +1,5 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap.at
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: orumin <dev@orum.in>
 
 pkgname=coccigrep
@@ -27,7 +28,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     gzip -9 doc/_build/man/coccigrep.1
-    install -Dm644 doc/_build/man/coccigrep.1.gz -t $pkgdir/usr/share/man/man1/
+    install -Dm644 doc/_build/man/coccigrep.1.gz -t $pkgdir/usr/rhhshare/man/man1/
 
     # Emacs modes
     install -Dm644 editors/cocci-grep.el -t $pkgdir/usr/share/emacs/site-lisp/
