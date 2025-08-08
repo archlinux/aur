@@ -1,14 +1,21 @@
 pkgbase = coccigrep
 	pkgdesc = Semantic grep for the C language based on coccinelle
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
-	url = http://home.regit.org/software/coccigrep/
+	url = https://home.regit.org/software/coccigrep/
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-wheel
 	depends = coccinelle
-	source = https://github.com/regit/coccigrep/archive/v1.20.tar.gz
-	sha256sums = 624840bac93b92b723bb89be1bf712717b984e7ab34c4712ec2a6135136df421
+	depends = python
+	depends = python-pygments
+	source = coccigrep-1.21.tar.gz::https://github.com/regit/coccigrep/archive/v1.21.tar.gz
+	source = 0001-fix-sphinx-manpage-build.patch::https://github.com/regit/coccigrep/commit/b774e8978029cec34660b874cf88fc30fb9b8f97.patch
+	b2sums = 2645d790836e6f75d449464040cd48b49dac915f546546b9908f502aebd628e4ada8ae681194cc5ff66fd31e4f0496aaac5dfedc62011560b3638370c1d23d4f
+	b2sums = 09853c277989c54a0982df79a102e69e6b2163e6d705c2b44bdb649e1b06bc12560f4d594b66829f031b26d7f04281eb0c24b43f2261e4bcb148444ad599b504
 
 pkgname = coccigrep
-
