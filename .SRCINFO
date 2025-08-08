@@ -1,29 +1,21 @@
 pkgbase = thunar-archive-plugin-git
-	pkgdesc = Create and extract archives in Thunar (git checkout)
-	pkgver = 0.4.0+97+ge9a0d87
+	pkgdesc = Adds archive operations to the Thunar file context menus
+	pkgver = 0.6.0+6+g5381465
 	pkgrel = 1
-	url = http://goodies.xfce.org/projects/thunar-plugins/thunar-archive-plugin
+	url = https://docs.xfce.org/xfce/thunar/archive
 	arch = x86_64
-	arch = i686
-	arch = armv7h
-	arch = aarch64
-	groups = xfce4-goodies
-	license = GPL2
-	makedepends = intltool
-	makedepends = xfce4-dev-tools
+	groups = xfce4-goodies-git
+	license = GPL-2.0-only
 	makedepends = git
-	depends = thunar>=1.7.0
+	makedepends = meson
+	makedepends = xfce4-dev-tools
+	depends = thunar
 	depends = hicolor-icon-theme
 	optdepends = file-roller
+	optdepends = engrampa
 	optdepends = ark
 	optdepends = xarchiver
-	optdepends = engrampa
-	provides = thunar-archive-plugin=0.4.0+97+ge9a0d87
-	conflicts = thunar-archive-plugin
-	conflicts = engrampa-thunar
-	replaces = engrampa-thunar
-	source = thunar-archive-plugin::git+https://gitlab.xfce.org/thunar-plugins/thunar-archive-plugin
+	source = thunar-archive-plugin::git+https://gitlab.xfce.org/thunar-plugins/thunar-archive-plugin.git
 	sha256sums = SKIP
 
 pkgname = thunar-archive-plugin-git
-

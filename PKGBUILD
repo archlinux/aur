@@ -2,43 +2,31 @@
 
 _pkgname=thunar-archive-plugin
 pkgname=${_pkgname}-git
-pkgver=0.4.0+97+ge9a0d87
+pkgver=0.6.0+6+g5381465
 pkgrel=1
-pkgdesc="Create and extract archives in Thunar (git checkout)"
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-url="http://goodies.xfce.org/projects/thunar-plugins/thunar-archive-plugin"
-license=('GPL2')
-groups=('xfce4-goodies')
-depends=('thunar>=1.7.0' 'hicolor-icon-theme')
-makedepends=('intltool' 'xfce4-dev-tools' 'git')
-optdepends=('file-roller'
-            'ark'
-            'xarchiver'
-            'engrampa')
-provides=("${_pkgname}=${pkgver%\.r*}")
-conflicts=("${_pkgname}" 'engrampa-thunar')
-replaces=('engrampa-thunar')
-source=("${_pkgname}::git+https://gitlab.xfce.org/thunar-plugins/${_pkgname}")
+pkgdesc="Adds archive operations to the Thunar file context menus"
+arch=('x86_64')
+url="https://docs.xfce.org/xfce/thunar/archive"
+license=('GPL-2.0-only')
+groups=('xfce4-goodies-git')
+depends=('thunar' 'hicolor-icon-theme')
+makedepends=('git' 'meson' 'xfce4-dev-tools')
+optdepends=('file-roller' 'engrampa' 'ark' 'xarchiver')
+source=("${_pkgname}::git+https://gitlab.xfce.org/thunar-plugins/${_pkgname}.git")
 sha256sums=('SKIP')
-            
+
 pkgver() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib/xfce4 \
+  arch-meson "${_pkgname}" build \
     --localstatedir=/var \
-    --disable-static
-  make
+    --libexecdir=/usr/lib/xfce4
+  meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
