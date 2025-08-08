@@ -4,43 +4,35 @@
 
 _pkgname=mousepad
 pkgname=${_pkgname}-git
-pkgver=0.5.4+142+gd71a464
+pkgver=0.6.5+113+g3e854550
 pkgrel=1
 pkgdesc="Simple text editor for Xfce  (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://www.xfce.org/"
-license=('GPL')
-depends=('gtksourceview4' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('xfce4-dev-tools' 'git' 'intltool')
+license=('GPL-2.0-or-later')
+depends=('gtksourceview4' 'desktop-file-utils' 'hicolor-icon-theme' 'gspell' 'polkit')
+makedepends=('xfce4-dev-tools' 'git' 'meson')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/apps/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	
-	git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
+  cd "${_pkgname}"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+  local meson_options=(
+    -D gtksourceview4=enabled
+    -D polkit=enabled
+    -D gspell-plugin=enabled
+  )
 
-	./autogen.sh \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--libexecdir=/usr/lib/xfce4 \
-		--disable-static \
-		--disable-debug \
-		--enable-gtksourceview4
-	
-	make  
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	
-	make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
-
-
