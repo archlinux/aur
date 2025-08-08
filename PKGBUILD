@@ -3,7 +3,7 @@
 _pkgauthor=Shopify
 _pkgname=shadowenv
 pkgname=${_pkgname}-bin
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Reversible directory-local environment variable manipulations"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[1]}-unkno
 sha256sums=('9b8aa2b6cfd0524eb03656d2fee8957d2a9a53f4be22f4fc00cd377349479007'
             'd9753222751c42c713cc768d26d07dc2135b91f895f1bd16d01a43e56ca50024'
             '00d6c0fdfa9ce946849943a4ad9c4d6f2c5caee3124f6fe116f4c699d28af601')
-sha256sums_x86_64=('5ba6a0c1f236f9e3438dbe407ce01b6b321e980c69a07f1a31e5e536449ae8e3')
-sha256sums_aarch64=('7b6ce2b9e5be2b3e04afa932bbfdd0dba92d655cfde9b7c18f3c63ebd9958d83')
+sha256sums_x86_64=('60e5dabd632cfd088876bdaf1dcd64d2a7f49a4464825f9cd5a7f1f79165501f')
+sha256sums_aarch64=('129e5441b3a1228e4108aca930ec97bd0584b582c26cd48ad3c3c1a7836d2c3a')
 
 
 package() {
