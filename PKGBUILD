@@ -1,6 +1,6 @@
 # Maintainer: Jian Qiang Wu <Qiangwu2000@gmail.com>
 pkgname=wlsbg
-pkgver=3.1.9
+pkgver=3.1.9.1
 pkgrel=1
 pkgdesc="Wallpaper tool with shader support for Wayland compositors"
 arch=("x86_64")
