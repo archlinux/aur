@@ -1,0 +1,22 @@
+pkgbase = sherlock-launcher-unstable-git
+	pkgdesc = Application launcher for Wayland.
+	pkgver = 0.1.13.r3.gd861ea9
+	pkgrel = 1
+	url = https://github.com/skxxtz/sherlock
+	arch = x86_64
+	license = custom:CC-BY-NC-4.0
+	makedepends = cargo
+	makedepends = rust
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = dbus
+	depends = openssl
+	depends = sqlite
+	provides = sherlock-launcher-unstable=0.1.13
+	conflicts = sherlock-launcher-unstable
+	conflicts = sherlock-launcher-bin
+	conflicts = sherlock-launcher-git
+	source = sherlock-launcher-unstable::git+https://github.com/skxxtz/sherlock.git#branch=unstable/release-v1.0.0
+	sha256sums = SKIP
+
+pkgname = sherlock-launcher-unstable-git
