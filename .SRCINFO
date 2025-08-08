@@ -1,7 +1,7 @@
 pkgbase = froggit
 	pkgdesc = simplify your Git workflow with visual feedback, keyboard-driven controls, and a streamlined experience
-	pkgver = 0.3.4
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/thewizardshell/froggit
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = froggit
 	depends = ttf-nerd-fonts-symbols-mono
 	depends = git
 	optdepends = github-cli: GitHub integration
-	source = froggit-0.3.4.tar.gz::https://github.com/thewizardshell/froggit/archive/refs/tags/v0.3.4-beta.tar.gz
+	source = froggit-0.4.1.tar.gz::https://github.com/thewizardshell/froggit/archive/refs/tags/v0.4.1-beta.tar.gz
 	sha256sums = 080dd338f25c6c72e477ee006462bc6fe00fdc437603ef981dba0213f8b0c8e1
 
 pkgname = froggit
