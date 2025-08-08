@@ -1,0 +1,18 @@
+pkgbase = wfrc-git
+	pkgdesc = Simple bash script to record screen on wlroots-based compositors using wf-recorder.
+	pkgver = r27.946f6d8
+	pkgrel = 1
+	url = https://github.com/Vescrity/wfrc
+	arch = any
+	makedepends = git
+	depends = wf-recorder
+	depends = bash
+	depends = slurp
+	depends = libnotify
+	depends = libpulse
+	depends = wl-clipboard
+	provides = wfrc
+	source = git+https://github.com/Vescrity/wfrc
+	sha256sums = SKIP
+
+pkgname = wfrc-git
