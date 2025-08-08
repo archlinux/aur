@@ -1,16 +1,16 @@
 pkgbase = fortio-bin
 	pkgdesc = Fortio load testing library, command line tool, advanced echo server and web UI in go (golang). Allows to specify a set query-per-second load and record latency histograms and other useful stats.(Prebuilt version)
-	pkgver = 1.69.5
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://fortio.org
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	provides = fortio=1.69.5
+	provides = fortio=1.70.0
 	conflicts = fortio
-	source_aarch64 = fortio-1.69.5-aarch64.rpm::https://github.com/fortio/fortio/releases/download/v1.69.5/fortio-1.69.5-1.aarch64.rpm
-	sha256sums_aarch64 = 79f087b27ca7ecc65fbb2ebcb03feb5e9627cc7489a51b9d2e6c358cb73bbfed
-	source_x86_64 = fortio-1.69.5-x86_64.rpm::https://github.com/fortio/fortio/releases/download/v1.69.5/fortio-1.69.5-1.x86_64.rpm
-	sha256sums_x86_64 = 55b9bec4b86399fa57c05de4bc1f4bb28a8e3c66fe033cd400a1ad46f1fb7298
+	source_aarch64 = fortio-1.70.0-aarch64.rpm::https://github.com/fortio/fortio/releases/download/v1.70.0/fortio-1.70.0-1.aarch64.rpm
+	sha256sums_aarch64 = fd476ddc0ba7c7e2dd571c0685e6890f3727899bc5d8d1db4e986eb5b5bd03a2
+	source_x86_64 = fortio-1.70.0-x86_64.rpm::https://github.com/fortio/fortio/releases/download/v1.70.0/fortio-1.70.0-1.x86_64.rpm
+	sha256sums_x86_64 = 04334872911ca925994090cac3e527d71898cffdf015334680c05279d6c45145
 
 pkgname = fortio-bin
