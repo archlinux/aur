@@ -1,0 +1,13 @@
+diff --git a/window/src/os/wayland/window.rs b/window/src/os/wayland/window.rs
+index bd8411a3d..577e7680f 100644
+--- a/window/src/os/wayland/window.rs
++++ b/window/src/os/wayland/window.rs
+@@ -921,7 +921,7 @@ impl WaylandWindowInner {
+                         ) {
+                             self.surface().attach(Some(buffer.wl_buffer()), 0, 0);
+                             self.surface().set_buffer_scale(factor as i32);
+-                            self.surface().commit();
++                            // self.surface().commit();
+ 
+                             self.surface_factor = factor;
+                         }

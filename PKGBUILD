@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: fanjiang <prof.fan at foxmail dot com>
 # Contributor: Wez Furlong <wez at wezfurlong dot org>
 # Contributor: Bernat Gabor <gaborjbernat@gmail.com>
 
@@ -8,8 +8,8 @@
 export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="wezterm"
-pkgname="$_pkgname-git"
-pkgdesc="A GPU-accelerated cross-platform terminal emulator and multiplexer"
+pkgname="$_pkgname-kde-git"
+pkgdesc="A GPU-accelerated cross-platform terminal emulator and multiplexer with KDE crash fix"
 pkgver=20240203.110809.r768.g6a493f8
 pkgrel=1
 url="https://github.com/wez/wezterm"
@@ -51,7 +51,8 @@ options=('!lto')
 _source_main() {
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
+  source+=("10-fix-kde-crash.patch")
+  sha256sums+=('SKIP' 'b00bef99565c32c0c5b775465219688cce5246f758fed1aa0437503aadfc883e')
 }
 
 _source_wezterm() {
@@ -96,6 +97,9 @@ prepare() {
   cd "$_pkgsrc"
   sed -i 's/"vendored-fonts", //' wezterm-gui/Cargo.toml
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # Apply patch
+  patch -Np1 -i "$srcdir/10-fix-kde-crash.patch"
 }
 
 pkgver() {

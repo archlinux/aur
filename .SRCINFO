@@ -1,5 +1,5 @@
-pkgbase = wezterm-git
-	pkgdesc = A GPU-accelerated cross-platform terminal emulator and multiplexer
+pkgbase = wezterm-kde-git
+	pkgdesc = A GPU-accelerated cross-platform terminal emulator and multiplexer with KDE crash fix
 	pkgver = 20240203.110809.r768.g6a493f8
 	pkgrel = 1
 	url = https://github.com/wez/wezterm
@@ -30,14 +30,16 @@ pkgbase = wezterm-git
 	conflicts = wezterm
 	options = !lto
 	source = wezterm::git+https://github.com/wez/wezterm.git
+	source = 10-fix-kde-crash.patch
 	source = freetype.freetype2::git+https://github.com/freetype/freetype2.git
 	source = glennrp.libpng::git+https://github.com/glennrp/libpng.git
 	source = harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git
 	source = madler.zlib::git+https://github.com/madler/zlib.git
 	sha256sums = SKIP
+	sha256sums = b00bef99565c32c0c5b775465219688cce5246f758fed1aa0437503aadfc883e
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = wezterm-git
+pkgname = wezterm-kde-git
