@@ -18,7 +18,7 @@ depends=(glibc)
 makedepends=(nasm git
 diffutils gcc make patch) # base-devel
 _so=libffmpeg.so
-optdepends=(electron37": NoExtract ${_so} at pacman.conf")
+optdepends=(electron37": Manually symlink")
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
