@@ -1,7 +1,8 @@
 pkgbase = vscodium-xdg-dir-patch
 	pkgdesc = Patch for VSCodium to store data in ~/.local/share/codium
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
+	install = post.install
 	arch = any
 	license = GPLv3
 	depends = codium
