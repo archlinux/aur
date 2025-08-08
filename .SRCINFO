@@ -1,6 +1,6 @@
 pkgbase = awf-gtk4
 	pkgdesc = Theme preview application for GTK 4
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/luigifab/awf-extended
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = awf-gtk4
 	depends = gtk4
 	depends = libnotify>=0.7.0
 	depends = hicolor-icon-theme
-	source = https://github.com/luigifab/awf-extended/archive/v3.0.0/awf-extended-3.0.0.tar.gz
-	sha256sums = 60e71e05a6620b54debc0a148ddbf911fc314b1e0cf6c9cf159a104bfca57bb6
+	source = https://github.com/luigifab/awf-extended/archive/v3.1.0/awf-extended-3.1.0.tar.gz
+	sha256sums = 1b941522910a3d8f051bfe0b39fa52e65bf84173c9633a9d082b57e3df593209
 
 pkgname = awf-gtk4
