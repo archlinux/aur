@@ -1,0 +1,5 @@
+[swag-bin]
+source = "github"
+github = "swaggo/swag"
+use_latest_release = true
+prefix = "v"

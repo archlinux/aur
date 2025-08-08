@@ -1,0 +1,23 @@
+pkgbase = swag-bin
+	pkgdesc = Automatically generate RESTful API documentation with Swagger 2.0 for Go
+	pkgver = 1.16.6
+	pkgrel = 1
+	url = https://github.com/swaggo/swag
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = swag
+	conflicts = swag
+	source = swag-1.16.6-README.md::https://github.com/swaggo/swag/raw/refs/tags/v1.16.6/README.md
+	source = swag-1.16.6-LICENSE::https://github.com/swaggo/swag/raw/refs/tags/v1.16.6/license
+	sha256sums = 59535ccc1a6d31b35298548ff67f13a60ef376897587bec1bbb1ca74d8d4d645
+	sha256sums = 6feeef4e2aca78ba9e5f7612fbe7517bde879bc31e6675225fba8aa6c95539cc
+	source_aarch64 = swag-1.16.6-aarch64.tar.gz::https://github.com/swaggo/swag/releases/download/v1.16.6/swag_1.16.6_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0a2890b2ab31f37da92a45d27b4cc78501bb74720b1df0932d59377527c366e9
+	source_i686 = swag-1.16.6-i686.tar.gz::https://github.com/swaggo/swag/releases/download/v1.16.6/swag_1.16.6_Linux_i386.tar.gz
+	sha256sums_i686 = 66eeb5e5bc64293353bd9085dc91f951554ad0399af80e4c52e88b6ce62a84cc
+	source_x86_64 = swag-1.16.6-x86_64.tar.gz::https://github.com/swaggo/swag/releases/download/v1.16.6/swag_1.16.6_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 90bdf19e817001b17f5f91a1eefb2d2dd9631b88a85712f195f44b220848c8bb
+
+pkgname = swag-bin
