@@ -1,4 +1,3 @@
-# Maintainer: venoosoo
 pkgname=folder-size
 pkgver=0.1.0
 pkgrel=1
@@ -11,6 +10,10 @@ makedepends=('rust' 'cargo')
 source=("git+https://github.com/venoosoo/folder-size.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/folder-size"
+  git describe --tags --always | sed 's/^v//; s/-/./g'
+}
 
 build() {
   cd "$srcdir/folder-size"
