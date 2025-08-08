@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=NiaAML-GUI
 pkgname=python-${_base,,}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="GUI for NiaAML Python package"
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-niaaml python-qtawesome python-pyqt6 python-pyqt-feedback-flow)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('b96ac1ad88a22fc0bda3614e9c705f41c0397290b1094c14e684c11ee83d857b8b80199627293e52c90d86df233828cdf99a0f82c1f4e8bda216cf4256cb401c')
+sha512sums=('b4d4aa92237a0c73a3e50a93c7ad44ad0591e778588d9a99952229593a1389a5876d029a8505de94e71f5f8c90d7de57fb4a8b97fdded22d21f55425d4672407')
 
 build() {
   cd ${_base}-${pkgver}
