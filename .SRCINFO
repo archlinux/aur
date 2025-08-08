@@ -1,0 +1,31 @@
+pkgbase = geobug-git
+	pkgdesc = Client for GeoClue. It can display your location information and save a track of your movements to a GPX-file.
+	pkgver = 0.9.0+6.r165.20250603.31c6bb5
+	pkgrel = 1
+	url = https://codeberg.org/tpikonen/geobug
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = libhandy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = geoclue
+	depends = gtk4
+	depends = libadwaita
+	depends = libhandy
+	depends = python>=3.6
+	depends = python-gobject
+	depends = python-pydbus
+	depends = python-gpxpy
+	optdepends = python-pysimplegui
+	provides = geobug=0.9.0+6.r165.20250603.31c6bb5
+	provides = python-geobug=0.9.0+6.r165.20250603.31c6bb5
+	provides = python-geobug-git=0.9.0+6.r165.20250603.31c6bb5
+	conflicts = geobug
+	conflicts = python-geobug
+	source = geobug::git+https://codeberg.org/tpikonen/geobug.git
+	sha256sums = SKIP
+
+pkgname = geobug-git
