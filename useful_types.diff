@@ -1,0 +1,27 @@
+diff --git a/src/srctools/__init__.py b/src/srctools/__init__.py
+index 38b3da0b..b5db6f63 100644
+--- a/src/srctools/__init__.py
++++ b/src/srctools/__init__.py
+@@ -1,5 +1,5 @@
+ from typing import TYPE_CHECKING, Any, Final, Generic, NoReturn, Optional, TypeVar, Union, overload
+-from typing_extensions import Literal, TypeAlias
++from typing_extensions import Literal, TypeAlias, TypeVar, Protocol
+ from collections import deque
+ from collections.abc import (
+     Container, ItemsView, Iterable, Iterator, KeysView, Mapping, MutableMapping, Sequence,
+@@ -12,8 +12,14 @@ import itertools as _itertools
+ import os as _os
+ import warnings
+ 
+-from useful_types import SupportsKeysAndGetItem
++# Yoinked from https://github.com/hauntsaninja/useful_types/blob/main/useful_types/__init__.py#L129C1-L131 (MIT)
++# I really do not feel like creating another package for a whole five lines of code that is used once.
++_KT = TypeVar("_KT")
++_VT_co = TypeVar("_VT_co", covariant=True)
+ 
++class SupportsKeysAndGetItem(Protocol[_KT, _VT_co]):
++    def keys(self) -> Iterable[_KT]: ...
++    def __getitem__(self, __key: _KT) -> _VT_co: ...
+ 
+ __all__ = [
+     'Vec', 'FrozenVec', 'parse_vec_str', 'lerp',

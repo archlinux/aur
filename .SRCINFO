@@ -1,0 +1,21 @@
+pkgbase = python-srctools
+	pkgdesc = Modules for working with Valve's Source Engine file formats.
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/TeamSpen210/srctools
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = meson-python
+	makedepends = cython
+	depends = python-attrs
+	depends = python-typing_extensions
+	depends = python-exceptiongroup
+	optdepends = python-wxpython
+	source = https://github.com/TeamSpen210/srctools/archive/refs/tags/v2.6.0.tar.gz
+	source = https://github.com/akuukka/quickhull/archive/1ffbc6f884ea1da89e104a5996cf8a726db673d5.tar.gz
+	source = useful_types.diff
+	sha256sums = fa8eb82c09afcb232298942165ff3ba1c56fb60499243a50b33ede18cb30226a
+	sha256sums = 55c87e78bf990509ff35e3e039213ca6e3890ce988c2891647d65079696ae3a9
+	sha256sums = b82ee653ae5452295d2afc2ddd030a2a0714a6c878c5f5858c4e51b8b63c84e5
+
+pkgname = python-srctools
