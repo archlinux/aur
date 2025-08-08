@@ -2,7 +2,7 @@
 
 pkgname=komodo
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kirigami-based todo manager'
 arch=('x86_64')
 url='https://invent.kde.org/utilities/komodo'
@@ -26,12 +26,13 @@ depends=(
 )
 makedepends=(
   extra-cmake-modules
-  git
   reuse
   vulkan-headers
 )
-source=("$pkgname-$pkgver::git+https://invent.kde.org/utilities/komodo.git#tag=v${pkgver}")
-sha256sums=('73bca8b9a13548dedc0bf5202808f3a6a0c4d402f92bd69fd3b8229b690a0701')
+source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('0831ac4a43ea292653105541e1db2d98346e94f3eb2aae5a365375de798377bc'
+            'SKIP')
+validpgpkeys=(6CF8BBBD93FD0A4A748495A12D8ADFDD01E76FAC) # Akseli Lahtinen <akselmo@akselmo.dev>
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
