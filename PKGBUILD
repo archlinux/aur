@@ -8,11 +8,11 @@ _pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=unstable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.21.0-rc.1
+_pkgver=1.21.0-rc.3
 
 # makepkg doesn't support hyphens in pkgver, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
-pkgrel=2
+pkgrel=1
 pkgdesc="Uncompromising wilderness survival sandbox game (unstable branch)"
 arch=("x86_64")
 url="https://www.vintagestory.at/"
@@ -24,7 +24,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
         "$_pkgname.desktop"
         "vsmodinstall-handler.desktop"
 		"fontconfig.conf")
-md5sums=("4e5a6cb948c6215cbff03055300fc233"
+md5sums=("40ddf354d7d92c547d17b60f6adde065"
          "97e27a3d0283b0f01176cdd6fa5dcf53"
          "dde267f52d41fb90641b6405dccb5cd3"
 		 "698441836af7385df922c922b08b7606")
