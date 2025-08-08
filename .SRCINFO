@@ -1,14 +1,14 @@
 pkgbase = pi-im-wayland
 	pkgdesc = Experimental and extremely weird XMPP client written in Go. No solicitors.
-	pkgver = 3.1a_r
-	pkgrel = 2
+	pkgver = 3.14a
+	pkgrel = 1
 	url = https://github.com/sunglocto/pi-im
 	arch = x86_64
 	license = AGPL
 	makedepends = go
 	provides = pi-im
 	conflicts = pi-im
-	source = https://github.com/sunglocto/pi-im/archive/refs/tags/3.1a-r.tar.gz
-	sha256sums = e59ee05e0f2becc6f43c3397d75ed166c5523969eecda32b9b9ac774003faa66
+	source = https://github.com/sunglocto/pi-im/archive/refs/tags/3.14a.tar.gz
+	sha256sums = dd2e319b948193b87c844bd314cfa6fbdef422ff4411b18a2dd5013522c2ffe0
 
 pkgname = pi-im-wayland
