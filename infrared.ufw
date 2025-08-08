@@ -1,0 +1,4 @@
+[Infrared]
+title=Infrared
+description=Minecraft reverse proxy
+ports=25565/tcp

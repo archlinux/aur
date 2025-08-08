@@ -1,0 +1,9 @@
+[Unit]
+Description=Minecraft reverse proxy
+
+[Service]
+ExecStart=/usr/bin/infrared --working-dir /etc/infrared/
+
+[Install]
+WantedBy=multi-user.target
+

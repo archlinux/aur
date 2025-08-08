@@ -1,0 +1,15 @@
+pkgbase = minecraft-infrared-git
+	pkgdesc = A reverse proxy for minecraft servers.
+	pkgver = v2.0.0.alpha.r2.r0.e401591
+	pkgrel = 1
+	url = https://github.com/haveachin/infrared
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go
+	provides = minecraft-infrared
+	conflicts = minecraft-infrared
+	source = infrared::git+https://github.com/haveachin/infrared.git
+	sha256sums = SKIP
+
+pkgname = minecraft-infrared-git
