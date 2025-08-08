@@ -1,6 +1,6 @@
 pkgbase = chromium-ffmpeg-codecs-git
-	pkgdesc = Add codecs to Chromium M138+ (libfdk-aac)
-	pkgver = 7.2.r120510.g8be539b022
+	pkgdesc = Add codecs to Chromium M138+
+	pkgver = 7.2.r120561.g7f150dc4b7
 	pkgrel = 1
 	url = https://git.ffmpeg.org/ffmpeg
 	arch = x86_64
@@ -11,18 +11,15 @@ pkgbase = chromium-ffmpeg-codecs-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
-	makedepends = pkgconf
 	depends = glibc
-	depends = libfdk-aac
+	optdepends = electron37: NoExtract libffmpeg.so at pacman.conf
 	provides = vivaldi-ffmpeg-codecs
 	provides = vivaldi-snapshot-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs
 	conflicts = vivaldi-snapshot-ffmpeg-codecs
 	source = git+https://git.ffmpeg.org/ffmpeg.git
-	source = 138.0.7204.55sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2/chromium/ffmpeg.sigs?format=TEXT
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	sha256sums = SKIP
-	sha256sums = 65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341
 	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
 
 pkgname = chromium-ffmpeg-codecs-git

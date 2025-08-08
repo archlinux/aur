@@ -1,43 +1,35 @@
-
+# Maintainer: oech3
 pkgname=chromium-ffmpeg-codecs-git
-pkgver=7.2.r120510.g8be539b022
+pkgver=7.2.r120561.g7f150dc4b7
 #pkgver() {
 #  printf '%s.r%s.g%s' $(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }') $(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }') $(git -C ffmpeg rev-parse --short HEAD)
 #}
 pkgrel=1
-_so=libffmpeg.so
-pkgdesc="Add codecs to Chromium M138+ (libfdk-aac)"
+pkgdesc="Add codecs to Chromium M138+"
 arch=('x86_64')
 url=https://git.ffmpeg.org/ffmpeg
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
-license=('LGPL-2.1-or-later') # https://wiki.hydrogenaudio.org/index.php?title=Fraunhofer_FDK_AAC
-_chromium=138.0.7204.55
-_chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+license=('LGPL-2.1-or-later')
 source=("git+${url}.git"
-"${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
 sha256sums=('SKIP'
-'65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
 'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
-depends=(glibc libfdk-aac)
+depends=(glibc)
 makedepends=(nasm git
-diffutils gcc make patch pkgconf) # base-devel
+diffutils gcc make patch) # base-devel
+_so=libffmpeg.so
+optdepends=(electron37": NoExtract ${_so} at pacman.conf")
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
   # List used funcs.
-  curl -Ls ${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT | base64 -d | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt # Skip checksum
-  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt
-  diff {,old}sigs.txt || echo ffmpeg.sigs was changed. Please OOD $pkgname
+  curl -Ls ${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT | base64 -d | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt # skip csum
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   echo -e "{\nglobal:\n$(sed 's/$/;/' sigs.txt)\nlocal:\n*;\n};" |tee export.map
   cd ffmpeg
   # Use native opus not in kAllowedAudioCodecs (faster than libopus)
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   diff libavcodec/opus/dec.c{.bak,}||:
-  # Use libfdk-aac (no advantage?)
-  sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"aac\",/" libavcodec/libfdk-aacdec.c
-  diff libavcodec/libfdk-aacdec.c{.bak,}||:
   # Chromium patches
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
   sed -i '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
@@ -54,8 +46,6 @@ prepare() {
   diff libavutil/log.c{.bak,}||:
   # soname
   grep -E 'LIBAVCODEC_VERSION_MAJOR +[0-9]' libavcodec/version_major.h
-  grep -E 'LIBAVFORMAT_VERSION_MAJOR +[0-9]' libavformat/version_major.h
-  grep -E 'LIBAVUTIL_VERSION_MAJOR +[0-9]' libavutil/version.h
 }
 
 build() {
@@ -67,9 +57,9 @@ build() {
     --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
-    --enable-swresample --enable-libfdk-aac \
+    --enable-swresample \
     --enable-demuxer=ogg,matroska,wav,flac,mp3,mov,aac \
-    --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,libfdk_aac,h264 \
+    --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition ${LTOFLAGS}" \
     --enable-{pic,asm,hardcoded-tables} \
@@ -77,11 +67,11 @@ build() {
 
   make DESTDIR=.. install
   cd ..
-  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  _symbols=$(awk '{print "-Wl,-u," $1}' sigs.txt | paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
     ${_symbols} -Wl,--version-script=export.map \
-    -lfdk-aac -lm -Wl,-Bsymbolic -o $_so
+    -lm -Wl,-Bsymbolic -o $_so
 }
 
 package(){
