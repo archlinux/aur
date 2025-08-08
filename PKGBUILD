@@ -2,13 +2,14 @@
 
 _gemname=pygments.rb
 pkgname=ruby-$_gemname
-pkgver=1.2.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='pygments wrapper for ruby'
 arch=(any)
 url='https://github.com/tmm1/pygments.rb'
 license=('MIT')
-depends=('ruby' 'python2' 'ruby-multi_json>=1.0.0')
+depends=('ruby' 'python' 'ruby-multi_json>=1.0.0')
+makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
