@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vscodium
+Target = vscodium-bin
+Target = vscodium-git
+Target = vscodium-electron
+Target = vscodium-electron-bin
+
+[Action]
+Description = Patching product.json for vscodium 
+Exec = /usr/bin/vscodium-xdg-dir-patch
+When = PostTransaction

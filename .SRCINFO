@@ -1,0 +1,13 @@
+pkgbase = vscodium-xdg-dir-patch
+	pkgdesc = Patch for VSCodium to store data in ~/.local/share/codium
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	depends = codium
+	source = vscodium-xdg-dir-patch.sh
+	source = vscodium-xdg-dir-patch.hook
+	sha256sums = 1535a58d657efca23b66891ecc2885786f2db3bf63451fb461c16b42c7bba559
+	sha256sums = 26090e6baec7fa8ca2d6bb594109590407ce7747e995e06fc85d78714c2ee93c
+
+pkgname = vscodium-xdg-dir-patch
