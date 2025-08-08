@@ -1,12 +1,12 @@
 pkgbase = epochcli
 	pkgdesc = Updater and launcher for Project Epoch
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://git.burkey.co/eburk/epochcli
 	arch = x86_64
 	license = ISC
 	makedepends = go>=1.24.0
-	source = git+https://git.burkey.co/eburk/epochcli#commit=61e17cffc530059085a24ad6a7b0f5e670aef8f5
+	source = git+https://git.burkey.co/eburk/epochcli#commit=92c1ce74e53b0f71f110af4f076f79503cd35333
 	sha256sums = SKIP
 
 pkgname = epochcli
