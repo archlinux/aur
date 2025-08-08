@@ -1,6 +1,6 @@
 pkgbase = itk-lite-git
 	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
-	pkgver = 6.0a03.r388.gf71cfd8945
+	pkgver = 6.0a03.r392.gd0b07068a9
 	pkgrel = 1
 	url = https://itk.org/
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = itk-lite-git
 	depends = hdf5
 	provides = itk
 	provides = insight-toolkit
+	provides = insight-toolkit-git
 	conflicts = itk
 	conflicts = insight-toolkit
 	source = git+https://github.com/InsightSoftwareConsortium/ITK.git
