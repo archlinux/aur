@@ -2,14 +2,14 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=1.102.3
+pkgver=1.105.4
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://n8n.io"
 license=("custom:Sustainable Use License")
 backup=("etc/default/${pkgname}")
-depends=("nodejs>=18.17.0" "nodejs<23")
+depends=("nodejs>=20.19.0" "nodejs<25")
 makedepends=("npm" "jq" "curl")
 source=("${pkgname}.env"
 "${pkgname}.service"
