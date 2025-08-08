@@ -67,6 +67,9 @@ prepare() {
   sed -i.bak -E "/^void\s+(av_log|av_log_once|av_vlog)\s*\(.*\)\s*$/,/^\s*\}\s*$/d" libavutil/log.c
   echo -e "${_av_log}{}\n${_av_log_once}{}\n${_av_vlog}{}" >> libavutil/log.c
   #diff libavutil/log.c{.bak,}
+  # https://git.ffmpeg.org/gitweb/ffmpeg.git/commit/1464930696f593320352a6f928fad6f50ade8f8b
+  sed -i.bak '/check_optflags*.-fno-tree-vectorize/d' configure
+  #diff configure{.bak,}||:
 }
 
 build() {
