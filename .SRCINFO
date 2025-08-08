@@ -1,0 +1,20 @@
+pkgbase = wago-app-bin
+	pkgdesc = Wago App built from DEB release
+	pkgver = 2.6.4
+	pkgrel = 1
+	arch = x86_64
+	license = custom:Wago-License
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3
+	source = WagoApp_2.6.4.deb::https://wago-addons.ams3.digitaloceanspaces.com/wagoapp/WagoApp_2.6.4.deb
+	sha512sums = a6f7f8423578b130eb41255161ef865b305861690b1b2fbfb5d2e884430db4e84e1d29b9cfe9e6f15727dbda9d3f941b400d0d9219480c6dfe2bcf5d9e192433
+
+pkgname = wago-app-bin
