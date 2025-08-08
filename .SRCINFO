@@ -1,6 +1,6 @@
 pkgbase = pamac-aur-git
 	pkgdesc = Pamac package manager
-	pkgver = 11.7.3.r0.g06c846c
+	pkgver = 11.7.3.r3.gf756a05
 	pkgrel = 1
 	url = https://github.com/manjaro/pamac
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = pamac-aur-git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
-	optdepends = polkit-gnome: needed for authentication in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentication in Xfce, LXDE etc.
+	optdepends = polkit-gnome: needed for authentication in Cinnamon, Gnome
 	source = pamac::git+https://github.com/manjaro/pamac.git
 	source = libpamac::git+https://github.com/manjaro/libpamac.git
 	source = pamac-cli::git+https://github.com/manjaro/pamac-cli.git
