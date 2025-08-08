@@ -38,7 +38,7 @@ package() {
   install -vDm755 "doWM" "$pkgdir/usr/bin/doWM"
   
   # xsession listing
-  install -vDm644 "install/doWM.desktop" "$pkgdir/usr/share/xsessions/doWM.desktop"
+  install -vDm644 "doWM.desktop" "$pkgdir/usr/share/xsessions/doWM.desktop"
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
