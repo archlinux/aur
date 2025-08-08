@@ -1,0 +1,17 @@
+pkgbase = toney-bin
+	pkgdesc = Fast, lightweight, terminal-based note-taking app for the modern developer.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/SourcewareLab/Toney
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = Toney
+	conflicts = Toney
+	source_x86_64 = https://github.com/SourcewareLab/Toney/releases/download/v2.1.0/toney_2.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 610f2a7c931e7d6e07512080656f29303a481456774fb290fd3cbff3f10b38c4
+	source_aarch64 = https://github.com/SourcewareLab/Toney/releases/download/v2.1.0/toney_2.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b077f3e532bcf5a99809d2e1c320bea61eb0fecdd49263a69cef311a315c3bde
+
+pkgname = toney-bin
