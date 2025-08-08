@@ -1,3 +1,5 @@
+pkg/
+src/
 undertalemodtool-*.zip.part
 undertalemodtool-*.zip
 PKGBUILD-namcap.log
