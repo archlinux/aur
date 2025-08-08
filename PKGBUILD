@@ -2,7 +2,7 @@
 
 _pkgname=python-mtga-helper
 pkgname=${_pkgname}-git
-pkgver=0.1.0.64.d3cceb8
+pkgver=0.2.1.90.189cba2
 pkgrel=1
 pkgdesc='CLI application to parse log files from MTGA and analyse them using 17lands data'
 arch=('any')
@@ -14,6 +14,7 @@ depends=(python
          python-requests
          python-numpy
          python-tabulate
+         python-coloredlogs
          "python-termcolor>=3.1.0")
 makedepends=(python-build
              python-installer
@@ -32,6 +33,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
+  rm dist -Rf
   python -m build --wheel --no-isolation
 }
 
