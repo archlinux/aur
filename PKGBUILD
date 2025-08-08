@@ -4,7 +4,7 @@
 
 _pkgname="liquid-dsp"
 pkgname="${_pkgname}-git"
-pkgver=1.7.0+59.r7977.20250628.615aff22c
+pkgver=1.7.0+63.r7981.20250717.d6f6f9d3e
 pkgrel=1
 pkgdesc="Digital signal processing library for software-defined radios"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
