@@ -1,7 +1,7 @@
 pkgbase = jank-git
 	pkgdesc = The native Clojure dialect hosted on LLVM with seamless C++ interop.
 	pkgver = r1.3016e3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jank-lang.org/
 	arch = x86_64
 	license = MPL-2.0
