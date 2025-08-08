@@ -2,7 +2,7 @@
 
 pkgname=komodo
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Kirigami-based todo manager'
 arch=('x86_64')
 url='https://invent.kde.org/utilities/komodo'
@@ -29,10 +29,16 @@ makedepends=(
   reuse
   vulkan-headers
 )
-source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/utilities/komodo/-/commit/57c6fa82.patch)
 sha256sums=('0831ac4a43ea292653105541e1db2d98346e94f3eb2aae5a365375de798377bc'
-            'SKIP')
+            'SKIP'
+            'bab0c19d3eee04da2d863b51311a64d3555c67ea38769f839420f151c943103e')
 validpgpkeys=(6CF8BBBD93FD0A4A748495A12D8ADFDD01E76FAC) # Akseli Lahtinen <akselmo@akselmo.dev>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < 57c6fa82.patch # Patch to avoid installing QML modules
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \

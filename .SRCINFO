@@ -1,7 +1,7 @@
 pkgbase = komodo
 	pkgdesc = Kirigami-based todo manager
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/utilities/komodo
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -26,8 +26,10 @@ pkgbase = komodo
 	depends = qt6-declarative
 	source = https://download.kde.org/stable/komodo/1.0.0/komodo-1.0.0.tar.xz
 	source = https://download.kde.org/stable/komodo/1.0.0/komodo-1.0.0.tar.xz.sig
+	source = https://invent.kde.org/utilities/komodo/-/commit/57c6fa82.patch
 	validpgpkeys = 6CF8BBBD93FD0A4A748495A12D8ADFDD01E76FAC
 	sha256sums = 0831ac4a43ea292653105541e1db2d98346e94f3eb2aae5a365375de798377bc
 	sha256sums = SKIP
+	sha256sums = bab0c19d3eee04da2d863b51311a64d3555c67ea38769f839420f151c943103e
 
 pkgname = komodo
