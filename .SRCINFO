@@ -1,6 +1,6 @@
 pkgbase = calibre-bin
 	pkgdesc = Official desktop version Calibre
-	pkgver = 8.7.0
+	pkgver = 8.8.0
 	pkgrel = 1
 	url = https://github.com/kovidgoyal/calibre
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = calibre-bin
 	conflicts = calibre
 	conflicts = calibre-git
 	source = share.tar.xz
-	source = https://github.com/kovidgoyal/calibre/releases/download/v8.7.0/calibre-8.7.0-x86_64.txz
+	source = https://github.com/kovidgoyal/calibre/releases/download/v8.8.0/calibre-8.8.0-x86_64.txz
 	sha256sums = c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a
-	sha256sums = 4e5e9026640401b6dc377dd176dea54c39ae64e4faaabdd9ecda6184a60bf023
+	sha256sums = b7e7f5f78ac61827738ca95c870440e78c885586a3f335b3f85697f5ac9dfec6
 
 pkgname = calibre-bin
