@@ -1,13 +1,13 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=netpeek-git
-pkgver=0.2.r0.g5b1b085
-pkgrel=1
+pkgver=0.2.2.r6.ge8dd1b8
+pkgrel=2
 pkgdesc="Mordern network scanner for GNOME"
-arch=(x86_64)
+arch=(any)
 url="https://github.com/ZingyTomato/NetPeek"
 license=(GPL-3.0-or-later)
-depends=(python python-gobject gtk4)
+depends=(python python-gobject gtk4 libadwaita)
 makedepends=(git meson ninja)
 provides=(netpeek)
 conflicts=(netpeek)
