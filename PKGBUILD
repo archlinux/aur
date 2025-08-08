@@ -1,5 +1,5 @@
 pkgname=stable-diffusion.cpp-vulkan-git
-pkgver=r252.f6b9aa1
+pkgver=r256.5900ef6
 pkgrel=1
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=("MIT")
@@ -18,7 +18,7 @@ makedepends=(
 arch=("x86_64")
 url="https://github.com/leejet/stable-diffusion.cpp"
 provides=("stable-diffusion.cpp")
-conflicts=("stable-diffusion.cpp")
+conflicts=("stable-diffusion.cpp" "llama.cpp-vulkan")
 source=("git+https://github.com/leejet/stable-diffusion.cpp.git"
         "git+https://github.com/ggerganov/ggml.git")
         # "001-fix-shared-lib-install.diff")

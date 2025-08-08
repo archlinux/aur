@@ -1,6 +1,6 @@
 pkgbase = stable-diffusion.cpp-vulkan-git
 	pkgdesc = Stable Diffusion and Flux in pure C/C++ (Vulkan version)
-	pkgver = r252.f6b9aa1
+	pkgver = r256.5900ef6
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = stable-diffusion.cpp-vulkan-git
 	depends = vulkan-validation-layers
 	provides = stable-diffusion.cpp
 	conflicts = stable-diffusion.cpp
+	conflicts = llama.cpp-vulkan
 	source = git+https://github.com/leejet/stable-diffusion.cpp.git
 	source = git+https://github.com/ggerganov/ggml.git
 	sha256sums = SKIP
