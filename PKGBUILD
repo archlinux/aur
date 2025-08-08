@@ -1,21 +1,22 @@
 # Maintainer: Erffy <https://github.com/erffy>
 
-pkgname=zig-waybar-contrib
-pkgver=1.1.2
-pkgrel=1
+_pkgbase="zig-waybar-contrib"
+pkgname=${_pkgbase}
+pkgver=0.0.1
+pkgrel=0
 pkgdesc="Lightweight Waybar modules built with Zig"
 arch=('x86_64')
 url="https://github.com/erffy/zig-waybar-contrib"
 license=('GPL3')
-depends=()
-makedepends=('git' 'zig>=0.14.0')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags --abbrev=0 | sed 's/^v//'
-}
+depends=()
+makedepends=('git' 'zig>=0.14.0')
+optdepends=(
+  'rocm-smi-lib: AMD GPU BACKEND'
+  'amdsmi: AMD GPU BACKEND'
+  'cuda: NVIDIA GPU BACKEND'
+)
 
 build() {
   cd "$srcdir/$pkgname"
