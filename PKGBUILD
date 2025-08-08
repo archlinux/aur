@@ -10,8 +10,8 @@ url="https://cursor.com"
 license=('LicenseRef-Cursor')
 # note: there are no deps - they bundle node in the tarball
 source=('LICENSE')
-source_x86_64=("cursor-cli-${_ver_hash}-${CARCH}.tar.gz:https://downloads.cursor.com/lab/${_ver_hash}/linux/x64/agent-cli-package.tar.gz")
-source_aarch64=("cursor-cli-${_ver_hash}-${CARCH}.tar.gz:https://downloads.cursor.com/lab/${_ver_hash}/linux/arm64/agent-cli-package.tar.gz")
+source_x86_64=("cursor-cli-${_ver_hash}-x86_64.tar.gz:https://downloads.cursor.com/lab/${_ver_hash}/linux/x64/agent-cli-package.tar.gz")
+source_aarch64=("cursor-cli-${_ver_hash}-aarch64.tar.gz:https://downloads.cursor.com/lab/${_ver_hash}/linux/arm64/agent-cli-package.tar.gz")
 b2sums=('7079c023e03ea4d78b067ed0f22b5cc1982c306721b2ea6be3c7f73bbbe0e8f05b148fd6571902b838464ee80a787ef7be73135c622f0a4fdb16c38429ced8d6')
 b2sums_x86_64=('936c8a7dab8561c02b72abcc27c1e1b606a6b4b7e9771aa98bd55d580bc457300f8feda8526bee3d07863bdbd010d4cd551f74cb00ba5f075d37c39ff00d8929')
 b2sums_aarch64=('936c8a7dab8561c02b72abcc27c1e1b606a6b4b7e9771aa98bd55d580bc457300f8feda8526bee3d07863bdbd010d4cd551f74cb00ba5f075d37c39ff00d8929')
