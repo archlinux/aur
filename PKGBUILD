@@ -4,7 +4,7 @@
 
 pkgname=goneovim-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.6.14
+pkgver=0.6.15
 pkgrel=1
 pkgdesc='Neovim GUI written in Golang, using a Golang qt backend'
 arch=(x86_64)
@@ -41,7 +41,7 @@ _archive="${_pkgname}-v$pkgver-linux"
 source=("$url/releases/download/v$pkgver/$_archive.tar.bz2"
         goneovim.desktop
         goneovim.ico)
-sha256sums=('933476fef895963549674033123d1f19591d208b756d1da360586c6c57b551d9'
+sha256sums=('fe4dd1ce4de889d3d367292d43169c9bd8f3d34c2448889777d30c56fe134725'
             'bb7dd036f10fe1e9132d2bbbf346e99234425b012fadf177bb212c472ac5fca0'
             '0a36211b6ada93d811575b5ca9b33511e405f61cca791858ea2fe1eb5d29279e')
 
