@@ -1,6 +1,6 @@
 # Maintainer: Evan Burkey <evan@burkey.co>
 pkgname=epochcli
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="Updater and launcher for Project Epoch"
@@ -15,16 +15,16 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("git+https://git.burkey.co/eburk/epochcli#commit=6abb9ce47acc1adccfe9ae1c41651fe699e14c20") 
+source=("git+https://git.burkey.co/eburk/epochcli#commit=336340269bf0fac957a652905877d9de66afdaaf")
 noextract=()
 sha256sums=("SKIP")
 
 build() {
-	pushd epochcli
-	go build
+  pushd epochcli
+  go build
 }
 
 package() {
-	pushd epochcli 
-	install -v -D -m0755 epochcli ${pkgdir}/usr/bin/epochcli
+  pushd epochcli
+  install -v -D -m0755 epochcli ${pkgdir}/usr/bin/epochcli
 }
