@@ -1,0 +1,27 @@
+pkgbase = alma-bin
+	pkgdesc = Create Arch Linux based live USB
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/jamesmcm/alma-nv
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = libssh2
+	makedepends = openssl
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = zstd
+	depends = gptfdisk
+	depends = parted
+	depends = arch-install-scripts
+	depends = dosfstools
+	depends = coreutils
+	depends = util-linux
+	optdepends = cryptsetup: for root filesystem encryption
+	provides = alma
+	conflicts = alma
+	source = alma-nv-0.11.0::https://github.com/jamesmcm/alma-nv/releases/download/0.11.0/alma-nv_0.11.0_linux_x86-64_gcc
+	sha256sums = 24e2362c7d677adb6267258c65acd29db48d6bde40ff2f130b330859a716e57d
+
+pkgname = alma-bin
