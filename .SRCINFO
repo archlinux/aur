@@ -1,19 +1,17 @@
 pkgbase = anitr-cli
-	pkgdesc = 🚀 Terminalde Türkçe altyazılı anime izleme ve arama aracı
-	pkgver = 4.3.1
+	pkgdesc = 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://github.com/xeyossr/anitr-cli
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
-	arch = i686
+	arch = any
 	license = GPL3
 	makedepends = go
 	makedepends = git
+	makedepends = make
 	depends = mpv
-	optdepends = rofi: for rofi ui (X11 users)
-	optdepends = rofi-wayland: for rofi ui (recommended for Wayland users)
-	source = git+https://github.com/xeyossr/anitr-cli.git#tag=v4.3.1
+	optdepends = rofi: X11 kullanıcıları için GUI
+	optdepends = rofi-wayland: Wayland kullanıcıları için GUI
+	source = anitr-cli-4.3.2.tar.gz::https://github.com/xeyossr/anitr-cli/archive/refs/tags/v4.3.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = anitr-cli

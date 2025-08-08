@@ -1,31 +1,30 @@
 # Maintainer: kamisaki
-# Description: 🚀 Terminalde Türkçe altyazılı anime izleme ve arama aracı
+# Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
-pkgdesc="🚀 Terminalde Türkçe altyazılı anime izleme ve arama aracı"
-arch=('x86_64' 'armv7h' 'aarch64' 'i686')
+pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
+arch=('any')
 url="https://github.com/xeyossr/anitr-cli"
 license=('GPL3')
 depends=('mpv')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'make')
 
 optdepends=(
-    'rofi: for rofi ui (X11 users)'
-    'rofi-wayland: for rofi ui (recommended for Wayland users)'
+    'rofi: X11 kullanıcıları için GUI'
+    'rofi-wayland: Wayland kullanıcıları için GUI'
 )
 
-source=(
-    "git+https://github.com/xeyossr/anitr-cli.git#tag=v${pkgver}"
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xeyossr/anitr-cli/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/${pkgname}"
-    go build -ldflags "-X github.com/xeyossr/anitr-cli/internal/update.CurrentVersion=v${pkgver}" -o anitr-cli
+    gobuildenv=$(go version)
+    cd "$srcdir/$pkgname-$pkgver"
+    go build -o build/anitr-cli -ldflags="-X 'github.com/xeyossr/anitr-cli/internal/update.version=${pkgver}' -X 'github.com/xeyossr/anitr-cli/internal/update.buildEnv=${gobuildenv}'"
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
-    install -Dm755 anitr-cli "${pkgdir}/usr/bin/${pkgname}"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 build/anitr-cli "${pkgdir}/usr/bin/${pkgname}"
 }
