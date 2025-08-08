@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver" 'PINCE.desktop')
 install="note.install"
-sha1sums=('cc00a42c58f079fab0072b08fd3d8c5bdcb2e2e0'
+sha1sums=('1c3ca9cb323937ab0ee254a1ebb63a828e78d341'
           '719d18d69abc299f739cc04041967e9d05a34104')
 _installpath='/usr/share/PINCE'
 _installsh='install.sh'
