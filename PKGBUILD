@@ -1,10 +1,9 @@
-
+# Maintainer: oech3
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
 _codecformatutil=61.61.59
 _chromium=137.0.7151.138
-#_chrlow=126.0.6423.0
-_chrff=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${_chromium}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+_chrff=$(curl -sL https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${_chromium}/DEPS?format=TEXT | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=${_ffver}.so.${_codecformatutil}
 pkgrel=1
 _so=libffmpeg.so
@@ -17,7 +16,6 @@ source=(${url}releases/ffmpeg-${_ffver}.tar.xz #fetch-soname-by-chromium.sh
 "AVFMT_FLAG_NOVIDEOPARSE.patch.base64::${_url}/+/594bc6d3246fe6b293f253d07c8905c578cb75c9%5E%21/?format=TEXT"
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
-#"${_chrlow}sigs.base64::${_url}/+/${_chrfflow}/chromium/ffmpeg.sigs?format=TEXT"
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
 "aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${_ffver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
@@ -40,9 +38,7 @@ conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
 provides=(opera{,-developer,-beta}-ffmpeg-codecs)
 prepare() {
   # List used funcs
-  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt 
-  #base64 -d ${_chrlow}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > oldsigs.txt 
-  #diff {,old}sigs.txt
+  base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   echo -e "{\nglobal:\n$(sed 's/$/;/' sigs.txt)\nlocal:\n*;\n};" > export.map
   
@@ -92,7 +88,7 @@ build() {
 
   make DESTDIR=.. install
   cd ..
-  _symbols=$(cat sigs.txt | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  _symbols=$(awk '{print "-Wl,-u," $1}' sigs.txt | paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
     ${_symbols} -Wl,--version-script=export.map \
