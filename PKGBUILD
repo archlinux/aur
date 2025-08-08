@@ -24,10 +24,6 @@ package() {
     --install-links \
     --prefix "$pkgdir/usr"
 
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "$pkgdir"
-
   # Remove unnecessary scripts to silence namcap warnings
   rm \
     "$pkgdir/usr/lib/node_modules/single-file-cli/single-file" \
