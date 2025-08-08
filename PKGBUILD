@@ -3,12 +3,13 @@
 pkgname=('beaker-common' 'beaker-client')
 pkgbase='beaker'
 pkgver=29.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-stack software and hardware integration testing system"
 arch=('any')
 url="https://beaker-project.org/"
-license=('GPL' 'BSD')
-makedepends=('python-nose' 'python-mock' 'python-docutils' 'python-sphinx' 'make' 'python-gssapi' 'python-lxml' 'python-prettytable' 'python-lxml' 'python-sphinxcontrib-httpdomain')
+license=('GPL-2.0-only' 'BSD')
+makedepends=('python-setuptools' 'python-sphinx' 'python-sphinxcontrib-httpdomain' 'python-docutils' 'python-six' 'python-gssapi' 'python-lxml')
+depends=('python3' 'python-six' 'python-setuptools' 'python-gssapi' 'python-lxml')
 provides=('bkr' 'beaker-wizard')
 options=('zipman')
 source=("https://github.com/beaker-project/beaker/archive/refs/tags/$pkgbase-$pkgver.tar.gz")
@@ -32,10 +33,11 @@ package_beaker-common() {
 
 package_beaker-client() {
         pkgdesc="Full-stack software and hardware integration testing system - cli"
-        depends=('python' 'python-six' 'python-setuptools' 'python-gssapi' 'python-lxml' 'python-requests' 'python-prettytable' 'python-jinja' "beaker-common=$pkgver")
+        depends=('python3' 'python-six' 'python-setuptools' 'python-gssapi' 'python-lxml' 'python-requests' 'python-prettytable' 'python-jinja' 'python-importlib-metadata' "beaker-common=$pkgver")
 
         export BKR_PY3="$(which python3)"
         cd "$pkgbase-$pkgbase-$pkgver"
         make DESTDIR="$pkgdir/" -C Client install
+        rm -frv "$pkgdir/bkr/client/tests"
 
 }
