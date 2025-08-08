@@ -15,8 +15,6 @@ pkgbase = cling
 	optdepends = python: support for scan-view and Jupyter
 	optdepends = python-pygments: support for opt-viewer
 	optdepends = python-yaml: support for opt-viewer
-	provides = cling
-	conflicts = cling
 	options = !lto
 	options = !debug
 	source = cling-llvm::git+https://github.com/root-project/llvm-project.git#tag=cling-llvm18-20250207-01
