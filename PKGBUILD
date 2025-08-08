@@ -1,6 +1,6 @@
 # Maintainer: Cypher-Monarch <monarchcypher@gmail.com>
 pkgname=cyphergatevpn-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Cross-platform VPN GUI for OpenVPN - Binary release"
 arch=('x86_64')
