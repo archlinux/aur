@@ -20,7 +20,7 @@ diff --git a/plug-ins/selection-to-path/types.h b/plug-ins/selection-to-path/typ
 index 9b040fa3a1..96f96f8651 100644
 --- a/plug-ins/selection-to-path/types.h
 +++ b/plug-ins/selection-to-path/types.h
-@@ -20,7 +20,7 @@
+@@ -20,7 +20,4 @@
  #define TYPES_H
  
 -/* Booleans.  */

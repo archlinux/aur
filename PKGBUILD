@@ -7,7 +7,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-2
 pkgver=2.10.38
-pkgrel=5
+pkgrel=6
 pkgdesc='GNU Image Manipulation Program'
 url='https://www.gimp.org/'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.t
 sha256sums=('50a845eec11c8831fe8661707950f5b8446e35f30edfb9acf98f85c1133f856e'
             'ac3e8b44cf391f4ab3050652f2cc1f146f451fb25178d5a596d905f5bad13fcf'
             '24814e981121830242f0a9b7d1da99e7282b247b87b482e2b394cff75b4675ef'
-            '1aa566e6c756abb3616ed3bd891d013d7ac563710c48e13521441b8529423609'
+            '7fd3e948c8421016fd07bf0e40addc60a2f39fb8abf6e0e20905ce5bdbed3399'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 prepare() {
