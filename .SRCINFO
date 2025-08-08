@@ -14,7 +14,6 @@ pkgbase = tinc-pre
 	depends = zlib
 	depends = openssl
 	depends = miniupnpc
-	optdepends = python2
 	optdepends = wxpython: gui support
 	provides = tinc-pre
 	provides = tinc-pre-systemd
