@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 package() {
   install -d "$pkgdir/opt/CypherGate"
   install -Dm755 "$srcdir/CypherGate-Linux-v$pkgver/cyphergate.elf" "$pkgdir/opt/CypherGate/cyphergate.elf"
-  cp -r "$srcdir/CypherGate-Linux/Assets" "$pkgdir/opt/CypherGate/"
+  cp -r "$srcdir/CypherGate-Linux-v$pkgver/Assets" "$pkgdir/opt/CypherGate/"
 
   install -d "$pkgdir/usr/share/applications"
   cat > "$pkgdir/usr/share/applications/CypherGate.desktop" <<EOF
