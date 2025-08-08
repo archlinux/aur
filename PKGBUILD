@@ -2,8 +2,8 @@
 _appname=tabby
 pkgname="${_appname}-electron-bin"
 _pkgname=Tabby
-pkgver=1.0.223
-_electronversion=32
+pkgver=1.0.224
+_electronversion=36
 pkgrel=1
 pkgdesc="A terminal for a more modern age.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -19,7 +19,6 @@ provides=("${_appname}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'python'
-    'nodejs'
     'libsecret'
 )
 makedepends=(
@@ -35,11 +34,15 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-arm64.rpm")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.rpm")
-sha256sums=('14922f6f74dcfce6ef381638dbe8aa476b27363d17ecd0a0767678231bb60128'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('04cc04a004608c5e5528b5ce211c745e4ca4dd64fad002c35515ce57df9c731d')
-sha256sums_armv7h=('750de3656c25d3d1cbea2aefcf5bce5a052f4ec3ca0e2c123adaab7cc4b26eeb')
-sha256sums_x86_64=('a2e57ab76dbcca2eecc741982c327293205421efaf01854609d0b073920dcc05')
+sha256sums=('ac295694b9f56e90dce3cf58313ed891d0bd9178adec02d8503a0c07d9d34c68'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('917158357b5489cbc77faa6e47b2f9b7cffcee12a3d96941c7da37de5e724790')
+sha256sums_armv7h=('4db01a79b2a51d30ff46c0cfcd7360884e737e499e5daf01ede94efa2e17c37e')
+sha256sums_x86_64=('5b2cac093f50bf9cac064cb3498c19d222c7bfd00eafb1f428211b41f3d9626b')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -48,6 +51,7 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_appname} --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
@@ -55,7 +59,20 @@ prepare() {
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    find "${srcdir}/opt/${_pkgname}/resources" -type f -name "*.exe" -exec rm -rf {} +
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*,linux-arm,linux-x64}
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/russh/"{russh.darwin*,russh.win32*,russh.linux-arm-g*,russh.linux-x64*}
+            ;;
+        armv7h)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*,linux-arm64,linux-x64}
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/russh/"{russh.darwin*,russh.win32*,russh.linux-arm64*,russh.linux-x64*}
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,linux-arm*,win32-*}
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/russh/"{russh.darwin*,russh.win32*,russh.linux-arm*}
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
