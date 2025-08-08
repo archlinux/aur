@@ -1,7 +1,7 @@
 pkgbase = python-webscout
 	pkgdesc = Your All-in-One Python Toolkit for Web Search, AI Interaction, Digital Utilities, and More
 	pkgver = 8.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OEvortex/Webscout
 	arch = any
 	license = Webscout License
@@ -35,6 +35,8 @@ pkgbase = python-webscout
 	depends = python-brotli
 	depends = python-litproxy
 	source = webscout-8.3.5.tar.gz::https://files.pythonhosted.org/packages/9d/c3/78f3b8e0bdc4d233b3567156f5a8feaa997a4120aa7059b92f31a18dfd75/webscout-8.3.5.tar.gz
+	source = trio.patch
 	sha256sums = 69547972737409ab75fadfd47092f9570fb2f401cb90249f0cecb1cb27c3dc86
+	sha256sums = d507186f805711286645a20f455378b255d7a02418cd6bce9b0710956d64fd33
 
 pkgname = python-webscout
