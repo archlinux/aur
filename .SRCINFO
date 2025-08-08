@@ -1,7 +1,7 @@
 pkgbase = cahute
 	pkgdesc = A toolkit to handle communication and file formats related to CASIO calculators
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cahuteproject.org
 	install = cahute.install
 	arch = x86_64
