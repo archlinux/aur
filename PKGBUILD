@@ -1,7 +1,7 @@
 # Maintainer: Milk (milk / milkii on Freenode) 
 # Contributor: osch <oliver@luced.de>
 pkgname=surge-synthesizer-lv2-git
-pkgver=r984.ba36b33
+pkgver=r5234.9580d04fb
 scmver=1.6.1
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin (LV2, git head)"
@@ -28,15 +28,12 @@ pkgver() {
 prepare() {
 	cd "$srcdir/surge"
 	git submodule update --init --recursive
-	pwd
-	sed -i -e 's:dest_path="/:dest_path="$DEST_DIR/:' build-linux.sh
-	sed -i -e 's:data_path="/:data_path="$DEST_DIR/:' build-linux.sh
-	echo "$scmver".$pkgver > VERSION
+  cmake -Bbuild -DSURGE_BUILD_LV2=TRUE
 }
 
 build() {
 	cd "$srcdir/surge"
-	./build-linux.sh -p lv2 build
+  cmake --build build --config Release --target surge-staged-assets
 }
 
 package() {

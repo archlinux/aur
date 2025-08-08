@@ -1,6 +1,6 @@
 pkgbase = surge-synthesizer-lv2-git
 	pkgdesc = Surge Synthesizer plugin (LV2, git head)
-	pkgver = r984.ba36b33
+	pkgver = r5234.9580d04fb
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
@@ -26,4 +26,3 @@ pkgbase = surge-synthesizer-lv2-git
 	md5sums = SKIP
 
 pkgname = surge-synthesizer-lv2-git
-
