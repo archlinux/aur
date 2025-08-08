@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=tabby
-pkgver=1.0.223
+pkgver=1.0.224
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -10,13 +10,13 @@ url="https://tabby.sh"
 license=('MIT')
 conflicts=('terminus-terminal')
 replaces=('terminus-terminal')
-_electron=electron32
+_electron=electron36
 depends=('bash' "${_electron}" 'fontconfig' 'gcc-libs' 'glib2' 'glibc' 'hicolor-icon-theme' 'libsecret' 'nodejs')
-makedepends=('gendesk' 'git' 'python' 'yarn')
+makedepends=('gendesk' 'git' 'npm' 'python' 'yarn')
 source=("git+https://github.com/Eugeny/tabby.git#tag=v${pkgver}"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('cb7b05994d98d7c8caaf6c050074a9885c4a4ba6c9766872399542643196d7b6'
+sha256sums=('8b856598052195e52d09536f5ba05abcd106e66115527b213350519079a15022'
             'e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a'
             'f5581859b734a2f9199a331540fc9beac0a102705a519f6070858ddd7db8b401')
 
@@ -41,7 +41,7 @@ prepare() {
     yarn install --frozen-lockfile
 }
 
-build(){
+build() {
     cd "${pkgname}"
     yarn run build
     ./scripts/prepackage-plugins.mjs
