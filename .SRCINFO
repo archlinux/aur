@@ -1,6 +1,6 @@
 pkgbase = axonops-workbench-bin
 	pkgdesc = A desktop application built for Cassandra DB developers and DBAs.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.9.33
+	pkgver = 0.9.34
 	pkgrel = 1
 	url = https://axonops.com/
 	arch = aarch64
@@ -9,14 +9,14 @@ pkgbase = axonops-workbench-bin
 	depends = electron31
 	depends = libsecret
 	depends = python
-	provides = axonops-workbench=0.9.33
+	provides = axonops-workbench=0.9.34
 	conflicts = axonops-workbench
 	options = !emptydirs
 	source = axonops-workbench.sh
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = axonops-workbench-0.9.33-aarch64.rpm::https://github.com/axonops/axonops-workbench-cassandra/releases/download/v0.9.33/AxonOps.Workbench-0.9.33-linux-aarch64.rpm
-	sha256sums_aarch64 = 3ec2faf61e762298bf4b434a50b2253ffef402e259e410e3bcd3bb93dc1f3269
-	source_x86_64 = axonops-workbench-0.9.33-x86_64.rpm::https://github.com/axonops/axonops-workbench-cassandra/releases/download/v0.9.33/AxonOps.Workbench-0.9.33-linux-x86_64.rpm
-	sha256sums_x86_64 = 27a024a3111bb45dc436e9e55bca89240b2e9f447b75455566503805f378acbd
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = axonops-workbench-0.9.34-aarch64.rpm::https://github.com/axonops/axonops-workbench-cassandra/releases/download/v0.9.34/AxonOps.Workbench-0.9.34-linux-aarch64.rpm
+	sha256sums_aarch64 = 3628aefa0d6981f61f5ff2310e135fa71d08c77430362c1571a7c6a30ec5d116
+	source_x86_64 = axonops-workbench-0.9.34-x86_64.rpm::https://github.com/axonops/axonops-workbench-cassandra/releases/download/v0.9.34/AxonOps.Workbench-0.9.34-linux-x86_64.rpm
+	sha256sums_x86_64 = 3b7f65bf45913fa0623b0c54ec6c6cd7a8b56e5efb3834809da423e892cd01d8
 
 pkgname = axonops-workbench-bin
