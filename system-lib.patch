@@ -15,6 +15,7 @@
 +find_package(cuco REQUIRED)
 +find_package(nvtx3 REQUIRED)
 +find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
  
  if (BUILD_CUGRAPH_MTMG_TESTS)
