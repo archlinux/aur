@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 # Contributor: Phantom Browser Shell Team
-pkgname=phantom
+pkgname=phantom-wallet
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A cryptocurrency wallet for managing digital assets"
@@ -12,7 +12,7 @@ makedepends=('git' 'npm' 'yarn>=1.10.0')
 optdepends=('cups: printing support'
             'alsa-lib: sound support'
             'libnotify: desktop notifications')
-provides=('phantom')
+provides=('phantom-wallet')
 conflicts=('phantom-browser')
 source=("git+https://github.com/wakeupwakeupwakeup/phantom-browser-shell.git")
 sha256sums=('SKIP')

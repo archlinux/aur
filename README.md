@@ -7,9 +7,9 @@ A cryptocurrency wallet for managing digital assets on Arch Linux.
 Install from AUR:
 
 ```bash
-yay -S phantom
+yay -S phantom-wallet
 # or
-paru -S phantom
+paru -S phantom-wallet
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ paru -S phantom
 Launch the application:
 
 ```bash
-phantom
+phantom-wallet
 ```
 
 ## Dependencies
