@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
-_upstreamver='1.34.0'
+_upstreamver='1.34.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='moulti'
@@ -19,7 +19,7 @@ optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 #checkdepends=('mypy' 'python-pylint' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-forked' 'python-pytest-xdist' 'python-pytest-textual-snapshot')
 source=("${_pypi_package}-${_upstreamver}.tar.gz::https://github.com/xavierog/moulti/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7137818726bb9918449ca136460e2bc3a6dc8205863f8101b1ef4c8c85afd47d')
+sha256sums=('7b260b8febddf278fc9c917c6eb3081016a0c7532c93696dc03322854af70a90')
 
 #prepare() {
 #    cd "${srcdir}/${_pypi_package}-${pkgver}/"
