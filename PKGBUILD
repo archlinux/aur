@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 pkgname=gemini-cli-git
 _pkgname=gemini-cli
-pkgver=0.1.12.r213.g83c4dddb7
+pkgver=0.1.12.r397.gc184ec322
 pkgrel=1
 pkgdesc="An open-source AI agent that brings the power of Gemini directly into your terminal (git version)"
 arch=('any')
