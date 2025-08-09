@@ -1,4 +1,4 @@
-pkgname=ytdl_gui
+pkgname=ytdl-gui
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Interface gráfica para o yt-dlp feita em Flutter"
@@ -11,14 +11,14 @@ source=("$url/releases/download/v${pkgver}/ytdl_gui-${pkgver}.tar.gz"
         "${pkgname}.install"
         "LICENSE")
 sha256sums=('7a621803bfb24db3e2e3c0b94d35d5c157d8d5aca4b2f02cccdb40f238375c73'
-            'a20ec1a9ecd64fa7e6acd845f27275cad97c62c308eddfe6db0c2fd414a95a60'
+            'c42ef313e6401124014f044a4c330535723d8951a059bd157b1e49cbaac42ddc'
             'c48c773d1c80b9ece347ccf3053b9934a26e27d166038aa89410cdad235fad39'
             '5b70eb305c0463926f74c972722126b96ede6219402051726819de6b2556c16d')
 install="${pkgname}.install"
 
 package() {
   install -d "$pkgdir/opt/${pkgname}"
-  tar -xzf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "$pkgdir/opt/${pkgname}" --strip-components=1
+  tar -xzf "${srcdir}/ytdl_gui-${pkgver}.tar.gz" -C "$pkgdir/opt/${pkgname}" --strip-components=1
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/${pkgname}/${pkgname}" "$pkgdir/usr/bin/${pkgname}"

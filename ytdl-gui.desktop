@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=YTDL GUI
 Comment=Interface gráfica para yt-dlp feita em Flutter
-Exec=ytdl_gui
-Icon=ytdl_gui
+Exec=/opt/ytdl-gui/ytdl_gui
+Icon=ytdl-gui
 Terminal=false
 Type=Application
 Categories=Network;Downloader;
