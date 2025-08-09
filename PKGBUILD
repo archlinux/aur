@@ -1,37 +1,34 @@
-# Maintainer: Johannes Loher <johannes dor loher at fg4f dot de>
+# Contributor: Johannes Loher <johannes dor loher at fg4f dot de>
 
-pkgname='dfix'
+pkgname=dfix
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for automatically upgrading D source code'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/dlang-community/dfix'
-license=('custom: BSL')
+license=('BSL-1.0')
 groups=('dlang')
 depends=('gcc-libs')
 makedepends=('dmd' 'git')
-provides=('dfix')
-source=("git://github.com/dlang-community/${pkgname}#tag=v${pkgver}"
-'http://www.boost.org/LICENSE_1_0.txt')
-md5sums=('SKIP'
-         'e4224ccaecb14d942c71d31bef20d78c')
+source=("git+${url}.git#tag=v${pkgver}"
+        "git+https://github.com/Hackerpilot/libdparse.git"
+        "git+https://github.com/dlang-community/stdx-allocator.git")
+sha256sums=('e6a7b66866fb1d0a380116c76ab83faf4526b365a68ed047eb5fd339719e629f'
+            'SKIP'
+            'SKIP')
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
-	git submodule update --init
+	cd dfix
+	git submodule init
+	git config submodule.libdparse.url "$srcdir/libdparse"
+	git config submodule.stdx-allocator.url "$srcdir/stdx-allocator"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	make "${pkgname}_binary"
+	make -C dfix
 }
 
 package(){
-	# binaries
-	mkdir -p "${pkgdir}/usr/bin"
-	install -m755 -t "${pkgdir}/usr/bin" "${srcdir}/${pkgname}/bin/${pkgname}"
-
-	# license
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -m644 LICENSE_1_0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 -t "${pkgdir}/usr/bin" "dfix/bin/dfix"
 }
