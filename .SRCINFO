@@ -22,9 +22,9 @@ pkgbase = cuml
 	source = missing-include.patch
 	source = missing-pkg.patch
 	sha256sums = c40e6738633ae0feb6284888b1a844e536d3eb9f7abf24df1fa5c874d0c1c302
-	sha256sums = 4f166f88bd018ba552c78fc26e146f96b1fb78afa7a0eab2aa81c78835e9830f
+	sha256sums = 3ffc83a4eb2c1e0df8cb41cd936eac7f30a426fe4c508bb7fbfae6a7a091727a
 	sha256sums = a876fafc0102dcaa43d331ec496e0a8f3f0af03071e0a691414a38219c384909
-	sha256sums = 53d5e9008bcc303034ea3bc4cf2f3f511c6adb6a9224a606385f6fb5c2e5f537
+	sha256sums = 25a1bb293a10f3da823df9caf5107b90e457e848557fa71a092adc3a25c4a83d
 
 pkgname = libcuml
 

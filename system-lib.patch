@@ -1,6 +1,6 @@
 --- src/cuml-25.06.00/cpp/CMakeLists.txt	2025-06-06 20:44:48.000000000 +0800
 +++ src/cuml-25.06.00/cpp/CMakeLists.txt.new	2025-06-23 23:11:07.162190907 +0800
-@@ -242,11 +242,14 @@
+@@ -242,11 +242,15 @@
  endif()
  
  # CCCL before RMM, and RMM before RAFT
@@ -12,6 +12,7 @@
 +find_package(nvtx3 REQUIRED)
 +find_package(NvidiaCutlass REQUIRED)
 +find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
  if(LINK_CUVS)
 -  include(cmake/thirdparty/get_cuvs.cmake)
