@@ -1,43 +1,41 @@
-# Maintainer: Johannes Loher <johannes dor loher at fg4f dot de>
-_gitname=dfix
-pkgname="${_gitname}-git"
-pkgver=0.3.2.r0.g396fd6b
+# Contributor: Johannes Loher <johannes dor loher at fg4f dot de>
+
+pkgname=dfix-git
+pkgver=0.3.5.r7.g954c50f
 pkgrel=1
 pkgdesc='Tool for automatically upgrading D source code - git version'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/dlang-community/dfix'
-license=('custom: BSL')
+license=('BSL-1.0')
 groups=('dlang')
 depends=('gcc-libs')
 makedepends=('dmd' 'git')
-provides=("${_gitname}")
-conflicts=("${_gitname}")
-source=("git://github.com/dlang-community/${_gitname}.git"
-'http://www.boost.org/LICENSE_1_0.txt')
-md5sums=('SKIP'
-         'e4224ccaecb14d942c71d31bef20d78c')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}"
+        "git+https://github.com/Hackerpilot/libdparse"
+        "git+https://github.com/dlang-community/stdx-allocator")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	cd dfix
+	git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${_gitname}"
-	git submodule update --init
+	cd dfix
+	git submodule init
+	git config submodule.libdparse.url "$srcdir/libdparse"
+	git config submodule.stdx-allocator.url "$srcdir/stdx-allocator"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
-	make "${_gitname}_binary"
+	make -C dfix
 }
 
 package(){
-	# binaries
-	mkdir -p "${pkgdir}/usr/bin"
-	install -m755 -t "${pkgdir}/usr/bin" "${srcdir}/${_gitname}/bin/${_gitname}"
-
-	# license
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -m644 LICENSE_1_0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 -t "${pkgdir}/usr/bin" "dfix/bin/dfix"
 }
