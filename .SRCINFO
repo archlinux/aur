@@ -1,0 +1,17 @@
+pkgbase = skylanders-gamepad-daemon-git
+	pkgdesc = Userspace daemon providing support for the Skylanders Trap Team mobile gamepad
+	pkgver = 1.0.0.2.gea9fe25
+	pkgrel = 1
+	url = https://github.com/FifthTundraG/skylanders-gamepad-daemon
+	install = skylanders-gamepad-daemon-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = libevdev
+	makedepends = glib2
+	depends = bluez
+	source = git+https://github.com/FifthTundraG/skylanders-gamepad-daemon.git
+	sha256sums = SKIP
+
+pkgname = skylanders-gamepad-daemon-git
