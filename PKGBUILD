@@ -39,7 +39,7 @@ esac
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
 pkgver=r768.20250703.3bb67b6
-pkgrel=1
+pkgrel=2
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
   'i386'
@@ -94,6 +94,7 @@ sha256sums=(
   '457c17d8660aadeb7c6ef844319fa24ae77183b428c9ce5d438423ba75728052'  # menu_arch.lst
 )
 
+_CFLAGSADDITIONS=' --std=gnu17'  # '--std=gnu17': See https://github.com/chenall/grub4dos/issues/444#issuecomment-3146890839.
 
 prepare() {
   export CC="${_CC}"
@@ -235,7 +236,7 @@ build() {
 
   local _NO_WERRORS _no_werror _CFLAGSADDITIONS
   _NO_WERRORS=("incompatible-pointer-types") # See https://github.com/chenall/grub4dos/issues/444
-  _CFLAGSADDITIONS=""
+  _CFLAGSADDITIONS=' --std=gnu17'  # '--std=gnu17': See https://github.com/chenall/grub4dos/issues/444#issuecomment-3146890839.
   for _no_werror in "${_NO_WERRORS[@]}"; do
     _CFLAGSADDITIONS+=" -Wno-error=${_no_werror}"
   done
