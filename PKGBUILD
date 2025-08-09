@@ -1,10 +1,11 @@
 # Maintainer: taep96 <mail@taep96.moe>
+# Contributor: Neokoni <me@neokoni.ink>
 
 pkgname=libbassmix
 pkgver=2.4.12
 pkgrel=2
 pkgdesc="An extension providing the ability to mix together multiple BASS channels, with resampling and matrix mixing features. Also provides the ability to split a BASS channel into multiple channels."
-arch=(x86_64)
+arch=(i686 x86_64 armv6h armv7h aarch64)
 url="http://www.un4seen.com/"
 license=(custom)
 depends=(alsa-lib libbass)
@@ -47,7 +48,17 @@ prepare() {
 }
 
 package() {
-    install -D -m755 libs/x86_64/libbassmix.so "$pkgdir/usr/lib/libbassmix.so"
+    case "$CARCH" in
+        i686)
+            install -D -m755 libs/x86/libbassmix.so "$pkgdir/usr/lib/libbassmix.so"
+                ;;
+        armv6h|armv7h)
+            install -D -m755 libs/armhf/libbassmix.so "$pkgdir/usr/lib/libbassmix.so"
+                ;;
+        aarch64|x86_64)
+            install -D -m755 libs/$CARCH/libbassmix.so "$pkgdir/usr/lib/libbassmix.so"
+                ;;
+    esac
 
     install -D -m644 bassmix.h "$pkgdir/usr/include/bassmix.h"
     install -D -m644 bassmix.chm "$pkgdir/usr/share/doc/libbass/bassmix.chm"
