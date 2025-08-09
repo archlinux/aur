@@ -10,6 +10,7 @@
 +find_package(cuco REQUIRED)
 +find_package(NvidiaCutlass REQUIRED)
 +find_package(rmm REQUIRED)
++find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
  find_package(cuvs "${RAPIDS_VERSION}" REQUIRED COMPONENTS c_api)
  
