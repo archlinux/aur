@@ -4,21 +4,23 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20241226.r36.gb284dbd0f
+pkgver=20250503.r93.gd68ea6b4d
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
 license=('BSD-3-Clause AND BSD-2-Clause AND Zlib')
 depends=('glibc' 'gcc-libs')
-makedepends=('git' 'cmake' 'vulkan-icd-loader' 'protobuf' 'vulkan-headers')
+makedepends=('git' 'cmake' 'vulkan-icd-loader' 'protobuf' 'vulkan-headers' 'ninja')
 optdepends=('protobuf: for onnx2ncnn')
 conflicts=('ncnn')
 provides=('ncnn')
 arch=('i686' 'x86_64')
 source=("git+https://github.com/Tencent/ncnn.git"
-        "git+https://github.com/KhronosGroup/glslang"
+        "git+https://github.com/nihui/glslang"
         "git+https://github.com/pybind/pybind11")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 pkgver() {
     cd "${srcdir}/ncnn"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -38,21 +40,22 @@ prepare() {
 build() {
     cd "${srcdir}"
     cmake -S $_pkgname -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE='None' \
-	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
-	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
-        -DNCNN_BUILD_EXAMPLES=OFF \
-        -DNCNN_VULKAN=ON \
-        -DNCNN_SYSTEM_GLSLANG=OFF \
-        -DNCNN_SHARED_LIB=ON \
-        -DNCNN_ENABLE_LTO=ON \
-        -DNCNN_STDIO=ON \
-        -DNCNN_STRING=ON \
-        -DNCNN_BUILD_TOOLS=1 \
-	-DGLSLANG_TARGET_DIR=/usr/lib/cmake \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -Wno-dev
+    -GNinja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
+    -DNCNN_BUILD_EXAMPLES=OFF \
+    -DNCNN_VULKAN=ON \
+    -DNCNN_SYSTEM_GLSLANG=OFF \
+    -DNCNN_SHARED_LIB=ON \
+    -DNCNN_ENABLE_LTO=ON \
+    -DNCNN_STDIO=ON \
+    -DNCNN_STRING=ON \
+    -DNCNN_BUILD_TOOLS=1 \
+    -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -Wno-dev
     cmake --build build
 }
 
