@@ -1,21 +1,32 @@
 pkgname=multi-gitter
 pkgver=0.58.0
 pkgdesc='Update multiple repositories in with one command'
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/lindell/multi-gitter'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lindell/multi-gitter/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lindell/multi-gitter/archive/refs/tags/v${pkgver}.tar.gz")
 depends=()
 makedepends=('go')
 b2sums=('07ad3869743bbb878a6e57282f40913a04e7d9e8cb7a84fb034eae5e9d9556b98ed0393c7501b31375a5f7106b129e27b8c43a9a093a71a6a0abeb28c5f706d4')
-license=('Apache')
+license=('Apache-2.0')
 
-build(){
-  cd "$srcdir/$pkgname-$pkgver"
-  GO111MODULE=on go build -o "$srcdir/bin/multi-gitter"
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GO111MODULE="on"
+
+  go build -o "${srcdir}/bin/multi-gitter"
 }
 
 package() {
-  cd "$srcdir/bin"
-  install -Dm755 'multi-gitter' "$pkgdir/usr/bin/multi-gitter"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "${srcdir}/bin"
+  install -Dm 755 'multi-gitter' "${pkgdir}/usr/bin/multi-gitter"
 }
