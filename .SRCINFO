@@ -1,0 +1,17 @@
+pkgbase = hledger-language-server-git
+	pkgdesc = LSP implementation for plaintext accounting
+	pkgver = r143.74e8903
+	pkgrel = 1
+	url = https://github.com/yeldiRium/hledger-language-server
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = hledger
+	depends = glibc
+	provides = hledger-language-server
+	conflicts = hledger-language-server
+	source = git+https://github.com/yeldiRium/hledger-language-server
+	sha256sums = SKIP
+
+pkgname = hledger-language-server-git
