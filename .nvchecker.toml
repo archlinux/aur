@@ -1,0 +1,5 @@
+[protoc-gen-doc-bin]
+source = "github"
+github = "pseudomuto/protoc-gen-doc"
+use_latest_release = true
+prefix = "v"
