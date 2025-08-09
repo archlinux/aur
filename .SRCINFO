@@ -6,6 +6,7 @@ pkgbase = chhsich-nerd-font
 	install = chhsich-nerd-font.install
 	arch = any
 	license = OFL
+	maintainer = ChHsich
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-util
