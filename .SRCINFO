@@ -1,0 +1,19 @@
+pkgbase = daniella-browser
+	pkgdesc = A simple web browser built with PyQt6
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://include-digital.org/browser
+	arch = any
+	license = GPLv3
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = python-pyqt6-sip
+	depends = python-packaging
+	depends = python-ply
+	depends = python-flit-core
+	source = main.py
+	source = browser.desktop
+	sha256sums = 248789753d4d3608393de05c20bf1cf16aea56b41a80491bac3db43ad4cca214
+	sha256sums = 834402870a9dd20f08ca45e4147638e55cb38a701b365c518bf96c33e84a6fc2
+
+pkgname = daniella-browser
