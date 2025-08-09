@@ -4,7 +4,7 @@
 
 _pkgname=freetube
 pkgname=${_pkgname}-bin
-pkgver=0.23.5
+pkgver=0.23.6
 pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ depends=('ttf-liberation')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_arm64.deb")
 
 prepare() {
     mkdir -p data
@@ -29,5 +29,5 @@ package() {
     ln -s "/opt/FreeTube/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-md5sums_x86_64=('b95622221bc1ed0d194b10b1a5578b05')
-md5sums_aarch64=('c63122cb50c924d907f962073d5663ba')
+md5sums_x86_64=('378299ab079ac1d44d780d4b0f42c017')
+md5sums_aarch64=('9b269300c05544a409cf1924d50c9e6a')
