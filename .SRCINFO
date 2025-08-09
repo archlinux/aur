@@ -1,13 +1,16 @@
 pkgbase = cfv
 	pkgdesc = An utility to both test and create checksum files
-	pkgver = 1.18.3
-	pkgrel = 8
-	url = http://cfv.sourceforge.net/
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/cfv-project/cfv
 	arch = any
 	license = GPL
-	depends = python2
-	source = https://downloads.sourceforge.net/cfv/cfv-1.18.3.tar.gz
-	sha512sums = dbca82df850703ab68a20db9314475025ac2e7012f34a12abbb358677e81cbb29a465adf4a1b002f6cf1c1dd84f1588fc1072791d6bbaad0c02cc563e5fe7d71
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = cfv-3.1.0.tar.gz::https://github.com/cfv-project/cfv/archive/v3.1.0.tar.gz
+	sha512sums = 71c02cc0e5cb1dcf32aa180075744ccde27cf08765a6cf50b24bbdf68d61ba46d9e2e98cc9d414bddf1538ead1426f8eff56cfa788ad283981922c96519b10c4
 
 pkgname = cfv
-
