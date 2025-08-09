@@ -11,6 +11,7 @@ pkgbase = pyrescene-git
 	depends = python
 	depends = unrar
 	depends = lib32-libstdc++5
+	depends = python-nntplib
 	optdepends = chromaprint
 	provides = pyrescene
 	conflicts = pyrescene
