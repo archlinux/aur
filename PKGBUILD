@@ -1,14 +1,14 @@
 # Maintainer: Mercas <me@smj.im>
 
 pkgname=ttf-jetbrains-maple-mono-nf-xx-xx
-pkgver="1.2304.70"
+pkgver="1.2304.75"
 pkgrel=1
 pkgdesc="JetBrains Maple Mono: The free and open-source font fused with JetBrains Mono & Maple Mono"
 arch=('any')
 url="https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono"
 license=('OFL')
 source=("https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/download/${pkgver}/JetBrainsMapleMono-NF-XX-XX.zip")
-sha256sums=('a01730ac90cf6fbfa67aaec3b2432308ec9f96977587fef17495c100a1f7e247')
+sha256sums=('407c4a6da3f7507b0fa03d881f508292028ce214928c1b819e9ad354d7b555de')
 
 package() {
   _fontname=JetBrains-Maple-Mono-NF-XX-XX
