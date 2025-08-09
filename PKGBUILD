@@ -1,6 +1,6 @@
 # Maintainer: OminduD <omindudulneth@outlook.com>
 pkgname=arch-sandbox
-pkgver=v1.0.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="CLI tool to create isolated Arch Linux sandboxes using OverlayFS and systemd-nspawn"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('systemd' 'zstd')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OminduD/arch-sandbox/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('44758caea6a2de94518e94a9b587814b45da36488247c93ee882f81cd09a0bab') # Replace with actual SHA256
+sha256sums=('49073feb2828eed0e9973868e16e8c0c37e976b47282baed86a46b78c50de3ae4') # Replace with actual SHA256
 
 build() {
   cd "$pkgname-$pkgver"
