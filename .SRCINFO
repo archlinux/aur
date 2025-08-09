@@ -1,0 +1,14 @@
+pkgbase = raygui
+	pkgdesc = raygui is a simple and easy-to-use immediate-mode-gui library.
+	pkgver = 4.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/raysan5/raygui
+	arch = x86_64
+	license = MIT
+	depends = raylib
+	provides = libraygui.so=4.0
+	source = raygui_4.0.tar.gz::https://github.com/raysan5/raygui/archive/refs/tags/4.0.tar.gz
+	sha256sums = 299c8fcabda68309a60dc858741b76c32d7d0fc533cdc2539a55988cee236812
+
+pkgname = raygui
