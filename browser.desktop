@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Daniella Browser
+Comment=A simple web browser built with PyQt6
+Exec=python3 /usr/bin/main.py
+Icon=web-browser
+Terminal=false
+Categories=Network;WebBrowser;
