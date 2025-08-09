@@ -2,7 +2,7 @@
 
 pkgname=ptokax
 _pkgname=PtokaX
-pkgver=0.5.2.2
+pkgver=0.5.3.0
 pkgrel=3
 pkgdesc="PtokaX Direct Connect Hub is a multi-platform server application for Neo-Modus Direct Connect Peer-To-Peer sharing network."
 arch=('x86_64')
@@ -58,7 +58,7 @@ package() {
     install -Dm0644 ReadMe.txt "$pkgdir/usr/share/doc/$pkgname/README"
 }
 
-md5sums=('0d5ca7ae81be69eb351fadfd1a498217'
+md5sums=('a0c2deb4482304787be6cdbdd2de53d1'
          'fa9ba9566428af9603297aea1343ced2'
          '2df6b09b987a6b6e1e96ef6bc8a7a19e'
          '5f50852f8b1f490391e6593a51028590'
