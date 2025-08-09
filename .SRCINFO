@@ -1,12 +1,12 @@
 pkgbase = nuclei-templates
 	pkgdesc = Templates for the nuclei engine to find security vulnerabilities
-	pkgver = 10.2.6
+	pkgver = 10.2.7
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/nuclei-templates
 	arch = any
 	license = MIT
 	options = !strip
-	source = nuclei-templates-10.2.6.tar.gz::https://github.com/projectdiscovery/nuclei-templates/archive/v10.2.6.tar.gz
-	sha256sums = 9c083e2ca482741b675c31f4b58ee2e79c267dc2c16e846e0a592a219a0de160
+	source = nuclei-templates-10.2.7.tar.gz::https://github.com/projectdiscovery/nuclei-templates/archive/v10.2.7.tar.gz
+	sha256sums = 806f65af7808808144c555a424d253592ed5c0fb966b9595735004e2ae0e17f9
 
 pkgname = nuclei-templates
