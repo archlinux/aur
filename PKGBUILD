@@ -2,7 +2,7 @@
 
 _pkgname="wrkflw"
 pkgname="${_pkgname}-bin"
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Validate and execute GitHub Actions workflows locally"
 arch=('x86_64')
@@ -15,9 +15,9 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('caf0eec5da31aa8df6f411b6b35350b5b11304ba2440ead7e928f1886f2229be'
+sha256sums=('d627d67c348d5f3377e6b4f3decd26e7663d3df5734680ec4066e0658579470e'
             'e635a29d3556c9b030c44f42c52aee20aa6d22c0e448003baef320e9dc2e1764')
-sha256sums_x86_64=('5143442cf5336720d4086c380b5bbb015db1bd0494b2521dc7bf8793a7a146fc')
+sha256sums_x86_64=('1e6f8b2fed267a4f87c467b0bbf08d7c64304eb06159a38145baf0f36aecf516')
 
 package() {
   cd "${srcdir}"
