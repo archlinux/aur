@@ -9,7 +9,7 @@ _module="pip_search"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
 pkgrel=1
-pkgver=0.0.13
+pkgver=0.0.14
 pkgdesc="Search for pip packages via PyPi"
 url="https://github.com/victorgarric/pip_search"
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.$_pkgext")
-sha256sums=('7575286ce2437a71f5d7cdde7a84e1f082e83d77793541109d776c4f95903c97')
+sha256sums=('2d20b923162d01a0d151e172eaa42bc7465d11d2db8eb87c756753bc1a854436')
 
 build() {
   cd "$_pkgsrc"
