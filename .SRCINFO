@@ -1,23 +1,33 @@
 pkgbase = ryujinx-bin
-	pkgdesc = Experimental Nintendo Switch Emulator written in C# (master build channel release)
-	pkgver = 1.1.1400
+	pkgdesc = Experimental Nintendo Switch Emulator written in C#
+	pkgver = 1.3.2
 	pkgrel = 1
-	url = https://github.com/Ryujinx/release-channel-master
+	url = https://ryujinx.app
+	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = dotnet-runtime
+	makedepends = desktop-file-utils
+	depends = alsa-lib
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = jack
+	depends = libpulse
+	depends = libx11
+	depends = wayland
 	provides = ryujinx
 	conflicts = ryujinx
-	conflicts = Ryujinx
 	options = !strip
 	options = !debug
-	source = https://github.com/Ryujinx/release-channel-master/releases/download/1.1.1400/ryujinx-1.1.1400-linux_x64.tar.gz
-	source = https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/Ryujinx.desktop
-	source = https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/misc/Logo.svg
-	source = https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/mime/Ryujinx.xml
-	b2sums = 696841ac34e5ee4f4b4d9ec9625483f0c2f42011adf1f86732518cf5d69bc6331c5039936e1967ffb2442a5176da77a61386b9455ef116cd286453aa2c2660db
-	b2sums = aaf7e9ddc24bc0068d75a4136262ab2e7f669acda91b7abc66ac5c8d6332804af45b5f9eec43d1d5541dc8e7944001362fbb67bec873fffde496c6c46d6500fc
-	b2sums = f96fe6146018fd869c55e413b2cc6cf12f17c5257af52df14f57978133792c7fb76e8526b15a5120dbf12a9fed7b8e4723a3ff9f2e45b613b10ee1017ba0b996
-	b2sums = 0002cccf2a3e9dec4b0646e8d50ed105dfd4544baf49ae4868cc2a0785839ab578171063b6149b54fee947a38d88bbd6552647f6c69c590acf8fd1b12835c67a
+	source = ryujinx-1.3.2-README.md::https://git.ryujinx.app/ryubing/ryujinx/-/raw/1.3.2/README.md?ref_type=tags&inline=false
+	source = ryujinx-1.3.2.desktop::https://git.ryujinx.app/ryubing/ryujinx/-/raw/1.3.2/distribution/linux/Ryujinx.desktop?ref_type=tags&inline=false
+	source = ryujinx-1.3.2.svg::https://git.ryujinx.app/ryubing/ryujinx/-/raw/1.3.2/distribution/misc/Logo.svg?ref_type=tags&inline=false
+	sha256sums = 503f5f72050bffe23f7d7cc13a3a7c45430afe585950e3e3574c4e99455e8743
+	sha256sums = a19dc6e539931df63d4813f787c51f460cf72e0c44b20add1c0c6ef56c47d840
+	sha256sums = 6d8329413c64e2eb8a1706d2cf97e89fc5083b0654468bd6feefe47e61faaad2
+	source_aarch64 = ryujinx-1.3.2-aarch64.tar.gz::https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/1.3.2/ryujinx-1.3.2-linux_arm64.tar.gz
+	sha256sums_aarch64 = 97f4bed6c4993ef29402456bb84981370950243f56a0d18f3b0c3cf57f16a131
+	source_x86_64 = ryujinx-1.3.2-x86_64.tar.gz::https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/1.3.2/ryujinx-1.3.2-linux_x64.tar.gz
+	sha256sums_x86_64 = b1db7f41a06ed9a5fb040737c2d32eb332daedcde26e40d53f48adde305a1e6e
 
 pkgname = ryujinx-bin

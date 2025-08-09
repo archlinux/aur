@@ -1,0 +1,4 @@
+[ryujinx-bin]
+source = "git"
+git = "https://git.ryujinx.app/ryubing/ryujinx.git"
+prefix = "v"

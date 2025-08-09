@@ -1,8 +1,5 @@
-/src/
-/pkg/
-/ryujinx-*.tar.gz
-/Logo.svg
-/Ryujinx.desktop
-/Ryujinx.xml
-/*.pkg.tar*
-/*.log
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
