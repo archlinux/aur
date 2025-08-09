@@ -1,6 +1,6 @@
 pkgbase = pulsemeeter-git
 	pkgdesc = A pulseaudio and pipewire audio routing application
-	pkgver = 2.0.0.beta.6.r2.59525bf
+	pkgver = 2.0.0.r0.54b7691
 	pkgrel = 1
 	url = https://github.com/theRealCarneiro/pulsemeeter
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = pulsemeeter-git
 	license = MIT
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-babel
