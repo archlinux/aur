@@ -1,12 +1,13 @@
 # Maintainer: L. Bradley LaBoon <brad@laboon.io>
 pkgname=splunk
-basever=9.4.3
-splunkver=${basever}-237ebbd22314
+_basever=10.0.0
+_baseverl=${_basever//[^.]}
+_splunkver=${_basever}-e8eb0c4654f8
 # Splunk is inconsistent with the length of their version numbers
-if [ ${#basever} -gt 5 ]; then
-	pkgver=${basever}
+if [ ${#_baseverl} -gt 2 ]; then
+	pkgver=${_basever}
 else
-	pkgver=${basever}.0
+	pkgver=${_basever}.0
 fi
 pkgrel=1
 epoch=3
@@ -16,11 +17,11 @@ arch=('x86_64')
 license=('custom')
 install="$pkgname.install"
 source=("$pkgname.service" "$pkgname.sysusers" "$pkgname.tmpfiles")
-source_x86_64=("https://download.splunk.com/products/splunk/releases/$basever/linux/$pkgname-$splunkver-linux-amd64.tgz")
+source_x86_64=("https://download.splunk.com/products/splunk/releases/${_basever}/linux/$pkgname-${_splunkver}-linux-amd64.tgz")
 sha256sums=('b6e93690f033416fd765fd7cb97147a1872c3f5ecc3dad13714d83f765c6291e'
             '236deb352218f9551df894efd613aad201afb20713ac563ab381f68b6ffce853'
             '56b70a2395270fc038987241504df11c390f3234d5be640bbc6a311b978e8475')
-sha256sums_x86_64=('9a692ae0111cbc7a0f50294ef49876c0dd55894d88c3c6f3c9260f4d639016b1')
+sha256sums_x86_64=('ef11531d07fe5384d1f3cd95e469b41388f5bed4bd1cc86503c90228c6863f90')
 options=(!strip)
 
 package() {
