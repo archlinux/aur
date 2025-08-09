@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 epoch=1
 pkgdesc="Detect and invoke build systems"
@@ -17,12 +17,12 @@ depends=(
 makedepends=('cargo')
 #checkdepends=('mmdebstrap')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('305fe80d889440bf4013e2bf5edb4d679171030eb891285cdbe65c3b406c4d7a')
+sha256sums=('f9f3b79d6357df1d70f2213476af7f722680d0379bc71a0e3f8710749a8266ae')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
