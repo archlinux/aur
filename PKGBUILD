@@ -5,7 +5,7 @@ pkgver='0.2.1'
 pkgrel=1
 pkgdesc="A tool for archiving DokuWiki"
 url="https://github.com/saveweb/dokuwiki-dumper"
-depends=('python' 'python-lxml' 'python-requests' 'python-internetarchive' 'python-rich' 'python-beautifulsoup4' 'python-slugify' '7zip' 'zstd' 'python-typing_extensions')
+depends=('python' 'python-lxml' 'python-requests' 'python-internetarchive' 'python-rich' 'python-beautifulsoup4' 'python-slugify' '7zip' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pdm' 'python-pdm-backend')
 license=('GPLv3')
 arch=('any')
@@ -22,5 +22,3 @@ package() {
     cd "${srcdir}/${_src_folder}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-
-

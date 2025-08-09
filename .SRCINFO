@@ -18,7 +18,6 @@ pkgbase = python-dokuwikidumper
 	depends = python-beautifulsoup4
 	depends = python-slugify
 	depends = 7zip
-	depends = zstd
 	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/60/ea/742c548b6f9ea5f9b20fbc195d56aca3a7965c8ff9a21f75d1611f55e721/dokuwikidumper-0.2.1.tar.gz
 	sha256sums = 7fbaa0462c66550a0bf7eb263f34b33cf239724ccec1679a7abb720c4b20f7b2
