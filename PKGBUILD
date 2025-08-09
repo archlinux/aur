@@ -20,6 +20,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
+  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
