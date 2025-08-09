@@ -1,4 +1,5 @@
-# Maintainer  : Thaodan          <AUR+me@thaodan.de>
+# Maintainer  : Yurii Kolesnykov <root@yurikoles.com>
+# Contributor : Thaodan          <AUR+me@thaodan.de>
 # Contributor : Firef0x          <Firefgx {at) gmail [dot} com>
 # Contributor : Bernhard Walle   <bwalle.de: bernhard            >
 # Contributor : Jesse Jaara      <gmail.com, mail.ru: jesse.jaara>
@@ -6,38 +7,52 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.15.1
+pkgver=1.19.1
 pkgrel=1
-pkgdesc="Command line client for the openSUSE Build Service"
+pkgdesc='Command line client for the openSUSE Build Service'
 arch=(any)
-url="https://github.com/openSUSE/osc"
-license=('GPL2')
-depends=('python'
-         'python-cryptography'
-         'python-urllib3'
-         'python-distro'
-         'python-ruamel-yaml')
-makedepends=('python-setuptools')
-optdepends=('obs-build: required to run local builds'
-            'obs-service-format_spec_file: for running the format_spec_file source service'
-            'obs-service-download_files: for running the download_files source service'
-            'python-keyring: keyring support'
-            'python-progressbar: progressbar support for operations like uploading and services'
-           )
-conflicts=('osc-git' 'osc-bash-completion' 'zsh-completion-osc')
-replaces=('osc-bash-completion' 'zsh-completion-osc')
-source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
-        0001-Add-sb2install-support-to-osc.patch
-        0002-Support-osc-copyprj-in-api-by-Islam-Amer-usage-osc-c.patch
-        0003-Support-synchronous-copyproj.patch
-        0004-Add-p-to-copyprj-to-enable-copying-of-prjconf.patch
-        0005-Add-support-for-rebuild-and-chroot-only-in-build.-re.patch
-        0006-Add-architecture-and-scheduler-maps.patch
-        0007-Trap-any-kind-of-exception-during-plugin-parsing-eg-.patch
-        0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
-        0009-Add-buildlog-option-to-fetch-buildlog-not-relative-t.patch
-       )
-sha256sums=('730f8729fb7d29425d852c99d0359e94c5ba77575be9fe0521ff39b219910d67'
+url='https://github.com/openSUSE/osc'
+license=('GPL-2.0-or-later')
+depends=(
+	'diffstat'
+	'python'
+	'python-cryptography'
+	'python-urllib3'
+	'python-distro'
+	'python-ruamel-yaml'
+)
+makedepends=(
+	'python-setuptools'
+)
+optdepends=(
+	'obs-build: required to run local builds'
+	'obs-service-format_spec_file: for running the format_spec_file source service'
+	'obs-service-download_files: for running the download_files source service'
+	'python-keyring: keyring support'
+	'python-progressbar: progressbar support for operations like uploading and services'
+)
+conflicts=(
+	'osc-git'
+	'osc-bash-completion'
+	'zsh-completion-osc'
+)
+replaces=(
+	'osc-bash-completion'
+	'zsh-completion-osc'
+)
+source=(
+	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+	0001-Add-sb2install-support-to-osc.patch
+	0002-Support-osc-copyprj-in-api-by-Islam-Amer-usage-osc-c.patch
+	0003-Support-synchronous-copyproj.patch
+	0004-Add-p-to-copyprj-to-enable-copying-of-prjconf.patch
+	0005-Add-support-for-rebuild-and-chroot-only-in-build.-re.patch
+	0006-Add-architecture-and-scheduler-maps.patch
+	0007-Trap-any-kind-of-exception-during-plugin-parsing-eg-.patch
+	0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
+	0009-Add-buildlog-option-to-fetch-buildlog-not-relative-t.patch
+)
+sha256sums=('548b15d4b04c86f606cf6d7621aedbf120739df845e3bab79502f96d7aa94f82'
             'fc66a9f1d00ed7c4d80d15b00d612138b966c73bbf9c7a49562f80149ce8e661'
             'be574baf4b1915fa01a83b42f4948b0587797bc4ff3a3df260d50e3201785636'
             'b90a0d94a5dd30addc66e3f3849ddf3281e17dc08c84bd5d279fe18858e7fad3'
@@ -48,30 +63,30 @@ sha256sums=('730f8729fb7d29425d852c99d0359e94c5ba77575be9fe0521ff39b219910d67'
             '7a8d4f993d03eda408c71f3707e93028087255bcef7356b22d57dbd370365c27'
             '095c84ec50b5ce183402523392dc10646a294692bc1c4b7c426e201f2a7ce469')
 
-
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
+	for patch in "${srcdir}"/*.patch; do
+		patch -p1 -i "${patch}"
+	done
 
-  for patch in "$srcdir"/*.patch; do
-    patch -p1 -i $patch
-  done
-
-  # Fix version
-  sed -e "s/    version = \"%(describe:tags=true)\"/    version = \"$pkgver\"/"  \
-      -i osc/util/git_version.py
+	# Fix version
+	sed -e "s/    version = \"%(describe:tags=true)\"/    version = \"${pkgver}\"/"  \
+		-i osc/util/git_version.py
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
+	cd "${pkgname}-${pkgver}"
+	python setup.py build
+}
+
+check() {
+	cd "${pkgname}-${pkgver}"
+	python -m unittest -b
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
-
-  install -Dm644 contrib/complete.sh "${pkgdir}/usr/share/bash-completion/completions/osc"
-  install -Dm755 contrib/osc.zsh "${pkgdir}/usr/share/zsh/functions/Completion/_osc"
-
+	cd "${pkgname}-${pkgver}"
+	python setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
+	install -Dm644 contrib/complete.sh "${pkgdir}/usr/share/bash-completion/completions/osc"
+	install -Dm755 contrib/osc.zsh "${pkgdir}/usr/share/zsh/functions/Completion/_osc"
 }
-# vim:set sts=2 ts=2 sw=2 et:
