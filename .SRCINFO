@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-cpptrace
 	pkgdesc = Simple, portable, and self-contained stacktrace library for C++11 and newer (mingw-w64)
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/jeremy-rifkin/cpptrace
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-cpptrace
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/jeremy-rifkin/cpptrace/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = f92825b3c839c3af851204c79ea2a63871f9060f016e7c0411cfdc1727978feb
+	source = https://github.com/jeremy-rifkin/cpptrace/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 5c9f5b301e903714a4d01f1057b9543fa540f7bfcc5e3f8bd1748e652e24f9ea
 
 pkgname = mingw-w64-cpptrace
