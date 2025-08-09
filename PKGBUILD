@@ -3,7 +3,7 @@
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.22.18
+pkgver=1.22.21
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ depends=('glibc')
 makedepends=('libmd' 'perl')
 
 source=("http://deb.debian.org/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('b797db39f7ed402ff74a870a93ad7f3b')
+md5sums=('f814e2ca8d2cf2ea75ce780f7c72eb40')
 
 build() {
-  cd dpkg-$pkgver
+  cd dpkg-${pkgver}
   POD2MAN=/usr/bin/core_perl/pod2man \
     ./configure \
       --disable-dselect \
@@ -27,9 +27,9 @@ build() {
 }
 
 package() {
-  cd dpkg-$pkgver
-  install -D -m 755 utils/start-stop-daemon "$pkgdir/usr/bin/start-stop-daemon"
-  install -D -m 644 man/start-stop-daemon.8 "$pkgdir/usr/share/man/man8/start-stop-daemon.8"
+  cd dpkg-${pkgver} || exit 1
+  install -D -m 755 utils/start-stop-daemon "${pkgdir}/usr/bin/start-stop-daemon"
+  install -D -m 644 man/start-stop-daemon.8 "${pkgdir}/usr/share/man/man8/start-stop-daemon.8"
 }
 
 # vim:set ts=2 sw=2 et:
