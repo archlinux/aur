@@ -1,7 +1,7 @@
 pkgbase = python-connection_pool
 	pkgdesc = Thread-safe connection pool for Python
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zhouyl/ConnectionPool
 	arch = any
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = python-connection_pool
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/connection_pool/connection_pool-0.0.3.tar.gz
+	source = https://raw.github.com/zhouyl/ConnectionPool/refs/tags/0.0.3/LICENSE
 	sha256sums = bf429e7aef65921c69b4ed48f3d48d3eac1383b05d2df91884705842d974d0dc
+	sha256sums = 1747f447ded12fb9ce3394e4fe52fba99b27329712a252829b1c6d52f7801bd4
 
 pkgname = python-connection_pool
