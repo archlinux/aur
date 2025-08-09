@@ -1,0 +1,3 @@
+[yowasp-yosys]
+source = "pypi"
+pypi = "yowasp-yosys"
