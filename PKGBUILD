@@ -1,6 +1,6 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 pkgname=nocodb
-pkgver=0.264.3
+pkgver=0.264.4
 pkgrel=1
 pkgdesc="A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface."
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source=(
     "nocodb.install"
 )
 sha256sums=('SKIP'
-            '6cf8d416e52a2183901cf48a00f8847cd8da7097f203a3ced5266e8f6c50f6b5'
-            'f6f2c9c594a6b416fb7cf9e6bb1173236076764f42850ca3f0f66e61201ffa69')
+            'd0846a6813e6ae1ddc784bf16fa3b4bc7efb3039d3822cadfcec14ca5c8a746b'
+            '4bd9fdd4efa91ede112ac4cbeaf27fb7edbd464df823c9e64e5fa06b3c4a5c30')
 options=('!debug' '!strip')
 
 prepare() {
