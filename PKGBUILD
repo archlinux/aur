@@ -1,14 +1,14 @@
 
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
-pkgver=0.51.2
+pkgver=0.51.4
 pkgrel=1
 pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX. Provides a Disk Efficient way to manage all your Mods!"
 arch=('x86_64' 'aarch64')
 url="https://xmcl.app/"
 license=('MIT')
 depends=('electron36')
-makedepends=()
+makedepends=('libicns')
 checkdepends=()
 optdepends=(
     'jre11-openjdk: Recommended for Minecraft 1.12(17w13a)-1.17(21w18a)'
@@ -17,24 +17,26 @@ optdepends=(
     'java-runtime'
 )
 provides=('xmcl')
-conflicts=('xmcl-launcher-bin')
-source=(
-    "https://github.com/Voxelum/x-minecraft-launcher/blob/v${pkgver}/xmcl-electron-app/icons/dark@256x256.png?raw=true"
+conflicts=()
+source=("https://github.com/Voxelum/x-minecraft-launcher/raw/refs/heads/master/xmcl-electron-app/icons/dark.icns"
     "xmcl.desktop"
 )
 source_x86_64=("app_x86_64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux.asar.gz")
 source_aarch64=("app_aarch64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux-arm64.asar.gz")
 
-sha256sums=(
-    'SKIP'
-    '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010'
-)
-sha256sums_x86_64=('aa55e9b665f3850d8b0c12f56eae5032dafe63ab23a5c22ff2d5d8c1eb79e0a9')
-sha256sums_aarch64=('9540dc0a4e1af7bb3ab78112c101da2a8f3794cf44f18ce13f73d1a7835dcef0')
+sha256sums=('cf229073fb478254b751a8198b23be961533101065ca712e323cf60cd15f3383'
+            '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010')
+sha256sums_x86_64=('815491a0fb9f0e4484d7bd2cee6775200d80a582a146ba517f04bf851e9cd5ca')
+sha256sums_aarch64=('620d075adcc3e79292c1545be9e59fc2c5010d30b7aa7168e0a47fe321149c78')
+
+prepare() {
+    icns2png -x dark.icns
+}
 
 package() {
     install -Dm 644 ${srcdir}/app_${CARCH}.asar ${pkgdir}/usr/lib/xmcl/xmcl.asar
-    install -Dm 644 ${srcdir}/dark@256x256.png?raw=true ${pkgdir}/usr/share/icons/hicolor/256x256/apps/xmcl.png
+    install -Dm 644 ${srcdir}/dark_256x256x32.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/xmcl.png
+    install -Dm 644 ${srcdir}/dark_512x512x32.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/xmcl.png
     install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/xmcl" <<EOF
 #!/usr/bin/bash
