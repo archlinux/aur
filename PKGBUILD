@@ -2,19 +2,21 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc-stage1
-pkgver=14.1.0
+pkgver=15.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection bootstrap for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.40" 'libmpc' 'elfutils' 'zlib' 'libisl')
+depends=("${_target}-binutils>=2.40" 'libisl' 'libmpc' 'elfutils' 'zlib')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840')
+sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
+
+  # clean build directory
   [[ -d gcc-build ]] && rm -rf gcc-build
   mkdir gcc-build
 }
@@ -46,6 +48,7 @@ build() {
     --without-headers \
     --with-newlib \
     --with-system-zlib \
+    --with-isl \
     --with-local-prefix=/usr/${_target} \
     --with-sysroot=/usr/${_target} \
     --with-as=/usr/bin/${_target}-as \
