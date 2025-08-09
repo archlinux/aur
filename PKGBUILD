@@ -9,10 +9,10 @@
 
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, nvdec, fdk-aac, qsv, vce, numa, hardened, libdovi"
-arch=(x86_64 i686)
+arch=(x86_64)
 url="https://handbrake.fr/"
 license=(LicenseRef-Unredistributable)
 source=("git+https://github.com/HandBrake/HandBrake.git#tag=${pkgver}")
@@ -26,23 +26,8 @@ optdepends=('intel-media-sdk: for enabling Intel QSV'
             'nvidia-utils: for enabling Nvidia nvenc and nvdec'
             'cuda: for enabling Nvidia nvenc and nvdec'
             'amf-amdgpu-pro: for enabling AMD AMF')
-sha256sums=('0b9d3a9e8862ec013fe9df1f99e3a7ec8ce75233ddf7a6af1ce620f5baf49c65')
+sha256sums=('9388dd6c287a4d29424b06118460f92b0564b3446d08b28f013bcba4f9e355fa')
 options=(!lto)
-
-prepare() {
-  # contrib: update SVT-AV1 to 3.0.0
-  git -C HandBrake cherry-pick --no-commit 75f9c84c140c8841cfe1324ef59452025899ad8b
-  # contrib: add cpuinfo
-  git -C HandBrake cherry-pick --no-commit 2012ab9e674a744c1366b96b8cf2720e75670248
-  # contrib: update to SVT-AV1 3.0.1
-  git -C HandBrake cherry-pick --no-commit eb3a7e7c01313d687ebd487b59e08c700fe753d1
-  # contrib: update SVT-AV1 to version 3.0.2
-  git -C HandBrake cherry-pick --no-commit f9e7678bd4e42232188315e842e32387af9ac3ca
-
-  # Update bundled x265 to fix build with current cmake
-  # contrib: update to x265 rev 13212
-  git -C HandBrake cherry-pick --no-commit a53d20a48bfca3c7dbf4f50710505c65e4334c89
-}
 
 build() {
   # warning when build with -D_FORTIFY_SOURCE=3 (Arch Linux default)
