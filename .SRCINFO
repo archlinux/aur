@@ -1,7 +1,7 @@
 pkgbase = libgff
 	pkgdesc = GFF/GTF parsing from gffread as a library
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/COMBINE-lab/libgff
 	arch = x86_64
 	license = BSL-1.0
@@ -9,6 +9,8 @@ pkgbase = libgff
 	depends = glibc
 	depends = gcc-libs
 	source = libgff-2.0.0.tar.gz::https://github.com/COMBINE-lab/libgff/archive/refs/tags/v2.0.0.tar.gz
+	source = libgff-dynamic-build-corrected.patch
 	sha256sums = 7656b19459a7ca7d2fd0fcec4f2e0fd0deec1b4f39c703a114e8f4c22d82a99c
+	sha256sums = e97af693ac84a70fcf3a513063f3eb413406e7ef7e808bf12caa2f38476f713f
 
 pkgname = libgff

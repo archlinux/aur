@@ -1,0 +1,152 @@
+--- original-libgff/CMakeLists.txt	2020-07-02 22:19:43.000000000 +0530
++++ libgff-2.0.0/CMakeLists.txt	2025-08-09 11:10:12.941679208 +0530
+@@ -3,6 +3,9 @@
+ 
+ message(STATUS "Install prefix : ${CMAKE_INSTALL_PREFIX}")
+ 
++# Option to build shared libraries
++option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
++
+ set(INCLUDE_INSTALL_DIR include/)
+ set(LIB_INSTALL_DIR lib/)
+ 
+@@ -30,6 +33,18 @@
+ 
+ set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -O3 -Wall -D_FILE_OFFSET_BITS=64" )
+ 
++# Add position independent code flag for shared libraries
++if(BUILD_SHARED_LIBS)
++    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++    message(STATUS "Building shared libraries")
++    # Enable Windows DLL exports
++    if(WIN32)
++        set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
++    endif()
++else()
++    message(STATUS "Building static libraries")
++endif()
++
+ set(GFFLib_SRCS
+     ${PROJECT_SOURCE_DIR}/codons.cpp
+     ${PROJECT_SOURCE_DIR}/GArgs.cpp
+@@ -43,11 +58,38 @@
+ 
+ include_directories(${PROJECT_INCLUDE_DIR})
+ 
+-add_library(${PROJECT_NAME} STATIC ${GFFLib_SRCS})
+-add_executable(TestGFFParse ${PROJECT_SOURCE_DIR}/TestGFFParse.cpp)
+-target_link_libraries(TestGFFParse ${PROJECT_NAME})
++# Create library (type determined by BUILD_SHARED_LIBS)
++add_library(${PROJECT_NAME} ${GFFLib_SRCS})
+ 
++# Set library properties
++set_target_properties(${PROJECT_NAME} PROPERTIES
++    VERSION ${PROJECT_VERSION}
++    SOVERSION ${ver_major}
++    PUBLIC_HEADER "${PROJECT_INCLUDE_DIR}/gff.h;${PROJECT_INCLUDE_DIR}/GBase.h;${PROJECT_INCLUDE_DIR}/GStr.h;${PROJECT_INCLUDE_DIR}/GList.hh;${PROJECT_INCLUDE_DIR}/GVec.hh;${PROJECT_INCLUDE_DIR}/GHash.hh;${PROJECT_INCLUDE_DIR}/gdna.h;${PROJECT_INCLUDE_DIR}/codons.h;${PROJECT_INCLUDE_DIR}/GArgs.h;${PROJECT_INCLUDE_DIR}/GFaSeqGet.h;${PROJECT_INCLUDE_DIR}/GFastaIndex.h"
++)
++
++# Set output names based on library type
++if(BUILD_SHARED_LIBS)
++    set_target_properties(${PROJECT_NAME} PROPERTIES
++        OUTPUT_NAME "${PROJECT_NAME}"
++    )
++    # Define preprocessor macro for shared library builds
++    target_compile_definitions(${PROJECT_NAME} PRIVATE BUILDING_LIBGFF_SHARED)
++    if(WIN32)
++        # Set Windows-specific properties for DLL
++        set_target_properties(${PROJECT_NAME} PROPERTIES
++            RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
++            ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
++        )
++    endif()
++else()
++    set_target_properties(${PROJECT_NAME} PROPERTIES
++        OUTPUT_NAME "${PROJECT_NAME}"
++    )
++endif()
+ 
++add_executable(TestGFFParse ${PROJECT_SOURCE_DIR}/TestGFFParse.cpp)
++target_link_libraries(TestGFFParse ${PROJECT_NAME})
+ 
+ configure_package_config_file(libgffConfig.cmake.in
+   ${CMAKE_CURRENT_BINARY_DIR}/libgffConfig.cmake
+@@ -61,5 +103,24 @@
+               ${CMAKE_CURRENT_BINARY_DIR}/libgffConfigVersion.cmake
+         DESTINATION ${LIB_INSTALL_DIR}/libgff/cmake )
+ 
+-install(FILES ${CMAKE_BINARY_DIR}/lib${PROJECT_NAME}.a DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+-install(DIRECTORY ${PROJECT_INCLUDE_DIR} DESTINATION ${CMAKE_INSTALL_PREFIX})
++# Install library and headers
++install(TARGETS ${PROJECT_NAME}
++    EXPORT libgffTargets
++    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
++    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
++    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include
++)
++
++# Install all header files
++install(DIRECTORY ${PROJECT_INCLUDE_DIR}/
++    DESTINATION ${CMAKE_INSTALL_PREFIX}/include
++    FILES_MATCHING PATTERN "*.h" PATTERN "*.hh"
++)
++
++# Export targets for find_package
++install(EXPORT libgffTargets
++    FILE libgffTargets.cmake
++    NAMESPACE libgff::
++    DESTINATION ${LIB_INSTALL_DIR}/libgff/cmake
++)
+--- original-libgff/libgffConfig.cmake.in	2020-07-02 22:19:43.000000000 +0530
++++ libgff-2.0.0/libgffConfig.cmake.in	2025-08-09 11:10:33.291431814 +0530
+@@ -4,6 +4,47 @@
+ 
+ set_and_check(LIB_GFF_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
+ set_and_check(LIB_GFF_LIBRARY_DIR "@PACKAGE_LIB_INSTALL_DIR@")
+-set_and_check(LIB_GFF_STATIC_LIBRARY "@PACKAGE_LIB_INSTALL_DIR@libgff.a")
+-#set_and_check(LIB_GFF_SYSCONFIG_DIR "@PACKAGE_SYSCONFIG_INSTALL_DIR@")
++
++# Include the targets file
++include("${CMAKE_CURRENT_LIST_DIR}/libgffTargets.cmake")
++
++# Set library variables for backward compatibility
++if(TARGET libgff::gff)
++    get_target_property(LIB_GFF_LIBRARY_TYPE libgff::gff TYPE)
++
++    if(LIB_GFF_LIBRARY_TYPE STREQUAL "SHARED_LIBRARY")
++        set(LIB_GFF_SHARED_LIBRARY "@PACKAGE_LIB_INSTALL_DIR@libgff.so")
++        set(LIB_GFF_LIBRARIES libgff::gff)
++        message(STATUS "Found libgff shared library")
++    elseif(LIB_GFF_LIBRARY_TYPE STREQUAL "STATIC_LIBRARY")
++        set(LIB_GFF_STATIC_LIBRARY "@PACKAGE_LIB_INSTALL_DIR@libgff.a")
++        set(LIB_GFF_LIBRARIES libgff::gff)
++        message(STATUS "Found libgff static library")
++    endif()
++
++    # Set common variables
++    set(LIB_GFF_LIBRARY libgff::gff)
++    set(LIB_GFF_INCLUDE_DIRS ${LIB_GFF_INCLUDE_DIR})
++else()
++    # Fallback for older CMake versions or manual builds
++    find_library(LIB_GFF_LIBRARY
++        NAMES gff libgff
++        PATHS ${LIB_GFF_LIBRARY_DIR}
++        NO_DEFAULT_PATH
++    )
++
++    if(LIB_GFF_LIBRARY)
++        set(LIB_GFF_LIBRARIES ${LIB_GFF_LIBRARY})
++        set(LIB_GFF_INCLUDE_DIRS ${LIB_GFF_INCLUDE_DIR})
++    endif()
++endif()
++
+ check_required_components(libgff)
++
++# Provide usage information
++if(LIB_GFF_LIBRARIES)
++    message(STATUS "libgff found:")
++    message(STATUS "  Version: ${LIB_GFF_VERSION}")
++    message(STATUS "  Include dirs: ${LIB_GFF_INCLUDE_DIRS}")
++    message(STATUS "  Libraries: ${LIB_GFF_LIBRARIES}")
++endif()
