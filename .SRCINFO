@@ -1,6 +1,6 @@
 pkgbase = dankgop-git
 	pkgdesc = System monitoring CLI + REST API (git snapshot)
-	pkgver = r3.e457a49
+	pkgver = r4.45a60f1
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/dankgop
 	arch = x86_64
