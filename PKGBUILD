@@ -1,55 +1,33 @@
-# Maintainer: iagolbdc <iagoluancampelo@gmail.com>
-
-pkgname=ytdl-gui
+pkgname=ytdl_gui
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Interface gráfica em Flutter para o yt-dlp"
+pkgdesc="Interface gráfica para o yt-dlp feita em Flutter"
 arch=('x86_64')
-url="https://github.com/iagolbdc/YTDL-Gui"
+url="https://github.com/iagolbdc/ytdl-gui"
 license=('MIT')
-depends=(
-  'yt-dlp'     
-  'gtk3'        
-  'glib2'
-  'xdg-utils'   
-  'hicolor-icon-theme'
-)
-makedepends=(
-  'flutter'
-  'git'
-  'cmake'
-  'ninja'
-  'pkgconf'
-)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
-
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  flutter pub get
-  flutter build linux --release
-}
+depends=('gtk3' 'glib2' 'libx11' 'libxext' 'libxrandr' 'libxcursor' 'libxi' 'libgl' 'fontconfig')
+source=("$url/releases/download/v${pkgver}/ytdl_gui-${pkgver}.tar.gz"
+        "${pkgname}.desktop"
+        "${pkgname}.install"
+        "LICENSE")
+sha256sums=('7a621803bfb24db3e2e3c0b94d35d5c157d8d5aca4b2f02cccdb40f238375c73'
+            'a20ec1a9ecd64fa7e6acd845f27275cad97c62c308eddfe6db0c2fd414a95a60'
+            'c48c773d1c80b9ece347ccf3053b9934a26e27d166038aa89410cdad235fad39'
+            '5b70eb305c0463926f74c972722126b96ede6219402051726819de6b2556c16d')
+install="${pkgname}.install"
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  install -d "$pkgdir/opt/${pkgname}"
+  tar -xzf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "$pkgdir/opt/${pkgname}" --strip-components=1
 
-  # Instalar binário principal
-  install -Dm755 "build/linux/x64/release/bundle/$pkgname" \
-    "$pkgdir/usr/bin/$pkgname"
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/${pkgname}/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
 
-  # Copiar assets (se necessário)
-  install -d "$pkgdir/usr/share/$pkgname/"
-  cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
-  # Atalho no menu
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
-[Desktop Entry]
-Name=YTDL-Gui
-Comment=Interface gráfica para yt-dlp
-Exec=$pkgname
-Icon=$pkgname
-Terminal=false
-Type=Application
-Categories=AudioVideo;Network;
-EOF
+  install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
+  if [[ -f "$pkgdir/opt/${pkgname}/data/flutter_assets/assets/logo.png" ]]; then
+    install -Dm644 "$pkgdir/opt/${pkgname}/data/flutter_assets/assets/logo.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  fi
 }
