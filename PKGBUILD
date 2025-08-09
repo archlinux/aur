@@ -2,12 +2,12 @@
 pkgname=python-ecdysys
 _name=${pkgname#python-}
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python CLI to update your system packages"
 arch=(any)
 url="https://pypi.org/project/ecdysys"
 license=('MIT')
-depends=(python-colorama python-toml python-yaspin)
+depends=(python-colorama python-yaspin)
 makedepends=(python-installer)
 optdepends=(
 	'pacman-contrib: pacman support'
