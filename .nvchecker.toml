@@ -1,0 +1,3 @@
+[yowasp-runtime]
+source = "pypi"
+pypi = "yowasp-runtime"
