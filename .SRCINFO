@@ -1,0 +1,16 @@
+pkgbase = refold-git
+	pkgdesc = A command-line utility for wrapping text
+	pkgver = r16.8b1561e
+	pkgrel = 1
+	url = https://github.com/wr7/refold
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = refold
+	conflicts = refold
+	source = refold-git::git+https://github.com/wr7/refold
+	b2sums = SKIP
+
+pkgname = refold-git
