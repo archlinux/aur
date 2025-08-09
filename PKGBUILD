@@ -3,7 +3,7 @@
 
 pkgname=libbassmix
 pkgver=2.4.12
-pkgrel=2
+pkgrel=3
 pkgdesc="An extension providing the ability to mix together multiple BASS channels, with resampling and matrix mixing features. Also provides the ability to split a BASS channel into multiple channels."
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="http://www.un4seen.com/"
