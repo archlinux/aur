@@ -1,6 +1,6 @@
 # Maintainer: Christian Burkard <phantinuss at gmx dot com>
 pkgname=yara-x
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A pure Rust implementation of YARA"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust')
 provides=(yara-x)
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirusTotal/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4a6b6a24665ef749ea66ddaa7e197412f2cdbc695c01445d86dcfcf4b351dcf9')
+sha256sums=('0900ad4b230988fdf4e587fccc22514dd7ff4d3985430712a16ea3144e3911dd')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -24,7 +24,6 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS="-C target-feature=+crt-static"
     cargo build --frozen --bin yr --profile release-lto --features=rules-profiling --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -32,7 +31,6 @@ check() {
     cd "${pkgname}-${pkgver}"
 
     export RUSTUP_TOOLCHAIN=stable
-    export RUSTFLAGS="-C target-feature=+crt-static"
     cargo test --frozen --bin yr --profile release-lto --features=rules-profiling --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
