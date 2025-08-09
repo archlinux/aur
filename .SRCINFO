@@ -1,6 +1,6 @@
 pkgbase = godot-preview-bin
 	pkgdesc = Godot Engine Preview/Beta - Prebuilt binary from official builds
-	pkgver = 4.5beta4
+	pkgver = 4.5beta5
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = godot-preview-bin
 	optdepends = pipewire-pulse: Audio support
 	provides = godot-preview
 	conflicts = godot-preview
-	source = https://github.com/godotengine/godot-builds/releases/download/4.5-beta4/Godot_v4.5-beta4_linux.x86_64.zip
+	source = https://github.com/godotengine/godot-builds/releases/download/4.5-beta5/Godot_v4.5-beta5_linux.x86_64.zip
 	source = godot-preview.desktop
 	source = godot-preview.svg
-	sha256sums = 782a30b5de5da924e2eed445fafdb6a57398a9d3bdc043d378c1f4615f0053d8
+	sha256sums = 739dae5ca52b7d0ea75263f1b20cdb8ac1e88a399255f8a080ded397d4629c12
 	sha256sums = SKIP
 	sha256sums = SKIP
 
