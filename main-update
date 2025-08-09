@@ -11,6 +11,14 @@ init_logging() {
   exec &> >(stdbuf -i0 -o0 -e0 tee >(sed '/\x1b\[[0-9][EF]/d;/\r[^\n]$/d;s,\x1B\[[0-9;]*[a-zA-Z],,g' >>/var/log/garuda/garuda-update))
 }
 
+launch_health() {
+  if [ -x /usr/bin/garuda-health ]; then
+    # Exits with error code 1 if at least one LOW or above severity issue is found
+    # We do not want this
+    /usr/bin/garuda-health --forcetty || true
+  fi
+}
+
 parse_pacman_log() {
   sed -i -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" "$AUTOPACMAN_LOG"
   local reason
@@ -129,7 +137,9 @@ show_changelog() {
   if [ -e "/var/lib/garuda/tmp/update_notices" ]; then
     echo -e "\033[1;32mUpdate notices:\n\033[1;34m$(gawk -F '\t' '{print $2}' /var/lib/garuda/tmp/update_notices)\n\033[0m"
     rm /var/lib/garuda/tmp/update_notices
+    return 0
   fi
+  return 1
 }
 
 if [ -f /etc/garuda/garuda-update/config ]; then
@@ -249,4 +259,10 @@ fi
 /usr/lib/garuda/garuda-update/update-helper-scripts verify-core
 
 echo -e "\n\033[1;32mSystem updated! 🐧\n\033[0m"
-show_changelog
+show_changelog && HAD_CHANGELOG=1 || true
+
+launch_health
+
+if [ -v HAD_CHANGELOG ]; then
+  echo -e "\033[1;32m\nDo not forget to read the update notices above the garuda-health output!\033[0m"
+fi
