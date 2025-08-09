@@ -1,8 +1,10 @@
 # Maintainer: yuioto <yuiotochan@outlook.com>
 
+export ALL_PROXY=socks5://127.0.0.1:10808
+
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v1.5.1.r3.g35d50d88
+pkgver=v1.5.2.r0.g6ec18248
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
@@ -24,11 +26,9 @@ makedepends=('git' 'cmake' 'gcc' 'libxinerama' 'libxi')
 # options("name")
 
 source=("${_pkg}::git+$url.git"
-	"linux-auto-dark.patch"
-	"add-cstdint.patch")
+	"linux-auto-dark.patch")
 sha256sums=('SKIP'
-            '632deaddab2ebceee82cb1c7a3cd22d0924cd187fb6a66f8b9556a9a01c7a3ea'
-            '5b0667d0b70a56398c651f08d1d343a25bf72e1689e303ce0469ee7335fa4128')
+            '632deaddab2ebceee82cb1c7a3cd22d0924cd187fb6a66f8b9556a9a01c7a3ea')
 
 pkgver() {
 	cd "$_pkg"
@@ -42,8 +42,6 @@ prepare() {
 	cd "$_pkg"
 	git submodule update --init --recursive
 
-	cd "$srcdir/wiliwili"
-	patch -p1 < "$srcdir/add-cstdint.patch"
 	cd "$srcdir/wiliwili/library/borealis"
 	patch -p1 < "$srcdir/linux-auto-dark.patch"
 }
@@ -62,7 +60,6 @@ build() {
 		-D USE_SYSTEM_CURL=ON \
 		-D GLFW_BUILD_WAYLAND=ON \
 		-D GLFW_BUILD_X11=ON \
-		-D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-Wno-dev
 	cmake --build build --parallel $(nproc)
 }
