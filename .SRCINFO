@@ -1,6 +1,6 @@
 pkgbase = python-volare
 	pkgdesc = A version manager for OpenLane and related tools
-	pkgver = 0.9.0
+	pkgver = 0.20.6
 	pkgrel = 1
 	url = https://pypi.org/project/volare/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-volare
 	depends = python-gitpython
 	depends = python-requests
 	depends = python-pyyaml
-	source = https://files.pythonhosted.org/packages/py3/v/volare/volare-0.9.0-py3-none-any.whl
-	sha256sums = 70e40eaafd3f745ea297c92c6aaf390c0fdeeed6e98209d6aa610a67a62209fa
+	source = https://files.pythonhosted.org/packages/py3/v/volare/volare-0.20.6-py3-none-any.whl
+	sha256sums = 7ff6ac0a79e59087f2db4255556b3a0fd2d1e3e54afb776c5d73f64242f36b01
 
 pkgname = python-volare
