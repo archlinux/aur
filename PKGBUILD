@@ -1,0 +1,37 @@
+# Maintainer: Aren Moynihan <rn+aur@peacevolution.org>
+# Contributor: Clayton Craft <clayton@craftyguy.net>
+
+pkgname=superd
+pkgver=0.7.1
+pkgrel=1
+pkgdesc='lightweight user service supervising daemon'
+url='https://sr.ht/~craftyguy/superd'
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+license=('GPL-3.0-only')
+depends=('glibc')
+makedepends=('go' 'scdoc')
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~craftyguy/superd/archive/$pkgver.tar.gz")
+sha256sums=('59de58f43bd237c12d0e73425df954eb14dd4e87e11d990e8191aa6921ee08d3')
+
+build() {
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	# The superd makefile (ab)uses this variable, and having it set here
+	# causes trouble.
+	unset LDFLAGS
+
+	make -C "$pkgname-$pkgver" PREFIX="/usr" VERSION="$pkgver"
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	go test ./...
+}
+
+package() {
+	make -C "$pkgname-$pkgver" PREFIX='/usr' DESTDIR="$pkgdir" install
+}
