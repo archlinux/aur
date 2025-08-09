@@ -1,7 +1,7 @@
 pkgbase = hare-gi
 	pkgdesc = GObject Introspection code generator for Hare
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~yerinalexey/hare-gi
 	arch = x86_64
 	arch = aarch64

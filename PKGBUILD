@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-gi
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 license=("MPL2")
 pkgdesc="GObject Introspection code generator for Hare"
 makedepends=(
@@ -20,12 +20,12 @@ url="https://git.sr.ht/~yerinalexey/hare-gi"
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~yerinalexey/hare-gi/archive/${pkgver}.tar.gz")
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-$pkgver"
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
