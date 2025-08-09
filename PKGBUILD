@@ -5,13 +5,14 @@ _Name="Ryujinx"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=('aarch64' 'x86_64')
 url="https://ryujinx.app"
 _url="https://git.ryujinx.app/ryubing/${_pkgname}"
 license=('MIT')
-depends=('alsa-lib' 'fontconfig' 'gcc-libs' 'glibc' 'jack' 'libpulse' 'libx11' 'wayland')
+depends=('alsa-lib' 'fontconfig' 'gcc-libs' 'glibc' 'jack' 'libpulse' 'libx11'
+         'sh' 'wayland')
 makedepends=('desktop-file-utils')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -42,6 +43,7 @@ package() {
 
   cd "publish"
   install -vDm755 "${_Name}" "${pkgdir}/usr/lib/${_pkgname}/${_Name}"
+  install -vDm755 "${_Name}.sh" "${pkgdir}/usr/lib/${_pkgname}/${_Name}.sh"
   install -vd "${pkgdir}/usr/bin"
   ln -vsf "/usr/lib/${_pkgname}/${_Name}" "${pkgdir}/usr/bin/${_pkgname}"
 
