@@ -1,6 +1,6 @@
 # Maintainer: badcast <lmecomposer@gmail.com>
 # Contributor: Artem Izmaylov <support@aimp.ru>
-_pkver=(5.40 2675)
+_pkver=(5.40 2690)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
 pkgrel=1
@@ -16,7 +16,7 @@ source=("${url}/files/linux/aimp_${_pkver[0]}-${_pkver[1]}_amd64.deb"
         "AIMP.exe.desktop"
         "${pkgname}ac.desktop"
         "${pkgname}ate.desktop")
-sha256sums=('d1266ef5cd8dd9418378f5e1109ec3c1b67f6a97443bd55d2cb6817ad6692bd7'
+sha256sums=('c6b9b77ad5ff84c93fe7b90fdc30dcecfc6af1b1c2c7c268b95e4d553dcaee41'
             '4c9a93d452cbdc68edaa7599432a501fc3a07aa3a97caf7f7440918283105c25'
             '5ddae7098e215717b7243839686c9c07b6213a9f97fd3c28de5071a48e6942b6'
             '735954b1a61249e2e1ab2ca052330e39ee846e27a89eefb0193cac7ed8f4bebc'
