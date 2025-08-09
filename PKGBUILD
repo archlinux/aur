@@ -19,6 +19,7 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
+    -D QT_DEFAULT_MAJOR_VERSION=6 # TODO: Remove after v1.5.1, will be fixed in CMakeLists.txt
   )
   cmake "${cmake_options[@]}"
   cmake --build build
