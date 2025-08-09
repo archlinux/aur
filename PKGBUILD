@@ -1,105 +1,90 @@
 # Maintainer: texas0295 <texas0295@outlook.com>
 
-_reponame="HyperNet.Surface"
-pkgbase=solian
-pkgname=solian-bin-git
-pkgver=63ff6df
+_reponame="Solian"
+pkgname=solian
+pkgver=3.1.0+120
 pkgrel=1
-pkgdesc="Next Generation Network Center (unstable)"
+pkgdesc="Next Generation Network Center"
 arch=('x86_64')
 url="https://solsynth.dev"
-license=('AGPL-3.0')
+license=('AGPL3')
+
 depends=(
-    "libnotify"
-    "gtk3"
-    "mpv"
-    "libkeybinder3"
-    "gstreamer"
-    "libayatana-appindicator"
-    "libayatana-indicator"
+    'gtk3'
     'libnotify'
+    'gstreamer'
+    'libayatana-appindicator'
+    'libayatana-indicator'
+    'libkeybinder3'
+    'mpv'
+    'libsecret'
 )
-
-options=('!strip')
-source=("git+https://github.com/Solsynth/HyperNet.Surface")
-
-sha256sums=('SKIP')
-
-conflicts=(
-    "solian-bin-git"
-    "solian-bin"
-)
-
 makedepends=(
     'git'
-    'ninja'
-    'flutter-tool'
-    'flutter-target-linux'
-    'cmake'
+    'flutter'
     'clang'
+    'cmake'
+    'ninja'
 )
+provides=('solian')
+conflicts=('solian' 'solian-bin' 'solian-bin-git')
 
-pkgver(){
-    cd "$srcdir/$_reponame"
-    git describe --always
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Solsynth/${_reponame}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('14457e49897e028ed325b85326dd17df313c9d6cd657b43040f7bdf128c31d66')
+
+options=('!debug')
+
+_binname="island"
+_pkgver_fixed="${pkgver//+/-}"
+_srcdir="$_reponame-$_pkgver_fixed"
 
 prepare() {
-    export PUB_CACHE="$srcdir/pub_cache"  
-    cd "$srcdir/$_reponame"
+    export PUB_CACHE="$srcdir/pub_cache"
+    cd "$srcdir/$_srcdir"
+    sed -i 's/-Werror/-Wextra/g' linux/CMakeLists.txt
+
+    flutter clean
     flutter pub get
+    flutter precache --linux
 }
 
-build(){
-    export PUB_CACHE="$srcdir/pub_cache"  
-    cd "$srcdir/$_reponame"
+build() {
+  export PUB_CACHE="$srcdir/pub_cache"
+  export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-4}
+  cd "$srcdir/$_srcdir"
 
-    flutter build linux --no-pub --release
-
-    # AppImage
-    mkdir Solian.AppDir
-    cp -r build/linux/x64/release/bundle/* Solian.AppDir
-    cp -r buildtools/appimage_config/* Solian.AppDir
-    cp assets/icon/icon-light-radius.png Solian.AppDir
-    chmod +x buildtools/appimagetool-x86_64.AppImage
-    chmod +x Solian.AppDir/AppRun
-    ./buildtools/appimagetool-x86_64.AppImage Solian.AppDir
+  flutter build linux --no-pub --release -v
 }
 
-package(){
-    cd "$srcdir/$_reponame"
+package() {
 
-    # Create dirs
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/opt/$pkgname"
-    install -dm755 "$pkgdir/usr/share/applications"
+    cd "$srcdir/$_srcdir"
+
+    install -dm755 "$pkgdir/usr/lib/solian"
+    cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/solian/"
+
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/solian" << EOF
+#!/bin/sh
+cd /usr/lib/solian
+exec ./${_binname} "\$@"
+EOF
+
     install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-    echo "creat dirs - end"
+    install -Dm644 "assets/icons/icon-padded.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/solian.png"
 
-    # Install AppImage
-    install -Dm755 "Solian-x86_64.AppImage" "$pkgdir/opt/$pkgname/Solian-x86_64.AppImage"
-
-    echo "install appimage - end"
-
-    # Install icon
-    install -Dm644 "./assets/icon/icon-light-radius.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/Solian.png"
-
-    echo "install icon - end"
-
-    # Link executable
-    ln -s "/opt/${pkgname}/Solian-x86_64.AppImage" "${pkgdir}/usr/bin/solian-bin-git"
-
-    # Install desktop file
-    cat > $pkgdir/usr/share/applications/Solian.desktop << EOF
+    install -dm755 "$pkgdir/usr/share/applications"
+    cat > "$pkgdir/usr/share/applications/solian.desktop" << 'EOF'
 [Desktop Entry]
 Type=Application
-Version=$pkgver
+Version=1.0
 Name=Solian
-Comment=${pkgdesc}
-Exec=solian-bin-git %u
-Icon=Solian
+Comment=Next Generation Network Center (unstable)
+Exec=solian %u
+Icon=solian
 Terminal=false
-Categories=Network;InstantMessaging;Chat;MatrixClient
+Categories=Network;InstantMessaging;
 EOF
+
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
