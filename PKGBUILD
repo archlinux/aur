@@ -3,10 +3,10 @@
 # git version
 
 pkgname="somo-git"
-pkgver=1.1.0.r0.geb88e09
+pkgver=1.1.0.r15.gc740635
 pkgrel=1
 pkgdesc='A tool written in Rust for port management'
-url='https://bgithub.xyz/theopfr/somo'
+url='https://github.com/theopfr/somo'
 license=('MIT')
 makedepends=('git' 'rust')
 arch=('x86_64' 'aarch64')

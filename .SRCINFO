@@ -1,14 +1,14 @@
 pkgbase = somo-git
 	pkgdesc = A tool written in Rust for port management
-	pkgver = 1.1.0.r0.geb88e09
+	pkgver = 1.1.0.r15.gc740635
 	pkgrel = 1
-	url = https://bgithub.xyz/theopfr/somo
+	url = https://github.com/theopfr/somo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = rust
-	source = git+https://bgithub.xyz/theopfr/somo.git
+	source = git+https://github.com/theopfr/somo.git
 	sha512sums = SKIP
 
 pkgname = somo-git
