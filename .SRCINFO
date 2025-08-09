@@ -1,12 +1,13 @@
 pkgbase = refold
 	pkgdesc = A command-line utility for wrapping text
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wr7/refold
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-or-later
-	conflicts = refold-git
-	source = refold::https://github.com/wr7/refold/releases/download/v0.1.2/refold-x86_64
-	b2sums = 5928be31b87bf441b3c573cbdbf67f15e536f55c5f50c56f769f0a424c32c688da0c285b3e33c49ea3083c649584c420173a5495c4e779b86f265e505624b6c5
+	makedepends = cargo
+	source = refold-0.1.2.tar.gz::https://github.com/wr7/refold/archive/v0.1.2.tar.gz
+	b2sums = dad3cb57e370d562fa8c08749f2e8660288a2ca0233c9db514162946c1f2e4ab96e45402074cdf2068b3b9b4d095df4ead82be2c2e1190e1be543762d26d5f20
 
 pkgname = refold
