@@ -3,7 +3,7 @@
 _pkgname=librw
 pkgname=$_pkgname-git
 pkgver=r569.169a45a
-pkgrel=1
+pkgrel=2
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/aap/librw"
@@ -18,12 +18,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd $_pkgname
-	# fix re3 disco bug
-	git revert -n f7e7841e1c9a92cc5df8c191979f92cb2a5c4d7e
 }
 
 build() {

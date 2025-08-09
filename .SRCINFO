@@ -1,7 +1,7 @@
 pkgbase = librw-git
 	pkgdesc = A re-implementation of the RenderWare Graphics engine
 	pkgver = r569.169a45a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aap/librw
 	arch = aarch64
 	arch = armv7h
