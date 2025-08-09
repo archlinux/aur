@@ -1,0 +1,18 @@
+pkgbase = chhsich-nerd-font
+	pkgdesc = A custom Nerd Font combining ComicShannsMono's English characters with Maple Mono NF CN's Chinese support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ChHsiching/chhsich-nerd-font
+	install = chhsich-nerd-font.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-util
+	provides = ttf-chhsich-nerd-font
+	conflicts = ttf-chhsich-nerd-font
+	replaces = ttf-chhsich-nerd-font
+	source = chhsich-nerd-font-1.0.0.zip::https://github.com/ChHsiching/chhsich-nerd-font/releases/download/v1.0.0/ChHsichNerdFont-v1.0.0.zip
+	sha256sums = SKIP
+
+pkgname = chhsich-nerd-font

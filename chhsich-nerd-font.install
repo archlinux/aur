@@ -1,0 +1,41 @@
+post_install() {
+    echo "Updating font cache..."
+    fc-cache -f -v
+    echo "Font cache updated successfully."
+    echo
+    echo "ChHsich Nerd Font has been installed successfully!"
+    echo "Font files installed to: /usr/share/fonts/ChHsichNerdFont/"
+    echo "You may need to restart your applications or system to see the new fonts."
+}
+
+post_upgrade() {
+    echo "Updating font cache..."
+    fc-cache -f -v
+    echo "Font cache updated successfully."
+}
+
+post_remove() {
+    echo "Removing ChHsich Nerd Font files..."
+    # 删除字体目录
+    if [ -d "/usr/share/fonts/ChHsichNerdFont" ]; then
+        rm -rf "/usr/share/fonts/ChHsichNerdFont"
+        echo "Removed font directory: /usr/share/fonts/ChHsichNerdFont"
+    fi
+    
+    # 删除字体配置文件
+    if [ -f "/etc/fonts/conf.avail/66-chhsich-nerd-font.conf" ]; then
+        rm -f "/etc/fonts/conf.avail/66-chhsich-nerd-font.conf"
+        echo "Removed font config: /etc/fonts/conf.avail/66-chhsich-nerd-font.conf"
+    fi
+    
+    # 删除字体配置链接
+    if [ -L "/etc/fonts/conf.d/66-chhsich-nerd-font.conf" ]; then
+        rm -f "/etc/fonts/conf.d/66-chhsich-nerd-font.conf"
+        echo "Removed font config link: /etc/fonts/conf.d/66-chhsich-nerd-font.conf"
+    fi
+    
+    echo "Updating font cache..."
+    fc-cache -f -v
+    echo "Font cache updated successfully."
+    echo "ChHsich Nerd Font has been completely removed."
+} 
