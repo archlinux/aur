@@ -1,95 +1,96 @@
 # Maintainer: texas0295 <texas0295@outlook.com>
 
-_reponame="HyperNet.Surface"
+_reponame="Solian"
 pkgname=solian-git
-pkgver=0.0.0
+pkgver=0
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
 url="https://solsynth.dev"
-license=('AGPL-3.0')
+license=('AGPL3')
+
 depends=(
-    'libnotify'
     'gtk3'
-    'mpv'
-    'libkeybinder3'
+    'libnotify'
     'gstreamer'
     'libayatana-appindicator'
     'libayatana-indicator'
+    'libkeybinder3'
+    'mpv'
+    'libsecret'
 )
 makedepends=(
     'git'
-    'ninja'
-    'flutter-tool'
-    'flutter-target-linux'
-    'cmake'
+    'flutter'
     'clang'
+    'cmake'
+    'ninja'
 )
-conflicts=(
-    'solian-bin-git'
-    'solian-bin'
-    'solian'
-)
-options=('!strip')
+provides=('solian')
+conflicts=('solian' 'solian-bin' 'solian-bin-git')
 
-source=("git+https://github.com/Solsynth/${_reponame}")
+source=("git+https://github.com/Solsynth/${_reponame}.git")
 sha256sums=('SKIP')
+
+options=('!debug')
+
+_binname="island"
 
 pkgver() {
     cd "$srcdir/$_reponame"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     export PUB_CACHE="$srcdir/pub_cache"
     cd "$srcdir/$_reponame"
+    if [[ -f linux/CMakeLists.txt ]]; then
+        sed -i 's/-Werror/-Wextra/g' linux/CMakeLists.txt
+    fi
+    flutter clean
     flutter pub get
+    flutter precache --linux
 }
 
 build() {
     export PUB_CACHE="$srcdir/pub_cache"
+    export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-4}
+    export CFLAGS="${CFLAGS} -Wno-error"
+    export CXXFLAGS="${CXXFLAGS} -Wno-error"
+
     cd "$srcdir/$_reponame"
 
-    flutter build linux --no-pub --release
-
-    # Prepare AppDir for AppImage
-    mkdir -p Solian.AppDir
-    cp -r build/linux/x64/release/bundle/* Solian.AppDir/
-    cp -r buildtools/appimage_config/* Solian.AppDir/
-    cp assets/icon/icon-light-radius.png Solian.AppDir/
-    chmod +x buildtools/appimagetool-x86_64.AppImage
-    chmod +x Solian.AppDir/AppRun
-
-    ./buildtools/appimagetool-x86_64.AppImage Solian.AppDir
+    flutter build linux --no-pub --release -v
 }
 
 package() {
     cd "$srcdir/$_reponame"
 
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/opt/$pkgname"
-    install -dm755 "$pkgdir/usr/share/applications"
+    install -dm755 "$pkgdir/usr/lib/solian"
+    cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/solian/"
+
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/solian" << EOF
+#!/bin/sh
+cd /usr/lib/solian
+exec ./${_binname} "\$@"
+EOF
+
     install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-    # Install AppImage
-    install -Dm755 "Solian-x86_64.AppImage" "$pkgdir/opt/$pkgname/Solian-x86_64.AppImage"
+    install -Dm644 "assets/icons/icon-padded.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/solian.png"
 
-    # Install icon
-    install -Dm644 "./assets/icon/icon-light-radius.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/Solian.png"
-
-    # Link executable
-    ln -s "/opt/${pkgname}/Solian-x86_64.AppImage" "${pkgdir}/usr/bin/solian"
-
-    # Desktop entry
-    cat > "$pkgdir/usr/share/applications/solian.desktop" << EOF
+    install -dm755 "$pkgdir/usr/share/applications"
+    cat > "$pkgdir/usr/share/applications/solian.desktop" << 'EOF'
 [Desktop Entry]
 Type=Application
 Version=1.0
 Name=Solian
-Comment=$pkgdesc
+Comment=Next Generation Network Center (unstable)
 Exec=solian %u
-Icon=Solian
+Icon=solian
 Terminal=false
-Categories=Network;InstantMessaging;Chat;MatrixClient;
+Categories=Network;InstantMessaging;
 EOF
+
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
