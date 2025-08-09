@@ -1,0 +1,14 @@
+pkgbase = arch-sandbox
+	pkgdesc = CLI tool to create isolated Arch Linux sandboxes using OverlayFS and systemd-nspawn
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/OminduD/arch-sandbox
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = systemd
+	depends = zstd
+	source = arch-sandbox-v1.0.0.tar.gz::https://github.com/OminduD/arch-sandbox/archive/refs/tags/vv1.0.0.tar.gz
+	sha256sums = 44758caea6a2de94518e94a9b587814b45da36488247c93ee882f81cd09a0bab
+
+pkgname = arch-sandbox
