@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19062.6cc162de2
-pkgrel=2
+pkgver=r19074.c26b06ac2
+pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
 url="https://github.com/libretro/ps2"
@@ -91,6 +91,7 @@ package() {
 		'libfmt.so'
 		'libryml.so'
 		'libzip.so'
+		'libzstd.so'
 	)
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/bin/pcsx2_libretro.so

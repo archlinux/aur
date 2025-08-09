@@ -1,7 +1,7 @@
 pkgbase = libretro-lrps2-git
 	pkgdesc = Sony PlayStation 2 core (fork of PCSX2)
-	pkgver = r19062.6cc162de2
-	pkgrel = 2
+	pkgver = r19074.c26b06ac2
+	pkgrel = 1
 	url = https://github.com/libretro/ps2
 	arch = x86_64
 	groups = libretro
@@ -18,7 +18,7 @@ pkgbase = libretro-lrps2-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libretro-core-info
-	provides = libretro-lrps2=19062.6cc162de2
+	provides = libretro-lrps2=19074.c26b06ac2
 	provides = libretro-pcsx2
 	conflicts = libretro-lrps2
 	conflicts = libretro-pcsx2
@@ -44,3 +44,4 @@ pkgname = libretro-lrps2-git
 	depends = libfmt.so
 	depends = libryml.so
 	depends = libzip.so
+	depends = libzstd.so
