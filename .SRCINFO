@@ -1,7 +1,7 @@
 pkgbase = unofficial-homestuck-collection
 	pkgdesc = The Unofficial Homestuck Collection
-	pkgver = 2.5.7
-	pkgrel = 2
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://homestuck.giovanh.com/unofficial-homestuck-collection/
 	arch = x86_64
 	license = custom:chrome
@@ -12,9 +12,11 @@ pkgbase = unofficial-homestuck-collection
 	makedepends = electron
 	makedepends = python
 	makedepends = python-setuptools
-	source = https://github.com/GiovanH/unofficial-homestuck-collection/archive/refs/tags/2.5.7.tar.gz
+	makedepends = git
+	depends = libxcrypt-compat
+	source = git+https://github.com/GiovanH/unofficial-homestuck-collection.git#tag=v2.7.0
 	source = node-engines.patch
-	sha512sums = 53f66768e946ae909bfd60703a9a95f4832346de05af120ecbc76561719cc228655d272db32766320f77242490ab979c9a06cb58c829455db7addd2e559d98af
-	sha512sums = 4c232d99ed96caf0a2f11cdf583642a21014efdf8095460d6e8838bb367f7e89bbb6b2409b29fb250578fc61578c3b373dbd519821e43a714f3d282f3433986a
+	sha512sums = 9dff8d1f8d5e9cc7e86caa8a7f63c2a8749bf78d8c6c8487d773c1fc117db808dd9eb10d3c20856d2cddf01efe7e14d28c993a46e43302a68669c86a93ee5712
+	sha512sums = d93caf075f89184fb88e39e5faa7aa136817737e90da063ed98a15b668efacbb5b25415933a49669d76bee27eb1f871225c59333828a398ed4044b05bee0758d
 
 pkgname = unofficial-homestuck-collection
