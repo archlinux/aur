@@ -1,6 +1,6 @@
 pkgbase = nocodb
 	pkgdesc = A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface.
-	pkgver = 0.264.3
+	pkgver = 0.264.4
 	pkgrel = 1
 	url = https://nocodb.com
 	install = nocodb.install
@@ -20,11 +20,11 @@ pkgbase = nocodb
 	options = !debug
 	options = !strip
 	backup = usr/lib/systemd/system/nocodb.service
-	source = git+https://github.com/nocodb/nocodb.git#tag=0.264.3
+	source = git+https://github.com/nocodb/nocodb.git#tag=0.264.4
 	source = nocodb.service
 	source = nocodb.install
 	sha256sums = SKIP
-	sha256sums = 6cf8d416e52a2183901cf48a00f8847cd8da7097f203a3ced5266e8f6c50f6b5
-	sha256sums = f6f2c9c594a6b416fb7cf9e6bb1173236076764f42850ca3f0f66e61201ffa69
+	sha256sums = d0846a6813e6ae1ddc784bf16fa3b4bc7efb3039d3822cadfcec14ca5c8a746b
+	sha256sums = 4bd9fdd4efa91ede112ac4cbeaf27fb7edbd464df823c9e64e5fa06b3c4a5c30
 
 pkgname = nocodb
