@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=amazon-q-bin
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Amazon Q CLI for Linux. See: https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html for details"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=("${pkgname%-bin}")
 source_x86_64=(https://desktop-release.q.us-east-1.amazonaws.com/${pkgver}/q-x86_64-linux.zip)
 source_aarch64=(https://desktop-release.q.us-east-1.amazonaws.com/${pkgver}/q-aarch64-linux.zip)
 # Checksums 
-sha256sums_aarch64=('bc28daf203abc8fa9a53bfe7db38ff6d387836d96ebc85e4eacc66eb066b5aa9')
-sha256sums_x86_64=('c3e6a60bb28cb55d2d642829250af531e97626d032dad3dfe513efc923e0aaa5')
+sha256sums_aarch64=('b7de1a5699b72cc166ec47fd790daf33f26a90539094da532f6f74753b08d6fe')
+sha256sums_x86_64=('f5f5c5817c03db25c61e03bdabc66a3a08dfa65e29865a0aca45995fb85780b7')
 noextract=()
 # We set options here to superseed the default makepkg.conf options. We dont whant debug build or strip debug info from the package. Its not relevant for a binary repackage of the upstream package.
 options=(!debug !strip)
