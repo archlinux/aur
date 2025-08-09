@@ -13,13 +13,13 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=25.3.0_devel.209257.8e82bafae6f
+pkgver=25.3.0_devel.210054.c11f47481a4
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
                             rust rust-bindgen spirv-tools spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
-                            python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml)
+                            python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml libdisplay-info)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio mesa-vdpau vulkan-driver opengl-driver)
@@ -96,7 +96,7 @@ package_mesa-minimal-git() {
                         libunwind libglvnd wayland lm_sensors vulkan-icd-loader
                         zstd llvm-libs-minimal-git zlib expat libxext libxcb systemd-libs
                         glibc libx11 libxfixes gcc-libs
-                        xcb-util-keysyms spirv-tools
+                        xcb-util-keysyms spirv-tools libdisplay-info
     )
     conflicts+=("opencl-mesa<$pkgver-$pkgrel")
 
