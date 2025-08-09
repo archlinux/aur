@@ -13,9 +13,9 @@
 
 pkgname=chitubox-free-bin
 pkgver=2.3.1
-_RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.3.run'
+pkgrel=2
+_RUNFILE='chitubox-free-bin-2.3.1'
 
-pkgrel=1
 pkgdesc='All-in-one SLA/DLP/LCD Slicer'
 
 depends=(
@@ -55,12 +55,12 @@ options=(!strip)
 source=(
 	# Annoying to get when new URL when it changes due to using window.open, just hog the connection and quickly CTRL+L & CTRL+C when the tab opens before it closes
 	# Smarter solutions welcome
-	"${pkgname}-${pkgver}.tar.gz::https://sac.chitubox.com/software/download.do?installerUrl=https%3A%2F%2Fdownload.chitubox.com%2F17839%2Fv2.3.0%2FCHITUBOX_Basic_Linux_Installer_V2.3.tar.gz&softwareId=17839&softwareVersionId=v2.3.0"
+	"${pkgname}-${pkgver}::https://sac.chitubox.com/software/download.do?installerUrl=https%3A%2F%2Fdownload.chitubox.com%2F17839%2Fv2.3.1%2FCHITUBOX_Basic_linux_Installer_2.3.1&softwareId=17839&softwareVersionId=v2.3.1"
 	'local://chitubox-basic.desktop'
 	'local://chitubox-basic.xml'
 )
 
-sha256sums=('44cf18f8468fbcab69179d9622232b187a263d9fa25c539b5d6bc209794ec93b'
+sha256sums=('397e058de53b692e1db61657929e1ce9f88f090cb973c8c20fde5b0d4dfa6268'
             'f3cb140e804119201d7efff6f23558eaa48278c213cb37848fb3ff1afc30deac'
             'fede9c1383063dbfade24289c1adeda505f2333b1206865a6696f0a9f6c7390b')
 
@@ -72,6 +72,7 @@ package()
 	_APP_DIR="${_OPT_DIR}/CHITUBOX_Basic"
 
 	# Run installer, which unfortunately doesn't run without root privileges. So it's not possible to put the install in build().
+	chmod +x "${srcdir}/${_RUNFILE}"
 	"${srcdir}/${_RUNFILE}" --root "${_INSTALL_ROOT}" --accept-licenses --no-size-checking --accept-messages --confirm-command install
 
 	## Clean up
