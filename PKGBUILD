@@ -1,8 +1,8 @@
 # Maintainer: ZilloweZ <zillowez@gmail.com>
 
 pkgname='zoi'
-_tag='Prod-Beta-4.0.2'
-pkgver=4.0.2_beta
+_tag='Prod-Beta-4.0.4'
+pkgver=4.0.4_beta
 pkgrel=1
 pkgdesc="Universal Package Manager & Environment Setup Tool"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 
 source=("$url/-/archive/$_tag/Zoi-$_tag.tar.gz"
         "LICENSE::$url/-/raw/main/LICENSE")
-sha512sums=('21b255df82297530bf947e72f03a592cd83af267e11e2f6ec029493236822a7f6e7ffa38590e012c667ab51ac0545d84bb7a2e39108e893146ff1cec41975981'
+sha512sums=('6ceabe985db617402e8891752835d73ddf1e415734504127525e3cf8a6c93489c3d7d55927be8186822965059147c9e76fab0b944a17774d379f224ac6b9b90a'
             'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
 
 build() {
