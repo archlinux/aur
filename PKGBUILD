@@ -3,14 +3,14 @@ pkgname=emilua-epoll
 provides=(emilua)
 conflicts=(emilua)
 pkgver=0.11.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua execution engine"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/emilua/emilua"
 license=('boost')
 depends=('luajit' 'boost-libs' 'fmt' 'openssl' 'ncurses' 'serd' 'sord' 'libcap')
 makedepends=('git' 'meson' 'boost' 'cereal' 're2c' 'gawk' 'gperf' 'asciidoctor')
-source=("${pkgname}::git+https://gitlab.com/emilua/emilua.git#tag=v${pkgver}")
+source=("emilua::git+https://gitlab.com/emilua/emilua.git#tag=v${pkgver}")
 md5sums=('SKIP')
 #validpgpkeys=()
 
