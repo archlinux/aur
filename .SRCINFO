@@ -1,6 +1,6 @@
 pkgbase = python-pip-search
 	pkgdesc = Search for pip packages via PyPi
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/victorgarric/pip_search
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pip-search
 	depends = python-beautifulsoup4
 	depends = python-requests
 	optdepends = python-setuptools: used on import error
-	source = pip_search-0.0.13.tar.gz::https://files.pythonhosted.org/packages/source/p/pip_search/pip_search-0.0.13.tar.gz
-	sha256sums = 7575286ce2437a71f5d7cdde7a84e1f082e83d77793541109d776c4f95903c97
+	source = pip_search-0.0.14.tar.gz::https://files.pythonhosted.org/packages/source/p/pip_search/pip_search-0.0.14.tar.gz
+	sha256sums = 2d20b923162d01a0d151e172eaa42bc7465d11d2db8eb87c756753bc1a854436
 
 pkgname = python-pip-search
