@@ -1,7 +1,7 @@
 pkgbase = cuopt
 	pkgdesc = NVIDIA cuOpt is an open-source GPU-accelerated optimization engine delivering near real-time solutions for complex decision-making challenges.
 	pkgver = 25.08.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/cuopt
 	arch = x86_64
 	license = Apache-2.0
@@ -23,7 +23,7 @@ pkgbase = cuopt
 	source = missing-include2.patch
 	source = missing-pkg.patch
 	sha256sums = fdcfebc71b1dde2139f509e94f8603b340a182dc18d86389e02f62d9e300c741
-	sha256sums = b96f17301f1af5708a5aedd885f706fa0bb2421c376eeba3471194fb75c2c25e
+	sha256sums = 8882634eb3729252d462dc41516bb2484b427c5ed1c666e5389c0f9516af1af6
 	sha256sums = fa94538b93f81b600211960ca177cff9d4a5f844ad7e2b58831ccef1b39e2997
 	sha256sums = 6bd66d35a773657c1a167e03439461c980cc68eade5f52d2a9220a1422761412
 	sha256sums = 610ba3039ace086041cf0f8cc75fcbc61f38a7a68a3d076e45a23849f812f43d

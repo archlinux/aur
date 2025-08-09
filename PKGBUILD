@@ -3,7 +3,7 @@
 pkgbase=cuopt
 pkgname=(cuopt python-cuopt)
 pkgver=25.08.00
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA cuOpt is an open-source GPU-accelerated optimization engine delivering near real-time solutions for complex decision-making challenges."
 url="https://github.com/NVIDIA/cuopt"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=(
     'fdcfebc71b1dde2139f509e94f8603b340a182dc18d86389e02f62d9e300c741'
-    'b96f17301f1af5708a5aedd885f706fa0bb2421c376eeba3471194fb75c2c25e'
+    '8882634eb3729252d462dc41516bb2484b427c5ed1c666e5389c0f9516af1af6'
     'fa94538b93f81b600211960ca177cff9d4a5f844ad7e2b58831ccef1b39e2997'
     '6bd66d35a773657c1a167e03439461c980cc68eade5f52d2a9220a1422761412'
     '610ba3039ace086041cf0f8cc75fcbc61f38a7a68a3d076e45a23849f812f43d'
@@ -36,6 +36,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
+    export CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_GLIBCXX_ASSERTIONS//g')
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -47,8 +48,13 @@ build() {
         -G Ninja
     cmake --build build
 
+    rm "$srcdir/$pkgbase-$pkgver/python/cuopt/cuopt/linear_programming/build" -rf
+
     cd "$srcdir/$pkgbase-$pkgver/python/cuopt"
     export cuopt_DIR="$srcdir/$pkgbase-$pkgver/build"
+    python -m build --wheel --no-isolation --skip-dependency-check
+
+    cd "$srcdir/$pkgbase-$pkgver/python/cuopt/cuopt/linear_programming"
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
@@ -60,5 +66,8 @@ package_cuopt() {
 package_python-cuopt() {
     depends+=('python' 'python-cupy' 'python-cudf' 'python-numpy' 'python-rmm' 'python-raft-dask' 'cuopt')
     cd "$srcdir/$pkgbase-$pkgver/python/cuopt"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    cd "$srcdir/$pkgbase-$pkgver/python/cuopt/cuopt/linear_programming"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

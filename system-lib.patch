@@ -18,12 +18,13 @@
  list(APPEND CUOPT_CUDA_FLAGS -Xcompiler=-Wall -Wno-error=non-template-friend)
  list(APPEND CUOPT_CUDA_FLAGS -Xfatbin=-compress-all)
  if(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 12.9 AND CMAKE_CUDA_COMPILER_VERSION VERSION_LESS 13.0)
-@@ -154,12 +154,14 @@
+@@ -154,12 +154,15 @@
    include(cmake/thirdparty/get_raft.cmake)
  else()
    find_package(CCCL REQUIRED)
 +  find_package(nvtx3 REQUIRED)
 +  find_package(rapids_logger REQUIRED)
++  find_package(cuco REQUIRED)
    find_package(RMM REQUIRED)
    find_package(RAFT REQUIRED)
  endif()
