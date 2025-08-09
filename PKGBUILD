@@ -21,7 +21,7 @@ package() {
   tar -xzf "${srcdir}/ytdl_gui-${pkgver}.tar.gz" -C "$pkgdir/opt/${pkgname}" --strip-components=1
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/${pkgname}/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/ytdl_gui" "$pkgdir/usr/bin/${pkgname}"
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
