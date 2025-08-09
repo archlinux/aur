@@ -1,0 +1,13 @@
+pkgbase = minecraft-ping
+	pkgdesc = A tool for pinging minecraft servers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nickid2018/minecraft-ping
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = cjson
+	source = https://github.com/Nickid2018/minecraft-ping/archive/v1.0.0.tar.gz
+	sha256sums = 24b16745d49615446b7637bd48d656e537cc4641272c091059df7cf7a905de66
+
+pkgname = minecraft-ping
