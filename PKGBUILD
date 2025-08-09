@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r4277.50346bce
+pkgver=r4316.940f4062
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
@@ -34,13 +34,6 @@ conflicts=("hare")
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	if [ "$CARCH" = "aarch64" ]; then
-		cd "$srcdir/$_pkgname"
-		patch --forward --strip=1 --input="${srcdir}/0001-Comment-out-assertions-that-fail-on-aarch64.patch"
-	fi
 }
 
 build() {
