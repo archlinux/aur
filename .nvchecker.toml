@@ -1,0 +1,5 @@
+[steamclip]
+source = "github"
+github = "Nastas95/SteamClip"
+prefix = "v"
+use_latest_release = true
