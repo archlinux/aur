@@ -1,5 +1,5 @@
 pkgname=dankgop-git
-pkgver=r3.e457a49
+pkgver=r4.45a60f1
 pkgrel=1
 pkgdesc="System monitoring CLI + REST API (git snapshot)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,10 +14,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  # Prefer tag-based versions; fall back to rev count + short hash
   if git describe --tags --long >/dev/null 2>&1; then
-    git describe --tags --long \
-      | sed 's/^v//; s/-/./g'
+    git describe --tags --long | sed 's/^v//; s/-/./g'
   else
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
@@ -25,32 +23,27 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  # Ensure module cache is writable in build chroots
-  export GOPATH="$srcdir/go"
-  mkdir -p "$GOPATH"
+  # keep caches in the build dir
+  export GOMODCACHE="$srcdir/gomodcache"
+  mkdir -p "$GOMODCACHE"
 }
 
 build() {
   cd "$srcdir/$pkgname"
   export CGO_ENABLED=0
-  export GOPATH="$srcdir/go"
+  export GOMODCACHE="$srcdir/gomodcache"
 
-  # Hardened/optimized build flags
-  local _goflags=(
-    -buildmode=pie
-    -trimpath
-    -mod=readonly
-  )
-  local _ldflags="-s -w"
+  # Put common flags in GOFLAGS so tests use them too
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  # Build CLI (main lives under cmd/cli)
-  go build "${_goflags[@]}" -ldflags "${_ldflags}" -o build/dankgop ./cmd/cli
+  go build -ldflags "-s -w" -o build/dankgop ./cmd/cli
 }
 
 check() {
   cd "$srcdir/$pkgname"
-  # Run tests if present; ignore failures to avoid breaking packaging on WIP repos
   export CGO_ENABLED=0
+  export GOMODCACHE="$srcdir/gomodcache"
+  # don't fail the package on WIP tests, but still run with writable mod cache
   go test ./... || true
 }
 
