@@ -1,12 +1,12 @@
 pkgbase = emqutiti
 	pkgdesc = Terminal-based MQTT client written in Go
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/marang/emqutiti
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = emqutiti-0.4.0.tar.gz::https://github.com/marang/emqutiti/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 7fded37cc2b89ed7f34384964d021df946863fa826c7961fa26d59441939b7b4
+	source = emqutiti-0.4.1.tar.gz::https://github.com/marang/emqutiti/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = ce8ab0d28762d6ed6d7284bd6d3a774225339a2696bf277a2f2d74bc65ed62bd
 
 pkgname = emqutiti
