@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Phoenix Launcher
+Comment=Phoenix Launcher
+Exec=/opt/phoenix-launcher/phoenix-launcher.AppImage
+Icon=phoenix-launcher
+Terminal=false
+Type=Application
+Categories=Game;
