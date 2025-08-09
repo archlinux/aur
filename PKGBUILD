@@ -8,7 +8,7 @@ pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url='https://homestuck.github.io/'
 license=('custom:chrome' 'custom:electron')
-makedepends=('nodejs-lts-jod' 'gendesk' 'yarn' 'electron')
+makedepends=('nodejs-lts-jod' 'gendesk' 'yarn' 'electron' 'python' 'python-setuptools')
 source=("https://github.com/homestuck/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         node-engines.patch)
 sha512sums=('53f66768e946ae909bfd60703a9a95f4832346de05af120ecbc76561719cc228655d272db32766320f77242490ab979c9a06cb58c829455db7addd2e559d98af'
