@@ -3,7 +3,7 @@ pkgver=0.0.1
 pkgrel=3
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('any')
-url='https://github.com/bbedward/DankMaterialShell'
+url='https://github.com/AvengeMedia/DankMaterialShell'
 license=('GPL-3.0-only')
 depends=('quickshell-git' 'networkmanager' 'ttf-material-symbols-variable-git'
          'inter-font' 'ttf-fira-code')

@@ -2,7 +2,7 @@ pkgbase = dankmaterialshell-git
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
 	pkgver = 0.0.1
 	pkgrel = 3
-	url = https://github.com/bbedward/DankMaterialShell
+	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
@@ -21,7 +21,7 @@ pkgbase = dankmaterialshell-git
 	optdepends = qt6ct: Qt6 application theming
 	provides = dankmaterialshell
 	conflicts = dankmaterialshell
-	source = dankmaterialshell-git::git+https://github.com/bbedward/DankMaterialShell.git
+	source = dankmaterialshell-git::git+https://github.com/AvengeMedia/DankMaterialShell.git
 	sha256sums = SKIP
 
 pkgname = dankmaterialshell-git
