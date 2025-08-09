@@ -1,10 +1,11 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
@@ -28,7 +29,7 @@ source_x86_64=(
 build() {
   cd "$_pkgname-$CARCH-$_linux"
 
-  for _shell in bash fish zsh; do
+  for _shell in bash elvish fish zsh; do
     ./tgrep --completions "$_shell" > "_completions.$_shell"
   done
 }
@@ -44,6 +45,9 @@ package() {
   # Bash
   install -vDm0644 _completions.bash \
     "$pkgdir/usr/share/bash-completion/completions/tgrep"
+  # Elvish
+  install -vDm0644 _completions.elvish \
+    "$pkgdir/usr/share/elvish/lib/tgrep.elv"
   # Fish
   install -vDm0644 _completions.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/tgrep.fish"
