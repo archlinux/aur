@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast
-pkgver=0.32.2
+pkgver=0.32.3
 pkgrel=1
 _pkgname_snapweb=snapweb
 _snapweb_version=0.9.1
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "snapcast.tmpfiles"
         "snapcast.install")
 noextract=("${_pkgname_snapweb}-${_snapweb_version}.zip")
-sha256sums=('881173321f5fc929319d31b5063d91a25187e61e984cdb85e57266ea5e2b3f7f'
+sha256sums=('e53a62872d03521c7ce261378792f203d4073d769b362116ab02c98aa7c64008'
             '5a63936b2ce9ce29eac7760b78a8e3013cb0ec95c5ca140d68261143f826dfb5'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
