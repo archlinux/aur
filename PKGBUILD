@@ -1,21 +1,22 @@
 # Maintainer: dryes <joswiseman@cock.li>
 pkgname='rescepy-git'
-pkgver=47
+_pkgname='rescepy'
+pkgver=r56.e47807e
 pkgrel=1
 pkgdesc='automated srr (rescene) verification and reconstruction.'
 url='https://github.com/dryes/rescepy'
 arch=('any')
 license=('MIT')
-depends=('cfv' 'python2' 'pyrescene-hg' 'unrar')
+depends=('cfv' 'python' 'pyrescene' 'unrar')
 makedepends=('git')
-source=('git://github.com/dryes/rescepy.git')
+source=('git+https://github.com/dryes/rescepy.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  echo $(git rev-list --count master)
+  cd "$_pkgname"
+  #git describe --tags | sed 's/-/+/g'
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
 package() {
   cp -r "${srcdir}/rescepy" "${srcdir}/rescepy-build"
   for _d in $(find "${srcdir}/rescepy-build/" -type d -name '.git'); do
@@ -23,6 +24,5 @@ package() {
   done
   mkdir -p "${pkgdir}/usr/"{bin,share}
   mv "${srcdir}/rescepy-build" "${pkgdir}/usr/share/rescepy"
-  echo -e "#!/bin/bash\n\npython2 /usr/share/rescepy/resce.py \$@" >> "${pkgdir}/usr/bin/rescepy"
   chmod +x "${pkgdir}/usr/bin/rescepy" "${pkgdir}/usr/share/rescepy/resce.py"
 }
