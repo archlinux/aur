@@ -1,6 +1,6 @@
 pkgbase = python-rawpy
 	pkgdesc = Python wrapper for the libraw library
-	pkgver = 0.24.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/letmaik/rawpy
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-rawpy
 	depends = python-numpy
 	optdepends = python-scikit-image: for rawpy.enhance
 	optdepends = python-opencv: for rawpy.enhance
-	source = python-rawpy-0.24.0.tar.gz::https://github.com/letmaik/rawpy/archive/v0.24.0.tar.gz
-	sha512sums = aad1167428696fa3f0f0a98ed53b3a82058c6555b314b5826b633c25ea77eaa2e8c7aac43b4b0db78a2df18e1c9fca1bb7afb7bd3e87e4fff1c41cd339644c29
+	source = python-rawpy-0.25.1.tar.gz::https://github.com/letmaik/rawpy/archive/v0.25.1.tar.gz
+	sha512sums = b80ed5123648747707a4ea457877cda67c19d506ffe74aa932f3eb6cc82f1095d1a31f213aaabf1d58a484743920a8c48e20d28b53a7d8dac944f897c1f4cbf1
 
 pkgname = python-rawpy
