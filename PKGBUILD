@@ -34,7 +34,7 @@ esac
 
 _source_binary="${_pkgname}_${pkgver}_linux_${_arch}"
 _source_full_url="${_source_binary}::${url}/releases/download/v${pkgver}/${_source_binary}"
-source_x86_64=("${_source_full_url}", "${license_url}")
+source_x86_64=("${_source_full_url}" "${license_url}")
 source_i686=("${_source_full_url}", "${license_url}")
 source_aarch64=("${_source_full_url}", "${license_url}")
 source_armv7h=("${_source_full_url}", "${license_url}")
