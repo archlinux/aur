@@ -1,4 +1,5 @@
 src
 pkg
+limine-entry-tool*
 limine-dracut-support*
 clean.sh 
