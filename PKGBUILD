@@ -1,6 +1,6 @@
 # aur/PKGBUILD
 pkgname=toney
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Fast, lightweight, terminal-based note-taking app for the modern developer."
 arch=('x86_64')
