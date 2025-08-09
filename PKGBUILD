@@ -57,7 +57,7 @@ prepare() {
 }
 build() {
   cd $pkgname
-  env CC=gcc CXX=g++ tools/unix/build_omim.sh -n $(nproc) -c -r desktop
+  env CC=gcc CXX=g++ tools/unix/build_omim.sh -c -r desktop
 }
 package() {
   install -dm755 "$pkgdir/usr/share/${pkgname}"
