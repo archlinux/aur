@@ -2,21 +2,20 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=14.1.0
+pkgver=15.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
-depends=("${_target}-newlib" "${_target}-binutils" 'libmpc' 'elfutils' 'zlib')
+depends=("${_target}-newlib" "${_target}-binutils" 'libisl' 'libmpc' 'elfutils' 'zlib')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 optdepends=("${_target}-libstdc++: C++ standard library support")
-source=(
-        ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840')
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
+sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e')
 
 
 prepare() {
@@ -51,6 +50,7 @@ build() {
     --enable-languages=c,c++ \
     --enable-multilib \
     --with-system-zlib \
+    --with-isl \
     --with-local-prefix=/usr/${_target} \
     --with-sysroot=/usr/${_target} \
     --with-as=/usr/bin/${_target}-as \
