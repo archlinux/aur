@@ -4,8 +4,8 @@
 
 pkgname=micromamba
 _pkgname=${pkgname/micro/}
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="The fast cross-platform package manager"
 arch=(i686 x86_64)
 url="https://github.com/${_pkgname}-org/${_pkgname}"
@@ -16,7 +16,7 @@ makedepends=(cli11 spdlog tl-expected nlohmann-json cmake pybind11 ninja
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz
   static-off.patch
   utils.cpp.patch)
-sha512sums=('580afeddd18c7a3f41c2138d3a3ccdcd2b86faa126c7279f78036462b52fa205387d7421c197cb8ba19ad0117730be9077b07d5d62cd6cb6e55c68fa6da2261a'
+sha512sums=('d33642652e30d105f43c01588af2324e712e10a27e735cc82f9bfde111b8beb6cc00dd595262f409b7627a7a922b816047be900a1bb8908af750abd5a11048ee'
             'ee549a0bff94bff386a820cb54e38b0c51f7f563c9dd99ab017bc4ba46a117a11fe8e6c016a8e6eef1ae30cde8e0f57b04d6cda685ad8f1609e1f22c38bf9258'
             '62deaeef709c6b03ed92cdf4890e4b8b8171ce72ddd83b3ff33ae8f9a2696a0ec1e1e6025b64ca654b3debb99654c9e36a404bc947b504becc452d6f39c168e6')
 provides=(
