@@ -1,0 +1,17 @@
+pkgbase = dankgop-git
+	pkgdesc = System monitoring CLI + REST API (git snapshot)
+	pkgver = r3.e457a49
+	pkgrel = 1
+	url = https://github.com/AvengeMedia/dankgop
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = dankgop
+	conflicts = dankgop
+	source = dankgop-git::git+https://github.com/AvengeMedia/dankgop.git
+	sha256sums = SKIP
+
+pkgname = dankgop-git
