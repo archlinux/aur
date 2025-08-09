@@ -1,0 +1,14 @@
+pkgbase = libminiaudiohelpers
+	pkgdesc = Mini audio helper library to facilitate audio in Raylib-cr
+	pkgver = 5.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/sol-vin/raylib-cr
+	arch = x86_64
+	license = MIT
+	depends = raylib
+	provides = libminiaudiohelpers.so=5.0
+	source = libminiaudiohelpers_5.0.tar.gz::https://github.com/sol-vin/raylib-cr/archive/refs/tags/5.0.tar.gz
+	sha256sums = 23f7a8d307ab51d6bfd8f3332f935ce3aa942a9afd5943659ae79da5bf2bdbba
+
+pkgname = libminiaudiohelpers
