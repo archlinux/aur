@@ -4,7 +4,7 @@
 pkgname=lorax
 _pkgver=43.9-1
 pkgver=43.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tools for creating images, including the Anaconda boot.iso, live disk images, iso's, and filesystem images."
 arch=('any')
 url="https://github.com/weldr/lorax"
@@ -25,7 +25,9 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'tar')
+    'tar'
+    'sed'
+)
 backup=('etc/lorax/lorax.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/weldr/lorax/archive/refs/tags/lorax-${_pkgver}.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
@@ -47,7 +49,7 @@ package(){
     install -Dm644 docs/man/*.1 -t "$pkgdir/usr/share/man/man1/"
     install -Dm644 etc/lorax.conf -t "$pkgdir/etc/$pkgname/"
     install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
-    sed 's/grub-mkimage/grub-mkimage/g' share/templates.d/99-generic/live/x86.tmpl
-    sed 's/grub-mkimage/grub-mkimage/g' share/templates.d/99-generic/x86.tmpl
+    sed -i 's/grub-mkimage/grub-mkimage/g' share/templates.d/99-generic/live/x86.tmpl
+    sed -i 's/grub-mkimage/grub-mkimage/g' share/templates.d/99-generic/x86.tmpl
     cp -r share/templates.d "$pkgdir/usr/share/$pkgname/"
 }
