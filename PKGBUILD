@@ -2,8 +2,8 @@
 
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.0.0.r31.g864656c
-pkgrel=2
+pkgver=v1.2.0.r5.g4a6d3fc
+pkgrel=1
 pkgdesc="Blazing fast, realtime, extension-free, multi-browser, bookmark manager"
 arch=('i686' 'x86_64')
 makedepends=(git git-lfs go make sqlite)
