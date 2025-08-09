@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='opencode-bin'
-pkgver=0.4.1
+pkgver=0.4.2
 options=('!debug' '!strip')
 pkgrel=1
 pkgdesc='The AI coding agent built for the terminal.'
@@ -13,11 +13,11 @@ provides=('opencode')
 conflicts=('opencode')
 depends=('fzf' 'ripgrep')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/sst/opencode/releases/download/v0.4.1/opencode-linux-arm64.zip")
-sha256sums_aarch64=('8cb20d9f98f0e542af608b69a30327eb1131b6bde673e4ddf726e7d858b26f8d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/sst/opencode/releases/download/v0.4.2/opencode-linux-arm64.zip")
+sha256sums_aarch64=('196aca1f67691914eff8615ecfdc335aeeb106d02e5f05fe9445e88806d80cf6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/sst/opencode/releases/download/v0.4.1/opencode-linux-x64.zip")
-sha256sums_x86_64=('ddc671d87c378c36d3bfcf232ebc01aecc0372905d279b3eb8ec1a58c7919d00')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/sst/opencode/releases/download/v0.4.2/opencode-linux-x64.zip")
+sha256sums_x86_64=('0a7d252c487c090dcd72ad6fda545c167ea5447f368121978a0108f8f1ba403d')
 
 package() {
   install -Dm755 ./opencode "${pkgdir}/usr/bin/opencode"
