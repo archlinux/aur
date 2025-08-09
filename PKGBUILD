@@ -7,7 +7,7 @@
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 pkgname=ovito
 pkgver=3.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Visualization Tool"
 url="https://www.${pkgname}.org"
 arch=(x86_64 aarch64)
@@ -28,8 +28,6 @@ sha512sums=('3a5d473c65d9bae93f8b1f4529654d263e11bff69e7c65cef1a50223721d07bdaa7
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  # Use zstd as share library
-  sed -i 's/libzstd_static/libzstd/' src/ovito/core/CMakeLists.txt
   git submodule init
   git config submodule.tests/files.url "${srcdir}/gitlab.com-tests-files"
   git config submodule.src/3rdparty/zstd.url "${srcdir}/github.com-src-3rdparty-zstd"
