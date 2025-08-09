@@ -1,6 +1,6 @@
 pkgbase = browseros-bin
 	pkgdesc = An open-source agentic browser that runs AI agents locally
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/browseros-ai/BrowserOS
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = browseros-bin
 	provides = browseros
 	conflicts = browseros
 	options = !strip
-	source = browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.18.0/BrowserOS_v0.18.0_x64.AppImage
-	sha256sums = 3331097ef54d74e6aeb6859e7d708fc2288a4afd7475ea76924316b1dfc7dab9
+	source = browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.19.0/BrowserOS_v0.19.0_x64.AppImage
+	sha256sums = ('eeac5592f8c66be5c0d48869d97d93a78f47cbd72c722e29cef55b3ccd8aa1c2')
 
 pkgname = browseros-bin
