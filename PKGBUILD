@@ -2,7 +2,7 @@
 
 pkgbase=dmlc-core-git
 pkgname=dmlc-core-git
-pkgver=0.5.r27.g1334185
+pkgver=0.5.r44.gcbab4ef
 pkgrel=2
 pkgdesc="A common bricks library for building scalable and portable distributed machine learning."
 arch=($CARCH)
@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
     cmake
+    dlpack
     git
     ninja
     pkgconf
@@ -23,8 +24,6 @@ makedepends=(
     curl
     openmp
     openssl
-    #AUR
-    dlpack
 )
 checkdepends=(
 )
