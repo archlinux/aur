@@ -1,7 +1,7 @@
 pkgbase = openlist-bin
 	pkgdesc = A new AList Fork to Anti Trust Crisis
-	pkgver = 4.0.9
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://github.com/OpenListTeam/OpenList
 	install = openlist.install
 	arch = aarch64
@@ -20,9 +20,9 @@ pkgbase = openlist-bin
 	sha256sums = 9259caae294aebb88e0e25f83074e090f3581556c05548544739edf88c028537
 	sha256sums = fe9c68aa8a6a27477049c839cb5818ba3ddbd88c6813dd2eacea73da70807905
 	sha256sums = e4f341a876f43b551b67b730aa93dc3a8d2e5f6863ca234852a4389aa64c0aca
-	source_aarch64 = openlist-4.0.9-aarch64.tar.gz::https://github.com/OpenListTeam/OpenList/releases/download/v4.0.9/openlist-linux-arm64.tar.gz
-	sha256sums_aarch64 = dd81c840a39d1c73c473b2e39ec9879d384371238eb3ed2e11205cde1fb53001
-	source_x86_64 = openlist-4.0.9-x86_64.tar.gz::https://github.com/OpenListTeam/OpenList/releases/download/v4.0.9/openlist-linux-amd64.tar.gz
-	sha256sums_x86_64 = 7fedb086f4d7b7754c40c86e79c49cc53d4175fe552ae18de070d04d2fb656c4
+	source_aarch64 = openlist-4.1.0-aarch64.tar.gz::https://github.com/OpenListTeam/OpenList/releases/download/v4.1.0/openlist-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4dd95812afb043790c481a4897c09b3d16ddd6541749e3ec40bd42563a6535c7
+	source_x86_64 = openlist-4.1.0-x86_64.tar.gz::https://github.com/OpenListTeam/OpenList/releases/download/v4.1.0/openlist-linux-amd64.tar.gz
+	sha256sums_x86_64 = 65802f4e2c03af241ac1e74ca75a61b6f7ff8cae27eeb6842a2c64ad6c7de106
 
 pkgname = openlist-bin
