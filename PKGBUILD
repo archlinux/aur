@@ -1,52 +1,61 @@
 # private key to sign chromium extension is generated with `openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -traditional`
 
+_system_wasm_bindgen=true
+_version=0.1.0
 _channel=nightly
-_date=2025-08-08
+_date=2025-08-09
 
 pkgbase=ruffle-nightly
-pkgname=(
-    ruffle-nightly
-    ruffle-demo-nightly
-    ruffle-selfhosted-nightly
-    firefox-extension-ruffle-nightly
-    chromium-extension-ruffle-nightly
-)
-pkgver="0.1.0+$_channel+${_date//-}"
+pkgname=(ruffle-nightly
+        ruffle-demo-nightly
+        ruffle-selfhosted-nightly
+        firefox-extension-ruffle-nightly
+        chromium-extension-ruffle-nightly)
+pkgver="$_version+$_channel+${_date//-}"
 pkgrel=1
 arch=("x86_64")
 pkgdesc="A Flash Player emulator written in Rust. (Nightly version)"
 url="https://ruffle.rs/"
 license=("MIT OR Apache-2.0")
-makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-iron"
+makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-jod"
              "binaryen" "gtk3" "alsa-lib" "libxcb" "systemd-libs"
-             "clang" "jq" "git" "chromium" "openssl" "yq" "rust-wasm"
+             "clang" "jq" "git" "chromium" "openssl" "rust-wasm"
              "rust-src")
+if "$_system_wasm_bindgen"
+then
+    makedepends+=("wasm-bindgen")
+else
+    makedepends+=("yq")
+fi
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
-sha256sums=('ca16889e1731ebc96007dc66cfc3179c954993827e46c39f3facfbc76438fd28'
+sha256sums=('4888718c9123b714f480e547eebf79091b9fb87df6f947818e5c7966a8815ad2'
             'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
 options=("!lto")
 
-_FIREFOX_EXTRNSION_ID="ruffle@ruffle.rs"
+_FIREFOX_EXTENSION_ID="ruffle@ruffle.rs"
 
 prepare() {
     cd "$srcdir/ruffle"
     export RUSTUP_TOOLCHAIN=stable
-    local wasm_bindgen_version require_wasm_bindgen_version
-    require_wasm_bindgen_version="$(tomlq -r '.package[] | select(.name == "wasm-bindgen") | .version' Cargo.lock)"
-    cargo install wasm-bindgen-cli --version "$require_wasm_bindgen_version"
+    if ! "$_system_wasm_bindgen"
+    then
+        local require_wasm_bindgen_version
+        require_wasm_bindgen_version="$(tomlq -r '.package[] | select(.name == "wasm-bindgen") | .version' Cargo.lock)"
+        cargo install wasm-bindgen-cli --version "$require_wasm_bindgen_version"
+    fi
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cd web
     npm ci
     # TODO version_name=$version_number when not nightly
     jq --null-input \
         --arg version_channel "$_channel" \
-        --arg version_number "$(jq -r .version package.json)" \
+        --arg version_number "$_version" \
         --arg version_name "$_channel $_date" \
         --arg build_date "$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)" \
         --arg build_id "$pkgrel" \
         --arg commitHash "$(git rev-parse HEAD)" \
-        --arg firefox_extension_id "$_FIREFOX_EXTRNSION_ID" \
+        --arg firefox_extension_id "$_FIREFOX_EXTENSION_ID" \
     '$ARGS.named' > version_seal.json
     echo "Generated version_seal.json:"
     cat version_seal.json
@@ -54,7 +63,10 @@ prepare() {
 
 build() {
     cd "$srcdir/ruffle"
-    export PATH="$PATH:$HOME/.cargo/bin"
+    if ! "$_system_wasm_bindgen"
+    then
+        export PATH="$PATH:$HOME/.cargo/bin"
+    fi
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features \
@@ -71,26 +83,9 @@ build() {
     # Flags does not supported by WASM target:
     # C/CXX: -mtune -march -fcf-protection
     # RUST: -Ctarget-cpu
-    local flag flags
-    for flags in "$CFLAGS" "$CXXFLAGS"
-    do
-        for flag in $flags
-        do
-            if [[ "$flag" =~ ^-m(tune|arch)=[0-9a-z]+ ]] || [[ "$flag" == "-fcf-protection" ]]
-            then
-                echo "Removing $flag in C/CXX FLAGS"
-                CFLAGS=${CFLAGS/$flag/}
-            fi
-        done
-    done
-    if flags="$(echo "$RUSTFLAGS" | grep -o -P '(\ *-C\s*target-cpu=[0-9a-z]+)')"
-    then
-        for flag in $flags
-        do
-            echo "Removing $flag in Rust FLAGS"
-            RUSTFLAGS=${RUSTFLAGS/$flag/}
-        done
-    fi
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's/-m(tune|arch)=[0-9a-zA-Z-]+//g;s/-fcf-protection//g')"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's/-m(tune|arch)=[0-9a-zA-Z-]+//g;s/-fcf-protection//g')"
+    RUSTFLAGS="$(echo "$RUSTFLAGS" | sed -E 's/\s*-C\s*target-cpu=[0-9a-zA-Z]+//')"
 
     cd web
     npm run build:repro
@@ -220,7 +215,7 @@ package_firefox-extension-ruffle-nightly() {
 
     cd "$srcdir/ruffle"
     install -Dm644 web/packages/extension/dist/firefox_unsigned.xpi \
-        "$pkgdir/usr/lib/firefox/browser/extensions/$_FIREFOX_EXTRNSION_ID.xpi"
+        "$pkgdir/usr/lib/firefox/browser/extensions/$_FIREFOX_EXTENSION_ID.xpi"
     install -Dm644 web/packages/extension/LICENSE_APACHE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
     install -Dm644 web/packages/extension/LICENSE_MIT \
