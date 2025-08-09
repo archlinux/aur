@@ -1,0 +1,4 @@
+[protoc-gen-doc]
+source = "git"
+git = "https://github.com/pseudomuto/protoc-gen-doc.git"
+prefix = "v"

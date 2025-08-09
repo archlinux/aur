@@ -1,0 +1,15 @@
+pkgbase = protoc-gen-doc
+	pkgdesc = Documentation generator plugin for Google Protocol Buffers
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/pseudomuto/protoc-gen-doc
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = protobuf
+	source = protoc-gen-doc-1.5.1.tar.gz::https://github.com/pseudomuto/protoc-gen-doc/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = 75667f5e4f9b4fecf5c38f85a046180745fc73f518d85422d9c71cb845cd3d43
+
+pkgname = protoc-gen-doc
