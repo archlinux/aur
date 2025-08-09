@@ -1,0 +1,20 @@
+pkgbase = drill-bin
+	pkgdesc = HTTP load testing application written in Rust inspired by Ansible syntax
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/fcsonline/drill
+	arch = x86_64
+	license = GPL-3.0
+	depends = openssl-1.1
+	provides = drill
+	conflicts = drill
+	source = LICENSE-0.8.3::https://raw.githubusercontent.com/fcsonline/drill/0.8.3/LICENSE
+	source = README-0.8.3.md::https://raw.githubusercontent.com/fcsonline/drill/0.8.3/README.md
+	source = SYNTAX-0.8.3.md::https://raw.githubusercontent.com/fcsonline/drill/0.8.3/SYNTAX.md
+	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+	sha256sums = 37c6c933ed70b40433aafa65784554ed9667d48ed109c72a495e6867819235db
+	sha256sums = 5caca31570cd6afc8c21313d135ccd6acaae9ab1d73256c93fbc532c472685ce
+	source_x86_64 = https://github.com/fcsonline/drill/releases/download/0.8.3/drill_0.8.3_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 22be45c56778fe994cba8cc43feec8394a0649c63b23519ed7c70097e6bf41b1
+
+pkgname = drill-bin
