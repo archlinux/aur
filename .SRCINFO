@@ -1,6 +1,6 @@
 pkgbase = msp430-elf-binutils
 	pkgdesc = GNU binary utilities for the msp430-elf target.
-	pkgver = 2.42
+	pkgver = 2.45
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = msp430-elf-binutils
 	depends = zlib
 	options = !libtool
 	options = !buildflags
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.xz
-	sha256sums = f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.xz
+	sha256sums = c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2
 
 pkgname = msp430-elf-binutils

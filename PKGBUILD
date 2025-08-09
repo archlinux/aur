@@ -2,7 +2,7 @@
 
 _target=msp430-elf
 pkgname=${_target}-binutils #-git
-_pkgver=2.42
+_pkgver=2.45
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
@@ -13,7 +13,7 @@ license=(GPL)
 depends=('zlib')
 checkdepends=('dejagnu' 'bc')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz)
-sha256sums=('f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800')
+sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2')
 
 prepare() {
   cd "${srcdir}/binutils-${_pkgver}"
