@@ -73,8 +73,8 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-options=('!strip' '!buildflags' '!makeflags' '!lto')
-# options+=('!strip' '!lto')
+# options=('!strip' '!buildflags' '!makeflags' '!lto')
+options+=('!strip' '!lto')
 
 source=(
   # "${_pkgname}-dos::git+https://github.com/chenall/grub4dos.git" # This fails to build.

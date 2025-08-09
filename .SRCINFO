@@ -20,8 +20,6 @@ pkgbase = grub4dos-efi-git
 	provides = grub4dos-efi=r768.20250703.3bb67b6
 	conflicts = grub4dos-efi
 	options = !strip
-	options = !buildflags
-	options = !makeflags
 	options = !lto
 	backup = boot/efi/grub4dos/menu.lst
 	source = grub4dos-efi-efi::git+https://github.com/chenall/grub4dos.git#branch=efi
