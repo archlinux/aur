@@ -9,6 +9,7 @@ pkgbase = pyrescene-git
 	license = custom
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
