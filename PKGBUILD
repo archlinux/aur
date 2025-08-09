@@ -1,6 +1,6 @@
 # Maintainer: OminduD <omindudulneth@outlook.com>
 pkgname=arch-sandbox
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CLI tool to create isolated Arch Linux sandboxes"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/OminduD/arch-sandbox"
 license=('MIT')
 depends=('systemd' 'zstd')
 makedepends=('go' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OminduD/arch-sandbox/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9073feb2828eed0e9973868e16e8c0c37e976b47282baed86a46b78c50de3ae4')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OminduD/arch-sandbox/archive/v$pkgver.tar.gz")
+sha256sums=('8e05c1d7924f4fab00f9dc3952f29fb89b7fd513c93f63d5e0c258abfece5a28')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -36,3 +36,9 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+
+
+pkgver=1.0.1
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OminduD/arch-sandbox/archive/v$pkgver.tar.gz")
+sha256sums=('PASTE_THE_NEW_CHECKSUM_HERE')
