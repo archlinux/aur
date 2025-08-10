@@ -1,0 +1,4 @@
+[plwm]
+source = "git"
+git = "https://github.com/Seeker04/plwm.git"
+prefix = "v"

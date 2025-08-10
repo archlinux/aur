@@ -1,0 +1,18 @@
+pkgbase = plwm
+	pkgdesc = An X11 window manager written in Prolog
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/Seeker04/plwm
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = glibc
+	depends = libx11
+	depends = libxft
+	depends = libxrandr
+	depends = swi-prolog
+	backup = etc/plwm/config.pl
+	source = plwm-0.5.tar.gz::https://github.com/Seeker04/plwm/archive/refs/tags/v0.5.tar.gz
+	sha256sums = fee10bb368bdde77d19306788859f6cf8c4d35aa605e96123d4a3a87225f3f0d
+
+pkgname = plwm
