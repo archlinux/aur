@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=picotool
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 
 pkgdesc="Tool for inspecting RP2040 binaries and interacting with RP2040 devices."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('pico-sdk' 'cmake')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "70-picotool.rules")
-sha256sums=('19200c6dc4be5acd6fb53de3d7f35c826af596c18879d56f214b795300100260'
+sha256sums=('aab3d82fb1e576d97156ddcb962ae7cf290518a5f20d9002ac27e628dc657620'
             'e7abda1f88afddc2f49b27d0edce0f2a1daba7c7b90260a5e6fccc456da24b18')
 
 build() {
