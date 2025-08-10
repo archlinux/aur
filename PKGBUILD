@@ -1,50 +1,65 @@
 # Contributor: Matthias Blankertz <matthias at blankertz dot org>
 # Contributor: Navkamal Rakra <navkamal90[at]gmail[dot]com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: yochananmarqos <mark.wagie@proton.me>
 # Maintainer: RAMChYLD <ramchyld@gmail.com>
 
 pkgname=('ogdf' 'ogdf-docs')
 pkgtreename=elderberry
 pkgver=202309
-pkgrel=1
-pkgdesc="OGDF is a self-contained C++ class library for the automatic layout of diagrams. OGDF offers sophisticated algorithms and data structures to use within your own applications or scientific projects."
+pkgrel=2
+pkgdesc="The Open Graph Drawing Framework/Open Graph algorithms and Data structure Framework."
 arch=('i686' 'x86_64')
 url="https://ogdf.uos.de/"
-license=('GPL')
+license=('LicenseRef-custom AND GPL-2.0-or-later AND GPL-3.0-or-later')
 makedepends=('cmake' 'doxygen' 'graphviz' 'bash')
 source=('https://github.com/ogdf/ogdf/archive/refs/tags/'${pkgtreename}-${pkgver}'.tar.gz')
 sha256sums=('3438205d3a6ff69d24c3a6db748d2a5a78688605baf3092456073901a2b623f3')
 options=('staticlibs')
 
+# Updated build and package methods contributed by yochananmarqos
+
 build() {
-	cd "$srcdir/ogdf-${pkgtreename}-${pkgver}"
-	cmake -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS} -Wno-class-memaccess -Wno-error=restrict -Wno-deprecated-copy -Wno-pessimizing-move -Wno-error=shadow" \
-		-DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-		-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
-	        -DCMAKE_INSTALL_PREFIX="$pkgdir" .
-	make OGDF
-	cd doc && ./build-ogdf-docs.sh
+	CFLAGS+=" -ffat-lto-objects"
+	CXXFLAGS+=" -ffat-lto-objects"
+	cd "$srcdir"
+	cmake -B build -S "$pkgbase-${pkgtreename}-$pkgver" \
+	  -DCMAKE_BUILD_TYPE='None' \
+	  -DCMAKE_INSTALL_PREFIX='/usr' \
+	  -Wno-dev
+	cmake --build build
+	
+	#docs 
+	cd "$pkgbase-${pkgtreename}-$pkgver"
+	sh "doc/build-$pkgbase-docs.sh"
+}
+
+_pick() {
+	local p="$1" f d; shift
+	for f; do
+		d="$srcdir/$p/${f#$pkgdir/}"
+		mkdir -p "$(dirname "$d")"
+		mv "$f" "$d"
+		rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+	done
 }
 
 package_ogdf() {
-	cd "$srcdir/ogdf-${pkgtreename}-${pkgver}"
-	conflicts=('ogdf' 'coin-or-clp' 'coin-or-osi' 'coin-or-coinutils')
-	provides=('ogdf')
-	install -Dm644 libOGDF.a "$pkgdir/usr/lib/libOGDF.a"
-	install -Dm644 libCOIN.a "$pkgdir/usr/lib/libCOIN.a"
+	conflicts=('coin-or-clp' 'coin-or-osi' 'coin-or-coinutils')
 
-	mkdir -p "$pkgdir/usr"
-	cp -r include "$pkgdir/usr"
+	DESTDIR="$pkgdir" cmake --install build
+
+	_pick docs "$pkgdir/usr/share/doc/lib${pkgbase}"
+
+	cd "$pkgbase-${pkgtreename}-$pkgver"
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgbase/"
 }
 
 package_ogdf-docs() {
-	arch=('any')
+	pkgdesc+=" (documentation)"
+	depends=()
 
-	cd "$srcdir/ogdf-${pkgtreename}-${pkgver}"
-
-	install -d "$pkgdir/usr/share/doc/$pkgbase"
-	cp -r doc/* "$pkgdir/usr/share/doc/$pkgbase"
-	rm "$pkgdir/usr/share/doc/$pkgbase/build-ogdf-docs.sh"
+	mv docs/* "$pkgdir"
 }
 
 # check() {
