@@ -1,0 +1,14 @@
+pkgbase = snip-go
+	pkgdesc = Simple and minimal command-line snippet manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mehran-prs/snip
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = snip-go
+	conflicts = snip-go
+	source = snip-0.1.0.tar.gz::https://github.com/mehran-prs/snip/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = bc0c6135b173b7e3e4cd33270fc64497b6d3a279aad5ae45538baba94ab68456
+
+pkgname = snip-go
