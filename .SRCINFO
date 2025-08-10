@@ -1,0 +1,20 @@
+pkgbase = fastgron-bin
+	pkgdesc = High-performance JSON to GRON (greppable, flattened JSON) converter
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/adamritter/fastgron
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = curl
+	provides = fastgron
+	conflicts = fastgron
+	source = LICENSE-0.7.7::https://raw.githubusercontent.com/adamritter/fastgron/v0.7.7/LICENSE
+	source = README-0.7.7.md::https://raw.githubusercontent.com/adamritter/fastgron/v0.7.7/README.md
+	sha256sums = a3e6a469b23997e436e2748a58f904e2d02756c798a06079e109f6bbb08b3672
+	sha256sums = 2748098bf2007120294360081f8b73e91a31dd736a0c43d8cbd82fa4905c855a
+	source_x86_64 = fastgron-0.7.7::https://github.com/adamritter/fastgron/releases/download/v0.7.7/fastgron-ubuntu
+	sha256sums_x86_64 = e1d4ea072f4453b322bb1e57a406cfa33208d00bef94b4b4ab3c7bcb7bdf743b
+
+pkgname = fastgron-bin
