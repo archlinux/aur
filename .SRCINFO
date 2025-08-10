@@ -1,0 +1,26 @@
+pkgbase = aero-theme-plasma
+	pkgdesc = A KDE Plasma modification that aims to replicate the look and feel of Windows 7.
+	pkgver = 6.3.4
+	pkgrel = 1
+	url = https://gitgud.io/wackyideas/aerothemeplasma
+	arch = x86_64
+	license = GNU AGPLv3
+	depends = git
+	depends = cmake
+	depends = extra-cmake-modules
+	depends = ninja
+	depends = qt6-virtualkeyboard
+	depends = qt6-multimedia
+	depends = qt6-5compat
+	depends = plasma-wayland-protocols
+	depends = plasma5support
+	depends = kvantum
+	depends = base-devel
+	depends = plasma-x11-session
+	depends = kwin-x11
+	provides = aero-theme-plasma
+	options = !debug
+	source = https://gitgud.io/wackyideas/aerothemeplasma/-/archive/master/aerothemeplasma-master.tar
+	md5sums = SKIP
+
+pkgname = aero-theme-plasma
