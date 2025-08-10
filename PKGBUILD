@@ -1,7 +1,7 @@
 # Maintainer: pro_shunsuke <shunsuke0901@gmail.com>
 
 pkgname=colmsg
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='A CLI tool for '櫻坂46メッセージ', '日向坂46メッセージ', '乃木坂46メッセージ', '齋藤飛鳥メッセージ', '白石麻衣メッセージ', and 'yodel' app.'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/proshunsuke/colmsg'
 license=(MIT)
 makedepends=(clang cmake git rust)
 depends=('gcc-libs' 'openssl')
-source=("git+$url#commit=35a0523712166d5cd76ea44433a107a3778fe67c") # tag: v3.3.0
+source=("git+$url#commit=ac6be645e6d31de993d1177c51294e007ef8a8ce") # tag: v3.4.0
 sha256sums=('SKIP')
 
 build() {
