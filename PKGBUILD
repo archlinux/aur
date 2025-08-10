@@ -2,7 +2,7 @@
 
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.2.0.r5.g4a6d3fc
+pkgver=v1.2.1.r1.g2d06451
 pkgrel=1
 pkgdesc="Blazing fast, realtime, extension-free, multi-browser, bookmark manager"
 arch=('i686' 'x86_64')
