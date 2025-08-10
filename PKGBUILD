@@ -1,11 +1,12 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: NourEddine Yassine <NourEddineX at protonmail dot com>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Amina Khakimova <hakami1024@gmail.com>
 # Contributor: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 # Contributor: Mark Dixon <mark@markdixon.name>
 
 pkgname=neo4j-community
 _pkgname=neo4j
-pkgver=5.24.0
+pkgver=5.26.10
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -32,7 +33,7 @@ source=(
   "neo4j.tmpfiles"
 )
 sha256sums=(
-  'e49bc5acde8aecdf5a34e850ae3118f67d60c5062a783f3722759f5c8914c12e'
+  '4748d720f56e506f71431c65d61160960fa6eacb4b3c7ea61ef69cb5f101b90a'
   '152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f'
   '090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142'
   'a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a'
