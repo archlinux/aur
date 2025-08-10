@@ -12,26 +12,20 @@ source=("https://github.com/Anmol1184/Nalla-IPTV/releases/download/v$pkgver/nall
 sha256sums=('SKIP')
 
 package() {
-    # Extract tar.gz
     tar -xzf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir"
 
-    # Assuming electron-builder's output is linux-unpacked/
     install -d "$pkgdir/usr/lib/nalla-iptv"
     cp -r "$srcdir/"* "$pkgdir/usr/lib/nalla-iptv/"
 
-
-    # Launcher
     install -d "$pkgdir/usr/bin"
    echo "#!/bin/sh
 exec /usr/lib/nalla-iptv/nalla-iptv \"\$@\"" > "$pkgdir/usr/bin/nalla-iptv"
 
     chmod +x "$pkgdir/usr/bin/nalla-iptv"
 
-    # Desktop entry
     install -Dm644 "$srcdir/nalla-iptv.desktop" \
         "$pkgdir/usr/share/applications/nalla-iptv.desktop"
 
-    # Icon
     install -Dm644 "$srcdir/icon.png" \
         "$pkgdir/usr/share/pixmaps/nalla-iptv.png"
 }
