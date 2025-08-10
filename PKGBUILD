@@ -2,7 +2,7 @@
 
 pkgname=python-cookietools
 _name=${pkgname/-/_}
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 epoch=
 pkgdesc="Python cookietools."
@@ -24,7 +24,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('c178a913f82d7b0b256d90a491d40c013021d213285638d83783c60672cfbc50')
+sha256sums=('8020583dbaf3eab34f630351444311dd0ce38d69a8258de4d9bacc697f051945')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
