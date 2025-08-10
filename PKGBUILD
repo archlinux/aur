@@ -25,7 +25,7 @@ _package() {
 	install -D \
 		"${pkgdir:?}/usr/lib/luarocks/rocks-$1/$_pkgname/$pkgver-$_revision/bin/$_pkgname.lua" \
 		"${pkgdir:?}/usr/bin/$_pkgname$v.lua"
-	sed -i -e"1s_\$_$1_" "${pkgdir:?}/usr/bin/$_pkgname$v.lua"
+	sed -i -e"1s_\$_${v}_" "${pkgdir:?}/usr/bin/$_pkgname$v.lua"
 	rm -r "${pkgdir:?}/usr/lib/luarocks/rocks-$1/$_pkgname/$pkgver-$_revision/bin/"
 }
 
