@@ -1,0 +1,18 @@
+pkgbase = lua-warna
+	pkgdesc = Terminal text styling library for Lua
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/0komo/warna
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	source = https://luarocks.org/manifests/urnightmaree/warna-0.3.5-2.src.rock
+	sha256sums = c350fdc77e545c0e659d89de8b0f221da72f16a3748596d38ebf1925c6c0c9b9
+
+pkgname = lua-warna
+
+pkgname = lua51-warna
+
+pkgname = lua52-warna
+
+pkgname = lua53-warna
