@@ -2,10 +2,10 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
 _pkgver=1.17.0
-_subver=1
+_subver=2
 release_tag="${_pkgver}-${_subver}"
 pkgver="${_pkgver}.${_subver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Bilibili official desktop client.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://github.com/msojocs/bilibili-linux"
