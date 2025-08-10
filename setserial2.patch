@@ -1,0 +1,22 @@
+diff -rauN setserial-2.17/setserial.c setserial-2.17-setserial-patch/setserial.c
+--- setserial-2.17/setserial.c	2000-01-27 16:40:52.000000000 +0100
++++ setserial-2.17-setserial-patch/setserial.c	2024-09-28 22:00:09.619994747 +0200
+@@ -15,6 +15,9 @@
+ #include <termios.h>
+ #include <string.h>
+ #include <errno.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <sys/ioctl.h>
+ 
+ #ifdef HAVE_ASM_IOCTLS_H
+ #include <asm/ioctls.h>
+@@ -714,7 +717,7 @@
+ 	exit(1);
+ }
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+ 	int	get_flag = 0, wild_intr_flag = 0;
+ 	int	c;
