@@ -1,9 +1,8 @@
 pkgbase = turtl
 	pkgdesc = The secure, collaborative notebook
-	pkgver = 0.7.2.6
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://turtlapp.com/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
@@ -16,10 +15,7 @@ pkgbase = turtl
 	depends = python
 	source = turtl.png
 	sha256sums = 97036fdfca0e354363bc28f1952af6e63b85907a8292d2f121905130cee23e07
-	source_i686 = https://github.com/turtl/desktop/releases/download/v0.7.2.6-pre-sync-fix/turtl-0.7.2.6-pre-sync-fix-linux32.tar.bz2
-	sha256sums_i686 = 3644e521b8ce763cd58fb2394445f17706296b8aa594564d50b1d5b5126bff40
-	source_x86_64 = https://github.com/turtl/desktop/releases/download/v0.7.2.6-pre-sync-fix/turtl-0.7.2.6-pre-sync-fix-linux64.tar.bz2
-	sha256sums_x86_64 = 77746d54518aabf19c187c6fb3c9923fe84acad30a68073fee50ba5f61a96bde
+	source_x86_64 = https://github.com/turtl/desktop/releases/download/v0.7.3/turtl-0.7.3-linux64.tar.bz2
+	sha256sums_x86_64 = 831cfd68d3ffb60d788e3baa6067a3b8e3c96e49b2ab26ead0eb5486877da996
 
 pkgname = turtl
-
