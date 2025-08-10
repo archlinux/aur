@@ -1,18 +1,21 @@
 # Maintainer: Ivan Reutov <nujievik@gmail.com>
 
 pkgname=mux-media
-pkgver=0.13.6
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A simple automated solution for muxing media (e.g. video, audio, subtitles)."
 arch=("x86_64")
 url="https://github.com/nujievik/mux-media"
 license=("GPL3")
 depends=("mkvtoolnix-cli")
+optdepends=(
+  "ffmpeg: for custom output containers (.avi, .mp4, .webm)"
+)
 makedepends=("git" "rustup")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("1d2d8ed1b353aee0e277cbda8f01c1963978503b987492667b882f3cd8814b33")
+sha256sums=("2c40b2d354b433c34a46f186cccb5ad6eec0453900daa41e0055ac2395d8905c")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
