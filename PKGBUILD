@@ -5,7 +5,7 @@ pkgdesc='a fast and lightweight bash-based text editing tool'
 arch=('any')
 license=('MIT')
 depends=()
-source=("https://raw.githubusercontent.com/aysunwhatsup/aysunwhatsup.github.io/refs/heads/main/m")
+source=("https://raw.githubusercontent.com/alahmedi/m/refs/heads/main/m")
 md5sums=('SKIP')
 
 package() {
