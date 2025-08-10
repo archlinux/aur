@@ -1,0 +1,14 @@
+pkgbase = fmp-git
+	pkgdesc = A simple secure password manager written in rust.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/lwilk0/fmp
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = gpgme
+	depends = libgpg-error
+	source = fmp-git-1.4.2.tar.gz::https://github.com/lwilk0/fmp-git/archive/refs/tags/v1.4.2.tar.gz
+	sha512sums = 80b125509fee9b7ce7124c4c317bd793602498655188edae6ffa5e3b8dad530bb1c277bdc0c296530238769d3352884d413bb0c461973ce1bbbdee9da1613e52
+
+pkgname = fmp-git
