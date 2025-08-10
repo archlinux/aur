@@ -8,11 +8,11 @@ pkgbase = honk-hg
 	changelog = honk-hg.changelog
 	arch = x86_64
 	license = custom:ISC
-	makedepends = go
-	makedepends = sqlite
+	makedepends = go>=1.22
+	makedepends = sqlite>=3.34.0
 	makedepends = mercurial
-	depends = go
-	depends = sqlite
+	depends = go>=1.22
+	depends = sqlite>=3.34.0
 	optdepends = nginx: for TLS and reverse proxying
 	provides = honk-hg
 	conflicts = honk-hg

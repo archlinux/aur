@@ -10,8 +10,8 @@ pkgdesc="ActivityPub compatible server with web frontend. Mercurialtip."
 arch=("x86_64")
 url="https://humungus.tedunangst.com/r/honk"
 license=("custom:ISC")
-makedepends=("go" "sqlite" "mercurial")
-depends=("go" "sqlite")
+makedepends=("go>=1.22" "sqlite>=3.34.0" "mercurial")
+depends=("go>=1.22" "sqlite>=3.34.0")
 optdepends=("nginx: for TLS and reverse proxying")
 changelog="$pkgname.changelog"
 provides=("${pkgname}")
