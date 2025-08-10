@@ -17,12 +17,14 @@ package() {
 
     # Assuming electron-builder's output is linux-unpacked/
     install -d "$pkgdir/usr/lib/nalla-iptv"
-    cp -r "$srcdir/linux-unpacked/"* "$pkgdir/usr/lib/nalla-iptv/"
+    cp -r "$srcdir/"* "$pkgdir/usr/lib/nalla-iptv/"
+
 
     # Launcher
     install -d "$pkgdir/usr/bin"
-    echo "#!/bin/sh
-exec electron /usr/lib/nalla-iptv/resources/app.asar \"\$@\"" > "$pkgdir/usr/bin/nalla-iptv"
+   echo "#!/bin/sh
+exec /usr/lib/nalla-iptv/nalla-iptv \"\$@\"" > "$pkgdir/usr/bin/nalla-iptv"
+
     chmod +x "$pkgdir/usr/bin/nalla-iptv"
 
     # Desktop entry
