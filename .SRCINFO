@@ -1,6 +1,6 @@
 pkgbase = wayvr-dashboard
 	pkgdesc = WayVR Dashboard is a work-in-progress overlay application (WayVR/wlx-overlay-s plugin via IPC) for launching various applications and games directly into a VR desktop environment
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/olekolek1000/wayvr-dashboard
 	install = instructions.install
@@ -26,7 +26,7 @@ pkgbase = wayvr-dashboard
 	provides = wayvr-dashboard
 	conflicts = wayvr-dashboard
 	options = !lto
-	source = wayvr-dashboard-0.3.5.tar.gz::https://github.com/olekolek1000/wayvr-dashboard/archive/refs/tags/0.3.5.tar.gz
-	sha256sums = 43762fa2d9b5fb3d04cae2bee6f1d24bee3ced9700b374f0161a79953cafd08d
+	source = wayvr-dashboard-0.3.6.tar.gz::https://github.com/olekolek1000/wayvr-dashboard/archive/refs/tags/0.3.6.tar.gz
+	sha256sums = c921c8c126f17db384788310cf66bc3fae0d93a16ef0a9779daeaddb9558c7d8
 
 pkgname = wayvr-dashboard
