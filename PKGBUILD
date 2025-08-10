@@ -10,6 +10,7 @@ pkgdesc='Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems (ap
 arch=('x86_64')
 url='https://launchpad.net/sni-qt'
 license=('LGPL3')
+options=(!debug)
 depends=(
     'qt4'
     'libdbusmenu-qt4'
@@ -29,7 +30,7 @@ prepare() {
   mkdir -p ${srcdir}/build
 
   # Disable building tests
-  sed -i '/tests/ d' ${srcdir}/CMakeLists.txt
+  sed -i '/tests/ d' "${srcdir}/CMakeLists.txt"
 }
 
 build() {
