@@ -1,11 +1,11 @@
 # -*- sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Mantas <grawity at gmail dot com>
 
 pkgname=nncp
 pkgver=8.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -16,9 +16,11 @@ optdepends=(
   'pinfo: for reading the package documentation'
   'texinfo: for reading the package documentation'
 )
+_url='http://www.nncpgo.org/download'             # Original: no https
+_mirror='https://nncp.mirrors.quux.org/download'  # Mirror
 source=(
-  "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
-  "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
+  "$_mirror/nncp-$pkgver.tar.xz"
+  "$_mirror/nncp-$pkgver.tar.xz.asc"
   nncp.sysusers
   nncp.tmpfiles
   nncp-daemon.service
@@ -41,6 +43,13 @@ backup=('etc/nncp/nncp.hjson')
 
 build() {
   cd "$pkgname-$pkgver"
+
+  # Fix “ELF file lacks GNU_PROPERTY_*_FEATURE_1_SHSTK” error message
+  case "Z$CARCH" in
+    'Zaarch64' | 'Zx86_64' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
+    ;;
+  esac
 
   export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
