@@ -1,5 +1,5 @@
 pkgbase = sysdmon
-	pkgdesc = A system tool for monitoring and alerting you if there is anything wrong with system logs.
+	pkgdesc = A system tool for monitoring and alerting you, if there is anything wrong with system logs.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/RafCodes-del/sysdmon
