@@ -9,7 +9,7 @@ url="https://github.com/lwilk0/fmp"
 license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lwilk0/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("fmp-$pkgver.tar.gz::https://github.com/lwilk0/fmp/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('80b125509fee9b7ce7124c4c317bd793602498655188edae6ffa5e3b8dad530bb1c277bdc0c296530238769d3352884d413bb0c461973ce1bbbdee9da1613e52')
 
 build() {
