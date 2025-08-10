@@ -3,12 +3,12 @@
 pkgname=tangent-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source markdown note-taking app with linked notes and visual map"
 arch=('x86_64')
 url="https://www.tangentnotes.com"
 license=('Apache-2.0')
-_electron=electron35
+_electron=electron37
 depends=("$_electron")
 provides=('tangent')
 conflicts=('tangent' 'tangent-dev-bin')

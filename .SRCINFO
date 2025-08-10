@@ -1,11 +1,11 @@
 pkgbase = tangent-bin
 	pkgdesc = Open source markdown note-taking app with linked notes and visual map
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tangentnotes.com
 	arch = x86_64
 	license = Apache-2.0
-	depends = electron35
+	depends = electron37
 	provides = tangent
 	conflicts = tangent
 	conflicts = tangent-dev-bin
