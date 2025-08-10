@@ -17,11 +17,9 @@ license=('GPL2')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('openssl' 'ncurses' 'curl' 'xmlrpc-c')
 makedepends=('git')
-optdepends=('ttf-dejavu: for utf8 glyphs'
-            'python2: for pyroscope tools')
+optdepends=('ttf-dejavu: for utf8 glyphs')
 conflicts=('rtorrent' 'rtorrent-git' 'rtorrent-ps')
 provides=('rtorrent')
-replaces=('libtorrent-pyro-git')
 install='pyroscope.install'
 backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 

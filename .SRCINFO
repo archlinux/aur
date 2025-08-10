@@ -14,12 +14,10 @@ pkgbase = rtorrent-pyro-git
 	depends = curl
 	depends = xmlrpc-c
 	optdepends = ttf-dejavu: for utf8 glyphs
-	optdepends = python2: for pyroscope tools
 	provides = rtorrent
 	conflicts = rtorrent
 	conflicts = rtorrent-git
 	conflicts = rtorrent-ps
-	replaces = libtorrent-pyro-git
 	backup = usr/share/doc/rtorrent/rtorrent.rc.sample
 	source = git://github.com/rakshasa/rtorrent.git#branch=master
 	source = git://github.com/rakshasa/libtorrent.git#branch=master
@@ -43,4 +41,3 @@ pkgbase = rtorrent-pyro-git
 	md5sums = 9edae7ef267b47d2445a667e98f6ea2d
 
 pkgname = rtorrent-pyro-git
-
