@@ -1,14 +1,14 @@
 # Maintainer: Varun M <varunushamurali@gmail.com>
 
 pkgname=mybatop
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="mybatop continuously monitors laptop battery status and provides detailed analytics through HTML reports."
 arch=('any')
 url="https://github.com/vishnumur777/mybatop"
 license=('GPL-3.0')
 depends=('bash' 'systemd' 'dmidecode' 'python' 'python-pandas' 'python-plotly')
-source=("https://github.com/vishnumur777/mybatop/releases/download/1.0.0/mybatop-1.0.0.tar.gz")
+source=("https://github.com/vishnumur777/mybatop/releases/download/1.0.1/mybatop-1.0.1.tar.gz")
 sha256sums=('SKIP')
 install=mybatop.install
 
@@ -22,10 +22,10 @@ package() {
   pwd
   ls
   # Copy source files from $srcdir to /opt/mybatop
-  cp -r "$srcdir/mybatop-1.0.0/"* "$pkgdir/opt/mybatop/"
+  cp -r "$srcdir/mybatop-1.0.1/"* "$pkgdir/opt/mybatop/"
 
   # Install systemd service files (adjust path if needed)
-  cp "$srcdir/mybatop-1.0.0/filesystemd"/mybatop-* "$pkgdir/etc/systemd/system/"
+  cp "$srcdir/mybatop-1.0.1/filesystemd"/mybatop-* "$pkgdir/etc/systemd/system/"
 
   # Create symlink to the installed script
   ln -s "/opt/mybatop/scripts/runscript/mybatop" "$pkgdir/usr/bin/mybatop"
