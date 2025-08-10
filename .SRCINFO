@@ -1,0 +1,11 @@
+pkgbase = python-pytest-docs
+	pkgdesc = Documentation for Python Pytest package
+	pkgver = 8.3
+	pkgrel = 1
+	url = https://docs.pytest.org/
+	arch = x86_64
+	license = MIT
+	source = python-pytest-docs-8.3.zip::https://docs.pytest.org/_/downloads/en/8.3.x/htmlzip/
+	sha256sums = 9176061eb2b047fc17f3e98bbec73b0dfe923f16c00b7f906614411cd12cac76
+
+pkgname = python-pytest-docs
