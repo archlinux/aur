@@ -22,9 +22,9 @@ makedepends=(
   'python-installer'
 )
 optdepends=(
-  'python-ffpyplayer: for playing AudioSegments (third preference)'
-  'python-pyaudio: for playing AudioSegments (second preference)'
   'python-simpleaudio: for playing AudioSegments (first preference)'
+  'python-pyaudio: for playing AudioSegments (second preference)'
+  'python-ffpyplayer: for playing AudioSegments (third preference)'
   'python-scipy: SciPy versions of high_pass_filter, low_pass_filter, and band_pass_filter'
 )
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/${_name}/${_name//-/_}-${pkgver}-py3-none-any.whl")

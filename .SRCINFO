@@ -13,9 +13,9 @@ pkgbase = python-lxst
 	depends = python-pycodec2
 	depends = python-rns>=0.9.5
 	depends = python-soundcard
-	optdepends = python-ffpyplayer: for playing AudioSegments (third preference)
-	optdepends = python-pyaudio: for playing AudioSegments (second preference)
 	optdepends = python-simpleaudio: for playing AudioSegments (first preference)
+	optdepends = python-pyaudio: for playing AudioSegments (second preference)
+	optdepends = python-ffpyplayer: for playing AudioSegments (third preference)
 	optdepends = python-scipy: SciPy versions of high_pass_filter, low_pass_filter, and band_pass_filter
 	source = https://files.pythonhosted.org/packages/py3/l/lxst/lxst-0.3.0-py3-none-any.whl
 	sha256sums = 23bc9bb4ca635394efac2fae371a8cf63bab2b1003ba4e449b06f0e4d0854d66
