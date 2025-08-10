@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-wallet"
-pkgver=4.1.22
-pkgrel=2
+pkgver=4.1.24
+pkgrel=1
 pkgdesc="Official Cellframe Wallet"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
@@ -10,7 +10,7 @@ depends=(qt6-declarative qt6-base qt6-svg qt6-5compat)
 makedepends=(git cmake libxslt)
 optdepends=('cellframe-node: Support for local node management')
 options=(!debug)
-source=("git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=252a828afabf3650d3cd3e568f87784fd749515b"
+source=("git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=89e22fdd924326e40d4fa1bfc44a39f13e540c5b"
         "$pkgname-tmpfiles.conf")
 md5sums=('SKIP'
          '8744d1d0af5e1456bfce710a4c36af64')
