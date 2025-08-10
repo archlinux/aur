@@ -11,7 +11,7 @@ url=https://ffmpeg.org/
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 install=on-opera-ffmpeg.install
-source=(${url}releases/ffmpeg-${pkgver}.tar.xz #fetch-soname-by-chromium.sh
+source=(${url}releases/ffmpeg-${pkgver}.tar.xz
 "AVFMT_FLAG_NOVIDEOPARSE.patch.base64::${_url}/+/594bc6d3246fe6b293f253d07c8905c578cb75c9%5E%21/?format=TEXT"
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
@@ -101,5 +101,6 @@ build() {
 
 package(){
   install -Dvm644 $_so "${pkgdir}"/usr/lib/$_so
+  ln -svf /usr/lib/$_so "${pkgdir}"/usr/lib/${_so}.${_so}.${_avcodec}
   install -Dvm644 block-opera-ldpreload.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
