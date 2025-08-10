@@ -2,7 +2,7 @@
 
 _plug=jetpytools
 pkgname=python-${_plug}
-pkgver=1.3.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Python package: ${_plug}"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python')
 makedepends=('python-pip')
 provides=('python-stgpytools')
 conflicts=('python-stgpytools')
-source=("https://files.pythonhosted.org/packages/ff/25/b6118315f6c0e9bd3327d8eee8c5f2642e122b42ef8316a65f0d77bd6a6a/jetpytools-1.3.0-py3-none-any.whl")
-sha256sums=('68fb0efcaa23cf72514201fe5f348a485d3e89a6bb63873d9605ee2e0ca4f6b5')
+source=("https://files.pythonhosted.org/packages/3a/74/e7a2424713172d9c5b7afd8d3a185a1c388e32dcb980d71ce4c69bdfcb9b/jetpytools-1.6.1-py3-none-any.whl")
+sha256sums=('e837ec051a2d61decd9934f20101a006b75535e2d5986d6c8db5509514f8af7c')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
