@@ -1,0 +1,17 @@
+pkgbase = serv-bin
+	pkgdesc = High-performance JSON to GRON (greppable, flattened JSON) converter
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/xonixx/serv
+	arch = x86_64
+	license = MIT
+	provides = serv
+	conflicts = serv
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/xonixx/serv/v1.0.2/LICENSE
+	source = README-1.0.2.md::https://raw.githubusercontent.com/xonixx/serv/v1.0.2/README.md
+	sha256sums = 5fabf1d1542af4e23f2eef9c46d179e0b6ca0cbd87114773b98e8cc339e1cd25
+	sha256sums = 19d9ec6bf44da5f66a7e0c525525c18516401e9ab6f9050da56ce35703c4bb3c
+	source_x86_64 = serv-1.0.2::https://github.com/xonixx/serv/releases/download/v1.0.2/serv-linux-amd64
+	sha256sums_x86_64 = 05863072cd4b5a5b221434ca90db730133e1ab009c69e72c30188e6b8c69605a
+
+pkgname = serv-bin
