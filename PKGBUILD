@@ -2,16 +2,17 @@
 
 _pkgname=nperf-gui
 pkgname=nperf-gui-appimage
-pkgver=1.12.3
+pkgver=2.15.3
 pkgrel=2
 pkgdesc="Nperf wide-area network speed test application."
 arch=('x86_64')
 #url="https://www.nperf.com/"
 license=('GPL')
+depends=('fuse')
 provides=('nperf-gui')
 _filename="nPerf-${pkgver}-${arch}.AppImage"
 source=("https://repo.nperf.com/linux/nperf/nPerf-${pkgver}-${arch}.AppImage")
-md5sums=('e97cfe46df5f7ba3e58df79f7f5a902e')
+md5sums=('e4cbc95b78485ef8262e5f6a523da4a3')
 options=(!strip)
 prepare() 
 {
@@ -30,7 +31,7 @@ package()
   ExecScript="#!/bin/sh\nexec /opt/appimages/${_filename} \"\$@\""
   install -dm755 "${pkgdir}/usr/bin"
   echo -e $ExecScript > "${pkgdir}/usr/bin/${_pkgname}"
-  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 
   # Install global Desktop-Integration
 #   _sizes=('256x256' '128x128' '64x64' '48x48' '32x32' '22x22' '16x16')
