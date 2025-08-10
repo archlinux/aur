@@ -1,7 +1,7 @@
 pkgbase = python-manimgl
 	pkgdesc = Animation engine for explanatory math videos
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/3b1b/manim
 	arch = any
 	license = MIT
@@ -27,6 +27,7 @@ pkgbase = python-manimgl
 	depends = python-sympy
 	depends = python-tqdm
 	depends = python-validators
+	depends = python-addict
 	depends = python-mapbox-earcut
 	depends = python-moderngl
 	depends = python-moderngl-window
