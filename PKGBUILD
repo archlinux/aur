@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=k3s
-pkgver=1.33.1+k3s1
+pkgver=1.33.3+k3s1
 pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
@@ -30,16 +30,16 @@ source=(
   '0005-.service-update-systemd-service-files.patch'
   '0006-scripts-moar-compression-drop-pigz-and-raw-tar.patch'
 )
-sha256sums=('2530e85a4053d789540d1409e5007389be07c89069bf39f39cd0174a642ee0a3'
+sha256sums=('4dd48038bf8915da80ee002374f2f81b96c5bd5d7a88fdc19d31c00c8ed3ff27'
             '94b0dd21fa4f075d4db7f6efe7a775de476b278de72f99773ee3de0bb54e7f68'
             '2f6964aed46deb38095801e124a6603f3a29e6886815d52c59c02883f7a37925'
             '6f0500a656ed78c0bb689c12264dbcd79f579edc3b9e17d512be742c1b2c43a4'
-            '60dd873c48bde3e2f4d2583ec447580151baebdec2799545e7dc5c514ef4393d'
-            'd743e2d5cbfcf84ec11a33e8edc44a89d96765a31e24ef4d9d1db45f20dbb954'
-            'b7969defa5176c76b24228b82ee851589a4b4941e3d08359d6fe16e2e75ba75b'
-            'af3fdb16436111cfaba331243ffaf39b745ec3a86aa5844c68cff7536111c1ef'
-            '7523d371cbf2219682d866e70bc920791c78694cfd8a1f976c969121e4a68400'
-            'e560f7d315a1ad6c574851f0403b17affecd10cf7ba9123fe2da374ec65f9b1c')
+            '32d54b04f79534349757581ba2e2a70933c8244ebf89c2ba742c88c282b18043'
+            'd3c22aecfd2f9d3f598e874ae850fd1c1399f0895f68e6ab11f6c92699c27c67'
+            '69b0a0ac606eb94f9d320239202dba9fd06fc8cdc0b63ef1677dd85e7e86b0b7'
+            '6fa320384676fcd91bddf41ee02336097db1d84a0165c00aa850d9b46949f6f6'
+            '7fdc566a3c8639d6d2af8f2a83c86cbe7dd66d57d3c9969a1058e4667c492746'
+            '2b4d7018123c2e308655b9b38d46322431a3889da88a63a7760b43023dbb6421')
 
 prepare() {
   cd k3s
@@ -47,7 +47,7 @@ prepare() {
   # fix #8293, #9089, sanitize buildsystem, moar compression
   for p in "${source[@]}"; do
     if [[ $p == *.patch ]]; then
-      git am -3 "$srcdir/$p"
+      git apply -3 "$srcdir/$p"
     fi
   done
 }

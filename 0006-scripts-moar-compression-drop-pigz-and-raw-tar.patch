@@ -1,4 +1,4 @@
-From 07b2dcf2ea7a546bc95939321835fc570ba714a3 Mon Sep 17 00:00:00 2001
+From 964a2c70d3dca3a8ca3b74bf966c22785d78c0c7 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
 Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
@@ -9,11 +9,11 @@ Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
  2 files changed, 15 insertions(+), 9 deletions(-)
 
 diff --git a/scripts/package-airgap b/scripts/package-airgap
-index ce27ae680e..77af3a0700 100755
+index 36c4084db9..43a729bed7 100755
 --- a/scripts/package-airgap
 +++ b/scripts/package-airgap
-@@ -9,12 +9,17 @@ if [ "${OS}" != "linux" ]; then
-   exit
+@@ -20,12 +20,17 @@ if [ -n "${OPT_ARCH}" ]; then
+   fi
  fi
  
 +xargs=(xargs)
@@ -23,20 +23,20 @@ index ce27ae680e..77af3a0700 100755
 +
  airgap_image_file='scripts/airgap/image-list.txt'
 -images=$(cat "${airgap_image_file}")
--xargs -n1 docker pull <<< "${images}"
+-xargs -n1 docker pull ${OPT_PLATFORM} <<< "${images}"
 -docker save ${images} -o dist/artifacts/k3s-airgap-images-${ARCH}.tar
 -zstd --no-progress -T0 -16 -f --long=25 dist/artifacts/k3s-airgap-images-${ARCH}.tar -o dist/artifacts/k3s-airgap-images-${ARCH}.tar.zst
 -pigz -v -c dist/artifacts/k3s-airgap-images-${ARCH}.tar > dist/artifacts/k3s-airgap-images-${ARCH}.tar.gz
 +airgap_tar_file="dist/artifacts/k3s-airgap-images-${ARCH}.tar"
 +readarray -t images <"${airgap_image_file}"
-+printf '%s\0' "${images[@]}" | "${xargs[@]}" -0 -n1 docker pull
++printf '%s\0' "${images[@]}" | "${xargs[@]}" -0 -n1 docker pull ${OPT_PLATFORM}
 +docker save "${images[@]}" -o "${airgap_tar_file}"
-+zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${airgap_tar_file}"
++zstd -T0 --ultra -22 --long --verbose --force --rm "${airgap_tar_file}"
  if [ ${ARCH} = amd64 ]; then
    cp "${airgap_image_file}" dist/artifacts/k3s-images.txt
  fi
 diff --git a/scripts/package-cli b/scripts/package-cli
-index f38e10d074..2abcfccb0d 100755
+index f38e10d074..2b2655bef8 100755
 --- a/scripts/package-cli
 +++ b/scripts/package-cli
 @@ -54,11 +54,12 @@ mkdir -p ./etc
@@ -48,7 +48,7 @@ index f38e10d074..2abcfccb0d 100755
 -HASH=$(sha256sum ./build/out/data-${OS}.tar.zst | awk '{print $1}')
 +data_tar_file="./build/out/data-${OS}.tar"
 +tar cvf "${data_tar_file}" ./bin ./etc
-+zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${data_tar_file}"
++zstd -T0 --ultra -22 --long --verbose --force --rm "${data_tar_file}"
 +HASH=$(sha256sum "${data_tar_file}.zst" | awk '{print $1}')
  
 -cp ./build/out/data-${OS}.tar.zst ./build/data/${HASH}.tar.zst
@@ -57,5 +57,5 @@ index f38e10d074..2abcfccb0d 100755
  BIN_SUFFIX="-${ARCH}"
  if [ ${ARCH} = amd64 ]; then
 -- 
-2.48.1.5.g9188e14f140
+2.50.1.5.gf5b12191f0
 
