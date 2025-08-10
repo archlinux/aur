@@ -13,9 +13,11 @@ checkdepends=('ruby-rake' 'ruby-test-unit' 'ruby-webrick' 'git' 'cmake')
 options=('!emptydirs')
 source=("https://github.com/rubygems/rubygems/archive/refs/tags/v${pkgver}.tar.gz"
 	'Gem.default_install.patch'
+	'gem-home-fix.patch'
 	'operating_system.rb')
 sha512sums=('ee365f31fe17061cb86669457748a3074bbf7df9c931aae545214672a778e59addb2cd6febf1393cb6fbcc78f7f55dd1d48a11a99d8274f4570c7b80ae50c6f3'
             '84ac1ea8ccaa350db8d9176d357d0d09f95e32411887c45f939e9d8dd6be6a55bb4a4087580d4a3bd9c2aeee65dc0313088e96ecac5653fd95f0105060fd8e53'
+            'c6263ab9deb34febf3cf4552727e32390388fd8c70765c7762cab103952bb0d4b888a0f8eccedc02d7bd774c9bf5f86f3815ab33f5dbe775c5fc7c75bdc504c7'
             '3462dfe94f51d31dd616fae4107c7410d8513323dd8dffd657271a31363abd3b87d2150cda47fd9b1a8b9b63b4c57c03740e26941ac6ef55be9848fe56db8af4')
 
 provides=("rubygems=$pkgver" 'ruby-rubygems')
@@ -25,6 +27,7 @@ prepare() {
   cd "rubygems-${pkgver}"
 
   patch -p1 -i "$srcdir/Gem.default_install.patch"
+  patch -p1 -i "$srcdir/gem-home-fix.patch"
 }
 
 check() {
@@ -32,10 +35,6 @@ check() {
 
   # Remove unnecessary checks
   rm "test/rubygems/test_project_sanity.rb"
-
-  # Workaround because json default spec is wrongly built
-  # https://github.com/rubygems/rubygems/issues/5951
-  export GEM_COMMAND=gem
 
   # The tests get confused with our operating_system.rb
   mkdir -p test/rubygems/defaults/

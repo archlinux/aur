@@ -1,0 +1,41 @@
+From 1491a93491f84851076b664b3084c0a1d5f73827 Mon Sep 17 00:00:00 2001
+From: Felipe Contreras <felipe.contreras@gmail.com>
+Date: Tue, 15 Feb 2022 16:16:37 -0600
+Subject: [PATCH] test: rubygems: fix fake operating system
+
+It's not enough to override Gem.default_dir because if the environment
+variable GEM_HOME is set, that will be used instead.
+
+This essentially reverts 5790007171 and fixes it correctly.
+---
+ test/rubygems/test_rubygems.rb | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/test/rubygems/test_rubygems.rb b/test/rubygems/test_rubygems.rb
+index ec195b65cd..73c47789f9 100644
+--- a/test/rubygems/test_rubygems.rb
++++ b/test/rubygems/test_rubygems.rb
+@@ -44,11 +44,7 @@ def self.default_dir
+       "require \"rubygems\"; puts Gem::Specification.stubs.map(&:full_name)",
+       { err: [:child, :out] }
+     ).strip
+-    begin
+-      assert_empty output
+-    rescue Test::Unit::AssertionFailedError
+-      pend "Temporary pending custom default_dir test"
+-    end
++    assert_empty output
+   end
+ 
+   private
+@@ -71,6 +67,6 @@ def operating_system_rb_at(dir)
+   end
+ 
+   def ruby_with_rubygems_and_fake_operating_system_in_load_path(operating_system_path)
+-    [Gem.ruby, "-I", operating_system_path, "-I", $LOAD_PATH.find {|p| p == File.dirname($LOADED_FEATURES.find {|f| f.end_with?("/rubygems.rb") }) }]
++    [{ 'GEM_HOME' => nil }, Gem.ruby, "-I", operating_system_path, "-I", $LOAD_PATH.find {|p| p == File.dirname($LOADED_FEATURES.find {|f| f.end_with?("/rubygems.rb") }) }]
+   end
+ end
+-- 
+0.1
+
