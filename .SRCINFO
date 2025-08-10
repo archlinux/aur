@@ -1,7 +1,7 @@
 pkgbase = setserial
 	pkgdesc = Allows to change various attributes of a serial device
 	pkgver = 2.17
-	pkgrel = 5
+	pkgrel = 6
 	url = http://setserial.sourceforge.net/
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = setserial
 	depends = glibc
 	source = http://downloads.sourceforge.net/sourceforge/setserial/setserial-2.17.tar.gz
 	source = setserial.patch
-	source = ioctls.patch
+	source = setserial2.patch
 	md5sums = c4867d72c41564318e0107745eb7a0f2
 	md5sums = 99919d3be7c1550721494070a7ace66a
-	md5sums = cafef036654b3145638864026afd2c87
+	md5sums = 5aa15f7d3c80676dfebcac057ddd7a71
 
 pkgname = setserial
-
