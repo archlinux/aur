@@ -47,9 +47,6 @@ prepare() {
     if [[ -f linux/CMakeLists.txt ]]; then
         sed -i 's/-Werror/-Wextra/g' linux/CMakeLists.txt
     fi
-    flutter clean
-    flutter pub get
-    flutter precache --linux
 }
 
 build() {
@@ -59,7 +56,9 @@ build() {
     export CXXFLAGS="${CXXFLAGS} -Wno-error"
 
     cd "$srcdir/$_reponame"
-
+    flutter clean
+    flutter pub get
+    flutter precache --linux
     flutter build linux --no-pub --release -v
 }
 
