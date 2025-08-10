@@ -1,7 +1,7 @@
 pkgbase = balena-etcher
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://balena.io/etcher
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = balena-etcher
 	makedepends = moreutils
 	makedepends = python-setuptools
 	makedepends = git
-	depends = electron36
+	depends = electron37
 	depends = nodejs-lts-jod
 	optdepends = libnotify: for notifications
 	conflicts = etcher
