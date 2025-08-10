@@ -1,7 +1,7 @@
 pkgbase = unofficial-homestuck-collection-git
 	pkgdesc = An offline collection of Homestuck and its related works.
 	pkgver = 2.7.1.r0.g8890eff
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GiovanH/unofficial-homestuck-collection
 	arch = x86_64
 	license = GPL-3.0-only

@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=unofficial-homestuck-collection-git
 pkgver=2.7.1.r0.g8890eff
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline collection of Homestuck and its related works."
 arch=('x86_64')
 url="https://github.com/GiovanH/unofficial-homestuck-collection"
@@ -23,13 +23,6 @@ prepare() {
 	cd "$srcdir"
 	sed -i 's/18.20/22/g' ${pkgname::-4}/package.json
 
-	gendesk -f \
-	--pkgname="${pkgname::-4}" \
-	--name="Unofficial Homestuck Collection" \
-	--comment="Unofficial Reader For Homestuck" \
-	--exec="${pkgname::-4}" \
-	--icon="${pkgname::-4}"
-
 }
 
 build() {
@@ -39,7 +32,16 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname::-4}"
+	cd "$srcdir"
+
+	gendesk -f \
+	--pkgname="${pkgname::-4}" \
+	--name="Unofficial Homestuck Collection" \
+	--comment="Unofficial Reader For Homestuck" \
+	--exec="${pkgname::-4}" \
+	--icon="${pkgname::-4}" \
+	--categories="AudioVideo;Graphics;Game"
+
 	install -dm755 "$pkgdir/usr/lib/${pkgname::-4}"
 	cp -a -T "$srcdir/${pkgname::-4}/dist_electron/linux-unpacked" "$pkgdir/usr/lib/${pkgname::-4}/"
 
@@ -48,7 +50,7 @@ package() {
 	for _size in 16 24 48 64 128 256 512 1024
 	do
 		install -Dm644 ${_size}x${_size}.png \
-		"$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
+		"$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname::-4}.png"
 	done
 	install -dm755 "$pkgdir/usr/bin"
 	cat > "$pkgdir/usr/bin/${pkgname::-4}"<<EOF
