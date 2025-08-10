@@ -1,0 +1,32 @@
+pkgbase = chromium-ffmpeg
+	pkgdesc = Add codecs to Chromium M138+ (libavcodec 62)
+	pkgver = 8.0
+	pkgrel = 1
+	url = https://ffmpeg.org/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = nasm
+	makedepends = diffutils
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = glibc
+	optdepends = nwjs: swap libffmpeg.so by ln -sf
+	provides = vivaldi-ffmpeg-codecs
+	provides = vivaldi-snapshot-ffmpeg-codecs
+	conflicts = vivaldi-ffmpeg-codecs
+	conflicts = vivaldi-snapshot-ffmpeg-codecs
+	source = https://github.com/FFmpeg/FFmpeg/archive/638b521c7b09e00514aa13ade43c389b4b40ddfd.zip
+	source = no-xheaac-parser.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT
+	source = 138.0.7204.233sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2/chromium/ffmpeg.sigs?format=TEXT
+	source = aac.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT
+	source = aacREADME.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+	sha256sums = 0a7fdf8691f02cba4688f2f84f0c621d23cd935bc35db16c1691dfebf829b0c8
+	sha256sums = 95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05
+	sha256sums = 65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341
+	sha256sums = ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234
+	sha256sums = bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660
+	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
+
+pkgname = chromium-ffmpeg
