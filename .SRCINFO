@@ -22,7 +22,7 @@ pkgname = linux-zen-git
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.5.20
+	depends = initramfs
 	optdepends = linux-zen-git-headers: to build third party modules such as NVIDIA drivers or OSSv4
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = linux-zen

@@ -113,7 +113,7 @@ build() {
 }
 
 package_linux-zen-git() {
-	depends=("coreutils" "linux-firmware" "kmod" "mkinitcpio>=0.5.20")
+	depends=("coreutils" "linux-firmware" "kmod" "initramfs")
 	provides=("linux-zen" "linux-zen-git")
 	optdepends=("linux-zen-git-headers: to build third party modules such as NVIDIA drivers or OSSv4"
 	            "crda: to set the correct wireless channels of your country")
