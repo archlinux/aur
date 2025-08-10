@@ -1,38 +1,28 @@
-# Maintainer: maz-1 <ohmygod19993 at gmail dot com>
-# http://www.theneitherworld.com/yumenikki/links.htm
-# curl http://www.mediafire.com/download/98jpx2dm3f2te0h/Yume_Nikki.rar | grep -oP 'http://download\d{4}.mediafire.com/\S+/Yume_Nikki.rar'
-_pkgname=yumenikki
-pkgname=${_pkgname}-en
+# Contributor: maz-1 <ohmygod19993 at gmail dot com>
+
+pkgname=yumenikki-en
 pkgver=0.10
-pkgrel=1
-pkgdesc="Surrealistic adventure game about exploring the dreams of a hikikomori character named Madotsuki.Also known as \"Dream Diary\". English Ver."
+pkgrel=2
+pkgdesc="Surrealistic adventure game about exploring the dreams"
 url='http://www3.nns.ne.jp/pri/tk-mto/'
 arch=('any')
 license=('custom')
-depends=('easyrpg-player')
-makedepends=('curl')
+depends=(easyrpg-player)
+makedepends=(desktop-file-utils)
 source=("yumenikki-en.7z::https://dl.dropbox.com/s/a5dqfazyfrvjr8f/yumenikki-en.7z?dl=1"
-        "${pkgname}.desktop"
-        "${pkgname}.png"
-        "${pkgname}.sh")
-md5sums=('3fb229c2435bc2781b8043a51eea75ec'
-         '8cf6b65c9a23295e5492b4bbb612cf56'
-         'b8f0addba27f5c18f806c35b933ec8d9'
-         '60242abd08aa8eb8f8597ee1911b111d')
-
+ ${pkgname}.{png,sh})
+sha256sums=('a14aa1e3a69d04d1624dc127cf400793372ff53368d49f277fad36a4c8437460'
+            '39125abeef72301782c30322f1649a22354760a76017b37531fbb642af6ccf0b'
+            '4c24ba558a08c55ce2e0d40d4121f5729088a8fd5e3a8006cc4f71e793fca74c')
          
 package() {
-  
-  install -dm755 "$pkgdir/opt/"
-  install -dm755 "$pkgdir/usr/"{bin,share/applications,share/pixmaps}
-
-  
-  cp -r "$srcdir/$pkgname" "$pkgdir/opt/$pkgname"
-  
-  cd "$pkgdir/opt/$pkgname"
-  
-  install -Dm755 "${srcdir}/${pkgname}.sh" "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm755 "${srcdir}/${pkgname}.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-
+  rm -f ${pkgname}/{*.exe,*/Thumbs.db} #todo: replace bundled RTP with rpg2003-rtp
+  install -d "$pkgdir/opt"
+  mv $pkgname "$pkgdir/opt/$pkgname"
+  install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png" # should be replaced
+  install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
+  # Entry
+  install -Dm644 /usr/share/applications/easyrpg-player.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  desktop-file-edit "$pkgdir/usr/share/applications/$pkgname.desktop" \
+    --set-name=yumenikki --set-key=Exec --set-value=${pkgname} --set-icon=${pkgname} --set-comment='Explore the dreams'  
 }
