@@ -3,7 +3,7 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=celluloid-git
-pkgver=0.27.r26.gb027fa8
+pkgver=0.29.r15.g6f04da5
 pkgrel=1
 pkgdesc="Simple GTK+ frontend for mpv"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://celluloid-player.github.io/"
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'mpv')
 makedepends=('appstream-glib' 'git' 'glib2-devel' 'meson')
-optdepends=('youtube-dl: for video-sharing websites playback')
+optdepends=('yt-dlp: for video-sharing websites playback')
 conflicts=('celluloid')
 provides=('celluloid')
 source=("$pkgname::git+https://github.com/celluloid-player/celluloid.git")
