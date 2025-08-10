@@ -1,0 +1,19 @@
+pkgbase = dankgop
+	pkgdesc = System monitoring CLI + REST API
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/AvengeMedia/dankgop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	source_x86_64 = dankgop-0.0.1-linux-amd64::https://github.com/AvengeMedia/dankgop/releases/download/v0.0.1/dankgop-v0.0.1-linux-amd64
+	source_x86_64 = dankgop-0.0.1-linux-amd64.sha256::https://github.com/AvengeMedia/dankgop/releases/download/v0.0.1/dankgop-v0.0.1-linux-amd64.sha256
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = dankgop-0.0.1-linux-arm64::https://github.com/AvengeMedia/dankgop/releases/download/v0.0.1/dankgop-v0.0.1-linux-arm64
+	source_aarch64 = dankgop-0.0.1-linux-arm64.sha256::https://github.com/AvengeMedia/dankgop/releases/download/v0.0.1/dankgop-v0.0.1-linux-arm64.sha256
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = dankgop
