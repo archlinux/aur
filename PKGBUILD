@@ -2,11 +2,11 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=e5d94ad716ead526364512efb7b9e9e2de9a68a7} # 10.5.0
+: ${_commit=6df16225ed81a31a3fd79817bf8a0c63c1320c0a} # 10.6.0
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.5.0
+pkgver=10.6.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"

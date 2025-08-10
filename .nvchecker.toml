@@ -1,5 +1,3 @@
 [peazip]
-source = "github"
-github = "peazip/PeaZip"
-prefix = "v"
-use_latest_release = "true"
+source = "git"
+git = "https://github.com/peazip/PeaZip.git"
