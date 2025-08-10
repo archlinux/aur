@@ -1,6 +1,6 @@
 pkgbase = rustywind-bin
 	pkgdesc = CLI for organizing Tailwind CSS classes
-	pkgver = 0.24.0
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://github.com/avencera/rustywind
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rustywind-bin
 	provides = rustywind-bin
 	conflicts = rustywind
 	conflicts = rustywind-bin
-	source = https://github.com/avencera/rustywind/releases/download/v0.24.0/rustywind-v0.24.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 0cb3fc9758c6f95e159e012e706bd966e380fafca680428338c2d6e7b75db96e
+	source = https://github.com/avencera/rustywind/releases/download/v0.24.3/rustywind-v0.24.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 926d346e8314f07c14b3f2e33dbacc67198c69aae5648b6074485715996a0e85
 
 pkgname = rustywind-bin
