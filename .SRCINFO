@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-alphabetical-grid-extension
 	pkgdesc = Alphabetically order GNOME's app grid and folders
 	pkgver = 43.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stuarthayhurst/alphabetical-grid-extension
 	arch = any
 	license = GPL-3.0-or-later

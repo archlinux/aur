@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-alphabetical-grid-extension
 _uuid=AlphabeticalAppGrid@stuarthayhurst
 pkgver=43.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Alphabetically order GNOME's app grid and folders"
 arch=('any')
 url="https://github.com/stuarthayhurst/alphabetical-grid-extension"
@@ -31,5 +31,5 @@ package() {
     "$pkgdir/usr/share/glib-2.0/schemas/"
 
   rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
-  rm -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/LICENSE.txt"
+  rm -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/LICENCE.txt"
 }
