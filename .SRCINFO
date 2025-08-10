@@ -1,0 +1,19 @@
+pkgbase = buttercup-git
+	pkgdesc = script and hook to automate snapshot cycling as well as making incremental backups easy
+	pkgver = r8.2f80a19
+	pkgrel = 1
+	url = https://github.com/Elec3137/buttercup
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = sudo
+	depends = btrfs-progs
+	depends = grep
+	depends = fish
+	optdepends = grub-btrfs: to add root snapshots into your grub bootmenu
+	provides = buttercup
+	conflicts = buttercup
+	source = git+https://github.com/Elec3137/buttercup#branch=main
+	sha256sums = SKIP
+
+pkgname = buttercup-git
