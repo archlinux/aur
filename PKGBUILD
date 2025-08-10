@@ -5,7 +5,6 @@ pkgrel=1
 pkgdesc="IPTV Player for M3U playlists with DRM support"
 arch=('x86_64')
 url="https://github.com/Anmol1184/Nalla-IPTV"
-depends=('electron')
 provides=('nalla-iptv-bin')
 conflicts=('nalla-iptv-bin')
 
