@@ -2,7 +2,7 @@
 
 _pkgname=netsleuth
 pkgname="$_pkgname"-git
-pkgver=v1.1.1.r3.g2df361d
+pkgver=v1.1.1.r6.gd0ae8fa
 pkgrel=1
 pkgdesc='A simple utility for the calculation and analysis of IP subnet values, designed to simplify network configuration tasks.'
 url="https://github.com/vmkspv/netsleuth"
