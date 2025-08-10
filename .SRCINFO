@@ -1,0 +1,14 @@
+pkgbase = android-sdk-client
+	pkgdesc = Display list of available files of SDK repository
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/pbakondy/android-sdk-client
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = android-sdk-client-1.2.5.tgz
+	source = https://registry.npmjs.org/android-sdk-client/-/android-sdk-client-1.2.5.tgz
+	sha256sums = c666af4861815751d67f29a9520679fce7a12179bcfd876046276caf55bf446d
+
+pkgname = android-sdk-client
