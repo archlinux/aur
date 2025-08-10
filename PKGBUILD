@@ -3,7 +3,7 @@
 _pkgauthor=josephburnett
 _pkgname=jd
 pkgname=${_pkgname}-bin
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="JSON diff and patch"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}::${url}/releases/download/v${p
 sha256sums=('7db445fe94ae6fb0c5ab69a6b47ec38a0e4b6d5a38f9d1493c0d8cb7c8ad2516'
             'c22ef054cc0d9c4e468be3279d29ca2548b395f3ea2decd8c92ceba2f725f523'
             'af5a5978c6ba01bed3d79ab8cec450ebd661444ac1857c97aeb51d54b3bf87a7')
-sha256sums_x86_64=('148a6186b4cd9f1ef8156ad6d97c2ecea1ce60744d177a9a94cbae211db45ca7')
-sha256sums_aarch64=('17599e6dc53b47bdd8428077c4ae1aa886b14fa827c76584c258f09156456e51')
+sha256sums_x86_64=('c85454e5c7268e0d4e9a30ba091a8cc349990e5be65116e74d112bcf28534663')
+sha256sums_aarch64=('952cb5923d0ffc6f20b80ade0004bdf0ad8c6ddf121cd9d85bb486c490a91d79')
 
 
 package() {
