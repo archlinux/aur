@@ -14,7 +14,7 @@ depends=('openal'
          'xorg-xrandr')
 replaces=('starfarer')
 source=(https://f005.backblazeb2.com/file/fractalsoftworks/release/starsector_linux-${pkgver//_/-}.zip
-        ${pkgname}.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
+        ${pkgname}.pdf::https://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
         starsector.sh
         starsector.desktop)
 sha256sums=('84672163d6c9b04c1f7ff886342f787a40dd1515cff2ce172d67bd23fa26e193'
