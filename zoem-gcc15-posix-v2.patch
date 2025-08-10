@@ -1,0 +1,17 @@
+diff -uNr zoem-21-341.orig/src/ops.c zoem-21-341/src/ops.c
+--- zoem-21-341.orig/src/ops.c	2025-08-10 09:37:51.896149560 +0530
++++ zoem-21-341/src/ops.c	2025-08-10 13:13:55.082363878 +0530
+@@ -1,3 +1,5 @@
++#define _GNU_SOURCE
++#include <stdio.h>
+ /*   (C) Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007 Stijn van Dongen
+  *
+  * This file is part of Zoem. You can redistribute and/or modify Zoem under the
+diff -uNr zoem-21-341.orig/src/read.c zoem-21-341/src/read.c
+--- zoem-21-341.orig/src/read.c	2025-08-10 09:37:51.896149560 +0530
++++ zoem-21-341/src/read.c	2025-08-10 13:21:00.819553433 +0530
+@@ -1,3 +1,4 @@
++#define _GNU_SOURCE
+ /*   (C) Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007 Stijn van Dongen
+  *
+  * This file is part of Zoem. You can redistribute and/or modify Zoem under the

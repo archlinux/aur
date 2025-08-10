@@ -1,14 +1,25 @@
 pkgbase = zoem
-	pkgdesc = Zoem programming language
+	pkgdesc = An interpretive macro/programming language
 	pkgver = 21.341
-	pkgrel = 1
+	pkgrel = 7
 	url = https://micans.org/zoem/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = cimfomfa
-	depends = readline
 	options = makeflags
 	source = https://micans.org/zoem/src/zoem-21-341.tar.gz
+	source = zoem-gcc15-posix-v2.patch
 	sha256sums = 370efc7f999572888f4e722cbff40efba395a5435f192e734e7ff87810a68768
+	sha256sums = c9417239c2881c29e3567cef36ea1a20f48fcda206b0f69306bbd2b1452139f6
 
 pkgname = zoem
+	pkgdesc = An interpretive macro/programming language
+	arch = x86_64
+	depends = glibc
+	depends = cimfomfa
+	depends = readline
+
+pkgname = zoem-docs
+	pkgdesc = Documentation and examples for zoem language
+	arch = any
+	optdepends = man-db: Read man pages from terminal
