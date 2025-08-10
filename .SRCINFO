@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsjetpack
 	pkgdesc = Plugin for Vapoursynth: vsjetpack
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack
 	arch = any
@@ -78,7 +78,7 @@ pkgbase = vapoursynth-plugin-vsjetpack
 	conflicts = vapoursynth-plugin-vsscale
 	conflicts = vapoursynth-plugin-vssource
 	conflicts = vapoursynth-plugin-vstools
-	source = https://files.pythonhosted.org/packages/31/b5/30b054ff91fe90b495a83d39e766e279aeaa67026c0664aa4bdd65228bc9/vsjetpack-0.6.0-py3-none-any.whl
-	sha256sums = bf286027c696f65653f0d1ae5fe58f771aa2c4c135a5e267425be57bc570134a
+	source = https://files.pythonhosted.org/packages/01/5c/f3bdf2297e1cf978ae2cfabe1afd12d500d12638f66ede9c656034559d3e/vsjetpack-0.6.1-py3-none-any.whl
+	sha256sums = cecb0f91a9b95f43013e083b98563f473ef0ddba914b23d69dedd863a7af09b2
 
 pkgname = vapoursynth-plugin-vsjetpack
