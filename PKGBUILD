@@ -1,14 +1,14 @@
 # Maintainer: Nikolay Bogoychev <nheart@gmail.com>
 # Improved by yochananmarqos https://aur.archlinux.org/packages/translatelocally-git
 pkgname=translatelocally-git
-pkgver=r508.a210037
-pkgrel=2
+pkgver=r512.1d0d382
+pkgrel=1
 pkgdesc="Fast and secure translation on your local machine, powered by marian and Bergamot."
 arch=('x86_64')
 url="https://translatelocally.com"
 license=('MIT')
 depends=('libarchive' 'qt6-base' 'qt6-svg' 'pcre2')
-makedepends=('cmake' 'git' 'intel-oneapi-mkl' 'qt6-tools')
+makedepends=('cmake' 'git' 'intel-oneapi-mkl' 'qt6-tools' 'gcc14')
 source=('git+https://github.com/XapaJIaMnu/translateLocally.git')
 sha256sums=('SKIP')
 
@@ -29,6 +29,9 @@ build() {
   cmake -B build -S translateLocally \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_C_COMPILER='gcc-14' \
+    -DCMAKE_CXX_COMPILER='g++-14' \
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
     -Wno-dev
   cmake --build build
 }
