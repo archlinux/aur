@@ -1,0 +1,16 @@
+pkgbase = taskim-git
+	pkgdesc = Task Manager with vim-ish motions (git)
+	pkgver = r98.d68e6c7
+	pkgrel = 1
+	url = https://github.com/RohanAdwankar/taskim
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = taskim
+	conflicts = taskim
+	source = git+https://github.com/RohanAdwankar/taskim
+	sha256sums = SKIP
+
+pkgname = taskim-git
