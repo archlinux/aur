@@ -6,8 +6,8 @@ pkgver=1.17.1.r135.3ce3bf0
 pkgrel=1
 pkgdesc="Utility scripts, programs, and configs that hold the sxmo UI environment together"
 url="https://git.sr.ht/~mil/sxmo-utils"
-arch=('x86_64' 'aarch64')
-license=('AGPL3')
+arch=('x86_64' 'armv7h' 'aarch64')
+license=('AGPL-3.0-only')
 makedepends=('libx11' 'xorgproto' 'linux-headers' 'busybox' 'scdoc' 'git')
 source=("git+https://git.sr.ht/~mil/sxmo-utils"
         '00-sxmo.rules'
@@ -49,6 +49,7 @@ package_sxmo-utils-git() {
     'modemmanager'
     'ncurses' # for the weather script
     'networkmanager'
+    'superd'
     'vvmd'
     'xdg-user-dirs'
 
@@ -108,7 +109,7 @@ package_sxmo-utils-git() {
 
 package_sxmo-utils-sway-git() {
   pkgdesc="Use sway as the window manager with sxmo"
-  url="https://sr.ht/~mil/Sxmo/"
+  url="https://sr.ht/~mil/sxmo/"
   arch=('any')
   provides=('sxmo-utils-sway')
   conflicts=('sxmo-utils-sway')
@@ -127,7 +128,6 @@ package_sxmo-utils-sway-git() {
            'wtype'
            'wvkbd'
            'xorg-xwayland')
-  optdepends=('sway-git: better touch event handling')
 
   make -C "sxmo-utils" DESTDIR="$pkgdir" install-sway
 }
