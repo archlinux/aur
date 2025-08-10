@@ -1,6 +1,6 @@
 pkgbase = mblaze
 	pkgdesc = Unix utilities to deal with Maildir
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/leahneukirchen/mblaze
 	changelog = NEWS.md
@@ -10,7 +10,7 @@ pkgbase = mblaze
 	depends = bash
 	depends = gawk
 	conflicts = santoku
-	source = mblaze::git+https://github.com/leahneukirchen/mblaze#tag=v1.2?signed
+	source = mblaze::git+https://github.com/leahneukirchen/mblaze#tag=v1.3?signed
 	validpgpkeys = E6F6848A1B95EE313CF5B7EE95FF633C90A8F025
 	sha256sums = SKIP
 

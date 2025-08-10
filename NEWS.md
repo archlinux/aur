@@ -1,3 +1,17 @@
+## 1.3 (2024-09-13)
+
+* mcom: add senthook
+* mfwd: attach all files when forwarding in raw mode
+* Maildir: support WinNT/NTFS based systems (using ; instead of :)
+* mcolor: add coloring support for diffs
+* mdirs: add Maildir profile key
+* minc: read directory names from stdin
+* mcom: add Drafts profile key
+* mcolor: print out form-feed
+* add contrib/mopenall - open every attachements in xdg-open
+* Many bug fixes.
+* Documentation improvements.
+
 ## 1.2 (2021-12-12)
 
 * Caution! The tools mdeliver and mexport were buggy in handling and

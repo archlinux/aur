@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Kareem Khazem <karkhaz at karkhaz dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: aksr <aksr at t-com dot me>
 
 ## GPG key located at https://github.com/leahneukirchen.gpg
 
 pkgname=mblaze
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Unix utilities to deal with Maildir"
 arch=('x86_64')
@@ -23,11 +24,20 @@ build() {
 	make
 }
 
+check() {
+  cd "$pkgname"
+  make -k check
+}
+
 package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README VIOLATIONS.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+  # zsh completions
+	install -Dm644 contrib/_mblaze -t "$pkgdir/usr/share/zsh/site-functions/_mblaze"
+
 	find contrib filter.example mlesskey.example \
 		-type f \
 		-exec install -Dm644 '{}' "$pkgdir/usr/share/$pkgname/{}" \;
