@@ -2,7 +2,7 @@
 
 _name="graphviz"
 pkgname="lib32-${_name}"
-pkgver=13.1.1
+pkgver=13.1.2
 pkgrel=1
 pkgdesc="Graph visualization software (32-bit)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('libcdt.so' 'libcgraph.so' 'libgvc.so' 'libgvpr.so' 'libpathplan.so'
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz"
         'ghostscript918.patch')
-sha256sums=('2183297bc5030951fed6c0511b39712057126d2098baa02fd914b09b5a19b820'
+sha256sums=('0e79b8402e8ea13f05c0fc0e30604f1d0731cd3f60f85850cedac7e0ee420ef8'
             '0083d126e27f2223ec4226fc1d71c9c84106968a0fdf65de838aee1e4882bfdb')
 
 prepare() {
