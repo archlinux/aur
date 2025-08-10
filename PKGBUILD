@@ -6,7 +6,7 @@
 
 pkgname=mblaze
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Unix utilities to deal with Maildir"
 arch=('x86_64')
 url="https://github.com/leahneukirchen/mblaze"
@@ -36,7 +36,7 @@ package() {
 	install -Dm644 README VIOLATIONS.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
   # zsh completions
-	install -Dm644 contrib/_mblaze -t "$pkgdir/usr/share/zsh/site-functions/_mblaze"
+	install -Dm644 contrib/_mblaze -t "$pkgdir/usr/share/zsh/site-functions/"
 
 	find contrib filter.example mlesskey.example \
 		-type f \
