@@ -11,26 +11,24 @@ pkgbase = lua-prompt-style
 	sha256sums = 0d9a2681df3fc2d9546bcf036f37835be92c30d578f5031b4770f334861892a5
 
 pkgname = lua-prompt-style
-	depends = lua-ansicolors
+	depends = lua-warna
 	depends = lua-filesystem
 	depends = lua-luaprompt
 	optdepends = pandoc-cli
+	optdepends = neomutt
 
 pkgname = lua51-prompt-style
-	depends = lua51-ansicolors
+	depends = lua51-warna
 	depends = lua51-filesystem
 	depends = lua51-luaprompt
 	optdepends = neovim
 
 pkgname = lua52-prompt-style
-	depends = lua52-ansicolors
+	depends = lua52-warna
 	depends = lua52-filesystem
 	depends = lua52-luaprompt
 
 pkgname = lua53-prompt-style
-	depends = lua53-ansicolors
+	depends = lua53-warna
 	depends = lua53-filesystem
 	depends = lua53-luaprompt
-	optdepends = texlive-bin
-	optdepends = neomutt
-	optdepends = luahbtex
