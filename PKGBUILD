@@ -5,11 +5,11 @@
 
 pkgname=prboom-plus
 pkgver=2.6.66
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced, Vanilla-compatible Doom engine based on PrBoom'
 url='https://github.com/coelckers/prboom-plus'
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('sdl2')
 optdepends=('dumb' 
             'fluidsynth' 
@@ -42,6 +42,8 @@ build() {
 
   cmake \
     -Wno-dev \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.10 \
+    -DCMAKE_C_STANDARD=17 \
     -DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release ../
