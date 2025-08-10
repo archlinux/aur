@@ -1,63 +1,70 @@
-# Maintainer: taotieren <admin@taotieren.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: taotieren <admin@taotieren.com>
 
-pkgname=python-ffpyplayer
-_name=${pkgname#python-}
-pkgver=4.5.2
+_Name="FFPyPlayer"
+_name="${_Name,,}"
+pkgname="python-${_name}"
+pkgver=4.5.3
 pkgrel=1
-epoch=
-pkgdesc="A cython implementation of an ffmpeg based player."
-arch=('any')
-url="https://pypi.org/project/${_name}"
+pkgdesc="A Cython implementation of an FFmpeg based player"
+arch=('aarch64' 'x86_64')
+url="https://matham.github.io/ffpyplayer/"
+_url="https://github.com/matham/${_name}"
 license=('LGPL-3.0-only')
-groups=()
-provides=(${_name} ${pkgname})
-conflicts=(${_name} ${pkgname})
 depends=(
-    #     python
-    brotli
-    cython
-    fdkaac
-    ffmpeg
-    freetype2
-    fribidi
-    harfbuzz
-    lame
-    libpng
-    libtheora
-    libogg
-    libvorbis
-    libvpx
-    sdl2
-    sdl2_mixer
-    nasm
-    openssl
-    opus
-    x265
-    xz
-    yasm
-    zlib
-    #AUR
-    libbass
+  'ffmpeg4.4'
+  'glibc'
+  'python>=3.7'
+  'sdl2'
+  # 'sdl2_mixer'
 )
 makedepends=(
-    cmake
-    python-build
-    python-installer
-    python-wheel
-    python-setuptools
-    pkgconf)
-optdepends=()
-options=('!strip')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-noextract=()
-sha256sums=('f9affdc12ebba4649f116973b9e4e057d06761bc63758594a91ec85f168752fe')
+  'cython'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+# checkdepends=(
+#   'python-pytest'
+# )
+_pkgsrc="${_url##*/}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('413866ca00fad53f36de07362ca884dea54e55da2372293d2042888c68bd3eae')
 
-build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python -m build --wheel --no-isolation
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  sed -i 's/~=/>=/g' 'pyproject.toml' 'setup.py'
 }
 
+build () {
+  # export USE_SDL2_MIXER=true
+  export FFMPEG_INCLUDE_DIR="/usr/include/ffmpeg4.4"
+  export FFMPEG_LIB_DIR="/usr/lib/ffmpeg4.4"
+  export CFLAGS+=" -Wno-error=incompatible-pointer-types"
+
+  cd "${srcdir}/${_pkgsrc}"
+  python -m build --wheel --no-isolation
+}
+
+# check() {
+#   local python_version="$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')"
+# 
+#   cd "${srcdir}/${_pkgsrc}"
+#   PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version//./}" pytest
+# }
+
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
+
+  cd "${srcdir}/${_pkgsrc}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  rm -rf "${pkgdir}/${site_packages}/${_name}/tests"
+
+  install -vDm644 "README.rst" "${pkgdir}/usr/share/doc/${_name}/README.rst"
+
+  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -vs "${site_packages}/${_pkgsrc}.dist-info/licenses/COPYING" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
