@@ -2,7 +2,7 @@
 
 pkgname=php83-cli-static-bin
 pkgver=8.3.24
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose scripting language that is especially suited to web development (8.3.x static precompiled binary)"
 arch=("x86_64" "aarch64")
 url="https://www.php.net"

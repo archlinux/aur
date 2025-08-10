@@ -1,7 +1,7 @@
 pkgbase = php83-cli-static-bin
 	pkgdesc = A general-purpose scripting language that is especially suited to web development (8.3.x static precompiled binary)
 	pkgver = 8.3.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.php.net
 	arch = x86_64
 	arch = aarch64
