@@ -1,6 +1,6 @@
 # Maintainer: Coral Pink <coral.pink@disr.it>
 pkgname=debounce
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A utility for debouncing lines from stdin'
 url='https://codeberg.org/coralpink/debounce'
@@ -9,11 +9,11 @@ license=('LicenseRef-MIT+NIGGER')
 depends=('glibc')
 source=(
     "$pkgname.tar.gz::https://codeberg.org/coralpink/debounce/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
-    "$pkgname.tar.gz.sig::https://codeberg.org/coralpink/debounce/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.asc"
+    "$pkgname.tar.gz.sig::https://codeberg.org/coralpink/debounce/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.sig"
 )
 b2sums=(
-    'a2f3dd6215283523b2946ff78e96f69785cc299fbb5ca6f3fe630396c558890e1a095d29f2781af8ce967288e5c043fbce720295431a71312c1c35bb869644c3'
-    'aec595ec0259ea9b96d380beab07250cef60a5f915a9600c91faf8655627d3547d01cbb09af834a42dbefd62442474200f9af5a3680c7a79fb64c474c6830fd7'
+    '7237b6684e6148bc6739cdcdd67531f71c36ea60ba7bff9fc43cd0aa075686399e320e911cedd6d0280fb8b56bf5970802b0cee98ad4fb3870e71ae802cc8df3'
+    'd957103e60a9534ee54ffc9d88e977f01a51ac9d4582e7e09c26ba1d85ddf4a5d6d54e11040a5e74f944f79c3df0e6801280f1826a7f29e89b623918d7f33eb8'
 )
 validpgpkeys=('88CF318EE94748D582940E86CC5693B9689DB487')
 
