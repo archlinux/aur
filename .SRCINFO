@@ -6,7 +6,7 @@ pkgbase = pi-im
 	arch = x86_64
 	license = AGPL
 	makedepends = go
-	source = https://github.com/sunglocto/pi-im/archive/refs/tags/3.14a.tar.gz
-	sha256sums = dd2e319b948193b87c844bd314cfa6fbdef422ff4411b18a2dd5013522c2ffe0
+	source = https://github.com/sunglocto/pi-im/archive/refs/tags/3.142a.tar.gz
+	sha256sums = 57bfbbd804e4bc1a337b683d1baf7cb0878d39b28240e39a7fe6726c222df17f
 
 pkgname = pi-im
