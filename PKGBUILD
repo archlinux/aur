@@ -4,7 +4,7 @@
 _name=manim
 pkgname=python-manimgl
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
 url="https://github.com/3b1b/manim"
@@ -13,6 +13,7 @@ depends=('ffmpeg'
          'ipython>=8.18.0'
          'texlive-core'
          'python>=3.12'
+         'python-appdirs'
          'python-colour'
          'python-fonttools'
          'python-matplotlib'
@@ -29,6 +30,7 @@ depends=('ffmpeg'
          'python-validators'
          # AUR packages
          'python-addict'
+         'python-diskcache'
          'python-mapbox-earcut'
          'python-moderngl'
          'python-moderngl-window'
