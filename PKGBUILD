@@ -64,7 +64,7 @@ source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 )
 
-b2sums=('e906337dda0d889c863a235501d74a5febc4c0a0be6480f8f6ce58d672375684b021b73ae4cef72a2efd6bee3cec0e1cf99a66149cc0e35ed8119162b6d43418'
+b2sums=('34e950f931a8b307aed59796856b22e92a51fc3b5a56cd124bcb52794c4ab8d151b7e729c8eef5d4caeaa0947a7c5e2e32e97634d7c27069e4f6de7b6516dad3'
         'SKIP'
         'SKIP'
         'SKIP'
