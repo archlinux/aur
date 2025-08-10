@@ -1,4 +1,5 @@
-# Maintainer:  Bernhard Landauer <oberon@manjaro.org>
+# Maintainer:  NourEddine Yassine <NourEddineX at protonmail dot com>
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Morgan Cox <morgancoxuk@gmail.com>
 # Contributor: AudioLinux <audiolinux AT fastmail DOT fm>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
@@ -6,19 +7,21 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-rt
-pkgver=418.56
+pkgver=575.64.05
+# ^^^^^ Using current version of https://archlinux.org/packages/?q=nvidia-utils
 _extramodules=extramodules-rt
 pkgrel=2
+# ^^^^^ Using current release of https://archlinux.org/packages/?q=nvidia-utils
 pkgdesc="NVIDIA drivers for linux-rt"
 arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-rt>=5.0' "nvidia-utils=$pkgver" 'libgl')
-makedepends=('linux-rt-headers>=5.0' 'linux-rt-headers<5.1')
+depends=('linux-rt' "nvidia-utils=$pkgver" 'libgl')
+makedepends=('linux-rt-headers')
 license=('custom')
 options=(!strip)
 install=$pkgname.install
 source_x86_64=("http://download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver.run")
-md5sums_x86_64=('d1cf6dc33af48b53edbae5d6f31a6f89')
+md5sums_x86_64=('5232a442e7696c73f2a7f527481084aa')
 
 _pkg="NVIDIA-Linux-x86_64-$pkgver"
 
