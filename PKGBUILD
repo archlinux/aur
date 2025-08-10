@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@proton.me>
 pkgname=vscode-php-debug
-pkgver=1.36.2
+pkgver=1.37.0
 pkgrel=1
 pkgdesc='PHP Debug Adapter (DAP)'
 arch=('any')
@@ -11,7 +11,7 @@ source=(
 	"$pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel.zip::https://github.com/xdebug/vscode-php-debug/releases/download/v$pkgver/php-debug-$pkgver.vsix"
 	'vscode-php-debug'
 )
-b2sums=('e3e886fcfd40099309a4184dc89b0b090af5ebb74c28792940db33d190c9612413fbab62a045465c472782e9e02f710200ec6a9e51401d5369c8042d601a2e85'
+b2sums=('521fa08c3d74b1d7b07907c01e624d04b6cf52387c9ebfcfbf9d912b4dd605def2ee9044196aec67c3a21286db048634adb7b8a03d625ffb05cce035a4e361a6'
         'd22937d8e805829fc267914c201f9a0d61ef4b204fcda5928517c15706f13be479c338aae7c100fb902780042f2bfd0de956d92a87b2535aa4060a97d42d9743')
 
 package() {
