@@ -2,7 +2,7 @@
 
 _program_name="rapidgzip"
 pkgname="python-${_program_name}"
-pkgver=0.14.5
+pkgver=0.15.0
 pkgrel=3
 pkgdesc="A parallelized gzip decoder with seek capability"
 arch=('x86_64')
@@ -22,8 +22,8 @@ makedepends=(
     'python-installer'
 )
 _pkg_ext=".tar.gz"
-source=("${pkgname}-${pkgver}${_pkg_ext}::https://files.pythonhosted.org/packages/a6/b6/27975b6e7ec25c3fac16cbc73270954fb36ad239dda8b1f7bfb3f424dd2c/${_program_name}-${pkgver}${_pkg_ext}")
-sha256sums=('faed46013a1a62a5193c49615a896683ea5c14ed4744bcb4bd1869b1420551d8')
+source=("${pkgname}-${pkgver}${_pkg_ext}::https://files.pythonhosted.org/packages/fa/df/f4abf845cb27f60156b124af95f483d2861cd607811120650293a1835327/${_program_name}-${pkgver}${_pkg_ext}")
+sha256sums=('e81079c190c458652076f3667f90aa5886fbf2c92a5a3d0169cfb1faf1e45dfa')
 
 provides=("rapidgzip")
 
