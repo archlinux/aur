@@ -7,7 +7,7 @@ pkgbase = nalla-iptv-bin
 	depends = electron
 	provides = nalla-iptv-bin
 	conflicts = nalla-iptv-bin
-	source = nalla-iptv-bin-1.0.0.tar.gz::https://github.com/Anmol1184/Nalla-IPTV/releases/download/v1.0.0/nalla-iptv-1.0.0.tar.gz
+	source = https://github.com/Anmol1184/Nalla-IPTV/releases/download/v1.0.0/nalla-iptv-1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = nalla-iptv-bin
