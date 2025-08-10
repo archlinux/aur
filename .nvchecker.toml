@@ -1,0 +1,4 @@
+[sideband]
+source = "git"
+git = "https://github.com/markqvist/Sideband.git"
+prefix = "v"

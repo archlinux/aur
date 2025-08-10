@@ -1,0 +1,43 @@
+pkgbase = sideband
+	pkgdesc = Communicate with people or LXMF-compatible systems over Reticulum networks
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/markqvist/Sideband
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = hicolor-icon-theme
+	depends = python>=3.13
+	depends = python-audioop-lts>=0.2.1
+	depends = python-beautifulsoup4
+	depends = python-cryptography
+	depends = python-dbus
+	depends = python-dnspython
+	depends = python-ffpyplayer
+	depends = python-kivy>=2.3.0
+	depends = python-lxmf>=0.8.0
+	depends = python-lxst>=0.3.0
+	depends = python-materialyoucolor>=2.0.7
+	depends = python-mistune>=3.0.2
+	depends = python-numpy
+	depends = python-pillow>=10.2.0
+	depends = python-prompt_toolkit
+	depends = python-pyaudio
+	depends = python-pycodec2
+	depends = python-qrcode
+	depends = python-requests
+	depends = python-rns>=1.0.0
+	depends = python-sh
+	depends = python-typing_extensions
+	depends = xclip
+	depends = xsel
+	optdepends = python-watchdog: auto reload kv or py
+	optdepends = python-scipy: SciPy versions of high_pass_filter, low_pass_filter, and band_pass_filter
+	optdepends = python-pysocks: proxying of MQTT connection
+	optdepends = python-firebase: FireBase data collection
+	source = Sideband-1.7.0.tar.gz::https://github.com/markqvist/Sideband/archive/refs/tags/1.7.0.tar.gz
+	sha256sums = 0374f957b3276f1b3dc97ba33706490c4e158968f47f61c8949abb2281abaa30
+
+pkgname = sideband
