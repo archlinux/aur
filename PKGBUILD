@@ -1,14 +1,14 @@
-# Maintainer: kamisaki
+# Maintainer: xeyossr
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('any')
 url="https://github.com/xeyossr/anitr-cli"
 license=('GPL3')
 depends=('mpv')
-makedepends=('go' 'git' 'make')
+makedepends=('go' 'git')
 
 optdepends=(
     'rofi: X11 kullanıcıları için GUI'
