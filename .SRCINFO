@@ -1,39 +1,41 @@
 pkgbase = fontconfig-ubuntu
 	pkgdesc = A library for configuring and customizing font access (with Ubuntu patches)
 	pkgver = 2.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/ubuntu/+source/fontconfig
 	arch = x86_64
 	license = LicenseRef-custom
 	checkdepends = unzip
 	makedepends = autoconf-archive
-	makedepends = gperf
-	makedepends = python-lxml
-	makedepends = python-six
-	makedepends = docbook-utils
 	makedepends = docbook-sgml
-	makedepends = perl-sgmls
-	makedepends = texlive-latexrecommended
-	makedepends = texlive-formatsextra>=2017
-	makedepends = lynx
-	makedepends = json-c
+	makedepends = docbook-utils
 	makedepends = expat
 	makedepends = freetype2
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/fontconfig/2.15.0-1.1ubuntu2/fontconfig_2.15.0.orig.tar.xz
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/fontconfig/2.15.0-1.1ubuntu2/fontconfig_2.15.0-1.1ubuntu2.debian.tar.xz
+	makedepends = gperf
+	makedepends = json-c
+	makedepends = lynx
+	makedepends = perl-sgmls
+	makedepends = python-lxml
+	makedepends = python-six
+	makedepends = texlive-formatsextra>=2017
+	makedepends = texlive-latexrecommended
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/fontconfig/2.15.0-2.3ubuntu1/fontconfig_2.15.0.orig.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/fontconfig/2.15.0-2.3ubuntu1/fontconfig_2.15.0-2.3ubuntu1.debian.tar.xz
 	source = fontconfig-ubuntu.hook
 	source = 40-fontconfig-config.hook
 	source = 40-fontconfig-config.script
 	sha256sums = 63a0658d0e06e0fa886106452b58ef04f21f58202ea02a94c39de0d3335d7c0e
-	sha256sums = 29ebacc2cd8f2d336150b3895feea8bb35e4340f7a34dfb37d915be76fb36b91
+	sha256sums = dc8764d9fd779ae9185685f320a3b0ef8e796e2195346510c46d934dfd3b3350
 	sha256sums = fd7b6ce8ce178107f2e0b52462ebf186b6051c6eec945770107fda57048c9f34
 	sha256sums = 44f12491c9fd7eff825853846a2b3b8df2b96fc6520be5cb31ce7f37a160ff02
 	sha256sums = 7a9d50bccc709eb15db6ba8e13f69bc9d79b0bf354f1d17c1a5b2748edff3c33
 
 pkgname = fontconfig-ubuntu
 	install = fontconfig-ubuntu.install
+	depends = bash
 	depends = expat
-	depends = libfreetype.so
+	depends = glibc
+	depends = freetype2
 	provides = fontconfig=2.15.0
 	provides = libfontconfig.so
 	conflicts = fontconfig

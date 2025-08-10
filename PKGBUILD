@@ -8,26 +8,40 @@
 # http://getemoji.com/
 
 pkgbase=fontconfig-ubuntu
-pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
+pkgname=(
+    'fontconfig-ubuntu'
+    'fontconfig-ubuntu-docs')
 pkgver=2.15.0
-_uburel=1
-_ubuver=1ubuntu2
-pkgrel=2
+_uburel=2
+_ubuver=3ubuntu1
+pkgrel=3
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
 arch=('x86_64')
 url='https://launchpad.net/ubuntu/+source/fontconfig'
 license=('LicenseRef-custom')
-makedepends=('autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'docbook-utils' 'docbook-sgml'
-             'perl-sgmls' 'texlive-latexrecommended' 'texlive-formatsextra>=2017' 'lynx' 'json-c'
-             'expat' 'freetype2')
-checkdepends=('unzip')
+makedepends=(
+    'autoconf-archive'
+    'docbook-sgml'
+    'docbook-utils'
+    'expat'
+    'freetype2'
+    'gperf'
+    'json-c'
+    'lynx'
+    'perl-sgmls'
+    'python-lxml'
+    'python-six'
+    'texlive-formatsextra>=2017'
+    'texlive-latexrecommended')
+checkdepends=(
+    'unzip')
 source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/fontconfig/${pkgver}-${_uburel}.${_ubuver}/fontconfig_${pkgver}.orig.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/fontconfig/${pkgver}-${_uburel}.${_ubuver}/fontconfig_${pkgver}-${_uburel}.${_ubuver}.debian.tar.xz"
         'fontconfig-ubuntu.hook'
         '40-fontconfig-config.hook'
         '40-fontconfig-config.script')
 sha256sums=('63a0658d0e06e0fa886106452b58ef04f21f58202ea02a94c39de0d3335d7c0e'
-            '29ebacc2cd8f2d336150b3895feea8bb35e4340f7a34dfb37d915be76fb36b91'
+            'dc8764d9fd779ae9185685f320a3b0ef8e796e2195346510c46d934dfd3b3350'
             'fd7b6ce8ce178107f2e0b52462ebf186b6051c6eec945770107fda57048c9f34'
             '44f12491c9fd7eff825853846a2b3b8df2b96fc6520be5cb31ce7f37a160ff02'
             '7a9d50bccc709eb15db6ba8e13f69bc9d79b0bf354f1d17c1a5b2748edff3c33')
@@ -61,7 +75,11 @@ check() {
 }
 
 package_fontconfig-ubuntu() {
-    depends=('expat' 'libfreetype.so')
+    depends=(
+        'bash'
+        'expat'
+        'glibc'
+        'freetype2')
     provides=("fontconfig=${pkgver}" 'libfontconfig.so')
     conflicts=('fontconfig')
     options=('!emptydirs')
