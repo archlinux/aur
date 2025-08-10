@@ -2,9 +2,9 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=3312b8c47e26122d432ec3c26658315e02351b49
+_commit=f3eca5433161d4e18f2459db3d6f67fbba73d3ea
 pkgname=penguins-eggs
-pkgver=25.8.6
+pkgver=25.8.10
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -50,8 +50,11 @@ makedepends=(
 )
 
 options=('!strip')
-source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit"
+  "bootloaders.tar.gz::https://github.com/pieroproietti/penguins-eggs/releases/download/v25.8.10/bootloaders.tar.gz"
+)
+
 
 pkgver() {
  cd "$srcdir"/"$pkgname"
@@ -74,7 +77,6 @@ package() {
  cp -r addons \
     assets \
     bin \
-    bootloaders \
     conf \
     dist \
     eui \
@@ -82,6 +84,8 @@ package() {
     node_modules \
     scripts \
     "$pkgdir/usr/lib/$pkgname/"
+
+  cp -r "$srcdir/bootloaders" "$pkgdir/usr/lib/$pkgname/"
  
  # Fix permissions
  chown root:root "$pkgdir/"usr/lib/"$pkgname/"
@@ -123,3 +127,7 @@ package() {
  # Symlink to adapt
  ln -s /usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
 }
+
+# updpkgsums
+sha256sums=('c09bc394900cbf165fb7d4637e4a867bc96d5c595fa5b6d6d755df196a691e21'
+            'b87679fc108d86b406157bccc97a28e1d950afc6ab24d7da7c7cbebacb9690c4')
