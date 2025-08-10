@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Play Punishing: Gray Raven
+Exec=/usr/bin/babylonia-terminal --gui
+Icon=babylonia-terminal
+Name=Babylonia Terminal
+Terminal=false
+Type=Application

@@ -1,0 +1,17 @@
+pkgbase = babylonia-terminal-git
+	pkgdesc = A launcher to play a certain anime game on linux
+	pkgver = e239c1a
+	pkgrel = 1
+	url = https://github.com/ALEZ-DEV/Babylonia-terminal
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = winetricks
+	options = !lto
+	source = babylonia-terminal::git+https://github.com/ALEZ-DEV/Babylonia-terminal
+	sha256sums = SKIP
+
+pkgname = babylonia-terminal-git
