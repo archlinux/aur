@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
-pkgver=0.54.0
+pkgver=0.55.0
 pkgrel=1
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(llvm cmake cppzmq zstd-static)
 checkdepends=()
 optdepends=()
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('b89f8f9f21366296a6f971e9c478938732a8efd251a2f7c6cb6ad38a6dc7d3e7e091405ae2d3ab86087f8551ad45536b73e906818cbcbb60c59bf0ec9f9ba412')
+sha512sums=('a91d402f0ccec84eba395b1cb5b5e65bef07db2e87646fa2c5e6cec90d18e1949f2ddad4f3d6852ad29927becd170900c850f7ebab07ce90ba5f3a267b65e667')
 
 build() {
   cmake \
