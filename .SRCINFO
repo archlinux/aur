@@ -1,0 +1,17 @@
+pkgbase = python-pylatinize
+	pkgdesc = a library to handle path in okeanos system
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/playfulsparkle/pylatinize
+	arch = any
+	license = BSD3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-pylatinize-0.0.1.tar.gz::https://github.com/playfulsparkle/pylatinize/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 1776cdd3993c1199e80e8a2b6df74fbc10f9d81e46313638893a865af00d0f28
+
+pkgname = python-pylatinize
