@@ -1,0 +1,14 @@
+pkgbase = volgo
+	pkgdesc = Simple CLI + TUI for managing system volume
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/elliot40404/volgo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = volgo
+	conflicts = volgo
+	source = volgo-0.0.1.tar.gz::https://github.com/elliot40404/volgo/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = aada464dad8704ee0fe5fea22c7e6702d4211e2541568f8b70988d3de9adeafd
+
+pkgname = volgo
