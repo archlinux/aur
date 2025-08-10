@@ -1,41 +1,55 @@
-# Привет, Даник! Это PKGBUILD файл. Он говорит makepkg, как собрать пакет для Arch Linux.
+# Maintainer: Daniil Dorofeev <daniil.dorofeev@example.com>
+# Packager: Gemini
 
-# Информация о пакете
-pkgname=daniella-browser
-pkgver=1.0.0
-pkgrel=1
-pkgdesc="A simple web browser built with PyQt6"
-arch=('any') # 'any' означает, что он работает на любой архитектуре
-url="https://include-digital.org/browser"
+pkgbase=daniella-browser # Базовое имя пакета
+pkgname=(daniella-browser) # Название пакета
+pkgver=2.0.1
+pkgrel=2 # Обновлено! Теперь yay увидит, что это новая сборка.
+pkgdesc="A simple web browser"
+arch=('any')
+url="https://include-digital.org/browser/2.0.1"
 license=('GPLv3')
-depends=('python-pyqt6' 'python-pyqt6-webengine' 'python-pyqt6-sip' 'python-packaging' 'python-ply' 'python-flit-core')
+depends=(
+    'python'
+    'python-pyqt6'
+    'python-pyqt6-webengine'
+    'python-pyqt6-sip'
+    'python-packaging'
+    'python-ply'
+    'python-flit-core'
+    'python-pycryptodomex' # Добавлено, потому что нужно для менеджера паролей
+)
+source=(
+    "main.py" # Теперь makepkg будет искать файл main.py в той же папке, где и PKGBUILD.
+    "browser.desktop"
+    "daniella-browser.svg"
+)
+sha256sums=('85670e1c151360557eac3f3c38c94e5b06fb4cb0e9985614a2e057ebb5a08b9f'
+            '76c8aa4d0480081d5ba9499e40f8a7c99b765819da7997fa4f751ed39a4edd89'
+            '097c5bb3992a89e840e26dad1e5e0829dbe441c3a9aec1144b12b75dc23b7b2b')
 
-# Источники. Тут мы указываем, откуда брать файлы.
-# В нашем случае это твой main.py и новый desktop-файл.
-source=(main.py browser.desktop)
-# ==> ПОЧЕМУ ПРОИСХОДИТ СБОЙ? <==
-# Файлы на твоем компьютере отличаются от тех, которые я использовал.
-# Чтобы это исправить, выполни в терминале команду `updpkgsums` в этой папке.
-# Она автоматически обновит SHA256 сумму на правильную.
-sha256sums=('248789753d4d3608393de05c20bf1cf16aea56b41a80491bac3db43ad4cca214'
-            '834402870a9dd20f08ca45e4147638e55cb38a701b365c518bf96c33e84a6fc2')
-
-# Функция для сборки пакета (в нашем случае она пустая, так как собирать нечего)
 build() {
-  echo "Сборка не требуется, просто копируем файл."
+    # Для Python-скрипта ничего не нужно собирать
+    true
 }
 
-# Функция для установки пакета
 package() {
-  # Создаём папку для бинарников
-  install -d "${pkgdir}/usr/bin"
-  
-  # Копируем твой main.py и даём ему права на запуск
-  install -m755 main.py "${pkgdir}/usr/bin/main.py"
+    # Создаем необходимые папки
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/applications"
+    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 
-  # Создаём папку для desktop-файлов
-  install -d "${pkgdir}/usr/share/applications/"
-  
-  # Копируем desktop-файл и устанавливаем его
-  install -m644 browser.desktop "${pkgdir}/usr/share/applications/daniella-browser.desktop"
+    # Добавляем shebang и копируем скрипт
+    # Эта строка говорит, что скрипт нужно запускать с помощью Python
+    echo "#!/usr/bin/env python" > "${pkgdir}/usr/bin/daniella-browser"
+    cat "${srcdir}/main.py" >> "${pkgdir}/usr/bin/daniella-browser"
+    
+    # Делаем скрипт исполняемым
+    chmod 755 "${pkgdir}/usr/bin/daniella-browser"
+
+    # Копируем desktop-файл
+    install -m 644 "${srcdir}/browser.desktop" "${pkgdir}/usr/share/applications/"
+
+    # Копируем иконку
+    install -m 644 "${srcdir}/daniella-browser.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 }

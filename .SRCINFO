@@ -1,8 +1,8 @@
 pkgbase = daniella-browser
-	pkgdesc = A simple web browser built with PyQt6
-	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://include-digital.org/browser
+	pkgdesc = A simple web browser
+	pkgver = 2.0.1
+	pkgrel = 2
+	url = https://include-digital.org/browser/2.0.1
 	arch = any
 	license = GPLv3
 	depends = python-pyqt6
