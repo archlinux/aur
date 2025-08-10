@@ -1,10 +1,10 @@
 pkgbase = gnome-shell-extension-haguichi-indicator-git
 	pkgdesc = Lets you control Haguichi directly from the system status area in GNOME Shell.
-	pkgver = r61.bb80910
+	pkgver = r65.f835a6c
 	pkgrel = 1
 	url = https://github.com/ztefn/gse-haguichi-indicator
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = gnome-shell
 	provides = gnome-shell-extension-haguichi-indicator
