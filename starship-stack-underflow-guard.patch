@@ -1,0 +1,15 @@
+diff --git a/src/port/interpolation/FrameInterpolation.cpp b/src/port/interpolation/FrameInterpolation.cpp
+index 8d6c31ce..341adb12 100644
+--- a/src/port/interpolation/FrameInterpolation.cpp
++++ b/src/port/interpolation/FrameInterpolation.cpp
+@@ -313,6 +313,10 @@ struct InterpolateCtx {
+ 
+                         case Op::MatrixPop:
+                             Matrix_Pop(&gInterpolationMatrix);
++                            // Temporary fix to prevent stack underflow eventually causing undefined behavior
++                            if (gInterpolationMatrix - sInterpolationMatrixStack < 0) {
++                                gInterpolationMatrix = &sInterpolationMatrixStack[0];
++                            }
+                             break;
+ 
+                      // Unused on SF64
