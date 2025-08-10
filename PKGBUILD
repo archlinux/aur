@@ -15,7 +15,7 @@ source=("https://code.jquery.com/jquery-${pkgver}.js"
 		"https://code.jquery.com/jquery-${pkgver}.slim.min.js"
 		"https://code.jquery.com/jquery-${pkgver}.slim.js"
 		"https://code.jquery.com/jquery-${pkgver}.slim.min.map"
-		"LICENSE::https://raw.githubusercontent.com/jquery/jquery/${pkgver}/LICENSE.txt")
+		"jquery-${pkgver}-LICENSE::https://raw.githubusercontent.com/jquery/jquery/${pkgver}/LICENSE.txt")
 sha256sums=('78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe'
             'fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a'
             '5e7d6d9c28b7f21006535e8875eb47e9667852a14c4624eed301c6cea19ae62b'
@@ -33,5 +33,5 @@ package() {
     install -m644 "jquery-${pkgver}.slim.min.js" "${pkgdir}/usr/share/javascript/jquery/jquery.slim.min.js"
     install -m644 "jquery-${pkgver}.slim.js" "${pkgdir}/usr/share/javascript/jquery/jquery.slim.js"
     install -m644 "jquery-${pkgver}.slim.min.map" "${pkgdir}/usr/share/javascript/jquery/jquery.slim.min.map"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "jquery-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
