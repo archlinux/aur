@@ -1,0 +1,14 @@
+pkgbase = eb-garamond
+	pkgdesc = Digitization of the Garamond shown on the Egenolff-Berner specimen
+	pkgver = 0.016
+	pkgrel = 2
+	url = http://www.georgduffner.at/ebgaramond/
+	arch = any
+	license = OFL
+	makedepends = fontforge
+	makedepends = ttfautohint
+	makedepends = make
+	source = eb-garamond-0.016.tar.gz::https://github.com/georgd/EB-Garamond/archive/refs/tags/v0.016.tar.gz
+	sha256sums = 4e9d2883e3da42c8d31f3bbd209194ca7d729f2463fe781b078c3764c503b1e3
+
+pkgname = eb-garamond
