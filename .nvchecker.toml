@@ -1,0 +1,3 @@
+[python-lxst]
+source = "pypi"
+pypi = "lxst"
