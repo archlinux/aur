@@ -1,0 +1,18 @@
+pkgbase = lua-lua-template
+	pkgdesc = Efficient template engine for Lua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/anaef/lua-template
+	arch = x86
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = luarocks
+	makedepends = git
+	source = https://luarocks.org/manifests/anaef/lua-template-1.0.0-1.rockspec
+	sha256sums = 538a000e6c889903a5c853718f75ceccb5032f555d28fa06f742429c6c8b3a68
+
+pkgname = lua-lua-template
+
+pkgname = lua53-lua-template
