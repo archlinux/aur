@@ -1,0 +1,4 @@
+obsidianctl-git/
+obsidianctl-git-*.tar.zst
+pkg/
+src/
