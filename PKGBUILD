@@ -11,8 +11,8 @@ pkgname=(
   nwjs-bin
   nwjs-sdk-bin
 )
-pkgver=0.101.2
-pkgrel=5
+pkgver=0.102.0
+pkgrel=1
 pkgdesc="Runtime based on Chromium and node.js"
 arch=('x86_64')
 url="https://nwjs.io"
@@ -26,8 +26,8 @@ source=(
   nwjs-sdk-$pkgver.tar.gz::https://dl.nwjs.io/v$pkgver/nwjs-sdk-v$pkgver-linux-x64.tar.gz
   nwjs-ffmpeg-$pkgver.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/$pkgver/$pkgver-linux-x64.zip
 )
-sha256sums=('8c2b46e3dae39b1339120ed78fb9a376ee3bb205a16fabb663b81a6efd8da878'
-            '03b6f6250acca8b1c91a035784c31092e776a513a5ed45d2e1b8502410864526')
+sha256sums=('a0dab6620a9fd6053b01b32f00a5635042bfccf4764bf4ec86d3c39e85a1d991'
+            'a3d5eca356d145f18985fd1c7d64b5b12e8536e825d5b6c8dbb2739f5617a8dc')
 
 prepare() {
   # Simplify folder name (only if exists, in case of using '--noextract').
