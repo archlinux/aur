@@ -6,7 +6,7 @@ pkgbase = nalla-iptv-bin
 	arch = x86_64
 	provides = nalla-iptv-bin
 	conflicts = nalla-iptv-bin
-	source = https://github.com/Anmol1184/Nalla-IPTV/releases/download/v1.0.1/nalla-iptv-1.0.1.tar.gz
+	source = https://github.com/Anmol1184/Nalla-IPTV/releases/download/v1.0.1/nalla-iptv-bin-1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = nalla-iptv-bin

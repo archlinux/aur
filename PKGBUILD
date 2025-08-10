@@ -8,7 +8,7 @@ url="https://github.com/Anmol1184/Nalla-IPTV"
 provides=('nalla-iptv-bin')
 conflicts=('nalla-iptv-bin')
 
-source=("https://github.com/Anmol1184/Nalla-IPTV/releases/download/v$pkgver/nalla-iptv-$pkgver.tar.gz")
+source=("https://github.com/Anmol1184/Nalla-IPTV/releases/download/v$pkgver/nalla-iptv-bin-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {
