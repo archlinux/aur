@@ -1,13 +1,13 @@
 pkgbase = rustywind
 	pkgdesc = CLI for organizing Tailwind CSS classes
-	pkgver = 0.24.0
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://github.com/avencera/rustywind
 	arch = any
 	license = Apache
 	makedepends = rust
 	depends = gcc-libs
-	source = https://github.com/avencera/rustywind/archive/v0.24.0/rustywind-0.24.0.tar.gz
-	b2sums = 349ff0fefc90d41c2852ff11df54486529050f96ad4c014384cd4a9b25bc507bfa38ebc39c89f230770a9a0391fa73b47a928493c91e28b93cfbe59bcf703a76
+	source = https://github.com/avencera/rustywind/archive/v0.24.3/rustywind-0.24.3.tar.gz
+	b2sums = 7a5b58e4642aeb862508420e0ec0d2daabd728e2e6a5b83ddf871d142c180ca5d1f5613eef8acd8e4a3d7feefffc05b0f55990dfd5199cee6b9d083bef9f8241
 
 pkgname = rustywind

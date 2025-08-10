@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=rustywind
-pkgver=0.24.0
+pkgver=0.24.3
 pkgrel=1
 pkgdesc='CLI for organizing Tailwind CSS classes'
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('349ff0fefc90d41c2852ff11df54486529050f96ad4c014384cd4a9b25bc507bfa38ebc39c89f230770a9a0391fa73b47a928493c91e28b93cfbe59bcf703a76')
+b2sums=('7a5b58e4642aeb862508420e0ec0d2daabd728e2e6a5b83ddf871d142c180ca5d1f5613eef8acd8e4a3d7feefffc05b0f55990dfd5199cee6b9d083bef9f8241')
 
 prepare() {
   cd $pkgname-$pkgver
