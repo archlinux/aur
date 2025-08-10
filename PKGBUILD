@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "fmp-$pkgver"
 
   install -Dm755 "target/release/fmp" "$pkgdir/usr/bin/fmp"
 
