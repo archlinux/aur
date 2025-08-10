@@ -1,0 +1,6 @@
+post_upgrade() {
+  printf '%s\n' 'NOTE:'
+  printf '%s\n' '  gnome-catgen has been superseded by gnome-app-grid-manager.'
+  printf '%s\n' '  To continue using your gnome-catgen config with gnome-app-grid-manager,'
+  printf '%s\n' '  move ~/.local/share/application-categories to ~/.local/share/gnome-shell/categories'
+}
