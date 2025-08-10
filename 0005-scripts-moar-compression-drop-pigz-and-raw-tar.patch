@@ -1,7 +1,7 @@
-From 304f4065835d8cf2ba650ec824a01b54ca023f28 Mon Sep 17 00:00:00 2001
+From d55869e8bd863f965f6519e411068b6c81efe2a5 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
-Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
+Subject: [PATCH 5/5] scripts: moar compression, drop pigz and raw tar
 
 ---
  scripts/package-airgap | 15 ++++++++++-----
@@ -9,7 +9,7 @@ Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
  2 files changed, 15 insertions(+), 9 deletions(-)
 
 diff --git a/scripts/package-airgap b/scripts/package-airgap
-index 36c4084db9..7e826e6a44 100755
+index 36c4084db9..43a729bed7 100755
 --- a/scripts/package-airgap
 +++ b/scripts/package-airgap
 @@ -20,12 +20,17 @@ if [ -n "${OPT_ARCH}" ]; then
@@ -31,12 +31,12 @@ index 36c4084db9..7e826e6a44 100755
 +readarray -t images <"${airgap_image_file}"
 +printf '%s\0' "${images[@]}" | "${xargs[@]}" -0 -n1 docker pull ${OPT_PLATFORM}
 +docker save "${images[@]}" -o "${airgap_tar_file}"
-+zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${airgap_tar_file}"
++zstd -T0 --ultra -22 --long --verbose --force --rm "${airgap_tar_file}"
  if [ ${ARCH} = amd64 ]; then
    cp "${airgap_image_file}" dist/artifacts/k3s-images.txt
  fi
 diff --git a/scripts/package-cli b/scripts/package-cli
-index f38e10d074..2abcfccb0d 100755
+index a15d754926..c11b0d0ebe 100755
 --- a/scripts/package-cli
 +++ b/scripts/package-cli
 @@ -54,11 +54,12 @@ mkdir -p ./etc
@@ -48,7 +48,7 @@ index f38e10d074..2abcfccb0d 100755
 -HASH=$(sha256sum ./build/out/data-${OS}.tar.zst | awk '{print $1}')
 +data_tar_file="./build/out/data-${OS}.tar"
 +tar cvf "${data_tar_file}" ./bin ./etc
-+zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${data_tar_file}"
++zstd -T0 --ultra -22 --long --verbose --force --rm "${data_tar_file}"
 +HASH=$(sha256sum "${data_tar_file}.zst" | awk '{print $1}')
  
 -cp ./build/out/data-${OS}.tar.zst ./build/data/${HASH}.tar.zst
@@ -57,5 +57,5 @@ index f38e10d074..2abcfccb0d 100755
  BIN_SUFFIX="-${ARCH}"
  if [ ${ARCH} = amd64 ]; then
 -- 
-2.49.0.5.g15b5d850cb1
+2.50.1.5.gf5b12191f0
 

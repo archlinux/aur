@@ -1,7 +1,7 @@
-From fff70c27d70ac964e3357e93035e05199e2fcfe9 Mon Sep 17 00:00:00 2001
+From 19bb8e869d62ea48d3736441727b35eb70c72167 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:10:11 +0100
-Subject: [PATCH 5/6] *.service: update systemd service files
+Subject: [PATCH 4/5] *.service: update systemd service files
 
 ---
  k3s-agent-rootless.service | 47 ++++++++++++++++++++++++++++++++++++++
@@ -171,5 +171,5 @@ index 70ce10c1aa..c786114ce0 100644
  Delegate=yes
  # Having non-zero Limit*s causes performance problems due to accounting overhead
 -- 
-2.49.0.5.g15b5d850cb1
+2.50.1.5.gf5b12191f0
 
