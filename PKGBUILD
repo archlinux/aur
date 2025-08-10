@@ -3,12 +3,12 @@
 pkgname=dida-bin
 _pkgname=dida
 pkgver=6.0.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
 url="https://dida365.com/home"
 license=("LicenseRef-Proprietary")
-_electron=electron36
+_electron=electron37
 depends=(${_electron})
 makedepends=('asar' 'yarn')
 optdepends=('noto-fonts-emoji: for emoji support')
