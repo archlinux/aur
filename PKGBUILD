@@ -1,4 +1,5 @@
-# Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+# Original Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+# Current Maintainer: MidnightMH <mhbagheri12 (at) Gmail (dot) com> [2025--present]
 
 pkgname=b43-firmware
 _classic_=${pkgname}-classic
