@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!volt-gui.desktop
+!volt-gui.sh
+!volt-gui.install

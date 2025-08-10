@@ -1,0 +1,25 @@
+pkgbase = volt-gui
+	pkgdesc = A graphical user interface for configuring GPU related environment variables and more for Linux gaming.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pythonlover02/volt-gui
+	install = volt-gui.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = polkit
+	depends = pyside6
+	depends = python
+	optdepends = mangohud: make use of the Render Pipeline Settings
+	optdepends = mesa-utils: required to use the OpenGL Render Selector
+	optdepends = scx-scheds: make use of the CPU Pluggable Schedulers
+	optdepends = vulkan-mesa-layers: required to use the Vulkan Render Selector
+	optdepends = vulkan-tools: required to use the Vulkan Render Selector
+	source = volt-gui-1.1.0.tar.gz::https://github.com/pythonlover02/volt-gui/archive/refs/tags/1.1.0.tar.gz
+	source = volt-gui.desktop
+	source = volt-gui.sh
+	sha256sums = 1e1404307dc1e5f5c284f282239a4dde8a54f2568b667cc85123ce71296f9117
+	sha256sums = 3143aedef236dd69767c362e385ab9762844a8d63523f7629a55d90db0886332
+	sha256sums = 9852a7ff299da58c8b8be0439d8560350a812f8a004eab44481433cec7fa398a
+
+pkgname = volt-gui
