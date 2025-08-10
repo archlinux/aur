@@ -1,28 +1,31 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
-# Contributor: Siavash Askari Nasr <ciavash@proton.me>
-# Contributor: Vladimir Svyatski <vsvyatski@yandex.ru>
-# Contributor: Dimitris Kiziridis <ragouel@outlook.com>
-# Contributor: EatMyVenom <eat.my.venomm@gmail.com>
-# Contributor: Uncle Hunto <unclehunto@yahoo.com>
-# Contributor: Limao Luo <luolimao+AUR@gmail.com>
-# Contributor: TuxSpirit <tuxspirit@archlinux.fr>
-# Contributor: Jamesjon <universales@protonmail.com>
+# Contributors:
+# Siavash Askari Nasr <ciavash@proton.me>
+# Vladimir Svyatski <vsvyatski@yandex.ru>
+# Dimitris Kiziridis <ragouel@outlook.com>
+# EatMyVenom <eat.my.venomm@gmail.com>
+# Uncle Hunto <unclehunto@yahoo.com>
+# Limao Luo <luolimao+AUR@gmail.com>
+# TuxSpirit <tuxspirit@archlinux.fr>
+# Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=10.5.0
+pkgver=10.6.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL-3.0-or-later')
 arch=('x86_64')
 depends=('7zip' 'brotli' 'hicolor-icon-theme' 'libx11' 'qt6pas' 'upx' 'zstd')
+optdepends=('zpaq')
 options=('!emptydirs')
-provides=("peazip")
-conflicts=("peazip")
+provides=("pea" "peazip")
+conflicts=("pea" "peazip")
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt6-1.x86_64.rpm")
-sha256sums=('91ff5326eeba3cd5f73434c16342842f6b9cde58e4105a78370fb9ca08d02928')
+sha256sums=('26bf619bcaa9e9d2fd5024141754e4f48f45ec5f24175324038ad87e8437355d')
 
 prepare() {
+# Cleanup
   cd usr/share/peazip
   rm -r lang-wincontext
   rm -r batch/{Windows,'macOS service menus',bat}
@@ -30,6 +33,7 @@ prepare() {
   rm icons/peazip_seven.icl
   rm readme/readme_{Windows,macOS}.txt
   cd "$srcdir/usr/lib/peazip/res/bin"
+# Use system libraries instead of bundled
   mkdir -p upx
   ln -sf /usr/bin/7z 7z/7z
   ln -sf /usr/lib/7zip/7zCon.sfx 7z/7zCon.sfx
@@ -38,22 +42,28 @@ prepare() {
   ln -sf /usr/bin/zstd zstd/zstd
   rm 7z/7z.sfx
   chmod -x 7z/Codecs/*.so
+ # Detect zpaq
+if pacman -Qi zpaq &> /dev/null; then
+    ln -sf /usr/bin/zpaq zpaq/zpaq
+else
+    # Do nothing
+    :
+fi
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/"{bin,lib/peazip,share/{doc/peazip,peazip,licenses/peazip,icons/hicolor/256x256/apps}}
+  mkdir -p "$pkgdir/usr/"{bin,lib/peazip,share/licenses/peazip}
   cd usr
-  mv bin/peazip "$pkgdir/usr/bin"
-  install -Dm755 lib/peazip/{peazip,pea} "$pkgdir/usr/lib/peazip"
+  install -Dm755 lib/peazip/{pea,peazip} -t "$pkgdir/usr/lib/peazip"
   mv lib/peazip/res "$pkgdir/usr/lib/peazip"
   cd share
-  mv applications "$pkgdir/usr/share"
-  mv pixmaps/* "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 applications/peazip.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 pixmaps/*.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   cd peazip
-  mv peazip_help.pdf "$pkgdir/usr/share/doc/peazip"
+  install -Dm644 peazip_help.pdf -t "$pkgdir/usr/share/doc/peazip"
   mv copying/* "$pkgdir/usr/share/licenses/peazip"
-  mv readme/readme_Linux.txt "$pkgdir/usr/share/doc/peazip/readme.txt"
+  install -Dm644 readme/readme_Linux.txt "$pkgdir/usr/share/doc/peazip/readme.txt"
   rm -r readme
   mv ../peazip "$pkgdir/usr/share"
-  ln -s /usr/lib/peazip/pea "$pkgdir/usr/bin"
+  ln -s /usr/lib/peazip/{pea,peazip} "$pkgdir/usr/bin"
 }
