@@ -2,10 +2,10 @@
 
 pkgname=cleanuparr-bin
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.'
 arch=(x86_64 aarch64)
-url='https://cleanuparr.github.io'
+url='https://cleanuparr.github.io/Cleanuparr'
 license=('GPL-3.0-or-later')
 groups=(servarr-bin)
 provides=(cleanuparr)
