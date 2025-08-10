@@ -1,0 +1,25 @@
+pkgbase = obsidianctl-git
+	pkgdesc = ObsidianOS's special program to manage A/B Partitions
+	pkgver = r25.e924876
+	pkgrel = 1
+	url = https://github.com/Obsidian-OS/obsidianctl
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = python
+	depends = efibootmgr
+	depends = parted
+	depends = dosfstools
+	depends = squashfs-tools
+	depends = rsync
+	depends = coreutils
+	depends = e2fsprogs
+	depends = systemd
+	depends = util-linux
+	depends = procps-ng
+	provides = obsidianctl
+	source = obsidianctl-git::git+https://github.com/Obsidian-OS/obsidianctl
+	sha256sums = SKIP
+
+pkgname = obsidianctl-git
