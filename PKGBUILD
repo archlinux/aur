@@ -9,7 +9,7 @@ depends=('electron')
 provides=('nalla-iptv-bin')
 conflicts=('nalla-iptv-bin')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Anmol1184/Nalla-IPTV/releases/download/v$pkgver/nalla-iptv-$pkgver.tar.gz")
+source=("https://github.com/Anmol1184/Nalla-IPTV/releases/download/v$pkgver/nalla-iptv-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {
