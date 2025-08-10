@@ -1,0 +1,19 @@
+pkgbase = evtgen
+	pkgdesc = A Monte Carlo event generator that simulates the decays of heavy flavour particles, primarily B and D mesons.
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://evtgen.hepforge.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = hepmc
+	depends = lhapdf
+	depends = pythia8
+	depends = photos
+	options = staticlibs
+	source = EvtGen.tar.gz::https://evtgen.hepforge.org/downloads?f=EvtGen-02.02.03.tar.gz
+	source = pythia8-lowercase-include.patch
+	sha256sums = b642700b703190e3304edb98ff464622db5d03c1cfc5d275ba4a628227d7d6d0
+	sha256sums = b5bd5f07b9ee384f5649785bc430089283b10a15a51b8619613941309b6a7ebb
+
+pkgname = evtgen
