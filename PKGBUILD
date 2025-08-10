@@ -13,8 +13,8 @@ depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_url##*/}-${pkgver}"
-source_armv7h=("${_pkgsrc}-armv7h.zip::${_url}/releases/download/${pkgver}/${_pkgsrc//-/_}_armhf.tar.xz")
-source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/${pkgver}/${_pkgsrc//-/_}_amd64.tar.xz")
+source_armv7h=("${_pkgsrc}-armv7h.tar.xz::${_url}/releases/download/${pkgver}/${_pkgsrc//-/_}_armhf.tar.xz")
+source_x86_64=("${_pkgsrc}-x86_64.tar.xz::${_url}/releases/download/${pkgver}/${_pkgsrc//-/_}_amd64.tar.xz")
 sha256sums_armv7h=('1def39aa99b44ed1f039a35d8f2f65221a25f369273dff785b17358537bc37d9')
 sha256sums_x86_64=('1a375cb6f68a9ffae0e7ce5cc98c187d9ad4a3b3566e5dca0c0a169f3662045c')
 

@@ -9,9 +9,9 @@ pkgbase = tncattach-bin
 	depends = glibc
 	provides = tncattach
 	conflicts = tncattach
-	source_armv7h = tncattach-0.1.9-armv7h.zip::https://github.com/markqvist/tncattach/releases/download/0.1.9/tncattach_0.1.9_armhf.tar.xz
+	source_armv7h = tncattach-0.1.9-armv7h.tar.xz::https://github.com/markqvist/tncattach/releases/download/0.1.9/tncattach_0.1.9_armhf.tar.xz
 	sha256sums_armv7h = 1def39aa99b44ed1f039a35d8f2f65221a25f369273dff785b17358537bc37d9
-	source_x86_64 = tncattach-0.1.9-x86_64.zip::https://github.com/markqvist/tncattach/releases/download/0.1.9/tncattach_0.1.9_amd64.tar.xz
+	source_x86_64 = tncattach-0.1.9-x86_64.tar.xz::https://github.com/markqvist/tncattach/releases/download/0.1.9/tncattach_0.1.9_amd64.tar.xz
 	sha256sums_x86_64 = 1a375cb6f68a9ffae0e7ce5cc98c187d9ad4a3b3566e5dca0c0a169f3662045c
 
 pkgname = tncattach-bin
