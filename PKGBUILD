@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 _pkgname="cwcwm"
 pkgname="cwc"
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
 url="https://github.com/Cudiph/cwcwm"
@@ -44,13 +44,13 @@ optdepends=(
 )
 
 source=("https://github.com/Cudiph/cwcwm/archive/v$pkgver.tar.gz")
-md5sums=('94bbf56b66993fddd3f83a13442fe2b1')
+md5sums=('baf871485f2a60ec99d2bda73b034065')
 
 provides=('wayland-compositor')
 
 build() {
   cd "$_pkgname-$pkgver" || exit 1
-  meson setup build -Dplugins=true --buildtype=release
+  meson setup build -Dplugins=true --buildtype=release --prefix /usr --reconfigure
   ninja -C build
   make docs
 }
