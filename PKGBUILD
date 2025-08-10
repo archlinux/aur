@@ -3,7 +3,7 @@
 _bin='iso2god'
 pkgname="${_bin}-rs"
 pkgdesc='A tool to convert Xbox 360 and original Xbox ISOs into an Xbox 360 compatible Games-On-Demand file format'
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/iliazeus/iso2god-rs'
@@ -14,7 +14,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 _src="${pkgname}-${pkgver}"
 source=("${_src}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('32e7b77cf73e94cb24d24affd90006442d871ae793827d0baa97b2ace50d463e9d8c95e45bef11c9d45d5f9b30bc18e7f8bc17ae875f9580dca08dc06ebde8ae')
+b2sums=('dc993724f943889774562fdc4676a2abbbf5f0959d528a048be8c95cab80a2290324b21b4da0e3ad7a5e2aa9c18cdb05503acfa7a4099486951b84378b7c9b0f')
 
 prepare() {
     cd "$_src"
