@@ -1,0 +1,553 @@
+From cc0c02c0f2776aaeb056196ad8e7589c60911997 Mon Sep 17 00:00:00 2001
+From: "Darryl L. Miles" <darryl.miles@darrylmiles.org>
+Date: Thu, 31 Jul 2025 22:59:00 +0100
+Subject: [PATCH] utils/magsgtty.h removal and fixup
+
+---
+ graphics/grMain.c    |   1 -
+ graphics/grNull.c    |   1 -
+ graphics/grOGL1.c    |   1 -
+ graphics/grOGL4.c    |   1 -
+ graphics/grTCairo1.c |   1 -
+ graphics/grTCairo4.c |   1 -
+ graphics/grTOGL1.c   |   1 -
+ graphics/grTOGL4.c   |   1 -
+ graphics/grTk1.c     |   1 -
+ graphics/grTk4.c     |   1 -
+ graphics/grX11su1.c  |   1 -
+ graphics/grX11su4.c  |   1 -
+ textio/textioInt.h   |  14 -----
+ textio/txCommands.c  |   1 -
+ textio/txInput.c     | 125 +++++++++++++++----------------------------
+ textio/txMain.c      |   1 -
+ textio/txOutput.c    |   1 -
+ utils/magsgtty.h     |  72 ++++++++++++++-----------
+ utils/main.c         |   1 -
+ utils/signals.c      |   1 -
+ 20 files changed, 84 insertions(+), 144 deletions(-)
+
+diff --git a/graphics/grMain.c b/graphics/grMain.c
+index 8d98ef0b4..59480ce51 100644
+--- a/graphics/grMain.c
++++ b/graphics/grMain.c
+@@ -63,7 +63,6 @@ static char rcsid[] __attribute__ ((unused)) = "$Header: /usr/cvsroot/magic-8.0/
+ #include <unistd.h>
+ 
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "utils/hash.h"
+diff --git a/graphics/grNull.c b/graphics/grNull.c
+index a4d645195..5aa3f5aa8 100644
+--- a/graphics/grNull.c
++++ b/graphics/grNull.c
+@@ -20,7 +20,6 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
+-#include "utils/magsgtty.h"
+ #include "utils/magic.h"
+ #include "utils/geometry.h"
+ #include "windows/windows.h"
+diff --git a/graphics/grOGL1.c b/graphics/grOGL1.c
+index 2ba1b1b0d..4f84e2821 100644
+--- a/graphics/grOGL1.c
++++ b/graphics/grOGL1.c
+@@ -17,7 +17,6 @@
+ #include <signal.h>
+ 
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "utils/geometry.h"
+ #include "graphics/graphics.h"
+ #include "windows/windows.h"
+diff --git a/graphics/grOGL4.c b/graphics/grOGL4.c
+index 472b1caa8..339bca232 100644
+--- a/graphics/grOGL4.c
++++ b/graphics/grOGL4.c
+@@ -22,7 +22,6 @@
+ #include <X11/Xlib.h>
+ 
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "graphics/graphics.h"
+diff --git a/graphics/grTCairo1.c b/graphics/grTCairo1.c
+index a3f995639..5c6aeee34 100644
+--- a/graphics/grTCairo1.c
++++ b/graphics/grTCairo1.c
+@@ -28,7 +28,6 @@
+ #include "utils/main.h"
+ #include "utils/magic.h"
+ #include "utils/malloc.h"
+-#include "utils/magsgtty.h"
+ #include "utils/geometry.h"
+ #include "windows/windows.h"
+ #include "graphics/graphics.h"
+diff --git a/graphics/grTCairo4.c b/graphics/grTCairo4.c
+index 506b03b0d..b841e784c 100644
+--- a/graphics/grTCairo4.c
++++ b/graphics/grTCairo4.c
+@@ -15,7 +15,6 @@
+ 
+ #include "tcltk/tclmagic.h"
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "windows/windows.h"
+diff --git a/graphics/grTOGL1.c b/graphics/grTOGL1.c
+index 7849f6593..6e747e71c 100644
+--- a/graphics/grTOGL1.c
++++ b/graphics/grTOGL1.c
+@@ -26,7 +26,6 @@
+ #include "utils/main.h"
+ #include "utils/magic.h"
+ #include "utils/malloc.h"
+-#include "utils/magsgtty.h"
+ #include "utils/geometry.h"
+ #include "windows/windows.h"
+ #include "graphics/graphics.h"
+diff --git a/graphics/grTOGL4.c b/graphics/grTOGL4.c
+index 9912d3ef4..37798281f 100644
+--- a/graphics/grTOGL4.c
++++ b/graphics/grTOGL4.c
+@@ -13,7 +13,6 @@
+ 
+ #include "tcltk/tclmagic.h"
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "windows/windows.h"
+diff --git a/graphics/grTk1.c b/graphics/grTk1.c
+index 01c59d8c0..0d745ef0b 100644
+--- a/graphics/grTk1.c
++++ b/graphics/grTk1.c
+@@ -23,7 +23,6 @@
+ #include "utils/main.h"
+ #include "utils/magic.h"
+ #include "utils/malloc.h"
+-#include "utils/magsgtty.h"
+ #include "utils/geometry.h"
+ #include "windows/windows.h"
+ #include "graphics/graphics.h"
+diff --git a/graphics/grTk4.c b/graphics/grTk4.c
+index 207f53598..1042ee60a 100644
+--- a/graphics/grTk4.c
++++ b/graphics/grTk4.c
+@@ -13,7 +13,6 @@
+ 
+ #include "tcltk/tclmagic.h"
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "windows/windows.h"
+diff --git a/graphics/grX11su1.c b/graphics/grX11su1.c
+index 5c8834894..8e5cc2017 100644
+--- a/graphics/grX11su1.c
++++ b/graphics/grX11su1.c
+@@ -31,7 +31,6 @@
+ #include <X11/Xutil.h>
+ 
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "textio/txcommands.h"
+diff --git a/graphics/grX11su4.c b/graphics/grX11su4.c
+index 2a4c45ca9..5a041f678 100644
+--- a/graphics/grX11su4.c
++++ b/graphics/grX11su4.c
+@@ -22,7 +22,6 @@
+ #include <X11/Xlib.h>
+ 
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "graphics/graphics.h"
+diff --git a/textio/textioInt.h b/textio/textioInt.h
+index f33f55d39..2168cb0e0 100644
+--- a/textio/textioInt.h
++++ b/textio/textioInt.h
+@@ -42,20 +42,6 @@ typedef struct {
+ #define TX_PROMPT	'>'
+ #define TX_CMD_PROMPT	":"
+ 
+-/* all of the state associated with a tty terminal */
+-#if !defined(SYSV) && !defined(CYGWIN) && !defined(__OpenBSD__) && !defined(EMSCRIPTEN)
+-#if defined(HAVE_SYS_IOCTL_COMPAT_H) || defined(HAVE_SGTTY_H)
+-#if defined(HAVE_SYS_IOCTL_COMPAT_H)
+-#include <sys/ioctl_compat.h> /* replaced sgtty.h */
+-#elif defined(HAVE_SGTTY_H)
+-#include <sgtty.h>/* legacy - struct sgttyb{} defn */
+-#endif
+-typedef struct {
+-    struct sgttyb tx_i_sgtty;
+-    struct tchars tx_i_tchars;
+-} txTermState;
+-#endif /* HAVE_SYS_IOCTL_COMPAT_H || HAVE_SGTTY_H */
+-#endif /* SYSV */
+ 
+ extern bool TxGetInputEvent(bool block, bool returnOnSigWinch);
+ 
+diff --git a/textio/txCommands.c b/textio/txCommands.c
+index 15ec17c3b..d057cc58b 100644
+--- a/textio/txCommands.c
++++ b/textio/txCommands.c
+@@ -39,7 +39,6 @@ static char rcsid[] __attribute__ ((unused)) ="$Header: /usr/cvsroot/magic-8.0/t
+ #endif
+ 
+ #include "tcltk/tclmagic.h"
+-#include "utils/magsgtty.h"
+ #include "utils/magic.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+diff --git a/textio/txInput.c b/textio/txInput.c
+index 1955daf69..c0f5218cc 100644
+--- a/textio/txInput.c
++++ b/textio/txInput.c
+@@ -32,14 +32,13 @@ static char rcsid[] __attribute__ ((unused)) = "$Header: /usr/cvsroot/magic-8.0/
+ #include <dirent.h>
+ 
+ 
+-#include "utils/magsgtty.h"
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "utils/main.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "textio/txcommands.h"
+ #include "textio/textioInt.h"
++#include "utils/magsgtty.h"	/* txTermState */
+ #include "utils/dqueue.h"
+ #include "utils/macros.h"
+ #include "utils/hash.h"
+@@ -1223,36 +1222,21 @@ TxGetLine(
+  * ----------------------------------------------------------------------------
+  */
+ 
+-#if defined(SYSV) || defined(CYGWIN)
+-
+-void
+-txGetTermState(
+-    struct termio *buf)
+-{
+-    ioctl( fileno( stdin ), TCGETA, buf);
+-}
+-
+-#elif defined (__OpenBSD__) || defined(EMSCRIPTEN)
+-
+-void
+-txGetTermState(
+-    struct termios *buf)
+-{
+-    (void) tcgetattr(fileno(stdin), buf);
+-}
+-
+-#else
+-
+ void
+ txGetTermState(
+     txTermState *buf)
+ {
++#if defined(HAVE_TERMIOS_H)
++    (void) tcgetattr(fileno(stdin), &buf->termios);
++#elif defined(HAVE_TERMIO_H)
++    ioctl(fileno(stdin), TCGETA, &buf->termio);
++#else /* sgtty */
+     ASSERT(TxStdinIsatty, "txGetTermState");
+     /* save the current terminal characteristics */
+-    (void) ioctl(fileno(stdin), TIOCGETP, (char *) &(buf->tx_i_sgtty) );
+-    (void) ioctl(fileno(stdin), TIOCGETC, (char *) &(buf->tx_i_tchars) );
++    (void) ioctl(fileno(stdin), TIOCGETP, (char *) &buf->tx_i_sgtty);
++    (void) ioctl(fileno(stdin), TIOCGETC, (char *) &buf->tx_i_tchars);
++#endif
+ }
+-#endif /* SYSV */
+ 
+ 
+ /*
+@@ -1271,24 +1255,17 @@ txGetTermState(
+ 
+ void
+ txSetTermState(
+-#if defined(SYSV) || defined(CYGWIN)
+-    struct termio *buf
+-#elif defined (__OpenBSD__) || defined(EMSCRIPTEN)
+-    struct termios *buf
+-#else
+-    txTermState *buf
+-#endif /* SYSV */
+-    )
++    txTermState *buf)
+ {
+-#if defined(SYSV) || defined(CYGWIN)
+-    ioctl( fileno(stdin), TCSETAF, buf );
+-#elif defined (__OpenBSD__) || defined(EMSCRIPTEN)
+-    (void) tcsetattr( fileno(stdin), TCSANOW, buf );
+-#else
++#if defined(HAVE_TERMIOS_H)
++    (void) tcsetattr(fileno(stdin), TCSANOW, &buf->termios);
++#elif defined(HAVE_TERMIO_H)
++    ioctl(fileno(stdin), TCSETAF, &buf->termio);
++#else /* sgtty */
+     /* set the current terminal characteristics */
+-    (void) ioctl(fileno(stdin), TIOCSETN, (char *) &(buf->tx_i_sgtty) );
+-    (void) ioctl(fileno(stdin), TIOCSETC, (char *) &(buf->tx_i_tchars) );
+-#endif /* SYSV */
++    (void) ioctl(fileno(stdin), TIOCSETN, (char *) &buf->tx_i_sgtty);
++    (void) ioctl(fileno(stdin), TIOCSETC, (char *) &buf->tx_i_tchars);
++#endif
+ }
+ 
+ 
+@@ -1311,37 +1288,27 @@ txSetTermState(
+ 
+ void
+ txInitTermRec(
+-#if defined(SYSV) || defined(CYGWIN)
+-    struct termio *buf
+-#elif defined (__OpenBSD__) || defined(EMSCRIPTEN)
+-    struct termios *buf
+-#else
+-    txTermState *buf
+-#endif /* SYSV */
+-    )
++    txTermState *buf)
+ {
+-#if defined(SYSV) || defined(CYGWIN) || defined(__OpenBSD__) || defined(EMSCRIPTEN)
+-    buf->c_lflag = ISIG;    /* raw: no echo and no processing, allow signals */
+-    buf->c_cc[ VMIN ] = 1;
+-    buf->c_cc[ VTIME ] = 0;
+-#else
++#if defined(HAVE_TERMIOS_H)
++    buf->termios.c_lflag = ISIG;    /* raw: no echo and no processing, allow signals */
++    buf->termios.c_cc[ VMIN ] = 1;
++    buf->termios.c_cc[ VTIME ] = 0;
++#elif defined(HAVE_TERMIO_H)
++    buf->termio.c_lflag = ISIG;    /* raw: no echo and no processing, allow signals */
++    buf->termio.c_cc[ VMIN ] = 1;
++    buf->termio.c_cc[ VTIME ] = 0;
++#else /* sgtty */
+     /* set things up for us, turn off echo, turn on cbreak, no EOF */
+     buf->tx_i_sgtty.sg_flags |= CBREAK;
+     buf->tx_i_sgtty.sg_flags &= ~ECHO;
+     buf->tx_i_tchars.t_eofc = -1;
+-
+-#endif /* SYSV */
++#endif
+ }
+ 
+ 
+ 
+-#if defined(SYSV) || defined(CYGWIN)
+-struct termio closeTermState;
+-#elif defined (__OpenBSD__) || defined(EMSCRIPTEN)
+-struct termios closeTermState;
+-#else
+ static txTermState closeTermState;
+-#endif /* SYSV */
+ 
+ static bool haveCloseState = FALSE;
+ 
+@@ -1364,21 +1331,21 @@ static bool haveCloseState = FALSE;
+ void
+ txSaveTerm(void)
+ {
+-#if defined(SYSV) || defined(CYGWIN)
+-    ioctl( fileno( stdin ), TCGETA, &closeTermState);
+-    txEraseChar = closeTermState.c_cc[VERASE];
+-    txKillChar =  closeTermState.c_cc[VKILL];
+-    TxEOFChar = closeTermState.c_cc[VEOF];
+-    TxInterruptChar = closeTermState.c_cc[VINTR];
++#if defined(HAVE_TERMIOS_H)
++    (void) tcgetattr(fileno(stdin), &closeTermState.termios);
++    txEraseChar = closeTermState.termios.c_cc[VERASE];
++    txKillChar = closeTermState.termios.c_cc[VKILL];
++    TxEOFChar = closeTermState.termios.c_cc[VEOF];
++    TxInterruptChar = closeTermState.termios.c_cc[VINTR];
+     haveCloseState = TRUE;
+-#elif defined (__OpenBSD__) || defined(EMSCRIPTEN)
+-    (void) tcgetattr( fileno( stdin ), &closeTermState);
+-    txEraseChar = closeTermState.c_cc[VERASE];
+-    txKillChar =  closeTermState.c_cc[VKILL];
+-    TxEOFChar = closeTermState.c_cc[VEOF];
+-    TxInterruptChar = closeTermState.c_cc[VINTR];
++#elif defined(HAVE_TERMIO_H)
++    ioctl(fileno(stdin), TCGETA, &closeTermState.termio);
++    txEraseChar = closeTermState.termio.c_cc[VERASE];
++    txKillChar = closeTermState.termio.c_cc[VKILL];
++    TxEOFChar = closeTermState.termio.c_cc[VEOF];
++    TxInterruptChar = closeTermState.termio.c_cc[VINTR];
+     haveCloseState = TRUE;
+-#else
++#else /* sgtty */
+     struct ltchars lt;
+     txGetTermState(&closeTermState);
+     (void) ioctl(fileno(stdin), TIOCGLTC, (char *) &lt);
+@@ -1391,7 +1358,7 @@ txSaveTerm(void)
+     TxEOFChar = closeTermState.tx_i_tchars.t_eofc;
+     TxInterruptChar = closeTermState.tx_i_tchars.t_intrc;
+     haveCloseState = TRUE;
+-#endif /* SYSV */
++#endif
+ }
+ 
+ 
+@@ -1412,13 +1379,7 @@ txSaveTerm(void)
+ void
+ TxSetTerminal(void)
+ {
+-#if defined(SYSV) || defined(CYGWIN)
+-    struct termio buf;
+-#elif defined (__OpenBSD__) || defined(EMSCRIPTEN)
+-    struct termios buf;
+-#else
+     txTermState buf;
+-#endif /* SYSV */
+ 
+ #ifdef MAGIC_WRAPPER
+     /* If using Tk console, don't mess with the terminal settings;	  */
+diff --git a/textio/txMain.c b/textio/txMain.c
+index 17e2b185d..e202cc2f5 100644
+--- a/textio/txMain.c
++++ b/textio/txMain.c
+@@ -26,7 +26,6 @@ static char rcsid[] __attribute__ ((unused)) = "$Header: /usr/cvsroot/magic-8.0/
+ #include <string.h>
+ #include <unistd.h>
+ 
+-#include "utils/magsgtty.h"
+ #include "utils/magic.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+diff --git a/textio/txOutput.c b/textio/txOutput.c
+index f4f2d1ee5..fd0eb8d06 100644
+--- a/textio/txOutput.c
++++ b/textio/txOutput.c
+@@ -31,7 +31,6 @@ static char rcsid[] __attribute__ ((unused)) = "$Header: /usr/cvsroot/magic-8.0/
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+-#include "utils/magsgtty.h"
+ #include "utils/magic.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+diff --git a/utils/magsgtty.h b/utils/magsgtty.h
+index 59e0678ad..c7f31b315 100644
+--- a/utils/magsgtty.h
++++ b/utils/magsgtty.h
+@@ -21,44 +21,54 @@
+ #ifndef	_MAGIC__UTILS__MAGSGTTY_H
+ #define _MAGIC__UTILS__MAGSGTTY_H
+ 
+-/* maybe this can be #ifndef HAVE_TERMIO_H */
+-#if !defined(SYSV) && !defined(CYGWIN)
+ 
+-# ifdef	ALPHA
+-# undef MAX
+-# undef MIN
+-# endif
+-
+-/* unclear what platform requires this OpenBSD/FreeBSD ? */
+-# ifndef COMPAT_43TTY
+-# define COMPAT_43TTY
+-# endif
++#if defined(HAVE_TERMIOS_H)
++ /* In modern times everything has POSIX */
++ #include <termios.h>
+ 
+-#ifdef HAVE_SYS_IOCTL_H
+-#include <sys/ioctl.h>
+-#endif
++ #ifdef HAVE_SYS_IOCTL_H
++  /* Linux glibx 2.x       - present
++   * FreeBSD 14.3-RELEASE  - present
++   * Solaris 11.4          - present
++   */
++  #include <sys/ioctl.h>
++ #endif
+ 
+-#if defined(HAVE_TERMIOS_H)
+-#include <termios.h>
+-#elif defined(HAVE_SYS_IOCTL_COMPAT_H)
+-/* unclear which platform(s) require <sys/ioctl_compat.h> and the structure
+- *  of this file is such that it will try to include it by default, better
+- *  to invert the #if and only select this on the known platforms that need
+- *  it so that <termios.h> goes by default, which exists on MacOSX, Linux, etc..
+- * many possible solutions to make this work by default:
+- *   HAVE_SYS_IOCTL_COMPAT_H ?  HAVE_TERMIOS_H ?  !defined(linux) at top (MaxOSX is BSD type)
+- */
+-#include <sys/ioctl_compat.h> /* replaced sgtty.h */
+-#elif defined(HAVE_SGTTY_H)
+-#include <sgtty.h> /* legacy - struct sgttyb{} defn */
++#elif defined(HAVE_TERMIO_H)
++ /* Linux glibx 2.x       - present (just includes termios.h & sys/ioctl.h)
++  * Linux glibc 2.45+     - not present
++  * FreeBSD 14.3-RELEASE  - not present
++  * Solaris 11.4          - present
++  */
++ #include <termio.h>
++#else /* sgtty */
++ #if defined(HAVE_SYS_IOCTL_COMPAT_H)
++  /* Linux glibc2.x        - not present
++   * FreeBSD 14.3-RELEASE  - not present
++   * Solaris 11.4          - not present
++   */
++  #include <sys/ioctl_compat.h> /* replaced sgtty.h */
++ #elif defined(HAVE_SGTTY_H)
++  /* Linux glibc2.x        - present (includes sys/ioctl.h)
++   * FreeBSD 14.3-RELEASE  - not present
++   * Solaris 11.4          - present
++   */
++  #include <sgtty.h> /* legacy - struct sgttyb{} defn */
++ #endif
+ #endif
+ 
+-#else
+ 
+-#if defined(HAVE_TERMIO_H)
+-#include <termio.h>
++/* all of the state associated with a tty terminal */
++typedef struct {
++#if defined(HAVE_TERMIOS_H)
++    struct termios termios;
++#elif defined(HAVE_TERMIO_H)
++    struct termio termio;
++#else /* sgtty */
++    struct sgttyb tx_i_sgtty;
++    struct tchars tx_i_tchars;
+ #endif
++} txTermState;
+ 
+-#endif /* !SYSV && !CYGWIN */
+ 
+ #endif	/* _MAGIC__UTILS__MAGSGTTY_H */
+diff --git a/utils/main.c b/utils/main.c
+index b7d051315..b613ec23b 100644
+--- a/utils/main.c
++++ b/utils/main.c
+@@ -37,7 +37,6 @@ static char rcsid[] __attribute__ ((unused)) = "$Header: /usr/cvsroot/magic-8.0/
+ #include "utils/main.h"
+ #include "utils/magic.h"
+ #include "utils/malloc.h"
+-#include "utils/magsgtty.h"
+ #include "utils/hash.h"
+ #include "utils/macros.h"
+ #include "textio/textio.h"
+diff --git a/utils/signals.c b/utils/signals.c
+index 16ed25997..74e80aef2 100644
+--- a/utils/signals.c
++++ b/utils/signals.c
+@@ -33,7 +33,6 @@ static char rcsid[] __attribute__ ((unused)) = "$Header: /usr/cvsroot/magic-8.0/
+ #include "tcltk/tclmagic.h"
+ #include "utils/main.h"
+ #include "utils/magic.h"
+-#include "utils/magsgtty.h"
+ #include "textio/textio.h"
+ #include "utils/geometry.h"
+ #include "utils/signals.h"

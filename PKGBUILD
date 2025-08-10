@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.533
+pkgver=8.3.538
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -35,10 +35,11 @@ optdepends=(
 _archive="${pkgname}-${pkgver}"
 source=(
    "${_archive}::git+${_git_url}#tag=${pkgver}"
-   "0001-set_std_gnu17_default.patch"
+   "0001-fixup-magsgtty.patch"
 )
-b2sums=('04ab86926e69c999ff209f0a50bcff9f559a5e241351faf214a7f5da343ea26dcb3baa63e6655c5124bcede17ba84ab9815588f35ffda1b78aace59b0b2fbc01'
-        '37eaa5bbaab691216ffc06485e6d5d934c74f63e74a876da5bedb0f9fd98f404abfbaa902b9fa979e276e38ba660b4049fbe3d6ff43b591e1d1d3fb2d128eb51')
+
+b2sums=('41410b62807ee241f7c276a6144e288aeb58ae7d88360294bf342f3f29bb5ea643799478b1986f922de800d3c9cde884d78512387ed55000f406dcc134c318ac'
+        '72d1a9742c72041204c05aca45639251ab49768c43b1829bc40e6f0857fd93c0a7e32e433a0090996e17af1fc588e26677c24487bf04d5a14a86c8f5e4a2402c')
 
 
 options=()
@@ -46,14 +47,17 @@ options=()
 prepare() {
    cd "${_archive}"
 
-   # See upstream issue: https://github.com/RTimothyEdwards/magic/issues/401
-   # for more details about why we need to use C17 + GNU extensions
-   patch -Np1 < "../0001-set_std_gnu17_default.patch"
+   # To compile with Glibc v2.42 we need to patch magsgtty
+   # See: https://github.com/RTimothyEdwards/magic/issues/434
+   patch -Np1 < "../0001-fixup-magsgtty.patch"
 
 }
 
 build() {
    cd "${_archive}"
+   # See upstream issue: https://github.com/RTimothyEdwards/magic/issues/401
+   # for more details about why we need to use C17
+   export CFLAGS="${CFLAGS} -std=c17 -D_DEFAULT_SOURCE=1"
    ./configure --prefix=/usr
    make
 }
