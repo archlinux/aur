@@ -1,0 +1,11 @@
+# -*- sh -*-
+
+post_install() {
+  setcap cap_net_raw,cap_bpf,cap_sys_admin,cap_net_admin+ep /usr/bin/packemon
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof
