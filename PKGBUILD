@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=pico-sdk
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=2
 
 pkgdesc="Libraries and tools for C/C++ development on RP2040 microcontrollers."
@@ -24,7 +24,7 @@ source=("git+${url}.git#tag=${pkgver}"
         "git+https://github.com/Mbed-TLS/mbedtls.git#commit=5a764e5"
         "git+https://github.com/hathach/tinyusb.git#commit=86ad6e5"
         "setup-environment-variables.sh")
-sha256sums=('c9c14da88300d7f1ff5f0138921b259ccb823332e5a5aad3e7c27632ef271c45'
+sha256sums=('3a70d72e41ba8b47ae0f47ebc654d17ba8fa3a42f731f3bccae8b3ff68a5fa4f'
             '3a3a4c5a34bfa2613bc5a774b3cd40651f1215b22f61a2135c0c23fe10f904fa'
             'a50a697c9af5b69f73adcf78663e0591cce83af54e5f9d88a38e7738376813bb'
             '1c62bb98ba930a5e848b6b126fc4272dd36cabdcacec66b1ad12c1aa50c3d2ae'
