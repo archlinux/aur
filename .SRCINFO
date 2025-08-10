@@ -1,7 +1,7 @@
 pkgbase = qgpgme-qt5
 	pkgdesc = Qt5 bindings for GPGme
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gnupg.org/software/gpgme/index.html
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,6 +11,7 @@ pkgbase = qgpgme-qt5
 	depends = glibc
 	depends = gpgmepp
 	depends = qt5-base
+	conflicts = qgpgme-qt6
 	source = git+https://dev.gnupg.org/source/gpgmeqt#tag=gpgmeqt-2.0.0
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
 	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
