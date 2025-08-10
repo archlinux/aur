@@ -10,10 +10,10 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc13 gcc13-libs gcc13-fortran)
-pkgver=13.3.1+r432+gfc8bd63119c0
+pkgver=13.4.1+r80+gd6ebfe4
 _majorver=${pkgver%%.*}
-_commit=fc8bd63119c00f4763ba337aab02db64beb25931
-pkgrel=3
+_commit=d6ebfe490b856673c31ab2be5b311f3df370eca0
+pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -39,6 +39,7 @@ checkdepends=(
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit}
+		#https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         c89 c99
         fix-asan-allocator-aslr.patch
 )
@@ -46,14 +47,14 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # foutrelis@archlinux.org
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('39e2229046659134cc33c5cfa2f6b9f4e2f597ac7810ae9ee9322d286d0950e9'
+sha256sums=('7b47ce30b7eb91793bd393d8ae639d526903860bda317bfa9e91442623d2aa2a'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             '5ede1f5fec5b664428412a0849b28895be1c8d8982d3c0d246a4e95fd4730d65')
 
 pkgver() {
   cd gcc
-  echo "$(cat gcc/BASE-VER)+$(git describe --abbrev=12 --tags | sed 's/[^-]*-[^-]*-//;s/[^-]*-/r&/;s/-/+/g;s/_/./')"
+  echo "$(cat gcc/BASE-VER)+$(git describe --long --tags --abbrev=7 | sed 's/[^-]*-[^-]*-//;s/[^-]*-/r&/;s/-/+/g;s/_/./')"
 }
 
 prepare() {
