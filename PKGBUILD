@@ -1,6 +1,6 @@
 # Maintainer: rcrpt <jrafa1673tena@gmail.com>
 pkgname=sysdmon
-pkgver=1.0
+pkgver=1
 pkgrel=1
 pkgdesc="A system tool for monitoring and alerting you, if there is anything wrong with system logs."
 arch=('x86_64')
