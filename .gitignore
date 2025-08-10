@@ -1,6 +1,6 @@
 src
 pkg
-LICENSE*
+LICENSE-*
 make-package-json.sh
 theia.svg
 *.pkg.*
