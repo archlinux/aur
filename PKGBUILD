@@ -6,7 +6,8 @@ pkgver=1.7.0
 pkgrel=2
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=('any')
-url="https://github.com/markqvist/${_Name}"
+url="https://unsigned.io/software/Sideband.html"
+_url="https://github.com/markqvist/${_Name}"
 license=('CC-BY-NC-SA-4.0')
 depends=(
   'hicolor-icon-theme'
@@ -48,8 +49,8 @@ optdepends=(
 )
 provides=('python-sbapp')
 conflicts=('python-sbapp')
-_pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+_pkgsrc="${_url##*/}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('0374f957b3276f1b3dc97ba33706490c4e158968f47f61c8949abb2281abaa30')
 
 build () {
