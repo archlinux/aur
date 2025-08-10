@@ -1,7 +1,7 @@
 pkgbase = perl-musicbrainz-discid
 	pkgdesc = MusicBrainz::DiscID module
 	pkgver = 0.06
-	pkgrel = 3
+	pkgrel = 5
 	url = https://metacpan.org/release/MusicBrainz-DiscID
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = perl-musicbrainz-discid
 	depends = perl-module-build
 	options = !emptydirs
 	source = https://search.cpan.org/CPAN/authors/id/N/NJ/NJH/MusicBrainz-DiscID-0.06.tar.gz
+	source = rhbz-2364631.patch
 	sha256sums = ba0b6ed09897ff563ba59872ee93715bef37157515b19b7c6d6f286e6548ecab
+	sha256sums = 9f123a15960e389ad76bb5235f2ec876f692dfe58aae9da28370862afb6d4c7f
 
 pkgname = perl-musicbrainz-discid
