@@ -1,8 +1,8 @@
-# Maintainer: kamisaki
+# Maintainer: xeyossr
 # Description: 🚀🌠 A minimal, fast, and customizable prompt written in Go
 
 pkgname=pulsarship
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="🚀🌠 A minimal, fast, and customizable prompt written in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
