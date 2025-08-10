@@ -1,0 +1,23 @@
+pkgbase = rapidsim-git
+	pkgdesc = RapidSim is a fast Monte Carlo generator for simulation of heavy-quark hadron decays. It can be useful for generating background or toy data sets for acceptance studies.
+	pkgver = 1.5.r40.g9ae02c3
+	pkgrel = 1
+	url = https://github.com/gcowan/RapidSim
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = hepmc
+	depends = lhapdf
+	depends = hepmc
+	depends = pythia8
+	depends = root
+	depends = cern-vdt
+	optdepends = evtgen: for generating events
+	optdepends = pythia8: for event generation
+	optdepends = photos: for photon radiation in decays
+	source = rapidsim::git+https://github.com/gcowan/RapidSim.git
+	source = cmake-3.5.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rapidsim-git

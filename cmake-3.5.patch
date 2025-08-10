@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ #  CMAKE CONFIG
+-CMAKE_MINIMUM_REQUIRED( VERSION 2.6 FATAL_ERROR )
++CMAKE_MINIMUM_REQUIRED( VERSION 3.5 FATAL_ERROR )
+ project(RapidSim)
+ 
+ set(CMAKE_VERBOSE_MAKEFILE ON)
+@@ -103,10 +103,12 @@ add_subdirectory(src)
+ set(bindir ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR})
+ 
+ if (NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+-  configure_file(${CMAKE_SOURCE_DIR}/validation/runValidation.sh.in ${RAPIDSIM_ROOT}/${CMAKE_INSTALL_BINDIR}/runValidation.sh   @ONLY)
++  configure_file(${CMAKE_SOURCE_DIR}/validation/runValidation.sh.in ${CMAKE_BINARY_DIR}/runValidation.sh   @ONLY)
++  install(FILES ${CMAKE_BINARY_DIR}/runValidation.sh DESTINATION ${RAPIDSIM_ROOT}/${CMAKE_INSTALL_BINDIR}
++          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ endif()
+ 
+ install(DIRECTORY validation DESTINATION ${RAPIDSIM_ROOT} )
+ install(DIRECTORY rootfiles DESTINATION ${RAPIDSIM_ROOT} )
+ install(DIRECTORY utils DESTINATION ${RAPIDSIM_ROOT} )
+ install(DIRECTORY config DESTINATION ${RAPIDSIM_ROOT} )
