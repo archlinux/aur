@@ -3,8 +3,8 @@
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='makesure'
-pkgver=0.9.24
-pkgrel=2
+pkgver=0.9.25
+pkgrel=1
 pkgdesc='Simple AWK-based task/command runner with declarative goals and dependencies'
 arch=('any')
 url='https://github.com/xonixx/makesure'
@@ -18,18 +18,18 @@ _docs='https://makesure.dev/'
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 makesure "$pkgdir/usr/bin/makesure"
-  install -vDm0644 completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -vDm0755 -t "$pkgdir/usr/bin" makesure
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     CHANGELOG.md README.md docs/*.md
-  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm0644 completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
 }
 
 sha256sums=(
-  '444b0666fbff948624baae92c3673fe12c01484901c75269e0d3651e982b54e0'
+  '70aae6622577ff1fc9d579f0e35361d4f0fc8bda3f9cf1cb09a73e8d9bb3d2be'
 )
 b2sums=(
-  'dc3f6a34eb3a0f98e44bae6bd0e7169e343d978306147aab204b04f3fd6ef1e26af190ba06bfffe43ad81f5c6bfeec237b6c9c92233c69d3e83edb75944b5d17'
+  '00c744ca2e1e37df67e246e7c99473cef92e7063fc699af2d5024825c64e3414302a48e065e0f6e6281489d09a2d356c0e8f55cbc228d76a09f241039c9de1be'
 )
 
 # eof
