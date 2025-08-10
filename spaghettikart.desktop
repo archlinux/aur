@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=SpaghettiKart
+Comment=An unofficial port of Mario Kart 64
+Exec=Spaghettify
+Terminal=false
+Icon=spaghettikart
+Type=Application
+Categories=Game;Retro;
