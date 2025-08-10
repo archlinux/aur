@@ -1,17 +1,16 @@
-# Maintainer: Jake <aur@ja-ke.tech>
+# Contributor: Jake <aur at ja-ke dot tech>
 pkgname=nwjs-ffmpeg-codecs-bin
-pkgver=0.94.0
+pkgver=0.102.0
 pkgrel=1
-pkgdesc="Additional proprietary codecs for nw.js from ffmpeg"
+_avcodec=62
+pkgdesc="Add codecs to Chromium M138+ (libavcodec ${_avcodec})"
 arch=('x86_64')
-depends=('nwjs-bin')
-url="https://github.com/iteufel/nwjs-ffmpeg-prebuilt"
+optdepends=(nwjs vivaldi vivaldi-snapshot)
+url=https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt
 license=('LGPL2.1')
-source=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$pkgver/$pkgver-linux-x64.zip")
-sha512sums=('3740711d410b12dfc953898ad6fd84b3346ad3bf808ffa4fd0fc6a0cee5188ecc235596f503870063dcae93b2de888cdaee92e28012c8c199ec3105ac906fdb6')
-install='codecs-preload.install'
+source=("${url}/releases/download/${pkgver}/${pkgver}-linux-x64.zip")
+sha256sums=('a3d5eca356d145f18985fd1c7d64b5b12e8536e825d5b6c8dbb2739f5617a8dc')
 
 package() {
-	install -d "/opt/nwjs"
-	install -D libffmpeg.so "$pkgdir/opt/nwjs/libffmpeg.so"
+  install -Dvm644 libffmpeg.so "$pkgdir"/usr/lib/libffmpeg.so.$_avcodec
 }

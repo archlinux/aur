@@ -1,3 +1,0 @@
-post_install() {
-    echo "IMPORTANT: outside of packages that depend on this, nwjs will still default to the builtin codecs, you have to set LD_PRELOAD=/opt/nwjs/libffmpeg.so to switch to this version!"
-}
