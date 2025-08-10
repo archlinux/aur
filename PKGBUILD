@@ -1,7 +1,7 @@
 # Packager: teraflops cprieto.ortiz@gmail.com
 
 pkgname=gnome-monitor-config-git
-pkgver=04b854e
+pkgver=04b854f
 pkgrel=1
 pkgdesc="GNOME monitor configuration utility"
 arch=('x86_64')
