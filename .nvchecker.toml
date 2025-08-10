@@ -1,0 +1,5 @@
+[tncattach-bin]
+source = "github"
+github = "markqvist/tncattach"
+use_latest_release = true
+prefix = "v"
