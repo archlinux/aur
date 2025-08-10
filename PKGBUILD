@@ -3,7 +3,7 @@ pkgname=rpxy-bin
 pkgdesc="A simple and ultrafast reverse-proxy serving multiple domain names \
 with TLS termination, written in Rust"
 url=https://rpxy.io
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 arch=(x86_64 aarch64)
 license=(MIT)
@@ -16,7 +16,7 @@ source=(
     "config.toml"
     "rpxy.service"
 )
-b2sums=('1435f6e0e5b9984584fb0fc28b231f656d615e6f9cf54f55e3112d85d6e23caf666c5d654d2f5cf821b20acbba73fec3f54caa3255c33ad4e66ea18b4093874f'
+b2sums=('9e854d7b221f8710f478ea64744faf6b3e6ca886d144382550f0d8ba413475ec80019c076913cd3d9524aa10c428138d5314d37fffdb608ee5ac74531b566984'
         '6b7bcf8fc63d08949b0bd90decfc8ce10d76857819756e03027dda8e1bd7182bf817baa0f1d1c0bd119c5e1d378aad8c146cc639ac65a9924ee730e24cdf32cc'
         '7c24ffe7e5f8bf3f74495df037dcc0b385637b9407c9b16a541944063e035acd99e1b159923409a3a65b0ef5e8614c4d180396b016945913a5132d54ac03b196')
 
