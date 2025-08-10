@@ -2,7 +2,7 @@
 
 pkgname=php83-cli-static-bin
 pkgver=8.3.24
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose scripting language that is especially suited to web development (8.3.x static precompiled binary)"
 arch=("x86_64" "aarch64")
 url="https://www.php.net"
@@ -69,8 +69,8 @@ provides=(
 conflicts=("php83-cli")
 source_x86_64=("https://dl.static-php.dev/static-php-cli/bulk/php-${pkgver}-cli-linux-x86_64.tar.gz")
 source_aarch64=("https://dl.static-php.dev/static-php-cli/bulk/php-${pkgver}-cli-linux-aarch64.tar.gz")
-sha256sums_x86_64=('c4146da7f9e4608967766624dbbb23af37bf4e8b23898911c9266df9ebd0cb57')
-sha256sums_aarch64=('f5b228458635874354be3ad6f039fa8fb882571365e77fb04aa3a139622f599f')
+sha256sums_x86_64=('216a4ab3c7b7540e84492837265d408013b6575d28fd2028b34ff83344d97244')
+sha256sums_aarch64=('fb113b3e8563dd2391d26c88683c65ef205c67fdd741ea69f2ed0cc85002b292')
 options=(!strip)
 
 package() {
