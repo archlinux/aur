@@ -1,7 +1,7 @@
 pkgbase = mblaze
 	pkgdesc = Unix utilities to deal with Maildir
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leahneukirchen/mblaze
 	changelog = NEWS.md
 	arch = x86_64
