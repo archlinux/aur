@@ -2,7 +2,7 @@
 
 pkgname=ik-llama.cpp-cuda
 _pkgname=ik_llama.cpp
-pkgver=r3830.58f3bda0
+pkgver=r3835.d60c8f4d
 pkgrel=1
 pkgdesc="llama.cpp fork with additional SOTA quants and improved performance (CUDA Backend)"
 arch=(x86_64 armv7h aarch64)
@@ -55,6 +55,10 @@ pkgver() {
 }
 
 build() {
+    if [[ -z "${NVCC_CCBIN}" ]]; then
+        source /etc/profile
+    fi
+
     local _cmake_options=(
         -B build
         -S "${_pkgname}"
@@ -62,7 +66,7 @@ build() {
         -DBUILD_SHARED_LIBS=ON
         -DLLAMA_CURL=ON
         -DLLAMA_BUILD_TESTS=OFF
-        -DLLAMA_USE_SYSTEM_GGML=OFF
+        # -DLLAMA_USE_SYSTEM_GGML=OFF
         -DGGML_ALL_WARNINGS=OFF
         -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
         -DGGML_BUILD_EXAMPLES=OFF
