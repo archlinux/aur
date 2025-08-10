@@ -27,6 +27,7 @@ pkgbase = newelle
 	depends = python-requests
 	depends = python-speechrecognition
 	depends = python-tldextract
+	depends = vte4
 	depends = webkitgtk-6.0
 	source = https://github.com/qwersyk/Newelle/archive/refs/tags/1.0.1.tar.gz
 	sha256sums = fcf48743e1f2bb69277dce4a9327e134175e2cdc2eae889aeb6127348077d17d
