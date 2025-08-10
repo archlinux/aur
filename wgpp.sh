@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 2025-03-16
+# rev.date: 2025-08-10
 
-VERSION="5.3.1"
+VERSION="5.4.0"
 
 # Variables
 WGPP_USR=$(whoami)
@@ -38,7 +38,7 @@ EOF
 
 checkReq() {
     # Ensure required packages are installed
-    local packages=(dotnet libxml2 wget unzip sudo)
+    local packages=(dotnet-runtime-9.0 libxml2 wget unzip sudo)
     local missing=()
     
     for p in "${packages[@]}"; do

@@ -1,28 +1,24 @@
 pkgbase = wg++
 	pkgdesc = A Freeware, closed-source multi-site incremental XMLTV EPG grabber
-	pkgver = 5.3.1
-	pkgrel = 2
+	pkgver = 5.4.0
+	pkgrel = 1
 	url = http://webgrabplus.com
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
+	arch = any
 	license = LicenseRef-custom
 	makedepends = dos2unix
 	depends = bash
-	depends = dotnet-runtime-8.0
+	depends = dotnet-runtime-9.0
 	depends = unzip
 	depends = libxml2
 	depends = wget
-	optdepends = dotnet-runtime-8.0-bin: binary dotnet core runtime alternative
+	noextract = WebGrabPlus_V5.4.0_install.tar.gz
 	options = !strip
 	options = !emptydirs
-	source = http://webgrabplus.com/sites/default/files/download/SW/V5.3.0/WebGrabPlus_V5.3_install.tar.gz
-	source = http://webgrabplus.com/sites/default/files/download/SW/V5.3.1/WebGrabPlus_V5.3.1_beta_install.tar_0.gz
+	source = WebGrabPlus_V5.4.0_install.tar.gz::https://wgpluspluslicense.file.core.windows.net/webgrabplus/downloads/WebGrabPlus_V5.4.0_install.tar.gz?sv=2025-05-05&spr=https&st=2025-08-03T11%3A59%3A06Z&se=2026-08-04T11%3A59%3A00Z&sr=f&sp=r&sig=Im%2Fd%2BUk098EIw%2BlgA17mF5AgOMMxHFiosOOaiXs%2FzME%3D
 	source = wgpp.sh
 	source = webgrabplus-license.txt
-	sha256sums = d619430b8099070eabe1f871f72aa946afb876e80fd8f2d58f5bd647cbb0dad7
-	sha256sums = 0f83e2982ca6a932b680588b3f9391295a92a3be07d192d7858d74a5b630421b
-	sha256sums = 4601d8217543718c93e02fad9ec395c062ed3354e6730ae72d03783cfce8d5c8
+	sha256sums = 532da2944d50e359cec313326329a50028e494f4d3d8d909a4b5e9522e7f10b4
+	sha256sums = 7e2b4fd74027eac3305d046748cb985ca86b2597970e67fff2690d660c72d5f3
 	sha256sums = b56ecfd2f7b75d8fa09722cbc82abc594ed5f876c32122f34a48621a72fd2234
 
 pkgname = wg++
