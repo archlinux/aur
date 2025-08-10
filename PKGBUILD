@@ -3,7 +3,7 @@
 _Name="Sideband"
 pkgname="${_Name,,}"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=('any')
 url="https://github.com/markqvist/${_Name}"
@@ -46,13 +46,11 @@ optdepends=(
   'python-pysocks: proxying of MQTT connection'
   'python-firebase: FireBase data collection'
 )
+provides=('python-sbapp')
+conflicts=('python-sbapp')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('0374f957b3276f1b3dc97ba33706490c4e158968f47f61c8949abb2281abaa30')
-
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-}
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
@@ -64,6 +62,9 @@ package() {
 
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  find . -type f -name '*.kv' -exec \
+    cp -v "{}" "${pkgdir}/${site_packages}/{}" \;
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 

@@ -1,7 +1,7 @@
 pkgbase = sideband
 	pkgdesc = Communicate with people or LXMF-compatible systems over Reticulum networks
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markqvist/Sideband
 	arch = any
 	license = CC-BY-NC-SA-4.0
@@ -37,6 +37,8 @@ pkgbase = sideband
 	optdepends = python-scipy: SciPy versions of high_pass_filter, low_pass_filter, and band_pass_filter
 	optdepends = python-pysocks: proxying of MQTT connection
 	optdepends = python-firebase: FireBase data collection
+	provides = python-sbapp
+	conflicts = python-sbapp
 	source = Sideband-1.7.0.tar.gz::https://github.com/markqvist/Sideband/archive/refs/tags/1.7.0.tar.gz
 	sha256sums = 0374f957b3276f1b3dc97ba33706490c4e158968f47f61c8949abb2281abaa30
 
