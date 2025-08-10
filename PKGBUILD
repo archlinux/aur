@@ -101,6 +101,6 @@ build() {
 
 package(){
   install -Dvm644 $_so "${pkgdir}"/usr/lib/$_so
-  ln -svf /usr/lib/$_so "${pkgdir}"/usr/lib/${_so}.${_so}.${_avcodec}
+  ln -svf /usr/lib/$_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
   install -Dvm644 block-opera-ldpreload.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
