@@ -1,6 +1,6 @@
 # Maintainer: Nikita Tarasov <nikatar@disroot.org>
 pkgname=krr
-pkgver=1.25.0
+pkgver=1.25.1
 pkgrel=1
 pkgdesc="Kubernetes requests recommendations"
 arch=('any')
@@ -16,7 +16,7 @@ provides=("krr=$pkgver")
 options=(!emptydirs !makeflags !strip !debug)
 source=("https://github.com/robusta-dev/krr/releases/download/v$pkgver/krr-ubuntu-latest-v$pkgver.zip")
 noextract=(krr-ubuntu-latest-v$pkgver.zip)
-sha256sums=('08311b9797616d79b20f924365f1899fd1250206d78edb76d6114d9125dbf7e2')
+sha256sums=('e75ae712c62f03d04e156defcc844c99642c71d4cb416f87a398b266ff259052')
 #validpgpkeys=('85F86E317555BECC1C2184BF2C45BA09ABC5D7DA')
 
 package() {
