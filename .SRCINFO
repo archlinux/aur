@@ -1,7 +1,7 @@
 pkgbase = cvc5
 	pkgdesc = An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cvc5/cvc5
 	arch = x86_64
 	license = BSD3
@@ -19,7 +19,7 @@ pkgbase = cvc5
 	makedepends = python-pexpect
 	depends = gmp
 	depends = cadical
-	depends = libpoly-git
+	depends = libpoly
 	depends = symfpu-cvc5
 	depends = libedit
 	depends = libbsd
