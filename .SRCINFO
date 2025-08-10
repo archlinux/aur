@@ -1,6 +1,6 @@
 pkgbase = vcvrack-voxglitch
 	pkgdesc = Voxglitch VCV Rack modules
-	pkgver = 2.33.0
+	pkgver = 2.33.1
 	pkgrel = 1
 	url = https://github.com/clone45/voxglitch
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = vcvrack-voxglitch
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/clone45/voxglitch#commit=2917ce52138ca7cdd049c4cedd1a31543573a197
-	sha256sums = ee2c764a32daff1b80bfde42bb1edd6ea07ecab34723d9ce9ad8ecee57441f37
+	source = git+https://github.com/clone45/voxglitch#commit=9d4593ffaadc235571d63ba5dec0093649e43916
+	sha256sums = d4a0865114b95e52c6c271b4a51525f5550bcd270a75b14aed19a859422e9cd6
 
 pkgname = vcvrack-voxglitch
