@@ -8,7 +8,7 @@ url="https://github.com/RafCodes-del/sysdmon"
 license=('GPL3')
 depends=('libsystemd' 'libnotify' 'glib2')
 source=("sysdmon-$pkgver.tar.gz::https://github.com/RafCodes-del/sysdmon/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d18a5ada8d7505cc084931760308a15044f1a76ae87326e986189d51f4d9694f') 
+sha256sums=('3e003894620ba9c255c04148090df9b433390163f8413a878ede0ff8ff69757b') 
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
