@@ -1,6 +1,6 @@
 pkgbase = curseforge-bin
 	pkgdesc = Download and manage your addons, custom content, and mods with the CurseForge app
-	pkgver = 1.283.2.27468
+	pkgver = 1.285.2.27841
 	pkgrel = 1
 	url = https://curseforge.overwolf.com
 	arch = x86_64
@@ -35,9 +35,9 @@ pkgbase = curseforge-bin
 	conflicts = curseforge
 	options = !strip
 	options = !debug
-	source = curseforge-bin-1.283.2.27468.deb::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.deb
+	source = curseforge-bin-1.285.2.27841.deb::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.deb
 	source = LICENSE
-	sha256sums = c9cf770dbadf216f9c4550cffd651a095de180e4a9aefdf3f5f572798126bed1
+	sha256sums = 58ed4aae0245941506d96bbc696633432a2adae52c213da5ef3dd511f5a34526
 	sha256sums = 2ea1195615627a883e777f846f4fb356ad361d8edc7988055e2e8e51c3fddcc1
 
 pkgname = curseforge-bin
