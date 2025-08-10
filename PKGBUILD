@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: NourEddine Yassine <NourEddineX at protonmail dot com>
 # Contributor: KUMAX <kumax2048@pm.me>
 
 ## links
