@@ -6,6 +6,9 @@ pkgbase = sni-qt
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
+	makedepends = gcc-libs
+	makedepends = glibc
+	depends = qt4
 	depends = libdbusmenu-qt4
 	backup = etc/sni-qt.conf
 	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/sni-qt/0.2.7+17.04.20170112-0ubuntu1/sni-qt_0.2.7+17.04.20170112.orig.tar.gz
@@ -14,4 +17,3 @@ pkgbase = sni-qt
 	sha512sums = 41b838b851c88d9dae9d598515c16d1bd8b526af341bd026df8b4d68b07670a05fe33577af73a81c71744da7934507c88fc121a494b53dbbfe3bf24fe9694382
 
 pkgname = sni-qt
-

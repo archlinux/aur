@@ -1,4 +1,5 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Parham Taki <parhammed@gmail.com>
+# Contributor Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Alcasa Mz <alcasa.mz@gmail.com>
 
@@ -9,8 +10,15 @@ pkgdesc='Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems (ap
 arch=('x86_64')
 url='https://launchpad.net/sni-qt'
 license=('LGPL3')
-depends=('libdbusmenu-qt4')
-makedepends=('cmake')
+depends=(
+    'qt4'
+    'libdbusmenu-qt4'
+)
+makedepends=(
+    'cmake'
+    'gcc-libs'
+    'glibc'
+)
 backup=('etc/sni-qt.conf')
 source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-0ubuntu1/${pkgname}_${pkgver}.orig.tar.gz"
         'sni-qt.conf')
