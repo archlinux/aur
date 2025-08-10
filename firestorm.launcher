@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd /opt/firestorm
-./firestorm
+./firestorm "$@"
 exit

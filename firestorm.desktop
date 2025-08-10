@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Firestorm
 Comment=Client for accessing 3D virtual words
-Exec=/opt/firestorm/firestorm
+Exec=/opt/firestorm/firestorm %U
 Icon=firestorm
 Terminal=false
 Type=Application
