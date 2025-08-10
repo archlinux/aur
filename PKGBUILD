@@ -1,6 +1,6 @@
 # Maintainer: Anmol <ani@chu.com>
 pkgname=nalla-iptv-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="IPTV Player for M3U playlists with DRM support"
 arch=('x86_64')
