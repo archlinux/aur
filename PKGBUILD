@@ -11,7 +11,7 @@
 
 pkgname=peazip-qt-bin
 pkgver=10.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL-3.0-or-later')
@@ -30,8 +30,6 @@ prepare() {
   rm -r lang-wincontext
   rm -r batch/{Windows,'macOS service menus',bat}
   rm -r batch/freedesktop_integration/KDE-servicemenus/{KDE3*,KDE4*}
-  rm icons/peazip_seven.icl
-  rm readme/readme_{Windows,macOS}.txt
   cd "$srcdir/usr/lib/peazip/res/bin"
 # Use system libraries instead of bundled
   mkdir -p upx
@@ -58,12 +56,14 @@ package() {
   mv lib/peazip/res "$pkgdir/usr/lib/peazip"
   cd share
   install -Dm644 applications/peazip.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 pixmaps/*.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 peazip/icons/*.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   cd peazip
+  rm -dr icons
   install -Dm644 peazip_help.pdf -t "$pkgdir/usr/share/doc/peazip"
-  mv copying/* "$pkgdir/usr/share/licenses/peazip"
+  rm peazip_help.pdf
+  mv copying "$pkgdir/usr/share/licenses/peazip"
   install -Dm644 readme/readme_Linux.txt "$pkgdir/usr/share/doc/peazip/readme.txt"
-  rm -r readme
+  rm -dr readme
   mv ../peazip "$pkgdir/usr/share"
   ln -s /usr/lib/peazip/{pea,peazip} "$pkgdir/usr/bin"
 }
