@@ -1,5 +1,5 @@
 pkgbase = serv-bin
-	pkgdesc = High-performance JSON to GRON (greppable, flattened JSON) converter
+	pkgdesc = Share easily file / folder over local network
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/xonixx/serv
