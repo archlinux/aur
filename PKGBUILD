@@ -2,7 +2,7 @@
 # Contributor: rzhli <tayuebuliuhen@gmail.com>
 
 pkgname='ftnn-desktop'
-pkgver='15.26.12508'
+pkgver='15.27.12608'
 pkgrel=1
 pkgdesc="FTNN富途牛牛桌面版"
 arch=('x86_64')
@@ -36,7 +36,7 @@ package() {
 [Desktop Entry]
 Name=FTNN 富途牛牛
 Comment=Trade Hong Kong, US, and China A-shares
-export QT_SCALE_FACTOR=1.5 # 尝试 1.25, 1.5, 2.0 等值
+export QT_SCALE_FACTOR=2.0 # 尝试 1.25, 1.5, 2.0 等值
 Exec=ftnn
 Icon=ftnn
 Terminal=false
