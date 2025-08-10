@@ -1,0 +1,11 @@
+--- a/cmake/Modules/FindPythia8.cmake
++++ b/cmake/Modules/FindPythia8.cmake
+@@ -33,7 +33,7 @@ find_path(PYTHIA8_INCLUDE_DIR Pythia.h Pythia8/Pythia.h
+           HINTS $ENV{PYTHIA8_ROOT_DIR}/include ${PYTHIA8_ROOT_DIR}/include
+           PATH_SUFFIXES include)
+ 
+-find_file(PYTHIA8_XML xmldoc PATH_SUFFIXES share/Pythia8
++find_file(PYTHIA8_XML xmldoc PATH_SUFFIXES share/Pythia8 share/pythia8
+           HINTS ${PYTHIA8_INCLUDE_DIR}/.. $ENV{PYTHIA8_ROOT_DIR} ${PYTHIA8_ROOT_DIR})
+ 
+ mark_as_advanced(PYTHIA8_INCLUDE_DIR PYTHIA8_XML)
