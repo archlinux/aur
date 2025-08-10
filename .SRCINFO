@@ -1,0 +1,16 @@
+pkgbase = lazylauncher
+	pkgdesc = GUI Tool to Create Custom KRunner Shortcuts for KDE Plasma
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gouravslnk/LazyLauncher
+	arch = any
+	license = MIT
+	depends = python
+	depends = tk
+	depends = kservice
+	optdepends = kservice5: For KDE Plasma 5 support
+	optdepends = kservice6: For KDE Plasma 6 support
+	source = lazylauncher-1.0.0.tar.gz::https://github.com/gouravslnk/LazyLauncher/archive/v1.0.0.tar.gz
+	sha256sums = d5d9bf734b80cd5b4c149125803a59ca233d1897c11f459b27583202e1a1b97d
+
+pkgname = lazylauncher
