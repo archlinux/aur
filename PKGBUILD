@@ -2,7 +2,7 @@
 
 pkgname=starsector
 pkgver=0.98a_RC8
-pkgrel=2
+pkgrel=3
 pkgdesc='Starsector (formerly "Starfarer") is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game.'
 arch=('i686' 'x86_64')
 url="http://fractalsoftworks.com/"
@@ -14,22 +14,18 @@ depends=('openal'
          'xorg-xrandr')
 replaces=('starfarer')
 source=(https://f005.backblazeb2.com/file/fractalsoftworks/release/starsector_linux-${pkgver//_/-}.zip
-        ${pkgname}.pdf::https://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
         starsector.sh
         starsector.desktop)
 sha256sums=('84672163d6c9b04c1f7ff886342f787a40dd1515cff2ce172d67bd23fa26e193'
-            '0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16'
             '975a4c39989b58298b7052c51491c677471f83ba56e6ea4e204fbca527e4f557'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
 package() {
   install -d "$pkgdir/usr/share/$pkgname" \
-    "$pkgdir/usr/share/doc/$pkgname" \
     "$pkgdir/usr/share/applications" \
     "$pkgdir/usr/share/java/$pkgname" \
     "$pkgdir/usr/lib/$pkgname"
 
   cd "$srcdir"
-  install -Dm644 "${pkgname}.pdf" "$pkgdir/usr/share/doc/$pkgname"
   install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications"
 
