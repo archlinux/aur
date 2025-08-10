@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
-pkgver=25.6.1
+pkgver=25.8
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -8,43 +8,48 @@ url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
 depends=(
 	"avahi"
+	"cairo"
 	"ffmpeg"
 	"gcc-libs"
 	"glib2"
 	"glibc"
+	"libarchive"
 	"libbsd"
-	"libdrm"
 	"libgl"
 	"libnotify"
 	"libpipewire"
+	"libpng"
 	"libpulse"
+	"librsvg"
 	"libx11"
 	"libxcb"
 	"openssl"
 	"systemd-libs"
 	"vulkan-icd-loader"
-	"wayland"
 	"x264"
 )
+
 makedepends=(
-	"cmake"
-	"boost-libs"
-	"eigen"
-	"nlohmann-json"
-	"cli11"
-	"glib2-devel"
 	"boost"
-	"vulkan-headers"
-	"libxrandr"
+	"cli11"
+	"cmake"
+	"eigen"
 	"git"
+	"glib2-devel"
+	"libdrm"
+	"libxrandr"
+	"nlohmann-json"
+	"vulkan-headers"
+	"wayland"
 )
+
 optdepends=(
     "opencomposite: OpenVR to OpenXR translation layer"
     "xrizer: Another OpenVR to OpenXR translation layer"
 )
 provides=("openxr-runtime")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('60cbf11b6cfae8aebecb11499ef05baf5a67af2a98552ce123d8afccc3d8b4d7')
+sha256sums=('7bfb0c270cab8bb95a1cab1402f8bc320398e7fcfd2be70ef1a5d4f4a9451a71')
 install=$pkgname.install
 
 build() {
@@ -61,7 +66,7 @@ build() {
 	-DWIVRN_USE_X264=ON \
 	-DWIVRN_USE_NVENC=ON \
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
-	-DOVR_COMPAT_SEARCH_PATH=/opt/opencomposite:/opt/xrizer \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
@@ -71,4 +76,7 @@ build() {
 package() {
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-server
+
+	mkdir -p $pkgdir/usr/lib/environment.d
+	echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 > $pkgdir/usr/lib/environment.d/wivrn.conf
 }
