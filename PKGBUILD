@@ -3,7 +3,7 @@
 pkgname=python-urllib3-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="urllib3 request extension."
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('2e5ab7409cbf0fedce19930e96ff8e4a590b25ec7e6d52f0d7cc005653832854')
+sha256sums=('c56d7424f55e1989a705831028eff4b3d4ca03211a66297100b9eca9576347ef')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
