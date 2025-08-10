@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=alice-tools (GUI)
+Comment=A collection of tools for viewing and editing file formats used in AliceSoft games
+Exec=galice
+Terminal=false
+Categories=Utility;
