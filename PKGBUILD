@@ -1,9 +1,9 @@
 # Maintainer: snit <snit@cock.li>
 
 pkgname="pi-im"
-pkgver=3.14a
+pkgver=3.142a
 pkgrel=1
-pkgdesc='Experimental and extremely weird XMPP client written in Go. No solicitors.'
+pkgdesc='the XMPP client from hell'
 url="https://github.com/sunglocto/${pkgname}"
 arch=('x86_64')
 license=('AGPL')
@@ -32,4 +32,4 @@ package() {
     cd "${pkgname}-${pkgver}/"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-sha256sums=('dd2e319b948193b87c844bd314cfa6fbdef422ff4411b18a2dd5013522c2ffe0')
+sha256sums=('57bfbbd804e4bc1a337b683d1baf7cb0878d39b28240e39a7fe6726c222df17f')
