@@ -1,0 +1,25 @@
+pkgbase = renpy-sdk-bin
+	pkgdesc = A visual novel engine
+	pkgver = 8.4.1.25072401
+	pkgrel = 1
+	url = https://github.com/renpy/renpy
+	install = renpy-sdk.install
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	optdepends = kdialog: KDE dialog support
+	optdepends = zenity: GNOME dialog support
+	provides = renpy=8.4.1
+	provides = renpy-sdk=8.4.1
+	conflicts = renpy
+	conflicts = renpy-sdk
+	options = !debug
+	options = !strip
+	source = renpy-sdk-8.4.1.25072401.tar.gz::https://github.com/renpy/renpy/releases/download/8.4.1.25072401/renpy-8.4.1-sdk.tar.bz2
+	source = renpy.desktop
+	b2sums = 0704da0ab85d60f6f1e6c910f93098d05ebd5e39ac7a19b899c8597fb8072efc35ed5d70b7728179c9894b873f5898652a98916cc0c80bb1f8b994d610b22320
+	b2sums = ea985387093fea3fa08fe4784221bba5eceecc261b535275c235052a14fd8f09a58ebcd4fcdd6368db41ee4e58ce14f41db5c875d37921435f6f2e46ab3acbd1
+
+pkgname = renpy-sdk-bin
