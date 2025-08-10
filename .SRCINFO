@@ -1,7 +1,7 @@
 pkgbase = netdiscover
 	pkgdesc = A network address discovering tool
 	pkgver = 0.20
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/netdiscover-scanner/netdiscover/
 	arch = i686
 	arch = x86_64

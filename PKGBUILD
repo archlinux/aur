@@ -3,7 +3,7 @@
 
 pkgname=netdiscover
 pkgver=0.20
-pkgrel=0
+pkgrel=2
 pkgdesc="A network address discovering tool"
 arch=('i686' 'x86_64')
 url="https://github.com/netdiscover-scanner/netdiscover/"
@@ -28,11 +28,11 @@ struct oui {
 struct oui oui_table[] = {
 EOT
 
-  cat "../../oui-${pkgver}.txt" | grep "base 16" | tr '\t' ' ' | tr -s " " | sed 's/(base 16) //' |
+  grep "base 16" "${srcdir}/oui-${pkgver}.txt" | tr '\t' ' ' | tr -s " " | sed 's/(base 16) //' |
     grep '[0-9A-F]' | sort | sed 's/ /", "/' | sed 's/^/    { "/' |
     tr '\n' '#' | sed 's/#/" },#/g' | tr '#' '\n' | tr -d '\015' >>src/oui.h
 
-  TOTALMAC=$(cat src/oui.h | grep -c "{ .[0-9A-F]")
+  TOTALMAC=$(grep -c "{ .[0-9A-F]" src/oui.h)
 
   # The tail
 
