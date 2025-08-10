@@ -1,0 +1,13 @@
+pkgbase = opcua-commander
+	pkgdesc = a opcua client with blessed (ncurses)
+	pkgver = 0.40.0
+	pkgrel = 1
+	url = https://github.com/node-opcua/opcua-commander#readme
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/opcua-commander/-/opcua-commander-0.40.0.tgz
+	sha256sums = e91ec2bc955ea56d5f2ee047937bf818bac1e3ed987476585577c2912ff6e4bd
+
+pkgname = opcua-commander
