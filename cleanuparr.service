@@ -1,0 +1,73 @@
+# Be sure to use `systemctl edit cleanuparr` to modify this service with an
+# override.conf because direct changes will be overwritten by package updates.
+#
+# A user per service with shared group setup would have an override like:
+# [Service]
+# Group=sharedgroupname
+# UMask=002
+#
+# If your media directory is in /home (it shouldn't be)
+# You will need to have an override like:
+# [Service]
+# PrivateUsers=false
+# ProtectHome=false
+#
+# When running cleanuparr in LXC:
+# [Service]
+# PrivateUsers=false
+
+[Unit]
+Description=Cleanuparr Daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=cleanuparr
+Group=media
+UMask=002
+Environment=XDG_DATA_HOME=/usr/lib/cleanuparr
+Environment=PORT=11011
+Environment=BASE_PATH=
+ExecStart=/usr/lib/cleanuparr/Cleanuparr
+KillMode=process
+PIDFile=/run/cleanuparr/cleanuparr.pid
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=20
+SyslogIdentifier=cleanuparr
+ConfigurationDirectory=cleanuparr
+RuntimeDirectory=cleanuparr
+StateDirectory=cleanuparr
+WorkingDirectory=/usr/lib/cleanuparr
+ReadWritePaths=/usr/lib/cleanuparr/config
+
+# Hardening
+CapabilityBoundingSet=CAP_CHOWN CAP_FSETID CAP_SETGID
+LockPersonality=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=true
+RestrictRealtime=true
+SocketBindAllow=ipv4:tcp
+SocketBindAllow=ipv6:tcp
+SocketBindDeny=any
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+
+[Install]
+WantedBy=multi-user.target
