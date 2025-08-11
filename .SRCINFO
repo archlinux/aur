@@ -1,6 +1,6 @@
 pkgbase = dynamic-power-daemon
 	pkgdesc = Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload; with DBus control, per-user helpers and Qt tray UI
-	pkgver = 4.7.1
+	pkgver = 4.7.4
 	pkgrel = 1
 	url = https://github.com/evertvorster/dynamic-power-daemon
 	install = dynamic-power-daemon.install
@@ -9,7 +9,6 @@ pkgbase = dynamic-power-daemon
 	depends = kscreen
 	depends = qt6-base
 	depends = qt6-tools
-	depends = power-profiles-daemon
 	depends = kscreen
 	depends = cmake
 	depends = pkgconf
@@ -17,7 +16,8 @@ pkgbase = dynamic-power-daemon
 	depends = yaml-cpp
 	depends = systemd
 	optdepends = asusctl: panel overdrive toggle on Asus laptops
-	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v4.7.1.tar.gz
+	conflicts = power-profiles-daemon
+	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v4.7.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = dynamic-power-daemon

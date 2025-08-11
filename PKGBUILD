@@ -1,17 +1,17 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=dynamic-power-daemon
-pkgver=4.7.1
+pkgver=4.7.4
 pkgrel=1
 pkgdesc="Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload; with DBus control, per-user helpers and Qt tray UI"
 arch=('any')
 url="https://github.com/evertvorster/dynamic-power-daemon"
 license=('GPL3')
+conflicts=('power-profiles-daemon')
 depends=(
   'kscreen'
   'qt6-base'
   'qt6-tools'
-  'power-profiles-daemon'
   'kscreen'
   'cmake'
   'pkgconf'
