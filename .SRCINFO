@@ -1,6 +1,6 @@
 pkgbase = lynxhub-bin
 	pkgdesc = Manage and launch all your AI from a single dashboard.(Prebuild version.Use system-wide electron)
-	pkgver = 3.0.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/KindaBrazy/LynxHub
 	arch = aarch64
@@ -9,14 +9,13 @@ pkgbase = lynxhub-bin
 	depends = electron36
 	depends = libsecret
 	depends = python
-	depends = nodejs
-	provides = lynxhub=3.0.1
+	provides = lynxhub=3.1.1
 	conflicts = lynxhub
 	source = lynxhub.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = lynxhub-3.0.1-aarch64.rpm::https://github.com/KindaBrazy/LynxHub/releases/download/V3.0.1/LynxHub-V3.0.1-linux_aarch64.rpm
-	sha256sums_aarch64 = 6a4ee969072f20695026246f8adaf347522cfa34c7d655c24a8187a96323df4b
-	source_x86_64 = lynxhub-3.0.1-x86_64.rpm::https://github.com/KindaBrazy/LynxHub/releases/download/V3.0.1/LynxHub-V3.0.1-linux_x86_64.rpm
-	sha256sums_x86_64 = 6eadce0aa7d8a59ba89461801586aea1541aaf62367f3e295b121fdb3f9a35f4
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = lynxhub-3.1.1-aarch64.rpm::https://github.com/KindaBrazy/LynxHub/releases/download/V3.1.1/LynxHub-V3.1.1-linux_aarch64.rpm
+	sha256sums_aarch64 = 44f19c63fba12af4d5fa0b84a0bdb01bec9efaf5d8fe837a1f2fda7efa874d62
+	source_x86_64 = lynxhub-3.1.1-x86_64.rpm::https://github.com/KindaBrazy/LynxHub/releases/download/V3.1.1/LynxHub-V3.1.1-linux_x86_64.rpm
+	sha256sums_x86_64 = 507f5bb336ced2233524e521b0691680b825883e9bb3e1ef25752e1ada010ebb
 
 pkgname = lynxhub-bin
