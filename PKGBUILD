@@ -49,30 +49,20 @@ package() {
   # Don't install bundler stuff
   sed --in-place -e '/install_default_bundler_gem bin_dir/,+1d' -e '/bundler\/lib/d' lib/rubygems/commands/setup_command.rb
 
-  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
-  local _extension_api_version="$(ruby -e 'puts Gem.extension_api_version')"
-  local _rubygems_dir="/usr/lib/ruby/${_extension_api_version}"
+  # Install in the right location
+  sed --in-place -e 's/sitelibdir/rubylibdir/' lib/rubygems/commands/setup_command.rb
 
-  export GEM_HOME="${pkgdir}${_gemdir}"
+  export GEM_HOME="${pkgdir}$(ruby -e 'puts Gem.default_dir')"
 
-  install --verbose -d --mode=0755 \
-      "${GEM_HOME}" \
-      "${pkgdir}${_rubygems_dir}"
+  install --verbose -D $srcdir/operating_system.rb --target-directory "lib/rubygems/defaults/"
 
-  # define the current version as previous version to avoid printing the changelog
   ruby setup.rb \
     --destdir="${pkgdir}" \
-    --prefix="/usr" \
-    --previous-version="${pkgver}" \
-    --no-regenerate-binstubs \
-    --ri \
+    --norc \
     --verbose
 
-  # fix package structure
-  mv --verbose "${pkgdir}/usr/lib/rubygems.rb" "${pkgdir}${_rubygems_dir}"
-  mv --verbose "${pkgdir}/usr/lib/rubygems" "${pkgdir}${_rubygems_dir}"
+  rm lib/rubygems/defaults/operating_system.rb
 
-  install --verbose -D --mode=0644 $srcdir/operating_system.rb --target-directory "${pkgdir}${_rubygems_dir}/rubygems/defaults/"
   install --verbose -D --mode=0644 LICENSE.txt MIT.txt --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
   install --verbose -D --mode=0644 *.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
