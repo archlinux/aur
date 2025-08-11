@@ -63,6 +63,6 @@ package() {
 
   rm lib/rubygems/defaults/operating_system.rb
 
-  install --verbose -D --mode=0644 LICENSE.txt MIT.txt --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
-  install --verbose -D --mode=0644 *.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
+  install --verbose -D --mode=0644 LICENSE.txt MIT.txt --target-directory "${pkgdir}/usr/share/licenses/rubygems"
+  install --verbose -D --mode=0644 *.md --target-directory "${pkgdir}/usr/share/doc/rubygems"
 }
