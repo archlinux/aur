@@ -1,7 +1,7 @@
 # Maintainer: Nikolaos Bezirgiannis
 
 pkgname=blst
-pkgver=0.3.11
+pkgver=0.3.15
 pkgrel=1
 pkgdesc='Multilingual BLS12-381 signature library'
 arch=('aarch64' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 source=("https://github.com/supranational/blst/archive/refs/tags/v${pkgver}.tar.gz")
 options=('staticlibs')
-sha256sums=('d0a6e2a69490cc45f0a531a684a225e56fe22303665157cfa397ba5605447eb9')
+sha256sums=('9e503ff6b50e044efb075d260c81c751702b3ed6f2e45394b0833834e71c3afa')
 
 build() {
 cd "${pkgname}-${pkgver}"
