@@ -1,6 +1,6 @@
 # Maintainer: Alexandar <alex.goranov8@gmail.com>
 pkgname=rosepad
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A simple cross-platform text editor made for writing notes, letters, poems, and such with ease with a beautiful UI."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/TMG8047KG/RosePad/releases/download/v$pkgver/rosepad_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('09a04027df279c237b8ba767c2f96dff3ffbf1644d805bd5ad3adebff6e97858')
+sha256sums_x86_64=('88ceeac3875b1aa0d7f9e4aafb8c0f922731d4b2615cd610a48a4a53f32f929d')
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
 }
