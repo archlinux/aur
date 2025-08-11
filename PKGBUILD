@@ -1,6 +1,7 @@
 # Maintainer: Michael Rydén (zynex(at)zoik.se)
+
 pkgname=avbroot
-pkgver=3.17.2
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Application for patching Android A/B-style OTA images for root access"
 arch=('x86_64')
@@ -11,15 +12,11 @@ makedepends=('rust' 'gcc' 'git')
 options=('!debug')
 
 source=("https://github.com/chenxiaolong/avbroot/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91e12373159138ea960d4cbe72d27a4bf31cfeb8697a845b8e8b92faa103fb85')
+sha256sums=('9060dd12f33824f496d83547288d819e70c9d1bfcbdeaf01c1eadb2ab33f2a10')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # Lös problem med ring's LTO
   export CFLAGS+=" -ffat-lto-objects"
-
-  # Bygg med systemets rust/cargo
   cargo build --release --locked
 }
 
