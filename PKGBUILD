@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=uyou-todo-bin
 _pkgname=uyoutodo
-pkgver=3.1.0
-_electronversion=33
-pkgrel=2
+pkgver=3.1.1
+_electronversion=37
+pkgrel=1
 pkgdesc="A todo list with electron.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -27,9 +27,13 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/uyou.ToDo-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/uyou.ToDo-${pkgver}.AppImage")
 sha256sums=('39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('a727c3ac6feca7e96602ac31565e7987699fb85733222e8b64e121f77995bd7a')
-sha256sums_x86_64=('59dcbc0949d782d2b325af63d462f694f41fb58926d2e4f9b00b782ed7b6bdc1')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('a0cde6062e47e71e61bea525ddde618a2fdb1bea857658da512ecd35f8f1fdb9')
+sha256sums_x86_64=('8bb1d85293bbcdb36c6ad323b01ba8960341bc653e0c7659c45c690a41a0a898')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -42,6 +46,7 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/${_pkgname}/${pkgname%-bin}/g
