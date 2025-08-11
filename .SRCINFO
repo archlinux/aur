@@ -1,6 +1,6 @@
 pkgbase = bilibili-bin
 	pkgdesc = Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。
-	pkgver = 1.16.5_5
+	pkgver = 1.17.0_2
 	pkgrel = 1
 	epoch = 5
 	url = https://github.com/msojocs/bilibili-linux
@@ -8,17 +8,17 @@ pkgbase = bilibili-bin
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
-	depends = electron33
+	depends = electron28
 	depends = libappindicator-gtk3
-	provides = bilibili=1.16.5_5
+	provides = bilibili=1.17.0_2
 	conflicts = bilibili
-	source = LICENSE-1.16.5_5::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.16.5-5/license
+	source = LICENSE-1.17.0_2::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.17.0-2/license
 	source = bilibili.sh
 	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = bilibili-1.16.5_5-aarch64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.16.5-5/bilibili-1.16.5.aarch64.rpm
-	sha256sums_aarch64 = 89f32334193da5fc176e3a8d2366dd84dcf5953285bd9075b8779c10ee7ca458
-	source_x86_64 = bilibili-1.16.5_5-x86_64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.16.5-5/bilibili-1.16.5.x86_64.rpm
-	sha256sums_x86_64 = 58decd42461905a29e22013f9af52098a9c74581a000c5e67a67bdd9d6f55e3a
+	source_aarch64 = bilibili-1.17.0_2-aarch64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.17.0-2/bilibili-1.17.0.aarch64.rpm
+	sha256sums_aarch64 = 6d35a10ed4e963d84715a6c88de3fbcee0810445dc5525d7dcc87eb51cd11b18
+	source_x86_64 = bilibili-1.17.0_2-x86_64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.17.0-2/bilibili-1.17.0.x86_64.rpm
+	sha256sums_x86_64 = 9751c63d29672e2172cc3a3c4203a5ed1d76445f470d2e8296e9d85f2bfec0b6
 
 pkgname = bilibili-bin
