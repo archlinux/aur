@@ -1,6 +1,9 @@
 
 update:
 	updpkgsums
-	makepkg -i
+	makepkg
 	makepkg --printsrcinfo > .SRCINFO
+
+clean:
+	rm -rf pkg src air* Air* awcons*
 
