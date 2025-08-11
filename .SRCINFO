@@ -1,10 +1,10 @@
 pkgbase = android-google-apis-playstore-x86-64-system-image
 	pkgdesc = Android with Google APIs and Play Store x86_64 Atom System Image, latest API
 	pkgver = 34_r14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio/index.html
 	arch = any
-	license = custom
+	license = LicenseRef-android-sdk-license
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
@@ -14,6 +14,6 @@ pkgbase = android-google-apis-playstore-x86-64-system-image
 	source = android-google-apis-playstore-x86-64-system-image-34_r14.zip::http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86_64-34_r14.zip
 	source = package.xml
 	sha256sums = 22e7797a7e14d346bc6ed867d84ed423beaf4364db567edaa97f85a99558cf80
-	sha256sums = f9e506475a22eed319e187dd908da12ea75a0694476e0401bab3a63dd891a1ef
+	sha256sums = e31bb01dd337f73a015f4b8d3556bc054be7116809eedad46f5888ed92fcba40
 
 pkgname = android-google-apis-playstore-x86-64-system-image
