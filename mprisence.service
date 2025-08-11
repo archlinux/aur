@@ -1,0 +1,14 @@
+[Unit]
+Description=Discord Rich Presence for MPRIS media players
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mprisence
+Restart=always
+RestartSec=10
+
+Environment=RUST_LOG=info
+Environment=RUST_BACKTRACE=1
+
+[Install]
+WantedBy=default.target

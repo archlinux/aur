@@ -11,6 +11,8 @@ pkgbase = mprisence
 	conflicts = mprisence-git
 	source = mprisence-1.2.3.tar.gz::https://github.com/lazykern/mprisence/archive/v1.2.3.tar.gz
 	source = mprisence.install
+	source = mprisence.service
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

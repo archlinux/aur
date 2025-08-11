@@ -12,8 +12,10 @@ makedepends=("cargo")
 conflicts=("mprisence-git")
 install=mprisence.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz"
-        "mprisence.install")
+        "mprisence.install"
+        "mprisence.service")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -36,7 +38,9 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
-    make DESTDIR="$pkgdir" pkg-prepare
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/mprisence.install" "$pkgdir/usr/share/pacman/hooks/mprisence.hook"
+    install -Dm755 "target/release/mprisence" "$pkgdir/usr/bin/mprisence"
+    install -dm755 "$pkgdir/etc/mprisence"
+    install -Dm644 "config/config.example.toml" "$pkgdir/etc/mprisence/config.example.toml"
+    install -Dm644 "../mprisence.service" "$pkgdir/usr/lib/systemd/user/mprisence.service"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 } 
