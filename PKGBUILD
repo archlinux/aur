@@ -2,7 +2,7 @@
 pkgname=protonup-qt-git
 _app_id=net.davidotek.pupgui2
 _pkgname="ProtonUp-Qt"
-pkgver=v2.13.0.r5.g9240acf
+pkgver=2.13.0.r5.g9240acf
 pkgrel=1
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
@@ -53,7 +53,7 @@ conflicts=(${pkgname%-git} ${pkgname%-git}-bin)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
