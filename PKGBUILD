@@ -4,7 +4,7 @@
 _pkgname="bifrost"
 pkgname="${_pkgname}-bin"
 pkgver=1.20.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Samsung Firmware Downloader"
 url='https://github.com/zacharee/SamloaderKotlin'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,9 @@ b2sums_aarch64=('d42ec7c62dc5fec902ed9caddbf6619f8e87ade535508db40bed7d6456db50d
 package() {
     install -Dm644 "${srcdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     cd "${_pkgname}-${pkgver}"
-    install -Dm755 "bin/bifrost" -t "${pkgdir}/usr/bin/"
+    install -m 755 -d "${pkgdir}/usr/bin"
     install -Dm755 "bin/bifrost" -t "${pkgdir}/usr/lib/bifrost/bin/"
+    ln -s "/usr/lib/bifrost/bin/bifrost" "$pkgdir/usr/bin/bifrost"
 
     install -m 755 -d "${pkgdir}/usr/lib/bifrost/lib/"
     cp -a --no-preserve=ownership "lib/app/" "${pkgdir}/usr/lib/bifrost/lib/"

@@ -1,7 +1,7 @@
 pkgbase = bifrost-bin
 	pkgdesc = Samsung Firmware Downloader
 	pkgver = 1.20.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zacharee/SamloaderKotlin
 	arch = x86_64
 	arch = aarch64
