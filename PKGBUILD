@@ -13,12 +13,12 @@ source=("git+https://github.com/helwan-linux/hpm.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/hpm"
   python -m build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/hpm"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
