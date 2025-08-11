@@ -9,7 +9,7 @@ url="https://github.com/lwilk0/fmp"
 conflicts=('fmp-git')
 license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
-makedepends=('cargo')
+makedepends=('curl')
 source=("fmp-linux::https://github.com/lwilk0/fmp/releases/download/v${pkgver}/fmp-linux")
 sha512sums=('2015f92b48d4b7ee6ca7926b020bbbfc021292251273b0b387b9f9939fc94a473e236fe1f2cbd42226851613d20403352fc4011a2687d202bc615f1646c4785f')
 
