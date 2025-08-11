@@ -39,7 +39,6 @@ optdepends=(
   'libsamplerate'
   'r: R charts'
   'python: Python charts, scripts and data processors')
-options=('staticlibs')
 conflicts=('golden-cheetah-rc' 'golden-cheetah-dev' 'golden-cheetah')
 provides=('golden-cheetah')
 source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git'

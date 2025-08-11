@@ -39,7 +39,6 @@ pkgbase = golden-cheetah-git
 	conflicts = golden-cheetah-rc
 	conflicts = golden-cheetah-dev
 	conflicts = golden-cheetah
-	options = staticlibs
 	source = golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git
 	source = GoldenCheetah.desktop
 	source = gcconfig.pri
