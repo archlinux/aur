@@ -1,7 +1,7 @@
 pkgbase = xlibre-xf86-video-intel
 	pkgdesc = Official XLibre fork of X.Org Intel i810/i830/i915/945G/G965+ video drivers
-	pkgver = 3.0.0.1
-	pkgrel = 5
+	pkgver = 3.0.0.2
+	pkgrel = 1
 	url = https://github.com/X11Libre
 	install = xf86-video-intel.install
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = xlibre-xf86-video-intel
 	replaces = xf86-video-intel-sna
 	options = !lto
 	options = !debug
-	source = https://github.com/X11Libre/xf86-video-intel/archive/refs/tags/xlibre-xf86-video-intel-3.0.0.1.tar.gz
-	sha256sums = 84978165ac3f4e3f06e40788e624c13ce21588edac4ab6b5345a1a5c768785f4
+	source = https://github.com/X11Libre/xf86-video-intel/archive/refs/tags/xlibre-xf86-video-intel-3.0.0.2.tar.gz
+	sha256sums = 50d2ceeddb29fb3d10caea2ecb18c1c0acf4ca6870d5d1f545e16cffdf726a5c
 
 pkgname = xlibre-xf86-video-intel
