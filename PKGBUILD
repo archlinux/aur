@@ -17,7 +17,6 @@ sha256sums=('b356bfc82cee3a24c395b94a2dbeabbed60aff1aa5fa3b5fe97c4f2456ebce42')
 prepare(){
   cd $_name-$pkgver
   sed -i "/93.184.215.14.nip.io/d" test/test.py
-  sed -i '/"http:\/\/192.168.1.250.nip.io",\n/d' test/test.py
 }
 
 build() {
