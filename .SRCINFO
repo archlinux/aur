@@ -1,6 +1,6 @@
 pkgbase = gnome-monitor-config-git
 	pkgdesc = GNOME monitor configuration utility
-	pkgver = r13
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/jadahl/gnome-monitor-config
 	arch = x86_64
