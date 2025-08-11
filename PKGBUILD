@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clip-editor-bin
 _pkgname='Clip Editor'
-pkgver=0.2.3
+pkgver=0.2.6
 _electronversion=36
 pkgrel=1
 pkgdesc="Edit, manage, and organize your video clips.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cd08279b996330b9cc14ce4804724531ac47d716138f541d2793cc550f99f0ab'
+sha256sums=('ae90f054e0140eab00260214fb0bd36a6ea59be8482ff19f2ad9356af977c5ff'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -38,7 +38,8 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i "s/Utility/AudioVideo/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/node_modules/ffmpeg-static/ffmpeg"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
