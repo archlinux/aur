@@ -1,6 +1,6 @@
 # Maintainer: Hamid Jamal <hamidjamal@hotmail.co.uk>
 
-pkgname=ripgrep
+pkgname=rippedgrep
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='A barebones basic implementation of Ripgrep'
