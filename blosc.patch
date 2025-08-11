@@ -1,0 +1,12 @@
+diff --git a/external/blosc/CMakeLists.txt b/external/blosc/CMakeLists.txt
+index d9bbb3599..97e799bd1 100644
+--- a/external/blosc/CMakeLists.txt
++++ b/external/blosc/CMakeLists.txt
+@@ -73,6 +73,7 @@ endif()
+ # The blosc files are external and we ignore their warnings.
+ # -w is common to gcc and MSVC
+ set(TILEDB_BLOSC_COMPILE_OPTIONS "-w")
++string(APPEND TILEDB_BLOSC_COMPILE_OPTIONS ";-std=c17")
+ # If we found pthreads, activate it by defining PTHREAD_AVAILABLE.
+ if (CMAKE_USE_PTHREADS_INIT AND NOT MSVC)
+   string(APPEND TILEDB_BLOSC_COMPILE_OPTIONS ";-DPTHREAD_AVAILABLE")
