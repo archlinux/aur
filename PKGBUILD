@@ -3,7 +3,7 @@
 _pkgauthor=purpleclay
 _pkgname=nsv
 pkgname=${_pkgname}-bin
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc='No-config semantic versioning'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,8 +19,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('adac0c3986955673a9d78f369a43d734013c8028a05a4082bd617b6d378b6fe6'
             '95f8ae76e30c380462aa7c639c78b5b37062a01eb7a6d69ba9b07366f30b446a')
-sha256sums_x86_64=('7e0be0596d7260b82b0fbbe5fbb4f02b2d2ebb7c1fec3a3bce247096c3e00284')
-sha256sums_aarch64=('2ceb631efc96d8830e663592c79e4ad07a50ef646584e821f448fb278c156dd2')
+sha256sums_x86_64=('5e616d8b4d6e0ef5a32b67eee7b50b9e9946fb4a7dac70a8e2fd5cbdd20028cc')
+sha256sums_aarch64=('c0d7e0b641078d7c3fe0492d80125282389b96a99f338bf7884d54bf4c3a40b8')
 
 package() {
   cd "${srcdir}/" || exit
