@@ -1,19 +1,19 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=photoname
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
 pkgdesc='Rename JPEG photo files based on shoot date'
 arch=('x86_64')
-url="https://github.com/dino-/photoname"
+url="https://codeberg.org/dinofp/photoname"
 license=('ISC')
 depends=('fuse2' 'zlib')
 makedepends=()
 # This software comes as an AppImage, auto-stripping by the AUR tools breaks it
 options=(!strip)
-source=("https://github.com/dino-/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-${arch}.AppImage")
+source=("https://codeberg.org/dinofp/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-${arch}.AppImage")
 
-sha256sums=('967941b80872ea3827470f68d5be123b962e712e07eb6696949edae92fb2e1e9')
+sha256sums=('1afdd9cf5770bafb8700d0d913f3a6f38d2f45ca560a17afa558ce3ca1b23896')
 
 
 # PKGBUILD functions
