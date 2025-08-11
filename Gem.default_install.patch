@@ -1,51 +1,38 @@
-From 13fd35c291eee7dde9628b8923cc2a7d6853a1ef Mon Sep 17 00:00:00 2001
+From 6db3682d70e3e9dce7b9e32ddfd94378773f1d38 Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
 Date: Thu, 20 May 2021 16:26:25 -0500
 Subject: [PATCH] Add Gem.default_install
 
-Most people don't install gems in the default directory, but in the
-user's directory (--user-install), this can be configured by
-distributions using /etc/gemrc, but that doesn't work for bundler since
-it doesn't read gem configurations.
+The configuration Gem.default_user_install should have never been added,
+as the same can be achieved by specifying the default install directory,
+this is what the new Gem.default_install does.
 
-The default installation directory should be Gem.user_dir, not
-Gem.default_dir, but changing this invariably would break backwards
-compatibility.
+This flag should be used to set Gem.home so it helps everyone, not just
+the install command.
 
-Instead we can add another default directory which is where gems will be
-installed to by default.
+By calling Gem.default_user_install in the right place, bundler can also
+make use of this, and other tools like `gem env` show the correct
+location where gems are going to be installed to.
 
 Gem.default_dir is where the system gems are installed to,
 Gem.default_install is where the gems installed by the user are
 installed to.
 
-The method Gem.default_install can be overridden by distributions to
-Gem.user_dir, therefore making all installations user installations by
-default (essentially the same as --user-install).
-
-This way both bundler and gem will install gems in the same directory by
-default without users having to manually set GEM_HOME to volatile
-locations such as $HOME/.local/share/gem/ruby/3.0.0.
-
-All distributions need to do is turn this new behavior on.
-
-If a user has sudo privileges, he/she can do --no-user-install to install
-gems in the system directory (Gem.default_dir), which is the current
-default behavior.
+This allows for more flexibility, for example allow to specify another
+directory, or another directory only if the user is root.
 
 The current behavior remains unaffected: gems are still installed to
-Gem.default_dir by default.
+based on Gem.default_user_install by default.
 
 Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
 ---
- lib/rubygems/defaults.rb       |  7 +++++++
- lib/rubygems/path_support.rb   |  2 +-
- test/rubygems/helper.rb        |  2 ++
- test/rubygems/test_rubygems.rb | 16 ++++++++++++++++
- 4 files changed, 26 insertions(+), 1 deletion(-)
+ lib/rubygems/defaults.rb            | 14 ++++++++------
+ lib/rubygems/path_support.rb        |  2 +-
+ test/rubygems/test_gem_installer.rb |  2 --
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/lib/rubygems/defaults.rb b/lib/rubygems/defaults.rb
-index 1bd208feb9..6b261a9412 100644
+index db07681a17..ccc483b11e 100644
 --- a/lib/rubygems/defaults.rb
 +++ b/lib/rubygems/defaults.rb
 @@ -9,6 +9,13 @@ module Gem
@@ -56,12 +43,26 @@ index 1bd208feb9..6b261a9412 100644
 +  # Determines the default install directory
 +
 +  def self.default_install
-+    @default_install ||= Gem.default_dir
++    Gem.default_user_install ? Gem.user_dir : Gem.default_dir
 +  end
 +
    ##
    # An Array of the default sources that come with RubyGems
  
+@@ -239,12 +246,7 @@ def self.default_cert_path
+   # Enables automatic installation into user directory
+ 
+   def self.default_user_install # :nodoc:
+-    if !ENV.key?("GEM_HOME") && File.exist?(Gem.dir) && !File.writable?(Gem.dir)
+-      Gem.ui.say "Defaulting to user installation because default installation directory (#{Gem.dir}) is not writable."
+-      return true
+-    end
+-
+-    false
++    File.exist?(Gem.default_dir) && !File.writable?(Gem.default_dir)
+   end
+ 
+   ##
 diff --git a/lib/rubygems/path_support.rb b/lib/rubygems/path_support.rb
 index 13091e29ba..455f413f3d 100644
 --- a/lib/rubygems/path_support.rb
@@ -75,53 +76,26 @@ index 13091e29ba..455f413f3d 100644
      @path = split_gem_path env["GEM_PATH"], @home
  
      @spec_cache_dir = env["GEM_SPEC_CACHE"] || Gem.default_spec_cache_dir
-diff --git a/test/rubygems/helper.rb b/test/rubygems/helper.rb
-index ed9e34a906..2739847376 100644
---- a/test/rubygems/helper.rb
-+++ b/test/rubygems/helper.rb
-@@ -375,6 +375,7 @@ def setup
-       @orig_default_gem_home = RbConfig::CONFIG["default_gem_home"]
-       RbConfig::CONFIG["default_gem_home"] = @gemhome
-     else
-+      Gem.instance_variable_set(:@default_install, @gemhome)
-       Gem.instance_variable_set(:@default_dir, @gemhome)
-     end
+diff --git a/test/rubygems/test_gem_installer.rb b/test/rubygems/test_gem_installer.rb
+index 34415aa7dd..c704441dcf 100644
+--- a/test/rubygems/test_gem_installer.rb
++++ b/test/rubygems/test_gem_installer.rb
+@@ -1989,7 +1989,6 @@ def test_process_options_fallback_to_user_install_when_gem_home_not_writable
+     installer = use_ui(@ui) { Gem::Installer.at @gem }
  
-@@ -466,6 +467,7 @@ def teardown
-     if Gem.java_platform?
-       RbConfig::CONFIG["default_gem_home"] = @orig_default_gem_home
-     else
-+      Gem.instance_variable_set :@default_install, nil
-       Gem.instance_variable_set :@default_dir, nil
-     end
+     assert_equal Gem.user_dir, installer.gem_home
+-    assert_equal "Defaulting to user installation because default installation directory (#{@gemhome}) is not writable.", @ui.output.strip
+   ensure
+     FileUtils.chmod 0o755, @gemhome
+     ENV["GEM_HOME"] = orig_gem_home
+@@ -2010,7 +2009,6 @@ def test_process_options_does_not_fallback_to_user_install_when_gem_home_not_wri
+     installer = use_ui(@ui) { Gem::Installer.at @gem, user_install: false }
  
-diff --git a/test/rubygems/test_rubygems.rb b/test/rubygems/test_rubygems.rb
-index ec195b65cd..385c204ce2 100644
---- a/test/rubygems/test_rubygems.rb
-+++ b/test/rubygems/test_rubygems.rb
-@@ -51,6 +51,22 @@ def self.default_dir
-     end
-   end
- 
-+  def test_operating_system_customizing_default_install
-+    path = util_install_operating_system_rb <<-RUBY
-+      module Gem
-+        def self.default_install
-+          Gem.user_dir
-+        end
-+      end
-+    RUBY
-+
-+    assert system(
-+      *ruby_with_rubygems_and_fake_operating_system_in_load_path(path),
-+      "-e",
-+      "raise unless Gem.dir == Gem.user_dir"
-+    )
-+  end
-+
-   private
- 
-   def util_install_operating_system_rb(content)
+     assert_equal @gemhome, installer.gem_home
+-    assert_empty @ui.output.strip
+   ensure
+     FileUtils.chmod 0o755, @gemhome
+     ENV["GEM_HOME"] = orig_gem_home
 -- 
 0.1
 
