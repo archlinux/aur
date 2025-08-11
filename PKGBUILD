@@ -1,7 +1,7 @@
 # Maintainer: Michael Prager <archlinuxaur@michaelprager.de>
 # Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v3.7.DEV2412.r49.559c8fd1d
+pkgver=v3.7.r102.d24afec85
 pkgrel=1
 pkgdesc="Performance Software for Cyclists, Runners, Triathletes and Coaches"
 arch=('i686' 'x86_64')
