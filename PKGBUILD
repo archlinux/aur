@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=Noi
 pkgver=0.4.0
 _electronversion=29
-pkgrel=4
+pkgrel=5
 pkgdesc="Power Your World with AI - Explore, Extend, Empower.(Prebuilt version)"
 arch=('x86_64')
 url="https://noi.nofwl.com/"
@@ -21,7 +21,10 @@ source=(
 sha256sums=('80921cf6a68aac06ef1051dfd23573e040bedabf17f90717bafe7085ec0fd928')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i -e "
+        s/${_appname}/${pkgname%-bin}/g
+        6i\StartupWMClass=${_pkgname}
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
 		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
 	for _files in "${_file_list[@]}";do
