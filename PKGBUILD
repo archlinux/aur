@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clip-editor-bin
 _pkgname='Clip Editor'
-pkgver=0.2.0
+pkgver=0.2.3
 _electronversion=36
 pkgrel=1
 pkgdesc="Edit, manage, and organize your video clips.(Prebuilt version.Use system-wide electron)"
@@ -22,8 +22,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('15d20a2bd8055c08ab0d1382a94d69a92020f1e53fe6f7dcab209f856fbeebbe'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('cd08279b996330b9cc14ce4804724531ac47d716138f541d2793cc550f99f0ab'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
