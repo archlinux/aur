@@ -1,7 +1,7 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 _name=outline-manager
 pkgname=${_name}-appimage
-pkgver=1.17.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Creates and manages Outline servers, powered by Shadowsocks."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conficts=(${_name})
 _app_image="Outline-Manager-v${pkgver}.AppImage"
 _build_version=1
 source=("${_app_image}::https://s3.amazonaws.com/outline-releases/manager/linux/${pkgver}/${_build_version}/Outline-Manager.AppImage")
-sha256sums=(4aeaafd781c8c5a231ac6020024e3ed6050fe7a0a8d70608ed4d5cfe680b2a4c)
+sha256sums=(9f41c2697509ff6480775e482890654387b1c05fd4d14b0d88be56e057875582)
 
 #######################################
 # To get all available download links #
