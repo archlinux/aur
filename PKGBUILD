@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atmos-weather-bin
 _pkgname='Atmos Weather'
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=36
 pkgrel=1
 pkgdesc="A lightweight weather app for receiving alerts and forecasts in the US.(Prebuilt version.Use system-wide electron)"
@@ -22,10 +22,10 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('7d40a37d9fad08ca107afecb228930ff461644609f6b35de48fef0c3ae8ffa8c')
-sha256sums_armv7h=('06dfaf35c65989e1361932ac54fc18af15c5948c478b8f2198dbccdbf43a8fc1')
-sha256sums_x86_64=('22107fe39b7a2fe5d56fcb657ce1831ea0f3781f1a1a7836f97a78fe4c46c8d9')
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('e2c4a0efaeac40f7af6212ea5d52ccb40234d94e67d7cbb4b917efa2f63ccb4c')
+sha256sums_armv7h=('8623b639e4dcf376f467753e686d494c68ae42b136761f0517322f13a298cb51')
+sha256sums_x86_64=('4b6bcaea360c08de467e7c61ecef7185ed96604dfe837394dcddcb68fc8cb425')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
