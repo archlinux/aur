@@ -1,7 +1,7 @@
 pkgbase = ocicl
 	pkgdesc = OCI-based ASDF system distribution and management tool for Common Lisp
 	pkgver = 2.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocicl/ocicl
 	arch = any
 	license = MIT

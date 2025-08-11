@@ -2,7 +2,7 @@
 
 pkgname=ocicl
 pkgver=2.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='OCI-based ASDF system distribution and management tool for Common Lisp'
 arch=('any')
 url='https://github.com/ocicl/ocicl'
@@ -19,6 +19,7 @@ sha512sums=('5a4d949fa88e5ea42111681e46b8baa66d17108e5959b59232dae1fe1e6138e13ed
 
 build() {
   cd "ocicl-${pkgver}"
+  sed -i "s/include-git-p t/include-git-p nil/g" ocicl.lisp
   sbcl --dynamic-space-size 3072 --no-userinit --load ../build.lisp
 }
 
