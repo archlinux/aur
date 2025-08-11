@@ -3,7 +3,7 @@
 pkgname=python-requests-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.1.2
+pkgver=0.1.2.1
 pkgrel=1
 epoch=
 pkgdesc="requests request extension."
@@ -28,7 +28,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('1f76f4a00ae8f3d89bf9dcd5e0d34c7d088a674486be8a50a53046e2f7b5b340')
+sha256sums=('4397c665de62d9136faa497f88ce15825794651cc855e456fbf0b52107f7bb37')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
