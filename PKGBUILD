@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor
 _pkgname=MKEditor
-pkgver=2.7.0
+pkgver=3.0.0
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1e20fafcbe5c8e31065416673dc15515d904f16340731e4040b5a57fc87372b9'
+sha256sums=('9352f5df713652e135c75c833043f82e7ccb5dec65ad431a01fe5044c3fb2b46'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
