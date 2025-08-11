@@ -10,7 +10,6 @@ url="https://zandronum.com/"
 license=('custom')
 depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl-1.1' 'fluidsynth')
 optdepends=('timidity++: midi support' 'freedoom: free IWAD' 'gtk2: for a GUI selection screen' 'doomseeker: a GUI server browser')
-makedepends=( 'zlib' 'sdl' 'libjpeg-turbo' 'nasm' 'gtk2' 'cmake' 'mercurial' 'fluidsynth' 'mesa' 'glu' )
 _pkgname=zandronum
 conflicts=('zandronum2')
 install=zandronum.install
