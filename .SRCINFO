@@ -1,0 +1,14 @@
+pkgbase = j3kareple
+	pkgdesc = Reple - wrapper for your repl
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/j3ka/reple
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = glibc
+	provides = reple
+	source = reple-0.1.0.tar.gz::https://github.com/j3ka/reple/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = 9fe8e61bab8342b3bc0c6300f9fe005fbd23194ee46a97a90f6caf4f85d872be3b57816c6d56f0a86b54946cfaa9be30be040e582a169ccf07039fcd929aa746
+
+pkgname = j3kareple
