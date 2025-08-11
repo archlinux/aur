@@ -4,8 +4,8 @@
 
 _pkgname=jd-gui
 pkgname=${_pkgname}-bin
-pkgver=1.7.1
-pkgrel=9
+pkgver=1.7.2
+pkgrel=1
 pkgdesc='A standalone Java decompiler GUI'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/QuentiumYT/${_pkgname}"
@@ -16,14 +16,14 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.jar"
-  "ICON-${pkgver}.png::${_urlraw}/src/linux/resources/jd_icon_128.png"
+  "ICON-${pkgver}.png::${_urlraw}/src/linux/resources/jd-gui.png"
   "LICENSE-${pkgver}::${_urlraw}/LICENSE"
   "README-${pkgver}.md::${_urlraw}/README.md"
   "jd-gui.c"
   "jd-gui.desktop"
 )
 
-sha512sums=('c34b6091cac06962df72aa163c4cb3a15c654262eecd281cb8504d3d02f635e9c6aa5edbc90b67d8f8396cc18d69077891ee4380360e5e3e7ce53fef70e061cd'
+sha512sums=('f355d19ce14841a56bb014cbe5414d33900e7ee5b067afe37907934046413d3a6eda6efe2a40febe31bba49f10b44f0d3e4d97822b509007763436995ffa8b5f'
             '767c54d4147e5d223ffa453a3094d8f7f8a33832d1c92cd8a189fd8fbaa7dec00767a5ff8e29caf295de65780b0745e062f796c4aa2d8ab368b1fe20e03ff3b2'
             'd224dd23bcb057c65eb1470dc9f83eefa67f41cec0193099902059e86882bf0525bb660d323d2f62743d3cd3e9aec468e5a7686eb2fd33774f89bc519ef7b49c'
             'd300ac330c141b57e5b62f57b5d0462d5618fd67660bfb3bb2c89723686ed76c1e5b34fc670ab9f026e23b6645854a2ee90596a9b496d0b91d46ecf2013f4e17'
