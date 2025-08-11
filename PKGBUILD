@@ -1,17 +1,16 @@
 pkgname=gamepadla-polling
-pkgver=1.2.0.2
+pkgver=1.3.1.1
 pkgrel=1
 pkgdesc="Gamepads latency and polling rate tester (XinputTest analog)"
 url="https://github.com/cakama3a/Polling"
 depends=('python>=3.10' 'python-requests' 'python-numpy' 'python-colorama' 'python-pygame')
 license=('MIT')
 arch=('any')
-#_commitish=refs/tags/$pkgver
-_commitish=b272e0979c1befcd5dc92f96a8b282524d8a9852
+_commitish=refs/tags/$pkgver
 _dirname=Polling-$(echo "${_commitish}" | awk -F/ '{print $NF}')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${_commitish}.tar.gz"
 	"gamepadla-polling.desktop")
-sha256sums=('dce895dd5ed7dd7ed2fed5203738bdf05a669280a8f67aa7ef35fd5ea1bcab5d'
+sha256sums=('cecbcbfbd1e187fdae34e5018e3888933636cc73ccee3317769bde60d0a7ff19'
 	'SKIP')
 
 build() {
