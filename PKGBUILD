@@ -1,7 +1,7 @@
 # Maintainer: OrPudding <t3164473115@163.com>
 pkgname=astro-box
-pkgver=1.2.0fix
-pkgrel=5
+pkgver=1.5.0
+pkgrel=6
 pkgdesc="A multifunctional toolbox designed for Xiaomi Vela wearable devices"
 arch=('x86_64')
 url="https://astrobox.online/"
@@ -9,8 +9,8 @@ license=('AGPL3')
 depends=('webkit2gtk' 'gtk3' 'jq')
 
 # 定义蓝奏云链接和密码变量 (方便更新)
-_share_url="https://searchstars.lanzoue.com/i8iwr328p22d"
-_pwd="huxj"
+_share_url="https://searchstars.lanzoue.com/iMPZM33855rc"
+_pwd="dsqy"
 
 options=('!debug')
 # 使用固定的API响应文件名并跳过校验
@@ -19,7 +19,7 @@ source=("api-response${pkgver}.json::https://api.dwo.cc/api/zhi?type=down&url=${
 sha256sums=('SKIP')
 
 # 定义 deb 包的校验和
-_deb_sha256sum='4a48229d024315e667197166eed898c53a37a0a542c529c877743d3ca8672d41'
+_deb_sha256sum='85aca0dfc17d329b07e2fcf19fd28aff031222503e4f3fac2ce288585b066369'
 
 prepare() {
   # 解析API响应获取直链
