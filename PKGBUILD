@@ -7,7 +7,7 @@ _pkgname=aptakube
 
 pkgname="${_pkgname}"-appimage
 provides=("aptakube")
-pkgver=1.12.5
+pkgver=1.12.6
 pkgrel=1
 pkgdesc="A modern and lightweight Kubernetes desktop client to help you operate workloads on multiple clusters. (free to use during the public preview)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://releases.aptakube.com/${_pkgname}_${pkgver}_amd64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('49026c210cd49b514c9fed2abb6d5c13547876c1abcb22e5bfe549536a94139d')
+sha256sums_x86_64=('d7d21fe340f6dd0788fa97b84a62c69f68d69b1f816f1359df13f7c98c742758')
 
 prepare() {
     chmod +x "${_appimage}"
