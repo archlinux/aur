@@ -1,0 +1,17 @@
+pkgbase = elephant-clipboard
+	pkgdesc = clipboard provider for elephant
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = wl-clipboard
+	depends = elephant
+	provides = elephant-clipboard
+	conflicts = elephant-clipboard
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 7fdbfb727839f8075a18db61af88057b1b91279031d4cca1554a737c2152578b
+
+pkgname = elephant-clipboard
