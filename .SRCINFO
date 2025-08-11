@@ -12,6 +12,6 @@ pkgbase = sddm-silent-theme
 	depends = redhat-fonts
 	backup = usr/share/sddm/themes/silent/metadata.desktop
 	source = https://github.com/uiriansan/SilentSDDM/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = 08e2155ad34d4fff57e8e7d756050b982e78623fd6ca64474c93c59a2b23989d
+	sha256sums = 0656a58a5945a7c7cd365375dd062fbe5a0af49b04df2f06f3a8830c8750e0d1
 
 pkgname = sddm-silent-theme
