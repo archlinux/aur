@@ -1,9 +1,9 @@
 # Maintainer: moxiu <moxiu3310ud4@proton.me>
 
 pkgname=r34-go
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Rule34.xxx downloader CLI written in Go"
+pkgdesc="Rule34.xxx CLI downloader written in Go"
 arch=('x86_64')
 url="https://github.com/moxi-git/r34-go"
 license=('MIT')
