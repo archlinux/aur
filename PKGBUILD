@@ -1,12 +1,12 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=dynamic-power-daemon
-pkgver=4.7.4
+pkgver=4.7.6
 pkgrel=1
 pkgdesc="Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload; with DBus control, per-user helpers and Qt tray UI"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/evertvorster/dynamic-power-daemon"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=('power-profiles-daemon')
 depends=(
   'kscreen'
@@ -27,15 +27,15 @@ sha256sums=('SKIP')
 
 build() {
   cd $srcdir/$pkgname-$pkgver/src
-  rm -rf build
-  cmake -S . -B build
-  cmake --build build
+  cmake -S . -B build \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build --parallel
 }
 
 install="${pkgname}.install"
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  # The root Makefile handles installation of all components
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd "${srcdir}/${pkgname}-${pkgver}"/src
+	DESTDIR="${pkgdir}" cmake --install build
 }
