@@ -1,6 +1,6 @@
 pkgbase = aspectc++-nightly-bin
 	pkgdesc = Nightly build of AspectC++, a set of C++ language extensions to facilitate aspect-oriented programming with C/C++
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 2
 	url = http://aspectc.org/
 	arch = i686
