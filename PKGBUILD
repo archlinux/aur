@@ -5,7 +5,7 @@
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.14.10b
+pkgver=1.14.11b
 _zen_version=${pkgver//_/-}
 _firefox_version=141.0.2
 pkgrel=1
@@ -89,7 +89,7 @@ source=(
   0004-fix-package-json.zen.patch
   0005-source-firefox-language-packs.patch
   )
-sha256sums=('1f9efae9ba549a888635ce28be1db77105d64718539139b9c32a9a0f95312d1a'
+sha256sums=('e717dd50d5940ad65506cc44d78f3727d28f1278b08f038cdf2082adcf161476'
             'c33937fe2f6ad29af3de8f1a128c054afbd64821f702bf98d9f4079b97d37f3a'
             'SKIP'
             '523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9'
@@ -139,7 +139,7 @@ prepare() {
   # Apply patches
   msg2 "apply patches"
   git apply -3 "$srcdir"/*.zen.patch
-  #patch -Np1 -i ../0005-source-firefox-language-packs.patch
+  patch -Np1 -i ../0005-source-firefox-language-packs.patch
 
   msg2 "prepare dependencies"
   pnpm config set store-dir "$srcdir"/pnpm-store
