@@ -3,11 +3,11 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
 
-: ${_cksum:=e0ca62b4e30047aa7c31391d9a96d9882beaa63af22a2fe658dda37d95458473}
+: ${_cksum:=aea3db39b218623da2e7cf995ed5cb06f8cc28ddcd31fd2818e60d3b11203d0a}
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.24.2
+pkgver=13.25
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -54,6 +54,7 @@ package() {
     'file'
     'man-db'
     'po-debconf' # AUR
+    'python'
     'python-html2text'
     'strip-nondeterminism'
   )
