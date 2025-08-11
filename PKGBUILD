@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=opentyrian2000
-pkgver=2000.20240218
+pkgver=2000.20250408
 pkgrel=1
 pkgdesc='Open Source port of the classic DOS shoot-em-up Tyrian2000'
 url='https://github.com/KScl/opentyrian2000'
@@ -18,9 +18,9 @@ source=(
   "$pkgname::git+https://github.com/KScl/opentyrian2000.git#tag=v$pkgver"
   "$pkgname-$pkgver-assets.zip::https://camanis.net/tyrian/tyrian2000.zip"
 )
-sha512sums=('18de9da764c42786353190846f200f1eb720b77a1f6259f943ac5870200104f103590a8c3d230831f44bb9536771c803083d82502dd738518649cd3062766dd6'
+sha512sums=('b7833c76aa9c38baf8a7b7ad404a388e68e985a724cd68f072a2dea920ce4bd9e68f620a766b9afe32dc36ccbfaa754f15c5687b4d34b611f3771015572b9efd'
             'b425b8524e408b128e249d2916597bd5bebd34ee418e3ddbe13306e1f86869eaba85db0ae5a5dbae4d477b7fec6e04e8fb292d516bba7aff96cf2795232dbfc1')
-b2sums=('e02f998ef0abc820933526f7f453889566efa425c6a7f0be63c4b5669ecf75502e80c43e1f1ff99f214262bb89f2686297b24356b4ae21a6c0a48d66d99aa096'
+b2sums=('a935e74ab7e0d0d453a3306a97216ce2b2ea4df14e6b9d52daceb6c5a1ea1a7121e55454cf7887878d6f762b597619499bdc00ca4b015d5a365201b0d05b2173'
         '942ee68be24944e3d65612f323cd884e357341db42ee4ed5f487c7d1d650ab4bef98121dbdd321840bc3046f94c9491a6d777179821ba83ce0b4ad7573778aab')
 
 build() {
