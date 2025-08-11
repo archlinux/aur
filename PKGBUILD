@@ -9,7 +9,7 @@ url=https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt
 license=('LGPL2.1')
 source=("${url}/releases/download/${pkgver}/${pkgver}-linux-x64.zip")
 sha256sums=('a3d5eca356d145f18985fd1c7d64b5b12e8536e825d5b6c8dbb2739f5617a8dc')
-
+optdepends=(nwjs)
 package() {
   install -Dvm644 libffmpeg.so "$pkgdir"/usr/lib/libffmpeg.so.$_avcodec
   echo nwjs doesn not have RPATH. Symlink to your dir and LD_LIBRARY_PATH.

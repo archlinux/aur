@@ -5,6 +5,7 @@ pkgbase = nwjs-ffmpeg-codecs-bin
 	url = https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt
 	arch = x86_64
 	license = LGPL2.1
+	optdepends = nwjs
 	source = https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.102.0/0.102.0-linux-x64.zip
 	sha256sums = a3d5eca356d145f18985fd1c7d64b5b12e8536e825d5b6c8dbb2739f5617a8dc
 
