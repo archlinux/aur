@@ -13,6 +13,7 @@ license=('custom:Cantera Developers'
 depends=('python-numpy' 'openmp' 'yaml-cpp' 'fmt' 'boost-libs')
 makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'eigen' 'boost' 'python-pip' 'python-setuptools') 
 checkdepends=('gtest' 'gmock' 'python-ruamel-yaml' 'python-pytest')
+conflicts=('cantera')
 provides=('libcantera_shared.so=2-64')
 source=(git+https://github.com/Cantera/cantera.git)
 md5sums=('SKIP')
