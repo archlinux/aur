@@ -1,0 +1,12 @@
+pkgbase = rwork
+	pkgver = 7.18.16
+	pkgrel = 1
+	url = https://rwork.crc.com.cn/gxlog/index.html
+	arch = x86_64
+	license = LicenseRef-rwork
+	options = !strip
+	options = !debug
+	source = https://rwork.crc.com.cn/download/Rwork3.0-linux_x64-7.18.16.deb
+	md5sums = b0822c05864a74811aaf3d8d5ba78e8a
+
+pkgname = rwork
