@@ -1,14 +1,12 @@
 pkgbase = dfshow-rc
 	pkgdesc = An interactive directory/file browser written for Unix-like systems. Release Candidate
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roberthawdon/dfshow
 	arch = i686
 	arch = x86_64
 	arch = arm
 	license = GPL3
-	makedepends = autoconf
-	makedepends = automake
 	makedepends = libconfig
 	makedepends = acl
 	makedepends = gettext
