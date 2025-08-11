@@ -1,0 +1,4 @@
+[python-appdaemon]
+source = "github"
+github = "AppDaemon/appdaemon"
+use_max_tag = true

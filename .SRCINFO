@@ -1,0 +1,25 @@
+pkgbase = python-appdaemon
+	pkgdesc = Python Apps for Home Automation
+	pkgver = 4.5.11
+	pkgrel = 1
+	url = https://github.com/AppDaemon/appdaemon
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-bcrypt
+	depends = python-dateutil
+	depends = python-feedparser
+	depends = python-jinja
+	depends = python-pydantic
+	depends = python-pytz
+	depends = python-requests
+	depends = python-tomli
+	depends = python-yaml
+	source = python-appdaemon-4.5.11.tar.gz::https://github.com/AppDaemon/appdaemon/archive/4.5.11.tar.gz
+	sha256sums = 682dcf47f82ca2ba2fd6545d59cdad74d27634c9eab5c88e06f98e5238644b52
+
+pkgname = python-appdaemon
