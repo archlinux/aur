@@ -38,4 +38,4 @@ package() {
         desktop-file-validate "$pkgdir/usr/share/applications/firezone-client-gui.desktop" 2>/dev/null || true
     fi
 }
-sha256sums=('888e920d4a5546727188b4c37bf9c491487b584a25be5a991495241d76b0a3b3')
+sha256sums=('96048d5d35f52f71b93d8782d84e298fee69b5ac62d22f5b0611274f18149861')
