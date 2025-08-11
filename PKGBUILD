@@ -3,7 +3,7 @@
 _pkgname="sherlock-launcher-unstable"
 pkgbase="${_pkgname}-git" 
 pkgname="${_pkgname}-git" 
-pkgver=0.1.13.r3.gd861ea9
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Application launcher for Wayland."
 arch=('x86_64')
