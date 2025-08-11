@@ -1,16 +1,16 @@
 pkgbase = shiru
 	pkgdesc = BitTorrent streaming software with no paws in the way—watch anime in real-time, no waiting for downloads!
-	pkgver = 6.1.4
+	pkgver = 6.1.5
 	pkgrel = 1
 	url = https://github.com/RockinChaos/Shiru
 	arch = x86_64
 	license = GPL-3.0
 	provides = shiru
 	options = !strip
-	source = https://github.com/RockinChaos/Shiru/releases/download/v6.1.4/linux-Shiru-v6.1.4.AppImage
+	source = https://github.com/RockinChaos/Shiru/releases/download/v6.1.5/linux-Shiru-v6.1.5.AppImage
 	source = shiru.png
 	source = shiru.desktop
-	sha256sums = 96025de510d9197cacf833dfee6589d8beff122d78ff1c158d961328ea1de760
+	sha256sums = 346d1c6005920b311352b238490c9339b3d2f2414abb0f37d6e8163c4f8777c6
 	sha256sums = 379cccb8c101876ebfdab2684ed50a3e3ddb1e1250daca752bd24597bf7eaab3
 	sha256sums = 11ca7ef052a2273e874ebb18a4ab5433c03858af3c40afab467404377d72ab25
 
