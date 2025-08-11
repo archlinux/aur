@@ -7,7 +7,7 @@ pkgdesc="Arch native client for Drop"
 arch=(any)
 url="https://docs.droposs.org/"
 license=('AGPL-3.0-only')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'umu-launcher')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'umu-launcher' 'libayatana-appindicator')
 source=("git+https://github.com/Drop-OSS/drop-app.git#commit=40d545a77c47e0cbbe5ef33b0d69fe70bba6b943")
 makedepends=('yarn' 'cargo')
 sha256sums=('a2fcffd06cdae308ea9aa0d302d8821d4912bbc796b0127a8be4e1c5820be2ec')
