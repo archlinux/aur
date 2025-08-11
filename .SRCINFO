@@ -1,11 +1,12 @@
 pkgbase = keepassxc-menu
 	pkgdesc = Sift through keepassxc database entries and autotype the password directly in the input form with a hotkey.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tyrolyean/keepassxc-menu
 	arch = any
 	license = GPL-3.0
 	depends = tcl
+	depends = expect
 	optdepends = keepassxc
 	provides = keepassxc-menu
 	source = https://github.com/Tyrolyean/keepassxc-menu/archive/refs/tags/0.1.0.tar.gz
