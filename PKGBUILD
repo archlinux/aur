@@ -3,8 +3,8 @@
 
 _pkgname=krunner-steam
 pkgname=$_pkgname-git
-pkgver=r16.da5747c
-pkgrel=2
+pkgver=r17.b86af5d
+pkgrel=1
 pkgdesc="Launch Steam games from Krunner"
 arch=('any')
 url="https://github.com/xTibor/krunner-steam.git"
@@ -28,7 +28,7 @@ package() {
 
     install -dm0755 "$pkgdir/usr/share/dbus-1/services"
     install -dm0755 "$pkgdir/$site_packages"
-    mv src "$pkgdir/$site_packages/$_pkgname"
+    cp -r src "$pkgdir/$site_packages/$_pkgname"
 
     install -Dm0644 krunnersteam.desktop "$pkgdir/usr/share/krunner/dbusplugins/krunnersteam.desktop"
     cat <<EOF > "$pkgdir/usr/share/dbus-1/services/com.github.xtibor.krunnersteam.service"
