@@ -1,0 +1,30 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	if command -v py3compile >/dev/null 2>&1; then
+		py3compile -p cubic /usr/share/cubic -V 3.6-
+	fi
+	if command -v pypy3compile >/dev/null 2>&1; then
+		pypy3compile -p cubic /usr/share/cubic -V 3.6- || true
+	fi
+
+	update-desktop-database -q
+	ln -s /usr/bin/lsinitcpio /usr/bin/lsinitramfs
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	if command -v py3clean >/dev/null 2>&1; then
+		py3clean -p cubic 
+	else
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+	rm -rf /usr/bin/lsinitramfs
+}

@@ -1,0 +1,39 @@
+pkgbase = cubic-bin
+	pkgdesc = Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions. Cubic permits effortless navigation through the ISO customization steps and features an integrated virtual command line environment to customize the Linux file system. You can create new customization projects or modify existing projects. Important parameters are dynamically populated with intelligent defaults to for more information.
+	pkgver = 2025.06.93
+	pkgrel = 1
+	url = https://github.com/PJ-Singh-001/Cubic
+	install = cubic-bin.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash-completion
+	depends = binwalk>=2.1.1
+	depends = cdrtools
+	depends = gtksourceview3
+	depends = gtksourceview4
+	depends = hicolor-icon-theme
+	depends = mkinitcpio
+	depends = libisoburn>=1.4.8
+	depends = polkit>=124
+	depends = python>=3.6.
+	depends = python-gobject
+	depends = python-magic>=0.4.15
+	depends = python-packaging>=17.1
+	depends = python-pydbus>=0.6.0
+	depends = python-pyicu>=1.9.8
+	depends = qemu-audio-jack
+	depends = rsync
+	depends = squashfs-tools
+	depends = syslinux>=6.03
+	depends = python-argcomplete
+	depends = python-pexpect
+	depends = python-pyinotify
+	depends = python-yaml
+	depends = vte3
+	depends = dpkg
+	options = !strip
+	options = !emptydirs
+	source = https://ppa.launchpadcontent.net/cubic-wizard/release/ubuntu/pool/main/c/cubic/cubic_2025.06.93-release~202506301816~ubuntu25.04.1_all.deb
+	sha512sums = 58280daa9529808eb67ec090262904d65736e8b9e1df2a29af9d5c2c3d148d4de64036cda63d34f24e4b114973aa08330460f0e30120ffefad1275c1b01e6351
+
+pkgname = cubic-bin
