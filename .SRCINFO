@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-portable
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design. Sandboxed by portable.
-	pkgver = 20.0.1
+	pkgver = 20.1
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	arch = x86_64
@@ -45,6 +45,6 @@ pkgbase = davinci-resolve-portable
 	source = git+https://github.com/Kimiblock/resolve-download.git
 	source = portable-config
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 712835ece654cbeb5c7024e62445516510b133ac1d074e0754b50bb00790350d
 
 pkgname = davinci-resolve-portable

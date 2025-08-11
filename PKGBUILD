@@ -8,7 +8,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-portable
-pkgver=20.0.1
+pkgver=20.1
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Sandboxed by portable.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(#"file://DaVinci_Resolve_${pkgver}_Linux.zip"
         #"davinci-control-panels-setup.sh"
         'portable-config')
 sha256sums=('SKIP'
-            'SKIP')
+            '712835ece654cbeb5c7024e62445516510b133ac1d074e0754b50bb00790350d')
 #install="${pkgname}.install"
 options=('!strip')
 

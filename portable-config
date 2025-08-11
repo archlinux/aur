@@ -10,7 +10,8 @@ friendlyName="Davinci-Resolved"
 stateDirectory="Resolved_Data"
 
 # This is the target executable to launch
-launchTarget="/opt/resolve/bin/resolve %u"
+#launchTarget="env QT_QPA_PLATFORM=xcb bwrap --dev-bind / / --overlay-src /opt/resolve --tmp-overlay /opt/resolve -- /opt/resolve/bin/resolve"
+launchTarget="env QT_QPA_PLATFORM=xcb bwrap --dev-bind / / --overlay-src /opt/resolve --tmp-overlay /opt/resolve -- /opt/resolve/bin/resolve"
 
 # Takes a boolean value or string "adaptive". When true, do not process XAuth files and forces wayland input method. "adaptive" enables this option on Wayland and vice versa. Generally this should be adaptive when possible.
 waylandOnly="false"
@@ -43,5 +44,3 @@ useZink="false"
 qt5Compat="true"
 
 # Below you can set envs that will be imported into the application sandbox
-
-QT_QPA_PLATFORM=xcb
