@@ -1,7 +1,7 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=mangowc-git
-pkgver=r736.2b74dee
+pkgver=r761.3346c8a
 pkgrel=1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
@@ -15,7 +15,7 @@ depends=(
   pixman
   libxkbcommon
   pcre2
-  'wlroots-0.19-mao-git'
+  'libwlroots-0.19.so'
   'scenefx-git'
 )
 
