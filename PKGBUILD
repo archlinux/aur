@@ -1,14 +1,15 @@
-# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgbase=vbam
 pkgname=(
   vbam-sdl
   vbam-wx
 )
-pkgver=2.1.11
-pkgrel=3
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
 url='https://visualboyadvance-m.org'
@@ -32,13 +33,15 @@ makedepends=(
 )
 _pkgname=visualboyadvance-m
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}")
-b2sums=('caa270b95f5fa1ea543d57d9ed4309b7bdb345b421d91c4fd1511b8918997339a3143333bad08ce754207ea38f4686d7f7b594b951ea1636a5e7a99a7db4790a')
+#source=("https://github.com/${_pkgname}/${_pkgname}/archive/v$pkgver.tar.gz")
+b2sums=('b5f6cfc77af3c8b4c4c50d10c2ad26adf06d8cddba31ee1f0061cafdcd72fa6a79cdef8338ab019d8dd28bb540055f1391592ab288ddc829dbe74cc5a8ccb3ad')
 validpgpkeys=('A0C0E526E36FD2138C149D4D08AB596679D86240' # Rafael Kitover <rkitover@gmail.com>
               '0662A706ABE516087A23D1B9F2E06F4EE438BE81' # Zach Bacon <zachbacon@vba-m.com>
 )
 
 prepare() {
   cd ${_pkgname}
+  cp cmake/FindAppleFFMPEG.cmake cmake/FindFFMPEG.cmake
 }
 
 build() {
@@ -50,6 +53,7 @@ build() {
     -DENABLE_SDL=TRUE \
     -DENABLE_WX=FALSE \
     -DENABLE_LINK=FALSE \
+    -DBUILD_TESTING=OFF \
     -Wno-dev
   cmake --build build-sdl
 
@@ -62,6 +66,7 @@ build() {
     -DENABLE_WX=TRUE \
     -DENABLE_FFMPEG=TRUE \
     -DENABLE_LINK=FALSE \
+    -DBUILD_TESTING=OFF \
     -Wno-dev
   cmake --build build-wx
 }
@@ -84,6 +89,7 @@ package_vbam-wx() {
     openal
     wxwidgets-gtk3
     zip
+    libxss
   )
   conflicts=(vbam-sdl)
 
