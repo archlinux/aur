@@ -1,0 +1,14 @@
+pkgbase = r34-go
+	pkgdesc = Rule34.xxx downloader CLI written in Go
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/moxi-git/r34-go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/moxi-git/r34-go.git
+	sha256sums = SKIP
+
+pkgname = r34-go
