@@ -1,7 +1,7 @@
-From 96cab6a21e665076f96199a70a0a9c110a6fbce8 Mon Sep 17 00:00:00 2001
+From ed977ab59cd7264accbc91c78ae23cac3eead175 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 14 Feb 2025 15:18:52 -0700
-Subject: [PATCH 01/10] LINUX: Refactor afs_linux_dentry_revalidate()
+Subject: [PATCH 01/16] LINUX: Refactor afs_linux_dentry_revalidate()
 
 The signature for Linux's dentry_operations.d_revalidate method has
 undergone several changes, leading to increased use of #if directives in
@@ -219,5 +219,5 @@ index 519c5da15..e9d948989 100644
  afs_dentry_iput(struct dentry *dp, struct inode *ip)
  {
 -- 
-2.49.0
+2.50.1
 

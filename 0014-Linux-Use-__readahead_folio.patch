@@ -1,0 +1,214 @@
+From c5ae372b1d366d1b39bbb63a5101191921f2528d Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 31 Jul 2025 10:46:14 -0600
+Subject: [PATCH 14/16] Linux: Use __readahead_folio
+
+The linux 6.16 commit:
+  'filemap: remove readahead_page()' (c09b997342bcd)
+
+removed the readahead_page() function.  As a replacement, the function
+__readahead_folio() is functionally equivalent, except it returns a
+folio instead of a page.
+
+The Linux 5.17 commit:
+  'mm/filemap: Add readahead_folio()' (9bf70167e3c61)
+
+added __readahead_folio() and updated readahead_page() to be just a
+wrapper for __readahead_folio().  The function readahead_folio() is also
+just a wrapper around __readahead_folio(), however readahead_folio() is
+not a direct replacement for readahead_page() as it performs a folio_put
+before returning the folio.  Using __readahead_folio() allows the same
+logic to be used for pages or folios.
+
+Add an autoconf test for __readahead_folio.
+
+Create a compatibility wrapper, afs_readahead_folio, for
+__readahead_folio() / readahead_page().
+
+Add compatibility wrappers:
+    afs_FolioLocked for folio_test_locked/PageLocked
+    afs_unlock_folio for folio_unlock/unlock_page.
+
+These compatibility wrappers are for when code is working with folios
+but are referencing the head page of a folio instead of referencing the
+folio directly.
+
+The Linux functions: folio_test_locked, page_folio, folio_unlock,
+folio_page were introduced in 5.16.
+
+Note: With this change, on Linux 5.17 and later the build will use
+__readahead_folio instead of readahead_page.  However the actual
+behavior will be the same since readahead_page was nothing more than a
+wrapper for __readahead_folio.
+
+Add curly braces to near by if statements.
+
+Reviewed-on: https://gerrit.openafs.org/16438
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit 414dfa79a820ef1248a08ba9f9ebbccb44074774)
+
+Change-Id: I22126d996246e77cdd8649797cf37dc827edeb81
+---
+ src/afs/LINUX/osi_compat.h   | 48 ++++++++++++++++++++++++++++++++++++
+ src/afs/LINUX/osi_vnodeops.c | 33 ++++++++++++++-----------
+ src/cf/linux-kernel-func.m4  |  9 +++++++
+ 3 files changed, 75 insertions(+), 15 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index d43dec5ef..31687d02e 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -855,6 +855,54 @@ afs_put_page(struct page *p)
+ #endif
+ }
+ 
++/*
++ * Test to see if the folio associated with a page is locked.
++ * Compatibility function for when the code is dealing with pages and is
++ * referencing the head page of a folio instead of referencing the folio directly.
++ */
++static inline int
++afs_FolioLocked(struct page *page)
++{
++#if defined(HAVE_LINUX_READAHEAD_FOLIO)
++    return folio_test_locked(page_folio(page));
++#else
++    return PageLocked(page);
++#endif
++}
++
++/*
++ * Unlock the folio associated with a page.
++ * Compatibility function for when the code is dealing with pages and is
++ * referencing the head page of a folio instead of referencing the folio directly.
++ */
++static inline void
++afs_unlock_folio(struct page *page)
++{
++#if defined(HAVE_LINUX_READAHEAD_FOLIO)
++    folio_unlock(page_folio(page));
++#else
++    unlock_page(page);
++#endif
++}
++
++#if defined(STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_READAHEAD)
++static inline struct page *
++afs_readahead_folio(struct readahead_control *rac)
++{
++# if defined(HAVE_LINUX_READAHEAD_FOLIO)
++    struct folio *folio;
++
++    folio = __readahead_folio(rac);
++    if (folio == NULL) {
++	return NULL;
++    }
++    return folio_page(folio, 0);
++# else
++    return readahead_page(rac);
++# endif
++}
++#endif
++
+ static inline struct dentry *
+ afs_lookup_noperm(char *name, struct dentry *dp)
+ {
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index d36fbbe66..10c03091d 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -2750,15 +2750,17 @@ afs_linux_bypass_readahead(struct readahead_control *rac)
+     iovecp = ancr->auio->uio_iov;
+ 
+     for (page_ix = 0; page_ix < num_pages; ++page_ix) {
+-	pp = readahead_page(rac);
+-	if (pp == NULL)
++	pp = afs_readahead_folio(rac);
++	if (pp == NULL) {
+ 	    break;
++	}
+ 
+ 	isize = (i_size_read(fp->f_mapping->host) - 1) >> PAGE_SHIFT;
+ 	if (pp->index > isize) {
+-	    if (PageLocked(pp))
+-		unlock_page(pp);
+-	    put_page(pp);
++	    if (afs_FolioLocked(pp)) {
++		afs_unlock_folio(pp);
++	    }
++	    afs_put_page(pp);
+ 	    continue;
+ 	}
+ 
+@@ -2769,9 +2771,10 @@ afs_linux_bypass_readahead(struct readahead_control *rac)
+ 	}
+ 	iovecp[page_ix].iov_len = PAGE_SIZE;
+ 	if (base_index != pp->index) {
+-	    if (PageLocked(pp))
+-		 unlock_page(pp);
+-	    put_page(pp);
++	    if (afs_FolioLocked(pp)) {
++		 afs_unlock_folio(pp);
++	    }
++	    afs_put_page(pp);
+ 	    iovecp[page_ix].iov_base = NULL;
+ 	    base_index++;
+ 	    ancr->length -= PAGE_SIZE;
+@@ -3147,25 +3150,25 @@ afs_linux_readahead(struct readahead_control *rac)
+ 
+     afs_lru_cache_init(&lrupages);
+ 
+-    while ((page = readahead_page(rac)) != NULL) {
++    while ((page = afs_readahead_folio(rac)) != NULL) {
+ 	offset = page_offset(page);
+ 
+ 	code = get_dcache_readahead(&tdc, &cacheFp, avc, offset);
+ 	if (code != 0) {
+-	    if (PageLocked(page)) {
+-		unlock_page(page);
++	    if (afs_FolioLocked(page)) {
++		afs_unlock_folio(page);
+ 	    }
+-	    put_page(page);
++	    afs_put_page(page);
+ 	    goto done;
+ 	}
+ 
+ 	if (tdc != NULL) {
+ 	    /* afs_linux_read_cache will unlock the page */
+ 	    afs_linux_read_cache(cacheFp, page, tdc->f.chunk, &lrupages, task);
+-	} else if (PageLocked(page)) {
+-	    unlock_page(page);
++	} else if (afs_FolioLocked(page)) {
++	    afs_unlock_folio(page);
+ 	}
+-	put_page(page);
++	afs_put_page(page);
+     }
+ 
+  done:
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 8be20ba90..c60804e6b 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -349,6 +349,15 @@ AC_CHECK_LINUX_FUNC([lookup_noperm],
+ 		      #include <linux/dcache.h>
+ 		      static struct dentry *dp;]],
+ 		    [[dp = lookup_noperm(NULL, NULL);]])
++dnl Linux 5.17 introduced __readahead_folio and updated
++dnl readahead_page as a wrapper for __readahead_folio.
++dnl Linux 6.16, removed readahead_page.
++dnl Don't use readahead_folio(), because it has different behavior
++dnl (it performs a put on the folio).
++AC_CHECK_LINUX_FUNC([readahead_folio],
++		    [[#include <linux/pagemap.h>
++		      static struct folio *folio;]],
++		    [[folio = __readahead_folio(NULL);]])
+ 
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+-- 
+2.50.1
+

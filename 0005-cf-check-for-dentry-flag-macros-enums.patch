@@ -1,0 +1,123 @@
+From 4ece1e43eb779a08bc931fc792f29d56bc9e87ec Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 26 Jun 2025 10:12:57 -0600
+Subject: [PATCH 05/16] cf: check for dentry flag macros/enums
+
+Linux 6.15 commit:
+    dcache: convert dentry flag macros to enum (b2b4483b5d05)
+converted the dentry flag macros to an enum.
+
+Because these flags are now enums, a preprocessor #ifdef can no longer
+be used to test to see if the symbol is present, so a different form
+of test is needed.
+
+Introduce a new autoconf test, AC_CHECK_LINUX_SYMBOL that takes a
+symbol and an include and tries to assign the symbol to an integer
+variable.
+
+Add a new autoconf file, 'linux-kernel-symbol.m4' to hold the individual
+tests.
+
+Use the new AC_CHECK_LINUX_SYMBOL to test for the DCACHE_NEED_AUTOMOUNT
+and DCACHE_NFSFS_RENAMED flags.
+
+Reviewed-on: https://gerrit.openafs.org/16377
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit bb4e15e58af92371c08b5cc41a1682cd8c96fd2f)
+
+Change-Id: If45498d60c695d6d8bf860338b9c9442ddc08bc4
+Reviewed-on: https://gerrit.openafs.org/16427
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 62e2df3182bea9ea7d5e86d4d3a0dfc955bc3753)
+---
+ src/afs/LINUX/osi_compat.h    |  4 ++--
+ src/cf/linux-checks.m4        |  1 +
+ src/cf/linux-kernel-symbol.m4 | 11 +++++++++++
+ src/cf/linux-test1.m4         | 13 +++++++++++++
+ 4 files changed, 27 insertions(+), 2 deletions(-)
+ create mode 100644 src/cf/linux-kernel-symbol.m4
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index e8b8f100e..6eb6d7d77 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -48,7 +48,7 @@ SetPageError(struct page *p)
+ # define kthread_complete_and_exit complete_and_exit
+ #endif
+ 
+-#if defined(STRUCT_DENTRY_OPERATIONS_HAS_D_AUTOMOUNT) && !defined(DCACHE_NEED_AUTOMOUNT)
++#if defined(STRUCT_DENTRY_OPERATIONS_HAS_D_AUTOMOUNT) && !defined(HAVE_DCACHE_NEED_AUTOMOUNT)
+ # define DCACHE_NEED_AUTOMOUNT DMANAGED_AUTOMOUNT
+ #endif
+ 
+@@ -123,7 +123,7 @@ afs_posix_test_lock(struct file *fp, struct file_lock *flp) {
+ #endif
+ }
+ 
+-#ifdef DCACHE_NFSFS_RENAMED
++#ifdef HAVE_DCACHE_NFSFS_RENAMED
+ static inline void
+ afs_linux_clear_nfsfs_renamed(struct dentry *dp) {
+     spin_lock(&dp->d_lock);
+diff --git a/src/cf/linux-checks.m4 b/src/cf/linux-checks.m4
+index 81a015e7d..01406c4d4 100644
+--- a/src/cf/linux-checks.m4
++++ b/src/cf/linux-checks.m4
+@@ -41,6 +41,7 @@ case $AFS_SYSNAME in *_linux* | *_umlinux*)
+         OPENAFS_LINUX_KERNEL_SIG_CHECKS
+         OPENAFS_LINUX_KERNEL_HEADER_CHECKS
+         OPENAFS_LINUX_KERNEL_TYPE_CHECKS
++	OPENAFS_LINUX_KERNEL_SYMBOL_CHECKS
+         OPENAFS_LINUX_KERNEL_STRUCT_CHECKS
+         OPENAFS_LINUX_KERNEL_FUNC_CHECKS
+         OPENAFS_LINUX_KERNEL_ASSORTED_CHECKS
+diff --git a/src/cf/linux-kernel-symbol.m4 b/src/cf/linux-kernel-symbol.m4
+new file mode 100644
+index 000000000..c89224a4c
+--- /dev/null
++++ b/src/cf/linux-kernel-symbol.m4
+@@ -0,0 +1,11 @@
++AC_DEFUN([OPENAFS_LINUX_KERNEL_SYMBOL_CHECKS],[
++dnl Type existence checks
++
++dnl Linux 2.6.38 introduced DCACHE_NEED_AUTOMOUNT, and Linux 6.15 converted it
++dnl from a #define to an enum.
++AC_CHECK_LINUX_SYMBOL([DCACHE_NEED_AUTOMOUNT], [dcache.h])
++
++dnl DCACHE_NFSFS_RENAMED was introduced before Linux 2.6, and Linux 6.15
++dnl converted it from a #define to an enum.
++AC_CHECK_LINUX_SYMBOL([DCACHE_NFSFS_RENAMED], [dcache.h])
++])
+diff --git a/src/cf/linux-test1.m4 b/src/cf/linux-test1.m4
+index 581dc10e2..fbe3c1aa8 100644
+--- a/src/cf/linux-test1.m4
++++ b/src/cf/linux-test1.m4
+@@ -179,6 +179,19 @@ AC_DEFUN([AC_CHECK_LINUX_TYPE],
+                        [Define if kernel defines $1])
+  ])
+ 
++dnl AC_CHECK_LINUX_SYMBOL([sym], [includes])
++dnl Linux 6.15 has started converting some defines into enums
++dnl for constants that we use, a simple #ifdef no longer works
++AC_DEFUN([AC_CHECK_LINUX_SYMBOL],
++ [AC_CHECK_LINUX_BUILD([for symbol $1],
++                       [ac_cv_linux_symbol_$1_exists],
++                       [#include <linux/$2>],
++                       [static int _test_ = $1; ],
++                       AS_TR_CPP(HAVE_$1),
++                       [Define if kernel defines symbol $1])
++ ])
++
++
+ dnl AC_CHECK_LINUX_STRUCT([structure], [element], [includes])
+ AC_DEFUN([AC_CHECK_LINUX_STRUCT],
+  [AC_CHECK_LINUX_TYPED_STRUCT([struct $1], [$2], [$3])
+-- 
+2.50.1
+

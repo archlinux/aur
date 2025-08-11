@@ -1,16 +1,28 @@
-From b39e173e4b62170052aad104e91d5a7c15544f4a Mon Sep 17 00:00:00 2001
+From c7656af901c68006c3a82478c56a4c9cf141c4ea Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
-Date: Wed, 7 May 2025 14:14:39 -0600
-Subject: [PATCH 03/10] Linux: Add required MODULE_DESCRIPTION
+Date: Sun, 1 Jun 2025 06:57:55 -0600
+Subject: [PATCH 03/16] Linux: Add required MODULE_DESCRIPTION
 
-Linux commit:
+The Linux 6.15 commit:
     "modpost: require a MODULE_DESCRIPTION()" (6c6c1fc09de3)
 changed the Linux build process to require the MODULE_DESCRIPTION.
 
 Add a MODULE_DESCRIPTION() to the kernel modules, including the code
-template used in authconf tests.
+template used in autoconf tests.
 
-Change-Id: Ia56cb0f778d0bc3743a1a19840c245d0af88e5ab
+Reviewed-on: https://gerrit.openafs.org/16372
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit f2705de3ded4e194bd447d88013076e707ff33d1)
+
+Change-Id: I7fefbb6c1960948dee6424f11789af19b07d3e84
+Reviewed-on: https://gerrit.openafs.org/16418
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit e76b520f1316e7059a7855078f117ce194734317)
 ---
  src/afs/LINUX/osi_module.c     | 1 +
  src/afs/LINUX/osi_pag_module.c | 1 +
@@ -18,26 +30,26 @@ Change-Id: Ia56cb0f778d0bc3743a1a19840c245d0af88e5ab
  3 files changed, 3 insertions(+)
 
 diff --git a/src/afs/LINUX/osi_module.c b/src/afs/LINUX/osi_module.c
-index 0fc9beba0..599c4d83d 100644
+index 0fc9beba0..d3b00af70 100644
 --- a/src/afs/LINUX/osi_module.c
 +++ b/src/afs/LINUX/osi_module.c
 @@ -136,6 +136,7 @@ afs_cleanup(void)
  }
  
  MODULE_LICENSE("http://www.openafs.org/dl/license10.html");
-+MODULE_DESCRIPTION("OpenAFS");
++MODULE_DESCRIPTION("OpenAFS AFS filesystem client");
  module_init(afs_init);
  module_exit(afs_cleanup);
  
 diff --git a/src/afs/LINUX/osi_pag_module.c b/src/afs/LINUX/osi_pag_module.c
-index 7e8e4f15b..4e6c9fb94 100644
+index 7e8e4f15b..6442077d5 100644
 --- a/src/afs/LINUX/osi_pag_module.c
 +++ b/src/afs/LINUX/osi_pag_module.c
 @@ -107,6 +107,7 @@ afspag_cleanup(void)
  }
  
  MODULE_LICENSE("http://www.openafs.org/dl/license10.html");
-+MODULE_DESCRIPTION("OpenAFS PAG");
++MODULE_DESCRIPTION("OpenAFS standalone PAG manager");
  module_init(afspag_init);
  module_exit(afspag_cleanup);
  
@@ -54,5 +66,5 @@ index 010a4464f..581dc10e2 100644
      echo make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir $SPARSE_MAKEFLAGS modules KBUILD_VERBOSE=1 >&AS_MESSAGE_LOG_FD &&
      make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir $SPARSE_MAKEFLAGS modules KBUILD_VERBOSE=1 >&AS_MESSAGE_LOG_FD 2>conftest.err &&
 -- 
-2.49.0
+2.50.1
 
