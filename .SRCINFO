@@ -8,6 +8,7 @@ pkgbase = fmp-git
 	makedepends = cargo
 	depends = gpgme
 	depends = libgpg-error
+	conflicts = fmp-bin
 	source = fmp-1.4.3.tar.gz::https://github.com/lwilk0/fmp/archive/refs/tags/v1.4.3.tar.gz
 	sha512sums = 71204b64c8e904628b4c73a1bc3ab6e537337bd131b70f6c4e8cb0e832444d1be82f184677189fbaa399e2382c8214731d52450b1dc5ba4b4a323e9d56121d66
 
