@@ -1,12 +1,14 @@
 pkgbase = preprocess-git
 	pkgdesc = C++ preprocessor to write unit-style single-source-file modules in C++
-	pkgver = 0.0.r3835.8480004e
+	pkgver = 0.0.r3920.150b3482
 	pkgrel = 1
 	url = http://os.inf.tu-dresden.de/~hohmuth/prj/preprocess/
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
+	makedepends = doxygen
 	depends = perl
+	options = !debug
 	source = git+https://github.com/kernkonzept/fiasco
 	source = doxygen.patch
 	sha256sums = SKIP

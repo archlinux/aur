@@ -4,13 +4,14 @@ pkgname=preprocess-git
 # the repo and binary names use abbr.
 _pkgname=preprocess
 _reponame=fiasco
-pkgver=0.0.r3835.8480004e
-pkgrel=1
+pkgver=0.0.r3920.150b3482
+pkgrel=2
 pkgdesc="C++ preprocessor to write unit-style single-source-file modules in C++"
 arch=('any')
 url=""http://os.inf.tu-dresden.de/~hohmuth/prj/preprocess/
 depends=(perl)
-makedepends=(git)
+makedepends=(git doxygen)
+options=('!debug')
 license=('GPL-2.0-only')
 source=(
     'git+https://github.com/kernkonzept/fiasco'
