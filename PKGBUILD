@@ -2,7 +2,7 @@
 # Contributor: AchmadFathoni <fathoni.id@gmail.com>
 
 pkgname=xgboost
-pkgver=3.0.2
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="An optimized distributed gradient boosting library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(cmake cuda git nccl)
 #"git+$url#tag=v${pkgver}"
 source=("$pkgname.tar.gz"::"$url/releases/download/v$pkgver/xgboost-src-$pkgver.tar.gz"
         "quantile.patch")
-b2sums=('c6ad3ccc7b8d1b838c9258bd6df17307ceea84fd1a98495817c9d7af06bbe3fe09fae382765853b29ae80db6693afc7eb71e581114af810d2eff719f468a30f5'
+b2sums=('5cacc0482e3a39a30c76bc72ed6b2f889b8dad509acf4c562d989e695dcd739206cfc027672e884957810bf4472619193db5728b0c11288ccbcdeec89b9c107c'
         '715904014923edefd2824abb05462578be80f50c5ea76eca2b21f8403d345045917feb837aa67ab7014f07172a48b58e1a7d7f3d63d3f563ceb7dc0125d7a89d')
 
 prepare() {
