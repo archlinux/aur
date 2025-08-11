@@ -1,0 +1,18 @@
+pkgbase = hypersploit-bin
+	pkgdesc = Bypasses HyperOS restrictions on bootloader unlocking
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/TheAirBlow/HyperSploit
+	arch = x86_64
+	license = MPL-2.0
+	depends = glibc
+	provides = hypersploit
+	conflicts = hypersploit
+	source = hypersploit-1.1.0-README.md::https://github.com/TheAirBlow/HyperSploit/raw/refs/tags/1.1.0/README.md
+	source = hypersploit-1.1.0-LICENSE::https://github.com/TheAirBlow/HyperSploit/raw/refs/tags/1.1.0/LICENCE
+	sha256sums = 7081ee4dcce9cecd248260654f992cff7f14443db4dacd185cece72e6dce483e
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	source_x86_64 = hypersploit-1.1.0-x86_64::https://github.com/TheAirBlow/HyperSploit/releases/download/1.1.0/HyperSploit-Linux
+	sha256sums_x86_64 = a92423ba1735c90ae5b59c02e915bc6171e1c66abcb838ed55904f042b46a305
+
+pkgname = hypersploit-bin

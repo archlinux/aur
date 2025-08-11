@@ -1,0 +1,5 @@
+[hypersploit-bin]
+source = "github"
+github = "TheAirBlow/HyperSploit"
+use_latest_release = true
+prefix = "v"
