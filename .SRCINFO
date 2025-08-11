@@ -1,6 +1,6 @@
 pkgbase = librocket-git
 	pkgdesc = HTML/CSS User Interface library
-	pkgver = r610.ecd648a
+	pkgver = r613.ae8a8d9
 	pkgrel = 1
 	epoch = 1
 	url = https://asarium.github.io/libRocket/wiki/documentation.html

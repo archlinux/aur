@@ -4,7 +4,7 @@
 # Contributor: Eugene Tan <jmingtan at gmail dot com>
 
 pkgname=librocket-git
-pkgver=r610.ecd648a
+pkgver=r613.ae8a8d9
 pkgrel=1
 epoch=1
 pkgdesc="HTML/CSS User Interface library"
@@ -30,6 +30,7 @@ build() {
   #  -DSAMPLES_DIR="/usr/share/doc/$_pkgname/"
 
   cmake -Wno-dev \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_PYTHON_BINDINGS=True \
