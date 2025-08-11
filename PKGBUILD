@@ -1,43 +1,31 @@
-# Maintainer: Mubashshir <ahmubashshir@gmail.com>
+# Contributor: Mubashshir <ahmubashshir@gmail.com>
 # from: pypi
 # what: PyGLM
 
 pkgname='python-pyglm'
-pkgver='2.7.3'
+pkgver='2.8.2'
 pkgrel=1
 pkgdesc="OpenGL Mathematics library for Python"
 url="https://github.com/Zuzu-Typ/PyGLM"
-depends=('python')
-makedepends=('python-setuptools' 'git')
-license=('ZLIB')
-arch=('any')
-source=(
-    "$pkgname::git+https://github.com/Zuzu-Typ/PyGLM.git#tag=$pkgver"
-    "pyglm-typing::git+https://github.com/esoma/pyglm-typing.git"
-    "glm::git+https://github.com/Zuzu-Typ/glm.git"
+depends=('glm' 'python')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
 )
-sha256sums=('b9b968b15859d8e40502c935dd77a9851c7710e0d0841a73d7390df634099c47'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-    local mod
-
-    cd "$srcdir/$pkgname"
-    git submodule init
-    for mod in glm pyglm-typing; do
-        git config "submodule.$mod.url" "$srcdir/$mod"
-    done
-
-    git -c protocol.file.allow=always submodule update
-}
+license=('Zlib')
+arch=('x86_64')
+source=("$pkgname::git+https://github.com/Zuzu-Typ/PyGLM.git#tag=$pkgver")
+sha256sums=('d26ecc224b11b12fc4d90465917dbac966448bec6245bebe09d004b0e0ae2c67')
 
 build() {
     cd "$srcdir/$pkgname"
-    CFLAGS="$CFLAGS -Wno-all" python setup.py build
+    CFLAGS="$CFLAGS -Wno-all" python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
 }
