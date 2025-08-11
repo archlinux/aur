@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Python Apps for Home Automation"
 url="https://github.com/AppDaemon/appdaemon"
 arch=('any')
-license=('MIT')
+license=('Apache-2.0')
 depends=(
 	'python'
 	'python-aiohttp'
