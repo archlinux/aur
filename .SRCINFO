@@ -1,0 +1,16 @@
+pkgbase = ripgrep
+	pkgdesc = A barebones basic implementation of Ripgrep
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Sparrowehawk/rippedgrep
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/Sparrowehawk/rippedgrep/archive/refs/tags/working.tar.gz
+	sha256sums = b2b4e529f92d2faab7620bb01f5fd466acb95ab11379e3fb2874b9bf6ff4416b
+
+pkgname = ripgrep
