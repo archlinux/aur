@@ -1,19 +1,19 @@
 pkgbase = git-town-bin
 	pkgdesc = Git workflow automation to keep branches in sync and reduce merge conflicts.Written in Go.(Prebuilt version)
-	pkgver = 21.4.1
+	pkgver = 21.4.2
 	pkgrel = 1
 	url = https://www.git-town.com/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = git
-	provides = git-town=21.4.1
+	provides = git-town=21.4.2
 	conflicts = git-town
-	source = LICENSE-21.4.1::https://raw.githubusercontent.com/git-town/git-town/v21.4.1/LICENSE
+	source = LICENSE-21.4.2::https://raw.githubusercontent.com/git-town/git-town/v21.4.2/LICENSE
 	sha256sums = eec8a092b92231375231488d27b959e2fa2be80559c97db60c1b0458d3298791
-	source_aarch64 = git-town-21.4.1-aarch64.pkg.tar.zst::https://github.com/git-town/git-town/releases/download/v21.4.1/git-town_linux_arm_64.pkg.tar.zst
-	sha256sums_aarch64 = c94576a3125df3936267afe8bdae6b73b750bcb14e4ee5318c28e94e8b41ca12
-	source_x86_64 = git-town-21.4.1-x86_64.pkg.tar.zst::https://github.com/git-town/git-town/releases/download/v21.4.1/git-town_linux_intel_64.pkg.tar.zst
-	sha256sums_x86_64 = 672b8fc86e69b63206e60fd8021e38da21ebdf99d7be7b2f6057cd23d6b5b4d4
+	source_aarch64 = git-town-21.4.2-aarch64.pkg.tar.zst::https://github.com/git-town/git-town/releases/download/v21.4.2/git-town_linux_arm_64.pkg.tar.zst
+	sha256sums_aarch64 = 80d044702c0d37ae38bed9fe858bc2d1e5f1ea29155543e80a5d0681e02c67ed
+	source_x86_64 = git-town-21.4.2-x86_64.pkg.tar.zst::https://github.com/git-town/git-town/releases/download/v21.4.2/git-town_linux_intel_64.pkg.tar.zst
+	sha256sums_x86_64 = 0d43a01ca492614654dba1d18290fb3f240255d47225ed3c6986fe8f6a2dee81
 
 pkgname = git-town-bin
