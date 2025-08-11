@@ -1,0 +1,15 @@
+pkgbase = pam-parallel
+	pkgdesc = A PAM module that runs multiple other PAM modules in parallel, succeeding as long as one of them succeeds
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FuriLabs/pam-parallel
+	arch = i686
+	arch = x86_64
+	makedepends = make
+	makedepends = gcc
+	depends = jansson
+	depends = pam
+	source = pam-parallel-1.0.0.tar.gz::https://github.com/FuriLabs/pam-parallel/archive/refs/tags/furios/trixie/1.0.0.tar.gz
+	b2sums = 627e3d3ac87d85df1a90a9bfa3d27c0586eb2addaa5bcf09d54fbfcea67928e54f1293f9e024e723568d2bf77ba88de5786dc1bb072be9f73d4554e2e54223a3
+
+pkgname = pam-parallel
