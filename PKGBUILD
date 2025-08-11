@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clip-editor-bin
 _pkgname='Clip Editor'
-pkgver=0.2.6
+pkgver=0.2.7
 _electronversion=36
 pkgrel=1
 pkgdesc="Edit, manage, and organize your video clips.(Prebuilt version.Use system-wide electron)"
@@ -14,6 +14,7 @@ depends=(
     "electron${_electronversion}"
     'ffmpeg'
     'steam'
+    'libvips'
 )
 options=(
     '!emptydirs'
@@ -22,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ae90f054e0140eab00260214fb0bd36a6ea59be8482ff19f2ad9356af977c5ff'
+sha256sums=('c6a5682606f9f6e85d32ea826dda2450cdd1a35d3d1b57528b8858037ef9fff3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
