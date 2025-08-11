@@ -4,7 +4,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2025.8
 _channel=beta
-_rel=2
+_rel=3
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
@@ -42,15 +42,14 @@ source=(
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('47289bf1137694c6c85406ae959fe3135adc63178af6d619cec2b936510ba2b3'
+sha256sums=('3b9a2ace443cb24de709423b75480939abf2cc8b1a6a951c1e0ee19f8c5b5a62'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net> (old)
-#              '7ED98188F8F9AFF15D49E41BEB8D8AD83E8DA7BC' # David Lönnhager <david.l@mullvad.net> (current)
+              '88E342DE794BF05D34081325A6476630D7A42506' # David Lönnhager <david.l@mullvad.net>
               '1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C' # Oskar Nyberg <oskar@mullvad.net>
               '049F58CC80D9C78452151EE6EF0CCD68D0E5B9B1' # Emīls Piņķis <emils@mullvad.net>
               )
@@ -105,6 +104,7 @@ build() {
   export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
+  local CARGO_ARGS=(--frozen --release)
 
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
@@ -132,17 +132,17 @@ build() {
     -p talpid-openvpn-plugin --lib
     -p mullvad-exclude --bin mullvad-exclude
   )
-  cargo build --frozen --release "${cargo_crates_to_build[@]}"
+  cargo build "${CARGO_ARGS[@]}" "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
-    cargo run --bin mullvad --frozen --release -- shell-completions "${sh}" \
+    cargo run --bin mullvad "${CARGO_ARGS[@]}" -- shell-completions "${sh}" \
       build/shell-completions/
   done
 
   echo "Updating relays.json..."
-  cargo run -p mullvad-api --bin relay_list --frozen --release > build/relays.json
+  cargo run -p mullvad-api --bin relay_list "${CARGO_ARGS[@]}" > build/relays.json
 
   # Move binaries to correct locations in dist-assets
   binaries=(
