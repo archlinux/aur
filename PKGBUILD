@@ -1,6 +1,6 @@
 # Maintainer: Timo Kettenbach
 pkgname=taschenrechner
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="a cli-calculator written in rust"
 url="https://gitlab.fem-net.de/mabl/taschenrechner"
@@ -11,7 +11,7 @@ makedepends=('rust')
 provides=("taschenrechner")
 conflicts=()
 source=("https://gitlab.fem-net.de/mabl/taschenrechner/-/archive/${pkgver}/taschenrechner-${pkgver}.tar.gz")
-sha256sums=('4cdf4f95ca1f83585a09e95a76d541e92367e0afcab4825beebb680527841dbc')
+sha256sums=('415d4f230ea7aa6e4e60f26bcefaf86afc308707d61eb6592d4ae24d36de4944')
 
 prepare() {
 	cd "$pkgname-$pkgver"
