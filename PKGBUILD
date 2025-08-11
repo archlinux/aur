@@ -73,5 +73,5 @@ package() {
 
   cp -r share "$pkgdir/usr/"
 
-  ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/${_app_id}"
+  ln -s "/usr/bin/${pkgname%-git}" "$pkgdir/usr/bin/${_app_id}"
 }
