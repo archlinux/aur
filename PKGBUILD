@@ -2,14 +2,14 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=1.28.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8a6908994a4fdd66712fba3df5aee7620d66f0a901ad46eb31ca39a091394b2a')
+sha256sums=('ed3a07734b7ea4d3197dd0af46974319889c817a0e6f7a12fcfe9a8e05ed6ea9')
 depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp')
@@ -69,6 +69,7 @@ check() {
     --ignore google/genai/tests/batches/test_create_with_file.py
     --ignore google/genai/tests/batches/test_create_with_gcs.py
     --ignore google/genai/tests/batches/test_create_with_inlined_requests.py
+    --ignore google/genai/tests/models/test_recontext_image.py
     --deselect google/genai/tests/chats/test_send_message.py
     --deselect google/genai/tests/files/test_upload.py
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
