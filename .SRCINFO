@@ -1,6 +1,6 @@
 pkgbase = python-gradio-client
 	pkgdesc = Python library for easily interacting with trained machine learning models.
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/gradio-app/gradio/tree/main/client/python
 	arch = any
@@ -51,7 +51,7 @@ pkgbase = python-gradio-client
 	depends = python-packaging
 	depends = python-typing_extensions
 	depends = python-websockets
-	source = https://github.com/gradio-app/gradio/archive/refs/tags/gradio_client@1.11.0.tar.gz
-	sha256sums = 53dbcff822a2799209546f48b6bfd4364bd2a2b19a46f422690624ab5548fb89
+	source = https://github.com/gradio-app/gradio/archive/refs/tags/gradio_client@1.11.1.tar.gz
+	sha256sums = 98f77391edb9d123a088e11e0d60d281bfbfe27ca3b7d37d481c28915fcd3c34
 
 pkgname = python-gradio-client
