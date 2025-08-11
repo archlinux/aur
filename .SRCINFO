@@ -1,6 +1,6 @@
 pkgbase = r34-go
-	pkgdesc = Rule34.xxx downloader CLI written in Go
-	pkgver = 1.1.0
+	pkgdesc = Rule34.xxx CLI downloader written in Go
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/moxi-git/r34-go
 	arch = x86_64
