@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="A simple secure password manager written in rust."
 arch=('x86_64')
 url="https://github.com/lwilk0/fmp"
+conflicts=('fmp-bin')
 license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
 makedepends=('cargo')
