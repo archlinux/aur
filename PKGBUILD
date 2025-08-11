@@ -8,7 +8,12 @@ pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
-license=('EPL2')
+#license=('EPL-2.0' 'GPL-2.0-only WITH Classpath-exception-2.0' 'MIT' 'LicenseRef-LICENSE-vscode.txt')
+#license=('EPL-2.0 AND GPL-2.0-only WITH Classpath-exception-2.0 AND MIT AND LicenseRef-LICENSE-vscode.txt')
+_license_files=(LICENSE-EPL LICENSE-GPL-2.0-ONLY-CLASSPATH-EXCEPTION LICENSE-MIT.txt LICENSE-vscode.txt)
+#_licenses="${_license_files[*]/#/LicenseRef-}"
+#license=("${_licenses//${IFS:0:1}/ AND }")
+license=("${_license_files[@]/#/LicenseRef-}")
 # nodejs-lts-iron works again: https://github.com/eclipse-theia/theia/pull/15212
 # Also, nodejs 23.9 seems to work too.
 depends=('nodejs-lts-jod' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
@@ -27,6 +32,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/logo/theia.svg"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-EPL"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-GPL-2.0-ONLY-CLASSPATH-EXCEPTION"
+  "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-MIT.txt"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-vscode.txt"
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
@@ -37,6 +43,7 @@ sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
             '8c349f80764d0648e645f41ef23772a70c995a0924b5235f735f4a3d09df127c'
             '7d74322f208420b6886c40eda1c7d1bad618f12e067af934f02bc9bbfcc038ae'
+            'cfca8e97a3cb58c3a8004c4642dfec191b09d3e76a322c232d0b7edf3d66aa7c'
             '39e379a27a642e8146a3c1a089fa96cf8221d2233a7f5821e33a91da7dacfc3b')
 
 prepare() {
