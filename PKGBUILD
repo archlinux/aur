@@ -52,7 +52,25 @@ if [[ -n "$NODEJS" ]]; then
     makedepends[0]="$NODEJS"
 fi
 
+_ensure_nodejs() {
+    if [[ "$NODEJS" == "nvm" ]]; then
+        # let's be sure we are starting clean
+        which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+        export NVM_DIR="${srcdir}/.nvm"
+
+        # The init script returns 3 if version specified
+        # in ./.nvmrc is not (yet) installed in $NVM_DIR
+        # but nvm itself still gets loaded ok
+        source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+
+	if [[ "$1" == "install" ]]; then
+            nvm install 22
+        fi
+    fi
+}
+
 prepare() {
+    _ensure_nodejs install
     cd "$_pkgname"
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 ELECTRON_SKIP_BINARY_DOWNLOAD=1 SENTRYCLI_SKIP_DOWNLOAD=1
     _electron_pkg_ver="$(jq -r .devDependencies.electron package.json | tr -d '^' | cut -d. -f1)"
@@ -64,6 +82,7 @@ prepare() {
 }
 
 build() {
+    _ensure_nodejs
     # https://github.com/toeverything/AFFiNE/blob/canary/docs/building-desktop-client-app.md
     cd "$_pkgname"
     # https://github.com/toeverything/AFFiNE/blob/v0.18.2/.github/actions/setup-version/action.yml
