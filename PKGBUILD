@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eaglergrab-bin
 _pkgname=eaglerGrab
-pkgver=1.3.0
-_electronversion=35
+pkgver=1.4.0
+_electronversion=37
 pkgrel=1
 pkgdesc="Eaglercraft Launcher(Prebuilt version.Use system-wide electron)."
 arch=('x86_64')
@@ -18,11 +18,15 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/release-linux.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/release-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('86d01bb4e12380df6a02e5274b6cdbd4698cba3c81ef70f8ee364ac12a3d09d5'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('866e61f871bf7dd9c30b4dccfd4006be72663704a9dbefb2a1228c427ff7e62d'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -31,8 +35,11 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
