@@ -4,7 +4,7 @@ _name=swow
 _upstream=swow/swow
 pkgbase=php-swow
 pkgname=('php-swow' 'php-legacy-swow')
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=0
 pkgdesc="Swow coroutine IO extension for PHP"
 arch=('x86_64' 'arm64')
@@ -14,10 +14,10 @@ makedepends=('php' 'php-legacy' 'postgresql-libs')
 depends=('glibc')
 source=(
     "$_name-$pkgver.tar.gz::https://github.com/${_upstream}/archive/refs/tags/v${pkgver}.tar.gz"
-    "0001-Fix_PQclosePrepared_weak_dep.patch::https://github.com/swow/swow/commit/bb348b9da8da1cd501c9d916be62806950092009.patch"
 )
-sha512sums=('f92578675425fbf8fa15716e7ce858f5a61f03ee8fe7274e59078f05bc7a3842852267ae061e02c943d5776e04aff605c1dc8f404881e51661e96207fcfbbe8a'
-            'd5e66be35877c1b76cdeaf4f2a5603c5a48de994952d9e9f6933014b025a24457800a4737003a7a509f963336903e08c3c74f42f9f6b61b54c2c55ac9198f698')
+sha512sums=(
+    '1a3e8f3ea8ac4aa93c78adb66eea0202787a05bf94ddb2b99a72d9a76a4e1e694737a92f6fe7f4e61228f289c463e94eae484f45bb6b3723d2b077efd42117aa'
+)
 
 prepare() {
     mv -v "${_name}-${pkgver}" "$pkgbase-$pkgver"
