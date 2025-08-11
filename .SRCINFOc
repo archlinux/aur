@@ -1,0 +1,23 @@
+pkgbase = clipse-gui
+	pkgdesc = A simple clipboard manager with a GUI
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/d7omdev/clipse-gui
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = clang
+	makedepends = patchelf
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = wl-clipboard
+	depends = wtype
+	depends = xdotool
+	source = git+https://github.com/d7omdev/clipse-gui.git
+	sha256sums = SKIP
+
+pkgname = clipse-gui
