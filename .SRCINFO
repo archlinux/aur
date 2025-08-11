@@ -1,0 +1,17 @@
+pkgbase = samrewritten
+	pkgdesc = Unlock achievements and stats on Steam, and more!
+	pkgver = 20250802.1
+	pkgrel = 1
+	url = https://github.com/PaulCombal/SamRewritten
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = gtk4
+	makedepends = pkg-config
+	makedepends = git
+	depends = gtk4
+	optdepends = libadwaita: for Adwaita styling
+	source = samrewritten-20250802.1.tar.gz::https://github.com/PaulCombal/SamRewritten/archive/20250802.1.tar.gz
+	sha256sums = 8e75f4d54e6bc4ae4a91cb899baf24105171c5bd7a9396b189d91f4b34ca7d60
+
+pkgname = samrewritten

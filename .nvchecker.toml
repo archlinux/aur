@@ -1,0 +1,3 @@
+[samrewritten]
+source = "git"
+git = "https://github.com/PaulCombal/SamRewritten.git"
