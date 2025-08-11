@@ -1,6 +1,6 @@
 pkgbase = python-langgraph-prebuilt
 	pkgdesc = Library with high-level APIs for creating and executing LangGraph agents and tools.
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/prebuilt
 	arch = any
@@ -22,10 +22,10 @@ pkgbase = python-langgraph-prebuilt
 	depends = python
 	depends = python-langgraph-checkpoint
 	depends = python-langchain-core
-	noextract = langgraph-0.6.3-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/source/l/langgraph-prebuilt/langgraph_prebuilt-0.6.3.tar.gz
-	source = https://files.pythonhosted.org/packages/py3/l/langgraph/langgraph-0.6.3-py3-none-any.whl
-	sha256sums = 5e1ca7ba98f53ce98400f34bdb0afe47f71d0167c4108b11d4aeed4c6d4a1d3d
-	sha256sums = 733efd8c59b9915e582619da40f2ab5ebb121319a4d7718adef82d6db07547eb
+	noextract = langgraph-0.6.4-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-prebuilt/langgraph_prebuilt-0.6.4.tar.gz
+	source = https://files.pythonhosted.org/packages/py3/l/langgraph/langgraph-0.6.4-py3-none-any.whl
+	sha256sums = e9e53b906ee5df46541d1dc5303239e815d3ec551e52bb03dd6463acc79ec28f
+	sha256sums = 001cb076d204b7e7cdf2dce24b18171bbd184840f236852a256107b2aed105bb
 
 pkgname = python-langgraph-prebuilt
