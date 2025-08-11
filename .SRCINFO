@@ -25,6 +25,7 @@ pkgbase = golden-cheetah-git
 	depends = qt6-multimedia
 	depends = qt6-connectivity
 	depends = qt6-charts
+	depends = qt6-5compat
 	depends = gsl
 	optdepends = vlc: video playback in training mode
 	optdepends = srmio: SRM powercontrol V downloads via serial

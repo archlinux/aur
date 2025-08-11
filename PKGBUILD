@@ -28,6 +28,7 @@ depends=(
   'qt6-multimedia'
   'qt6-connectivity'
   'qt6-charts'
+  'qt6-5compat'
   'gsl')
 optdepends=(
   'vlc: video playback in training mode'
