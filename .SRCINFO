@@ -1,0 +1,11 @@
+pkgbase = gnu-hello
+	pkgdesc = Testing submission to AUR
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://mirrors.nju.edu.cn/gnu/hello/
+	arch = x86_64
+	license = GPL3
+	source = https://mirrors.nju.edu.cn/gnu/hello//hello-2.9.tar.gz
+	sha256sums = ecbb7a2214196c57ff9340aa71458e1559abd38f6d8d169666846935df191ea7
+
+pkgname = gnu-hello
