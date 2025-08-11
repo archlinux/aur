@@ -1,9 +1,9 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=eigenwallet-developertools-bin
-_pkgver="3.0.0-beta.6"
+_pkgver="3.0.0-beta.8"
 pkgver=${_pkgver/-beta./.}
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps"
 arch=('x86_64')
@@ -25,10 +25,10 @@ source=(
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/asb-controller_${_pkgver}_Linux_x86_64.tar"
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/orchestrator_${_pkgver}_Linux_x86_64.tar"
 )
-sha256sums=('1b7c12a5b1815797cac7257aa084b7172c175d0cc3831f6df6444c21efa5a098'
-            'b18fefe2b922ff1578fd8a7bec0b2b15bc6e14bc43b14c26b414faaee4da2929'
-            '419678fadaad3713ee9ca5cec99e2adbc66cdcb755f13ec82326cf332df40ecb'
-            '554236310c71a18effd99fb3f679841d5c5584a32ff932c5b0c626344363fe4b')
+sha256sums=('97a3cdf3c587dfb2dadd105faa1215a8829ac999b774a491082855825d85e635'
+            '0a5f3ef399d160aedc9790223ed4a658431c7b47814227ce79e37a60a43dfc23'
+            '9859690a42c3512932d8ba733f75ba29e7fe36eefaf6ab0a9a54e10ed0008114'
+            '43ed34acfd96bb1b165c94fffd0f9fe9cf5815ee00e29329f50790bd60350f33')
 validpgpkeys=()
 
 prepare() {
