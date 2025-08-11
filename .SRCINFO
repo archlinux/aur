@@ -1,6 +1,6 @@
 pkgbase = katago-cuda
 	pkgdesc = Baduk engine with no human-provided knowledge
-	pkgver = 1.16.2
+	pkgver = 1.16.3
 	pkgrel = 1
 	url = https://github.com/lightvector/KataGo
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = katago-cuda
 	depends = libzip
 	provides = katago
 	conflicts = katago
-	noextract = kata1-b28c512nbt-s9104401152-d4834640479.bin.gz
-	source = katago-cuda-1.16.2.tar.gz::https://github.com/lightvector/KataGo/archive/refs/tags/v1.16.2.tar.gz
-	source = https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b28c512nbt-s9104401152-d4834640479.bin.gz
-	b2sums = 43d2b05a008eed1a16c1a593381b42237a4d48c339e2f8dc3970713f25375e99fc4ef3d5e88cef85e27f6a57585d5908a566e44c7958e3e47abbad7276e9ac33
-	b2sums = 18c60f1e60372663d8c56e95258ec4bfb85f3771c98f09eed3e8e7f285b4351bba8c03895d9d236a77910a48c87eb96e6532680f86e07eb0a59950286c18f00f
+	noextract = kata1-b28c512nbt-s9584861952-d4960414494.bin.gz
+	source = katago-cuda-1.16.3.tar.gz::https://github.com/lightvector/KataGo/archive/refs/tags/v1.16.3.tar.gz
+	source = https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b28c512nbt-s9584861952-d4960414494.bin.gz
+	b2sums = 8ccf2f3d9c0a7d70679daf3694fed7a082825af3e28b75a9d47c8b7659a1989edab4e131ee1b7655701ced74971bbae6b794cb4e07fce8fc9be3c164de5dd4db
+	b2sums = 835ff9f0ccf0566123b4a00c43beaeee79bc280fba983da34426fab52b45ee6b2dfd5873c4b824cdd31b4addc71f4671429e49fd9400659d4e98e9f6ce2bb2af
 
 pkgname = katago-cuda
