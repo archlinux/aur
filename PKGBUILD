@@ -3,7 +3,7 @@
 
 pkgbase=wxgtk-git
 pkgname=(wxwidgets-gtk3-git wxwidgets-qt5-git wxwidgets-common-git)
-pkgver=3.3.1.r18.g55fd008650
+pkgver=3.3.1.r36.gd557e926b1
 pkgrel=2
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=(x86_64)
@@ -122,6 +122,7 @@ package_wxwidgets-gtk3-git() {
 
   DESTDIR="${pkgdir}" cmake --install build-gtk3
   rm -r "${pkgdir}"/usr/{include,lib/libwx_base*,bin/wxrc*}
+  rm -r "${pkgdir}"/usr/share/locale
 
   install -Dm644 wxWidgets/docs/licence.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
@@ -134,6 +135,8 @@ package_wxwidgets-qt5-git() {
 
   DESTDIR="${pkgdir}" cmake --install build-qt5
   rm -r "${pkgdir}"/usr/{include,lib/libwx_base*,bin/wxrc*}
+  rm -r "${pkgdir}"/usr/share/locale
+
   mv "${pkgdir}"/usr/bin/wx-config{,-qt} # Conflicts with wx-gtk3
   # Rename cmake files for coinstallability
   mv "${pkgdir}"/usr/lib/cmake/wxWidgets{,Qt}
