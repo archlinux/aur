@@ -2,9 +2,9 @@
 pkgname=thorium-reader-git
 _pkgname='Thorium Reader'
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.1.1.r85.g1c615f9
-_electronversion=36
-_nodeversion=24
+pkgver=3.2.1.r2.g3c82fc1
+_electronversion=37
+_nodeversion=22
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit.(Use system-wide electron)"
 arch=('any')
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${pkgname%-git}.git"
     set -o pipefail
