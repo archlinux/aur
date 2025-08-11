@@ -1,0 +1,4 @@
+[opentyrian2000]
+source = "git"
+git = "https://github.com/KScl/opentyrian2000.git"
+prefix = "v"
