@@ -21,7 +21,7 @@ sha256sums=('39bb6ba0e20569985c930b0e8bdb19ae9c5453f27e9f7c01c6d44f56fb204619')
 
 build() {
    cd "$srcdir/QComicBook-$pkgver"
-   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release  
+   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
    make
 }
 
