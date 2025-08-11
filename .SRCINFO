@@ -1,7 +1,7 @@
 pkgbase = warpd-git
 	pkgdesc = A modal keyboard driven interface for mouse manipulation.
-	pkgver = r234.5971cfb
-	pkgrel = 1
+	pkgver = r238.6ece9f2
+	pkgrel = 2
 	url = https://github.com/rvaiya/warpd
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 pkgname=warpd-git
 pkgver=r238.6ece9f2
 _gitname=warpd
-pkgrel=1
+pkgrel=2
 pkgdesc="A modal keyboard driven interface for mouse manipulation."
 url="https://github.com/rvaiya/warpd"
 license=('MIT')
@@ -19,6 +19,10 @@ source=("git+$url")
 pkgver() {
   cd ${_gitname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    sed -i 's/input_evnet/input_event/' warpd/src/platform/linux/X/input.c
 }
 
 build () {
