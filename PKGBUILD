@@ -15,7 +15,7 @@ options=("!strip")
 source=("https://github.com/dbeaver/dbeaver/releases/download/$pkgver/dbeaver-ce-$pkgver-linux.gtk.x86_64.tar.gz"
         "dbeaver-ce.desktop")
 sha256sums=('ff1701a849bcbe1a1f4ce46bd73433aee7d3b872fae7047624f78d4a2aea65e7'
-            "d2868335b94575e1958620d7a087cfa258a1ed23d67e5bacbb303e66d70ec4d2")
+    'b51d2902df94a35869fdde14a77b49bb08374a5a66a833ae4009efbfc616f2c6')
 
 package() {
     install -m 755 -d "${pkgdir}/opt"
