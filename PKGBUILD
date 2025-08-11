@@ -1,8 +1,8 @@
 # Maintainer: wintersnowgod <git.xerox732@passinbox.com>
 pkgname=nepdate
 pkgdesc='Standalone Nepali calendar widget and converter for Bikram Sambat and Gregorian calendars.'
-pkgver=2.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 # _commithash=524477dbe6fb92f836a63d00ff7006e6c6a74072
 arch=(x86_64)
 url="https://github.com/khumnath/nepdate"
@@ -10,8 +10,8 @@ depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-base' 'qt6-declarative')
 makedepends=('cmake' 'qt6-shadertools' 'qt6-tools')
 license=('GPL-3.0-or-later')
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/524477dbe6fb92f836a63d00ff7006e6c6a74072.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/2.0.tar.gz")
-sha256sums=('86ea88b5036a29cb6b1d53e69dcd2bfdf8aebc3711b947894ec4b1d86d00798a')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('2df90c3bfaeac4ddcdfd6a77c337291b75875d79ac819e2faa708fe3e098e874')
 
 prepare() {
 #     cd "${pkgname}-${_commithash}"
