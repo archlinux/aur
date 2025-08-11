@@ -2,8 +2,8 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.6.18
-pkgrel=2
+pkgver=0.6.21
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -27,6 +27,7 @@ depends=(python
         python-certifi
         python-chromadb
         python-colbert-ai
+        python-cryptography
         python-pycrdt
         python-datasets
         python-dotenv
@@ -62,6 +63,7 @@ depends=(python
         python-opentelemetry-instrumentation-aiohttp-client
         python-opentelemetry-sdk
         python-opentelemetry-semantic-conventions
+        python-oracledb
         python-passlib
         python-peewee
         python-peewee-migrate
@@ -80,6 +82,7 @@ depends=(python
         python-socketio
         python-soundfile
         python-sqlalchemy
+        python-sqlcipher3
         python-starlette
         python-starlette-compress
         python-tiktoken
@@ -100,12 +103,13 @@ depends=(python
 makedepends=('git' 'npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui')
-source=("git+${url}#commit=5fbfe2bdcadf5f157926f6551891e4dc0802b9f3"
+provides=('open-webui')
+source=("git+${url}#commit=30d0f8b1f6cc45ac3ee7e05ccb5c849366680231"
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
 
-b2sums=('e31faae32bd5aeac5ba0a94e16957a882c1c9e40be708de362030349da73a420a3e91ae5ff9fd0618b186ad7ba02bc952d0f1d2a97d353288f0a84597235b46f'
+b2sums=('9298f743782546e9bb4b455aea6c878471e2edee2bdd29d0b687e85f654832009629b2f5b7e4e3ba5368aa7327a9b5db90596d6a754e7dc497f2dfb41915a749'
         '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
         'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
         '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')
