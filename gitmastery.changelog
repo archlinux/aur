@@ -109,3 +109,6 @@ Fix progress reset on ignore folders
 Fix progress reset on ignore folders
 
 
+Delete fork on download if exists
+
+
