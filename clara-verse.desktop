@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=ClaraVerse
+Comment=A privacy-first, client-side AI assistant WebUI for LLMs
+GenericName=AI Assistant
+Exec=clara-verse %U
+Terminal=false
+Type=Application
+Icon=clara-verse
+StartupWMClass=Clara
+MimeType=x-scheme-handler/clara;
+Categories=Development;AI;Utility;
+Keywords=AI;LLM;Chat;Assistant;ComfyUI;Privacy;
+StartupNotify=false
