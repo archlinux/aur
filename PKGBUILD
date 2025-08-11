@@ -1,7 +1,7 @@
 # Maintainer: randomnobody <nobody "at" 420blaze "dot" it>
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 pkgname=zandronum
-pkgver=3.2
+pkgver=3.2.1
 pkgrel=1
 _fmodex_ver=4.44.64
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=(
-	'9fbdcb56ef9b05c68168c7a13cef830d19be78e66157cddada7f1a2a8274c42b'
+	'9f4b93ed99ab15d2406e697e2a06d956eb808c9ac2e53e62ae9f1affb53c86c0'
 	'c9407f638950af1dc4ff0884aa73a41490390b79435a81805a8e9c8c0ec84adf'
 	'2ff85effc7146b467201f473be5614dc109a03ae2528eafccffba5dcb8354b97'
 	'3e08296d00c8ee7445a9f9dfa6659acc7fd69ad672ae5382d79e1535413aa8fa'
