@@ -1,7 +1,7 @@
-From f203cdb8cfb8253c649cdac9c7794d651db22a87 Mon Sep 17 00:00:00 2001
+From 4ea7fa11eeb4acfa1d3ab19ff5ce8faf6be2ba35 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
-Date: Tue, 13 May 2025 11:02:24 -0600
-Subject: [PATCH 10/10] ubik: Use typedef for ubik_call function parameter
+Date: Fri, 25 Apr 2025 11:43:01 -0600
+Subject: [PATCH 11/16] ubik: Use typedef for ubik_call function parameter
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -66,11 +66,15 @@ Tested-by: Cheyenne Wills <cwills@sinenomine.net>
 Reviewed-by: Andrew Deason <adeason@sinenomine.net>
 (cherry picked from commit eddd5a060e9ed5acf10ee23359d54e22d4681592)
 
- Conflicts:   -- Due to differences between master and 1.8.x
+ Conflicts:
 	doc/process/compiler-warnings.md  - updated CODING instead
-	src/cf/osconf.m4     - changes not applicable on 1.8.x
+	src/cf/osconf.m4 - Due to differences with master
 
 Change-Id: I75c40c3cc443a3b7c9039a248abed1a864746aae
+Reviewed-on: https://gerrit.openafs.org/16380
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit ef3da57b8c3bfdf4bf3dc0dcd9458ace0ddc2709)
 ---
  CODING                          |  5 -----
  src/bucoord/ubik_db_if.c        |  7 ++++---
@@ -285,5 +289,5 @@ index 450b1531e..dd27fa2d2 100644
  	  long p5, long p6, long p7, long p8, long p9, long p10,
  	  long p11, long p12, long p13, long p14, long p15, long p16)
 -- 
-2.49.0
+2.50.1
 

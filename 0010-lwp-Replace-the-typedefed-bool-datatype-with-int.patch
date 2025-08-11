@@ -1,7 +1,7 @@
-From a4b56b965cad8c848621d2feb83269d9daf65540 Mon Sep 17 00:00:00 2001
+From 13248c326732c67dbfb9bf409f198e0d29e6f3f0 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 24 Apr 2025 13:21:12 -0600
-Subject: [PATCH 09/10] lwp: Replace the typedefed bool datatype with int
+Subject: [PATCH 10/16] lwp: Replace the typedefed bool datatype with int
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -31,6 +31,12 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit bf64c84058493ee6fe2b1b2fb27b73787aaed318)
 
 Change-Id: Ib959f8c72189df0a797b905388bdd33627ca1ca1
+Reviewed-on: https://gerrit.openafs.org/16379
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit 1aa5e50da42d14bae8093ada7a0ddc57599b376b)
 ---
  src/lwp/iomgr.c | 5 ++---
  src/lwp/timer.c | 3 +--
@@ -88,5 +94,5 @@ index b9172944d..3032b5640 100644
  {
      return (t->TotalTime.tv_sec < 0 || t->TotalTime.tv_usec < 0);
 -- 
-2.49.0
+2.50.1
 

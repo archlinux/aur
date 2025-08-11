@@ -1,0 +1,145 @@
+From 45fcdcd1a0c63dc9f8e97cec86342c660941362e Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 26 Jun 2025 10:07:20 -0600
+Subject: [PATCH 07/16] Linux: Refactor afs_linux_write_end()/begin()
+
+Refactor afs_linux_write_end() and afs_linux_write_begin() to separate
+the folio and non-folio related code.  This allows reducing some of the
+preprocessor statements that are within the body of the functions.
+
+The non-folio related code should be stable, while the folio related
+code will see changes in the near future.
+
+There are no intended functional changes in this commit. The new folio
+variant of afs_linux_write_begin() now avoids setting the *foliop output
+argument on error to be safe, but this should not cause any visible
+change in behavior.
+
+Reviewed-on: https://gerrit.openafs.org/16387
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit 53eef69e274aa25b1768442f334a88676abf0011)
+
+Change-Id: I051499b61e035185883eb97fe1a5a6363e50a6b0
+Reviewed-on: https://gerrit.openafs.org/16429
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit d946ce6f218a2013bc002fb44ad23b89f2d21212)
+---
+ src/afs/LINUX/osi_vnodeops.c | 62 ++++++++++++++++++++++++++----------
+ 1 file changed, 45 insertions(+), 17 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 9f1707805..d22b70de1 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -3620,24 +3620,15 @@ afs_linux_prepare_write(struct file *file, struct page *page, unsigned from,
+     return 0;
+ }
+ 
+-#if defined(STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN)
+-# if defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
++#if defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
+ static int
+ afs_linux_write_end(struct file *file, struct address_space *mapping,
+ 		    loff_t pos, unsigned len, unsigned copied,
+ 		    struct folio *folio, void *fsdata)
+-# else
+-static int
+-afs_linux_write_end(struct file *file, struct address_space *mapping,
+-		    loff_t pos, unsigned len, unsigned copied,
+-		    struct page *page, void *fsdata)
+-# endif
+ {
+     int code;
+     unsigned int from = pos & (PAGE_SIZE - 1);
+-# if defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
+     struct page *page = &folio->page;
+-# endif
+ 
+     code = afs_linux_commit_write(file, page, from, from + copied);
+ 
+@@ -3646,12 +3637,53 @@ afs_linux_write_end(struct file *file, struct address_space *mapping,
+     return code;
+ }
+ 
+-# if defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
+ static int
+ afs_linux_write_begin(struct file *file, struct address_space *mapping,
+ 		      loff_t pos, unsigned len,
+ 		      struct folio **foliop, void **fsdata)
+-# elif defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS)
++{
++    struct page *page;
++    pgoff_t index = pos >> PAGE_SHIFT;
++    unsigned int from = pos & (PAGE_SIZE - 1);
++    int code;
++
++    page = grab_cache_page_write_begin(mapping, index);
++    if (page == NULL) {
++	return -ENOMEM;
++    }
++
++    code = afs_linux_prepare_write(file, page, from, from + len);
++    if (code) {
++	unlock_page(page);
++	put_page(page);
++	page = NULL;
++    }
++
++    if (page != NULL) {
++	*foliop = page_folio(page);
++    }
++
++    return code;
++}
++
++#elif defined(STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN)
++
++static int
++afs_linux_write_end(struct file *file, struct address_space *mapping,
++		    loff_t pos, unsigned len, unsigned copied,
++		    struct page *page, void *fsdata)
++{
++    int code;
++    unsigned int from = pos & (PAGE_SIZE - 1);
++
++    code = afs_linux_commit_write(file, page, from, from + copied);
++
++    unlock_page(page);
++    put_page(page);
++    return code;
++}
++
++# if defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS)
+ static int
+ afs_linux_write_begin(struct file *file, struct address_space *mapping,
+ 		      loff_t pos, unsigned len,
+@@ -3677,11 +3709,7 @@ afs_linux_write_begin(struct file *file, struct address_space *mapping,
+ 	return -ENOMEM;
+     }
+ 
+-# if defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
+-    *foliop = page_folio(page);
+-# else
+     *pagep = page;
+-# endif
+ 
+     code = afs_linux_prepare_write(file, page, from, from + len);
+     if (code) {
+@@ -3691,7 +3719,7 @@ afs_linux_write_begin(struct file *file, struct address_space *mapping,
+ 
+     return code;
+ }
+-#endif /* STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN */
++#endif /* HAVE_LINUX_WRITE_BEGIN_END_FOLIO */
+ 
+ #ifndef STRUCT_DENTRY_OPERATIONS_HAS_D_AUTOMOUNT
+ static void *
+-- 
+2.50.1
+
