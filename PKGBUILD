@@ -57,6 +57,7 @@ build() {
   cd "${srcdir}/golden-cheetah/"
   cp qwt/qwtconfig.pri.in qwt/qwtconfig.pri
   cp "$srcdir/gcconfig.pri" src/gcconfig.pri
+  export PATH="$PATH:/usr/lib/qt6/bin:/usr/lib/qt6"
   lupdate-pro src/src.pro
   qmake6 -recursive QMAKE_CXXFLAGS_WARN_ON+="-Wno-deprecated-declarations -Wno-unused-value" QMAKE_CFLAGS_WARN_ON+="-Wno-deprecated-declarations -Wno-unused-value"
   make
