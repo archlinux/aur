@@ -1,0 +1,39 @@
+[Unit]
+Description=Inventory and organization system built for the Home User
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/homebox
+ExecStart=/usr/bin/homebox $FLAGS
+StateDirectory=homebox
+WorkingDirectory=/var/lib/homebox
+
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+
+# isolation
+User=homebox
+DynamicUser=yes
+LockPersonality=yes
+NoNewPrivileges=yes
+PrivateMounts=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=no
+ProtectKernelTunables=no
+ProtectSystem=strict
+RemoveIPC=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target
+
+# vim: ft=systemd
