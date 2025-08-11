@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
@@ -27,9 +27,10 @@ optdepends=(
   "libnma: GUI support (GTK 3)"
 )
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git?signed#tag=$pkgver")
-b2sums=('45c3b6f6c240af1b7c368aa7c7d613cc2cb67216a3f6cbb3438d524095e9fa22d81fd8c51dd4541d62845feb239e3dcea5d0ba88b2047399f5138bfe20876cec')
+b2sums=('6286ed5a251b6e50d57ce932f1c9ea89c900e1e8851af053c4d1e800519f392c8e824bd9ff7475bfc2adeed4eb83997e151952028111396f576675513e46e025')
 validpgpkeys=(
   07F9AEC86144386D9576210B66A44781B4EBC2D0 # Íñigo Huguet <ihuguet@redhat.com>
+  1CFF865BDF957BE935765BBD2E1878D078DEF7C6 # Íñigo Huguet <ihuguet@riseup.net>
 )
 
 prepare() {
