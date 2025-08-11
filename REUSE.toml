@@ -1,0 +1,27 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "REUSE.toml",
+    "keys/**",
+    ".gitignore",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+    ".yarnclean",
+    "extra-plugins.json",
+    "theia-electron.sh",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
