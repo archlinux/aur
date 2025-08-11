@@ -1,0 +1,17 @@
+diff --git a/ink-0.5.3/malloc.c b/ink-0.5.3-patched/malloc.c
+index 31fd306..5d8261c 100644
+--- a/malloc.c
++++ b/malloc.c
+@@ -1,10 +1,5 @@
+-#include <config.h>
+-#undef malloc
+-     
+-#include <sys/types.h>
+-     
+-void *malloc ();
+-     
++#include <stdlib.h>
++
+ /* Allocate an N-byte block of memory from the heap.
+    If N is zero, allocate a 1-byte block.  */
+      
