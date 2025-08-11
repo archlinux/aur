@@ -3,7 +3,7 @@
 pkgbase=hypersploit
 pkgname=hypersploit
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Bypasses HyperOS restrictions on bootloader unlocking"
 arch=($CARCH)
@@ -16,6 +16,10 @@ depends=(glibc)
 makedepends=(
     git
     dotnet-sdk
+)
+optdepends=(
+    "android-tools: Android platform tools"
+    "android-udev: Udev rules to connect Android devices to your linux box"
 )
 backup=()
 options=(!strip !debug)
