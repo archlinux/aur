@@ -52,5 +52,5 @@ package() {
     for f in $(find . -type f); do
         install -m644 "$f" "${install_dir}/$f"
     done
-    sed -i 's/EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/#EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/g' ${install_dir}/Makefile
+    sed -i 's/ccflags-y += -DCONFIG_CONCURRENT_MODE/#ccflags-y += -DCONFIG_CONCURRENT_MODE/g' ${install_dir}/Makefile
 }
