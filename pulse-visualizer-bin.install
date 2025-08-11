@@ -1,0 +1,12 @@
+#!/bin/bash
+
+post_install() {
+  echo "::"
+  echo ":: Pulse Visualizer installed successfully!"
+  echo ":: Run 'pulse-visualizer' to create config files, then edit ~/.config/pulse-visualizer/config.yml"
+  echo ":: to configure your audio source and font path."
+  echo ":: Check /usr/local/share/pulse-visualizer/config.yml.template for all available"
+  echo ":: configuration options including phosphor effects, FFT settings, and more."
+  echo ":: See man pulse-visualizer for detailed setup instructions."
+  echo "::"
+}
