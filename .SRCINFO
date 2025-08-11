@@ -1,15 +1,14 @@
 pkgbase = python-pyfoam
-	pkgdesc = support for working with the OpenSource CFD-toolbox [OpenFOAM]
-	pkgver = 2021.6
+	pkgdesc = Python Utilities for OpenFOAM
+	pkgver = 2023.7
 	pkgrel = 1
-	url = https://pypi.org/project/PyFoam
-	install = python-pyfoam.install
+	url = http://openfoamwiki.net/index.php/Contrib/PyFoam
 	arch = any
-	license = GPL3
-	makedepends = python-setuptools
-	depends = python
-	optdepends = python-numpy: required by some functions
-	source = https://files.pythonhosted.org/packages/02/07/c9634828bb6d0f0d92d37a9973b269488f17b5436b6eea8b5ac49e8121ec/PyFoam-2021.6.tar.gz
-	md5sums = 87390a05b57b9a85b13679665134a854
+	license = GPL-2.0-or-later
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-jinja
+	source = https://pypi.org/packages/py2.py3/P/PyFoam/PyFoam-2023.7-py2.py3-none-any.whl
+	sha512sums = 33016d7552395566793100c50cdc03d23412f991e14f77d80587a5e4c32d227ce1f9328db7f6f75a7af3b966a39ad21ab2fcdbaaf6911b5e8275f5d2685b3960
 
 pkgname = python-pyfoam

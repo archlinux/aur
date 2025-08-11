@@ -1,0 +1,3 @@
+[python-pyfoam]
+source = "pypi"
+pypi = "PyFoam"
