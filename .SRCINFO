@@ -1,18 +1,25 @@
 pkgbase = vim-python-mode-git
 	pkgdesc = Python-mode is a vim plugin that allows you to use the pylint, rope, pydoc library in vim to provide features like python code looking for bugs, refactoring and some other useful things.
-	pkgver = 0.9.2.r3.gf94b0d7
-	pkgrel = 2
+	pkgver = 0.14.0.r12.g2db3b9e
+	pkgrel = 1
 	url = https://github.com/python-mode/python-mode
 	install = install
 	arch = any
 	license = LGPL3
 	makedepends = git
 	depends = vim
-	depends = python2
+	depends = python
+	depends = python-pyflakes
+	depends = python-pylint
+	depends = python-rope
+	depends = python-pydocstyle
+	depends = python-astroid
+	depends = python-appdirs
+	depends = python-mccabe
+	depends = python-pycodestyle
 	provides = vim-python-mode
 	conflicts = vim-python-mode
-	source = vim-python-mode-git::git+https://github.com/python-mode/python-mode#branch=master
+	source = vim-python-mode-git::git+https://github.com/python-mode/python-mode#branch=develop
 	sha256sums = SKIP
 
 pkgname = vim-python-mode-git
-
