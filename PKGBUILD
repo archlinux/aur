@@ -629,11 +629,8 @@ package() {
   chmod u+s "${pkgdir}/usr/lib/${pkgname}/chrome-sandbox"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  for l in "${pkgdir}/usr/lib/${pkgname}"/{LICENSE,LICENSES.chromium.html}; do
-    ln -s  \
-      "$(realpath --relative-to="${pkgdir}/usr/share/licenses/${pkgname}" "${l}")" \
-      "${pkgdir}/usr/share/licenses/${pkgname}"
-  done
+  ln -sr -t "${pkgdir}"/usr/share/licenses/${pkgname} \
+    "${pkgdir}"/usr/lib/${pkgname}/{LICENSE,LICENSES.chromium.html}     
 
   install -Dm755 "${srcdir}/electron-launcher.sh" \
     "${pkgdir}/usr/bin/${pkgname}"
