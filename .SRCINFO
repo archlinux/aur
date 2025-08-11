@@ -22,6 +22,7 @@ pkgbase = msedge-stable-bin
 	conflicts = edge-stable
 	conflicts = edge-stable-bin
 	conflicts = edge
+	conflicts = microsoft-edge-stable-bin
 	options = !strip
 	options = !zipman
 	source = https://packages.microsoft.com/yumrepos/edge/Packages/m/microsoft-edge-stable-139.0.3405.86-1.x86_64.rpm

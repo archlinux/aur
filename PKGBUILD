@@ -16,7 +16,7 @@ url="https://www.microsoftedgeinsider.com/zh-cn/download"
 license=('custom')
 
 provides=('microsoft-edge-stable' 'edge-stable')
-conflicts=('microsoft-edge-stable' 'edge-stable' 'edge-stable-bin' 'edge')
+conflicts=('microsoft-edge-stable' 'edge-stable' 'edge-stable-bin' 'edge' 'microsoft-edge-stable-bin')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa')
 optdepends=(
 	'pipewire: WebRTC desktop sharing under Wayland'
