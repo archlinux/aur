@@ -7,7 +7,7 @@ module Gem
       false
     end
 
-    remove_method :default_install
+    remove_method :default_install if method_defined? :default_install
     def default_install
       @default_install ||= user_dir
     end
