@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Application launcher for Wayland."
 arch=('x86_64')
 url="https://github.com/skxxtz/sherlock"
-license=('custom:CC-BY-NC-4.0')
+license=('GPL-3.0')
 depends=('gtk4' 'gtk4-layer-shell' 'dbus' 'openssl' 'sqlite')
 makedepends=('cargo' 'rust')
 source=("$_pkgname::git+$url.git#branch=unstable/release-v1.0.0")
