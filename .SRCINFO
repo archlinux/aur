@@ -1,6 +1,6 @@
 pkgbase = protontricks-git
 	pkgdesc = A simple wrapper that does winetricks things for Proton enabled games.
-	pkgver = 1.12.1.r0.gd01901e
+	pkgver = 1.13.0.r0.gaa8f1b1
 	pkgrel = 1
 	url = https://github.com/Matoking/protontricks
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = protontricks-git
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-pillow
-	depends = python-setuptools
 	depends = python-vdf
 	depends = winetricks
 	optdepends = yad: for GUI
