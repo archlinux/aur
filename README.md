@@ -2,6 +2,8 @@
 
 >Your pictures, your signature.
 
+[![AUR Version](https://img.shields.io/aur/version/picguard-bin)](https://aur.archlinux.org/packages/picguard-bin)
+
 Introducing **PicGuard** – the ultimate solution for securing and customizing your digital photos. With our app, you can easily add watermarks to your images to protect your creative work and maintain your privacy.
 
 **PicGuard** offers robust privacy protection features, ensuring your personal and sensitive information remains safeguarded. It allows you to customize the watermark color, and opacity to suit your needs.
