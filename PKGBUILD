@@ -1,7 +1,8 @@
-# Maintainer: gryffyn <me@gryffyn.io>
+# Contributor: gryffyn <me@gryffyn.io>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=archiveweb.page-appimage
-pkgver=0.15.1
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="An Electron based application for interactive, high-fidelity web archiving"
 arch=('x86_64')
@@ -12,7 +13,7 @@ depends=('fuse2'
          'zlib')
 source=("${url}/releases/download/v${pkgver}/ArchiveWeb.page-${pkgver}.AppImage"
         "ArchiveWeb.page.desktop")
-sha256sums=('8e51580f0473d7524212280c77d22684ec5a1739d5512f6867a9f0fe68b629b5'
+sha256sums=('2b5c964de177d1dca442860e5476a92026a7d1ec40c84120d75e05a248404c08'
             '62b378eaad8f542f85c8c0a90b6ab6f9bec8f48d0924eb0cafb1521403573cb1')
 options=(!strip !debug)
 
