@@ -1,7 +1,7 @@
 # Maintainer: Andy Alt <arch_stanton5995 at proton.me>
 
 pkgname=dealers-choice
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Online Multiplayer Stud and Draw Poker"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_net' 'protobuf-c' 'hicolor
 makedepends=('cmake' 'meson' 'ninja')
 
 source=("https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('ffdaca1b397375752024fedb71de2fc6ac1e562c29d60d418d30e6d10f117e58')
+sha256sums=('1946976cd3176091d4b16f5ebdc575bab285051808a8b5e49600c32bb6314eb4')
 
 build() {
   arch-meson $pkgname-$pkgver build -Db_sanitize=none
