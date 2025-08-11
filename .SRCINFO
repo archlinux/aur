@@ -1,0 +1,14 @@
+pkgbase = brows
+	pkgdesc = CLI tool to browse GitHub releases
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rubysolo/brows
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = brows
+	conflicts = brows
+	source = brows-0.1.2.tar.gz::https://github.com/rubysolo/brows/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 2010da672e4bc9ce3088a535faeb37974a1c39f233c9514384adfe1d21f412ee
+
+pkgname = brows
