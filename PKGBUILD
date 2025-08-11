@@ -8,8 +8,8 @@ arch=('any')
 url='https://rubygems.org/'
 license=('MIT')
 depends=('ruby')
-makedepends=('rubygems')
-checkdepends=('ruby-rake' 'ruby-webrick' 'git' 'cmake')
+makedepends=('rubygems' 'ruby-rdoc')
+checkdepends=('ruby-rake' 'ruby-test-unit' 'ruby-webrick' 'git' 'cmake')
 options=('!emptydirs')
 source=("https://github.com/rubygems/rubygems/archive/refs/tags/v${pkgver}.tar.gz"
 	'Gem.default_install.patch'

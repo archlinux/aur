@@ -6,10 +6,12 @@ pkgbase = rubygems-user
 	arch = any
 	license = MIT
 	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
 	checkdepends = ruby-webrick
 	checkdepends = git
 	checkdepends = cmake
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
 	provides = rubygems=3.7.1
 	provides = ruby-rubygems
