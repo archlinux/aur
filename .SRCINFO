@@ -1,6 +1,6 @@
 pkgbase = mkeditor-git
 	pkgdesc = The simple markdown editor.(Use system-wide electron)
-	pkgver = 2.6.2.r0.g15dc7ed
+	pkgver = 2.7.0.r1.g9be6b24
 	pkgrel = 1
 	url = https://mkeditoross.github.io/
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = mkeditor-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron34
-	provides = mkeditor=2.6.2
+	depends = electron37
+	provides = mkeditor=2.7.0
 	conflicts = mkeditor
 	source = mkeditor.git::git+https://github.com/mkeditorOSS/mkeditor.git
 	source = mkeditor.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = mkeditor-git
