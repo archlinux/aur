@@ -4,7 +4,7 @@ pkgdesc="A simple and ultrafast reverse-proxy serving multiple domain names \
 with TLS termination, written in Rust"
 url=https://rpxy.io
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 license=(MIT)
 provides=(rpxy)
@@ -25,3 +25,7 @@ package() {
     install -Dm644 $srcdir/config.toml $pkgdir/etc/rpxy/config.toml
     install -Dm644 $srcdir/rpxy.service $pkgdir/usr/lib/systemd/system/rpxy.service
 }
+
+backup=(
+    etc/rpxy/config.toml
+)
