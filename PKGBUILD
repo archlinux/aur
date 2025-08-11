@@ -4,12 +4,14 @@
 
 # For upstream versions, see https://invisible-island.net/archives/add/
 
+## This `PKGBUILD` also symlinks `tapecalc` to `add`, to make it available under the old executable name, too.
+
 _pkgname=tapecalc
 pkgname="${_pkgname}"
 epoch=0
 pkgver=t20240110
 _downloadver="${pkgver##t}" # Strip off leading `t` to get version for download URL.
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Fixed-point calculator as a fullscreen editor. You may edit at any position in the expression list. Supports basic arithmetic, interest and sales tax computation. Designed for use as a checkbook or expense-account balancing tool. Formerly known as 'add'."
 url="http://invisible-island.net/add/add.html"
@@ -29,9 +31,9 @@ depends=(
 )
 makedepends=()
 optdepends=()
-provides=()
-replaces=()
-conflicts=()
+provides=("add=${pkgver}")
+replaces=("tapecalc-add-compat<=t20240110")
+conflicts=("add")
 
 options=('emptydirs' 'strip')
 
@@ -115,4 +117,8 @@ package() {
   done
 
   install -v -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+
+
+  cd "${pkgdir}/usr/bin"
+  ln -sv tapecalc add
 }
