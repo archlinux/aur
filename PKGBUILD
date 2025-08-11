@@ -2,7 +2,7 @@
 
 pkgname=blst
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Multilingual BLS12-381 signature library'
 arch=('aarch64' 'x86_64')
 url='https://github.com/supranational/blst'
