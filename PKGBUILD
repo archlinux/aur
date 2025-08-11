@@ -6,7 +6,7 @@
 
 _pkgname=CollaboraOnline
 pkgname=mattermost-plugin-collabora
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=1
 pkgdesc='integrate Collabora Online so that users can view or edit files directly in the chat'
@@ -18,7 +18,7 @@ options=(!strip)
 _plugin="com.${_pkgname,,}.mattermost"
 _archive="$_plugin-$pkgver"
 source=("$url/releases/download/$pkgver/$_archive.tar.gz")
-sha256sums=('43254a7ace04d0327895458ec72627f29eec192c7cfbbb0bf9071e4475229705')
+sha256sums=('e1c860b36535807e0cd627f82af02104cb24c40780eeef88014f53245d040ce4')
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
