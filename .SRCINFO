@@ -1,7 +1,7 @@
 pkgbase = elephant
 	pkgdesc = general purpose datasource and executor
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,6 @@ pkgbase = elephant
 	provides = elephant
 	conflicts = elephant
 	source = https://github.com/abenz1267/elephant/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 7fdbfb727839f8075a18db61af88057b1b91279031d4cca1554a737c2152578b
+	sha256sums = 4af4cd7469b85236f716d81ddd2578fe923bb735cb2fdbca604271d2af9130f5
 
 pkgname = elephant
