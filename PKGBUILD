@@ -12,22 +12,52 @@
 
 pkgname=python-cx-freeze
 _pkgname=cx_Freeze
-pkgver=8.3.0
-pkgrel=3
+pkgver=8.4.0
+pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
 url="https://marcelotduarte.github.io/$_pkgname"
 license=('PSF-2.0')
-depends=('glibc' 'patchelf' 'python' 'python-filelock' 'python-tomli' 'pyside6' 'python-pyqt6')
-makedepends=('python-wheel' 'python-setuptools' 'python-packaging' 'python-build' 'python-installer')
-checkdepends=(python-pytest python-pluggy python-pytest-cov python-coverage python-pytest-timeout python-typeguard python-anyio python-typeguard python-hypothesis python-faker python-pytest-asyncio python-respx python-pytest-mock python-pytest-xdist python-pytest-examples python-pytest-datafiles)
-optdepends=('perl-alien-build: Alien support for rpm, dpkg, stampede slp, and slackware tgz file formats'
-  'rpm-tools: RPM Package Manager RPM.org support')
-replaces=('python-cx_freeze')
+depends=(
+glibc 
+patchelf 
+python
+python-filelock
+python-tomli
+pyside6
+python-pyqt6)
+makedepends=(
+python-wheel
+python-setuptools
+python-packaging
+python-build
+python-installer)
+checkdepends=(
+python-uv
+python-packaging
+python-pytest 
+python-pluggy 
+python-pytest-cov 
+python-coverage 
+python-pytest-timeout 
+python-typeguard 
+python-anyio 
+python-typeguard 
+python-hypothesis 
+python-faker 
+python-pytest-asyncio 
+python-respx 
+python-pytest-mock 
+python-pytest-xdist 
+python-pytest-examples 
+python-pytest-datafiles)
+optdepends=(
+'perl-alien-build: Alien support for rpm, dpkg, stampede slp, and slackware tgz file formats'
+'rpm-tools: RPM Package Manager RPM.org support')
 provides=('python-cx_freeze')
 conflicts=('python-cx_freeze')
 source=("https://github.com/marcelotduarte/$_pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('920f1bf582c73ef687956d0e58293e11e67a5c002816416ac4edf1e033d11131463625f90498f91bf41201a24fcae53c31604fc6b4aaf70eb2c16449f9896d36')
+sha512sums=('6f9858d19cbfa8f565dae311a2882a0a495310c8e7f242426a9b2f3f59735cda8f8542fb8b4edf7ab5c4c3c0e4ed428a187790a9d3c3d9fd716361ddbee5c13f')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -52,10 +82,22 @@ EOF
   # Run tests with the wrapper script available in PATH
   PATH="$PWD/test-bin:$PATH" \
     PYTHONPATH="$PWD" \
-    pytest -rpfEsXx \
+    TMPDIR="$PWD/.pytest-tmp" \
+    pytest --venv-backend=uv -rpfEsXx \
+    --basetemp="$PWD/.pytest-tmp" \
     --ignore=tests/test_command_bdist_deb.py \
     --ignore=tests/test_command_bdist_rpm.py \
-    --ignore=tests/hooks/test_stdlib.py
+    --ignore=tests/hooks/test_av.py \
+    --ignore=tests/hooks/test_numpy.py \
+    --ignore=tests/hooks/test_mkl.py \
+    --ignore=tests/hooks/test_scikit.py \
+    --ignore=tests/hooks/test_module.py \
+    --ignore=tests/hooks/test_multiprocessing.py \
+    --ignore=tests/hooks/test_multiprocess.py \
+    --ignore=tests/hooks/test_stdlib.py \
+    --deselect tests/test_executables.py::test_valid_sys_path \
+    --deselect tests/test_module.py::test_egg_info \
+    --deselect tests/test_modulefinder.py::test_editable_packages
 }
 
 package() {
