@@ -46,6 +46,9 @@ check() {
 package() {
   cd "rubygems-${pkgver}"
 
+  # Don't install bundler stuff
+  sed --in-place -e '/install_default_bundler_gem bin_dir/,+1d' -e '/bundler\/lib/d' lib/rubygems/commands/setup_command.rb
+
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   local _extension_api_version="$(ruby -e 'puts Gem.extension_api_version')"
   local _rubygems_dir="/usr/lib/ruby/${_extension_api_version}"
@@ -68,14 +71,6 @@ package() {
   # fix package structure
   mv --verbose "${pkgdir}/usr/lib/rubygems.rb" "${pkgdir}${_rubygems_dir}"
   mv --verbose "${pkgdir}/usr/lib/rubygems" "${pkgdir}${_rubygems_dir}"
-
-  # cleanup - remove any bundler references as they are provided by https://archlinux.org/packages/community/any/ruby-bundler/
-  rm --force --verbose --recursive \
-    "${pkgdir}/usr/bin/"{bundle*,rake,rake-compiler,rspec,rdbg,rbs,typeprof,erb} \
-    "${pkgdir}/usr/gems" \
-    "${pkgdir}/usr/lib/bundler.rb" \
-    "${pkgdir}/usr/lib/bundler" \
-    "${pkgdir}/usr/specifications"
 
   install --verbose -D --mode=0644 $srcdir/operating_system.rb --target-directory "${pkgdir}${_rubygems_dir}/rubygems/defaults/"
   install --verbose -D --mode=0644 LICENSE.txt MIT.txt --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
