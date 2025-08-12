@@ -1,0 +1,25 @@
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="${BOLD}$(tput setaf 0)"
+RED="${BOLD}$(tput setaf 1)"
+GREEN="${BOLD}$(tput setaf 2)"
+YELLOW="${BOLD}$(tput setaf 3)"
+BLUE="${BOLD}$(tput setaf 4)"
+MAGENTA="${BOLD}$(tput setaf 5)"
+CYAN="${BOLD}$(tput setaf 6)"
+WHITE="${BOLD}$(tput setaf 7)"
+
+_eol_electron_warning() {
+  local _binary=$(grep -Pom1 'exec "/\K[^"]+' usr/bin/logseq)
+  local _electron_version=$(strings "${_binary}" | grep -Pom1 'Electron/[0-9\.]+')
+  local _warning_eol="${_electron_version:+Logseq uses ${_electron_version}.  To check whether this version of Electron still receives security updates, see https://endoflife.date/electron}"
+  printf "${YELLOW}WARNING: ${WHITE}%s${ALL_OFF}\n" "${_warning_eol:-see https://endoflife.date/electron}"
+}
+
+post_install() {
+  _eol_electron_warning
+}
+
+post_upgrade() {
+  _eol_electron_warning
+}

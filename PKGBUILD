@@ -5,7 +5,7 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
-pkgver=0.10.12
+pkgver=0.10.13
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -17,6 +17,8 @@ conflicts=("$_pkgname")
 
 options=('!debug' '!strip')
 
+install="$_pkgname.install"
+
 _pkgsrc="Logseq-linux-x64"
 [[ "$CARCH" == "aarch64" ]] && _pkgsrc="Logseq-linux-arm64"
 
@@ -24,12 +26,12 @@ _pkgext="zip"
 source_x86_64=("$url/releases/download/$pkgver/Logseq-linux-x64-$pkgver.$_pkgext")
 source_aarch64=("$url/releases/download/$pkgver/Logseq-linux-arm64-$pkgver.$_pkgext")
 
-sha256sums_x86_64=('bb5136841dceb6095fcff70d30d2cc190dab37539985e61417f59381d088ea0d')
-sha256sums_aarch64=('903d7b58ce3447a9f22f4e7600151f2ac6d9932c88a05cbb5a4bf176c721ce6d')
+sha256sums_x86_64=('7b9ccfee35a24cc67955439f4e482c3c28683a43e01a3b7730e41c3bbbdfe3cc')
+sha256sums_aarch64=('4c28f56d5810706b6baa884d2667e51ad97855184feb2f637e02371eb86e1029')
 
 # appimage - missing icon
 if [[ "${_pkgext::1}" == "A" ]]; then
-  source+=("$_pkgname.png"::"$url/raw/master/resources/icons/logseq.png")
+  source+=("$_pkgname-$pkgver.png"::"$url/raw/$pkgver/resources/icons/logseq.png")
   sha256sums+=('2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006')
 fi
 
@@ -43,6 +45,35 @@ prepare() {
 }
 
 package() {
+  depends=(
+    alsa-lib
+    at-spi2-core
+    bash
+    cairo
+    curl
+    dbus
+    expat
+    glib2
+    gtk3
+    libcups
+    libx11
+    libxcb
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxkbcommon
+    libxrandr
+    mesa
+    nodejs
+    nspr
+    nss
+    pango
+    perl
+    systemd-libs
+    zlib
+  )
+
   if [[ "${_pkgext::1}" == "A" ]]; then
     # appimage - icons
     install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/logseq.png"
@@ -76,6 +107,11 @@ StartupWMClass=Logseq
 END
 
   # script
+  local _electron_version=$(strings "$pkgdir/$_install_path/$_pkgname/Logseq" | grep -Pom1 'Electron/[0-9\.]+')
+  local _warning_eol="${_electron_version:+Logseq uses ${_electron_version}.  To check whether this version of Electron still receives security updates, see https://endoflife.date/electron}"
+
+  printf 'WARNING: %s\n' "${_warning_eol:-see https://endoflife.date/electron}"
+
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << END
 #!/usr/bin/env bash
 
@@ -98,6 +134,8 @@ done
 export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
+
+printf 'WARNING: %s\n' "${_warning_eol:-see https://endoflife.date/electron}"
 
 exec "/$_install_path/logseq-desktop/Logseq" "\${flags[@]}" "\$@"
 END
