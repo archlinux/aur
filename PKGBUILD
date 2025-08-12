@@ -1,7 +1,6 @@
 # Maintainer: Joelton D. Brandão <joeltondbrandao at freedxm dot com>
-# Maintainer: Tobias M. Baust <tobias.baust at tutanota dot com>
-# Contributor: Ruben Di Battista  <rubendibattista at gmail dot com>
-
+# Maintainer: Ruben Di Battista  <rubendibattista at gmail dot com>
+# Contributor: Tobias M. Baust <tobias.baust at tutanota dot com>
 _pkgname=cantera
 pkgname="${_pkgname}"
 pkgver=3.1.0
