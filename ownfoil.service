@@ -8,6 +8,7 @@ Type=simple
 User=ownfoil
 Group=ownfoil
 SyslogIdentifier=ownfoil
+WorkingDirectory=/usr/lib/ownfoil
 ExecStart=/usr/bin/python3 /usr/lib/ownfoil/app.py
 
 [Install]

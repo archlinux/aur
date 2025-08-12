@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=ownfoil-git
-pkgver=r212.628ae62
+pkgver=r238.1d3789f
 pkgrel=1
 pkgdesc='Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
@@ -9,17 +9,18 @@ url='https://github.com/a1ex4/ownfoil'
 license=('custom')
 depends=(
   'python'
+  'python-croniter'
   'python-flask'
   'python-flask-login'
+  'python-flask-migrate'
   'python-flask-sqlalchemy'
+  'python-nstools'
   'python-yaml'
   'python-requests'
   'python-unzip-http'
   'python-watchdog'
   'python-werkzeug'
   'python-zstandard'
-  'python-enlighten'
-  'python-pycryptodome'
 )
 source=("git+https://github.com/a1ex4/ownfoil"
         "git+https://github.com/a1ex4/NSTools"
@@ -29,9 +30,9 @@ source=("git+https://github.com/a1ex4/ownfoil"
 )
 sha256sums=('SKIP'
             'SKIP'
-            'ca34797e34977d7c40a1f021a6dcaee47a00894973a4e378925bfe4bd8938fcf'
+            '528de3cc691edb57a44e512024832a1a1d0947dbbcda84e487b033150edc6193'
             'aee7a6c72d655e29365fe266165ffb714666507a9536871500ced59e0f5d992f'
-            'e5a47f09f5177ef2ca576b72adcbbb4b337978cb2dead3cd738ee8844f2c4304')
+            'abe899a8eecb080f3b938c2441e09838a539f6bfc00e8207ade74bb18c1a5a12')
 
 pkgver()
 {
