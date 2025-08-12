@@ -1,7 +1,7 @@
 pkgbase = cubic-bin
 	pkgdesc = Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions.
 	pkgver = 2025.06.93
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/PJ-Singh-001/Cubic
 	install = cubic-bin.install
 	arch = any
