@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -12,8 +12,8 @@ provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("MareTF-Linux-Standalone-gcc-release-${pkgver}.zip::$url/releases/download/v${pkgver}/MareTF-Linux-Standalone-gcc-release.zip"
 	"$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5aeaa4a998a413c940fde87e10e108a6c83a4bd3a74527cf97d4da87c4319cad'
-            '00071a17214391c3f9fe054d80d9b877eeef2887c5d66223328a5cb726ba0afa')
+sha256sums=('392d951c101f89b79f6bc1bdbf5da8e07833265f6a69412af483d4f17412c1aa'
+            '31cd47f1e4594e89f288f50aeb434db85299fc13ed2ca1fc1f566c05632195de')
 
 package() {
 	cd "$srcdir"
@@ -27,9 +27,8 @@ package() {
 
 	pushd "$pkgdir/usr/share"
 	sed -i 's/${PROJECT_NAME_PRETTY}/MareTF/g;s/${PROJECT_DESCRIPTION}/A work in progress command-line utility to work with VTF files./g;s/${PROJECT_NAME}/maretf/g' applications/${pkgname::-4}.desktop
+	sed -i 's/${PROJECT_NAME}/maretf/g' mime/packages/${pkgname::-4}.xml
 	popd
 
-	install -Dm644 "$srcdir/MareTF-${pkgver}/res/logo.png" "$pkgdir/usr/share/pixmaps/${pkgname::-4}.png"
-	install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/mimetypes/" && \
-	ln -s /usr/share/pixmaps/${pkgname::-4}.png "$pkgdir/usr/share/icons/hicolor/512x512/mimetypes/image-x-vtf.png"
+	install -Dm644 "$srcdir/MareTF-${pkgver}/res/logo.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}.png"
 }
