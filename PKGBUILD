@@ -1,8 +1,8 @@
 # Maintainer: xaque <xaque at duck dot com>
 
-_stablever=2505.0
+_stablever=2505.1
 _engver=4.2.0
-_builddate="20250521"
+_builddate="20250806"
 _debname="o3de_latest.deb"
 _binname="o3de-nightly"
 
@@ -13,7 +13,7 @@ pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine (Night
 arch=('x86_64')
 license=('APACHE' "MIT")
 url='https://o3de.org/'
-depends=('clang' 'cmake' 'curl' 'fontconfig' 'gcc-libs' 'glibc' 'glu' 'libffi7' 'libglvnd' 'libxau' 'libx11' 'libxcb' 'libxcrypt-compat' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'openexr' 'openssl-1.1' 'qt5-base' 'sdl2' 'zlib')
+depends=('clang' 'cmake' 'curl' 'fontconfig' 'gcc-libs' 'glibc' 'glu' 'libglvnd' 'libxau' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'mesa' 'openexr' 'openssl' 'qt5-base' 'sdl2' 'zlib')
 optdepends=('ninja: Support for multiple build configurations per project')
 makedepends=('icoutils')
 options=('!strip')
