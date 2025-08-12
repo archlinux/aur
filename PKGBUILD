@@ -4,7 +4,7 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
-pkgver=r482.0e1dc5ab
+pkgver=r525.2d923939
 pkgrel=1
 pkgdesc="Nintendo 64 core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -26,7 +26,9 @@ pkgver() {
 }
 
 prepare() {
-	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
+	cd $_pkgname
+	sed -i 's/-O[0123s]//;s/-Ofast//' Makefile
+	sed -i '3a #include <cstdint>' GLideN64/src/GLideNHQ/TxHiResLoader.h
 }
 
 build() {
