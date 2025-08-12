@@ -1,13 +1,17 @@
 pkgbase = org
-	pkgdesc = Suckless second brain
-	pkgver = 0.0.18
+	pkgdesc = Suckless second-brain CLI tool
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/benjaminingreens/org
 	arch = any
-	license = MIT
+	license = AGPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = git+https://github.com/benjaminingreens/org#tag=v0.0.18
+	source = git+https://github.com/benjaminingreens/org#tag=v0.1.0
 	sha256sums = SKIP
 
 pkgname = org

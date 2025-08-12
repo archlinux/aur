@@ -1,30 +1,34 @@
 # Maintainer: Benjamin Hammond <benjaminphammond@gmail.com>
 pkgname=org
-pkgver=0.0.18
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Suckless second brain"
+pkgdesc="Suckless second-brain CLI tool"
 arch=('any')
 url="https://github.com/benjaminingreens/org"
-license=('MIT')
-depends=('python')  # No need to list pip-only dependencies
-makedepends=('git')
+license=('AGPL3')
+depends=('python')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('SKIP')  # Since it's a Git source, we skip the checksum
+sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
-
-  # Remove install_requires from setup.py to prevent automatic pip installs
-  sed -i '/install_requires=\[/,/\],/d' setup.py
+  # Strip install_requires to avoid networked pip installs at build time (AUR policy)
+  if grep -q "install_requires\s*=" setup.py 2>/dev/null; then
+    sed -i '/install_requires\s*=\s*\[/,/\],/d' setup.py
+  fi
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
-  install -Dm644 requirements.txt "$pkgdir/usr/share/org/requirements.txt"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  for f in README README.md; do
+    [[ -f "$f" ]] && install -Dm644 "$f" "$pkgdir/usr/share/doc/$pkgname/$f"
+  done
 }
