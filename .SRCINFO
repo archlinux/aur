@@ -1,0 +1,20 @@
+pkgbase = dotdraw-bin
+	pkgdesc = Ideas, Painting, Art
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/dotdraw/dotdraw
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = fuse2
+	depends = xdg-user-dirs
+	depends = libayatana-appindicator
+	provides = dotdraw
+	conflicts = dotdraw
+	options = !debug
+	source_x86_64 = https://github.com/dotdraw/dotdraw/releases/download/v0.0.1/dotdraw-0.0.1-linux-amd64.deb
+	sha256sums_x86_64 = 31ab11188d2350cf6fe631ecd5914ff2b4f26b24335fa7061152de1bed158831
+	source_aarch64 = https://github.com/dotdraw/dotdraw/releases/download/v0.0.1/dotdraw-0.0.1-linux-aarch64.deb
+	sha256sums_aarch64 = 448e3cd6d3cd0dced30144bb4c2d1562de4bbf328661be8c016e19f165fe2125
+
+pkgname = dotdraw-bin
