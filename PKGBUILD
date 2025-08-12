@@ -1,7 +1,7 @@
 # Maintainer: Luke Wilkinson <wilkinsonluke@proton.me>
 
 pkgname=fmp-git
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A simple secure password manager written in rust."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
 makedepends=('cargo')
 source=("fmp-$pkgver.tar.gz::https://github.com/lwilk0/fmp/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('71204b64c8e904628b4c73a1bc3ab6e537337bd131b70f6c4e8cb0e832444d1be82f184677189fbaa399e2382c8214731d52450b1dc5ba4b4a323e9d56121d66')
+sha512sums=('a19fb26ea45a6fbd8936cb903b01b025b73d6e1929e92777d41fd1dbb680a7245a108379724b0222c52256011dd2045ce18a7d22f2853e74d09162f8834eac85')
 
 build() {
   cd "fmp-$pkgver"
