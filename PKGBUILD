@@ -6,8 +6,8 @@ _appprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
-pkgver=0.6.13.r0.g53764fe
-pkgrel=2
+pkgver=0.6.22.r0.g438e5d9
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=("any")
 url="https://github.com/open-webui/open-webui"
@@ -15,6 +15,8 @@ license=("MIT")
 depends=('python312')
 makedepends=('git' 'npm' 'nvm')
 optdepends=('ollama' 'tika-server')
+conflicts=('open-webui' 'open-webui-no-venv')
+provides=('open-webui')
 source=(
     "${pkgname}::git+${url}"
     "open-webui.service"
@@ -51,7 +53,7 @@ build() {
     _ensure_local_nvm
     cd "$srcdir/$pkgname"
     export NODE_OPTIONS="--max_old_space_size=4096"
-    npm install
+    npm install --force
     npm run format
     npm run i18n:parse
     npm run build
