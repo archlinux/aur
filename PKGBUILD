@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=gnome-app-grid-manager
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Organize your Gnome overview applications by category'
 url='https://github.com/prurigro/gnome-app-grid-manager'
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('dconf')
 makedepends=('go')
 source=("https://github.com/prurigro/gnome-app-grid-manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('525b23dd9981b1e7a4c654805624dceaac6efe7e726963271a44c2d505002e569df709d2339423a9a26ce9425e15be42098466ebd08566fbbc43f3f45467f007')
+sha512sums=('db1a28619f64a4cbf3a8f9919485b24055b33f91db57f4ba974ba94373a524748890d166720dccb86a5f10fe7caf3d413146ef03b9d58065f09f45f4300030cb')
 
 build() {
   export GOPATH="$srcdir"
