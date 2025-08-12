@@ -16,6 +16,8 @@ _uuid=eversolo-nowplaying@priet.us
 source=("eversolo-nowplaying-src::git+${url}.git")
 b2sums=('SKIP')
 
+license=(MIT)
+
 pkgver() {
   cd "${srcdir}/eversolo-nowplaying-src"
   # versión rolling: r<commits>.<hash-corto>
