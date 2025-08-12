@@ -1,0 +1,22 @@
+pkgbase = python-preserve-those-podcasts
+	pkgdesc = Preserve those podcasts!
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://github.com/saveweb/preserve-those-podcasts
+	arch = any
+	license = WTFPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = ffmpeg
+	depends = python-requests
+	depends = python-rich
+	depends = python-feedparser
+	depends = python-pyrfc6266
+	depends = python-internetarchive
+	source = https://files.pythonhosted.org/packages/2e/c1/00af5cd84b8b52525dd527a693a1a2fbf7cb2c31ef1d1327d58ecd9c30e4/preservethosepod-1.0.12.tar.gz
+	sha256sums = 2f74dcc428e0cc5e2b8c09af78d99697d19b416ec919d95281607cc98baa2bb5
+
+pkgname = python-preserve-those-podcasts
