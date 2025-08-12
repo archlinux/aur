@@ -39,13 +39,9 @@ conflicts=('gzdoom')
 replaces=('gzdoom1-git' 'gzdoom-legacy-git')
 options=(!lto)
 source=('gzdoom::git+https://github.com/coelckers/gzdoom.git'
-        'ZWidget::git+https://github.com/dpjudas/ZWidget.git'
-        'ZMusic::git+https://github.com/ZDoom/ZMusic.git'
         'gzdoom.desktop'
         '0001-Enforce-file-paths.patch')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
             'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811')
 
@@ -62,8 +58,6 @@ pkgver() {
 
 prepare() {
     cd gzdoom
-    mv "$srcdir/ZMusic" libraries/ZMusic
-    mv "$srcdir/ZWidget" libraries/ZWidget
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
 }
 
