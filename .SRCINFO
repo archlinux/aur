@@ -1,8 +1,8 @@
 pkgbase = linuxtv-dvb-apps
 	pkgdesc = Linux DVB API applications and utilities
-	pkgver = 1505
-	pkgrel = 6
-	url = https://www.linuxtv.org
+	pkgver = 1.1.1+rev1500
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/linuxtv-dvb-apps
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -11,26 +11,12 @@ pkgbase = linuxtv-dvb-apps
 	arch = aarch64
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
-	makedepends = mercurial
-	depends = glibc
+	makedepends = git
+	makedepends = imagemagick
+	depends = libx11
+	depends = zvbi
 	optdepends = dtv-scan-tables-git: initial tuning data necessary for scanning utils
-	source = dvb-apps::hg+https://linuxtv.org/legacy-hg/dvb-apps/#revision=3d43b280298c39a67d1d889e01e173f52c12da35
-	source = 0001-glibc-2.31.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-glibc-2.31.patch
-	source = 0002-no-ca_set_pid.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-no-ca_set_pid.patch
-	source = 0003-alevt.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20100223-alevt.patch
-	source = 0004-ldflags.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20100223-ldflags.patch
-	source = 0005-perl526.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20100223-perl526.patch
-	source = 0006-dvbdate.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20140321-dvbdate.patch
-	source = 0007-gcc10.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20140321-gcc10.patch
-	source = 0008-64-bit-addr-int-bug779520.patch::https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=779520;filename=bug779520.patch;msg=17
+	source = launchpad.linuxtv-dvb-apps::git+https://git.launchpad.net/ubuntu/+source/linuxtv-dvb-apps
 	sha256sums = SKIP
-	sha256sums = cd26db2922605b82fdf370d1d06557b600072ba20b3900b71b3da21a79963a9f
-	sha256sums = 58773c592c064eb85df2cbb64aef9d03ae0ce421065f974baa22c428db2f6d78
-	sha256sums = 1707ddbdac648059c84837fdabdcb2fa2d73661748f82163023a187d0ecc9ffd
-	sha256sums = 8eb444d72c922db4166c5f926ae80537c56e1087ef792be34749caa6629f7e94
-	sha256sums = 4460c9c8f4474fcc776b8d02d1c527584a81dbc84b69db9ed9a8b43ca24d49c5
-	sha256sums = 74b3e5b1c74339decaabedac121809fcf058d7337fd3f7e1dd353a24e10b698c
-	sha256sums = 10d18f1ceb311a7a247548e8a942e46381a976ee089c8073549ef78ab1fe05c6
-	sha256sums = c65d70a91b437930fb2b63c83d763c3431fd4c9a0e3248c0aed4df652dd8be16
 
 pkgname = linuxtv-dvb-apps
