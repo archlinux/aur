@@ -1,7 +1,7 @@
 # Maintainer: Ananas <ananas[at]ananas.moe>
 
 pkgname=aeternum
-_pkgver="v0.1.0"
+_pkgver="v0.1.2-beta.1"
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A simple and minimal upscaler built in 🦀 rust (WIP)"
@@ -48,5 +48,5 @@ package() {
 
     cd $srcdir/$pkgname/assets
     install -Dm644 aeternum.desktop "$pkgdir/usr/share/applications/aeternum.desktop"
-    install -Dm644 image.png "$pkgdir/usr/share/pixmaps/aeternum.png"
+    install -Dm644 crystal.png "$pkgdir/usr/share/pixmaps/aeternum.png"
 }
