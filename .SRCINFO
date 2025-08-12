@@ -1,17 +1,24 @@
 pkgbase = weechat-xmpp-git
-	pkgdesc = A fork of the jabber plugin for weechat
-	pkgver = unknown
+	pkgdesc = A weechat plugin in C/++ for XMPP support, minimal but idealy maximal set of XEPs
+	pkgver = r1.r45.g0efe037
 	pkgrel = 1
-	url = https://github.com/sleduc/weechat-xmpp
-	install = weechat-xmpp.install
+	url = https://github.com/bqv/weechat-xmpp
 	arch = any
-	license = GPL3
+	license = MIT
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	makedepends = doctest
+	depends = libstrophe
+	depends = libxml2
+	depends = lmdbxx
+	depends = libomemo-c
+	depends = libsignal-protocol-c
+	depends = gpgme
 	depends = weechat
-	depends = python-xmpppy
-	depends = python
+	depends = fmt
 	provides = weechat-xmpp
-	source = git+https://github.com/sleduc/weechat-xmpp.git#branch=master
+	source = weechat-xmpp-git::git+https://github.com/bqv/weechat-xmpp.git
 	md5sums = SKIP
 
 pkgname = weechat-xmpp-git
-
