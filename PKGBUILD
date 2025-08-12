@@ -17,8 +17,7 @@ depends=('bzip2'
          'openal'
          'sdl2'
          'vulkan-driver'
-         'vulkan-icd-loader'
-         'zmusic>=1.1.14')
+         'vulkan-icd-loader')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'clang: Clang build option support'
@@ -36,7 +35,8 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
-            'xorg-xmessage: crash dialog (other)')
+            'xorg-xmessage: crash dialog (other)'
+            'zmusic-git: System-level ZMusic instead of static compile (requires cmake option change)')
 provides=('vkdoom' 'vkdoom-bin-nightly')
 conflicts=('vkdoom' 'vkdoom-bin-nightly')
 #disable LTO due to instability
@@ -59,6 +59,12 @@ pkgver() {
     git describe --tags --match '[Vv]*' | sed -r 's/^[Gg]//;s/-/+/g'
 }
 
+## the "upstream broke again section" quick fix area!
+
+## Force format-security errors to be bypassed.
+# CFLAGS+=" -Wno-error=format-security"
+# CXXFLAGS+=" -Wno-error=format-security"
+
 prepare() {
     cd vkdoom
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
@@ -79,6 +85,7 @@ build() {
             -D INSTALL_RPATH=/usr/lib \
             -D DYN_GTK=OFF \
             -D DYN_OPENAL=OFF \
+            -D FORCE_INTERNAL_ZMUSIC=ON \
             -D CMAKE_C_COMPILER="/usr/bin/clang" \
             -D CMAKE_CXX_COMPILER="/usr/bin/clang++"
     else
@@ -92,7 +99,8 @@ build() {
             -D INSTALL_SOUNDFONT_PATH=share/vkdoom \
             -D INSTALL_RPATH=/usr/lib \
             -D DYN_GTK=OFF \
-            -D DYN_OPENAL=OFF
+            -D DYN_OPENAL=OFF \
+            -D FORCE_INTERNAL_ZMUSIC=ON
     fi
     make -C build
 }
@@ -106,4 +114,7 @@ package() {
     install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vkdoom.xpm
     install src/posix/unix/org.vkdoom.vkdoom.svg -D -m 644 "$pkgdir"/usr/share/pixmaps/org.vkdoom.vkdoom.svg
     install src/posix/unix/org.vkdoom.vkdoom.metainfo.xml -D -m 644 "$pkgdir"/usr/share/metainfo/org.vkdoom.vkdoom.metainfo.xml
+    ## workaround number 2, nuke CPPDAP system install because upstream CMAKE is broken
+    rm -rf "$pkgdir"/usr/include
+    rm -rf "$pkgdir"/usr/lib
 }
