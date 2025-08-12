@@ -9,7 +9,7 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.12
+pkgver=0.10.13
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -47,10 +47,12 @@ makedepends=(
   python-setuptools
 )
 
+install="$_pkgname.install"
+
 _pkgsrc="logseq-${pkgver}"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext")
-sha256sums=('ca9ec887cd77db77ef36c8583e89a5fd6dc37df7a2d72e964f5f34ed447c11b1')
+sha256sums=('46ffc538dbd29adc69d5f96580fd893f7063db6601da5afce974e5b91ef9f84f')
 
 _nvm_env() {
   # avoid cluttering user home, while allowing data to be cached
@@ -114,6 +116,12 @@ package() {
 
   install -Dm644 "$_out_path"/resources/app/icon.png "$pkgdir/usr/share/pixmaps/logseq.png"
 
+  # script
+  local _electron_version=$(strings "$pkgdir/$_install_path/$_pkgname/Logseq" | grep -Pom1 'Electron/[0-9\.]+')
+  local _warning_eol="${_electron_version:+Logseq uses ${_electron_version}.  To check whether this version of Electron still receives security updates, see https://endoflife.date/electron}"
+
+  printf 'WARNING: %s\n' "${_warning_eol:-see https://endoflife.date/electron}"
+
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << END
 #!/usr/bin/env bash
 
@@ -136,6 +144,8 @@ done
 export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
+
+printf 'WARNING: %s\n' "${_warning_eol:-see https://endoflife.date/electron}"
 
 exec "/$_install_path/$_pkgname/Logseq" "\${flags[@]}" "\$@"
 END
