@@ -11,8 +11,8 @@
 
 _pkgname="nestopia"
 pkgname="$_pkgname-git"
-pkgver=1.53.1.r0.g80f335a
-pkgrel=2
+pkgver=1.53.2.r1.g39c5ead
+pkgrel=1
 pkgdesc="High-accuracy NES/Famicom emulator"
 url="https://github.com/0ldsk00l/nestopia"
 license=('GPL-2.0-only')
@@ -53,14 +53,12 @@ prepare() {
 }
 
 build() {
-  export CXXFLAGS LDFLAGS
-  CXXFLAGS=${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}
+  export CXX LDFLAGS
 
   local _ldflags=(${LDFLAGS})
   LDFLAGS="${_ldflags[@]//*fuse-ld*/} -L${srcdir@Q}"
 
   if [[ "${_build_clang::1}" == "t" ]]; then
-    export CXX LDFLAGS
     CXX=clang++
     LDFLAGS+=" -fuse-ld=lld"
   fi
