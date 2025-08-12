@@ -1,17 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lzma_alone
-pkgver=24.09
+pkgver=25.01
 pkgrel=1
-pkgdesc='An algorithm used to perform lossless data compression'
+pkgdesc='A tool used to perform lossless data compression'
 arch=('x86_64')
 url='https://www.7-zip.org/sdk.html'
 license=('LZMA-SDK-9.22')
-depends=('gcc-libs')
+depends=(
+    'gcc-libs'
+    'glibc')
 source=("https://www.7-zip.org/a/lzma${pkgver/./}.7z"
         '010-lzma_alone-use-arch-flags.patch')
 noextract=("lzma${pkgver/./}.7z")
-sha256sums=('79b39f10b7b69eea293caa90c3e7ea07faf8f01f8ae9db1bb1b90c092375e5f3'
+sha256sums=('cbc3babd589d971e45971d787ff100be8aaa5eab15b2694497ec3e447009e1f2'
             '8c1905241ce2d517b019b3101bab5e4994ca6864fe00b6ce303470adec66ed85')
 
 prepare() {
