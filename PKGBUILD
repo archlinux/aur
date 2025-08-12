@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
 	'python-h5py>=3.7'
 	python-tqdm
 	'python-scikit-learn>=1.1.3'
-	'python-statsmodels>=0.14.4'
+	'python-statsmodels>=0.14.5'
 	'python-patsy>=1.0.1'
 	'python-networkx>=2.7.1'
 	python-natsort
@@ -48,7 +48,7 @@ optdepends=(
 )
 makedepends=(python-hatch python-hatch-vcs python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('ead448f112bb07351897531c24e05627f4b3e0bee0c02f50adf378f4e08e338b')
+sha256sums=('333189ecac9c7009bf55d416ee2e272e1c490d54c719478f7b4dd1fc294d2f95')
 
 build() {
 	cd "$pkgname-$pkgver"
