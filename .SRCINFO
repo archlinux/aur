@@ -1,6 +1,6 @@
 pkgbase = libethercat
 	pkgdesc = EtherCAT master library. This library is used to build a deterministic fieldbus network with EtherCAT components.
-	pkgver = 0.7.1
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/robert-burger/libethercat
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = libethercat
 	makedepends = pkgconf
 	depends = glibc
 	depends = libosal
-	source = libethercat::git+https://github.com/robert-burger/libethercat.git#tag=0.7.1
-	sha256sums = 76bb4e1c5399d813ad7824efd1c884eb1d8e3911f46e1b8567d570acfa5f617d
+	source = libethercat::git+https://github.com/robert-burger/libethercat.git#tag=0.7.3
+	sha256sums = 6816c6cc94fc76f5985c797a5b5a076889825592fecd6f2afa3b16ffe3538d66
 
 pkgname = libethercat
 	provides = libethercat

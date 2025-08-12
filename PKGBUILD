@@ -2,7 +2,7 @@
 
 pkgbase=libethercat
 pkgname=(libethercat{,-tools})
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="EtherCAT master library. This library is used to build a deterministic fieldbus network with EtherCAT components."
 arch=($CARCH)
@@ -21,7 +21,7 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("${pkgbase}::git+${url}.git#tag=${pkgver}")
-sha256sums=('76bb4e1c5399d813ad7824efd1c884eb1d8e3911f46e1b8567d570acfa5f617d')
+sha256sums=('6816c6cc94fc76f5985c797a5b5a076889825592fecd6f2afa3b16ffe3538d66')
 options=()
 
 build() {
