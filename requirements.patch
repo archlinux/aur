@@ -1,0 +1,25 @@
+diff --git a/requirements.txt b/requirements.txt
+index 2ab862e..1e4271a 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,13 +1,13 @@
+ PySide6
+-winshell
+-pywin32
+ vdf
+ nbtlib
+ thefuzz
+ vmu-tools
+
+-psutil==5.9.8
+-requests==2.31.0
+-steamgriddb==1.2.0
++psutil
++requests
+ # For Linux native notifications
+-notify-py==0.4.0
+\ No newline at end of file
++notify-py
++
++pyinstaller
+\ No newline at end of file
