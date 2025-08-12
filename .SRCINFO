@@ -1,0 +1,27 @@
+pkgbase = simmonitor
+pkgdesc = Dashboards and Telemetry Monitoring for Racing Sims
+pkgver = 0.1.0
+pkgrel = 1
+url = https://github.com/spacefreak18/simmonitor
+arch = x86_64
+license = GPL3
+makedepends = git
+makedepends = cmake
+depends = argtable
+depends = libconfig
+depends = libpulse
+depends = libxdg-basedir
+depends = libuv
+depends = ncurses
+depends = libmicrohttpd
+depends = hoel
+depends = sdl2
+depends = sdl2_image
+depends = postgresql-libs
+depends = mariadb-libs
+depends = sqlite3
+depends = libtar
+source = git+https://github.com/spacefreak18/monocoque.git
+sha256sums = SKIP
+
+pkgname = simmonitor-git
