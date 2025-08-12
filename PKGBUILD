@@ -64,6 +64,7 @@ package() {
   cd "${pkgname%-git}"
 
   install -dm755 "${pkgdir}/usr/bin"
+  install -m755 "_build/galene" "${pkgdir}/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"
