@@ -3,7 +3,7 @@
 pkgname=polycule
 _name=polycule
 _appid=business.braid.polycule
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -12,12 +12,11 @@ url="https://gitlab.com/polycule_client/polycule"
 license=('EUPL-1.2')
 depends=(
   'gtk3'
+  'jsoncpp'
   # flutter_secure_storage
   'libsecret'
   # path_provider
   'xdg-user-dirs'
-  # for e2ee
-  'libolm'
   # sqlcipher_flutter_libs
   'openssl'
   # media_kit
@@ -28,12 +27,16 @@ depends=(
   'dbus'
 )
 makedepends=(
+  'git'
   # the Flutter tool
   'flutter-tool'
   # the Flutter linux files
   'flutter-target-linux'
+  # required for Flutter rust bridge
+  'flutter-intellij-patch'
   # used for packaging
   'cmake'
+  'rustup'
 )
 # prevent conflicts with binary or release packages
 provides=("$_name=${pkgver}")
@@ -41,7 +44,7 @@ conflicts=("$_name")
 source=(
   "${_name}-v${pkgver}.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v${pkgver}/polycule-v${pkgver}.tar.gz"
 )
-sha256sums=('fe4815f66a64fc8157369d97a6bf61899fa1d0d6096062d2ed7884ac3f2e782c')
+sha256sums=('6546d4ff261dc3eedf0ab0665085b5cae38232ac915265d351b6cb6155f6a02f')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
