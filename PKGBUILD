@@ -6,7 +6,7 @@ _root_dir=/opt/barmer-ecare
 
 pkgname="barmer-ecare-bin"
 pkgver=25.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktopanwendung für die Elektronische Patientenakte der BARMER extrahiert aus dem snap packet der BARMER'
 arch=('x86_64')
 url='https://www.barmer.de/unsere-leistungen/leistungen-a-z/online-services/ecare-elektronische-patientenakte/ecare-fuer-pc-laptop-1056418'
@@ -15,28 +15,28 @@ license=('Proprietary')
 depends=(
     gcc-libs
     glibc
-    libasound.so=2
-    libatk-1.0.so=0
-    libatk-bridge-2.0.so=0
-    libatspi.so=0
-    libcairo.so=2
+    libasound.so=2-64
+    libatk-1.0.so=0-64
+    libatk-bridge-2.0.so=0-64
+    libatspi.so=0-64
+    libcairo.so=2-64
     libcups
-    libdbus-1.so=3
-    libexpat.so=1
-    libgio-2.0.so=0
-    libglib-2.0.so=0
-    libgobject-2.0.so=0
-    libgtk-3.so=0
-    libpango-1.0.so=0
-    libpcsclite.so=1
-    libudev.so=1
+    libdbus-1.so=3-64
+    libexpat.so=1-64
+    libgio-2.0.so=0-64
+    libglib-2.0.so=0-64
+    libgobject-2.0.so=0-64
+    libgtk-3.so=0-64
+    libpango-1.0.so=0-64
+    libpcsclite.so=1-64
+    libudev.so=1-64
     libx11
     libxcb
     libxcomposite
     libxdamage
     libxext
     libxfixes
-    libxkbcommon.so=0
+    libxkbcommon.so=0-64
     libxrandr
     mesa
     nspr

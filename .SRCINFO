@@ -1,7 +1,7 @@
 pkgbase = barmer-ecare-bin
 	pkgdesc = Desktopanwendung für die Elektronische Patientenakte der BARMER extrahiert aus dem snap packet der BARMER
 	pkgver = 25.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.barmer.de/unsere-leistungen/leistungen-a-z/online-services/ecare-elektronische-patientenakte/ecare-fuer-pc-laptop-1056418
 	arch = x86_64
 	license = Proprietary
@@ -15,28 +15,28 @@ pkgbase = barmer-ecare-bin
 	makedepends = imagemagick
 	depends = gcc-libs
 	depends = glibc
-	depends = libasound.so=2
-	depends = libatk-1.0.so=0
-	depends = libatk-bridge-2.0.so=0
-	depends = libatspi.so=0
-	depends = libcairo.so=2
+	depends = libasound.so=2-64
+	depends = libatk-1.0.so=0-64
+	depends = libatk-bridge-2.0.so=0-64
+	depends = libatspi.so=0-64
+	depends = libcairo.so=2-64
 	depends = libcups
-	depends = libdbus-1.so=3
-	depends = libexpat.so=1
-	depends = libgio-2.0.so=0
-	depends = libglib-2.0.so=0
-	depends = libgobject-2.0.so=0
-	depends = libgtk-3.so=0
-	depends = libpango-1.0.so=0
-	depends = libpcsclite.so=1
-	depends = libudev.so=1
+	depends = libdbus-1.so=3-64
+	depends = libexpat.so=1-64
+	depends = libgio-2.0.so=0-64
+	depends = libglib-2.0.so=0-64
+	depends = libgobject-2.0.so=0-64
+	depends = libgtk-3.so=0-64
+	depends = libpango-1.0.so=0-64
+	depends = libpcsclite.so=1-64
+	depends = libudev.so=1-64
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
 	depends = libxdamage
 	depends = libxext
 	depends = libxfixes
-	depends = libxkbcommon.so=0
+	depends = libxkbcommon.so=0-64
 	depends = libxrandr
 	depends = mesa
 	depends = nspr

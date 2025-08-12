@@ -26,7 +26,7 @@ for dep in ${LIBRARIES[@]} ; do
             if [[ "$dep" =~ '.so$' ]] ; then
                 query="$dep"
             else
-                query="$libdep=$libversion"
+                query="${libdep}=${libversion}-64"
             fi
             if pacman -Qqq "$query" 2>/dev/null >/dev/null; then
                 DEPENDENCIES+=("$query")
