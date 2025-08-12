@@ -1,5 +1,5 @@
 # Maintainer: Joelton D. Brandão <joeltondbrandao at freedxm dot com>
-# Contributor: Tobias M. Baust <tobias.baust at tutanota dot com>
+# Maintainer: Tobias M. Baust <tobias.baust at tutanota dot com>
 # Contributor: Ruben Di Battista  <rubendibattista at gmail dot com>
 
 _pkgname=cantera
