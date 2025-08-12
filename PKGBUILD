@@ -3,7 +3,7 @@
 _name=networkx
 
 pkgname=python-networkx-git
-pkgver=3.2.r57.gf93f0e2a0
+pkgver=3.5.r52.g36e8a1ee8
 pkgrel=1
 pkgdesc="Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks."
 
@@ -12,7 +12,7 @@ license=("BSD")
 url="https://github.com/networkx/networkx"
 
 source=("git+$url#branch=main")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 conflicts=("python-networkx")
 provides=("python-networkx=$pkgver")
