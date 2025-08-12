@@ -1,4 +1,5 @@
-# Maintainer: Giovanni Santini <giovannisantini93 at yahoo dot it>
+# Maintainer Lex True <lextruel at pm dot me>
+# Contributor: Giovanni Santini <giovannisantini93 at yahoo dot it>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgbase=boost174
@@ -17,7 +18,7 @@ makedepends=(
   bzip2
   icu
   openmpi
-  python
+  python311
   python-numpy
   zstd
 )
@@ -30,20 +31,20 @@ source=(
   "numpy-2.0.patch::https://github.com/boostorg/python/commit/0474de0f6cc9c6e7230aeb7164af2f7e4ccf74bf.patch"
 )
 sha256sums=('83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1'
-            '3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7'
-            '67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903'
-            'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
-            '44fffaefa5a7785142b4deacd508ba5de23fa4aafde6cc66f3b697c07f498d5f'
-            'ccda8ef8126c93f4c8d29ba43b5f301952e5eacdc7fecb2ae3d01115a2222c53')
+  '3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7'
+  '67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903'
+  'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
+  '44fffaefa5a7785142b4deacd508ba5de23fa4aafde6cc66f3b697c07f498d5f'
+  'ccda8ef8126c93f4c8d29ba43b5f301952e5eacdc7fecb2ae3d01115a2222c53')
 
 prepare() {
   cd "$_srcname"
 
   # https://github.com/boostorg/ublas/issues/96
   patch -Np2 -i ../$pkgbase-ublas-c++20-allocator-patch1.patch
-  rm -f libs/numeric/ublas/test/minimal_allocator_test.cpp  # Ensure we can apply the next patch on rebuild
+  rm -f libs/numeric/ublas/test/minimal_allocator_test.cpp # Ensure we can apply the next patch on rebuild
   patch -Np2 -i <(
-    sed < ../$pkgbase-ublas-c++20-allocator-patch2.patch \
+    sed <../$pkgbase-ublas-c++20-allocator-patch2.patch \
       's:test/:pls-apply-cleanly-kthxbai/libs/numeric/ublas/&:g'
   )
 
@@ -63,9 +64,9 @@ build() {
   local python_version
 
   # shellcheck disable=2001
-  JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<< "$MAKEFLAGS")"
+  JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<<"$MAKEFLAGS")"
   python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python3.11 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
   )
 
   pushd "$_srcname/tools/build"
@@ -75,10 +76,10 @@ build() {
   popd
 
   cd "$_srcname"
-  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
+  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3.11
 
   # support for OpenMPI
-  echo "using mpi ;" >> project-config.jam
+  echo "using mpi ;" >>project-config.jam
 
   # boostbook is needed by quickbook
   install -dm755 "$srcdir"/fakeinstall/share/boostbook
@@ -105,7 +106,7 @@ build() {
 package_boost174() {
   local python_version
   python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python3.11 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
   )
 
   pkgdesc+=' (development headers)'
@@ -136,7 +137,7 @@ package_boost174() {
 package_boost174-libs() {
   local python_version
   python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python3.11 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
   )
 
   pkgdesc+=' (runtime libraries)'
@@ -156,9 +157,9 @@ package_boost174-libs() {
 
   # https://github.com/boostorg/mpi/issues/112
   local site_packages
-  site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+  site_packages=$(python3.11 -c 'import site; print(site.getsitepackages()[0])')
   install -d "$pkgdir$site_packages/boost174"
   touch "$pkgdir$site_packages/boost174/__init__.py"
-  python -m compileall -o 0 -o 1 -o 2 "$pkgdir$site_packages/boost174"
+  python3.11 -m compileall -o 0 -o 1 -o 2 "$pkgdir$site_packages/boost174"
   cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir$site_packages/boost174/mpi.so"
 }
