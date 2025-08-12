@@ -1,0 +1,16 @@
+pkgbase = doom+doom-ii-data-steam
+	pkgdesc = WAD data files from DOOM + DOOM II via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = http://store.steampowered.com/app/2280
+	arch = any
+	license = Proprietary
+	makedepends = steamcmd
+	provides = ultimate-doom-data
+	provides = doom2-data
+	provides = final-doom-data
+	conflicts = ultimate-doom-data-steam
+	conflicts = doom2-data-steam
+	conflicts = final-doom-data-steam
+
+pkgname = doom+doom-ii-data-steam
