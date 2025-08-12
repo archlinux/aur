@@ -1,0 +1,20 @@
+pkgbase = connectra-bin
+	pkgdesc = Discover, Connect, Belong
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/connectra/connectra
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = fuse2
+	depends = xdg-user-dirs
+	depends = libayatana-appindicator
+	provides = connectra
+	conflicts = connectra
+	options = !debug
+	source_x86_64 = https://github.com/connectra/connectra/releases/download/v0.0.1/connectra-0.0.1-linux-amd64.deb
+	sha256sums_x86_64 = aa35e9684c3ed00ecfb832243ea9bbace4518feea711a595e076d4bbc77e6ea3
+	source_aarch64 = https://github.com/connectra/connectra/releases/download/v0.0.1/connectra-0.0.1-linux-aarch64.deb
+	sha256sums_aarch64 = bc00bd69e2cddd277f87d2dbf75a4b56ed2269af6a344e9fbcc1d2c88a2de0da
+
+pkgname = connectra-bin
