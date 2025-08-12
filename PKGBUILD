@@ -2,7 +2,7 @@
 pkgname=dragonfly-navigator-git
 pkgver=r286.14b755a
 pkgrel=1
-pkgdesc="Simple dual pane file manager for KDE."
+pkgdesc="Simple dual pane file manager."
 arch=('x86_64')
 url="https://github.com/suncore/dflynav"
 license=('GPL-3.0-or-later')
