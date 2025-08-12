@@ -1,12 +1,23 @@
 # Maintainer: Arthur <git@arthur404.dev>
 pkgname=heimdall-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A powerful CLI tool for managing dotfiles, color schemes, wallpapers, and system theming"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arthur404dev/heimdall-cli"
 license=('MIT')
-depends=('grim' 'slurp' 'swappy' 'wl-clipboard' 'wl-screenrec' 'cliphist' 'fuzzel' 'dart-sass' 'libnotify')
+depends=('grim' 'slurp' 'wl-clipboard' 'fuzzel')
+optdepends=(
+  'swappy: screenshot editing support'
+  'wl-screenrec: screen recording support'
+  'cliphist: clipboard history support'
+  'dunstify: enhanced notification support'
+  'dart-sass: Sass compilation support'
+  'libnotify: desktop notifications'
+  'hyprland: window manager integration'
+  'swww: wallpaper daemon'
+  'imagemagick: wallpaper processing'
+)
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arthur404dev/heimdall-cli/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -45,14 +56,18 @@ package() {
   # Install binary
   install -Dm755 build/heimdall "$pkgdir/usr/bin/heimdall"
 
-  # Install documentation if it exists
-  if [ -f README.md ]; then
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  fi
+  # Install documentation
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  
+  # Install configuration documentation
+  install -Dm644 docs/CONFIGURATION.md "$pkgdir/usr/share/doc/$pkgname/CONFIGURATION.md"
+  install -Dm644 docs/CONFIG_QUICK_REFERENCE.md "$pkgdir/usr/share/doc/$pkgname/CONFIG_QUICK_REFERENCE.md"
+  
+  # Install example configuration
+  install -Dm644 config-example.json "$pkgdir/usr/share/doc/$pkgname/config-example.json"
 
-  # Install license if it exists
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  fi
+  # Install license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
