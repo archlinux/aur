@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=eigenwallet-developertools-bin
-_pkgver="3.0.0-beta.8"
+_pkgver="3.0.0-beta.9"
 pkgver=${_pkgver/-beta./.}
 pkgrel=1
 epoch=
@@ -25,10 +25,10 @@ source=(
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/asb-controller_${_pkgver}_Linux_x86_64.tar"
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/orchestrator_${_pkgver}_Linux_x86_64.tar"
 )
-sha256sums=('97a3cdf3c587dfb2dadd105faa1215a8829ac999b774a491082855825d85e635'
-            '0a5f3ef399d160aedc9790223ed4a658431c7b47814227ce79e37a60a43dfc23'
-            '9859690a42c3512932d8ba733f75ba29e7fe36eefaf6ab0a9a54e10ed0008114'
-            '43ed34acfd96bb1b165c94fffd0f9fe9cf5815ee00e29329f50790bd60350f33')
+sha256sums=('2db3b51c0e5c73fc9feff73c836878ffbc9f0e075e32d3be621a02378e962517'
+            '5ee94bd243ea066ff46eaebceb35d76fae8d53629a9f6f4f6ab97aa39027cbdb'
+            '9e0fd3665caaa2df49a524b93651f7bcf3d986cd00924bc141a638d6f61e170c'
+            '34dcbeebe3b46cedb7ed9aa36ca1687d1f71a17d6428988ed0af720140de0bea')
 validpgpkeys=()
 
 prepare() {
