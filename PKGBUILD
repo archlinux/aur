@@ -3,7 +3,7 @@
 _pkggit=terramate
 
 pkgname=terramate-bin
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation."
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
   "https://github.com/terramate-io/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_x86_64.tar.gz"
   "https://github.com/terramate-io/${_pkggit}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('32bd607ede8a415caef9087f6a11d79247d9be7296e517bfdbe94a1f07aa45b2'
-            'f88003cb161e1efaca3b524a64f27d8da8f330f944c571fd2b3f05eecb33496d')
+sha256sums=('7c9eaef686d78736eb674e4e480cbd9ed90d353a225bd93bb6a2866f68053ecf'
+            '910418ba8b6a6b399316522d7f07fa796cda7388e32509b25a2b22cafde51957')
 
 depends=()
 makedepends=()
