@@ -56,18 +56,18 @@ package() {
   # Install binary
   install -Dm755 build/heimdall "$pkgdir/usr/bin/heimdall"
 
-  # Install documentation
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  # Install documentation if files exist
+  [ -f README.md ] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  [ -f CHANGELOG.md ] && install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   
-  # Install configuration documentation
-  install -Dm644 docs/CONFIGURATION.md "$pkgdir/usr/share/doc/$pkgname/CONFIGURATION.md"
-  install -Dm644 docs/CONFIG_QUICK_REFERENCE.md "$pkgdir/usr/share/doc/$pkgname/CONFIG_QUICK_REFERENCE.md"
+  # Install configuration documentation if they exist
+  [ -f docs/CONFIGURATION.md ] && install -Dm644 docs/CONFIGURATION.md "$pkgdir/usr/share/doc/$pkgname/CONFIGURATION.md"
+  [ -f docs/CONFIG_QUICK_REFERENCE.md ] && install -Dm644 docs/CONFIG_QUICK_REFERENCE.md "$pkgdir/usr/share/doc/$pkgname/CONFIG_QUICK_REFERENCE.md"
   
-  # Install example configuration
-  install -Dm644 config-example.json "$pkgdir/usr/share/doc/$pkgname/config-example.json"
+  # Install example configuration if it exists
+  [ -f config-example.json ] && install -Dm644 config-example.json "$pkgdir/usr/share/doc/$pkgname/config-example.json"
 
-  # Install license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Install license if it exists
+  [ -f LICENSE ] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
