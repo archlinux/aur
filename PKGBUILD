@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.15pre+454+g2f52f73
+pkgver=4.15pre+481+gb90da3c
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -62,8 +62,8 @@ pkgver() {
 
 prepare() {
     cd gzdoom
-    git subtree pull --prefix=libraries/ZMusic "$srcdir/ZMusic" master --squash
-    git subtree pull --prefix=libraries/ZWidget "$srcdir/ZWidget" master --squash
+    mv "$srcdir/ZMusic" libraries/ZMusic
+    mv "$srcdir/ZWidget" libraries/ZWidget
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
 }
 
@@ -91,4 +91,7 @@ package() {
     mv "$pkgdir"/usr/share/doc/gzdoom/licenses "$pkgdir"/usr/share/licenses/gzdoom
     desktop-file-install "$srcdir"/gzdoom.desktop --dir="$pkgdir"/usr/share/applications
     install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm
+    ## workaround number 2, nuke CPPDAP system install because upstream CMAKE is broken
+    rm -rf "$pkgdir"/usr/include
+    rm -rf "$pkgdir"/usr/lib
 }
