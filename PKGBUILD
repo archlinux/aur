@@ -13,7 +13,7 @@ makedepends=("git" "cargo")
 depends=("libxcb" "libxkbcommon" "openssl" "upscayl-ncnn")
 arch=("x86_64")
 source=("git+$url.git#tag=$_pkgver")
-sha256sums=('SKIP')
+sha256sums=('d5fed1e41ef2fdef465b2059bd447a463aa2cf00d9c8ddb9a4a6d76462021b9e')
 
 prepare() {
     cd $srcdir/$pkgname

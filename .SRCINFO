@@ -14,6 +14,6 @@ pkgbase = aeternum
 	provides = aeternum
 	conflicts = aeternum-bin
 	source = git+https://github.com/cloudy-org/aeternum.git#tag=v0.1.2-beta.1
-	sha256sums = SKIP
+	sha256sums = d5fed1e41ef2fdef465b2059bd447a463aa2cf00d9c8ddb9a4a6d76462021b9e
 
 pkgname = aeternum
