@@ -12,13 +12,13 @@ provides=('kubewall')
 conflicts=('kubewall')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.12/kubewall_Linux_arm64.tar.gz")
-sha256sums_aarch64=('6875004785986c97cc0e617357f04bec25e549898c4d57fcbc9744bef9fcba63')
+sha256sums_aarch64=('f58fc54f9b5f0a1f8d9b2f9caa4d7b94fcbc2d50625df0eac33bf5da7631bd01')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.12/kubewall_Linux_i386.tar.gz")
-sha256sums_i686=('2c160199d7558a26645471a3f3638853efdb56e6c685fa288ab018599b5e737a')
+sha256sums_i686=('4814e6d06d48f6f4767317ba104ae917843f34a47f90d8eb27f55b2b2b62b09d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kubewall/kubewall/releases/download/v0.0.12/kubewall_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0d934e599988de78c3b8fd49b1a5a64b01dd4b69f56fe047a5120ee8b6f46715')
+sha256sums_x86_64=('744b47cf7b5f5c3f039f37e4e21e6d7f473d8ee74c1e68c489427f03de9aba06')
 
 package() {
   install -Dm755 "./kubewall" "${pkgdir}/usr/bin/kubewall"
