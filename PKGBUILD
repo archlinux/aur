@@ -29,5 +29,5 @@ package() {
     ln -s "/opt/FreeTube/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-md5sums_x86_64=('378299ab079ac1d44d780d4b0f42c017')
-md5sums_aarch64=('9b269300c05544a409cf1924d50c9e6a')
+sha256sums_x86_64=('15f42feb853cde3250c320b2e20f8195fdcf1be549b695914c1e6d90c8541ea4')
+sha256sums_aarch64=('c1eea303aa237fa10a3d9794708245539fb4a5d88ebbbbb79b701acb60aed3bb')
