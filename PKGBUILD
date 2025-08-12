@@ -1,6 +1,6 @@
 # Maintainer: Arthur <git@arthur404.dev>
 pkgname=heimdall-cli
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A powerful CLI tool for managing dotfiles, color schemes, wallpapers, and system theming"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arthur404dev/heimdall-cli/archive/v$pkgver.tar.gz")
-sha256sums=('de3de95dbdf745b7edd97fb537f3432d59749c85d82e340a102df0f74b7adfac')
+sha256sums=('d7aa1a2e74d30149ffba8eb19a0e276884b66ad3291999637dff89f3cc966e99')
 
 prepare() {
   cd "$srcdir/heimdall-cli-$pkgver"
