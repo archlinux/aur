@@ -6,7 +6,7 @@
 pkgname=boost-stacktrace-backtrace
 pkgver=1.88.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Boost.stacktrace backtrace variant'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -29,8 +29,9 @@ build() {
     runtime-link=shared \
     link=shared,static \
     toolset=gcc \
-    cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
-    cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
+    cxxstd=23 \
+    cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3 -ffat-lto-objects" \
+    cxxflags="${CPPFLAGS} ${CXXFLAGS} -fPIC -O3 -ffat-lto-objects" \
     linkflags="${LDFLAGS}" \
     --layout=system \
     --with-stacktrace
