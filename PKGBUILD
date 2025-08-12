@@ -86,7 +86,7 @@ echo "正在卸载moonasst..."
 sudo rm -f /usr/bin/moonasst
 sudo rm -f /usr/share/applications/moonasst.desktop
 sudo rm -f /usr/share/icons/moonasst.png
-sudo rm -rf /opt/exec/moonasst
+sudo rm -rf /opt/exec
 echo "moonasst已卸载"
 EOF
 	chmod +x "$pkgdir/opt/exec/uninstall-moonasst.sh"
