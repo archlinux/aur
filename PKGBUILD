@@ -9,7 +9,7 @@ license=('BSD')
 depends=('ncurses' 'glibc')
 makedepends=('cmake' 'gcc' 'git')
 source=("restoHack-${pkgver}.tar.gz::https://github.com/Critlist/restoHack/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6d03e959430c6ab2a47a85a30336bc515bdaeb2496d369ad3a3368444d6ff639')
+sha256sums=('cae0cebd200be6c091680af594161291086facb13cb811f5163b4bc945de072d')
 build() {
   cd "$srcdir/restoHack-${pkgver}"
   cmake -B build -DCMAKE_BUILD_TYPE=Release
