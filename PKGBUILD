@@ -2,7 +2,7 @@
 # Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
 pkgver=v3.7.r102.d24afec85
-pkgrel=1
+pkgrel=2
 pkgdesc="Performance Software for Cyclists, Runners, Triathletes and Coaches"
 arch=('i686' 'x86_64')
 url="https://www.goldencheetah.org/"
