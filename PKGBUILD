@@ -13,8 +13,10 @@ provides=("$_pkgname")
 install=wind-bin.install
 pkgprefix="com.wind.wft-kylinV10SP1"
 pkgsuffix="amd64.deb"
-source=("https://d-cdn.wind.com.cn/windnet/linux/${pkgprefix}_${pkgsuffix}.zip")
-md5sums=('6b209674d54c9fa524d16f7d0c49c59b')
+source=("https://d-cdn.wind.com.cn/windnet/linux/${pkgprefix}_${pkgsuffix}.zip"
+         "${_pkgname}.sh")
+md5sums=('6b209674d54c9fa524d16f7d0c49c59b'
+        'b91bddd9120a457da61f9f9077480ae2')
 
 prepare(){
     cd ${srcdir}

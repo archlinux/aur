@@ -10,6 +10,8 @@ pkgbase = wind-bin
 	depends = libxcrypt-compat
 	provides = wind
 	source = https://d-cdn.wind.com.cn/windnet/linux/com.wind.wft-kylinV10SP1_amd64.deb.zip
+	source = wind.sh
 	md5sums = 6b209674d54c9fa524d16f7d0c49c59b
+	md5sums = b91bddd9120a457da61f9f9077480ae2
 
 pkgname = wind-bin
