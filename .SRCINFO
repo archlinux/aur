@@ -1,0 +1,12 @@
+pkgbase = dragonfly-navigator-git
+	pkgdesc = Simple dual pane file manager for KDE.
+	pkgver = r286.14b755a
+	pkgrel = 1
+	url = https://github.com/suncore/dflynav
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/suncore/dflynav
+	sha256sums = SKIP
+
+pkgname = dragonfly-navigator-git
