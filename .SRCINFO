@@ -1,12 +1,12 @@
 pkgbase = sony-bravia-cli
 	pkgdesc = CLI for controlling Sony Bravia TV's over RS-232
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/nvllsvm/sony-bravia-cli
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = sony-bravia-cli-0.4.1.tar.gz::https://github.com/nvllsvm/sony-bravia-cli/archive/0.4.1.tar.gz
-	sha256sums = f209cf83ab3b18460426312a221c5786ee068e47a79e456a14644291fb1fc32d
+	source = sony-bravia-cli-0.5.0.tar.gz::https://github.com/nvllsvm/sony-bravia-cli/archive/0.5.0.tar.gz
+	sha256sums = a46e2cc321a9110be85bf5e068b9e48b1c9b87059d7081a821779a75b24d90e9
 
 pkgname = sony-bravia-cli
