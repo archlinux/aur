@@ -135,7 +135,7 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=feature/igc")
+source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=feature/igc")
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=feature/igc")
 
@@ -166,8 +166,8 @@ if [[ $MOLD == "YES" && ! $CLANG == "YES" ]]; then
   # you could specify another path to mold.
   makedepends+=('mold')
   export LD=/usr/bin/mold
-  export CFLAGS+=" -fuse-ld=gold"
-  export CXXFLAGS+=" -fuse-ld=gold"
+  export CFLAGS+=" -fuse-ld=mold"
+  export CXXFLAGS+=" -fuse-ld=mold"
 fi
 
 if [[ $CLANG == "YES" ]]; then
