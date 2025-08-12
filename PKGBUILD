@@ -1,7 +1,7 @@
 # Maintainer: Arda Yılmaz <fijarom at fijarom dot com>
 
 pkgname=fokus
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A minimalist terminal‐based focus timer and stopwatch with daily logging, built on ncurses."
 arch=('x86_64')
