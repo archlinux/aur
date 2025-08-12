@@ -1,0 +1,20 @@
+pkgbase = toolora-bin
+	pkgdesc = All the tools. One Toolora
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/toolora/toolora
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = fuse2
+	depends = xdg-user-dirs
+	depends = libayatana-appindicator
+	provides = toolora
+	conflicts = toolora
+	options = !debug
+	source_x86_64 = https://github.com/toolora/toolora/releases/download/v0.0.1/toolora-0.0.1-linux-amd64.deb
+	sha256sums_x86_64 = 89403c2e288a2cafe67e60df89da82becc04048388150f1789ca4372ace34cbb
+	source_aarch64 = https://github.com/toolora/toolora/releases/download/v0.0.1/toolora-0.0.1-linux-aarch64.deb
+	sha256sums_aarch64 = 1220403905219a5cd7f575a0df03f8db26ed48caf5f43d79a6222e44566439fb
+
+pkgname = toolora-bin
