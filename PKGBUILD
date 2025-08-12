@@ -4,8 +4,8 @@
 
 _pkgname=nut
 pkgname=nut-monitor
-pkgver=2.8.3
-pkgrel=5
+pkgver=2.8.4
+pkgrel=1
 pkgdesc='GUI to manage devices connected a NUT server'
 arch=(any)
 url=http://www.networkupstools.org/
@@ -22,7 +22,7 @@ makedepends=(
   git
 )
 source=(${_pkgname}::git+${_ghurl}.git#tag=v${pkgver})
-sha256sums=('51420f9eafca094b82a4986ca78edf767efb0bd9b87cfcb69d91d0a714be96ad')
+sha256sums=('6276aa5ba1a2a7ad3831cac7db090a7bbe9bbbc98c5e8723d57e25f09240e254')
 
 prepare() {
   cd ${_pkgname}
