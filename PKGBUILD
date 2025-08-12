@@ -1,7 +1,7 @@
 # Maintainer: Philipp Klein <philipptheklein AT gmail DOT com>
 
 pkgname=fazua-toolbox
-pkgver=2.23.1
+pkgver=2.24
 pkgrel=1
 pkgdesc="Toolbox Software to update and customize the Fazua Energy Ride System"
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('unknown')
 options=(!debug)
 _filename="FAZUA_Toolbox_basic-linux-x86_64"
 
-source=("https://fazua.com/documents/1562/$_filename-$pkgver.tar.gz"
+source=("https://fazua.com/documents/1595/$_filename-$pkgver.tar.gz"
         'fazua-toolbox.desktop'
         'logo-symbol.svg')
 
-sha256sums=('52b5851d44ad6c4a4c7f1e5275222535c44ee936d48fb4335810266cf086ad64'
+sha256sums=('5d15b86574ab833df94fdbc7676da88841c2aab3e20691bf53a3904b91179b04'
             '5cf3ccc9cc75f4431cf59f0410b253046a946cb76dcba0ef4ac9bedd2c1ec6c7'
             '59e35260d3b42927040e6369c483998e7acedd112b26d89d1e226dbd9501169d')
 
