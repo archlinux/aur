@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Your Name <yatharth3194@gmail.com>
 pkgname=bing_points-git
 pkgver=1.0.r0.gabcdef0
 pkgrel=1
