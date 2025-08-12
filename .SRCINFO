@@ -1,6 +1,6 @@
 pkgbase = brlcad-bin
 	pkgdesc = An extensive 3D solid modeling system. Binary package
-	pkgver = 7.40.2
+	pkgver = 7.42.0
 	pkgrel = 1
 	url = https://brlcad.org
 	install = brlcad.install
@@ -15,7 +15,7 @@ pkgbase = brlcad-bin
 	conflicts = brlcad
 	options = !strip
 	options = !debug
-	source = https://github.com/BRL-CAD/brlcad/releases/download/rel-7-40-2/BRL-CAD_7.40.2_Linux_x86_64.tar.bz2
-	sha256sums = fbfb17dd68ec9066f262473bd984412b5ccc3e9bd57893f7348eae2030aa020e
+	source = https://github.com/BRL-CAD/brlcad/releases/download/rel-7-42-0/BRL-CAD_7.42.0_Linux_x86_64.tar.bz2
+	sha256sums = 76badb24723020b13975f999c855062d3b8c0b76be5e165ef68ce3044ae0f653
 
 pkgname = brlcad-bin

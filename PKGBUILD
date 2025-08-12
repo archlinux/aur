@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=brlcad-bin
 _pkgname=brlcad
-pkgver=7.40.2
+pkgver=7.42.0
 pkgrel=1
 pkgdesc='An extensive 3D solid modeling system. Binary package'
 url='https://brlcad.org'
@@ -17,7 +17,7 @@ _tag_name="rel-${pkgver//./-}"
 source=(
   "https://github.com/BRL-CAD/${_pkgname}/releases/download/${_tag_name}/BRL-CAD_${pkgver}_Linux_${CARCH}.tar.bz2"
 )
-sha256sums=('fbfb17dd68ec9066f262473bd984412b5ccc3e9bd57893f7348eae2030aa020e')
+sha256sums=('76badb24723020b13975f999c855062d3b8c0b76be5e165ef68ce3044ae0f653')
 
 package() {
   cd BRL-CAD_${pkgver}_Linux_${CARCH}
