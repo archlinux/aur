@@ -3,7 +3,7 @@
 
 pkgname=vkdoom-git
 pkgver=v25.6.0+455+gbadc7c9b0
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
 url='https://vkdoom.org/'
@@ -71,8 +71,6 @@ prepare() {
     cd vkdoom
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
     patch -i "$srcdir"/0002-fix-secformat.patch -p 1
-	#remove GZDoom freedesktop files that are still in here for some reason
-    rm -rf ./src/posix/freedesktop
 }
 
 build() {
@@ -122,4 +120,10 @@ package() {
     ## workaround number 2, nuke CPPDAP system install because upstream CMAKE is broken
     rm -rf "$pkgdir"/usr/include
     rm -rf "$pkgdir"/usr/lib
+    #remove GZDoom freedesktop files that are still in here for some reason
+    rm -f "$pkgdir"/usr/share/applications/org.zdoom.GZDoom.desktop
+    rm -f "$pkgdir"/usr/share/icons/hicolor/scalable/apps/org.zdoom.GZDoom.svg
+    rm -f "$pkgdir"/usr/share/metainfo/org.zdoom.GZDoom.metainfo.xml
+    rm -f "$pkgdir"/usr/share/mime/packages/org.zdoom.GZDoom-mime.xml
+
 }
