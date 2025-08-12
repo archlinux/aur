@@ -40,8 +40,8 @@ package() {
 	fi
 	
 	# 创建目标目录
-	install -dm775 "$pkgdir/opt/exec"
-	install -dm775 "$pkgdir/opt/exec/Moonlight Game Streaming Project"
+	install -dm777 "$pkgdir/opt/exec"
+	install -dm755 "$pkgdir/opt/exec/Moonlight Game Streaming Project"
 	
 	# 安装二进制文件
 	install -Dm755 moonasst "$pkgdir/opt/exec/moonasst"
