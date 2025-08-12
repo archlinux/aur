@@ -1,0 +1,15 @@
+pkgbase = bing_points-git
+	pkgdesc = A tool to collect Bing Rewards points
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Venom120/Bing-Points
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-selenium
+	depends = python-webdriver-manager
+	source = git+https://github.com/Venom120/Bing-Points.git
+	md5sums = SKIP
+
+pkgname = bing_points-git
