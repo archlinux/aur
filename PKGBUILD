@@ -49,7 +49,6 @@ depends=(
 optdepends=(
 	"ttf-ipa-mona: Free Japanese bitmap font, metric-compatible with the original game's MS Gothic"
 	"ttf-ms-win11-auto-japanese: Extracts MS Gothic from a Windows 11 ISO"
-	"ttf-ms-win10-cdn-japanese: Downloads MS Gothic from IPFS"
 )
 source=("git+https://github.com/nmlgc/ssg.git#tag=$pkgver-1")
 b2sums=('SKIP')
