@@ -7,7 +7,7 @@
 
 _pkgname='github-desktop-plus'
 pkgname="${_pkgname}-git"
-pkgver=20250812.6f554071f
+pkgver=0
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements (git version)."
 arch=('x86_64' 'aarch64' 'armv7h')
