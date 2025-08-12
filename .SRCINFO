@@ -1,0 +1,18 @@
+pkgbase = python-wordpress-rss-archiver
+	pkgdesc = WordPress.com/Automattic.com charges you US8,000 to host your blog for 100 years and automatically submit your site to the Internet Archive? Well, We can do it for free... (the latter part at least, lol)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/saveweb/wordpress-rss-archiver
+	arch = any
+	license = None
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-requests
+	depends = python-feedparser
+	source = https://files.pythonhosted.org/packages/ea/6a/165b65bd6aead6f829033ef1af0d53809c828a564d8e720b8b8ecaed5240/wordpress_rss_archiver-0.1.1.tar.gz
+	sha256sums = 2441973cb024ca139a357fc7b55cc294006ceff29ae30eda4e5d4a28065b5561
+
+pkgname = python-wordpress-rss-archiver
