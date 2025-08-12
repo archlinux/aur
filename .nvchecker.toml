@@ -1,6 +1,4 @@
 [chitubox-free-beta-bin]
 source = "jq"
 url = "https://sac.chitubox.com/getSoftwareBySoftwareId.do2?softwareId=17839"
-prefix = "v"
-# "bateVersion": sic!
-filter = ".data.bateVersion"
+filter = ".data.betaLinuxUrl | if . then capture(\"https://download\\\\.chitubox\\\\.com/17839/v(?<version>.*)/\") | .version else \"2.2.0\" end"
