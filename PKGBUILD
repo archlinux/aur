@@ -1,7 +1,7 @@
 # Maintainer: bbaa <bbaa@bbaa.fun>
 
 pkgname=i915-sriov-dkms
-pkgver=2025.05.18
+pkgver=2025.07.22
 pkgrel=1
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
@@ -10,21 +10,18 @@ license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
 conflicts=("${pkgname}-git")
-replace=("${pkgname}-bbaa-git")
 backup=("etc/tmpfiles.d/i915-set-sriov-numvfs.conf" "etc/modprobe.d/i915-sriov-dkms.conf")
 install=${pkgname}.install
-source=("git+https://github.com/strongtz/i915-sriov-dkms.git#tag=$pkgver")
-sha256sums=('842e45e828e7d74812e06b340fcec9cfe85e29a2c48e3a7b3e09343d47f08da3')
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/strongtz/i915-sriov-dkms/tar.gz/$pkgver")
+sha256sums=('b25be72732521aff5b8feb643cc363f7d0f582124e5efb227dc906fa264bf4b0')
 
 package() {
-  cd "$srcdir/$pkgname"
-  # Copy dkms.conf
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${pkgname}-${pkgver}/dkms.conf
+	cd "$srcdir/$pkgname-$pkgver"
+  
+	echo "* Copying module into /usr/src..."
+	install -dm755 "${pkgdir}/usr/src/${pkgname}-${pkgver}"
+	cp -rv * "${pkgdir}/usr/src/${pkgname}-${pkgver}"
 
-  echo "* Copying module into /usr/src..."
-  install -dm755 "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-  cp -rv ${srcdir}/$pkgname/* "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-
-  install -Dm644 i915-set-sriov-numvfs.conf "${pkgdir}/etc/tmpfiles.d/i915-set-sriov-numvfs.conf"
-  install -Dm644 i915-modprobe.conf "${pkgdir}/etc/modprobe.d/i915-sriov-dkms.conf"
+	install -Dm644 i915-set-sriov-numvfs.conf "${pkgdir}/etc/tmpfiles.d/i915-set-sriov-numvfs.conf"
+	install -Dm644 i915-modprobe.conf "${pkgdir}/etc/modprobe.d/i915-sriov-dkms.conf"
 }
