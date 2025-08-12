@@ -1,6 +1,6 @@
 pkgbase = python-markdownify
 	pkgdesc = Convert HTML to Markdown
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/matthewwithanm/python-markdownify
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-markdownify
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-six
-	source = markdownify-1.1.0.tar.gz::https://pypi.io/packages/source/m/markdownify/markdownify-1.1.0.tar.gz
-	sha256sums = 449c0bbbf1401c5112379619524f33b63490a8fa479456d41de9dc9e37560ebd
+	source = markdownify-1.2.0.tar.gz::https://pypi.io/packages/source/m/markdownify/markdownify-1.2.0.tar.gz
+	sha256sums = f6c367c54eb24ee953921804dfe6d6575c5e5b42c643955e7242034435de634c
 
 pkgname = python-markdownify

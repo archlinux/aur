@@ -1,0 +1,4 @@
+[python-markdownify]
+source = "git"
+git = "https://github.com/matthewwithanm/python-markdownify.git"
+prefix = "v"
