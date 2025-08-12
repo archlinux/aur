@@ -7,24 +7,20 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.14.0.3
+pkgver=5.15.0.1
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
 url='https://github.com/meganz/MEGAsync/'
 license=('LicenseRef-Mega-Limited-Code-License')
 depends=(
-    'c-ares'
     'crypto++'
     'curl'
-    'ffmpeg'
-    'freeimage'
     'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
     'icu'
     'libmediainfo'
-    'libpdfium'
     'libsodium'
     'libuv'
     'libxcb'
@@ -43,33 +39,36 @@ makedepends=(
     'cmake'
     'git'
     'qt5-tools')
-source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Win"
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-sdk-fix-cmake-dependencies-detection.patch'
-        '020-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('df18283f5c075658d3d3e8fede27558444302beb2990c80edb1716245afef8cd'
+        '020-megasync-app-fix-cmake-dependencies-detection.patch'
+        '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch')
+sha256sums=('1522e6dad1c91caacbae1df7d10575c90c878858caa23a62879c37f68aef75cd'
             'SKIP'
-            '62e79d30acafdc13855851e64c4419d8ee4a0b213089ea352882b49413e549f4'
-            'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171')
+            '3c5076957e4543180a9385d4eff9cb404a098a92f565e9c0110d06ad49d639bb'
+            'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
+            '65ad406c6159d530a3dc4373ccfbc5d2093354c356dce2aa4885ba6dfac90e28')
 
 prepare() {
-    #git -C MEGAsync submodule init
-    #git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
-    #git -C MEGAsync -c protocol.file.allow='always' submodule update
+    # https://github.com/meganz/MEGAsync/issues/1010#issuecomment-2726028797
+    git -C MEGAsync rm --cached src/DesignTokensImporter/megadesignassets
     
-    # https://github.com/meganz/MEGAsync/issues/1010
-    # https://github.com/meganz/MEGAsync/blob/v5.14.0.3_Win/src/MEGASync/control/Version.h#L28-L29
-    git -C meganz-sdk config --local advice.detachedHead false
-    git -C meganz-sdk checkout 9d816439574996306468895bc784568707bd1b88
-    rm -r MEGAsync/src/MEGASync/mega
-    ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
+    git -C MEGAsync submodule init
+    git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
+    git -C MEGAsync -c protocol.file.allow='always' submodule update
     
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-sdk-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/020-megasync-app-fix-cmake-dependencies-detection.patch"
+    patch -d MEGAsync -Np1 -i "${srcdir}/030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch"
 }
 
 build() {
-    export CXXFLAGS+=' -DNDEBUG -isystem/usr/include/pdfium'
+    export CXXFLAGS+=' -DNDEBUG'
+    
+    # freeimage is disabled as it was dropped from the official repositories due to security concerns
+    # see: https://archlinux.org/todo/drop-freeimage/
+    # ffmpeg and libpdfium seems to be unneeded when disabling freeimage
     cmake -B build -S MEGAsync \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
@@ -78,6 +77,9 @@ build() {
         -DENABLE_DESIGN_TOKENS_IMPORTER:BOOL='OFF' \
         -DENABLE_DESKTOP_APP_TESTS:BOOL='OFF' \
         -DUSE_BREAKPAD:BOOL='OFF' \
+        -DUSE_FFMPEG:BOOL='OFF' \
+        -DUSE_FREEIMAGE:BOOL='OFF' \
+        -DUSE_PDFIUM:BOOL='OFF' \
         -Wno-dev
     cmake --build build --target MEGAsync
 }
