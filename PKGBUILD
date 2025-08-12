@@ -1,10 +1,11 @@
+
 # Maintainer: Chakib Benziane (blob42) <contact@blob42.xyz>
 
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.2.1.r1.g2d06451
-pkgrel=1
-pkgdesc="Blazing fast, realtime, extension-free, multi-browser, bookmark manager"
+pkgver=v1.2.1.r4.g5bdfb77
+pkgrel=2
+pkgdesc="Multi-browser, real-time, extension-free bookmark manager"
 arch=('i686' 'x86_64')
 makedepends=(git git-lfs go make sqlite)
 url='https://github.com/blob42/gosuki'
@@ -22,32 +23,62 @@ pkgver() {
 
 prepare() {
     msg2 'Setting up repository...'
-    cd "${srcdir}/${_pkgname}"
+    cd "${_pkgname}"
     git lfs install --local
-    if ! git remote -v | grep -q 'network-origin'; then git remote add network-origin ${url}; fi
+    if ! git remote -v | grep -q 'network-origin'; then
+      git remote add network-origin ${url};
+    fi
     git lfs fetch network-origin
     git lfs checkout
 }
 
 build() {
-  cd ${pkgname%-git}
+  cd "${_pkgname}"
 
   msg2 'Building...'
   make SYSTRAY=true release
+
+  msg2 'Generating shell completions...'
+  for _sh in bash zsh fish; do
+    build/gosuki -S completion $_sh > contrib/$_sh.completions
+  done
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd ${_pkgname}
 
-  msg2 'Installing documentation...'
+
+  install -Dm 755 build/gosuki -t "$pkgdir"/usr/bin
+  install -Dm 755 build/suki -t "$pkgdir"/usr/bin
+
+  install -Dm 644 contrib/linux/etc/systemd/user/${_pkgname}.service \
+    "$pkgdir/usr/lib/systemd/user/${_pkgname}.service"
+
+
+  # completions
+  install -Dm 644 contrib/fish.completions \
+    "${pkgdir}/usr/share/fish/completions/${_pkgname}.fish"
+
+  install -Dm 644 contrib/bash.completions \
+    "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+
+  install -Dm 644 contrib/zsh.completions \
+    "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+
+  # documentation
   for _doc in README.md; do
     install -Dm 644 $_doc -t "$pkgdir"/usr/share/doc/"${_pkgname}"
   done
 
-  msg2 'Installing executables...'
-  install -Dm 755 build/gosuki -t "$pkgdir"/usr/bin
-  install -Dm 755 build/suki -t "$pkgdir"/usr/bin
+  install -Dm 644 contrib/rofi.sh "${pkgdir}/usr/share/doc/${_pkgname}/rofi-example.sh"
 
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  install -Dm 644 contrib/${_pkgname}.1 \
+    "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+
+  install -Dm 644 contrib/suki.1 -t \
+    "${pkgdir}/usr/share/man/man1/"
+
+
+  # cleaning up pkgdir"
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' + 2>/dev/null || true
 }
