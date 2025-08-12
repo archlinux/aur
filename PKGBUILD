@@ -3,7 +3,7 @@
 # Contributor: Retrometer <retrometer070@gmail.com>
 pkgname=cubic-bin
 pkgver=2025.06.93
-pkgrel=1
+pkgrel=2
 pkgdesc="Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions."
 arch=('any')
 url="https://github.com/PJ-Singh-001/Cubic"
