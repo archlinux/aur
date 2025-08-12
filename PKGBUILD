@@ -2,14 +2,14 @@
 
 _pkgname=fcitx5-hallelujah
 pkgname=$_pkgname-git
-pkgver=r6.9eca643ea97c
+pkgver=r21.dd2f01c
 pkgrel=1
 pkgdesc='Fcitx5 port of HallelujahIM'
 arch=('x86_64' 'aarch64')
 url='https://github.com/fcitx-contrib/fcitx5-hallelujah'
 license=('LGPL-2.1-or-later')
 depends=('fcitx5' 'marisa' 'fmt' 'json-c')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git' 'extra-cmake-modules' 'nlohmann-json')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
