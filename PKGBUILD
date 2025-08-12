@@ -1,8 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.7.r93.g6a29294
+pkgver=1.0.0.alpha.7.r113.g926c5c1
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -52,6 +51,10 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # Use wheel instead of sudo group
+  # https://github.com/pop-os/cosmic-settings/issues/1293
+  sed -i 's|sudo|wheel|g' "resources/polkit-1/rules.d/${pkgname%-git}.rules"
 }
 
 build() {
