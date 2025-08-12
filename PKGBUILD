@@ -15,7 +15,8 @@ makedepends=(
   'qt6-tools'
   'sip4'
   'pkgconf'
-  'git')
+  'git'
+  'clang')
 depends=(
   'qt6-base'
   'qt6-svg'
