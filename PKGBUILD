@@ -2,7 +2,7 @@
 
 pkgname=wind-bin
 _pkgname=wind
-pkgver=25.1.4.07030
+pkgver=25.1.5.07250
 pkgrel=1
 pkgdesc="Wind financial terminal, 万得金融终端"
 arch=("x86_64")
@@ -15,7 +15,7 @@ pkgprefix="com.wind.wft-kylinV10SP1"
 pkgsuffix="amd64.deb"
 source=("https://d-cdn.wind.com.cn/windnet/linux/${pkgprefix}_${pkgsuffix}.zip"
          "${_pkgname}.sh")
-md5sums=('6b209674d54c9fa524d16f7d0c49c59b'
+md5sums=('4cbeea69744c665fbc8e70511b662934'
         'b91bddd9120a457da61f9f9077480ae2')
 
 prepare(){
