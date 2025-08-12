@@ -2,7 +2,7 @@
 
 pkgname=ownfoil-git
 pkgver=r238.1d3789f
-pkgrel=1
+pkgrel=2
 pkgdesc='Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
 url='https://github.com/a1ex4/ownfoil'
@@ -23,13 +23,11 @@ depends=(
   'python-zstandard'
 )
 source=("git+https://github.com/a1ex4/ownfoil"
-        "git+https://github.com/a1ex4/NSTools"
         'ownfoil.service'
         'ownfoil.sysusers'
         'ownfoil.tmpfiles'
 )
 sha256sums=('SKIP'
-            'SKIP'
             '528de3cc691edb57a44e512024832a1a1d0947dbbcda84e487b033150edc6193'
             'aee7a6c72d655e29365fe266165ffb714666507a9536871500ced59e0f5d992f'
             'abe899a8eecb080f3b938c2441e09838a539f6bfc00e8207ade74bb18c1a5a12')
@@ -38,14 +36,6 @@ pkgver()
 {
   cd ownfoil
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare()
-{
-  cd ownfoil
-  git submodule init
-  git config submodule.libs/libdep.url "${srcdir}/NSTools"
-  git -c protocol.file.allow=always submodule update
 }
 
 package()
