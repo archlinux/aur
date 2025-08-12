@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=calculix-precice
 pkgver=2.20.1
-pkgrel=3
+pkgrel=4
 pkgdesc="preCICE-adapter for the CSM code CalculiX"
 url="https://github.com/${pkgname/calculix-/}/${pkgname/precice/adapter}"
 license=(GPL-3.0-or-later)
@@ -17,7 +17,7 @@ sha512sums=('52fbef41b3eed6ce211bb09d22d40511392669dcf2144d0a83249c6bfd6bf3a81d4
 
 prepare() {
   # https://github.com/precice/precice.github.io/blob/master/pages/docs/adapters/calculix/adapter-calculix-get-adapter.md?plain=1#L94
-  sed -i 's/^FFLAGS = -Wall -O3 -fopenmp $(INCLUDES)/FFLAGS = -Wall -O3 -fopenmp -fallow-argument-mismatch $(INCLUDES)/' ${pkgname/precice/adapter}-${pkgver}/Makefile
+  sed -i 's/^FFLAGS = -Wall -O3 -fopenmp $(INCLUDES)/FFLAGS = -Wall -O3 -fopenmp -fallow-argument-mismatch -Wno-implicit-function-declaration $(INCLUDES)/' ${pkgname/precice/adapter}-${pkgver}/Makefile
   cd ${pkgname/precice/adapter}-${pkgver}/packaging
   pandoc manpage.md -s -t man -o ccx_preCICE.1
 }
