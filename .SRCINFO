@@ -1,6 +1,6 @@
 pkgbase = pons-cli
 	pkgdesc = An unofficial simple CLI tool to look up translations via the Pons API. This project is not affiliated with Pons or its services.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/mikachou/pons-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pons-cli
 	license = MIT
 	makedepends = go
 	depends = sqlite
-	source = https://github.com/mikachou/pons-cli/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = dcc392e36613a824565a24b6d9c51e902ba7e0b57f2e1f290c2689b9bf8b5d88
+	source = https://github.com/mikachou/pons-cli/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = c13d7585989b13582cfbb443f24a93013ce6cb24ebb505a10832581d55a0bd08
 
 pkgname = pons-cli

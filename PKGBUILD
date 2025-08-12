@@ -1,6 +1,6 @@
 # Maintainer: Michael Schuh <michael.schuh.34@gmail.com>
 pkgname=pons-cli
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An unofficial simple CLI tool to look up translations via the Pons API. This project is not affiliated with Pons or its services."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sqlite')
 makedepends=('go')
 source=("https://github.com/mikachou/pons-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dcc392e36613a824565a24b6d9c51e902ba7e0b57f2e1f290c2689b9bf8b5d88')
+sha256sums=('c13d7585989b13582cfbb443f24a93013ce6cb24ebb505a10832581d55a0bd08')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
