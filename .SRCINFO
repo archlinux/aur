@@ -1,0 +1,20 @@
+pkgbase = cxt-bin
+	pkgdesc = A command-line tool that aggregates file and directory contents into your clipboard, perfect for providing project context to AI chatbots
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/vaibhav-mattoo/cxt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cxt
+	conflicts = cxt
+	source = LICENSE-0.1.6::https://raw.githubusercontent.com/vaibhav-mattoo/cxt/v0.1.6/LICENSE
+	source = README-0.1.6.md::https://raw.githubusercontent.com/vaibhav-mattoo/cxt/v0.1.6/README.md
+	sha256sums = 7b7f5c05777003b721d6114361620e45ca5ebd477f33d4f52decc8a1c159e309
+	sha256sums = 3f61f642dd68a31505970244da08d89408d147855c925479edc437de6f4305cb
+	source_x86_64 = https://github.com/vaibhav-mattoo/cxt/releases/download/v0.1.6/cxt-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 46834f1040a95f63cf068d5feeff6d26210548f1c61390aad9da3285cb52c06b
+	source_aarch64 = https://github.com/vaibhav-mattoo/cxt/releases/download/v0.1.6/cxt-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 60278ada65affc763d1c36da23b0981f54dd64bc1e2b7d2216a6e980f4d3614f
+
+pkgname = cxt-bin
