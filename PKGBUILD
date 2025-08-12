@@ -1,7 +1,7 @@
 # Maintainer: strat <strat@jamjar.ws>
 
 pkgname=spicetify-themes-git
-pkgver=r511.82e14ab
+pkgver=r517.b41e22b
 pkgrel=1
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
