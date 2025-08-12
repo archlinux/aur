@@ -19,7 +19,8 @@ post_upgrade() {
 pre_remove() {
 
 	if command -v py3clean >/dev/null 2>&1; then
-		py3clean -p cubic 
+		py3clean -p cubic
+	fi
 }
 
 post_remove() {
