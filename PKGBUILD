@@ -5,7 +5,7 @@
 
 pkgname=yixee-bin
 pkgver=0.0.1
-pkgrel=1
+pkgrel=0
 pkgdesc='Memories live on — with Yixee'
 url=https://github.com/yixee/yixee
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ depends=(fuse2 xdg-user-dirs libayatana-appindicator)
 conflicts=('yixee')
 provides=('yixee')
 options=(!debug)
-source_x86_64=("${url}/releases/download/v${pkgver}+${pkgrel}/yixee-${pkgver}.${pkgrel}-linux-amd64.deb")
-source_aarch64=("${url}/releases/download/v${pkgver}+${pkgrel}/yixee-${pkgver}.${pkgrel}-linux-aarch64.deb")
-sha256sums_x86_64=('01c8b7e8eda48a72a147300b16ffcc738b5ca33288203f9df5ab1b36daf2f352')
-sha256sums_aarch64=('f2ca761b33a44b143852d1c8d0bb4e059340ece5517a615afc33420e8aa6b916')
+source_x86_64=("${url}/releases/download/v${pkgver}/yixee-${pkgver}-linux-amd64.deb")
+source_aarch64=("${url}/releases/download/v${pkgver}/yixee-${pkgver}-linux-aarch64.deb")
+sha256sums_x86_64=('918fdf7698f8acc50e86872998cc960f5624ded2452311e23e8e6b3899710804')
+sha256sums_aarch64=('067c9f8fddf1e6a34fa5229758c54b9ef62b67ea258b93c02d3d993c3e925687')
 _pkgdesktop="yixee.desktop"
 
 prepare() {
