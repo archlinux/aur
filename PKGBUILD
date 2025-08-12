@@ -21,6 +21,7 @@ package() {
     install -d "${pkgdir}/usr/share/"{applications,pixmaps}
 
     mv "${srcdir}/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    chmod +x "${srcdir}/${_pkgname}/bin/${_pkgname}"
     mv "${srcdir}/${_pkgname}" "${pkgdir}/opt"
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.abdownloadmanager.desktop" <<EOF
 [Desktop Entry]
