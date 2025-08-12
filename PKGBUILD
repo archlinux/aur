@@ -1,9 +1,9 @@
 # Maintainer: Joshua Schmeder <joshua@schmeder.dev>
 
 pkgname=archipelagomw-bin
-_ghrel=0.6.2
-pkgver=0.6.2
-pkgrel=2
+_ghrel=0.6.3
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="A Multi-Game Randomizer and Server"
 arch=("x86_64")
 url="https://github.com/ArchipelagoMW/Archipelago"
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python-colorama" "python-websockets" "python-yaml" "python-jellyfish" "python-jinja" "python-schema" "python-kivy" "python-bsdiff4" "python-platformdirs" "python-certifi" "cython" "python-cymem" "python-orjson" "python-typing_extensions" "xsel" "xclip")
 optdepends=("mtdev: Multi-touch device support")
 source=("https://github.com/ArchipelagoMW/Archipelago/releases/download/${_ghrel}/Archipelago_${pkgver}_linux-x86_64.tar.gz")
-sha512sums=('22c79a88763050a30117fa9f0b61e022a3dabefe5fd5095ed9baf6e737c28f5dc10da764550d969335b5788cd0ca693c616975bc58773c733349c2153a987fc3')
+sha512sums=('d361f3bcf15309c2ab9d414e13be48d8b57d9fae407d957be9cc37050a5167726691d70bb70740ab41b435924401279ff82ae98a6bbf4387e667dbdb23c41482')
 
 package() {
   install -d "$pkgdir/opt"
