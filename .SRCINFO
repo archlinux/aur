@@ -1,0 +1,19 @@
+pkgbase = python-nstools
+	pkgdesc = Nintendo Switch tools
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/seiya-dev/NSTools/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-zstandard
+	depends = python-enlighten
+	depends = python-requests
+	depends = python-pycryptodome
+	source = https://github.com/seiya-dev/NSTools/releases/download/v1.2.3/nstools-1.2.3.tar.gz
+	sha256sums = 84a1fb60d563b4eb39f2b0ba3a383500d35df3b1afc7fa8919cc9d34cea4647f
+
+pkgname = python-nstools
