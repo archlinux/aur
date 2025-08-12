@@ -1,6 +1,6 @@
 pkgbase = gn-m76
 	pkgdesc = Meta-build system that generates build files for Ninja (version shipped in Chromium 76; for building electron{4,5,6})
-	pkgver = 0.1576.81ee1967
+	pkgver = 0.1576.81ee1967d
 	pkgrel = 1
 	url = https://gn.googlesource.com/gn/
 	arch = x86_64

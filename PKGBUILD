@@ -1,7 +1,7 @@
 # Maintainer: Tommy Jerry Mairo <tjm@member.fsf.org>
 
 pkgname=gn-m76
-pkgver=0.1576.81ee1967
+pkgver=0.1576.81ee1967d
 _commit=81ee1967d3fcbc829bac1c005c3da59739c88df9
 pkgrel=1
 pkgdesc="Meta-build system that generates build files for Ninja"
