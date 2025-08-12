@@ -11,9 +11,9 @@ conflicts=("$_pkgname" "$_pkgname-alpha" "$_pkgname-alpha-bin" "$_pkgname-git" "
 options=(!strip)
 install=.install
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0806.8046dad_amd64.deb")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0806.8046dad_arm64.deb")
-source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0806.8046dad_armhf.deb")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0812.45e6954_amd64.deb")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0812.45e6954_arm64.deb")
+source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0812.45e6954_armhf.deb")
 
 sha512sums_x86_64=('SKIP')
 sha512sums_aarch64=('SKIP')
