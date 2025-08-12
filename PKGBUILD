@@ -3,7 +3,7 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=gvm-tools
-pkgver=25.3.1
+pkgver=25.3.2
 pkgrel=1
 pkgdesc='greenbone-vulnerability-manager tools'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-wheel python-poetry-core)
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/greenbone/gvm-tools/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha512sums=('a42bfbdad588d72da7b87a0f9713d6b6c86fc2594e715e37b0580563fafd257ae310279185634ade55d3c019767b8bec892ea109856c34f3b466b0be6c5bfec7'
+sha512sums=('60a9574c47329db75aca718713e812ff8f97ff7779a14e5096c1fb02ec57a9f44203ce237456725fc6656b47465351aa18ed52f1ad052791d8d1de27e7f5f74f'
             'SKIP')
 validpgpkeys=(
               'C3B468D2288C68B9D526452248479FF648DB4530' # GVM Transfer Integrity
