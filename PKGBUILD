@@ -20,7 +20,7 @@ optdepends=(
 )
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arthur404dev/heimdall-cli/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('de3de95dbdf745b7edd97fb537f3432d59749c85d82e340a102df0f74b7adfac')
 
 prepare() {
   cd "$srcdir/heimdall-cli-$pkgver"

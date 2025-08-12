@@ -22,6 +22,6 @@ pkgbase = heimdall-cli
 	optdepends = swww: wallpaper daemon
 	optdepends = imagemagick: wallpaper processing
 	source = heimdall-cli-0.2.0.tar.gz::https://github.com/arthur404dev/heimdall-cli/archive/v0.2.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = de3de95dbdf745b7edd97fb537f3432d59749c85d82e340a102df0f74b7adfac
 
 pkgname = heimdall-cli
