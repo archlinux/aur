@@ -2,7 +2,7 @@
 
 pkgbase=ampcode
 pkgname=ampcode
-pkgver=0.0.1754957954
+pkgver=0.0.1754971819
 pkgrel=1
 pkgdesc="An agentic coding tool, in research preview from Sourcegraph"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://packages.ampcode.com/binaries/cli/v${pkgver}/amp-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://packages.ampcode.com/binaries/cli/v${pkgver}/amp-linux-arm64")
 
-sha256sums_x86_64=('27c37cfc76cf7bb6445bfb9c42f13e38c34252e95081d516292f6baadfe4fdf1')
-sha256sums_aarch64=('5cb316faf3e1e853a7000e36e540509170d546c3073654c4ce3b6793df7bbfe5')
+sha256sums_x86_64=('8a23e2b88d50a990d4e849fd375a3ae5bde39bb30ffc5b8281fd9d1483918269')
+sha256sums_aarch64=('cd0d62d508ee083dcd8ce8a2587e8dd754b8f6a2e2da2e6d5242ee8cbe962240')
 
 package() {
     # The downloaded binary needs to be renamed to amp for installation
