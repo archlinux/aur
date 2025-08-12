@@ -14,7 +14,7 @@ _appname='EZ4Connect'
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('61958caa0fa579ffc3e1cb40716260fccaf26959f2a8dd17a6f9b6c25b8aedce')
+sha256sums=('b8d38c8bae1662fa2f3b41136ea8f0abd8dbde2fd14706802263bed231bf838d')
 
 build(){
     cd "${srcdir}"/${_appname}-${pkgver}

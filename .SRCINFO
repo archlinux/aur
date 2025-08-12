@@ -20,6 +20,6 @@ pkgbase = ez4connect
 	provides = ez4connect
 	conflicts = ez4connect
 	source = ez4connect-1.2.10.tar.gz::https://github.com/PageChen04/EZ4Connect/archive/refs/tags/v1.2.10.tar.gz
-	sha256sums = 61958caa0fa579ffc3e1cb40716260fccaf26959f2a8dd17a6f9b6c25b8aedce
+	sha256sums = b8d38c8bae1662fa2f3b41136ea8f0abd8dbde2fd14706802263bed231bf838d
 
 pkgname = ez4connect
