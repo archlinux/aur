@@ -1,0 +1,4 @@
+[barmer-ecare-bin]
+source = "snapcraft"
+snap = "barmer-ecare"
+channel = "stable"
