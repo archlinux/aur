@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dankmaterialshell-git
 pkgver=r0.g0000000
-pkgrel=5
+pkgrel=6
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('any')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -16,7 +16,6 @@ depends=(
 optdepends=(
     'networkmanager: Required for network management'
     'matugen-bin: Dynamic wallpaper-based theming'
-    'ddcutil: External monitor brightness control'
     'brightnessctl: Laptop display brightness control'
     'wl-clipboard: Copy functionality for PIDs and other elements'
     'cliphist: Clipboard history functionality'
