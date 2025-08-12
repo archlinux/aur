@@ -2,7 +2,7 @@
 
 pkgname=fokus
 pkgver=1.1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="A minimalist terminal‐based focus timer and stopwatch with daily logging, built on ncurses."
 arch=('x86_64')
 url="https://sr.ht/~fijarom/fokus/"
