@@ -3,7 +3,7 @@
 _pkgauthor=Beacroxx
 _pkgname=pulse-visualizer
 pkgname=${_pkgname}-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[0]}.tar.gz")
 sha256sums=('c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271'
             '17e300a313e0eafb19528e76193b134791c6f19614761f0ba48b8393bf72cedf')
-sha256sums_x86_64=('12ac4626a5ce394867dcbfc51190d73125a65ba1ec65789b759ad8dad0ac9af7')
+sha256sums_x86_64=('eb6482e183113942bec3504a934395ddafbfd6e2704b7cfd9f91a54339eecda9')
 
 
 prepare() {
@@ -47,6 +47,8 @@ package() {
 	install -Dm644 "${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 
 	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+	install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
 
 	mkdir "${pkgdir}/usr/share/${_pkgname}/"
 	cp -rf shaders "${pkgdir}/usr/share/${_pkgname}/"
