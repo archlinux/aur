@@ -1,0 +1,14 @@
+pkgbase = ytify
+	pkgdesc = Production build of ytify - lightweight YouTube player UI
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/n-ce/ytify
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = nodejs
+	depends = python
+	source = git+https://github.com/n-ce/ytify.git
+	sha256sums = 3202043b110dc4e014f6576f9d8da3e1d4dd9b1579542b4c3911d818a07d4f8d
+
+pkgname = ytify
