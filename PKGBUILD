@@ -3,7 +3,7 @@
 _pkgauthor=erg-lang
 _pkgname=erg
 pkgname=${_pkgname}-bin
-pkgver=0.6.52
+pkgver=0.6.53
 pkgrel=1
 pkgdesc='Statically typed language that builds upon the Python ecosystem'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,8 +21,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-unkn
 sha256sums=('c5318119bfa1324d858d75bba3284d2ce39a2f750cd66f01cefcfe37391b8b31'
             '508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1'
             '3905892d35c90001cd11101d367d4073b773f30fa7ce868748969f4cc1fb24c2')
-sha256sums_x86_64=('1381929e34d8964f95664ccfca292f850dcfe252cb4569185637ffb22c5ee13b')
-sha256sums_aarch64=('fee88fce57309a07e27cf9177cd9de093265d7cf09b88fb6c3862e95f78c6168')
+sha256sums_x86_64=('671034889030a68c3557123c3ab51197d820499124e411c301b17d2d32876dfa')
+sha256sums_aarch64=('d5e8b7525c92c43717bcba18584c508a95a63795941c84e1edadde00a970f642')
 
 package() {
 	cd "${srcdir}/" || exit
