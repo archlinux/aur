@@ -2,7 +2,7 @@
 
 _pkgname=aeternum
 pkgname=aeternum-bin
-_pkgver="v0.1.0"
+_pkgver="v0.1.2-beta.1"
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A simple and minimal upscaler built in 🦀 rust (WIP)"
@@ -13,13 +13,13 @@ conflicts=("aeternum")
 arch=("x86_64")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/cloudy-org/aeternum/releases/download/$_pkgver/aeternum-x86_64-unknown-linux-gnu.tar.gz"
-    "aeternum.png::https://raw.githubusercontent.com/cloudy-org/aeternum/refs/heads/main/assets/image.png"
+    "aeternum.png::https://raw.githubusercontent.com/cloudy-org/aeternum/refs/heads/main/assets/crystal.png"
     "aeternum.desktop::https://raw.githubusercontent.com/cloudy-org/aeternum/refs/heads/main/assets/aeternum.desktop"
     "aeternum.sh"
 )
 sha256sums=(
-    '1f02557d479f5342c7a9ff297abe5b4db258b2db802bd6a7df7ec3490b66cf14'
-    'e73098afa4349045265c87816eab4332ad9485af22cd43cd0d88aee80fc16a5e'
+    '133101eae145de36cd38f354abe7e8a4d30138644ae09f98c6abaaf586bb6a4e'
+    'f85a991b69b44c0a4eeaca2b0f3384831354da565b2d6bc1790a1e4451c6f70f'
     'efa05c7a50e8aaaace89757dce2c8025a980c2a525197be5f992971695963d8b'
     '8088666b5cca28a0660b8ba844990d3211e949f879f4324a31e7194ebea648ea'
 )
