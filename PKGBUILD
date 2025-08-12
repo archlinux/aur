@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=quam_facere
 pkgname=${_pkgname}-git
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A comprehensive web-based system for managing IT procedures, operations, and team workflows"
 arch=(any)
