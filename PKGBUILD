@@ -229,7 +229,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         )
 sha256sums=('1ea134da21add1fc95a4d49ad2dff806115aa2f2ffdcb91dca1fd01e1f54d71c'
             '6f5067e5f87ac0591295fc3ec0f7e722d0f5eb94ade2fb3e73ae8abcbb674f8a'
-            '750fa28c0cbe464a45bab5a1021434e296ad83fef78b927eaec0f82df3aac26c'
+            '5eb62f142569bd6887396410ad174a4e9e932790361567df0fd9127003d6b2a0'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
             'de3222b13d3a49628a00fd74acae633912b830f78c2de452d3bdff3d0e42026d'
