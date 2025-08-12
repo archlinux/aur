@@ -1,0 +1,14 @@
+pkgbase = obs-source-profiler
+	pkgdesc = Advanced Masking Plugin for OBS
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/exeldro/obs-source-profiler
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	depends = glibc
+	depends = obs-studio
+	source = obs-source-profiler-0.0.9.tar.gz::https://github.com/exeldro/obs-source-profiler/archive/0.0.9.tar.gz
+	sha256sums = e2d99cd0032ea50f68b798b42c003147baba393a299cb885ac5f1b1051c43d33
+
+pkgname = obs-source-profiler
