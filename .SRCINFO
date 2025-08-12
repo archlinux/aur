@@ -1,16 +1,16 @@
 pkgbase = libinklevel
 	pkgdesc = A library for checking the ink level of your printer
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = http://libinklevel.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = libusb
 	depends = libxml2
 	depends = glibc
 	provides = libinklevel.so=5-64
-	source = libinklevel-0.9.6.tar.gz::https://downloads.sourceforge.net/libinklevel/libinklevel-0.9.6.tar.gz
-	sha256sums = c69848f9f2ca71f7a3a4f8415132933ed8d4b5882158c7c543181222081b5134
+	source = libinklevel-0.9.7.tar.gz::https://downloads.sourceforge.net/libinklevel/libinklevel-0.9.7.tar.gz
+	sha256sums = 819d3bb4c2578722c1057c9f3da999a1a3eb46628f0fe91aeb52bfccd3884675
 
 pkgname = libinklevel

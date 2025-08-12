@@ -5,16 +5,16 @@
 # Contributor: Axel Reidemeister[computerkranker] <mail@axelreidemeister.de>
 
 pkgname=libinklevel
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="A library for checking the ink level of your printer"
 arch=('i686' 'x86_64')
 url="http://libinklevel.sourceforge.net/"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('libusb' 'libxml2' 'glibc')
 provides=('libinklevel.so=5-64')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('c69848f9f2ca71f7a3a4f8415132933ed8d4b5882158c7c543181222081b5134')
+sha256sums=('819d3bb4c2578722c1057c9f3da999a1a3eb46628f0fe91aeb52bfccd3884675')
 
 build() {
 	cd "$pkgname-$pkgver"
