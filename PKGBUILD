@@ -1,6 +1,6 @@
 # Maintainer: Phil <42981905+PhilCauss@users.noreply.github.com>
 pkgname=arx
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A secure wrapper around yay (AUR) with LLM-based security analysis"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
   'python-setuptools>=68'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5405f90c28e28d28cabc3b9984028dbcf8713bacb47fba58c60bd80f381d358')
+sha256sums=('57606005fccd460a74df03ff7627fb19695119bd200ca585f3e5d96b173ea611')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

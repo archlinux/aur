@@ -1,6 +1,6 @@
 pkgbase = arx
 	pkgdesc = A secure wrapper around yay (AUR) with LLM-based security analysis
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/PhilCauss/arx
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = arx
 	depends = python>=3.8
 	depends = python-openai>=1.0.0
 	optdepends = yay: required for functionality
-	source = arx-1.0.8.tar.gz::https://github.com/PhilCauss/arx/archive/refs/tags/v1.0.8.tar.gz
-	sha256sums = c2db1a8ef23cea9b8fa2584e7f007ff67c200f2481685b5253c1f7617b5bbd7d
+	source = arx-1.0.9.tar.gz::https://github.com/PhilCauss/arx/archive/refs/tags/v1.0.9.tar.gz
+	sha256sums = 57606005fccd460a74df03ff7627fb19695119bd200ca585f3e5d96b173ea611
 
 pkgname = arx
