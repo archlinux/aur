@@ -1,0 +1,19 @@
+pkgbase = tuxagotchi-syu
+	pkgdesc = A virtual pet that tracks your Arch Linux system updates
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/terpinedream/tuxagotchi-syu
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	depends = python-aiohttp
+	depends = python-pygithub
+	depends = python-toml
+	depends = sudo
+	depends = pacman
+	source = tuxagotchi-syu-1.0.0.tar.gz::https://github.com/terpinedream/tuxagotchi-syu/archive/v1.0.0.tar.gz
+	sha256sums = 07623137055cb039e2996f674dcfb63ab062ff74b2e2e74a16b4b2a9fb9ddae2
+
+pkgname = tuxagotchi-syu
