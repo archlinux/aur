@@ -1,0 +1,16 @@
+pkgbase = implot-git
+	pkgdesc = Immediate Mode Plotting
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/epezent/implot
+	arch = any
+	license = MIT
+	makedepends = cmake
+	depends = imgui
+	provides = implot
+	source = git+https://github.com/epezent/implot.git
+	source = CMakeLists.txt
+	sha256sums = SKIP
+	sha256sums = 6f18ca62265b4a60ef83c899a12230e45d25d98ce3a931a3d8139a4404d9bd3f
+
+pkgname = implot-git
