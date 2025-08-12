@@ -1,0 +1,19 @@
+pkgbase = libstring-util
+	pkgdesc = C++ lib of useful string manipulation functions
+	pkgver = 1.2.9
+	pkgrel = 0
+	url = https://gitlab.com/links_and_nodes/libstring_util
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	provides = libstring-util
+	provides = libstring_util.so
+	conflicts = libstring-util
+	conflicts = libstring_util.so
+	source = libstring-util::git+https://gitlab.com/links_and_nodes/libstring_util.git#tag=1.2.9
+	sha256sums = 1b784bf5fdc378d5c8a421a5bc55c26801d4b323dcf65ad47a00dd5104fe6354
+
+pkgname = libstring-util
