@@ -1,6 +1,6 @@
 pkgbase = xsystem4-git
 	pkgdesc = This is a cross-platform implementation of AliceSoft's System 4 engine
-	pkgver = alpha.5.1.r119.gd404324
+	pkgver = alpha.5.1.r126.g441419d
 	pkgrel = 1
 	url = https://github.com/nunuhara/xsystem4
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = xsystem4-git
 	makedepends = flex
 	makedepends = glew
 	makedepends = meson
+	depends = chibi-scheme
 	depends = ffmpeg
 	depends = freetype2
 	depends = libffi

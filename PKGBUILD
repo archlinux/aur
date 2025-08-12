@@ -2,7 +2,7 @@
 
 _pkgname=xsystem4
 pkgname=${_pkgname}-git
-pkgver=alpha.5.1.r119.gd404324
+pkgver=alpha.5.1.r126.g441419d
 pkgver() {
   cd "$_pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -12,7 +12,7 @@ pkgdesc="This is a cross-platform implementation of AliceSoft's System 4 engine"
 arch=(x86_64)
 url="https://github.com/nunuhara/xsystem4"
 license=('GPL-2.0-only')
-depends=(ffmpeg freetype2 libffi libpng libsndfile libjpeg-turbo libwebp sdl2 zlib)
+depends=(chibi-scheme ffmpeg freetype2 libffi libpng libsndfile libjpeg-turbo libwebp sdl2 zlib)
 makedepends=(bison flex glew meson)
 prepare () {
 	git clone --recursive $url
