@@ -2,8 +2,8 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=codon-bin
-pkgver=0.19.2
-pkgrel=3
+pkgver=0.19.3
+pkgrel=1
 pkgdesc='High-performance, zero-overhead, extensible Python compiler using LLVM'
 arch=(x86_64)
 url='https://github.com/exaloop/codon'
@@ -39,7 +39,7 @@ package() {
 }
 
 b2sums=('751dc54eea16f18c88976bd30436c24dce3d2d03aa0e6c2ef323a4393738ef01c79739fc2c5073bdacd7f5282aa0c7b38af575209de9458085c10abcda571a81'
-        'd7298581f1ba155d838e2b676e2371bc4197a45504292d855f42e660d2b5ef9cf6b42338b0cfcfd58ad67e59584b648b77eda6e8e4a6b6eff98023bf0ef54da4'
+        '8bb810c39be7a0e2f38df3c9075218b2bb7f00653bec67226429ffeacffa0d77eef9f46edaf8a4849630f3794fbf8724109eee72110d476ee28be86871a0b277'
         '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85'
         'c9a8ac98fdeebacd0584bd89cb449b43400296c11c1c8a7dea2ebdd469000451e11d8daf42b9bbbe322eb016bd7e5d338b94f0e72594e6fccd0aaf329a14edc6')
 
