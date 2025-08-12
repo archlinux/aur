@@ -1,0 +1,8 @@
+*.tar.gz
+*.tar.xz
+*.tar.zst
+pkg/
+src/
+heimdall-cli/
+heimdall/
+*.log
