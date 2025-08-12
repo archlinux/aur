@@ -1,11 +1,11 @@
-# Maintainer: kamisaki <your-email@example.com>
+# Maintainer: xeyossr
 # Description: A terminal wrap tool inspired by Spotify Wrapped
 
 pkgname=terminalwrap
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A terminal wrap tool inspired by Spotify Wrapped"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/xeyossr/terminalwrap"
 license=('GPL3')
 depends=('glibc')
