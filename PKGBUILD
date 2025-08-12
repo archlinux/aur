@@ -22,10 +22,6 @@ options=('!emptydirs')
 source=("git+${url}#tag=${pkgver}")
 sha256sums=('SKIP')
 
-prepare() {
-  cd $_basename
-}
-
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
