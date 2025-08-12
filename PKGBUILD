@@ -22,7 +22,7 @@
 
 pkgname=seihou-shuusou-gyoku
 pkgver=P0310
-pkgrel=2
+pkgrel=3
 pkgdesc='First game of the Seihou project; ReC98 source port, engine only'
 arch=('x86_64' 'i686')
 url='https://github.com/nmlgc/ssg'
@@ -50,7 +50,7 @@ optdepends=(
 	"ttf-ipa-mona: Free Japanese bitmap font, metric-compatible with the original game's MS Gothic"
 	"ttf-ms-win11-auto-japanese: Extracts MS Gothic from a Windows 11 ISO"
 )
-source=("git+https://github.com/nmlgc/ssg.git#tag=$pkgver-1")
+source=("git+https://github.com/nmlgc/ssg.git#tag=$pkgver-2")
 b2sums=('SKIP')
 _skel=/usr/share/$pkgname/skel
 
