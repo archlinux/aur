@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vsd'
-pkgver='0.4.1'
+pkgver='0.4.2'
 pkgrel='1'
 pkgdesc='Download video streams served over HTTP from websites, HLS and DASH playlists'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver::git+$url#tag=vsd-$pkgver?signed"
 	"$pkgname-$pkgver-bento4::git+https://github.com/axiomatic-systems/Bento4#commit=dc264854d1f76c370b65b18d9f303a95f7f21ab1"
 )
-b2sums=('daf76eadc3b2f33cfcf629455c38f1204afc67ca45b9fa5d392440acbbdc574fa0e7a90a5cd3003b2c75d61e9205219adfd4efcdf4d272e6e3ac3fc4fac046a9'
+b2sums=('be7e7572844843eb4e5dc12ed5cd9c5b4cfc36e3ea6ffa41010ef9cfb0a47dabbd9cae2418b9daa1197bdade35e81c4f53bf9feb84c7e44c790158cf89a4740e'
         'a7dcf2e4e0ad17fe18d6c30d85a5358dcd9d5a8a8ed2c614ea5dcc435b0cfab479197453b0ae01667f4a6eaf9d2e750a4708de4a6205ea1e5fa83fea3fed4f2d')
 validpgpkeys=('F3F06E548985227BA295D65CE01A8B4D6029DDA6') # Apoorv Sachan <clitic21@gmail.com> (https://github.com/clitic.gpg)
 
