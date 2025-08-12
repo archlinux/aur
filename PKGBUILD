@@ -3,7 +3,7 @@
 
 pkgname=ssh-list
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A SSH connection manager with a TUI interface"
 arch=('x86_64')
 url="https://github.com/akinoiro/ssh-list"

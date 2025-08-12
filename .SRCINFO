@@ -1,7 +1,7 @@
 pkgbase = ssh-list
 	pkgdesc = A SSH connection manager with a TUI interface
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akinoiro/ssh-list
 	arch = x86_64
 	license = GPL-3.0-or-later
