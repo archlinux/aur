@@ -1,23 +1,25 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libaacs-git
-pkgver=0.11.1.12.g37b8a48
+pkgver=0.11.1.13.g0471e05
 pkgrel=1
 pkgdesc="Advanced Access Content System. (GIT version)"
 arch=('x86_64')
 license=('LGPL')
 url='https://www.videolan.org/developers/libaacs.html'
-depends=('libgcrypt'
-         'libudfread.so'
-         )
-makedepends=('git'
-             'flex'
-             'bison'
-             'libudfread-git'
-             )
-provides=('libaacs'
-          'libaacs.so'
-          )
+depends=(
+  'libgcrypt' # libgcrypt.so
+  'libudfread-git' 'libudfread.so'
+)
+makedepends=(
+  'git'
+  'flex'
+  'bison'
+)
+provides=(
+  'libaacs'
+  'libaacs.so'
+)
 conflicts=('libaacs')
 source=('git+https://code.videolan.org/videolan/libaacs.git')
 sha256sums=('SKIP')
@@ -36,6 +38,7 @@ prepare() {
 
 build() {
   cd build
+  LIBGCRYPT_CONFIG="/usr/bin/pkg-config libgcrypt" \
   ../libaacs/configure \
     --prefix=/usr
 
