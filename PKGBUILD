@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=vkdoom-git
-pkgver=v25.6.0+8+ge29e1578b
+pkgver=v25.6.0+455+gbadc7c9b0
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
@@ -43,10 +43,12 @@ conflicts=('vkdoom' 'vkdoom-bin-nightly')
 options=(!debug !lto)
 source=('vkdoom::git+https://github.com/dpjudas/VkDoom/'
         'org.vkdoom.vkdoom.desktop'
-        '0001-Enforce-file-paths.patch')
+        '0001-Enforce-file-paths.patch'
+        '0002-fix-secformat.patch')
 b2sums=('SKIP'
-            '25d72c4147bd27c415ae8dc7e21549e40a1c562ab3df77ca82bd299aef895125a2106ef92f3b699a605157919b57e3971d907f3f256d9e05b3caedad11949101'
-            'b61b7fd292db0632e3ea155dccbe38d80589d07c1d37c19963ac5e39103f57c489c3c08ab5a3f6a07f7f1d8ae6f7ddf3fdfc0006313312754d7b91f35d6780f4')
+        '25d72c4147bd27c415ae8dc7e21549e40a1c562ab3df77ca82bd299aef895125a2106ef92f3b699a605157919b57e3971d907f3f256d9e05b3caedad11949101'
+        'b61b7fd292db0632e3ea155dccbe38d80589d07c1d37c19963ac5e39103f57c489c3c08ab5a3f6a07f7f1d8ae6f7ddf3fdfc0006313312754d7b91f35d6780f4'
+        'fe92838aa71e7b03b3cb7c56e85e6b5f08715c6e0af476c911b25f74d417d56cf3d544a63561bf152906dbd5738f2f5093873fa5be3c9bcd4d8968c865f0c8f8')
 
 _enforce_clang=${_enforce_clang-}
 
@@ -68,6 +70,9 @@ pkgver() {
 prepare() {
     cd vkdoom
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
+    patch -i "$srcdir"/0002-fix-secformat.patch -p 1
+	#remove GZDoom freedesktop files that are still in here for some reason
+    rm -rf ./src/posix/freedesktop
 }
 
 build() {
