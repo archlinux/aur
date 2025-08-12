@@ -1,0 +1,20 @@
+pkgbase = yixee-bin
+	pkgdesc = Memories live on — with Yixee
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/yixee/yixee
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = fuse2
+	depends = xdg-user-dirs
+	depends = libayatana-appindicator
+	provides = yixee
+	conflicts = yixee
+	options = !debug
+	source_x86_64 = https://github.com/yixee/yixee/releases/download/v0.0.1/yixee-0.0.1.1-linux-amd64.deb
+	sha256sums_x86_64 = 01c8b7e8eda48a72a147300b16ffcc738b5ca33288203f9df5ab1b36daf2f352
+	source_aarch64 = https://github.com/yixee/yixee/releases/download/v0.0.1/yixee-0.0.1.1-linux-aarch64.deb
+	sha256sums_aarch64 = f2ca761b33a44b143852d1c8d0bb4e059340ece5517a615afc33420e8aa6b916
+
+pkgname = yixee-bin
