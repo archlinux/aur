@@ -1535,15 +1535,14 @@ Module: open_webui.retrieval.vector.utils
     open_webui/retrieval/vector/dbs/milvus.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/retrieval/vector/dbs/pinecone.py
+    open_webui/retrieval/vector/dbs/s3vector.py
 Module: opensearchpy
   Imported in:
     open_webui/retrieval/vector/dbs/opensearch.py
 Module: opensearchpy.helpers
   Imported in:
     open_webui/retrieval/vector/dbs/opensearch.py
-Module: backend.open_webui.retrieval.vector.utils
-  Imported in:
-    open_webui/retrieval/vector/dbs/s3vector.py
 Module: sqlalchemy.dialects.postgresql
   Imported in:
     open_webui/retrieval/vector/dbs/pgvector.py
