@@ -11,7 +11,7 @@
 
 _pkgname="nestopia"
 pkgname="$_pkgname"
-pkgver=1.53.1
+pkgver=1.53.2
 pkgrel=1
 pkgdesc="High-accuracy NES/Famicom emulator"
 url="https://github.com/0ldsk00l/nestopia"
@@ -35,7 +35,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/0ldsk00l/nestopia/archive/$pkgver.$_pkgext")
-sha256sums=('21aa45f6c608fe290d73fdec0e6f362538a975455b16a4cc54bcdd10962fff3e')
+sha256sums=('7783d2673ad496109e7dd3d75756cfef30c5b400409131b83b45c2fa3ddd735b')
 
 prepare() {
   # glu is not technically needed
@@ -44,14 +44,11 @@ prepare() {
 }
 
 build() {
-  export CXXFLAGS LDFLAGS
-  CXXFLAGS=${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}
-
+  export CXX LDFLAGS
   local _ldflags=(${LDFLAGS})
   LDFLAGS="${_ldflags[@]//*fuse-ld*/} -L${srcdir@Q}"
 
   if [[ "${_build_clang::1}" == "t" ]]; then
-    export CXX LDFLAGS
     CXX=clang++
     LDFLAGS+=" -fuse-ld=lld"
   fi
