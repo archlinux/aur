@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('ncurses')
 makedepends=('gcc')
 
-source=("git+https://git.sr.ht/~fijarom/fokus.git")
+source=("git+https://git.sr.ht/~fijarom/fokus")
 sha256sums=('SKIP')
 
 build() {

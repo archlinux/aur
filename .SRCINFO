@@ -7,7 +7,7 @@ pkgbase = fokus
 	license = GPL3
 	makedepends = gcc
 	depends = ncurses
-	source = git+https://git.sr.ht/~fijarom/fokus.git
+	source = git+https://git.sr.ht/~fijarom/fokus
 	sha256sums = SKIP
 
 pkgname = fokus
