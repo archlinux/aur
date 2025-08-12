@@ -1,23 +1,23 @@
 # Maintainer: Benoît Allard <benoit.allard@gnx.de>
 pkgname=python-file-read-backwards
-pkgver=2.0.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Memory efficient way of reading files line-by-line from the end of file"
 arch=('any')
 url="https://github.com/RobinNil/file_read_backwards"
 license=('MIT')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=("python")
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RobinNil/${_name//-/_}/archive/v$pkgver.tar.gz")
-md5sums=('38ee664ca2083ecf59fd09f4211c5406')
+sha256sums=('ee4c2915a5aaceaf3e5791226109c39f7324da99bd4b8466cbec5504ed126699')
 
 build() {
     cd ${_name//-/_}-$pkgver
-    export PYTHONSEED=1
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd ${_name//-/_}-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
