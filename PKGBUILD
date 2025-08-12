@@ -46,7 +46,7 @@ EOF
 [Desktop Entry]
 Name=Galaxy Flasher
 Comment=A GUI for Samsung flash-tools
-Exec=python3 /opt/galaxy-flasher/galaxy_flasher_gtk.py
+Exec=python3 /opt/galaxy-flasher/src/galaxy_flasher/galaxy_flasher_gtk.py
 Icon=/usr/share/pixmaps/galaxy-flasher.svg
 Type=Application
 Categories=GNOME;Utility;GTK;
