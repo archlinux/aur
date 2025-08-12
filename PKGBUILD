@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mgcViz
-_pkgver=0.1.11
+_pkgver=0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,10 +15,8 @@ depends=(
   r-ggplot2
   r-gridextra
   r-matrixstats
-  r-miniui
   r-plyr
   r-qgam
-  r-shiny
   r-viridis
 )
 checkdepends=(
@@ -31,10 +29,12 @@ optdepends=(
   r-rmarkdown
   r-testthat
   r-webshot2
+  r-shiny
+  r-miniui
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8b1f6454bc0d2d2a91f638ed6a25cfa6')
-b2sums=('02c27902655eadd9be2b2b7a11b767cbf7d02baf784e4fb03d4428ee52743dd999643a1c70d491eb23dc6617a0133638244b833c3eb893aff29fd61d0e9561e1')
+md5sums=('5f3a5fa196c9b19df7cfddcb0b368564')
+b2sums=('660c70633fd063fbcbefbedb69227e1dcc28a56e7da2d151839ef632a2f009b20b7d36864b4d735c23be0e6a983e7c18923275b0e09c6a642d9ce7cfd97b90e9')
 
 build() {
   mkdir build
