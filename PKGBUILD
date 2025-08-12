@@ -48,5 +48,5 @@ package() {
 
     cd $srcdir/$pkgname/assets
     install -Dm644 aeternum.desktop "$pkgdir/usr/share/applications/aeternum.desktop"
-    install -Dm644 crystal.png "$pkgdir/usr/share/pixmaps/aeternum.png"
+    install -Dm644 sparkles.png "$pkgdir/usr/share/pixmaps/aeternum.png"
 }
