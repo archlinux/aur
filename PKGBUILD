@@ -2,8 +2,8 @@
 # Contributor: 
 
 pkgname="galaxy-flasher"
-pkgver=0.6.0
-pkgrel=2
+pkgver=alpha.v2025.08.08
+pkgrel=0
 pkgdesc="A GUI for Samsung flash-tools"
 url="https://codeberg.org/ethical_haquer/galaxy-flasher"
 license=("GPL-3.0")
@@ -16,7 +16,7 @@ depends=(
   'python-pexpect'
   'odin4-cli'
   'thor-flash-utility'
-  'python-gobject'
+  'python-i18n'
 )
 makedepends=(
   'git'
@@ -27,8 +27,20 @@ sha256sums=('SKIP')
 
 package() {
 	install -Dm 644 "$srcdir/$pkgname/assets/page.codeberg.ethicalhaquer.galaxyflasher.svg" "$pkgdir/usr/share/pixmaps/galaxy-flasher.svg"
-		install -d "${pkgdir}/opt"
-	cp -r "$srcdir/$pkgname/source" "$pkgdir/opt/galaxy-flasher"
+ install -d "${pkgdir}/opt"	
+	cp -r "$srcdir/$pkgname" "$pkgdir/opt/galaxy-flasher"
+	if [ -f "/home/$USER/.config/galaxy-flasher/settings.json" ]; 
+	then
+	echo -e "\e[32msettings.json already in .config/galaxy-flasher! :3"
+	else
+	echo -e "\e[33msettings installation commencing >:3"
+	install -d 755 "${pkgdir}/home/$USER/.config/galaxy-flasher"
+	chmod +x ${pkgdir}/home/$USER/.config/galaxy-flasher
+	cat <<EOF > "${pkgdir}/home/$USER/.config/galaxy-flasher/settings.json"
+{"odin4_file": "/bin/odin4", "flash_tool": "odin4", "thor_file": "/opt/thor-flash-utility/TheAirBlow.Thor.Shell"}
+EOF
+	chown -R $USER:$USER ${pkgdir}/home/$USER/.config/galaxy-flasher
+	fi
 	install -d "${pkgdir}/usr/share/applications"
 	cat <<EOF > "${pkgdir}/usr/share/applications/galaxy-flasher.desktop"
 [Desktop Entry]
@@ -39,11 +51,5 @@ Icon=/usr/share/pixmaps/galaxy-flasher.svg
 Type=Application
 Categories=GNOME;Utility;GTK;
 EOF
-	install -d 755 "${pkgdir}/home/$USER/.config/galaxy-flasher"
-	chmod +x ${pkgdir}/home/$USER/.config/galaxy-flasher
-	cat <<EOF > "${pkgdir}/home/$USER/.config/galaxy-flasher/settings.json"
-{"odin4_file": "/bin/odin4", "flash_tool": "odin4", "thor_file": "/opt/thor-flash-utility/TheAirBlow.Thor.Shell"}
-EOF
+	echo -e "\e[31mNOTE: THE CURRENT INSTALLATION IS FOR THIS USER ONLY. \e[35msowwy ):"
 }
-
-
