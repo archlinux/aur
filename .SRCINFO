@@ -1,7 +1,7 @@
 pkgbase = epicmickeylauncher
 	pkgdesc = Mod Installer, Level Loader & Launcher for every Epic Mickey game.
-	pkgver = 0.5.3
-	pkgrel = 12
+	pkgver = 0.5.4
+	pkgrel = 13
 	url = https://eml.kalsvik.no
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = epicmickeylauncher
 	depends = appmenu-gtk-module
 	depends = libappindicator-gtk3
 	depends = librsvg
-	source = https://github.com/Epic-Mickey-Launcher/launcher/releases/download/0.5.3/Epic.Mickey.Launcher_0.5.3_amd64.deb
-	md5sums = ce7c18242e97fc1a80653d1a5cffdfbe
+	source = https://github.com/Epic-Mickey-Launcher/launcher/releases/download/0.5.4/Epic.Mickey.Launcher_0.5.4_amd64.deb
+	md5sums = ba96e34daa42bfb714ce20f5fb1054bc
 
 pkgname = epicmickeylauncher
