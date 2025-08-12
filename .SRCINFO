@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-eversolo-nowplaying-git
+	pkgdesc = Extension for GNOME Shell to control and show now playing on Eversolo devices
+	pkgver = r5.7ae86bd
+	pkgrel = 1
+	url = https://gitlab.com/teraflops/eversolo-nowplaying
+	arch = any
+	license = custom:unknown
+	makedepends = git
+	makedepends = glib2
+	depends = gnome-shell
+	provides = gnome-shell-extension-eversolo-nowplaying
+	conflicts = gnome-shell-extension-eversolo-nowplaying
+	source = eversolo-nowplaying-src::git+https://gitlab.com/teraflops/eversolo-nowplaying.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-eversolo-nowplaying-git
