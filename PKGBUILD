@@ -18,7 +18,7 @@ sha512sums=('52fbef41b3eed6ce211bb09d22d40511392669dcf2144d0a83249c6bfd6bf3a81d4
 prepare() {
   # https://github.com/precice/precice.github.io/blob/master/pages/docs/adapters/calculix/adapter-calculix-get-adapter.md?plain=1#L94
   sed -i 's/^FFLAGS = -Wall -O3 -fopenmp $(INCLUDES)/FFLAGS = -Wall -O3 -fopenmp -fallow-argument-mismatch $(INCLUDES)/' ${pkgname/precice/adapter}-${pkgver}/Makefile
-  sed -i 's/^CFLAGS = -Wall/CFLAGS = -Wall -std=gnu11/' ${pkgname/precice/adapter}-${pkgver}/Makefile
+  sed -i 's/^CFLAGS = -Wall/CFLAGS =-std=gnu11 -Wno-implicit-function-declaration/' ${pkgname/precice/adapter}-${pkgver}/Makefile
   cd ${pkgname/precice/adapter}-${pkgver}/packaging
   pandoc manpage.md -s -t man -o ccx_preCICE.1
 }
