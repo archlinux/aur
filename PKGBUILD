@@ -7,7 +7,7 @@
 #     with the binary from the package 'openssl'. Check with 'which openssl'.
 
 pkgname=aws-lc
-pkgver=1.57.1
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -31,7 +31,7 @@ optdepends=(
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('de04259d7dda6a7e72349106e23d344bd1c09a1f7655b05bed961db813cb5f8d8e438c8f89129489b4c18f7c74b785183f7cc5c2684ebf1e8f790e6d2da07c5f')
+b2sums=('6b8f72707cad44afa625055d98fa417067841522f8af508abca93bb6fc162ea48dbd67fb7e892a228efa4a1672307d1ea5563c0ecf8dca0c784b49c1e026c460')
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -67,6 +67,7 @@ package() {
     # Clean up installation
     mkdir -p "$pkgdir/usr/lib/pkgconfig/$pkgname"
     mv $pkgdir/usr/lib/$pkgname/pkgconfig/* "$pkgdir/usr/lib/pkgconfig/$pkgname/"
+    rm -rf "$pkgdir/usr/lib/$pkgname/pkgconfig"
     rm -rf "$pkgdir/usr/lib/$pkgname/ssl"
 
     # Documentation
