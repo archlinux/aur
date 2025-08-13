@@ -1,0 +1,15 @@
+pkgbase = python-numpy-financial
+	pkgdesc = Collection of elementary financial functions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/numpy/numpy-financial
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-numpy
+	options = !emptydirs
+	source = numpy-financial-v1.0.0.tar.gz::https://github.com/numpy/numpy-financial/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a764c7722a34aaabff9d41208ad4e57913e615b7666528c0101d46ed97ae7f2e
+
+pkgname = python-numpy-financial
