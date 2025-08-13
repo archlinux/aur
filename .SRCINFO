@@ -1,0 +1,12 @@
+pkgbase = uzer
+	pkgdesc = Uzer https://osu.ppy.sh/users/13583469
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://osu.ppy.sh/users/13583469
+	arch = any
+	license = GPL
+	source = uzer-1.0.tar.gz
+	source = uzer-1.0.patch
+
+pkgname = uzer
