@@ -4,7 +4,7 @@ diff --color -ura a/gale-bin/usr/share/applications/Gale.desktop b/gale-bin/usr/
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Categories=Game;
- Comment=A lightweight mod manager for Thunderstore
+ Comment=A modern mod manager for Thunderstore
 -Exec=gale
 +Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 gale
  StartupWMClass=gale
