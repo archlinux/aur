@@ -1,0 +1,4 @@
+[python-hdf5storage]
+source = "git"
+git = "https://github.com/jclds139/hdf5storage.git"
+prefix = "v"
