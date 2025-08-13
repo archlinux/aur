@@ -7,7 +7,7 @@
 _pkgname=nheko
 pkgname=$_pkgname-scrollfix
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://nheko.im/nheko-reborn/nheko"
@@ -31,16 +31,19 @@ makedepends=(cmake ninja qt6-tools fontconfig nlohmann-json asciidoc lmdbxx spdl
 source=("https://nheko.im/nheko-reborn/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz"
         nheko-0_12_0-fix-fmt11-build-error1.patch::https://nheko.im/nheko-reborn/nheko/-/commit/8ff28245275eeb0cfe4ed40bd62b97cebbce4861.patch
         nheko-0_12_0-fix-fmt11-build-error2.patch::https://nheko.im/nheko-reborn/nheko/-/commit/2d9142d491fed4feed00342193adfc7a268ce71d.patch
-        https://github.com/Nheko-Reborn/$_pkgname/pull/1838/commits/c9f1a449d825d5879735f95ebfb0c7acec101226.patch)
+        nheko-0_12_0-use-kirigami.patch::https://github.com/Nheko-Reborn/$_pkgname/pull/1838/commits/c9f1a449d825d5879735f95ebfb0c7acec101226.patch
+        nheko-0_12_0-fix-pagination-getting-stuck.patch::https://nheko.im/nheko-reborn/nheko/-/commit/b8107d4a013369262725f338f89cc79f04729b69.patch)
 sha512sums=('2b69fa093168c9af9c43b7791f4186d0409caed1f272ca72e0e932da03ffb9ceb5609a495d4d7978f8b5666340aa97f358f904c7c61c67b6bd7221093c3cb66c'
             '54d028096c65a68bce883ad9ccc7e0b9da850bfa1c40b4029e9c79b2dd0052cc3dec2a9cd4b103c0d04e59256633f0370c67cff5efb24a6eb370c0c76b89380b'
             'a801cd3f3a61d8370b1f8a49a7368b681ee43256d98c2b726ba62d7ea63827d8da5ec1c7fb92b0e5e6c2c6bf1018a154c1988d4b88dec3b92d3397a039526197'
-            'b34d5d21eba8dcc347a3ee1e78489c0fbd1c03db92a73bd985ff5490635630d6a0b41cef549de492a4d4492d88241051a852e59579df7fc623181cff9a5e7099')
+            'b34d5d21eba8dcc347a3ee1e78489c0fbd1c03db92a73bd985ff5490635630d6a0b41cef549de492a4d4492d88241051a852e59579df7fc623181cff9a5e7099'
+            '5d5b88fb80843bbb9bec9bcd1357b463c381c000073fa6422ebaee18cbddba0dcdf92bbf25c0fbdb36046e1d6904c034b7bf63eb7d9591d46d7ee780b0450ed1')
 
 prepare() {
   patch -Np1 -d "$_pkgname-v$pkgver" -i "$srcdir/nheko-0_12_0-fix-fmt11-build-error1.patch"
   patch -Np1 -d "$_pkgname-v$pkgver" -i "$srcdir/nheko-0_12_0-fix-fmt11-build-error2.patch"
-  patch -Np1 -d "$_pkgname-v$pkgver" -i "$srcdir/c9f1a449d825d5879735f95ebfb0c7acec101226.patch"
+  patch -Np1 -d "$_pkgname-v$pkgver" -i "$srcdir/nheko-0_12_0-use-kirigami.patch"
+  patch -Np1 -d "$_pkgname-v$pkgver" -i "$srcdir/nheko-0_12_0-fix-pagination-getting-stuck.patch"
 }
 
 build() {
