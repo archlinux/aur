@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=Noi
 pkgver=0.4.0
 _electronversion=29
-pkgrel=5
+pkgrel=6
 pkgdesc="Power Your World with AI - Explore, Extend, Empower.(Prebuilt version)"
 arch=('x86_64')
 url="https://noi.nofwl.com/"
@@ -36,6 +36,6 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_appname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/usr/lib/${_appname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/usr/lib/${_appname}/resources/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/usr/share/doc/${_appname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
