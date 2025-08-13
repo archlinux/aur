@@ -1,0 +1,18 @@
+pkgbase = pls-cli-git
+	pkgdesc = Natural language to shell commands using Ollama (git version)
+	pkgver = v0.1.0.0.gb21744f
+	pkgrel = 1
+	url = https://github.com/GaelicThunder/pls
+	arch = any
+	license = MIT
+	depends = bash
+	depends = jq
+	depends = curl
+	optdepends = fish: for fish shell integration
+	optdepends = zsh: for zsh shell integration
+	provides = pls-cli
+	conflicts = pls-cli
+	source = pls-cli::git+https://github.com/GaelicThunder/pls.git
+	sha256sums = SKIP
+
+pkgname = pls-cli-git
