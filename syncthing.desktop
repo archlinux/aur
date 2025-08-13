@@ -8,7 +8,7 @@ Categories=Network
 #Exec=/bin/bash -c "systemctl --user start syncthing ; /usr/bin/syncthing -browser-only"
 
 #Compatibility with Syncthing 2.0
-Exec=/bin/bash -c "systemctl --user start syncthing ; /usr/bin/syncthing -browser-only"
+Exec=/bin/bash -c "systemctl --user start syncthing ; /usr/bin/syncthing browser"
 
 Icon=/usr/share/pixmaps/syncthing.svg
 StartupNotify=false
