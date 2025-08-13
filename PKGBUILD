@@ -1,13 +1,25 @@
 # Maintainer: Henrik Harmsen <henrik åt harmsen döt se>
 pkgname=dragonfly-navigator-git
-pkgver=r286.14b755a
+pkgver=r287.4d2df79
 pkgrel=1
 pkgdesc="Dragonfly Navigator: A simple and efficient dual pane file manager for Linux."
 arch=('x86_64')
 url="https://github.com/suncore/dflynav"
 license=('GPL-3.0-or-later')
 depends=('python-pyqt6')
-makedepends=('git' 'python-pyqt6')
+makedepends=(
+  'git'
+  'python-pyqt6'
+  'cmake'
+  'extra-cmake-modules'
+  'gtkmm3'
+  'kcoreaddons'
+  'ki18n'
+  'kio'
+  'ktextwidgets'
+  'kwidgetsaddons'
+  'kxmlgui'
+)
 source=('git+https://github.com/suncore/dflynav')
 sha256sums=('SKIP')
 
