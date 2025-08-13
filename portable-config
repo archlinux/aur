@@ -13,7 +13,7 @@ stateDirectory="Wiliwili_Data"
 launchTarget="/usr/bin/env -u DISPLAY wiliwili"
 
 # Takes boolean value. When enabled, do not process XAuth files and forces wayland input method. Generally this should be true when possible.
-waylandOnly="true"
+waylandOnly="adaptive"
 
 # Takes boolean value.
 bindInputDevices="true"

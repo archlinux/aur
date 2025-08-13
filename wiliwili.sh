@@ -9,5 +9,5 @@ elif [[ "$@" = "--actions share-files" ]]; then
 elif [[ "$@" = "--actions quit" ]]; then
 	portable --actions quit
 else
-	portable
+	exec portable -- $@
 fi
