@@ -2,7 +2,7 @@
 
 pkgname=bitsnpicas
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitmap and Emoji Font Creation and Conversion Tools.'
 arch=('any')
 url="https://github.com/kreativekorp/bitsnpicas"
@@ -36,8 +36,8 @@ package() {
   install -D -m755 -T "${srcdir}/bitsnpicas-keyedit.sh" "${pkgdir}/usr/bin/bitsnpicas-keyedit"
   install -D -m755 -T "${srcdir}/bitsnpicas-mapedit.sh" "${pkgdir}/usr/bin/bitsnpicas-mapedit"
   install -D -m644 -T "${srcdir}/BitsNPicas.jar" "${pkgdir}/usr/share/bitsnpicas/BitsNPicas.jar"
-  install -D -m644 -T "${srcdir}/BitsNPicas.jar" "${pkgdir}/usr/share/bitsnpicas/KeyEdit.jar"
-  install -D -m644 -T "${srcdir}/BitsNPicas.jar" "${pkgdir}/usr/share/bitsnpicas/MapEdit.jar"
+  install -D -m644 -T "${srcdir}/KeyEdit.jar" "${pkgdir}/usr/share/bitsnpicas/KeyEdit.jar"
+  install -D -m644 -T "${srcdir}/MapEdit.jar" "${pkgdir}/usr/share/bitsnpicas/MapEdit.jar"
   install -D -m644 -T "${srcdir}/bitsnpicas.desktop" "${pkgdir}/usr/share/applications/bitsnpicas.desktop"
   install -D -m644 -T "${srcdir}/bitsnpicas-keyedit.desktop" "${pkgdir}/usr/share/applications/bitsnpicas-keyedit.desktop"
   install -D -m644 -T "${srcdir}/bitsnpicas-mapedit.desktop" "${pkgdir}/usr/share/applications/bitsnpicas-mapedit.desktop"

@@ -1,7 +1,7 @@
 pkgbase = bitsnpicas
 	pkgdesc = Bitmap and Emoji Font Creation and Conversion Tools.
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kreativekorp/bitsnpicas
 	arch = any
 	license = MPL
@@ -15,7 +15,7 @@ pkgbase = bitsnpicas
 	source = bitsnpicas.desktop
 	source = bitsnpicas-keyedit.desktop
 	source = bitsnpicas-mapedit.desktop
-	sha256sums = c09148a3637af9193708eba1e90670d1de4844d135f6fdbbdc547b317785e93b
+	sha256sums = b34e0d4e85c402dc0035d24a67b489f15cc301677d512c721074ee3204da8547
 	sha256sums = d928da2448071f8045473bbc42a0e127e45af7e28f813f5ffa4376da92da1d58
 	sha256sums = e1005dc8e8a6c11ae1eeba0cc1d2b7494f04b61ad94fbebef1bef5a2558f8e4a
 	sha256sums = 71eede1d61dde3ffb75013b2bbf48614eb6b50658d64167a30005b230438275d
