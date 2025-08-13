@@ -1,13 +1,14 @@
 pkgbase = libvtflib-git
 	pkgdesc = Library to handle Valve's Texture Format
 	pkgver = r44.eaca22d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/panzi/VTFLib
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = cmake
 	makedepends = git
 	makedepends = extra-cmake-modules
+	makedepends = ninja
 	depends = libtxc_dxtn
 	source = git+https://github.com/panzi/VTFLib.git
 	md5sums = SKIP
