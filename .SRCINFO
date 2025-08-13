@@ -11,10 +11,10 @@ pkgbase = yumenikki-zh-cn
 	noextract = yumenikki0.10chs.rar
 	options = !strip
 	source = http://yumenikki.info/yumenikki0.10chs.rar
-	source = yumenikki-zh-cn.png
+	source = https://cdn2.steamgriddb.com/icon/06409663226af2f3114485aa4e0a23b4/8/16x16.png
 	source = yumenikki-zh-cn.sh
 	sha256sums = 912af73da62b739a8ea4ebd0542ae46939e3ba61791f438dbe5ad1ef345ab24b
-	sha256sums = 39125abeef72301782c30322f1649a22354760a76017b37531fbb642af6ccf0b
+	sha256sums = 9241bab9fbc7383fa0daac31ce4ddde40643742c5d013c90d12724eeb323d587
 	sha256sums = b3a283f1e65ee9c99458df049743c4dc87f15e7ab51e9014d5de0a71ebaf9cdc
 
 pkgname = yumenikki-zh-cn
