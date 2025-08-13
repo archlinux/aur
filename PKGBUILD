@@ -1,7 +1,7 @@
 # Maintainer: Adam Hellberg <sharparam@sharparam.com>
 
 pkgname=mapshot-bin
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Tool to export Factorio saves as zoomable HTML maps (binary release)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=('mapshot')
 conflicts=('mapshot')
 _binname=${pkgname%-bin}
 source=("$_binname-$pkgver::https://github.com/Palats/mapshot/releases/download/$pkgver/mapshot-linux")
-sha256sums=('3c22743b166e239e3fa42d588982a02530729dbff54bbdba824afaecdebf1fd7')
+sha256sums=('762b8e5e4dbead2ff5d8c591d4088de2d78ef036924e9c74b26b4528d0d83077')
 
 package() {
   install -Dm755 "$_binname-$pkgver" "$pkgdir/usr/bin/$_binname"
