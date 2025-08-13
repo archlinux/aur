@@ -1,11 +1,11 @@
 # Maintainer: username227 <gfrank227 at gmail dot com> 
 
 pkgname=deemix-gui
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='A GUI electron app for the deemix library. Download music from deezer.'
 url=https://github.com/bambanah/deemix
-license=("GPL3-or-later")
+license=(GPL-3.0-or-later)
 arch=("x86_64")
 provides=('deemix')
 conflicts=('deemix-gui-appimage' 'deemix-gui-git' 'deemix-fix-gui-appimage-git' 'deemix-fix-gui-git')
@@ -21,7 +21,7 @@ options=('!strip')
 	cd $srcdir/deemix
 	pnpm i
 	pnpm make
-	cd $srcdir/deemix/gui/out/make/deb/x64
+	cd $srcdir/deemix/packages/gui/out/make/deb/x64
 	dpkg-deb -x deemix_${pkgver}_amd64.deb .
 }
 
@@ -29,12 +29,12 @@ package(){
 	install -dm755 $pkgdir/opt/deemix
 	install -dm644 $pkgdir/usr/share/applications
 	install -dm755 $pkgdir/usr/bin
-	mv $srcdir/deemix/gui/out/Deemix-linux-x64/* $pkgdir/opt/deemix
+	mv $srcdir/deemix/packages/gui/out/Deemix-linux-x64/* $pkgdir/opt/deemix
 	ln -s /opt/deemix/deemix-gui $pkgdir/usr/bin/deemix-gui
-	install -Dm755 $srcdir/deemix/gui/out/make/deb/x64/usr/share/applications/deemix.desktop $pkgdir/usr/share/applications/deemix-gui.desktop
+	install -Dm755 $srcdir/deemix/packages/gui/out/make/deb/x64/usr/share/applications/deemix.desktop $pkgdir/usr/share/applications/deemix-gui.desktop
 	patch $pkgdir/usr/share/applications/deemix-gui.desktop $srcdir/desktop_patch.patch
-	install -Dm644 $srcdir/deemix/gui/out/make/deb/x64/usr/share/doc/deemix/copyright -t $pkgdir/usr/share/doc/deemix
-	install -Dm644 $srcdir/deemix/gui/out/make/deb/x64/usr/share/pixmaps/deemix.png $pkgdir/usr/share/pixmaps/deemix-gui.png
+	install -Dm644 $srcdir/deemix/packages/gui/out/make/deb/x64/usr/share/doc/deemix/copyright -t $pkgdir/usr/share/doc/deemix
+	install -Dm644 $srcdir/deemix/packages/gui/out/make/deb/x64/usr/share/pixmaps/deemix.png $pkgdir/usr/share/pixmaps/deemix-gui.png
 	
 }
 

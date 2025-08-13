@@ -1,10 +1,10 @@
 pkgbase = deemix-gui
 	pkgdesc = A GUI electron app for the deemix library. Download music from deezer.
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://github.com/bambanah/deemix
 	arch = x86_64
-	license = GPL3-or-later
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = dpkg
 	makedepends = pnpm
