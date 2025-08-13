@@ -1,0 +1,25 @@
+diff --git a/python/setup.py b/python/setup.py
+index da68e71..5a02c3d 100755
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -231,7 +231,6 @@ else:
+   cmdclass = {'build_ext': build_ext}
+ 
+ if __name__ == '__main__':
+-  copy_package_data()
+   setup(
+       name='sentencepiece',
+       package_dir={'': 'src'},
+diff --git a/python/src/sentencepiece/__init__.py b/python/src/sentencepiece/__init__.py
+index 02379dd..d910552 100644
+--- a/python/src/sentencepiece/__init__.py
++++ b/python/src/sentencepiece/__init__.py
+@@ -1207,8 +1207,6 @@ set_min_log_level = SetMinLogLevel
+ 
+ from ._version import __version__
+ 
+-SetDataDir(os.path.join(str(importlib.resources.files('sentencepiece')), 'package_data'))
+-
+ class _LogStream(object):
+   def __init__(self, ostream=None):
+     self.ostream = ostream

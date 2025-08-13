@@ -2,8 +2,8 @@
 _name=sentencepiece
 pkgbase="${_name}"
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=0.2.0
-pkgrel=5
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=('x86_64')
 url="https://github.com/google/sentencepiece"
@@ -12,18 +12,16 @@ makedepends=('git' 'cmake'
              'abseil-cpp' 'gperftools' 'protobuf'
              'python' 'python-build' 'python-setuptools' 'python-wheel' 'python-installer')
 checkdepends=('python-pytest')
-_tag='17d7580d6407802f85855d2cc9190634e2c95624' # git rev-parse "v${pkgver}"
+_tag='31646a467d2051eb904e0b45de3a73e91fe1c1e3' # git rev-parse "v${pkgver}"
 source=(
   "${_name}::git+${url}.git#tag=${_tag}"
-  "fix-crash-in-unigram-model-training.patch::${url}/commit/d19ac45c919602cb041a86599d0593d24a150ac2.patch"
-  "bump-cmake-minimum-required-version.patch::${url}/commit/e2127b9b932ba00811d5023c5ea69a12a857b244.patch"
-  "add-missing-cstdint.patch::${url}/commit/c4221363d1f004f85f9cc4096e601d6b1fbfaa84.patch"
+  'fix-parse-command-line-flags-test.patch'
+  'dont-include-data-files-in-python-pkg.patch'
 )
 sha512sums=(
   'SKIP'
-  '644bc47fb3b90f2447ae9aac5ff2939fa6c9b3b0dc33550828b8517656f33fb1b41b2ebf9443e4b39a64bb963533c8d7a323b100d0b37671b070b7368f6fb1c7'
-  'a4749510e7a4e5c72c60e67e903201d5f6b2224752059481613cb6e0e01c901d0bdbd83553ecc0b916f551e6f37342bab6bf298dfcdd5234129b1645299775b9'
-  'b40a61a3185b12d4acd93f854c0ffdd14e13950f1bd860899959e53051bb15f9a11dd0dc635166fd97f706ca41d3d7b1007c44a6d837ce3db94320cf3bfa2c79'
+  '7329caa5e824b873e931fd10134e07b8c6bbb0612e5355be0ddf8478677d2cd4e2d725485c51173142fcc35b6c12b869aecca6949291b869f537f4d6c048cc55'
+  '86443111c23d1d0f7db27673d8bb34e1a5d7e49e301b0e0978bb32b29cde51a924ff95bd079923f993c8e1180400b4268c39fa500102c99925daaaffeefe90ff'
 )
 
 pkgver() {
@@ -35,15 +33,11 @@ prepare() {
 
   git clean -dfx
 
-  # See https://github.com/google/sentencepiece/pull/1088
-  # Should fix test for v0.2.0
-  git apply --verbose ../fix-crash-in-unigram-model-training.patch
+  # https://github.com/google/sentencepiece/issues/1137
+  git apply --verbose ../fix-parse-command-line-flags-test.patch
 
-  # Fix build for CMake 4.0.0+
-  git apply --verbose ../bump-cmake-minimum-required-version.patch
-
-  # Fix build for GCC 15
-  git apply --verbose ../add-missing-cstdint.patch
+  # The base pkg includes data already
+  git apply --verbose ../dont-include-data-files-in-python-pkg.patch
 
   # Use shared libs for python module
   sed -i 's/libsentencepiece.a/libsentencepiece.so/g' python/setup.py
@@ -58,6 +52,7 @@ build() {
     -DSPM_BUILD_TEST=ON \
     -DSPM_ENABLE_TCMALLOC=ON \
     -DSPM_ENABLE_SHARED=ON \
+    -DSPM_DISABLE_EMBEDDED_DATA=OFF \
     -DSPM_PROTOBUF_PROVIDER=package \
     -DSPM_ABSL_PROVIDER=package \
     -Wno-dev

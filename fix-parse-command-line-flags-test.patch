@@ -1,0 +1,12 @@
+diff --git a/src/init.h b/src/init.h
+index 5a69100..9f9c598 100644
+--- a/src/init.h
++++ b/src/init.h
+@@ -31,7 +31,6 @@ ABSL_DECLARE_FLAG(int32_t, minloglevel);
+ namespace sentencepiece {
+ inline void ParseCommandLineFlags(const char *usage, int *argc, char ***argv,
+                                   bool remove_arg = true) {
+-  absl::SetProgramUsageMessage(*argv[0]);
+   const auto unused_args = absl::ParseCommandLine(*argc, *argv);
+ 
+   if (remove_arg) {
