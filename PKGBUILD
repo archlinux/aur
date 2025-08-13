@@ -1,11 +1,12 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 # Maintainer: Bjorn Neergaard <bjorn@neersighted.com>
 # Contributor: Danny Su       <contact@dannysu.com>
+# Contributor: Lance G.       <gero3977 @gmail.com>
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-bin
 pkgver=2.1.0.5
-pkgrel=1
+pkgrel=2
 _date=2025-03-04
 _branch=stable
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
@@ -37,10 +38,10 @@ backup=(
 )
 
 sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
-            '61429ead4171924b8ed293ebd8634cc858adfea7648d714241196b7fa80a38c3'
+            'feacc64d9d746aeeeeae4bef004640cbc49a35560aad6ba98c905a0c5ca3291b'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
-            '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
+            '3200d8d4c73dd677368e9837d07aec93a4cead2fb7d679376f1f8fd67366503c')
 sha256sums_x86_64=('0d21cfcc7179c9eb6bc1fd68a15248395a17eba80d5a1b54e648f2ccecd25bc3')
 sha256sums_aarch64=('4e8be1c79f4f3bf6c88ffb2438f12cfae310d5842f7781760da040fd096e0b90')
 arch=('x86_64' 'aarch64')
