@@ -12,6 +12,8 @@ pkgbase = thingy
 	optdepends = libreoffice
 	optdepends = xreader
 	source = thingy-1.2.1.tar.gz::https://github.com/linuxmint/thingy/archive/refs/tags/1.2.1.tar.gz
+	source = .nvchecker.toml
 	sha256sums = 2862dcdfa9012176bcdf7e6db40bfcab8e404a5a3cf68e16cf4d1ea5fa49b1f3
+	sha256sums = f5e61395cfa4689ad4fcd205fe36a7e19aa0c3875b436f5a110780250183d329
 
 pkgname = thingy
