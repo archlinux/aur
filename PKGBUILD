@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=qwen-code
-pkgver=0.0.5_nightly.11
+pkgver=0.0.6_nightly.1
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="cli coding agent (fork of gemini-cli)"
@@ -15,7 +15,7 @@ depends=('nodejs')
 source=("https://registry.npmjs.org/@qwen-code/$pkgname/-/$pkgname-$_pkgver.tgz")
 options=(!lto !strip !debug)
 noextract=("$pkgname-$_pkgver.tgz")
-sha256sums=('1eae396db5efb6756f90362379c4adc6923b08e2fd9d68ff844ca36a587adad6')
+sha256sums=('a37de219bfdc78d56114e338c5d075b61cc8b27d59be66eae1c060ce77cae79d')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${_pkgver}.tgz"
