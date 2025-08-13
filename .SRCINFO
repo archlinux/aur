@@ -1,0 +1,11 @@
+pkgbase = awesome
+	pkgdesc = A simple text editor, GNU Awesome
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = main.cpp
+	sha256sums = SKIP
+
+pkgname = awesome
