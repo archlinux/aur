@@ -1,5 +1,5 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-# Contributor: Christopher Snowhill <kode54@gmail.com>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wcm-git
 pkgver=0.9.0.r7.gb5b5aef
 pkgrel=1
