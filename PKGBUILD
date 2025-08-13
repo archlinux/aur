@@ -1,5 +1,5 @@
 pkgname=emqutiti
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Terminal-based MQTT client written in Go"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 source=("emqutiti-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3fbd067d533e6042470a12be7229c8a1a1964b34024034f9b0df14b244a96e1')
+sha256sums=('af3080e10c10a1d4496b37fb0b1e7d9ddd8f2e2b7eaf161ba8695bcc2a5c1028')
 
 build() {
   cd "emqutiti-$pkgver"
