@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/jcmgray/${_base}"
 license=(Apache-2.0)
 depends=(python)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel)
+makedepends=(python-build python-installer python-hatch-vcs python-wheel)
 checkdepends=(python-pytest python-dask python-tensorflow python-pytorch python-jax python-sparse)
 optdepends=('python-matplotlib: for visualizations'
   'python-networkx: for computational graph drawing'
