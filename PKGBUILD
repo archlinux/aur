@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 at gmail dot com> 
 
 pkgname=deemix-gui
-pkgver=0.3.11
+pkgver=0.3.12
 pkgrel=1
 pkgdesc='A GUI electron app for the deemix library. Download music from deezer.'
 url=https://github.com/bambanah/deemix

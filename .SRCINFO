@@ -1,6 +1,6 @@
 pkgbase = deemix-gui
 	pkgdesc = A GUI electron app for the deemix library. Download music from deezer.
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/bambanah/deemix
 	arch = x86_64
