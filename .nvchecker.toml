@@ -1,0 +1,3 @@
+[thingy]
+source = "git"
+git = "https://github.com/linuxmint/thingy.git"
