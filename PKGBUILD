@@ -2,7 +2,7 @@
 _pkgname=power-rules-daemon
 pkgname=power-rules-daemon
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon written in Rust to automatically change your power profile when a program is executed."
 arch=("any")
 url="https://github.com/Zeioth/power-rules-daemon"

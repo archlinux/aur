@@ -1,7 +1,7 @@
 pkgbase = power-rules-daemon
-	pkgdesc = Daemon to automatically change your power profile to performance while you are gaming
+	pkgdesc = Daemon written in Rust to automatically change your power profile when a program is executed.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zeioth/power-rules-daemon
 	arch = any
 	license = GPL-3.0
