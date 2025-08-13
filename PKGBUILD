@@ -1,27 +1,19 @@
-# Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
-# Contributor: toha257 <toha257@gmail.com>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
-# Contributor: Felipe Balbi <felipe@balbi.sh>
-# Contributor: Tavian Barnes <tavianator@tavianator.com>
-# Contributor: Vyacheslav Razykov <v.razykov@gmail.com>
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-binutils"
-pkgver=2.45+r0+g2bc7af1ff773
-_commit=2bc7af1ff7732451b6a7b09462a815c3284f9613
+pkgver=2.45+r8+g09be88bfb653
+_commit=09be88bfb653bc9739bc281733407fcae73fb12f
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
-license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3 FSFAP)
+license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3-or-later FSFAP)
 depends=(glibc jansson libelf zlib zstd)
 makedepends=(gcc git glibc libelf zlib zstd)
-options=(staticlibs !emptydirs !distcc !strip)
+options=(staticlibs !emptydirs !distcc !debug !strip)
 source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit})
-sha256sums=('005763c1ecf23168be877788ed148467d31b1852ff15b27c0f69343c2a64652a')
+sha256sums=('68533b94c94db960cd138f0651002f91305a835619a691ad75fe259838103f25')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 pkgver() {
@@ -39,7 +31,10 @@ prepare() {
 build() {
   cd "${srcdir}"/binutils-build
 
-  "${srcdir}"/binutils-gdb/configure \
+  export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=src"
+  export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=src"
+
+  ../binutils-gdb/configure \
     --build=$CHOST \
     --host=$CHOST \
     --target=$_target \
@@ -58,7 +53,7 @@ build() {
     --enable-plugins \
     --enable-relro \
     --enable-threads \
-    --enable-multilib \
+    --disable-multilib \
     --disable-gdb \
     --disable-werror
 
