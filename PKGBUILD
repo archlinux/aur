@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=whispering-bin
 _pkgname=Whispering
-pkgver=7.1.1
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="An open-source transcription application that provides global speech-to-text functionality, with options such as keyboard shortcuts and automatic copy and paste to make dictating as seamless as possible.(Prebuilt version)"
 arch=('x86_64')
-url="https://whispering.bradenwong.com/"
-_ghurl="https://github.com/braden-w/whispering"
+url="https://epicenter.so/"
+_ghurl="https://github.com/epicenter-so/epicenter"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -18,9 +18,9 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/braden-w/whispering/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/epicenter-so/epicenter/v${pkgver}/LICENSE"
 )
-sha256sums=('f76328be1a2eb6fd248e756e9dcfbf1a0a090b986dc5c61c295a9f4f85fcbc14'
+sha256sums=('95e3434e83711dd245fe2cd2726c8327edf230ea84aaff71ae090abfe44010c7'
             'c619bbe548615d39e9928c5f86dc1c3a76defc9f99e35273f539aad092fedb9a')
 prepare() {
     sed -i -e "
