@@ -4,7 +4,7 @@
 
 _electron_ver=37
 pkgname=kuro
-pkgver=9.1.1
+pkgver=9.1.2
 pkgrel=1
 pkgdesc='An elegant Microsoft ToDo desktop client for Linux'
 arch=('any')
@@ -19,7 +19,7 @@ source=("$pkgname"
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('93340f3310b5133058df40fe36482eb364cb514f53d8e594ea646f9cf0e21463'
             'a7602db570ab593499661d88feb6775c1a97458df2493ac1fe91f24b14911d2c'
-            '0dd814458716a6a571b41a4f3d4cad813a8d2f5bf312f8c120ecb91a0c39183c')
+            '4dfbb890a4276bf4e449f1fb549a39e325076cc268c9c2a8cc25d5f311225071')
 
 build() {
     cd "$pkgname-$pkgver"
