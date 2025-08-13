@@ -1,0 +1,14 @@
+pkgbase = dbee
+	pkgdesc = Fast & Minimalistic Database Browser
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/murat-cileli/dbee
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	provides = dbee
+	conflicts = dbee
+	source = dbee-0.2.2.tar.gz::https://github.com/murat-cileli/dbee/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 4a1994a02dbc1d6f64aa7a2554f0a172603e7ba1f3fe9b4ab4481f1be1182c7f
+
+pkgname = dbee
