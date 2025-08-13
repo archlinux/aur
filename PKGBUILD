@@ -3,16 +3,16 @@
 pkgbase='concrnt'
 pkgdesc='Concrnt is a next-gen decentralized social network platform designed to make your world richer.'
 pkgname=('concrnt-gateway' 'concrnt-api')
-pkgver=1.6.6
+pkgver=1.7.4
 _pkgver=v${pkgver}
 pkgrel=1
 arch=('x86_64' 'aarch64')
-url="https://github.com/totegamma/concurrent"
+url="https://github.com/concrnt/concrnt"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 
-source=("${pkgbase}-${pkgver}::https://github.com/totegamma/concurrent/archive/refs/tags/${_pkgver}.tar.gz"
+source=("${pkgbase}-${pkgver}::https://github.com/concrnt/concrnt/archive/refs/tags/${_pkgver}.tar.gz"
         "concrnt-api.hook"
         "concrnt-api.service"
         "concrnt-gateway.hook"
@@ -20,7 +20,7 @@ source=("${pkgbase}-${pkgver}::https://github.com/totegamma/concurrent/archive/r
         "concrnt-gateway.tmpfiles"
         "concrnt.install")
 
-sha512sums=('2e7e796aa51a0640b63106ea5733c9aeb85d8854b5edafe4ef5b562648dc076f0e70c27653419520301f491ff661890f18b8bf10d99399e7c9c8580ceaaa7ee7'
+sha512sums=('95f619409288f50bb52896018c31e68db61524bda704cbcd7a614f8b9907a6ec9744566c8346b8bc280a7ecd2e88b5d9a520e3a1514af05d7a7f0f68117b7ddc'
             '4ba819a0b00e481353e0e38a1bd9fe4d01a4de63fa724407040b8ab79a2cf69ee335b4cd871e28cd48f4be82838c6ec45d615e2c4e3119d27f5aa75bb70d58f5'
             '919f85b34faef68dff1ee1b43fa5351b2a8bcfbb166b20d6f75336e2eaba39b03bfe85ba3a8e13051e47f9b08763937b24ee2fb5818fcd4de47b19b77095f25f'
             '052b85d29ab0cb9713ecac06935344af25376f99e69765cd8992bbb5c73e84c8b2d40890b859f5a81a83bb66693f3d6aa1a93ab29f5aa177b294583fde8f95e6'
@@ -29,7 +29,7 @@ sha512sums=('2e7e796aa51a0640b63106ea5733c9aeb85d8854b5edafe4ef5b562648dc076f0e7
             'e882308a22defa308a1dae9331b2a39e39e44496bba679350f968637409ab7889b5a3038fcd6dd9b8a248063da1e6e35fe019ef69007c7aadcc9ca3b251267b6')
 
 build() {
-  cd "${srcdir}/concurrent-${pkgver}"
+  cd "${srcdir}/concrnt-${pkgver}"
 
   go mod download
 
@@ -59,27 +59,11 @@ package_concrnt-gateway() {
 
   install="concrnt.install"
 
-  install -Dm755 "${srcdir}/concurrent-${pkgver}/ccgateway" "${pkgdir}/usr/bin/ccgateway"
+  install -Dm755 "${srcdir}/concrnt-${pkgver}/ccgateway" "${pkgdir}/usr/bin/ccgateway"
   install -Dm644 "${srcdir}/concrnt-gateway.service" "${pkgdir}/usr/lib/systemd/system/concrnt-gateway.service"
   install -Dm644 "${srcdir}/concrnt-gateway.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-gateway.conf"
   install -Dm644 "${srcdir}/concrnt-gateway.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-gateway.hook"
-  install -Dm644 "${srcdir}/concurrent-${pkgver}/_docs/etc/config/gateway.yaml" "${pkgdir}/etc/concrnt/config/gateway.yaml"
-
-  sed -i -E 's/host: .*/host: localhost/g' "${pkgdir}/etc/concrnt/config/gateway.yaml"
-
-  # replace port
-  sed -i -E \
-    -e '/name: net\.concrnt\.api/{N;N;s/port: [0-9]+/port: 28281/}' \
-    -e '/name: net\.concrnt\.webui/{N;N;s/port: [0-9]+/port: 28282/}' \
-    -e '/name: world\.concrnt\.hyperproxy\.summary/{N;N;s/port: [0-9]+/port: 28283/}' \
-    -e '/name: world\.concrnt\.hyperproxy\.image/{N;N;s/port: [0-9]+/port: 28283/}' \
-    -e '/name: world\.concrnt\.ap-bridge/{N;N;s/port: [0-9]+/port: 28284/}' \
-    -e '/name: world\.concrnt\.webfinger/{N;N;s/port: [0-9]+/port: 28284/}' \
-    -e '/name: world\.concrnt\.mediaserver/{N;N;s/port: [0-9]+/port: 28285/}' \
-    "${pkgdir}/etc/concrnt/config/gateway.yaml"
-
-
-  install -Dm644 "${srcdir}/concurrent-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/concrnt-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_concrnt-api() {
@@ -89,9 +73,9 @@ package_concrnt-api() {
               'memcached: Local cache support'
               'postgresql: Local database support')
 
-  install -Dm755 "${srcdir}/concurrent-${pkgver}/ccapi" "${pkgdir}/usr/bin/ccapi"
+  install -Dm755 "${srcdir}/concrnt-${pkgver}/ccapi" "${pkgdir}/usr/bin/ccapi"
   install -Dm644 "${srcdir}/concrnt-api.service" "${pkgdir}/usr/lib/systemd/system/concrnt-api.service"
   install -Dm644 "${srcdir}/concrnt-api.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-api.hook"
 
-  install -Dm644 "${srcdir}/concurrent-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/concrnt-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
