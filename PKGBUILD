@@ -2,7 +2,7 @@
 _target=mips64-ultra-elf
 pkgname=${_target}-newlib
 _newlibver=4.5.0.20241231
-pkgver=4.5.0.20241231_r183.813f1ae
+pkgver=4.5.0.20241231_r225.be7ccd0
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('x86_64')

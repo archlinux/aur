@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-newlib
 	pkgdesc = A C library intended for use on embedded systems (mips64-ultra-elf)
-	pkgver = 4.5.0.20241231_r183.813f1ae
+	pkgver = 4.5.0.20241231_r225.be7ccd0
 	pkgrel = 1
 	url = http://sourceware.org/newlib/
 	arch = x86_64
