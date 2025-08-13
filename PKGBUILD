@@ -3,7 +3,7 @@
 
 pkgname=gzdoom-git
 pkgver=4.15pre+487+gf30fc8d
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://www.zdoom.org/'
@@ -80,7 +80,7 @@ build() {
 
 package() {
     cd gzdoom
-    ninja -C build install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" ninja -C build install
     install -d "$pkgdir"/usr/share/licenses
     mv "$pkgdir"/usr/share/doc/gzdoom/licenses "$pkgdir"/usr/share/licenses/gzdoom
     install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm
