@@ -1,11 +1,13 @@
 pkgbase = dragonfly-navigator-git
-	pkgdesc = Simple dual pane file manager.
+	pkgdesc = Dragonfly Navigator: A simple and efficient dual pane file manager for Linux.
 	pkgver = r286.14b755a
 	pkgrel = 1
 	url = https://github.com/suncore/dflynav
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = python-pyqt6
+	depends = python-pyqt6
 	source = git+https://github.com/suncore/dflynav
 	sha256sums = SKIP
 

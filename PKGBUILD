@@ -2,11 +2,12 @@
 pkgname=dragonfly-navigator-git
 pkgver=r286.14b755a
 pkgrel=1
-pkgdesc="Simple dual pane file manager."
+pkgdesc="Dragonfly Navigator: A simple and efficient dual pane file manager for Linux."
 arch=('x86_64')
 url="https://github.com/suncore/dflynav"
 license=('GPL-3.0-or-later')
-makedepends=('git')
+depends=('python-pyqt6')
+makedepends=('git' 'python-pyqt6')
 source=('git+https://github.com/suncore/dflynav')
 sha256sums=('SKIP')
 
@@ -17,13 +18,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/dflynav/src"
-
-  #make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
+  export DESTDIR="$pkgdir"
+  ./build "arch"
 }
 
 package() {
   cd "$srcdir/dflynav/src"
   export DESTDIR="$pkgdir"
-  ./build "arch"
-  #make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" install
+  ./package "arch"
 }
