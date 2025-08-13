@@ -4,6 +4,7 @@ pkgbase = unofficial-homestuck-collection
 	pkgrel = 1
 	url = https://homestuck.giovanh.com/unofficial-homestuck-collection/
 	arch = x86_64
+	license = GPL-3.0+
 	license = custom:chrome
 	license = custom:electron
 	makedepends = nodejs-lts-jod

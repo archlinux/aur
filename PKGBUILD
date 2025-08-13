@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url='https://homestuck.giovanh.com/unofficial-homestuck-collection/'
-license=('custom:chrome' 'custom:electron')
+license=('GPL-3.0+' 'custom:chrome' 'custom:electron')
 makedepends=('nodejs-lts-jod' 'gendesk' 'yarn' 'electron' 'python' 'python-setuptools' 'git')
 depends=('libxcrypt-compat')
 source=("git+https://github.com/GiovanH/${pkgname}.git#tag=v2.7.0"
