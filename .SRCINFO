@@ -1,0 +1,16 @@
+pkgbase = signet-tool
+	pkgdesc = A command-line program designed for bulk editing of audio files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/SamWindell/Signet
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	source = Signet-0.3.0.tar.gz::https://github.com/SamWindell/Signet/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 9d0d8b73dbb4805dcb9e4eb43f8116907d6e64a547b38c8322a2c61ecce09ed9
+
+pkgname = signet-tool
