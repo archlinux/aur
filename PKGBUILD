@@ -6,7 +6,7 @@
 pkgname=wiliwili-wayland
 _pkgname=wiliwili
 pkgver=1.5.2
-pkgrel=1
+pkgrel=3
 pkgdesc='专为手柄控制设计的第三方跨平台B站客户端, 使用 Wayland 运行并阻止唤醒独显'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xfangfang/wiliwili'
@@ -49,7 +49,8 @@ function package() {
 	install -Dm755 portable-config "${pkgdir}"/usr/lib/portable/info/cn.xfangfang.wiliwili/config
 	DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
 	install -Dm755 "${srcdir}/wiliwili.sh" "${pkgdir}/usr/bin/wiliwili-wayland"
-	install -Dm755 "${pkgdir}/usr/bin/wiliwili" "${pkgdir}/usr/lib/portable/overlay-usr"
+	install -d "${pkgdir}/usr/lib/portable/overlay-usr"
+	install -Dm755 "${pkgdir}/usr/bin/wiliwili" "${pkgdir}/usr/lib/portable/overlay-usr/wiliwili"
 	rm "${pkgdir}/usr/bin/wiliwili"
 	install -Dm644 "${srcdir}/cn.xfangfang.wiliwili.desktop" "${pkgdir}/usr/share/applications/cn.xfangfang.wiliwili.desktop"
 	echo '''[Desktop Entry]
