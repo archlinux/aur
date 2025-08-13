@@ -9,7 +9,9 @@ pkgbase = element-lk-jwt-service
 	makedepends = git
 	source = https://github.com/element-hq/lk-jwt-service/archive/refs/tags/v0.3.0.tar.gz
 	source = lk-jwt-service.service
+	source = env.conf
 	sha512sums = 89dc981df1281f30fcea8f20c8eaf1d79f8968fa67362d4b1310e63225adf2fbcd23ef0ecc660f229614fbb738779c27207f416f8e8cfdcc5880cd9caca61b66
-	sha512sums = 6abbd585f2f0fe47dfd01cc8f139407a0b36877375001decaf0b96e57fd6834514f0317b9d79c7fcea74ee911db0afd1f25384d481baabc092c6e65881d9f36d
+	sha512sums = 48fdad2ad2eb41fbba132cf7a8f2abe9ade07cc0d4d9a80c9a8f9180d7810dd46c41b34d889b4194756cbea15bd8d1875aa611bac4ee0cf993dcbf9079f02290
+	sha512sums = d5b97a3dfb67af84070a8075d67f3411955f7e227cd3e38c3f0f1f06fa1a7578f18907f9d44e09338cc10090e74a55dd8dc473a07976858fd1d66b1dbb39748a
 
 pkgname = element-lk-jwt-service
