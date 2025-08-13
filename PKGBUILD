@@ -3,7 +3,7 @@
 # Based on labwc AUR from Lex Black <autumn-wind@web.de>
 
 pkgname=labwc-im
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (with text-input-v1 support)'
 url="https://github.com/labwc/labwc"
@@ -16,8 +16,8 @@ conflicts=(labwc)
 provides=(labwc)
 source=(labwc-${pkgver}.tar.gz::"https://github.com/labwc/labwc/archive/${pkgver}.tar.gz"
         '0001-IME-support-text-input-v1.patch')
-b2sums=('b3ae88e047f889829c5f300a576b8ce41acce9f537fa98fd28d222c613970a598b87e17d645f2c59c5b62c0173dbbe600e59104ed43bde8b9ce71fb79fd37da0'
-        'e51b8629103ddca877d43eb57bec62a84401839a26dffed4243b73909fcdd3f2af8dd703c1a217968d9c534246782f613c46090b0f677b6a41eaf46940301324')
+b2sums=('b672522fcbfd3ba3ca6f55d9736d7465b9b9f7f400b59145520d4da99be20d32746502338591a524600758729a95d75232430a82db7bd214876ad78879a1414b'
+        '75c17a0bb36de4b14bd2fffb869b5974e4bd236b03adce4b689957ec1ef405600fa2f5e43478db777ffd19e8e006e08ef637339f83274d8b18a0d414351f92a8')
 
 prepare() {
   cd "labwc-$pkgver"
