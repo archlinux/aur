@@ -1,0 +1,37 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "version-no-git-commit.patch",
+]
+SPDX-FileCopyrightText = "nesfab contributors and Arch Linux contributors"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = [
+    "ada.png",
+]
+SPDX-FileCopyrightText = "Henry Phillips"
+# Workaround for https://github.com/fsfe/reuse-tool/issues/1140
+SPDX-License-Identifier = "LicenseRef-CC-PDM-1.0"
