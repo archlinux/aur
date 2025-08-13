@@ -1,14 +1,13 @@
 # Maintainer: Damglador <vse.stopchanskyi@gmail.com>
-# I didn't want to package inotify_simple, so pyinstaller was an easier way out for me
 
 _pkgname=steam-update-inhibit-sleep
 pkgname=$_pkgname-git
 pkgver=r11.f4369bc
-pkgrel=1
+pkgrel=2
 pkgdesc="Don't worry about system suspending when Steam installs stuff"
 arch=('any')
 url="https://github.com/Damglador/steam-update-inhibit-sleep.git"
-depends=(python-dbus python-vdf python-inotify_simple)
+depends=(python-dbus python-vdf python-inotify-simple)
 makedepends=(git python-pip)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
