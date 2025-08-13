@@ -1,0 +1,20 @@
+pkgbase = godl
+	pkgdesc = Godot project and version manager
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/sockeye-d/godl
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kdeclarative
+	depends = kirigami
+	depends = kirigami-addons
+	depends = breeze-icons
+	depends = qqc2-desktop-style
+	depends = kconfigwidgets
+
+pkgname = godl
