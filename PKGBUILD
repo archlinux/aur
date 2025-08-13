@@ -2,7 +2,7 @@
 # Contributor: Hugo Rodrigues <hugorodrigues at openmailbox dot com>
 
 pkgname=syncthing-desktop-entries
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Adds files to integrate Syncthing in your desktop environment.'
 url='https://github.com/syncthing/syncthing'
@@ -16,7 +16,7 @@ source=(
     'syncthing.svg'
 )
 sha256sums=('750f60ce1da6a9f30494d676141151d99eb4c7f6cc58e04cd1478cff94834b40'
-            '07e5560cba895df128bef12d8a4397fd37dc0311311a390111ba1f46d96cc0b5'
+            '25d5f2a43e78b2bb754796457fccc42c35e0f9f41d90395aa29258d26cd74306'
             '32a59ba5e16eea315c533d38358107984049d54c8130122cd0a63480fffa80dd')
 
 package() {
