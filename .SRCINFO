@@ -10,7 +10,6 @@ pkgbase = sleipnirgroup-sleipnir-git
 	makedepends = nanobind
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-py-build-cmake
 	depends = eigen-git
 	depends = python-numpy
 	depends = python-scipy

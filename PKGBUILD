@@ -7,7 +7,7 @@ pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with rea
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Sleipnir'
 depends=('eigen-git' 'python-numpy' 'python-scipy')
-makedepends=('cmake' 'nanobind' 'python-build' 'python-installer' 'python-py-build-cmake')
+makedepends=('cmake' 'nanobind' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 license=('BSD')
 options=('!strip' 'staticlibs')
@@ -34,7 +34,7 @@ build() {
   cmake --build build
 
   cd "$srcdir"/Sleipnir
-  python -m build --wheel --no-isolation
+  python -m build --wheel
 }
 
 check() {
