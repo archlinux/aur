@@ -1,4 +1,4 @@
-pkgbase = awesome
+pkgbase = awesome-editor
 	pkgdesc = A simple text editor, GNU Awesome
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = awesome
 	source = main.cpp
 	sha256sums = SKIP
 
-pkgname = awesome
+pkgname = awesome-editor
