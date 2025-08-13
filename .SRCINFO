@@ -1,0 +1,23 @@
+pkgbase = rustrland
+	pkgdesc = A Rust implementation of Pyprland for Hyprland - Fast, reliable plugin system
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/mattdef/rustrland
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = hyprland
+	optdepends = swaybg: Default wallpaper backend for wallpapers plugin
+	optdepends = swww: Alternative wallpaper backend with animations
+	optdepends = wpaperd: Per-workspace wallpaper backend
+	optdepends = imagemagick: Hardware acceleration for wallpaper processing
+	optdepends = foot: Recommended terminal for scratchpad plugin
+	optdepends = firefox: Browser support for scratchpad plugin
+	optdepends = thunar: File manager support for scratchpad plugin
+	conflicts = rustrland-git
+	source = rustrland-0.3.2.tar.gz::https://github.com/mattdef/rustrland/archive/v0.3.2.tar.gz
+	sha256sums = 451ee4aa2a965caa7c2074d7f887e4a95e4594a18f3fcd1b57d7aba6e28a9252
+
+pkgname = rustrland
