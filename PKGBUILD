@@ -2,7 +2,7 @@
 
 _pkgauthor=goplus
 pkgname=xgo
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='The first AI-native programming language that integrates software engineering into a unified whole'
 arch=('x86_64' 'aarch64')
@@ -10,12 +10,13 @@ url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('Apache-2.0')
 
 provides=("${pkgname}")
+depends=('bash' 'glibc')
 conflicts=('goplus')
 replaces=('goplus')
 makedepends=('go')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e7d80a6760f794ffb4f30c89097b8903f8a1e8c6b60706673d88bcdc304f05c8')
+sha256sums=('838bb0a6145f7fd475908378adce274a6d5f7ee43ec78496738302aa89a1044a')
 
 build() {
 	export GOPROOT_FINAL=$pkgdir/usr/lib/xgo
