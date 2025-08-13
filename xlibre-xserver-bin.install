@@ -1,0 +1,25 @@
+post_upgrade() {
+  cat <<MSG1
+>>> Closed source drivers - like those from Nvidia - might not
+    have an updated ABI version to match xlibre-xserver.
+    To prevent problems with these drivers create this file:
+
+    /etc/X11/xorg.conf.d/xlibre.conf
+
+    Section "ServerFlags"
+        Option "IgnoreABI" "true"
+    EndSection
+
+MSG1
+}
+
+post_install() {
+  post_upgrade
+  cat <<MSG2
+>>> It is required to replace all installed xf86* xorg driver and
+    xorg-server* packages with their xlibre-* counterparts.
+    If for example xf86-video-intel is installed this should be
+    replaced with xlibre-xf86-video-intel.
+
+MSG2
+}
