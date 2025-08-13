@@ -3,7 +3,7 @@ Description=Duplicati
 After=network.target
 
 [Service]
-ExecStart=/opt/duplicati/duplicati-server --webservice-port=8200
+ExecStart=/opt/duplicati/duplicati-server $DAEMON_OPTS
 Restart=on-abort
 EnvironmentFile=-/etc/default/duplicati
 User=duplicati
