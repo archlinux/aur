@@ -1,14 +1,13 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 pkgname=steamlink-bin
 pkgver=1.3.16.287
-pkgrel=4
+pkgrel=5
 pkgdesc="Steam Link client (pre-compiled binary)"
 arch=('x86_64')
 url="https://store.steampowered.com/remoteplay#anywhere"
 license=('LicenseRef-Steam')
 provides=("steamlink=${pkgver}")
 conflicts=('steamlink')
-replaces=('steamlink')
 depends=(
 	'bzip2'
 	'dbus'
