@@ -1,6 +1,6 @@
 pkgbase = tsukimi-git
 	pkgdesc = A simple third-party Emby client
-	pkgver = 0.18.0.r1012.g02000a5
+	pkgver = 25.5.0.r1264.g955bcb5
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = tsukimi-git
 	makedepends = git
 	makedepends = clang
 	makedepends = lld
+	makedepends = llvm
+	makedepends = rustup
 	makedepends = cargo
 	depends = mpv
 	depends = ffmpeg

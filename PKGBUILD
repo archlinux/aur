@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=0.18.0.r1012.g02000a5
+pkgver=25.5.0.r1264.g955bcb5
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
@@ -20,6 +20,7 @@ makedepends=(
 	'clang'
 	'lld'
 	'llvm'
+	'rustup'
 	'cargo')
 source=(
 	tsukimi::git+https://github.com/tsukinaha/tsukimi.git
@@ -51,7 +52,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	export RUSTUP_TOOLCHAIN=stable
+	export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
 
 	export CC=clang
