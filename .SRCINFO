@@ -1,6 +1,6 @@
 pkgbase = splash-logs
 	pkgdesc = Adds beautiful, adaptive colors to make logs easier to read.
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/joshi4/splash
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = splash-logs
 	makedepends = go
 	provides = splash-logs
 	conflicts = splash-logs
-	source = splash-0.6.3.tar.gz::https://github.com/joshi4/splash/archive/refs/tags/v0.6.3.tar.gz
-	sha256sums = e36b2a95045bc5053f86bc3c2a53143b7f15b9bc500c0e1c28ddec9777e13125
+	source = splash-0.6.4.tar.gz::https://github.com/joshi4/splash/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = 5f03f411e4bcef874ab1a11b84a6d245e68943b4d1bd566925c65af067d53ba6
 
 pkgname = splash-logs
