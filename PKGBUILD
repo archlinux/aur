@@ -1,28 +1,45 @@
 # Maintainer: Clem Lorteau <spam at lorteau dot fr>
 pkgname=prasmoid
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The All in One Development Toolkit for KDE Plasmoids. Build, test, and manage your plasmoids with unparalleled ease and efficiency."
 arch=("x86_64")
 url='https://github.com/PRASSamin/prasmoid'
 license=("MIT")
 depends=(
 	"plasma-sdk"
-	"git"
 	"qt6-declarative"
 )
+makedepends=(
+	"go>=1.22"
+	"git"
+)
+
 source=(
-	"https://github.com/PRASSamin/prasmoid/releases/download/v0.0.3/prasmoid"
-	"https://raw.githubusercontent.com/PRASSamin/prasmoid/refs/tags/v0.0.3/LICENSE.md"
-	"https://raw.githubusercontent.com/PRASSamin/prasmoid/refs/tags/v0.0.3/README.md"
+	"${pkgname}-${pkgver}::git+https://github.com/PRASSamin/prasmoid.git#tag=v0.0.3"
 )
+
 sha256sums=(
-	"72e4c2b772188ff7ac3ac1b210238a2b9aff1ef8a2844f11df999a44990dcc96"
-	"1f3c5281949e670ffb5efacaae5acd3160eaa5ff1b19c0eab57987581f34fd93"
-	"dd454961c774a1b92546cb3c5567c7f9d3a4191f195860a07478fbd845c93003"
+	'7044508f97f1e4030adaf974aaaa0e19ff4f850b60731ed691cbe4873a12fdd5'
 )
+
+build() {
+	cd "$pkgname-$pkgver"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-s -w -X github.com/PRASSamin/prasmoid/internal.Version={pkgver}" -o prasmoid ./src
+}
+
 package() {
-	install -Dm755 prasmoid "${pkgdir}/usr/bin/${pkgname}"
+	cd "$pkgname-$pkgver"
+	install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
