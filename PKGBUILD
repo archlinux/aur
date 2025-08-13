@@ -1,8 +1,4 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
-# Maintainer: Christian Heusel <gromit@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
-# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: Helmut Januschka <helmut@januschka.com>
 
 pkgname=omarchy-chromium
 pkgver=139.0.7258.66
@@ -13,7 +9,7 @@ _system_clang=1
 _use_chromium_src=1  # Use official chromium source checkout
 _chromium_upstream_src="$HOME/omarchy-chromium-src"  # Path to chromium checkout (change to your path)
 _skip_build=0  # Set to 1 to skip build (for packaging pre-built binaries)
-pkgdesc="A web browser built for speed, simplicity, and security"
+pkgdesc="A web browser built for speed, simplicity, and security, with patches for Omarchy"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD-3-Clause')
