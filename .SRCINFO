@@ -1,0 +1,16 @@
+pkgbase = python-svc-ttk
+	pkgdesc = Sun Valley ttk Crimson theme (sv-ttk variant) for Tkinter/ttk
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = https://github.com/initiateit/Sun-Valley-ttk-crimson
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = tk
+	source = https://files.pythonhosted.org/packages/source/s/svc-ttk/svc_ttk-2.6.4.tar.gz
+	sha256sums = 86c7e9a09170504389fc25bc79dc4128862357205c1b8f514b09f77d1c649b02
+
+pkgname = python-svc-ttk
