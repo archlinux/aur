@@ -1,7 +1,7 @@
 pkgbase = fokus
 	pkgdesc = A minimalist terminal‐based focus timer and stopwatch with daily logging, built on ncurses.
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~fijarom/fokus/
 	arch = x86_64
 	license = GPL3
