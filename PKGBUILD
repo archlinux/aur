@@ -1,8 +1,8 @@
-# Maintainer: Sujal Vijayaraghavan <email at sujal dot tv>
+# Maintainer: Sujal Vijayaraghavan <sujal at usf dot edu>
 
 pkgname=matlock
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Screen lock program for X like The Matrix'
 arch=('x86_64' 'aarch64')
 url="https://git.sujal.tv/tvsujal/matlock"
