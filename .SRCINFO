@@ -1,0 +1,11 @@
+pkgbase = ptyxis-palette-darcula2
+	pkgdesc = Ptyxis palette based on GtkSourceView Darcula2 theme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/egormanga/ptyxis-palette-darcula2
+	arch = any
+	optdepends = ptyxis
+	source = ptyxis-palette-darcula2-1.0.0.tar.gz::https://github.com/egormanga/ptyxis-palette-darcula2/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 8e16addc52fcd44c4b7cb17c3a9795c86313ebf5744a995d49ab064895573750
+
+pkgname = ptyxis-palette-darcula2
