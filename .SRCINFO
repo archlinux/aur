@@ -1,6 +1,6 @@
 pkgbase = lmstudio
 	pkgdesc = Discover, download, and run local LLMs
-	pkgver = 0.3.22.2
+	pkgver = 0.3.23.3
 	pkgrel = 1
 	url = https://lmstudio.ai/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = lmstudio
 	depends = hicolor-icon-theme
 	depends = fuse2
 	depends = clblast
-	noextract = lmstudio-0.3.22.2.AppImage
+	noextract = lmstudio-0.3.23.3.AppImage
 	options = !strip
 	options = !debug
-	source = lmstudio-0.3.22.2.AppImage::https://installers.lmstudio.ai/linux/x64/0.3.22-2/LM-Studio-0.3.22-2-x64.AppImage
-	sha256sums = db357daec82176169908bfa277392fe28193d92bcf574e11d1c1caa07d77ec26
+	source = lmstudio-0.3.23.3.AppImage::https://installers.lmstudio.ai/linux/x64/0.3.23-3/LM-Studio-0.3.23-3-x64.AppImage
+	sha256sums = 146dc2cc3e948ee3d85c89a34e4293a33a534151a4f092eac612714d2f6a8eea
 
 pkgname = lmstudio
