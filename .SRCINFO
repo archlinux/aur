@@ -1,13 +1,13 @@
 pkgbase = px_ptop
 	pkgdesc = ps and top for Human Beings
-	pkgver = 3.6.12
+	pkgver = 3.6.13
 	pkgrel = 1
 	url = https://github.com/walles/px
 	arch = any
 	license = MIT
 	depends = python
-	noextract = px-3.6.12.pex
-	source = px-3.6.12.pex::https://github.com/walles/px/releases/download/3.6.12/px.pex
-	sha256sums = bc81691e89c4617ff9e8b7a99ac5e65611c5484b213c3c22a43e28ec0e68e2de
+	noextract = px-3.6.13.pex
+	source = px-3.6.13.pex::https://github.com/walles/px/releases/download/3.6.13/px.pex
+	sha256sums = b9d57961a5b6ae7ea23f23865ce5d38b8ea05f01ef34ab343c96f9246f5c38d1
 
 pkgname = px_ptop
