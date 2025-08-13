@@ -1,0 +1,19 @@
+pkgbase = pantum-cp2100-cm2100-driver
+	pkgdesc = Linux driver for Pantum CP2100 and CM2100 printers V1.0.39
+	pkgver = 1.0.39
+	pkgrel = 1
+	url = https://global.pantum.com/support/download/driver/
+	arch = x86_64
+	arch = i386
+	arch = i686
+	license = proprietary
+	makedepends = python
+	makedepends = curl
+	makedepends = unzip
+	makedepends = binutils
+	makedepends = zstd
+	depends = cups
+	depends = cups-filters
+	depends = ghostscript
+
+pkgname = pantum-cp2100-cm2100-driver
