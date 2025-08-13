@@ -2,7 +2,7 @@
 
 pkgname="pi-im"
 pkgver=3.142a
-pkgrel=1
+pkgrel=2
 pkgdesc='the XMPP client from hell'
 url="https://github.com/sunglocto/${pkgname}"
 arch=('x86_64')
