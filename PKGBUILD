@@ -23,7 +23,7 @@ build() {
 package() {
 	cd "${pkgname}"
 
-	# Install the binary to /usr/bin
+	# Install the binary
 	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# Install the service
