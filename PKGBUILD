@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Kunze <mail at sebastiankunze dot de>
 
 pkgname=google-cloud-cli-firestore-emulator
-pkgver=533.0.0
+pkgver=534.0.0
 pkgrel=1
 pkgdesc='A google-cloud-cli component that provides a local, in-memory emulator for Firestore.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('google-cloud-cli' 'java-runtime')
 options=('!strip')
 source=("https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('f013cf2939824311ef9da95126393d80fea674933217e358043b464329344041')
+sha256sums=('9b86708bfc850f0068a2657a2a3b70ae94aab9ff72fa54d3c9fb73ff7ef215d0')
 
 package() {
     cd "$srcdir/google-cloud-sdk"  # Does not match naming convention google-cloud-cli
