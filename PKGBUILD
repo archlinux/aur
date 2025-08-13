@@ -1,7 +1,7 @@
 # Maintainer: Phillip Davies (ph1lll) <philliptdavies@gmail.com>
 pkgname=gswww-git
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1.r0.gcd3f318
+pkgrel=1
 pkgdesc="A Graphical Solution to your Wayland Wallpaper Woes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Ph1lll/Gswww"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/gswww"
-  git describe --long --tag --abbrev=7 | sed 's/-/.r/;s/-/./'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -35,6 +35,7 @@ package() {
 
 	install -Dm755 target/release/gswww -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
-	install -Dm644 assets/intergration/com.github.Ph1lll.Gswww.png -t "$pkgdir/usr/share/pixmaps/"
-	install -Dm644 assets/intergration/com.github.Ph1lll.Gswww.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 assets/intergration/Gswww.png -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 assets/intergration/Gswww.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 assets/intergration/Gswww-open.desktop -t "$pkgdir/usr/share/applications"
 }
