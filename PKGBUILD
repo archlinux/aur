@@ -1,5 +1,5 @@
 # Maintainer: Zeioth
-_pkgname=power-rules-daemon-git
+_pkgname=power-rules-daemon
 pkgname=power-rules-daemon-git
 pkgver=1.0
 pkgrel=1
@@ -16,15 +16,15 @@ source=("git+$url#commit=f81d7bcd0194b0f85046224abacd78625724af9e")
 sha256sums=('SKIP')
 
 build() {
-	cd "${pkgname}"
+	cd "${_pkgname}"
 	cargo build --release --locked
 }
 
 package() {
-	cd "${pkgname}"
+	cd "${_pkgname}"
 
 	# Install the binary
-	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# Install the service
 	install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
