@@ -47,6 +47,11 @@ package() {
     ln -s "/opt/${pkgname}/${pkgname}" \
         "${pkgdir}/usr/bin/${pkgname}"
 
+    local size
+    for size in 16 24 32 48 64 128 256 512 1024; do
+       install -Dm644 "$srcdir/${pkgname}/build/icons/${size}x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    done
+
     mkdir -p "${pkgdir}/usr/share/applications/"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
