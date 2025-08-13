@@ -12,6 +12,7 @@ pkgbase = flogo
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = yarn
+	makedepends = npm
 	depends = electron
 	provides = flogo
 	source = git+https://github.com/adolfintel/flogo

@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://fdossena.com?p=flogo/index.frag"
 license=('AGPL-3.0-or-later')
 depends=('electron')
-makedepends=('git' 'yarn')
+makedepends=('git' 'yarn' 'npm')
 provides=('flogo')
 source=(git+https://github.com/adolfintel/flogo
         flogo.desktop
