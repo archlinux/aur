@@ -1,11 +1,11 @@
 pkgbase = mite
 	pkgdesc = Static site generator with C templates
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/hanion/mite
 	arch = x86_64
 	license = MIT
-	source = https://github.com/hanion/mite/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 779971286fe651e2dd8c2e1ce3344808cbf10686934f76d44a2f711170622f8e
+	source = https://github.com/hanion/mite/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 5b87a541565eca685243e5ad4d262faf7f8403194b76c5fbc3d84159d2830509
 
 pkgname = mite
