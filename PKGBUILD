@@ -1,5 +1,5 @@
 # Maintainer: mrkirill046 <contact@qwy-games.ru>
-pkgname=sound-player
+pkgname=sound-player-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Мощный, кроссплатформенный и лёгкий музыкальный плеер, построенный на Rust и Tauri"
