@@ -18,21 +18,26 @@ makedepends=('go')
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('838bb0a6145f7fd475908378adce274a6d5f7ee43ec78496738302aa89a1044a')
 
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	go mod tidy
+}
+
 build() {
-	export GOPROOT_FINAL=$pkgdir/usr/lib/xgo
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	cd xgo-$pkgver
+	export GOPROOT_FINAL=${pkgdir}/usr/lib/xgo
+	export CGO_ENABLED=0
 
-	go run cmd/make.go --install
+	go build -trimpath -o "${pkgname}" ./cmd/${pkgname}
 }
 
 package() {
-	cd xgo-$pkgver
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	mkdir -p $pkgdir/usr/{bin,lib/xgo}
-	cp -r * $pkgdir/usr/lib/xgo
+	mkdir -p ${pkgdir}/usr/{bin,lib/xgo}
+	cp -r * ${pkgdir}/usr/lib/xgo
 
-	for f in bin/*; do
-		ln -s /usr/lib/xgo/bin/$(basename "$f") $pkgdir/usr/bin/
-	done
+	ln -s /usr/lib/xgo/${pkgname} ${pkgdir}/usr/bin/
 }
