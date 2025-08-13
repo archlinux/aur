@@ -1,9 +1,15 @@
 [Desktop Entry]
 Categories=Network
+
+#Old commands:
 #Exec=/usr/bin/xdg-open http://localhost:8384
 #Exec=syncthing
 #Exec=/bin/bash -c "killall syncthing ; syncthing ; /usr/bin/xdg-open http://localhost:8384"
+#Exec=/bin/bash -c "systemctl --user start syncthing ; /usr/bin/syncthing -browser-only"
+
+#Compatibility with Syncthing 2.0
 Exec=/bin/bash -c "systemctl --user start syncthing ; /usr/bin/syncthing -browser-only"
+
 Icon=/usr/share/pixmaps/syncthing.svg
 StartupNotify=false
 Terminal=false

@@ -1,0 +1,3 @@
+[thingy]
+source = "git"
+git = "https://aur.archlinux.org/cgit/aur.git/snapshot/syncthing-appmenu.tar.gz"

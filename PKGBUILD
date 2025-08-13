@@ -2,7 +2,7 @@
 # Maintainer: Hugo Rodrigues <hugorodrigues at openmailbox dot com>
 
 pkgname=syncthing-appmenu
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Adds Syncthing Web GUI to applications menu'
 arch=('any')
@@ -13,11 +13,14 @@ depends=('bash' 'syncthing' 'xdg-utils')
 source=(
 	'syncthing.desktop'
 	'syncthing.svg'
-    'syncthing-appmenu.install'
+        'syncthing-appmenu.install'
+	'.nvchecker.toml'
 )
-sha256sums=('dda328d453891e238aaf06b276a997872839a21663b7e0838c390f452dfd515e'
+
+sha256sums=('588b52098f814022fb1423819cddc84d4597a2df878942037cc60ce61ba0fe16'
             '519f08b9ba5d0308d62491a6788d1671208da3029af0a23940c93b4abe10728a'
-            'f067589cd53a4240c3625d4a3438874f9bbd77453c8ef36e488eeaec2bd99fdb')
+            'f067589cd53a4240c3625d4a3438874f9bbd77453c8ef36e488eeaec2bd99fdb'
+            '72d47d6ff706dfb1e63e658840c1ec063f4a224cb09b384b1444549741a14f01')
 
 package() {
     install="${pkgname}.install"
