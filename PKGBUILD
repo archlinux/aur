@@ -2,7 +2,7 @@
 
 pkgname=prepress-cyan
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Image viewer and converter, designed for prepress (print) work."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/rodlie/cyan"
@@ -15,7 +15,10 @@ md5sums=('bb4e7d8098720302516d82aee891d0f6')
 build() {
   cd "$srcdir/cyan-$pkgver"
 
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    .
   make
 }
 

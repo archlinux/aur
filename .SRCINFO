@@ -1,7 +1,7 @@
 pkgbase = prepress-cyan
 	pkgdesc = Image viewer and converter, designed for prepress (print) work.
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rodlie/cyan
 	arch = i686
 	arch = x86_64
