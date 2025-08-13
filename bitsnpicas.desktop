@@ -2,7 +2,7 @@
 Name=Bits'N'Picas
 Comment=Font converter and editor
 Exec=bitsnpicas %f
-Icon=fonts
+Icon=font-x-generic
 Terminal=false
 Type=Application
 GenericName=Font Editor

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bits'N'Picas KeyEdit
+Comment=Font key editor tool
+Exec=bitsnpicas-keyedit %f
+Icon=font-x-generic
+Terminal=false
+Type=Application
+GenericName=Font Key Editor
+Categories=Graphics;
+Keywords=Font;
