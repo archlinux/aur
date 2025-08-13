@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc-stage1
-_gccver=15.1.0
+_gccver=15.2.0
 _islver=0.27
-pkgver=15.1.0_r209.dab008c
+pkgver=15.2.0_r225.be7ccd0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.x
         "https://libisl.sourceforge.io/isl-${_islver}.tar.bz2"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra"
         "gcc13-Wno-format-security.patch")
-sha256sums=('e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
+sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e'
             '626335529331f7c89fec493de929e2e92fb3d8cc860fc7af554e0518ee0029ee'
             'SKIP'
             '75bcf36e10fd50f7b21d80db4fcc9b58d2c658f2c749b7cf2f9369b31f147a6d')
