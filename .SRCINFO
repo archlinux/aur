@@ -1,6 +1,6 @@
 pkgbase = thingy
 	pkgdesc = Quickly access recent and favorite documents.XApp, works with many DE's
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/linuxmint/thingy
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = thingy
 	depends = xapp
 	optdepends = libreoffice
 	optdepends = xreader
-	source = thingy-1.2.0.tar.gz::https://github.com/linuxmint/thingy/archive/refs/tags/1.2.0.tar.gz
-	sha256sums = 27cd39a8389edb0053eaf755e40445e9fc0d5600f4f8ec1354bdecfc900522ec
+	source = thingy-1.2.1.tar.gz::https://github.com/linuxmint/thingy/archive/refs/tags/1.2.1.tar.gz
+	sha256sums = 2862dcdfa9012176bcdf7e6db40bfcab8e404a5a3cf68e16cf4d1ea5fa49b1f3
 
 pkgname = thingy
