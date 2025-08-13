@@ -1,16 +1,16 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=pikapika-appimage
 pkgdesc="A comic browser，support Android / iOS / MacOS / Windows / Linux."
-pkgver=1.8.15
+pkgver=1.8.16
 pkgrel=1
 arch=("x86_64")
 _flutterver=2.10.3
 _pkgname="pikapika-v${pkgver}-linux-${arch}-flutter_${_flutterver}.AppImage"
-url="https://github.com/niuhuan/pikapika"
+url="https://github.com/ComicSparks/pikapika"
 license=("unknown")
 options=('!strip')
 conflicts=("pikapika-bin")
-source=("https://github.com/niuhuan/pikapika/releases/download/v${pkgver}/${_pkgname}")
+source=("https://github.com/ComicSparks/pikapika/releases/download/v${pkgver}/${_pkgname}")
 sha256sums=('SKIP')
 
 _installPath=/opt/appimages/pikapika.AppImage
