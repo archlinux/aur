@@ -1,18 +1,17 @@
-# Contributor: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gdb
 pkgver=16.3
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(boost expat gdb-common glibc gmp guile libelf mpfr ncurses python readline source-highlight xz zstd)
 makedepends=(boost expat gcc glibc gmp guile libelf mpfr ncurses python readline source-highlight xz zstd)
 options=(!emptydirs !strip)
-source=(http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz{,.sig}
+source=(http://ftpmirror.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz{,.sig}
         fix-missing-includes.patch)
 sha256sums=('bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5'
             'SKIP'
@@ -27,9 +26,9 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"/gdb-build
+  cd gdb-build
 
-  "${srcdir}"/gdb-${pkgver}/configure \
+  ../gdb-${pkgver}/configure \
     --target=${_target} \
     --prefix=/usr \
     --with-system-readline \
@@ -47,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/gdb-build
+  cd gdb-build
 
   make -C gdb DESTDIR="${pkgdir}" install
 
