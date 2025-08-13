@@ -1,6 +1,6 @@
 pkgbase = tsmuxer-git
 	pkgdesc = Remux/mux elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS. (GIT Version)
-	pkgver = 2.6.16.r1081.385eb52
+	pkgver = 2.6.16.r1172.c6b1186
 	pkgrel = 1
 	url = https://github.com/justdan96/tsMuxer
 	arch = x86_64
