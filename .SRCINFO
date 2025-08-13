@@ -1,15 +1,15 @@
 pkgbase = element-lk-jwt-service
 	pkgdesc = LiveKit Management Service for Element Call
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/vector-im/lk-jwt-service/
 	arch = x86_64
 	license = AGPL-3
 	makedepends = go
 	makedepends = git
-	source = https://github.com/element-hq/lk-jwt-service/archive/refs/tags/v0.2.3.tar.gz
+	source = https://github.com/element-hq/lk-jwt-service/archive/refs/tags/v0.3.0.tar.gz
 	source = lk-jwt-service.service
-	sha512sums = dbe6f35ab44dcf5503ac5a331f3c2a2356accc91e7cbba9932472d9589dea0db5a95ac8d5d0a121d0d1c7809f437b7a75d9f4972a023018292eb2c5b998a37dc
-	sha512sums = 8526c23f727b338b1b40a3013cd204decca79bb4b3d6f56feac902fc27d7d8bff7153d613aa9a7eabd1229d7928b3d4740bb18728f6025cd18c2fc0e9eef5896
+	sha512sums = 89dc981df1281f30fcea8f20c8eaf1d79f8968fa67362d4b1310e63225adf2fbcd23ef0ecc660f229614fbb738779c27207f416f8e8cfdcc5880cd9caca61b66
+	sha512sums = 6abbd585f2f0fe47dfd01cc8f139407a0b36877375001decaf0b96e57fd6834514f0317b9d79c7fcea74ee911db0afd1f25384d481baabc092c6e65881d9f36d
 
 pkgname = element-lk-jwt-service
