@@ -1,9 +1,3 @@
-# Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
-# Contributor: toha257 <toha257@gmail.com>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Tavian Barnes <tavianator@tavianator.com>
-# Contributor: Logan Magee <mageelog@gmail.com>
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 _target_arch=arm
@@ -14,7 +8,7 @@ pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=(any)
 url='https://kernel.org/'
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(rsync)
 source=(https://kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.{xz,sign})
 sha256sums=('44f1bb84fe512e7bafe0e6dc85d38ec1c6c8fcbe97ccb51d8c19930b799f0d64'
