@@ -1,6 +1,6 @@
 pkgbase = xt_wgobfs-dkms
 	pkgdesc = iptables WireGuard obfuscation extension
-	pkgver = 0.5.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/infinet/xt_wgobfs
 	arch = i686
@@ -8,11 +8,7 @@ pkgbase = xt_wgobfs-dkms
 	license = GPL
 	depends = dkms
 	depends = iptables
-	source = https://github.com/infinet/xt_wgobfs/releases/download/v0.5.0/xt_wgobfs-0.5.0.tar.xz
-	source = dkms.conf
-	source = Makefile
-	sha256sums = 3d1c6304b92b1977aeeafa875323b85bdbe69272c481aa5c07c39051fef92655
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/infinet/xt_wgobfs/releases/download/v0.6.2/xt_wgobfs-0.6.2.tar.xz
+	sha256sums = ba4c410c9dc304360d944249d5314ef4987515de381b1274873f8597928cb67f
 
 pkgname = xt_wgobfs-dkms

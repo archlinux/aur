@@ -1,34 +1,31 @@
 # Maintainer: João de Felipe <joaodefelipe@gmail.com>
 _pkgbase=xt_wgobfs
 pkgname=${_pkgbase}-dkms
-pkgver=0.5.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='iptables WireGuard obfuscation extension'
 arch=(i686 x86_64)
 url='https://github.com/infinet/xt_wgobfs'
 license=('GPL')
 depends=('dkms' 'iptables')
-source=("https://github.com/infinet/xt_wgobfs/releases/download/v${pkgver}/xt_wgobfs-${pkgver}.tar.xz" 'dkms.conf' 'Makefile')
-sha256sums=('3d1c6304b92b1977aeeafa875323b85bdbe69272c481aa5c07c39051fef92655' 'SKIP' 'SKIP')
+source=("https://github.com/infinet/xt_wgobfs/releases/download/v${pkgver}/xt_wgobfs-${pkgver}.tar.xz")
+sha256sums=('ba4c410c9dc304360d944249d5314ef4987515de381b1274873f8597928cb67f')
 
 build() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   ./autogen.sh
   ./configure
-  make libxt-local
+  make -C src libxt-local
 }
 
 package() {
+  cd "${_pkgbase}-${pkgver}"
+
   # Install kernel module sources
-  install -Dm644 dkms.conf Makefile -t "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
-  sed -e "s/@_PKGBASE@/${_pkgbase}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
-  cd "${srcdir}/${_pkgbase}-${pkgver}/src"
-  install -Dm644 Kbuild chacha.c chacha.h wg.h xt_WGOBFS.h xt_WGOBFS_main.c -t "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
+  mkdir -p "${pkgdir}/usr/src"
+  tar -C "${pkgdir}/usr/src" -xvf "${srcdir}/xt_wgobfs-${pkgver}.tar.xz"
 
   # Install extension
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
   mkdir -p "${pkgdir}/usr/lib/xtables"
-  make libxt-install DESTDIR="${pkgdir}"
+  make -C src libxt-install DESTDIR="${pkgdir}"
 }
