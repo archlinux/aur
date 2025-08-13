@@ -1,0 +1,5 @@
+[wasistlos]
+source = "git"
+git = "https://github.com/xeco23/WasIstLos.git"
+include_regex = 'v((?:\d|\.)+)'
+prefix = "v"
