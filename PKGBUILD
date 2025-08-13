@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=pragtical
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/pragtical/pragtical"
 license=('MIT')
 depends=(
   # Editor Dependencies
-  'luajit' 'sdl2' 'libiconv' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
+  'luajit' 'sdl3' 'libiconv' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
   # Plugin Manager Dependencies
   'lua' 'zlib' 'mbedtls' 'libgit2' 'libzip' 'xz'
 )
@@ -17,11 +17,13 @@ makedepends=('meson>=0.63')
 source=(
   "https://github.com/pragtical/pragtical/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('b68c7069dcf7ef0e36d6473a106568f153b727de15a96ddbe73e305cecdccc86')
+sha256sums=('d95369c61f8f8d3c0e87d298dcb96ebf8eab68739db566783590ca0edcad5ce6')
 
 build() {
   cd "pragtical-$pkgver"
-  arch-meson --wrap-mode default --buildtype release -Duse_system_lua=true build
+  arch-meson --wrap-mode default --buildtype release \
+    -Db_lto=true -Duse_system_lua=true \
+    build
   meson compile -C build
 }
 
