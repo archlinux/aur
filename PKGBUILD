@@ -11,7 +11,8 @@ license=('custom')
 depends=(easyrpg-player rpg2003-rtp) #fluidsynth,soundfont-gmgsx?
 makedepends=(unarchiver desktop-file-utils)
 source=("http://ftp.vector.co.jp/43/88/3084/${_pkgname}${pkgver}.lzh"
-${pkgname}.{png,sh} )
+https://cdn2.steamgriddb.com/icon/06409663226af2f3114485aa4e0a23b4/8/16x16.png
+${pkgname}.sh )
 # Cannot DL patch: "https://www3.nns.ne.jp/~tk-mto/yumesyuusei.lzh"
 md5sums=('f3a16c395078dcec4950200732bc5194'
          '50288d205493517d498ddfcc40df2b09'
@@ -26,7 +27,7 @@ package() {
   mv "${_jname}/${_jname}${pkgver}" "$pkgdir/opt/$pkgname"
   rm "$pkgdir/opt/$pkgname/"{RPG_RT{.exe,_bak.ldb},*/Thumbs.db} #gabadge
   iconv -f cp932 "$srcdir/${_jname}/初めに読んで下さい。${pkgver}.txt" > "$pkgdir/opt/$pkgname/ReadMe.txt"
-  install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 16x16.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
   install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
   # Entry
   install -Dm644 /usr/share/applications/easyrpg-player.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
