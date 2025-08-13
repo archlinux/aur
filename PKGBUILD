@@ -1,6 +1,6 @@
 # Maintainer: Nick Webster <nick@nick.geek.nz>
 pkgname=micropad
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="A powerful note-taking app that helps you organise + take notes without restrictions."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "https://github.com/MicroPad/MicroPad-Electron/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman"
     "micropad-bin"
 )
-sha256sums=('a8619cccb90eff2a187f17e1f58d74b525c5dca24a4f10d75a8ce21f44fcf1fa'
+sha256sums=('8d6874be06b824d29b81cc341d2d409f0511eca320e6db0c296ceaea246b1615'
             '7ab508fb119862f930f571cde97a7ad02862f8a7b8720dd306d1a89703db2949')
 install="micropad.install"
 
