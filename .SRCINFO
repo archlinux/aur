@@ -1,0 +1,29 @@
+pkgbase = uwsm-git
+	pkgdesc = A standalone Wayland session manager - Git package
+	pkgver = 0.23.2.r0.g93bc364
+	pkgrel = 1
+	url = https://github.com/Vladimir-csp/uwsm
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = git
+	depends = bash
+	depends = python
+	depends = python-pyxdg
+	depends = python-dbus
+	optdepends = bemenu: optional picker for uuctl support
+	optdepends = dmenu: optional picker for uuctl support
+	optdepends = fuzzel: optional picker for uuctl support
+	optdepends = libnewt: for "uwsm start select"
+	optdepends = libnotify: for feeback from "uswm app" commands or fmon service
+	optdepends = rofi-wayland: optional picker for uuctl support
+	optdepends = walker: optional picker for uuctl support
+	optdepends = wmenu: optional picker for uuctl support
+	optdepends = wofi: optional picker for uuctl support
+	provides = uwsm=0.23.2.r0.g93bc364
+	conflicts = uwsm
+	source = uwsm::git+https://github.com/Vladimir-csp/uwsm.git
+	sha256sums = SKIP
+
+pkgname = uwsm-git
