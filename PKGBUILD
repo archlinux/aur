@@ -3,12 +3,18 @@
 pkgname=ccusage
 pkgver=15.9.5
 pkgrel=1
+
+pkgver() {
+    curl -s "https://api.github.com/repos/ryoppippi/ccusage/releases/latest" | 
+    grep '"tag_name":' | 
+    sed -E 's/.*"v?([^"]+)".*/\1/'
+}
 pkgdesc="A CLI tool for analyzing Claude Code token usage and costs from local JSONL files"
 arch=('any')
 url="https://github.com/ryoppippi/ccusage"
 license=('MIT')
 depends=('nodejs' 'npm')
-makedepends=('npm')
+makedepends=('npm' 'curl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ryoppippi/ccusage/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 

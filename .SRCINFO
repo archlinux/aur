@@ -6,6 +6,7 @@ pkgbase = ccusage
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = curl
 	depends = nodejs
 	depends = npm
 	source = ccusage-15.9.5.tar.gz::https://github.com/ryoppippi/ccusage/archive/v15.9.5.tar.gz
