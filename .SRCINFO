@@ -12,8 +12,6 @@ pkgbase = gamescope-session-steam-sk-git
 	optdepends = frzr: chimeraos update system
 	provides = gamescope-session-steam
 	provides = gamescope-session-steam-git
-	conflicts = gamescope-session-steam
-	conflicts = gamescope-session-steam-git
 	source = gamescope-session-steam::git+https://github.com/3003n/gamescope-session-steam.git
 	md5sums = SKIP
 

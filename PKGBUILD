@@ -10,7 +10,6 @@ url="https://github.com/3003n/gamescope-session-steam"
 license=('MIT')
 groups=()
 provides=('gamescope-session-steam' 'gamescope-session-steam-git')
-conflicts=('gamescope-session-steam' 'gamescope-session-steam-git')
 depends=('gamescope' 'gamescope-session-git')
 optdepends=('chimera: for steam-tweaks integration'
             'frzr: chimeraos update system')
