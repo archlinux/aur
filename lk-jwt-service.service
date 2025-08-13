@@ -9,6 +9,7 @@ Environment=LIVEKIT_URL="ws://localhost"
 Environment=LIVEKIT_JWT_PORT="7880"
 Environment=LIVEKIT_KEY="<your livekit key>"
 Environment=LIVEKIT_SECRET="<your livekit secret>"
+Environment=LIVEKIT_FULL_ACCESS_HOMESERVERS="<comma separated list of allowed homeservers, default '*' all homeservers>"
 ExecStart=lk-jwt-service
 
 Restart=on-failure
