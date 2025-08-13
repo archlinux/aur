@@ -7,6 +7,6 @@ pkgbase = pass-phrase
 	license = GPL3
 	depends = pass
 	source = https://github.com/programadoroccidental/pass-phrase/archive/refs/tags/v1.3.tar.gz
-	sha512sums = 24d0c9cff3bda4296260fbe0d035d913f3e2870d265acd5e8f541da4ed4537e8cee5c77a3d89a1295a1a7118861c1ac259609e11bc30c54c8ac2249eea631a37
+	sha512sums = 0725fbeee95ad937a9052cac3ca4c952fafeaefc8b5cdd1e87339f0718b8dcfd77cc7ac3b194e5135b1ed17da2019ea0d0c1ed22361dba7f57827fe71e39f147
 
 pkgname = pass-phrase
