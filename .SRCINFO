@@ -1,5 +1,5 @@
 pkgbase = python-logfire
-	pkgver = 4.2.0
+	pkgver = 4.3.3
 	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = any
@@ -84,10 +84,10 @@ pkgbase = python-logfire
 	depends = python
 	noextract = pydantic_graph-0.4.2-py3-none-any.whl
 	noextract = pydantic_ai_slim-0.4.2-py3-none-any.whl
-	source = logfire-4.2.0::git+https://github.com/pydantic/logfire.git#tag=v4.2.0
+	source = logfire-4.3.3::git+https://github.com/pydantic/logfire.git#tag=v4.3.3
 	source = https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-0.4.2-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-0.4.2-py3-none-any.whl
-	sha256sums = 4b56df2bba1a948f223e3278416ee3dfd63bce94bd443bb6adeaf8044bfdfee2
+	sha256sums = 8fe5d2b52783d88c0f9cc0e52aea865d1bc51ae043406f46cd53736e0ce3b747
 	sha256sums = 6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2
 	sha256sums = 1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475
 

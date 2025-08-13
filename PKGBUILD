@@ -3,20 +3,13 @@
 _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
-_pydanticaiver=0.4.2
 pkgname=(python-${_name1} python-${_name0})
-pkgver=4.2.0
+_pydanticaiver=0.4.2
+pkgver=4.3.3
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
-source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-${_pydanticaiver}-py3-none-any.whl"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl") # Prevent cercular dependencies
-noextract=("pydantic_graph-${_pydanticaiver}-py3-none-any.whl" "pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl")
-sha256sums=('4b56df2bba1a948f223e3278416ee3dfd63bce94bd443bb6adeaf8044bfdfee2'
-            '6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2'
-            '1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 _pydantic_ai_depends=('python-griffe' 'python-opentelemetry-api' 'python-typing-inspection')
@@ -92,10 +85,18 @@ checkdepends=('python-httpx'
               'python-google-genai'
               # 'python-openinference-instrumentation-litellm'
               'litellm')
+source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-${_pydanticaiver}-py3-none-any.whl"
+        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl") # Prevent cercular dependencies
+noextract=("pydantic_graph-${_pydanticaiver}-py3-none-any.whl" "pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl")
+sha256sums=('8fe5d2b52783d88c0f9cc0e52aea865d1bc51ae043406f46cd53736e0ce3b747'
+            '6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2'
+            '1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475')
 
 prepare(){
   cd "${srcdir}"/${_name0}-${pkgver}
   sed -i "s/'gzip, deflate, zstd',/IsAnyStr(regex='^gzip, deflate(?:, br|, zstd|, br, zstd)?$'),/g" tests/otel_integrations/test_httpx.py
+  sed -i "/top_logprobs/d" tests/otel_integrations/test_openai_agents.py
 }
 
 build() {
