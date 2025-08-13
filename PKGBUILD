@@ -1,23 +1,17 @@
-# Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
-# Contributor: toha257 <toha257@gmail.com>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
-# Contributor: Tavian Barnes <tavianator@tavianator.com>
-# Contributor: Vyacheslav Razykov <v.razykov@gmail.com>
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gcc-stage2
-pkgver=15.1.1+r7+gf36ec88aa85a
-_commit=f36ec88aa85a1a8f4ec300dfcd862fc4fbca1c53
+pkgver=15.2.1+r19+g76aeacb436df
+_commit=76aeacb436dfad649974cf5f61ec1ce6dd5f8417
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building"
 arch=(x86_64)
-license=(GPL LGPL FDL custom)
+license=(GPL-3.0-or-later LGPL-3.0-or-later GFDL-1.3-or-later custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.42" "${_target}-glibc-headers>=2.40")
+depends=("${_target}-binutils>=2.44" "${_target}-glibc-headers>=2.40")
 makedepends=(binutils gcc glibc zlib)
-options=(!emptydirs !distcc !strip)
+options=(!emptydirs !distcc !debug !strip)
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
@@ -25,7 +19,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('7dc521dbaf5e8db83574db217c5fdb8c4fed6ec1cc6ce9f0095755f599890b8c')
+sha256sums=('3ba0b55ec7bcc81ed05ad62e8dc78f6b13e49bdcb3d982b0f17e4292521298e6')
 
 pkgver() {
   cd "${srcdir}"/gcc
@@ -42,14 +36,17 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"/gcc-build
+  cd gcc-build
 
   # using -Werror=format-security causes libcpp buildig failures
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100207 
   CFLAGS="${CFLAGS/ -Werror=format-security/}"
   CXXFLAGS="${CXXFLAGS/ -Werror=format-security/}"
 
-  "${srcdir}"/gcc/configure \
+  export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=src"
+  export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=src"
+
+  ../gcc/configure \
     --target=${_target} \
     --host=${CHOST} \
     --build=${CHOST} \
@@ -105,4 +102,5 @@ package() {
     -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line \
     -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
   find "${pkgdir}"/ -type f -and \( -executable \) -exec strip '{}' \;
+  find "${pkgdir}"/ -name "libgcc.a" -exec ${_target}-strip --strip-debug {} +
 }
