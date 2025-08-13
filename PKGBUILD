@@ -1,7 +1,7 @@
 # Maintainer: Akita Noek <akita@noek.net>
 
 pkgname=sandbox-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A tool for creating lightweight containerized copy-on-write views of your computer for safely running programs and managing output.'
@@ -10,10 +10,10 @@ license=('MIT')
 depends=()
 install="$pkgname.install"
 source=("LICENSE::https://github.com/anoek/sandbox/raw/main/LICENSE"
-        "sandbox-bin.tar.zst::https://github.com/anoek/sandbox/releases/download/0.2.0/sandbox-bin-0.2.0-1-x86_64.pkg.tar.zst"
+        "sandbox-bin.tar.zst::https://github.com/anoek/sandbox/releases/download/0.3.0/sandbox-bin-0.3.0-1-x86_64.pkg.tar.zst"
         )
 sha256sums=('c73b19352a4ce2884771b8b16ecb562dd755a23ed1e73fb44c2271e90b4af8e5'
-            'dad77c14b6e1723e37566d0789d8b534faa1d1f111c2e56b11782b8d44f0e7b5')
+            '91edc38f20ac3da8145bed1e51027adb2ade9cf63782e1e4253a1553773eb2e3')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
