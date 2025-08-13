@@ -3,8 +3,8 @@ _pkgname=power-rules-daemon
 pkgname=power-rules-daemon
 url="https://github.com/Zeioth/power-rules-daemon"
 pkgver=1.0
-pkgrel=2
-pkgdesc="Daemon written in Rust to automatically change your power profile when a program is executed."
+pkgrel=3
+pkgdesc="Daemon written in Rust to automatically change your power profile while a program is executed."
 arch=("any")
 license=("GPL-3.0")
 depends=("power-profiles-daemon")
@@ -12,7 +12,7 @@ makedepends=("git" "rust")
 provides=(power-rules-daemon)
 conflicts=(power-rules-daemon-git)
 options=('!debug') # Disable debug binary
-source=("git+$url#commit=f81d7bcd0194b0f85046224abacd78625724af9e")
+source=("git+$url#commit=9326cd9f0749bcb1f0c96deeb8e0702c35c513a2")
 sha256sums=('SKIP')
 
 build() {

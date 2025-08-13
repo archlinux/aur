@@ -1,5 +1,5 @@
 pkgbase = power-rules-daemon
-	pkgdesc = Daemon written in Rust to automatically change your power profile when a program is executed.
+	pkgdesc = Daemon written in Rust to automatically change your power profile while a program is executed.
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://github.com/Zeioth/power-rules-daemon
@@ -11,7 +11,7 @@ pkgbase = power-rules-daemon
 	provides = power-rules-daemon
 	conflicts = power-rules-daemon-git
 	options = !debug
-	source = git+https://github.com/Zeioth/power-rules-daemon#commit=f81d7bcd0194b0f85046224abacd78625724af9e
+	source = git+https://github.com/Zeioth/power-rules-daemon#commit=9326cd9f0749bcb1f0c96deeb8e0702c35c513a2
 	sha256sums = SKIP
 
 pkgname = power-rules-daemon
