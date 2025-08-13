@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.0.2.pre.alpha.r291.g1551387
+pkgver=0.0.2.pre.alpha.r299.gbd944b7
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -13,7 +13,7 @@ url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden')
-depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'libusb' 'libva' 'zycore-c' 'zydis' 'qt6-webengine' 'brotli' 'speexdsp' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'openssl' 'zstd' 'boost-libs' 'libvdpau' 'libx11' 'libdrm')
+depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'libusb' 'libva' 'qt6-webengine' 'brotli' 'speexdsp' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'openssl' 'zstd' 'boost-libs' 'libvdpau' 'libx11' 'libdrm')
 makedepends=('git' 'cmake' 'mold' 'spirv-tools' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'boost' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
 options=('lto' '!debug')
@@ -61,10 +61,6 @@ package() {
 	do
 		install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
 	done
-	rm -rf $pkgdir/usr/include/Zydis
-	rm -rf $pkgdir/usr/include/Zycore
-	rm -rf $pkgdir/usr/lib/cmake/zycore
-	rm -rf $pkgdir/usr/lib/cmake/zydis	
 }
 
 
