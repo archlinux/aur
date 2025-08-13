@@ -1,15 +1,17 @@
-pkgbase = whatsapp-for-linux
-	pkgdesc = An unofficial WhatsApp desktop application for linux
+pkgbase = wasistlos
+	pkgdesc = An unofficial WhatsApp desktop application for Linux.
 	pkgver = 1.7.0
 	pkgrel = 1
-	url = https://github.com/eneshecan/whatsapp-for-linux
+	url = https://github.com/xeco23/WasIstLos
 	arch = i686
 	arch = x86_64
+	arch = x86_64_v3
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = git
+	depends = intltool
 	depends = gtkmm3
 	depends = webkit2gtk
 	depends = libayatana-appindicator
@@ -18,8 +20,10 @@ pkgbase = whatsapp-for-linux
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-libav
-	optdepends = hunspell-en_us: spell-checking
-	source = git+https://github.com/eneshecan/whatsapp-for-linux#tag=v1.7.0
+	optdepends = hunspell: spell checking
+	optdepends = webkit2gtk-imgpaste: pasting images from clipboard
+	conflicts = whatsapp-for-linux
+	source = git+https://github.com/xeco23/WasIstLos#tag=v1.7.0
 	b2sums = 1a14e9582654204dea6fe361d8f8e29f1b5b9a5266bfe292f8423df4602364a0c0989c4089ec86ced18c4e292600aa10d8f2b01fa62707c6edfa612aa224d679
 
-pkgname = whatsapp-for-linux
+pkgname = wasistlos
