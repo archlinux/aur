@@ -1,30 +1,23 @@
-# Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
-# Contributor: toha257 <toha257@gmail.com>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
-# Contributor: Tavian Barnes <tavianator@tavianator.com>
-# Contributor: Vyacheslav Razykov <v.razykov@gmail.com>
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc-headers
-pkgver=2.41+r48+g5cb575ca9a3d
-_commit=5cb575ca9a3da045bc3e2f0dda81ad5804bde1e6
+pkgver=2.42+r3+gbc13db739377
+_commit=bc13db73937730401d592b33092db6df806d193e
 pkgrel=1
 pkgdesc="GNU C Library headers"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
-license=(GPL LGPL)
-depends=("${_target}-linux-api-headers>=6.12")
-makedepends=("${_target}-gcc-stage1>=15.1.0" python)
+license=(GPL-2.0-only LGPL-2.1-or-later)
+depends=("${_target}-linux-api-headers>=6.15")
+makedepends=("${_target}-gcc-stage1>=15.2.0" python)
 conflicts=("${_target}-glibc" "${_target}-eglibc")
 options=(!buildflags !strip !lto staticlibs)
 source=(git+https://sourceware.org/git/glibc.git#commit=${_commit}
         sdt.h sdt-config.h)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-sha256sums=('ba3708d5452115c252fcb60e97f400770aedd8a9f6b2e499b8d29140643241f9'
+sha256sums=('810cc48e09712524aa087c7122baaed15ace55ea9c52f918fa095e49734d8cd4'
             '1ecf90005ff5a65374c7266acb164fa265aff92328593bdca2352acf5dab240d'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0')
 
