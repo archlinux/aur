@@ -1,47 +1,32 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Lex Black <autumn-wind at web dot de>
-# Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
-
+_name=aioimaplib
 pkgname=python-aioimaplib
-_pkg="${pkgname#python-}"
-pkgver=0.9.0
-pkgrel=3
-pkgdesc='Python asyncio IMAP4rev1 client library'
-arch=('any')
-url='https://github.com/bamthomas/aioimaplib'
-license=('GPL3')
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=(
-	'python-asynctest'
-	'python-docutils'
-	'python-imaplib2' ## AUR
-	'python-mock'
-	'python-nose'
-	'python-pyopenssl'
-	'python-pytz'
-	'python-twine'
-	'python-tzlocal')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "python310.patch::$url/compare/0.9.0...21da21f.diff")
-sha256sums=('3d4700f019e7a6459a6b88ef5f1ee3441f600554938490405f172313835e2749'
-            '43030b610417278c3046eac82a71f8d8e207c13ce81015dedb04ac1df878b46b')
-
-prepare() {
-	patch -p1 -d "$_pkg-$pkgver" < python310.patch
-}
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="Python asyncio IMAP4rev1 client library"
+arch=(any)
+url="https://github.com/bamthomas/aioimaplib"
+license=('GPL-3.0-only')
+depends=('python' 'python-setuptools')
+makedepends=('python-poetry-core' 'python-build' 'python-installer')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/aioimaplib-2.0.1.tar.gz")
+sha256sums=('5a494c3b75f220977048f5eb2c7ba9c0570a3148aaf38bee844e37e4d7af8648')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
-}
-
-check() {
-	cd "$_pkg-$pkgver"
-	nosetests
+  cd "$srcdir/aioimaplib-2.0.1"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir/aioimaplib-2.0.1"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # make sure we don't install any world-writable or root-readable-only files
+  # we shouldn't need to fix ownership as we extract tarballs as a non-root user
+  # https://github.com/pypa/setuptools/issues/1328
+  # https://github.com/LonamiWebs/Telethon/issues/1605
+  chmod u=rwX,go=rX -R "$pkgdir"
+  # make sure we don't install annoying files
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rf "$pkgdir/$_site_packages/tests/"
 }
+
