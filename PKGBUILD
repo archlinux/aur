@@ -2,7 +2,7 @@
 # Contributor: dan <dan@digitalprivacy.diy>
 
 pkgname="mjolnir"
-pkgver="1.10.0"
+pkgver="1.11.0"
 pkgrel=1
 pkgdesc="A moderation tool for Matrix."
 arch=("x86_64")
@@ -24,7 +24,7 @@ source=(
 )
 
 sha256sums=(
-	"3de03850e6a6cff0aa5bf262fcc0573944c25bb6e00ae044a0b760624888b503"
+	"dfe7e46f451836d919cab5ac08a2e3cabb0c6fc16ac336590b1f9e0963fe6603"
 	"d7d5f76207ea5617872c8651787a9aad212c1c3abb32a47bb00a6476c9383a4c"
 	"56bac587793ab6c2c021056bb76c97746b22cdf3ce84b7a2b26fc23266f7bd40"
 	"9a5c0887a776585360c10a036f3ec6a264e46d0a8626852f694450ad8b266c86"
