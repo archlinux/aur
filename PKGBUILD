@@ -40,7 +40,7 @@ depends=(
 	'uvicorn'
 	'yt-dlp'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core' 'python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
 # checkdepends=('python-pytest-asyncio' 'python-pytest-mock')
 provides=('python-spotdl')
 replaces=('python-spotdl')
