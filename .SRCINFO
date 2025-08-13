@@ -1,0 +1,23 @@
+pkgbase = sound-player
+	pkgdesc = Мощный, кроссплатформенный и лёгкий музыкальный плеер, построенный на Rust и Tauri
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mrkirill046/sound-player
+	install = sound-player.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/mrkirill046/sound-player/releases/download/v1.0.0/sound-player_1.0.0_amd64.deb
+	sha256sums_x86_64 = 143e6e7ad640a94df693724da96e5dcb31f7688c5ac62dd9018eb6ea2f208226
+
+pkgname = sound-player
