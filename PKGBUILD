@@ -2,16 +2,16 @@
 
 pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/lite-xl/lite-xl-plugin-manager"
 license=('MIT')
-depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2' 'xz')
+depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls' 'xz')
 makedepends=('meson')
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1f85a223e58412f6ca6e4a0610c28af1d73a079374cae178058374f92dc2a559')
+sha256sums=('047d0d3a7d37d4ec1f4a6be7e62faa802f15893c3985dd7688c2b2ff7388acb2')
 
 
 build() {
