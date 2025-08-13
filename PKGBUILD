@@ -10,7 +10,7 @@ url='https://homestuck.giovanh.com/unofficial-homestuck-collection/'
 license=('GPL-3.0+' 'custom:chrome' 'custom:electron')
 makedepends=('nodejs-lts-jod' 'gendesk' 'yarn' 'electron' 'python' 'python-setuptools' 'git')
 depends=('libxcrypt-compat')
-source=("git+https://github.com/GiovanH/${pkgname}.git#tag=v2.7.0"
+source=("git+https://github.com/GiovanH/${pkgname}.git#tag=v${pkgver}"
         node-engines.patch)
 sha512sums=('9dff8d1f8d5e9cc7e86caa8a7f63c2a8749bf78d8c6c8487d773c1fc117db808dd9eb10d3c20856d2cddf01efe7e14d28c993a46e43302a68669c86a93ee5712'
             'd93caf075f89184fb88e39e5faa7aa136817737e90da063ed98a15b668efacbb5b25415933a49669d76bee27eb1f871225c59333828a398ed4044b05bee0758d')
