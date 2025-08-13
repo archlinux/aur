@@ -14,12 +14,8 @@ note() {
 post_install() {
     note "Enable the Lenovo config service with:"
     echo "sudo systemctl enable --now lenovo-cfgservice.service"
-
     note "If your system has a Fibocom L860-GL-16/FM350 or a Quectel EM160R-GL/RM520N-GL"
-    note "Consider enabling the systemd drop-in file by uncommenting all the lines"
-    echo "sudo systemctl edit ModemManager --drop-in=apply-test-option.conf"
-    note "And then restart ModemManager:"
-    echo "sudo systemctl daemon-reload && sudo systemctl restart ModemManager.service"
+    note "Consider adding options --test-low-power-suspend-resume and --test-quick-suspend-resume to ModemManager.service"
 }
 
 post_upgrade() {
@@ -29,11 +25,4 @@ post_upgrade() {
 pre_remove() {
     msg_blue "Stopping lenovo-cfgservice.service"
     systemctl disable --now lenovo-cfgservice.service
-}
-
-post_remove() {
-    msg_blue "Removing drop-in file (if exists) /etc/systemd/system/ModemManager.service.d/apply-test-option.conf"
-    rm -rf /etc/systemd/system/ModemManager.service.d/apply-test-option.conf
-    note "Consider restarting the ModemManager service:"
-    echo "sudo systemctl daemon-reload && sudo systemctl restart ModemManager.service"
 }

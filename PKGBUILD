@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=lenovo-wwan-unlock
-pkgver=2.1.3
-pkgrel=5
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="FCC and DPR unlock for Lenovo PCs"
 arch=(x86_64)
 url=https://github.com/lenovo/lenovo-wwan-unlock
@@ -14,19 +14,14 @@ depends=(
 makedepends=(git)
 source=($pkgname::git+https://github.com/lenovo/$pkgname#tag=v$pkgver)
 install=$pkgname.install
-b2sums=('cc7f08f44940d7e8fef0e87c6c613cf6b0bbc0c7bced4131c1469bbfb7128dd7f953ce8a2399b38c4d664b281ba6aa83cd565dbdd27d69112543751d10eb463e')
-
-prepare() {
-    # Comment all lines in drop-in systemd file so that it has no effect by default
-    sed -i -e "s/^/#/" $pkgname/suspend-fix/apply-test-option.conf
-
-}
+b2sums=('202570508860c7a0cf118a0e30e45deb9f371608f2d37fd4168dd2cc023cc3a230eb45450b7286fd42739f64ae3c59e6d62aaa7a050f5f0244f2f7644d0ee05b')
 
 package() {
     cd $pkgname
 
     # FCC unlock scripts for ModemManager
     tar -xzf fcc-unlock.d.tar.gz
+
     # Fibocom L860R+, Fibocom FM350 5G, Quectel RM520N-GL, Quectel EM160R-GL, Quectel EM061K, Quectel EM05-CN
     # These two files are now provided by upstream ModemManager
     #install -D -m755 fcc-unlock.d/14c3:4d75 "$pkgdir"/usr/share/ModemManager/fcc-unlock.available.d/14c3:4d75
@@ -53,11 +48,6 @@ package() {
 
     # Systemd service
     install -D -m644 lenovo-cfgservice.service "$pkgdir"/usr/lib/systemd/system/lenovo-cfgservice.service
-
-    # Script to fix wake up during suspend
-    # Affected devices: Fibocom L860-GL-16/FM350, Quectel EM160R-GL/RM520N-GL
-    install -D -m644 suspend-fix/apply-test-option.conf "$pkgdir"/etc/systemd/system/ModemManager.service.d/apply-test-option.conf
-    install -D -m755 suspend-fix/mm-wrapper.sh "$pkgdir"/opt/fcc_lenovo/suspend-fix/mm-wrapper.sh
 
     # Lenovo license and agreement
     install -D -m644 "Lenovo Software Code License Agreement for wwan.txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
