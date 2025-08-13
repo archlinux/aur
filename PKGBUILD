@@ -1,11 +1,11 @@
-# Maintainer: Zeioth
+# Author: Zeioth
 _pkgname=power-rules-daemon
 pkgname=power-rules-daemon
+url="https://github.com/Zeioth/power-rules-daemon"
 pkgver=1.0
 pkgrel=2
 pkgdesc="Daemon written in Rust to automatically change your power profile when a program is executed."
 arch=("any")
-url="https://github.com/Zeioth/power-rules-daemon"
 license=("GPL-3.0")
 depends=("power-profiles-daemon")
 makedepends=("git" "rust")
