@@ -1,27 +1,38 @@
-# Maintainer: Oliwier <szerwigi14@gmail.com>
+# Maintainer: YourName <you@example.com>
 pkgname=brokefetch-git
-pkgver=2025.08.12.r0.0000000
+pkgver=2025.08.12.rc40647b
 pkgrel=1
 pkgdesc="A broken neofetch clone script 💀"
 arch=('any')
 url="https://github.com/Szerwigi1410/brokefetch"
 license=('MIT')
 depends=('bash')
-makedepends=('git' 'curl')
-source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
+
+# Nuke old built packages right away
+echo "🔥 Nuking old package archives..."
+rm -f "$PWD"/*.pkg.tar.*
 
 pkgver() {
-    cd "$pkgname"
-    # Get latest commit info
-    local date=$(git log -1 --format="%cs" | tr - .)
-    local rev=$(git rev-list --count HEAD)
-    local hash=$(git rev-parse --short HEAD)
-    echo "${date}.r${rev}.${hash}"
+    # Get latest commit hash
+    local hash
+    hash=$(git ls-remote "$url" HEAD | cut -f1 | cut -c1-7)
+
+    # Get latest commit date in YYYY.MM.DD format
+    local date
+    date=$(curl -s "https://api.github.com/repos/Szerwigi1410/brokefetch/commits" \
+        | grep '"date"' \
+        | head -n 1 \
+        | cut -d'"' -f4 \
+        | cut -d'T' -f1 \
+        | tr - .)
+
+    echo "${date}.r${hash}"
 }
 
 prepare() {
-    echo "🔥 Nuking old script..."
+    echo "🧹 Removing old script..."
     rm -f "$srcdir/brokefetch.sh"
 
     echo "⬇️ Fetching latest brokefetch.sh..."
@@ -32,3 +43,8 @@ prepare() {
 package() {
     install -Dm755 "$srcdir/brokefetch.sh" "$pkgdir/usr/bin/brokefetch"
 }
+
+
+
+
+
