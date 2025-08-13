@@ -3,13 +3,14 @@
 
 pkgname=steamlink
 pkgver=1.3.16.287
-pkgrel=3
+pkgrel=4
 pkgdesc="Steam Link client"
 arch=('x86_64')
 url="https://store.steampowered.com/remoteplay#anywhere"
 license=('LicenseRef-Steam')
 provides=("steamlink=${pkgver}")
-conflicts=('steamlink')
+conflicts=('steamlink-bin')
+replaces=('steamlink-bin')
 depends=(
 	'bzip2'
 	'dbus'
