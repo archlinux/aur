@@ -2,7 +2,7 @@
 _target=mips64-ultra-elf
 pkgname=${_target}-gdb
 _gdbver=16.3
-pkgver=16.3_r209.dab008c
+pkgver=16.3_r225.be7ccd0
 pkgrel=1
 pkgdesc="The GNU Debugger (${_target})"
 arch=('x86_64')
