@@ -1,7 +1,7 @@
 # Maintainer: Programador Occidental
 
 pkgname='pass-phrase'
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='A pass extension to generate passphrases.' 
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/programadoroccidental/pass-phrase'
 license=('GPL3')
 depends=('pass')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('41f0792218ff62c8ab335aee80e280196d0be2aeaff4cc4c0f074eac45071bc64c68e73abe8603968adb1cc4f47d316dfae22a2ce3401bbcbd57a69748b0f450')
+sha512sums=('24d0c9cff3bda4296260fbe0d035d913f3e2870d265acd5e8f541da4ed4537e8cee5c77a3d89a1295a1a7118861c1ac259609e11bc30c54c8ac2249eea631a37')
 
 package() {
   cd "$pkgname-$pkgver"
