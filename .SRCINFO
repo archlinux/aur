@@ -6,6 +6,7 @@ pkgbase = yumenikki-en
 	arch = any
 	license = custom
 	makedepends = desktop-file-utils
+	depends = easyrpg-player
 	source = yumenikki-en.7z::https://dl.dropbox.com/s/a5dqfazyfrvjr8f/yumenikki-en.7z?dl=1
 	source = https://cdn2.steamgriddb.com/icon/06409663226af2f3114485aa4e0a23b4/8/16x16.png
 	source = yumenikki-en.sh

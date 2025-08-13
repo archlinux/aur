@@ -7,7 +7,7 @@ pkgdesc="Surrealistic adventure game about exploring the dreams"
 url='http://www3.nns.ne.jp/pri/tk-mto/'
 arch=('any')
 license=('custom')
-#depends=(easyrpg-player)
+depends=(easyrpg-player)
 makedepends=(desktop-file-utils)
 source=("yumenikki-en.7z::https://dl.dropbox.com/s/a5dqfazyfrvjr8f/yumenikki-en.7z?dl=1"
 https://cdn2.steamgriddb.com/icon/06409663226af2f3114485aa4e0a23b4/8/16x16.png
