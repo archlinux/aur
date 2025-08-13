@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=aio-remote-neo
-pkgver=1.93.0
+pkgver=1.93.1
 pkgrel=1
 pkgdesc='Smart home app that hosts your custom remote control designs from AIO CREATOR NEO'
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
   'aio-remote-neo.bash'
 )
 
-sha512sums=('63c2cbdadcb752acf465ed938bd406eb0030f9449f5f096dbfb1ffb7ae17b0d0a467418263be714cd67b1e9bfe726b188be8d94f16befc193f6e053f367e0a97'
+sha512sums=('b7ef3f8ba771d57c49251602a4c30599db675e68b0938a3f263cdc20aa10fe41e22e7a68ccea57354b4f54dece533f80a7484cfd7d538525e0cdefdeb1701f3e'
             '802c2e819ff1964cf37f9b0198261943c922f0e34dff4f077c481fdd7670a6e8f5061c7fcfd08e0de30ba60519ce2de33c2640c270c5adfcc7635a175bc0df32')
 
 prepare() {
