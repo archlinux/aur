@@ -1,0 +1,14 @@
+pkgbase = prs-tui
+	pkgdesc = Stay updated on PRs from your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dhth/prs
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = prs-tui
+	conflicts = prs-tui
+	source = prs-tui-1.0.0.tar.gz::https://github.com/dhth/prs/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 04d66e40dcfc9188addb8771fae115aee6ff5ea3beba0a94bdf25fd5c32af44a
+
+pkgname = prs-tui
