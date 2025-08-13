@@ -3,7 +3,7 @@
 
 pkgname=vkdoom-git
 pkgver=v25.6.0+455+gbadc7c9b0
-pkgrel=2
+pkgrel=3
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
 url='https://vkdoom.org/'
@@ -18,7 +18,7 @@ depends=('bzip2'
          'sdl2'
          'vulkan-driver'
          'vulkan-icd-loader')
-makedepends=('cmake' 'desktop-file-utils' 'git')
+makedepends=('cmake' 'desktop-file-utils' 'git' 'ninja')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'clang: Clang build option support'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -89,8 +89,10 @@ build() {
             -D DYN_GTK=OFF \
             -D DYN_OPENAL=OFF \
             -D FORCE_INTERNAL_ZMUSIC=ON \
+            -D BUILD_SHARED_LIBS=OFF \
             -D CMAKE_C_COMPILER="/usr/bin/clang" \
-            -D CMAKE_CXX_COMPILER="/usr/bin/clang++"
+            -D CMAKE_CXX_COMPILER="/usr/bin/clang++" \
+            -G Ninja
     else
         echo "Building VkDoom with System Compiler..."
         cmake -B build \
@@ -103,14 +105,16 @@ build() {
             -D INSTALL_RPATH=/usr/lib \
             -D DYN_GTK=OFF \
             -D DYN_OPENAL=OFF \
-            -D FORCE_INTERNAL_ZMUSIC=ON
+            -D FORCE_INTERNAL_ZMUSIC=ON \
+            -D BUILD_SHARED_LIBS=OFF \
+            -G Ninja
     fi
-    make -C build
+    ninja -C build
 }
 
 package() {
     cd vkdoom
-    make -C build install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" ninja -C build install
     install -d "$pkgdir"/usr/share/licenses
     mv "$pkgdir"/usr/share/doc/vkdoom/licenses "$pkgdir"/usr/share/licenses/vkdoom
     desktop-file-install "$srcdir"/org.vkdoom.vkdoom.desktop --dir="$pkgdir"/usr/share/applications
