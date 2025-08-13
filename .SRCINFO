@@ -1,0 +1,18 @@
+pkgbase = steam-update-inhibit-sleep-git
+	pkgdesc = Don't worry about system suspending when Steam installs stuff
+	pkgver = r11.f4369bc
+	pkgrel = 1
+	url = https://github.com/Damglador/steam-update-inhibit-sleep.git
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python-pip
+	depends = python-dbus
+	depends = python-vdf
+	depends = python-inotify_simple
+	provides = steam-update-inhibit-sleep
+	conflicts = steam-update-inhibit-sleep
+	source = steam-update-inhibit-sleep::git+https://github.com/Damglador/steam-update-inhibit-sleep.git
+	sha256sums = SKIP
+
+pkgname = steam-update-inhibit-sleep-git
