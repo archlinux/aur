@@ -23,7 +23,7 @@ makedepends=(
   zstd
 )
 source=(
-  "https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2"
+  "https://archives.boost.io/release/$pkgver/source/$_srcname.tar.bz2"
   "$pkgbase-ublas-c++20-allocator-patch1.patch::https://github.com/boostorg/ublas/commit/47a314dd01d1.patch"
   "$pkgbase-ublas-c++20-allocator-patch2.patch::https://github.com/boostorg/ublas/commit/a23a903f9a36.patch"
   "$pkgbase-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch"
