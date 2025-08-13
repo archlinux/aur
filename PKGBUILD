@@ -7,7 +7,7 @@
 pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-dkms' 'nvidia-open-dkms')
 pkgver=580.76.05
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -314,7 +314,7 @@ END
     
     # Vulkan GTK Renderer Crash fix
     # https://forums.developer.nvidia.com/t/580-65-06-gtk-4-apps-hang-when-attempting-to-exit-close/341308/5?u=ptr1337
-    install -Dm644 "${srcdir}/gsk-renderer.sh" "${pkgdir}/etc/profile.d/electron-ozone.sh/gsk-renderer.sh"
+    install -Dm644 "${srcdir}/gsk-renderer.sh" "${pkgdir}/etc/profile.d/gsk-renderer.sh"
 
     # Lists NVIDIA driver files for container runtimes like nvidia-container-toolkit
     install -Dm644 sandboxutils-filelist.json "${pkgdir}/usr/share/nvidia/files.d/sandboxutils-filelist.json"
