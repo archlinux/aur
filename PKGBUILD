@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.15pre+481+gb90da3c
+pkgver=4.15pre+487+gf30fc8d
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('bzip2'
          'libvpx>=1.14'
          'openal'
          'sdl2')
-makedepends=('cmake' 'desktop-file-utils' 'git')
+makedepends=('cmake' 'desktop-file-utils' 'git' 'ninja')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
@@ -39,10 +39,8 @@ conflicts=('gzdoom')
 replaces=('gzdoom1-git' 'gzdoom-legacy-git')
 options=(!lto)
 source=('gzdoom::git+https://github.com/coelckers/gzdoom.git'
-        'gzdoom.desktop'
         '0001-Enforce-file-paths.patch')
 sha256sums=('SKIP'
-            '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
             'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811')
 
 pkgver() {
@@ -74,16 +72,17 @@ build() {
           -D INSTALL_RPATH=/usr/lib \
           -D DYN_GTK=OFF \
           -D DYN_OPENAL=OFF \
-          -D FORCE_INTERNAL_ZMUSIC=ON
-    make -C build
+          -D FORCE_INTERNAL_ZMUSIC=ON \
+          -D BUILD_SHARED_LIBS=OFF \
+          -G Ninja
+    ninja -C build
 }
 
 package() {
     cd gzdoom
-    make -C build install DESTDIR="$pkgdir"
+    ninja -C build install DESTDIR="$pkgdir"
     install -d "$pkgdir"/usr/share/licenses
     mv "$pkgdir"/usr/share/doc/gzdoom/licenses "$pkgdir"/usr/share/licenses/gzdoom
-    desktop-file-install "$srcdir"/gzdoom.desktop --dir="$pkgdir"/usr/share/applications
     install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm
     ## workaround number 2, nuke CPPDAP system install because upstream CMAKE is broken
     rm -rf "$pkgdir"/usr/include
