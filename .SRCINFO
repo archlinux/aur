@@ -1,6 +1,6 @@
 pkgbase = python-mediapipe
 	pkgdesc = A cross-platform, customizable ML solutions for live and streaming media
-	pkgver = 0.10.20
+	pkgver = 0.10.26
 	pkgrel = 1
 	url = https://github.com/google-ai-edge/mediapipe
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = python-mediapipe
 	depends = python-six
 	depends = python-sounddevice
 	depends = python-tensorflow
-	source = mediapipe-0.10.20.tar.gz::https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.20.tar.gz
+	source = mediapipe-0.10.26.tar.gz::https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.26.tar.gz
 	source = 0004-use-opencv4-headers.patch
 	sha256sums = ae0abfc544a37a46f46e20f73010ddbe43cf12b0853701b763d3df1ab986dd36
 	sha256sums = 55adaa6a74015f160b0dbf45d997c004cd7ecded501940a32c69c512956b0524

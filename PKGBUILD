@@ -2,8 +2,8 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=mediapipe
-pkgname=python-mediapipe
-pkgver=0.10.20
+pkgname=python-mediapipe # renovate: datasource=github-tags depName=google-ai-edge/mediapipe
+pkgver=0.10.26
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/google-ai-edge/mediapi
   "0004-use-opencv4-headers.patch"
 )
 sha256sums=('ae0abfc544a37a46f46e20f73010ddbe43cf12b0853701b763d3df1ab986dd36'
-            '55adaa6a74015f160b0dbf45d997c004cd7ecded501940a32c69c512956b0524')
+  '55adaa6a74015f160b0dbf45d997c004cd7ecded501940a32c69c512956b0524')
 
 prepare() {
   # bazel in the ArchLinux is not working
@@ -51,7 +51,7 @@ prepare() {
   chmod +x ${srcdir}/bin/bazel
   export PATH=${srcdir}/bin:${PATH}
   cd "${srcdir}/${_pkgname}-${pkgver}"
-   patch -p1 -i "${srcdir}/0004-use-opencv4-headers.patch"
+  patch -p1 -i "${srcdir}/0004-use-opencv4-headers.patch"
   # set __version__
   sed -i "s/__version__ = 'dev'/__version__ = '$pkgver'/" setup.py
   # set link_opencv to True
@@ -64,7 +64,7 @@ build() {
   # opengl-driver is provided by mesa or nvidia-utils
   MEDIAPIPE_DISABLE_GPU=0 \
     python -m build --wheel --no-isolation
-    #$(readlink -f /usr/bin/python) -m build --wheel --no-isolation
+  #$(readlink -f /usr/bin/python) -m build --wheel --no-isolation
 }
 
 package() {
