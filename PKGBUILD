@@ -3,7 +3,7 @@
 _pkgauthor=Beacroxx
 _pkgname=pulse-visualizer
 pkgname=${_pkgname}-bin
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire"
 arch=('x86_64')
@@ -20,12 +20,13 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[0]}.tar.gz")
 sha256sums=('c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271'
-            '17e300a313e0eafb19528e76193b134791c6f19614761f0ba48b8393bf72cedf')
-sha256sums_x86_64=('eb6482e183113942bec3504a934395ddafbfd6e2704b7cfd9f91a54339eecda9')
+            'f71c84e53a77e7d7bd3efe817e3d5ce38ee5f66baead5ef7a4bbf9cc7e18ff86')
+sha256sums_x86_64=('54d6cb69296d3157630605d9f9e3220fb859178a5f009bfdfe62d531d9c2b39a')
 
+_pkghome="home/bea/pulse-gh-release/${CARCH}"
 
 prepare() {
-	cd "${srcdir}/${CARCH}/" || exit
+	cd "${_pkghome}/" || exit
 
 	mkdir ./fonts
 	mv ./JetBrainsMonoNerdFont-Medium.ttf ./fonts/
@@ -38,7 +39,7 @@ package() {
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	cd "${srcdir}/${CARCH}/" || exit
+	cd "${_pkghome}/" || exit
 
 	install -Dm644 "CONFIGURATION.md" "${pkgdir}/usr/share/doc/${pkgname}/CONFIGURATION.md"
 
