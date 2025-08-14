@@ -1,6 +1,6 @@
 pkgname=qobuz-player
 pkgver=0.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
 url="https://github.com/SofusA/qobuz-player"
