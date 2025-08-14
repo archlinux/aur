@@ -1,0 +1,19 @@
+pkgbase = niflveil
+	pkgdesc = Minimalistic window minimizer for Hyprland (NiflVeil).
+	pkgver = 1.32
+	pkgrel = 1
+	url = https://github.com/Mauitron/NiflVeil
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = openssl
+	depends = hyprland
+	optdepends = eww: restore menu interface
+	optdepends = waybar: waybar module support
+	provides = niflveil=${pkgver}
+	conflicts = niflveil
+	source = git+https://github.com/Mauitron/NiflVeil.git
+	sha256sums = SKIP
+
+pkgname = niflveil
