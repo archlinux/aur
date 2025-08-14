@@ -1,21 +1,44 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=openttd-ttdwin
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Non-free TTD Windows data set for OpenTTD"
-arch=('any')
-url="http://www.chrissawyergames.com/"
-license=("unknown")
-
-# The TTD data files are protected by copyright and not included.
-# Please obtain them legally: http://www.transporttycoon.net/where
-source=(gm_tt00.gm gm_tt01.gm gm_tt02.gm gm_tt03.gm gm_tt04.gm
-        gm_tt05.gm gm_tt06.gm gm_tt07.gm gm_tt08.gm gm_tt09.gm
-        gm_tt10.gm gm_tt11.gm gm_tt12.gm gm_tt13.gm gm_tt14.gm
-        gm_tt15.gm gm_tt16.gm gm_tt17.gm gm_tt18.gm gm_tt19.gm
-        gm_tt20.gm gm_tt21.gm sample.cat trg1r.grf trgcr.grf
-        trghr.grf trgir.grf trgtr.grf)
+url="https://www.chrissawyergames.com/"
+arch=(any)
+license=(LicenseRef-Proprietary)
+source=(
+  # The TTD data files are protected by copyright and not included.
+  # Please obtain them legally: https://www.transporttycoon.net/where
+  file://gm_tt00.gm
+  file://gm_tt01.gm
+  file://gm_tt02.gm
+  file://gm_tt03.gm
+  file://gm_tt04.gm
+  file://gm_tt05.gm
+  file://gm_tt06.gm
+  file://gm_tt07.gm
+  file://gm_tt08.gm
+  file://gm_tt09.gm
+  file://gm_tt10.gm
+  file://gm_tt11.gm
+  file://gm_tt12.gm
+  file://gm_tt13.gm
+  file://gm_tt14.gm
+  file://gm_tt15.gm
+  file://gm_tt16.gm
+  file://gm_tt17.gm
+  file://gm_tt18.gm
+  file://gm_tt19.gm
+  file://gm_tt20.gm
+  file://gm_tt21.gm
+  file://sample.cat
+  file://trg1r.grf
+  file://trgcr.grf
+  file://trghr.grf
+  file://trgir.grf
+  file://trgtr.grf
+)
 sha256sums=('18dd353059d43b2dc7f2afbf5b69b49eccf3ffdeccb6ae06074ae465aa76874e'
             'e240d73af1c8aaa3355015d798fcd36d22b42daf57622008b3dd92b98b52d17e'
             '5e56fa053591335a377e4e537c91c0136a487f2ca243771d28d16138ff5ce3f4'
@@ -46,7 +69,7 @@ sha256sums=('18dd353059d43b2dc7f2afbf5b69b49eccf3ffdeccb6ae06074ae465aa76874e'
             'd03eb142ee2ccae50bb8e337959da1ac68f32cbbac1ebde858104baf63f121fd')
 
 package() {
-    mkdir -p "$pkgdir"/usr/share/openttd/{data,gm}
-    install -m644 trg{1,c,h,i,t}r.grf sample.cat "$pkgdir/usr/share/openttd/data/"
-    install -m644 gm_tt{00..21}.gm "$pkgdir/usr/share/openttd/gm/"
+  local gamedir="$pkgdir/usr/share/openttd"
+  install -Dm644 trg{1,c,h,i,t}r.grf sample.cat -t "$gamedir/data"
+  install -Dm644 gm_tt{00..21}.gm -t "$gamedir/gm"
 }
