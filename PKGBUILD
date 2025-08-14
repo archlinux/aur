@@ -15,7 +15,7 @@ _json_export=${MINGW_64_TAGEDITOR_JSON_EXPORT:-ON}
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
 _name=${pkgname#mingw-w64-}
-pkgver=3.9.5
+pkgver=3.9.6
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -30,7 +30,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 [[ $_json_export == ON ]] && makedepends+=('mingw-w64-reflective-rapidjson')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('2f8d80ca7da8395d5d704ae9bfc8bb9ea5a562df131ceb99ffc5318a2670b6cf')
+sha256sums=('09757de04ad41e325398a9a1954ec9e5278366923ba1fa4ef1f0677f4d26fd72')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -40,7 +40,7 @@ if ! [[ $NO_SHARED_LIBS ]]; then
 fi
 if ! [[ $NO_STATIC_LIBS ]]; then
     _configurations+=('static')
-    makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-svg-static' 'mingw-w64-qt5-translations' 'breeze-icons' 'numix-icon-theme-git')
+    makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-svg-static' 'mingw-w64-qt5-translations' 'breeze-icons')
     [[ $_js_provider == script ]] && makedepends+=('mingw-w64-qt5-script-static')
     [[ $_js_provider == qml ]] && makedepends+=('mingw-w64-qt5-declarative-static')
 fi
@@ -62,7 +62,7 @@ build() {
         -DKF_PACKAGE_PREFIX=StaticKF5
         -DTAGEDITOR_CONFIGURATION_TARGET_SUFFIX:STRING=static
         -DBUILTIN_TRANSLATIONS:BOOL=ON
-        -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark;Numix
+        -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark
         -DIMAGE_FORMAT_SUPPORT:STRING=Gif;ICO;Jpeg
         -DSVG_SUPPORT:BOOL=ON
         -DSVG_ICON_SUPPORT:BOOL=ON
