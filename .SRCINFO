@@ -1,6 +1,6 @@
 pkgbase = sane-break
 	pkgdesc = A gentle break reminder that helps you avoid mindlessly skipping breaks.
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/AllanChain/sane-break
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sane-break
 	depends = libxss
 	depends = wayland
 	depends = layer-shell-qt
-	source = sane-break-0.9.1.tar.gz::https://github.com/AllanChain/sane-break/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = fc2530fa92a58ddce69ccba5090a47cc438cbf1ad25b5628caf5f04c34244381
+	source = sane-break-0.9.2.tar.gz::https://github.com/AllanChain/sane-break/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = f54d40eafd204381957f19e035c1529bcfe49b9ea70421cf98d1cd79b8879237
 
 pkgname = sane-break
