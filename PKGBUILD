@@ -1,40 +1,58 @@
-# Maintainer: Ben Towali <bentowalii@gmail.com>
+# Maintainer: Ben Towali <ben@bentowali.com>
 
 pkgname=raindrop
-pkgver='5.6.76'
+pkgver='5.6.90'
 pkgrel=1
 pkgdesc="All-in-one bookmark manager"
 arch=('x86_64')
 url="https://raindrop.io"
 license=('MIT')
 depends=()
-makedepends=('squashfs-tools')
+makedepends=('git' 'nodejs' 'jq')
 provides=(raindrop)
-install=
-_snapid="B8ZjYQVKEem99E5WjVMGUr75feAUrnH5"
-_snaprev="28"
-source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
-sha512sums=("21deca2c20fddf6b3290d942cbcd1d35ce8fbc45b14f8b13c88a1b8a948a44a5e1fd82985977c9749a04de6446dec64c66cc816d1d767a5dbfd0f1709abe9a62")
+source=('raindrop::git+https://github.com/raindropio/desktop'
+				'remove-sentry.patch'
+				'raindrop.desktop')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-	echo "Extracting snap file..."
-	unsquashfs -q -f -d "${srcdir}/${pkgname}" "${_snapid}_${_snaprev}.snap"
+	# Clone submodule directly because the linked submodule commit is outdated
+	git clone https://github.com/raindropio/app "${pkgname}/webapp"
+	cd "${pkgname}/webapp"
+	# Remove sentry because it requires an API key
+	git apply "${srcdir}/remove-sentry.patch"
+}
+
+pkgver() {
+	cd "${pkgname}/webapp"
+	jq -r '.version' package.json
+}
+
+build() {
+	cd "${pkgname}"
+	npm i
+	npm run pre:build
+	npm run build:linux
 }
 
 package() {
-	# Install Files
+	cd "${srcdir}/${pkgname}"
+
+	# Make necessary directories
 	install -d "${pkgdir}/opt/${pkgname}"
-	cp -r "${srcdir}/${pkgname}/." "${pkgdir}/opt/${pkgname}"
-
-	# Desktop Entry
-	sed -i 's|${SNAP}/meta/gui/icon.png|raindrop|g' "${pkgdir}/opt/${pkgname}/meta/gui/${pkgname}.desktop"
-	install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-	install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-
-	# Clean up unnecessary files
-	rm -rf "${pkgdir}/opt/${pkgname}"/{data-dir,gnome-platform,lib,meta,scripts,usr,*.sh}
-
-	# Symlink binary to /usr/bin
 	install -d "${pkgdir}/usr/bin"
+
+	# Install Files
+	## Copy electron app
+	cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${pkgname}"
+	## Desktop Entry
+	install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	## Symlink binary
 	ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin"
+	## License
+	install -Dm644 "webapp/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+	## Icons
+	for _icons in 16 32 48 64 128 256 512; do
+		install -Dm644 "build/linux/${_icons}x${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
+	done
 }

@@ -1,0 +1,41 @@
+diff --git a/build/common.js b/build/common.js
+index 8e4aa22c..b38a8b89 100644
+--- a/build/common.js
++++ b/build/common.js
+@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
+ const TerserJSPlugin = require('terser-webpack-plugin')
+ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+-const SentryCliPlugin = require('@sentry/webpack-plugin')
+ 
+ //defaults
+ process.env.SENTRY_RELEASE = String(new Date().getTime())
+@@ -91,21 +90,6 @@ module.exports = ({ production, filename='[name].[contenthash]', sentry={} }, {
+ 		] : [
+ 		]),
+ 
+-		//Sentry
+-		...(production && !sentry?.disabled ? [
+-			new SentryCliPlugin({
+-				org: 'oblako-corp',
+-				project: 'app',
+-				authToken: process.env.SENTRY_AUTH_TOKEN, //required in CI environment
+-				release: process.env.SENTRY_RELEASE,
+-
+-				include: './src',
+-				ignore: [ 'node_modules', 'build', 'dist' ],
+-				configFile: path.resolve(__dirname, 'sentry.properties'),
+-				...sentry
+-			})
+-		]: []),
+-
+ 		new webpack.DefinePlugin({
+ 			'process.env.NODE_ENV': JSON.stringify(production?'production':'development'),
+ 			RAINDROP_ENVIRONMENT: JSON.stringify('browser'),
+@@ -248,4 +232,4 @@ module.exports = ({ production, filename='[name].[contenthash]', sentry={} }, {
+ 			],
+ 		}
+ 	] }
+-})
+\ No newline at end of file
++})
