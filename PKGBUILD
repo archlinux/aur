@@ -8,10 +8,10 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2025.24
+pkgver=2025.28
 pkgrel=1
-_npu_compiler_tag=npu_ud_2025_24_rc2
-_openvino_commit=d72b76159445bfa066c13815ff2948fde86dfec2
+_npu_compiler_tag=npu_ud_2025_28_rc1
+_openvino_commit=dd611339928e5637b1ea43d9557a88ac1b938060
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
@@ -71,8 +71,8 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         '040-intel-npu-compiler-llvm-gcc15-fix.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-gtest-gcc15-fix.patch')
-sha256sums=('ff8b30bde9a8348a7bf19df5161ac1247ef9272cd061837abe7b57016f864fdd'
-            'd7a466f0b7dec775eb4795761d635e95f344c802dda143e5c92f5dc9bbc7ca1a'
+sha256sums=('0bf137e5b77eb4d1fc39feca2161b9e9a91e510fa46ca7cae7fe29494078eed6'
+            '04c8d430563a5b0574b5da5c5cae287fd9504cfdc1641dd2ddc911cdfbeda549'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -105,7 +105,7 @@ sha256sums=('ff8b30bde9a8348a7bf19df5161ac1247ef9272cd061837abe7b57016f864fdd'
             'SKIP'
             'b994175b16daa45d426d86952ab50fb6a1b3a47bcbf19be4752ecf82c6ebdde7'
             '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            'fe78338740ce8baabcaceae7d0e6bfe51be297568e2d6ae4539aa9982421bb22'
+            'c426b5a3d655beb7bfc9cc7a76a8a01dedf496dd8d3003e3d8dfe619ac8ce702'
             'c4cb907528be3b72f01cc3529c7ae347880e00d661737039a23b3ea733ed3ca2'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')

@@ -34,7 +34,7 @@
 +        RUNTIME DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT})]]
 --- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
-@@ -80,12 +80,12 @@ if(WIN32)
+@@ -83,12 +83,12 @@ if(WIN32)
              COMPONENT ${CID_COMPONENT})
  else()
      install(TARGETS ${TARGET_NAME}
