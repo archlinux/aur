@@ -12,8 +12,8 @@
 
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
-pkgver=5.1.6
-pkgrel=4
+pkgver=5.1.7
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(aarch64 i686 x86_64)
@@ -106,6 +106,7 @@ validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <m
 
 prepare() {
   cd "${_pkgname}"
+
   echo "Applying patches for ffnvcodec SDK 12.1..."
   git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
   git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
@@ -113,12 +114,11 @@ prepare() {
   echo "Applying patch to check for vulkan-headers 1.3+ instead of 1.2+..."
   git cherry-pick -n 59707cc485c7fcc1c06b96648ce605ed558da4ac
 
-  echo "Applying patches for the x265 API change..."
-  git cherry-pick -n 4ce4ecc19c49416054572989ef62e51c2bb5ee8b
-  git cherry-pick -n 768807492dd60671582b6f7829de8f8e5e9e6869
-
   echo "Applying patches for the SVT-AV1 API change..."
   git cherry-pick -n d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95
+
+  echo "Applying patch for v4l2 1.30..."
+  git cherry-pick -n 5fea5e3e11d6ff425db48f44489916399822aece
 
 #   # loop to apply any *.patch files from AUR source, if any exists.
 #   for _patchfile in ../*.patch
