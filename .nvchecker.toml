@@ -1,0 +1,4 @@
+[python-msmart-ng]
+source = "github"
+github = "mill1000/midea-msmart"
+use_max_tag = true
