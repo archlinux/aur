@@ -2,9 +2,9 @@
 # Contributor: Ayatale  <ayatale@qq.com>
 pkgname=pplink-bin
 _zhsname='PP直连'
-pkgver=15.0.0
+pkgver=15.0.3
 _electronversion=36
-pkgrel=2
+pkgrel=1
 pkgdesc="Dedicated to direct interconnection across devices, networks, and platforms.(Prebuilt version.Use system-wide electron)帮助电脑、手机、平板等设备建立点到点的安全直连"
 arch=('x86_64')
 url="https://www.ppzhilian.com"
@@ -22,9 +22,9 @@ source=(
     "LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c7c561ea3fbc7313f4c226d50f0738ea7bb81fb0e409c624b1e312151efa1f52'
+sha256sums=('3ba5c08048d2ef81bfb3b6badafe9f323b24e2e2c21947d4aa21562b6b94bfac'
             '6acc470ced558f0572421e8d554fe5f99abc45be5f390f52d170a1e5d51440bb'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_zhsname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
