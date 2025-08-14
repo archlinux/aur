@@ -1,4 +1,4 @@
-# Maintainer: YourName <you@example.com>
+# Maintainer: Oliwier <szerwigi14@gmail.com>
 pkgname=brokefetch-git
 pkgver=2025.08.12.rc40647b
 pkgrel=1
