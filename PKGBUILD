@@ -3,7 +3,7 @@
 # Maintainer: shilka <shilkazx at gmail dot com>
 
 pkgname=tencent-docs-bin
-pkgver=3.10.0
+pkgver=3.10.6
 pkgrel=1
 pkgdesc="腾讯文档 Tencent Docs - 让协作更高效，创作更轻松"
 arch=("x86_64" "aarch64")
@@ -15,13 +15,13 @@ source=(
 depends=(
     "electron"
 )
-source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://docs.qq.com/api/package/get?channel_id=30001&version_id=${pkgver}&package_name=TencentDocs-x64.deb")
-source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://docs.qq.com/api/package/get?channel_id=30001&version_id=${pkgver}&package_name=TencentDocs-arm64.deb")
+source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://docs.qq.com/api/package/get?channel_id=30001&version_id=latest&package_name=TencentDocs-x64.deb")
+source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://docs.qq.com/api/package/get?channel_id=30001&version_id=latest&package_name=TencentDocs-arm64.deb")
 
 
 sha256sums=("7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7")
-sha256sums_x86_64=('11ee34efadc9edcbab1fdbd32400b9948380290532a8f7cefd4ff07396b68bf2')
-sha256sums_aarch64=('9f6a9a445a977e8452248cb861465b839f9db3cb6127254239f629d4f9d98ee0')
+sha256sums_x86_64=('0ad1fb18e82d6e5c6565b8d7fa7d4a88fb30683d0f23b664c4e5c64ea4f22ebf')
+sha256sums_aarch64=('54bc47ec744367525718873dad9fd00ae5706f754ddc4e284ee97b8ad98c3aad')
 
 package() {
     tar xpf data.tar.xz -C ${pkgdir}

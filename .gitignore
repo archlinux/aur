@@ -2,5 +2,5 @@
 *.deb
 *.tar*
 *.log
-autoUpdate.sh
+auto_update.py
 
