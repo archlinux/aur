@@ -1,7 +1,7 @@
 pkgbase = s5x-thumbnailer
 	pkgdesc = A thumbnailer for Settler HoK Maps
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/JakobDev/s5x-thumbnailer
 	arch = any
 	license = BSD-2-Clause

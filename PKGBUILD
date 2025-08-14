@@ -1,6 +1,6 @@
 pkgname=s5x-thumbnailer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A thumbnailer for Settler HoK Maps"
 arch=(any)
 url="https://codeberg.org/JakobDev/s5x-thumbnailer"
@@ -12,7 +12,7 @@ sha256sums=("1306bd48dc0c2f4ec570ed5c56fd682ece8d70d8ce8e40ef3aadfaa30df974c7")
 
 build() {
     cd s5x-thumbnailer
-    arch-meson build
+    arch-meson -Dbbatool-path=/usr/lib/bbatools5/bbaToolS5 build
     meson compile -C build
 }
 
