@@ -6,6 +6,7 @@ pkgbase = ps2_manager
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk
+	options = !strip
 	source = ps2_manager-4737b74330e8fe93d55c2f9b84ded15865fab21b.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=4737b74330e8fe93d55c2f9b84ded15865fab21b&format=tgz
 	sha256sums = ecf7b6775a8b5f6c26b8e040746a6352e7cddb552977e12f8be3f5e5b0509c06
 
