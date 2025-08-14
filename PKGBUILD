@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=gensurvey
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=0
 pkgdesc="A tool to generate a survey website from JSON"
