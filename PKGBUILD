@@ -13,6 +13,7 @@ makedepends=("git" "meson" "python-cogapp")
 checkdepends=("cunit")
 provides=("qman")
 conflicts=("qman")
+backup=("etc/xdg/qman/qman.conf")
 source=("git+https://github.com/plp13/qman.git#branch=devel")
 sha256sums=('SKIP')
 
