@@ -9,6 +9,6 @@ pkgbase = libgendesktop
 	depends = electron35
 	depends = nodejs
 	source = libgendesktop-1.0.0.tar.gz::https://github.com/ProgrammerGnome/libgendesktop/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 9bff7c8c319d153dabfe40288b75fd3038bb557754a0b1e272d78bfd3b064859
+	sha256sums = 779a9bcd8e35f970e502785a7f1158ee5444679c2c4a7844d99728065e021d66
 
 pkgname = libgendesktop

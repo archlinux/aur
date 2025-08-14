@@ -9,7 +9,7 @@ license=('MIT')
 depends=('electron35' 'nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ProgrammerGnome/libgendesktop/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9bff7c8c319d153dabfe40288b75fd3038bb557754a0b1e272d78bfd3b064859')
+sha256sums=('779a9bcd8e35f970e502785a7f1158ee5444679c2c4a7844d99728065e021d66')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
