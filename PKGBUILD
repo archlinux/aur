@@ -2,7 +2,7 @@
 
 pkgname='rubygems-user'
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Package management framework for Ruby (user default)'
 arch=('any')
 url='https://rubygems.org/'

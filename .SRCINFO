@@ -1,7 +1,7 @@
 pkgbase = rubygems-user
 	pkgdesc = Package management framework for Ruby (user default)
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/
 	arch = any
 	license = MIT
