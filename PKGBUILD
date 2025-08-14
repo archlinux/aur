@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/prime-run/togo"
 license=('MIT')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b757f83d7463dc3e61e281e555d5b34d010854465b6f9d5007cfe7d871f9b4ef')
 
 package() {
   cd "$srcdir"
