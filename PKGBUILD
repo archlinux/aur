@@ -6,9 +6,9 @@ pkgdesc="Speech translator primarily for language learning. Languages: English <
 arch=('x86_64')
 url="https://github.com/ProgrammerGnome/lingua"
 license=('MIT')
-depends=('python' 'python-pip' 'python-numpy' 'python-sounddevice' 'python-soundfile' 'python-pyside6' 'python-torch' 'ffmpeg')
+depends=('python310' 'python-pip' 'python-numpy' 'ffmpeg')
 makedepends=('git' 'cmake')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/ProgrammerGnome/lingua/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('730aeef9bf48953e7b43673510b3d42bc2919033e684811b681fcdaed073fc52')
 
 build() {
