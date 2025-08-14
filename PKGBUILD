@@ -11,7 +11,7 @@ makedepends=('dotnet-sdk')
 depends=()
 options=('!strip')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://code.weexnes.dev/~downloads/projects/ps2_manager/archives?revision=refs/tags/${pkgver}&format=tgz")
+source=("${pkgname}-${pkgver}.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=refs/tags/${pkgver}&format=tgz")
 sha256sums=('SKIP')
 
 build() {
