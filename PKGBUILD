@@ -13,14 +13,14 @@ sha256sums=('b1002dd2847107396135d85b124d657e29f12ac61d4da8fa95b00b61a3cbeda6')
 options=('!lto')
 
 prepare() {
-    cd ${pkgname}-${pkgver}-3
+    cd ${pkgname}-${pkgver}
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     
 }
 
 build() {
-    cd ${pkgname}-${pkgver}-3
+    cd ${pkgname}-${pkgver}
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     #refuses to work with clang
@@ -32,6 +32,6 @@ build() {
 }
 
 package() {
-    cd ${pkgname}-${pkgver}-3
+    cd ${pkgname}-${pkgver}
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
