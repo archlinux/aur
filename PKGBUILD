@@ -13,7 +13,7 @@ depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
     'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'libxdamage' 'abseil-cpp' 'libdispatch'
     'openssl' 'protobuf' 'glib2' 'kcoreaddons' 'openh264')
 makedepends=('cmake' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-        'libtg_owt' 'gobject-introspection' 'boost' 'glib2-devel')
+        'libtg_owt' 'gobject-introspection' 'boost' 'glib2-devel' 'git')
 optdepends=('geoclue: geoinformation support'
         'geocode-glib: geocoding support'
         'geocode-glib-2: geocoding support'
