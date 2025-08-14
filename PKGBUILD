@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=tailwindcss-cli
-pkgver=4.1.11 # datasource=npm depName=@tailwindcss/cli
+pkgver=4.1.12 # datasource=npm depName=@tailwindcss/cli
 pkgrel=1
 pkgdesc='A utility-first CSS framework for rapidly building custom user interfaces.'
 arch=('any')
@@ -12,17 +12,17 @@ makedepends=('npm')
 provides=('tailwindcss')
 
 source=("https://registry.npmjs.org/@tailwindcss/cli/-/cli-${pkgver}.tgz"
-        "https://raw.githubusercontent.com/tailwindlabs/tailwindcss/refs/tags/v${pkgver}/LICENSE")
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/tailwindlabs/tailwindcss/refs/tags/v${pkgver}/LICENSE")
 
 noextract=("cli-${pkgver}.tgz")
 
-sha256sums=('d26ab44103a28804e1d1f4c280d8abaf6db7234c8d9eb940ec7dc435c5ad80df'
+sha256sums=('e77698dbda13739e77fdd9eacf1b82a7939594d5b377830c529cda60b6e31682'
             '60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985')
 
 package() {
 
 	npm install -g --legacy-peer-deps --prefix "$pkgdir/usr" "$srcdir/cli-${pkgver}.tgz"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
