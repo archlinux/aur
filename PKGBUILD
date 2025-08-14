@@ -4,18 +4,18 @@
 pkgname=throne
 _srcname=Throne
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/throneproj/${pkgname}"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-charts' 'protobuf')
-makedepends=('cmake' 'go' 'qt6-tools' 'vulkan-headers')
+depends=('qt6-base' 'qt6-charts')
+makedepends=('cmake' 'go' 'qt6-tools' 'protobuf' 'vulkan-headers')
 optdepends=(
 	'sing-geoip-db: geoip database for Throne'
 	'sing-geosite-db: geosite database for Throne'
 )
-provides=('nekoray')
+conflicts=('nekoray')
 replaces=('nekoray')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
