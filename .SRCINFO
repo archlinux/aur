@@ -1,12 +1,12 @@
 pkgbase = aurget
 	pkgdesc = A simple, Pacman-like AUR helper
-	pkgver = 4.7.6
+	pkgver = 4.7.7
 	pkgrel = 1
 	url = https://github.com/pbrisbin/aurget
 	arch = any
 	license = GPL
 	optdepends = customizepkg: for auto-customizing packages
-	source = https://github.com/pbrisbin/aurget/archive/v4.7.6.tar.gz
-	md5sums = 281ae9ec151621ba1300d6200b4418da
+	source = https://github.com/pbrisbin/aurget/releases/download/v4.7.7/aurget-4.7.7.tar.gz
+	md5sums = 512f5cc0bd3b4493b5a48856f4b83118
 
 pkgname = aurget

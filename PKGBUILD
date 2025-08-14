@@ -1,17 +1,19 @@
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
 # Author: Patrick Brisbin <pbrisbin@gmail.com>
 pkgname=aurget
-pkgver=4.7.6
+pkgver=4.7.7
 pkgrel=1
 pkgdesc="A simple, Pacman-like AUR helper"
 arch=('any')
 url="https://github.com/pbrisbin/$pkgname"
 license=('GPL')
-source=("https://github.com/pbrisbin/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/pbrisbin/$pkgname/releases/download/v${pkgver//_/-}/aurget-${pkgver//_/-}.tar.gz")
 optdepends=('customizepkg: for auto-customizing packages')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver//_/-}" || exit 1
 
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('281ae9ec151621ba1300d6200b4418da')
+md5sums=('512f5cc0bd3b4493b5a48856f4b83118')
