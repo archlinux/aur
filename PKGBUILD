@@ -5,7 +5,7 @@
 # Contributor: Noel Jacob (bun-bin PKGBUILD)
 
 pkgname=templ-bin
-pkgver=0.3.924 # datasource=github-releases depName=a-h/templ
+pkgver=0.3.937 # datasource=github-releases depName=a-h/templ
 pkgrel=1
 pkgdesc="A language for writing HTML user interfaces in Go."
 arch=('aarch64' 'i386' 'x86_64')
@@ -18,9 +18,9 @@ source_aarch64=("templ-aarch64-${pkgver}.tar.gz::${url}/releases/download/v${pkg
 source_i386=("templ-i386-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/templ_Linux_i386.tar.gz")
 source_x86_64=("templ-x86_64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/templ_Linux_x86_64.tar.gz")
 
-sha256sums_aarch64=('b05cc04600f527a8affa01304d0c533dd78d7d0363651598a230e4dc48926923')
-sha256sums_i386=('b7d1b5806d59ced602396609233d8a59bcc632a8e8271905b6e8729396b80d53')
-sha256sums_x86_64=('f5319fc6a7a926ee48fd00bf56b36afff405672e3a033bfe517124794de1ab42')
+sha256sums_aarch64=('06d746dca3d79251cbd51fe41b254592e24cfb42984844530c2c59830571687d')
+sha256sums_i386=('c0c4fc638b6eae129af88709e3a875a370c2eb908927f44f687434288fffcc0c')
+sha256sums_x86_64=('da15a8c7d50527f403a526365127edf63318f6eb6a0597d5db8c639ac7d5921a')
 
 package() {
 	install -Dm755 'templ' "${pkgdir}/usr/bin/templ"
