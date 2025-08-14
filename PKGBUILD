@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=qvtfpp-git
 pkgver=0.1.0.r1.gfe835eb
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt6 QImageIO plugin to load VTF textures."
 arch=('x86_64')
 url="https://github.com/craftablescience/qvtfpp"
 license=('LGPL-2.1-only')
 depends=('qt6-base' 'glibc' 'gcc-libs')
-makedepends=('cmake' 'git' 'ninja')
+makedepends=('cmake' 'git' 'ninja' 'extra-cmake-modules' 'vulkan-headers')
 provides=("${pkgname::-4}" "${pkgname::-6}")
 conflicts=("${pkgname::-4}" "${pkgname::-6}")
 source=("git+$url.git"

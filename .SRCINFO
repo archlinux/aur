@@ -1,13 +1,15 @@
 pkgbase = qvtfpp-git
 	pkgdesc = A Qt6 QImageIO plugin to load VTF textures.
 	pkgver = 0.1.0.r1.gfe835eb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craftablescience/qvtfpp
 	arch = x86_64
 	license = LGPL-2.1-only
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = extra-cmake-modules
+	makedepends = vulkan-headers
 	depends = qt6-base
 	depends = glibc
 	depends = gcc-libs
