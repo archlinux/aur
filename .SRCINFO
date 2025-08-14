@@ -1,0 +1,20 @@
+pkgbase = python-lbuild-git
+	pkgdesc = a generic, modular code generator in Python 3
+	pkgver = r294.f594b41
+	pkgrel = 1
+	url = https://github.com/modm-io/lbuild/
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-testfixtures
+	depends = python
+	depends = python-lxml
+	depends = python-jinja
+	depends = python-anytree>=2.6.0
+	depends = python-gitpython>=2.1.11
+	source = lbuild::git+https://github.com/modm-io/lbuild.git
+	sha256sums = SKIP
+
+pkgname = python-lbuild-git
