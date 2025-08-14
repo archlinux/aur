@@ -15,12 +15,13 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=1.7.10
+pkgver=2.0.0
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
 license=(GPL-2.0-or-later)
-depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-qtforkawesome' 'mingw-w64-openssl' 'mingw-w64-boost')
+depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-qtforkawesome' 'mingw-w64-openssl' 'mingw-w64-boost'
+         'mingw-w64-sqlite')
 [[ $_webview_provider == none ]] && depends+=('mingw-w64-qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('mingw-w64-qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('mingw-w64-qt5-webengine')
@@ -31,7 +32,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 [[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
-sha256sums=('5cead81878fa03a981b741e2570acb13b63626a4b520f60bc2a1d8ed83b3a7c1'
+sha256sums=('57d33524697003399f28f6da740b9474ef295d028663cb33760c58b64c6e2beb'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
@@ -42,7 +43,7 @@ if ! [[ $NO_SHARED_LIBS ]]; then
 fi
 if ! [[ $NO_STATIC_LIBS ]]; then
     _configurations+=('static')
-    makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-svg-static' 'mingw-w64-qt5-translations' 'breeze-icons' 'numix-icon-theme-git')
+    makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-svg-static' 'mingw-w64-qt5-translations' 'breeze-icons')
     [[ $_js_provider == script ]] && makedepends+=('mingw-w64-qt5-script-static')
     [[ $_js_provider == qml ]] && makedepends+=('mingw-w64-qt5-declarative-static')
 fi
@@ -82,7 +83,7 @@ build() {
         -DSYNCTHINGCTL_CONFIGURATION_TARGET_SUFFIX:STRING=static
         -DSYNCTHINGTRAY_CONFIGURATION_TARGET_SUFFIX:STRING=static
         -DBUILTIN_TRANSLATIONS:BOOL=ON
-        -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark;Numix
+        -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark
         -DIMAGE_FORMAT_SUPPORT:STRING=Gif;ICO;Jpeg
         -DSVG_SUPPORT:BOOL=ON
         -DSVG_ICON_SUPPORT:BOOL=ON
@@ -94,6 +95,10 @@ build() {
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
       mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
+      local additional_flags=()
+      if [[ $_cfg == static ]]; then
+        additional_flags+=(-DSQLite3_LIBRARY="/usr/$_arch/lib/libsqlite3.a")
+      fi
       ${_arch}-cmake \
         -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
@@ -110,6 +115,7 @@ build() {
         -DUSE_LIBSYNCTHING:BOOL="${_enable_libsyncthing}" \
         -DSETUP_TOOLS:BOOL=ON \
         ${_config_flags[$_cfg]} \
+        "${additional_flags[@]}" \
         ../
       ninja
       popd

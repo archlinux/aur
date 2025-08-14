@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-syncthingtray
 	pkgdesc = Tray application for Syncthing (mingw-w64)
-	pkgver = 1.7.10
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = mingw-w64-syncthingtray
 	makedepends = mingw-w64-qt5-svg-static
 	makedepends = mingw-w64-qt5-translations
 	makedepends = breeze-icons
-	makedepends = numix-icon-theme-git
 	makedepends = mingw-w64-qt5-declarative-static
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt5-svg
@@ -24,15 +23,16 @@ pkgbase = mingw-w64-syncthingtray
 	depends = mingw-w64-qtforkawesome
 	depends = mingw-w64-openssl
 	depends = mingw-w64-boost
+	depends = mingw-w64-sqlite
 	depends = mingw-w64-qt5-base
 	depends = mingw-w64-qt5-declarative
 	options = !buildflags
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = syncthingtray-1.7.10.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.7.10.tar.gz
+	source = syncthingtray-2.0.0.tar.gz::https://github.com/Martchus/syncthingtray/archive/v2.0.0.tar.gz
 	source = syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest
-	sha256sums = 5cead81878fa03a981b741e2570acb13b63626a4b520f60bc2a1d8ed83b3a7c1
+	sha256sums = 57d33524697003399f28f6da740b9474ef295d028663cb33760c58b64c6e2beb
 	sha256sums = SKIP
 
 pkgname = mingw-w64-syncthingtray
