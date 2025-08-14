@@ -3,14 +3,15 @@
 _name=nvidia_gpu_prometheus_exporter
 _pkgname=prometheus-nvidia-gpu-exporter
 pkgname=prometheus-nvidia-gpu-exporter-git
-pkgver=r31.e7d86ca
+pkgver=0.2.0.r0.g2ee9a44
 pkgrel=4
-pkgdesc="Prometheus exporter for Nvidia GPU metrics"
+pkgdesc="Prometheus exporter for NVIDIA GPU metrics"
 arch=(x86_64)
-url="https://github.com/cfsmp3/nvidia_gpu_prometheus_exporter"
+url="https://github.com/plazonic/nvidia_gpu_prometheus_exporter"
 license=(Apache-2.0)
 depends=(
   glibc
+  nvidia-utils
 )
 makedepends=(
   git
@@ -27,37 +28,48 @@ source=(
 )
 b2sums=('SKIP'
         '47fb8b927f0f8f83521ffabe83076ae0dee39de9ea35e8f14520e6bd2bea746eff2c73838dcf0b4e84b71d4dbfc8280b1f874afc95f7f696aba4cfd9fccdc36a'
-        '9ded6ab52caaada85d5dedf681b74a581c75e0c9acb04cc39347c0610882d0a9eb0219a923256413085768a8c58a6ba540fd0ab91b0e2d25ccf37991d01801a0'
-        'b275bf80f0dfaa8a89bb97ea28a0c5afd3e900fd82ded97c628f47cebd5442f402c62f0f814099968b31f821248d9661815deae6517917ce8eec6400d96967a6')
+        '06f7d78cf5d7905fc1753cc13ef53380c804849c7afc26ca34cc101f4be263a0a4cafb1c877dc4f6578124001e6289076513afcfe60a10e468c37e0695357dba'
+        'ed08af182f80ab7b1b6e08a7a8f348255c1c3788a1695ca5ede167011a378d8d3bf389d37714b953bf91fc81976f63c168bc11dbc4d2943b5ec51b51ea8c38f7')
 
 pkgver() {
   cd $_name
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd $_name
-  # github.com/cfsmp3/gonvml does not have go.mod and go.sum
-  go mod download github.com/cfsmp3/gonvml
-  go mod vendor
   mkdir -p build
 }
 
 build() {
   cd $_name
+
+  # set flags for cgo
   export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
+  # go-nvml breaks with -fno-plt, see below
+  export CGO_CFLAGS="${CFLAGS/-fno-plt/}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build .
+  # FIXME: go-nvml requires lazy binding (-Wl,-z,lazy) https://github.com/NVIDIA/go-nvml/issues/18
+  # Unfortunately lazy binding prevents FULL RELRO but otherwise we get:
+  # symbol lookup error: /usr/bin/prometheus-nvidia-gpu-exporter: undefined symbol: nvmlGpuInstanceGetComputeInstanceProfileInfoV
+  export CGO_LDFLAGS="${LDFLAGS} -Wl,-z,lazy"
+
+  # set GOPATH so makepkg puts source files into the debug package
+  export GOPATH="$srcdir"
+
+  go build -v \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-compressdwarf=false -linkmode external" \
+    -o build .
 }
 
 package() {
   # systemd files
+  install -vDm 644 $_pkgname.conf "$pkgdir"/etc/conf.d/$_pkgname
   install -vDm 644 $_pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
   install -vDm 644 $_pkgname.sysusers -t "$pkgdir"/usr/lib/sysusers.d/
-  install -vDm 644 $_pkgname.conf "$pkgdir"/etc/conf.d/$_pkgname
 
   cd $_name
 

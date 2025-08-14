@@ -1,5 +1,5 @@
 [Unit]
-Description=Prometheus exporter for nvidia-gpu metrics
+Description=Prometheus exporter for NVIDIA GPU metrics
 Requires=network-online.target
 After=network-online.target
 ConditionVirtualization=false
@@ -23,7 +23,7 @@ PrivateUsers=yes
 PrivateTmp=true
 #PrivateDevices=true    # this is actually needed to access the GPUs
 ProtectHostname=true
-#ProtectClock=true      # this is actually needed - no idea why...
+ProtectClock=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true
