@@ -1,8 +1,8 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
-_pkgver=1.17.0
-_subver=2
+_pkgver=1.17.1
+_subver=1
 release_tag="${_pkgver}-${_subver}"
 pkgver="${_pkgver}.${_subver}"
 pkgrel=1
