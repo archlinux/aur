@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=ps2_manager
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A game manager for Open PS2 Loader (OPL)"
 arch=('x86_64')
