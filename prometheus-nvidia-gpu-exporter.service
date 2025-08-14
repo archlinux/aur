@@ -2,7 +2,6 @@
 Description=Prometheus exporter for NVIDIA GPU metrics
 Requires=network-online.target
 After=network-online.target
-ConditionVirtualization=false
 
 [Service]
 EnvironmentFile=-/etc/conf.d/prometheus-nvidia-gpu-exporter

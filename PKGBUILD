@@ -4,7 +4,7 @@ _name=nvidia_gpu_prometheus_exporter
 _pkgname=prometheus-nvidia-gpu-exporter
 pkgname=prometheus-nvidia-gpu-exporter-git
 pkgver=0.2.0.r0.g2ee9a44
-pkgrel=4
+pkgrel=5
 pkgdesc="Prometheus exporter for NVIDIA GPU metrics"
 arch=(x86_64)
 url="https://github.com/plazonic/nvidia_gpu_prometheus_exporter"
@@ -28,7 +28,7 @@ source=(
 )
 b2sums=('SKIP'
         '47fb8b927f0f8f83521ffabe83076ae0dee39de9ea35e8f14520e6bd2bea746eff2c73838dcf0b4e84b71d4dbfc8280b1f874afc95f7f696aba4cfd9fccdc36a'
-        '06f7d78cf5d7905fc1753cc13ef53380c804849c7afc26ca34cc101f4be263a0a4cafb1c877dc4f6578124001e6289076513afcfe60a10e468c37e0695357dba'
+        '648f4b72feee744b2512bf8a988b59d9c157b43416b2278077c86d52255fccd5c113b4400c71e0d112af128e8b81a95b9c6ee65a5e0fd2c590ad3d0d6ae778b7'
         'ed08af182f80ab7b1b6e08a7a8f348255c1c3788a1695ca5ede167011a378d8d3bf389d37714b953bf91fc81976f63c168bc11dbc4d2943b5ec51b51ea8c38f7')
 
 pkgver() {
