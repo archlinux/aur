@@ -13,7 +13,7 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="cli-${pkgver}"
 source=("${pkgname}-${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c56d869294e501936b97027840525a0e0b1a4ae4639b42c168ddb3a51b37948b45ac96576e00b63e2227e4b2bf73edd0f0472c09e656e9d1b756ef6dede962d0')
+b2sums=('9b75de9ffdbd16f8d3a1f2e5b72bf125d3401afef6783a4a10ad4f63bc384ce0dbf58f9f5f8e821999b1b616627f1c0ee5924a58867167d1551cd3be9c67f9a7')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
