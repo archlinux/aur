@@ -1,0 +1,12 @@
+pkgbase = ps2_manager
+	pkgdesc = Games manager for Open PS2 Loader built in DotNet Core
+	pkgver = 4737b74330e8fe93d55c2f9b84ded15865fab21b
+	pkgrel = 1
+	url = https://code.weexnes.dev/projects/18
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	source = ps2_manager-4737b74330e8fe93d55c2f9b84ded15865fab21b.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=4737b74330e8fe93d55c2f9b84ded15865fab21b&format=tgz
+	sha256sums = ecf7b6775a8b5f6c26b8e040746a6352e7cddb552977e12f8be3f5e5b0509c06
+
+pkgname = ps2_manager
