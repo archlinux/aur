@@ -1,8 +1,8 @@
 pkgname=lamina-git
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="一种专注于精确数学计算的面向过程编程语言"
-arch=('x86_64')
+pkgdesc="A procedural programming language focusing on precise mathematical computation."
+arch=('x86_64' 'aarch64')
 url="https://github.com/Lamina-dev/Lamina"
 license=('LGPL-2.1')
 makedepends=('cmake' 'git')
