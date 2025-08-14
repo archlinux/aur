@@ -1,6 +1,6 @@
 pkgbase = isolate
 	pkgdesc = Sandbox for securely executing untrusted programs
-	pkgver = 2.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/ioi/isolate
 	install = isolate.install
