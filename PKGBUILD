@@ -2,18 +2,18 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed3a07734b7ea4d3197dd0af46974319889c817a0e6f7a12fcfe9a8e05ed6ea9')
 depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp')
 optdepends=('python-aiohttp: aiohttp')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4e857e6cea01381105373cfdaccab5be6cd27361395662420c01880ffce38fdb')
 
 build() {
   cd "${srcdir}"/${pkgname//google-/}-${pkgver}
@@ -80,9 +80,7 @@ check() {
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
   )
   cd "${srcdir}"/${pkgname//google-/}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" ${_name//-//}/tests
+  pytest "${pytest_options[@]}" ${_name//-//}/tests
 }
 
 package() {
