@@ -1,15 +1,23 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=openjph-git
-pkgname=('openjph-git' 'openjph-doc-git')
-pkgver=0.13.0.r0.gd4ea880
+pkgname=(
+    'openjph-git'
+    'openjph-doc-git')
+pkgver=0.21.5.r0.gcaa3d3d
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (git version)'
 arch=('x86_64')
 url='https://github.com/aous72/OpenJPH/'
 license=('BSD-2-Clause')
-makedepends=('git' 'cmake' 'doxygen' 'libtiff')
-checkdepends=('expat')
+makedepends=(
+    'cmake'
+    'doxygen'
+    'gcc14'
+    'git'
+    'libtiff')
+checkdepends=(
+    'expat')
 source=('git+https://github.com/aous72/OpenJPH.git')
 sha256sums=('SKIP')
 
@@ -18,6 +26,10 @@ pkgver() {
 }
 
 build() {
+    # https://github.com/aous72/OpenJPH/issues/186
+    export CC='gcc-14'
+    export CXX='g++-14'
+    
     cmake -B build -S OpenJPH \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
@@ -40,7 +52,10 @@ check() {
 }
 
 package_openjph-git() {
-    depends=('libtiff')
+    depends=(
+        'gcc-libs'
+        'glibc'
+        'libtiff')
     provides=('openjph')
     conflicts=('openjph')
     
