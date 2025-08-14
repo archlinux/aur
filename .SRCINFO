@@ -1,7 +1,7 @@
 pkgbase = brokefetch-git
 	pkgdesc = A broken neofetch clone script 💀
 	pkgver = 2025.08.12.rc40647b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Szerwigi1410/brokefetch
 	arch = any
 	license = MIT
