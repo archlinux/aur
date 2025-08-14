@@ -1,14 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=highway-git
-pkgver=1.1.0.r5.gaa4ba087
+pkgver=1.3.0.r4.g17e8d3c6
 pkgrel=1
 pkgdesc='A C++ library that provides portable SIMD/vector intrinsics (git version)'
 arch=('x86_64')
 url='https://github.com/google/highway/'
-license=('Apache-2.0' 'BSD-3-Clause')
-depends=('gcc-libs')
-makedepends=('git' 'cmake' 'gtest')
+license=('Apache-2.0 AND BSD-3-Clause')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'gtest')
+makedepends=(
+    'cmake'
+    'git')
 provides=('highway')
 conflicts=('highway')
 source=('git+https://github.com/google/highway.git')
