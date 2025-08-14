@@ -15,9 +15,9 @@ post_install() {
   echo "lines to /usr/share/sddm/themes/solarized-sddm-theme/theme.conf:"
   echo
   echo "[General]"
-  echo "background='Assets/bars_background.png'"
-  echo "background='Assets/circles_background.png'"
-  echo "background='Assets/traces_background.png'"
+  echo "background='bars_background.png'"
+  echo "background='circles_background.png'"
+  echo "background='traces_background.png'"
   echo
 }
 
