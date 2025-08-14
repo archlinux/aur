@@ -1,15 +1,14 @@
 pkgbase = hex2bin
-	pkgdesc = Hex to binary converter.
-	pkgver = 20161122
+	pkgdesc = Hex to binary converter
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/Keidan/hex2bin
-	arch = any
-	license = GPL3
-	makedepends = git
-	makedepends = make
-	depends = gcc
-	source = hex2bin::git+https://github.com/Keidan/hex2bin
-	md5sums = SKIP
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = python
+	depends = glibc
+	source = hex2bin-1.12.tar.gz::https://github.com/Keidan/hex2bin/archive/refs/tags/v1.12.tar.gz
+	sha256sums = cc9e4ee6791cdbbb9b24725a61258b90331888f3b7e33517e88bb84df411906f
 
 pkgname = hex2bin
-
