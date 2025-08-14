@@ -18,11 +18,7 @@ package() {
 
   install -Dm755 "$BINARY" "$pkgdir/usr/bin/$_pkgname"
 
-  if [ -f "LICENSE" ]; then
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  fi
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
-  if [ -f "README.md" ]; then
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
-  fi
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
