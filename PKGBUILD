@@ -1,7 +1,7 @@
 # Maintainer: XielQ <offical.gamerboytr@yandex.com>
 pkgname=bombkurdistan-git
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple game where you can bomb kurdistan'
 arch=('x86_64')
 url='https://github.com/XielQs/BombKurdistan'
@@ -24,7 +24,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  chmod +x ./build.sh
+  ./build.sh
 }
 
 package() {
