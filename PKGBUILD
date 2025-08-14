@@ -2,12 +2,12 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Corey Hinshaw <corey@electrickite.org>
 pkgname=system76-firmware-git
-pkgver=1.0.69.r0.g6651187
+pkgver=1.0.74.r2.g79a2dc8
 pkgrel=1
 pkgdesc="System76 Firmware Tool and Daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/system76-firmware"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'ca-certificates'
   'dbus'
