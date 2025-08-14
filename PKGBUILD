@@ -1,8 +1,8 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=ps2_manager-git
-_commit=2a6186e64b020d619f072c56b31cab040593a1fe
-pkgver=a68551646c07283362a97dbc7d621468f8fe9270
+_commit=a68551646c07283362a97dbc7d621468f8fe9270
+pkgver=${_commit:0:7}
 pkgrel=1
 pkgdesc="A game manager for Open PS2 Loader (OPL) (cutting-edge version)"
 arch=('x86_64')
