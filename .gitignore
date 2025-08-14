@@ -1,7 +1,8 @@
 qautostart
 qmarkdowntextedit
 QSimpleUpdater
-notes
+notes-git
 pkg
 src
+*.log
 *.pkg.*
