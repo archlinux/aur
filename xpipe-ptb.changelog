@@ -30,6 +30,10 @@ You can now configure multiple addresses for a host. This allows you to quickly 
 
 ![addresses](https://xpipe.io/assets/images/BlogPage/addresses.png)
 
+## macOS fonts
+
+The fonts on macOS have been updated with the goal of better readability. If you don't like the new font style, you can still select the old one in the appearance settings menu.
+
 ## Build pipeline
 
 The build pipeline has been reworked. This might result in unexpected issues that were not caught yet.
@@ -51,6 +55,9 @@ The build pipeline has been reworked. This might result in unexpected issues tha
 
 ## Fixes
 
+- Fix SSH ProxyCommand not being executed for custom connections
+- Fix bitwarden on Windows sometimes requiring the master password multiple times
+- Fix restart button not working on Linux
 - Fix SSH gateways not working on systems where username contained a dot
 - Fix file browser execute action on Windows not being limited to certain file types
 - Fix file browser refresh of single files failing on Windows systems
