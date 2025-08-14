@@ -1,13 +1,13 @@
 # Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
 # Contributor: Michael Bauer <michael@m-bauer.org>
 pkgname=radicle-cli
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Radicle command line interface"
 arch=('x86_64')
 url="https://radicle.xyz"
 license=('MIT' 'Apache-2.0')
-depends=('libusb' 'gcc-libs' 'openssh' 'git' 'glibc' 'zlib')
+depends=('gcc-libs' 'openssh>=9.1' 'git>=2.34.0' 'glibc' 'zlib')
 makedepends=('cargo' 'asciidoctor')
 
 _man_pages="rad-id rad-patch rad git-remote-rad radicle-node"
@@ -15,7 +15,7 @@ _man_pages="rad-id rad-patch rad git-remote-rad radicle-node"
 source=("https://files.radicle.xyz/releases/$pkgver/heartwood-$pkgver.tar.gz")
 noextract=("heartwood-$pkgver.tar.gz")
 
-sha512sums=('371f1e8907ebe2fa13a75e0a48cc37944bea14138f8496ca974892430d18d70d5144668248b922b61b9497ba0203ecaec8353df6e8d792e092b37401a5ac3264')
+sha512sums=('a816cb12582a92e633d3f28c6a2649040a176e42a3b49c40bae5a3e8a6b47dcc75b44203bc662ef93aadbd0f4062503592ae9c757f8b97d9597ba26e77d93d4b')
 
 prepare() {
   mkdir -p "$srcdir/heartwood-$pkgver"

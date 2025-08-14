@@ -1,6 +1,6 @@
 pkgbase = radicle-cli
 	pkgdesc = Radicle command line interface
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://radicle.xyz
 	arch = x86_64
@@ -8,14 +8,13 @@ pkgbase = radicle-cli
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = asciidoctor
-	depends = libusb
 	depends = gcc-libs
-	depends = openssh
-	depends = git
+	depends = openssh>=9.1
+	depends = git>=2.34.0
 	depends = glibc
 	depends = zlib
-	noextract = heartwood-1.2.1.tar.gz
-	source = https://files.radicle.xyz/releases/1.2.1/heartwood-1.2.1.tar.gz
-	sha512sums = 371f1e8907ebe2fa13a75e0a48cc37944bea14138f8496ca974892430d18d70d5144668248b922b61b9497ba0203ecaec8353df6e8d792e092b37401a5ac3264
+	noextract = heartwood-1.3.0.tar.gz
+	source = https://files.radicle.xyz/releases/1.3.0/heartwood-1.3.0.tar.gz
+	sha512sums = a816cb12582a92e633d3f28c6a2649040a176e42a3b49c40bae5a3e8a6b47dcc75b44203bc662ef93aadbd0f4062503592ae9c757f8b97d9597ba26e77d93d4b
 
 pkgname = radicle-cli
