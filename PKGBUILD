@@ -17,6 +17,7 @@ depends=(
   'odin4-cli'
   'thor-flash-utility'
   'python-i18n'
+  'python-gobject'
 )
 makedepends=(
   'git'

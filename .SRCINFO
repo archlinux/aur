@@ -13,6 +13,7 @@ pkgbase = galaxy-flasher
 	depends = odin4-cli
 	depends = thor-flash-utility
 	depends = python-i18n
+	depends = python-gobject
 	source = git+https://codeberg.org/ethical_haquer/galaxy-flasher.git
 	sha256sums = SKIP
 
