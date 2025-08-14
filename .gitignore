@@ -1,0 +1,8 @@
+qautostart
+qmarkdowntextedit
+QSimpleUpdater
+notes
+pkg
+src
+*.log
+*.pkg.*
