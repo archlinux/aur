@@ -1,3 +1,4 @@
+# Maintainer: Patrik Bachan <patrikbachan at gmail dot com>
 pkgname=python-lbuild-git
 _name=lbuild
 pkgver=r294.f594b41
@@ -7,7 +8,7 @@ url="https://github.com/modm-io/${_name}/"
 arch=('any')
 license=('BSD-2-Clause')
 depends=(python python-lxml python-jinja 'python-anytree>=2.6.0' 'python-gitpython>=2.1.11')
-makedepends=(python-build python-installer python-wheel python-testfixtures)
+makedepends=(git python-build python-installer python-wheel python-testfixtures)
 
 source=("${_name}::git+https://github.com/modm-io/lbuild.git")
 sha256sums=('SKIP')
