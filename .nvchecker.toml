@@ -1,0 +1,4 @@
+[prometheus-nvidia-gpu-exporter-git]
+source = "git"
+git = "https://github.com/plazonic/nvidia_gpu_prometheus_exporter.git"
+prefix = "v"
