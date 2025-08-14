@@ -2,7 +2,7 @@
 
 pkgname=omarchy-chromium-bin
 pkgver=139.0.7258.66
-pkgrel=5
+pkgrel=6
 pkgdesc="A web browser built for speed, simplicity, and security, with patches for Omarchy (binary package)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -12,14 +12,14 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 provides=('chromium')
 conflicts=('chromium' 'omarchy-chromium')
-source=("https://github.com/omacom-io/omarchy-chromium/releases/download/v139.0.7258.66-5/omarchy-chromium-139.0.7258.66-5-x86_64.pkg.tar.zst")
-sha256sums=('e6c16f10716e23aa3cb74780e97d3a3694b271fd78788e482aaee9d96804f889')
+source=("https://github.com/omacom-io/omarchy-chromium/releases/download/v139.0.7258.66-6/omarchy-chromium-139.0.7258.66-6-x86_64.pkg.tar.zst")
+sha256sums=('2d2fd32ea92d3884beb760b16c33cba9c4d79544dea9d8c05e7c7a7ab5efa576')
 
 package() {
     cd "$srcdir"
     
     # Extract the package
-    tar -xf "omarchy-chromium-139.0.7258.66-5-x86_64.pkg.tar.zst"
+    tar -xf "omarchy-chromium-139.0.7258.66-6-x86_64.pkg.tar.zst"
     
     # Copy everything to the target directory
     cp -r usr "$pkgdir/"
