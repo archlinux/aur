@@ -5,7 +5,7 @@ pkgname=ziti-edge-tunnel
 pkgver=1.6.1
 pkgrel=1
 pkgdesc="The linux tunneller for your Ziti network."
-arch=(x86_64 aarch64 arm64 armhf arm)
+arch=(x86_64 arm64 armhf arm)
 depends=('polkit')
 options=()
 url="https://openziti.github.io/ziti/clients/linux.html"
@@ -20,7 +20,6 @@ source=("ziti-edge-tunnel.service"
 source_arm=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgver}/ziti-edge-tunnel-Linux_arm.zip")
 source_armhf=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgver}/ziti-edge-tunnel-Linux_arm.zip")
 source_arm64=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgver}/ziti-edge-tunnel-Linux_arm64.zip")
-source_aarch64=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgver}/ziti-edge-tunnel-Linux_aarch64.zip")
 source_x86_64=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgver}/ziti-edge-tunnel-Linux_x86_64.zip")
 sha256sums=('97881960e8763840782b936abbb94513ca929257738ad2bf96df45cc3a344628'
             '027be2beec25a3425ae8b2b79be294c5829c4715bd89b841e958a720c720aea7'
@@ -28,7 +27,6 @@ sha256sums=('97881960e8763840782b936abbb94513ca929257738ad2bf96df45cc3a344628'
             '10e482480cf6a12b41b8dbfd705af34f12b65fbec640affaeee963dc7449729f'
             '7d5d3f1995228e360917aa1adeca2432f19e995d4ba437ba8b5b22d8d0c15745')
 sha256sums_x86_64=('c0a175f79c3b97987e9b63dfca94a47897e8ca7634bb5bf0c49175d594485da2')
-sha256sums_aarch64=('e259a9178800e23cdabfb9842208ce70558a60dd6c66d7ee29ea21a2d9d8a14b')
 sha256sums_arm64=('e259a9178800e23cdabfb9842208ce70558a60dd6c66d7ee29ea21a2d9d8a14b')
 sha256sums_armhf=('3e2e87e6f193cf15daf2751a4d77561bfb2e520eaa55db58f0c6bf9f0f08adb2')
 sha256sums_arm=('3e2e87e6f193cf15daf2751a4d77561bfb2e520eaa55db58f0c6bf9f0f08adb2')
