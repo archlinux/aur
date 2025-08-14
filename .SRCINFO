@@ -17,7 +17,7 @@ pkgbase = python-pukiwikidumper
 	depends = python-slugify
 	depends = python-chardet
 	depends = 7zip
-	source = https://files.pythonhosted.org/packages/c6/46/ff4fd78e11c8591df4e1cd53ff9c81be4b3da018361fbd5d5dcb7a666ef7/pukiwikidumper-0.0.19.tar.gz
+	source = https://pypi.io/packages/source/p/pukiwikidumper/pukiwikidumper-0.0.19.tar.gz
 	sha256sums = 6ed9e0370aa3cc7d205d5378d614fb05a8aba51be6fc8292cbd466c428928fd1
 
 pkgname = python-pukiwikidumper
