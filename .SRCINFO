@@ -1,12 +1,12 @@
 pkgbase = acc_utils-bin
 	pkgdesc = A tool with enhanced functionality using files created by atcoder-cli
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 0
 	url = https://github.com/hidehic0/acc_utils
 	arch = x86_64
 	license = Unlicense
 	depends = bash
-	source = https://github.com/hidehic0/acc_utils/releases/download/v0.0.5/acc_utils_Linux_x86_64.tar.gz
-	sha256sums = d237d2a0b999d208330dc050fc2824ed13fc62773cac66ea811f146b73ff7691
+	source = https://github.com/hidehic0/acc_utils/releases/download/v0.0.6/acc_utils_Linux_x86_64.tar.gz
+	sha256sums = 809ae86bb9602f742ce18345e20c235afddda467f3424eb7807907301e37c26e
 
 pkgname = acc_utils-bin
