@@ -1,7 +1,7 @@
 # Maintainer:  Alexis Aguilar <aaguilar1892@gmail.com>
 
 pkgname="supabase"
-pkgver=2.30.4
+pkgver=2.33.9
 pkgrel=1
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=('aarch64' 'x86_64')
