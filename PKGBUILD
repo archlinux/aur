@@ -1,4 +1,5 @@
 # Maintainer: veluca93 <veluca93@gmail.com>
+# Contributor: trillian <trillian+aur@r9.pm>
 # Contributor: iamawacko <iamawacko@protonmail.com>
 # Contributor: German IOI Coaches <coaches@informatik-olympiade.de>
 # Contributor: Alexandre Macabies <web+oss@zopieux.com>
