@@ -4,8 +4,8 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.14.1.r62.g848a58b3
-pkgrel=2
+pkgver=0.14.1.r114.g907dcf75
+pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -79,12 +79,7 @@ checkdepends=(
     'python-markdownify'
     'python-whoosh'
 
-    # For flake8
-    'flake8'
-    'python-flake8-bugbear'
-    'python-flake8-pyproject'
-    'python-flake8-quotes'
-    'python-pep8-naming'
+    'python-ruff'
 
     # For mypy
     'mypy'
@@ -128,10 +123,10 @@ check() {
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   export PYTHONPATH="$PWD/tmp_install/${_site_packages}"
 
+  python -m ruff check
+  python -m mypy
   export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   python -m pytest -p pytest_cov -p papis_testing
-  python -m flake8
-  python -m mypy
 }
 
 package() {
