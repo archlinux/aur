@@ -1,14 +1,14 @@
-# Maintainer: Aetf <aetf at unlimitedcodeworks dor xyz>
+# Maintainer: Aetf <aetf at unlimited-code dot works>
 pkgname=libtsm-patched-git
 _gitname=libtsm
-pkgver=4.0.2.r4.g06d52d1
+pkgver=4.0.2.r41.gba2aea2
 pkgrel=1
 pkgdesc="Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="http://www.freedesktop.org/wiki/Software/kmscon/$_gitname"
 license=('MIT')
 depends=(glibc)
-makedepends=('cmake' 'git' 'libxkbcommon')
+makedepends=('meson' 'git' 'libxkbcommon')
 provides=('libtsm-patched' 'libtsm')
 conflicts=('libtsm' 'libtsm-patched')
 options=(!libtool)
@@ -23,28 +23,21 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
 
-  mkdir -p build && cd build
-
-  cmake \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_GTKTSM=OFF \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    ..
+  arch-meson . build -Dtests=false -Dgtktsm=false
 }
 
 build() {
   cd "$srcdir/$_gitname/build"
-  make
+  meson compile
 }
 
 package() {
   cd "$srcdir/$_gitname"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_gitname/COPYING"
+  install -Dm644 LICENSE_htable "$pkgdir/usr/share/licenses/$_gitname/LICENSE_htable"
 
   cd build
-  make DESTDIR="$pkgdir/" install
+  meson install --destdir "$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:
