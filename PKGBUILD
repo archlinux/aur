@@ -1,18 +1,21 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
-pkgname=ps2_manager
-pkgver=1.5
+pkgname=ps2_manager-git
+_commit=2a6186e64b020d619f072c56b31cab040593a1fe
+pkgver=${_commit:0:7}
 pkgrel=1
-pkgdesc="A game manager for Open PS2 Loader (OPL)"
+pkgdesc="A game manager for Open PS2 Loader (OPL) (cutting-edge version)"
 arch=('x86_64')
 url="https://code.weexnes.dev/ps2_manager"
 license=('GPL3')
 makedepends=('dotnet-sdk')
 depends=()
 options=('!strip')
-
-source=("${pkgname}-${pkgver}.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=refs/tags/${pkgver}&format=tgz")
+source=("${pkgname}-${_commit}.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=${_commit}&format=tgz")
 sha256sums=('SKIP')
+
+provides=('ps2_manager')
+conflicts=('ps2_manager')
 
 build() {
   cd "$srcdir/PS2_Manager"
