@@ -2,7 +2,7 @@
 # Contributor: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=qman-git
-pkgver=1.3.1.r28.gb461fb9
+pkgver=1.4.3.r104.g9b702ac
 pkgrel=1
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=('x86_64' 'aarch64')
