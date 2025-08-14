@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Podboat Improved: A podcast client for your terminal'
 arch=('any')
 url="https://github.com/ejv2/$pkgname"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('mpv' 'ncurses')
 optdepends=('newsboat: enqueue podcasts from RSS'
