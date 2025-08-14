@@ -1,5 +1,5 @@
 pkgbase = ps2_manager
-	pkgdesc = Games manager for Open PS2 Loader built in DotNet Core
+	pkgdesc = A game manager for Open PS2 Loader (OPL)
 	pkgver = 4737b74330e8fe93d55c2f9b84ded15865fab21b
 	pkgrel = 1
 	url = https://code.weexnes.dev/projects/18

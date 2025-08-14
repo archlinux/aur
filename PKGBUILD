@@ -3,7 +3,7 @@
 pkgname=ps2_manager
 pkgver=4737b74330e8fe93d55c2f9b84ded15865fab21b
 pkgrel=1
-pkgdesc="Games manager for Open PS2 Loader built in DotNet Core"
+pkgdesc="A game manager for Open PS2 Loader (OPL)"
 arch=('x86_64')
 url="https://code.weexnes.dev/projects/18"
 license=('MIT')
