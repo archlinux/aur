@@ -6,7 +6,7 @@
 _pkgname='github-desktop-plus'
 pkgname="${_pkgname}-bin"
 pkgver=3.5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of GitHub Desktop with extra features and improvements (binary release)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/pol-rivero/github-desktop-plus"
@@ -49,9 +49,6 @@ package() {
     mv "${pkgdir}/usr/lib/github-desktop-plus/"* "${pkgdir}/opt/${_pkgname}/"
     rmdir "${pkgdir}/usr/lib/github-desktop-plus"
     rmdir "${pkgdir}/usr/lib"
-    mv "${pkgdir}/usr/share/doc/github-desktop-plus" "${pkgdir}/usr/share/doc/${_pkgname}"
-    mv "${pkgdir}/usr/share/lintian/overrides/github-desktop-plus" "${pkgdir}/usr/share/lintian/overrides/${_pkgname}"
-    find "${pkgdir}/usr/share/icons" -name 'github-desktop-plus.png' -execdir mv {} "${_pkgname}.png" \;
 
     rm "${pkgdir}/usr/share/applications/github-desktop-plus.desktop"
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
