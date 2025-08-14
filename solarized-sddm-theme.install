@@ -11,9 +11,14 @@ post_install() {
   echo "displayFont='YourFont'"
   echo
   echo "Version 0.1.8 brings a new background image"
-  echo "If you want the former backgrounds you can find them"
-  echo "in the theme folder as bars_background.png, circles_background.png"
-  echo "and traces_background.png"
+  echo "If you want the former backgrounds, add the following"
+  echo "lines to /usr/share/sddm/themes/solarized-sddm-theme/theme.conf:"
+  echo
+  echo "[General]"
+  echo "background='Assets/bars_background.png'"
+  echo "background='Assets/circles_background.png'"
+  echo "background='Assets/traces_background.png'"
+  echo
 }
 
 post_upgrade() {
