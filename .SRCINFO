@@ -1,0 +1,11 @@
+pkgbase = tatermark
+	pkgdesc = A simple text editor, GNU Tatermark
+	pkgver = 7.9.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = https://raw.githubusercontent.com/flattmeplease/tatermark/main/main.cpp
+	sha256sums = SKIP
+
+pkgname = tatermark
