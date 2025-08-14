@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname="galaxy-flasher"
-pkgver=alpha.v2025.08.08
+pkgver=alpha.v2025.08.13
 pkgrel=0
 pkgdesc="A GUI for Samsung flash-tools"
 url="https://codeberg.org/ethical_haquer/galaxy-flasher"

@@ -1,6 +1,6 @@
 pkgbase = galaxy-flasher
 	pkgdesc = A GUI for Samsung flash-tools
-	pkgver = alpha.v2025.08.08
+	pkgver = alpha.v2025.08.13
 	pkgrel = 0
 	url = https://codeberg.org/ethical_haquer/galaxy-flasher
 	arch = x86_64
