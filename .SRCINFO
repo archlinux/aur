@@ -1,8 +1,8 @@
 pkgbase = nvm-fish
-	pkgdesc = Fish shell integration for Node Version Manager (nvm)
+	pkgdesc = Fish shell wrapper for official nvm using bass - enables nvm commands in fish while preserving full compatibility with bash nvm installations
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/ChHsich/nvm-fish
+	url = https://github.com/ChHsich/nvm-fish-aur
 	install = nvm-fish.install
 	arch = any
 	groups = fish-plugins
