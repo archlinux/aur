@@ -57,7 +57,7 @@ build() {
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=Debug \
 				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-				-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
+				-DCMAKE_C_FLAGS="-D_XOPEN_SOURCE=700 -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 				-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 				-Wno-dev
 		else
@@ -66,7 +66,7 @@ build() {
 				-DBUILD_DIAGTOOL=ON \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-				-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
+				-DCMAKE_C_FLAGS="-D_XOPEN_SOURCE=700" \
 				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 				-DCELLFRAME_NO_OPTIMIZATION=OFF \
 				-Wno-dev
@@ -77,7 +77,7 @@ build() {
 			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=Debug \
 			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-			-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
+			-DCMAKE_C_FLAGS="-D_XOPEN_SOURCE=700 -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 			-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
@@ -86,6 +86,7 @@ build() {
 		cmake -B build \
 			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+			-DCMAKE_C_FLAGS="-D_XOPEN_SOURCE=700" \
 			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
