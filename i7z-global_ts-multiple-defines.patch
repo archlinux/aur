@@ -1,0 +1,35 @@
+diff -rauN i7z-vanilla/src/i7z.c i7z-global_ts-multiple-defines-patch/src/i7z.c
+--- i7z-vanilla/src/i7z.c	2025-08-14 12:23:42.303158517 +0200
++++ i7z-global_ts-multiple-defines-patch/src/i7z.c	2025-08-14 12:30:05.587352749 +0200
+@@ -23,6 +23,7 @@
+ #include "i7z.h"
+ 
+ struct program_options prog_options;
++struct timespec global_ts;
+ 
+ int Single_Socket();
+ int Dual_Socket();
+diff -rauN i7z-vanilla/src/i7z_Dual_Socket.c i7z-global_ts-multiple-defines-patch/src/i7z_Dual_Socket.c
+--- i7z-vanilla/src/i7z_Dual_Socket.c	2025-08-14 12:23:42.303199249 +0200
++++ i7z-global_ts-multiple-defines-patch/src/i7z_Dual_Socket.c	2025-08-14 12:26:19.328051760 +0200
+@@ -37,7 +37,7 @@
+ extern struct program_options prog_options;
+ FILE *fp_log_file;
+ 
+-struct timespec global_ts;
++extern struct timespec global_ts;
+ extern FILE *fp_log_file_freq_1, *fp_log_file_freq_2;
+ 
+ extern char* CPU_FREQUENCY_LOGGING_FILE_single;
+diff -rauN i7z-vanilla/src/i7z_Single_Socket.c i7z-global_ts-multiple-defines-patch/src/i7z_Single_Socket.c
+--- i7z-vanilla/src/i7z_Single_Socket.c	2025-08-14 12:23:42.303231475 +0200
++++ i7z-global_ts-multiple-defines-patch/src/i7z_Single_Socket.c	2025-08-14 12:26:29.543065462 +0200
+@@ -35,7 +35,7 @@
+ extern struct program_options prog_options;
+ extern FILE *fp_log_file_freq;
+ 
+-struct timespec global_ts;
++extern struct timespec global_ts;
+ 
+ extern char* CPU_FREQUENCY_LOGGING_FILE_single;
+ extern char* CPU_FREQUENCY_LOGGING_FILE_dual;
