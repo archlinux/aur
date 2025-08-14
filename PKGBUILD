@@ -1,25 +1,25 @@
 # Maintainer: Amurru Zerouk <ammarzerouk[at]gmail[dot]com>
 pkgname=ballerina-bin
 _pkgname=ballerina
-pkgver=2201.12.3
+pkgver=2201.12.7
 pkgrel=1
 pkgdesc="Ballerina, an open-source programming language for the cloud"
 arch=("any")
 url="https://ballerina.io"
 license=('Apache')
 groups=()
-depends=(jdk11-openjdk)
+depends=(jdk-openjdk)
 provides=("ballerina" "bal")
 conflicts=("ballerina")
 options=()
 changelog=
 source=(
-${_pkgname}-bin.sh
-https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${pkgver}/ballerina-${pkgver}-swan-lake.zip
+	${_pkgname}-bin.sh
+	https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${pkgver}/ballerina-${pkgver}-swan-lake.zip
 )
 sha256sums=(
-'7089633fd3b49a6d3e5ea2c793e213907ca7fc4bd670a422f911a74bbf470c95'
-'d70ac8479809e0ad326fdc88de0670d76038d64bebcbf57fadd98bddd405fa53'
+	'e83ceecf6c8b0402679072ebf544d5ecf6b81ed13a8c160c04e5b5272fc4e008'
+	'2ca6eef7a40c644c5c33d86e20f30b66839688096044347d93f0ca0876a2cd0b'
 )
 
 prepare() {

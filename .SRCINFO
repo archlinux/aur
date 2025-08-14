@@ -1,17 +1,17 @@
 pkgbase = ballerina-bin
 	pkgdesc = Ballerina, an open-source programming language for the cloud
-	pkgver = 2201.12.3
+	pkgver = 2201.12.7
 	pkgrel = 1
 	url = https://ballerina.io
 	arch = any
 	license = Apache
-	depends = jdk11-openjdk
+	depends = jdk-openjdk
 	provides = ballerina
 	provides = bal
 	conflicts = ballerina
 	source = ballerina-bin.sh
-	source = https://github.com/ballerina-platform/ballerina-distribution/releases/download/v2201.12.3/ballerina-2201.12.3-swan-lake.zip
-	sha256sums = 7089633fd3b49a6d3e5ea2c793e213907ca7fc4bd670a422f911a74bbf470c95
-	sha256sums = d70ac8479809e0ad326fdc88de0670d76038d64bebcbf57fadd98bddd405fa53
+	source = https://github.com/ballerina-platform/ballerina-distribution/releases/download/v2201.12.7/ballerina-2201.12.7-swan-lake.zip
+	sha256sums = e83ceecf6c8b0402679072ebf544d5ecf6b81ed13a8c160c04e5b5272fc4e008
+	sha256sums = 2ca6eef7a40c644c5c33d86e20f30b66839688096044347d93f0ca0876a2cd0b
 
 pkgname = ballerina-bin
