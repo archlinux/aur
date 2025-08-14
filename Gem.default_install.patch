@@ -1,38 +1,66 @@
-From 6db3682d70e3e9dce7b9e32ddfd94378773f1d38 Mon Sep 17 00:00:00 2001
+From 9e3a7232d0a69cca5cd3245aa2f2ec02d5da9e33 Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
 Date: Thu, 20 May 2021 16:26:25 -0500
 Subject: [PATCH] Add Gem.default_install
 
-The configuration Gem.default_user_install should have never been added,
-as the same can be achieved by specifying the default install directory,
-this is what the new Gem.default_install does.
+We need a way to enable user installs by default so that tools like
+bundler don't attempt to install to system directories.
 
-This flag should be used to set Gem.home so it helps everyone, not just
-the install command.
+The configuration Gem.default_user_install was meant to enable user
+installs, but it only affects `gem install`, not bundler. Distributions
+were already able to change the defaults of `gem install`, so it didn't
+change anything, and that's why nobody is using it.
 
-By calling Gem.default_user_install in the right place, bundler can also
-make use of this, and other tools like `gem env` show the correct
-location where gems are going to be installed to.
+Instead we need a method that allows something that is not currently
+possible: override Gem.dir.
 
-Gem.default_dir is where the system gems are installed to,
-Gem.default_install is where the gems installed by the user are
-installed to.
+Gem.default_install is that method, which allows changing user installs
+to both gem and bundler.
 
-This allows for more flexibility, for example allow to specify another
-directory, or another directory only if the user is root.
+To retain backwards compatibility it uses Gem.default_user_install by
+default:
 
-The current behavior remains unaffected: gems are still installed to
-based on Gem.default_user_install by default.
+  def default_install
+    default_user_install ? user_dir : default_dir
+  end
 
-Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
+Distributions can then override this to enable user installs by default:
+
+  def default_install
+    user_dir
+  end
+
+This allows for more flexibility than Gem.default_user_install. For
+example distributions can choose to install to different directories
+based on the user id:
+
+  def default_install
+    Process.uid == 0 ? local_dir : user_dir
+  end
+
+The current Gem.default_user_install solution is simply not enough.
 ---
+ lib/rubygems.rb                     |  1 +
  lib/rubygems/defaults.rb            | 14 ++++++++------
+ lib/rubygems/installer.rb           |  6 +++---
  lib/rubygems/path_support.rb        |  2 +-
- test/rubygems/test_gem_installer.rb |  2 --
- 3 files changed, 9 insertions(+), 9 deletions(-)
+ test/rubygems/test_gem_installer.rb |  4 ++--
+ 5 files changed, 15 insertions(+), 12 deletions(-)
 
+diff --git a/lib/rubygems.rb b/lib/rubygems.rb
+index 78017765e1..5e98321df7 100644
+--- a/lib/rubygems.rb
++++ b/lib/rubygems.rb
+@@ -1085,6 +1085,7 @@ def self.use_paths(home, *paths)
+     hash = { "GEM_HOME" => home, "GEM_PATH" => paths.empty? ? home : paths.join(File::PATH_SEPARATOR) }
+     hash.delete_if {|_, v| v.nil? }
+     self.paths = hash
++    @default_install = home
+   end
+ 
+   ##
 diff --git a/lib/rubygems/defaults.rb b/lib/rubygems/defaults.rb
-index db07681a17..ccc483b11e 100644
+index db07681a17..06ddf7bac6 100644
 --- a/lib/rubygems/defaults.rb
 +++ b/lib/rubygems/defaults.rb
 @@ -9,6 +9,13 @@ module Gem
@@ -43,7 +71,7 @@ index db07681a17..ccc483b11e 100644
 +  # Determines the default install directory
 +
 +  def self.default_install
-+    Gem.default_user_install ? Gem.user_dir : Gem.default_dir
++    @default_install ||= default_user_install ? user_dir : default_dir
 +  end
 +
    ##
@@ -59,10 +87,39 @@ index db07681a17..ccc483b11e 100644
 -    end
 -
 -    false
-+    File.exist?(Gem.default_dir) && !File.writable?(Gem.default_dir)
++    File.exist?(default_dir) && !File.writable?(default_dir)
    end
  
    ##
+diff --git a/lib/rubygems/installer.rb b/lib/rubygems/installer.rb
+index 2b3200223a..b6eb616861 100644
+--- a/lib/rubygems/installer.rb
++++ b/lib/rubygems/installer.rb
+@@ -670,7 +670,7 @@ def process_options # :nodoc:
+ 
+     @build_args = options[:build_args]
+ 
+-    @gem_home = @install_dir || user_install_dir || Gem.dir
++    @gem_home = @install_dir || user_install_dir || Gem.default_install
+ 
+     # If the user has asked for the gem to be installed in a directory that is
+     # the system gem directory, then use the system bin directory, else create
+@@ -961,13 +961,13 @@ def ensure_writable_dir(dir) # :nodoc:
+ 
+   def user_install_dir
+     # never install to user home in --build-root mode
+-    return unless @build_root.nil?
++    return Gem.default_dir if @build_root || @user_install == false
+ 
+     # Please note that @user_install might have three states:
+     # * `true`: `--user-install`
+     # * `false`: `--no-user-install` and
+     # * `nil`: option was not specified
+-    if @user_install || (@user_install.nil? && Gem.default_user_install)
++    if @user_install
+       Gem.user_dir
+     end
+   end
 diff --git a/lib/rubygems/path_support.rb b/lib/rubygems/path_support.rb
 index 13091e29ba..455f413f3d 100644
 --- a/lib/rubygems/path_support.rb
@@ -77,10 +134,14 @@ index 13091e29ba..455f413f3d 100644
  
      @spec_cache_dir = env["GEM_SPEC_CACHE"] || Gem.default_spec_cache_dir
 diff --git a/test/rubygems/test_gem_installer.rb b/test/rubygems/test_gem_installer.rb
-index 34415aa7dd..c704441dcf 100644
+index 34415aa7dd..c475aea917 100644
 --- a/test/rubygems/test_gem_installer.rb
 +++ b/test/rubygems/test_gem_installer.rb
-@@ -1989,7 +1989,6 @@ def test_process_options_fallback_to_user_install_when_gem_home_not_writable
+@@ -1986,10 +1986,10 @@ def test_process_options_fallback_to_user_install_when_gem_home_not_writable
+ 
+     FileUtils.chmod 0o000, @gemhome
+ 
++    Gem.use_paths(nil)
      installer = use_ui(@ui) { Gem::Installer.at @gem }
  
      assert_equal Gem.user_dir, installer.gem_home
@@ -88,7 +149,11 @@ index 34415aa7dd..c704441dcf 100644
    ensure
      FileUtils.chmod 0o755, @gemhome
      ENV["GEM_HOME"] = orig_gem_home
-@@ -2010,7 +2009,6 @@ def test_process_options_does_not_fallback_to_user_install_when_gem_home_not_wri
+@@ -2007,10 +2007,10 @@ def test_process_options_does_not_fallback_to_user_install_when_gem_home_not_wri
+ 
+     FileUtils.chmod 0o000, @gemhome
+ 
++    Gem.use_paths(nil)
      installer = use_ui(@ui) { Gem::Installer.at @gem, user_install: false }
  
      assert_equal @gemhome, installer.gem_home
