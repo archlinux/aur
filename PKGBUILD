@@ -10,6 +10,10 @@ depends=('bash')
 source=()
 sha256sums=()
 
+# Nuke old built packages right away
+echo "🔥 Nuking old package archives..."
+rm -f "$PWD"/*.pkg.tar.*
+
 pkgver() {
     # Get latest commit hash
     local hash
@@ -28,10 +32,6 @@ pkgver() {
 }
 
 prepare() {
-
-    # Nuke old built packages right away
-    echo "🔥 Nuking old package archives..."
-    rm -f "$PWD"/*.pkg.tar.*
 
     echo "🧹 Removing old script..."
     rm -f "$srcdir/brokefetch.sh"
