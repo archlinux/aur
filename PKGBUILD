@@ -21,6 +21,7 @@ optdepends=(
   'lz4: compression'
   'xz: compression'
   'lzop: compression'
+  'busybox: insecure direct connection'
 )
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v$pkgver.tar.gz"
