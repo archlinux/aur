@@ -10,6 +10,6 @@ pkgbase = hydectl-bin
 	provides = hydectl
 	conflicts = hydectl
 	source = https://github.com/HyDE-Project/hydectl/releases/download/v25.7.4/hydectl_25.7.4_linux_amd64.tar.gz
-	sha256sums = SKIP
+	sha256sums = 18bbb8b22424811a69658a30cbfd95bd0b12311697bfc70a11d24da335e2468f
 
 pkgname = hydectl-bin

@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('18bbb8b22424811a69658a30cbfd95bd0b12311697bfc70a11d24da335e2468f')
 
 pkgver() {
 	curl -s "https://api.github.com/repos/HyDE-Project/hydectl/releases/latest" | grep -oP '"tag_name": "\K[^"]+' | sed 's/v//'
