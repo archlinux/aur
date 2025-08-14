@@ -1,5 +1,5 @@
 pkgname=i8kutils
-pkgver=1.57
+pkgver=1.58
 pkgrel=1
 pkgdesc="Fan control for Dell laptops"
 arch=('any')
@@ -12,7 +12,7 @@ backup=("etc/$pkgname/i8kmon.conf"
         "etc/modprobe.d/dell-smm-hwmon.conf")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Wer-Wolf/i8kutils/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('bc731f81b1c918717ac1601ae9fa21d58a86415fb27c6780e54db02e7d20c4c1')
+sha256sums=('9ef28ca21a8f9ba41b74893143d25540cd3bba949a6b214563eda5740bab5be3')
 
 prepare() {
   cd $pkgname-$pkgver
