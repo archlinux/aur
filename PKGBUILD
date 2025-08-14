@@ -1,7 +1,7 @@
 # Maintainer: Melvin Redondo-Tanis <melvin@redondotanis.com>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.19.0.20250707_16111289554
+pkgver=1.22.0.20250813_16938856004
 pkgrel=1
 _main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
@@ -13,31 +13,32 @@ makedepends=('chrpath')
 optdepends=('level-zero-headers' 'level-zero-loader')
 provides=('intel-driver-compiler-npu' 'intel-fw-npu' 'intel-level-zero-npu')
 source=(
-  "intel-driver-compiler-npu_${pkgver//_/-}.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-driver-compiler-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
-  "intel-fw-npu_${pkgver//_/-}.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-fw-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
-  "intel-level-zero-npu_${pkgver//_/-}.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-level-zero-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
+  "linux-npu-driver-v${pkgver//_/-}-ubuntu2404.tar.gz::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/linux-npu-driver-v${pkgver//_/-}-ubuntu2404.tar.gz"
   "LICENSE.md::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
 )
-noextract=("${source[@]%%::*}")
 sha256sums=(
-  '6fae337b15d1ae3eaf9b0fe2edce09b9871f59d6cb97f5bfe853c138c6888056'
-  '05dadf9200b007b590a71b2a5b1b882fa113fff18e89db91988178cdfcec4c57'
-  'cb5ec557850fe8580e241beb8acdfa6b42042b4f6af1f865f52be4defa51b2d7'
+  '56f6662af6182a130d70ef292ca25b6d71629beabc8c73f8f822a0624e766f92'
   '451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5'
 )
 
 prepare() {
   cd "$srcdir"
+  bsdtar -xf "linux-npu-driver-v${pkgver//_/-}-ubuntu2404.tar.gz"
+
   mkdir -p intel-driver-compiler-npu intel-fw-npu intel-level-zero-npu
-  bsdtar -xf intel-driver-compiler-npu_${pkgver//_/-}.deb -C intel-driver-compiler-npu
-  bsdtar -xf intel-fw-npu_${pkgver//_/-}.deb -C intel-fw-npu
+
+  local _base="${pkgver//_/-}"
+  local _deb_suffix="ubuntu24.04_amd64"
+
+  bsdtar -xf "intel-driver-compiler-npu_${_base}_${_deb_suffix}.deb" -C intel-driver-compiler-npu
+  bsdtar -xf "intel-fw-npu_${_base}_${_deb_suffix}.deb" -C intel-fw-npu
   chmod 755 -R intel-fw-npu
-  bsdtar -xf intel-level-zero-npu_${pkgver//_/-}.deb -C intel-level-zero-npu
+  bsdtar -xf "intel-level-zero-npu_${_base}_${_deb_suffix}.deb" -C intel-level-zero-npu
 }
 
 package() {
   cd "$srcdir"
-  
+
   bsdtar -xf intel-fw-npu/data.tar.gz -C "${pkgdir}/"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
   rm -rf "${pkgdir}/lib"
