@@ -1,7 +1,7 @@
 pkgbase = qvtf-git
 	pkgdesc = QImageIO plugin to load Valve Texture Files in QT 5 Programs (View VTF in QT 5 Programs)
 	pkgver = r21.d3eb6e4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/panzi/qvtf
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = qvtf-git
 	makedepends = git
 	depends = libvtflib-git
 	depends = qt6-base
+	provides = qvtf
+	conflicts = qvtf
 	source = git+https://github.com/panzi/qvtf.git
 	source = headers.patch
 	source = cmake.patch
