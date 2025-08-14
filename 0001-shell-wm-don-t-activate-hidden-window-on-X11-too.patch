@@ -1,0 +1,64 @@
+From 6ad37ebf15c7d75bf6e3b66a40f40461d666d170 Mon Sep 17 00:00:00 2001
+From: Aleksandr Mezin <mezin.alexander@gmail.com>
+Date: Thu, 3 Jul 2025 21:37:06 +0300
+Subject: [PATCH] shell/wm: don't activate hidden window on X11 too
+
+Wait until the window is mapped on both X11 and Wayland
+
+Seems to be required because of https://gitlab.gnome.org/GNOME/mutter/-/commit/10e094bab9a66375d5ef96352167867901d5a168
+---
+ ddterm/shell/wm.js | 24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
+
+diff --git a/ddterm/shell/wm.js b/ddterm/shell/wm.js
+index 0c32586f..6d6da9e8 100644
+--- a/ddterm/shell/wm.js
++++ b/ddterm/shell/wm.js
+@@ -153,22 +153,21 @@ export const WindowManager = GObject.registerClass({
+         }
+ 
+         if (!this._actor.visible) {
+-            if (this._client_type === Meta.WindowClientType.WAYLAND) {
+-                this._map_handler = global.window_manager.connect('map', (wm, actor) => {
+-                    if (actor !== this._actor)
+-                        return;
++            this._map_handler = global.window_manager.connect('map', (wm, actor) => {
++                if (actor !== this._actor)
++                    return;
+ 
+-                    global.window_manager.disconnect(this._map_handler);
+-                    this._map_handler = null;
++                global.window_manager.disconnect(this._map_handler);
++                this._map_handler = null;
+ 
++                if (this._client_type === Meta.WindowClientType.WAYLAND)
+                     this._update_window_geometry();
+-                    this._set_window_above();
+-                    this._set_window_stick();
+-                });
+-            } else {
++
++                Main.activateWindow(this.window);
++
+                 this._set_window_above();
+                 this._set_window_stick();
+-            }
++            });
+ 
+             if (this.show_animation.should_skip) {
+                 Main.wm.skipNextEffect(this._actor);
+@@ -194,10 +193,9 @@ export const WindowManager = GObject.registerClass({
+ 
+         this._setup_destroy_animation_override(this.hide_animation.should_override);
+ 
+-        if (this._client_type === Meta.WindowClientType.X11)
++        if (this._actor.visible) {
+             Main.activateWindow(this.window);
+ 
+-        if (this._actor.visible) {
+             this._set_window_above();
+             this._set_window_stick();
+         }
+-- 
+2.50.1
+
