@@ -23,10 +23,15 @@ pkgver() {
 }
 
 build() {
-  opts=(
+  local opts=(
+    "-Dconfigdir=/etc/xdg/qman"
     "-Ddocdir=share/doc/qman"
     "-Dman-pages=enabled"
     "-Ddocs=enabled"
+    "-Dconfig=enabled"
+    "-Dgzip=enabled"
+    "-Dbzip2=enabled"
+    "-Dlzma=enabled"
     "-Dtests=$(if check_option check y; then echo enabled; else echo disabled; fi)"
   )
   arch-meson build qman "${opts[@]}"
