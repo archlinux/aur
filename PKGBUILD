@@ -3,7 +3,7 @@
 
 pkgname=i7z
 pkgver=0.27.2.git1
-pkgrel=8
+pkgrel=9
 pkgdesc="A better i7 (and now i3, i5) reporting tool for Linux"
 arch=('x86_64')
 license=('GPL-2.0-only')
