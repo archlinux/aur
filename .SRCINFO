@@ -9,7 +9,7 @@ pkgbase = qobuz-player
 	depends = gstreamer
 	conflicts = qobuz-player-git
 	options = !lto
-	source = qobuz-player-0.3.2.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v0.3.2.tar.gz
+	source = qobuz-player-0.3.2-3.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v0.3.2.tar.gz
 	sha256sums = b1002dd2847107396135d85b124d657e29f12ac61d4da8fa95b00b61a3cbeda6
 
 pkgname = qobuz-player
