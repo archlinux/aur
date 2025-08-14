@@ -1,6 +1,6 @@
 pkgbase = libgendesktop
 	pkgdesc = Simple Electron GUI for Library Genesis with extra features.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ProgrammerGnome/libgendesktop
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = libgendesktop
 	makedepends = npm
 	depends = electron35
 	depends = nodejs
-	source = libgendesktop-1.0.0.tar.gz::https://github.com/ProgrammerGnome/libgendesktop/archive/refs/tags/v1.0.0.tar.gz
+	source = libgendesktop-1.0.1.tar.gz::https://github.com/ProgrammerGnome/libgendesktop/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = 779a9bcd8e35f970e502785a7f1158ee5444679c2c4a7844d99728065e021d66
 
 pkgname = libgendesktop

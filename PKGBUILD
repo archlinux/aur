@@ -1,6 +1,6 @@
 # Maintainer: Mark Kiraly <mark.kiraly.hu@gmail.com>
 pkgname=libgendesktop
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple Electron GUI for Library Genesis with extra features."
 arch=('any')
