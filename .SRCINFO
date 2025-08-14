@@ -9,7 +9,8 @@ pkgbase = python-msmart-ng
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	depends = python-requests
+	depends = python-httpx
+	depends = python-pycryptodome
 	source = python-msmart-ng-2025.7.0.tar.gz::https://github.com/mill1000/midea-msmart/archive/2025.7.0.tar.gz
 	sha256sums = c56275f9d8a81339de85bb6b16b58024379d694ad53fb35699ab1a8f5f1f166e
 
