@@ -3,7 +3,7 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=6.1.2.2458
+pkgver=6.2.1.3044
 _pkgver="${pkgver%.*}"
 pkgrel=1
 epoch=1
@@ -12,11 +12,11 @@ arch=('x86_64')
 url="https://www.creality.com"
 _url="https://github.com/CrealityOfficial/${_Name}"
 license=('AGPL-3.0-only')
-# 'alsa-lib' 'xz' 'opus' 'speexdsp'   'lerc' 'libmspack'
-depends=('cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2'
-         'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'libgl' 'libsrtp'
-         'libusrsctp' 'libx11' nspr 'nss' 'pango' 'sh' 'webkit2gtk-4.1' 'x264'
-         'zlib')
+depends=('at-spi2-core' 'bzip2' 'cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs'
+         'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer'
+         'gtk3' 'harfbuzz' 'libdeflate' 'libgl' 'libice' 'libsecret' 'libsm'
+         'libsoup3' 'libx11' 'libxext' 'nspr' 'nss' 'pango' 'sh'
+         'webkit2gtk-4.1' 'zlib' 'zstd')
 makedepends=('patchelf')
 optdepends=('python'
             'slicer-udev: 3D printer connection rules'
@@ -31,7 +31,7 @@ source_x86_64=("${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${_pkgver
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             '4477dda5e6d2b3e53018b180469716c199d953675dd787b3afe48ed6995557e4'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('14237239892fe49607cdb5efdde6b1576a7d4dceac78a630e729bc3b857e240b')
+sha256sums_x86_64=('f395cdae08da53bf930a81ad9641afb58c61bd5655280aa1ba8344fbdad49cb1')
 
 prepare() {
   cd "${srcdir}"
@@ -44,13 +44,6 @@ prepare() {
   sed -i "s/AppRun/${_Name}/g" "${_Name}.desktop"
 
   patchelf --remove-rpath "bin/${_Name}"
-
-  # cd "usr/lib"
-  # for lib in lib*.so*; do
-  #   if [ -e "/usr/lib/$lib" ]; then
-  #     rm -vf "$lib"
-  #   fi
-  # done
 }
 
 package() {
@@ -64,5 +57,5 @@ package() {
   install -vDm644 "${_Name}.png" "${pkgdir}/usr/share/pixmaps/${_Name}.png"
 
   install -vdm755 "${pkgdir}/opt/${_pkgname}"
-  cp -r --no-preserve=ownership -t "${pkgdir}/opt/${_pkgname}" "bin" "resources" "usr/lib"
+  cp -a --no-preserve=ownership -t "${pkgdir}/opt/${_pkgname}" "bin" "resources" "usr/lib"
 }
