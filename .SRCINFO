@@ -1,0 +1,23 @@
+pkgbase = butterfly-git
+	pkgdesc = Development build of Linwood Butterfly, a Flutter-based endless canvas note-taking app
+	pkgver = 2.4.0_beta.3_144_git2cba4ce410
+	pkgrel = 1
+	url = https://github.com/LinwoodDev/Butterfly
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = flutter
+	makedepends = nodejs
+	makedepends = svgo
+	makedepends = minify
+	depends = glibc
+	depends = gtk3
+	depends = at-spi2-core
+	depends = libsecret
+	provides = butterfly
+	conflicts = butterfly-bin
+	options = strip
+	source = git+https://github.com/LinwoodDev/Butterfly.git
+	sha256sums = SKIP
+
+pkgname = butterfly-git
