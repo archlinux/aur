@@ -14,7 +14,6 @@ pkgbase = mingw-w64-videodownloader
 	makedepends = mingw-w64-qt5-translations
 	makedepends = mingw-w64-qt5-svg-static
 	makedepends = breeze-icons
-	makedepends = numix-icon-theme-git
 	depends = mingw-w64-crt
 	depends = mingw-w64-qtutilities
 	options = !buildflags

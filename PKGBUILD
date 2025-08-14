@@ -21,7 +21,7 @@ options=(!buildflags staticlibs !strip !emptydirs)
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 _configurations=()
 [[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
-[[ $NO_STATIC_LIBS ]] || _configurations+=('static') makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-translations' 'mingw-w64-qt5-svg-static' 'breeze-icons' 'numix-icon-theme-git')
+[[ $NO_STATIC_LIBS ]] || _configurations+=('static') makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-translations' 'mingw-w64-qt5-svg-static' 'breeze-icons')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
@@ -39,7 +39,7 @@ build() {
         -DKF_PACKAGE_PREFIX=StaticKF5
         -DVIDEODOWNLOADER_CONFIGURATION_TARGET_SUFFIX:STRING=static
         -DBUILTIN_TRANSLATIONS:BOOL=ON
-        -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark;Numix
+        -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark
         -DIMAGE_FORMAT_SUPPORT:STRING=Gif;ICO;Jpeg
         -DSVG_SUPPORT:BOOL=ON
         -DSVG_ICON_SUPPORT:BOOL=ON
