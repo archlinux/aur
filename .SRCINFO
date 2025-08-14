@@ -1,13 +1,13 @@
 pkgbase = stutui
-	pkgdesc = A minimalist terminal‐based study timer and stopwatch with daily logging, built on ncurses.
-	pkgver = 1.0.0
-	pkgrel = 6
-	url = https://gitlab.com/sizinicin/stutui
+	pkgdesc = A minimalist terminal‐based study timer and stopwatch with daily logging, built in C using ncurses.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://sr.ht/~fijarom/stutui/
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	depends = ncurses
-	source = git+https://git@gitlab.com/sizinicin/stutui.git
+	source = git+https://git.sr.ht/~fijarom/stutui
 	sha256sums = SKIP
 
 pkgname = stutui

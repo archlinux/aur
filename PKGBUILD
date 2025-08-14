@@ -1,16 +1,16 @@
-# Maintainer: Arda Yılmaz <yilmaz dot ar at proton dot me>
+# Maintainer: Arda Yılmaz <fijarom at fijarom dot com>
 
 pkgname=stutui
-pkgver=1.0.0
-pkgrel=6
-pkgdesc="A minimalist terminal‐based study timer and stopwatch with daily logging, built on ncurses."
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="A minimalist terminal‐based study timer and stopwatch with daily logging, built in C using ncurses."
 arch=('x86_64')
-url="https://gitlab.com/sizinicin/stutui"
+url="https://sr.ht/~fijarom/stutui/"
 license=('GPL3')
 depends=('ncurses')
 makedepends=('gcc')
 
-source=("git+https://git@gitlab.com/sizinicin/stutui.git")
+source=("git+https://git.sr.ht/~fijarom/stutui")
 sha256sums=('SKIP')
 
 build() {
@@ -21,3 +21,4 @@ build() {
 package() {
   install -Dm755 "$srcdir/stutui/stutui" "$pkgdir/usr/bin/stutui"
 }
+
