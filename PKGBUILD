@@ -8,9 +8,9 @@
 
 pkgname=isolate
 pkgver=2.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Sandbox for securely executing untrusted programs"
-arch=('any')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/ioi/isolate"
 license=('GPL-2.0-or-later')
 depends=('bash' 'systemd-libs' 'libcap' 'glibc')

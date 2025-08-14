@@ -1,10 +1,13 @@
 pkgbase = isolate
 	pkgdesc = Sandbox for securely executing untrusted programs
 	pkgver = 2.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ioi/isolate
 	install = isolate.install
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = GPL-2.0-or-later
 	makedepends = gcc
 	makedepends = asciidoc
