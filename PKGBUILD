@@ -4,10 +4,10 @@
 _gitname=solarized_sddm_theme
 pkgname=solarized-sddm-theme
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A solarized SDDM theme"
 arch=('any')
-url="https://github.com/MalditoBarbudo/solarized_sddm_theme"
+url="https://github.com/hcartiaux/solarized_sddm_theme"
 license=('GPL-3.0')
 
 depends=('sddm>=0.21.0')

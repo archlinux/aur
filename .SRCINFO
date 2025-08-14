@@ -1,8 +1,8 @@
 pkgbase = solarized-sddm-theme
 	pkgdesc = A solarized SDDM theme
 	pkgver = 0.3.0
-	pkgrel = 1
-	url = https://github.com/MalditoBarbudo/solarized_sddm_theme
+	pkgrel = 2
+	url = https://github.com/hcartiaux/solarized_sddm_theme
 	install = solarized-sddm-theme.install
 	arch = any
 	license = GPL-3.0
