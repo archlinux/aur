@@ -3,7 +3,7 @@ _appname=bitshares_astro_ui
 pkgname="${_appname//_/-}-bin"
 _pkgname=BTSAstroUI
 _orginame='Bitshares Astro UI'
-pkgver=0.4.22
+pkgver=0.4.23
 _electronversion=36
 pkgrel=1
 pkgdesc="A Bitshares UI built using Astro, React and Electron!.(Prebuilt version.Use system-wide electron)"
@@ -27,9 +27,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/BTS-CM/astro-ui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db281b94d68734d64c2dcd78ba9322b084a2c2f8db8b125514297140acf7911e'
-            '8d393d1c4d553c67d8997b58477b772133680a72eae577ea886e8bea1b4c812e'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('9d537af4cbd23ca9355dfa0d3b8196714a5c5ccf57c65af1320cdfab1e2b89db'
+            '8436084a3b95dce1c186bc57a5ab4832a03df731cfb652befe8764a5018eea35'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_orginame}/${_pkgname} %U" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -39,6 +43,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\"\/opt\/${_orginame}\/${_pkgname} %U\"/${pkgname%-bin}/g
         s/Icon=${_pkgname} %U/Icon=${pkgname%-bin}/g
