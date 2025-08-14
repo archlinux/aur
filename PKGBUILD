@@ -2,7 +2,7 @@
 # shellcheck disable=SC2154
 # Author: Patrick Brisbin <pbrisbin@gmail.com>
 pkgname=aurget
-pkgver=4.7.7
+pkgver=4.7.8
 pkgrel=1
 pkgdesc="A simple, Pacman-like AUR helper"
 arch=('any')
@@ -16,4 +16,4 @@ package() {
 
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('512f5cc0bd3b4493b5a48856f4b83118')
+md5sums=('113f3ee9b9946bc46aa733e4236fc6c7')
