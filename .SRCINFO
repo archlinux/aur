@@ -1,0 +1,22 @@
+pkgbase = nvm-fish
+	pkgdesc = Fish shell integration for Node Version Manager (nvm)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ChHsich/nvm-fish
+	install = nvm-fish.install
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	depends = nvm
+	depends = fish
+	depends = git
+	source = nvm.fish
+	source = nvm_find_nvmrc.fish
+	source = load_nvm.fish
+	source = bass_helper.fish
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nvm-fish

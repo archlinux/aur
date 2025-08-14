@@ -1,0 +1,105 @@
+post_install() {
+    echo "==> nvm-fish has been installed successfully!"
+    echo ""
+    echo "==> IMPORTANT: Please restart your fish shell to enable nvm-fish:"
+    echo "    - Close and reopen your terminal, OR"
+    echo "    - Run: exec fish"
+    echo ""
+    echo "==> After restarting fish, run 'nvm init' to initialize nvm-fish"
+    echo ""
+    echo "==> The initialization will:"
+    echo "    - Detect and install bass (if needed)"
+    echo "    - Configure Fish shell integration"
+    echo "    - Enable automatic .nvmrc version switching"
+    echo ""
+    echo "==> Once initialized, all nvm commands work normally:"
+    echo "    nvm --version, nvm install node, nvm use 16, etc."
+    echo ""
+    echo "==> Dependencies:"
+    echo "    ✓ nvm (installed as package dependency)"
+    echo "    ✓ bass (auto-installed during nvm init)"
+    echo ""
+    echo "==> Documentation: https://github.com/your-username/nvm-fish"
+}
+
+post_upgrade() {
+    echo "==> nvm-fish has been upgraded!"
+    echo ""
+    echo "==> Please restart your fish shell to load the updated functions:"
+    echo "    - Close and reopen your terminal, OR"  
+    echo "    - Run: exec fish"
+}
+
+post_remove() {
+    echo "==> nvm-fish has been removed."
+    echo ""
+    echo "==> Performing automatic cleanup..."
+    
+    # Function to clean up for each user
+    cleanup_user_config() {
+        local user_home="$1"
+        local fish_config="$user_home/.config/fish/config.fish"
+        local setup_marker="$user_home/.config/nvm-fish-setup-done"
+        local bass_uninstaller="$user_home/.local/bin/uninstall-bass-nvm-fish.sh"
+        
+        # Only clean if files exist and contain nvm-fish configuration
+        if [[ -f "$fish_config" ]] && grep -q "load_nvm\|nvm-fish\|You must call it on initialization" "$fish_config" 2>/dev/null; then
+            echo "    Cleaning Fish config for user: $(basename "$user_home")"
+            # Remove all nvm-fish related lines, including comments
+            sed -i '/load_nvm/d;/nvm-fish integration/d;/You must call it on initialization/d' "$fish_config" 2>/dev/null || true
+            # Remove empty lines at the end of file that might be left behind
+            sed -i -e :a -e '/^\s*$/N; s/\n//; ta' "$fish_config" 2>/dev/null || true
+        fi
+        
+        # Remove setup marker
+        if [[ -f "$setup_marker" ]]; then
+            echo "    Removing setup marker for user: $(basename "$user_home")"
+            rm -f "$setup_marker" 2>/dev/null || true
+        fi
+        
+        # Check for bass installed by nvm-fish
+        if [[ -f "$bass_uninstaller" ]]; then
+            echo ""
+            echo "==> Bass was installed by nvm-fish for user: $(basename "$user_home")"
+            echo ""
+            echo "    To remove bass (if no longer needed):"
+            echo "    $bass_uninstaller"
+            echo ""
+            echo "    Or keep it if you use bass for other purposes."
+            echo ""
+        elif [[ -f "$user_home/.config/fish/functions/bass.fish" ]]; then
+            echo ""
+            echo "==> Bass found for user: $(basename "$user_home")"
+            echo "    (installed independently, not by nvm-fish - left unchanged)"
+            echo ""
+        fi
+    }
+    
+    # Clean up for current user (if running as user)
+    if [[ -n "$HOME" ]] && [[ "$HOME" != "/root" ]]; then
+        cleanup_user_config "$HOME"
+    fi
+    
+    # Try to clean up for users in /home (if running as root)
+    if [[ "$EUID" -eq 0 ]] || [[ "$UID" -eq 0 ]]; then
+        for user_home in /home/*; do
+            if [[ -d "$user_home" ]]; then
+                cleanup_user_config "$user_home"
+            fi
+        done
+    fi
+    
+    echo "==> Cleanup completed. The following were preserved:"
+    echo "    ✓ Official nvm installation and configuration"  
+    echo "    ✓ All Node.js versions installed via nvm"
+    echo "    ✓ Bass (see above for removal options if needed)"
+    echo ""
+    echo "==> IMPORTANT: Please restart your Fish shell to clear function cache:"
+    echo "    - Close and reopen your terminal, OR"
+    echo "    - Run: exec fish"
+    echo ""
+    echo "==> If you experience any Fish startup errors, run:"
+    echo "    sed -i '/load_nvm/d;/nvm-fish/d' ~/.config/fish/config.fish"
+    echo ""
+    echo "==> Thanks for using nvm-fish!"
+}
