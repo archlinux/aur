@@ -1,0 +1,17 @@
+pkgbase = gensurvey
+	pkgdesc = A tool to generate a survey website from JSON
+	pkgver = 0.1.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/zlicdt/gensurvey
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = rust
+	makedepends = git
+	provides = gensurvey
+	conflicts = gensurvey
+	source = gensurvey::git+https://github.com/zlicdt/gensurvey.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = gensurvey
