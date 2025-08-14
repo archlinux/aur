@@ -1,101 +1,37 @@
-Badwolf 1.3.0 release! - 2023-09-19
+Badwolf 1.4.0 - 2025-08-14
 
-User Highlights
-===============
+== Highlights ==
+- Ctrl-Escape can now be used to terminate the web process used by the current tab
+- Command line options -i disables images, and -S enables JavaScript
+- New Translation: Serbian
 
-Additions
----------
-- Support for translated manpages (German, French, Turkish, Vietnamese)
-- Add basic (no domain/URL matching yet) UserScripts support
-- Middle-clicks and ctrl+click opens links in a new tab
+== Full Changelog ==
 
-Fixes
------
-- WebProcess crashes do not clear the URL entry anymore
-- Do not set web-context when old_browser is present.
-  This fixes crashes with WebKitGTK 2.41+
+Haelwenn (lanodan) Monnier (23):
+      .builds: Remove source entry, added by sr.ht on the mirror
+      README: Change mirror links from gitlab.com to git.sr.ht
+      configure: Use $ED during config generation & handle missing ed(1)
+      configure: Simplify missing ed handling
+      badwolf: Handle WEBKIT_WEB_PROCESS_TERMINATED_BY_API
+      keybindings: Add Ctrl-Escape to terminate web-process
+      Revert "configure: Check for xgettext --package-name="
+      AUTHORS: Add Страхиња Радић
+      .mailmap: Add gitlab placeholder email of Ben K
+      .builds/netbsd.yml: Add gettext to packages
+      .builds/openbsd.yml: Remove usage of scan-build
+      .builds/netbsd.yml: Explicitely pick pkgin-installed xgettext
+      bookmarks*: Relicense under MPL-2.0
+      po/sr{,_man}.po: Fix copyright header for REUSE
+      Add options: -i (disable images) and -S (enable JavaScript)
+      Make `struct Window *window` a global variable
+      badwolf.c: Fix NULL dereference in WebViewCb_decide_policy
+      badwolf.c: Warn if setlocale() changed errno
+      Fix spelling errors
+      badwolf.c: reformat
+      Add man: scheme handling
+      Merge branch 'release-1.3' into develop
+      Release 1.4.0
 
-Commits
-=======
-Ben K (1):
-      Updated German translation and added German manpage
+Страхиња Радић (1):
+      Add Serbian translation
 
-Haelwenn (lanodan) Monnier (70):
-      configure: Parse arguments for variables
-      configure: Allow WITH_* variables, describe dependencies
-      configure: Simplify argument parsing
-      test: Add shellcheck
-      Move linting to own `lint` target
-      fmt: Grab fmt_context_id for tests
-      configure: Add support for LDFLAGS
-      Add static analysis via flawfinder(1)
-      Makefile: Move cleaning config.mk to distclean target
-      bookmark_test: Add basic test
-      uri: Remove access() check
-      configure: Set FLAWFINDER in config.mk
-      .builds: Add CI (NetBSD, OpenBSD)
-      badwolf.1: Change forge to sr.ht
-      badwolf.fr.1: Introduce translated manpage
-      Use po4a for manpage translation
-      fmt_test: Fix uint64_t literal and printing
-      Make repository reuse compliant
-      .builds: Add po4a in the packages
-      Unbreak gnome.org documentation links
-      po: Remove location information, disable wrapping of long lines
-      Replace casts to (void) to UNUSED macro
-      decisions: 2021-09-07 : Move to a ./configure script
-      .clang-format: AllowShortCaseLabelsOnASingleLine: false
-      configure: Fix lack of newline for disabled commands
-      badwolf: Fix compilation issue with clang
-      Update email of Oğuz Ersen
-      badwolf.1: Document GTK ctrl-;
-      Manpages: Add note on lack of XBEL sorting
-      Add UserScripts support
-      userscripts: Handle g_file_get_contents errors
-      manpage: Note the lack of GM-style userscript filtering
-      Don't change URI on WebProcess termination
-      Don't change Title on WebProcess termination
-      Improve handling of intentionally empty title
-      userscripts: Improve error messages
-      badwolf: webkit_web_view_get_title returns a const
-      badwolf: Remove deprecated webkit_web_context_set_process_model
-      Move from make(1) to ninja/samurai
-      README: Remove mention of OpenPGP
-      configure: Fix ED and FLAWFINDER variables
-      configure: Use po4a-updatepo when po file already exists
-      configure: Add icons, trans_man, bundled, fullclean targets
-      badwolf.tr.1: Bundle
-      .gitignore: ./*_test and ./install.sh
-      userscripts: Formatting fix
-      .build: Ditch po4a
-      .builds: Make sure git works
-      .builds/openbsd: webkitgtk4 → webkitgtk41
-      configure: Replace ${var//./.} with sed
-      .builds: Separate split ninja clean all in two cmds
-      po/tr_man.po: Fix syntax error due to ASCII apostrophe
-      configure: Fix newins() argument extraction
-      config.h: Update documentation URL
-      config.h: Remove deprecated enable-accelerated-2d-canvas
-      configure: Add vi in TRANS_MAN
-      po/vi.po: Add missing newline
-      decisions: Switch from Makefile to *.ninja
-      po/de*: Add missing copyright headers
-      .builds/netbsd.yml: Add xz package for now
-      .builds/netbsd.yml: ninja is called ninja-build on NetBSD
-      configure: Check and allow changing msgmerge and xgettext
-      configure: Check for xgettext --package-name=
-      Do not set web-context when old_browser is present
-      configure: Move -D_FORTIFY_SOURCE=2 to default and drop non-standard feature flags
-      Release 1.3.0
-      Merge branch 'release-1.3' into missy
-
-Ngô Ngọc Đức Huy (1):
-      Update Vietnamese translation and manpage
-
-Oğuz Ersen (2):
-      po: update Turkish translation
-      doc: fix typos
-
-Stacy Harper (2):
-      badwolf.c: add ctrl+click to open link in new tab
-      badwolf.c: add mouse middle click to open link in new tab

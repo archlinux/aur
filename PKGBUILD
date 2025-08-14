@@ -1,21 +1,21 @@
-# Maintainer: Léo <waste at mrtino dot eu>
+# Maintainer: Léo <salut_c_leo at proton dot me>
 
 pkgname=badwolf
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A minimalist and privacy-oriented WebKitGTK+ browser."
 url="https://hacktivis.me/projects/badwolf"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('BSD')
 makedepends=('ninja' 'ed')
-depends=('webkit2gtk' 'libxml2')
-source=("https://hacktivis.me/releases/$pkgname-$pkgver.tar.gz")
-sha512sums=('f83884f9a1c4d12d641f68697d7fab7885803975ead6cb78e88b0b8d2f7b6f9da116f72e39f02c47e8dca89e4ced9b932524338a6211c7d4509c12206c10cdeb')
+depends=('webkit2gtk-4.1' 'libxml2')
+source=("https://distfiles.hacktivis.me/releases/badwolf/$pkgname-$pkgver.tar.gz")
+sha512sums=('5528572fab02b36727b90dce5ec758862c684777bef291c70b99bae0941debd20f717a7d50942152e3f7017c900a5c8fec8e825c86a18f499e7f35bb37c02d0c')
 changelog=changelog
 
 build() {
   cd "$pkgname-$pkgver"
-  PREFIX=/usr ./configure
+  PREFIX=/usr WITH_WEBKITGTK=4.1 WITH_URI_PARSER=guri ./configure
   ninja
 }
 
