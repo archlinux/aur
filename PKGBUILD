@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver-git
-pkgver=1.19.0.r0.g0deed95
+pkgver=1.22.0.r0.g9e3d56d
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) driver (git version)'
 arch=('x86_64')
@@ -27,7 +27,7 @@ install=intel-npu-driver.install
 source=('git+https://github.com/intel/linux-npu-driver.git'
         'git+https://github.com/intel/level-zero-vpu-extensions.git'
         'git+https://github.com/openvinotoolkit/vpux_plugin_elf.git'
-        'git+https://android.googlesource.com/platform/external/perfetto.git'
+        'git+https://github.com/google/perfetto.git'
         '10-intel-npu.rules'
         '010-intel-npu-driver-rename-installed-binaries.patch'
         '020-intel-npu-driver-disable-gtest-and-yaml.patch'
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe'
-            'cb63bccfcd662dafb5c4e1013ede4ea741bd33dadb87cf06a05be29bc1c3e892'
+            'd4d808b4877732c1de98b687a6a0e19676c0191bcf8f81dc54c498d928b959dd'
             '861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8'
             'c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825'
             'a257456a61d5ec670c26b2c6d23f23f03b68ff6e64f74539c17b2c7e1b074f25')
@@ -74,6 +74,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_NPU_COMPILER_BUILD:BOOL='OFF' \
+        -DENABLE_SANITIZER:STRING='disabled' \
         -Wno-dev
     cmake --build build
 }
