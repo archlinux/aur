@@ -1,5 +1,6 @@
 # Maintainer: kekmacska <kekmacska2@proton.me>
-pkgname=butterfly-git
+pkgname=linwood-butterfly-git
+pkgbase=linwood-butterfly-git
 pkgver=2.4.0_beta.3_144_git2cba4ce410
 pkgrel=1
 pkgdesc="Development build of Linwood Butterfly, a Flutter-based endless canvas note-taking app"
