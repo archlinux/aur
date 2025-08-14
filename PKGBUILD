@@ -2,7 +2,7 @@
 
 pkgname='linvam'
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
 url='https://github.com/stele95/LinVAM'
@@ -47,7 +47,7 @@ package() {
   install LinVAM.desktop -Dm644 "$pkgdir/usr/share/applications/LinVAM.desktop"
   install linvam/assets/icons/linvam.svg -Dm644 "$pkgdir/usr/share/icons/hicolor/scalable/apps/linvam.svg"
   install LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  # install rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
-  # install rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
+  install rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
+  install rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
   install rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 }
