@@ -25,6 +25,6 @@ pkgbase = omarchy-chromium-bin
 	conflicts = chromium
 	conflicts = omarchy-chromium
 	source = https://github.com/omacom-io/omarchy-chromium/releases/download/v139.0.7258.66-6/omarchy-chromium-139.0.7258.66-6-x86_64.pkg.tar.zst
-	sha256sums = 2d2fd32ea92d3884beb760b16c33cba9c4d79544dea9d8c05e7c7a7ab5efa576
+	sha256sums = 90bbdfa84683f5d3506e91bf82a20d6a70ed6ccf5e6ac39067f77af50996e63c
 
 pkgname = omarchy-chromium-bin
