@@ -18,7 +18,7 @@ pkgbase = python-wikiteam3
 	depends = python-slugify
 	depends = 7zip
 	depends = zstd
-	source = https://files.pythonhosted.org/packages/bc/a3/3344a05977a9fe39131de24eea6b22eec786a68bc411d8581e5bb7b4def4/wikiteam3-4.4.4.tar.gz
+	source = https://pypi.io/packages/source/w/wikiteam3/wikiteam3-4.4.4.tar.gz
 	sha256sums = edcb999ebb0720141356ea3a7dcdcd8e4dcf17ffe99f8dfe459763f9f8921bb3
 
 pkgname = python-wikiteam3
