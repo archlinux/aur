@@ -12,7 +12,7 @@ makedepends=(
     'git'
     'python-setuptools'
     'python-versioneer'
-    'python-build' 'python-installer' 'python-wheel'
+    'python-build' 'python-installer'
     'rnc2rng'
 )
 license=('BSD-2-Clause-Views')
