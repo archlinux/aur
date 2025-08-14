@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=3
 pkgdesc="Patch for VSCodium to store data in ~/.local/share/codium"
 arch=(any)
-license=('GPLv3')
+license=('GPL-3.0-only')
 depends=(
 	codium
 )
