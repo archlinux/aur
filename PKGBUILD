@@ -11,7 +11,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve
-pkgver=20.0.1
+pkgver=20.1
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('604c49212b643baaf2ca181304b2e2a04401c3084dc90664fa87b6d2ad2ad3f1'
+sha256sums=('9d7eb2f9fca7e9ecb7371e206f05baf94466f8c93c3666cd255b05a432db459b'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -147,6 +147,7 @@ package() {
   install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
     "share/default_cm_config.bin"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
   # Install Desktop files and menu
   install -D -m 0644 -t "${pkgdir}/usr/share/applications" \
     "share/DaVinciResolve.desktop" \
