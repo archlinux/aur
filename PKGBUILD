@@ -1,13 +1,13 @@
 # Maintainer:Magillos <kerown at gmail com>
 
 pkgname=cable
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="A PyQt6 application to dynamically modify Pipewire and Wireplumber settings"
 arch=('any')
 url="https://github.com/magillos/Cable"
 license=('GPL-3.0')
-depends=('python' 'python-pyqt6' 'python-jack-client' 'jack_delay' 'python-requests' 'python-pyalsaaudio' 'python-packaging' 'aj-snapshot')
+depends=('python' 'python-pyqt6' 'python-jack-client' 'jack_delay' 'python-requests' 'python-pyalsaaudio' 'python-packaging' 'aj-snapshot' 'pipewire-jack')
 makedepends=('python-build' 'python-installer')
 
 if [ -n "${USE_LOCAL}" ]; then
@@ -15,7 +15,7 @@ if [ -n "${USE_LOCAL}" ]; then
   sha256sums=('SKIP')
 else
   source=("cable-$pkgver.tar.gz::https://github.com/magillos/Cable/archive/refs/tags/$pkgver.tar.gz")
-  sha256sums=('b85cd474ea8601e3375e603315e4ec39b362aff6b03c09a92a6eb7b46f533a11')
+  sha256sums=('dc2cf869ce0bf7b0fd558bc8541ef3992361ac7644edc4090a3dacb8844a7012')
 fi
 
 build() {
