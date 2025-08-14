@@ -1,0 +1,10 @@
+pkgbase = aur-test-pkg
+	pkgdesc = Empty test package
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = https://github.githubassets.com/favicons/favicon.png
+	sha256sums = 74cf90ac2fe6624ab1056cacea11cf7ed4f8bef54bbb0e869638013bba45bc08
+
+pkgname = aur-test-pkg
