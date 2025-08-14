@@ -4,7 +4,7 @@
 pkgname=throne
 _srcname=Throne
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/throneproj/${pkgname}"
@@ -12,8 +12,8 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-charts' 'protobuf')
 makedepends=('cmake' 'go' 'qt6-tools' 'vulkan-headers')
 optdepends=(
-	'sing-geoip-db: geoip database for NekoBox'
-	'sing-geosite-db: geosite database for NekoBox'
+	'sing-geoip-db: geoip database for Throne'
+	'sing-geosite-db: geosite database for Throne'
 )
 provides=('nekoray')
 replaces=('nekoray')
@@ -30,7 +30,7 @@ prepare() {
 	cd "${_srcname}-${pkgver}/core/server"
 	export GOBIN="${srcdir}/bin"
 	export PATH="${PATH}:${GOBIN}"
-	go install github.com/golang/protobuf/protoc-gen-go@latest
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go install github.com/chai2010/protorpc/protoc-gen-protorpc@latest
 
 	cd gen
