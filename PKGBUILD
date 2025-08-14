@@ -3,7 +3,7 @@
 
 pkgname=binaryninja-free
 _pkgname=binaryninja
-pkgver=5.0.7648
+pkgver=5.1.8005
 pkgrel=1
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform."
 arch=('x86_64')
@@ -12,11 +12,11 @@ license=('custom:Binary Ninja Free Edition License Agreement')
 depends=('python' 'glibc' 'qt6-base' 'libxml2-legacy')
 optdepends=('gtk-update-icon-cache: icon support')
 source=(
-	"${pkgname}-${pkgver}.zip::https://github.com/Vector35/binaryninja-api/releases/download/v${pkgver}-stable/binaryninja_free_linux.zip"
+	"${pkgname}-${pkgver}.zip::https://github.com/Vector35/binaryninja-api/releases/download/stable%2F${pkgver}/binaryninja_free_linux.zip"
 	"${pkgname}.png"
 	"${pkgname}.desktop"
 )
-sha256sums=('08146841a550dffc25440d9213710e80cf41894f96953da71a2dc29014eb4fe8'
+sha256sums=('bd74744d7710c04a18cf5aa218edd361a8d4b7e411f707d5d1eb3ac9366f60bb'
             '4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
             '075158d0131dd89565e021a6854a6ae0237442e0b4e03a61638a7f8a69ec9f85')
 
