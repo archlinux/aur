@@ -1,0 +1,16 @@
+pkgbase = muzplayer
+	pkgdesc = Tiny music player app with custom randomization streaming algorithm.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ProgrammerGnome/muzplayer
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-multimedia
+	source = https://github.com/ProgrammerGnome/muzplayer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = muzplayer
