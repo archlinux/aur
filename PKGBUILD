@@ -1,5 +1,4 @@
 # Maintainer: Helmut Januschka <helmut@januschka.com>
-# Maintainer: David Heinemeier Hansson <david@hey.com>
 
 pkgname=omarchy-chromium-bin
 pkgver=139.0.7258.66
