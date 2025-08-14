@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.3.r3436.dbf824a
-pkgrel=3
+pkgver=5.4
+pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -11,7 +11,7 @@ depends=(qt5-declarative qt5-base libxcrypt-compat gcc-libs glibc sqlite qt5-qui
 optdepends=('logrotate: For using logrotate to rotate log files')
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=dbf824a42620a7ac2f8c104fdf681229da9b9171
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=e5ef4e69e9ddab4328e742ae554be654ec4e7534
 		cellframe-node.logrotate
 		cellframe-node.service
 		cellframe-diagtool.service
@@ -32,12 +32,6 @@ prepare() {
 	sed -i 's|url = \.\./\.\./|url = https://gitlab.demlabs.net/|g' "$srcdir/$pkgname/.gitmodules"
 	sed -i 's|url = \.\./|url = https://gitlab.demlabs.net/cellframe/|g' "$srcdir/$pkgname/.gitmodules"
 	cd "$pkgname" && git submodule update --init --recursive --progress
-	VERSION_MAJOR=$(echo "$pkgver" | cut -d '.' -f1)
-	VERSION_MINOR=$(echo "$pkgver" | cut -d '.' -f2)
-	VERSION_PATCH=$(echo "$pkgver" | cut -d '.' -f3,4)
-	sed -i "s|^VERSION_MAJOR=.*|VERSION_MAJOR=$VERSION_MAJOR|" "$srcdir/$pkgname/version.mk"
-	sed -i "s|^VERSION_MINOR=.*|VERSION_MINOR=$VERSION_MINOR|" "$srcdir/$pkgname/version.mk"
-	sed -i "s|^VERSION_PATCH=.*|VERSION_PATCH=$VERSION_PATCH|" "$srcdir/$pkgname/version.mk"
 }
 
 build() {
@@ -92,7 +86,6 @@ build() {
 		cmake -B build \
 			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-			-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
 			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
