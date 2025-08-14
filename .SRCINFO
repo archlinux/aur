@@ -1,0 +1,22 @@
+pkgbase = libastal-niri-git
+	pkgdesc = Library and cli tool for Niri IPC sockets
+	pkgver = r874.ca95a0d
+	pkgrel = 1
+	url = https://github.com/sameoldlab/astal
+	arch = x86_64
+	groups = libastal
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = json-glib
+	provides = astal-niri
+	provides = libastal-niri
+	provides = libastal-niri.so=0-64
+	source = git+https://github.com/sameoldlab/astal.git#branch=feat/niri
+	sha256sums = SKIP
+
+pkgname = libastal-niri-git
