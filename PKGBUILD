@@ -4,9 +4,9 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2025.7
+pkgver=2025.8
 pkgrel=1
-_nodeversion=20
+_nodeversion=22
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -29,13 +29,13 @@ makedepends=(
 )
 optdepends=('libappindicator-gtk3: tray icon')
 install="$pkgname.install"
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
         "git+https://github.com/mullvad/wireguard-go.git"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('62b2a243d5fd6ca73dd20d25b59cd066322133a007298e6bb2ac222e6c81710d'
+sha256sums=('bee55e8bbd407104df1a873614004d75c52b61aea3c28ce00722633ea55a048f'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
@@ -97,6 +97,7 @@ build() {
   export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
+  local CARGO_ARGS=(--frozen --release)
 
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
@@ -124,17 +125,17 @@ build() {
     -p talpid-openvpn-plugin --lib
     -p mullvad-exclude --bin mullvad-exclude
   )
-  cargo build --frozen --release "${cargo_crates_to_build[@]}"
+  cargo build "${CARGO_ARGS[@]}" "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
-    cargo run --bin mullvad --frozen --release -- shell-completions "${sh}" \
+    cargo run --bin mullvad "${CARGO_ARGS[@]}" -- shell-completions "${sh}" \
       build/shell-completions/
   done
 
   echo "Updating relays.json..."
-  cargo run -p mullvad-api --bin relay_list --frozen --release > build/relays.json
+  cargo run -p mullvad-api --bin relay_list "${CARGO_ARGS[@]}" > build/relays.json
 
   # Move binaries to correct locations in dist-assets
   binaries=(
