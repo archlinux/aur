@@ -11,7 +11,7 @@
  target_link_libraries(${PROJECT_NAME} PRIVATE test_app_lib fw_vpu_api_headers)
 --- a/validation/umd-test/CMakeLists.txt
 +++ b/validation/umd-test/CMakeLists.txt
-@@ -47,7 +47,7 @@ add_executable(${PROJECT_NAME}
+@@ -48,7 +48,7 @@ add_executable(${PROJECT_NAME}
      test_metric_streamer.cpp
      test_priority.cpp
  )
