@@ -1,8 +1,9 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Exorcism
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: zarra <zarraxx@gmail.com>
 pkgname=py++
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Py++ - Boost.Python code generator"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 _pkgname=pyplusplus
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ompl/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('466b1de2c23bf8192c986a6fa5a9e798d4222d9b7a9d196a7a1fa97374205b53')
+sha256sums=('e9959d0e80508bf3e86871661bf23e43e538aae21ad0471b594dd2e994baaf21')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
