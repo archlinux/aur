@@ -5,10 +5,8 @@ post_install() {
     echo '#### Make sure your user is in the `input` group by running the following command: ####'
     echo '####                  sudo usermod -aG tty,input $USER                             ####'
     echo '####                                                                               ####'
+    echo '####           Also restart your PC after running the command above                ####'
+    echo '####                                                                               ####'
     echo '#######################################################################################'
     echo '#######################################################################################'
-}
-
-post_upgrade() {
-    post_install
 }
