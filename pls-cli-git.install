@@ -1,0 +1,26 @@
+post_install() {
+  echo "==> pls-cli-git has been installed."
+  echo "    To complete the setup, you must manually source the integration script."
+  echo
+  echo "    1. Add the following line to your shell's config file:"
+  echo "    --------------------------------------------------------"
+  echo "    # For Fish (~/.config/fish/config.fish):"
+  echo "    source /usr/share/pls/integrations/fish.fish"
+  echo
+  echo "    # For Bash (~/.bashrc):"
+  echo "    source /usr/share/pls/integrations/bash.sh"
+  echo
+  echo "    # For Zsh (~/.zshrc):"
+  echo "    source /usr/share/pls/integrations/zsh.sh"
+  echo "    --------------------------------------------------------"
+  echo
+  echo "    2. (Optional) Copy the default config to your home directory:"
+  echo "    mkdir -p ~/.config/pls"
+  echo "    cp /usr/share/doc/pls-cli-git/config.json.example ~/.config/pls/config.json"
+  echo
+  echo "==> Restart your shell for the changes to take effect."
+}
+
+post_upgrade() {
+  post_install
+}
