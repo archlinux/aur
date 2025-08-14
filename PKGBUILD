@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-multimedia')
 makedepends=('cmake' 'gcc' 'qt6-tools')
 source=("https://github.com/ProgrammerGnome/muzplayer/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')  # Replace with actual sha256 sum
+sha256sums=('730aeef9bf48953e7b43673510b3d42bc2919033e684811b681fcdaed073fc52')  # Replace with actual sha256 sum
 
 build() {
     cd "$srcdir/muzplayer-${pkgver}" || exit
