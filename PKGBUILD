@@ -1,3 +1,4 @@
+# Maintainer: Lex True <lextruel at pm dot me>
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Arda Aytekin <aytekin@protonmail.com>
 
@@ -32,37 +33,55 @@ depends=(
   qt5-quickcontrols2
   qt5-svg
   qt5-webengine
+  wireguard-tools
   zlib
 )
+install=$pkgname.install
 
 source=(
   "https://geo.keepsolidcdn.com/soft/vpn/Linux/vpn-unlimited_$pkgver-amd64_mint.deb"
   "vpn-unlimited-daemon.service"
   "vpn-unlimited.desktop"
+  "vpn-unlimited-bin.install"
 )
 sha256sums=(
   'd64566e24c20ad2d139c4d7e54e70bc3376f14b2170855a6b17638e489e8944f'
   'dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41'
   '039dd8ab8b49dfe20ce055b0069d018bc16706f5d9005503501a85b918635f7e'
+  '6a0678ca143102d631960224826a8b20185a6b27289d6662eb5ae7adb61c8858'
 )
 
 package() {
+  # Extract the Debian package data
   tar --extract --file data.tar.gz --directory "$pkgdir"
 
+  # Remove the /etc directory extracted from the deb, as we manage /etc paths
+  # more precisely
   rm --recursive "${pkgdir:?}/etc"
 
+  # Create the /etc/ipsec.d/cacerts/ directory safely
+  # The -p flag ensures parent directories are created if they don't exist
+  # and does not error if the directory already exists.
+  mkdir -p "$pkgdir/etc/ipsec.d/cacerts/"
+
+  # Move binaries from sbin to bin
   find "$pkgdir/usr/sbin" -type f -exec mv '{}' "$pkgdir/usr/bin/" \;
   rm -r "$pkgdir/usr/sbin"
 
+  # Install copyright file and remove original doc directory
   install -Dm644 "$pkgdir/usr/share/doc/vpn-unlimited/copyright" "$pkgdir/usr/share/licenses/$pkgname/copyright"
   rm --recursive "$pkgdir/usr/share/doc"
 
+  # Install desktop file
   rm "$pkgdir/usr/share/applications/vpn-unlimited.desktop"
   install -Dm644 "$srcdir/vpn-unlimited.desktop" "$pkgdir/usr/share/applications/vpn-unlimited.desktop"
 
+  # Ensure shared libraries have executable permissions
   find "$pkgdir/usr/lib" -type f -name "*.so*" -exec chmod +x {} +
 
+  # Set appropriate permissions for user files
   chmod --recursive go-w "$pkgdir/usr"
 
-  install -Dm644 "vpn-unlimited-daemon.service" "$pkgdir/usr/lib/systemd/system/vpn-unlimited-daemon.service"
+  # Install systemd service file
+  install -Dm644 "$srcdir/vpn-unlimited-daemon.service" "$pkgdir/usr/lib/systemd/system/vpn-unlimited-daemon.service"
 }

@@ -5,3 +5,4 @@
 !PKGBUILD
 !vpn-unlimited-daemon.service
 !vpn-unlimited.desktop
+!vpn-unlimited-bin.install

@@ -1,0 +1,15 @@
+post_install() {
+  echo ":: VPN Unlimited client application has been installed."
+  echo ":: To start the VPN Unlimited daemon, you need to enable and start its systemd service."
+  echo ":: You can do this by running: sudo systemctl enable --now vpn-unlimited-daemon.service"
+}
+
+post_upgrade() {
+  echo ":: VPN Unlimited client application has been upgraded."
+  echo ":: If the VPN Unlimited daemon was running, it might need to be restarted."
+  echo ":: You can restart it by running: sudo systemctl restart vpn-unlimited-daemon.service"
+}
+
+post_remove() {
+  echo ":: VPN Unlimited client application has been removed."
+}
