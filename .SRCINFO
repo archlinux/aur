@@ -1,6 +1,6 @@
 pkgbase = aur-test-pkg
 	pkgdesc = Empty test package
-	pkgver = 1.0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
 	license = MIT
