@@ -1,7 +1,7 @@
 pkgbase = i7z
 	pkgdesc = A better i7 (and now i3, i5) reporting tool for Linux
-	pkgver = 0.27.2.git1
-	pkgrel = 9
+	pkgver = 0.28
+	pkgrel = 1
 	url = https://github.com/afontenot/i7z
 	arch = x86_64
 	license = GPL-2.0-only
@@ -10,7 +10,7 @@ pkgbase = i7z
 	makedepends = clang
 	depends = ncurses
 	optdepends = qt5-base: for i7z-gui
-	source = git+https://github.com/afontenot/i7z.git#commit=dfbcd77
+	source = git+https://github.com/afontenot/i7z.git#tag=v0.28
 	source = i7z-qt5.patch
 	source = i7z-global_ts-multiple-defines.patch
 	sha512sums = b1e13e35df508fdc82f6a2b23aa0389463f9d3f08f6f7fc3d5a563e1ec0cd389271f227d5929ee4a10099b3c1363d4552443614b57970f3a5e64f002aaf029a1
