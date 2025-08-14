@@ -36,6 +36,8 @@ package() {
   install -Dm644 "shell-integrations/bash.sh" "${pkgdir}/usr/share/pls/integrations/bash.sh"
   install -Dm644 "shell-integrations/zsh.sh" "${pkgdir}/usr/share/pls/integrations/zsh.sh"
 
+  echo "${pkgver}-${pkgrel}" > "${pkgdir}/usr/share/doc/${pkgname}/VERSION"
+
   install -Dm644 "config/config.json.example" "${pkgdir}/usr/share/doc/${pkgname}/config.json.example"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
