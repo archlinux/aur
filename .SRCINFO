@@ -1,7 +1,7 @@
 pkgbase = qvtfpp
 	pkgdesc = A Qt6 QImageIO plugin to load VTF textures.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craftablescience/qvtfpp
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -17,7 +17,7 @@ pkgbase = qvtfpp
 	source = git+https://github.com/craftablescience/sourcepp.git
 	source = git+https://github.com/craftablescience/cmake-helpers.git
 	source = git+https://github.com/craftablescience/bufferstream.git
-	source = git+https://github.com/abdes/cryptopp-cmake.git
+	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake.git
 	source = git+https://github.com/Tessil/hat-trie.git
 	source = git+https://github.com/webmproject/libwebp.git
 	source = git+https://github.com/richgel999/miniz.git

@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=qvtfpp
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt6 QImageIO plugin to load VTF textures."
 arch=('x86_64')
 url="https://github.com/craftablescience/qvtfpp"
@@ -15,7 +15,7 @@ source=("git+$url.git#tag=v${pkgver}"
 	"git+${url::-6}cmake-helpers.git"
 	#sourcepp modules
 	"git+${url::-6}bufferstream.git"
-	"git+https://github.com/abdes/cryptopp-cmake.git"
+	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 	"git+https://github.com/Tessil/hat-trie.git"
 	"git+https://github.com/webmproject/libwebp.git"
 	"git+https://github.com/richgel999/miniz.git"
@@ -44,7 +44,7 @@ prepare() {
 	git submodule init
 	for submodule in {bufferstream,cryptopp,hat-trie,libwebp,miniz,minizip-ng,qoi};
 	do
-		git config submodule.${submodule}.url "$srcdir/${submodule}"
+		git config submodule.ext/${submodule}.url "$srcdir/${submodule}"
 	done
 	git -c protocol.file.allow=always submodule update
 }
