@@ -1,0 +1,4 @@
+[nginx-mod-acme]
+source = "git"
+git = "https://github.com/nginx/nginx-acme.git"
+prefix = "v"
