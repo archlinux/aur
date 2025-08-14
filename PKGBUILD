@@ -1,7 +1,7 @@
 # Maintainer: stabldev <thestabldev@gmail.com>
 
 pkgname=aur-test-pkg
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Empty test package"
 arch=("any")
