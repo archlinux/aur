@@ -5,7 +5,7 @@
 # basic info
 pkgname="vinyl-git"
 _pkgname="vinyl"
-pkgver=r78.054c68c
+pkgver=r81.127c40c
 pkgrel=1
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
@@ -73,6 +73,6 @@ build() (
 
 package() (
   install -dm755 "$pkgdir.git"
-  DESTDIR="$pkgdir" cmake --install $build_dir
+  DESTDIR="$pkgdir" cmake --install $build_dir --prefix /usr
   rm -rf "$pkgdir/usr/lib/cmake"
 )
