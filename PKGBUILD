@@ -8,7 +8,7 @@
 
 pkgname=isolate
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
 url="https://github.com/ioi/isolate"
@@ -19,7 +19,7 @@ provides=('isolate')
 conflicts=('isolate-git')
 install=$pkgname.install
 
-source=("https://github.com/ioi/isolate/archive/refs/tags/v$pkgver.tar.gz")
+source=("isolate-$pkgver.tar.gz::https://github.com/ioi/isolate/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('2dce2a147340be12a8b7429ae81a4a86d82f23966d4632a80f1461fdc18d74af02242b6caf0f5d4aed2324ee09314d554be87d0e87cc219da4395ea5da7d0c0c')
 
 build() {

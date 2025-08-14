@@ -1,18 +1,21 @@
 pkgbase = isolate
 	pkgdesc = Sandbox for securely executing untrusted programs
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ioi/isolate
 	install = isolate.install
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	makedepends = git
+	license = GPL-2.0-or-later
 	makedepends = gcc
 	makedepends = asciidoc
+	depends = bash
+	depends = systemd-libs
+	depends = libcap
+	depends = glibc
 	provides = isolate
 	conflicts = isolate-git
-	source = https://github.com/ioi/isolate/archive/refs/tags/v2.1.2.tar.gz
+	source = isolate-2.1.2.tar.gz::https://github.com/ioi/isolate/archive/refs/tags/v2.1.2.tar.gz
 	sha512sums = 2dce2a147340be12a8b7429ae81a4a86d82f23966d4632a80f1461fdc18d74af02242b6caf0f5d4aed2324ee09314d554be87d0e87cc219da4395ea5da7d0c0c
 
 pkgname = isolate
