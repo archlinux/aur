@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=myip-git
-pkgver=0.5.1.r1.ge74c157
-pkgrel=4
+pkgver=0.5.2.r0.gf3fb342
+pkgrel=1
 pkgdesc="Returns your public IP and the public IP to access the extranet."
 arch=($CARCH)
 url="https://github.com/crystal-china/myip"
@@ -17,12 +17,14 @@ depends=(
     libevent
     openssl
     pcre2
-    zlib)
+    zlib
+)
 makedepends=(
     cmake
     git
     crystal
-    shards)
+    shards
+)
 optdepends=("goldendict: Feature-rich dictionary lookup program supporting multiple dictionary formats")
 backup=()
 options=()
