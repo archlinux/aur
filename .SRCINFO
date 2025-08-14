@@ -11,7 +11,6 @@ pkgbase = qman-git
 	makedepends = meson
 	makedepends = python-cogapp
 	depends = ncurses
-	depends = libinih
 	depends = zlib
 	depends = bzip2
 	depends = xz
