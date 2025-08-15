@@ -28,8 +28,8 @@ source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pk
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-xserver-common 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libunwind libxext pixman nettle
          libtirpc libxdmcp glibc libx11 libxau)
-provides=($_pkgname 'xorg-server-xnest')
-conflicts=($_pkgname 'xorg-server-xnest')
+provides=($_pkgname 'xorg-server-xnest' 'xlibre-server-xnest')
+conflicts=($_pkgname 'xorg-server-xnest' 'xlibre-server-xnest')
 
 sha256sums=('618298ed0582fcdcda6fa5a91f1790e6b06feaf2d505ea3c8f948feae473c157')
 
