@@ -1,27 +1,29 @@
+# Maintainer: Robert L Box <robertbox514@gmail.com>
 pkgname=pe-bear-bin
-pkgver=0.7.0.4
-_qtver=6.4.2
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="Freeware reversing tool for PE files"
-install=pe-bear-bin.install
-url="https://hshrzd.wordpress.com/pe-bear/"
+pkgdesc="Portable Executable reversing tool (binary release)"
 arch=('x86_64')
+url="https://github.com/hasherezade/pe-bear"
 license=('custom')
 depends=('qt6-base')
-conflicts=('pe-bear' 'pe-bear-git')
-source=("https://github.com/hasherezade/pe-bear/releases/download/v${pkgver}/PE-bear_${pkgver}_qt${_qtver}_x64_linux.tar.xz")
-sha256sums=('98605f4b570773172445433b038d1bbc143658f2aa0e80ba9b7b82d3a6bef188')
+source=("https://github.com/hasherezade/pe-bear/releases/download/v${pkgver}/PE-bear_${pkgver}_qt6.4.2_x64_linux.tar.xz")
+sha256sums=('d82501ece9b14d6fa98b9c9f50a71ac7cfbd6dc522bbab3815ba5340afd8a3b6')
 
 package() {
-  cd "PE-bear_${pkgver}_qt${_qtver}_x64_linux" || return
+  cd "$srcdir"
 
-  # Install binary
-  install -Dm755 "bin/PE-bear" "${pkgdir}/usr/bin/PE-bear"
+  # If the tarball has a top-level directory, enter it
+  shopt -s nullglob
+  dirs=("$srcdir"/PE-bear_*)
+  if [[ -d "${dirs[0]}" ]]; then
+    cd "${dirs[0]}"
+  fi
 
-  # Install shared files
-  cp -r "share/" "${pkgdir}/usr/share/" || return
-
-  # Install license and signature files
-  install -Dm644 "SIG.txt" "${pkgdir}/usr/share/pe-bear/SIG.txt"
-  install -Dm644 "capstone_LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/capstone_LICENSE.TXT"
+  install -Dm755 bin/PE-bear "$pkgdir/usr/bin/PE-bear"
+  install -Dm644 share/pixmaps/net.hasherezade.pe-bear.png \
+    "$pkgdir/usr/share/pixmaps/net.hasherezade.pe-bear.png"
+  install -Dm644 share/applications/net.hasherezade.pe-bear.desktop \
+    "$pkgdir/usr/share/applications/net.hasherezade.pe-bear.desktop"
 }
+
