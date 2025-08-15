@@ -1,7 +1,7 @@
 pkgbase = netdiscover
 	pkgdesc = A network address discovering tool
-	pkgver = 0.20
-	pkgrel = 2
+	pkgver = 0.21
+	pkgrel = 0
 	url = https://github.com/netdiscover-scanner/netdiscover/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = netdiscover
 	depends = libnet
 	depends = libpcap
 	provides = netdiscover
-	source = https://github.com/netdiscover-scanner/netdiscover/releases/download/0.20/netdiscover-0.20.tar.gz
-	source = oui-0.20.txt::http://standards-oui.ieee.org/oui/oui.txt
-	sha256sums = d7c40559487905059c99f1b2ae7b1a148c9f7cd45f58ac5d834faa35d9bf5f6e
+	source = https://github.com/netdiscover-scanner/netdiscover/releases/download/0.21/netdiscover-0.21.tar.gz
+	source = oui-0.21.txt::http://standards-oui.ieee.org/oui/oui.txt
+	sha256sums = c268605f609c2037cc6f405d7275ba26f1e6a6e180084afcb4b659cfded44435
 	sha256sums = SKIP
 
 pkgname = netdiscover
