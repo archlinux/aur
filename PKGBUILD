@@ -1,4 +1,4 @@
-# Contributor: SummerBreeze630 <xzwf2003 AT 163 DOT com>
+# Maintainer: SummerBreeze630 <xzwf2003 AT 163 DOT com>
 
 _pkgbase=str
 pkgname=wiz${_pkgbase}
