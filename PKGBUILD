@@ -183,14 +183,14 @@
 
 
 # Kernel version
-_kernel_major=6.15
-_kernel_minor=8
+_kernel_major=6.16
+_kernel_minor=1
 # Tachyon patches version
 _tachyon=6.15.7-1592
 # kernel_compiler_patch version
-_kernelcompilerpatch="20250612"
+_kernelcompilerpatch="b1d0a20756adb1b6222843c33bcc80137e2ec040"
 # kernel_compiler_patch name
-_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.15-rc1+.patch"
+_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.16.patch"
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -209,8 +209,9 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-    "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git#tag=${_tachyon}"
-    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
+    "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
+#   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
+    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/niuyuanzhao/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
 
@@ -218,11 +219,11 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array 
 sha256sums=(
-    "7586962547803be7ecc4056efc927fb25214548722bd28171172f3599abb9764"
+    "1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83"
     "SKIP"
-    "effa3deecc0266054731349ecabb68455f125c7be2f88fd21a841080fd30a4c8"
+    "ea642697bed40c9ab1b89d68e094fd03bc5812f9717d23feef62462e1793e661"
     "SKIP"
-    "91adc6bf4b263480399d24a7640e11b0302d4b411910ee99eee2788b34bd297a"
+    "2d0ed88be7da4a007cf5be7052fdc84b8a0ee704572f8b141fb69abd7e5ebed6"
 )
 
 # -> Kernel PGP signer fingerprints
@@ -327,7 +328,7 @@ _apply_patches() {
             [ "${__patch}" == "0133-novector.patch" ] && continue
         fi
 
-        patch -sNp1 -i "${srcdir}/tachyon/${__patch}" || true
+        patch -sNp1 -i "${srcdir}/tachyon/patches/${__patch}" || true
     done
 
     # Patch with kernel_compiler_patch patches.
