@@ -31,27 +31,33 @@ build() {
 
 package() {
   cd "$srcdir/hyprupld"
-  
-  # Create the necessary directories in the package
+
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/local/share/hyprupld/sounds"
-  
-  # Install the compiled AppImages to the package directory
-  for binary in Compiled/*; do
-    if [ -f "$binary" ]; then
-      local base_name=$(basename "$binary")
-      # Skip hidden files
-      [[ "$base_name" == .* ]] && continue
-      
-      # Normalize binary name
-      dest_name="${base_name/-x86_64/}"
-      dest_name="${dest_name/.AppImage/}"
-      
-      # Install binary with appropriate permissions
-      install -Dm755 "$binary" "$pkgdir/usr/bin/$dest_name"
+
+  for appimage in Compiled/*.AppImage; do
+    [ -f "$appimage" ] || continue
+    base_name=$(basename "$appimage" .AppImage)
+
+    # Extract the AppImage
+    mkdir -p "$srcdir/appimage-extract-$base_name"
+    chmod +x "$appimage"
+    "$appimage" --appimage-extract > /dev/null
+
+    # Find the main binary (assume AppRun or hyprupld)
+    if [ -f "squashfs-root/AppRun" ]; then
+      install -Dm755 "squashfs-root/AppRun" "$pkgdir/usr/bin/$base_name"
+    elif [ -f "squashfs-root/$base_name" ]; then
+      install -Dm755 "squashfs-root/$base_name" "$pkgdir/usr/bin/$base_name"
+    else
+      echo "Could not find main binary in AppImage $appimage"
+      exit 1
     fi
+
+    # Clean up
+    rm -rf squashfs-root
   done
-  
+
   # Install sound files
   if [ -d "sounds" ]; then
     install -Dm644 sounds/*.mp3 "$pkgdir/usr/local/share/hyprupld/sounds/"
