@@ -11,7 +11,7 @@ pkgname=(
   nwjs-bin
   nwjs-sdk-bin
 )
-pkgver=0.102.0
+pkgver=0.102.1
 pkgrel=1
 pkgdesc="Runtime based on Chromium and node.js"
 arch=('x86_64')
@@ -24,10 +24,14 @@ optdepends=(
 options=(!debug)
 source=(
   nwjs-sdk-$pkgver.tar.gz::https://dl.nwjs.io/v$pkgver/nwjs-sdk-v$pkgver-linux-x64.tar.gz
+  nwjs.png::https://raw.githubusercontent.com/nwjs/website/refs/heads/master/public/img/logo.png
+  nwjs.desktop
   nwjs-ffmpeg-$pkgver.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/$pkgver/$pkgver-linux-x64.zip
 )
-sha256sums=('a0dab6620a9fd6053b01b32f00a5635042bfccf4764bf4ec86d3c39e85a1d991'
-            'a3d5eca356d145f18985fd1c7d64b5b12e8536e825d5b6c8dbb2739f5617a8dc')
+sha256sums=('8d6c39917606c6eee87a7f1f2b6439f103e1881442e87da26c65e4794156da92'
+            '0f1643f16302b2e7de66fdf91ae370a65c3811052e0c43a2908d49f60ee5a5e4'
+            '161b2c1a8c429ef0773bd4a7e9a5befd52bf30575c17c7180e9701e77b48950b'
+            '9fe1ef70e837422794bbfd84cdcfab93cd1771e8a89c78c813ec401ff324a007')
 
 prepare() {
   # Simplify folder name (only if exists, in case of using '--noextract').
@@ -52,6 +56,9 @@ package_nwjs-bin() {
 
   mkdir -p "$pkgdir"/usr/bin/ && ln -sr "$pkgdir"/opt/nwjs/nw -t "$pkgdir"/usr/bin/
 
+  install -Dm644 "$srcdir"/nwjs.desktop -t "$pkgdir"/usr/share/applications/
+  install -Dm644 "$srcdir"/nwjs.png     -t "$pkgdir"/usr/share/icons/hicolor/128x128/apps/
+
   # Enable proprietary codecs, by replacing bundled FFmpeg with third-party one.
   rm "$pkgdir"/opt/nwjs/lib/libffmpeg.so
   install -Dm644 "$srcdir"/libffmpeg.so -t "$pkgdir"/opt/nwjs/lib/
@@ -62,5 +69,7 @@ package_nwjs-sdk-bin() {
   provides=(nwjs-sdk)
 
   install -Dm755 "$srcdir"/nwjs-sdk/{chromedriver,minidump_stackwalk,nwjc} -t "$pkgdir"/opt/nwjs/
+
+  mkdir -p "$pkgdir"/usr/bin/ && ln -sr "$pkgdir"/opt/nwjs/nwjc -t "$pkgdir"/usr/bin/
 }
 

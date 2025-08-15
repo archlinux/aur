@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=NW.js
+Comment=Framework for creating desktop applications using web technologies
+Path=/opt/nwjs
+Exec=nw %u
+Icon=nwjs
+StartupWMClass=nwjs
+Terminal=false
+MimeType=inode/directory;
+Categories=Development;
