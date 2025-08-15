@@ -1,0 +1,17 @@
+pkgbase = gitwhodid
+	pkgdesc = Who did that? A CLI to reveal Git history by file.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/stabldev/gitwhodid
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python-click
+	depends = python-rich
+	source = gitwhodid-0.1.1.tar.gz::https://github.com/stabldev/gitwhodid/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 52617d23f4e8f4eff562fe5513cdf00a1ecb1f043beb11ed74d2755f8f59e1af
+
+pkgname = gitwhodid
