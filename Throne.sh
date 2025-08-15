@@ -17,9 +17,9 @@ if [ ! -d $datadir ]; then
   fi
 fi
 
-# Create/fix links to existing geo assets
-if [ ! -e "$datadir/geoip.db" ] || [ ! -e "$datadir/geosite.db" ]; then
-  ln -sf $appdir/geo{ip,site}.db $datadir/
+# Remove broken (since 1.0.2-beta.1) links to geo assets
+if [ -L $datadir/geoip.db ] || [ -L $datadir/geosite.db ]; then
+  rm -f $datadir/geo{ip,site}.db
 fi
 
 # Run application

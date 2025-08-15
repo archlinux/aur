@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=throne-bin
-pkgver=1.0.1
+pkgver=1.0.2_beta.1
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64')
@@ -14,13 +14,12 @@ source=(Throne.{desktop,sh})
 source_x86_64=(throne-$_appver-x86_64.zip::$url/releases/download/$_appver/Throne-$_appver-linux-amd64.zip)
 source_aarch64=(throne-$_appver-aarch64.zip::$url/releases/download/$_appver/Throne-$_appver-linux-arm64.zip)
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
-            '4d034e434659872f87950a9e91265eda5d7361bd805a660190bcd1aa05a65d4f')
-sha256sums_x86_64=('c3a91430c966dcde38971829c0e8dd6fd22982a392caba708861c3be5dc6aef1')
-sha256sums_aarch64=('439b4dd2eb74b1f5dc260a1c62faf3a3d729a45261d269498750362d33a88586')
+            'e7e6eb9a7b9485a5e8ce4a2a0be5538efdb30365c1807f35c2eae17331d405d7')
+sha256sums_x86_64=('224aad8e79d5a4a0b1c47c0d93668f623959e44f63001cc9c9b6c8f7ae70a3e5')
+sha256sums_aarch64=('203107664d8f439f3b31f817c42f56f463d9cfcff3f95c866a17e8ddbece7842')
 
 package() {
   install -Dm755 "$srcdir"/Throne/{Core,Throne}   -t "$pkgdir"/opt/Throne/
-  install -Dm644 "$srcdir"/Throne/geo{ip,site}.db -t "$pkgdir"/opt/Throne/
 
   for f in $(find "$srcdir"/Throne/usr -type f -printf "%P\n"); do
     install -Dm644 "$srcdir"/Throne/usr/$f -T "$pkgdir"/opt/Throne/usr/$f
