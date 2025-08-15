@@ -8,11 +8,9 @@ pkgbase = gray-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
-	depends = meson
-	depends = ninja
+	makedepends = vala
 	depends = glibc
 	depends = gcc
-	depends = vala
 	source = git+https://github.com/Fabric-Development/gray
 	sha256sums = SKIP
 
