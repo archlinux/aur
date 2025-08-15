@@ -1,12 +1,13 @@
 pkgname=moonasst
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Moonasst Qt application"
 arch=('x86_64')
 url="https://gitee.com/nemozz-hz/moonasst"
 license=('MIT' 'GPL' 'LGPL')
 depends=('qt6-base' 'qt6-quicktimeline' 'qt6-webengine' 'qt6-svg' 'vulkan-headers')
 makedepends=()
+options=('strip' '!debug')
 source=("https://gitee.com/nemozz-hz/moonasst/repository/archive/v$pkgver.tar.gz")
 sha256sums=('28f31bb6de0b159db50c0052bc07f8c7630ee3deeb2c82ce16a20e76fa28f20c')
 
