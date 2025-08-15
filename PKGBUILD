@@ -1,6 +1,6 @@
 # Maintainer: Quintus Leung <quintusl@gmail.com>
 pkgname=cec2uinput
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="CEC to uinput bridge for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,6 +11,7 @@ makedepends=('cargo')
 backup=("etc/$pkgname/config.yml")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+options=('!lto')
 
 prepare() {
     cd "$pkgname-$pkgver"
