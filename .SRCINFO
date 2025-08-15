@@ -22,7 +22,6 @@ pkgbase = python-pywal16-git
 	optdepends = i3-wm: reload i3 colors
 	optdepends = kitty: reload kitty colors
 	optdepends = polybar: reload polybar colors
-	optdepends = python2: reload GTK2 themes
 	optdepends = sway: reload sway colors
 	optdepends = feh: set wallpaper for X (pywal's #1 choice)
 	optdepends = xwallpaper: set wallpaper for X (pywal's #2 choice)

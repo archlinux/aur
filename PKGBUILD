@@ -33,7 +33,6 @@ optdepends=(
   'i3-wm: reload i3 colors'
   'kitty: reload kitty colors'
   'polybar: reload polybar colors'
-  'python2: reload GTK2 themes'
   'sway: reload sway colors'
   "feh: set wallpaper for X (pywal's #1 choice)"
   "xwallpaper: set wallpaper for X (pywal's #2 choice)"
