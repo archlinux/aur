@@ -29,8 +29,8 @@ noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-xserver-common 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libgl libepoxy libunwind
          xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms pixman
          nettle libtirpc xcb-util libxdmcp libx11 libxau libxshmfence glibc)
-provides=($_pkgname 'xorg-server-xephyr')
-conflicts=($_pkgname 'xorg-server-xephyr')
+provides=($_pkgname 'xorg-server-xephyr' 'xlibre-server-xephyr')
+conflicts=($_pkgname 'xorg-server-xephyr' 'xlibre-server-xephyr')
 
 sha256sums=('87d56cc23d538dd6c26d8516cb63f96272c97c35ebad359e6cab7a01ae44316f')
 
