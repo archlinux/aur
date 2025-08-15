@@ -1,16 +1,16 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
-# Contributor: Wu Zhenyu <wuzhenyu@ustc.edu> 
+# Contributor: Wu Zhenyu <wuzhenyu@ustc.edu>
 
 pkgname=rl_custom_function-git
 _pkgname=${pkgname%-git}
-pkgver=r25.931201a
+pkgver=r30.398f757
 pkgrel=1
 pkgdesc="Enable to inject custom functions into any readline applications"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/lincheney/rl_custom_function"
 license=('GPL3')
 depends=('readline')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=("$_pkgname")
 install=$pkgname.install
 source=("$_pkgname::git+https://github.com/lincheney/$_pkgname.git")
@@ -26,8 +26,10 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --locked
-  touch main.c
-  gcc -m32 -shared main.c -o librl_custom_function.so
+  # https://github.com/lincheney/rl_custom_isearch/issues/4
+  if [[ $CARCH == x86_64 ]]; then
+    gcc -m32 -shared /dev/null -o fake_lib32_librl_custom_function.so
+  fi
 }
 
 check() {
@@ -40,5 +42,7 @@ package() {
   cd "$srcdir/$_pkgname"
   install -D -m755 target/release/librl_custom_function.so $pkgdir/usr/lib/librl_custom_function.so
   install -D -m644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
-  install -D -m644 librl_custom_function.so $pkgdir/usr/lib32/librl_custom_function.so
+  if [[ $CARCH == x86_64 ]]; then
+    install -D -m644 fake_lib32_librl_custom_function.so $pkgdir/usr/lib32/librl_custom_function.so
+  fi
 }
