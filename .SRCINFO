@@ -1,6 +1,6 @@
 pkgbase = quickmedia
 	pkgdesc = A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.
-	pkgver = r1456.48d0a1a
+	pkgver = r1460.6ac3c03
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = quickmedia
 	optdepends = noto-fonts-cjk: To display chinese, japanese and korean characters
 	optdepends = source-highlight: For syntax highlighting in matrix codeblocks
 	noextract = twemoji-2.tar.gz
-	source = quickmedia-r1456.48d0a1a.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1456.48d0a1a.tar.gz
+	source = quickmedia-r1460.6ac3c03.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1460.6ac3c03.tar.gz
 	source = twemoji-2.tar.gz::https://dec05eba.com/files/twemoji.tar.gz
-	sha512sums = 484045b2e3a9470603e84d466204734c35305457ebcca6ef04ea33cece0e3d362a4acea71c6da0f918b493d129c7cb1cb1befc0e952073fb6ba1e4b01f1330a3
+	sha512sums = 65d591edc9efae0248f202343260d7322fec78193b31e324d4a5459e37850c2e8f99986c8d95281b91a7e9e5c4a7593402067f57397fc4b185d746f36f7f3183
 	sha512sums = a3c7a268bd48bd79b6bfc771affd56d71ffd78ba4df8e2a9e1783162a78c1f053c408e02f4d49ca96eee6a0a19b8cfc85197ad40d497cd89934b8311dcfebe2b
 
 pkgname = quickmedia
