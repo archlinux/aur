@@ -1,0 +1,21 @@
+pkgbase = mtoc
+	pkgdesc = Music player and library browsing application
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/asa-degroff/mtoc
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	makedepends = base-devel
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = taglib
+	depends = gstreamer
+	source = mtoc-2.1.1.tar.gz::https://github.com/asa-degroff/mtoc/archive/refs/tags/mtoc-2.1.1-1.tar.gz
+	sha256sums = 00ddb6e4513304ccfdeacf52195dba4ca961e46b8a30e1ce926d8e13485b547d
+
+pkgname = mtoc
