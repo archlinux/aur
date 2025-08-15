@@ -1,0 +1,16 @@
+pkgbase = vygrant
+	pkgdesc = vygrant - OAuth2 authentication daemon
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/vybraan/vygrant
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = go
+	depends = git
+	provides = vygrant
+	source = git+https://github.com/vybraan/vygrant
+	md5sums = SKIP
+
+pkgname = vygrant
