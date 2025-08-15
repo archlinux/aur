@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.0.9
+pkgver=4.1.0
 _nvmdver="${pkgver}"
 _nodeversion=20
 pkgrel=1
@@ -32,11 +32,11 @@ makedepends=(
 source_aarch64=("nvmd-${_nvmdver}-aarch64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-arm64")
 source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-x64")
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('ce02b5735b518a5ff35fc4b225b6e7603e5e2972b96ec7c063be62782563570f')
-sha256sums_aarch64=('a81f8cbd08024195e226f92adc4113a32625042c6b87d536651d6ef62599c1af')
-sha256sums_x86_64=('f204caff56970e8941c0e542aab22a652dc0b062101e430e577962eea6b85d54')
+sha256sums=('bc0d9357548f86ea1dcc662967aee28263d5f974069da826553c9c7dd2735a14')
+sha256sums_aarch64=('a8a9aeafd8476643f9aad85e1794df2eb9217ba012ec49d114b7773a41434956')
+sha256sums_x86_64=('c4c746ee87b1d170c734abc21e12e2a3c591a4fe8b8fd9a8b5e934880252179e')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
