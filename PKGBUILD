@@ -1,5 +1,5 @@
 pkgname=upcloud-cli
-pkgver=3.21.0
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="upctl - a CLI tool for managing UpCloud services."
 arch=('x86_64')
@@ -9,6 +9,5 @@ source=("https://github.com/UpCloudLtd/${pkgname}/releases/download/v${pkgver}/$
 sha256sums=('SKIP')
 
 package() {
-    cd "$pkgname_$pkgver_linux_x86_64"
     install -Dm755 upctl "$pkgdir/usr/local/bin/upctl"
 }
