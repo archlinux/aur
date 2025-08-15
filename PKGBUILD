@@ -2,7 +2,7 @@
 pkgname=brokefetch-git
 pkgver=2025.08.15.rc40647b
 pkgrel=1
-pkgdesc="A broken neofetch clone script 💀 (git version)"
+pkgdesc="brokefetch is the only system info tool that doesn't pretend your life is okay. (git version)"
 arch=('any')
 url="https://github.com/Szerwigi1410/brokefetch"
 license=('MIT')
