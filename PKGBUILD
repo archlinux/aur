@@ -5,6 +5,7 @@ pkgver=r27.946f6d8
 pkgrel=1
 pkgdesc="Simple bash script to record screen on wlroots-based compositors using wf-recorder."
 arch=(any)
+license=(LGPL-2.1-only)
 url="https://github.com/Vescrity/wfrc"
 depends=(
     wf-recorder
