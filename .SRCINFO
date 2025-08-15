@@ -1,7 +1,7 @@
 pkgbase = tango-accesscontrol
 	pkgdesc = combined from svn/TangoAccessControl and svn/TangoAccessControl/AbstractClasses
 	pkgver = 2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tango-controls/TangoAccessControl
 	arch = x86_64
 	arch = armv7h
