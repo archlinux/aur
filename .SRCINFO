@@ -1,7 +1,7 @@
 pkgbase = tango-database
 	pkgdesc = TANGO distributed control system - database server
 	pkgver = 5.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tango-controls/TangoDatabase
 	install = tango-database.install
 	arch = x86_64

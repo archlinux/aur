@@ -6,7 +6,7 @@
 pkgname=tango-database
 _pkgname=TangoDatabase
 pkgver=5.24
-pkgrel=1
+pkgrel=2
 _pkgver=Database-Release-${pkgver}
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - database server"
