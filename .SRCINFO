@@ -1,6 +1,6 @@
 pkgbase = arch-update
 	pkgdesc = An update notifier & applier that assists you with important pre / post update tasks
-	pkgver = 3.14.1
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
@@ -31,8 +31,9 @@ pkgbase = arch-update
 	optdepends = neovim: Default diff program for pacdiff if EDITOR=nvim
 	optdepends = qt6-wayland: Systray applet support on Wayland
 	optdepends = sudo: Privilege elevation
+	optdepends = sudo-rs: Privilege elevation
 	optdepends = opendoas: Privilege elavation
-	source = arch-update-3.14.1.tar.gz::https://github.com/Antiz96/arch-update/archive/v3.14.1.tar.gz
-	sha256sums = c66b01ebb7cc19e7bfaebecd998ac60aec4c9cabfb7ed36b5278d7bcd9df8345
+	source = arch-update-3.15.0.tar.gz::https://github.com/Antiz96/arch-update/archive/v3.15.0.tar.gz
+	sha256sums = 390899e6a07f9d6d9cb33ff6caf1cfb1e3af2673a6371d144d479698bb2beced
 
 pkgname = arch-update

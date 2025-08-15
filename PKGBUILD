@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=arch-update
-pkgver=3.14.1
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="An update notifier & applier that assists you with important pre / post update tasks"
 url="https://github.com/Antiz96/arch-update"
@@ -20,9 +20,10 @@ optdepends=('paru: AUR Packages support'
             'neovim: Default diff program for pacdiff if EDITOR=nvim'
             'qt6-wayland: Systray applet support on Wayland'
             'sudo: Privilege elevation'
+            'sudo-rs: Privilege elevation'
             'opendoas: Privilege elavation')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c66b01ebb7cc19e7bfaebecd998ac60aec4c9cabfb7ed36b5278d7bcd9df8345')
+sha256sums=('390899e6a07f9d6d9cb33ff6caf1cfb1e3af2673a6371d144d479698bb2beced')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
