@@ -1,0 +1,4 @@
+[dufs-bin]
+source = "git"
+git = "https://github.com/sigoden/dufs.git"
+prefix = "v"
