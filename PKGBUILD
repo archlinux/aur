@@ -2,13 +2,17 @@
 
 _name=xformers
 pkgname=python-${_name}
-pkgver=0.0.31
+pkgver=0.0.32.post2
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('any')
 url="https://pypi.org/project/${_name}"
 license=('BSD')
-depends=(python python-pytorch python-numpy)
+depends=(
+	'python'
+	'python-pytorch'
+	'python-numpy'
+)
 makedepends=(
 	'python-wheel'
 	'python-hatchling'
@@ -23,7 +27,7 @@ https://files.pythonhosted.org/packages/33/35/91c172a57681e1c03de5ad1ca654dc87c2
 xformers-${pkgver}.tar.gz"
 )
 
-sha256sums=('3fccb159c6327c13fc1b08f8b963c2779ca526e2e50755dee9bcc1bac67d20c6')
+sha256sums=('9538be803969c6e1ca16a3ece921e472c24f79970b10be1087a389dcb66e412a')
 
 build() {
 	cd "${_name}-${pkgver}"
