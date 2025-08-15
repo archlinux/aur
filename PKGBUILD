@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
 	'python-wheel'
+	'python-fsspec'
 	'python-hatchling'
 	'python-build'
 	'python-installer'
@@ -23,7 +24,7 @@ makedepends=(
 ninja
 )
 source=(
-	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/x/${pkgname#python-}/${pkgname#python-}-${pkgver}.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/x/${_name}/${_name}-${pkgver}.tar.gz"
 )
 
 sha256sums=('9538be803969c6e1ca16a3ece921e472c24f79970b10be1087a389dcb66e412a')

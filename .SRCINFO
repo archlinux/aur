@@ -6,6 +6,7 @@ pkgbase = python-xformers
 	arch = any
 	license = BSD
 	makedepends = python-wheel
+	makedepends = python-fsspec
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
