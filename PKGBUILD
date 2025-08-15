@@ -9,7 +9,7 @@ arch=(any)
 url=https://github.com/wakatime/$_pkgname.lua
 license=(GPL3)
 makedepends=(luarocks)
-optdepends=('git: get project name')
+optdepends=('git: get project name' 'python-lupa')
 _revision=1
 source=("https://luarocks.org/manifests/freed-wu/$_pkgname-$pkgver-$_revision.src.rock")
 sha256sums=('9986267f86f1e982d13a4c1e9c70c5a28abf35dc75ed678db70bc2e2c86d107a')
@@ -22,6 +22,10 @@ _package() {
 	rm -r "${pkgdir:?}/usr/bin"
 	export LUA_PATH_${1/./_}="./share/lua/$1/?.lua;./?.lua;./?/init.lua;;/usr/share/lua/$1/?.lua;/usr/share/lua/$1.lua"
 	export LUA_CPATH_${1/./_}="./lib/lua/$1/?.so;./?.so;./?/init.so;;/usr/lib/lua/$1/?.so;/usr/lib/lua/$1.so"
+	if [[ "$version" != "$_lua_version" ]]; then
+		v="$version"
+	fi
+	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"lupa "$pkgdir/usr/bin/lupa$v"
 }
 
 _complete() {
@@ -38,7 +42,7 @@ _complete() {
 
 package_lua51-prompt-style() {
 	# neovim uses lua5.1
-	optdepends=(neovim)
+	optdepends+=(neovim)
 	depends=(lua51-{warna,filesystem,luaprompt})
 	local version=5.1
 	_package $version
@@ -51,17 +55,19 @@ package_lua52-prompt-style() {
 	depends=(lua52-{warna,filesystem,luaprompt})
 	local version=5.2
 	_package $version
+	rm -r "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"
 }
 
 package_lua53-prompt-style() {
 	depends=(lua53-{warna,filesystem,luaprompt})
 	local version=5.3
 	_package $version
+	rm -r "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"
 }
 
 package_lua-prompt-style() {
 	# pandoc, neomutt uses lua5.4
-	optdepends=(pandoc-cli neomutt)
+	optdepends+=(pandoc-cli neomutt)
 	depends=(lua-{warna,filesystem,luaprompt})
 	local version=$_lua_version
 	_package $version
