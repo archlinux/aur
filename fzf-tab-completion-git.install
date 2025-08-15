@@ -11,15 +11,19 @@ For zsh, add the following to your .zshrc:
 	source /usr/share/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 	bindkey '^I' fzf_completion
 
-For readline, install rl_custom_function and add the following to your .inputrc: 
+For readline, install rl_custom_function and add the following to your .inputrc:
 
 	$include function rl_custom_complete /usr/lib/librl_custom_complete.so
 	C-i rl_custom_complete
 
-You may wish to use fzf-tab-completion with nodejs repl, add the following to your .zshrc / .bashrc:
+For nodejs repl, add the following to your .zshrc / .bashrc:
 
-        alias node='node -r /usr/share/fzf-tab-completion/node/fzf-node-completion.js'
+	alias node='node -r /usr/share/fzf-tab-completion/node/fzf-node-completion.js'
 
+For python3 repl, add the following to your $PYTHONSTARTUP file:
+
+	with open('/usr/share/fzf-tab-completion/python/fzf_python_completion.py') as file:
+	    exec(file.read())
 
 Please read https://github.com/lincheney/fzf-tab-completion for more information.
 EOF

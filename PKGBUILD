@@ -41,6 +41,7 @@ package() {
   install -D -m755 bash/fzf-bash-completion.sh $pkgdir/usr/share/$_pkgname/bash/fzf-bash-completion.sh
   install -D -m755 zsh/fzf-zsh-completion.sh $pkgdir/usr/share/$_pkgname/zsh/fzf-zsh-completion.sh
   install -D -m755 node/fzf-node-completion.js $pkgdir/usr/share/$_pkgname/node/fzf-node-completion.js
+  install -D -m755 python/fzf_python_completion.py $pkgdir/usr/share/$_pkgname/python/fzf_python_completion.py
 
   install -D -m644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
 }
