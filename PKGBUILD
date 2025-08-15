@@ -1,8 +1,8 @@
 # Maintainer: Xtarii carlalvinelias@gmail.com
 
 pkgname=osse-core
-pkgver=0.1
-pkgrel=9
+pkgver=0.2  # Version
+pkgrel=1    # Version Release
 pkgdesc="OpenSource Search Engine Core Library"
 
 arch=('x86_64')
