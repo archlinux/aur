@@ -1,6 +1,6 @@
 # Maintainer: Oliwier <szerwigi14@gmail.com>
 pkgname=brokefetch-git
-pkgver=2025.08.12.rc40647b
+pkgver=2025.08.15.rc40647b
 pkgrel=1
 pkgdesc="A broken neofetch clone script 💀 (git version)"
 arch=('any')
