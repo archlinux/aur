@@ -1,8 +1,7 @@
 # Maintainer: artist for Xlibre
 
-_pkgname_xf86=xf86-video-intel
-_pkgname=xlibre-$_pkgname_xf86
-pkgname=$_pkgname-bin
+pkgname=xlibre-xf86-video-intel-bin
+_pkgname=xlibre-xf86-video-intel
 pkgver=3.0.0.2
 pkgrel=1
 pkgdesc="Official XLibre fork of X.Org Intel i810/i830/i915/945G/G965+ video drivers"
@@ -22,8 +21,8 @@ optdepends=('libxrandr: for intel-virtual-output'
             'libxtst: for intel-virtual-output'
             'libxss: for intel-virtual-output')
 replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna')
-provides=($_pkgname $_pkgname_xf86 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
-conflicts=($_pkgname $_pkgname_xf86 'xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29'
+provides=('xf86-video-intel' 'xlibre-video-intel' 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
+conflicts=('xf86-video-intel' 'xlibre-video-intel' 'xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy')
 
 sha256sums=('ada079f89fa9f9c929761c0968df351f541d58c3d60c13242a117c07ea952185')

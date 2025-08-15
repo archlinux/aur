@@ -25,12 +25,12 @@ pkgbase = xlibre-xf86-video-intel-bin
 	optdepends = libxcursor: for intel-virtual-output
 	optdepends = libxtst: for intel-virtual-output
 	optdepends = libxss: for intel-virtual-output
-	provides = xlibre-xf86-video-intel
 	provides = xf86-video-intel
+	provides = xlibre-video-intel
 	provides = xf86-video-intel-uxa
 	provides = xf86-video-intel-sna
-	conflicts = xlibre-xf86-video-intel
 	conflicts = xf86-video-intel
+	conflicts = xlibre-video-intel
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
