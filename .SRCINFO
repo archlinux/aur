@@ -15,6 +15,7 @@ pkgbase = yukigram-desktop
 	makedepends = gobject-introspection
 	makedepends = boost
 	makedepends = glib2-devel
+	makedepends = git
 	depends = hunspell
 	depends = ffmpeg
 	depends = hicolor-icon-theme
