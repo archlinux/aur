@@ -2,7 +2,7 @@
 
 pkgname=gensurvey
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="A tool to generate a survey website from JSON"
 arch=('x86_64' 'aarch64')
