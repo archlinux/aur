@@ -28,8 +28,8 @@ source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pk
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-xserver-common 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libunwind pixman xorg-xauth
          libgl nettle libtirpc libxdmcp sh glibc libxau)
-provides=($_pkgname 'xorg-server-xvfb')
-conflicts=($_pkgname 'xorg-server-xvfb')
+provides=($_pkgname 'xorg-server-xvfb' 'xlibre-server-xvfb')
+conflicts=($_pkgname 'xorg-server-xvfb' 'xlibre-server-xvfb')
 
 sha256sums=('7b87152bf93ffb99dcd5c92b74d2994183c99c2cabfe2a68694437044f143269')
 
