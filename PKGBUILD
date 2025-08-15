@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Roberr L Box <robertbox514@gmail.com> 
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Nathan O <ndowens.aur at gmail dot com>
 
