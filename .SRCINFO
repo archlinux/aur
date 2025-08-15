@@ -1,7 +1,7 @@
 pkgbase = zenpower3-dkms-git
 	pkgdesc = A Linux kernel driver for reading temperature, voltage(SVI2), current(SVI2) and power(SVI2) for AMD Zen family CPUs, now with Zen 3 support'
-	pkgver = r68.cbb3532
-	pkgrel = 2
+	pkgver = r71.41e0429
+	pkgrel = 1
 	epoch = 3
 	url = https://github.com/AliEmreSenel/zenpower3
 	install = zenpower3.install
