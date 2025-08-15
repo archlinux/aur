@@ -15,6 +15,15 @@ sha256sums_aarch64=('932ede35b03bfda8b9312e3b97f029255c297f617c246fe8259b0dfb868
 package() {
     cd "$srcdir"
 
+    if [[ $CARCH == "x86_64" ]]; then
+        mv hyprmon-linux-amd64 hyprmon 
+    elif [[ $CARCH == "aarch64" ]]; then
+        mv hyprmon-linux-arm64 hyprmon 
+    else
+        echo "Unsupported architecture: $CARCH"
+        exit 1
+    fi
+
     # Install the binary (tar.gz should extract just the binary)
     install -Dm755 "hyprmon" "$pkgdir/usr/bin/hyprmon"
 
