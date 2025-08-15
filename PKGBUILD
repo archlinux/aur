@@ -7,6 +7,7 @@
 
 # Maintainer: cubi <coyote_x@gmx.de>
 # Maintainer: soloturn@gmail.com
+# Maintainer: Doridian <archlinux at doridian dot net>
 
 _basename=kanidm
 pkgbase=kanidm
@@ -16,7 +17,7 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.7.1
+pkgver=1.7.2
 _realver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='A identity management service and clients.'
@@ -28,7 +29,7 @@ arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo systemd clang tpm2-tss lld)
 options=(!buildflags)
-sha256sums=('50ca9a3305c23a693a8d305a714ac02c17b732e891a0208d8d80282aa5401c64')
+sha256sums=('24d2941a4cd35c1eaaa02d992c38774aa13e03431f7742a40f83994230497a61')
 
 
 build () {
