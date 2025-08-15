@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=plutonia-bin
 _pkgname=Plutonia
-pkgver=1.1.14
-_electronversion=35
+pkgver=1.1.15
+_electronversion=37
 pkgrel=1
 pkgdesc="A powerful launcher for Plutonia, built with Electron and JavaScript.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -17,11 +17,15 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cbd35ea4f44208c47f666b029c92eb42b3010c54493e6805ebb5d35ed49a401d'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('185a7dcde2cdfd3a675ed8d75b27c9f79fc9eafb83728ec383bf045165822cf7'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -30,10 +34,11 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
