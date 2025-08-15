@@ -1,0 +1,4 @@
+[cariddi]
+source = "git"
+git = "https://github.com/edoardottt/cariddi.git"
+prefix = "v"
