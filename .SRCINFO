@@ -9,10 +9,10 @@ pkgbase = xlibre-xf86-video-nouveau-bin
 	depends = mesa
 	depends = libdrm
 	depends = glibc
-	provides = xlibre-xf86-video-nouveau
 	provides = xf86-video-nouveau
-	conflicts = xlibre-xf86-video-nouveau
+	provides = xlibre-video-nouveau
 	conflicts = xf86-video-nouveau
+	conflicts = xlibre-video-nouveau
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
