@@ -2,7 +2,7 @@
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-bin
 _pkgname=DbGate
-pkgver=6.6.0
+pkgver=6.6.1
 _electronversion=30
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)"
@@ -20,9 +20,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dbgate/dbgate/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('0cb71bd104537507da8fec9dd7831ae92754ca33c07b62b797c0c07527ceea95'
+sha256sums=('688e99b46fb1b283337ced4e3d0b2230ae117d8a339f550b49ecd3f67f842f11'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
