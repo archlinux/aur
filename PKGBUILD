@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=struct
-_pkgver=1.20.1
+_pkgver=1.20.2
 pkgname=r-${_pkgname,,}
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc='Statistics in R Using Class-based Templates'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b583b92de5b26c82d3097e760306d253b36c27492e51e1192fb210211f234e2')
+sha256sums=('235a7e4189c7c666614fc3628401fddaab5e6e8725438f0e748660b46b9a0009')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
