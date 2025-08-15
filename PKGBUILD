@@ -3,6 +3,7 @@
 _gitowner=LucienHH
 _gitrepo=obs-doom-transition
 pkgname=${_gitrepo}-git
+pkgver=1.4.2.e214e79
 pkgrel=3
 pkgdesc="Plugin for OBS Studio adding a DOOM 93 like transition (screen-melting)"
 arch=("x86_64" "aarch64")
