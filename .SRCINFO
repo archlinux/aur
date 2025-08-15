@@ -1,6 +1,6 @@
 pkgbase = python-pandas-flavor
 	pkgdesc = The easy way to write your own Pandas flavor.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 0
 	url = https://github.com/Zsailer/pandas_flavor
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pandas-flavor
 	depends = python
 	depends = python-pandas
 	depends = python-xarray
-	source = https://files.pythonhosted.org/packages/source/p/pandas-flavor/pandas_flavor-0.6.0.tar.gz
-	sha256sums = 9fb8735102dcb65dae7ee5cda12b393ca134a909ebcfc0262c5cdc1d79ba007f
+	source = https://files.pythonhosted.org/packages/source/p/pandas-flavor/pandas_flavor-0.7.0.tar.gz
+	sha256sums = 617bf9f96902017afc9bd284f611592bce91806d3c7ae34ad64f6edab3edaf7e
 
 pkgname = python-pandas-flavor
