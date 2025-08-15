@@ -1,6 +1,6 @@
 pkgbase = qwen-code
 	pkgdesc = cli coding agent (fork of gemini-cli)
-	pkgver = 0.0.6_nightly.2
+	pkgver = 0.0.7_nightly.1
 	pkgrel = 1
 	url = https://github.com/QwenLM/qwen-code
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = qwen-code
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = qwen-code-0.0.6-nightly.2.tgz
+	noextract = qwen-code-0.0.7-nightly.1.tgz
 	options = !lto
 	options = !strip
 	options = !debug
-	source = https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.0.6-nightly.2.tgz
-	sha256sums = 2d015c1eb587457644eb305b9dd091d3dee03662321bd377c03d242a635c326c
+	source = https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.0.7-nightly.1.tgz
+	sha256sums = e8707ee39d38d398f140edbdaf6b6496905ddafb839419ef73833b411d294c0b
 
 pkgname = qwen-code
