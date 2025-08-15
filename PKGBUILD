@@ -6,7 +6,7 @@ _bindate=$(date --rfc-3339=date)
 pkgver=2.1.0
 pkgrel=1
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease'
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/gearnode/privatebin'
 license=('ISC')
 conflicts=("${pkgname}-bin")

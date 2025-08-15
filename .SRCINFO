@@ -6,6 +6,7 @@ pkgbase = privatebin-cli
 	install = privatebin-cli.install
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = ISC
 	makedepends = go
 	makedepends = pandoc
