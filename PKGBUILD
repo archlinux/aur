@@ -3,7 +3,7 @@
 _name=gradio
 pkgname=python-${_name}
 pkgver=5.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
 url='https://github.com/gradio-app/gradio'
@@ -13,10 +13,10 @@ source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz"
 noextract=('gradio_pdf-0.0.22-py3-none-any.whl')
 sha256sums=('25a66744fc01c98bec41a1e2aaf7dd1a1f05683684a3edf98a9603648622f3eb'
             '6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5')
-depends=('python' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-brotli' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
+depends=('python' 'python-aiofiles' 'python-anyio' 'python-brotli' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'uvicorn')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel' 'pnpm')
 checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras')
-optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp')
+optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp' 'ruff: needed for custom component docs generation')
 
 prepare(){
   cd "${srcdir}"/${_name}-${_name}-${pkgver}
