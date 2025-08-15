@@ -2,7 +2,7 @@
 
 pkgname=gensurvey
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="A tool to generate a survey website from JSON"
 arch=('x86_64' 'aarch64')
@@ -38,14 +38,14 @@ package() {
   install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   if command -v bash &>/dev/null; then
-    install -Dm0644 "${srcdir}/${pkgname}/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    install -Dm0644 "${srcdir}/${pkgname}/${pkgname}/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   fi
 
   if command -v zsh &>/dev/null; then
-    install -Dm0644 "${srcdir}/${pkgname}/completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+    install -Dm0644 "${srcdir}/${pkgname}/${pkgname}/completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   fi
 
   if command -v fish &>/dev/null; then
-    install -Dm0644 "${srcdir}/${pkgname}/completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    install -Dm0644 "${srcdir}/${pkgname}/${pkgname}/completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
   fi
 }

@@ -1,7 +1,7 @@
 pkgbase = gensurvey
 	pkgdesc = A tool to generate a survey website from JSON
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://github.com/zlicdt/gensurvey
 	arch = x86_64
