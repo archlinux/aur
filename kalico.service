@@ -10,6 +10,15 @@ User=kalico
 RuntimeDirectory=kalico
 RemainAfterExit=no
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/usr/bin/python /usr/lib/kalico/klippy/klippy.py /etc/kalico/kalico.cfg --input-tty=/run/kalico/sock --api-server=/run/kalico/ud_sock --api-server-group=tty --api-server-file-mode=660
 Restart=always
 RestartSec=10
+
+ExecStartPre=/usr/bin/python -m venv --upgrade /var/lib/kalico/.venv
+ExecStartPre=/var/lib/kalico/.venv/bin/python -m pip install --requirement /usr/share/kalico/scripts/klippy-requirements.txt
+
+ExecStart=/var/lib/kalico/.venv/bin/python /usr/share/kalico/klippy/klippy.py \
+  /etc/kalico/kalico.cfg \
+  --input-tty=/run/kalico/sock \
+  --api-server=/run/kalico/ud_sock \
+  --api-server-group=tty \
+  --api-server-file-mode=660

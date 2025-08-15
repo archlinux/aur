@@ -6,20 +6,13 @@
 
 pkgname=kalico-git
 _pkgname=kalico
-pkgver=r5750.851b9ba9
+pkgver=r5822.91fd6480
 pkgrel=1
 pkgdesc="Klipper, but Limitless"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://kalico.gg"
 license=('GPL3')
-depends=(
-  'python-cffi'
-  'python-pyserial'
-  'python-greenlet'
-  'python-jinja'
-  'python-can'
-  'libusb'
-)
+depends=('python' 'libusb')
 optdepends=(
   'avr-binutils: for AVR MCU firmware compilation'
   'avr-gcc: for AVR MCU firmware compilation'
@@ -27,8 +20,6 @@ optdepends=(
   'avrdude: for flashing firmware on AVR MCU'
   'dfu-util: for flashing firmware on STM32 MCUs'
   'ncurses: for choosing compilation config'
-  'python-matplotlib: for resonance measurement'
-  'python-numpy: for resonance measurement'
   'stm32flash: for flashing firmware on STM MCU'
 )
 optdepends_x86_64=(
@@ -47,9 +38,9 @@ source=(
 )
 md5sums=(
   'SKIP'
-  'f2f057731eb083a7732c0f885242fe60'
+  '92bebe556e304bc6be82109fe873569c'
   '18074e35a16bf065d12ca10f7b0d5f3c'
-  '1e86632f0b6b3a0d83936c69ee15bd72'
+  '7a00293052c04fba501441380c6bb817'
 )
 
 pkgver() {
@@ -68,10 +59,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  mkdir -p "$pkgdir/usr/lib/$_pkgname"
-  cp -r Makefile docs config klippy scripts lib src "$pkgdir/usr/lib/$_pkgname"
+  mkdir -p "$pkgdir/usr/share/$_pkgname"
+  cp -r Makefile docs config klippy scripts lib src "$pkgdir/usr/share/$_pkgname"
 
-  python scripts/make_version.py archlinux > "$pkgdir/usr/lib/$_pkgname/klippy/.version"
+  python scripts/make_version.py archlinux > "$pkgdir/usr/share/$_pkgname/klippy/.version"
 
   install -Dm 644 "$srcdir/kalico.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm 644 "$srcdir/sysusers.d-kalico.conf" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
