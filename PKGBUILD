@@ -1,7 +1,7 @@
 # Maintainer: CoutCin <cout.cin.xw@gmail.com>
 pkgname=cherry-studio-git-c
-pkgver=1.2.10
-pkgrel=2
+pkgver=1.5.6
+pkgrel=3
 pkgdesc="Cherry Studio支持多服务商集成的AI对话客户端"
 arch=('x86_64')
 url="https://cherry-ai.com/"
