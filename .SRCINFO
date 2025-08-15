@@ -1,0 +1,23 @@
+pkgbase = moor-git
+	pkgdesc = Pager designed to just do the right thing without any configuration (development version)
+	pkgver = 2.0.4.r0.g1f924ff
+	pkgrel = 1
+	url = https://github.com/walles/moor
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause-Views
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = moor
+	conflicts = moor
+	conflicts = moar
+	replaces = moar-git
+	source = git+https://github.com/walles/moor.git
+	sha256sums = SKIP
+
+pkgname = moor-git
