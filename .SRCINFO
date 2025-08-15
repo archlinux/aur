@@ -16,7 +16,14 @@ pkgbase = dragonfly-navigator-git
 	makedepends = ktextwidgets
 	makedepends = kwidgetsaddons
 	makedepends = kxmlgui
+	depends = kcoreaddons
+	depends = ki18n
+	depends = python-exifread
+	depends = python-inotify-simple
+	depends = python-pillow
+	depends = python-pillow-heif
 	depends = python-pyqt6
+	depends = qt6-base
 	source = git+https://github.com/suncore/dflynav
 	sha256sums = SKIP
 

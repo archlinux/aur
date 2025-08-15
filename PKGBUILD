@@ -48,3 +48,4 @@ package() {
   export DESTDIR="$pkgdir"
   ./package "arch"
 }
+
