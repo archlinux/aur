@@ -7,10 +7,10 @@ pkgbase = xlibre-xf86-video-fbdev-bin
 	groups = xlibre-drivers
 	license = MIT
 	depends = glibc
-	provides = xlibre-xf86-video-fbdev
 	provides = xf86-video-fbdev
-	conflicts = xlibre-xf86-video-fbdev
+	provides = xlibre-video-fbdev
 	conflicts = xf86-video-fbdev
+	conflicts = xlibre-video-fbdev
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
 	noextract = xlibre-xf86-video-fbdev-0.5.1.1-2-x86_64.pkg.tar.zst
