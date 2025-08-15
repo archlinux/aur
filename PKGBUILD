@@ -10,7 +10,7 @@ pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/yggdrasil-network/yggdrasil-go"
 license=('LGPLv3')
-conflicts=('yggdrasil-git', 'yggdrasil-bin')
+conflicts=('yggdrasil-git' 'yggdrasil-bin')
 makedepends=('git' 'go')
 source=("${_pkgname}::git+https://github.com/yggdrasil-network/yggdrasil-go.git#commit=${_commit}")
 sha512sums=('SKIP')
