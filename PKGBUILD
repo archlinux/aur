@@ -6,7 +6,7 @@
 pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
-pkgver=1.8.6
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,10 @@ depends=('xdg-user-dirs' 'gtk3' 'mpv')
 makedepends=('ninja' 'cmake' 'clang' 'git' 'patchelf')
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/${_flutterchannel}/linux/flutter_linux_${_flutterversion}-${_flutterchannel}.tar.xz"
-    "git+https://github.com/xiaoyaocz/dart_simple_live.git#tag=v${pkgver}"
+    "git+https://github.com/xiaoyaocz/dart_simple_live.git#commit=f942ff34ae21a51aeacbe5887e17cf57b7ded8c5"
 )
 sha256sums=('9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368'
-            '5ca0186921c6818bbaa727aa5bd974b133098057bee1700357ac8cd6658b3a2f')
+            'c17bb0bc17f7b5dde5301d6d72ad31624f286a1a68576a610969140378ebf13b')
 case "${CARCH}" in
   "x86_64")
     export _dartarch="x64"
