@@ -2,7 +2,7 @@
 
 pkgname=arch-update-git
 _pkgname="${pkgname%-git}"
-pkgver=3.14.0.r546.75f4e5a
+pkgver=3.15.0.r550.a826d39
 pkgrel=1
 pkgdesc="An update notifier & applier that assists you with important pre / post update tasks (git version)"
 url="https://github.com/Antiz96/arch-update"
@@ -21,6 +21,7 @@ optdepends=('paru: AUR Packages support'
             'neovim: Default diff program for pacdiff if EDITOR=nvim'
             'qt6-wayland: Systray applet support on Wayland'
             'sudo: Privilege elevation'
+            'sudo-rs: Privilege elevation'
             'opendoas: Privilege elavation')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
