@@ -5,7 +5,7 @@
 _gitname=pywal16
 pkgname=python-${_gitname}
 pkgver=3.8.9
-pkgrel=2
+pkgrel=3
 epoch=1
 _dirname=${_gitname}-${pkgver}
 _archive_name=${_gitname}-${pkgver}-${pkgrel}-${epoch}.tar.gz
@@ -33,7 +33,6 @@ optdepends=(
   'i3-wm: reload i3 colors'
   'kitty: reload kitty colors'
   'polybar: reload polybar colors'
-  'python2: reload GTK2 themes'
   'sway: reload sway colors'
   "feh: set wallpaper for X (pywal's #1 choice)"
   "xwallpaper: set wallpaper for X (pywal's #2 choice)"

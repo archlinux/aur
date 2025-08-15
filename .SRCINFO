@@ -1,7 +1,7 @@
 pkgbase = python-pywal16
 	pkgdesc = Generate and change color-schemes on the fly (fork that uses 16 colors)
 	pkgver = 3.8.9
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/eylles/pywal16
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = python-pywal16
 	optdepends = i3-wm: reload i3 colors
 	optdepends = kitty: reload kitty colors
 	optdepends = polybar: reload polybar colors
-	optdepends = python2: reload GTK2 themes
 	optdepends = sway: reload sway colors
 	optdepends = feh: set wallpaper for X (pywal's #1 choice)
 	optdepends = xwallpaper: set wallpaper for X (pywal's #2 choice)
@@ -34,7 +33,7 @@ pkgbase = python-pywal16
 	provides = python-pywal
 	conflicts = pywal
 	conflicts = python-pywal
-	source = pywal16-3.8.9-2-1.tar.gz::https://github.com/eylles/pywal16/archive/refs/tags/3.8.9.tar.gz
+	source = pywal16-3.8.9-3-1.tar.gz::https://github.com/eylles/pywal16/archive/refs/tags/3.8.9.tar.gz
 	sha256sums = 1871d3d7c6cbefcd10d4425eb0df3796ec31672a5755b55ff3f68bfb20404e22
 
 pkgname = python-pywal16
