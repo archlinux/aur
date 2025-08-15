@@ -1,12 +1,12 @@
 pkgbase = apache-flink
 	pkgdesc = A framework and distributed processing engine for stateful computations over unbounded and bounded data streams (with Scala)
-	pkgver = 1.20.0_2.12
+	pkgver = 2.1.0_2.12
 	pkgrel = 1
 	url = http://flink.apache.org
 	install = apache-flink.install
 	arch = any
 	license = Apache
-	depends = java-environment>=7
+	depends = java-environment>=17
 	depends = bash
 	optdepends = python: Python3 support for python API
 	optdepends = hadoop: Support for running on YARN
@@ -19,10 +19,10 @@ pkgbase = apache-flink
 	backup = etc/apache-flink/masters
 	backup = etc/apache-flink/slaves
 	backup = etc/apache-flink/zoo.cfg
-	source = apache-flink-1.20.0_2.12.tgz::https://archive.apache.org/dist/flink/flink-1.20.0/flink-1.20.0-bin-scala_2.12.tgz
+	source = apache-flink-2.1.0_2.12.tgz::https://dlcdn.apache.org/flink/flink-2.1.0/flink-2.1.0-bin-scala_2.12.tgz
 	source = apache-flink-jobmanager.service
 	source = apache-flink-taskmanager@.service
-	sha256sums = 708fd544ccf9ddc0d4b192fe035797ce16de2c26f1d764c55907305efe140af0
+	sha256sums = 07f1212ed0cabded522a86b20f2e84eb82e4e054e59f714befd921dc27072c45
 	sha256sums = 59fe1cfe8f2de6437e20a98af68125f1bdab9d04c81a583d359c56b7ca3a2c5e
 	sha256sums = 11eba4a7203805d758779a8e6d18c0e6b1de0bf3e9a6ecf509fe093a4e8f975b
 

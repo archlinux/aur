@@ -1,9 +1,10 @@
+# Maintainer:  Hasan Çatalgöl (hasancatalgol) <hasan [at] gmail.com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Shengyu Zhang <la@archlinuxcn.org>
 # Contributor: Tao Meng ("mtunique") <oatgnem [at] gmail.com>
 
 pkgname=apache-flink
-_appver=1.20.0
+_appver=2.1.0
 _scalaver=2.12
 pkgver=${_appver}_${_scalaver}
 pkgrel=1
@@ -11,14 +12,14 @@ pkgdesc="A framework and distributed processing engine for stateful computations
 arch=('any')
 url='http://flink.apache.org'
 license=('Apache')
-depends=('java-environment>=7' 'bash')
+depends=('java-environment>=17' 'bash')
 optdepends=('python: Python3 support for python API'
             'hadoop: Support for running on YARN')
 install=apache-flink.install
-source=("${pkgname}-${pkgver}.tgz::https://archive.apache.org/dist/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
+source=("${pkgname}-${pkgver}.tgz::https://dlcdn.apache.org/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
         'apache-flink-jobmanager.service'
         'apache-flink-taskmanager@.service')
-sha256sums=('708fd544ccf9ddc0d4b192fe035797ce16de2c26f1d764c55907305efe140af0'
+sha256sums=('07f1212ed0cabded522a86b20f2e84eb82e4e054e59f714befd921dc27072c45'
             '59fe1cfe8f2de6437e20a98af68125f1bdab9d04c81a583d359c56b7ca3a2c5e'
             '11eba4a7203805d758779a8e6d18c0e6b1de0bf3e9a6ecf509fe093a4e8f975b')
 backup=("etc/${pkgname}/flink-conf.yaml"
