@@ -1,0 +1,17 @@
+pkgbase = mqtt-system-monitor-rs
+	pkgdesc = MQTT System Monitor
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/guillaumecl/mqtt-system-monitor
+	install = mqtt-system-monitor.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !debug
+	options = !lto
+	backup = etc/mqtt-system-monitor.conf
+	source = mqtt-system-monitor-rs-1.2.0.tar.gz::https://github.com/guillaumecl/mqtt-system-monitor/archive/refs/tags/v1.2.0.zip
+	sha256sums = af2d1c27a36a292df99a717de56d7109da2ce1d71fec8e00928ed95b24fbca18
+
+pkgname = mqtt-system-monitor-rs

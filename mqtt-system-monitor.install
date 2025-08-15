@@ -1,0 +1,8 @@
+post_upgrade() {
+	/usr/bin/systemctl daemon-reload
+	/usr/bin/systemctl try-reload-or-restart mqtt-system-monitor
+}
+
+post_remove() {
+	/usr/bin/systemctl disable --now mqtt-system-monitor
+}
