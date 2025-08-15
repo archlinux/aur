@@ -5,9 +5,9 @@ pkgbase = python-cron-descriptor
 	url = https://github.com/Salamek/cron-descriptor
 	arch = any
 	license = MIT
-	source = python-cron-descriptor-1.4.4.tar.gz::https://github.com/Salamek/cron-descriptor/archive/1.4.4.tar.gz
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/Salamek/cron-descriptor/archive/1.4.4.tar.gz
 	sha256sums = b0831b9035252c0e971565b88daddf108807ab312fbed2a0fedda41e53fd8c4c
 
 pkgname = python-cron-descriptor
-	depends = python
-    makedepends = python-setuptools
