@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor-bin
 _pkgname=MKEditor
-pkgver=2.6.1
-_electronversion=31
-pkgrel=2
+pkgver=3.1.0
+_electronversion=37
+pkgrel=1
 pkgdesc="The simple markdown editor.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://versyxdigital.github.io/mkeditor"
@@ -19,9 +19,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mkeditorOSS/mkeditor/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dd85d78d0b49d043a36bb82e784d056e14d6d7d9e2161c42f890d177e0d74137'
-            '67d4f80f84e373092380eeee58220700bb16566d3cfcc0d1d6141f971adfca98'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('4f796da7fe09240c6e6b1e4810d22ea16a0294481a6f704f7fb30f972a909662'
+            'df04ed7c37e0fac99d5fc54e9e2b9095fd3982b25013afdf9472f23bc571965c'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -31,12 +35,13 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

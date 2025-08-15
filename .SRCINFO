@@ -1,18 +1,18 @@
 pkgbase = mkeditor-bin
 	pkgdesc = The simple markdown editor.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.6.1
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://versyxdigital.github.io/mkeditor
 	arch = x86_64
 	license = MIT
-	depends = electron31
-	provides = mkeditor=2.6.1
+	depends = electron37
+	provides = mkeditor=3.1.0
 	conflicts = mkeditor
-	source = mkeditor-2.6.1.deb::https://github.com/mkeditorOSS/mkeditor/releases/download/v2.6.1/mkeditor-setup-v2.6.1_amd64.deb
-	source = LICENSE-2.6.1::https://raw.githubusercontent.com/mkeditorOSS/mkeditor/v2.6.1/LICENSE
+	source = mkeditor-3.1.0.deb::https://github.com/mkeditorOSS/mkeditor/releases/download/v3.1.0/mkeditor-setup-v3.1.0_amd64.deb
+	source = LICENSE-3.1.0::https://raw.githubusercontent.com/mkeditorOSS/mkeditor/v3.1.0/LICENSE
 	source = mkeditor.sh
-	sha256sums = dd85d78d0b49d043a36bb82e784d056e14d6d7d9e2161c42f890d177e0d74137
-	sha256sums = 67d4f80f84e373092380eeee58220700bb16566d3cfcc0d1d6141f971adfca98
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 4f796da7fe09240c6e6b1e4810d22ea16a0294481a6f704f7fb30f972a909662
+	sha256sums = df04ed7c37e0fac99d5fc54e9e2b9095fd3982b25013afdf9472f23bc571965c
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = mkeditor-bin
