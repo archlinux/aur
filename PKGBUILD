@@ -4,7 +4,7 @@ _pkgname=FlyEnv
 pkgver=4.10.6
 _electronversion=35
 pkgrel=1
-pkgdesc="All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment. Core Modules: Ollama, DeepSeek, Apache, Nginx, Caddy, Tomcat. MySQL, MariaDB, PostgreSQL, MongoDB. Mailpit. PHP, Java, NodeJS, Python, Go, Rust, Erlang, Ruby. Redis, RabbitMQ. Elasticsearch. DNS Server, FTP Server.(Prebuilt version.Use system-wide electron)"
+pkgdesc="All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
