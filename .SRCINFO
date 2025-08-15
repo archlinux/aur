@@ -1,7 +1,7 @@
 pkgbase = dufs-bin
 	pkgdesc = Dufs is a distinctive utility file server that supports static serving, uploading, searching, accessing control, webdav...
-	pkgver = v0.44.0
-	pkgrel = 2
+	pkgver = 0.44.0
+	pkgrel = 3
 	url = https://github.com/sigoden/dufs
 	arch = x86_64
 	arch = aarch64
