@@ -1,13 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drakontech-bin
 _pkgname=DrakonTech
-pkgver=2025.01.12
+pkgver=2025.08.15
 _electronversion=32
-pkgrel=2
+pkgrel=1
 pkgdesc="A Visual IDE for JavaScript Development.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://drakon.tech/"
-_ghurl="https://github.com/stepan-mitkin/drakon.tech.desktop"
+url="https://github.com/stepan-mitkin/drakon.tech.desktop"
 license=('Unlicense')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -18,13 +17,15 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/stepan-mitkin/drakon.tech.desktop/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9279e9c29112b3b498d537999f74a0948957770fc5dc0012214ca283a3b53a9f'
-            '6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('39c7622581211c2ebf370668d1df4d883fbbbd53bf334f74eabbba7bbf7c34ad'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,6 +34,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -e "
         s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
         s/\/usr\/share\/${pkgname%-bin}\/resources\/app\/drakosha.png/${pkgname%-bin}/g
@@ -44,5 +46,5 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/resources/app/drakosha.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
