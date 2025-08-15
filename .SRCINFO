@@ -1,6 +1,6 @@
 pkgbase = python-electrum_ecc
 	pkgdesc = python library for libsecp256k1, using ctypes
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/spesmilo/electrum-ecc
 	arch = any
