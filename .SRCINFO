@@ -5,7 +5,7 @@ pkgbase = qsolocards
 	url = http://sourceforge.net/projects/qsolocards/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = qt4
 	source = http://downloads.sourceforge.net/project/qsolocards/qsolocards/0.99.1/QSoloCards-0.99.1-src.tar.gz
 	source = qsolocards.desktop
@@ -13,4 +13,3 @@ pkgbase = qsolocards
 	md5sums = 5ac16b0777aff74df0720c4c491f96e6
 
 pkgname = qsolocards
-
