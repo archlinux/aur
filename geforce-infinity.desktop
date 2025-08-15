@@ -5,6 +5,5 @@ Terminal=false
 Type=Application
 Icon=geforce-infinity
 StartupWMClass=GeForceInfinity
-entry=[object Object]
 Comment=Enhance your GeForce NOW application experience!
 Categories=Game;

@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=geforce-infinity
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 _nodeversion=22
 _electronversion=37
@@ -13,9 +13,9 @@ makedepends=('nvm')
 source=("GeForce-Infinity-$pkgver.tar.gz::https://github.com/AstralVixen/GeForce-Infinity/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('fe1ee39d44a2efcde19857d3735d8ff4de94eaeedb6f36b7fea1c91035e956c1'
+sha256sums=('0de53385a83797ec377173e30133a470cd3909d4cb027d20d9320cf63e788ed1'
             '426e8f155c4f2273201ad33d0c0521c35bbea2259a11cb018572d6ca8b40b82d'
-            'f08641bfacf156ba083bf4b0967d20ca8c9e16c077771996ea7e1de06881be05')
+            '64c0594c775e7556def0b19431e4dec417e432ae941a81c93fdf8fbb96b66c3a')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
