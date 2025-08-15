@@ -14,7 +14,7 @@ pkgbase = python-xformers
 	depends = python
 	depends = python-pytorch
 	depends = python-numpy
-	source = python-xformers-0.0.32.post2.tar.gz::https://files.pythonhosted.org/packages/33/35/91c172a57681e1c03de5ad1ca654dc87c282279b941052ed04e616ae5bcd/xformers-0.0.32.post2.tar.gz
+	source = python-xformers-0.0.32.post2.tar.gz::https://pypi.io/packages/source/x/xformers/xformers-0.0.32.post2.tar.gz
 	sha256sums = 9538be803969c6e1ca16a3ece921e472c24f79970b10be1087a389dcb66e412a
 
 pkgname = python-xformers

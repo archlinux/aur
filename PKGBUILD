@@ -1,4 +1,5 @@
-# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Maintainer: Exorcism
+# Contributor: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 
 _name=xformers
 pkgname=python-${_name}
@@ -22,9 +23,7 @@ makedepends=(
 ninja
 )
 source=(
-	"$pkgname-$pkgver.tar.gz::\
-https://files.pythonhosted.org/packages/33/35/91c172a57681e1c03de5ad1ca654dc87c282279b941052ed04e616ae5bcd/\
-xformers-${pkgver}.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/x/${pkgname#python-}/${pkgname#python-}-${pkgver}.tar.gz"
 )
 
 sha256sums=('9538be803969c6e1ca16a3ece921e472c24f79970b10be1087a389dcb66e412a')
