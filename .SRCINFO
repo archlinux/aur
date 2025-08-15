@@ -7,10 +7,10 @@ pkgbase = xlibre-xf86-video-dummy-bin
 	groups = xlibre-drivers
 	license = MIT AND X11
 	depends = glibc
-	provides = xlibre-xf86-video-dummy
 	provides = xf86-video-dummy
-	conflicts = xlibre-xf86-video-dummy
+	provides = xlibre-video-dummy
 	conflicts = xf86-video-dummy
+	conflicts = xlibre-video-dummy
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
