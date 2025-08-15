@@ -11,7 +11,7 @@ source=("https://gitee.com/nemozz-hz/moonasst/repository/archive/v$pkgver.tar.gz
 sha256sums=('28f31bb6de0b159db50c0052bc07f8c7630ee3deeb2c82ce16a20e76fa28f20c')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-v$pkgver"
 	
 	# 检查moonasst二进制文件是否存在
 	if [ ! -f "moonasst" ]; then
