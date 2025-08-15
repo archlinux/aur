@@ -470,9 +470,9 @@ _update_defconfig() {
     # Here we slightly break the config by removing one of the
     # members of the 'Processor family' selection.
     # This causes oldconfig to always invoke that selection.
-    sed -patch '/CONFIG_GENERIC_CPU/d' .config || :
+    sed -i '/CONFIG_GENERIC_CPU/d' .config || :
     # For a slim chance that someone is building X86_32
-    sed -patch '/CONFIG_M686/d' .config || :
+    sed -i '/CONFIG_M686/d' .config || :
 
     case ${_subarch} in
         "")
