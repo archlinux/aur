@@ -1,10 +1,12 @@
 pkgbase = brokefetch-git
-	pkgdesc = A broken neofetch clone script 💀
-	pkgver = 2025.08.14.rc40647b
-	pkgrel = 2
+	pkgdesc = A broken neofetch clone script 💀 (git version)
+	pkgver = 2025.08.12.rc40647b
+	pkgrel = 1
 	url = https://github.com/Szerwigi1410/brokefetch
 	arch = any
 	license = MIT
 	depends = bash
+	source = brokefetch-git::git+https://github.com/Szerwigi1410/brokefetch
+	sha256sums = SKIP
 
 pkgname = brokefetch-git
