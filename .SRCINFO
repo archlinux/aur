@@ -1,7 +1,7 @@
 pkgbase = ttf-shanggu
-	pkgdesc = Shanggu Fonts
+	pkgdesc = Calligraphic CJK font based on Source-Han-Sans in static TTF format
 	pkgver = 1.022
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GuiWonder/Shanggu
 	arch = any
 	license = OFL-1.1
@@ -11,10 +11,10 @@ pkgbase = ttf-shanggu
 	source = https://github.com/GuiWonder/Shanggu/releases/download/1.022/ShangguSerifOTCs.7z
 	source = https://github.com/GuiWonder/Shanggu/releases/download/1.022/ShangguRoundTTCs.7z
 	source = 70-shanggu.conf
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 37f18903015c118dcd7bf41a4a8584ea
+	md5sums = f5ba508a66ccd4656b4509917768ef7e
+	md5sums = c33470bae4ec7c57e5562c06ccce0686
+	md5sums = 03e65b79ec3e7ebb4be9d25745eb3795
+	md5sums = e8888de3a28b75eea861166464b99b42
 
 pkgname = ttf-shanggu
