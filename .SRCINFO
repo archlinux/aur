@@ -1,15 +1,22 @@
 pkgbase = poweradmin
-	pkgdesc = A web-based control panel for PowerDNS
-	pkgver = 3.4.2
+	pkgdesc = A web-based DNS administration tool for PowerDNS server
+	pkgver = 4.0.1
 	pkgrel = 1
-	url = https://www.poweradmin.org
+	url = https://www.poweradmin.org/
 	arch = any
-	license = GPL
-	optdepends = php: to locally host poweradmin
-	provides = poweradmin
-	conflicts = poweradmin
-	backup = etc/webapps/poweradmin/config.inc.php
-	source = https://github.com/poweradmin/poweradmin/archive/refs/tags/v3.4.2.tar.gz
-	sha256sums = e0ea1fa87ed2e4fd1f499e379211e47524e11725b0f5d2ed46884d853c1dcdc1
+	license = GPL3
+	depends = php>=8.1
+	depends = powerdns>=4.0.0
+	optdepends = php-gd: CAPTCHA support
+	optdepends = caddy: Caddy web server to host the application
+	optdepends = nginx: NGINX web server to host the application
+	optdepends = php-fpm: PHP FastCGI Process Manager for web server
+	optdepends = apache: Apache web server to host the application
+	optdepends = sqlite: Sqlite database backend
+	optdepends = php-sqlite: PHP module for sqlite
+	optdepends = mariadb: MariaDB database backend
+	optdepends = postgresql: PostgreSQL database backend
+	source = poweradmin-4.0.1.tar.gz::https://github.com/poweradmin/poweradmin/archive/refs/tags/v4.0.1.tar.gz
+	sha256sums = f0639355341a2f8744cdaeae4342421677b489ea5f74148f0b32ddf769975669
 
 pkgname = poweradmin

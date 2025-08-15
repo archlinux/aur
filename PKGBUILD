@@ -1,30 +1,44 @@
-# Maintainer: Jeremy Kescher <jeremy@kescher.at>
-# Contributor: Filip <fila pruda com>
+# Maintainer: jnd <jnd@8b.cz>
 pkgname=poweradmin
-pkgver=3.4.2
+pkgver=4.0.1
 pkgrel=1
-pkgdesc="A web-based control panel for PowerDNS"
-arch=(any)
-url="https://www.poweradmin.org"
-license=(GPL)
-optdepends=("php: to locally host poweradmin")
-provides=(poweradmin)
-conflicts=(poweradmin)
-source=("https://github.com/poweradmin/poweradmin/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0ea1fa87ed2e4fd1f499e379211e47524e11725b0f5d2ed46884d853c1dcdc1')
-backup=('etc/webapps/poweradmin/config.inc.php')
+pkgdesc="A web-based DNS administration tool for PowerDNS server"
+arch=('any')
+url="https://www.poweradmin.org/"
+license=('GPL3')
+depends=(
+    'php>=8.1'
+    'powerdns>=4.0.0'
+)
+optdepends=(
+    'php-gd: CAPTCHA support'
+    'caddy: Caddy web server to host the application'
+    'nginx: NGINX web server to host the application'
+    'php-fpm: PHP FastCGI Process Manager for web server'
+    'apache: Apache web server to host the application'
+    'sqlite: Sqlite database backend'
+    'php-sqlite: PHP module for sqlite'
+    'mariadb: MariaDB database backend'
+    'postgresql: PostgreSQL database backend'
+)
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/poweradmin/poweradmin/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f0639355341a2f8744cdaeae4342421677b489ea5f74148f0b32ddf769975669')
 
 package() {
-  _destdir="${pkgdir}/usr/share/webapps/poweradmin"
-  _destdir_etc="${pkgdir}/etc/webapps/poweradmin"
+    cd "$pkgname-$pkgver"
 
-  install -dm755 "${_destdir}"
-  cp -R --no-dereference --preserve=mode,links -v "${srcdir}/poweradmin-${pkgver}/." "${_destdir}"
+    # Install the application files
+    install -d "$pkgdir/usr/share/webapps/$pkgname"
+    cp -r ./* "$pkgdir/usr/share/webapps/$pkgname/"
 
-  mv "${_destdir}/install" "${_destdir}/x_install"
-  chmod 700 "${_destdir}/x_install"
+    # Create a symlink to make it accessible
+    ln -s "/usr/share/webapps/$pkgname" "$pkgdir/usr/share/webapps/poweradmin"
 
-  install -dm755 "${_destdir_etc}"
-  touch "${_destdir_etc}/config.inc.php"
-  ln -s "/etc/webapps/poweradmin/config.inc.php" "${_destdir}/inc/config.inc.php"
+    # Set permissions for the new settings file
+    chmod 640 "$pkgdir/usr/share/webapps/$pkgname/config/settings.defaults.php"
+
+    # Set permissions for all other files and directories
+    find "$pkgdir/usr/share/webapps/$pkgname" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/share/webapps/$pkgname" -type f -exec chmod 644 {} +
 }
