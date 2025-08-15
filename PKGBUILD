@@ -5,7 +5,7 @@
 
 pkgname=2048.c
 pkgver=1.0.3.r4.g4645182
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A terminal 2048 written in c"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ url="https://github.com/mevdschee/2048.c"
 license=('MIT')
 depends=('glibc' 'hicolor-icon-theme')
 source=(git+https://github.com/mevdschee/2048.c.git#commit=464518299836a0fe843221edfddae5ddc05b7920)
-sha256sums=('SKIP')
+sha256sums=('78cd036e27fafe2479d380a48a39045d3db909110a1348abe2dd81b990c7e97f')
 
 pkgver() {
   cd "$pkgname"
