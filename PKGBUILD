@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=pm2ctrl-git
-_commit=410fa7c65de8d9854ee90781f1841b5af6de6d74
+_commit=5497e849b86bb0d7874b6e755948010f019d07d9
 pkgver=r${_commit:0:7}
 pkgrel=1
 pkgdesc="A PM2 wrapper script (PM2 needs to be installed maually)"

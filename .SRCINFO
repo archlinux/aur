@@ -1,11 +1,11 @@
 pkgbase = pm2ctrl-git
 	pkgdesc = A PM2 wrapper script (PM2 needs to be installed maually)
-	pkgver = r410fa7c
+	pkgver = r5497e84
 	pkgrel = 1
 	url = https://code.weexnes.dev/pm2ctrl
 	arch = x86_64
 	license = GPL3
-	source = pm2ctrl-git-410fa7c65de8d9854ee90781f1841b5af6de6d74.tar.gz::https://code.weexnes.dev/~downloads/projects/41/archives?revision=410fa7c65de8d9854ee90781f1841b5af6de6d74&format=tgz
+	source = pm2ctrl-git-5497e849b86bb0d7874b6e755948010f019d07d9.tar.gz::https://code.weexnes.dev/~downloads/projects/41/archives?revision=5497e849b86bb0d7874b6e755948010f019d07d9&format=tgz
 	sha256sums = SKIP
 
 pkgname = pm2ctrl-git
