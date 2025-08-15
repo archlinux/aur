@@ -9,10 +9,10 @@ pkgbase = xlibre-xf86-video-amdgpu-bin
 	depends = mesa
 	depends = libdrm
 	depends = glibc
-	provides = xlibre-xf86-video-amdgpu
 	provides = xf86-video-amdgpu
-	conflicts = xlibre-xf86-video-amdgpu
+	provides = xlibre-video-amdgpu
 	conflicts = xf86-video-amdgpu
+	conflicts = xlibre-video-amdgpu
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
 	noextract = xlibre-xf86-video-amdgpu-23.0.0.4-1-x86_64.pkg.tar.zst
