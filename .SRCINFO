@@ -1,0 +1,15 @@
+pkgbase = mini-media-player
+	pkgdesc = Mini Media Player - Python / Tkinter / VLC based media player
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/sezer/mini-media-player
+	arch = x86_64
+	license = GPL
+	makedepends = python-pip
+	depends = python
+	depends = python-pillow
+	depends = vlc
+	source = mini-media-player.py
+	sha256sums = 8b22324e8b34ccfa7ced309e07b76f0aa0c2914c1893c830fe7b5c64b77920a1
+
+pkgname = mini-media-player
