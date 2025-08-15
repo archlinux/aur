@@ -2,7 +2,7 @@
 
 _pkgname=lutris-gamepad-ui
 pkgname=$_pkgname-git
-pkgver=0.1.11.r11.g7d02ee6
+pkgver=0.1.12.r1.gc4ef829
 pkgrel=1
 pkgdesc="A simple, TV-friendly, gamepad-navigable frontend for Lutris"
 arch=('x86_64')
@@ -29,7 +29,7 @@ package() {
     install -vDm644 -t "$pkgdir/usr/share/applications" "$srcdir/$_pkgname.desktop"
     install -vDm755 "lutris-gamepad-ui.sh" "$pkgdir/usr/bin/$_pkgname"
 
-    install -vDm644 "$_pkgname/src/resources/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+    install -vDm644 "$_pkgname/src_frontend/resources/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
     install -vDm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
     for file in "$_pkgname"/electron*.cjs; do
@@ -37,9 +37,13 @@ package() {
         install -vDm644 "$file" "$pkgdir/usr/lib/$_pkgname/$filename"
     done
 
+    cp -rp "$_pkgname/src_backend" "$pkgdir/usr/lib/$_pkgname/src_backend"
+
     install -vDm644 "$_pkgname/lutris_wrapper.py" "$pkgdir/usr/lib/$_pkgname/lutris_wrapper.py"
     install -vDm644 "$_pkgname/lutris_wrapper.sh" "$pkgdir/usr/lib/$_pkgname/lutris_wrapper.sh"
 
     cp -rp "$_pkgname/dist" "$pkgdir/usr/lib/$_pkgname/dist"
     cp -rp "$_pkgname/node_modules" "$pkgdir/usr/lib/$_pkgname/node_modules"
+
+    find "$pkgdir/usr/lib/$_pkgname/" -type d -empty -delete
 }
