@@ -34,6 +34,9 @@ package() {
   make install.man DESTDIR="$pkgdir/" XAPPLOADDIR=/usr/share/X11/app-defaults
   rm "$pkgdir"/usr/lib/X11/app-defaults
   rmdir "$pkgdir"/etc/X11/app-defaults
+
+  install -D -m644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -D -m644 README.jp.utf8 $pkgdir/usr/share/doc/$pkgname/README.jp
 }
 
 # vim:set ts=2 sw=2 et:
