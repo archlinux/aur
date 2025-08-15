@@ -1,38 +1,60 @@
-pkgname=lamina-git
-pkgver=1.1.1
-pkgrel=1
-pkgdesc="A procedural programming language focusing on precise mathematical computation."
+# Contributor: SummerBreeze630 <xzwf2003 AT 163 DOT com>
+
+_pkgname=lamina
+pkgname=$_pkgname-git
+pkgver=1.1.1.Beta.r73.g336b74b7
+pkgrel=2
+pkgdesc="A procedural programming language focusing on precise mathematical computation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Lamina-dev/Lamina"
 license=('LGPL-2.1')
+depends=('glibc' 'libuv')
 makedepends=('cmake' 'git')
-depends=('libuv')
+conflicts=("${_pkgname}")
 source=(
-        "git+https://github.com/Lamina-dev/Lamina.git"
+    "git+$url.git"
 )
 sha256sums=(
-        'SKIP'
+    'SKIP'
 )
 
+pkgver() {
+    cd Lamina
+
+    git describe --long --tags --abbrev=8 |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/rc.\.//'
+}
+
 prepare() {
-  cd Lamina
-  git submodule update --init --recursive
+    cd Lamina
+
+    git submodule update --init --recursive
 }
 
 build() {
-  cd Lamina
-  mkdir build
-  cd build
-  cmake ..
-  cmake --build .
+    mkdir -p build
+
+    cmake -B build \
+        -S Lamina \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release
+
+    cmake --build build \
+        -j $(nproc)
 }
 
 package() {
-  cd Lamina/build
-  install -Dm755 "Lamina" "$pkgdir/usr/bin/Lamina"
-  install -Dm644 "lamina_core.so.1.0.0" "$pkgdir/usr/lib/lamina_core.so.1.0.0"
-  install -Dm644 "ultra_minimal.so" "$pkgdir/usr/lib/ultra_minimal.so"
-  
-  ln -s lamina_core.so.1.0.0 "$pkgdir/usr/lib/lamina_core.so.1"
-  ln -s lamina_core.so.1 "$pkgdir/usr/lib/lamina_core.so"
+    DESTDIR="${pkgdir}" \
+        cmake --build build \
+        --target install
+
+    # remove libuv files from package
+    rm ${pkgdir}/usr/lib/libuv.so* ${pkgdir}/usr/lib/libuv.a  # libs
+    rm ${pkgdir}/usr/include/uv.h -r ${pkgdir}/usr/include/uv # headers
+    rm -r ${pkgdir}/usr/share/doc                             # docs
+    rm -r ${pkgdir}/usr/lib/cmake                             # cmake files
+    rm -r ${pkgdir}/usr/lib/pkgconfig                         # pkgconfig files
+
+    # install license
+    install -Dm644 Lamina/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
