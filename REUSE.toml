@@ -1,0 +1,32 @@
+version = 1
+
+[[annotations]]
+path = [
+    "src/**",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "LicenseRef-openresty"
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore"
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "cookie.patch",
+]
+SPDX-FileCopyrightText = "nginx-mod-lua contributors"
+SPDX-License-Identifier = "BSD-2-Clause"
+
+[[annotations]]
+path = [
+    "COPYRIGHT.txt"
+]
+SPDX-FileCopyrightText = "openresty authors"
+SPDX-License-Identifier = "LicenseRef-openresty"
+

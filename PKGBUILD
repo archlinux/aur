@@ -15,14 +15,16 @@ _modname="${pkgname#nginx-mod-}"
 
 pkgdesc='Lua script engine module for nginx'
 arch=('i686' 'x86_64')
-depends=('nginx' 'nginx-mod-ndk' 'luajit' 'lua-resty-core' 'pcre2')
+depends=('nginx' 'nginx-mod-ndk' 'luajit' 'lua-resty-core' 'pcre2' 'glibc')
 makedepends=('nginx-src')
 url="https://github.com/openresty/lua-nginx-module"
-license=('BSD')
+license=('LicenseRef-openresty')
 
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
+        ${license}.txt
 	cookie.patch)
 sha256sums=('634827d54de6216cb0502d14f76610788b3a3e33160e91d5578d6db0d9a34a20'
+            'db9cc61814b06cffc464af6137a1640f8402f863659e19686b2e93900d2b9614'
             '774e46d085ca8bd0d7cd84a36946cf1fd31f284ca9ebc90828b758297614975b')
 
 prepare() {
@@ -48,6 +50,7 @@ build() {
 }
 
 package() {
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "../${license}.txt"
 	cd build/objs
 	for mod in *.so; do
 		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
