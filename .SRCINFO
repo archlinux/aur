@@ -1,0 +1,19 @@
+pkgbase = vserial
+	pkgdesc = Virtual serial port kernel module with systemd service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/33671/vserial
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = linux-headers
+	makedepends = gcc
+	depends = dkms
+	source = vserial::git+https://github.com/33671/vserial
+	source = dkms.conf
+	source = vserial_startup.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vserial
