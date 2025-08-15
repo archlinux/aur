@@ -12,7 +12,7 @@ makedepends=(luarocks)
 optdepends=('git: get project name' 'python-lupa')
 _revision=1
 source=("https://luarocks.org/manifests/freed-wu/$_pkgname-$pkgver-$_revision.src.rock")
-sha256sums=('9986267f86f1e982d13a4c1e9c70c5a28abf35dc75ed678db70bc2e2c86d107a')
+sha256sums=('f9c331b2eeb3bfeec2ee999238c2e0065b47252df0748c9cf22d13635c09c7d0')
 _lua_version=5.4
 
 _package() {
