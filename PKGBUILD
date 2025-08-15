@@ -1,7 +1,7 @@
 # Maintainer: Shiina Rikka <rikka@rikka.im>
 
 pkgname=step-ca-cgo
-pkgver=v0.25.3.rc7.r722.g0b0f351
+pkgver=v0.25.3.rc7.r824.g9c485c5
 pkgrel=1
 pkgdesc="A private certificate authority (X.509 & SSH) & ACME server for secure automated certificate management, so you can use TLS everywhere & SSO for SSH. Using CGO build."
 arch=(x86_64)
