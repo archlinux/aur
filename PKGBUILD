@@ -14,7 +14,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=e94f3af85492302f7a819441458f80bca0ad9912e5a4c83c699ff3c63c52957d}
+: ${_cksum=ea43491bc7ace1e414b3b2d957f8cf96e7049155123f0acce798accf8da1acba}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -26,7 +26,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.15.9
+pkgver=6.16.1
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -69,7 +69,7 @@ source=(
   "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config"
 )
 sha256sums=(
-  "${_cksum:?}"
+  "${_cksum:-SKIP}"
   'SKIP'
   'SKIP'
 )
@@ -79,7 +79,7 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF # Jan Alexander Steffens (heftig)
 )
 
-if [[ ${_build_vfio::1} == "t" ]]; then
+if [[ "${_build_vfio::1}" == "t" ]]; then
   source+=(
     1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
     1002-6.14.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
@@ -90,7 +90,7 @@ if [[ ${_build_vfio::1} == "t" ]]; then
   )
 fi
 
-if [[ ${_build_arch_patch::1} == "t" ]]; then
+if [[ "${_build_arch_patch::1}" == "t" ]]; then
   [[ ${pkgver} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && _pkgver=${pkgver%.*}
 
   _dl_url_arch='https://github.com/archlinux/linux'
@@ -110,7 +110,7 @@ if [[ ${_build_arch_patch::1} == "t" ]]; then
   )
 fi
 
-if [[ ${_build_clang::1} == "t" ]]; then
+if [[ "${_build_clang::1}" == "t" ]]; then
   makedepends+=(clang llvm lld)
 
   export LLVM=1
@@ -129,7 +129,7 @@ _prepare_extra() {
   # remove extra version suffix
   sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
-  if [[ ${_build_clang::1} == "t" ]]; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
   fi
