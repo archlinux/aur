@@ -1,23 +1,26 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2122.1
+pkgver=2123
 pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch' 'zstd'
+depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch'
 	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
 options=(!lto)
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
 install=${pkgname}.install
-sha256sums=('bd2bba24511af6307abd86d1f9a9af326658dcbffca04133e0bbe304671d20aa')
+sha256sums=('248470c047d8a7363e01f6b7349a07d896ef75ce9339d9401f0da926ec798762')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
+
+	#Fix zstd include
+	sed -i 's/zstd\/contrib\/seekable_format\///g' src/common/zstd_compression.cpp
 }
 
 build() {
@@ -47,7 +50,7 @@ build() {
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
-	-DUSE_SYSTEM_ZSTD=ON \
+	-DUSE_SYSTEM_ZSTD=OFF \
 	-DCITRA_USE_PRECOMPILED_HEADERS=OFF \
 	-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
 	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
