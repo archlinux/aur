@@ -1,0 +1,179 @@
+diff --git a/config/kernel-objtool.m4 b/config/kernel-objtool.m4
+index 3020440eb3..e616ccebcb 100644
+--- a/config/kernel-objtool.m4
++++ b/config/kernel-objtool.m4
+@@ -49,15 +49,6 @@ AC_DEFUN([ZFS_AC_KERNEL_SRC_OBJTOOL], [
+ 		#error "STACK_FRAME_NON_STANDARD is not defined."
+ 		#endif
+ 	])
+-
+-	dnl # 6.15 made CONFIG_OBJTOOL_WERROR=y the default. We need to handle
+-	dnl # this or our build will fail.
+-	ZFS_LINUX_TEST_SRC([config_objtool_werror], [
+-		#if !defined(CONFIG_OBJTOOL_WERROR)
+-		#error "CONFIG_OBJTOOL_WERROR is not defined."
+-		#endif
+-	])
+-
+ ])
+ 
+ AC_DEFUN([ZFS_AC_KERNEL_OBJTOOL], [
+@@ -93,14 +84,6 @@ AC_DEFUN([ZFS_AC_KERNEL_OBJTOOL], [
+ 		],[
+ 			AC_MSG_RESULT(no)
+ 		])
+-
+-		AC_MSG_CHECKING([whether CONFIG_OBJTOOL_WERROR is defined])
+-		ZFS_LINUX_TEST_RESULT([config_objtool_werror],[
+-			AC_MSG_RESULT(yes)
+-			CONFIG_OBJTOOL_WERROR_DEFINED=yes
+-		],[
+-			AC_MSG_RESULT(no)
+-		])
+ 	],[
+ 		AC_MSG_RESULT(no)
+ 	])
+diff --git a/config/zfs-build.m4 b/config/zfs-build.m4
+index 7cf1b02d87..55fc029f08 100644
+--- a/config/zfs-build.m4
++++ b/config/zfs-build.m4
+@@ -205,46 +205,6 @@ AC_DEFUN([ZFS_AC_DEBUG_INVARIANTS], [
+ 	AC_MSG_RESULT([$enable_invariants])
+ ])
+ 
+-dnl # Disabled by default. If enabled allows a configured "turn objtools
+-dnl # warnings into errors" (CONFIG_OBJTOOL_WERROR) behavior to take effect.
+-dnl # If disabled, objtool warnings are never turned into errors. It can't
+-dnl # be enabled if the kernel wasn't compiled with CONFIG_OBJTOOL_WERROR=y.
+-dnl #
+-AC_DEFUN([ZFS_AC_OBJTOOL_WERROR], [
+-	AC_MSG_CHECKING([whether objtool error on warning behavior is enabled])
+-	AC_ARG_ENABLE([objtool-werror],
+-		[AS_HELP_STRING([--enable-objtool-werror],
+-		[Enable objtool's error on warning behaviour if present @<:@default=no@:>@])],
+-		[enable_objtool_werror=$enableval],
+-		[enable_objtool_werror=no])
+-	AC_MSG_RESULT([$enable_objtool_werror])
+-
+-	AS_IF([test x$CONFIG_OBJTOOL_WERROR_DEFINED = xyes],[
+-		AS_IF([test x$enable_objtool_werror = xyes],[
+-			AC_MSG_NOTICE([enable-objtool-werror defined, keeping -Werror ])
+-		],[
+-			AC_MSG_NOTICE([enable-objtool-werror undefined, disabling -Werror ])
+-			OBJTOOL_DISABLE_WERROR=y
+-			abs_objtool_binary=$kernelsrc/tools/objtool/objtool
+-			AS_IF([test -x $abs_objtool_binary],[],[
+-				AC_MSG_ERROR([*** objtool binary $abs_objtool_binary not found])
+-			])
+-			dnl # The path to the wrapper is defined in modules/Makefile.in.
+-		])
+-	],[
+-		dnl # We can't enable --Werror if it's not there.
+-		AS_IF([test x$enable_objtool_werror = xyes],[
+-			AC_MSG_ERROR([
+-	*** Cannot enable objtool-werror,
+-	*** a kernel built with CONFIG_OBJTOOL_WERROR=y is required.
+-			])
+-		],[])
+-	])
+-
+-	AC_SUBST(OBJTOOL_DISABLE_WERROR)
+-	AC_SUBST(abs_objtool_binary)
+-])
+-
+ AC_DEFUN([ZFS_AC_CONFIG_ALWAYS], [
+ 	AX_COUNT_CPUS([])
+ 	AC_SUBST(CPU_COUNT)
+diff --git a/configure.ac b/configure.ac
+index f4b52e1f7a..c05c874aff 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,7 +65,6 @@ ZFS_AC_DEBUGINFO
+ ZFS_AC_DEBUG_KMEM
+ ZFS_AC_DEBUG_KMEM_TRACKING
+ ZFS_AC_DEBUG_INVARIANTS
+-ZFS_AC_OBJTOOL_WERROR
+ 
+ AC_CONFIG_FILES([
+ 	contrib/debian/rules
+@@ -87,7 +86,6 @@ AC_CONFIG_FILES([
+ 	zfs.release
+ ])
+ 
+-AC_CONFIG_FILES([scripts/objtool-wrapper], [chmod +x scripts/objtool-wrapper])
+ 
+ AC_OUTPUT
+ 
+diff --git a/module/Makefile.in b/module/Makefile.in
+index 859ba8649d..a65cbfce1a 100644
+--- a/module/Makefile.in
++++ b/module/Makefile.in
+@@ -57,7 +57,6 @@ modules-Linux:
+ 		$(if @KERNEL_LD@,LD=@KERNEL_LD@) $(if @KERNEL_LLVM@,LLVM=@KERNEL_LLVM@) \
+ 		$(if @KERNEL_CROSS_COMPILE@,CROSS_COMPILE=@KERNEL_CROSS_COMPILE@) \
+ 		$(if @KERNEL_ARCH@,ARCH=@KERNEL_ARCH@) \
+-		$(if @OBJTOOL_DISABLE_WERROR@,objtool=@abs_top_builddir@/scripts/objtool-wrapper) \
+ 		M="$$PWD" @KERNEL_MAKE@ CONFIG_ZFS=m modules
+ 
+ modules-FreeBSD:
+diff --git a/scripts/.gitignore b/scripts/.gitignore
+index 443cb7b848..5621a6e147 100644
+--- a/scripts/.gitignore
++++ b/scripts/.gitignore
+@@ -1,2 +1 @@
+ common.sh
+-objtool-wrapper
+diff --git a/scripts/objtool-wrapper.in b/scripts/objtool-wrapper.in
+deleted file mode 100644
+index 0451f87182..0000000000
+--- a/scripts/objtool-wrapper.in
++++ /dev/null
+@@ -1,36 +0,0 @@
+-#!/bin/sh
+-
+-# SPDX-License-Identifier: MIT
+-#
+-# Copyright (c) 2025 Attila Fülöp <attila@fueloep.org>
+-#
+-# Permission is hereby granted, free of charge, to any person obtaining a copy
+-# of this software and associated documentation files (the "Software"), to
+-# deal in the Software without restriction, including without limitation the
+-# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+-# sell copies of the Software, and to permit persons to whom the Software is
+-# furnished to do so, subject to the following conditions:
+-#
+-# The above copyright notice and this permission notice shall be included in
+-# all copies or substantial portions of the Software.
+-#
+-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+-# IN THE SOFTWARE.
+-
+-# Filter out objtools '--Werror' flag.
+-
+-objtool="@abs_objtool_binary@"
+-args=$(echo "$*" | sed s/--Werror//)
+-
+-if [ -z "$objtool" ]; then
+-	echo "$(basename "$0"): No objtool binary configured" 1>&2
+-	exit 1;
+-fi
+-
+-# shellcheck disable=SC2086
+-exec "$objtool" $args
+diff --git a/scripts/spdxcheck.pl b/scripts/spdxcheck.pl
+index 47128402f7..bddda22334 100755
+--- a/scripts/spdxcheck.pl
++++ b/scripts/spdxcheck.pl
+@@ -94,7 +94,6 @@ my $tagged_patterns = q(
+ 	etc/init.d/zfs-share.in
+ 	etc/init.d/zfs-zed.in
+ 	etc/zfs/zfs-functions.in
+-	scripts/objtool-wrapper.in
+ 
+ 	# Misc items that have clear licensing info but aren't easily matched,
+ 	# or are the first of a class that we aren't ready to match yet.
