@@ -4,7 +4,7 @@
 _pkgname=lightning-terminal
 __pkgname=lit
 pkgname=${_pkgname}-bin
-pkgver=0.15.0_alpha
+pkgver=0.15.1_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity."
@@ -23,9 +23,9 @@ manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-gug
 "${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
-sha256sums=('abce33503a442d5d282a2a14f55c7e2a6ffdc6b29bf604f970bea1375f8894be'
+sha256sums=('06fdfca84aadd5aab0c8f0dec9a558e86fc300d0f0610a723b7b4b7ff5d5632b'
             'SKIP'
-            '998d7bd9a444f273c908b8f3bde5dabee22ec616fac9ef641ac8e39960346ab3')
+            'f50951e5f8878eccb2b4e287e41597a686d67e6e9a184ae087e0faaa0b3f41f8')
 
 validpgpkeys=('26984CB69EB8C4A26196F7A4D7D916376026F177'
               '187F6ADD93AE3B0CF335AA6AB984570980684DCC'
