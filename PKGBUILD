@@ -1,7 +1,7 @@
 # Maintainer: hengtseChou <hankthedev@gmail.com>
 
 pkgname=niriswitcher
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="An application switcher for niri"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
   'python-installer'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7aa6e1c58b8858069f4211d3e72ee318060b37cf955597ceb5c43e1b260b4d63')
+sha256sums=('be6fb6413db8d250a7fe51b8fa892e6d44adc1fabc8199f1127c52967c4bc6bc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = niriswitcher
 	pkgdesc = An application switcher for niri
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/isaksamsten/niriswitcher
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = niriswitcher
 	depends = python-gobject
 	depends = gtk4-layer-shell
 	depends = libadwaita
-	source = niriswitcher-0.7.0.tar.gz::https://github.com/isaksamsten/niriswitcher/archive/refs/tags/0.7.0.tar.gz
-	sha256sums = 7aa6e1c58b8858069f4211d3e72ee318060b37cf955597ceb5c43e1b260b4d63
+	source = niriswitcher-0.7.1.tar.gz::https://github.com/isaksamsten/niriswitcher/archive/refs/tags/0.7.1.tar.gz
+	sha256sums = be6fb6413db8d250a7fe51b8fa892e6d44adc1fabc8199f1127c52967c4bc6bc
 
 pkgname = niriswitcher
