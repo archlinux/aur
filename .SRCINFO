@@ -1,6 +1,6 @@
 pkgbase = python-mal-toolbox
 	pkgdesc = A collection of tools used to create MAL models and attack graphs.
-	pkgver = 0.3.11
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/mal-lang/mal-toolbox
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = python-mal-toolbox
 	depends = python-antlr4
 	depends = python-docopt
 	depends = python-yaml
-	optdepends = NOTE: Install manually with pip: py2neo (required for Neo4j integration)
-	source = mal-toolbox-0.3.11.tar.gz::https://github.com/mal-lang/mal-toolbox/archive/refs/tags/0.3.11.tar.gz
-	sha256sums = 7d339ede0813a094ebcc65e3efcd237d37a2f43ed5fbe5bd46a3c971db9ed8b5
+	source = mal-toolbox-1.0.0.tar.gz::https://github.com/mal-lang/mal-toolbox/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 863bad28b6b8e37304230f11d06a6cdbda6329215026332606d1b2e4330ad3e4
 
 pkgname = python-mal-toolbox

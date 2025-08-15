@@ -12,7 +12,7 @@
 
 _name=mal-toolbox
 pkgname='python-mal-toolbox'
-pkgver=0.3.11
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A collection of tools used to create MAL models and attack graphs."
 arch=('any')
@@ -25,9 +25,8 @@ depends=(
     'python-yaml'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
-optdepends=('NOTE: Install manually with pip: py2neo (required for Neo4j integration)')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/mal-lang/${_name}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7d339ede0813a094ebcc65e3efcd237d37a2f43ed5fbe5bd46a3c971db9ed8b5')
+sha256sums=('863bad28b6b8e37304230f11d06a6cdbda6329215026332606d1b2e4330ad3e4')
 
 
 prepare() {
