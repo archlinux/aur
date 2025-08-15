@@ -1,0 +1,17 @@
+pkgbase = arch-router-git
+	pkgdesc = Arch Linux Soft Router Script Toolbox
+	pkgver = r11.29177d3
+	pkgrel = 1
+	url = https://github.com/switchToLinux/arch_router
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = sh
+	provides = arch-router
+	conflicts = arch-router
+	options = !strip
+	options = !debug
+	source = arch-router-git::git+https://github.com/switchToLinux/arch_router.git
+	sha256sums = SKIP
+
+pkgname = arch-router-git
