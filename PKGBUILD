@@ -1,18 +1,18 @@
 # Maintainer: Andy Oknen <andy.oknen@ya.ru>
 
-pkgbase=yggdrasil-go-git
-pkgname=yggdrasil-go-git
+pkgbase=yggdrasil-dev-git
+pkgname=yggdrasil-dev-git
 _pkgname=yggdrasil-go
 pkgver=0.5.12
-_commit=213f72b8403ff55a5e38a0fa7d1cd0a093ac4666
+_commit=1ca92725af5f2d47bb2051801b8b4b9ed1370d19
 pkgrel=1
-pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network"
+pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network (develop branch)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
-url="https://github.com/yggdrasil-network/yggdrasil-go"
+url="https://github.com/andyoknen/${_pkgname}"
 license=('LGPLv3')
-conflicts=('yggdrasil-git' 'yggdrasil-bin')
+conflicts=('yggdrasil-git' 'yggdrasil-bin' 'yggdrasil')
 makedepends=('git' 'go')
-source=("${_pkgname}::git+https://github.com/yggdrasil-network/yggdrasil-go.git#commit=${_commit}")
+source=("${_pkgname}::git+${url}.git#commit=${_commit}")
 sha512sums=('SKIP')
 
 build() {
