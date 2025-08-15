@@ -1,7 +1,7 @@
 # Maintainer: Norbert <sandwich@archworks.co>
 
 pkgname=semaphore-bin
-pkgver=2.15.7
+pkgver=2.16.10
 pkgrel=1
 pkgdesc="Modern UI for Ansible (Binary Release)"
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_aarch64=(
   "semaphore.service"
   "semaphore.sysusers.d"
 )
-sha256sums_x86_64=('a5364ce302c0ada6a5e32f3e7ee5452e9a2968a0ab309c9bed1e40c9bf30537e'
+sha256sums_x86_64=('e41c53f5ca690fccc2589d6668c45bf0e0b5c882698052ca15483cd8d4906678'
                    '712c2b4c8db3c909f0dce687e138e7d53737308a79183d5d9fd05f4dc5792dd9'
                    'fb2699dfd2c5873ae5ffb340bb38d88ea7ab39034f338ba2915e8e91320e9945')
-sha256sums_aarch64=('8b6706691c5a9317c9122b818e1a5d2f5b0679011b49fa6836acac8aa20b722b'
+sha256sums_aarch64=('6901d70f6b5885f576650b295bfc001c1dc66231bfdf7dcffac64390469ab5bf'
                     '712c2b4c8db3c909f0dce687e138e7d53737308a79183d5d9fd05f4dc5792dd9'
                     'fb2699dfd2c5873ae5ffb340bb38d88ea7ab39034f338ba2915e8e91320e9945')
 
