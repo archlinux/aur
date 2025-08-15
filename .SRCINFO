@@ -8,10 +8,10 @@ pkgbase = xlibre-xf86-input-libinput-bin
 	license = MIT
 	depends = libinput
 	depends = glibc
-	provides = xlibre-xf86-input-libinput
 	provides = xf86-input-libinput
-	conflicts = xlibre-xf86-input-libinput
+	provides = xlibre-input-libinput
 	conflicts = xf86-input-libinput
+	conflicts = xlibre-input-libinput
 	conflicts = xorg-server-common<25.0.0.0
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
