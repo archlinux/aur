@@ -2,7 +2,7 @@
 pkgname=grub-reboot-picker
 _app_id=com.mendhak.grubrebootpicker
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Tray application to reboot into different OSes or UEFI/BIOS"
 arch=('any')
 url="https://github.com/mendhak/grub-reboot-picker"
@@ -25,7 +25,7 @@ makedepends=(
 #optdepends=('molly-guard')  ## Broken and out of date
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'un-reboot.png')  # from Ubuntu update-notifier package
-sha256sums=('f19c4b244d57fe6f48ee6c0c1dfae692d7e9c6bc9dd5d0201ffb7bede444f961'
+sha256sums=('aeb761a58493676db93c6e053fa98411ca4ab50c217acc71a78f0345583d8d58'
             'd764a1b0722752b5166529838f29cfa5b708554d209fc4206e8f7f846e8a51cf')
 
 prepare() {
