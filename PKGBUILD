@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2123.beta2.r5.g80f0c03
+pkgver=2123.rc2.r1.g8fe05d5
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -19,6 +19,7 @@ depends=(
 	'sdl2'
 )
 makedepends=(
+	'boost'
 	'catch2'
 	'cmake'
 	'cpp-jwt'
@@ -44,7 +45,6 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/azahar-emu/azahar.git"
-	"$_pkgname-boost::git+https://github.com/azahar-emu/ext-boost.git"
 	"$_pkgname-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git"
 	"$_pkgname-discord-rpc::git+https://github.com/azahar-emu/discord-rpc.git"
 	"$_pkgname-dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
@@ -59,23 +59,7 @@ source=(
 	"xbyak::git+https://github.com/herumi/xbyak.git"
 	"zstd::git+https://github.com/facebook/zstd.git"
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'{,,,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -84,7 +68,6 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git config submodule.boost.url ../$_pkgname-boost
 	git config submodule.compatibility-list.url ../$_pkgname-compatibility-list
 	git config submodule.dds-ktx.url ../dds-ktx
 	git config submodule.discord-rpc.url ../$_pkgname-discord-rpc
@@ -118,7 +101,6 @@ build() {
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4"
 		-D CMAKE_INSTALL_PREFIX=/usr
-		-D DISABLE_SYSTEM_BOOST=ON
 		-D DISABLE_SYSTEM_CPP_HTTPLIB=ON
 		-D DISABLE_SYSTEM_DYNARMIC=ON
 		-D DISABLE_SYSTEM_LODEPNG=ON
@@ -131,7 +113,6 @@ build() {
 		-D ENABLE_TESTS="$CHECKFUNC"
 		-D USE_DISCORD_PRESENCE=ON
 		-D USE_SYSTEM_LIBS=ON
-		-D USE_SYSTEM_SPIRV_HEADERS=ON
 		-Wno-dev
 	)
 	local flags
@@ -152,6 +133,8 @@ check() {
 package() {
 	depends+=(
 		'libbacktrace.so'
+		'libboost_iostreams.so'
+		'libboost_serialization.so'
 		'libcrypto.so'
 		'libcubeb.so'
 		'libfmt.so'
