@@ -1,7 +1,7 @@
 pkgbase = libtcod
 	pkgdesc = Roguelike graphics/utility library
 	pkgver = 2.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/libtcod/libtcod
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = libtcod
 	source = https://github.com/libtcod/libtcod/archive/refs/tags/2.1.1.tar.gz
 	source = 001-fix-install-config-pt1.patch
 	source = 002-fix-install-config-pt2.patch
+	source = 003-fix-glibc-2.42-compilation.patch
 	sha256sums = ee9cc60140f480f72cb2321d5aa50beeaa829b0a4a651e8a37e2ba938ea23caa
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
