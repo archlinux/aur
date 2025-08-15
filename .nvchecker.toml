@@ -1,0 +1,4 @@
+[hidviz]
+source = "git"
+git = "https://github.com/ondrejbudai/hidviz.git"
+prefix = "v"
