@@ -10,10 +10,10 @@ pkgbase = xlibre-xf86-video-qxl-bin
 	depends = libxfont2
 	depends = glibc
 	optdepends = python: for Xspice
-	provides = xlibre-xf86-video-qxl
 	provides = xf86-video-qxl
-	conflicts = xlibre-xf86-video-qxl
+	provides = xlibre-video-qxl
 	conflicts = xf86-video-qxl
+	conflicts = xlibre-video-qxl
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
 	noextract = xlibre-xf86-video-qxl-0.1.6.1-2-x86_64.pkg.tar.zst
