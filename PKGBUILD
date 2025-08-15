@@ -1,7 +1,7 @@
 
 _gemname=xxhash
 pkgname=ruby-${_gemname}
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Ruby wrapper for xxHash lib"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(ruby)
 makedepends=(rubygems ruby-rake)
 options=(!emptydirs)
 source=(${url}/archive/v${pkgver}/$_gemname-$pkgver.tar.gz)
-sha256sums=('0139e882fa934aab85f4e2b51bd5a4486d575ea15ede1e598ac6d617266f704b')
+sha256sums=('5bcebddae3f9d927d13f1c5d875661ce11f08bb05efefea50ef526d3b81ca0bc')
 
 prepare() {
   cd $_gemname-$pkgver
