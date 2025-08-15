@@ -1,19 +1,19 @@
 # Maintainer: Firegem <firinggems@hotmail.com>
 # shellcheck disable=SC2034,2154,2164
 pkgname=lux-cli
-pkgver=0.7.4
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A luxurious package manager for Lua"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/nvim-neorocks/lux"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'libgit2' 'openssl' 'libgpg-error' 'gpgme' 'bzip2' 'xz')
-makedepends=('cargo' 'luajit')
+depends=('glibc' 'gcc-libs' 'libgit2' 'libgpg-error' 'gpgme' 'bzip2' 'xz')
+makedepends=('cargo' 'openssl')
 provides=('lx')
 conflicts=('lux-cli-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ee62248c4eeef8bfa674f78009fbb9b43b04e1120b3be1ba2095984597fb754e')
+sha256sums=('3a4dc42f635ec04cdc847cc2af29a316e8c7194eab25dbd60a2bfe2c0f17207f')
 
 prepare() {
     cd "${pkgname%-cli}-${pkgver}"
@@ -26,7 +26,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=${PWD}/target
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
-    cargo build --frozen --release
+    cargo build --features vendored --frozen --release
     cargo run --frozen --release --package xtask -- dist-completions
 }
 
