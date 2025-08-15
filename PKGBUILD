@@ -31,7 +31,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.3.3.r61.g3b64a9619f
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
