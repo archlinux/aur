@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian
-pkgver=3.1.0+120
+pkgver=3.1.0+125
 pkgrel=1
 pkgdesc="Next Generation Network Center"
 arch=('x86_64')
