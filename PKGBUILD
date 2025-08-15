@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.7.3
+pkgver=3.7.4
 _electronversion=37
 _nodeversion=24
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('d8f740e0e65fdd1133aaf85da30d20dcf5c26b7800885d61d7d5a15260f78907'
+sha256sums=('b4437139f24412fb834713e86926439516fabf3fd7fe0ef9a0b34fdca8af0443'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
