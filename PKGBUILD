@@ -3,8 +3,7 @@
 _gitowner=LucienHH
 _gitrepo=obs-doom-transition
 pkgname=${_gitrepo}-git
-pkgver=1.4.1.b2eff58
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for OBS Studio adding a DOOM 93 like transition (screen-melting)"
 arch=("x86_64" "aarch64")
 url="https://github.com/${_gitowner}/${_gitrepo}"
@@ -26,5 +25,6 @@ build() {
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
+	install -Dm 666 ${_gitrepo}/data ${pkgdir}/usr/share/obs/obs-plugins/${_gitrepo}/data
+	install -Dm 644 build/obs-doom-transition.so ${pkgdir}/usr/share/obs/obs-plugins/${_gitrepo}/obs-doom-transition.so
 }
