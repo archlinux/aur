@@ -2,7 +2,7 @@
 _appname=tomato
 pkgname="${_appname}-radio-automation-bin"
 _pkgname="Tomato Radio Automation"
-pkgver=0.12.24
+pkgver=0.12.26
 _electronversion=37
 pkgrel=1
 pkgdesc="Tomato Radio Automation desktop client. Dead simple radio ads.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_amd64.deb")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('00dd3d404fbff2ab854441d8ad243242e142956acc84983a4b67340a0f789fcf')
-sha256sums_x86_64=('486832d944055bf230ab4da44202623cc73400a8338fa15b8ee9dbda00500499')
+sha256sums_aarch64=('aadcedd0d78ebc66516d9dd204600cc8cf51e515ef34d7cdbef716408e499d58')
+sha256sums_x86_64=('b209e30b904940ec65269c59fb814a1b0c982a18936de0bb60a80338ddd8e37d')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
