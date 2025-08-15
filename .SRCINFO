@@ -11,10 +11,10 @@ pkgbase = xlibre-xf86-video-vmware-bin
 	depends = libx11
 	depends = libdrm
 	depends = glibc
-	provides = xlibre-xf86-video-vmware
 	provides = xf86-video-vmware
-	conflicts = xlibre-xf86-video-vmware
+	provides = xlibre-video-vmware
 	conflicts = xf86-video-vmware
+	conflicts = xlibre-video-vmware
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
