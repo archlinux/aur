@@ -2,7 +2,7 @@
 pkgname=fzf-tab-completion-git
 _pkgname=${pkgname%-git}
 pkgver=r436.4850357
-pkgrel=1
+pkgrel=2
 pkgdesc="Tab completion using fzf in zsh, bash, GNU readline apps (e.g. python, php -a etc.)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/lincheney/fzf-tab-completion"
