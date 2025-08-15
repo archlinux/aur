@@ -1,0 +1,11 @@
+pkgbase = magic-cpp
+	pkgdesc = Header-only C++ library (type visualization, struct/enum reflection)
+	pkgver = r37.3a2c23c
+	pkgrel = 1
+	url = https://github.com/16bit-ykiko/magic-cpp
+	arch = any
+	license = MIT
+	source = git+https://github.com/16bit-ykiko/magic-cpp.git
+	sha256sums = SKIP
+
+pkgname = magic-cpp
