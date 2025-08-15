@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CytoGLMM
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Conditional Differential Analysis for Flow and Mass Cytometry Experiments'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f7a8f7e4bf9f32610b4fc4abb1421d1bdc5e940bf9afd5b6eb3747ff7dbe2f2')
+sha256sums=('89812a1728eae95b22684da265cd5d8b80d98872e35463d9fac4c504f1f6fcb0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
