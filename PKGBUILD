@@ -3,13 +3,13 @@
 # Contributor: goll <adrian.goll+aur[at]gmail>
 pkgname=bambustudio-nvidia-bin
 pkgver=02.02.00.85
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Software for BambuLab's 3D printers with a fix for nVidia cards"
 arch=("x86_64")
 url="https://github.com/bambulab/BambuStudio"
 license=('AGPL3')
 conflicts=('bambustudio' 'bambustudio-git' 'bambustudio-bin')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-libav')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-libav' 'webkit2gtk-4.1')
 makedepends=('fuse2')
 source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v${pkgver}/Bambu_Studio_ubuntu-24.04_PR-7829.AppImage"
 	"BambuStudio.desktop"
