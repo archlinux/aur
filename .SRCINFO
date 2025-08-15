@@ -4,6 +4,7 @@ pkgbase = wfrc-git
 	pkgrel = 1
 	url = https://github.com/Vescrity/wfrc
 	arch = any
+	license = LGPL-2.1-only
 	makedepends = git
 	depends = wf-recorder
 	depends = bash
