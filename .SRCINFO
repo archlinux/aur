@@ -1,0 +1,13 @@
+pkgbase = palemoon-extension-flash
+	pkgdesc = Pale Moon Flash extension
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/darktohka/clean-flash-builds
+	arch = x86_64
+	license = custom:Flash Player EULA
+	license = LGPL-2.1-or-later
+	depends = palemoon
+	source = https://github.com/darktohka/clean-flash-builds/releases/download/v1.7/flash_player_patched_npapi_linux.x86_64.tar.gz
+	sha256sums = bddbebc5bf3b0aa4974eea23797daf9ca8627f740e64108e52460b06bf32fba5
+
+pkgname = palemoon-extension-flash
