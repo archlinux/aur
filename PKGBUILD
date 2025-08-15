@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=0
+pkgver=r473.6007467e
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
