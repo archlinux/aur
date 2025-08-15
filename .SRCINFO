@@ -1,15 +1,17 @@
 pkgbase = dufs-bin
 	pkgdesc = Dufs is a distinctive utility file server that supports static serving, uploading, searching, accessing control, webdav...
 	pkgver = 0.44.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sigoden/dufs
 	arch = x86_64
 	arch = aarch64
 	license = APACHE
 	license = MIT
-	source = https://github.com/sigoden/dufs/releases/download/v0.44.0/dufs-v0.44.0-x86_64-unknown-linux-musl.tar.gz
 	source = https://raw.githubusercontent.com/sigoden/dufs/main/LICENSE-MIT
-	sha256sums = 8d06c07a0d40c90e5386837462640c89e409ef161d6342e453644ec1e888ad27
 	sha256sums = 4623d04ec401ec83c94b935d75d8b4329e860580e91ed777ef03a0aa3b31bb04
+	source_x86_64 = https://github.com/sigoden/dufs/releases/download/v0.44.0/dufs-v0.44.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 8d06c07a0d40c90e5386837462640c89e409ef161d6342e453644ec1e888ad27
+	source_aarch64 = https://github.com/sigoden/dufs/releases/download/v0.44.0/dufs-v0.44.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 08c0907d728e0fb06671607fa2026f9a9daca0b5d10644a2051536328b9032cb
 
 pkgname = dufs-bin
