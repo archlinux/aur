@@ -7,10 +7,10 @@ pkgbase = xlibre-xf86-input-void-bin
 	groups = xlibre-drivers
 	license = custom
 	depends = glibc
-	provides = xlibre-xf86-input-void
 	provides = xf86-input-void
-	conflicts = xlibre-xf86-input-void
+	provides = xlibre-input-void
 	conflicts = xf86-input-void
+	conflicts = xlibre-input-void
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
 	noextract = xlibre-xf86-input-void-1.4.2.1-2-x86_64.pkg.tar.zst
