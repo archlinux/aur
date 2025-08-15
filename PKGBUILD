@@ -2,8 +2,8 @@
 
 
 pkgname=gray-git
-pkgver=0.0.1+git
-pkgrel=1
+pkgver=0.0.2+git
+pkgrel=2
 pkgdesc="A status notifier GObject library which can be used to create system trays"
 arch=('x86_64')
 url="https://github.com/Fabric-Development/gray"
