@@ -3,7 +3,7 @@
 pkgname=tango-test
 _pkgname=TangoTest
 pkgver=3.11
-pkgrel=1
+pkgrel=2
 groups=(tango-controls)
 pkgdesc="A famous TANGO server developed for testing."
 arch=("x86_64" "armv7h")
