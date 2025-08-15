@@ -22,6 +22,7 @@ _package() {
 	rm -r "${pkgdir:?}/usr/bin"
 	export LUA_PATH_${1/./_}="./share/lua/$1/?.lua;./?.lua;./?/init.lua;;/usr/share/lua/$1/?.lua;/usr/share/lua/$1.lua"
 	export LUA_CPATH_${1/./_}="./lib/lua/$1/?.so;./?.so;./?/init.so;;/usr/lib/lua/$1/?.so;/usr/lib/lua/$1.so"
+	local v
 	if [[ "$version" != "$_lua_version" ]]; then
 		v="$version"
 	fi
