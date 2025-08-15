@@ -11,11 +11,11 @@ pkgbase = xlibre-xf86-input-synaptics-bin
 	depends = libx11
 	depends = libxi
 	depends = glibc
-	provides = xlibre-xf86-input-synaptics
 	provides = xf86-input-synaptics
+	provides = xlibre-input-synaptics
 	provides = synaptics
-	conflicts = xlibre-xf86-input-synaptics
 	conflicts = xf86-input-synaptics
+	conflicts = xlibre-input-synaptics
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
 	conflicts = synaptics
