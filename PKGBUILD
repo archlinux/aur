@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=gensurvey
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=0
 pkgdesc="A tool to generate a survey website from JSON"
@@ -36,4 +36,16 @@ package() {
   install -Dm0755 "${srcdir}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   # install LICENSE
   install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  if command -v bash &>/dev/null; then
+    install -Dm0644 "${srcdir}/${pkgname}/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  fi
+
+  if command -v zsh &>/dev/null; then
+    install -Dm0644 "${srcdir}/${pkgname}/completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  fi
+
+  if command -v fish &>/dev/null; then
+    install -Dm0644 "${srcdir}/${pkgname}/completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  fi
 }
