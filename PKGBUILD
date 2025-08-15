@@ -4,8 +4,8 @@
 _pkgname='chatterino2'
 pkgname=${_pkgname}-bin
 pkgver=2.5.3
-_id=20250802T011905
-pkgrel=17
+_id=20250815T011806
+pkgrel=18
 pkgdesc='A chat client for Twitch.tv.'
 arch=('x86_64')
 url="https://github.com/chatterino/${_pkgname}"
@@ -18,7 +18,7 @@ provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Chatterino/pkg/releases/download/stable-${_id}/chatterino-arch-linux-${arch}.tar.zst")
-sha256sums=('a77f99960b0d2549079b3f1bb635a0fed4630a0b578cf5ceb902ceb782c50548')
+sha256sums=('9652f991bea7874d1fb6b1cf06d4222b53db55faecc2c0a9671bc03559d30b8b')
 
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
