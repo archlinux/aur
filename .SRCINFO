@@ -16,7 +16,7 @@ pkgbase = lux-cli
 	provides = lx
 	conflicts = lux-cli-git
 	options = !lto
-	source = lux-cli-0.7.4.tar.gz::https://github.com/nvim-neorocks/lux/archive/refs/tags/v0.7.4.tar.gz
+	source = lux-cli-0.15.0.tar.gz::https://github.com/nvim-neorocks/lux/archive/refs/tags/v0.15.0.tar.gz
 	sha256sums = 3a4dc42f635ec04cdc847cc2af29a316e8c7194eab25dbd60a2bfe2c0f17207f
 
 pkgname = lux-cli
