@@ -1,0 +1,14 @@
+pkgbase = arch_update_cli_tool
+	pkgdesc = A C CLI tool to check updates on installed packages and log them
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/LewiFZZ/arch_update_cli_tool
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = curl
+	source = https://github.com/LewiFZZ/arch_update_cli_tool/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = arch_update_cli_tool
