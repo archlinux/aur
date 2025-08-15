@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.9.0.r202.ga4c5fa4
+pkgver=0.10.0.r136.g5155903
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -51,6 +51,7 @@ conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/shadps4-emu/shadPS4.git"
 	"$_pkgname-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git"
+	"$_pkgname-hwinfo::git+https://github.com/shadps4-emu/ext-hwinfo.git"
 	"$_pkgname-imgui::git+https://github.com/shadps4-emu/ext-imgui.git"
 	"$_pkgname-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
 	"$_pkgname-libusb::git+https://github.com/shadps4-emu/ext-libusb.git"
@@ -59,6 +60,7 @@ source=(
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -79,6 +81,7 @@ prepare() {
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/ext-libusb.url ../$_pkgname-libusb
+	git config submodule.externals/hwinfo.url ../$_pkgname-hwinfo
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
