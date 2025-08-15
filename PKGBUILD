@@ -1,9 +1,9 @@
-# Maintainer: Moritz Sauter <moritz.sauter7+aur at gmail dot com>
+# Maintainer: Bryan Malyn <bim9262@gmail.com>
 
 pkgname=i3status-rust-full-git
 shortname="${pkgname%-full-*}"
-pkgver=0.33.2.r3513.g0d782b856
-pkgrel=6
+pkgver=0.34.0.r3579.gc8389be5c
+pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
@@ -18,7 +18,7 @@ optdepends=('alsa-utils: for the volume block'
             'powerline-fonts: for all themes using the powerline arrow char'
             'pulseaudio: for the volume block'
             'speedtest-cli: for the speedtest block'
-            'ttf-font-awesome: for the awesome icons'
+            'otf-font-awesome: for the awesome icons'
             'upower: for the battery block')
 provides=("${shortname}")
 conflicts=("${shortname}")
@@ -26,6 +26,7 @@ install="${shortname}.install"
 source=("${shortname}::git+$url")
 options=('!lto')
 sha1sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd "${shortname}"
@@ -41,7 +42,7 @@ build() {
   cd "${shortname}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --features "pulseaudio maildir pipewire notmuch"
+  cargo build --release --features "pulseaudio maildir pipewire icu_calendar notmuch"
   cargo xtask generate-manpage
 }
 
