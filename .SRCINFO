@@ -10,10 +10,10 @@ pkgbase = xlibre-xf86-video-ati-bin
 	depends = libpciaccess
 	depends = libdrm
 	depends = glibc
-	provides = xlibre-xf86-video-ati
 	provides = xf86-video-ati
-	conflicts = xlibre-xf86-video-ati
+	provides = xlibre-video-ati
 	conflicts = xf86-video-ati
+	conflicts = xlibre-video-ati
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
 	noextract = xlibre-xf86-video-ati-22.0.0.1-3-x86_64.pkg.tar.zst
