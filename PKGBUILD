@@ -3,7 +3,7 @@
 pkgname=vserial
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Virtual serial port kernel module with systemd service"
+pkgdesc="Virtual serialport kernel module"
 arch=('x86_64' 'aarch64')
 url="https://github.com/33671/vserial"
 license=('GPL-2.0-or-later')
