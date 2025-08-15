@@ -1,5 +1,5 @@
 pkgname=arch_update_cli_tool
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A C CLI tool to check updates on installed packages and log them"
 arch=('x86_64')
