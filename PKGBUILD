@@ -1,17 +1,23 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
+# Co-Maintainer: terrorwolf <jan.jr03+aur@gmail.com>
 pkgname=opendeck-git
-pkgver=r154.525c9ea
+pkgver=r266.1d9ca83
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
-url="https://github.com/ninjadev64/OpenDeck"
+url="https://github.com/nekename/OpenDeck"
 license=('GPL-3.0')
-makedepends=(git deno cargo dpkg hidapi webkit2gtk libappindicator-gtk3)
+makedepends=(git deno cargo dpkg hidapi)
+depends=(webkit2gtk-4.1 libappindicator-gtk3)
+optdepends=(
+'wine: Needed to support Windows-only plugins'
+'wine-mono: Needed to support some Windows-only plugins'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!lto')
 source=(
-	"${pkgname%-git}::git+https://github.com/ninjadev64/OpenDeck"
+	"${pkgname%-git}::git+https://github.com/nekename/OpenDeck"
 )
 
 sha256sums=('SKIP')
