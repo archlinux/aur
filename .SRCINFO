@@ -1,6 +1,6 @@
 pkgbase = ps2_manager-git
 	pkgdesc = A game manager for Open PS2 Loader (OPL) (cutting-edge version)
-	pkgver = 1.5.3.rd13df28
+	pkgver = 1.5.3.r2113bb1
 	pkgrel = 1
 	url = https://code.weexnes.dev/ps2_manager
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ps2_manager-git
 	provides = ps2_manager
 	conflicts = ps2_manager
 	options = !strip
-	source = ps2_manager-git-d13df2828daae1ef8c382b9aec0b3569d766d034.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=d13df2828daae1ef8c382b9aec0b3569d766d034&format=tgz
+	source = ps2_manager-git-2113bb14c267841cd67bfb901ce10f8cab825f31.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=2113bb14c267841cd67bfb901ce10f8cab825f31&format=tgz
 	sha256sums = SKIP
 
 pkgname = ps2_manager-git
