@@ -6,10 +6,10 @@ pkgbase = xlibre-xf86-input-vmmouse-bin
 	arch = x86_64
 	groups = xlibre-drivers
 	license = custom
-	provides = xlibre-xf86-input-vmmouse
-	provides = xf86-input-vmmouse
-	conflicts = xlibre-xf86-input-vmmouse
-	conflicts = xf86-input-vmmouse
+	provides = xlibre-input-vmmouse
+	provides = xlibre-input-vmmouse
+	conflicts = xlibre-input-vmmouse
+	conflicts = xlibre-input-vmmouse
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
