@@ -1,0 +1,14 @@
+pkgbase = ttf-shanggu-variable
+	pkgdesc = Calligraphic CJK font based on Source-Han-Sans in variable TTF format
+	pkgver = 1.022
+	pkgrel = 1
+	url = https://github.com/GuiWonder/Shanggu
+	arch = any
+	license = OFL-1.1
+	provides = ttf-font
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.022/ShangguSans-VF_OTCTTC.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.022/ShangguSerif-VF_OTCTTC.7z
+	md5sums = 46f704c44cccfda078f82fc096bbed92
+	md5sums = 7443181fb2d23f0590c9b5a2c79299dd
+
+pkgname = ttf-shanggu-variable
