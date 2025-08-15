@@ -1,0 +1,13 @@
+pkgbase = cryptura
+	pkgdesc = A lightweight cross platform password manager
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://code.weexnes.dev/Cryptura
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk
+	options = !strip
+	source = cryptura-2.0.tar.gz::https://code.weexnes.dev/~downloads/projects/14/archives?revision=refs/tags/2.0&format=tgz
+	sha256sums = SKIP
+
+pkgname = cryptura
