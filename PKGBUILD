@@ -3,7 +3,7 @@
 
 pkgname=ab-download-manager-bin
 _pkgname=ABDownloadManager
-pkgver=1.6.9
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=("x86_64")
@@ -14,14 +14,13 @@ provides=("abdownloadmanager" "ab-download-manager")
 conflicts=("abdownloadmanager" "ab-download-manager")
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz")
-sha256sums=("8a057f1d9ae421058fa96af2d50ff439ee54e20776558506b952bfb824e76e9d")
+sha256sums=("0f4670470757afe63ec670b66568d24d21de50092680cde638245671939cec8b")
 
 package() {
     install -d "${pkgdir}/opt/"
     install -d "${pkgdir}/usr/share/"{applications,pixmaps}
 
     mv "${srcdir}/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-    chmod +x "${srcdir}/${_pkgname}/bin/${_pkgname}"
     mv "${srcdir}/${_pkgname}" "${pkgdir}/opt"
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.abdownloadmanager.desktop" <<EOF
 [Desktop Entry]
