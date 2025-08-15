@@ -1,0 +1,4 @@
+[throne]
+source = "github"
+github = "throneproj/Throne"
+use_latest_release = true
