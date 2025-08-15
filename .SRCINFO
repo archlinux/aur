@@ -1,0 +1,15 @@
+pkgbase = hyprmon
+	pkgdesc = A multi-monitor profile manager for Hyprland
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/erans/hyprmon
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = hyprland
+	source_x86_64 = hyprmon-0.0.6-linux-amd64::https://github.com/erans/hyprmon/releases/download/v0.0.6/hyprmon-linux-amd64.tar.gz
+	sha256sums_x86_64 = e9f2e20159b41d55449628f67302dc578f545786c13a8687f3a787f9ce8e0482
+	source_aarch64 = hyprmon-0.0.6-linux-arm64::https://github.com/erans/hyprmon/releases/download/v0.0.6/hyprmon-linux-arm64.tar.gz
+	sha256sums_aarch64 = 932ede35b03bfda8b9312e3b97f029255c297f617c246fe8259b0dfb86866be2
+
+pkgname = hyprmon
