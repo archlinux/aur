@@ -1,0 +1,15 @@
+pkgbase = architect-git
+	pkgdesc = Nix-like configuration manager for pacman
+	pkgver = r25.e924876
+	pkgrel = 1
+	url = https://github.com/neoapps-dev/Architect
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = make
+	depends = bash
+	provides = architect
+	source = architect-git::git+https://github.com/neoapps-dev/Architect
+	sha256sums = SKIP
+
+pkgname = architect-git
