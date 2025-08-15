@@ -9,10 +9,10 @@ pkgbase = xlibre-xf86-video-sisusb-bin
 	depends = mesa
 	depends = libdrm
 	depends = glibc
-	provides = xlibre-xf86-video-sisusb
 	provides = xf86-video-sisusb
-	conflicts = xlibre-xf86-video-sisusb
+	provides = xlibre-video-sisusb
 	conflicts = xf86-video-sisusb
+	conflicts = xlibre-video-sisusb
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
