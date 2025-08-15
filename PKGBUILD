@@ -31,8 +31,8 @@ depends=(xlibre-xserver-common xlibre-xf86-input-libinput libepoxy libxfont2 pix
            libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
 # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-provides=($_pkgname 'xorg-server' 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server')
-conflicts=($_pkgname 'xorg-server' 'xorg-server-common<25.0.0.0' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
+provides=($_pkgname 'xorg-server' 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server' 'xlibre-server')
+conflicts=($_pkgname 'xorg-server' 'xorg-server-common<25.0.0.0' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xlibre-server')
 replaces=('glamor-egl' 'xf86-video-modesetting')
 install=$pkgname.install
 
