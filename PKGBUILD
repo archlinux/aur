@@ -1,8 +1,7 @@
 # Maintainer: artist for Xlibre
 
-_pkgname_xf86=xf86-input-wacom
-_pkgname=xlibre-$_pkgname_xf86
-pkgname=$_pkgname-bin
+pkgname=xlibre-xf86-input-wacom-bin
+_pkgname=xlibre-xf86-input-wacom
 pkgver=1.2.3.1
 pkgrel=2
 pkgdesc="Official XLibre fork of X.Org Wacom tablet driver"
@@ -14,8 +13,8 @@ options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=('libxi' 'libxinerama' 'libxrandr' 'libx11' 'glibc')
-provides=($_pkgname $_pkgname_xf86)
-conflicts=($_pkgname $_pkgname_xf86 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
+provides=('xf86-input-wacom' 'xlibre-input-wacom')
+conflicts=('xf86-input-wacom' 'xlibre-input-wacom' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
 
 sha256sums=('f7610d8999f93b7a91ca437ba838491d155cc0f7ff1f57e01edc591b22333b0c')
 

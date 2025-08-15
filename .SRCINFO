@@ -11,10 +11,10 @@ pkgbase = xlibre-xf86-input-wacom-bin
 	depends = libxrandr
 	depends = libx11
 	depends = glibc
-	provides = xlibre-xf86-input-wacom
 	provides = xf86-input-wacom
-	conflicts = xlibre-xf86-input-wacom
+	provides = xlibre-input-wacom
 	conflicts = xf86-input-wacom
+	conflicts = xlibre-input-wacom
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
 	noextract = xlibre-xf86-input-wacom-1.2.3.1-2-x86_64.pkg.tar.zst
