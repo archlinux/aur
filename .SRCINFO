@@ -31,8 +31,6 @@ pkgbase = dolphin-mpn
 	depends = zlib
 	depends = zstd
 	optdepends = pulseaudio: for PulseAudio backend
-	provides = dolphin-emu
-	conflicts = dolphin-emu
 	source = git+https://github.com/MarioPartyNetplay/Dolphin-MPN.git#tag=edeb50f
 	sha256sums = SKIP
 
