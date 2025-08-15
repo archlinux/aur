@@ -1,7 +1,7 @@
 pkgname=ura-git
 _pkgname=ura
-pkgver=r83.9e969e4
-pkgrel=2
+pkgver=r100.189dbdb
+pkgrel=1
 pkgdesc="A highly customizable Wayland compositor driven by Lua"
 url="https://github.com/levinion/ura"
 arch=("any")
@@ -27,6 +27,7 @@ build() {
   wayland-scanner server-header ./protocols/wlr-layer-shell-unstable-v1.xml include/protocols/wlr-layer-shell-unstable-v1-protocol.h
   wayland-scanner server-header ./protocols/wlr-output-power-management-unstable-v1.xml include/protocols/wlr-output-power-management-unstable-v1-protocol.h
   wayland-scanner server-header ./protocols/cursor-shape-v1.xml include/protocols/cursor-shape-v1-protocol.h
+  wayland-scanner server-header ./protocols/pointer-constraints-unstable-v1.xml include/protocols/pointer-constraints-unstable-v1-protocol.h
   cmake -B build
   cmake --build build -j$(nproc)
 
