@@ -3,7 +3,7 @@
 
 _name='fleep'
 pkgbase='python-fleep'
-pkgname=('python-fleep' 'python2-fleep')
+pkgname=('python-fleep')
 pkgver='1.0.1'
 pkgrel='1'
 pkgdesc='File format determination library'
@@ -20,11 +20,4 @@ package_python-fleep() {
 
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install -O1 --root="${pkgdir}"
-}
-
-package_python2-fleep() {
-  depends=('python2')
-
-  cd "${srcdir}/${_name}-${pkgver}"
-  python2 setup.py install -O1 --root="${pkgdir}"
 }
