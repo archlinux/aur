@@ -1,12 +1,16 @@
 pkgbase = 2048.c
 	pkgdesc = A terminal 2048 written in c
-	pkgver = 1.0.3.r3.g663bb70
+	pkgver = 1.0.3.r4.g4645182
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mevdschee/2048.c
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = MIT
-	source = git+https://github.com/mevdschee/2048.c.git
+	depends = glibc
+	depends = hicolor-icon-theme
+	source = git+https://github.com/mevdschee/2048.c.git#commit=464518299836a0fe843221edfddae5ddc05b7920
 	sha256sums = SKIP
 
 pkgname = 2048.c
