@@ -1,7 +1,7 @@
 pkgbase = tuxedo-drivers-dkms
 	pkgdesc = TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface
 	pkgver = 4.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -10,6 +10,7 @@ pkgbase = tuxedo-drivers-dkms
 	optdepends = linux-lts-headers: build modules against LTS kernel
 	optdepends = linux-zen-headers: build modules against ZEN kernel
 	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
+	optdepends = udev-hid-bpf: resolve keyboard issues on the Sirius 16 Gen1/2
 	provides = tuxedo-keyboard
 	provides = tuxedo-keyboard-ite
 	provides = tuxedo-io

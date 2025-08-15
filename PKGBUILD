@@ -3,7 +3,7 @@
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
 pkgver=4.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
 license=('GPL-2.0-or-later')
@@ -13,7 +13,8 @@ options=(!debug)
 optdepends=('linux-headers: build modules against Arch kernel'
             'linux-lts-headers: build modules against LTS kernel'
             'linux-zen-headers: build modules against ZEN kernel'
-            'linux-hardened-headers: build modules against the HARDENED kernel')
+            'linux-hardened-headers: build modules against the HARDENED kernel'
+            'udev-hid-bpf: resolve keyboard issues on the Sirius 16 Gen1/2')
 # tuxedo-keyboard-ite = ite_8291, ite_8291_lb, ite_8297 and ite_829x
 provides=('tuxedo-keyboard'
           'tuxedo-keyboard-ite'
