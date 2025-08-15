@@ -1,7 +1,7 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 pkgname=xcruiser
 pkgver=0.30
-pkgrel=2
+pkgrel=3
 pkgdesc="Fly about 3D-formed file system"
 arch=('i686' 'x86_64')
 url="http://xcruiser.sourceforge.net/"

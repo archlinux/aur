@@ -1,7 +1,7 @@
 pkgbase = xcruiser
 	pkgdesc = Fly about 3D-formed file system
 	pkgver = 0.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xcruiser.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = xcruiser
 	depends = libx11
 	depends = libxaw
 	source = https://prdownloads.sourceforge.net/xcruiser/xcruiser-0.30.tar.gz
+	source = xcruiser.patch
 	sha256sums = 917b68dc06389bfcdde742f0798f61cdeaea2ae3c6567960c33f7634d4861ce5
+	sha256sums = ed69749f84b18fcb33d18e2bf982169c9a63b8d09376fcde70503386c1bf154d
 
 pkgname = xcruiser
-
