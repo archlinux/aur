@@ -7,10 +7,10 @@ pkgbase = xlibre-xf86-video-vesa-bin
 	groups = xlibre-drivers
 	license = MIT
 	depends = glibc
-	provides = xlibre-xf86-video-vesa
 	provides = xf86-video-vesa
-	conflicts = xlibre-xf86-video-vesa
+	provides = xlibre-video-vesa
 	conflicts = xf86-video-vesa
+	conflicts = xlibre-video-vesa
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
 	noextract = xlibre-xf86-video-vesa-2.6.0.1-2-x86_64.pkg.tar.zst
