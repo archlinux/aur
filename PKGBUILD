@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-meta'
-pkgver=r108.c1947d8
+pkgver=r138.a1bd4cf
 pkgrel=1
 pkgdesc='A metapackage containing all dependencies for the Caelestia dotfiles'
 arch=('any')
@@ -13,8 +13,9 @@ depends=('caelestia-cli' 'caelestia-shell'
          'hyprland' 'xdg-desktop-portal-hyprland' 'xdg-desktop-portal-gtk' 'hyprpicker' 'hypridle'
          'wl-clipboard' 'cliphist' 'bluez-utils' 'inotify-tools' 'app2unit' 'wireplumber' 'trash-cli'
          'foot' 'fish' 'fastfetch' 'starship' 'btop' 'jq' 'socat' 'imagemagick' 'curl'
-         'adw-gtk-theme' 'papirus-icon-theme' 'qt5ct' 'qt6ct' 'ttf-jetbrains-mono-nerd')
-optdepends=('spotify: music player'
+         'adw-gtk-theme' 'papirus-icon-theme' 'qt5ct-kde' 'qt6ct-kde' 'ttf-jetbrains-mono-nerd')
+optdepends=('thunar: file manager'
+            'spotify: music player'
             'vscode: code editor'
             'zen-browser: web browser'
             'todoist-appimage: todo manager'
