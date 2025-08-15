@@ -29,8 +29,8 @@ noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=('xorgproto' 'mesa' 'libpciaccess' 'pixman'
          # not technically required but almost every Xorg pkg needs it to build
          'xorg-util-macros')
-provides=($_pkgname 'xorg-server-devel')
-conflicts=($_pkgname 'xorg-server-devel')
+provides=($_pkgname 'xorg-server-devel' 'xlibre-server-devel')
+conflicts=($_pkgname 'xorg-server-devel' 'xlibre-server-devel')
 
 sha256sums=('70e411b38361273e693d9f37735194158df5aaa247c2d51db981a41085cfe804')
 
