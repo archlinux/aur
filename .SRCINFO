@@ -1,21 +1,17 @@
 pkgbase = lamina
-	pkgdesc = A procedural programming language focusing on precise mathematical computation.
+	pkgdesc = A procedural programming language focusing on precise mathematical computation
 	pkgver = 1.1.1_Beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lamina-dev/Lamina
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = make
 	depends = glibc
-	depends = gcc-libs
+	depends = libuv
 	source = lamina-1.1.1-Beta.tar.gz::https://github.com/Lamina-dev/Lamina/archive/refs/tags/v1.1.1-Beta.tar.gz
-	source = exprtk.tar.gz::https://github.com/ArashPartow/exprtk/archive/refs/heads/master.tar.gz
-	source = libuv.tar.gz::https://github.com/libuv/libuv/archive/refs/heads/v1.x.tar.gz
+	source = libuv-1.51.0.tar.gz::https://github.com/libuv/libuv/archive/refs/tags/v1.51.0.tar.gz
 	sha256sums = 05b4e12f2cb3504f30e980ec0f355f157e4de1472c002e7d3478842440e71afd
-	sha256sums = 5436a41a9e0f4e8a3c0401bd9c8bbc943fed68ca6a666506d90f7aadf933622c
-	sha256sums = 71d0279e94b1c36ba9602fc62bbadb80aaa8571826d203904b0dcb1af8e06f3b
+	sha256sums = 27e55cf7083913bfb6826ca78cde9de7647cded648d35f24163f2d31bb9f51cd
 
 pkgname = lamina
