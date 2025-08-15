@@ -1,0 +1,24 @@
+pkgbase = openbubbles-bin
+	pkgdesc = Open-source iMessage client for Linux (precompiled binary)
+	pkgver = 1.15.0+161
+	pkgrel = 1
+	url = https://github.com/OpenBubbles/openbubbles-app
+	arch = x86_64
+	license = OBSD
+	makedepends = gendesk
+	depends = gtk3
+	depends = libsecret
+	depends = libnotify
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = mpv
+	provides = openbubbles
+	conflicts = openbubbles
+	conflicts = openbubbles-git
+	conflicts = bluebubbles-bin
+	source = bluebubbles-linux-x86_64.tar::https://github.com/OpenBubbles/openbubbles-app/releases/download/v1.15.0%2B161/bluebubbles-linux-x86_64.tar
+	source = openbubbles.sh
+	sha256sums = 969200295614ff83160863f2c59ee84d8d4ea758b62ee8b2ea4e12174b3675cb
+	sha256sums = f272a09d70a6a5ef88d48d40089eca4f8b7737753681a0a908b2b21359339553
+
+pkgname = openbubbles-bin
