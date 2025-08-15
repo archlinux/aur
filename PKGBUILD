@@ -1,4 +1,4 @@
-# Maintainer: Robert L Box <robertbox514 at gmail>
+# Maintainer: Robert L Box <robertbox514@gmail.com>
 # Contributor: Sébastien Luttringer
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>
