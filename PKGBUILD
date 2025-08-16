@@ -31,9 +31,12 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  export GOPATH="${srcdir}/.gopath"
+  export GOCACHE="${srcdir}/.gocache"
   export CGO_ENABLED=0
   export GOFLAGS='-buildmode=pie -mod=readonly -trimpath'
+
+  cd "${srcdir}/${_pkgname}"
   go build -ldflags "-s -w" -o "${srcdir}/${_pkgname}-bin" .
 }
 
