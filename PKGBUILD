@@ -5,7 +5,7 @@
 
 _name=pytango
 pkgname=python-${_name}
-pkgver=10.0.3
+pkgver=10.1.0
 pkgrel=1
 pkgdesc="A python binding for the Tango control system"
 arch=("x86_64" "armv7h" "aarch64")
@@ -13,9 +13,10 @@ url="https://gitlab.com/tango-controls/${_name}"
 license=("LGPL-3.0-or-later" "PSF-2.0")
 groups=("tango-controls")
 depends=(
-  "tango-cpp>=10.0.0" "tango-cpp<=10.0.2" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage"
+  "tango-cpp>=10.0.0" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage" "pybind11"
 )
 makedepends=(
+  "cmake" "ninja"
   "python-build" "python-scikit-build-core" "python-pybind11-stubgen"
   "python-sphinx_rtd_theme" "python-sphinx" "python-installer"
 )
@@ -28,32 +29,34 @@ optdepends=(
   "python-opentelemetry-exporter-otlp-proto-http: to add telemetry"
 )
 source=(
-  "https://gitlab.com/tango-controls/${_name}/-/releases/v${pkgver}/downloads/${_name}-with-submodules-v${pkgver}.tar.gz"
-  "https://github.com/numpy/numpy/releases/download/v2.2.6/numpy-2.2.6.tar.gz"
+  "git+https://gitlab.com/tango-controls/pytango.git"
+  "https://github.com/pybind/pybind11/archive/refs/tags/v2.13.6.tar.gz"
 )
 sha256sums=(
-  "3906979b5df74da89a86966bc1e1a121457b4b58a52bfacde3e68194308a6e14"
-  "e29554e2bef54a90aa5cc07da6ce955accb83f21ab5de01a62c8478897b264fd"
+  SKIP
+  "e08cb87f4773da97fa7b5f035de8763abc656d87d5773e62f6da0587d1f0ec20"
 )
 
 prepare() {
-  cd numpy-2.2.6
-  python -m build --wheel --no-isolation
+  cd pybind11-2.13.6
+  echo BUILDING ...
+  python -m build --wheel
+  echo INSTALLING ...
   install -d "${srcdir}/_buildpy"
   python -m pip install \
     --no-index --no-deps \
-    --find-links="${srcdir}/numpy-2.2.6/dist" \
+    --find-links="${srcdir}/pybind11-2.13.6/dist" \
     --target="${srcdir}/_buildpy" \
-    "numpy==2.2.6"
+    "pybind11==2.13.6"
 }
 
 build() {
-  cd "${_name}-with-submodules-v${pkgver}"
+  cd "${_name}"
   export PYTHONPATH="${srcdir}/_buildpy${PYTHONPATH:+:$PYTHONPATH}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_name}-with-submodules-v${pkgver}"
+  cd "${_name}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
