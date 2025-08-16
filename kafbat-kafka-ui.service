@@ -1,0 +1,18 @@
+[Unit]
+Description=Kafbat Kafka UI
+After=network.target
+
+[Service]
+User=kafbat
+Group=kafbat
+Environment="JAVA_OPTS="
+ExecStart=/usr/bin/java \
+  -Dspring.config.additional-location=/etc/kafbat/kafka-ui.yaml \
+  --add-opens java.rmi/javax.rmi.ssl=ALL-UNNAMED \
+  -jar /usr/lib/kafbat-kafka-ui/kafbat-kafka-ui.jar
+WorkingDirectory=/var/lib/kafbat-kafka-ui
+Restart=on-failure
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+kafka:
+  clusters:
+    - name: local
+      bootstrapServers: localhost:9092
+
+# Example auth (optional):
+# auth:
+#   type: LOGIN_FORM
+# spring:
+#   security:
+#     user:
+#       name: admin
+#       password: pass

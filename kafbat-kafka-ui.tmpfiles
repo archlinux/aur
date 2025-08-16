@@ -1,0 +1,2 @@
+d /var/lib/kafbat-kafka-ui 0755 kafbat kafbat -
+d /var/log/kafbat-kafka-ui 0755 kafbat kafbat -
