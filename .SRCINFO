@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-panel-corners
 	url = https://github.com/aunetx/panel-corners
 	arch = any
 	license = GPL-3.0-or later
+	makedepends = jq
 	makedepends = zip
 	depends = gnome-shell
 	source = panel-corners-14.tar.gz::https://github.com/aunetx/panel-corners/archive/refs/tags/v14.tar.gz
