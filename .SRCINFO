@@ -1,14 +1,16 @@
 pkgbase = protoc-gen-validate
 	pkgdesc = Protoc plugin to generate polyglot message validators
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bufbuild/protoc-gen-validate
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = git
 	makedepends = go
 	depends = glibc
+	provides = protoc-gen-validate-go
 	options = !debug
-	source = protoc-gen-validate-1.2.1.tar.gz::https://github.com/bufbuild/protoc-gen-validate/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = e4718352754df1393b8792b631338aa8562f390e8160783e365454bc11d96328
+	source = protoc-gen-validate::git+https://github.com/bufbuild/protoc-gen-validate.git#tag=v1.2.1
+	sha256sums = 968c62bd5446832b6f9b5fe640ceeb37f317729eda6e1d62dfbd832e4f679f60
 
 pkgname = protoc-gen-validate

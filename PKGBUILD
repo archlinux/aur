@@ -2,19 +2,23 @@
 
 pkgname=protoc-gen-validate
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Protoc plugin to generate polyglot message validators'
 arch=(x86_64)
-url=https://github.com/bufbuild/protoc-gen-validate
+url=https://github.com/bufbuild/${pkgname}
 license=(Apache-2.0)
 depends=(glibc)
-makedepends=(go)
+makedepends=(
+  git
+  go
+)
+provides=(${pkgname}-go)
 options=(!debug)
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('e4718352754df1393b8792b631338aa8562f390e8160783e365454bc11d96328')
+source=(${pkgname}::git+${url}.git#tag=v${pkgver})
+sha256sums=('968c62bd5446832b6f9b5fe640ceeb37f317729eda6e1d62dfbd832e4f679f60')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
 
   export GOFLAGS='-mod=readonly'
 
@@ -28,7 +32,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
 
   local _ldflags
   _ldflags=(
@@ -52,16 +56,18 @@ build() {
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
 
   go test ./...
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
 
   install -Dm755 -t "${pkgdir}"/usr/bin \
     out/${pkgname}
+  ln -sr "${pkgdir}"/usr/bin/${pkgname} \
+    "${pkgdir}"/usr/bin/${pkgname}-go \
 
   install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} \
     README.md
