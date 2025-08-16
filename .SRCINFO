@@ -1,23 +1,30 @@
 pkgbase = bugwarrior-git
 	pkgdesc = pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)
-	pkgver = 1554.fb7e66d
+	pkgver = 1582.963fa87
 	pkgrel = 1
 	url = https://bugwarrior.readthedocs.io
 	arch = any
 	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
-	depends = python-setuptools
 	depends = python-requests
 	depends = python-taskw>=0.8
 	depends = python-dateutil
 	depends = python-pytz
+	depends = python-pydantic
+	depends = python-tomli
 	depends = python-six>=1.9.0
 	depends = python-jinja>=2.7.2
 	depends = python-dogpile.cache>=0.5.3
 	depends = python-lockfile>=0.9.1
 	depends = python-click
 	optdepends = python-keyring: keyring support
-	optdepends = python-jira>=0.22: jira support
+	optdepends = python-jira>=3.10: jira support
 	optdepends = python-pysimplesoap: bts support
 	optdepends = python-debianbts>=2.6.1: bts support
 	optdepends = python-offtrac: Trac support
@@ -27,7 +34,7 @@ pkgbase = bugwarrior-git
 	optdepends = python-bugzilla: bugzilla support
 	provides = bugwarrior
 	conflicts = bugwarrior
-	source = bugwarrior::git+https://github.com/ralphbean/bugwarrior.git#branch=develop
+	source = bugwarrior::git+https://github.com/GothenburgBitFactory/bugwarrior.git#branch=develop
 	md5sums = SKIP
 
 pkgname = bugwarrior-git
