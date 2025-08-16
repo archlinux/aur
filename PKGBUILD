@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-graphlcd
 pkgver=1.0.8
-pkgrel=3
-_vdrapi=8
+pkgrel=4
+_vdrapi=9
 epoch=1
 pkgdesc="VDR Plugin to support graphical LC displays"
 url="https://github.com/vdr-projects/vdr-plugin-graphlcd"
