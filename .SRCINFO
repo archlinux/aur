@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-wintile
 	url = https://nowsci.com/wintile
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = jq
 	makedepends = zip
 	depends = gnome-shell
 	source = wintile-2024.11.25-1.tar.gz::https://github.com/fmstrat/wintile/archive/v2024.11.25-1.tar.gz
