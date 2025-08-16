@@ -1,6 +1,6 @@
 # Maintainer: Aquib Javed <aquibjavedt007@gmail.com>
 pkgname=ice-bin
-pkgver=0.0.2
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="A lightweight CTF utility."
