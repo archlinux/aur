@@ -1,7 +1,9 @@
-# Maintainer : Víctor González <mrvikxd@gmail.com>
+# Maintainer (AUR): Marco Huenseler <marco@wuthoehle.de>
+
+# Upstream:
 # Maintainer : Christian Hesse <mail@eworm.de>
-# Maintainer : Ronald van Haren <ronald.archlinux.org>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer : Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
@@ -10,309 +12,371 @@ _IA32_EFI_IN_ARCH_X64="1"
 ## "1" to enable EMU build, "0" to disable
 _GRUB_EMU_BUILD="0"
 
-_GRUB_EXTRAS_COMMIT="136763a4cc9ca3a4f59d05b79eede2159d6f441e"
-_GNULIB_COMMIT="9ce9be2ef0cb1180e35dfe9dfbbe90d774b374bd"
-_UNIFONT_VER="12.1.02"
+[[ "${CARCH}" == 'x86_64' ]] && _EFI_ARCH='x86_64'
+[[ "${CARCH}" == 'i686' ]] && _EFI_ARCH='i386'
 
-[[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
-[[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
-
-[[ "${CARCH}" == "x86_64" ]] && _EMU_ARCH="x86_64"
-[[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
+[[ "${CARCH}" == 'x86_64' ]] && _EMU_ARCH='x86_64'
+[[ "${CARCH}" == 'i686' ]] && _EMU_ARCH='i386'
 
 pkgname='grub-blscfg'
-pkgdesc='GNU GRand Unified Bootloader (2) with blscfg module compiled in'
-_pkgver=2.04
-pkgver=${_pkgver/-/}
-pkgrel=2
+pkgdesc='GNU GRand Unified Bootloader (2) with Fedoras blscfg patch'
 epoch=2
+_pkgver=2.12
+_unifont_ver='16.0.04'
+#pkgver=${_pkgver/-/}
+pkgver='2.12.r292.g73d1c959'
+pkgrel=1
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
-license=('GPL3')
-backup=('etc/default/grub'
-        'etc/grub.d/40_custom')
+license=('GPL-3.0-or-later')
+backup=(
+  etc/default/grub
+  etc/grub.d/40_custom
+)
 install="${pkgname}.install"
 options=('!makeflags')
-
-conflicts=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub-legacy' 'grub')
-replaces=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
-provides=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub')
-
-makedepends=('git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
-             'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse2')
-depends=('sh' 'xz' 'gettext' 'device-mapper')
-optdepends=('freetype2: For grub-mkfont usage'
-            'fuse2: For grub-mount usage'
-            'dosfstools: For grub-mkrescue FAT FS and EFI support'
-            'efibootmgr: For grub-install EFI support'
-            'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
-            'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
-            'mtools: For grub-mkrescue FAT FS support')
+conflicts=(
+  grub-bios
+  grub-common
+  grub-efi-${_EFI_ARCH}
+  grub-emu
+  grub-legacy
+  grub
+)
+replaces=(
+  grub-common
+  grub-bios
+  grub-emu 
+  grub-efi-${_EFI_ARCH}
+  grub
+)
+provides=(
+  grub-bios
+  grub-common
+  grub-efi-${_EFI_ARCH}
+  grub-emu
+  grub
+)
+makedepends=(
+  autogen
+  device-mapper
+  freetype2
+  fuse3
+  gettext
+  git
+  help2man
+  python
+  rsync
+  texinfo
+  ttf-dejavu
+  xz
+)
+depends=(
+  device-mapper
+  gettext
+  sh
+  xz
+)
+optdepends=(
+  'dosfstools: For grub-mkrescue FAT FS and EFI support'
+  'efibootmgr: For grub-install EFI support'
+  'freetype2: For grub-mkfont usage'
+  'fuse3: For grub-mount usage'
+  'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
+  'lzop: For grub-mkrescue LZO support'
+  'mtools: For grub-mkrescue FAT FS support'
+  'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
+)
 
 if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
-    makedepends+=('libusbx' 'sdl')
-    optdepends+=('libusbx: For grub-emu USB support'
-                 'sdl: For grub-emu SDL support')
+  makedepends+=(
+  libusbx
+  sdl
+  )
+  optdepends+=(
+  'libusbx: For grub-emu USB support'
+  'sdl: For grub-emu SDL support'
+  )
 fi
 
-validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
-              'BE5C23209ACDDACEB20DB0A28C8189F1988C2166'  # Daniel Kiper <dkiper@net-space.pl>
-              '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
+validpgpkeys=(
+  'E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
+  'BE5C23209ACDDACEB20DB0A28C8189F1988C2166'  # Daniel Kiper <dkiper@net-space.pl>
+  '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
 
-_patches=(
-        '0003-10_linux-detect-archlinux-initramfs.patch'
-        '0004-add-GRUB_COLOR_variables.patch'
-        '0027-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch'
-        '0128-grub-editenv-Add-incr-command-to-increment-integer-v.patch'
-        '0159-Reimplement-boot_counter.patch'
-        )
-source=("git+https://git.savannah.gnu.org/git/grub.git#tag=grub-${_pkgver}?signed"
-        "git+https://git.savannah.gnu.org/git/grub-extras.git#commit=${_GRUB_EXTRAS_COMMIT}"
-        "git+https://git.savannah.gnu.org/git/gnulib.git#commit=${_GNULIB_COMMIT}"
-        "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
-        "${_patches[@]}"
-        'grub.default')
-
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            '04d652be1e28a6d464965c75c71ac84633085cd0960c2687466651c34c94bd89'
-            'SKIP'
-            '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
-            'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            'a71e537becc9befed12b787bae2ae6998291b97105ddfe63903ee35096ad5c52'
-            'ff95c6866476b0bc574cf89f57acc22a6e277d0f0e55d9654dbfe27798622576'
-            '69590d6e45b3cbfad252222164293fc13902859f8d5034b1db1028454b2de89d'
-            'b8fe532668cb12c34d2a26221298f2459fac7c5578a14476a2af8c20aed5c101')
+source=(
+  "git+https://git.savannah.gnu.org/git/grub.git#tag=grub-${_pkgver}?signed"
+  'git+https://git.savannah.gnu.org/git/gnulib.git'
+  "https://ftp.gnu.org/gnu/unifont/unifont-${_unifont_ver}/unifont-${_unifont_ver}.bdf.gz"{,.sig}
+  '0001-00_header-add-GRUB_COLOR_-variables.patch'
+  '0002-10_linux-detect-archlinux-initramfs.patch'
+  '0003-support-dropins-for-default-configuration.patch'
+  '0004-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch'
+  'grub.default'
+  'sbat.csv'
+)
+b2sums=('a6cec7271c3ea54a99f02ee6bc0a5825c8be657af68ba9a32b39a5fe8bcb571fb1ba39210426f6bf6a48d913e6e00df37dc2123ea1b39330f4c47bd9dbac9ae3'
+        'SKIP'
+        'b245a15d9dfab7f4e63bb32281909164d71d66e25c1ece2ceccbee5b2c1b00a46004c478a1b048c1b3efefd212a0b3f1a35a482fb12ef4489e7b7e09effd375a'
+        'SKIP'
+        '992c71790785304c28fbaf0dba21dab3e283b199509f0e7e1aa0df08126da75e15b6626c3638279ff2ecaa59b925096d7dbd67d6a53cebd0ce4326ff3719d25b'
+        'b4cd9ac976a579eca19d54c0b31c8d6324525fe5a0b9f5405deb63845367ac1adaa80ece4c166dfd5304608c41aa44b4f64efe235c03f437523b993be06e06e3'
+        'a7820bfe9bddc34af49de63222b3d2a9788367083e29db13b33120269adbfa1619ac421d8597f662f756592889f5cc5538544a17d9936d1420bd5742282c710c'
+        '5684ce121d2295b432bff5cf645d9150f91883bc56c244c94640fee3794364f641b1430c69fab38a0fd6f65cf1e08948a2b1839710c21386b924e25917245642'
+        '5e42db2161e8f594b82005b26e590a20a0e8d32b01119bdd7b1a7f7c4b0f3360e8730a3ecdd5912a4dc7af5bd9aed1c3e780965ad6747d831b470158da19388d'
+        'ce9b3904ce4bd00463c226ab1c97d3af94c6151c408bcd6483a0dd07ae4c343ee135907ad887c1d93525ec95d87409ef703ac7278698d49e99342332e483c436')
 
 _backports=(
+  # current git master for loads of security fixes
+  # https://lists.gnu.org/archive/html/grub-devel/2025-02/msg00024.html
+  "grub-${_pkgver}..73d1c959ea3417e9309ba8c6102d7d6dc7c94259"
+)
+
+_reverts=(
 )
 
 _configure_options=(
-    FREETYPE="pkg-config freetype2"
-    BUILD_FREETYPE="pkg-config freetype2"
-    GRUB_MODULES="blscfg increment"
-    --enable-mm-debug
-    --enable-nls
-    --enable-device-mapper
-    --enable-cache-stats
-    --enable-grub-mkfont
-    --enable-grub-mount
-    --prefix="/usr"
-    --bindir="/usr/bin"
-    --sbindir="/usr/bin"
-    --mandir="/usr/share/man"
-    --infodir="/usr/share/info"
-    --datarootdir="/usr/share"
-    --sysconfdir="/etc"
-    --program-prefix=""
-    --with-bootdir="/boot"
-    --with-grubdir="grub"
-    --disable-silent-rules
-    --disable-werror
+  PACKAGE_VERSION="${epoch}:${pkgver}-${pkgrel}"
+  FREETYPE="pkg-config freetype2"
+  BUILD_FREETYPE="pkg-config freetype2"
+  --enable-nls
+  --enable-device-mapper
+  --enable-cache-stats
+  --enable-grub-mkfont
+  --enable-grub-mount
+  --prefix="/usr"
+  --bindir="/usr/bin"
+  --sbindir="/usr/bin"
+  --mandir="/usr/share/man"
+  --infodir="/usr/share/info"
+  --datarootdir="/usr/share"
+  --sysconfdir="/etc"
+  --program-prefix=""
+  --with-bootdir="/boot"
+  --with-grubdir="grub2"
+  --disable-silent-rules
+  --disable-werror
 )
 
 prepare() {
-    cd "${srcdir}/grub/"
+  cd "${srcdir}/grub/"
 
-    echo "Apply backports..."
-    local _c
-    for _c in "${_backports[@]}"; do
-        git log --oneline -1 "${_c}"
-        git cherry-pick -n "${_c}"
-    done
+  echo "Apply backports..."
+  local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
 
-    for _patch in "${_patches[@]}"; do
-        echo "Applying ${_patch}"
-        patch --forward --strip=1 --input="${srcdir}/${_patch}"
-    done
+  echo "Apply reverts..."
+  local _c _l
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
 
-    echo "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme..."
-    sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
+  echo "Patch to enable GRUB_COLOR_* variables in grub-mkconfig..."
+  ## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
+  patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
 
-    echo "Fix mkinitcpio 'rw' FS#36275..."
-    sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
+  echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
+  patch -Np1 -i "${srcdir}/0002-10_linux-detect-archlinux-initramfs.patch"
 
-    echo "Fix OS naming FS#33393..."
-    sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
+  echo "Patch to support dropins for default configuration..."
+  patch -Np1 -i "${srcdir}/0003-support-dropins-for-default-configuration.patch"
 
-    echo "Pull in latest language files..."
-    ./linguas.sh
+  echo "Patch to support blscfg..."
+  patch -Np1 -i "${srcdir}/0004-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch"
 
-    echo "Remove not working langs which need LC_ALL=C.UTF-8..."
-    sed -e 's#en@cyrillic en@greek##g' -i "po/LINGUAS"
+  echo "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme..."
+  sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
 
-    echo "Avoid problem with unifont during compile of grub..."
-    # http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
-    gzip -cd "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz" > "unifont.bdf"
+  echo "Fix mkinitcpio 'rw' FS#36275..."
+  sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
 
-    echo "Run bootstrap..."
-    ./bootstrap \
-        --gnulib-srcdir="${srcdir}/gnulib/" \
-        --no-git
+  echo "Fix OS naming FS#33393..."
+  sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
+
+  echo "Pull in latest language files..."
+  ./linguas.sh
+
+  echo "Avoid problem with unifont during compile of grub..."
+  # http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
+  gzip -cd "${srcdir}/unifont-${_unifont_ver}.bdf.gz" > "unifont.bdf"
+
+  echo "Run bootstrap..."
+  ./bootstrap \
+    --gnulib-srcdir="${srcdir}/gnulib/" \
+    --no-git
+
+  echo "Make translations reproducible..."
+  sed -i '1i /^PO-Revision-Date:/ d' po/*.sed
 }
 
 _build_grub-common_and_bios() {
-    echo "Set ARCH dependent variables for bios build..."
-    if [[ "${CARCH}" == 'x86_64' ]]; then
-        _EFIEMU="--enable-efiemu"
-    else
-        _EFIEMU="--disable-efiemu"
-    fi
+  echo "Set ARCH dependent variables for bios build..."
+  if [[ "${CARCH}" == 'x86_64' ]]; then
+    _EFIEMU="--enable-efiemu"
+  else
+    _EFIEMU="--disable-efiemu"
+  fi
 
-    echo "Copy the source for building the bios part..."
-    cp -r "${srcdir}/grub/" "${srcdir}/grub-bios/"
-    cd "${srcdir}/grub-bios/"
+  echo "Copy the source for building the bios part..."
+  cp -r "${srcdir}/grub/" "${srcdir}/grub-bios/"
+  cd "${srcdir}/grub-bios/"
 
-    echo "Add the grub-extra sources for bios build..."
-    install -d "${srcdir}/grub-bios/grub-extras"
-    cp -r "${srcdir}/grub-extras/915resolution" \
-        "${srcdir}/grub-bios/grub-extras/915resolution"
-    export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
+  echo "Unset all compiler FLAGS for bios build..."
+  unset CFLAGS
+  unset CPPFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+  unset MAKEFLAGS
 
-    echo "Unset all compiler FLAGS for bios build..."
-    unset CFLAGS
-    unset CPPFLAGS
-    unset CXXFLAGS
-    unset LDFLAGS
-    unset MAKEFLAGS
+  echo "Run ./configure for bios build..."
+  ./configure \
+    --with-platform="pc" \
+    --target="i386" \
+    "${_EFIEMU}" \
+    --enable-boot-time \
+    "${_configure_options[@]}"
 
-    echo "Run ./configure for bios build..."
-    ./configure \
-        --with-platform="pc" \
-        --target="i386" \
-        "${_EFIEMU}" \
-        --enable-boot-time \
-        "${_configure_options[@]}"
+  if [ ! -z "${SOURCE_DATE_EPOCH}" ]; then
+    echo "Make info pages reproducible..."
+    touch -d "@${SOURCE_DATE_EPOCH}" $(find -name '*.texi')
+  fi
 
-    echo "Run make for bios build..."
-    make
+  echo "Run make for bios build..."
+  make
 }
 
 _build_grub-efi() {
-    echo "Copy the source for building the ${_EFI_ARCH} efi part..."
-    cp -r "${srcdir}/grub/" "${srcdir}/grub-efi-${_EFI_ARCH}/"
-    cd "${srcdir}/grub-efi-${_EFI_ARCH}/"
+  echo "Copy the source for building the ${_EFI_ARCH} efi part..."
+  cp -r "${srcdir}/grub/" "${srcdir}/grub-efi-${_EFI_ARCH}/"
+  cd "${srcdir}/grub-efi-${_EFI_ARCH}/"
 
-    echo "Unset all compiler FLAGS for ${_EFI_ARCH} efi build..."
-    unset CFLAGS
-    unset CPPFLAGS
-    unset CXXFLAGS
-    unset LDFLAGS
-    unset MAKEFLAGS
+  echo "Unset all compiler FLAGS for ${_EFI_ARCH} efi build..."
+  unset CFLAGS
+  unset CPPFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+  unset MAKEFLAGS
 
-    echo "Run ./configure for ${_EFI_ARCH} efi build..."
-    ./configure \
-        --with-platform="efi" \
-        --target="${_EFI_ARCH}" \
-        --disable-efiemu \
-        --enable-boot-time \
-        "${_configure_options[@]}"
+  echo "Run ./configure for ${_EFI_ARCH} efi build..."
+  ./configure \
+    --with-platform="efi" \
+    --target="${_EFI_ARCH}" \
+    --disable-efiemu \
+    --enable-boot-time \
+    "${_configure_options[@]}"
 
-    echo "Run make for ${_EFI_ARCH} efi build..."
-    make
+  echo "Run make for ${_EFI_ARCH} efi build..."
+  make
 }
 
 _build_grub-emu() {
-    echo "Copy the source for building the emu part..."
-    cp -r "${srcdir}/grub/" "${srcdir}/grub-emu/"
-    cd "${srcdir}/grub-emu/"
+  echo "Copy the source for building the emu part..."
+  cp -r "${srcdir}/grub/" "${srcdir}/grub-emu/"
+  cd "${srcdir}/grub-emu/"
 
-    echo "Unset all compiler FLAGS for emu build..."
-    unset CFLAGS
-    unset CPPFLAGS
-    unset CXXFLAGS
-    unset LDFLAGS
-    unset MAKEFLAGS
+  echo "Unset all compiler FLAGS for emu build..."
+  unset CFLAGS
+  unset CPPFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+  unset MAKEFLAGS
 
-    echo "Run ./configure for emu build..."
-    ./configure \
-        --with-platform="emu" \
-        --target="${_EMU_ARCH}" \
-        --enable-grub-emu-usb=no \
-        --enable-grub-emu-sdl=no \
-        --disable-grub-emu-pci \
-        "${_configure_options[@]}"
+  echo "Run ./configure for emu build..."
+  ./configure \
+    --with-platform="emu" \
+    --target="${_EMU_ARCH}" \
+    --enable-grub-emu-usb=no \
+    --enable-grub-emu-sdl=no \
+    --disable-grub-emu-pci \
+    "${_configure_options[@]}"
 
-    echo "Run make for emu build..."
-    make
+  echo "Run make for emu build..."
+  make
 }
 
 build() {
-    cd "${srcdir}/grub/"
+  cd "${srcdir}/grub/"
 
-    echo "Build grub bios stuff..."
-    _build_grub-common_and_bios
+  echo "Build grub bios stuff..."
+  _build_grub-common_and_bios
 
-    echo "Build grub ${_EFI_ARCH} efi stuff..."
-    _build_grub-efi
+  echo "Build grub ${_EFI_ARCH} efi stuff..."
+  _build_grub-efi
 
-    if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
-        echo "Build grub i386 efi stuff..."
-        _EFI_ARCH="i386" _build_grub-efi
-    fi
+  if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
+    echo "Build grub i386 efi stuff..."
+    _EFI_ARCH="i386" _build_grub-efi
+  fi
 
-    if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
-        echo "Build grub emu stuff..."
-        _build_grub-emu
-    fi
+  if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
+    echo "Build grub emu stuff..."
+    _build_grub-emu
+  fi
 }
 
 _package_grub-common_and_bios() {
-    cd "${srcdir}/grub-bios/"
+  cd "${srcdir}/grub-bios/"
 
-    echo "Run make install for bios build..."
-    make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
+  echo "Run make install for bios build..."
+  make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 
-    echo "Remove gdb debugging related files for bios build..."
-    rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.module || true
-    rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.image || true
-    rm -f "${pkgdir}/usr/lib/grub/i386-pc"/{kernel.exec,gdb_grub,gmodule.pl} || true
+  echo "Remove gdb debugging related files for bios build..."
+  rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.module || true
+  rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.image || true
+  rm -f "${pkgdir}/usr/lib/grub/i386-pc"/{kernel.exec,gdb_grub,gmodule.pl} || true
 
-    echo "Install /etc/default/grub (used by grub-mkconfig)..."
-    install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
+  echo "Install /etc/default/grub (used by grub-mkconfig)..."
+  install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
 }
 
 _package_grub-efi() {
-    cd "${srcdir}/grub-efi-${_EFI_ARCH}/"
+  cd "${srcdir}/grub-efi-${_EFI_ARCH}/"
 
-    echo "Run make install for ${_EFI_ARCH} efi build..."
-    make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
+  echo "Run make install for ${_EFI_ARCH} efi build..."
+  make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 
-    echo "Remove gdb debugging related files for ${_EFI_ARCH} efi build..."
-    rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.module || true
-    rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.image || true
-    rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
+  echo "Remove gdb debugging related files for ${_EFI_ARCH} efi build..."
+  rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.module || true
+  rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.image || true
+  rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
+
+  sed -e "s/%PKGVER%/${epoch}:${pkgver}-${pkgrel}/" < "${srcdir}/sbat.csv" > "${pkgdir}/usr/share/grub/sbat.csv"
 }
 
 _package_grub-emu() {
-    cd "${srcdir}/grub-emu/"
+  cd "${srcdir}/grub-emu/"
 
-    echo "Run make install for emu build..."
-    make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
+  echo "Run make install for emu build..."
+  make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 
-    echo "Remove gdb debugging related files for emu build..."
-    rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.module || true
-    rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.image || true
-    rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || true
+  echo "Remove gdb debugging related files for emu build..."
+  rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.module || true
+  rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.image || true
+  rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || true
 }
 
 package() {
-    cd "${srcdir}/grub/"
+  cd "${srcdir}/grub/"
 
-    echo "Package grub ${_EFI_ARCH} efi stuff..."
-    _package_grub-efi
+  echo "Package grub ${_EFI_ARCH} efi stuff..."
+  _package_grub-efi
 
-    if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
-        echo "Package grub i386 efi stuff..."
-        _EFI_ARCH="i386" _package_grub-efi
-    fi
+  if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
+    echo "Package grub i386 efi stuff..."
+    _EFI_ARCH="i386" _package_grub-efi
+  fi
 
-    if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
-        echo "Package grub emu stuff..."
-        _package_grub-emu
-    fi
+  if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
+    echo "Package grub emu stuff..."
+    _package_grub-emu
+  fi
 
-    echo "Package grub bios stuff..."
-    _package_grub-common_and_bios
+  echo "Package grub bios stuff..."
+  _package_grub-common_and_bios
 }
