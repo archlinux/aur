@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=openfhe-development-git
-pkgver=1.2.3.r0.g7b8346f
+pkgver=1.3.1.r0.g3236208
 pkgrel=1
 pkgdesc='Open-Source Fully Homomorphic Encryption Library'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/openfheorg/openfhe-development.git"
         'google-test::git+https://github.com/google/googletest.git'
         'system-tcmalloc.patch')
 sha256sums=('SKIP' 'SKIP' 'SKIP'
-            'beec5409bdfcc1147416baee6f19e711d1e930463016d70735ebf99fb160f2e8')
+            'b84f38e384c8af43d005696aecbc7911314ba9be20a77ecc8cb6bf258a240390')
 
 pkgver() {
     cd ${pkgname%-git}
@@ -34,7 +34,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update third-party/{cereal,google-test}
 
   msg2 'Using system tcmalloc...'
-  patch -Np0 CMakeLists.txt -i ../system-tcmalloc.patch
+  git apply ../system-tcmalloc.patch
 }
 
 build() {

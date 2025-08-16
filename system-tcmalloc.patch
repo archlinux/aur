@@ -1,6 +1,10 @@
-@@ -543,39 +543,19 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/src/binfhe/include )
+diff --git i/CMakeLists.txt w/CMakeLists.txt
+index 1f65f763..346a1eaa 100644
+--- i/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -563,37 +563,17 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/binfhe/include)
  
- include_directories( ${CMAKE_CURRENT_BINARY_DIR}/src/core )
+ include_directories(${CMAKE_CURRENT_BINARY_DIR}/src/core)
  
 -### Handle third-party gperftools for optional tcmalloc
 -
@@ -10,26 +14,23 @@
 -    COMMAND ./configure --prefix=${CMAKE_CURRENT_BINARY_DIR}/third-party --enable-minimal
 -    COMMAND make
 -    COMMAND make install
--    WORKING_DIRECTORY ${THIRDPARTYDIR}/gperftools
--)
+-    WORKING_DIRECTORY ${THIRDPARTYDIR}/gperftools)
 -
 -add_custom_target(
 -    tcm_clean
 -    COMMAND rm -rf include/gperftools include/google lib/libtcmalloc_minimal* lib/pkgconfig/libtcmalloc* lib/pkgconfig/libprofiler.pc share/doc/gperftools
--    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/third-party
--)
-+### Handle optional tcmalloc
- 
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/third-party)
+-
  if(BUILD_STATIC)
--add_library(tcmalloc_static STATIC IMPORTED GLOBAL)
--set_target_properties(tcmalloc_static PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/third-party/lib/libtcmalloc_minimal${CMAKE_STATIC_LIBRARY_SUFFIX})
-+find_library(TCMALLOC_STATIC_LIB NAMES libtcmalloc_minimal.a)
+-    add_library(tcmalloc_static STATIC IMPORTED GLOBAL)
+-    set_target_properties(tcmalloc_static PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/third-party/lib/libtcmalloc_minimal${CMAKE_STATIC_LIBRARY_SUFFIX})
++    find_library(TCMALLOC_STATIC_LIB NAMES libtcmalloc_minimal.a)
  endif()
  
  if(BUILD_SHARED)
--add_library(tcmalloc SHARED IMPORTED GLOBAL)
--set_target_properties(tcmalloc PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/third-party/lib/libtcmalloc_minimal${CMAKE_SHARED_LIBRARY_SUFFIX})
-+find_library(TCMALLOC_LIB NAMES tcmalloc_minimal)
+-    add_library(tcmalloc SHARED IMPORTED GLOBAL)
+-    set_target_properties(tcmalloc PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/third-party/lib/libtcmalloc_minimal${CMAKE_SHARED_LIBRARY_SUFFIX})
++    find_library(TCMALLOC_LIB NAMES tcmalloc_minimal)
  endif()
  
  if(WITH_TCM)
