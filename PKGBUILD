@@ -3,7 +3,7 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=14.2.6
+pkgver=14.3.3
 pkgrel=1
 pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
 arch=('x86_64')
@@ -15,19 +15,18 @@ makedepends=('nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('fe502b38b0d2d20fe3f65ba69e95e01ba5f445b340fba4699286a0e15b35a415'
+sha256sums=('678fe9ed215498f3d81819a6c138dc5a98e2ed6f463226f83f07377b5135e32f'
             'a8945d93cacbe189b538da601b3f6ace0588c3b126236e763e8f2010005513bb'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
 prepare() {
     source /usr/share/nvm/init-nvm.sh
+    sed -i "s/@ELECTRON@/${_electron}/" "${pkgname}.sh"
 
     cd "${_name}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     nvm install
     npm install
-
-    sed -i "s/@ELECTRON@/${_electron}/" "${srcdir}/${pkgname}.sh"
 }
 
 build() {
