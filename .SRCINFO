@@ -1,7 +1,7 @@
 pkgbase = python-imbalanced-learn
 	pkgdesc = Toolbox for imbalanced dataset in machine learning
-	pkgver = 0.13.0
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/scikit-learn-contrib/imbalanced-learn
 	arch = any
 	license = MIT
@@ -19,8 +19,8 @@ pkgbase = python-imbalanced-learn
 	optdepends = python-pandas: for dealing with Pandas DataFrames
 	optdepends = python-matplotlib: for included examples
 	optdepends = python-seaborn: for included examples
-	noextract = imbalanced_learn-0.13.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/i/imbalanced-learn/imbalanced_learn-0.13.0-py3-none-any.whl
-	sha256sums = 7eb5859f7827cb3babfa5789978c22fe36e56527d9c9768df2d864d98d9b40fe
+	noextract = imbalanced_learn-0.14.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/i/imbalanced-learn/imbalanced_learn-0.14.0-py3-none-any.whl
+	sha256sums = 8a8700c02ca185e113064815513f990fbf84eb4e7701f1d4e944ce67fb259a60
 
 pkgname = python-imbalanced-learn
