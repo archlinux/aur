@@ -1,7 +1,7 @@
 pkgbase = vdr-skinflat
 	pkgdesc = Simple and slim skin for VDR
 	pkgver = 0.1.1
-	pkgrel = 36
+	pkgrel = 37
 	url = https://github.com/vdr-projects/vdr-plugin-skinflat
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-skinflat
 	arch = armv7h
 	license = GPL2
 	depends = graphicsmagick
-	depends = vdr-api=8
+	depends = vdr-api=9
 	backup = etc/vdr/conf.avail/50-skinflat.conf
 	source = vdr-skinflat-0.1.1.tar.gz::https://github.com/vdr-projects/vdr-plugin-skinflat/archive/refs/tags/0.1.1.tar.gz
 	source = 50-skinflat.conf
