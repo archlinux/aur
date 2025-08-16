@@ -1,6 +1,6 @@
 pkgbase = offsetexplorer
 	pkgdesc = The Ultimate UI Tool for Kafka
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = http://www.kafkatool.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = offsetexplorer
 	noextract = offsetexplorer.sh
 	source = https://www.kafkatool.com/download3/offsetexplorer.sh
 	source = set-envs.sh
-	sha256sums = c57b3c575cd2d7c68cc103633905df41cdc1eb0950b1e1acd456ae9fda097292
+	sha256sums = 62a8f6f9dd54a0f433bc0317c6638bc69616c26d3b4caf54858e3eb8448b9c5b
 	sha256sums = 65589eea4f00bbbf17bad0e6f69cb56461bac06de1c5e55af24a284d70213430
 
 pkgname = offsetexplorer

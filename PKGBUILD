@@ -2,7 +2,7 @@
 # Contributor: invade_r
 
 pkgname=offsetexplorer
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 epoch=
 pkgdesc="The Ultimate UI Tool for Kafka"
@@ -24,20 +24,20 @@ changelog=
 source=("https://www.kafkatool.com/download3/offsetexplorer.sh" "set-envs.sh")
 noextract=("offsetexplorer.sh")
 sha256sums=(
-  'c57b3c575cd2d7c68cc103633905df41cdc1eb0950b1e1acd456ae9fda097292' # offsetexplorer.sh
+  '62a8f6f9dd54a0f433bc0317c6638bc69616c26d3b4caf54858e3eb8448b9c5b' # offsetexplorer.sh
   '65589eea4f00bbbf17bad0e6f69cb56461bac06de1c5e55af24a284d70213430' # set-envs.sh
 )
 validpgpkeys=()
 
 package() {
-        install -dm 755 "$pkgdir/opt/offsetexplorer"
-        install -dm 755 "$pkgdir/usr/bin"
-        echo -e "#!/bin/bash\n/bin/bash -c \"DISPLAY='' $srcdir/offsetexplorer.sh\"" > $srcdir/install.sh
-        chmod +x $srcdir/install.sh
-        chmod +x $srcdir/offsetexplorer.sh
-        chmod +x $srcdir/set-envs.sh
+  install -dm 755 "$pkgdir/opt/offsetexplorer"
+  install -dm 755 "$pkgdir/usr/bin"
+  echo -e "#!/bin/bash\n/bin/bash -c \"DISPLAY='' $srcdir/offsetexplorer.sh\"" >$srcdir/install.sh
+  chmod +x $srcdir/install.sh
+  chmod +x $srcdir/offsetexplorer.sh
+  chmod +x $srcdir/set-envs.sh
 
-        EXPECT="#!/usr/bin/expect -f
+  EXPECT="#!/usr/bin/expect -f
 
 
 set timeout -1
@@ -77,15 +77,15 @@ send -- \"n\r\"
 expect eof
 "
 
-    echo "$EXPECT" | /bin/expect
+  echo "$EXPECT" | /bin/expect
 
-    sed -i -E 's_#!/bin/sh_#!/bin/sh\n\nsource /opt/offsetexplorer/set-envs.sh_' $pkgdir/opt/offsetexplorer/offsetexplorer
+  sed -i -E 's_#!/bin/sh_#!/bin/sh\n\nsource /opt/offsetexplorer/set-envs.sh_' $pkgdir/opt/offsetexplorer/offsetexplorer
 
-    cp $srcdir/set-envs.sh $pkgdir/opt/offsetexplorer/set-envs.sh
+  cp $srcdir/set-envs.sh $pkgdir/opt/offsetexplorer/set-envs.sh
 
-    ln -s /opt/offsetexplorer/offsetexplorer $pkgdir/usr/bin/offsetexplorer
+  ln -s /opt/offsetexplorer/offsetexplorer $pkgdir/usr/bin/offsetexplorer
 
-    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgdir/opt/offsetexplorer/.install4j/offsetexplorer.png" "$pkgdir/usr/share/pixmaps/offsetexplorer.png"
+  gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgdir/opt/offsetexplorer/.install4j/offsetexplorer.png" "$pkgdir/usr/share/pixmaps/offsetexplorer.png"
 }
