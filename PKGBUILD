@@ -8,7 +8,7 @@
 
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
-pkgver=12.1.0.17900
+pkgver=12.1.2.22570
 pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 #arch=('x86_64' 'aarch64')
@@ -21,21 +21,22 @@ options=('!emptydirs')
 # https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
 # https://pastebin.com/29TeRUMj by Asuka Minato
 _get_source_url() {
-    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}_$1.deb"
-    uri="${url#https://wps-linux-personal.wpscdn.cn}"
-    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
-    timestamp10=$(date '+%s')
-    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
-    url+="?t=${timestamp10}&k=${md5hash%% *}"
-    echo "$url"
+    local furl="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}.AK.preread.sw_474164_$1.deb"
+    local uri="${furl#https://wps-linux-personal.wpscdn.cn}"
+    local secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
+    local timestamp10=$(date '+%s')
+    local md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
+    #echo "$md5hash"
+    #echo "$md5hash"
+    #exit 1
+    echo "${furl}?t=${timestamp10}&k=${md5hash%% *}"
 }
 
 #source_x86_64=("https://mirrors.163.com/ubuntukylin/pool/partner/wps-office_${pkgver}_amd64.deb")
 source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
-#source_aarch64=("wps-office_${pkgver}_arm64.deb::$(_get_source_url arm64)")
-source=('fix-wps-python-parse.patch')
-sha1sums=('f3713481edf04ffb08be8d24dce66554dd5a4f13')
-sha1sums_x86_64=('a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f')
+#source_aarch64=("wps-office_${pkgver}_arm64.deb::https://pubwps-wps365-obs.wpscdn.cn/download/Linux/21176/wps-office_${pkgver}.AK.preload.sw_arm64.deb")
+#source=('fix-wps-python-parse.patch')
+sha256sums_x86_64=('d2c5569889ac7cbc2a331c17c62184fcbbd224c41e2f86f852ea654f9442a657')
 
 prepare() {
     bsdtar -xpf data.tar.xz
@@ -53,7 +54,7 @@ prepare() {
 #   done
 
     cd "${srcdir}"
-    patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
+    #patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
 }
 
 package_wps-office-cn() {
@@ -126,7 +127,10 @@ package_wps-office-mime-cn() {
 
     install -d "${pkgdir}/usr/share/mime"
     cp -r mime/* "${pkgdir}/usr/share/mime"
-
+    
     cd "${srcdir}/opt/kingsoft/wps-office/"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.html
+
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
 }
