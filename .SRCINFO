@@ -1,0 +1,16 @@
+pkgbase = fuck-u-code-git
+	pkgdesc = 一个专为挖掘项目屎坑设计的代码质量分析工具 (Git version)
+	pkgver = r18.b323d40
+	pkgrel = 1
+	url = https://github.com/Done-0/fuck-u-code
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = fuck-u-code
+	conflicts = fuck-u-code
+	source = git+https://github.com/Done-0/fuck-u-code.git
+	sha256sums = SKIP
+
+pkgname = fuck-u-code-git
