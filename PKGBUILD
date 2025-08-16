@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 _pkgname=brux-gdk
 pkgname=brux-gdk-git
-pkgver=0.2.11.r223.g0a9932c
+pkgver=0.2.11.r268.g26eb92f
 pkgrel=1
 pkgdesc="A free runtime and development kit using SDL and Squirrel"
 
@@ -22,6 +22,7 @@ depends=(
 makedepends=(
 	'base-devel'
 	'cmake'
+	'meson'
 	'git'
 	'lerc'
 )
@@ -59,17 +60,18 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S $_pkgname/rte -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DSQ_DISABLE_INTERPRETER=On
+	meson setup build $_pkgname/rte --prefix /usr -Dbuildtype=release --wipe
 
-	cmake --build build
+	meson compile -C build
 }
 
 package() {
-	cmake --install build
+	meson install -C build --destdir "$pkgdir"
 
 	if [ "$pkgdir" != "" ]; then
-		rm -rf "$pkgdir/home"
-	fi
+		rm -rf "$pkgdir/home" "$pkgdir/usr/lib" "$pkgdir/usr/test"
+		rm "$pkgdir/usr/bin/sq" "$pkgdir/usr/bin/sq_static"
 
-	install -Dm755 build/brux "$pkgdir/usr/bin/brux"
+		mv "$pkgdir/usr/brux" "$pkgdir/usr/bin/brux"
+	fi
 }
