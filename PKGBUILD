@@ -4,9 +4,9 @@
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=synology-assistant
-pkgver=7.0.5_50070
-_pkgver=7.0.5-50070
-pkgrel=4
+pkgver=7.0.6_50085
+_pkgver=7.0.6-50085
+pkgrel=1
 pkgdesc="It helps you set up and install DSM on your DiskStation"
 arch=('x86_64')
 url="https://www.synology.com/en-global/releaseNote/Assistant"
@@ -16,7 +16,7 @@ conflicts=('synology-assistant')
 provides=('synology-assistant')
 install=${pkgname}.install
 source=("https://global.download.synology.com/download/Utility/Assistant/${_pkgver}/Ubuntu/${arch}/synology-assistant_${_pkgver}_amd64.deb")
-sha256sums=('48e65e53a3b7f8e7ed7816c353f2b0ba3b2e7583186608c57342fe1264286361')
+sha256sums=('b42082f9bbde5494171dad70dbb2675678a1b7a5c9b3af0c11900ee17b1b7122')
 
 prepare() {
     cd "${srcdir}"
