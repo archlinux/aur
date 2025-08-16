@@ -1,0 +1,10 @@
+--- squashfs-root/anytype.desktop
++++ squashfs-root/anytype.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Anytype
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/anytype %U
+ Terminal=false
+ Type=Application
+ Icon=anytype
