@@ -12,7 +12,7 @@ groups=('xlibre-drivers')
 options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-depends=('xlibre-xserver' 'mtdev' 'libevdev' 'glibc')
+depends=('xlibre-xserver-bin' 'mtdev' 'libevdev' 'glibc')
 provides=('xf86-input-evdev' 'xlibre-input-evdev')
 conflicts=('xf86-input-evdev' 'xlibre-input-evdev')
 
