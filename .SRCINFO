@@ -1,0 +1,16 @@
+pkgbase = gstreamer-thumbnailer
+	pkgdesc = A simple gstreamer thumbnailer written in Rust
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/sophie-h/gstreamer-thumbnailer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = glib2
+	depends = gstreamer
+	source = git+https://gitlab.gnome.org/sophie-h/gstreamer-thumbnailer.git
+	source = gstreamer-thumbnailer.thumbnailer
+	sha256sums = SKIP
+	sha256sums = e4582720078ccb73e997d891e582f95851fb0e13d93cc21fb511e528059f7df4
+
+pkgname = gstreamer-thumbnailer
