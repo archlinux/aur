@@ -1,12 +1,13 @@
 pkgbase = fokus
-	pkgdesc = A minimalist terminal‐based focus timer and stopwatch with daily logging, built in C with ncurses.
-	pkgver = 1.1.4
-	pkgrel = 4
+	pkgdesc = A minimalist terminal‐based focus timer and stopwatch with daily logging, built in Rust.
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://sr.ht/~fijarom/fokus/
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
-	depends = ncurses
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
 	source = git+https://git.sr.ht/~fijarom/fokus
 	sha256sums = SKIP
 
