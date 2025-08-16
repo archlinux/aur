@@ -1,6 +1,6 @@
 pkgbase = dfatmo
 	pkgver = 0.5.0
-	pkgrel = 17
+	pkgrel = 18
 	epoch = 1
 	url = https://github.com/durchflieger/dfatmo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dfatmo
 	arch = armv7h
 	license = GPL2
 	makedepends = libusb
-	makedepends = vdr-api=8
+	makedepends = vdr-api=9
 	makedepends = zip
 	source = dfatmo-0.5.0.tar.gz::https://github.com/durchflieger/dfatmo/archive/v0.5.0.tar.gz
 	source = 45-df10ch.rules
@@ -29,5 +29,5 @@ pkgname = vdr-dfatmo
 	pkgdesc = VDR plugin to drive a colored back lighting for TVs
 	depends = gcc-libs
 	depends = dfatmo
-	depends = vdr-api=8
+	depends = vdr-api=9
 	backup = etc/vdr/conf.avail/50-.conf
