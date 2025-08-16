@@ -29,6 +29,8 @@ prepare() {
   patch -p1 -i "${srcdir}/libofa-gcc4.5.patch"
   patch -p1 -i "${srcdir}/libofa-0.9.3-gcc-4.7.patch"
   patch -p1 -i "${srcdir}/libofa-0.9.3-curl-7.21.patch"
+
+  autoreconf -fvi
 }
 
 build() {
