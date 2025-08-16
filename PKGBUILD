@@ -2,39 +2,48 @@
 # Contributor: Frederik Holm Strøm <aur@frederikstroem.com>
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 # Contributor: Aron Young <tkf6fkt at gmail dot com>
+# Contributor: Ricardo Madriz <richin13 at gmail dot com>
 
-pkgname=chatbox-bin
-pkgver=1.15.2
-_commit=e256b86463fd81e5aa70c44bd6d6d74ca6af8449
+_pkgname=Chatbox
+pkgname="chatbox-bin"
+pkgver=1.15.3
 pkgrel=1
 pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)"
 arch=('x86_64')
 url="https://chatboxai.app"
-license=('custom')
-depends=(bash glibc gcc-libs hicolor-icon-theme)
-conflicts=(chatbox)
-provides=(chatbox)
-source=("https://download.chatboxai.app/releases/Chatbox-${pkgver}-x86_64.AppImage"
-chatbox.sh
-"${pkgver}package.json::https://raw.githubusercontent.com/chatboxai/chatbox/${_commit}/package.json")
-sha512sums=('2995d5b9e6482faf8f05afaa905a337fc9332f39ffe0ede166ca0fffc6e33d212f41ab331f30e013de7df1c6d85f8ba17539162750ea4c9f14767f435827ccbe'
-            'fc658da6385c68c91254da09d2eb202fa059d731d31436359535e258658c1feb14d448fb7abb2c28d75fd5fb1f54ecbdc3e24962f6a4443a68df5030c01c77fc'
-            '4d79a88f1d9e4f988f670fffeae17ba8db7db2444df2fec1582186d6d9108964113c94133ec2ef1f9a852f450ecb300607b8c56987c3e2060263718fa047b74f')
+license=('GPL-3.0')
+depends=('fuse2')
+provides=("$pkgname")
+conflicts=("chatbox-bin" "chatbox-git")
+options=(!strip)
+_appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
+_pkgid="xyz.chatboxapp.app"
+source=("https://download.chatboxai.app/releases/${_appimage}")
+noextract=("$_appimage")
+sha512sums=('4becb6e1720e5a410119388e4d34cb7eabe28f198d272a6fc8cf53d27688df0dab607d2f1784f913a48f18cd9cd3da8e188074afb26de76be23ba21e018ab63e')
+
+prepare() {
+    # Make the AppImage executable
+    chmod +x "$_appimage"
+
+    # Extract the AppImage
+    "./$_appimage" --appimage-extract
+
+    # Update the Exec line in the desktop entry file and fix the icon.
+    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/${_pkgid}.desktop"
+    sed -i -E "s:StartupWMClass=Chatbox:StartupWMClass=${_pkgid}:" "squashfs-root/${_pkgid}.desktop"
+}
 
 package() {
-  chmod +x Chatbox-${pkgver}-x86_64.AppImage
-  ./Chatbox-${pkgver}-x86_64.AppImage --appimage-extract *.desktop > /dev/null
-  ./Chatbox-${pkgver}-x86_64.AppImage --appimage-extract resources > /dev/null
-  ./Chatbox-${pkgver}-x86_64.AppImage --appimage-extract usr/share > /dev/null
+    # Install the AppImage and create a symlink
+    install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  _electron=electron$(grep -oP '"electron": "\^\K\d+' ${pkgver}package.json)
-  _electron=electron27 # workaround for missing pkg from repo
-  depends+=($_electron)
-  chmod -R 755 squashfs-root # workaround
-  mv squashfs-root/usr "$pkgdir"/usr
-  sed "s/@ELECTRON@/$_electron/" chatbox.sh | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/chatbox
-  sed "s|^Exec=.*|Exec=chatbox|" squashfs-root/xyz.chatboxapp.app.desktop | install -Dm644 /dev/stdin "$pkgdir"/usr/share/applications/xyz.chatboxapp.app.desktop
-  install -d "$pkgdir"/usr/lib
-  mv squashfs-root/resources "$pkgdir"/usr/lib/chatbox
-  # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Install the desktop entry file
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgid}.desktop" "${pkgdir}/usr/share/applications/${_pkgid}.desktop"
+
+    # Install the icon
+    install -dm755 "${pkgdir}/usr/share/pixmaps/"
+    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/${_pkgid}.png" "${pkgdir}/usr/share/pixmaps/${_pkgid}.png"
 }
