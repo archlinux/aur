@@ -1,7 +1,7 @@
 pkgbase = plann
 	pkgdesc = plann is a caldav client for calendar and task management
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tobixen/plann
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = plann
 	makedepends = python-click
 	makedepends = python-sortedcontainers
 	makedepends = python-wheel
+	makedepends = xandikos
 	depends = python
 	depends = python-caldav
 	depends = python-icalendar
