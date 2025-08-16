@@ -1,6 +1,6 @@
 pkgbase = doom_ascii-bin
 	pkgdesc = Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound.
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/wojciech-graj/doom-ascii
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = doom_ascii-bin
 	conflicts = doom_ascii
 	backup = opt/doom_ascii/.default.cfg
 	source = doom_ascii.sh
-	source = README-0.2.1.md::https://github.com/wojciech-graj/doom-ascii/raw/v0.2.1/README.md
-	source = LICENSE-0.2.1::https://github.com/wojciech-graj/doom-ascii/raw/v0.2.1/LICENSE
+	source = README-0.3.1.md::https://github.com/wojciech-graj/doom-ascii/raw/0.3.1/README.md
+	source = LICENSE-0.3.1::https://github.com/wojciech-graj/doom-ascii/raw/0.3.1/LICENSE
 	sha256sums = 27864d019900aa0728c95d77e70dfd94869e44a65e6657ef04110c5f5c1cc202
-	sha256sums = 53c60df8d3ae1538477615426685ee1d277fb3207f3e6cb24a0c427f5a4a942b
+	sha256sums = 0c1a2eb8f0332fc43ae3843c6d14de6e2fba8a02cfa04103fe095a71358a3883
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
-	source_x86_64 = doom_ascii-0.2.1-x86_64.zip::https://github.com/wojciech-graj/doom-ascii/releases/download/v0.2.1/doom_ascii_linux_v0_2_1.zip
-	sha256sums_x86_64 = 6bbc4b07165d24a08a2a4003275f51514e96cc654e0a95700ebf42e9fd072716
+	source_x86_64 = doom_ascii-0.3.1-x86_64-linux.zip::https://github.com/wojciech-graj/doom-ascii/releases/download/0.3.1/doom-ascii-0.3.1-x86_64-linux.zip
+	sha256sums_x86_64 = 1dfb81d3b86ab42738f6c93eb7293001945a04a0185b9d2df0832d5162d95102
 
 pkgname = doom_ascii-bin
