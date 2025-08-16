@@ -26,7 +26,7 @@ groups=('xlibre')
 options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-depends=(xlibre-xserver-common 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libgl libepoxy libunwind
+depends=(xlibre-xserver-common-bin 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libgl libepoxy libunwind
          xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms pixman
          nettle libtirpc xcb-util libxdmcp libx11 libxau libxshmfence glibc)
 provides=($_pkgname 'xorg-server-xephyr' 'xlibre-server-xephyr')
