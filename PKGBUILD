@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-bluetooth-battery-meter-git
-_uuid=Bluetooth-Battery-Meter@maniacx.github.com
-pkgver=030.r52.gb0070d9
+pkgver=030.r60.gda350ab
 pkgrel=1
 pkgdesc="A GNOME extension that displays indicator icons in the system tray, acting as a meter for Bluetooth device battery levels."
 arch=('any')
@@ -11,7 +10,10 @@ depends=(
   'bluez'
   'gnome-shell'
 )
-makedepends=('git')
+makedepends=(
+  'git'
+  'jq'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/maniacx/Bluetooth-Battery-Meter.git')
@@ -35,16 +37,18 @@ build() {
 
 package() {
   cd Bluetooth-Battery-Meter
+  _uuid=$(jq -r .uuid metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   # Does not detect icons in system
-#  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{icons,locale} "$pkgdir/usr/share/"
+#  mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{icons,locale} "$pkgdir/usr/share/"
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
+  mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
-  install -Dm644 schemas/org.gnome.shell.extensions.Bluetooth-Battery-Meter.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
+  install -Dvm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
