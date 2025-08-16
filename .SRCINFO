@@ -1,5 +1,5 @@
 pkgbase = kwin-x11-improved
-	pkgdesc = kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements
+	pkgdesc = kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git
 	pkgver = 6.4.4
 	pkgrel = 1
 	url = https://github.com/guiodic/kwin-x11-improved
@@ -67,6 +67,8 @@ pkgbase = kwin-x11-improved
 	depends = xcb-util-cursor
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
+	provides = kwin-x11
+	conflicts = kwin-x11
 	source = https://download.kde.org/stable/plasma/6.4.4/kwin-x11-6.4.4.tar.xz
 	source = https://download.kde.org/stable/plasma/6.4.4/kwin-x11-6.4.4.tar.xz.sig
 	source = git+https://github.com/guiodic/kwin-x11-improved.git

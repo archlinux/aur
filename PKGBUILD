@@ -5,7 +5,7 @@ _pkgname=kwin-x11
 pkgver=6.4.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements'
+pkgdesc='kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git'
 arch=(x86_64)
 url='https://github.com/guiodic/kwin-x11-improved'
 license=(LGPL-2.0-or-later)
@@ -70,6 +70,8 @@ makedepends=(extra-cmake-modules
              python
              wayland-protocols)
 groups=(plasma)
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         git+${url}.git)
 install=kwin-x11-improved.install
