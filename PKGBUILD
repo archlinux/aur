@@ -1,12 +1,12 @@
 # Maintainer: OTAKUWeBer
 pkgname=chesspilot
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A fully offline chess autoplayer and position evaluator powered by ONNX and Stockfish"
 arch=('x86_64')
 url="https://github.com/OTAKUWeBer/ChessPilot"
 license=('MIT')
-depends=('tk')
+depends=('stockfish' 'tk')
 options=('!strip' '!debug')
 
 source=(
