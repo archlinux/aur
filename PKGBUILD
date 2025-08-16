@@ -5,11 +5,11 @@
 
 pkgname=blast+
 pkgver=2.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('x86_64' 'aarch64')
 url="http://blast.ncbi.nlm.nih.gov/"
-license=('custom')
+license=('NCBI-PD')
 depends=(
     'bash'
     'bzip2'
@@ -67,7 +67,7 @@ package() {
     make prefix="$pkgdir"/usr install
     chmod +x "$pkgdir"/usr/lib/*.so
     install -d "$pkgdir"/usr/share/licenses/"$pkgname"
-    echo 'public domain' >"$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+    echo 'NCBI-PD' >"$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
 
 # vim: set ts=4 sts=4 sw=4 et:

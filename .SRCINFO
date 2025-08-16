@@ -1,11 +1,11 @@
 pkgbase = blast+
 	pkgdesc = BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)
 	pkgver = 2.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://blast.ncbi.nlm.nih.gov/
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = NCBI-PD
 	makedepends = cpio
 	makedepends = gcc
 	depends = bash
