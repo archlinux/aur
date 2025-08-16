@@ -19,7 +19,7 @@ sha256sums=(
   '422fc569a598061a43785279e40e90d76a6b49e3e3940c7b4e430a1dba294e2b'  # Raw binary
   'SKIP'  # Desktop entry
   '8d304ed8f25461f6fc69d0144e0de68403f239b8583b5120fbb5f859254c74d'  # Icon hash (replace if needed)
-  'abd5c13a78e8a7ab78960805c9230d653155f1ef84413d3182d3aa56d0b09eda'
+  'c2e01d78d57c43b272bc765ce96074719fbd86ffbb7f5c07530b48cfaf278653'
 )
 
 # Avoid split debug packages
