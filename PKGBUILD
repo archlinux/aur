@@ -1,7 +1,7 @@
 # Maintainer: Dominik Stanisław Suchora <hexderm@gmail.com>
 
 pkgname='reliq'
-pkgver=2.10.2a45707
+pkgver=2.11.5fde003
 pkgrel=1
 pkgdesc='html parsing and searching tool'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git')
 prepare() {
     cd "${pkgname}"
 
-    git checkout -q 2a45707089ff56c4db073ff064bca3ffc17817a4
+    git checkout -q 5fde0037c940684b440efd30dcc489e7aa523bed
 }
 
 build() {
