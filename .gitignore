@@ -1,0 +1,13 @@
+cat > .gitignore <<'EOF'
+# AUR hygiene
+*.pkg.tar.*
+*.src.tr.*
+/src/
+/pkg/
+/build/
+/*.zst
+*.log
+.npm/
+node_modules/
+EOF
+git add .gitignore

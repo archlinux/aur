@@ -12,6 +12,7 @@ pkgbase = kafbat-kafka-ui
 	makedepends = nodejs
 	makedepends = npm
 	depends = java-runtime>=21
+	backup = etc/kafbat/kafka-ui.yaml
 	source = kafbat-kafka-ui-1.3.0.tar.gz::https://github.com/kafbat/kafka-ui/archive/refs/tags/v1.3.0.tar.gz
 	source = kafbat-kafka-ui.service
 	source = kafbat-kafka-ui.sysusers
