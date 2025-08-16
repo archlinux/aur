@@ -26,6 +26,7 @@ pkgbase = caelestia-cli-git
 	depends = cliphist
 	depends = fuzzel
 	optdepends = caelestia-shell: shell control and screenshot function
+	optdepends = wf-recorder: recorder for NVIDIA
 	provides = caelestia-cli
 	conflicts = caelestia-cli
 	source = caelestia-cli-git::git+https://github.com/caelestia-dots/cli.git
