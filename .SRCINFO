@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-forge
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = jq
 	makedepends = less
 	depends = gnome-shell
 	source = git+https://github.com/forge-ext/forge.git#tag=v48-88
