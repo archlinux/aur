@@ -9,7 +9,7 @@ url="https://github.com/awarrenlove/pacmirror"
 license=('MIT')
 depends=('python3' 'reflector')
 provides=('pacmirror')
-source=('git://github.com/awarrenlove/pacmirror.git')
+source=('https://github.com/awarrenlove/pacmirror.git')
 md5sums=('SKIP')
 
 pkgver() {
