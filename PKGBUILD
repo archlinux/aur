@@ -14,6 +14,11 @@ source=(https://code.launchpad.net/alltray/trunk/${pkgver}/+download/alltray-${p
 md5sums=('5842253b89a5943031b5a02bbd8fd4fb')
 sha256sums=('09dad447b85ecb57debcb423f34381db7f112a010fbc83e4f65b3b31cf416514')
 
+prepare() {
+  cd "$srcdir"/${pkgname}-${pkgver}
+  autoreconf -fiv
+}
+
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
   ./configure --prefix=/usr
