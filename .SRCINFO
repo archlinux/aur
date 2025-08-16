@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-bluetooth-battery-indicator-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = jq
 	depends = gnome-shell
 	depends = python-pybluez
 	optdepends = bluez-utils: Get battery levels using bluetoothctl
