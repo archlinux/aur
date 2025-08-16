@@ -1,16 +1,16 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=debugpy-run
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc='Finds and runs debugpy for VS Code "remote attach" command line debugging'
 url="https://github.com/bulletmark/$pkgname"
 license=(GPL-3.0-or-later)
 arch=(any)
-depends=("python>=3.6" "python-packaging" "python-debugpy")
+depends=("python>=3.6" "python-packaging" "python-debugpy" "python-psutil")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('56e99b959a0b8a17e2b2c7d87329a165a7c3a685')
+sha1sums=('a6783a34b362338f3d3a52dda5216d3929a26604')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
