@@ -1,0 +1,17 @@
+pkgbase = osspd
+	pkgdesc = Emulate OSS device(s) using CUSE
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/OpenMandrivaSoftware/ossp
+	arch = any
+	license = GPL-2.0
+	makedepends = git
+	makedepends = cmake3
+	makedepends = make
+	depends = fuse3
+	provides = osspd
+	conflicts = osspd
+	source = git+https://github.com/OpenMandrivaSoftware/ossp#commit=72f82cc7b98f026c6827743d8f48bd43f6b49b32
+	sha256sums = SKIP
+
+pkgname = osspd

@@ -1,0 +1,9 @@
+[Unit]
+Description=OSS Proxy Daemon
+Documentation=man:osspd
+
+[Service]
+ExecStart=/usr/bin/osspd -f
+
+[Install]
+WantedBy=multi-user.target
