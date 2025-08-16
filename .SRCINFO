@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-gtile-git
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
+	makedepends = jq
 	makedepends = nvm
 	depends = gnome-shell
 	provides = gnome-shell-extension-gtile
