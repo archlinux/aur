@@ -1,0 +1,4 @@
+[mindustry-server-bin]
+source = "git"
+git = "https://github.com/Anuken/Mindustry.git"
+prefix = "v"

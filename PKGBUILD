@@ -1,10 +1,8 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=mindustry-server
 pkgname=${_pkgname}-bin
-_build=146
-pkgver="7.0_${_build}"
-pkgrel=3
-epoch=1
+pkgver=150.1
+pkgrel=1
 pkgdesc="Server of a sandbox tower defense game written in Java"
 arch=("x86_64")
 url="https://github.com/Anuken/Mindustry"
@@ -13,15 +11,15 @@ depends=("java-runtime>=8" "sh" "hicolor-icon-theme")
 makedepends=("libicns")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${pkgname}-${_build}.jar::https://github.com/Anuken/Mindustry/releases/download/v${_build}/server-release.jar"
-        "${pkgname}.icns::https://github.com/Anuken/Mindustry/raw/v${_build}/core/assets/icons/icon.icns"
+source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/download/v${pkgver}/server-release.jar"
+        "${pkgname}.icns::https://github.com/Anuken/Mindustry/raw/v${pkgver}/core/assets/icons/icon.icns"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha256sums=('9bb8327b9e356b7ebd11d5e6a9214094ccdc63f0a2517ea1dee27554490dcb3e'
+sha256sums=('a9707aed081721f918b97e01fcc299cebe46ee154d78a84b28fb1c9884b7d91d'
             '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
             '679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0'
             '053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241')
-noextract=("${pkgname}-${_build}.jar")
+noextract=("${pkgname}-${pkgver}.jar")
 
 build() {
   icns2png --extract "${pkgname}.icns"
@@ -34,5 +32,5 @@ package() {
       "${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${_pkgname}.png"
   done
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm755 "${pkgname}-${_build}.jar" "${pkgdir}/usr/share/java/${_pkgname}/server-release.jar"
+  install -Dm755 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}/server-release.jar"
 }
