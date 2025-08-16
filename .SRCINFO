@@ -1,6 +1,6 @@
 pkgbase = vdr-mp3
 	pkgver = 0.10.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vdr-projects/vdr-plugin-mp3
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = vdr-mp3
 	depends = libid3tag
 	depends = libmad
 	depends = libsndfile
-	depends = vdr-api=8
+	depends = vdr-api=9
 	source = vdr-mp3-0.10.5.tar.gz::https://github.com/vdr-projects/vdr-plugin-mp3/archive/refs/tags/0.10.5.tar.gz
 	source = 50-mp3.conf
 	source = 50-mplayer.conf
