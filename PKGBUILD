@@ -1,5 +1,5 @@
 pkgname=lyrica
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Linux desktop lyrics widget focused on simplicity and integration."
 arch=("x86_64")
@@ -13,7 +13,7 @@ optdepends=("python-websockets: Run examples/lyrica_obs_plugin.py"
             "obs-studio: Run examples/lyrica_obs_plugin.py")
 options=("!lto") # Undefined references to ...
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0f39638539f7145d4e7cb49e3606c0a30cd33dc07a998e883e6012e7a91c6246')
+sha256sums=('a54596c5a42f0feb7fa952110aee001ac4d115c551a9aefd5a7bb3e4c25b3553')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
