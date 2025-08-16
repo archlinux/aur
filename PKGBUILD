@@ -3,7 +3,7 @@
 pkgname=rusk
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A minimal todo manager for CLI written in Rust"
+pkgdesc="A minimal task manager for CLI written in Rust"
 arch=("x86_64")
 url="https://github.com/tagirov/rusk"
 makedepends=("rust")

@@ -1,5 +1,5 @@
 pkgbase = rusk
-	pkgdesc = A minimal todo manager for CLI written in Rust
+	pkgdesc = A minimal task manager for CLI written in Rust
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/tagirov/rusk
