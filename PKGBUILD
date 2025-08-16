@@ -11,6 +11,7 @@ depends=('gnome-shell')
 makedepends=(
   'git'
   'gobject-introspection'
+  'jq'
   'yarn'
   'zip'
 )
@@ -43,15 +44,14 @@ build() {
 
 package() {
   cd rounded-window-corners
-  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
+  _uuid=$(jq -r .uuid _build/metadata.json)
 
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
-  bsdtar -xvf "${uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/" --no-same-owner
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale" "$pkgdir/usr/share/"
+  mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
-  install -Dm644 _build/schemas/org.gnome.shell.extensions.rounded-window-corners.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/schemas/"
+  install -Dvm644 _build/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
