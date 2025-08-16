@@ -9,11 +9,12 @@ url="https://github.com/awarrenlove/pacmirror"
 license=('MIT')
 depends=('python3' 'reflector')
 provides=('pacmirror')
-source=('https://github.com/awarrenlove/pacmirror.git')
+source=('git+https://github.com/awarrenlove/pacmirror.git')
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
+
 	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 

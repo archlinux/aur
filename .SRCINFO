@@ -8,7 +8,7 @@ pkgbase = pacmirror-git
 	depends = python3
 	depends = reflector
 	provides = pacmirror
-	source = https://github.com/awarrenlove/pacmirror.git
+	source = git+https://github.com/awarrenlove/pacmirror.git
 	md5sums = SKIP
 
 pkgname = pacmirror-git
