@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.4.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -29,6 +29,8 @@ options=(!debug !strip)
 install=$pkgname.install
 
 prepare() {
+	local patchver="${pkgver##*.}"
+	sed -i "s/^VERSION_PATCH=.*/VERSION_PATCH=$patchver/" "$srcdir/$pkgname/version.mk"
 	sed -i 's|url = \.\./\.\./|url = https://gitlab.demlabs.net/|g' "$srcdir/$pkgname/.gitmodules"
 	sed -i 's|url = \.\./|url = https://gitlab.demlabs.net/cellframe/|g' "$srcdir/$pkgname/.gitmodules"
 	cd "$pkgname" && git submodule update --init --recursive --progress
