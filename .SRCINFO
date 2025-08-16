@@ -1,6 +1,6 @@
 pkgbase = vdr
-	pkgver = 2.7.6
-	pkgrel = 2
+	pkgver = 2.7.7
+	pkgrel = 1
 	url = http://tvdr.de/
 	arch = x86_64
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = vdr
 	makedepends = ttf-font
 	makedepends = systemd
 	makedepends = ncurses
-	source = vdr-2.7.6.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.7.6;sf=tbz2
-	source = vdr-infinite-poll-fix.patch
+	source = vdr-2.7.7.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.7.7;sf=tbz2
 	source = Make.config
 	source = vdr-MainMenuHooks.patch
 	source = 00-vdr.conf
@@ -29,8 +28,7 @@ pkgbase = vdr
 	source = shutdown-wrapper.c
 	source = vdr.service
 	source = vdr.sysuser
-	sha256sums = 06c8ba921277129970308fb15db1c66d7c2874fd77fcff3aa1ca77b82ccb03de
-	sha256sums = 4c209ab493b8aab766fd134fa4c0dbcd5daf94552a71cef4225c7a7a9ff15d5b
+	sha256sums = f0d8d30b6a8012f6838eaaf9c337b7352bfac67f1cea6342b9c685e8df88c856
 	sha256sums = 6d5a69501e65046b708841c38f066f4598baa7c4b52f382e70fe2f69c01a233f
 	sha256sums = c645bc73e9d18963fba1ce7e76033215e3c8daf02cfd1d68f515c932c7121a58
 	sha256sums = 86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3
@@ -54,7 +52,7 @@ pkgname = vdr
 	depends = ttf-font
 	optdepends = lirc-utils: remote control support
 	optdepends = vdr-xorg: To start X11
-	provides = vdr-api=8
+	provides = vdr-api=9
 	conflicts = runvdr-extreme
 	replaces = runvdr-extreme
 	options = emptydirs
@@ -69,7 +67,7 @@ pkgname = vdr
 
 pkgname = vdr-examples
 	pkgdesc = Plugins for vdr to show some possible features
-	depends = vdr-api=8
+	depends = vdr-api=9
 	depends = gcc-libs
 	depends = ncurses
 	backup = etc/vdr/conf.avail/50-epgtableid0.conf

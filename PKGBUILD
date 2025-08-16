@@ -3,15 +3,14 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgbase=vdr
 pkgname=(vdr vdr-examples)
-pkgver=2.7.6
-_vdrapi=8
-pkgrel=2
+pkgver=2.7.7
+_vdrapi=9
+pkgrel=1
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL-2.0-or-later')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 source=("$pkgname-$pkgver.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/$pkgver;sf=tbz2"
-        'vdr-infinite-poll-fix.patch'
         'Make.config'
         'vdr-MainMenuHooks.patch'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
@@ -21,8 +20,7 @@ source=("$pkgname-$pkgver.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=re
         'shutdown-wrapper.c'
         'vdr.service'
         'vdr.sysuser')
-sha256sums=('06c8ba921277129970308fb15db1c66d7c2874fd77fcff3aa1ca77b82ccb03de'
-            '4c209ab493b8aab766fd134fa4c0dbcd5daf94552a71cef4225c7a7a9ff15d5b'
+sha256sums=('f0d8d30b6a8012f6838eaaf9c337b7352bfac67f1cea6342b9c685e8df88c856'
             '6d5a69501e65046b708841c38f066f4598baa7c4b52f382e70fe2f69c01a233f'
             'c645bc73e9d18963fba1ce7e76033215e3c8daf02cfd1d68f515c932c7121a58'
             '86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3'
@@ -43,9 +41,6 @@ prepare() {
 
   # Custom extensions
   patch -p1 -i "$srcdir/vdr-MainMenuHooks.patch"
-
-  # Upstream fixes
-  patch -i "$srcdir/vdr-infinite-poll-fix.patch"
 
   # Don't install plugins with VDR
   sed -i '/^install: /s/install-plugins //' Makefile
