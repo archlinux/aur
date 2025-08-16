@@ -2,7 +2,7 @@
 
 _pkgname=imath
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)'
 url='https://github.com/AcademySoftwareFoundation/Imath'
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-cmake' 'wine')
 checkdepends=('mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f3c0c4210b5e6fe17d90cd7ebbe9638eea9fb458421d00eddb4d1a9d5ad47b36')
+sha256sums=('b2c8a44c3e4695b74e9644c76f5f5480767355c6f98cde58ba0e82b4ad8c63ce')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DIMATH_LIB_SUFFIX= )
