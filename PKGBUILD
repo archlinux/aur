@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-mullvad-indicator-git
-_uuid=mullvadindicator@pobega.github.com
 pkgver=48.r0.g7954eb1
 pkgrel=1
 pkgdesc="GNOME extension to track Mullvad connectivity"
@@ -10,6 +9,7 @@ license=('Apache-2.0')
 depends=('gnome-shell')
 makedepends=(
   'git'
+  'jq'
   'zip'
 )
 provides=("${pkgname%-git}")
@@ -29,10 +29,11 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
+  _uuid=$(jq -r .uuid metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf ${_uuid}.zip -C "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  install -Dm644 schemas/org.gnome.shell.extensions.MullvadIndicator.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
+  install -Dvm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }

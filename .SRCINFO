@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-mullvad-indicator-git
 	arch = any
 	license = Apache-2.0
 	makedepends = git
+	makedepends = jq
 	makedepends = zip
 	depends = gnome-shell
 	provides = gnome-shell-extension-mullvad-indicator
