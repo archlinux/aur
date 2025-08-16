@@ -7,10 +7,10 @@ _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular multi-screen pdf presenter"
 arch=('x86_64')
-url="https://github.com/stiglers-eponym/BeamerPresenter"
+url="https://github.com/beamerpresenter/BeamerPresenter"
 license=('AGPL3' 'GPL3')
 # depends and makedepends will be filled based on the PDF engine.
 depends=("qt${_qt_version_major}-multimedia" "qt${_qt_version_major}-svg")
