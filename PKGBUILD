@@ -1,6 +1,6 @@
 pkgname=chesspilot
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A fully offline chess autoplayer and position evaluator powered by ONNX and Stockfish"
 arch=('x86_64')
 url="https://github.com/OTAKUWeBer/ChessPilot"
