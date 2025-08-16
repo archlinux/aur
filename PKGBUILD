@@ -14,7 +14,10 @@ depends=(
   'gnome-shell'
   'polkit'
 )
-makedepends=('git')
+makedepends=(
+  'git'
+  'jq'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/LorenzoMorelli/GPU_profile_selector.git')
@@ -36,11 +39,12 @@ build() {
 
 package() {
   cd GPU_profile_selector
+  _uuid=$(jq -r .uuid metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  install -Dm644 schemas/org.gnome.shell.extensions.GPU_profile_selector.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
+  install -Dvm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
