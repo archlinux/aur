@@ -3,7 +3,7 @@
 # Contributor: sanduhrs <stefan.auditor@erdfisch.de>
 pkgname=gnome-shell-extension-caffeine-git
 _uuid=caffeine@patapon.info
-pkgver=57.r4.gc7b0164
+pkgver=57.r7.g9e93251
 pkgrel=1
 pkgdesc="Disable the screensaver and auto suspend"
 arch=('any')
@@ -32,10 +32,9 @@ package() {
   bsdtar -xvf "${_uuid}.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
+  mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
-  install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.caffeine.gschema.xml" -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
+  install -Dvm644 "${_uuid}"/schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
 
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
