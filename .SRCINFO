@@ -1,7 +1,7 @@
 pkgbase = vdradmin-am
 	pkgdesc = Web user interface for VDR
-	pkgver = 3.6.13
-	pkgrel = 2
+	pkgver = 3.6.14
+	pkgrel = 1
 	url = https://github.com/vdr-projects/vdradmin-am
 	arch = any
 	license = GPL2
@@ -21,11 +21,9 @@ pkgbase = vdradmin-am
 	optdepends = perl-digest-hmac: Required for AutoTimer email notification and CRAM-MD5 authentication
 	optdepends = perl-io-socket-inet6: Required for IPv6 support
 	optdepends = perl-http-daemon-ssl: Required for SSL support (https)
-	source = vdradmin-am-3.6.13.tar.gz::https://github.com/vdr-projects/vdradmin-am/archive/refs/tags/v3.6.13.tar.gz
-	source = fix-install.sh.diff
+	source = vdradmin-am-3.6.14.tar.gz::https://github.com/vdr-projects/vdradmin-am/archive/refs/tags/v3.6.14.tar.gz
 	source = vdradmin-am.service
-	sha256sums = eda3bdd947b27fc2ff73df3e68ba12aeb80cb2c5aecc63f30815eb68187c9e3e
-	sha256sums = 06d731235c03d94b5b6bb872e7be92bad587642e26eec38dd78daf0256602141
+	sha256sums = 6595e5e35e989ac641e8acf6dd75d5f37476577359f7bdeae1d2caa758347967
 	sha256sums = 2a33bbdac1ba7c80139d17e5d7cca7ccbf2a2945aeaf0777d0dd6fbe594bfe54
 
 pkgname = vdradmin-am

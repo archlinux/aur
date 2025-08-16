@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdradmin-am
-pkgver=3.6.13
-pkgrel=2
+pkgver=3.6.14
+pkgrel=1
 pkgdesc="Web user interface for VDR"
 url="https://github.com/vdr-projects/vdradmin-am"
 arch=('any')
@@ -15,16 +15,9 @@ optdepends=('perl-authen-sasl: Required for AutoTimer email notification'
             'perl-http-daemon-ssl: Required for SSL support (https)')
 makedepends=('perl-authen-sasl' 'perl-digest-hmac' 'perl-io-socket-inet6' 'perl-http-daemon-ssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdradmin-am/archive/refs/tags/v$pkgver.tar.gz"
-        'fix-install.sh.diff'
         'vdradmin-am.service')
-sha256sums=('eda3bdd947b27fc2ff73df3e68ba12aeb80cb2c5aecc63f30815eb68187c9e3e'
-            '06d731235c03d94b5b6bb872e7be92bad587642e26eec38dd78daf0256602141'
+sha256sums=('6595e5e35e989ac641e8acf6dd75d5f37476577359f7bdeae1d2caa758347967'
             '2a33bbdac1ba7c80139d17e5d7cca7ccbf2a2945aeaf0777d0dd6fbe594bfe54')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/fix-install.sh.diff"
-}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
