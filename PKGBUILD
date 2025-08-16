@@ -3,7 +3,7 @@
 
 pkgname=c3c-git
 _pkgname=c3c
-pkgver=r3286.f2babb60
+pkgver=r3411.ad02fad1
 pkgrel=1
 pkgdesc='Compiler for the C3 language'
 arch=(x86_64)
@@ -45,5 +45,5 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/usr/lib/$_pkgname/c3c" "$pkgdir/usr/bin/c3c"
   install -Dm644 $_pkgname/LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  install -Dm644 $_pkgname/LICENSE_STDLIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE_STDLIB"
+  install -Dm644 $_pkgname/LICENSE_SRC "$pkgdir/usr/share/licenses/$_pkgname/LICENSE_SRC"
 }
