@@ -1,7 +1,7 @@
 # Maintainer: Toby Vincent <tobyv@tobyvin.dev>
 
 pkgname=scraparr
-pkgver=2.0.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Prometheus Exporter for *Arr Suite'
 arch=('any')
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('3e52c6120b90089acacfaee3f7037585e57f2102f0d1ed334634ccc1ac7d693b'
+sha256sums=('0d835ff1bd1d0114c62be5015f5c5294e14eb999a0112fb29111b469f072b5fa'
             '729ccee390f75e399757cdab5f7eb6ccb88f2430360381a91bc741cecc8d9497'
             '67dd3e2e2f7f75bcfe3d2fc3f54117bb604af2ec968c91cfb96a2b79faf0a774'
             'fa637aa2345cb15a6deb8db11001454c97ccb56198581a4b226cd8fcf8cab479')
