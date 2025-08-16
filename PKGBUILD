@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-tilingshell
-_uuid=tilingshell@ferrarodomenico.com
 pkgver=16.4
 pkgrel=1
 _nodeversion=22
@@ -10,6 +9,7 @@ url="https://github.com/domferr/tilingshell"
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
 makedepends=(
+  'jq'
   'nvm'
   'zip'
 )
@@ -44,13 +44,14 @@ build() {
 
 package() {
   cd "tilingshell-$pkgver"
+  _uuid=$(jq -r .uuid resources/metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "${_uuid}.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
+  mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
-  install -Dvm644 dist/schemas/org.gnome.shell.extensions.tilingshell.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
+  install -Dvm644 dist/schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }

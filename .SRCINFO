@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-tilingshell
 	url = https://github.com/domferr/tilingshell
 	arch = any
 	license = GPL-2.0-or-later
+	makedepends = jq
 	makedepends = nvm
 	makedepends = zip
 	depends = gnome-shell
