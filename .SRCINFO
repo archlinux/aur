@@ -1,7 +1,7 @@
 pkgbase = inky-bin
 	pkgdesc = Editor for ink: inkle's narrative scripting language - precompiled binary
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.inklestudios.com/ink
 	arch = x86_64
 	license = MIT

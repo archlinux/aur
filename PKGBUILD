@@ -2,7 +2,7 @@
 pkgname=inky-bin
 pkgname2=inky
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for ink: inkle's narrative scripting language - precompiled binary"
 arch=('x86_64')
 url="http://www.inklestudios.com/ink"
@@ -20,6 +20,7 @@ sha512sums=('738b734aa1fa24d9ba09361c7ab5ca8b08a0e910724ef115d4c3d1d7a75f87c501d
             '84fd0f87bfdf5e1fd6df5f9e253e3aa71373b9ad28a1d027522eceb6cf94a9a370ef239bfe0738ce64efabb3685945fc40c054265418b0a639e26e4213211481')
 
 package() {
+    mv "${pkgname}-${pkgver}.png" "${pkgname2}-${pkgver}.png"
     install -D -m644 "${pkgname2}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -D -m644 "${pkgname2}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
