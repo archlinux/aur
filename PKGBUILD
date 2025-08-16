@@ -3,9 +3,9 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vnsiserver
 pkgver=1.8.3
-_vdrapi=8
+_vdrapi=9
 epoch=2
-pkgrel=7
+pkgrel=8
 url="https://github.com/vdr-projects/vdr-plugin-vnsiserver"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
