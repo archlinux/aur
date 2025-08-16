@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2025-03-20 11:56:38.934303781 +1000
++++ CMakeLists.txt	2025-03-20 11:58:37.908196290 +1000
+@@ -26,7 +26,7 @@
+ endif()
+ 
+ if(BUILD_OUT_OF_TREE)
+-  find_qt(COMPONENTS Widgets Core)
++  find_package(Qt6 COMPONENTS Widgets Core)
+   if(OS_LINUX OR OS_FREEBSD OR OS_OPENBSD)
+     find_package(Qt6 REQUIRED Gui)
+   endif()
