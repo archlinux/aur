@@ -9,7 +9,7 @@ pkgbase = anytype-appimage
 	depends = bash
 	depends = patch
 	provides = anytype=0.48.5
-	conflicts = anytype-bin
+	conflicts = anytype
 	options = !strip
 	source = anytype-appimage-0.48.5::https://github.com/anyproto/anytype-ts/releases/download/v0.48.5/Anytype-0.48.5.AppImage
 	source = anytype.desktop.patch

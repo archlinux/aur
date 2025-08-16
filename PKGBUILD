@@ -10,7 +10,7 @@ url='https://anytype.io/'
 license=('custom')
 depends=('zlib' 'bash' 'patch')
 provides=("${_name}=${pkgver}")
-conflicts=("${_name}-bin")
+conflicts=("${_name}")
 options=(!strip)
 source=("${pkgname}-${pkgver}::https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}/Anytype-${pkgver}.AppImage"
   "${_name}.desktop.patch"
