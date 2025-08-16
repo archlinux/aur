@@ -1,7 +1,7 @@
 pkgbase = chesspilot
 	pkgdesc = A fully offline chess autoplayer and position evaluator powered by ONNX and Stockfish
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OTAKUWeBer/ChessPilot
 	arch = x86_64
 	license = MIT
