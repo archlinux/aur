@@ -127,3 +127,6 @@ Fix macos-build name
 Fix name of generated binary
 
 
+Add step to test OS installations
+
+
