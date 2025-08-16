@@ -1,41 +1,40 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: damir <sudo dot pacman at gmail dot com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: sandman <r.coded@gmail.com>
 # Contributor: Christoph Siegenthaler <csi@gmx.ch>
 
 pkgname=xprobe2
 pkgver=0.3
-pkgrel=3
+pkgrel=5
 pkgdesc='Active OS fingerprinting tool'
 arch=('i686' 'x86_64')
-license=('GPL2')
-url='https://sourceforge.net/projects/xprobe/'
+license=('GPL-2.0-only')
+url='https://github.com/binarytrails/xprobe2/tree/master'
 backup=('etc/xprobe2/xprobe2.conf')
 depends=('libpcap')
-source=("http://downloads.sourceforge.net/project/xprobe/xprobe2/Xprobe2 ${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        fix-for-gcc4.3.patch
-        reproducible_build.patch)
-sha512sums=('fd499ada22be5df3e01630948cb72d1a9e648e0c7bfaf2a688386a61c67bb36a326a9e2f3f2b9960a6a49128343010aafe8a3f04ec05e89420a1384215e41f21'
-            '50fe71183e9717af0fcce97ecc2971b5be7024f07cb7acb5d019bf07d6549382936c8c6db860d18639e555263907654e1852054670cb3df5b618d62a1f47858b'
-            '1ade43894b078521f16bf7609af551455211eb1b2e4c571bf23639abb530391f2474ad49f3a2f52c0298344691faa0e18250909d04b30156d5e2732df29399c5')
+_commit="f14af2e4f757d86b2a2acfec75c0f1768f44cecb"
+source=("git+https://github.com/binarytrails/xprobe2.git#commit=$_commit")
+sha512sums=('d058e1bb1ec1ece4cd56dc4d37b0b0e85b7e4af7c28a91f11b2b0feb81fc486c713d1b6b60831806def40aafb4b267555ea15cca32284f9af28603e5d66ccdaa')
+            
+#sha512sum of original tarball 0.3: 'fd499ada22be5df3e01630948cb72d1a9e648e0c7bfaf2a688386a61c67bb36a326a9e2f3f2b9960a6a49128343010aafe8a3f04ec05e89420a1384215e41f21'
 
 prepare(){
-  cd ${pkgname}-${pkgver}
-  patch -p1 < "${srcdir}/fix-for-gcc4.3.patch"
-  patch -p1 < "${srcdir}/reproducible_build.patch"
-}
-
-build(){
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}  
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
     --sysconfdir=/etc
+  sed -i '18a\#include <ctime>' libs-external/USI++/src/tcp.cc
+  sed -i '19a\#include <ctime>' libs-external/USI++/src/datalink.cc
+}
+
+build(){
+  cd ${pkgname}
   make
 }
 
 package(){
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   make DESTDIR="${pkgdir}" install
 }
 
-# vim: ts=2 sw=2 et:

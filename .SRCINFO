@@ -1,19 +1,14 @@
 pkgbase = xprobe2
 	pkgdesc = Active OS fingerprinting tool
 	pkgver = 0.3
-	pkgrel = 3
-	url = https://sourceforge.net/projects/xprobe/
+	pkgrel = 5
+	url = https://github.com/binarytrails/xprobe2/tree/master
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = libpcap
 	backup = etc/xprobe2/xprobe2.conf
-	source = http://downloads.sourceforge.net/project/xprobe/xprobe2/Xprobe2 0.3/xprobe2-0.3.tar.gz
-	source = fix-for-gcc4.3.patch
-	source = reproducible_build.patch
-	sha512sums = fd499ada22be5df3e01630948cb72d1a9e648e0c7bfaf2a688386a61c67bb36a326a9e2f3f2b9960a6a49128343010aafe8a3f04ec05e89420a1384215e41f21
-	sha512sums = 50fe71183e9717af0fcce97ecc2971b5be7024f07cb7acb5d019bf07d6549382936c8c6db860d18639e555263907654e1852054670cb3df5b618d62a1f47858b
-	sha512sums = 1ade43894b078521f16bf7609af551455211eb1b2e4c571bf23639abb530391f2474ad49f3a2f52c0298344691faa0e18250909d04b30156d5e2732df29399c5
+	source = git+https://github.com/binarytrails/xprobe2.git#commit=f14af2e4f757d86b2a2acfec75c0f1768f44cecb
+	sha512sums = d058e1bb1ec1ece4cd56dc4d37b0b0e85b7e4af7c28a91f11b2b0feb81fc486c713d1b6b60831806def40aafb4b267555ea15cca32284f9af28603e5d66ccdaa
 
 pkgname = xprobe2
-
