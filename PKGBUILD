@@ -2,10 +2,10 @@
 
 pkgname=cosmosmash
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="an Astrosmash clone."
 arch=('i686' 'x86_64')
-url="http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}.html"
+url="http://gvlsywt.cluster051.hosting.ovh.net/dev/${pkgname}.html"
 license=('GPL-2.0-or-later')
 depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_mixer' 'sdl2_gfx' 'libflatzebra')
 source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")

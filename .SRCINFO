@@ -1,8 +1,8 @@
 pkgbase = cosmosmash
 	pkgdesc = an Astrosmash clone.
 	pkgver = 1.5.0
-	pkgrel = 1
-	url = http://perso.b2b2c.ca/~sarrazip/dev/cosmosmash.html
+	pkgrel = 2
+	url = http://gvlsywt.cluster051.hosting.ovh.net/dev/cosmosmash.html
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
