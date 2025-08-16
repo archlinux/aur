@@ -1,0 +1,23 @@
+pkgbase = bootupd-git
+	pkgdesc = Bootloader updater
+	pkgver = 0.2.29.r6.gf0fcca8
+	pkgrel = 1
+	url = https://github.com/coreos/bootupd
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = efibootmgr
+	provides = bootupd=0.2.29.r6.gf0fcca8
+	conflicts = bootupd
+	source = git+https://github.com/coreos/bootupd.git
+	source = 0001-arch-path.patch
+	sha256sums = SKIP
+	sha256sums = 34aa0422fac4e2eb21572fdc8da068cb160dcb7a5290d5333feca00ada36de1e
+
+pkgname = bootupd-git
