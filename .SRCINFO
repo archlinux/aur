@@ -1,6 +1,6 @@
 pkgbase = supertux-git
 	pkgdesc = A classic 2D jump'n run sidescroller game in a style similar to the original SuperMario game
-	pkgver = 0.6.3.r1599.g6f1078d10
+	pkgver = 0.6.3.r1745.g76e936ba3
 	pkgrel = 1
 	url = https://www.supertux.org
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = supertux-git
 	depends = physfs
 	depends = hicolor-icon-theme
 	depends = libraqm
-	depends = squirrel
 	optdepends = discord: Discord Rich Presence integration
 	optdepends = arrpc: Unofficial Discord client Rich Presence integration
 	provides = supertux
