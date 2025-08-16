@@ -1,0 +1,22 @@
+pkgbase = hashsum
+	pkgdesc = Check hashes for your files
+	pkgver = 4.0.7
+	pkgrel = 1
+	url = https://altlinux.space/alt-gnome/Hashsum
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = appstream-glib
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = libadwaita
+	depends = libblake3
+	depends = libgcrypt
+	depends = libgee
+	optdepends = python-nautilus: Nautilus extension
+	source = git+https://altlinux.space/alt-gnome/Hashsum.git#tag=4.0.7
+	sha256sums = a9f07ab8608fe802a315f0af4776afd540a3f711d1cdbbeb9666a520d3a9c601
+
+pkgname = hashsum

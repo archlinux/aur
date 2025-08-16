@@ -1,0 +1,3 @@
+[hashsum]
+source = "git"
+git = "https://altlinux.space/alt-gnome/Hashsum.git"
