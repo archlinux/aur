@@ -2,7 +2,7 @@
 # Maintainer: Bert Peters <bertptrs@archlinux.org>
 
 pkgname=ruby-cucumber-compatibility-kit
-pkgver=19.0.0
+pkgver=20.1.0
 pkgrel=1
 pkgdesc="Kit to check compatibility with official cucumber implementation"
 arch=(any)
@@ -21,8 +21,8 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=(https://github.com/cucumber/compatibility-kit/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('59d2ca131171e926b45949877ae57f28f5429054bdcd4e542f4c3bca8b8cdf96517ffaddd99ce30ad5e360052d93e70bf83a88a3365583fb172312db9920c108')
-b2sums=('bfbf432883ee5c3df9fa31a3ae55bced71817a22d1cbfbb5fc5e05d5029bc66a35279e398790231a4ab7eeb0dfcfbca2a8cdc332e506877c124b37d6fb5e7af2')
+sha512sums=('6e446bb89d745445a323f89e2ba496241fa897788d0ff5d23082adeddb9b5c0a47772d9fdc12713cb08f7bb71bf7770efcf0d16acde975c268a1dfb0f17cf55e')
+b2sums=('fd348e8ec76493988d524f9e1e32a21f614b22dc81d4a090c18629b08619b5f884768ccbb200f4b18eebad056bc16d827d49aa0eee5c2d9942a7e4c54148b5ee')
 
 prepare() {
   cd compatibility-kit-$pkgver/ruby
