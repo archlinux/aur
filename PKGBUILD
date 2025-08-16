@@ -7,7 +7,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-rt
-pkgver=575.64.05
+pkgver=580.76.05
 # ^^^^^ Using current version of https://archlinux.org/packages/?q=nvidia-utils
 _extramodules=extramodules-rt
 pkgrel=2
@@ -21,7 +21,7 @@ license=('custom')
 options=(!strip)
 install=$pkgname.install
 source_x86_64=("http://download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver.run")
-md5sums_x86_64=('5232a442e7696c73f2a7f527481084aa')
+sha256sums_x86_64=('219be636b60931b021b2e8c1e0eff887363c731f8a940caa87bcc054d05d97fd')
 
 _pkg="NVIDIA-Linux-x86_64-$pkgver"
 
