@@ -4,3 +4,4 @@ pkg
 *.pkg.tar.zst
 .SRCINFO
 .code-workspace
+*.png
