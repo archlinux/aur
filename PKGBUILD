@@ -1,4 +1,4 @@
-# Maintainer: David Lishcyshen <microdaika1@gmail.com>
+# Maintainer: David Lishchyshen <microdaika1@gmail.com>
 pkgname=wofi-power-menu
 pkgver=0.3.1
 pkgrel=1
