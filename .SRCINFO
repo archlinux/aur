@@ -1,17 +1,16 @@
 pkgbase = elephant-files
 	pkgdesc = files provider for elephant
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
 	depends = fd
-	depends = elephant
 	provides = elephant-files
 	conflicts = elephant-files
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 4af4cd7469b85236f716d81ddd2578fe923bb735cb2fdbca604271d2af9130f5
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta.tar.gz
+	sha256sums = 7bad372e5796b882a7578a8ab36c7bb8921d135e4b960420136b7ba4a9ad186c
 
 pkgname = elephant-files
