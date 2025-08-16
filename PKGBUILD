@@ -4,8 +4,8 @@
 pkgname=vdr-epgfixer
 pkgver=0.3.1_21_g354f28b
 _gitver=354f28b0112ba27f08f6509243b410899f74b6ed
-_vdrapi=8
-pkgrel=14
+_vdrapi=9
+pkgrel=15
 pkgdesc="VDR plugin for doing extra fixing of EPG data"
 url='https://github.com/vdr-projects/vdr-plugin-epgfixer'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/epgfixer/charset.conf'
         'var/lib/vdr/plugins/epgfixer/epgclone.conf'
         'var/lib/vdr/plugins/epgfixer/regexp.conf')
-md5sums=('SKIP')
+md5sums=('f887c8c66058b20f357879c7b57a9f94')
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
