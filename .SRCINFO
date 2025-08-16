@@ -20,7 +20,7 @@ pkgbase = xlibre-xserver-xnest-bin
 	license = SMLNJ
 	license = X11
 	license = X11-distribute-modifications-variant
-	depends = xlibre-xserver-common
+	depends = xlibre-xserver-common-bin
 	depends = X-ABI-XINPUT_VERSION=26.0
 	depends = libxfont2
 	depends = libunwind
