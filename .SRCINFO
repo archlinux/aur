@@ -1,6 +1,6 @@
 pkgbase = python-myokit
 	pkgdesc = A modeling and simulation tool for cardiac cellular electrophysiology
-	pkgver = 1.37.4
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://github.com/myokit/myokit
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-myokit
 	optdepends = python-scipy: for data log viewer support
 	optdepends = python-moviepy: for video support
 	optdepends = python-pyqt6: for gui support
-	source = myokit-1.37.4.tar.gz::https://github.com/myokit/myokit/archive/v1.37.4.tar.gz
-	sha512sums = cab8a3aaf42ae1f6889a010214e08e1d7e5f6e8b9b8b00dad4970413bd45b423de0e2894c99187c9f34f0e11fffc4c970ea65f8db66722f26df689d0ae84feb1
+	source = myokit-1.38.0.tar.gz::https://github.com/myokit/myokit/archive/v1.38.0.tar.gz
+	sha512sums = 7462ce820c6bc0362af4fb8c23c0fe0c28dcbf61644e8cc01a2d02f48ff3499cf10e0aeacf1913011d422b3112e2b89f00b2715d3e16743c24bb05ac996d5d83
 
 pkgname = python-myokit
