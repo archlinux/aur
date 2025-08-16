@@ -1,0 +1,5 @@
+[python-simplemediawiki]
+source = "git"
+git = "https://github.com/ianweller/python-simplemediawiki.git"
+from_pattern = "b2"
+to_pattern = "_b2"
