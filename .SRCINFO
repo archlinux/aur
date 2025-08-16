@@ -1,11 +1,12 @@
 pkgbase = gnome-shell-extension-transparent-top-bar-git
 	pkgdesc = GNOME Shell extension that brings back the transparent top bar when free-floating
-	pkgver = r76.0f08ff4
+	pkgver = r79.d0a3f83
 	pkgrel = 1
 	url = https://github.com/lamarios/gnome-shell-extension-transparent-top-bar
 	arch = any
 	license = LicenseRef-unknown
 	makedepends = git
+	makedepends = jq
 	makedepends = ruby-sass
 	makedepends = zip
 	depends = gnome-shell

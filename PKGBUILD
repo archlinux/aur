@@ -1,8 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=gnome-shell-extension-transparent-top-bar-git
-_uuid=transparent-top-bar@ftpix.com
-pkgver=r76.0f08ff4
+pkgver=r79.d0a3f83
 pkgrel=1
 pkgdesc="GNOME Shell extension that brings back the transparent top bar when free-floating"
 arch=('any')
@@ -11,6 +10,7 @@ license=('LicenseRef-unknown')
 depends=('gnome-shell')
 makedepends=(
   'git'
+  'jq'
   'ruby-sass'
   'zip'
 )
@@ -36,11 +36,13 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
+  _uuid=$(jq -r .uuid src/metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvzf "build/${_uuid}.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  install -Dm644 src/schemas/ftpix.com.transparentbar.gschema.xml -t \
+  install -Dvm644 src/schemas/*.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
