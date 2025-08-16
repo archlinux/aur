@@ -3,7 +3,7 @@
 pkgname=tclient-ddnet
 pkgver=10.4.0
 shortened_ver=${pkgver%??}
-pkgrel=1
+pkgrel=2
 pkgdesc="Extended DDNet Teeworlds client."
 arch=('x86_64')
 url="https://tclient.app/"
@@ -43,7 +43,7 @@ StartupNotify=true
 TryExec=tclient
 Exec=tclient
 Terminal=false
-Icon=/opt/tclient/tclient.png
+Icon=/opt/$pkgname/tclient.png
 Type=Application
 Categories=Games
 EOF
