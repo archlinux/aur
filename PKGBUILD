@@ -8,13 +8,14 @@
 
 pkgname=melonds-git
 _gitname=melonDS
-pkgver=1.0rc.r2539.d6d820c0
+pkgver=1.0.r16.g367d05b
 pkgrel=1
 pkgdesc='DS emulator, sorta'
 url="https://github.com/melonDS-emu/melonDS"
 license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-depends=('enet' 'libarchive' 'libepoxy' 'libslirp' 'qt6-base' 'qt6-multimedia' 'qt6-svg' 'sdl2')
+
+depends=('enet' 'faad2' 'libarchive' 'libepoxy' 'libslirp' 'qt6-base' 'qt6-multimedia' 'qt6-svg' 'sdl2')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'pkg-config')
 
 if [[ "${_use_clang::1}" == "t" ]]; then
@@ -26,21 +27,35 @@ fi
 provides=('melonds')
 conflicts=('melonds')
 
-source=("${_gitname}::git+https://github.com/melonDS-emu/melonDS.git")
+source=("${_gitname}::git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "${_gitname}"
+
+  # allow Arch build system to control build
+  sed -e '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' -i CMakeLists.txt
+  truncate -s 0 cmake/DefaultBuildFlags.cmake
+}
 
 pkgver() {
   cd "${_gitname}"
-  printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' --exclude='*[a-zA-Z]' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  local _ldflags=(${LDFLAGS})
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  CFLAGS+=" -DNDEBUG"
+  CXXFLAGS+=" -DNDEBUG"
 
   if [[ "${_use_clang::1}" == "t" ]]; then
-    export CC=clang
-    export CXX=clang++
-    export LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
+    CC=clang
+    CXX=clang++
+
+    local _ldflags=(${LDFLAGS})
+    _ldflags=(${_ldflags[@]//*fuse-ld*/})
+    LDFLAGS="${_ldflags[*]} -fuse-ld=lld"
   fi
 
   local _cmake_options=(
