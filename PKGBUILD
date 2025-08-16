@@ -1,6 +1,6 @@
 # Maintainer: Luke Short <ekultails@gmail.com>
 pkgname=curl-static-bin
-pkgver=8.13.0
+pkgver=8.15.0
 pkgrel=1
 pkgdesc='Static musl-compiled curl with the latest features enabled'
 url='https://github.com/stunnel/static-curl'
@@ -11,8 +11,8 @@ license=('MIT')
 depends=()
 conflicts=('curl-static')
 provides=('curl-static')
-sha256sums_x86_64=('9f112cae99dd7caf2247c1b562b72eaafe771d346a6ee2b37a400b1c76115eb3')
-sha256sums_aarch64=('d4c73d19ab538436526f18ea2545ceb8bd05a5f936d4bbd85f83e1d11ee20749')
+sha256sums_x86_64=('a6e519f459e3c64984f821dd23e144a4657a045de1a4c89f2e4a80ab41b40ed1')
+sha256sums_aarch64=('781aac12f0fc8738188e8cf990bb7ad1e9e4fca8fdce4bf4dfbde7756fffb796')
 
 package() {
   cd "$srcdir/"
