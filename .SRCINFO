@@ -1,11 +1,11 @@
 pkgbase = it-tools-web
 	pkgdesc = Collection of handy online tools for developers, with great UX
-	pkgver = 2024.10.22_7ca5933
+	pkgver = 2025.8.6_0325b117
 	pkgrel = 1
-	url = https://github.com/CorentinTh/it-tools
+	url = https://github.com/sharevb/it-tools
 	arch = any
 	license = GPL-3.0-only
-	source = https://github.com/CorentinTh/it-tools/releases/download/v2024.10.22-7ca5933/it-tools-2024.10.22-7ca5933.zip
-	b2sums = 558897a1ea265a71de67c77501f575042fb0edacac0f5dc134f63483a9a33987ea83957d559b357d59090190142b9ce42419d356d63424001098c953a17c9d43
+	source = https://github.com/sharevb/it-tools/releases/download/v2025.8.6-0325b117/it-tools-2025.8.6-0325b117.zip
+	b2sums = c863cbd6c6467d329ffdbf27d6668ed126bb72c187252e6bdd52cd82ccca98fed49cada013e31e722045f44024bd3454f24b292bd048d9e988bc12c729509d47
 
 pkgname = it-tools-web

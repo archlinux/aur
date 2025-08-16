@@ -1,6 +1,6 @@
 [it-tools-web]
 source = "github"
-github = "CorentinTh/it-tools"
+github = "sharevb/it-tools"
 use_latest_release = true
 prefix = "v"
 from_pattern = "-"
