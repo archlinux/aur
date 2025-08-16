@@ -29,6 +29,8 @@ prepare() {
 }
 
 build() {
+  CXXFLAGS="-Wno-error=maybe-uninitialized"
+  CFLAGS="-Wno-error=maybe-uninitialized"
   cmake \
     -B build \
     -D C3_LINK_DYNAMIC=ON \
@@ -36,7 +38,7 @@ build() {
     -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
     -D CMAKE_C_FLAGS_RELEASE="$CFLAGS" \
     -S $_pkgname
-  make -C build
+  cmake --build build
 }
 
 package() {
