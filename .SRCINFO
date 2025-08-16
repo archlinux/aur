@@ -1,0 +1,18 @@
+pkgbase = terragrunt-git
+	pkgdesc = Terragrunt (Git master) – thin wrapper for OpenTofu/Terraform that provides extra tools for working with multiple modules
+	pkgver = 0.85.0.r2.g6f4719bf5
+	pkgrel = 1
+	url = https://github.com/gruntwork-io/terragrunt
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = opentofu: IaC engine (preferred)
+	optdepends = terraform: legacy HashiCorp Terraform CLI
+	provides = terragrunt
+	conflicts = terragrunt
+	source = git+https://github.com/gruntwork-io/terragrunt.git
+	sha256sums = SKIP
+
+pkgname = terragrunt-git
