@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-space-bar-git
 	arch = any
 	license = LicenseRef-unknown
 	makedepends = git
+	makedepends = jq
 	makedepends = typescript
 	depends = gnome-shell
 	provides = gnome-shell-extension-space-bar
