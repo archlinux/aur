@@ -1,0 +1,15 @@
+pkgbase = shim-fedora
+	pkgdesc = Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments (prebuilt x64 binaries from Fedora)
+	pkgver = 15.8
+	pkgrel = 3
+	url = https://packages.fedoraproject.org/pkgs/shim/shim-x64
+	arch = x86_64
+	license = BSD-3-Clause
+	optdepends = mokutil: Manage Machine Owner Keys (MOK)
+	provides = shim=15.8
+	options = !strip
+	options = !debug
+	source = https://kojipkgs.fedoraproject.org/packages/shim/15.8/3/x86_64/shim-x64-15.8-3.x86_64.rpm
+	sha256sums = 28958d75333c42b0341b727a2b697edf02f0cfaec18dbd25ae62c9a8164faabe
+
+pkgname = shim-fedora
