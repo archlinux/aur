@@ -5,7 +5,6 @@ pkgbase = chesspilot
 	url = https://github.com/OTAKUWeBer/ChessPilot
 	arch = x86_64
 	license = MIT
-	depends = stockfish
 	depends = tk
 	noextract = ChessPilot-1.0.0-linux-x86_64
 	options = !strip
