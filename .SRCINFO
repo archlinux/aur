@@ -1,0 +1,12 @@
+pkgbase = libmaddy
+	pkgdesc = C++ Markdown to HTML header-only parser library
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/progsource/maddy
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = libmaddy-1.6.0.tar.gz::https://github.com/progsource/maddy/archive/refs/tags/1.6.0.tar.gz
+	sha256sums = 811b19efbc2fbf1957486ed78aabaf5d164d15f84464f7b4a7033b44591845c5
+
+pkgname = libmaddy

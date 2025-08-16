@@ -1,0 +1,4 @@
+[libmaddy]
+source = "github"
+github = "progsource/maddy"
+use_max_tag = true
