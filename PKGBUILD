@@ -2,7 +2,7 @@
 
 pkgname=fokus
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist terminal‐based focus timer and stopwatch with daily logging, built in Rust."
 arch=('x86_64')
 url="https://sr.ht/~fijarom/fokus/"
@@ -15,6 +15,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
+  cargo update
   cargo build --release --locked
 }
 
