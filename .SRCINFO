@@ -1,0 +1,15 @@
+pkgbase = protoc-gen-connect-go
+	pkgdesc = Protoc plugin to generate Go code
+	pkgver = 1.18.1
+	pkgrel = 1
+	url = https://connectrpc.com/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !debug
+	source = connect-go::git+https://github.com/connectrpc/connect-go.git#tag=v1.18.1
+	sha256sums = 71ace32118a07e53ae5609c6095d4ce052dd2bf77237f46625585644abf0dfa7
+
+pkgname = protoc-gen-connect-go
