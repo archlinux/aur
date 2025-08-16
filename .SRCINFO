@@ -1,6 +1,6 @@
 pkgbase = ng-log
 	pkgdesc = API compatible maintained fork of google-glog application-level logging library
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://ng-log.github.io/ng-log
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ng-log
 	depends = gcc-libs
 	provides = google-glog
 	conflicts = google-glog
-	source = ng-log-0.8.1.tar.gz::https://github.com/ng-log/ng-log/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = 3647c3d7f55ded4bd1c7a69263fdc97b422cd1213485c763cbc0c35294bbeca7
+	source = ng-log-0.8.2.tar.gz::https://github.com/ng-log/ng-log/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 4d7467025b800828d3b2eb87eb506b310d090171788857601a708a46825953a8
 
 pkgname = ng-log
