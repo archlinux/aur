@@ -2,7 +2,7 @@
 
 pkgname=scraparr
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Prometheus Exporter for *Arr Suite'
 arch=('any')
 url='https://github.com/thecfu/scraparr'
@@ -12,7 +12,8 @@ depends=('python>=3.12'
          'python-requests'
          'python-werkzeug'
          'python-dateutil'
-         'python-yaml')
+         'python-yaml'
+         'python-dotenv')
 makedepends=('python-build'
              'python-installer'
              'python-wheel'

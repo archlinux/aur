@@ -1,7 +1,7 @@
 pkgbase = scraparr
 	pkgdesc = Prometheus Exporter for *Arr Suite
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thecfu/scraparr
 	arch = any
 	license = GPL-3.0-only
@@ -15,6 +15,7 @@ pkgbase = scraparr
 	depends = python-werkzeug
 	depends = python-dateutil
 	depends = python-yaml
+	depends = python-dotenv
 	backup = etc/scraparr/config.yaml
 	source = scraparr-2.2.3.tar.gz::https://github.com/thecfu/scraparr/archive/refs/tags/v2.2.3.tar.gz
 	source = scraparr.service
