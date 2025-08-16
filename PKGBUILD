@@ -4,8 +4,8 @@
 pkgname=vdr-text2skin
 pkgver=1.3.4_11_g8f7954d
 _gitver=8f7954da2488ced734c30e7c2704b92a44e6e1ad
-_vdrapi=8
-pkgrel=14
+_vdrapi=9
+pkgrel=15
 pkgdesc="VDR Text2Skin Plugin"
 url='https://github.com/vdr-projects/vdr-plugin-text2skin'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=${_gitver}")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('SKIP')
+md5sums=('5b4536465a62cd112381ebcc0205160f')
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
