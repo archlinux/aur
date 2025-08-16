@@ -11,7 +11,7 @@
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgdesc="A free and powerful office suite - development branch"
-pkgver=25.8.0.3
+pkgver=25.8.0.4
 pkgrel=1
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
