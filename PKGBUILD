@@ -30,7 +30,7 @@ provides=('solian')
 conflicts=('solian' 'solian-bin' 'solian-bin-git')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Solsynth/${_reponame}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('14457e49897e028ed325b85326dd17df313c9d6cd657b43040f7bdf128c31d66')
+sha256sums=('b80038d593b7f83b171a0d3e3104dab8881fc045c53f013e3a8e7aee705cbda2')
 
 options=('!debug')
 
