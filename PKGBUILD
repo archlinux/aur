@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fbthrift
-pkgver=2025.08.04.00
+pkgver=2025.08.11.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -64,7 +64,7 @@ options=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('f81afc8c9df74ffc6eac885e4731d5d5f7b791811d6e3dada2cccb48213ea885')
+sha256sums=('e3abde5a00cd7b52db21f4097d5a2c8b32ab8e17071e795c0af27991410d0dde')
 
 prepare() {
   cd $pkgname-$pkgver
