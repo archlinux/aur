@@ -6,17 +6,17 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.6_1016.3b6fd5a
+pkgver=0.2.6_1018.f45cdb3
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
-url="https://github.com/stiglers-eponym/BeamerPresenter"
+url="https://github.com/beamerpresenter/BeamerPresenter"
 license=('AGPL3' 'GPL3')
 # depends and makedepends will be filled based on the PDF engine.
 depends=("qt${_qt_version_major}-multimedia" "qt${_qt_version_major}-svg")
 makedepends=('cmake' 'git' "qt${_qt_version_major}-tools")
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
-source=('git+https://github.com/stiglers-eponym/BeamerPresenter.git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 if [ "${_use_mupdf}" == 'ON' ]
