@@ -1,6 +1,6 @@
 pkgbase = axosyslog
 	pkgdesc = Scalable security data processor
-	pkgver = 4.14.0
+	pkgver = 4.16.0
 	pkgrel = 1
 	url = https://github.com/axoflow/axosyslog
 	arch = x86_64
@@ -88,13 +88,13 @@ pkgbase = axosyslog
 	backup = etc/syslog-ng/syslog-ng.conf
 	backup = etc/logrotate.d/syslog-ng
 	backup = etc/default/syslog-ng@default
-	source = git+https://github.com/axoflow/axosyslog.git#tag=axosyslog-4.14.0
+	source = git+https://github.com/axoflow/axosyslog.git#tag=axosyslog-4.16.0
 	source = git+https://github.com/buytenh/ivykis.git
 	source = git+https://github.com/open-telemetry/opentelemetry-proto.git
 	source = git+https://github.com/Thalhammer/jwt-cpp.git
 	source = syslog-ng.logrotate
 	source = syslog-ng-systemd-integration.patch
-	sha256sums = c67a00d6f6808409674f16aa5bb74154d83ca315038b3496844d9d5691433d07
+	sha256sums = 93499df48d644c47980846eda824c961973bb6adda6b89811895c727368d12e9
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

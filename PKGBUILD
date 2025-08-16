@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=axosyslog
-pkgver=4.14.0
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="Scalable security data processor"
 arch=(x86_64)
@@ -110,7 +110,7 @@ source=(
   "syslog-ng.logrotate"
   "syslog-ng-systemd-integration.patch"
 )
-sha256sums=('c67a00d6f6808409674f16aa5bb74154d83ca315038b3496844d9d5691433d07'
+sha256sums=('93499df48d644c47980846eda824c961973bb6adda6b89811895c727368d12e9'
             'SKIP'
             'SKIP'
             'SKIP'
