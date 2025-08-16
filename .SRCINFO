@@ -8,6 +8,7 @@ pkgbase = python-myokit
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python-configparser
 	depends = python-lxml
 	depends = python-matplotlib
 	depends = python-setuptools
