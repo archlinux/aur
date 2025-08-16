@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2025.2'
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A cross-platform .NET IDE by JetBrains.'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ source_aarch64=("https://download-cf.jetbrains.com/rider/${_srcfile}-aarch64.tar
 sha256sums_aarch64=('19b8c6322aac489888afe9eea81dcb6a114b4cc75d525ee3ea8a86899c6b42c7')
 
 package() {
-    install_base="/usr/share"
+    install_base="/opt"
     install_dir="${install_base}/${pkgname}"
 
     build_install_base="${pkgdir}${install_base}"
