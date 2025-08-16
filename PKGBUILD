@@ -3,7 +3,7 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 
 pkgname=phyml-mpi
-pkgver=3.3.20220408
+pkgver=3.3.20250515
 pkgrel=1
 epoch=1
 pkgdesc='Builds phylogenies from DNA or protein sequences using a maximum likelihood approach, using multiple processors'
@@ -11,13 +11,13 @@ arch=('i686' 'x86_64')
 url='https://github.com/stephaneguindon/phyml'
 license=('GPL-3.0-only') # unclear if -only or -or-later
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stephaneguindon/phyml/archive/v${pkgver}.tar.gz")
-sha512sums=('039543ebdff8c33c7b30212f6d08883a757f00711e4e051e047b0c7971de5980171198fed7a4638117968d05b203c828e71a694294394e3d1d173f131b9d4580')
+sha512sums=('fcd8b58b27af6fbe610e429712909f4f600bfcd1255682092d2a63fee342cce763c1941c327f90a726ef196cc8b52377d747d1b2ec64c63b0dc7ce1788c94baf')
 depends=('openmpi')
 
 build() {
   cd "${pkgname%-mpi}-$pkgver"
-  ./autogen.sh
-  autoreconf -i
+  autoupdate
+  autoreconf --force --install -v
   ./configure --prefix=/usr --enable-phyml-mpi
   make
 }
