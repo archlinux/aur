@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r473.6007467e
+pkgver=r483.67d130d
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -39,14 +39,6 @@ _binname="island"
 pkgver() {
     cd "$srcdir/$_reponame"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    export PUB_CACHE="$srcdir/pub_cache"
-    cd "$srcdir/$_reponame"
-    if [[ -f linux/CMakeLists.txt ]]; then
-        sed -i 's/-Werror/-Wextra/g' linux/CMakeLists.txt
-    fi
 }
 
 build() {
