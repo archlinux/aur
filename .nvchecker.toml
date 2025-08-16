@@ -1,0 +1,7 @@
+[powder-toy-beta]
+source = "git"
+git = "https://github.com/The-Powder-Toy/The-Powder-Toy.git"
+prefix = "v"
+include_regex = "v.*b"
+from_pattern = "b$"
+to_pattern = ""
