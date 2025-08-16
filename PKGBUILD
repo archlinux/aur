@@ -12,7 +12,10 @@ depends=(
   'libgtop'
   'procps-ng'
 )
-makedepends=('git')
+makedepends=(
+  'git'
+  'jq'
+)
 optdepends=('ydotool: to make Close by rules work')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -57,16 +60,16 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  _uuid=$(jq -r .uuid metadata.json)
 
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
-  bsdtar -xvf "${uuid}.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/" --no-same-owner
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  install -Dm644 schemas/org.gnome.shell.extensions.another-window-session-manager.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/schemas/"
+  install -Dvm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 
   # https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager#how-to-make-close-by-rules-work
-  install -Dm644 "$srcdir/60-awsm-ydotool-uinput.rules" -t "$pkgdir/etc/udev/rules.d/"
+  install -Dvm644 "$srcdir/60-awsm-ydotool-uinput.rules" -t "$pkgdir/etc/udev/rules.d/"
 }
