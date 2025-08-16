@@ -9,9 +9,16 @@ pkgbase = osspd
 	makedepends = cmake3
 	makedepends = make
 	depends = fuse3
+	depends = pulse-native-provider
 	provides = osspd
 	conflicts = osspd
-	source = git+https://github.com/OpenMandrivaSoftware/ossp#commit=72f82cc7b98f026c6827743d8f48bd43f6b49b32
+	source = osspd::git+https://github.com/OpenMandrivaSoftware/ossp#commit=72f82cc7b98f026c6827743d8f48bd43f6b49b32
+	source = osspd.8.gz
+	source = osspd.conf
+	source = osspd.service
 	sha256sums = SKIP
+	sha256sums = 63b09519b61b2f6158df1b4468477e6db776275d450b8845d83f2c6de6761c22
+	sha256sums = a720cbbd326c28bc96b81e8bcd8b443d05981a7386e8421baf5fa773c15aa30c
+	sha256sums = dfeb3012f54a34abaa6633f2ea1a47ca798f31a111c5d99f95a0d884baaccc0f
 
 pkgname = osspd
