@@ -1,8 +1,8 @@
 # Maintainer: nafets227 <nafets227@users.noreply.github.com>
 pkgname=vdr-softhddevice-drm-gles
-pkgver=r965.867974b
+pkgver=r981.4306716
 pkgrel=1
-_vdrapi=8
+_vdrapi=9
 pkgdesc="VDR output plugin for software HD based on DRM interface"
 arch=('aarch64')
 license=('AGPL3')
