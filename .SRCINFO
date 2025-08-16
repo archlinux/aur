@@ -1,0 +1,15 @@
+pkgbase = nodejs-mcp-hub
+	pkgdesc = A centralized manager for Model Context Protocol (MCP) servers with dynamic server management and monitoring
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/ravitemer/mcp-hub
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = mcp-hub-4.2.0.tgz
+	source = https://registry.npmjs.org/mcp-hub/-/mcp-hub-4.2.0.tgz
+	sha256sums = 170079c76e2f258842479a44fc0e8d56fb81449de952ca0c44f2201d810e9024
+
+pkgname = nodejs-mcp-hub
