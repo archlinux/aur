@@ -1,6 +1,6 @@
 # Maintainer: Albert Latham <me@albertlatham.com>
 pkgname=codellm
-pkgver=1.99.32505
+pkgver=1.101.23214
 pkgrel=1
 pkgdesc="AI code editor that enhances developer productivity, bundled with the AI super assistant, ChatLLM"
 arch=('x86_64' 'aarch64')
@@ -18,11 +18,8 @@ conflicts=('codellm-bin')
 source_x86_64=("https://github.com/abacusai/codellm-releases/releases/download/${pkgver}/CodeLLM-linux-x64-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/abacusai/codellm-releases/releases/download/${pkgver}/CodeLLM-linux-arm64-${pkgver}.tar.gz")
 
-# Note: These checksums need to be updated for each release
-# You can get them from the GitHub release page or by running:
-# curl -sL <download_url> | sha256sum
-sha256sums_x86_64=('SKIP')  # Replace with actual checksum
-sha256sums_aarch64=('SKIP')  # Replace with actual checksum
+sha256sums_x86_64=('0232de04848053390111437d45e6c864061de90de717a422e582e55048ea24ad')
+sha256sums_aarch64=('79f12efe807a54898b34876351fd014f5765b79beee4225d98512e6df55acf7a')
 
 package() {
     cd "$srcdir"
