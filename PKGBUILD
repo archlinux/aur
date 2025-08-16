@@ -1,9 +1,9 @@
-# Maintainer: Adam Fontenot <adam.m.fontenot@gmail.com>
+# Maintainer: Liliane Fontenot <projects@liliane.io>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc='Crossword player and editor for GNOME'
 arch=(x86_64 aarch64)
@@ -29,7 +29,7 @@ depends=(
 )
 makedepends=(glib2-devel meson)
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('073c80747e3b4a0dd156f086111ece0b19ab2e6e5174e4896c4724ae0b2a41ca')
+sha256sums=('8f0cfb7dc6dcd56d44742640f7bfa6e6a878ae5ec5719cf54c2abf30a954565d')
 
 build() {
     arch-meson ${pkgname}-${pkgver} build -Ddevelopment=false
