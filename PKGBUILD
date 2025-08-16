@@ -1,12 +1,12 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=meowrch-tools
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Performance optimization tools and scripts for Meowrch distribution"
 arch=('any')
 url="https://github.com/meowrch/meowrch"
 license=('MIT')
-depends=('bash' 'systemd' 'coreutils')
+depends=('bash' 'systemd' 'coreutils' 'curl' 'jq' 'tar' 'python3')
 optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'gamemode: for gaming optimizations'
             'mangohud: for gaming performance monitoring'
@@ -14,10 +14,13 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'lutris: for Lutris integration'
             'cpupower: for CPU frequency management'
             'mesa: for OpenGL/Vulkan optimizations with zink-run'
-            'power-profiles-daemon: for power profile management')
+            'power-profiles-daemon: for power profile management'
+            'less: for migration file preview'
+            'sudo: for system updates')
 install=meowrch-tools.install
 source=("$url/archive/refs/heads/v3.0.tar.gz")
-sha256sums=('f5026f1f0a9af685638d40a343a7647795f88833cb072fbf4a067e99de1131df')
+# Автоматическая замена в workflow
+sha256sums=('d66bd03e911c594eae8daf6f1a8825c440f9eb072c4ab7cf79d6947303fc7d6a')
 
 package() {
     cd "$srcdir/meowrch-3.0/aur-packages/meowrch-tools"
