@@ -26,7 +26,7 @@ groups=('xlibre')
 options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-depends=(xlibre-xserver-common 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libunwind pixman xorg-xauth
+depends=(xlibre-xserver-common-bin 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libunwind pixman xorg-xauth
          libgl nettle libtirpc libxdmcp sh glibc libxau)
 provides=($_pkgname 'xorg-server-xvfb' 'xlibre-server-xvfb')
 conflicts=($_pkgname 'xorg-server-xvfb' 'xlibre-server-xvfb')
