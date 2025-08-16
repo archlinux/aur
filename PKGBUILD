@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd gnome-bluetooth-quick-connect-$pkgver
-  _uuid=$(jq -r .uuid metadata.json)
+  _uuid=$(jq -r .uuid assets/metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "dist/${_uuid}.shell-extension.zip" -C \
