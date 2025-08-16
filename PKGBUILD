@@ -1,13 +1,14 @@
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Steffen Weber <-boenki-gmx-de->
 
 pkgname=otter-browser
 pkgver=1.0.03
-pkgrel=2
+pkgrel=3
 pkgdesc='Web browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5'
 arch=('x86_64')
 url='https://otter-browser.org/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'hunspell' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns')
 makedepends=('cmake' 'ninja')
 source=("https://github.com/OtterBrowser/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
@@ -21,7 +22,7 @@ prepare() {
 }
 
 build() {
-  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
