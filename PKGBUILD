@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2025.2'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A cross-platform .NET IDE by JetBrains.'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,6 @@ optdepends=('mono: .NET runtime' 'msbuild: build .NET Core projects')
 provides=('rider')
 conflicts=('rider')
 
-_installdir='/usr/share'
 _pkgdir="JetBrains Rider-${pkgver}"
 _srcfile="JetBrains.Rider-${pkgver}"
 source_x86_64=("https://download-cf.jetbrains.com/rider/${_srcfile}.tar.gz")
@@ -23,17 +22,22 @@ source_aarch64=("https://download-cf.jetbrains.com/rider/${_srcfile}-aarch64.tar
 sha256sums_aarch64=('19b8c6322aac489888afe9eea81dcb6a114b4cc75d525ee3ea8a86899c6b42c7')
 
 package() {
-    cd "${srcdir}"
+    install_base="/usr/share"
+    install_dir="${install_base}/${pkgname}"
 
-    install -d -m755 "${pkgdir}${_installdir}"
-    cp -a "$_pkgdir" "${pkgdir}${_installdir}/${pkgname}"
-    chown -R root:root "${pkgdir}${_installdir}/${pkgname}"
+    build_install_base="${pkgdir}${install_base}"
+    build_install_dir="${pkgdir}${install_dir}"
 
-    install -d -m755 "$pkgdir"/usr/bin
-    ln -s "${_installdir}/${pkgname}"/bin/rider.sh "${pkgdir}"/usr/bin/"${pkgname}"
+    install -d -m755 "${build_install_base}"
+    cp -a "$_pkgdir" "${build_install_dir}"
+    chown -R root:root "${build_install_dir}"
 
-    install -d -m755 "$pkgdir"/usr/share/applications
-    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "${_installdir}/${pkgname}/bin/rider.sh %f" --icon "${_installdir}/${pkgname}/bin/rider.png"
+    install -d -m755 "${pkgdir}/usr/bin"
+    ln -s "${install_dir}/bin/rider.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+    build_desktop_dir="${pkgdir}/usr/share/applications"
+    install -d -m755 "${build_desktop_dir}"
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "${install_dir}/bin/rider.sh %f" --icon "${install_dir}/bin/rider.png"
     echo "StartupWMClass=jetbrains-rider" >> "${pkgname}.desktop"
-    install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+    install -m644 "${pkgname}.desktop" "${build_desktop_dir}"
 }
