@@ -3,9 +3,9 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 epoch=1
-_vdrapi=8
+_vdrapi=9
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
 url="https://github.com/ua0lnj/vdr-plugin-softhddevice"
 arch=('x86_64' 'i686')
