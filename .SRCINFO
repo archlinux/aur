@@ -1,7 +1,7 @@
 pkgbase = vipsdisp
 	pkgdesc = Tiny libvips / gtk+4 image viewer
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jcupitt/vipsdisp
 	arch = x86_64
 	license = MIT

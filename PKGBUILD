@@ -2,7 +2,7 @@
 
 pkgname=vipsdisp
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny libvips / gtk+4 image viewer"
 arch=('x86_64')
 url="https://github.com/jcupitt/vipsdisp"
@@ -35,6 +35,5 @@ package() {
   meson install -C build --destdir="$pkgdir"
 
   cd "${pkgbase}-${pkgver}"
-  ls
   install -Dm 644 LICENCE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
