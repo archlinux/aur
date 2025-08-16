@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-dbus2vdr
 pkgver=31
-pkgrel=15
-_vdrapi=8
+pkgrel=16
+_vdrapi=9
 pkgdesc="Expose some methods via DBus to control the vdr"
 url="https://github.com/flensrocker/vdr-plugin-dbus2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
