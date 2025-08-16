@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-net-curl'
-pkgver='0.54'
+pkgver='0.58'
 pkgrel='1'
 pkgdesc="Perl interface for libcurl"
 arch=('i686' 'x86_64')
@@ -12,15 +12,8 @@ options=('!emptydirs')
 depends=('curl>=7.37.0' 'perl')
 makedepends=('gcc')
 url='http://search.mcpan.org/dist/Net-Curl'
-source=("http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-${pkgver}.tar.gz" "0001-fix-test-13-when-running-curl-8.2.patch")
-sha256sums=('ad76bd1bf97d61bbd758a196e945c232d1cb7b2064e751f6c88c344086d6ffbc'
-            '1d9f9af639c973f565a2f31d0ba98103a9756b588421da3961921570e57076c9')
+source=("http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-${pkgver}.tar.gz")
 _distdir="Net-Curl-${pkgver}"
-
-prepare() {
-    cd "$srcdir/$_distdir"
-    patch --strip=1 --input="$srcdir/0001-fix-test-13-when-running-curl-8.2.patch"
-}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -54,3 +47,4 @@ package() {
 # sh-basic-offset: 2
 # End:
 # vim:set ts=2 sw=2 et:
+sha256sums=('37c1585cc70e21579c7c733e306e97a46adc093a3777af6d8ba37d73986d7f5a')
