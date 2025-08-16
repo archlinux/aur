@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-xwayland-indicator
-_uuid=xwayland-indicator@swsnr.de
 pkgver=48.6
 pkgrel=1
 pkgdesc="Determine whether a window in GNOME uses xwayland"
@@ -10,6 +9,7 @@ license=('EUPL-1.2')
 depends=('gnome-shell')
 makedepends=(
   'git'
+  'jq'
   'just'
   'npm'
 )
@@ -25,6 +25,8 @@ build() {
 
 package() {
   cd "$pkgname"
+  _uuid=$(jq -r .uuid metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner

@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-xwayland-indicator
 	arch = any
 	license = EUPL-1.2
 	makedepends = git
+	makedepends = jq
 	makedepends = just
 	makedepends = npm
 	depends = gnome-shell
