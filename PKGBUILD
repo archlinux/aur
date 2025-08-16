@@ -3,8 +3,8 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=25.04.3
-pkgrel=1
+pkgver=25.08.0
+pkgrel=2
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
@@ -12,7 +12,6 @@ license=(GPL-2.0-or-later)
 depends=(dbus
          gcc-libs
          glibc
-         kcmutils
          kconfig
          kcoreaddons
          kcrash
@@ -30,7 +29,6 @@ depends=(dbus
          kpeople
          kservice
          kstatusnotifieritem
-         kwidgetsaddons
          kwindowsystem
          libfakekey
          libx11
@@ -48,7 +46,6 @@ depends=(dbus
          solid
          wayland)
 makedepends=(extra-cmake-modules
-             kdoctools
              kpackage # kpackage_install_package
              wayland-protocols)
 optdepends=('python-nautilus: Nautilus integration'
@@ -57,11 +54,12 @@ optdepends=('python-nautilus: Nautilus integration'
 groups=(kde-applications
         kde-network)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
-sha256sums=('c44994e896e17be19fb93173143a8c1196e6d064d3b0d897d4172b9b48bde342'
+sha256sums=('edc6d8d5bb3aab53208a229528ef36a5bc959bfaec17512b5621502d1d37d260'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
 
 build() {
   cmake -B build -S $pkgname-kde-$pkgver \
