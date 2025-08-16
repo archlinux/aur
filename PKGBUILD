@@ -4,13 +4,13 @@
 
 pkgname=czmq
 pkgver=4.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="High-level C Binding for ZeroMQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"
 license=('MPL2')
 provides=('czmq' 'libczmq.so')
-depends=('zeromq' 'curl' 'lz4' 'systemd-libs' 'util-linux-libs')
+depends=('zeromq' 'curl' 'lz4' 'libmicrohttpd' 'systemd-libs' 'util-linux-libs')
 makedepends=('pkg-config' 'cmake')
 sha256sums=('83457cd32a2c2615b8d7ebcf91b198cb0d8df383a2072b96835ab250164d8a83')
 source=("https://github.com/zeromq/czmq/archive/v${pkgver}.tar.gz")
@@ -24,6 +24,7 @@ build() {
 		-DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
 		-DCMAKE_INSTALL_PREFIX:PATH='/usr' \
 		-DBUILD_TESTING:BOOL='ON' \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-Wno-dev
 	cmake --build build
 }
