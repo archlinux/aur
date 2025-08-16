@@ -10,7 +10,7 @@ pkgbase = oplpctools
 	makedepends = make
 	depends = qt6-base
 	depends = qt6-tools
-	source = git+https://github.com/brainstream/oplpctools.git
+	source = git+https://github.com/brainstream/OPL-PC-Tools.git
 	md5sums = SKIP
 
 pkgname = oplpctools
