@@ -5,7 +5,7 @@
 pkgname=gauche-c-wrapper
 _pkgname=${pkgname#gauche-}
 pkgver=0.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Gauche foreign function interface for C and Objective-C libraries.'
 url='http://www.koguro.net/prog/c-wrapper/'
 arch=('x86_64')
@@ -29,7 +29,8 @@ source=('http://www.koguro.net/prog/c-wrapper/c-wrapper-0.6.1.tgz'
 	'14_extend_parser.patch'
 	'15_fix_scm_reg_exec.patch'
 	'16_gauche_0_9_11_compat.patch'
-    '17_gauche_0_9_13_compat.patch')
+    '17_gauche_0_9_13_compat.patch'
+    '18_lexer.patch')
 sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           '99878b6fc5c306223e7119861b5af92362f90fd9'
           '11f45d119f2fc660ac32de724b01d47aaaf84675'
@@ -45,7 +46,8 @@ sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           'c888b1aebf37adf20cc7874c31b1c8a2ba0dcd45'
           '8239972e42afb42a1040f7274c55620901458ca8'
           '113fc320f21d0648421b8e006bd63233dfa61619'
-          '31acaa89ee0ecffc67ae420a40f4e5e2c6eb483c')
+          '31acaa89ee0ecffc67ae420a40f4e5e2c6eb483c'
+          'c8d0df0043ca437921506172245ee2f8937e6a14')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"

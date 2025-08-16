@@ -1,0 +1,48 @@
+diff -ura c-wrapper-0.6.1/src/c-lex.c c-wrapper-0.6.1-new/src/c-lex.c
+--- c-wrapper-0.6.1/src/c-lex.c	2025-08-16 13:18:44.427542260 +0200
++++ c-wrapper-0.6.1-new/src/c-lex.c	2025-08-16 13:18:25.116362438 +0200
+@@ -453,10 +453,8 @@
+     }
+ }
+ 
+-static inline int buffer_read_char()
++static inline int process_char(int c)
+ {
+-    int c = buffer_peek_char();
+-
+     if (c != -1) {
+         buffer_next_char();
+     }
+@@ -464,6 +462,12 @@
+     return c;
+ }
+ 
++static inline int buffer_read_char()
++{
++    int c = buffer_peek_char();
++    return process_char(c);
++}
++
+ ScmObj Scm_BufferReadChar()
+ {
+     int c = buffer_read_char();
+@@ -832,9 +836,8 @@
+     return v;
+ }
+ 
+-static inline int readx()
++static inline int readx(int c)
+ {
+-    int c = buffer_peek_char();
+     int v = 0;
+ 
+     while (is_hex_digit_char(c)) {
+@@ -934,7 +937,7 @@
+                         SCM_LIST1(SCM_MAKE_CHAR(c)));
+                 return c;
+             } else {
+-                return buffer_read_char(c);
++                return process_char(c);
+             }
+         }
+     } else {
