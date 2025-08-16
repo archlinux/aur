@@ -1,9 +1,9 @@
 # Maintainer: Arda Yılmaz <fijarom at fijarom dot com>
 
 pkgname=stutui
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
-pkgdesc="A minimalist terminal‐based study timer and stopwatch with daily logging, built in C using ncurses."
+pkgdesc="A minimalist terminal‐based study timer and stopwatch with daily logging, built in C."
 arch=('x86_64')
 url="https://sr.ht/~fijarom/stutui/"
 license=('GPL3')
