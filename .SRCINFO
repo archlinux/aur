@@ -1,10 +1,9 @@
 pkgbase = looking-glass-git
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
 	pkgver = B7.r67.gcb304115
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://looking-glass.io/
-	install = looking-glass-git.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = binutils
@@ -38,6 +37,7 @@ pkgbase = looking-glass-git
 
 pkgname = looking-glass-git
 	pkgdesc = A client application for accessing the LookingGlass IVSHMEM device of a VM
+	install = client.install
 	depends = binutils
 	depends = fontconfig
 	depends = gcc-libs
@@ -72,6 +72,7 @@ pkgname = looking-glass-module-dkms-git
 
 pkgname = looking-glass-host-git
 	pkgdesc = Linux host application for pushing frame data to the LookingGlass IVSHMEM device
+	install = host.install
 	depends = binutils
 	depends = gcc-libs
 	depends = glib2
@@ -85,6 +86,7 @@ pkgname = looking-glass-host-git
 
 pkgname = obs-plugin-looking-glass-git
 	pkgdesc = Plugin for OBS Studio to stream directly from Looking Glass without having to record the Looking Glass client
+	install = client.install
 	depends = glibc
 	depends = obs-studio
 	provides = obs-plugin-looking-glass

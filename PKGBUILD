@@ -8,7 +8,7 @@ pkgname=("${_pkgname}-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
 pkgver=B7.r67.gcb304115
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -30,7 +30,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-install="${pkgbase}.install"
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -76,6 +75,7 @@ package_looking-glass-git() {
 	         'libxss' 'nettle' 'wayland' 'zlib' 'zstd')
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
+	install="client.install"
 
 	cd "${srcdir}/${_pkgname}/client/build"
 	make DESTDIR="${pkgdir}" install
@@ -100,6 +100,7 @@ package_looking-glass-host-git() {
 	         'libpipewire' 'libxcb' 'zlib' 'zstd')
 	provides=("${_pkgname}-host")
 	conflicts=("${_pkgname}-host")
+	install="host.install"
 
 	cd "${srcdir}/${_pkgname}/host/build"
 	make DESTDIR="${pkgdir}" install
@@ -110,6 +111,7 @@ package_obs-plugin-looking-glass-git() {
 	depends=('glibc' 'obs-studio')
 	provides=("obs-plugin-${_pkgname}")
 	conflicts=("obs-plugin-${_pkgname}")
+	install="client.install"
 
 	install -Dm644 -t "${pkgdir}/usr/lib/obs-plugins" \
 		"${srcdir}/${_pkgname}/obs/build/liblooking-glass-obs.so"
