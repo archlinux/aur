@@ -2,7 +2,6 @@
 # Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
 # Contributor: revelation60 <benruyl@gmail.com>
 pkgname=gnome-shell-extension-gtile
-_uuid=gTile@vibou
 pkgver=64
 pkgrel=2
 _nodeversion=22
@@ -11,7 +10,11 @@ arch=('any')
 url="https://github.com/gTile/gTile"
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
-makedepends=('git' 'nvm')
+makedepends=(
+  'git'
+  'jq'
+  'nvm'
+)
 source=("https://github.com/gTile/gTile/archive/V$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('c203b973e784af9df7d299a280b313ea6914e2145dbcd7664b5d9b630a694757')
 
@@ -42,11 +45,12 @@ build() {
 
 package() {
   cd gTile-$pkgver
+  _uuid=$(jq -r .uuid dist/metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf gtile.dist.tgz -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  install -Dm644 dist/schemas/org.gnome.shell.extensions.gtile.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
+  install -Dvm644 dist/schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }

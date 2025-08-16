@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-gtile
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
+	makedepends = jq
 	makedepends = nvm
 	depends = gnome-shell
 	source = https://github.com/gTile/gTile/archive/V64/gnome-shell-extension-gtile-64.tar.gz
