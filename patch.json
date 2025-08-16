@@ -430,6 +430,7 @@
 			"activeComment",
 			"chatParticipantAdditions",
 			"chatParticipantPrivate",
+			"chatSessionsProvider",
 			"codiconDecoration",
 			"codeActionRanges",
 			"commentingRangeHint",
@@ -445,6 +446,8 @@
 			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
+			"languageModelDataPart",
+			"languageModelToolResultAudience",
 			"quickDiffProvider",
 			"remoteCodingAgents",
 			"shareProvider",
@@ -502,7 +505,9 @@
 			"taskProblemMatcherStatus",
 			"contribLanguageModelToolSets",
 			"textDocumentChangeReason",
-			"resolvers"
+			"resolvers",
+			"taskExecutionTerminal",
+			"dataChannels"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
