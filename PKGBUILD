@@ -3,13 +3,14 @@
 pkgname=bootupd-git
 _pkgname=bootupd
 pkgver=0.2.29.r6.gf0fcca8
-pkgrel=1
+pkgrel=2
 pkgdesc="Bootloader updater"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/coreos/bootupd"
 license=('Apache-2.0')
 depends=(gcc-libs
   glibc
+  grub
   efibootmgr)
 makedepends=(cargo
   git)
@@ -18,7 +19,7 @@ conflicts=('bootupd')
 source=("git+$url.git"
   "0001-arch-path.patch")
 sha256sums=('SKIP'
-  '34aa0422fac4e2eb21572fdc8da068cb160dcb7a5290d5333feca00ada36de1e')
+  '8e7cd49c37192dd395a0c67af5957fb8d47ea5d92d98ce24b4e5e7612720b878')
 
 prepare() {
   cd "$_pkgname"
@@ -37,6 +38,11 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   make
+}
+
+check() {
+  cd "$_pkgname"
+  RUST_BACKTRACE=1 cargo test
 }
 
 package() {
