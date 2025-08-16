@@ -1,14 +1,15 @@
 pkgbase = fxlibc-gint
 	pkgdesc = A C standard library for fx Casio calculators, for use with gint
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
-	url = https://gitea.planet-casio.com/Vhex-Kernel-Core/fxlibc
+	url = https://git.planet-casio.com/Vhex-Kernel-Core/fxlibc
 	arch = x86_64
-	license = CCPL
+	license = CC0-1.0
 	makedepends = cmake
 	makedepends = sh-elf-gcc-casio
+	makedepends = openlibm-casio
 	options = !strip
-	source = fxlibc-1.4.1.tar.gz::https://gitea.planet-casio.com/Vhex-Kernel-Core/fxlibc/archive/1.4.1.tar.gz
-	sha256sums = 0f524743588097956e79d215c8097abc3f317cfa401c903214fe142cc76e7a37
+	source = fxlibc-1.5.1.tar.gz::https://git.planet-casio.com/Vhex-Kernel-Core/fxlibc/archive/1.5.1.tar.gz
+	sha256sums = 3db458caafb5fafdd4fe5b6ae56270825bc91a0cd3a5c7bc6e6e63f78a6f3f85
 
 pkgname = fxlibc-gint
