@@ -1,0 +1,3 @@
+[python-libsass]
+source = "git"
+git = "https://github.com/sass/libsass-python.git"
