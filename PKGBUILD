@@ -1,7 +1,7 @@
 # Maintainer: Elia Elmas <eliaelmas at proton dot me>
 _pkgname=onthespot
 pkgname="$_pkgname-appimage"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A GUI music downloader for Apple Music, Bandcamp, Deezer, Qobuz, Spotify, Tidal, and Youtube"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("$_pkgname")
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/justin025/onthespot/releases/download/v${pkgver}/OnTheSpot-${pkgver}-x86_64.AppImage" "https://raw.githubusercontent.com/justin025/onthespot/refs/tags/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-md5sums=('2eb230ce1ebd9d04b2c97be102d50beb' '267d14867132fa03d20ea4c695c31e8c')
+md5sums=('64d023c61f312414a08a59563d4f7458' '267d14867132fa03d20ea4c695c31e8c')
 
 
 prepare() {

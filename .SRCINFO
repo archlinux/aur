@@ -1,6 +1,6 @@
 pkgbase = onthespot-appimage
 	pkgdesc = A GUI music downloader for Apple Music, Bandcamp, Deezer, Qobuz, Spotify, Tidal, and Youtube
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/justin025/onthespot
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = onthespot-appimage
 	depends = zlib
 	depends = fuse2
 	depends = hicolor-icon-theme
-	provides = onthespot=1.1.1
+	provides = onthespot=1.1.2
 	conflicts = onthespot
-	noextract = onthespot-appimage-1.1.1.AppImage
+	noextract = onthespot-appimage-1.1.2.AppImage
 	options = !strip
-	source = onthespot-appimage-1.1.1.AppImage::https://github.com/justin025/onthespot/releases/download/v1.1.1/OnTheSpot-1.1.1-x86_64.AppImage
-	source = https://raw.githubusercontent.com/justin025/onthespot/refs/tags/v1.1.1/LICENSE
-	md5sums = 2eb230ce1ebd9d04b2c97be102d50beb
+	source = onthespot-appimage-1.1.2.AppImage::https://github.com/justin025/onthespot/releases/download/v1.1.2/OnTheSpot-1.1.2-x86_64.AppImage
+	source = https://raw.githubusercontent.com/justin025/onthespot/refs/tags/v1.1.2/LICENSE
+	md5sums = 64d023c61f312414a08a59563d4f7458
 	md5sums = 267d14867132fa03d20ea4c695c31e8c
 
 pkgname = onthespot-appimage
