@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-x11gestures
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
+	makedepends = jq
 	depends = gnome-shell
 	depends = touchegg
 	source = git+https://github.com/JoseExposito/gnome-shell-extension-x11gestures.git#tag=25
