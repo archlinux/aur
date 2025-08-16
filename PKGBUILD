@@ -5,7 +5,7 @@ _pkgname=xformers
 _cp='cp39' #this is a multicompat ver
 _cu='cu128'
 _ab='abi3'
-pkgver=0.0.31
+pkgver=0.0.32.post2
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 provides=(python-xformers)
 conflicts=(python-xformers)
 makedepends=(python-installer python-wheel)
-sha256sums=('b2ea87e0651f46164cb3cd74face021bd1654229ca4f8c0baa03b8c477515c7a')
+sha256sums=('3d1fefe0006eb00a730b3b197ff41aab085f1209b50419baab6152445f09e508')
 source=("https://download.pytorch.org/whl/${_cu}/xformers-${pkgver}-${_cp}-${_ab}-manylinux_2_28_${CARCH}.whl")
 package() {
   python -m installer --destdir="$pkgdir" *.whl

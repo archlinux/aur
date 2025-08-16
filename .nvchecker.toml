@@ -1,4 +1,4 @@
 [python-xformers-bin]
 source = "pypi"
 pypi = "xformers"
-include_regex = "([0-9.]+)"
+#include_regex = "([0-9.]+)"
