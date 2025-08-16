@@ -5,8 +5,6 @@ pkgbase = hpm
 	url = https://github.com/helwan-linux/hpm
 	arch = x86_64
 	license = MIT
-	makedepends = python-build
-	makedepends = python-installer
 	makedepends = git
 	depends = python-rich
 	depends = python-typer
@@ -15,6 +13,6 @@ pkgbase = hpm
 	depends = pacman
 	provides = hpm
 	source = git+https://github.com/helwan-linux/hpm.git
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = hpm

@@ -1,4 +1,4 @@
-# Maintainer: Saeed Badreldeen <helwanlinux@gmail.com>
+# Maintainer: Saeed Badreldeen <your-email@example.com>
 pkgname=hpm
 pkgver=1.0.0
 pkgrel=1
@@ -7,18 +7,30 @@ arch=('x86_64')
 url="https://github.com/helwan-linux/hpm"
 license=('MIT')
 depends=('python-rich' 'python-typer' 'python' 'sudo' 'pacman')
-makedepends=('python-build' 'python-installer' 'git')
+makedepends=('git')
 provides=('hpm')
 source=("git+https://github.com/helwan-linux/hpm.git")
-sha256sums=('SKIP')
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname/hpm"
-  python -m build
+    cd "$srcdir/hpm"
+    # لا حاجة لعملية build حقيقية
+    :
 }
 
 package() {
-  cd "$srcdir/$pkgname/hpm"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$srcdir/hpm"
+
+    # نسخ الحزمة كاملة إلى /usr/lib/hpm
+    mkdir -p "$pkgdir/usr/lib/hpm"
+    cp -r hpm/* "$pkgdir/usr/lib/hpm/"
+
+    # إنشاء wrapper script في /usr/bin
+    mkdir -p "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/hpm" <<'EOF'
+#!/usr/bin/env bash
+PYTHONPATH=/usr/lib/hpm python3 /usr/lib/hpm/main.py "$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/hpm"
 }
 
