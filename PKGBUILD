@@ -7,7 +7,7 @@ pkgname=("${pkgbase}"
          "obs-plugin-${pkgbase}")
 epoch=2
 pkgver=B7
-pkgrel=3
+pkgrel=4
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -63,6 +63,7 @@ package_looking-glass-host() {
 	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
 	depends=('binutils' 'gcc-libs' 'glib2' 'glibc'
 	         'libpipewire' 'libxcb' 'zlib' 'zstd')
+	install="host.install"
 
 	cd "${srcdir}/${_lgdir}/host/build"
 	make DESTDIR="${pkgdir}" install
