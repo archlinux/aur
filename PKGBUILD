@@ -6,7 +6,7 @@
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
 pkgver=580.76.05
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -20,6 +20,8 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia.rules'
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
+        '10-gsk.conf'
+        'gsk-renderer.sh'
         '120-nvidia-settings-change-desktop-paths.patch')
 sha256sums=('219be636b60931b021b2e8c1e0eff887363c731f8a940caa87bcc054d05d97fd'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
@@ -28,6 +30,8 @@ sha256sums=('219be636b60931b021b2e8c1e0eff887363c731f8a940caa87bcc054d05d97fd'
             '0e54249a7754b668b436f0f7aa7e95fff68edbb12a93dbee4660e09a8c695f84'
             'c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8'
             '1d053c5078387021338cfc3a732bed61be1a20a549775573788e9134775c8149'
+            '05af96f86b7b3b40b93160fdcb702572401579f8756c0831b5de5f8e9afebeba'
+            '67eac203e7de4cf979b82c1e43439ac0e7c951d8901ebd9e4555c5d186a1b2ec'
             '6f0f4a23706241e9e37e0fe30a09bd30ca29bb446d8fe7861cb4959f0a010ef4')
 
 # create soname links
@@ -286,6 +290,12 @@ package_nvidia-utils-beta() {
     # enable PreserveVideoMemoryAllocations and TemporaryFilePath
     # fixes Wayland Sleep, when restoring the session
     install -D -m644 "${srcdir}/nvidia-sleep.conf" -t "${pkgdir}/usr/lib/modprobe.d"
+    
+    # Vulkan GTK renderer crash fix
+    # https://forums.developer.nvidia.com/t/580-65-06-gtk-4-apps-hang-when-attempting-to-exit-close/341308/5?u=ptr1337
+    install -D -m644 "${srcdir}/gsk-renderer.sh" -t "${pkgdir}/etc/profile.d"
+    # same fix but also for Gnome/GDM users
+    install -D -m644 "${srcdir}/10-gsk.conf" -t "${pkgdir}/usr/lib/environment.d"
     
     # lists NVIDIA driver files for container runtimes like nvidia-container-toolkit
     install -D -m644 sandboxutils-filelist.json -t "${pkgdir}/usr/share/nvidia/files.d"
