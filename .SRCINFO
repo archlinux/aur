@@ -15,6 +15,7 @@ pkgbase = python-rdt
 	depends = python-pandas
 	depends = python-scikit-learn
 	depends = python-faker
+	depends = python-dateutil
 	optdepends = python-copulas
 	source = RDT-1.18.0.tar.gz::https://github.com/sdv-dev/RDT/archive/v1.18.0.tar.gz
 	sha512sums = d177e78025755d789cdbbd8fb67041db46b1538b4e1c473ffb699bdb69071cd153b2a4934fef5bbd610e37163b90c3a986a33a93e1335bdaa8494a4e1da89169
