@@ -8,8 +8,8 @@
 pkgbase=mariadb-git
 pkgname=('mariadb-libs-git' 'mariadb-clients-git' 'mariadb-git' 'mytop-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
-_pkgver=11.8
-pkgver=11.8.2.r8.g67e6fde
+_pkgver=12.0
+pkgver=12.0.2.r0.gaab83ae
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -113,9 +113,6 @@ build() {
     -DWITH_SYSTEMD=yes
     -DWITH_UNIT_TESTS=OFF
     -DWITH_ZLIB=system
-
-    # fix build with cmake 4.0
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
   # this uses malloc_usable_size, which is incompatible with fortification level 3
