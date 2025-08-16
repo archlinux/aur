@@ -1,8 +1,8 @@
-# Maintainer: Adam Fontenot <adam.m.fontenot@gmail.com>
+# Maintainer: Liliane Fontenot <projects@liliane.io>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=xword-dl
-pkgver=2025.5.8
+pkgver=2025.8.4
 pkgrel=1
 pkgdesc='Command-line tool to download .puz files for online crossword puzzles'
 arch=(any)
@@ -20,17 +20,24 @@ depends=(
 	python-xmltodict
 	python-yaml
 )
-makedepends=(python-setuptools)
+makedepends=(python-hatchling)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cf4aa6be29a306d6cdf55687b9d360e5b297a4d60e9ffc913a54dc70521b22a4')
+sha256sums=('539f09913c60bec601a2623e25f7b0a85edf652d7aa8c4d150e392024356f9aa')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    # upstream uses a plugin to set version from VCS; set it manually and remove the build plugin
+    echo "__version__ = \"$pkgver\"" > src/xword_dl/_version.py
+    sed -i -e 's/^version.source = .*/version.path = "src\/xword_dl\/_version.py"/' -e 's/.*vcs.*//' pyproject.toml
+}
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python -m installer -d "${pkgdir}" dist/*.whl
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
