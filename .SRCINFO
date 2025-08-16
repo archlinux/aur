@@ -1,5 +1,5 @@
 pkgbase = doom_ascii-bin
-	pkgdesc = Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound.
+	pkgdesc = DooM in the terminal!
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/wojciech-graj/doom-ascii
