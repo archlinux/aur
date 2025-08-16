@@ -1,0 +1,23 @@
+pkgbase = python-fastlayer-git
+	pkgdesc = 高速インメモリキャッシュ + NumPy/Numba最適化フレームワーク (VCS版)
+	pkgver = 0.1.0.r1.g26ef074
+	pkgrel = 1
+	url = https://github.com/Karashi123/fastlayer
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-numba
+	optdepends = cython: Cython実装を試す場合
+	optdepends = pybind11: pybind11実装を試す場合
+	provides = python-fastlayer
+	conflicts = python-fastlayer
+	source = git+https://github.com/Karashi123/fastlayer.git
+	sha256sums = SKIP
+
+pkgname = python-fastlayer-git
