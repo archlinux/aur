@@ -7,7 +7,7 @@
 
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=25.04.3
+pkgver=25.08.0
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -20,9 +20,10 @@ depends=(
   'kio-extras'
   'knewstuff'
   'kparts'
+  'ktextwidgets'
   'kuserfeedback'
-  'phonon-qt6'
-  'plasma-activities'
+  'kwidgetsaddons'
+  'qt6-multimedia'
 )
 makedepends=(
   'extra-cmake-modules'
@@ -50,7 +51,7 @@ source=(
   "dolphin-tabopts-${_commit_patch::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_commit_patch}.patch"
 )
 sha256sums=(
-  '18b42803ddd69665c9fa9e89da75bc71e1be94bcc77eef6c078373a3e4dc9003'
+  '5ae8bcb1777da5f66024967e6803c9096a840d9fbd5bbce71bb920bc0dc4c454'
   'a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121'
 )
 

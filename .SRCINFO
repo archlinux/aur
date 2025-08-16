@@ -1,6 +1,6 @@
 pkgbase = dolphin-tabopts
 	pkgdesc = KDE File Manager - with extended tab options
-	pkgver = 25.04.3
+	pkgver = 25.08.0
 	pkgrel = 1
 	url = https://invent.kde.org/xiota/dolphin/-/merge_requests/1
 	arch = x86_64
@@ -15,9 +15,10 @@ pkgbase = dolphin-tabopts
 	depends = kio-extras
 	depends = knewstuff
 	depends = kparts
+	depends = ktextwidgets
 	depends = kuserfeedback
-	depends = phonon-qt6
-	depends = plasma-activities
+	depends = kwidgetsaddons
+	depends = qt6-multimedia
 	optdepends = ffmpegthumbs: video thumbnails
 	optdepends = kde-cli-tools: for editing file type options
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
@@ -25,11 +26,11 @@ pkgbase = dolphin-tabopts
 	optdepends = kio-admin: for managing files as administrator
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=25.04.3
+	provides = dolphin=25.08.0
 	conflicts = dolphin
-	source = dolphin::git+https://invent.kde.org/system/dolphin.git#tag=v25.04.3
+	source = dolphin::git+https://invent.kde.org/system/dolphin.git#tag=v25.08.0
 	source = dolphin-tabopts-7cce4b1.patch::https://invent.kde.org/xiota/dolphin/-/commit/7cce4b12e43b046104bbfc9a6da481e97f4f2f3c.patch
-	sha256sums = 18b42803ddd69665c9fa9e89da75bc71e1be94bcc77eef6c078373a3e4dc9003
+	sha256sums = 5ae8bcb1777da5f66024967e6803c9096a840d9fbd5bbce71bb920bc0dc4c454
 	sha256sums = a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121
 
 pkgname = dolphin-tabopts
