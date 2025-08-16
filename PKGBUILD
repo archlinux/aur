@@ -4,8 +4,8 @@
 pkgname=vdr-play
 pkgver=0.1.14.r21.g8035264
 _gitver=8035264d471f75407222a48f2fa707795e25d461
-_vdrapi=8
-pkgrel=15
+_vdrapi=9
+pkgrel=16
 pkgdesc="Mediaplayer plugin for VDR and X11"
 url='https://github.com/vdr-projects/vdr-plugin-play'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -17,7 +17,7 @@ source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=
         'play-vdr2.1.10compat.diff'
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('SKIP'
+md5sums=('5dfac4036b7caf0b57010033a6d90204'
          '88bd08bead28aab75bd002daccf7e5b5'
          '19d455b69728f7e6469763b2b2424074')
 
