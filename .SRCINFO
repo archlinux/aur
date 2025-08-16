@@ -1,8 +1,8 @@
 pkgbase = burgerspace
 	pkgdesc = A hamburger-smashing video game
 	pkgver = 1.10.0
-	pkgrel = 1
-	url = http://perso.b2b2c.ca/~sarrazip/dev/burgerspace.html
+	pkgrel = 2
+	url = http://gvlsywt.cluster051.hosting.ovh.net/dev/burgerspace.html
 	arch = any
 	license = GPL
 	depends = sdl2
@@ -11,7 +11,7 @@ pkgbase = burgerspace
 	depends = sdl2_mixer
 	depends = sdl2_gfx
 	depends = libflatzebra
-	source = http://perso.b2b2c.ca/~sarrazip/dev/burgerspace-1.10.0.tar.gz
+	source = http://gvlsywt.cluster051.hosting.ovh.net/dev/burgerspace-1.10.0.tar.gz
 	sha512sums = 7ce6fa48829414ff7a48cb038b87842112c18829769105f34a842bffcfe99072ed6201ba3772f98efd115b8ffd9de0d1d15dc9f8b80a5f978f5763b72a358d8c
 
 pkgname = burgerspace
