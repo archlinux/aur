@@ -1,0 +1,11 @@
+diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+index bff30833137..0bd8ce00775 100644
+--- a/pc-bios/keymaps/meson.build
++++ b/pc-bios/keymaps/meson.build
+@@ -1,5 +1,5 @@
+ keymaps = {
+-  'ar': '-l ar',
++  'ar': '-l ara',
+   'bepo': '-l fr -v dvorak',
+   'cz': '-l cz',
+   'da': '-l dk',
