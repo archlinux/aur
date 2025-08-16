@@ -3,9 +3,9 @@
 
 pkgname=wonderlab-appimage-feature
 _pkgname=wonderlab
-pkgver=2.0.0.0622
+pkgver=2.0.0.0816
 pkgrel=1
-pkgdesc="The next generation cross-platform Minecraft launcher. (feature branch)"
+pkgdesc="The next generation cross-platform Minecraft launcher. (dev branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Lunova-Studio/WonderLab.Override"
 license=('AGPL3')
@@ -16,8 +16,8 @@ optdepends=('jre-openjdk: for launch Minecraft')
 source_x86_64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/v${pkgver}/WonderLab.linux.x64.AppImage")
 source_aarch64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/v${pkgver}/WonderLab.linux.arm64.AppImage")
 _appimage="${_pkgname}-${arch}.AppImage"
-sha256sums_x86_64=('26660a7cfdc95aa8f6b86cb2a4222d3b5d6cfaf70d74c318039b216bbcb5368a')
-sha256sums_aarch64=('a3f07c289808af2515f18093cb88f4459ff2b4db8e2c59a269a5a0d5a3b14a7a')
+sha256sums_x86_64=('99ba7a50ce0cccbc6ae4e3e384d9e3d836b1a34212b3f797b28707fb8c7e5945')
+sha256sums_aarch64=('7c4bf91dccc444240352128343d98530938e89724446b6f3b3d7b13a580244e3')
 prepare() {
 	chmod +x "${_appimage}"
 	./"${_appimage}" --appimage-extract
