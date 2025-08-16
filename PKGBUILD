@@ -1,13 +1,12 @@
-# Maintainer: envolution
-# Contributor: Carl Smedstad <carsme@archlinux.org>
-# Contributor: Xiaoxu Guo <ftiasch0@gmail.com>
-# Contributor: László Várady <laszlo.varady93@gmail.com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
+# Maintainer: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.08.04.00
+pkgver=2025.08.11.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -58,12 +57,14 @@ source=(
   "fix-cmake-find-glog.patch"
   "fix-setup-py-for-python-extensions.patch"
   "fix-cmake-for-setup-py-extensions.patch"
-  "fix-gcc-traits.patch")
-sha256sums=('6d60a7b61c9fc70d66593163382416870ae4fd6260887f8d103a32454d3b6c9c'
+  "fix-gcc-traits.patch"
+  "fix-checksum-include-stdexcept.patch")
+sha256sums=('4d0dc695a70ee32aac53e4b8813d9d04cbed9bef47b8e3cf2eb867ea760ea4ef'
             'a6e57c9ec968ed6de454803d141035585ee9ab1355beba64b2b176ab8c793d2c'
             'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
             '78f6127afef08193923b955aae79171a8218a74c6e0e9765bf3b49dee7a1d062'
-            'f958f12379e301cff2a0983124696c3c40746da8964799a27d3601b1d5c8575a')
+            'f958f12379e301cff2a0983124696c3c40746da8964799a27d3601b1d5c8575a'
+            '4d89e1924eaacc392f6d1eef5d91aa846b5fd9fff1587bf583e856458df2fc92')
 
 prepare() {
   cd $pkgname
@@ -71,6 +72,7 @@ prepare() {
   patch --forward --strip=1 --input="$srcdir/fix-cmake-for-setup-py-extensions.patch"
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
   patch --forward --strip=1 --input="$srcdir/fix-gcc-traits.patch"
+  patch --forward --strip=1 --input="$srcdir/fix-checksum-include-stdexcept.patch"
   #concurrency tests currently don't compile (2025-07-21)
   sed -i '/^    DIRECTORY concurrency\/test\//,/^$/d' CMakeLists.txt
   #pass $pkgver to python extensions

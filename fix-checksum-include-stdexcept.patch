@@ -1,0 +1,10 @@
+--- folly/folly/hash/Checksum.cpp_orig	2025-08-14 20:21:52.365450884 -0400
++++ folly/folly/hash/Checksum.cpp	2025-08-14 21:13:05.174984479 -0400
+@@ -17,6 +17,7 @@
+ #include <folly/hash/Checksum.h>
+ 
+ #include <algorithm>
++#include <stdexcept>
+ 
+ #include <boost/crc.hpp>
+ 
