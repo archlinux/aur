@@ -2,7 +2,7 @@
 
 pkgname=stutui
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist terminal‐based study timer and stopwatch with daily logging, built in C."
 arch=('x86_64')
 url="https://sr.ht/~fijarom/stutui/"
