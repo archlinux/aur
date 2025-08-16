@@ -2,7 +2,7 @@
 pkgname=plann
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="plann is a caldav client for calendar and task management"
 url="https://github.com/tobixen/plann"
 arch=('any')
@@ -15,7 +15,8 @@ makedepends=('python-build'
              'python-yaml'
              'python-click'
              'python-sortedcontainers'
-             'python-wheel')
+             'python-wheel'
+             'xandikos')
 source=("https://github.com/tobixen/$pkgname/archive/v$pkgver.tar.gz")
 
 
