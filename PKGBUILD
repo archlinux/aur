@@ -1,14 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-blur-my-shell-git
-pkgver=68.2.r0.g25b2002
-_uuid=blur-my-shell@aunetx
+pkgver=69.r0.g7958c91
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
 license=('MIT')
 depends=('gnome-shell')
-makedepends=('git')
+makedepends=(
+  'git'
+  'jq'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/aunetx/blur-my-shell.git')
@@ -30,15 +32,16 @@ build() {
 
 package() {
   cd blur-my-shell
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+   _uuid=$(jq -r .uuid metadata.json)
+
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "build/${_uuid}.shell-extension.zip" \
-    -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/" --no-same-owner
+    -C "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale" "$pkgdir/usr/share"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
-  install -Dm644 "schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml" -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
+  install -Dm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
