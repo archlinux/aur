@@ -58,7 +58,7 @@ depends=(aurorae
          qt6-svg
          qt6-tools
          qt6-wayland
-         libelogind
+         systemd-libs
          wayland
          xcb-util-cursor
          xcb-util-keysyms
