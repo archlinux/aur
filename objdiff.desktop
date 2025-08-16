@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=objdiff
+Comment=A local diffing tool for decompilation projects
+Exec=objdiff
+Icon=objdiff
+Terminal=false
+StartupNotify=false
+Categories=Development;
