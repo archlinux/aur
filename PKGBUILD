@@ -28,102 +28,156 @@ sha256sums=(
 build() {
   cd "$srcdir"
 
-  # create LD_PRELOAD shim source
+  # LD_PRELOAD shim: redirect engine_config and stockfish writes to user locations
   cat > redirect_open.c <<'EOF'
-  #define _GNU_SOURCE
-  #include <dlfcn.h>
-  #include <stdarg.h>
-  #include <string.h>
-  #include <stdlib.h>
-  #include <stdio.h>
-  #include <fcntl.h>
-  #include <sys/types.h>
-  #include <sys/stat.h>
+#define _GNU_SOURCE
+#include <dlfcn.h>
+#include <stdarg.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
-  static const char *target_path = "/usr/bin/engine_config.txt";
+static const char *cfg_target = "/usr/bin/engine_config.txt";
+static const char *engine_target = "/usr/bin/stockfish";
 
-  static const char *get_replacement(void) {
+/* returns replacement path for config */
+static const char *get_cfg_replacement(void) {
     const char *env = getenv("CHESSPILOT_CONFIG");
     if (env && env[0]) return env;
 
     const char *xdg = getenv("XDG_CONFIG_HOME");
+    static char buf[1024];
     if (xdg && xdg[0]) {
-      static char buf[1024];
-      snprintf(buf, sizeof(buf), "%s/chesspilot/engine_config.txt", xdg);
-      return buf;
+        snprintf(buf, sizeof(buf), "%s/chesspilot/engine_config.txt", xdg);
+        return buf;
     }
     const char *home = getenv("HOME");
     if (home && home[0]) {
-      static char buf2[1024];
-      snprintf(buf2, sizeof(buf2), "%s/.config/chesspilot/engine_config.txt", home);
-      return buf2;
+        snprintf(buf, sizeof(buf), "%s/.config/chesspilot/engine_config.txt", home);
+        return buf;
     }
-    return target_path; /* fallback */
-  }
+    return cfg_target;
+}
 
-  typedef int (*open_t)(const char *, int, ...);
-  typedef int (*openat_t)(int, const char *, int, ...);
-  typedef FILE *(*fopen_t)(const char *, const char *);
+/* returns replacement path for engine binary file (where to download) */
+static const char *get_engine_replacement(void) {
+    const char *env = getenv("CHESSPILOT_ENGINEFILE");
+    if (env && env[0]) return env;
 
-  static open_t real_open = NULL;
-  static openat_t real_openat = NULL;
-  static fopen_t real_fopen = NULL;
+    const char *xdg = getenv("XDG_DATA_HOME");
+    static char buf[1024];
+    if (xdg && xdg[0]) {
+        snprintf(buf, sizeof(buf), "%s/chesspilot/stockfish", xdg);
+        return buf;
+    }
+    const char *home = getenv("HOME");
+    if (home && home[0]) {
+        snprintf(buf, sizeof(buf), "%s/.local/share/chesspilot/stockfish", home);
+        return buf;
+    }
+    return engine_target;
+}
 
-  static void init_real(void) {
+typedef int (*open_t)(const char *, int, ...);
+typedef int (*openat_t)(int, const char *, int, ...);
+typedef FILE *(*fopen_t)(const char *, const char *);
+
+static open_t real_open = NULL;
+static openat_t real_openat = NULL;
+static fopen_t real_fopen = NULL;
+
+static void init_real(void) {
     if (!real_open) real_open = (open_t)dlsym(RTLD_NEXT, "open");
     if (!real_openat) real_openat = (openat_t)dlsym(RTLD_NEXT, "openat");
     if (!real_fopen) real_fopen = (fopen_t)dlsym(RTLD_NEXT, "fopen");
-  }
+}
 
-  int open(const char *pathname, int flags, ...) {
+/* helper: choose replacement if pathname matches one of the targets */
+static const char *maybe_replace(const char *pathname) {
+    if (!pathname) return pathname;
+    if (strcmp(pathname, cfg_target) == 0) return get_cfg_replacement();
+    if (strcmp(pathname, engine_target) == 0) return get_engine_replacement();
+    return pathname;
+}
+
+int open(const char *pathname, int flags, ...) {
     init_real();
     va_list ap;
     mode_t mode = 0;
     if (flags & O_CREAT) { va_start(ap, flags); mode = va_arg(ap, mode_t); va_end(ap); }
 
-    if (strcmp(pathname, target_path) == 0) {
-      const char *rp = get_replacement();
-      if (flags & O_CREAT) return real_open(rp, flags, mode);
-      return real_open(rp, flags);
+    const char *rp = maybe_replace(pathname);
+    if (rp != pathname) {
+        /* ensure containing dir exists when creating */
+        if (flags & O_CREAT) {
+            /* best-effort: create parent dir */
+            char tmp[1024]; strncpy(tmp, rp, sizeof(tmp)); tmp[sizeof(tmp)-1]=0;
+            char *p = strrchr(tmp, '/');
+            if (p) { *p = '\0'; mkdir(tmp, 0755); } /* ignore errors */
+            return real_open(rp, flags, mode);
+        }
+        if (flags & O_CREAT) return real_open(rp, flags, mode);
+        return real_open(rp, flags);
     }
+
     if (flags & O_CREAT) return real_open(pathname, flags, mode);
     return real_open(pathname, flags);
-  }
+}
 
-  int openat(int dirfd, const char *pathname, int flags, ...) {
+int openat(int dirfd, const char *pathname, int flags, ...) {
     init_real();
     va_list ap;
     mode_t mode = 0;
     if (flags & O_CREAT) { va_start(ap, flags); mode = va_arg(ap, mode_t); va_end(ap); }
 
-    if (pathname && strcmp(pathname, target_path) == 0) {
-      const char *rp = get_replacement();
-      if (flags & O_CREAT) return real_openat(dirfd, rp, flags, mode);
-      return real_openat(dirfd, rp, flags);
+    /* only handle absolute targets here */
+    if (pathname && pathname[0] == '/') {
+        const char *rp = maybe_replace(pathname);
+        if (rp != pathname) {
+            if (flags & O_CREAT) {
+                char tmp[1024]; strncpy(tmp, rp, sizeof(tmp)); tmp[sizeof(tmp)-1]=0;
+                char *p = strrchr(tmp, '/');
+                if (p) { *p = '\0'; mkdir(tmp, 0755); } /* ignore errors */
+                return real_openat(dirfd, rp, flags, mode);
+            }
+            if (flags & O_CREAT) return real_openat(dirfd, rp, flags, mode);
+            return real_openat(dirfd, rp, flags);
+        }
     }
+
     if (flags & O_CREAT) return real_openat(dirfd, pathname, flags, mode);
     return real_openat(dirfd, pathname, flags);
-  }
+}
 
-  FILE *fopen(const char *pathname, const char *mode) {
+FILE *fopen(const char *pathname, const char *mode) {
     init_real();
-    if (strcmp(pathname, target_path) == 0) {
-      const char *rp = get_replacement();
-      return real_fopen(rp, mode);
+    const char *rp = maybe_replace(pathname);
+    if (rp != pathname) {
+        /* ensure dir exists if opening for write/create */
+        if (strchr(mode, 'w') || strchr(mode, 'a') || strchr(mode, '+')) {
+            char tmp[1024]; strncpy(tmp, rp, sizeof(tmp)); tmp[sizeof(tmp)-1]=0;
+            char *p = strrchr(tmp, '/');
+            if (p) { *p = '\0'; mkdir(tmp, 0755); } /* ignore errors */
+        }
+        return real_fopen(rp, mode);
     }
     return real_fopen(pathname, mode);
-  }
+}
 EOF
 
+  # compile shim
   gcc -fPIC -shared -o redirect_open.so redirect_open.c -ldl
 }
 
 package() {
-  # place the main binary in /usr/lib so we can install a wrapper at /usr/bin
+  # place the real bundled binary in /usr/lib so we can install a wrapper at /usr/bin
   install -Dm755 "$srcdir/ChessPilot-${pkgver}-linux-x86_64" \
     "$pkgdir/usr/lib/chesspilot/chesspilot.bin"
 
-  # install the desktop file, icon and license (same as before)
+  # desktop, icon, license (unchanged)
   install -Dm644 "$srcdir/chesspilot.desktop" \
     "$pkgdir/usr/share/applications/chesspilot.desktop"
 
@@ -133,30 +187,42 @@ package() {
   install -Dm644 "$srcdir/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # install default engine_config to a read-only data path
-  # create directory and copy the default (you must include it in the source or generate it)
-  install -Dm644 "engine_config.txt" "$pkgdir/usr/share/chesspilot/engine_config.txt"
+  # keep a packaged default config in /usr/share for reference, but DO NOT auto-copy it into user config
+  # (the wrapper will not copy, so the app's downloader still runs if it decides to)
+  install -d "$pkgdir/usr/share/chesspilot"
+  cat > "$pkgdir/usr/share/chesspilot/engine_config.txt" <<'EOF'
+# Packaged default engine_config (reference only)
+/# leave engine_path blank so bundled app can choose to download engine if it wants
+EOF
 
   # install the LD_PRELOAD shim
   install -Dm644 redirect_open.so "$pkgdir/usr/lib/chesspilot/redirect_open.so"
 
-  # wrapper script: sets per-user config path and LD_PRELOAD, then execs the real binary
+  # wrapper script: export locations for shim, but DO NOT force-copy the packaged default config.
+  # The wrapper creates user dirs so the shim can redirect writes (allowing downloads to succeed)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/chesspilot" <<'EOF'
 #!/bin/sh
-# wrapper for chesspilot: ensure per-user config exists and preload redirection library
+# wrapper for chesspilot: set per-user config and engine paths, preload redirection library
 
+# user config path
 CHESSPILOT_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/chesspilot/engine_config.txt"
 export CHESSPILOT_CONFIG
 
-# ensure dir exists
+# where to place/download the engine binary for the user
+CHESSPILOT_ENGINEFILE="${XDG_DATA_HOME:-$HOME/.local/share}/chesspilot/stockfish"
+export CHESSPILOT_ENGINEFILE
+
+# ensure directories exist (best-effort)
 mkdir -p "$(dirname "$CHESSPILOT_CONFIG")"
+mkdir -p "$(dirname "$CHESSPILOT_ENGINEFILE")"
 
-# copy default if missing (best-effort)
-if [ ! -f "$CHESSPILOT_CONFIG" ]; then
-  cp /usr/share/chesspilot/engine_config.txt "$CHESSPILOT_CONFIG" 2>/dev/null || true
-fi
+# do NOT copy default config into user config automatically — leave it to the app or user
+# (this allows the app's downloader to run if it prefers to download an engine)
 
+# preload redirection shim (only affects targeted paths)
 export LD_PRELOAD="/usr/lib/chesspilot/redirect_open.so"
+
 exec /usr/lib/chesspilot/chesspilot.bin "$@"
 EOF
 }
+
