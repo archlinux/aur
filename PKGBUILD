@@ -17,6 +17,12 @@ conflicts=("${_pkgname}")
 source=("git+https://github.com/gruntwork-io/${_pkgname}.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  export GOPATH="${srcdir}/go"
+  export GOMODCACHE="${GOPATH}/pkg/mod"
+  go mod download
+}
 
 # v0.85.0-12-gabcdef -> 0.85.0.r12.gabcdef
 pkgver() {
@@ -24,20 +30,11 @@ pkgver() {
   git describe --tags --long | sed -E 's/^v?([0-9.]+)-([0-9]+)-g([0-9a-f]+)/\1.r\2.g\3/'
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  export GOPATH="${srcdir}/.gopath"
-  export GOMODCACHE="${GOPATH}/pkg/mod"
-  go mod download
-}
-
 build() {
   export GOPATH="${srcdir}/.gopath"
-  export GOMODCACHE="${GOPATH}/pkg/mod"
   export GOCACHE="${srcdir}/.gocache"
   export CGO_ENABLED=0
-  # note the added -modcacherw
-  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw -trimpath'
+  export GOFLAGS='-buildmode=pie -mod=readonly -trimpath'
 
   cd "${srcdir}/${_pkgname}"
   go build -ldflags "-s -w" -o "${srcdir}/${_pkgname}-bin" .
