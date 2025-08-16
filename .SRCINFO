@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-mosaic
 	url = https://github.com/jardon/gnome-mosaic
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = jq
 	makedepends = typescript
 	depends = gnome-shell
 	depends = xorg-xprop

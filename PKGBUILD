@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-mosaic
-_uuid=gnome-mosaic@jardon.github.com
 pkgver=1.4.0
 pkgrel=1
 pkgdesc="GNOME window tiling extension"
@@ -11,7 +10,10 @@ depends=(
   'gnome-shell'
   'xorg-xprop'
 )
-makedepends=('typescript')
+makedepends=(
+  'jq'
+  'typescript'
+)
 optdepends=('gnome-shell-extensions: for Native Window Placment extension')
 source=("gnome-mosaic-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         '50_org.gnome.desktop.wm.keybindings.gnome-mosiac.gschema.override'
@@ -33,15 +35,16 @@ build() {
 
 package() {
   cd "gnome-mosaic-$pkgver"
+  _uuid=$(jq -r .uuid metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
-  cp -r _build/* "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+  cp -rv _build/* "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
 
-  install -Dm644 schemas/*.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
+  install -Dvm644 schemas/*.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 
-  install -Dm644 SHORTCUTS.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dvm644 SHORTCUTS.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-  install -Dm644 "$srcdir"/*.gnome-mosaic.gschema.override -t \
+  install -Dvm644 "$srcdir"/*.gnome-mosaic.gschema.override -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
 }
