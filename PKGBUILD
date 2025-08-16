@@ -8,8 +8,8 @@ pkgdesc="Fast HTML5 parser with CSS selectors"
 arch=(x86_64)
 url="https://github.com/rushter/${_base}"
 license=(MIT)
-depends=(cython)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools cython python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('414c209ec65d09b247b3499f019c227bba445ffc5b4bf103c5966ffbbd6fe7343db8efee1025dc814c330bc8a7f8c2e94cdfb90f6aaa058e9a9dacb284431763')
 

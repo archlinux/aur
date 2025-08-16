@@ -8,8 +8,9 @@ pkgbase = python-selectolax
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = cython
 	makedepends = python-wheel
-	depends = cython
+	depends = python
 	source = https://pypi.org/packages/source/s/selectolax/selectolax-0.3.33.tar.gz
 	sha512sums = 414c209ec65d09b247b3499f019c227bba445ffc5b4bf103c5966ffbbd6fe7343db8efee1025dc814c330bc8a7f8c2e94cdfb90f6aaa058e9a9dacb284431763
 
