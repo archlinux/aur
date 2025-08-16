@@ -1,0 +1,22 @@
+pkgbase = akhenaten-git
+	pkgdesc = Open-source engine for Pharaoh (+Cleopatra) city-building game
+	pkgver = ra2506.51.g4e62e6f22
+	pkgrel = 1
+	url = https://github.com/dalerank/Akhenaten
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = glm
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = sdl2_image
+	depends = hicolor-icon-theme
+	optdepends = libpng: needed for image loading
+	provides = akhenaten
+	conflicts = akhenaten
+	source = akhenaten-git::git+https://github.com/dalerank/Akhenaten.git
+	sha256sums = SKIP
+
+pkgname = akhenaten-git
