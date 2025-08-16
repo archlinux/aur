@@ -291,8 +291,15 @@
 	},
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
+		"ms-azuretools.vscode-azureresourcegroups": [
+			"authenticationChallenges"
+		],
+		"ms-azuretools.vscode-azure-github-copilot": [
+			"authenticationChallenges"
+		],
 		"ms-azuretools.vscode-dev-azurecloudshell": [
-			"contribEditSessions"
+			"contribEditSessions",
+			"authenticationChallenges"
 		],
 		"ms-vscode.vscode-selfhost-test-provider": [
 			"testObserver",
@@ -446,6 +453,8 @@
 			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
+			"languageModelDataPart",
+			"languageModelToolResultAudience",
 			"quickDiffProvider",
 			"remoteCodingAgents",
 			"shareProvider",
@@ -503,6 +512,7 @@
 			"languageModelSystem",
 			"languageModelCapabilities",
 			"languageModelDataPart",
+			"languageModelThinkingPart",
 			"chatStatusItem",
 			"taskProblemMatcherStatus",
 			"contribLanguageModelToolSets",
@@ -530,7 +540,6 @@
 			"notebookCellExecutionState"
 		],
 		"ms-python.vscode-pylance": [
-			"mcpConfigurationProvider",
 			"terminalShellEnv"
 		],
 		"ms-python.debugpy": [
@@ -599,9 +608,6 @@
 			"chatReferenceBinaryData",
 			"codeActionAI"
 		],
-		"lramos15.model-playground": [
-			"chatProvider"
-		],
 		"ms-autodev.vscode-autodev": [
 			"chatParticipantAdditions"
 		],
@@ -610,7 +616,14 @@
 			"textSearchProvider2"
 		],
 		"vscjava.vscode-java-upgrade": [
-			"chatParticipantAdditions"
+			"chatParticipantAdditions",
+			"chatParticipantPrivate"
+		],
+		"FoundryLocal.foundry-local-chat": [
+			"chatProvider"
+		],
+		"Microsoft.foundry-local-chat": [
+			"chatProvider"
 		]
 	},
 	"tasConfig": {
