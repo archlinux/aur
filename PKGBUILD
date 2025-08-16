@@ -6,15 +6,15 @@
 # Contributor: Mantas Mikulėnas <grawity at gmail.com>
 
 pkgname=eggdrop
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="World's most popular Open Source IRC bot"
 arch=('x86_64')
 url="https://www.eggheads.org"
 license=('GPL-2.0-or-later')
 depends=('bash' 'glibc' 'openssl' 'tcl' 'zlib')
-source=("https://ftp.eggheads.org/pub/${pkgname}/source/${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-b2sums=('86d8ab27c0ce5ce4525095455420a4172f1bad23e3dd00772a60901ba3050d0db57d52c9cb093be2f3a77f8d8894f868da8876a9ea4533247d76d0b43cb4c9e2'
+source=("https://github.com/eggheads/eggdrop/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+b2sums=('9c4937a4f37e61ddaf85e3b8ea312d15ca6fb54e6aac7318892baeb68b20bedd7da7c7168702197e6672e0dc2304d3b5f4e14f6f8585a06b6e6a5dc0e2351ec8'
         'SKIP')
 validpgpkeys=('E01C240484DE7DBE190FE141E7667DE1D1A39AFF')
 

@@ -3,3 +3,4 @@ source = "github"
 github = "eggheads/eggdrop"
 use_max_tag = true
 prefix = "v"
+exclude_regex = ".*(rc).*"
