@@ -3,7 +3,7 @@
 _sdk=8.0
 _Name="PixiEditor"
 pkgname="${_Name,,}"
-pkgver=2.0.1.7
+pkgver=2.0.1.9
 pkgrel=1
 pkgdesc="All-in-one solution for 2D image editing"
 arch=('aarch64' 'x86_64')
@@ -12,23 +12,23 @@ _url="https://github.com/${_Name}/${_Name}"
 license=('LGPL-3.0-only')
 depends=("dotnet-runtime-${_sdk}" 'ffmpeg' 'xdg-utils')
 makedepends=("dotnet-sdk-${_sdk}" 'dotnet-sdk>=8.0.18.sdk405')
-options=('!strip' '!debug' 'staticlibs')
+options=('!strip' '!debug')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${_Name}.desktop")
-b2sums=('f73cf19c16cfa46ad471aa7ff0bb2517bca139f0eac1c133a96884d08b321d52e059b82540a7eb14f9825c61a276da63ae288d1cb238c335e5d37749db871338'
+b2sums=('8e403fc9999be953eb29ef4e65b038227131c236c6f64ad2179e8258299d732858428c596bdd4b9b05c987f2c4389af07a33f3b32532a22efd3df0ccebea6888'
         'b9be9f4a0b1ad75b01ebc6a6b57966df3343f0de09ee7ffde3f05dfba140fc6c0e638573c863fad8a77b359039ac3aaba875650226b5df9fa3ec05ba9686fdd0'
-        '2f170be95de624df6b819eefab5fbb78b78bc1485378880f3d5f47ca56f63040e3e294359593e030cd5f763877120c34c28a688d5fa2237bf87edf82bb21372d'
-        'ad0072c26e1c326f0769dd5cfe98b637615819fb905a0a5131cad42f58d3db47f218ba071ee1b63a34c7b0bc8d747d6f8464a74ae79f4bd0d9e063dcc6d4085c'
+        '900af5f6870f765ad9e4319adf0a4af2cb473d262d128f7a39c76193c5ef18e83295d2f8be1d7031eb03c43c43006b2fb23671fe024923d43e815d8dd1f7f431'
+        '55eecc42c8f80dd625103ec059c66f79b1dded25084dacf97f451f8e78a0f810d27ce29408b2de7d8b670a6138e81ccc291890901f2e047a24fddb11d36c930f'
         'a65a5d3e647578ca1fdb01a2695cbb86fec8aadce56806691bb9c83348b23456cde5b26338c955a32c1516ecdcb159c8e2cbb90bc7572ce59b7be49bde9b2f5e'
-        '0bd548a65742cfdbcd28bf782f730e40e0c3b56c975351d97c237e14001997ebbab1f553ced7ea54e5a81de2f121346eb3c2aed7b09dfe8e426897aceb412697')
+        '92b281570a8560f6f80288be019d68fd851b255114f1c57ddac37d7fcb70396fb75f0dd6100c1685a53406faf3b5c2a466bd0e5a8463b8faa05aa8783e5379e2')
 
 declare -rAg _modules_name_map=(
   # PixiEditor
-  [src/PixiDocks]=https://github.com/PixiEditor/PixiDocks/archive/87c3164a739b529dbbce199a7af761cbd11e5a58.tar.gz
+  [src/PixiDocks]=https://github.com/PixiEditor/PixiDocks/archive/6e745d0309ad7a00a53f62f2aa362be77903a5fd.tar.gz
   [src/PixiParser]=https://github.com/PixiEditor/PixiParser/archive/d7a83f53f4a0e6a0e0d011cb045ab1f2075e759b.tar.gz
-  [src/Drawie]=https://github.com/PixiEditor/Drawie/archive/46be7a7eb2a93fc0fade23c8dcca20558209be6f.tar.gz
-  [src/ColorPicker]=https://github.com/PixiEditor/ColorPicker/archive/db8aaff273239b21bf4c6f99b0162dcd1d742533.tar.gz
+  [src/Drawie]=https://github.com/PixiEditor/Drawie/archive/1be85ac9f4bc6b584e6a3a5a3d0287201c6a5f03.tar.gz
+  [src/ColorPicker]=https://github.com/PixiEditor/ColorPicker/archive/943e9abbb60b73c4965b947e987dc2696e0b08f8.tar.gz
 )
 
 _get_source_name_string() {
