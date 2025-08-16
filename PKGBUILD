@@ -1,6 +1,6 @@
 # Maintainer: David Lishcyshen <microdaika1@gmail.com>
 pkgname=wofi-power-menu
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Highly configurable power menu using the wofi launcher power-menu"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('wofi')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('504c93c7cc21278b7fe92708d525badf2006f6c9f8113f1f36069586d1c224da')
+sha256sums=('382f00ca63d74eec6da523b45be78345bc8bbc2e93d16de8b252f07cb5334369')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
