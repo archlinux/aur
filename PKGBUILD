@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-live
-pkgver=3.5.0
-pkgrel=2
-_vdrapi=8
+pkgver=3.5.1
+pkgrel=1
+_vdrapi=9
 epoch=1
 pkgdesc="Adds the possibility to control VDR and some of it's plugins by a web interface."
 url="https://github.com/MarkusEh/vdr-plugin-live"
@@ -19,7 +19,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MarkusEh/vdr-plugin-live/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('8b0af04df2d153025aaa18c7906babe2d0f6b38eca610f6c9977a5a675cd1929'
+sha256sums=('364a6b0deed95bbcb41fa5360ad2c0a1fb40d3a47dae9aed78d7aae468d976b3'
             'a14466937a4c618341ca3120bf353ca5b207dda0aca3b605532d3500415d7fea')
 
 build() {
