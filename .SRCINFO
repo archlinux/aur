@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-bluetooth-quick-connect
 	url = https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = jq
 	makedepends = pnpm
 	makedepends = zip
 	depends = bluez-utils

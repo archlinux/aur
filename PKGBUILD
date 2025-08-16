@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-bluetooth-quick-connect
-_uuid=bluetooth-quick-connect@bjarosze.gmail.com
 pkgver=53
 pkgrel=1
 pkgdesc="Allow to connect Bluetooth paired devices from GNOME control panel."
@@ -13,6 +12,7 @@ depends=(
   'gnome-shell'
 )
 makedepends=(
+  'jq'
   'pnpm'
   'zip'
 )
@@ -28,14 +28,15 @@ build() {
 
 package() {
   cd gnome-bluetooth-quick-connect-$pkgver
+  _uuid=$(jq -r .uuid metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "dist/${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
+  mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
-  install -Dm644 dist/schemas/org.gnome.shell.extensions.bluetooth-quick-connect.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
+  install -Dvm644 dist/schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
 
   rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
