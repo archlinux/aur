@@ -1,4 +1,5 @@
-# Maintainer: Albert Latham <me@albertlatham.com>
+# Maintainer:  NourEddine Yassine <NourEddineX at protonmail dot com>
+# Contributor: Albert Latham <me@albertlatham.com>
 pkgname=codellm
 pkgver=1.101.23214
 pkgrel=1
