@@ -2,10 +2,10 @@
 # Co-Maintainer: Kaleb Elwert <belak@coded.io>
 
 pkgname=picotron
-pkgver=0.2.0g
+pkgver=0.2.0h3
 pkgrel=1
 pkgdesc="A fantasy workstation for making pixelart games, animations, music, demos and other curiosities."
-arch=("x86_64" "armv7h" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://www.lexaloffle.com/picotron.php"
 license=("custom:commercial")
 depends=("sdl2")
@@ -15,14 +15,12 @@ provides=("${pkgname}")
 source=("${pkgname}.desktop"
         "${pkgname}.xml")
 source_x86_64=("file://${pkgname}_${pkgver}_amd64.zip")
-source_armv7h=("file://${pkgname}_${pkgver}_raspi.zip")
 source_aarch64=("file://${pkgname}_${pkgver}_raspi.zip")
 
 sha256sums=("04862c5d2f4ec10f4979ec316c4e14b01e073806d90bc23290e8420e142f710a"
             "45525e5ff68d3380492e188e626cf2208491ba0df79cc246aa8560e05f5b3100")
-sha256sums_x86_64=("2f4ac72fd601dc66dc7042f4961a5a4865fd6981f623a7489eb07ac0565ea410")
-sha256sums_armv7h=("15667cd426cb82bdb7bfe05a37f9f32cd6a5c3233468d87e0ac83bb949d80ab0")
-sha256sums_aarch64=("15667cd426cb82bdb7bfe05a37f9f32cd6a5c3233468d87e0ac83bb949d80ab0")
+sha256sums_x86_64=("4f11ab2c92725596564b93b1d31ab4b30b5a7d3d85ad9b27ae919602febcb6d9")
+sha256sums_aarch64=("67709ff5fe45a23499f25251a1db403e78c0ff5ae1b0a776ffc4cf5b2af87d6b")
 
 package() {
   # Desktop entry
