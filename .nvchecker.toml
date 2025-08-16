@@ -2,5 +2,3 @@
 source = "git"
 git = "https://github.com/Anuken/Mindustry.git"
 prefix = "v"
-from_pattern = "^7\\.0_"
-to_pattern = ""
