@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fb303
-pkgver=2025.08.04.00
+pkgver=2025.08.11.00
 pkgrel=1
 pkgdesc="thrift functions that provide a mechanism for querying information from a service"
 arch=(x86_64)
@@ -31,7 +31,7 @@ provides=(
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 pass-thrift-include-to-python.patch::https://patch-diff.githubusercontent.com/raw/facebook/fb303/pull/68.patch)
-sha256sums=('15476f7de72f0270ac43626c1b50f7dabbf131e5939ba284a11797ad71b0ceab'
+sha256sums=('69123178f5e00c0a507a82dc5cd33ff81300ee3a50d7951425d9f5931ee8fbbd'
             '89ccb751f778b43d1eb4804eee1c041a5f9d8626d82034564300ee2bd4e731d9')
 
 prepare() {
@@ -47,6 +47,7 @@ build() {
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=20 \
     -Wno-dev \
     -DBUILD_SHARED_LIBS=ON \
     -DPYTHON_EXTENSIONS=ON \
