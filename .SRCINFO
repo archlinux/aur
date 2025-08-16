@@ -1,11 +1,11 @@
 pkgbase = numaplayer
 	pkgdesc = Set your music and inspiration totally free.
-	pkgver = 2.1.4
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://www.studiologic-music.com/products/numaplayer
 	arch = x86_64
 	license = custom:proprietary
-	source = https://www.studiologic-music.com/support/numaplayer/NumaPlayer_2.1.4.deb
-	sha256sums = 19a2c00d40a91ec21232b4056a1a3ef51b9096ad6af80996a347d82d882f1679
+	source = https://www.studiologic-music.com/api/get-files/NumaPlayer_2.1.7.deb
+	sha256sums = 4d1e607888ec9c9c1e67c4bac39a257b5adef40768e27919f35c79167e247df5
 
 pkgname = numaplayer
