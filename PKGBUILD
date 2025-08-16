@@ -26,9 +26,9 @@ groups=('xlibre')
 options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-depends=(xlibre-xserver-common xlibre-xf86-input-libinput libepoxy libxfont2 pixman libunwind
+depends=(xlibre-xserver-common-bin xlibre-xf86-input-libinput-bin libepoxy libxfont2 pixman libunwind
          dbus libgl nettle libxdmcp sh glibc libxau libtirpc
-           libpciaccess libdrm libxshmfence libxcvt) # FS#52949
+         libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
 # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
 provides=($_pkgname 'xorg-server' 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server' 'xlibre-server')
