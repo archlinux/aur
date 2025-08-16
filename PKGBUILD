@@ -1,10 +1,10 @@
-# Maintainer: tkirishima <tkirishima@proton.me>
+# Maintainer: tkirishima <tkirishima@gmail.com>
 pkgname=langfetch
 pkgver=0.0.1
 pkgrel=2
 pkgdesc="A command-line tool to display the version of languages on your system"
 arch=("any")
-url="https://github.com/aderepas/langfetch"
+url="https://github.com/tkirishima/langfetch"
 license=('MIT')
 depends=(
     'python>=3.10'

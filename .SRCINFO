@@ -2,11 +2,11 @@ pkgbase = langfetch
 	pkgdesc = A command-line tool to display the version of languages on your system
 	pkgver = 0.0.1
 	pkgrel = 2
-	url = https://github.com/aderepas/langfetch
+	url = https://github.com/tkirishima/langfetch
 	arch = any
 	license = MIT
 	depends = python>=3.10
-	source = langfetch::git+https://github.com/aderepas/langfetch.git
+	source = langfetch::git+https://github.com/tkirishima/langfetch.git
 	sha256sums = SKIP
 
 pkgname = langfetch
