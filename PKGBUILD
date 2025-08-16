@@ -1,23 +1,17 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=libnick
-pkgver=2025.7.3
+pkgver=2025.7.6
 _maddyver=1.5.0
 pkgrel=1
 pkgdesc="A cross-platform base for native Nickvision applications"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/libnick"
 license=('MIT')
-makedepends=('boost' 'cmake' 'cpr' 'sqlcipher')
+makedepends=('boost' 'cmake' 'cpr' 'libmaddy' 'sqlcipher')
 options=('!lto')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "maddy-${_maddyver}.zip::https://github.com/progsource/maddy/releases/download/${_maddyver}/maddy-src.zip")
-sha256sums=('d8569673bb6ae914ec6b7b1f451f102c1bdb1e7acbc6c635e096ebaa341fcf25'
-            'eae8990ab796185547ef06dbb752d0d7cbc38067b327a4c7e5141c280aa633fd')
-
-prepare() {
-    mv include/maddy "${pkgname}-${pkgver}/include"
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('2da42c1e0bf31c4bb9229cb0aced708e4b75dc98bb614ada691f7bd110176e8f')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
