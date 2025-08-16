@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-auto-accent-color
-_uuid=auto-accent-colour@Wartybix
 pkgver=18
 pkgrel=1
 pkgdesc="GNOME extension to automatically change the desktop accent colour based on the user's wallpaper."
@@ -8,6 +7,7 @@ arch=('any')
 url="https://github.com/Wartybix/GNOME-Auto-Accent-Colour"
 license=('GPL-3.0-or-later')
 depends=('gnome-shell')
+makedepends=('jq')
 provides=('gnome-shell-extension-auto-accent-colour')
 source=("GNOME-Auto-Accent-Colour-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('f7d2c591780fe6ada4979666c6a1adbdfcf1a539f1fe7d87c936c763dbda7697')
@@ -24,13 +24,15 @@ build() {
 
 package() {
   cd "GNOME-Auto-Accent-Colour-$pkgver"
+  _uuid=$(jq -r .uuid metadata.json)
+
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
   mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
-  install -Dm644 schemas/org.gnome.shell.extensions.auto-accent-colour.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
+  install -Dvm644 schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+
   rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }

@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-auto-accent-color
 	url = https://github.com/Wartybix/GNOME-Auto-Accent-Colour
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = jq
 	depends = gnome-shell
 	provides = gnome-shell-extension-auto-accent-colour
 	source = GNOME-Auto-Accent-Colour-18.tar.gz::https://github.com/Wartybix/GNOME-Auto-Accent-Colour/archive/refs/tags/18.tar.gz
