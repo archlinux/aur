@@ -6,12 +6,12 @@ Wants=network-online.target local-fs.target remote-fs.target time-sync.target
 
 [Service]
 Type=simple
-RuntimeDirectory=sozu
-PIDFile=/run/sozu/sozu.pid
+RuntimeDirectory=sozu-%i
+PIDFile=/run/sozu/sozu-%i.pid
 StateDirectory=sozu
-ExecStartPre=/usr/bin/sozu config check --config /etc/sozu/config.toml
-ExecStart=/usr/bin/sozu start --config /etc/sozu/config.toml
-ExecReload=/usr/bin/sozu --config /etc/sozu/config.toml reload
+ExecStartPre=/usr/bin/sozu config check --config /etc/sozu/%i.toml
+ExecStart=/usr/bin/sozu start --config /etc/sozu/%i.toml
+ExecReload=/usr/bin/sozu --config /etc/sozu/%i.toml reload
 Restart=on-failure
 User=sozu
 AmbientCapabilities=CAP_NET_BIND_SERVICE

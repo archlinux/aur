@@ -1,0 +1,5 @@
+# see man sysusers.d(5)
+#Type Name     ID             GECOS                 Home directory Shell
+u!    sozu     -              "Sozu user"
+g     sozu     -              -
+m     sozu     sozu
