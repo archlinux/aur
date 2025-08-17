@@ -56,7 +56,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build_dir
-  #mv "${pkgdir}"/usr/local/* "${pkgdir}/usr"
-  #rm -r "${pkgdir}/usr/local"
 }
 
