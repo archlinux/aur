@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-libbacktrace-debuglink-git
+	pkgdesc = Libbacktrace fork with GNU debuglink support for PE/COFF format
+	pkgver = r123.a2d51b8
+	pkgrel = 1
+	url = https://github.com/MangoFizz/libbacktrace
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = git
+	depends = mingw-w64-zlib
+	provides = mingw-w64-libbacktrace
+	conflicts = mingw-w64-libbacktrace
+	conflicts = mingw-w64-libbacktrace-git
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/MangoFizz/libbacktrace.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libbacktrace-debuglink-git
