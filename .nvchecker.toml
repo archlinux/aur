@@ -1,0 +1,5 @@
+[mole-bin]
+source = "github"
+github= "davrodpin/mole"
+use_latest_release = true
+prefix = "v"
