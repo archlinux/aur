@@ -1,0 +1,5 @@
+[figurine-bin]
+source = "github"
+github = "arsham/figurine"
+use_latest_release = true
+prefix = "v"
