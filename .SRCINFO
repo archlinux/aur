@@ -2,7 +2,7 @@ pkgbase = cwal-git
 	pkgdesc = Blazing-fast pywal-like color palette generator written in C.
 	pkgver = latestcommit
 	pkgrel = 1
-	url = https://github.com/nitinbhat972/cwal#main
+	url = https://github.com/nitinbhat972/cwal
 	arch = any
 	license = GPL3
 	makedepends = cmake
@@ -11,7 +11,7 @@ pkgbase = cwal-git
 	depends = libimagequant
 	provides = cwal
 	conflicts = cwal
-	source = git+https://github.com/nitinbhat972/cwal#main.git
+	source = git+https://github.com/nitinbhat972/cwal.git#main
 	sha256sums = SKIP
 
 pkgname = cwal-git
