@@ -1,0 +1,23 @@
+pkgbase = python-pyathena
+	pkgdesc = Python DB API 2.0 client for Amazon Athena
+	pkgver = 3.17.1
+	pkgrel = 1
+	url = https://github.com/laughingman7743/PyAthena
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = python
+	depends = python-boto3
+	depends = python-tenacity
+	optdepends = python-sqlalchemy: SQLAlchemy dialect support (extra: [sqlalchemy])
+	optdepends = python-pandas: DataFrame integration (extra: [pandas])
+	optdepends = python-pyarrow: Arrow-based cursor (extra: [arrow])
+	optdepends = python-fastparquet: fastparquet cursor (extra: [fastparquet])
+	source = pyathena-3.17.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pyathena/pyathena-3.17.1.tar.gz
+	sha256sums = 8e54baaa3386dacc93a6c63f8cd92994e50b8833d747772659231ae4ef4418f7
+
+pkgname = python-pyathena
