@@ -1,7 +1,7 @@
 pkgbase = crun-krun
 	pkgdesc = A fully featured OCI runtime and C library for running containers. Enabled krun support for secure/confidential containers in VMs.
-	pkgver = 1.21
-	pkgrel = 2
+	pkgver = 1.23.1
+	pkgrel = 1
 	url = https://github.com/containers/crun
 	arch = x86_64
 	license = LGPL
@@ -19,8 +19,8 @@ pkgbase = crun-krun
 	provides = oci-runtime
 	provides = crun
 	conflicts = crun
-	source = git+https://github.com/containers/crun.git#tag=1.21
+	source = git+https://github.com/containers/crun.git#tag=1.23.1
 	validpgpkeys = AC404C1C0BF735C63FF4D562263D6DF2E163E1EA
-	sha256sums = c807b5ae99273adff712a2d894896d3cbae9f7ecc985763725c3b0e06d01257b
+	sha256sums = 616cc7fdff3c6aa0429a9f2ab017a9b234ff8bda401250727879c9b4a9e35a76
 
 pkgname = crun-krun
