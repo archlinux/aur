@@ -1,5 +1,5 @@
 pkgname=farsidic
-pkgver=1.1
+pkgver=1.2
 pkgdesc="A simple farsi dictionary"
 url="https://github.com/mohammadrostamiorg/farsidic"
 arch=('any')
