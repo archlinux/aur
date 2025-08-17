@@ -1,0 +1,24 @@
+pkgbase = xlibre-video-sisusb-bin
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org sisusb video driver (binary release)
+	pkgver = 0.9.7.1
+	pkgrel = 2
+	url = https://github.com/X11Libre
+	arch = x86_64
+	groups = xlibre-drivers
+	license = BSD-3-Clause
+	depends = mesa
+	depends = libdrm
+	depends = glibc
+	provides = xf86-video-sisusb
+	provides = xlibre-video-sisusb
+	conflicts = xf86-video-sisusb
+	conflicts = xlibre-video-sisusb
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-VIDEODRV_VERSION<28
+	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	noextract = xlibre-xf86-video-sisusb-0.9.7.1-2-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-sisusb-0.9.7.1-2-x86_64.pkg.tar.zst
+	sha256sums = 2766cf910683f0a6f34d741ac7f5a4536343c170e3de34eede7d345315caff0f
+
+pkgname = xlibre-video-sisusb-bin
