@@ -1,6 +1,6 @@
 pkgbase = kazumi
 	pkgdesc = 基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕
-	pkgver = 1.7.6
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = https://github.com/Predidit/Kazumi
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kazumi
 	depends = libpulse
 	depends = libxss
 	depends = libarchive
-	source = kazumi-1.7.6.tar.gz::https://github.com/Predidit/Kazumi/archive/refs/tags/1.7.6.tar.gz
-	sha256sums = 8317ca242a87d43390b2123e72d5b9366815c32cf64f6b395ab060e865ed3349
+	source = kazumi-1.7.7.tar.gz::https://github.com/Predidit/Kazumi/archive/refs/tags/1.7.7.tar.gz
+	sha256sums = c1e89c7472fdde412bdfac23e6032439a518f50eb4bcc0d5f6cad8d125b433f6
 
 pkgname = kazumi
