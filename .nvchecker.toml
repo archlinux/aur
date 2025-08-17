@@ -1,0 +1,5 @@
+[mayhem-bin]
+source = "github"
+github = "BOTbkcd/mayhem"
+use_latest_release = true
+prefix = "v"
