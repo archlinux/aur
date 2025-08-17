@@ -57,8 +57,22 @@ build() {
     corepack install
     npx yarn install
 
+    # Replace npm dependencies with local ones
     cd "packages"
     sed -i -E 's_"@joplin/(\w+)": .*_"@joplin/\1": "file://'$PWD'/\1",_g' */package.json
+
+    # Pack the app-cli package
+    cd "${srcdir}/joplin-${pkgver}/packages/app-cli"
+    npx gulp build
+
+    # Build the electron package
+    cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
+    electronRoot=/usr/lib/electron${_electronVersion}/
+    electronVersion="$(<${electronRoot}/version)"
+    npx electron-builder \
+      --linux --x64 --dir=dist/ \
+      -c.electronDist="${electronRoot}" \
+      -c.electronVersion="${electronVersion}"
 }
 
 check() {
@@ -78,12 +92,8 @@ package_joplin() {
 
     _setup_env
 
-    # Pack the app-cli package
-    cd "${srcdir}/joplin-${pkgver}/packages/app-cli"
-    npx gulp build
-
     # Install the package
-    cd build
+    cd "${srcdir}/joplin-${pkgver}/packages/app-cli/build"
     npm pack
     npm install -g --install-links --prefix "${pkgdir}/usr" *.tgz
 
@@ -99,16 +109,6 @@ package_joplin-desktop() {
     _setup_env
 
     cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
-
-    electronRoot=/usr/lib/electron${_electronVersion}/
-    electronVersion="$(<${electronRoot}/version)"
-
-    # Build the electron package
-    npx electron-builder \
-      --linux --x64 --dir=dist/ \
-      -c.electronDist="${electronRoot}" \
-      -c.electronVersion="${electronVersion}"
-
     mkdir -p "${pkgdir}/usr/lib"
     cp -vr dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
 
