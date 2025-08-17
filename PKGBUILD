@@ -1,13 +1,13 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 pkgname=steamcommunity302
 pkgver=13.0.06
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
 arch=('x86_64' 'aarch64')
 license=('CC-BY-NC-4.0')
-depends=('nss' 'gtk3' 'glibc' 'gcc-libs' 'zlib')
+depends=('nss' 'gtk3' 'glibc' 'gcc-libs' 'zlib' 'xorg-xhost')
 source_x86_64=("https://www.dogfight360.com/blog/wp-content/uploads/2025/08/steamcommunity_302_Linux_AMD64_V${pkgver}.tar.gz")
 source_aarch64=("https://www.dogfight360.com/blog/wp-content/uploads/2025/08/steamcommunity_302_Linux_ARM64_V${pkgver}.tar.gz")
 md5sums_x86_64=('4eb8e6c71c6fe83db3f99eb60e7e0e24')
@@ -23,18 +23,18 @@ backup=(
   opt/steamcommunity302/steamcommunityCA.crl
 )
 package() {
-    # 1. 建立目标目录
-    install -d "${pkgdir}/opt/steamcommunity302"
+  # 1. 建立目标目录
+  install -d "${pkgdir}/opt/steamcommunity302"
 
-    # 2. 把二进制及运行所需文件全部放进去
-    cp -a "${srcdir}/Steamcommunity_302"/* "${pkgdir}/opt/steamcommunity302/"
+  # 2. 把二进制及运行所需文件全部放进去
+  cp -a "${srcdir}/Steamcommunity_302"/* "${pkgdir}/opt/steamcommunity302/"
 
-    # 3. 给可执行文件加可执行权限
-    chmod 755 "${pkgdir}"/opt/steamcommunity302/{Steamcommunity_302,steamcommunity_302.cli,steamcommunity_302.caddy}
+  # 3. 给可执行文件加可执行权限
+  chmod 755 "${pkgdir}"/opt/steamcommunity302/{Steamcommunity_302,steamcommunity_302.cli,steamcommunity_302.caddy}
 
-    # 4. /usr/bin 下的启动包装脚本
-    install -d "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/s302" <<'EOF'
+  # 4. /usr/bin 下的启动包装脚本
+  install -d "${pkgdir}/usr/bin"
+  cat >"${pkgdir}/usr/bin/s302" <<'EOF'
 #!/bin/bash
 clear
 echo ""
@@ -45,6 +45,6 @@ if ! xhost | grep -q "SI:localuser:root"; then
 fi
 sudo /opt/steamcommunity302/Steamcommunity_302
 EOF
-    chmod 755 "${pkgdir}/usr/bin/s302"
+  chmod 755 "${pkgdir}/usr/bin/s302"
 
 }
