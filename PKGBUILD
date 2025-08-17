@@ -26,7 +26,7 @@ conflicts=('aviator-shell')
 source=(
     "$_pkgname::$url/raw/master/bin/$_pkgname"
     "$_pkgname-$pkgver.jar::$url/raw/master/downloads/$_pkgname-$pkgver.jar"
-    "LICENSE::$url/raw/master/licenses.txt"
+    "LICENSE-aviator::$url/raw/master/licenses.txt"
 )
 
 sha256sums=(
@@ -43,7 +43,7 @@ package() {
     install -Dm644 "$srcdir/$_pkgname-$pkgver.jar" "$pkgdir/usr/share/aviator_shell/self-installs/$_pkgname-$pkgver.jar"
 
     # 安装许可证文件
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/LICENSE-aviator" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # 使用 EOF 安装并创建 wrapper 脚本
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << 'EOF'
