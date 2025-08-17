@@ -1,0 +1,10 @@
+cat > .gitignore <<'EOF'
+/src/
+/pkg/
+/*.tar.*
+/*.tar.zst
+/*.pkg.tar*
+/*.log
+/.cache/
+*.part
+EOF

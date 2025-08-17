@@ -1,0 +1,15 @@
+pkgbase = python-hyperscript
+	pkgdesc = Tiny hyperscript-style HTML builder for Python (provides the hyperscript 'h' helper)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/hyperscript/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/h/hyperscript/hyperscript-0.3.0.tar.gz
+	sha256sums = 77e9372c09dbf0ec0e18515cd7e13a44cac7cbf800362a1eac26d9f8c4abe2a8
+
+pkgname = python-hyperscript
