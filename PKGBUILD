@@ -3,7 +3,7 @@
 pkgname=impd-git
 conflicts=('impd')
 provides=('impd')
-pkgver=0.10.r0.g26fbba0
+pkgver=0.11.r0.g1b0346f
 pkgrel=1
 pkgdesc="Manage passive immersion and create condensed audio."
 arch=(any)
