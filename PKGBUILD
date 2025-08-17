@@ -9,6 +9,7 @@ depends=(
   gnuradio
   python-gnuradio
   python-numpy
+  python-pygraphviz
 )
 makedepends=(
   git
@@ -45,6 +46,7 @@ build() {
   cmake \
     -W no-dev \
     -G Ninja \
+    -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release \
     -B build_dir \
     -S gr-elster
@@ -54,7 +56,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build_dir
-  mv "${pkgdir}"/usr/local/* "${pkgdir}/usr"
-  rm -r "${pkgdir}/usr/local"
+  #mv "${pkgdir}"/usr/local/* "${pkgdir}/usr"
+  #rm -r "${pkgdir}/usr/local"
 }
 

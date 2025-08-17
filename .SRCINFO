@@ -13,6 +13,7 @@ pkgbase = gr-elster-git
 	depends = gnuradio
 	depends = python-gnuradio
 	depends = python-numpy
+	depends = python-pygraphviz
 	optdepends = gnuradio-companion
 	provides = gr-elster
 	source = git+https://github.com/argilo/gr-elster.git
