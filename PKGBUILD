@@ -18,7 +18,7 @@ pkgname=vmware-workstation-openrc
 pkgver=17.6.4
 _buildver=24832109
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=3
 _tools_version=12.5.0-24276846
 _legacy_cdn_ver=17.6.3
 _legacy_cdn_buildver=24583834
@@ -97,6 +97,7 @@ source=(
   'vmmon.patch'
   'vmnet.patch'
   'linux6_15.patch'
+  'linux6_16.patch'
 )
 sha256sums=('64fbfbaeacc48865468114362a2bbaade9110cc9e87bc3bd938396ba7f19a9bd'
             'd862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4'
@@ -121,7 +122,8 @@ sha256sums=('64fbfbaeacc48865468114362a2bbaade9110cc9e87bc3bd938396ba7f19a9bd'
             '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
             '32ae0ba7836c2212b819e3e7ec3f96667c1ac6d5083003eab1e794f0c032f640'
             '74453f184ff57390ea0696144f0fc767cc875635595c964d5d5e7924a01c82d8'
-            '2411268a37a2aac03ea1e8b38e2da3fc31a232161f92cad824d98d9873b2586d')
+            '2411268a37a2aac03ea1e8b38e2da3fc31a232161f92cad824d98d9873b2586d'
+            '381a3d35f1086e16d46177d23bbc932f8ca0781c4603ef6bc27cd4a3d07eed2f')
 options=(!strip emptydirs !debug)
 
 if [ -z "$_remove_vmware_keymaps_dependency" ]; then
@@ -412,6 +414,7 @@ fi
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
   done
   patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_15.patch"
+  patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_16.patch"
 
   rm -r "$pkgdir/usr/lib/vmware/modules/source"
 

@@ -1,7 +1,7 @@
 pkgbase = vmware-workstation-openrc
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.
 	pkgver = 17.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-workstation.install
 	arch = x86_64
@@ -56,6 +56,7 @@ pkgbase = vmware-workstation-openrc
 	source = vmmon.patch
 	source = vmnet.patch
 	source = linux6_15.patch
+	source = linux6_16.patch
 	sha256sums = 64fbfbaeacc48865468114362a2bbaade9110cc9e87bc3bd938396ba7f19a9bd
 	sha256sums = d862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4
 	sha256sums = d79f79f17e5f37399046d16be3967e0cff3c9474e2cb6ea3f2c3ebea3ff68cea
@@ -80,5 +81,6 @@ pkgbase = vmware-workstation-openrc
 	sha256sums = 32ae0ba7836c2212b819e3e7ec3f96667c1ac6d5083003eab1e794f0c032f640
 	sha256sums = 74453f184ff57390ea0696144f0fc767cc875635595c964d5d5e7924a01c82d8
 	sha256sums = 2411268a37a2aac03ea1e8b38e2da3fc31a232161f92cad824d98d9873b2586d
+	sha256sums = 381a3d35f1086e16d46177d23bbc932f8ca0781c4603ef6bc27cd4a3d07eed2f
 
 pkgname = vmware-workstation-openrc
