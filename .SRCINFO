@@ -1,12 +1,12 @@
 pkgbase = toit-vessels-bin
 	pkgdesc = Toit programming language SDK
-	pkgver = 2.0.0alpha.186
+	pkgver = 2.0.0alpha.188
 	pkgrel = 1
 	url = https://toitlang.org
 	arch = x86_64
 	license = LGPL
 	options = !strip
-	source = vessels-2.0.0alpha.186.tar.gz::https://github.com/toitlang/toit/releases/download/v2.0.0-alpha.186/vessels.tar.gz
-	sha256sums = 82597c2ef237f512519d1bc95c8662934ef3ce2f3983c9cd3c8d48ccf17151c5
+	source = vessels-2.0.0alpha.188.tar.gz::https://github.com/toitlang/toit/releases/download/v2.0.0-alpha.188/vessels.tar.gz
+	sha256sums = e2c2595716041a41eff4c2e5342a1cff6c3ee41568344bc2e9f54fe444ff5251
 
 pkgname = toit-vessels-bin
