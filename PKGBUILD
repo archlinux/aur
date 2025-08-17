@@ -2,8 +2,8 @@
 
 _pkgname="evdi"
 pkgname="$_pkgname-dkms-git"
-pkgver=1.14.8.r1.g2da2704
-pkgrel=1
+pkgver=1.14.10.r2.g3673a4b
+pkgrel=2
 pkgdesc="Kernel module to enable management of multiple screens"
 url="https://github.com/DisplayLink/evdi"
 license=('GPL-2.0-only')
@@ -30,6 +30,10 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
+prepare() {
+  sed -E -e '/^CLEAN=/d' -i "$_pkgsrc/module/dkms.conf"
+}
+
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*-*' \
@@ -46,6 +50,6 @@ package() {
   make -C 'library' install DESTDIR="$pkgdir" PREFIX='/usr'
 
   # module for dkms
-  install -dm755 "$pkgdir/usr/src/$_pkgname-$pkgver"
-  cp --reflink=auto -a module/* "$pkgdir/usr/src/$_pkgname-$pkgver/"
+  mkdir -pm755 "$pkgdir/usr/src/$_pkgname-$pkgver"
+  cp -a module/* "$pkgdir/usr/src/$_pkgname-$pkgver/"
 }
