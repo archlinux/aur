@@ -1,6 +1,6 @@
 # Maintainer: Luuk Blankenstijn <luukblankenstijn@gmail.com>
 pkgname=hyprpop
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Toggle floating windows in Hyprland with keybindings"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hyprland' 'chromium')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LuukBlankenstijn/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4439ccb3df8e01d242eb9f874ef43b8f915e4bcf0ecc5050f9043928861dc4d2')
+sha256sums=('cc7fc0f157b8093626cb25d9dc17757e13c4fbebe4ce668a4bd35debc3c96952')
 
 build() {
     cd "$pkgname-$pkgver"

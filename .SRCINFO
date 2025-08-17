@@ -1,6 +1,6 @@
 pkgbase = hyprpop
 	pkgdesc = Toggle floating windows in Hyprland with keybindings
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/LuukBlankenstijn/hyprpop
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hyprpop
 	makedepends = go
 	depends = hyprland
 	depends = chromium
-	source = hyprpop-0.2.0.tar.gz::https://github.com/LuukBlankenstijn/hyprpop/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 4439ccb3df8e01d242eb9f874ef43b8f915e4bcf0ecc5050f9043928861dc4d2
+	source = hyprpop-0.2.1.tar.gz::https://github.com/LuukBlankenstijn/hyprpop/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = cc7fc0f157b8093626cb25d9dc17757e13c4fbebe4ce668a4bd35debc3c96952
 
 pkgname = hyprpop
