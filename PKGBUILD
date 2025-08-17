@@ -1,6 +1,6 @@
 # Maintainer: Mohammed Anas <anasmohammed361@gmail.com> 
 
-pkgver=1.12.2
+pkgver=1.12.1
 pkgbase=windsurf-latest
 pkgname=windsurf-latest
 pkgrel=1
