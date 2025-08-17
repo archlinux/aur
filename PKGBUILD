@@ -31,7 +31,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.3.3.r61.g3b64a9619f
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -42,12 +42,10 @@ conflicts=("zfs-dkms")
 makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "0001-only-build-the-module-in-dkms.conf.patch"
-        "revert-objtool-werror.patch"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check")
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
-            'ac50ac55da5a960a932c7e653d2bc21a8739975a15ec04f906fb1e9cda9073da'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f')
 
@@ -71,11 +69,13 @@ prepare() {
     done
 
     # remove unneeded sections from module build
-    sed -ri "/AC_CONFIG_FILES/,/]\)/{
-/AC_CONFIG_FILES/n
-/]\)/n
-/^\s*(module\/.*|${_pkgname}.release|Makefile)/!d
-}" configure.ac
+    sed -ri '/^AC_CONFIG_FILES\(\[$/,/^\]\)$/{
+/^AC_CONFIG_FILES\(\[$/n
+/^\]\)$/n
+/^\s*(module\/.*|zfs.release|Makefile)/!d
+}
+/^AC_CONFIG_FILES\(\[.*\]\)$/d
+' configure.ac
 
     sed -i -e "s/Version:[[:print:]]*/Version:       ${pkgver}/" META
     sed -i -e "s/Release:[[:print:]]*/Release:       ${pkgrel}/" META
