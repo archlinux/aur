@@ -3,7 +3,7 @@
 pkgname=openseachest-logparser
 pkgver=1.5.4
 _release=Release_24.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source version of the Log Parser that parses ATA/SCSI/NVMe & Seagate vendor unique logs'
 arch=('any')
 _baseurl='https://github.com/Seagate'
@@ -17,22 +17,27 @@ source=(
   "opensea-common.git::git+${_baseurl}/opensea-common"
   "opensea-parser.git::git+${_baseurl}/opensea-parser"
   "wingetopt.git::git+${_baseurl}/wingetopt"
+  'opensea-common.patch'
 )
 sha256sums=('ab8fa60f9cc9fa4fe4ff91ca8c5a879263e9308c1860db1c57af2e296e3ba88f'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'd26ed859da6148b115676964fd3e6e57ca6aba748faf364eed8b2202694018c4')
 
 prepare() {
   cd "${srcdir}/${pkgname}.git"
-  git -c protocol.file.allow=always submodule update --init
+  git reset --hard
+  git submodule foreach --recursive git reset --hard
+  git submodule update --init
+  patch -p1 -i "${srcdir}/opensea-common.patch"
 }
 
 build() {
   cd "${srcdir}/${pkgname}.git/Make/gcc"
   # We need to build with -j1 or the libraries get deleted before they get used...
-  CFLAGS="${CFLAGS} -Wno-implicit-function-declaration -Wno-int-conversion" make release -j1
+  make release -j1
 }
 
 package() {
