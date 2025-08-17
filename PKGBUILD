@@ -2,7 +2,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=airwindows-consolidated-bin
-pkgver=2025.08.16.cb93e46
+pkgver=2025.08.24.94da083
 _airwin=$(echo ${pkgver} | sed -e 's/\./\-/g')
 pkgrel=1
 pkgdesc="The entirety of the Airwindows collection as LV2, VST3, and CLAP."
@@ -10,9 +10,10 @@ arch=('x86_64')
 url="https://www.airwindows.com/consolidated/"
 license=('GPL3')
 groups=(clap-plugins lv2-plugins pro-audio vst3-plugins)
+options=('!debug')
 conflicts=(airwindows-consolidated-git)
 source=("AirwindowsConsolidated-${_airwin}-Linux.zip::https://github.com/baconpaul/airwin2rack/releases/download/DAWPlugin/AirwindowsConsolidated-${_airwin}-Linux.zip")
-sha256sums=('0a0177467dc89c35d40dc7ef5d9997db42e6210d2abe878f805321a44cc62fcd')
+sha256sums=('43d0e92ef1ce7a87004b760e1d83c41aab41ce9d47e79727eb2014c7c7d9e094')
 
 
 package() {
