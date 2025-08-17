@@ -1,7 +1,7 @@
 pkgbase = python-fastlayer-git
 	pkgdesc = 高速インメモリキャッシュ + NumPy/Numba最適化フレームワーク (VCS版)
 	pkgver = 0.1.0.r1.g26ef074
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Karashi123/fastlayer
 	arch = any
 	license = Apache
