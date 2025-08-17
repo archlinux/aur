@@ -1,0 +1,23 @@
+pkgbase = xlibre-input-libinput-bin
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org generic input driver for the xorg server based on libinput (binary release)
+	pkgver = 1.5.0.1
+	pkgrel = 1
+	url = https://github.com/X11Libre
+	arch = x86_64
+	groups = xlibre-drivers
+	license = MIT
+	depends = libinput
+	depends = glibc
+	provides = xf86-input-libinput
+	provides = xlibre-input-libinput
+	conflicts = xf86-input-libinput
+	conflicts = xlibre-input-libinput
+	conflicts = xorg-server-common<25.0.0.0
+	conflicts = X-ABI-XINPUT_VERSION<26
+	conflicts = X-ABI-XINPUT_VERSION>=27
+	noextract = xlibre-xf86-input-libinput-1.5.0.1-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-input-libinput-1.5.0.1-1-x86_64.pkg.tar.zst
+	sha256sums = dd8151b3242de4e846e78c48bd60982cfcc9f9ab0d1f4f6bde36a25f2be2f8cc
+
+pkgname = xlibre-input-libinput-bin
