@@ -1,6 +1,6 @@
 pkgbase = python-ext4
 	pkgdesc = Library for read only interactions with an ext4 filesystem
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Eeems/python-ext4
 	arch = any
@@ -10,11 +10,13 @@ pkgbase = python-ext4
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/e/ext4/ext4-1.1.1.tar.gz
-	source = 1.1.1-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.1.1/test.py
+	source = https://files.pythonhosted.org/packages/source/e/ext4/ext4-1.2.tar.gz
+	source = 1.2-test-image.sh::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.2/_test_image.sh
+	source = 1.2-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.2/test.py
 	source = test.txt
-	md5sums = 38f13338964ba56a0300273164889f8c
-	md5sums = c7a15de066b5512791136dbc8bf3a265
+	md5sums = fab01b1b845f2821f5f47d2e7b3fa5d0
+	md5sums = 8760a73d1a26816dd22f12721ea3a343
+	md5sums = 820360db2535e1c80f60facccfaf505a
 	md5sums = 8f7fa83c2cc8ea6e90fe94b1efd1a83a
 
 pkgname = python-ext4
