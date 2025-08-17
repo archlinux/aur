@@ -1,0 +1,14 @@
+pkgbase = apache-iceberg
+	pkgdesc = Apache Iceberg — Spark runtime bundle (Spark 3.5, Scala 2.13)
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://iceberg.apache.org/
+	arch = any
+	license = Apache-2.0
+	depends = java-runtime-headless
+	optdepends = apache-spark: system Spark runtime
+	optdepends = python-pyspark: Python interface to Spark
+	source = https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-spark-runtime-3.5_2.13/1.9.2/iceberg-spark-runtime-3.5_2.13-1.9.2.jar
+	b2sums = 4acaf01554c20d004a93c7ed01b57c895b4cfa096f12650e27c81b45c5fa4088539f70a2ecaeafd14e293109ff7b77d13eb9c9cf0d86ad18ab9e9af6b2106dae
+
+pkgname = apache-iceberg
