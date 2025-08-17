@@ -1,6 +1,6 @@
 --- src/cuvs-25.06.00/python/cuvs/CMakeLists.txt	2025-06-06 04:15:39.000000000 +0800
 +++ src/cuvs-25.06.00/python/cuvs/CMakeLists.txt.new	2025-06-23 22:50:34.755872655 +0800
-@@ -43,10 +43,17 @@
+@@ -43,10 +43,18 @@
  rapids_cpm_init()
  
  # --- cuVS ---#

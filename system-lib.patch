@@ -1,6 +1,6 @@
 --- src/cuvs-25.06.00/cpp/CMakeLists.txt	2025-06-06 04:15:39.000000000 +0800
 +++ src/cuvs-25.06.00/cpp/CMakeLists.txt.new	2025-06-23 22:14:37.845548173 +0800
-@@ -175,13 +175,16 @@
+@@ -175,13 +175,17 @@
  if(NOT BUILD_CPU_ONLY)
    # We must find CCCL ourselves before raft so that we get the right version.
    include(${rapids-cmake-dir}/cpm/cccl.cmake)
