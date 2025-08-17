@@ -16,7 +16,7 @@
 
 pkgname=python-sqlmesh
 pkgver=0.209.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Scalable, efficient data transformation framework (dbt-compatible) – SQLMesh CLI"
 arch=('any')
 url="https://github.com/TobikoData/sqlmesh"
@@ -42,7 +42,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 optdepends=(
   # ---- Web / LSP ----
   'python-fastapi: web UI / API server (extra: web)'
-  'python-uvicorn: ASGI server for web UI (extra: web)'
+  'uvicorn: ASGI server for web UI (extra: web)'
   'python-jinja: templated UI bits (extra: web)'
   'python-pygls: Language Server Protocol (extra: lsp)'
 
@@ -55,7 +55,7 @@ optdepends=(
   'python-pymssql: Native MSSQL driver (extra: mssql) [AUR]'
   'python-clickhouse-connect: ClickHouse engine (extra: clickhouse)'
   'python-trino: Trino engine (extra: trino)'
-  'python-snowflake-connector-python: Snowflake engine (extra: snowflake)'
+  'snowflake-connector-python: Snowflake engine (extra: snowflake)'
   'python-google-cloud-bigquery: BigQuery engine (extra: bigquery)'
 
   # ---- Cloud specifics / helpers ----
@@ -63,8 +63,8 @@ optdepends=(
   'python-pyathena: AWS Athena connector (extra: athena) [AUR]'
   'python-redshift-connector: Amazon Redshift connector (extra: redshift) [AUR]'
   'python-azure-identity: Azure auth for AzureSQL (extras: azuresql, azuresql-odbc)'
-  'msodbcsql: Microsoft ODBC driver for SQL Server (extras: mssql-odbc, azuresql-odbc) [AUR]'
-  'python-google-cloud-sql-connector: GCP Cloud SQL Postgres (extra: gcppostgres) [AUR]'
+  'msodbcsql17: Microsoft ODBC driver for SQL Server (extras: mssql-odbc, azuresql-odbc) [AUR]'
+  'python-cloud-sql-python-connector: GCP Cloud SQL Postgres (extra: gcppostgres) [AUR]'
 
   # ---- Integrations / Tooling ----
   'dbt-core: dbt compatibility layer (extra: dbt) [AUR]'
