@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-video-nouveau-bin
-	pkgdesc = Official XLibre fork of X.Org nouveau video driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org nouveau video driver (binary release)
 	pkgver = 1.0.18.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
