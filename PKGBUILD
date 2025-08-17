@@ -3,8 +3,8 @@
 
 _Name="PassKeeZ"
 pkgname="${_Name,,}"
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="FIDO2/Passkey compatible authenticator implementation"
 arch=('aarch64' 'x86_64')
 url="https://github.com/Zig-Sec/${_Name}"
@@ -16,7 +16,7 @@ noextract=()
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.modules-load")
-b2sums=('e9da00a5a543d84ad9c860788ff7a156781816f62bb689b25957d28f9feafb1c6e74cc3b78e2c70e1834b2d139df6df8c01139f5e7c3ef042154c8d2b9d92cc4'
+b2sums=('5a2f0ca576d8800e5a408a0eaf3b5b792bbacf26b3388a84f13738a3a58d7c59980fcf843e14255730674adc0a28b19835ea4ca6c444540bc0772b0e9c2f8c67'
         '5c504e5e2beefe9fb56170135061f62c3413c156349cee1fa32dfa25a806ac40c0b3b0474b644664eaf7f05212b8071cf1646f94dc54f30e8b730c3ae09b9aef'
         'c35e85734037b87f4269fcc120442818630f64ad5a07899e4b7452bfa4407b6a87b940c223a4259b9b4360bff5380920a129462fb330c5eb517c987efc4362fc')
  
