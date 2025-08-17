@@ -1,7 +1,7 @@
 pkgbase = osmin
 	pkgdesc = Satellite Navigator & Tracker On-Road/Off-Road for Mobile
-	pkgver = 1.14.3
-	pkgrel = 2
+	pkgver = 1.14.4
+	pkgrel = 1
 	url = https://github.com/janbar/osmin
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,9 @@ pkgbase = osmin
 	depends = qt6-remoteobjects
 	depends = glfw
 	depends = glm
-	source = https://github.com/janbar/osmin/archive/refs/tags/1.14.3.tar.gz
-	source = https://github.com/janbar/libosmscout/archive/refs/tags/osmin-1.14.3.tar.gz
-	sha256sums = 4995d67ee1dd5249b4656cb96b24a4c4c340382601681c8fa06cdff880990bf7
-	sha256sums = 634c2bef277e0c455709851eb0bfb7f794bcb845a0fa71cac17b87011e9f1474
+	source = https://github.com/janbar/osmin/archive/refs/tags/1.14.4.tar.gz
+	source = https://github.com/janbar/libosmscout/archive/1296f6c937936b7241d3f4f304ec4f23ece90fb6.tar.gz
+	sha256sums = 58a970749a60a59f4db74aab04ac7e9d4f5d24efb81162e6ee9b655833288d8f
+	sha256sums = 206ee97a421b76572b00ec61be1b04f02df88f3eff52a7730ea258aa1f5026b1
 
 pkgname = osmin
