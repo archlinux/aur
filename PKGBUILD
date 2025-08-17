@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-ru-bin
 _pkgname=betterbird
-pkgver=128.13.0esr
-_build=bb31
+pkgver=140.2.0esr
+_build=bb9
 pkgrel=1
 pkgdesc="RUSSIAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('hunspell-ru-aot')
 provides=("betterbird=${pkgver}")
 conflicts=('betterbird')
 source=(
-    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver}-${_build}.ru.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver}-${_build}.ru.linux-x86_64.tar.xz"
     "eu.betterbird.Betterbird.desktop"
     "vendor-prefs.js"
 )
@@ -43,7 +43,7 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('57e0d6d56ffe8d5b58329de3154ba312e688f8923db7ab221f0f18667633e513'
+sha256sums=('90c13c5f91c72709a8b2377711bcba6daf6e828db34881b43e2b88dec468c748'
             '60045ec0138ad4c01546df596b97016e467bec6d69c7e4e4c7bdb85e91a31bc2'
             'b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09')
 
