@@ -5,7 +5,7 @@
 # Contributor: DilithiumNitrate
 
 pkgname="srb2-legacy"
-pkgver=2.1.28
+pkgver=2.1.29
 _dataver=2.1.25
 pkgrel=1
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.1.25'
@@ -17,12 +17,11 @@ makedepends=('git' 'mesa')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/P-AS/srb2-legacy/archive/SRB2_release_${pkgver}.zip")
-sha256sums=('027d849fe213f28513cb19bae1e585d73cdbe7cc33034c7050ccfd2cdf38b0e0')
+sha256sums=('c5e32e4a57b45b162646a3fc1043f02886e21afdd40455c38838a0493bcf99a0')
 
 build() {
   cd srb2-legacy-SRB2_release_$pkgver/src
 
-  CFLAGS+=" -std=gnu17" # temporary workaround, remove for 2.1.29
   [ "$CARCH" == "i686" ] && IS64BIT="" || IS64BIT="64"
   # (optional: be verbose)
   make LINUX$IS64BIT=1 #ECHO=1
