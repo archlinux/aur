@@ -1,0 +1,13 @@
+pkgbase = todo-list-rs
+	pkgdesc = A simple CLI todo list written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/connorakey/todo-list-rs
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	depends = rust
+	source = https://github.com/connorakey/todo-list-rs/archive/refs/tags/v1.0.0.zip
+	sha256sums = bcfae76b12fc82da63917d0a8165652a91275c20f56bcc04b0fa531115ea5ff0
+
+pkgname = todo-list-rs
