@@ -35,5 +35,5 @@ path = [
     "0011-amdgpu-adjust_plane_init_off_by_one.patch",
     "config",
 ]
-SPDX-FileCopyrightText = "linux-g14 contributors"
+SPDX-FileCopyrightText = "upstream linux kernel contributors"
 SPDX-License-Identifier = "GPL-2.0-only"

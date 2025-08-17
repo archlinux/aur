@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.15.9.arch1
+pkgver=6.16.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,11 +37,11 @@ source=(
   # patches to config & for tuning purposes
   #  modprobed.db
   choose-gcc-optimization.sh
-  more-uarches-for-kernel-6.15+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.15-rc1%2B.patch"
+  more-uarches-for-kernel-6.16+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.16%2B.patch"
 
   # actual kernel patch series
   # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.14/asus-patch-series.patch"
-  0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.15/0002-asus.patch"
+  0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.16/0001-asus.patch"
   # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -58,14 +58,14 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('e94f3af85492302f7a819441458f80bca0ad9912e5a4c83c699ff3c63c52957d'
+sha256sums=('ea43491bc7ace1e414b3b2d957f8cf96e7049155123f0acce798accf8da1acba'
             'SKIP'
-            'ca64ed4a15e0cedb39713b09dd7f113986e799f58d0240a5c9381a8a0b13eaf2'
+            'b357773b9ed7e0f2265a04d53306d3d85d3b705ff32abe1f399b126685e1511d'
             'SKIP'
-            '15cebc9d5f5cbba6dae522b0eb4684ca8c5a3e851b25781c141c7e778b234500'
+            'ae8836206f1518de5c9204d58d74565be8978bb2eda93731373a839e77555433'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            '122adb860d3c28872cac2facb38d809f5b08520040060bd2131513243576e5ee'
-            'af8461cfaebd77c543770d089b65f1a4a30c25c5e761145f1bbf66e899d5eb42'
+            '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
+            '6c99afe05aa44287c540a8d6d2882cae2da2196cda3387688626aa6de75f7ce8'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
@@ -128,7 +128,7 @@ prepare() {
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
   scripts/config  -d CONFIG_GENERIC_CPU \
                   -d CONFIG_GENERIC_CPU2 \
-                  -e CONFIG_X86_64_v3
+                  -e CONFIG_MNATIVE_AMD
  
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -167,7 +167,8 @@ prepare() {
   
   # Stuff from Fedora
   scripts/config --enable CONFIG_ASUS_WMI_DEPRECATED_ATTRS \
-                 --module CONFIG_ASUS_ARMOURY \
+                 --enable CONFIG_ASUS_ARMOURY \
+                 --enable CONFIG_ASUS_WMI_BIOS \
                  --module CONFIG_HID_ASUS_ALLY \
                  --enable CONFIG_CRYPTO_LZ4 \
                  --enable CONFIG_CRYPTO_LZO \
