@@ -11,11 +11,11 @@ source=("https://files.pythonhosted.org/packages/4f/e9/93e2229da50c52cc320494709
 sha256sums=('74a7266d9f708d0c56afd796ace672ea54f542c5ad9f651f7716b997d4dc9bed')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "oh_my_theme-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "oh_my_theme-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
