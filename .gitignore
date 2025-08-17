@@ -1,0 +1,8 @@
+cat > .gitignore <<'EOF'
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.patch
+EOF

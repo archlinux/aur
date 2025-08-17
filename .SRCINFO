@@ -1,0 +1,26 @@
+pkgbase = python-bigframes
+	pkgdesc = BigQuery DataFrames — scalable analytics & ML with BigQuery (BigFrames)
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/googleapis/python-bigquery-dataframes
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = python
+	depends = python-google-cloud-bigquery
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-pyarrow
+	optdepends = python-scikit-learn: ML APIs and model utilities (extra: scikit-learn)
+	optdepends = python-polars: enable Polars interop (extra: polars)
+	optdepends = python-anywidget: notebook widgets for rich display (extra: anywidget)
+	provides = bigframes
+	conflicts = bigframes
+	source = https://files.pythonhosted.org/packages/source/b/bigframes/bigframes-2.15.0.tar.gz
+	sha256sums = 80d68fbead62f40ebff205689fbd1d853e12873ed0a7cc3dfa63944c72573f43
+
+pkgname = python-bigframes
