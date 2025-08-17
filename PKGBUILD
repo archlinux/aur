@@ -3,11 +3,11 @@
 pkgname=cwal-git
 _pkgname=cwal
 
-pkgver="LatestCommit"
+pkgver=latestcommit
 pkgrel=1
 pkgdesc="Blazing-fast pywal-like color palette generator written in C."
 arch=('any')
-url="https://github.com/nitinbhat972/cwal"
+url="https://github.com/nitinbhat972/cwal#branch=main"
 license=('GPL3')
 depends=('imagemagick' 'libimagequant')
 makedepends=('cmake' 'git')
