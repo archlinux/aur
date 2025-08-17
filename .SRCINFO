@@ -1,7 +1,7 @@
 pkgbase = guilded
 	pkgdesc = Chat for Gaming Communities
 	pkgver = 1.0.9313619
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.guilded.gg/
 	arch = x86_64
 	license = nonfree
