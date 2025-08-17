@@ -6,7 +6,7 @@
 # Contributor: Justin Coffman <jcoffman at datasecu dot red>
 
 pkgname=byobu
-pkgver=6.12
+pkgver=6.13
 pkgrel=1
 pkgdesc='Enhanced tmux'
 arch=(any)
@@ -14,8 +14,8 @@ url='https://byobu.org/'
 license=(GPL-3.0-only)
 depends=(libnewt python tmux)
 makedepends=(gettext git setconf)
-source=('git+https://github.com/dustinkirkland/byobu#commit=cd253f0229b68d3c2cffa8d862309c6ea7019d94')
-b2sums=('2efc481edef6f74641e93de012a34d2ac496a7bf402d390aa677954aa08554efeba3a2833a7c385a712923a96c0a765397db9d8f86cb2c19021547c5cf5e231b')
+source=("git+https://github.com/dustinkirkland/byobu#tag=$pkgver")
+b2sums=('f38fd536c89c144abbbb896b97e563ead77e7f9e8d9c5f2acac7d5bed221bb32af4b7fe7506ec006834be7fd5239759ea7276cceeedee70eb4027d8353c4d892')
 
 prepare() {
   # Adjust path to SOCKETDIR
