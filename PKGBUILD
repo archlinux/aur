@@ -5,10 +5,9 @@
 
 pkgname=flightradar24
 _pkgname=fr24feed
-pkgver=1.0.48
-pkgrel=4
-_pkgver=1.0.48-0
-_pkgverarm=1.0.48-0
+pkgver=1.0.51
+pkgrel=1
+_pkgver=1.0.51-0
 pkgdesc='Feeder software for Flightradar24.com (fr24feed)'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.flightradar24.com/share-your-data'
@@ -24,20 +23,20 @@ source=('fr24feed.service'
         'hostname')
 source_x86_64=("https://repo-feed.flightradar24.com/linux_binaries/${_pkgname}_${_pkgver}_amd64.deb")
 source_i686=("https://repo-feed.flightradar24.com/linux_binaries/${_pkgname}_${_pkgver}_i386.deb")
-source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
-source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
-source_aarch64=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
+source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgver}_armhf.deb")
+source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgver}_armhf.deb")
+source_aarch64=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgver}_arm64.deb")
 
 sha256sums=('1a4e30ae787dc2b7145723f703d09d2a43071a6ebb788130d362458037306743'
             'f8a45a74fb6129f0533fbe9213df3cdfdbb10383fcad45b9ff67be0b7c430e0b'
             'a018c751e431fcde72e709917fdfe663a5c74040af80b56d1a4658ba962c95e5'
             'ebcf31ecb62aef650b0984f978318f7e716078f520efb165306dca592c0821bb'
             '32ae61984ae0123690fea0bf67f2b5f1ee1155f6a2b3a9d0ff7c5431d902ddee')
-sha256sums_x86_64=('bc965be30314c472619df2dd1961171042dea5b0c887396ca7fb47c86c7ec9ad')
-sha256sums_i686=('7a3b88ab7bb67f1ac1eec8352490d2454988e6aed77416c57b59373c4e469d59')
-sha256sums_armv6h=('d69afac856dc22f18c8378a51bdc27260459f2c26960dc88ed05ffc944e81ef7')
-sha256sums_armv7h=('d69afac856dc22f18c8378a51bdc27260459f2c26960dc88ed05ffc944e81ef7')
-sha256sums_aarch64=('d69afac856dc22f18c8378a51bdc27260459f2c26960dc88ed05ffc944e81ef7')
+sha256sums_x86_64=('dccaeb79a075036b0b9bbbb6a89a1772a6b1d56a59d09df08fcbdc83e1f202d3')
+sha256sums_i686=('f0a3fd1eb0027cd4da9b3a75a366aa79cbc47b41549fe0d9482bcc585691a757')
+sha256sums_armv6h=('df74dec926b237b2f8af10836c529a2edff17d1a8b4678967e66f0239d5cabc0')
+sha256sums_armv7h=('df74dec926b237b2f8af10836c529a2edff17d1a8b4678967e66f0239d5cabc0')
+sha256sums_aarch64=('750ecdfdab45fc3d8802e93865492b842e45cdf5cc1d4ebea6ad08bd27069e1c')
 
 prepare() {
   tar -xf data.tar.gz
