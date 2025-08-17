@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Marktext
+Comment=A simple and elegant open-source markdown editor that focused on speed and usability.
+Exec=marktext %U
+Icon=marktext
+Terminal=false
+Categories=Office;Utility;TextEditor;
+MimeType=text/markdown;text/x-markdown;text/plain;
+StartupWMClass=marktext
