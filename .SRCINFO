@@ -1,8 +1,8 @@
 pkgbase = gridmonger-git
 	pkgdesc = Your trusty old-school cRPG mapping companion
-	pkgver = 1.1.0.r596.b359bbd
+	pkgver = 1.2.0.r38.0cde3f8
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://gridmonger.johnnovak.net/
 	install = gridmonger.install
 	arch = x86_64

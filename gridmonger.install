@@ -1,3 +1,4 @@
 post_install() {
-echo "add your username to the group games"
+echo -e "\033[0;31mWARNING: add your username to the group 'games'(you may have to create the group)"
+echo -e "\033[0;31mgroupadd games && usermod -aG games USERNAME"
 }

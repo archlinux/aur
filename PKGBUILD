@@ -1,7 +1,7 @@
 # Maintainer: silver hikari <kerrickethan@gmail.com>
 pkgname=gridmonger-git
-pkgver=1.1.0.r596.b359bbd
-epoch=1
+pkgver=1.2.0.r38.0cde3f8
+epoch=2
 pkgrel=1
 pkgdesc="Your trusty old-school cRPG mapping companion"
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
 	gendesk -n -f --pkgname="${pkgname%-git}" --pkgdesc="$pkgdesc" --exec="/opt/gridmonger/gridmonger" --icon="/usr/share/pixmaps/gridmonger.png"
 
-	#stop gap until atlas new release
+	#stop gap until arch update release
 	cd "atlas"
 	atlas init
 	atlas use sat
@@ -33,6 +33,7 @@ prepare() {
 	./atlas/atlas init --deps=deps
 	cd "${pkgname%-git}"
 	echo -e "requires \"https://github.com/zevv/with\"\n\nrequires \"https://github.com/johnnovak/nim-osdialog\"\n\nrequires \"https://github.com/johnnovak/nim-riff\"\n\nrequires \"https://github.com/euantorano/semver.nim\"\n\nrequires \"https://github.com/johnnovak/koi\"" > 'gridmonger.nimble'
+	#../atlas/atlas
 	../atlas/atlas install gridmonger.nimble
 }
 
@@ -43,8 +44,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -d "${pkgdir}/opt/gridmonger/Config"
-	strip "gridmonger"
 	install -Dm755 "gridmonger" "${pkgdir}/opt/gridmonger/gridmonger"
 	cp -fr "Data" "${pkgdir}/opt/gridmonger/Data"
 	cp -fr "Example Maps" "${pkgdir}/opt/gridmonger/Example Maps"
