@@ -1,0 +1,22 @@
+pkgbase = python-redshift-connector
+	pkgdesc = Amazon Redshift connector for Python (DB-API 2.0)
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = https://github.com/aws/amazon-redshift-python-driver
+	arch = any
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python
+	depends = python-scramp
+	depends = python-pytz
+	depends = python-beautifulsoup4
+	depends = python-boto3
+	depends = python-requests
+	depends = python-lxml
+	depends = python-botocore
+	depends = python-packaging
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/f4/2b/f7603f0acf01de0c9f7e4294c8a5ac346cc12cb93b81e52eaddd15d37400/redshift_connector-2.1.8-py3-none-any.whl
+	sha256sums = 160dff3720e8facb5f50f9585f3f68dd5565dd0d986e4e6a879371313da1b36e
+
+pkgname = python-redshift-connector
