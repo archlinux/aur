@@ -1,6 +1,6 @@
 # Maintainer: Hasan Çatalgöl <hasancatalgol@gmail.com>
 
-pkgname=python-snowflake-connector-python
+pkgname=snowflake-connector-python
 pkgver=3.17.1
 pkgrel=1
 pkgdesc="Snowflake Connector for Python (DB-API 2.0)"

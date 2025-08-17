@@ -1,4 +1,4 @@
-pkgbase = python-snowflake-connector-python
+pkgbase = snowflake-connector-python
 	pkgdesc = Snowflake Connector for Python (DB-API 2.0)
 	pkgver = 3.17.1
 	pkgrel = 1
@@ -26,4 +26,4 @@ pkgbase = python-snowflake-connector-python
 	source = https://files.pythonhosted.org/packages/source/s/snowflake-connector-python/snowflake_connector_python-3.17.1.tar.gz
 	sha256sums = 1881025adea6dd732fe02065df8693a45b446a8db8e0e0ed7d728a7f09734076
 
-pkgname = python-snowflake-connector-python
+pkgname = snowflake-connector-python
