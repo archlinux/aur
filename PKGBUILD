@@ -4,7 +4,7 @@
 pkgbase='frr-exporter'
 _pkgname='frr_exporter'
 pkgname="prometheus-${pkgbase}"
-pkgver='1.8.0'
+pkgver='1.8.1'
 pkgrel='1'
 pkgdesc='Prometheus exporter for Free Range Routing'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
-sha256sums=('b5b918f21e5ecfc38e313c3769ad7f48fde0a5184ba9b990a19f9c0deb053698'
+sha256sums=('7e7692d7dddc1511998730129745b10d32d1e91e2d060568ea197209fed73fce'
             '4f1e7484d3ffe14e39edce43b8183c96da3dda69ff580dc232cc39f6bad5c2bd'
             '0a039f6ad74bfcb1048cd3f4f0214c45667db672db25399e66217eb588282a4f'
             '60acd9b1494312718b0744a44c2ea99a8349e992c3b6d39be3e7ebc60ef28e73')
