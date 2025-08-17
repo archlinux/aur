@@ -1,0 +1,14 @@
+pkgbase = apache-paimon
+	pkgdesc = Apache Paimon — Spark runtime JAR (Spark 3.5)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://paimon.apache.org/
+	arch = any
+	license = Apache-2.0
+	depends = java-runtime-headless
+	optdepends = apache-spark: system Spark runtime
+	optdepends = python-pyspark: Python interface to Spark
+	source = https://repo1.maven.org/maven2/org/apache/paimon/paimon-spark-3.5/1.2.0/paimon-spark-3.5-1.2.0.jar
+	b2sums = baed3fb412b5d9da643401394390e555ea7887972c86703dabce0c97d48a96bee449ce9c82fafe22c8289830268154d47578e09659f5124aefe407faff202d28
+
+pkgname = apache-paimon
