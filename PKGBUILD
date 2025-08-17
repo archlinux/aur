@@ -1,11 +1,13 @@
 # Maintainer: Hasan Çatalgöl <hasancatalgol@gmail.com>
 
-pkgname=python-databricks_sql_connector
+pkgname=python-databricks-sql-connector
 pkgver=4.0.5
 pkgrel=1
 pkgdesc="Databricks SQL Connector for Python (DB-API 2.0; optional Arrow APIs)"
 arch=('any')
 url="https://github.com/databricks/databricks-sql-python"
+provides=("python-databricks-sql-connector")
+conflicts=("python-databricks_sql_connector")
 license=('Apache-2.0')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')

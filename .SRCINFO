@@ -1,4 +1,4 @@
-pkgbase = python-databricks_sql_connector
+pkgbase = python-databricks-sql-connector
 	pkgdesc = Databricks SQL Connector for Python (DB-API 2.0; optional Arrow APIs)
 	pkgver = 4.0.5
 	pkgrel = 1
@@ -12,7 +12,9 @@ pkgbase = python-databricks_sql_connector
 	depends = python
 	optdepends = python-pyarrow: enable Arrow-based fetch APIs
 	optdepends = python-databricks-sqlalchemy: SQLAlchemy dialect (separate project)
+	provides = python-databricks-sql-connector
+	conflicts = python-databricks_sql_connector
 	source = https://files.pythonhosted.org/packages/source/d/databricks_sql_connector/databricks_sql_connector-4.0.5.tar.gz
 	sha256sums = ade3143b3b55e8c236bea7da8579c63c43432dd07df9dc05b1d8f2f7bbeb144e
 
-pkgname = python-databricks_sql_connector
+pkgname = python-databricks-sql-connector
