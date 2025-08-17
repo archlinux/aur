@@ -1,6 +1,6 @@
 pkgbase = python-h5pyd
 	pkgdesc = h5py distributed - Python client library for HDF Rest API
-	pkgver = 0.18.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/HDFGroup/h5pyd
 	arch = any
@@ -10,24 +10,23 @@ pkgbase = python-h5pyd
 	checkdepends = python-pytz
 	checkdepends = python-requests-unixsocket
 	makedepends = python-setuptools
-	makedepends = python-pkgconfig
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-sphinx-furo
-	source = h5pyd-0.18.0.tar.gz::https://github.com/HDFGroup/h5pyd/archive/094f0b2b7e2a777f6dc1a6f60851cc856067d9a2.tar.gz
+	source = h5pyd-0.22.0.tar.gz::https://github.com/HDFGroup/h5pyd/archive/refs/tags/v0.22.0.tar.gz
 	source = https://raw.githubusercontent.com/h5py/h5py/master/examples/bytesio.py
 	source = https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py
-	source = https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py
 	source = fix-h5type-test.patch
-	md5sums = d0dfe45a695db36f22738200bf120bf4
-	md5sums = SKIP
+	md5sums = e52db3055182899cf73bb5e8c2ff0611
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = fce3d7b92909be61507392ab33bfce0a
 
 pkgname = python-h5pyd
-	depends = python-numpy>=1.17.3
+	depends = python-numpy>=2.0.0
 	depends = python-requests-unixsocket
 	depends = python-pytz
-	depends = python-pyjwt
+	depends = python-packaging
 	optdepends = python-msrestazure: extra azure support
 	optdepends = python-adal: extra azure support
 	optdepends = python-google-api-python-client: extra google support
