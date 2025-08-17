@@ -1,0 +1,4 @@
+[nodejs-percollate]
+source = "git"
+git = "https://github.com/danburzo/percollate.git"
+prefix = "v"
