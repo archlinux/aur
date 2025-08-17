@@ -1,0 +1,5 @@
+[orbit-bin]
+source = "github"
+github = "gulien/orbit"
+use_latest_release = true
+prefix = "v"
