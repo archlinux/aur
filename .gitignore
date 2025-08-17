@@ -1,4 +1,4 @@
 pkg/
 src/
-grafana-*.tar.gz
-grafana-*.tar
+grafana*.tar.gz
+grafana*.tar

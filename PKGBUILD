@@ -7,6 +7,7 @@
 pkgname=grafana-bin
 _pkgname=grafana
 pkgver=12.1.1
+_build_id=16903967602
 pkgrel=1
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/grafana/download?edition=oss'
@@ -21,10 +22,10 @@ source=('grafana.service'
         'grafana.tmpfiles'
        )
 install=$_pkgname.install
-source_x86_64=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-amd64.tar.gz")
-source_armv6h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv6.tar.gz")
-source_armv7h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv7.tar.gz")
-source_aarch64=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-arm64.tar.gz")
+source_x86_64=("https://dl.grafana.com/grafana/release/${pkgver}/grafana_${pkgver}_${_build_id}_linux_amd64.tar.gz")
+source_armv6h=("https://dl.grafana.com/grafana/release/${pkgver}/grafana_${pkgver}_${_build_id}_linux_arm-6.tar.gz")
+source_armv7h=("https://dl.grafana.com/grafana/release/${pkgver}/grafana_${pkgver}_${_build_id}_linux_arm-7.tar.gz")
+source_aarch64=("https://dl.grafana.com/grafana/release/${pkgver}/grafana_${pkgver}_${_build_id}_linux_arm64.tar.gz")
 sha256sums=('fa1aefe885f2d94bb6a9f6e98eb793b8145f1a980357c809036dc00c9d25594f'
             '9cbd46f771dae5e2308b991a00d07a25cc1765f9bdd4082726108e3476403b56'
             '3cd6026ba009e05f49ec265d049d590d4f35330c1f14cd90a468c8d588501675')

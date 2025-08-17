@@ -1,0 +1,5 @@
+[grafana]
+source = 'regex'
+url = 'https://grafana.com/grafana/download?edition=oss'
+encoding = 'utf-8'
+regex = 'grafana_([\d\.]+_\d{10,})_linux_amd64.tar.gz'
