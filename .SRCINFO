@@ -1,6 +1,6 @@
 pkgbase = set-mouse-config-git
 	pkgdesc = Switch libratbag mouse profiles via ratbagctl (git version)
-	pkgver = r1.abcdef0
+	pkgver = r1.6f268e9
 	pkgrel = 1
 	url = https://github.com/JonPC4/set-mouse-config
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = set-mouse-config-git
 	provides = set-mouse-config
 	provides = smc
 	conflicts = set-mouse-config
-	source = set-mouse-config-git::git+https://github.com/JonPC4/set-mouse-config.git
+	source = git+https://github.com/JonPC4/set-mouse-config.git
 	sha256sums = SKIP
 
 pkgname = set-mouse-config-git
