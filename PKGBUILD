@@ -2,7 +2,7 @@
 _pkgname=jm2cv
 pkgname=$_pkgname-git
 pkgver=20130518
-pkgrel=2
+pkgrel=3
 pkgdesc="Converts between JACK MIDI and CV control voltage"
 arch=('x86_64')
 url="https://github.com/harryhaaren/jm2cv"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$_pkgname"
-  cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" .
+  cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
   make
 }
 
