@@ -4,7 +4,7 @@
 userInput='';
 
 if [[ -z $1 ]];then
-	read -p "Please Enter the word that you're looking for : " word
+	read -p "Please Enter the word that you're looking for : " userInput
 else 
 	userInput=$1
 fi
