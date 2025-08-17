@@ -1,7 +1,7 @@
 pkgbase = steamcommunity302
 	pkgdesc = 羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动
 	pkgver = 13.0.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dogfight360.com/blog/18682/
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = steamcommunity302
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib
+	depends = xorg-xhost
 	options = !strip
 	backup = opt/steamcommunity302/S302.ini
 	backup = opt/steamcommunity302/steamcommunity.key
