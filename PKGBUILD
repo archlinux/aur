@@ -1,46 +1,71 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=mole
 pkgname=lib${_base}
-pkgver=1.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Mimetic Operators Library Enhanced"
 url="https://github.com/csrc-sdsu/${_base}"
 license=(GPL-3.0-only)
 arch=(x86_64)
-depends=(armadillo)
-makedepends=(doxygen eigen graphviz openblas)
-optdepends=('matlab: for MATLAB support'
-  'octave: for Octave support'
-  'eigen: for the sparse LU factorization')
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c9a167d30b4adaabb3e3ea9f3ab4f135ae8e23335b7ebf324d011a7ca944c0fd33debcbf2e2f5a9ba56b3c1d84c5d2f15246bca568034719fe42d776a41b7de1')
+depends=(armadillo octave)
+makedepends=(cmake doxygen eigen graphviz openblas git)
+checkdepends=(gtest)
+optdepends=('eigen: for the sparse LU factorization')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
+  git+https://github.com/gllmflndn/m2html.git#branch=main)
+sha512sums=('d58cdfeb461185fb3f94fa0bb19f6c2d6944163af13130727e488858a920e056d2a162aa8e461e4c2f2bd573e31f6de894645779014ace4c005a75750c06df65'
+            'SKIP')
+
+prepare() {
+  # Similar issue https://lists.altlinux.org/pipermail/sisyphus-cybertalk/2025-May/126338.html
+  sed -i 's/^set(CMAKE_CXX_STANDARD 14/set(CMAKE_CXX_STANDARD 17/' ${_base}-${pkgver}/CMakeLists.txt
+  # We like use system-wide packages
+  sed -i '/^if(UNIX/,+6 s/^/#/' ${_base}-${pkgver}/CMakeLists.txt
+  sed -i '/^set(ARMADILLO_VERSION/,+68 s/^/#/' ${_base}-${pkgver}/CMakeLists.txt
+  sed -i '/^set(LINK_LIBS/,+3 s/^/#/' ${_base}-${pkgver}/CMakeLists.txt
+  sed -i '144i set(LINK_LIBS ${ARMADILLO_LIBRARIES} ${OpenBLAS_LIBRARIES} ${SUPERLU_INSTALL_DIR}/lib/libsuperlu.so ${LAPACK_LIBRARY})' ${_base}-${pkgver}/CMakeLists.txt
+  sed -i '/^include(/,+9 s/^/#/' ${_base}-${pkgver}/tests/cpp/CMakeLists.txt
+  sed -i 's/^	@python/	#@python/' ${_base}-${pkgver}/doc/sphinx/Makefile
+  mv ${srcdir}/m2html ${srcdir}/${_base}-${pkgver}
+}
 
 build() {
+  cmake \
+    -S ${_base}-${pkgver} \
+    -B build \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build --target mole_C++
   cd ${_base}-${pkgver}
-  make SHARED_LIB=1 EIGEN=1 ARMA=1
-  doxygen
+  octave -q -p m2html --eval "m2html('mfiles', 'src/matlab_octave', 'htmldir', 'doc/doxygen/matlab_octave', 'global', 'on', 'template', 'blue')"
+  cd doc/sphinx/
+  make doc-doxygen
+}
+
+check() {
+  cmake --build build --target run_tests
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  install -Dm 755 mole_C++/${pkgname}.so -t "${pkgdir}/usr/lib"
-  make clean
-
+  DESTDIR="${pkgdir}" cmake --build build --target install
   install -d ${pkgdir}/usr/include/${_base}
-  install mole_C++/*.h ${pkgdir}/usr/include/${_base}
+  install ${_base}-${pkgver}/src/cpp/*.h ${pkgdir}/usr/include/${_base}
 
-  install -d "$pkgdir/usr/share/${pkgname}"
-  mv mole_MATLAB ${pkgdir}/usr/share/${pkgname}
+  install -d "${pkgdir}/usr/share/${pkgname}"
+  mv ${_base}-${pkgver}/src/matlab_octave ${pkgdir}/usr/share/${pkgname}
 
   # install docs
   install -d ${pkgdir}/usr/share/doc/${pkgname}
-  mv doc_C++ ${pkgdir}/usr/share/doc/${pkgname}
-  mv doc_MATLAB ${pkgdir}/usr/share/doc/${pkgname}
+  mv ${_base}-${pkgver}/doc/doxygen ${pkgdir}/usr/share/doc/${pkgname}
 
   # install tutorials
   install -d ${pkgdir}/usr/share/doc/${pkgname}/examples
-  mv examples_C++ ${pkgdir}/usr/share/doc/${pkgname}/examples
-  mv examples_MATLAB ${pkgdir}/usr/share/doc/${pkgname}/examples
+  mv ${_base}-${pkgver}/examples/cpp ${pkgdir}/usr/share/doc/${pkgname}/examples
+  mv ${_base}-${pkgver}/examples/matlab_octave ${pkgdir}/usr/share/doc/${pkgname}/examples
 
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 ${_base}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
