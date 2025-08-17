@@ -1,0 +1,8 @@
+/pkg
+/src
+/wingetopt.git
+/opensea-common.git
+/opensea-parser.git
+/libjson.git
+/openseachest-logparser.git
+*.pkg.tar*
