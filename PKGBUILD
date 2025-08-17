@@ -1,13 +1,13 @@
 # Maintainer: Straw <straw@pinnoto.org>
 pkgname=eturnal
-pkgver=1.8.3
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Modern, straightforward STUN and TURN server with full IPv6 support."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://eturnal.net/"
 license=('Apache')
 depends=(
-	'erlang-nox>=22.0'
+	'erlang-headless'
 	'libyaml'
 	'openssl'
 )
@@ -15,9 +15,8 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://eturnal.net/download/eturnal-${pkgver}.tar.gz"
 	eturnal.conf
 )
-sha256sums=('74e3eef81a57569a499aeb0b7a6f055432bce2068a9d6b255fae50399575ecd9'
-						'da8fedd8d6e33f23eb333e5631884da77f404398db0e6542d0b30753ee74efa8'
-)
+sha256sums=('904157ff96fb5baca469ab2ebe4c273e6b348fde31080cc2a0bb971a5963fcdb'
+            'da8fedd8d6e33f23eb333e5631884da77f404398db0e6542d0b30753ee74efa8')
 install=eturnal.install
 
 build() {
