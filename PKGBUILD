@@ -1,12 +1,12 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 pkgname=mutn
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A simple, self-hosted, SSH-synchronized password/note manager for the CLI (based on libmutton)'
 arch=('x86_64' 'i686' 'i486' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/rwinkhart/MUTN'
 license=('MIT')
-depends=(gnupg)
+depends=()
 makedepends=(go grep gzip)
 optdepends=(
     'wl-clipboard: Wayland clipboard support'
@@ -40,7 +40,7 @@ build() {
     esac
 
     # compile binary
-    CGO_ENABLED=1 go build -ldflags="-s -w" -trimpath ./mutn.go
+    CGO_ENABLED=1 go build -ldflags="-s -w" -trimpath -tags=stxAll ./mutn.go
 }
 
 package() {
