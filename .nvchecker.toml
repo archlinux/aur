@@ -1,0 +1,5 @@
+[git-chglog-bin]
+source = "github"
+github = "git-chglog/git-chglog"
+use_latest_release = true
+prefix = "v"
