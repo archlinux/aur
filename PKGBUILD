@@ -13,7 +13,7 @@ depends=('imagemagick' 'libimagequant')
 makedepends=('cmake' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git#main")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
