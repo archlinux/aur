@@ -1,0 +1,16 @@
+pkgbase = rr1800a-dkms-git
+	pkgdesc = Kernel module for Rotor Riot 1800A gamepad (3053:0709)
+	pkgver = 0.0.1.r1.g3dd4b3c
+	pkgrel = 1
+	url = https://github.com/ForkingField/rr1800a
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = libdrm
+	depends = dkms
+	provides = rr1800a-dkms
+	conflicts = rr1800a-dkms
+	source = rr1800a::git+https://github.com/ForkingField/rr1800a.git
+	sha256sums = SKIP
+
+pkgname = rr1800a-dkms-git
