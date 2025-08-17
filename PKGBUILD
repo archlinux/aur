@@ -20,8 +20,7 @@ pkgver() {
 }
 
 package() {
+  set -x
   cd "$srcdir/set-mouse-config"
   install -Dm755 smc "$pkgdir/usr/bin/smc"
-  [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
