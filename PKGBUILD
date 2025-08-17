@@ -1,8 +1,8 @@
 # adapted from AUR package `organicmaps` by nesk_aur
 # Maintainer: hoverth
 pkgname=comaps
-pkgver=2025.06.30_22
-tag="${pkgver%%_*}-${pkgver##*_}-android"
+pkgver=v2025.08.13_8
+tag="${pkgver%%_*}-${pkgver##*_}"
 pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
@@ -14,6 +14,7 @@ license=("Apache")
 url="https://comaps.app"
 source_url="https://codeberg.org/comaps/comaps/"
 source=(comaps.desktop
+  icon.svg
   "git+https://github.com/organicmaps/osmctools.git"
   "git+https://codeberg.org/comaps/kothic.git"
   "git+https://codeberg.org/comaps/protobuf.git"
@@ -37,6 +38,7 @@ source=(comaps.desktop
   "git+https://github.com/ocornut/imgui"
 )
 sha256sums=('21f70d6c3282fcec0165c9b9f8082e081ecb50b423ae286ffd4ccde4cc794563'
+  '85210e30cd1b6e8b30407cf97a57cbf3eb98f16526fc6ffaae63f1441691e6e1'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -116,7 +118,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/${pkgname}"
   cp -Lr "${pkgname}/data" "$pkgdir/usr/share/${pkgname}/"
   install -dm777 "$pkgdir/usr/share/${pkgname}/data/$(jq '.v' $pkgname/data/countries.txt)"
-  install -Dm644 "${pkgname}/iphone/Maps/Images.xcassets/logo.imageset/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  install -Dm644 "icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
   install -Dm755 "omim-build-release/CoMaps" "$pkgdir/usr/bin/comaps"
   install -Dm644 "comaps.desktop" -t "$pkgdir/usr/share/applications"
 }
