@@ -15,7 +15,7 @@
 
 pkgname=loot
 # https://github.com/loot/loot/releases
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=(
 	'hicolor-icon-theme'
 	'onetbb'
 	'qt6-base'
-	'libloot'
+	'libloot0.26'
 	'tomlplusplus'
 	'zlib-ng')
 makedepends=(
@@ -35,14 +35,14 @@ makedepends=(
 	'boost'
 	'cbindgen'
 	'cmake'
-#	'ogdf' # AUR
+	#'ogdf' # AUR
 	'python'
 	'rust')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 	'LOOT.desktop'
 )
-sha256sums=('8e735aa4b5db2371157992979a00f25286607f40ff078b68b69ae224b6421f81'
+sha256sums=('6d35aaeaa07cc76e8b248b382aee87b884053b5349259ba8ea2f55b96aec312b'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
 
 prepare() {
@@ -64,7 +64,7 @@ build() {
 	cmake .. \
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
 		-DCMAKE_INSTALL_RPATH="/opt/${pkgname}"
-#		-DLIBLOOT_URL="${srcdir}/${pkgname}-${pkgver}/libloot.tar.gz" \
+		#-DLIBLOOT_URL="${srcdir}/${pkgname}-${pkgver}/libloot.tar.gz" \
 	make LOOT
 }
 
