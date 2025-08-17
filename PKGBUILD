@@ -1,7 +1,7 @@
 # Maintainer: John Peter <johnpetersa19@gmail.com>
 pkgname=cloudflare-warp-panel
 _pkgname=cloudflare_warp_panel
-pkgver=7.3.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="A graphical control panel (GUI) for the Cloudflare WARP client for Linux."
 arch=('x86_64')
@@ -22,6 +22,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   flutter pub get
+  flutter gen-l10n
   flutter build linux --release
 }
 
@@ -51,4 +52,3 @@ Categories=Network;Utility;
 StartupNotify=true
 EOF
 }
-
