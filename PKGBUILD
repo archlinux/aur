@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.31.1
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -39,6 +39,7 @@ build() {
     -DBUILD_PLUGIN_GITHUB=ON \
     -DBUILD_PLUGIN_HASH=ON \
     -DBUILD_PLUGIN_MEDIAREMOTE=ON \
+    -DBUILD_PLUGIN_OBSIDIAN=ON \
     -DBUILD_PLUGIN_PATH=ON \
     -DBUILD_PLUGIN_PYTHON=ON \
     -DBUILD_PLUGIN_SNIPPETS=ON \
@@ -64,4 +65,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('72febb2af8b18314000985796e05e3a87b1836c5c4726511f0e011ce584fb8d2278fc7d46094de81ed4640fd64682f0e94286b1105b30e1bb162866232201a60')
+sha512sums=('974329b573c3a51b751e3c577fe763b7301f2a263a776b9f62c08f43e28d166a1b2b6d8e8282dd488c3abbb797bb8978407e2c1acc3bb27730f57d6af4eb9f95')
