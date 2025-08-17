@@ -1,0 +1,13 @@
+pkgbase = bptt
+	pkgdesc = Display certain information about British public transport in the terminal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bunburya/bptt
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	options = !debug
+	source = bptt-1.0.0.tar.gz::https://github.com/bunburya/bptt/archive/v1.0.0.tar.gz
+	sha256sums = 501fd73dd352dafc288b6853af6c3799c118d57bf4509775c107dab460288452
+
+pkgname = bptt
