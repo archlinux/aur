@@ -30,8 +30,13 @@ sha256sums=('6cd44b6121681d91d50b8432b98233fcebff91a77af1dd48dfc68628bbbe7d9b'
 build() {
 	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
 	# Fix path
-	mv usr/share/{appdata,metainfo}
-	mv usr/share/zsh/{vendor-completions,site-functions}
+	mkdir -p usr/share/metainfo
+	mv usr/share/appdata/* usr/share/metainfo/
+	rmdir usr/share/appdata 2>/dev/null || true
+
+	mkdir -p usr/share/zsh/site-functions
+	mv usr/share/zsh/vendor-completions/* usr/share/zsh/site-functions/
+	rmdir usr/share/zsh/vendor-completions 2>/dev/null || true
 	# Launcher
 	_app=/usr/share/windsurf/resources/app
 	sed -e "s|code-flags|windsurf-flags|" code.sh \
