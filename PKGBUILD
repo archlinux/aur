@@ -1,12 +1,12 @@
-# Contributor: Damir Perisa <damir.perisa@bluewin.ch>
+# Maintainer: damir <sudo point pacman at gmail dot com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ttf-mph-2b-damase
 pkgver=002.000
 pkgrel=1
 pkgdesc='Unicode font covering full plane 1, and numerous scripts'
-url="http://packages.debian.org/unstable/x11/ttf-mph-2b-damase" 
+url="https://www.dafont.com/mph-2b-damase.font" 
 license=('custom:Public_Domain')
 arch=('any')
 source=("${pkgname#ttf-}::https://dl.dafont.com/dl/?f=mph_2b_damase")
