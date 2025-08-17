@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=ginga
 pkgname=python-${_pyname}-doc
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Documentation for Ginga"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'graphviz')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/ejeschke/ginga/archive/v${pkgver}.tar.gz")
-md5sums=('1426d9cee51e3a43e29106bf8e786584')
+md5sums=('d3441689a9fa53961fcfe98f667b6fe3')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
