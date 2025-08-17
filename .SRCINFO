@@ -1,7 +1,7 @@
 pkgbase = vs-launcher
 	pkgdesc = Unofficial launcher and version manager for Vintage Story
 	pkgver = 1.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vsldocs.xurxomf.xyz/
 	arch = x86_64
 	license = custom
@@ -18,6 +18,12 @@ pkgbase = vs-launcher
 	depends = dotnet-runtime-7.0
 	depends = dotnet-runtime-8.0
 	source = https://github.com/XurxoMF/vs-launcher/releases/download/1.5.8/vs-launcher-1.5.8.deb
+	source = LICENSE
+	source = vs-launcher.desktop
+	source = vs-launcher-wrapper
 	sha256sums = fa584d5c849ff82ab6132257310e04b9a4c5a72d59de16679c023acce8ea77ce
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vs-launcher
