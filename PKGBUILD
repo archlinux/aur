@@ -7,13 +7,13 @@
 : ${_widgets:=gtk2}
 
 [[ "${_widgets::3}" == "gtk" ]] \
-  && : ${_cksum=aaa004c6a1f257eba5bfa1776b7bd63f9768586bef8fb9d406eca03e73745845}
+  && : ${_cksum=feb0fc04c8324bde9b8827b11109b0683cf9961d15ed49410efeef5316ead105}
 
 : ${_pkgtype:=-${_widgets}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.6.0
+pkgver=10.6.1
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
 url="https://github.com/peazip/PeaZip"
