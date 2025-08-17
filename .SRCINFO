@@ -1,0 +1,22 @@
+pkgbase = premake4-bin
+	pkgdesc = A simple build configuration and project generation tool
+	pkgver = 4.4beta5
+	pkgrel = 1
+	url = https://premake.github.io
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = premake4
+	conflicts = premake4
+	source = premake-4.4-beta5.zip::https://downloads.sourceforge.net/project/premake/Premake/4.4/premake-4.4-beta5-src.zip
+	source = premake4_manpage.patch
+	sha256sums = 0fa1ed02c5229d931e87995123cdb11d44fcc8bd99bba8e8bb1bbc0aaa798161
+	sha256sums = f3c8b20fa231a496f41781ad449f75ec36555d216166cd77c2b709acf62693f6
+	source_i686 = premake-4.4-beta5-i686.tar.gz::https://downloads.sourceforge.net/project/premake/Premake/4.4/premake-4.4-beta5-linux.tar.gz
+	depends_i686 = glibc
+	sha256sums_i686 = 34915548110e930012dbf3368d995f34509a1c46b3d8893def19613aae063693
+	source_x86_64 = premake-4.4-beta5-i686.tar.gz::https://downloads.sourceforge.net/project/premake/Premake/4.4/premake-4.4-beta5-linux.tar.gz
+	depends_x86_64 = lib32-glibc
+	sha256sums_x86_64 = 34915548110e930012dbf3368d995f34509a1c46b3d8893def19613aae063693
+
+pkgname = premake4-bin

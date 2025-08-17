@@ -1,0 +1,121 @@
+--- /dev/null	2010-11-27 12:26:27.133923001 +0100
++++ premake4.1	2010-11-27 15:50:45.550585891 +0100
+@@ -0,0 +1,117 @@
++.\"Created with GNOME Manpages Editor Wizard
++.\"http://sourceforge.net/projects/gmanedit2
++.TH PREMAKE4 1 "November 27, 2010"
++
++.SH NAME
++premake4 \- cross-platform build configuration tool
++
++
++.SH SYNOPSIS
++.B premake4
++.RB [ options ]
++action 
++.RI [ arguments ]
++
++
++.SH DESCRIPTION
++
++.B premake4
++is a build configuration tool that can generate project files for multiple build environments on multiple platforms. 
++
++
++.SH OPTIONS
++
++.TP
++.BI \-\-cc= "VALUE"
++Choose a C/C++ compiler set; one of:
++.TS
++l l.
++gcc	GNU GCC (gcc/g++)
++ow	OpenWatcom
++.TE
++
++
++.TP
++.BI \-\-dotnet= "VALUE"
++Choose a .NET compiler set; one of:
++.TS
++l l.
++msnet	Microsoft .NET (csc)
++mono	Novell Mono (mcs)
++pnet	Portable.NET (cscc)
++.TE
++
++
++.TP
++.BI \-\-file= "FILE"
++Read FILE as a Premake script; default is 'premake4.lua'.
++
++
++.TP
++.BI \-\-help
++Display usage information. 
++
++
++.TP
++.BI \-\-os= "VALUE"
++Generate files for a different operating system; one of:
++.TS
++l l.
++bsd	OpenBSD, NetBSD, or FreeBSD
++linux	Linux
++macosx	Apple Mac OS X
++solaris	Solaris
++windows	Microsoft Windows
++.TE
++
++
++.TP
++.BI \-\-platform= "VALUE"
++Add target architecture (if supported by action); one of:
++.TS
++l l.
++x32	32-bit
++x64	64-bit
++universal	Mac OS X Universal, 32- and 64-bit
++universal32	Mac OS X Universal, 32-bit only
++universal64	Mac OS X Universal, 64-bit only
++ps3	Playstation 3 (experimental)
++xbox360	Xbox 360 (experimental)
++.TE
++
++
++.TP
++.BI \-\-scripts= "path"    
++Search for additional scripts on the given path.
++
++.TP
++.BI \-\-version
++Display version information.
++
++
++.SH ACTIONS
++
++.TS
++l l.
++clean	Remove all binaries and generated files
++codeblocks	Generate Code::Blocks project files
++codelite	Generate CodeLite project files
++gmake	Generate GNU makefiles for POSIX, MinGW, and Cygwin
++vs2002	Generate Microsoft Visual Studio 2002 project files
++vs2003	Generate Microsoft Visual Studio 2003 project files
++vs2005	Generate Microsoft Visual Studio 2005 project files
++vs2008	Generate Microsoft Visual Studio 2008 project files
++vs2010	Generate Visual Studio 2010 project files (experimental)
++xcode3	Generate Apple Xcode 3 project files (experimental)
++.TE
++
++.SH SEE ALSO 
++
++For information on how to write
++.B premake4
++script files, see http://industriousone.com/premake
++
++.SH AUTHOR
++premake4 was written by Jason Perkins. 
++
++This man page was written for the Fedora Project by Joachim de Groot <jdegroot@web.de>.
+\ No newline at end of file
