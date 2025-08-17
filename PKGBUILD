@@ -1,7 +1,7 @@
 pkgname=clash-verge-rev-autobuild-bin
 _pkgname=clash-verge-rev
 pkgver=2.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
@@ -11,9 +11,9 @@ conflicts=("$_pkgname" "$_pkgname-alpha" "$_pkgname-alpha-bin" "$_pkgname-git" "
 options=(!strip)
 install=.install
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0813.1264c77_amd64.deb")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0813.1264c77_arm64.deb")
-source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0813.1264c77_armhf.deb")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0817.a5fdd3f_amd64.deb")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0817.a5fdd3f_arm64.deb")
+source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}+autobuild.0817.a5fdd3f_armhf.deb")
 
 sha512sums_x86_64=('SKIP')
 sha512sums_aarch64=('SKIP')
