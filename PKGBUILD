@@ -3,9 +3,13 @@
 # This is the source package for awesome-omarchy-tui, which builds the application 
 # from source using the Rust toolchain. For a binary package (pre-compiled), 
 # see awesome-omarchy-tui-bin.
+#
+# NOTE: The updater feature is intentionally disabled for AUR packages since
+# package managers (pacman/AUR) should handle updates, not the application itself.
+# This ensures consistency with standard Linux package management practices.
 
 pkgname=awesome-omarchy-tui
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="A beautiful terminal UI for browsing the awesome-omarchy repository with search, navigation, and GitHub integration"
 arch=('x86_64')
@@ -13,7 +17,7 @@ url="https://github.com/aorumbayev/awesome-omarchy-tui"
 license=('MIT')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aorumbayev/awesome-omarchy-tui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c065b7cdfc7d0677f40d6c07b245e11f5e0da9c9264d91fde177a52159f17130')
+sha256sums=('4d41a7827f04448e264ed9cecc4e7c1a65b9b74211f5905dfbabaa2003aff33d')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -25,12 +29,15 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Build without default features to exclude the updater feature
+    # This allows package managers to handle updates instead of the application
     cargo build --frozen --release --no-default-features
 }
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
+    # Test without default features to match the build configuration
     cargo test --frozen --release --no-default-features
 }
 
