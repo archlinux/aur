@@ -7,7 +7,6 @@ pkgbase = xlibre-xf86-video-voodoo-bin
 	groups = xlibre-drivers
 	license = MIT
 	depends = glibc
-	provides = xf86-video-voodoo
 	provides = xlibre-video-voodoo
 	noextract = xlibre-xf86-video-voodoo-1.2.6.1-2-x86_64.pkg.tar.zst
 	options = !strip
