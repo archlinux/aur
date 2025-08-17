@@ -1,0 +1,27 @@
+# Maintainer: jonc4 
+pkgname=set-mouse-config-git
+pkgver=r1.abcdef0
+pkgrel=1
+pkgdesc="Switch libratbag mouse profiles via ratbagctl (git version)"
+arch=('any')
+url="https://github.com/JonPC4/set-mouse-config"
+license=('MIT')
+depends=('bash' 'libratbag')
+optdepends=('ripgrep: faster device detection if you use rg instead of awk/grep')
+provides=('set-mouse-config' 'smc')
+conflicts=('set-mouse-config')
+source=("$pkgname::git+https://github.com/JonPC4/set-mouse-config.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags --long 2>/dev/null \
+    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -Dm755 smc "$pkgdir/usr/bin/smc"
+  # Optional: license
+  [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
