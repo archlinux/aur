@@ -1,6 +1,6 @@
 --- src/cugraph-25.06.00/cpp/CMakeLists.txt	2025-06-06 04:20:22.000000000 +0800
 +++ src/cugraph-25.06.00/cpp/CMakeLists.txt.new	2025-07-02 16:49:41.464862949 +0800
-@@ -123,12 +123,12 @@
+@@ -123,12 +123,13 @@
  
  # Need CCCL, then rmm, then cuCollections, then RAFT.
  # This ensures that libraries can be overridden for testing.
