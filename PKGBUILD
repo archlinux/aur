@@ -16,6 +16,22 @@ _part_names=(
     'calceWhiskerRisk'
     'calceSARA Updates'
 )
+_part_generic_names=(
+    'Failure Assessment Toolkit'
+    'Temperature Cycle Extraction Module'
+    'User Documentation'
+    'Physical Wiring Assembly Toolbox'
+    'Whisker Risk Calculator'
+    'Updater'
+)
+_part_comments=(
+    'Failure Assessment Toolkit'
+    'Temperature Cycle Extraction Module'
+    'Documentation for calceSARA'
+    'Physical Wiring Assembly Toolbox'
+    'Whisker Risk Calculator'
+    'Update and validate calceSARA'
+)
 _options=(
     fast
     tce
@@ -27,7 +43,7 @@ _options=(
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 pkgname=calcesara
 pkgver=8.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simulation Assisted Reliability Assessment (SARA) Software"
 arch=('x86_64')
 url="https://web.calce.umd.edu/software/releaseSARA"
@@ -68,12 +84,14 @@ build() {
     for i in ${!_parts[@]}; do
         part=${_parts[i]}
         part_name=${_part_names[i]}
+        part_generic_name=${_part_generic_names[i]}
+        part_comment=${_part_comments[i]}
         option=${_options[i]}
 
         magick "$part.ico" "$part_name.png"
         rm "$part.ico"
 
-        gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" -n --name="$part_name" --exec="/usr/bin/calcesara $option" -f
+        gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" -n --name="$part_name" --genericname="$part_generic_name" --comment="$part_comment" --icon="$part_name" --terminal=false --exec="/usr/bin/calcesara $option" -f
         mv "${pkgname}.desktop" "${pkgname}-$part.desktop"
     done
 }
