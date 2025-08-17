@@ -1,0 +1,13 @@
+pkgbase = ufrume
+	pkgdesc = A multithreaded CLI tool to organize your music files into a folder structure defined by you.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/0PandaDEV/ufrume
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	source = ufrume-1.0.1.tar.gz::https://github.com/0PandaDEV/ufrume/archive/v1.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = ufrume
