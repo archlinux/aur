@@ -1,6 +1,6 @@
 pkgbase = python-alpm-conf
 	pkgdesc = ArchLinux tool to manage /etc configuration files using git
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://gitlab.com/xdegaye/alpm-conf
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-alpm-conf
 	depends = pyalpm
 	depends = python-zstandard
 	depends = python-flit-core
-	source = python-alpm-conf::git+https://gitlab.com/xdegaye/alpm-conf.git#tag=0.4
-	sha256sums = d26fb765126aa37be3dc0d6eb31cbb7fc68b493ff279328cef48ea18ba233d54
+	source = python-alpm-conf::git+https://gitlab.com/xdegaye/alpm-conf.git#tag=0.5
+	sha256sums = 46a3825ee18ff17a5e05fe93812746ed4ee9e34524678d381f690ddc314cba2e
 
 pkgname = python-alpm-conf
