@@ -1,6 +1,6 @@
 pkgbase = jhentai-bin
 	pkgdesc = A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.
-	pkgver = v8.0.9
+	pkgver = v8.0.10
 	pkgrel = 1
 	url = https://github.com/jiangtian616/JHenTai
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jhentai-bin
 	depends = webkit2gtk-4.1
 	conflicts = jhentai-git
 	options = !debug
-	source = jhentai-8.0.9_296.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.9/JHenTai-8.0.9+296-Linux-x64.deb
-	b2sums = a5eaa7109ee527cf170363d3bab91e07d5082815b4bc93d6770e90d3ea09016a15b86553a5ee15762a0baff3ded0e004e5939d23417b88a52edb876f5de15838
+	source = jhentai-8.0.10_297.deb::https://github.com/jiangtian616/JHenTai/releases/download/v8.0.10/JHenTai-8.0.10+297-Linux-x64.deb
+	b2sums = 0b381badb2194717d3a1d735bc1eefaaae5624e0aadc09b46e3e8b9054ae3fb7ceef5760a1ee13ca0558c6f9fb44f46f4e1a13a7cf7b83ed65a169ae4e900235
 
 pkgname = jhentai-bin
