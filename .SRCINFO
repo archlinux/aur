@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-input-elographics-bin
-	pkgdesc = Official XLibre fork of X.Org Elographics TouchScreen input driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org Elographics TouchScreen input driver (binary release)
 	pkgver = 1.4.4.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
