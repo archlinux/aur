@@ -1,5 +1,5 @@
 pkgbase = xlibre-xserver-xvfb-bin
-	pkgdesc = Official XLibre fork of X.Org virtual framebuffer X server
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org virtual framebuffer X server (binary release)
 	pkgver = 25.0.0.8
 	pkgrel = 1
 	url = https://github.com/X11Libre/xserver
