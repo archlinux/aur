@@ -3,6 +3,7 @@ _pkgname=mindustry-server
 pkgname=${_pkgname}-bin
 pkgver=150.1
 pkgrel=1
+epoch=2
 pkgdesc="Server of a sandbox tower defense game written in Java"
 arch=("x86_64")
 url="https://github.com/Anuken/Mindustry"
