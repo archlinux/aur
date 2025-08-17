@@ -1,6 +1,6 @@
 pkgbase = lptk
 	pkgdesc = Stateless password manager
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://gitlab.com/ogarcia/lptk
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = lptk
 	makedepends = rust
 	depends = libadwaita
 	depends = gtksourceview5
-	source = lptk::git+https://gitlab.com/ogarcia/lptk.git#tag=0.6.0
-	b2sums = 696957a739a028659b325664dfd3c6081e020aae7a180b34362986781f27071f64fd9cf154f5fd8606d51e97d30696492df22409410130c52d8fbecbcc7f3db0
+	source = lptk::git+https://gitlab.com/ogarcia/lptk.git#tag=0.7.0
+	b2sums = fa77cce7bd0bffdc1b5cf9a8a990f97ef3dbf287035b61a69811e0dbc46664c42e70cbfb8deedc73bd757feec01adff65a0f3bbbac964d3592526c5fe142971a
 
 pkgname = lptk
