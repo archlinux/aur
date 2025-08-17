@@ -6,7 +6,7 @@ pkgname=libloot0.26
 _pkgname=libloot
 # https://github.com/loot/libloot/releases
 pkgver=0.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
