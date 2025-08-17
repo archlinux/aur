@@ -5,9 +5,9 @@
 pkgname='python-atproto-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.0.59.r12.gad083e8
-pkgrel=2
-pkgdesc='The AT Protocol (Bluesky) SDK for Python (built from latest git commit)'
+pkgver=0.0.62.r1.gceaa1f1
+pkgrel=1
+pkgdesc='The AT Protocol (Bluesky) SDK for Python (development version)'
 arch=('any')
 url='https://github.com/MarshalX/atproto'
 license=(
@@ -22,7 +22,7 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python'
+  'python>=3.8'
   'python-click'
   'python-cryptography'
   'python-dnspython'
@@ -33,7 +33,7 @@ depends=(
   'python-websockets'
 )
 source=("git+$url.git")
-provides=("$_pkgname"{,_{cli,clint,codegen,core,crypto,firehose,identity,lexicon,server}})
+provides=("$_pkgname"{,_{cli,client,codegen,core,crypto,firehose,identity,lexicon,server}})
 conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 
