@@ -1,12 +1,13 @@
 pkgbase = openseachest-logparser
 	pkgdesc = Open source version of the Log Parser that parses ATA/SCSI/NVMe & Seagate vendor unique logs
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Seagate/openSeaChest_LogParser
 	arch = any
 	license = MPL-2.0
 	makedepends = make
 	makedepends = gcc
+	depends = gcc-libs
 	source = openseachest-logparser.git::git+https://github.com/Seagate/openSeaChest_LogParser#tag=Release_24.5.1
 	source = libjson.git::git+https://github.com/Seagate/libjson
 	source = opensea-common.git::git+https://github.com/Seagate/opensea-common

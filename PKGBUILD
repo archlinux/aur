@@ -3,13 +3,14 @@
 pkgname=openseachest-logparser
 pkgver=1.5.4
 _release=Release_24.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source version of the Log Parser that parses ATA/SCSI/NVMe & Seagate vendor unique logs'
 arch=('any')
 _baseurl='https://github.com/Seagate'
 url="${_baseurl}/openSeaChest_LogParser"
 license=('MPL-2.0')
 makedepends=('make' 'gcc')
+depends=('gcc-libs')
 source=(
   "${pkgname}.git::git+${url}#tag=${_release}"
   "libjson.git::git+${_baseurl}/libjson"
