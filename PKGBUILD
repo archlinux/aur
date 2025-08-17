@@ -2,7 +2,7 @@
 
 pkgver=1.12.2
 pkgbase=windsurf-latest
-pkgname=(windsurf-latest)
+pkgname=windsurf-latest
 pkgrel=1
 arch=('x86_64')
 url="https://windsurf.com/"
@@ -43,7 +43,7 @@ build() {
 	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
 	ln -svf /usr/bin/xdg-open usr/share/windsurf/resources/app/node_modules/open/xdg-open
 	# SVG Icon
-	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+	# install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	# Hide entry of URL handler
 	desktop-file-edit --set-key Hidden --set-value true usr/share/applications/windsurf-url-handler.desktop
 }
@@ -56,4 +56,7 @@ package_windsurf-latest(){
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/windsurf"
 	depends+=(${_electron}) # hidden from --printsrcinfo
+	# Install icon
+    install -Dm644 "usr/share/windsurf/resources/app/out/media/code-icon.svg" \
+                    "$pkgdir/usr/share/icons/hicolor/scalable/apps/windsurf.svg"
 }
