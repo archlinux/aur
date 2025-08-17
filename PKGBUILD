@@ -2,7 +2,7 @@
 
 pkgver=1.12.2
 pkgbase=windsurf-latest
-pkgname=(windsurf-latest windsurf-electron-latest-updated)
+pkgname=(windsurf-latest)
 pkgrel=1
 arch=('x86_64')
 url="https://windsurf.com/"
@@ -56,13 +56,4 @@ package_windsurf-latest(){
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/windsurf"
 	depends+=(${_electron}) # hidden from --printsrcinfo
-}
-
-package_windsurf-electron-latest-updated(){
-	pkgdesc="Windsurf Editor on latest stable electron"
-	mv usr "${pkgdir}/usr" # breaks --repackage
-	install -Dm755 run.sh "${pkgdir}/usr/bin/windsurf"
-	depends+=(electron)
-	conflicts=(windsurf)
-	provides=(windsurf)
 }
