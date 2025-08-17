@@ -1,0 +1,7 @@
+src
+pkg
+PKGBUILD-namcap.log
+*.log
+*.tar.zst
+*.tar.gz
+

@@ -1,0 +1,14 @@
+pkgbase = tshotkeytrigger
+	pkgdesc = A CLI tool that triggers hotkey actions in Teamspeak 6 via TeamSpeak Remote Applications API.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jmansar/tshotkeytrigger
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	depends = libwebsockets
+	depends = glibc
+	source = tshotkeytrigger-0.1.0.tar.gz::https://github.com/jmansar/tshotkeytrigger/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 45eb5965f91c3ac0581164969eddf028580faf4ba160f3d1831e560b54dc4399
+
+pkgname = tshotkeytrigger
