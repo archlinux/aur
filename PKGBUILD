@@ -2,7 +2,7 @@
 
 pkgname=python-cachedict
 _name=${pkgname#python-}
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 epoch=
 pkgdesc="Python cache dict."
@@ -26,7 +26,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a6683c4db237fe9b3ceb1acc790b8593faa77fde2c91a3f26a5c2afc036ccddd')
+sha256sums=('f6c7c929df2d023fcfa2bd1ae685021294ca9b7be5e379945f1d0873d4673270')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
