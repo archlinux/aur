@@ -1,6 +1,6 @@
 pkgname=ura-git
 _pkgname=ura
-pkgver=r100.189dbdb
+pkgver=r107.eb1c026
 pkgrel=1
 pkgdesc="A highly customizable Wayland compositor driven by Lua"
 url="https://github.com/levinion/ura"
@@ -28,7 +28,7 @@ build() {
   wayland-scanner server-header ./protocols/wlr-output-power-management-unstable-v1.xml include/protocols/wlr-output-power-management-unstable-v1-protocol.h
   wayland-scanner server-header ./protocols/cursor-shape-v1.xml include/protocols/cursor-shape-v1-protocol.h
   wayland-scanner server-header ./protocols/pointer-constraints-unstable-v1.xml include/protocols/pointer-constraints-unstable-v1-protocol.h
-  cmake -B build
+  cmake -B build -DCMAKE_BUILD_TYPE=Release
   cmake --build build -j$(nproc)
 
   cd "$srcdir/$_pkgname/uracil"
