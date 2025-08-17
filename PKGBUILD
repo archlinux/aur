@@ -20,6 +20,7 @@ makedepends=(
 )
 optdepends=(
   gnuradio-companion
+  gnuradio-osmosdr
 )
 provides=('gr-elster')
 source=(
@@ -56,5 +57,8 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build_dir
+  mkdir -p "${pkgdir}/usr/share/gnuradio/examples/gr-elster"
+  cp -va -t "${pkgdir}/usr/share/gnuradio/examples/gr-elster" gr-elster/apps/*
+  rm "${pkgdir}/usr/share/gnuradio/examples/gr-elster/CMakeLists.txt"
 }
 

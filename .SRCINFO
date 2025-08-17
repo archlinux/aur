@@ -15,6 +15,7 @@ pkgbase = gr-elster-git
 	depends = python-numpy
 	depends = python-pygraphviz
 	optdepends = gnuradio-companion
+	optdepends = gnuradio-osmosdr
 	provides = gr-elster
 	source = git+https://github.com/argilo/gr-elster.git
 	source = doxup.patch
