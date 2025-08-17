@@ -1,0 +1,16 @@
+pkgbase = apache-hudi
+	pkgdesc = Apache Hudi (Spark integration) — Spark 3.5 (Scala 2.13) bundle and utilities JARs
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://hudi.apache.org/
+	arch = any
+	license = Apache-2.0
+	depends = java-runtime-headless
+	optdepends = apache-spark: system Spark runtime
+	optdepends = python-pyspark: Python interface to Spark (works with the JARs)
+	source = https://repo1.maven.org/maven2/org/apache/hudi/hudi-spark3.5-bundle_2.13/1.0.2/hudi-spark3.5-bundle_2.13-1.0.2.jar
+	source = https://repo1.maven.org/maven2/org/apache/hudi/hudi-utilities-bundle_2.13/1.0.2/hudi-utilities-bundle_2.13-1.0.2.jar
+	b2sums = 28535f6ca322a3e56eeda7b30a0b8dbdfd4956c0017f29c388dd0d21e314a0c1ca36fc1e0fa7597216310a0f94a6f9cd7f8ce727ddb527c8cb4086920d17dbf8
+	b2sums = 3d00c6020295b50117c5eb53e53519b9e5a20f969bc3915944306aab19cd043f96654874b92f78556b7d8f568d12324ad4f8ba94217106ce923d0129c41e059b
+
+pkgname = apache-hudi
