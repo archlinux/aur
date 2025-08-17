@@ -1,6 +1,6 @@
 pkgbase = python-cachedict
 	pkgdesc = Python cache dict.
-	pkgver = 0.0.5
+	pkgver = 0.0.5.1
 	pkgrel = 1
 	url = https://pypi.org/project/cachedict
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-cachedict
 	conflicts = python-cachedict
 	options = !strip
 	options = !debug
-	source = cachedict-0.0.5.tar.gz::https://files.pythonhosted.org/packages/source/c/cachedict/cachedict-0.0.5.tar.gz
-	sha256sums = f6c7c929df2d023fcfa2bd1ae685021294ca9b7be5e379945f1d0873d4673270
+	source = cachedict-0.0.5.1.tar.gz::https://files.pythonhosted.org/packages/source/c/cachedict/cachedict-0.0.5.1.tar.gz
+	sha256sums = 308840b62918a1adf55a0caf1f810f630703d551ca0e7a6c8b4ee1356857aebc
 
 pkgname = python-cachedict
