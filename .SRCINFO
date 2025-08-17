@@ -1,7 +1,7 @@
 pkgbase = sacd-extract
 	pkgdesc = Extract DSD files from an SACD image
 	pkgver = 0.3.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sacd-ripper.github.io/
 	arch = i686
 	arch = x86_64
