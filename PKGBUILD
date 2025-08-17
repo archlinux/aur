@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64') # 'aarch64'
@@ -25,7 +25,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-x64.tar.gz")
 #source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('894ea96b0b6db6a47542024f0fddddebefd3f14f5e7bb1eb9eed31c4eb1e9dee')
+sha256sums_x86_64=('2a151ed69269b7afed5129994ada4685df88e7bbf95a07e563d5266c8534d764')
 # sha256sums_aarch64=('f3a25daebf0a4e827268f1005944b8c1b359b946b22ee8a792937e1babc40869')
 
 package() {
