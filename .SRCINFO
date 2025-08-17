@@ -1,0 +1,24 @@
+pkgbase = premake2-bin
+	pkgdesc = A simple build configuration and project generation tool
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://premake.github.io
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = premake2
+	conflicts = premake2
+	source = premake-2.4.zip::https://downloads.sourceforge.net/project/premake/Premake/2.4/premake-src-2.4.zip
+	sha256sums = d17637ec403cf8af8f31f0a31ca2d09e3f2c6f44ed8812ac769b8cd260e9e4fd
+	source_i686 = premake-2.4-i686.tar.gz::https://downloads.sourceforge.net/project/premake/Premake/2.4/premake-linux-2.4.tar.gz
+	depends_i686 = gcc-libs
+	depends_i686 = glibc
+	depends_i686 = libstdc++5
+	sha256sums_i686 = b97f283b1252998696e428c658a486e7425596a6f40b8af1e7431826c802c884
+	source_x86_64 = premake-2.4-i686.tar.gz::https://downloads.sourceforge.net/project/premake/Premake/2.4/premake-linux-2.4.tar.gz
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-libstdc++5
+	sha256sums_x86_64 = b97f283b1252998696e428c658a486e7425596a6f40b8af1e7431826c802c884
+
+pkgname = premake2-bin
