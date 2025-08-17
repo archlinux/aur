@@ -2,11 +2,10 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=6df16225ed81a31a3fd79817bf8a0c63c1320c0a} # 10.6.0
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.6.0
+pkgver=10.6.1
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
@@ -33,10 +32,10 @@ esac
 
 options=('!debug')
 
-_pkgsrc="PeaZip-$_commit"
+_pkgsrc="PeaZip-$pkgver"
 _pkgext="tar.gz"
-source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"https://github.com/peazip/PeaZip/archive/$_commit.$_pkgext")
-sha256sums=('SKIP')
+source=("$_pkgname-$pkgver.$_pkgext"::"https://github.com/peazip/PeaZip/archive/$pkgver.$_pkgext")
+sha256sums=('93d5145d09279db1b168469251e4b3b64b59ea13b2cfb0f487e1fd26a5d40b6b')
 
 _packets=(
   "$_pkgsrc"/peazip-sources/dev/metadarkstyle/metadarkstyle.lpk
@@ -59,7 +58,7 @@ prepare() {
   local PEAZIPVERSION PEAZIPREVISION
   PEAZIPVERSION=$(grep -Po1 "(?<=PEAZIPVERSION\s?=\s?')([0-9.]+)(?=';)" "$_pkgsrc/peazip-sources/dev/peach.pas")
   PEAZIPREVISION=$(grep -Po1 "(?<=PEAZIPREVISION\s?=\s?')([0-9.]+)(?=';)" "$_pkgsrc/peazip-sources/dev/peach.pas")
-  if [ $(vercmp "$pkgver" "${PEAZIPVERSION:-0.0}${PEAZIPREVISION:=.0}") -ne "0" ]; then
+  if [[ "$pkgver" != "${PEAZIPVERSION:-0.0}${PEAZIPREVISION:=.0}" ]]; then
     printf "%s    warning: %sversion mismatch.%s %s != %s\n" \
       "$(
         tput setaf 3
@@ -143,8 +142,8 @@ package() {
 
   # res
   _path_src="$_pkgsrc/peazip-sources/res/share"
-  install -dm755 "$pkgdir/usr/share/$_pkgname"
-  cp --reflink=auto -a "$_path_src"/{icons,lang,themes} "$pkgdir/usr/share/$_pkgname/"
+  mkdir -pm755 "$pkgdir/usr/share/$_pkgname"
+  cp -a "$_path_src"/{icons,lang,themes} "$pkgdir/usr/share/$_pkgname/"
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
