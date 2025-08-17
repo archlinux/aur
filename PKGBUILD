@@ -3,21 +3,22 @@
 # Contributor: BrinkerVII <brinkervii@gmail.com>
 
 pkgname=luau
-pkgver=0.686
+pkgver=0.687
 pkgrel=1
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=(x86_64)
 url="https://github.com/luau-lang/$pkgname"
 license=(MIT)
-depends=(gcc-libs
-         glibc)
+depends=(
+	gcc-libs
+	glibc
+)
 makedepends=(cmake)
-_archive="$pkgname-$pkgver"
-source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('34dd6a83e71a02f684707b7041674779c03961858a8ecefdd74cad36afc31177')
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('e7c852cf7c260971e55fa6efcce62f367e5f8755426519a2eeff5384fe3002c0')
 
 build() {
-	cd "$_archive"
+	cd $pkgname-$pkgver
 	local cmake_options=(
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_INSTALL_PREFIX=/usr
@@ -31,13 +32,13 @@ build() {
 }
 
 check() {
-	cd "$_archive"
+	cd $pkgname-$pkgver
 	./build/Luau.Conformance
 	./build/Luau.UnitTest
 }
 
 package() {
-	cd "$_archive"
+	cd $pkgname-$pkgver
 	# DESTDIR="$pkgdir" cmake --install build
 	local executables=(
 		luau
@@ -47,8 +48,10 @@ package() {
 		luau-compile
 		luau-reduce
 	)
-	install -Dm0755 -t "$pkgdir/usr/bin/" "${executables[@]/#/build/}"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
-	install -Dm0644 extern/isocline/LICENSE \
+	install -vDm0755 -t "$pkgdir/usr/bin/" "${executables[@]/#/build/}"
+	install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
+	install -vDm0644 extern/isocline/LICENSE \
 		"$pkgdir/usr/share/licenses/$pkgname/isocline-LICENSE.txt"
 }
+
+# vim: noet
