@@ -1,0 +1,21 @@
+pkgbase = xlibre-input-void-bin
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org void input driver (binary release)
+	pkgver = 1.4.2.1
+	pkgrel = 2
+	url = https://github.com/X11Libre
+	arch = x86_64
+	groups = xlibre-drivers
+	license = custom
+	depends = glibc
+	provides = xf86-input-void
+	provides = xlibre-input-void
+	conflicts = xf86-input-void
+	conflicts = xlibre-input-void
+	conflicts = X-ABI-XINPUT_VERSION<26
+	conflicts = X-ABI-XINPUT_VERSION>=27
+	noextract = xlibre-xf86-input-void-1.4.2.1-2-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-input-void-1.4.2.1-2-x86_64.pkg.tar.zst
+	sha256sums = 24f3dc590f78f11998490f75a67055e47d2a3a95dd9ab3107053f77be3e0a826
+
+pkgname = xlibre-input-void-bin
