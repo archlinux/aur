@@ -1,0 +1,5 @@
+[python-halcy-blurhash]
+source = "github"
+github = "halcy/blurhash-python"
+use_latest_release = "true"
+prefix = "v"
