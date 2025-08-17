@@ -1,0 +1,22 @@
+pkgbase = xlibre-input-evdev-bin
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org evdev input driver (binary release)
+	pkgver = 2.11.0.1
+	pkgrel = 2
+	url = https://github.com/X11Libre
+	arch = x86_64
+	groups = xlibre-drivers
+	license = HPND-sell-variant AND MIT
+	depends = xlibre-xserver-bin
+	depends = mtdev
+	depends = libevdev
+	depends = glibc
+	provides = xf86-input-evdev
+	provides = xlibre-input-evdev
+	conflicts = xf86-input-evdev
+	conflicts = xlibre-input-evdev
+	noextract = xlibre-xf86-input-evdev-2.11.0.1-2-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-input-evdev-2.11.0.1-2-x86_64.pkg.tar.zst
+	sha256sums = f66b06f9854994066314b32a722ebee66ce747497f642cda47895a6534651879
+
+pkgname = xlibre-input-evdev-bin
