@@ -1,6 +1,6 @@
 pkgbase = brokefetch-git
 	pkgdesc = brokefetch is the only system info tool that doesn't pretend your life is okay. (git version)
-	pkgver = 2025.08.16.rc40647b
+	pkgver = 2025.08.17.rc40647b
 	pkgrel = 1
 	url = https://github.com/Szerwigi1410/brokefetch
 	arch = any
