@@ -3,7 +3,7 @@
 pkgname=xlibre-xf86-video-voodoo-bin
 _pkgname=xlibre-xf86-video-voodoo
 pkgver=1.2.6.1
-pkgrel=2
+pkgrel=2.1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org voodoo video driver (binary release)"
 arch=(x86_64)
 url="https://github.com/X11Libre"
