@@ -1,0 +1,5 @@
+[mercator-bin]
+source = "github"
+github = "mrusme/mercator"
+use_latest_release = true
+prefix = "v"
