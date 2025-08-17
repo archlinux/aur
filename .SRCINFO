@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-input-synaptics-bin
-	pkgdesc = Official XLibre fork of X.Org Synaptics driver for notebook touchpads
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org Synaptics driver for notebook touchpads (binary release)
 	pkgver = 1.10.0.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
