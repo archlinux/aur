@@ -14,7 +14,8 @@ source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pk
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=('glibc')
 #provides=('xf86-video-voodoo' 'xlibre-video-voodoo')
-provides=('xlibre-video-voodoo=1.2.6.1' xf86-video-voodoo)
+provides=('xlibre-video-voodoo=1.2.6.1')
+conflicts=('xlibre-video-voodoo')
 #conflicts=('xf86-video-voodoo' 'xlibre-video-voodoo' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 
 sha256sums=('f616001fee975dd21f2a3e1fc5675e7034d5a0ed09a6d116357b28e6551640f7')
