@@ -3,7 +3,7 @@
 _pkgauthor=ariasmn
 _pkgname=ugm
 pkgname=${_pkgname}-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A terminal based UNIX user and group browser'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,9 +20,9 @@ source_i686=("${_pkgname}-${pkgver}-${arch[1]}::${url}/releases/download/v${pkgv
 source_aarch64=("${_pkgname}-${pkgver}-${arch[2]}::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64")
 sha256sums=('f948894f617a6490d2ad9c84673cc1b1fb746ba0d08b263046c9ca78a9d60b8d'
             '8deecbb70d79901cd0ad6f66ac76c645f23a12d4188f3fc7f0386bbeadbf1c73')
-sha256sums_x86_64=('bbf17e7abe9e438f1705f9ee28e5657c29ecdd7357cd9064a0518692be849f9b')
-sha256sums_i686=('24386947c113c503801777f6acf6af9cb1cb196b987474d26f6d20f002158f2e')
-sha256sums_aarch64=('57c417499216422b9448b612e4f9b8302a04314492d7b3a77eb28ce041286c9f')
+sha256sums_x86_64=('c00be06d142e6e3b66c6323867aa4dcb62c34c95efa52821141597ffdb635c2e')
+sha256sums_i686=('9061b6ffdf3b80c642280074f7dec7b0b0a164a180ae999425304711bb413bd0')
+sha256sums_aarch64=('d67ac9486521b59f30220ee2f4e2a32dc0afcc617497491df0b92aa6a70c3dcc')
 
 package() {
   cd "${srcdir}/" || exit
