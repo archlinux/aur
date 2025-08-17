@@ -1,6 +1,6 @@
 pkgname=matlab-language-server-git
 _pkgname='matlab-language-server'
-pkgver=85.0e2ce5f
+pkgver=156.0bebb79
 pkgrel=1
 pkgdesc='Implementation of the Microsoft Language Server Protocol for the MATLAB language.'
 arch=('any')
@@ -40,7 +40,7 @@ package() {
     sed -i '1 i\#!/usr/bin/env node' out/index.js
     chmod +x out/index.js
 
-    cp -rt "${pkgdir}/${npmdir}" out matlab
+    cp -rt "${pkgdir}/${npmdir}" out matlab node_modules package.json
 
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
     cp -rt "${pkgdir}/usr/share/doc/${pkgname}" CONTRIBUTING.md README.md
