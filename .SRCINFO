@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-input-vmmouse-bin
-	pkgdesc = Official XLibre fork of X.Org VMWare Mouse input driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org VMWare Mouse input driver (binary release)
 	pkgver = 13.2.0.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
