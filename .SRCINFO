@@ -17,7 +17,7 @@ pkgbase = libloot0.26
 	depends = icu
 	depends = fmt
 	depends = spdlog
-	source = libloot0.26-0.26.1.tar.gz::https://github.com/loot/libloot0.26/archive/0.26.1.tar.gz
-	sha256sums = f29d06b14421505c4437ed6d2e0aebf52acecfd01b98925fc9fa1cb737d33301
+	source = libloot-0.26.1.tar.gz::https://github.com/loot/libloot/archive/0.26.1.tar.gz
+	sha256sums = 2f308b39ac5962081a45acd8dcb964ca7283d0783942c275a3c900627758d1a3
 
 pkgname = libloot0.26
