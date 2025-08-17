@@ -1,5 +1,5 @@
 pkgname=playfin
-pkgver=r93.1ace639
+pkgver=r94.b92d83f
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -30,7 +30,5 @@ build() {
 package() {
   cd "$srcdir/playfin"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -d "$pkgdir/usr/share/playfin/mpv_config"
-  cp -r mpv_config/* "$pkgdir/usr/share/playfin/mpv_config/"
 }
 
