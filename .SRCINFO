@@ -1,7 +1,7 @@
 pkgbase = evdi-dkms
 	pkgdesc = Kernel module to enable management of multiple screens
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DisplayLink/evdi
 	arch = i686
 	arch = x86_64

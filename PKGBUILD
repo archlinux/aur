@@ -3,7 +3,7 @@
 _pkgname="evdi"
 pkgname="$_pkgname-dkms"
 pkgver=1.14.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module to enable management of multiple screens"
 url="https://github.com/DisplayLink/evdi"
 license=('GPL-2.0-only')
@@ -24,6 +24,10 @@ _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver/$_pkgsrc.$_pkgext")
 sha256sums=('9fc0165d02e88507135d6a67ccaa06f7b5cd651e375394a1674d5ea4ec7a00aa')
 
+prepare() {
+  sed -E -e '/^CLEAN=/d' -i "$_pkgsrc/module/dkms.conf"
+}
+
 build() {
   cd "$_pkgsrc/library"
   make
@@ -34,6 +38,6 @@ package() {
   make -C 'library' install DESTDIR="$pkgdir" PREFIX='/usr'
 
   # module for dkms
-  install -dm755 "$pkgdir/usr/src/$_pkgname-$pkgver"
-  cp --reflink=auto -a module/* "$pkgdir/usr/src/$_pkgname-$pkgver/"
+  mkdir -pm755 "$pkgdir/usr/src/$_pkgname-$pkgver"
+  cp -a module/* "$pkgdir/usr/src/$_pkgname-$pkgver/"
 }
