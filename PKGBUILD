@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-nl-bin
 _pkgname=betterbird
-pkgver=128.13.0esr
-_build=bb31
+pkgver=140.2.0esr
+_build=bb9
 pkgrel=1
 pkgdesc="DUTCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('dbus-glib')
 provides=("betterbird=${pkgver}")
 conflicts=('betterbird')
 source=(
-    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver}-${_build}.nl.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver}-${_build}.nl.linux-x86_64.tar.xz"
     "eu.betterbird.Betterbird"
 )
 
@@ -38,6 +38,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('57661b7ca668f6ea8d512144b0572bc9ff6d98a9d8537d392e4e3e82ca86835d'
+sha256sums=('c3fd211c3768a32e9733ba6e32960d2c61541b0b3575064ded4ac592d037b401'
             '60045ec0138ad4c01546df596b97016e467bec6d69c7e4e4c7bdb85e91a31bc2')
 
