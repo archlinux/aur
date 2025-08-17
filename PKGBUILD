@@ -1,7 +1,7 @@
 # Contributor: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=k6-bin
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript (precompiled)"
 provides=("k6={$pkgver}")
@@ -10,20 +10,18 @@ url="https://k6.io"
 license=('AGPL-3.0-only')
 options=(!emptydirs)
 source_x86_64=("https://github.com/k6io/k6/releases/download/v${pkgver}/k6-v${pkgver}-linux-$arch.tar.gz")
-sha256sums_x86_64=('7d92e0cbf625b5fde10653a67a0a2eeeab2de75f7f9f562a3b6cafd2a5d847e5')
+sha256sums_x86_64=('b082f79deef18bdbb4c7b8ab997d048553d8905bc35e9903ab9f2d7e3563993d')
 
 package() {
-  cd $srcdir/k6-v${pkgver}-linux-amd64
-  install -D k6 $pkgdir/usr/bin/k6
-  # build bash completions
+  cd "$srcdir/k6-v${pkgver}-linux-amd64"
+  install -D k6 "$pkgdir/usr/bin/k6"
+
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
   ./k6 completion bash > "${pkgdir}/usr/share/bash-completion/completions/k6"
 
-  # build zsh completions
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
   ./k6 completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_k6"
 
-  # build fish completions
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
   ./k6 completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/k6.fish"
 }
