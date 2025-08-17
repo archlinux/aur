@@ -1,9 +1,9 @@
 # Maintainer: İsmail Yılmaz <iylmz.iylmz@gmail.com>
 pkgname=bobcat-terminal-git
-pkgver=r268.96c11be
-pkgrel=2
-upprel=2025.1
-uppver=17799
+pkgver=r319.e4e5f19
+pkgrel=1
+upprel=2025.1.1
+uppver=17810
 pkgdesc="A powerful yet user-friendy cross-platform terminal emulator"
 arch=('x86_64')
 conflicts=('bobcat-terminal-git' 'bobcat-terminal')
@@ -18,10 +18,10 @@ depends=(
 
 makedepends=('git' 'pkg-config')
 source=(
-    "upp-posix-$uppver.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/$upprel/upp-posix-$uppver.tar.xz"
+    "upp-posix-$uppver.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/v$upprel/upp-posix-$uppver.tar.xz"
     "$pkgname::git+$url.git"
 )
-sha256sums=('054c8bf17e224bc53daece48788bbca0449ee1aeb81ee7f41ffd4cc9e4fd6df4' 'SKIP')
+sha256sums=('3c7415f2ba4398b371be063ba9071b1983d961a465d4d665a8367e62909d661e' 'SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
