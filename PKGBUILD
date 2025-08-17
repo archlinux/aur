@@ -3,7 +3,7 @@
 pkgname=openseachest-logparser
 pkgver=1.5.4
 _release=Release_24.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Open source version of the Log Parser that parses ATA/SCSI/NVMe & Seagate vendor unique logs'
 arch=('any')
 _baseurl='https://github.com/Seagate'
@@ -17,7 +17,7 @@ source=(
   "opensea-common.git::git+${_baseurl}/opensea-common"
   "opensea-parser.git::git+${_baseurl}/opensea-parser"
   "wingetopt.git::git+${_baseurl}/wingetopt"
-  'opensea-common.patch'
+  'opensea-common-no-memset-explicit.patch'
 )
 sha256sums=('ab8fa60f9cc9fa4fe4ff91ca8c5a879263e9308c1860db1c57af2e296e3ba88f'
             'SKIP'
@@ -29,14 +29,14 @@ sha256sums=('ab8fa60f9cc9fa4fe4ff91ca8c5a879263e9308c1860db1c57af2e296e3ba88f'
 prepare() {
   cd "${srcdir}/${pkgname}.git"
   git reset --hard
+  git -c protocol.file.allow=always submodule update --init
   git submodule foreach --recursive git reset --hard
-  git submodule update --init
-  patch -p1 -i "${srcdir}/opensea-common.patch"
+  patch -p1 -i "${srcdir}/opensea-common-no-memset-explicit.patch"
 }
 
 build() {
   cd "${srcdir}/${pkgname}.git/Make/gcc"
-  # We need to build with -j1 or the libraries get deleted before they get used...
+  # We need to build with -j1, libjson won't build otherwise
   make release -j1
 }
 
