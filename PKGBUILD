@@ -1,8 +1,7 @@
 # Maintainer: silver hikari <kerrickethan@gmail.com>
 pkgname=gridmonger-git
 pkgver=1.2.0.r38.0cde3f8
-epoch=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Your trusty old-school cRPG mapping companion"
 arch=('x86_64')
 url="https://gridmonger.johnnovak.net/"
