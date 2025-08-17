@@ -1,7 +1,7 @@
 pkgbase = python-sqlmesh
 	pkgdesc = Scalable, efficient data transformation framework (dbt-compatible) – SQLMesh CLI
 	pkgver = 0.209.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TobikoData/sqlmesh
 	install = python-sqlmesh.install
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = python-sqlmesh
 	optdepends = python-azure-identity: Azure auth for AzureSQL (extras: azuresql, azuresql-odbc)
 	optdepends = msodbcsql: Microsoft ODBC driver for SQL Server (extras: mssql-odbc, azuresql-odbc) [AUR]
 	optdepends = python-google-cloud-sql-connector: GCP Cloud SQL Postgres (extra: gcppostgres) [AUR]
-	optdepends = python-dbt-core: dbt compatibility layer (extra: dbt) [AUR]
+	optdepends = dbt-core: dbt compatibility layer (extra: dbt) [AUR]
 	optdepends = python-dlt: dlt ingestion (extra: dlt) [AUR]
 	optdepends = python-pygithub: GitHub CI/CD bot (extra: github)
 	optdepends = python-slack-sdk: Slack notifications (extra: slack)

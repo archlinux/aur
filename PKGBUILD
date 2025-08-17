@@ -16,7 +16,7 @@
 
 pkgname=python-sqlmesh
 pkgver=0.209.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Scalable, efficient data transformation framework (dbt-compatible) – SQLMesh CLI"
 arch=('any')
 url="https://github.com/TobikoData/sqlmesh"
@@ -67,7 +67,7 @@ optdepends=(
   'python-google-cloud-sql-connector: GCP Cloud SQL Postgres (extra: gcppostgres) [AUR]'
 
   # ---- Integrations / Tooling ----
-  'python-dbt-core: dbt compatibility layer (extra: dbt) [AUR]'
+  'dbt-core: dbt compatibility layer (extra: dbt) [AUR]'
   'python-dlt: dlt ingestion (extra: dlt) [AUR]'
   'python-pygithub: GitHub CI/CD bot (extra: github)'
   'python-slack-sdk: Slack notifications (extra: slack)'
@@ -183,7 +183,7 @@ install_extra() {
     mwaa)        install_repo python-boto3 ;;
     gcppostgres) install_aur_or_hint python-google-cloud-sql-connector || true ;;
     # ---------- Tooling / Integrations ----------
-    dbt)         install_aur_or_hint python-dbt-core ;;
+    dbt)         install_aur_or_hint dbt-core ;;
     dlt)         install_aur_or_hint python-dlt ;;
     github)      install_repo python-pygithub ;;
     slack)       install_repo python-slack-sdk ;;
