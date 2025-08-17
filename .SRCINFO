@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-input-wacom-bin
-	pkgdesc = Official XLibre fork of X.Org Wacom tablet driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org Wacom tablet driver (binary release)
 	pkgver = 1.2.3.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
