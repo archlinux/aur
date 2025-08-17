@@ -1,7 +1,7 @@
 pkgbase = raur-helper-git
 	pkgdesc = Simple AUR helper written in Rust
 	pkgver = 1b7421b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hsdcc/raur
 	arch = x86_64
 	license = MIT
