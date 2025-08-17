@@ -1,0 +1,26 @@
+pkgbase = python-cloud-sql-python-connector
+	pkgdesc = Google Cloud SQL Python Connector library
+	pkgver = 1.18.4
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/cloud-sql-python-connector
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiofiles
+	depends = python-aiohttp
+	depends = python-cryptography
+	depends = python-dnspython
+	depends = python-requests
+	depends = python-google-auth
+	optdepends = python-pymysql: MySQL driver (extras: [pymysql])
+	optdepends = python-pg8000: PostgreSQL driver (extras: [pg8000])
+	optdepends = python-asyncpg: Async PostgreSQL driver (extras: [asyncpg])
+	optdepends = python-python-tds: SQL Server driver (extras: [pytds])
+	source = cloud_sql_python_connector-1.18.4.tar.gz::https://files.pythonhosted.org/packages/source/c/cloud_sql_python_connector/cloud_sql_python_connector-1.18.4.tar.gz
+	sha256sums = dd2b015245d77771b5e7566e2817e279e9daca90e0cf30dac032155e813afe76
+
+pkgname = python-cloud-sql-python-connector
