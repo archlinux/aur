@@ -27,7 +27,7 @@ _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
 pkgver=6.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url='https://www.kernel.org'
 license=('GPL-2.0-or-later')
@@ -82,11 +82,11 @@ validpgpkeys=(
 if [[ "${_build_vfio::1}" == "t" ]]; then
   source+=(
     1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.14.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1002-6.16.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
     '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
-    '827b169cf33da439d1d01e5c24ddee229879d57db4b9e1ea219c49289a249384'
+    '364f6393e8febc0251f829ad18f173213e725d24c2011b74fa6e4be5ddf7c977'
   )
 fi
 
