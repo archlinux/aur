@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr . 
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr .
   make
 }
 
