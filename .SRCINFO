@@ -1,0 +1,23 @@
+pkgbase = gr-elster-git
+	pkgdesc = A GNU Radio block that decodes packets transmitted by Elster R2S smart meters
+	pkgver = r98.bd33fcd
+	pkgrel = 1
+	url = https://github.com/argilo/gr-elster.git
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = ninja
+	makedepends = boost
+	depends = gnuradio
+	depends = python-gnuradio
+	depends = python-numpy
+	optdepends = gnuradio-companion
+	provides = gr-elster
+	source = git+https://github.com/argilo/gr-elster.git
+	source = doxup.patch
+	sha256sums = SKIP
+	sha256sums = 4df5f8f4011aec787459b1a9bd0d15725ef82f7390590bbb9d76ba37481dca3a
+
+pkgname = gr-elster-git
