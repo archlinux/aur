@@ -1,5 +1,6 @@
 /pkg
 /src
+/php
 *.tar.gz
 *.pkg.tar.*
 *.json
