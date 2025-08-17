@@ -1,7 +1,7 @@
 pkgbase = android-studio-system
 	pkgdesc = The official Android IDE (Stable branch)
-	pkgver = 2024.3.2.14
-	pkgrel = 2
+	pkgver = 2025.1.2.11
+	pkgrel = 1
 	url = https://developer.android.com/studio
 	arch = x86_64
 	license = APACHE
@@ -13,10 +13,10 @@ pkgbase = android-studio-system
 	provides = android-studio
 	conflicts = android-studio
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2024.3.2.14/android-studio-2024.3.2.14-linux.tar.gz
+	source = https://dl.google.com/dl/android/studio/ide-zips/2025.1.2.11/android-studio-2025.1.2.11-linux.tar.gz
 	source = android-studio.desktop
 	source = license.html
-	b2sums = 2aaed35845559d8b351b1c0ab55f657739206444219e8c3e62959e617f680de777fba8b3cf08949f231f82bc815fb0950252ff15588ec94fa41460ff4d438542
+	b2sums = 1b400f9459349c786f90e2f66e228729613fad98aac1b4a220a1d170a56af358ff1439a0f08da47f2862edb4cc38a1d024cd0390bf07ce42c84147c7f2b22348
 	b2sums = 16940866032d710ce995cc6bb0b994875215df0f6191b09a3ece5d6c5750c4fb3d430c683f545154eeceecad10d70333d59302fe6c5efd97c3fc9e66f3009dca
 	b2sums = 43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67
 
