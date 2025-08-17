@@ -1,0 +1,26 @@
+pkgbase = xlibre-video-vmware-bin
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org vmware video driver (binary release)
+	pkgver = 13.4.0.1
+	pkgrel = 2
+	url = https://github.com/X11Libre
+	arch = x86_64
+	groups = xlibre-drivers
+	license = MIT AND X11
+	depends = glibc
+	depends = libxext
+	depends = libx11
+	depends = libdrm
+	depends = glibc
+	provides = xf86-video-vmware
+	provides = xlibre-video-vmware
+	conflicts = xf86-video-vmware
+	conflicts = xlibre-video-vmware
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-VIDEODRV_VERSION<28
+	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	noextract = xlibre-xf86-video-vmware-13.4.0.1-2-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-vmware-13.4.0.1-2-x86_64.pkg.tar.zst
+	sha256sums = f1a5ac813ed044e562f4bd9ad5bebc057ffa97f7b4b33c55b3429b9b919e509d
+
+pkgname = xlibre-video-vmware-bin
