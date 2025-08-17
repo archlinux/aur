@@ -1,0 +1,5 @@
+[calories-bin]
+source = "github"
+github = "zupzup/calories"
+use_latest_release = true
+prefix = "v"

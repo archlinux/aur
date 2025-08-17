@@ -1,19 +1,19 @@
 pkgbase = calories-bin
-	pkgdesc = Calories Tracker for the Commandline
+	pkgdesc = CLI tool for tracking calories and weight using the Harris Benedict formula for calculating your BMR
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/zupzup/calories
-	arch = x86_64
-	arch = i686
 	arch = aarch64
+	arch = i686
+	arch = x86_64
 	license = MIT
 	provides = calories
 	conflicts = calories
-	source_x86_64 = https://github.com/zupzup/calories/releases/download/1.1.1/calories_1.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 37c4052f330779757647df129fa5d2f1261f9597fa1fe1b28c3260c70f558d31
-	source_i686 = https://github.com/zupzup/calories/releases/download/1.1.1/calories_1.1.1_linux_386.tar.gz
-	sha256sums_i686 = 11be480d69c36a0592811b6dd8903c680237e280c6e45b7bc1e746262932939d
-	source_aarch64 = https://github.com/zupzup/calories/releases/download/1.1.1/calories_1.1.1_linux_arm64.tar.gz
+	source_aarch64 = calories-1.1.1-aarch64.tar.gz::https://github.com/zupzup/calories/releases/download/1.1.1/calories_1.1.1_linux_arm64.tar.gz
 	sha256sums_aarch64 = a4f56000d32f6736afe1a1f4cac89c428d42d18f750a9092edf0d8e65bf527d7
+	source_i686 = calories-1.1.1-i686.tar.gz::https://github.com/zupzup/calories/releases/download/1.1.1/calories_1.1.1_linux_386.tar.gz
+	sha256sums_i686 = 11be480d69c36a0592811b6dd8903c680237e280c6e45b7bc1e746262932939d
+	source_x86_64 = calories-1.1.1-x86_64.tar.gz::https://github.com/zupzup/calories/releases/download/1.1.1/calories_1.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 37c4052f330779757647df129fa5d2f1261f9597fa1fe1b28c3260c70f558d31
 
 pkgname = calories-bin
