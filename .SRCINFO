@@ -1,7 +1,7 @@
 pkgbase = git-chglog-bin
 	pkgdesc = git CHANGELOG generator
 	pkgver = 0.15.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/git-chglog/git-chglog
 	arch = aarch64
 	arch = armv7h
@@ -13,7 +13,7 @@ pkgbase = git-chglog-bin
 	conflicts = git-chglog
 	source_aarch64 = git-chglog-0.15.4-aarch64.tar.gz::https://github.com/git-chglog/git-chglog/releases/download/v0.15.4/git-chglog_0.15.4_linux_arm64.tar.gz
 	sha256sums_aarch64 = 75d6fcfe1e2f7335a37048e01db53b87035a11ab78a8c3fc2ba65a6e5794f71f
-	source_armv7h = git-chglog-0.15.4-armv7h.tar.gz::https://github.com/git-chglog/git-chglog/releases/download/v0.15.4/git-chglog_0.15.4_linux_armv6.tar.gz
+	source_armv7h = git-chglog-0.15.4-armv6h.tar.gz::https://github.com/git-chglog/git-chglog/releases/download/v0.15.4/git-chglog_0.15.4_linux_armv6.tar.gz
 	sha256sums_armv7h = 79efbebc1327e91334decb3be51094f3e430928fcc25512b5b963864f1da0b9d
 	source_i686 = git-chglog-0.15.4-i686.tar.gz::https://github.com/git-chglog/git-chglog/releases/download/v0.15.4/git-chglog_0.15.4_linux_386.tar.gz
 	sha256sums_i686 = 14e0109131f6e897cbc0878a15e3c476ee23745e7a9a9fd8a487af6c11e62ba1
