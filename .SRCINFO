@@ -1,6 +1,6 @@
 pkgbase = papis-git
 	pkgdesc = Command-line document and bibliography manager
-	pkgver = 0.14.1.r114.g907dcf75
+	pkgver = 0.14.1.r124.g005c8b47
 	pkgrel = 1
 	url = https://github.com/papis/papis
 	arch = any
@@ -43,7 +43,6 @@ pkgbase = papis-git
 	depends = python-pyparsing
 	depends = python-requests
 	depends = python-slugify
-	depends = python-stevedore
 	depends = python-yaml
 	optdepends = fzf: alternative picker
 	optdepends = papis-rofi: alternative picker
