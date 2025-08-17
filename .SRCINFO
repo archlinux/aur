@@ -12,6 +12,8 @@ pkgbase = plasma6-wallpapers-smart-video-wallpaper-reborn-git
 	depends = plasma-workspace
 	depends = qt6-multimedia
 	depends = qt6-multimedia-ffmpeg
+	provides = plasma6-wallpapers-smart-video-wallpaper-reborn
+	conflicts = plasma6-wallpapers-smart-video-wallpaper-reborn
 	source = plasma-smart-video-wallpaper-reborn::git+https://github.com/luisbocanegra/plasma-smart-video-wallpaper-reborn
 	sha256sums = SKIP
 
