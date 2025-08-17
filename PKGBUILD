@@ -1,6 +1,6 @@
 # Maintainer: Sohrab Behdani <behdanisohrab@riseup.net>
 pkgname=proxycloud-gui-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="ProxyCloud GUI is a free, fast, and user-friendly desktop application for managing proxy connections across multiple platforms."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 
 source=("${pkgname%-bin}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.deb")
 
-sha256sums=('e9affe08cbb7efd4016c6c1ee5dc92ae45d96de24391d99d1a1c253a4a57967a')
+sha256sums=('b26797b076c675d68c69a0c3229f54ece2b70d2714b9477df01160c0de51ddf2')
 
 options=(!debug !strip)
 

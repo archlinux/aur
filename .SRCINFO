@@ -1,6 +1,6 @@
 pkgbase = proxycloud-gui-bin
 	pkgdesc = ProxyCloud GUI is a free, fast, and user-friendly desktop application for managing proxy connections across multiple platforms.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/code3-dev/ProxyCloud-GUI
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = proxycloud-gui-bin
 	conflicts = proxycloud-gui-git
 	options = !debug
 	options = !strip
-	source = proxycloud-gui-1.2.0-amd64.deb::https://github.com/code3-dev/ProxyCloud-GUI/releases/download/v1.2.0/proxycloud-gui-linux-amd64.deb
-	sha256sums = e9affe08cbb7efd4016c6c1ee5dc92ae45d96de24391d99d1a1c253a4a57967a
+	source = proxycloud-gui-1.3.0-amd64.deb::https://github.com/code3-dev/ProxyCloud-GUI/releases/download/v1.3.0/proxycloud-gui-linux-amd64.deb
+	sha256sums = b26797b076c675d68c69a0c3229f54ece2b70d2714b9477df01160c0de51ddf2
 
 pkgname = proxycloud-gui-bin
