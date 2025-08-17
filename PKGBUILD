@@ -1,3 +1,4 @@
+# Maintainer: Mohammad Rostami <mohammad.jayant@gmail.com>
 pkgname=farsidic
 pkgver=1.2
 pkgdesc="A simple farsi dictionary"
