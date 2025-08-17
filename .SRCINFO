@@ -1,7 +1,7 @@
 pkgbase = cookie-git
 	pkgdesc = Simple music player TUI
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/FedGuy699/Cookie-Player
 	arch = x86_64
 	license = GPL
