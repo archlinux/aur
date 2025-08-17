@@ -26,4 +26,4 @@ path = [
     "MR_162.patch",
 ]
 SPDX-FileCopyrightText = "shared-mime-info contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-2.0-or-later"
