@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-video-voodoo-bin
-	pkgdesc = Official XLibre fork of X.Org voodoo video driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org voodoo video driver (binary release)
 	pkgver = 1.2.6.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
