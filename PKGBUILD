@@ -5,12 +5,12 @@ pkgver=1.4.4
 pkgrel=1
 pkgdesc="A simple secure password manager written in rust."
 arch=('x86_64')
-url="https://github.com/lwilk0/fmp"
+url="https://codeberg.org/lwilko/fmp"
 conflicts=('fmp-bin')
 license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
 makedepends=('cargo')
-source=("fmp-$pkgver.tar.gz::https://github.com/lwilk0/fmp/archive/refs/tags/v$pkgver.tar.gz")
+source=("fmp-$pkgver.tar.gz::https://codeberg.org/lwilko/fmp/archive/v$pkgver.tar.gz")
 sha512sums=('a19fb26ea45a6fbd8936cb903b01b025b73d6e1929e92777d41fd1dbb680a7245a108379724b0222c52256011dd2045ce18a7d22f2853e74d09162f8834eac85')
 
 build() {
