@@ -5,8 +5,8 @@
 
 _gemname=pleaserun
 pkgname=ruby-$_gemname
-pkgver=0.0.32
-pkgrel=4
+pkgver=0.0.33
+pkgrel=1
 pkgdesc="pleaserun"
 arch=('any')
 depends=('ruby' 'ruby-cabin' 'ruby-clamp' 'ruby-dotenv'
@@ -15,7 +15,7 @@ makedepends=('ruby-bundler')
 url="https://rubygems.org/gems/${_gemname}"
 license=('Apache-2.0')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha256sums=('4dd8db18b81b48e2a875ec0c7fff3869454d1f93a9f5e2e6c4eb88812870d3ab')
+sha256sums=('a61ecd4ac6956dc44a7992ccbd9e4c979d7cd3a25af5ec7cc5b1f17424ffb73f')
 
 prepare() {
   rm -rf rebuild; mkdir -p "rebuild"
