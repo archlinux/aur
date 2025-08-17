@@ -1,61 +1,68 @@
-# Maintainer: Mohammed Anas <anasmohammed361@gmail.com>
+# Maintainer: Mohammed Anas <anasmohammed361@gmail.com> 
 
-pkgname=windsurf-latest
-pkgver=1.0.7
+pkgver=1.12.2
+pkgbase=windsurf-latest
+pkgname=(windsurf-latest windsurf-electron-latest-updated)
 pkgrel=1
-pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
-url="https://codeium.com"
-license=('custom')
-depends=(
+url="https://windsurf.com/"
+license=('LicenseRef-Windsurf Editor')
+depends=( ripgrep fd xdg-utils #replacements
     'alsa-lib'
     'dbus'
-    'expat'
-    'gcc-libs'
-    'glibc'
-    'libdrm'
-    'libx11'
-    'libxcb'
-    'libxcomposite'
-    'libxdamage'
-    'libxext'
-    'libxfixes'
-    'libxkbcommon'
-    'libxrandr'
-    'mesa'
-    'nspr'
-    'nss'
-    'gtk3'
-    'xdg-utils'
+    'gnupg'
+    'libnotify'
+    'libsecret'
+    'libxkbfile'
+    'libxss'
 )
-optdepends=('vulkan-icd-loader: Vulkan support')
-provides=('windsurf')
-options=(!strip)
+optdepends=('glib2: Move to trash functionality'
+            'org.freedesktop.secrets: Sync settings'
+            'libdbusmenu-glib: KDE global menu'
+            'lsof: Terminal splitting'
+            'vulkan-driver')
+options=('!strip') # for sing of ext ?
+makedepends=(tar sed desktop-file-utils) # tar is faster than bsdtar.
+source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
+		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
+sha256sums=('6cd44b6121681d91d50b8432b98233fcebff91a77af1dd48dfc68628bbbe7d9b'
+            '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
+build() {
+	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
+	# Fix path
+	mv usr/share/{appdata,metainfo}
+	mv usr/share/zsh/{vendor-completions,site-functions}
+	# Launcher
+	_app=/usr/share/windsurf/resources/app
+	sed -e "s|code-flags|windsurf-flags|" code.sh \
+		-e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
+		-e "s|/usr/lib/code/code.mjs|--app=${_app}|" > run.sh
+	ln -sf /usr/bin/windsurf usr/share/windsurf/windsurf
+	# Replacements
+	ln -svf /usr/bin/fd usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
+	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
+	ln -svf /usr/bin/xdg-open usr/share/windsurf/resources/app/node_modules/open/xdg-open
+	# SVG Icon
+	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+	# Hide entry of URL handler
+	desktop-file-edit --set-key Hidden --set-value true usr/share/applications/windsurf-url-handler.desktop
+}
 
-source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb")
-sha256sums=('SKIP')
+package_windsurf-latest(){
+	pkgdesc="The new purpose-built IDE to harness magic"
+	cp -r --reflink=auto usr "${pkgdir}/usr"
+	_electron=electron$(rg -o -r '$1' '"electron": *"[^0-9]*([0-9]+)' usr/share/windsurf/resources/app/package.json)
+	echo $_electron
+	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
+	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/windsurf"
+	depends+=(${_electron}) # hidden from --printsrcinfo
+}
 
-package() {
-    # Extract package data
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
-
-    # Fix permissions
-    chmod 4755 "${pkgdir}/usr/share/windsurf/chrome-sandbox"
-
-    # Create symlink in /usr/bin
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s /usr/share/windsurf/windsurf "${pkgdir}/usr/bin/windsurf"
-    
-    # Add desktop entry
-    install -dm755 "${pkgdir}/usr/share/applications"
-    cat <<EOF >"${pkgdir}/usr/share/applications/windsurf.desktop"
-[Desktop Entry]
-Name=Windsurf
-Comment=Tomorrow's Editor, Today
-Exec=/usr/bin/windsurf
-Icon=/usr/share/windsurf/resources/app/resources/linux/code.png
-Terminal=false
-Type=Application
-Categories=Development;IDE;
-EOF
+package_windsurf-electron-latest-updated(){
+	pkgdesc="Windsurf Editor on latest stable electron"
+	mv usr "${pkgdir}/usr" # breaks --repackage
+	install -Dm755 run.sh "${pkgdir}/usr/bin/windsurf"
+	depends+=(electron)
+	conflicts=(windsurf)
+	provides=(windsurf)
 }
