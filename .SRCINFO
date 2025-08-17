@@ -2,11 +2,10 @@ pkgbase = ttf-mph-2b-damase
 	pkgdesc = Unicode font covering full plane 1, and numerous scripts
 	pkgver = 002.000
 	pkgrel = 1
-	url = http://packages.debian.org/unstable/x11/ttf-mph-2b-damase
+	url = https://www.dafont.com/mph-2b-damase.font
 	arch = any
 	license = custom:Public_Domain
 	source = mph-2b-damase::https://dl.dafont.com/dl/?f=mph_2b_damase
 	sha1sums = 2993a82888fe5d1418616cf6b6098140c4d4a6ce
 
 pkgname = ttf-mph-2b-damase
-
