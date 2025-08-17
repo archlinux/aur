@@ -1,5 +1,5 @@
 pkgbase = kwin-x11-improved
-	pkgdesc = kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git
+	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git
 	pkgver = 6.4.4
 	pkgrel = 1
 	url = https://github.com/guiodic/kwin-x11-improved

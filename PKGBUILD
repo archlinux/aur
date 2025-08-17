@@ -5,7 +5,7 @@ _pkgname=kwin-x11
 pkgver=6.4.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git'
+pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git'
 arch=(x86_64)
 url='https://github.com/guiodic/kwin-x11-improved'
 license=(LGPL-2.0-or-later)
@@ -94,7 +94,7 @@ prepare() {
 }
 
 build() {
-  cmake -B build  -S $_pkgname-$pkgver \
+  cmake -B build -S $_pkgname-$pkgver \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
