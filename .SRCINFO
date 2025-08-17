@@ -1,0 +1,17 @@
+pkgbase = kubectl-oomd
+	pkgdesc = kubectl plugin to display the pods and containers which have recently been OOMKilled
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/jdockerty/kubectl-oomd
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = kubectl
+	source = https://github.com/jdockerty/kubectl-oomd/archive/v0.0.7/kubectl-oomd-0.0.7.tar.gz
+	sha512sums = 008a74ac60c88e5ce1fb70213fced7eb5547e81ebc94095929f945afc6f81d3b8a64c2ea110c3e1889b006906c34f257aaa2f402f807433a2aae6864116fa15f
+	b2sums = 37ef42c2c4b6aa2320bfc0dddb3ba3f6c93268b2897371dc74644c68eae2536981d25fb832d7ac162e4ce3234dce3e012c33b019973c343f19eeabe27e50bc1d
+
+pkgname = kubectl-oomd
