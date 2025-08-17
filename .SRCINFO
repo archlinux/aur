@@ -1,0 +1,16 @@
+pkgbase = oh-my-theme
+	pkgdesc = A terminal-based theme manager for Oh My Posh
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mikeisfree/oh-my-theme
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/4f/e9/93e2229da50c52cc320494709058c9acf1abbba7b337aff1e9cc0155244d/oh_my_theme-2.0.0.tar.gz
+	sha256sums = 74a7266d9f708d0c56afd796ace672ea54f542c5ad9f651f7716b997d4dc9bed
+
+pkgname = oh-my-theme
