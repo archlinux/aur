@@ -2,8 +2,8 @@
 # Contributor: Harold Leboulanger <harold.leboulanger AT gmail DOT com>
 # Contributor: McNoggins <gagnon88 AT gmail DOT com>
 pkgname=ttwatch-git
-pkgver=20231110
-pkgrel=1
+pkgver=20240107
+pkgrel=2
 pkgdesc="TomTom GPS Watch Utilities"
 arch=('i686' 'x86_64')
 url="https://github.com/ryanbinns/ttwatch"
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr . 
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr . 
   make
 }
 

@@ -1,7 +1,7 @@
 pkgbase = ttwatch-git
 	pkgdesc = TomTom GPS Watch Utilities
-	pkgver = 20231110
-	pkgrel = 1
+	pkgver = 20240107
+	pkgrel = 2
 	url = https://github.com/ryanbinns/ttwatch
 	install = ttwatch-git.install
 	arch = i686
