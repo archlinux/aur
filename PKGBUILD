@@ -1,6 +1,4 @@
 # Maintainer: madelineceleste
-# this is my first pkgbuild. might be issues with it but its better than the outdated one that didnt even work at least!!
-# (original version uses autotools for build which were removed from flatpak a hot sec ago in favor of meson)
 
 pkgname=flatpak-local-git
 _pkgname=flatpak
