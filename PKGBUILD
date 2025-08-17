@@ -25,7 +25,7 @@ _pkgver=2.12
 _unifont_ver='16.0.04'
 #pkgver=${_pkgver/-/}
 pkgver='2.12.r292.g73d1c959'
-pkgrel=1
+pkgrel=2
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -46,7 +46,7 @@ conflicts=(
 replaces=(
   grub-common
   grub-bios
-  grub-emu 
+  grub-emu
   grub-efi-${_EFI_ARCH}
   grub
 )
@@ -90,12 +90,12 @@ optdepends=(
 
 if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
   makedepends+=(
-  libusbx
-  sdl
+    libusbx
+    sdl
   )
   optdepends+=(
-  'libusbx: For grub-emu USB support'
-  'sdl: For grub-emu SDL support'
+    'libusbx: For grub-emu USB support'
+    'sdl: For grub-emu SDL support'
   )
 fi
 
@@ -116,15 +116,15 @@ source=(
   'sbat.csv'
 )
 b2sums=('a6cec7271c3ea54a99f02ee6bc0a5825c8be657af68ba9a32b39a5fe8bcb571fb1ba39210426f6bf6a48d913e6e00df37dc2123ea1b39330f4c47bd9dbac9ae3'
-        'SKIP'
-        'b245a15d9dfab7f4e63bb32281909164d71d66e25c1ece2ceccbee5b2c1b00a46004c478a1b048c1b3efefd212a0b3f1a35a482fb12ef4489e7b7e09effd375a'
-        'SKIP'
-        '992c71790785304c28fbaf0dba21dab3e283b199509f0e7e1aa0df08126da75e15b6626c3638279ff2ecaa59b925096d7dbd67d6a53cebd0ce4326ff3719d25b'
-        'b4cd9ac976a579eca19d54c0b31c8d6324525fe5a0b9f5405deb63845367ac1adaa80ece4c166dfd5304608c41aa44b4f64efe235c03f437523b993be06e06e3'
-        'a7820bfe9bddc34af49de63222b3d2a9788367083e29db13b33120269adbfa1619ac421d8597f662f756592889f5cc5538544a17d9936d1420bd5742282c710c'
-        '5684ce121d2295b432bff5cf645d9150f91883bc56c244c94640fee3794364f641b1430c69fab38a0fd6f65cf1e08948a2b1839710c21386b924e25917245642'
-        '5e42db2161e8f594b82005b26e590a20a0e8d32b01119bdd7b1a7f7c4b0f3360e8730a3ecdd5912a4dc7af5bd9aed1c3e780965ad6747d831b470158da19388d'
-        'ce9b3904ce4bd00463c226ab1c97d3af94c6151c408bcd6483a0dd07ae4c343ee135907ad887c1d93525ec95d87409ef703ac7278698d49e99342332e483c436')
+  'SKIP'
+  'b245a15d9dfab7f4e63bb32281909164d71d66e25c1ece2ceccbee5b2c1b00a46004c478a1b048c1b3efefd212a0b3f1a35a482fb12ef4489e7b7e09effd375a'
+  'SKIP'
+  '992c71790785304c28fbaf0dba21dab3e283b199509f0e7e1aa0df08126da75e15b6626c3638279ff2ecaa59b925096d7dbd67d6a53cebd0ce4326ff3719d25b'
+  'b4cd9ac976a579eca19d54c0b31c8d6324525fe5a0b9f5405deb63845367ac1adaa80ece4c166dfd5304608c41aa44b4f64efe235c03f437523b993be06e06e3'
+  'a7820bfe9bddc34af49de63222b3d2a9788367083e29db13b33120269adbfa1619ac421d8597f662f756592889f5cc5538544a17d9936d1420bd5742282c710c'
+  '5684ce121d2295b432bff5cf645d9150f91883bc56c244c94640fee3794364f641b1430c69fab38a0fd6f65cf1e08948a2b1839710c21386b924e25917245642'
+  '5e42db2161e8f594b82005b26e590a20a0e8d32b01119bdd7b1a7f7c4b0f3360e8730a3ecdd5912a4dc7af5bd9aed1c3e780965ad6747d831b470158da19388d'
+  'ce9b3904ce4bd00463c226ab1c97d3af94c6151c408bcd6483a0dd07ae4c343ee135907ad887c1d93525ec95d87409ef703ac7278698d49e99342332e483c436')
 
 _backports=(
   # current git master for loads of security fixes
@@ -153,7 +153,7 @@ _configure_options=(
   --sysconfdir="/etc"
   --program-prefix=""
   --with-bootdir="/boot"
-  --with-grubdir="grub2"
+  --with-grubdir="grub"
   --disable-silent-rules
   --disable-werror
 )
@@ -204,7 +204,7 @@ prepare() {
 
   echo "Avoid problem with unifont during compile of grub..."
   # http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
-  gzip -cd "${srcdir}/unifont-${_unifont_ver}.bdf.gz" > "unifont.bdf"
+  gzip -cd "${srcdir}/unifont-${_unifont_ver}.bdf.gz" >"unifont.bdf"
 
   echo "Run bootstrap..."
   ./bootstrap \
@@ -346,7 +346,7 @@ _package_grub-efi() {
   rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/*.image || true
   rm -f "${pkgdir}/usr/lib/grub/${_EFI_ARCH}-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
 
-  sed -e "s/%PKGVER%/${epoch}:${pkgver}-${pkgrel}/" < "${srcdir}/sbat.csv" > "${pkgdir}/usr/share/grub/sbat.csv"
+  sed -e "s/%PKGVER%/${epoch}:${pkgver}-${pkgrel}/" <"${srcdir}/sbat.csv" >"${pkgdir}/usr/share/grub/sbat.csv"
 }
 
 _package_grub-emu() {
