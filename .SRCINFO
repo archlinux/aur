@@ -8,6 +8,7 @@ pkgbase = xlibre-xf86-video-voodoo-bin
 	license = MIT
 	depends = glibc
 	provides = xlibre-video-voodoo=1.2.6.1
+	provides = xf86-video-voodoo
 	noextract = xlibre-xf86-video-voodoo-1.2.6.1-2-x86_64.pkg.tar.zst
 	options = !strip
 	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-voodoo-1.2.6.1-2-x86_64.pkg.tar.zst
