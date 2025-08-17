@@ -11,7 +11,7 @@ pkgbase = cwal-git
 	depends = libimagequant
 	provides = cwal
 	conflicts = cwal
-	source = git+https://github.com/nitinbhat972/cwal.git
+	source = git+https://github.com/nitinbhat972/cwal.git#branch=main
 	sha256sums = SKIP
 
 pkgname = cwal-git
