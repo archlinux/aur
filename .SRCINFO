@@ -1,0 +1,20 @@
+pkgbase = kshift
+	pkgdesc = KDE Theme Shift
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/justjokiing/kshift
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-click
+	depends = python-colorama
+	depends = python-pydantic
+	depends = python-pyyaml
+	depends = python-requests
+	source = https://pypi.io/packages/source/k/kshift/kshift-1.2.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = kshift
