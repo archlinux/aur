@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Bash script for downloading and verifying OS images."
 arch=('any')
 url="https://codeberg.org/bashuser30/$_pkgname"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bash'
          'coreutils'
          'jq'
