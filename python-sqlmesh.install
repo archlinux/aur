@@ -1,0 +1,23 @@
+post_install() {
+  echo "==> python-sqlmesh installed."
+  echo "    CLI check:  sqlmesh --version"
+  echo "    Extras:     sqlmesh-extras-helper install <extra...>"
+  cat <<'MSG'
+    Examples:
+      sqlmesh-extras-helper install web postgres duckdb
+
+    Available extras (PyPI): athena, azuresql, azuresql-odbc, bigquery,
+    bigframes, clickhouse, databricks, dev, dbt, dlt, duckdb, gcppostgres,
+    github, llm, motherduck, mssql, mssql-odbc, mysql, mwaa, postgres,
+    redshift, slack, snowflake, trino, web, lsp, risingwave
+MSG
+}
+
+post_upgrade() {
+
+  :
+}
+
+pre_remove() {
+  :
+}
