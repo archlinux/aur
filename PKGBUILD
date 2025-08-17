@@ -31,7 +31,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.3.3.r61.g3b64a9619f
-pkgrel=3
+pkgrel=4
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -72,9 +72,11 @@ prepare() {
     sed -ri '/^AC_CONFIG_FILES\(\[$/,/^\]\)$/{
 /^AC_CONFIG_FILES\(\[$/n
 /^\]\)$/n
-/^\s*(module\/.*|zfs.release|Makefile)/!d
+/^\s*(module\/.*|zfs.release|Makefile)$/!d
 }
-/^AC_CONFIG_FILES\(\[.*\]\)$/d
+/^AC_CONFIG_FILES\(\[.*\]\)$/{
+/objtool-wrapper/!d
+}
 ' configure.ac
 
     sed -i -e "s/Version:[[:print:]]*/Version:       ${pkgver}/" META
@@ -105,9 +107,9 @@ package() {
 
     dkmsdir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
     install -d "${dkmsdir}"/{config,scripts}
-    cp -a configure dkms.conf Makefile.in META ${_pkgname}_config.h.in ${_pkgname}.release.in include/ module/ "${dkmsdir}"/
+    cp -a configure dkms.conf Makefile.in META zfs_config.h.in zfs.release.in include/ module/ "${dkmsdir}"/
     cp config/compile config/config.* config/missing config/*sh "${dkmsdir}"/config/
-    cp scripts/dkms.postbuild "${dkmsdir}"/scripts/
+    cp scripts/dkms.postbuild scripts/objtool-wrapper.in "${dkmsdir}"/scripts/
 
     install -D -m755 -t "${pkgdir}/usr/share/libalpm/scripts" ../zfs-dkms-check
     install -D -m644 -t "${pkgdir}/usr/share/libalpm/hooks" ../69-zfs-dkms-check.hook
