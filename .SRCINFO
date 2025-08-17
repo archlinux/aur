@@ -9,10 +9,6 @@ pkgbase = xlibre-xf86-video-voodoo-bin
 	depends = glibc
 	provides = xf86-video-voodoo
 	provides = xlibre-video-voodoo
-	conflicts = xf86-video-voodoo
-	conflicts = xlibre-video-voodoo
-	conflicts = X-ABI-VIDEODRV_VERSION<28
-	conflicts = X-ABI-VIDEODRV_VERSION>=29
 	noextract = xlibre-xf86-video-voodoo-1.2.6.1-2-x86_64.pkg.tar.zst
 	options = !strip
 	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-voodoo-1.2.6.1-2-x86_64.pkg.tar.zst
