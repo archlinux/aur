@@ -1,5 +1,5 @@
 pkgbase = xlibre-xserver-xnest-bin
-	pkgdesc = Official XLibre fork of X.Org nested X server that runs as an X application
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org nested X server that runs as an X application (binary release)
 	pkgver = 25.0.0.8
 	pkgrel = 1
 	url = https://github.com/X11Libre/xserver
