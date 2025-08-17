@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-php
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="PHP grammar for tree-sitter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-php.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-php/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5946f60b0f0e021bd3d9dd1d17fa3966d203f7ca218d7005eb00a224c217a7d4')
+sha256sums=('3320ba539ea988967a02568dbf41945df0044ecb9fa88ea38daa1116489093db')
 
 
 build() {
