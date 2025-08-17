@@ -1,7 +1,7 @@
 pkgbase = stutui
-	pkgdesc = A minimalist terminal‐based study timer and stopwatch with daily logging, built in C.
+	pkgdesc = A minimalist terminal‐based study timer and stopwatch with daily logging, built in C
 	pkgver = 1.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://sr.ht/~fijarom/stutui/
 	arch = x86_64
 	license = GPL3
