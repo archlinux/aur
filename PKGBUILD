@@ -3,7 +3,7 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-astlib')  # pillow <- matplotlib <- astlib, scipy required by astlib, photutils
 #             'python-starlink-pyast'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1426d9cee51e3a43e29106bf8e786584')
+md5sums=('d3441689a9fa53961fcfe98f667b6fe3')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
