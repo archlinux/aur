@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-video-ati-bin
-	pkgdesc = Official XLibre fork of X.Org ati video driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org ati video driver (binary release)
 	pkgver = 22.0.0.1
 	pkgrel = 3
 	url = https://github.com/X11Libre
