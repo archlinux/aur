@@ -16,7 +16,7 @@ pkgbase = sherlock-launcher-unstable-git
 	conflicts = sherlock-launcher-unstable
 	conflicts = sherlock-launcher-bin
 	conflicts = sherlock-launcher-git
-	source = sherlock-launcher-unstable::git+https://github.com/skxxtz/sherlock.git#branch=unstable/release-v1.0.0
+	source = sherlock-launcher-unstable::git+https://github.com/skxxtz/sherlock.git#branch=unstable
 	sha256sums = SKIP
 
 pkgname = sherlock-launcher-unstable-git
