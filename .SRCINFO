@@ -26,6 +26,6 @@ pkgbase = waydroid-helper
 	provides = waydroid-helper
 	conflicts = waydroid-helper
 	source = https://github.com/ayasa520/waydroid-helper/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 5f39c511c4bc21f55c510241a33e948dd690ebca11eb4e84efc6669557951442209d18710cef2694c6e6dd9b390bbd175d939c1c9f772f74ab85da8d61504a0
+	sha256sums = ce4ed49b58e1627bd26667a604f758205f54a33f70418e50f158980799dd69e2
 
 pkgname = waydroid-helper

@@ -12,7 +12,7 @@ optdepends=('bindfs: shared folders support')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('241a33e948dd690ebca11eb4e84efc6669557951442209d18710cef2694c6e6d')
+sha256sums=('ce4ed49b58e1627bd26667a604f758205f54a33f70418e50f158980799dd69e2')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
