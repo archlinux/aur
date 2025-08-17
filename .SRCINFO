@@ -1,12 +1,12 @@
 pkgbase = calories-bin
 	pkgdesc = CLI tool for tracking calories and weight using the Harris Benedict formula for calculating your BMR
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zupzup/calories
 	arch = aarch64
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	provides = calories
 	conflicts = calories
 	source_aarch64 = calories-1.1.1-aarch64.tar.gz::https://github.com/zupzup/calories/releases/download/1.1.1/calories_1.1.1_linux_arm64.tar.gz

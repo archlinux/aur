@@ -4,11 +4,11 @@
 _pkgname="calories"
 pkgname="${_pkgname}-bin"
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for tracking calories and weight using the Harris Benedict formula for calculating your BMR"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/zupzup/${_pkgname}"
-license=('MIT')
+license=('Apache-2.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
