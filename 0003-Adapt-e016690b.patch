@@ -1,8 +1,17 @@
+From f83536167ff39989ec239ad336837f3ac6b930ef Mon Sep 17 00:00:00 2001
+From: rsp4jack <rsp4jack@outlook.com>
+Date: Sun, 17 Aug 2025 20:27:32 +0800
+Subject: [PATCH 3/3] Adapt e016690b
+
+---
+ src/zones.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/src/zones.cpp b/src/zones.cpp
-index e392b6b..04dd83f 100644
+index f7766bf..182213f 100644
 --- a/src/zones.cpp
 +++ b/src/zones.cpp
-@@ -112,7 +112,7 @@ public:
+@@ -127,7 +127,7 @@ public:
          }
          auto w = window();
          if (!w) {
@@ -11,3 +20,6 @@ index e392b6b..04dd83f 100644
              return;
          }
          const QPointF pos = w->frameGeometry().topLeft() - m_zone->m_area.topLeft();
+-- 
+2.50.1
+
