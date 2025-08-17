@@ -1,25 +1,27 @@
 # Maintainer: Jeremy Attali <contact@jtheoof.me>
 
 pkgname=ttf-menomonia
-pkgver=1.0.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Font family for Menomonia, a font used in Guild Wars 2'
 arch=('any')
 license=(custom)
-url=http://www.chank.com
-source=(
-  'LICENSE'
-  'menomonia-italic.ttf'
-  'menomonia.ttf'
+url="https://github.com/jtheoof/ttf-menomonia"
+makedepends=('fontforge' 'python-fonttools')
+source=("https://github.com/jtheoof/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=(
+  '9054cee935b2a3142153302c55a22a0436e802a23b1486cb4390407cfce1d481'
 )
 
-sha256sums=(
-  '06d7d2e499ade0219c5d702ba35838e138caf78dc4fb023328b486d6d79fa64e'
-  '14936ee53f7d885f49c1320d801dcf355f7f8ceade946851ef35cb2ed1876838'
-  'ae9afb461f48a7f6ff3c7466f3fd127349fac9cb76263236e8afefbb9905dfe1'
-)
+build() {
+  cd "${pkgname}-${pkgver}"
+  make build
+}
 
 package() {
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname#ttf-}" ${srcdir}/*.ttf
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  echo $srcdir
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname#ttf-}" \
+    ${srcdir}/${pkgname}-${pkgver}/menomonia-fonts-ttf-${pkgver}/*.ttf
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    ${srcdir}/${pkgname}-${pkgver}/LICENSE
 }

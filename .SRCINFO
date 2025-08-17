@@ -1,15 +1,13 @@
 pkgbase = ttf-menomonia
 	pkgdesc = Font family for Menomonia, a font used in Guild Wars 2
-	pkgver = 1.0.0
+	pkgver = 1.1.2
 	pkgrel = 1
-	url = http://www.chank.com
+	url = https://github.com/jtheoof/ttf-menomonia
 	arch = any
 	license = custom
-	source = LICENSE
-	source = menomonia-italic.ttf
-	source = menomonia.ttf
-	sha256sums = 06d7d2e499ade0219c5d702ba35838e138caf78dc4fb023328b486d6d79fa64e
-	sha256sums = 14936ee53f7d885f49c1320d801dcf355f7f8ceade946851ef35cb2ed1876838
-	sha256sums = ae9afb461f48a7f6ff3c7466f3fd127349fac9cb76263236e8afefbb9905dfe1
+	makedepends = fontforge
+	makedepends = python-fonttools
+	source = https://github.com/jtheoof/ttf-menomonia/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 9054cee935b2a3142153302c55a22a0436e802a23b1486cb4390407cfce1d481
 
 pkgname = ttf-menomonia
