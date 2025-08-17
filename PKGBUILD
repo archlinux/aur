@@ -19,7 +19,7 @@ build() {
   cd itpp-$pkgver
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
