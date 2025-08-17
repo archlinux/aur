@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-video-vmware-bin
-	pkgdesc = Official XLibre fork of X.Org vmware video driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org vmware video driver (binary release)
 	pkgver = 13.4.0.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
