@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Firelight
+GenericName=A libretro-based emulation frontend
+Comment=A libretro-based emulation frontend
+Exec=firelight
+Icon=firelight
+Categories=Game;Emulator;
