@@ -2,7 +2,7 @@
 
 # shellcheck shell=bash
 pkgname=zig-master-bin
-pkgver=0.15.0_dev.1427.g3de8bbd3d
+pkgver=0.15.0_dev.1572.g47e652876
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
 arch=('x86_64' 'arm' 'aarch64' 'riscv64')
