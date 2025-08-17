@@ -1,5 +1,5 @@
 pkgbase = xlibre-xf86-video-qxl-bin
-	pkgdesc = Official XLibre fork of X.Org qxl video driver
+	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org qxl video driver (binary release)
 	pkgver = 0.1.6.1
 	pkgrel = 2
 	url = https://github.com/X11Libre
