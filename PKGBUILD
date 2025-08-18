@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=plutonia-bin
 _pkgname=Plutonia
-pkgver=1.1.15
+pkgver=1.1.16
 _electronversion=37
 pkgrel=1
 pkgdesc="A powerful launcher for Plutonia, built with Electron and JavaScript.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('185a7dcde2cdfd3a675ed8d75b27c9f79fc9eafb83728ec383bf045165822cf7'
+sha256sums=('235d5ed3110cdba69f1fc0ddc57bcc2274ac635cb95031c54e1bf1353df3e2a4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
