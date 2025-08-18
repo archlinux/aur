@@ -1,15 +1,16 @@
 pkgname=cmdcreate
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Meme-Supplier/cmdcreate"
 license=('MIT')
 depends=()
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'rustup')
 source=("git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
+  rustup default nightly
   cd "$srcdir/$pkgname"
   cargo build --release
 }
