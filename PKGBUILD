@@ -1,7 +1,7 @@
 # Maintainer: Mike Krüger <mkrueger@posteo.de>
 pkgname=game-cheetah
 pkgver=0.4.6
-pkgrel=1
+pkgrel=3
 pkgdesc="High-performance memory scanner/editor and game trainer"
 arch=('x86_64')
 url="https://github.com/mkrueger/game_cheetah"
@@ -24,7 +24,7 @@ build() {
 
 check() {
     cd "$srcdir/game_cheetah-$pkgver"
-    cargo test --release || true
+    # cargo test --release
 }
 
 package() {

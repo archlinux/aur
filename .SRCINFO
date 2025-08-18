@@ -1,7 +1,7 @@
 pkgbase = game-cheetah
 	pkgdesc = High-performance memory scanner/editor and game trainer
 	pkgver = 0.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mkrueger/game_cheetah
 	arch = x86_64
 	license = Apache
