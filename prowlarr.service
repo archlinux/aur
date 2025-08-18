@@ -35,7 +35,6 @@ RestartSec=10
 TimeoutStopSec=20
 SyslogIdentifier=prowlarr
 ConfigurationDirectory=prowlarr
-LogsDirectory=/var/lib/prowlarr/logs
 RuntimeDirectory=prowlarr
 StateDirectory=prowlarr
 WorkingDirectory=/var/lib/prowlarr
