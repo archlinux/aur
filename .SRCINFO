@@ -1,6 +1,6 @@
 pkgbase = python-rapidgzip
 	pkgdesc = A parallelized gzip decoder with seek capability
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 3
 	url = https://github.com/mxmlnkn/rapidgzip
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-rapidgzip
 	depends = glibc
 	depends = gcc-libs
 	provides = rapidgzip
-	source = python-rapidgzip-0.15.0.tar.gz::https://files.pythonhosted.org/packages/fa/df/f4abf845cb27f60156b124af95f483d2861cd607811120650293a1835327/rapidgzip-0.15.0.tar.gz
-	sha256sums = e81079c190c458652076f3667f90aa5886fbf2c92a5a3d0169cfb1faf1e45dfa
+	source = python-rapidgzip-0.15.1.tar.gz::https://files.pythonhosted.org/packages/b8/a7/f61fe9ca8e6207e6b2a91f868e204fb540bb2a55273556d8d52588667731/rapidgzip-0.15.1.tar.gz
+	sha256sums = ba1ed7ce1c7894a37c06e33a46c15b5a38b490780f44095945aeb3505efeacc1
 
 pkgname = python-rapidgzip
