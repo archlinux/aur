@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=final2x-bin
 _pkgname=Final2x
-pkgver=2.1.0
-_date=2024-12-14
+pkgver=3.0.0
+_date=2025-08-16
 _electronversion=27
 _pyver=3.13
-pkgrel=3
+pkgrel=1
 pkgdesc="2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 license=('BSD-3-Clause')
@@ -51,9 +51,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Tohrusky/Final2x/${_date}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a3c46e08a0754f223e35d578706eb6a071437a6dd554d10fc60efaf21f49acad'
+sha256sums=('4fa96ac6c734863facd762dfb366a1ec384a040ce5ac50977ccd6f9ba6f592e2'
             '1c242d5b56eacdc11b1bb8460b78ba0212e6cdf1aa6f2809743e0b9d0e064b3d'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -63,6 +67,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     python -m venv ./
     ./bin/pip install "${_pkgname}-core"

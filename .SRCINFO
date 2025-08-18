@@ -1,7 +1,7 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://final2x.tohru.top/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -36,11 +36,11 @@ pkgbase = final2x-bin
 	depends = python-tornado
 	conflicts = final2x
 	options = !strip
-	source = final2x-2.1.0.deb::https://github.com/Tohrusky/Final2x/releases/download/2024-12-14/Final2x-linux-pip-x64-deb.deb
-	source = LICENSE-2.1.0::https://raw.githubusercontent.com/Tohrusky/Final2x/2024-12-14/LICENSE
+	source = final2x-3.0.0.deb::https://github.com/Tohrusky/Final2x/releases/download/2025-08-16/Final2x-linux-pip-x64-deb.deb
+	source = LICENSE-3.0.0::https://raw.githubusercontent.com/Tohrusky/Final2x/2025-08-16/LICENSE
 	source = final2x.sh
-	sha256sums = a3c46e08a0754f223e35d578706eb6a071437a6dd554d10fc60efaf21f49acad
+	sha256sums = 4fa96ac6c734863facd762dfb366a1ec384a040ce5ac50977ccd6f9ba6f592e2
 	sha256sums = 1c242d5b56eacdc11b1bb8460b78ba0212e6cdf1aa6f2809743e0b9d0e064b3d
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = final2x-bin
