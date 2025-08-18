@@ -10,7 +10,7 @@ makedepends=("rust")
 license=("GPL-3.0-or-later")
 depends=('gcc-libs')
 source=("rusk-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e1debbbcc795afce6efbe61029f8c048404f448f41ef6bdc9286379cef46c079')
+sha256sums=('cd78a7c5b97a5bb17e930b755e45c8716a89ae3bbe5686899bee853cc01075c3')
 options=('!debug')
 
 build() {
