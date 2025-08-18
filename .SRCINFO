@@ -28,7 +28,7 @@ pkgbase = pyfunceble-dev
 	provides = pyfunceble=4.3.0
 	conflicts = pyfunceble
 	source = https://files.pythonhosted.org/packages/source/p/pyfunceble_dev/pyfunceble_dev-4.3.0.tar.gz
-	source = https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE
+	source = https://raw.githubusercontent.com/funilrys/PyFunceble/master/LICENSE
 	sha256sums = c9a4a52d776de84c7bf265b678873634ebc1eb37f4203e4f20f6e39bf78e9c16
 	sha256sums = ac4f1fa7ee565806d41b26bc9a0d9f313224730ddf3c0d4f346f3a511c47dd4e
 
