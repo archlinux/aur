@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AniLabXMax
+Comment=AniLabX MAX - PC app for watching anime/dramas/cartoons and reading manga/comics/light novels 
+Exec=anilabxmax
+Type=Application
+Icon=anilabxmax
+Terminal=false
+Categories=Utility;Multimedia;

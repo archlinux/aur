@@ -1,0 +1,19 @@
+pkgbase = anilabxmax-bin
+	pkgdesc = AniLabX MAX - PC app for watching anime/dramas/cartoons and reading manga/comics/light novels
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/AniLabX/AniLabXMAX
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	provides = anilabxmax
+	conflicts = anilabxmax
+	noextract = AniLabXMAX_v${pkgver}_linux64
+	source = https://github.com/AniLabX/AniLabXMAX/releases/download/v1.2/AniLabXMAX_v1.2_linux64
+	source = https://anilabx.xyz/assets/media/hero.png
+	source = anilabxmax.desktop
+	sha256sums = 1dc7b68d5b8a4bed63f7dea1984e01e791fd72b1f23e9e7f3d49bfecc91c6ac0
+	sha256sums = 52148e76e72b5746e3e03aa90dcaf546df5ec0dea5cce640d711c37b8c9fbb73
+	sha256sums = df9869cb7455e2a09183e2e0ad7fee0649c814ea7480ebd2d5fef75626243885
+
+pkgname = anilabxmax-bin
