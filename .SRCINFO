@@ -1,0 +1,18 @@
+pkgbase = doxx-git
+	pkgdesc = Terminal .docx viewer inspired by Glow
+	pkgver = r24.2d6c5d8
+	pkgrel = 1
+	url = https://github.com/bgreenwell/doxx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = cargo
+	makedepends = git
+	makedepends = cargo
+	provides = doxx
+	conflicts = doxx
+	options = !lto
+	source = git+https://github.com/bgreenwell/doxx
+	sha256sums = SKIP
+
+pkgname = doxx-git
