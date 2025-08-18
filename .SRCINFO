@@ -1,0 +1,14 @@
+pkgbase = ting
+	pkgdesc = Audio feedback on the command line
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dhth/ting
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	provides = ting
+	conflicts = ting
+	source = ting-0.1.0.tar.gz::https://github.com/dhth/ting/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b4eee508958d9e1190e4dfc330d9a7e53b4a69839b35dc43855126781ab5ffa3
+
+pkgname = ting
