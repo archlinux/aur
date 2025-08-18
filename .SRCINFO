@@ -1,0 +1,16 @@
+pkgbase = ukui-notification-daemon
+	pkgdesc = Notification daemon for the UKUI desktop
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ukui/ukui-notification-daemon
+	arch = x86_64
+	groups = ukui
+	license = GPL
+	depends = dconf
+	depends = gsettings-qt
+	depends = libcanberra
+	depends = qt5-svg
+	source = ukui-notification-daemon-1.0.3.tar.gz::https://github.com/ukui/ukui-notification-daemon/archive/v1.0.3.tar.gz
+	sha512sums = 242aebfcd3dfd758d996d9f78d718a1f48509895d39fd553f64e57a14ce3010c236b540b415f539f0af409c113647438ea023cd80e9684f9b885670a929906e8
+
+pkgname = ukui-notification-daemon
