@@ -1,0 +1,4 @@
+[kafs]
+source = "git"
+git = "git://git.infradead.org/users/dhowells/kafs-client.git"
+prefix = "v"
