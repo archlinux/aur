@@ -1,7 +1,7 @@
 pkgbase = museeks
 	pkgdesc = 🎵 A simple, clean and cross-platform music player.
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://museeks.io
 	arch = any
 	license = MIT

@@ -5,7 +5,7 @@ _pkgname=Museeks
 _flatpakname="io.${pkgname}.app"
 pkgver=0.23.0
 _nodeversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="🎵 A simple, clean and cross-platform music player."
 arch=('any')
 url="https://museeks.io"
@@ -50,6 +50,7 @@ prepare() {
 		export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 		export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 		export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
 	fi
     bun install --frozen-lockfile
 }
@@ -62,7 +63,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/bin/"${pkgname}" -t "${pkgdir}/usr/bin"
 	install -Dm755 -d "${pkgdir}/usr/lib/${_pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/lib/"${_pkgname}"/{icons,migrations} \
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/lib/"${_pkgname}/icons" \
         "${pkgdir}/usr/lib/${_pkgname}"
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/share/applications/"${_pkgname}".desktop \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
