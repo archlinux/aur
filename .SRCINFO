@@ -1,13 +1,13 @@
 pkgbase = envoyproxy-bin
 	pkgdesc = An open source edge and service proxy, designed for cloud-native applications
-	pkgver = 1.33.0
+	pkgver = 1.35.0
 	pkgrel = 1
 	url = https://envoyproxy.io
 	arch = x86_64
 	license = Apache2
 	provides = envoyproxy
 	conflicts = envoyproxy
-	source = https://archive.tetratelabs.io/envoy/download/v1.33.0/envoy-v1.33.0-linux-amd64.tar.xz
-	sha512sums = 75e48cbcaaf482324751d2a52ede160c1dd28a862ee53e1565da76d7ee11db3afec6c6e1100b71fcb16d81f95240bcaafa4d0e45e0eb7a6c05987cb7ee31f3d6
+	source = https://archive.tetratelabs.io/envoy/download/v1.35.0/envoy-v1.35.0-linux-amd64.tar.xz
+	sha512sums = 605a7d1d29d7e5c6da50649869ab74fd3800208a1b47b78daedf38aac499b89996d7cdafc143f52b36067bce8c2fde03a929ce2a9054163a21a77c29ecd178b8
 
 pkgname = envoyproxy-bin
