@@ -1,0 +1,14 @@
+pkgbase = btail
+	pkgdesc = Interactive File Tail Viewer TUI
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/galalen/btail
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = btail
+	conflicts = btail
+	source = btail-0.1.4.tar.gz::https://github.com/galalen/btail/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 0b8668b9930f0a1ed65218396d01dce179abf878ab7b7afca1022969d2eb89e2
+
+pkgname = btail
