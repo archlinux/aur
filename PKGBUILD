@@ -1,8 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-_pkgname=clvk
 pkgname=clvk-git
-pkgver=r674.b3407a7
-pkgrel=2
+pkgver=r751.8cd638b
+pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
@@ -19,22 +18,24 @@ source=("git+$url.git"
 	"opencl-headers::git+https://github.com/KhronosGroup/OpenCL-Headers.git"
 	"spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 	"spirv-llvm-translator::git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git"
-	"spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git")
+	"spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+	"clspv.patch::https://github.com/google/clspv/commit/7e2a07a8c337fd7beb3b53873094bdaceb928b1d.diff")
 
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '7c7bc20f52abdb144fcbaa52d2791f2137f42f053e292c362cea2c3c4bd3e2db')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
+	cd "$srcdir/${pkgname::-4}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
+	cd "$srcdir/${pkgname::-4}"
 	git submodule init
 	for module in {clspv,opencl-headers,spirv-headers,spirv-llvm-translator,spirv-tools};
 	do
@@ -42,13 +43,21 @@ prepare() {
 	done
 	git -c protocol.file.allow=always submodule update
 
-	cd "$srcdir/$_pkgname/external/clspv/utils"
+	cd "$srcdir/${pkgname::-4}/external/clspv"
+	if grep clspv_local lib/FixupBuiltinsPass.cpp
+	then
+		:
+	else
+	patch -Np1 < "$srcdir/clspv.patch"
+	fi
+
+	cd "$srcdir/${pkgname::-4}/external/clspv/utils"
 	python fetch_sources.py
 }
 
 build() {
 	cd "$srcdir"
-	cmake -B build -S "$_pkgname" \
+	cmake -B build -S "${pkgname::-4}" \
 	-GNinja \
 	-DCMAKE_C_FLAGS="$CFLAGS" \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
@@ -57,7 +66,7 @@ build() {
 	-DSKIP_SPIRV_TOOLS_INSTALL=1 \
 	-DCLSPV_BUILD_TESTS=0 \
 	-DCLVK_BUILD_TESTS=0 \
-	-DCMAKE_INSTALL_PREFIX=/opt/$_pkgname
+	-DCMAKE_INSTALL_PREFIX=/usr/lib/${pkgname::-4}
 	cmake --build build
 }
 
@@ -68,10 +77,10 @@ package() {
 	mkdir -p "$pkgdir/etc/profile.d"
 
 	cat > "$pkgdir/etc/OpenCL/vendors/clvk64.icd" <<- EOF
-	/opt/clvk/libOpenCL.so
+	/usr/lib/clvk/libOpenCL.so
 	EOF
 
 	cat > "$pkgdir/etc/profile.d/clvk-git.sh" <<-EOF
-	export CLVK_CLSPV_PATH=/opt/clvk/clspv
+	export CLVK_CLSPV_PATH=/usr/lib/clvk/clspv
 	EOF
 }

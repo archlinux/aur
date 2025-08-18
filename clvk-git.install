@@ -1,21 +1,21 @@
 post_install() {
 cat << EOF
-=======================================================================
-Either reboot your system, or set CLVK_CLSPV_PATH=/opt/clvk/clspv in either /etc/environment
-or your shell's file (i.e. .bashrc)
+==============================================================================
+In order to use clvk, please either log out and log back into your environment
+or source /etc/profile.d/clvk-git.sh in the terminal you want to use clvk in.
 
 Go to https://github.com/kpet/clvk to view more environmental variables
-=======================================================================
+==============================================================================
 EOF
 }
 
 post_upgrade() {
 cat << EOF
-=======================================================================
-Either reboot your system, or set CLVK_CLSPV_PATH=/opt/clvk/clspv in either /etc/environment
-or your shell's file (i.e. .bashrc)
+==============================================================================
+In order to use clvk, please either log out and log back into your environment
+or source /etc/profile.d/clvk-git.sh in the terminal you want to use clvk in.
 
 Go to https://github.com/kpet/clvk to view more environmental variables
-=======================================================================
+==============================================================================
 EOF
 }

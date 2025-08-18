@@ -1,7 +1,7 @@
 pkgbase = clvk-git
 	pkgdesc = Experimental implementation of OpenCL 3.0 on Vulkan
-	pkgver = r674.b3407a7
-	pkgrel = 2
+	pkgver = r751.8cd638b
+	pkgrel = 1
 	url = https://github.com/kpet/clvk
 	install = clvk-git.install
 	arch = x86_64
@@ -32,11 +32,13 @@ pkgbase = clvk-git
 	source = spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = spirv-llvm-translator::git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git
 	source = spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git
+	source = clspv.patch::https://github.com/google/clspv/commit/7e2a07a8c337fd7beb3b53873094bdaceb928b1d.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 7c7bc20f52abdb144fcbaa52d2791f2137f42f053e292c362cea2c3c4bd3e2db
 
 pkgname = clvk-git
