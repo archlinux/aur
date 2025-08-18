@@ -1,0 +1,12 @@
+post_install() {
+  case "$(uname -m)" in
+    aarch64) ln -sf /usr/bin/xray /usr/share/x-ui/bin/xray-linux-arm64;;
+    armv7*)  ln -sf /usr/bin/xray /usr/share/x-ui/bin/xray-linux-armv7;;
+    i686)    ln -sf /usr/bin/xray /usr/share/x-ui/bin/xray-linux-386;;
+    x86_64)  ln -sf /usr/bin/xray /usr/share/x-ui/bin/xray-linux-amd64;;
+  esac
+}
+
+pre_remove() {
+  rm -f /usr/share/x-ui/bin/xray-linux-*
+}
