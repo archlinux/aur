@@ -6,8 +6,8 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=dispositio
 pkgname=${_pkgname}-git
-pkgver=0.0.2
-pkgrel=4
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Tool for displaying tabula data r (from CSV, JSON or YAML) in terminal (or markdown or Texttile)> You can use it as a library."
 arch=(any)
 url="https://spn109.fr/disposition"
