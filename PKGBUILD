@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dash-player-git
 _pkgname=DashPlayer
-pkgver=5.1.5.r0.g4499055
+pkgver=5.1.7.r10.g33c52db
 _electronversion=29
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="A video player designed specifically for English learning.(Use system-wide electron)一款专为英语学习打造的视频播放器"
 arch=('any')
-url="https://solidspoon.xyz/app/dash-player/"
+url="https://dash-player.solidspoon.xyz/"
 _ghurl="https://github.com/solidSpoon/DashPlayer"
-license=('MIT')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
