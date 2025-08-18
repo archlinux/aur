@@ -57,7 +57,7 @@ pkgbase = xlibre-server-bin
 	replaces = xf86-video-modesetting
 	noextract = xlibre-server-25.0.0.8-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-server-25.0.0.8-1-x86_64.pkg.tar.zst
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xserver-25.0.0.8-1-x86_64.pkg.tar.zst
 	sha256sums = 21cb225b986fa491f1543d4b380387229967a5db6c393077eed7ffc0983079ed
 
 pkgname = xlibre-server-bin
