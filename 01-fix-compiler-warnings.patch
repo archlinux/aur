@@ -1,0 +1,120 @@
+From 26a124d78943c17c031fa58ac880bc8706c7b602 Mon Sep 17 00:00:00 2001
+From: Matthew Fisher <matt.fisher@fermyon.com>
+Date: Tue, 22 Jul 2025 14:27:28 -0700
+Subject: [PATCH] fix compiler warnings in nightly
+
+Signed-off-by: Matthew Fisher <matt.fisher@fermyon.com>
+
+diff --git a/crates/app/src/lib.rs b/crates/app/src/lib.rs
+index 6d4eafd5..3f2a0098 100644
+--- a/crates/app/src/lib.rs
++++ b/crates/app/src/lib.rs
+@@ -249,7 +249,7 @@ impl<'a> AppComponent<'a> {
+ 
+     /// Returns an iterator of [`ContentPath`]s for this component's configured
+     /// "directory mounts".
+-    pub fn files(&self) -> std::slice::Iter<ContentPath> {
++    pub fn files(&self) -> std::slice::Iter<'_, ContentPath> {
+         self.locked.files.iter()
+     }
+ 
+diff --git a/crates/componentize/src/lib.rs b/crates/componentize/src/lib.rs
+index e57ce131..76ee8f7a 100644
+--- a/crates/componentize/src/lib.rs
++++ b/crates/componentize/src/lib.rs
+@@ -39,7 +39,7 @@ static EXPORT_INTERFACES: &[(&str, &str)] = &[
+     ("handle-http-request", "inbound-http"),
+ ];
+ 
+-pub fn componentize_if_necessary(module_or_component: &[u8]) -> Result<Cow<[u8]>> {
++pub fn componentize_if_necessary(module_or_component: &[u8]) -> Result<Cow<'_, [u8]>> {
+     for payload in Parser::new(0).parse_all(module_or_component) {
+         if let Payload::Version { encoding, .. } = payload.context("unable to parse binary")? {
+             return match encoding {
+diff --git a/crates/componentize/src/module_info.rs b/crates/componentize/src/module_info.rs
+index c951b244..5445004d 100644
+--- a/crates/componentize/src/module_info.rs
++++ b/crates/componentize/src/module_info.rs
+@@ -83,7 +83,7 @@ impl ModuleInfo {
+ 
+     /// Returns the wit-bindgen metadata producers processed-by field, if
+     /// present.
+-    pub fn bindgen_processors(&self) -> Option<wasm_metadata::ProducersField> {
++    pub fn bindgen_processors(&self) -> Option<wasm_metadata::ProducersField<'_>> {
+         self.bindgen
+             .as_ref()?
+             .producers
+diff --git a/crates/doctor/src/lib.rs b/crates/doctor/src/lib.rs
+index 1e40fe6a..f98c0692 100644
+--- a/crates/doctor/src/lib.rs
++++ b/crates/doctor/src/lib.rs
+@@ -54,7 +54,7 @@ impl Checkup {
+     }
+ 
+     /// Returns the next detected problem.
+-    pub async fn next_diagnosis(&mut self) -> Result<Option<PatientDiagnosis>> {
++    pub async fn next_diagnosis(&mut self) -> Result<Option<PatientDiagnosis<'_>>> {
+         while self.unprocessed_diagnoses.is_empty() {
+             let Some(diagnostic) = self.diagnostics.pop_front() else {
+                 return Ok(None);
+diff --git a/crates/expressions/src/template.rs b/crates/expressions/src/template.rs
+index 013c8976..15973750 100644
+--- a/crates/expressions/src/template.rs
++++ b/crates/expressions/src/template.rs
+@@ -46,7 +46,7 @@ impl Template {
+         self.parts.iter().all(|p| matches!(p, Part::Lit(_)))
+     }
+ 
+-    pub(crate) fn parts(&self) -> std::slice::Iter<Part> {
++    pub(crate) fn parts(&self) -> std::slice::Iter<'_, Part> {
+         self.parts.iter()
+     }
+ }
+diff --git a/crates/factors-executor/src/lib.rs b/crates/factors-executor/src/lib.rs
+index 07379269..cfdc7044 100644
+--- a/crates/factors-executor/src/lib.rs
++++ b/crates/factors-executor/src/lib.rs
+@@ -158,7 +158,7 @@ impl<T: RuntimeFactors, U: Send + 'static> FactorsExecutorApp<T, U> {
+     }
+ 
+     /// Returns an instance builder for the given component ID.
+-    pub fn prepare(&self, component_id: &str) -> anyhow::Result<FactorsInstanceBuilder<T, U>> {
++    pub fn prepare(&self, component_id: &str) -> anyhow::Result<FactorsInstanceBuilder<'_, T, U>> {
+         let app_component = self
+             .configured_app
+             .app()
+@@ -204,7 +204,7 @@ pub struct FactorsInstanceBuilder<'a, F: RuntimeFactors, U: 'static> {
+ 
+ impl<T: RuntimeFactors, U: 'static> FactorsInstanceBuilder<'_, T, U> {
+     /// Returns the app component for the instance.
+-    pub fn app_component(&self) -> &AppComponent {
++    pub fn app_component(&self) -> &AppComponent<'_> {
+         &self.app_component
+     }
+ 
+diff --git a/crates/factors/src/prepare.rs b/crates/factors/src/prepare.rs
+index c4f2401f..f1d8c65e 100644
+--- a/crates/factors/src/prepare.rs
++++ b/crates/factors/src/prepare.rs
+@@ -65,7 +65,7 @@ impl<'a, T: RuntimeFactors, F: Factor> PrepareContext<'a, T, F> {
+     }
+ 
+     /// Get the app component.
+-    pub fn app_component(&self) -> &'a AppComponent {
++    pub fn app_component(&self) -> &'a AppComponent<'_> {
+         self.app_component
+     }
+ 
+diff --git a/src/commands/watch.rs b/src/commands/watch.rs
+index a9a4cde6..a17f460f 100644
+--- a/src/commands/watch.rs
++++ b/src/commands/watch.rs
+@@ -338,7 +338,7 @@ impl watchexec::handler::Handler<watchexec::action::Action> for NotifyOnFileChan
+             _ = self.notifier.send(Uuid::new_v4());
+         }
+         action.outcome(watchexec::action::Outcome::DoNothing);
+-        Ok::<(), Box<(dyn std::error::Error + 'static)>>(())
++        Ok::<(), Box<dyn std::error::Error + 'static>>(())
+     }
+ }
+ 
