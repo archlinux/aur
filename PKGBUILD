@@ -45,25 +45,24 @@ _dest=/opt/context-lmtx
 
 # Font directories
 _texlivefontdir="/usr/share/texmf-dist/fonts/"
-_contextmodulesdir="/opt/context-minimals/texmf-modules"
 _userfontdir="\$HOME/.fonts"
 _osfontdir="/usr/share/fonts"
 
 pkgver() {
-  cd "$srcdir"
+  cd $srcdir
   grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/mkxl/context.mkxl | sed -n 's/.*{\(.*\) .*}/\1/p'
 }
 
 prepare() {
-  OLDPATH=$PATH
-  PATH=$srcdir/bin:$srcdir/tex/texmf-${_platform}/bin:$PATH
   echo "Starting download or update of ConTeXt distribution"
+
   chmod +x $srcdir/bin/mtxrun
-  $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
-                     --server="${_lmtxserverlist}" \
-                     --instance="install-lmtx" \
-                     || return 1
-  PATH=$OLDPATH
+  PATH=$srcdir/bin:$srcdir/tex/texmf-${_platform}/bin:$PATH \
+      $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
+                         --server="${_lmtxserverlist}" \
+                         --instance="install-lmtx" \
+                         || return 1
+  
   # Make sure the binaries are executable
   chmod +x $srcdir/tex/texmf-${_platform}/bin/{context,luametatex,mtxrun}
  
@@ -71,15 +70,13 @@ prepare() {
   cp $srcdir/tex/texmf-${_platform}/bin/mtxrun $srcdir/bin
   cp $srcdir/tex/texmf-context/scripts/context/lua/{mtxrun.lua,mtx-install.lua} $srcdir/bin
 
-# Install modules
-OLDPATH=$PATH
-PATH=$srcdir/tex/texmf-${_platform}/bin:$PATH
-cd $srcdir/tex && texmf-${_platform}/bin/mtxrun --script texmf-context/scripts/context/lua/mtx-install-modules.lua --install ${_modules[@]}
+  # Install modules
+  PATH=$srcdir/tex/texmf-${_platform}/bin:$PATH \
+    cd $srcdir/tex && texmf-${_platform}/bin/mtxrun --script texmf-context/scripts/context/lua/mtx-install-modules.lua --install ${_modules[@]}
 
-# Erase cache, must be built by user:
-$srcdir/tex/texmf-${_platform}/bin/mtxrun --script texmf-context/scripts/context/lua/mtx-cache --erase --all
-
-PATH=$OLDPATH
+  # Erase cache, must be built by user:
+  PATH=$srcdir/tex/texmf-${_platform}/bin:$PATH \
+    $srcdir/tex/texmf-${_platform}/bin/mtxrun --script texmf-context/scripts/context/lua/mtx-cache --erase --all
 
  # Generate a setuptex file
  mkdir -p $srcdir/tex
@@ -108,7 +105,7 @@ PATH=$OLDPATH
         export PATH
         unset _OLD_PATH
 
-        CONTEXTDIST=$_OLD_CONTEXTDIST
+        CONTEXTDIST=\$_OLD_CONTEXTDIST
         export CONTEXTDIST
         unset _OLD_CONTEXTDIST
 
@@ -120,7 +117,7 @@ _EOF_
 
 package()
 {
- install -d $pkgdir/opt || return 1
+ install -d $pkgdir/$_dest || return 1
  echo "Copying files"
  # cp -r does not delete old files that are present in texmf-cache from
  # previous installation
