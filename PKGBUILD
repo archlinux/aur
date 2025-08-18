@@ -1,7 +1,7 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 
 pkgname=context-lmtx-bin
-pkgver=2025.02.04
+pkgver=2025.08.18
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
