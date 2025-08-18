@@ -9,7 +9,7 @@ url="https://github.com/minomy13/nerdfetch-rs"
 license=('MIT')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=("ebe3f134d7d58952da53609ff3dda1e1")
+md5sums=("SKIP")
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable

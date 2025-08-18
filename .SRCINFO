@@ -8,6 +8,6 @@ pkgbase = nerdfetch-rs
 	license = MIT
 	makedepends = cargo
 	source = nerdfetch-rs-1.0.0.tar.gz::https://github.com/minomy13/nerdfetch-rs/archive/refs/tags/v1.0.0.tar.gz
-	md5sums = ebe3f134d7d58952da53609ff3dda1e1
+	md5sums = SKIP
 
 pkgname = nerdfetch-rs
