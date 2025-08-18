@@ -3,7 +3,7 @@
 pkgbase=strmassistant-bin
 pkgname=(strmassistant-bin)
 _name=StrmAssistant
-pkgver=2.0.0.28
+pkgver=2.0.0.29
 pkgrel=1
 epoch=
 pkgdesc="Strm Assistant for Emby"
@@ -19,7 +19,7 @@ optdepends=("emby-theater: An Electron app for Emby")
 backup=()
 options=('!strip' '!debug' '!lto')
 source=("${_name}-${pkgver}.dll::${url}/releases/download/v${pkgver}/${_name}.dll")
-sha256sums=('9a5727e070d02bd809be6e126e6936aa9415da3558e689df552d80f58bebf678')
+sha256sums=('35b89117f1143bcb6dbd914fee1e4ff6a02af9bb749e94199dbaf7c4455e2c40')
 noextract=()
 
 package() {

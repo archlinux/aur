@@ -1,6 +1,6 @@
 pkgbase = strmassistant-bin
 	pkgdesc = Strm Assistant for Emby
-	pkgver = 2.0.0.28
+	pkgver = 2.0.0.29
 	pkgrel = 1
 	url = https://github.com/sjtuross/StrmAssistant
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = strmassistant-bin
 	options = !strip
 	options = !debug
 	options = !lto
-	source = StrmAssistant-2.0.0.28.dll::https://github.com/sjtuross/StrmAssistant/releases/download/v2.0.0.28/StrmAssistant.dll
-	sha256sums = 9a5727e070d02bd809be6e126e6936aa9415da3558e689df552d80f58bebf678
+	source = StrmAssistant-2.0.0.29.dll::https://github.com/sjtuross/StrmAssistant/releases/download/v2.0.0.29/StrmAssistant.dll
+	sha256sums = 35b89117f1143bcb6dbd914fee1e4ff6a02af9bb749e94199dbaf7c4455e2c40
 
 pkgname = strmassistant-bin
