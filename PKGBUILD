@@ -1,7 +1,7 @@
 # Maintainer: Johannes Simon Piermeier <pierm.jo+github-public@gmail.com>
 
 pkgname=discord-hushd-git
-pkgver=0.1.0.r0.ga11d256
+pkgver=0.1.0.r3.g4b12c0f
 pkgrel=1
 pkgdesc='Systemd daemon and CLI to mute/deafen Discord via RPC (git version)'
 arch=('any')
