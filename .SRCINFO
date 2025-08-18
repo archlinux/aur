@@ -1,0 +1,26 @@
+pkgbase = yelp-git
+	pkgdesc = The default help viewer for the GNOME desktop.
+	pkgver = 49.betar6.g734618ad
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/yelp
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = itstool
+	makedepends = glib2-devel
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = gsettings-desktop-schemas
+	depends = yelp-xsl
+	depends = yelp-tools
+	depends = libxml2
+	provides = yelp
+	conflicts = yelp
+	replaces = yelp
+	source = git+https://gitlab.gnome.org/GNOME/yelp.git
+	sha256sums = SKIP
+
+pkgname = yelp-git
