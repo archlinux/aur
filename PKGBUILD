@@ -2,7 +2,7 @@
 # Contributor: Anthony Wang <ta180m@proton.me>
 
 pkgname=libretro-meta
-pkgver=2025.04.12
+pkgver=2025.08.18
 pkgrel=1
 pkgdesc='Meta package for the libretro group.'
 arch=('any')
@@ -44,7 +44,6 @@ package() {
 		'libretro-picodrive'
 		'libretro-play'
 		'libretro-ppsspp'
-		'libretro-retrodream'
 		'libretro-sameboy'
 		'libretro-scummvm'
 		'libretro-shaders-slang'
