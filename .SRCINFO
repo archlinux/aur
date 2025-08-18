@@ -1,18 +1,17 @@
 pkgbase = calcurse-git
 	pkgdesc = A text-based personal organizer (Git version).
-	pkgver = 4.0.0.1488.41b3ab7
+	pkgver = 4.8.2.2050.68cab14
 	pkgrel = 1
-	url = http://git.calcurse.org/calcurse.git
-	arch = i686
+	url = https://calcurse.org/
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = asciidoc
+	makedepends = autoconf-archive
 	depends = ncurses
 	provides = calcurse
 	conflicts = calcurse
-	source = calcurse::git://git.calcurse.org/calcurse.git
+	source = git+https://git.calcurse.org/calcurse.git/
 	sha256sums = SKIP
 
 pkgname = calcurse-git
-

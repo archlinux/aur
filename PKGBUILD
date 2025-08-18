@@ -3,14 +3,14 @@
 
 _name='calcurse'
 pkgname="${_name}-git"
-pkgver=4.6.0.1914.5a3664b
+pkgver=4.8.2.2050.68cab14
 pkgrel=1
 pkgdesc='A text-based personal organizer (Git version).'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://calcurse.org/'
 license=('BSD')
 depends=('ncurses')
-makedepends=('git' 'asciidoc')
+makedepends=('git' 'asciidoc' 'autoconf-archive')
 provides=('calcurse')
 conflicts=('calcurse')
 source=("git+https://git.calcurse.org/calcurse.git/")
@@ -28,6 +28,11 @@ build() {
 	./autogen.sh
 	./configure --prefix=/usr --mandir=/usr/share/man
 	make
+}
+
+check() {
+	cd "${srcdir}/${_name}"
+	make check
 }
 
 package() {
