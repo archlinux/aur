@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=aicommits
