@@ -1,0 +1,12 @@
+pkgbase = kwin-effect-scalefromcursor-git
+	pkgdesc = KWin effect: Scale from cursor
+	pkgver = 20250104.g8735dfa
+	pkgrel = 1
+	url = https://github.com/kde-yyds/kwin-effect-scalefromcursor
+	arch = any
+	license = GPL
+	depends = kwin
+	source = kwin-effect-scalefromcursor-git::git+https://github.com/kde-yyds/kwin-effect-scalefromcursor.git
+	md5sums = SKIP
+
+pkgname = kwin-effect-scalefromcursor-git
