@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.16.12
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -33,7 +33,7 @@ checkdepends=('python-pytest'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('9b9eaa066e0024342d433e332a41095c4e429937024945fea511afe58f63175d')
+sha256sums=('c6295962b60542a9c7468a3b515ce8524616ca9f8c1a38c790db4286340ba501')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -63,8 +63,8 @@ check() {
 package_mkdocstrings-python() {
     depends=('python>=3.9'
              'mkdocs-autorefs>=1.4'
-             'mkdocstrings>=0.28.3'
-             'python-griffe>=1.6.2')
+             'mkdocstrings>=0.30'
+             'python-griffe>=1.12.1')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
