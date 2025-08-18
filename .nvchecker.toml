@@ -1,0 +1,5 @@
+[sdl3]
+source = "git"
+git = "https://github.com/libsdl-org/SDL.git"
+include_regex = "release-3.*"
+prefix = "release-"
