@@ -1,6 +1,6 @@
 pkgbase = bmputil-git
-	pkgdesc = A management utility for debuggers running the Black Magic Debug firmware
-	pkgver = r85.108bf36
+	pkgdesc = A tool for managing and flashing Black Magic Probe firmware
+	pkgver = r404.66efc79
 	pkgrel = 1
 	url = https://github.com/blackmagic-debug/bmputil
 	arch = any
@@ -8,8 +8,6 @@ pkgbase = bmputil-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	provides = bmputil
-	conflicts = bmputil
 	source = git+https://github.com/blackmagic-debug/bmputil.git
 	b2sums = SKIP
 
