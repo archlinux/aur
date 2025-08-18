@@ -1,7 +1,7 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 
 pkgname=context-lmtx-bin
-pkgver=2024.02.27
+pkgver=2025.02.04
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -50,13 +50,13 @@ _userfontdir="\$HOME/.fonts"
 _osfontdir="/usr/share/fonts"
 
 pkgver() {
-  cd "$scrdir"
+  cd "$srcdir"
   grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/mkxl/context.mkxl | sed -n 's/.*{\(.*\) .*}/\1/p'
 }
 
 prepare() {
   OLDPATH=$PATH
-  PATH=$scrdir/bin:$scrdir/tex/texmf-${_platform}/bin:$PATH
+  PATH=$srcdir/bin:$srcdir/tex/texmf-${_platform}/bin:$PATH
   echo "Starting download or update of ConTeXt distribution"
   chmod +x $srcdir/bin/mtxrun
   $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
@@ -73,7 +73,7 @@ prepare() {
 
 # Install modules
 OLDPATH=$PATH
-PATH=$scrdir/tex/texmf-${_platform}/bin:$PATH
+PATH=$srcdir/tex/texmf-${_platform}/bin:$PATH
 cd $srcdir/tex && texmf-${_platform}/bin/mtxrun --script texmf-context/scripts/context/lua/mtx-install-modules.lua --install ${_modules[@]}
 
 # Erase cache, must be built by user:
