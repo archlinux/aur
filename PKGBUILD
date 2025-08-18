@@ -2,7 +2,7 @@
 
 _name=pytrimal
 pkgname=python-${_name}
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to trimAl, a tool for automated alignment trimming."
 url="https://github.com/althonos/pytrimal"
@@ -12,7 +12,7 @@ makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-
 depends=('python' 'python-scoring-matrices')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(5116eda05aec7a71c53440ba86693952a3459d38f2b34371d27bbe3f11b44b5f)
+sha256sums=(6f7102d0ef8378934ebf9988adcc2fd39e6ee925885ad53f4472588cd0c6ff1f)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -40,5 +40,5 @@ package() {
     whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
 
     python -m installer --prefix="${pkgdir}/usr" "$whl"
-    install -Dm644  "${srcdir}/${_name}-${pkgver}"/COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644  "${srcdir}/${_name}-${pkgver}"/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
