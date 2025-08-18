@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=opencommit
 pkgver=3.2.10
