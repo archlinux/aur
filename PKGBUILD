@@ -3,7 +3,7 @@
 
 pkgname=wonderlab-appimage-feature
 _pkgname=wonderlab
-pkgver=2.0.0.0816
+pkgver=2.0.0.0818
 pkgrel=1
 pkgdesc="The next generation cross-platform Minecraft launcher. (dev branch)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ optdepends=('jre-openjdk: for launch Minecraft')
 source_x86_64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/v${pkgver}/WonderLab.linux.x64.AppImage")
 source_aarch64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/v${pkgver}/WonderLab.linux.arm64.AppImage")
 _appimage="${_pkgname}-${arch}.AppImage"
-sha256sums_x86_64=('99ba7a50ce0cccbc6ae4e3e384d9e3d836b1a34212b3f797b28707fb8c7e5945')
-sha256sums_aarch64=('7c4bf91dccc444240352128343d98530938e89724446b6f3b3d7b13a580244e3')
+sha256sums_x86_64=('ad987d0500ecb14b3a0c9d5c998725f352c90d4ef405b54c4f852f40e59e4959')
+sha256sums_aarch64=('2e713f24951903b4ec4615dd9d3840f818f2c08332f1ef9aa6ff78d7af7e4bba')
 prepare() {
 	chmod +x "${_appimage}"
 	./"${_appimage}" --appimage-extract
