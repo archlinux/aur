@@ -37,7 +37,7 @@ pkgbase = readarr-develop-bin
 	source = readarr.sysusers
 	source = readarr.tmpfiles
 	sha256sums = c53f8d84eea20eb57f4fa200d18ccfee7ddac57e087f3ef00efb8e22862c9dde
-	sha256sums = d8111e48780aa7417f43b3d6d1a447be2b3c574542f615fad2bf39b57b4ec871
+	sha256sums = ce5d3c5263792f7099ca5b87acee8a5c7573cc90931cc37a31da459d20b5cfa0
 	sha256sums = fcfa28c1be4f67cfa641dc6076780ee07ab973e55bf676174315e417f73003ad
 	sha256sums = a4cfdf882ab62dea54d85dfae4a633cf21bce597a19c3287d90c024e3ff399ce
 	source_x86_64 = Readarr.develop.0.4.18.2805.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=0.4.18.2805&os=linux&runtime=netcore&arch=x64

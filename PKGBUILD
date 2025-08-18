@@ -48,7 +48,7 @@ source_x86_64=("Readarr.develop.${pkgver}.linux-core-x64.tar.gz::https://readarr
 source_aarch64=("Readarr.develop.${pkgver}.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm64")
 source_armv7h=("Readarr.develop.${pkgver}.linux-core-arm.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm")
 sha256sums=('c53f8d84eea20eb57f4fa200d18ccfee7ddac57e087f3ef00efb8e22862c9dde'
-            'd8111e48780aa7417f43b3d6d1a447be2b3c574542f615fad2bf39b57b4ec871'
+            'ce5d3c5263792f7099ca5b87acee8a5c7573cc90931cc37a31da459d20b5cfa0'
             'fcfa28c1be4f67cfa641dc6076780ee07ab973e55bf676174315e417f73003ad'
             'a4cfdf882ab62dea54d85dfae4a633cf21bce597a19c3287d90c024e3ff399ce')
 sha256sums_x86_64=('842ab11fac4f2e103e57badeaac1e2d44636b14dc727a1123098a2597adc5141')
