@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=hdiff
-pkgver=4.8.0
+pkgver=4.11.1
 pkgrel=1
 pkgdesc='C/C++ library and CLI tool for Diff & Patch between binary files or directories'
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -16,7 +16,7 @@ provides=('hdiffpatch')
 conflicts=('hdiffpatch-bin')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('01c526132a183e31b62b435cf80e769e44be6ac1e827e0ee405786e6cf48f013')
+sha256sums=('be036f19921e99b8b333f139ec78c841acc7a717e2c7783484faf358b00069a4')
 
 prepare() {
   git clone --depth=1 https://github.com/sisong/libmd5.git ./libmd5
