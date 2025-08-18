@@ -2,7 +2,7 @@
 
 _name=pystack
 pkgname=python-$_name
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Analysis of the stack of remote python processes'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(
     python-wheel
 )
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('4ef3bc71055cd3241f9de396c068de6e1003606e8dd053656d7f75550b0af1555481ed8e42dedead34e5f817f07707dd0d9c25d2d67176bc667508e6ae7242d0')
+b2sums=('c51d24b6c8708798593884c290259fd2f2e6cd01dfba7a332de6a14ab13da5c7ef52603fe5395558fa4358504a552d14817a17133141e80ee3384de652684486')
 
 build() {
     cd $_name-$pkgver
