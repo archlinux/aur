@@ -1,6 +1,6 @@
 pkgbase = libretro-meta
 	pkgdesc = Meta package for the libretro group.
-	pkgver = 2025.04.12
+	pkgver = 2025.08.18
 	pkgrel = 1
 	arch = any
 	license = none
@@ -35,7 +35,6 @@ pkgname = libretro-meta
 	depends = libretro-picodrive
 	depends = libretro-play
 	depends = libretro-ppsspp
-	depends = libretro-retrodream
 	depends = libretro-sameboy
 	depends = libretro-scummvm
 	depends = libretro-shaders-slang
