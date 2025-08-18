@@ -9,7 +9,7 @@
 
 pkgname=portmaster-bin
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Privacy Suite and Firewall - installs the official prebuilt Portmaster binaries'
 arch=('x86_64')
 url='https://safing.io/portmaster'
@@ -33,7 +33,7 @@ source=("portmaster.desktop"
         "icon-portmaster-64.png"
         "icon-portmaster-128.png")
 
-sha256sums=('f7b7026c4b4fe73b0401af0edec9c1458ad7d05267dbe7dfe0b7733b791c3b60'
+sha256sums=('8b6955d227825270b5c602bed00c5de9d1f1faf8d86ceccdfb5fa4e6345b8609'
            '0a067b241267974ab3225e904ac362eba6b0a37cc3c4ae18e30c381ad2a47076'
            'cf595fe51bbeb3242aa1cdc844e932731fdff77671d2e2a9ce8d15acffd466a6'
            '9e90c3b736bfedd89fee8bfed413187ac5996743015ab75fca359c47a71132a4'
