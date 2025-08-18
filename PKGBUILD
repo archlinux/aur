@@ -1,35 +1,35 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vencord-installer
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross platform gui/cli app for installing Vencord"
 arch=('x86_64')
 url="https://github.com/Vencord/Installer"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'glibc' 'gcc-libs' 'libglvnd' 'libx11')
-makedepends=('go')
-source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('77e476066cf7d249e43416bc0adbf59f38c32eaee207e72419de706d6ba33fc8')
+makedepends=('go' 'git')
+source=("${pkgname}::git+$url.git#tag=v${pkgver}")
+sha256sums=('f38ba4bfc9c5f74aebe32a1676eec51356def7aa4621143e467801f9c0ba42bd')
 
 prepare() {
-	cd "$srcdir/Installer-${pkgver}"
+	cd "$srcdir/$pkgname"
 	go mod tidy
 }
 
 build() {
-	cd "$srcdir/Installer-${pkgver}"
+	cd "$srcdir/$pkgname"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build --tags cli -v -ldflags "-s -w -X 'main.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'main.InstallerTag=$(git describe --tags | sed "s/-.*//")'" -o vencordinstallercli
-	go build -v -ldflags "-s -w -X 'main.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'main.InstallerTag=$(git describe --tags | sed "s/-.*//")'" -o vencordinstaller
+	go build --tags cli -v -ldflags "-s -w -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=$(git describe --tags | sed "s/-.*//")'" -o vencordinstallercli
+	go build -v -ldflags "-s -w -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=$(git describe --tags | sed "s/-.*//")'" -o vencordinstaller
 
 }
 
 package() {
-	cd "$srcdir/Installer-${pkgver}"
+	cd "$srcdir/$pkgname"
 	install -Dm755 vencordinstallercli "$pkgdir/usr/bin/vencordinstallercli"
 	install -Dm755 vencordinstaller "$pkgdir/usr/bin/vencordinstaller"
 
