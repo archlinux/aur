@@ -1,26 +1,19 @@
-[1m[32m==>(B[m[1m Making package: macbook-12-1-linux-fixes 1.2-2 (Mon 18 Aug 2025 11:54:42 PM +0530)(B[m
-[1m[32m==>(B[m[1m Checking runtime dependencies...(B[m
-[1m[32m==>(B[m[1m Checking buildtime dependencies...(B[m
-[1m[32m==>(B[m[1m Retrieving sources...(B[m
-[1m[34m  ->(B[m[1m Cloning macbookpro-12-1-linux-fix-files git repo...(B[m
-[1m[32m==>(B[m[1m Validating source files with md5sums...(B[m
-[1m[32m==>(B[m[1m Extracting sources...(B[m
-[1m[34m  ->(B[m[1m Creating working copy of macbookpro-12-1-linux-fix-files git repo...(B[m
-[1m[32m==>(B[m[1m Entering fakeroot environment...(B[m
-[1m[32m==>(B[m[1m Starting package()...(B[m
-Installation complete! Follow the post-installation instructions.
-[1m[32m==>(B[m[1m Tidying install...(B[m
-[1m[34m  ->(B[m[1m Removing libtool files...(B[m
-[1m[34m  ->(B[m[1m Purging unwanted files...(B[m
-[1m[34m  ->(B[m[1m Removing static library files...(B[m
-[1m[34m  ->(B[m[1m Stripping unneeded symbols from binaries and libraries...(B[m
-[1m[34m  ->(B[m[1m Compressing man and info pages...(B[m
-[1m[32m==>(B[m[1m Checking for packaging issues...(B[m
-[1m[32m==>(B[m[1m Creating package "macbook-12-1-linux-fixes"...(B[m
-[1m[34m  ->(B[m[1m Generating .PKGINFO file...(B[m
-[1m[34m  ->(B[m[1m Generating .BUILDINFO file...(B[m
-[1m[34m  ->(B[m[1m Adding install file...(B[m
-[1m[34m  ->(B[m[1m Generating .MTREE file...(B[m
-[1m[34m  ->(B[m[1m Compressing package...(B[m
-[1m[32m==>(B[m[1m Leaving fakeroot environment.(B[m
-[1m[32m==>(B[m[1m Finished making: macbook-12-1-linux-fixes 1.2-2 (Mon 18 Aug 2025 11:54:46 PM +0530)(B[m
+pkgbase = macbook-12-1-linux-fixes
+	pkgdesc = Custom fixes for MacBook 12,1 (2015 Pro 13 inch)
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://github.com/Chamal1120/macbookpro-12-1-linux-fix-files
+	install = macbook-12-1-linux-fixes.install
+	arch = any
+	license = MIT
+	depends = networkmanager
+	depends = libconfig
+	depends = tlp
+	depends = iwd
+	backup = etc/macfand.conf
+	backup = etc/NetworkManager/conf.d/wifi_backend.conf
+	backup = usr/lib/systemd/system/disable-wakeup.service
+	source = git+https://github.com/Chamal1120/macbookpro-12-1-linux-fix-files.git
+	md5sums = SKIP
+
+pkgname = macbook-12-1-linux-fixes
