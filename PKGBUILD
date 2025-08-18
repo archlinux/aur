@@ -4,7 +4,7 @@
 
 pkgname=ghostess
 pkgver=20210101
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple GTK host for DSSI plugins"
 arch=('x86_64')
 url="http://www.smbolton.com/linux.html"
@@ -16,7 +16,10 @@ md5sums=('c084d46422a56f128b572523c89caf7d')
 
 build() {
     cd $pkgname-$pkgver
-    ./configure --prefix=/usr --with-jackmidi
+    ./configure \
+        --prefix=/usr \
+        --with-jackmidi \
+        CFLAGS="-Wno-error=incompatible-pointer-types"
     make
 }
 
@@ -24,4 +27,5 @@ package() {
     cd $pkgname-$pkgver
     make DESTDIR="$pkgdir/" install
 }
+
 
