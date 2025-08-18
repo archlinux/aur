@@ -7,7 +7,7 @@ pkgdesc="Custom fixes for MacBook 12,1 (2015 Pro 13 inch)"
 arch=('any')
 url="https://github.com/Chamal1120/macbookpro-12-1-linux-fix-files"
 license=('MIT')
-depends=('networkmanager' 'macfand-git' 'tlp' 'iwd')
+depends=('networkmanager' 'libconfig' 'tlp' 'iwd')
 source=("git+https://github.com/Chamal1120/macbookpro-12-1-linux-fix-files.git::configs/macfand.conf"
         "git+https://github.com/Chamal1120/macbookpro-12-1-linux-fix-files.git::configs/wifi_backend.conf"
         "git+https://github.com/Chamal1120/macbookpro-12-1-linux-fix-files.git::configs/tlp.conf"
