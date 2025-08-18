@@ -1,24 +1,22 @@
 # Maintainer: quexeky <aur@quexeky.dev>
 
 pkgname=drop-oss-app
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Arch native client for Drop"
 arch=(any)
 url="https://docs.droposs.org/"
 license=('AGPL-3.0-only')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'umu-launcher' 'libayatana-appindicator')
-source=("git+https://github.com/Drop-OSS/drop-app.git#commit=40d545a77c47e0cbbe5ef33b0d69fe70bba6b943")
+source=("git+https://github.com/Drop-OSS/drop-app.git#commit=6104bfda72a0d32c43b34084ec6aefeb542e9951")
 makedepends=('yarn' 'cargo')
-sha256sums=('a2fcffd06cdae308ea9aa0d302d8821d4912bbc796b0127a8be4e1c5820be2ec')
-
-
+sha256sums=('ec3e596777321f6b045e313d007d2a013d3b236e0942940e92c7ea74eb8602f3')
 
 
 _desktop="
 [Desktop Entry]\n
 Type=Application\n
-Version=0.3.0\n
+Version=0.3.1\n
 Name=drop-oss-app\n
 Comment=Drop client for Linux\n
 Path=/usr/bin/\n
