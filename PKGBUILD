@@ -26,7 +26,7 @@ groups=('xlibre')
 options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-depends=(xlibre-server-common-bin xlibre-xf86-input-libinput-bin libepoxy libxfont2 pixman libunwind
+depends=(xlibre-server-common-bin xlibre-input-libinput-bin libepoxy libxfont2 pixman libunwind
          dbus libgl nettle libxdmcp sh glibc libxau libtirpc
          libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
