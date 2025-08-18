@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=box-git
 pkgver=0.2.0.r0.gc22cfad
