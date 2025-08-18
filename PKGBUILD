@@ -2,12 +2,19 @@
 
 pkgname=3x-ui-bin
 pkgver=2.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/${pkgname%-bin}"
 license=(GPL-3.0-only)
-depends=(bash)
+depends=(sh)
+optdepends=(
+  'acme.sh: Certificate Management'
+  'fail2ban: IP Limit Management'
+  'openssh: SSH Port Forwarding Management'
+  'speedtest-cli: Speedtest by Ookla'
+  'ufw: Firewall Management'
+)
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
@@ -25,16 +32,20 @@ b2sums_i686=('ea6b87b0e4120c7437d53d5cb8af80397016e937ffc48628d88c6ecd4301cd7560
 b2sums_x86_64=('1c38b9a56947f77f0bbad0eec9aedb1d63b7521fc95e477d88335d2b1d3bb7f630f3ac1f5ffb7ef26a68c6673c2f5fba81e1d1c1415c19b8d64f2da482cac01e')
 
 prepare() {
-  sed -i 's|/etc/systemd/system/|/usr/lib/systemd/system/|g' ${pkgname:1:4}/${pkgname:1:4}.sh
-  sed -i 's|/usr/local/|/opt/|g' ${pkgname:1:4}/${pkgname:1:4}.sh
-  sed -i 's|/usr/local/|/opt/|g' ${pkgname:1:4}/${pkgname:1:4}.service
+  sed -i 's|/etc/systemd/system/|/usr/lib/systemd/system/|g'                    ${pkgname:1:4}/${pkgname:1:4}.sh
+  sed -i 's|/usr/local/x-ui/bin|/usr/share/x-ui/bin|g'                          ${pkgname:1:4}/${pkgname:1:4}.sh
+  sed -i -E 's|wget -O ([^ ]+) ?-?N? (https?://[^ ]+)|curl -L -o \1 \2|g'       ${pkgname:1:4}/${pkgname:1:4}.sh
+  sed -i -E 's|wget -N (https?://[^ ]+/([^/ ]+))|curl -L -o \2 \1|g'            ${pkgname:1:4}/${pkgname:1:4}.sh
+  sed -i 's|/usr/local/|/usr/lib/|g'                                            ${pkgname:1:4}/${pkgname:1:4}.sh
+  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/lib/x-ui/|' ${pkgname:1:4}/${pkgname:1:4}.service
+  sed -i 's|ExecStart=/usr/local/x-ui/x-ui|ExecStart=/usr/lib/x-ui/x-ui|'       ${pkgname:1:4}/${pkgname:1:4}.service
 }
 
 package() {
   cd ${pkgname:1:4}
   install -vDm 755 ${pkgname:1:4}.sh                 "$pkgdir"/usr/bin/${pkgname:1:4}
-  install -vDm 644 bin/geo{ip,site}{,_IR,_RU}.dat -t "$pkgdir"/opt/${pkgname:1:4}/bin/
-  install -vDm 755 bin/xray-linux-*               -t "$pkgdir"/opt/${pkgname:1:4}/bin/
-  install -vDm 755 ${pkgname:1:4}                 -t "$pkgdir"/opt/${pkgname:1:4}/
+  install -vDm 755 ${pkgname:1:4}                 -t "$pkgdir"/usr/lib/${pkgname:1:4}/
+  install -vDm 755 bin/xray-linux-*               -t "$pkgdir"/usr/lib/${pkgname:1:4}/bin/
+  install -vDm 644 bin/geo{ip,site}{,_IR,_RU}.dat -t "$pkgdir"/usr/lib/${pkgname:1:4}/bin/
   install -vDm 644 ${pkgname:1:4}.service         -t "$pkgdir"/usr/lib/systemd/system/
 }
