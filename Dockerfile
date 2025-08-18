@@ -13,18 +13,7 @@ RUN yay -S --noconfirm \
   fontconfig \
   gcc-libs \
   glibc \
-  zlib \
-  libx11 \
-  libxrandr \
-  libxext \
-  libxrender \
-  libxfixes \
-  libxcomposite \
-  libxdamage \
-  libxss \
-  libxtst \
-  libxi \
-  libxinerama
+  zlib
 
 # Build the package
 RUN updpkgsums
