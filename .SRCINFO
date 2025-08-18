@@ -8,6 +8,7 @@ pkgbase = xfdashboard
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = xfce4-dev-tools
+	makedepends = intltool
 	depends = libwnck3
 	depends = clutter
 	depends = garcon
