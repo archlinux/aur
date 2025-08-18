@@ -39,11 +39,6 @@
 -        autoUpdateVRCX: 'Auto Download',
 +        autoUpdateVRCX: 'Off',
 
---- a/src/App.vue
-+++ b/src/App.vue
-@@ -87,1 +87,0 @@
--            store.updateLoop.updateLoop();
-
 --- a/src/views/Login/Login.vue
 +++ b/src/views/Login/Login.vue
 @@ -5,8 +5,0 @@
