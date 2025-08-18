@@ -1,10 +1,10 @@
 pkgbase = spotube-nightly-bin
 	pkgdesc = 🎧 Open source music client! Available for both desktop & mobile!
 	pkgver = 5.0.0
-	pkgrel = 3
-	url = https://github.com/KRTirtho/spotube
-	arch = i686
+	pkgrel = 4
+	url = https://spotube.krtirtho.dev
 	arch = x86_64
+	arch = aarch64
 	license = BSD-4
 	depends = mpv
 	depends = libappindicator-gtk3
@@ -17,7 +17,9 @@ pkgbase = spotube-nightly-bin
 	provides = spotube
 	conflicts = spotube
 	options = !debug
-	source = spotube-linux-nightly-x86_64-5.0.0-3.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz
-	sha256sums = 260e82b6d3c089443680be93cf96ae3b3c5f7692893b19b10f9386c3afa37a74
+	source_x86_64 = spotube-linux-nightly-5.0.0-4.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz
+	sha256sums_x86_64 = 4c2e5c8f4b7a697f91d96635a2ed1a2217a38db08dfbae4689a4da501c28d746
+	source_aarch64 = spotube-linux-nightly-5.0.0-4.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-aarch64.tar.xz
+	sha256sums_aarch64 = 1c8cc238ffcded54c38b3c1a07554e3988e0fff17ce3384a11f39b0a5facad2d
 
 pkgname = spotube-nightly-bin
