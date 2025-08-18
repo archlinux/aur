@@ -1,0 +1,25 @@
+pkgbase = idplugclassic-ro-cei-bin
+	pkgdesc = Romanian eID card driver and companion
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://hub.mai.gov.ro/aplicatie-cei
+	arch = x86_64
+	license = custom
+	depends = pcsclite
+	depends = pcsc-tools
+	depends = cairo
+	depends = fontconfig
+	depends = gcc
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = libjpeg-turbo
+	depends = pango
+	depends = gcc-libs
+	depends = libtiff
+	depends = libx11
+	depends = libxkbcommon
+	source = https://hub.mai.gov.ro/cei/info/descarca-middleware?versiune=450linux
+	sha256sums = 4d084400dcd80535fcbf5e2b3194e996039ec96199241573b1d63af7bfeb0484
+
+pkgname = idplugclassic-ro-cei-bin
