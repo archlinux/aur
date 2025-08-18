@@ -1,6 +1,6 @@
 # Maintainer: Mike Krüger <mkrueger@posteo.de>
 pkgname=game-cheetah
-pkgver=0.4.4
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="High-performance memory scanner/editor and game trainer"
 arch=('x86_64')
@@ -9,28 +9,26 @@ license=('Apache')
 depends=('gtk3' 'libxcb' 'libxkbcommon' 'wayland' 'libgl' 'fontconfig' 'freetype2')
 makedepends=('rust' 'cargo')
 options=('!strip') # Optional: keep debug symbols for better crash reports
-source=()
-sha256sums=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mkrueger/game_cheetah/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('e41441de8c1a52370010ca41c22fc42e814dfd3739d4cfd181cf24013044526c')
 
 prepare() {
-    cd "$srcdir"
-    # Copy the project files, excluding the build directory
-    rsync -a --exclude="arch-build" --exclude="target" "/home/mkrueger/work/game_cheetah"/ .
+    cd "$srcdir/game_cheetah-$pkgver"
 }
 
 build() {
-    cd "$srcdir"
+    cd "$srcdir/game_cheetah-$pkgver"
     export RUSTFLAGS="-C target-cpu=x86-64-v2"
     cargo build --release --locked
 }
 
 check() {
-    cd "$srcdir"
+    cd "$srcdir/game_cheetah-$pkgver"
     cargo test --release --locked || true
 }
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/game_cheetah-$pkgver"
     
     # Install binary
     install -Dm755 "target/release/game-cheetah" "$pkgdir/usr/bin/game-cheetah"
