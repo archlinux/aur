@@ -1,13 +1,13 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname=delta-patcher
-pkgver=3.1.5
-pkgrel=2
+pkgver=3.1.6
+pkgrel=1
 pkgdesc="GUI software that is able to create and apply xdelta patches"
 arch=('x86_64')
 url="https://github.com/marco-calautti/DeltaPatcher"
 license=('GPL-2.0')
 depends=('gtk3')
-source=("https://github.com/marco-calautti/DeltaPatcher/releases/download/v$pkgver/linuxGTK3_bin_x86_64.zip"
+source=("linuxGTK3_bin_x86_64_v$pkgver.zip::https://github.com/marco-calautti/DeltaPatcher/releases/download/v$pkgver/linuxGTK3_bin_x86_64.zip"
         "https://raw.githubusercontent.com/marco-calautti/DeltaPatcher/master/graphics/icon16.png"
         "https://raw.githubusercontent.com/marco-calautti/DeltaPatcher/master/graphics/icon24.png"
         "https://raw.githubusercontent.com/marco-calautti/DeltaPatcher/master/graphics/icon32.png"
@@ -17,7 +17,7 @@ source=("https://github.com/marco-calautti/DeltaPatcher/releases/download/v$pkgv
         "https://raw.githubusercontent.com/marco-calautti/DeltaPatcher/master/graphics/icon256.png"
         "delta-patcher.desktop"
         "LICENSE")
-sha256sums=('43dd26701a2a73bf11f699810ba9777596e3bbf83f215b29bfc716e52ba7ab04'
+sha256sums=('89819df1526ba1d5db9cf70eccda7b963a9a8015d215f23b892f087e569a46dc'
             '52336a292752264741255a26964bcd002a5ef460e4ee5fad3bd11cf632fbb136'
             '5fe02b046878de637d94b0716597cae5ade2eb1791046c41eac5929bf45816bf'
             '511526e33c7242fb264456ca98d6eb166dbc059c8379d71be10f571bf6a9cb9e'
