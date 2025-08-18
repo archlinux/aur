@@ -1,6 +1,6 @@
 pkgbase = libation
 	pkgdesc = Audible audiobook manager: liberate your Library
-	pkgver = 12.5.0
+	pkgver = 12.5.2
 	pkgrel = 1
 	url = https://github.com/rmcrackan/Libation
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libation
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = lttng-ust2.12
-	source = libation-12.5.0.tar.gz::https://github.com/rmcrackan/Libation/archive/refs/tags/v12.5.0.tar.gz
-	sha256sums = 0346b7e5e8cfeaeca14ac8ce6ba7f419a00143ce8b289abe5863b94cbf6125e2
+	source = libation-12.5.2.tar.gz::https://github.com/rmcrackan/Libation/archive/refs/tags/v12.5.2.tar.gz
+	sha256sums = 25d051814ec2ed39d87b26be953aa227c15cc332beec22273998b1c6d51b44c1
 
 pkgname = libation
