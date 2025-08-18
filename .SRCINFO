@@ -13,6 +13,6 @@ pkgbase = mangayomi-bin
 	provides = mangayomi
 	conflicts = mangayomi
 	source = mangayomi-0.6.35.zip::https://github.com/kodjodevf/mangayomi/releases/download/v0.6.35/Mangayomi-v0.6.35-linux.zip
-	sha256sums = e37a8f12bc069879017d63bef3be72a369d287f8990a2bbb1961978ccb9f23f3
+	sha256sums = 9e3da005bc7194f4dce9838ea916fc1eb9331c1e05fdaa381cc99a05c7741ca2
 
 pkgname = mangayomi-bin
