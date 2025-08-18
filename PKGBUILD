@@ -1,17 +1,17 @@
 # Maintainer: fk29g <fk29g.uphill912@slmails.com>
 # Contributor: Bart Libert <bart plus aur at libert dot email>
 pkgname=hours
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A no-frills time tracking toolkit for command line nerds'
 arch=('x86_64')
 url='https://tools.dhruvs.space/hours/'
 license=('MIT')
 makedepends=('go')
-provides=("hours")
-conflicts=("hours")
+provides=("$pkgname")
+conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dhth/hours/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8bc7fb78f12e0aa94465534b354e6a331c12d9a871035d3ff14b08e247be259f21cf026f855384afb3c939d17309184c2145d16cf45ee905553c5c29c848840b')
+b2sums=('a8d3f86e9bd4040205324067f72d68e1f3231635ae2558a056605cc64b8f23c639ebaca7224bd9a75df6a66afbacdc0c0fff3470da96f3cabc8f3f3c3c02df70')
 
 prepare(){
     cd "$pkgname-$pkgver"
