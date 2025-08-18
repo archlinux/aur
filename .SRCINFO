@@ -1,0 +1,16 @@
+pkgbase = treegen
+	pkgdesc = ASCII Tree Directory and File Structure Generator
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/bilbilak/treegen
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	provides = treegen
+	conflicts = treegen
+	source = treegen-1.1.0.tar.gz::https://github.com/bilbilak/treegen/archive/refs/tags/v1.1.0.tar.gz
+	source = fix-version.patch
+	sha256sums = 1e167982687eeaaff59db64200941a534426ed6a28532173c0215a857f0f6f36
+	sha256sums = cdd29cb2146c797debfb861fac5321d1615a13e631860548cd35c47d7a4b83ac
+
+pkgname = treegen
