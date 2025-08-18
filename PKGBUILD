@@ -3,12 +3,12 @@
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-cuda"
 pkgver=1.7.6 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('ggml-cublas-git' 'sdl2-compat')
+depends=('ggml-cublas-git' 'nvidia-utils' 'sdl2-compat')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
@@ -26,6 +26,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CUDA_ARCHITECTURES=89-real \
     -DWHISPER_SDL2=1 \
+    -DWHISPER_BUILD_EXAMPLES=0 \
+    -DWHISPER_BUILD_SERVER=0 \
+    -DWHISPER_BUILD_TESTS=0 \
     -DWHISPER_USE_SYSTEM_GGML=1
 
   cmake --build "${srcdir}/build"

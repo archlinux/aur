@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp-cuda
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = whisper.cpp-cuda
 	makedepends = cmake
 	makedepends = git
 	depends = ggml-cublas-git
+	depends = nvidia-utils
 	depends = sdl2-compat
 	provides = whisper.cpp
 	conflicts = whisper.cpp
