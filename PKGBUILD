@@ -1,27 +1,35 @@
-# Maintainer: leux08 <contato@leux08.dev.br>
+# Maintainer: Brian Thompson <brianrobt@pm.me>
+# Contributor: leux08 <contato@leux08.dev.br>
+
 pkgname=pixieditor-bin
 _pkgname=pixieditor
-pkgver=2.0.1.7
+pkgver=2.0.1.9
 pkgrel=1
 pkgdesc="Universal 2D Graphics Editor"
 arch=('x86_64')
 url="https://pixieditor.net"
-license=('LGPL-3.0')
-depends=()
+license=('LGPL-3.0-only')
+depends=(
+  'fontconfig'
+  'gcc-libs'
+  'glibc'
+  'libxcursor'
+  'zlib'
+)
 source=("https://github.com/PixiEditor/PixiEditor/releases/download/$pkgver/PixiEditor-$pkgver-amd64-linux.tar.gz")
-md5sums=('77c3debff9aa6ddbec5c8e0ec0e454e2')
+sha512sums=('3bdc12ba6f5a676356cbb09f1cdb1930a10995aa1e0682a5f945e74286d1cfc9aafa2318318ccd124d8a2ee0b7f5f913fc65bc3d1917a744910fa17b5c9f078f')
 
 package() {
-    mkdir -p "$pkgdir"/usr/bin
-    mkdir -p "$pkgdir"/usr/share/applications
-    mkdir -p "$pkgdir"/usr/share/pixmaps
-    mkdir -p "$pkgdir"/opt
+  mkdir -p "$pkgdir"/usr/bin
+  mkdir -p "$pkgdir"/usr/share/applications
+  mkdir -p "$pkgdir"/usr/share/pixmaps
+  mkdir -p "$pkgdir"/opt
 
-    cp -r . "$pkgdir"/opt/$pkgname
+  cp -r . "$pkgdir"/opt/$pkgname
 
-    install -m755 ../$_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
+  install -m755 ../$_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
 
-    install -m644 ../*.desktop "$pkgdir"/usr/share/applications/
+  install -m644 ../*.desktop "$pkgdir"/usr/share/applications/
 
-    install -m644 ./Assets/PixiEditorLogo.png "$pkgdir"/usr/share/pixmaps/pixieditor.png
+  install -m644 ./Assets/PixiEditorLogo.png "$pkgdir"/usr/share/pixmaps/pixieditor.png
 }
