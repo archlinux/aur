@@ -2,7 +2,7 @@
 
 pkgname=3x-ui-bin
 pkgver=2.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/${pkgname%-bin}"
@@ -33,7 +33,7 @@ b2sums_x86_64=('1c38b9a56947f77f0bbad0eec9aedb1d63b7521fc95e477d88335d2b1d3bb7f6
 
 prepare() {
   sed -i 's|/etc/systemd/system/|/usr/lib/systemd/system/|g'                    ${pkgname:1:4}/${pkgname:1:4}.sh
-  sed -i 's|/usr/local/x-ui/bin|/usr/share/x-ui/bin|g'                          ${pkgname:1:4}/${pkgname:1:4}.sh
+  sed -i 's|/usr/local/x-ui/bin|/usr/lib/x-ui/bin|g'                            ${pkgname:1:4}/${pkgname:1:4}.sh
   sed -i -E 's|wget -O ([^ ]+) ?-?N? (https?://[^ ]+)|curl -L -o \1 \2|g'       ${pkgname:1:4}/${pkgname:1:4}.sh
   sed -i -E 's|wget -N (https?://[^ ]+/([^/ ]+))|curl -L -o \2 \1|g'            ${pkgname:1:4}/${pkgname:1:4}.sh
   sed -i 's|/usr/local/|/usr/lib/|g'                                            ${pkgname:1:4}/${pkgname:1:4}.sh
