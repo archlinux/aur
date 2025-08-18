@@ -1,0 +1,15 @@
+pkgbase = cpond-git
+	pkgdesc = Procedurally animated fish for your terminal
+	pkgver = r24.1f91080
+	pkgrel = 1
+	url = https://github.com/ayuzur/cpond
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ncurses
+	provides = cpond
+	conflicts = cpond
+	source = git+https://github.com/ayuzur/cpond.git
+	sha256sums = SKIP
+
+pkgname = cpond-git
