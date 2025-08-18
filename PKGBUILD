@@ -2,7 +2,7 @@
 
 pkgname=rusk
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal task manager for CLI written in Rust"
 arch=("x86_64")
 url="https://github.com/tagirov/rusk"
