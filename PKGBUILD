@@ -9,8 +9,8 @@
 # Contributor: Christian Schwarz <me et cschwarz punkt com>
 
 pkgname=apt-cacher-ng
-pkgver=3.7.4
-pkgrel=12
+pkgver=3.7.5
+pkgrel=1
 pkgdesc="A caching proxy specialized for package files"
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,35 +19,26 @@ depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl' 'libwrap' 'libevent' 'c-ares')
 optdepends=('mailcap: to get correct Content-Type header on doc html served by apt-cacher-ng')
 makedepends=('cmake')
 source=("http://deb.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
-        'add-alarm-mirrorlist.sh'
         'acng.conf.patch'
         'apt-cacher-ng.service.patch'
-        'have-strlcpy.patch'
         'apt-cacher-ng.tmpfile'
-        'include-algorithm.patch'
 )
 
 backup=('etc/apt-cacher-ng/acng.conf' 'etc/apt-cacher-ng/security.conf')
 install=apt-cacher-ng.install
 
-sha256sums=('63140473a669c42f5e2219e38fa9d7c733f9047699dde52c3bd828e372929a5f'
-            'cf6b3fe3ba76c512765c18f10c6ed886bc31c30f28b7ae93f8d6a13d2e65bf30'
+sha256sums=('2e4887d6870396334992accd331e12cba86dfef857532f610bb0635a8e32900d'
             '695c074de35a75730e6b711960993f00f120634276349c8640db2ad883a5ad09'
             'c89335ea833fc04ec2ce6598e3fdaf86aa8f2fa0892203eef4c0a5cb24d6c188'
-            '0d584e8193ab2c63d4d629c4fdca23e09dc369953a60c57cbb4a6138b5136265'
-            'ead4e80771f88b42d922aff6c62da93ae9c9b001a071043e2092949f2337b459'
-            'de1356ffb2eee9900132f18bbce4f3f56b176553a4fdf334e48b57630e8d0306')
+            'ead4e80771f88b42d922aff6c62da93ae9c9b001a071043e2092949f2337b459')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p0 -i "${srcdir}/have-strlcpy.patch"
-  patch -p0 -i "${srcdir}/include-algorithm.patch"
+  sed -i '/^set -x/s/^/#/' dbgen/ubuntuscan.sh
 
   # === uncomment the next line to update mirrors [w3m package is needed]; it will take some time ===
   #make -f scripts/Makefile.release gendbs
 
-  # === uncomment next line to add archlinuxarm mirrors to archlx_mirrors file [wget is needed] ===
-  #bash ${srcdir}/add-alarm-mirrorlist.sh
 }
 
 build() {
