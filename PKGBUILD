@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clipboard-manager-git
-pkgver=0.1.0.r26.gfcab4b7
+pkgver=0.1.0.r49.g3b4d392
 pkgrel=1
 pkgdesc="Clipboard manager for COSMIC™"
 arch=('x86_64' 'aarch64')
@@ -28,6 +28,11 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  git lfs install --local
+  git remote add network-origin https://github.com/cosmic-utils/clipboard-manager
+  git lfs fetch network-origin
+  git lfs checkout
 }
 
 build() {

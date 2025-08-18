@@ -1,6 +1,6 @@
 pkgbase = clipboard-manager-git
 	pkgdesc = Clipboard manager for COSMIC™
-	pkgver = 0.1.0.r26.gfcab4b7
+	pkgver = 0.1.0.r49.g3b4d392
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/clipboard-manager
 	arch = x86_64
