@@ -9,7 +9,7 @@ pkgname=(kde-applications-meta-slim
          kde-pim-meta-slim
          kde-system-meta-slim
          kde-utilities-meta-slim)
-pkgver=25.04
+pkgver=25.08
 pkgrel=1
 arch=(any)
 license=(None)
