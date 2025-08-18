@@ -1,7 +1,7 @@
 pkgbase = wps-office-bin
 	pkgdesc = WPS Office, is an office productivity suite.
-	pkgver = 12.1.0.17900
-	pkgrel = 5
+	pkgver = 12.1.2.22570
+	pkgrel = 1
 	url = https://linux.wps.cn
 	arch = x86_64
 	license = LicenseRef-WPS-EULA
@@ -28,7 +28,7 @@ pkgbase = wps-office-bin
 	options = !strip
 	options = !zipman
 	options = !debug
-	source_x86_64 = wps-office_12.1.0.17900_amd64.deb::https://dogfood.gnupg.uk/wps302/12.1.0.17900/amd64
-	sha1sums_x86_64 = a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f
+	source_x86_64 = wps-office_12.1.2.22570_amd64.deb::https://dogfood.gnupg.uk/wps302/12.1.2.22570/amd64
+	sha1sums_x86_64 = 2c96e17f862e033662ce598ad0b9472fcb4f68cc
 
 pkgname = wps-office-bin
