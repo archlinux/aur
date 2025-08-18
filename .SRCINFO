@@ -1,6 +1,6 @@
 pkgbase = appium
 	pkgdesc = Cross-platform automation framework for all kinds of apps
-	pkgver = 2.19.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://appium.io
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = appium
 	optdepends = nodejs-appium-uiautomator2-driver: UiAutomator2 integration for Appium
 	optdepends = nodejs-appium-windows-driver: Appium bridge to WinAppDriver
 	optdepends = nodejs-appium-xcuitest-driver: Appium driver for iOS using XCUITest for backend
-	noextract = appium-2.19.0.tgz
-	source = appium-2.19.0.tgz::https://registry.npmjs.org/appium/-/appium-2.19.0.tgz
-	sha256sums = ab8ab9723dd44d3a0adfa14e4320d9578a9127576f7fb862048d2335c9376f14
+	noextract = appium-3.0.0.tgz
+	source = appium-3.0.0.tgz::https://registry.npmjs.org/appium/-/appium-3.0.0.tgz
+	sha256sums = 88c3d53813211f676b59418678bde23375bc33bba79cb6569138b47474d09f39
 
 pkgname = appium
