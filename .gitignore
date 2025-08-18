@@ -1,4 +1,4 @@
-gstreamer-thumbnailer/
+gst-video-thumbnailer/
 pkg/
 src/
 *.tar.zst
