@@ -1,5 +1,5 @@
 pkgname=hyprhide
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="A tool for hiding and showing windows in Hyprland using a PyQt6 GUI"
 arch=('any')

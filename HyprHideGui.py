@@ -143,6 +143,7 @@ class HiddenWindowItem(QWidget):
         return result.stdout.strip(), result.stderr.strip(), result.returncode
     # Function to restore the window
     def on_restore_clicked(self):
+        old_workspace = hyprland_interface.get_active_workspace()
         client_data = hyprland_interface.get_client_info(self.address) # Ge the current client info
         print(f"Restoring window {self.title} at {self.x},{self.y} on workspace {self.workspace}") # Debug output
         print(f"Window floating state = {self.was_floating}") # Debug output
@@ -202,6 +203,8 @@ class HiddenWindowItem(QWidget):
 
         print(f"Window floating state = {check_state_c['floating']}")# Output floating state
         hyprland_interface.move_win_to_workspace(self.address,self.workspace) # One final move to correct workspace
+
+        hyprland_interface.set_current_workspace(old_workspace['id'])
         self.restore_complete.emit() # Emit completion code
 
     
@@ -702,7 +705,7 @@ if __name__ == "__main__":
         signal.signal(signal.SIGINT, signal.SIG_DFL)
         # safety_check_generate_missing_json_files()
         window = HyprHideAppInitWindow()
-        # Immediately move near mouse
+        # Immediately s near mouse
         # window.position_near_mouse()
         window.show()
         sys.exit(app.exec())
@@ -713,7 +716,7 @@ if __name__ == "__main__":
         insure_no_leftover_file()
         safety_check_generate_missing_json_files()
         window = HyprHideApp()
-        # Immediately move near mouse
+        # Immediately s near mouse
         window.position_near_mouse()
         window.show()
         sys.exit(app.exec())
