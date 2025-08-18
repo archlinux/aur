@@ -19,12 +19,12 @@ prepare() {
 build() {
     cd "$srcdir/game_cheetah-$pkgver"
     export RUSTFLAGS="-C target-cpu=x86-64-v2"
-    cargo build --release --locked
+    cargo build --release
 }
 
 check() {
     cd "$srcdir/game_cheetah-$pkgver"
-    cargo test --release --locked || true
+    cargo test --release || true
 }
 
 package() {
