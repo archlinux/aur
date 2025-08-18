@@ -1,7 +1,7 @@
 # Maintainer: yifwon <wyf9661 [at] gmail.com>
 pkgname=('wps-office-bin')
 pkgver=12.1.2.22570
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64')
 url="https://linux.wps.cn"
@@ -36,6 +36,11 @@ package(){
   cd "${pkgdir}"
   # use system lib
   rm opt/kingsoft/wps-office/office6/lib{jpeg,stdc++}.so*
+
+  # fix desktop icons group
+  for _application in usr/share/applications/*.desktop; do
+    sed -i '/^Categories=/s/Qt;/Office;/' "${_application}"
+  done
 
   # fix python2 call
   sed -i "s/python -c 'import sys, urllib; print urllib\.unquote(sys\.argv\[1\])'/\

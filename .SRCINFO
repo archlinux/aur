@@ -1,7 +1,7 @@
 pkgbase = wps-office-bin
 	pkgdesc = WPS Office, is an office productivity suite.
 	pkgver = 12.1.2.22570
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux.wps.cn
 	arch = x86_64
 	license = LicenseRef-WPS-EULA
