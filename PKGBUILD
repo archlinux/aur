@@ -1,7 +1,7 @@
 # Maintainer Sunny brainworms2002 at gmail.com
 
 pkgname=kanji-dojo
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="Practice writing Japanese letters, learn their meanings and related words"
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
 	# build for linux
-        JAVA_HOME=/usr/lib/jvm/java-17-openjdk/
+    JAVA_HOME=/usr/lib/jvm/java-17-openjdk/
 	PATH=$PATH:/usr/lib/jvm/java-17-openjdk/bin
 	cd Kanji-Dojo
 	./gradlew desktopApp:packageDistributionForCurrentOS
