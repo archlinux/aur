@@ -35,7 +35,6 @@ RestartSec=10
 TimeoutStopSec=20
 SyslogIdentifier=sonarr
 ConfigurationDirectory=sonarr
-LogsDirectory=/var/lib/sonarr/logs
 RuntimeDirectory=sonarr
 StateDirectory=sonarr
 WorkingDirectory=/var/lib/sonarr
