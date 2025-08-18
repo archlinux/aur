@@ -35,7 +35,6 @@ RestartSec=10
 TimeoutStopSec=20
 SyslogIdentifier=whisparr
 ConfigurationDirectory=whisparr
-LogsDirectory=/var/lib/whisparr/logs
 RuntimeDirectory=whisparr
 StateDirectory=whisparr
 WorkingDirectory=/var/lib/whisparr
