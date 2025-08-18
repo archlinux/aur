@@ -1,11 +1,11 @@
 # PKGBUILD (converted from hyprviz-bin)
 pkgname=hyprviz
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for configuring Hyprland!"
 url="https://github.com/timasoft/hyprviz"
 license=("GPL-2.0")
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 depends=(gtk4 glib2 desktop-file-utils hyprland )
 makedepends=("cargo" "rust" "pkgconf" "pkg-config")
 provides=("$pkgname")
