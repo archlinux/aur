@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip")
 
 # The checksum has been generated for the source file.
-sha256sums=('e37a8f12bc069879017d63bef3be72a369d287f8990a2bbb1961978ccb9f23f3')
+sha256sums=('9e3da005bc7194f4dce9838ea916fc1eb9331c1e05fdaa381cc99a05c7741ca2')
 
 package() {
   # 1. Create the installation directory in /opt
