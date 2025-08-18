@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Portmaster
 GenericName=Application Firewall
-Exec=/usr/bin/portmaster --with-prompts --with-notifications 
+Exec=/usr/bin/portmaster --with-prompts --with-notifications
 Icon=portmaster
 StartupWMClass=portmaster
 Terminal=false

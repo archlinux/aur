@@ -9,11 +9,11 @@
 
 pkgname=portmaster-bin
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Privacy Suite and Firewall - installs the official prebuilt Portmaster binaries'
 arch=('x86_64')
 url='https://safing.io/portmaster'
-license=('AGPL3')
+license=('GPL-3.0-only')
 provides=('portmaster')
 conflicts=('portmaster' 'portmaster-legacy-bin' 'portmaster-stub-bin' 'portmaster-stub-beta-bin')
 
@@ -33,7 +33,7 @@ source=("portmaster.desktop"
         "icon-portmaster-64.png"
         "icon-portmaster-128.png")
 
-sha256sums=('f7b7026c4b4fe73b0401af0edec9c1458ad7d05267dbe7dfe0b7733b791c3b60' 
+sha256sums=('f7b7026c4b4fe73b0401af0edec9c1458ad7d05267dbe7dfe0b7733b791c3b60'
            '0a067b241267974ab3225e904ac362eba6b0a37cc3c4ae18e30c381ad2a47076'
            'cf595fe51bbeb3242aa1cdc844e932731fdff77671d2e2a9ce8d15acffd466a6'
            '9e90c3b736bfedd89fee8bfed413187ac5996743015ab75fca359c47a71132a4'
@@ -57,7 +57,7 @@ prepare() {
 
   echo "[+] updatemgr: Downloading Portmaster binaries ..."
   "$srcdir/updatemgr" download https://updates.safing.io/stable.v3.json "$srcdir/tmp_downloaded/bin"
-  
+
   echo "[+] updatemgr: Downloading Portmaster intel data ..."
   "$srcdir/updatemgr" download https://updates.safing.io/intel.v3.json "$srcdir/tmp_downloaded/intel"
 }
@@ -66,11 +66,11 @@ package() {
   install -Dm644 "$srcdir/portmaster.desktop"           "$pkgdir/usr/share/applications/portmaster.desktop"
   install -Dm644 "$srcdir/portmaster-autostart.desktop" "$pkgdir/etc/xdg/autostart/portmaster-autostart.desktop"
   install -Dm644 "$srcdir/portmaster.service"           "$pkgdir/usr/lib/systemd/system/portmaster.service"
-  install -Dm755 "$srcdir/portmaster-ui-start.sh"       "$pkgdir/usr/lib/portmaster/portmaster-ui-start.sh"  
+  install -Dm755 "$srcdir/portmaster-ui-start.sh"       "$pkgdir/usr/lib/portmaster/portmaster-ui-start.sh"
 
   install -d "$pkgdir/usr/lib/portmaster"
   install -m755 "$srcdir/tmp_downloaded/bin/portmaster-core"  "$pkgdir/usr/lib/portmaster/portmaster-core"
-  install -m755 "$srcdir/tmp_downloaded/bin/portmaster"       "$pkgdir/usr/lib/portmaster/portmaster"  
+  install -m755 "$srcdir/tmp_downloaded/bin/portmaster"       "$pkgdir/usr/lib/portmaster/portmaster"
   install -m644 "$srcdir/tmp_downloaded/bin/portmaster.zip"   "$pkgdir/usr/lib/portmaster/portmaster.zip"
   install -m644 "$srcdir/tmp_downloaded/bin/assets.zip"       "$pkgdir/usr/lib/portmaster/assets.zip"
 
@@ -86,7 +86,7 @@ package() {
   ICON_NAME="portmaster"
   for size in 16 32 48 64 128; do
     install -Dm644 "$srcdir/icon-${ICON_NAME}-${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/${ICON_NAME}.png"
-  done  
-  install -Dm644 "$srcdir/icon-${ICON_NAME}.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${ICON_NAME}.svg"  # Scalable icon  
+  done
+  install -Dm644 "$srcdir/icon-${ICON_NAME}.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${ICON_NAME}.svg"  # Scalable icon
   install -Dm644 "$srcdir/icon-${ICON_NAME}-64.png" "$pkgdir/usr/share/pixmaps/${ICON_NAME}.png"                   # In pixmaps for maximum compatibility
 }

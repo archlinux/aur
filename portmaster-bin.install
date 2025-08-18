@@ -46,7 +46,7 @@ post_install() {
     fi
 
     echo "[ ] Initializing binary files"
-    ln -sf /usr/lib/portmaster/portmaster-ui-start.sh /usr/bin/portmaster    
+    ln -sf /usr/lib/portmaster/portmaster-ui-start.sh /usr/bin/portmaster
 
     echo "[ ] Enabling service"
     systemctl daemon-reload
@@ -55,10 +55,10 @@ post_install() {
 
 post_upgrade() {
     echo "[+] Post-Upgrade: Updating Portmaster"
-    
+
     # Always ensure symlink is correct after upgrade
     ln -sf /usr/lib/portmaster/portmaster-ui-start.sh /usr/bin/portmaster
-    
+
     # Restart the service after upgrade
     systemctl daemon-reload
     systemctl try-restart portmaster.service
@@ -73,7 +73,7 @@ pre_remove() {
 
 post_remove() {
     echo "[+] Post-Remove: Cleaning up Portmaster"
-    
+
     # Remove SELinux permissions if applicable
     if command -v semanage >/dev/null 2>&1; then
         echo "[ ] Removing SELinux permissions"
@@ -81,12 +81,12 @@ post_remove() {
     fi
 
     # Remove symlink
-    rm -f /usr/bin/portmaster    
+    rm -f /usr/bin/portmaster
 
     # Remove everything from '/var/lib/portmaster'
     echo "[ ] Removing Portmaster data"
     rm -rf /var/lib/portmaster || echo "[-] Failed to remove /var/lib/portmaster"
-    
+
     systemctl daemon-reload
 
     # Remove V1 migration flag (if exists)
