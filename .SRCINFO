@@ -47,7 +47,7 @@ pkgbase = xlibre-server-xephyr-bin
 	conflicts = xlibre-server-xephyr
 	noextract = xlibre-server-xephyr-25.0.0.8-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-server-xephyr-25.0.0.8-1-x86_64.pkg.tar.zst
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xserver-xephyr-25.0.0.8-1-x86_64.pkg.tar.zst
 	sha256sums = 87d56cc23d538dd6c26d8516cb63f96272c97c35ebad359e6cab7a01ae44316f
 
 pkgname = xlibre-server-xephyr-bin
