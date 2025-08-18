@@ -1,6 +1,6 @@
 pkgbase = openai-codex
 	pkgdesc = Lightweight coding agent that runs in your terminal
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/openai/codex
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openai-codex
 	optdepends = git
 	optdepends = ripgrep: accelerated large-repo search
 	options = !lto
-	source = https://github.com/openai/codex/archive/refs/tags/rust-v0.21.0.tar.gz
-	b2sums = e7b06894524515acb488a36fcd6c4dce0e49376725fe44f844fdce13c7e41864c1588fc9af58ffb14da710d26a6f93465b7f6802d62bbd74b29c21243841adb9
+	source = https://github.com/openai/codex/archive/refs/tags/rust-v0.22.0.tar.gz
+	b2sums = cf88b748ff62f0fb996df5a029167bcd0bcc5b58f105ebc458d0fd36974c6a68dd5993efd10e5a852ef6d9100ab10005a6ccc8f1da65897831311f987ec20585
 
 pkgname = openai-codex
