@@ -3,12 +3,12 @@
 
 pkgname=python-pandas_market_calendars-git
 _pkgname=pandas_market_calendars-git
-pkgver=r872.790d848
-pkgrel=2
+pkgver=r878.aa77dfa
+pkgrel=1
 pkgdesc="Market and exchange trading calendars for pandas"
 arch=('any')
 depends=('python-pytz' 'python-pandas' 'python-exchange_calendars' 'python-dateutil' 'python')
-makedepends=('python-setuptools' 'python-build' 'python-installer')
+makedepends=( 'git' 'python-setuptools' 'python-build' 'python-installer')
 url="https://github.com/rsheftel/pandas_market_calendars"
 license=('MIT')
 provides=('python-pandas_market_calendars')
