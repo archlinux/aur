@@ -5,9 +5,10 @@
 #     Cf.: https://newreleases.io/project/github/aws/aws-lc/release/v1.57.0
 # 2.) Three binaries are installed into /usr/bin/aws-lc so that 'openssl' does not interfere
 #     with the binary from the package 'openssl'. Check with 'which openssl'.
+# 3.) FIPS does not work, it throws errors during build. Reported upstream.
 
 pkgname=aws-lc
-pkgver=1.58.0
+pkgver=1.58.1
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -31,7 +32,7 @@ optdepends=(
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('6b8f72707cad44afa625055d98fa417067841522f8af508abca93bb6fc162ea48dbd67fb7e892a228efa4a1672307d1ea5563c0ecf8dca0c784b49c1e026c460')
+b2sums=('ddb87f058b8206af7997437604743777e33c5686e8c20315f52e829b117e897cf4852188c2e2bdea33d68090c9e0ab1617f4cf7f3d9f82befff99a1f8df0e4ff')
 
 build() {
     cd ${pkgname}-${pkgver}
