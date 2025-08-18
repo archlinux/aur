@@ -1,0 +1,14 @@
+pkgbase = transparent-pipe
+	pkgdesc = Display the result of commands at every keystroke
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/minefuto/tp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = transparent-pipe
+	conflicts = transparent-pipe
+	source = tp-1.0.0.tar.gz::https://github.com/minefuto/tp/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 872a85df60946de6345a84bcc00f4a8a368cdfd42ad3ced560c1d1f5c5828b73
+
+pkgname = transparent-pipe
