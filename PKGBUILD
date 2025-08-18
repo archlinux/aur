@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=4.2.1.r0.g5279b3fe
+pkgver=4.2.1.r121.gef119272
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (latest commit)"
 arch=(x86_64 aarch64)
@@ -29,7 +29,7 @@ build() {
 
 check() {
     echo -e "\e[33m\e[1mTesting every module.\e[0m Feel free to report anything not working on https://github.com/alba4k/albafetch/issues"
-    albafetch/build/debug
+    albafetch/build/albafetch --debug --no-pip
 }
 
 package() {
