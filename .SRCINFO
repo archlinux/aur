@@ -1,19 +1,19 @@
 pkgbase = embertune-bin
 	pkgdesc = A desktop music player with a focus on design and functionality, aims to be a solid alternative to your streaming services without any ads.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/DylanAkp/EmberTune
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron35
-	provides = embertune=0.9.1
+	provides = embertune=0.9.3
 	conflicts = embertune
-	source = embertune-0.9.1.AppImage::https://github.com/DylanAkp/EmberTune/releases/download/v0.9.1/EmberTune-0.9.1.AppImage
-	source = LICENSE-0.9.1::https://raw.githubusercontent.com/DylanAkp/EmberTune/v0.9.1/LICENSE
+	source = embertune-0.9.3-x86_64.AppImage::https://github.com/DylanAkp/EmberTune/releases/download/v0.9.3/EmberTune-0.9.3.AppImage
+	source = LICENSE-0.9.3::https://raw.githubusercontent.com/DylanAkp/EmberTune/v0.9.3/LICENSE
 	source = embertune.sh
-	sha256sums = 0c8fb7daac2e4e26942fac8dde052b2978c1a42fdfaadd67256d91b2793c6faa
+	sha256sums = 874b7be48a0d3514730b59b3d3ca97dcd43ca54b5e44fca34a980175c2f5e20c
 	sha256sums = 2596c629e297252208c9a49402be4cf61fda1cfef7a6d9eb2fd298da425f757a
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = embertune-bin
