@@ -3,7 +3,7 @@
 
 pkgname=xfdashboard
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Maybe a Gnome shell like dashboard for Xfce"
 arch=('x86_64')
 url="https://docs.xfce.org/apps/xfdashboard/start"
