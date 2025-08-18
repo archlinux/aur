@@ -1,7 +1,7 @@
 pkgbase = pk_web-git
 	pkgdesc = Web UI for plakar backup tool
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spn109.fr/pk_web
 	arch = any
 	license = Apache-2

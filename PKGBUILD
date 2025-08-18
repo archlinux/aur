@@ -7,7 +7,7 @@
 _pkgname=pk_web
 pkgname=${_pkgname}-git
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI for plakar backup tool"
 arch=(any)
 url="https://spn109.fr/pk_web"
@@ -42,6 +42,7 @@ package()
 [Unit]
 Description=Plakar Web UI service
 StartLimitIntervalSec=0
+
 [Service]
 Type=simple
 Restart=always
@@ -49,5 +50,8 @@ RestartSec=1
 SetLoginEnvironment=True
 WorkingDirectory=/usr/share/pk_web
 ExecStart=/usr/bin/gunicorn app:app
+
+[Install]
+WantedBy=multi-user.target
 eof
 }
