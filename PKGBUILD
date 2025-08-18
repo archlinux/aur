@@ -15,10 +15,10 @@ depends=('webkit2gtk-4.1' 'mpv' 'xdg-user-dirs' 'unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}-${pkgver}.zip::https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip")
+source=("https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip")
 
 # The checksum has been generated for the source file.
-sha256sums=('87f5dcf1587112f43ccbba506f7df6b9a59824071119f0265f972021674fd7a9')
+sha256sums=('9e3da005bc7194f4dce9838ea916fc1eb9331c1e05fdaa381cc99a05c7741ca2')
 
 package() {
   # 1. Create the installation directory in /opt
