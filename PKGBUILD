@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 # Contributor: envolution
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
