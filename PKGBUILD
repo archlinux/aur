@@ -27,6 +27,7 @@ build() {
 
 check() {
   export RUSTUP_TOOLCHAIN=stable
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cargo test --frozen
 }
 
