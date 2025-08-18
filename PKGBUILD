@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
@@ -10,24 +10,21 @@ _ghurl="https://github.com/ludouzi/fooyin"
 license=('GPL-3.0-only')
 depends=(
     'qt6-base'
-    'qt6-svg'
-    'qt6-tools'
     'alsa-lib'
     'taglib'
     'ffmpeg'
     'kdsingleapplication'
-    'libvgm-player-git'
+    'libvgm'
 )
 makedepends=(
-    'gcc'
+    'qt6-svg'
+    'qt6-tools'
     'ninja'
-    'pkgconf'
     'cmake'
     'libpipewire'
     'icu'
     'libopenmpt'
     'libsndfile'
-    'git'
     'libebur128'
     'libarchive'
     'libgme'
@@ -47,7 +44,7 @@ source=(
 sha256sums=('3559e2ffcd6ad82d72b90bcba3a3e607437329702339a3a3c989e28d28199b1d')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    find src -type f -print0 | xargs -0 sed -i 's/opt.backgroundBrush = {};/opt.backgroundBrush = Qt::NoBrush;/g'
+    #find src -type f -print0 | xargs -0 sed -i 's/opt.backgroundBrush = {};/opt.backgroundBrush = Qt::NoBrush;/g'
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
