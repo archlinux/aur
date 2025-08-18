@@ -13,6 +13,8 @@ pkgbase = hyprviz
 	depends = glib2
 	depends = desktop-file-utils
 	depends = hyprland
+	provides = hyprviz
+	conflicts = hyprviz-bin
 	source = https://github.com/timasoft/hyprviz/archive/refs/tags/v0.4.3.tar.gz
 	sha256sums = 61568c5666ad76f17f0f9f1689ca11ef4d03922f2c33ef2f778a7a2aae014eef
 
