@@ -1,0 +1,26 @@
+# Build directories
+src/
+pkg/
+build/
+
+# Source archives
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.zip
+
+# Compiled packages
+*.pkg.tar*
+*.pkg.tar.xz
+*.pkg.tar.zst
+
+# Log files
+*.log
+
+# Backup files
+*~
+*.bak
+*.orig
+
+# Downloaded source
+flameshot/
