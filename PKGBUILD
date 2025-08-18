@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=stable-diffusion.cpp-hipblas-git
-pkgver=r211.10c6501
+pkgver=r256.5900ef6
 pkgrel=1
 pkgdesc="Stable Diffusion in pure C/C++ (with AMD ROCm optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -14,9 +14,9 @@ makedepends=(
   'rocm-hip-sdk'
 )
 conflicts=("${pkgname%%-git}" 'stable-diffusion.cpp')
-conflicts=("${pkgname%%-git}" 'stable-diffusion.cpp')
+provides=("${pkgname%%-git}" 'stable-diffusion.cpp')
 source=("${pkgname%%-git}::git+${url}"
-  "git+https://github.com/ggerganov/ggml.git")
+  "git+https://github.com/ggerganov/ggml.git#commit=ff9052988b76e137bcf92bb335733933ca196ac0")
 
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
@@ -33,6 +33,9 @@ prepare() {
 
 build() {
   export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
+  export ROCM_PATH=/opt/rocm
+  export PATH=$ROCM_PATH/bin:$PATH
+  export LD_LIBRARY_PATH=$ROCM_PATH/lib:$ROCM_PATH/lib64:$LD_LIBRARY_PATH
   CC=/opt/rocm/llvm/bin/clang CXX=/opt/rocm/llvm/bin/clang++ \
     cmake \
     -B "${srcdir}/build" \
