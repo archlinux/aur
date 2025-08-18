@@ -1,0 +1,14 @@
+pkgbase = trre-git
+	pkgdesc = Extension of regular expressions for text editing and a grep-like command line tool
+	pkgver = r72.c474a68
+	pkgrel = 1
+	url = https://github.com/c0stya/trre
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = trre
+	conflicts = trre
+	source = git+https://github.com/c0stya/trre.git
+	sha256sums = SKIP
+
+pkgname = trre-git
