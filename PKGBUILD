@@ -1,5 +1,5 @@
 # Maintainer: Zen <dev@pyl.onl>
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=ugrd-git
 _name=${pkgname%-git}
