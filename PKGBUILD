@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
@@ -44,7 +44,7 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('e702389488e19c4c48b1b62bf1b2adf263b818138e3b232a39259057cbcec9c2')
+sha256sums=('3559e2ffcd6ad82d72b90bcba3a3e607437329702339a3a3c989e28d28199b1d')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     find src -type f -print0 | xargs -0 sed -i 's/opt.backgroundBrush = {};/opt.backgroundBrush = Qt::NoBrush;/g'
