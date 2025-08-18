@@ -6,8 +6,8 @@ _communicator=GKCommunicator
 _genetix=GKGenetix
 _pkgname=gedkeeper
 pkgname=${_pkgname}-git
-pkgver=v3.5.1.r4.g03c755c6
-pkgrel=2
+pkgver=v3.11.0.r128.g56ce3c02d
+pkgrel=1
 pkgdesc="Personal genealogical database editor"
 arch=('x86_64' 'i686')
 url="https://github.com/serg-norseman/gedkeeper"
@@ -17,9 +17,8 @@ makedepends=('dotnet-sdk-6.0')
 
 provides=("gedkeeper=${pkgver}")
 source=("git+https://github.com/Serg-Norseman/${_gitname}.git"
-"git+https://github.com/Serg-Norseman/${_communicator}.git"
 "git+https://github.com/Serg-Norseman/${_genetix}.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -32,7 +31,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_gitname}"
   git submodule init
-  git config submodule.projects/GKCommunicator.url "${srcdir}/${_communicator}"
   git config submodule.projects/GKGenetix.url "${srcdir}/${_genetix}"
   git -c protocol.file.allow=always submodule update
 }
@@ -45,8 +43,6 @@ build() {
 	dotnet build "${_gitname}/projects/GKv3/GKComponents/GKComponents.csproj" --configuration Release -p:Platform="Linux" --no-self-contained
 	dotnet build "${_gitname}/projects/GKGenetix/GKGenetix.Core/GKGenetix.Core.nstd.csproj" --configuration Release -p:Platform="Linux" --no-self-contained
 	dotnet build "${_gitname}/projects/GKGenetix/GKGenetix.UI.EtoForms/GKGenetix.UI.EtoForms.csproj" --configuration Release -p:Platform="Linux" --no-self-contained
-	dotnet build "${_gitname}/projects/GKCommunicator/GKNetCore/GKNetCore.nstd.csproj" --configuration Release -p:Platform="Linux" --no-self-contained
-	dotnet build "${_gitname}/projects/GKCommunicator/GKNetUI.EtoForms/GKNetUI.net.csproj" --configuration Release -p:Platform="Linux" --no-self-contained
 	dotnet build "${_gitname}/projects/GKv3/GEDKeeper3.sln" --configuration Release -p:Platform="Linux" --no-self-contained
 }
 
