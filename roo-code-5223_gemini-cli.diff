@@ -1,5 +1,5 @@
-*** /dev/null	2025-08-08 10:01:44.564579301 +0200
---- Roo-Code-3.25.10-patched/packages/types/src/providers/gemini-cli.ts	2025-07-27 17:37:38.015929339 +0200
+*** /dev/null	2025-08-17 15:14:16.453682224 +0200
+--- Roo-Code-3.25.16-patched/packages/types/src/providers/gemini-cli.ts	2025-07-27 17:37:38.015929339 +0200
 ***************
 *** 0 ****
 --- 1,110 ----
@@ -113,8 +113,8 @@
 + 		requiredReasoningBudget: true,
 + 	},
 + } as const satisfies Record<string, ModelInfo>
-*** Roo-Code-3.25.10/packages/types/src/providers/index.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/packages/types/src/providers/index.ts	2025-08-09 02:34:49.858839807 +0200
+*** Roo-Code-3.25.16/packages/types/src/providers/index.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/packages/types/src/providers/index.ts	2025-08-18 01:37:24.433169798 +0200
 ***************
 *** 5,10 ****
 --- 5,11 ----
@@ -125,12 +125,12 @@
   export * from "./glama.js"
   export * from "./groq.js"
   export * from "./huggingface.js"
-*** Roo-Code-3.25.10/src/api/index.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/api/index.ts	2025-08-09 02:34:49.858925293 +0200
+*** Roo-Code-3.25.16/src/api/index.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/api/index.ts	2025-08-18 01:37:24.433436945 +0200
 ***************
-*** 16,21 ****
---- 16,22 ----
-  	OllamaHandler,
+*** 15,20 ****
+--- 15,21 ----
+  	OpenAiHandler,
   	LmStudioHandler,
   	GeminiHandler,
 + 	GeminiCliHandler,
@@ -138,8 +138,8 @@
   	DeepSeekHandler,
   	MoonshotHandler,
 ***************
-*** 92,97 ****
---- 93,100 ----
+*** 100,105 ****
+--- 101,108 ----
   			return new LmStudioHandler(options)
   		case "gemini":
   			return new GeminiHandler(options)
@@ -148,8 +148,8 @@
   		case "openai-native":
   			return new OpenAiNativeHandler(options)
   		case "deepseek":
-*** /dev/null	2025-08-08 10:01:44.564579301 +0200
---- Roo-Code-3.25.10-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-07-27 17:42:22.349647696 +0200
+*** /dev/null	2025-08-17 15:14:16.453682224 +0200
+--- Roo-Code-3.25.16-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-07-27 17:42:22.349647696 +0200
 ***************
 *** 0 ****
 --- 1,329 ----
@@ -482,8 +482,8 @@
 + 		})
 + 	})
 + })
-*** /dev/null	2025-08-08 10:01:44.564579301 +0200
---- Roo-Code-3.25.10-patched/src/api/providers/gemini-cli.ts	2025-07-27 17:43:23.960929815 +0200
+*** /dev/null	2025-08-17 15:14:16.453682224 +0200
+--- Roo-Code-3.25.16-patched/src/api/providers/gemini-cli.ts	2025-07-27 17:43:23.960929815 +0200
 ***************
 *** 0 ****
 --- 1,419 ----
@@ -906,8 +906,8 @@
 + 		return super.countTokens(content)
 + 	}
 + }
-*** Roo-Code-3.25.10/src/api/providers/index.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/api/providers/index.ts	2025-08-09 02:34:49.859352722 +0200
+*** Roo-Code-3.25.16/src/api/providers/index.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/api/providers/index.ts	2025-08-18 01:37:24.434566090 +0200
 ***************
 *** 9,14 ****
 --- 9,15 ----
@@ -918,8 +918,8 @@
   export { GlamaHandler } from "./glama"
   export { GroqHandler } from "./groq"
   export { HuggingFaceHandler } from "./huggingface"
-*** Roo-Code-3.25.10/src/i18n/locales/ca/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/ca/common.json	2025-08-09 02:34:49.859431084 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/ca/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/ca/common.json	2025-08-09 02:34:49.859431084 +0200
 ***************
 *** 104,109 ****
 --- 104,119 ----
@@ -939,8 +939,8 @@
   		"mode_import_failed": "Ha fallat la importació del mode: {{error}}"
   	},
   	"warnings": {
-*** Roo-Code-3.25.10/src/i18n/locales/de/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/de/common.json	2025-08-09 02:34:49.859518944 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/de/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/de/common.json	2025-08-09 02:34:49.859518944 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -960,8 +960,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API-Authentifizierung fehlgeschlagen. Bitte überprüfe, ob dein API-Schlüssel gültig und nicht abgelaufen ist.",
   			"accessForbidden": "Cerebras API-Zugriff verweigert. Dein API-Schlüssel hat möglicherweise keinen Zugriff auf das angeforderte Modell oder die Funktion.",
-*** Roo-Code-3.25.10/src/i18n/locales/en/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/en/common.json	2025-08-09 02:34:49.859621052 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/en/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/en/common.json	2025-08-09 02:34:49.859621052 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -981,8 +981,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API authentication failed. Please check your API key is valid and not expired.",
   			"accessForbidden": "Cerebras API access forbidden. Your API key may not have access to the requested model or feature.",
-*** Roo-Code-3.25.10/src/i18n/locales/es/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/es/common.json	2025-08-09 02:34:49.859699414 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/es/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/es/common.json	2025-08-09 02:34:49.859699414 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1002,8 +1002,8 @@
   		"cerebras": {
   			"authenticationFailed": "Falló la autenticación de la API de Cerebras. Verifica que tu clave de API sea válida y no haya expirado.",
   			"accessForbidden": "Acceso prohibido a la API de Cerebras. Tu clave de API puede no tener acceso al modelo o función solicitada.",
-*** Roo-Code-3.25.10/src/i18n/locales/fr/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/fr/common.json	2025-08-09 02:34:49.859789649 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/fr/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/fr/common.json	2025-08-09 02:34:49.859789649 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1023,8 +1023,8 @@
   		"cerebras": {
   			"authenticationFailed": "Échec de l'authentification de l'API Cerebras. Vérifiez que votre clé API est valide et n'a pas expiré.",
   			"accessForbidden": "Accès interdit à l'API Cerebras. Votre clé API peut ne pas avoir accès au modèle ou à la fonction demandée.",
-*** Roo-Code-3.25.10/src/i18n/locales/hi/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/hi/common.json	2025-08-09 02:34:49.859881071 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/hi/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/hi/common.json	2025-08-09 02:34:49.859881071 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1044,8 +1044,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API प्रमाणीकरण विफल हुआ। कृपया जांचें कि आपकी API कुंजी वैध है और समाप्त नहीं हुई है।",
   			"accessForbidden": "Cerebras API पहुंच निषेध। आपकी API कुंजी का अनुरोधित मॉडल या सुविधा तक पहुंच नहीं हो सकती है।",
-*** Roo-Code-3.25.10/src/i18n/locales/id/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/id/common.json	2025-08-09 02:34:49.859970119 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/id/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/id/common.json	2025-08-09 02:34:49.859970119 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1065,8 +1065,8 @@
   		"cerebras": {
   			"authenticationFailed": "Autentikasi API Cerebras gagal. Silakan periksa apakah kunci API Anda valid dan belum kedaluwarsa.",
   			"accessForbidden": "Akses API Cerebras ditolak. Kunci API Anda mungkin tidak memiliki akses ke model atau fitur yang diminta.",
-*** Roo-Code-3.25.10/src/i18n/locales/it/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/it/common.json	2025-08-09 02:34:49.860065103 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/it/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/it/common.json	2025-08-09 02:34:49.860065103 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1086,8 +1086,8 @@
   		"cerebras": {
   			"authenticationFailed": "Autenticazione API Cerebras fallita. Verifica che la tua chiave API sia valida e non scaduta.",
   			"accessForbidden": "Accesso API Cerebras negato. La tua chiave API potrebbe non avere accesso al modello o alla funzione richiesta.",
-*** Roo-Code-3.25.10/src/i18n/locales/ja/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/ja/common.json	2025-08-09 02:34:49.860144653 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/ja/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/ja/common.json	2025-08-09 02:34:49.860144653 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1107,8 +1107,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API認証が失敗しました。APIキーが有効で期限切れではないことを確認してください。",
   			"accessForbidden": "Cerebras APIアクセスが禁止されています。あなたのAPIキーは要求されたモデルや機能にアクセスできない可能性があります。",
-*** Roo-Code-3.25.10/src/i18n/locales/ko/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/ko/common.json	2025-08-09 02:34:49.860226576 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/ko/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/ko/common.json	2025-08-09 02:34:49.860226576 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1128,8 +1128,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API 인증에 실패했습니다. API 키가 유효하고 만료되지 않았는지 확인하세요.",
   			"accessForbidden": "Cerebras API 액세스가 금지되었습니다. API 키가 요청된 모델이나 기능에 액세스할 수 없을 수 있습니다.",
-*** Roo-Code-3.25.10/src/i18n/locales/nl/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/nl/common.json	2025-08-09 02:34:49.860308500 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/nl/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/nl/common.json	2025-08-09 02:34:49.860308500 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1149,8 +1149,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API-authenticatie mislukt. Controleer of je API-sleutel geldig is en niet verlopen.",
   			"accessForbidden": "Cerebras API-toegang geweigerd. Je API-sleutel heeft mogelijk geen toegang tot het gevraagde model of de functie.",
-*** Roo-Code-3.25.10/src/i18n/locales/pl/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/pl/common.json	2025-08-09 02:34:49.860389237 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/pl/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/pl/common.json	2025-08-09 02:34:49.860389237 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1170,8 +1170,8 @@
   		"cerebras": {
   			"authenticationFailed": "Uwierzytelnianie API Cerebras nie powiodło się. Sprawdź, czy twój klucz API jest ważny i nie wygasł.",
   			"accessForbidden": "Dostęp do API Cerebras zabroniony. Twój klucz API może nie mieć dostępu do żądanego modelu lub funkcji.",
-*** Roo-Code-3.25.10/src/i18n/locales/pt-BR/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/pt-BR/common.json	2025-08-09 02:34:49.860466412 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/pt-BR/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/pt-BR/common.json	2025-08-09 02:34:49.860466412 +0200
 ***************
 *** 96,101 ****
 --- 96,111 ----
@@ -1191,8 +1191,8 @@
   		"cerebras": {
   			"authenticationFailed": "Falha na autenticação da API Cerebras. Verifique se sua chave de API é válida e não expirou.",
   			"accessForbidden": "Acesso à API Cerebras negado. Sua chave de API pode não ter acesso ao modelo ou recurso solicitado.",
-*** Roo-Code-3.25.10/src/i18n/locales/ru/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/ru/common.json	2025-08-09 02:34:49.860568520 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/ru/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/ru/common.json	2025-08-09 02:34:49.860568520 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1212,8 +1212,8 @@
   		"cerebras": {
   			"authenticationFailed": "Ошибка аутентификации Cerebras API. Убедитесь, что ваш API-ключ действителен и не истек.",
   			"accessForbidden": "Доступ к Cerebras API запрещен. Ваш API-ключ может не иметь доступа к запрашиваемой модели или функции.",
-*** Roo-Code-3.25.10/src/i18n/locales/tr/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/tr/common.json	2025-08-09 02:34:49.860650443 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/tr/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/tr/common.json	2025-08-09 02:34:49.860650443 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1233,8 +1233,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API kimlik doğrulama başarısız oldu. API anahtarınızın geçerli olduğunu ve süresi dolmadığını kontrol edin.",
   			"accessForbidden": "Cerebras API erişimi yasak. API anahtarınız istenen modele veya özelliğe erişimi olmayabilir.",
-*** Roo-Code-3.25.10/src/i18n/locales/vi/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/vi/common.json	2025-08-09 02:34:49.860731180 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/vi/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/vi/common.json	2025-08-09 02:34:49.860731180 +0200
 ***************
 *** 92,97 ****
 --- 92,107 ----
@@ -1254,8 +1254,8 @@
   		"cerebras": {
   			"authenticationFailed": "Xác thực API Cerebras thất bại. Vui lòng kiểm tra khóa API của bạn có hợp lệ và chưa hết hạn.",
   			"accessForbidden": "Truy cập API Cerebras bị từ chối. Khóa API của bạn có thể không có quyền truy cập vào mô hình hoặc tính năng được yêu cầu.",
-*** Roo-Code-3.25.10/src/i18n/locales/zh-CN/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/zh-CN/common.json	2025-08-09 02:34:49.860815478 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/zh-CN/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/zh-CN/common.json	2025-08-09 02:34:49.860815478 +0200
 ***************
 *** 97,102 ****
 --- 97,112 ----
@@ -1275,8 +1275,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API 身份验证失败。请检查你的 API 密钥是否有效且未过期。",
   			"accessForbidden": "Cerebras API 访问被禁止。你的 API 密钥可能无法访问请求的模型或功能。",
-*** Roo-Code-3.25.10/src/i18n/locales/zh-TW/common.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/i18n/locales/zh-TW/common.json	2025-08-09 02:34:49.860895028 +0200
+*** Roo-Code-3.25.16/src/i18n/locales/zh-TW/common.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/i18n/locales/zh-TW/common.json	2025-08-09 02:34:49.860895028 +0200
 ***************
 *** 91,96 ****
 --- 91,106 ----
@@ -1296,8 +1296,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API 驗證失敗。請檢查您的 API 金鑰是否有效且未過期。",
   			"accessForbidden": "Cerebras API 存取被拒絕。您的 API 金鑰可能無法存取所請求的模型或功能。",
-*** Roo-Code-3.25.10/src/shared/checkExistApiConfig.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/src/shared/checkExistApiConfig.ts	2025-07-27 18:39:38.647365277 +0200
+*** Roo-Code-3.25.16/src/shared/checkExistApiConfig.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/src/shared/checkExistApiConfig.ts	2025-07-27 18:39:38.647365277 +0200
 ***************
 *** 5,12 ****
   		return false
@@ -1317,8 +1317,8 @@
   		return true
   	}
   
-*** Roo-Code-3.25.10/webview-ui/src/components/settings/ApiOptions.tsx	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-08-04 14:11:36.445407790 +0200
+*** Roo-Code-3.25.16/webview-ui/src/components/settings/ApiOptions.tsx	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-08-18 02:14:37.742726304 +0200
 ***************
 *** 18,23 ****
 --- 18,24 ----
@@ -1330,20 +1330,8 @@
   	moonshotDefaultModelId,
   	mistralDefaultModelId,
 ***************
-*** 28,36 ****
-  	bedrockDefaultModelId,
-  	vertexDefaultModelId,
-  	sambaNovaDefaultModelId,
-- 	internationalZAiDefaultModelId,
-- 	mainlandZAiDefaultModelId,
-- 	fireworksDefaultModelId,
-  } from "@roo-code/types"
-  
-  import { vscode } from "@src/utils/vscode"
---- 29,34 ----
-***************
-*** 65,70 ****
---- 63,69 ----
+*** 66,71 ****
+--- 67,73 ----
   	DeepSeek,
   	Doubao,
   	Gemini,
@@ -1352,29 +1340,8 @@
   	Groq,
   	HuggingFace,
 ***************
-*** 82,89 ****
-  	Vertex,
-  	VSCodeLM,
-  	XAI,
-- 	ZAi,
-- 	Fireworks,
-  } from "./providers"
-  
-  import { MODELS_BY_PROVIDER, PROVIDERS } from "./constants"
---- 81,86 ----
-***************
-*** 91,97 ****
-  import { ModelInfoView } from "./ModelInfoView"
-  import { ApiErrorMessage } from "./ApiErrorMessage"
-  import { ThinkingBudget } from "./ThinkingBudget"
-- import { Verbosity } from "./Verbosity"
-  import { DiffSettingsControl } from "./DiffSettingsControl"
-  import { TodoListSettingsControl } from "./TodoListSettingsControl"
-  import { TemperatureControl } from "./TemperatureControl"
---- 88,93 ----
-***************
-*** 302,307 ****
---- 298,304 ----
+*** 308,313 ****
+--- 310,316 ----
   				"claude-code": { field: "apiModelId", default: claudeCodeDefaultModelId },
   				"openai-native": { field: "apiModelId", default: openAiNativeDefaultModelId },
   				gemini: { field: "apiModelId", default: geminiDefaultModelId },
@@ -1383,25 +1350,8 @@
   				doubao: { field: "apiModelId", default: doubaoDefaultModelId },
   				moonshot: { field: "apiModelId", default: moonshotDefaultModelId },
 ***************
-*** 312,325 ****
-  				bedrock: { field: "apiModelId", default: bedrockDefaultModelId },
-  				vertex: { field: "apiModelId", default: vertexDefaultModelId },
-  				sambanova: { field: "apiModelId", default: sambaNovaDefaultModelId },
-- 				zai: {
-- 					field: "apiModelId",
-- 					default:
-- 						apiConfiguration.zaiApiLine === "china"
-- 							? mainlandZAiDefaultModelId
-- 							: internationalZAiDefaultModelId,
-- 				},
-- 				fireworks: { field: "apiModelId", default: fireworksDefaultModelId },
-  				openai: { field: "openAiModelId" },
-  				ollama: { field: "ollamaModelId" },
-  				lmstudio: { field: "lmStudioModelId" },
---- 309,314 ----
-***************
-*** 478,483 ****
---- 467,476 ----
+*** 485,490 ****
+--- 488,497 ----
   				/>
   			)}
   
@@ -1412,49 +1362,8 @@
   			{selectedProvider === "openai" && (
   				<OpenAICompatible
   					apiConfiguration={apiConfiguration}
-***************
-*** 544,553 ****
-  				<SambaNova apiConfiguration={apiConfiguration} setApiConfigurationField={setApiConfigurationField} />
-  			)}
-  
-- 			{selectedProvider === "zai" && (
-- 				<ZAi apiConfiguration={apiConfiguration} setApiConfigurationField={setApiConfigurationField} />
-- 			)}
-- 
-  			{selectedProvider === "human-relay" && (
-  				<>
-  					<div className="text-sm text-vscode-descriptionForeground">
---- 537,542 ----
-***************
-*** 559,568 ****
-  				</>
-  			)}
-  
-- 			{selectedProvider === "fireworks" && (
-- 				<Fireworks apiConfiguration={apiConfiguration} setApiConfigurationField={setApiConfigurationField} />
-- 			)}
-- 
-  			{selectedProviderModels.length > 0 && (
-  				<>
-  					<div>
---- 548,553 ----
-***************
-*** 615,626 ****
-  				apiConfiguration={apiConfiguration}
-  				setApiConfigurationField={setApiConfigurationField}
-  				modelInfo={selectedModelInfo}
-- 			/>
-- 
-- 			<Verbosity
-- 				apiConfiguration={apiConfiguration}
-- 				setApiConfigurationField={setApiConfigurationField}
-- 				modelInfo={selectedModelInfo}
-  			/>
-  
-  			{!fromWelcomeView && (
---- 600,605 ----
-*** Roo-Code-3.25.10/webview-ui/src/components/settings/constants.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/components/settings/constants.ts	2025-08-04 14:11:36.445518216 +0200
+*** Roo-Code-3.25.16/webview-ui/src/components/settings/constants.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/components/settings/constants.ts	2025-08-18 02:17:02.764305592 +0200
 ***************
 *** 8,13 ****
 --- 8,14 ----
@@ -1466,19 +1375,8 @@
   	openAiNativeModels,
   	vertexModels,
 ***************
-*** 16,23 ****
-  	chutesModels,
-  	sambaNovaModels,
-  	doubaoModels,
-- 	internationalZAiModels,
-- 	fireworksModels,
-  } from "@roo-code/types"
-  
-  export const MODELS_BY_PROVIDER: Partial<Record<ProviderName, Record<string, ModelInfo>>> = {
---- 17,22 ----
-***************
 *** 29,34 ****
---- 28,34 ----
+--- 30,36 ----
   	doubao: doubaoModels,
   	moonshot: moonshotModels,
   	gemini: geminiModels,
@@ -1487,19 +1385,8 @@
   	"openai-native": openAiNativeModels,
   	vertex: vertexModels,
 ***************
-*** 36,43 ****
-  	groq: groqModels,
-  	chutes: chutesModels,
-  	sambanova: sambaNovaModels,
-- 	zai: internationalZAiModels,
-- 	fireworks: fireworksModels,
-  }
-  
-  export const PROVIDERS = [
---- 36,41 ----
-***************
 *** 46,51 ****
---- 44,50 ----
+--- 48,54 ----
   	{ value: "claude-code", label: "Claude Code" },
   	{ value: "cerebras", label: "Cerebras" },
   	{ value: "gemini", label: "Google Gemini" },
@@ -1507,17 +1394,8 @@
   	{ value: "doubao", label: "Doubao" },
   	{ value: "deepseek", label: "DeepSeek" },
   	{ value: "moonshot", label: "Moonshot" },
-***************
-*** 67,72 ****
-  	{ value: "chutes", label: "Chutes AI" },
-  	{ value: "litellm", label: "LiteLLM" },
-  	{ value: "sambanova", label: "SambaNova" },
-- 	{ value: "zai", label: "Z AI" },
-- 	{ value: "fireworks", label: "Fireworks AI" },
-  ].sort((a, b) => a.label.localeCompare(b.label))
---- 66,69 ----
-*** /dev/null	2025-08-08 10:01:44.564579301 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-07-27 17:50:35.756857270 +0200
+*** /dev/null	2025-08-17 15:14:16.453682224 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-07-27 17:50:35.756857270 +0200
 ***************
 *** 0 ****
 --- 1,81 ----
@@ -1602,8 +1480,8 @@
 + 		</>
 + 	)
 + }
-*** /dev/null	2025-08-08 10:01:44.564579301 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-07-27 17:51:06.694491854 +0200
+*** /dev/null	2025-08-17 15:14:16.453682224 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-07-27 17:51:06.694491854 +0200
 ***************
 *** 0 ****
 --- 1,169 ----
@@ -1776,8 +1654,8 @@
 + 		expect(codeElement).toHaveClass("text-vscode-textPreformat-foreground")
 + 	})
 + })
-*** Roo-Code-3.25.10/webview-ui/src/components/settings/providers/index.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/components/settings/providers/index.ts	2025-08-04 14:11:36.445780628 +0200
+*** Roo-Code-3.25.16/webview-ui/src/components/settings/providers/index.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/components/settings/providers/index.ts	2025-08-18 02:19:05.939393821 +0200
 ***************
 *** 6,11 ****
 --- 6,12 ----
@@ -1788,17 +1666,8 @@
   export { Glama } from "./Glama"
   export { Groq } from "./Groq"
   export { HuggingFace } from "./HuggingFace"
-***************
-*** 22,27 ****
-  export { Vertex } from "./Vertex"
-  export { VSCodeLM } from "./VSCodeLM"
-  export { XAI } from "./XAI"
-- export { ZAi } from "./ZAi"
-  export { LiteLLM } from "./LiteLLM"
-- export { Fireworks } from "./Fireworks"
---- 23,26 ----
-*** Roo-Code-3.25.10/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-08-04 14:11:36.445874431 +0200
+*** Roo-Code-3.25.16/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-08-18 02:22:08.122747669 +0200
 ***************
 *** 14,19 ****
 --- 14,21 ----
@@ -1811,23 +1680,8 @@
   	mistralModels,
   	openAiModelInfoSaneDefaults,
 ***************
-*** 40,51 ****
-  	sambaNovaDefaultModelId,
-  	doubaoModels,
-  	doubaoDefaultModelId,
-- 	internationalZAiDefaultModelId,
-- 	mainlandZAiDefaultModelId,
-- 	internationalZAiModels,
-- 	mainlandZAiModels,
-- 	fireworksModels,
-- 	fireworksDefaultModelId,
-  } from "@roo-code/types"
-  
-  import type { ModelRecord, RouterModels } from "@roo/api"
---- 42,47 ----
-***************
-*** 194,199 ****
---- 190,200 ----
+*** 207,212 ****
+--- 209,219 ----
   			const info = geminiModels[id as keyof typeof geminiModels]
   			return { id, info }
   		}
@@ -1839,102 +1693,11 @@
   		case "deepseek": {
   			const id = apiConfiguration.apiModelId ?? deepSeekDefaultModelId
   			const info = deepSeekModels[id as keyof typeof deepSeekModels]
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/ca/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-08-18 02:26:59.719820953 +0200
 ***************
-*** 209,222 ****
-  			const info = moonshotModels[id as keyof typeof moonshotModels]
-  			return { id, info }
-  		}
-- 		case "zai": {
-- 			const isChina = apiConfiguration.zaiApiLine === "china"
-- 			const models = isChina ? mainlandZAiModels : internationalZAiModels
-- 			const defaultModelId = isChina ? mainlandZAiDefaultModelId : internationalZAiDefaultModelId
-- 			const id = apiConfiguration.apiModelId ?? defaultModelId
-- 			const info = models[id as keyof typeof models]
-- 			return { id, info }
-- 		}
-  		case "openai-native": {
-  			const id = apiConfiguration.apiModelId ?? openAiNativeDefaultModelId
-  			const info = openAiNativeModels[id as keyof typeof openAiNativeModels]
---- 210,215 ----
-***************
-*** 265,282 ****
-  		case "cerebras": {
-  			const id = apiConfiguration.apiModelId ?? cerebrasDefaultModelId
-  			const info = cerebrasModels[id as keyof typeof cerebrasModels]
-! 			return { id, info }
-  		}
-  		case "sambanova": {
-  			const id = apiConfiguration.apiModelId ?? sambaNovaDefaultModelId
-  			const info = sambaNovaModels[id as keyof typeof sambaNovaModels]
-  			return { id, info }
-  		}
-- 		case "fireworks": {
-- 			const id = apiConfiguration.apiModelId ?? fireworksDefaultModelId
-- 			const info = fireworksModels[id as keyof typeof fireworksModels]
-- 			return { id, info }
-- 		}
-  		// case "anthropic":
-  		// case "human-relay":
-  		// case "fake-ai":
---- 258,270 ----
-  		case "cerebras": {
-  			const id = apiConfiguration.apiModelId ?? cerebrasDefaultModelId
-  			const info = cerebrasModels[id as keyof typeof cerebrasModels]
-!       return { id, info }
-  		}
-  		case "sambanova": {
-  			const id = apiConfiguration.apiModelId ?? sambaNovaDefaultModelId
-  			const info = sambaNovaModels[id as keyof typeof sambaNovaModels]
-  			return { id, info }
-  		}
-  		// case "anthropic":
-  		// case "human-relay":
-  		// case "fake-ai":
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/ca/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-08-04 14:11:36.445994356 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Obtenir clau API de Cerebras",
-  		"chutesApiKey": "Clau API de Chutes",
-  		"getChutesApiKey": "Obtenir clau API de Chutes",
-- 		"fireworksApiKey": "Clau API de Fireworks",
-- 		"getFireworksApiKey": "Obtenir clau API de Fireworks",
-  		"deepSeekApiKey": "Clau API de DeepSeek",
-  		"getDeepSeekApiKey": "Obtenir clau API de DeepSeek",
-  		"doubaoApiKey": "Clau API de Doubao",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Clau API de Moonshot",
-  		"getMoonshotApiKey": "Obtenir clau API de Moonshot",
-  		"moonshotBaseUrl": "Punt d'entrada de Moonshot",
-- 		"zaiApiKey": "Clau API de Z AI",
-- 		"getZaiApiKey": "Obtenir clau API de Z AI",
-- 		"zaiEntrypoint": "Punt d'entrada de Z AI",
-- 		"zaiEntrypointDescription": "Si us plau, seleccioneu el punt d'entrada de l'API apropiat segons la vostra ubicació. Si sou a la Xina, trieu open.bigmodel.cn. Altrament, trieu api.z.ai.",
-  		"geminiApiKey": "Clau API de Gemini",
-  		"getGroqApiKey": "Obtenir clau API de Groq",
-  		"groqApiKey": "Clau API de Groq",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Mitjà",
-  			"low": "Baix"
-  		},
-- 		"verbosity": {
-- 			"label": "Verbositat de la sortida",
-- 			"high": "Alta",
-- 			"medium": "Mitjana",
-- 			"low": "Baixa",
-- 			"description": "Controla el nivell de detall de les respostes del model. La verbositat baixa produeix respostes concises, mentre que la verbositat alta proporciona explicacions exhaustives."
-- 		},
-  		"setReasoningLevel": "Activa l'esforç de raonament",
-  		"claudeCode": {
-  			"pathLabel": "Ruta del Codi Claude",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Per defecte: claude",
   			"maxTokensLabel": "Tokens màxims de sortida",
   			"maxTokensDescription": "Nombre màxim de tokens de sortida per a les respostes de Claude Code. El valor per defecte és 8000."
@@ -1956,60 +1719,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/de/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/de/settings.json	2025-08-18 02:29:28.273917696 +0200
 ***************
-*** 699,708 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Edició en segon pla",
-  			"description": "Quan s'activa, evita la interrupció del focus de l'editor. Les edicions de fitxers es produeixen en segon pla sense obrir la vista diff o robar el focus. Pots continuar treballant sense interrupcions mentre Roo fa canvis. Els fitxers poden obrir-se sense focus per capturar diagnòstics o romandre completament tancats."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Utilitza el nou analitzador de missatges",
-- 			"description": "Activa l'analitzador de missatges en streaming experimental que millora el rendiment en respostes llargues processant els missatges de manera més eficient."
-  		}
-  	},
-  	"promptCaching": {
---- 701,706 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/de/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/de/settings.json	2025-08-04 14:11:36.446141592 +0200
-***************
-*** 263,279 ****
-  		"getCerebrasApiKey": "Cerebras API-Schlüssel erhalten",
-  		"chutesApiKey": "Chutes API-Schlüssel",
-  		"getChutesApiKey": "Chutes API-Schlüssel erhalten",
-- 		"fireworksApiKey": "Fireworks API-Schlüssel",
-- 		"getFireworksApiKey": "Fireworks API-Schlüssel erhalten",
-  		"deepSeekApiKey": "DeepSeek API-Schlüssel",
-  		"getDeepSeekApiKey": "DeepSeek API-Schlüssel erhalten",
-  		"moonshotApiKey": "Moonshot API-Schlüssel",
-  		"getMoonshotApiKey": "Moonshot API-Schlüssel erhalten",
-  		"moonshotBaseUrl": "Moonshot-Einstiegspunkt",
-- 		"zaiApiKey": "Z AI API-Schlüssel",
-- 		"getZaiApiKey": "Z AI API-Schlüssel erhalten",
-- 		"zaiEntrypoint": "Z AI Einstiegspunkt",
-- 		"zaiEntrypointDescription": "Bitte wählen Sie den entsprechenden API-Einstiegspunkt basierend auf Ihrem Standort. Wenn Sie sich in China befinden, wählen Sie open.bigmodel.cn. Andernfalls wählen Sie api.z.ai.",
-  		"geminiApiKey": "Gemini API-Schlüssel",
-  		"getGroqApiKey": "Groq API-Schlüssel erhalten",
-  		"groqApiKey": "Groq API-Schlüssel",
---- 263,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Mittel",
-  			"low": "Niedrig"
-  		},
-- 		"verbosity": {
-- 			"label": "Ausgabe-Ausführlichkeit",
-- 			"high": "Hoch",
-- 			"medium": "Mittel",
-- 			"low": "Niedrig",
-- 			"description": "Steuert, wie detailliert die Antworten des Modells sind. Niedrige Ausführlichkeit erzeugt knappe Antworten, während hohe Ausführlichkeit gründliche Erklärungen liefert."
-- 		},
-  		"setReasoningLevel": "Denkaufwand aktivieren",
-  		"claudeCode": {
-  			"pathLabel": "Claude-Code-Pfad",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Standard: claude",
   			"maxTokensLabel": "Maximale Ausgabe-Tokens",
   			"maxTokensDescription": "Maximale Anzahl an Ausgabe-Tokens für Claude Code-Antworten. Standard ist 8000."
@@ -2031,64 +1745,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/en/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/en/settings.json	2025-08-18 02:31:41.467249258 +0200
 ***************
-*** 699,708 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Hintergrundbearbeitung",
-  			"description": "Verhindert Editor-Fokus-Störungen wenn aktiviert. Dateibearbeitungen erfolgen im Hintergrund ohne Öffnung von Diff-Ansichten oder Fokus-Diebstahl. Du kannst ungestört weiterarbeiten, während Roo Änderungen vornimmt. Dateien können ohne Fokus geöffnet werden, um Diagnosen zu erfassen oder vollständig geschlossen bleiben."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Neuen Nachrichtenparser verwenden",
-- 			"description": "Aktiviere den experimentellen Streaming-Nachrichtenparser, der lange Antworten durch effizientere Verarbeitung spürbar schneller macht."
-  		}
-  	},
-  	"promptCaching": {
---- 701,706 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/en/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/en/settings.json	2025-08-04 14:11:36.446273391 +0200
-***************
-*** 260,267 ****
-  		"getCerebrasApiKey": "Get Cerebras API Key",
-  		"chutesApiKey": "Chutes API Key",
-  		"getChutesApiKey": "Get Chutes API Key",
-- 		"fireworksApiKey": "Fireworks API Key",
-- 		"getFireworksApiKey": "Get Fireworks API Key",
-  		"deepSeekApiKey": "DeepSeek API Key",
-  		"getDeepSeekApiKey": "Get DeepSeek API Key",
-  		"doubaoApiKey": "Doubao API Key",
---- 260,265 ----
-***************
-*** 269,278 ****
-  		"moonshotApiKey": "Moonshot API Key",
-  		"getMoonshotApiKey": "Get Moonshot API Key",
-  		"moonshotBaseUrl": "Moonshot Entrypoint",
-- 		"zaiApiKey": "Z AI API Key",
-- 		"getZaiApiKey": "Get Z AI API Key",
-- 		"zaiEntrypoint": "Z AI Entrypoint",
-- 		"zaiEntrypointDescription": "Please select the appropriate API entrypoint based on your location. If you are in China, choose open.bigmodel.cn. Otherwise, choose api.z.ai.",
-  		"geminiApiKey": "Gemini API Key",
-  		"getGroqApiKey": "Get Groq API Key",
-  		"groqApiKey": "Groq API Key",
---- 267,272 ----
-***************
-*** 432,444 ****
-  			"medium": "Medium",
-  			"low": "Low"
-  		},
-- 		"verbosity": {
-- 			"label": "Output Verbosity",
-- 			"high": "High",
-- 			"medium": "Medium",
-- 			"low": "Low",
-- 			"description": "Controls how detailed the model's responses are. Low verbosity produces concise answers, while high verbosity provides thorough explanations."
-- 		},
-  		"setReasoningLevel": "Enable Reasoning Effort",
-  		"claudeCode": {
-  			"pathLabel": "Claude Code Path",
---- 426,431 ----
-***************
-*** 446,451 ****
---- 433,453 ----
+*** 456,461 ****
+--- 456,476 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximum number of output tokens for Claude Code responses. Default is 8000."
@@ -2110,64 +1771,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/es/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/es/settings.json	2025-08-18 02:33:41.437770108 +0200
 ***************
-*** 698,707 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Background editing",
-  			"description": "Prevent editor focus disruption when enabled. File edits happen in the background without opening diff views or stealing focus. You can continue working uninterrupted while Roo makes changes. Files can be opened without focus to capture diagnostics or kept closed entirely."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Use new message parser",
-- 			"description": "Enable the experimental streaming message parser that provides significant performance improvements for long assistant responses by processing messages more efficiently."
-  		}
-  	},
-  	"promptCaching": {
---- 700,705 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/es/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/es/settings.json	2025-08-04 14:11:36.446414690 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Obtener clave API de Cerebras",
-  		"chutesApiKey": "Clave API de Chutes",
-  		"getChutesApiKey": "Obtener clave API de Chutes",
-- 		"fireworksApiKey": "Clave API de Fireworks",
-- 		"getFireworksApiKey": "Obtener clave API de Fireworks",
-  		"deepSeekApiKey": "Clave API de DeepSeek",
-  		"getDeepSeekApiKey": "Obtener clave API de DeepSeek",
-  		"doubaoApiKey": "Clave API de Doubao",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Clave API de Moonshot",
-  		"getMoonshotApiKey": "Obtener clave API de Moonshot",
-  		"moonshotBaseUrl": "Punto de entrada de Moonshot",
-- 		"zaiApiKey": "Clave API de Z AI",
-- 		"getZaiApiKey": "Obtener clave API de Z AI",
-- 		"zaiEntrypoint": "Punto de entrada de Z AI",
-- 		"zaiEntrypointDescription": "Por favor, seleccione el punto de entrada de API apropiado según su ubicación. Si está en China, elija open.bigmodel.cn. De lo contrario, elija api.z.ai.",
-  		"geminiApiKey": "Clave API de Gemini",
-  		"getGroqApiKey": "Obtener clave API de Groq",
-  		"groqApiKey": "Clave API de Groq",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Medio",
-  			"low": "Bajo"
-  		},
-- 		"verbosity": {
-- 			"label": "Verbosidad de la salida",
-- 			"high": "Alta",
-- 			"medium": "Media",
-- 			"low": "Baja",
-- 			"description": "Controla qué tan detalladas son las respuestas del modelo. La verbosidad baja produce respuestas concisas, mientras que la verbosidad alta proporciona explicaciones exhaustivas."
-- 		},
-  		"setReasoningLevel": "Habilitar esfuerzo de razonamiento",
-  		"claudeCode": {
-  			"pathLabel": "Ruta de Claude Code",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Por defecto: claude",
   			"maxTokensLabel": "Tokens máximos de salida",
   			"maxTokensDescription": "Número máximo de tokens de salida para las respuestas de Claude Code. El valor predeterminado es 8000."
@@ -2189,64 +1797,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/fr/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-08-18 02:36:32.787687018 +0200
 ***************
-*** 699,708 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Edición en segundo plano",
-  			"description": "Previene la interrupción del foco del editor cuando está habilitado. Las ediciones de archivos ocurren en segundo plano sin abrir vistas de diferencias o robar el foco. Puedes continuar trabajando sin interrupciones mientras Roo realiza cambios. Los archivos pueden abrirse sin foco para capturar diagnósticos o mantenerse completamente cerrados."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Usar el nuevo analizador de mensajes",
-- 			"description": "Activa el analizador de mensajes en streaming experimental que mejora el rendimiento en respuestas largas procesando los mensajes de forma más eficiente."
-  		}
-  	},
-  	"promptCaching": {
---- 701,706 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/fr/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-08-04 14:11:36.446546489 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Obtenir la clé API Cerebras",
-  		"chutesApiKey": "Clé API Chutes",
-  		"getChutesApiKey": "Obtenir la clé API Chutes",
-- 		"fireworksApiKey": "Clé API Fireworks",
-- 		"getFireworksApiKey": "Obtenir la clé API Fireworks",
-  		"deepSeekApiKey": "Clé API DeepSeek",
-  		"getDeepSeekApiKey": "Obtenir la clé API DeepSeek",
-  		"doubaoApiKey": "Clé API Doubao",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Clé API Moonshot",
-  		"getMoonshotApiKey": "Obtenir la clé API Moonshot",
-  		"moonshotBaseUrl": "Point d'entrée Moonshot",
-- 		"zaiApiKey": "Clé API Z AI",
-- 		"getZaiApiKey": "Obtenir la clé API Z AI",
-- 		"zaiEntrypoint": "Point d'entrée Z AI",
-- 		"zaiEntrypointDescription": "Veuillez sélectionner le point d'entrée API approprié en fonction de votre emplacement. Si vous êtes en Chine, choisissez open.bigmodel.cn. Sinon, choisissez api.z.ai.",
-  		"geminiApiKey": "Clé API Gemini",
-  		"getGroqApiKey": "Obtenir la clé API Groq",
-  		"groqApiKey": "Clé API Groq",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Moyen",
-  			"low": "Faible"
-  		},
-- 		"verbosity": {
-- 			"label": "Verbosité de la sortie",
-- 			"high": "Élevée",
-- 			"medium": "Moyenne",
-- 			"low": "Faible",
-- 			"description": "Contrôle le niveau de détail des réponses du modèle. Une faible verbosité produit des réponses concises, tandis qu'une verbosité élevée fournit des explications approfondies."
-- 		},
-  		"setReasoningLevel": "Activer l'effort de raisonnement",
-  		"claudeCode": {
-  			"pathLabel": "Chemin du code Claude",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Défaut : claude",
   			"maxTokensLabel": "Jetons de sortie max",
   			"maxTokensDescription": "Nombre maximum de jetons de sortie pour les réponses de Claude Code. La valeur par défaut est 8000."
@@ -2268,64 +1823,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/hi/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-08-18 02:37:50.276753944 +0200
 ***************
-*** 699,708 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Édition en arrière-plan",
-  			"description": "Empêche la perturbation du focus de l'éditeur lorsqu'activé. Les modifications de fichiers se font en arrière-plan sans ouvrir de vues de différences ou voler le focus. Vous pouvez continuer à travailler sans interruption pendant que Roo effectue des changements. Les fichiers peuvent être ouverts sans focus pour capturer les diagnostics ou rester complètement fermés."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Utiliser le nouveau parseur de messages",
-- 			"description": "Active le parseur de messages en streaming expérimental qui accélère nettement les longues réponses en traitant les messages plus efficacement."
-  		}
-  	},
-  	"promptCaching": {
---- 701,706 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/hi/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-08-04 14:11:36.446698474 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Cerebras API कुंजी प्राप्त करें",
-  		"chutesApiKey": "Chutes API कुंजी",
-  		"getChutesApiKey": "Chutes API कुंजी प्राप्त करें",
-- 		"fireworksApiKey": "Fireworks API कुंजी",
-- 		"getFireworksApiKey": "Fireworks API कुंजी प्राप्त करें",
-  		"deepSeekApiKey": "DeepSeek API कुंजी",
-  		"getDeepSeekApiKey": "DeepSeek API कुंजी प्राप्त करें",
-  		"doubaoApiKey": "डौबाओ API कुंजी",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot API कुंजी",
-  		"getMoonshotApiKey": "Moonshot API कुंजी प्राप्त करें",
-  		"moonshotBaseUrl": "Moonshot प्रवेश बिंदु",
-- 		"zaiApiKey": "Z AI API कुंजी",
-- 		"getZaiApiKey": "Z AI API कुंजी प्राप्त करें",
-- 		"zaiEntrypoint": "Z AI प्रवेश बिंदु",
-- 		"zaiEntrypointDescription": "कृपया अपने स्थान के आधार पर उपयुक्त API प्रवेश बिंदु का चयन करें। यदि आप चीन में हैं, तो open.bigmodel.cn चुनें। अन्यथा, api.z.ai चुनें।",
-  		"geminiApiKey": "Gemini API कुंजी",
-  		"getGroqApiKey": "Groq API कुंजी प्राप्त करें",
-  		"groqApiKey": "Groq API कुंजी",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "मध्यम",
-  			"low": "निम्न"
-  		},
-- 		"verbosity": {
-- 			"label": "आउटपुट वर्बोसिटी",
-- 			"high": "उच्च",
-- 			"medium": "मध्यम",
-- 			"low": "कम",
-- 			"description": "मॉडल की प्रतिक्रियाएं कितनी विस्तृत हैं, इसे नियंत्रित करता है। कम वर्बोसिटी संक्षिप्त उत्तर देती है, जबकि उच्च वर्बोसिटी विस्तृत स्पष्टीकरण प्रदान करती है।"
-- 		},
-  		"setReasoningLevel": "तर्क प्रयास सक्षम करें",
-  		"claudeCode": {
-  			"pathLabel": "क्लाउड कोड पथ",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "डिफ़ॉल्ट: claude",
   			"maxTokensLabel": "अधिकतम आउटपुट टोकन",
   			"maxTokensDescription": "Claude Code प्रतिक्रियाओं के लिए आउटपुट टोकन की अधिकतम संख्या। डिफ़ॉल्ट 8000 है।"
@@ -2347,64 +1849,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/id/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/id/settings.json	2025-08-18 02:39:40.207437785 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "बैकग्राउंड संपादन",
-  			"description": "सक्षम होने पर एडिटर फोकस व्यवधान को रोकता है। फ़ाइल संपादन diff व्यू खोले बिना या फोकस चुराए बिना बैकग्राउंड में होता है। आप Roo के बदलाव करते समय बिना किसी बाधा के काम जारी रख सकते हैं। फ़ाइलें डायग्नोस्टिक्स कैप्चर करने के लिए बिना फोकस के खुल सकती हैं या पूरी तरह बंद रह सकती हैं।"
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "नए मैसेज पार्सर का उपयोग करें",
-- 			"description": "प्रायोगिक स्ट्रीमिंग मैसेज पार्सर सक्षम करें, जो लंबे उत्तरों के लिए संदेशों को अधिक कुशलता से प्रोसेस करके प्रदर्शन को बेहतर बनाता है।"
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/id/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/id/settings.json	2025-08-04 14:11:36.446858771 +0200
-***************
-*** 265,272 ****
-  		"getCerebrasApiKey": "Dapatkan Cerebras API Key",
-  		"chutesApiKey": "Chutes API Key",
-  		"getChutesApiKey": "Dapatkan Chutes API Key",
-- 		"fireworksApiKey": "Fireworks API Key",
-- 		"getFireworksApiKey": "Dapatkan Fireworks API Key",
-  		"deepSeekApiKey": "DeepSeek API Key",
-  		"getDeepSeekApiKey": "Dapatkan DeepSeek API Key",
-  		"doubaoApiKey": "Kunci API Doubao",
---- 265,270 ----
-***************
-*** 274,283 ****
-  		"moonshotApiKey": "Kunci API Moonshot",
-  		"getMoonshotApiKey": "Dapatkan Kunci API Moonshot",
-  		"moonshotBaseUrl": "Titik Masuk Moonshot",
-- 		"zaiApiKey": "Kunci API Z AI",
-- 		"getZaiApiKey": "Dapatkan Kunci API Z AI",
-- 		"zaiEntrypoint": "Titik Masuk Z AI",
-- 		"zaiEntrypointDescription": "Silakan pilih titik masuk API yang sesuai berdasarkan lokasi Anda. Jika Anda berada di China, pilih open.bigmodel.cn. Jika tidak, pilih api.z.ai.",
-  		"geminiApiKey": "Gemini API Key",
-  		"getGroqApiKey": "Dapatkan Groq API Key",
-  		"groqApiKey": "Groq API Key",
---- 272,277 ----
-***************
-*** 437,449 ****
-  			"medium": "Sedang",
-  			"low": "Rendah"
-  		},
-- 		"verbosity": {
-- 			"label": "Verbositas Output",
-- 			"high": "Tinggi",
-- 			"medium": "Sedang",
-- 			"low": "Rendah",
-- 			"description": "Mengontrol seberapa detail respons model. Verbositas rendah menghasilkan jawaban singkat, sedangkan verbositas tinggi memberikan penjelasan menyeluruh."
-- 		},
-  		"setReasoningLevel": "Aktifkan Upaya Reasoning",
-  		"claudeCode": {
-  			"pathLabel": "Jalur Kode Claude",
---- 431,436 ----
-***************
-*** 451,456 ****
---- 438,458 ----
+*** 461,466 ****
+--- 461,481 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Token Output Maks",
   			"maxTokensDescription": "Jumlah maksimum token output untuk respons Claude Code. Default adalah 8000."
@@ -2426,64 +1875,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/it/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/it/settings.json	2025-08-18 02:41:08.605384803 +0200
 ***************
-*** 729,738 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Pengeditan Latar Belakang",
-  			"description": "Ketika diaktifkan, mencegah gangguan fokus editor. Pengeditan file terjadi di latar belakang tanpa membuka tampilan diff atau mencuri fokus. Anda dapat terus bekerja tanpa gangguan saat Roo melakukan perubahan. File mungkin dibuka tanpa fokus untuk menangkap diagnostik atau tetap tertutup sepenuhnya."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Gunakan parser pesan baru",
-- 			"description": "Aktifkan parser pesan streaming eksperimental yang meningkatkan kinerja untuk respons panjang dengan memproses pesan lebih efisien."
-  		}
-  	},
-  	"promptCaching": {
---- 731,736 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/it/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/it/settings.json	2025-08-04 14:11:36.446982258 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Ottieni chiave API Cerebras",
-  		"chutesApiKey": "Chiave API Chutes",
-  		"getChutesApiKey": "Ottieni chiave API Chutes",
-- 		"fireworksApiKey": "Chiave API Fireworks",
-- 		"getFireworksApiKey": "Ottieni chiave API Fireworks",
-  		"deepSeekApiKey": "Chiave API DeepSeek",
-  		"getDeepSeekApiKey": "Ottieni chiave API DeepSeek",
-  		"doubaoApiKey": "Chiave API Doubao",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Chiave API Moonshot",
-  		"getMoonshotApiKey": "Ottieni chiave API Moonshot",
-  		"moonshotBaseUrl": "Punto di ingresso Moonshot",
-- 		"zaiApiKey": "Chiave API Z AI",
-- 		"getZaiApiKey": "Ottieni chiave API Z AI",
-- 		"zaiEntrypoint": "Punto di ingresso Z AI",
-- 		"zaiEntrypointDescription": "Si prega di selezionare il punto di ingresso API appropriato in base alla propria posizione. Se ti trovi in Cina, scegli open.bigmodel.cn. Altrimenti, scegli api.z.ai.",
-  		"geminiApiKey": "Chiave API Gemini",
-  		"getGroqApiKey": "Ottieni chiave API Groq",
-  		"groqApiKey": "Chiave API Groq",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Medio",
-  			"low": "Basso"
-  		},
-- 		"verbosity": {
-- 			"label": "Verbosity dell'output",
-- 			"high": "Alta",
-- 			"medium": "Media",
-- 			"low": "Bassa",
-- 			"description": "Controlla il livello di dettaglio delle risposte del modello. Una verbosity bassa produce risposte concise, mentre una verbosity alta fornisce spiegazioni approfondite."
-- 		},
-  		"setReasoningLevel": "Abilita sforzo di ragionamento",
-  		"claudeCode": {
-  			"pathLabel": "Percorso Claude Code",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Predefinito: claude",
   			"maxTokensLabel": "Token di output massimi",
   			"maxTokensDescription": "Numero massimo di token di output per le risposte di Claude Code. Il valore predefinito è 8000."
@@ -2505,64 +1901,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/ja/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-08-18 02:42:48.770196420 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Modifica in background",
-  			"description": "Previene l'interruzione del focus dell'editor quando abilitato. Le modifiche ai file avvengono in background senza aprire viste di differenze o rubare il focus. Puoi continuare a lavorare senza interruzioni mentre Roo effettua modifiche. I file possono essere aperti senza focus per catturare diagnostiche o rimanere completamente chiusi."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Usa il nuovo parser dei messaggi",
-- 			"description": "Abilita il parser di messaggi in streaming sperimentale che migliora nettamente le risposte lunghe elaborando i messaggi in modo più efficiente."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/ja/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-08-04 14:11:36.447128306 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Cerebras APIキーを取得",
-  		"chutesApiKey": "Chutes APIキー",
-  		"getChutesApiKey": "Chutes APIキーを取得",
-- 		"fireworksApiKey": "Fireworks APIキー",
-- 		"getFireworksApiKey": "Fireworks APIキーを取得",
-  		"deepSeekApiKey": "DeepSeek APIキー",
-  		"getDeepSeekApiKey": "DeepSeek APIキーを取得",
-  		"doubaoApiKey": "Doubao APIキー",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot APIキー",
-  		"getMoonshotApiKey": "Moonshot APIキーを取得",
-  		"moonshotBaseUrl": "Moonshot エントリーポイント",
-- 		"zaiApiKey": "Z AI APIキー",
-- 		"getZaiApiKey": "Z AI APIキーを取得",
-- 		"zaiEntrypoint": "Z AI エントリーポイント",
-- 		"zaiEntrypointDescription": "お住まいの地域に応じて適切な API エントリーポイントを選択してください。中国にお住まいの場合は open.bigmodel.cn を選択してください。それ以外の場合は api.z.ai を選択してください。",
-  		"geminiApiKey": "Gemini APIキー",
-  		"getGroqApiKey": "Groq APIキーを取得",
-  		"groqApiKey": "Groq APIキー",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "中",
-  			"low": "低"
-  		},
-- 		"verbosity": {
-- 			"label": "出力の冗長性",
-- 			"high": "高",
-- 			"medium": "中",
-- 			"low": "低",
-- 			"description": "モデルの応答の詳細度を制御します。冗長性が低いと簡潔な回答が生成され、高いと詳細な説明が提供されます。"
-- 		},
-  		"setReasoningLevel": "推論労力を有効にする",
-  		"claudeCode": {
-  			"pathLabel": "クロードコードパス",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "デフォルト：claude",
   			"maxTokensLabel": "最大出力トークン",
   			"maxTokensDescription": "Claude Codeレスポンスの最大出力トークン数。デフォルトは8000です。"
@@ -2584,64 +1927,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/ko/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-08-18 02:44:18.665133477 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "バックグラウンド編集",
-  			"description": "有効にすると、エディターのフォーカス中断を防ぎます。ファイル編集は差分ビューを開いたりフォーカスを奪ったりすることなく、バックグラウンドで行われます。Rooが変更を行っている間も中断されることなく作業を続けることができます。ファイルは診断をキャプチャするためにフォーカスなしで開くか、完全に閉じたままにできます。"
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "新しいメッセージパーサーを使う",
-- 			"description": "実験的なストリーミングメッセージパーサーを有効にします。長い回答をより効率的に処理し、遅延を減らします。"
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/ko/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-08-04 14:11:36.447260106 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Cerebras API 키 가져오기",
-  		"chutesApiKey": "Chutes API 키",
-  		"getChutesApiKey": "Chutes API 키 받기",
-- 		"fireworksApiKey": "Fireworks API 키",
-- 		"getFireworksApiKey": "Fireworks API 키 받기",
-  		"deepSeekApiKey": "DeepSeek API 키",
-  		"getDeepSeekApiKey": "DeepSeek API 키 받기",
-  		"doubaoApiKey": "Doubao API 키",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot API 키",
-  		"getMoonshotApiKey": "Moonshot API 키 받기",
-  		"moonshotBaseUrl": "Moonshot 엔트리포인트",
-- 		"zaiApiKey": "Z AI API 키",
-- 		"getZaiApiKey": "Z AI API 키 받기",
-- 		"zaiEntrypoint": "Z AI 엔트리포인트",
-- 		"zaiEntrypointDescription": "위치에 따라 적절한 API 엔트리포인트를 선택하세요. 중국에 있다면 open.bigmodel.cn을 선택하세요. 그렇지 않으면 api.z.ai를 선택하세요.",
-  		"geminiApiKey": "Gemini API 키",
-  		"getGroqApiKey": "Groq API 키 받기",
-  		"groqApiKey": "Groq API 키",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "중간",
-  			"low": "낮음"
-  		},
-- 		"verbosity": {
-- 			"label": "출력 상세도",
-- 			"high": "높음",
-- 			"medium": "중간",
-- 			"low": "낮음",
-- 			"description": "모델 응답의 상세도를 제어합니다. 낮은 상세도는 간결한 답변을 생성하고, 높은 상세도는 상세한 설명을 제공합니다."
-- 		},
-  		"setReasoningLevel": "추론 노력 활성화",
-  		"claudeCode": {
-  			"pathLabel": "클로드 코드 경로",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "기본값: claude",
   			"maxTokensLabel": "최대 출력 토큰",
   			"maxTokensDescription": "Claude Code 응답의 최대 출력 토큰 수. 기본값은 8000입니다."
@@ -2663,64 +1953,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/nl/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-08-18 02:45:19.259418620 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "백그라운드 편집",
-  			"description": "활성화하면 편집기 포커스 방해를 방지합니다. 파일 편집이 diff 뷰를 열거나 포커스를 빼앗지 않고 백그라운드에서 수행됩니다. Roo가 변경사항을 적용하는 동안 방해받지 않고 계속 작업할 수 있습니다. 파일은 진단을 캡처하기 위해 포커스 없이 열거나 완전히 닫힌 상태로 유지할 수 있습니다."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "새 메시지 파서 사용",
-- 			"description": "실험적 스트리밍 메시지 파서를 활성화합니다. 긴 응답을 더 효율적으로 처리해 지연을 줄입니다."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/nl/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-08-04 14:11:36.447389530 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Cerebras API-sleutel verkrijgen",
-  		"chutesApiKey": "Chutes API-sleutel",
-  		"getChutesApiKey": "Chutes API-sleutel ophalen",
-- 		"fireworksApiKey": "Fireworks API-sleutel",
-- 		"getFireworksApiKey": "Fireworks API-sleutel ophalen",
-  		"deepSeekApiKey": "DeepSeek API-sleutel",
-  		"getDeepSeekApiKey": "DeepSeek API-sleutel ophalen",
-  		"doubaoApiKey": "Doubao API-sleutel",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot API-sleutel",
-  		"getMoonshotApiKey": "Moonshot API-sleutel ophalen",
-  		"moonshotBaseUrl": "Moonshot-ingangspunt",
-- 		"zaiApiKey": "Z AI API-sleutel",
-- 		"getZaiApiKey": "Z AI API-sleutel ophalen",
-- 		"zaiEntrypoint": "Z AI-ingangspunt",
-- 		"zaiEntrypointDescription": "Selecteer het juiste API-ingangspunt op basis van uw locatie. Als u zich in China bevindt, kies dan open.bigmodel.cn. Anders kiest u api.z.ai.",
-  		"geminiApiKey": "Gemini API-sleutel",
-  		"getGroqApiKey": "Groq API-sleutel ophalen",
-  		"groqApiKey": "Groq API-sleutel",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Middel",
-  			"low": "Laag"
-  		},
-- 		"verbosity": {
-- 			"label": "Uitvoerbaarheid",
-- 			"high": "Hoog",
-- 			"medium": "Gemiddeld",
-- 			"low": "Laag",
-- 			"description": "Bepaalt hoe gedetailleerd de reacties van het model zijn. Lage uitvoerbaarheid levert beknopte antwoorden op, terwijl hoge uitvoerbaarheid uitgebreide uitleg geeft."
-- 		},
-  		"setReasoningLevel": "Redeneervermogen inschakelen",
-  		"claudeCode": {
-  			"pathLabel": "Claude Code Pad",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Standaard: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximaal aantal output-tokens voor Claude Code-reacties. Standaard is 8000."
@@ -2742,64 +1979,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/pl/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-08-18 02:47:35.922730077 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Achtergrondbewerking",
-  			"description": "Voorkomt editor focus verstoring wanneer ingeschakeld. Bestandsbewerkingen gebeuren op de achtergrond zonder diff-weergaven te openen of focus te stelen. Je kunt ononderbroken doorwerken terwijl Roo wijzigingen aanbrengt. Bestanden kunnen zonder focus worden geopend om diagnostiek vast te leggen of volledig gesloten blijven."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Nieuwe berichtparser gebruiken",
-- 			"description": "Schakel de experimentele streaming-berichtparser in die lange antwoorden sneller maakt door berichten efficiënter te verwerken."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/pl/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-08-04 14:11:36.447511831 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Pobierz klucz API Cerebras",
-  		"chutesApiKey": "Klucz API Chutes",
-  		"getChutesApiKey": "Uzyskaj klucz API Chutes",
-- 		"fireworksApiKey": "Klucz API Fireworks",
-- 		"getFireworksApiKey": "Uzyskaj klucz API Fireworks",
-  		"deepSeekApiKey": "Klucz API DeepSeek",
-  		"getDeepSeekApiKey": "Uzyskaj klucz API DeepSeek",
-  		"doubaoApiKey": "Klucz API Doubao",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Klucz API Moonshot",
-  		"getMoonshotApiKey": "Uzyskaj klucz API Moonshot",
-  		"moonshotBaseUrl": "Punkt wejścia Moonshot",
-- 		"zaiApiKey": "Klucz API Z AI",
-- 		"getZaiApiKey": "Uzyskaj klucz API Z AI",
-- 		"zaiEntrypoint": "Punkt wejścia Z AI",
-- 		"zaiEntrypointDescription": "Wybierz odpowiedni punkt wejścia API w zależności od swojej lokalizacji. Jeśli jesteś w Chinach, wybierz open.bigmodel.cn. W przeciwnym razie wybierz api.z.ai.",
-  		"geminiApiKey": "Klucz API Gemini",
-  		"getGroqApiKey": "Uzyskaj klucz API Groq",
-  		"groqApiKey": "Klucz API Groq",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Średni",
-  			"low": "Niski"
-  		},
-- 		"verbosity": {
-- 			"label": "Szczegółowość danych wyjściowych",
-- 			"high": "Wysoka",
-- 			"medium": "Średnia",
-- 			"low": "Niska",
-- 			"description": "Kontroluje, jak szczegółowe są odpowiedzi modelu. Niska szczegółowość generuje zwięzłe odpowiedzi, podczas gdy wysoka szczegółowość dostarcza dokładnych wyjaśnień."
-- 		},
-  		"setReasoningLevel": "Włącz wysiłek rozumowania",
-  		"claudeCode": {
-  			"pathLabel": "Ścieżka Claude Code",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Domyślnie: claude",
   			"maxTokensLabel": "Maksymalna liczba tokenów wyjściowych",
   			"maxTokensDescription": "Maksymalna liczba tokenów wyjściowych dla odpowiedzi Claude Code. Domyślnie 8000."
@@ -2821,64 +2005,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-08-18 02:48:43.575901883 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Edycja w tle",
-  			"description": "Zapobiega zakłócaniu fokusa edytora gdy włączone. Edycje plików odbywają się w tle bez otwierania widoków różnic lub kradzieży fokusa. Możesz kontynuować pracę bez przeszkód podczas gdy Roo wprowadza zmiany. Pliki mogą być otwierane bez fokusa aby przechwycić diagnostykę lub pozostać całkowicie zamknięte."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Użyj nowego parsera wiadomości",
-- 			"description": "Włącz eksperymentalny parser wiadomości w strumieniu, który przyspiesza długie odpowiedzi dzięki bardziej wydajnemu przetwarzaniu wiadomości."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-08-04 14:11:36.447629381 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Obter chave de API Cerebras",
-  		"chutesApiKey": "Chave de API Chutes",
-  		"getChutesApiKey": "Obter chave de API Chutes",
-- 		"fireworksApiKey": "Chave de API Fireworks",
-- 		"getFireworksApiKey": "Obter chave de API Fireworks",
-  		"deepSeekApiKey": "Chave de API DeepSeek",
-  		"getDeepSeekApiKey": "Obter chave de API DeepSeek",
-  		"doubaoApiKey": "Chave de API Doubao",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Chave de API Moonshot",
-  		"getMoonshotApiKey": "Obter chave de API Moonshot",
-  		"moonshotBaseUrl": "Ponto de entrada Moonshot",
-- 		"zaiApiKey": "Chave de API Z AI",
-- 		"getZaiApiKey": "Obter chave de API Z AI",
-- 		"zaiEntrypoint": "Ponto de entrada Z AI",
-- 		"zaiEntrypointDescription": "Selecione o ponto de entrada da API apropriado com base na sua localização. Se você estiver na China, escolha open.bigmodel.cn. Caso contrário, escolha api.z.ai.",
-  		"geminiApiKey": "Chave de API Gemini",
-  		"getGroqApiKey": "Obter chave de API Groq",
-  		"groqApiKey": "Chave de API Groq",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Médio",
-  			"low": "Baixo"
-  		},
-- 		"verbosity": {
-- 			"label": "Verbosidade da saída",
-- 			"high": "Alta",
-- 			"medium": "Média",
-- 			"low": "Baixa",
-- 			"description": "Controla o quão detalhadas são as respostas do modelo. A verbosidade baixa produz respostas concisas, enquanto a verbosidade alta fornisce explicações detalhadas."
-- 		},
-  		"setReasoningLevel": "Habilitar esforço de raciocínio",
-  		"claudeCode": {
-  			"pathLabel": "Caminho do Claude Code",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Padrão: claude",
   			"maxTokensLabel": "Tokens de saída máximos",
   			"maxTokensDescription": "Número máximo de tokens de saída para respostas do Claude Code. O padrão é 8000."
@@ -2900,64 +2031,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/ru/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-08-18 02:49:51.344076668 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Edição em segundo plano",
-  			"description": "Previne a interrupção do foco do editor quando habilitado. As edições de arquivos acontecem em segundo plano sem abrir visualizações de diferenças ou roubar o foco. Você pode continuar trabalhando sem interrupções enquanto o Roo faz alterações. Os arquivos podem ser abertos sem foco para capturar diagnósticos ou permanecer completamente fechados."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Usar o novo parser de mensagens",
-- 			"description": "Ativa o parser de mensagens em streaming experimental que acelera respostas longas ao processar as mensagens de forma mais eficiente."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/ru/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-08-04 14:11:36.447777804 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Получить Cerebras API-ключ",
-  		"chutesApiKey": "Chutes API-ключ",
-  		"getChutesApiKey": "Получить Chutes API-ключ",
-- 		"fireworksApiKey": "Fireworks API-ключ",
-- 		"getFireworksApiKey": "Получить Fireworks API-ключ",
-  		"deepSeekApiKey": "DeepSeek API-ключ",
-  		"getDeepSeekApiKey": "Получить DeepSeek API-ключ",
-  		"doubaoApiKey": "Doubao API-ключ",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot API-ключ",
-  		"getMoonshotApiKey": "Получить Moonshot API-ключ",
-  		"moonshotBaseUrl": "Точка входа Moonshot",
-- 		"zaiApiKey": "Z AI API-ключ",
-- 		"getZaiApiKey": "Получить Z AI API-ключ",
-- 		"zaiEntrypoint": "Точка входа Z AI",
-- 		"zaiEntrypointDescription": "Пожалуйста, выберите подходящую точку входа API в зависимости от вашего местоположения. Если вы находитесь в Китае, выберите open.bigmodel.cn. В противном случае выберите api.z.ai.",
-  		"geminiApiKey": "Gemini API-ключ",
-  		"getGroqApiKey": "Получить Groq API-ключ",
-  		"groqApiKey": "Groq API-ключ",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Средние",
-  			"low": "Низкие"
-  		},
-- 		"verbosity": {
-- 			"label": "Подробность вывода",
-- 			"high": "Высокая",
-- 			"medium": "Средняя",
-- 			"low": "Низкая",
-- 			"description": "Контролирует, насколько подробны ответы модели. Низкая подробность дает краткие ответы, а высокая — подробные объяснения."
-- 		},
-  		"setReasoningLevel": "Включить усилие рассуждения",
-  		"claudeCode": {
-  			"pathLabel": "Путь к Claude Code",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "По умолчанию: claude",
   			"maxTokensLabel": "Макс. выходных токенов",
   			"maxTokensDescription": "Максимальное количество выходных токенов для ответов Claude Code. По умолчанию 8000."
@@ -2979,64 +2057,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/tr/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-08-18 02:51:04.300192566 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Фоновое редактирование",
-  			"description": "Предотвращает нарушение фокуса редактора при включении. Редактирование файлов происходит в фоновом режиме без открытия представлений различий или кражи фокуса. Вы можете продолжать работать без перерывов, пока Roo вносит изменения. Файлы могут открываться без фокуса для захвата диагностики или оставаться полностью закрытыми."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Использовать новый парсер сообщений",
-- 			"description": "Включите экспериментальный потоковый парсер сообщений, который ускоряет длинные ответы благодаря более эффективной обработке сообщений."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/tr/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-08-04 14:11:36.447973722 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Cerebras API Anahtarını Al",
-  		"chutesApiKey": "Chutes API Anahtarı",
-  		"getChutesApiKey": "Chutes API Anahtarı Al",
-- 		"fireworksApiKey": "Fireworks API Anahtarı",
-- 		"getFireworksApiKey": "Fireworks API Anahtarı Al",
-  		"deepSeekApiKey": "DeepSeek API Anahtarı",
-  		"getDeepSeekApiKey": "DeepSeek API Anahtarı Al",
-  		"doubaoApiKey": "Doubao API Anahtarı",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot API Anahtarı",
-  		"getMoonshotApiKey": "Moonshot API Anahtarı Al",
-  		"moonshotBaseUrl": "Moonshot Giriş Noktası",
-- 		"zaiApiKey": "Z AI API Anahtarı",
-- 		"getZaiApiKey": "Z AI API Anahtarı Al",
-- 		"zaiEntrypoint": "Z AI Giriş Noktası",
-- 		"zaiEntrypointDescription": "Konumunuza göre uygun API giriş noktasını seçin. Çin'de iseniz open.bigmodel.cn'yi seçin. Aksi takdirde api.z.ai'yi seçin.",
-  		"geminiApiKey": "Gemini API Anahtarı",
-  		"getGroqApiKey": "Groq API Anahtarı Al",
-  		"groqApiKey": "Groq API Anahtarı",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Orta",
-  			"low": "Düşük"
-  		},
-- 		"verbosity": {
-- 			"label": "Çıktı Ayrıntı Düzeyi",
-- 			"high": "Yüksek",
-- 			"medium": "Orta",
-- 			"low": "Düşük",
-- 			"description": "Modelin yanıtlarının ne kadar ayrıntılı olduğunu kontrol eder. Düşük ayrıntı düzeyi kısa yanıtlar üretirken, yüksek ayrıntı düzeyi kapsamlı açıklamalar sunar."
-- 		},
-  		"setReasoningLevel": "Akıl Yürütme Çabasını Etkinleştir",
-  		"claudeCode": {
-  			"pathLabel": "Claude Code Yolu",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Varsayılan: claude",
   			"maxTokensLabel": "Maksimum Çıktı Token sayısı",
   			"maxTokensDescription": "Claude Code yanıtları için maksimum çıktı token sayısı. Varsayılan 8000'dir."
@@ -3058,64 +2083,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/vi/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-08-18 02:52:20.707270779 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Arka plan düzenleme",
-  			"description": "Etkinleştirildiğinde editör odak kesintisini önler. Dosya düzenlemeleri diff görünümlerini açmadan veya odağı çalmadan arka planda gerçekleşir. Roo değişiklikler yaparken kesintisiz çalışmaya devam edebilirsiniz. Dosyalar tanılamayı yakalamak için odaksız açılabilir veya tamamen kapalı kalabilir."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Yeni mesaj ayrıştırıcıyı kullan",
-- 			"description": "Uzun yanıtları daha verimli işleyerek hızlandıran deneysel akış mesaj ayrıştırıcısını etkinleştir."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/vi/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-08-04 14:11:36.448131644 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "Lấy khóa API Cerebras",
-  		"chutesApiKey": "Khóa API Chutes",
-  		"getChutesApiKey": "Lấy khóa API Chutes",
-- 		"fireworksApiKey": "Khóa API Fireworks",
-- 		"getFireworksApiKey": "Lấy khóa API Fireworks",
-  		"deepSeekApiKey": "Khóa API DeepSeek",
-  		"getDeepSeekApiKey": "Lấy khóa API DeepSeek",
-  		"doubaoApiKey": "Khóa API Doubao",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Khóa API Moonshot",
-  		"getMoonshotApiKey": "Lấy khóa API Moonshot",
-  		"moonshotBaseUrl": "Điểm vào Moonshot",
-- 		"zaiApiKey": "Khóa API Z AI",
-- 		"getZaiApiKey": "Lấy khóa API Z AI",
-- 		"zaiEntrypoint": "Điểm vào Z AI",
-- 		"zaiEntrypointDescription": "Vui lòng chọn điểm vào API phù hợp dựa trên vị trí của bạn. Nếu bạn ở Trung Quốc, hãy chọn open.bigmodel.cn. Ngược lại, hãy chọn api.z.ai.",
-  		"geminiApiKey": "Khóa API Gemini",
-  		"getGroqApiKey": "Lấy khóa API Groq",
-  		"groqApiKey": "Khóa API Groq",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "Trung bình",
-  			"low": "Thấp"
-  		},
-- 		"verbosity": {
-- 			"label": "Mức độ chi tiết đầu ra",
-- 			"high": "Cao",
-- 			"medium": "Trung bình",
-- 			"low": "Thấp",
-- 			"description": "Kiểm soát mức độ chi tiết của các câu trả lời của mô hình. Mức độ chi tiết thấp tạo ra các câu trả lời ngắn gọn, trong khi mức độ chi tiết cao cung cấp giải thích kỹ lưỡng."
-- 		},
-  		"setReasoningLevel": "Kích hoạt nỗ lực suy luận",
-  		"claudeCode": {
-  			"pathLabel": "Đường dẫn Claude Code",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "Mặc định: claude",
   			"maxTokensLabel": "Số token đầu ra tối đa",
   			"maxTokensDescription": "Số lượng token đầu ra tối đa cho các phản hồi của Claude Code. Mặc định là 8000."
@@ -3137,64 +2109,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-08-18 02:53:34.618382586 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "Chỉnh sửa nền",
-  			"description": "Khi được bật, ngăn chặn gián đoạn tiêu điểm trình soạn thảo. Việc chỉnh sửa tệp diễn ra ở nền mà không mở chế độ xem diff hoặc chiếm tiêu điểm. Bạn có thể tiếp tục làm việc không bị gián đoạn trong khi Roo thực hiện thay đổi. Các tệp có thể được mở mà không có tiêu điểm để thu thập chẩn đoán hoặc giữ hoàn toàn đóng."
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "Dùng bộ phân tích tin nhắn mới",
-- 			"description": "Bật bộ phân tích tin nhắn streaming thử nghiệm. Tính năng này tăng tốc phản hồi dài bằng cách xử lý tin nhắn hiệu quả hơn."
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-08-04 14:11:36.448263444 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "获取 Cerebras API 密钥",
-  		"chutesApiKey": "Chutes API 密钥",
-  		"getChutesApiKey": "获取 Chutes API 密钥",
-- 		"fireworksApiKey": "Fireworks API 密钥",
-- 		"getFireworksApiKey": "获取 Fireworks API 密钥",
-  		"deepSeekApiKey": "DeepSeek API 密钥",
-  		"getDeepSeekApiKey": "获取 DeepSeek API 密钥",
-  		"doubaoApiKey": "豆包 API 密钥",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot API 密钥",
-  		"getMoonshotApiKey": "获取 Moonshot API 密钥",
-  		"moonshotBaseUrl": "Moonshot 服务站点",
-- 		"zaiApiKey": "Z AI API 密钥",
-- 		"getZaiApiKey": "获取 Z AI API 密钥",
-- 		"zaiEntrypoint": "Z AI 服务站点",
-- 		"zaiEntrypointDescription": "请根据您的位置选择适当的 API 服务站点。如果您在中国，请选择 open.bigmodel.cn。否则，请选择 api.z.ai。",
-  		"geminiApiKey": "Gemini API 密钥",
-  		"getGroqApiKey": "获取 Groq API 密钥",
-  		"groqApiKey": "Groq API 密钥",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "中",
-  			"low": "低"
-  		},
-- 		"verbosity": {
-- 			"label": "输出详细程度",
-- 			"high": "高",
-- 			"medium": "中",
-- 			"low": "低",
-- 			"description": "控制模型响应的详细程度。低详细度产生简洁的回答，而高详细度提供详尽的解释。"
-- 		},
-  		"setReasoningLevel": "启用推理工作量",
-  		"claudeCode": {
-  			"pathLabel": "Claude Code 路径",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "默认：claude",
   			"maxTokensLabel": "最大输出 Token",
   			"maxTokensDescription": "Claude Code 响应的最大输出 Token 数量。默认为 8000。"
@@ -3216,64 +2135,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-08-18 02:55:05.442295159 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "后台编辑",
-  			"description": "启用后防止编辑器焦点干扰。文件编辑在后台进行，不会打开差异视图或抢夺焦点。你可以在 Roo 进行更改时继续不受干扰地工作。文件可以在不获取焦点的情况下打开以捕获诊断信息，或保持完全关闭状态。"
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "使用新的消息解析器",
-- 			"description": "启用实验性的流式消息解析器。通过更高效地处理消息，可显著提升长回复的性能。"
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-08-04 14:11:36.448409491 +0200
-***************
-*** 261,268 ****
-  		"getCerebrasApiKey": "取得 Cerebras API 金鑰",
-  		"chutesApiKey": "Chutes API 金鑰",
-  		"getChutesApiKey": "取得 Chutes API 金鑰",
-- 		"fireworksApiKey": "Fireworks API 金鑰",
-- 		"getFireworksApiKey": "取得 Fireworks API 金鑰",
-  		"deepSeekApiKey": "DeepSeek API 金鑰",
-  		"getDeepSeekApiKey": "取得 DeepSeek API 金鑰",
-  		"doubaoApiKey": "豆包 API 金鑰",
---- 261,266 ----
-***************
-*** 270,279 ****
-  		"moonshotApiKey": "Moonshot API 金鑰",
-  		"getMoonshotApiKey": "取得 Moonshot API 金鑰",
-  		"moonshotBaseUrl": "Moonshot 服務站點",
-- 		"zaiApiKey": "Z AI API 金鑰",
-- 		"getZaiApiKey": "取得 Z AI API 金鑰",
-- 		"zaiEntrypoint": "Z AI 服務站點",
-- 		"zaiEntrypointDescription": "請根據您的位置選擇適當的 API 服務站點。如果您在中國，請選擇 open.bigmodel.cn。否則，請選擇 api.z.ai。",
-  		"geminiApiKey": "Gemini API 金鑰",
-  		"getGroqApiKey": "取得 Groq API 金鑰",
-  		"groqApiKey": "Groq API 金鑰",
---- 268,273 ----
-***************
-*** 433,445 ****
-  			"medium": "中",
-  			"low": "低"
-  		},
-- 		"verbosity": {
-- 			"label": "輸出詳細程度",
-- 			"high": "高",
-- 			"medium": "中",
-- 			"low": "低",
-- 			"description": "控制模型回應的詳細程度。低詳細度產生簡潔的回答，而高詳細度提供詳盡的解釋。"
-- 		},
-  		"setReasoningLevel": "啟用推理工作量",
-  		"claudeCode": {
-  			"pathLabel": "Claude Code 路徑",
---- 427,432 ----
-***************
-*** 447,452 ****
---- 434,454 ----
+*** 457,462 ****
+--- 457,477 ----
   			"placeholder": "預設：claude",
   			"maxTokensLabel": "最大輸出 Token",
   			"maxTokensDescription": "Claude Code 回應的最大輸出 Token 數量。預設為 8000。"
@@ -3295,24 +2161,11 @@
   		}
   	},
   	"browser": {
+*** Roo-Code-3.25.16/webview-ui/src/utils/validate.ts	2025-08-17 04:54:41.000000000 +0200
+--- Roo-Code-3.25.16-patched/webview-ui/src/utils/validate.ts	2025-08-18 01:37:24.444765195 +0200
 ***************
-*** 700,709 ****
-  		"PREVENT_FOCUS_DISRUPTION": {
-  			"name": "背景編輯",
-  			"description": "啟用後可防止編輯器焦點中斷。檔案編輯會在背景進行，不會開啟 diff 檢視或搶奪焦點。您可以在 Roo 進行變更時繼續不受干擾地工作。檔案可能會在不獲得焦點的情況下開啟以捕獲診斷，或保持完全關閉。"
-- 		},
-- 		"ASSISTANT_MESSAGE_PARSER": {
-- 			"name": "使用全新訊息解析器",
-- 			"description": "啟用實驗性的串流訊息解析器。透過更有效率地處理訊息，能顯著提升長回覆的效能。"
-  		}
-  	},
-  	"promptCaching": {
---- 702,707 ----
-*** Roo-Code-3.25.10/webview-ui/src/utils/validate.ts	2025-08-07 23:43:01.000000000 +0200
---- Roo-Code-3.25.10-patched/webview-ui/src/utils/validate.ts	2025-08-04 14:11:36.448528230 +0200
-***************
-*** 72,77 ****
---- 72,80 ----
+*** 73,78 ****
+--- 73,81 ----
   				return i18next.t("settings:validation.apiKey")
   			}
   			break
@@ -3322,17 +2175,3 @@
   		case "openai-native":
   			if (!apiConfiguration.openAiNativeApiKey) {
   				return i18next.t("settings:validation.apiKey")
-***************
-*** 115,125 ****
-  				return i18next.t("settings:validation.apiKey")
-  			}
-  			break
-- 		case "fireworks":
-- 			if (!apiConfiguration.fireworksApiKey) {
-- 				return i18next.t("settings:validation.apiKey")
-- 			}
-- 			break
-  	}
-  
-  	return undefined
---- 118,123 ----
