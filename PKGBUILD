@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=tidytidbits
-_pkgver=0.3.2
+_pkgver=0.3.3
 pkgname=r-${_pkgname,,}
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A Collection of Tools and Helpers Extending the Tidyverse'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-survival
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e87093aab927c2d34626b88cdff1f2cfd3883ffde778f8d5794ad6b88a0975fd')
+sha256sums=('8c6675302430d4edc5590743ea4c824b9772195911e92631812e4f2200f451b6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
