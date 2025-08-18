@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphaLynx at alphalynx dot dev>
 
 pkgname=python-borgstore
 _name=${pkgname#python-}
