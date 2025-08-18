@@ -34,6 +34,6 @@ conflicts=($_pkgname 'xorg-server-common' 'xlibre-server-common')
 sha256sums=('9a438adeaaec0307076bde983dc20cccbd47cb0a24af2e18205d08e9a0fdfb83')
 
 package() {
-  tar -xf "${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr var
+  tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr var
 }
 
