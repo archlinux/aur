@@ -1,7 +1,7 @@
 # Maintainer: Alexander Tagirov [aur @tagirov.cc]
 
 pkgname=rusk
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A minimal task manager for CLI written in Rust"
 arch=("x86_64")

@@ -1,6 +1,6 @@
 pkgbase = rusk
 	pkgdesc = A minimal task manager for CLI written in Rust
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/tagirov/rusk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rusk
 	makedepends = rust
 	depends = gcc-libs
 	options = !debug
-	source = rusk-0.1.0.tar.gz::https://github.com/tagirov/rusk/archive/refs/tags/0.1.0.tar.gz
+	source = rusk-0.1.1.tar.gz::https://github.com/tagirov/rusk/archive/refs/tags/0.1.1.tar.gz
 	sha256sums = e1debbbcc795afce6efbe61029f8c048404f448f41ef6bdc9286379cef46c079
 
 pkgname = rusk
