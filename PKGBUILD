@@ -1,12 +1,13 @@
-# Maintainer: Sam S. <smls75@gmail.com>
+# Maintainer: Christian Weller <christian@jundar.de>
+# Contributor: Sam S. <smls75@gmail.com>
 # Contributor: Marek Otahal <markotahal gmail>
 # Contributor: C5OK5Y 
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=osmos
-pkgver=1.6.1+h20110216
+pkgver=1.6.1
 _hibver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A unique physics-based ambient game (Humble Bundle/Store version)"
 arch=("i686" "x86_64")
 url="http://www.hemispheregames.com/osmos/"
@@ -17,8 +18,8 @@ DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(p
 
 source=("hib://Osmos_$_hibver.tar.gz"
         "osmos.desktop")
-md5sums=("ed2cb029c20c25de719c28062e6fc9cf"
-         "030de4b7f794aaab819273bba8edf05d")
+sha256sums=("f8a9bf55dc22ee32feeec5633058c28d1811a3054f6ebed3f9f3251c5179d202"
+            "17709e27f7381e3980247f2c9188c4b8568a09d0b969ea838901470a5b381deb")
 
 _installname=osmos
 case $CARCH in
