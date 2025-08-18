@@ -1,11 +1,11 @@
 # Maintainer: notscripter <grx8x0mfy@mozmail.com>
 pkgname=spotube-nightly-bin
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="🎧 Open source music client! Available for both desktop & mobile!"
-arch=(i686 x86_64)
-url="https://github.com/KRTirtho/spotube"
+arch=(x86_64 aarch64)
+url="https://spotube.krtirtho.dev"
 license=('BSD-4')
 groups=()
 depends=('mpv' 'libappindicator-gtk3' 'libsecret' 'jsoncpp' 'libnotify' 'xdg-user-dirs' 'webkit2gtk-4.1')
@@ -19,19 +19,24 @@ backup=()
 options=(!debug)
 install=
 changelog=
-source=(spotube-linux-nightly-x86_64-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz)
+source_x86_64=(spotube-linux-nightly-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz)
+source_aarch64=(spotube-linux-nightly-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-aarch64.tar.xz)
 noextract=()
-sha256sums=(260e82b6d3c089443680be93cf96ae3b3c5f7692893b19b10f9386c3afa37a74)
+sha256sums_x86_64=(4c2e5c8f4b7a697f91d96635a2ed1a2217a38db08dfbae4689a4da501c28d746)
+sha256sums_aarch64=(1c8cc238ffcded54c38b3c1a07554e3988e0fff17ce3384a11f39b0a5facad2d)
 validpgpkeys=()
 
 package() {
-    cd ${srcdir}
+    install -dm755 "${pkgdir}/usr/share/icons/spotube"
+    install -dm755 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/appdata"
+    install -dm755 "${pkgdir}/usr/share/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
-    install -dm755 "${pkgdir}/usr/share/spotube"
 
-    install -Dm755 ./spotube.desktop "$pkgdir/usr/share/applications/spotube.desktop"
-    install -Dm755 ./spotube-logo.png "$pkgdir/usr/share/icons/spotube/spotube-logo.png"
-    install -Dm755 ./com.github.KRTirtho.Spotube.appdata.xml "$pkgdir/usr/share/appdata/spotube.appdata.xml"
-    cp -ra ./data ./lib ./spotube "$pkgdir/usr/share/spotube"
-    ln -s /usr/share/spotube/spotube "${pkgdir}/usr/bin/spotube"
+    mv ./spotube.desktop "${pkgdir}/usr/share/applications"
+    mv ./spotube-logo.png "${pkgdir}/usr/share/icons/spotube/"
+    mv ./com.github.KRTirtho.Spotube.appdata.xml "${pkgdir}/usr/share/appdata/spotube.appdata.xml"
+    cp -ra ./data ./lib ./spotube "${pkgdir}/usr/share/${pkgname}"
+    sed -i 's|com.github.KRTirtho.Spotube|spotube|' "${pkgdir}/usr/share/appdata/spotube.appdata.xml"
+    ln -s "/usr/share/${pkgname}/spotube" "${pkgdir}/usr/bin/spotube"
 }
