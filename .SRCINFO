@@ -7,8 +7,6 @@ pkgbase = drop-oss-app
 	license = AGPL-3.0-only
 	makedepends = yarn
 	makedepends = cargo
-	makedepends = openssl-1.1
-	makedepends = openssl
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
@@ -18,7 +16,9 @@ pkgbase = drop-oss-app
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = e167cd86dd995c9079a1e6bf613b37e2745ba4c2dab32843d1836e3e6acc417e
+	depends = umu-launcher
+	depends = libayatana-appindicator
+	source = git+https://github.com/Drop-OSS/drop-app.git#commit=40d545a77c47e0cbbe5ef33b0d69fe70bba6b943
+	sha256sums = a2fcffd06cdae308ea9aa0d302d8821d4912bbc796b0127a8be4e1c5820be2ec
 
 pkgname = drop-oss-app
