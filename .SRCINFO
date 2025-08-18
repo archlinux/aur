@@ -1,0 +1,24 @@
+pkgbase = sdrpp-vhfvoiceradio-git
+	pkgdesc = VHF voice radio plugin for SDR++
+	pkgver = r12.30036cf
+	pkgrel = 1
+	url = https://github.com/cropinghigh/sdrpp-vhfvoiceradio
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdrpp-headers-git
+	makedepends = libosmocore
+	makedepends = unzip
+	makedepends = lapack
+	makedepends = blas
+	makedepends = fftw
+	depends = sdrpp-git
+	depends = itpp
+	provides = sdrpp-vhfvoiceradio
+	conflicts = sdrpp-vhfvoiceradio
+	source = git+https://github.com/cropinghigh/sdrpp-vhfvoiceradio
+	md5sums = SKIP
+
+pkgname = sdrpp-vhfvoiceradio-git
