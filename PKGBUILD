@@ -1,6 +1,7 @@
 # Maintainer: artist for Xlibre
 
 _pkgname=xlibre-server-common
+_orgpkgname=xlibre-xserver-common
 pkgname=$_pkgname-bin
 pkgver=25.0.0.8
 pkgrel=1
@@ -24,7 +25,7 @@ license=('LicenseRef-Adobe-Display-PostScript'
          'X11-distribute-modifications-variant')
 groups=('xlibre')
 options=(!strip)
-source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
 provides=($_pkgname 'xorg-server-common' 'xlibre-server-common')

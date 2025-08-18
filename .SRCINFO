@@ -31,7 +31,7 @@ pkgbase = xlibre-server-common-bin
 	conflicts = xlibre-server-common
 	noextract = xlibre-server-common-25.0.0.8-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-server-common-25.0.0.8-1-x86_64.pkg.tar.zst
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xserver-common-25.0.0.8-1-x86_64.pkg.tar.zst
 	sha256sums = 9a438adeaaec0307076bde983dc20cccbd47cb0a24af2e18205d08e9a0fdfb83
 
 pkgname = xlibre-server-common-bin
