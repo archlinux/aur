@@ -1,0 +1,14 @@
+pkgbase = cyclops
+	pkgdesc = simple and convenient TUI for webcam control via v4l2-ctl
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jan-tudos/cyclops
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	depends = v4l-utils
+	optdepends = ffmpeg: for previewing via ffplay
+	source = git+https://github.com/jan-tudos/cyclops.git
+	sha256sums = SKIP
+
+pkgname = cyclops
