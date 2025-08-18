@@ -35,7 +35,6 @@ RestartSec=10
 TimeoutStopSec=20
 SyslogIdentifier=readarr
 ConfigurationDirectory=readarr
-LogsDirectory=/var/lib/readarr/logs
 RuntimeDirectory=readarr
 StateDirectory=readarr
 WorkingDirectory=/var/lib/readarr
