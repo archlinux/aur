@@ -2,7 +2,7 @@
 
 pkgname="niri-float-sticky"
 
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A utility to make floating windows visible across all workspaces in niri"
 url="https://github.com/probeldev/niri-float-sticky"
