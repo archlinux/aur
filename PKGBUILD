@@ -3,7 +3,7 @@
 arch=('x86_64')
 
 pkgname=wayland-boomer-git
-pkgver=r25.4b51ff7
+pkgver=r30.36e3d9a
 pkgrel=1
 
 pkgdesc="zoomer application for linux, wayland alternative for tsoding's X11 boomer"
@@ -41,4 +41,5 @@ package() {
   install -Dm755 wayland-boomer "$pkgdir/usr/bin/wayland-boomer"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 man/wayland-boomer.1 "$pkgdir/usr/share/man/man1/wayland-boomer.1"
 }
