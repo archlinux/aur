@@ -1,6 +1,7 @@
 # Maintainer: artist for Xlibre
 
 _pkgname=xlibre-server-xvfb
+_orgpkgname=xlibre-xserver-xvfb
 pkgname=$_pkgname-bin
 pkgver=25.0.0.8
 pkgrel=1
@@ -24,7 +25,7 @@ license=('LicenseRef-Adobe-Display-PostScript'
          'X11-distribute-modifications-variant')
 groups=('xlibre')
 options=(!strip)
-source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-server-common-bin 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libunwind pixman xorg-xauth
          libgl nettle libtirpc libxdmcp sh glibc libxau)
@@ -34,6 +35,6 @@ conflicts=($_pkgname 'xorg-server-xvfb' 'xlibre-server-xvfb')
 sha256sums=('7b87152bf93ffb99dcd5c92b74d2994183c99c2cabfe2a68694437044f143269')
 
 package() {
-  tar -xf "${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
+  tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
 }
 
