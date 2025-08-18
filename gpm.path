@@ -1,0 +1,5 @@
+[Unit]
+Description=Virtual console mouse server
+
+[Path]
+PathExists=/dev/input/mice
