@@ -3,7 +3,7 @@
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-openvino"
 pkgver=1.7.6 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OpenVINO run-time)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -25,7 +25,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DWHISPER_OPENVINO=1 \
-    -DWHISPER_SDL2=1
+    -DWHISPER_SDL2=1 \
+    -DWHISPER_BUILD_EXAMPLES=0 \
+    -DWHISPER_BUILD_SERVER=0 \
+    -DWHISPER_BUILD_TESTS=0
 
   cmake --build "${srcdir}/build"
 }
