@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 # Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Shayne Hartford <shayneehartford@gmail.com>
 
