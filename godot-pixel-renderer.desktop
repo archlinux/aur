@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GodotPixelRenderer
+Comment=3D to Pixel Art Renderer
+Exec=/usr/share/godot-pixel-renderer/godot-pixel-renderer %u
+Icon=godot-pixel-renderer
+Type=Application
+StartupWMClass=godot-pixel-rendere
+Categories=Graphics;
+StartupNotify=true
+Terminal=false
+X-MultipleArgs=false
