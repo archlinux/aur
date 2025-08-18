@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=stable-diffusion.cpp-git
-pkgver=r211.10c6501
+pkgver=r256.5900ef6
 pkgrel=1
 pkgdesc="Stable Diffusion in pure C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
 source=("${pkgname%%-git}::git+${url}"
-  "git+https://github.com/ggerganov/ggml.git")
+  "git+https://github.com/ggerganov/ggml.git#commit=ff9052988b76e137bcf92bb335733933ca196ac0")
 
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
