@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=chromium-ffmpeg-bin
+Target=nwjs
+Target=nwjs-bin
+
+[Action]
+When=PostTransaction
+Exec=/usr/bin/bash -c 'chmod a-r /opt/nwjs/lib/libffmpeg.so 2>/dev/null||:'

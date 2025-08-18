@@ -11,7 +11,9 @@ url=https://ffmpeg.org/
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 _commit=638b521c7b09e00514aa13ade43c389b4b40ddfd
-source=(https://github.com/FFmpeg/FFmpeg/archive/${_commit}.zip #fetch-soname-by-chromium.sh
+install=remove-chromium-ffmpeg.install
+source=(
+$install replace-chromium-ffmpeg.hook https://github.com/FFmpeg/FFmpeg/archive/${_commit}.zip
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
@@ -19,7 +21,9 @@ source=(https://github.com/FFmpeg/FFmpeg/archive/${_commit}.zip #fetch-soname-by
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 
-sha256sums=('0a7fdf8691f02cba4688f2f84f0c621d23cd935bc35db16c1691dfebf829b0c8'
+sha256sums=('90549fe900b87703b86fba8fa5dead8082da9f1c5fcbd2be2e9c39f4879b27ce'
+            '0f4500d0f35d1fa561c5c41ce808386bb36d0702227ba00d33bd423ed26260ed'
+            '0a7fdf8691f02cba4688f2f84f0c621d23cd935bc35db16c1691dfebf829b0c8'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
@@ -29,7 +33,7 @@ depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch) # base-devel
 _so=libffmpeg.so
-optdepends=(nwjs": swap ${_so} by ln -sf")
+optdepends=(nwjs)
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
@@ -88,6 +92,8 @@ build() {
 
 package(){
   install -Dm644 $_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
+  ln -svf /usr/lib/${_so}.$_avcodec "$pkgdir"/usr/lib/${_so}
+  install -Dvm644 replace-chromium-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   for _n in 7.5 7.6 7.7 7.8 7.9 8.0 ; do
     ln -svf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi/${_so}.$_n
