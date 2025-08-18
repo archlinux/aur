@@ -1,18 +1,19 @@
 # Maintainer: envolution
 # Contributor: Jan Cholasta <grubber at grubber cz>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=slade
 pkgver=3.2.7
-pkgrel=10
+pkgrel=11
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
-license=('GPL')
+license=('GPL-2.0-only' 'LicenseRef-wxWindows')
 #slade -------------
 depends=(
   'bzip2'
   'fluidsynth'
-  'freeimage'
+  'libwebp'
   'ftgl'
   'glu'
   'gtk3'
@@ -22,13 +23,29 @@ depends=(
   'sfml'
   'webkit2gtk-4.1'
   'wxwidgets-gtk3'
-  'zlib')
-makedepends=('cmake'
+  'zlib'
+  'sdl2-compat'
+  'pcre2'
+  'curl'
+  'expat'
+  'libsecret'
+  'gspell'
+  'xz')
+makedepends=(
+  'git'
+  'cmake'
   'p7zip')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
-sha256sums=('842aa562dc0aa39627866babe0ea3bb033aac3a2be2c2aaa71d8be3664f617ad'
-            'b4f2e8ebac43c0fc351a3c94b6fad6862d8cc9cdb55f7a224747d1066a2e09f5')
+# pull in commits up to Aug 18 2025 (specific to pkgver 3.2.7)
+if [[ $pkgver == 3.2.7 ]]; then
+    _specify_git="#commit=62467e4ea9f41ac04e28bfed266731da22ff874c"
+else
+    _specify_git="#tag=${pkgver}"
+fi
+
+source=("git+https://github.com/sirjuddington/SLADE.git${_specify_git}")
+sha256sums=('c51da7928e58a2aad849fb75ce914f4a0d6623d09dc0e35098e9f5ba3a1c6e66'
+            '11bfcbbbb10515d9fd31f52477166bc37725e704dc7f3baf6cad30b92e1defe8')
 
 #wxwidgets -------------------
 makedepends+=(
@@ -38,6 +55,9 @@ makedepends+=(
   gst-plugins-base
   nanosvg
   qt5-base
+  libmspack
+  libnotify
+  sdl2
   webkit2gtk-4.1)
 depends+=(bash
   cairo
@@ -63,7 +83,7 @@ depends+=(bash
   sdl2
   wayland
   wxwidgets-common)
-source+=(git+https://github.com/wxWidgets/wxWidgets#tag=v3.2.6)
+source+=(git+https://github.com/wxWidgets/wxWidgets#tag=v3.2.8.1)
 #</wxwidgets>
 
 #sfml2 - https://github.com/sirjuddington/SLADE/pull/1761
@@ -98,7 +118,7 @@ build() {
   export PKG_CONFIG_PATH="$srcdir/build-wxwidgets/lib/pkgconfig:$PKG_CONFIG_PATH"
   export LD_LIBRARY_PATH="$srcdir/build-wxwidgets/lib:/opt/sfml2/lib:$LD_LIBRARY_PATH"
 
-  cd SLADE-${pkgver}
+  cd SLADE
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -109,12 +129,13 @@ build() {
 
 package() {
   # Install slade
-  cd "$srcdir/SLADE-${pkgver}/build"
+  cd "$srcdir/SLADE/build"
   make install DESTDIR="$pkgdir"
 
   # Install wxwidgets to /usr/share/slade3
   cd "$srcdir"
   DESTDIR="$pkgdir" cmake --install build-wxwidgets
+  install -Dm644 wxWidgets/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/wxwidgets-LICENSE
   rm -rf "$pkgdir/usr/share/slade3/include"
   rm -rf "$pkgdir/usr/share/slade3/lib/cmake"
   rm -rf "$pkgdir/usr/share/slade3/lib/wx/config"
@@ -128,3 +149,4 @@ GDK_BACKEND=x11 exec /usr/bin/slade3.bin "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/slade"
 }
+# vim:set ts=2 sw=2 et:
