@@ -1,0 +1,12 @@
+pkgbase = kwin-effect-foldingpopups-git
+	pkgdesc = KWin effect: Folding popups
+	pkgver = 20250104.g7716980
+	pkgrel = 1
+	url = https://github.com/kde-yyds/kwin-effect-foldingpopups
+	arch = any
+	license = GPL
+	depends = kwin
+	source = kwin-effect-foldingpopups-git::git+https://github.com/kde-yyds/kwin-effect-foldingpopups.git
+	md5sums = SKIP
+
+pkgname = kwin-effect-foldingpopups-git
