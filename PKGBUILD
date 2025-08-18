@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyfun-bin
-pkgver=3.3.10
-_electronversion=34
-pkgrel=2
+pkgver=3.4.0
+_electronversion=36
+pkgrel=1
 pkgdesc="Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
     'aarch'
@@ -18,6 +18,9 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
+    'python'
+    'python-requests'
+    'python-lxml'
 )
 source_aarch=("${pkgname%-bin}-${pkgver}-aarch.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-x86_64.rpm")
@@ -26,9 +29,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('05a41f7b9dc819453e9c8c3ea4e144fe7e3d09d0f78bdf800e92810312f99094'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch=('961febfa564422dd278a3c5a4226d39f73a1c0ef4b2798d85b203f8b79813fb3')
-sha256sums_x86_64=('831a3ea9513acb66cac747b51047989e222e635c5abfe46ee19ea88fc25ad47e')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch=('929f571125bb3616207663a181d4b3c6a1aceb0faef30c244d8de2986d37f82e')
+sha256sums_x86_64=('d11f98ffef8447d1aff16ce8dff98633e89969ad738b404edfbd258d68f9cc0f')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,6 +44,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${pkgname%-bin}\///g
         s/Audio;Video/AudioVideo/g
