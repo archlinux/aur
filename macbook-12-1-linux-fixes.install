@@ -11,9 +11,10 @@ post_install() {
 
     echo "Installation complete!"
     echo "To finalize:"
-    echo "1. Disable and stop wpa_supplicant systemd service."
-    echo "1. Enable and start iwd systemd service."
-    echo "NOTE: If you had a mbfan config before, this package will replace that and restore on uninstall."
-    echo "NOTE: The disable-wakeup.service will disable LID0 and XHC1 from /proc/acpi/wakeup"
+    echo "1. Stop and disable wpa_supplicant systemd service."
+    echo "2. Enable and start iwd systemd service."
+    echo "3. Enable and start disable-wakeup systemd service."
+    echo "NOTE: If you had a macfand config before, this package will replace that."
+    echo "NOTE: The disable-wakeup.service will disable auto wake up when lid opens"
 }
 
