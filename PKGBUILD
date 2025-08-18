@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-authenticator-bin
 _name=${pkgname%-bin}
