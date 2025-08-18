@@ -1,6 +1,6 @@
 pkgbase = electron36-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 36.7.4
+	pkgver = 36.8.0
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron36-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron36=36.7.4
+	provides = electron36=36.8.0
 	conflicts = electron36
-	noextract = electron36-chromedriver-36.7.4-x86_64.zip
-	noextract = electron36-36.7.4-x86_64.zip
-	source_aarch64 = electron36-chromedriver-36.7.4-aarch64.zip::https://github.com/electron/electron/releases/download/v36.7.4/chromedriver-v36.7.4-linux-arm64.zip
-	source_aarch64 = electron36-36.7.4-aarch64.zip::https://github.com/electron/electron/releases/download/v36.7.4/electron-v36.7.4-linux-arm64.zip
-	sha256sums_aarch64 = fd1f76d4f4e3e2706bda462b91c824870316ceb8bb768f8676b4d32113412258
-	sha256sums_aarch64 = 8a9a7a72924257f4432c57344dd428f957ed7ec7d0dd9c695292fd715a5a649c
-	source_armv7h = electron36-chromedriver-36.7.4-armv7h.zip::https://github.com/electron/electron/releases/download/v36.7.4/chromedriver-v36.7.4-linux-armv7l.zip
-	source_armv7h = electron36-36.7.4-armv7h.zip::https://github.com/electron/electron/releases/download/v36.7.4/electron-v36.7.4-linux-armv7l.zip
-	sha256sums_armv7h = da02a1b91a74da509f12f2c80b18c3a1161b8a658d3a27ae12e5fbc4d83bf145
-	sha256sums_armv7h = 1c4cf937247538907a9ff960d768da04ddf3ccbc53ccfdf0e18bdd2ca04cb5bf
-	source_x86_64 = electron36-chromedriver-36.7.4-x86_64.zip::https://github.com/electron/electron/releases/download/v36.7.4/chromedriver-v36.7.4-linux-x64.zip
-	source_x86_64 = electron36-36.7.4-x86_64.zip::https://github.com/electron/electron/releases/download/v36.7.4/electron-v36.7.4-linux-x64.zip
-	sha256sums_x86_64 = a3bfc851121882a56661df1f1398e5ef975adb9e088153c4b3b8e177dab903c1
-	sha256sums_x86_64 = e8f33146916a8376603622d13d2322defe383678034eb8a60b44a13e42c61ce6
+	noextract = electron36-chromedriver-36.8.0-x86_64.zip
+	noextract = electron36-36.8.0-x86_64.zip
+	source_aarch64 = electron36-chromedriver-36.8.0-aarch64.zip::https://github.com/electron/electron/releases/download/v36.8.0/chromedriver-v36.8.0-linux-arm64.zip
+	source_aarch64 = electron36-36.8.0-aarch64.zip::https://github.com/electron/electron/releases/download/v36.8.0/electron-v36.8.0-linux-arm64.zip
+	sha256sums_aarch64 = 1ef9223fb133341bad0e82bfa81363fb58bfa24b175f764cef2cd2e225b9ee7f
+	sha256sums_aarch64 = 93688fbe3f6c759c8b99f57952109d46cb4aa1c529c0fe3426bf3d35d1d61055
+	source_armv7h = electron36-chromedriver-36.8.0-armv7h.zip::https://github.com/electron/electron/releases/download/v36.8.0/chromedriver-v36.8.0-linux-armv7l.zip
+	source_armv7h = electron36-36.8.0-armv7h.zip::https://github.com/electron/electron/releases/download/v36.8.0/electron-v36.8.0-linux-armv7l.zip
+	sha256sums_armv7h = 8cdd5af50d004ddf72bf5f68b6028a86a11f52a044ba409d803c925497f0edc3
+	sha256sums_armv7h = 0b0ae318ace063a593bb14a80d5bd689a97f6ea8919429c058bd50dff972ddea
+	source_x86_64 = electron36-chromedriver-36.8.0-x86_64.zip::https://github.com/electron/electron/releases/download/v36.8.0/chromedriver-v36.8.0-linux-x64.zip
+	source_x86_64 = electron36-36.8.0-x86_64.zip::https://github.com/electron/electron/releases/download/v36.8.0/electron-v36.8.0-linux-x64.zip
+	sha256sums_x86_64 = 266e4999dc4a20c97d46603f350d7229a8507e244c081b8cdf2cb342a57be8b1
+	sha256sums_x86_64 = 00d73739abb9f751a42fce969ab27a64f143c50ce67f998e52fced5d48f903bb
 
 pkgname = electron36-bin
