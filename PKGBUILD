@@ -1,7 +1,7 @@
 # Maintainer: John Peter <johnpetersa19@gmail.com>
 pkgname=cloudflare-warp-panel
 _pkgname=cloudflare_warp_panel
-pkgver=7.6.0
+pkgver=7.7.0
 pkgrel=1
 pkgdesc="A graphical control panel (GUI) for the Cloudflare WARP client for Linux."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('cloudflare-warp-bin' 'gtk3' 'libadwaita')
 makedepends=('git' 'flutter' 'dart')
 source=("${_pkgname}-${pkgver}+${pkgrel}.tar.gz::https://github.com/johnpetersa19/${_pkgname}/archive/refs/tags/${pkgver}+${pkgrel}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b6d92535fa0174aec8f78607fe0346bf25fcb6356986d967930f25ae70af0b66')
 
 prepare() {
   rm -rf "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/build"
