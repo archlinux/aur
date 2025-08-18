@@ -6,8 +6,8 @@ pkgdesc="command-line tool that lets you display Pokémon sprites in color direc
 arch=('x86_64' 'aarch64')
 url="https://github.com/rubiin/pokego.git"
 license=('GPL-3.0-or-later')
-depends=('coreutils' 'go')
-makedepends=('git' 'upx')
+depends=()
+makedepends=('git' 'go','coreutils')
 conflicts=('pokego')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
@@ -19,7 +19,6 @@ pkgver() {
 build() {
 	cd "$pkgname"
 	go build -o pokego
-	upx pokego
 }
 
 package() {
