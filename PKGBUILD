@@ -2,20 +2,20 @@
 # Contributor:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-cgt-arm-clang
-_partpkgver=4.0.0
+_partpkgver=4.0.3
 pkgver=${_partpkgver}.LTS
 pkgrel=1
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for ARM (CLANG) LTS"
 arch=('x86_64')
 url="http://www.ti.com/tool/ARM-CGT-CLANG"
-license=('custom')
+license=('LicenseRef-multiple-licenses')
 
-#optdepends=('ccstudio')
+depends=('gcc-libs' 'nodejs')
 conflicts=('ccstudio') # current package ships with the toolchains
 
 _installer="ti_cgt_armllvm_${pkgver}_linux-x64_installer.bin"
 source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-ayxs93eZNN/${pkgver}/${_installer}")
-md5sums=('fa6180293f9bfd297d734ec94a78cb92') # TI website provides the MD5 sum specifically
+sha256sums=('617b0379a0f0aaac364d6b16f0ea899687ebf7f773a840d1c7d6f0691205919c')
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 

@@ -1,6 +1,6 @@
 pkgbase = ti-cgt-arm-clang
 	pkgdesc = Texas Instruments Code Generation Tools (compiler) for ARM (CLANG) LTS
-	pkgver = 4.0.0.LTS
+	pkgver = 4.0.3.LTS
 	pkgrel = 1
 	url = http://www.ti.com/tool/ARM-CGT-CLANG
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ti-cgt-arm-clang
 	options = emptydirs
 	options = !purge
 	options = !zipman
-	source = https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-ayxs93eZNN/4.0.0.LTS/ti_cgt_armllvm_4.0.0.LTS_linux-x64_installer.bin
-	md5sums = fa6180293f9bfd297d734ec94a78cb92
+	source = https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-ayxs93eZNN/4.0.3.LTS/ti_cgt_armllvm_4.0.3.LTS_linux-x64_installer.bin
+	sha256sums = 617b0379a0f0aaac364d6b16f0ea899687ebf7f773a840d1c7d6f0691205919c
 
 pkgname = ti-cgt-arm-clang
