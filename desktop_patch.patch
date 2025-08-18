@@ -1,6 +1,6 @@
---- deemix-gui.desktop	2025-06-22 23:21:54.000000000 -0400
-+++ "deemix-gui (copy).desktop"	2025-06-22 23:29:37.557926342 -0400
-@@ -2,8 +2,8 @@
+--- deemix.desktop	2025-08-17 20:59:12.000000000 -0400
++++ deemix-gui2.desktop	2025-08-17 23:23:57.860421929 -0400
+@@ -2,9 +2,9 @@
  Name=Deemix
  Comment=A standalone electron app that wraps deemix-webui
  GenericName=deemix-gui
@@ -10,4 +10,6 @@
 +Icon=deemix-gui
  Type=Application
  StartupNotify=true
- Categories=Audio;
+-Categories=Audio;
++Categories=Audio;AudioVideo;
+ 
