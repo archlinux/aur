@@ -1,6 +1,6 @@
 pkgbase = discord-hushd-git
 	pkgdesc = Systemd daemon and CLI to mute/deafen Discord via RPC (git version)
-	pkgver = 0.r0.g0000000
+	pkgver = 0.1.0.r0.ga11d256
 	pkgrel = 1
 	url = https://gitlab.com/johannes-piermeier/discord-hushd
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = discord-hushd-git
 	depends = python-tomli-w
 	provides = discord-hushd
 	conflicts = discord-hushd
-	source = git+https://gitlab.com/johannes-piermeier/discord-hushd.git
+	source = git+https://gitlab.com/johannes-piermeier/discord-hushd.git#branch=main
 	sha256sums = SKIP
 
 pkgname = discord-hushd-git
