@@ -12,11 +12,13 @@ url="http://rox.sourceforge.net/desktop/"
 depends=('sh' 'libsm' 'gtk2')
 makedepends=('librsvg' 'python')
 source=("https://downloads.sourceforge.net/${pkgname}/rox-filer-${pkgver}.tar.bz2"
-        'rox.desktop' 'rox.svg' 'rox.sh')
+        'rox.desktop' 'rox.svg' 'rox.sh' 'fix-gtkitemfactorycallback.patch')
 sha256sums=('a929bd32ee18ef7a2ed48b971574574592c42e34ae09f36604bf663d7c101ba8'
             '183ba9abb8ab84e36b59287977a79e45b5530c8026b3f0b8d3f6ff3f3e311320'
             '6d48e937bec9027aacc9e2828467161ed1488c1e8587eb37a5681d3852b824ea'
-            '5b2f007e304220551cfecdca28333f5421ecfb3f084c4b44bd0cb2321dc51c40')
+            '5b2f007e304220551cfecdca28333f5421ecfb3f084c4b44bd0cb2321dc51c40'
+            'd646e8d58b30495689b506d74136692172a174b339403fc48c82785a7c6acb2b'
+            )
 
 prepare() {
   cd "$srcdir/rox-filer-$pkgver"
@@ -25,6 +27,7 @@ prepare() {
   sed -i 's/if attrs.has_key(x)/x in attrs/' ROX-Filer/src/po/tips.py
   sed -i 's/get_gtk_builder(/get_gtk_builder((gchar**)/' ROX-Filer/src/log.c
   sed -i 's/dialog = \(gtk_builder_get_object.*\);/dialog = GTK_WIDGET(\1);/' ROX-Filer/src/log.c
+  patch -p0 < ../fix-gtkitemfactorycallback.patch
 }
 
 build() {
