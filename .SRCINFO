@@ -1,7 +1,7 @@
 pkgbase = firelight
 	pkgdesc = A libretro-based frontend
-	pkgver = 0.10.1
-	pkgrel = 2
+	pkgver = 0.10.2
+	pkgrel = 1
 	url = https://github.com/firelight-emulator/firelight
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = firelight
 	depends = qt6-tools
 	depends = sdl2
 	depends = vulkan-headers
-	source = firelight::git+https://github.com/firelight-emulator/firelight.git#tag=v0.10.1
+	source = firelight::git+https://github.com/firelight-emulator/firelight.git#tag=v0.10.2
 	source = firelight.desktop
 	sha256sums = SKIP
 	sha256sums = 3cdb9183d4c875831ccd0dd859ffa915fc8d64032d076aefa0f8cf8d88e8f0b3
