@@ -3,7 +3,7 @@
 # Contributor: Aaron France <aaron.l.france@gmail.com
 
 pkgname=kerl
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Easy building and installing of Erlang/OTP instances"
 url="https://github.com/kerl/kerl"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('bash')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/kerl/kerl.git#tag=${pkgver}")
-sha256sums=('cf6939383f0a9bc0cb3a701616cc9f7bf5141a2c3048cef5e8b3772ed49af33a')
+sha256sums=('c41ee5140304ad1f69ffa8263c8ee1c2a611fb519fbfbaa022eb5cc7301b72cb')
 
 package() {
   cd "${srcdir}/${pkgname}"
