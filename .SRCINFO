@@ -1,6 +1,6 @@
 pkgbase = drop-oss-app
 	pkgdesc = Arch native client for Drop
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://docs.droposs.org/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = drop-oss-app
 	depends = webkit2gtk-4.1
 	depends = umu-launcher
 	depends = libayatana-appindicator
-	source = git+https://github.com/Drop-OSS/drop-app.git#commit=6104bfda72a0d32c43b34084ec6aefeb542e9951
-	sha256sums = ec3e596777321f6b045e313d007d2a013d3b236e0942940e92c7ea74eb8602f3
+	source = git+https://github.com/Drop-OSS/drop-app.git#commit=ec6294b8e7e8891f7a911dcfe2c01b42f7389cbc
+	sha256sums = 2d9bd6f53caf4c34395bb7082d173f1d8cf5bc5d8c87de04cb6d27e3eb822dd4
 
 pkgname = drop-oss-app
