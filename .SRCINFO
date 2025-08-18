@@ -9,7 +9,7 @@ pkgbase = hfc
 	makedepends = make
 	depends = curl
 	depends = ncurses
-	source = hfc::git+file:///home/marlon/git/software/hfc
+	source=("hfc::git+https://git.marlonivo.xyz/hfc")
 	md5sums = SKIP
 
 pkgname = hfc
