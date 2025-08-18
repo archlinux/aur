@@ -1,7 +1,7 @@
 # Maintainer: Rubin Bhandari <roobin.bhandari@gmail.com>
 pkgname=pokego-git
 pkgrel=1
-pkgver=r9.15b23757
+pkgver=r9.14b23757
 pkgdesc="command-line tool that lets you display Pokémon sprites in color directly in your terminal."
 arch=('x86_64' 'aarch64')
 url="https://github.com/rubiin/pokego.git"
@@ -12,9 +12,9 @@ conflicts=('pokego')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
-# pkgver() {
-# 	git -C "${pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-# }
+pkgver() {
+	git -C "${pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$pkgname"
