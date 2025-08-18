@@ -2,7 +2,7 @@
 
 pkgname=firelight
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A libretro-based frontend"
 arch=("x86_64")
 url="https://github.com/firelight-emulator/firelight"
@@ -59,7 +59,7 @@ package() {
     mkdir -p $pkgdir/opt/$pkgname
     install -Dm644 $srcdir/firelight.desktop -t $pkgdir/usr/share/applications
     install -Dm644 $srcdir/firelight/assets/img/firelight_logo.svg $pkgdir/usr/share/pixmaps/$pkgname.svg
-    install -Dm755 $srcdir/firelight/lib/discord_social_sdk/lib/release/libdiscord_partner_sdk.so -t $pkgdir/usr/lib/firelight
+    install -Dm755 $srcdir/firelight/lib/discord_social_sdk/lib/release/libdiscord_partner_sdk.so -t $pkgdir/usr/lib
 
     cd $srcdir/build
     install -Dm755 firelight -t $pkgdir/opt/$pkgname
