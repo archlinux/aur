@@ -13,10 +13,10 @@ provides=('obsidian-cli')
 conflicts=('obsidian-cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Yakitrak/obsidian-cli/releases/download/v0.1.9/obsidian-cli_0.1.9_linux_arm64.tar.gz")
-sha256sums_aarch64=('7e01cd540364a44715ae1c51e50636a9f425ec727b137242b89126257688d80f')
+sha256sums_aarch64=('46ff0d0249094690200e985563a308fbc30207a4362f30956af71419b257903e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Yakitrak/obsidian-cli/releases/download/v0.1.9/obsidian-cli_0.1.9_linux_amd64.tar.gz")
-sha256sums_x86_64=('f93479b3530387f662b46e4844aa409f7108ee7562c4e906a74bb64f12479e9d')
+sha256sums_x86_64=('bd07a568280d3c2bd43eefd39efc88e2956b8d3fc20d91bb71cdfcfa48507cb9')
 
 package() {
   install -Dm755 "./obsidian-cli" "${pkgdir}/usr/bin/obsidian-cli"
