@@ -33,7 +33,7 @@ pkgbase = xlibre-server-devel-bin
 	conflicts = xlibre-server-devel
 	noextract = xlibre-server-devel-25.0.0.8-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-server-devel-25.0.0.8-1-x86_64.pkg.tar.zst
+	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xserver-devel-25.0.0.8-1-x86_64.pkg.tar.zst
 	sha256sums = 70e411b38361273e693d9f37735194158df5aaa247c2d51db981a41085cfe804
 
 pkgname = xlibre-server-devel-bin
