@@ -27,10 +27,12 @@ source=(
 	'git+https://github.com/argilo/gr-elster.git'
 	doxup.patch
 	new_meter.patch  # https://github.com/argilo/gr-elster/pull/12.patch
+	dev_args.patch  # https://github.com/argilo/gr-elster/pull/12.patch
 )
 sha256sums=('SKIP'
             '4df5f8f4011aec787459b1a9bd0d15725ef82f7390590bbb9d76ba37481dca3a'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            'cdff722dee502912ca183c4420482bcc18c3760fccb41d3deff676415abde059')
 
 pkgver() {
   cd gr-elster
@@ -42,9 +44,9 @@ pkgver() {
 
 prepare() {
   cd gr-elster
-  cat ../doxup.patch | patch -p1
+  cat ../doxup.patch | patch -p1  # doxygen -u docs/doxygen/Doxyfile.in
   cat ../new_meter.patch | patch -p1
-  #doxygen -u docs/doxygen/Doxyfile.in
+  cat ../dev_args.patch | patch -p1
 }
 
 build() {

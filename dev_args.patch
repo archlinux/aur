@@ -1,0 +1,74 @@
+From 600f1b227bcac93c1abbf513252efac4d8cf5459 Mon Sep 17 00:00:00 2001
+From: "M. Greyson Christoforo" <grey@christoforo.net>
+Date: Mon, 18 Aug 2025 15:58:29 -0600
+Subject: [PATCH] add dev_args config block
+
+---
+ apps/elster_rx_multi.grc | 14 +++++++++++++-
+ apps/elster_rx_nogui.grc | 14 +++++++++++++-
+ 2 files changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/apps/elster_rx_multi.grc b/apps/elster_rx_multi.grc
+index d462212..aef2f63 100644
+--- a/apps/elster_rx_multi.grc
++++ b/apps/elster_rx_multi.grc
+@@ -77,6 +77,18 @@ blocks:
+     coordinate: [128, 100]
+     rotation: 0
+     state: enabled
++- name: dev_args
++  id: variable
++  parameters:
++    comment: ''
++    value: '""'
++  states:
++    bus_sink: false
++    bus_source: false
++    bus_structure: null
++    coordinate: [184, 16.0]
++    rotation: 0
++    state: enabled
+ - name: rx_gain
+   id: variable
+   parameters:
+@@ -272,7 +284,7 @@ blocks:
+     ant7: ''
+     ant8: ''
+     ant9: ''
+-    args: ''
++    args: dev_args
+     bb_gain0: '20'
+     bb_gain1: '20'
+     bb_gain10: '20'
+diff --git a/apps/elster_rx_nogui.grc b/apps/elster_rx_nogui.grc
+index 5bb57db..f1f2bf1 100644
+--- a/apps/elster_rx_nogui.grc
++++ b/apps/elster_rx_nogui.grc
+@@ -68,6 +68,18 @@ blocks:
+     coordinate: [8, 412]
+     rotation: 0
+     state: enabled
++- name: dev_args
++  id: variable
++  parameters:
++    comment: ''
++    value: '""'
++  states:
++    bus_sink: false
++    bus_source: false
++    bus_structure: null
++    coordinate: [184, 16.0]
++    rotation: 0
++    state: enabled
+ - name: rx_gain
+   id: variable
+   parameters:
+@@ -263,7 +275,7 @@ blocks:
+     ant7: ''
+     ant8: ''
+     ant9: ''
+-    args: ''
++    args: dev_args
+     bb_gain0: '20'
+     bb_gain1: '20'
+     bb_gain10: '20'
