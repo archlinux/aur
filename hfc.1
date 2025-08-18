@@ -1,0 +1,131 @@
+.TH HFC 1 hfc\-VERSION
+.SH NAME
+hfc \- hosts file client
+.SH SYNOPSIS
+.B hfc
+[ \fIOPTION\fR ]
+.SH DESCRIPTION
+\fBhfc\fR is a TUI/CLI program for managing entries in the linux hosts file.
+It's primarely usecase is to view entries by custom or remote (https://...) lists as well as having update indicators which one could merge.
+.P
+When adding remote hosts entries make sure to run the software with root. Then, while downloading into the hosts file, all empty lines and full-line comments are removed, whereas those after domains:
+.br
+.B 0.0.0.0 domain.tld # comment
+are preserved as they may contain useful metadata.
+.P
+To automate updates of your added hosts sources, use
+.B hfc \-U
+in your crontab or systemd timer, merging though must be done manually from the TUI.
+.SH OPTIONS
+.TP
+\fB\-h, \-\-help\fR
+Show usage information.
+.TP
+\fB\-a, \-\-add\fR \fI<url/list>\fR
+Add a remote url (https://...) or custom list.
+.TP
+\fB\-l, \-\-list\fR
+List all entries.
+.TP
+\fB\-r, \-\-remove\fR \fI<url/list>\fR
+Remove a remote url or custom list.
+.TP
+\fB\-e, \-\-edit\fR \fI<list>\fR
+Edit a custom list section using your \fB$EDITOR\fR.
+.br
+! Changes to remote urls will be overwritten
+.TP
+\fB\-U, \-\-update_all\fR
+Check all remote sources for available updates.
+.SH FILES
+.TP
+.B /etc/hosts
+The system hosts file where domain entries are stored.
+.br
+This file is read, copied and modified by the program and therefore needs root execution.
+.TP
+.B /tmp/hosts_temp, /tmp/hosts_merge_temp
+Temporary files used to store a modified version of the hosts file.
+.TP
+.B $HOME/.config/hfc/urls
+Data file for storing list names.
+.TP
+.B $HOME/.config/hfc/fetch.lock
+Lock file used for cross-session downloads.
+.TP
+.B $HOME/.config/hfc/conf
+Config file to change key bindings and color of the TUI.
+.TP
+.B $HOME/.local/state/hfc/counts
+Data file for storing entry counters, which is used to recognize and inform about updates.
+.SH CONFIGURATION
+Configuration is done in the common format seperated by spaces:
+.br
+.B <config-command> <arg1> <arg2>...
+with self-explanatory arguments.
+.br
+Actions can be bound to multiple keys.
+.TP
+.B Default
+.nf
+[keys]
+bind j down
+bind k up
+bind q quit
+bind a add
+bind r remove
+bind e edit
+bind u update_selected
+bind U update_all
+bind o order
+bind m merge
+bind L refresh
+bind + select_all
+bind - unselect_all
+bind space select
+bind ? help
+
+[ui]
+color header white
+color footer white
+color entry_highlight white
+color table_header white
+color entry_default white
+.fi
+.TP
+.B Available [keys]
+.TS
+tab(|);
+l l l 1.
+bind|<key>|<action>
+\&|key_up             |down
+\&|key_down           |up
+\&|key_left           |quit
+\&|key_right          |add
+\&|key_home           |remove
+\&|key_end            |edit
+\&|key_npage          |update_selected
+\&|key_ppage          |update_all
+\&|key_enter          |order
+\&|space              |merge
+\&|a–z, A–Z, 0–9      |refresh
+\&|!#$%&'()*+,-./:;<=>?@[]^_`{}~)      |help
+.TE
+.TP
+.B Available [ui]
+.TS
+tab(|);
+l l l l l.
+color|<element>|<foreground>|<background>|bold
+\&|header         |black   |white   |\&
+\&|footer         |red     |blue    |\&
+\&|entry_highlight|gray    |yellow  |\&
+\&|table_header   |green   |cyan    |\&
+\&|entry_default  |magenta |black   |\&
+.TE
+.TP
+The optional \fBbold\fR attribute makes the text bold.
+.SH COMMANDS DURING USE
+Press '\fB?\fP' during use to get a list of commands.
+.SH BUGS
+Send all bug reports with patch trough xmpp to chat@marlonivo.xyz.

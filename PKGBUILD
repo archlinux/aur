@@ -7,7 +7,7 @@ url="https://git.marlonivo.xyz/hfc"
 license=('MIT')
 depends=('curl' 'ncurses')
 makedepends=('gcc' 'make')
-source=("hfc::git+file://$PWD")
+source=("hfc::git+https://git.marlonivo.xyz/hfc")
 md5sums=('SKIP')
 
 build() {
