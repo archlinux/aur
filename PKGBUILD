@@ -2,30 +2,28 @@
 
 pkgname=doxx-git
 _pkgname="${pkgname%-git}"
-pkgver=r24.2d6c5d8
+pkgver=r25.ccb4079
 pkgrel=1
 pkgdesc='Terminal .docx viewer inspired by Glow'
 arch=(x86_64 aarch64)
 url='https://github.com/bgreenwell/doxx'
 license=('MIT')
-depends=()
 makedepends=(git cargo)
-checkdepends=(cargo)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!lto)
 source=("git+${url}")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "${_pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  cd "${_pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -38,6 +36,7 @@ build() {
 
 check() {
   cd "${_pkgname}"
+
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --release --all-features
 }

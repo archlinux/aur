@@ -1,12 +1,11 @@
 pkgbase = doxx-git
 	pkgdesc = Terminal .docx viewer inspired by Glow
-	pkgver = r24.2d6c5d8
+	pkgver = r25.ccb4079
 	pkgrel = 1
 	url = https://github.com/bgreenwell/doxx
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	checkdepends = cargo
 	makedepends = git
 	makedepends = cargo
 	provides = doxx
