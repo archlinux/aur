@@ -37,7 +37,7 @@ pkgbase = readarr-nightly-bin
 	source = readarr.sysusers
 	source = readarr.tmpfiles
 	sha256sums = 9b505e7e93a71c9d2fdc4689cf4a3cd691e3927b419cf5bb6e1aed43b5a91edc
-	sha256sums = d8111e48780aa7417f43b3d6d1a447be2b3c574542f615fad2bf39b57b4ec871
+	sha256sums = ce5d3c5263792f7099ca5b87acee8a5c7573cc90931cc37a31da459d20b5cfa0
 	sha256sums = fcfa28c1be4f67cfa641dc6076780ee07ab973e55bf676174315e417f73003ad
 	sha256sums = a4cfdf882ab62dea54d85dfae4a633cf21bce597a19c3287d90c024e3ff399ce
 	source_x86_64 = Readarr.nightly.0.4.19.2811.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.4.19.2811&os=linux&runtime=netcore&arch=x64
