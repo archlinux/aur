@@ -27,7 +27,7 @@ _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
 pkgver=6.16.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 url='https://www.kernel.org'
 license=('GPL-2.0-or-later')
@@ -86,7 +86,7 @@ if [[ "${_build_vfio::1}" == "t" ]]; then
   )
   sha256sums+=(
     '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
-    '364f6393e8febc0251f829ad18f173213e725d24c2011b74fa6e4be5ddf7c977'
+    'e9bcc4ef67e96e9b6f3f4bed5f1c8467db7ecdfbd365e398c5bde2fa9b2b9c8b'
   )
 fi
 

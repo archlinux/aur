@@ -1,7 +1,7 @@
-From c542ded46a787b1a08be300506b2043a01627a86 Mon Sep 17 00:00:00 2001
-From: xiota <aur@mentalfossa.com>
-Date: Sun, 17 Aug 2025 10:49:24 +0000
-Subject: [PATCH 2/2] i915-vga-arbiter
+From 905f94b3533a3e008ca534e2f0d0a01162beb96c Mon Sep 17 00:00:00 2001
+From: xiota <>
+Date: Mon, 18 Aug 2025 15:44:08 +0000
+Subject: [PATCH] i915-vga-arbiter
 
 ---
  .../drm/i915/display/intel_display_driver.c   | 18 ++++++++--
@@ -10,7 +10,8 @@ Subject: [PATCH 2/2] i915-vga-arbiter
  .../drm/i915/display/intel_display_params.h   |  1 +
  drivers/gpu/drm/i915/display/intel_vga.c      | 33 +++++++++++++++++++
  drivers/gpu/drm/i915/display/intel_vga.h      |  4 +++
- 6 files changed, 57 insertions(+), 3 deletions(-)
+ .../gpu/drm/xe/compat-i915-headers/i915_drv.h |  6 ++++
+ 7 files changed, 63 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display_driver.c b/drivers/gpu/drm/i915/display/intel_display_driver.c
 index 411fe7b9..25f98fb9 100644
@@ -174,6 +175,23 @@ index 16d699f3..d91a6cf6 100644
 +void intel_vga_disable_mem(struct intel_display *display);
 +
  #endif /* __INTEL_VGA_H__ */
+diff --git a/drivers/gpu/drm/xe/compat-i915-headers/i915_drv.h b/drivers/gpu/drm/xe/compat-i915-headers/i915_drv.h
+index 9b7572e0..043734cf 100644
+--- a/drivers/gpu/drm/xe/compat-i915-headers/i915_drv.h
++++ b/drivers/gpu/drm/xe/compat-i915-headers/i915_drv.h
+@@ -21,6 +21,12 @@ static inline struct drm_i915_private *to_i915(const struct drm_device *dev)
+ 	return container_of(dev, struct drm_i915_private, drm);
+ }
+ 
++static inline struct drm_i915_private *pdev_to_i915(struct pci_dev *pdev)
++{
++	struct drm_device *drm = pci_get_drvdata(pdev);
++	return drm ? to_i915(drm) : NULL;
++}
++
+ /* compat platform checks only for soc/ usage */
+ #define IS_PLATFORM(xe, x) ((xe)->info.platform == x)
+ #define IS_I915G(dev_priv)	(dev_priv && 0)
 -- 
 2.50.1
 

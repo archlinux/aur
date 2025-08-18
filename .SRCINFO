@@ -1,7 +1,7 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
 	pkgver = 6.16.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kernel.org
 	arch = x86_64
 	arch = x86_64_v2
@@ -39,7 +39,7 @@ pkgbase = linux-vfio
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396
-	sha256sums = 364f6393e8febc0251f829ad18f173213e725d24c2011b74fa6e4be5ddf7c977
+	sha256sums = e9bcc4ef67e96e9b6f3f4bed5f1c8467db7ecdfbd365e398c5bde2fa9b2b9c8b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
