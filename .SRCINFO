@@ -45,14 +45,12 @@ pkgbase = xlibre-server-bin
 	provides = X-ABI-XINPUT_VERSION=26.0
 	provides = X-ABI-EXTENSION_VERSION=11.0
 	provides = x-server
-	provides = xlibre-server
 	conflicts = xlibre-server
 	conflicts = xorg-server
 	conflicts = xorg-server-common<25.0.0.0
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
-	conflicts = xlibre-server
 	replaces = glamor-egl
 	replaces = xf86-video-modesetting
 	noextract = xlibre-server-25.0.0.8-1-x86_64.pkg.tar.zst
