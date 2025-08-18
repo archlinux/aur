@@ -12,9 +12,9 @@ conflicts=('pokego')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
-pkgver() {
-	git -C "${pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+# 	git -C "${pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 build() {
 	cd "$pkgname"
