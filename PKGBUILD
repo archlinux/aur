@@ -3,10 +3,15 @@
 # Contributor: Aaron Ali <t0nedef@causal.ca>
 
 # PKGBUILD is taken from klayout extra package
+
 _pkgname=klayout
-pkgname="${_pkgname}-qt6"
+pkgbase="${_pkgname}-qt6"
+pkgname=(
+  "${pkgbase}"
+  "python-${pkgbase}"
+)
 pkgver=0.30.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files - Built with Qt6"
 arch=('x86_64')
 _git_url="https://github.com/KLayout/klayout"
@@ -58,7 +63,7 @@ build() {
     -ruby /usr/bin/ruby
 }
 
-package() {
+package_klayout-qt6() {
   (
     cd "${_pkgname}"  
     install -Dm 644 etc/logo.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/klayout.png
@@ -71,4 +76,16 @@ package() {
   # Install desktop files
   install -Dm 644 klayoutEditor.desktop "$pkgdir"/usr/share/applications/klayoutEditor.desktop
   install -Dm 644 klayoutViewer.desktop "$pkgdir"/usr/share/applications/klayoutViewer.desktop
+}
+
+package_python-klayout-qt6() {
+  depends=("${pkgbase}=${pkgver}")
+
+  local site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "${pkgdir}${site}"
+
+  # Symlink from the base package to site installation
+  for lib in klayout pya; do
+    ln -s "/usr/lib/pymod/${lib}" "${pkgdir}${site}/${lib}"
+  done
 }

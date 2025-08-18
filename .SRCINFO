@@ -1,7 +1,7 @@
 pkgbase = klayout-qt6
 	pkgdesc = High Performance Layout Viewer And Editor. Support of GDS and OASIS files - Built with Qt6
 	pkgver = 0.30.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.klayout.de
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -28,3 +28,6 @@ pkgbase = klayout-qt6
 	b2sums = f03147e9c0181cc51b6cabcfd4deb82c50ac145459818ae18c94641d1b459d143aa6f9e80dfb39d2e21345c3eab87850ed5fe8f6ee9251c9b079d98e51e45bc0
 
 pkgname = klayout-qt6
+
+pkgname = python-klayout-qt6
+	depends = klayout-qt6=0.30.3
