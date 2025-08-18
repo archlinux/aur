@@ -1,0 +1,23 @@
+diff --git a/src/exp.c b/src/exp.c
+index 8e818e6..7ef9750 100644
+--- a/src/exp.c
++++ b/src/exp.c
+@@ -642,7 +642,7 @@ void evaltop(void)
+             return;
+         }
+         --Argi;
+-        (*Opdis[Opi]_unary)(Argstack[Argi], Argflags[Argi]);
++        ((void (*)(long, int))Opdis[Opi])(Argstack[Argi], Argflags[Argi]);
+     }
+     else
+     {
+@@ -654,8 +654,7 @@ void evaltop(void)
+         }
+ 
+         Argi -= 2;
+-        (*Opdis[Opi]_binary)(Argstack[Argi], Argstack[Argi+1],
+-            Argflags[Argi], Argflags[Argi+1]);
++        ((void (*)(long, long, int, int))Opdis[Opi])(Argstack[Argi], Argstack[Argi+1], Argflags[Argi], Argflags[Argi+1]);
+     }
+ }
+ 
