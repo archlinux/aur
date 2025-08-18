@@ -3,7 +3,7 @@
 
 pkgname=mangayomi-bin
 _pkgname=mangayomi
-pkgver=0.6.3
+pkgver=0.6.35
 pkgrel=1
 epoch=1
 pkgdesc="A free and open source manga, manhwa and manhua reader for Android, Windows, Linux, and macOS."
