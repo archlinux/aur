@@ -1,0 +1,3 @@
+post_remove() {
+  chmod a+r /opt/nwjs/lib/libffmpeg.so 2>/dev/null||:
+}
