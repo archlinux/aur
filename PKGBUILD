@@ -2,7 +2,7 @@
 
 pkgname=vacuumtube
 pkgver=1.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial wrapper of YouTube Leanback with a built-in adblocker and minor enhancements.'
 arch=('any')
 url='https://github.com/shy1132/VacuumTube'
@@ -43,7 +43,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/${pkgname}"
 	cp -rt "$pkgdir/usr/share/${pkgname}" dist/linux-unpacked/resources/*
 
-	install -Dm644 'assets/icon.svg' -t "${pkgdir}/usr/share/pixmaps"
+	install -Dm644 'assets/icon.svg' "${pkgdir}/usr/share/pixmaps/rocks.shy.VacuumTube.svg"
 
 	install -Dm755 <(cat << EOF
 #!/usr/bin/env sh
