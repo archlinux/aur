@@ -1,23 +1,23 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vencord-installer
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform gui/cli app for installing Vencord"
 arch=('x86_64')
 url="https://github.com/Vencord/Installer"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'glibc' 'gcc-libs' 'libglvnd' 'libx11')
 makedepends=('go')
-source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('77e476066cf7d249e43416bc0adbf59f38c32eaee207e72419de706d6ba33fc8')
 
 prepare() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/Installer-${pkgver}"
 	go mod tidy
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/Installer-${pkgver}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/Installer-${pkgver}"
 	install -Dm755 vencordinstallercli "$pkgdir/usr/bin/vencordinstallercli"
 	install -Dm755 vencordinstaller "$pkgdir/usr/bin/vencordinstaller"
 
