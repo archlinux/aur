@@ -1,6 +1,6 @@
 pkgbase = emojimart
 	pkgdesc = Modern emoji picker popup for desktop
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/vemonet/EmojiMart
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = emojimart
 	depends = webkit2gtk-4.1
 	optdepends = xdotool: automatically paste to your currently focused app (X11)
 	optdepends = ydotool: automatically paste to your currently focused app (Wayland)
-	source = emojimart-0.3.1.tar.gz::https://github.com/vemonet/EmojiMart/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 1120d97b981cae10e15b0a874b1bc711a66b6036a53ee8a22c74cc93794c3955
+	source = emojimart-0.3.2.tar.gz::https://github.com/vemonet/EmojiMart/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 17ae7b74813b586b352d10a050e7c5c6d5ecae3ca16827eb26d11813657fc231
 
 pkgname = emojimart
