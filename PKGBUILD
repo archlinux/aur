@@ -2,28 +2,30 @@
 
 pkgbase='black-magic-debug'
 pkgname=(black-magic-debug-app black-magic-debug-udev)
-pkgver=1.10.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='Plug&Play in application debugger for microcontrollers'
+pkgdesc='In-application debugger for ARM Cortex and RISC-V processors'
 arch=('any')
 url='https://black-magic.org'
 license=('GPL' 'BSD' 'MIT')
 makedepends=('git' 'hidapi' 'python')
-source=("https://github.com/blackmagic-debug/blackmagic/releases/download/v${pkgver}/blackmagic-full-source-v${pkgver//./_}.tar.gz")
-sha256sums=('c8e8c910d7b06522ac48fc99aa192aa682050b735db978db0df2fa557b961d88')
-_source="blackmagic-full-source-v${pkgver//./_}"
+source=("https://github.com/blackmagic-debug/blackmagic/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('81ba56b002bb4f10e65bcd2adc8a4da3cd17af5bdd5964130c67eaa2d3d530c0')
+
+prepare() {
+  meson subprojects download --sourcedir="blackmagic-${pkgver}"
+}
 
 build() {
-  cd "${_source}"
-  make PROBE_HOST=hosted HOSTED_BMP_ONLY=0 ENABLE_RTT=1 ADVERTISE_NOACKMODE=1
+  arch-meson "blackmagic-${pkgver}" build -Denable_gpiod=disabled
+  meson compile -C build
 }
 
 package_black-magic-debug-udev() {
   conflicts=('black-magic-udev' 'black-magic-debug-udev')
   provides=('black-magic-debug-udev')
 
-  cd "${_source}"
-  install -Dm 644 driver/99-blackmagic-uucp.rules "${pkgdir}"/usr/lib/udev/rules.d/99-blackmagic-uucp.rules
+  install -Dm 644 "blackmagic-${pkgver}/driver/99-blackmagic-uucp.rules" "${pkgdir}/usr/lib/udev/rules.d/99-blackmagic-uucp.rules"
 }
 
 package_black-magic-debug-app() {
@@ -31,7 +33,6 @@ package_black-magic-debug-app() {
   provides=('black-magic-debug-app')
   depends=('libusb' 'libftdi' 'libhidapi-libusb.so')
 
-  cd "${_source}"
-  install -Dm 755 src/blackmagic "${pkgdir}"/usr/bin/blackmagic
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgbase}" COPYING*
+  install -Dm 755 build/blackmagic "${pkgdir}/usr/bin/blackmagic"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgbase}" "blackmagic-${pkgver}"/COPYING*
 }
