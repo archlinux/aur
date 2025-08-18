@@ -1,4 +1,4 @@
-pkgbase = google-earth-pro
+pkgbase = google-earth-pro-portable
 	pkgdesc = 3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)
 	pkgver = 7.3.6.10201
 	pkgrel = 2
@@ -27,7 +27,7 @@ pkgbase = google-earth-pro
 	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = google-earth-pro
+pkgname = google-earth-pro-portable
 	depends = portable
 	depends = libcups
 	depends = libsm

@@ -1,3 +1,7 @@
+# Maintainer: Kimiblock Moe
+
+# Original PKGBUILD from aur/google-earth-pro
+
 # Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail> 
@@ -5,7 +9,7 @@
 # check the latest version with:
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
-pkgname=google-earth-pro
+pkgname=google-earth-pro-portable
 pkgver=7.3.6.10201
 pkgrel=2
 pkgdesc="3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)"
