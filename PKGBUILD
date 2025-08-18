@@ -17,7 +17,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 backup=('etc/macfand.conf' 
         'etc/tlp.conf'
         'etc/wifi_backend.conf'
-        '/usr/lib/systemd/system/disable-wakeup.service')
+        'usr/lib/systemd/system/disable-wakeup.service')
 
 package() {
     # Install NetworkManager configuration
