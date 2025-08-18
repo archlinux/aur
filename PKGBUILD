@@ -3,7 +3,8 @@
 # Contributor: Thomas Heinemann <thomas@nipha.de>
 # Contributor: Jean Lucas < jean at 4ray dot co>
 pkgname='parsedmarc'
-pkgver='8.18.5'
+pkgver='8.18.7'
+_pkgver='6.18.7'
 pkgrel='1'
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=('any')
@@ -18,13 +19,13 @@ optdepends=(
 	'geoip2-database: for using an up-to-date IP to Country database'
 )
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz"
 	'run-tests-offline.diff'
 )
-b2sums=('861308f165ab6f0fde7ddcae0eb33606f2a3cadfab269ad30a5c9e6bf78ae1591757712c54264cf86bcaad42da4bef2ff26fa862eea2efa974f9539343ce0487'
+b2sums=('8fb14ba267fd1518e074a9984996a0e81cfb6446dc0015a30f3a3e75943c9cd032c60bc3af7a7586d82b197a38b61baf202d815344cd8de04cb537097cbeec64'
         '72b3826cb1a61eb4004e4763aefd9996a0c28bee387a36ecd8d4837f1b33a265c1691ff0e11478d10ce30adeb49c277f24eb737067d6ca090bb9967e0895429d')
 
-_sourcedirectory="$pkgname-$pkgver"
+_sourcedirectory="$pkgname-$_pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
