@@ -2,7 +2,7 @@
 
 _pkgname='bmpflash'
 pkgname="${_pkgname}-git"
-pkgver=r240.33192d1
+pkgver=r268.ea1fa34
 pkgrel=1
 pkgdesc='A command line utility for setting up the on-board Flash of BMP v2.3+ hardware for use in standalone mode'
 arch=('any')
@@ -19,9 +19,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "${_pkgname}"
-
-	meson subprojects download
+	meson subprojects download --sourcedir="${_pkgname}"
 }
 
 build() {
