@@ -4,7 +4,7 @@
 # Contributor: mareex <marcus dot behrendt dot 86 at gmail dot com>
 
 pkgname=gnome-shell-extension-lockkeys
-pkgver=68
+pkgver=71
 pkgrel=1
 pkgdesc="Lock key state indicator for GNOME Shell."
 arch=('any')
