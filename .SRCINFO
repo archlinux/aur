@@ -1,7 +1,7 @@
 pkgbase = chromium-ffmpeg-legacy
 	pkgdesc = Add codecs to Chromium M137- (libavcodec 61)
 	pkgver = 7.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	install = on-opera-ffmpeg.install
 	arch = x86_64
@@ -12,19 +12,15 @@ pkgbase = chromium-ffmpeg-legacy
 	makedepends = make
 	makedepends = patch
 	depends = glibc
-	optdepends = slimjet: swap libffmpeg.so by NoExtract
-	optdepends = electron31: swap libffmpeg.so by NoExtract
-	optdepends = electron32: swap libffmpeg.so by NoExtract
-	optdepends = electron33: swap libffmpeg.so by NoExtract
-	optdepends = electron34: swap libffmpeg.so by NoExtract
-	optdepends = electron35: swap libffmpeg.so by NoExtract
-	optdepends = electron36: swap libffmpeg.so by NoExtract
 	provides = opera-ffmpeg-codecs
 	provides = opera-developer-ffmpeg-codecs
 	provides = opera-beta-ffmpeg-codecs
 	conflicts = opera-ffmpeg-codecs
 	conflicts = opera-developer-ffmpeg-codecs
 	conflicts = opera-beta-ffmpeg-codecs
+	replaces = opera-ffmpeg-codecs
+	replaces = opera-developer-ffmpeg-codecs
+	replaces = opera-beta-ffmpeg-codecs
 	source = https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
 	source = AVFMT_FLAG_NOVIDEOPARSE.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/594bc6d3246fe6b293f253d07c8905c578cb75c9%5E%21/?format=TEXT
 	source = no-xheaac-parser.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT

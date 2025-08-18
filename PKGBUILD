@@ -4,7 +4,7 @@ _avcodec=61
 _chromium=137.0.7151.138
 _chrff=$(curl -sL https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${_chromium}/DEPS?format=TEXT | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Add codecs to Chromium M137- (libavcodec ${_avcodec})"
 arch=('x86_64')
 url=https://ffmpeg.org/
@@ -33,10 +33,9 @@ depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch) # base-devel
 _so=libffmpeg.so
-optdepends=({slimjet,electron{31..36}}": swap ${_so} by NoExtract")
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
-provides=(opera{,-developer,-beta}-ffmpeg-codecs)
-#replaces=(opera{,-developer,-beta}-ffmpeg-codecs)
+provides=("${conflicts[@]}")
+replaces=("${conflicts[@]}") # remove at next bump
 prepare() {
   # List used funcs
   base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt
@@ -100,7 +99,10 @@ build() {
 }
 
 package(){
-  install -Dvm644 $_so "${pkgdir}"/usr/lib/$_so
-  ln -svf /usr/lib/$_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
+  install -Dvm644 $_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
+  install -d "$pkgdir"/usr/lib/opera{,-beta,-developer}/lib_extra
+  for _f in "$pkgdir"/usr/lib/opera{,-beta,-developer}/lib_extra
+    do ln -svf /usr/lib/$_so.${_avcodec} "$_f/$_so"
+  done
   install -Dvm644 block-opera-ldpreload.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
