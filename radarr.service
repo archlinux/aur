@@ -35,7 +35,6 @@ RestartSec=10
 TimeoutStopSec=20
 SyslogIdentifier=radarr
 ConfigurationDirectory=radarr
-LogsDirectory=/var/lib/radarr/logs
 RuntimeDirectory=radarr
 StateDirectory=radarr
 WorkingDirectory=/var/lib/radarr
