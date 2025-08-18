@@ -2,12 +2,12 @@
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=rpcemu
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An Emulator of classic Acorn computer systems, such as the Risc PC and A7000"
 url="http://www.marutan.net/rpcemu/"
 arch=('x86_64' 'i686')
-license=('GPL2')
-makedepends=('qt5-base')
+license=('GPL-2.0-only')
+makedepends=('qt5-base' 'qt5-multimedia')
 optdepends=('apulse: PulseAudio emulation for ALSA'
             'lib32-apulse: PulseAudio emulation for ALSA (32-bit)')
 backup=('usr/share/rpcemu/rpc.cfg')
@@ -26,7 +26,7 @@ _apulse=
 build() {
   # need to add "-fcommon". GCC 10 has apparently changed how multiple symbols
   # defined in different sources are dealt with by default
-  export CFLAGS="$CFLAGS -fcommon"
+  export CFLAGS="$CFLAGS -fcommon -std=gnu17"
   # build rpcemu-interpreter first...
   cd "$srcdir/${pkgname}-${pkgver}/src/qt5"
   qmake-qt5
