@@ -1,6 +1,6 @@
 pkgbase = openlist
 	pkgdesc = A new AList Fork to Anti Trust Crisis
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/OpenListTeam/OpenList
 	install = openlist.install
@@ -17,13 +17,13 @@ pkgbase = openlist
 	conflicts = openlist
 	options = !debug
 	backup = etc/openlist/config.json
-	source = openlist::git+https://github.com/OpenListTeam/OpenList.git#tag=v4.1.0
+	source = openlist::git+https://github.com/OpenListTeam/OpenList.git#tag=v4.1.1
 	source = config.json
 	source = openlist.service
 	source = openlist.sysusers
 	source = openlist.tmpfiles
 	source = openlist.install
-	sha256sums = d6a0eda7cc76320077f90e5f81fe4807bd11789aac6a42e1fe5e0f5db397faa0
+	sha256sums = e1ec599d3e1e640cdb4fcac713d2c6bac68f1dcf20baf820fa52bc40610961c1
 	sha256sums = 9259caae294aebb88e0e25f83074e090f3581556c05548544739edf88c028537
 	sha256sums = 4bc1ccc08f17f5c9ce0fe7fc600ea9d5e1b034d52a776244c627bc13a3fa401d
 	sha256sums = fe9c68aa8a6a27477049c839cb5818ba3ddbd88c6813dd2eacea73da70807905
