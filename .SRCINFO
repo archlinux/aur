@@ -1,6 +1,6 @@
 pkgbase = stable-diffusion.cpp-sycl-f16-git
 	pkgdesc = Stable Diffusion in pure C/C++ (with Intel SYCL GPU optimizations)
-	pkgver = r211.10c6501
+	pkgver = r256.5900ef6
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = armv7h
@@ -10,10 +10,12 @@ pkgbase = stable-diffusion.cpp-sycl-f16-git
 	makedepends = cmake
 	makedepends = git
 	depends = intel-oneapi-basekit
+	provides = stable-diffusion.cpp-sycl-f16
+	provides = stable-diffusion.cpp
 	conflicts = stable-diffusion.cpp-sycl-f16
 	conflicts = stable-diffusion.cpp
 	source = stable-diffusion.cpp-sycl-f16::git+https://github.com/leejet/stable-diffusion.cpp
-	source = git+https://github.com/ggerganov/ggml.git
+	source = git+https://github.com/ggerganov/ggml.git#commit=ff9052988b76e137bcf92bb335733933ca196ac0
 	sha256sums = SKIP
 	sha256sums = SKIP
 
