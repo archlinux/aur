@@ -1,10 +1,10 @@
 pkgbase = dash-player-bin
 	pkgdesc = A video player designed specifically for English learning.(Prebuilt version)一款专为英语学习打造的视频播放器
 	pkgver = 5.1.8
-	pkgrel = 1
-	url = https://solidspoon.xyz/app/dash-player/
+	pkgrel = 2
+	url = https://dash-player.solidspoon.xyz/
 	arch = x86_64
-	license = MIT
+	license = AGPL-3.0-only
 	makedepends = asar
 	depends = electron29
 	depends = ffmpeg

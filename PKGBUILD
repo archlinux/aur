@@ -3,12 +3,12 @@ pkgname=dash-player-bin
 _pkgname=DashPlayer
 pkgver=5.1.8
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="A video player designed specifically for English learning.(Prebuilt version)一款专为英语学习打造的视频播放器"
 arch=('x86_64')
-url="https://solidspoon.xyz/app/dash-player/"
+url="https://dash-player.solidspoon.xyz/"
 _ghurl="https://github.com/solidSpoon/DashPlayer"
-license=('MIT')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
