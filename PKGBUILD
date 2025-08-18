@@ -4,7 +4,7 @@ _pkgbase='black-magic-debug'
 pkgbase="${_pkgbase}-git"
 pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
 pkgver=2.0.0.r43.gefce8f5a
-pkgrel=1
+pkgrel=2
 pkgdesc='In-application debugger for ARM Cortex and RISC-V processors'
 arch=('any')
 url='https://black-magic.org'
@@ -19,13 +19,11 @@ pkgver() {
 }
 
 prepare() {
-  cd blackmagic
-  meson subprojects download
+  meson subprojects download --sourcedir=blackmagic
 }
 
 build() {
-  cd blackmagic
-  arch-meson . build -Denable_gpiod=disabled
+  arch-meson blackmagic build -Denable_gpiod=disabled
   meson compile -C build
 }
 
@@ -33,8 +31,7 @@ package_black-magic-debug-udev-git() {
   conflicts=('black-magic-udev' 'black-magic-debug-udev')
   provides=('black-magic-debug-udev')
 
-  cd blackmagic
-  install -Dm 644 driver/99-blackmagic-uucp.rules "${pkgdir}/usr/lib/udev/rules.d/99-blackmagic-uucp.rules"
+  install -Dm 644 blackmagic/driver/99-blackmagic-uucp.rules "${pkgdir}/usr/lib/udev/rules.d/99-blackmagic-uucp.rules"
 }
 
 package_black-magic-debug-app-git() {
@@ -42,7 +39,6 @@ package_black-magic-debug-app-git() {
   provides=('black-magic-debug-app')
   depends=('libusb' 'libftdi' 'libhidapi-libusb.so')
 
-  cd blackmagic
   install -Dm 755 build/blackmagic "${pkgdir}/usr/bin/blackmagic"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgbase}" COPYING*
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgbase}" blackmagic/COPYING*
 }
