@@ -28,8 +28,8 @@ options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
-provides=($_pkgname 'xorg-server-common' 'xlibre-server-common')
-conflicts=($_pkgname 'xorg-server-common' 'xlibre-server-common')
+provides=($_pkgname 'xorg-server-common')
+conflicts=($_pkgname 'xorg-server-common')
 
 sha256sums=('9a438adeaaec0307076bde983dc20cccbd47cb0a24af2e18205d08e9a0fdfb83')
 
