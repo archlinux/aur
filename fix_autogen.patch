@@ -1,0 +1,13 @@
+diff --git a/autogen.sh b/autogen.sh
+index c3d21c8..7b61d98 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -6,6 +6,6 @@ test -n "$srcdir" || srcdir=.
+ (
+   cd "$srcdir" &&
+   touch config.rpath &&
+-  AUTOPOINT='intltoolize --automake --copy' autoreconf -fiv
++  AUTOPOINT='intltoolize --automake --copy' autoreconf -fiv -I /usr/share/gettext/m4
+ ) || exit
+ test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
+\ No newline at end of file

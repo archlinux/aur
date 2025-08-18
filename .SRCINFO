@@ -16,10 +16,12 @@ pkgbase = spek-x-git
 	makedepends = intltool
 	makedepends = gettext
 	depends = ffmpeg
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	provides = spek
 	conflicts = spek
 	source = spek-x-git::git+https://github.com/MikeWang000000/spek-X
+	source = fix_autogen.patch
 	md5sums = SKIP
+	md5sums = e1d11fef1161d6eac6a08d2442b1e406
 
 pkgname = spek-x-git
