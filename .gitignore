@@ -1,0 +1,7 @@
+macbook-12-1-linux-fixes-1.2-2-any.pkg.tar.zst
+macbookpro-12-1-linux-fix-files/
+pkg/
+src/
+*.tar.zst
+*.pkg.tar.zst
+
