@@ -1,0 +1,12 @@
+--- a/3rdparty/iaxclient/lib/audio_openal.h
++++ b/3rdparty/iaxclient/lib/audio_openal.h
+@@ -1,5 +1,6 @@
+ #ifndef AUDIO_OPENAL_H
+ #define AUDIO_OPENAL_H
+
+-int openal_initialize();
++struct iaxc_audio_driver;
++int openal_initialize(struct iaxc_audio_driver *d, int sample_rate);
+
+ #endif
+
