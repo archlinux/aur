@@ -7,7 +7,7 @@
 _pkgname=quam_facere
 pkgname=${_pkgname}-git
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive web-based system for managing IT procedures, operations, and team workflows"
 arch=(any)
 url="https://spn109.fr/qf"
@@ -50,6 +50,7 @@ package()
 [Unit]
 Description=Quam Facere service
 StartLimitIntervalSec=0
+
 [Service]
 Type=simple
 Restart=always
@@ -58,5 +59,8 @@ User=qf
 SetLoginEnvironment=True
 WorkingDirectory=/usr/share/quam_facere/
 ExecStart=/usr/bin/gunicorn qf:app
+
+[Install]
+WantedBy=multi-user.target
 eof
 }

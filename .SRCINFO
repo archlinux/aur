@@ -1,7 +1,7 @@
 pkgbase = quam_facere-git
 	pkgdesc = A comprehensive web-based system for managing IT procedures, operations, and team workflows
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spn109.fr/qf
 	install = install
 	arch = any
