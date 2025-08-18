@@ -1,4 +1,4 @@
-# Maintainer: AlphaLynx <AlphaLynx at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail-bin
