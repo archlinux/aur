@@ -1,9 +1,9 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Fredrik Strandin <fredrik@strandin.name>
 
-_commit='3ece0ff8ae49ea72485e4aad14926e9251a8b1dc'
+_commit='64f37500a195d9c4e01eb3a97199b00515e9fd7a'
 pkgname=mop
-pkgver=2025.07.17
+pkgver=2025.08.17
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,11 +13,11 @@ depends=('glibc')
 makedepends=('git' 'go')
 conflicts=('mop-git')
 options=('!emptydirs' '!lto')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mop-tracker/${pkgname}/archive/${_commit}.tar.gz")
-b2sums=('37e0707d099d9acd971a16e049e7c2224cddec4ab638e013c6ff8013e3d07bfbd713b886e5c8775d5cece5813aabff4d13de3f9bd823c1afba69ec3506e9db37')
+source=("${pkgname}::git+https://github.com/mop-tracker/${pkgname}.git#commit=${_commit}")
+b2sums=('521dde4c0635f48ad54e246bd5ff51a7ff42f1591f77cace35749105561bf14afc344f1e2a9c420d1762996c075be866caa2e3f159ab51c85e2aebf14b4792f7')
 
 build() {
-  cd "${pkgname}-${_commit}"
+  cd "${pkgname}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -29,14 +29,14 @@ build() {
 
 package() {
   # binary
-  install -D -m755 "${srcdir}/${pkgname}-${_commit}/mop" \
+  install -D -m755 "${srcdir}/${pkgname}/mop" \
     "${pkgdir}/usr/bin/mop"
 
   # docs
-  install -D -m644 "${srcdir}/${pkgname}-${_commit}/README.md" \
+  install -D -m644 "${srcdir}/${pkgname}/README.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   # license
-  install -D -m644 "${srcdir}/${pkgname}-${_commit}/LICENSE" \
+  install -D -m644 "${srcdir}/${pkgname}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
