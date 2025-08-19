@@ -1,15 +1,15 @@
 pkgbase = r-gamlss
 	pkgdesc = Generalized Additive Models for Location Scale and Shape
-	pkgver = 5.4.22
-	pkgrel = 2
+	pkgver = 5.5.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gamlss
 	arch = x86_64
 	license = GPL-2.0-only OR GPL-3.0-only
 	depends = r-gamlss.data
 	depends = r-gamlss.dist
 	optdepends = r-distributions3
-	source = https://cran.r-project.org/src/contrib/gamlss_5.4-22.tar.gz
-	md5sums = 59ad990bd4ea3698cfae1e10aa0e3d4d
-	b2sums = 9c5702ba4776e48edb61ff1ddd65974a290f0e6f8d227c1fe44fc92b8cceef8a569b5e04323ffa7cb4f90c715158910c5d9f69f2c59313a0fd08b48a07db7b45
+	source = https://cran.r-project.org/src/contrib/gamlss_5.5-0.tar.gz
+	md5sums = 92197f3a70f38b6980a779c380bab8d8
+	b2sums = 0abf7278baf1ef3b18e5d7f84752d9a07c74a5356bee8eccdd37c4346fc2d38e1f17f6e68dff8d474ad2646702fc84283391ab542fafe46c87739b642d1ab315
 
 pkgname = r-gamlss
