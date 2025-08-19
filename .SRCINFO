@@ -17,6 +17,7 @@ pkgbase = vagrant
 	depends = xz
 	depends = perl
 	optdepends = dnsmasq: if using libvirt
+	optdepends = cdrtools: to create cloud-init media
 	conflicts = vagrant-substrate
 	replaces = vagrant-substrate
 	options = !emptydirs

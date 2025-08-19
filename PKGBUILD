@@ -19,7 +19,8 @@ options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
   'ruby' 'xz' 'perl')
 makedepends=('git' 'go')
-optdepends=('dnsmasq: if using libvirt')
+optdepends=('dnsmasq: if using libvirt'
+   'cdrtools: to create cloud-init media')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz"
