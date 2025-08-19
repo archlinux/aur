@@ -1,0 +1,150 @@
+From 1989dd15d72bc9e1ccb5a0a895b7ae327120d059 Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Tue, 19 Aug 2025 22:43:41 +0900
+Subject: [PATCH] fix: when user has multi counts,notification not works well
+
+add a queryParameters, to support switch the current active user
+---
+ lib/config/routes.dart                        |  2 ++
+ lib/pages/chat/chat.dart                      |  5 ++++
+ .../local_notifications_extension.dart        |  8 ++++--
+ lib/widgets/matrix.dart                       | 26 +++++++++++++++----
+ 4 files changed, 34 insertions(+), 7 deletions(-)
+
+diff --git a/lib/config/routes.dart b/lib/config/routes.dart
+index 9871a013f0..e5b7a9eafb 100644
+--- a/lib/config/routes.dart
++++ b/lib/config/routes.dart
+@@ -344,6 +344,7 @@ abstract class AppRoutes {
+                   shareItems ??= [];
+                   shareItems.add(TextShareItem(body));
+                 }
++                final userId = state.uri.queryParameters['userId'];
+                 return defaultPageBuilder(
+                   context,
+                   state,
+@@ -351,6 +352,7 @@ abstract class AppRoutes {
+                     roomId: state.pathParameters['roomid']!,
+                     shareItems: shareItems,
+                     eventId: state.uri.queryParameters['event'],
++                    userId: userId,
+                   ),
+                 );
+               },
+diff --git a/lib/pages/chat/chat.dart b/lib/pages/chat/chat.dart
+index e0925f9f5d..3696404ea2 100644
+--- a/lib/pages/chat/chat.dart
++++ b/lib/pages/chat/chat.dart
+@@ -48,16 +48,21 @@ class ChatPage extends StatelessWidget {
+   final String roomId;
+   final List<ShareItem>? shareItems;
+   final String? eventId;
++  final String? userId;
+ 
+   const ChatPage({
+     super.key,
+     required this.roomId,
+     this.eventId,
+     this.shareItems,
++    this.userId,
+   });
+ 
+   @override
+   Widget build(BuildContext context) {
++    if (userId != null) {
++      Matrix.of(context).setActiveClientWithUserId(userId!);
++    }
+     final room = Matrix.of(context).client.getRoomById(roomId);
+     if (room == null) {
+       return Scaffold(
+diff --git a/lib/widgets/local_notifications_extension.dart b/lib/widgets/local_notifications_extension.dart
+index 0cdc291efb..98157a7507 100644
+--- a/lib/widgets/local_notifications_extension.dart
++++ b/lib/widgets/local_notifications_extension.dart
+@@ -23,7 +23,7 @@ extension LocalNotificationsExtension on MatrixState {
+     ..src = 'assets/assets/sounds/notification.ogg'
+     ..load();
+ 
+-  void showLocalNotification(Event event) async {
++  void showLocalNotification(Event event, String? userId) async {
+     final roomId = event.room.id;
+     if (activeRoomId == roomId) {
+       if (kIsWeb && webHasFocus) return;
+@@ -143,7 +143,11 @@ extension LocalNotificationsExtension on MatrixState {
+             );
+             break;
+           case DesktopNotificationActions.openChat:
+-            FluffyChatApp.router.go('/rooms/${event.room.id}');
++            if (userId != null) {
++              FluffyChatApp.router.go('/rooms/${event.room.id}?userId=$userId');
++            } else {
++              FluffyChatApp.router.go('/rooms/${event.room.id}');
++            }
+             break;
+         }
+       });
+diff --git a/lib/widgets/matrix.dart b/lib/widgets/matrix.dart
+index 3bf20b1237..f3b9376d96 100644
+--- a/lib/widgets/matrix.dart
++++ b/lib/widgets/matrix.dart
+@@ -89,6 +89,19 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
+ 
+   late String currentClientSecret;
+   RequestTokenResponse? currentThreepidCreds;
++  void setActiveClientWithUserId(String userId) {
++    final i = widget.clients.indexWhere((c) => c.userID == userId);
++    if (i != -1) {
++      if (_activeClient == i) {
++        return;
++      }
++      _activeClient = i;
++      // TODO: Multi-client VoiP support
++      createVoipPlugin();
++    } else {
++      Logs().w('Tried to set an unknown user $userId as active');
++    }
++  }
+ 
+   void setActiveClient(Client? cl) {
+     final i = widget.clients.indexWhere((c) => c == cl);
+@@ -170,7 +183,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
+               _loginClientCandidate!.clientName,
+               store,
+             );
+-            _registerSubs(_loginClientCandidate!.clientName);
++            _registerSubs(
++              _loginClientCandidate!.clientName,
++              _loginClientCandidate!.userID,
++            );
+             _loginClientCandidate = null;
+             FluffyChatApp.router.go('/rooms');
+           });
+@@ -241,7 +257,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
+     }
+   }
+ 
+-  void _registerSubs(String name) {
++  void _registerSubs(String name, String? userId) {
+     final c = getClientByName(name);
+     if (c == null) {
+       Logs().w(
+@@ -310,8 +326,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
+     if (PlatformInfos.isWeb || PlatformInfos.isLinux) {
+       c.onSync.stream.first.then((s) {
+         html.Notification.requestPermission();
+-        onNotification[name] ??=
+-            c.onNotification.stream.listen(showLocalNotification);
++        onNotification[name] ??= c.onNotification.stream
++            .listen((data) => showLocalNotification(data, userId));
+       });
+     }
+   }
+@@ -329,7 +345,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
+ 
+   void initMatrix() {
+     for (final c in widget.clients) {
+-      _registerSubs(c.clientName);
++      _registerSubs(c.clientName, c.userID);
+     }
+ 
+     if (kIsWeb) {
