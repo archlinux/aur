@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fbthrift
-pkgver=2025.08.11.00
+pkgver=2025.08.18.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -32,6 +32,7 @@ makedepends=(
   cython
   gtest
   mvfst=$pkgver
+  ninja
 )
 optdepends=(
   'python-snappy: Snappy compression support'
@@ -42,7 +43,6 @@ provides=(
   libcompiler.so
   libcompiler_ast.so
   libconcurrency.so
-  libmustache.so
   librpcmetadata.so
   libserverdbginfo.so
   libthrift-core.so
@@ -62,20 +62,21 @@ options=(
   !lto
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+ "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('e3abde5a00cd7b52db21f4097d5a2c8b32ab8e17071e795c0af27991410d0dde')
+sha256sums=('2bf208b198bf7ad55d404a8863ff5092ce0ad6f0d8693877cacb72db16b44772')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   cmake -S . -B build \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
@@ -86,19 +87,16 @@ build() {
     -DCMAKE_CXX_STANDARD=20 \
     -DPACKAGE_VERSION="$pkgver"
 
-  #fixing a missing path issue in the current release
-  mkdir -p build/thrift/conformance/if
-
   cmake --build build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   ctest --test-dir build --output-on-failure --exclude-regex "[Bb]ig|[Ii]ntegration"
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
 
   # Move Python extensions to site-packages
