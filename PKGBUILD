@@ -3,7 +3,7 @@
 # https://github.com/ispc/ispc/issues/3545, otherwise, moonray will not work.
 pkgname=openmoonray
 pkgver=2.15.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DreamWorks Animation's open-source Monte Carlo ray tracer"
 arch=('x86_64')
 url="https://github.com/dreamworksanimation/openmoonray"
@@ -30,6 +30,13 @@ depends=(
   'ispc'
   'python'
   'opensubdiv'
+  'libmicrohttpd'
+  'cppunit'
+  'qt5-base'
+  'qt5-script'
+  'openimagedenoise'
+  'usd'
+  'random123'
 )
 makedepends=(
   'git'
