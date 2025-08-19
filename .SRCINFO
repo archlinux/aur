@@ -1,12 +1,13 @@
 pkgbase = rose-pine-gtk-theme-full
 	pkgdesc = A GTK theme with the Rose Pine colour palette. Includes Icons.
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rose-pine/gtk
 	arch = any
 	license = MIT
 	conflicts = rose-pine-gtk-theme
 	options = !strip
+	options = !debug
 	source = gtk3-2.2.0.tar.gz::https://github.com/rose-pine/gtk/releases/download/v2.2.0/gtk3.tar.gz
 	source = gtk4-2.2.0.tar.gz::https://github.com/rose-pine/gtk/releases/download/v2.2.0/gtk4.tar.gz
 	source = rose-pine-icons-2.2.0.tar.gz::https://github.com/rose-pine/gtk/releases/download/v2.2.0/rose-pine-icons.tar.gz

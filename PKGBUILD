@@ -2,13 +2,13 @@
 # Contributor: Daniel McLarty <info@savagedevs.com>
 pkgname='rose-pine-gtk-theme-full'
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK theme with the Rose Pine colour palette. Includes Icons."
 arch=(any)
 url="https://github.com/rose-pine/gtk"
 license=('MIT')
 conflicts=("rose-pine-gtk-theme")
-options=(!strip)
+options=(!strip !debug)
 source=("gtk3-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/gtk3.tar.gz"
 "gtk4-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/gtk4.tar.gz"
 "rose-pine-icons-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/rose-pine-icons.tar.gz"
