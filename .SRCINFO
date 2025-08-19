@@ -1,6 +1,6 @@
 pkgbase = godl
 	pkgdesc = Godot project and version manager
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/sockeye-d/godl
 	arch = x86_64
