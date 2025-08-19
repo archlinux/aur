@@ -1,7 +1,7 @@
 # Maintainer: Adam Wood <woodadam272@gmail.com>
 pkgname=yume-2kki-launcher-git
 _pkgname=${pkgname%-*}
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Launcher, installer, and updater for Yume 2kki"
 arch=('x86_64')
