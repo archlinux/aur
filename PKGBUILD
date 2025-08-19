@@ -1,4 +1,4 @@
-# Maintainer: ezra <ezra@example.com>
+# Maintainer: ezra <ekhuzadi@uci.edu>
 # Based on librewolf PKGBUILD by ohfp/lsf <lsf at pfho dot net>
 # HellFire optimizations from CYFARE/HellFire
 
