@@ -4,10 +4,10 @@
 pkgname=ti-cgt-arm-clang
 _partpkgver=4.0.3
 pkgver=${_partpkgver}.LTS
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for ARM (CLANG) LTS"
 arch=('x86_64')
-url="http://www.ti.com/tool/ARM-CGT-CLANG"
+url="http://www.ti.com/tool/ARM-CGT"
 license=('LicenseRef-multiple-licenses')
 
 depends=('gcc-libs' 'nodejs')
