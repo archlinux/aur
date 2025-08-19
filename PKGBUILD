@@ -3,7 +3,7 @@
 # https://github.com/ispc/ispc/issues/3545, otherwise, moonray will not work.
 pkgname=openmoonray
 pkgver=2.15.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="DreamWorks Animation's open-source Monte Carlo ray tracer"
 arch=('x86_64')
 url="https://github.com/dreamworksanimation/openmoonray"
@@ -13,7 +13,7 @@ source=("git+${url}.git#tag=${pkgname}-${pkgver}"
         "v${pkgver}.Arch.patch") # User-provided patch file
 
 sha256sums=('df233e26fd5d2cf807c34c8e75bfa00364500df629f5e877239a49bfbcdb7eae'
-            '93331f8376b72bd118f900fb5458b52354be2e23dff5d7cf9b559750e16f6032')
+            '6098e2ceb785945459dcbf2f1d1e8ab51f32bdbfb0e196b84a595ca6bcf95833')
 
 depends=(
   'gcc'

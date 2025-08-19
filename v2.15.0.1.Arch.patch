@@ -1062,7 +1062,7 @@ index 94e90a0..b67f601 100644
  
  OSL_NAMESPACE_EXIT
 diff --git a/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc b/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc
-index 3edbedf..8133b5e 100644
+index 3edbedf..6aa40b9 100644
 --- a/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc
 +++ b/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc
 @@ -11,7 +11,7 @@
@@ -1070,17 +1070,16 @@ index 3edbedf..8133b5e 100644
  #include <scene_rdl2/render/util/Memory.h>
  #include <tbb/enumerable_thread_specific.h>
 -#include <tbb/task_scheduler_init.h>
-+//#include <tbb/task_scheduler_init.h>
++#include <tbb/info.h>
  
  #include <thread>
  
-@@ -302,7 +302,8 @@ initTLS(const TLSInitParams &initParams)
+@@ -302,7 +302,7 @@ initTLS(const TLSInitParams &initParams)
      gPrivate.mInitParams = initParams;
  
      if (gPrivate.mInitParams.mDesiredNumTBBThreads == 0) {
 -        gPrivate.mInitParams.mDesiredNumTBBThreads = tbb::task_scheduler_init::default_num_threads();
-+        //gPrivate.mInitParams.mDesiredNumTBBThreads = tbb::task_scheduler_init::default_num_threads();
-+        gPrivate.mInitParams.mDesiredNumTBBThreads = 8; // tbb::task_scheduler_init::default_num_threads();
++        gPrivate.mInitParams.mDesiredNumTBBThreads = tbb::info::default_concurrency();
      }
  
      MNRY_ASSERT_REQUIRE(gPrivate.mInitParams.mDesiredNumTBBThreads);
@@ -1208,9 +1207,19 @@ index a5bbc11..6e00ab1 100644
      });
  }
 diff --git a/moonray/moonray/lib/rendering/rndr/RenderDriver.cc b/moonray/moonray/lib/rendering/rndr/RenderDriver.cc
-index 8c01ead..da246ed 100644
+index 8c01ead..ada3664 100644
 --- a/moonray/moonray/lib/rendering/rndr/RenderDriver.cc
 +++ b/moonray/moonray/lib/rendering/rndr/RenderDriver.cc
+@@ -23,8 +23,8 @@
+ #include <moonray/rendering/pbr/handlers/XPURayHandlers.h>
+ #include <moonray/rendering/rt/gpu/GPUAccelerator.h>
+ #include <scene_rdl2/common/fb_util/VariablePixelBuffer.h>
+-
+ #include <scene_rdl2/render/util/Memory.h>
++#include <tbb/info.h>
+ 
+ #include <random>
+ 
 @@ -520,7 +520,7 @@ RenderDriver::RenderDriver(const TLSInitParams &initParams) :
      mLastCoarsePassIdx(0),
      mTileScheduler(nullptr),
@@ -1225,7 +1234,7 @@ index 8c01ead..da246ed 100644
  
      if (tlsInitParams.mDesiredNumTBBThreads == 0) {
 -        tlsInitParams.mDesiredNumTBBThreads = tbb::task_scheduler_init::default_num_threads();
-+        tlsInitParams.mDesiredNumTBBThreads = 8; //tbb::task_scheduler_init::default_num_threads();
++        tlsInitParams.mDesiredNumTBBThreads = tbb::info::default_concurrency();
      }
  
  #ifdef FORCE_SINGLE_THREADED_RENDERING
@@ -1436,22 +1445,23 @@ index 3fb09f9..f4e04a4 100644
  }
  
 diff --git a/moonray/moonray/tests/lib/rendering/geom/prim/main.cc b/moonray/moonray/tests/lib/rendering/geom/prim/main.cc
-index 913c0a7..8e268f9 100644
+index 913c0a7..456832a 100644
 --- a/moonray/moonray/tests/lib/rendering/geom/prim/main.cc
 +++ b/moonray/moonray/tests/lib/rendering/geom/prim/main.cc
-@@ -5,13 +5,13 @@
+@@ -5,13 +5,14 @@
  #include "TestInterpolator.h"
  #include <moonray/rendering/mcrt_common/ThreadLocalState.h>
  #include <scene_rdl2/pdevunit/pdevunit.h>
 -#include <tbb/task_scheduler_init.h>
-+//#include <tbb/task_scheduler_init.h>
++#include <tbb/info.h>
++
  int
  main(int argc, char *argv[])
  {
      moonray::mcrt_common::TLSInitParams initParams;
      initParams.mUnitTests = true;
 -    initParams.mDesiredNumTBBThreads = tbb::task_scheduler_init::default_num_threads();
-+    initParams.mDesiredNumTBBThreads = 8; //tbb::task_scheduler_init::default_num_threads();
++    initParams.mDesiredNumTBBThreads = tbb::info::default_concurrency();
      moonray::mcrt_common::initTLS(initParams);
  
      CPPUNIT_TEST_SUITE_REGISTRATION(moonray::geom::unittest::TestRenderingPrimAttr);
@@ -1509,19 +1519,28 @@ index 87d2d52..48911a4 100644
  
      mutable std::mutex mMutex;
 diff --git a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
-index 19f1444..5728526 100644
+index 19f1444..25c210b 100644
 --- a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
 +++ b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
-@@ -110,7 +110,7 @@ ProgMcrtMergeComputation::configure(const std::string& op,
+@@ -23,6 +23,8 @@
+ #include <scene_rdl2/render/cache/CacheEnqueue.h>
+ #include <scene_rdl2/render/util/StrUtil.h>
+ 
++#include <tbb/info.h>
++
+ #include <cmath> // round()
+ #include <cstdlib>
+ #include <stdint.h>
+@@ -110,7 +112,7 @@ ProgMcrtMergeComputation::configure(const std::string& op,
      if (aConfig[arras4::api::ConfigNames::maxThreads].isIntegral()) {
          mNumThreads = aConfig[arras4::api::ConfigNames::maxThreads].asInt();
      } else {
 -        mNumThreads = tbb::task_scheduler_init::default_num_threads();
-+        mNumThreads = 8; //tbb::task_scheduler_init::default_num_threads();
++        mNumThreads = tbb::info::default_concurrency();
      }
  
      if (aConfig["packTilePrecision"].isString()) {
-@@ -184,7 +184,7 @@ ProgMcrtMergeComputation::onStart()
+@@ -184,7 +186,7 @@ ProgMcrtMergeComputation::onStart()
  #       ifdef DEVELOP_VER_MESSAGE
          std::cerr << ">> ProgMcrtMergeComputation.cc set TBB numThreads:" << mNumThreads << std::endl;
  #       endif // end DEVELOP_VER_MESSAGE
@@ -1920,7 +1939,7 @@ index 9684120..478eae8 100644
  #include <linux/mempolicy.h> // MPOL_BIND
  #include <sys/mman.h> // mmap, munmap
 diff --git a/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc b/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc
-index ff12bcd..f0fd1bf 100644
+index ff12bcd..06a9156 100644
 --- a/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc
 +++ b/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc
 @@ -9,7 +9,7 @@
@@ -1928,7 +1947,7 @@ index ff12bcd..f0fd1bf 100644
  #include <tbb/enumerable_thread_specific.h>
  #include <tbb/parallel_for.h>
 -#include <tbb/task_scheduler_init.h>
-+//#include <tbb/task_scheduler_init.h>
++#include <tbb/info.h>
  #include <set>
  #include <vector>
  
@@ -1954,7 +1973,7 @@ index ff12bcd..f0fd1bf 100644
                       unsigned numOpsPerLoop)
  {
 -    const unsigned numThreads = tbb::task_scheduler_init::default_num_threads();
-+    const unsigned numThreads = 8; //  tbb::task_scheduler_init::default_num_threads();
++    const unsigned numThreads = tbb::info::default_concurrency();
      const unsigned totalBlocks = numBlocksToReservePerThread * numThreads;
  
      //
