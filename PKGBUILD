@@ -8,7 +8,7 @@ _pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=unstable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.21.0-rc.5
+_pkgver=1.21.0-rc.6
 
 # makepkg doesn't support hyphens in pkgver, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}

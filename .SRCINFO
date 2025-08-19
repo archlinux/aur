@@ -1,6 +1,6 @@
 pkgbase = vintagestory-unstable
 	pkgdesc = Uncompromising wilderness survival sandbox game (unstable branch)
-	pkgver = 1.21.0rc.5
+	pkgver = 1.21.0rc.6
 	pkgrel = 1
 	url = https://www.vintagestory.at/
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = vintagestory-unstable
 	depends = openal
 	depends = glibc>=2.34
 	options = !strip
-	source = https://cdn.vintagestory.at/gamefiles/unstable/vs_client_linux-x64_1.21.0-rc.5.tar.gz
+	source = https://cdn.vintagestory.at/gamefiles/unstable/vs_client_linux-x64_1.21.0-rc.6.tar.gz
 	source = vintagestory.desktop
 	source = vsmodinstall-handler.desktop
 	source = fontconfig.conf
-	md5sums = 4c99452542f2d08e82fe7a673b9de9fb
+	md5sums = SKIP
 	md5sums = 97e27a3d0283b0f01176cdd6fa5dcf53
 	md5sums = dde267f52d41fb90641b6405dccb5cd3
 	md5sums = 698441836af7385df922c922b08b7606
