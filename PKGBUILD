@@ -3,6 +3,7 @@
 # shellcheck shell=bash
 pkgname=zig-master-bin
 pkgver=0.15.0_dev.1572.g47e652876
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
 arch=('x86_64' 'arm' 'aarch64' 'riscv64')
@@ -40,8 +41,4 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s /usr/lib/zig/zig "${pkgdir}/usr/bin/zig"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    if [[ -f "doc/langref.html" ]]; then
-        install -Dm644 doc/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
-    fi
 }
