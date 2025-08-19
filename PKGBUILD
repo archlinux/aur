@@ -6,7 +6,7 @@ _pyname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Run a command, print its output only if it fails."
 arch=('any')
@@ -21,12 +21,11 @@ checkdepends=('python-pytest-timeout'
               'python-hypothesis'
               'python-griffe'
               'python-ansimarkup'
-              'python-jinja'
               'python-ptyprocess'
-              'mkdocstrings')
+              'mkdocstrings') # jinja <- mkdocs...
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('f839cec1bf9eb94ca6685b2695a0946aabfe9059121a8edb774c98cf44858f52')
+sha256sums=('f88e8e4764de43e15416ce96cfef1a8f24ff9bcc58b3e309a1ba7eccbc45ccaf')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
