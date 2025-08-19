@@ -1,3 +1,13 @@
+From 7290503c50c3937bd261a03764c07f3ad8451e62 Mon Sep 17 00:00:00 2001
+From: "M. Greyson Christoforo" <grey@christoforo.net>
+Date: Tue, 19 Aug 2025 12:17:07 -0600
+Subject: [PATCH 1/2] add option to publish meter readings to homeassistant via
+ MQTT
+
+---
+ python/packetize.py | 43 ++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 42 insertions(+), 1 deletion(-)
+
 diff --git a/python/packetize.py b/python/packetize.py
 index 54e30be..50b9c02 100644
 --- a/python/packetize.py
@@ -84,3 +94,63 @@ index 54e30be..50b9c02 100644
  
                      print()
  
+
+From 910d571fa2619d66f375323de30762bdf6d11005 Mon Sep 17 00:00:00 2001
+From: "M. Greyson Christoforo" <grey@christoforo.net>
+Date: Tue, 19 Aug 2025 14:15:33 -0600
+Subject: [PATCH 2/2] add connection message
+
+---
+ python/packetize.py | 29 +++++++++++++++--------------
+ 1 file changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/python/packetize.py b/python/packetize.py
+index 50b9c02..25633e6 100644
+--- a/python/packetize.py
++++ b/python/packetize.py
+@@ -51,6 +51,20 @@ def __init__(self, num_inputs):
+                                 in_sig=[numpy.uint8]*num_inputs,
+                                 out_sig=None)
+ 
++        i = 1
++        filename = f"elster-{i:03}.pcap"
++        while os.path.exists(filename):
++            i += 1
++            filename = f"elster-{i:03}.pcap"
++        self.file = open(filename, "wb")
++        self.linktype = 147
++        self.file.write(struct.pack("IHHIIII", 0xa1b2c3d4, 2, 4, 0, 0, 32767, self.linktype))
++        self.file.flush()
++
++        self.packet_bits = [numpy.array([], dtype=numpy.uint8) for _ in range(num_inputs)]
++        self.packet_type = [0] * num_inputs
++        self.bits_remaining = [0] * num_inputs
++
+         self.mc = None
+         try:
+             if 'ELSTER_MQTT_BROKER' in os.environ:
+@@ -66,23 +80,10 @@ def __init__(self, num_inputs):
+                     mqtt_user, mqtt_pass = os.environ['ELSTER_MQTT_BROKER_LOGIN'].split("/", 1)
+                     self.mc.username_pw_set(mqtt_user, mqtt_pass)
+                 self.mc.connect(mqtt_host, mqtt_port, 60)
++                self.mc.publish("elster/new_client", json.dumps({"pcap_file": filename, "timestamp": time.time()}))
+         except Exception as e:
+             print(f"MQTT setup failed: {e}")
+ 
+-        i = 1
+-        filename = f"elster-{i:03}.pcap"
+-        while os.path.exists(filename):
+-            i += 1
+-            filename = f"elster-{i:03}.pcap"
+-        self.file = open(filename, "wb")
+-        self.linktype = 147
+-        self.file.write(struct.pack("IHHIIII", 0xa1b2c3d4, 2, 4, 0, 0, 32767, self.linktype))
+-        self.file.flush()
+-
+-        self.packet_bits = [numpy.array([], dtype=numpy.uint8) for _ in range(num_inputs)]
+-        self.packet_type = [0] * num_inputs
+-        self.bits_remaining = [0] * num_inputs
+-
+     def __del__(self):
+         if self.mc is not None:
+             try:
