@@ -6,7 +6,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.25.15
+pkgver=2.25.18
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -46,8 +46,8 @@ source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('4c00e31638a1b5278f286d4dc93bc420003da53f891d5dd199de15c489ccd0ac'
-            '7aef55eaf111cf2ec99f68d9a69357bd8b5f400d3260ccf99c981ab37de93b07')
+sha256sums=('4f17c44ef6f9db4f590051d3b2c9ffc81d8fb379ab17ca437a90c03fe5d9e01d'
+            'd6c57a87037b6f15c5130b6f40a909b9dc6f9414be5fd1628a1eddecfba4e4b2')
 
 prepare(){
     # Sometimes there is the version in the tarball, sometimes not.
@@ -55,6 +55,12 @@ prepare(){
     if [ ! -d "${pkgname}-${pkgver}" -a -d "${pkgname}" ]
     then
         ln -s "${pkgname}" "${pkgname}-${pkgver}"
+    fi
+
+    # Somehow they now have a "work" folder instead?
+    if [ ! -d "${pkgname}-${pkgver}" -a -d work ]
+    then
+        ln -s work "${pkgname}-${pkgver}"
     fi
 
     cd "${pkgname}-${pkgver}"
