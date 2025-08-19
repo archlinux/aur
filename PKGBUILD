@@ -2,7 +2,7 @@
 _pkgname=docker-credential-ghcr-login
 pkgname="${_pkgname}-git"
 pkgver=r20.e4e5dc0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automagically auth to GitHub Container Registry via docker credential helper."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/bradschwartz/docker-credential-ghcr-login"
@@ -36,6 +36,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -dm0777 "$pkgdir"/usr/bin
+  install -dm0755 "$pkgdir"/usr/bin
   install -m0755 ./bin/local/"${_pkgname}" "$pkgdir"/usr/bin
 }

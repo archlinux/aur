@@ -1,7 +1,7 @@
 pkgbase = docker-credential-ghcr-login-git
 	pkgdesc = Automagically auth to GitHub Container Registry via docker credential helper.
 	pkgver = r20.e4e5dc0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bradschwartz/docker-credential-ghcr-login
 	arch = i686
 	arch = pentium4
