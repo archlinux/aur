@@ -1,0 +1,12 @@
+pkgbase = readeck-bin
+	pkgdesc = Readeck lets you saves readable content of web pages. It's a bookmark manager and a read later tool like pocket or shiori.
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://readeck.org
+	arch = x86_64
+	license = AGPL-3.0-only
+	provides = readeck
+	source = https://codeberg.org/readeck/readeck/releases/download/0.19.2/readeck-0.19.2-linux-amd64
+	sha256sums = e215c5e869b84e7a14d6d1d981e0651fa5e126cfead5b15925dcb0d0e9f33943
+
+pkgname = readeck-bin
