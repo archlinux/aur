@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.6.1.397"
+pkgver="10.7.0.398"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('0b3424c90133d7fb76cff17af42aee129c879a6a28872e74a0e9db8dcd88e876')
+sha256sums=('746f5b602ae686b5c97fe15e183a3a9e39c7af60a984baf1e1e2cf3da1f8ff1e')
 
 prepare()
 {
@@ -384,6 +384,7 @@ package()
  install -Dm644 "$srcdir/FID_HTML_sr_Latn_RS" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.sr-Latn-RS.xcl"
  install -Dm644 "$srcdir/FID_HTML_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_HTML_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.uk-UA.xcl"
+ install -Dm644 "$srcdir/FID_HTML_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_HTML_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_IF_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_IF_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.az-Latn-AZ.xcl"
