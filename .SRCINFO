@@ -1,0 +1,17 @@
+pkgbase = yap-rs
+	pkgdesc = A friendly serial terminal application
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nullstalgia/yap
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = espflash
+	depends = openssl
+	depends = systemd-libs
+	options = !lto
+	source = yap-rs-0.1.0.tar.gz::https://github.com/nullstalgia/yap/archive/v0.1.0.tar.gz
+	sha256sums = 4a7e8284bef64b6120cb9eb31a5601e8723fa914b1301afe9b1e73977a5a4ae0
+
+pkgname = yap-rs
