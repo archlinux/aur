@@ -1,6 +1,6 @@
 pkgbase = aur-auto
-	pkgdesc = 🐳 Whale Lab AUR auto installer with fuzzy search and package details
-	pkgver = 1.0.0
+	pkgdesc = 🐳 Whale Lab AUR auto installer with fuzzy search and safer install process
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Sanjaya-Danushka/whalekit
 	arch = any
