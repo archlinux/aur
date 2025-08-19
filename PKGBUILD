@@ -2,10 +2,10 @@
 
 pkgname=cutefish-screenshot
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Screenshot tool for CutefishOS"
 arch=('x86_64')
-url="https://github.com/cutefishos/calculator"
+url="https://github.com/cutefishos/screenshot"
 license=('GPL')
 groups=('cutefish')
 depends=('fishui')
