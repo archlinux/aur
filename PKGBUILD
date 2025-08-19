@@ -2,8 +2,8 @@
 # Contributor: Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-scipy-mkl-bin
 _pkgname=scipy
-pkgver=1.15.3
-_build=py313h1ea73e7_0
+pkgver=1.16.0
+_build=py313hbd568b2_0
 pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering - with Intel MKL - prebuilt binaries from Anaconda"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(python-numpy python-mkl-service)
 makedepends=(jq)
 optdepends=('python-pillow: for image saving module')
 source=(https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${pkgver}-${_build}.tar.bz2)
-sha256sums=('814628ae480f37be55101b545842d0ed46a6b46796646155aea286f921afafc3')
+sha256sums=('5617c61f1b537f67f3af5c4797c6aa13c8623d3a6c3899fd856674f7b5f5a998')
 
 prepare() {
   # Prefix replacement

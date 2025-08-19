@@ -1,6 +1,6 @@
 pkgbase = python-scipy-mkl-bin
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering - with Intel MKL - prebuilt binaries from Anaconda
-	pkgver = 1.15.3
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://scipy.org
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = python-scipy-mkl-bin
 	depends = python-numpy
 	depends = python-mkl-service
 	optdepends = python-pillow: for image saving module
-	provides = python-scipy=1.15.3
+	provides = python-scipy=1.16.0
 	conflicts = python-scipy
-	source = https://repo.anaconda.com/pkgs/main/linux-64/scipy-1.15.3-py313h1ea73e7_0.tar.bz2
-	sha256sums = 814628ae480f37be55101b545842d0ed46a6b46796646155aea286f921afafc3
+	source = https://repo.anaconda.com/pkgs/main/linux-64/scipy-1.16.0-py313hbd568b2_0.tar.bz2
+	sha256sums = 5617c61f1b537f67f3af5c4797c6aa13c8623d3a6c3899fd856674f7b5f5a998
 
 pkgname = python-scipy-mkl-bin
