@@ -1,5 +1,5 @@
 pkgbase = cmdcreate
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/Meme-Supplier/cmdcreate
 	arch = x86_64
@@ -7,7 +7,10 @@ pkgbase = cmdcreate
 	makedepends = cargo
 	makedepends = git
 	makedepends = rustup
-	source = git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v0.4.8
+	depends = bash
+	depends = curl
+	depends = nano
+	source = git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v0.4.9
 	sha256sums = SKIP
 
 pkgname = cmdcreate
