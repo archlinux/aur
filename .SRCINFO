@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 11.29.0_1
+	pkgver = 11.30.0_1
 	pkgrel = 2
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -65,10 +65,10 @@ pkgbase = firedragon-catppuccin
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v11.29.0-1/downloads/firedragon-catppuccin-v11.29.0-1.source.tar.zst
+	source = https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v11.30.0-1/downloads/firedragon-catppuccin-v11.30.0-1.source.tar.zst
 	source = https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
 	source = https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop
-	sha256sums = f6fdf19606953090fdb9dda5e13932f2890b5fd58fd5e5fd67c1c716a1d1a900
+	sha256sums = 1811054fd748cb86f357d2532e732e0e24dc696536e8214c0ac2db56c31e4567
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
 	sha256sums = 53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560
 

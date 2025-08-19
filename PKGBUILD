@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.29.0-1
+_pkgver=11.30.0-1
 
 __pkgname=firedragon
 pkgname=$__pkgname-catppuccin
@@ -80,7 +80,7 @@ backup=("usr/lib/${__pkgname}/${__pkgname}.cfg"
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-catppuccin-v${_pkgver}.source.tar.zst
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('f6fdf19606953090fdb9dda5e13932f2890b5fd58fd5e5fd67c1c716a1d1a900'
+sha256sums=('1811054fd748cb86f357d2532e732e0e24dc696536e8214c0ac2db56c31e4567'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
