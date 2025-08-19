@@ -1,6 +1,6 @@
 pkgbase = iyuuplus
 	pkgdesc = IYUU Auto Reseed Plus
-	pkgver = 8.3.10
+	pkgver = 8.3.11
 	pkgrel = 1
 	url = https://github.com/ledccn/iyuuplus-dev
 	arch = any
@@ -24,11 +24,11 @@ pkgbase = iyuuplus
 	conflicts = iyuuplus
 	options = !strip
 	options = !debug
-	source = iyuuplus::git+https://github.com/ledccn/iyuuplus-dev.git#tag=v8.3.10
+	source = iyuuplus::git+https://github.com/ledccn/iyuuplus-dev.git#tag=v8.3.11
 	source = iyuuplus.service
 	source = iyuuplus.sysusers
 	source = iyuuplus.tmpfiles
-	sha256sums = 06127106deef7732d18f01a6af49eec3635f02154fe50b827cab569dcd591f48
+	sha256sums = c9fdbef81045051d89bbcbed2bb39ff158a5dcdc3f79304efbd69d318399fd98
 	sha256sums = 2599c5f243b573a4db2ff925e2ad75337338dc61a293b1a1c17acf3681b3d3ff
 	sha256sums = e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622
 	sha256sums = 4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387
