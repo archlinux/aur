@@ -1,6 +1,6 @@
 # Maintainer: ethical_haquer <https://smp12.simplex.im/a#QXEXNRW4LE93MotSC7wpMDxwqOBq8zjbflXViqVuETI>
 
-pkgname=python-i18nice
+pkgname="python-i18nice"
 pkgver=0.16.0
 pkgrel=1
 pkgdesc="A nice i18n library for Python"
