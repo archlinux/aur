@@ -2,7 +2,7 @@
 
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
-pkgver=0.26.2
+pkgver=0.26.5
 pkgrel=1
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
@@ -37,7 +37,7 @@ source=(
     "tidal-dl-ng-gui"
     "tidal-dl-ng.desktop"
 )
-sha256sums=('9a0b93c07179a2223fdd113d88e806517ecb68415e5c0460f172f62f147a7d71'
+sha256sums=('e82d046315d72bd02782cd37d500df58bc3ab770219504c02923752670462dbf'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
             'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c'
             'd31967428982ea704f7111959faa821772ddcc5290f06350b4209615d08c27d0')
@@ -62,5 +62,5 @@ package() {
 
     # Install desktop file and icon
     install -Dm755 "${srcdir}/tidal-dl-ng.desktop" "${pkgdir}/usr/share/applications/tidal-dl-ng.desktop"
-    install -Dm644 "${pkgdir}/usr/lib/python3.13/site-packages/tidal_dl_ng/ui/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-dl-ng.png"
+    install -Dm644 "${pkgdir}/usr/lib/python3.13/site-packages/tidal_dl_ng/ui/icon512.png" "${pkgdir}/usr/share/pixmaps/tidal-dl-ng.png"
 }
