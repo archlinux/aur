@@ -1,20 +1,16 @@
 # Maintainer: Bronya <kotone[dot]olin1010[at]gmail[dot]com>
 
-## links
-# https://floorp.app/
-# https://github.com/Floorp-Projects/Floorp
-
 ## options
 : ${_install_path:=usr/lib}
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.0.17
+pkgver=12.1.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
-url="https://floorp.app/"
+url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 
 makedepends=(
   'imagemagick'
@@ -34,16 +30,18 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 
 source=(
-  "$_pkgname-$pkgver-linux-amd64.tar.xz"::"https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-linux-amd64.tar.xz"
   "floorp.desktop"
   "floorp.png"
 )
+source_x86_64=("$_pkgname-$pkgver-linux-amd64.tar.xz"::"$url/releases/download/v${pkgver}/floorp-linux-amd64.tar.xz")
+source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.xz"::"$url/releases/download/v${pkgver}/floorp-linux-aarch64.tar.xz")
 
 sha256sums=(
-  'e857328dfaa69b9ae5faa64aaba14517b19e212ee2b727f0e8683e04a16437f5'
   '00ac63fe0331de13e418b5d6552bda95cb3a00267feccf07afa49600e810f65a'
   '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
+sha256sums_x86_64=('482b89e0e108a84b45aadb7ce5cad97042ced168c556df147333dbab121fb99a')
+sha256sums_aarch64=('6b5e0712f6f4fb04a9a49c5d1f034cb3a9cd47f9dae10b11258a82b72b9394a9')
 
 package() {
   depends=(
