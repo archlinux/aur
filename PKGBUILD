@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Signac
-_pkgver=1.14.0
+_pkgver=1.15.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -59,8 +59,8 @@ optdepends=(
   r-tfbstools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('365d9e8ab266616bbc651f644981924e')
-b2sums=('7ccf29cd2aefb427b08b3e412c61b160a3b5d97b8364d015b40a086d97f9455f0ddefede7211502b5f24e5cc7e9cd1fbb3410a4b3f84f4ff3f8a6163241be8a7')
+md5sums=('d7e06226d082f987f379e72db9078e06')
+b2sums=('49dd16d2e0aadb46eec58ee33c1803f07540c24bb4d08e57bd1da54cd3ab05316bdaf1d7b4f3756fee0a02ddbe531b88177311bcd0cb3485b96674bb929f2aa4')
 
 build() {
   mkdir build
