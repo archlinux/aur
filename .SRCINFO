@@ -1,6 +1,6 @@
 pkgbase = python-iter-collect
 	pkgdesc = Python iter_collect.
-	pkgver = 0.0.5.1
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://pypi.org/project/iter_collect
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-iter-collect
 	conflicts = python-iter-collect
 	options = !strip
 	options = !debug
-	source = iter_collect-0.0.5.1.tar.gz::https://files.pythonhosted.org/packages/source/i/iter_collect/iter_collect-0.0.5.1.tar.gz
-	sha256sums = 347087921cad43248b9b5d6ff0ec5086e7825021ad1548dba2628705ab0eed7f
+	source = iter_collect-0.0.6.tar.gz::https://files.pythonhosted.org/packages/source/i/iter_collect/iter_collect-0.0.6.tar.gz
+	sha256sums = aacd52ba3a381df1e5ca9b78be98bd7130cb898ef9c62ed7490cb3ee322ca11b
 
 pkgname = python-iter-collect
