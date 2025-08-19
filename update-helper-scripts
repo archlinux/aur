@@ -217,38 +217,5 @@ migrate-garuda-repo() {
   1' /etc/pacman.conf
 }
 
-# Verify if some core common breaking compontents are working
-verify-core() {
-	local invalid_nvidia=()
-	if [ -f "/usr/lib/modprobe.d/nvidia-utils.conf" ] && [ -f "/usr/share/licenses/nvidia-dkms/LICENSE" ]; then
-		for i in /usr/lib/modules/[0-9]*; do
-			if pacman -Qo "${i}" &>/dev/null; then
-				local nvidia
-				nvidia="$(grep -ohP '^.*/nvidia.ko[^/]*(?=:)' "${i}/modules.dep" 2>/dev/null || true)"
-				if [ -z "$nvidia" ] || [[ "$(modinfo "${i}/${nvidia}" -F vermagic 2>/dev/null | cut -d' ' -f1)" != "${i##*/}" ]]; then
-					invalid_nvidia+=("${i##*/}")
-				fi
-			fi
-		done
-	fi
-
-	# Oops, at least one is invalid!
-	if [ ${#invalid_nvidia[@]} -ne 0 ]; then
-		dkms_version="$(pacman -Rddp --print-format %v nvidia-dkms 2>/dev/null)"
-		if [ -n "${dkms_version}" ]; then
-			echo -e "\n\033[1;33m-->\033[1;34m A problem with the NVIDIA drivers has been detected\033[0m"
-		fi
-		for i in "${invalid_nvidia[@]}"; do
-			if [ -n "${dkms_version}" ]; then
-				echo -e "\n\033[1;33m--->\033[1;34m Building NVIDIA DKMS module for kernel $i\033[0m"
-				dkms remove -m nvidia -v "${dkms_version%-*}" -k "$i" || true
-				dkms install -m nvidia -v "${dkms_version%-*}" -k "$i" && depmod "$i" && echo -e "\033[1;33m--->\033[1;32m NVIDIA DKMS module for kernel $i built successfully\033[0m" || echo -e "\033[1;33m--->\033[1;31m Failed to build NVIDIA DKMS module for kernel $i\033[0m"
-			elif command -v dkms >/dev/null; then
-				dkms autoinstall -k "$i" && depmod "$i"
-			fi
-		done
-	fi
-}
-
 "$@"
 exit "$?"

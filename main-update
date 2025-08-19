@@ -256,8 +256,6 @@ if [ -x /usr/bin/micro ] && [ -n "$SUDO_USER" ]; then
   systemd-run --user -M "$SUDO_USER@.host" --no-block -G -q micro -plugin update
 fi
 
-/usr/lib/garuda/garuda-update/update-helper-scripts verify-core
-
 echo -e "\n\033[1;32mSystem updated! 🐧\n\033[0m"
 show_changelog && HAD_CHANGELOG=1 || true
 
