@@ -1,6 +1,6 @@
 # Maintainer: Samuobe samuobe@ik.me
 
-pkgname=arch-store
+pkgname=arch-store-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A graphical app for managing your programs with pacman, AUR, flatpak, and appimage"

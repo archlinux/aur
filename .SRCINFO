@@ -1,4 +1,4 @@
-pkgbase = arch-store
+pkgbase = arch-store-git
 	pkgdesc = A graphical app for managing your programs with pacman, AUR, flatpak, and appimage
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = arch-store
 	source = git+https://github.com/Samuobe/Arch-Store.git
 	md5sums = SKIP
 
-pkgname = arch-store
+pkgname = arch-store-git
