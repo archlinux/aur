@@ -1,19 +1,19 @@
 pkgbase = tcptrace
 	pkgdesc = A TCP dump file analysis tool
 	pkgver = 6.6.7
-	pkgrel = 3
-	url = http://tcptrace.org/
+	pkgrel = 4
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
+	makedepends = gcc
+	makedepends = make
 	depends = libpcap
 	optdepends = tcpdump: for generating dumps
 	optdepends = gnuplot: for plotting graphs
 	optdepends = xplot: for plotting graphs
-	source = http://tcptrace.org/download/tcptrace-6.6.7.tar.gz
-	source = tcptrace-6.6.7_no_pcap_offline_read.patch
-	md5sums = 68128dc1817b866475e2f048e158f5b9
-	md5sums = a2d757088f9a1d3d6dd102d569c76926
+	source = https://cloudfront.debian.net/debian-archive/debian/pool/main/t/tcptrace/tcptrace_6.6.7.orig.tar.gz
+	source = https://cloudfront.debian.net/debian-archive/debian/pool/main/t/tcptrace/tcptrace_6.6.7-4.1.diff.gz
+	b2sums = cae5816cb25c33f71c316d14de3c18ff26f0e7452375a962b88c4818ca7c43425e7298e788bd8cb43f2e22ac7dc9b89ed1921b7bd70d0e8befab3ee791453fb1
+	b2sums = 83768d0a6f14525f20b484421181078a3cf7ac3adeada3cf02a7441530593632743c6e515dd8738f5a4692422d97f4eb718dda076a234489096a10defb97dd5f
 
 pkgname = tcptrace
-

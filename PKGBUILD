@@ -1,42 +1,49 @@
-# Maintainer: Heath Caldwell <mrbrobro at ftml dot net>
+# Maintainer: Alireza S.N. <alireza6677@gmail.com>
+# Contributor: Heath Caldwell <mrbrobro at ftml dot net>
 # Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
 
 pkgname=tcptrace
 pkgver=6.6.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A TCP dump file analysis tool"
 arch=('i686' 'x86_64')
-url="http://tcptrace.org/"
-license=('GPL')
+#url="http://tcptrace.org/"
+license=('GPL-2.0-only')
+makedepends=('gcc' 'make')
 depends=('libpcap')
 optdepends=(
   'tcpdump: for generating dumps'
   'gnuplot: for plotting graphs'
   'xplot: for plotting graphs'
 )
-source=(http://tcptrace.org/download/$pkgname-$pkgver.tar.gz
-        ${pkgname}-${pkgver}_no_pcap_offline_read.patch)
-md5sums=('68128dc1817b866475e2f048e158f5b9'
-         'a2d757088f9a1d3d6dd102d569c76926')
+source=(https://cloudfront.debian.net/debian-archive/debian/pool/main/t/tcptrace/tcptrace_6.6.7.orig.tar.gz
+        https://cloudfront.debian.net/debian-archive/debian/pool/main/t/tcptrace/tcptrace_6.6.7-4.1.diff.gz) 
+b2sums=('cae5816cb25c33f71c316d14de3c18ff26f0e7452375a962b88c4818ca7c43425e7298e788bd8cb43f2e22ac7dc9b89ed1921b7bd70d0e8befab3ee791453fb1'
+        '83768d0a6f14525f20b484421181078a3cf7ac3adeada3cf02a7441530593632743c6e515dd8738f5a4692422d97f4eb718dda076a234489096a10defb97dd5f')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/${pkgname}-${pkgver}_no_pcap_offline_read.patch"
+  cd ${pkgname}-${pkgver}
+
+  patch -p1 -i "$srcdir/tcptrace_6.6.7-4.1.diff"
+  sed -e "s|BINDIR = /usr/local/bin|BINDIR = ${pkgdir}/usr/bin|" \
+      -e "s|MANDIR = /usr/local/man/|MANDIR = ${pkgdir}/usr/share/man|" \
+      -e "s|-o bin -g bin| -o root -g root|" \
+      -e "s|-g -Wall -O2|-g -Wall -O2 -std=gnu11|" -i Makefile.in
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
 
   ./configure
-  sed -e "s|BINDIR = /usr/local/bin|BINDIR = ${pkgdir}/usr/bin|" -e "s|MANDIR = /usr/local/man/|MANDIR = ${pkgdir}/usr/share/man|" -i Makefile
-  sed -e "s|-o bin -g bin| -o root -g root|" -i Makefile
   make
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
 
+  export DEB_BUILD_OPTIONS="nostrip"
   make install
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/xpl2gpl" \
-    ${pkgdir}/usr/bin/xpl2gpl
+    "${pkgdir}/usr/bin/xpl2gpl"
 }
+
