@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-installer
-_tagname=1.6.7
+_tagname=1.6.8
 pkgver="${_tagname//-/_}"
-pkgrel=3
+pkgrel=4
 pkgdesc='玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store.'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps-web-store-installer'
@@ -19,6 +19,7 @@ _qt=qt6
 depends=(
   gcc-libs
   glibc
+  linyaps
   ${_qt}-base
   xdg-utils
 )
@@ -32,12 +33,10 @@ makedepends=(
 )
 checkdepends=()
 optdepends=(
-  "linyaps: Linglong is the container application toolkit ofdeepin."
-  "linyaps-box: 玲珑（Linglong） is the container application toolkit of deepin."
   "linglong-pica: deb package to Linglong package tool."
 )
-source=("${pkgname}::git+${url}.git#tag=v${_tagname}")
-sha256sums=('6bde58936b4a7562dfe6b9470e69220c2bfd1bb6be442f5bcd429e95033ddafa')
+source=("${pkgname}::git+${url}.git#tag=${_tagname}")
+sha256sums=('3436e85fa8d36109a1ae22e5321a27b5d63360677cf052fef58d2f69e18c18dc')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
