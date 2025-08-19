@@ -2,13 +2,13 @@
 
 pkgname=cutefish-core
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="System components and backend of CutefishOS"
 arch=('x86_64')
 url="https://github.com/cutefishos/core"
 license=('GPL')
 groups=('cutefish')
-depends=('fishui' 'kidletime5' 'libcutefish' 'libpulse' 'libxcb' 'libxcursor' 'libxtst' 'polkit-qt5'
+depends=('fishui' 'kidletime5' 'kwin-x11' 'libcutefish' 'libpulse' 'libxcb' 'libxcursor' 'libxtst' 'polkit-qt5'
          'xf86-input-libinput' 'xf86-input-synaptics')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools' 'xorg-server-devel')
 source=("https://github.com/cutefishos/core/archive/$pkgver/$pkgname-$pkgver.tar.gz"

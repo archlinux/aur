@@ -1,7 +1,7 @@
 pkgbase = cutefish-core
 	pkgdesc = System components and backend of CutefishOS
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cutefishos/core
 	arch = x86_64
 	groups = cutefish
@@ -12,6 +12,7 @@ pkgbase = cutefish-core
 	makedepends = xorg-server-devel
 	depends = fishui
 	depends = kidletime5
+	depends = kwin-x11
 	depends = libcutefish
 	depends = libpulse
 	depends = libxcb
