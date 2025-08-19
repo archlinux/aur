@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = backintime
 	sha256sums = 5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8
 
 pkgname = backintime
-	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version.
+	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. Qt6 GUI version.
 	install = backintime.install
 	depends = backintime-cli=1.5.5
 	depends = polkit

@@ -4,7 +4,7 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
@@ -47,7 +47,7 @@ package_backintime-cli() {
 }
 
 package_backintime() {
-  pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version."
+  pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. Qt6 GUI version."
   depends=("backintime-cli=$pkgver" polkit python-dbus python-pyqt6 xorg-xdpyinfo sshfs)
   # note users can optionally install EITHER kompare OR meld but not both!
   optdepends=('cronie: to trigger automated backups'
