@@ -3,7 +3,7 @@
 pkgname=gcli
 pkgver=2.8.0
 pkgdesc="A CLI for Github, Gitlab and Gitea written in C"
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('BSD-2-Clause')
 url="https://github.com/herrhotzenplotz/gcli"
@@ -23,4 +23,7 @@ package() {
 
 	# license exception
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/gcli/LICENSE
+	install -Dm644 Changelog.md "$pkgdir"/usr/share/doc/gcli/Changelog.md
+	install -d -Dm644 docs/website/tutorial "$pkgdir"/usr/share/doc/gcli/tutorial
+	install -Dm644 docs/website/tutorial/*-*.md "$pkgdir"/usr/share/doc/gcli/tutorial
 }
