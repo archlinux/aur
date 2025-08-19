@@ -1,15 +1,15 @@
-From ca6155dea2b05a19165de8115174bcb126b78a81 Mon Sep 17 00:00:00 2001
+From b020c90ac579a3c80441b6c7b3cab2181b31930a Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
-Date: Sat, 21 Jun 2025 20:50:47 +0900
+Date: Tue, 12 Aug 2025 09:50:43 +0900
 Subject: [PATCH] feat: support xdp selector for linux
 
-just a patch ready now.. no need to do pr
+use xdp selector
 ---
  lib/utils/file_selector.dart                  | 34 ++++++-------------
- .../matrix_file_extension.dart                |  6 ++--
- pubspec.lock                                  | 11 +++---
- pubspec.yaml                                  |  5 ++-
- 4 files changed, 22 insertions(+), 34 deletions(-)
+ .../matrix_file_extension.dart                | 19 ++++-------
+ pubspec.lock                                  |  4 +--
+ pubspec.yaml                                  |  4 +--
+ 4 files changed, 20 insertions(+), 41 deletions(-)
 
 diff --git a/lib/utils/file_selector.dart b/lib/utils/file_selector.dart
 index fd35891af9..2e09b492f3 100644
@@ -66,7 +66,7 @@ index fd35891af9..2e09b492f3 100644
  
  enum FileSelectorType {
 diff --git a/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart b/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart
-index 01b2d85e41..4400f6af57 100644
+index 069b6ec8bd..f84f219960 100644
 --- a/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart
 +++ b/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart
 @@ -3,7 +3,6 @@ import 'dart:io';
@@ -77,55 +77,65 @@ index 01b2d85e41..4400f6af57 100644
  import 'package:matrix/matrix.dart';
  import 'package:share_plus/share_plus.dart';
  import 'package:universal_html/html.dart' as html;
-@@ -21,11 +20,10 @@ extension MatrixFileExtension on MatrixFile {
+@@ -20,18 +19,12 @@ extension MatrixFileExtension on MatrixFile {
+       return;
      }
  
-     final downloadPath = !PlatformInfos.isMobile
+-    final downloadPath = !PlatformInfos.isMobile
 -        ? (await getSaveLocation(
 -            suggestedName: name,
-+        ? (await FilePicker.platform.saveFile(
-+            fileName: name,
-             confirmButtonText: L10n.of(context).saveFile,
-           ))
+-            confirmButtonText: L10n.of(context).saveFile,
+-          ))
 -            ?.path
-         : await FilePicker.platform.saveFile(
-             dialogTitle: L10n.of(context).saveFile,
-             fileName: name,
+-        : await FilePicker.platform.saveFile(
+-            dialogTitle: L10n.of(context).saveFile,
+-            fileName: name,
+-            type: filePickerFileType,
+-            bytes: bytes,
+-          );
++    final downloadPath = await FilePicker.platform.saveFile(
++      dialogTitle: L10n.of(context).saveFile,
++      fileName: name,
++      type: filePickerFileType,
++      bytes: bytes,
++    );
+     if (downloadPath == null) return;
+ 
+     if (PlatformInfos.isDesktop) {
 diff --git a/pubspec.lock b/pubspec.lock
-index 3567b97bb2..cff932aba5 100644
+index 4fa2798d42..913d28b742 100644
 --- a/pubspec.lock
 +++ b/pubspec.lock
-@@ -393,11 +393,12 @@ packages:
-   file_picker:
+@@ -410,10 +410,10 @@ packages:
      dependency: "direct main"
      description:
--      name: file_picker
--      sha256: ab13ae8ef5580a411c458d6207b6774a6c237d77ac37011b13994879f68a8810
--      url: "https://pub.dev"
--    source: hosted
--    version: "8.3.7"
-+      path: "."
-+      ref: xdppicker
-+      resolved-ref: e7ae7cebc5ba4ffbfeedb190859a0f443bb0f079
-+      url: "https://github.com/Decodetalkers/flutter_file_picker"
-+    source: git
-+    version: "10.2.0"
+       name: file_picker
+-      sha256: "8f9f429998f9232d65bc4757af74475ce44fc80f10704ff5dfa8b1d14fc429b9"
++      sha256: ef7d2a085c1b1d69d17b6842d0734aad90156de08df6bd3c12496d0bd6ddf8e2
+       url: "https://pub.dev"
+     source: hosted
+-    version: "10.2.3"
++    version: "10.3.1"
    file_selector:
      dependency: "direct main"
      description:
 diff --git a/pubspec.yaml b/pubspec.yaml
-index ee092c7b6d..60936e647d 100644
+index 28360a08a1..59bc2f7d25 100644
 --- a/pubspec.yaml
 +++ b/pubspec.yaml
-@@ -25,7 +25,10 @@ dependencies:
-   emoji_picker_flutter: ^3.1.0
+@@ -24,7 +24,7 @@ dependencies:
+   dynamic_color: ^1.8.1
+   emoji_picker_flutter: ^4.3.0
    emojis: ^0.9.9
-   #fcm_shared_isolate: ^0.2.0
--  file_picker: ^8.1.2
-+  file_picker:
-+    git:
-+      url: https://github.com/Decodetalkers/flutter_file_picker
-+      ref: xdppicker
+-  file_picker: ^10.2.3
++  file_picker: ^10.3.1
    file_selector: ^1.0.3
    flutter:
      sdk: flutter
+@@ -144,4 +144,4 @@ dependency_overrides:
+     git:
+       url: https://github.com/ThexXTURBOXx/flutter_web_auth_2.git
+       ref: 3.x-without-v1
+-      path: flutter_web_auth_2
+\ No newline at end of file
++      path: flutter_web_auth_2
