@@ -2,7 +2,7 @@
 # Contibutor: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=python-hdf5storage
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Read and write a wide range of Python types to/from HDF5 formatted files."
 url="https://github.com/jclds139/hdf5storage"
@@ -12,7 +12,7 @@ checkdepends=('python-ruff' 'python-pytest')
 license=('BSD')
 arch=('any')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('08a408811fb85e08508caadc28d4a8b4b233c56d14c7278854e6f9e7e92949ff')
+sha256sums=('dce0c7f010dd6854ce0382be0d8432c4869a0ca1c85155cb7e2fca609d42241e')
 
 build() {
     cd hdf5storage-$pkgver
