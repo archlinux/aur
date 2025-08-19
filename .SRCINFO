@@ -1,7 +1,7 @@
 pkgbase = godot-pixel-renderer-git
 	pkgdesc = Godot Pixel Renderer (aka Godot Pixel Studio) is a complete 3D to Pixel Toolkit, built using Godot Engine
 	pkgver = r25.g4931722
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bukkbeek/GodotPixelRenderer
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = godot-pixel-renderer-git
 	source = godot-pixel-renderer-git::git+https://github.com/bukkbeek/GodotPixelRenderer.git
 	source = godot-pixel-renderer.desktop
 	sha512sums = SKIP
-	sha512sums = 56e56e4a34a551c725aee28268da5e382945e963877cf0ff2c3ba058960570bd474412ee798ef4c1a991dc21ce07d3d74635aafeb6119b7abfb2b3549c5c2437
+	sha512sums = d9814b182be7bd038f6138909e15555a42aed5df9aa1d9c68f494efd02c01256cb8f54a9dd8c6f2fd8904fd3efa44622cfec16d38c3023a44bac617823d0d474
 
 pkgname = godot-pixel-renderer-git
