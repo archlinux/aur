@@ -1,6 +1,6 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=ty
-pkgver=0.0.1_alpha.18
+pkgver=0.0.1_alpha.19
 pkgrel=1
 pkgdesc="An extremely fast Python type checker and language server, written in Rust."
 arch=("x86_64")
@@ -16,7 +16,7 @@ makedepends=(
 )
 options=(!lto)
 source=("${pkgname}-${pkgver}::git+${url}#tag=${pkgver//_/-}")
-b2sums=('55262aea66cde920aa42b8f6d0c9cdc7d18caa4060ef5c73df4c60ec5e845df2025fe3ec53e375655da926c860ae4ad240e669e54411b4bd7fc3b73d05ce5500')
+b2sums=('8fc21953dd7a2ea215bf1fcbfd1457a47b1e37e79306b43857f5eb1528ba730f5712981d08e5b3e1a1fca312abc200ed212330aff2e526dd4fc0de1f24f65f05')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
