@@ -1,4 +1,5 @@
 # Maintainer: Sollybird <arch@sollybird.mozmail.com>
+# Contributor: Amolith <amolith@secluded.site>
 # Contributor: Aliaksiej Homza <aliaksiej.homza@gmail.com>
 # Contributor: Wesley Moore <wes@wezm.net>
 # Contributor: Matt C <matt@xhec.us>
