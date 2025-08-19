@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=edencommon
-pkgver=2025.08.11.00
+pkgver=2025.08.18.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -36,7 +36,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "build-shared-libraries.patch"
 )
-sha256sums=('25b5bd103e6450fe8e357fb76544c2816f1db405bb302a6f9f7a9386b5eb2d52'
+sha256sums=('ec857fadf3c3b8746cca3a3031f9c3dec8243f36f1f6baf51b1194b1081ac0e7'
             '1f351de94a786c8be397c07454a48d28a0dd0b758924792e6e3f1f49405c492a')
 
 prepare() {
