@@ -12,8 +12,10 @@ pkgdesc="Effects rack for JACK"
 url="http://jack-rack.sourceforge.net"
 arch=('i686' 'x86_64')
 license=('GPL-2.0-or-later')
-depends=('jack' 'gtk2' 'libxml2' 'ladspa' 'lash')
-optdepends=('raptor1: LRDF support'
+depends=('jack' 'gtk2' 'libxml2' 'ladspa')
+optdepends=('lash: JACK session support'
+            'ladish: JACK session support'
+            'raptor1: LRDF support'
             'liblrdf: LRDF support'
             'python2: ecarack')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
