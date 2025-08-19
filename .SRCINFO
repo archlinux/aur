@@ -1,0 +1,13 @@
+pkgbase = gitego-bin
+	pkgdesc = Your Git identity manager and automatic profile switcher.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/bgreenwell/gitego
+	arch = x86_64
+	license = MIT
+	provides = gitego-bin
+	conflicts = gitego
+	source = gitego-0.1.1-x86_64.tar.gz::https://github.com/bgreenwell/gitego/releases/download/v0.1.1/gitego-v0.1.1-linux-x86_64.tar.gz
+	sha256sums = 3c2c1685e5e80592220c37ba6ab7ce5e9dabd2f2c572f9a5996fae9404107e04
+
+pkgname = gitego-bin
