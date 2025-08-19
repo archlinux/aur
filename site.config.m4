@@ -22,3 +22,6 @@ APPENDDEF(`confBINGRP',`root')
 
 dnl Allow library to be stipped
 define(`confLIBMODE',`644')
+
+dnl Force libmilter to use stdbool.h for modern GCC
+APPENDDEF(`confCCOPTS', `-DSM_CONF_STDBOOL_H=1')
