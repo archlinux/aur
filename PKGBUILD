@@ -2,7 +2,7 @@
 
 pkgname=high-tide
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
 arch=(any)
@@ -20,7 +20,7 @@ depends=(
   libsecret
   python
   python-gobject
-  python-tidalapi
+  'python-tidalapi>=0.8.6'
   org.freedesktop.secrets
   "python-pypresence>=4.3.0.r27.gd6709d3"
   xdg-desktop-portal

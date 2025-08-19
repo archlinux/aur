@@ -1,7 +1,7 @@
 pkgbase = high-tide
 	pkgdesc = Linux client for TIDAL streaming service
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nokse22/high-tide
 	arch = any
 	license = GPL-3.0-or-later
@@ -19,12 +19,12 @@ pkgbase = high-tide
 	depends = libsecret
 	depends = python
 	depends = python-gobject
-	depends = python-tidalapi
+	depends = python-tidalapi>=0.8.6
 	depends = org.freedesktop.secrets
 	depends = python-pypresence>=4.3.0.r27.gd6709d3
 	depends = xdg-desktop-portal
 	source = high-tide-0.1.8.tar.gz::https://github.com/Nokse22/high-tide/archive/refs/tags/v0.1.8.tar.gz
-	sha256sums = edda931acf197cdaea144b68537e3bf1f5ce5b1236eb0da9930434c9977ef352
-	b2sums = 31ecccfa70b7366f2c9d97ea0cf1e88c4fceae5b9c6bd587e58883696b6c38ab9d6b7cb619a5d4b5174a64d956ca840452a886ef216869cdf6fbda1c8c370ea2
+	sha256sums = fa6f5e17bf49150a0d6f3d281ff5edb37a1ca51fc8f33c1a9264c1e386ac0674
+	b2sums = b76c2d7b3f9d8cdc48b7d5fcd43e98e043a0640544afbabaf9377af4067b12fd99a9a30a6d7acbf64c2a52ac00880c8da11a23b4d708750da97cac80f217a3ff
 
 pkgname = high-tide
