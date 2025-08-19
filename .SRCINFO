@@ -1,4 +1,4 @@
-pkgbase = nitrocid-29-lite
+pkgbase = nitrocid-28-lite
 	pkgdesc = Simulates our future-planned kernel
 	pkgver = 4.0.28.18+0.2.0.0~beta
 	pkgrel = 1
@@ -17,14 +17,14 @@ pkgbase = nitrocid-29-lite
 	optdepends = openal: OpenAL support for BassBoom addon
 	optdepends = sdl2: SDL support for BassBoom addon
 	optdepends = libpulse: PulseAudio support for BassBoom addon
-	provides = nitrocid-29-lite-git
-	provides = nitrocid-29
-	provides = nitrocid-29-git
-	conflicts = nitrocid-29-lite-git
-	conflicts = nitrocid-29
-	conflicts = nitrocid-29-git
+	provides = nitrocid-28-lite-git
+	provides = nitrocid-28
+	provides = nitrocid-28-git
+	conflicts = nitrocid-28-lite-git
+	conflicts = nitrocid-28
+	conflicts = nitrocid-28-git
 	options = !strip
-	source = nitrocid-29-lite::git+https://gitlab.com/aptivi/main/Nitrocid#tag=v0.2.0.0-beta
+	source = nitrocid-28-lite::git+https://gitlab.com/aptivi/main/Nitrocid#tag=v0.2.0.0-beta
 	sha256sums = SKIP
 
-pkgname = nitrocid-29-lite
+pkgname = nitrocid-28-lite

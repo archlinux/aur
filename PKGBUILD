@@ -1,5 +1,5 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
-pkgname=nitrocid-29-lite
+pkgname=nitrocid-28-lite
 pkgver=4.0.28.18+0.2.0.0~beta
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
