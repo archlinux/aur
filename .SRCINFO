@@ -1,0 +1,21 @@
+pkgbase = plugind-git
+	pkgdesc = ObsidianOS Plugin Daemon - A daemon that manages and triggers plugins on various events.
+	pkgver = r2.28b008c
+	pkgrel = 1
+	url = https://github.com/Obsidian-OS/plugind
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = obsidianctl-git
+	depends = glibc
+	depends = bash
+	depends = grep
+	depends = awk
+	provides = plugind
+	provides = pluginctl
+	source = plugind-git::git+https://github.com/Obsidian-OS/plugind
+	sha256sums = SKIP
+
+pkgname = plugind-git
