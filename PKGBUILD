@@ -1,4 +1,4 @@
-# Maintainer: Andy Kluger <https://t.me/andykluger>
+# Maintainer: Andy Kluger <AndyKluger@mailfence.com>
 # Upstream PKGBUILD (extra repo):
 # Maintainer: Antonio Rojas <arojas@archlinux,org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
@@ -7,7 +7,7 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=25.04.3
+pkgver=25.08.0
 pkgrel=1
 pkgdesc='KDE File Manager, using Meld rather than Kompare'
 arch=(x86_64)
@@ -45,23 +45,26 @@ depends=(baloo
          kwidgetsaddons
          kwindowsystem
          kxmlgui
-         phonon-qt6
          qt6-base
+         qt6-multimedia
          solid)
 makedepends=(extra-cmake-modules
              kdoctools)
 optdepends=('ffmpegthumbs: video thumbnails'
+            'filelight: detailed disk usage statistics'
             'kde-cli-tools: for editing file type options'
             'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'kdenetwork-filesharing: samba usershare properties menu'
-            'kio-admin: for managing files as administrator' 
+            'kdf: view disk usage'
+            'kio-admin: for managing files as administrator'
+            'meld: comparing files menu action'
             'konsole: terminal panel'
             'purpose: share context menu')
 groups=(kde-applications
         kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         dolphin-meld.patch)
-sha256sums=('e822faf02d3d727faf14789eacd331288cb8a74bb9b9881f1e7cd1789752c3f1'
+sha256sums=('ddd5e5622594792490695999188c6215c3a0821787c71dfb57dbfdd08e1ce935'
             'SKIP'
             'a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
