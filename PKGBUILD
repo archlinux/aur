@@ -1,33 +1,33 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-consolekit
-pkgver=1.7.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Additional utilities for click'
-arch=('any')
+arch=(any)
 url='https://consolekit.readthedocs.io/'
-license=('MIT')
+license=(MIT)
 depends=(
-  'python'
-  'python-click'
-  'python-colorama'
-  'python-deprecation-alias'
-  'python-domdf-python-tools'
-  'python-mistletoe'
-  'python-typing_extensions'
+  python
+  python-click
+  python-colorama
+  python-deprecation-alias
+  python-domdf-python-tools
+  python-mistletoe
+  python-typing_extensions
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-flit-core'
+  git
+  python-build
+  python-installer
+  python-flit-core
 )
 optdepends=(
   'python-psutil: better terminal support'
 )
 source=("$pkgname::git+https://github.com/domdfcoding/consolekit#tag=v$pkgver")
-sha512sums=('9f7973b41b2a59c95206661018ed7bb1e1b46643f4e1048d1ffb45f7f45963e35545c85ca0d11c5f649605b559f9e4d302deeea52a8bb4130a8cb32786713bc9')
-b2sums=('fecc6cf1f19545c79f0d35487403e6f2134df26e4b2080fcb4352dda7668ecb1c72b8d139d8e52d221f05d6a07bbd86ba19b9ac4bfb9492c1d03b318621732d6')
+sha512sums=('0166897671d83fc08be64e575a2799bede98ac4a3d0e1f90e5e9c6a4d6c5829346a5791f7479031b6911673bdf2fb5a0052e3b18a1c64d7d5c9f6e233d1fd5a1')
+b2sums=('88e19adaa34ba7b37946ddcb100c6829058082d1ca762980bdd82994fb164ebefb2ce097bfb5c80721d9f38a0a2b8b7eb3420e6b6974ad7a95ccf81ff8809395')
 
 build() {
   cd "$pkgname"
