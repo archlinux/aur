@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applets-git
-pkgver=1.0.0.alpha.6.r6.gf53e3bd
+pkgver=1.0.0.alpha.7.r59.g2c61862
 pkgrel=1
 pkgdesc="Applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,15 @@ depends=(
   'cosmic-icons-git'
   'dbus'
   'libinput'
+  'libpipewire'
   'libpulse'
   'libxkbcommon'
+  'systemd-libs'
   'util-linux'
 )
 makedepends=(
   'cargo'
+  'clang'
   'git'
   'just'
   'mold'
@@ -36,9 +39,6 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  # Use thin LTO objects
-  sed -i 's/lto = "fat"/lto = "thin"/' Cargo.toml
 }
 
 build() {
