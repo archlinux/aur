@@ -1,7 +1,7 @@
 # Maintainer: oatmealraisin <archlinux at oatmealrais dot in>
 
 pkgname=firefox-extension-sponsorblock-beta
-pkgver=5.10.3
+pkgver=5.14
 pkgrel=1
 pkgdesc='Easily skip YouTube video sponsors.'
 arch=(any)
@@ -14,7 +14,7 @@ conflicts=(
   firefox-sponsorblock-for-youtube-skip-sponsorships-bin
 )
 source=("${pkgname}-${pkgver}.xpi::https://github.com/ajayyy/SponsorBlock/releases/download/${pkgver}/FirefoxSignedInstaller.xpi")
-b2sums=("13063c90a4a5b62341a8ee3fdd6a100d29925cfe0d76334aa24171e0716f595712295930a440dba1395884281cd2e28a86525cc1eb49309e8ab3e7f06d8b3ea5")
+b2sums=('699f08d167c64b235e72ca435778c8a38f54da3331b8b7664fe5af4968250178e2c7a6cae5fde33f1e5c8f6b93d1cb9b9b19cb4ed1fb3a50845f736568235733')
 
 package() {
   install -Dm644 ${pkgname}-${pkgver}.xpi \
