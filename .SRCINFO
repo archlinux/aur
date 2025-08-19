@@ -1,7 +1,7 @@
 pkgbase = filen-cli-bin
 	pkgdesc = The Filen CLI provides a set of useful tools for interacting with the cloud.
 	pkgver = 0.0.36
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/FilenCloudDienste/filen-cli
 	arch = x86_64
 	arch = aarch64

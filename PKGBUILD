@@ -1,7 +1,7 @@
 # Maintainer: Nick To <nick at nickto dot net>
 pkgname="filen-cli-bin"
 pkgver="0.0.36"
-pkgrel=0
+pkgrel=1
 pkgdesc="The Filen CLI provides a set of useful tools for interacting with the cloud."
 arch=("x86_64" "aarch64")
 url="https://github.com/FilenCloudDienste/filen-cli"
