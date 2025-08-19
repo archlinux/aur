@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=pomerium-bin
-pkgver=0.30.3
+pkgver=0.30.4
 pkgrel=1
 pkgdesc='Identity-aware access proxy'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('pomerium-cli: CLI component for interacting with server')
 source=("pomerium.sysusers"
         "$pkgname-$pkgver.deb::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium_${pkgver}-1_amd64.deb")
 sha512sums=('1e5e7656eb5db12e0c39759ca03c463291f25e90c385105381a0e69390e98ea262615b72db73115b3d99b06f94b657ae2302b56f100be2f93f90a438fdad6833'
-            'd557b7a003ddd8b5f79233165f614bbec0c9499037871543b9ad4c8b45c76fbc00b865e9c02b68e5cb2afdab5e6cf5cdac6665b3e88422af49bb4a2b26e2d192')
+            'f08826e9ae82ed0619bcc623f99c959136fe64c185fac861e3290973bee4befc9fda33914031477d4ffec7ff44020cb43c3c4cf48790141505b1e3ca8f9bde97')
 
 prepare() {
 	tar -xf data.tar.gz
