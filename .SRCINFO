@@ -1,6 +1,6 @@
 pkgbase = r-spelling
 	pkgdesc = Tools for Spell Checking in R
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spelling
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = r-spelling
 	depends = r-knitr
 	depends = r-xml2
 	optdepends = r-pdftools
-	source = https://cran.r-project.org/src/contrib/spelling_2.3.1.tar.gz
-	md5sums = 8f964c41da0f7e876a82f662545f7cb3
-	b2sums = 40a4e6f70d2fad9e20e13c67aa75f36ea30ba101cca384c089758dc9aa9163be774ab6ebd5b0853c33bb1a724774af97b0eaf8b499bd8638aa97c02fb1a9f31d
+	source = https://cran.r-project.org/src/contrib/spelling_2.3.2.tar.gz
+	md5sums = 21c2da9b2331d5af7748af48155c7c8a
+	b2sums = 90f0f78612e009ea99cb17de295afd5a49f0a6c02ef05ff9ca1bc796c2e437c42974b1f4becd1e965eb5aecf07e0b248d8dd791fd628699e20f386a7064a4983
 
 pkgname = r-spelling

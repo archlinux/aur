@@ -3,7 +3,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _pkgname=spelling
-_pkgver=2.3.1
+_pkgver=2.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-pdftools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8f964c41da0f7e876a82f662545f7cb3')
-b2sums=('40a4e6f70d2fad9e20e13c67aa75f36ea30ba101cca384c089758dc9aa9163be774ab6ebd5b0853c33bb1a724774af97b0eaf8b499bd8638aa97c02fb1a9f31d')
+md5sums=('21c2da9b2331d5af7748af48155c7c8a')
+b2sums=('90f0f78612e009ea99cb17de295afd5a49f0a6c02ef05ff9ca1bc796c2e437c42974b1f4becd1e965eb5aecf07e0b248d8dd791fd628699e20f386a7064a4983')
 
 build() {
   mkdir build
