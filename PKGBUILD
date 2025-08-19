@@ -1,5 +1,6 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
+_pkgdir=ANGRYsearch
 _pkgname=angrysearch
 pkgname=${_pkgname}-git
 pkgver=1.0.4
@@ -29,17 +30,17 @@ sha1sums=("SKIP")
 #sha1sums=("$_checksum")
 
 pkgver() {
-    cd $_pkgname
+    cd $srcdir/$_pkgdir
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $_pkgname
+	cd $srcdir/$_pkgdir
 	python -m build --no-isolation --wheel
 }
 
 package() {
-	cd $_pkgname
+	cd $srcdir/$_pkgdir
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	
 	local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
