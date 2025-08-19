@@ -1,6 +1,6 @@
 pkgname=1password
 
-_tarver=8.11.4
+_tarver=8.11.6
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
 pkgrel=27
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/stable/${CARCH}/${_tar}{,.sig})
-sha256sums=('b3f095d6103c8f78af58498a7f031de8787be0163ce82d0c64b0f08e6e9139de'
-            '6b66ce7c808656ebf42ea5785055be9cdf1b4e9187f61f24be5527ba6deb1c4a'
+sha256sums=('3a3c890deb3079484b1ee05e2c212f34e9680d93bcfc3e99d45aae2f26a94384'
+            '0c010e0db507e6bd833e3006d264243d564c136c5751d6c986c3224137316883'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
