@@ -1,4 +1,4 @@
-pkgbase = wff
+pkgbase = wff-git
 	pkgdesc = Simple GUI screen recorder for wlroots compositors based on wl-recorder
 	pkgver = 0.1
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = wff
 	source = git+https://github.com/eugenenoble2005/wff
 	sha256sums = SKIP
 
-pkgname = wff
+pkgname = wff-git
