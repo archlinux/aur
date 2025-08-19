@@ -1,7 +1,7 @@
 pkgbase = librewolf-hellfire
 	pkgdesc = LibreWolf with HellFire performance optimizations - privacy-focused Firefox fork with extreme performance tuning
 	pkgver = 141.0.3_1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://librewolf.net/
 	install = librewolf.install

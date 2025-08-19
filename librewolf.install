@@ -1,5 +1,5 @@
 post_upgrade() {
-  echo ">>    Remember to check for changes in /usr/lib/librewolf/librewolf.cfg.pacnew"
+  echo ">>    Remember to check for changes in /usr/lib/librewolf-hellfire/librewolf.cfg.pacnew"
   echo ">>    as those will not automatically overwrite your existing librewolf.cfg."
   echo ">>    "
   echo ">>    We would encourage you to migrate your own changes to the new overrides file"
@@ -8,8 +8,18 @@ post_upgrade() {
   echo ">>    "
   echo ">>    Check out https://gitlab.com/librewolf-community/settings/-/merge_requests/13"
   echo ">>    for more information on this."
+  
+  # Update desktop database and icon cache
+  update-desktop-database -q /usr/share/applications
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
 
 post_install() {
   post_upgrade
+}
+
+post_remove() {
+  # Update desktop database and icon cache after removal
+  update-desktop-database -q /usr/share/applications
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
