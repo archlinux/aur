@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'libcap' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.70
-pkgrel=3
+pkgver=2.71
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -18,13 +18,10 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs' '!lto')
 install=snapd.install
 source=(
-    # TODO: drop $pkgrel with the next minor/patch release, this is only a 	#
-	# workaround for https://aur.archlinux.org/packages/snapd#comment-1032653, we need
-	# it now to force a download
-    "$pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+  "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
 )
 
-sha256sums=('4092c7e02d9d03c4c3c0546a0cddcff288ffffe484cd872f7df7565ab1428dbf')
+sha256sums=('426fced4b4e06fd36a10f18e6fe1efd21281c4fc73f4ada8bba9db2e80c7ea34')
 
 
 prepare() {
