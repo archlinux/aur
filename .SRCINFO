@@ -1,0 +1,20 @@
+pkgbase = prism-wm-git
+	pkgdesc = Prism - A minimal tiling window manager
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/FedGuy699/PrismWM
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gcc
+	depends = xorg-server
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	depends = freetype2
+	provides = prismwm
+	conflicts = prismwm
+	source = git+https://github.com/FedGuy699/PrismWM.git
+	md5sums = SKIP
+
+pkgname = prism-wm-git
