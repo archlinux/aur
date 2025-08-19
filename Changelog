@@ -1,0 +1,33 @@
+-------------------------------------------------------
+ Changelog    : wg_tool
+ Tags         : 7.2.0 ➙ 7.5.1
+              : 2024-10-22 ➙ 2025-08-19
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2025-08-19   : 7.5.1
+                update pyproject version
+                update Docs/Changelogs Docs/wg_tool.pdf
+
+ 2025-08-19   : 7.5.0
+                update arch PKGBUILD to 7.5.0
+                Fix bug for --init. Issue #18 Reported by @Crisp-Casper
+ 2025-03-08     update Docs/Changelog.rst Docs/wg_tool.pdf
+
+ 2025-03-08   : 7.4.0
+                New option to set PersistentKeepAlive for user profiles.
+                Sort options list printed by --help
+                Update README
+                Add user_keepalive (seconds) to saved options
+                Server config : drop unused mod_time
+ 2024-12-31     update Docs/Changelog.rst Docs/wg_tool.pdf
+
+ 2024-12-31   : 7.3.0
+                Git tags are now signed.
+                Add git signing key to Arch Package
+                Bump python vers
+ 2024-10-22     update Docs/Changelog.rst Docs/wg_tool.pdf
+
+ 2024-10-22   : 7.2.0
+                Additional input protections in cidr utils
+ 2024-10-20     update Docs/Changelog.rst Docs/wg_tool.pdf
