@@ -2,6 +2,7 @@
 source = 'github'
 github = 'QwenLM/qwen-code'
 use_latest_release = true
+include_prereleases = true
 prefix = 'v'
 from_pattern = '-'
 to_pattern = '_'
