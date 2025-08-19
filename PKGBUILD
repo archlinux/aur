@@ -49,10 +49,7 @@ package() {
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # uu-coreutils messes up the directory permissions (644, expect 755)
-    #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -d "$pkgdir/usr/share/licenses/$pkgname"
-    install LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
     # https://wiki.archlinux.org/index.php/Python_package_guidelines
     local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
