@@ -2,13 +2,14 @@
 
 pkgname=gemini-cli-bin
 pkgver=0.1.22 # datasource=github-releases depName=google-gemini/gemini-cli
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source AI agent that brings the power of Gemini directly into your terminal.'
 arch=('any')
 url='https://github.com/google-gemini/gemini-cli'
 license=('Apache-2.0')
 depends=('nodejs')
 provides=('gemini-cli')
+conflicts=('gemini-cli' 'gemini-cli-git')
 
 source=(
 	"gemini-${pkgver}.js::${url}/releases/download/v${pkgver}/gemini.js"
