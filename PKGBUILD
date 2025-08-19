@@ -1,13 +1,13 @@
 # Maintainer: James David Clarke <james@jamesdavidclarke.com>
 
 pkgname=zig-nightly-bin
-pkgver=0.15.0_dev.646.gef35c3d5f
-pkgrel=2
+pkgver=0.15.0_dev.1599.gcf90a5e45
+pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (nightly build)"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
 license=('MIT')
-provides=('zig')
+provides=('zig' 'zig-nightly-bin')
 conflicts=('zig')
 makedepends=(jq)
 optdepends=('curl: for downloading the latest version'
@@ -65,8 +65,8 @@ sha256sums=("$(_get_sha256sum)")
 
 package() {
     local latest_version=$(_get_latest_version)
-    local srcdir1="$srcdir/zig-linux-$CARCH-$latest_version"
-    local srcdir2="$srcdir/zig-linux-$CARCH-$pkgver" 
+    local srcdir1="$srcdir/zig-$CARCH-linux-$latest_version"
+    local srcdir2="$srcdir/zig-$CARCH-linux-$pkgver"
   if [ -d "$srcdir1" ]; then
         cd "$srcdir1"
     elif [ -d "$srcdir2" ]; then
