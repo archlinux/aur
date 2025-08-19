@@ -1,0 +1,18 @@
+pkgbase = hs80tray
+	pkgdesc = Tray indicator for Corsair HS80 Headset.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/robertoszek/hs80tray
+	install = reload-udev-rules.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = hidapi
+	conflicts = hs80tray
+	conflicts = hs80tray-git
+	source = git+https://github.com/robertoszek/hs80tray.git#tag=0.9.1
+	sha256sums = SKIP
+
+pkgname = hs80tray

@@ -1,0 +1,10 @@
+post_install() {
+    echo ">>> Reloading udev rules..."
+    udevadm control --reload-rules && udevadm trigger
+    echo ">>> If your device is already connected, you may need to replug it."
+}
+
+post_remove() {
+    echo ">>> udev rules removed. You may want to reload udev rules:"
+    echo "    udevadm control --reload-rules && udevadm trigger"
+}
