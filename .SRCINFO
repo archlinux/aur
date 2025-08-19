@@ -8,9 +8,9 @@ pkgbase = python-pyrime
 	makedepends = python-installer
 	depends = python
 	depends = librime
+	depends = python-platformdirs
 	optdepends = ptpython
 	optdepends = python-prompt_toolkit
-	optdepends = python-python-platformdirs
 	source = https://files.pythonhosted.org/packages/cp313/p/pyrime/pyrime-0.0.10-cp313-cp313-manylinux_2_17_x86_64.whl
 	sha256sums = 9c956a4e346bde4d1d94a75559eb692439fae3b2fe0f5b797d6d8977d9535255
 
