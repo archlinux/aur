@@ -1,0 +1,22 @@
+pkgbase = reus-gog
+	pkgdesc = Reus Linux-native with data via GOG
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://www.gog.com/de/game/reus
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	provides = reus
+	source = reus_en_1_6_5_20844.sh::gogdownloader://reus/en3installer0
+	source = reus.sh
+	source = reus.desktop
+	sha256sums = 4e348564514af6930bbd8add5c4f32062548a46fd21fb02ce3e05f673e69cd9d
+	sha256sums = 09764ad1eba195d3209b7f4e1720ce52c7635b324fe63bacf772f2138609af74
+	sha256sums = f3c29b09908183431df42e65793b45623414404600c151b06ba541c631261d91
+
+pkgname = reus-gog
