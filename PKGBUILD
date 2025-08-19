@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=firelight
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="A libretro-based frontend"
 arch=("x86_64")
