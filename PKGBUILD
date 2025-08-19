@@ -2,7 +2,7 @@
 
 pkgname=throne-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/throneproj/Throne"
@@ -19,7 +19,8 @@ sha256sums_x86_64=('288115c58f811940e66c63ee3f39b37d9db9ffb69c253f5881dad51cfe87
 sha256sums_aarch64=('80778fc0a7449e726c65a330c123a7e0e32f7991a5b4e013cd43fe746005cc67')
 
 package() {
-  install -Dm755 "$srcdir"/Throne/{Core,Throne}   -t "$pkgdir"/opt/Throne/
+  install -Dm755 "$srcdir"/Throne/{Core,Throne} -t "$pkgdir"/opt/Throne/
+  install -Dm644 "$srcdir"/Throne/srslist       -t "$pkgdir"/opt/Throne/
 
   for f in $(find "$srcdir"/Throne/usr -type f -printf "%P\n"); do
     install -Dm644 "$srcdir"/Throne/usr/$f -T "$pkgdir"/opt/Throne/usr/$f

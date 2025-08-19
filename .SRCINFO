@@ -1,7 +1,7 @@
 pkgbase = throne-bin
 	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/throneproj/Throne
 	arch = x86_64
 	arch = aarch64
