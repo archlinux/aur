@@ -1,7 +1,7 @@
 pkgbase = python-i18nice
 	pkgdesc = A nice i18n library for Python
 	pkgver = 0.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/solaluset/i18nice
 	arch = any
 	license = MIT
