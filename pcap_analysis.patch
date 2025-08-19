@@ -1,7 +1,7 @@
 From e58a249ef4c88e34e0bb6f61b3127c10fdbfc706 Mon Sep 17 00:00:00 2001
 From: "M. Greyson Christoforo" <grey@christoforo.net>
 Date: Tue, 19 Aug 2025 02:36:22 -0600
-Subject: [PATCH] some pcap decode improvements
+Subject: [PATCH 1/2] some pcap decode improvements
 
 ---
  apps/decode_pcap.py | 48 +++++++++++++++++++++++++++++++++++++++++----
@@ -73,3 +73,26 @@ index 67cb4a0..294a94a 100755
  
  if len(sys.argv) < 2:
      sys.stderr.write("Usage: decode_pcap.py input_file...\n")
+
+From f20162d95819a6633f291a35d3a09dee606dd8a7 Mon Sep 17 00:00:00 2001
+From: "M. Greyson Christoforo" <grey@christoforo.net>
+Date: Tue, 19 Aug 2025 14:28:13 -0600
+Subject: [PATCH 2/2] fix print alignment
+
+---
+ apps/decode_pcap.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apps/decode_pcap.py b/apps/decode_pcap.py
+index 294a94a..34cff87 100755
+--- a/apps/decode_pcap.py
++++ b/apps/decode_pcap.py
+@@ -80,7 +80,7 @@ def print_pkt(timestamp, pkt):
+         cmd_start = 20
+     payload = pkt[len_bytes:-2]
+     flag1, src, dst = struct.unpack(">BII", payload[0:9])
+-    print(f"len={pkt[0:len_bytes].hex()} flag={flag1:02x} src={src:08x} dst={dst:08x} {payload[9:12].hex()} {payload[12:15].hex()}", end=" ")
++    print(f"len={pkt[0:len_bytes].hex().ljust(4)} flag={flag1:02x} src={src:08x} dst={dst:08x} {payload[9:12].hex()} {payload[12:15].hex()}", end=" ")
+     pkt = pkt[-1 + len_bytes::]
+ 
+     if (0x10 & flag1):

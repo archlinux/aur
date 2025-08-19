@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             '3226daff68e7576e800ce6486f86add532edd42c03a8a9fa9d8c9737d8ff17d0'
             'cdff722dee502912ca183c4420482bcc18c3760fccb41d3deff676415abde059'
             '7c8e769823a1caf6a76f579f10b0086a35362d3c450a170115116030befd88ab'
-            '57ee771e7c87c71c02ccd5b73e50c6f56c472afa3e2129601cd68e599eb32f6b')
+            'ae9c09e988ed0c59bbf8f21186185c4f18ccf4c768b2380076641f1fb11ea4ad')
 
 pkgver() {
   cd gr-elster
