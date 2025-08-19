@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=11.29.0-1
+_pkgver=11.30.0-1
 
 pkgname=${_pkgname}-catppuccin-bin
 pkgver=${_pkgver//-/_}
@@ -45,7 +45,7 @@ backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-catppuccin-v${_pkgver}.linux-x86_64.tar.zst
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('b2b510d5cfea268f88ccd21a75f6fbbe60cf75aa3f5dec43f32a3b90b7963761'
+sha256sums=('4322b3283c4cb347132f8173aa05c8bd2d9cd2dea905c7ba276d3db40c481b92'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
