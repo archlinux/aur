@@ -18,4 +18,6 @@ RUN yay -S --noconfirm \
     hicolor-icon-theme
 
 # Build the package
+RUN updpkgsums
 RUN makepkg -sif --noconfirm
+RUN makepkg --printsrcinfo > .SRCINFO
