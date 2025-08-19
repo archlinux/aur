@@ -1,8 +1,8 @@
 pkgbase = kwin-x11-improved
-	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git
+	pkgdesc = kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for Xlibre and Xorg-git
 	pkgver = 6.4.4
-	pkgrel = 1
-	url = https://github.com/guiodic/kwin-x11-improved
+	pkgrel = 3
+	url = https://github.com/josephcrowell/kwin-x11-improved
 	install = kwin-x11-improved.install
 	arch = x86_64
 	groups = plasma
@@ -69,16 +69,12 @@ pkgbase = kwin-x11-improved
 	depends = xcb-util-wm
 	provides = kwin-x11
 	conflicts = kwin-x11
-	source = https://download.kde.org/stable/plasma/6.4.4/kwin-x11-6.4.4.tar.xz
-	source = https://download.kde.org/stable/plasma/6.4.4/kwin-x11-6.4.4.tar.xz.sig
-	source = git+https://github.com/guiodic/kwin-x11-improved.git
+	source = git+https://github.com/josephcrowell/kwin-x11-improved.git#tag=v6.4.4
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 987e207c2f2ab60e51421b5846ca03e69ef875ac20698022f5e8bdd1e1055ed9
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 83d4d0d77d0fd5599feb20ba83c6d57172f667233d99942396fa23dee997dd5b
 
 pkgname = kwin-x11-improved
