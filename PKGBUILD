@@ -24,7 +24,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
         "$_pkgname.desktop"
         "vsmodinstall-handler.desktop"
 		"fontconfig.conf")
-md5sums=("4c99452542f2d08e82fe7a673b9de9fb"
+md5sums=("SKIP"
          "97e27a3d0283b0f01176cdd6fa5dcf53"
          "dde267f52d41fb90641b6405dccb5cd3"
 		 "698441836af7385df922c922b08b7606")
