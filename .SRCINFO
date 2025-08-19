@@ -1,12 +1,12 @@
 pkgbase = ski-ia64-simulator
 	pkgdesc = Itanium 2 (ia64) instruction set simulator
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/trofi/ski/
 	arch = x86_64
 	license = GPL2
 	depends = ncurses
-	source = https://github.com/trofi/ski/releases/download/v1.5.0/ski-1.5.0.tar.xz
-	sha512sums = c53c214c956ad33acf9a620813bf4f3342ea7a3672899cdc9804fa3ad2b6e36044fd65e214362b2cf5e57d1733523e186d63d88e24e54c761fc77cf5b63776c8
+	source = https://github.com/trofi/ski/releases/download/v1.5.1/ski-1.5.1.tar.xz
+	sha512sums = f1a3960a8f5c3c7dc895332040a2e5060c9d510e41a3bc5de77b4e63c801af86b9fdff4e8c6cf94c74e1a842a9ff875b84f6f527894bbb855a37a00b480665cd
 
 pkgname = ski-ia64-simulator
