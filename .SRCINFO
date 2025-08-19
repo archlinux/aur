@@ -1,7 +1,7 @@
 pkgbase = openarc-git
 	pkgdesc = Open source implementation of the ARC email authentication system
-	pkgver = 1.2.2.r1.ga667b86
-	pkgrel = 2
+	pkgver = 1.2.2.r6.ga3273d4
+	pkgrel = 1
 	url = https://github.com/flowerysong/OpenARC
 	arch = x86_64
 	license = BSD-2-Clause
@@ -12,7 +12,6 @@ pkgbase = openarc-git
 	depends = glibc
 	depends = jansson
 	depends = openssl
-	depends = libbsd
 	depends = libmilter
 	depends = libidn2
 	optdepends = smtp-server: for using a local mail server
@@ -23,8 +22,9 @@ pkgbase = openarc-git
 	optdepends = perl-mail-dkim: for optional tests
 	provides = openarc
 	conflicts = openarc
+	options = !lto
 	backup = etc/openarc/openarc.conf
-	source = git+https://github.com/flowerysong/OpenARC.git#branch=main
+	source = openarc::git+https://github.com/flowerysong/OpenARC.git#branch=main
 	source = Patch01-Set-config-in-systemd-unit-file.patch
 	source = Patch02-Remove-config-for-other-OSs.patch
 	source = openarc.sysusers
