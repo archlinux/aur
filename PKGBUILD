@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=devbox
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A cli tool to easily create isolated shells and containers'
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(go)
 optdepends=('docker: for container support')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('20eaa94fce17aad42f76e293a5645f49ff65eba4e71d2e86f6db36dc99d3e0c5')
+sha256sums=('1ea7ff3d76a8ab473bed6d88d64bbfc195d9a5406e77cbc78d87a7ebfd06b3ac')
 
 prepare(){
 	cd "$_archive"
