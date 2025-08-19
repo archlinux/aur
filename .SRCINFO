@@ -1,6 +1,6 @@
 pkgbase = python-aiohttp-client-request
 	pkgdesc = aiohttp request extension.
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://pypi.org/project/aiohttp_client_request
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-aiohttp-client-request
 	conflicts = python-aiohttp-client-request
 	options = !strip
 	options = !debug
-	source = aiohttp_client_request-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/a/aiohttp_client_request/aiohttp_client_request-0.1.0.tar.gz
-	sha256sums = c322cc049c4f687b141d2b06c8f40a4c2210f2e7fd7e50d3fb27302053486320
+	source = aiohttp_client_request-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/a/aiohttp_client_request/aiohttp_client_request-0.1.2.tar.gz
+	sha256sums = c4aebfe52f01b19ce4ac24f16d48ed91513c59f20ff35d544bd6298fee9411fc
 
 pkgname = python-aiohttp-client-request
