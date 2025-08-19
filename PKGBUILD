@@ -1,7 +1,7 @@
 # Maintainer: Marcelo Hernandez <marcelohdez.inq at gmail dot com>
 # Maintainer: Gabriel Garcia <gabrielgarciacs at proton dot me>
 pkgname=dim-screen
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Native Wayland screen dimming tool"
 url="https://github.com/marcelohdez/dim"
@@ -70,3 +70,4 @@ package() {
 	gzip "man/dim.1"
 	install -Dm644 "man/dim.1.gz" "$pkgdir/usr/share/man/man1/dim.1.gz"
 }
+sha256sums=('6f10e12bbc0358cf20a43c1136f552ffe7081dc8023c8b131858f7fc87d709b7')
