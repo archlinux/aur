@@ -20,5 +20,5 @@ package() {
 
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "opt/OpenModSim/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/OpenModSim/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
