@@ -1,4 +1,5 @@
-# Maintainer: Teteros <teteros at teknik dot io>
+# Maintainer: wallarba <gr.wallabra@proton.me>
+# Contributor: Teteros <teteros at teknik dot io>
 
 pkgname=radium-bin
 pkgver=7.5.71
