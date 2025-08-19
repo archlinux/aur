@@ -1,0 +1,86 @@
+diff --git a/python/packetize.py b/python/packetize.py
+index 54e30be..50b9c02 100644
+--- a/python/packetize.py
++++ b/python/packetize.py
+@@ -19,11 +19,22 @@
+ # Boston, MA 02110-1301, USA.
+ #
+ 
++# to publish meter readings via MQTT (to homeassistant for example),
++# set an environment variable like this:
++# ELSTER_MQTT_BROKER="192.168.1.1:1883"
++# if the broker needs authentication, provide it with an
++# environment variable like this:
++# ELSTER_MQTT_BROKER_LOGIN="user_name/password"
++# then json meter reading messages will be published the the topic
++# elster/${meter_number}
++# formatted like: {"kWh": 451147.14, "timestamp": 1755614264.336097}
++
+ import datetime
+-import os.path
++import os
+ import struct
+ import time
+ import numpy
++import json
+ from gnuradio import gr
+ 
+ 
+@@ -32,6 +43,7 @@ class packetize(gr.basic_block):
+     sfd_1 = numpy.repeat(numpy.array([0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0], dtype=numpy.uint8), 4).tobytes()
+     sfd_2 = numpy.repeat(numpy.array([1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0], dtype=numpy.uint8), 4).tobytes()
+     manchester = [int(f"{b:08b}"[:4].count("1") > f"{b:08b}"[4:].count("1")) for b in range(256)]
++    mc = None
+ 
+     def __init__(self, num_inputs):
+         gr.basic_block.__init__(self,
+@@ -39,6 +51,24 @@ def __init__(self, num_inputs):
+                                 in_sig=[numpy.uint8]*num_inputs,
+                                 out_sig=None)
+ 
++        self.mc = None
++        try:
++            if 'ELSTER_MQTT_BROKER' in os.environ:
++                import paho.mqtt.client as mqtt
++                if ":" in os.environ['ELSTER_MQTT_BROKER']:
++                    mqtt_host, mqtt_port_env = os.environ['ELSTER_MQTT_BROKER'].split(":", 1)
++                    mqtt_port = int(mqtt_port_env)
++                else:
++                    mqtt_host = os.environ['ELSTER_MQTT_BROKER']
++                    mqtt_port = 1883
++                self.mc = mqtt.Client()
++                if 'ELSTER_MQTT_BROKER_LOGIN' in os.environ:
++                    mqtt_user, mqtt_pass = os.environ['ELSTER_MQTT_BROKER_LOGIN'].split("/", 1)
++                    self.mc.username_pw_set(mqtt_user, mqtt_pass)
++                self.mc.connect(mqtt_host, mqtt_port, 60)
++        except Exception as e:
++            print(f"MQTT setup failed: {e}")
++
+         i = 1
+         filename = f"elster-{i:03}.pcap"
+         while os.path.exists(filename):
+@@ -54,6 +84,12 @@ def __init__(self, num_inputs):
+         self.bits_remaining = [0] * num_inputs
+ 
+     def __del__(self):
++        if self.mc is not None:
++            try:
++                self.mc.disconnect()
++                self.mc.loop_stop()
++            except Exception as e:
++                print(f"Issue cleaning up MQTT: {e}")
+         self.file.close()
+ 
+     def crc_x25(self, message):
+@@ -129,6 +165,11 @@ def process_packet(self, channel, pkt):
+ 
+                     main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/100
+                     print(f"  Meter reading for meter #{src}: {main_reading} kWh")
++                    if self.mc is not None:
++                        try:
++                            self.mc.publish(f"elster/{src}", json.dumps({"kWh": main_reading, "timestamp": now}))
++                        except Exception as e:
++                            print(f"MQTT publication failure: {e}")
+ 
+                     print()
+ 

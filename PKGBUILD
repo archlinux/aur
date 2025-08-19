@@ -10,6 +10,7 @@ depends=(
   python-gnuradio
   python-numpy
   python-pygraphviz
+  python-paho-mqtt
 )
 makedepends=(
   git
@@ -28,11 +29,13 @@ source=(
 	doxup.patch
 	new_meter.patch  # https://github.com/argilo/gr-elster/pull/12.patch
 	dev_args.patch  # https://github.com/argilo/gr-elster/pull/13.patch
+	add_mqtt.patch  # https://github.com/greyltc/gr-elster/compare/my-meter...greyltc:gr-elster:add-mqtt.patch
 )
 sha256sums=('SKIP'
             '4df5f8f4011aec787459b1a9bd0d15725ef82f7390590bbb9d76ba37481dca3a'
             '3226daff68e7576e800ce6486f86add532edd42c03a8a9fa9d8c9737d8ff17d0'
-            'cdff722dee502912ca183c4420482bcc18c3760fccb41d3deff676415abde059')
+            'cdff722dee502912ca183c4420482bcc18c3760fccb41d3deff676415abde059'
+            '7558f446dea0cd14087bf7f3689b957dfc77fa9d788168d5f7ca21d99afdb602')
 
 pkgver() {
   cd gr-elster
@@ -47,6 +50,7 @@ prepare() {
   cat ../doxup.patch | patch -p1  # doxygen -u docs/doxygen/Doxyfile.in
   cat ../new_meter.patch | patch -p1
   cat ../dev_args.patch | patch -p1
+  cat ../add_mqtt.patch | patch -p1
 }
 
 build() {
