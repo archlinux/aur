@@ -3,7 +3,7 @@
 
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.5.46
+pkgver=6.5.51
 pkgrel=1
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('curl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip")
-sha256sums=('ef31679409866db0c95c53d93830e8431897c17bc59104c4eca6f84b4a178548')
+sha256sums=('40b85f629635a1ae3e2b34c124f963d6dc9bf4de6254c794f7b12c5dd95c2f02')
 
 prepare() {
     # https://gitlab.archlinux.org/pacman/pacman-contrib/-/issues/119
