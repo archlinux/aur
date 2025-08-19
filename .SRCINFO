@@ -1,7 +1,7 @@
 pkgbase = fokus
 	pkgdesc = A minimalist terminal‐based focus timer and stopwatch with daily logging, built in Rust
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://sr.ht/~fijarom/fokus/
 	arch = x86_64
 	license = GPL3
