@@ -1,0 +1,56 @@
+From cc7eaabcc29e1e292bdbc0a6df8300e82e0df3d9 Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Sat, 24 Jun 2023 13:03:43 +0800
+Subject: [PATCH 1/2] Fix missing ${CMAKE_SOURCE_DIR} in qt5_create_translation
+
+Fixes the following build failures:
+
+```
+[  1%] Generating .lupdate/translations/ar_AA.ts.stamp
+QFSFileEngine::open: No file name specified
+lupdate error: List file '' is not readable.
+make[2]: *** [CMakeFiles/translations.dir/build.make:312: .lupdate/translations/ar_AA.ts.stamp] Error 1
+make[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/translations.dir/all] Error 2
+```
+
+Fixes #1
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fe04fdb..77191c6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,7 +116,7 @@ target_link_libraries(cutefish-statusbar
+ )
+ 
+ file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
++qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+ add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+ add_dependencies(cutefish-statusbar translations)
+ 
+
+From 7ac2668247702c2c1e7f5c4dccec3b3d5c180d6c Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Sat, 24 Jun 2023 13:19:48 +0800
+Subject: [PATCH 2/2] Fix source url
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 77191c6..27f11e8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,7 +116,7 @@ target_link_libraries(cutefish-statusbar
+ )
+ 
+ file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
++qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR}/src ${TS_FILES})
+ add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+ add_dependencies(cutefish-statusbar translations)
+ 
