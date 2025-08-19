@@ -1,0 +1,15 @@
+pkgbase = rofi-reddit
+	pkgdesc = Browse reddit threads from rofi using the Reddit API
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/valdebrutal/rofi-reddit
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = meson
+	depends = rofi
+	depends = curl
+	source = git+https://github.com/valdebrutal/rofi-reddit.git
+	sha256sums = SKIP
+
+pkgname = rofi-reddit
