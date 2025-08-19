@@ -1,0 +1,24 @@
+pkgbase = angrysearch-git
+	pkgdesc = Linux file search, instant results as you type
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/DoTheEvo/ANGRYsearch
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = python-pyqt5
+	depends = libxkbcommon-x11
+	depends = xdg-utils
+	depends = xdotool
+	provides = angrysearch=1.0.4
+	conflicts = angrysearch
+	source = git+https://github.com/DoTheEvo/ANGRYsearch.git
+	sha1sums = a52026f1f2a75c7a5132f4f2ee163618c95652e6
+
+pkgname = angrysearch-git
