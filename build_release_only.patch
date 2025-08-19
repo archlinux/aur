@@ -1,0 +1,12 @@
+diff -Naur a/build.properties b/build.properties
+--- a/build.properties	2025-06-03 22:48:56.000000000 +0200
++++ b/build.properties	2025-08-09 10:43:48.609662197 +0200
+@@ -22,7 +22,7 @@
+ ## option to specify build type (debug, release, debug_and_release). Otherwise it's autodetected.
+ ##
+ 
+-#qtjambi.configuration=release
++qtjambi.configuration=release
+ 
+ ##
+ ## force to build release libraries with debug info (default: true)

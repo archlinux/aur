@@ -1,73 +1,48 @@
-# Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=qtjambi
-pkgver=6.4.1
-_pkg2="$(echo ${pkgver} | cut -d. -f-2)" 
-_pkg1="$(echo ${pkgver} | cut -d. -f1)"
-##change these variables if needed##
-_qtver=qt6
-_javaver=19
-####################################
-pkgrel=2
+pkgver=6.9.1
+pkgrel=1
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
-license=('LGPL' 'GPL')
-depends=('chrpath' 'jdk-openjdk' "${_qtver}-base" "${_qtver}-remoteobjects")
-makedepends=('ant' 'apache-ant-contrib')
+license=("LGPL" "GPL")
+depends=("qt6-base" "qt6-declarative")
+makedepends=("ant" "chrpath" "gcc" "jdk21-openjdk" "make" "patch")
 source=(https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=(280e9f49b11cfbe3fb5461e5a21f2c52aedd903596ea97ac312e1b3eeca4e90b) 
+sha256sums=(f62f96bd64a0156dc4c8301ee0394bf8a0dc5d01e0f8272de160ffb9bfcf9e30)
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-    #generate fake qtdir. 
-    #Build expects directory structure from QT installer.
-    rm -rf qtdir #clean up from older build
-    mkdir -p qtdir/include
-    for i in {bin,qml,plugins,mkspecs}; do
-        ln -s "/usr/lib/${_qtver}/$i" qtdir/$i
-    done
-    #Hack: qtdir/include need to contain qt6 dir from /usr/include/qt6
-    # and the content of /usr/include/qt6 because weird cpp issues
-        cp -r /usr/include/${_qtver} qtdir/include/${_qtver}
-        cp -r /usr/include/${_qtver}/* qtdir/include/
-    #end hack
-    ln -s qtdir/bin qtdir/libexec
-    ln -s /usr/lib qtdir/lib
-    ln -s "/usr/share/${_qtver}/modules" qtdir/modules
-    #this should enable use of system qt
-
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 < ../../build_release_only.patch
+  patch -p1 < ../../warn_off.patch
+  patch -p1 < ../../rm_warn_dollar.patch
+  mkdir qtdir
+  ln -s /usr/lib/qt6/bin qtdir/bin
+  ln -s /usr/include/qt6 qtdir/include
+  ln -s /usr/lib qtdir/lib
+  ln -s /usr/lib/qt6 qtdir/libexec
+  ln -s /usr/lib/qt6/mkspecs qtdir/mkspecs
+  ln -s /usr/lib/qt6/plugins qtdir/plugins
+  ln -s /usr/lib/qt6/qml qtdir/qml
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-    export QTDIR="${srcdir}/${pkgname}-${pkgver}/qtdir"
-    export JAVA_HOME_TARGET="/usr/lib/jvm/java-${_javaver}-openjdk"
-	ant all
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export QTDIR="${srcdir}/${pkgname}-${pkgver}/qtdir"
+  export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+  export JAVA_HOME_TARGET=$JAVA_HOME
+  ant generator.make
+  ant generator.run
+  #patch -p1 < ../../xxx.patch
+  ant library
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-    mkdir -p ${pkgdir}/usr/share/java/qtjambi
-    install ${pkgver}/deployment/*.jar ${pkgdir}/usr/share/java/qtjambi/
-    install ${pkgver}/deployment/native/linux-x64/release/plugins/sqldrivers/*.jar ${pkgdir}/usr/share/java/qtjambi/
-    mkdir -p ${pkgdir}/usr/{lib,bin}
-    install ${pkgver}/deployment/native/linux-x64/release/utilities/*.so ${pkgdir}/usr/lib/
-    install ${pkgver}/deployment/native/linux-x64/release/lib/* ${pkgdir}/usr/lib/
-    install ${pkgver}/deployment/native/linux-x64/release/plugins/sqldrivers/*.so ${pkgdir}/usr/lib/
-    install ${pkgver}/deployment/native/linux-x64/release/utilities/QtJambiLauncher ${pkgdir}/usr/bin/
-    mkdir -p ${pkgdir}/usr/share/licenses/qtjambi
-    cp LICENSE.* ${pkgdir}/usr/share/licenses/qtjambi/
-
-    #libraries get installed as copies instead of as symlinks. Fix up
-    _pkg2="$(echo ${pkgver} | cut -d. -f-2)" 
-    _pkg1="$(echo ${pkgver} | cut -d. -f1)"
-    cd ${pkgdir}/usr/lib
-    for j in $(ls libQtJambi*.so.${pkgver}); do
-        k=$(echo ${j}| cut -d. -f-2)
-        rm ${k}.${_pkg1}
-        rm ${k}.${_pkg2}
-        ln -s ${j} ${k}.${_pkg1}
-        ln -s ${j} ${k}.${_pkg2}
-    done
-    #Hopefully will this ugly hack only be temporary...
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p ${pkgdir}/usr/share/java/qtjambi
+  cp ${pkgver}/deployment/*.jar ${pkgdir}/usr/share/java/qtjambi
+  cp ${pkgver}/deployment/sources/*.jar ${pkgdir}/usr/share/java/qtjambi
+  mkdir -p ${pkgdir}/usr/lib
+  cp -P ${pkgver}/deployment/platforms/linux-x64/release/lib/*[^.debug] ${pkgdir}/usr/lib
+  mkdir -p ${pkgdir}/usr/share/licenses/qtjambi
+  cp LICENSE.* ${pkgdir}/usr/share/licenses/qtjambi
 }
