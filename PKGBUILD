@@ -14,7 +14,7 @@ depends=(
   desktop-file-utils
   glu
   hicolor-icon-theme
-  jack2
+  jack
   libsm
   libxcomposite
   libxrender
