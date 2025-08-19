@@ -6,8 +6,8 @@
 
 pkgname=oidcwarden
 _pkgname=vaultwarden
-pkgver=1.34.1
-pkgrel=5
+pkgver=1.34.3
+pkgrel=1
 pkgdesc='Soft fork from vaultwarden. Goal is to provide an OIDC compatible solution with the ultimate goal of merging features back in Vaultwarden.'
 arch=(x86_64)
 url=https://github.com/timshel/vaultwarden
