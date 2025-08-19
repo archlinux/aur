@@ -5,7 +5,7 @@
 
 pkgname="zorin-icon-themes"
 pkgdesc="The Zorin icon theme provided in a variety of color combinations"
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 arch=('any')
 url="https://github.com/ZorinOS/zorin-icon-themes"
@@ -13,7 +13,7 @@ license=('CC-BY-SA-4.0')
 options=('!strip')
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ZorinOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('679e799f9cb1379d82ca6f289cf517f1c7075711b41638b482ea197d55f760c1')
+sha256sums=('97d98139b7d74db27b26903cd5e0bba43fd93b30d4c58ae7bb1c11b5a3a9ae41')
 
 package() {
     cd ${pkgname}-${pkgver}
