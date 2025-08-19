@@ -23,15 +23,15 @@ package() {
     if [[ -d "$srcdir" ]]; then
         mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
         pushd "$srcdir" >/dev/null
-        if [[ -f "LICENSE-MIT" && -s "LICENSE-MIT" ]]; then
-            install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-        else
-            echo "Warning: License file 'LICENSE-MIT' missing or empty - skipping" >&2
-        fi
         if [[ -f "LICENSE-APACHE" && -s "LICENSE-APACHE" ]]; then
             install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
         else
             echo "Warning: License file 'LICENSE-APACHE' missing or empty - skipping" >&2
+        fi
+        if [[ -f "LICENSE-MIT" && -s "LICENSE-MIT" ]]; then
+            install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+        else
+            echo "Warning: License file 'LICENSE-MIT' missing or empty - skipping" >&2
         fi
         popd >/dev/null
     else
