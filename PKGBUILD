@@ -2,7 +2,7 @@
 
 pkgname=python-elevenlabs
 _reponame=elevenlabs-python
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="ElevenLabs API module - generate realistic, captivating speech in a wide range of languages"
 url="https://github.com/elevenlabs/elevenlabs-python"
@@ -19,7 +19,7 @@ makedepends=(
 	'python-poetry'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/elevenlabs/elevenlabs-python/archive/v${pkgver}.tar.gz")
-sha256sums=('89b45e0d6c37e5411e2614dee14e1646960acac9fdd5df4f0fdfc1c90c833a45')
+sha256sums=('d74505c82f2a4ef0b6ed89ba1297d08d55e8f97d9b45cd85bb5ca7775f3e3c21')
 
 build() {
 	ls -lah
