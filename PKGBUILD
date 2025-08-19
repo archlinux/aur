@@ -1,30 +1,32 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-dist-meta
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Parse and create Python distribution metadata'
-arch=('any')
+arch=(any)
 url='https://dist-meta.readthedocs.io/'
-license=('MIT')
+license=(MIT)
 depends=(
-  'python'
-  'python-domdf-python-tools'
-  'python-handy-archives'
-  'python-packaging'
+  python
+  python-domdf-python-tools
+  python-handy-archives
+  python-packaging
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-wheel'
-  'python-setuptools'
+  git
+  python-build
+  python-installer
+  python-wheel
+  python-setuptools
+  python-hatchling
+  python-hatch-requirements-txt
 )
 #checkdepends=('')
 #optdepends=('')
 source=("$pkgname::git+https://github.com/repo-helper/dist-meta#tag=v$pkgver")
-sha512sums=('6bed8087136e8e265136d067d192868de9e2bd0e9e261eb5b4eb8b6c94df3781d1a1986b8641e6686eb1051db494ee7af1dc5163ca189735c91d9d0ab45d6fb0')
-b2sums=('8d7b9de86d86bed0c027c1b196d2f9dd0163d8d944cecfa70c00f2cc4e553a67c0b58e9bd70f147789a8d0ac3db52e672e7a4ed9b1696646c22fddc876794866')
+sha512sums=('d5c780be311d0e19d144b8fa207250caf369720e85829f2c1bbd263ecaecad4c302d3c03aef1ea2ca619a97d68b22e045b93428bd8aeea0819420f5b66ada5db')
+b2sums=('65a468a10419aaee70276ddae71dadf6ed9ea5a0fdc33d2e76341792efab2a1b5f756c7fab9663495967be758883017b57f2720a9b91a739c9fd759f3e12c48a')
 
 prepare() {
   cd "$pkgname"
