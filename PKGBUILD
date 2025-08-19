@@ -16,8 +16,8 @@ optdepends=('jre-openjdk: for launch Minecraft')
 source_x86_64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/v${pkgver}/WonderLab.linux.x64.AppImage")
 source_aarch64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/v${pkgver}/WonderLab.linux.arm64.AppImage")
 _appimage="${_pkgname}-${arch}.AppImage"
-sha256sums_x86_64=('ad987d0500ecb14b3a0c9d5c998725f352c90d4ef405b54c4f852f40e59e4959')
-sha256sums_aarch64=('2e713f24951903b4ec4615dd9d3840f818f2c08332f1ef9aa6ff78d7af7e4bba')
+sha256sums_x86_64=('b43a087cf8e1ce4bf1c5b26188633ec24daaf48f9da02b7054ac7e7e47ead863')
+sha256sums_aarch64=('32b0175f3871e6fb8c5246e9de80c30e3287614c5b819f8a5040573542282a00')
 prepare() {
 	chmod +x "${_appimage}"
 	./"${_appimage}" --appimage-extract
