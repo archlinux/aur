@@ -25,4 +25,6 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 target/release/plugind "$pkgdir/usr/bin/plugind"
   install -Dm755 target/release/pluginctl "$pkgdir/usr/bin/pluginctl"
+  install -Dm644 plugind.service "$pkgdir/usr/lib/systemd/system/plugind.service"
+  echo "[LOG] Dont forget to systemctl enable plugind!"
 }
