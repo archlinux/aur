@@ -13,7 +13,7 @@ depends=('python'
          'python-b2sdk>=2.5.0'
          'python-docutils>=0.19'
          'python-class-registry>=4.0.5'
-         'python-rst2ansi=0.1.5'
+         'python-rst2ansi>=0.1.5'
          'python-tabulate>=0.8.10'
          'python-tqdm>=4.65.0'
          'python-platformdirs>=3.11.0'
@@ -34,6 +34,12 @@ sha256sums=('a66f78e91f8ac36721093b751d09d3d228957473ee3df50b5138e72290e32646')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
+
+    # This requriement seems overly strict, relax
+    sed -r \
+        -e 's/(rst2ansi)==/\1~=/' \
+        -e 's/(tabulate)==/\1~=/' \
+        -i pyproject.toml
 
     python -m build --wheel --no-isolation
 }
