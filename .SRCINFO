@@ -1,0 +1,16 @@
+pkgbase = aur-auto
+	pkgdesc = 🐳 Whale Lab AUR auto installer with fuzzy search and package details
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Sanjaya-Danushka/whalekit
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	depends = curl
+	depends = jq
+	depends = fzf
+	source = aur-auto.sh
+	sha256sums = SKIP
+
+pkgname = aur-auto
