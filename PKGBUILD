@@ -2,7 +2,7 @@
 
 pkgname="python-i18nice"
 pkgver=0.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A nice i18n library for Python"
 arch=('any')
 url="https://github.com/solaluset/i18nice"
@@ -15,11 +15,11 @@ source=("https://pypi.org/packages/source/i/i18nice/i18nice-$pkgver.tar.gz")
 sha256sums=('8e90d042436f4bf0cdf9ab6869eb70946eba094f58121020c350996e45b0be89')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "i18nice-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "i18nice-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
