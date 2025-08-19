@@ -1,6 +1,6 @@
 pkgbase = discord_arch_electron
 	pkgdesc = Discord using system provided electron for increased security and performance
-	pkgver = 0.0.104
+	pkgver = 0.0.105
 	pkgrel = 1
 	epoch = 1
 	url = https://discord.com
@@ -18,10 +18,10 @@ pkgbase = discord_arch_electron
 	provides = discord
 	conflicts = discord
 	options = !strip
-	source = https://dl.discordapp.net/apps/linux/0.0.104/discord-0.0.104.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.105/discord-0.0.105.tar.gz
 	source = discord-launcher.sh
 	source = krisp-patcher.py
-	sha512sums = 20e42fb06a3ba462c75b933485143bc532b4037efe7eb55d246b1e0c16555c697f13d0f51270e78d7a0d0c449f3a4a5bdde22189d66a264b94a9d20885a5be89
+	sha512sums = 755664846c09b83b49c1321485ad6dd81866d4cf34576afe4a447a7b2b6b4ec1a76b525e7eb2d44ebe5df696f2dc2045c4aaf91cd77d71bd8089c7ad7595e2af
 	sha512sums = e11a60419c6ee5944aefc1ac16a5b496518fae626627d37a5bf636975bd21b1d9b6118ec3f44e7f4283befe5fa14737ad28dc38d975967789247ac0e66c352f3
 	sha512sums = 42cef68c1f7d574b4fbe859a4dc616e8994c7d16f62bcae3ff1f88e1edc58ac37b39c238d7defa9c97ceda417fcd6224cf0a0fd2608b8d18d0877e3c1befa59c
 
