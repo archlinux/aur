@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "mouse-jiggler 🐭"
+echo "Press Ctrl+C to stop."
+
+# The first argument ($1) will be used for the time interval.
+# If no argument is provided, it defaults to 30 seconds.
+interval=${1-30}
+
+while true; do
+    sleep "$interval"
+    echo "Jiggling mouse every $interval seconds..."
+    xdotool mousemove_relative 50 0
+    sleep 3
+    xdotool mousemove_relative -- -50 0
+done
