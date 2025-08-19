@@ -1,7 +1,7 @@
 pkgbase = epic-asset-manager
 	pkgdesc = A frontend to Assets purchased on Epic Games Store
 	pkgver = 3.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AchetaGames/Epic-Asset-Manager
 	arch = x86_64
 	license = MIT
