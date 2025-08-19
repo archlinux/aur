@@ -1,6 +1,6 @@
 pkgname=lush-shell
 pkgver=0.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Lunar shell is a Linux shell powered by Lua."
 arch=('x86_64')
 url="https://github.com/BanceDev/lush"
