@@ -1,8 +1,8 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 10-Aug-2025
+# 19-Aug-2025
 
 pkgname=c-evo-dh
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'glibc' 'pango' 'libx11' 'at-spi2-core' 'c
 optdepends=('sox: Needed for sounds if ffmpeg not installed')
 source=("$pkgname-$pkgver"::git+$url#tag=$pkgver)
 #source=("$pkgname-$pkgver".orig.tar.xz)
-sha256sums=('5637f8d96040e6262815189f097f8db5538d84d2991728aeec75d0968d653948')
+sha256sums=('447f98cec760a3960a41703c3a689fbfc00395758f9b5cb4280e796f9c3a46cc')
 
 # Arch does not use games or libexec folders
 prepare() {
