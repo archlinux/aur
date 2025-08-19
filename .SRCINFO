@@ -1,7 +1,7 @@
 pkgbase = angrysearch
 	pkgdesc = Linux file search, instant results as you type
 	pkgver = 1.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/DoTheEvo/ANGRYsearch
 	arch = any
 	license = GPL-2.0-only
@@ -10,6 +10,8 @@ pkgbase = angrysearch
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = gdk-pixbuf2
+	depends = libnotify
 	depends = python
 	depends = python-gobject
 	depends = python-pyqt5
