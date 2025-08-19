@@ -29,7 +29,9 @@ source=(
     "ludo.desktop"
 )
 
-md5sums=("SKIP" "SKIP" "SKIP")
+md5sums=('SKIP'
+         '58ece4450bd0fbd0d59387b6f08688ee'
+         '457c7b690c6411a4df963305c233fb42')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

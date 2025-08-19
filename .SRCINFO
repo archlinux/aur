@@ -1,6 +1,6 @@
 pkgbase = ludo-git
 	pkgdesc = Ludo is a minimalist frontend for emulators
-	pkgver = 0.11.0.r4.ga3cc78c
+	pkgver = 0.19.0.r1.g210e252
 	pkgrel = 1
 	url = https://github.com/libretro/ludo
 	arch = x86_64
@@ -24,8 +24,7 @@ pkgbase = ludo-git
 	source = ludo.toml
 	source = ludo.desktop
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 58ece4450bd0fbd0d59387b6f08688ee
+	md5sums = 457c7b690c6411a4df963305c233fb42
 
 pkgname = ludo-git
-
