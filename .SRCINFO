@@ -1,7 +1,7 @@
 pkgbase = onscripter-en-devkit-git
 	pkgdesc = devkit for use with ONScripter-EN
 	pkgver = r41.e6e76bc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Galladite27/ONScripter-EN-devkit
 	arch = x86_64
 	license = nonfree

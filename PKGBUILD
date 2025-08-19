@@ -2,7 +2,7 @@
 pkgname=onscripter-en-devkit-git
 _pkgname=ONScripter-EN-devkit
 pkgver=r41.e6e76bc
-pkgrel=1
+pkgrel=2
 pkgdesc="devkit for use with ONScripter-EN"
 arch=('x86_64')
 url="https://github.com/Galladite27/ONScripter-EN-devkit"
@@ -23,4 +23,9 @@ package() {
 	cd "$srcdir/${_pkgname%-git}"
 	install -d "${pkgdir}/usr/share/doc/ONScripter-EN-devkit/html/"
 	cp -r * -t "${pkgdir}/usr/share/doc/ONScripter-EN-devkit/html/"
+
+	#removing uneeded files
+	rm -rv "${pkgdir}/usr/share/doc/ONScripter-EN-devkit/html/resources/engine"
+	rm -v "${pkgdir}/usr/share/doc/ONScripter-EN-devkit/html/resources/tools/onscrtools-win32-20100915.zip"
+	rm -v "${pkgdir}/usr/share/doc/ONScripter-EN-devkit/html/resources/tools/onscrtools-mac-20100915.dmg"
 }
