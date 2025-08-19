@@ -4,7 +4,7 @@
 
 pkgname=libnjb
 pkgver=2.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for communicating with various portable MP3 players"
 arch=('i686' 'x86_64')
 url="https://libnjb.sourceforge.net/"
@@ -18,7 +18,7 @@ md5sums=('73f25f3297abe316dd0abec921781d50'
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --disable-hotplugging
+  ./configure --prefix=/usr --disable-hotplugging CFLAGS="-std=gnu17"
   make
 }
 
