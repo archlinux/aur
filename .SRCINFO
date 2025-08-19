@@ -1,0 +1,22 @@
+pkgbase = amazing-qr-git
+	pkgdesc = QR code generator written in Python
+	pkgver = r93.a773916
+	pkgrel = 1
+	url = https://github.com/x-hw/amazing-qr
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-imageio>=1.5
+	depends = python-numpy>=1.11.1
+	depends = python-pillow>=3.3.1
+	provides = amazing-qr
+	conflicts = amazing-qr
+	source = git+https://github.com/x-hw/amazing-qr.git
+	sha256sums = SKIP
+
+pkgname = amazing-qr-git
