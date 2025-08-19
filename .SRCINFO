@@ -20,6 +20,6 @@ pkgbase = angrysearch-git
 	provides = angrysearch=1.0.4
 	conflicts = angrysearch
 	source = git+https://github.com/DoTheEvo/ANGRYsearch.git
-	sha1sums = a52026f1f2a75c7a5132f4f2ee163618c95652e6
+	sha1sums = SKIP
 
 pkgname = angrysearch-git

@@ -6,7 +6,8 @@ pkgver=1.0.4
 pkgrel=1
 pkgdesc='Linux file search, instant results as you type'
 url='https://github.com/DoTheEvo/ANGRYsearch'
-_checksum="$(git ls-remote ${url} master | awk '{print $1}')"
+# This won't work, just yet.
+#_checksum="$(git ls-remote ${url} master | awk '{print $1}')"
 arch=('any')
 license=('GPL-2.0-only')
 depends=('python'
@@ -24,7 +25,8 @@ makedepends=('git'
 source=("git+https://github.com/DoTheEvo/ANGRYsearch.git")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-sha1sums=("$_checksum")
+sha1sums=("SKIP")
+#sha1sums=("$_checksum")
 
 pkgver() {
     cd $_pkgname
