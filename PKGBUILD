@@ -28,8 +28,8 @@ _debfile="03_${_pkgname}_v${pkgver}_ubuntu-${_ubuntuver}"
 #https://github.com/CyberTimon/RapidRAW/releases/download/v1.2.7/03_RapidRAW_v1.2.7_ubuntu-24.04_amd64.deb
 #https://github.com/CyberTimon/RapidRAW/releases/download/v1.3.1/03_RapidRAW_v1.3.1_ubuntu-24.04-arm_arm64.deb
 source_x86_64=("https://github.com/CyberTimon/${_pkgname}/releases/download/v${pkgver}/${_debfile}_amd64.deb")
-sha256sums_x86_64=('64394c70cf423ec6d3763d8f12b72a098e30fb58a303a66ab80aacc94df05d54')
-sha256sums_aarch64=('208dde56a62dd571fb4bc229834bd4383fe472b741291a240e050fea2d3844ee')
+sha256sums_x86_64=('36e1f1a277a874cf85bd6105de3f96f6607d8b662e0e13b325a91315f29f9337')
+sha256sums_aarch64=('c155148889dc622fd04535be0bd28073233f9d227277f3b328f94ba8f9e9de44')
 source_aarch64=("https://github.com/CyberTimon/${_pkgname}/releases/download/v${pkgver}/${_debfile}-arm_arm64.deb")
 
 prepare() {
