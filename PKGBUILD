@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
@@ -14,6 +14,7 @@ depends=(
 makedepends=(
     cmake
     doxygen
+    gcc14  # https://github.com/open-quantum-safe/liboqs/issues/2210
     git
     ninja
     python # required for generating the docs
@@ -28,14 +29,14 @@ b2sums=('ef67fc8e8904d6097331155384b40f32927dba7f50d6b541b7418d0bca659b47b48ab54
 
 build() {
     cmake -G Ninja -B build -S $pkgname\
+        -DCMAKE_C_COMPILER=gcc-14 \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
         -DOQS_ALGS_ENABLED=All \
-        -DOQS_ENABLE_SIG_SPHINCS=OFF \
         -DOQS_BUILD_ONLY_LIB=OFF \
         -DOQS_DIST_BUILD=ON \
-        -DOQS_USE_OPENSSL=ON \
+        -DOQS_USE_OPENSSL=OFF \
         -DOQS_DLOPEN_OPENSSL=ON \
         -DOQS_USE_AES_OPENSSL=ON \
         -DOQS_USE_SHA2_OPENSSL=ON \
