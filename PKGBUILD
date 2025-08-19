@@ -1,7 +1,7 @@
 # Maintainer: fk29g <fk29g.uphill912@slmails.com>
 _projectname=splash
 pkgname=splash-logs
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Adds beautiful, adaptive colors to make logs easier to read."
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("go")
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$_projectname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('29da8fa74ed209539806e478273e9e83d19281619d9a1c45502180e9c906571a')
+sha256sums=('7efd73b4e43f588a8c1e55a7a7eee12c481f79fe86b9abb031327f43852f11f3')
 
 build() {
     cd "$_projectname-$pkgver"
