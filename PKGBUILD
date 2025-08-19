@@ -18,7 +18,7 @@ makedepends=(
 	'gzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('624c9bca107e891fc36980d8758dd0eac8f33795a5356baf9a525642240bb00c')
+sha256sums=('6f10e12bbc0358cf20a43c1136f552ffe7081dc8023c8b131858f7fc87d709b7')
 
 _archive="$pkgname-$pkgver"
 
@@ -70,4 +70,3 @@ package() {
 	gzip "man/dim.1"
 	install -Dm644 "man/dim.1.gz" "$pkgdir/usr/share/man/man1/dim.1.gz"
 }
-sha256sums=('6f10e12bbc0358cf20a43c1136f552ffe7081dc8023c8b131858f7fc87d709b7')
