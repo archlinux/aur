@@ -1,21 +1,11 @@
 pkgbase = mattermost-desktop-bin
 	pkgdesc = Mattermost Desktop application (precompiled binary)
-	pkgver = 5.12.1
+	pkgver = 5.13.0
 	pkgrel = 1
 	url = https://mattermost.com/
 	arch = x86_64
 	license = Apache-2.0
-	depends = gtk3
-	depends = nss
-	depends = alsa-lib
-	depends = libxss
-	depends = at-spi2-core
-	depends = libcups
-	depends = libxrandr
-	provides = mattermost-desktop
-	conflicts = mattermost-desktop
-	options = !strip
-	source = mattermost-desktop-5.12.1-linux-x64.tar.gz::https://releases.mattermost.com/desktop/5.12.1/mattermost-desktop-5.12.1-linux-x64.tar.gz
-	sha256sums = 7f672812a6ece58da4f0685013dee91ba4429a522bad2833c77b2a84f7760811
+	source = mattermost-desktop-5.13.0-linux-x64.tar.gz::https://releases.mattermost.com/desktop/5.13.0/mattermost-desktop-5.13.0-linux-x64.tar.gz
+	sha256sums = 7ec1e212b9eb1d8f3af8473752c89750a8abb1a949376696a2fe9d1b757f25ac
 
 pkgname = mattermost-desktop-bin
