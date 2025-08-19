@@ -1,13 +1,13 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=daetools
-pkgver=1.9.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Equation-based object-oriented modelling, simulation and optimisation software'
 arch=('x86_64')
 url="http://www.daetools.com"
 license=('GPL3')
-depends=('python2'
+depends=('python'
          'python-numpy'
          'python-scipy'
          'python-matplotlib'
@@ -15,16 +15,16 @@ depends=('python2'
          'python-pandas'
          'python-openpyxl')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/daetools/files/daetools/${pkgver}/daetools-${pkgver}-gnu_linux-x86_64.tar.gz/download")
-sha256sums=('10cc8129d28aa9595bf5b798df13761751800fab558cb9a35ed558265d12a5f6')
+source=("${pkgname}-${pkgver}.zip::https://sourceforge.net/projects/daetools/files/daetools/${pkgver}/daetools-${pkgver}-gnu_linux-x86_64.zip/download")
+sha256sums=('0c94d7cd6fc5478e6267f5ed610f36334f9249b750193e5626efb5cefb37c300')
 
 build() {
-  cd "${pkgname}-${pkgver}-gnu_linux"
+  cd "${pkgname}-${pkgver}-gnu_linux-x86_64"
   python setup.py build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}-gnu_linux"
+  cd "${pkgname}-${pkgver}-gnu_linux-x86_64"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   rm -rf "${pkgdir}/home"
   rm -rf "${pkgdir}/usr/bin"/*.bat
