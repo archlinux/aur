@@ -1,6 +1,6 @@
-# Maintainer: Kemel Zaidan <kemelzaidan@gmail.com
+# Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=zeitfetch
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="A neofetch implementation in Rust aiming to be near instantaneous, with the least amount of dependencies possible"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('rust' 'cargo')
 depends=('glibc' 'gcc-libs')
 conflicts=('zeitfetch-git')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('645fc44f8926b1518cf13ad0fc26d4bea20e916aad3a657d4cf615e4a3833ffb')
+sha256sums=('2695761547d71a9b89f3fa6360cdc31aa35ab26652d17d2ba7550d499774eb05')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable

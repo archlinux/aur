@@ -1,6 +1,6 @@
 pkgbase = zeitfetch
 	pkgdesc = A neofetch implementation in Rust aiming to be near instantaneous, with the least amount of dependencies possible
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/nidnogg/zeitfetch
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = zeitfetch
 	depends = glibc
 	depends = gcc-libs
 	conflicts = zeitfetch-git
-	source = https://github.com/nidnogg/zeitfetch/archive/refs/tags/v0.1.14/zeitfetch-0.1.14.tar.gz
-	sha256sums = 645fc44f8926b1518cf13ad0fc26d4bea20e916aad3a657d4cf615e4a3833ffb
+	source = https://github.com/nidnogg/zeitfetch/archive/refs/tags/v0.1.15/zeitfetch-0.1.15.tar.gz
+	sha256sums = 2695761547d71a9b89f3fa6360cdc31aa35ab26652d17d2ba7550d499774eb05
 
 pkgname = zeitfetch
