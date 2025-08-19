@@ -1,6 +1,6 @@
 pkgbase = aptakube
 	pkgdesc = A modern and lightweight Kubernetes desktop client to help you operate workloads on multiple clusters. (free to use during the public preview)
-	pkgver = 1.12.6
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://aptakube.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = aptakube
 	depends = hicolor-icon-theme
 	depends = webkit2gtk-4.1
 	optdepends = gnome-terminal
-	noextract = aptakube-1.12.6.deb
+	noextract = aptakube-1.13.0.deb
 	options = !strip
-	source_x86_64 = aptakube-1.12.6.deb::https://releases.aptakube.com/aptakube_1.12.6_amd64.deb
-	sha256sums_x86_64 = 766a3a9221c1b34cded8136cfea97329644c667fdf677a4b19406dbc78c265f3
+	source_x86_64 = aptakube-1.13.0.deb::https://releases.aptakube.com/aptakube_1.13.0_amd64.deb
+	sha256sums_x86_64 = 9660c87da400dad1451f685defff774c6f5af9b3f713ad1cbd48284e965457dd
 
 pkgname = aptakube
