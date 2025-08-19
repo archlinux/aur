@@ -3,11 +3,11 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="hfc - hosts file client"
 arch=('x86_64')
-url="https://git.marlonivo.com/hfc"
+url="https://git.marlonivo.com/hfc/log.html"
 license=('MIT')
 depends=('curl' 'ncurses')
 makedepends=('gcc' 'make')
-source=("hfc::git+https://git.marlonivo.com/hfc")
+source=("hfc::git+git://git.marlonivo.com/hfc/log.html")
 md5sums=('SKIP')
 
 build() {
