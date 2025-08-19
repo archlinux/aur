@@ -5,13 +5,14 @@ pkgbase = wff-git
 	url = https://www.github.com/eugenenoble2005/wff
 	arch = x86_64
 	makedepends = dotnet-sdk
-	makedepends = wayland-protocols
 	makedepends = zig-bin
 	depends = slurp
 	depends = wf-recorder
 	depends = ffmpeg
 	depends = wlr-randr
 	depends = dotnet-runtime
+	depends = wayland
+	depends = wayland-protocols
 	source = git+https://github.com/eugenenoble2005/wff
 	sha256sums = SKIP
 
