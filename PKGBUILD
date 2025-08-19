@@ -10,7 +10,7 @@ url="https://ziglang.org/"
 license=('MIT')
 provides=('zig' 'zig-master')
 conflicts=('zig')
-makedepends=(jq minisign)
+makedepends=('curl' 'jq' 'minisign')
 options=('!strip')
 
 _index_json=$(curl -s "${url}/download/index.json")
