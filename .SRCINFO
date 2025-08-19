@@ -10,6 +10,7 @@ pkgbase = angrysearch-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = sudo
 	depends = python
 	depends = python-gobject
 	depends = python-pyqt5

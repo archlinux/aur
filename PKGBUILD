@@ -19,7 +19,8 @@ makedepends=('git'
 			 'python-build'
 			 'python-installer'
 			 'python-setuptools'
-			 'python-wheel')
+			 'python-wheel'
+			 'sudo')
 source=("git+https://github.com/DoTheEvo/ANGRYsearch.git")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
