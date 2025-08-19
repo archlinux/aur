@@ -8,7 +8,7 @@
 # Contributor: hm_b <holger at music-nerds dot net>
 
 pkgname=renoise-demo
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="A music composition program"
 arch=("x86_64")
@@ -19,7 +19,7 @@ optdepends=("jack: For JACK audio support")
 conflicts=("renoise")
 options=("!strip")
 source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux_x86_64.tar.gz")
-sha512sums=('f8c8466c03675150f7ea0f34856c10b7320f055ee238b24889b592e377ab4107f9fae83690642aeee9c1271bb5e75d8e669b09f95cb83c4f473ca1265cf07f5a')
+sha512sums=('e64c9b1e5b5fab4a2cae81ca8477c2a27b372b643d10eb09522851e23662fbcddf9c83103e5ee4d9d84cc642e2f0be076765c711f3df093d29060176c0344e2f')
 
 package() {
   cd "Renoise_${pkgver//./_}_Demo_Linux_x86_64"
