@@ -1,0 +1,33 @@
+# post-install and post-remove hooks
+
+post_install() {
+  # the non-root user who is running makepkg, even if sudo is used
+  REAL_USER="${SUDO_USER:-$(logname)}"
+  
+  # Fetch the absolute path
+  USER_HOME=$(getent passwd "${REAL_USER}" | cut -d: -f6)
+
+  GAMES_DIR="${USER_HOME}/Games/turtle-wow"
+
+  echo "Running post-install configuration for Turtle WoW..."
+
+  # check  valid user and home 
+  if [ -n "${REAL_USER}" ] && [ -d "${USER_HOME}" ]; then
+    echo "Creating game data directory at ${GAMES_DIR}..."
+  
+    install -d -m 755 -o "${REAL_USER}" -g "${REAL_USER}" "${GAMES_DIR}"
+    
+    echo "Configuration complete."
+    echo "You may RESTART the app after you login"
+  else
+ 
+    echo "Warning: Could not determine the user to run post-install script for." >&2
+    echo "You may need to create ${GAMES_DIR} manually." >&2
+  fi
+}
+
+post_remove() {
+  echo "Note: User configuration files in ~/.local/share/turtle-wow/ and game files"
+  echo "in ~/Games/turtle-wow/ have not been removed."
+  
+}

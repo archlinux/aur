@@ -1,0 +1,19 @@
+pkgbase = turtle-wow
+	pkgdesc = Turtle WoW game launcher (extracted AppImage)
+	pkgver = 1.3.0
+	pkgrel = 14
+	url = https://turtle-wow.org/
+	install = turtle-wow.install
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = alsa-lib
+	depends = jq
+	provides = turtle-wow
+	conflicts = turtle-wow
+	source = turtle-wow-1.3.0.AppImage::https://turtle-eu.b-cdn.net/client/9BEF2C29BE14CF2C26030B086DFC854DB56096DDEAABE31D33BFC6B131EC5529/TurtleWoW.AppImage
+	source = turtle-wow.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = turtle-wow
