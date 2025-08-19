@@ -27,11 +27,11 @@ source=(
 	'git+https://github.com/argilo/gr-elster.git'
 	doxup.patch
 	new_meter.patch  # https://github.com/argilo/gr-elster/pull/12.patch
-	dev_args.patch  # https://github.com/argilo/gr-elster/pull/12.patch
+	dev_args.patch  # https://github.com/argilo/gr-elster/pull/13.patch
 )
 sha256sums=('SKIP'
             '4df5f8f4011aec787459b1a9bd0d15725ef82f7390590bbb9d76ba37481dca3a'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            '3226daff68e7576e800ce6486f86add532edd42c03a8a9fa9d8c9737d8ff17d0'
             'cdff722dee502912ca183c4420482bcc18c3760fccb41d3deff676415abde059')
 
 pkgver() {

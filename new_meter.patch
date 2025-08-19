@@ -1,0 +1,38 @@
+From 3dd4a804e08234168f88b59aba3285210b56aac6 Mon Sep 17 00:00:00 2001
+From: "M. Greyson Christoforo" <grey@christoforo.net>
+Date: Mon, 18 Aug 2025 11:48:50 -0600
+Subject: [PATCH] add logic to decode the total kWh counter reported by my
+ meter
+
+---
+ python/packetize.py | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/python/packetize.py b/python/packetize.py
+index 665dd5d..54e30be 100644
+--- a/python/packetize.py
++++ b/python/packetize.py
+@@ -105,7 +105,7 @@ def process_packet(self, channel, pkt):
+ 
+         if src & 0x80000000 == 0 and len(payload) > cmd_start:
+             cmd_len = payload[cmd_start]
+-            if cmd_len == 0x33 and len(payload) >= cmd_start + 1 + cmd_len:
++            if cmd_len in (0x33, 0xab) and len(payload) >= cmd_start + 1 + cmd_len - 2:
+                 cmd_payload = payload[cmd_start + 1:cmd_start + 1 + cmd_len]
+                 cmd = cmd_payload[1]
+                 if cmd == 0xce:  # hourly usage data, every 6 hours
+@@ -124,6 +124,14 @@ def process_packet(self, channel, pkt):
+ 
+                     print()
+ 
++                elif cmd == 0x23:  # usage message
++                    print()
++
++                    main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/100
++                    print(f"  Meter reading for meter #{src}: {main_reading} kWh")
++
++                    print()
++
+     def forecast(self, noutput_items, ninputs):
+         return [640] * ninputs
+ 
