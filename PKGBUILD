@@ -4,8 +4,8 @@
 
 _name="ws4py"
 pkgname="python-${_name}"
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="WebSocket client and server library for Python"
 url="https://github.com/Lawouach/WebSocket-for-Python"
 license=("BSD")
@@ -14,7 +14,7 @@ depends=("python")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 provides=("$_name" "$pkgname")
 source=("$_name-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('31db304800f0d3da61dc4c1a3381a8fcfcfa8f16b36d916311cc32f1d294c9f7b3627dac673edf824f529f485f825ca418ab1e1a8a2fda5583c6a6a1bd9b752c')
+b2sums=('d5dde49408a0d2384e3225ab5d4f741b887dca6979ee9ece75edc0251920a5075e07c3642c3bd24dbce130fc8a833bfbe5aebc4bb7771b267191587c9c88ff6e')
 
 prepare(){
  cd "WebSocket-for-Python-$pkgver"
