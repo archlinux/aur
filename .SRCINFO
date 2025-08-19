@@ -1,6 +1,6 @@
 pkgbase = bluealsa
 	pkgdesc = Bluetooth audio ALSA backend
-	pkgver = 4.1.1
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/Arkq/bluez-alsa
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = bluealsa
 	optdepends = ncurses: build with hcitop tool
 	optdepends = readline: build with bluealsa-rfcomm tool
 	optdepends = spandsp: build mSBC codec support
-	source = https://github.com/Arkq/bluez-alsa/archive/refs/tags/v4.1.1.tar.gz
-	sha512sums = 5e43846af5c7c30a3d81a704514076a73b1d8994db5ee8925a59b1b328f684c15188d45caf9358f59e57a0c200d644dc673bd1c44f7d48a51452776e01f022f8
-
+	source = https://github.com/Arkq/bluez-alsa/archive/refs/tags/v4.3.1.tar.gz
+	sha512sums = db9ac0ce58c03062d65eab2a0ccaed3ddd23de6eda3572ac0d038557c6bb7f243a3551eebae70593c519bc4db070923b9997a6cc4e6546000a2279c56fe1f2e5
+	
 pkgname = bluealsa
