@@ -1,13 +1,13 @@
 # Maintainer: Electria
 pkgname=buttercup-git
 _pkgname=buttercup
-pkgver=r14.2a96344
+pkgver=r24.de00d5b
 pkgrel=1
 pkgdesc="script and hook to automate snapshot cycling as well as making incremental backups easy"
 arch=(any)
 url="https://github.com/Elec3137/$_pkgname"
 license=('GPL-3.0-or-later')
-depends=('sudo' 'btrfs-progs' 'grep' 'fish')
+depends=('fish' 'sudo' 'btrfs-progs' 'grep' 'mv' 'sort' 'cut')
 makedepends=('git')
 conflicts=('buttercup' 'btwrap')
 provides=('buttercup')
@@ -30,4 +30,5 @@ package() {
 
     install -d "$pkgdir/usr/share/libalpm/hooks"
     cp buttercup-snapshot-cycle.hook "$pkgdir/usr/share/libalpm/hooks/"
+    cp buttercup-grub-mkconfig.hook "$pkgdir/usr/share/libalpm/hooks/"
 }
