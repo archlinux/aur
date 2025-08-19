@@ -1,0 +1,21 @@
+pkgbase = snowmachine-git
+	pkgdesc = A python script that allows your terminal to snow
+	pkgver = r84.e5934aa
+	pkgrel = 1
+	url = https://github.com/sontek/snowmachine
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-colorama
+	provides = snowmachine
+	conflicts = snowmachine
+	source = git+https://github.com/sontek/snowmachine.git
+	sha256sums = SKIP
+
+pkgname = snowmachine-git
