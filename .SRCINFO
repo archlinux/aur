@@ -6,6 +6,7 @@ pkgbase = lux-cli
 	arch = x86_64 aarch64
 	license = LGPLv3
 	makedepends = cargo
+	makedepends = perl
 	depends = glibc
 	depends = gcc-libs
 	depends = libgpg-error
