@@ -1,6 +1,6 @@
 pkgname=lush-shell
-pkgver=0.3.2
-pkgrel=4
+pkgver=0.4.0
+pkgrel=5
 pkgdesc="Lunar shell is a Linux shell powered by Lua."
 arch=('x86_64')
 url="https://github.com/BanceDev/lush"
@@ -8,7 +8,7 @@ license=('BSD-3-Clause')
 depends=('lua')
 makedepends=('make' 'gcc' 'premake')
 source=("https://github.com/BanceDev/lush/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2084242b675a765ff91da997c21c4b1c5703aaa5b7475da11753358576b628fa')
+sha256sums=('fb561313f7a8e250afb01f53aba900878a4ee95bbaa0aeef2e264852306184cb')
 install=lush-shell.install
 
 build() {
