@@ -14,7 +14,7 @@ pkgbase = vintagestory
 	source = vintagestory.desktop
 	source = vsmodinstall-handler.desktop
 	md5sums = c3ae5c4917f1c1ac532841da400b210a
-	md5sums = a28504f172f0fd92dedf83a5ee0069aa
+	md5sums = 0cd6360c157fc7dc4d52952e83483e7d
 	md5sums = 8ccc9b49290dda21199b14ac3cd4ac7e
 
 pkgname = vintagestory

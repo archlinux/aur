@@ -21,7 +21,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
         "$pkgname.desktop"
         "vsmodinstall-handler.desktop")
 md5sums=("c3ae5c4917f1c1ac532841da400b210a"
-         "a28504f172f0fd92dedf83a5ee0069aa"
+         "0cd6360c157fc7dc4d52952e83483e7d"
          "8ccc9b49290dda21199b14ac3cd4ac7e")
 
 prepare() {
