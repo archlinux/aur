@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=zitadel
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Identity infrastructure, simplified for you"
 arch=('x86_64')
@@ -11,14 +11,14 @@ optdepends=('postgresql: PostgreSQL database'
             'nginx: reverse-proxy')
 makedepends=('go>=1.21' 'buf' 'yarn' 'dart-sass')
 conflicts=('zitadel-bin')
-license=('Apache License 2.0')
+license=('AGPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zitadel/zitadel/archive/refs/tags/v${pkgver}.tar.gz"
         "zitadel.service"
         "zitadel.sysusers"
         "zitadel.tmpfiles"
         "config.yaml"
         "init.yaml")
-sha512sums=('b266ba0987c3fea47a17a65faab8afdd7b40256ba6fd218bd7a866faeb77dc56e673e6f67d3cc1bb9f41c9b225024e1b07906dbacb3de5e3959f09e5dcd7b56b'
+sha512sums=('75e0e0908308aab053e1d57378c73038c5611e1f553e9cf6c7aa5701f5689979349245b196e674354f186547d5a759530d9480d5a2b0e5533732d6514644b469'
             '2d2a004537ff632daae1b9931764c1404495cf42ccf1bb96fbb7b6f47c0188b0f2da3e548fd7d90cebe5ab5045399729af3f1799564d11914df80dff244d10a5'
             'f497d8fdc43327a7bacc957b6c583a3dd81f3d1fe387869463cb23c5c0a8efcd04772f3fc528c528ebc6cb55d29e0d11ddf73bc7db7cf61655267b964bcc2f12'
             '7b847d89fb3d231d25a053b0a9a7fee2b184d17553b321fc403c86b122f349a65346a7e1522e1caa7e2c2dcef742358322e85ea1c2a0dd578e6e180a19553508'
