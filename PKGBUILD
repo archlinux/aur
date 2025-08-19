@@ -1,7 +1,8 @@
+# Co-Maintainer: James Clarke <james@jamesdavidclarke.com>
 # Maintainer: Christophe Robin <crobin at nekoo a-dot com>
 
 pkgname=couchbase-server-community
-pkgver=6.0.0
+pkgver=6.5.1
 pkgrel=1
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
@@ -27,4 +28,4 @@ package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
 }
 
-md5sums=('77f33dc0c72b337e10ddb0afe359c1f9')
+sha256sums=('baf65fb9cbcec87783d4e9c3ec067143a42cdeef13a884e1f917e8d2f14044b7')
