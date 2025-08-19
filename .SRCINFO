@@ -1,6 +1,6 @@
 pkgbase = python-texttools
 	pkgdesc = Python texttools.
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://pypi.org/project/python-texttools
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-texttools
 	conflicts = python-texttools
 	options = !strip
 	options = !debug
-	source = python_texttools-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_texttools/python_texttools-0.0.4.tar.gz
-	sha256sums = 2092d62aae06b73ef71e7db046df0fdd1d1137366f2b6d7184143002be091f63
+	source = python_texttools-0.0.5.tar.gz::https://files.pythonhosted.org/packages/source/p/python_texttools/python_texttools-0.0.5.tar.gz
+	sha256sums = aab593d558f0f8fb9f90f11f7cc97e4688bb01c46db81b9fb07a23b619420dba
 
 pkgname = python-texttools
