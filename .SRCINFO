@@ -1,7 +1,7 @@
 pkgbase = gcli
 	pkgdesc = A CLI for Github, Gitlab and Gitea written in C
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/herrhotzenplotz/gcli
 	arch = any
 	license = BSD-2-Clause
