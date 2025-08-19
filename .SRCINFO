@@ -1,0 +1,17 @@
+pkgbase = wakafetch-git
+	pkgdesc = Terminal dashboard for your WakaTime/Wakapi coding activity
+	pkgver = r5.e6a9a2b
+	pkgrel = 1
+	url = https://github.com/sahaj-b/wakafetch
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = wakafetch
+	conflicts = wakafetch
+	source = git+https://github.com/sahaj-b/wakafetch.git
+	sha256sums = SKIP
+
+pkgname = wakafetch-git
