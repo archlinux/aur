@@ -1,36 +1,42 @@
-# org
+# org - `alpha release`
 
-`NOTE: This is the first ever release. This WILL break for you. But you've got to start somewhere. It should work for some of you though. Please note again: this is the first release and is 99% incomplete. But it is off the 'ground', whatever that means`
+`NOTE: This is the alpha release. This will probably break for you, and it will be slower than the ideal. Only the most basic features exist (see the command list), and I am still writing some of the core commands. I am a while off from a beta release, which would be the first release that would be usable by a wider audience. This release is to test the simplest of functionality, and nothing more. Feedback on such matters is welcome.`
 
-A text-first suckless second-brain CLI tool.
+## What is 'org'?
 
-Org is a terminal-based tool for managing notes, todos, and events. It is designed to be simple, open-source, and locally based — a 'suckless' alternative to proprietary tools like Notion. It focuses on the essentials of a 'second-brain' app: storing and querying your notes, todos, and events in a clean, predictable way.
+Org aims to be a text-first suckless second-brain CLI tool.
 
-**Core principles:**
+Org is a terminal-based tool designed for managing notes, todos, and events. It is seeking to meet the need for a 'second-brain' which many have in our modern age; the need to capture, organise, and query an overflow of personal information and data in order to maximise its usefulness.
 
-- **Local storage** — Your data should stay on your machines or wherever you choose.
-- **Accessible formats** — Your data should remain in text files. It is readable and editable without special software.
-- **Simple querying** — You should quickly be able find the most important information without complex tools.
-- **Simple structure** — Your data should be organised so you can navigate your files directly, with or without Org, so that your data is compatible with other software.
+Why not just use Notion, Evernote, or even Apple Notes/Reminders? Most - if not all - 'second-brain' apps today force users to cede territory in key areas, such as: locality of data storage, accessibility and portability of data, simplicity of the structure data, and, most notably: the cost of organising data.
 
----
+Org wants to meet the same needs these apps meet while honouring these core principles:
 
-## Quick start
+- **Locality** — Your data should stay on your machines or wherever you choose.
+- **Accessibility** — Your data should remain in accessible and portable formats - such as plain-text files.
+- **Simplicity** — Your data should be organised and structured simply so that it is compatible with other (or no) software and querying tools.
+- **Affordability** - All the above should be available to you for free.
 
-### Install
+## Quick Start
+
+### 1. Install
+
+The only package manager which hosts org currently is `yay`. Install with: `yay -S org`.
+
+For those who don't use `yay`: I plan to make org available on as many platforms as I can. For now, the below instructions will suffice while I am alpha testing:
 
 ```bash
-pip install "git+https://github.com/benjaminingreens/org.git@v0.1.0"
+pip install "git+https://github.com/benjaminingreens/org.git@v0.1.4"
 ```
 
-or, if you have a managed environment, do something like this:
+If you have a managed environment, do something like this:
 
 ```bash
 # 1. Create a dedicated virtual environment for org
 python3 -m venv ~/.venvs/org
 
-# 2. Install org from GitHub into that environment
-~/.venvs/org/bin/pip install "git+https://github.com/benjaminingreens/org.git@v0.1.0"
+# 2. Install org into that environment
+~/.venvs/org/bin/pip install "git+https://github.com/benjaminingreens/org.git@v0.1.4"
 
 # 3. Create a bin directory in your home if it doesn't exist
 mkdir -p ~/.local/bin
@@ -44,131 +50,131 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.profile
 . ~/.profile
 ```
 
-To update:
-
-`~/.venvs/org/bin/pip install -U "git+https://github.com/benjaminingreens/org.git@vX.X.X"`
-
-The above is useful for installing on the likes of `iSH`. I will release on the AUR soon, and hope to release on homebrew also.
-
-### Initialise a workspace
-Run this **in the directory you want as your root**:
+To update, run:
 ```bash
-org init
+~/.venvs/org/bin/pip install -U "git+https://github.com/benjaminingreens/org.git@v0.1.4"
 ```
-This writes a `.orgroot` marker. From then on, running `org` inside any subfolder will operate at the workspace root automatically.
 
-> If nested `.orgroot` markers exist *below* your current directory, `org init` will warn and abort (auto-absorb not implemented yet).
+### 2. Initialise
 
+Run `org init` **in the directory you want to use as your org workspace**.
+
+From then on, running `org` inside any subfolder will operate at the workspace directory automatically.
+
+## Using Your Workspace
+
+At this early stage, Org manages three types of files:
+
+`.txt` files - or 'notes'.
+`.td` files - or 'todos'.
+`.ev` files - or 'events'.
+
+### `note` Conventions
+
+Org relies on YAML-style metadata in `.txt` files to index and manage your notes. For example:
+
+```YAML
+---
+title: Note title
+tags: [general]
 ---
 
-## How `org` executes
+this is the note content
+```
 
-1. Ensures you’re inside an initialised workspace (`.orgroot`).
-2. Runs validation (invokes `validate_rewrite.py`), updating `org.db`. Any issues are written to `org_errors`.
-3. Executes your command.
+Officially, no metadata is required when the user creates a `.txt` note. However, if no metadata is returned, Org will assume the following defaults:
 
-`org tidy` refuses to run if `org_errors` exists.
-
-SQLite index: `<workspace>/org.db`.
-
+```YAML
+---
+title: YYYYMMDDTHHMMSS
+tags: [general]
+authour: <your_name>
+creation: YYYYMMDDTHHMMSS
 ---
 
-## Commands
-
-All commands are invoked as:
-```bash
-org <command> [args...]
-# or, if running in-place:
-python3 org.py <command> [args...]
+this is the note content
 ```
 
-### `report`
-```
-org report [<tag>]
-```
-Daily snapshot:
-- **Events (today)** in time order (pattern-aware).
-- **Todos (priority 1 & 2)**.
+If you wish, you may include a `description` property to include a brief description of your note. Org does not assume any defaults for this property.
 
-If `<tag>` is provided, both sections filter by that tag.
+### `todo` and `event` Conventions
 
-**Example output**
-```
-=== Events (today) ===
-- 09:00–10:00 Team Standup (20250811t090000.txt) [Scheduled] (work, standup)
+`.td` (todo) and `.ev` (event) files follow similar conventions to one another.
 
-=== Todos (priority 1 & 2) ===
-- Fix issue for client (20250701t101010.txt) [In Progress] (work, report)
+Todos and Events are stored in respective files; todos can only be stored in `.td` files, and events can only be stored in `.ev` files. They cannot be stored together.
+
+Here is an example of a `.td` file:
+```td
+* t: buy drinks for sam's party
 ```
 
----
-
-### `notes`
-```
-org notes [<tag> ...]
-```
-List valid notes. With tags, performs a “contains” filter for each tag.
-
-**Example output**
-```
-20250810t223344.txt: Draft chapter structure
+Here is an example of an `.ev` file:
+```ev
+* e: sam's party
 ```
 
----
+Both can be stored with metadata, like so:
 
-### `todos`
-
-todos live in a .td file with the following syntax:
-
-`* t: todo // <metadata>`
-
-`will actually tell you what the metadata is later...`
-
-```
-org todos [<tag>]
-```
-List valid todos (most recent first). Optional single tag filter.
-
-**Example output**
-```
-- Send email to John (todos.td) [Not started] (email, work)
+```td
+* t: buy drinks for sam's party // #shopping
 ```
 
----
-
-### `events`
-
-events live in an .ev file with the following syntax:
-
-`* e: event // <metadata>`
-
-`will actually tell you what the metadata is later...`
-
-```
-org events [<tag>]
-```
-Print **today’s** events in chronological order (pattern-aware). Optional single tag filter.
-
-**Example output**
-```
-- 15:00–16:00 PCC meeting (events.ev) [Scheduled] (parish, pcc)
+```ev
+* e: sam's party // #birthdays
 ```
 
----
+As you might have guessed, the `#` symbol represents a `tag`, and is the in-line equivalent to the `tags` property in the `.txt` notes file.
 
-### `tidy`
-```
-org tidy
-```
-Cleans up invalid/old files. Refuses to run if `org_errors` exists.
+Below is a table showing the metadata schemas for todo and event files:
 
----
+`r` = required
+`d` = defaultable (org will generate a default value without user input)
+`n` = not required / optional (org will not generate a default value without user input)
+`a` = automatic (org will generate a value regardless of user input)
+`-` = n/a (property not compatible)
 
-## Coming soon
-- `org add`: create new notes/todos/events from CLI
-- `org archive`: move old items to archive
+| name        | syntax  | todo | event | multiple | type     | format          |
+|-------------|---------|------|-------|----------|----------|-----------------|
+| tag         | `#foo`  | d    | d     | true     | list     | array           |
+| authour     | `$foo`  | d    | d     | false    | str      | string          |
+| creation    | `~foo`  | a    | a     | false    | datetime | YYYYMMDDTHHMMSS |
+| status      | `=foo`  | d    | d     | false    | str      | string          |
+| assignee    | `@foo`  | d    | d     | true     | list     | array           |
+| priority    | `!foo`  | d    | d     | false    | int      | integer         |
+| title       | `/foo`  | –    | –     | false    | str      | string          |
+| description | `+foo`  | –    | –     | false    | str      | string          |
+| deadline    | `%foo`  | n    | –     | false    | datetime | YYYYMMDDTHHMMSS |
+| start       | `>foo`  | –    | r     | false    | datetime | YYYYMMDDTHHMMSS |
+| pattern     | `^foo`  | –    | n     | false    | str      | string          |
+| end         | `<foo`  | –    | n     | false    | datetime | YYYYMMDDTHHMMSS |
+
+## Command List
+
+`Note`: These commands are largely in development. The most mature part of this app is the indexing and validation (that is, structuring of data). Building useful ways of querying your data is what comes next, and all that exists are essentially placeholders. Every single command you see here is about 10% complete, and will have much more added to it.
+
+Before running through other commands, it is worth mentioning the `org collab` command. This command enables you to set up a connection between two distinct workspaces so that many of the below commands apply to multiple workspaces at once (except for `org tidy` and `org group` - which only apply to the current workspace). `org collab` will ask you to define a 'ceiling' - a reference point from which org will search for other workspaces, which will usually be your `/home`. It will then ask you to enter a workspace id to connect to a workspace. This id can be found in the `.orgroot` file of any workspace.
+
+`org init` - initialises a dir as an org workspace  
+`org notes` - lists all notes managed by org  
+`org todos` - lists all priority 1 & 2 todo items in the workspace  
+`org events` - lists all events of the day  
+`(sorting and filtering to be included for the above three in future)`  
+`org report` - combination of `org todos` and `org events` (custom reports to be included in future)  
+`org tags` - lists all tags found in the workspace  
+`org tidy` - organises files into relevant folders: `YYYY/MM` folders based on modification time, or project folders (see below command)  
+`org group <project_name> [tag1] [tag2]` - creates a folder called `_project_name`, and moves all notes, todos, and events of any specified tags into that folder.
+
+There are some hidden commands for fun. Many of which are still in development.
+
+`Note`: on flat structure
+
+Commands coming soon:
+
+`org add` - create new notes/todos/events from CLI  
+`org archive`- move old items to archive
 
 ---
 
 ## License
+
 AGPLv3 — see LICENSE file for details.
