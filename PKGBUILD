@@ -1,4 +1,5 @@
-# Maintainer: Harrison <contact@htv04.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Harrison <contact@htv04.com>
 # Contributor: Jack Kamm <jackkamm at gmail dot com>
 # Contributor: Jonathan Gruber <gruberjonathan at gmail dot com>
 # Contributor: Yamakaky <yamakaky at gmail dot com>
@@ -6,12 +7,13 @@
 
 pkgname=mbpfan
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple daemon to control fan speed on all MacBook/MacBook Pros'
-arch=('any')
+arch=('x86_64' 'i686')
 url='https://github.com/linux-on-mac/mbpfan'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git')
+depends=('glibc')
 provides=('mbpfan')
 conflicts=('mbpfan')
 source=("$pkgname::git+https://github.com/linux-on-mac/mbpfan.git#tag=v$pkgver")

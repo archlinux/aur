@@ -1,11 +1,13 @@
 pkgbase = mbpfan
 	pkgdesc = A simple daemon to control fan speed on all MacBook/MacBook Pros
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-on-mac/mbpfan
-	arch = any
-	license = GPL3
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0-or-later
 	makedepends = git
+	depends = glibc
 	provides = mbpfan
 	conflicts = mbpfan
 	backup = etc/mbpfan.conf
