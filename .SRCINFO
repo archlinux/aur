@@ -1,6 +1,6 @@
 pkgbase = ccusage
 	pkgdesc = A CLI tool for analyzing Claude Code token usage and costs from local JSONL files
-	pkgver = 15.9.5
+	pkgver = 15.10.0
 	pkgrel = 1
 	url = https://github.com/ryoppippi/ccusage
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ccusage
 	makedepends = curl
 	depends = nodejs
 	depends = npm
-	source = ccusage-15.9.5.tar.gz::https://github.com/ryoppippi/ccusage/archive/v15.9.5.tar.gz
+	source = ccusage-15.10.0.tar.gz::https://github.com/ryoppippi/ccusage/archive/v15.10.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ccusage
