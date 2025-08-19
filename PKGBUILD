@@ -2,7 +2,7 @@
 
 pkgname="python-i18nice"
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A nice i18n library for Python"
 arch=('any')
 url="https://github.com/solaluset/i18nice"
