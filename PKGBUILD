@@ -1,7 +1,7 @@
 # Maintainer: Leandro Vital <leavitals at gmail dot com>
 pkgname=ludo-git
 _pkgname=ludo
-pkgver=0.11.0.r4.ga3cc78c
+pkgver=0.19.0.r1.g210e252
 pkgrel=1
 pkgdesc="Ludo is a minimalist frontend for emulators"
 arch=('x86_64' 'armv7h')
