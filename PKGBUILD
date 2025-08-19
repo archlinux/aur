@@ -1,6 +1,6 @@
 # Maintainer: sprobie <sprobie1@gmail.com>
 pkgname=mkbrr-bin
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='A tool to create, modify and inspect torrent files'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-2.0')
 provides=('mkbrr')
 conflicts=('mkbrr')
 source=("$pkgname-$pkgver.pkg.tar.zst::https://github.com/autobrr/mkbrr/releases/download/v${pkgver}/mkbrr_${pkgver}_linux_amd64.pkg.tar.zst")
-sha256sums=('046b845996ee2e4847e9ff7aca902064eaa3a5f79a31ddeb8136cba997cccc85')
+sha256sums=('528268d7d8f22d19f7bec4ad02aab71c16f8964353e3b8dac08612dd50b08c68')
 
 package() {
     install -Dm755 "$srcdir/usr/bin/mkbrr" "$pkgdir/usr/bin/mkbrr"
