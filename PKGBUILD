@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=kibana-bin
-pkgver=9.0.4
+pkgver=9.1.2
 pkgrel=1
 pkgdesc="Browser based analytics and search dashboard for Elasticsearch"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://artifacts.elastic.co/downloads/kibana/
         "kibana.service"
         "kibana.tmpfiles"
         "kibana.sysusers")
-sha512sums=('528f5e54bb5944080f0730282332a8d77658a463028bfcb012d8e88c3f1afadb2077a99bdd81c419c547974a335587b4ade4c931826c7cbf5c993d746f5fbf9e'
+sha512sums=('b4b743b70efbfd87fa128520a4d881cc4f4634d7a0dcf7784de8fd233a017fc4bcf033f0dd819944d005042c980761a97e7ace14db702afb1e506a3b39584bdc'
             'c8858f16fb04bd0f549e9e0b36b1792d7873650a6a78a6cad685f2f758f5bf07d7189abddb8a5f013453e74390b79d4217d3b56f1ac9e917ecc5002f61fdffef'
             'b27b0fe6af95d95b3c2113c969c03c72f0b2100e88e643b6303329c5039d5e480242a08e7dbfa9fa95023337b713729cf563889a98bdc0e979f377eb42cacbe8'
             'f3dca652c1ce3f292391a8c8b3d021e1e769d936e7598978d23e20f710bb0b79aae8acfd1b32aebcb87b2cb15d765c83db5584a9df904590350e0fc0570a3193')
