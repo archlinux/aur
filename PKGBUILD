@@ -5,7 +5,7 @@
 _module="diffusers"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.33.1
+pkgver=0.35.0
 pkgrel=1
 pkgdesc='Pretrained diffusion models for image and audio generation in PyTorch'
 url='https://github.com/huggingface/diffusers'
@@ -39,11 +39,18 @@ makedepends=(
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('ecd4d4e98d37f78e58b1088401a686135f3f2ba9c2e7b4dbbb1a66d6432a4d5e')
+sha256sums=('f8b2f0bb73388fa455627d436ef9f5d7cd1d903300be629aa2e4b511d3553273')
+
+prepare() {
+  cd "$_pkgsrc"
+  sed -i '/License :: OSI Approved/d' setup.py
+  sed -i 's/license=.*,/license="Apache-2.0",/' setup.py
+  sed -i '/importlib_metadata/d' setup.py
+  python setup.py deps_table_update
+}
 
 build() {
-  cd "$_pkgsrc"
-  python -m build --no-isolation --wheel
+  python -m build -nw "$_pkgsrc"
 }
 
 check() {
@@ -52,5 +59,6 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --compile-bytecode=1 --destdir="$pkgdir" dist/*.whl
 }
