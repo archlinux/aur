@@ -1,18 +1,26 @@
 # Maintainer: mrcjkb, vhyrro
+# shellcheck disable=SC2034,2154,2164
 pkgname=lux-cli
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 epoch=
 pkgdesc="A luxurious package manager for Lua"
 arch=('x86_64')
 url="https://nvim-neorocks.github.io/"
-depends=()
+depends=(glibc 
+gcc-libs 
+libgpg-error 
+gpgme 
+bzip2 
+xz)
+provides=(lx)
 provides=()
 conflicts=(lux-cli-git)
 replaces=()
 options=(!lto)
 source=("lx-${pkgver}_x86_64.tar.gz::${url}/releases/download/v${pkgver}/lx_${pkgver}_x86_64.tar.gz")
-sha512sums=("898d0b3625ba8f0cd9ce7065d79907e0e76d00c0df7c81d26b54d40ec85bb591751036f9544c01ea897908f8ae6a1110e86750d4156f0f28b8844381ce2d43c8")
+sha512sums=("90c85907b071f23791dfa960728a83a89f427b7e89e7020caa4da7e9e7e1e238489a892c09ca38f07e74e87f61a7ad388a3ae36c5d74a6ed33bf0deb76c9c156")
+
 package() {
 	cp -r "${srcdir}"/* "${pkgdir}"/
 }
