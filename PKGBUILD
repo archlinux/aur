@@ -3,13 +3,14 @@
 
 pkgname='proxmox-tui-bin'
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
 url='https://github.com/devnullvoid/proxmox-tui'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('proxmox-tui')
 conflicts=('proxmox-tui' 'proxmox-tui-git')
+options=('!debug')
 depends=('glibc')
 optdepends=('kitty: Better terminal support' 'alacritty: Better terminal support')
 

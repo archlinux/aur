@@ -1,7 +1,7 @@
 pkgbase = proxmox-tui-bin
 	pkgdesc = A terminal user interface (TUI) for Proxmox VE
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/devnullvoid/proxmox-tui
 	arch = aarch64
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = proxmox-tui-bin
 	provides = proxmox-tui
 	conflicts = proxmox-tui
 	conflicts = proxmox-tui-git
+	options = !debug
 	source_aarch64 = proxmox-tui-bin_1.0.4_aarch64.tar.gz::https://github.com/devnullvoid/proxmox-tui/releases/download/v1.0.4/proxmox-tui_1.0.4_linux_arm64.tar.gz
 	sha256sums_aarch64 = ac963b57b71dfeccbc4178696bd54fcfc3454e92a2814ab70cde890256deaaef
 	source_x86_64 = proxmox-tui-bin_1.0.4_x86_64.tar.gz::https://github.com/devnullvoid/proxmox-tui/releases/download/v1.0.4/proxmox-tui_1.0.4_linux_amd64.tar.gz
