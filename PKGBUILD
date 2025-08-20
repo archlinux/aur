@@ -1,7 +1,7 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 
 pkgname=lichtblick-bin
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Lichtblick is an integrated visualization and diagnosis tool for robotics, available in your browser or as a desktop app on Linux, Windows, and macOS.'
 arch=('x86_64' 'aarch64')
@@ -26,3 +26,4 @@ package() {
 
 sha256sums=('a2ac55dc1cd23d3d3a5d939ce44429acd6c78acf2d619933b7d57128ae3dc08a')
 sha256sums=('0caa8bd62029bd71d0c7dcbef37d4d13068a378b0c55dd60693a0bdd35466386')
+sha256sums=('ef6c0372bc3565401a969a7324d247cee9213921012c0f4517d764075458c513')
