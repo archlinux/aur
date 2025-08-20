@@ -9,7 +9,7 @@ pkgname=(
   jack-docs
 )
 pkgver=0.126.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A low-latency audio server"
 arch=(x86_64)
 url="https://github.com/jackaudio/jack1"

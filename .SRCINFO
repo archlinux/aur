@@ -1,7 +1,7 @@
 pkgbase = jack
 	pkgdesc = A low-latency audio server
 	pkgver = 0.126.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/jackaudio/jack1
 	arch = x86_64
 	license = GPL-2.0-or-later
