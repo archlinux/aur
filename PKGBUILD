@@ -30,7 +30,7 @@ makedepends=(
 )
 
 provides=(mangowc wayland-compositor)
-conflicts=(mangowc mangowc-git)
+conflicts=(mangowc)
 source=("$pkgname::git+https://github.com/DreamMaoMao/mangowc.git")
 md5sums=('SKIP')
 
