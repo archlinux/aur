@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia
-pkgver=r1460.6ac3c03
+pkgver=r1461.c28a6d9
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 noextract=("twemoji-2.tar.gz")
 sha512sums=(
-    '65d591edc9efae0248f202343260d7322fec78193b31e324d4a5459e37850c2e8f99986c8d95281b91a7e9e5c4a7593402067f57397fc4b185d746f36f7f3183'
+    '5ec2e44d2137a946f37a12259f48dc87432a3ffde3b0d10002f99923b77db9b843b98c1f1c71480a869e14dcbe49506587e91ef925ace8de92512d745046aaaf'
     'a3c7a268bd48bd79b6bfc771affd56d71ffd78ba4df8e2a9e1783162a78c1f053c408e02f4d49ca96eee6a0a19b8cfc85197ad40d497cd89934b8311dcfebe2b'
 )
 
@@ -43,7 +43,5 @@ package() {
   cd "$srcdir"
   meson install -C build --destdir "$pkgdir"
   ln -sf "/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
-  for file in emoji/*; do
-    install -Dm644 "$file" "$pkgdir/usr/share/quickmedia/$file"
-  done
+  install -Dm644 emoji "$pkgdir/usr/share/quickmedia/emoji"
 }
