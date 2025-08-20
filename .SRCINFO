@@ -1,0 +1,13 @@
+pkgbase = emojify-go
+	pkgdesc = Lightning-fast Go rewrite of emojify - convert emoji aliases to Unicode emojis
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/damienbutt/emojify-go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = emojify-go-0.0.1.tar.gz::https://github.com/damienbutt/emojify-go/archive/v0.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = emojify-go
