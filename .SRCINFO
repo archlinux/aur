@@ -1,22 +1,19 @@
 pkgbase = python-devtools
 	pkgdesc = Python's missing debug print command, and more.
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/samuelcolvin/python-devtools
 	arch = any
 	license = MIT
-	checkdepends = python-coverage
 	checkdepends = python-pytest
 	checkdepends = python-pytest-mock
-	checkdepends = python-pytest-pretty
 	checkdepends = python-asyncpg
-	checkdepends = python-black
 	checkdepends = python-multidict
 	checkdepends = python-numpy
 	checkdepends = python-pydantic
 	checkdepends = python-sqlalchemy
 	makedepends = python-hatchling
-	depends = python>=3.7
+	depends = python
 	depends = python-executing
 	depends = python-asttokens
 	depends = python-six
