@@ -1,6 +1,6 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.6.r11.g37c95bc
+	pkgver = 1.0.0.alpha.7.r6.g4c72d42
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
@@ -38,6 +38,7 @@ pkgbase = cosmic-session-git
 	optdepends = cosmic-term-git: COSMIC terminal
 	optdepends = cosmic-wallpapers-git: COSMIC wallpapers
 	optdepends = dconf: Apply COSMIC settings to GTK applications
+	optdepends = gnome-keyring: Start gnome keyring components if the daemon is active
 	optdepends = system-config-printer: printer settings
 	optdepends = vulkan-driver: packaged vulkan driver
 	provides = cosmic-session

@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.6.r11.g37c95bc
+pkgver=1.0.0.alpha.7.r6.g4c72d42
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -43,6 +43,7 @@ optdepends=(
   'cosmic-term-git: COSMIC terminal'
   'cosmic-wallpapers-git: COSMIC wallpapers'
   'dconf: Apply COSMIC settings to GTK applications'
+  'gnome-keyring: Start gnome keyring components if the daemon is active'
   'system-config-printer: printer settings'
   'vulkan-driver: packaged vulkan driver'
 )
