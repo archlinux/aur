@@ -49,6 +49,9 @@ build() {
   --with-html-dir=/usr/share/doc/jack
   )
 
+  # Fix issue with pointer cast: https://github.com/jackaudio/jack1/issues/59
+  CFLAGS+=" -Wno-int-conversion"
+
   cd $pkgbase
   ./configure "${configure_options[@]}"
   # prevent excessive overlinking due to libtool
