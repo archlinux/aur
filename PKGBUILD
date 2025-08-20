@@ -4,7 +4,7 @@
 
 pkgname=swftools
 pkgver=0.9.2
-pkgrel=8
+pkgrel=9
 pkgdesc="A collection of SWF manipulation and creation utilities"
 arch=('i686' 'x86_64')
 url="http://www.swftools.org/"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('giflib' 'freeglut' 'lame' 't1lib' 'libjpeg' 'fontconfig')
 makedepends=('bison' 'flex' 'zlib' 'patch')
 changelog=$pkgname.changelog
-source=(http://www.swftools.org/$pkgname-$pkgver.tar.gz
+source=(https://gist.github.com/IngoMeyer441/311bc97031cf4fc78a3dfa4f273d02a2/raw/c13e9d8412b50fc42544c394e0b13a828d51e69e/$pkgname-$pkgver.tar.gz
         $pkgname-$pkgver.patch
         giflib-5.1.patch
         extern.patch
