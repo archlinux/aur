@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=143.0a1+20250722.1+hbca22a6d0402
+pkgver=144.0a1+20250820.1+h1670f9977c44
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -53,6 +53,7 @@ makedepends=(
   mesa
   nasm
   nodejs
+  onnxruntime
   python
   rust
   unzip
@@ -68,6 +69,7 @@ optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
+  'onnxruntime: Local machine learning features such as smart tab groups'
   'python: DMD (Dark Matter Detector) heap profiling'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
@@ -269,6 +271,10 @@ app.distributor.channel=$pkgname
 app.partner.archlinux=archlinux
 END
 
+  # Link up system ONNX runtime
+  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$pkgdir/usr/lib/$pkgname"
+
+  # Install desktop icons and metadata
   local i theme=nightly
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 browser/branding/$theme/default$i.png \
