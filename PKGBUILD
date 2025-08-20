@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=js-beautify-git
-pkgver=1.14.7.r19.g686f8c1b
+pkgver=1.15.4.r7.g03e3cc02
 pkgrel=1
 pkgdesc="Beautifier for javascript"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('git' 'npm')
 provides=("js-beautify=$pkgver")
 conflicts=('js-beautify')
-source=("git+https://github.com/beautify-web/js-beautify.git")
+source=("git+https://github.com/beautifier/js-beautify.git")
 sha256sums=('SKIP')
 
 
@@ -34,7 +34,7 @@ build() {
 package() {
   cd "js-beautify"
 
-  npm install -g --user root --prefix="$pkgdir/usr" git+file://$(pwd)
+  npm install -g --prefix="$pkgdir/usr" git+file://$(pwd)
   rm -r "$pkgdir/usr/lib/node_modules/js-beautify/js"/*
   cp -r js/* "$pkgdir/usr/lib/node_modules/js-beautify/js"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/js-beautify"
