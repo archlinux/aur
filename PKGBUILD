@@ -60,6 +60,8 @@ depends=(
     libportal
     python-opencv
     python-duckduckgo-search
+    python-cairo
+    gst-plugin-pipewire
 )
 
 # List of build-time dependencies
