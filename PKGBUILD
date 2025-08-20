@@ -3,7 +3,7 @@
 # Contributor: Kim Scarborough <sluggo@unknown.nu>
 
 pkgname=cantata-qt6-git
-pkgver=3.3.0.r3.gd44b606
+pkgver=3.3.1.r10.g60aaf95
 pkgrel=1
 pkgdesc="Qt6 graphical client for Music Player Daemon (MPD), nullobsi fork"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -23,10 +23,11 @@ depends=(qt6-base
          #taglib-extras
          udisks2
          ffmpeg
+		 kitemviews
 
         avahi gcc-libs zlib glibc
          )
-makedepends=(git cmake qt6-tools)
+makedepends=(git cmake qt6-tools vulkan-headers)
 optdepends=('perl-uri: Dynamic playlist'
             'mpd: Playback')
 provides=(cantata)
@@ -41,6 +42,7 @@ pkgver() {
 
 build() {
   cmake -B build -S "cantata-nullobsi" -Wno-dev \
+	-DBUNDLED_FONTAWESOME=ON \
     -DQT_DIR=/usr/lib/cmake/Qt6 \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
