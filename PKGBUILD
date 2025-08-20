@@ -1,29 +1,29 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name=langgraph-cli
-pkgname=python-${_name}
-pkgver=0.3.6
+pkgname=python-$_name
+pkgver=0.3.7
 pkgrel=1
-pkgdesc="CLI for interacting with LangGraph API."
+pkgdesc='CLI for interacting with LangGraph API.'
 arch=('any')
-url="https://github.com/langchain-ai/langgraph/tree/main/libs/cli"
+url='https://github.com/langchain-ai/langgraph/tree/main/libs/cli'
 license=('MIT')
 depends=('python' 'python-click' 'python-langgraph-sdk')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-watch' 'python-msgspec')
 optdepends=('python-langgraph-api: inmem' 'python-langgraph-runtime-inmem: inmem' 'python-dotenv: inmem')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('23f7dfa8209a2dae586a308087bf7683c35db082fca1f602b65686f9348c335b')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('d4d2d296c82a750938250a3e4e8f54f532d9be74332e8cc30252f5e0936cfa53')
 
 prepare(){
   # Fix tests
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
-  sed -i "s/cli_1/${_name//-/_}-${pkgver}/g" tests/unit_tests/cli/test_cli.py
+  cd "$srcdir"/${_name//-/_}-$pkgver
+  sed -i "s/cli_1/${_name//-/_}-$pkgver/g" tests/unit_tests/cli/test_cli.py
 }
 
 build() {
-    cd "${srcdir}"/${_name//-/_}-${pkgver}
-    python -m build --wheel --no-isolation
+  cd "$srcdir"/${_name//-/_}-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -36,13 +36,11 @@ check() {
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version_and_base_image
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version
   )
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  cd "$srcdir"/${_name//-/_}-$pkgver
+  PYTHONPATH="$srcdir"/${_name//-/_}-$pkgver pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  cd "$srcdir"/${_name//-/_}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
