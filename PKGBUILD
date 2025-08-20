@@ -23,7 +23,7 @@ package() {
     cp -r "$srcdir/Arch-Store/"* "$pkgdir/usr/share/arch-store/"
 
     # Crea la cartella dati globale con permessi corretti
-    install -dm777 "$pkgdir/var/lib/arch-store"
+    install -dm1777 "$pkgdir/var/lib/arch-store"
     
 
     # Crea un wrapper in /usr/bin
