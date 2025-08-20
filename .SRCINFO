@@ -1,6 +1,6 @@
 pkgbase = python-urlopen
 	pkgdesc = Python urlopen wrapper.
-	pkgver = 0.1.5
+	pkgver = 0.1.5.1
 	pkgrel = 1
 	url = https://pypi.org/project/python-urlopen
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-urlopen
 	conflicts = python-urlopen
 	options = !strip
 	options = !debug
-	source = python_urlopen-0.1.5.tar.gz::https://files.pythonhosted.org/packages/source/p/python_urlopen/python_urlopen-0.1.5.tar.gz
-	sha256sums = a6a6bb78c05be9ed5595e1aa376f418f05519935d54f92a8d7efebe40d4fee52
+	source = python_urlopen-0.1.5.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_urlopen/python_urlopen-0.1.5.1.tar.gz
+	sha256sums = 1eb677f6057004fffe4fba8f9a80271955e743c8d492ec3841f6ec781e87c1bb
 
 pkgname = python-urlopen
