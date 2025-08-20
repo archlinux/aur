@@ -1,5 +1,5 @@
 pkgbase = vrchat-photo-manager
-	pkgdesc = Description of your app
+	pkgdesc = A photo manager for VRChat
 	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/phaze-the-dumb/VRChat-Photo-Manager

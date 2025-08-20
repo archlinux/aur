@@ -6,7 +6,7 @@
 pkgname=vrchat-photo-manager
 pkgver=0.2.6
 pkgrel=1
-pkgdesc="Description of your app"
+pkgdesc="A photo manager for VRChat"
 arch=('x86_64')
 url="https://github.com/phaze-the-dumb/VRChat-Photo-Manager"
 license=('GPL3')
