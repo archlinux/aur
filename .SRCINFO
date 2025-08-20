@@ -1,0 +1,23 @@
+pkgbase = max
+	pkgdesc = MAX
+	pkgver = 25.8.0.454
+	pkgrel = 1
+	url = https://max.ru
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	depends = tar
+	depends = binutils
+	noextract = MAX.deb
+	source = https://download.max.ru/electron/MAX.deb
+	md5sums = SKIP
+
+pkgname = max
