@@ -6,7 +6,7 @@ _pkgname=valve-parsers
 
 pkgname="python-${_pkgname}-git"
 pkgver=9dbe663
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Some parsers for Valve game files - written in python.'
 arch=('x86_64')
@@ -16,8 +16,7 @@ license=('MIT')
 depends=('python>=3.8')
 makedepends=('git' 'python-build' 'python-installer')
 
-# source=("git+${url}")
-source=("git+${url}#")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
