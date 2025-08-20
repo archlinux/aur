@@ -1,8 +1,8 @@
 pkgbase = angle
 	pkgdesc = A conformant OpenGL ES implementation for Windows, Mac, Linux, iOS and Android.
 	pkgver = 7258
-	pkgrel = 2
-	url = https://github.com/google/angle
+	pkgrel = 3
+	url = https://chromium.googlesource.com/angle/angle
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
@@ -10,7 +10,6 @@ pkgbase = angle
 	makedepends = python
 	makedepends = procps-ng
 	makedepends = ninja
-	makedepends = depot-tools-git
 	depends = zlib
 	depends = libglvnd
 	depends = freetype2
@@ -24,7 +23,13 @@ pkgbase = angle
 	depends = glibc
 	provides = angle
 	conflicts = angle
+	source = git+https://chromium.googlesource.com/angle/angle#branch=chromium/7258
 	source = angle.pc
+	source = vk.patch
+	source = gclient_args.gni
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = angle
