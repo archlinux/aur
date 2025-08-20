@@ -2,7 +2,7 @@
 # Contributor: Cody Schafer <dev at codyps.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=fuse-archive
-pkgver=1.14
+pkgver=1.16
 pkgrel=1
 pkgdesc="FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=(
 makedepends=(boost)
 checkdepends=(python)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/fuse-archive/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a571b7cdf43748cedfc4adae21390f95b1e48ec05d8760d512cc0c1baba005c9')
+sha256sums=('e03929f280de7eded6de8817f1aa61f55ae07551bd8c6f30c4112a9b6d154f02')
 
 build() {
   cd "$pkgname-$pkgver"
