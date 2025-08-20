@@ -1,9 +1,8 @@
 # Maintainer: Frédéric Logier <fredix@protonmail.com>
 _name=harbor
-_tag=1.0.0
 pkgname=harbor
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Ecash management tool"
 arch=('x86_64')
@@ -20,18 +19,23 @@ backup=()
 options=('!lto')
 install=
 changelog=
-source=("${url}/releases/download/v${_tag}/harbor-ui-${_tag}-amd64-linux.tar.gz")
+source=("${url}/releases/download/v${pkgver}/harbor-ui_${pkgver}_amd64.deb")
 
 noextract=()
 sha256sums=("SKIP")
 validpgpkeys=()
 
 package() {
-	cd "$srcdir/"
-        install -Dm755 --no-target-directory "harbor" "${pkgdir}/usr/bin/${_name}"
-        install -Dm755 --no-target-directory bin/harbor-ui "${pkgdir}/usr/bin/${_name}-ui"
-        install -Dm644 share/applications/cash.harbor.harbor.desktop "${pkgdir}/usr/share/applications/cash.harbor.harbor.desktop"
-	install -d "${pkgdir}/usr/share/icons"
-        install -Dm644 share/icons/* "${pkgdir}/usr/share/icons"
-        install -Dm644 share/metainfo/cash.harbor.harbor.appdata.xml "${pkgdir}/usr/share/metainfo/cash.harbor.harbor.appdata.xml"
+    # Create package directory if it doesn't exist
+    mkdir -p "$pkgdir"
+
+    # Extract the .deb archive
+    cd "$srcdir"
+    ar x "${srcdir}/harbor-ui_${pkgver}_amd64.deb"
+
+    # Extract data archive to the package directory
+    tar -xf data.tar.zst -C "$pkgdir"
+
+    # Clean up
+    rm -f control.tar.zst data.tar.zst debian-binary
 }

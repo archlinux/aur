@@ -1,14 +1,14 @@
 pkgbase = harbor
 	pkgdesc = Ecash management tool
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HarborWallet/harbor
 	arch = x86_64
 	license = MIT
 	provides = harbor
 	conflicts = harbor
 	options = !lto
-	source = https://github.com/HarborWallet/harbor/releases/download/v1.0.0/harbor-ui-1.0.0-amd64-linux.tar.gz
+	source = https://github.com/HarborWallet/harbor/releases/download/v1.0.0/harbor-ui_1.0.0_amd64.deb
 	sha256sums = SKIP
 
 pkgname = harbor
