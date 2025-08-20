@@ -1,6 +1,6 @@
 pkgbase = ruby-cairo-gobject
 	pkgdesc = Ruby/CairoGObject is a Ruby binding of cairo-gobject
-	pkgver = 4.2.4
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://github.com/ruby-gnome/ruby-gnome
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = ruby-cairo-gobject
 	license = LGPL-2.1-only
 	depends = ruby
 	depends = ruby-cairo
-	depends = ruby-glib2=4.2.4
+	depends = ruby-glib2=4.3.2
 	depends = glibc
 	depends = cairo
-	source = ruby-gnome-4.2.4.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.2.4.tar.gz
-	sha256sums = 37a39e0175f00bedb3fca7791f12f9a0d759231c2d882a8770a7877a0e25cef5
+	source = ruby-gnome-4.3.2.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/4.3.2.tar.gz
+	sha256sums = a2b66682d55b1815710361d275603b544e207d63e5b93be8a14a239657774f01
 
 pkgname = ruby-cairo-gobject
