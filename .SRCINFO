@@ -1,0 +1,21 @@
+pkgbase = tasklin
+	pkgdesc = A single CLI to connect with OpenAI, Ollama, and more AI platforms
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/jetroni/tasklin
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-typer
+	depends = python-httpx
+	depends = python-pydantic
+	depends = python-openai
+	depends = python-anthropic
+	source = https://files.pythonhosted.org/packages/source/t/tasklin/tasklin-0.0.3.tar.gz
+	sha256sums = 6b005ace3b2d6881e419f452d2bffe7738eba14d66ad35a59d5088e05f4591e2
+
+pkgname = tasklin
