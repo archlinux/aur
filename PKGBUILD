@@ -1,6 +1,6 @@
 # Maintainer: Leon Richardt <aur at leon.dev>
 pkgname=python-repetita-parser
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Python parser module for the REPETITA data format"
 url="https://github.com/leon-richardt/python-repetita-parser"
@@ -15,7 +15,7 @@ provides=(python-repetita-parser)
 _name=${pkgname#python-}
 _mod_name=${_name//-/_}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_mod_name-$pkgver.tar.gz")
-sha256sums=('d39623b5e9ef01b06e71f527bf7e7bdace73930eda26c98d8281b8ce6445a35e')
+sha256sums=('a71da731b3837991d828d44c8deb8e22b1c6fa0801771b01592500ba37f8ba88')
 
 build() {
     cd "${srcdir}/$_mod_name-${pkgver}"

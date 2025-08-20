@@ -1,6 +1,6 @@
 pkgbase = python-repetita-parser
 	pkgdesc = Python parser module for the REPETITA data format
-	pkgver = 4.0.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/leon-richardt/python-repetita-parser
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-repetita-parser
 	depends = python-numpy
 	optdepends = python-networkx: convert topologies to NetworkX graphs
 	provides = python-repetita-parser
-	source = https://files.pythonhosted.org/packages/source/r/repetita-parser/repetita_parser-4.0.0.tar.gz
-	sha256sums = d39623b5e9ef01b06e71f527bf7e7bdace73930eda26c98d8281b8ce6445a35e
+	source = https://files.pythonhosted.org/packages/source/r/repetita-parser/repetita_parser-5.0.0.tar.gz
+	sha256sums = a71da731b3837991d828d44c8deb8e22b1c6fa0801771b01592500ba37f8ba88
 
 pkgname = python-repetita-parser
