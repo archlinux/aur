@@ -1,15 +1,13 @@
 pkgbase = ruby-native-package-installer
 	pkgdesc = A helper to install native packages on "gem install"
 	pkgver = 1.1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ruby-gnome2/native-package-installer
 	arch = any
-	license = LGPL3
-	makedepends = ruby-rdoc
+	license = LGPL-3.0-or-later
 	depends = ruby
-	noextract = native-package-installer-1.1.9.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/native-package-installer-1.1.9.gem
-	sha256sums = fbb41b6b22750791a4304f0a0aeea3dd837668892117f49c4caf2e8e0f4e792f
+	source = ruby-native-package-installer.tar.gz::https://github.com/ruby-gnome/native-package-installer/archive/refs/tags/1.1.9.tar.gz
+	sha256sums = 1a9d681e39ec2291405ca1ebfeadb0b140e1f1cfd0db58693ffad883c6dc4d24
 
 pkgname = ruby-native-package-installer

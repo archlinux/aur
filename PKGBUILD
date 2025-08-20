@@ -1,22 +1,63 @@
-# Maintainer: Ruby quarry (https://github.com/anatol/quarry)
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Anatol Pomozov
 
-_gemname=native-package-installer
-pkgname=ruby-$_gemname
+_gem=native-package-installer
+pkgname=ruby-${_gem}
 pkgver=1.1.9
-pkgrel=3
+pkgrel=4
 pkgdesc='A helper to install native packages on "gem install"'
 arch=(any)
 url=https://github.com/ruby-gnome2/native-package-installer
-license=(LGPL3)
+license=(LGPL-3.0-or-later)
 depends=(ruby)
-makedepends=(ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('fbb41b6b22750791a4304f0a0aeea3dd837668892117f49c4caf2e8e0f4e792f')
+source=("ruby-${_gem}.tar.gz::https://github.com/ruby-gnome/native-package-installer/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1a9d681e39ec2291405ca1ebfeadb0b140e1f1cfd0db58693ffad883c6dc4d24')
+
+build() {
+  cd "${_gem}-${pkgver}"
+
+local _gemdir="$(gem env gemdir)"
+
+  gem build "${_gem}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gem}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gem}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gem}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  cd "${_gem}-${pkgver}"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 }
