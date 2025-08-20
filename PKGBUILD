@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-git
 _pkgname=DeepChat
-pkgver=0.0.16.r891.g97e9f61
-_electronversion=35
-_nodeversion=22.15.0
+pkgver=0.3.1.r2.g5284000
+_electronversion=37
+_nodeversion=22
 pkgrel=1
 pkgdesc="A smart assistant that connects powerful AI to your personal world.(Use system-wide electron)"
 arch=('any')
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
