@@ -1,0 +1,10 @@
+pkgbase = 7k-ambition-music
+	pkgdesc = Music set for Seven Kingdoms: Ambition
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://seven-kingdoms-ambition.sourceforge.io/
+	arch = any
+	license = custom
+	depends = 7kaa-music
+
+pkgname = 7k-ambition-music
