@@ -73,25 +73,19 @@
 # 'madvise' - madvise, prevent applications from allocating more memory resources than necessary
 # More infos here:
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-configuring_transparent_huge_pages
-: "${_hugepage:=madvise}"
+: "${_hugepage:=always}"
 
-# CPU compiler optimizations - Defaults to prompt at kernel config if left empty
-# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3" "zen4"
-# Intel CPUs : "mpsc"(P4 & older Netburst based Xeon) "atom" "core2" "nehalem" "westmere" "silvermont" "sandybridge" "ivybridge" "haswell" "broadwell" "skylake" "skylakex" "cannonlake" "icelake" "goldmont" "goldmontplus" "cascadelake" "cooperlake" "tigerlake" "sapphirerapids" "rocketlake" "alderlake"
-# Other options :
-# - "native_amd" (use compiler autodetection - Selecting your arch manually in the list above is recommended instead of this option)
-# - "native_intel" (use compiler autodetection and will prompt for P6_NOPS - Selecting your arch manually in the list above is recommended instead of this option)
+# CPU compiler optimizations - Defaults to native if left empty
+# - "native" (use compiler autodetection)
+# - "zen4" (Use znver4 compiler optimizations)
 # - "generic" (kernel's default - to share the package between machines with different CPU µarch as long as they are x86-64)
-#
 : "${_processor_opt:=}"
-
-# This does automatically detect your supported CPU and optimizes for it
-: "${_use_auto_optimization:=yes}"
 
 # Clang LTO mode, only available with the "llvm" compiler - options are "none", "full" or "thin".
 # ATTENTION - one of three predefined values should be selected!
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
+# "thin-dist: Similar to thin, but uses a distributed model rather than in-process: https://discourse.llvm.org/t/rfc-distributed-thinlto-build-for-kernel/85934"
 # "none: disable LTO
 : "${_use_llvm_lto:=none}"
 
@@ -145,8 +139,8 @@ else
 fi
 
 pkgbase="linux-$_pkgsuffix"
-_major=6.14
-_minor=8
+_major=6.15
+_minor=9
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -156,7 +150,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements'
-pkgrel=4
+pkgrel=2
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -171,19 +165,21 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
   zstd
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=575.64.05
+_nv_ver=580.76.05
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
-    "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 
 # LLVM makedepends
@@ -265,20 +261,14 @@ prepare() {
     if [ -n "$_processor_opt" ]; then
         MARCH="${_processor_opt^^}"
 
-        if [ "$MARCH" != "GENERIC" ]; then
-            if [[ "$MARCH" =~ GENERIC_V[1-4] ]]; then
-                X86_64_LEVEL="${MARCH//GENERIC_V}"
-                scripts/config --set-val X86_64_VERSION "${X86_64_LEVEL}"
-            else
-                scripts/config -k -d CONFIG_GENERIC_CPU
-                scripts/config -k -e "CONFIG_M${MARCH}"
-            fi
-        fi
-    fi
-
-    ### Use autooptimization
-    if [ "$_use_auto_optimization" = "yes" ]; then
-        "${srcdir}"/auto-cpu-optimization.sh
+        case "$MARCH" in
+            GENERIC_V[1-4]) scripts/config -e GENERIC_CPU -d MZEN4 -d X86_NATIVE_CPU \
+                --set-val X86_64_VERSION "${MARCH//GENERIC_V}";;
+            ZEN4) scripts/config -d GENERIC_CPU -e MZEN4 -d X86_NATIVE_CPU;;
+            NATIVE) scripts/config -d GENERIC_CPU -d MZEN4 -e X86_NATIVE_CPU;;
+        esac
+    else
+        scripts/config -d GENERIC_CPU -d MZEN4 -e X86_NATIVE_CPU
     fi
 
     ### Selecting CachyOS config
@@ -308,12 +298,20 @@ prepare() {
     ### Select LLVM level
     case "$_use_llvm_lto" in
         thin) scripts/config -e LTO_CLANG_THIN;;
+        thin-dist) scripts/config -e LTO_CLANG_THIN_DIST;;
         full) scripts/config -e LTO_CLANG_FULL;;
         none) scripts/config -e LTO_NONE;;
         *) _die "The value '$_use_llvm_lto' is invalid. Choose the correct one again.";;
     esac
 
     echo "Selecting '$_use_llvm_lto' LLVM level..."
+
+    if ! _is_lto_kernel; then
+        echo "Enabling QR Code Panic for GCC Kernels"
+        scripts/config --set-str DRM_PANIC_SCREEN qr_code -e DRM_PANIC_SCREEN_QR_CODE \
+            --set-str DRM_PANIC_SCREEN_QR_CODE_URL https://panic.archlinux.org/panic_report# \
+            --set-val CONFIG_DRM_PANIC_SCREEN_QR_VERSION 40
+    fi
 
     ### Select tick rate
     case "$_HZ_ticks" in
@@ -347,7 +345,7 @@ prepare() {
     ### Select preempt type
 
     # We should not set up the PREEMPT for RT kernels
-    if [[ "$_cpusched" != "rt" || "$_cpusched" != "rt-bore" ]]; then
+    if [[ "$_cpusched" != "rt" && "$_cpusched" != "rt-bore" ]]; then
         case "$_preempt" in
             full) scripts/config -e PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
             lazy) scripts/config -e PREEMPT_DYNAMIC -d PREEMPT -d PREEMPT_VOLUNTARY -e PREEMPT_LAZY -d PREEMPT_NONE;;
@@ -469,6 +467,20 @@ prepare() {
     fi
 }
 
+_sign_modules() {
+    msg2 "Signing modules in $1"
+    local sign_script="${srcdir}/${_srcname}/scripts/sign-file"
+    local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "${srcdir}/${_srcname}/.config")"
+    if [[ ! "$sign_key" =~ ^/ ]]; then
+        sign_key="${srcdir}/${_srcname}/${sign_key}"
+    fi
+    local sign_cert="${srcdir}/${_srcname}/certs/signing_key.x509"
+    local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "${srcdir}/${_srcname}/.config")"
+
+    find "$1" -type f -name '*.ko' -print -exec \
+        "${sign_script}" "${hash_algo}" "${sign_key}" "${sign_cert}" '{}' \;
+}
+
 build() {
     cd "$_srcname"
     make "${BUILD_FLAGS[@]}" -j"$(nproc)" all
@@ -483,7 +495,6 @@ build() {
         MODULE_FLAGS+=(NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES')
         cd "${srcdir}/${_nv_pkg}/kernel"
         make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
-
     fi
 
     if [ "$_build_nvidia_open" = "yes" ]; then
@@ -516,7 +527,7 @@ _package() {
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
                 'scx-scheds: to use sched-ext schedulers')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
 
     cd "$_srcname"
 
@@ -583,6 +594,16 @@ _package-headers() {
     echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
+    # Install .rmeta files if they exist
+    if compgen -G "rust/*.rmeta" 1>/dev/null; then
+        install -Dt "$builddir/rust" -m644 rust/*.rmeta
+    fi
+
+    # Install .so files if they exist
+    if compgen -G "rust/*.so" 1>/dev/null; then
+        install -Dt "$builddir/rust" rust/*.so
+    fi
+
     echo "Installing unstripped VDSO..."
     make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
       link=  # Suppress build-id symlinks
@@ -648,6 +669,8 @@ _package-zfs(){
     cd "${srcdir}/zfs"
     install -dm755 "${modulesdir}"
     install -m644 module/*.ko "${modulesdir}"
+
+    _sign_modules "${modulesdir}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
@@ -666,6 +689,8 @@ _package-nvidia(){
     install -dm755 "${modulesdir}"
     install -m644 kernel/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
+
+    _sign_modules "${modulesdir}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
 }
 
@@ -684,6 +709,7 @@ _package-nvidia-open(){
     install -m644 kernel-open/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 COPYING
 
+    _sign_modules "${modulesdir}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
 }
 
@@ -700,9 +726,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('7a9336a015011fd502f31f17fff4ee6826724b4401650092fabaa93a68df14bc0dbd6e43c03f85cdac622ea28c4cd57d6ab1bcb808ce0b9ddf0ec03179f1b3e2'
-        '210fd48123a61ab999c0dafa4fd072f1823aca9d497adb2db2f86922ce929d279d6869f7d021af020c23c0c6069422d230a192615856ef290f2d2d9caf456e14'
-        '390c7b80608e9017f752b18660cc18ad1ec69f0aab41a2edfcfc26621dcccf5c7051c9d233d9bdf1df63d5f1589549ee0ba3a30e43148509d27dafa9102c19ab'
-        '458990e31ac67bf54d41098fad9a17c977a2185bcbf05fc70b7ca77af4f4f7e41e925be09af8cd360a56601a7b527e37a015464d77b8048cca3b9a495bbcb74a'
-        'd684dd248a32c12befddfed7355a4b008ceb5ed1b37d992d91654eb1924e513495bfd681dc8e518e145184e021e3aabae8b8a9d2e4444cc12454c08edc5b770e'
-        '14243b7ae2e5ac57c9a53ed122e4fe10797797820cef3caf8128d38f2830f9883b8e1494e57eddeef2983faa98e3d2e5bef255ec0aae90ea301a4de19e467fec')
+b2sums=('9818201a76f2e4cdde00a67245764cd971b0cc17ca7c6147cd53d7397eaf54036ec606a86d64b467e8973fa9650cfc83b8389de828b06860f2ee3b0164b2942e'
+        '3b049fcfdd10beab71d717f38811223076ac2b8c49fb275f9b2dcf0ece9e8ecb35e63d38f6674f0ec418b83619676d09837ea42e06e82d94b2d0356fa3d99076'
+        '6ed777d6a21fdad631a669e0004bffd572246cc90b768f03cd250573589390c0f635c13d31e5e04d8d1b738bf7aae0754f47247938042575a4de04ef2d1e0591'
+        '27829c4a1d26d04fa62a0e69950d8e9c7fb1646c7be39476af85a5f63e4a964b9bea6278a8ff4308b2893c21b82173774a000f309d1fe36a06ce8a377666c158'
+        'c42214611eafd627537e67fa4f22aefd2cfaa63f5a7a6c6536ec2454e32c1649ced2b7c64ead9fe6d08d6a6c1ee89cb18205f12d8aee30ed4253eb79df16872c')
