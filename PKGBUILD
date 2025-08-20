@@ -8,9 +8,9 @@ url="http://jikasei.me/font/genjyuu/"
 license=('custom:SIL Open Font License 1.1')
 arch=('any')
 install=$pkgname.install
-source=("https://ja.osdn.net/downloads/users/8/8636/genjyuugothic-${pkgver}.7z"
-        "https://ja.osdn.net/downloads/users/8/8638/genjyuugothic-x-${pkgver}.7z"
-        "https://ja.osdn.net/downloads/users/8/8635/genjyuugothic-l-${pkgver}.7z"
+source=("https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8636/genjyuugothic-${pkgver}.7z"
+        "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8638/genjyuugothic-x-${pkgver}.7z"
+        "https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8635/genjyuugothic-l-${pkgver}.7z"
 )
 sha256sums=(
     '1997876351985ac9e2ea7a7a809c91e3fdaef878ece5b830f2512c882c3e49db'
