@@ -1,0 +1,13 @@
+pkgbase = univpn
+	pkgdesc = 企业级VPN客户端
+	pkgver = 10781.18.1.0512
+	pkgrel = 1
+	url = https://www.univpn.com/
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	noextract = univpn-linux-64-10781.18.1.0512.zip
+	source = https://download.leagsoft.com/download/UniVPN/linux/univpn-linux-64-10781.18.1.0512.zip
+	sha256sums = SKIP
+
+pkgname = univpn
