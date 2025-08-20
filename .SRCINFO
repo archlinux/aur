@@ -1,0 +1,17 @@
+pkgbase = expressvpn-gui-nhk
+	pkgdesc = Unofficial linux GUI for expressvpn CLI (Qt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nhktmdzhg/expressvpn-gui
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = pyside6
+	depends = expressvpn
+	depends = python-pexpect
+	provides = expressvpn-gui
+	conflicts = expressvpn-gui
+	source = git+https://github.com/nhktmdzhg/expressvpn-gui.git#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = expressvpn-gui-nhk
