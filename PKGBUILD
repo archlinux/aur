@@ -1,4 +1,4 @@
-# Maintainer: Jonas Alves(Jonas_Alv) <zeropior@proton.me>
+# Maintainer: Jonas Alves(JonasAlv) <zeropior@proton.me>
 pkgname=turtle-wow
 pkgver=2.1.2
 pkgrel=15
@@ -8,9 +8,10 @@ url="https://turtle-wow.org/"
 license=('custom')
 provides=('turtle-wow')
 conflicts=('turtle-wow')
-# jq is required to manipulate preferences.json
+# jq is required to manipulate preferences.json.
 depends=('gtk3' 'alsa-lib' 'jq') 
 install=turtle-wow.install
+# Options: Disable stripping of binaries, as it causes fakeroot errors with AppImage contents.
 options=('!strip')
 
 # Using a direct CDN link for stability.
@@ -30,8 +31,10 @@ prepare() {
   
   cd squashfs-root
   
-  # Purge bundled Wayland libs to use system instead.
-  find . -name 'libwayland*' -delete
+  # Purge bundled Wayland, X11, and XCB libs to use system libraries instead.
+  find . -name "libX*.so*" -print -delete
+  find . -name "libxcb*.so*" -print -delete
+  find . -name "libwayland*.so*" -print -delete
   
   chmod u+x AppRun
 }
