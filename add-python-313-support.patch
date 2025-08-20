@@ -1,0 +1,38 @@
+From 21dce80ea96bcf033d159c0f952fb274567b315c Mon Sep 17 00:00:00 2001
+From: Michael Goin <mgoin64@gmail.com>
+Date: Tue, 19 Aug 2025 16:49:34 -0400
+Subject: [PATCH] [CI/Build] Add support for Python 3.13 (#13164)
+
+Signed-off-by: mgoin <michael@neuralmagic.com>
+Signed-off-by: mgoin <mgoin64@gmail.com>
+Co-authored-by: Cyrus Leung <tlleungac@connect.ust.hk>
+---
+ CMakeLists.txt                     |  2 +-
+ docs/getting_started/quickstart.md |  2 +-
+ pyproject.toml                     |  3 ++-
+ vllm/config/__init__.py            | 12 +++++++++++-
+ 4 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/vllm/config/__init__.py b/vllm/config/__init__.py
+index cd2be212c23d..56a749789b6a 100644
+--- a/vllm/config/__init__.py
++++ b/vllm/config/__init__.py
+@@ -191,7 +191,17 @@ def pairwise(iterable):
+             yield a, b
+             a = b
+ 
+-    cls_node = ast.parse(textwrap.dedent(inspect.getsource(cls))).body[0]
++    try:
++        cls_node = ast.parse(textwrap.dedent(inspect.getsource(cls))).body[0]
++    except (OSError, KeyError, TypeError):
++        # HACK: Python 3.13+ workaround - set missing __firstlineno__
++        # Workaround can be removed after we upgrade to pydantic==2.12.0
++        with open(inspect.getfile(cls)) as f:
++            for i, line in enumerate(f):
++                if f"class {cls.__name__}" in line and ":" in line:
++                    cls.__firstlineno__ = i + 1
++                    break
++        cls_node = ast.parse(textwrap.dedent(inspect.getsource(cls))).body[0]
+ 
+     if not isinstance(cls_node, ast.ClassDef):
+         raise TypeError("Given object was not a class.")
