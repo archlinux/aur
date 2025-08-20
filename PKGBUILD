@@ -1,7 +1,7 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 
 pkgname=lichtblick-bin
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Lichtblick is an integrated visualization and diagnosis tool for robotics, available in your browser or as a desktop app on Linux, Windows, and macOS.'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,6 @@ provides=('lichtblick')
 conflicts=('lichtblick')
 
 source=("$pkgname-$pkgver-x86_64.deb::https://github.com/lichtblick-suite/lichtblick/releases/download/v$pkgver/lichtblick-$pkgver-linux-amd64.deb")
-sha256sums=('ae24e7edff5cd695b3075630673f0b064bc26176a9e77041f9234efc042768fb')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
@@ -25,3 +24,4 @@ package() {
     ln -sf "$pkgdir/opt/Lichtblick/lichtblick" "$pkgdir/usr/bin/lichtblick"
 }
 
+sha256sums=('a2ac55dc1cd23d3d3a5d939ce44429acd6c78acf2d619933b7d57128ae3dc08a')
