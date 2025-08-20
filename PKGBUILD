@@ -10,8 +10,8 @@
 # Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=10.6.0
-pkgrel=2
+pkgver=10.6.1
+pkgrel=1
 pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL-3.0-or-later')
@@ -22,7 +22,7 @@ options=('!emptydirs')
 provides=("pea" "peazip")
 conflicts=("pea" "peazip")
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt6-1.x86_64.rpm")
-sha256sums=('26bf619bcaa9e9d2fd5024141754e4f48f45ec5f24175324038ad87e8437355d')
+sha256sums=('748c9bbb7cf094ae30da17f2aac52e94f78821c1af88637bbcc51872676e3af6')
 
 prepare() {
 # Cleanup
@@ -30,8 +30,8 @@ prepare() {
   rm -r lang-wincontext
   rm -r batch/{Windows,'macOS service menus',bat}
   rm -r batch/freedesktop_integration/KDE-servicemenus/{KDE3*,KDE4*}
-  cd "$srcdir/usr/lib/peazip/res/bin"
 # Use system libraries instead of bundled
+  cd "$srcdir/usr/lib/peazip/res/bin"
   mkdir -p upx
   ln -sf /usr/bin/7z 7z/7z
   ln -sf /usr/lib/7zip/7zCon.sfx 7z/7zCon.sfx
