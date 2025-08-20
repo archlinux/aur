@@ -1,13 +1,13 @@
 pkgbase = czkawka
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc.
-	pkgver = 9.0.0
+	pkgver = 10.0.0
 	pkgrel = 0.1
 	url = https://github.com/qarmin/czkawka
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = LicenseRef-MIT
+	license = LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0
 	checkdepends = xorg-server-xvfb
 	makedepends = cargo
 	makedepends = git
@@ -22,8 +22,8 @@ pkgbase = czkawka
 	depends = gcc-libs
 	depends = glibc
 	depends = libheif
-	source = git+https://github.com/qarmin/czkawka.git#tag=9.0.0
-	b2sums = 29f35e07c70617c72030184b2bac0bbc0fa11cffee88f1301d0a77ab8999c9d64d46c7f0ffdae24fe5b3fb039163e65b1b93e8acc7091e9362fb3c77057be605
+	source = git+https://github.com/qarmin/czkawka.git#tag=10.0.0
+	b2sums = 637b2894ebcc54b9d6dfc064d9e131023a4434ccbbbe7d8e8bb1127e4e924f17391def98b06987b39cba166042064a6003aa48d53f0ffce0206210c622e31844
 
 pkgname = czkawka-cli
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc. (CLI)
@@ -45,4 +45,4 @@ pkgname = czkawka-gui
 
 pkgname = krokiet
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc. (Desktop App, Slint frontend)
-	license = LicenseRef-MIT AND GPL-3.0-only
+	license = LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0

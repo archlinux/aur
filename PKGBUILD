@@ -6,7 +6,7 @@ pkgname=(
   czkawka-gui
   krokiet
 )
-pkgver=9.0.0
+pkgver=10.0.0
 pkgrel=0.1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
@@ -16,7 +16,7 @@ arch=(
   i686    #Arch Linux32
   x86_64  #Arch Linux
 )
-license=('LicenseRef-MIT')
+license=('LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0')
 depends=(
   bzip2
   gcc-libs
@@ -38,7 +38,7 @@ makedepends=(
 )
 checkdepends=(xorg-server-xvfb)
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
-b2sums=('29f35e07c70617c72030184b2bac0bbc0fa11cffee88f1301d0a77ab8999c9d64d46c7f0ffdae24fe5b3fb039163e65b1b93e8acc7091e9362fb3c77057be605')
+b2sums=('637b2894ebcc54b9d6dfc064d9e131023a4434ccbbbe7d8e8bb1127e4e924f17391def98b06987b39cba166042064a6003aa48d53f0ffce0206210c622e31844')
 
 build() {
   cd ${pkgbase}
@@ -67,8 +67,8 @@ package_czkawka-cli() {
   license=('LicenseRef-MIT')
   pkgdesc+=" (CLI)"
 
-  install -Dm644 "${srcdir}/czkawka/czkawka_cli/LICENSE" \
-        "${pkgdir}/usr/share/licenses/czkawka-cli/LICENSE"
+  install -Dm644 "${srcdir}/czkawka/czkawka_cli/LICENSE_MIT" \
+        "${pkgdir}/usr/share/licenses/czkawka-cli/LICENSE_MIT"
   install -Dm755 "${srcdir}/czkawka/target/release/czkawka_cli" \
         "${pkgdir}/usr/bin/czkawka_cli"
 }
@@ -85,8 +85,12 @@ package_czkawka-gui() {
   license=('LicenseRef-MIT AND CC-BY-4.0')
   pkgdesc+=" (Desktop App)"
 
-  install -Dm644 "${srcdir}/czkawka/czkawka_gui/LICENSE" \
-        "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE"
+  install -Dm644 "${srcdir}/czkawka/czkawka_gui/LICENSE_CC_BY_4_ICONS" \
+        "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_CC_BY_4_ICONS"
+  install -Dm644 "${srcdir}/czkawka/czkawka_gui/LICENSE_MIT_APP_CODE" \
+        "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_MIT_APP_CODE"
+  install -Dm644 "${srcdir}/czkawka/czkawka_gui/LICENSE_MIT_WINDOWS_THEME" \
+        "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_MIT_WINDOWS_THEME"
 
   install -Dm755 "${srcdir}/czkawka/target/release/czkawka_gui" \
         "${pkgdir}/usr/bin/czkawka_gui"
@@ -108,14 +112,15 @@ package_czkawka-gui() {
 }
 
 package_krokiet() {
-  license=('LicenseRef-MIT AND GPL-3.0-only')
+  license=('LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0')
   pkgdesc+=" (Desktop App, Slint frontend)"
 
-  install -Dm644 "${srcdir}/czkawka/krokiet/LICENSE" \
-        "${pkgdir}/usr/share/licenses/krokiet/LICENSE"
-
+  install -Dm644 "${srcdir}/czkawka/krokiet/LICENSE_CC_BY_4_ICONS" \
+        "${pkgdir}/usr/share/licenses/krokiet/LICENSE_CC_BY_4_ICONS"
+  install -Dm644 "${srcdir}/czkawka/krokiet/LICENSE_GPL_APP" \
+        "${pkgdir}/usr/share/licenses/krokiet/LICENSE_GPL_APP"
   install -Dm644 "${srcdir}/czkawka/krokiet/LICENSE_MIT_CODE" \
-        "${pkgdir}/usr/share/licenses/krokiet/LICENSE.MIT"
+        "${pkgdir}/usr/share/licenses/krokiet/LICENSE_MIT_CODE"
 
   install -Dm755 "${srcdir}/czkawka/target/release/krokiet" \
         "${pkgdir}/usr/bin/krokiet"
