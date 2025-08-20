@@ -1,7 +1,7 @@
 # Maintainer: Mike Krüger <mkrueger@posteo.de>
 pkgname=game-cheetah
-pkgver=0.4.6
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="High-performance memory scanner/editor and game trainer"
 arch=('x86_64')
 url="https://github.com/mkrueger/game_cheetah"
