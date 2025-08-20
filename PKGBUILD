@@ -1,7 +1,7 @@
 # Maintainer: aserdevyt <aserdevyt@outlook.com>
 
 pkgname=ash-shell-git
-pkgver=0.r0.g0000000
+pkgver=20250820.230306
 pkgrel=1
 pkgdesc="A modern, secure, feature-rich Linux shell written in C"
 arch=('x86_64')
@@ -15,11 +15,22 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/ash-shell"
-  # Generate a pkgver like <tag>.r<commits since tag>.g<short hash>
-  local _ver
-  _ver="$(git describe --tags --long 2>/dev/null || echo 0.0.0-0-g$(git rev-parse --short HEAD))"
-  printf "%s" "${_ver//-/.}"
+
+  # Make sure we’re not using stale refs
+  git fetch --unshallow --tags --force >/dev/null 2>&1 || true
+  git gc --prune=all --aggressive >/dev/null 2>&1 || true
+
+  # Format: YYYYMMDD.HHMMSS (UTC)
+  git log -1 --format="%cd" --date=format:'%Y%m%d.%H%M%S'
 }
+
+
+#pkgver() {
+#  cd "$srcdir/ash-shell"
+#  local _ver
+#  _ver="$(git describe --tags --long 2>/dev/null || echo 0.0.0-0-g$(git rev-parse --short HEAD))"
+#  printf "%s" "${_ver//-/.}"
+#}
 
 build() {
   cd "$srcdir/ash-shell"
@@ -31,3 +42,4 @@ package() {
   cd "$srcdir/ash-shell/build"
   install -Dm755 ash "$pkgdir/usr/bin/ash"
 }
+
