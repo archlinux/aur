@@ -1,8 +1,8 @@
 # Maintainer: dibof228
 
 pkgname=max
-pkgver=25.8.0
-pkgrel=454
+pkgver=25.8.0.454
+pkgrel=1
 
 pkgdesc="MAX is a multifunctional digital platform with a fully integrated messenger."
 arch=("x86_64")
