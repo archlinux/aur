@@ -7,13 +7,18 @@
 
 pkgname=rubyripper
 pkgver=0.8.0rc4
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure audiodisc ripper"
 arch=(any)
 url="https://github.com/bleskodev/rubyripper"
 license=(GPL-3.0-only)
-depends=(cdparanoia ruby ruby-rexml ruby-gettext ruby-gtk3)
-checkdepends=(ruby-rspec) #ruby-cucumber
+depends=(cdparanoia ruby ruby-rexml ruby-gettext ruby-gtk3 ruby-rake)
+makedepends=(flac vorbis-tools lame wavegain cdrdao libcdio
+
+			 # AUR
+			 #cd-discid vorbisgain mp3gain normalize
+)
+checkdepends=(ruby-rspec ruby-base64)
 optdepends=('cd-discid: Gnudb support'
             'lame: MP3 encoding support'
             'vorbis-tools: Ogg Vorbis encoding support'
