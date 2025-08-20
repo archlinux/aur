@@ -14,7 +14,7 @@ pkgbase = textmerger
 	depends = python-flask
 	depends = python-werkzeug
 	optdepends = python-pip: for installing optional dependencies like nbformat for Jupyter notebook support
-	source = textmerger-1.0.6.tar.gz
-	sha256sums = a50d02830c5cdd36bd5bac854be56f331dd2f56bc5a561813c69a10498f65742
+	source = textmerger-1.0.6.tar.gz::https://github.com/pierspad/TextMerger/archive/v1.0.6.tar.gz
+	sha256sums = e26d9b2fd57a8b6afcc475cb6799d2498b2c16fbe39116d15dd7cf167192db75
 
 pkgname = textmerger
