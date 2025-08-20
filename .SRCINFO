@@ -1,14 +1,12 @@
 pkgbase = arch-store
 	pkgdesc = A graphical app for managing your programs with pacman, AUR, flatpak, and appimage
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	arch = any
-	license = GPL3
-	makedepends = git
-	makedepends = python-setuptools
+	license = GPL-3.0-or-later
 	depends = python
 	depends = python-pyqt6
-	source = https://github.com/Samuobe/Arch-Store/archive/refs/tags/V2.0.0.tar.gz
+	source = https://github.com/Samuobe/Arch-Store/archive/refs/tags/V2.0.1.tar.gz
 	md5sums = SKIP
 
 pkgname = arch-store
