@@ -29,5 +29,16 @@ clean:
 dist-clean: clean
 	rm -f sipgate*CLINQ*.deb
 
-.PHONY: package sanity-check compare-versions clean dist-clean
+sha512-base64-sums:
+	@curl -s https://desktop.download.sipgate.com/latest-linux.yml
+	@echo
+	@for F in sipgate-*-amd64.deb; do \
+		sha512sum $$F | cut -d' ' -f1 | xxd -p -r | base64 -w0; \
+		echo "  $$F"; \
+	done
+
+b2-sums:
+	@b2sum sipgate-*-amd64.deb
+
+.PHONY: package sanity-check compare-versions clean dist-clean sha512-base64-sums b2-sums
 
