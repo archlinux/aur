@@ -17,6 +17,10 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "electron-launcher.sh",
+    "gclient_args.gni",
+    "makepkg-source-roller.py",
+    "prepare-electron-source-tree.sh",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
@@ -33,4 +37,4 @@ path = [
     "use-system-libraries-in-node.patch",
 ]
 SPDX-FileCopyrightText = "electron35 contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "BSD-3-Clause"
