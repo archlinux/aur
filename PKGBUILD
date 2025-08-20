@@ -1,7 +1,7 @@
 # Maintainer: Aren <rn+aur@peacevolution.org>
 
 pkgname=wvkbd
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc='On-screen keyboard for wlroots'
 url='https://git.sr.ht/~proycon/wvkbd'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('wayland' 'pango' 'cairo' 'glibc')
 makedepends=('fontconfig' 'libxkbcommon' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~proycon/wvkbd/archive/v$pkgver.tar.gz")
-sha512sums=('5497c199f6b95ab8c28bf4178dbf743afae541dad07726a907d0e80971e451a41f4487eb4868673b0761123a4aaebebc6f13670fc752b7cbe519f78238984a5e')
+sha512sums=('49eaf26c634b074b18b8a9c37764fadf8d47e5be5e68fd2d5520dd09d1948cdbb9bba9c118fa699c557840c772489b8f19c3fd07090726e1c6a9dae1615ae706')
 
 build() {
   make -C "$pkgname-v$pkgver"
