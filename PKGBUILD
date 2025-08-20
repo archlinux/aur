@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=stopmotion-git
-pkgver=0.8.7.r7.g026babc
-pkgrel=1
+pkgver=0.9.0.r20.gc400b1d
+pkgrel=2
 arch=(x86_64)
 pkgdesc="Stop motion animation creation program"
 url="https://invent.kde.org/multimedia/stopmotion"
 license=(GPL-2.0-or-later)
-depends=(qt5-base qt5-multimedia libarchive libxml2 glibc gcc-libs libvorbis)
-makedepends=(git cmake qt5-tools)
+depends=(qt6-base qt6-multimedia libarchive libxml2 glibc gcc-libs libvorbis)
+makedepends=(git cmake qt6-tools vulkan-headers)
 provides=(stopmotion)
 conflicts=(stopmotion)
 source=("git+https://invent.kde.org/multimedia/stopmotion.git")
