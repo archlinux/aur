@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=sdltrs
-pkgver=1.2.32
+pkgver=1.2.33
 pkgrel=1
 arch=('x86_64')
 pkgdesc="TRS-80 Model I/III/4/4P emulator"
@@ -10,7 +10,7 @@ license=('BSD-2-Clause')
 depends=('hicolor-icon-theme' 'sdl2')
 makedepends=('cmake')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('e9635dcfb09edc1d4e2e4d178995db1fd0e90e8bafa4383316bc95409629d684ebec95c9fb1ac0dd34caa9b26a139b7319b019599df805861aec566db0459186')
+b2sums=('338248fab264f92207af350b767c1c2496382c6af72e339124c76e4187f54f115a8ce0954c81ca5b0a60f2ce187f107df39f1ee7cf529768610f939bdf5e8a5b')
 
 build() {
   cmake $pkgname-$pkgver \
