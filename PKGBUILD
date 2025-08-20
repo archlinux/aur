@@ -2,7 +2,7 @@
 
 _ocamlname=stdcompat
 pkgname=ocaml-$_ocamlname
-pkgver=21.0
+pkgver=21.1
 pkgrel=1
 pkgdesc="Compatibility module for OCaml standard library"
 url="https://github.com/thierry-martinez/stdcompat"
@@ -11,7 +11,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/thierry-martinez/stdcompat/
 depends=('glibc' 'ocaml<5.4')
 makedepends=('ocaml-findlib')
 arch=('x86_64')
-b2sums=('6c973d9286e99650a7dd4ed605aaf6931ff8635370387d16dda86a30c69458d87ed7c7944b08b04b5a6de931e2c73eef3e96e263b49041ccc9ec200704531fc2')
+b2sums=('b351696f0aed268cd067e20a7d0917a5580399b43e5de3e60fce0ab30a8093cd1808eda610d5a20eb721033f77c45f9b5c8dabc6d55862b023c363b212a505e8')
 
 OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
 
