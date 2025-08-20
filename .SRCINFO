@@ -1,6 +1,6 @@
 pkgbase = manga-you-know-desktop-bin
 	pkgdesc = A manga reader that allows you to read manga from multiple sources in one app.(Prebuilt version)
-	pkgver = 0.9.23
+	pkgver = 0.9.24
 	pkgrel = 1
 	url = https://github.com/manga-you-know/desktop
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = manga-you-know-desktop-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = manga-you-know-desktop=0.9.23
+	provides = manga-you-know-desktop=0.9.24
 	conflicts = manga-you-know-desktop
-	source = manga-you-know-desktop-0.9.23.rpm::https://github.com/manga-you-know/desktop/releases/download/v0.9.23/MangaYouKnow-0.9.23-1.x86_64.rpm
-	source = LICENSE-0.9.23::https://raw.githubusercontent.com/manga-you-know/desktop/v0.9.23/LICENSE
-	sha256sums = 960c15f872a3f87c580ff81711eb4a032821641b24c965146f72de1ac5b7a452
+	source = manga-you-know-desktop-0.9.24.rpm::https://github.com/manga-you-know/desktop/releases/download/v0.9.24/MangaYouKnow-0.9.24-1.x86_64.rpm
+	source = LICENSE-0.9.24::https://raw.githubusercontent.com/manga-you-know/desktop/v0.9.24/LICENSE
+	sha256sums = f2c7dac74ae78c794ac68a8e7a352a7b0e123e9a29432087d85835daed71df06
 	sha256sums = aaecf4b84ef2c23ac6d770f6a233b44a89d9db4195934402c71680a4d0d07c4b
 
 pkgname = manga-you-know-desktop-bin
