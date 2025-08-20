@@ -2,5 +2,6 @@ monaco-bold-*.zip
 FontPatcher-*.zip
 pkg/
 src/
+*.log
 *.tar
 *.tar.*
