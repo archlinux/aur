@@ -1,17 +1,17 @@
-# Maintainer: Alessio 'Bl@ster' Biancalana <dottorblaster@archlinux.us>
+# Maintainer: Alessio 'Bl@ster' Biancalana <alessio@dottorblaster.it>
 pkgname=colorized-logs
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="Tools for logs with ANSI color"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/kilobyte/colorized-logs"
-license=('GPL')
+license=('MIT')
 groups=()
 depends=()
 makedepends=('cmake' 'gcc')
 conflicts=('python-ansi2html')
 source=("https://github.com/kilobyte/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d209d9fb45f5332ba4792624746f2bbbbcf425e6539fa69657e9602e2bee6570')
+sha256sums=('1fb97c9c90efd739f03dabd8cf5825c2afc95d1f1e0d6cacf62d53a8c540b3df')
 
 build() {
   cd "$pkgname-$pkgver"
