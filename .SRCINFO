@@ -1,0 +1,16 @@
+pkgbase = python-xnum
+	pkgdesc = Universal Numeral System Converter
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/openscilab/xnum
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/openscilab/xnum/archive/v0.4.tar.gz
+	sha256sums = 56e84c2bf1490b9d5d0a37d17bf2ffef55dcbe8e87a6fc89a2dc1156295008f3
+
+pkgname = python-xnum
