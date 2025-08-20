@@ -16,3 +16,4 @@ pkgbase = anitr-cli
 	sha256sums = SKIP
 
 pkgname = anitr-cli
+

@@ -27,7 +27,6 @@ build() {
   go mod tidy
   go fmt ./...
   
-  echo "⚙️ Derleniyor..."
   gobuildenv=$(go version)
   go build -o build/anitr-cli -ldflags="-X 'github.com/xeyossr/anitr-cli/internal/update.version=${pkgver}' -X 'github.com/xeyossr/anitr-cli/internal/update.buildEnv=${gobuildenv}'"
 }
