@@ -1,16 +1,16 @@
 pkgbase = gitify-bin
 	pkgdesc = GitHub notifications on your menu bar.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.5.0
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://www.gitify.io/
 	arch = x86_64
 	license = MIT
 	depends = electron37
-	source = gitify-6.5.0.rpm::https://github.com/gitify-app/gitify/releases/download/v6.5.0/gitify-6.5.0.x86_64.rpm
-	source = LICENSE-6.5.0::https://raw.githubusercontent.com/gitify-app/gitify/v6.5.0/LICENSE
+	source = gitify-6.6.0.rpm::https://github.com/gitify-app/gitify/releases/download/v6.6.0/gitify-6.6.0.x86_64.rpm
+	source = LICENSE-6.6.0::https://raw.githubusercontent.com/gitify-app/gitify/v6.6.0/LICENSE
 	source = gitify.sh
-	sha256sums = 0d20cac0db2d6a8209626b10bf40a349f631b0987ffb60c4d9bcf9eb8abb575d
+	sha256sums = 748ee90317fd8ded50f7810ce0ef9d32c6af2cc691adb4ac3e1fb26d8affb7cf
 	sha256sums = e3583a920d79b28287ca8bf4b021c6cbeba746a75073c0c68b0aa64ff0b38961
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = gitify-bin
