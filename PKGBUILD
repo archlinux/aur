@@ -2,7 +2,7 @@
 
 pkgname=quickmedia
 pkgver=r1461.c28a6d9
-pkgrel=1
+pkgrel=2
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
@@ -43,5 +43,7 @@ package() {
   cd "$srcdir"
   meson install -C build --destdir "$pkgdir"
   ln -sf "/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
-  install -Dm644 emoji "$pkgdir/usr/share/quickmedia/emoji"
+  for file in emoji/*; do
+    install -Dm644 "$file" "$pkgdir/usr/share/quickmedia/$file"
+  done
 }
