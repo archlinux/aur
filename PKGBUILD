@@ -1,7 +1,7 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 
 pkgname=context-lmtx-bin
-pkgver=2025.08.18
+pkgver=2025.08.17
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -34,7 +34,7 @@ _lmtxserver=lmtx.pragma-ade.nl
 _lmtxserverlist=lmtx.contextgarden.net,lmtx.pragma-ade.com,lmtx.pragma-ade.nl
 _zipfile=context-${_platform}.zip
 
-source=("http://${_lmtxserver}/install-lmtx/${_zipfile}")
+source=("https://${_lmtxserver}/install-lmtx/${_zipfile}")
 md5sums=('SKIP')
 
 # List of _modules to be installed

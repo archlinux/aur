@@ -1,6 +1,6 @@
 pkgbase = context-lmtx-bin
 	pkgdesc = ConTeXt LuaMetaTeX distribution
-	pkgver = 2025.08.18
+	pkgver = 2025.08.17
 	pkgrel = 1
 	url = http://www.contextgarden.net
 	install = context-lmtx-bin.install
@@ -16,7 +16,7 @@ pkgbase = context-lmtx-bin
 	optdepends = zint: support for barcodes
 	optdepends = curl: loading remote content
 	options = !strip
-	source = http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip
+	source = https://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip
 	md5sums = SKIP
 
 pkgname = context-lmtx-bin
