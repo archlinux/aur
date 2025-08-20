@@ -1,0 +1,21 @@
+pkgbase = proxmox-tui-git
+	pkgdesc = A terminal user interface (TUI) for Proxmox VE
+	pkgver = v1.0.4.r0.ga7e2742
+	pkgrel = 1
+	url = https://github.com/devnullvoid/proxmox-tui
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = kitty: Better terminal support
+	optdepends = alacritty: Better terminal support
+	provides = proxmox-tui
+	conflicts = proxmox-tui
+	conflicts = proxmox-tui-bin
+	options = !debug
+	source = git+https://github.com/devnullvoid/proxmox-tui.git#branch=master
+	sha256sums = SKIP
+
+pkgname = proxmox-tui-git
