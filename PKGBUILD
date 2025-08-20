@@ -14,8 +14,8 @@ pkgdesc="A low-latency audio server"
 arch=(x86_64)
 url="https://github.com/jackaudio/jack1"
 license=(
-  GPL
-  LGPL
+  GPL-2.0-or-later
+  LGPL-2.1-or-later
 )
 makedepends=(
   alsa-lib
