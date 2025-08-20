@@ -3,18 +3,23 @@
 
 pkgname=mingw-w64-highway
 _pkgname=highway
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A C++ library that provides portable SIMD/vector intrinsics (mingw-w64)'
 arch=('any')
 url='https://github.com/google/highway/'
-license=('Apache-2.0' 'BSD-3-Clause')
-depends=('mingw-w64-crt')
+license=('Apache-2.0 AND BSD-3-Clause')
+depends=(
+    'mingw-w64-crt'
+)
 options=(!strip !buildflags staticlibs)
-#makedepends=('mingw-w64-cmake' 'mingw-w64-gtest' 'mingw-w64-gcc')
-makedepends=('mingw-w64-cmake' 'mingw-w64-gcc')
+makedepends=(
+    'mingw-w64-cmake'
+#    'mingw-w64-gtest'
+    'mingw-w64-gcc'
+)
 source=("https://github.com/google/highway/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7e0be78b8318e8bdbf6fa545d2ecb4c90f947df03f7aadc42c1967f019e63343')
+sha256sums=('07b3c1ba2c1096878a85a31a5b9b3757427af963b1141ca904db2f9f4afe0bc2')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
