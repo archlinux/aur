@@ -62,7 +62,7 @@ optdepends=(
   'python-torchaudio: required for image processor of minicpm-o-2.6'
   'python-torchvision: required for image processor of phi3v'
   'python-datasets: tools to benchmark scripts'
-  'python-tikoken: required for DBRX tokenizer'
+  'python-tiktoken: required for DBRX tokenizer'
 #not in aur/upstream
   'python-depyf: required for debugging and profiling with complilation config'
   'python-lm-format-enforcer: required for JSON/REGEX llm output'
