@@ -1,6 +1,6 @@
 # Maintainer: Tsaitang  <Tsaitang404 at gmail dot com>
 pkgname="trilium-next-server-bin"
-pkgver=0.97.2
+pkgver=0.98.0
 pkgrel=2
 pkgdesc="Trilium Notes Server Next version"
 arch=('x86_64')
@@ -12,8 +12,9 @@ conflicts=('trilium-server-bin'
    	   'trilium-server-cn-bin')
 source=("$pkgname.tar.xz::https://github.com/TriliumNext/Trilium/releases/download/v$pkgver/TriliumNotes-Server-v$pkgver-linux-x64.tar.xz" "trilium-next-server.sh" "trilium-next-server.service")
 sha256sums=('SKIP'
-	    'SKIP'
-    	    'SKIP')
+    '9b94039bc5ce162e4195b89fd38e16326ff2c91ac9c79b7dfcb8d2b68fe048bd'
+    'SKIP'
+    'SKIP')
 
 package()
 {
