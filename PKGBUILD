@@ -1,11 +1,11 @@
 pkgname=prism-wm-git
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Prism - A minimal tiling window manager"
 arch=('x86_64')
 url="https://github.com/FedGuy699/PrismWM"
 license=('custom')
-depends=('xorg-server' 'libx11' 'libxext' 'libxrandr' 'freetype2')
+depends=('xorg-server' 'libx11' 'libxext' 'libxrandr' 'freetype2' 'libxft')
 makedepends=('git' 'gcc')
 provides=('prismwm')
 conflicts=('prismwm')
@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd "$srcdir/PrismWM"
-  install -Dm755 brooklynn "$pkgdir/usr/local/bin/prismwm"
-  install -Dm644 brooklynn.desktop "$pkgdir/usr/share/xsessions/prismwm.desktop"
+  install -Dm755 prismwm "$pkgdir/usr/local/bin/prismwm"
+  install -Dm644 prismwm.desktop "$pkgdir/usr/share/xsessions/prismwm.desktop"
 }
 
