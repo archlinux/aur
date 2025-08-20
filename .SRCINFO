@@ -1,0 +1,16 @@
+pkgbase = android-sdk-build-tools-36
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r36
+	pkgrel = 1
+	url = https://developer.android.com/studio/releases/build-tools
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	optdepends = lib32-gcc-libs
+	optdepends = lib32-zlib
+	options = !strip
+	source = https://dl.google.com/android/repository/build-tools_r36_linux.zip
+	sha256sums = 5d9ac77fb6ff43d9da518a337b4fcf8f9097113df531d99ccefe80ef7ce8250b
+
+pkgname = android-sdk-build-tools-36
