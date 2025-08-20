@@ -1,7 +1,7 @@
 pkgbase = eblan-browser
 	pkgdesc = Best browser for potato
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://twgood.serv00.net/browser/S/
 	arch = any
 	license = custom:eblan-browser
