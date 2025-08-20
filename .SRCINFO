@@ -18,6 +18,6 @@ pkgbase = max
 	depends = binutils
 	noextract = MAX.deb
 	source = https://download.max.ru/electron/MAX.deb
-	md5sums = SKIP
+	md5sums = 91a4413990890aaced063daa78f148ab
 
 pkgname = max

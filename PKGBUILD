@@ -14,7 +14,7 @@ depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" 
 
 source=("https://download.max.ru/electron/MAX.deb")
 noextract=("MAX.deb")
-md5sums=('SKIP')
+md5sums=('91a4413990890aaced063daa78f148ab')
 
 prepare() {
     ar x "MAX.deb"
