@@ -1,7 +1,7 @@
 # Maintainer: adityaphra <aditya.phra@gmail.com>
 
 pkgname="sing-box-bin"
-pkgver="1.12.1"
+pkgver="1.12.2"
 pkgrel="1"
 pkgdesc="The universal proxy platform (binary version)"
 provides=("sing-box")
@@ -25,9 +25,9 @@ sha256sums=('a828ee277711a6b376c8cf4c9a1f73458ca39ef262dd9d2a726f63111ff19e09'
             '927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405'
             '77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71'
             '44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6')
-sha256sums_x86_64=('7a8fadc78277f8d5c0d7219f38e87bd6aa7b95aaff5f6c1c0c235d6d8e80d5f7')
-sha256sums_armv7h=('5d158c391d6d5f808feb504a87517ca4b7e4d977b53efbd6c0d405f15de55631')
-sha256sums_aarch64=('86bdf45c1391d91333771c930cdce3bc3cd2c67b9823814a6d45d7fda471afd8')
+sha256sums_x86_64=('12d750d2192e682c26dfba8658c4e7a769e67ab7931566eab3b4c3c177177335')
+sha256sums_armv7h=('2fcb7206daae07f4bf5a99850a4c280e5af50d4f434592791203b6f33beb6e6f')
+sha256sums_aarch64=('bf7d22870b4fe616c16f1747c6a029d6b95d07aa1b5c70a5092c1bd292531c82')
 
 package() {
     declare -A ARCH_MAP
