@@ -1,6 +1,6 @@
 pkgbase = wallpaperdownloader
 	pkgdesc = Download, manage and change automatically your favorite wallpapers from the Internet
-	pkgver = 4.4.2
+	pkgver = 4.4.3
 	pkgrel = 0
 	url = https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = wallpaperdownloader
 	makedepends = maven
 	depends = java-runtime>=8
 	depends = xdg-utils
-	noextract = wallpaperdownloader-4.4.2.tar.gz
-	source = wallpaperdownloader-4.4.2.tar.gz::https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader/get/v4.4.2.tar.gz
-	sha256sums = 02bcc6f14961b071ff4add31b1ad986c57ebdaaab1b7c9f4ebb9913c004cda02
+	noextract = wallpaperdownloader-4.4.3.tar.gz
+	source = wallpaperdownloader-4.4.3.tar.gz::https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader/get/v4.4.3.tar.gz
+	sha256sums = 674c37822d91bb00c268c322c4902685540561f0f2117a867b2320590de390ac
 
 pkgname = wallpaperdownloader
