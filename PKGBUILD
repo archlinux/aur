@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20250612
+pkgver=20250820
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
