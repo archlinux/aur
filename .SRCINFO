@@ -1,6 +1,6 @@
 pkgbase = python-numpy-typing-compat
 	pkgdesc = Static typing compatibility layer for older versions of NumPy
-	pkgver = 20250814
+	pkgver = 20250818
 	pkgrel = 1
 	url = https://github.com/jorenham/numpy-typing-compat
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-numpy-typing-compat
 	makedepends = python-wheel
 	depends = python-jinja
 	depends = uv
-	source = numpy-typing-compat-20250814.tar.gz::https://github.com/jorenham/numpy-typing-compat/archive/v20250814.tar.gz
-	sha512sums = 1b4a27212336c8a8f21238e73bd9c8ab5a28c4d913d8f28763e142ea3dfa6af8bb1ed5f0c233435469b374706fc6f32319f7695935e7ac212e57a8a0a15fdec3
+	source = numpy-typing-compat-20250818.tar.gz::https://github.com/jorenham/numpy-typing-compat/archive/v20250818.tar.gz
+	sha512sums = 513a167566b91c25bd1a7aed289caefa145b3e9f9ac32668ceb8f1ff08de5b8a94b4572d894ac32139d6472003d03129f5c2499a82b238c7b1bcd97ad6dea3ca
 
 pkgname = python-numpy-typing-compat
