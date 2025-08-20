@@ -13,12 +13,19 @@ depends=("7kaa-music")
 
 
 package() {
+    mkdir -p "${pkgdir}/opt/${pkgname}"
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+
     # MUSIC directory
-    cd "${srcdir}/${pkgname}/"
+    cd "${pkgdir}/opt/${pkgname}"
     ln -s "../7kaa/MUSIC"
 
-    # Readme and licence
+    # Readme
     cd "${pkgdir}/usr/share/doc/${pkgname}"
-    ln -s "../7kaa/README-Music.txt"
-    ln -s "../7kaa/COPYING-Music.txt"
+    ln -s "../7kaa/README-Music"
+
+    # Licence
+    cd "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s "../7kaa/COPYING-Music"
 }
