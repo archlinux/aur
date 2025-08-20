@@ -1,6 +1,6 @@
 pkgbase = bkcrack-bin
 	pkgdesc = Crack legacy zip encryption with Biham and Kocher's known plaintext attack.
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/kimci86/bkcrack
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bkcrack-bin
 	depends = glibc
 	provides = bkcrack
 	conflicts = bkcrack
-	source = https://github.com/kimci86/bkcrack/releases/download/v1.7.1/bkcrack-1.7.1-Linux.tar.gz
-	sha256sums = 38dc3ae78923474b769ab1969bb2cffcbc501a90fde6bf68a6410f7ccf25c0f5
+	source = https://github.com/kimci86/bkcrack/releases/download/v1.8.0/bkcrack-1.8.0-Linux-x86_64.tar.gz
+	sha256sums = 774d2520ca2305e4ad5e30d59c14edba109d9cc0b6cde2d8f3ad6ebb01de13bf
 
 pkgname = bkcrack-bin

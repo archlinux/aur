@@ -1,7 +1,9 @@
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Aloxaf <aloxafx@gmail.com>
-# Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
+# Contributor: Asuka Minato <i at asukaminato dot eu dot org>
+
 pkgname=bkcrack-bin
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Crack legacy zip encryption with Biham and Kocher's known plaintext attack."
 arch=('x86_64')
@@ -10,8 +12,8 @@ license=('Zlib')
 depends=('gcc-libs' python glibc)
 provides=("bkcrack")
 conflicts=("bkcrack")
-source=("https://github.com/kimci86/bkcrack/releases/download/v$pkgver/bkcrack-$pkgver-Linux.tar.gz")
-sha256sums=('38dc3ae78923474b769ab1969bb2cffcbc501a90fde6bf68a6410f7ccf25c0f5')
+source=("https://github.com/kimci86/bkcrack/releases/download/v$pkgver/bkcrack-$pkgver-Linux-$arch.tar.gz")
+sha256sums=('774d2520ca2305e4ad5e30d59c14edba109d9cc0b6cde2d8f3ad6ebb01de13bf')
 
 package() {
 	install -vd "$pkgdir/usr/share/bkcrack"
