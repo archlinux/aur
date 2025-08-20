@@ -1,0 +1,18 @@
+pkgbase = python-onepassword-sdk
+	pkgdesc = Python SDK for 1Password
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/1Password/onepassword-sdk-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pydantic
+	source = https://files.pythonhosted.org/packages/source/o/onepassword_sdk/onepassword_sdk-0.3.1.tar.gz
+	sha256sums = ddc6ecd7c7b33fbafe1673196605f309b4b2dfee5a6d2e137a4d18860eb07c3b
+
+pkgname = python-onepassword-sdk
