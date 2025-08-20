@@ -22,7 +22,7 @@ sha256sums=(
 	"e90aecc14f66eed27b8afe409de6f058a285f8eee84a8af207b0398b5450cf57"
 )
 
-prepare() {
+package() {
 	mkdir -p ${srcdir}/scripts
 	find ${srcdir} -maxdepth 1 -type f -print0 | while IFS= read -r -d $'\0' file; do
 		trimfname=${file##*/}
@@ -36,9 +36,6 @@ prepare() {
 	done
 
 	magick ${srcdir}/docs/doomtools-logo.ico[0] ${srcdir}/doomtools-logo.png
-}
-
-package() {
 	for file in ${srcdir}/scripts/*; do
 		install -Dm755 $file ${pkgdir}/usr/bin/"${file##*/}"
 	done
