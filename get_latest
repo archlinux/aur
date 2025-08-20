@@ -12,7 +12,7 @@ const os = require('os');
 
 require('seajs');
 
-const file = "linuxQQDownload"
+const file = "linuxConfig"
 const indexUrl = "https://im.qq.com/linuxqq/index.shtml";
 var url;
 try {

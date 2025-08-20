@@ -1,6 +1,6 @@
 pkgbase = linuxqq-appimage-latest
 	pkgdesc = New Linux QQ based on Electron
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64
@@ -17,9 +17,5 @@ pkgbase = linuxqq-appimage-latest
 	conflicts = linuxqq-nt-bwrap
 	options = !strip
 	options = !debug
-	source = get_latest
-	source = package.json
-	sha256sums = 092b5370cb69e57fd1dbf670baa6de979be800d06653252d7fdf6ae4768e5bdd
-	sha256sums = f68a25e106dc496fbbb9a46c44c5624b3fc6ef436642b19d1023ecf53588cd90
 
 pkgname = linuxqq-appimage-latest

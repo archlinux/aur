@@ -6,7 +6,7 @@ _Pkgname=Linuxqq
 _disname=qq
 
 pkgname="${_pkgname}"-appimage-latest
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,6 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 makedepends=('nodejs' 'npm')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq' 'linuxqq-nt-bwrap')
-
-source=("get_latest" "package.json")
-sha256sums=('092b5370cb69e57fd1dbf670baa6de979be800d06653252d7fdf6ae4768e5bdd'
-            'f68a25e106dc496fbbb9a46c44c5624b3fc6ef436642b19d1023ecf53588cd90')
 
 _appimage="${_Pkgname}-${pkgver}-${pkgrel}-${CARCH}.AppImage"
 
