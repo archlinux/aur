@@ -2,33 +2,30 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.42.0
-pkgrel=2
+pkgver=5.43.1
+pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
 url='https://github.com/gradio-app/gradio'
 license=('Apache-2.0')
-source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz"
-        "https://files.pythonhosted.org/packages/py3/g/gradio-pdf/gradio_pdf-0.0.22-py3-none-any.whl") # Prevent cercular dependencies
-noextract=('gradio_pdf-0.0.22-py3-none-any.whl')
-sha256sums=('25a66744fc01c98bec41a1e2aaf7dd1a1f05683684a3edf98a9603648622f3eb'
-            '6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5')
 depends=('python' 'python-aiofiles' 'python-anyio' 'python-brotli' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'uvicorn')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel' 'pnpm')
-checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras')
+checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-gradio-pdf' 'python-matplotlib' 'python-hypothesis' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras' 'python-itsdangerous')
 optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp' 'ruff: needed for custom component docs generation')
+source=("${url}/archive/refs/tags/$_name@$pkgver.tar.gz")
+sha256sums=('c14a7ebf0b74124002c10b6a5bd6081c7942f38a474b62b262e33cdbeaebd0bc')
 
 prepare(){
-  cd "${srcdir}"/${_name}-${_name}-${pkgver}
+  cd "$srcdir"/$_name-$_name-$pkgver
   sed -i 's/"pnpm": "^9"/"pnpm": "^10"/g' package.json # Use pnpm 10
   rm -rf test/test_docker # Remove tests that need docker
 }
 
 build() {
-  cd "${srcdir}"/${_name}-${_name}-${pkgver}
+  cd "$srcdir"/$_name-$_name-$pkgver
   pnpm i --ignore-scripts
   NODE_OPTIONS="--max-old-space-size=8192" pnpm build
-  PYTHONPATH="${srcdir}/${_name}-${_name}-${pkgver}:$PYTHONPATH" python -c "import gradio"
+  PYTHONPATH="$srcdir"/$_name-$_name-$pkgver python -c "import gradio"
   python -m build --wheel --no-isolation
 }
 
@@ -43,15 +40,12 @@ check() {
     # Failed
     --deselect test/test_blocks.py::test_post_process_file_blocked
   )
-  cd "${srcdir}"/${_name}-${_name}-${pkgver}
-  ulimit -n 8192
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m installer "${srcdir}"/*.whl
-  PATH="${srcdir}/${_name}-${_name}-${pkgver}/test-env/bin:$PATH" test-env/bin/python -m pytest "${pytest_options[@]}" test
+  cd "$srcdir"/$_name-$_name-$pkgver
+  ulimit -n 16384
+  PYTHONPATH="$srcdir"/$_name-$_name-$pkgver pytest "${pytest_options[@]}" test
 }
 
 package() {
-  cd "${srcdir}"/${_name}-${_name}-${pkgver}
+  cd "$srcdir"/$_name-$_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
