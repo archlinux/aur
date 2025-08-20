@@ -1,0 +1,12 @@
+pkgbase = max-patched
+	pkgdesc = Исправленная версия пакета Max
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = pacman
+	conflicts = max
+	source = https://trk.mail.ru/c/dr9tt3
+	sha256sums = 5800f2d23e1b2a39d3061eb2aa5143b56eae0e7e9b89c637cf2bd8ee27738470
+
+pkgname = max-patched
