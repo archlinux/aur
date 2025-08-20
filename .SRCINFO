@@ -2,7 +2,7 @@ pkgbase = jack
 	pkgdesc = A low-latency audio server
 	pkgver = 0.126.0
 	pkgrel = 5
-	url = http://jackaudio.org/
+	url = https://github.com/jackaudio/jack1
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -13,12 +13,12 @@ pkgbase = jack
 	makedepends = git
 	makedepends = libffado
 	makedepends = libsamplerate
-	source = jack::git+https://github.com/jackaudio/jack1.git#tag=1c7c1bada449fbfb876c952882351162e5455540?signed
-	source = git+https://github.com/jackaudio/headers
+	source = jack::git+https://github.com/jackaudio/jack1.git?signed#tag=0.126.0
+	source = jack-headers::git+https://github.com/jackaudio/headers
 	validpgpkeys = 62B11043D2F6EB6672D93103CDBAA37ABC74FBA0
+	sha512sums = 2a5886c321466487edd8610686c9ac66f943ad55a69451bfe71f609366fc3fb9497986d3c6b1a6d96e23b9b39af70e4236ed23c7f04044ed0178f743fde19ed2
 	sha512sums = SKIP
-	sha512sums = SKIP
-	b2sums = SKIP
+	b2sums = b9c8c54a220e68f5dbc2565d4ca4114a077089bb2eb612b76b9ab22ef45c8db3247c97f721c1eb68005d5c168524917482fcb19dd76209b92a81d71d312e55af
 	b2sums = SKIP
 
 pkgname = jack
