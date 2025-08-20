@@ -1,5 +1,5 @@
 pkgbase = python-xnum
-	pkgdesc = Universal Numeral System Converter
+	pkgdesc = Simple and lightweight Python library that helps you convert digits between different numeral systems
 	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/openscilab/xnum
