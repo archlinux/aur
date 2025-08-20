@@ -1,6 +1,6 @@
 pkgbase = pcb2gcode-git
 	pkgdesc = Gerber to gcode file converter
-	pkgver = r1778.8c084afd
+	pkgver = r1805.07c6df4c
 	pkgrel = 1
 	url = https://github.com/pcb2gcode/pcb2gcode
 	arch = i686

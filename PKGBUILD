@@ -3,7 +3,7 @@
 
 pkgname=pcb2gcode-git
 _pkgname=pcb2gcode
-pkgver=r1778.8c084afd
+pkgver=r1805.07c6df4c
 pkgrel=1
 pkgdesc="Gerber to gcode file converter" 
 arch=('i686' 'x86_64')
@@ -21,11 +21,17 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd "$srcdir/$_pkgname"
-
   autoreconf -i
   ./configure --prefix=/usr
+
+  # see https://github.com/pcb2gcode/pcb2gcode/issues/587#issuecomment-3122004254
+  sed -i '/BOOST_CPPFLAGS_SYSTEM = $(subst -I,-isystem ,$(BOOST_CPPFLAGS))/d' Makefile
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
   make -j
 }
 
