@@ -1,0 +1,4 @@
+[openboardview]
+source = 'github'
+github = 'OpenBoardView/OpenBoardView'
+use_latest_release = true
