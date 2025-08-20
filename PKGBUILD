@@ -7,8 +7,8 @@
 
 pkgbase=syncthing-git
 pkgname=(syncthing-git syncthing-discosrv-git syncthing-relaysrv-git)
-pkgver=1.27.6.r0.g61b94b9ea
-pkgrel=2
+pkgver=2.0.1.r0.g7a76685d7
+pkgrel=1
 arch=(x86_64)
 url="https://syncthing.net/"
 license=(MPL-2.0)
@@ -81,8 +81,6 @@ package_syncthing-git() {
   cd "syncthing"
   install -Dm755 syncthing "${pkgdir}/usr/bin/syncthing"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/syncthing/README.md"
-  install -Dm644 "etc/linux-systemd/system/syncthing-resume.service" \
-    "${pkgdir}/usr/lib/systemd/system/syncthing-resume.service"
   install -Dm644 "etc/linux-systemd/system/syncthing@.service" \
     "${pkgdir}/usr/lib/systemd/system/syncthing@.service"
   install -Dm644 "etc/linux-systemd/user/syncthing.service" \

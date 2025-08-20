@@ -1,6 +1,6 @@
 pkgbase = syncthing-git
-	pkgver = 1.27.6.r0.g61b94b9ea
-	pkgrel = 2
+	pkgver = 2.0.1.r0.g7a76685d7
+	pkgrel = 1
 	url = https://syncthing.net/
 	arch = x86_64
 	license = MPL-2.0
