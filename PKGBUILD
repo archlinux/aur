@@ -2,7 +2,7 @@
 
 _appname="harlequin_mysql"
 pkgname="${_appname//_/-}"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The MySQL adapter for Harlequin"
 url="https://harlequin.sh/"
@@ -16,7 +16,7 @@ makedepends=("python-build"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_appname::1}/${_appname}/${_appname}-${pkgver}.tar.gz")
-b2sums=('39fd68fe12fe7e86bf92499d0ee954f5f92e94601fdd70717d0ff700a7c95ace85e9e7a082d9ed5479afed3f8f0526191f8ad00fb619587d029208f5007358de')
+b2sums=('b521635ec67aff7a8861d77ff44255498481a2e3bc69c1c1181fdc47f3490e6f4948fea8e040a52b535a3377d5afe4764f7b95633f571cad12c175ff951a3dc1')
 
 build(){
     cd "${_appname}-${pkgver}"
