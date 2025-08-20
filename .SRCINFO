@@ -1,6 +1,6 @@
 pkgbase = r-tfruns
 	pkgdesc = Training Run Tools for 'TensorFlow'
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tfruns
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-tfruns
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/tfruns_1.5.3.tar.gz
-	sha256sums = be2efd773b59ce8f8df0ebf11eb3376dad335aed6d03dd04d2e48cec085f0c7c
+	source = https://cran.r-project.org/src/contrib/tfruns_1.5.4.tar.gz
+	sha256sums = dd22af08aaf1af42e2ba3fba372d91e2f83639a3d73dc464e72c55e26f2a31d2
 
 pkgname = r-tfruns
