@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/notion-flags.conf ]]; then
 fi
 
 # Launch
-exec electron34 /usr/lib/notion-app/app.asar $NOTION_USER_FLAGS "$@" # https://wiki.archlinux.org/title/Electron_package_guidelines#Using_the_system_electron
+exec electron36 /usr/lib/notion-app/app.asar $NOTION_USER_FLAGS "$@" # https://wiki.archlinux.org/title/Electron_package_guidelines#Using_the_system_electron
