@@ -2,7 +2,7 @@
 # Maintainer: Rubin Bhandari <roobin.bhandari@gmail.com>
 
 pkgname=pokego-bin
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="command-line tool that lets you display Pokémon sprites in color directly in your terminal"
 url="https://github.com/rubiin/pokego"
@@ -10,7 +10,7 @@ license=("GPL-3.0")
 provides=("pokego")
 arch=('x86_64' 'aarch64')
 conflicts=("pokego" "pokego-git")
-source=("https://github.com/rubiin/pokego/releases/download/v$pkgver/pokego-linux-$pkgver.tar.gz")
+source=("https://github.com/rubiin/pokego/releases/download/v$pkgver/pokego_Linux_x86_64.tar.gz")
 sha256sums=("SKIP")
 
 package() {
