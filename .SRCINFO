@@ -1,6 +1,6 @@
 pkgbase = ytsurf
 	pkgdesc = Search and play YouTube videos from the terminal using fzf or rofi and mpv
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Stan-breaks/ytsurf
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ytsurf
 	depends = xh
 	depends = chafa
 	optdepends = rofi: GUI launcher alternative to fzf
-	source = ytsurf-1.6.0.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/v1.6.0.tar.gz
-	sha256sums = b2f5b698b2960ad465bc6d9b2af54ef2589e4bef2977fc5799707477ebd9b7bf
+	source = ytsurf-1.7.0.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 1308c362d6a5295c95651af487537e977767f7579983d9f1a24f3edc26e9bd9c
 
 pkgname = ytsurf
