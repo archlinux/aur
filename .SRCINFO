@@ -1,0 +1,17 @@
+pkgbase = eblan-browser
+	pkgdesc = Best browser for potato
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://twgood.serv00.net/browser/S/
+	arch = any
+	license = custom:eblan-browser
+	depends = python-pyqt5
+	depends = qt5-webengine
+	depends = python-pyqt5-webengine
+	depends = python
+	source = https://twgood.serv00.net/browser/S/dl/Eblan.zip
+	source = eblan.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = eblan-browser

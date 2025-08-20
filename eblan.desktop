@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=0.2
+Type=Application
+Name=Eblan Browser S
+Comment=Best browser for potato
+Exec=python3 /opt/EblanS/Eblanbrowser.py
+Icon=/opt/EblanS/images/ma-icon-64.png
+StartupNotify=true
+Terminal=false
+Categories=GNOME;GTK;Network;WebBrowser;
