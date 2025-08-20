@@ -13,8 +13,8 @@ makedepends=('go' 'git')
 optdepends=(
   'rofi: X11 kullanıcıları için GUI'
   'rofi-wayland: Wayland kullanıcıları için GUI'
-  'youtube-dl: Anime indirme özelliği için'
   'yt-dlp: Anime indirme özelliği için'
+  'youtube-dl: Anime indirme özelliği için'
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xeyossr/anitr-cli/archive/refs/tags/v${pkgver}.tar.gz")

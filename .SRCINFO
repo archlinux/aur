@@ -10,8 +10,8 @@ pkgbase = anitr-cli
 	depends = mpv
 	optdepends = rofi: X11 kullanıcıları için GUI
 	optdepends = rofi-wayland: Wayland kullanıcıları için GUI
-	optdepends = youtube-dl: Anime indirme özelliği için
 	optdepends = yt-dlp: Anime indirme özelliği için
+	optdepends = youtube-dl: Anime indirme özelliği için
 	source = anitr-cli-4.4.0.tar.gz::https://github.com/xeyossr/anitr-cli/archive/refs/tags/v4.4.0.tar.gz
 	sha256sums = SKIP
 
