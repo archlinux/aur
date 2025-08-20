@@ -22,10 +22,11 @@ pkgbase = jack
 	b2sums = SKIP
 
 pkgname = jack
-	depends = db
-	depends = gcc-libs
-	depends = glibc
+	depends = alsa-lib
 	depends = libasound.so
+	depends = db
+	depends = glibc
+	depends = libsamplerate
 	depends = libsamplerate.so
 	optdepends = celt: NetJACK driver
 	optdepends = jack-docs: for developer documentation

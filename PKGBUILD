@@ -4,15 +4,29 @@
 # Contributor: Robert Emil Berge <robert@rebi.no>
 
 pkgbase=jack
-pkgname=(jack jack-docs)
+pkgname=(
+  jack
+  jack-docs
+)
 pkgver=0.126.0
 _commit=1c7c1bada449fbfb876c952882351162e5455540  # refs/tags/0.126.0
 pkgrel=5
 pkgdesc="A low-latency audio server"
 arch=(x86_64)
 url="http://jackaudio.org/"
-license=(GPL LGPL)
-makedepends=(alsa-lib db celt doxygen git libffado libsamplerate)
+license=(
+  GPL
+  LGPL
+)
+makedepends=(
+  alsa-lib
+  db
+  celt
+  doxygen
+  git
+  libffado
+  libsamplerate
+)
 source=(
   $pkgbase::git+https://github.com/jackaudio/${pkgname}1.git#tag=$_commit?signed
   git+https://github.com/jackaudio/headers
@@ -44,9 +58,9 @@ prepare() {
 
 build() {
   local configure_options=(
-  --prefix=/usr
-  --libdir=/usr/lib
-  --with-html-dir=/usr/share/doc/jack
+    --prefix=/usr
+    --libdir=/usr/lib
+    --with-html-dir=/usr/share/doc/jack
   )
 
   # Fix issue with pointer cast: https://github.com/jackaudio/jack1/issues/59
@@ -60,7 +74,12 @@ build() {
 }
 
 package_jack() {
-  depends=(db gcc-libs glibc libasound.so libsamplerate.so)
+  depends=(
+    alsa-lib libasound.so
+    db
+    glibc
+    libsamplerate libsamplerate.so
+  )
   optdepends=(
     'celt: NetJACK driver'
     'jack-docs: for developer documentation'
@@ -68,8 +87,14 @@ package_jack() {
     'libffado: FireWire support'
     'realtime-privileges: Acquire realtime privileges'
   )
-  conflicts=(jack2 pipewire-jack)
-  provides=(libjack.so libjackserver.so)
+  conflicts=(
+    jack2
+    pipewire-jack
+  )
+  provides=(
+    libjack.so
+    libjackserver.so
+  )
 
   make DESTDIR="$pkgdir" install -C $pkgbase
   install -vDm 644 $pkgbase/{AUTHORS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
