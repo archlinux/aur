@@ -1,7 +1,7 @@
 # Maintainer: Samuobe samuobe@ik.me
 
 pkgname=arch-store-git
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A graphical app for managing your programs with pacman, AUR, flatpak, and appimage"
 arch=('any')
@@ -23,7 +23,7 @@ package() {
     cp -r "$srcdir/Arch-Store/"* "$pkgdir/usr/share/arch-store/"
 
     # Crea la cartella dati globale con permessi corretti
-    install -dm755 "$pkgdir/var/lib/arch-store"
+    install -dm777 "$pkgdir/var/lib/arch-store"
     
 
     # Crea un wrapper in /usr/bin
