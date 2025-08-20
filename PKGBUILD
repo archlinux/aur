@@ -1,7 +1,7 @@
 # Maintainer: Jonas Alves(JonasAlv) <zeropior@proton.me>
 pkgname=turtle-wow
 pkgver=2.1.2
-pkgrel=15
+pkgrel=16
 pkgdesc="Turtle WoW game launcher (extracted AppImage)"
 arch=('x86_64')
 url="https://turtle-wow.org/"
