@@ -17,19 +17,26 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "electron-launcher.sh",
+    "gclient_args.gni",
+    "makepkg-source-roller.py",
+    "prepare-electron-source-tree.sh",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
+    "REVERT-use-v8-Array-Iterate-for-converting-script-wrappables.patch",
     "allow-ANGLEImplementation-kVulkan.patch",
     "blink-fix-missing-stdlib-include.patch",
+    "chromium-136-drop-nodejs-ver-check.patch",
+    "compiler-rt-adjust-paths.patch",
     "default_app-icon.patch",
+    "disable-clang-warning-suppression-flag.patch",
     "increase-fortify-level.patch",
     "jinja-python-3.10.patch",
-    "REVERT-use-v8-Array-Iterate-for-converting-script-wrappables.patch",
     "use-system-libraries-in-node.patch",
 ]
 SPDX-FileCopyrightText = "electron36 contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "BSD-3-Clause"
