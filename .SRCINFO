@@ -1,17 +1,17 @@
 pkgbase = hddtemp-git
 	pkgdesc = Hard disk temperature tool
-	pkgver = 0.4.3.r1.gccaa1c0
-	pkgrel = 3
+	pkgver = 0.4.3.r6.g6740688
+	pkgrel = 1
 	url = https://github.com/vitlav/hddtemp
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = glibc
-	provides = hddtemp=0.4.3.r1.gccaa1c0
+	provides = hddtemp=0.4.3.r6.g6740688
 	conflicts = hddtemp
 	source = git+https://github.com/vitlav/hddtemp.git
-	source = hddtemp.service::https://gitlab.archlinux.org/archlinux/packaging/packages/hddtemp/-/raw/main/service
+	source = hddtemp.service::https://gitlab.archlinux.org/archlinux/packaging/packages/hddtemp/-/raw/main/hddtemp.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 

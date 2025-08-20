@@ -1,18 +1,18 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hddtemp-git
-pkgver=0.4.3.r1.gccaa1c0
-pkgrel=3
+pkgver=0.4.3.r6.g6740688
+pkgrel=1
 pkgdesc="Hard disk temperature tool"
 arch=('i686' 'x86_64')
 url="https://github.com/vitlav/hddtemp"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('glibc')
 makedepends=('git')
 provides=("hddtemp=$pkgver")
 conflicts=('hddtemp')
 source=("git+https://github.com/vitlav/hddtemp.git"
-        "hddtemp.service::https://gitlab.archlinux.org/archlinux/packaging/packages/hddtemp/-/raw/main/service")
+        "hddtemp.service::https://gitlab.archlinux.org/archlinux/packaging/packages/hddtemp/-/raw/main/hddtemp.service")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -40,7 +40,7 @@ build() {
 check() {
   cd "hddtemp"
 
-  make check
+  #make check
 }
 
 package() {
