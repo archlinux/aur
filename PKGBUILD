@@ -1,21 +1,22 @@
-# Maintainer: Jonas Alves(JonasAlv) <zeropior@proton.me>
+# Maintainer: Jonas Alves(Jonas_Alv) <zeropior@proton.me>
 pkgname=turtle-wow
-pkgver=1.3.0
-pkgrel=14 # pkgrel bump to fix key name in config check
+pkgver=2.1.2
+pkgrel=15
 pkgdesc="Turtle WoW game launcher (extracted AppImage)"
 arch=('x86_64')
 url="https://turtle-wow.org/"
 license=('custom')
 provides=('turtle-wow')
 conflicts=('turtle-wow')
-# Dependency: jq is required to manipulate preferences.json.
+# jq is required to manipulate preferences.json
 depends=('gtk3' 'alsa-lib' 'jq') 
-install=turtle-wow.install 
+install=turtle-wow.install
+options=('!strip')
 
-# Source URL for the AppImage. Using a direct CDN link for stability.
+# Using a direct CDN link for stability.
 _hash=9BEF2C29BE14CF2C26030B086DFC854DB56096DDEAABE31D33BFC6B131EC5529
 source=("${pkgname}-${pkgver}.AppImage::https://turtle-eu.b-cdn.net/client/${_hash}/TurtleWoW.AppImage"
-        "turtle-wow.install") # The .install script must also be listed as a source file.
+        "turtle-wow.install") 
 # Checksums are skipped 
 sha256sums=('SKIP'
             'SKIP')
@@ -56,8 +57,7 @@ PREFS_FILE="$HOME/.local/share/turtle-wow/preferences.json"
 GAME_DIR="$HOME/Games/turtle-wow/"
 APP_EXEC="/opt/turtle-wow/AppRun"
 
-# Function to run the application with the correct working directory and library path
-# May remove
+# Function to run the application with the correct working directory and library path.
 run_app() {
     if [ -d "$GAME_DIR" ]; then
       cd "$GAME_DIR"
@@ -82,7 +82,7 @@ if is_config_complete; then
     jq --arg path "$GAME_DIR" '.clientDir = $path' "$PREFS_FILE" > "${PREFS_FILE}.tmp" && mv "${PREFS_FILE}.tmp" "$PREFS_FILE"
     run_app
 else
-
+    # This is the first launch or the config is incomplete.
     echo "First launch or incomplete config detected. Configuring application..."
 
     run_app &

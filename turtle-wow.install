@@ -19,6 +19,7 @@ post_install() {
     
     echo "Configuration complete."
     echo "You may RESTART the app after you login"
+    echo "GAME DIR IS FORCED TO ${GAMES_DIR}, AFTER FIRST LOGIN"
   else
  
     echo "Warning: Could not determine the user to run post-install script for." >&2
