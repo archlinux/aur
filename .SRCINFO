@@ -1,6 +1,6 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
-	pkgver = 6.5.0
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://posthog.com/docs/libraries/python
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-posthog
 	optdepends = python-google-genai: Google Gemini SDK support
 	optdepends = python-langchain: LLM observability callback handler
 	optdepends = python-openai: OpenAI SDK support
-	source = posthog-python-6.5.0.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v6.5.0.tar.gz
-	sha256sums = 6cfb02340d9b69adc8d4770a04f7620212da484f147a89ab77b120ce620f6085
+	source = posthog-python-6.6.0.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v6.6.0.tar.gz
+	sha256sums = de9a0679bf4f9496feb962f050a55e1e3bbc8d3a2f383abae3d011f790ed4842
 
 pkgname = python-posthog

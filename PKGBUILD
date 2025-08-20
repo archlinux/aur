@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-posthog
 _name=posthog-python
-pkgver=6.5.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   'python-openai: OpenAI SDK support'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6cfb02340d9b69adc8d4770a04f7620212da484f147a89ab77b120ce620f6085')
+sha256sums=('de9a0679bf4f9496feb962f050a55e1e3bbc8d3a2f383abae3d011f790ed4842')
 
 prepare() {
   cd "$_name-$pkgver"
