@@ -1,6 +1,6 @@
 pkgbase = freelib-git
 	pkgdesc = Book library manager
-	pkgver = 6.1.96
+	pkgver = 6.1.100
 	pkgrel = 1
 	url = https://github.com/petrovvlad/freeLib
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = freelib-git
 	depends = qtkeychain-qt6
 	optdepends = kindlegen: convert to MOBI, AZW3
 	optdepends = djvulibre: djvu covers
+	optdepends = poppler-qt6: pdf covers
 	provides = freelib
 	conflicts = freelib
 	conflicts = freelib-dev-git
