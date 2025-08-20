@@ -1,7 +1,7 @@
 pkgbase = ps7b_libusbtc08
 	pkgdesc = Early Access driver for Pico Technology PicoLog TC-08 Datalogger
-	pkgver = 2.0.146_1r6147
-	pkgrel = 2
+	pkgver = 2.0.150_1r6187
+	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libusbtc08/
 	install = ps7b_libusbtc08.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ps7b_libusbtc08
 	depends = glibc
 	conflicts = ps7_libusbtc08
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libusbtc08/libusbtc08_2.0.146-1r6147_amd64.deb
-	md5sums = e9cefc01ce991ec7c4c4498cbed1d89f
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libusbtc08/libusbtc08_2.0.150-1r6187_amd64.deb
+	md5sums = e23a055b417c943fc1e214c0e57460ae
 
 pkgname = ps7b_libusbtc08
