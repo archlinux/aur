@@ -1,6 +1,6 @@
 pkgbase = hugin-messenger
 	pkgdesc = A secure and private messaging desktop application.(Use system-wide electron)
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://hugin.chat/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = hugin-messenger
 	makedepends = git
 	depends = electron30
 	conflicts = hugin-messenger
-	source = hugin-messenger-1.0.8::git+https://github.com/kryptokrona/hugin-desktop#tag=1.0.8
+	source = hugin-messenger-1.0.9::git+https://github.com/kryptokrona/hugin-desktop#tag=1.0.9
 	source = hugin-messenger.sh
-	sha256sums = 0e81fb48134d088f4c93085a49228e2617cc6b4b0d3d26d6aa67a290170a20c9
+	sha256sums = 4ab4ae49f1b4f9fe690f776b9cd56d2727ee55f783fc8ad0cca2fa514254cbae
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = hugin-messenger
