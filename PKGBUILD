@@ -14,7 +14,7 @@ url='https://github.com/cueki/valve-parsers'
 license=('MIT')
 
 depends=('python>=3.8')
-makedepends=('git' 'python-build' 'python-installer')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 
 source=("git+${url}")
 sha256sums=('SKIP')
