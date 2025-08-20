@@ -1,7 +1,7 @@
 pkgbase = univpn
 	pkgdesc = 企业级VPN客户端
 	pkgver = 10781.18.1.0512
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.univpn.com/
 	arch = x86_64
 	license = unknown

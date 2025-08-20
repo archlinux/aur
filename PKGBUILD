@@ -1,7 +1,7 @@
 # Maintainer: Tsaitang <tsaitang404 at gmail dot com>
 pkgname=univpn
 pkgver=10781.18.1.0512
-pkgrel=3
+pkgrel=4
 pkgdesc="企业级VPN客户端"
 arch=('x86_64')
 url="https://www.univpn.com/"
@@ -18,13 +18,76 @@ prepare() {
   
   # 修补脚本中的 arch 命令，在 Arch Linux 中不存在，需要替换为 uname -m
   sed -i 's/ARCH="`arch`"/ARCH="`uname -m`"/g' "univpn-linux-64-${pkgver}.run"
+  
+  # 创建临时安装目录并运行安装脚本来提取文件
+  mkdir -p extract_temp
+  cd extract_temp || return
+  
+  # 使用安装脚本的逻辑提取tar.gz文件
+  tail -n +258 "../univpn-linux-64-${pkgver}.run" > UniVPN.tar.gz
+  
+  # 尝试解压
+  if ! tar -zxf UniVPN.tar.gz 2>/dev/null; then
+    # 如果是损坏的gzip，尝试直接作为tar文件
+    if ! tar -xf UniVPN.tar.gz 2>/dev/null; then
+      echo "Error: Cannot extract UniVPN archive"
+      return 1
+    fi
+  fi
+  
+  # 回到源码目录
+  cd "$srcdir" || return
 }
 
 package() {
   cd "$srcdir" || return
   
-  # 安装主程序
-  install -Dm755 "univpn-linux-64-${pkgver}.run" "$pkgdir/usr/bin/univpn"
+  # 安装提取出的程序文件
+  if [ -d "extract_temp" ]; then
+    # 安装主程序目录到 /usr/local/UniVPN
+    install -dm755 "$pkgdir/usr/local/UniVPN"
+    cp -r extract_temp/* "$pkgdir/usr/local/UniVPN/"
+    
+    # 确保主程序可执行
+    chmod 755 "$pkgdir/usr/local/UniVPN/UniVPN"
+    
+    # 创建启动脚本到 /usr/bin，设置正确的库路径
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/univpn" << 'EOF'
+#!/bin/bash
+# UniVPN 启动脚本 - 设置库路径以使用自带的Qt库
+export LD_LIBRARY_PATH="/usr/local/UniVPN/lib:$LD_LIBRARY_PATH"
+cd /usr/local/UniVPN
+exec ./UniVPN "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/univpn"
+  else
+    # 备用方案：执行安装脚本进行安装
+    echo "Warning: extract_temp not found, running installation script as fallback"
+    
+    # 创建临时安装目录
+    mkdir -p "$pkgdir/usr/local"
+    
+    # 执行安装脚本（以静默模式）
+    DESTDIR="$pkgdir/usr/local/UniVPN"
+    mkdir -p "$DESTDIR"
+    
+    # 手动提取和安装，模拟安装脚本的行为
+    tail -n +258 "univpn-linux-64-${pkgver}.run" > UniVPN.tar.gz
+    tar -zxf UniVPN.tar.gz -C "$DESTDIR"
+    rm UniVPN.tar.gz
+    
+    # 创建启动脚本
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/univpn" << 'EOF'
+#!/bin/bash
+# UniVPN 启动脚本 - 设置库路径以使用自带的Qt库
+export LD_LIBRARY_PATH="/usr/local/UniVPN/lib:$LD_LIBRARY_PATH"
+cd /usr/local/UniVPN
+exec ./UniVPN "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/univpn"
+  fi
   
   # 创建桌面文件
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/univpn.desktop" << EOF
