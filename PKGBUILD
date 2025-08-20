@@ -6,7 +6,7 @@
 _pkgname='termgraph'
 pkgname="$_pkgname-git"
 pkgver=0.5.4.r0.g5dd9a0a
-pkgrel=1
+pkgrel=2
 pkgdesc='Python command-line tool which draws basic graphs in the terminal (development version)'
 arch=('any')
 url="https://github.com/mkaz/$_pkgname"
@@ -52,7 +52,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/data" data/*.dat
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/data" data/*.{dat,py}
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
 
