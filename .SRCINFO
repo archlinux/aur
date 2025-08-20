@@ -1,0 +1,10 @@
+pkgbase = zfs-meta
+	pkgdesc = A meta package for ZFS on Arch Linux
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = ZFS-MODULE
+	depends = zfs-utils
+	provides = zfs
+
+pkgname = zfs-meta
