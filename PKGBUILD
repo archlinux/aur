@@ -3,7 +3,7 @@
 pkgname=kubebuilder
 pkgdesc="SDK for building Kubernetes APIs"
 pkgver=4.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('apache')
@@ -30,20 +30,21 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
 
     go build \
-      -trimpath \
-      -buildmode=pie \
-      -mod=readonly \
-      -modcacherw \
-      -ldflags "\
-        -linkmode=external \
-        -buildid=''
-        -extldflags \"${LDFLAGS}\" \
-        -X main.kubeBuilderVersion=v${pkgver} \
-        -X main.goos=$(go env GOOS) \
-        -X main.goarch=$(go env GOARCH) \
-        -X main.gitCommit= \
-        -X main.buildDate=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
-      -o bin/kubebuilder ./cmd
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "\
+          -linkmode=external \
+          -buildid='' \
+          -extldflags \"${LDFLAGS}\" \
+          -X sigs.k8s.io/kubebuilder/v4/cmd.kubeBuilderVersion=v${pkgver} \
+          -X sigs.k8s.io/kubebuilder/v4/cmd.kubernetesVendorVersion=$(go list -m -modfile=./testdata/project-v4/go.mod -f "{{ .Version }}" k8s.io/api | awk -F'[v.]' '{printf "1.%d.%d", $$3, $$4}') \
+          -X sigs.k8s.io/kubebuilder/v4/cmd.goos=$(go env GOOS) \
+          -X sigs.k8s.io/kubebuilder/v4/cmd.goarch=$(go env GOARCH) \
+          -X sigs.k8s.io/kubebuilder/v4/cmd.gitCommit= \
+          -X sigs.k8s.io/kubebuilder/v4/cmd.buildDate=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+        -o bin/kubebuilder
 }
 
 package() {
