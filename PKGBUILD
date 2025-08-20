@@ -2,15 +2,15 @@
 
 _omit_libs=true
 _omit_dlls=false
-_electron_ver=36
+_electron_ver=37
 _dotnet_ver=9.0
-_runtime_ver=7
-_sdk_ver=108
+_runtime_ver=8
+_sdk_ver=109
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2025.06.30'
-pkgrel='2'
+pkgver='2025.08.17'
+pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -22,9 +22,9 @@ source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkg
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('f3202990c743f7df8c32f147e8cb1bdc385b1241a575e8268d6d7f7b14add574'
+sha256sums=('2fdb636b310c92bb707bc1e125395a4498d54cf8bc1224be48fb058278b3367c'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
-            '82f69b0dc11644e7aba8724e22c1340e79d64ff1a7fb39fd3175912064a89555'
+            'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
             '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
 
 if [ "$_omit_libs" = true ]; then
@@ -119,6 +119,8 @@ build() {
     rm -f opt/vrcx/.DirIcon
     rm -f opt/vrcx/vrcx.desktop
     rm -f opt/vrcx/resources/app-update.yml
+    rm -rf opt/vrcx/resources/app.asar.unpacked/build/Electron/dotnet-runtime
+    rm -rf opt/vrcx/resources/dotnet-runtime
     if [ "$_omit_libs" = true ]; then
         rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/createdump.exe
         rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/clretwrc.dll
@@ -219,14 +221,18 @@ build() {
         done
     )
     if rm opt/vrcx/resources/VRCX.png 2>/dev/null; then
-        ln -s ../../../usr/share/icons/hicolor/256x256/apps/vrcx.png \
+        ln -s ../../../usr/share/icons/hicolor/512x512/apps/vrcx.png \
             opt/vrcx/resources/VRCX.png
     fi
     if rm opt/vrcx/resources/app.asar.unpacked/build/Electron/VRCX.png 2>/dev/null; then
-        ln -s ../../../../../../usr/share/icons/hicolor/256x256/apps/vrcx.png \
+        ln -s ../../../../../../usr/share/icons/hicolor/512x512/apps/vrcx.png \
             opt/vrcx/resources/app.asar.unpacked/build/Electron/VRCX.png
     fi
     if [ -e opt/vrcx/resources/app.asar.unpacked/build/Electron/VRCX.ico ]; then
+        mkdir -p -m755 usr/share/icons
+        mkdir -p -m755 usr/share/icons/hicolor
+        mkdir -p -m755 usr/share/icons/hicolor/256x256
+        mkdir -p -m755 usr/share/icons/hicolor/256x256/apps
         mv opt/vrcx/resources/app.asar.unpacked/build/Electron/VRCX.ico \
             usr/share/icons/hicolor/256x256/apps/vrcx.ico
         ln -s ../../../../../../usr/share/icons/hicolor/256x256/apps/vrcx.ico \
