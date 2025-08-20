@@ -10,6 +10,7 @@ url=https://familie-radermacher.ch/dominic/projekte/ptouch-print/
 license=(GPL-3.0-only)
 depends=(
   gd
+  glibc
   libusb
 )
 makedepends=(

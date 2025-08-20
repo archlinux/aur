@@ -8,6 +8,7 @@ pkgbase = ptouch-print
 	makedepends = git
 	makedepends = cmake
 	depends = gd
+	depends = glibc
 	depends = libusb
 	provides = ptouch-print
 	source = git+https://familie-radermacher.ch/cgi/cgit/linux/ptouch-print.git#tag=v1.6
