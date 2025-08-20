@@ -2,7 +2,7 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-_pkgver=4.17.13
+_pkgver=4.17.15
 pkgver=${_pkgver//-/_}
 pkgrel=0
 pkgdesc="Open-source remake of Civilization V"
@@ -20,9 +20,9 @@ source=(
 noextract=(
 	"$_pkgname-$_pkgver.jar"
 )
-md5sums=('b5824750c1abfea87c7aa85e17b9e43f'
+md5sums=('308828befbcd4034b6cc492395d8729b'
          'c3f79bbc7e80620b3cdc4f90f21f4d68'
-         '4632fe2ab37e3b5d32903fa4a2dc5cfb')
+         '4b043279f5c1347bb275890c517d1366')
 
 package() {
   install -Dm755 Unciv.sh "$pkgdir/usr/bin/$_pkgname"
