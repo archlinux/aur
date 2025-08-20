@@ -1,4 +1,5 @@
-# Maintainer  : Patrick D. Lloyd <archlinux.org@pdlloyd.com>
+# Maintainer  : Maxim De Clercq <maximdeclercq00@gmail.com>
+# Contributor : Patrick D. Lloyd <archlinux.org@pdlloyd.com>
 # Contributor : Phillip K. Samuel <pintert3 at protonmail dot com>
 # Contributor : Ben Ellis <benx45h@gmail.com>
 
@@ -12,19 +13,18 @@ license=('MIT')
 provides=('renode'
           'libllvm-disas.so')
 
-depends=('mono'
-         'gtk-sharp-2'
-         'screen'
-         'polkit'
+depends=('dotnet-runtime'
          'gcc'
+         'polkit'
          'python'
-	 'python-pip'
-	 'python-yaml'
-	 'python-pyelftools'
-	 'python-psutil'
-	 'python-pandas'
-	 'python-matplotlib'
-	 'python-pexpect')
+         'python-matplotlib'
+         'python-pandas'
+         'python-pexpect'
+         'python-pip'
+         'python-psutil'
+         'python-pyelftools'
+         'python-yaml'
+         'screen')
 
 source=("$pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz")
 
