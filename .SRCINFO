@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vcvrack.com/
 	arch = aarch64
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = vcvrack
 	depends = glfw
 	depends = jansson
 	depends = nanosvg
-	provides = vcvrack-free=2.6.3
+	provides = vcvrack-free=2.6.4
 	provides = vcvrack-sdk
 	source = git+https://github.com/VCVRack/Rack#tag=v2.6.4
 	source = git+https://bitbucket.org/j_norberg/fuzzysearchdatabase
@@ -39,7 +39,7 @@ pkgbase = vcvrack
 	source = git+https://github.com/VCVRack/rtaudio
 	source = git+https://github.com/codeplea/tinyexpr
 	source = git+https://github.com/libsndfile/libsamplerate#tag=0.1.9
-	source = git+https://github.com/VCVRack/Fundamental#tag=v2.6.3
+	source = git+https://github.com/VCVRack/Fundamental#tag=v2.6.4
 	source = arm64-yield.patch
 	source = plugins.patch
 	source = wayland.patch
@@ -58,7 +58,7 @@ pkgbase = vcvrack
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87
-	sha256sums = f175d6f03c5c281768b5d29512881717471bde1999cd55d0c3958833eef6e275
+	sha256sums = d932eb4a698a968e40261d395ef4513ef0493f3797c3e49198c86bf9cda3b0fb
 	sha256sums = 9c981aabae8f93d09cf94aeaf904b8855abe9a94e30b32cbb6f77b00c460e3d7
 	sha256sums = f030e6253b075efb9d3347599b5ce5df404c68a673f1a4fc7589d141cfb06a38
 	sha256sums = 256c1b66caf5cee7744b8f6b392dccea670d7cf0f243607e83330e7f6282f0c8
