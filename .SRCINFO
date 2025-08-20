@@ -1,6 +1,6 @@
 pkgbase = python-requests-request
 	pkgdesc = requests request extension.
-	pkgver = 0.1.2.1
+	pkgver = 0.1.2.2
 	pkgrel = 1
 	url = https://pypi.org/project/requests_request
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-requests-request
 	conflicts = python-requests-request
 	options = !strip
 	options = !debug
-	source = requests_request-0.1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/r/requests_request/requests_request-0.1.2.1.tar.gz
-	sha256sums = 4397c665de62d9136faa497f88ce15825794651cc855e456fbf0b52107f7bb37
+	source = requests_request-0.1.2.2.tar.gz::https://files.pythonhosted.org/packages/source/r/requests_request/requests_request-0.1.2.2.tar.gz
+	sha256sums = 95161b651a18bd9ce15b076dcdd16a5e5d236474084f6df41f54f4b4801e1f82
 
 pkgname = python-requests-request
