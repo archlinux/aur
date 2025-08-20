@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="MAX is a multifunctional digital platform with a fully integrated messenger."
 arch=("x86_64")
 url='https://max.ru'
-license=("unknown")
+license=("custom:max")
 categories=("network")
 
 depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux-libs" "libsecret" "tar" "binutils")
