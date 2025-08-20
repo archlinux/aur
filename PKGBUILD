@@ -2,15 +2,15 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=ebgaramond-otf
 _pkgname=EBGaramond12
-_commit=8e8d2aff04abb39fceca0b1e8da1f444e466fb3b
+_commit=f1a739685ce2eb4214eba4b834cbc0fc269d79d5
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='font (OTF version) by Octavio Pardo & Georg Duffner'
 arch=('any')
 url='https://github.com/octaviopardo/EBGaramond12'
-license=('OFL')
+license=('OFL-1.1')
 source=("https://github.com/octaviopardo/$_pkgname/archive/$_commit.zip")
-sha256sums=('08c82a332338a474862f7123f0b6c5c7a4256288f890049bcf989d1564c73856')
+sha256sums=('ec01c92b42b56244188ec790db86c5f952b1f6824b88e5764689e22e44a46d20')
 
 package() {
   cd "$_pkgname-$_commit"
