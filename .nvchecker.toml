@@ -1,0 +1,4 @@
+[python-meilisearch-sdk]
+source = "git"
+git = "https://github.com/sanders41/meilisearch-python-sdk.git"
+prefix = "v"
