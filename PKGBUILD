@@ -5,7 +5,7 @@ _appname=ReShell
 _execname=${_appname,,}
 pkgname=${_execname}-bin
 pkgver=0.1.0_1442
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern shell for the future"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_appauthor}/${_appname}"
@@ -15,6 +15,8 @@ license=('Apache-2.0')
 depends=()
 provides=("${_appname}")
 conflicts=("${_appname}")
+
+install=reshell.install
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}.md::${_urlraw}/README.md"

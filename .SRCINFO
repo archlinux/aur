@@ -1,8 +1,9 @@
 pkgbase = reshell-bin
 	pkgdesc = A modern shell for the future
 	pkgver = 0.1.0_1442
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ClementNerma/ReShell
+	install = reshell.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
