@@ -1,20 +1,19 @@
-# Maintainer: d6k283tix <d6k283tix@mozmail.com>
+# Maintainer: odnmalau <odnmalau@gmail.com>
 
 pkgname=navicat17-premium-en
-pkgver=17.0.2
-pkgrel=1
-pkgdesc="Navicat Premium is a multi-connection database development tool. ( English )"
-arch=(x86_64)
-url='https://navicat.com/en/navicat-17-highlights'
-license=('NOASSERTION')
-source=(
-    "navicat17-premium-en-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-en-$CARCH.AppImage"
-    "navicat17.desktop"
-)
-sha256sums=(
-    '53580b0099c7209a914c4ca89becb16f1812c67849992ec83ce28863f988db84'
-    '3e430812b781e63c406ae4a4acc7e68d80af48c12c5032c8282fd7fe6239d978'
-)
+pkgver=17.3.1
+pkgrel=2
+pkgdesc="Manage and Develop Your Databases"
+arch=('x86_64' 'aarch64')
+url='https://www.navicat.com/en/products/navicat-premium'
+license=('custom')
+source=("navicat17.desktop")
+source_x86_64=("navicat17-premium-en-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-en-x86_64.AppImage")
+source_aarch64=("navicat17-premium-en-aarch64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-en-aarch64.AppImage")
+
+sha256sums=('3e430812b781e63c406ae4a4acc7e68d80af48c12c5032c8282fd7fe6239d978')
+sha256sums_x86_64=('e6f19cb696c083799585a96bf9883788564d0b263ed3e6bdf2c95d854707926d')
+sha256sums_aarch64=('af7d6efdbff71cef4f110b48afd019ff9355ad172027e1800873d608809961e7')
 
 package() {
     _root_na_dir=opt/$pkgname
