@@ -1,7 +1,7 @@
 pkgbase = python-vllm
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -57,11 +57,13 @@ pkgbase = python-vllm
 	optdepends = python-compressed-tensors: required to load compressed tensor files
 	optdepends = python-torchaudio: required for image processor of minicpm-o-2.6
 	optdepends = python-datasets: tools to benchmark scripts
+	optdepends = python-tiktoken: required for DBRX tokenizer
 	optdepends = python-xgrammar: flexible structured generation
 	optdepends = python-depyf: required for debugging and profiling with complilation config
-	optdepends = python-tiktoken: required for DBRX tokenizer
 	optdepends = python-lm-format-enforcer: required for JSON/REGEX llm output
 	source = git+https://github.com/vllm-project/vllm.git#tag=v0.10.1
+	source = add-python-313-support.patch::https://github.com/vllm-project/vllm/commit/21dce80ea96bcf033d159c0f952fb274567b315c.patch
 	sha256sums = 82b7a0812eb5833c6e5c8a5804cd70cdc9a29d453375179f6d57c0fee46e072f
+	sha256sums = 34455097b0127d697294c81c9acf47fdabea51746daf682b1211429c9a6f2bd5
 
 pkgname = python-vllm

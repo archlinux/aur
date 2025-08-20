@@ -3,7 +3,7 @@
 pkgname=python-vllm
 _pkgname=vllm
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -42,7 +42,7 @@ depends=(
   python-triton
   python-diskcache
   python-pybase64
-  )
+)
 makedepends=(
   git
   gcc14
@@ -65,22 +65,34 @@ optdepends=(
   'python-compressed-tensors: required to load compressed tensor files'
   'python-torchaudio: required for image processor of minicpm-o-2.6'
   'python-datasets: tools to benchmark scripts'
-#not currently in aur
+  'python-tiktoken: required for DBRX tokenizer'
+  #not currently in aur
   'python-xgrammar: flexible structured generation'
   'python-depyf: required for debugging and profiling with complilation config'
-  'python-tiktoken: required for DBRX tokenizer'
   'python-lm-format-enforcer: required for JSON/REGEX llm output'
-  )
+)
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('82b7a0812eb5833c6e5c8a5804cd70cdc9a29d453375179f6d57c0fee46e072f')
-_jobs=$(($(nproc) / 2))
+sha256sums=('82b7a0812eb5833c6e5c8a5804cd70cdc9a29d453375179f6d57c0fee46e072f'
+            '34455097b0127d697294c81c9acf47fdabea51746daf682b1211429c9a6f2bd5')
+#
+# the following patch was merged so only needed for 0.10.1
+if [ "$pkgver" = "0.10.1" ]; then
+  source+=("add-python-313-support.patch::https://github.com/vllm-project/vllm/commit/21dce80ea96bcf033d159c0f952fb274567b315c.patch")
+fi
+[[ $MAKEFLAGS =~ -j[[:space:]]*([0-9]+) ]] &&
+  _jobs="${BASH_REMATCH[1]}" || _jobs=1
+
 prepare() {
-  #not much luck setting CC env flags, so manually linking and pathing - this only exists for building
   mkdir -p gcc14/bin
   ln -sf /usr/bin/gcc-14 $srcdir/gcc14/bin/gcc
   ln -sf /usr/bin/g++-14 $srcdir/gcc14/bin/g++
-  sed -i 's/\(PYTHON_SUPPORTED_VERSIONS\s*"3.9" "3.10" "3.11" "3.12"\)/\1 "3.13"/' "$_pkgname/CMakeLists.txt"
+
+  # Apply patch only for 0.10.1
+  if [ "$pkgver" = "0.10.1" ]; then
+    cd $_pkgname
+    patch -Np1 -i "../add-python-313-support.patch"
+  fi
 }
 
 build() {
@@ -89,6 +101,10 @@ build() {
   # Limit the number of parallel jobs to avoid OOM
   export MAX_JOBS=$_jobs
   export VLLM_TARGET_DEVICE=cpu
+  #gcc 14
+  export CC="$srcdir/gcc14/bin/gcc"
+  export CXX="$srcdir/gcc14/bin/g++"
+  export PATH="$srcdir/gcc14/bin:$PATH"
 
   # Build
   python setup.py bdist_wheel --dist-dir=dist
