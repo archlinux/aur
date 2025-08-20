@@ -5,7 +5,7 @@
 
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
-pkgver='3.10.10'
+pkgver='3.10.11'
 pkgrel=1
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
@@ -45,5 +45,8 @@ package() {
 	make DESTDIR=${pkgdir} install
 }
 sha256sums=('55999c7111e60216b344ace06197761cdf1c57cd051c5d49ad0c0458077d383b'
+            'f20a39a311c02973009aabebfd2934afd8db7819ab1be8157039496c88baebcb'
+            '1b0b3c7f774f5736e17b180ccdeb9f5468184e337848ae12efeb7b1b90fcad29')
+sha256sums=('9492e6b5f676a237616db056d1d45cae64d9a880690e8dd6b93784dd205b93bb'
             'f20a39a311c02973009aabebfd2934afd8db7819ab1be8157039496c88baebcb'
             '1b0b3c7f774f5736e17b180ccdeb9f5468184e337848ae12efeb7b1b90fcad29')
