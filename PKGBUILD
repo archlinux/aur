@@ -1,15 +1,21 @@
 # Maintainer: Max Harmathy <max.harmathy@web.de>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='ptouch-print'
+pkgname=ptouch-print
 pkgver=1.6
 pkgrel=2
 pkgdesc="Command line tool to print labels on Brother P-Touch printers"
-arch=('x86_64')
-url='https://familie-radermacher.ch/dominic/projekte/ptouch-print/'
-license=('GPL-3.0-only')
-depends=('gd' 'libusb')
-makedepends=('git' 'cmake')
+arch=(x86_64)
+url=https://familie-radermacher.ch/dominic/projekte/ptouch-print/
+license=(GPL-3.0-only)
+depends=(
+  gd
+  libusb
+)
+makedepends=(
+  git
+  cmake
+)
 provides=("${pkgname}")
 source=("git+https://familie-radermacher.ch/cgi/cgit/linux/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('7cf287102ec002653e68a1ea73a78b000b9120389b209a30b6c2fa294087a132')
