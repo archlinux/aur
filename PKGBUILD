@@ -2,7 +2,7 @@
 
 _pkgname=gnucap-modelgen-verilog
 pkgname=$_pkgname-git
-pkgver=develop
+pkgver=r546.3f1daa9
 pkgrel=1
 pkgdesc="Verilog model generator for Gnucap"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="http://gnucap.org/"
 license=('GPL')
 depends=('gnucap')
 makedepends=('git')
-provides=('gnucap-modelgen-verilog')
-conflicts=('gnucap-modelgen-verilog')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname::git+git://git.sv.gnu.org/gnucap/gnucap-modelgen-verilog.git#branch=develop")
 md5sums=('SKIP')
 
@@ -22,12 +22,13 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  make
+  ./configure --prefix=/usr
+  make CXXFLAGS+="-Wno-error=format-security"
 }
 
 check() {
   cd $_pkgname
-  make check || :
+  make check 
 }
 
 package() {
@@ -35,4 +36,3 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-# vim:set ts=2 sw=2 et:

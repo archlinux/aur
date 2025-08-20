@@ -1,7 +1,6 @@
-
 pkgbase = gnucap-modelgen-verilog-git
-	pkgdesc = Verilog-AMS for Gnucap
-	pkgver = develop
+	pkgdesc = Verilog model generator for Gnucap
+	pkgver = r546.3f1daa9
 	pkgrel = 1
 	url = http://gnucap.org/
 	arch = i686
@@ -10,8 +9,8 @@ pkgbase = gnucap-modelgen-verilog-git
 	makedepends = git
 	depends = gnucap
 	provides = gnucap-modelgen-verilog
-	source = gnucap-adms::git+git://git.sv.gnu.org/gnucap/gnucap-modelgen-verilog.git#branch=develop
+	conflicts = gnucap-modelgen-verilog
+	source = gnucap-modelgen-verilog::git+git://git.sv.gnu.org/gnucap/gnucap-modelgen-verilog.git#branch=develop
 	md5sums = SKIP
 
 pkgname = gnucap-modelgen-verilog-git
-
