@@ -1,6 +1,6 @@
 # Maintainer: Oliwier <szerwigi14@gmail.com>
 pkgname=brokefetch-git
-pkgver=2025.08.19.rc40647b
+pkgver=2025.08.20.rc40647b
 pkgrel=1
 pkgdesc="brokefetch is the only system info tool that doesn't pretend your life is okay. (git version)"
 arch=('any')
