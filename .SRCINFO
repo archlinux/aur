@@ -1,14 +1,14 @@
 pkgbase = nalla-iptv-bin
 	pkgdesc = IPTV Player for M3U playlists with DRM support
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/Anmol1184/NallaIPTV
 	arch = x86_64
 	license = custom
 	provides = nalla-iptv
 	conflicts = nalla-iptv
 	options = !strip
-	source = https://github.com/Anmol1184/NallaIPTV/releases/download/v2.0.0/nalla-iptv-bin-2.0.0.tar.gz
+	source = https://github.com/Anmol1184/NallaIPTV/releases/download/v2.0.1/nalla-iptv-bin-2.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = nalla-iptv-bin
