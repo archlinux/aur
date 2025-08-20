@@ -1,0 +1,4 @@
+[python-resend]
+source = "git"
+git = "https://github.com/resend/resend-python.git"
+prefix = "v"
