@@ -1,7 +1,7 @@
 pkgbase = throne
 	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box)
-	pkgver = 1.0.1
-	pkgrel = 5
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/throneproj/Throne
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -16,9 +16,9 @@ pkgbase = throne
 	depends = glibc
 	depends = libx11
 	depends = qt6-base
-	source = throne-1.0.1.tar.gz::https://github.com/throneproj/Throne/archive/refs/tags/1.0.1.tar.gz
+	source = throne-1.0.2.tar.gz::https://github.com/throneproj/Throne/archive/refs/tags/1.0.2.tar.gz
 	source = throne.sh
-	sha256sums = 9fda5bd9af251bd25c8808289eda7ff139936e5eab81f3e96ff47bf342de6bc9
+	sha256sums = 5000600137ecb5e56fb3fa7076dfaea50ec14f2f43bf2d190ce79ffd2c13c8cc
 	sha256sums = b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62
 
 pkgname = throne

@@ -1,8 +1,8 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=throne
-pkgver=1.0.1
-pkgrel=5
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
 url="https://github.com/throneproj/Throne"
@@ -11,7 +11,7 @@ depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base')
 makedepends=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('9fda5bd9af251bd25c8808289eda7ff139936e5eab81f3e96ff47bf342de6bc9'
+sha256sums=('5000600137ecb5e56fb3fa7076dfaea50ec14f2f43bf2d190ce79ffd2c13c8cc'
             'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62')
 
 prepare() {
