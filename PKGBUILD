@@ -10,15 +10,20 @@ depends=()
 makedepends=('git' 'go' 'coreutils')
 conflicts=('pokego')
 source=("$pkgname::git+$url")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
 	cd "$pkgname"
-	go build -o pokego
+	go build -ldflags "-s -w" -o pokego
 }
 
 package() {
 	cd "$pkgname"
 	install -Dm755 pokego "$pkgdir/usr/bin/pokego"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Install completions
+  install -Dm644 completions/pokego.bash "$pkgdir/usr/share/bash-completion/completions/pokego"
+  install -Dm644 completions/pokego.fish "$pkgdir/usr/share/fish/vendor_completions/pokego.fish"
+  install -Dm644 completions/pokego.zsh "$pkgdir/usr/share/zsh/site-functions/_pokego"
 }
