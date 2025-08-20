@@ -1,6 +1,6 @@
 pkgbase = apifox
 	pkgdesc = API 文档、API 调试、API Mock、API 自动化测试
-	pkgver = 2.7.29
+	pkgver = 2.7.30
 	pkgrel = 1
 	url = https://www.apifox.com/
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = apifox
 	depends = snappy
 	depends = fuse2
 	options = !strip
-	source = apifox-v2.7.29.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip
+	source = apifox-v2.7.30.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip
 	source = apifox.desktop
 	source = apifox.svg
-	sha256sums = 84f67559743d157cbefb8c9f49ec2de3fb78774b7d69b895b0c61106d247b09d
+	sha256sums = 82fd25be755bad268aa0b9713fcd1735bab7db5e974b36deb931541c3fce0941
 	sha256sums = e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9
 	sha256sums = 48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d
 
