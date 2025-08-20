@@ -1,0 +1,23 @@
+pkgbase = sftool-gui-bin
+	pkgdesc = GUI version of sftool, a download tool for the SiFli family of chips
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/OpenSiFli/sftool-gui
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = libarchive
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/OpenSiFli/sftool-gui/releases/download/v1.0.1/sftool_1.0.1_linux_amd64.deb
+	sha256sums_x86_64 = 7951153ac12b733a4033d0ba1571e7c0266f0380174c11dce9c23433b6e33a1a
+
+pkgname = sftool-gui-bin
