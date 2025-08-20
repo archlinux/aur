@@ -7,7 +7,6 @@ pkgbase = go2rtc
 	license = MIT
 	makedepends = go
 	makedepends = v4l-utils
-	depends = glibc
 	depends = ffmpeg
 	options = !strip
 	backup = etc/go2rtc.yaml

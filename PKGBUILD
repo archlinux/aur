@@ -24,7 +24,7 @@ sha512sums=('a41c27c4ff2861c0ff60bb102f44bd03e4e577b56d9bfd54b6f1a66999950be9366
             'a93b05fb38c34a64d1522d903ad5681ea2f5e0b66680e950d7c113632316e5fc78f25c88f47aa3021766227e16cc2a1d46016fadf4b32f2b623919dae6316dfb'
             '9efe4ffa1001cd0c94078cd8e544e8fddb9869188cfd55da4307b5b2f3e103b97ed84b01deca4fbbc93d0f7448031b5193202b0d6d719662fde5cb191083b430')
 options=(!strip)
-depends=('glibc' 'ffmpeg')
+depends=('ffmpeg')
 makedepends=('go' 'v4l-utils')
 backup=(etc/go2rtc.yaml)
 
