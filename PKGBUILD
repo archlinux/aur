@@ -1,7 +1,7 @@
 # Maintainer: Tsaitang <tsaitang404 at gmail dot com>
 pkgname=univpn
 pkgver=10781.18.1.0512
-pkgrel=2
+pkgrel=3
 pkgdesc="企业级VPN客户端"
 arch=('x86_64')
 url="https://www.univpn.com/"
@@ -15,6 +15,9 @@ sha256sums=('854708ffe5761af08d52f98e03996e47bacb4106dc2b6b041ef03b487626ce5e')
 prepare() {
   cd "$srcdir" || return
   unzip -qo "univpn-linux-64-${pkgver}.zip"
+  
+  # 修补脚本中的 arch 命令，在 Arch Linux 中不存在，需要替换为 uname -m
+  sed -i 's/ARCH="`arch`"/ARCH="`uname -m`"/g' "univpn-linux-64-${pkgver}.run"
 }
 
 package() {
