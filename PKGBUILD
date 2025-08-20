@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RgoogleMaps
-_pkgver=1.5.1
+_pkgver=1.5.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rcurl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e1c161a7daed4d7aaef73d5005e97be1')
-b2sums=('8d3dff9023d1ba317f6a3e4196a61cb9c4e5250fe06ed02296d8d6cb8417593572cff973e6838ad84b7cbb97836da3c0de2673bbebc06f0963f26107e167d489')
+md5sums=('1f529d351c142976dd4a1db427fe237a')
+b2sums=('cdb50cd56152923ff2a32f58fdec90ce0c417ffcdd1a5434327063ab8de0c59f293786b39cf9c91430c4b6fd082354e7897c04c66d82a257c7602fd27e278b9b')
 
 build() {
   mkdir build
