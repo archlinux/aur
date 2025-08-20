@@ -21,8 +21,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xeyossr/anitr-cli/archi
 sha256sums=('SKIP')
 
 build() {
-  gobuildenv=$(go version)
   cd "$srcdir/$pkgname-$pkgver"
+  
+  export GOFLAGS="-mod=mod"
+  go mod tidy
+  go fmt ./...
+  
+  echo "⚙️ Derleniyor..."
+  gobuildenv=$(go version)
   go build -o build/anitr-cli -ldflags="-X 'github.com/xeyossr/anitr-cli/internal/update.version=${pkgver}' -X 'github.com/xeyossr/anitr-cli/internal/update.buildEnv=${gobuildenv}'"
 }
 
