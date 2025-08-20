@@ -1,19 +1,19 @@
 pkgbase = ruby-cairo
 	pkgdesc = Ruby bindings for cairo
 	pkgver = 1.18.4
-	pkgrel = 1
-	url = https://cairographics.org/rcairo
+	pkgrel = 2
+	url = https://github.com/rcairo/rcairo
 	arch = x86_64
 	license = Ruby
-	makedepends = ruby-rdoc
 	depends = ruby
 	depends = cairo
 	depends = ruby-pkg-config
 	depends = ruby-native-package-installer
 	depends = ruby-red-colors
-	noextract = cairo-1.18.4.gem
+	depends = glibc
+	depends = freetype2
 	options = !emptydirs
-	source = https://rubygems.org/downloads/cairo-1.18.4.gem
-	sha512sums = 665a791f54567bb81e8533e56964640c14dce195da8b5cca968930dcaef9a28b705c5a04901a796f0cc645e1168fd127da95f0d1f6dbe5a71ef27d8f4624adb7
+	source = ruby-cairo-1.18.4.tar.gz::https://github.com/rcairo/rcairo/archive/refs/tags/v1.18.4.tar.gz
+	sha512sums = edebb85be3c02538c768edb1255d42d781fd12fae1a3ed3c4588ddd256ed2bfcea3c60d9dbaacdefb6a64f34b3c3a7507868f3e3f3e7b69f6be0926424549a83
 
 pkgname = ruby-cairo

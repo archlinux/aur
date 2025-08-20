@@ -1,27 +1,66 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Andreas 'Segaja' Schleifer <segaja at archlinux dot org>
 
-_gemname=cairo
-pkgname=ruby-$_gemname
+_gem=cairo
+pkgname=ruby-${_gem}
 pkgver=1.18.4
-pkgrel=1
-pkgdesc='Ruby bindings for cairo'
-arch=('x86_64')
-url='https://cairographics.org/rcairo'
-license=('Ruby')
-depends=('ruby' 'cairo' 'ruby-pkg-config' 'ruby-native-package-installer' 'ruby-red-colors')
-makedepends=('ruby-rdoc')
-options=('!emptydirs')
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-noextract=($_gemname-$pkgver.gem)
-sha512sums=('665a791f54567bb81e8533e56964640c14dce195da8b5cca968930dcaef9a28b705c5a04901a796f0cc645e1168fd127da95f0d1f6dbe5a71ef27d8f4624adb7')
+pkgrel=2
+pkgdesc="Ruby bindings for cairo"
+arch=(x86_64)
+url="https://github.com/rcairo/rcairo"
+license=(Ruby)
+depends=(ruby cairo ruby-pkg-config ruby-native-package-installer ruby-red-colors glibc freetype2)
+#makedepends=(ruby-rdoc)
+options=(!emptydirs)
+source=("ruby-cairo-${pkgver}.tar.gz::https://github.com/rcairo/rcairo/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('edebb85be3c02538c768edb1255d42d781fd12fae1a3ed3c4588ddd256ed2bfcea3c60d9dbaacdefb6a64f34b3c3a7507868f3e3f3e7b69f6be0926424549a83')
+
+build() {
+  cd "rcairo-${pkgver}"
+
+local _gemdir="$(gem env gemdir)"
+
+  gem build "${_gem}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gem}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gem}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gem}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  local _platform="$(gem env platform | cut -d':' -f2)"
-  local _extension_api_version="$(ruby -e'puts Gem.extension_api_version')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm -r "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem" "${pkgdir}/${_gemdir}/extensions/${_platform}/${_extension_api_version}/${_gemname}-${pkgver}/gem_make.out" "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext/cairo/Makefile" "${pkgdir}/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "rcairo-${pkgver}"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 }
