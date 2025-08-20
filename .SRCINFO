@@ -8,7 +8,6 @@ pkgbase = python-onepassword-sdk
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-hatchling
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pydantic
