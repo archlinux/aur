@@ -4,7 +4,7 @@
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20230311
+pkgver=20250820
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
@@ -41,7 +41,7 @@ source=("http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Artemisia.zip"
         "LICENSE")
 noextract=(${source[@]##*/})
 
-sha256sums=('2103bb72f11d0746e5e27445a79dfb4acacfe9d60caeb0e483c68d81a5a01c31'
+sha256sums=('c17855d4d95290266f6a10f76d6168a75d8b6eb486b6ab3b72f1c1694e3da977'
             '130b8099d88e29d6b98fe1b98ee6f72677dbade05898782fdb5323cd8c704463'
             '6f97aa9684888433587be65d25bdb26345f791a87f8edfbf607e265a7c94b917'
             '7243a2192b663751f18aaa87348385e2945d75e4e7e111c651631331936754ed'
