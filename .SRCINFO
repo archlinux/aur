@@ -1,7 +1,7 @@
 pkgbase = max
 	pkgdesc = MAX is a multifunctional digital platform with a fully integrated messenger.
-	pkgver = 25.8.0.454
-	pkgrel = 1
+	pkgver = 25.8.0
+	pkgrel = 454
 	url = https://max.ru
 	arch = x86_64
 	license = custom:max
