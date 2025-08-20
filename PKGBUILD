@@ -2,7 +2,7 @@
 _appname=ui-tars
 pkgname="${_appname}-desktop-git"
 _pkgname='UI TARS'
-pkgver=r316.1a1b2f1
+pkgver=0.2.3.r112.g00df4a5
 _electronversion=34
 _nodeversion=20
 pkgrel=1
@@ -29,11 +29,11 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
-    #git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g;s/Agent.TARS.//g' ||
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g;s/Agent.TARS.//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
@@ -64,32 +64,35 @@ prepare() {
     {
         echo -e '\n'
         #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-        echo "node-linker=hoisted"
-        echo "network-concurrency=10"
+        echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        cp .npmrc "${srcdir}/${pkgname%-git}.git/apps/agent-tars"
+        cp .npmrc "apps/${_appname}"
     fi
-    sed -i "s/FSPanel/FsPanel/g" apps/agent-tars/src/renderer/src/components/CanvasPanel/EventPlayer/renderPlatformPanel.tsx
-    NODE_ENV=development    pnpm install
-    cd "${srcdir}/${pkgname%-git}.git/apps/${_appname}"
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm add -D @electron-forge/plugin-local-electron
+    export NODE_ENV=development
+    msg "Use corepack to installing pnpm9"
+    corepack enable pnpm
+    echo y | corepack use pnpm@9
+    msg "Installing global dependencies..."
+    sed -i "/agent-tars/d" pnpm-workspace.yaml
+    npx pnpm install
+    msg "Installing @electron-forge/plugin-local-electron"
+    npx pnpm add -D -w @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git/apps/${_appname}"
+    msg "Change electron version"
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    export NODE_ENV=production
+    msg "Define local electron location"
     local electronDist="/usr/lib/electron${_electronversion}"
+    msg "Changed to use local electron"
     sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
         name: \"@electron-forge/plugin-local-electron\",\\
@@ -97,8 +100,15 @@ build() {
             electronPath: \"${electronDist}\"\\
         }\\
     }," forge.config.ts
-    NODE_ENV=production     pnpm -c electron-vite build
-    NODE_ENV=production     pnpm -c electron-forge package
+    msg "Clean old files"
+    npx pnpm run clean
+    msg "Typecheck"
+    npx pnpm run typecheck:node
+    npx pnpm run typecheck:web
+    msg "Build package"
+    npx pnpm run build:dist
+    msg "Use local electron to package"
+    npx pnpm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

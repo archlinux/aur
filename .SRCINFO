@@ -1,6 +1,6 @@
 pkgbase = ui-tars-desktop-git
 	pkgdesc = A GUI Agent application based on UI-TARS(Vision-Lanuage Model) that allows you to control your computer using natural language.(Use system-wide electron)
-	pkgver = r316.1a1b2f1
+	pkgver = 0.2.3.r112.g00df4a5
 	pkgrel = 1
 	url = https://github.com/bytedance/UI-TARS-desktop
 	arch = any
@@ -13,11 +13,11 @@ pkgbase = ui-tars-desktop-git
 	makedepends = curl
 	makedepends = python-setuptools
 	depends = electron34
-	provides = ui-tars-desktop=r316.1a1b2f1
+	provides = ui-tars-desktop=0.2.3
 	conflicts = ui-tars-desktop
 	source = ui-tars-desktop.git::git+https://github.com/bytedance/UI-TARS-desktop
 	source = ui-tars-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = ui-tars-desktop-git
