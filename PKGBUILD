@@ -1,6 +1,5 @@
 # Maintainer: Jon Doe <devnullvoid.space@gmail.com>
 
-pkgver=v1.0.4.r0.ga7e2742
 pkgrel=1
 
 pkgname=proxmox-tui-git
