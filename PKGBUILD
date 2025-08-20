@@ -70,6 +70,8 @@ optdepends=(
 )
 makedepends=(
   python-installer
+  zip
+  unzip
 )
 options=(!strip)
 _cpy=38
