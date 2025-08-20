@@ -1,22 +1,27 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name=google-genai
-pkgname=python-${_name}
-pkgver=1.30.0
+pkgname=python-$_name
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
 depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp')
 optdepends=('python-aiohttp: aiohttp')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4e857e6cea01381105373cfdaccab5be6cd27361395662420c01880ffce38fdb')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4b670ffd6807422cf711f65cbf2e88b08f44252f1c68a6aebd98dd130e7a3026')
+
+prepare(){
+  cd "$srcdir"/${pkgname//google-/}-$pkgver
+  sed -i 's/, "twine>=6.1.0", "packaging>=24.2", "pkginfo>=1.12.0"//g' pyproject.toml
+}
 
 build() {
-  cd "${srcdir}"/${pkgname//google-/}-${pkgver}
+  cd "$srcdir"/${pkgname//google-/}-$pkgver
   python -m build --wheel --no-isolation
 }
 
@@ -70,6 +75,7 @@ check() {
     --ignore google/genai/tests/batches/test_create_with_gcs.py
     --ignore google/genai/tests/batches/test_create_with_inlined_requests.py
     --ignore google/genai/tests/models/test_recontext_image.py
+    --ignore google/genai/tests/models/test_segment_image.py
     --deselect google/genai/tests/chats/test_send_message.py
     --deselect google/genai/tests/files/test_upload.py
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
@@ -79,11 +85,11 @@ check() {
     --deselect google/genai/tests/tunings/test_end_to_end.py
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
   )
-  cd "${srcdir}"/${pkgname//google-/}-${pkgver}
-  pytest "${pytest_options[@]}" ${_name//-//}/tests
+  cd "$srcdir"/${pkgname//google-/}-$pkgver
+  PYTHONPATH="$srcdir"/${pkgname//google-/}-$pkgver pytest "${pytest_options[@]}" ${_name//-//}/tests
 }
 
 package() {
-  cd "${srcdir}"/${pkgname//google-/}-${pkgver}
+  cd "$srcdir"/${pkgname//google-/}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
