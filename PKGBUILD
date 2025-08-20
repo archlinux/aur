@@ -3,7 +3,7 @@
 
 _gem=gdk_pixbuf2
 pkgname="ruby-${_gem}"
-pkgver=4.2.4
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='Ruby/GdkPixbuf2 is a Ruby binding of GdkPixbuf-2.x.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-gio2=${pkgver} gdk-pixbuf2)
 makedepends=(ruby-pkg-config ruby-native-package-installer ruby-rake)
 replaces=(ruby-gdkpixbuf2)
 source=("ruby-gnome-${pkgver}.tar.gz::https://github.com/ruby-gnome/ruby-gnome/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('37a39e0175f00bedb3fca7791f12f9a0d759231c2d882a8770a7877a0e25cef5')
+sha256sums=('a2b66682d55b1815710361d275603b544e207d63e5b93be8a14a239657774f01')
 
 build() {
   cd "ruby-gnome-${pkgver}/${_gem}"
