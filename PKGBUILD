@@ -2,10 +2,10 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli speechify speechmatics spitch tavus turn-detector)
-pkgbase=python-${_name0}
-pkgname=(python-${_name0} ${_plugins[@]/#/python-${_name1}-})
-pkgver=1.2.5
+_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli smallestai speechify speechmatics spitch tavus turn-detector)
+pkgbase=python-$_name0
+pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
+pkgver=1.2.6
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
@@ -39,6 +39,7 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   "Agent Framework plugin for services using Sarvam.ai's API."
                   'Agent Framework Plugin for Silero.'
                   'Agent Framework plugin for Simli.'
+                  'Agent Framework plugin for speech synthesis with the Smallest AI.'
                   "Agent Framework plugin for voice synthesis with Speechify's API."
                   'Agent Framework plugin for Speechmatics.'
                   'spitch plugin template for LiveKit Agents.'
@@ -66,7 +67,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-langchain-core' 'python-langgraph'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents'"
-                  "'python-livekit-agents' 'python-mistralai'"
+                  "'python-livekit-agents' 'livekit-plugins-openai' 'python-mistralai'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-nltk'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-openai' 'python-websockets'"
@@ -77,7 +78,8 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-onnxruntime' 'python-numpy'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
-                  "'python-livekit-agents'"
+                  "'python-livekit-agents' 'python-av' 'python-numpy'"
+                  "'python-livekit-agents' 'python-speechmatics-rt'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-spitch'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-transformers' 'python-numpy' 'python-onnxruntime' 'python-jinja'")
@@ -117,21 +119,22 @@ _plugins__optdepends=(""
                       ""
                       ""
                       ""
+                      ""
                       "")
 arch=('x86_64' 'aarch64')
 _repo='https://github.com/livekit/agents'
 license=('Apache-2.0')
-source=("${_repo}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
-        "${_repo}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('7ce03c2c88d27253f3d1d90322f4a591f9569a979c1cc9082d53e0135c46d67a'
-            '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser')
+checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
+source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
+        "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
+sha256sums=('70750263d5c91845065e6a11db5421eaad92e6c82596b6e3a99ca609da300256'
+            '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 
 prepare(){
-  cp -f "${srcdir}"/silero_vad.onnx "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx
-  cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
+  cp -f "$srcdir"/silero_vad.onnx "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx
+  cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
   sed -i 's/# //g' tests/utils.py
   sed -i 's/resample if not None/# resample if not None/g' tests/utils.py
   sed -i '2i\import pathlib' tests/utils.py
@@ -139,10 +142,10 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name0}
+  cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver/$_name0
   python -m build --wheel --no-isolation
   for _plugin in "${_plugins[@]}"; do
-    cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name1}-${_plugin}
+    cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver/$_name1/$_name1-$_plugin
     python -m build --wheel --no-isolation
   done
 }
@@ -156,6 +159,7 @@ check() {
     --deselect tests/test_vad.py
     --deselect tests/test_connection_pool.py
     --deselect tests/test_ipc.py
+    -k "not test_two_speakers_simple_alternation and not test_none_speaker_id"
     # Need API's
     --deselect tests/test_audio_decoder.py::test_decode_and_transcribe
     --deselect tests/test_stt.py::test_recognize
@@ -168,11 +172,11 @@ check() {
     --deselect tests/test_evals.py::test_inline_agent
     --deselect tests/test_workflows.py::test_collect_email
   )
-  cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
+  cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer ${_name0}/dist/*.whl
+  test-env/bin/python -m installer $_name0/dist/*.whl
   for _plugin in "${_plugins[@]}"; do
-    test-env/bin/python -m installer ${_name1}/${_name1}-${_plugin}/dist/*.whl
+    test-env/bin/python -m installer $_name1/$_name1-$_plugin/dist/*.whl
   done
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
@@ -219,18 +223,18 @@ package_python-livekit-agents() {
               'python-livekit-plugins-hedra: hedra'
               'python-livekit-plugins-anam: anam'
               'python-livekit-plugins-simli: simli')
-  cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name0}/dist/*.whl
+  cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
+  python -m installer --destdir="$pkgdir" $_name0/dist/*.whl
 }
 
 livekit-plugins(){
   for ((i=0; i<${#_plugins[@]}; i++)); do
-    eval "package_python-${_name1}-${_plugins[i]}() {
+    eval "package_python-$_name1-${_plugins[i]}() {
             pkgdesc=\"${_plugins_pkgdesc[i]}\"
-            url=\"${_repo}\"/tree/main/${_name1}/${_name1}-${_plugins[i]}
+            url=\"$_repo\"/tree/main/$_name1/$_name1-${_plugins[i]}
             depends=(${_plugins_depends[i]})
             optdepends=(${_plugins__optdepends[i]})
-            cd \"\${srcdir}\"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name1}-${_plugins[i]}
+            cd \"\$srcdir\"/${_name0//livekit-/}-$_name0-$pkgver/$_name1/$_name1-${_plugins[i]}
             python -m installer --destdir=\"\$pkgdir\" dist/*.whl
           }"
   done

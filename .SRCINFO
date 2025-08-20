@@ -1,5 +1,5 @@
 pkgbase = python-livekit-agents
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -12,14 +12,15 @@ pkgbase = python-livekit-agents
 	checkdepends = python-nltk
 	checkdepends = nltk-data
 	checkdepends = python-docstring-parser
+	checkdepends = python-speechmatics-rt
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.5.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.5/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = 7ce03c2c88d27253f3d1d90322f4a591f9569a979c1cc9082d53e0135c46d67a
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.6.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.6/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = 70750263d5c91845065e6a11db5421eaad92e6c82596b6e3a99ca609da300256
 	sha256sums = 6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396
 
 pkgname = python-livekit-agents
@@ -254,6 +255,7 @@ pkgname = python-livekit-plugins-mistralai
 	pkgdesc = LiveKit Agents Plugin for services from AWS.
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-mistralai
 	depends = python-livekit-agents
+	depends = livekit-plugins-openai
 	depends = python-mistralai
 	optdepends = 
 
@@ -327,6 +329,14 @@ pkgname = python-livekit-plugins-simli
 	depends = python-livekit-agents
 	optdepends = 
 
+pkgname = python-livekit-plugins-smallestai
+	pkgdesc = Agent Framework plugin for speech synthesis with the Smallest AI.
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-smallestai
+	depends = python-livekit-agents
+	depends = python-av
+	depends = python-numpy
+	optdepends = 
+
 pkgname = python-livekit-plugins-speechify
 	pkgdesc = Agent Framework plugin for voice synthesis with Speechify's API.
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-speechify
@@ -339,6 +349,7 @@ pkgname = python-livekit-plugins-speechmatics
 	pkgdesc = Agent Framework plugin for Speechmatics.
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-speechmatics
 	depends = python-livekit-agents
+	depends = python-speechmatics-rt
 	optdepends = 
 
 pkgname = python-livekit-plugins-spitch
