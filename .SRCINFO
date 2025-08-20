@@ -1,16 +1,20 @@
 pkgbase = termgraph-git
-	pkgdesc = A python command-line tool which draws basic graphs in the terminal.
-	pkgver = 0.4.2.r15.gb10150d
+	pkgdesc = Python command-line tool which draws basic graphs in the terminal (development version)
+	pkgver = 0.5.4.r0.g5dd9a0a
 	pkgrel = 1
 	url = https://github.com/mkaz/termgraph
-	arch = x86_64
+	arch = any
 	license = MIT
-	makedepends = python
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
+	depends = python-colorama
 	provides = termgraph
 	conflicts = termgraph
 	source = termgraph::git+https://github.com/mkaz/termgraph
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = termgraph-git
-

@@ -1,27 +1,59 @@
-# Maintainer: Kevin Kuehler <keur@ocf.berkeley.edu>
+# -*- mode: sh -*-
 
-_pkgname=termgraph
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Kevin Kuehler <keur@ocf.berkeley.edu>
+
+_pkgname='termgraph'
 pkgname="$_pkgname-git"
-pkgver=0.4.2.r15.gb10150d
+pkgver=0.5.4.r0.g5dd9a0a
 pkgrel=1
-pkgdesc="A python command-line tool which draws basic graphs in the terminal."
-arch=('x86_64')
+pkgdesc='Python command-line tool which draws basic graphs in the terminal (development version)'
+arch=('any')
 url="https://github.com/mkaz/$_pkgname"
-license=('MIT')
-depends=('python')
-makedepends=('python')
-provides=('termgraph')
-conflicts=('termgraph')
+license=('MIT')  # SPDX-License-Identifier: MIT
+depends=(
+  'python'
+  'python-colorama'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
+)
+provides=("$_pkgname")
+conflicts=("${provides[@]}")
 source=("$_pkgname::git+$url")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+
+  git describe --tags --long \
+  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+
+  git clean -dfx
+}
+
+build() {
+  cd "$_pkgname"
+
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cd "$_pkgname"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/data" data/*.dat
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
+
+# eof
