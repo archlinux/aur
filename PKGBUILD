@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.1.8.r0.ga845478
-_electronversion=35
+pkgver=0.1.10.r0.ga52380d
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="A Simple Terminal based on Electron & NodeJS.(Use system-wide electron)"
