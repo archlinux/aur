@@ -4,7 +4,7 @@ pkgname=max
 pkgver=25.8.0.454
 pkgrel=1
 
-pkgdesc="MAX is a multifunctional digital platform with a fully integrated messenger. Animated stickers, personal and group correspondence, status, voices, messages, the ability to send files up to 4 GB - here is everything you need to share your mood and important information."
+pkgdesc="MAX is a multifunctional digital platform with a fully integrated messenger."
 arch=("x86_64")
 url='https://max.ru'
 license=("unknown")
