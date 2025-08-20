@@ -3,7 +3,7 @@
 pkgbase=looking-glass
 pkgname=("${pkgbase}"
          "${pkgbase}-module-dkms"
-         "${pkgbase}-host"
+#         "${pkgbase}-host"
          "obs-plugin-${pkgbase}")
 epoch=2
 pkgver=B7
@@ -59,15 +59,15 @@ package_looking-glass-module-dkms() {
 		kvmfr.{h,c}
 }
 
-package_looking-glass-host() {
-	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
-	depends=('binutils' 'gcc-libs' 'glib2' 'glibc'
-	         'libpipewire' 'libxcb' 'zlib' 'zstd')
-	install="host.install"
-
-	cd "${srcdir}/${_lgdir}/host/build"
-	make DESTDIR="${pkgdir}" install
-}
+#package_looking-glass-host() {
+#	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
+#	depends=('binutils' 'gcc-libs' 'glib2' 'glibc'
+#	         'libpipewire' 'libxcb' 'zlib' 'zstd')
+#	install="host.install"
+#
+#	cd "${srcdir}/${_lgdir}/host/build"
+#	make DESTDIR="${pkgdir}" install
+#}
 
 package_obs-plugin-looking-glass() {
 	pkgdesc="Plugin for OBS Studio to stream directly from Looking Glass without having to record the Looking Glass client"
