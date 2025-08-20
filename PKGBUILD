@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=remaCor
-_pkgver=0.0.18
+_pkgver=0.0.20
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cc6ca79d2f7319e40e2ffe27a19ff598')
-b2sums=('fa4ed0c63ff0264831826a1841fca82bcc9e26f11baef613c42d4d49d70e784efde6fdf0c144585dca354d4318d0c72aaf89dbcfcc093e914a49d981d3898af2')
+md5sums=('79132fbb68e5868c0d9554f48c71e304')
+b2sums=('809bcb9c038fa2faff9068c7843c6dd1b65fe7f8211fc3dfb296a5c04252d796770b84bba614f799feff374332610991760d0c8d001098c8747bee5362fcf6cf')
 
 build() {
   mkdir build
