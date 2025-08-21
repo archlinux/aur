@@ -1,13 +1,21 @@
 pkgbase = django-voting
 	pkgdesc = A generic voting application for Django projects
-	pkgver = 1.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jezdez/django-voting/
 	arch = any
-	license = BSD
+	license = MIT
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-django
-	source = https://pypi.python.org/packages/source/d/django-voting/django-voting-1.0.tar.gz
-	md5sums = 8c3b662c85bdb1a961bcc0cec567b50a
+	depends = python
+	depends = python-setuptools
+	source = https://pypi.python.org/packages/source/d/django-voting/django-voting-1.1.0.tar.gz
+	source = LICENSE.rst
+	md5sums = 7654e30707801f52c197f1996f986254
+	md5sums = 3db715d765eaf6a426031848215cb2f3
 
 pkgname = django-voting
-
