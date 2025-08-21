@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A python lyrics player for cmus"
 arch=('any')
-url="https://github.com/Ja4e/Lyrus"
+url="https://github.com/Ja4e/lyrus"
 license=('MIT')
 
 depends=(
@@ -23,7 +23,7 @@ optdepends=(
 makedepends=('git')
 provides=("lyrus")
 conflicts=("lyrus")
-source=("lyrus::git+https://github.com/Ja4e/Lyrus.git")
+source=("lyrus::git+https://github.com/Ja4e/lyrus.git")
 sha256sums=('SKIP')
 
 package() {
