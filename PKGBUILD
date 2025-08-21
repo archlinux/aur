@@ -8,6 +8,7 @@ url="https://github.com/Haleclipse/CCometixLine"
 license=('GPL3')
 source=("ccline-linux-x64.tar.gz::https://github.com/Haleclipse/CCometixLine/releases/download/v$pkgver/ccline-linux-x64.tar.gz")
 sha256sums=('410161930f8919a59bdce8c02557ec3bd07d745baaa15e9bc12749392a146eb6')
+install=ccline-bin.install
 
 package() {
   # Extract the tar.gz file
@@ -28,14 +29,3 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -sf "$HOME/.claude/ccline/ccline" "$pkgdir/usr/bin/ccline"
 }
-
-remove() {
-  # Remove the binary from home directory
-  rm -f "$HOME/.claude/ccline/ccline"
-
-  # Remove the ccline directory if empty
-  if [ -d "$HOME/.claude/ccline" ] && [ "$(ls -A "$HOME/.claude/ccline" 2>/dev/null)" = "" ]; then
-    rmdir "$HOME/.claude/ccline"
-  fi
-}
-

@@ -1,0 +1,21 @@
+pre_remove() {
+  # Get the actual user's home directory (not root's)
+  if [ "$SUDO_USER" != "" ]; then
+    USER_HOME="/home/$SUDO_USER"
+  else
+    USER_HOME="$HOME"
+  fi
+
+  # Remove the binary from user's home directory before package removal
+  rm -f "$USER_HOME/.claude/ccline/ccline"
+
+  # Remove the ccline directory if empty
+  if [ -d "$USER_HOME/.claude/ccline" ] && [ "$(ls -A "$USER_HOME/.claude/ccline" 2>/dev/null)" = "" ]; then
+    rmdir "$USER_HOME/.claude/ccline"
+  fi
+}
+
+post_remove() {
+  # Additional cleanup if needed
+  true
+}

@@ -3,6 +3,7 @@ pkgbase = ccline-bin
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Haleclipse/CCometixLine
+	install = ccline-bin.install
 	arch = x86_64
 	license = GPL3
 	source = ccline-linux-x64.tar.gz::https://github.com/Haleclipse/CCometixLine/releases/download/v1.0.3/ccline-linux-x64.tar.gz
