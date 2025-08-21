@@ -1,0 +1,4 @@
+pkg
+src
+jrl-cmakemodules*
+*.patch
