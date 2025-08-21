@@ -2,13 +2,13 @@
 
 pkgname=clara-verse
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A privacy-first, client-side AI assistant WebUI for LLMs with ComfyUI integration"
 arch=('x86_64')
 url="https://github.com/badboysm890/ClaraVerse"
 license=('MIT')
 depends=('nodejs' 'npm' 'electron37' 'python' 'docker')
-makedepends=('git' 'nodejs' 'npm')
+makedepends=('git' 'nodejs' 'npm' 'python')
 optdepends=('ollama: For local LLM support')
 provides=('clara-verse')
 conflicts=('clara-verse')
@@ -27,13 +27,35 @@ prepare() {
   
   # Install dependencies
   npm ci
+  
+  # Update node-abi to latest version
+  npm install node-abi@latest
+  
+  # Set environment variables for native module compilation
+  export npm_config_target=$(electron -v | sed 's/v//')
+  export npm_config_arch=x64
+  export npm_config_target_arch=x64
+  export npm_config_disturl=https://electronjs.org/headers
+  export npm_config_runtime=electron
+  export npm_config_build_from_source=true
 }
 
 build() {
   cd "ClaraVerse-$pkgver"
   
+  # Set environment variables for the build process
+  export npm_config_target=$(electron -v | sed 's/v//')
+  export npm_config_arch=x64
+  export npm_config_target_arch=x64
+  export npm_config_disturl=https://electronjs.org/headers
+  export npm_config_runtime=electron
+  export npm_config_build_from_source=true
+  
   # Build the web application
   npm run build
+  
+  # Rebuild native modules
+  npx electron-rebuild --version=$(electron -v | sed 's/v//')
   
   # Build the Electron application for Linux
   npm run electron:build-linux
