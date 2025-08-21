@@ -19,8 +19,6 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/mir" "$pkgdir/usr/bin/$pkgname"
-    install -Dm755 "target/release/mir" "$pkgdir/usr/bin/mir"
     install -Dm755 "target/release/mir" "$pkgdir/usr/bin/mir"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
