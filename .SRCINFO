@@ -1,0 +1,20 @@
+pkgbase = xfce4-panel-darkman-git
+	pkgdesc = DarkMan theme plugin for Xfce panel (builds from git)
+	pkgver = 1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/jakariyaa/xfce4-panel-darkman
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = vala
+	makedepends = gtk-doc
+	makedepends = intltool
+	depends = xfce4-panel
+	source = git+https://github.com/jakariyaa/xfce4-panel-darkman.git
+	md5sums = SKIP
+
+pkgname = xfce4-panel-darkman-git
