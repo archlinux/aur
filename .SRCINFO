@@ -1,0 +1,13 @@
+pkgbase = hyprfindr
+	pkgdesc = Search and display Hyprland keybinds via CLI and desktop notifications
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/fwtwoo/hyprfindr
+	arch = any
+	license = MIT
+	depends = python
+	depends = zenity
+	source = hyprfindr-0.1.tar.gz::https://github.com/fwtwoo/hyprfindr/archive/refs/tags/v0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprfindr
