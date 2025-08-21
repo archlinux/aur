@@ -2,10 +2,10 @@
 # Contributor: Kiri <kiri@vern.cc>
 
 _pkgname=exactci
-_pkgver=1.4-4
+_pkgver=1.4-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="Exact P-Values and Matching Confidence Intervals for Simple Discrete Parametric Cases"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('447f19a10800a1e7ac09201268e83c3a')
-b2sums=('b1a387879c8b8c4d88ebf327b326ae87fee69b78cc7c0cbd63b70a50840767a6ee66f4f60e0c73aa3cee430c746fe4bbe83cc0d70800fb02c465b0530cdf2e79')
+md5sums=('76eaf0911880f60470dd4c3e11f2d797')
+b2sums=('edb0f0c3063b2f7b7f3f085e6bcf48636ea209711b1e232346c53898163bf37344d58fe3528353649dd05bb3be073459ff5c1019953c82415c464eb459a83fac')
 
 build() {
   mkdir build

@@ -1,7 +1,7 @@
 pkgbase = r-exactci
 	pkgdesc = Exact P-Values and Matching Confidence Intervals for Simple Discrete Parametric Cases
-	pkgver = 1.4.4
-	pkgrel = 5
+	pkgver = 1.4.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=exactci
 	arch = any
 	license = GPL-3.0-only
@@ -11,8 +11,8 @@ pkgbase = r-exactci
 	optdepends = r-exact2x2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/exactci_1.4-4.tar.gz
-	md5sums = 447f19a10800a1e7ac09201268e83c3a
-	b2sums = b1a387879c8b8c4d88ebf327b326ae87fee69b78cc7c0cbd63b70a50840767a6ee66f4f60e0c73aa3cee430c746fe4bbe83cc0d70800fb02c465b0530cdf2e79
+	source = https://cran.r-project.org/src/contrib/exactci_1.4-5.tar.gz
+	md5sums = 76eaf0911880f60470dd4c3e11f2d797
+	b2sums = edb0f0c3063b2f7b7f3f085e6bcf48636ea209711b1e232346c53898163bf37344d58fe3528353649dd05bb3be073459ff5c1019953c82415c464eb459a83fac
 
 pkgname = r-exactci
