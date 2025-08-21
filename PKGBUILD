@@ -1,7 +1,7 @@
 # Maintainer: Mike Krüger <mkrueger@posteo.de>
 pkgname=game-cheetah
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance memory scanner/editor and game trainer"
 arch=('x86_64')
 url="https://github.com/mkrueger/game_cheetah"
@@ -10,7 +10,7 @@ depends=('gtk3' 'libxcb' 'libxkbcommon' 'wayland' 'libgl' 'fontconfig' 'freetype
 makedepends=('rust' 'cargo')
 options=('!strip') # Optional: keep debug symbols for better crash reports
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkrueger/game_cheetah/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e41441de8c1a52370010ca41c22fc42e814dfd3739d4cfd181cf24013044526c')
+sha256sums=('877f8d87cfddbc12d64069c784af35f1b55ef13ac9762a8d0077539c4c90c5cf')
 
 prepare() {
     cd "$srcdir/game_cheetah-$pkgver"
