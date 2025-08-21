@@ -1,6 +1,6 @@
 # Maintainer: sinomor
 pkgname=delta-shell-git
-pkgver=r100.79f565d
+pkgver=r105.11ce23e
 pkgrel=1
 pkgdesc="A Desktop Shell for Niri and Hyprland"
 arch=('x86_64')
@@ -9,15 +9,10 @@ license=('MIT')
 depends=(
     # official repository:
     'wireplumber'
-    'bluez'
-    'bluez-utils'
     'networkmanager'
-    'fd'
-    'brightnessctl'
     'dart-sass'
     'wl-clipboard'
     'upower'
-    'power-profiles-daemon'
     # aur:
     'aylurs-gtk-shell-git'
     'libastal-meta'
@@ -34,6 +29,8 @@ optdepends=(
     'gpu-screen-recorder: for recording screen'
     'geoclue: for autoload the location for weather'
     'brightnessctl: for control brightness of monitors'
+    'power-profiles-daemon: switch power profiles'
+    'bluez: for connect to bluetooth devices'
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
