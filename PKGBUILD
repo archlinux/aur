@@ -3,7 +3,7 @@
 pkgname=python-vllm-bin
 _pkgname=vllm
 pkgver=0.10.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -83,12 +83,16 @@ noextract=("vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl")
 sha256sums=('8ca0dd985e1ceac8540e7719c654f1553b3ba8a43c685ac8d3fa1366ffb6443a'
             '5f466eaeb18d73474045a97a8bd7afb3ebe6581a32194b254783803686190080')
 prepare() {
-  unzip -q "$srcdir/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
+  rm -rf vllm patch
+  unzip -q "vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
     "vllm/config/__init__.py"
-  patch -Np1 -i "$srcdir/add-python-313-support.patch"
+  patch -Np1 -i ../add-python-313-support.patch
   mkdir -p patch
-  cp "$srcdir/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" patch/
-  zip -q -u "$srcdir/patch/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
+  cp "vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" patch/
+  # force zip to update the file even if timestamps match - by first removing and then re-adding
+  zip -d "patch/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
+    "vllm/config/__init__.py"
+  zip -u "patch/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
     "vllm/config/__init__.py"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = python-vllm-bin
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.10.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
