@@ -3,7 +3,7 @@
 pkgbase=python-stcal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="STScI tools and algorithms used in calibration pipelines"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ makedepends=('python-setuptools-scm>=3.4'
 #              'python-opencv'
 #             )   # gwcs(requests <- .. <- scipy) <- tweakwcs drizzle skimage(requests) already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3d25c0b780845fc2a4cbeabdac71f1a7')
+md5sums=('691a8dc20ccba12b0be31bd6609f158b')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -48,7 +48,7 @@ build() {
 package_python-stcal() {
     depends=('python>=3.11'
              'python-drizzle>=2.0.1'
-             'python-gwcs>=0.22.0'
+             'python-gwcs>=0.25.2'
              'python-requests>=2.22'
              'python-scipy>=1.14.1'
              'python-scikit-image>=0.20.0'
