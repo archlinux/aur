@@ -1,2 +1,12 @@
+# SPDX-FileCopyrightText: 2025 PixelSergey <sergey.ichtchenko@gmail.com>
+#
+# SPDX-License-Identifier: 0BSD
+
+./*
 !PKGBUILD
 !.SRCINFO
+!LICENSE
+!.gitignore
+!LICENSES/*
+!REUSE.toml
+
