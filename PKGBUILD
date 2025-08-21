@@ -99,50 +99,48 @@
 # if this list is updated on updating
 # the kernel compiler patchset.
 #
-#  1. Build and optimize for local/native CPU (X86_NATIVE_CPU)
-#  2. Generic-x86-64 (GENERIC_CPU)
-#  3. Intel-Native optimizations autodetected by the compiler (MNATIVE_INTEL)
-#  4. AMD-Native optimizations autodetected by the compiler (MNATIVE_AMD)
-#  5. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  6. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  7. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  8. AMD Barcelona (MBARCELONA)
-#  9. AMD Bobcat (MBOBCAT)
-#  10. AMD Jaguar (MJAGUAR)
-#  11. AMD Bulldozer (MBULLDOZER)
-#  12. AMD Piledriver (MPILEDRIVER)
-#  13. AMD Steamroller (MSTEAMROLLER)
-#  14. AMD Excavator (MEXCAVATOR)
-#  15. AMD Ryzen (MZEN)
-#  16. AMD Ryzen 2 (MZEN2)
-#  17. AMD Ryzen 3 (MZEN3)
-#  18. AMD Ryzen 4 (MZEN4)
-#  19. AMD Ryzen 5 (MZEN5)
-#  20. Intel P4 / older Netburst based Xeon (MPSC)
-#  21. Intel Core 2 (MCORE2)
-#  22. Intel Nehalem (MNEHALEM)
-#  23. Intel Westmere (MWESTMERE)
-#  24. Intel Silvermont (MSILVERMONT)
-#  25. Intel Goldmont (MGOLDMONT)
-#  26. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  27. Intel Sandy Bridge (MSANDYBRIDGE)
-#  28. Intel Ivy Bridge (MIVYBRIDGE)
-#  29. Intel Haswell (MHASWELL)
-#  30. Intel Broadwell (MBROADWELL)
-#  31. Intel Skylake (MSKYLAKE)
-#  32. Intel Skylake X (MSKYLAKEX)
-#  33. Intel Cannon Lake (MCANNONLAKE)
-#  34. Intel Ice Lake (MICELAKE_CLIENT)
-#  35. Intel Ice Lake Server (MICELAKE_SERVER)
-#  36. Intel Cooper Lake (MCOOPERLAKE)
-#  37. Intel Cascade Lake (MCASCADELAKE)
-#  38. Intel Tiger Lake (MTIGERLAKE)
-#  39. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
-#  40. Intel Rocket Lake (MROCKETLAKE)
-#  41. Intel Alder Lake (MALDERLAKE)
-#  42. Intel Raptor Lake (MRAPTORLAKE)
-#  43. Intel Meteor Lake (MMETEORLAKE)
-#  44. Intel Emerald Rapids (MEMERALDRAPIDS)
+#  1. Generic-x86-64 (GENERIC_CPU)
+#  2. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  3. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  4. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  5. AMD Barcelona (MBARCELONA)
+#  6. AMD Bobcat (MBOBCAT)
+#  7. AMD Jaguar (MJAGUAR)
+#  8. AMD Bulldozer (MBULLDOZER)
+#  9. AMD Piledriver (MPILEDRIVER)
+#  10. AMD Steamroller (MSTEAMROLLER)
+#  11. AMD Excavator (MEXCAVATOR)
+#  12. AMD Ryzen (MZEN)
+#  13. AMD Ryzen 2 (MZEN2)
+#  14. AMD Ryzen 3 (MZEN3)
+#  15. AMD Ryzen 4 (MZEN4)
+#  16. AMD Ryzen 5 (MZEN5)
+#  17. Intel P4 / older Netburst based Xeon (MPSC)
+#  18. Intel Core 2 (MCORE2)
+#  19. Intel Nehalem (MNEHALEM)
+#  20. Intel Westmere (MWESTMERE)
+#  21. Intel Silvermont (MSILVERMONT)
+#  22. Intel Goldmont (MGOLDMONT)
+#  23. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  24. Intel Sandy Bridge (MSANDYBRIDGE)
+#  25. Intel Ivy Bridge (MIVYBRIDGE)
+#  26. Intel Haswell (MHASWELL)
+#  27. Intel Broadwell (MBROADWELL)
+#  28. Intel Skylake (MSKYLAKE)
+#  29. Intel Skylake-X (7th Gen Core i7/i9) (MSKYLAKEX)
+#  30. Intel Coffee Lake/Kaby Lake Refresh (8th Gen Core i3/i5/i7) (MCANNONLAKE)
+#  31. Intel Ice Lake (MICELAKE_CLIENT)
+#  32. Intel Ice Lake-SP (3rd Gen Xeon Scalable) (MICELAKE_SERVER)
+#  33. Intel Cooper Lake (MCOOPERLAKE)
+#  34. Intel Cascade Lake (MCASCADELAKE)
+#  35. Intel Tiger Lake (MTIGERLAKE)
+#  36. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
+#  37. Intel Rocket Lake (MROCKETLAKE)
+#  38. Intel Alder Lake (MALDERLAKE)
+#  39. Intel Raptor Lake (MRAPTORLAKE)
+#  40. Intel Meteor Lake (MMETEORLAKE)
+#  41. Intel Emerald Rapids (MEMERALDRAPIDS)
+#  42. Intel Diamond Rapids (7th Gen Xeon Scalable) (MDIAMONDRAPIDS)
 : "${_subarch:=""}"
 
 # Selects the x86-64 microarchitecture to compile for.
@@ -198,9 +196,9 @@ _kernel_minor=1
 # Tachyon patches version
 _tachyon=6.15.7-1592
 # kernel_compiler_patch version
-_kernelcompilerpatch="b1d0a20756adb1b6222843c33bcc80137e2ec040"
+_kernelcompilerpatch="20250818.2"
 # kernel_compiler_patch name
-_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.16.patch"
+_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.16+.patch"
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -220,8 +218,7 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
     "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
-#   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/niuyuanzhao/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
+    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
 
@@ -233,7 +230,7 @@ sha256sums=(
     "SKIP"
     "ea642697bed40c9ab1b89d68e094fd03bc5812f9717d23feef62462e1793e661"
     "SKIP"
-    "2d0ed88be7da4a007cf5be7052fdc84b8a0ee704572f8b141fb69abd7e5ebed6"
+    "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
 )
 
 # -> Kernel PGP signer fingerprints
@@ -490,14 +487,15 @@ _update_defconfig() {
             # Ask for subarch if none provided
             make "${BUILD_FLAGS[@]}" oldconfig
             ;;
-        "41" | "GENERIC_CPU")
+        "1" | "GENERIC_CPU")
+            # Set x86-64 microarch
             scripts/config -e GENERIC_CPU
             scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
             make "${BUILD_FLAGS[@]}" oldconfig
             ;;
-        [1-9]|[1-3][0-9]|[4][0-3]|43)
-            # 1 to 9, 10 to 39, 40 to 43
-            # 43 is the last supported value here, refer to the _subarch
+        [1-9]|[1-3][0-9]|[4][0-3]|42)
+            # 1 to 9, 10 to 39, 40 to 42
+            # 42 is the last supported value here, refer to the _subarch
             # documentation above and keep the last section of this check
             # in sync with the supported value.
             # stderr checks below shouldn't be needed with the above check in place,
