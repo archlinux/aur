@@ -1,6 +1,6 @@
 pkgbase = iriunwebcam-bin
 	pkgdesc = Use your phone's camera as a wireless webcam in your PC
-	pkgver = 2.8.6
+	pkgver = 2.9
 	pkgrel = 1
 	url = https://iriun.com/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = iriunwebcam-bin
 	optdepends = qt5-wayland
 	options = !emptydirs
 	options = !debug
-	source = iriunwebcam-2.8.6.deb::http://iriun.gitlab.io/iriunwebcam-2.8.6.deb
+	source = iriunwebcam-2.9.deb::http://iriun.gitlab.io/iriunwebcam-2.9.deb
 	source = LICENSE.iriun.txt
-	sha256sums = 95d72e7d9c69bc72434a90267db1ea9bdcf8d6720b3e5ac54b422c8707fbe66e
+	sha256sums = 074aef02ff27e5efc83e707a614c0c3bff4c811b9c6a7fd4f2bae4ca269a844b
 	sha256sums = eb2ba875d0b419ab7d6327a933d619d1b9eed51f89d49e55ed789bf8f37f75be
 
 pkgname = iriunwebcam-bin
 	depends = alsa-lib
 	depends = avahi
-	depends = libusbmuxd
+	depends = libdrm
 	depends = qt5-base
 	depends = v4l2loopback-dkms
