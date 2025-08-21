@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm-bin
 _pkgname=vllm
-pkgver=0.10.1
+pkgver=0.10.1.1
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -80,7 +80,7 @@ source=(
   "https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl"
   "add-python-313-support.patch")
 noextract=("vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl")
-sha256sums=('df04a14116750f05099b84db4474935db80e9b13e8b7a6048d3a3cd64aa98b0c'
+sha256sums=('8ca0dd985e1ceac8540e7719c654f1553b3ba8a43c685ac8d3fa1366ffb6443a'
             '5f466eaeb18d73474045a97a8bd7afb3ebe6581a32194b254783803686190080')
 prepare() {
   unzip -q "$srcdir/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
