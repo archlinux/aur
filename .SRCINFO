@@ -1,13 +1,13 @@
 pkgbase = protolint
 	pkgdesc = A pluggable linter and fixer to enforce Protocol Buffer style and conventions
-	pkgver = 0.55.6
+	pkgver = 0.56.3
 	pkgrel = 1
 	url = https://github.com/yoheimuta/protolint
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = protolint-0.55.6.tar.gz::https://github.com/yoheimuta/protolint/archive/refs/tags/v0.55.6.tar.gz
-	sha256sums = 06b50c33b37b58e971c7d32e190556f6abb9df24f56b8ded1730e8c134e7e22a
+	source = protolint-0.56.3.tar.gz::https://github.com/yoheimuta/protolint/archive/refs/tags/v0.56.3.tar.gz
+	sha256sums = cdd411da0285a0c855f1ba4b1e8fbf7660f2fc9c3cd5bc4256c5c6e15b9a6d22
 
 pkgname = protolint
