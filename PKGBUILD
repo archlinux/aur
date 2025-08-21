@@ -2,8 +2,8 @@
 
 pkgname=python-fontfeatures
 _pyname=fontFeatures
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.9.0
+pkgrel=1
 pkgdesc='Library for manipulating OpenType font features'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
@@ -15,11 +15,11 @@ _pydeps=(beziers
 depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
-             python-setuptools)
+             python-setuptools-scm)
 optdepends=(python-glyphtools)
-_archive="$_pyname-$pkgver"
+_archive="${_pyname,,}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('5cb243f752325148de4aa7615857c8aaff722123dc6d4e1b811bd71134873a26')
+sha256sums=('dcfa5481a4d7c8572d849ac5690a9e50ebc3618168b09797b9116716bc29d11f')
 
 build() {
 	cd "$_archive"
