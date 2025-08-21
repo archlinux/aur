@@ -3,7 +3,7 @@
 pkgbase=python-drizzle
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A package for combining dithered images into a single image"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest'
               'python-gwcs')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/spacetelescope/drizzle/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('f6770a3b9c68e264ab3738f2d2e01cce')
+md5sums=('6646e6fe713f3829bd34305f9e95a2e4')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -43,6 +43,7 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     mv {,_}${_pyname}
+    ln -rs _${_pyname}/tests/data build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}/tests
     PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
