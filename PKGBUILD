@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm
 _pkgname=vllm
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.10.1.1
+pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -73,11 +73,11 @@ optdepends=(
 )
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('82b7a0812eb5833c6e5c8a5804cd70cdc9a29d453375179f6d57c0fee46e072f'
+sha256sums=('cb1dfb5fef044348a1419a8d046c41fdd3c7bfe467c32b5c5df1cdae38bb46fc'
             '34455097b0127d697294c81c9acf47fdabea51746daf682b1211429c9a6f2bd5')
 #
-# the following patch was merged so only needed for 0.10.1
-if [ "$pkgver" = "0.10.1" ]; then
+# the following patch was merged so only needed for 0.10.1.1
+if [ "$pkgver" = "0.10.1.1" ]; then
   source+=("add-python-313-support.patch::https://github.com/vllm-project/vllm/commit/21dce80ea96bcf033d159c0f952fb274567b315c.patch")
 fi
 [[ $MAKEFLAGS =~ -j[[:space:]]*([0-9]+) ]] &&
@@ -88,8 +88,8 @@ prepare() {
   ln -sf /usr/bin/gcc-14 $srcdir/gcc14/bin/gcc
   ln -sf /usr/bin/g++-14 $srcdir/gcc14/bin/g++
 
-  # Apply patch only for 0.10.1
-  if [ "$pkgver" = "0.10.1" ]; then
+  # Apply patch only for 0.10.1.1
+  if [ "$pkgver" = "0.10.1.1" ]; then
     cd $_pkgname
     patch -Np1 -i "../add-python-313-support.patch"
   fi
