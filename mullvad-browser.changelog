@@ -1,3 +1,15 @@
+Mullvad Browser 14.5.6 - August 19 2025
+ * All Platforms
+   * Updated Firefox to 128.14.0esr
+   * Updated NoScript to 13.0.9
+   * Bug 459: Rebase Mullvad Browser onto 128.14.0esr [mullvad-browser]
+   * Bug 44041: Letterboxing causes greyed out alert background to be mis-aligned [tor-browser]
+   * Bug 44048: Backport Bug 1979608 [tor-browser]
+   * Bug 44100: Backport Security Fixes from Firefox 142 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41529: Automate publishing browser release branch and tags to Mullvad repository [tor-browser-build]
+
 Mullvad Browser 14.5.5 - July 22 2025
  * All Platforms
    * Updated Firefox to 128.13.0esr
