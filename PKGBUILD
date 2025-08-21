@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname=eigenpy
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.10.3
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
@@ -11,17 +11,9 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=('boost-libs' 'eigen' 'gcc-libs' 'glibc')
 optdepends=('doxygen')
-makedepends=('cmake' 'boost' 'python-numpy' 'python-scipy')
-source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('ebfeef7a1974d9ef997a963d5e1b4500c0cbcfd6e2b5391176a8021624b3e126'
-            'SKIP')
-validpgpkeys=(
-        'A031AD35058955293D54DECEC45D22EF408328AD' # https://github.com/jcarpent.gpg
-        'F534E75540B2E7D24F99746987CFFF3D0D73CC93' # https://github.com/jcarpent.gpg
-        'F182CC432A4752C7A3E4FE02001EB2069D785C81' # https://github.com/proyan.gpg
-        '1462AF00C9CF3C9E7AFC905E63380359F089A579' # https://github.com/jorisv.gpg
-        'F6B9DDE42ED91D7939BC25B2A4D60E0153ADD041' # https://github.com/manifoldfr.gpg
-        )
+makedepends=('cmake' 'jrl-cmakemodules' 'boost' 'python-numpy' 'python-scipy')
+source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('8564b96c1f7d5a53d4330b0e9ecbf9e0815319bbe43cdf9e9488a4e9b9aa7ce6')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
