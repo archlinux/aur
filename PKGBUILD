@@ -8,7 +8,7 @@ url="https://t.me/+5717pL3Od2wzNTIy"
 license=('GPL')
 depends=()
 source=(
-    "https://drive.google.com/uc?export=download&id=1g8I8EZ1FJYkMAF3mI4G8iER3xeO51TMu"
+    "https://www.dropbox.com/scl/fi/a582b8zck7mog2t5sd5o5/wallpaper.jpg?rlkey=qbme6ndet2u54vec3dlnxesql&st=rfamzyhf&dl=1"
 )
 sha256sums=('0ef90e4954fae1af579aab5370cdb473ed2b7943454d4dba4c7f8dcd4d212d9d')
 package() {

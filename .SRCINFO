@@ -5,7 +5,7 @@ pkgbase = pingvin320kg
 	url = https://t.me/+5717pL3Od2wzNTIy
 	arch = x86_64
 	license = GPL
-	source = wallpaper.jpg
+	source = https://www.dropbox.com/scl/fi/a582b8zck7mog2t5sd5o5/wallpaper.jpg?rlkey=qbme6ndet2u54vec3dlnxesql&st=rfamzyhf&dl=1
 	sha256sums = 0ef90e4954fae1af579aab5370cdb473ed2b7943454d4dba4c7f8dcd4d212d9d
 
 pkgname = pingvin320kg
