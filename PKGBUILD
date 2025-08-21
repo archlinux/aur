@@ -3,8 +3,8 @@
 # Contributor: TheAssassin
 
 pkgname=appimagelauncher-git
-pkgver=r1329.3d42d4c
-pkgrel=2
+pkgver=r1334.8f80428
+pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=(x86_64)
 url="https://github.com/TheAssassin/AppImageLauncher"
@@ -33,6 +33,7 @@ build() {
   # Disable all warnings
   export CFLAGS+=" -w"
   export CXXFLAGS+=" -w"
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   local _flags=(
     -DBUILD_TESTING=OFF
