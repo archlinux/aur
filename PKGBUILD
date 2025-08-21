@@ -1,18 +1,18 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.9.8.r104.d7be10c
+pkgver=1.9.8.r106.98b32ef
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps'
 license=('LGPL-3.0-or-later')
 provides=(
-  ${pkgname}
+  ${pkgname%-git}
   linglong
 )
 conflicts=(
-  ${pkgname}
+  ${pkgname%-git}
   linglong
 )
 replaces=(linglong-git)
@@ -46,7 +46,7 @@ makedepends=(
   vulkan-headers
 )
 optdepends=(
-  "linyaps-installer: 玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store."
+  "linyaps-web-store-installer: 玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store."
   "linglong-pica: deb package to Linglong package tool."
   "linglong-tools: A command line helper for linglong."
   "ll-killer-go: 玲珑杀手 Go: 玲珑应用快速构建系统"
