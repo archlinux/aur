@@ -1,17 +1,17 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-box-git
-pkgver=2.1.0.r2.g61d1b26
-pkgrel=1
+pkgver=2.1.0.r3.g2a8c21b
+pkgrel=3
 pkgdesc='玲珑（Linglong） is the container application toolkit of deepin.'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps-box'
 license=('LGPL-3.0-or-later')
 provides=(
-  ${pkgname}
+  ${pkgname%-git}
 )
 conflicts=(
-  ${pkgname}
+  ${pkgname%-git}
 )
 replaces=()
 depends=(
