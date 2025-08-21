@@ -1,7 +1,7 @@
 pkgbase = gatus
 	pkgdesc = Automated service health dashboard
 	pkgver = 5.23.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/TwiN/gatus
 	arch = x86_64
 	license = Apache-2.0
