@@ -1,6 +1,7 @@
 # Maintainer: Jon Doe <devnullvoid.space@gmail.com>
 
-pkgrel=1
+pkgver=v1.0.4.r0.ga7e2742
+pkgrel=2
 
 pkgname=proxmox-tui-git
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
