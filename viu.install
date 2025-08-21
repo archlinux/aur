@@ -1,0 +1,13 @@
+post_upgrade() {
+    version=$(echo "$1" | cut -d ':' -f 2 | cut -d '.' -f 1-3)
+    echo ========================================
+    echo "Release notes for Viu v${version}:"
+    if ! command -v jq 2>&1 > /dev/null; then
+        echo "For fastanime release notes, check https://github.com/Benexl/viu/releases/latest"
+    else
+        echo -e "$(curl -sL "https://api.github.com/repos/Benexl/viu/releases/tags/v$version" | jq '.body')"
+    fi
+    echo "Make sure to run 'viu cache --clean' to clean the cache"
+    echo "Make sure to run 'viu config --update' to update the config"
+    echo ========================================
+}
