@@ -6,6 +6,7 @@ pkgdesc="GUI version of sftool, a download tool for the SiFli family of chips"
 arch=('x86_64')
 url="https://github.com/OpenSiFli/sftool-gui"
 license=('Apache-2.0')
+conflicts=('sftool-bin')
 depends=(
   'aom'
   'at-spi2-core'

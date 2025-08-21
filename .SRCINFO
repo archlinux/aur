@@ -103,6 +103,7 @@ pkgbase = sftool-gui-bin
 	depends = xz
 	depends = zlib
 	depends = zstd
+	conflicts = sftool-bin
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/OpenSiFli/sftool-gui/releases/download/v1.0.1/sftool_1.0.1_linux_amd64.deb
