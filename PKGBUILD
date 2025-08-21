@@ -5,8 +5,8 @@
 # the upstream generated binary version.
 
 pkgname=mattermost-plugin-jitsi
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Jitsi plugin for Mattermost'
 arch=(x86_64)
 url="https://github.com/${pkgname%%-*}/$pkgname"
@@ -15,10 +15,9 @@ makedepends=(jq)
 options=(!strip)
 _plugin="${pkgname##*-}"
 _archive="$_plugin-$pkgver"
-source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.sig})
-sha256sums=('895996f5974d9f3ab4f1cf76f537f5fb19c0edc1d6bae8db9fc042a5fe99cdea'
-            'SKIP')
-validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
+source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
+sha256sums=('73b97d2f3411440b44886d37b99827f55f0da30141c77b3ec62b8fc2e0bd1de4')
+# validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
