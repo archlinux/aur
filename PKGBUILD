@@ -1,14 +1,13 @@
 # Maintainer: Vescrity <vescrity@foxmail.com>
 _pkgname=wfrc
 pkgname="$_pkgname-git"
-pkgver=r27.946f6d8
+pkgver=r30.f39dc41
 pkgrel=1
 pkgdesc="Simple bash script to record screen on wlroots-based compositors using wf-recorder."
 arch=(any)
 license=(LGPL-2.1-only)
 url="https://github.com/Vescrity/wfrc"
 depends=(
-    wf-recorder
     bash
     slurp
     libnotify
@@ -16,6 +15,8 @@ depends=(
     wl-clipboard
 )
 optdepends=(
+    'wf-recorder: Default backend.'
+    'wl-screenrec: Another backend.'
 )
 makedepends=(
   git
