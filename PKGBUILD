@@ -2,7 +2,7 @@
 _base=scipy-stubs
 pkgname=python-${_base}
 pkgdesc="Type annotations for SciPy"
-pkgver=1.16.1.0
+pkgver=1.16.1.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/jorenham/${_base}"
@@ -11,7 +11,7 @@ depends=(python-optype)
 makedepends=(python-build python-installer python-hatchling)
 optdepends=('python-scipy: for SciPy support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('3f9c536843209f4ed85f0db5a464689f149dc3564ce7339a1e5b8bcafa8a86b6b3b7076ff47b57728dd690b67c9c5e957ae7014e593256593c8cb376bc37cd35')
+sha512sums=('d226193ea21d94f9fc4c64bdb63db04350b52b2cf930ae79cebcb16a4edc6b42306940ad9af7213f5939d8e26fdc658c6737ff74ce912ef934b30b52c46b3468')
 
 build() {
   cd ${_base}-${pkgver}
