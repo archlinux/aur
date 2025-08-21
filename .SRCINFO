@@ -1,0 +1,21 @@
+pkgbase = lyrus-git
+	pkgdesc = A python lyrics player for cmus
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ja4e/Lyrus
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-aiohttp
+	depends = python-wcwidth
+	depends = python-appdirs
+	depends = python-syncedlyrics
+	optdepends = python-mpd2: optional mpd support
+	provides = lyrus
+	conflicts = lyrus
+	source = lyrus::git+https://github.com/Ja4e/Lyrus.git
+	sha256sums = SKIP
+
+pkgname = lyrus-git
