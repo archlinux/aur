@@ -2,7 +2,7 @@
 
 _appname=user_saml
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=6.6.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="App for authenticating Nextcloud users using SAML"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(composer
              yq)
 _archive="$_appname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b4176ea0a556910d3f4a24eada405737577f2361dd8a66d35b105a2def5968a1')
+sha256sums=('3dc4f0bcd45b9ecdec978074a040926351aa5baa2bb78d10682a8015fb1934d3')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
