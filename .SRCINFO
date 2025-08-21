@@ -1,6 +1,6 @@
 pkgbase = nyacc
 	pkgdesc = Not Yet Another Compiler Compiler
-	pkgver = 1.05.1
+	pkgver = 2.02.2
 	pkgrel = 1
 	url = http://www.nongnu.org/nyacc
 	arch = any
@@ -10,10 +10,7 @@ pkgbase = nyacc
 	makedepends = guile
 	depends = guile
 	depends = guile-bytestructures
-	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-1.05.1.tar.gz
-	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-1.05.1.tar.gz.sig
-	validpgpkeys = 7C9EDA8DCE5DC8AE2C675EC9EE4F2A40097B7C03
-	sha256sums = c32042c1524646ba1a27b515203fab2240e6151fdb9e306e55b0154bbf7f63b2
-	sha256sums = SKIP
+	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-2.02.2.tar.gz
+	sha256sums = 691a5370a53a73a2dcfa89d92f811b3e56483a67f92199cd0061944d044b0205
 
 pkgname = nyacc
