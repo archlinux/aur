@@ -2,9 +2,9 @@
 # Contributor ZorinArch <zorinarch@protonmail.com>
 pkgname=penpot-desktop-bin
 _pkgname='Penpot Desktop'
-pkgver=0.17.0
+pkgver=0.18.0
 _electronversion=37
-pkgrel=2
+pkgrel=1
 pkgdesc="An unofficial desktop application for the open-source design tool, Penpot.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('f24126204623f132c6a758822653cdf84ede388ea6975a6d4d0e6ba24659b661')
-sha256sums_x86_64=('f79329dac3a773c9bd156ca87a0e91243d398f14ad3a0ebc8c64e04d70b4bf4f')
+sha256sums_aarch64=('0587eeeea32044927872c15bec4ead99177f050847d1f5fc515e9364edd2c39a')
+sha256sums_x86_64=('a61f14a5fd98750d8f228f298b19c38ba07d00a2f77c7f288b4151afd1baab07')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
