@@ -1,0 +1,16 @@
+pkgbase = fastsetup
+	pkgdesc = Bootstrapper that clones archDots and runs its install script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yuishigam1/fastsetup
+	arch = any
+	license = MIT
+	depends = git
+	depends = rsync
+	optdepends = yay: AUR helper to install packages from AUR
+	provides = fastsetup
+	conflicts = fastsetup-git
+	source = install.sh
+	sha256sums = SKIP
+
+pkgname = fastsetup
