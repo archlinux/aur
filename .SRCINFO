@@ -8,6 +8,7 @@ pkgbase = glace-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
+	makedepends = vala
 	depends = glibc
 	depends = gtk3
 	source = git+https://github.com/Fabric-Development/glace
