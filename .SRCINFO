@@ -1,7 +1,7 @@
 pkgbase = zenmap
 	pkgdesc = Graphical Nmap frontend and results viewer
 	pkgver = 7.97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nmap/nmap
 	arch = any
 	license = LicenseRef-Nmap-Public-Source-License-Version-0.95
@@ -15,7 +15,7 @@ pkgbase = zenmap
 	depends = python
 	depends = python-cairo
 	depends = python-gobject
-	optdepends = gksu: start zenmap as root
+	optdepends = pkexec: start zenmap as root
 	source = nmap-7.97.tar.bz2::https://nmap.org/dist/nmap-7.97.tar.bz2
 	source = nmap-7.97.tar.bz2.asc::https://nmap.org/dist/sigs/nmap-7.97.tar.bz2.asc
 	validpgpkeys = 436D66AB9A798425FDA0E3F801AF9F036B9355D0

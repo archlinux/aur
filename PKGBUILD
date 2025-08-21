@@ -9,7 +9,7 @@ _gitname="nmap"
 _pkgname="zenmap"
 pkgname="$_pkgname"
 pkgver=7.97
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Nmap frontend and results viewer"
 url='https://github.com/nmap/nmap'
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -30,33 +30,39 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'gksu: start zenmap as root'
+  'pkexec: start zenmap as root'
 )
 
-_source_main() {
-  local _pkgver=$(pkgver)
+if [[ "${_sync_nmap::1}" == "t" ]]; then
+  _pkgver="$(LC_ALL=C pacman -Si extra/nmap | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])')"
+else
+  _pkgver="$pkgver"
+fi
 
-  _pkgsrc="$_gitname-$_pkgver"
-  _pkgext="tar.bz2"
-  source=(
-    "$_pkgsrc.$_pkgext"::"https://nmap.org/dist/$_pkgsrc.$_pkgext"
-    "$_pkgsrc.$_pkgext.asc"::"https://nmap.org/dist/sigs/$_pkgsrc.$_pkgext.asc"
-  )
-  sha256sums=(
-    'SKIP'
-    'SKIP'
-  )
-  validpgpkeys=(
-    '436D66AB9A798425FDA0E3F801AF9F036B9355D0' # Nmap Project Signing Key (http://www.insecure.org/)
-  )
+_pkgsrc="$_gitname-$_pkgver"
+_pkgext="tar.bz2"
+source=(
+  "$_pkgsrc.$_pkgext"::"https://nmap.org/dist/$_pkgsrc.$_pkgext"
+  "$_pkgsrc.$_pkgext.asc"::"https://nmap.org/dist/sigs/$_pkgsrc.$_pkgext.asc"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
+validpgpkeys=(
+  '436D66AB9A798425FDA0E3F801AF9F036B9355D0' # Nmap Project Signing Key (http://www.insecure.org/)
+)
+
+prepare() {
+  # use pkexec for root
+  sed -E \
+    -e 's@^(\s*)(if which gksu.*)$@\1if which pkexec >/dev/null 2>\&1; then\n\1  SU_TO_ROOT_X=pkexec\n\1el\2@' \
+    -e '/gksu\)/i \      pkexec) pkexec "\$COMMAND";;' \
+    -i "$_pkgsrc/zenmap/install_scripts/unix/su-to-zenmap.sh"
 }
 
 pkgver() {
-  if [[ "${_sync_nmap::1}" == "t" ]]; then
-    LANG=C LC_ALL=C pacman -Si nmap | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])'
-  else
-    echo "${pkgver:?}"
-  fi
+  echo "${_pkgver:?}"
 }
 
 build() {
@@ -67,13 +73,40 @@ build() {
 package() {
   cd "$_pkgsrc"
   install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
-  install -Dm755 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  cd zenmap
+  cd "zenmap"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # icon
+  install -Dm644 "zenmapCore/data/pixmaps/zenmap.png" -t "$pkgdir/usr/share/pixmaps/"
+
+  cd "install_scripts/unix"
+  install -Dm755 "su-to-zenmap.sh" -t "$pkgdir/usr/bin/"
+  install -Dm644 "zenmap.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "zenmap-root.desktop" -t "$pkgdir/usr/share/applications/"
 
   ln -s zenmap "$pkgdir/usr/bin/nmapfe"
   ln -s zenmap "$pkgdir/usr/bin/xnmap"
-}
 
-_source_main
+  # polkit policy
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/polkit-1/actions/org.gnome.pkexec.zenmap.policy" << END
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <action id="com.gnome.pkexec.zenmap">
+    <message gettext-domain="zenmap">Authentication is required to run zenmap</message>
+    <icon_name>zenmap</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/zenmap</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+</policyconfig>
+END
+}
