@@ -1,6 +1,6 @@
 pkgbase = grml-rescueboot
 	pkgdesc = grub2 script to add grml iso images to the grub2 boot menu
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = http://wiki.grml.org/doku.php?id=rescueboot
 	install = grml-rescueboot.install
@@ -8,7 +8,7 @@ pkgbase = grml-rescueboot
 	license = GPL-2.0-or-later
 	depends = grub
 	backup = etc/default/grml-rescueboot
-	source = http://deb.grml.org/pool/main/g/grml-rescueboot/grml-rescueboot_0.6.6.tar.xz
-	sha256sums = 181de0a1ffd8d0db9f1baf27166b20992c8a241cecae6ad5f4d39afe6fe98454
+	source = http://deb.grml.org/pool/main/g/grml-rescueboot/grml-rescueboot_0.6.7.tar.xz
+	sha256sums = c5ede294f0eb279a1b2d1e3978f7fbaf657764396bd9b900a64291e03424631a
 
 pkgname = grml-rescueboot
