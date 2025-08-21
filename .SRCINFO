@@ -1,14 +1,14 @@
 pkgbase = osse-core
 	pkgdesc = OpenSource Search Engine Core Library
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xtarii/OSSE-Core
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	source = https://github.com/Xtarii/OSSE-Core/archive/refs/tags/v0.2-1.tar.gz
+	source = https://github.com/Xtarii/OSSE-Core/archive/refs/tags/v0.2-2.tar.gz
 	sha256sums = SKIP
 
 pkgname = osse-core
