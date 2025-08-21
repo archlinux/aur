@@ -1,5 +1,5 @@
-# Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
-# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
+# Maintainer: Andreas Baumann <mail@andreasbauamnn.cc>
+# Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 # Contributor: Tomas Schertel <tschertel at gmail dot com>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
@@ -11,7 +11,7 @@
 
 pkgname=arduino
 pkgver=1.8.19
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Arduino prototyping platform SDK (Legacy 1.x.x)"
 arch=('x86_64')
