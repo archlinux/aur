@@ -1,21 +1,17 @@
 # Maintainer:
 # Contributor: bjin <bjin@ctrl-d.org>
-# Contributor: Alynx Zhou <alynx.zhou@gmail.com>
-
-## links
-# https://gyroflow.xyz
-# https://github.com/gyroflow/gyroflow
 
 ## options
 : ${_install_path:=opt}
 
-: ${RUSTUP_TOOLCHAIN=stable}
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
 : ${CARGO_TARGET_DIR=target}
-export CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+: ${RUSTUP_TOOLCHAIN=stable}
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
-pkgver=1.6.1.r10.g83356d0
+pkgver=1.6.2.r0.g60ae9aa
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
