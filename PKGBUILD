@@ -1,4 +1,4 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Vamp898 <vamp898@web.de>
@@ -7,22 +7,22 @@
 # Contributor: Todd Maynard <arch@toddmaynard.com>
 
 pkgname=kmymoney-git
-pkgver=5.1.92.r18.gd47e1bf
+pkgver=5.2.1.r29.g25c253c
 pkgrel=1
 pkgdesc="Personal finance manager for KDE which operates similarly to MS-Money or Quicken"
 arch=('x86_64')
 url="https://kmymoney.org/"
-license=('GPL')
-depends=('aqbanking' 'gwenhywfar' 'libalkimia-git' 'sqlcipher' 'qt5-base' 'qt5-webengine' 'gpgme' 'karchive5'
-         'kcoreaddons5' 'kconfig5' 'kwidgetsaddons5' 'ki18n5' 'kcompletion5' 'kcmutils5' 'kitemmodels5'
-         'kitemviews5' 'kservice5' 'kwallet5' 'kiconthemes5' 'kxmlgui5' 'kidentitymanagement5'
-         'ktextwidgets5' 'knotifications5' 'kio5' 'kholidays5' 'kactivities5'
-         'kqtquickcharts' 'kdiagram5' 'kcontacts5' 'libical' 'libakonadi5' 'shared-mime-info' 'libofx')
-makedepends=('extra-cmake-modules' 'kdoctools5' 'doxygen' 'git')
+license=('GPL-2.0-or-later')
+depends=('glibc' 'gcc-libs' 'gmp' 'libalkimia' 'sqlcipher' 'qt6-base' 'qt6-5compat' 'gpgmepp' 'karchive'
+         'kcoreaddons' 'kconfig' 'kwidgetsaddons' 'ki18n' 'kcompletion' 'kcmutils' 'kitemmodels'
+         'kitemviews' 'kxmlgui' 'ktextwidgets' 'kio' 'kholidays' 'kjobwidgets' 'sonnet'
+         'kcolorscheme' 'kconfigwidgets' 'kdiagram' 'libical' 'libofx' 'qtkeychain-qt6'
+         'kidentitymanagement' 'libakonadi' 'kcontacts' 'aqbanking' 'gwenhywfar')
+makedepends=('extra-cmake-modules' 'kdoctools' 'doxygen' 'qgpgme')
 optdepends=('perl: for financequote.pl')
-provides=(kmymoney)
-conflicts=(kmymoney)
-source=('git+https://invent.kde.org/office/kmymoney.git/')
+provides=('kmymoney')
+conflicts=('kmymoney')
+source=('git+https://invent.kde.org/office/kmymoney.git#branch=5.2')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -31,20 +31,14 @@ pkgver() {
 }
 
 build() {
-  cd kmymoney
-
-  mkdir -p build
-  cd build
-
-  cmake ../ \
-    -DENABLE_WEBENGINE=ON \
+  cmake -B build -S kmymoney \
+    -DBUILD_WITH_QT6=ON \
     -DCMAKE_SKIP_RPATH=YES \
+    -DBUILD_TESTING=OFF \
     -Wno-dev
-  make
+  cmake --build build
 }
 
 package() {
-  cd kmymoney/build
-
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
