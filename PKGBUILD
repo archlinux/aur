@@ -14,7 +14,7 @@
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=25.2.4
+pkgver=25.3.0
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
@@ -38,10 +38,10 @@ _pkgsrc="cockroach-v$pkgver.linux-amd64"
 _pkgsrc_source="cockroach-$pkgver"
 source=(
   "$_pkgname-$pkgver.tar.gz"::"https://binaries.cockroachdb.com/$_pkgsrc.tgz"
-  "LICENSE-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
+  "$_pkgname-$pkgver-LICENSE.txt"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
 )
 sha256sums=(
-  '7b433d00bb57d9947dc9931058b16f44ff31dd2a25ed625233c3bf62e4413b58'
+  '1376d6ec5277f8a878b246a9bde90649a049456d36dd8f98df741cfa23b8315a'
   'cb4f34a516b09ec1815bd8376a34de7ea5e6da06c70bed756110943ad1b340e4'
 )
 
@@ -115,5 +115,5 @@ END
   install -Dm644 cockroach.zsh "$pkgdir/usr/share/zsh/site-functions/_cockroach"
 
   # licenses
-  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgname-$pkgver-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
