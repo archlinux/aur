@@ -4,20 +4,20 @@
 pkgname="avalonia-ls-git"
 pkgver=1.02
 pkgrel=1
-pkgdesc="Standalone LSP for Avalonia Projects. Plus XamlStyler for formatting."
+pkgdesc="Unofficial Standalone LSP for Avalonia Projects. Plus XamlStyler for formatting."
 arch=(any)
 makedepends=("dotnet-sdk" "git")
 depends=("dotnet-runtime")
-url="https://www.github.com/eugenenoble2005/avalonia-ls"
-source=("git+https://github.com/eugenenoble2005/avalonia-ls")
+url="https://www.github.com/eugenenoble2005/ls-for-avalonia"
+source=("git+https://github.com/eugenenoble2005/ls-for-avalonia")
 sha256sums=("SKIP")
 
 prepare(){
-	cd $srcdir/avalonia-ls
+	cd $srcdir/ls-for-avalonia
 	git submodule update --init
 }
 package(){
-	cd $srcdir/avalonia-ls
+	cd $srcdir/ls-for-avalonia
     mkdir -p bin/lsp
     #I have to build with one CPU core here because Arch Linux is retarded and keeps killing the process
     dotnet build src/AvaloniaLSP/AvaloniaLanguageServer --output bin/lsp -m:1
