@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/EbodShojaei/bake.git"
 prefix = "v"
+include_regex = 'v\d+\.\d+\.\d+'
