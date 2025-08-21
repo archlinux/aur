@@ -1,17 +1,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=etckeeper-packages
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Track installed packages in etckeeper (alternative to pug and pacmanity)'
 url="https://github.com/alerque/$pkgname"
-arch=('any')
-license=('GPL3')
-depends=('pacman' 'etckeeper')
-source=("$pkgname-pkgver.tar.gz::https://github.com/alerque/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bacabc2d09b1c8b0d984c5e1537d77f4c5017005c4c7ef23f2a14bad122fb1b9')
+arch=(any)
+license=(GPL-3.0-only)
+depends=(etckeeper
+         pacman)
+_archive="$pkgname-$pkgver"
+source=("https://github.com/alerque/$pkgname/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('fff62c3dddf0f8a4f542d92577ca49d9d0f57cfbc329e55d0a51caf694c8850d')
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+	cd "$_archive"
+	make DESTDIR="$pkgdir" install
 }
