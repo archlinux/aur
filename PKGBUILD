@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/CluelessCatBurger/wl_shimeji"
 license=('GPL-2.0')
 depends=('python>=3.10' 'python-pillow' 'wayland-compositor')
-makedepends=('git' 'libarchive' 'wayland' 'uthash')
+makedepends=('git' 'libarchive' 'wayland' 'wayland-protocols' 'uthash')
 source=("$pkgname::git+https://github.com/CluelessCatBurger/wl_shimeji.git"
         "jsonh::git+https://github.com/sheredom/json.h"
         "qoi::git+https://github.com/phoboslab/qoi"

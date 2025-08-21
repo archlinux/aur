@@ -8,6 +8,7 @@ pkgbase = wl_shimeji-git
 	makedepends = git
 	makedepends = libarchive
 	makedepends = wayland
+	makedepends = wayland-protocols
 	makedepends = uthash
 	depends = python>=3.10
 	depends = python-pillow
