@@ -1,6 +1,6 @@
 pkgbase = hypr-wellbeing-bin
 	pkgdesc = app usage logger for hyprland and niri
-	pkgver = 0.0.6.1
+	pkgver = 0.0.7
 	pkgrel = 2
 	url = https://github.com/DemonKingSwarn/hypr-wellbeing
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hypr-wellbeing-bin
 	optdepends = hyprland
 	optdepends = niri
 	provides = hypr-wellbeing
-	source = https://github.com/DemonKingSwarn/hypr-wellbeing/releases/download/0.0.6.1/hypr-wellbeing
+	source = https://github.com/DemonKingSwarn/hypr-wellbeing/releases/download/0.0.7/hypr-wellbeing
 	sha256sums = SKIP
 
 pkgname = hypr-wellbeing-bin
