@@ -1,4 +1,4 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: 0x4A4FRN <dfntlynotjon@gmail.com>
 
 pkgname=zigmod-bin
 pkgver=r98
