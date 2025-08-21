@@ -1,6 +1,6 @@
 pkgbase = eden-preview-bin
 	pkgdesc = The Eden Nintendo Switch emulator AppImage for preview builds such as release candiates.
-	pkgver = 0.0.3_rc2
+	pkgver = 0.0.3_rc3
 	pkgrel = 1
 	url = https://git.eden-emu.dev/eden-emu/eden
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = eden-preview-bin
 	depends = zlib
 	depends = hicolor-icon-theme
 	options = !strip
-	source_x86_64 = Eden-Linux-0.0.3_rc2-amd64.AppImage::https://github.com/eden-emulator/Releases/releases/download/v0.0.3-rc2/Eden-Linux-v0.0.3-rc2-amd64.AppImage
+	source_x86_64 = Eden-Linux-0.0.3_rc3-amd64.AppImage::https://github.com/eden-emulator/Releases/releases/download/v0.0.3-rc3/Eden-Linux-v0.0.3-rc3-amd64.AppImage
 	sha256sums_x86_64 = 9792f18ca3ba57b99320383ac3bb156aecd05ad416e89c07c7a14794f0ccedcd
 
 pkgname = eden-preview-bin
