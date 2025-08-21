@@ -1,5 +1,5 @@
 pkgname=sliver-bin
-pkgver=1.5.42
+pkgver=1.5.43
 pkgrel=1
 pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
@@ -14,8 +14,8 @@ source_x86_64=(
     "${pkgname%-bin}-${pkgver}-client::https://github.com/BishopFox/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-client_linux"
     "${pkgname%-bin}-${pkgver}-server::https://github.com/BishopFox/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-server_linux"
 )
-sha256sums_x86_64=('c53bc13170b9ff26b0cca93715e947318e06cafe0d98cf825eabffe3c7f763cb'
-                   '2ce6ab2d48d613830f2cd7920ced86ca7b6782dbafe64af84ba476f71d08620e')
+sha256sums_x86_64=('df49bf53747253c382de544fdf4f2fd17b586acc17cb81cf4c4168c535322609'
+                   '8873b45d1aeef1883a8f80e0aa50de45fe6c5f0b6e6f68cb5e365bf7281c4b3f')
 
 package() {
     install -Dm755 "$srcdir/${pkgname%-bin}-${pkgver}-server" "$pkgdir/usr/bin/${pkgname%-bin}-server"
