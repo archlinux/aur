@@ -1,4 +1,4 @@
-pkgbase = viu-git
+pkgbase = viu-media-git
 	pkgdesc = Viu, your browser anime experience, from the terminal.
 	pkgver = 3.2.7.r4.de8b6b7
 	pkgrel = 1
@@ -35,9 +35,9 @@ pkgbase = viu-git
 	optdepends = ffmpegthumbnailer: local previews
 	optdepends = syncplay: watch with friends
 	optdepends = feh: image viewer (for manga mode)
-	provides = viu
+	provides = viu-media
 	conflicts = viu
 	source = git+https://github.com/Benexl/viu.git
 	sha256sums = SKIP
 
-pkgname = viu-git
+pkgname = viu-media-git
