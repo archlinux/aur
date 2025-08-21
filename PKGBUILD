@@ -7,8 +7,8 @@ pkgname=(
   "xrizer-common-git"
   "lib32-xrizer-git"
 )
-pkgver=0.3.r10.g3dea65a
-pkgrel=1
+pkgver="0.3.r10.g3dea65a"
+pkgrel="1"
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR"
 arch=("x86_64")
 url="https://github.com/Supreeeme/xrizer"
