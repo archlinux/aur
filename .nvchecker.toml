@@ -1,0 +1,4 @@
+[etckeeper-packages]
+source = "git"
+git = "https://github.com/alerque/etckeeper-packages.git"
+prefix = "v"
