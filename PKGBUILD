@@ -3,7 +3,7 @@
 _pkgname=xlibre-server
 _orgpkgname=xlibre-xserver
 pkgname=$_pkgname-bin
-pkgver=25.0.0.8
+pkgver=25.0.0.9
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org X server (binary release)"
 arch=(x86_64)
@@ -37,7 +37,7 @@ conflicts=($_pkgname 'xorg-server' 'xorg-server-common<25.0.0.0' 'nvidia-utils<=
 replaces=('glamor-egl' 'xf86-video-modesetting')
 install=$pkgname.install
 
-sha256sums=('21cb225b986fa491f1543d4b380387229967a5db6c393077eed7ffc0983079ed')
+sha256sums=('203fe243ce5ddc36834430c33f09963788620cfaa5d72e619a238bc04ab75ff8')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" etc usr
