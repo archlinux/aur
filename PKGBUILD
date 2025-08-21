@@ -1,13 +1,13 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 
 _pkgname=capacities
-_version=1.51.1
+_version=1.52.6
 _image_url_x86_64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}.AppImage"
 _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}-arm64.AppImage"
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
 url="https://capacities.io/"
@@ -18,8 +18,8 @@ provides=('capacities')
 
 source_x86_64=("${_pkgname}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_pkgname}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('498d9fe3803966547ff520752b75e389301aab94e72c53cfd5667992ef5b2984')
-sha256sums_aarch64=('576f47f6a5693b124662c6e01bdd1735f21c66945738ac501f23fa14e68aaa17')
+sha256sums_x86_64=('3392b64f1ac1d94b7fc1829ab25f04a9bccb8c526baa359f3c8253655e1f8b8b')
+sha256sums_aarch64=('3642e7b94598c2f58ceabfc68453aa9ac7cc7845866529d91fceb212c1eea51b')
 
 _appimage="${_pkgname}-${CARCH}.AppImage"
 noextract=(
