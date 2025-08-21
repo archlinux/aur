@@ -1,13 +1,13 @@
 # Maintainer: Tsaitang <tsaitang404 at gmail dot com>
 pkgname=univpn
 pkgver=10781.18.1.0512
-pkgrel=4
+pkgrel=5
 pkgdesc="企业级VPN客户端"
 arch=('x86_64')
 url="https://www.univpn.com/"
 license=('unknown')
 depends=()
-makedepends=('unzip')
+makedepends=('unzip' 'polkit')
 source=("https://download.leagsoft.com/download/UniVPN/linux/univpn-linux-64-${pkgver}.zip")
 noextract=("univpn-linux-64-${pkgver}.zip")
 sha256sums=('854708ffe5761af08d52f98e03996e47bacb4106dc2b6b041ef03b487626ce5e')
@@ -55,10 +55,10 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/univpn" << 'EOF'
 #!/bin/bash
-# UniVPN 启动脚本 - 设置库路径以使用自带的Qt库
-export LD_LIBRARY_PATH="/usr/local/UniVPN/lib:$LD_LIBRARY_PATH"
+# 使用绝对路径执行程序，避免工作目录问题
 cd /usr/local/UniVPN
-exec ./UniVPN "$@"
+exec pkexec bash -c "export DISPLAY='$DISPLAY'; export XAUTHORITY='$XAUTHORITY'; export LD_LIBRARY_PATH='/usr/local/UniVPN/lib:$LD_LIBRARY_PATH'; /usr/local/UniVPN/UniVPN \"\$@\"" _ "$@"
+
 EOF
     chmod 755 "$pkgdir/usr/bin/univpn"
   else
@@ -81,10 +81,10 @@ EOF
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/univpn" << 'EOF'
 #!/bin/bash
-# UniVPN 启动脚本 - 设置库路径以使用自带的Qt库
-export LD_LIBRARY_PATH="/usr/local/UniVPN/lib:$LD_LIBRARY_PATH"
+# 使用绝对路径执行程序，避免工作目录问题
 cd /usr/local/UniVPN
-exec ./UniVPN "$@"
+exec pkexec bash -c "export DISPLAY='$DISPLAY'; export XAUTHORITY='$XAUTHORITY'; export LD_LIBRARY_PATH='/usr/local/UniVPN/lib:$LD_LIBRARY_PATH'; /usr/local/UniVPN/UniVPN \"\$@\"" _ "$@"
+
 EOF
     chmod 755 "$pkgdir/usr/bin/univpn"
   fi
