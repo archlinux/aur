@@ -11,14 +11,9 @@ makedepends=('git' 'autoconf' 'automake' 'libtool' 'pkg-config' 'vala' 'gtk-doc'
 source=("git+$url.git")
 md5sums=('SKIP')
 
-# Generate pkgver in style 1.0.r<commit-count>.g<hash>
 pkgver() {
   cd "$srcdir/xfce4-panel-darkman"
-  local commits
-  commits=$(git rev-list --count HEAD)
-  local hash
-  hash=$(git rev-parse --short HEAD)
-  echo "1.0.r${commits}.g${hash}"
+  printf "%s" "$(git rev-list --count HEAD).r$(git rev-parse --short HEAD)"
 }
 
 prepare() {
