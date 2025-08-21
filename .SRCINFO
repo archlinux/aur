@@ -1,6 +1,6 @@
 pkgbase = zenmap-git
-	pkgver = 7.97.r27.g49f2072
-	pkgrel = 1
+	pkgver = 7.97.r79.ge048a3e
+	pkgrel = 2
 	url = https://github.com/nmap/nmap
 	arch = x86_64
 	license = LicenseRef-Nmap-Public-Source-License-Version-0.95
@@ -42,6 +42,6 @@ pkgname = zenmap-git
 	depends = python
 	depends = python-cairo
 	depends = python-gobject
-	optdepends = gksu: start zenmap as root
+	optdepends = pkexec: start zenmap as root
 	provides = zenmap=7.97
 	conflicts = zenmap
