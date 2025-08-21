@@ -1,20 +1,21 @@
 pkgbase = python-ffmpeg-progress-yield
 	pkgdesc = Run an ffmpeg command with its progress yielded.
-	pkgver = 0.12.0
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/slhck/ffmpeg-progress-yield
 	arch = any
 	license = MIT
 	checkdepends = ffmpeg
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
+	checkdepends = procps-ng
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = ffmpeg
 	depends = python-tqdm
-	source = python-ffmpeg-progress-yield-0.12.0.tar.gz::https://github.com/slhck/ffmpeg-progress-yield/archive/v0.12.0.tar.gz
-	sha512sums = d6ab6836234c5c619625f30d497f18659b97993151e5d1216805d546a26cbd2c94b6801a01686ca3767981c87dd1950bec0c273e22db43938671f2c49ba911e7
+	source = python-ffmpeg-progress-yield-1.0.2.tar.gz::https://github.com/slhck/ffmpeg-progress-yield/archive/v1.0.2.tar.gz
+	sha512sums = 298877dc61f8b82c1bb9162fe2f515bdabc57ced9181288bd77d1b244da619dc5c53dc7e819c5b4b51e7d5ddd59ba4d614d55c184d9b80fe7e453e1fdf6f1144
 
 pkgname = python-ffmpeg-progress-yield
