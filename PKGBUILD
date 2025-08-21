@@ -2,9 +2,9 @@
 
 _pkgname=ddns-go
 pkgname=cubic-$_pkgname
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="DDNS service supporting dynamic updates of A, AAAA, and HTTPS records"
+pkgdesc="Over-engineered DDNS service with native OS integrations for managing A, AAAA, and HTTPS records"
 arch=('x86_64' 'aarch64')
 url="https://github.com/database64128/$_pkgname"
 license=('GPL-3.0-or-later')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/config.json")
 source=("$_pkgname::git+$url.git#tag=v$pkgver?signed")
-b2sums=('e2c5ed9fe3725427142c79bddb0c8a6e18a651c2a3ff6997a6a8fceaea96a3a4b79cfb152983efa44f4443ad2a968d86ad3969eca9b3072746783c55374583c8')
+b2sums=('c6832482931770ca0aeff1cbafb49ac55408d1b57c7a721ca901b50762ed6bffde63851f31caa6f483a1f41f9968ab954b62da1b8f7a8b777b2f48210e6d6e26')
 validpgpkeys=(
     '4DCED15E346E2923B931D6F71CA27546BEDB8B01' # Ian Chen (database64128) <free122448@hotmail.com>
 )
