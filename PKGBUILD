@@ -3,7 +3,7 @@
 pkgname=osse-core
 pkgver=0.2  # Version
 pkgrel=2    # Version Release
-pkgdesc="OpenSource Search Engine Core Library"
+pkgdesc="OpenSource Search Engine ( Core ) Library"
 
 arch=('x86_64')
 license=('Apache 2.0')
