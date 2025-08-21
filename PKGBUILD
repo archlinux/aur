@@ -4,16 +4,16 @@ _avcodec=62
 _chromium=138.0.7204.233
 _chrff=$(curl -sL https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${_chromium}/DEPS?format=TEXT | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Add codecs to Chromium M138+ (libavcodec ${_avcodec})"
 arch=('x86_64')
 url=https://ffmpeg.org/
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
-_commit=638b521c7b09e00514aa13ade43c389b4b40ddfd
-install=remove-chromium-ffmpeg.install
+_commit=bc88c1d62e4b8f585a01e38044c9671836ae4ab5
+install=chromium-ffmpeg.install
 source=(
-$install replace-chromium-ffmpeg.hook https://github.com/FFmpeg/FFmpeg/archive/${_commit}.zip
+$install chromium-ffmpeg.hook https://github.com/FFmpeg/FFmpeg/archive/${_commit}.zip
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
@@ -22,8 +22,8 @@ https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1
 )
 
 sha256sums=('90549fe900b87703b86fba8fa5dead8082da9f1c5fcbd2be2e9c39f4879b27ce'
-            '0f4500d0f35d1fa561c5c41ce808386bb36d0702227ba00d33bd423ed26260ed'
-            '0a7fdf8691f02cba4688f2f84f0c621d23cd935bc35db16c1691dfebf829b0c8'
+            '2ba9ace9abe508bcc20c1b565d420a30358b4e9d57a764b6e9ef45bfa5878cec'
+            '2ab95fbef6f9e2c02a2cc6397a799546862e42d6eb1f5101dcccfd6e4b892ff3'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
@@ -31,7 +31,7 @@ sha256sums=('90549fe900b87703b86fba8fa5dead8082da9f1c5fcbd2be2e9c39f4879b27ce'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
 makedepends=(nasm
-diffutils gcc make patch) # base-devel
+gcc make patch) # base-devel
 _so=libffmpeg.so
 optdepends=(nwjs)
 conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
@@ -93,7 +93,7 @@ build() {
 package(){
   install -Dm644 $_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
   ln -svf /usr/lib/${_so}.$_avcodec "$pkgdir"/usr/lib/${_so}
-  install -Dvm644 replace-chromium-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dvm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   for _n in 7.5 7.6 7.7 7.8 7.9 8.0 ; do
     ln -svf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi/${_so}.$_n
