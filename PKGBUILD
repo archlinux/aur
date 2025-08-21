@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=torch
-_pkgver=0.15.1
+_pkgver=0.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,9 +37,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('984ae49e418a166925097ab6a7b3af4c'
+md5sums=('552e35de8a96da48d705a819b6f92a96'
          '539874681ec47604d54ac506a0f7a14d')
-b2sums=('3d713864aa8aa0144f45157aab3a58c110f1ef93f4ebd5aa042617a1d0a65662056752bb7918b93457a9bd1433bc00b5efed44d69c14baf62a24efdac48a5735'
+b2sums=('f222349ba2d95e223c0756abc9dc7e7d1099d7d219d296d7fd1aa466849b8a36664b9760f8435bc3e6a026bac39abf07a9b499bcccac6e8cc47c172dc8536835'
         '81629ea7a33491bf8dcec19019d97b90d838559adb023cde8e1bca1165bba58c9d48fb931300f51a717c0b048fd13750b3fdec16c416ed43e1de9296d146ee6e')
 
 prepare() {
