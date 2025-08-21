@@ -1,7 +1,7 @@
 pkgbase = fastanime
 	pkgdesc = Viu, your browser anime experience, from the terminal.
 	pkgver = 3.2.7
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Benexl/viu
 	install = fastanime.install
@@ -35,7 +35,7 @@ pkgbase = fastanime
 	optdepends = ffmpegthumbnailer: local previews
 	optdepends = syncplay: watch with friends
 	optdepends = feh: image viewer (for manga mode)
-	provides = fastanime
+	provides = viu
 	source = fastanime-v3.2.7.tar.gz::https://github.com/Benexl/viu/archive/refs/tags/v3.2.7.tar.gz
 	sha256sums = SKIP
 

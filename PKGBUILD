@@ -3,7 +3,7 @@
 pkgname=fastanime
 _pkgname=viu
 pkgver=3.2.7
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Viu, your browser anime experience, from the terminal. "
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=('mpv: video player'
             'ffmpegthumbnailer: local previews'
             'syncplay: watch with friends'
             'feh: image viewer (for manga mode)')
-provides=('fastanime')
+provides=('viu')
 install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
