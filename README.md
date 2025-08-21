@@ -187,7 +187,7 @@ npm run electron:build-linux
 ## Package Information
 
 - **Package Name**: `clara-verse`
-- **Version**: 0.1.26
+- **Version**: 0.1.3
 - **Architecture**: x86_64
 - **License**: MIT
 - **Maintainer**: wintrx1155

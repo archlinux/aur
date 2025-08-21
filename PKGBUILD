@@ -2,7 +2,7 @@
 
 pkgname=clara-verse
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, client-side AI assistant WebUI for LLMs with ComfyUI integration"
 arch=('x86_64')
 url="https://github.com/badboysm890/ClaraVerse"
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/badboysm890/ClaraVerse/arch
         "clara-verse.install")
 sha256sums=('5d5ec7c391a4fd5a9578ae1e9970c157d2b462d0b356e32a8caf29a09c47fca6'
             '61d260b4f6d79bf09311cd026ef4cdcba0c49b3857bc5bbeed30885d00423ad3'
-            '87a7aa067aa8e61a013282c690eedfbbd1900cea370395818cc37d159c34429')
+            '87a7aa067aa8e61a013282c690eedfb2bd1900cea370395818cc37d159c34429')
 
 prepare() {
   cd "ClaraVerse-$pkgver"
