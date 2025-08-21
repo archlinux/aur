@@ -1,13 +1,13 @@
 pkgbase = harbor-cli
 	pkgdesc = Official Harbor CLI
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://goharbor.io
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	source = harbor-cli::git+https://github.com/goharbor/harbor-cli.git#tag=v0.0.9
+	source = harbor-cli::git+https://github.com/goharbor/harbor-cli.git#tag=v0.0.10
 	sha512sums = SKIP
 	b2sums = SKIP
 
