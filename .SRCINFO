@@ -1,13 +1,17 @@
 pkgbase = meow
-	pkgdesc = A simple python-based script that generates a random cat.
-	pkgver = 1.0
+	pkgdesc = Print ASCII cats to your terminal!
+	pkgver = 2.1.5
 	pkgrel = 1
-	arch = any
-	license = GPL
-	depends = python
-	source = meow.sh
-	source = cats.txt
-	sha256sums = SKIP
-	sha256sums = SKIP
+	url = https://github.com/PixelSergey/meow
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = meow-2.1.5.tar.gz::https://static.crates.io/crates/meow-cli/meow-cli-2.1.5.crate
+	b2sums = c50299ac2612a4585d53d0624630c2a7c03805d3eb370608ebd4ebfa126a47fd8c539a47c9cc772a6e67cc8f47a9bad2c94f8d5179c930e3c3dbbb2aa2fa9d21
 
 pkgname = meow
