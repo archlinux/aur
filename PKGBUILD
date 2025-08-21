@@ -4,7 +4,7 @@
 
 pkgname=arduino-ide
 pkgver=2.3.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Open-source electronics prototyping platform"
 arch=(x86_64)
 url=https://github.com/arduino/arduino-ide
