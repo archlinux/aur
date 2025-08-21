@@ -1,0 +1,17 @@
+pkgbase = sup2srt-git
+	pkgdesc = Convert SUP graphic subtitles to text-based SRT format
+	pkgver = r128.b40c5aa
+	pkgrel = 1
+	url = https://github.com/retrontology/sup2srt
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = libtiff
+	depends = leptonica
+	depends = tesseract
+	depends = ffmpeg
+	source = git+https://github.com/retrontology/sup2srt
+	sha512sums = SKIP
+
+pkgname = sup2srt-git
