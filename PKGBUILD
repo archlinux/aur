@@ -1,44 +1,51 @@
+# Maintainer:
 # Contributor: Dennis Hamester <dennis.hamester@startmail.com>
 
-pkgname=scraw
+_pkgname="scraw"
+pkgname="$_pkgname"
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Steam Controller C library"
-arch=('i686' 'x86_64')
 url="https://gitlab.com/dennis-hamester/scraw"
-license=('custom:ISC')
+license=('ISC')
+arch=('i686' 'x86_64')
+
 depends=(
   'libusb'
 )
 makedepends=(
   'cmake'
   'doxygen'
+  'ninja'
 )
-source=(
-  "scraw-v$pkgver.tar.gz::$url/-/archive/v$pkgver/scraw-v$pkgver.tar.gz"
-)
-sha256sums=(
-  '6b0afd0417577aad482a010b3f2754790b1e2cce59d14711dac3a0dd25afc39c'
-)
+
+_pkgsrc="$_pkgname-v$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/-/archive/v$pkgver/$_pkgsrc.$_pkgext")
+sha256sums=('6b0afd0417577aad482a010b3f2754790b1e2cce59d14711dac3a0dd25afc39c')
 
 prepare() {
-  cd "$srcdir/$pkgname-v$pkgver"
-
+  cd "$_pkgsrc"
   doxygen -u "doc/Doxyfile.in"
 }
 
 build() {
-  cmake \
-    -B build \
-    -S "$pkgname-v$pkgver" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DBUILD_SCRAW_INFO=ON
+    -Wno-dev
+  )
 
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-v$pkgver/LICENSE"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
