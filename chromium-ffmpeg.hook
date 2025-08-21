@@ -2,7 +2,7 @@
 Operation=Install
 Operation=Upgrade
 Type=Package
-Target=chromium-ffmpeg-bin
+Target=chromium-ffmpeg
 Target=nwjs
 Target=nwjs-bin
 
