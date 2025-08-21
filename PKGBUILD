@@ -8,7 +8,7 @@ url="https://github.com/jakariyaa/xfce4-panel-darkman"
 license=('GPL')
 depends=('xfce4-panel')
 makedepends=('git' 'autoconf' 'automake' 'libtool' 'pkg-config' 'vala' 'gtk-doc' 'intltool')
-source=("git+$url.git")
+source=("git+https://github.com/jakariyaa/xfce4-panel-darkman.git")
 md5sums=('SKIP')
 
 pkgver() {
