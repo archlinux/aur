@@ -2,8 +2,8 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.11.3.r0.g0d339af
-_electronversion=34
+pkgver=0.11.4.r1.g6845cd5
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows.(Git version.Use system-wide electron)"
@@ -37,7 +37,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
