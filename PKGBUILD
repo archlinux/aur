@@ -1,6 +1,6 @@
 # Maintainer: darrkenn <darrkenn08@gmail.com>
 pkgname="kitty-cat"
-pkgver="1.0.0"
+pkgver="1.0.1"
 pkgrel="1"
 pkgdesc="kitty-cat is a command line tool that fetches a cat from CATAAS and displays it in your terminal. Built for Kitty terminal."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('kitty')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/darrkenn/kitty-cat/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5f03c4cfbdac31d9f5e11422d0f695af0f88943db58c8250f7392d397ceca90')
+sha256sums=('7c7615ac3666bee44fbdcf904a817a6c71daf57c1cbb1ce506a9fc82090db98f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
