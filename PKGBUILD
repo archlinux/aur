@@ -113,6 +113,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/sftool_${pkgver}_linux_amd64
 sha256sums_x86_64=('7951153ac12b733a4033d0ba1571e7c0266f0380174c11dce9c23433b6e33a1a')
 
 function pkgver() {
+  rm -rf control
   mkdir control
 	tar -xf control.tar.gz -C ./control
 	cat control/control | grep 'Version: ' | cut -c '10-'
