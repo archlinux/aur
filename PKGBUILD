@@ -5,7 +5,7 @@
 _pkgname='rkik'
 pkgname="$_pkgname-git"
 pkgver=0.6.0.r15.g5ba44a0
-pkgrel=1
+pkgrel=2
 pkgdesc='Rusty Klock Inspection Kit: simple NTP client (development version)'
 arch=('aarch64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -42,7 +42,8 @@ package() {
   cd "$_pkgname"
 
   install -vDm0755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    README.md docs/{developer,user}_guide.md
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 

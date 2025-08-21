@@ -1,7 +1,7 @@
 pkgbase = rkik-git
 	pkgdesc = Rusty Klock Inspection Kit: simple NTP client (development version)
 	pkgver = 0.6.0.r15.g5ba44a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aguacero7/rkik
 	arch = aarch64
 	arch = x86_64
