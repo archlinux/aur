@@ -1,6 +1,6 @@
 pkgbase = seafile
 	pkgdesc = An online file storage and collaboration tool
-	pkgver = 9.0.14
+	pkgver = 9.0.15
 	pkgrel = 1
 	url = https://github.com/haiwen/seafile
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = seafile
 	depends = sqlite
 	provides = seafile-client-cli
 	conflicts = seafile-server
-	source = seafile-9.0.14.tar.gz::https://github.com/haiwen/seafile/archive/v9.0.14.tar.gz
+	source = seafile-9.0.15.tar.gz::https://github.com/haiwen/seafile/archive/v9.0.15.tar.gz
 	source = seaf-cli@.service
-	sha256sums = b60c584b0dd1d168bf7598d88b92bb5ba199193cd03c936fa972cf01f0d6d2e7
+	sha256sums = 7f71100095d98bc561f97370e40adfc0b16a8916b86d1a8f806df5b08754cddf
 	sha256sums = c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba
 
 pkgname = seafile
