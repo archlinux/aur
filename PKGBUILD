@@ -1,10 +1,10 @@
-# Maintainer: Houjun Liu <hliu at shabang dot cf>
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Houjun Liu <hliu at shabang dot cf>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=condution-bin
-pkgver=1.1.1
-_pkgver=1.1.1
-pkgrel=0
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A personal project management system that makes sense and will not burn your pockets out"
 arch=('x86_64')
 url='https://www.condution.com'
@@ -16,12 +16,12 @@ depends=('nss'
          'libxss'
          'libdbusmenu-glib')
 makedepends=('gendesk')
-source=("${pkgname%-bin}-${_pkgver}.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v${_pkgver}/Condution-${_pkgver}.AppImage")
-sha256sums=('b3256006038a2245d09e1c6a1e785479ece9d13cc94989181605663eec7c2106')
+source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v${pkgver}/Condution-${pkgver}.AppImage")
+sha256sums=('ed1460dfe0ad2c7e4d75fc365e308c6b516c17c09ec1fd8eb8c16482fbf4d55c')
 
 package() {
-  chmod 755 ./${pkgname%-bin}-${_pkgver}.AppImage
-  ./${pkgname%-bin}-${_pkgver}.AppImage --appimage-extract
+  chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
+  ./${pkgname%-bin}-${pkgver}.AppImage --appimage-extract
   install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png "${pkgdir}/usr/share/pixmaps/condution.png"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
           --pkgdesc "$pkgdesc" \
