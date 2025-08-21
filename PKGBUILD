@@ -3,7 +3,7 @@
 # Contributor: Retrometer <retrometer070@gmail.com>
 pkgname=cubic-bin
 pkgver=2025.06.93
-pkgrel=4
+pkgrel=5
 pkgdesc="Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions."
 arch=('any')
 url="https://github.com/PJ-Singh-001/Cubic"
@@ -11,12 +11,17 @@ license=('GPL-3.0-or-later')
 depends=('bash-completion' 'binwalk>=2.1.1' 'cdrtools' 'gtksourceview3' 'gtksourceview4' 'hicolor-icon-theme' 'mkinitcpio' 'libisoburn>=1.4.8' 'polkit>=124' 'python>=3.6.' 'python-gobject' 'python-magic>=0.4.15' 'python-packaging>=17.1' 'python-pydbus>=0.6.0' 'python-pyicu>=1.9.8' 'qemu-audio-jack' 'rsync' 'squashfs-tools' 'syslinux>=6.03' 'python-argcomplete' 'python-pexpect' 'python-pyinotify' 'python-yaml' 'vte3' 'dpkg')
 options=('!strip' '!emptydirs')
 install=cubic-bin.install
-source=("https://ppa.launchpadcontent.net/cubic-wizard/release/ubuntu/pool/main/c/cubic/cubic_2025.06.93-release~202506301816~ubuntu25.04.1_all.deb")
-sha512sums=('58280daa9529808eb67ec090262904d65736e8b9e1df2a29af9d5c2c3d148d4de64036cda63d34f24e4b114973aa08330460f0e30120ffefad1275c1b01e6351')
+source=("https://ppa.launchpadcontent.net/cubic-wizard/release/ubuntu/pool/main/c/cubic/cubic_2025.06.93-release~202506301816~ubuntu25.04.1_all.deb"
+cubic_wizard.patch)
+sha512sums=('58280daa9529808eb67ec090262904d65736e8b9e1df2a29af9d5c2c3d148d4de64036cda63d34f24e4b114973aa08330460f0e30120ffefad1275c1b01e6351'
+'3e6053c0d15cc01068969a3358dd425f8a4b7cc4b81dd697371caab68470404028e368bc24268a660e2db9ec2209993d53a7d9eac82e873ce8b8d85a5370388d')
 
 package(){
 
 	# Extract package data
 	tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
+	
+	# Patch cubic_wizard.py
+	patch -Np1 -i "${srcdir}/cubic_wizard.patch" "${pkgdir}/usr/share/cubic/cubic_wizard.py"
 
 }

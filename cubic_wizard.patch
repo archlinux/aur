@@ -1,0 +1,14 @@
+--- cubic_wizard.py	2025-08-21 23:16:40.635113844 +0200
++++ cubic_wizard_patched.py	2025-08-21 23:18:14.683009288 +0200
+@@ -117,9 +117,8 @@
+     model.application.user_home = os.path.expanduser('~')
+ 
+     # Get the running Cubic version.
+-    model.application.cubic_version = constructor.get_package_version('cubic')
+-    ### TODO: FOR TESTING ONLY
+-    ### model.application.cubic_version = '2024.08-87-release~202402210132~ubuntu23.10.1'
++    ### Lazy Band-aid Fix
++    model.application.cubic_version = '2025.06.93-release~202506301816~ubuntu25.04.1'
+ 
+     # Get the running kernel version.
+     model.application.kernel_version = constructor.get_kernel_version()
