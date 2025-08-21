@@ -2,7 +2,7 @@
 
 _pkgname=zimtohrli
 pkgname=$_pkgname-git
-pkgver=0.1.10.r83.82d0ae4
+pkgver=0.2.1.r24.8976c53
 pkgrel=1
 pkgdesc='A psychoacoustic perceptual metric for audio compression'
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = zimtohrli-git
 	pkgdesc = A psychoacoustic perceptual metric for audio compression
-	pkgver = 0.1.10.r83.82d0ae4
+	pkgver = 0.2.1.r24.8976c53
 	pkgrel = 1
 	url = https://github.com/google/zimtohrli
 	arch = x86_64
