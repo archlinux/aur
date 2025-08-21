@@ -1,24 +1,39 @@
 pkgbase = xrizer-git
-	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR.
-	pkgver = 0.2.r12.g89474fa
+	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR
+	pkgver = 0.3.r10.g3dea65a
 	pkgrel = 1
 	url = https://github.com/Supreeeme/xrizer
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = rust
+	makedepends = lib32-rust-libs
 	makedepends = cmake
 	makedepends = libx11
 	makedepends = libxcb
 	makedepends = wayland
 	makedepends = clang
 	makedepends = shaderc
+	options = !lto
+	source = xrizer::git+https://github.com/Supreeeme/xrizer.git
+	sha256sums = SKIP
+
+pkgname = xrizer-git
+	depends = xrizer-common
 	depends = glibc
 	depends = gcc-libs
 	provides = xrizer
 	conflicts = xrizer
-	options = !lto
-	source = xrizer-git::git+https://github.com/Supreeeme/xrizer.git
-	sha256sums = SKIP
 
-pkgname = xrizer-git
+pkgname = xrizer-common-git
+	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR (common files)
+	provides = xrizer-common
+	conflicts = xrizer-common
+
+pkgname = lib32-xrizer-git
+	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR (32-bit)
+	depends = xrizer-common
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	provides = lib32-xrizer
+	conflicts = lib32-xrizer
