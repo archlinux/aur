@@ -3,7 +3,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=compositions
-_pkgver=2.0-8
+_pkgver=2.0-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('114a1d48facb636b935ed812038584db')
-b2sums=('a30c30886b97b575432f4f64c95ded499ca2741d9e269f16346b3508ddb544af47588228f14c707d7035208c426fbce69025c8fd52ccc915e5763a3de85fa5f5')
+md5sums=('7fd8ba31c07a6fd7cb26da6f46cf54f1')
+b2sums=('880aae4163578062479746f7f66042c98ba65ba2a12e228e62300d2e4895aba3aabe0d4f5e6a65090f280fa5e8220b72c7f67784e49ce4f904c8a2bf6035f466')
 
 build() {
   mkdir build
