@@ -2,7 +2,7 @@
 # Maintainer: Rubin Bhandari <roobin.bhandari@gmail.com>
 
 pkgname=pokego-bin
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=2
 pkgdesc="command-line tool that lets you display Pokémon sprites in color directly in your terminal"
 url="https://github.com/rubiin/pokego"
