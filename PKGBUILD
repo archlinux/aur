@@ -41,6 +41,9 @@ package() {
 	go install
 	install -Dm0755 output-binary "$pkgdir/usr/bin/spotitube"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" streambinder
+}
+
+post_install() {
 	echo "Check the docs at https://davidepucci.it/doc/spotitube"
 	echo "You can create a Spotify API ID/secret pair at https://developer.spotify.com/dashboard/create"
 	echo "You can create a Genius API token at https://genius.com/api-clients/new"
