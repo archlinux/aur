@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-xnest
 _orgpkgname=xlibre-xserver-xnest
 pkgname=$_pkgname-bin
-pkgver=25.0.0.8
+pkgver=25.0.0.9
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org nested X server that runs as an X application (binary release)"
 arch=(x86_64)
@@ -32,7 +32,7 @@ depends=(xlibre-server-common-bin 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libunwin
 provides=($_pkgname 'xorg-server-xnest' 'xlibre-server-xnest')
 conflicts=($_pkgname 'xorg-server-xnest' 'xlibre-server-xnest')
 
-sha256sums=('618298ed0582fcdcda6fa5a91f1790e6b06feaf2d505ea3c8f948feae473c157')
+sha256sums=('27b72f403f74b16a304618e945336044c8f3e79de9ac8045d8014b881cc86118')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
