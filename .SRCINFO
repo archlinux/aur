@@ -7,8 +7,8 @@ pkgbase = goenv
 	arch = x86_64
 	license = MIT
 	source = goenv-2.2.28.tar.gz::https://github.com/syndbg/goenv/archive/2.2.28.tar.gz
-	source = go-build::https://github.com/go-nv/goenv/archive/master.tar.gz
+	source = go-build-2.2.28.tar.gz::https://github.com/go-nv/goenv/archive/refs/tags/2.2.28.tar.gz
 	md5sums = 163c351001f67d016a4464d94dac16df
-	md5sums = 47917b1ca019d8c7bfc29ad7b8e38fbe
+	md5sums = 163c351001f67d016a4464d94dac16df
 
 pkgname = goenv
