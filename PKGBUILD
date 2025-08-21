@@ -1,12 +1,6 @@
 # Maintainer: Filip Andersson <filip@artifact.se>
 #
-# NOTE: This package requires additional Python dependencies that are not available
-# in the official Arch repositories. After installing this package, you must manually
-# install the required dependencies using pip:
-#
-#   pip install py2neo
-#
-# Other dependencies may also be required. If you encounter import errors, install
+# NOTE: Additional dependencies may also be required. If you encounter import errors, install
 # the missing packages with pip.
 
 
