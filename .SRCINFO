@@ -1,34 +1,35 @@
 pkgbase = python-stsci.skypac
 	pkgdesc = Sky matching for image mosaic
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://stsci-skypac.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest-doctestplus
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinx_rtd_theme
 	makedepends = python-numpydoc
-	makedepends = python-stsci_rtd_theme
 	makedepends = python-stwcs
 	makedepends = python-stsci.imagestats
 	makedepends = python-spherical_geometry>=1.2.2
 	makedepends = texlive-latexextra
-	source = https://files.pythonhosted.org/packages/source/s/stsci_skypac/stsci_skypac-1.0.10.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/stsci_skypac/stsci_skypac-1.0.11.tar.gz
 	source = fix-doc-underline-length.patch
 	source = setup.cfg
-	md5sums = 3b330075f9bad82e802c93ec17e5db17
+	md5sums = 5a460611a9bb30a2641d3cbfe3a095d5
 	md5sums = 4f6d5bbf0720af0687f560e8ae97762b
 	md5sums = b9f7309fbf09f7a05455a1d176b9e492
 
 pkgname = python-stsci.skypac
-	depends = python>=3.5
-	depends = python-astropy>=3.1
+	depends = python>=3.10
+	depends = python-astropy>=5.0.4
 	depends = python-spherical_geometry>=1.2.2
 	depends = python-stwcs
 	depends = python-stsci.imagestats
+	depends = python-packaging>=21.1
 	optdepends = python-stsci.skypac-doc: Documentation for STScI skypac
 
 pkgname = python-stsci.skypac-doc
