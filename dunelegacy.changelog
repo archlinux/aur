@@ -1,3 +1,12 @@
+2025-08-21 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Build source using CMake instead of autoconf
+	Update the depends and makedepends arrays
+	Add a new patch to fix the compilation of network code
+	Remove the old TextManager class patch
+	Fix icons installation
+
 2023-06-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
