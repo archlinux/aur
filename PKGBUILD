@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=google-calender-widget
-pkgver=1.1.4
+pkgver=1.1.5
 _electronversion=25
 _nodeversion=18
 pkgrel=1
@@ -22,8 +22,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6e698160334995f3f809f5666563246f216e12f6cc213638a84a8b2118730a90'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('15a26b381716bf51198f1164975fe6be40fcc5daacf9a4b328670c41f9ec9d8e'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
