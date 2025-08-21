@@ -1,0 +1,17 @@
+pkgbase = peep-bin
+	pkgdesc = A CLI text viewer tool that works interactively like less command on small pane within the terminal window.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/ryochack/peep
+	arch = x86_64
+	license = MIT
+	provides = peep
+	conflicts = peep
+	source = LICENSE-0.1.6::https://raw.githubusercontent.com/ryochack/peep/v0.1.6/LICENSE
+	source = README-0.1.6.md::https://raw.githubusercontent.com/ryochack/peep/v0.1.6/README.md
+	sha256sums = 589ab7ce49f52dad6df80fb000b4befeb91505e03ccef6e35b1ce5389a3f4386
+	sha256sums = 476661c556a146a5a6ebabbb5eeb4a94925c3c041ff444d607e372dc8223d0c0
+	source_x86_64 = https://github.com/ryochack/peep/releases/download/v0.1.6/peep-v0.1.6-x86_64-unknown-linux-musl.zip
+	sha256sums_x86_64 = e47676dda71efb19419a173f0fb4f2181797a34d1ac770ecdf52839eb4af5541
+
+pkgname = peep-bin
