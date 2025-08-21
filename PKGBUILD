@@ -21,6 +21,11 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/proxmox-tui"
+  git submodule update --init --recursive
+}
+
 build() {
   cd "${srcdir}/proxmox-tui"
   make build
@@ -28,7 +33,7 @@ build() {
 
 package() {
   # Install binary
-  install -Dm755 "${srcdir}/proxmox-tui/proxmox-tui" "${pkgdir}/usr/bin/proxmox-tui"
+  install -Dm755 "${srcdir}/proxmox-tui/bin/proxmox-tui" "${pkgdir}/usr/bin/proxmox-tui"
 
   # Install license
   install -Dm644 "${srcdir}/proxmox-tui/LICENSE" "${pkgdir}/usr/share/licenses/proxmox-tui/LICENSE"
