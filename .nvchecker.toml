@@ -1,0 +1,4 @@
+[arduino-ide]
+source = "git"
+git = "https://github.com/arduino/arduino-ide.git"
+prefix = "v"
