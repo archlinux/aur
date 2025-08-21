@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=neoplayer-bin
 _pkgname=NeoPlayer
-pkgver=1.3.1
+pkgver=1.3.3
 _electronversion=37
 pkgrel=1
 pkgdesc="A module player built with Electron.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9ce9ddfad382255ce7a24220367cb17b82297c7d82e16feff8740f397ab0ab89'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('7843d2e9741833f3a8c1121031d9b9cbefbc42cf52bfc7cd3fb079d76888ee3d'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
