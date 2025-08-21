@@ -1,6 +1,6 @@
 pkgbase = dgop-bin
 	pkgdesc = System monitoring CLI + REST API
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/dgop
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = dgop-bin
 	license = MIT
 	provides = dgop
 	conflicts = dgop
-	source = LICENSE-0.0.8::https://raw.githubusercontent.com/AvengeMedia/dgop/v0.0.8/LICENSE
-	source = README-0.0.8.md::https://raw.githubusercontent.com/AvengeMedia/dgop/v0.0.8/README.md
+	source = LICENSE-0.0.9::https://raw.githubusercontent.com/AvengeMedia/dgop/v0.0.9/LICENSE
+	source = README-0.0.9.md::https://raw.githubusercontent.com/AvengeMedia/dgop/v0.0.9/README.md
 	sha256sums = 4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa
 	sha256sums = 258c35d14d64ec8d372d5176da39cd8b55ddc6f3966b29f3ec61be97557e46fa
-	source_x86_64 = dgop-x86_64-0.0.8::https://github.com/AvengeMedia/dgop/releases/download/v0.0.8/dgop-v0.0.8-linux-amd64
-	sha256sums_x86_64 = bfa8dd295d79e378e57b97f2b7bc84e2bf5533c6edb57ba7ac2c3ae949c6388f
-	source_aarch64 = dgop-aarch64-0.0.8::https://github.com/AvengeMedia/dgop/releases/download/v0.0.8/dgop-v0.0.8-linux-arm64
-	sha256sums_aarch64 = 083b7f19bd0fb379d6f1bdf57ece4141eb1ad3574f525c1f7e22085239fd8715
+	source_x86_64 = dgop-x86_64-0.0.9::https://github.com/AvengeMedia/dgop/releases/download/v0.0.9/dgop-v0.0.9-linux-amd64
+	sha256sums_x86_64 = da6bec9c0a019910df8ab2a974f91bf5b7857e1091624b42793a912957161b47
+	source_aarch64 = dgop-aarch64-0.0.9::https://github.com/AvengeMedia/dgop/releases/download/v0.0.9/dgop-v0.0.9-linux-arm64
+	sha256sums_aarch64 = 608368020de8c4c5424a7caf9772dad146b728d779f61a6a5057b15c10c5e8e3
 
 pkgname = dgop-bin
