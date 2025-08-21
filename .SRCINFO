@@ -1,0 +1,23 @@
+pkgbase = askora
+	pkgdesc = A unified CLI for AI providers like OpenAI and Ollama
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/rosettadb/askora
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-typer
+	depends = python-httpx
+	depends = python-pydantic
+	depends = python-openai
+	depends = python-anthropic
+	source = https://files.pythonhosted.org/packages/source/a/askora/askora-0.0.2.tar.gz
+	source = LICENSE
+	sha256sums = aa34501fd415b5a92a7d2efd99f1103061d7e98bb468bb76cb65eaf59d06d156
+	sha256sums = 339b24708f2e7b822ebce7271d7e7172cb522114c2aee5559015b2fbb3106082
+
+pkgname = askora
