@@ -1,18 +1,18 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=browsr
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="TUI File Browser App"
 arch=(any)
 url="https://github.com/juftin/${pkgname}"
 license=(MIT)
-depends=(python-art python-rich-click python-pandas python-rich-pixels
+depends=(python-art python-pandas python-rich-click python-rich-pixels
   python-textual-universal-directorytree python-pillow python-pymupdf python-pyperclip)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 # checkdepends=(python-pytest python-requests)
 optdepends=('python-pyarrow')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('951c5e1c83b733d315611cbff7c9f843e57586d788d94ce956c6dcbd04d50c24e79423a886fcb5e172b5b9e75bcd1be70f13114b2be2c7665a252c5d4c1d39e5')
+sha512sums=('fcd9f18646dd78fbdea4657b403fda750ac8bfc2458aa89c2d5fcefbc0401e73164f86e870db7830df2034db0d459dcda6de042c59df0d4e94e483efbad7b184')
 
 build() {
   cd ${pkgname}-${pkgver}

@@ -1,0 +1,5 @@
+[browsr]
+source = "github"
+github = "juftin/browsr"
+use_latest_release = "true"
+prefix = "v"
