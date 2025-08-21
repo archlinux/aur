@@ -1,6 +1,6 @@
-# Maintainer: Bert Burgemeister <trebbu@googlemail.com>
+# Contributor: Bert Burgemeister <trebbu@googlemail.com>
 pkgname=pipeglade
-pkgver=4.2.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Pipe-driven GTK+ interfaces that can be designed using Glade"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("http://github.com/trebb/pipeglade/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('9fce4dd6dae9855964a122fd83a49331')
+md5sums=('0bef45f60b2b83da2a92eb060cb93487')
 
 build() {
     cd "$pkgname-$pkgver"
