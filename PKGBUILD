@@ -4,8 +4,8 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.11.3
-_electronversion=34
+pkgver=0.11.4
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows.(Use system-wide electron)"
@@ -42,8 +42,8 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b70078188e5d15460060a9590ac51eb0009cacadee2f3ded6dab9ce9644ad9f4'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('5bddc0511deb9f5da0777034a6b28e958478e10d1219b63a7835c387d3d9f992'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
