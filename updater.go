@@ -171,7 +171,6 @@ func (u *PackageUpdater) generateSrcinfoContent(versionNum, versionTag string) s
 	optdepends = jre17-openjdk: Recommended Java version for launching version 1.17 and above
 	optdepends = jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above
 	provides = xmcl
-	conflicts = xmcl-launcher-bin
 	conflicts = xmcl-electron-bin
 	source = %s/%s
 
