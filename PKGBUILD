@@ -1,17 +1,15 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: Benoît Rouits <brouits@free.fr>
 pkgname=csv2latex
-pkgver=0.18
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="A csv to LaTeX file converter"
 arch=('i686' 'x86_64')
-url="http://packages.ubuntu.com/en/source/oneiric/csv2latex"
-#url="http://herewe.servebeer.com/csv2latex/"
-#url="http://brouits.free.fr/"
-#url="https://launchpad.net/csv2latex"
+url="http://brouits.free.fr/csv2latex/"
 license=('GPL2')
 depends=('glibc')
-source=(http://archive.ubuntu.com/ubuntu/pool/universe/c/csv2latex/csv2latex_$pkgver.orig.tar.gz)
-md5sums=('e8fbfbfd4b3a369a8c1cedd833ebe8a3')
+source=(http://brouits.free.fr/csv2latex/$pkgname-$pkgver.tar.gz)
+md5sums=('34c01f986f7f644406746a5722c95e52')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
