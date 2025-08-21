@@ -1,12 +1,13 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 _pkgname=fastanime
+__pkgname=viu
 pkgname="${_pkgname}-git"
-pkgver=3.0.0.r3.fd80149
+pkgver=3.2.7.r4.de8b6b7
 pkgrel=1
-pkgdesc="FastAnime, anime site experience from the terminal."
+pkgdesc="Viu, your browser anime experience, from the terminal."
 arch=('x86_64')
-url="https://github.com/Benex254/FastAnime"
+url="https://github.com/Benexl/viu"
 license=('Unlicense')
 makedepends=('python>=3.10' 'git' 'uv' 'python-installer')
 depends=('python'
@@ -34,24 +35,24 @@ optdepends=('mpv: video player'
             'ffmpegthumbnailer: local previews'
             'syncplay: watch with friends'
             'feh: image viewer (for manga mode)')
-provides=('fastanime')
+provides=('viu')
 conflicts=('fastanime')
 source=("git+${url}.git")
 install="${_pkgname}.install"
 
 build() {
     cd "${srcdir}" || exit
-    cd FastAnime || exit
+    cd "${__pkgname}" || exit
     uv build
 }
 
 package() {
     cd "${srcdir}" || exit
-    cd FastAnime || exit
+	cd "${__pkgname}" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 completions/fastanime.bash "$pkgdir/usr/share/bash-completion/completions/fastanime"
-    install -Dm644 completions/fastanime.zsh "$pkgdir/usr/share/zsh/site-functions/_fastanime"
-    install -Dm644 completions/fastanime.fish "$pkgdir/usr/share/fish/vendor_completions.d/fastanime.fish"
+    install -Dm644 completions/viu.bash "$pkgdir/usr/share/bash-completion/completions/viu"
+    install -Dm644 completions/viu.zsh "$pkgdir/usr/share/zsh/site-functions/_viu"
+    install -Dm644 completions/viu.fish "$pkgdir/usr/share/fish/vendor_completions.d/viu.fish"
 }
 sha256sums=('SKIP')

@@ -1,8 +1,8 @@
 pkgbase = fastanime-git
-	pkgdesc = FastAnime, anime site experience from the terminal.
-	pkgver = 3.0.0.r3.fd80149
+	pkgdesc = Viu, your browser anime experience, from the terminal.
+	pkgver = 3.2.7.r4.de8b6b7
 	pkgrel = 1
-	url = https://github.com/Benex254/FastAnime
+	url = https://github.com/Benexl/viu
 	install = fastanime.install
 	arch = x86_64
 	license = Unlicense
@@ -35,9 +35,9 @@ pkgbase = fastanime-git
 	optdepends = ffmpegthumbnailer: local previews
 	optdepends = syncplay: watch with friends
 	optdepends = feh: image viewer (for manga mode)
-	provides = fastanime
+	provides = viu
 	conflicts = fastanime
-	source = git+https://github.com/Benex254/FastAnime.git
+	source = git+https://github.com/Benexl/viu.git
 	sha256sums = SKIP
 
 pkgname = fastanime-git
