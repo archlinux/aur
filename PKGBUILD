@@ -1,23 +1,18 @@
 # Maintainer:
 # Contributor: Alynx Zhou <alynx.zhou@gmail.com>
 
-## links
-# https://gyroflow.xyz
-# https://github.com/gyroflow/gyroflow
-
 ## options
 : ${_install_path:=opt}
 
-: ${_commit=cb77de99b568a89fba6be87e1cecb911fa6406e1}
-
-: ${RUSTUP_TOOLCHAIN=stable}
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
 : ${CARGO_TARGET_DIR=target}
-export CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+: ${RUSTUP_TOOLCHAIN=stable}
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="gyroflow"
 pkgname="$_pkgname"
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -45,9 +40,10 @@ optdepends=(
 
 options=('!lto')
 
-_pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('9aa1c57b094f60302ea10766d3770c6d5db080d863fe787980aea4815716d0de')
 
 prepare() (
   cd "$_pkgsrc"
