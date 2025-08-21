@@ -1,0 +1,26 @@
+pkgbase = python-mal-simulator-git
+	pkgdesc = A MAL compliant simulator.
+	pkgver = 0.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/mal-lang/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python>=3.10
+	depends = python-mal-toolbox
+	depends = python-yaml
+	optdepends = python-numpy: For machine learning integration
+	optdepends = python-pettingzoo: For machine learning integration
+	optdepends = python-gymnasium: For machine learning integration
+	optdepends = python-pytest: Dev tools
+	optdepends = mypy: Dev tools
+	optdepends = ruff: Dev tools
+	provides = python-mal-simulator
+	conflicts = python-mal-simulator
+	source = mal-simulator::git+https://github.com/mal-lang/mal-simulator.git
+	sha256sums = SKIP
+
+pkgname = python-mal-simulator-git
