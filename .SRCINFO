@@ -1,7 +1,7 @@
 pkgbase = blockstream-app-appimage
 	pkgdesc = Blockstream App is a non-custodial Bitcoin wallet, compatible with Blockstream Jade hardware wallet
 	pkgver = 2.0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blockstream.com/app/
 	install = blockstream-app-appimage.install
 	arch = x86_64

@@ -4,7 +4,7 @@ _pkgname=Blockstream
 _upkgname=blockstream
 pkgname=blockstream-app-appimage
 pkgver=2.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Blockstream App is a non-custodial Bitcoin wallet, compatible with Blockstream Jade hardware wallet"
 arch=('x86_64')
 url="https://blockstream.com/app/"
@@ -27,7 +27,7 @@ package() {
     cd "${srcdir}"
     install -Dm755 "$_pkgname-$arch-$pkgver.AppImage"                                "${pkgdir}/opt/$_upkgname/$_upkgname.AppImage"
     install -Dm644 "${srcdir}/usr/share/applications/$_upkgname.desktop"             "${pkgdir}/usr/share/applications/$_upkgname.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/linux_production.png"   "${pkgdir}/usr/share/icons/hicolor/512x512/apps/$_upkgname.png"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/linux_production.png"   "${pkgdir}/usr/share/icons/hicolor/512x512/apps/linux_production.png"
     mkdir "${pkgdir}/usr/bin"
     ln -s "/opt/$_upkgname/$_upkgname.AppImage"                                      "${pkgdir}/usr/bin/$_upkgname"
 }
