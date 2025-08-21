@@ -1,22 +1,18 @@
 pkgbase = walker
 	pkgdesc = wayland application runner
-	pkgver = 0.13.26
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/abenz1267/walker
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
+	makedepends = rustup
 	makedepends = gobject-introspection
 	depends = gtk4-layer-shell
-	depends = libvips
-	depends = ffmpeg
-	optdepends = wl-clipboard: for clipboard module
-	optdepends = libqalculate: for calculator module
+	depends = poppler-glib
 	provides = walker
 	conflicts = walker
-	source = https://github.com/abenz1267/walker/archive/refs/tags/v0.13.26.tar.gz
-	sha256sums = 2bccc7c0237b31167306ce143233fd83a682edce0670442b0fd24c67e34fbf63
-	b2sums = 040d92e2c77a34ecf3db7161e8ac57643e9eb2e10e513f8589557b8341940ac3608ad03fb5ed5dc66109fa6d90f6c168978e7759057accd17954e4572f699302
+	source = https://github.com/abenz1267/walker/archive/refs/tags/v1.0.0-beta-2.tar.gz
+	sha256sums = be099c3d6bbbcf6e8befd989b956f85dfcb09c4ea6302db3df9fba8414efb6db
 
 pkgname = walker

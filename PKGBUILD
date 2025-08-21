@@ -1,41 +1,44 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker
-pkgver=0.13.26
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64' 'aarch64')
 license=('MIT')
-makedepends=('go' 'gobject-introspection')
-depends=('gtk4-layer-shell' 'libvips' 'ffmpeg')
-optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
+makedepends=('rustup' 'gobject-introspection')
+depends=('gtk4-layer-shell' 'poppler-glib')
 conflicts=('walker')
 provides=('walker')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2bccc7c0237b31167306ce143233fd83a682edce0670442b0fd24c67e34fbf63')
-b2sums=('040d92e2c77a34ecf3db7161e8ac57643e9eb2e10e513f8589557b8341940ac3608ad03fb5ed5dc66109fa6d90f6c168978e7759057accd17954e4572f699302')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-2.tar.gz")
+sha256sums=("be099c3d6bbbcf6e8befd989b956f85dfcb09c4ea6302db3df9fba8414efb6db")
 
 build() {
-    cd ${pkgname}-${pkgver}/cmd
-
-    go build -x -o walker
+    cd ${pkgname}-${pkgver}-beta-2
+    rustup default stable
+    cargo build --release
 }
 
 package() {
-    cd ${pkgname}-${pkgver}/cmd
+    cd ${pkgname}-${pkgver}-beta-2/target/release
     install -Dm 755 walker -t "${pkgdir}/usr/bin"
 
-    cd ../
+    cd ../../
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    cd internal/config
-    install -Dm 644 config.default.toml -t "${pkgdir}/etc/xdg/walker"
-    mv "${pkgdir}/etc/xdg/walker/config.default.toml" "${pkgdir}/etc/xdg/walker/config.toml"
+    cd resources
+    install -Dm 644 config.toml -t "${pkgdir}/etc/xdg/walker"
 
-    cd themes
-    install -Dm 644 default.toml -t "${pkgdir}/etc/xdg/walker/themes"
-
-    install -Dm 644 xdg_default.css -t "${pkgdir}/etc/xdg/walker/themes"
-    mv "${pkgdir}/etc/xdg/walker/themes/xdg_default.css" "${pkgdir}/etc/xdg/walker/themes/default.css"
+    cd themes/default
+    install -Dm 644 item.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_calc.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_clipboard.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_dmenu.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_files.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_providerlist.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_symbols.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 layout.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 preview.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 style.css -t "${pkgdir}/etc/xdg/walker/themes/default"
 }
