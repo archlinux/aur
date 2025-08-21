@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.10.0.r0.g8afa6e83f2ca
+pkgver=0.11.6.r3.g4ae4f47b16fd
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -12,12 +12,13 @@ provides=("ollama=${pkgver%%.r*}")
 depends=(comgr gcc-libs "hip-runtime-amd>=6.3.2" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi' 'amdgpu_top: tool that shows AMD GPU utilization')
 makedepends=(cmake git gcc-libs "go>=1.23" "hip-runtime-amd>=6.3.2" hipblas hipblas-common hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
+options=(!distcc !debug strip lto)
 source=(git+$url#branch=main
         ollama.service
         sysusers.conf
         tmpfiles.d)
 b2sums=('SKIP'
-        'dfa742756583835ba46a3825dcb70a52136509d8a8010935600f056b317da2e4ec06b8f16b9c8507d21f891980a74f6d227932973cfad80060eea396b5b60dd9'
+        'b2567ca9222da664aa52d290bfdea34bec7f03ea0553888a849aad582fc340c17176ede35abd366ca159615af32617fcc23279f3ce1566422ba22f0e46783cf8'
         '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
         'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
 

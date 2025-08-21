@@ -17,6 +17,7 @@ Environment='OLLAMA_FLASH_ATTENTION=0'
 Environment='OLLAMA_KV_CACHE_TYPE=f16'
 Environment='OLLAMA_NUM_PARALLEL=2'
 Environment='OLLAMA_MAX_LOADED_MODELS=4'
+Environment='OLLAMA_NEW_ESTIMATES=0'
 Environment='OLLAMA_DEBUG=0'
 User=ollama
 Group=ollama
