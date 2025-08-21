@@ -3,7 +3,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=akamai-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Manage and configure Akamai from the Command Line'
 arch=('x86_64' 'pentium4')
@@ -22,8 +22,8 @@ source_pentium4=(
 )
 
 b2sums=('21231bed1327f35b322032568be6b848d23595a294f5e055bc2506a57c122b3ebf3809ae9574b2f16b8856c744816658a06091f8d8e596a31586b3f632ae5d6b')
-b2sums_x86_64=('fef8034ff48186e2278a7423e9c5482694899388e99065f417cf38fe98dbf168e497ea2d29aeeb5fb88b842ca96ca1922ecb0941da7f6906047cf3b4703db515')
-b2sums_pentium4=('fef8034ff48186e2278a7423e9c5482694899388e99065f417cf38fe98dbf168e497ea2d29aeeb5fb88b842ca96ca1922ecb0941da7f6906047cf3b4703db515')
+b2sums_x86_64=('1b5776a996573afa8e8f65f328c2bb6eeb76f566c9d9f38cd180eef4365f646f84468bca7d963135991190455d4287a9f6cb03816f55f9a0b6dc1ec07e30dfb9')
+b2sums_pentium4=('1b5776a996573afa8e8f65f328c2bb6eeb76f566c9d9f38cd180eef4365f646f84468bca7d963135991190455d4287a9f6cb03816f55f9a0b6dc1ec07e30dfb9')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/akamai"
