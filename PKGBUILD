@@ -2,7 +2,7 @@
 
 _pkg=tflint
 pkgname=${_pkg}-bin
-pkgver=0.57.0
+pkgver=0.58.1
 pkgrel=1
 pkgdesc="A linter for Terraform code"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 sha512sums=('c1e3a0c8f5267fb5c0b65733bda037c62d914ed989bee0f510d8196b1029eec00d40f415ce1514a4996d420ba02d856d04db0915b64573ef4a36033cc5efb94e'
             'de6495df79045a8e609771286ef2f3d0dd1908e4d8f61de5816b3e490114c76c49f0b5acf653541f283117a396f2d8e0dc5419f09e5d94aeac50c9a6d5f21fa2'
-            '3b2eeb3f12893e239bb80e0fb514d40ad49a3f610ceed22c038157aca4a2e81a54f89abf150cf2ee7290eae660536725d23d5c9ac379b9407438e31d9999b856')
+            'd913262b1136f3d3d7bfcfed2b6feb013783aaae4745dd0dcb610831761b2143bd29ec07858d9a2ebe02a4e4eedabfc848bd25eb6e6f5bca03db4ee342505762')
 
 package() {
   cd ${srcdir} || exit
