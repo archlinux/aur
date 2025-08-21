@@ -13,7 +13,7 @@ pkgdesc="Personal finance manager for KDE which operates similarly to MS-Money o
 arch=('x86_64')
 url="https://kmymoney.org/"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'gmp' 'libalkimia-git' 'sqlcipher' 'qt6-base' 'qt6-5compat' 'gpgmepp' 'karchive'
+depends=('glibc' 'gcc-libs' 'gmp' 'libalkimia' 'sqlcipher' 'qt6-base' 'qt6-5compat' 'gpgmepp' 'karchive'
          'kcoreaddons' 'kconfig' 'kwidgetsaddons' 'ki18n' 'kcompletion' 'kcmutils' 'kitemmodels'
          'kitemviews' 'kxmlgui' 'ktextwidgets' 'kio' 'kholidays' 'kjobwidgets' 'sonnet'
          'kcolorscheme' 'kconfigwidgets' 'kdiagram' 'libical' 'libofx' 'qtkeychain-qt6'
