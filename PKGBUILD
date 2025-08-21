@@ -1,10 +1,10 @@
-# Maintainer: Michael Rydén (zynex(at)ezmail.se)
+# Maintainer: Michael Rydén (zynex(at)zoik.se)
 # App: RenameMyTVSeries (QT5)
-# Version: 2.3.3
+# Version: 2.3.8
 
 pkgname=renamemytvseries-qt-bin
 _pgmname=RenameMyTVSeries
-pkgver=2.3.5
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="Rename your TV-Series using TheTVDB (QT5 version)"
 arch=('x86_64')
@@ -13,35 +13,30 @@ license=('custom')
 depends=('ffmpeg' 'qt5pas' 'qt5-base')
 provides=('renamemytvseries')
 conflicts=('renamemytvseries')
-
+options=('!debug')
 source=(
   'LICENSE'
   "https://www.tweaking4all.com/downloads/video/${_pgmname}-${pkgver}-QT5-Linux-x64-shared-ffmpeg.tar.xz"
 )
 sha256sums=(
   '986a80aff89e697188bb4eb9f8bfa511c1e933f1e2edd54a3315069c56fec160'
-  'acc006d1dcb805729d25e78f9ca0ddc9fdedac939af0344a14de71e3b32250f8'
+  'a83625998c3a6f47d80b21397686854d24e73ee1ce4611ec526c2fd00b237c68'
 )
 
 package() {
-  # Installera binären
   install -Dm755 "$srcdir/$_pgmname" "$pkgdir/usr/bin/$_pgmname"
 
-  # Installera ikoner till rätt systemkataloger
   for size in 16 32 64 128 256 512; do
     install -Dm644 "$srcdir/icons/${size}x${size}.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/renamemytvseries.png"
   done
 
-  # Installera .desktop-fil
   install -Dm644 "$srcdir/${_pgmname}.desktop" "$pkgdir/usr/share/applications/${_pgmname}.desktop"
   sed -i "s|Exec=.*|Exec=env QT_QPA_PLATFORM=xcb /usr/bin/$_pgmname|" "$pkgdir/usr/share/applications/${_pgmname}.desktop"
   sed -i "s|Icon=.*|Icon=renamemytvseries|" "$pkgdir/usr/share/applications/${_pgmname}.desktop"
   sed -i '/^NoDisplay=true$/d' "$pkgdir/usr/share/applications/${_pgmname}.desktop"
 
-  # Installera övriga resurser
   install -Dm644 "$srcdir/rmtv.ttf" "$pkgdir/usr/share/fonts/TTF/rmtv.ttf"
 
-  # Installera licens
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${_pgmname}/LICENSE"
 }
