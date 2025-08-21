@@ -19,6 +19,7 @@ pkgbase = python-r3pcomms-git
 	depends = python-pyserial
 	depends = python-pyusb
 	depends = udev-hid-bpf
+	depends = mqttui
 	provides = python-r3pcomms
 	conflicts = python-r3pcomms
 	source = git+https://github.com/greyltc/r3pcomms.git

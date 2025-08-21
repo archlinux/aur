@@ -9,6 +9,7 @@ depends=(
 	python-pyserial
 	python-pyusb
 	udev-hid-bpf
+	mqttui
 )
 makedepends=(
 	git
@@ -55,6 +56,7 @@ package() {
   install -Dt "${pkgdir}/etc/udev/rules.d" -m644 ../99-r3pcomms.rules
   install -Dt "${pkgdir}/etc/udev-hid-bpf" -m644 hid_fixes/r3p_fix_hid.bpf.o
   install -Dt "${pkgdir}/usr/bin" -m755 scripts/ups-poweroff.sh
+  install -Dt "${pkgdir}/usr/bin" -m755 scripts/homeassistant-mqtt-publisher.sh
   install -Dm 644 ../r3pcomms.sysusers "${pkgdir}/usr/lib/sysusers.d/r3pcomms.conf"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
