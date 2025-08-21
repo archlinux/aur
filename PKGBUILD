@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=verification
-_pkgver=1.44
+_pkgver=1.45
 pkgname=r-${_pkgname,,}
-pkgver=1.44
+pkgver=1.45
 pkgrel=1
 pkgdesc='Weather Forecast Verification Utilities'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-fields
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('140ea006b98da0e9ac64231ff8a50d0aa878d3a7ad65c95d2fc548118506ab24')
+sha256sums=('96848084a70bf0e60c6b4554e054e60104764aef8753d674b58b726a35586d55')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
