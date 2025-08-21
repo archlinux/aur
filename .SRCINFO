@@ -1,6 +1,6 @@
 pkgbase = kicad-hq
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 9.0.3
+	pkgver = 9.0.4
 	pkgrel = 1
 	url = https://gitlab.com/kicad-hq/kicad
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = kicad-hq
 	conflicts = kicad-hq
 	conflicts = kicad
 	conflicts = kicad-bzr
-	source = kicad-9.0.3.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/9.0.3/kicad-9.0.3.tar.gz
-	sha256sums = 1b7963e6ce7ecad69f0e76e9597b54d51ba30d48b7df47a566ef39b36c3b3ac0
+	source = kicad-9.0.4.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/9.0.4/kicad-9.0.4.tar.gz
+	sha256sums = 02b02ae212b7ca5ee607e1f4203388e5c880dd9984ab068c891894d6b5aaf4b8
 
 pkgname = kicad-hq
