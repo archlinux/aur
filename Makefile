@@ -79,7 +79,7 @@ test-install-and-remove: install ## Using the package (as a test)
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Using the binary ${CC_END}"
 	${use_binaryname} --version
 	${use_binaryname} --help
-	yay -R grafana-alloy-bin
+	sudo pacman -R grafana-alloy-bin
 
 .PHONY: update-srcinfo
 update-srcinfo: build ## Update the .SRCINFO file
