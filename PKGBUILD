@@ -2,7 +2,7 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=1.105.4
+pkgver=1.107.4
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -42,11 +42,9 @@ package() {
   npm install --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr" --global --ignore-scripts "${srcdir}/${pkgname}-${pkgver}.tgz"
   npm rebuild --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr/lib/node_modules/${pkgname}" sqlite3
 
-  find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name "*.ts" -o -name "*.js.map" -o -name "*.vue" | xargs rm -f
-  find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name "*.node" | xargs -I {} strip {}
-
-  grep -rl "${pkgdir}" "${pkgdir}" | xargs -I {} sed -i "s|${pkgdir}||g" '{}'
-  grep -rl "${srcdir}" "${pkgdir}" | xargs -I {} sed -i "s|${srcdir}||g" '{}'
+  # Basic cleanup - remove some development files
+  find "${pkgdir}/usr/lib/node_modules/${pkgname}" -name "*.ts" -delete 2>/dev/null || true
+  find "${pkgdir}/usr/lib/node_modules/${pkgname}" -name "*.js.map" -delete 2>/dev/null || true
 
   install -dm755 "${pkgdir}/usr/share/"{licenses,doc}"/${pkgname}"
   ln -s "/usr/lib/node_modules/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
