@@ -5,14 +5,16 @@ pkgbase=hepmc
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 _pkgname=HepMC3
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="https://hepmc.web.cern.ch/"
 license=('GPL3')
 makedepends=('cmake' 'doxygen' 'gcc-fortran' 'graphviz' 'hepmc2' 'pythia8' 'python' 'root' 'protobuf' 'cern-vdt')
-source=("${pkgbase}-${pkgver}.tar.gz::https://hepmc.web.cern.ch/${pkgbase}/releases/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('08240160b0f28dc3293aa4d61ce65e2d67cd597acf6faca439f2e46625f7e793')
+source=("${pkgbase}-${pkgver}.tar.gz::https://hepmc.web.cern.ch/${pkgbase}/releases/${_pkgname}-${pkgver}.tar.gz"
+        0001-HepMC3ViewerFrame.cc-fix-build-with-recent-Graphviz.patch)
+sha256sums=('08240160b0f28dc3293aa4d61ce65e2d67cd597acf6faca439f2e46625f7e793'
+            'a6eb8fb1d440826598500e327757054032a74d439bd64d6461e4a74816a127ac')
 
 _pick() {
   local p="$1" f d; shift
@@ -22,6 +24,11 @@ _pick() {
     mv "$f" "$d"
     rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
   done
+}
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -p1 -i ../0001-HepMC3ViewerFrame.cc-fix-build-with-recent-Graphviz.patch
 }
 
 build() {

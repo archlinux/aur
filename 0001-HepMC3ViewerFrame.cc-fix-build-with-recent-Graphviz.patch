@@ -1,0 +1,25 @@
+From 32e4d734948d95bc199d922902f01192cb1e2f5f Mon Sep 17 00:00:00 2001
+From: Lukas Fleischer <lfleischer@lfos.de>
+Date: Thu, 21 Aug 2025 08:41:41 -0400
+Subject: [PATCH] HepMC3ViewerFrame.cc: fix build with recent Graphviz
+
+---
+ examples/ViewerExample/src/HepMC3ViewerFrame.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/examples/ViewerExample/src/HepMC3ViewerFrame.cc b/examples/ViewerExample/src/HepMC3ViewerFrame.cc
+index 9fa2b986..a22ca478 100644
+--- a/examples/ViewerExample/src/HepMC3ViewerFrame.cc
++++ b/examples/ViewerExample/src/HepMC3ViewerFrame.cc
+@@ -21,7 +21,7 @@ static  char*  create_image_from_dot(char* m_buffer)
+ 
+     int err;
+     char *data;
+-    unsigned int length;
++    size_t length;
+ 
+     if (!g)
+         return nullptr;
+-- 
+2.51.0
+
