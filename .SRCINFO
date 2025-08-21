@@ -1,27 +1,11 @@
 pkgbase = eveusb
+	pkgdesc = USB Network Gate (packaged from the Debian .deb)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://example.com/
+	arch = x86_64
+	license = custom
+	depends = systemd
+	depends = udev
+
 pkgname = eveusb
-pkgver = 1.0.0
-pkgrel = 1
-pkgdesc = Eve USB software (packaged from the Debian .deb)
-arch = x86_64
-url = https://example.com/
-license = custom
-source =
-sha256sums =
-
-provides =
-conflicts =
-replaces =
-depends = systemd
-depends = udev
-optdepends =
-makedepends =
-checkdepends =
-backup =
-options =
-install =
-changelog =
-
-# Maintainer metadata
-# Note: update the MAINTAINER line in the PKGBUILD and replace example contact info.
-maintainer = Your Name <you@example.com>

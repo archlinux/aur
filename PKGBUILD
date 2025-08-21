@@ -2,7 +2,7 @@
 pkgname=eveusb
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Eve USB software (packaged from the Debian .deb)"
+pkgdesc="USB Network Gate  (packaged from the Debian .deb)"
 arch=('x86_64')
 url="https://example.com/"
 license=('custom')
