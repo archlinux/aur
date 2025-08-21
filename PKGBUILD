@@ -9,7 +9,7 @@
 # Contributor: Marcus Andersson <mackilanu@gmail.com>
 
 pkgname=vagrant
-pkgver=2.4.8
+pkgver=2.4.9
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz"
   "git+https://github.com/hashicorp/vagrant-installers.git#commit=7bcf4d4")
-sha256sums=('0156a0bd929b553e115ab08976c9210014ee9d133db416f9fa3a2f60cfd517ed'
+sha256sums=('c652f460b639c86f50d8bf77020d693bf17c2cea7e25d720aef5b2c3e6d93ff2'
             '6a12657a82226a942ca57f5b3a6f3684d312fe1ef6f876dfb6c246b7e757aa26')
 
 prepare() {
