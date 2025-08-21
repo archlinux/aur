@@ -1,6 +1,6 @@
 pkgbase = cm
 	pkgdesc = fast logfile viewer for Analyzing Large Logfiles Chipmunk is a fast logfile viewer designed for analyzing large logfiles. It features super-fast search capabilities and is an invaluable tool for developers who need to analyze log data.
-	pkgver = 3.18.1
+	pkgver = 3.18.3
 	pkgrel = 1
 	url = https://github.com/esrlabs/chipmunk
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cm
 	depends = alsa-lib
 	depends = libdrm
 	depends = cups
-	source = https://github.com/esrlabs/chipmunk/releases/download/3.18.1/chipmunk@3.18.1-linux-portable.tgz
-	sha256sums = 5b4158e4f2043c4062b65b25e96b2d1ab1251e6f4b61431b12600ecf32a29f7a
+	source = https://github.com/esrlabs/chipmunk/releases/download/3.18.3/chipmunk@3.18.3-linux-portable.tgz
+	sha256sums = 5ebd6e0dd07e6cc6cea631369c6bf0a2609c4797f6bc17fa65e95fb55bc4e7c9
 
 pkgname = cm
