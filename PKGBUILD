@@ -1,7 +1,7 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=meowrch-tools
 pkgver=2.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Performance optimization tools and scripts for Meowrch distribution"
 arch=('any')
 url="https://github.com/meowrch/meowrch"
@@ -18,9 +18,9 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'less: for migration file preview'
             'sudo: for system updates')
 install=meowrch-tools.install
-source=("$url/archive/refs/heads/v3.0.tar.gz")
+source=("$url/archive/refs/heads/v3.0.tar.gz#/meowrch-tools-2.0.0-8.tar.gz")
 # Автоматическая замена в workflow
-sha256sums=('a6dc3f72c00c8f1357eb3588f2723e12b473f1aa51c5a6466311d4ee39932fdb')
+sha256sums=('369897ff1dbf3914f9f78a3bdd135c97b057eae0663b32eb0c69a90ab0fdc346')
 
 package() {
     cd "$srcdir/meowrch-3.0/aur-packages/meowrch-tools"
