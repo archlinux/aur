@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.7.11.r260.gb76e908
+pkgver=1.9.8.r104.d7be10c
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -63,7 +63,12 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   (
     set -o pipefail
-    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    
+    latest_tag=$(git tag --sort=-version:refname | grep -Ev '^[vV]' | head -1)
+    commit_count=$(git rev-list --count "${latest_tag}..HEAD")
+    commit_hash=$(git rev-parse --short=7 HEAD)
+
+    printf "%s.r%s.%s" "${latest_tag}" "${commit_count}" "${commit_hash}"||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
