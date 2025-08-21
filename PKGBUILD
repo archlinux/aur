@@ -3,7 +3,7 @@
 _pkgname=git-jot
 pkgname="$_pkgname-git"
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Emulate branch notes'
 arch=(any)
 url=https://github.com/mtth/git-jot
@@ -22,7 +22,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	asciidoctor -b manpage -a manversion="$pkgver" "$_pkgname.1.adoc" -o - |
+	asciidoctor -b manpage \
+			-a mansource="$_pkgname v$pkgver" \
+			-a manmanual="$_pkgname manual" \
+			-o - "$_pkgname.1.adoc" |
 		gzip -9 >"$_pkgname.1.gz"
 }
 
