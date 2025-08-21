@@ -1,0 +1,11 @@
+pkgbase = pingvin320kg
+	pkgdesc = Wallpapers with a 320kg penguin
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://t.me/+5717pL3Od2wzNTIy
+	arch = x86_64
+	license = GPL
+	source = wallpaper.jpg
+	sha256sums = 0ef90e4954fae1af579aab5370cdb473ed2b7943454d4dba4c7f8dcd4d212d9d
+
+pkgname = pingvin320kg
