@@ -2,7 +2,7 @@
 
 pkgname=lighthouse
 
-pkgver=11.7.1
+pkgver=12.6.0
 pkgrel=1
 
 pkgdesc='Automated auditing, performance metrics, and best practices for the web'
@@ -16,7 +16,7 @@ makedepends=(npm jq)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
 
-sha256sums=('96f3a62ef46c551c23e24978d54ba247491d34692b634b5dcf6abe54130b2fe7')
+sha256sums=('4ffb3efe872915673ff30f4ee223361369ca8e2dd973128d789f453184b5243f')
 
 package() {
   npm install -g \
