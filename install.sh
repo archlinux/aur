@@ -11,9 +11,9 @@ if ! command -v sudo &>/dev/null; then
   pacman -Sy --noconfirm sudo
 fi
 
-# Update system first
-echo ">>> Updating system..."
-sudo pacman -Syyu --noconfirm
+# # Update system first
+# echo ">>> Updating system..."
+# sudo pacman -Syyu --noconfirm
 
 # Ensure base-devel is installed
 echo ">>> Installing base-devel..."
@@ -30,9 +30,9 @@ if ! command -v yay &>/dev/null; then
   rm -rf "$tmpdir"
 fi
 
-# Update AUR packages too
-echo ">>> Updating AUR packages..."
-yay -Syyu --noconfirm
+# # Update AUR packages too
+# echo ">>> Updating AUR packages..."
+# yay -Syyu --noconfirm
 
 # -----------------------------
 # Dotfiles setup
