@@ -5,8 +5,8 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gittyup-git
-pkgver=1.3.0.r340.gbb91267f
-pkgrel=2
+pkgver=1.3.0.r435.gfa59b663
+pkgrel=1
 pkgdesc="Graphical Git client (GitAhead fork)"
 url="https://github.com/Murmele/Gittyup"
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(MIT)
 depends=(qt6-base hunspell lua cmark pcre libssh2
 
          # namcap implict depends
-         hicolor-icon-theme glibc gcc-libs zlib openssl libglvnd
+         hicolor-icon-theme glibc gcc-libs zlib openssl libglvnd krb5
 )
 makedepends=(git cmake ninja qt6-tools qt6-translations) #libgit2 libgnome-keyring
 optdepends=('git-lfs: git-lfs support'
@@ -24,7 +24,7 @@ provides=(gittyup)
 conflicts=(gittyup)
 options=(!lto)
 source=("git+https://github.com/Murmele/Gittyup.git"
-        "stinb-libgit2::git+https://github.com/stinb/libgit2.git"
+        "gittyup-libgit2::git+https://github.com/Murmele/libgit2.git"
         "git+https://github.com/kuba--/zip.git"
         "git+https://github.com/ScintillaOrg/lexilla.git"
         "git+https://github.com/orbitalquark/scintillua.git")
@@ -42,7 +42,7 @@ pkgver() {
 prepare() {
   cd "Gittyup"
   git submodule init
-  git config submodule.dep/libgit2/libgit2.url "${srcdir}/stinb-libgit2"
+  git config submodule.dep/libgit2/libgit2.url "${srcdir}/gittyup-libgit2"
   git config submodule.dep/git/git.update none
   git config submodule.dep/cmark/cmark.update none
   git config submodule.dep/libssh2/libssh2.update none
@@ -51,6 +51,7 @@ prepare() {
   git config submodule.test/dep/zip.url "${srcdir}/zip"
   git config submodule.dep/scintilla/lexilla.url "${srcdir}/lexilla"
   git config submodule.dep/scintilla/scintillua.url "${srcdir}/scintillua"
+  git config submodule.dep/lua/lua.update none
   git -c protocol.file.allow=always submodule update
 }
 
