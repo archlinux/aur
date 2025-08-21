@@ -1,7 +1,7 @@
 # Maintainer: ambra <echo mail@a1m2b3r4a5s6p7a8c9e.com|sed 's/[0-9]//g'>
 
 pkgname=geotrans-bin
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 pkgdesc="NGA and DOD approved coordinate converter and datum translator"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 source=("$pkgname-$pkgver.tar.gz::https://earth-info.nga.mil/php/download.php?file=wgs-linuser"
 geotrans_logo.png
 GeoTrans.desktop)
-sha256sums=('11ff795a4b6b78c4dd8b6e66b1f688eacfd12386db416c3f1aa68aa4301cba7c'
+sha256sums=('96a08bebb40d83e197d602e280d5f9cecd2cd44920547957f737a819344e415b'
 '9197dce710362d9dadafcc85d12b2b5cbb84878e2498f283194d9a425ca33cfa'
 '14c9ffcfdd01e5b81eaee666140bb2879714160a475de12f7934b997e9ab2e87')
 
@@ -25,15 +25,15 @@ package() {
     install -Dm644 GeoTrans.desktop $pkgdir/usr/share/applications/GeoTrans.desktop
 
     mkdir -p $pkgdir/usr/bin
-    ln -s /opt/$pkgname/GEOTRANS3/linux_64/runGeotrans.sh $pkgdir/usr/bin/geotrans
+    ln -s /opt/$pkgname/GEOTRANS3/linux9/runGeotrans.sh $pkgdir/usr/bin/geotrans
 
-    chmod u+w $pkgdir/opt/$pkgname/GEOTRANS3/linux_64/runGeotrans.sh
-    cat > $pkgdir/opt/$pkgname/GEOTRANS3/linux_64/runGeotrans.sh <<EOF
+    chmod u+w $pkgdir/opt/$pkgname/GEOTRANS3/linux9/runGeotrans.sh
+    cat > $pkgdir/opt/$pkgname/GEOTRANS3/linux9/runGeotrans.sh <<EOF
 #!/bin/sh
 
-DIR=/opt/$pkgname/GEOTRANS3/linux_64
+DIR=/opt/$pkgname/GEOTRANS3/linux9
 
-export LD_LIBRARY_PATH="\${DIR}:\${DIR}/../../CCS/linux_64"
+export LD_LIBRARY_PATH="\${DIR}:\${DIR}/../../CCS/linux9"
 export MSPCCS_DATA="\${DIR}/../../data"
 export JAVA_HOME="/usr/lib/jvm/default"
 export LANG="en_US"
