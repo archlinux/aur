@@ -3,7 +3,7 @@
 pkgname=linyaps-web-store-installer
 _tagname=1.6.8
 pkgver="${_tagname//-/_}"
-pkgrel=4
+pkgrel=5
 pkgdesc='玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store.'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps-web-store-installer'
@@ -14,7 +14,7 @@ provides=(
 conflicts=(
   ${pkgname}
 )
-replaces=()
+replaces=(linyaps-installer)
 _qt=qt6
 depends=(
   gcc-libs
@@ -30,6 +30,7 @@ makedepends=(
   ninja
   ${_qt}-tools
   pkgconf
+  vulkan-headers
 )
 checkdepends=()
 optdepends=(
