@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-devel
 _orgpkgname=xlibre-xserver-devel
 pkgname=$_pkgname-bin
-pkgver=25.0.0.8
+pkgver=25.0.0.9
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org development files (binary release)"
 arch=(x86_64)
@@ -33,7 +33,7 @@ depends=('xorgproto' 'mesa' 'libpciaccess' 'pixman'
 provides=($_pkgname 'xorg-server-devel' 'xlibre-server-devel')
 conflicts=($_pkgname 'xorg-server-devel' 'xlibre-server-devel')
 
-sha256sums=('70e411b38361273e693d9f37735194158df5aaa247c2d51db981a41085cfe804')
+sha256sums=('3b52143581708a30bc20ba3e8082ac817ca1a72ad49eb35e3e204d7cce77a618')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
