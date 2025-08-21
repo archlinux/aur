@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-jellyfin
 	pkgdesc = Synchronize your media on your Jellyfin server to the native Kodi database.
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin-kodi
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = kodi-addon-jellyfin
 	depends = python-requests
 	depends = python-six
 	depends = python-websocket-client
-	source = kodi-addon-jellyfin-1.0.7::https://github.com/jellyfin/jellyfin-kodi/archive/refs/tags/v1.0.7.tar.gz
-	sha256sums = 9c6b8ae4d11d595e7e458aab4a6659588e457238944a893e02bc0d42503ad72c
+	source = kodi-addon-jellyfin-1.0.8::https://github.com/jellyfin/jellyfin-kodi/archive/refs/tags/v1.0.8.tar.gz
+	sha256sums = 17310dc08a7bda900ae55bf4250803b9f799f7ac57090fffe0342bdfb842ed7f
 
 pkgname = kodi-addon-jellyfin
