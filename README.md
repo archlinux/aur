@@ -11,6 +11,8 @@ If a security-relevant update is available the package will be updated as soon a
 
 ## Environment variables
 The PKGBUILD file supports customization via environment variables. Here's a list of all of them:
+- `_disable_colorful_logging`: Disables fancy colorful logging. Required because we can't read the `CI` or `COLORTERM` environment variables
+- `_additionalpatches`: List of additional patches to apply. Must all be prefixed with a plus sign (+) and be separated by spaces. Invalid values are silently ignored
 - `_makemenuconfig`: Invokes `make menuconfig` (ncurses-based default configuration menu) before compilation starts
 - `_makenconfig`: Invokes `make nconfig` (ncurses-based nicer configuration menu) before compilation starts
 - `_makexconfig`: Invokes `make xconfig` (X11-based GUI configuration menu) before compilation starts

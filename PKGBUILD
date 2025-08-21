@@ -24,6 +24,16 @@
 # Set to anything but null to deactivate.
 : "${_disable_colorful_logging:=""}"
 
+# Specifies a list of additional patches to apply.
+#
+# All values must be prefixed with a plus sign (+)
+# and be separated by spaces. Any invalid values
+# will be silently ignored.
+#
+# Available patch categories:
+# - experimental
+: "${_additionalpatches:=""}"
+
 # Tweak kernel options prior to a build via menuconfig.
 #
 # Set to anything but null to activate.
@@ -305,7 +315,7 @@ _get_patches() {
     # Get the list of patches from the file, ignore the comments
     grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list.txt
     # Experimental patches
-    grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
+    [[ "${_additionalpatches,,}" == *"+experimental"* ]] && grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
 }
 
 
