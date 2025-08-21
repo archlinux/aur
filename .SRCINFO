@@ -1,13 +1,14 @@
 pkgbase = python-pretty-errors
 	pkgdesc = Prettifies Python exception output to make it legible.
 	pkgver = 1.2.25
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/onelivesleft/PrettyErrors/
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-colorama
 	source = https://files.pythonhosted.org/packages/source/p/pretty_errors/pretty_errors-1.2.25.tar.gz
