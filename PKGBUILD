@@ -31,7 +31,7 @@
 # will be silently ignored.
 #
 # Available patch categories:
-# - experimental
+# - experimental: Experimental patches that should not be enabled on production kernels
 : "${_additionalpatches:=""}"
 
 # Tweak kernel options prior to a build via menuconfig.
