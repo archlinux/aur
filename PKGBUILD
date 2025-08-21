@@ -2,9 +2,9 @@
 
 _pkgname=ddns-go
 pkgname=cubic-$_pkgname-git
-pkgver=1.1.2.r29.g00819da
+pkgver=1.2.0.r0.gf05333a
 pkgrel=1
-pkgdesc="DDNS service supporting dynamic updates of A, AAAA, and HTTPS records"
+pkgdesc="Over-engineered DDNS service with native OS integrations for managing A, AAAA, and HTTPS records"
 arch=('x86_64' 'aarch64')
 url="https://github.com/database64128/$_pkgname"
 license=('GPL-3.0-or-later')
