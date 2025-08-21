@@ -1,0 +1,22 @@
+pkgbase = sftool-bin
+	pkgdesc = CLI version of sftool, a download tool for the SiFli family of chips
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/OpenSiFli/sftool
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = libarchive
+	depends = gcc-libs
+	depends = glibc
+	depends = libcap
+	depends = systemd-libs
+	conflicts = sftool-gui-bin
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/OpenSiFli/sftool/releases/download/0.1.12/sftool-0.1.12-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 231ec30a5a16edbac9b786d1a109cbcf9d6dd0fd7d93443c6438c2a12fe8ec56
+	source_aarch64 = https://github.com/OpenSiFli/sftool/releases/download/0.1.12/sftool-0.1.12-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 81981e262b63e3e2ca8dbf2a6888dc9a29954d7e23b58aa6ec5acf00dd2b6e6f
+
+pkgname = sftool-bin
