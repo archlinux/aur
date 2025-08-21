@@ -19,6 +19,10 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
+<<<<<<< HEAD
     install -Dm755 "target/release/mir" "$pkgdir/usr/bin/$pkgname"
+=======
+    install -Dm755 "target/release/mir" "$pkgdir/usr/bin/mir"
+>>>>>>> ac6b77a (Initial upload of make-it-rain v1.1.1)
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
