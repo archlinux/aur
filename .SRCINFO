@@ -1,0 +1,15 @@
+pkgbase = obsidianwall-git
+	pkgdesc = ObsidianOS Wallpaper Compositor
+	pkgver = r25.e924876
+	pkgrel = 1
+	url = https://github.com/Obsidian-OS/obsidianwall
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = imagemagick
+	provides = obsidianwall
+	source = obsidianwall-git::git+https://github.com/Obsidian-OS/obsidianwall
+	sha256sums = SKIP
+
+pkgname = obsidianwall-git
