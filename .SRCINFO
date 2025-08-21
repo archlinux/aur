@@ -1,6 +1,6 @@
 pkgbase = intel-media-stack-bin
 	pkgdesc = Tools and libraries for developing media solutions on Intel products (pre-compiled binaries)
-	pkgver = 25.1.4
+	pkgver = 25.2.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/vpl-gpu-rt/
@@ -27,13 +27,14 @@ pkgbase = intel-media-stack-bin
 	provides = libvpl-tools
 	provides = vpl-gpu-rt
 	provides = vpl-runtime
-	noextract = intel-media-stack-bin-25.1.4.tar.gz
-	options = !strip
+	noextract = intel-media-stack-bin-25.2.6.tar.gz
+	options = !debug
 	options = !emptydirs
-	source = intel-media-stack-bin-25.1.4.tar.gz::https://github.com/intel/vpl-gpu-rt/releases/download/intel-onevpl-25.1.4/MediaStack.tar.gz
+	options = !strip
+	source = intel-media-stack-bin-25.2.6.tar.gz::https://github.com/intel/vpl-gpu-rt/releases/download/intel-onevpl-25.2.6/MediaStack.tar.gz
 	source = 010-intel-media-stack-bin-fix-install.patch
 	source = 020-intel-media-stack-bin-fix-profile.patch
-	sha256sums = 81b3cb78e2521291b27e0d390da3563ceb4cae5fa3967b0c62e76cb55ec2004b
+	sha256sums = 038752ab046d125c9ab3c0dacf06d8deaad679fbb05ef122a3e146f7cf6020b2
 	sha256sums = 769757c058e750a7c4e00382719f34aa27d4d804423af0e55984b719c9332cb3
 	sha256sums = b6c8e3d9db6195b3d0d2299774b1f57ef09c2f80eda8c7f1d0507d769dcfb62f
 

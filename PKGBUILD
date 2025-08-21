@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-media-stack-bin
-pkgver=25.1.4
+pkgver=25.2.6
 pkgrel=1
 epoch=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products (pre-compiled binaries)'
@@ -31,13 +31,13 @@ provides=(
     'libvpl-tools'
     'vpl-gpu-rt'
     'vpl-runtime')
-options=('!strip' '!emptydirs')
+options=('!debug' '!emptydirs' '!strip')
 install=intel-media-stack-bin.install
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/vpl-gpu-rt/releases/download/intel-onevpl-${pkgver}/MediaStack.tar.gz"
         '010-intel-media-stack-bin-fix-install.patch'
         '020-intel-media-stack-bin-fix-profile.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('81b3cb78e2521291b27e0d390da3563ceb4cae5fa3967b0c62e76cb55ec2004b'
+sha256sums=('038752ab046d125c9ab3c0dacf06d8deaad679fbb05ef122a3e146f7cf6020b2'
             '769757c058e750a7c4e00382719f34aa27d4d804423af0e55984b719c9332cb3'
             'b6c8e3d9db6195b3d0d2299774b1f57ef09c2f80eda8c7f1d0507d769dcfb62f')
 
@@ -71,9 +71,6 @@ package() {
         printf '\n%s\n' '# add bin folder to PATH' >> "$_file"
         printf '%s\n' "${_cmd} PATH=\"\${PATH:+\"\${PATH}\":}/opt/intel/media/bin\"" >> "$_file"
     done < <(find "${pkgdir}/etc/profile.d" -maxdepth 1 -mindepth 1 -type f -name 'intel-media.*sh' -print0)
-    
-    # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
-    ln -s ../share/mfx/samples/_bin/libcttmetrics.so "${pkgdir}/opt/intel/media/lib64/libcttmetrics.so"
     
     # remove insecure rpath
     chrpath -d "${pkgdir}/opt/intel/media/lib64/iHD_drv_video.so"
