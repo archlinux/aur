@@ -16,7 +16,7 @@ pkgbase = max
 	depends = libsecret
 	depends = tar
 	depends = binutils
-	source = https://trk.mail.ru/c/dr9tt3
+	source = https://download.max.ru/electron/MAX.debs
 	md5sums = 91a4413990890aaced063daa78f148ab
 
 pkgname = max

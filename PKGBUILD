@@ -12,7 +12,7 @@ categories=("network")
 
 depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux-libs" "libsecret" "tar" "binutils")
 
-source=("https://trk.mail.ru/c/dr9tt3")
+source=("https://download.max.ru/electron/MAX.deb")
 md5sums=('91a4413990890aaced063daa78f148ab')
 
 prepare() {
@@ -49,17 +49,17 @@ post_install() {
     fi
 
     if apparmor_status --enabled > /dev/null 2>&1; then
-    APPARMOR_PROFILE_SOURCE='/opt/MAX/resources/apparmor-profile'
-    APPARMOR_PROFILE_TARGET='/etc/apparmor.d/MAX'
-    if apparmor_parser --skip-kernel-load --debug "$APPARMOR_PROFILE_SOURCE" > /dev/null 2>&1; then
-        cp -f "$APPARMOR_PROFILE_SOURCE" "$APPARMOR_PROFILE_TARGET"
+        APPARMOR_PROFILE_SOURCE='/opt/MAX/resources/apparmor-profile'
+        APPARMOR_PROFILE_TARGET='/etc/apparmor.d/MAX'
+        if apparmor_parser --skip-kernel-load --debug "$APPARMOR_PROFILE_SOURCE" > /dev/null 2>&1; then
+            cp -f "$APPARMOR_PROFILE_SOURCE" "$APPARMOR_PROFILE_TARGET"
 
-        if ! { [ -x '/usr/bin/ischroot' ] && /usr/bin/ischroot; } && hash apparmor_parser 2>/dev/null; then
-        apparmor_parser --replace --write-cache --skip-read-cache "$APPARMOR_PROFILE_TARGET"
+            if ! { [ -x '/usr/bin/ischroot' ] && /usr/bin/ischroot; } && hash apparmor_parser 2>/dev/null; then
+                apparmor_parser --replace --write-cache --skip-read-cache "$APPARMOR_PROFILE_TARGET"
+            fi
+        else
+            echo "Skipping the installation of the AppArmor profile as this version of AppArmor does not seem to support the bundled profile"
         fi
-    else
-        echo "Skipping the installation of the AppArmor profile as this version of AppArmor does not seem to support the bundled profile"
-    fi
     fi
 }
 
