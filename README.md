@@ -1,9 +1,7 @@
 # OpenConnect Git AUR Package
 
-This repository contains the PKGBUILD and related files for the `openconnect-git` package.
-
-The intention is to update the [openconnect-git AUR Package](https://aur.archlinux.org/packages/openconnect-git),
-which currently seems to be unmaintend.
+This repository contains the PKGBUILD and related files for the
+[`openconnect-git` AUR Package](https://aur.archlinux.org/packages/openconnect-git).
 
 It is based on the [Official Arch Package](https://gitlab.archlinux.org/archlinux/packaging/packages/openconnect/).
 
@@ -16,7 +14,11 @@ the upstream OpenConnect repository and rebuilds the package when new commits ar
 
 ## Installation
 
-Currently, only local building is available!
+### Using AUR Helper
+
+```
+yay -S openconnect-git
+```
 
 ### Building Locally
 
