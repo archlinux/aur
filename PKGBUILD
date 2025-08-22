@@ -1,8 +1,8 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=guile-smc
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="GNU Guile state machine compiler"
 arch=('x86_64')
 url="https://github.com/artyom-poptsov/guile-smc"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('guile' 'guile-lib')
 makedepends=('help2man')
 source=("https://github.com/artyom-poptsov/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9e6d9b4c6a145cefc9c671971ffa46685c1f58634ae1f5b23b7d18b0f0b03429')
+sha256sums=('f1a0a9174fd2911f054a2ba5e4d3f1803cc4c508c86063c38ccfa6d33bd0485b')
 
 build() {
   cd "$pkgname-$pkgver"
