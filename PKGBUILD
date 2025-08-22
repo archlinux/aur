@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/dodog/orphycleaner"
 license=('AGPL3')
 depends=('python' 'tk')
-optdepends=('gio: for moving deleted folders to Trash')
+optdepends=('glib2: provides gio for moving deleted folders to Trash')
 source=("https://github.com/dodog/orphycleaner/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0c62df90ab084342cd6b67d3709cc21b56e5aea6bdebfc0d3305d82f2280b9cc')
 
