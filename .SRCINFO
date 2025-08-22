@@ -1,4 +1,4 @@
-pkgbase = python-ecdysys
+pkgbase = ecdysys
 	pkgdesc = Python CLI to update your system packages
 	pkgver = 0.1.9
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = python-ecdysys
 	source = https://files.pythonhosted.org/packages/py3/e/ecdysys/ecdysys-0.1.9-py3-none-any.whl
 	sha256sums = 4e8f0e391540252007a43ff8231ebaf95f66793afdc2aa87cbf34809249d373a
 
-pkgname = python-ecdysys
+pkgname = ecdysys

@@ -1,5 +1,5 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
-pkgname=python-ecdysys
+pkgname=ecdysys
 _name=${pkgname#python-}
 pkgver=0.1.9
 pkgrel=1
