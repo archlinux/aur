@@ -19,10 +19,10 @@ depends=(
   'sdl2'
   'zlib')
 makedepends=()
-_target="xenia_canary_linux-${pkgver}.tar.gz"
+_target="xenia_canary_linux-${pkgver}.tar.xz"
 conflicts=('xenia-git' 'xenia-canary-git')
 provides=('xenia')
-source=("${_target}::https://github.com/xenia-canary/xenia-canary-releases/releases/download/${pkgver}/xenia_canary_linux.tar.gz"
+source=("${_target}::https://github.com/xenia-canary/xenia-canary-releases/releases/download/${pkgver}/xenia_canary_linux.tar.xz"
         'https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/1024.png'
         'https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/512.png'
         'https://raw.githubusercontent.com/xenia-canary/xenia-canary/refs/heads/canary_experimental/assets/icon/256.png'
