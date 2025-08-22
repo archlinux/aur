@@ -1,11 +1,12 @@
 pkgbase = librem-ec-acpi-dkms-git
-	pkgdesc = Librem 14 EC APCI Driver
+	pkgdesc = Librem 14 EC APCI Driver from primalmotion fork
 	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://source.puri.sm/primalmotion/librem-ec-acpi-dkms
 	arch = any
 	license = GPL
 	depends = dkms
+	depends = linux-headers
 	source = git+https://source.puri.sm/primalmotion/librem-ec-acpi-dkms#branch=fix-kernel-6.15
 	sha256sums = SKIP
 
