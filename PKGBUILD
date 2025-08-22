@@ -6,8 +6,8 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=pk_web
 pkgname=${_pkgname}-git
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="Web UI for plakar backup tool"
 arch=(any)
 url="https://spn109.fr/pk_web"
