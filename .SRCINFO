@@ -1,12 +1,14 @@
 pkgbase = streamcontroller-plugin-tools-git
 	pkgdesc = Base for StreamController plugins
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/StreamController/streamcontroller-plugin-tools
 	arch = x86_64
 	license = GPL
 	depends = python-rpyc
 	depends = python-loguru
+	makedepends = python-build
+	makedepends = python-install
 	provides = streamcontroller-plugin-tools
 	source = streamcontroller-plugin-tools-2.0.0.tar.gz::https://github.com/StreamController/streamcontroller-plugin-tools/archive/refs/tags/2.0.0.tar.gz
 	sha512sums = 19a90d813f7ec3286e3b08b4141c2ad6776d1e949e370018edd4273ded2db3f22271353c38ad1efe90e9de1e39d4f62dfa1271e81cceb8b11772da264f2090d0
