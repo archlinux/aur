@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Jeff Henson <jeff@henson.io>
+# Old Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: darkhz <kmachanwenw at gmail dot com>
 
 pkgname=bluetuith
