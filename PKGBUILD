@@ -26,6 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
+    # Try to describe with tags: v1.0.0 -> 1.0.0.r5.gabcdef
     git describe --tags --long 2>/dev/null \
         | sed 's/^v//;s/-/./g' \
         || printf "0.0.0.r%s.g%s" \
@@ -46,14 +47,14 @@ package() {
     cd "${srcdir}/${_pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     
-    # Install license if it exists
+    # License
     if [ -f LICENSE ]; then
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     elif [ -f COPYING ]; then
         install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
     fi
     
-    # Install documentation
+    # Documentation
     if [ -f README.md ]; then
         install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     fi
