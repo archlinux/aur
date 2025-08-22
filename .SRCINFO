@@ -1,23 +1,31 @@
 pkgbase = gitui-git
 	pkgdesc = Blazing fast terminal-ui for git written in Rust
-	pkgver = 0.23.0.r17.gc1e20958
+	pkgver = 0.27.0.r107.gfd46b9a0
 	pkgrel = 1
 	url = https://github.com/extrawurst/gitui
 	arch = x86_64
-	arch = i686
 	license = MIT
-	makedepends = git
 	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
 	makedepends = python
 	depends = gcc-libs
-	depends = libgit2>=1.2.0
-	depends = libgit2.so
-	depends = libxcb
-	depends = zlib
-	provides = gitui=0.23.0.r17.gc1e20958
+	depends = glibc
+	depends = libgit2
+	depends = libssh2
+	depends = openssl
+	optdepends = xclip: for clipboard support on X11 (or xsel)
+	optdepends = xsel: for clipboard support on X11 (or xclip)
+	optdepends = wl-clipboard: for clipboard support on Wayland
+	provides = gitui=0.27.0.r107.gfd46b9a0
 	conflicts = gitui
-	options = !lto
 	source = gitui-git::git+https://github.com/extrawurst/gitui.git
 	sha256sums = SKIP
 
 pkgname = gitui-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libgit2
+	depends = libssh2
+	depends = openssl
+	depends = libgit2.so
