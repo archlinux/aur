@@ -19,7 +19,7 @@ pkgbase = arduino-ide
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
-	depends = electron27
+	depends = electron30
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
@@ -31,10 +31,10 @@ pkgbase = arduino-ide
 	optdepends = libusb-compat: Needed for the `micronucleus` cli utility
 	optdepends = python-pyserial: Needed for esptool
 	optdepends = usbutils: Needed for stm32 boards using st-link
-	source = git+https://github.com/arduino/arduino-ide.git#tag=1112057979aa28f20c0ca184dfd8462c28ed5cf5
+	source = git+https://github.com/arduino/arduino-ide.git#tag=2f0414a5a1c52c24e14b4d9972647b3a7e8426a5
 	source = arduino-ide.sh
 	source = arduino-ide.desktop
-	b2sums = 0f10a34560add1df2500519ce214cfc0ee9bf792ab82db280265a70a12acb3490b63e38427b7c0841071e7e341bc9bba4fcea582e7708890021a21a51f04b917
+	b2sums = d8c55a4befac0a2b59b95fba614a45d8260a0ec3b10d2ff7b3f1508a5982b67ee24d31d78d555552edc2091ada48670ab839a9737656a35428d15ab6958fc5de
 	b2sums = 12e045253c9ba57023cbc74a6138aa314b1f7fff6a9a1e5eeb4378a3259919f783ee068f9ae7dd420544f84e8deb7c21f06173ef436d2ee50f138b8306ee2ff3
 	b2sums = 9b7c45d5081f23415c3dfd3d098cbe425b207f82a480b09f192e5d0e95511da5c8985ad20667301b8977a0ab3166c8b6aa5992e36df75173785bb026a10f8edb
 

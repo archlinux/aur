@@ -1,9 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Martin Rodriguez Reboredo <yakoyoku@gmail.com>
 # Contributor: Joshua Glass <joshuag1000@outlook.com>
 
 pkgname=arduino-ide
-pkgver=2.3.4
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Open-source electronics prototyping platform"
 arch=(x86_64)
@@ -16,7 +17,7 @@ depends=(
   gcc-libs
   glib2
   glibc
-  electron27
+  electron30
   libsecret
   libx11
   libxkbfile
@@ -41,13 +42,13 @@ optdepends=(
   'python-pyserial: Needed for esptool'
   'usbutils: Needed for stm32 boards using st-link'
 )
-_tag=1112057979aa28f20c0ca184dfd8462c28ed5cf5
+_tag=2f0414a5a1c52c24e14b4d9972647b3a7e8426a5
 source=(
   git+https://github.com/arduino/arduino-ide.git#tag=${_tag}
   arduino-ide.sh
   arduino-ide.desktop
 )
-b2sums=('0f10a34560add1df2500519ce214cfc0ee9bf792ab82db280265a70a12acb3490b63e38427b7c0841071e7e341bc9bba4fcea582e7708890021a21a51f04b917'
+b2sums=('d8c55a4befac0a2b59b95fba614a45d8260a0ec3b10d2ff7b3f1508a5982b67ee24d31d78d555552edc2091ada48670ab839a9737656a35428d15ab6958fc5de'
         '12e045253c9ba57023cbc74a6138aa314b1f7fff6a9a1e5eeb4378a3259919f783ee068f9ae7dd420544f84e8deb7c21f06173ef436d2ee50f138b8306ee2ff3'
         '9b7c45d5081f23415c3dfd3d098cbe425b207f82a480b09f192e5d0e95511da5c8985ad20667301b8977a0ab3166c8b6aa5992e36df75173785bb026a10f8edb')
 
@@ -55,7 +56,7 @@ prepare() {
   cd arduino-ide
 
   local _electron_version=$(cat electron-app/package.json | jq '.devDependencies.electron')
-  if [[ ${_electron_version} != \"^27.*\" ]]; then
+  if [[ ${_electron_version} != \"30.1.2\" ]]; then
     msg "Electron version must be ${_electron_version}"
     exit 1
   fi
