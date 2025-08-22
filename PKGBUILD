@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=tunarr-bin
-pkgver=0.21.8
+pkgver=0.21.9
 pkgrel=1
 pkgdesc='Create a classic TV experience using your own media - IPTV backed by Plex/Jellyfin/Emby'
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ source=("tunarr-${pkgver}-${_pkgarch}::https://github.com/chrisbenincasa/tunarr/
         'tunarr.tmpfiles'
         'tunarr.service'
         'tunarr.conf.d')
-sha256sums=('6c3afe0cdb930583dfcd9bc7901db44d551621a861920b6e1c5ce777ac212fbd'
+sha256sums=('8ea823e822469b2277990c3bf2b5c9557fa2cde83914de4c3ee6afc5c554eda2'
             '85af351451b2dc90f5f611f9be8bbda076d5e1ec42276d44b7d380b1d49767a7'
             'd642c71dd83406fd659fdaed5f3ef5b44a29443a9303e8a3a912fea757571c19'
             'ec4c01a686ecb715ef96038e815932765b9a42fb19261062a89a932cdb8fdf85'
