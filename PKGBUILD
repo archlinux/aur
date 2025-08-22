@@ -1,5 +1,6 @@
 # Maintainer: Dainis Koknese <gatesby@protonmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Thomas Quillan <tjquillan@gmail.com>
 
 pkgname=harmonoid-bin
 pkgver=0.3.10
