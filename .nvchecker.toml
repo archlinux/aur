@@ -1,0 +1,4 @@
+[llvm-mingw-w64-toolchain-ucrt-bin]
+source = "github"
+github = "mstorsjo/llvm-mingw"
+use_latest_release = true
