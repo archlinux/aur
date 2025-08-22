@@ -2,7 +2,7 @@
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 pkgname=crackpkcs12
 pkgver=0.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to audit PKCS12 files passwords"
 arch=(x86_64)
 depends=(openssl)
