@@ -1,24 +1,55 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
-
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 _name=quimb
 pkgname=python-$_name
-pkgver=1.8.4
+pkgver=1.11.2
 pkgrel=1
-pkgdesc='Quantum information and many-body library.'
+pkgdesc="Quantum information and many-body calculations including tensor networks"
 arch=(any)
-url='https://github.com/jcmgray/quimb'
-license=(Apache)
-depends=(python)
-makedepends=(python-build python-installer python-setuptools python-setuptools-scm python-wheel)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('50e046fdd6521aaf6fdc3d0013fe749098f5ce1fea45f5b9f351b0aa3c8593582dd69a7da8341c7c71f8c0508bbd5b896d1d587a9cf8648721e9d450f0c191ed')
+url=https://github.com/jcmgray/quimb
+license=(Apache-2.0)
+depends=(
+    python-autoray
+    python-cotengra
+    python-cytoolz
+    python-numba
+    python-numpy
+    python-psutil
+    python-scipy
+    python-tqdm
+)
+makedepends=(
+    git
+    python-build
+    python-installer
+    python-hatch-vcs
+    python-hatchling
+    python-wheel
+)
+optdepends=(
+    "python-matplotlib: for plotting"
+    "python-mpi4py: support for solvers using MPI"
+    "python-networkx: for computing distances between pairs of qubits"
+)
+checkdepends=(python-pytest)
+source=($_name::git+https://github.com/jcmgray/$_name.git#tag=v$pkgver)
+b2sums=('c9a4821f32034f7fb357068d8bd89e13cc848539a9812f7d7ab51e5aff87abf86ec3014e069121db104279e49dc35a39431453c398ffc191d23a28fcc57f2c01')
 
 build() {
-    cd $_name-$pkgver
+    cd $_name
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd $_name
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    python -m installer --destdir=../test_dir dist/*.whl
+    rm -rf quimb
+    # See https://github.com/jcmgray/quimb/issues/328
+    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" pytest tests -k "not test_equalize_norms"
+}
+
 package() {
-    cd $_name-$pkgver
+    cd $_name
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
