@@ -1,4 +1,4 @@
-pkgbase = plasma-dialer
+pkgbase = plasma-dialer-git
 	pkgdesc = Dialer for Plasma Mobile - Git version
 	pkgver = todo
 	pkgrel = 0
@@ -19,4 +19,4 @@ pkgbase = plasma-dialer
 	depends = callaudiod-git
 	sha256sums = SKIP
 
-pkgname = plasma-dialer
+pkgname = plasma-dialer-git
