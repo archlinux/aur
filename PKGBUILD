@@ -19,7 +19,7 @@ depends=('libxml2' 'gnutls' 'libproxy' 'vpnc' 'krb5' 'lz4' 'pcsclite'
 makedepends=('git' 'intltool' 'python')
 checkdepends=('python-flask')
 optdepends=('python: tncc-wrapper')
-provides=("openconnect=${pkgver}" 'libopenconnect.so')
+provides=("openconnect=${pkgver%.r*}" 'libopenconnect.so')
 conflicts=('openconnect')
 options=('!emptydirs')
 _commithash=589560612d41001d5cdc0585c921a4f4d42249b4

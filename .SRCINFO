@@ -35,7 +35,7 @@ pkgbase = openconnect-git
 	depends = libgssapi_krb5.so
 	depends = libpcsclite.so
 	optdepends = python: tncc-wrapper
-	provides = openconnect=9.12.r221.g5895606
+	provides = openconnect=9.12
 	provides = libopenconnect.so
 	conflicts = openconnect
 	options = !emptydirs
