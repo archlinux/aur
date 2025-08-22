@@ -4,16 +4,15 @@ _avcodec=62
 _chromium=138.0.7204.233
 _chrff=$(curl -sL https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${_chromium}/DEPS?format=TEXT | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgver=8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Add codecs to Chromium M138+ (libavcodec ${_avcodec})"
 arch=('x86_64')
 url=https://ffmpeg.org/
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
-_commit=bc88c1d62e4b8f585a01e38044c9671836ae4ab5
 install=chromium-ffmpeg.install
 source=(
-$install chromium-ffmpeg.hook https://github.com/FFmpeg/FFmpeg/archive/${_commit}.zip
+$install ${pkgname}.hook ${url}releases/ffmpeg-${pkgver}.tar.xz
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
@@ -23,7 +22,7 @@ https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1
 
 sha256sums=('90549fe900b87703b86fba8fa5dead8082da9f1c5fcbd2be2e9c39f4879b27ce'
             '2ba9ace9abe508bcc20c1b565d420a30358b4e9d57a764b6e9ef45bfa5878cec'
-            '2ab95fbef6f9e2c02a2cc6397a799546862e42d6eb1f5101dcccfd6e4b892ff3'
+            'b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
@@ -42,7 +41,7 @@ prepare() {
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   echo -e "{\nglobal:\n$(sed 's/$/;/' sigs.txt)\nlocal:\n*;\n};" > export.map
   
-  cd FFmpeg-$_commit
+  cd ffmpeg-$pkgver
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   # Chromium patches
@@ -65,7 +64,7 @@ prepare() {
 }
 
 build() {
-  cd FFmpeg-$_commit
+  cd ffmpeg-$pkgver
   # ${_url}/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # BUILD.gn
   ./configure \
