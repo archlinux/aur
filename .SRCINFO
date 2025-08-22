@@ -1,0 +1,17 @@
+pkgbase = wl-clicker-git
+	pkgdesc = A simple and insanely fast autoclicker for Wayland (git version)
+	pkgver = 0.3.1.r13.gf0241c3
+	pkgrel = 1
+	url = https://github.com/phonetic112/wl-clicker
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = wayland-protocols
+	makedepends = wayland
+	depends = wayland
+	depends = linux-api-headers
+	source = git+https://github.com/phonetic112/wl-clicker.git
+	sha256sums = SKIP
+
+pkgname = wl-clicker-git
