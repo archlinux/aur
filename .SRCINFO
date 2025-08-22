@@ -1,6 +1,6 @@
 pkgbase = make-it-rain
 	pkgdesc = Make it rain like it's 1999
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/make-it-rain
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = make-it-rain
 	makedepends = rust
 	makedepends = cargo
 	options = !debug
-	source = make-it-rain-1.1.1.tar.gz::https://github.com/saltnpepper97/make-it-rain/archive/v1.1.1.tar.gz
-	sha256sums = e913630685f2985a059cc3abc282321297e2d36a3527a9507c67de83acc6c35b
+	source = make-it-rain-1.2.0.tar.gz::https://github.com/saltnpepper97/make-it-rain/archive/v1.2.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = make-it-rain
