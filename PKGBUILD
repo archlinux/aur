@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('16d87a8419df63d8d7368b4bdb7f774320f136f10f667cb657ed63f12d9d7595')
+sha256sums=('412fbd43d673487fd87f47663b1b9ffd3f84d292cc0e37b07132e4678bd1ba35')
 
 build() {
     cd "$pkgname-$pkgver"
