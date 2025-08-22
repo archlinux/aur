@@ -1,6 +1,6 @@
 pkgbase = plasma-remotecontrollers-git
 	pkgdesc = Translate various input device events into keyboard and pointer events
-	pkgver = r6.100c819
+	pkgver = r7.18c1124
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-bigscreen/plasma-remotecontrollers
 	arch = x86_64
