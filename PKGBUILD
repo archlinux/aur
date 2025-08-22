@@ -2,9 +2,9 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.5.5
+pkgver=1.5.7
 _electron=electron37
-pkgrel=2
+pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('075427b9dcd90e35a2b5a97092b078f9d733842b3b0a35fd29f0e5fdeeb04088'
+sha256sums=('4f1f128948db1a39aaab9c50fa1ad90263fb29762efffff9c591a3d9448ed4ae'
             '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
