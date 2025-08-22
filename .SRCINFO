@@ -1,0 +1,13 @@
+pkgbase = tezaurs-tui
+	pkgdesc = Browse Latvian thesaurus (tezaurs.lv) in the terminal
+	pkgver = f9d8a9e
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = go
+	depends = fzf
+	source = https://github.com/deimoss123/tezaurs-tui/tarball/main
+	sha256sums = 414f1435356f3729147c42c7ce45e4fbb0bd9b4f5364cc087c29f0eb7fc19b9e
+
+pkgname = tezaurs-tui
