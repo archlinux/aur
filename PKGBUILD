@@ -1,7 +1,7 @@
 # Maintainer: Jozef Gaal <preklady@mayday.sk>
 pkgname=orphycleaner
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="OrphyCleaner is a lightweight GUI tool for Arch-based Linux that scans your home directory for orphaned or unused app folders."
 arch=('x86_64')
 url="https://github.com/dodog/orphycleaner"
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('python' 'tk')
 optdepends=('glib2: provides gio for moving deleted folders to Trash')
 source=("https://github.com/dodog/orphycleaner/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c62df90ab084342cd6b67d3709cc21b56e5aea6bdebfc0d3305d82f2280b9cc')
+sha256sums=('e1da934f50c62a85587dbe124eb46b8f77c3c338f487000134d224614ff5ebe2')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}" || return
