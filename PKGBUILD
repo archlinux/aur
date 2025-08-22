@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tidydr
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Unify Dimensionality Reduction Results"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-summarizedexperiment
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8cf7108a8128408b487e096ed4babbda')
-b2sums=('12ebe14aa38f46d60bad6d904bebca163310a5debfcc4cb7cc602c90ebcda8cf1d4f29e05c2d2a70a0e7328ce18d4f665a1e6c902a1299f04b77691f3544751e')
+md5sums=('e8ed646669fb6a8ac418f9273844df05')
+b2sums=('608f96e8a573b850c554cd4715b82d1564ccc1685aa8c4e82a19ce30e4ffff54a5bec141d28796135fd4cfcc08e02b8b90e314be2d0d11fa43ab912db68de64c')
 
 build() {
   mkdir build
