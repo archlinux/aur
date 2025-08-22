@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=ty
 pkgver=0.0.1_alpha.19
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast Python type checker and language server, written in Rust."
 arch=("x86_64")
 url="https://github.com/astral-sh/ty"
@@ -37,4 +37,9 @@ package() {
 
   install -d -m 0755 "${pkgdir}/usr/share/doc/${pkgname}"
   cp -r "${srcdir}/${pkgname}-${pkgver}/docs/"* "${pkgdir}/usr/share/doc/${pkgname}/"
+
+  "${pkgdir}/usr/bin/ty" generate-shell-completion bash | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
+  "${pkgdir}/usr/bin/ty" generate-shell-completion elvish | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/elvish/lib/${pkgname}.elv"
+  "${pkgdir}/usr/bin/ty" generate-shell-completion fish | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  "${pkgdir}/usr/bin/ty" generate-shell-completion zsh | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
