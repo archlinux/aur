@@ -2,7 +2,7 @@
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 depends=('pam')
 makedepends=()
 pkgdesc="A fully colorful customizable TUI display manager made in C. (build latest tag)"
