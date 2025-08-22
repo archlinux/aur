@@ -1,4 +1,6 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: astehlik <alex[at]stehlik-online[dot]de>
+# Contributor: Sven Greiner <sven@sammyshp.de>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
