@@ -1,0 +1,22 @@
+pkgbase = gollama-bin
+	pkgdesc = Go manage your Ollama models
+	pkgver = 1.36.1
+	pkgrel = 1
+	url = https://github.com/sammcj/gollama
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = ollama
+	provides = gollama
+	conflicts = gollama
+	source = LICENSE-1.36.1::https://raw.githubusercontent.com/sammcj/gollama/v1.36.1/LICENSE
+	source = README-1.36.1.md::https://raw.githubusercontent.com/sammcj/gollama/v1.36.1/README.md
+	sha256sums = 2624502660e8f7965bb276ea8c83586e6302b4e32f2b6d4d5249953e35caf610
+	sha256sums = 80da23a8c427378e85cf46942e58d1951979a17d0f8b0aee428716a09c411f12
+	source_x86_64 = gollama-1.36.1-x86_64.zip::https://github.com/sammcj/gollama/releases/download/v1.36.1/gollama-linux-amd64.zip
+	sha256sums_x86_64 = 4a80520812f829a742aa644ee624184bc5b7baad1619dde011909dc8fa88ab82
+	source_aarch64 = gollama-1.36.1-aarch64.zip::https://github.com/sammcj/gollama/releases/download/v1.36.1/gollama-linux-arm64.zip
+	sha256sums_aarch64 = b58c4be92d75b29972f1e27b9c7bfaf3fda8499d2c09c4b5bbc10e2b129a9091
+
+pkgname = gollama-bin
