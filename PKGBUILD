@@ -4,7 +4,7 @@ _appprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname=open-webui
-pkgver=0.6.22
+pkgver=0.6.23
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
@@ -14,12 +14,12 @@ depends=('python312')
 makedepends=('npm' 'nvm' 'git')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui-no-venv')
-source=("git+${url}#commit=438e5d966f0f64f9ea3feab22724a5bd96a4127b"
+source=("git+${url}#commit=407dc9a401fc2382df06d776dbd8ba95dffda38a"
     "open-webui.service"
     "open-webui.conf")
 
 install="${pkgname}.install"
-b2sums=('55c35714587359ab7907515ed87b2f509cbf4a3b77c43fcc213ab046ad441f3f8384ca1bad80fe7e643fe04a71e75115fd2e20199d9e0731e86ea1aef25d103b'
+b2sums=('315e5feff24ce543217e609e1f779866cc0924b638c54fdbc5f0e729e69e8ed95cf797a8f9c327d001d20733acf2ba5e25a64a0635868851c39375158e73216d'
         '1438948b9e31ccbcfe7eab5965de71b0fb23bc205579c6668cd91f805a17d5a0b2379afeac3148fb0701125e210eebb81f4bdd5496bc9b0d080766ecf71d32bf'
         '1538695adbe92507ef8c319f4aba22bd9c8843ecaebfaf8860485316564708809c92becc0d0634467b068e8d6b17992c2f210f1bdb344d72b0e01db243ac24ca')
 options=(!strip !debug)
