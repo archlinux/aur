@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.1.1.r1.g20749cf0
+pkgver=1.1.4.r1.g4857b868
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -11,8 +11,7 @@ depends=(
     'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
-    'vulkan-icd-loader'
-    'xz')
+    'vulkan-icd-loader')
 makedepends=(
     'alsa-lib'
     'cargo'
