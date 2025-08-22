@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with OPENBlas CPU optimizations)
 	pkgver = 1.7.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
 	arch = aarch64
@@ -12,6 +12,8 @@ pkgbase = whisper.cpp
 	depends = ggml-git
 	depends = sdl2-compat
 	source = whisper.cpp-1.7.6.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.7.6.tar.gz
+	source = disable-talk-llama.patch
 	sha256sums = 166140e9a6d8a36f787a2bd77f8f44dd64874f12dd8359ff7c1f4f9acb86202e
+	sha256sums = 52776f8b0c4a1c117d4b12aaca2bd62ec0094aaa3bac224365b007a9efd0b585
 
 pkgname = whisper.cpp
