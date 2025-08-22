@@ -1,0 +1,150 @@
+.\" Man page for nexuslua
+.TH NEXUSLUA 1 "2025-08-22" "v0.9.2" "nexuslua User Manual"
+
+.SH NAME
+nexuslua \- A multi-threaded Lua interpreter with an agent-based concurrency model.
+
+.SH SYNOPSIS
+.B nexuslua
+[\fIoptions\fR] [\fIscript.lua\fR]
+.br
+.B nexuslua
+[\fIoptions\fR] \-e "\fIcode\fR"
+.br
+.B nexuslua
+help [\fIplugin_name\fR] [\fImessage_name\fR]
+.br
+.B nexuslua
+run "\fIplugin_name\fR" "\fImessage_name\fR" [\fIkey value ...\fR]
+
+.SH DESCRIPTION
+.B nexuslua
+is a command-line interpreter that extends the Lua programming language with a powerful concurrency model built on agents and asynchronous messaging. While standard Lua uses coroutines for cooperative multitasking, nexuslua leverages real OS-level threads, allowing you to parallelize CPU-bound tasks and design complex, decoupled applications with ease.
+
+It is the runtime executable for the nexuslua library and serves as a reference implementation and command-line tool for running nexuslua scripts and plugins.
+
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Print help and command line options.
+.TP
+.B \-v, \-\-version
+Print version and license information.
+.TP
+.B \-e \fIcode\fR
+Execute a string of Lua code directly from the command line.
+
+.SH COMMANDS
+.TP
+.B help
+Lists all available plugins and their messages. If a plugin name and optionally a message name are provided, it shows detailed help for that specific item.
+.TP
+.B run
+Executes a plugin message. You can chain multiple \fBrun\fR commands to create complex workflows directly from the terminal. Each command must be preceded by the \fBrun\fR keyword.
+
+.SH EXAMPLES
+.SS Running a script
+.B nexuslua
+demo.lua
+
+.SS Executing a simple string
+.B nexuslua
+-e "print('Hello from nexuslua')"
+
+.SS Parallel Prime Number Calculation
+The following script demonstrates how to use an agent to parallelize a CPU-bound task. The \fBnumbers\fR agent runs in its own OS thread.
+.nf
+\fI-- demo_parallel.lua\fR
+local nRequests, nCheckedPrimes, count = 0, 0, 0
+local startTime = time()
+
+function CountPrime(p)
+    nCheckedPrimes = nCheckedPrimes + 1
+    if p.isPrime then count = count + 1 end
+    if nCheckedPrimes == nRequests then
+        local endTime = time()
+        print("Checked", nCheckedPrimes, "numbers in", (endTime - startTime) / 1.0e8, "seconds")
+    end
+end
+
+function RequestPrimes(p)
+    local maxThreads = cores()
+    for i = p.n1, p.n2, 2 do
+        send("numbers", "IsPrime", {
+            number = i,
+            threads = maxThreads,
+            reply_to = { agent = "main", message = "CountPrime" }
+        })
+        nRequests = nRequests + 1
+    end
+end
+
+if not isreplicated() then
+    local agentCode = [==[
+        function IsPrime(parameters)
+            local number = parameters.number
+            local q = math.sqrt(number)
+            local found = true
+            for k = 3, q, 2 do
+                if number % k == 0 then
+                    found = false
+                    break
+                end
+            end
+            return { isPrime = found }
+        end
+    ]==]
+
+    addagent("numbers", agentCode, { "IsPrime" })
+    addmessage("CountPrime")
+    addmessage("RequestPrimes")
+    send("main", "RequestPrimes", { n1 = 10000000001, n2 = 10000100001 })
+end
+.fi
+
+.SS Chaining Plugin Commands
+This example loads an image, inverts its colors, and saves it to a new file using the "acrion image tools" plugin.
+.nf
+.B nexuslua \\
+     run "acrion image tools" CallOpenImageFile path /path/to/input.jpg \\
+     run "acrion image tools" CallInvertImage \\
+     run "acrion image tools" CallSaveImageFile path /path/to/output.jpg
+.fi
+
+.SH BUILT-IN FUNCTIONS
+.B nexuslua
+provides a rich set of built-in, cross-platform utility functions, including:
+.TP
+.B import()
+Load functions from shared libraries (*.so, *.dll).
+.TP
+.B zip() / unzip()
+Create and extract ZIP archives.
+.TP
+.B userdatadir() / homedir()
+Get paths to standard user directories.
+.TP
+.B env()
+Read environment variables.
+.TP
+.B log()
+Write a message to the nexuslua.log file.
+.TP
+.B time()
+Return a high-resolution timestamp.
+.TP
+.B cores()
+Detect the number of available hardware threads.
+
+.SH FILES
+.TP
+.I ~/.local/share/nexuslua/nexuslua.log
+The default log file location on Linux systems.
+
+.SH AUTHOR
+Written by acrion innovations GmbH.
+
+.SH SEE ALSO
+Project website: https://nexuslua.org
+.br
+Source code: https://github.com/acrion/nexuslua

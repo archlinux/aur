@@ -1,0 +1,19 @@
+pkgbase = nexuslua
+	pkgdesc = True, hardware-level multithreading for Lua through an asynchronous agent model.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/acrion/nexuslua
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	makedepends = lua
+	depends = openssl
+	depends = zlib
+	source = git+https://github.com/acrion/nexuslua.git#tag=v0.9.2
+	source = nexuslua.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nexuslua
