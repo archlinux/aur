@@ -1,0 +1,17 @@
+pkgbase = python-dm-streamvalve
+	pkgdesc = Reconstruct a text string from an Iterable, with optional stopping criteria
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/dm-streamvalve/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-dynamic-versioning
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/dm_streamvalve/dm_streamvalve-0.1.1.tar.gz
+	sha256sums = ca7c6c5cc81d5486cd47923dbfc3179c6d1d756c9e3f40031a9ee1a326521a5b
+
+pkgname = python-dm-streamvalve
