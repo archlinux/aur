@@ -1,4 +1,4 @@
-
+# Maintainer Tatsuki Tanaka crylaughttt@gmail.com
 pkgname=wl-clicker-git
 pkgver=0.3.1.r13.gf0241c3 
 pkgrel=1
