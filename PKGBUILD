@@ -5,7 +5,7 @@ pkgname="xenia-canary-bin"
 _binary="xenia_canary"
 # pkgver is based on the git hash of the latest release
 pkgver=$( echo $(curl -s "https://api.github.com/repos/xenia-canary/xenia-canary-releases/releases/latest" | grep tag_name) | cut -b 14-20 )
-pkgrel=1
+pkgrel=2
 pkgdesc="Xenia Canary is an experimental fork of the Xenia emulator."
 arch=('x86_64')
 url="https://github.com/xenia-canary"
@@ -52,7 +52,7 @@ prepare() {
 }
 
 package() {
-  install -Dm755 xenia_canary "${pkgdir}/usr/bin/xenia_canary"
+  install -Dm755 build/bin/Linux/Release/xenia_canary "${pkgdir}/usr/bin/xenia_canary"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 16.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/xenia-canary.png"
   install -Dm644 32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/xenia-canary.png"
