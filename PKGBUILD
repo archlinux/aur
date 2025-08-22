@@ -1,8 +1,8 @@
 pkgname=mcp-devtools
 
-: "${_fragment:=tag=v0.29.2}"
+: "${_fragment:=tag=v0.30.0}"
 
-pkgver=0.29.2
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='A modular MCP server that provides commonly used developer tools for AI coding agents'
 
@@ -15,7 +15,7 @@ makedepends=(git go)
 source=(
 	"git+$url.git#$_fragment"
 )
-sha256sums=('b03ec25b8ace0da77f129d5effc8af6c60e68508b434272b9849c5e94e9749e6')
+sha256sums=('1fa958dd495cae2843b77fe5a49fab2c595ab9338ae6ccf327c4570eab23d774')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
@@ -47,6 +47,7 @@ build() {
 			-X main.Commit=$(git rev-parse --short HEAD)
 			-X main.BuildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 		"
+		# -tags sbom_vuln_tools
 	)
 
 	go build "${BUILD_OPTS[@]}"
