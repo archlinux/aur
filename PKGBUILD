@@ -7,7 +7,7 @@ pkgver=0.0.0.r0.g0000000
 pkgrel=1
 pkgdesc="A MAL compliant simulator."
 arch=('any')
-url=https://github.com/mal-lang/"${_name}"
+url=https://github.com/mal-lang/"${_pkgname}"
 license=('Apache-2.0')
 depends=(
     'python>=3.10'
@@ -34,16 +34,16 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
 }
 
 build() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install license if it exists
@@ -60,5 +60,5 @@ package() {
 }
 
 check() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
 }
