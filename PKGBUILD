@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.14.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
@@ -36,8 +36,8 @@ build() {
         -DOQS_ALGS_ENABLED=All \
         -DOQS_BUILD_ONLY_LIB=OFF \
         -DOQS_DIST_BUILD=ON \
-        -DOQS_USE_OPENSSL=OFF \
-        -DOQS_DLOPEN_OPENSSL=ON \
+        -DOQS_USE_OPENSSL=ON \
+        -DOQS_DLOPEN_OPENSSL=OFF \
         -DOQS_USE_AES_OPENSSL=ON \
         -DOQS_USE_SHA2_OPENSSL=ON \
         -DOQS_USE_SHA3_OPENSSL=ON \
