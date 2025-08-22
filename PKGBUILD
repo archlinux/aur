@@ -5,7 +5,7 @@
 _pkgname=nut
 pkgname=nut-monitor
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI to manage devices connected a NUT server'
 arch=(any)
 url=http://www.networkupstools.org/
@@ -15,11 +15,12 @@ depends=(
   hicolor-icon-theme
   nut
   python
-  python-pyqt5
+  python-pyqt6
 )
 makedepends=(
   desktop-file-utils
   git
+  jq
 )
 source=(${_pkgname}::git+${_ghurl}.git#tag=v${pkgver})
 sha256sums=('6276aa5ba1a2a7ad3831cac7db090a7bbe9bbbc98c5e8723d57e25f09240e254')
@@ -31,7 +32,7 @@ prepare() {
 
   sed \
     's|os.path.dirname( sys.argv\[0\] )|"/usr/share/nut-monitor"|' \
-    -i scripts/python/app/NUT-Monitor-py3qt5.in
+    -i scripts/python/app/NUT-Monitor-py3qt6.in
 }
 
 build() {
@@ -62,7 +63,7 @@ package() {
   cd ${_pkgname}/scripts/python/app
 
   install -Dm755 -t "${pkgdir}"/usr/bin \
-    NUT-Monitor-py3qt5
+    NUT-Monitor-py3qt6
 
   install -Dm644 -t "${pkgdir}"/usr/share/appdata \
     nut-monitor.appdata.xml
@@ -84,9 +85,9 @@ package() {
 
   desktop-file-install \
     --dir="${pkgdir}"/usr/share/applications \
-    nut-monitor-py3qt5.desktop
+    nut-monitor-py3qt6.desktop
 
-  ln -sr "${pkgdir}"/usr/bin/NUT-Monitor-py3qt5 \
+  ln -sr "${pkgdir}"/usr/bin/NUT-Monitor-py3qt6 \
     "${pkgdir}"/usr/bin/${pkgname}
 }
 
