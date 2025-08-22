@@ -1,7 +1,7 @@
 # Maintainer: Jørgen Stråbø <aur@jorgen-10.no>
 pkgname='freeshow-git'
-pkgver='1.4.3.r0.ga360800'
-pkgrel='4'
+pkgver='1.4.8'
+pkgrel='1'
 pkgdesc="A software with a friendly interface and powerful features for making slideshows"
 arch=('x86_64')
 provides=('freeshow')
