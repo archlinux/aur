@@ -13,12 +13,20 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/bbc/audiowaveform/archive/$
 sha256sums=('e4de669dbf2be56f6cad99a877a46541d0ad6be89c894bb1d1e866b0dd8e8841')
 
 build() {
-	cd "$pkgname-$pkgver"
-	cmake -DENABLE_TESTS=0 -DCMAKE_INSTALL_PREFIX=/usr .
-	make
+    cd "$pkgname-$pkgver"
+    cmake \
+        -B build \
+        -S . \
+        -DENABLE_TESTS=0 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_C_FLAGS="$CFLAGS" \
+        -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+        -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS"
+    cd build
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	DESTDIR="$pkgdir" make install
+    cd "$pkgname-$pkgver/build"
+    DESTDIR="$pkgdir" make install
 }
