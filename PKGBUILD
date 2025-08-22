@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz>
 _pkgname=emmylua-ls
 pkgname="${_pkgname}-bin"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Lua Language Server based on EmmyLua-Analyzer-Rust"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,9 +13,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${pkgver}/emmylua_ls-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${pkgver}/emmylua_ls-linux-aarch64-glibc.2.17.tar.gz")
 source_riscv64=("${pkgname}-${pkgver}-riscv64.tar.gz::https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/${pkgver}/emmylua_ls-linux-riscv64.tar.gz")
-sha256sums_x86_64=('25c3710882d52f34f1613461cf8c06d45b2275867215c2f5153f182ccf3c4c95')
-sha256sums_aarch64=('16d6ec2a194e19bb62acff90414052e51189627cbdb15b6957f608da8e0113ee')
-sha256sums_riscv64=('64b03b9a40b9ef287fd350854fee96b0fe707fb374124550bd2e482f1c5f4d16')
+sha256sums_x86_64=('3f013273a117f3441abaf9f495d38fb1baa7a04b2366b1af2722026c85097b91')
+sha256sums_aarch64=('84076b2bdecf5dc139900d3d6f0bb7a0545cd2b1abe8fa459a74d210bc854125')
+sha256sums_riscv64=('c60ad6c59c64783209c2672c0521cc0bab5bd26d8503ae82cc08216e1fb1a5c4')
 
 package() {
   install -Dm755 "${srcdir}/emmylua_ls" "${pkgdir}/usr/bin/emmylua_ls"
