@@ -1,6 +1,6 @@
 pkgbase = r-ggfun
 	pkgdesc = Miscellaneous Functions for 'ggplot2'
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggfun
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = r-ggfun
 	depends = r-dplyr
 	depends = r-ggplot2
 	depends = r-rlang
+	depends = r-scales
 	depends = r-yulab.utils
 	optdepends = r-ggnewscale
 	optdepends = r-ggplotify
@@ -16,8 +17,8 @@ pkgbase = r-ggfun
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/ggfun_0.1.9.tar.gz
-	md5sums = e0ec2a01a77eb0cb764d7e97c0917a06
-	b2sums = 32876b56b0a4df2c46ec632ab4fc6f527ad7e04ac007fd4882b9c25f4dbb7a8ed289c5f816fca46b8918190a71a97b64287517c6d759898dc070309e2948d9f3
+	source = https://cran.r-project.org/src/contrib/ggfun_0.2.0.tar.gz
+	md5sums = 9bc035d0afa723a1a0dff35dd54a060b
+	b2sums = 6e59dc27344834e34d3bd12ba45562c2c4987c7964a52d72a5f78e0197c563619e1156d50c31a23707a328b9843f5a518da91c0ad1d81ae9cdc0c4484411ff39
 
 pkgname = r-ggfun
