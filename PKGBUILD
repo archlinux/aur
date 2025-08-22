@@ -20,8 +20,10 @@ replaces=(libretro-redream)
 _commit=bf4d812daf326c56e99208a4c30acae1475fd701
 # git repo is gone
 #source=(libretro-retrodream::git+https://github.com/libretro/retrodream.git#commit=${_commit})
-source=(https://sources.archlinux.org/other/packages/libretro/libretro-retrodream-$pkgver.tar.gz)
-sha256sums=('c73e773d999e4c5c44792eea09a88d0a3741c3bcd3f16b37070bcc0b5b49d56e')
+source=(https://sources.archlinux.org/other/packages/libretro/libretro-retrodream-$pkgver.tar.gz
+        libretro-retrodream-1104-patches.patch)
+sha256sums=('c73e773d999e4c5c44792eea09a88d0a3741c3bcd3f16b37070bcc0b5b49d56e'
+            '437fa509c25cea0f0550707cbb217eb4ff28663ffe33ce9fb90012b5a57fd1dd')
 
 pkgver() {
   cd libretro-retrodream
@@ -33,6 +35,7 @@ prepare() {
   git clone libretro-retrodream src
   cd src
   git checkout $_commit
+  patch -Np1 < "${srcdir}/libretro-retrodream-1104-patches.patch"
 }
 
 build() {

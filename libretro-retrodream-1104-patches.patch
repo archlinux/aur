@@ -1,0 +1,68 @@
+diff -rauN libretro-retrodream-bf4d81/src/core/filesystem.c libretro-retrodream-bf4d81-patches/src/core/filesystem.c
+--- libretro-retrodream-bf4d81/src/core/filesystem.c	2025-08-22 11:28:54.275036045 +0200
++++ libretro-retrodream-bf4d81-patches/src/core/filesystem.c	2025-08-22 11:29:04.839989543 +0200
+@@ -1,6 +1,7 @@
+ #include <errno.h>
+ #include "core/filesystem.h"
+ #include "core/core.h"
++#include "file/file_path.h"
+ 
+ static char appdir[PATH_MAX];
+ 
+diff -rauN libretro-retrodream-bf4d81/src/core/md5.h libretro-retrodream-bf4d81-patches/src/core/md5.h
+--- libretro-retrodream-bf4d81/src/core/md5.h	2025-08-22 11:21:04.380569281 +0200
++++ libretro-retrodream-bf4d81-patches/src/core/md5.h	2025-08-22 13:57:42.231717661 +0200
+@@ -42,4 +42,8 @@
+ extern void MD5_Update(MD5_CTX *ctx, void *data, unsigned long size);
+ extern void MD5_Final(char *result, MD5_CTX *ctx);
+ 
++void _MD5_Init(MD5_CTX *ctx);
++void _MD5_Update(MD5_CTX *ctx, void *data, unsigned long size);
++void _MD5_Final(char *result, MD5_CTX *ctx);
++
+ #endif
+diff -rauN libretro-retrodream-bf4d81/src/core/thread_posix.c libretro-retrodream-bf4d81-patches/src/core/thread_posix.c
+--- libretro-retrodream-bf4d81/src/core/thread_posix.c	2025-08-22 11:21:04.380904226 +0200
++++ libretro-retrodream-bf4d81-patches/src/core/thread_posix.c	2025-08-22 14:06:25.950605983 +0200
+@@ -110,7 +110,7 @@
+ void cond_signal(cond_t cond) {
+   pthread_cond_t *pcond = (pthread_cond_t *)cond;
+ 
+-  int res = pthread_cond_signal(cond);
++  int res = pthread_cond_signal(pcond);
+   CHECK_EQ(res, 0);
+ }
+ 
+diff -rauN libretro-retrodream-bf4d81/src/file/trace.c libretro-retrodream-bf4d81-patches/src/file/trace.c
+--- libretro-retrodream-bf4d81/src/file/trace.c	2025-08-22 11:21:04.381904228 +0200
++++ libretro-retrodream-bf4d81-patches/src/file/trace.c	2025-08-22 11:23:15.020144002 +0200
+@@ -1,5 +1,6 @@
+ #include <limits.h>
+ #include "file/trace.h"
++#include "file/file_path.h"
+ #include "core/core.h"
+ #include "core/filesystem.h"
+ #include "guest/pvr/tr.h"
+diff -rauN libretro-retrodream-bf4d81/src/jit/jit.c libretro-retrodream-bf4d81-patches/src/jit/jit.c
+--- libretro-retrodream-bf4d81/src/jit/jit.c	2025-08-22 11:21:04.393776636 +0200
++++ libretro-retrodream-bf4d81-patches/src/jit/jit.c	2025-08-22 13:58:53.801841925 +0200
+@@ -12,6 +12,7 @@
+ #include "jit/passes/load_store_elimination_pass.h"
+ #include "jit/passes/register_allocation_pass.h"
+ #include "options.h"
++#include "file/file_path.h"
+ 
+ #if PLATFORM_DARWIN || PLATFORM_LINUX
+ #include <unistd.h>
+diff -rauN libretro-retrodream-bf4d81/src/libretro-common/include/retro_miscellaneous.h libretro-retrodream-bf4d81-patches/src/libretro-common/include/retro_miscellaneous.h
+--- libretro-retrodream-bf4d81/src/libretro-common/include/retro_miscellaneous.h	2025-08-22 11:21:04.403827210 +0200
++++ libretro-retrodream-bf4d81-patches/src/libretro-common/include/retro_miscellaneous.h	2025-08-22 14:01:31.612115224 +0200
+@@ -92,7 +92,7 @@
+ #define MIN(a, b) ((a) < (b) ? (a) : (b))
+ #endif
+ 
+-#define ARRAY_SIZE(a)              (sizeof(a) / sizeof((a)[0]))
++//#define ARRAY_SIZE(a)              (sizeof(a) / sizeof((a)[0]))
+ 
+ #define BITS_GET_ELEM(a, i)        ((a).data[i])
+ #define BITS_GET_ELEM_PTR(a, i)    ((a)->data[i])

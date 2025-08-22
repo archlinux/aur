@@ -12,6 +12,8 @@ pkgbase = libretro-retrodream
 	depends = libretro-core-info
 	replaces = libretro-redream
 	source = https://sources.archlinux.org/other/packages/libretro/libretro-retrodream-1104.tar.gz
+	source = libretro-retrodream-1104-patches.patch
 	sha256sums = c73e773d999e4c5c44792eea09a88d0a3741c3bcd3f16b37070bcc0b5b49d56e
+	sha256sums = 437fa509c25cea0f0550707cbb217eb4ff28663ffe33ce9fb90012b5a57fd1dd
 
 pkgname = libretro-retrodream
