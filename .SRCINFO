@@ -1,13 +1,13 @@
 pkgbase = awesome-omarchy-tui-bin
 	pkgdesc = A beautiful terminal UI for browsing the awesome-omarchy repository with search, navigation, and GitHub integration (binary package)
-	pkgver = 0.3.10
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/aorumbayev/awesome-omarchy-tui
 	arch = x86_64
 	license = MIT
 	provides = awesome-omarchy-tui
 	conflicts = awesome-omarchy-tui
-	source_x86_64 = awesome-omarchy-tui-0.3.10-x86_64.tar.gz::https://github.com/aorumbayev/awesome-omarchy-tui/releases/download/v0.3.10/awsomarchy-aur-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3c54c8d7765f7879298824b167eb469417d8c8de72f343ee8b26aed511d838b3
+	source_x86_64 = awesome-omarchy-tui-0.4.0-x86_64.tar.gz::https://github.com/aorumbayev/awesome-omarchy-tui/releases/download/v0.4.0/awsomarchy-aur-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f6bfc5f9dd6024338e7798e0c7216d3eaf75ff4b2192d5f7e1a74f2cc19f8631
 
 pkgname = awesome-omarchy-tui-bin
