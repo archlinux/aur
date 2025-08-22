@@ -1,19 +1,20 @@
 pkgbase = tdf
 	pkgdesc = A TUI-based PDF viewer
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/itsjunetime/tdf
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo-nightly
 	makedepends = clang
 	makedepends = python
+	makedepends = unzip
 	depends = gcc-libs
 	depends = glib2
 	depends = mupdf
 	depends = fontconfig
-	source = tdf-0.3.0.tar.gz::https://github.com/itsjunetime/tdf/archive/v0.3.0.tar.gz
-	sha256sums = 97dda80e0725a5b93c54704cf2e00798a0c8c85eb67bf9779a83e162c48545cb
+	source = tdf-0.4.2.tar.gz::https://github.com/itsjunetime/tdf/archive/v0.4.2.tar.gz
+	sha256sums = 9f71db870eba13164200448c3700d638275127f7636c6fd00c40d24382afad33
 
 pkgname = tdf
 	depends = gcc-libs
