@@ -1,6 +1,6 @@
 pkgbase = rime-sbxlm
 	pkgdesc = 声笔系列码配置
-	pkgver = 20250821
+	pkgver = 20250822
 	pkgrel = 1
 	url = https://github.com/sbsrf/home
 	install = rime-sbxlm.install
@@ -14,13 +14,13 @@ pkgbase = rime-sbxlm
 	replaces = rime-sbxlm-sbkm
 	replaces = rime-sbxlm-sbzr
 	replaces = rime-sbxlm-sbxh
-	noextract = rime-sbxlm-20250821.zip
-	noextract = rime-sbxlm-20250821-src.zip
+	noextract = rime-sbxlm-20250822.zip
+	noextract = rime-sbxlm-20250822-src.zip
 	source = sbxlm-init
-	source = rime-sbxlm-20250821.zip::https://github.com/sbsrf/home/releases/download/20250821/sbsrf.zip
+	source = rime-sbxlm-20250822.zip::https://github.com/sbsrf/home/releases/download/20250822/sbsrf.zip
 	source = LICENSE::https://raw.githubusercontent.com/sbsrf/sbsrf/refs/heads/main/LICENSE
 	sha256sums = ddd93d18c5ecd40df142666df06d8588d4c345d662c38e31ea22402c3308549f
-	sha256sums = 213688b5b374a0383010a4224f6a97bf681258171b4d046ec12138df7c6d980d
+	sha256sums = a5b2eea2a89593c55e3db4fd150531e3184cb8074bc1a1f98790d04b6ccd267f
 	sha256sums = e8bba20f18930bbae7c6635befa38b75a86d92da72a8afe3712de5966ef57fee
 
 pkgname = rime-sbxlm
