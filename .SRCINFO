@@ -1,0 +1,18 @@
+pkgbase = rwe
+	pkgdesc = RWE (research with ease) - A desktop app for making deep dive research easier & fast
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Tech-with-anmol/RWE
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = bun-bin
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	source = rwe-0.2.0.tar.gz::https://github.com/Tech-with-anmol/RWE/archive/refs/tags/app-v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = rwe
