@@ -3,7 +3,6 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=openconnect-git
-conflicts=('openconnect')
 pkgver=9.12.r221.g5895606
 pkgrel=1
 epoch=1
@@ -21,6 +20,7 @@ makedepends=('git' 'intltool' 'python')
 checkdepends=('python-flask')
 optdepends=('python: tncc-wrapper')
 provides=("openconnect=${pkgver}" 'libopenconnect.so')
+conflicts=('openconnect')
 options=('!emptydirs')
 _commithash=589560612d41001d5cdc0585c921a4f4d42249b4
 source=("$pkgname::git+https://gitlab.com/openconnect/openconnect.git#commit=${_commithash}")
