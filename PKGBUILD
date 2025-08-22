@@ -28,6 +28,8 @@ prepare() {
 
 package() {
     install -dm0755 "$pkgdir/opt"
+    install -dm0755 "$pkgdir/usr/bin"
+    install -dm0755 "$pkgdir/usr/share/applications"
     cp -a cactus "$pkgdir/opt/$pkgname"
     cat > "$pkgdir/usr/bin/cactus-client"  << EOF
 #!/bin/bash
