@@ -1,7 +1,7 @@
 pkgbase = rofi-nerdy
 	pkgdesc = Nerd font icon selector plugin for rofi
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rolv-apneseth/rofi-nerdy
 	arch = x86_64
 	license = AGPL v3.0

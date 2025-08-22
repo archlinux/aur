@@ -2,7 +2,7 @@
 
 pkgname=rofi-nerdy
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Nerd font icon selector plugin for rofi'
 arch=('x86_64')
 url='https://github.com/rolv-apneseth/rofi-nerdy'
@@ -21,21 +21,21 @@ options=(!debug !lto)
 
 prepare()
 {
-    cd "$pkgname" || exit
+    cd "$pkgname-$pkgver" || exit
 
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build()
 {
-    cd "$pkgname" || exit
+    cd "$pkgname-$pkgver" || exit
 
     PKGDIR="$pkgdir" just build
 }
 
 package()
 {
-    cd "$pkgname" || exit
+    cd "$pkgname-$pkgver" || exit
 
     PKGDIR="$pkgdir" just install
 }
