@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network_Jack <Network_Jack@null.net>
 # Poached from Arch Strike: ArchStrike <team@archstrike.org>
 
 pkgname=rifiuti2
