@@ -10,6 +10,7 @@ pkgbase = notmuch-tools
 	makedepends = glib2-devel
 	makedepends = gmime3
 	makedepends = sqlite
+	makedepends = pandoc-cli
 	provides = notmuch-tools
 	conflicts = notmuch-tools
 	source = notmuch-tools::git+https://framagit.org/manu/notmuch-tools
