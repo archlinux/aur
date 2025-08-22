@@ -3,17 +3,19 @@
 _pkgname=zimtohrli
 pkgname=$_pkgname-git
 pkgver=0.2.1.r24.8976c53
-pkgrel=2
+pkgrel=3
 pkgdesc='A psychoacoustic perceptual metric for audio compression'
 arch=(x86_64)
 url=https://github.com/google/zimtohrli
 license=(Apache-2.0)
 depends=(
-  glfw
-  alsa-lib
-  flac
+  libogg
   libvorbis
+  flac
   opus
+  alsa-lib
+  glfw
+  libsoxr
   mpg123
 )
 makedepends=(
