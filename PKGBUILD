@@ -10,6 +10,8 @@ url='https://westerndigital.com/'
 license=('custom')
 arch=('x86_64' 'aarch64')
 makedepends=('libarchive')
+# Source file is covered with Cloudflare challenge
+# https://files.hddguru.com/index.php?action=downloadfile&filename=wdckit-3.1.1.0.zip&directory=Software/Western%20Digital&
 source=("https://s3.e2e4.ru/k0ste/pkgbuild/${pkgname}-${pkgver}.zip")
 sha256sums=('b19272b9227da9839e7265ce16409209a7245a54459c3e7357f5a6ce9e355380')
 
