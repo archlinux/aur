@@ -1,6 +1,6 @@
 pkgbase = 115-browser-bin
 	pkgdesc = 115 Browser / 115 浏览器
-	pkgver = 35.30.0
+	pkgver = 36.0.0
 	pkgrel = 1
 	url = https://115.com/product_browser
 	install = 115-browser-bin.install
@@ -17,7 +17,7 @@ pkgbase = 115-browser-bin
 	depends = zlib
 	provides = 115-browser
 	conflicts = 115-browser
-	noextract = 115-browser-bin-35.30.0.deb
+	noextract = 115-browser-bin-36.0.0.deb
 	options = !strip
 	options = !debug
 	source = https://115.com/privacy.html
@@ -26,7 +26,7 @@ pkgbase = 115-browser-bin
 	sha256sums = e65199037614ec40eae799f013d007a9252d1b870ec9406fffd7f0aaee3951f1
 	sha256sums = cfe25e4d5d8236b3b68089fbc4b56aaa7db1d0a560905f1faf004bc5e4534245
 	sha256sums = ce0e3cdf98637003986feb9abb198cf04135333116f44e1642ba438d344a6a2e
-	source_x86_64 = 115-browser-bin-35.30.0.deb::https://down.115.com/client/115pc/lin/115br_v35.30.0.deb
-	sha256sums_x86_64 = cf2a2b76e1f22e4605f79ff45ccc03eaa3e15fbc531efc0a98a98ef439bbc542
+	source_x86_64 = 115-browser-bin-36.0.0.deb::https://down.115.com/client/115pc/lin/115br_v36.0.0.deb
+	sha256sums_x86_64 = 139fb4e36d7f48f1e179317e5ad2bd8b12879e71d3c4ff99da26865661b4fc48
 
 pkgname = 115-browser-bin
