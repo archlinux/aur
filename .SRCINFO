@@ -1,7 +1,7 @@
 pkgbase = lidm-bin
 	pkgdesc = A fully colorful customizable TUI display manager made in C. (release binary)
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/javalsai/lidm
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = lidm-bin
 	arch = armv7h
 	arch = riscv64
 	license = GPL
-	depends = libpam.so=0
+	depends = libpam.so
 	provides = lidm
 	conflicts = lidm
 	source = lidm-default-theme-1.2.3.ini::https://raw.githubusercontent.com/javalsai/lidm/v1.2.3/themes/default.ini
