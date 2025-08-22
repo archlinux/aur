@@ -1,6 +1,6 @@
 pkgbase = brokefetch-mod
 	pkgdesc = A broken neofetch clone script 💀 (mod version with logos)
-	pkgver = 2025.08.16.rfcae890
+	pkgver = 2025.08.22.r94f471a
 	pkgrel = 1
 	url = https://github.com/Szerwigi1410/brokefetch
 	arch = any
