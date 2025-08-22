@@ -10,19 +10,19 @@ pkgname=('systemd-git'
          'systemd-tests-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=258.devel.r80631.a94520dc78c
+pkgver=258.rc3.r83398.46a688c5598
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
-makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
+makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libarchive' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
-             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile')
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers')
 conflicts=("mkinitcpio<38-1")
 options=('!strip')
 source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
@@ -41,6 +41,7 @@ source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         '30-systemd-daemon-reload-system.hook'
         '30-systemd-daemon-reload-user.hook'
         '30-systemd-hwdb.hook'
+        '30-systemd-restart-marked.hook'
         '30-systemd-sysctl.hook'
         '30-systemd-tmpfiles.hook'
         '30-systemd-udev-reload.hook'
@@ -58,6 +59,7 @@ sha512sums=('SKIP'
             'a436d3f5126c6c0d6b58c6865e7bd38dbfbfb7babe017eeecb5e9d162c21902cbf4e0a68cf3ac2f99815106f9fa003b075bd2b4eb5d16333fa913df6e2f3e32a'
             '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
             'a1661ab946c6cd7d3c6251a2a9fd68afe231db58ce33c92c42594aedb5629be8f299ba08a34713327b373a3badd1554a150343d8d3e5dfb102999c281bd49154'
+            'f6b154fdc612916d7788720cf703e34255b43ba2d19413de5f3f63f07508f4ce561ca138f987c2118c7128e1dfb01976b0ac7d5efee4d9ebaadd180e70fa013e'
             '9426829605bbb9e65002437e02ed54e35c20fdf94706770a3dc1049da634147906d6b98bf7f5e7516c84068396a12c6feaf72f92b51bdf19715e0f64620319de'
             'da7a97d5d3701c70dd5388b0440da39006ee4991ce174777931fea2aa8c90846a622b2b911f02ae4d5fffb92680d9a7e211c308f0f99c04896278e2ee0d9a4dc'
             'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
@@ -100,7 +102,7 @@ build() {
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=developer
 
-    -Dapparmor=disabled
+    -Dapparmor=enabled
     -Dbootloader=enabled
     -Dxenctrl=disabled
     -Dbpf-framework=enabled
@@ -110,6 +112,9 @@ build() {
     -Dlz4=enabled
     -Dman=enabled
     -Dselinux=disabled
+    -Dsshdprivsepdir=/usr/share/empty.sshd
+    -Dvmlinux-h=provided
+    -Dvmlinux-h-path=/usr/src/linux/vmlinux.h
 
     # We disable DNSSEC by default, it still causes trouble:
     # https://github.com/systemd/systemd/issues/10579
@@ -166,11 +171,11 @@ package_systemd-git() {
   conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts+=('systemd')
   optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
+              'apparmor: additional security features'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               "systemd-ukify-git=${pkgver}: combine kernel and initrd into a signed Unified Kernel Image"
               'polkit: allow administration as unprivileged user'
-              'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
               'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
               'qrencode: show QR codes'
@@ -181,8 +186,7 @@ package_systemd-git() {
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
               'libp11-kit: support PKCS#11'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
-  backup=(etc/pam.d/systemd-user
-          etc/systemd/coredump.conf
+  backup=(etc/systemd/coredump.conf
           etc/systemd/homed.conf
           etc/systemd/journald.conf
           etc/systemd/journal-remote.conf
@@ -200,7 +204,7 @@ package_systemd-git() {
           etc/udev/udev.conf)
   install=systemd.install
 
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C build --no-rebuild --destdir "${pkgdir}"
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
@@ -247,9 +251,6 @@ package_systemd-git() {
   # will fix the permissions for us. (see /usr/lib/tmpfiles.d/systemd.conf)
   install -d -o root -g root -m 2755 "$pkgdir"/var/log/journal
 
-  # match directory owner/group and mode from polkit
-  install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
-
   # add example bootctl configuration
   install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
   install -D -m0644 loader.conf "$pkgdir"/usr/share/systemd/bootctl/loader.conf
@@ -260,7 +261,7 @@ package_systemd-git() {
   install -D -m0644 -t "$pkgdir"/usr/share/libalpm/hooks *.hook
 
   # overwrite the systemd-user PAM configuration with our own
-  install -D -m0644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
+  install -D -m0644 systemd-user.pam "$pkgdir"/usr/lib/pam.d/systemd-user
 
   # create a directory for cryptsetup keys
   install -d -m0700 "$pkgdir"/etc/cryptsetup-keys.d
@@ -341,7 +342,7 @@ package_systemd-ukify-git() {
   conflicts=('systemd-ukify')
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
-  depends=("systemd-git=$pkgver" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=("systemd-git=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
