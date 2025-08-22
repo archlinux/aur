@@ -4,7 +4,7 @@
 pkgbase=stalwart-bin
 pkgname=('stalwart-mail' 'stalwart-cli')
 pkgver=0.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc='All-in-one Mail & Collaboration server. Secure, scalable and fluent in every protocol (IMAP, JMAP, SMTP, CalDAV, CardDAV, WebDAV).'
 arch=('x86_64' 'aarch64' 'arm' 'armv7')
 url='https://github.com/stalwartlabs/stalwart'
