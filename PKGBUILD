@@ -2,7 +2,7 @@
 
 pkgname=rofi-games
 pkgver=1.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A rofi plugin which adds a mode to list available games for launch along with their box art'
 arch=('x86_64')
 url='https://github.com/rolv-apneseth/rofi-games'
@@ -15,21 +15,21 @@ options=(!debug !lto)
 
 prepare()
 {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver" || exit
 
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build()
 {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver" || exit
 
     PKGDIR="$pkgdir" just build
 }
 
 package()
 {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver" || exit
 
     PKGDIR="$pkgdir" just install
 }
