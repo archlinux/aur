@@ -1,15 +1,17 @@
 pkgbase = flatbat
 	pkgdesc = Minimalist tkinter system monitor overlay (CPU, RAM, GPU, battery, and clock)
-	pkgver = 1.0.2
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/tomasmckenna/flatbat
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python
 	depends = python-psutil
 	depends = tk
-	source = flatbat-1.0.2.tar.gz::https://github.com/tomasmckenna/flatbat/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = da15bfd897f7c3d6919f7a6024b839df6732db7541809bcb98c6082d02df3db5
+	source = flatbat-1.1.tar.gz::https://github.com/tomasmckenna/flatbat/archive/refs/tags/v1.1.tar.gz
+	sha256sums = eebb11854ecb07edfa429ad3f2a70583824d9262fc9c2840524cdbf2d45a6688
 
 pkgname = flatbat
