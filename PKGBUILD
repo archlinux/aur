@@ -6,7 +6,7 @@
 
 _pkgname=teleport
 pkgname=teleport-bin
-pkgver=18.1.5
+pkgver=18.1.6
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -37,10 +37,10 @@ sha256sums=('68326e40c91aea621e2eab7efe8481574be1d313f49b38cb0d6aedad9efc47ab'
             'd5265830ec926e249d8643351216dc0f2842bd0c004f79dcdb260b3548fafdff'
             'c71bbe70179aceb0f49d2a4f1e0a83da040ca72373e17ca82cc2489cd6e07801'
             '3beda963b864fc67546e6926fd6ee8601cafee44a9d24440042efd68b7cab8f6')
-sha256sums_i386=('d94bf40c0c363919ef19dccb142659a854450c08bce7f4ddbb65932ac11a1d16')
-sha256sums_x86_64=('ff30ddbb6f324bde0ec0d04d914e29a173080825a407106395208b3742a991ed')
-sha256sums_armv7h=('03919694b9871c62a076a80808612787594cfddeae58ef2ac05d93fab6de1133')
-sha256sums_aarch64=('df7678a682c917533eed246b8c2ea027426831c7519ece636187cce25e653aff')
+sha256sums_i386=('e65496a0dde84e631a4c2608c2b462c754c47a51f93a9645bb0669abc6aeabf2')
+sha256sums_x86_64=('107b6320eb6426a3e39b8ea1806d70efc1a9b13972b07f62d4cb3da5648094ef')
+sha256sums_armv7h=('9a0ac1d3e2b99a09d735cc63f8e186d87bcc2792ea4ba3dcb642b34c7c7eb381')
+sha256sums_aarch64=('29c6a87f4585b3a4e7f44a9e7d073e7033192b9e4dfaef1a26a50e65cd4aefa5')
 
 options=(!strip)
 
