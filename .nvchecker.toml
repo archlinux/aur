@@ -1,4 +1,6 @@
 [python-aiopath]
-source = "git"
-git = "https://github.com/alexdelorenzo/aiopath.git"
-prefix = "v"
+#source = "git"
+#git = "https://github.com/alexdelorenzo/aiopath.git"
+#prefix = "v"
+source = "pypi"
+pypi = "aiopath"
