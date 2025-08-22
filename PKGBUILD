@@ -1,11 +1,11 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 
 pkgname=harbor-wave
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Ocean Ephemeral VM/Droplet tool."
 arch=('any')
-url="https://github.com/GIJack/harbor-wave"
+url="https://github.com/NetworkJack2/harbor-wave"
 license=('GPLv3')
 depends=('python' 'python-digitalocean')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GIJack/harbor-wave/archive/refs/tags/v${pkgver}.tar.gz")
