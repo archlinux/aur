@@ -3,7 +3,7 @@ post_upgrade() {
     echo ========================================
     echo "Release notes for Viu v${version}:"
     if ! command -v jq 2>&1 > /dev/null; then
-        echo "For fastanime release notes, check https://github.com/Benexl/viu/releases/latest"
+        echo "For viu release notes, check https://github.com/Benexl/viu/releases/latest"
     else
         echo -e "$(curl -sL "https://api.github.com/repos/Benexl/viu/releases/tags/v$version" | jq '.body')"
     fi
