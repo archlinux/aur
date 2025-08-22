@@ -1,46 +1,31 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-# This package installs the latest SickChill release, not the latest commit
-#
+# Use these values to build to the latest git commit version.
+# Default values.
+#SICKCHILL_LATEST_COMMIT=1
+#SICKCHILL_BRANCH=develop
+
+# OR
+
+# Use these values to build the latest release version.
+#SICKCHILL_LATEST_COMMIT=0
+# Or set another branch
+#SICKCHILL_BRANCH=master
+# And/or set another release
+#SICKCHILL_VERSION=2024.3.1
+
 # This "PIP install" package is similar to a VCS package.
-# It has a pkgver() function and a reinstall updates the package.
+# It has a pkgver() function. And a reinstall updates the package.
 # That is the only reason why this package ends on "-git".
 
-# To install another SickChill release version:
-#
-#   - Comment out pkgver()
-#
-#   - Set the release number in variable pkgver: pkgver=<release>
-#
-#   - Set the same release number at the end of the "pip install" line,
-#     by changing "sickchill" to "sickchill==$pkgver"
-
-# To install the latest commit version:
-#
-#   - Replace pkgver() with:
-#
-#         pkgver() {
-#           printf '%(%Y%m%d)T.latest' '-1'
-#         }
-#
-#   - Add "git" to "makedepends"
-#
-#   - Change the end of the "pip install" line from "sickchill" to either one of:
-#
-#     - "git+https://github.com/SickChill/sickchill.git"
-#       to install the latest from the default git branch
-#
-#     - "git+https://github.com/SickChill/sickchill.git@develop"
-#       to install the latest from the "develop" git branch
-
 pkgname=sickchill-git
-pkgver=2024.3.1.r0
+pkgver=2024.3.1.r0.20250822.latest
 pkgrel=1
 pkgdesc='Automatic video library manager for TV shows'
 arch=(any)
 url=https://sickchill.github.io
 license=(GPL-3.0-or-later)
-makedepends=(jq python-virtualenv)
+makedepends=(git jq python-virtualenv)
 optdepends=(
   'libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
   'unrar: for RAR files')
@@ -57,20 +42,45 @@ sha256sums=(
   'aaeb298c9717da8b28853ed15509fb8428d975ae49e8737ebcec15caab9f0978'
   '2069f15e18fc7dd0f0f25b623f2067fc9028b1ca4122021a62364aa39914f88f')
 
+: "${SICKCHILL_LATEST_COMMIT:=1}"
+if [[ -n "$SICKCHILL_BRANCH" ]]; then
+  if ((SICKCHILL_LATEST_COMMIT)); then
+    SICKCHILL_BRANCH=develop
+  else
+    SICKCHILL_BRANCH=master
+  fi
+fi
+
 pkgver() {
   local version
   version="$(curl -s "https://pypi.org/pypi/${pkgname%-git}/json" | jq --raw-output --join-output '.info.version')"
   printf "%s.r0" "$version" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
+  ((SICKCHILL_LATEST_COMMIT)) && printf '.%(%Y%m%d)T.latest' '-1'
+  return 0
 }
 
 build() {
+  printf 'SICKCHILL_LATEST_COMMIT="%s" ' "$SICKCHILL_LATEST_COMMIT"
+  printf 'SICKCHILL_BRANCH="%s" ' "$SICKCHILL_BRANCH"
+  printf 'SICKCHILL_VERSION="%s"\n' "$SICKCHILL_VERSION"
+  if ((SICKCHILL_LATEST_COMMIT)); then
+    _pip_install_arg=git+https://github.com/SickChill/sickchill.git@${SICKCHILL_BRANCH:-master}
+  else
+    if [[ -n "$SICKCHILL_VERSION" ]]; then
+      _pip_install_arg=sickchill==$SICKCHILL_VERSION
+    else
+      _pip_install_arg=sickchill
+    fi
+  fi
+
   #python -m venv build
   export XDG_CACHE_HOME=cache/pip
   VIRTUALENV_OVERRIDE_APP_DATA=cache/virtualenv virtualenv build
   PIP_CONFIG_FILE=/dev/null build/bin/pip install \
     --ignore-installed --isolated --cache-dir=cache --prefix=. --root=build \
     --default-timeout=60 --disable-pip-version-check --no-warn-script-location --progress-bar=off \
-    setuptools sickchill
+    setuptools "$_pip_install_arg"
 
   sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill
 }
