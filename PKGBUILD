@@ -7,7 +7,7 @@ url='https://github.com/greyltc/r3pcomms'
 license=('MIT')
 depends=(
 	python-pyserial
-	python-pyusb
+	python-hidapi
 	udev-hid-bpf
 	mqttui
 )
