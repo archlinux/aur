@@ -3,7 +3,7 @@
 # Contributor: Karol Babioch <karol@babioch.de
 
 pkgname=tika-server
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Detects and extracts metadata and text from over a thousand different file types, such as PPT, XLS, and PDF. (server)"
 arch=('any')
@@ -25,7 +25,7 @@ _get_url() {
 source=("$(_get_url)"
         "${pkgname}.env"
         "${pkgname}.service")
-sha256sums=('383a8a99ec886ea95e4143bfe200208afe1884db14b4c1e470950edec82d2c5d'
+sha256sums=('04bcb61826403957cfab93cb1e14d4c305fbeb949475f031b0b73dab7e976995'
             'de1829782fc698b1be42fdb850ea3d9dd1d750bf37d4ab98a8ed5d43157cdeac'
             '00ad2023fe47bb77b78c4be364973c21ef8961a51cfa8b4f5ef910ee32542837')
 noextract=("${pkgname}-${pkgver}.jar")
