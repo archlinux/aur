@@ -4,13 +4,13 @@
 # pkgver is set to 5.0.0 is replaced in the update-aur.sh script
 
 pkgname=system-bridge
-pkgver=5.0.0.beta.11
+pkgver=5.0.0.beta.12
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'go' 'bun-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.0.0-beta.11.tar.gz")
-sha256sums=('3b9e0ae62d606ed0d31c9f2211644c27e5285f479b30393805386dc2c0ad2804')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.0.0-beta.12.tar.gz")
+sha256sums=('3761005d0f6d328364768f0f112a15ad40379208257a71d3899764cdfdd2252b')
 conflicts=('system-bridge-git')
 
 arch=('x86_64')
@@ -21,7 +21,11 @@ depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
 provides=('system-bridge')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  ver="$pkgver"
+  ver="${ver/.beta./-beta.}"
+  ver="${ver/.alpha./-alpha.}"
+  ver="${ver/.rc./-rc.}"
+  cd "${srcdir}/${pkgname}-${ver}"
   export STATIC_EXPORT=true
   export CGO_ENABLED=1
   make build_web_client
@@ -39,7 +43,11 @@ package() {
   install -dm755 "$pkgdir/usr/share/icons/hicolor/128x128/apps"
   install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  ver="$pkgver"
+  ver="${ver/.beta./-beta.}"
+  ver="${ver/.alpha./-alpha.}"
+  ver="${ver/.rc./-rc.}"
+  cd "${srcdir}/${pkgname}-${ver}"
   install -Dm755 system-bridge "$pkgdir/usr/bin/system-bridge"
   install -Dm644 .scripts/linux/system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
   install -Dm644 .resources/system-bridge-dimmed.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
