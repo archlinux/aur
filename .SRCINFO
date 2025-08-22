@@ -1,0 +1,18 @@
+pkgbase = python-dm-ollamalib
+	pkgdesc = Functions to parse Ollama options from string and get info on Ollama options
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/dm-ollamalib/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-dynamic-versioning
+	depends = python
+	depends = python-ollama
+	source = https://files.pythonhosted.org/packages/source/d/dm_ollamalib/dm_ollamalib-0.2.0.tar.gz
+	sha256sums = b5bcbd5d3a757c938cc4e7879b05781afc713ee9b3d02c8698a383b45640c823
+
+pkgname = python-dm-ollamalib
