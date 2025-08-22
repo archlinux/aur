@@ -1,13 +1,13 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-git
 pkgver=r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('any')
 url='https://github.com/AvengeMedia/DankMaterialShell'
 license=('GPL-3.0-only')
 depends=(
-    'quickshell-git'
+    'quickshell'
     'dgop'
     'ttf-material-symbols-variable-git'
     'inter-font'

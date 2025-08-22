@@ -1,12 +1,12 @@
 pkgbase = dms-git
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
 	pkgver = r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
-	depends = quickshell-git
+	depends = quickshell
 	depends = dgop
 	depends = ttf-material-symbols-variable-git
 	depends = inter-font
