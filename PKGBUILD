@@ -1,7 +1,7 @@
 _name=webcord
 pkgname=${_name}-bin
 pkgver=4.11.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A Discord client implemented directly without Discord API (binary release)'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/SpacingBat3/WebCord"
@@ -24,7 +24,7 @@ source_x86_64=("$(_get_source x86_64)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source armv7hl)")
 
-sha256sums=('97753f5fe3f85003752530d691707d7a2bb24b334c8eb5e511e194538aaadbbf')
+sha256sums=('d83693ffd8034c21030262ac00ce529c8da7b0196ea4b4eb2168861fc2657a2a')
 sha256sums_x86_64=('601bbe1883d2c961e0150013f7942cf6abcdd1bae9d472c84fe1cbc293b98585')
 sha256sums_aarch64=('0a728b81edc733e459eab155fea2dbb8e500a7a3527bb3e6c68ae87b8f0e9fca')
 sha256sums_armv7h=('78aa14cde209fb747c49e80cd8af8454f42dc581a2524de037c4ecd028b3abcb')
