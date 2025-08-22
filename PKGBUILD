@@ -8,11 +8,11 @@
 
 # build-aux/modules/99-cef.json
 : ${_cef_branch:=6533}
-: ${_cef_ver=_v3}
+: ${_cef_ver=_v5}
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=31.0.3.r236.g000437f
+pkgver=31.1.2.r69.g86f98be
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming"
 url="https://github.com/obsproject/obs-studio"
@@ -44,9 +44,11 @@ makedepends=(
   'libdatachannel'
   'libfdk-aac'
   'luajit'
+  'ninja'
   'nlohmann-json'
   'python'
   'qt6-wayland'
+  'simde'
   'sndio'
   'swig'
   'uthash'
@@ -151,6 +153,7 @@ _build_cef() (
   local _cmake_options=(
     -S "$_cef_src"
     -B "$_cef_src"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DPROJECT_ARCH=$CARCH
     -Wno-dev
@@ -164,6 +167,7 @@ _build_obs_studio() (
   local _cmake_options=(
     -B build
     -S "$pkgname"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
