@@ -1,6 +1,6 @@
 pkgbase = liboqs-git
 	pkgdesc = C library for prototyping and experimenting with quantum-resistant cryptography
-	pkgver = 0.12.0.r20.g5afca64
+	pkgver = 0.14.0.r17.g1698d86
 	pkgrel = 1
 	url = https://openquantumsafe.org/liboqs/
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = liboqs-git
 	depends = openssl
 	provides = liboqs
 	conflicts = liboqs
+	options = !lto
 	source = liboqs::git+https://github.com/open-quantum-safe/liboqs.git
 	b2sums = SKIP
 
