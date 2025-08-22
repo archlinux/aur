@@ -5,10 +5,8 @@ pkgbase = lidm
 	url = https://github.com/javalsai/lidm
 	arch = any
 	license = GPL
-	makedepends = git
-	makedepends = gcc
 	depends = pam
-	source = tarball.tar.gz::https://github.com/javalsai/lidm/archive/refs/tags/v1.2.3.tar.gz
+	source = lidm-1.2.3.tar.gz::https://github.com/javalsai/lidm/archive/refs/tags/v1.2.3.tar.gz
 	sha256sums = 1ce414b510c5bbc3e32ea882f915b4d3958cb82eb1fbb5cf33e62f69c844bf93
 
 pkgname = lidm
