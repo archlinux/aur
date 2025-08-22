@@ -77,10 +77,12 @@ Module: sqlalchemy
     open_webui/main.py
     open_webui/migrations/env.py
     open_webui/migrations/util.py
+    open_webui/migrations/versions/018012973d35_add_indexes.py
     open_webui/migrations/versions/1af9b942657b_migrate_tags.py
     open_webui/migrations/versions/242a2047eae0_update_chat_table.py
     open_webui/migrations/versions/3781e22d8b01_update_message_table.py
     open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
+    open_webui/migrations/versions/3af16a1c9fb6_update_user_table.py
     open_webui/migrations/versions/4ace53fd72c8_update_folder_table_datetime.py
     open_webui/migrations/versions/57c599a3cb57_add_channel_table.py
     open_webui/migrations/versions/6a39f3d8e55c_add_knowledge_table.py
@@ -139,6 +141,7 @@ Module: aiohttp
     open_webui/utils/oauth.py
     open_webui/utils/telemetry/instrumentors.py
     open_webui/utils/tools.py
+    open_webui/utils/webhook.py
 Module: anyio.to_thread
   Imported in:
     open_webui/main.py
@@ -180,7 +183,6 @@ Module: requests
     open_webui/routers/pipelines.py
     open_webui/utils/auth.py
     open_webui/utils/telemetry/instrumentors.py
-    open_webui/utils/webhook.py
 Module: redis
   Imported in:
     open_webui/config.py
@@ -474,6 +476,7 @@ Module: open_webui.env
     open_webui/models/models.py
     open_webui/models/tags.py
     open_webui/models/tools.py
+    open_webui/models/users.py
     open_webui/retrieval/loaders/external_document.py
     open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
@@ -663,7 +666,6 @@ Module: open_webui.tasks
   Imported in:
     open_webui/main.py
     open_webui/socket/main.py
-    open_webui/utils/middleware.py
 Module: open_webui.constants
   Imported in:
     open_webui/env.py
@@ -718,6 +720,7 @@ Module: torch
     open_webui/env.py
     open_webui/retrieval/models/colbert.py
     open_webui/routers/audio.py
+    open_webui/routers/retrieval.py
 Module: open_webui.utils.tools
   Imported in:
     open_webui/functions.py
@@ -728,6 +731,7 @@ Module: open_webui.utils.misc
   Imported in:
     open_webui/functions.py
     open_webui/internal/migrations/010_migrate_modelfiles_to_models.py
+    open_webui/models/users.py
     open_webui/routers/auths.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
@@ -782,10 +786,12 @@ Module: alembic
     open_webui/config.py
     open_webui/migrations/env.py
     open_webui/migrations/util.py
+    open_webui/migrations/versions/018012973d35_add_indexes.py
     open_webui/migrations/versions/1af9b942657b_migrate_tags.py
     open_webui/migrations/versions/242a2047eae0_update_chat_table.py
     open_webui/migrations/versions/3781e22d8b01_update_message_table.py
     open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
+    open_webui/migrations/versions/3af16a1c9fb6_update_user_table.py
     open_webui/migrations/versions/4ace53fd72c8_update_folder_table_datetime.py
     open_webui/migrations/versions/57c599a3cb57_add_channel_table.py
     open_webui/migrations/versions/6a39f3d8e55c_add_knowledge_table.py
