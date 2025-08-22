@@ -1,31 +1,57 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
+
 pkgname=openzwave
 pkgver=1.6
-pkgrel=1
-pkgdesc="Opensource Z-Wave control"
-url="http://www.openzwave.com"
-arch=('i686' 'x86_64')
-license=('LGPL')
-depends=('libsystemd')
-makedepends=('doxygen')
-source=("https://github.com/OpenZWave/open-zwave/archive/v${pkgver}.tar.gz"
-        'tixmltext.patch')
-sha256sums=('3b11dffa7608359c8c848451863e0287e17f5f101aeee7c2e89b7dc16f87050b'
-            '98dfb22e6fb1b3a01eba9cb5dbbe664c1b859ddd9255de14a36b6e17dfa848dd')
+pkgrel=7
+pkgdesc='A C++ library to control Z-Wave Networks via a USB Z-Wave Controller'
+arch=(x86_64)
+url=http://www.openzwave.net
+license=(LGPL3)
+depends=(
+  bash
+  gcc-libs
+  glibc
+  libhidapi-libusb.so
+  libusb
+  tinyxml
+)
+makedepends=(
+  doxygen
+  git
+)
+_tag=890f24b7e88f488eee464ed14c01fbceb276cf2a
+source=(
+  git+https://github.com/OpenZWave/open-zwave.git#tag=${_tag}
+  openzwave-system-libs.patch
+)
+b2sums=(
+  SKIP
+  56095ee16bb04184b2bf037d7601bc5431c654e1328cd1ad63f1fcb7d6918bcd65ef4ab30ee2c80f3bf3c50e838f5818d23e9d01569e41125e9e68028d021c59
+)
+
+pkgver() {
+  cd open-zwave
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "${srcdir}/open-zwave-${pkgver}/cpp/src"
-  patch -p0 < "${srcdir}/tixmltext.patch"
+  cd open-zwave
+
+  patch -Np1 -i ../openzwave-system-libs.patch
+  sed -e 's/-Werror//' -i cpp/build/Makefile
+  find -name Makefile | xargs sed -e 's/-Wno-format//' -i
 }
 
 build() {
-  cd "${srcdir}/open-zwave-${pkgver}"
-  make
+  export CFLAGS="$CFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
+  export CXXFLAGS="$CXXFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
+  make -C open-zwave
 }
 
 package() {
-  cd "${srcdir}/open-zwave-${pkgver}"
-  make DESTDIR=${pkgdir} PREFIX=/usr instlibdir=usr/lib/ sysconfdir=etc/${pkgname} install
+  make DESTDIR="${pkgdir}" PREFIX=/usr instlibdir=usr/lib/ sysconfdir=etc/openzwave -C open-zwave install
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:

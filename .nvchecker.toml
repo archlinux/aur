@@ -1,0 +1,4 @@
+[openzwave]
+source = "git"
+git = "https://github.com/OpenZWave/open-zwave.git"
+prefix = "v"
