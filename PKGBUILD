@@ -1,8 +1,8 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox, Crome and other browsers. Includes libcurl."
 url="https://github.com/lexiforest/curl-impersonate"
@@ -19,7 +19,7 @@ source=(
   "curl-impersonate-${pkgver}.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-md5sums=('7d18620c83ce810c4fc969c2a5ff6a4b')
+md5sums=('5c0783bd2e9e9e1979548183209721fb')
 
 prepare () {
   if [[ $CARCH != "aarch64" ]]; then
