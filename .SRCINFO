@@ -5,6 +5,8 @@ pkgbase = max
 	url = https://max.ru
 	arch = x86_64
 	license = custom:max
+	makedepends = tar
+	makedepends = binutils
 	depends = gtk3
 	depends = libnotify
 	depends = nss
@@ -14,8 +16,6 @@ pkgbase = max
 	depends = at-spi2-core
 	depends = util-linux-libs
 	depends = libsecret
-	depends = tar
-	depends = binutils
 	source = https://download.max.ru/electron/MAX.deb
 	md5sums = 91a4413990890aaced063daa78f148ab
 

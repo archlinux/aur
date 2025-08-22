@@ -10,7 +10,8 @@ url='https://max.ru'
 license=("custom:max")
 categories=("network")
 
-depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux-libs" "libsecret" "tar" "binutils")
+depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux-libs" "libsecret")
+makedepends=("tar" "binutils")
 
 source=("https://download.max.ru/electron/MAX.deb")
 md5sums=('91a4413990890aaced063daa78f148ab')
