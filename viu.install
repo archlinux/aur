@@ -7,7 +7,7 @@ post_upgrade() {
     else
         echo -e "$(curl -sL "https://api.github.com/repos/Benexl/viu/releases/tags/v$version" | jq '.body')"
     fi
-    echo "Make sure to run 'viu cache --clean' to clean the cache"
-    echo "Make sure to run 'viu config --update' to update the config"
+    echo "Make sure to run 'viu-media cache --clean' to clean the cache"
+    echo "Make sure to run 'viu-media config --update' to update the config"
     echo ========================================
 }
