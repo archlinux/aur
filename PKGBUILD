@@ -1,9 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=openzwave
 pkgver=1.6
-pkgrel=7
+pkgrel=8
 pkgdesc='A C++ library to control Z-Wave Networks via a USB Z-Wave Controller'
 arch=(x86_64)
 url=http://www.openzwave.net

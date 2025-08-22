@@ -1,7 +1,7 @@
 pkgbase = openzwave
 	pkgdesc = A C++ library to control Z-Wave Networks via a USB Z-Wave Controller
 	pkgver = 1.6
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.openzwave.net
 	arch = x86_64
 	license = LGPL3
