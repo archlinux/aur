@@ -1,7 +1,7 @@
 pkgbase = tclient-ddnet
 	pkgdesc = Extended DDNet Teeworlds client.
 	pkgver = 10.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tclient.app/
 	arch = x86_64
 	checkdepends = gmock
