@@ -2,7 +2,7 @@
 
 pkgname=max
 pkgver=25.8.0.454
-pkgrel=3
+pkgrel=4
 
 pkgdesc="MAX is a multifunctional digital platform with a fully integrated messenger."
 arch=("x86_64")
