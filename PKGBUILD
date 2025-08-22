@@ -15,7 +15,7 @@ depends=(
   kirigami-addons-git
   plasma-wayland-protocols-git
   modemmanager-qt-git
-  libphonenumber-git
+  libphonenumber
   callaudiod-git
 )
 makedepends=(cmake extra-cmake-modules-git)

@@ -15,7 +15,7 @@ pkgbase = plasma-dialer-git
 	depends = kirigami-addons-git
 	depends = plasma-wayland-protocols-git
 	depends = modemmanager-qt-git
-	depends = libphonenumber-git
+	depends = libphonenumber
 	depends = callaudiod-git
 	sha256sums = SKIP
 
