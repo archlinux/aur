@@ -1,0 +1,17 @@
+pkgbase = bonsai
+	pkgdesc = Terminal-based disk usage analyzer, TUI remake of GNOME Baobab
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/LittleBigOwI/bonsai.git#branch=main
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = ftxui
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/LittleBigOwI/bonsai.git#branch=main
+	md5sums = SKIP
+
+pkgname = bonsai
