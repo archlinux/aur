@@ -2,7 +2,7 @@
 # Contributor: pinks <aur at papepati dot page>
 
 pkgname=xee
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='CLI frontent to XML Execution Engine, a modern XPath and XSLT processor'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(gcc-libs
 makedepends=(cargo
              git)
 source=("git+$url.git#tag=xee-v$pkgver")
-sha256sums=('d27d5791258d5e8737923b8265f53c2b3a33be62a1ae811c6d6f34a88fb2ad4d')
+sha256sums=('916ea97376f4e50c58b0f334865305e3db19d766185f089a5b72f3457d08fcf8')
 
 prepare() {
 	cd "$pkgname"
