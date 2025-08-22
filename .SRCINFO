@@ -16,8 +16,12 @@ pkgbase = libcurl-impersonate-bin
 	source = https://raw.githubusercontent.com/lexiforest/curl-impersonate/master/LICENSE
 	md5sums = 8d7f9ceab1020bfc9b56031dfbac2968
 	source_aarch64 = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.1/libcurl-impersonate-v1.2.1.aarch64-linux-gnu.tar.gz
+	md5sums_aarch64 = 6a264f92881fcfa3149447608b8fb819
 	source_armv7h = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.1/libcurl-impersonate-v1.2.1.arm-linux-gnueabihf.tar.gz
+	md5sums_armv7h = 0198fc851cfe2788d1e58c47fa5d359e
 	source_i686 = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.1/libcurl-impersonate-v1.2.1.i386-linux-gnu.tar.gz
+	md5sums_i686 = bc8228999d1368da3088bddcfbb6c304
 	source_x86_64 = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.1/libcurl-impersonate-v1.2.1.x86_64-linux-gnu.tar.gz
+	md5sums_x86_64 = 4c570f626384b294809ef094a6465714
 
 pkgname = libcurl-impersonate-bin
