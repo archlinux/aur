@@ -1,26 +1,36 @@
+# Maintainer: Echo J. <aidas957 at gmail dot com>
 # Contributor: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
 
-pkgname=llvm-mingw-w64-toolchain-msvcrt-bin
-pkgver=20250613
-pkgrel=1
-pkgdesc="LLVM/Clang/LLD based mingw-w64 toolchain (MSVCRT) targeting i686, x86-64, armv7, and aarch64"
+# shellcheck shell=bash disable=SC2034,SC2164
+
 _crt=msvcrt
 _distro=ubuntu-22.04
+
+pkgname=llvm-mingw-w64-toolchain-${_crt}-bin
+pkgver=20250709
+pkgrel=1
+pkgdesc="LLVM/Clang/LLD based mingw-w64 toolchain (MSVCRT) targeting i686, x86-64, armv7, and aarch64"
 arch=('x86_64')
 url="https://github.com/mstorsjo/llvm-mingw"
-license=('custom')
-depends=()
-provides=('llvm-mingw-w64-toolchain' 'mingw-w64-binutils' 'mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-headers' 'mingw-w64-winpthreads')
-source=("https://github.com/mstorsjo/llvm-mingw/releases/download/${pkgver}/llvm-mingw-${pkgver}-${_crt}-${_distro}-${CARCH}.tar.xz")
-if [ "$CARCH" = "aarch64" ]; then
-  sha256sums=('0000000000000000000000000000000000000000000000000000000000000000') # No aarch64 build for MSVCRT target.
-else
-  sha256sums=('9b1f848d049115ae888087b386f5eb84762c0cf534aa2162b1c8c7e30ee9e5ff')
-fi
-
-options=(!strip)
+license=('Apache-2.0 WITH LLVM-exception') # The toolchain itself
+license+=('ISC') # Wrapper scripts
+depends=('gcc-libs' 'glibc' 'python' 'python-yaml' 'sh' 'xz' 'zlib' 'zstd')
+makedepends=('patchelf')
+provides=('llvm-mingw-w64-toolchain')
+source=("https://github.com/mstorsjo/llvm-mingw/releases/download/${pkgver}/llvm-mingw-${pkgver}-${_crt}-${_distro}-x86_64.tar.xz")
+sha256sums=('422f13915a41acd8b93566e590531f55d3de6e531575197d51756ff8e8d16525')
 
 package() {
-	mkdir -p ${pkgdir}/opt/llvm-mingw/llvm-mingw-$_crt
-	cp -dpr --no-preserve=ownership ./llvm-mingw-${pkgver}-${_crt}-${_distro}-${CARCH}/* "${pkgdir}/opt/llvm-mingw/llvm-mingw-$_crt"
+   mkdir -p "${pkgdir}"/opt/llvm-mingw/llvm-mingw-${_crt}
+   cp -dpr --no-preserve=ownership "${srcdir}"/llvm-mingw-${pkgver}-${_crt}-${_distro}-x86_64/* "${pkgdir}"/opt/llvm-mingw/llvm-mingw-${_crt}
+
+   cd "${pkgdir}"/opt/llvm-mingw/llvm-mingw-${_crt}
+
+   # Remove insecure RPATH
+   patchelf --remove-rpath bin/lldb-mi
+
+   # Install the license files
+   mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
+   grep "Copyright" bin/ld-wrapper.sh -A12 | sed 's/# //g' | tr -d '#' > "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.ISC
+   install -Dm644 LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
