@@ -1,7 +1,7 @@
 pkgbase = genimage
 	pkgdesc = Tool to generate multiple filesystem and flash images from a tree
-	pkgver = 18
-	pkgrel = 2
+	pkgver = 19
+	pkgrel = 1
 	url = https://github.com/pengutronix/genimage
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = genimage
 	optdepends = qemu: qemu-img
 	optdepends = uboot-tools: mkimage
 	optdepends = rauc
-	source = genimage-18.tar.gz::https://github.com/pengutronix/genimage/archive/v18.tar.gz
-	sha256sums = af555b9d9f17301ab4cc2cda4849afd88d2b97ae4cc8badb9b8448299d6f6080
+	source = genimage-19.tar.gz::https://github.com/pengutronix/genimage/archive/v19.tar.gz
+	sha256sums = f620b1cd0299c12a17f523d29cdad44075d1c87c47020bb63a98bf51901d8db5
 
 pkgname = genimage
