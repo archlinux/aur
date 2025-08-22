@@ -1,0 +1,17 @@
+pkgbase = gubamifetch
+	pkgdesc = A fancy system fetch script with gubami-style logo
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/retroover/Gubamifetch
+	arch = any
+	license = MIT
+	depends = xorg-xrandr
+	depends = lsb-release
+	depends = pciutils
+	depends = inetutils
+	depends = procps-ng
+	depends = python
+	source = https://github.com/retroover/Gubamifetch/raw/main/gubamifetch.py
+	md5sums = SKIP
+
+pkgname = gubamifetch
