@@ -1,6 +1,6 @@
 pkgbase = linuxtoys-bin
 	pkgdesc = A collection of tools for Linux in a user-friendly way.
-	pkgver = 5.0.9
+	pkgver = 5.0.10
 	pkgrel = 1
 	url = https://github.com/psygreg/linuxtoys
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = linuxtoys-bin
 	depends = python-gobject
 	depends = gtk3
 	depends = jq
-	provides = linuxtoys=5.0.9
-	source = https://github.com/psygreg/linuxtoys/releases/download/5.0.9/linuxtoys-5.0.9.tar.xz
-	sha256sums = eb9f49df46db3cddcf310dbae447deb97d76989ed136469dd016e0891242818b
+	provides = linuxtoys=5.0.10
+	source = https://github.com/psygreg/linuxtoys/releases/download/5.0.10/linuxtoys-5.0.10.tar.xz
+	sha256sums = c0348dfddded511d83a223017a432b1d9bd8f6a6bd6ca7c5bbfb6f023163eda3
 
 pkgname = linuxtoys-bin
