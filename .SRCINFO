@@ -1,7 +1,7 @@
 pkgbase = stalwart-bin
 	pkgdesc = All-in-one Mail & Collaboration server. Secure, scalable and fluent in every protocol (IMAP, JMAP, SMTP, CalDAV, CardDAV, WebDAV).
 	pkgver = 0.13.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stalwartlabs/stalwart
 	arch = x86_64
 	arch = aarch64

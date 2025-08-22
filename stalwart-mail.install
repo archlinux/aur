@@ -5,7 +5,7 @@ NOTE: Before starting stalwart-mail.service, create an admin password using
       using \`systemctl edit stalwart-mail.service\` with
       """
       [Service]
-      Environment=ADMIN_SECRET=<get from `openssl passwd -6`>
+      Environment=ADMIN_SECRET=<get from \`openssl passwd -6\`>
       """
       or just add it to /etc/stalwart-mail/config.toml as
       "authentication.fallback-admin.secret".
