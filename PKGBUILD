@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=139.0.7258.127
+pkgver=139.0.7258.138
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
@@ -20,6 +20,7 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
+        chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-fix-missing-algorithm.patch
@@ -29,7 +30,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('140e6a3b5f21f128d807812befdc15bc1eb0b1bf9c9f4445414236272b50646e'
+sha256sums=('3c6d42580e4957d4d116cdd39ef6de99be51b82a927f869941248284932bbafc'
+            '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
             'a6507371588ed4d87d6501220249264abfbcd814771cc1ba351e0ac6cc987400'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -192,6 +194,9 @@ prepare() {
     tools/generate_shim_headers/generate_shim_headers.py
 
   # Upstream fixes
+
+  # Fixes from NixOS
+  patch -Np1 -i ../chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 
   if (( _system_clang )); then
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
