@@ -1,0 +1,20 @@
+pkgbase = python-maixtool
+	pkgdesc = Tools for Maix series development
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/sipeed/MaixCDK
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python-flask
+	depends = python-pillow
+	depends = python-netifaces
+	depends = python-qrcode
+	depends = python-yaml
+	depends = python-progress
+	depends = python-requests
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/maixtool/maixtool-1.4.4.tar.gz
+	b2sums = ff1f4475838cd7f492e5c2b0e22bfb7070d0281146c3fe914f85fe5942a90a9f8d58235a767b55bbce849ba940896ebb1b9226fe9e1b552cda7ab9d91d5fab06
+
+pkgname = python-maixtool
