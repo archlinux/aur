@@ -2,17 +2,15 @@
 
 _name1=logfire-api
 _name0=logfire
-pkgbase=python-${_name0}
-pkgname=(python-${_name1} python-${_name0})
-_pydanticaiver=0.4.2
-pkgver=4.3.3
+pkgbase=python-$_name0
+pkgname=(python-$_name1 python-$_name0)
+pkgver=4.3.4
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-_pydantic_ai_depends=('python-griffe' 'python-opentelemetry-api' 'python-typing-inspection')
 checkdepends=('python-httpx'
               'python-aiohttp'
               'python-redis'
@@ -77,7 +75,7 @@ checkdepends=('python-httpx'
               'python-pytest-xdist'
               'python-openai-agents'
               'python-websockets'
-              ${_pydantic_ai_depends[@]}
+              'python-pydantic-ai-slim'
               'python-langchain'
               'python-langchain-openai'
               'python-langgraph'
@@ -85,23 +83,19 @@ checkdepends=('python-httpx'
               'python-google-genai'
               # 'python-openinference-instrumentation-litellm'
               'litellm')
-source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-${_pydanticaiver}-py3-none-any.whl"
-        "https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl") # Prevent cercular dependencies
-noextract=("pydantic_graph-${_pydanticaiver}-py3-none-any.whl" "pydantic_ai_slim-${_pydanticaiver}-py3-none-any.whl")
-sha256sums=('8fe5d2b52783d88c0f9cc0e52aea865d1bc51ae043406f46cd53736e0ce3b747'
-            '6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2'
-            '1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475')
+source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
+sha256sums=('da4ad48b1f3309f5ef832be064e0d2d63c654f483870d4e900115ca493f05547')
 
 prepare(){
-  cd "${srcdir}"/${_name0}-${pkgver}
+  cd "$srcdir"/$_name0-$pkgver
   sed -i "s/'gzip, deflate, zstd',/IsAnyStr(regex='^gzip, deflate(?:, br|, zstd|, br, zstd)?$'),/g" tests/otel_integrations/test_httpx.py
-  sed -i "/top_logprobs/d" tests/otel_integrations/test_openai_agents.py
+  sed -i "s/'gpt-4o'/'gpt-4.1'/g" tests/otel_integrations/test_openai_agents.py
+  sed -i "s/'gpt-4o'/'gpt-4.1'/g" tests/otel_integrations/test_openai_agents_mcp.py
 }
 
 build() {
-  cd "${srcdir}"/${_name0}-${pkgver}
-  python -m build --wheel --no-isolation ${_name1}
+  cd "$srcdir"/$_name0-$pkgver
+  python -m build --wheel --no-isolation $_name1
   python -m build --wheel --no-isolation
 }
 
@@ -119,21 +113,19 @@ check() {
     # Failed
     --deselect tests/test_cli.py::test_inspect
   )
-  cd "${srcdir}"/${_name0}-${pkgver}
+  cd "$srcdir"/$_name0-$pkgver
   python -m venv --system-site-packages test-env
   test-env/bin/pip install -U openinference-instrumentation-litellm
-  test-env/bin/python -m installer ${_name1}/dist/*.whl
+  test-env/bin/python -m installer $_name1/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m installer "${srcdir}"/pydantic_graph-*-py3-none-any.whl
-  test-env/bin/python -m installer "${srcdir}"/pydantic_ai_slim-*-py3-none-any.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package_python-logfire-api() {
   pkgdesc='Shim for the Logfire SDK which does nothing unless Logfire is installed.'
   url='https://github.com/pydantic/logfire/tree/main/logfire-api'
-  cd "${srcdir}"/${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/dist/*.whl
+  cd "$srcdir"/$_name0-$pkgver
+  python -m installer --destdir="$pkgdir" $_name1/dist/*.whl
 }
 
 package_python-logfire() {
@@ -162,6 +154,6 @@ package_python-logfire() {
               'python-opentelemetry-instrumentation-sqlite3: sqlite3'
               'python-opentelemetry-instrumentation-aws-lambda: aws-lambda')
   url='https://github.com/pydantic/logfire'
-  cd "${srcdir}"/${_name0}-${pkgver}
+  cd "$srcdir"/$_name0-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

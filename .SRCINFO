@@ -1,5 +1,5 @@
 pkgbase = python-logfire
-	pkgver = 4.3.3
+	pkgver = 4.3.4
 	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = any
@@ -68,9 +68,7 @@ pkgbase = python-logfire
 	checkdepends = python-pytest-xdist
 	checkdepends = python-openai-agents
 	checkdepends = python-websockets
-	checkdepends = python-griffe
-	checkdepends = python-opentelemetry-api
-	checkdepends = python-typing-inspection
+	checkdepends = python-pydantic-ai-slim
 	checkdepends = python-langchain
 	checkdepends = python-langchain-openai
 	checkdepends = python-langgraph
@@ -82,14 +80,8 @@ pkgbase = python-logfire
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	noextract = pydantic_graph-0.4.2-py3-none-any.whl
-	noextract = pydantic_ai_slim-0.4.2-py3-none-any.whl
-	source = logfire-4.3.3::git+https://github.com/pydantic/logfire.git#tag=v4.3.3
-	source = https://files.pythonhosted.org/packages/py3/p/pydantic-graph/pydantic_graph-0.4.2-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/p/pydantic-ai-slim/pydantic_ai_slim-0.4.2-py3-none-any.whl
-	sha256sums = 8fe5d2b52783d88c0f9cc0e52aea865d1bc51ae043406f46cd53736e0ce3b747
-	sha256sums = 6a89fa4a8472c468e39843ad9ce9eaef79cdc8318e6bac868baff2bc7adf09b2
-	sha256sums = 1dbbf31066b68b9e3cbb391e62114b620f02736607b90e64bccc3aa0e8f30475
+	source = logfire-4.3.4::git+https://github.com/pydantic/logfire.git#tag=v4.3.4
+	sha256sums = da4ad48b1f3309f5ef832be064e0d2d63c654f483870d4e900115ca493f05547
 
 pkgname = python-logfire-api
 	pkgdesc = Shim for the Logfire SDK which does nothing unless Logfire is installed.
