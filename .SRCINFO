@@ -1,6 +1,6 @@
 pkgbase = solian-git
 	pkgdesc = Next Generation Network Center (unstable)
-	pkgver = r525.9e40ed4
+	pkgver = r530.1fe48894
 	pkgrel = 1
 	url = https://solsynth.dev
 	arch = x86_64
