@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-git
-pkgver=0.0.4.109.g0eff022
+pkgver=r0.g0000000
 pkgrel=1
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('any')
