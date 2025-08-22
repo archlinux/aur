@@ -1,0 +1,11 @@
+pkgbase = codeblocks-i18n-zh_cn
+	pkgdesc = Code::Blocks and many plug-ins translation
+	pkgver = 20.03.20230209
+	pkgrel = 1
+	url = https://translations.launchpad.net/codeblocks-gd/trunk/+pots/all-codeblocks/zh_CN/+translate
+	arch = any
+	license = GPL-3.0-only
+	source = https://gitee.com/rongbow/codeblocks-i18n-zh_-cn/repository/archive/master.zip
+	sha256sums = c5fffc4f5b8eba2568810bbb6dcf087dba11bbaff9a776ca36a91941a595ca26
+
+pkgname = codeblocks-i18n-zh_cn
