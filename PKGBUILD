@@ -1,10 +1,10 @@
 # Maintainer: Setpill
 pkgname=lnd-bin
 _pkgname=lnd
-pkgver=0.19.2_beta
+pkgver=0.19.3_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightning Network Daemon ⚡"
 arch=('x86_64')
 url="https://github.com/lightningnetwork/lnd"
@@ -16,7 +16,7 @@ source=(
     "$_pkgname-LICENSE-v$_pkgver::https://raw.githubusercontent.com/lightningnetwork/$_pkgname/v$_pkgver/LICENSE"
 )
 sha512sums=(
-    'f5a3c143eb765e70a1783670b174c632b791cbd5a4fc473d78b375c9a015adb1249d4940b8a54dd93110ad2c203b8f486b008852e7549f88a10656a3ab5cbf51'
+    'f985b61e4058648bd3dfa062d760657ca23c8846b55f437213c6e04b5b979d845d083310d7421b7f61b7dbad26c22faef0b3638d9e23986ed14b0389d3a7033a'
     '49de7041d5c7448a8f5cc387e4e820eca2a87c02b70d5a38aa3823354d960843e93ca12bd8b66a13708937539da85b90328bd4c32575792f0aa6755a011ba4bb'
 )
 
