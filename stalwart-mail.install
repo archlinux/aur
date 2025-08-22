@@ -1,0 +1,10 @@
+post_install(){
+  cat <<INFO
+NOTE: Before starting stalwart-mail.service, create an admin password using
+      "openssl passwd -6" and add it to /etc/stalwart-mail/config.toml as
+      "authentication.fallback-admin.secret".
+      After starting stalwart-mail.service access the web interface at
+      https://localhost:443/ for further configuration.
+INFO
+}
+

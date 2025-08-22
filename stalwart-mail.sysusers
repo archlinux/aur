@@ -1,0 +1,5 @@
+# see man sysusers.d(5)
+#Type Name          ID             GECOS                 Home directory         Shell
+u!    stalwart-mail -              "Stalwart user"       /var/lib/stalwart-mail
+g     stalwart-mail -              -
+m     stalwart-mail stalwart-mail

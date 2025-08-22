@@ -1,0 +1,6 @@
+# see man tmpfiles.d(5)
+#Type Path                                     Mode User          Group         Age   Argument
+d     /etc/stalwart-mail/                      0755
+z     /etc/stalwart-mail/config.toml           0640 stalwart-mail stalwart-mail
+d     /var/lib/stalwart-mail/                  0750 stalwart-mail stalwart-mail
+d     /var/lib/stalwart-mail/data              0755 stalwart-mail stalwart-mail
