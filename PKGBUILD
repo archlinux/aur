@@ -5,7 +5,7 @@
 
 pkgname=arduino-ide
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source electronics prototyping platform"
 arch=(x86_64)
 url=https://github.com/arduino/arduino-ide
@@ -49,7 +49,7 @@ source=(
   arduino-ide.desktop
 )
 b2sums=('d8c55a4befac0a2b59b95fba614a45d8260a0ec3b10d2ff7b3f1508a5982b67ee24d31d78d555552edc2091ada48670ab839a9737656a35428d15ab6958fc5de'
-        '12e045253c9ba57023cbc74a6138aa314b1f7fff6a9a1e5eeb4378a3259919f783ee068f9ae7dd420544f84e8deb7c21f06173ef436d2ee50f138b8306ee2ff3'
+        '7b898d099bf9cfab9339d92976a8a75ddf3c3e55e64661c24bb386fad9da4a6b461bc49ca3607a15bd58820dc8eb709179e5808b7619c3f5f095db82478b5fea'
         '9b7c45d5081f23415c3dfd3d098cbe425b207f82a480b09f192e5d0e95511da5c8985ad20667301b8977a0ab3166c8b6aa5992e36df75173785bb026a10f8edb')
 
 prepare() {
