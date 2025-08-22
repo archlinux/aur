@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-remotecontrollers-git
-pkgver=r29.f65a847
+pkgver=r537.3bbb4f9
 pkgrel=1
 pkgdesc='Translate various input device events into keyboard and pointer events'
 arch=(x86_64)
@@ -14,7 +14,7 @@ source=(git+https://invent.kde.org/plasma-bigscreen/plasma-remotecontrollers.git
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "plasma-remotecontrollers-git"
+  cd "plasma-remotecontrollers"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
