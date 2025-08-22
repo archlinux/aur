@@ -3,7 +3,7 @@ _pkgname=visionaire-studio
 pkgname="${_pkgname}"-appimage
 
 # The version can not yet be optained through the AppImage
-pkgver=5.3.4
+pkgver=5.3.5
 
 pkgrel=1
 pkgdesc="Development for P&C games"
@@ -21,8 +21,8 @@ _appimage="Visionaire-Studio-x86_64.AppImage"
 
 source_x86_64=("https://www.visionaire-studio.net/downloads/out/visionaire-studio-5-linux/${_appimage}" "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage")
 #noextract=("${_appimage}")
-sha256sums_x86_64=('3ffabe39f38c8d80260e0903a121a704116d7df6b6d34d12eb6185be94a1cdd0'
-                   '9e2a59f4c0fe13de7ffbc6d76ef2d301f99c7a9d8c12c7aa762bd4852e9fce30')
+sha256sums_x86_64=('62a78ce9a1676949acd40fcb9600a92b5f4bae5be0867bcfb8b61089edd1c446'
+                   '29348a20b80827cd261c28e95172ff828b69d43d4e4e18e3fd069e2c8693c94e')
 
 prepare() {
     # Making the AppImage files executable
