@@ -1,3 +1,5 @@
+# Maintainer: Dainis Koknese <gatesby@protonmail.com>
+
 pkgname="tezaurs-tui"
 pkgrel="1"
 pkgdesc="Browse Latvian thesaurus (tezaurs.lv) in the terminal"
