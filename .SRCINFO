@@ -1,6 +1,6 @@
 pkgbase = plasma-dialer-git
 	pkgdesc = Dialer for Plasma Mobile - Git version
-	pkgver = todo
+	pkgver = r1169.387b2b8
 	pkgrel = 0
 	url = https://invent.kde.org/plasma-mobile/plasma-dialer
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = plasma-dialer-git
 	depends = modemmanager-qt-git
 	depends = libphonenumber
 	depends = callaudiod-git
-	source = git+https://invent.kde.org/plasma/plasma-dialer.git
+	source = git+https://invent.kde.org/plasma-mobile/plasma-dialer.git
 	sha256sums = SKIP
 
 pkgname = plasma-dialer-git
