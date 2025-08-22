@@ -1,7 +1,7 @@
 # Maintainer: xeyossr
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('any')
@@ -22,11 +22,11 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  
+
   export GOFLAGS="-mod=mod"
   go mod tidy
   go fmt ./...
-  
+
   gobuildenv=$(go version)
   go build -o build/anitr-cli -ldflags="-X 'github.com/xeyossr/anitr-cli/internal/update.version=${pkgver}' -X 'github.com/xeyossr/anitr-cli/internal/update.buildEnv=${gobuildenv}'"
 }
