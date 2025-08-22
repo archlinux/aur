@@ -12,6 +12,6 @@ pkgbase = gnome-shell-extension-no-annoyance-git
 	source = gnome-shell-extension-no-annoyance-git::git+https://github.com/jirkavrba/noannoyance
 	source = 001_metadata.patch
 	b2sums = SKIP
-	b2sums = 0f6ff2303d564ffde54262b250ea7766f18a943dee7dcc42b52dd1808e823fd39be8b625ca69339c7448e7e0fbb21b1dcafcd343e2740215f7c93c6739c46079
+	b2sums = c8868e7cfcd961a9f2395732d76ca57023515aadd29de8b4899e53eed1a08708793cf956234890514c5e010c62e3fcb0d79d41365396470ceb9fc0e41e600575
 
 pkgname = gnome-shell-extension-no-annoyance-git
