@@ -1,10 +1,10 @@
-# Maintainer:  GI Jack <GI_Jack@hackermail.com>
+# Maintainer:  Network Jack <Network_Jack@null.net>
 # Contributor:  M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=raid-check-systemd
-pkgver=4.2
-pkgrel=7
-_centrel=12
+pkgver=4.4
+pkgrel=1
+_centrel=2
 pkgdesc="Raid data scrubbing script with systemd timer to be used with mdadm."
 arch=('any')
 url="https://wiki.archlinux.org/index.php/RAID#Scrubbing"
@@ -15,7 +15,7 @@ source=("http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/mdad
         'raid-check.service'
         'raid-check.timer')
 
-sha256sums=('8ba9890d23fec97492fe62ab00986ea2c421c437fdef08132c935a4e7a70c75d'
+sha256sums=('716c978dc8b67b1f5cad027b72eaa62dd2c010abfead050134bfcf255c5ae851'
             '90db8f53984df9d7ab32fde09a853632e9d76cbd91224c0efd760406118af84b'
             '1a0095d05f57d1a9fc4d234e2c21db9e369ca755f0f31e61030b7a7aa840dee1')
             
