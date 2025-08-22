@@ -17,6 +17,7 @@ pkgbase = plasma-dialer-git
 	depends = modemmanager-qt-git
 	depends = libphonenumber
 	depends = callaudiod-git
+	source = git+https://invent.kde.org/plasma/plasma-dialer.git
 	sha256sums = SKIP
 
 pkgname = plasma-dialer-git
