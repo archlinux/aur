@@ -1,16 +1,16 @@
 pkgbase = thunderbird-extension-localfolders
 	pkgdesc = Thunderbird extension that adds as many local folders as you want to, even on mapped or network locations
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cleidigh/Localfolder-TB
 	arch = any
 	groups = thunderbird-addons
 	license = MPL-2.0
-	makedepends = zip
+	makedepends = unzip
 	makedepends = jq
 	depends = thunderbird
 	source = license_MPL-2.0.html::http://www.mozilla.org/MPL/2.0/
-	source = thunderbird-extension-localfolders_4.2.0-1.xpi::https://addons.thunderbird.net/thunderbird/downloads/file/1040538/localfolders-4.2.0-tb.xpi
+	source = thunderbird-extension-localfolders_4.2.0-2.xpi::https://addons.thunderbird.net/thunderbird/downloads/file/1040538/localfolders-4.2.0-tb.xpi
 	sha256sums = SKIP
 	sha256sums = f46a654e7a97fed79afd5c6dadd083e47d6dfea159c22329dfcfc3d4750e75cd
 
