@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=qqc2-desktop-style-git
-pkgver=r29.8bbb782
+pkgver=r1225.96b4c00
 pkgrel=0
 pkgdesc='A style for Qt Quick Controls 2 to make it follow your desktop theme - Git Version'
 arch=(any)
@@ -14,7 +14,7 @@ source=("git+https://invent.kde.org/frameworks/qqc2-desktop-style.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "qqc2-desktop-style-git"
+  cd "qqc2-desktop-style"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
