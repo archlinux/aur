@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=3.0.2
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
@@ -38,7 +38,7 @@ optdepends=(
 )
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/dmlc/dmlc-core.git)
-sha256sums=('726dce5316d7b076fb13165201838a7ff0fe67ed1b78f76051e38a1406f0f159'
+sha256sums=('53dc66cea1ea6d9f23277690869858a8cca9f58299ab1ac18fed2b8b0f389730'
             'SKIP')
 
 prepare() {
