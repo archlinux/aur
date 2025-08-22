@@ -1,6 +1,6 @@
 pkgbase = proto
 	pkgdesc = Pluggable multi-language version manager
-	pkgver = 0.51.6
+	pkgver = 0.52.1
 	pkgrel = 1
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = proto
 	depends = xz
 	optdepends = rustup: support for Rust toolchains
 	options = !lto
-	source = proto-0.51.6.tar.gz::https://github.com/moonrepo/proto/archive/v0.51.6.tar.gz
-	sha256sums = cb46d124e52a6413e42486d24a4cc8fe6c8c4aea06ca4afbae8371b54e2cf298
+	source = proto-0.52.1.tar.gz::https://github.com/moonrepo/proto/archive/v0.52.1.tar.gz
+	sha256sums = a22af190801afa8084e66293e52c6bab0818242038e6ab4074804f0162a8fdfd
 
 pkgname = proto
