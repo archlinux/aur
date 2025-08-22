@@ -1,7 +1,7 @@
 pkgbase = gcc12
 	pkgdesc = The GNU Compiler Collection
 	pkgver = 12.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL3
@@ -27,6 +27,8 @@ pkgbase = gcc12
 	source = git+https://sourceware.org/git/gcc.git#commit=c17d40bb3778bca5e81595f033df9222b66658eb
 	source = c89
 	source = c99
+	source = 78_all-libsanitizer-Fix-build-with-glibc-2.42.patch
+	source = 79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
@@ -34,6 +36,8 @@ pkgbase = gcc12
 	sha256sums = SKIP
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
+	sha256sums = 17d0dbcdd1772e88853d41575c79e448ddeb8a46ec07b7b15e82c23d75541f8b
+	sha256sums = b4459b314d33e4b6af1c77c6121dffee262c3ecf5436fc20c67fcab0446e059e
 
 pkgname = gcc12
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (12.x.x)
