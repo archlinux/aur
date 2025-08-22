@@ -32,7 +32,6 @@ pkgver() {
 }
 
 build() {
-  pwd
   cd "$pkgname"
   ./autogen.sh
   PYTHON=/usr/bin/python \
