@@ -1,0 +1,13 @@
+pkgbase = brokefetch-mod
+	pkgdesc = A broken neofetch clone script 💀 (mod version with logos)
+	pkgver = 2025.08.16.rfcae890
+	pkgrel = 1
+	url = https://github.com/Szerwigi1410/brokefetch
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	source = brokefetch-mod::git+https://github.com/Szerwigi1410/brokefetch
+	sha256sums = SKIP
+
+pkgname = brokefetch-mod
