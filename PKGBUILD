@@ -19,7 +19,7 @@ depends=(
   callaudiod-git
 )
 
-source=('git+https://invent.kde.org/plasma/plasma-dialer.git')
+source=('git+https://invent.kde.org/plasma-mobile/plasma-dialer.git')
 makedepends=(cmake extra-cmake-modules-git)
 sha256sums=('SKIP')
 
