@@ -1,15 +1,14 @@
 pkgbase = lncur
-	pkgdesc = Script to automate symlinking files when porting Windows cursors to Linux
-	pkgver = 1.0.2
+	pkgdesc = Python CLI to update your system packages
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/claymorwan/lncur
-	arch = x86_64
+	url = https://pypi.org/project/lncur
+	arch = any
 	license = MIT
-	makedepends = pyinstaller
-	depends = python
+	makedepends = python-installer
 	provides = lncur
 	conflicts = lncur
-	source = lncur-1.0.2.tar.gz::https://github.com/claymorwan/lncur/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 1ad30da4b640addbf7ab77718e4efeb7678c44769e0377e02d055a190dbbfb95
+	source = https://files.pythonhosted.org/packages/py3/l/lncur/lncur-1.1.0-py3-none-any.whl
+	sha256sums = 1505526173b9613d90c8ee4de1dc9043901715935fcec7c917089519bc998bde
 
 pkgname = lncur

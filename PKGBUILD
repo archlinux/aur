@@ -1,26 +1,19 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
 pkgname=lncur
-pkgver=1.0.2
+_name=${pkgname#python-}
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Script to automate symlinking files when porting Windows cursors to Linux"
-arch=(x86_64)
-url="https://github.com/claymorwan/lncur"
+pkgdesc="Python CLI to update your system packages"
+arch=(any)
+url="https://pypi.org/project/lncur"
 license=('MIT')
-depends=('python')
-makedepends=('pyinstaller')
-provides=($pkgname)
-conflicts=($pkgname)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1ad30da4b640addbf7ab77718e4efeb7678c44769e0377e02d055a190dbbfb95')
-
-build() {
-	cd "$pkgname-$pkgver"
-	pyinstaller --onefile $pkgname.py
-}
+makedepends=(python-installer)
+provides=($_name)
+conflicts=($_name)
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
+sha256sums=('1505526173b9613d90c8ee4de1dc9043901715935fcec7c917089519bc998bde')
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -d "$pkgdir/usr/bin"
-	cp "dist/$pkgname" "$pkgdir/usr/bin/"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+	cd $srcdir
+	python -m installer -d $pkgdir "$_name-$pkgver-py3-none-any.whl"
 }
