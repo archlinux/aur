@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.7.r13.gf4f4fb3
+pkgver=1.0.0.alpha.7.r21.g3f72461
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,6 @@ license=('GPL-3.0-only')
 depends=(
   'acpid'
   'adw-gtk-theme'
-  'alsa-utils'
   'libinput'
   'libpulse'
   'openssl'
@@ -25,7 +24,6 @@ makedepends=(
   'libxkbcommon'
   'mold'
 )
-optdepends=('pipewire-alsa: Media keys support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-settings-daemon.git'
