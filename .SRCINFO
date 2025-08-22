@@ -1,14 +1,14 @@
 pkgbase = nsmb-mvl
 	pkgdesc = A unity-standalone 2-10 player remake of the Mario vs. Luigi gamemode from the New Super Mario Bros DS download game.
-	pkgver = 2.0.3.0
+	pkgver = 2.0.4.1
 	pkgrel = 1
 	url = https://github.com/ipodtouch0218/NSMB-MarioVsLuigi
 	arch = x86_64
 	license = unknown
-	source = nsmb-mvl-2.0.3.0.zip::https://github.com/ipodtouch0218/NSMB-MarioVsLuigi/releases/download/v2.0.3.0/MarioVsLuigi-Linux-v2.0.3.0.zip
+	source = nsmb-mvl-2.0.4.1.zip::https://github.com/ipodtouch0218/NSMB-MarioVsLuigi/releases/download/v2.0.4.1/MarioVsLuigi-Linux-v2.0.4.1.zip
 	source = nsmb-icon.png
 	source = nsmb-mvl.desktop
-	sha256sums = 402e98ba42d13b528ef00282bb5fe7129aaddfa456461ea0e695589f69abbbf5
+	sha256sums = 7f2a0b7292159a7650b96c1d65aab7e780f84cf0a7a5d6960c315559ca2eb982
 	sha256sums = 2085c03847bfb79b4e46b19e18d0d30087d5b40225827b723b6621a1c8c7df5c
 	sha256sums = 49eb837a0bd5fe37767e0e678c78e9fce52466ef541bc28917b7b13004a774a5
 
