@@ -3,12 +3,13 @@
 pkgname=streamcontroller-plugin-tools-git
 gitname=streamcontroller-plugin-tools
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Base for StreamController plugins"
 arch=('x86_64')
 url="https://github.com/StreamController/streamcontroller-plugin-tools"
 license=('GPL')
 depends=('python-rpyc' 'python-loguru')
+makedepend=('python-build','python-install')
 provides=('streamcontroller-plugin-tools')
 source=("${gitname}-${pkgver}.tar.gz::https://github.com/StreamController/streamcontroller-plugin-tools/archive/refs/tags/${pkgver}.tar.gz")
 
