@@ -1,11 +1,11 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=bandcamp-dl-git
-pkgver=v0.0.17.r40.g7c8c24e
+pkgver=v0.0.17.r42.g0b77700
 pkgrel=1
 pkgdesc="Download audio from bandcamp.com"
 arch=('any')
-url="https://github.com/iheanyi/bandcamp-dl"
+url="https://github.com/Evolution0/bandcamp-dl"
 license=('Unlicense')
 makedepends=('git' 'python-build' 'python-installer')
 depends=(
@@ -23,7 +23,7 @@ depends=(
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
 options=(!emptydirs)
-source=("git+https://github.com/iheanyi/bandcamp-dl.git")
+source=("git+https://github.com/Evolution0/bandcamp-dl.git")
 sha512sums=('SKIP')
 
 pkgver() {

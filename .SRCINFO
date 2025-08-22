@@ -1,8 +1,8 @@
 pkgbase = bandcamp-dl-git
 	pkgdesc = Download audio from bandcamp.com
-	pkgver = v0.0.17.r40.g7c8c24e
+	pkgver = v0.0.17.r42.g0b77700
 	pkgrel = 1
-	url = https://github.com/iheanyi/bandcamp-dl
+	url = https://github.com/Evolution0/bandcamp-dl
 	arch = any
 	license = Unlicense
 	makedepends = git
@@ -21,7 +21,7 @@ pkgbase = bandcamp-dl-git
 	provides = bandcamp-dl
 	conflicts = bandcamp-dl
 	options = !emptydirs
-	source = git+https://github.com/iheanyi/bandcamp-dl.git
+	source = git+https://github.com/Evolution0/bandcamp-dl.git
 	sha512sums = SKIP
 
 pkgname = bandcamp-dl-git
