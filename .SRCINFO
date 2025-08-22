@@ -1,6 +1,6 @@
 pkgbase = cursor-cli
 	pkgdesc = Cursor Agent CLI - AI-powered code assistant
-	pkgver = 2025.08.15.1.dbc8d73
+	pkgver = 2025.08.21.1.9ba2c98
 	pkgrel = 1
 	epoch = 1
 	url = https://cursor.com
@@ -9,9 +9,9 @@ pkgbase = cursor-cli
 	license = LicenseRef-Cursor
 	source = LICENSE
 	b2sums = 7079c023e03ea4d78b067ed0f22b5cc1982c306721b2ea6be3c7f73bbbe0e8f05b148fd6571902b838464ee80a787ef7be73135c622f0a4fdb16c38429ced8d6
-	source_x86_64 = cursor-cli-2025.08.15-dbc8d73-x86_64.tar.gz::https://downloads.cursor.com/lab/2025.08.15-dbc8d73/linux/x64/agent-cli-package.tar.gz
-	b2sums_x86_64 = f2c1c243339ced6fc93f2b1552d0bfaca89fc36d7ee9b4e5813d6ca8962c58e1a1ba41ef3322defcfe41311abe76c2b502c7710b6ee7320f38179516d828da13
-	source_aarch64 = cursor-cli-2025.08.15-dbc8d73-aarch64.tar.gz::https://downloads.cursor.com/lab/2025.08.15-dbc8d73/linux/arm64/agent-cli-package.tar.gz
-	b2sums_aarch64 = 58cc6a006aa8560b49d8bc217f70bf3aae67e98414255b17bc2863ba147513fadb4b5815f26ea98361d6942e634ac02b2618acc1c5175dd8a11a56484153d4aa
+	source_x86_64 = cursor-cli-2025.08.21-9ba2c98-x86_64.tar.gz::https://downloads.cursor.com/lab/2025.08.21-9ba2c98/linux/x64/agent-cli-package.tar.gz
+	b2sums_x86_64 = cf5c7944ac97f5b0d435f96cb3563646317008e027477849471c300d130b84dd6fd5089d4520f4074d908f8921d6a25104cd2b2f5a37d551c8d427e5b1004e8f
+	source_aarch64 = cursor-cli-2025.08.21-9ba2c98-aarch64.tar.gz::https://downloads.cursor.com/lab/2025.08.21-9ba2c98/linux/arm64/agent-cli-package.tar.gz
+	b2sums_aarch64 = c61addfc5392fdade0d1886893b2ff2d6155820bf882cc5c2ccd48522a31e7079ff2ea72d8974b736baee19aec0384b00d7726539951bb218dad2825916bf4fc
 
 pkgname = cursor-cli
