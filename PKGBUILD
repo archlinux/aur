@@ -3,7 +3,7 @@
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 
 pkgname=stm32cubef7
-pkgver=1.17.3
+pkgver=1.17.4
 pkgrel=1
 pkgdesc="Embedded software for STM32 F7 series"
 arch=('any')
@@ -31,7 +31,7 @@ source=(
   'SLA0044.txt'
 )
 sha256sums=(
-  'd566a0f2410838f40daf4adc9400722f7b3246e59a0ad38258f9fa502a0d64b4'
+  'bba46d95e11e23f9a93dc39c8320f6cf3799353551842a87b59f3f2c16f9cdd3'
   '55ba65f78747449aef987ef7f4bfe27bf6927c0acdcca5eb5acc77c16d2dcc2e'
 )
 
