@@ -1,15 +1,16 @@
-# Maintainer: Sean Snell <ssnell@lakecs.net>
+# Maintainer: Nora Maguire <eva@rigel.moe>
+# Contributor: Sean Snell <ssnell@lakecs.net>
 
 pkgname=streamcontroller-plugin-tools-git
 gitname=streamcontroller-plugin-tools
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Base for StreamController plugins"
 arch=('x86_64')
 url="https://github.com/StreamController/streamcontroller-plugin-tools"
 license=('GPL')
 depends=('python-rpyc' 'python-loguru')
-makedepend=('python-build','python-install')
+makedepend=('python-build','python-installer')
 provides=('streamcontroller-plugin-tools')
 source=("${gitname}-${pkgver}.tar.gz::https://github.com/StreamController/streamcontroller-plugin-tools/archive/refs/tags/${pkgver}.tar.gz")
 
