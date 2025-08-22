@@ -3,7 +3,7 @@
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-openvino"
 pkgver=1.7.6 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OpenVINO run-time)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -15,8 +15,15 @@ makedepends=(
   'cmake'
   'git'
 )
+source=(
+  "${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  disable-talk-llama.patch
+)
 
-source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+prepare() {
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  patch -Np1 -i "${srcdir}/disable-talk-llama.patch"
+}
 
 build() {
   cmake \
@@ -26,7 +33,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DWHISPER_OPENVINO=1 \
     -DWHISPER_SDL2=1 \
-    -DWHISPER_BUILD_EXAMPLES=0 \
     -DWHISPER_BUILD_SERVER=0 \
     -DWHISPER_BUILD_TESTS=0
 
@@ -36,14 +42,12 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
 
-  cd "${srcdir}/build/bin"
-  for i in whisper-*; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${i}"
-  done
-
+  cp -r "${srcdir}/build/bin" "${pkgdir}/usr"
   install -Dm644 "${srcdir}/${_pkgbase}-${pkgver}/LICENSE" \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('166140e9a6d8a36f787a2bd77f8f44dd64874f12dd8359ff7c1f4f9acb86202e')
+sha256sums=(
+  '166140e9a6d8a36f787a2bd77f8f44dd64874f12dd8359ff7c1f4f9acb86202e'
+  '52776f8b0c4a1c117d4b12aaca2bd62ec0094aaa3bac224365b007a9efd0b585'
+)
