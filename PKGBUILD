@@ -2,7 +2,7 @@
 
 pkgname=cactus-client
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 # allow testing locally a release candidate using pkgver like '19.3rc3'
 _version=${pkgver/rc/-rc}
 pkgdesc="A DDRaceNetwork modification adding new feauters"
