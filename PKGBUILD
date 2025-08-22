@@ -3,7 +3,7 @@
 pkgbase=notmuch-tools
 pkgname=notmuch-tools-git
 pkgver=r87.84c38f0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of small command-line tools for the Notmuch mail indexer, including tag synchronization across machines."
 arch=(any)
 url="https://framagit.org/manu/notmuch-tools"
