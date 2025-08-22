@@ -1,6 +1,6 @@
 pkgbase = remarshal
 	pkgdesc = Convert between CBOR, JSON, MessagePack, TOML, and YAML
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/dbohdan/remarshal
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = remarshal
 	depends = python-ruamel-yaml
 	conflicts = haskell-yaml
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/r/remarshal/remarshal-1.0.1.tar.gz
-	sha256sums = 3b65ae75cc8041d8b9b16c90979366e508bc8ea4a14fd7dd508b54a0d97c03ab
+	source = https://files.pythonhosted.org/packages/source/r/remarshal/remarshal-1.2.0.tar.gz
+	sha256sums = f50950a1cca59efddaf54cd86b70377f12a4120970f3bc8a694b6c5c23ef7898
 
 pkgname = remarshal
