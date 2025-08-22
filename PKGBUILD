@@ -1,16 +1,15 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider-git
 _pkgname=oqs-provider
-pkgver=r213.8b3d460
-_pkgverliboqs=0.10.1
+pkgver=r369.39c5ab1
 pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
 url=https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider
 license=(MIT)
 depends=(
-    'liboqs>=0.10.0'
-    'openssl'
+    liboqs-git
+    openssl
 )
 makedepends=(
     cmake
@@ -24,11 +23,11 @@ provides=(oqsprovider.so)
 conflicts=(oqsprovider)
 source=(
     $pkgname::git+https://github.com/open-quantum-safe/$_pkgname
-    liboqs-$_pkgverliboqs.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/$_pkgverliboqs.tar.gz
+    liboqs::git+https://github.com/open-quantum-safe/liboqs.git
 )
 install=$pkgname.install
 b2sums=('SKIP'
-        '7f5f59641734d9827323b116822bf0204c7390abcf3e899b638c9f2ee7acc2c79511bb53b91e8c5d1f6bf4c8b63191f8df8fef0054020d3a38f7af3ddf33c424')
+        'SKIP')
 
 pkgver() {
     cd $pkgname
@@ -40,7 +39,7 @@ prepare() {
     # Enable all sig algs
     sed -i -e 's/enable: false/enable: true/g' oqs-template/generate.yml
     # Some files are needed from the liboqs source code or generate.py will fail
-    LIBOQS_SRC_DIR="$srcdir"/liboqs-$_pkgverliboqs python oqs-template/generate.py
+    LIBOQS_SRC_DIR="$srcdir"/liboqs python oqs-template/generate.py
 }
 
 build() {

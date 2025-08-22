@@ -1,5 +1,4 @@
+liboqs
+oqsprovider-git
 *.log
 *.tar.*
-src
-pkg
-*-git
