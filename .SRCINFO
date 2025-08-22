@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher
 	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 3.15.5
+	pkgver = 3.15.6
 	pkgrel = 1
 	url = https://github.com/an-anime-team/an-anime-game-launcher
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = an-anime-game-launcher
 	optdepends = mangohud: FPS Overlay
 	optdepends = gamescope: Micro-Compositor
 	optdepends = gamemode: CPU Scaling Control
-	source = https://github.com/an-anime-team/an-anime-game-launcher/archive/refs/tags/3.15.5.tar.gz
-	sha256sums = 4b7bdeb6b55d354957fbf85b9ebb850a5bb723633abb157d1ed09918f839d3c1
+	source = https://github.com/an-anime-team/an-anime-game-launcher/archive/refs/tags/3.15.6.tar.gz
+	sha256sums = 90c15b5039aec777c1260c4588e2d25bb9391f920d0e480cb1feb9de29d793f2
 
 pkgname = an-anime-game-launcher
