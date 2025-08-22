@@ -1,10 +1,11 @@
 pkgbase = system-bridge
 	pkgdesc = A bridge for your systems
-	pkgver = 5.0.0.beta.3
+	pkgver = 5.0.0.beta.7
 	pkgrel = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = git
 	makedepends = go
 	makedepends = bun-bin
 	depends = libx11
@@ -13,7 +14,7 @@ pkgbase = system-bridge
 	depends = libxkbcommon-x11
 	provides = system-bridge
 	conflicts = system-bridge-git
-	source = system-bridge-5.0.0.beta.3.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.0.0-beta.3.tar.gz
-	sha256sums = 10f6ece1e540d1699f0462707afb1d6727943cab2c4f094238ae6f14a2a8cc3f
+	source = system-bridge-5.0.0.beta.7.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.0.0-beta.7.tar.gz
+	md5sums = SKIP
 
 pkgname = system-bridge
