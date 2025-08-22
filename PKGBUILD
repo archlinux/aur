@@ -3,7 +3,7 @@
 _pkgauthor=AvengeMedia
 _pkgname=dgop
 pkgname=${_pkgname}-bin
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="System monitoring CLI + REST API"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[1]}")
 sha256sums=('4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa'
             '258c35d14d64ec8d372d5176da39cd8b55ddc6f3966b29f3ec61be97557e46fa')
-sha256sums_x86_64=('da6bec9c0a019910df8ab2a974f91bf5b7857e1091624b42793a912957161b47')
-sha256sums_aarch64=('608368020de8c4c5424a7caf9772dad146b728d779f61a6a5057b15c10c5e8e3')
+sha256sums_x86_64=('5458082d33a93b455adb7fbef3907ca8ddefe208b580e1e96ad1b6f52cbce525')
+sha256sums_aarch64=('925330acd93a64066cd38e6e4b6f073b504aeda8eab6ee5a8ecebc237383f3ae')
 
 
 package() {
