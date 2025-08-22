@@ -1,0 +1,4 @@
+[wrkflw]
+source = "git"
+git = "https://github.com/bahdotsh/wrkflw.git"
+prefix = "v"
