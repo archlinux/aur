@@ -1,0 +1,12 @@
+pkgbase = rottedfetch
+	pkgdesc = just a sys fetch
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Krak9n/rottedfetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = cargo
+	source = git+https://github.com/Krak9n/rottedfetch.git
+	sha512sums = SKIP
+
+pkgname = rottedfetch
