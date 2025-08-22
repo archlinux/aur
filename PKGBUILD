@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=qqc2-desktop-style-git
-pkgver=r21.270f087
+pkgver=r22.9122051
 pkgrel=0
 pkgdesc='A style for Qt Quick Controls 2 to make it follow your desktop theme - Git Version'
 arch=(any)
