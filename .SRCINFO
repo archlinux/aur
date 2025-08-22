@@ -1,7 +1,7 @@
 pkgbase = wrkflw
 	pkgdesc = validate and execute GitHub Actions workflows locally
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/bahdotsh/wrkflw
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = wrkflw
 	depends = glibc
 	depends = openssl
 	depends = libcrypto.so
-	source = https://github.com/bahdotsh/wrkflw/archive/v0.3.0/wrkflw-0.3.0.tar.gz
-	sha256sums = d8f2652587317c07dbb146654955774edd61b79abf9232b261ba0641d0da90d4
+	source = https://github.com/bahdotsh/wrkflw/archive/v0.7.1/wrkflw-0.7.1.tar.gz
+	sha256sums = 3d972f95f56e73f803d0d998674befa97c7e620885c0e81fe131ff6cbabf6bf4
 
 pkgname = wrkflw
