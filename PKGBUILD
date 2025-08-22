@@ -4,8 +4,8 @@
 
 _reponame=seadrive-fuse
 pkgname=seadrive-daemon
-pkgver=3.0.12
-pkgrel=3
+pkgver=3.0.16
+pkgrel=1
 pkgdesc="SeaDrive daemon with FUSE interface"
 arch=('x86_64')
 url="https://github.com/haiwen/seadrive-fuse"

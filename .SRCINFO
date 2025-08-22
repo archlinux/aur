@@ -1,7 +1,7 @@
 pkgbase = seadrive-daemon
 	pkgdesc = SeaDrive daemon with FUSE interface
-	pkgver = 3.0.12
-	pkgrel = 3
+	pkgver = 3.0.16
+	pkgrel = 1
 	url = https://github.com/haiwen/seadrive-fuse
 	arch = x86_64
 	license = GPL-3.0-only
