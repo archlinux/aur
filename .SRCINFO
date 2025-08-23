@@ -1,6 +1,6 @@
 pkgbase = fmp-bin
 	pkgdesc = A simple secure password manager written in rust.
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://codeberg.org/lwilko/fmp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fmp-bin
 	depends = gpgme
 	depends = libgpg-error
 	conflicts = fmp-git
-	source = fmp-linux::https://codeberg.org/lwilko/fmp/releases/download/v1.4.5/fmp-linux
+	source = fmp-linux::https://codeberg.org/lwilko/fmp/releases/download/v1.4.6/fmp-linux
 	sha512sums = 0a67b3abcbe598c81a800ebc381025f9ab2fd430b2575372be0f502e2af4e0b6825a8b369e02c511b39f95b0df819748446b7c6fe4e71fb67a1a06a6eb67797b
 
 pkgname = fmp-bin
