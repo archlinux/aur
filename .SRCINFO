@@ -1,6 +1,6 @@
 pkgbase = nip4
 	pkgdesc = image processing spreadsheet
-	pkgver = 9.0.11
+	pkgver = 9.0.12
 	pkgrel = 1
 	url = https://github.com/jcupitt/nip4
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = nip4
 	depends = libvips
 	depends = libxml2
 	depends = pango
-	source = nip4-9.0.11.tar.xz::https://github.com/jcupitt/nip4/releases/download/v9.0.11/nip4-9.0.11.tar.xz
-	sha256sums = 6a4ea40987fbb79fe21207c0945114214d235995ed80d50ac54b479eaf0959e9
+	source = nip4-9.0.12.tar.xz::https://github.com/jcupitt/nip4/releases/download/v9.0.12/nip4-9.0.12.tar.xz
+	sha256sums = f778f5c7183c30048d1297820aff051a3248d039af6ed96bbd214b5fc7b7a91c
 
 pkgname = nip4
