@@ -1,6 +1,6 @@
 pkgbase = sensible-utils-git
 	pkgdesc = Utilities for sensible alternative selection
-	pkgver = 0.0.24.r7.gc81fe21
+	pkgver = 0.0.26.r0.gfa5c653
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/sensible-utils
 	arch = any
@@ -10,13 +10,8 @@ pkgbase = sensible-utils-git
 	makedepends = git
 	makedepends = po4a
 	depends = bash
-	provides = sensible-utils=0.0.24
+	provides = sensible-utils=0.0.26.r0
 	conflicts = sensible-utils
-	conflicts = sensible-browser-git
-	conflicts = sensible-editor-git
-	conflicts = sensible-pager-git
-	conflicts = sensible-terminal-git
-	conflicts = sensible-utils-data-git
 	source = sensible-utils::git+https://salsa.debian.org/debian/sensible-utils.git
 	sha256sums = SKIP
 
