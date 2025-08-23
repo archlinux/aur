@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-git
 pkgver=r0.g0000000
-pkgrel=3
+pkgrel=4
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('any')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -24,8 +24,8 @@ optdepends=(
     'qt6ct: Qt6 application theming'
 )
 makedepends=('git')
-provides=('dms')
-conflicts=('dms')
+provides=('dms-shell')
+conflicts=('dms-shell')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
