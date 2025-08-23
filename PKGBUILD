@@ -3,7 +3,7 @@
 
 pkgname=allay-launcher-git
 _pkgname=allay
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="The launcher for Allay that aims to be small, fast and ready out of the box⚡"
 arch=('x86_64' 'aarch64')
@@ -27,9 +27,9 @@ source=(
     "git+${url}.git"
     "allay.1"
 )
-sha512sums=(
+sha256sums=(
     'SKIP'
-    'd6d3bab6578ef9677e0cfb31446ba0f82fee8c5473a3a77b144cd716f95fcf8ce46d0ad05d4f8e0bebc21897a406f6aaad68422e299d3d354404193b367f810c'
+    'ef7d618595d5f9eced792956646bf504dcd4f17e1ae9588f0234863d39ad5eb0'
 )
 
 prepare() {
