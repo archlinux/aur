@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=cloud-fs-bin
-pkgname=clouddrive
+pkgname=(cloud-fs-bin clouddrive)
 pkgver=0.9.7
-pkgrel=1
+pkgrel=3
 epoch=2
 pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -21,30 +21,44 @@ depends=(
 makedepends=(
     libarchive
 )
-optdepends=('docker: Pack, ship and run any application as a lightweight container'
-    'davfs2: File system driver that allows you to mount a WebDAV folder'
-    'clouddrive-decrypt: clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2.'
-    'rclone-browser: Simple cross-platform GUI for rclone')
+optdepends=('rclone-browser: Simple cross-platform GUI for rclone')
 backup=()
 options=('!strip' '!debug' '!lto' 'emptydirs')
-install=${pkgname}.install
+install=clouddrive.install
 source=(
     "LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
-    "${pkgname}.install"
-    "${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-x86_64-${pkgver}.tgz"
-    "${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz"
+    "clouddrive.install"
+    "clouddrive-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/clouddrive-${epoch}-linux-x86_64-${pkgver}.tgz"
+    "clouddrive-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/clouddrive-${epoch}-linux-aarch64-${pkgver}.tgz"
 )
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
             'f2d0bffedcfcb542ee07eef4f797dc848703f6d63f0d7b837a89a190dcc09780'
             'e6690651080f15af1db37caa75e2e0b537e0db93833efef95082fa79f4e99f9c'
             'f6949d86e061e9209d39ace662dedf6f389df990adc188e6296e1135b19271a0')
 noextract=(
-    ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
-    ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
+    clouddrive-${epoch}-x86_64-${pkgver}.tgz
+    clouddrive-${epoch}-aarch64-${pkgver}.tgz
+)
+
+package_cloud-fs-bin() {
+    pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
+    provides=(${pkgname%-bin})
+    conflicts=(${pkgname%-bin})
+    depends=(
+        clouddrive
+        clouddrive-decrypt
+        davfs2
+        docker
+    )
+}
 
 _install_path="opt/${pkgname}"
 
-package() {
+package_clouddrive() {
+    pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
+    provides=(${pkgname} ${pkgname}2)
+    conflicts=(${pkgname} ${pkgname}2)
+
     cd ${srcdir}
     install -dm777 ${pkgdir}/${_install_path} \
         "${pkgdir}"/media/clouddrive \
