@@ -1,50 +1,48 @@
-# Contributor:  dreieck (https://aur.archlinux.org/account/dreieck)
-# Maintainer:   pika02 (https://aur.archlinux.org/account/pika02)
+# Maintainer: envolution
+# Contributor: dreieck
+# Contributor: pika02
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-libpulse
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
-pkgdesc="Asyncio interface to the Pulseaudio and Pipewire pulse library."
+pkgdesc="Asyncio interface to the Pulseaudio and Pipewire pulse library"
 arch=('any')
 url="https://gitlab.com/xdegaye/libpulse"
 license=('MIT')
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
 depends=(
-  'python>=3.8'
-  'python<4'
+  'python'
+  'libpulse'
 )
+checkdepends=(python-pytest)
 makedepends=(
   'git'
   'python-build'
-  'python-flit-core>=3.2'
-  'python-flit-core<4'
+  'python-flit-core'
   'python-installer'
   'python-setuptools'
   'python-wheel'
 )
-optdepends=()
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('cc8303c5939e71560647ba22403166dbfa4cb2acff893a231b8e84bddb014b19')
-
+sha256sums=('5b3cf50a1a5aad6c038e6160f58d669815a947d3188748b479c71a96027794e9')
 
 build() {
   cd "${srcdir}/${pkgname}"
-
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}/${pkgname}"
+  PYTHONPATH="$PWD:$PYTHONPATH"
+  python -m pytest --ignore=libpulse/tests/test_pactl.py
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-
   python -m installer --destdir="${pkgdir}" dist/*.whl
-
-  ### Remove file that gets ill-installed
-  #rm -v "${pkgdir}/usr/LICENSE.txt"
-
   install -D -m644 -v -t "${pkgdir}/usr/share/doc/${pkgname}" README.rst
   install -D -m644 -v -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
-
+# vim:set ts=2 sw=2 et:

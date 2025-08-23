@@ -1,0 +1,3 @@
+[python-libpulse]
+source = 'git'
+git = 'https://gitlab.com/xdegaye/libpulse.git'
