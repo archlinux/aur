@@ -1,5 +1,5 @@
 pkgname=python-r3pcomms-git
-pkgver=3.0.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Local communication with a River 3 Plus over USB HID and/or CDC(ACM)"
 arch=('x86_64')
