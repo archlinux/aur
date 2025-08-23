@@ -26,6 +26,7 @@ prepare() {
   patch -p1 -i ../presage-gcc6.patch # Fix build with GCC 6
   patch -p1 -i ../presage-c++17.patch # Fix build with C++17 (Debian)
   patch -p1 -i ../presage-format-security.patch # Fix build with Werror=format-security (Debian)
+  autoreconf -fiv
 }
 
 build() {
