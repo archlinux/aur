@@ -5,8 +5,8 @@
 # Contributor: Nick <nick@screamingfist.org>
 
 pkgname=doomrl
-pkgver=0.9.9.8a
-pkgrel=2
+pkgver=0.10.0e
+pkgrel=1
 pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://drl.chaosforge.org/"
@@ -17,7 +17,7 @@ makedepends=('ffmpeg')
 source=(
     'cc-by-nc-sa-4.0.txt'
     'drl.sh'
-    "https://github.com/chaosforgeorg/doomrl/releases/download/${pkgver//./_}/drl-linux-0998.tar.gz"
+    "https://github.com/chaosforgeorg/doomrl/releases/download/${pkgver//./_}/drl-linux-0100.tar.gz"
 )
 
 sha256sums=('bae5ccc863235f984a52c07d011e48a86c0c12f923be2dedd8624c7abdc22c6c'
@@ -31,7 +31,7 @@ b2sums=('22d19b6fb9b5542757297b6c5a61b32aff35ba11033d32a43fc52828ba1f17fce714772
         'c2350f79d572c4b6f0f086d59a81e893dfd956c4d5ce90a592ef4bc423e61040c9da8aba8d10e24457051ffa91e9479fd16d2df625a249205b477942826b590e')
 
 package() {
-    cd "$srcdir/drl-linux-0998"
+    cd "$srcdir/drl-linux-0100"
 
     # Copy program and required files
     install -d "$pkgdir/usr/share/drl"

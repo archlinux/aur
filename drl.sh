@@ -10,11 +10,6 @@ sys=/usr/share/drl
 
 [ -d "$personal" ] || mkdir -p "$personal" || exit 1
 
-for f in backup mortem screenshot modules
-do
-	[ -f "$personal/$f" ] || cp -r "$sys/$f" "$personal"
-done
-
 for f in {colors,config,musichq,soundhq}.lua
 do
 	if [ "$sys/$f" -nt "$personal/$f" ]
@@ -25,7 +20,7 @@ do
 	fi
 done
 
-for f in drl {core,drl}.wad drl_{gnome-terminal,konsole,xterm} {manual,unix_notes,version_api,version}.txt mp3 wavhq
+for f in drl {core,drl}.wad drl_{gnome-terminal,konsole,xterm} *.txt data
 do
   [ -L "$personal/$f" ] || (rm -f "$personal/$f" && ln -s $sys/$f "$personal/$f")
 done
