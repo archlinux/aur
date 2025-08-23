@@ -2,7 +2,7 @@
 
 pkgname=curl-impersonate
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox, Crome and other browsers. Includes libcurl."
 url="https://github.com/lexiforest/curl-impersonate"
@@ -22,8 +22,8 @@ source=(
 md5sums=('5c0783bd2e9e9e1979548183209721fb')
 
 prepare () {
+  export CXXFLAGS+=" -Wno-error=stringop-overflow -std=c++17"
   if [[ $CARCH != "aarch64" ]]; then
-    export CXXFLAGS+=" -Wno-error=stringop-overflow"
     export CC=gcc-14 CXX=g++-14
   fi
   cd curl-impersonate-${pkgver}
