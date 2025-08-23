@@ -1,15 +1,17 @@
 pkgbase = lziprecover
 	pkgdesc = A data recovery tool and decompressor for files in the lzip compressed data format
-	pkgver = 1.24
+	pkgver = 1.25
 	pkgrel = 1
-	url = http://www.nongnu.org/lzip/lziprecover.html
+	url = https://www.nongnu.org/lzip/lziprecover.html
 	arch = x86_64
-	arch = i686
-	license = GPL
-	source = https://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.24.tar.gz
-	source = https://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.24.tar.gz.sig
+	license = GPL-2.0-or-later
+	checkdepends = lzip
+	depends = gcc-libs
+	depends = glibc
+	source = https://download.savannah.nongnu.org/releases/lzip/lziprecover/lziprecover-1.25.tar.gz
+	source = https://download.savannah.nongnu.org/releases/lzip/lziprecover/lziprecover-1.25.tar.gz.sig
 	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
-	sha512sums = b1f126fa24b1627c6e98ba8fa4fc30dac248f81f92be12f1063db6e40fd9c6f9f8b5a2306bde72f30623a64de5befec28b34073309f393317b56a38527947466
+	sha512sums = ed75642fcd7b50b5d58f31b1525a433fb462f2c2b2e9a7988ff8dea6f1c2195a905d0e00946b186c1459e1bb06c1b1294f4be2f3796bcf4cb52da7a4aaadf0e5
 	sha512sums = SKIP
 
 pkgname = lziprecover

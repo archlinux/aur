@@ -1,0 +1,4 @@
+[lziprecover]
+source = "regex"
+url = "https://download.savannah.nongnu.org/releases/lzip/lziprecover/"
+regex = 'lziprecover-([\d.]+)\.tar\.gz'
