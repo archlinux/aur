@@ -1,16 +1,17 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=friendly-kobold
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="A modern Electron shell for KoboldCpp"
 arch=('x86_64')
 url="https://github.com/lone-cloud/friendly-kobold"
 license=('AGPL-3.0-or-later')
-depends=('gtk3' 'libxss' 'nss' 'alsa-lib')
-optdepends=('koboldcpp: AI language model backend')
+depends=('gtk3' 'nss')
+optdepends=('alsa-lib: Audio support for sound effects'
+           'libxss: Screen saver detection support')
 provides=('friendly-kobold')
 conflicts=('friendly-kobold-git')
-source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.5.4/Friendly%20Kobold-0.5.4.AppImage")
+source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.5.5/Friendly.Kobold-0.5.5.AppImage")
 sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 prepare() {
