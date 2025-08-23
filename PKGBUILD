@@ -1,6 +1,6 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=friendly-kobold
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="A modern Electron shell for KoboldCpp"
 arch=('x86_64')
@@ -11,8 +11,8 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('friendly-kobold')
 conflicts=('friendly-kobold-git')
-source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.5.7/Friendly.Kobold-0.5.7.AppImage")
-sha256sums=('fdfdfbcf83ef9edbe72cad855d58ea8c07ed8f9911d15052f2fca7447c104a01')
+source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.5.8/Friendly.Kobold-0.5.8.AppImage")
+sha256sums=('9704345a1fed7d2f7aa85e6b1b441383bda73f0246205cc336567c546a6434d6')
 
 prepare() {
     chmod +x "friendly-kobold-${pkgver}.AppImage"
@@ -28,7 +28,7 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/friendly-kobold" << 'WRAPPER'
 #!/bin/bash
-exec /opt/friendly-kobold/friendly-kobold "$@"
+exec "/opt/friendly-kobold/Friendly Kobold" "$@"
 WRAPPER
     chmod +x "${pkgdir}/usr/bin/friendly-kobold"
     
@@ -48,7 +48,14 @@ DESKTOP
     
     # Install icon
     install -dm755 "${pkgdir}/usr/share/pixmaps"
+    # Try different possible icon locations
     if [ -f "${pkgdir}/opt/friendly-kobold/resources/assets/icon.png" ]; then
         cp "${pkgdir}/opt/friendly-kobold/resources/assets/icon.png" "${pkgdir}/usr/share/pixmaps/friendly-kobold.png"
+    elif [ -f "${pkgdir}/opt/friendly-kobold/assets/icon.png" ]; then
+        cp "${pkgdir}/opt/friendly-kobold/assets/icon.png" "${pkgdir}/usr/share/pixmaps/friendly-kobold.png"
+    elif [ -f "${pkgdir}/opt/friendly-kobold/icon.png" ]; then
+        cp "${pkgdir}/opt/friendly-kobold/icon.png" "${pkgdir}/usr/share/pixmaps/friendly-kobold.png"
+    else
+        echo "Warning: Could not find icon.png in expected locations"
     fi
 }
