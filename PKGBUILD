@@ -16,7 +16,7 @@ groups=('qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/$_pkgfqn.tar.xz"
          no-qmake.patch)
-sha256sums=('5c34b2e8054d23cbd6c98715af8766a61c7f346ac687aa2d80edd73f8073d2d2'
+sha256sums=('b366ea5316d1beb051c9e4850286e07ebe98ca4823d352b62a6fae3092b26524'
             'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498')
 
 prepare() {
