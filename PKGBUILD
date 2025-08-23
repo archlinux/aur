@@ -1,38 +1,40 @@
 # Maintainer: SUDO <justmultiplythinks@gmail.com>
 pkgname=rootvim
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Custom Neovim configuration by realSUDO with isolated profile"
 arch=('any')
 url="https://github.com/realSUDO/rootVim"
 license=('MIT')
-depends=('neovim' 'git')
-source=("https://github.com/realSUDO/rootVim/archive/refs/heads/main.zip")
-sha256sums=('SKIP')  # Replace with actual sha256sum later
+
+# Required dependencies
+depends=('neovim' 'python-pip' 'nodejs' 'npm' 'clang' 'xclip' 'wl-clipboard') #can remove nodejs , npm , clang and python-pip as per comfort
+makedepends=('git')
+optdepends=('stylua: Lua code formatting')
+
+# Source: your main repo zip + non-interactive install script
+source=("https://github.com/realSUDO/rootVim/archive/refs/heads/main.zip"
+        "install-noninteractive.sh")
+sha256sums=('SKIP' 'SKIP')  # Replace with actual sha256sum if desired
 
 package() {
-    # Install config to /usr/share/rootvim
-    install -dm755 "$pkgdir/usr/share/rootvim"
-    cp -r "$srcdir/rootVim-main/"* "$pkgdir/usr/share/rootvim/"
+    # Install configuration files using the non-interactive script
+    bash "$srcdir/install-noninteractive.sh" "$pkgdir"
 
-    # Create wrapper script
+    # Create wrapper script for isolated Neovim profile
     install -dm755 "$pkgdir/usr/bin"
-    cat << 'EOF' > "$pkgdir/usr/bin/rootvim"
+    cat <<'EOF' > "$pkgdir/usr/bin/rootvim"
 #!/bin/bash
 NVIM_ROOTVIM_HOME="$HOME/.config/rootvim"
 mkdir -p "$NVIM_ROOTVIM_HOME"
+cp -r /usr/share/rootvim/* "$NVIM_ROOTVIM_HOME" 2>/dev/null
 
-# Copy default config only if folder is empty
-if [ -z "$(ls -A "$NVIM_ROOTVIM_HOME")" ]; then
-    cp -r /usr/share/rootvim/* "$NVIM_ROOTVIM_HOME"
-fi
+# Activate bundled Python environment
+GLOBAL_PY="/usr/share/rootvim/.globalPython"
+export PATH="$GLOBAL_PY/bin:$PATH"
 
-# Launch Neovim with isolated config
-if [[ -n "$1" ]]; then
-    NVIM_APPNAME=rootvim nvim -u "$NVIM_ROOTVIM_HOME/init.lua" "$@"
-else
-    NVIM_APPNAME=rootvim nvim -u "$NVIM_ROOTVIM_HOME/init.lua"
-fi
+exec nvim -u "$NVIM_ROOTVIM_HOME/init.lua" "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/rootvim"
 }
+
