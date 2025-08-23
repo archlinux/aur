@@ -4,7 +4,8 @@
 # Contributor: wizzomafizzo <wizzomafizzo@gmail.com>
 # Contributor: Nick <nick@screamingfist.org>
 
-pkgname=doomrl
+pkgname=drl
+replaces=(doomrl)
 pkgver=0.10.0e
 pkgrel=1
 pkgdesc="A roguelike game based on the FPS Doom."

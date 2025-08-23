@@ -1,4 +1,4 @@
-pkgbase = doomrl
+pkgbase = drl
 	pkgdesc = A roguelike game based on the FPS Doom.
 	pkgver = 0.10.0e
 	pkgrel = 1
@@ -13,6 +13,7 @@ pkgbase = doomrl
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = zlib
+	replaces = doomrl
 	source = cc-by-nc-sa-4.0.txt
 	source = drl.sh
 	source = https://github.com/chaosforgeorg/doomrl/releases/download/0_10_0e/drl-linux-0100.tar.gz
@@ -26,4 +27,4 @@ pkgbase = doomrl
 	b2sums = fbb86433cf7d038fa1b407c8cf57be89afb4100d985641e587f880a187bf776fa12f733bb32fdd97b5e75641578629b998c727daaafa7fb1f13c97db58473374
 	b2sums = c2350f79d572c4b6f0f086d59a81e893dfd956c4d5ce90a592ef4bc423e61040c9da8aba8d10e24457051ffa91e9479fd16d2df625a249205b477942826b590e
 
-pkgname = doomrl
+pkgname = drl
