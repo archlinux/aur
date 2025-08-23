@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledDESessionLogout"
 
 pkgname=ude-session-logout
-pkgver=2.2.0.0
+pkgver=2.3.0.0
 pkgrel=1
 pkgdesc="A simple session logout utility"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "untitled-imgui-framework")
 provides=("lib${pkgname}Lib.so" "${pkgname}")
 makedepends=("cmake" "make" "pkgconf" "untitled-imgui-framework")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('b740e947313ff77b1d0979a849dbe6bb39402b3faeb25ff3733c449a81e81399')
+sha256sums=('e2cab544effa9ebaf5f1a7ba985d4265744d8c814af93bb579ffb574a45b0756')
 
 build() {
 	export nsrcdir="$srcdir/$pkgname-$pkgver"

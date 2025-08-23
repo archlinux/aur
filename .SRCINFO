@@ -1,6 +1,6 @@
 pkgbase = ude-session-logout
 	pkgdesc = A simple session logout utility
-	pkgver = 2.2.0.0
+	pkgver = 2.3.0.0
 	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledDESessionLogout
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ude-session-logout
 	depends = untitled-imgui-framework
 	provides = libude-session-logoutLib.so
 	provides = ude-session-logout
-	source = https://github.com/MadLadSquad/UntitledDESessionLogout/releases/download/v2.2.0.0/ude-session-logout-2.2.0.0.tar.xz
-	sha256sums = b740e947313ff77b1d0979a849dbe6bb39402b3faeb25ff3733c449a81e81399
+	source = https://github.com/MadLadSquad/UntitledDESessionLogout/releases/download/v2.3.0.0/ude-session-logout-2.3.0.0.tar.xz
+	sha256sums = e2cab544effa9ebaf5f1a7ba985d4265744d8c814af93bb579ffb574a45b0756
 
 pkgname = ude-session-logout
