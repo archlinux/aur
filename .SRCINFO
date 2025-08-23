@@ -1,6 +1,6 @@
 pkgbase = linyaps-git
 	pkgdesc = Next-Gen Universal Package Manager for Linux (linglong)
-	pkgver = 1.9.8.r106.98b32ef
+	pkgver = 1.9.8.r110.413726b
 	pkgrel = 1
 	url = https://github.com/OpenAtom-Linyaps/linyaps
 	install = linyaps-git.install
@@ -42,6 +42,6 @@ pkgbase = linyaps-git
 	source = linyaps-git::git+https://github.com/OpenAtom-Linyaps/linyaps.git
 	source = linyaps-git.install
 	sha256sums = SKIP
-	sha256sums = 08e41ba735bf4285a089e3c86515bd9aee4f8fb3a78b1c06ec74fd1e3959efc3
+	sha256sums = 6c667df761d724921d5dc0e15f67567ec14b5681a5d5e22298f943ea15b6c5be
 
 pkgname = linyaps-git

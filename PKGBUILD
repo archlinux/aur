@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.9.8.r106.98b32ef
+pkgver=1.9.8.r110.413726b
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -57,18 +57,18 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=('SKIP'
-            '08e41ba735bf4285a089e3c86515bd9aee4f8fb3a78b1c06ec74fd1e3959efc3')
+  '6c667df761d724921d5dc0e15f67567ec14b5681a5d5e22298f943ea15b6c5be')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   (
     set -o pipefail
-    
+
     latest_tag=$(git tag --sort=-version:refname | grep -Ev '^[vV]' | head -1)
     commit_count=$(git rev-list --count "${latest_tag}..HEAD")
     commit_hash=$(git rev-parse --short=7 HEAD)
 
-    printf "%s.r%s.%s" "${latest_tag}" "${commit_count}" "${commit_hash}"||
+    printf "%s.r%s.%s" "${latest_tag}" "${commit_count}" "${commit_hash}" ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }

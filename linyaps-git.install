@@ -1,5 +1,6 @@
 post_install() {
     echo -e "\033[32m:: linyaps getting started:\033[0m"
+    echo -e "\033[32m:: linyaps 入门:\033[0m"
     echo -e "   \033[32mEnglish: https://linyaps.org.cn/en/guide/start/whatis.html\033[0m"
     echo -e "   \033[32m简中: https://linyaps.org.cn/guide/start/whatis.html\033[0m"
 }
