@@ -1,7 +1,7 @@
 # Maintainer: Roman Maksimovich <r.a.maksimovich@gmail.com>
 
 pkgname=pshash
-pkgver=0.1.15.0
+pkgver=0.1.15.1
 pkgrel=1
 epoch=
 pkgdesc="A functional pseudo-hash password generator"
