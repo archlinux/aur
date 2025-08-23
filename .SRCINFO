@@ -1,6 +1,6 @@
 pkgbase = cvise-git
 	pkgdesc = Super-parallel Python port of the C-Reduce
-	pkgver = 2.11.0.r95.gb4ef7d7
+	pkgver = 2.11.0.r124.g07b1d05
 	pkgrel = 1
 	url = https://github.com/marxin/cvise
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = cvise-git
 	depends = flex
 	depends = python-chardet
 	depends = python-jsonschema
+	depends = python-msgspec
 	depends = python-pebble
 	depends = python-psutil
 	depends = python-pytest

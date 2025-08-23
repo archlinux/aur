@@ -2,7 +2,7 @@
 
 _pkgname="cvise"
 pkgname="$_pkgname-git"
-pkgver=2.11.0.r95.gb4ef7d7
+pkgver=2.11.0.r124.g07b1d05
 pkgrel=1
 pkgdesc="Super-parallel Python port of the C-Reduce"
 url="https://github.com/marxin/cvise"
@@ -14,7 +14,8 @@ depends=(
   'flex'
   'python-chardet'
   'python-jsonschema'
-  'python-pebble' # AUR
+  'python-msgspec' # AUR
+  'python-pebble'  # AUR
   'python-psutil'
   'python-pytest'
   'python-zstandard'
@@ -64,6 +65,7 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   # specify python version to prevent untracked pyc files
   local _pyver_major _pyver_minor
