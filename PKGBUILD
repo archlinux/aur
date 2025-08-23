@@ -7,7 +7,7 @@ pkgdesc="A tool to monitor disk usage and alert when usage exceeds a threshold"
 arch=('any')
 url="https://github.com/0xM4LL0C/disk_usage"
 license=('MIT')
-source=("git+https://github.com/0xM4LL0C/disk_usage.git")
+source=("$pkgname::git+https://github.com/0xM4LL0C/disk_usage.git")
 sha256sums=('SKIP')
 depends=(
     'libnotify'
@@ -18,7 +18,7 @@ makedepends=(
 )
 
 build() {
-    cd "$srcdir/"
+    cd "$srcdir/$pkgname"
     make build
 }
 

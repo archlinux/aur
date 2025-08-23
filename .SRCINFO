@@ -8,7 +8,7 @@ pkgbase = disk_usage-git
 	makedepends = make
 	makedepends = gcc
 	depends = libnotify
-	source = git+https://github.com/0xM4LL0C/disk_usage.git
+	source = disk_usage-git::git+https://github.com/0xM4LL0C/disk_usage.git
 	sha256sums = SKIP
 
 pkgname = disk_usage-git
