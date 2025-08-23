@@ -30,6 +30,8 @@ prepare() {
 
   # Make sure LDFLAGS are passed to lib
   patch < ../libafterimage-ldflags.patch
+
+  autoreconf -fiv
 }
 
 build() {
