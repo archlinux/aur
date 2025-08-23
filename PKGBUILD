@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=libjodycode
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Shared code used by several utilities written by Jody Bruchon'
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url=https://codeberg.org/jbruchon/libjodycode
 license=(MIT)
 depends=(glibc)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('46db5897307ac3be92bb048c62f1beb93793dd101dd4cf6c1787688eaf58c094')
+sha256sums=('d0365b8b0762a79c3ff7913234099091c365fcae125436343224b4e39da85087')
 
 build() {
 	cd "$pkgname"

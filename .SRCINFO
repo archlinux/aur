@@ -1,13 +1,13 @@
 pkgbase = libjodycode
 	pkgdesc = Shared code used by several utilities written by Jody Bruchon
-	pkgver = 4.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://codeberg.org/jbruchon/libjodycode
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = libjodycode-4.0.tar.gz::https://codeberg.org/jbruchon/libjodycode/archive/v4.0.tar.gz
-	sha256sums = 46db5897307ac3be92bb048c62f1beb93793dd101dd4cf6c1787688eaf58c094
+	source = libjodycode-4.0.1.tar.gz::https://codeberg.org/jbruchon/libjodycode/archive/v4.0.1.tar.gz
+	sha256sums = d0365b8b0762a79c3ff7913234099091c365fcae125436343224b4e39da85087
 
 pkgname = libjodycode
