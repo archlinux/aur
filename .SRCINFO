@@ -1,0 +1,44 @@
+pkgbase = python-romancal
+	pkgdesc = Library for calibration of science observations from Nancy Grace Roman Space Telescope
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://roman-pipeline.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm>=3.4
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-automodapi
+	makedepends = python-stsci_rtd_theme
+	makedepends = python-pytest-doctestplus
+	makedepends = python-jsonschema
+	makedepends = python-photutils
+	makedepends = python-roman-datamodels
+	makedepends = python-stcal
+	makedepends = python-stpipe
+	makedepends = texlive-latexextra
+	makedepends = graphviz
+	source = https://files.pythonhosted.org/packages/source/r/romancal/romancal-0.20.2.tar.gz
+	source = 0.20.2-overview.png::https://github.com/spacetelescope/romancal/raw/refs/tags/0.20.2/docs/roman/associations/graphics/overview.png
+	source = 0.20.2-overview_classes.png::https://github.com/spacetelescope/romancal/raw/refs/tags/0.20.2/docs/roman/associations/graphics/overview_classes.png
+	md5sums = 98442da82282d779e15d3d48ada562df
+	md5sums = c16076cb24afd5bb28ad9b111b3a50d4
+	md5sums = dcbb807d44f94d99d6acd38b8cc50756
+
+pkgname = python-romancal
+	depends = python>=3.11
+	depends = python-crds>=11.26.21
+	depends = python-jsonschema>=4.8
+	depends = python-gwcs>=0.25.2
+	depends = python-photutils>=2.1.0
+	depends = python-roman-datamodels>=0.27.0
+	depends = python-scipy>=1.14.1
+	depends = python-stcal>=1.15.0
+	depends = python-stpipe>=0.10.0
+	depends = python-tweakwcs>=0.8.11
+	depends = python-pyarrow>=10.0.1
+	depends = python-pandas>=2.0.0
+	optdepends = python-romancal-doc: Documentation for romancal
+
+pkgname = python-romancal-doc
+	pkgdesc = Documentation for Python RomanCal
