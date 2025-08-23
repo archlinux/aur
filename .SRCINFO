@@ -1,7 +1,7 @@
 pkgbase = friendly-kobold
 	pkgdesc = A desktop app for running Large Language Models locally
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lone-cloud/friendly-kobold
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -13,7 +13,7 @@ pkgbase = friendly-kobold
 	conflicts = friendly-kobold-git
 	source = friendly-kobold-0.6.2.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.2/Friendly.Kobold-0.6.2.AppImage
 	source = friendly-kobold.desktop::https://raw.githubusercontent.com/lone-cloud/friendly-kobold/v0.6.2/assets/friendly-kobold.desktop
-	sha256sums = 90301d3731bfa819472f8137a0f2b4688e1f5a508377420a759e5d1be38cd3f5
+	sha256sums = 798fd235dc6e318043d16b5f82184d26c1aafa75125a846e5bdf38591a0baf38
 	sha256sums = faa15709dd546ba46cd8fe0daf488c1fc3f6f13fdcc926b3dea140743f85dad8
 
 pkgname = friendly-kobold
