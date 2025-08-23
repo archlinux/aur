@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -84,13 +84,11 @@ checkdepends=('python-httpx'
               # 'python-openinference-instrumentation-litellm'
               'litellm')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('da4ad48b1f3309f5ef832be064e0d2d63c654f483870d4e900115ca493f05547')
+sha256sums=('2fd76511cc78627153f9aa920c072bb8d83e4796fa43f19695eb81c433c39bd1')
 
 prepare(){
   cd "$srcdir"/$_name0-$pkgver
   sed -i "s/'gzip, deflate, zstd',/IsAnyStr(regex='^gzip, deflate(?:, br|, zstd|, br, zstd)?$'),/g" tests/otel_integrations/test_httpx.py
-  sed -i "s/'gpt-4o'/'gpt-4.1'/g" tests/otel_integrations/test_openai_agents.py
-  sed -i "s/'gpt-4o'/'gpt-4.1'/g" tests/otel_integrations/test_openai_agents_mcp.py
 }
 
 build() {
