@@ -2,7 +2,7 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=caddy-trojan
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ sha256sums=('dfadb1f4a1f82024a11c110624680f98b3818305a16dd013363ca398020611ad'
             'a794bbf7d890eb9e1231bbad251890f87870815a96e3820b28a71819ba9f9c14'
             '66177d46fa761acb07208065db9b0274cb1b12c02ac43b9bfc9857b698b1ccfe'
             '70a45d667679109cd6b25502554597f21536ee995ada0549251167bd171533b9'
-            '944ab8ba4a8a497827b16b51a39b45dc6e69c32e49d39486d9da198a7727b8be')
+            'f63f46b7ae68ced0a5c2e31df1b6dfc7656117d162a1bc7fed4bd4afd14ddc8f')
 
 prepare() {
     local -a MODULES=(
