@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=friendly-kobold
-pkgver=0.6.2
-pkgrel=3
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="A desktop app for running Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/friendly-kobold"
@@ -11,9 +11,9 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('friendly-kobold')
 conflicts=('friendly-kobold-git')
-source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.2/Friendly.Kobold-0.6.2.AppImage"
-        "friendly-kobold.desktop::https://raw.githubusercontent.com/lone-cloud/friendly-kobold/v0.6.2/assets/friendly-kobold.desktop")
-sha256sums=('798fd235dc6e318043d16b5f82184d26c1aafa75125a846e5bdf38591a0baf38'
+source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.3/Friendly.Kobold-0.6.3.AppImage"
+        "friendly-kobold.desktop::https://raw.githubusercontent.com/lone-cloud/friendly-kobold/v0.6.3/assets/friendly-kobold.desktop")
+sha256sums=('22e59a4cec57765821b8aa842ab6fb947d0180dc83dd8dd4dbc0084663ca5fab'
             'faa15709dd546ba46cd8fe0daf488c1fc3f6f13fdcc926b3dea140743f85dad8')
 
 prepare() {
