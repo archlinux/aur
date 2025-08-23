@@ -5,17 +5,17 @@
 # Contributor: Tiago Camargo <tcamargo@gmail.com>
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
-pkgname=yabause-qt
+pkgname=yabause-qt5
 pkgver=0.9.15
-pkgrel=4
+pkgrel=5
 pkgdesc='A Sega Saturn emulator'
 arch=('x86_64')
 url="https://yabause.org/"
 license=('GPL')
 depends=('freeglut' 'glew' 'openal' 'qt5-base' 'qt5-multimedia' 'sdl2')
-makedepends=('cmake' 'glu' 'libxmu')
+makedepends=('cmake3' 'glu' 'libxmu')
 conflicts=('yabause-gtk')
-source=("https://download.tuxfamily.org/yabause/releases/${pkgver}/yabause-${pkgver}.tar.gz"
+source=("http://free.downloads.tuxfamily.net/yabause/releases/${pkgver}/yabause-${pkgver}.tar.gz"
         'qt-5.11.patch'
         'rwx.patch')
 sha256sums=('4334c43fe0f3ff297bac8e91f4e059fe5fd276291faff2489e37b5b3a4ccc2b2'
