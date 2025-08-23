@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
-	pkgdesc = IBM Semeru OpenJ9 with openjdk23
-	pkgver = 23.0.1b11_openj9_0.48.0
+	pkgdesc = IBM Semeru OpenJ9 with openjdk24
+	pkgver = 24.0.2b12_openj9_0.54.0
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = jdk-openj9-bin
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=23
-	provides = java-environment-openjdk=23
-	provides = java-runtime=23
-	provides = java-runtime-openjdk=23
-	provides = java-runtime-headless=23
-	provides = java-runtime-headless-openjdk=23
-	conflicts = jdk23-openj9-bin
-	conflicts = jdk23-openj9
+	provides = java-environment=24
+	provides = java-environment-openjdk=24
+	provides = java-runtime=24
+	provides = java-runtime-openjdk=24
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-openjdk=24
+	conflicts = jdk24-openj9-bin
+	conflicts = jdk24-openj9
 	options = !strip
-	source = https://github.com/ibmruntimes/semeru23-binaries/releases/download/jdk-23.0.1%2B11_openj9-0.48.0/ibm-semeru-open-jdk_x64_linux_23.0.1_11_openj9-0.48.0.tar.gz
-	sha256sums = 2aa3cc78feab5cf1c21a830797694c9b8b7898072a40c252f442b832117a3809
+	source = https://github.com/ibmruntimes/semeru24-binaries/releases/download/jdk-24.0.2%2B12_openj9-0.54.0/ibm-semeru-open-jdk_x64_linux_24.0.2_12_openj9-0.54.0.tar.gz
+	sha256sums = 480845cb69ef0d7a33ff70e28bbdf882c27f764bd76bc905f5fa40934d5a0c06
 
 pkgname = jdk-openj9-bin

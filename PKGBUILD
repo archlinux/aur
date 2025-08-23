@@ -4,15 +4,14 @@
 # Contributor: Mariell Hoversholm <proximyst at proximyst dot com>
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
 # Contributor: Davide Depau <davide at depau dot eu>
-
 pkgname=jdk-openj9-bin
-_jdkver=23
+_jdkver=24
 _jdkminor=0
-_jdkpatch=1
+_jdkpatch=2
 _jdksubpatch=0
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdksubpatch}
-_openj9ver=0.48.0
-_buildvershort=11
+_openj9ver=0.54.0
+_buildvershort=12
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
@@ -33,7 +32,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('2aa3cc78feab5cf1c21a830797694c9b8b7898072a40c252f442b832117a3809')
+sha256sums=('480845cb69ef0d7a33ff70e28bbdf882c27f764bd76bc905f5fa40934d5a0c06')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-openj9
 
@@ -54,9 +53,9 @@ package() {
   cp -r conf "${pkgdir}/etc/java${_jdkver}-j9"
   ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
   # Man pages
-  for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk${_jdkver}-j9.1}"
-  done
-  ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
+  #for f in man/man1/*; do
+  #  install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk${_jdkver}-j9.1}"
+  #done
+  #ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }
 # vim:set ts=4 sw=4 et:
