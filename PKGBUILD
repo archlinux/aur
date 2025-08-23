@@ -3,9 +3,9 @@
 pkgname=python-p123client
 _name=${pkgname#python-}
 pkgver=0.0.9.1
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Python wrapper for 123 webdisk."
+pkgdesc="Python 123 webdisk client."
 arch=('any')
 url="https://pypi.org/project/${_name}"
 license=(MIT)

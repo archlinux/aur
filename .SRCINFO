@@ -1,7 +1,7 @@
 pkgbase = python-p123client
-	pkgdesc = Python wrapper for 123 webdisk.
+	pkgdesc = Python 123 webdisk client.
 	pkgver = 0.0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/p123client
 	arch = any
 	license = MIT
