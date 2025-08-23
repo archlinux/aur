@@ -2,7 +2,7 @@
 
 pkgname=walker
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64' 'aarch64')
@@ -11,17 +11,17 @@ makedepends=('rustup' 'gobject-introspection' 'glibc' 'protobuf')
 depends=('gtk4-layer-shell' 'poppler-glib' 'cairo')
 conflicts=('walker')
 provides=('walker')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-6.tar.gz")
-sha256sums=("fe7bcdaa7c8165e48a6c87609a866cbee7fe98b6f76b92d0483b785eebe8aad9")
+source=("${url}/archive/refs/tags/v${pkgver}-beta-7.tar.gz")
+sha256sums=("0e630a671e9f413117174ac0a2042f75bdc93a183e630a42f05ca2b69f4d4e9e")
 
 build() {
-    cd ${pkgname}-${pkgver}-beta-6
+    cd ${pkgname}-${pkgver}-beta-7
     rustup default stable
     cargo build --release
 }
 
 package() {
-    cd ${pkgname}-${pkgver}-beta-6/target/release
+    cd ${pkgname}-${pkgver}-beta-7/target/release
     install -Dm 755 walker -t "${pkgdir}/usr/bin"
 
     cd ../../
