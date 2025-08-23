@@ -1,0 +1,24 @@
+pkgbase = libpkedit
+	pkgdesc = A cross-platform library for modifying Pokémon save files
+	pkgver = r33.0e1303f
+	pkgrel = 1
+	url = https://codeberg.org/ramenu/pkedit
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = pybind11
+	makedepends = msgpack-cxx
+	makedepends = make
+	makedepends = gtest
+	depends = glibc
+	depends = zlib
+	depends = libarchive
+	optdepends = python
+	provides = libpkedit
+	conflicts = libpkedit
+	source = libpkedit::git+https://codeberg.org/ramenu/pkedit
+	b2sums = SKIP
+
+pkgname = libpkedit-git
