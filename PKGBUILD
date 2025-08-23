@@ -82,7 +82,7 @@ build() {
 
   make DESTDIR=.. install
   cd ..
-  _symbols=$(awk '{print "-Wl,-u," $1}' sigs.txt | paste -sd ' ' -)
+  _symbols=$(sed 's/^/-Wl,-u,/' sigs.txt | paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
     ${_symbols} -Wl,--version-script=export.map \
