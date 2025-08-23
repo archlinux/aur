@@ -1,7 +1,7 @@
 # Maintainer: Mitchell Murphy <mitchell.murphy@defenseunicorns.com>
 pkgname=zarf-bin
 pkgver=0.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Airgap CLI tool for Kubernetes"
 arch=(
     'x86_64'
