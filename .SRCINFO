@@ -1,0 +1,22 @@
+pkgbase = python-dicttools
+	pkgdesc = Python dictionary tools.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://pypi.org/project/python-dicttools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-undefined
+	provides = python-dicttools
+	conflicts = python-dicttools
+	options = !strip
+	options = !debug
+	source = python_dicttools-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_dicttools/python_dicttools-0.0.4.tar.gz
+	sha256sums = cbfa643a2337906f2c730e24d48547799cc3994c2049d110bd4389859538ee32
+
+pkgname = python-dicttools
