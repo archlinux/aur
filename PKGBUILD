@@ -1,7 +1,7 @@
 # Maintainer: VC365
 pkgname=grub-qemu
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a lightweight App for Preview full GRUB"
 arch=('x86_64')
 url="https://github.com/VC365/grub-qemu/"
