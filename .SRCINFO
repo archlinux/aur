@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-j3540dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J3540DW printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=as_ot&lang=en&prod=mfcj3540dw_eu_as_cn
+	install = brother-mfc-j3540dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	source = https://download.brother.com/welcome/dlf105475/mfcj3540dwpdrv-3.5.0-1.i386.rpm
+	sha256sums = 59f13bf713a02c38a0e86986c2a1e0e5829c1e3acbaf817e506501e04e033840
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j3540dw
