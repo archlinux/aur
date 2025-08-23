@@ -9,8 +9,6 @@ arch=('x86_64')
 url="https://nvim-neorocks.github.io/"
 depends=(glibc
 gcc-libs
-libgpg-error
-gpgme
 bzip2
 xz)
 provides=(lx)
