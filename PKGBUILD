@@ -1,7 +1,7 @@
 # Maintainer: Mitchell Murphy <mitchell.murphy@defenseunicorns.com>
 pkgname=zarf-bin
-pkgver=0.61.0
-pkgrel=2
+pkgver=0.60.0
+pkgrel=3
 pkgdesc="Airgap CLI tool for Kubernetes"
 arch=(
     'x86_64'
@@ -20,7 +20,7 @@ validpgpkeys=(
   EE898AFE83AF6C763093E1CA5E8C9301F384CC5E  # Mitchell Murphy <mitchell.murphy@defenseunicorns.com>
 )
 
-sha512sums_x86_64=('08d1f9a5114ffcccf3e44e6f2e727964cd6c61e674d35d490b2859e3c8bf7025bf78af97bd50be171cb5e5844d2fc940d18b89de6c8a3be1305ffdd8834ccb6c')
+sha512sums_x86_64=('53dbf9a42028c59e71c0d1125b42b6e25eccc7b8c39c551b95af52651dfcc9df5265a1c324544f4b82b0cb42c1abeb98469b40316af7382676215679f44d24ad')
 
 
 package() {
