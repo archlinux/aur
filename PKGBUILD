@@ -4,7 +4,7 @@ _pkgauthor=blob42
 _pkgname=aichat-ng
 pkgname=${_pkgname}-bin
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI, ChatGPT, Gemini, Claude, Mistral, Ollama and more in your terminal. Fork with advanced features."
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -12,8 +12,8 @@ arch=('x86_64' 'i686' 'aarch64')
 _barch=('x86_64' 'i686' 'aarch64')
 license=('AGPL-3.0-only')
 depends=('glibc')
-conflicts=("${_pkgname}" "${_pkgname%-ng}")
-provides=("${_pkgname%-ng}")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
         ${_urlraw}/scripts/completions/aichat.{bash,fish,zsh,nu,ps1}
@@ -42,28 +42,30 @@ prepare() {
 
   mkdir -p ./scripts/completions/
   mv aichat.{bash,fish,zsh,nu,ps1} ./scripts/completions/
+  sed -i -e 's/aichat/aichat-ng/g' ./scripts/completions/aichat.{bash,fish,zsh,nu,ps1}
 
   mkdir -p ./scripts/shell-integration/
   mv integration.{bash,fish,zsh,nu,ps1} ./scripts/shell-integration/
+  sed -i -e 's/aichat/aichat-ng/g' ./scripts/shell-integration/integration.{bash,fish,zsh,nu,ps1}
 }
 
 package() {
   cd "${srcdir}/" || exit
 
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname%-ng}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -vDm644 scripts/completions/aichat.bash "$pkgdir/usr/share/bash-completion/completions/aichat"
-  install -vDm644 scripts/completions/aichat.fish "$pkgdir/usr/share/fish/completions/aichat.fish"
-  install -vDm644 scripts/completions/aichat.nu "$pkgdir/usr/share/nu/completions/aichat.nu"
-  install -vDm644 scripts/completions/aichat.ps1 "$pkgdir/usr/share/powershell/completions/aichat.ps1"
-  install -vDm644 scripts/completions/aichat.zsh "$pkgdir/usr/share/zsh/site-functions/_aichat"
+  install -vDm644 scripts/completions/${_pkgname%-ng}.bash "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
+  install -vDm644 scripts/completions/${_pkgname%-ng}.fish "$pkgdir/usr/share/fish/completions/${_pkgname}.fish"
+  install -vDm644 scripts/completions/${_pkgname%-ng}.nu "$pkgdir/usr/share/nu/completions/${_pkgname}.nu"
+  install -vDm644 scripts/completions/${_pkgname%-ng}.ps1 "$pkgdir/usr/share/powershell/completions/${_pkgname}.ps1"
+  install -vDm644 scripts/completions/${_pkgname%-ng}.zsh "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
 
-  install -vDm644 -t "$pkgdir/usr/share/aichat" scripts/shell-integration/integration.bash
-  install -vDm644 -t "$pkgdir/usr/share/aichat" scripts/shell-integration/integration.nu
-  install -vDm644 -t "$pkgdir/usr/share/aichat" scripts/shell-integration/integration.zsh
-  install -vDm644 -t "$pkgdir/usr/share/aichat" scripts/shell-integration/integration.fish
-  install -vDm644 -t "$pkgdir/usr/share/aichat" scripts/shell-integration/integration.ps1
+  install -vDm644 -t "$pkgdir/usr/share/${_pkgname}" scripts/shell-integration/integration.bash
+  install -vDm644 -t "$pkgdir/usr/share/${_pkgname}" scripts/shell-integration/integration.nu
+  install -vDm644 -t "$pkgdir/usr/share/${_pkgname}" scripts/shell-integration/integration.zsh
+  install -vDm644 -t "$pkgdir/usr/share/${_pkgname}" scripts/shell-integration/integration.fish
+  install -vDm644 -t "$pkgdir/usr/share/${_pkgname}" scripts/shell-integration/integration.ps1
 }
