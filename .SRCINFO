@@ -1,6 +1,6 @@
 pkgbase = nepdate
 	pkgdesc = Standalone Nepali calendar widget and converter for Bikram Sambat and Gregorian calendars.
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/khumnath/nepdate
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = nepdate
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	depends = qt6-declarative
-	source = nepdate-2.2.4.tar.gz::https://github.com/khumnath/nepdate/archive/refs/tags/2.2.4.tar.gz
-	sha256sums = 7bf21b272d7b5deb9ad74c5289cea741ace596a97f59a829a7167c9870577650
+	source = nepdate-2.2.5.tar.gz::https://github.com/khumnath/nepdate/archive/refs/tags/2.2.5.tar.gz
+	sha256sums = 3923230a1afc12ac867883e6c6e993aeeebc88dfd7aaf4f663fbd646efaeeb57
 
 pkgname = nepdate
