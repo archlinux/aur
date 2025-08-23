@@ -1,0 +1,14 @@
+pkgbase = python-vmware-vapi-common-client
+	pkgdesc = VMware vAPI Common Services Client Bindings
+	pkgver = 2.61.2
+	pkgrel = 2
+	url = https://pypi.org/project/vmware-vapi-common-client/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-vmware-vapi-runtime
+	source = https://files.pythonhosted.org/packages/0c/79/3e0c6972f965e1cbca52a4ba2db7791bcd5c7320203bd0b1551d3dfa89fe/vmware_vapi_common_client-2.61.2-py3-none-any.whl
+	sha256sums = 1e144695c2dd1657d62322d1024148e8612eaa81eb93a1c1207496426dff1935
+
+pkgname = python-vmware-vapi-common-client
