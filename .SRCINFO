@@ -1,0 +1,21 @@
+pkgbase = python-errno2
+	pkgdesc = Python another errno.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/errno2
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-errno2
+	conflicts = python-errno2
+	options = !strip
+	options = !debug
+	source = errno2-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/e/errno2/errno2-0.0.1.tar.gz
+	sha256sums = b1b04351ad3f3f4d2b22367023ff7568286563a7d44b34184224e18e50847de7
+
+pkgname = python-errno2
