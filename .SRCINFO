@@ -1,7 +1,7 @@
 pkgbase = firelight
 	pkgdesc = A libretro-based frontend
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firelight-emulator/firelight
 	arch = x86_64
 	license = GPL3
