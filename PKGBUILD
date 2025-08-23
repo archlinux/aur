@@ -6,7 +6,6 @@ pkgdesc="A desktop app for running Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/friendly-kobold"
 license=('AGPL-3.0-or-later')
-groups=('llm' 'ai' 'local-ai' 'language-model' 'koboldcpp' 'electron' 'privacy' 'offline')
 depends=('gtk3' 'nss')
 optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
