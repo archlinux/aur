@@ -3,7 +3,7 @@
 _name=mcp
 pkgname=python-$_name
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -30,7 +30,7 @@ check() {
     -vv
   )
   cd "$srcdir"/$_name-$pkgver
-  PYTHONPATH="$srcdir"/$_name-$pkgver UV_PYTHON_PREFERENCE=only-system pytest "${pytest_options[@]}" tests
+  PYTHONPATH=$PWD/src UV_PYTHON_PREFERENCE=only-system pytest "${pytest_options[@]}" tests
 }
 
 package() {
