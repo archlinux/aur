@@ -3,7 +3,7 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.22.0
+pkgver=0.23.0
 #_commit="094f0b2b7e2a777f6dc1a6f60851cc856067d9a2"
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
@@ -26,7 +26,7 @@ source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
 #       "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
         'fix-h5type-test.patch')
-md5sums=('e52db3055182899cf73bb5e8c2ff0611'
+md5sums=('9106c5e43311c910df57f6a4e7a89453'
          'SKIP'
          'SKIP'
          'fce3d7b92909be61507392ab33bfce0a')
