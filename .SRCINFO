@@ -1,6 +1,6 @@
 pkgbase = wff-git
 	pkgdesc = Simple GUI screen recorder for wlroots compositors based on wl-recorder
-	pkgver = 0.1
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://www.github.com/eugenenoble2005/wff
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = wff-git
 	depends = wf-recorder
 	depends = ffmpeg
 	depends = wlr-randr
-	depends = dotnet-runtime
 	depends = wayland
 	depends = wayland-protocols
 	source = git+https://github.com/eugenenoble2005/wff
