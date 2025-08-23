@@ -7,24 +7,37 @@ pkgname=(
   'dns01proxy-azure'
   'dns01proxy-bunny'
   'dns01proxy-cloudflare'
+  'dns01proxy-cloudns'
+  'dns01proxy-conoha'
   'dns01proxy-desec'
   'dns01proxy-digitalocean'
+  'dns01proxy-directadmin'
   'dns01proxy-dode'
   'dns01proxy-domainnameshop'
   'dns01proxy-duckdns'
   'dns01proxy-dynu'
+  'dns01proxy-edgeone'
+  'dns01proxy-gandi'
+  'dns01proxy-gcore'
   'dns01proxy-glesys'
+  'dns01proxy-godaddy'
+  'dns01proxy-googleclouddns'
   'dns01proxy-he'
   'dns01proxy-hetzner'
+  'dns01proxy-huaweicloud'
   'dns01proxy-infomaniak'
   'dns01proxy-inwx'
   'dns01proxy-ionos'
   'dns01proxy-loopia'
   'dns01proxy-luadns'
   'dns01proxy-mailinabox'
+  'dns01proxy-metaname'
   'dns01proxy-mijnhost'
+  'dns01proxy-mythicbeasts'
   'dns01proxy-nanelo'
+  'dns01proxy-netcup'
   'dns01proxy-nfsn'
+  'dns01proxy-njalla'
   'dns01proxy-ovh'
   'dns01proxy-porkbun'
   'dns01proxy-rfc2136'
@@ -32,9 +45,10 @@ pkgname=(
   'dns01proxy-simplydotcom'
   'dns01proxy-tencentcloud'
   'dns01proxy-vultr'
+  'dns01proxy-westcn'
 )
 pkgbase='dns01proxy'
-pkgver='0.1.0'
+pkgver='0.1.2'
 pkgrel=1
 pkgdesc='ACME DNS-01 proxy server'
 arch=('x86_64' 'aarch64')
@@ -79,24 +93,37 @@ package_dns01proxy-acmedns() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -104,6 +131,7 @@ package_dns01proxy-acmedns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-acmedns "${pkgdir}/usr/bin/dns01proxy"
@@ -133,24 +161,37 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -158,6 +199,7 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-acmeproxy "${pkgdir}/usr/bin/dns01proxy"
@@ -187,24 +229,37 @@ package_dns01proxy-alidns() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -212,6 +267,7 @@ package_dns01proxy-alidns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-alidns "${pkgdir}/usr/bin/dns01proxy"
@@ -241,24 +297,37 @@ package_dns01proxy-azure() {
     'dns01proxy-alidns'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -266,6 +335,7 @@ package_dns01proxy-azure() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-azure "${pkgdir}/usr/bin/dns01proxy"
@@ -295,24 +365,37 @@ package_dns01proxy-bunny() {
     'dns01proxy-alidns'
     'dns01proxy-azure'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -320,6 +403,7 @@ package_dns01proxy-bunny() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-bunny "${pkgdir}/usr/bin/dns01proxy"
@@ -349,24 +433,37 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-alidns'
     'dns01proxy-azure'
     'dns01proxy-bunny'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -374,6 +471,7 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-cloudflare "${pkgdir}/usr/bin/dns01proxy"
@@ -396,6 +494,142 @@ package_dns01proxy-cloudflare() {
   sed -i 's/@BUILD@/cloudflare/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-cloudns() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-cloudns "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/cloudns/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-conoha() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-conoha "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/conoha/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-desec() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -404,23 +638,36 @@ package_dns01proxy-desec() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -428,6 +675,7 @@ package_dns01proxy-desec() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-desec "${pkgdir}/usr/bin/dns01proxy"
@@ -458,23 +706,36 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -482,6 +743,7 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-digitalocean "${pkgdir}/usr/bin/dns01proxy"
@@ -504,6 +766,74 @@ package_dns01proxy-digitalocean() {
   sed -i 's/@BUILD@/digitalocean/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-directadmin() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-directadmin "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/directadmin/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-dode() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -512,23 +842,36 @@ package_dns01proxy-dode() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -536,6 +879,7 @@ package_dns01proxy-dode() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-dode "${pkgdir}/usr/bin/dns01proxy"
@@ -566,23 +910,36 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -590,6 +947,7 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-domainnameshop "${pkgdir}/usr/bin/dns01proxy"
@@ -620,23 +978,36 @@ package_dns01proxy-duckdns() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -644,6 +1015,7 @@ package_dns01proxy-duckdns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-duckdns "${pkgdir}/usr/bin/dns01proxy"
@@ -674,23 +1046,36 @@ package_dns01proxy-dynu() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -698,6 +1083,7 @@ package_dns01proxy-dynu() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-dynu "${pkgdir}/usr/bin/dns01proxy"
@@ -720,6 +1106,210 @@ package_dns01proxy-dynu() {
   sed -i 's/@BUILD@/dynu/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-edgeone() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-edgeone "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/edgeone/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-gandi() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-gandi "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/gandi/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-gcore() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-gcore "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/gcore/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-glesys() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -728,23 +1318,36 @@ package_dns01proxy-glesys() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -752,6 +1355,7 @@ package_dns01proxy-glesys() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-glesys "${pkgdir}/usr/bin/dns01proxy"
@@ -774,6 +1378,142 @@ package_dns01proxy-glesys() {
   sed -i 's/@BUILD@/glesys/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-godaddy() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-godaddy "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/godaddy/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-googleclouddns() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-googleclouddns "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/googleclouddns/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-he() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -782,23 +1522,36 @@ package_dns01proxy-he() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -806,6 +1559,7 @@ package_dns01proxy-he() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-he "${pkgdir}/usr/bin/dns01proxy"
@@ -836,23 +1590,36 @@ package_dns01proxy-hetzner() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -860,6 +1627,7 @@ package_dns01proxy-hetzner() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-hetzner "${pkgdir}/usr/bin/dns01proxy"
@@ -882,6 +1650,74 @@ package_dns01proxy-hetzner() {
   sed -i 's/@BUILD@/hetzner/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-huaweicloud() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-huaweicloud "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/huaweicloud/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-infomaniak() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -890,23 +1726,36 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -914,6 +1763,7 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-infomaniak "${pkgdir}/usr/bin/dns01proxy"
@@ -944,23 +1794,36 @@ package_dns01proxy-inwx() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -968,6 +1831,7 @@ package_dns01proxy-inwx() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-inwx "${pkgdir}/usr/bin/dns01proxy"
@@ -998,23 +1862,36 @@ package_dns01proxy-ionos() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -1022,6 +1899,7 @@ package_dns01proxy-ionos() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-ionos "${pkgdir}/usr/bin/dns01proxy"
@@ -1052,23 +1930,36 @@ package_dns01proxy-loopia() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -1076,6 +1967,7 @@ package_dns01proxy-loopia() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-loopia "${pkgdir}/usr/bin/dns01proxy"
@@ -1106,23 +1998,36 @@ package_dns01proxy-luadns() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -1130,6 +2035,7 @@ package_dns01proxy-luadns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-luadns "${pkgdir}/usr/bin/dns01proxy"
@@ -1160,23 +2066,36 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -1184,6 +2103,7 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-mailinabox "${pkgdir}/usr/bin/dns01proxy"
@@ -1206,6 +2126,74 @@ package_dns01proxy-mailinabox() {
   sed -i 's/@BUILD@/mailinabox/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-metaname() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-metaname "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/metaname/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-mijnhost() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -1214,23 +2202,36 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -1238,6 +2239,7 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-mijnhost "${pkgdir}/usr/bin/dns01proxy"
@@ -1260,6 +2262,74 @@ package_dns01proxy-mijnhost() {
   sed -i 's/@BUILD@/mijnhost/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-mythicbeasts() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-mythicbeasts "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/mythicbeasts/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-nanelo() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -1268,23 +2338,36 @@ package_dns01proxy-nanelo() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -1292,6 +2375,7 @@ package_dns01proxy-nanelo() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-nanelo "${pkgdir}/usr/bin/dns01proxy"
@@ -1314,6 +2398,74 @@ package_dns01proxy-nanelo() {
   sed -i 's/@BUILD@/nanelo/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-netcup() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-netcup "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/netcup/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-nfsn() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -1322,23 +2474,36 @@ package_dns01proxy-nfsn() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
@@ -1346,6 +2511,7 @@ package_dns01proxy-nfsn() {
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-nfsn "${pkgdir}/usr/bin/dns01proxy"
@@ -1368,6 +2534,74 @@ package_dns01proxy-nfsn() {
   sed -i 's/@BUILD@/nfsn/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
+package_dns01proxy-njalla() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-njalla "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/njalla/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
 package_dns01proxy-ovh() {
   conflicts=(
     'dns01proxy-acmedns'
@@ -1376,30 +2610,44 @@ package_dns01proxy-ovh() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-ovh "${pkgdir}/usr/bin/dns01proxy"
@@ -1430,30 +2678,44 @@ package_dns01proxy-porkbun() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-rfc2136'
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-porkbun "${pkgdir}/usr/bin/dns01proxy"
@@ -1484,30 +2746,44 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-rfc2136 "${pkgdir}/usr/bin/dns01proxy"
@@ -1538,30 +2814,44 @@ package_dns01proxy-scaleway() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-scaleway "${pkgdir}/usr/bin/dns01proxy"
@@ -1592,30 +2882,44 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
     'dns01proxy-scaleway'
     'dns01proxy-tencentcloud'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-simplydotcom "${pkgdir}/usr/bin/dns01proxy"
@@ -1646,30 +2950,44 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-vultr'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-tencentcloud "${pkgdir}/usr/bin/dns01proxy"
@@ -1700,30 +3018,44 @@ package_dns01proxy-vultr() {
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
     'dns01proxy-desec'
     'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
     'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
     'dns01proxy-he'
     'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
     'dns01proxy-infomaniak'
     'dns01proxy-inwx'
     'dns01proxy-ionos'
     'dns01proxy-loopia'
     'dns01proxy-luadns'
     'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
     'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
     'dns01proxy-nanelo'
+    'dns01proxy-netcup'
     'dns01proxy-nfsn'
+    'dns01proxy-njalla'
     'dns01proxy-ovh'
     'dns01proxy-porkbun'
     'dns01proxy-rfc2136'
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
+    'dns01proxy-westcn'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-vultr "${pkgdir}/usr/bin/dns01proxy"
@@ -1746,7 +3078,75 @@ package_dns01proxy-vultr() {
   sed -i 's/@BUILD@/vultr/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-b2sums=('cf534ab0d5fc783b0b239a1cbe2fad695ac3ac93caa4fb73ca1f35a2e3b1d9085e39b28029feb898667ec13f62c191c0f19d0c52b6c5a0d277fb44b2b7841506'
+package_dns01proxy-westcn() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-rfc2136'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-westcn "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/westcn/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+b2sums=('3f60944f9e6e0a4472b026081c50922baae8afb55c542c790e40f306a611f1ffd00d288686cad908e2ac4ac525b416b8fcc49ef70becea7ec979ac6812d46cfb'
         '3805fbcc7d8d73515f702e0c0bb9066a33477c389586c187f182b6d3989cdf33fe5d63c8b6a4059d2848bacd55014ebf97ff67437e27534c55f4a0a496f65531'
         '0b6a5ecf1e7e475cd5b74e60009f0f48f3e06ef51ef6ba96babe7fb5b9bb5aa80e1effe49c7d1be8fd9309d5446afb1b9800f14e690a71b48b7f442ccc739092'
         '790f85266921ee4634a376132ae394276c85dfd270692406233dcd69ca1e86b9a7cfd0a264c7c51ab30051a225afc1bc3fa3c017f8ec58631e33d27269ece83d'
