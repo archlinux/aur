@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/cursor-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/cursor-bin/cursor-bin.AppImage "$@" $CURSOR_USER_FLAGS
+exec /opt/cursor-beta-bin/cursor-beta-bin.AppImage "$@" $CURSOR_USER_FLAGS

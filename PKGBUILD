@@ -1,21 +1,22 @@
-# Maintainer: Gunther Schulz <dev@guntherschulz.de>
+# Maintainer: Jeremy Hibiki <JeremyJiang430@outlook.com>
 
-pkgname=cursor-bin
-pkgver=1.4.5
-pkgrel=9
+pkgname=cursor-beta-bin
+pkgver=1.5.4
+pkgrel=0
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
+conflicts=('cursor-bin')
 # electron* is added at package()
 depends=('ripgrep' 'xdg-utils'
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
 _appimage="${pkgname}-${pkgver}.AppImage"
 _commit=af58d92614edb1f72bdd756615d131bf8dfa5299
-source=("${_appimage}::https://downloads.cursor.com/production/af58d92614edb1f72bdd756615d131bf8dfa5299/linux/x64/Cursor-1.4.5-x86_64.AppImage"
+source=("${_appimage}::https://downloads.cursor.com/production/f48f0974d52c41214775efcb96bbb5d7acd581cd/linux/x64/Cursor-1.5.4-x86_64.AppImage"
 https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh)
-sha512sums=('580a5052a566179a4fddc82dae5cafb1e545879fdf5ee97f160b4f5106a6fd78b9cf5f67e5f7b77b6010d111c7d85f8201a5e7a26cdc604a390ba82d96416304'
+sha512sums=('1db97c4565b7e1fc661f0f0757378cf963b20b353de8c4b3487160d97cd7da66af659c1cc42afadd72756e549a9e7146565063aeb7433657eb7bdf5cc11591d0'
             '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 
 _app=usr/share/cursor/resources/app
