@@ -1,0 +1,15 @@
+pkgbase = python-vcf-installer
+	pkgdesc = VMware VCF Installer Python API Bindings
+	pkgver = 9.0.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/vcf-installer/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-vmware-vapi-common-client
+	depends = python-vmware-vapi-runtime
+	source = https://files.pythonhosted.org/packages/f9/28/6fa5f6e8c1963b7c561cdb125e25d8863123a906093ee6712a56284e299a/vcf_installer-9.0.0.0-py3-none-any.whl
+	sha256sums = ec7a335562340fd08d19aca9d017ccb0d79d389af171eccc9da2db22960bb00f
+
+pkgname = python-vcf-installer
