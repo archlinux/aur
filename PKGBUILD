@@ -3,8 +3,8 @@
 pkgname=ebgaramond-otf
 _pkgname=EBGaramond12
 _commit=f1a739685ce2eb4214eba4b834cbc0fc269d79d5
-pkgver=1.0
-pkgrel=2
+pkgver=1.001
+pkgrel=1
 pkgdesc='font (OTF version) by Octavio Pardo & Georg Duffner'
 arch=('any')
 url='https://github.com/octaviopardo/EBGaramond12'

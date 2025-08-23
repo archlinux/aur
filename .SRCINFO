@@ -1,7 +1,7 @@
 pkgbase = ebgaramond-otf
 	pkgdesc = font (OTF version) by Octavio Pardo & Georg Duffner
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.001
+	pkgrel = 1
 	url = https://github.com/octaviopardo/EBGaramond12
 	arch = any
 	license = OFL-1.1
