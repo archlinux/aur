@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.8.4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -28,7 +28,7 @@ build() {
  	# Put the assets in the right folder
  	cp -R ../assets ./
 	premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
-	make -j config=release
+	make config=release
 }
 
 package() {
