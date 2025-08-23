@@ -2,24 +2,22 @@
 
 _gitname=gemrb
 pkgname=gemrb-git
-pkgver=v0.9.1.1.688.g0b8639405
+pkgver=r27107.031ec2541
 pkgrel=1
 pkgdesc="Open source reimplementation of Bioware's Infinity Engine."
 arch=('i686' 'x86_64')
 url="http://www.gemrb.org/"
 license=('GPL')
-depends=('python2' 'openal' 'sdl_mixer' 'hicolor-icon-theme')
+depends=('python' 'openal' 'sdl_mixer' 'hicolor-icon-theme')
 makedepends=('cmake')
 provides=('gemrb')
 conflicts=('gemrb')
 source=("git+https://github.com/gemrb/gemrb.git")
 md5sums=('SKIP')
 
-
 pkgver() {
-	cd ${_gitname}
-	git describe --always | sed 's/-/./g'
-
+  cd "$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
