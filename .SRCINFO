@@ -1,0 +1,15 @@
+pkgbase = cyan-skillfish-governor
+	pkgdesc = GPU governor for the AMD Cyan Skillfish APU
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Magnap/cyan-skillfish-governor
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = libdrm
+	backup = etc/cyan-skillfish-governor/config.toml
+	source = https://github.com/Magnap/cyan-skillfish-governor/archive/refs/tags/v0.1.3.tar.gz
+	b2sums = 9cc5d46f9878db63eff2cc3a7088474482a06a0ffe073677ec759cdc30785bebf1bdf7ca4f66677d200e47d709ad14e2e52ee2976217592ca16bee267341adc3
+
+pkgname = cyan-skillfish-governor
+
