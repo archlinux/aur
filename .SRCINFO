@@ -1,6 +1,6 @@
 pkgbase = gkrellm-git
 	pkgdesc = System monitor package for GTK2
-	pkgver = 20240102.2833da7
+	pkgver = 20250823.edad31a
 	pkgrel = 1
 	url = http://gkrellm.srcbox.net/
 	arch = x86_64

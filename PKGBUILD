@@ -9,7 +9,7 @@
 
 _gitname=gkrellm
 pkgname=${_gitname}-git
-pkgver=20240102.2833da7
+pkgver=20250823.edad31a
 pkgrel=1
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
@@ -41,7 +41,7 @@ package() {
   cd ${srcdir}/${_gitname}
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
-  install -Dm644 "server/gkrellmd.conf" "$pkgdir/etc/gkrellmd.conf"
+  install -Dm644 "data/gkrellmd.conf" "$pkgdir/etc/gkrellmd.conf"
   install -Dm644 "../gkrellm.service" "$pkgdir/usr/lib/systemd/system/gkrellm.service"
 }
 
