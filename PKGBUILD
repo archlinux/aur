@@ -1,7 +1,7 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
 url="https://github.com/Sinedka/aniparser"
@@ -37,7 +37,6 @@ EOF
   # Скрипт запуска
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
-exec electron "$pkgdir"/usr/lib/$pkgname/dist-electron/main.js "\$@"
+exec electron /usr/lib/$pkgname/dist-electron/main.js "\$@"
 EOF
-  chmod +x "$pkgdir"/usr/bin/$pkgname
 }
