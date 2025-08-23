@@ -1,14 +1,14 @@
 pkgbase = xlibre-video-ati
 	pkgdesc = XLibre ati video driver
-	pkgver = 22.0.0.1
-	pkgrel = 2
+	pkgver = 22.0.0.2
+	pkgrel = 1
 	url = https://github.com/X11Libre/xf86-video-ati
 	arch = aarch64
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
 	makedepends = systemd
-	makedepends = xlibre-server-devel
+	makedepends = xlibre-xserver-devel
 	makedepends = xorgproto
 	makedepends = X-ABI-VIDEODRV_VERSION=28.0
 	depends = glibc
@@ -20,7 +20,7 @@ pkgbase = xlibre-video-ati
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	source = xf86-video-ati-xfree-xf86-video-ati-22.0.0.1.tar.gz::https://github.com/X11Libre/xf86-video-ati/archive/refs/tags/xfree-xf86-video-ati-22.0.0.1.tar.gz
-	b2sums = b0cc78617f6768e6429faeb6c062da57a7d98888faefa6018b9743af2836dcff59306ad0e7b142981dc22d7419ff349985249aff494719c88d8631aca5d26c1a
+	source = https://codeload.github.com/X11Libre//tar.gz/refs/tags/xlibre-video-ati-22.0.0.2
+	b2sums = 5318272d643f9c4717e84d5198448167dc9df8256fa8ac3a10f2989f65e0ba944b0d71e6b53417b97e6606488e1c9a0f3048b902811e32e36dbc70b0024a1817
 
 pkgname = xlibre-video-ati
