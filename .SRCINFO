@@ -1,7 +1,8 @@
 pkgbase = ninja-jobserver
 	pkgdesc = Small build system with a focus on speed (with job server client patch)
-	pkgver = r3239.d4a4f36
+	pkgver = 1.13.1
 	pkgrel = 1
+	epoch = 1
 	url = https://ninja-build.org/
 	arch = x86_64
 	license = Apache-2.0
@@ -13,7 +14,7 @@ pkgbase = ninja-jobserver
 	depends = gcc-libs
 	provides = ninja
 	conflicts = ninja
-	source = ninja-digit-google::git+https://github.com/digit-google/ninja.git#commit=d4a4f3694c983306584b26c8e45bf3efcd53d108
-	sha256sums = 29f1c50569ca217ed80992f7daf23f349b25d9f714987c9e60d16f356a5f17c7
+	source = ninja-jobserver-1.13.1.zip::https://github.com/ninja-build/ninja/archive/v1.13.1.zip
+	sha256sums = 5bfe6e147f39347f53777fce2fff324811297f12f4199623a9e3d5a9dc431d69
 
 pkgname = ninja-jobserver

@@ -8,8 +8,9 @@ _pkgname=ninja
 pkgname=$_pkgname-jobserver
 provides=(ninja)
 conflicts=(ninja)
-pkgver=r3239.d4a4f36
+pkgver=1.13.1
 pkgrel=1
+epoch=1
 pkgdesc='Small build system with a focus on speed (with job server client patch)'
 arch=(x86_64)
 url='https://ninja-build.org/'
@@ -17,18 +18,10 @@ license=(Apache-2.0)
 depends=(gcc-libs)
 makedepends=(cmake python re2c git)
 checkdepends=(gtest)
-_srcdir='ninja-digit-google'
-_commit='d4a4f3694c983306584b26c8e45bf3efcd53d108'
-source=("${_srcdir}::git+https://github.com/digit-google/ninja.git#commit=$_commit")
-sha256sums=('29f1c50569ca217ed80992f7daf23f349b25d9f714987c9e60d16f356a5f17c7')
+source=("$pkgname-$pkgver.zip::https://github.com/ninja-build/ninja/archive/v$pkgver.zip")
+sha256sums=('5bfe6e147f39347f53777fce2fff324811297f12f4199623a9e3d5a9dc431d69')
 
-pkgver() {
-	cd "${_srcdir}"
-	( set -o pipefail
-		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-	)
-}
+_srcdir="${_pkgname}-${pkgver}"
 
 build() {
   cd "${_srcdir}"
