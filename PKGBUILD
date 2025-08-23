@@ -1,9 +1,13 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=networkmanager-openvpn
+pkgbase=networkmanager-openvpn
+pkgname=(
+  networkmanager-openvpn
+  networkmanager-vpn-plugin-openvpn
+)
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
@@ -12,19 +16,16 @@ depends=(
   gcc-libs
   glib2
   glibc
+  gtk4
   libnm
+  libnma-gtk4
   libsecret
-  openvpn
 )
 makedepends=(
   git
   libnma
-  libnma-gtk4
+  openvpn
   python
-)
-optdepends=(
-  "libnma-gtk4: GUI support (GTK 4)"
-  "libnma: GUI support (GTK 3)"
 )
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git?signed#tag=$pkgver")
 b2sums=('6286ed5a251b6e50d57ce932f1c9ea89c900e1e8851af053c4d1e800519f392c8e824bd9ff7475bfc2adeed4eb83997e151952028111396f576675513e46e025')
@@ -54,11 +55,49 @@ build() {
   make
 }
 
-package() {
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
+package_networkmanager-openvpn() {
+  pkgdesc+=" (with GUI)"
+  depends+=(
+    "networkmanager-vpn-plugin-openvpn=$pkgver-$pkgrel"
+  )
+  optdepends=(
+    "libnma: GUI support (GTK 3)"
+  )
+
   cd NetworkManager-openvpn
   make DESTDIR="$pkgdir" install dbusservicedir=/usr/share/dbus-1/system.d
+
+  cd "$pkgdir"
+  _pick plugin usr/lib/NetworkManager/VPN
+  _pick plugin usr/lib/NetworkManager/libnm-vpn-plugin-openvpn.so
+  _pick plugin usr/lib/nm-openvpn-service*
+  _pick plugin usr/share/dbus-1
+}
+
+package_networkmanager-vpn-plugin-openvpn() {
+  pkgdesc+=" (VPN plugin only)"
+  depends=(
+    gcc-libs
+    glib2
+    glibc
+    libnm
+    openvpn
+  )
+
+  mv plugin/* "$pkgdir"
+
   echo 'u nm-openvpn - "NetworkManager OpenVPN"' |
-    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgbase.conf"
 }
 
 # vim:set sw=2 sts=-1 et:

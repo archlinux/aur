@@ -1,4 +1,4 @@
 [networkmanager-openvpn]
 source = "git"
 git = "https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git"
-include_regex = '[^.]+\.[^.]*[02468]\.[^.]*[02468]'
+include_regex = '\d+\.\d*[02468]\.\d+'
