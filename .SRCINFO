@@ -1,7 +1,7 @@
 pkgbase = python-p189client
 	pkgdesc = Python 189 webdisk client.
 	pkgver = 0.0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/p189client
 	arch = any
 	license = MIT
@@ -18,7 +18,6 @@ pkgbase = python-p189client
 	depends = python-aiofile
 	depends = python-asynctools
 	depends = python-cookietools
-	depends = python-encode-uri
 	depends = python-errno2
 	depends = python-dicttools
 	depends = python-filewrap

@@ -3,7 +3,7 @@
 pkgname=python-p189client
 _name=${pkgname#python-}
 pkgver=0.0.2.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python 189 webdisk client."
 arch=('any')
@@ -22,7 +22,6 @@ depends=(
     python-aiofile
     python-asynctools
     python-cookietools
-    python-encode-uri
     python-errno2
     python-dicttools
     python-filewrap
