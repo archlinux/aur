@@ -1,5 +1,22 @@
 pkgbase = moltengamepad-git
-	pkgver = 0
-	pkgrel = 0
+	pkgdesc = Flexible input device translator, geared for gamepads
+	pkgver = 1.2.3.r32.gccf1278
+	pkgrel = 1
+	url = https://github.com/ForkingField/MoltenGamepad
+	arch = x86_64
+	license = MIT
+	makedepends = go-md2man
+	makedepends = git
+	makedepends = meson
+	source = moltengamepad::git+https://github.com/ForkingField/MoltenGamepad.git
+	sha256sums = SKIP
 
 pkgname = moltengamepad-git
+	depends = systemd-libs
+	provides = moltengamepad
+	conflicts = moltengamepad
+
+pkgname = moltengamepad-sysuser-git
+	depends = moltengamepad-git
+	provides = moltengamepad-sysuser
+	conflicts = moltengamepad-sysuser
