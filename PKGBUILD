@@ -16,22 +16,14 @@ build() {
 }
 
 package() {
-  # Создаём нужные каталоги
-  install -d "$pkgdir"/usr/lib/$pkgname
-  install -d "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/share/applications
-  install -d "$pkgdir"/usr/share/icons/hicolor/512x512/apps
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
 
   # Распаковываем архив
   tar -xzf "$srcdir/dist-electron.tar.gz" -C "$pkgdir"/usr/lib/$pkgname
 
-  # Копируем иконку
-  if [ -f "$pkgdir"/usr/lib/$pkgname/dist-react/icon.png ]; then
-    install -Dm644 "$pkgdir"/usr/lib/$pkgname/dist-react/icon.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/$pkgname.png
-  fi
-
   # Создаём desktop entry
-  cat > "$pkgdir"/usr/share/applications/$pkgname.desktop <<EOF
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
 [Desktop Entry]
 Name=AniParser
 Comment=AniParser Electron application
@@ -43,7 +35,7 @@ Categories=Utility;
 EOF
 
   # Скрипт запуска
-  cat > "$pkgdir"/usr/bin/$pkgname <<EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
 exec electron "$pkgdir"/usr/lib/$pkgname/dist-electron/main.js "\$@"
 EOF
