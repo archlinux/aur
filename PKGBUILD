@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=PopGenReport
-_pkgver=3.1
+_pkgver=3.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-sf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b17b5e2a8a5bda48ca5ac8986d93380')
-b2sums=('182b8d7c321f36a44d45c9fa7975e60522c6a115f07043f8b4be227bdda2f61c57a27fd13fcc633e668622792f4ce4aba15ecaf57e32c0358453156f145a64dc')
+md5sums=('2d0c49e07f163b2722b6c0f55757048e')
+b2sums=('9131fef428a3e263fa6300f171ab6f2029ea329224ad74f498c836e46a13251a786cd4ea690090aa65cb877c1c7c5f49ba06132cf5ffe6f69e80f866d17a18d7')
 
 build() {
   mkdir build
