@@ -26,5 +26,6 @@ package() {
 
 	autoreconf --install
 	./configure
+	cd ${pkgname%-git}
 	make install DESTDIR=$pkgdir
 }
