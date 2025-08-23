@@ -1,15 +1,15 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=pcsx-redux
-pkgver=r6745.a1f02931
+pkgver=r6756.4f4a00fe
 pkgrel=1
-pkgdesc="The PCSX-Redux project is a collection of tools, research, hardware design, and libraries aiming at development and reverse engineering on the PlayStation 1."
+pkgdesc="A collection of tools, research, hardware design, and libraries aiming at development and reverse engineering on the PlayStation 1."
 arch=('x86_64')
 url="https://github.com/grumpycoders/pcsx-redux"
 license=('GPL-2.0-or-later')
 depends=('zlib' 'libluv' 'curl' 'gcc-libs' 'capstone' 'fmt' 'llhttp' 'md4c' 'ffmpeg' 'glibc' 'hicolor-icon-theme' 'libuv' 'libx11' 'freetype2' 'libxcb' 'glfw')
 makedepends=('git' 'imagemagick')
 options=(!lto)
-_commit=a1f02931f084775186b2c5135d5c64807102c69b
+_commit=4f4a00fe09cd44f9946f6066f2c2768932ad065a
 source=("git+$url.git#commit=$_commit"
 	"git+https://github.com/ocornut/imgui.git"
 	"git+https://github.com/libuv/libuv.git"
@@ -45,7 +45,7 @@ source=("git+$url.git#commit=$_commit"
 	"git+https://github.com/LuaJIT/LuaJIT.git"
 	"git+https://github.com/lua/lua.git"
 	"git+https://github.com/keplerproject/lua-compat-5.3.git")
-sha256sums=('c00d1680a639f8fdd725acfa8eaacc87a0bc42e4f3d53136bfb27cd8cf0a7e71'
+sha256sums=('9c72c6247d3dddc812c8d0d9d87dc3f5fac7d01dec3cb573837770190530a4ed'
             'SKIP'
             'SKIP'
             'SKIP'
