@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=tsduck-bin
-_pkgver=3.41-4299
+_pkgver=3.42-4421
 pkgver="${_pkgver%-*}"
 pkgrel=1
 pkgdesc="MPEG Transport Stream Toolkit"
@@ -35,10 +35,10 @@ source_aarch64=(
   "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc42.aarch64.rpm"
   "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc42.aarch64.rpm"
 )
-sha256sums_x86_64=('ca73d101def4dbf8716d554a19f700b4078041a5aab41d52b159515177bedb8b'
-                   'dbdf315934a88f872ecf321f52203ffb37cb47423b502d9787afe60207d26efa')
-sha256sums_aarch64=('ad2a4ea7258151f1b5d931600df20dce27721940637940dd2e039e70cee02fb5'
-                    'b66eba726e53d29b80951011813023b146197078dace429ebfec6cf22978deab')
+sha256sums_x86_64=('a0c8536a7b8167bf1a6bcde79b9fba9ad91a2505a3450eca62b98ce508d93cdb'
+                   '26fd24f5cae17c9d409f5d38a2e79995209c0737c69d9eaacc5f594281279875')
+sha256sums_aarch64=('fa9547643a5501534c23c2eafc7f74d37eb542a1b6255c0965370280cb8c13f7'
+                    'b05b77c895129035227bde69494a7d5107a2427a99f6a576e78f95829b2e70a3')
 
 prepare() {
   # Move all libs to /usr/lib
