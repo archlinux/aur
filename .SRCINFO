@@ -1,0 +1,18 @@
+pkgbase = python-vcf-sdk
+	pkgdesc = VMware VCF SDK - Wrapper package for VMware Cloud Foundation Automation APIs
+	pkgver = 9.0.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/vcf-sdk/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-vmware-vcenter
+	depends = python-pyvmomi
+	depends = python-vmware-vsan-data-protection
+	depends = python-vmware-sddc-manager
+	depends = python-vcf-installer
+	source = https://files.pythonhosted.org/packages/32/b1/40ed374415e55848ed217807887866150c26bc27acfe3900cf2e5853324d/vcf_sdk-9.0.0.0-py3-none-any.whl
+	sha256sums = 5ec457ecc10d43d589b4eacb0975bcc850d0e4e8b015094cc7bb3a552892f54f
+
+pkgname = python-vcf-sdk
