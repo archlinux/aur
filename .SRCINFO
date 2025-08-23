@@ -1,0 +1,15 @@
+pkgbase = orbolay-bin
+	pkgdesc = Quick, small, native Discord overlay alternative for modded clients
+	pkgver = 0.1.0.alpha7
+	pkgrel = 2
+	url = https://github.com/SpikeHD/Orbolay
+	arch = x86_64
+	license = GPL3
+	provides = orbolay
+	conflicts = orbolay
+	source = https://github.com/SpikeHD/Orbolay/releases/download/v0.1.0-alpha7/orbolay-x86_64-unknown-linux-gnu
+	source = orbolay.desktop
+	sha256sums = 7bc2c09c3f8a1a9083a37ecd6689fea83aae4bcedcd9da3af97386fc9ecd014d
+	sha256sums = cc5613c5d0da99342e8ffb87d9949180b0feeac81bc1550ca6bae1bc10598f4b
+
+pkgname = orbolay-bin

@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Orbolay
+Comment=Quick, small, native Discord overlay alternative for modded clients
+Exec=/usr/bin/orbolay %u
+Terminal=false
+Categories=Game;Utility;
+StartupNotify=true
