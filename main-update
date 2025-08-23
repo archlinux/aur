@@ -99,7 +99,7 @@ do_update() {
     AUTOPACMAN_LOG="$(mktemp)"
 
     # Try to run the update
-    LANG=C LANGUAGE=C LC_ALL=C AUTOPACMAN_LOG="$AUTOPACMAN_LOG" AUTOPACMAN_PACMAN_NOCONFIRM="$PACMAN_NOCONFIRM" AUTOPACMAN_CONFLICTSFILE="$AUTOPACMAN_CONFLICTSFILE" /usr/lib/garuda/garuda-update/auto-pacman "$PACMAN" "${pacman_args[@]}" || { EXIT=$?; }
+    LANG=C LANGUAGE=C LC_ALL=C AUTOPACMAN_LOG="$AUTOPACMAN_LOG" AUTOPACMAN_NO_SPACE_CHECK="$NO_SPACE_CHECK" AUTOPACMAN_PACMAN_NOCONFIRM="$PACMAN_NOCONFIRM" AUTOPACMAN_CONFLICTSFILE="$AUTOPACMAN_CONFLICTSFILE" /usr/lib/garuda/garuda-update/auto-pacman "$PACMAN" "${pacman_args[@]}" || { EXIT=$?; }
 
     # We have no reason not to get rid of the custom pacman config right away
     if [ -n "$CUSTOM_PACMAN_CONFIG" ]; then rm "$CUSTOM_PACMAN_CONFIG"; fi
@@ -149,7 +149,7 @@ fi
 
 # Parse CLI options
 PARAMETERS=("$@")
-PARSED_OPTIONS=$(getopt --options="a" --longoptions="aur,skip-mirrorlist,noconfirm" --name "$0" -- "${PARAMETERS[@]}")
+PARSED_OPTIONS=$(getopt --options="a" --longoptions="aur,skip-mirrorlist,no-space-check,noconfirm" --name "$0" -- "${PARAMETERS[@]}")
 # shellcheck disable=SC2181
 if [[ $? -ne 0 ]]; then
   echo -e "\033[1;31m\nFailed to parse CLI options\n\033[0m"
@@ -163,6 +163,10 @@ while true; do
     ;;
   --skip-mirrorlist)
     SKIP_MIRRORLIST=1
+    shift
+    ;;
+  --no-space-check)
+    NO_SPACE_CHECK=1
     shift
     ;;
   --noconfirm)

@@ -4,7 +4,9 @@ if {![exp_debug]} {trap {exit 1} {SIGINT SIGTERM}}
 
 variable noconfirm [string equal $::env(AUTOPACMAN_PACMAN_NOCONFIRM) "1"]
 variable noconfirm_downloading false
-variable conflictsfile_set [expr [info exist ::env(AUTOPACMAN_CONFLICTSFILE)] && [file exist $::env(AUTOPACMAN_CONFLICTSFILE)] ? true : false]
+variable total_size 0
+variable download_size 0
+variable conflictsfile_set [expr [info exists ::env(AUTOPACMAN_CONFLICTSFILE)] && [file exist $::env(AUTOPACMAN_CONFLICTSFILE)] ? true : false]
 
 # [package to be replaced]: [package to be replaced with]
 array set auto_replace_conflicts {
@@ -71,12 +73,42 @@ proc parseConflicts {first second} {
     }
 }
 
+proc handleConfirm {} {
+    # Check if the available disk space is sufficient
+    if { !([info exists ::env(AUTOPACMAN_NO_SPACE_CHECK)] && [string equal $::env(AUTOPACMAN_NO_SPACE_CHECK) "1"]) } {
+        if {[catch {exec btrfs -- filesystem usage / -m --iec} usage_output] == 0} {
+            if {[regexp {\s+Free \(estimated\):\s+(\d+)\.\d+MiB} $usage_output -> available_space]} {
+                if {[string is double -strict $available_space] && [string is double -strict $::total_size] && $::total_size > 0} {
+                    set needed_space [expr {$::total_size + $::download_size}]
+                    # Add a 1 GiB or 10% buffer, whichever is larger (probably 1GiB, given that updates are not usually bigger than 3-5 GB)
+                    set buffer [expr max(1024, int($needed_space * 0.1))]
+                    if {($available_space - $buffer) < $needed_space} {
+                        send "n\r"
+                        set ::exit_show_error "\n\033\[1;31mGaruda Update has detected that the available disk space on / may be insufficient for this transaction. Available: ${available_space}MiB, Required: ${needed_space}MiB + ${buffer}MiB buffer.\033\[0m\n\033\[1;34mNote: Net Upgrade Size is not an accurate indicator of required disk space on CoW (btrfs) filesystems.\033\[0m\n"
+                        exp_continue
+                        return
+                    }
+                }
+            }
+        }
+    }
+
+    # Check if an autoconfirm is called for
+    if { $::noconfirm || $::conflictsfile_set } {
+        send "y\r"
+        set ::noconfirm_downloading true
+    }
+}
+
 proc doExit {} {
     catch wait result
-    if {[info exist ::env(AUTOPACMAN_CONFLICTSFILE)] && ![file exist $::env(AUTOPACMAN_CONFLICTSFILE)] } {
+    if {[info exists ::env(AUTOPACMAN_CONFLICTSFILE)] && ![file exist $::env(AUTOPACMAN_CONFLICTSFILE)] } {
         set conflictsfile [open $::env(AUTOPACMAN_CONFLICTSFILE) [list WRONLY CREAT EXCL] 0600]
         puts $conflictsfile [array get ::auto_replace_conflicts]
         close $conflictsfile
+    }
+    if {[info exists ::exit_show_error]} {
+        exp_send_error $::exit_show_error
     }
     exit [lindex $result 3]
 }
@@ -105,7 +137,9 @@ expect {
     "looking for conflicting packages" { exp_continue }
     "Enter a number (default=1):" { if { $noconfirm } { send "1\r"; exp_continue; } { interact -o "\r" exp_continue; } }
     -re {(\S+) and \S+ are in conflict(?: \(\S+\))?. Remove (\S+)\? \[y/N\]} { parseConflicts $expect_out(1,string) $expect_out(2,string); exp_continue }
-    -re {Proceed with installation.*} { if { [info exist ::env(AUTOPACMAN_LOG)] } { log_file $::env(AUTOPACMAN_LOG) }; if { $::noconfirm || $::conflictsfile_set } { send "y\r"; set noconfirm_downloading true } }
+    -re {Total Download Size:.*?\s+([0-9.]+)\sMiB} { set download_size $expect_out(1,string); exp_continue }
+    -re {Total Installed Size:.*?\s+([0-9.]+)\sMiB} { set total_size $expect_out(1,string); exp_continue }
+    -re {Proceed with installation.*} { if { [info exists ::env(AUTOPACMAN_LOG)] } { log_file $::env(AUTOPACMAN_LOG) }; handleConfirm }
     timeout { }
     eof doExit
 }
