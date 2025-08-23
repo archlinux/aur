@@ -1,7 +1,7 @@
 # Maintainer: Luke Wilkinson <wilkinsonluke@proton.me>
 
 pkgname=fmp-bin
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="A simple secure password manager written in rust."
 arch=('x86_64')
