@@ -1,30 +1,70 @@
 # Maintainer: Rami Chowdhury <necaris@gmail.com>
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
-
+# Co-Maintainer: LSM <sagargaud88@gmail.com>
 pkgname=popsql
-pkgver=1.0.74
-pkgrel=0
-pkgdesc="Collaborative SQL editor to write, run, and share queries instantly"
+pkgver=1.0.135
+pkgrel=1
+pkgdesc="Collaborative SQL editor for teams"
 arch=('x86_64')
-url="https://popsql.io"
-license=('unknown')
-groups=()
+url="https://popsql.com"
+license=('custom:proprietary')
+depends=('fuse2' 'gtk3' 'nss' 'libxss' 'libnotify' 'alsa-lib')
+provides=('popsql')
+conflicts=('popsql')
+source=("PopSQL-${pkgver}.AppImage::https://get.popsql.com/download/AppImage")
+sha256sums=('1dec3c2cbea7365a80967f50970321b5e2de8cf039ddc9c0d9f92f4dfcab1746')
+options=('!strip')
 
-depends=('gconf' 'nss' 'libxss' 'gtk2' 'gnome-keyring')
-optdepends=(
-  'alsa-lib: Audio notifications'
-  'libnotify: Visual notifications'
-  'libappindicator-gtk2: System Tray support')
-
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source_x86_64=("$pkgname-$pkgver-$pkgrel.deb::https://get.popsql.com/download/debian")
-sha512sums_x86_64=('3cf2fb5df52b975b581ad06b75053314c11c9cd2a716c92b5efb5f126cf19647ac2edc69a6b0e08c143e5a94b4d0da55adb9199fcdf2e672afceae3896e71dd0')
+prepare() {
+    chmod +x "PopSQL-${pkgver}.AppImage"
+    ./PopSQL-${pkgver}.AppImage --appimage-extract >/dev/null 2>&1
+}
 
 package() {
-  # Extract package data
-  tar xf data.tar.xz -C "${pkgdir}"
-  # Create a Licenses directory, add a license file
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  echo "Copyright PopSQL, inc. All rights reserved" >"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Install AppImage
+    install -Dm755 "${srcdir}/PopSQL-${pkgver}.AppImage" \
+        "${pkgdir}/opt/${pkgname}/PopSQL.AppImage"
+    
+    # Wrapper script
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << 'EOF'
+#!/bin/bash
+exec /opt/popsql/PopSQL.AppImage "$@"
+EOF
+
+    # Install desktop file
+    if [[ -f "${srcdir}/squashfs-root/@popsqldesktop.desktop" ]]; then
+        install -Dm644 "${srcdir}/squashfs-root/@popsqldesktop.desktop" \
+            "${pkgdir}/usr/share/applications/popsql.desktop"
+        
+        sed -i 's|Exec=AppRun.*|Exec=/usr/bin/popsql %U|g' \
+            "${pkgdir}/usr/share/applications/popsql.desktop"
+        sed -i 's|Icon=.*|Icon=popsql|g' \
+            "${pkgdir}/usr/share/applications/popsql.desktop"
+    fi
+
+    # FIXED: Correct icon installation with proper path parsing
+    if [[ -d "${srcdir}/squashfs-root/usr/share/icons/hicolor" ]]; then
+        find "${srcdir}/squashfs-root/usr/share/icons/hicolor" -name "@popsqldesktop.png" | while read icon; do
+            # Get the full path relative to hicolor directory
+            relative_path="${icon#${srcdir}/squashfs-root/usr/share/icons/hicolor/}"
+            
+            # Replace the @popsqldesktop filename with popsql.png
+            target_path="${relative_path//@popsqldesktop.png/popsql.png}"
+            
+            # Install to correct location
+            install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${target_path}"
+        done
+    fi
+
+    # Install licenses
+    if [[ -f "${srcdir}/squashfs-root/LICENSE.electron.txt" ]]; then
+        install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" \
+            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+    fi
+    
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << EOF
+PopSQL - Proprietary Software
+Copyright © PopSQL, Inc. All rights reserved.
+This software is proprietary and subject to the terms at: https://popsql.com/terms
+EOF
 }
