@@ -1,0 +1,11 @@
+pkgbase = python-sentry_crashpad
+	pkgdesc = Crashpad is an open-source multiplatform crash reporting system written in C++ by Google.
+	pkgver = 0.7.17.1
+	pkgrel = 1
+	url = https://github.com/EndstoneMC/sentry-crashpad
+	arch = any
+	license = Apache-2.0
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-sentry_crashpad
