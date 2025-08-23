@@ -24,7 +24,7 @@ pkgbase = python-pytango
 	depends = python-packaging
 	depends = python-psutil
 	depends = python-coverage
-	depends = pybind11
+	depends = pybind11>=3.0.1
 	optdepends = python-pytest: for testing
 	optdepends = python-gevent: for testing
 	optdepends = python-opentelemetry-sdk: to add telemetry
@@ -32,8 +32,6 @@ pkgbase = python-pytango
 	optdepends = python-opentelemetry-exporter-otlp-proto-grpc: to add telemetry
 	optdepends = python-opentelemetry-exporter-otlp-proto-http: to add telemetry
 	source = git+https://gitlab.com/tango-controls/pytango.git
-	source = https://github.com/pybind/pybind11/archive/refs/tags/v2.13.6.tar.gz
 	sha256sums = SKIP
-	sha256sums = e08cb87f4773da97fa7b5f035de8763abc656d87d5773e62f6da0587d1f0ec20
 
 pkgname = python-pytango

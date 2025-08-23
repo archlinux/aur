@@ -13,7 +13,7 @@ url="https://gitlab.com/tango-controls/${_name}"
 license=("LGPL-3.0-or-later" "PSF-2.0")
 groups=("tango-controls")
 depends=(
-  "tango-cpp>=10.0.0" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage" "pybind11"
+  "tango-cpp>=10.0.0" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage" "pybind11>=3.0.1"
 )
 makedepends=(
   "cmake" "ninja"
@@ -30,29 +30,13 @@ optdepends=(
 )
 source=(
   "git+https://gitlab.com/tango-controls/pytango.git"
-  "https://github.com/pybind/pybind11/archive/refs/tags/v2.13.6.tar.gz"
 )
 sha256sums=(
   SKIP
-  "e08cb87f4773da97fa7b5f035de8763abc656d87d5773e62f6da0587d1f0ec20"
 )
-
-prepare() {
-  cd pybind11-2.13.6
-  echo BUILDING ...
-  python -m build --wheel
-  echo INSTALLING ...
-  install -d "${srcdir}/_buildpy"
-  python -m pip install \
-    --no-index --no-deps \
-    --find-links="${srcdir}/pybind11-2.13.6/dist" \
-    --target="${srcdir}/_buildpy" \
-    "pybind11==2.13.6"
-}
 
 build() {
   cd "${_name}"
-  export PYTHONPATH="${srcdir}/_buildpy${PYTHONPATH:+:$PYTHONPATH}"
   python -m build --wheel --no-isolation
 }
 
