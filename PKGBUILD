@@ -22,7 +22,7 @@ prepare() {
 }
 
 build() {
-  arch-meson "${pkgname}" build -Dtests=false
+  meson "${pkgname}" build -Dtests=false
   meson compile -C build
 }
 
