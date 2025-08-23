@@ -1,6 +1,6 @@
 pkgbase = codellm
 	pkgdesc = AI code editor that enhances developer productivity, bundled with the AI super assistant, ChatLLM
-	pkgver = 1.101.23302
+	pkgver = 1.101.23309
 	pkgrel = 1
 	url = https://github.com/abacusai/codellm-releases
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = codellm
 	provides = codellm
 	conflicts = codellm-bin
 	options = !debug
-	source_x86_64 = https://github.com/abacusai/codellm-releases/releases/download/1.101.23302/CodeLLM-linux-x64-1.101.23302.tar.gz
-	sha256sums_x86_64 = f9d91eb75375ce9a7b62240cc32d8a13982258b89b2a0be8b343d63185c7b81a
-	source_aarch64 = https://github.com/abacusai/codellm-releases/releases/download/1.101.23302/CodeLLM-linux-arm64-1.101.23302.tar.gz
-	sha256sums_aarch64 = 2d00a3cdc6d059dc994f7e719184a31c0c041293e5d406a2bce6217904495a0c
+	source_x86_64 = https://github.com/abacusai/codellm-releases/releases/download/1.101.23309/CodeLLM-linux-x64-1.101.23309.tar.gz
+	sha256sums_x86_64 = d5f797da0e8af26f18b82d76fdd199679b451e42667609123f37a7b5f79941f9
+	source_aarch64 = https://github.com/abacusai/codellm-releases/releases/download/1.101.23309/CodeLLM-linux-arm64-1.101.23309.tar.gz
+	sha256sums_aarch64 = 689745b488fae579c9378652f0cda886455d0d3fa15f6906dd76ce4fe424072c
 
 pkgname = codellm
