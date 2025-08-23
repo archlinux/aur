@@ -1,7 +1,7 @@
 pkgbase = python-chromadb
 	pkgdesc = the AI-native open-source embedding database
 	pkgver = 1.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chroma-core/chroma
 	arch = any
 	license = Apache-2.0
@@ -29,6 +29,7 @@ pkgbase = python-chromadb
 	depends = python-orjson
 	depends = python-overrides
 	depends = python-posthog
+	depends = python-pybase64
 	depends = python-pydantic
 	depends = python-pypika
 	depends = python-pyyaml
