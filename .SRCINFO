@@ -1,12 +1,12 @@
 pkgbase = katharsis
 	pkgdesc = CLI tool for generating RSS feeds
-	pkgver = 1.0.0.29
+	pkgver = 1.0.0.30
 	pkgrel = 1
 	url = https://github.com/arghena/katharsis
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = katharsis-1.0.0.29.tar.gz::https://github.com/arghena/katharsis/archive/v1.0.0-canary.29.tar.gz
-	sha256sums = 808fb63ef7242fbb357f8601a9304ad3be6be5aaa95068a14aacd7a594d3c087
+	source = katharsis-1.0.0.30.tar.gz::https://github.com/arghena/katharsis/archive/v1.0.0-canary.30.tar.gz
+	sha256sums = 6cbf247a7a32e072aebbf12dc53590c3281b6b7e852fae374a2c3c0d06dcab77
 
 pkgname = katharsis
