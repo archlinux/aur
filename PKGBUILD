@@ -17,17 +17,11 @@ conflicts=(cs-firewall-bouncer)
 backup=(etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml)
 install=cs-firewall-bouncer.install
 
-# Map arch to URL Arch
-_urlarch() {
-    case "$1" in
-        x86_64) echo "amd64" ;;
-        aarch64) echo "arm64" ;;
-        *) echo "$1" ;;
-    esac
-}
-
-source=(
-    "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/releases/download/v${pkgver}/${pkgbase}-linux-$(_urlarch $CARCH).tgz"
+source_x86_64=(
+    "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/releases/download/v${pkgver}/${pkgbase}-linux-amd64.tgz"
+)
+source_aarch64=(
+    "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/releases/download/v${pkgver}/${pkgbase}-linux-arm64.tgz"
 )
 
 sha256sums_x86_64=('8b07e08fb35a90b33eb2403eb93966679b39adb42c9cd03882de66cdf19a949f')
