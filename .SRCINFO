@@ -1,0 +1,10 @@
+pkgbase = greatest-poetic-line
+	pkgdesc = A simple script that prints the greatest poetic line in all arabic history
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = line.sh
+	sha256sums = SKIP
+
+pkgname = greatest-poetic-line
