@@ -2,10 +2,10 @@
 # Maintainer: Focshole - contact me on AUR or through Github
 pkgname=(crowdsec-firewall-bouncer-{iptables,nftables})
 pkgbase=crowdsec-firewall-bouncer
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=3
 pkgdesc="Crowdsec bouncer written in golang for firewalls"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://doc.crowdsec.net/docs/bouncers/firewall/"
 license=('MIT')
 depends=(crowdsec)
@@ -16,10 +16,23 @@ provides=(crowdsec-firewall-bouncer cs-firewall-bouncer)
 conflicts=(cs-firewall-bouncer)
 backup=(etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml)
 install=cs-firewall-bouncer.install
+
+# Map arch to URL Arch
+_urlarch() {
+    case "$1" in
+        x86_64) echo "amd64" ;;
+        aarch64) echo "arm64" ;;
+        *) echo "$1" ;;
+    esac
+}
+
 source=(
-    "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/releases/download/v${pkgver}/${pkgbase}-linux-amd64.tgz"
+    "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/releases/download/v${pkgver}/${pkgbase}-linux-$(_urlarch $CARCH).tgz"
 )
-sha256sums=('34f6d7abf81de7a502b531c114283018ded54e794d501b32a01d21a0c28a1e42')
+
+sha256sums_x86_64=('8db02f8868c256c12ae18ae617c43efdb06e8acf8e7a89c29d4d47b258d2e168')
+sha256sums_aarch64=('41899de18ad928e89de26a6fcd46ae8c7cb9a3b95369e850335106db0bf727aa')
+
     
 prepare() {
     cd "$pkgbase-v$pkgver"
