@@ -3,15 +3,12 @@
 pkgbase=cloud-fs-bin
 pkgname=(cloud-fs-bin clouddrive)
 pkgver=0.9.7
-pkgrel=3
+pkgrel=5
 epoch=2
 pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloud-fs/cloud-fs.github.io"
 license=('LicenseRef-scancode-commercial-license')
-provides=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
-conflicts=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
-replaces=()
 depends=(
     bash
     fuse
