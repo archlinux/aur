@@ -4,7 +4,7 @@ _pkgname=xlibre-server
 _orgpkgname=xlibre-xserver
 pkgname=$_pkgname-bin
 pkgver=25.0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org X server (binary release)"
 arch=(x86_64)
 url="https://github.com/X11Libre/xserver"
@@ -28,7 +28,7 @@ options=(!strip)
 source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-server-common-bin xlibre-input-libinput-bin libepoxy libxfont2 pixman libunwind
-         dbus libgl nettle libxdmcp sh glibc libxau libtirpc
+         dbus libgl nettle libxdmcp sh glibc libxau libtirpc libmd
          libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
 # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
