@@ -1,0 +1,24 @@
+pkgbase = python-ariarpc
+	pkgdesc = Python aria2 RPC call.
+	pkgver = 0.0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/ariarpc
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-httpx
+	depends = python-orjson
+	depends = python-httpx-request
+	provides = python-ariarpc
+	conflicts = python-ariarpc
+	options = !strip
+	options = !debug
+	source = ariarpc-0.0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/a/ariarpc/ariarpc-0.0.2.1.tar.gz
+	sha256sums = 32ec9fc87c6bd30ac4a5297dae222a1d31b9a2562ba1a62e155c1c691bd1f156
+
+pkgname = python-ariarpc
