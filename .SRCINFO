@@ -11,6 +11,10 @@ pkgbase = dvr-scan
 	depends = python-opencv
 	depends = python-scenedetect
 	source = https://github.com/Breakthrough/DVR-Scan/archive/refs/tags/v1.8-release.tar.gz
+	source = dvr-scan.desktop
+	source = dvr-scan.png
 	sha256sums = 22b5932e51b0e429362fd384f095c2032613358907997e12e6ccf65cf0064a14
+	sha256sums = e38e9df2eebc61f343907825c7b9868df8481ed83113c5174ad9c0fb75df7d1d
+	sha256sums = 05a338ae2596fb9e5e9ac686ff3a13454ec00604c8f21443414e2ba8e611fdf8
 
 pkgname = dvr-scan

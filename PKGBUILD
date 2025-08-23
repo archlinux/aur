@@ -17,10 +17,21 @@ depends=(
 makedepends=(
   python-setuptools
 )
-source=("https://github.com/Breakthrough/DVR-Scan/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('22b5932e51b0e429362fd384f095c2032613358907997e12e6ccf65cf0064a14')
+source=(
+  "https://github.com/Breakthrough/DVR-Scan/archive/refs/tags/v$_tag.tar.gz"
+  dvr-scan.desktop
+  dvr-scan.png
+)
+sha256sums=('22b5932e51b0e429362fd384f095c2032613358907997e12e6ccf65cf0064a14'
+            'e38e9df2eebc61f343907825c7b9868df8481ed83113c5174ad9c0fb75df7d1d'
+            '05a338ae2596fb9e5e9ac686ff3a13454ec00604c8f21443414e2ba8e611fdf8')
 
 package() {
+  mkdir -p "$pkgdir/usr/share/applications/"
+  mkdir -p "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 dvr-scan.desktop "$pkgdir/usr/share/applications/dvr-scan.desktop"
+  install -Dm644 dvr-scan.png "$pkgdir/usr/share/pixmaps/dvr-scan.png"
+
   cd "DVR-Scan-$_tag"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE

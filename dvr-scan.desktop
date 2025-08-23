@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=DVR-Scan
+Comment=Find and extract motion events in videos
+Exec=dvr-scan-app %U
+Icon=dvr-scan
+Type=Application
+Categories=Video;
