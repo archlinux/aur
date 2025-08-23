@@ -1,0 +1,15 @@
+pkgbase = python-vmware-vsan-data-protection
+	pkgdesc = VMware vSAN Data Protection Python API Bindings
+	pkgver = 9.0.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/vmware-vsan-data-protection/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-vmware-vapi-common-client
+	depends = python-vmware-vapi-runtime
+	source = https://files.pythonhosted.org/packages/1f/9b/a124bd079b73ea4d464d279a2b44f440b97241baa9e92127bf7bf1c83bea/vmware_vsan_data_protection-9.0.0.0-py3-none-any.whl
+	sha256sums = e7364317da01b3c7eb3b5a3fe2fc280f7fcca3631264c422ca19f2189680657a
+
+pkgname = python-vmware-vsan-data-protection
