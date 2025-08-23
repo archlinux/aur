@@ -1,6 +1,6 @@
 pkgbase = euphonica-git
 	pkgdesc = Libadwaita MPD client with visualiser, wikis and synced lyrics
-	pkgver = 0.96.1.r342
+	pkgver = 0.96.3.r354
 	pkgrel = 1
 	url = https://github.com/htkhiem/euphonica
 	arch = x86_64

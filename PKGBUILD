@@ -1,7 +1,7 @@
 # Maintainer: Huynh Thien Khiem <my_github_name 2000 at gmail dot com>
 _pkgname=euphonica
 pkgname=${_pkgname}-git
-pkgver=0.96.1.r342
+pkgver=0.96.3.r354
 pkgrel=1
 pkgdesc="Libadwaita MPD client with visualiser, wikis and synced lyrics"
 arch=("x86_64")
@@ -38,7 +38,6 @@ pkgver() {
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$srcdir/${_pkgname%-git}"
-	git submodule update --init
 	meson setup build --buildtype=release --prefix=/usr
 }
 
