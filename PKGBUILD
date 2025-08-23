@@ -2,7 +2,7 @@
 
 _pkgname=joplin
 pkgname=${_pkgname}-bin
-pkgver=3.3.13
+pkgver=3.4.6
 pkgrel=1
 pkgdesc="Note Taking App. Debian Package."
 arch=('x86_64')
@@ -25,4 +25,4 @@ package() {
     ln -s "/opt/Joplin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-md5sums_x86_64=('8ecb54c45b3e1c054f4250ae0060720a')
+md5sums_x86_64=('26ea9556758d181ab3020c68216b4bb3')

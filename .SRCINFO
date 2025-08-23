@@ -1,6 +1,6 @@
 pkgbase = joplin-bin
 	pkgdesc = Note Taking App. Debian Package.
-	pkgver = 3.3.13
+	pkgver = 3.4.6
 	pkgrel = 1
 	url = https://github.com/laurent22/joplin
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = joplin-bin
 	conflicts = joplin-electron
 	conflicts = joplin-beta-appimage
 	options = !debug
-	source_x86_64 = joplin-bin-3.3.13.deb::https://github.com/laurent22/joplin/releases/download/v3.3.13/joplin-3.3.13.deb
-	md5sums_x86_64 = 8ecb54c45b3e1c054f4250ae0060720a
+	source_x86_64 = joplin-bin-3.4.6.deb::https://github.com/laurent22/joplin/releases/download/v3.4.6/joplin-3.4.6.deb
+	md5sums_x86_64 = 26ea9556758d181ab3020c68216b4bb3
 
 pkgname = joplin-bin
