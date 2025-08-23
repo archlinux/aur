@@ -8,11 +8,12 @@
 pkgbase=gforth
 pkgname=('gforth' 'gforth-docs')
 pkgver=0.7.3
-pkgrel=6
+pkgrel=7
 url="http://www.gnu.org/software/gforth/"
 arch=('i686' 'x86_64' 'armv6h')
 license=('GPL-3.0-or-later')
 makedepends=('libtool' 'texinfo' 'texlive-meta')
+depends=(libffi glibc ffcall)
 options=(!lto)
 #source=("https://git.savannah.gnu.org/cgit/gforth.git/snapshot/${pkgbase}-${pkgver}.tar.gz" #official source
 source=("https://ftp.gnu.org/gnu/gforth/gforth-${pkgver}.tar.gz"
@@ -94,6 +95,8 @@ check() {
 
 package_gforth() {
   pkgdesc="Fast and portable implementation of the ANS Forth language"
+  arch=('i686' 'x86_64' 'armv6h')
+  depends=(libffi glibc ffcall)
   optdepends=('gforth-docs: Documentation for gforth')
   install=gforth.install
 
