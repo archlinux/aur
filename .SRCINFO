@@ -1,18 +1,18 @@
 pkgbase = scd
 	pkgdesc = Free and open source driver for the Steam Controller
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/dennis-hamester/scd
 	arch = i686
 	arch = x86_64
-	license = custom:ISC
-	makedepends = cmake
-	makedepends = scrawpp
+	license = ISC
 	makedepends = boost
-	depends = scraw
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = scrawpp
 	depends = boost-libs
-	source = scd-v0.2.0.tar.gz::https://gitlab.com/dennis-hamester/scd/repository/archive.tar.gz?ref=v0.2.0
-	sha256sums = c794a3b9053ce72ed0a0ad01a63bd27636466da7f5b06d5e8e3d93917f28e6f8
+	depends = scraw
+	source = scd-v0.2.0.tar.gz::https://gitlab.com/dennis-hamester/scd/-/archive/v0.2.0/scd-v0.2.0.tar.gz
+	sha256sums = 1895d4574dc7c789033f77da43622cf493ad4a6e288e89c3fe5ee84c13f0ecf2
 
 pkgname = scd
-
