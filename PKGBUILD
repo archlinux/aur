@@ -3,33 +3,27 @@
 pkgname=allelecount
 _pkgname=alleleCount
 pkgver=4.3.0
-pkgrel=1
+pkgrel=4
 pkgdesc="program for estimating the NGS copy number" 
 arch=('x86_64')
 url="http://cancerit.github.io/alleleCount/"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=('glibc' 'htslib' 'bzip2' 'xz' 'zlib')
-makedepends=('quilt' 'perl')
+makedepends=('perl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cancerit/alleleCount/archive/refs/tags/v${pkgver}.tar.gz"
-		'series'
-		'harden.patch')
+		'htslib_hardening.patch'
+		)
 b2sums=('f0f2077d0efed1a9f4db76648ae375ea30989909d255917b5b280e32187a27aaf1e1844bccae8b659c34081d34592d3782b7d6df926ece79dcea62cb966b4539'
-        '55807c3d06f035d18040248d272bb150bc84ef44c4e01ae984f3abe27fd34d6f18abe5bc1cbb2945435725d2344a5b5209b37ac322cc1ff5fae1612c265c1b9b'
-        '9de3b1c44db6e8b0e2321450d19d741ad233eabb00d32c6f951e78177ee1bd36d150c3685eb7c373f806c694d3c84b94e7e4fd5683387f85587de35a646c7066')
+        'b690635a2f9aa89ceacda7aab1d47ab9044fdf2e48f680a63f6c3c5202211bd87da44046a005f8ca0f8524eb277ca719718af0b58eb7d8cd2a270629c9e6a696')
 
 prepare(){
-    mkdir -p ${_pkgname}-${pkgver}/patches
-    cp *.patch ${_pkgname}-${pkgver}/patches
-    cp series ${_pkgname}-${pkgver}/patches
-    # Apply Patches
-    cd ${_pkgname}-${pkgver}/patches
-    quilt push -a
+    cd ${_pkgname}-${pkgver}/
+    patch -p1 < ${srcdir}/htslib_hardening.patch
 }
 
 build() {
 	cd ${_pkgname}-${pkgver}/c
-	export HTSLIB=/usr/lib
-	make prefix=/usr
+	make -j1 prefix=/usr
 }
 
 package() {
