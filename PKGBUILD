@@ -1,6 +1,6 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=friendly-kobold
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A desktop app for running Large Language Models locally"
 arch=('x86_64')
@@ -11,8 +11,8 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('friendly-kobold')
 conflicts=('friendly-kobold-git')
-source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.0/Friendly.Kobold-0.6.0.AppImage")
-sha256sums=('7bdf87dece5643046a9002c32ff8af7a69c5baf22771c781eb63484cf5bf396b')
+source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.1/Friendly.Kobold-0.6.1.AppImage")
+sha256sums=('99379d4b94c3ff811789d1cca0241214d70e1baf5a2713ff1c65045a72c08e6b')
 
 prepare() {
     chmod +x "friendly-kobold-${pkgver}.AppImage"
@@ -35,19 +35,9 @@ exec "/opt/friendly-kobold/Friendly Kobold" "$@"
 WRAPPER
     chmod +x "${pkgdir}/usr/bin/friendly-kobold"
     
-    # Install desktop file
+    # Install desktop file from assets
     install -dm755 "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/friendly-kobold.desktop" << 'DESKTOP'
-[Desktop Entry]
-Name=Friendly Kobold
-Comment=A desktop app for running Large Language Models locally
-Exec=friendly-kobold %U
-Terminal=false
-Type=Application
-Icon=friendly-kobold
-Categories=Development;Utility;
-StartupWMClass=Friendly Kobold
-DESKTOP
+    cp "${srcdir}/../assets/friendly-kobold.desktop" "${pkgdir}/usr/share/applications/"
     
     # Install icon
     install -dm755 "${pkgdir}/usr/share/pixmaps"
