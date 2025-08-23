@@ -2,7 +2,7 @@
 pkgname=ktx-software-bin
 pkgver=4.4.0
 pkgrel=1
-pkgdesc="KTX (Khronos Texture) Library and Tools - prebuilt binaries"
+pkgdesc="KTX (Khronos Texture) Library and Tools"
 arch=("x86_64")
 url="https://github.com/KhronosGroup/KTX-Software"
 license=("Apache-2.0")
