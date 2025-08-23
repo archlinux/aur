@@ -1,0 +1,15 @@
+pkgbase = python-vmware-sddc-manager
+	pkgdesc = VMware SDDC Manager Python API Bindings
+	pkgver = 9.0.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/vmware-sddc-manager/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-vmware-vapi-common-client
+	depends = python-vmware-vapi-runtime
+	source = https://files.pythonhosted.org/packages/a3/e6/a41a6fc470fbdf5f0f12bbdfc07eecb2318e75feea358f8681b07f2aca81/vmware_sddc_manager-9.0.0.0-py3-none-any.whl
+	sha256sums = 67e1ec1e55ce1ab518ebff046b7f9d4314828dc9919de679fd62a95db7e1a7c3
+
+pkgname = python-vmware-sddc-manager
