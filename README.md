@@ -6,7 +6,7 @@ It mostly uses [fetchmail](https://www.fetchmail.info) to search for new emails 
 
 *   My main job was create an interface and set up the polling code, so that it checks for emails on terminal, notifies the user and update the unread emails count
 
-Also, you must set it (fetchmail) up first for it to wirk
+Also, you must set it (fetchmail) up first for it to work
 
 ## Build from Source
 
@@ -14,22 +14,30 @@ Also, you must set it (fetchmail) up first for it to wirk
 
 > makepkg -fsirc
 
-> sudo pacman -U gmail-tray-1.0-1-any.pkg.tar.zst
+> sudo pacman -U gmail-tray-2.0-1-any.pkg.tar.zst
 
 ## Setting up fetchmail:
 
 *   Enable Gmail IMAP
     *   In Gmail settings → "Forwarding and POP/IMAP" → Enable IMAP.
-*   Create an app password
+*   Create an app password (you need to have 2-Factor Authentication)
     *   Go to: [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
     *   Type Gmail-Tray > Create
     *   Note it down
-*   Edit the .fetchmailrc file (probably on your home folder)
+*   Edit the .fetchmailrc file (create it on your home folder)
     *   Make it like:
-        *   poll imap.gmail.com with proto IMAP  
-               user \<your gmail here>@gmail.com password \<Your App Password>  
-               is \<your linux username> here  
+        *   # account 1
+            poll imap.gmail.com with proto IMAP  
+               user \<your gmail 1 here>@gmail.com password \<"Your App Password 1 between quotes">  
                ssl
+            # account 2
+            poll imap.gmail.com with proto IMAP  
+               user \<your gmail 2 here>@gmail.com password \<"Your App Password 2 between quotes">  
+               ssl
+            
+
+    Then:
+        chmod 0600 ~/.fetchmailrc
 
 ## Enable service autostart
 

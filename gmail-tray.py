@@ -89,26 +89,31 @@ class GenericTrayApp:
     def get_unread_count(self):
         try:
             output = subprocess.run(["fetchmail", "-c"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL).stdout
-            print("Output from fetchmail:", output.decode().strip())
-            line = output.decode().strip().splitlines()[0].split()
-            kw = "message" if "message" in line else "messages"
-            idx = line.index(kw) - 1
-            msg = int(line[idx])
-            print("Message count:", msg)
-            if "seen)" in line:
-                print("Seen count found in fetchmail output.")
-                # remove parenteses
-                seen = int(line[line.index("seen)") - 1][1:])
-                print("Seen count:", seen)
-                return msg - seen
-            kw = "unread)" if "unread)" in line else "unseen)"
-            if kw not in line:
-                print("No unread count found in fetchmail output.")
-                return msg
-            # verify if unread count is available
-            idx_unread = line.index(kw) - 1
-            unread = int(line[idx_unread][1:])
-            print("Unread count:", unread)
+            output = output.decode().strip().splitlines()
+            print("Output from fetchmail:\n", output)
+            unread = 0
+            for line in output:
+                line = line.strip().split()
+                kw = "message" if "message" in line else "messages"
+                idx = line.index(kw) - 1
+                msg = int(line[idx])
+                print("Message count:", msg)
+                if "seen)" in line:
+                    print("Seen count found in fetchmail output.")
+                    # remove parenteses
+                    seen = int(line[line.index("seen)") - 1][1:])
+                    print("Seen count:", seen)
+                    unread -= seen
+                kw = "unread)" if "unread)" in line else "unseen"
+                if kw not in line:
+                    print("No unread count found in fetchmail output.")
+                    unread += msg
+                else:
+                    # verify if unread count is available
+                    print("finding idx for", kw, "in", line)
+                    idx_unread = line.index(kw) - 1
+                    unread += int(line[idx_unread][1:])
+                print("Unread count:", unread)
             return unread
         except Exception as e:
             print("Erro em get_unread_count", e)

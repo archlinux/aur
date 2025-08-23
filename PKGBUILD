@@ -1,6 +1,6 @@
 # Maintainer: Maykon Marcos Junior <maykonmjunior@gmail.com>
 pkgname=gmail-tray
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="Minimal Gmail tray notifier with unread counter"
 arch=('any')

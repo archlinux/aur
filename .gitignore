@@ -192,8 +192,5 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
-gmail-tray-*.pkg.tar.zst
-*.pkg.*
 pkg/
 src/
-gmail-tray-1.0-1-any.pkg.tar.zst
