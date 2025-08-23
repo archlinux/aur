@@ -1,7 +1,7 @@
 pkgbase = stormfetch
 	pkgdesc = A simple linux fetch program written in go and bash
-	pkgver = 6.1
-	pkgrel = 2
+	pkgver = 6.2
+	pkgrel = 1
 	url = https://github.com/EnumeratedDev/stormfetch
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = stormfetch
 	depends = libxinerama
 	depends = libxi
 	depends = libglvnd
-	source = git+https://github.com/EnumeratedDev/stormfetch.git#tag=6.1
+	source = git+https://github.com/EnumeratedDev/stormfetch.git#tag=6.2
 	sha256sums = SKIP
 
 pkgname = stormfetch
