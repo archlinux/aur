@@ -7,7 +7,7 @@ pkgbase = grub-qemu
 	license = GPL3
 	makedepends = git
 	depends = qemu-system-x86
-	depends = qemu-ui-gtk
+	depends = qemu-desktop
 	depends = edk2-ovmf
 	source = git+https://github.com/VC365/grub-qemu.git#tag=v0.1.1
 	sha256sums = SKIP
