@@ -20,7 +20,7 @@ validpgpkeys=(
   EE898AFE83AF6C763093E1CA5E8C9301F384CC5E  # Mitchell Murphy <mitchell.murphy@defenseunicorns.com>
 )
 
-sha512sums=('08d1f9a5114ffcccf3e44e6f2e727964cd6c61e674d35d490b2859e3c8bf7025bf78af97bd50be171cb5e5844d2fc940d18b89de6c8a3be1305ffdd8834ccb6c')
+sha512sums_x86_64=('08d1f9a5114ffcccf3e44e6f2e727964cd6c61e674d35d490b2859e3c8bf7025bf78af97bd50be171cb5e5844d2fc940d18b89de6c8a3be1305ffdd8834ccb6c')
 
 
 package() {
