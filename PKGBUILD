@@ -30,7 +30,7 @@ source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/releases/download/v${pkgver}/${pkgbase}-linux-$(_urlarch $CARCH).tgz"
 )
 
-sha256sums_x86_64=('8db02f8868c256c12ae18ae617c43efdb06e8acf8e7a89c29d4d47b258d2e168')
+sha256sums_x86_64=('8b07e08fb35a90b33eb2403eb93966679b39adb42c9cd03882de66cdf19a949f')
 sha256sums_aarch64=('41899de18ad928e89de26a6fcd46ae8c7cb9a3b95369e850335106db0bf727aa')
 
     
