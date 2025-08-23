@@ -1,0 +1,24 @@
+pkgbase = cursor-bin
+	pkgdesc = AI-first coding environment
+	pkgver = 1.4.5
+	pkgrel = 9
+	url = https://www.cursor.com
+	arch = x86_64
+	license = LicenseRef-Cursor_EULA
+	depends = ripgrep
+	depends = xdg-utils
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbfile
+	options = !strip
+	source = cursor-bin-1.4.5.AppImage::https://downloads.cursor.com/production/af58d92614edb1f72bdd756615d131bf8dfa5299/linux/x64/Cursor-1.4.5-x86_64.AppImage
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
+	sha512sums = 580a5052a566179a4fddc82dae5cafb1e545879fdf5ee97f160b4f5106a6fd78b9cf5f67e5f7b77b6010d111c7d85f8201a5e7a26cdc604a390ba82d96416304
+	sha512sums = 937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37
+
+pkgname = cursor-bin
+	depends = ripgrep
+	depends = xdg-utils
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbfile
