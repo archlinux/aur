@@ -1,13 +1,12 @@
 pkgbase = disk_usage-git
 	pkgdesc = A tool to monitor disk usage and alert when usage exceeds a threshold
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xM4LL0C/disk_usage
 	arch = any
 	license = MIT
 	makedepends = make
 	makedepends = gcc
-	makedepends = git
 	depends = libnotify
 	source = git+https://github.com/0xM4LL0C/disk_usage.git
 	sha256sums = SKIP
