@@ -2,9 +2,9 @@
 # Contributor: Rustrland Contributors
 
 pkgname=rustrland
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
-pkgdesc="Rust-powered window management for Hyprland"
+pkgdesc="A Rust-powered window management for Hyprland - Fast, reliable plugin system"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mattdef/rustrland"
 license=('MIT')
@@ -13,7 +13,7 @@ optdepends=(
     'swaybg: Default wallpaper backend for wallpapers plugin'
     'swww: Alternative wallpaper backend with animations'
     'wpaperd: Per-workspace wallpaper backend'
-    'hyprpaper: Wallpaper backend'
+    'hyprpaper: Wallpaper backend for hyprland'
     'foot: Recommended terminal for scratchpad plugin'
     'firefox: Browser support for scratchpad plugin'
     'thunar: File manager support for scratchpad plugin'
@@ -21,7 +21,7 @@ optdepends=(
 makedepends=('rust' 'cargo')
 conflicts=('rustrland-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mattdef/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9132a3616666b3dd82a701feb65d14e3f7c0ede72e7a4ae3e83cae98b28c20f4')
+sha256sums=('3968331229617b1775842cc0a86a80f517003b42981571735c649d33cd7cea6c')
 
 build() {
     cd "$pkgname-$pkgver"
