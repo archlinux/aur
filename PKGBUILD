@@ -1,6 +1,6 @@
 # Maintainers: Théo Le Calvar <tlc@kher.nl>
 pkgname=cecil-bin
-pkgver=8.61.3
+pkgver=8.61.4
 pkgrel=1
 pkgdesc="Static site generator"
 url="https://cecil.app/"
