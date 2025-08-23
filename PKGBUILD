@@ -1,34 +1,32 @@
-# Maintainer: valdebrutal <carlosvalde9@gmail.com>
+# Maintainer: Carlos Valderrama Montes <carlosvalde9@gmail.com>
 
 pkgname=rofi-reddit
 _pkgname=rofi-reddit
-pkgver=0.1.0 # This will be updated automatically by the pkgver() function
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Browse reddit threads from rofi using the Reddit API'
 url='https://github.com/valdebrutal/rofi-reddit'
 arch=('x86_64')
 license=('unknown')
-depends=('rofi' 'curl')
+depends=('rofi' 'curl' 'jansson' 'glibc')
 makedepends=('git' 'meson')
-source=("git+https://github.com/valdebrutal/${_pkgname}.git")
+options=('!debug')
+source=("git+https://github.com/valdebrutal/rofi-reddit.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${_pkgname}"
-  git fetch --tags >/dev/null 2>&1
-  git describe --tags --abbrev=0 | sed 's/^v//'
-}
 
 prepare() {
-  cd "${_pkgname}"
-  git checkout "$(git describe --tags --abbrev=0)"
+  cd "${pkgname}"
+  git checkout "${pkgver}"
+  meson subprojects download tomlc17
 }
 
 build() {
-  arch-meson "${_pkgname}" build
+  arch-meson "${pkgname}" build -Dtests=false
   meson compile -C build
 }
 
 package() {
   meson install -C build --destdir "${pkgdir}"
 }
+
