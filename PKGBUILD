@@ -1,7 +1,7 @@
 # Maintainers: kobe-koto <admin[at]koto[dot]cc>, Ketal_Q_ray <k[at]ketal[dot]icu>, Kevin_Liu <we123445[at]outlook[dot]com>
 pkgname="liteloader-qqnt-bin"
 _pkgname="LiteLoaderQQNT"
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
@@ -17,7 +17,7 @@ source=("LiteLoaderQQNT-${pkgver}.zip::${url}/releases/download/${pkgver}/${_pkg
 	)
 
 sha256sums=(
-	'df56986e955ad70f99e1170b0e4b7fbc0ab2213aed1f249ce2ae9f5be1fc7555'
+	'00649308217a10bb191207709d7073c0ffaddb8e4e3e56ef4c152adee0f418c2'
 	'71f645653e7ed404e70027bab159571636a2311b633246836028ddb9c730b530'
 	'5f963c6ec64e93332f9a965d0ab85cf989df3607759c88162593baf31a0bd66f'
 	'8bca733426b030cc481fd46733754be36d68432b2fe46bdaed4d552298da8737'
