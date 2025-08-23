@@ -9,8 +9,8 @@ export -n BROWSER EDITOR VISUAL PAGER TERMINAL_EMULATOR
 
 _pkgname="sensible-utils"
 pkgname="$_pkgname"
-pkgver=0.0.24
-pkgrel=2
+pkgver=0.0.26
+pkgrel=1
 pkgdesc="Utilities for sensible alternative selection"
 url="https://salsa.debian.org/debian/sensible-utils"
 license=('GPL-2.0-or-later')
@@ -27,23 +27,10 @@ checkdepends=(
   'shellcheck'
 )
 
-provides=(
-  "sensible-browser=$pkgver"
-  "sensible-editor=$pkgver"
-)
-conflicts=(
-  'sensible-browser-git'
-  'sensible-editor-git'
-  'sensible-pager-git'
-  'sensible-terminal-git'
-  'sensible-utils-data-git'
-  'sensible-utils-git'
-)
-
 _pkgsrc="$_pkgname-debian-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/-/archive/debian/$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('2acbc0029a4b02e8447ab0c07557e0c296c21cf338e044efe37a3bd16a18e418')
+sha256sums=('ac7c1321168fb800c856cfd3cc35e20416e327579ddff118132fd2f03d664e1b')
 
 build() {
   cd "$_pkgsrc"
