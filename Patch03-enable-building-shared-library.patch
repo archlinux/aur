@@ -1,0 +1,11 @@
+--- sendmail-8.18.1/libmilter/Makefile.m4	2024-01-31 08:38:32.000000000 +0200
++++ sendmail-8.18.1/libmilter/Makefile.m4.new	2025-08-21 19:37:36.580906896 +0200
+@@ -9,7 +9,7 @@
+ SMSRCDIR=ifdef(`confSMSRCDIR', `confSMSRCDIR', `${SRCDIR}/sendmail')
+ PREPENDDEF(`confINCDIRS', `-I${SMSRCDIR} ')
+ 
+-bldPRODUCT_START(`library', `libmilter')
++bldPRODUCT_START(`sharedlib', `libmilter')
+ define(`bldINSTALLABLE', `true')
+ define(`LIBMILTER_EXTRAS', `errstring.c strl.c')
+ APPENDDEF(`confENVDEF', `-DNOT_SENDMAIL -Dsm_snprintf=snprintf')

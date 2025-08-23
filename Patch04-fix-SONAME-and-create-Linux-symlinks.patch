@@ -1,0 +1,63 @@
+--- sendmail-8.18.1/devtools/M4/UNIX/sharedlib.m4	2024-01-31 08:38:32.000000000 +0200
++++ sendmail-8.18.1/devtools//M4/UNIX/sharedlib.m4.new	2025-08-23 20:17:46.452303781 +0200
+@@ -16,14 +16,26 @@
+ 
+ define(`confLIBEXT', `a')dnl
+ 
++divert(-1)
++#
++# For the sake of version numbering for Linux, the following small C programme (source: Fedora, slightly modified) will extract the milter version number from the file `include/libmilter/mfapi.h'
++# SUFFIX has to be the FULL VERSION, as it is used for building the final library file. It starts with a "."
++# SOVER is the library's major version number
++divert(0)
++
++define(`runCtest', `esyscmd(`echo -e "#include <stdio.h>\n#include <stdbool.h>\n#include \"../include/libmilter/mfapi.h\"\nint main(void){'$1`;return 0;}" | gcc -x c -I../include -o ctest - && ./ctest && rm -f ctest')')dnl
++define(`confSHAREDLIB_SUFFIX', runCtest(`printf(\".%d.%d.%d\", SM_LM_VRS_MAJOR(SMFI_VERSION), SM_LM_VRS_MINOR(SMFI_VERSION), SM_LM_VRS_PLVL(SMFI_VERSION))'))dnl
++define(`confSHAREDLIB_SOVER', runCtest(`printf(\"%d\", SM_LM_VRS_MAJOR(SMFI_VERSION))'))dnl
++
+ SHAREDLIB_SUFFIX= ifdef(`confSHAREDLIB_SUFFIX', `confSHAREDLIB_SUFFIX', `')
+ SHAREDLIB_EXT= ifdef(`confSHAREDLIB_EXT', `confSHAREDLIB_EXT', `.so')
+ SHAREDLIB= bldCURRENT_PRODUCT${SHAREDLIB_EXT}${SHAREDLIB_SUFFIX}
+ SHAREDLIB_LINK= bldCURRENT_PRODUCT${SHAREDLIB_EXT}
+ SHAREDLIBDIR= ifdef(`confSHAREDLIBDIR',`confSHAREDLIBDIR',`/usr/lib/')
+ DEPLIBS= ifdef(`confDEPLIBS', `confDEPLIBS', `') ${bldCURRENT_PRODUCT`SMDEPLIBS'}
++SHAREDLIB_SOVER=ifdef(`confSHAREDLIB_SOVER', ${SHAREDLIB_LINK}.`confSHAREDLIB_SOVER', `')
+ 
+-CONFIG_SONAME= ifdef(`confSONAME', `confSONAME ${SHAREDLIB}', `')
++CONFIG_SONAME= ifdef(`confSONAME', defn(`confSONAME')${SHAREDLIB_SOVER}, `')
+ 
+ include(confBUILDTOOLSDIR`/M4/'bldM4_TYPE_DIR`/links.m4')dnl
+ bldLIST_PUSH_ITEM(`bldC_PRODUCTS', bldCURRENT_PRODUCT)dnl
+@@ -45,6 +57,11 @@
+ 	${AR} ${AROPTS} bldCURRENT_PRODUCT.a shr.o
+ 	${CP} bldCURRENT_PRODUCT.a ${SHAREDLIB}',`rm -f bldCURRENT_PRODUCT${SHAREDLIB_EXT}
+ 	${LN} ${SHAREDLIB} bldCURRENT_PRODUCT${SHAREDLIB_EXT}')
++	ifelse(bldOS, `Linux', 
++		rm -f bldCURRENT_PRODUCT${SHAREDLIB_EXT}
++		${LN} ${LNOPTS} ${SHAREDLIB} ${SHAREDLIB_SOVER}
++		${LN} ${LNOPTS} ${SHAREDLIB_SOVER} ${SHAREDLIB_LINK}
++	)
+ 
+ bldCURRENT_PRODUCT.a: ${BEFORE} ${bldCURRENT_PRODUCT`OBJS'}
+ 	${AR} ${AROPTS} bldCURRENT_PRODUCT.a ${bldCURRENT_PRODUCT`OBJS'}
+@@ -52,11 +69,19 @@
+ 
+ ifdef(`bldLINK_SOURCES', `bldMAKE_SOURCE_LINKS(bldLINK_SOURCES)')
+ 
+-install-`'bldCURRENT_PRODUCT: ${SHAREDLIB}
++install-`'bldCURRENT_PRODUCT: ${SHAREDLIB} bldCURRENT_PRODUCT.a
+ 	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${SHAREDLIBDIR} ]; then confMKDIR -p ${DESTDIR}${SHAREDLIBDIR}; else :; fi ')
+ 	${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} ${SHAREDLIB} ${DESTDIR}${SHAREDLIBDIR}
+ 	ifelse(bldOS, `AIX', `${AR} ${AROPTS} ${DESTDIR}${SHAREDLIBDIR}bldCURRENT_PRODUCT.a ${SHAREDLIB}', `rm -f ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB_LINK}
+ 	${LN} ${LNOPTS} ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB} ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB_LINK}')
++	ifelse(bldOS, `Linux', 
++		cd ${DESTDIR}${SHAREDLIBDIR} && { \
++			rm -f ${SHAREDLIB_LINK}; \
++			${LN} ${LNOPTS} ${SHAREDLIB} ${SHAREDLIB_SOVER}; \
++			${LN} ${LNOPTS} ${SHAREDLIB_SOVER} ${SHAREDLIB_LINK}; \
++		}
++		${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} bldCURRENT_PRODUCT.a "${DESTDIR}${LIBDIR}"
++	)
+ 
+ bldCURRENT_PRODUCT-clean:
+ 	rm -f ${OBJS} ${SHAREDLIB} bldCURRENT_PRODUCT.a ${MANPAGES} ifelse(bldOS, `AIX', `shr.o', `bldCURRENT_PRODUCT${SHAREDLIB_EXT}')
