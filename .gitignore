@@ -1,4 +1,4 @@
-*.pkg.tar.zst
+*.zst
 pkg/
 src/
 disk_usage-git/
