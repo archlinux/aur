@@ -2,7 +2,7 @@
 pkgname=protonup-qt-git
 _app_id=net.davidotek.pupgui2
 _pkgname="ProtonUp-Qt"
-pkgver=2.13.0.r5.g9240acf
+pkgver=2.13.0.r7.gf881e4c
 pkgrel=1
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
