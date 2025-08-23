@@ -1,0 +1,22 @@
+pkgbase = python-p189sign
+	pkgdesc = 189 web disk signature.
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://pypi.org/project/p189sign
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pycryptodome
+	provides = python-p189sign
+	conflicts = python-p189sign
+	options = !strip
+	options = !debug
+	source = p189sign-0.0.10.tar.gz::https://files.pythonhosted.org/packages/source/p/p189sign/p189sign-0.0.10.tar.gz
+	sha256sums = cdc525dd851ce02c7c1729dfa457bb8874c1ba3322b6656c7391221be7a1e91e
+
+pkgname = python-p189sign
