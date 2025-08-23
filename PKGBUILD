@@ -2,12 +2,12 @@
 
 pkgname=walker
 pkgver=1.0.0
-pkgrel=10
+pkgrel=11
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64' 'aarch64')
 license=('MIT')
-makedepends=('rustup' 'gobject-introspection' 'glibc' 'protobuf')
+makedepends=('rust' 'gobject-introspection' 'glibc' 'protobuf')
 depends=('gtk4-layer-shell' 'poppler-glib' 'cairo')
 conflicts=('walker')
 provides=('walker')
@@ -16,7 +16,8 @@ sha256sums=("451307395b8c610db84188d18578ea1781d65f3e49655e05b39d7237fa0c1245")
 
 build() {
     cd ${pkgname}-${pkgver}-beta-9
-    rustup default stable
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --release
 }
 
