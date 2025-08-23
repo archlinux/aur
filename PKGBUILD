@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.16.5
+pkgver=1.16.6
 pkgrel=1
 pkgdesc="A Decentralized, Onion Routed, Private Messenger"
 arch=('x86_64')
@@ -14,41 +14,41 @@ makedepends=('cmake' 'git' 'nvm' 'python-setuptools' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/session-foundation/session-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('5c38908b4691d4db9710a9e82ac7cc1c118754f75208cb2db4753bd9af1874d7'
+sha256sums=('4f247a5b344a92e87bf62d73ee1aed5799871b689b7f0bef98dfdadf8a929018'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             'a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce')
 
 prepare() {
-  source /usr/share/nvm/init-nvm.sh
+    source /usr/share/nvm/init-nvm.sh
 
-  cd "${pkgname}-${pkgver}"
-  sed "s/process.resourcesPath/path.dirname(app.getAppPath())/g" -i ts/mains/main_node.ts
-  sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
+    cd "${pkgname}-${pkgver}"
+    sed "s/process.resourcesPath/path.dirname(app.getAppPath())/g" -i ts/mains/main_node.ts
+    sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
 
-  mkdir -p .git
+    mkdir -p .git
 
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  nvm install
-  yarn install --frozen-lockfile
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    nvm install
+    yarn install --frozen-lockfile
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export NODE_ENV=production
-  yarn build-everything
-  yarn electron-builder --linux --dir \
-    -c.extraMetadata.environment=production \
-    -c.electronDist="/usr/lib/${_electron}" \
-    -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
+    cd "${pkgname}-${pkgver}"
+    export NODE_ENV=production
+    yarn build
+    yarn electron-builder --linux --dir \
+        -c.extraMetadata.environment=production \
+        -c.electronDist="/usr/lib/${_electron}" \
+        -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -d "${pkgdir}/usr/lib"
-  cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
-  for i in 16 32 48 64 128 256 512 1024; do
-    install -Dm644 "build/icons/icon_${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
-  done
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    cd "${pkgname}-${pkgver}"
+    install -d "${pkgdir}/usr/lib"
+    cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
+    for i in 16 32 48 64 128 256 512 1024; do
+        install -Dm644 "build/icons/icon_${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    done
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
