@@ -11,7 +11,7 @@ license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
 makedepends=('curl')
 source=("fmp-linux::https://codeberg.org/lwilko/fmp/releases/download/v${pkgver}/fmp-linux")
-sha512sums=('0a67b3abcbe598c81a800ebc381025f9ab2fd430b2575372be0f502e2af4e0b6825a8b369e02c511b39f95b0df819748446b7c6fe4e71fb67a1a06a6eb67797b')
+sha512sums=('075ab22c04a307a38e396cbc03360f9158c1a93fea7fa6e1137bf4a454073c0a8416ee642da75940379c2b3b8551a6698eff624313b7944bb4607edfebef13e4')
 
 build() {
   curl -fsSL https://codeberg.org/lwilko/fmp/src/branch/main/LICENSE > LICENSE
