@@ -2,9 +2,9 @@
 # Contributor: Rustrland Contributors
 
 pkgname=rustrland
-pkgver=0.3.2
+pkgver=0.3.6
 pkgrel=1
-pkgdesc="A Rust-powered window management for Hyprland - Fast, reliable plugin system"
+pkgdesc="Rust-powered window management for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mattdef/rustrland"
 license=('MIT')
@@ -13,7 +13,7 @@ optdepends=(
     'swaybg: Default wallpaper backend for wallpapers plugin'
     'swww: Alternative wallpaper backend with animations'
     'wpaperd: Per-workspace wallpaper backend'
-    'imagemagick: Hardware acceleration for wallpaper processing'
+    'hyprpaper: Wallpaper backend'
     'foot: Recommended terminal for scratchpad plugin'
     'firefox: Browser support for scratchpad plugin'
     'thunar: File manager support for scratchpad plugin'
@@ -21,7 +21,7 @@ optdepends=(
 makedepends=('rust' 'cargo')
 conflicts=('rustrland-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mattdef/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('451ee4aa2a965caa7c2074d7f887e4a95e4594a18f3fcd1b57d7aba6e28a9252')
+sha256sums=('9132a3616666b3dd82a701feb65d14e3f7c0ede72e7a4ae3e83cae98b28c20f4')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -31,7 +31,7 @@ build() {
     export CARGO_TARGET_DIR=target
     
     # Build with optimizations
-    cargo build --release --all-features
+    cargo build --release
 }
 
 check() {
@@ -53,7 +53,6 @@ package() {
     
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 CLAUDE.md "$pkgdir/usr/share/doc/$pkgname/CLAUDE.md"
     
     # Install optional documentation (if exists)
     [[ -f "PLUGINS.md" ]] && install -Dm644 PLUGINS.md "$pkgdir/usr/share/doc/$pkgname/PLUGINS.md"
