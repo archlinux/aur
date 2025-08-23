@@ -1,0 +1,28 @@
+[Unit]
+Description=chaos music control
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sanic
+Group=sanic
+ExecStart=/usr/bin/sanic
+Restart=always
+# security
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=yes
+StateDirectory=sanic
+StateDirectoryMode=0750
+ConfigurationDirectory=sanic
+ConfigurationDirectoryMode=0750
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
+
