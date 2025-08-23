@@ -1,0 +1,22 @@
+pkgbase = python-vmware-vapi-runtime
+	pkgdesc = VMware vAPI Runtime Client Bindings
+	pkgver = 2.61.2
+	pkgrel = 2
+	url = https://pypi.org/project/vmware-vapi-runtime/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-pyopenssl
+	depends = python-setuptools
+	depends = python-requests
+	depends = python-six
+	optdepends = python-lxml: for server functionality
+	optdepends = python-werkzeug: for server functionality
+	optdepends = python-urllib3: for server functionality
+	optdepends = python-twisted: for twisted support
+	optdepends = python-service-identity: for twisted support
+	source = https://files.pythonhosted.org/packages/01/cb/ffbb8fbdfd6ceb7a5398d1b5ba2e937bdca189f300435194048038400aec/vmware_vapi_runtime-2.61.2-py3-none-any.whl
+	sha256sums = 35da94fe1a7a4af5d26cf7db534d2929e3a59287749fe093bd8ca8aab35de826
+
+pkgname = python-vmware-vapi-runtime
