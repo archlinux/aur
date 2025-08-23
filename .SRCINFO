@@ -1,0 +1,15 @@
+pkgbase = python-vmware-vcenter
+	pkgdesc = VMware vCenter Server Python API Bindings
+	pkgver = 9.0.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/vmware-vcenter/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-vmware-vapi-common-client
+	depends = python-vmware-vapi-runtime
+	source = https://files.pythonhosted.org/packages/2d/91/b75ff1019a5d9798c07cc56c269e192e06800f892eaf81be996b73255008/vmware_vcenter-9.0.0.0-py3-none-any.whl
+	sha256sums = c344605b635a937b51d6175cbb005446b45f5786d634d5bdc6b40b668a5588df
+
+pkgname = python-vmware-vcenter
