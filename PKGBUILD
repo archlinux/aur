@@ -1,12 +1,12 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 
 pkgname=slock-bgimage
 _pkgname=slock
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple screen locker for X(patched to allow background images)"
 arch=('x86_64' 'i686' 'pentium4')
-url="https://github.com/GIJack/slock-bgimage"
+url="https://github.com/NetworkJack2/slock-bgimage"
 license=('MIT')
 depends=('libxext' 'libxrandr')
 providies=("slock=${pkgver}")
