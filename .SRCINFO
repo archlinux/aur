@@ -1,8 +1,8 @@
 pkgbase = etlegacy
 	pkgver = 2.83.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.etlegacy.com/
-	arch = x86_64
+	arch = any
 	license = GPL3
 	license = custom
 	makedepends = cmake
@@ -20,7 +20,7 @@ pkgbase = etlegacy
 	makedepends = sdl2
 	makedepends = cjson
 	source = etlegacy-2.83.2.tar.gz::https://github.com/etlegacy/etlegacy/archive/v2.83.2.tar.gz
-	source = etlegacy-2.83.2-x86_64-binary.tar.gz::http://www.etlegacy.com/download/file/700
+	source = etlegacy-2.83.2-any-binary.tar.gz::http://www.etlegacy.com/download/file/700
 	sha256sums = cf84afa485b4d3ae32b638672678cb19ec4dd1ce8df0fbe10af540bc565e16ba
 	sha256sums = d97b2a4be89b59924044d43e9391686b1b18919e32f97248d1b412235530ee67
 

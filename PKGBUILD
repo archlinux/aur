@@ -7,8 +7,8 @@ pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
 pkgver=2.83.2
 _binaryversion=700
-pkgrel=2
-arch=('x86_64')
+pkgrel=3
+arch=('any')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
 makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'libtheora' 'minizip' 'openal>=1.14' 'sdl2' 'cjson')
