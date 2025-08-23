@@ -2,7 +2,7 @@
 
 _pkgbase=msi-ec
 pkgname=msi-ec-dkms-git
-pkgver=r320.be6f715
+pkgver=r508.9721905
 pkgrel=1
 pkgdesc="Driver for MSI laptop EC (DKMS)"
 arch=('x86_64')
@@ -11,10 +11,8 @@ url="https://github.com/BeardOverflow/msi-ec"
 depends=('dkms')
 makedepends=('git')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/BeardOverflow/msi-ec.git"
-  "dkms.conf")
-sha256sums=('SKIP'
-            'f2846d9e9b3734dbdeb41dafde34ec5b5fd2353732cb30cf2606ba89083e1875')
+source=("git+https://github.com/BeardOverflow/msi-ec.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgbase}
@@ -22,15 +20,17 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-
-  sed -e "s/@VERSION@/${pkgver}/" \
-      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf 
-
+  mkdir -p "${pkgdir}/etc/modules-load.d/"
   cd "${_pkgbase}"
 
   install -Dm644 -t "${pkgdir}/usr/src/${_pkgbase}-${pkgver}" \
     Makefile \
     msi-ec.c \
-    ec_memory_configuration.h
+    ec_memory_configuration.h \
+    dkms.conf
+
+  sed -e "s/@VERSION@/${pkgver}/" \
+      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf     
+
+  echo "msi-ec" > "${pkgdir}/etc/modules-load.d/msi-ec.conf"
 }
