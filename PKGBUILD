@@ -6,13 +6,16 @@ pkgdesc="A desktop app for running Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/friendly-kobold"
 license=('AGPL-3.0-or-later')
+groups=('llm' 'ai' 'local-ai' 'language-model' 'koboldcpp' 'electron' 'privacy' 'offline')
 depends=('gtk3' 'nss')
 optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('friendly-kobold')
 conflicts=('friendly-kobold-git')
-source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.1/Friendly.Kobold-0.6.1.AppImage")
-sha256sums=('99379d4b94c3ff811789d1cca0241214d70e1baf5a2713ff1c65045a72c08e6b')
+source=("friendly-kobold-${pkgver}.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.1/Friendly.Kobold-0.6.1.AppImage"
+        "friendly-kobold.desktop::https://raw.githubusercontent.com/lone-cloud/friendly-kobold/v0.6.1/assets/friendly-kobold.desktop")
+sha256sums=('99379d4b94c3ff811789d1cca0241214d70e1baf5a2713ff1c65045a72c08e6b'
+            'faa15709dd546ba46cd8fe0daf488c1fc3f6f13fdcc926b3dea140743f85dad8')
 
 prepare() {
     chmod +x "friendly-kobold-${pkgver}.AppImage"
@@ -37,7 +40,7 @@ WRAPPER
     
     # Install desktop file from assets
     install -dm755 "${pkgdir}/usr/share/applications"
-    cp "${srcdir}/../assets/friendly-kobold.desktop" "${pkgdir}/usr/share/applications/"
+    cp "${srcdir}/friendly-kobold.desktop" "${pkgdir}/usr/share/applications/"
     
     # Install icon
     install -dm755 "${pkgdir}/usr/share/pixmaps"
