@@ -1,7 +1,7 @@
 pkgbase = librepods-git
 	pkgdesc = Apple exclusive AirPods Pro 2 features for Linux (unofficial package)
 	pkgver = 0.1.0.rc.4.r27.g13ab2d1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kavishdevar/librepods
 	install = librepods-git.install
 	arch = x86_64
