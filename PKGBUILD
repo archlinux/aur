@@ -2,7 +2,7 @@
 
 pkgname=elephant-calc
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='calc provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -11,15 +11,15 @@ depends=('libqalculate')
 makedepends=('go')
 conflicts=('elephant-calc')
 provides=('elephant-calc')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-3.tar.gz")
-sha256sums=('244c65c97ba4212003108d7db716be707bb788f1b80a66810791cc79b784dded')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-4.tar.gz")
+sha256sums=('20529c42d90448496533d408c6ed09ba93221b7badf61ade8859ff033a75830f')
 
 build() {
-    cd elephant-${pkgver}-beta-3/internal/providers/calc
+    cd elephant-${pkgver}-beta-4/internal/providers/calc
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-3/internal/providers/calc
+    cd elephant-${pkgver}-beta-4/internal/providers/calc
     install -Dm 755 calc.so -t "${pkgdir}/etc/xdg/elephant/providers"
 }
