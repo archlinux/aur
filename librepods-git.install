@@ -1,3 +1,7 @@
 post_install() {
-    echo -e "    \e[1mSet the PHONE_MAC_ADDRESS environment variable to your phone's Bluetooth MAC address using 'export' (bash) or 'set -gx' (fish).\e[0m"
+    echo "    Set the PHONE_MAC_ADDRESS environment variable to your AirPods'"
+    echo "    Bluetooth MAC address using 'export' (bash) or 'set -gx' (fish)."
+    echo ""
+    echo "    Make sure that your device is already paired before running"
+    echo "    Librepods, as it causes issues with pairing during runtime."
 }
