@@ -8,8 +8,8 @@ url="https://github.com/Sinedka/aniparser"
 license=('MIT')
 depends=('electron' 'nodejs')
 makedepends=('npm' 'git')
-source=("https://github.com/Sinedka/aniparser/releases/download/v$pkgver/dist-electron.tar.gz", "https://raw.githubusercontent.com/Sinedka/aniparser/refs/tags/v$pkgver/assets/icon.png")
-sha256sums=('SKIP')
+source=("https://github.com/Sinedka/aniparser/releases/download/v$pkgver/dist-electron.tar.gz" "https://raw.githubusercontent.com/Sinedka/aniparser/refs/tags/v$pkgver/assets/icon.png")
+sha256sums=('SKIP' 'SKIP')
 
 build() {
   return 0
