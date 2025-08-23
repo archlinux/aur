@@ -7,8 +7,8 @@
 _pkgname=w3m-rkta
 _gitbranch='gemini'
 pkgname="$_pkgname-git"
-pkgver=v0.5.3+git20230121.r142.ge4f734f
-pkgrel=2
+pkgver=v0.5.5.r2.g5238aed
+pkgrel=1
 pkgdesc="Rene Kita's fork of the text-based web browser/pager w3m with gemini support (development version)"
 url='https://git.sr.ht/~rkta/w3m'
 license=('LicenseRef-W3M')  # SPDX-License-Identifier: LicenseRef-W3M
@@ -49,6 +49,7 @@ build() {
 
   ./configure \
     --prefix=/usr \
+    --sysconfdir=/etc \
     --libexecdir=/usr/lib \
     --enable-image=x11,fb \
     --with-imagelib=imlib2 \
