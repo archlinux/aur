@@ -2,7 +2,7 @@
 
 pkgname=disk_usage-git
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to monitor disk usage and alert when usage exceeds a threshold"
 arch=('any')
 url="https://github.com/0xM4LL0C/disk_usage"
@@ -18,7 +18,7 @@ makedepends=(
 )
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/"
     make build
 }
 
