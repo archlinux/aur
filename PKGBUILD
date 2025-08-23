@@ -2,7 +2,7 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=caddy-trojan
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
@@ -27,17 +27,17 @@ sha256sums=('dfadb1f4a1f82024a11c110624680f98b3818305a16dd013363ca398020611ad'
             'a794bbf7d890eb9e1231bbad251890f87870815a96e3820b28a71819ba9f9c14'
             '66177d46fa761acb07208065db9b0274cb1b12c02ac43b9bfc9857b698b1ccfe'
             '70a45d667679109cd6b25502554597f21536ee995ada0549251167bd171533b9'
-            'e07e2747c394a6549751950ec8f7457ed346496f131ee38538ae39cf89ebcc68')
+            '944ab8ba4a8a497827b16b51a39b45dc6e69c32e49d39486d9da198a7727b8be')
 
 prepare() {
     local -a MODULES=(
         #github.com/caddy-dns/route53
         github.com/caddy-dns/cloudflare
-        #github.com/caddy-dns/alidns
-        #github.com/caddy-dns/vultr
+        github.com/caddy-dns/alidns
+        github.com/caddy-dns/vultr
         #github.com/caddy-dns/dnspod
-        #github.com/caddy-dns/duckdns
-        #github.com/caddy-dns/gandi
+        github.com/caddy-dns/duckdns
+        github.com/caddy-dns/gandi
         github.com/hairyhenderson/caddy-teapot-module
         github.com/caddyserver/transform-encoder
         github.com/mholt/caddy-webdav
