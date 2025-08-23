@@ -2,8 +2,8 @@
 
 pkgbase=magiskboot-git
 pkgname=magiskboot-git
-pkgver=28102.81.r33.gdb45739
-pkgrel=2
+pkgver=30200.b4e94014167ca80b7c42de42c011848f0344dee8.r6.ga1fcfbe
+pkgrel=1
 pkgdesc="Magiskboot_ndk"
 arch=($CARCH)
 url="https://github.com/xiaoxindada/magiskboot_ndk_on_linux"
@@ -16,7 +16,8 @@ makedepends=(
     git
     python
     python-wget
-    tar)
+    tar
+)
 optdepends=('android-tools: Android platform tools')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -48,20 +49,20 @@ package() {
     cd "${srcdir}/${pkgname}/native"
 
     if [ ${CARCH} = "x86_64" ]; then
-        install -Dm755 out/x86_64/magiskboot ${pkgdir}/usr/bin/magiskboot
-        install -Dm755 out/x86_64/magiskinit ${pkgdir}/usr/bin/magisinit
+        install -Dm755 out/x86_64/magiskboot -t ${pkgdir}/usr/bin/
+        install -Dm755 out/x86_64/magiskpolicy -t ${pkgdir}/usr/bin/
     elif [ ${CARCH} = "aarch64" ]; then
-        install -Dm755 out/arm64-v8a/magiskboot ${pkgdir}/usr/bin/magiskboot
-        install -Dm755 out/arm64-v8a/magiskinit ${pkgdir}/usr/bin/magiskinit
+        install -Dm755 out/arm64-v8a/magiskboot -t ${pkgdir}/usr/bin/
+        install -Dm755 out/arm64-v8a/magiskpolicy -t ${pkgdir}/usr/bin/
     elif [ ${CARCH} = "i686" ]; then
-        install -Dm755 out/x86/magiskboot ${pkgdir}/usr/bin/magiskboot
-        install -Dm755 out/x86/magiskinit ${pkgdir}/usr/bin/magisinit
+        install -Dm755 out/x86/magiskboot -t ${pkgdir}/usr/bin/
+        install -Dm755 out/x86/magiskpolicy -t ${pkgdir}/usr/bin/
     elif [ ${CARCH} = "armv7h" ]; then
-        install -Dm755 out/armeabi-v7a/magiskboot ${pkgdir}/usr/bin/magiskboot
-        install -Dm755 out/armeabi-v7a/magiskinit ${pkgdir}/usr/bin/magiskinit
+        install -Dm755 out/armeabi-v7a/magiskboot -t ${pkgdir}/usr/bin/
+        install -Dm755 out/armeabi-v7a/magiskpolicy -t ${pkgdir}/usr/bin/
     elif [ ${CARCH} = "riscv64" ]; then
-        install -Dm755 out/riscv64/magiskboot ${pkgdir}/usr/bin/magiskboot
-        install -Dm755 out/riscv64/magiskinit ${pkgdir}/usr/bin/magiskinit
+        install -Dm755 out/riscv64/magiskboot -t ${pkgdir}/usr/bin/
+        install -Dm755 out/riscv64/magiskpolicy -t ${pkgdir}/usr/bin/
     fi
 
 }
