@@ -16,6 +16,7 @@ package() {
   install -Dm644 -t "$pkgdir/usr/lib/firefox" config.js legacy.manifest
   install -Dm644 defaults/pref/config-prefs.js "$pkgdir/usr/lib/firefox/defaults/pref/config-prefs.js"
   install -Dm644 legacy/BootstrapLoader.sys.mjs "$pkgdir/usr/lib/firefox/legacy/BootstrapLoader.sys.mjs"
+  install -Dm644 legacy/LegacyFoxUtils.sys.mjs "$pkgdir/usr/lib/firefox/legacy/LegacyFoxUtils.sys.mjs"
   install -Dm644 legacy/RDFDataSource.sys.mjs "$pkgdir/usr/lib/firefox/legacy/RDFDataSource.sys.mjs"
   install -Dm644 legacy/RDFManifestConverter.sys.mjs "$pkgdir/usr/lib/firefox/legacy/RDFManifestConverter.sys.mjs"
 }
