@@ -1,7 +1,7 @@
 pkgbase = dms-git
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
 	pkgver = r0.g0000000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = any
 	license = GPL-3.0-only
@@ -20,6 +20,7 @@ pkgbase = dms-git
 	optdepends = qt5ct: Qt5 application theming
 	optdepends = qt6ct: Qt6 application theming
 	provides = dms
+	conflicts = dms
 	source = dms-git::git+https://github.com/AvengeMedia/DankMaterialShell.git
 	sha256sums = SKIP
 
