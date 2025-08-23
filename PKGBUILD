@@ -54,5 +54,5 @@ check() {
 
 package() {
 	cd "$srcdir/${_pkgname%-git}/build"
-	meson install --destdir "$pkgdir"
+	meson install --no-rebuild --destdir "$pkgdir"
 }
