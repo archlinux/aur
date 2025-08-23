@@ -1,0 +1,26 @@
+pkgbase = delineate
+	pkgdesc = View and edit graphs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SeaDve/Delineate
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = graphene
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = gtk4
+	depends = gtksourceview5
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = glibc
+	depends = gcc-libs
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	options = !lto
+	source = git+https://github.com/SeaDve/Delineate.git#tag=v0.1.0
+	sha256sums = ea6af7ff4920c504edbe10ec91366fe46a74115583fcfac0e5b88718c88b4ca5
+
+pkgname = delineate
