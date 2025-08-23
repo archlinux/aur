@@ -1,6 +1,6 @@
 pkgbase = iwe-bin
 	pkgdesc = Text editor extension for markdown notes taking
-	pkgver = 0.0.33
+	pkgver = 0.0.35
 	pkgrel = 1
 	url = https://github.com/iwe-org/iwe
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = iwe-bin
 	provides = iwes
 	conflicts = iwe
 	conflicts = iwes
-	source = https://github.com/iwe-org/iwe/releases/download/iwe-v0.0.33/iwe-v0.0.33-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/iwe-org/iwe/releases/download/iwe-v0.0.35/iwe-v0.0.35-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = fbb2c92d3b25ff6ce1408cf57c718d5234cdb33ec030ee2235fe85da667f70dd
 
 pkgname = iwe-bin
