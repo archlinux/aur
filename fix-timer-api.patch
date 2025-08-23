@@ -1,0 +1,12 @@
+diff -ur a/snd-hdspe-1.0.1/sound/pci/hdsp/hdspe/hdspe_midi.c b/snd-hdspe-1.0.1/sound/pci/hdsp/hdspe/hdspe_midi.c
+--- a/snd-hdspe-1.0.1/sound/pci/hdsp/hdspe/hdspe_midi.c	2025-06-29 07:55:59.000000000 +0200
++++ b/snd-hdspe-1.0.1/sound/pci/hdsp/hdspe/hdspe_midi.c	2025-08-23 10:49:22.782396467 +0200
+@@ -166,7 +166,7 @@
+ 
+ static void snd_hdspe_midi_output_timer(struct timer_list *t)
+ {
+-	struct hdspe_midi *hmidi = from_timer(hmidi, t, timer);
++	struct hdspe_midi *hmidi = container_of(t, struct hdspe_midi, timer);
+ 	unsigned long flags;
+ 
+ 	snd_hdspe_midi_output_write(hmidi);
