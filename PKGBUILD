@@ -1,7 +1,7 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
 url="https://github.com/Sinedka/aniparser"
