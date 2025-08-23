@@ -1,6 +1,7 @@
 *
 !PKGBUILD
 !.SRCINFO
+!libmilter-tests.sh
 !.nvchecker.toml
 !.gitignore
 !site.config.m4
