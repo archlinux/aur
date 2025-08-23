@@ -6,7 +6,7 @@ pkgdesc="a lightweight App for Preview full GRUB"
 arch=('x86_64')
 url="https://github.com/VC365/grub-qemu/"
 license=('GPL3')
-depends=('qemu-system-x86' 'qemu-ui-gtk' 'edk2-ovmf' 'qemu-hw-display-virtio-vga')
+depends=('qemu-system-x86' 'qemu-desktop' 'edk2-ovmf')
 makedepends=('git')
 source=("git+https://github.com/VC365/grub-qemu.git#tag=v$pkgver")
 sha256sums=('SKIP')
