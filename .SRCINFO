@@ -1,6 +1,6 @@
 pkgbase = friendly-kobold
-	pkgdesc = A modern Electron shell for KoboldCpp
-	pkgver = 0.5.8
+	pkgdesc = A desktop app for running Large Language Models locally
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/lone-cloud/friendly-kobold
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = friendly-kobold
 	optdepends = libxss: Screen saver detection support
 	provides = friendly-kobold
 	conflicts = friendly-kobold-git
-	source = friendly-kobold-0.5.8.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.5.8/Friendly.Kobold-0.5.8.AppImage
-	sha256sums = 9704345a1fed7d2f7aa85e6b1b441383bda73f0246205cc336567c546a6434d6
+	source = friendly-kobold-0.6.0.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.6.0/Friendly.Kobold-0.6.0.AppImage
+	sha256sums = 7bdf87dece5643046a9002c32ff8af7a69c5baf22771c781eb63484cf5bf396b
 
 pkgname = friendly-kobold
