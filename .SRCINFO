@@ -1,7 +1,7 @@
 pkgbase = fungw-svn
 	pkgdesc = tiny, portable library written in C (C89) that manages dynamic function calls across different programming languages
-	pkgver = r825
-	pkgrel = 1
+	pkgver = r828
+	pkgrel = 4
 	url = http://www.repo.hu/projects/fungw
 	arch = x86_64
 	license = LGPL-2.0-or-later
@@ -13,7 +13,6 @@ pkgbase = fungw-svn
 	optdepends = python
 	optdepends = duktape
 	optdepends = mujs
-	optdepends = python2
 	optdepends = libmawk>=1.0.3
 	provides = fungw
 	conflicts = fungw
