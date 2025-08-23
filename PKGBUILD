@@ -42,4 +42,4 @@ package() {
 	install -Dm644 ${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
-sha256sums=('6ef54a40525a143a8c7817ebcd1b130997f66ad76cbca3716877a04c93691ae2')
+sha256sums=('59a7e8597df9c23413b28e971c41aa108b782f8cd5e125c832264bcd68562f99')
