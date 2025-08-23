@@ -1,7 +1,7 @@
 pkgbase = friendly-kobold
 	pkgdesc = A desktop app for running Large Language Models locally
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lone-cloud/friendly-kobold
 	arch = x86_64
 	license = AGPL-3.0-or-later

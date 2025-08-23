@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=friendly-kobold
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop app for running Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/friendly-kobold"
@@ -41,14 +41,19 @@ WRAPPER
     install -dm755 "${pkgdir}/usr/share/applications"
     cp "${srcdir}/friendly-kobold.desktop" "${pkgdir}/usr/share/applications/"
     
-    # Install icon
+    # Install icon to hicolor theme directory and pixmaps as fallback
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
     install -dm755 "${pkgdir}/usr/share/pixmaps"
+    
     # Try different possible icon locations
     if [ -f "${pkgdir}/opt/friendly-kobold/resources/assets/icon.png" ]; then
+        cp "${pkgdir}/opt/friendly-kobold/resources/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/friendly-kobold.png"
         cp "${pkgdir}/opt/friendly-kobold/resources/assets/icon.png" "${pkgdir}/usr/share/pixmaps/friendly-kobold.png"
     elif [ -f "${pkgdir}/opt/friendly-kobold/assets/icon.png" ]; then
+        cp "${pkgdir}/opt/friendly-kobold/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/friendly-kobold.png"
         cp "${pkgdir}/opt/friendly-kobold/assets/icon.png" "${pkgdir}/usr/share/pixmaps/friendly-kobold.png"
     elif [ -f "${pkgdir}/opt/friendly-kobold/icon.png" ]; then
+        cp "${pkgdir}/opt/friendly-kobold/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/friendly-kobold.png"
         cp "${pkgdir}/opt/friendly-kobold/icon.png" "${pkgdir}/usr/share/pixmaps/friendly-kobold.png"
     else
         echo "Warning: Could not find icon.png in expected locations"
