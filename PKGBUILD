@@ -1,4 +1,5 @@
-# Maintainer: Liam Timms <timms5000@gmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Liam Timms <timms5000@gmail.com>
 
 _pkgname=jenkspy
 pkgname=python-$_pkgname
