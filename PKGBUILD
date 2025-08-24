@@ -4,7 +4,7 @@ _pkgcat=periphery
 _pkgname=${_pkggen}-${_pkgcat}
 pkgname=${_pkgname}-bin
 pkgver=1.19.0
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc='Periphery server for the komodo monitor'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=('docker' 'openssl')
 makedepends=('git')
 provides=('komodo-periphery')
 conflicts=('komodo-periphery')
+backup=('etc/komodo-periphery.toml')
 source=(
     "$_pkgcat::https://github.com/moghtech/komodo/releases/download/v${pkgver}/periphery-x86_64"
     'komodo-peripheryd.service'
