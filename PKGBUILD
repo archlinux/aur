@@ -2,29 +2,26 @@
 
 _pkgname=jenkspy
 pkgname=python-$_pkgname
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Compute Natural Breaks in Python (Fisher-Jenks algorithm) '
 arch=('any')
 url='https://github.com/mthh/jenkspy'
 license=('MIT')
-depends=('python-numpy')
-makedepends=('python-setuptools')
+depends=('python-numpy' 'python' 'cython')
+makedepends=('python-setuptools' 'python-build' 'python-installer')
 optdepends=()
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/mthh/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('6b0f9a56cc9efb00d91d2c3499b6784bc8600b89d48d0774c7e11d744f63810327e583d313f398809e03b6078c2d37a511ff3836ff94a20c88a65063d47550e0')
+sha512sums=('603c8ea88ebd7433bc2b74c9e149e938b0c6c15bebdc8bf7e36db8dccd0ba5e00ba11e624d13517fbbd6d466b8eb99baec7834d9fc7cdf2f02dd0c281433fc76')
 
-build()
-{
-  	cd "$srcdir/${_pkgname}-$pkgver"
-  	python setup.py build
+
+build() {
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
-
-
-package()
-{
-  	cd "$srcdir/${_pkgname}-$pkgver"
-	python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    # install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
