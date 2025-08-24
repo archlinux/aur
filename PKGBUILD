@@ -7,7 +7,7 @@ _pkgname=${pkgname%-bin}
 pkgver=4.1.1
 pkgrel=1
 pkgdesc="A new AList Fork to Anti Trust Crisis"
-arch=("aarch64" "x86_64")
+arch=("x86_64" "aarch64" "loong64" "riscv64")
 url="https://github.com/OpenListTeam/OpenList"
 license=('AGPL-3.0-only')
 provides=(${_pkgname})
@@ -16,15 +16,20 @@ backup=("etc/openlist/config.json")
 optdepends=('aria2: download by aria2.')
 source=("openlist.service" "config.json" "openlist.sysusers" "openlist.tmpfiles")
 install=openlist.install
-source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/openlist-linux-arm64.tar.gz")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/openlist-linux-amd64.tar.gz")
+source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/openlist-linux-arm64.tar.gz")
+source_loong64=("$_pkgname-$pkgver-loong64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/openlist-linux-loong64.tar.gz")
+source_riscv64=("$_pkgname-$pkgver-riscv64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/openlist-linux-riscv64.tar.gz")
 options=(!debug)
 sha256sums=('4bc1ccc08f17f5c9ce0fe7fc600ea9d5e1b034d52a776244c627bc13a3fa401d'
             '9259caae294aebb88e0e25f83074e090f3581556c05548544739edf88c028537'
             'fe9c68aa8a6a27477049c839cb5818ba3ddbd88c6813dd2eacea73da70807905'
             'e4f341a876f43b551b67b730aa93dc3a8d2e5f6863ca234852a4389aa64c0aca')
-sha256sums_aarch64=('396293be85a193ede40429701ba37812c3d5b8438a82cc4ae7eb7d27e972055d')
 sha256sums_x86_64=('21133416b48e0f621e4a4a168b789bb711b0648d389bdf8caa8ed5375ad79a24')
+sha256sums_aarch64=('396293be85a193ede40429701ba37812c3d5b8438a82cc4ae7eb7d27e972055d')
+sha256sums_loong64=('9e423e2351e8265d25c9cc65990ac58bd5fe07848a2612e939eaf402759e5b96')
+sha256sums_riscv64=('449eb7449d2dd009e7ccc7577a4e1651fd02595058e915cd1934330cb9f5a00c')
+
 
 package() {
     install -Dm755 openlist ${pkgdir}/usr/bin/openlist
