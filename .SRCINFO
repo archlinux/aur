@@ -1,6 +1,6 @@
 pkgbase = python-peft
 	pkgdesc = State-of-the-art Parameter-Efficient Fine-Tuning.
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/huggingface/peft
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-peft
 	depends = python-tqdm
 	depends = python-transformers
 	depends = python-yaml
-	source = peft-0.16.0.tar.gz::https://github.com/huggingface/peft/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = cb5dfe376e0cabda8b0737a1830fe20626b4a987a85360f4ab645a5d62889fd5
+	source = peft-0.17.0.tar.gz::https://github.com/huggingface/peft/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = c1ebbac3d5a10c74c86cafef59a4e30e71cfbd480d0960183a7e3ced62e275c4
 
 pkgname = python-peft
