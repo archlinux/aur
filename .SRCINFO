@@ -1,0 +1,16 @@
+pkgbase = echo-meter
+	pkgdesc = A GTK4 application for visualizing echo measurements
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Nithin-3/echo-meter
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = make
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = json-glib
+	source = echo-meter-1.0.1.tar.gz::https://github.com/Nithin-3/echo-meter/archive/refs/tags/v1.0.1.tar.gz
+
+pkgname = echo-meter
