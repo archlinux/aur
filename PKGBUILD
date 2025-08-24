@@ -1,10 +1,10 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 
 pkgname=tor-util
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for controling TOR via the API"
-url="https://github.com/GIJack/tor-util"
+url="https://github.com/NetworkJack2/tor-util"
 arch=('any')
 license=('GPL3')
 depends=('python' 'python-stem' 'python-pyqt5')
