@@ -4,7 +4,7 @@
 _basename="xf86-video-ati"
 pkgname="${_basename//xf86/xlibre}"
 pkgver=22.0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="XLibre ati video driver"
 arch=('aarch64' 'x86_64')
 url="https://github.com/X11Libre/${_basename}"
