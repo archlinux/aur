@@ -2,7 +2,7 @@
 name=samory
 pkgname=$name-bin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Memory like game, written in Godot. Does allow custom card decks to be side loaded."
 arch=("x86_64")
 url="https://github.com/D-Generation-S/Samory"
