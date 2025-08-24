@@ -25,20 +25,8 @@ When a new version of Recoder is released on GitHub, follow these steps to updat
 1. **Update the version**
    - Edit `PKGBUILD` and change `pkgver=` to the new version (e.g., `1.1.0`).
    - Update the GitHub release tag in the `source=()` URL if applicable.
-
-2. **Update checksums**
-   - Run the following to automatically update the `sha256sums` array:
-     ```bash
-     updpkgsums
-     ```
-
-3. **Regenerate `.SRCINFO`**
-   - Required by the AUR:
-     ```bash
-     makepkg --printsrcinfo > .SRCINFO
-     ```
-4. **Create gpg .asc**
-   - Download the release tarball from https://github.com/jeena/recoder/releases/
+   
+2.  - Download the release tarball from https://github.com/jeena/recoder/releases/
    - Sign it with gpg:
      ```bash
      mv recoder-1.0.1.tar.gz v1.0.1.tar.gz
@@ -46,7 +34,20 @@ When a new version of Recoder is released on GitHub, follow these steps to updat
      ```
    - Upload the .asc file and attach it to the release as download
 
-4. **Commit and push**
+
+3. **Update checksums**
+   - Run the following to automatically update the `sha256sums` array:
+     ```bash
+     updpkgsums
+     ```
+
+4. **Regenerate `.SRCINFO`**
+   - Required by the AUR:
+     ```bash
+     makepkg --printsrcinfo > .SRCINFO
+     ```
+
+5. **Commit and push**
    ```bash
    git add PKGBUILD .SRCINFO
    git commit -m "Update to version 1.1.0"
