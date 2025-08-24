@@ -1,6 +1,6 @@
 pkgbase = renamemytvseries-gtk-bin
 	pkgdesc = Rename your TV-Series using TheTVDB (GTK2 version)
-	pkgver = 2.3.9
+	pkgver = 2.3.10
 	pkgrel = 1
 	url = https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = renamemytvseries-gtk-bin
 	conflicts = renamemytvseries
 	options = !debug
 	source = LICENSE
-	source = https://www.tweaking4all.com/downloads/video/RenameMyTVSeries-2.3.9-GTK-Linux-x64-shared-ffmpeg.tar.xz
+	source = https://www.tweaking4all.com/downloads/video/RenameMyTVSeries-2.3.10-GTK-Linux-x64-shared-ffmpeg.tar.xz
 	sha256sums = 986a80aff89e697188bb4eb9f8bfa511c1e933f1e2edd54a3315069c56fec160
-	sha256sums = 4fb3af69fb4592c4debc8aa4243cee3b5bf53b7601805b473f90a77467f54627
+	sha256sums = 286c816942d79cabd584de5ecddc9792ad893e97df0f2208f3daca03a1371529
 
 pkgname = renamemytvseries-gtk-bin

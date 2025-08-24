@@ -1,10 +1,10 @@
 # Maintainer: Michael Rydén (zynex(at)zoik.se)
 # App: RenameMyTVSeries (GTK2)
-# Version: 2.3.9
+# Version: 2.3.10
 
 pkgname=renamemytvseries-gtk-bin
 _pgmname=RenameMyTVSeries
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="Rename your TV-Series using TheTVDB (GTK2 version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=(
   '986a80aff89e697188bb4eb9f8bfa511c1e933f1e2edd54a3315069c56fec160'
-  '4fb3af69fb4592c4debc8aa4243cee3b5bf53b7601805b473f90a77467f54627'
+  '286c816942d79cabd584de5ecddc9792ad893e97df0f2208f3daca03a1371529'
 )
 
 package() {
