@@ -31,6 +31,33 @@ if not os.path.exists(cache_path):
     with open(cache_path, "w") as file:
         file.write("{}")
 
+def fix_sign(undo=False):
+    """Fix the error of failed signature verification."""
+    path = (
+        "/usr/lib/code/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js"
+    )
+    orig_text = 'import("node-ovsx-sign")'
+    fixed_text = 'import("@vscode/vsce-sign")'
+    if undo:
+        search_text = fixed_text
+        replace_text = orig_text
+    else:
+        search_text = orig_text
+        replace_text = fixed_text
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        if search_text not in content:
+            return
+
+        new_content = content.replace(search_text, replace_text)
+
+        with open(path, "w", encoding="utf-8") as f:
+            _ = f.write(new_content)
+
+    except Exception as e:
+        print(f"[code-marketplace] ERROR: {e}")
 
 def patch():
     with open(product_path, "r") as product_file:
@@ -46,6 +73,7 @@ def patch():
         json.dump(product_data, product_file, indent="\t")
     with open(cache_path, "w") as cache_file:
         json.dump(cache_data, cache_file, indent="\t")
+    fix_sign(False)
 
 
 def restore():
@@ -62,6 +90,7 @@ def restore():
         product_data[key] = cache_data[key]
     with open(product_path, "w") as product_file:
         json.dump(product_data, product_file, indent="\t")
+    fix_sign(True)
 
 
 if operation == "patch":
