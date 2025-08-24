@@ -2,7 +2,7 @@
 
 pkgname=nrip
 _pkg=NRip
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Safe rm with a graveyard (rm, list, prune, resurrect)'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=("nrip=${pkgver}")
 conflicts=('rip' 'rm-improved' 'rm-improved-git' 'rm-improved-bin' 'rip2-git')
 
 source=("${_pkg}-${pkgver}.tar.gz::https://github.com/Samtroulcode/${_pkg}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48c34afae5aacdff541e4525c4354b26b5adcf45bac59a8fadc992e2373039a1')
+sha256sums=('d48075cc49b0877eb77af51fd561a1a13fae7ffe7b5f7214b7eeecbe3e0bb188')
 
 prepare() {
   cd "$srcdir/${_pkg}-${pkgver}"

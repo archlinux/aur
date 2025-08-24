@@ -1,6 +1,6 @@
 pkgbase = nrip
 	pkgdesc = Safe rm with a graveyard (rm, list, prune, resurrect)
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/Samtroulcode/NRip
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = nrip
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	provides = nrip=0.7.1
+	provides = nrip=0.7.2
 	conflicts = rip
 	conflicts = rm-improved
 	conflicts = rm-improved-git
 	conflicts = rm-improved-bin
 	conflicts = rip2-git
-	source = NRip-0.7.1.tar.gz::https://github.com/Samtroulcode/NRip/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 48c34afae5aacdff541e4525c4354b26b5adcf45bac59a8fadc992e2373039a1
+	source = NRip-0.7.2.tar.gz::https://github.com/Samtroulcode/NRip/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = d48075cc49b0877eb77af51fd561a1a13fae7ffe7b5f7214b7eeecbe3e0bb188
 
 pkgname = nrip
