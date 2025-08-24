@@ -1,0 +1,21 @@
+pkgbase = xdimmer-git
+	pkgdesc = lightweight X11 utility to dim the screen and/or keyboard backlight when idle
+	pkgver = v1.7.r3.gae37d7f
+	pkgrel = 1
+	url = https://github.com/jcs/xdimmer
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = libbsd
+	depends = libx11
+	depends = libxrandr
+	depends = libxext
+	depends = libxi
+	provides = xdimmer
+	conflicts = xdimmer
+	source = git+https://github.com/jcs/xdimmer
+	sha256sums = SKIP
+
+pkgname = xdimmer-git
