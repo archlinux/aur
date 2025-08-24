@@ -7,7 +7,6 @@ url="https://git.marlonivo.com/hfc/log.html"
 license=('MIT')
 depends=('curl' 'ncurses')
 makedepends=('gcc' 'make')
-source=()
 md5sums=()
 
 build() {
