@@ -1,0 +1,21 @@
+pkgbase = whisper.cpp-talk
+	pkgdesc = Whisper.cpp-talk builds Whisper.cpp with cuda & talk-llama
+	pkgver = 1.7.6
+	pkgrel = 1
+	url = https://github.com/ggml-org/whisper.cpp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ccache
+	depends = sdl2-compat
+	depends = git
+	depends = espeak-ng
+	depends = ggml-cublas-git
+	optdepends = cuda: GPU acceleration for NVidia GPUs
+	optdepends = vulkan-devel: GPU acceleration for non-NVidia GPUs
+	optdepends = openblas: CPU acceleration
+	options = ccache
+	source = git+https://github.com/ggml-org/whisper.cpp.git
+	sha256sums = SKIP
+
+pkgname = whisper.cpp-talk
