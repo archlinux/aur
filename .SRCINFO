@@ -1,6 +1,6 @@
 pkgbase = nay-git
 	pkgdesc = A Rust-based AUR helper and Pacman wrapper
-	pkgver = 0.1.0.r1.g
+	pkgver = 0.1.0.r1.g55856a3
 	pkgrel = 1
 	url = https://github.com/Honey2339/nay
 	arch = x86_64
