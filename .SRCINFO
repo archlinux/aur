@@ -1,0 +1,21 @@
+pkgbase = python-temporary
+	pkgdesc = Python temporary context.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/python_temporary
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-temporary
+	conflicts = python-temporary
+	options = !strip
+	options = !debug
+	source = python_temporary-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_temporary/python_temporary-0.0.1.tar.gz
+	sha256sums = e64f1d6afc794d043ad79ea5ee2bfacec7833a880d9db652d958df5008327779
+
+pkgname = python-temporary
