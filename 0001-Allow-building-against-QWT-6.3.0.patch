@@ -4,13 +4,13 @@ Date: Sat, 15 Feb 2025 20:10:54 +0100
 Subject: [PATCH] Allow building against QWT 6.3.0
 
 ---
- qt-dab-6.9/cmake/Modules/FindQwt.cmake | 8 ++++----
+ cmake/Modules/FindQwt.cmake | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/qt-dab-6.9/cmake/Modules/FindQwt.cmake b/qt-dab-6.9/cmake/Modules/FindQwt.cmake
+diff --git a/cmake/Modules/FindQwt.cmake b/cmake/Modules/FindQwt.cmake
 index 4e778add..3309d0e6 100644
---- a/qt-dab-6.9/cmake/Modules/FindQwt.cmake
-+++ b/qt-dab-6.9/cmake/Modules/FindQwt.cmake
+--- a/cmake/Modules/FindQwt.cmake
++++ b/cmake/Modules/FindQwt.cmake
 @@ -20,7 +20,7 @@ find_path(QWT_INCLUDE_DIRS
  	/sw/include/qwt
  	/usr/local/lib/qwt.framework/Headers
