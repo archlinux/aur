@@ -1,6 +1,6 @@
 # Maintainer: Jeena <hello@jeena.net>
 pkgname=recoder
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A GTK4 video transcoding GUI application"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ source=(
 	"https://github.com/jeena/recoder/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://github.com/jeena/recoder/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
 )
-sha256sums=('92aeba679b022245f1ec22ec0da64a598be363464921a30f7758b4c6b2219fd6'
+sha256sums=('b831a657dfa9baf2e238a81cb8d6aeaff23933ac6207aa19ed9a576fcf9465aa'
             'SKIP')
 validpgpkeys=('1DF6570C929E2C186685046F0D6A8E36B9EE6177')
 
