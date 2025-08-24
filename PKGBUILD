@@ -34,17 +34,17 @@ source=(
   "MapleMono-Variable-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMono-Variable.zip"
   "MapleMono-Woff2-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMono-Woff2.zip"
 )
-sha256sums=('49fc3a94aa07f3c0441cb3115be876880c9d69ea6a8a5b72f41f97be9a3b598e'
-            '02ef49fed39a67fd6306ef9828ac915b3aa14b94a4cefb5bbabf4702df93f537'
-            '3bd076e9e0a0cd48397fe836abe4c299c34245a0c4ee043c5653159626f3e085'
-            '206e1064d5611ffb18f8950088b54ffef4e8d53858c28205bd7d5c02b6180ba3'
-            '2d496c8a5ac02daf3477d9a10e193c694489e9fa8d26193628b51086d5ee07a4'
-            '51da1afc4ae7d2803bf38849c720e9a11c2c9f4accdcdef9eb9224bdb098628f'
-            'd25858996a461d5b33f17a78313b91bba293c63a3746ebb4323cec69144f6380'
-            '286dcb5effa533a3aa73439846b4f22883283f8d33509ac2843a3cfb8ff6d45d'
-            '495b9a8691f4a041dd378a318b6d57f819ac86751d3f599c6937a38bce6fdcbc'
-            '2a9b0c9b1f76708f690fcc9a014c93b6c945b6af02a59ee21125b7799b742f15'
-            'da9e9b013fceff6321f2ecf53a27635e196c66eb12a5e3b0e461ae78f0266e90')
+sha256sums=('4278d1a16d385af1ad8282959b8e94d19d30226a7661505d07ff0b0f7ee67d69'
+            '045f153fab991e0caecbf5f48a27b8de3749eb3c895025c79731ede9f38f1044'
+            'f0f4b0fea1985e3a5a6b3c98f7d6ce4056ccf903a425f8b3ae6965f034c6c2af'
+            'ab7c08bd2b3384e2f2664aaf82f8a9436784bc6f4add27f6a3986ba474b6bc3f'
+            'eca12ce84b607dd3b60d92051a51c059d2332aa2836aaeda4531b4f071188a1c'
+            '21ffe4280162c8eb39367c57783386b0b49946c09d8439a03ad3f44ae37dea98'
+            'e57b07cfc42caee4b8a0d7f06b311f0165d23ebfa65fe6b96b250f7b90c5fe77'
+            '826047701424f06b9685d545f93081db7061d2b681e47552c0735a7153927163'
+            '9f8922bcf45c23cd23123edd457dff48ac961e20628975e86388c457b7824922'
+            'f144b65cbfd14c87961dab4778bbfbff25a26f956feeb74ec8d0b9aa8b115f0d'
+            '7fa92119fced043317f2aee8f5596f2c0d988a43e8343ab109fd0a571011e3df')
 noextract=(
   "MapleMono-CN-unhinted-$pkgver.zip"
   "MapleMono-CN-$pkgver.zip"
