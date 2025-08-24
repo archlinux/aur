@@ -1,0 +1,16 @@
+*.tar.*
+*.tar
+*.zip
+*.deb
+*.rpm
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.dylib
+*.log
+*.patch
+pkg/
+src/
+*.pkg.tar.*
