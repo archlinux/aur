@@ -3,7 +3,7 @@
 
 pkgname=gamebreaker
 pkgdesc="Simple graphics engine for C++"
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/elpoeprod/GameBreaker"
@@ -12,7 +12,7 @@ depends=(sdl2 sdl2_image sdl2_ttf)
 conflicts=()
 makedepends=(make)
 source=("GameBreaker-${pkgver}.tar.gz::https://github.com/elpoeprod/GameBreaker/archive/v${pkgver}.tar.gz")
-md5sums=('2fd5702b6ed2110ea35de202c5f1f3e3')
+md5sums=('b491e62687a3e7792c8d0f390616655f')
 
 build(){
 	cd "${srcdir}/GameBreaker-${pkgver}"
