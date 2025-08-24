@@ -1,6 +1,6 @@
 pkgbase = forskscope
 	pkgdesc = Diff and merge GUI tool with cross-platform support build with Tauri: Rust and Svelte (Pre-built binary)
-	pkgver = 0.22.6
+	pkgver = 0.22.7
 	pkgrel = 1
 	url = https://github.com/forskscope/forskscope
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = forskscope
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libappindicator-gtk3
-	source = forskscope@Linux-x64-gnu-0.22.6.tar.gz::https://github.com/forskscope/forskscope/releases/download/0.22.6/forskscope@Linux-x64-gnu-0.22.6.tar.gz
-	sha256sums = 394f54ecf958fd8f8609dc34b2677db5aa207a8fa48b0081d6111a0cb4e1467a
+	source = forskscope@Linux-x64-gnu-0.22.7.tar.gz::https://github.com/forskscope/forskscope/releases/download/0.22.7/forskscope@Linux-x64-gnu-0.22.7.tar.gz
+	sha256sums = ad60e0ac4d2d5da6885df62553395f5060f5dff89c81049c2a8dc55a7186dc9d
 
 pkgname = forskscope

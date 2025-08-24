@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=forskscope
+Version=0.22.7
+Comment=Diff and merge GUI tool with cross-platform support build with Tauri: Rust and Svelte (Pre-built binary)
+Exec=forskscope
+Icon=forskscope.png
+Terminal=false
+Type=Application
+Categories=Programming;
