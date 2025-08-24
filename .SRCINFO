@@ -1,14 +1,14 @@
 pkgbase = nodejs-gltf-transform-cli
 	pkgdesc = CLI interface to glTF Transform
-	pkgver = 4.1.1
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://gltf-transform.donmccurdy.com/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-gltf-transform-cli-4.1.1.tgz
-	source = nodejs-gltf-transform-cli-4.1.1.tgz::http://registry.npmjs.org/@gltf-transform/cli/-/cli-4.1.1.tgz
-	sha256sums = 4c0263cdabf4ec48965e8e3dc7928a7452eaeef391b88cc5f9040563a8065174
+	noextract = nodejs-gltf-transform-cli-4.2.1.tgz
+	source = nodejs-gltf-transform-cli-4.2.1.tgz::http://registry.npmjs.org/@gltf-transform/cli/-/cli-4.2.1.tgz
+	sha256sums = 3203895d3dfd8652490e34dc29da6cad3701fda333f080810320dd08817a8b97
 
 pkgname = nodejs-gltf-transform-cli

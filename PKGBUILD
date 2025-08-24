@@ -3,7 +3,7 @@
 
 _npmname=@gltf-transform/cli
 pkgname=nodejs-gltf-transform-cli
-pkgver="4.1.1"
+pkgver="4.2.1"
 pkgrel=1
 pkgdesc="CLI interface to glTF Transform"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=("${pkgname}-${pkgver}.tgz::http://registry.npmjs.org/${_npmname}/-/cli-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=("4c0263cdabf4ec48965e8e3dc7928a7452eaeef391b88cc5f9040563a8065174")
+sha256sums=("3203895d3dfd8652490e34dc29da6cad3701fda333f080810320dd08817a8b97")
 
 package() {
   # copied from: nodejs-nativefier
