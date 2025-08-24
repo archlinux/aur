@@ -1,0 +1,14 @@
+pkgbase = nay-git
+	pkgdesc = A Rust-based AUR helper and Pacman wrapper
+	pkgver = 0.1.0.r1.g
+	pkgrel = 1
+	url = https://github.com/Honey2339/nay
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = pacman
+	source = git+https://github.com/Honey2339/nay.git
+	sha256sums = SKIP
+
+pkgname = nay-git
