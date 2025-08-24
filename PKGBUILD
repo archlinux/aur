@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-roms-git
-pkgver=4.2.1.r0.g890db74
+pkgver=5.0.r0.g8c2ad1b
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator'
 arch=('any')
