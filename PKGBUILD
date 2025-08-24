@@ -6,7 +6,7 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop-plus
-pkgver=3.5.3
+pkgver=3.5.3.2
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -63,20 +63,27 @@ build() {
 }
 
 package() {
+    INSTALL_DIR="$pkgdir/opt/$pkgname"
+
     cd "$pkgname"
-    install -d "$pkgdir/opt/$pkgname"
+    install -d "$INSTALL_DIR"
     case "$CARCH" in
         x86_64) suffix="x64" ;;
         aarch64) suffix="arm64" ;;
         armv7h) suffix="armv7l" ;;
         *) echo "Unsupported architecture: $CARCH"; exit 1 ;;
     esac
-    cp -r --preserve=mode "dist/github-desktop-plus-linux-$suffix/"* "$pkgdir/opt/$pkgname/"
+    cp -r --preserve=mode "dist/github-desktop-plus-linux-$suffix/"* "$INSTALL_DIR/"
 
-    install -Dm0644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    pushd "$pkgdir/opt/$pkgname/resources/app/static/logos"
+    cd "$INSTALL_DIR/resources/app/static/logos"
     install -Dm0644 "1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
     install -Dm0644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
     install -Dm0644 "256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+
     install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/$pkgname"
+
+    chmod +x "$INSTALL_DIR/resources/app/static/github"
+    ln -s "$INSTALL_DIR/resources/app/static/github" "$pkgdir/usr/bin/github-desktop-plus-cli"
+
+    install -Dm0644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
