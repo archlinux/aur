@@ -2,7 +2,7 @@
 
 pkgname=python-numpy-mkl-tbb
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python, compiled with Intel MKL and TBB"
 arch=(x86_64)
 license=(BSD-3-Clause)
@@ -23,7 +23,8 @@ build() {
   CXXFLAGS+=" -ffat-lto-objects" \
   python -m build --wheel --no-isolation \
     -Csetup-args="-Dblas=mkl-dynamic-lp64-tbb" \
-    -Csetup-args="-Dlapack=mkl-dynamic-lp64-tbb"
+    -Csetup-args="-Dlapack=mkl-dynamic-lp64-tbb" \
+    -Csetup-args="-Denable-openmp=true"
 }
 
 check() {

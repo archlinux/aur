@@ -1,7 +1,7 @@
 pkgbase = python-numpy-mkl-tbb
 	pkgdesc = Scientific tools for Python, compiled with Intel MKL and TBB
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://numpy.org
 	arch = x86_64
 	license = BSD-3-Clause
