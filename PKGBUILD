@@ -5,8 +5,8 @@
 _pkgname=valve-parsers
 
 pkgname="python-${_pkgname}-git"
-pkgver=9dbe663
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 
 pkgdesc='Some parsers for Valve game files - written in python.'
 arch=('x86_64')
@@ -20,7 +20,11 @@ source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	git -C "${_pkgname}" describe --tag --always | sed 's/^v//; s/-/./g'
+	python -c "$(printf '%s\n' \
+		'import sys, pathlib' \
+		'try: import tomllib as toml' \
+		'except ModuleNotFoundError: import tomli as toml' \
+		'print(toml.loads(pathlib.Path(f"{sys.argv[1]}/pyproject.toml").read_text(encoding="utf-8")).get("project",{}).get("version"))')" "${_pkgname}"
 }
 
 prepare() {
@@ -28,11 +32,11 @@ prepare() {
 }
 
 build() {
-    cd "${_pkgname}"
-    python -m build --wheel --no-isolation
+	cd "${_pkgname}"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-		cd "${_pkgname}"
-		python -m installer --destdir="${pkgdir}" dist/*.whl
+	cd "${_pkgname}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
