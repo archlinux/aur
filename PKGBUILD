@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r68713.495b3e84360d
+pkgver=r69105.a9bb87742f9
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -83,7 +83,6 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  ksooo.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -103,8 +102,7 @@ b2sums=('SKIP'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
-        '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        'be0ab9621ab8cceba8c07d5b93c7151942659e75d1d4fd29fe85bdf28681b7ee29a4c6229583855f63bef7fbbd261702180f3f302906ee6d5b74755583929922')
+        '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61')
 
 pkgver() {
   cd "$_gitname"
@@ -118,14 +116,15 @@ prepare() {
   cd "$_gitname"
 
   rm -rf system/certs # remove not needed cacert
+  
+  # https://github.com/xbmc/xbmc/issues/27164
+  git stash
+  git pull --no-edit --rebase origin pull/27165/head
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
     export CC=clang CXX=clang++
   fi
-
-  # https://github.com/xbmc/xbmc/issues/26959#issuecomment-3061651077
-  patch -Np1 -i ../ksooo.patch
 }
 
 build() {
