@@ -2,7 +2,7 @@
 _name=anytype
 
 pkgname="${_name}-appimage"
-pkgver=0.48.5
+pkgver=0.49.1
 pkgrel=1
 pkgdesc="Local‑first, peer‑to‑peer & end‑to‑end‑encrypted knowledge OS for macOS, Windows & Linux."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}::https://github.com/anyproto/anytype-ts/releases/d
   "${_name}.desktop.patch"
   "${_name}.sh"
   "LICENSE")
-sha256sums=('4b67f6e87265100f3fab7adf82bca2548acca5079d3f890bd29e4ac3ba851acd'
+sha256sums=('b6025084599f2b4a906169e5d8b57072d11d90b667fae495c9a9a5f316890db4'
   '91ed4a213f987471b1f299281328654757390fc6878786d6224edfc1951351f1'
   '7570409951e010280a3509bf4f4349049d6bf3fe03c7322a893902ecc3d57aaf'
   'f334fbac4188a7f37fcfcb0c683ac312f1d98f26233b6b4aba0277b341af105a')
