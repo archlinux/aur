@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='opencode'
-pkgver=0.5.23
+pkgver=0.5.24
 options=('!debug' '!strip')
 pkgrel=1
 pkgdesc='The AI coding agent built for the terminal.'
@@ -14,15 +14,16 @@ conflicts=('opencode-bin')
 depends=('fzf' 'ripgrep')
 makedepends=('git' 'bun-bin' 'go')
 
-source=("opencode-${pkgver}.tar.gz::https://github.com/sst/opencode/archive/v0.5.23.tar.gz")
+source=("opencode-${pkgver}.tar.gz::https://github.com/sst/opencode/archive/v0.5.24.tar.gz")
 sha256sums=('SKIP')
 
 build() {
   cd "opencode-${pkgver}"
+  bun install
   cd packages/tui
   CGO_ENABLED=0 go build -ldflags="-s -w -X main.Version=${pkgver}" -o tui cmd/opencode/main.go
   cd ../opencode
-  bun build --define OPENCODE_TUI_PATH="'../tui/tui'" --define OPENCODE_VERSION="'${pkgver}'" --compile --target=bun-linux-x64 --outfile=opencode ./src/index.ts
+  bun build --define OPENCODE_TUI_PATH="'$(realpath ../tui/tui)'" --define OPENCODE_VERSION="'${pkgver}'" --compile --target=bun-linux-x64 --outfile=opencode ./src/index.ts
 }
 
 package() {
