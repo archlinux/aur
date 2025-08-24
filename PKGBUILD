@@ -1,4 +1,4 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Sirat18 <aur@sirat18.de>
 # Contributor: Alex Cartwright (alexc223@googlemail.com)
