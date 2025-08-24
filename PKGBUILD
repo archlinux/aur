@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r279.7ef1f29
+pkgver=r441.5ff8c77
 pkgrel=1
 pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
 arch=("any")
@@ -34,7 +34,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check_java_version() {
+_check_java_version() {
     local java_version
     java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1)
 
@@ -54,11 +54,8 @@ check_java_version() {
 }
 
 build() {
-    unset JAVA_HOME
-    unset JAVA_OPTS
-    unset JDK_JAVA_OPTIONS
-    unset JAVA_TOOL_OPTIONS
-    if check_java_version; then
+    unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
+    if _check_java_version; then
         cd "$srcdir/${pkgname%-git}"
         mvn clean package
     else
