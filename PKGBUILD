@@ -9,7 +9,7 @@ makedepends=('gcc' 'make' 'cmake')
 provides=('clip-transfer')
 conflicts=('clip-transfer')
 source=("https://github.com/Evr5/ClipTransfer/releases/download/v1.1.0/clip-transfert-1.1.0-x86_64.pkg.tar.zst")
-sha256sums=('e5a13ea1d9f9ee50110495ed74b1b768bc7437ce002abd55ffc318a398734e65')
+sha256sums=('3b9257995fbe68eed01b6bc7dde5d51ec99c7c5da83e25fe085c2eed4d706c44')
 
 build() {
   make
