@@ -1,7 +1,7 @@
 pkgbase = python-aioconsole
 	pkgdesc = Asynchronous console and interfaces for asyncio
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vxgmichel/aioconsole
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = python-aioconsole
 	optdepends = python-pytest
 	optdepends = python-pytest-cov
 	optdepends = python-uvloop
-	source = https://github.com/vxgmichel/aioconsole/archive/v0.8.1/python-aioconsole-0.8.1.tar.gz
+	source = https://pypi.io/packages/source/a/aioconsole/aioconsole-0.8.1.tar.gz
 	sha512sums = 7c17aa1110f9f04ac681142972e3561d7046e81f6d1100b1da403f3f18b2c4dcfb70cff54c99e1a77ceb5d82e3320ec37108e0c729008d422bb38f927ca73146
 
 pkgname = python-aioconsole
