@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=nijiexpose
+Comment=Application that allows streaming with nijilive puppets
+Icon=nijiexpose
+Exec=nijiexpose
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=application/x-nijilive-puppet;
+Categories=Graphics;2DGraphics;RasterGraphics;
+
