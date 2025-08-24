@@ -11,15 +11,15 @@ depends=('wl-clipboard')
 makedepends=('go')
 conflicts=('elephant-clipboard')
 provides=('elephant-clipboard')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-4.tar.gz")
-sha256sums=('20529c42d90448496533d408c6ed09ba93221b7badf61ade8859ff033a75830f')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-5.tar.gz")
+sha256sums=('1c324928dcfe81299a59420276113df7738965659322b6762cfbd619d1b0eb5c')
 
 build() {
-    cd elephant-${pkgver}-beta-4/internal/providers/clipboard
+    cd elephant-${pkgver}-beta-5/internal/providers/clipboard
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-4/internal/providers/clipboard
+    cd elephant-${pkgver}-beta-5/internal/providers/clipboard
     install -Dm 755 clipboard.so -t "${pkgdir}/etc/xdg/elephant/providers"
 }
