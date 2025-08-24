@@ -1,4 +1,4 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Anthony C <kurodroid.1@gmail.com>
