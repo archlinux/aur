@@ -1,18 +1,15 @@
 pkgname=pipelam
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="A lightweight GTK4-based notification system for displaying text, images, and progress bars"
 arch=('x86_64' 'aarch64')
 url="https://github.com/thomascrha/pipelam"
 license=('MIT')
 depends=('gtk4' 'gtk4-layer-shell')
-makedepends=('clang' 'make' 'scdoc')
-optdepends=('systemd: for systemd socket activation')
-# used for local testing
-# source=($pkgname-$pkgver::git+file://$(dirname $PWD))
-# sha256sums=('SKIP')
+makedepends=('scdoc' 'git')
+optdepends=('systemd: for systemd service')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thomascrha/pipelam/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('46e16dab6e79a369fd3f80729a428b99aa6d7eb29615a578355f4931aa439d06')
+sha256sums=('c9744f035fa2703ac80c2f8bee41345146420c01c289f63c6d889ec5b8c8f5e3')
 
 build() {
     cd "$pkgname-$pkgver"
