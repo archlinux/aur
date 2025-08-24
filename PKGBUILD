@@ -9,7 +9,7 @@ makedepends=('gcc' 'make' 'cmake')
 provides=('clip-transfer')
 conflicts=('clip-transfer')
 source=("https://github.com/Evr5/ClipTransfer/releases/download/v1.1.0/clip-transfer-linux.tar.gz")
-sha256sums=('9d7dde4c3f7b273fda90e78fcd85494516762d64d963884992ac71f90908286b')
+sha256sums=('a885e63c92bea142b4060c1b1fb53731a74d8b87740450f08ed05a67d966d5a6')
 
 package() {
   install -Dm755 "clip-transfer" "$pkgdir/usr/bin/clip-transfer"
