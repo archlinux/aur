@@ -1,5 +1,5 @@
 pkgbase = whisper.cpp-talk
-	pkgdesc = Whisper.cpp-talk builds Whisper.cpp with cuda & talk-llama
+	pkgdesc = Whisper.cpp built with cuda & talk-llama enabled
 	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://github.com/ggml-org/whisper.cpp
