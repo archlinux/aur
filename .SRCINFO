@@ -1,0 +1,27 @@
+pkgbase = gitid-bin
+	pkgdesc = Git Identity Manager - A tool to manage multiple git identities (pre-compiled binary)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/nathabonfim59/gitid
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = git: required for git identity management
+	provides = gitid
+	conflicts = gitid
+	options = !strip
+	options = !debug
+	source_x86_64 = gitid-1.2.0-x86_64::https://github.com/nathabonfim59/gitid/releases/download/v1.2.0/gitid_linux_amd64
+	source_x86_64 = README.md::https://raw.githubusercontent.com/nathabonfim59/gitid/v1.2.0/README.md
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/nathabonfim59/gitid/v1.2.0/LICENSE
+	sha256sums_x86_64 = 0d75ffac6183ee4552645455893b36c1c471284127623392010f585e534c07df
+	sha256sums_x86_64 = eae62a667582c8672081204389520e816dcfdcf5091401863639fdf7efc16675
+	sha256sums_x86_64 = d6a171f63921cf23aa69a447ffe858cffca49cf0d63d1b3423d81a4ccc56e272
+	source_aarch64 = gitid-1.2.0-aarch64::https://github.com/nathabonfim59/gitid/releases/download/v1.2.0/gitid_linux_arm64
+	source_aarch64 = README.md::https://raw.githubusercontent.com/nathabonfim59/gitid/v1.2.0/README.md
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/nathabonfim59/gitid/v1.2.0/LICENSE
+	sha256sums_aarch64 = e278a267b740e590221cd805b285c68e8ce5f37c81dd2c7b95ca1f509c98f29c
+	sha256sums_aarch64 = eae62a667582c8672081204389520e816dcfdcf5091401863639fdf7efc16675
+	sha256sums_aarch64 = d6a171f63921cf23aa69a447ffe858cffca49cf0d63d1b3423d81a4ccc56e272
+
+pkgname = gitid-bin
