@@ -1,8 +1,8 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=firelight
-pkgver=0.10.5
-pkgrel=2
+pkgver=0.10.7
+pkgrel=1
 pkgdesc="A libretro-based frontend"
 arch=("x86_64")
 url="https://github.com/firelight-emulator/firelight"
