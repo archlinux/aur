@@ -1,6 +1,6 @@
 pkgbase = python-aardwolf-git
 	pkgdesc = Asynchronous RDP protocol implementation for python.
-	pkgver = 0.2.12+2.r141.20250710.8dedae4
+	pkgver = 0.2.13.r148.20250819.5d44d39
 	pkgrel = 1
 	url = https://github.com/skelsec/aardwolf
 	arch = aarch64
@@ -33,10 +33,10 @@ pkgbase = python-aardwolf-git
 	depends = python-arc4>=0.3.0
 	depends = python-pillow>=9.0.0
 	optdepends = python-pyqt5
-	provides = ardpscan=0.2.12+2.r141.20250710.8dedae4
-	provides = python-aardwolf=0.2.12+2.r141.20250710.8dedae4
-	provides = aardwolf=0.2.12+2.r141.20250710.8dedae4
-	provides = aardwolf-git=0.2.12+2.r141.20250710.8dedae4
+	provides = ardpscan=0.2.13.r148.20250819.5d44d39
+	provides = python-aardwolf=0.2.13.r148.20250819.5d44d39
+	provides = aardwolf=0.2.13.r148.20250819.5d44d39
+	provides = aardwolf-git=0.2.13.r148.20250819.5d44d39
 	conflicts = ardpscan
 	conflicts = python-aardwolf
 	conflicts = aardwolf
