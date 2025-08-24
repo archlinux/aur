@@ -1,6 +1,6 @@
 pkgbase = hfc
 	pkgdesc = hfc - hosts file client
-	pkgver = 0.0.1
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://git.marlonivo.com/hfc/log.html
 	arch = x86_64
@@ -9,7 +9,5 @@ pkgbase = hfc
 	makedepends = make
 	depends = curl
 	depends = ncurses
-	source = git+git://git.marlonivo.com/hfc
-	md5sums = SKIP
 
 pkgname = hfc
