@@ -2,8 +2,8 @@
 
 pkgbase=obsidian
 pkgname=(${pkgbase}-{bin,appimage})
-pkgver=1.8.10
-pkgrel=2
+pkgver=1.9.10
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/obsidianmd/obsidian-releases"
 license=('custom')
@@ -12,17 +12,17 @@ provides=('obsidian')
 options=(!strip)
 source=("obsidian")
 source_x86_64=(
-  "${pkgbase}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/obsidian_${pkgver}_amd64.deb"
-  "Obsidian-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage"
+    "${pkgbase}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/obsidian_${pkgver}_amd64.deb"
+    "Obsidian-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage"
 )
 source_aarch64=(
-  "Obsidian-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage"
+    "Obsidian-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage"
 )
 
 sha256sums=('56e6892346fb16287fd4a3c8d521d51e620604052ac8aee5be7b6a8fee9452c0')
-sha256sums_x86_64=('da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774'
-                   '05d4bfb76ef409ace4f4e59ccafb49dbd5a537c1ec15e570b59db603ddaad715')
-sha256sums_aarch64=('667378116211b95eeb89bbb72d32c7d1f6243a8891c82d81bd9e17cde1162bee')
+sha256sums_x86_64=('44c8eeb0797c332dbf4533aaaa126a31896db8c207dac9cda61beba7c33be257'
+                   '24471d25ed4d7d797a20a8ddf7b81ec43ae337f9ce495514dfdbb893307472b7')
+sha256sums_aarch64=('0ef8b8a77946869869aa85b74bf97959ef4f12129557a1b9a407885bdd808af6')
 noextract=("Obsidian-${pkgver}-${CARCH}.AppImage")
 
 package_obsidian-bin() {
