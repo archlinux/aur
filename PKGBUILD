@@ -8,7 +8,7 @@ license=('MIT')
 makedepends=('gcc' 'make' 'cmake')
 provides=('clip-transfer')
 conflicts=('clip-transfer')
-source=("https://github.com/Evr5/ClipTransfer/releases/download/v1.0.0/clip-transfer-1.0.0-x86_64.pkg.tar.zst")
+source=("https://github.com/Evr5/ClipTransfer/releases/download/v1.1.0/clip-transfert-1.1.0-x86_64.pkg.tar.zst")
 sha256sums=('e5a13ea1d9f9ee50110495ed74b1b768bc7437ce002abd55ffc318a398734e65')
 
 build() {
