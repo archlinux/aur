@@ -2,7 +2,7 @@
 
 pkgname=thor-git
 pkgver=2.0.r24.g3e320cb
-pkgrel=4
+pkgrel=5
 pkgdesc="SFML Extension with various game programming features,
          like particles, animations, vector operations"
 arch=("x86_64")
