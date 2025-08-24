@@ -1,10 +1,10 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 2.7.1
-	pkgrel = 4
+	pkgver = 2.8.0
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause-Modification
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python-yaml
@@ -15,6 +15,9 @@ pkgbase = python-pytorch
 	makedepends = nccl
 	makedepends = cudnn
 	makedepends = git
+	makedepends = python-triton
+	makedepends = python-aotriton
+	makedepends = rocm-toolchain
 	makedepends = rocm-hip-sdk
 	makedepends = hipblaslt
 	makedepends = roctracer
@@ -27,12 +30,6 @@ pkgbase = python-pytorch
 	makedepends = vulkan-headers
 	makedepends = shaderc
 	makedepends = onednn
-	makedepends = python-iniconfig
-	makedepends = python-packaging
-	makedepends = python-pluggy
-	makedepends = python-wheel
-	makedepends = python-tqdm
-	makedepends = python-textual
 	depends = google-glog
 	depends = gflags
 	depends = openmp
@@ -55,7 +52,7 @@ pkgbase = python-pytorch
 	depends = vulkan-icd-loader
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.7.1
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.8.0
 	source = python-pytorch-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
 	source = python-pytorch-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
@@ -69,14 +66,13 @@ pkgbase = python-pytorch
 	source = python-pytorch-cpuinfo::git+https://github.com/pytorch/cpuinfo.git
 	source = python-pytorch-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git
 	source = python-pytorch-cutlass::git+https://github.com/NVIDIA/cutlass.git
-	source = python-pytorch-eigen::git+https://gitlab.com/libeigen/eigen.git
 	source = python-pytorch-fbgemm::git+https://github.com/pytorch/fbgemm
 	source = python-pytorch-fbjni::git+https://github.com/facebookincubator/fbjni.git
 	source = python-pytorch-flash-attention::git+https://github.com/Dao-AILab/flash-attention.git
 	source = python-pytorch-flatbuffers::git+https://github.com/google/flatbuffers.git
 	source = python-pytorch-fmt::git+https://github.com/fmtlib/fmt.git
 	source = python-pytorch-gemmlowp::git+https://github.com/google/gemmlowp.git
-	source = python-pytorch-gloo::git+https://github.com/facebookincubator/gloo
+	source = python-pytorch-gloo::git+https://github.com/pytorch/gloo
 	source = python-pytorch-googletest::git+https://github.com/google/googletest.git
 	source = python-pytorch-ideep::git+https://github.com/intel/ideep
 	source = python-pytorch-ittapi::git+https://github.com/intel/ittapi.git
@@ -99,9 +95,10 @@ pkgbase = python-pytorch
 	source = glog-0.7.patch
 	source = pytorch-rocm-jit.patch
 	source = fix_cmake_prefix_path.patch
-	source = 0001-Add-cmake-varaible-USE_ROCM_CK.patch
-	b2sums = 7b4eb8ef062393429f17cd617b28e1a1699fdd1099b5e84f333605092df251ee4b807fd40553bf56e11cc5b69dbafc5a4594c0ac5d14e0dd88bd11a5d2ecee71
-	b2sums = SKIP
+	source = add_gpu_targets_rocm.patch
+	source = 0001-Add-cmake-variable-USE_ROCM_CK.patch
+	source = aotriton_disable_install.patch
+	b2sums = 019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd26f4a9bdd4042c0b740600705ab4216a88b81a3ef6409874d43d87afc
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -144,14 +141,16 @@ pkgbase = python-pytorch
 	b2sums = 20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e
 	b2sums = e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe
 	b2sums = 12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626
-	b2sums = 24924808c32105eac1dd29c3dc4e0267e166d5d4d125244bbaba10f109794bc1dbecea752943c9a72b4908d234aa98957e8066490604071d3ceb6fe387c53df3
+	b2sums = 007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c
+	b2sums = e77c8ad06e9956acac623e7fe9f7ab670cbc2807c4734ed36c297253567e6bd3eaefef2d24fb8746ca5f1f722308435913cb35b605792c8751ce41c37f82103b
+	b2sums = ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0
 
 pkgname = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
-	provides = python-pytorch=2.7.1
+	provides = python-pytorch=2.8.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-cuda
@@ -181,7 +180,7 @@ pkgname = python-pytorch-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.7.1
+	provides = python-pytorch=2.8.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda
@@ -211,8 +210,8 @@ pkgname = python-pytorch-opt-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.7.1
-	provides = python-pytorch-cuda=2.7.1
+	provides = python-pytorch=2.8.0
+	provides = python-pytorch-cuda=2.8.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-rocm
@@ -243,7 +242,7 @@ pkgname = python-pytorch-rocm
 	depends = miopen-hip
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.7.1
+	provides = python-pytorch=2.8.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-rocm
@@ -274,6 +273,6 @@ pkgname = python-pytorch-opt-rocm
 	depends = miopen-hip
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.7.1
-	provides = python-pytorch-rocm=2.7.1
+	provides = python-pytorch=2.8.0
+	provides = python-pytorch-rocm=2.8.0
 	conflicts = python-pytorch

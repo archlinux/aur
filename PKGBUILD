@@ -19,10 +19,10 @@ depends=('google-glog' 'gflags' 'openmp' 'openmpi' 'pybind11' 'python' 'python-y
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock' 'vulkan-icd-loader')
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
-_aotriton_deps=('python-iniconfig' 'python-packaging' 'python-pluggy' 'python-wheel' 'python-tqdm' 'python-textual')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc14'
-             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
-             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn' "${_aotriton_deps[@]}")
+             'nccl' 'cudnn' 'git' 'python-triton' 'python-aotriton' 'rocm-toolchain' 'rocm-hip-sdk'
+             'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
+             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         # generated using parse-submodules
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
@@ -67,7 +67,9 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         glog-0.7.patch
         pytorch-rocm-jit.patch
         fix_cmake_prefix_path.patch
-        0001-Add-cmake-varaible-USE_ROCM_CK.patch
+        add_gpu_targets_rocm.patch
+        0001-Add-cmake-variable-USE_ROCM_CK.patch
+        aotriton_disable_install.patch
         )
 b2sums=('019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd26f4a9bdd4042c0b740600705ab4216a88b81a3ef6409874d43d87afc'
         'SKIP'
@@ -112,7 +114,10 @@ b2sums=('019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         '12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626'
-        '24924808c32105eac1dd29c3dc4e0267e166d5d4d125244bbaba10f109794bc1dbecea752943c9a72b4908d234aa98957e8066490604071d3ceb6fe387c53df3')
+        '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
+        'e77c8ad06e9956acac623e7fe9f7ab670cbc2807c4734ed36c297253567e6bd3eaefef2d24fb8746ca5f1f722308435913cb35b605792c8751ce41c37f82103b'
+        'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
+        )
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -179,12 +184,17 @@ prepare() {
   # Fix building against glog 0.7
   patch -p1 -i "${srcdir}/glog-0.7.patch"
 
-  # https://src.fedoraproject.org/rpms/python-torch/blob/rawhide/f/0001-Add-cmake-varaible-USE_ROCM_CK.patch
-  # Disable composable kernels as not all AMD GPUs are supported.
-  patch -p1 -i "${srcdir}/0001-Add-cmake-varaible-USE_ROCM_CK.patch"
+  # ROCm 6.4.2+ requires architectures to appear as cmake arguments too
+  patch -p1 -i "${srcdir}/add_gpu_targets_rocm.patch"
 
-  # Don't clone nccl but use system package
-  sed -Ei '/[[:space:]]*checkout_nccl\(\)$/d' tools/build_pytorch_libs.py
+  # Disable composable kernels as it's not supported by all platforms.
+  # Patch from Fedora,
+  # https://src.fedoraproject.org/rpms/python-torch/blob/rawhide/f/0001-Add-cmake-variable-USE_ROCM_CK.patch
+  patch -p1 -i "${srcdir}/0001-Add-cmake-variable-USE_ROCM_CK.patch"
+
+  # If using prebuilt aotriton, pytorch attempts to copy /usr/lib and /user/include
+  # into the torch folder. Disable this behavior.
+  patch -p1 -i "${srcdir}/aotriton_disable_install.patch"
 
   cd third_party/XNNPACK
   git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
@@ -241,11 +251,10 @@ _prepare() {
 
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
+  # gfx950 lacks support for 128 bit atomics
+  export PYTORCH_ROCM_ARCH="$(rocm-supported-gfx -e gfx950)"
+  # Composable kernels is not supported for all architectures.
   export USE_ROCM_CK=OFF
-
-  # List GPU targets:
-  # https://github.com/ROCm/rocBLAS/blob/9c8a7dfeb3d0a808321541567447b5c1d17cd070/CMakeLists.txt#L114
-  export PYTORCH_ROCM_ARCH="gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102;gfx1151;gfx1200;gfx1201"
 
   # 1. Compile source code for supported GPU archs in parallel
   # 2. Use --offload-comress to reduce the size of the generated binaries.
@@ -254,8 +263,7 @@ _prepare() {
   export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-14 -print-libgcc-file-name)) --offload-compress"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
 
-  # Build aotriton from source instead of downloading a binary
-  export AOTRITON_INSTALL_FROM_SOURCE=1
+  export AOTRITON_INSTALLED_PREFIX=/usr
 
   # Fix build issues for onnx with cmake 4.0
   export CMAKE_POLICY_VERSION_MINIMUM=3.5

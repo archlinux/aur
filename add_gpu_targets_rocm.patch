@@ -1,0 +1,14 @@
+diff --git a/tools/setup_helpers/cmake.py b/tools/setup_helpers/cmake.py
+index 678ba7ab207..ff5cbf2b4f2 100644
+--- a/tools/setup_helpers/cmake.py
++++ b/tools/setup_helpers/cmake.py
+@@ -142,6 +142,9 @@ class CMake:
+             return
+ 
+         args = []
++        if not check_negative_env_flag("USE_ROCM"):
++            rocm_gpu_targets = os.getenv("PYTORCH_ROCM_ARCH")
++            args.append(f"-DGPU_TARGETS={rocm_gpu_targets}")
+         if USE_NINJA:
+             # Avoid conflicts in '-G' and the `CMAKE_GENERATOR`
+             os.environ["CMAKE_GENERATOR"] = "Ninja"
