@@ -3,7 +3,7 @@
 
 _pkgname=igt-gpu-tools
 pkgname="$_pkgname-git"
-pkgver=2.1+136.r15262.20250806.4972020ea
+pkgver=2.1+166.r15292.20250820.131624097
 pkgrel=1
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
@@ -71,6 +71,8 @@ conflicts=(
   lsgpu
   dpcd_reg
 )
+
+# options+=('!lto')
 
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
