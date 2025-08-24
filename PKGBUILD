@@ -1,7 +1,7 @@
 # Maintainer: Fabien Michel <fabien.michel@hespul.org>
 _pkgname=wazo-desktop
 pkgname=${_pkgname}-appimage
-pkgver=1.13.69
+pkgver=1.13.70
 pkgrel=1
 pkgdesc="Wazo desktop client for wazo VOIP server"
 arch=('x86_64')
@@ -17,7 +17,7 @@ noextract=("${_appimage}")
 # Require !strip to avoid corrupt AppImage file
 # Require !debug to workaround bug making strip still occure.
 options=("!strip" "!debug")
-sha256sums=('3b3d208d532ec9282a2b0a773a4921c1995e3ad7d0bdf37af0a15c46c089f5bc')
+sha256sums=('da68abb5e36c5546ff00903aad66da684dd1364f741cc90406a633ddf085bd57')
 
 prepare() {
     # Make AppImage executable
