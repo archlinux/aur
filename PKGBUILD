@@ -1,14 +1,16 @@
-# Maintainer: Matthew Kavanagh <matt@matthewkavanagh.us>
+# Maintainer: Matthew Kavanagh (https://github.com/mkavanagh-23)
+# Original Author: Aditya Singh (https://github.com/s-adi-dev)
 
 pkgname=nmgui
 pkgver=1.0.0  # Update this to the actual latest release version
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight GTK4-based GUI for managing Wi-Fi and network connections using NetworkManager (nmcli) under the hood."
 arch=('x86_64')
 url="https://github.com/s-adi-dev/nmgui"
 license=('GPL3')
 depends=('gtk4' 'networkmanager' 'python-gobject')
 makedepends=('git' 'nuitka' 'python-pip' 'python-virtualenv')
+optdepends=('python-nmcli: for enhanced NetworkManager integration')
 options=('!strip' '!debug') # Keep all symbols
 conflicts=('nmgui-git' 'nmgui-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -18,9 +20,16 @@ build() {
     cd "$srcdir/nmgui-${pkgver}/build"
 
     # Set up the python build environment
-    python -m venv build_env
+    python -m venv --system-site-packages build_env
     source build_env/bin/activate
-    pip install nmcli
+
+    # Check for system-installed python-nmcli
+    if ! python -c "import nmcli" 2>/dev/null; then
+      echo "Package python-nmcli not found. Installing via pip"
+      pip install nmcli
+    else
+      echo "Package python-nmcli found. Using system package"
+    fi
     export PYTHONPATH="$(python -c 'import site; print(site.getsitepackages()[0])'):$PYTHONPATH"
 
     # Build the executable binary

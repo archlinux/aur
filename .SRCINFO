@@ -1,7 +1,7 @@
 pkgbase = nmgui
 	pkgdesc = A simple and lightweight GTK4-based GUI for managing Wi-Fi and network connections using NetworkManager (nmcli) under the hood.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/s-adi-dev/nmgui
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = nmgui
 	depends = gtk4
 	depends = networkmanager
 	depends = python-gobject
+	optdepends = python-nmcli: for enhanced NetworkManager integration
 	conflicts = nmgui-git
 	conflicts = nmgui-bin
 	options = !strip
