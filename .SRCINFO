@@ -7,9 +7,10 @@ pkgbase = xlibre-video-fbdev
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
-	makedepends = xlibre-server-devel
+	makedepends = xlibre-xserver-devel
 	makedepends = X-ABI-VIDEODRV_VERSION=28.0
 	depends = glibc
+	provides = xf86-video-fbdev
 	conflicts = xf86-video-fbdev
 	conflicts = xorg-server<1.20.0
 	conflicts = X-ABI-VIDEODRV_VERSION<28
