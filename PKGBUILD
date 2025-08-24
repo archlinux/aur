@@ -2,7 +2,7 @@
 
 pkgname=nrip
 _pkg=NRip
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Safe rm with a graveyard (rm, list, prune, resurrect)'
 arch=('x86_64' 'aarch64')
@@ -11,25 +11,25 @@ license=('MIT' 'Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 provides=("nrip=${pkgver}")
-conflicts=('rip' 'rm-improved' 'rm-improved-git' 'rm-improved-bin' 'rip2-git')
+#conflicts=()
 
-source=("${_pkg}-${pkgver}.tar.gz::https://github.com/Samtroulcode/${_pkg}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d48075cc49b0877eb77af51fd561a1a13fae7ffe7b5f7214b7eeecbe3e0bb188')
+source=("${_pkg}-${pkgver}.tar.gz::https://forgejo.dirty-flix-servarr.fr/Samda/${_pkg}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c6bdcd0b110db5db717527a882f5578406251a8bbb6409fba38ab4ea069b043f')
 
 prepare() {
-  cd "$srcdir/${_pkg}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   export CARGO_HOME="$srcdir/cargo-home"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$srcdir/${_pkg}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   export CARGO_HOME="$srcdir/cargo-home"
   cargo build --frozen --release
 }
 
 package() {
-  cd "$srcdir/${_pkg}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   install -Dm0755 -t "$pkgdir/usr/bin" target/release/nrip
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m0644 LICENSE* "$pkgdir/usr/share/licenses/$pkgname/"
