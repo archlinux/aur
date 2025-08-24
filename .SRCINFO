@@ -1,0 +1,12 @@
+pkgbase = ardopcf-bin
+	pkgdesc = ardopcf is an Open-Source cross-platform implmentation of Ardop
+	pkgver = 1.0.4.1.3
+	pkgrel = 1
+	url = https://github.com/pflarue/ardop
+	arch = x86_64
+	license = MIT
+	provides = ardopcf-bin
+	source_x86_64 = ardopcf-bin-1.0.4.1.3::https://github.com/pflarue/ardop/releases/download/1.0.4.1.3/ardopcf_amd64_linux_64
+	sha256sums_x86_64 = caf256ca1138ea992323bf8c6729a06aaaacb1b62181d0a7b2abba3dffaa9ad8
+
+pkgname = ardopcf-bin
