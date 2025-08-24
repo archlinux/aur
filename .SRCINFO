@@ -1,6 +1,6 @@
 pkgbase = riptide
 	pkgdesc = Safe rm with a graveyard (rm, list, prune, resurrect)
-	pkgver = 0.6.1
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/Samtroulcode/riptide
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = riptide
 	conflicts = rm-improved-git
 	conflicts = rm-improved-bin
 	conflicts = rip2-git
-	source = riptide-0.6.1.tar.gz::https://github.com/Samtroulcode/riptide/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 7f4e75f753d04c6f006befb2ec02d732e9154a6d2cf0ae7a6e57f5f8fd2a2075
+	source = riptide-0.6.5.tar.gz::https://github.com/Samtroulcode/riptide/archive/refs/tags/v0.6.5.tar.gz
+	sha256sums = ccbe416db136020455a166bf8960e6bff1192a8140afa9be8c06cd68d566daf0
 
 pkgname = riptide
