@@ -19,10 +19,10 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib
-	make
+	cmake --build .
 }
 
 package() {
 	cd "$srcdir/build"
-	make DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir/" cmake --install .
 }
