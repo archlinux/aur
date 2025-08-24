@@ -1,16 +1,15 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
-pkgver=0.3.0
-pkgrel=5
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
 url="https://github.com/Sinedka/aniparser"
 license=('MIT')
 depends=('electron' 'nodejs')
 makedepends=('npm' 'git')
-source=("https://github.com/Sinedka/aniparser/releases/download/v$pkgver/dist-electron.tar.gz" "https://raw.githubusercontent.com/Sinedka/aniparser/refs/tags/v$pkgver/assets/icon.png")
-sha256sums=('SKIP' 'SKIP')
-
+source=("https://github.com/Sinedka/aniparser/releases/download/v$pkgver/dist-electron.tar.gz")
+sha256sums=('SKIP')
 build() {
   return 0
 }
@@ -21,8 +20,9 @@ package() {
 
   # Распаковываем архив
   tar -xzf "$srcdir/dist-electron.tar.gz" -C "$pkgdir"/usr/lib/$pkgname
+  mv "$pkgdir"/usr/lib/$pkgname/dist-electron/icon.png .
 
-  install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/aniparser.png"
+  install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/aniparser.png"
 
   # Создаём desktop entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
