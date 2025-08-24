@@ -1,6 +1,6 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
-# Maintainer: Ayatale <ayatale@qq.com>
-# Maintainer: sukanka <su975853527@gmail.com>
+# Contributor: Ayatale <ayatale@qq.com>
+# Contributor: sukanka <su975853527@gmail.com>
 
 pkgname=openlist-bin
 _pkgname=${pkgname%-bin}
