@@ -2,16 +2,19 @@
 # Maintainer: Chris Vittal <chris@vittal.dev>
 _pkgname='plink1.9'
 pkgname="$_pkgname-git"
+# Upstream has changed tag formats, epoch is necessary
+epoch=1
 _pkgver=1.9
-pkgver=1.9.r108.ga09b4443
+pkgver=1.9_b.7.11_r6_g2bd8fcdd
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 1.9"
 arch=(x86_64)
-license=(GPL3)
+license=(GPL-3.0-only)
 url="https://www.cog-genomics.org/plink/1.9/"
 source=('plink1.9::git+https://github.com/chrchang/plink-ng.git'
         'bin-name.patch')
 depends=('zlib>=1.2.4' 'cblas' 'lapack')
+makedepends=('git')
 sha256sums=(SKIP
             24f570e751f51b6ab05c29f92cad4a57b0a54b7bb4a81dd067cf1cdc1c887327)
 
@@ -34,5 +37,5 @@ package() {
 
 pkgver() {
     cd "$_pkgname"
-    echo "$_pkgver"."$(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^.*\.r/r/')"
+    echo "$_pkgver"_"$(git describe --tags --long | sed -E 's/^[^-]+-([^-]+)-([0-9]+)-(g[a-f0-9]+)/\1_r\2_\3/')"
 }
