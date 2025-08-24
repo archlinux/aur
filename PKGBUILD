@@ -2,13 +2,13 @@
 
 pkgname='cuttlefish-tool'
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Texture converter tool and library'
 arch=('i686' 'x86_64')
 url="https://github.com/akb825/Cuttlefish"
 license=('Apache')
 makedepends=('cmake' 'git' 'ispc')
-depends=('freeimage')
+depends=()
 source=()
 sha256sums=()
 
