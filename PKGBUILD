@@ -13,7 +13,7 @@ sha256sums=('ee7d9828a8acfc535255ed50c6dd1b9d1040aebc4a6eb72df853e72c65c6e7ba')
 
 build() {
     cd "$pkgname-$pkgver"
-    cmake -DCMAKE_INSTALL_PREFIX=. .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     cmake --build .
 }
 
