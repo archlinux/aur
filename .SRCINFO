@@ -1,6 +1,6 @@
 pkgbase = xpipe
 	pkgdesc = Your entire server infrastructure at your fingertips
-	pkgver = 17.4
+	pkgver = 18.0.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe
@@ -27,12 +27,12 @@ pkgbase = xpipe
 	source = logo_48x48.png
 	source = logo_256x256.png
 	source = xpipe.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	source_x86_64 = xpipe-17.4-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/17.4/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 804b78614750b66f6bd62a2685296215b2afeaf2cabe7369a7ff82d7417e1722
-	source_aarch64 = xpipe-17.4-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/17.4/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = 739d0f6c2296359ee4c2952668c52006a6c8d202a93c040fa9b69d964a17faac
+	sha256sums = 3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8
+	sha256sums = BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348
+	sha256sums = 2F29A1DB3DB8E8293E49C4BB7100FB147FDCF2DB6A21A1DC3DBCDE0A1F76ACA4
+	source_x86_64 = xpipe-18.0.1-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/18.0.1/xpipe-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6c62a2a239bf1dfb84b0a4e3f75a96ca6bdbf4ab75fd30d72c25a9f83dac021a
+	source_aarch64 = xpipe-18.0.1-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/18.0.1/xpipe-portable-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8e145d02a955f366dd1a8fbe1e687f8183b000bc4cdd1dde5fc56d2f878921c4
 
 pkgname = xpipe
