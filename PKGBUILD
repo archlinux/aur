@@ -1,5 +1,5 @@
 # Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
-# Contributor: GI_Jack <iamjacksemail@hackermail.com>
+# Contributor: Network_Jack <Network_Jack@null.net>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=sipvicious
