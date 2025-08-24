@@ -1,5 +1,6 @@
-# Maintainer: Denis Kasak <dkasak AT termina DOT org DOT uk>
-# Maintainer: Cedric Girard <cgirard.archlinux@valinor.fr>
+# Maintainer: Network Jack <Network_Jack@null.net>
+# Contributor: Denis Kasak <dkasak AT termina DOT org DOT uk>
+# Contributor: Cedric Girard <cgirard.archlinux@valinor.fr>
 # Contributor: Olivier Le Moal <mail at olivierlemoal dot fr>
 # Contributor: Dawid Wrobel <cromo@klej.net>
 # Contributor: Sébastien Duquette <ekse.0x@gmail.com>
@@ -7,12 +8,12 @@
 
 pkgname=wfuzz
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to bruteforce web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
 arch=('any')
 license=('GPL')
-depends=('python-pycurl' 'python-pyparsing' 'python-chardet' 'python-six')
+depends=('python-pycurl' 'python-pyparsing' 'python-chardet' 'python-six' 'python-legacy-cgi')
 makedepends=('python-setuptools' 'python-sphinx')
 source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz"
         setup.py.diff)
