@@ -3,18 +3,23 @@
 pkgbase=xsane-git
 pkgname=('xsane-git' 'xsane-gimp-git')
 _gitname=xsane
-pkgver=0.999.r89.gfee5f42
+pkgver=0.999.r319.g87edc38
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/sane-project/frontend/xsane"
 license=('GPLv2')
-makedepends=('gtk2' 'lcms2' 'sane' 'zlib' 'libjpeg' 'gimp')
+makedepends=('autoconf' 'automake' 'gtk3' 'lcms2' 'sane' 'zlib' 'libjpeg' 'gimp')
 source=(git+https://gitlab.com/sane-project/frontend/$_gitname.git)
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+  autoreconf -fiv
 }
 
 build() {
@@ -40,7 +45,7 @@ build() {
 
 package_xsane-git() {
   pkgdesc="A GTK-based X11 frontend for SANE and plugin for Gimp. Git version."
-  depends=('gtk2' 'lcms2' 'sane' 'zlib' 'libjpeg')
+  depends=('gtk3' 'lcms2' 'sane' 'zlib' 'libjpeg')
   optdepends=('xsane-gimp: for gimp plugin support')
   conflicts=('xsane')
   provides=('xsane')
@@ -58,8 +63,9 @@ package_xsane-gimp-git() {
   cd "$srcdir/$_gitname"
   install -D -m755 src/xsane-gimp "$pkgdir/usr/bin/xsane-gimp"
 
-  ## Link the plugin binary to gimp plug-in directory
+  ## Link the plugin binary to gimp plug-in directories
   mkdir -p "$pkgdir/usr/lib/gimp/2.0/plug-ins"
   ln -sf /usr/bin/xsane-gimp "$pkgdir"/usr/lib/gimp/2.0/plug-ins/xsane
+  mkdir -p "$pkgdir/usr/lib/gimp/3.0/plug-ins"
+  ln -sf /usr/bin/xsane-gimp "$pkgdir"/usr/lib/gimp/3.0/plug-ins/xsane
 }
-
