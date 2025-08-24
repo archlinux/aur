@@ -1,0 +1,27 @@
+post_install() {
+    printf "The database needs to be set up.\n"
+    printf "First, we need to create a user and database:\n"
+    printf "sudo -u postgres psql"
+	printf ">>> CREATE DATABASE sharkey WITH ENCODING = 'UTF8';\n"
+    printf ">>> CREATE USER sharkey WITH ENCRYPTED PASSWORD '{YOUR_PASSWORD}';\n"
+    printf "\nThen grant privileges:\n"
+    printf ">>> GRANT ALL PRIVILEGES ON DATABASE sharkey TO sharkey;\n"
+    printf ">>> ALTER DATABASE sharkey OWNER TO sharkey;\n"
+    printf ">>> \q\n"
+    printf "\nNow, create the schema:\n"
+    printf ">>> sudo -u sharkey bash\n"
+    printf ">>> cd ~/Sharkey\n"
+    printf ">>> pnpm run init\n"
+    printf "\nFinally, make sure that valkey is running."
+    printf "Then you should be good to start Sharkey."
+}
+
+pre_upgrade() {
+    systemctl stop sharkey.service
+}
+
+post_upgrade() {
+    printf "The database needs to be migrated:\n"
+    printf "sudo -u sharkey bash; cd ~/Sharkey\n"
+    printf ">>> pnpm run migrate"
+}

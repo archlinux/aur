@@ -1,0 +1,18 @@
+[Unit]
+Description=Sharkey daemon
+
+[Service]
+Type=simple
+User=sharkey
+ExecStart=/usr/bin/pnpm start
+WorkingDirectory=/var/lib/sharkey/Sharkey
+Environment="NODE_OPTIONS=--max-old-space-size=8192"
+Environment="NODE_ENV=production"
+TimeoutSec=60
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sharkey
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

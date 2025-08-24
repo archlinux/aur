@@ -1,0 +1,3 @@
+u sharkey - "Sharkey User" /var/lib/sharkey /bin/false
+g sharkey -
+m sharkey sharkey

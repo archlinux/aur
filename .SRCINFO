@@ -1,0 +1,26 @@
+pkgbase = sharkey
+	pkgdesc = A Sharkish microblogging platform
+	pkgver = 2025.4.4
+	pkgrel = 1
+	url = https://activitypub.software/TransFem-org/Sharkey
+	install = sharkey.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL
+	depends = npm
+	depends = pnpm
+	depends = postgresql
+	depends = valkey
+	depends = ffmpeg
+	depends = python
+	depends = pango
+	provides = sharkey
+	backup = var/lib/sharkey/Sharkey/.config/default.yml
+	source = sharkey.sysusers
+	source = sharkey.tmpfiles
+	source = sharkey.service
+	sha512sums = 73bf054122fc6a0372deee3f0613f3432bc59c6a55e30277a9e202de325af1150b8f491877a5792e38d5a61c56a34d6cf88b8396b4989f5ddafc64ad59ecc91c
+	sha512sums = a02f0f29a216d43671f795faa99cfc72413173d7e3977e247f1d1cea0421a3b6d435300cc5e7c66ea2fab3581f7749ab9cf967c205ff1d6869b6408c04e6b394
+	sha512sums = 6f6f20b017191f452081051a279eda28ad938bf1a46ffa29377fcd4c059240f52e070a95a6facff10115e672c69971b122df1c739361364741779b30c46f408c
+
+pkgname = sharkey
