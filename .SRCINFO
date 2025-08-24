@@ -1,0 +1,20 @@
+pkgbase = pkedit-qt-git
+	pkgdesc = QT GUI frontend utilizing libpkedit
+	pkgver = r6.e8b61d2
+	pkgrel = 1
+	url = https://codeberg.org/ramenu/pkedit-qt
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = make
+	depends = glibc
+	depends = libpkedit
+	depends = qt6-base
+	provides = pkedit-qt
+	conflicts = pkedit-qt
+	source = pkedit-qt::git+https://codeberg.org/ramenu/pkedit-qt
+	b2sums = SKIP
+
+pkgname = pkedit-qt-git
