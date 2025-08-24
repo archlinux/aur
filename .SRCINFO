@@ -1,0 +1,17 @@
+pkgbase = bomdia-git
+	pkgver = r11.e73eda7
+	pkgrel = 1
+	url = https://codeberg.org/Phosphenius/bomdia
+	arch = any
+	license = AGPL
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python>=3.13
+	conflicts = bomdia
+	source = git+https://codeberg.org/Phosphenius/bomdia.git
+	sha256sums = SKIP
+
+pkgname = bomdia-git
