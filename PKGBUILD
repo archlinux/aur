@@ -1,4 +1,4 @@
-# Maintainer: Ante Laurijssen	<antelaurijssen@gmail.com>
+# Maintainer: va2bbw <antelaurijssen@gmail.com>
 
 pkgname=linpac-git
 pkgver=0.28
