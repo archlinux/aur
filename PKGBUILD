@@ -6,7 +6,7 @@ pkgver=1.33.0
 pkgrel=2
 pkgdesc="A continuation of the heavily modified F-Chat Rising client. Uses system electron."
 url="https://github.com/Fchat-Horizon/Horizon"
-license=('MIT')
+license=('GPL-3.0')
 arch=('x86_64')
 
 depends=(
