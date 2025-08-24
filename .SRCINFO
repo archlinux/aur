@@ -9,5 +9,7 @@ pkgbase = hfc
 	makedepends = make
 	depends = curl
 	depends = ncurses
+	source = git+https://aur.archlinux.org/hfc.git
+	md5sums = SKIP
 
 pkgname = hfc
