@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r69105.a9bb87742f9
+pkgver=r69106.e3a11c594f9d
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -117,9 +117,8 @@ prepare() {
 
   rm -rf system/certs # remove not needed cacert
   
-  # https://github.com/xbmc/xbmc/issues/27164
-  git stash
-  git pull --no-edit --rebase origin pull/27165/head
+  #git stash
+  #git pull --no-edit --rebase origin pull/27165/head
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
