@@ -4,7 +4,7 @@
 
 pkgname=calibre-web
 pkgver=0.6.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
@@ -47,21 +47,14 @@ makedepends=(
 provides=('calibre-web')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/janeczku/calibre-web/archive/${pkgver}.tar.gz"
-  'sqlalchemy.patch'
   'calibre-web.service'
   'calibre-web.sysusers'
   'calibre-web.tmpfiles'
 )
 sha256sums=('68d42fee4800f8ed0220d5da50e703f028874a5f0c3870c50ab50e566bb63f24'
-            'e109ad7b1778582f740b38148c4518cc556f3e032efa3b2e9b6ff2af19a70f31'
             '216c5443424aa9b38b71c53186d0369d2eacd2cb03d742e01c881ab7bac9ea2d'
             'b5d6c225761244b6c698af0279c9501bb9514e3e2a5151ca6e3212a4f5d0d76a'
             '82fae88cbed6d69e5a04586293de81bdc55994a4fe003178c39b5a35f2c87c1a')
-
-# Remove once https://github.com/janeczku/calibre-web/commit/6cb1449ff31c8eb3b2b239517d79fbd9eb481447 is released.
-prepare() {
-  patch -d $pkgname-$pkgver -Np0 -i ../sqlalchemy.patch
-}
 
 package() {
   cd $pkgname-$pkgver
