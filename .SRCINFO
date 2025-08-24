@@ -9,7 +9,7 @@ pkgbase = elephant-symbols
 	makedepends = go
 	provides = elephant-symbols
 	conflicts = elephant-symbols
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-4.tar.gz
-	sha256sums = 20529c42d90448496533d408c6ed09ba93221b7badf61ade8859ff033a75830f
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-5.tar.gz
+	sha256sums = 1c324928dcfe81299a59420276113df7738965659322b6762cfbd619d1b0eb5c
 
 pkgname = elephant-symbols
