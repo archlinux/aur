@@ -10,15 +10,15 @@ license=('MIT')
 makedepends=('go')
 conflicts=('elephant-runner')
 provides=('elephant-runner')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-4.tar.gz")
-sha256sums=('20529c42d90448496533d408c6ed09ba93221b7badf61ade8859ff033a75830f')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-5.tar.gz")
+sha256sums=('1c324928dcfe81299a59420276113df7738965659322b6762cfbd619d1b0eb5c')
 
 build() {
-    cd elephant-${pkgver}-beta-4/internal/providers/runner
+    cd elephant-${pkgver}-beta-5/internal/providers/runner
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-4/internal/providers/runner
+    cd elephant-${pkgver}-beta-5/internal/providers/runner
     install -Dm 755 runner.so -t "${pkgdir}/etc/xdg/elephant/providers"
 }
