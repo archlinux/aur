@@ -7,7 +7,7 @@ url="https://git.marlonivo.com/hfc/log.html"
 license=('MIT')
 depends=('curl' 'ncurses')
 makedepends=('gcc' 'make')
-source=("hfc::git+git://git.marlonivo.com/hfc/log.html")
+source=("git+git://git.marlonivo.com/hfc")
 md5sums=('SKIP')
 
 build() {
@@ -16,14 +16,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-
-    # Binaryfile
-    install -Dm755 hfc "$pkgdir/usr/bin/hfc"
-
-    # Manpage
-    install -Dm644 hfc.1 "$pkgdir/usr/share/man/man1/hfc.1"
-
-    # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$pkgname"
+  install -Dm755 hfc "$pkgdir/usr/bin/hfc"
+  install -Dm644 hfc.1 "$pkgdir/usr/share/man/man1/hfc.1"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

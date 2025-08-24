@@ -1,15 +1,10 @@
 pkgbase = hfc
-	pkgdesc = hfc - hosts file client
-	pkgver = 0.0.1
-	pkgrel = 1
-	url = https://git.marlonivo.com/hfc
-	arch = x86_64
-	license = MIT
-	makedepends = gcc
-	makedepends = make
-	depends = curl
-	depends = ncurses
-	source = hfc::git+git://git.marlonivo.com/hfc
-	md5sums = SKIP
-
-pkgname = hfc
+pkgdesc = Hosts file client
+pkgver = 0.0.1
+pkgrel = 1
+url = https://git.marlonivo.com/hfc
+arch = x86_64
+license = MIT
+makedepends = git
+source = git+git://git.marlonivo.com/hfc
+md5sums = SKIP
