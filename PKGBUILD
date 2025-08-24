@@ -5,7 +5,7 @@ pkgname="$_pkgname-git"
 # Upstream has changed tag formats, epoch is necessary
 epoch=1
 _pkgver=1.9
-pkgver=1.9_b.7.11_r6_g2bd8fcdd
+pkgver=1.9.b.7.11.r6_g2bd8fcdd
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 1.9"
 arch=(x86_64)
@@ -37,5 +37,5 @@ package() {
 
 pkgver() {
     cd "$_pkgname"
-    echo "$_pkgver"_"$(git describe --tags --long | sed -E 's/^[^-]+-([^-]+)-([0-9]+)-(g[a-f0-9]+)/\1_r\2_\3/')"
+    echo "$_pkgver"."$(git describe --tags --long | sed -E 's/^[^-]+-([^-]+)-([0-9]+)-(g[a-f0-9]+)/\1.r\2_\3/')"
 }
