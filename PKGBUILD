@@ -30,7 +30,10 @@ check() {
     -vv
   )
   cd "$srcdir"/$_name-$pkgver
-  PYTHONPATH=$PWD/src UV_PYTHON_PREFERENCE=only-system pytest "${pytest_options[@]}" tests
+  python -m venv --system-site-packages test-env
+  ln -s /usr/bin/ruff test-env/bin/ruff
+  test-env/bin/python -m installer dist/*.whl
+  UV_PYTHON_PREFERENCE=only-system test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
