@@ -5,7 +5,7 @@
 
 _pkgname='github-desktop-plus'
 pkgname="${_pkgname}-bin"
-pkgver=3.5.3
+pkgver=3.5.3.2
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements (binary release)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -39,19 +39,24 @@ sha256sums=(
     'ef93d32f46b31818ffea85959f5ac67353df2c4da351b273108765b80c7f080d'
     '2fb026db6ac25ade0535ec1fffec415fd1d023fbfd28b452f29523e51921083a'
 )
-sha256sums_x86_64=('67f5df2b69a55e30d6b00cc1aab8202c4cde55c4f4253a27331950908e4473af')
-sha256sums_aarch64=('989e2f6d2413e77e6aa4ae0add31f8fbf10dbb6215a4f4f85f13efd79df2a742')
-sha256sums_armv7h=('e4090281cb2a7e74790ae9bebc46192d854931925093dc7e6842ad6561c78b6b')
+sha256sums_x86_64=('ec46c6be0b33c9d41d1483b5a4fc84c88880f17da9e452c40accb643635ba091')
+sha256sums_aarch64=('01ec9ba3f5ef1498ffae14b8fb06634280a9d5550532480158f78e8f9c4e87a1')
+sha256sums_armv7h=('1e5a46a1ee1fa978fa71a49ecb00f4922d6df615a1794f75e63ccd2191f98edd')
 package() {
-    tar --zstd -xf data.tar.zst -C "${pkgdir}"
-    install -d "${pkgdir}/opt/${_pkgname}"
+    INSTALL_DIR="$pkgdir/opt/${_pkgname}"
 
-    mv "${pkgdir}/usr/lib/github-desktop-plus/"* "${pkgdir}/opt/${_pkgname}/"
-    rmdir "${pkgdir}/usr/lib/github-desktop-plus"
-    rmdir "${pkgdir}/usr/lib"
+    tar --zstd -xf data.tar.zst -C "$pkgdir"
+    install -d "$INSTALL_DIR"
 
-    rm "${pkgdir}/usr/share/applications/github-desktop-plus.desktop"
-    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "$pkgdir/usr/lib/github-desktop-plus/"* "$INSTALL_DIR/"
+    rmdir "$pkgdir/usr/lib/github-desktop-plus"
+    rmdir "$pkgdir/usr/lib"
+
+    rm "$pkgdir/usr/share/applications/github-desktop-plus.desktop"
+    install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
     install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/${_pkgname}"
+
+    chmod +x "$INSTALL_DIR/resources/app/static/github"
+    ln -s "$INSTALL_DIR/resources/app/static/github" "$pkgdir/usr/bin/github-desktop-plus-cli"
 }
