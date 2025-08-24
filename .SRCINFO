@@ -1,0 +1,16 @@
+pkgbase = loderunner-ng
+	pkgdesc = Classic Lode Runner game remake
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/vchimishuk/loderunner-ng
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	source = https://github.com/vchimishuk/loderunner-ng/archive/refs/tags/0.1.4.tar.gz
+	sha256sums = ee7d9828a8acfc535255ed50c6dd1b9d1040aebc4a6eb72df853e72c65c6e7ba
+
+pkgname = loderunner-ng
