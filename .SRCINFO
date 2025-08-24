@@ -1,6 +1,6 @@
 pkgbase = gopher64
 	pkgdesc = A Nintendo64 emulator
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/gopher64/gopher64/
 	arch = x86_64
@@ -47,10 +47,10 @@ pkgbase = gopher64
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = vulkan-icd-loader
-	source = git+https://github.com/gopher64/gopher64.git#tag=v1.1.4
+	source = git+https://github.com/gopher64/gopher64.git#tag=v1.1.5
 	source = git+https://github.com/gopher64/parallel-rdp-standalone.git
 	source = gopher64.desktop
-	sha256sums = 1a4b59de20b7d18e8bf6880b6ac3fc821c58c054dd15873ea81bf5e7b17d8ac9
+	sha256sums = 6c5601ee85d92bafa6d52915355cc9c20a26f1afda8ccd82acbd26cff9be98ff
 	sha256sums = SKIP
 	sha256sums = 9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10
 
