@@ -3,8 +3,8 @@
 # Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=calibre-web
-pkgver=0.6.24
-pkgrel=4
+pkgver=0.6.25
+pkgrel=1
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
@@ -52,7 +52,7 @@ source=(
   'calibre-web.sysusers'
   'calibre-web.tmpfiles'
 )
-sha256sums=('65d06505765e9a48c02451437e39afab3e7deb7bb13a705359ea271e32990cc8'
+sha256sums=('68d42fee4800f8ed0220d5da50e703f028874a5f0c3870c50ab50e566bb63f24'
             'e109ad7b1778582f740b38148c4518cc556f3e032efa3b2e9b6ff2af19a70f31'
             '216c5443424aa9b38b71c53186d0369d2eacd2cb03d742e01c881ab7bac9ea2d'
             'b5d6c225761244b6c698af0279c9501bb9514e3e2a5151ca6e3212a4f5d0d76a'
