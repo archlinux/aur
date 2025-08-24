@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network_Jack <Network_Jack@null.net>
 
 _plugin_name=foxyproxy
 _plugin_version=9.2
