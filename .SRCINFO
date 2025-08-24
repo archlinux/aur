@@ -11,6 +11,6 @@ pkgbase = clip-transfer-bin
 	provides = clip-transfer
 	conflicts = clip-transfer
 	source = https://github.com/Evr5/ClipTransfer/releases/download/v1.1.0/clip-transfer-linux.tar.gz
-	sha256sums = a885e63c92bea142b4060c1b1fb53731a74d8b87740450f08ed05a67d966d5a6
+	sha256sums = b6edc04e662303a230d87a4ce67cf4c0e85d00943953f8c554448b244f35ff7f
 
 pkgname = clip-transfer-bin
