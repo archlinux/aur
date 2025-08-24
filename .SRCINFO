@@ -11,9 +11,9 @@ pkgbase = 7k-ambition
 	depends = desktop-file-utils
 	depends = enet
 	depends = gcc-libs
-	depends = sdl2
-	depends = boost
-	optdepends = 7k-ambition-music: for ingame music
+	depends = sdl2>=2.0.4
+	depends = boost>=1.74
+	optdepends = 7k-ambition-music>=3.0.0: for ingame music
 	source = https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v3.2.2.tar.gz
 	source = 7k-ambition.sh
 	source = 7k-ambition.desktop
