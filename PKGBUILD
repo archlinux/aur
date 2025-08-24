@@ -1,6 +1,4 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
-# Contributor: Kewl <xrjy@nygb.rh.bet(rot13)>
-
 pkgname=python-pandas_market_calendars-git
 _pkgname=pandas_market_calendars-git
 pkgver=r878.aa77dfa
