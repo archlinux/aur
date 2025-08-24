@@ -1,4 +1,4 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Network_Jack <Network_Jack@null.net>
 
 pkgname=python-bloodhound
 _pkgname=bloodhound
