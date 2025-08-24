@@ -34,17 +34,17 @@ source=(
   "MapleMonoNormal-Variable-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMonoNormal-Variable.zip"
   "MapleMonoNormal-Woff2-$pkgver.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMonoNormal-Woff2.zip"
 )
-sha256sums=('6ee1638126b1d4064dc1db31abbcc2e25297c3fb5b79b9ea213c7f234846f9a8'
-            '000e6b476a8677665728a35a79e43869454cfbdc576e263f1058bd620a81317d'
-            'd3eee9ae7b04fb70c8f035435a580605320aa533e876bda67916b66f6c736a7e'
-            '947b79da06fcdaf6c14fcee346799f8ba99a618e220961c42ebb2191f30c8005'
-            '72591bd191ae67c3a1d6991d7bcba6bf4ea42d9fedf4e95afd51b44abb7dd1f2'
-            'd2a358e43c24450e40a17a075770fcbc73a678db93b6cfa5a3f9ea047b1e2a7c'
-            'd20627cb628a60fce4618ef19e9520e81abff7a34ec086b4ec46dc7339a7fdaa'
-            'dddbe4cb8f86c3cb0167af2acd50e474627bab8cf2c80a4f4aada73932ba5a53'
-            '9b7d07b5645a82ae4cea1797a1d2530ab4fdfb82b3fa6914bfa33ac70f31494d'
-            '17c7baf8ec9d73797e07030b513288fd60019e143669a30cb0cf0c174ee412da'
-            'e49d0bcbe7152f6f48ec2946381def451ae0d82662e0034aa8cb683b14af9e17')
+sha256sums=('5fa727602a7657ba4d2f179813b066c509dc39f7ace959784d3a4e35bd74c6b2'
+            '16666dd3a6604564d17a618ccf19108d4f41dba15242c0055cb73c6ff1efd4aa'
+            'b9124425591ca00c8af3957bf3c514dbd47d947f55bb0f516ecaeb4843b374c5'
+            '9d710d8b30496b00ff520ad850d3fd994f26da6b7d287d92cbabd079714e98d2'
+            'a880d800bbc7073f20dd5e3f8da540133e592207cd4a42eaad5bff013ea944f3'
+            'c5602155097dc6c2974c958d09f3c1515ea07478667fd59452b0189367ab4ccd'
+            '114e3f76f511ebc2da33f8dee352325d34320f1ae82544d0e86be471a4c7b12c'
+            '37b0ccea7cd8462db3197325bdcf459b071630bbc2d5bab50142f3b19bb473d1'
+            '1d1cb45b7b2b1b33b9e3f571164fbbaba9b48971477228b8efe4dcc73d919332'
+            '084d571afd0095b5d15bdb91cd728de297101ea2b882da0e43260b3374b8419a'
+            'b54be1b1cc67f6bf0ff034893cc46699484807b3b0bf97c8ddf60260fdc25ad8')
 noextract=(
   "MapleMonoNormal-CN-unhinted-$pkgver.zip"
   "MapleMonoNormal-CN-$pkgver.zip"
