@@ -1,0 +1,18 @@
+pkgbase = wlhc
+	pkgdesc = Wayland hot corners
+	pkgver = r.5fad1ca
+	pkgrel = 1
+	url = https://git.sr.ht/~whynothugo/wlhc
+	arch = any
+	license = custom:wlhc
+	makedepends = wayland-protocols
+	makedepends = wlr-protocols
+	makedepends = hare-wayland
+	makedepends = hare-ev
+	depends = wayland-compositor
+	source = git+https://git.sr.ht/~whynothugo/wlhc
+	source = wlhc.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = wlhc

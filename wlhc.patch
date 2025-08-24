@@ -1,0 +1,11 @@
+--- ./main.ha	2025-08-24 14:19:11.082635706 +0400
++++ ./src/wlhc/main.ha	2025-08-24 04:13:31.956162625 +0400
+@@ -413,7 +413,7 @@
+ fn execute(state: *state) void = {
+ 	let cmd = exec::cmd(state.cmd, state.args...)!;
+ 	if (state.exec) {
+-		exec::exec(&cmd);
++		let result = exec::exec(&cmd);
+ 	} else {
+ 		exec::start(&cmd)!;
+ 	};
