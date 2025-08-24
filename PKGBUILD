@@ -6,7 +6,7 @@
 
 _pkgname=gtkam
 pkgname="${_pkgname}-git"
-pkgver=1.1+2.r959.20250810.28affed
+pkgver=1.1+3.r960.20250812.3526c71
 pkgrel=1
 pkgdesc="A GTK frontend for libgphoto2. Latest git checkout."
 url="http://gphoto.sourceforge.net/proj/gtkam"

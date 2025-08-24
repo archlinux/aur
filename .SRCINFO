@@ -1,6 +1,6 @@
 pkgbase = gtkam-git
 	pkgdesc = A GTK frontend for libgphoto2. Latest git checkout.
-	pkgver = 1.1+2.r959.20250810.28affed
+	pkgver = 1.1+3.r960.20250812.3526c71
 	pkgrel = 1
 	url = http://gphoto.sourceforge.net/proj/gtkam
 	arch = i686
@@ -42,7 +42,7 @@ pkgbase = gtkam-git
 	depends = libexif-gtk
 	depends = libgphoto2.so
 	depends = libgdk_pixbuf-2.0.so
-	provides = gtkam=1.1+2.r959.20250810.28affed
+	provides = gtkam=1.1+3.r960.20250812.3526c71
 	conflicts = gtkam
 	source = gtkam::git+https://github.com/gphoto/gtkam.git
 	sha256sums = SKIP
