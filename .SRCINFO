@@ -1,15 +1,15 @@
 pkgbase = genpw
 	pkgdesc = Minimal password generator for Linux using /dev/urandom
 	pkgver = 0.0.3
-	pkgrel = 1
-	url = https://github.com/fk29g/genpw
+	pkgrel = 2
+	url = https://git.sr.ht/~nicknb/genpw
 	arch = any
 	license = GPL-3.0-or-later
 	optdepends = xclip: for copying passwords to clipboard on X11
 	optdepends = wl-clipboard: for copying passwords to clipboard on Wayland
 	provides = genpw
 	conflicts = genpw
-	source = genpw-0.0.3.tar.gz::https://github.com/fk29g/genpw/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = 3cdebbe8a545d1d9e8a49988c32259294a5ef767f7e3a69d366f08ccae8c3485
+	source = genpw-0.0.3.tar.gz::https://git.sr.ht/~nicknb/genpw/archive/v0.0.3.tar.gz
+	sha256sums = 427cdc3b4393444c0e25ce12a62d1169773c1afe115ab3c4b4c11d457bda5829
 
 pkgname = genpw
