@@ -1,8 +1,9 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Expertcoderz <$(rev <<<moc.liamg@xzredoctrepxe)>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=buildroot-meta
-pkgver=2023.11
+pkgver=2025.08
 pkgrel=1
 pkgdesc="dependency requirements for buildroot"
 arch=('any')
@@ -28,6 +29,7 @@ depends=(
   'file'
   'bc'
   'findutils'
+  'awk'
   # Source fetching tools
   'wget'
 )
@@ -68,4 +70,6 @@ optdepends=(
   'graphviz: graph-depends & <pkg>-graph-depends'
   'python-matplotlib: graph-build'
 
+  # Package statistics tools
+  'python-aiohttp: pkg-stats'
 )

@@ -1,6 +1,6 @@
 pkgbase = buildroot-meta
 	pkgdesc = dependency requirements for buildroot
-	pkgver = 2023.11
+	pkgver = 2025.08
 	pkgrel = 1
 	url = https://buildroot.org/downloads/manual/manual.html#requirement
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = buildroot-meta
 	depends = file
 	depends = bc
 	depends = findutils
+	depends = awk
 	depends = wget
 	optdepends = python
 	optdepends = ncurses: to use the menuconfig interface
@@ -43,5 +44,6 @@ pkgbase = buildroot-meta
 	optdepends = dblatex: pdf manual
 	optdepends = graphviz: graph-depends & <pkg>-graph-depends
 	optdepends = python-matplotlib: graph-build
+	optdepends = python-aiohttp: pkg-stats
 
 pkgname = buildroot-meta
