@@ -1,0 +1,17 @@
+pkgbase = quickgrab-git
+	pkgdesc = A simple GUI screenshot utility with direct access to OCR and QR code/barcode decoding.
+	pkgver = r20.f3bd86c
+	pkgrel = 1
+	url = https://github.com/xkero/quickgrab
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = grim
+	optdepends = tesseract: OCR function
+	optdepends = zbar: QR & barcode decoding
+	source = quickgrab-git::git+https://github.com/xkero/quickgrab.git
+	sha256sums = SKIP
+
+pkgname = quickgrab-git
