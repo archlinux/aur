@@ -1,10 +1,10 @@
 # Maintainer: Ja4e <Jakie101@proton.me>
 pkgname=lyrus-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python lyrics player for cmus"
 arch=('any')
-url="https://github.com/Ja4e/lyrus"
+url="https://github.com/Ja4e/Lyrus"
 license=('MIT')
 
 depends=(
@@ -17,13 +17,14 @@ depends=(
 )
 
 optdepends=(
-    'python-mpd2: optional mpd support'
+    'python-mpd2: optional mpd support (allows local)'
+    'playerctl: optional MPRIS support (for other)'
 )
 
 makedepends=('git')
 provides=("lyrus")
 conflicts=("lyrus")
-source=("lyrus::git+https://github.com/Ja4e/lyrus.git")
+source=("lyrus::git+https://github.com/Ja4e/Lyrus.git")
 sha256sums=('SKIP')
 
 package() {
@@ -32,4 +33,5 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README"
 }
+
 
