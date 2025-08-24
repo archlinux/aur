@@ -1,10 +1,12 @@
 pkgbase = xsane-git
-	pkgver = 0.999.r89.gfee5f42
+	pkgver = 0.999.r319.g87edc38
 	pkgrel = 1
 	url = https://gitlab.com/sane-project/frontend/xsane
 	arch = x86_64
 	license = GPLv2
-	makedepends = gtk2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gtk3
 	makedepends = lcms2
 	makedepends = sane
 	makedepends = zlib
@@ -15,7 +17,7 @@ pkgbase = xsane-git
 
 pkgname = xsane-git
 	pkgdesc = A GTK-based X11 frontend for SANE and plugin for Gimp. Git version.
-	depends = gtk2
+	depends = gtk3
 	depends = lcms2
 	depends = sane
 	depends = zlib
@@ -30,4 +32,3 @@ pkgname = xsane-gimp-git
 	depends = gimp
 	provides = xsane-gimp
 	conflicts = xsane-gimp
-
