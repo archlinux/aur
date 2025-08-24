@@ -1,14 +1,16 @@
-# Maintainer: Matthew Kavanagh <matt@matthewkavanagh.us>
+# Maintainer: Matthew Kavanagh (https://github.com/mkavanagh-23)
 
 pkgname=mattkavs-git
-pkgver=r16.de4f43a  # Will be overwritten by pkgver()
-pkgrel=1
+pkgver=r46.659fe42  # Will be overwritten by pkgver()
+pkgrel=2
 options=('!debug')
 pkgdesc="A personal collection of useful functions and utilities (latest git)"
 arch=('x86_64')
 url="https://github.com/mkavanagh-23/MattKavs"
 license=('MIT')
 depends=()
+provides=('mattkavs')
+conflicts=('mattkavs')
 makedepends=('cmake' 'git' 'catch2')
 source=("git+${url}.git#branch=main")
 sha256sums=('SKIP')

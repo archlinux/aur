@@ -1,13 +1,15 @@
 pkgbase = mattkavs-git
 	pkgdesc = A personal collection of useful functions and utilities (latest git)
-	pkgver = r16.de4f43a
-	pkgrel = 1
+	pkgver = r46.659fe42
+	pkgrel = 2
 	url = https://github.com/mkavanagh-23/MattKavs
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	makedepends = catch2
+	provides = mattkavs
+	conflicts = mattkavs
 	options = !debug
 	source = git+https://github.com/mkavanagh-23/MattKavs.git#branch=main
 	sha256sums = SKIP
