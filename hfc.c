@@ -67,16 +67,17 @@
 /* 33.00 */ int main(int argc, char *argv[]);
 
 /* variables */
-int domain_count              = 0;
-int footer_busy               = 0;
-int in_help_mode              = 0;
-int highlight                 = 0;
-int updates_count             = 0;
-int entry_count               = 0;
-int keybinding_count          = 0;
-int is_checking               = 1;
-volatile int update_progress = -1;
-int selected[MAX_ENTRIES]   = {0};
+int domain_count               = 0;
+int footer_busy                = 0;
+int in_help_mode               = 0;
+int highlight                  = 0;
+int updates_count              = 0;
+int entry_count                = 0;
+int keybinding_count           = 0;
+int is_checking                = 1;
+volatile int update_progress  = -1;
+int is_updating[MAX_ENTRIES] = {0};
+int selected[MAX_ENTRIES]    = {0};
 int update_pipe[2];
 int updates_counts[MAX_ENTRIES];
 int domains_counts[MAX_ENTRIES];
@@ -552,6 +553,59 @@ load_counts(void)
 	}
 }
 
+static void
+background_count_entry(int index)
+{
+	is_updating[index] = 1;
+
+	pid_t pid = fork();
+	if (pid == 0) {
+		setsid();
+		signal(SIGHUP, SIG_IGN);
+		signal(SIGPIPE, SIG_IGN);
+
+		fclose(stdin);
+		fclose(stdout);
+		fclose(stderr);
+
+		create_fetch_lock(index);
+
+		long new_size = get_remote_content_length(entries[index]);
+		if (new_size <= 0) {
+			remove_index_from_lock(index);
+			_exit(1);
+		}
+
+		if (new_size == remote_sizes[index]) {
+			domains_counts[index] = updates_counts[index];
+			updates_counts[index] = domains_counts[index];
+		} else {
+			char error_msg[CURL_ERROR_SIZE] = {0};
+			char *content = download_url(entries[index], error_msg, sizeof(error_msg));
+			if (!content) {
+				remove_index_from_lock(index);
+				_exit(1);
+			}
+
+			int count = count_hosts_in_content(content);
+			domains_counts[index] = count;
+			updates_counts[index] = count;
+			free(content);
+		}
+
+		remote_sizes[index] = new_size;
+		save_count_for_index(index);
+
+		remove_index_from_lock(index);
+
+		if (update_pipe[1] != -1) {
+			write(update_pipe[1], &index, sizeof(int));
+		}
+
+		_exit(0);
+	}
+}
+
 /* 12.00 */ static void
 update_all_sources(void)
 {
@@ -567,29 +621,36 @@ update_all_sources(void)
 		return;
 	}
 
-	/* skips personal lists */
 	for (i = 0; i < entry_count; i++) {
-		if (!is_local_entry(entries[i])) {
+		if (!is_local_entry(entries[i]) && updates_counts[i] != -1)
 			total++;
-		}
 	}
+
+	int old_highlight = highlight;
 
 	for (i = 0; i < entry_count; i++) {
 		if (is_local_entry(entries[i]))
 			continue;
 
 		if (domains_counts[i] == -1 || updates_counts[i] == -1)
-			continue; /* skip lists in fetch.lock */
+			continue;
 
 		current++;
 		update_progress = i;
+
+		display_entries(highlight);
 		print_footer("(%d/%d) loading %s", current, total, entries[i]);
-		update_domain_count(i);
+		refresh();
+
+		background_count_entry(i);
 	}
 
 	update_progress = -1;
+	highlight = old_highlight;
+
 	save_counts();
 	display_entries(highlight);
+	refresh();
 }
 
 /* 13.00 */ static void
@@ -608,21 +669,28 @@ update_selected_sources(void)
 			total++;
 	}
 
+	int old_highlight = highlight;
+
 	for (i = 0; i < entry_count; i++) {
 		if (!selected[i] || is_local_entry(entries[i]))
 			continue;
 
 		current++;
 		update_progress = i;
-		print_footer("(%d/%d) updating %s", current, total, entries[i]);
-		update_domain_count(i);
+
+		display_entries(highlight);
+		print_footer("(%d/%d) loading %s", current, total, entries[i]);
+		refresh();
+
+		background_count_entry(i);
 	}
 
 	update_progress = -1;
-	save_counts();
-	display_entries(highlight);
-}
+	highlight = old_highlight;
 
+	display_entries(highlight);
+	refresh();
+}
 
 /* 14.00 */ static void
 update_domain_count(int index)
@@ -645,7 +713,9 @@ update_domain_count(int index)
 		if (!content)
 			return;
 
-		updates_counts[index] = count_hosts_in_content(content);
+		int count = count_hosts_in_content(content);
+		updates_counts[index] = count;
+		domains_counts[index] = count;
 		remote_sizes[index] = new_size;
 
 		free(content);
@@ -755,13 +825,13 @@ display_entries(int highlight)
 
 		if (selected_count > 0) {
 			mvprintw(0, right_col, "*%d | %d/%d",
-					 selected_count,
+					selected_count,
 			(entry_count == 0) ? 0 : highlight + 1,
-					 entry_count);
+					entry_count);
 		} else {
 			mvprintw(0, right_col, "   | %d/%d",
-					 (entry_count == 0) ? 0 : highlight + 1,
-					 entry_count);
+					(entry_count == 0) ? 0 : highlight + 1,
+					entry_count);
 		}
 
 		if (fg_code != -1)
@@ -769,7 +839,7 @@ display_entries(int highlight)
 		else
 			attroff(COLOR_PAIR(0));
 
-		/* line unter dem header */
+		/* line below header */
 		short line_code = get_color_code(config.header.bg);
 		if (line_code != -1) {
 			init_pair(10, line_code, -1);
@@ -838,8 +908,8 @@ display_entries(int highlight)
 					short bg_code = get_color_code(config.entry_default.bg);
 					if (fg_code != -1 || bg_code != -1) {
 						init_pair(20,
-								  (fg_code != -1 ? fg_code : -1),
-								  (bg_code != -1 ? bg_code : -1));
+								(fg_code != -1 ? fg_code : -1),
+								(bg_code != -1 ? bg_code : -1));
 						attron(COLOR_PAIR(20) | (config.entry_default.bold ? A_BOLD : 0));
 					}
 				}
@@ -849,7 +919,14 @@ display_entries(int highlight)
 					mvprintw(y, 2, "%-*d", id_width, i + 1);
 					mvprintw(y, indent, "%.*s", max_url_width, text + line * max_url_width);
 
-					if (domains_counts[i] == -1 || updates_counts[i] == -1) {
+					if (is_updating[i]) {
+						if (domains_counts[i] > 0) {
+							snprintf(buf, sizeof(buf), "(%d/...)", domains_counts[i]);
+						} else {
+							snprintf(buf, sizeof(buf), "(...)");
+						}
+						mvprintw(y, local_source_start, "%s", buf);
+					} else if (domains_counts[i] == -1 || updates_counts[i] == -1) {
 						mvprintw(y, local_source_start, "(...)");
 					} else if (is_local_entry(entries[i])) {
 						snprintf(buf, sizeof(buf), "(%d)", domains_counts[i]);
@@ -1654,9 +1731,9 @@ rename_entry(int index)
 		return;
 
 	snprintf(old_header, sizeof(old_header),
-			 "# %d. %s", index + 1, entries[index]);
+			"# %d. %s", index + 1, entries[index]);
 	snprintf(new_header, sizeof(new_header),
-			 "# %d. %.220s", index + 1, input);
+			"# %d. %.220s", index + 1, input);
 
 	in = fopen(hosts_path, "r");
 	out = fopen("/tmp/hosts_rename_temp", "w");
@@ -1719,24 +1796,19 @@ main(int argc, char *argv[])
 	int ch;
 	const char *editor = getenv("EDITOR");
 
-	/* load config file */
 	load_config();
 
-	/* resolve default config paths via XDG */
 	get_config_path("counts", counts_path, sizeof(counts_path));
 	get_config_path("urls", urls_path, sizeof(urls_path));
 	get_config_path("fetch.lock", fetch_lock_path, sizeof(fetch_lock_path));
 
-	/* initialize locale and curl */
 	setlocale(LC_ALL, "");
 	curl_global_init(CURL_GLOBAL_DEFAULT);
 	update_progress = -1;
 
-	/* load saved state */
 	load_entries();
 	load_counts();
 
-	/* check for ongoing background fetches */
 	if (pipe(update_pipe) < 0) {
 		perror("pipe");
 	} else {
@@ -1965,13 +2037,18 @@ main(int argc, char *argv[])
 			load_counts();
 			display_entries(highlight);
 		}
-		/* check update_pipe to refresh UI */
+		/* check background_fetch_entry to refresh UI */
 		int idx;
 		while (read(update_pipe[0], &idx, sizeof(int)) > 0) {
 			if (idx >= 0 && idx < entry_count) {
+				// Nur zurücksetzen, wenn es ein Count-Vorgang war:
+				if (is_updating[idx]) {
+					is_updating[idx] = 0;
+				}
 				display_entries(highlight);
 			}
 		}
+
 		/* handle user input */
 		ch = getch();
 
@@ -2138,19 +2215,24 @@ main(int argc, char *argv[])
 			}
 			if (!has_network_connection()) {
 				print_footer("Error: No network connection.");
-				napms(2000);
 				display_entries(highlight);
 				continue;
 			}
 			if (any) {
-				print_footer("Updating selected entries...");
 				update_selected_sources();
 			} else {
+				if (is_local_entry(entries[highlight])) {
+					display_entries(highlight);
+					continue;
+				}
+				print_footer("Checking for updates...");
+				refresh();
+				napms(100);
 				long before = remote_sizes[highlight];
 				long after = get_remote_content_length(entries[highlight]);
 				if (after > 0 && after != before) {
 					print_footer("Updating %s...", entries[highlight]);
-					update_domain_count(highlight);
+					background_count_entry(highlight);
 					domains_counts[highlight] = count_hosts_in_section(highlight);
 					updates_counts[highlight] = domains_counts[highlight];
 					save_counts();

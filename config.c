@@ -7,6 +7,9 @@
 #include <ctype.h>
 #include <ncurses.h>
 #include <unistd.h>
+#include <pwd.h>
+
+#include <sys/types.h>
 #include "config.h"
 
 /* functions */
@@ -329,21 +332,41 @@ remove_color(ColorSetting *setting, short pair_id)
 /* 10.00 */ const char *
 get_config_path(const char *filename, char *buffer, size_t size)
 {
-	const char *home;
+	const char *home = NULL;
 
-	home = getenv("HOME");
-	if (!home)
+	if (geteuid() == 0) {
+		const char *sudo_user = getenv("SUDO_USER");
+		if (sudo_user && strlen(sudo_user) > 0) {
+			struct passwd *pw = getpwnam(sudo_user);
+			if (pw && pw->pw_dir) {
+				home = pw->pw_dir;
+			}
+		}
+	}
+
+	if (!home || strlen(home) == 0) {
+		home = getenv("HOME");
+	}
+
+	if (!home || strlen(home) == 0) {
+		fprintf(stderr, "[FATAL] Kein HOME-Verzeichnis gefunden!\n");
 		return NULL;
+	}
+
+	const char *xdg_config_home = getenv("XDG_CONFIG_HOME");
+	const char *xdg_state_home  = getenv("XDG_STATE_HOME");
 
 	if (strcmp(filename, "counts") == 0) {
-		snprintf(buffer, size, "%s/.local/state/hfc/%s", home,filename);
-	} else {
-		const char *config_home = getenv("XDG_CONFIG_HOME");
-
-		if (!config_home || strlen(config_home) == 0) {
-			snprintf(buffer, size, "%s/.config/hfc/%s", home, filename);
+		if (xdg_state_home && strlen(xdg_state_home) > 0) {
+			snprintf(buffer, size, "%s/hfc/%s", xdg_state_home, filename);
 		} else {
-			snprintf(buffer, size, "%s/hfc/%s", config_home, filename);
+			snprintf(buffer, size, "%s/.local/state/hfc/%s", home, filename);
+		}
+	} else {
+		if (xdg_config_home && strlen(xdg_config_home) > 0) {
+			snprintf(buffer, size, "%s/hfc/%s", xdg_config_home, filename);
+		} else {
+			snprintf(buffer, size, "%s/.config/hfc/%s", home, filename);
 		}
 	}
 

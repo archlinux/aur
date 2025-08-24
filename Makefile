@@ -16,10 +16,10 @@ TARGET = hfc
 all: prepare $(TARGET)
 prepare:
 	mkdir -p $(HOME)/.config/hfc
-	mkdir -p $(HOME)/.local/state
+	mkdir -p $(HOME)/.local/state/hfc
 	touch $(HOME)/.config/hfc/urls
 	touch $(HOME)/.config/hfc/conf
-	touch $(HOME)/.local/state/counts
+	touch $(HOME)/.local/state/hfc/counts
 
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)

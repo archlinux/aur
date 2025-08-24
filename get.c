@@ -78,7 +78,7 @@ download_url(const char *url, char *error_msg, size_t err_size)
 	return chunk.memory;
 }
 
-/* 02.01 */ long
+long
 get_remote_content_length(const char *url)
 {
 	CURL *curl;
