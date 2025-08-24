@@ -1,12 +1,12 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 
 pkgname=dumpzilla-git
 _pkgname=${pkgname%-git}
 pkgver=r44.ec337da
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract All Forensic Interesting Information Of Firefox, Iceweasel And Seamonkey"
 arch=('any')
-url="http://www.dumpzilla.org/"
+url="https://web.archive.org/web/20250201061909/http://www.dumpzilla.org/"
 license=('GPL')
 groups=()
 depends=('python' 'python-lz4' 'python-magic')
