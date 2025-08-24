@@ -1,14 +1,16 @@
 pkgbase = centerim5-git
 	pkgdesc = CenterIM5 - An ncurses based terminal chat client - git development version
-	pkgver = git
+	pkgver = r1221.b03a616
 	pkgrel = 1
-	url = http://centerim.org/
+	url = https://repo.or.cz/centerim5.git
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = ca-certificates
-	depends = python2
+	makedepends = git
+	depends = python
 	depends = libjpeg
+	depends = libtermkey
 	depends = gpgme
 	depends = libpurple
 	depends = ncurses
@@ -16,8 +18,7 @@ pkgbase = centerim5-git
 	provides = centerim5
 	conflicts = centerim5
 	options = !libtool
-	source = git+ssh://mob@repo.or.cz/srv/git/centerim5.git#branch=mob
+	source = centerim5-git::git+https://repo.or.cz/centerim5.git
 	sha256sums = SKIP
 
 pkgname = centerim5-git
-

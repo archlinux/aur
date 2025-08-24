@@ -3,31 +3,29 @@
 # if you have any issues.
 
 pkgname=centerim5-git
-pkgver=git
+pkgver=r1221.b03a616
 pkgrel=1
 pkgdesc="CenterIM5 - An ncurses based terminal chat client - git development version" 
 arch=('i686' 'x86_64')
-url="http://centerim.org/"
+url="https://repo.or.cz/centerim5.git"
 license=('GPL')
-depends=('python2' 'libjpeg' 'gpgme' 'libpurple' 'ncurses' 'libsigc++')
-makedepends=('ca-certificates')
+depends=('python' 'libjpeg' 'libtermkey' 'gpgme' 'libpurple' 'ncurses' 'libsigc++')
+makedepends=('ca-certificates' 'git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!libtool')
-source=('git+ssh://mob@repo.or.cz/srv/git/centerim5.git#branch=mob')
+source=(${pkgname}::git+${url})
 sha256sums=('SKIP')
 
 pkgver() {
-
-	# Get the tag of the latest commit
-	cd ${pkgname%-*} 
-	git describe --always | sed 's/-/./g'
-
+  cd "centerim5-git"
+  #git describe --tags | sed 's/-/+/g'
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
 	
-	cd ${pkgname%-*}
+	cd ${pkgname-git}
 	msg "Starting make..."
 
 	./bootstrap
@@ -39,7 +37,7 @@ build() {
 
 package() {
 
-	cd ${pkgname%-*}
+	cd ${pkgname-git}
 	make DESTDIR="$pkgdir" install
 
 }
