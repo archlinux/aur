@@ -3,7 +3,7 @@
 pkgbase=cloud-fs-bin
 pkgname=(cloud-fs-bin clouddrive)
 pkgver=0.9.7
-pkgrel=5
+pkgrel=10
 epoch=2
 pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -49,14 +49,13 @@ package_cloud-fs-bin() {
     )
 }
 
-_install_path="opt/${pkgname}"
-
 package_clouddrive() {
     pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
     provides=(${pkgname} ${pkgname}2)
     conflicts=(${pkgname} ${pkgname}2)
 
     cd ${srcdir}
+    _install_path="opt/${pkgname}"
     install -dm777 ${pkgdir}/${_install_path} \
         "${pkgdir}"/media/clouddrive \
         "${pkgdir}"/media/clouddrive-dav
