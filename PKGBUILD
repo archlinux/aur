@@ -1,6 +1,6 @@
 
 pkgname=ttf-senty-free
-pkgver=20240624.a9d64d16
+pkgver=20250824.7d29e93f
 pkgrel=1
 pkgdesc="Senty Chinese handwritten font collection from Hanyi."
 arch=('any')
@@ -49,11 +49,11 @@ source=("LICENSE.html::https://www.sentyfont.com/terms%20and%20conditions.htm"
 'https://www.sentyfont.com/index_htm_files/HanyiSentyTang.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyTea.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyTriumphCalligraphy.ttf'
-'https://www.sentyfont.com/index_htm_files/HanyiSentyVimalkirti.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentyVimalakirti.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyWoodCut.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyYongleEncyclopedia-2020.ttf'
-'https://www.sentyfont.com/index_htm_files/HanyiSentyZHAO.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyZhangjizhi.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentyZhao.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyBambooGrove.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyCaramel.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyChalk.ttf'
@@ -63,10 +63,12 @@ source=("LICENSE.html::https://www.sentyfont.com/terms%20and%20conditions.htm"
 'https://www.sentyfont.com/index_htm_files/SentyDew.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyDonut.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyDragonPalace.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyEtherealWander.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyFunPark.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyGoldSand.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyMovableType.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyMovableType2.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyOrchid.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyPaperCut.ttf'
 'https://www.sentyfont.com/index_htm_files/SentySandalwood.ttf'
 'https://www.sentyfont.com/index_htm_files/SentySigua.ttf'
@@ -75,7 +77,8 @@ source=("LICENSE.html::https://www.sentyfont.com/terms%20and%20conditions.htm"
 'https://www.sentyfont.com/index_htm_files/SentyWEN2017.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyWatermelon.ttf')
 sha256sums=(
-'2ca158e667c1733c22065ef0760e2e97e1d52865cc1a247145d6117f0c43fa7c'
+"2ca158e667c1733c22065ef0760e2e97e1d52865cc1a247145d6117f0c43fa7c"
+
 '8e9b8b909f85e76047b748fa72d12006b686c96240e7760e3067904c8e853482'
 '7c7c13f7518c5952a2da73e27e3795b704c1eb681422cb29d28cb1fdbcff1416'
 '06c45af868758af5c42a17f0af07e5048aec498aa0aee6dea4e3f808f1ca8770'
@@ -84,7 +87,7 @@ sha256sums=(
 '79ced7e171b27f7badef7c037d41981e1fa89a3f45af2d10018356a7536ff3dc'
 'e4728dfdf11d499b33b956a574b8f5c9631692d8f377019c98db93b4ca625c49'
 '023a92053b3bec6c2dae7ce1879b75f87aa7c12ae5c498fbab8d5bd8b1a3b20b'
-'3e3ab74911769e226ffd3345e41800ce7b7fa632aeb9e30e57ebf2694bb1aa8b'
+'67a18740a20f2ce638e2838472475552d9ee135fdcd3f9d6e62f3d6e5d40f353'
 'b68210ace178c7c1a6eea71592d5e85d2dfb7c3a741e694342991b865e85dff8'
 '54b11e8f91184994d44fc8426791acd10eb0e2e572d1f16631378f9d4b237e3d'
 '4a0f13dc00a17b4eedd29f432a65fb287557d9511dea898025bd4da0eb5cb10d'
@@ -92,7 +95,7 @@ sha256sums=(
 '55c68887b2cc8f6013cf7830af571fc6622f8001d4b1d7901c95e6697e6a9f8e'
 '5b44a49034d2f5adc10b4d4606853b5e3af440155b43dd3b5da33c19f89697a6'
 'd65fecde4aff5a4c28b6d2b0aeb01a6fed73a3da3aeda923dd4ddf9578bc3b73'
-'5aa6a76adefff1955e6a96bc68ca3ad21f76a22b7f7fc9cabf88354a32e814da'
+'60a85b7347f4673182ea26012241203bbd731a185e0f23518de2f8d01a75efcb'
 '2e25b9956ac5e904a06da770bb1efcc158542c045bbdbcf1c93e9cddb8dd8bd9'
 'e37fe124ae521036de2bafc40cfb24433346fed729020d56ce26d5a392424435'
 '020f080ed7cf83855a620dcbea1bed9ad0625cab36a3f1c7859cf0765bbfd403'
@@ -117,12 +120,12 @@ sha256sums=(
 '24d437cec47f74d01716b46c11cc0ce878a8352f22037f614aabe298206f7db9'
 '2475f1eca03c008a785bd0ce2b533c517899a3ba42452524f0eee68c3f6ac203'
 '1077e5de6bfbf7e5a8320d565ac80595df0707d9f008611eb64dc25c858f4547'
-'41b7c2d66406a27d8c16a5aed3d2cfabd34d45e6776cb4a3a20a72ff36641a83'
-'1d1cbbe37f5259e592a64a73c4b158f39c86ad8ea25d05cadf62043262a4e598'
+'f25158806e9c107a8179b6e3c9616fe5ad4e76a2920e01d5add92052222a54dc'
+'1b17b1640f61515c68eedd37b34e46d36561bc7f12f143db5c3e36168263e8d9'
 '1cdf4f5821d5d67b520850c6db9f62b205c8eb9bea535fd9cd1c9222b6c5dd7d'
 'eec8740830f9903f40cdf7f5cb0ba398e3ae371e5246bc60cc3af03a1c5db59e'
-'d6bf0047b9952d336dfa1788b146c121c63bd93b55384c867541e50854a0a82d'
 'fc5feefba4a72901788a5c3101b2a04635b128716490000a15bd558a7939f737'
+'dad25f0cc46f6d856cadf48ab365ef49702e9f3ad92f46446421e576b8aae0a3'
 '26aee174df5485957aeb6b02686e515917933da23a6c20f33c5fffab92129f09'
 '469982640e85398208435be7022c90d1ebf98a1c44bc68d85971c2a56d1668bf'
 'e3f107d4ff19f91da1d40f16f021cedc7afecc60d3eda075d7f9d89ba8dcd9b8'
@@ -132,17 +135,19 @@ sha256sums=(
 'd99e869485ce731fb9380b1b56f92a8129518d45de5ebb1ccb5144c38a0e15c0'
 '9aa898bd514973e6e6dbaa6ef52a82db98c2a8b9d58af7f4c339f69b4d44483f'
 '76ea1d4ada72756878e995d4ceb7c5bee0d350bec561296979cfeee1880985d3'
+'685796297daa6b9fe07cfb379662ebb94b9a8c80b48dd2b3e92418f92323c102'
 '175329833c2b0438bb61ca11828dd6a867ad94f26e80dd27216edf3d37733cf3'
 'dec59596bfaa8814d2eb8ee58faa58e88bdb1106ee67edc295dc2f0ad6b515d6'
 '6ebb95bc5e6a83fdb6f8c4c2df96c6cdd8e1744d1354f689ab253722c88a8828'
 'f928740100689118a3f93c93bdd0da51c716c1af9f444bb8d6af52e1076fc219'
+'146654e6652990e575dfd62f012fc95f04616835fa7b46a99ec8187517c25c47'
 'cf65e94c2596d49834356974bb15eb7e690b64a53ff591e892b7ccf41610ba6f'
 '5318f815af148530c6cd5d0a7701f8e2cec7d19bdbb68985db10f6ea9e59c87f'
 'a29e29ebf6e8fdd4ec211407ce8860daad9c17dcbec14697b5e5736d5598d034'
 '5d71d0a21a2009a47ec61c9d93ffca024ac65f9e6266dfffe8eb740adcdcc505'
 'd35e61655552c6c4524a5ca93477a460dddd8a238ca1821dd6d5894e17348ad1'
 'bd49c8a948c296da8fe5534abb5be66c12e8a17918bd29716c29ed5fda0333fc'
-'e519f09aa4451013448849e1eff265ab02f0d0327ce203522353d993a9769267')
+'cb90787d1f24b55b1dd3464070281439079768fe720431b0fef8d93c16285f77')
 
 
 
