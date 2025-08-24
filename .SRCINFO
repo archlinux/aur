@@ -1,0 +1,17 @@
+pkgbase = nenobacklight-git
+	pkgdesc = A command-line tool for managing the backlight settings of your system.
+	pkgver = r1.d6fe5f0
+	pkgrel = 1
+	url = https://github.com/en0/nenobacklight
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	provides = nenobacklight
+	conflicts = nenobacklight
+	options = strip
+	options = !debug
+	source = git+https://github.com/en0/nenobacklight.git
+	sha256sums = SKIP
+
+pkgname = nenobacklight-git
