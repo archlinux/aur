@@ -1,0 +1,10 @@
+post_install() {
+  echo "==> DotPush has been installed."
+  echo "==> To enable automatic hourly backups, run the following command:"
+  echo "    systemctl --user enable --now dotpush.timer"
+}
+
+pre_remove() {
+  echo "==> To disable the timer before uninstalling, you can run:"
+  echo "    systemctl --user disable --now dotpush.timer"
+}
