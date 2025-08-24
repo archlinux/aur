@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-nijilive-puppet">
+		<comment>nijilive puppet</comment>
+		<icon name="application-x-nijilive-puppet"/>
+		<glob pattern="*.inp"/>
+	</mime-type>
+	<mime-type type="application/x-nijigenerate-puppet">
+		<comment>nijigenerate puppet</comment>
+		<icon name="application-x-nijigenerate-puppet"/>
+		<glob pattern="*.inx"/>
+	</mime-type>
+</mime-info>
