@@ -1,14 +1,14 @@
 # Maintainer: Nicola Fontana <ntd@entidi.it>
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgbase='etherlab-ethercat'
-pkgname=('etherlab-ethercat-tools' 'etherlab-ethercat-dkms')
+pkgname=('etherlab-ethercat' 'etherlab-ethercat-dkms' 'etherlab-ethercat-tools')
 pkgver=1.6.7
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
         "ethercat.sysusers"
-        "99-EtherCAT.rules"
+        "ethercat.udev"
         "dkms.conf")
 sha512sums=('1a26b6fbbae7cf371468171dc2d05190ab4461b7e1bcce6ded51207c2083f8c9b8a426d37887b144011f364b4d55acb59ee563d3d48b17c8956e94e321dda34a'
             'b029d47d10850569f180801fdc6bb2209dc9014649615123fe677416586df1c5a4f0901bcbd2da73b0e48ce752fe2a732272afdbf2445edf9ed4740be1ada7d8'
@@ -25,7 +25,7 @@ build() {
   ./configure \
     --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib --sysconfdir=/etc \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --disable-kernel --enable-generic \
+    --enable-kernel --enable-generic \
     --enable-tool --enable-userlib --disable-initd
   make all
 }
@@ -33,6 +33,26 @@ build() {
 check() {
   cd "ethercat-$pkgver"
   make check
+}
+
+package_etherlab-ethercat() {
+  pkgdesc="Kernel modules for IgH EtherCAT(R) Master component"
+  license=('GPL-2.0-only')
+  depends=('linux' 'etherlab-ethercat-tools')
+  provides=('etherlab-ethercat')
+  conflicts=('etherlab-ethercat-dkms')
+
+  cd "ethercat-$pkgver"
+  # This step should happen inside `build()` but, AFAIK,
+  # split packages do not support split build functions
+  # and `package_etherlab-ethercat-dkms()` does not require this
+  make modules
+
+  # 1. Skip `depmod`: it will be executed automatically
+  #    by pacman hooks on the target OS
+  # 2. By default kernel modules are installed in `/lib`
+  #    but archlinux expects them in `/usr/lib`
+  make cmd_depmod=: INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 }
 
 package_etherlab-ethercat-dkms() {
@@ -48,7 +68,7 @@ package_etherlab-ethercat-dkms() {
   cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/ethercat-dkms-${pkgver}
   # Set version
   sed -e "s/#MODULE_VERSION#/${pkgver}/" \
-  -i "${pkgdir}"/usr/src/ethercat-dkms-${pkgver}/dkms.conf
+    -i "${pkgdir}"/usr/src/ethercat-dkms-${pkgver}/dkms.conf
 }
 
 package_etherlab-ethercat-tools() {
@@ -56,7 +76,7 @@ package_etherlab-ethercat-tools() {
   license=('LGPL-2.1-only')
   backup=('etc/ethercat.conf')
 
-  install -Dm 0644 -t "$pkgdir/etc/udev/rules.d/" 99-EtherCAT.rules
+  install -Dm 0644 ethercat.udev "$pkgdir/usr/lib/udev/rules.d/99-EtherCAT.rules"
   install -Dm 0644 ethercat.sysusers "$pkgdir/usr/lib/sysusers.d/ethercat.conf"
 
   cd "ethercat-$pkgver"
