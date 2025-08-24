@@ -1,4 +1,5 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network_Jack <Network_Jack@null.net>
+
 pkgname=nrf5x-sniffer
 _pkgname='nRF-Sniffer-for-802.15.4'
 pkgver=0.8.0
