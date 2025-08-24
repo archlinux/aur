@@ -1,10 +1,10 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Eli schwartz <eschwartz@archlinux.org>
 # Fork of Arch Firefox package
 
 pkgname=librewolf-noscript
-pkgver=13.0.8
+pkgver=13.0.9
 pkgrel=1
 pkgdesc="Extension for librewolf which disables javascript"
 arch=('any')
@@ -14,9 +14,8 @@ checkdepends=('jq')
 groups=('librewolf-addons')
 source=("noscript-${pkgver}.xpi::https://noscript.net/download/releases/noscript-$pkgver.xpi")
 noextract=("noscript-${pkgver}.xpi")
-sha256sums=('9d978cfe083cb9cce120b5ee41e8933d752d7ab4680bf517c5ec4b29c4cfd2dc')
-b2sums=('e82150826cac8cb87e3f2a9ff2c61e052818d378352634b9182ec3c1eea9a9bf7d0f517a81fb822cb1bdc033e8f7ebe8b60ffa99b549f188f8cfd6852f1e4be3')
-
+sha256sums=('525ab61aff21f67d10c3e20965a86ed479631549908a658f54692adc47d771f5')
+b2sums=('88cfab7daeb0287b4ccbf80875e41ca57969cfa92d575f83e253c1294719d4162f25e0499bfab8feb8838df93e0a2576ec5bcb6513dcd2d8e8117bcf3aa1a60a')
 
 check() {
   bsdtar xf noscript-$pkgver.xpi manifest.json
