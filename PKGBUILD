@@ -3,13 +3,13 @@
 
 pkgname=quakespasm
 pkgver=0.96.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. Stable version with optional Mission pack desktop files."
 arch=('i686' 'x86_64')
 url="http://quakespasm.sourceforge.net"
 license=('GPL2')
 depends=('libvorbis' 'libmad' 'sdl2')
-conflicts=('quakespasm-svn')
+conflicts=('quakespasm-git')
 install="${pkgname}.install"
 source=("https://sourceforge.net/projects/quakespasm/files/Source/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop"

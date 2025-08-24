@@ -1,7 +1,7 @@
 pkgbase = quakespasm
 	pkgdesc = A modern Quake 1 engine. Forked from Fitzquake. Stable version with optional Mission pack desktop files.
 	pkgver = 0.96.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://quakespasm.sourceforge.net
 	install = quakespasm.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = quakespasm
 	depends = libvorbis
 	depends = libmad
 	depends = sdl2
-	conflicts = quakespasm-svn
+	conflicts = quakespasm-git
 	source = https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.96.3.tar.gz
 	source = quakespasm.desktop
 	source = quakespasm-mp1.desktop
