@@ -11,6 +11,6 @@ pkgbase = clip-transfer
 	provides = clip-transfer
 	conflicts = clip-transfer
 	source = https://github.com/Evr5/ClipTransfer/releases/download/v1.1.0/clip-transfert-1.1.0-x86_64.pkg.tar.zst
-	sha256sums = e5a13ea1d9f9ee50110495ed74b1b768bc7437ce002abd55ffc318a398734e65
+	sha256sums = bc5825b115572ba8a9372df1c6a1eced53206dae7743398ee20c417919cd91a9
 
 pkgname = clip-transfer
