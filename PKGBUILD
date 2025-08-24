@@ -1,18 +1,18 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 
 _pkgname=reverse_image_search
 pkgname=librewolf-extension-reverse-image-search
-pkgver=3.4.4
+pkgver=4.4.3
 pkgrel=1
-_file=4074017
+_file=4553963
 pkgdesc="Context menu to search with an image on various services, such as Google, Bing, Yandex, TinEye, SauceNAO and IQDB"
 license=('MPL2')
 arch=('any')
 url="https://github.com/Brawl345/Image-Reverse-Search-WebExtension"
 depends=("librewolf")
-source=("${_pkgname}-${pkgver}.xpi::https://github.com/Brawl345/Image-Reverse-Search-WebExtension/releases/download/v${pkgver}/image_reverse_search-${pkgver}.xpi")
+source=("${_pkgname}-${pkgver}.xpi"::"https://addons.mozilla.org/firefox/downloads/file/${_file}/image_reverse_search-${pkgver}.xpi")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('22c1e735f03d37d64a611bbd6d14b1cb3295a0ce0d91c5eaca3b9ec4a78254a1')
+sha256sums=('a7faf99fdf3379e01cab47c6673ea797a67017722423b98871acd78ccb02eb18')
 
 package() {
   cd "${srcdir}"
