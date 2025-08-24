@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-peft
 _pkgname=${pkgname#python-}
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='State-of-the-art Parameter-Efficient Fine-Tuning.'
 arch=('any')
 url='https://github.com/huggingface/peft'
 license=('Apache-2.0')
-groups=('hugginface')
+groups=('huggingface')
 depends=(
     'python-accelerate'
     'python-huggingface-hub'
@@ -23,7 +23,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1ebbac3d5a10c74c86cafef59a4e30e71cfbd480d0960183a7e3ced62e275c4')
+sha256sums=('d9d8a31f757a777ab19839a33551389daa8e23c38b5bea5e47a56e274681d637')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
