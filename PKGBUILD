@@ -2,7 +2,7 @@
 
 pkgbase=x-tools
 pkgname=x-tools
-pkgver=7.1.0
+pkgver=7.4.0
 pkgrel=1
 groups=()
 pkgdesc="Qt SerialPort-BLE-UDP-TCP-WebSocket-Modbus-CAN Assistant."
@@ -18,6 +18,7 @@ depends=(
     hicolor-icon-theme
     libiconv
     libunwind
+    vulkan-headers
     qt6-charts
     qt6-connectivity
     qt6-base
@@ -45,15 +46,19 @@ checkdepends=(
     gtest
 )
 optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7f11a188d8dba6497ee8fad4cac42abb1636bd9e241f52f38c9a91be622c6f6b')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('f45dc6ea16c5be7871563bc5d997c7d8e901839a6496b6b3fcf1cc568997b5ef')
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
     export CXXFLAGS+=" ${CPPFLAGS}"
     export LDFLAGS+=" ${LDFLAGS}"
 
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
@@ -66,13 +71,13 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/bin/Linux/None/xTools"
+    cd "${srcdir}/${pkgname}/bin/Linux/None/xTools"
     install -Dm0755 xTools -t "${pkgdir}/usr/share/${pkgname}/"
-    cp -r 3rd_styles "${pkgdir}/usr/share/${pkgname}/"
+    cp -r translations "${pkgdir}/usr/share/${pkgname}/"
 
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "${srcdir}/${pkgname}/LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/xTools.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.x-tools-author.x-tools.svg"
+    install -Dm644 "${srcdir}/${pkgname}/xTools.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.x-tools-author.x-tools.svg"
     #     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/xTools.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.x-tools-author.x-tools.png"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
