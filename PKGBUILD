@@ -3,13 +3,22 @@
 _pkgname=seafobj
 pkgname=python-$_pkgname
 pkgver=12.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for accessing seafile data model"
 arch=('any')
 url="https://github.com/haiwen/seafobj"
+
 license=('Apache')
-depends=('python' 'python-boto3' 'python-redis')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+
+depends=('python'
+         'python-boto3'
+         'python-pylibmc'
+         'python-redis')
+
+makedepends=('python-build'
+             'python-installer'
+             'python-wheel'
+             'python-setuptools')
 
 source=("${url}/archive/v${pkgver}-server.tar.gz"
         "pyproject.toml")
