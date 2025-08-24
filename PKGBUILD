@@ -3,23 +3,23 @@
 _pkgauthor=lhvy
 _pkgname=pipes-rs
 pkgname=${_pkgname}-bin
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
-pkgdesc='An over-engineered rewrite of pipes.sh in Rust'
+pkgdesc="An over-engineered rewrite of pipes.sh in Rust"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-arch=('x86_64')
-license=('MIT')
-depends=('glibc')
-makedepends=('help2man')
+arch=("x86_64")
+license=("MIT")
+depends=("glibc")
+makedepends=("help2man")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-${arch[0]}.tar.gz")
-sha256sums=('2c7c5d22ed5a8ee968c64757710979afcd77438c48b4a265b94e615babd8a901'
-            'd8c6b16acf66ee20d8716e0b7962d1a2d4e4ea85a3df458015972ecd3368ec9e')
-sha256sums_x86_64=('057a196dac3631f47a05a14b9b22486ed2f4968c0a28c87439f5f22abcad2f8d')
+sha256sums=("2c7c5d22ed5a8ee968c64757710979afcd77438c48b4a265b94e615babd8a901"
+            "d8c6b16acf66ee20d8716e0b7962d1a2d4e4ea85a3df458015972ecd3368ec9e")
+sha256sums_x86_64=("5a91499b7632e95001ea38bcd7afbfadff60a118cbe7edd6f0d260fa5bf619eb")
 
 build() {
   cd "${srcdir}/" || exit
