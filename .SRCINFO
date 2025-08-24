@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp-talk
 	pkgdesc = Whisper.cpp built with cuda & talk-llama enabled
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/whisper.cpp
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = whisper.cpp-talk
 	optdepends = vulkan-devel: GPU acceleration for non-NVidia GPUs
 	optdepends = openblas: CPU acceleration
 	options = ccache
-	source = git+https://github.com/ggml-org/whisper.cpp.git
+	source = git+https://github.com/ggml-org/whisper.cpp.git#commit=040510a132f0a9b51d4692b57a6abfd8c9660696
 	sha256sums = SKIP
 
 pkgname = whisper.cpp-talk
