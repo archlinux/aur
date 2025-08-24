@@ -1,0 +1,24 @@
+pkgbase = python-ensure
+	pkgdesc = Python functions used to ensure something.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/python_ensure
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-integer-tool
+	provides = python_ensure
+	provides = python-ensure
+	conflicts = python_ensure
+	conflicts = python-ensure
+	options = !strip
+	options = !debug
+	source = python_ensure-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_ensure/python_ensure-0.0.1.tar.gz
+	sha256sums = dcb206dd12ed90184adf62e5c2898e1bc128912a684e96cdf6414bff9e4efc69
+
+pkgname = python-ensure
