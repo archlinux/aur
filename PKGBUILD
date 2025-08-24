@@ -3,7 +3,7 @@
 _pkgauthor=sammcj
 _pkgname=gollama
 pkgname=${_pkgname}-bin
-pkgver=1.36.1
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="Go manage your Ollama models"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.zip::${url}/releases/download/v
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[1]}.zip")
 sha256sums=('2624502660e8f7965bb276ea8c83586e6302b4e32f2b6d4d5249953e35caf610'
             '80da23a8c427378e85cf46942e58d1951979a17d0f8b0aee428716a09c411f12')
-sha256sums_x86_64=('4a80520812f829a742aa644ee624184bc5b7baad1619dde011909dc8fa88ab82')
-sha256sums_aarch64=('b58c4be92d75b29972f1e27b9c7bfaf3fda8499d2c09c4b5bbc10e2b129a9091')
+sha256sums_x86_64=('ff87b75bb4c83bd771fd7b78fe15cf4c0f8f67c040c37897159fcb5da7641f54')
+sha256sums_aarch64=('43078e7f464b988914bd86b732b1d4f16d0a7db84892f895939129b19b57ec7d')
 
 
 
