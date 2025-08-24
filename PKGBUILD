@@ -15,7 +15,7 @@ provides=("${_basename}")
 conflicts=("${_basename}" 'xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 groups=('xlibre-drivers')
 _pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
-source=("https://codeload.github.com/X11Libre/${_pkgname}/tar.gz/refs/tags/${pkgname}-${pkgver}")
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
 b2sums=('5318272d643f9c4717e84d5198448167dc9df8256fa8ac3a10f2989f65e0ba944b0d71e6b53417b97e6606488e1c9a0f3048b902811e32e36dbc70b0024a1817')
 
 build() {
