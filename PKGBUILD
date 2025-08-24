@@ -2,9 +2,9 @@
 # PKGBUILD Originally by: Joan Figueras <ffigue at gmail dot com>
 
 krnname=linux-bazzite
-pkgver="6.15.9.113" # 6.13.7.103
-fedver="6.15.9-113.bazzite.fc42.x86_64" # 6.13.7-103-bazzite.fc41.x86_64
-relver="6.15.9-113" # 6.13.7-103
+pkgver="6.15.9.114" # 6.13.7.103
+fedver="6.15.9-114.bazzite.fc42.x86_64" # 6.13.7-103-bazzite.fc41.x86_64
+relver="6.15.9-114" # 6.13.7-103
 
 pkgname=${krnname}-bin
 pkgrel=1
@@ -30,12 +30,12 @@ source=("${url}/releases/download/${relver}/kernel-core-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-devel-${fedver}.rpm")
 #        "kernel-uki-virt-${pkgver}-${extras}.x86_64.rpm")
 
-sha256sums=('4f45f9e508af29fb566f3d9e431251cb42898aae3eb030d7b641e33a2923f6c8'
-            'd521060f2f0249ca1750da3171353ccd2b37723f64b4657e742b93de52ef575f'
-            'e08a23ef95a83033e925d962dcddb3decc1c7286aec4b9db7b301bac406d86b8'
-            '4e130fbd6d986b9a5233f8e667029ac17374851d0995ce8f35d87e1386e9ba5d'
-            '8cb1b287359b7e156b417b82157954d61e38b181554f3c28da610a7466d3b085'
-            'ba05216216920c4438e65d0e0f856f38703a5013820bf712501397093ff19297')
+sha256sums=('e7172c21ef6fef7e160e4ed70e63ff003d7e2a25319a315f0fe68405cd3409d9'
+            'c593752ace2df4c670b3b899c64807e8cf8d516b286c20a2d60edd81653b0786'
+            '5515acc00f773f2d694f1e91b9eaf5364e8ec18f9c21fc640abd818dd0ef200e'
+            'a220a0f973ef5e157cd2e43c243e058d2c2ec7ae20b6a74a53497674ff72e4a4'
+            'fe196f2dd93fb21f5f956e067ce4fa24873cfb0261f97468a7a67fa20bcfcf63'
+            'afa5b70d49e2729538bc815b0443d6862457e28bf153a2d9626a152cc9f4263a')
 
 package() {
   local srcmodulesdir="${srcdir}/lib/modules/${fedver}"
