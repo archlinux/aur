@@ -69,20 +69,27 @@ build() {
 }
 
 package() {
+    INSTALL_DIR="$pkgdir/opt/${_pkgname}"
+
     cd "$pkgname"
-    install -d "$pkgdir/opt/${_pkgname}"
+    install -d "$INSTALL_DIR"
     case "$CARCH" in
         x86_64) suffix="x64" ;;
         aarch64) suffix="arm64" ;;
         armv7h) suffix="armv7l" ;;
         *) echo "Unsupported architecture: $CARCH"; exit 1 ;;
     esac
-    cp -r --preserve=mode "dist/github-desktop-plus-linux-$suffix/"* "$pkgdir/opt/${_pkgname}/"
+    cp -r --preserve=mode "dist/github-desktop-plus-linux-$suffix/"* "$INSTALL_DIR/"
 
-    install -Dm0644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-    cd "$pkgdir/opt/${_pkgname}/resources/app/static/logos"
+    cd "$INSTALL_DIR/resources/app/static/logos"
     install -Dm0644 "1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
     install -Dm0644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -Dm0644 "256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+
     install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/${_pkgname}"
+
+    chmod +x "$INSTALL_DIR/resources/app/static/github"
+    ln -s "$INSTALL_DIR/resources/app/static/github" "$pkgdir/usr/bin/github-desktop-plus-cli"
+
+    install -Dm0644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 }
