@@ -8,18 +8,13 @@
 _pkgname="artemis-manual"
 pkgname="$_pkgname"
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Radio Signals Recognition Manual"
 url="https://github.com/AresValley/Artemis"
 license=('GPL-3.0-only')
-arch=('x86_64')
+arch=('any')
 
-depends=(
-  'pyside6'
-  'python'
-  'python-packaging'
-  'python-requests'
-)
+makedepends=('python')
 
 _pkgsrc="Artemis-$pkgver"
 _pkgext="tar.gz"
@@ -27,6 +22,13 @@ source=("$_pkgname-$pkgver.$_pkgext"::"https://github.com/AresValley/Artemis/arc
 sha256sums=('19e15685102387e451e4ef4634d181694ae1bb75e58d25c669bdab7a914a7d4d')
 
 package() {
+  depends=(
+    'pyside6'
+    'python-packaging'
+    'python-requests'
+    'qt6-multimedia'
+  )
+
   local _files=(
     app.py
     artemis
@@ -35,18 +37,28 @@ package() {
     ui
   )
 
-  install -dm755 "$pkgdir/opt/$_pkgname"
+  mkdir -pm755 "$pkgdir/opt/$_pkgname"
   for i in ${_files[@]}; do
-    cp --reflink=auto -a "$_pkgsrc/$i" "$pkgdir/opt/$_pkgname/"
+    cp -a "$_pkgsrc/$i" "$pkgdir/opt/$_pkgname/"
   done
 
-  # compile
-  find "$pkgdir" -name "*.py" -exec python -m py_compile {} \+
+  # specify python version to prevent untracked pyc files
+  local _pyver_major _pyver_minor
+  _pyver_major=$(python -c 'import sys; print(sys.version_info.major)')
+  _pyver_minor=$(python -c 'import sys; print(sys.version_info.minor)')
 
-  # exec
+  eval "depends+=(
+    'python>=${_pyver_major}.${_pyver_minor}'
+    'python<${_pyver_major}.$((_pyver_minor + 1))'
+  )"
+
+  # create pyc files
+  python -m compileall -f -p / -s "$pkgdir" "$pkgdir/"
+
+  # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/usr/bin/env bash
-exec python /opt/$_pkgname/app.py
+#!/usr/bin/env sh
+exec python "/opt/$_pkgname/app.py" "\$@"
 END
 
   # icon
