@@ -1,11 +1,11 @@
-# Mainteriner: GI Jack <GI_Jack@hackermail.com>
+# Mainteriner: Network Jack <Network_Jack@null.net>
 # Contributor: Daniel Müllner <daniel@danifold.net>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Travis Willard <travisw@wmpub.ca>
 # Contributor: Manolis Tzanidakis
 
 pkgname=makepasswd
-pkgver=1.10_12
+pkgver=1.10_14
 pkgrel=1
 pkgdesc='Generates true random passwords with the emphasis on security over pronounceability (Debian version)'
 arch=('any')
