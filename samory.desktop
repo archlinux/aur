@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Samory
+Exec=/usr/bin/samory
+
+Categories=Game
