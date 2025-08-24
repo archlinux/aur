@@ -2,8 +2,8 @@
 
 pkgname=python-http-request
 _name=${pkgname//-/_}
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.1.6.1
+pkgrel=1
 epoch=
 pkgdesc="Python http response utils."
 arch=('any')
@@ -14,10 +14,14 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
+    python-orjson
+    python-yarl
     #AUR
     python-asynctools
+    python-dicttools
+    python-ensure
     python-filewrap
-    python-integer-tool
+    python-http-response
     python-texttools
 )
 makedepends=(
@@ -26,11 +30,12 @@ makedepends=(
     python-build
     python-installer
     python-wheel
-    python-setuptools)
+    python-setuptools
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('07a3329fe3437eb23fd7d044614596f77dcf9caaabff62fd4c6fee1171fe6617')
+sha256sums=('287e2d8f9340fadcfc7928f8a4afbbf7c2e266e83f79daa0224b3b7f1be24678')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
