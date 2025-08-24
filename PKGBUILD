@@ -5,7 +5,7 @@
 
 pkgbase='gdb-debug-git'
 pkgname=('gdb-debug-git' 'gdb-debug-common-git')
-pkgver=17.0.50.20250808_git.r123000.a99fc443dc9
+pkgver=17.0.50.20250824_git.r123161.356fff49445
 pkgrel=1
 pkgdesc="The GNU Debugger from git. Compiled with debug information."
 arch=(
