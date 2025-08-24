@@ -1,6 +1,7 @@
-# Maintainer: Pierre Depaz <pierre@enframed.net>
+# Maintainer: Ash <xash at riseup d0t net>
+# Former Maintainer: Pierre Depaz <pierre@enframed.net>
 pkgname=liquidsoap-prettier
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 epoch=
 pkgdesc="Prettier plugin for liquidsoap script"
@@ -14,15 +15,9 @@ checkdepends=()
 optdepends=()
 noextract=("${_pkgname}-${pkgver}.tgz")
 provides=("liquidsoap-prettier")
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('b80427ef97621c2b7e28de9438be8942bf5e24bff579839770041c443b3926c5')
 
 package() {
     local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
