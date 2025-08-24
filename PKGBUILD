@@ -2,13 +2,13 @@
 
 pkgname=thor-git
 pkgver=2.0.r24.g3e320cb
-pkgrel=3
+pkgrel=4
 pkgdesc="SFML Extension with various game programming features,
          like particles, animations, vector operations"
 arch=("x86_64")
 url="https://bromeon.ch/libraries/thor"
 license=("Zlib")
-depends=("sfml")
+depends=("sfml2")
 makedepends=("cmake" "git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -37,6 +37,7 @@ build() {
     -D CMAKE_BUILD_TYPE:STRING="Release" \
     -D CMAKE_CXX_FLAGS_RELEASE:STRING="-DNDEBUG" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
+    -D CMAKE_POLICY_VERSION_MINIMUM:STRING="3.5" \
     -Wno-dev
 
   cmake --build "build/"
