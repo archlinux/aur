@@ -3,7 +3,7 @@
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat-tools' 'etherlab-ethercat-dkms')
 pkgver=1.6.7
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
@@ -61,5 +61,4 @@ package_etherlab-ethercat-tools() {
 
   cd "ethercat-$pkgver"
   make DESTDIR="$pkgdir/" install
-  install -Dm 0644 -t "$pkgdir/etc/systemd/system/" script/ethercat.service
 }
