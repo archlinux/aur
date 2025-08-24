@@ -35,7 +35,6 @@ depends=(
 optdepends=(
 
   # Recommended dependencies
-  'python2>=2.7'
   'python'
 
   # Configuration interface dependencies
