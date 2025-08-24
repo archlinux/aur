@@ -1,7 +1,7 @@
 diff --git a/src/cswrapper/cswrapper.c b/src/cswrapper/cswrapper.c
 index d9888a8..40a128c 100644
---- a/src/cswrapper/cswrapper.c
-+++ b/src/cswrapper/cswrapper.c
+--- a/native/src/cswrapper/cswrapper.c
++++ b/native/src/cswrapper/cswrapper.c
 @@ -18,13 +18,16 @@
  #include <nvector/nvector_serial.h>    /* access to serial N_Vector            */
  #include <sunmatrix/sunmatrix_dense.h> /* access to dense SUNMatrix            */

@@ -1,7 +1,7 @@
 _base=FMPy
 pkgname=python-${_base,,}-sundials6
-_gitcommit=dcff3e7193701a282b09293e4fdb1d4a8ce7419b
-pkgver=0.3.25
+_gitcommit=c57d8f5
+pkgver=0.3.26
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
@@ -46,8 +46,10 @@ prepare() {
 }
 
 build() {
-  cd ${_base}
+  cd ${_base}/native
+  python download_binaries.py
   python build_binaries.py
+  cd ..
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
@@ -64,6 +66,7 @@ check() {
 
 package() {
   cd ${_base}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  find "${pkgdir}" -name "*.dll" -o -name "*.dylib" | xargs rm
 }

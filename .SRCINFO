@@ -1,6 +1,6 @@
 pkgbase = python-fmpy-sundials6
 	pkgdesc = Simulate Functional Mockup Units (FMUs) in Python
-	pkgver = 0.3.25
+	pkgver = 0.3.26
 	pkgrel = 1
 	url = https://github.com/CATIA-Systems/FMPy
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = python-fmpy-sundials6
 	optdepends = python-pyqtgraph: for graphical user interface
 	provides = python-fmpy
 	conflicts = python-fmpy
-	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=dcff3e7193701a282b09293e4fdb1d4a8ce7419b
+	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=c57d8f5
 	source = git+https://github.com/ludocode/mpack.git
 	source = git+https://github.com/modelica/Reference-FMUs.git
 	source = sundials6.patch
