@@ -1,0 +1,23 @@
+pkgbase = python-coltools
+	pkgdesc = Python collection operations.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/coltools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = coltools
+	provides = python-coltools
+	conflicts = coltools
+	conflicts = python-coltools
+	options = !strip
+	options = !debug
+	source = coltools-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/c/coltools/coltools-0.0.1.tar.gz
+	sha256sums = c7afbf0c91a44732cf2ff53626ff51aba10519e47cf71e3785cca37eb4ec2c25
+
+pkgname = python-coltools
