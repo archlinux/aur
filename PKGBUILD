@@ -2,7 +2,7 @@
 
 pkgname=elephant-runner
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='runner provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
