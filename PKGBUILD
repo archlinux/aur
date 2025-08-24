@@ -1,7 +1,7 @@
 pkgname=symm
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Simple symlink manager"
+pkgdesc="Simple dotfiles manager"
 arch=('x86_64')
 url="https://github.com/tednaaa/symm"
 license=("GPL3")
