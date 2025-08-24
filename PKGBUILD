@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lldap
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Light LDAP implementation for authentication'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'rust' 'wasm-pack' 'rust-wasm' 'wasm-bindgen')
 backup=('etc/lldap.toml')
 options=('!lto')
-_commit='acd39d20b11ee2e47d25afa9960bb919d19ec642'
+_commit='5e83ed8eb0755af831ad36f114300299cc703615'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'config-template.patch'
@@ -39,7 +39,7 @@ prepare() {
   patch -p1 -i "$srcdir/config-template.patch"
 
   # download dependencies
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 
   # download frontend dependencies
   xargs curl --remote-name-all --output-dir app/static/fonts < app/static/fonts/fonts.txt
