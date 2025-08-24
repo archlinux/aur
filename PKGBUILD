@@ -15,7 +15,7 @@ pkgname=(
   "maplemono-variable"
   "maplemono-woff2"
 )
-pkgver="7.5"
+pkgver="7.6"
 pkgrel="1"
 pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line"
 url="https://github.com/subframe7536/maple-font"
