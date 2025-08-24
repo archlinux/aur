@@ -7,7 +7,7 @@ LDFLAGS = -lcurl -lncurses
 
 PREFIX = /usr/local
 MANPREFIX = ${PREFIX}/share/man
-VERSION = 0.0.1
+VERSION = 0.1
 
 SRCS = hfc.c get.c update.c config.c
 OBJS = hfc.o get.o update.o config.o
