@@ -2,7 +2,7 @@
 
 _pkgname="omcp"
 pkgname="$_pkgname-git"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A powerful CLI client that connects Ollama language models to Model Context Protocol servers'
 url='https://github.com/Av32000/OMCP'
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'openssl')
 arch=('x86_64')
 options=(!debug !lto)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('aa2dda65c15ede6c7131eefd03eaddf2c62037d3535ece88b79af147da3797ce')
+sha256sums=('7a10e4102c2460e6e104982ca787ed2a852066d172af0303bc580aa48ff599cb')
 
 prepare() {
     cd "$srcdir/OMCP-$pkgver"
