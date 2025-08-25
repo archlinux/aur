@@ -1,4 +1,4 @@
-pkgbase = waveterm
+pkgbase = waveterm-vis
 	pkgdesc = A modern terminal-based music visualizer with stunning ASCII art effects
 	pkgver = 0.2.0
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = waveterm
 	source = git+https://github.com/tree3stan-chord/waveterm.git#tag=v0.2.0
 	sha256sums = SKIP
 
-pkgname = waveterm
+pkgname = waveterm-vis

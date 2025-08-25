@@ -1,6 +1,6 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
-pkgname=waveterm
+pkgname=waveterm-vis
 pkgver=0.2.0
 pkgrel=1
 pkgdesc='A modern terminal-based music visualizer with stunning ASCII art effects'
