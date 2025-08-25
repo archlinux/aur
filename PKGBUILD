@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.4.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -59,6 +59,7 @@ build() {
 				-DBUILD_DIAGTOOL=ON \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=Debug \
+				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 				-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 				-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 				-Wno-dev
@@ -68,6 +69,7 @@ build() {
 				-DBUILD_DIAGTOOL=ON \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 				-DCELLFRAME_NO_OPTIMIZATION=OFF \
 				-Wno-dev
 		fi
@@ -76,6 +78,7 @@ build() {
 		cmake -B build \
 			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=Debug \
+			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 			-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
@@ -85,6 +88,7 @@ build() {
 		cmake -B build \
 			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
 	fi
