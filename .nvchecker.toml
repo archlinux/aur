@@ -1,0 +1,4 @@
+[protoc-gen-gotag]
+source = "git"
+git = "https://github.com/srikrsna/protoc-gen-gotag.git"
+prefix = "v"
