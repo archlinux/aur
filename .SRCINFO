@@ -1,0 +1,13 @@
+pkgbase = plasma6-splashscreen-kuro-git
+	pkgdesc = Splash screen for KDE plasma: Wake up your pc with Kuro the cat
+	pkgver = 2.0.0.r0.g1c390b2
+	pkgrel = 1
+	url = https://github.com/bouteillerAlan/kuro
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = qt6-declarative
+	source = git+https://github.com/bouteillerAlan/kuro
+	sha256sums = SKIP
+
+pkgname = plasma6-splashscreen-kuro-git
