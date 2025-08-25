@@ -1,0 +1,19 @@
+pkgbase = plex-folder-playlist-creator-bin
+	pkgdesc = Generates playlists for media files in a selected folder.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/zackria/Plex-Folder-Playlist-Creator
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron37
+	provides = plex-folder-playlist-creator=1.0.4
+	conflicts = plex-folder-playlist-creator
+	source = plex-folder-playlist-creator-1.0.4-x86_64.AppImage::https://github.com/zackria/Plex-Folder-Playlist-Creator/releases/download/V1.0.4/PlexFolderPlaylistCreator-1.0.4-x86_64.AppImage
+	source = LICENSE-1.0.4::https://raw.githubusercontent.com/zackria/Plex-Folder-Playlist-Creator/V1.0.4/LICENSE
+	source = plex-folder-playlist-creator.sh
+	sha256sums = fddcac8fd6cafa55cf667407d55a67a6097b8839b00b91b30f8a2d7f95aa9c4c
+	sha256sums = f7caa264ddee0ac9023e1da66b3e18a256bbf302ba8cf35a8187926092499f6d
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = plex-folder-playlist-creator-bin
