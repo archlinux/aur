@@ -1,0 +1,12 @@
+diff -ruN a/src/search.c b/src/search.c
+--- a/src/search.c	2021-09-10 10:44:43.000000000 +0200
++++ b/src/search.c	2025-08-25 10:25:18.017636567 +0200
+@@ -83,6 +83,8 @@
+ 	dlclose(pvPluginHandle);
+ 	free(pcFilename);
+       }
++    } else {
++      free(pcFilename);
+     }
+   }
+ }

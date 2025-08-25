@@ -17,13 +17,9 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "ladspa-*-distribution-flags.patch",
+    "ladspa-*-fix-memleak-in-plugin-scanning.patch",
+    "ladspa-*-plugin_underlinking.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-    "fix-memleak-in-plugin-scanning.patch",
-]
-SPDX-FileCopyrightText = "lib32-ladspa contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"

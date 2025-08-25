@@ -1,0 +1,19 @@
+diff -ruN a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2021-09-10 10:44:43.000000000 +0200
++++ b/src/Makefile	2023-09-02 18:54:57.552762072 +0200
+@@ -41,6 +41,7 @@
+ 		plugins/$*.o						\
+ 		-shared							\
+ 		$(CFLAGS)						\
++		-lm								\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\
+ 		-s							\
+@@ -52,6 +53,7 @@
+ 		plugins/$*.o						\
+ 		-shared							\
+ 		$(CXXFLAGS)						\
++		-lm								\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\
+ 		-s							\

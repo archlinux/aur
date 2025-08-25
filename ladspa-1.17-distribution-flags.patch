@@ -1,0 +1,17 @@
+diff -ruN a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2021-09-10 10:44:43.000000000 +0200
++++ b/src/Makefile	2025-08-25 10:37:35.112693475 +0200
+@@ -15,10 +15,10 @@
+ 
+ INCLUDES	=	-I.
+ LIBRARIES	=	-ldl -lm -lsndfile
+-CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC 		\
+-			-DDEFAULT_LADSPA_PATH=$(INSTALL_PLUGINS_DIR)
++CFLAGS		+=	$(INCLUDES) -Wall -Werror -O2 -fPIC 		\
++			-DDEFAULT_LADSPA_PATH=$(INSTALL_PLUGINS_DIR) ${LDFLAGS}
+ BINFLAGS	=	-fPIE -pie
+-CXXFLAGS	=	$(CFLAGS)
++CXXFLAGS	+=	$(CFLAGS)
+ PLUGINS		=	../plugins/amp.so				\
+ 			../plugins/delay.so				\
+ 			../plugins/filter.so				\
