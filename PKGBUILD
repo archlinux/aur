@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.7.beta5.r0.g9352a3258c0
+pkgver=10.8.beta0.r0.gcb030433d73
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -138,9 +138,11 @@ makedepends=(bliss
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch)
+        latte-count.patch
+        maxima-5.48.patch)
 sha256sums=('SKIP'
-            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
+            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
+            '6994392803f4530da7b68e923f554a63e95d64cff65950fb8162ded3baeeb550')
 
 pkgver() {
   cd sage
@@ -152,6 +154,8 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
+# adapt to maxima 5.48 changes
+  patch -p1 -i ../maxima-5.48.patch
 }
 
 build() {
