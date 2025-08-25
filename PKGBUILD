@@ -5,7 +5,7 @@ pkgname=larksuite-bin
 pkgver=7.46.12
 _pkgtyp=stable
 pkgrel=2
-pkgdesc="Linux client of Lark Suite"
+pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
 license=('LicenseRef-Lark-User-20250401')
@@ -13,14 +13,14 @@ depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
 makedepends=('curl')
 replaces=('bytedance-lark-dev-bin')
-provides=('bytedance-lark' 'lark')
+provides=('bytedance-lark=$pkgver' 'lark=$pkgver')
 options=('!emptydirs')
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
 	LICENSE.html::http://www.larksuite.com/en_us/user-terms-of-service)
 DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
 	"http::/usr/bin/sh -c curl\ -L\ %u\ \|\ sed\ \'s/abUuid\":\"\[\^\"\]\*/abUuid\":\"418/\'\ \>\ %o")
 sha256sums=('f81f93fd28a7abbbcf0e923479a582afdd63828a022175f5374a007a27192e9c'
-            '7ea0ce0939e3172e49d440b460091d8a7b23948b785258f09a5bfdf86e6abc53')
+	'7ea0ce0939e3172e49d440b460091d8a7b23948b785258f09a5bfdf86e6abc53')
 
 package() {
 	# License
@@ -56,7 +56,7 @@ package() {
 	# Icons
 	for size in 16 24 32 48 64 128 256; do
 		install -d "usr/share/icons/hicolor/${size}x${size}/apps/"
-	    ln -s "/usr/lib/lark/product_logo_${size}.png" "usr/share/icons/hicolor/${size}x${size}/apps/bytedance-lark.png"
+		ln -s "/usr/lib/lark/product_logo_${size}.png" "usr/share/icons/hicolor/${size}x${size}/apps/bytedance-lark.png"
 	done
 
 	# Fix directory permissions

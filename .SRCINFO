@@ -1,7 +1,7 @@
 pkgbase = larksuite-bin
-	pkgdesc = Linux client of Lark Suite
+	pkgdesc = Collaboration suite service for office messaging, calendars, meetings, docs...
 	pkgver = 7.46.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.larksuite.com
 	arch = x86_64
 	license = LicenseRef-Lark-User-20250401
@@ -13,13 +13,13 @@ pkgbase = larksuite-bin
 	depends = libmfx
 	depends = alsa-lib
 	optdepends = appmenu-gtk-module: Appmenu support
-	provides = bytedance-lark
-	provides = lark
+	provides = bytedance-lark=$pkgver
+	provides = lark=$pkgver
 	replaces = bytedance-lark-dev-bin
 	options = !emptydirs
 	source = Lark-linux_x64-7.46.12.deb::https://www.larksuite.com/api/package_info?platform=10
 	source = LICENSE.html::http://www.larksuite.com/en_us/user-terms-of-service
 	sha256sums = f81f93fd28a7abbbcf0e923479a582afdd63828a022175f5374a007a27192e9c
-	sha256sums = 2f9811a9849e20e6e0f321dd423d8be184751a61545acb501c64d444006dda35
+	sha256sums = 7ea0ce0939e3172e49d440b460091d8a7b23948b785258f09a5bfdf86e6abc53
 
 pkgname = larksuite-bin
