@@ -3,10 +3,10 @@
 pkgname=viu-media
 _pkgname=viu
 pkgver=3.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Viu, your browser anime experience, from the terminal. "
 arch=('x86_64')
-url="https://github.com/Benexl/viu"
+url="https://github.com/viu-media/viu"
 license=('Unlicense')
 makedepends=('python>=3.10' 'python-installer' 'python-build')
 depends=('python'
