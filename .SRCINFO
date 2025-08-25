@@ -1,0 +1,18 @@
+pkgbase = gitswitch-c
+	pkgdesc = Safe Git identity switching with SSH/GPG isolation (C implementation)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/gitswitchC
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = git
+	depends = openssh
+	depends = openssl
+	provides = gitswitch
+	conflicts = gitswitch
+	source = git+https://github.com/tenseleyFlow/gitswitchC.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = gitswitch-c
