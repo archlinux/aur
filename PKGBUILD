@@ -3,29 +3,31 @@
 # Contributor: Étienne Deparis <etienne@depar.is>
 
 pkgname=python-inotify-simple
-pkgver=1.3.5
+pkgver=2.0.1
 pkgrel=5
 pkgdesc='A simple Python wrapper around inotify'
 arch=(any)
 url=https://github.com/chrisjbillington/inotify_simple
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(python)
 makedepends=(
   git
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
-_tag=2a8f8305125c396896835f0ea4593477d007ff4b
-source=(git+https://github.com/chrisjbillington/inotify_simple.git#tag=${_tag})
-b2sums=(SKIP)
+source=(git+https://github.com/chrisjbillington/inotify_simple.git#tag=${pkgver})
+b2sums=('5b97415fb7db6f80ceb75ff89187645b38c76452f82c9b43a621bac6fe1335233af4f144e63a3c0f8efb72f9067ff47ef206b37be972452a446d76ed4e5bebde')
 
 build() {
   cd inotify_simple
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd inotify_simple
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/python-inotify-simple/
 }
 
