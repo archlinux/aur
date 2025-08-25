@@ -1,39 +1,122 @@
-# Maintainer: wyf9661 <wyf9661 at gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: wyf9661 <wyf9661 at gmail.com>
 # Contributor: zhufuyi <g.zhufuyi@gmail.com>
 
-pkgname=sponge
-pkgver=1.13.2
-pkgrel=4
-pkgdesc="A powerful and easy-to-use Go development framework that enables you to effortlessly build high-performance, highly available backend service systems through a 'low-code' approach."
-arch=(any)
-url="https://github.com/go-dev-frame/sponge"
-license=(MIT)
-depends=('glibc' 'go' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'swag')
-source=("$url/archive/v$pkgver/${pkgname}_${pkgver}_linux.zip")
-sha1sums=('f5e105d003d22b4b089f7d48af33b8f4fd276e5e')
+pkgbase="sponge"
+pkgname=(
+  "${pkgbase}"
+  "protoc-gen-go-gin"
+  "protoc-gen-go-rpc-tmpl"
+  "protoc-gen-json-field"
+)
+pkgver=1.14.6
+pkgrel=1
+pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
+arch=('x86_64')
+url="https://go-sponge.com"
+_url="https://github.com/go-dev-frame/${pkgbase}"
+license=('MIT')
+depends=(
+  'glibc'
+  'protobuf'
+)
+makedepends=(
+  'go'
+)
+_pkgsrc="${_url##*/}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('115d6db14c883afb403eca034506b9ded8c544230957d594cee85269a6f37836')
 
-build() {
-    mkdir -vp $pkgname-$pkgver/build
-    cd "$pkgname-$pkgver"
-    go build -ldflags "all=-s -w" ./cmd/sponge
-    export GOBIN=$PWD/build
-    make install
-    cd cmd/protoc-gen-json-field
-    export PATH=$PATH:$PWD && make
+prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  chmod -R ug+Xwr "${GOMODCACHE}"
+
+  mkdir -p "build"
 }
 
-package() {
-    install -dm755 "$pkgdir/usr/bin/"
+build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    install -Dm755 $pkgname-$pkgver/$pkgname -t "$pkgdir/usr/bin/"
-    install -Dm755 $pkgname-$pkgver/cmd/protoc-gen-json-field/protoc-gen-json-field -t "$pkgdir/usr/bin/"
+  cd "${srcdir}/${_pkgsrc}"
+  for _name in "${pkgname[@]}"; do
+    go build -v -o "build/${_name}" ./"cmd/${_name}"
+  done
+}
 
-    for file in "$srcdir/$pkgname-$pkgver/build"/protoc-gen-{validate,gotag,go-rpc-tmpl,go-gin,openapiv2,doc}; do
-        if [ -f "$file" ]; then
-            install -Dm755 "$file" -t "$pkgdir/usr/bin/"
-        fi
-    done
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
-    install -Dm644 $pkgname-$pkgver/README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-    install -Dm644 $pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+package_sponge() {
+  depends+=(
+   'protoc-gen-doc'
+   'protoc-gen-go'
+   "protoc-gen-go-gin=${pkgver}"
+   'protoc-gen-go-grpc'
+   "protoc-gen-go-rpc-tmpl=${pkgver}"
+   'protoc-gen-gotag'
+   "protoc-gen-json-field=${pkgver}"
+   'protoc-gen-openapiv2'
+   'protoc-gen-validate'
+   'swag'
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_protoc-gen-go-gin() {
+  pkgdesc="Protobuf plugin to generate Gin routes, handlers, RPC stubs, and error codes"
+  url="${_url}/tree/main/cmd/${pkgname}"
+  depends+=(
+    'protoc-gen-go'
+    'protoc-gen-go-grpc'
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "cmd/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+package_protoc-gen-go-rpc-tmpl() {
+  pkgdesc="Protobuf plugin to generate RPC service templates and RPC error codes"
+  url="${_url}/tree/main/cmd/${pkgname}"
+  depends+=(
+    'protoc-gen-go'
+    'protoc-gen-go-grpc'
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "cmd/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+package_protoc-gen-json-field() {
+  pkgdesc="Protobuf plugin to generate JSON field code from proto files"
+  url="${_url}/tree/main/cmd/${pkgname}"
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "cmd/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
