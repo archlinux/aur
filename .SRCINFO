@@ -5,7 +5,7 @@ pkgbase = multi-git-status
 	url = https://github.com/fboender/multi-git-status
 	arch = any
 	license = MIT
-	source = https://github.com/fboender/multi-git-status/archive/2.3.tar.gz
+	source = multi-git-status-2.3-1::https://github.com/fboender/multi-git-status/archive/2.3.tar.gz
 	sha256sums = 2634b4b8b3d69a397f5462ec1d72a77d5b395f363ed8e1aabfbf7e5e4172f93f
 
 pkgname = multi-git-status

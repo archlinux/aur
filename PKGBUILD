@@ -7,7 +7,7 @@ pkgdesc='Show uncommited, untracked and unpushed changes in multiple Git reposit
 arch=('any')
 url='https://github.com/fboender/multi-git-status'
 license=('MIT')
-source=("https://github.com/fboender/$pkgname/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('2634b4b8b3d69a397f5462ec1d72a77d5b395f363ed8e1aabfbf7e5e4172f93f')
 
 package() {
