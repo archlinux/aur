@@ -1,13 +1,13 @@
 pkgbase = alfathsave
 	pkgdesc = Alfath Save - PS2 VMC save file reader
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/yumanuralfath/alfath_save_ps2
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
 	makedepends = make
-	source = https://github.com/yumanuralfath/alfath_save_ps2/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/yumanuralfath/alfath_save_ps2/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = alfathsave
