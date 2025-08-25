@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jitsi-meet-desktop-git
 _pkgname='Jitsi Meet'
-pkgver=2025.4.0.r1.ga311032
-_electronversion=35
-_nodeversion=20
+pkgver=2025.4.0.r16.g04af37c
+_electronversion=37
+_nodeversion=22
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application.(Use system-wide electron)"
 arch=('any')
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
