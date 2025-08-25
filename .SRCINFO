@@ -1,17 +1,17 @@
 pkgbase = deckboard-bin
 	pkgdesc = Control your PC with your phone in easy way possible.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://deckboard.app/
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = asar
 	depends = electron29
-	provides = deckboard=3.1.2
+	provides = deckboard=3.1.3
 	conflicts = deckboard
-	source = deckboard-3.1.2.deb::https://github.com/rivafarabi/deckboard/releases/download/v3.1.2/deckboard_3.1.2_amd64.deb
+	source = deckboard-3.1.3.deb::https://github.com/rivafarabi/deckboard/releases/download/v3.1.3/deckboard_3.1.3_amd64.deb
 	source = deckboard.sh
-	sha256sums = 2dc2f43ca21fe4ce5275c4cbd1e7286760bd492ee2f75e5d218069750a8b945c
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 00aa6aaa6bd0a2ac246c908ba65313227173ee455a837ac8deaa316a90fa4626
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = deckboard-bin
