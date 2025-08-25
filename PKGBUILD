@@ -15,8 +15,8 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=8.0.12
-pkgrel=2
+pkgver=8.0.13
+pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -40,7 +40,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb-4.4.29-no-enterprise.patch
 		boost_issue_402.patch
 )
-sha256sums=('0e9000bd8674e8b7c4f48906f6799f9604a1d61f79220cbb099b231a50ac05ea'
+sha256sums=('43fddb27453bd94d9938a69fff50abe191f597ac10fe82a59ff150bab556ef39'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '3438f7f463b98270d1fe580b3153c19cff1c86c18745a40d4f2984e73086005e'
