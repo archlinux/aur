@@ -55,7 +55,7 @@ makedepends=(
   #'spdlog'         # When not using system packages, this gets downloaded to the build directory.
   'svt-av1'
   'uvg266'
-  'vvenc-git'       # As of 2025-08-24, vvenc-git is needed because vvenc does not install the file `/usr/lib/cmake/vvenc/vvencTargets-shared.cmake`. See https://aur.archlinux.org/packages/vvenc#comment-1037407.
+  'vvenc'           # Seems to be fixed in `aur/vvenc` (2025-08-25): As of 2025-08-24, vvenc-git is needed because vvenc does not install the file `/usr/lib/cmake/vvenc/vvencTargets-shared.cmake`. See https://aur.archlinux.org/packages/vvenc#comment-1037407.
   'vvdec'
   'vulkan-icd-loader'
   'x265'

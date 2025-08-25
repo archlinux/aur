@@ -37,7 +37,7 @@ pkgbase = hdrview-git
 	makedepends = sdl2
 	makedepends = svt-av1
 	makedepends = uvg266
-	makedepends = vvenc-git
+	makedepends = vvenc
 	makedepends = vvdec
 	makedepends = vulkan-icd-loader
 	makedepends = x265
@@ -59,7 +59,6 @@ pkgbase = hdrview-git
 	depends = vulkan-icd-loader
 	provides = hdrview=2.5.3+9.r689.20250824.84f4b6b
 	conflicts = hdrview
-	options = ccache
 	source = hdrview::git+https://github.com/wkjarosz/hdrview.git
 	sha256sums = SKIP
 
