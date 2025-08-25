@@ -3,7 +3,7 @@
 _pkgname=zephyr-sdk
 pkgname="${_pkgname}-bin"
 pkgver=0.17.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -51,8 +51,8 @@ package ()
   # Disables sanboxing on systems where libseccomp is available
   sed -i 's/xargs -n100 file/xargs -n100 file -S/' $pkgdir/$_installdir/zephyr-sdk-x86_64-hosttools-standalone-*.sh
 
-  install -Dm644 profile-zephyr-sdk.sh $pkgdir/etc/profile.d/zephyr-sdb.sh
-  install -Dm644 profile-zephyr-sdk.ash $pkgdir/etc/profile.d/zephyr-sdb.ash
+  install -Dm644 profile-zephyr-sdk.sh $pkgdir/etc/profile.d/zephyr-sdk.sh
+  install -Dm644 profile-zephyr-sdk.ash $pkgdir/etc/profile.d/zephyr-sdk.ash
 
   cd $pkgdir/$_installdir
 
