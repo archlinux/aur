@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,7 +28,7 @@ NAUTILUS_REQUIRED=2.0.0
+ NAUTILUS_EXT_LIB_NAME="$(pkg-config --exists libnautilus-extension-4 && echo libnautilus-extension-4 || echo libnautilus-extension)"
+ 
+ PKG_CHECK_MODULES([GLIB], [glib-2.0 >= $GLIB_REQUIRED])
+-PKG_CHECK_MODULES([GDK], [gdk-2.0 >= $GDK_REQUIRED])
++#PKG_CHECK_MODULES([GDK], [gdk-2.0 >= $GDK_REQUIRED])
+ PKG_CHECK_MODULES([ATK], [atk >= $ATK_REQUIRED])
+ PKG_CHECK_MODULES([NAUTILUS], [$NAUTILUS_EXT_LIB_NAME >= $NAUTILUS_REQUIRED])
+ 
