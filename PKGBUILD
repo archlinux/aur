@@ -1,3 +1,4 @@
+# shellcheck disable=2148,2034,2164,2154
 # Maintainer: Matthieu Ippersiel <matthieu.ippersiel@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
@@ -7,19 +8,19 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.26.2
+pkgver=2.27.1
 pkgrel=1
 pkgdesc="Web-based issue tracking system"
 arch=(any)
 url="https://www.mantisbt.org/"
 license=(GPL2)
-depends=(php)
+depends=(php-legacy)
 optdepends=(
   'curl: interface Twitter'
   'mariadb: use local MySQL server'
-  'php-fpm: run in fastCGI process manager'
-  'php-gd: generate captcha'
-  'php-pgsql: use PostgreSQL database backend'
+  'php-legacy-fpm: run in fastCGI process manager'
+  'php-legacy-gd: generate captcha'
+  'php-legacy-pgsql: use PostgreSQL database backend'
   'postgresql: use local PostgreSQL database'
   'uwsgi-plugin-php: run as application container'
 )
@@ -40,14 +41,10 @@ source=(
   "${pkgname}.tmpfiles"
   "${pkgname}.uwsgi"
 )
-sha512sums=('55a8cae5036c34fc346fb5585eeffdd86d252ac1f64bbf44e361d09aedad8a24ac4f047f2659ccc80343784aa92a1a4217fe2c41873b6c0ace208af7ebc37c55'
+sha512sums=('a326d5f745b4af1869aabed0d25c0979aa46a66ba389cfe07b1578b0910e0d87a64f54a6ce555177abae322bd483edbd127e5c7bf2dd0949835adb2a9f20cfb5'
   '3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e'
   '6f6c6ca7cafeb3f76ba0aa62af1a7adb39b87d7db201b30a52d57507b1333cdffd60ae787b15c97919380a7a133daef73bd22fde5cccda2d5b98f54b32049c5b'
   'c6033ab6bfe6c89c2918dde66b3ec912dc50d4c6ad34c413076e16ccb9c7374f5d65a637c2c8e935eabfbe354ff3f316cd1969bcc7b50dfec45628d8918aa07a')
-b2sums=('6020c68f80bcc3a3c61a234955b5b18361c34c6abff2a99e912e99581f4182a8ca9fd0f24c0186b82eebf2c0b38e8e3c63fb6a1b3af9577b0fc91995d1a00eaa'
-  'a533265d7bbbf1ae059a128baa43fb639e803094c62179252b416957fcfdb43a6068182d2bf29003c8fa55757a95bb1c3f054622bb0926055819c5dc989fe067'
-  '39b7704651933f3f153909e9b3900a65b24fc99eaa652c9b42affdaf1bb0b8383105573d7c8d9e6aa94250b9e5ea7b4ccc0dd781dbc888421930bc64773aa130'
-  '74954a9ee3e0fa390b8d80ba63023e523a6a816256d92c63b1b1a8d808c320d6c7bf3b336ccb2113876c0840010ccb273e3e9250d8a57d2634700ca7ca83edf5')
 install="${pkgname}.install"
 
 prepare() {
