@@ -1,6 +1,6 @@
 pkgbase = kdlfmt
 	pkgdesc = A formatter for kdl documents.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/hougesen/kdlfmt
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kdlfmt
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = kdlfmt-0.1.2.tar.gz::https://github.com/hougesen/kdlfmt/archive/refs/tags/v0.1.2.tar.gz
-	b2sums = 33570c2930a21674da1f4739e663e956e8b7561625b41f818d97db713a69601d7f1b31f5ca482010c0f938a8d7c2935ae98deea726e8da5cc171c595f8e841e8
+	source = kdlfmt-0.1.3.tar.gz::https://github.com/hougesen/kdlfmt/archive/refs/tags/v0.1.3.tar.gz
+	b2sums = e7550d9acc881b7a4c221e90faaad9cbd03f57712ad9c9a1e087f65e19c1d53c51bd1f34b0ae32f0676b0421fea85b041d563c2c27e98859bf4587d2f4d5eb96
 
 pkgname = kdlfmt
