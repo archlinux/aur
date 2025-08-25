@@ -3,8 +3,8 @@
 
 _basename="xf86-video-fbdev"
 pkgname="${_basename//xf86/xlibre}"
-pkgver=0.5.1.1
-pkgrel=2
+pkgver=0.5.1.2
+pkgrel=1
 pkgdesc="XLibre framebuffer video driver"
 arch=('aarch64' 'x86_64')
 url="https://github.com/X11Libre/${_basename}"
@@ -16,7 +16,7 @@ conflicts=("${_basename}" 'xorg-server<1.20.0' 'X-ABI-VIDEODRV_VERSION<28' 'X-AB
 groups=('xlibre-drivers')
 _pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-b2sums=('dccf9a08e4c690eb82bfa6d8ed98468dacc832945b7b006f4cf0dab2c5ee315529fd47b35fbb7d0a73c0509e492866bd6b2422fc40cff425a4f3bf09b3c17ad3')
+b2sums=('7aab30031d9810984f97cb436eb52cdb96b3aec6006a9374bc029b8da3e78f84c90b6705d94fdf58688ed3f9e47bedfae214b97dddf22475acd536c2c9b76f63')
 
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
