@@ -2,7 +2,7 @@
 # Contributor: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=pvs-studio
-pkgver=7.36.91321.455
+pkgver=7.38.96703.605
 pkgrel=1
 pkgdesc='Static code analyzer for C and C++'
 arch=('pentium4' 'x86_64')
@@ -17,7 +17,7 @@ install=${pkgname}.install
 _name=${pkgname}-${pkgver}-x86_64
 source=(${_name}.tgz::https://files.${pkgname}.com/${_name}.tgz)
 source_pentium4=(${pkgname}.binfmt.d)
-sha256sums=('c6b014968b6df3ba8289a8d579c2b0f53bd8c7eacc0dde46786d54237b9d1ea4')
+sha256sums=('76e594dcf1df6dcc6b1e819dbcfeb06afbda2646369551658a2b4731a38e0bbf')
 sha256sums_pentium4=('fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97')
 
 package() {
