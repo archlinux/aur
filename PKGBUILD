@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hdrhistogram_c
-pkgver=0.11.8
-pkgrel=4
+pkgver=0.11.9
+pkgrel=1
 pkgdesc="C port of the HdrHistogram"
 arch=('i686' 'x86_64')
 url="https://hdrhistogram.github.io/HdrHistogram/"
@@ -11,7 +11,7 @@ depends=('glibc' 'zlib')
 makedepends=('cmake')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/HdrHistogram/HdrHistogram_c/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('bb95351a6a8b242dc9be1f28562761a84d4cf0a874ffc90a9b630770a6468e94')
+sha256sums=('0eb5fdb9f1f8c4b9c6eb319502f8d9e28991afffb8418672a61741993855650e')
 
 
 build() {
