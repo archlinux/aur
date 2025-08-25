@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Network_jack <Network_jack@null.net>
 
 pkgname=python-aadict
 _pkgname=aadict
