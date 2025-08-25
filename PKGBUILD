@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.9.8.r110.413726b
+pkgver=1.9.8.r113.2de31fe
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -34,6 +34,7 @@ depends=(
 makedepends=(
   cli11
   cmake
+  fmt
   git
   gtest
   libseccomp

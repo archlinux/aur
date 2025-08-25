@@ -1,6 +1,6 @@
 pkgbase = linyaps-git
 	pkgdesc = Next-Gen Universal Package Manager for Linux (linglong)
-	pkgver = 1.9.8.r110.413726b
+	pkgver = 1.9.8.r113.2de31fe
 	pkgrel = 1
 	url = https://github.com/OpenAtom-Linyaps/linyaps
 	install = linyaps-git.install
@@ -8,6 +8,7 @@ pkgbase = linyaps-git
 	license = LGPL-3.0-or-later
 	makedepends = cli11
 	makedepends = cmake
+	makedepends = fmt
 	makedepends = git
 	makedepends = gtest
 	makedepends = libseccomp
