@@ -1,0 +1,4 @@
+[chronograph]
+source = "git"
+git = "https://github.com/Dzheremi2/Chronograph.git"
+prefix = "v"

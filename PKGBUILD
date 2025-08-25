@@ -1,0 +1,46 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+pkgname=chronograph
+pkgver=4.0
+pkgrel=1
+pkgdesc="Sync lyrics of your loved songs"
+arch=('any')
+url="https://github.com/Dzheremi2/Chronograph"
+license=('GPL-3.0-or-later')
+depends=(
+  'gtk4'
+  'libadwaita'
+  'python-certifi'
+  'python-charset-normalizer'
+  'python-dgutils'
+  'python-gobject'
+  'python-idna'
+  'python-magic'
+  'python-mutagen'
+  'python-pillow'
+  'python-requests'
+  'python-urllib3'
+  'python-yaml'
+)
+makedepends=(
+  'blueprint-compiler'
+  'meson'
+)
+source=("Chronograph-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3b5666466dfc21f4cfc8e1e282ae29fe0f505ba912fa46038f9e2b8fe95b1910')
+
+prepare() {
+  cd "Chronograph-$pkgver"
+}
+
+build() {
+  arch-meson "Chronograph-$pkgver" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --no-rebuild --print-errorlogs
+}
+
+package() {
+  meson install -C build --no-rebuild --destdir "$pkgdir"
+}
