@@ -1,0 +1,26 @@
+pkgbase = libebu
+	pkgver = 4.5_20220808
+	pkgrel = 1
+	url = http://green.ribbon.to/~ikazuhiro/dic/ebu.html
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = sed
+	makedepends = findutils
+	provides = libebu.so
+	provides = libebu
+	source = http://green.ribbon.to/~ikazuhiro/dic/files/ebu-4.5-20220808.tar.gz
+	sha256sums = 374e90f8738d0ffc7a1e2f3d1c2be70626135f89aeb0656bc7ab0a0eb66f5b89
+
+pkgname = libebu-zlib
+	pkgdesc = Modified EB Library with JIS X 4081 UTF-8 extensions (zlib)
+	depends = perl
+	depends = zlib
+	conflicts = libebu-libdeflate
+	replaces = libebu-libdeflate
+
+pkgname = libebu-libdeflate
+	pkgdesc = Modified EB Library with JIS X 4081 UTF-8 extensions (libdeflate)
+	depends = perl
+	depends = libdeflate
+	conflicts = libebu-zlib
+	replaces = libebu-zlib
