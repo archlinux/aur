@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-dialer
 pkgver=24.08.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Dialer for Plasma Mobile"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma-mobile/plasma-dialer"
