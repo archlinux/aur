@@ -1,7 +1,7 @@
-diff --git a/scons.py.orig b/scons.py
+diff --git a/buildscripts/scons.py.orig b/buildscripts/scons.py
 index 4ab1edc..3ae3d2a 100755
---- a/scons.py.orig
-+++ b/scons.py
+--- a/buildscripts/scons.py.orig
++++ b/buildscripts/scons.py
 @@ -19,13 +19,13 @@ SITE_TOOLS_DIR = os.path.join(MONGODB_ROOT, 'site_scons')
  sys.path = [SCONS_DIR, SITE_TOOLS_DIR] + sys.path
  
