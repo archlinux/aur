@@ -3,7 +3,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=youdao-dict
 pkgver=6.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc="YouDao Dictionary.(Prebuilt version)"
 arch=('x86_64')
 license=('LicenseRef-custom')
@@ -13,24 +13,24 @@ depends=(
 	'sqlite'
 	'python-dbus'
 	'python-lxml'
-	'python-webob'
+	#'python-webob'
 	'python-opengl'
 	'python-gobject'
 	'python-xlib'
 	'python-requests'
 	'gstreamer'
-	'python-pyquery'
-	'python-pyqt5-webkit'
+	#'python-pyquery'
+	#'python-pyqt5-webkit'
 	'gobject-introspection-runtime'
-	'python-cssselect'
+	#'python-cssselect'
 	'python-pyxdg'
-	'qt5-webkit'
+	#'qt5-webkit'
 	'qt5-quickcontrols'
 	'qt5-graphicaleffects'
 	'tesseract'
-	'tesseract-data-chi_sim'
-	'tesseract-data-eng'
-	'tesseract-data-chi_tra'
+	#'tesseract-data-chi_sim'
+	#'tesseract-data-eng'
+	#'tesseract-data-chi_tra'
 	'tesseract-data-osd'
 	'wqy-microhei'
 	'python-pillow'
@@ -62,6 +62,7 @@ prepare() {
 		53i\        spec.loader.exec_module(plugin)
 	" "${srcdir}/usr/share/${pkgname}/dae/plugins.py"
     sed -i "s/usr\/share/usr\/lib/g" "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service"
+	sed -i "37s/     print/    print/" "${srcdir}/usr/share/${pkgname}/${pkgname}-backend.py"
 }
 package(){
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
