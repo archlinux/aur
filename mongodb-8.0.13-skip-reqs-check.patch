@@ -1,0 +1,24 @@
+diff --git a/scons.py b/scons copy.py
+index 4ab1edc..3ae3d2a 100755
+--- a/scons.py
++++ b/scons copy.py	
+@@ -19,13 +19,13 @@ SITE_TOOLS_DIR = os.path.join(MONGODB_ROOT, 'site_scons')
+ sys.path = [SCONS_DIR, SITE_TOOLS_DIR] + sys.path
+ 
+ # pylint: disable=C0413
+-from mongo.pip_requirements import MissingRequirements, verify_requirements
++# from mongo.pip_requirements import MissingRequirements, verify_requirements
+ 
+-try:
+-    verify_requirements()
+-except MissingRequirements as ex:
+-    print(ex)
+-    sys.exit(1)
++# try:
++#     verify_requirements()
++# except MissingRequirements as ex:
++#     print(ex)
++#     sys.exit(1)
+ 
+ try:
+     import SCons.Script

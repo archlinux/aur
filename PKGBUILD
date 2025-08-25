@@ -16,7 +16,7 @@ pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=8.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -34,7 +34,7 @@ options=(!debug)
 source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb.sysusers
         mongodb.tmpfiles
-        mongodb-5.0.2-skip-reqs-check.patch
+        mongodb-8.0.13-skip-reqs-check.patch
         mongodb-5.0.2-no-compass.patch
         mongodb-8.0.12-sconstruct.patch
         mongodb-4.4.29-no-enterprise.patch
@@ -42,7 +42,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
 sha256sums=('43fddb27453bd94d9938a69fff50abe191f597ac10fe82a59ff150bab556ef39'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
-            '3438f7f463b98270d1fe580b3153c19cff1c86c18745a40d4f2984e73086005e'
+            '5cd4565dad0558e1d9d937003b571a8dfcd2160c1d6851750705b36e3fc1f28a'
             '41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
             'dd83d1ba0e2c4b9cd67986307b111aefaeab2f3cd9f1084e835fb1b7e976fdf6'
             '7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905')
