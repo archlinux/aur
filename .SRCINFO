@@ -1,0 +1,22 @@
+pkgbase = sentencepiece-bin
+	pkgdesc = Unsupervised text tokenizer for Neural Network-based text generation
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/google/sentencepiece
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = protobuf
+	provides = sentencepiece=0.2.1
+	provides = libsentencepiece.so
+	provides = libsentencepiece_train.so
+	conflicts = sentencepiece
+	source = sentencepiece-0.2.1-README.md::https://github.com/google/sentencepiece/raw/refs/tags/v0.2.1/README.md
+	source = sentencepiece-0.2.1-LICENSE::https://github.com/google/sentencepiece/raw/refs/tags/v0.2.1/LICENSE
+	sha256sums = 4d52487bc1fc01d5e2b2054be2861326dda7f0bfe42a6f4b46c0a6238f0951fd
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = sentencepiece-0.2.1-x86_64.7z::https://github.com/google/sentencepiece/releases/download/v0.2.1/sentencepiece-0.2.1-Linux-x86_64.7z
+	sha256sums_x86_64 = 654083fba04d00fdb1d7dcd7924c223f1962336244443fd60125fcf2c15fffb7
+
+pkgname = sentencepiece-bin

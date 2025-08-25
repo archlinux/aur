@@ -1,0 +1,5 @@
+[sentencepiece-bin]
+source = "github"
+github = "google/sentencepiece"
+use_latest_release = true
+prefix = "v"
