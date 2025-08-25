@@ -2,7 +2,7 @@
 pkgname=plasma-nano-git
 pkgver=6.3.90.r20.ge015e00
 pkgrel=1
-pkgdesc="A minimal plasma shell package intended for embedded devices."
+pkgdesc="A minimal plasma shell package intended for embedded devices"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/plasma-nano"
 license=('GPL2')
