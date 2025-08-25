@@ -1,10 +1,10 @@
 pkgbase = pacman-mirrors-helper-git
 	pkgdesc = A TUI/CLI tool to manage repository mirrors and configuration.
-	pkgver = r270.79a0c04
+	pkgver = r283.ff99aed
 	pkgrel = 1
 	url = https://codeberg.org/Application-Maker/pacman-mirrors-helper
 	arch = any
-	license = GPL-3.0-or-later
+	license = MIT
 	makedepends = coreutils
 	makedepends = git
 	depends = bash
