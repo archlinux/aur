@@ -1,0 +1,5 @@
+[nanocl-bin]
+source = "github"
+github = "next-hat/nanocl"
+use_latest_release = true
+prefix = "nanocl-"
