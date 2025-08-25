@@ -1,11 +1,11 @@
-# Maintainer: xeyossr
+# Maintainer: xeyossr (axrona)
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('any')
-url="https://github.com/xeyossr/anitr-cli"
+url="https://github.com/axrona/anitr-cli"
 license=('GPL3')
 depends=('mpv')
 makedepends=('go' 'git')
@@ -17,7 +17,7 @@ optdepends=(
   'youtube-dl: Anime indirme özelliği için'
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xeyossr/anitr-cli/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/axrona/anitr-cli/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
@@ -28,7 +28,7 @@ build() {
   go fmt ./...
 
   gobuildenv=$(go version)
-  go build -o build/anitr-cli -ldflags="-X 'github.com/xeyossr/anitr-cli/internal/update.version=${pkgver}' -X 'github.com/xeyossr/anitr-cli/internal/update.buildEnv=${gobuildenv}'"
+  go build -o build/anitr-cli -ldflags="-X 'github.com/axrona/anitr-cli/internal/update.version=${pkgver}' -X 'github.com/axrona/anitr-cli/internal/update.buildEnv=${gobuildenv}'"
 }
 
 package() {
