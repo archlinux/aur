@@ -1,57 +1,56 @@
-# Maintainer: goetzc
-# Maintainer: Kim Scarborough <sluggo@unknown.nu>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: goetzc
+# Contributor: Kim Scarborough <sluggo@unknown.nu>
+
 pkgname=cantata-git
-pkgver=2.5.0.r7607.e2a8aa496
+pkgver=3.3.1.r10.g60aaf95
 pkgrel=1
-pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
-arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-url="https://github.com/fenuks/cantata"
+pkgdesc="Qt6 graphical client for Music Player Daemon (MPD), nullobsi fork"
+arch=(x86_64 i686 aarch64 armv7h)
+url="https://github.com/nullobsi/cantata"
 license=(GPL3)
-depends=(qt5-multimedia
-         qt5-svg
+depends=(qt6-base
+         qt6-multimedia
+         qt6-svg
          libcdio-paranoia
          libmtp
          libmusicbrainz5
+         libcddb
+         taglib
+         libebur128
          media-player-info
          mpg123
-         taglib-extras
+         #taglib-extras
          udisks2
+         ffmpeg
+		 kitemviews
+
+        avahi gcc-libs zlib glibc
          )
+makedepends=(git cmake qt6-tools vulkan-headers)
 optdepends=('perl-uri: Dynamic playlist'
-            'mpd: Playback'
-            'ffmpeg: ReplayGain support'
-            )
-makedepends=(git cmake qt5-tools ffmpeg)
-conflicts=(cantata)
+            'mpd: Playback')
 provides=(cantata)
-source=("$pkgname::git+${url}.git")
+conflicts=(cantata)
+source=("cantata-nullobsi::git+https://github.com/nullobsi/cantata.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    # Add missing Git tag
-    git tag -f v2.5.0 46a6c7b5ec46184288a3efde8245921f36777146
-    printf "%s.r%s.%s" "$(git tag | tail -n 1 | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    if [[ -d build ]]; then
-        rm -rf build
-    fi
-    mkdir build
+  cd "cantata-nullobsi"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd build
-    cmake ../${pkgname} \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DENABLE_LIBVLC=OFF
-    make
+  cmake -B build -S "cantata-nullobsi" -Wno-dev \
+	-DBUNDLED_FONTAWESOME=ON \
+    -DQT_DIR=/usr/lib/cmake/Qt6 \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/bin
+
+  cmake --build build
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
-
-sha256sums=('SKIP')
