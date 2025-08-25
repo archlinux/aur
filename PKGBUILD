@@ -1,5 +1,5 @@
 # Maintainer: Iliya Aghamajidi <dozheiny@gmail.com>
-pkgname=barghman
+pkgname=barghman-git
 pkgver=r40.1a77da9
 pkgrel=1
 pkgdesc="A service that fetches Iran electricity blackout schedules and emails it as calendar (ICS) files."
