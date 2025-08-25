@@ -2,7 +2,7 @@
 
 pkgname=php83-cli-static-bin
 pkgver=8.3.24
-pkgrel=8
+pkgrel=9
 pkgdesc="A general-purpose scripting language that is especially suited to web development (8.3.x static precompiled binary)"
 arch=("x86_64" "aarch64")
 url="https://www.php.net"
@@ -71,8 +71,8 @@ source=("php-${pkgver}-cli-build-extensions.json::https://dl.static-php.dev/stat
 source_x86_64=("php-${pkgver}-cli-linux-x86_64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-${pkgver}-cli-linux-x86_64.tar.gz")
 source_aarch64=("php-${pkgver}-cli-linux-aarch64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-${pkgver}-cli-linux-aarch64.tar.gz")
 sha256sums=('d53e9261993abfe9106c67a82f475d697d9fe825a5d0e18f37a88585ab5a705a')
-sha256sums_x86_64=('04404847f5b68ffb44fb4732d7a1f5fe0d81eb9a292c5692b482b761530b674f')
-sha256sums_aarch64=('6c9073fa4048971dfb264dfc4af201a774ba1ab6992716e77f510d1268eecc5d')
+sha256sums_x86_64=('9b6fd584d6ca7da739eae7352653d74fc7fb1c3928e5dfa2dd257a0ff6aaf01c')
+sha256sums_aarch64=('7e54cc175c2ccaa800a37473964a2c7d8f0d367bdae8592e31e1284ef4d0c318')
 options=(!strip)
 
 package() {
