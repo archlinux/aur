@@ -1,35 +1,35 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Košava <kosava at archlinux dot us>
 
 pkgname=yarock
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
-pkgdesc='Modern looking music player designed to provide an easy and pretty music browser based on cover art'
-arch=('x86_64')
-url='http://seb-apps.github.io/yarock/'
-license=('GPL3')
-depends=('hicolor-icon-theme' 'htmlcxx' 'taglib' 'qt5-base')
-makedepends=('cmake' 'mpv' 'ninja' 'phonon-qt5' 'qt5-tools' 'vlc')
-optdepends=('mpv: Alternative audio backend'
-            'phonon-qt5: Default audio backend'
-            'vlc: Alternative audio backend')
-source=("https://launchpad.net/yarock/1.x/${pkgver}/+download/Yarock_${pkgver}_Sources.tar.gz")
-sha256sums=('fa55369a4d33d8d30828b6c4deb00e3bef15c9fdf52ed43e93d41f2297ee53f9')
-
-prepare() {
-  sed -i 's|/share/appdata|/share/metainfo|
-          /\/share\/pixmaps\//d' Yarock_${pkgver}_Sources/CMakeLists.txt
-}
+pkgdesc="Qt Modern Music Player with collection browse based on cover art"
+arch=(x86_64)
+url="https://github.com/sebaro/Yarock"
+license=(GPL-3.0-or-later)
+depends=(qt6-base qt6-multimedia htmlcxx taglib)
+makedepends=(cmake qt6-tools vulkan-headers)
+source=("yarok-${pkgver}.tar.gz::https://github.com/sebaro/Yarock/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('84842c2bce879b657737edb61441207d3067f2f42a401364a0166923c9060042')
 
 build() {
-  cmake -S Yarock_${pkgver}_Sources -B build -G Ninja \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DENABLE_MPV=ON \
-    -DENABLE_VLC=ON \
-    -DENABLE_PHONON=ON
+  local _flags=(
+    -DENABLE_QTMULTIMEDIA=ON
+    -DENABLE_MPV=OFF
+    -DENABLE_VLC=OFF
+    -DENABLE_PHONON=OFF
+  )
+
+  cmake -B build -S "Yarock-${pkgver}" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
   cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build
 }
