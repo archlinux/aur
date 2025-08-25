@@ -53,9 +53,9 @@ def githubMirror():
           print("opqq ERR: Aborted.", file=sys.stderr)
           sys.exit(2)
       status=os.system("makepkg -si")
-    finally:
-      os.chdir(cwd)
-      sys.exit(status)
+  finally:
+    os.chdir(cwd)
+    sys.exit(status)
 
 print("opqq INFO: Checking if available in your repos...")
 if os.system(f"pacman -Si {pkg}>/dev/null") == 0:
