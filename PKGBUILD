@@ -2,7 +2,7 @@
 
 _pkgname="aaaaxy"
 pkgname="${_pkgname}-bin"
-pkgver=1.6.271
+pkgver=1.6.283
 pkgrel=1
 pkgdesc="A nonlinear puzzle platformer taking place in impossible spaces"
 arch=('x86_64')
@@ -17,11 +17,11 @@ source=("${_pkgsrc}.desktop::${url}/raw/refs/tags/v${pkgver}/${_pkgname}.desktop
         "${_pkgsrc}.svg::${url}/raw/refs/tags/v${pkgver}/${_pkgname}.svg"
         "${_pkgsrc}-io.github.divverent.${_pkgname}.metainfo.xml::${url}/raw/refs/tags/v${pkgver}/io.github.divverent.${_pkgname}.metainfo.xml")
 source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.zip")
-b2sums=('7a5b2abd80f1c1468a129e3d766d66d2edbd058d70a00f9afe224162eaba61732028d18f50dd0b6348ee187d8a36b62cc3043af86c53b5cc9b8a6b6baf677f3e'
-        '7a8922bcca8de0efa70d6a922fe549be0380b224eb0e1bc4f8d94550bafe1c98347c905b73acc9f894590f1aaba2ccd5c05d969e6a690aec050b3162566d8cc9'
-        '6be6c260d3225ebae25c393ed82020572febaeed081d9e96fcf0723640f753b956199d22e432e67d2eebccf72dcc84a80c3a990d2b88370f6277ab0f655fce65'
-        'b8c4e5251ac715030bff4df7d6975a2638aa282c793722ad659fb2569b18ea874b52d889a4cb19d329d2b6ec6a80600d6f3dd89876fdd68ff0e9ec86cd3cbe67')
-b2sums_x86_64=('b759989f28ca0da03d5ca7bc1d5f5ca76df0510a07f2f1994079e49ba547412625d628e5e2f8033daed1111d45b2b2886db645200911dbf6fa3f8904ffb456ea')
+sha256sums=('98775b1b9cb0ff5bd34ea320e9010e6a5d460e47eb7fae5d7a3fec5a5d9a9365'
+            'd2a371c16ac7ac38030d0aa5bddaad1e2365ab56950c32c88e6915c44114fe4b'
+            'dc0e53a341b9d5656f0f0e0ce69d9f99dc5f2c74fe51eb79d5348a41d26b1028'
+            '1141526d8ca24e92e330d76ef0f3e18b1f31fd9f4824c4e6b63f9e5ba69de0d9')
+sha256sums_x86_64=('636907d6113ebe20a39d0bb49c18e1654348d3f7a1bf963089c1194bc72cd90f')
 
 package() {
   cd "${srcdir}"
