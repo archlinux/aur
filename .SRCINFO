@@ -1,0 +1,21 @@
+pkgbase = shtick
+	pkgdesc = Shell configuration manager with support for 16 different shells
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/shtickC
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = bash
+	optdepends = zsh: for zsh configuration support
+	optdepends = fish: for fish configuration support
+	optdepends = dash: for dash configuration support
+	optdepends = tcsh: for tcsh configuration support
+	optdepends = nushell: for nu configuration support
+	optdepends = xonsh: for xonsh configuration support
+	optdepends = elvish: for elvish configuration support
+	source = git+https://github.com/tenseleyFlow/shtickC.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = shtick
