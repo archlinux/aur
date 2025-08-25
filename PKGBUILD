@@ -3,11 +3,9 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
 
-: ${_cksum:=aea3db39b218623da2e7cf995ed5cb06f8cc28ddcd31fd2818e60d3b11203d0a}
-
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.25
+pkgver=13.26
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -26,22 +24,16 @@ optdepends=(
   'dh-make: convert source archives into Debian package source'
 )
 
-_source_main() {
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#tag=debian/$pkgver")
-  sha256sums=("${_cksum:?}")
-}
-
-_source_dh_strip_nd() {
-  conflicts+=("dh-strip-nondeterminism")
-
-  _pkgsrc_dh_strip_nd="strip-nondeterminism"
-  source+=("$_pkgsrc_dh_strip_nd"::"git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git")
-  sha256sums+=('SKIP')
-}
-
-_source_main
-_source_dh_strip_nd
+_pkgsrc="$_pkgname"
+_pkgsrc_dh_strip_nd="strip-nondeterminism"
+source=(
+  "$_pkgsrc"::"git+$url.git#tag=debian/$pkgver"
+  "$_pkgsrc_dh_strip_nd"::"git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git"
+)
+sha256sums=(
+  '5ee8275f007862574bff5655902b8faf1bf834a7ffadb1bb19a508500229c737'
+  'SKIP'
+)
 
 build() {
   cd "$_pkgsrc"
