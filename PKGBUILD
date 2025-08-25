@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=imputeTS
-_pkgver=3.3
+_pkgver=3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Time Series Missing Value Imputation"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92266787a6f8e6d4c6b49aee6aad307f')
-b2sums=('7c18d6d3ad8d15206f935c3da07694d1068e5414f35f7cc43725508f45599ac5362127dcc0c374252b1fe02f4c3b5663fad654f3edd3ccad11fb96a9f73faaa4')
+md5sums=('b29005e360b44936341510ff3381a510')
+b2sums=('eae400058ee1fb3eeb3fbcc183e77c8cdc48088a675f689db4cb5038f887b38b6cf6c17521f6ff0f5bbcf59fce8302e5b2c2623bbc773bae7ec390ac785da88b')
 
 build() {
   mkdir build
