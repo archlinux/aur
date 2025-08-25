@@ -6,3 +6,5 @@
 !.gitignore
 !site.config.m4
 !*.patch
+!keys/
+!keys/**

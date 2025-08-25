@@ -12,8 +12,9 @@ echo "[*] Testing shared library..."
 export LD_LIBRARY_PATH="${BUILD_LIB}:${LD_LIBRARY_PATH:-}"
 
 cat > test_dynamic.c <<'EOF'
-#include <libmilter/mfapi.h>
 #include <stdio.h>
+#include <stdbool.h>
+#include <libmilter/mfapi.h>
 
 int main(void) {
     printf("[OK] Shared library works\n");
@@ -27,8 +28,9 @@ rm -f test_dynamic test_dynamic.c
 
 echo "[*] Testing static library..."
 cat > test_static.c <<'EOF'
-#include <libmilter/mfapi.h>
 #include <stdio.h>
+#include <stdbool.h>
+#include <libmilter/mfapi.h>
 
 int main(void) {
     printf("[OK] Static library works\n");
