@@ -1,6 +1,6 @@
 pkgbase = nrip
 	pkgdesc = Safe rm with a graveyard (rm, list, prune, resurrect)
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Samtroulcode/NRip
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = nrip
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	provides = nrip=0.7.3
-	source = NRip-0.7.3.tar.gz::https://forgejo.dirty-flix-servarr.fr/Samda/NRip/archive/refs/tags/v0.7.3.tar.gz
-	sha256sums = c6bdcd0b110db5db717527a882f5578406251a8bbb6409fba38ab4ea069b043f
+	depends = fzf
+	provides = nrip=0.8.0
+	source = NRip-0.8.0.tar.gz::https://forgejo.dirty-flix-servarr.fr/Samda/NRip/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 005360431434c71ca982c0c7484a93a7828651ad8f3b86870342ce023a941cba
 
 pkgname = nrip
