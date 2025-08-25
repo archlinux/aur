@@ -1,0 +1,16 @@
+pkgbase = wezztershier-rust
+	pkgdesc = High-performance Rust GUI tuner for WezTerm configuration with embedded web interface
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/wezzteRust
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = wezterm: for WezTerm terminal emulator integration
+	provides = wezztershier-rust
+	source = git+https://github.com/tenseleyFlow/wezzteRust.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = wezztershier-rust
