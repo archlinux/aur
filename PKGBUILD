@@ -1,12 +1,12 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Peter Flynn <peter@flynn.network>
 pkgname=foundry-bin
-pkgver=1.0.0.e144b82070
+pkgver=1.3.2
 pkgrel=1
-pkgdesc="A blazing fast, portable and modular toolkit for Ethereum application development written in Rust"
+pkgdesc="Blazing fast, portable and modular Ethereum development toolkit written in Rust"
 arch=('aarch64' 'x86_64')
-url="https://github.com/gakonst/foundry"
-license=('APACHE')
+url="https://github.com/foundry-rs/foundry"
+license=('Apache')
 depends=('gcc-libs' 'openssl')
 makedepends=('curl' 'bash')
 makedepends_aarch64=('rust')
@@ -18,21 +18,12 @@ prepare() {
 	cd "$srcdir"
 	mkdir -p usr
 	export FOUNDRY_DIR="$srcdir/usr"
-	# Prevent .bashrc modification
-	export PATH="$PATH:$srcdir/usr/bin"
+	export PATH="$FOUNDRY_DIR/bin:$PATH"
 
-	if [ ! -s foundry.paradigm.xyz ]; then
-		echo "Foundry failed to download installer." >&2
-		exit 1
-	fi
 	chmod +x foundry.paradigm.xyz
-	./foundry.paradigm.xyz
-	if [ ! -s usr/bin/foundryup ]; then
-		echo "Foundry failed to download installer." >&2
-		exit 1
-	fi
-	usr/bin/foundryup
-	rm usr/bin/foundryup
+	./foundry.paradigm.xyz -y --no-modify-path
+	"$FOUNDRY_DIR/bin/foundryup" -y
+	rm "$FOUNDRY_DIR/bin/foundryup"
 }
 
 pkgver() {
