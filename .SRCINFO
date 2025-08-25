@@ -1,0 +1,15 @@
+pkgbase = fortsh
+	pkgdesc = Modern Unix shell implementation in Fortran 2018 with advanced features
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FortranGoingOnForty/fortsh
+	arch = x86_64
+	license = MIT
+	makedepends = gfortran>=11.0
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = git+https://github.com/FortranGoingOnForty/fortsh.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = fortsh
