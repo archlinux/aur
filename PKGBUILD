@@ -1,6 +1,6 @@
 # Maintainer: Rubin Bhandari <roobin.bhandari@gmail.com>
 pkgname=pokego-git
-pkgrel=2
+pkgrel=4
 pkgver=0.4.6
 pkgdesc="command-line tool that lets you display Pokémon sprites in color directly in your terminal."
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ package() {
 	install -Dm755 pokego "$pkgdir/usr/bin/pokego"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Install completions
-  install -Dm644 completions/pokego.bash "$pkgdir/usr/share/bash-completion/completions/pokego"
-  install -Dm644 completions/pokego.fish "$pkgdir/usr/share/fish/vendor_completions/pokego.fish"
-  install -Dm644 completions/pokego.zsh "$pkgdir/usr/share/zsh/site-functions/_pokego"
+	# Install completions
+	install -Dm644 completions/pokego.bash "$pkgdir/usr/share/bash-completion/completions/pokego"
+	install -Dm644 completions/pokego.fish "$pkgdir/usr/share/fish/vendor_completions/pokego.fish"
+	install -Dm644 completions/pokego.zsh "$pkgdir/usr/share/zsh/site-functions/_pokego"
 }
