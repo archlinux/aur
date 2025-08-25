@@ -9,7 +9,38 @@ arch=('x86_64')
 url='https://homestuck.giovanh.com/unofficial-homestuck-collection/'
 license=('GPL-3.0-or-later' 'LicenseRef-chrome' 'LicenseRef-electron')
 makedepends=('nodejs-lts-jod' 'gendesk' 'yarn' 'electron' 'python' 'python-setuptools' 'git')
-depends=('libxcrypt-compat')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libcups'
+    'libdrm'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxcrypt-compat'
+    'libxcursor'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxi'
+    'libxrandr'
+    'libxrender'
+    'libxss'
+    'libxtst'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+)
 source=("git+https://github.com/GiovanH/${pkgname}.git#tag=v${pkgver}"
         node-engines.patch)
 sha512sums=('9dff8d1f8d5e9cc7e86caa8a7f63c2a8749bf78d8c6c8487d773c1fc117db808dd9eb10d3c20856d2cddf01efe7e14d28c993a46e43302a68669c86a93ee5712'
