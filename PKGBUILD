@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Peter Flynn <peter@flynn.network>
 pkgname=foundry-bin
-pkgver=1.3.2.c4245d6633
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Blazing fast, portable and modular Ethereum development toolkit written in Rust"
 arch=('aarch64' 'x86_64')
@@ -10,40 +10,20 @@ license=('Apache')
 depends=('gcc-libs' 'openssl')
 makedepends=('curl' 'bash')
 makedepends_aarch64=('rust')
-provides=('foundry')
-source=('https://foundry.paradigm.xyz')
-sha256sums=('e4456a15d43054b537b329f6ca6d00962242050d24de4c59657a44bc17ad8a0c')
+provides=('foundry' 'forge' 'cast' 'anvil' 'chisel')
+conflicts=('foundry' 'foundry-git')
 
-prepare() {
-	cd "$srcdir"
-	mkdir -p usr
-	export FOUNDRY_DIR="$srcdir/usr"
-	export PATH="$FOUNDRY_DIR/bin:$PATH"
-
-	chmod +x foundry.paradigm.xyz
-	./foundry.paradigm.xyz -y --no-modify-path
-	"$FOUNDRY_DIR/bin/foundryup"
-	rm "$FOUNDRY_DIR/bin/foundryup"
-}
-
-pkgver() {
-	cd "$srcdir"
-	if [ ! -s usr/bin/forge ]; then
-		echo "Foundry failed to download tools." >&2
-		exit 1
-	fi
-    _v_str=$(usr/bin/forge -V) || {
-        echo "Foundry tools returned an error." >&2
-        exit 1
-    }
-    # Extract the version and commit hash
-    _version=$(echo "$_v_str" | sed -E 's/^forge ([0-9]+\.[0-9]+\.[0-9]+)-.*$/\1/')
-    _commit_hash=$(echo "$_v_str" | sed -E 's/.*\(([a-z0-9]+)\s.*/\1/')
-
-    # Combine version and commit hash in the format: 1.0.0.e144b82070
-    echo "${_version}.${_commit_hash}"
-}
+source_x86_64=("https://github.com/foundry-rs/foundry/releases/download/v${pkgver}/foundry_v${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/foundry-rs/foundry/releases/download/v${pkgver}/foundry_v${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('149a53fc2b5cfd4ecc8386fb10eae8e7e2772853b5cda5bba5ec4251c5550dc9')
+sha256sums_x86_64=('a4c9af730595767a1c6f4f27d6e014bb720d3c4e73574abac5a9754ae4ca18d3')
 
 package() {
-	cp -R "$srcdir/usr" "$pkgdir/"
+  cd "$srcdir"
+
+  # Install binaries
+  install -Dm755 forge   "$pkgdir/usr/bin/forge"
+  install -Dm755 cast    "$pkgdir/usr/bin/cast"
+  install -Dm755 anvil   "$pkgdir/usr/bin/anvil"
+  install -Dm755 chisel  "$pkgdir/usr/bin/chisel"
 }
