@@ -1,7 +1,7 @@
 # Maintainer: levinion <levinnion@gmail.com>
 pkgname=fzfmenu
-pkgver=0.1.0
-pkgrel=2
+pkgver=r14.e2d9810
+pkgrel=1
 pkgdesc="An application launcher based on fzf "
 url="https://github.com/levinion/fzfmenu"
 arch=("any")
@@ -15,15 +15,15 @@ source=(
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags --abbrev=0 | sed 's/^v//'
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
