@@ -2,14 +2,14 @@
 
 _pkgname=ncspot
 pkgname="${_pkgname}-git"
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
 url="https://github.com/hrkfdn/ncspot"
 license=('BSD-2-Clause')
 depends=('glibc' 'gcc-libs' 'openssl' 'libpulse' 'libxcb' 'dbus' 'hicolor-icon-theme')
-makedepends=('cargo' 'python' 'pkgconf' 'ueberzug' 'pandoc-cli' 'portaudio')
+makedepends=('git' 'cargo' 'python' 'pkgconf' 'ueberzug' 'pandoc-cli' 'portaudio')
 optdepends=(
    'ncurses: ncurses backend'
    'portaudio: PortAudio backend'
@@ -22,7 +22,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 
 prepare() {
