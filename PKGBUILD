@@ -1,14 +1,17 @@
 # Maintainer: My Name <andrea.venturini@tiscali.it>
 pkgname=igdesk
-pkgver=1.4_595
+igdeskver=1.4
+igdeskrel=614
+pkgver=${igdeskver}_${igdeskrel}
 pkgrel=1
 pkgdesc="IG DESK is a free signature tool developed by Intesi Group for all users who need to digitally sign documents from their desktop quickly and easily."
 arch=('x86_64')
 url="https://www.intesigroup.com/it/software-firma-digitale/ig-desk/"
 options=(!strip)
-source_x86_64=("https://github.com/intesi-group/ig-desk/releases/download/v1.4-595/IGDesk-${pkgver}-${arch}.AppImage")
+source_x86_64=("https://github.com/intesi-group/ig-desk/releases/download/v${igdeskver}-${igdeskrel}/IGDesk-${igdeskver}_${igdeskrel}-x86_64.AppImage")
+
 noextract=("${pkgname}-${pkgver}-${arch}.AppImage")
-sha256sums_x86_64=('70fe41fef9ddcdf547aa1be21fae56a36cb4419828ddb5f3166af61be00e4c9c')
+sha256sums_x86_64=('af475ad2af860cacac4b715e1c8709054488ab5afd5f7543b057c69bc1ecd4ca')
 
 package() {
 	install -Dm755 "${srcdir}/IGDesk-${pkgver}-${arch}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}"
