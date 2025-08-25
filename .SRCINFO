@@ -2,7 +2,7 @@ pkgbase = pkgview
 	pkgdesc = 🔍 View AUR PKGBUILD files quickly in your terminal.
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/xeyossr/pkgview
+	url = https://github.com/axrona/pkgview
 	arch = any
 	license = GPL3
 	makedepends = go
@@ -11,7 +11,7 @@ pkgbase = pkgview
 	optdepends = vim: Alternative editor
 	optdepends = nvim: Alternative editor
 	optdepends = jed: Alternative editor
-	source = pkgview-1.0.0.tar.gz::https://github.com/xeyossr/pkgview/archive/refs/tags/v1.0.0.tar.gz
+	source = pkgview-1.0.0.tar.gz::https://github.com/axrona/pkgview/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = pkgview
