@@ -4,7 +4,7 @@
 _pkgname=faraday
 __pkgname=fr
 pkgname=${_pkgname}-bin
-pkgver=0.2.13_alpha
+pkgver=0.2.14_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Faraday is a suite of tools built to help node operators and businesses run lnd, the leading implementation of the Lightning Network."
@@ -20,9 +20,9 @@ manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-v${
 "${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
-sha256sums=('1b86881bcf726938c67bad5e645d781b9574dcb8c0e4dff53b4afa90ca0044d0'
+sha256sums=('26b113af01a2b873854995c3d0948576154cf587b656bd550c3e3e65191b2974'
             'SKIP'
-            '7626b65a02ca84eeaa1e7126da1d7eff45d767a1f024646091bd34bd935427b5')
+            'd17e504e97cc0cd671c05c5f5ddab26dc681d8f7d60605eca90e0ac445f7791b')
 
 validpgpkeys=(
     'F4FC70F07310028424EFC20A8E4256593F177720')
