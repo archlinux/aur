@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor-bin
 _pkgname=MKEditor
-pkgver=3.2.0
+pkgver=3.4.0
 _electronversion=37
 pkgrel=1
 pkgdesc="The simple markdown editor.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://versyxdigital.github.io/mkeditor"
-_ghurl="https://github.com/mkeditorOSS/mkeditor"
+_ghurl="https://github.com/versyxdigital/mkeditor"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -15,11 +15,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-setup-v${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-setup-${pkgver}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mkeditorOSS/mkeditor/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('67078e5fbffdbaaf377edf0bd93f6c3757ced0d2bdbde09df65169767fcce586'
+sha256sums=('e3afd861db1b260da786269f1d11ab31bec72a98aa9a8832681f57c772a140bd'
             'df04ed7c37e0fac99d5fc54e9e2b9095fd3982b25013afdf9472f23bc571965c'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
