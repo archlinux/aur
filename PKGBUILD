@@ -3,29 +3,28 @@
 # Contributor: Košava <kosava at archlinux dot us>
 
 pkgname=yarock-mpv
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Qt Modern Music Player with collection browse based on cover art"
-arch=(i686 x86_64)
-url="https://launchpad.net/yarock"
+arch=(x86_64)
+url="https://github.com/sebaro/Yarock"
 license=(GPL-3.0-or-later)
-depends=(qt5-base htmlcxx taglib1 mpv)
-makedepends=(cmake qt5-tools qt5-x11extras)
+depends=(qt6-base htmlcxx taglib mpv)
+makedepends=(cmake qt6-tools vulkan-headers)
 provides=(yarock)
 conflicts=(yarock)
-source=("https://launchpad.net/yarock/1.x/${pkgver}/+download/Yarock_${pkgver}_Sources.tar.gz")
-sha256sums=('fa55369a4d33d8d30828b6c4deb00e3bef15c9fdf52ed43e93d41f2297ee53f9')
+source=("yarok-${pkgver}.tar.gz::https://github.com/sebaro/Yarock/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('84842c2bce879b657737edb61441207d3067f2f42a401364a0166923c9060042')
 
 build() {
   local _flags=(
-    -DENABLE_QT5=1
+    -DENABLE_QTMULTIMEDIA=OFF
     -DENABLE_MPV=ON
     -DENABLE_VLC=OFF
     -DENABLE_PHONON=OFF
-    -DTAGLIBCONFIG_EXECUTABLE:FILEPATH=/usr/bin/taglib1-config
   )
 
-  cmake -B build -S "Yarock_${pkgver}_Sources" -Wno-dev \
+  cmake -B build -S "Yarock-${pkgver}" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
