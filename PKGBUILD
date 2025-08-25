@@ -1,6 +1,8 @@
+# Maintainer: Brian Thompson <brianrobt at pm dot me>
+
 pkgname=stable-diffusion.cpp-vulkan-git
 pkgver=r256.5900ef6
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=("MIT")
 depends=(
@@ -18,7 +20,7 @@ makedepends=(
 arch=("x86_64")
 url="https://github.com/leejet/stable-diffusion.cpp"
 provides=("stable-diffusion.cpp")
-conflicts=("stable-diffusion.cpp" "llama.cpp-vulkan")
+conflicts=("stable-diffusion.cpp")
 source=("git+https://github.com/leejet/stable-diffusion.cpp.git"
         "git+https://github.com/ggerganov/ggml.git")
         # "001-fix-shared-lib-install.diff")
@@ -61,6 +63,12 @@ package() {
     DESTDIR="$pkgdir" cmake --install build-vulkan
     install -Dm644 stable-diffusion.cpp/LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 build-vulkan/bin/libstable-diffusion.so \
+	    "$pkgdir/usr/lib"
+
+    # Changing package name since it conflicts with an existing tool: https://github.com/leejet/stable-diffusion.cpp/issues/750
+    mv "$pkgdir/usr/bin/sd" "$pkgdir/usr/bin/stable-diffusion"
+
     # Remove ggml contents
     rm -r "$pkgdir/usr/include" \
           "$pkgdir/usr/lib/libggml.a"
