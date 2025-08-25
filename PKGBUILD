@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soulfire-bin
 _pkgname=SoulFire
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A frontend for the SoulFire server. It mainly targets the web, but uses native APIs using Tauri.(Prebuilt version)"
 arch=(
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('53e81b0851b7bde7e51ce678f297b49059cab66d82dd0739603c8d0b3f08cfcd')
-sha256sums_x86_64=('46682d26047c96e1a09845a1044c0ceb31397164a54ed10c52642d265038d54d')
+sha256sums_aarch64=('acff2821d9bb115c665e22df1e31715583e9e6adc8546132516f07b626a3b96b')
+sha256sums_x86_64=('d51aa6a9c42a136383f9207d6fa980f77f559dbf1ff75dd140d8910ab1932cf4')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/com.${pkgname%-bin}mc.${pkgname%-bin}/${pkgname%-bin}/g" \
