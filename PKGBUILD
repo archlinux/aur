@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-bigscreen-git
-pkgver=r1173.6c442f72
+pkgver=v5.26.90.r555.g6c442f7
 pkgrel=1
 pkgdesc="A big launcher giving you easy access to any installed apps and skills."
 arch=('any')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
         cd "plasma-bigscreen"
-        printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
