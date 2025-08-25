@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wallet-recovery-wizard-bin
 _pkgname=Wallet.Recovery.Wizard
-pkgver=5.0.7
+pkgver=5.1.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('15dc77d79c2fb6c91da9035c6c26b61f33394a2799824af62e2fca8ed7ec860f'
+sha256sums=('ee4817ce551b648d16f74c50a18dfa716f120ccd5a66fd22f2ac92c7eb835661'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname//./ }/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
