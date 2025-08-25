@@ -4,9 +4,9 @@
 # Contributor: Bertram Felgenhauer <int-e@gmx.de>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=camlidl
-pkgver=1.12
+pkgver=1.13
 _pkgver=${pkgver/\./}
-pkgrel=2
+pkgrel=1
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('x86_64')
 url="https://github.com/xavierleroy/camlidl"
@@ -17,7 +17,7 @@ options=(staticlibs)
 source=("https://github.com/xavierleroy/$pkgname/archive/$pkgname$_pkgver.tar.gz"
         META.camlidl
         patch.diff)
-sha256sums=('d6ab22a363f22798d303df3b0e54ba274f2c3d7ab7a3023fee1c73d8a21970aa'
+sha256sums=('c82bfd106208ebedd8c264300e939010f87eed83e6f6339e3a6cf8f66caeed54'
             'SKIP'
             'SKIP')
 
