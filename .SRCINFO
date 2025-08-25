@@ -1,0 +1,21 @@
+pkgbase = pvetui-git
+	pkgdesc = A terminal user interface (TUI) for Proxmox VE
+	pkgver = 1.0.5..r0.g39f6b21
+	pkgrel = 1
+	url = https://github.com/devnullvoid/proxmox-tui
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = kitty: Better terminal support
+	optdepends = alacritty: Better terminal support
+	provides = pvetui
+	conflicts = pvetui
+	conflicts = pvetui-bin
+	options = !debug
+	source = pvetui-git::git+https://github.com/devnullvoid/proxmox-tui.git#branch=master
+	sha256sums = SKIP
+
+pkgname = pvetui-git
