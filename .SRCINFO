@@ -13,7 +13,7 @@ pkgbase = wuming
 	depends = glib2
 	depends = gtk4
 	depends = libadwaita
-	provides = kapitano
+	provides = wuming
 	source = wuming-0.1.tar.gz::https://github.com/EricLin0509/WuMing/archive/refs/tags/v0.1.tar.gz
 	b2sums = 514e19328634b2fdc2b77e6ef3de13e46353145ea58f9fe025635cfb37e18e3b2c9bfd74b9adb0544fbc4c0130a7386ba2b77e0d24064a15a2f65f165263c6d7
 
