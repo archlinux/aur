@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plotROC
-_pkgver=2.3.1
+_pkgver=2.3.3
 pkgname=r-${_pkgname,,}
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='Generate Useful ROC Curve Charts for Print and Interactive Use'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2f2c7ebec7b9cb8ad41b5ade1951b9d9f0ec12611ec369e12b10a34e5bb05b96')
+sha256sums=('8bc762647cfc3213d204d5ed7303ff4331c08e0346f0367e2e1d772accdaacde')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
