@@ -1,0 +1,21 @@
+pkgbase = python-dgutils-git
+	pkgdesc = GTK apps development easement
+	pkgver = r2.dbdb61a
+	pkgrel = 1
+	url = https://github.com/dzheremi2/dgutils
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = gtk4
+	depends = python-gobject
+	depends = python-yaml
+	provides = python-dgutils
+	conflicts = python-dgutils
+	source = git+https://github.com/dzheremi2/dgutils.git
+	sha256sums = SKIP
+
+pkgname = python-dgutils-git
