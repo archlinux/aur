@@ -1,0 +1,5 @@
+[ascii-image-converter-bin]
+source = "github"
+github = "TheZoraiz/ascii-image-converter"
+use_latest_release = true
+prefix = "v"
