@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-mobile-git
-pkgver=r3661.3f0292220
+pkgver=v6.3.90.r195.g3f02922
 pkgrel=1
 pkgdesc="Plasma Mobile shell components."
 arch=('any')
@@ -29,7 +29,7 @@ md5sums=('SKIP')
 
 pkgver() {
         cd "plasma-mobile"
-        printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
