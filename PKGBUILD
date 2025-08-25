@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Peter Flynn <peter@flynn.network>
 pkgname=foundry-bin
-pkgver=1.3.2
+pkgver=1.3.2.c4245d6633
 pkgrel=1
 pkgdesc="Blazing fast, portable and modular Ethereum development toolkit written in Rust"
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('curl' 'bash')
 makedepends_aarch64=('rust')
 provides=('foundry')
 source=('https://foundry.paradigm.xyz')
-md5sums=('6d16faeb2fc8f12a0083623be892235e')
+sha256sums=('e4456a15d43054b537b329f6ca6d00962242050d24de4c59657a44bc17ad8a0c')
 
 prepare() {
 	cd "$srcdir"
@@ -22,7 +22,7 @@ prepare() {
 
 	chmod +x foundry.paradigm.xyz
 	./foundry.paradigm.xyz -y --no-modify-path
-	"$FOUNDRY_DIR/bin/foundryup" -y
+	"$FOUNDRY_DIR/bin/foundryup"
 	rm "$FOUNDRY_DIR/bin/foundryup"
 }
 

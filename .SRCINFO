@@ -12,7 +12,7 @@ pkgbase = foundry-bin
 	depends = openssl
 	provides = foundry
 	source = https://foundry.paradigm.xyz
-	md5sums = 6d16faeb2fc8f12a0083623be892235e
+	sha256sums = e4456a15d43054b537b329f6ca6d00962242050d24de4c59657a44bc17ad8a0c
 	makedepends_aarch64 = rust
 
 pkgname = foundry-bin
