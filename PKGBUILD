@@ -29,7 +29,7 @@ md5sums=('SKIP')
 
 pkgver() {
         cd "plasma-mobile"
-	git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
