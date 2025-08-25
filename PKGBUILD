@@ -3,7 +3,7 @@
 
 pkgname=nemu
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ncurses interface for QEMU"
 arch=(x86_64)
 url="https://github.com/nemuTUI/nemu"
@@ -15,6 +15,7 @@ sha256sums=('76e63121d68ede54b4274d6918a3344a46fc65420b0744947029f95076c2a193')
 
 build() {
   cmake -B build -S "nemu" -Wno-dev \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 

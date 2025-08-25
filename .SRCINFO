@@ -1,7 +1,7 @@
 pkgbase = nemu
 	pkgdesc = ncurses interface for QEMU
 	pkgver = 3.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nemuTUI/nemu
 	arch = x86_64
 	license = BSD-2-Clause
