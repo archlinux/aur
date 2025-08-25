@@ -49,7 +49,7 @@ _post_install_wheels() {
         echo ":: Installing Python wheel packages..."
         /opt/cellframe-node/python/bin/pip3 install "${WHEELS[@]}" &> /dev/null && echo ":: Installed wheel packages for Python development" \
             || echo ":: Failed to install Python wheel packages"
-        rm "$WHEEL_DIR"/*.whl && :: echo "Removed wheel packages" || echo ":: Failed to remove wheel packages"
+        rm "$WHEEL_DIR"/*.whl && echo ":: Removed wheel packages" || echo ":: Failed to remove wheel packages"
     else
         echo ":: Python or pip not found, skipping wheel installation..."
     fi
