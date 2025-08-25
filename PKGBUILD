@@ -1,7 +1,7 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=apache-gremlin-console
-pkgver=3.7.3
-pkgrel=2
+pkgver=3.7.4
+pkgrel=1
 pkgdesc="Gremlin console from Apache TinkerPop "
 arch=('any')
 url="https://tinkerpop.apache.org"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('bash' 'java-environment')
 makedepends=()
 source=(https://www.apache.org/dist/tinkerpop/${pkgver}/apache-tinkerpop-gremlin-console-${pkgver}-bin.zip)
-sha256sums=('8499a07d0245909e5471ec593783e03c844e58c74977f8bd2023a5273d1c9d21')
+sha256sums=('877ae0df1cd26d652224e18d54bbe43f57941eef3a7ee7a5eda17c945c5ead26')
 
 package() {
   cd apache-tinkerpop-gremlin-console-${pkgver}
