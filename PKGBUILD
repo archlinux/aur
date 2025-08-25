@@ -2,7 +2,7 @@
 pkgname=plasma-mobile-git
 pkgver=6.3.90.r195.g3f02922
 pkgrel=1
-pkgdesc="Plasma Mobile shell components."
+pkgdesc="Plasma Mobile shell components"
 arch=('any')
 url="https://invent.kde.org/plasma/plasma-mobile"
 license=('GPL2')
