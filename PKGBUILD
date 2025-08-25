@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bdash-bin
 _pkgname=Bdash
-pkgver=1.19.1
+pkgver=1.19.2
 _electronversion=32
 pkgrel=1
 pkgdesc="Simple SQL Client for lightweight data analysis.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bdash-app/bdash/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e484dd45061344f04345fdd57c325494d8c70ce9f164ac416754580988b99c81'
+sha256sums=('288d83d2cfd9b95bb0832ebb87c7da413d0b58446ae0ba0597e18b47f9d20ed2'
             '44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
