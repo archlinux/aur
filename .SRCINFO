@@ -1,19 +1,19 @@
 pkgbase = iptvnator-electron-bin
 	pkgdesc = IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.16.7
+	pkgver = 0.16.8
 	pkgrel = 1
 	url = https://github.com/Mikoshi-nyudo/iptvnator-electron
 	arch = x86_64
 	license = MIT
 	depends = electron27
 	depends = mpv
-	provides = iptvnator=0.16.7
+	provides = iptvnator=0.16.8
 	conflicts = iptvnator
-	source = iptvnator-electron-0.16.7.deb::https://github.com/Mikoshi-nyudo/iptvnator-electron/releases/download/v0.16.7/iptvnator_0.16.7_amd64.deb
-	source = LICENSE-0.16.7.md::https://raw.githubusercontent.com/Mikoshi-nyudo/iptvnator-electron/v0.16.7/LICENSE.md
+	source = iptvnator-electron-0.16.8.deb::https://github.com/Mikoshi-nyudo/iptvnator-electron/releases/download/v0.16.8/iptvnator_0.16.8_amd64.deb
+	source = LICENSE-0.16.8.md::https://raw.githubusercontent.com/Mikoshi-nyudo/iptvnator-electron/v0.16.8/LICENSE.md
 	source = iptvnator-electron.sh
-	sha256sums = 8eb8b2e9147e839d60e6874168bdcf5b9da048478ae2cb7243bfd52fae2b08fe
+	sha256sums = 2a02c91cec56feca4bb351a939d90be04fbb8172ce113d0af1e41625a3c03307
 	sha256sums = 475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = iptvnator-electron-bin

@@ -2,7 +2,7 @@
 _appname=iptvnator
 pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
-pkgver=0.16.7
+pkgver=0.16.8
 _electronversion=27
 pkgrel=1
 pkgdesc="IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)"
@@ -20,9 +20,13 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Mikoshi-nyudo/iptvnator-electron/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8eb8b2e9147e839d60e6874168bdcf5b9da048478ae2cb7243bfd52fae2b08fe'
+sha256sums=('2a02c91cec56feca4bb351a939d90be04fbb8172ce113d0af1e41625a3c03307'
             '475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,6 +36,7 @@ prepare() {
         s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g
         s/Video/AudioVideo/g
@@ -42,7 +47,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(192x192 256x256 512x512 1024x1024)
+    _icon_sizes=(16x16 192x192 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
