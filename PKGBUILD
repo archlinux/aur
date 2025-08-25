@@ -2,7 +2,7 @@
 # Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
 pkgname=rudesktop
-pkgver=2.7.1003
+pkgver=
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
