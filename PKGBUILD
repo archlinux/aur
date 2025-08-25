@@ -10,9 +10,9 @@ url="https://rudesktop.ru/downloads/"
 license=('custom')
 install=${pkgname}.install
 depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk3 python-pynput)
-sha256sums=('a83cb0c23f4e3616924aa03e57a009e00e5172310f3902a645cfc84db42d414a')
+sha256sums=('ed9e4ea76dccc28fadec9522cf54b7ad583ca62005ba0342b7b3ff16a58c63db')
 options=(!debug)
-source="https://storage.rudesktop.ru/download/rudesktop-2.8.1153-amd64.deb"
+source=("https://storage.rudesktop.ru/download/rudesktop-2.8.1153-amd64.deb")
 
 prepare() {
   cd "${srcdir}"
