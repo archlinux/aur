@@ -1,0 +1,5 @@
+[plexdrive-bin]
+source = "github"
+github = "plexdrive/plexdrive"
+use_latest_release = true
+prefix = "v"
