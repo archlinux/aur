@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-nano
 pkgver=6.4.4
-pkgrel=0
+pkgrel=1
 pkgdesc="A minimal plasma shell package intended for embedded devices."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/plasma-nano"
