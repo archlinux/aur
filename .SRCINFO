@@ -1,8 +1,8 @@
 pkgbase = viu-media-git
 	pkgdesc = Viu, your browser anime experience, from the terminal.
 	pkgver = 3.2.7.r4.de8b6b7
-	pkgrel = 2
-	url = https://github.com/Benexl/viu
+	pkgrel = 3
+	url = https://github.com/viu-media/viu
 	install = viu.install
 	arch = x86_64
 	license = Unlicense
@@ -37,7 +37,7 @@ pkgbase = viu-media-git
 	optdepends = feh: image viewer (for manga mode)
 	provides = viu-media
 	conflicts = viu-media
-	source = git+https://github.com/Benexl/viu.git
+	source = git+https://github.com/viu-media/viu.git
 	sha256sums = SKIP
 
 pkgname = viu-media-git
