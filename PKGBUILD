@@ -2,7 +2,7 @@
 
 pkgname=sunsetr-bin
 _realname=sunsetr
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland (pre-compiled binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ _extracted_dir_name="${_realname}-v${pkgver}"
 _local_tarball_name="${_realname}-${pkgver}-x86_64-linux.tar.gz"
 
 source=("${_local_tarball_name}::${url}/releases/download/v${pkgver}/${_github_asset_filename}")
-sha256sums=('98e8d26a7bb8d2e3da82a16551888077640e8e1b2b9593a033e5e9f38bd0b973')
+sha256sums=('59159794735a0eb756ccf4ea0ffdd1755378f67e540e47b96eee2c98012573a6')
 
 package() {
     # The files are inside: ${srcdir}/${_extracted_dir_name}/
@@ -36,6 +36,12 @@ package() {
     # Install the systemd user service file
     install -Dm644 "${srcdir}/${_extracted_dir_name}/${_realname}.service" \
                     "${pkgdir}/usr/lib/systemd/user/${_realname}.service"
+
+    # Install systemd sleep hook for instant resume updates (if present in release)
+    if [ -f "${srcdir}/${_extracted_dir_name}/system-sleep/${_realname}-resume.sh" ]; then
+        install -Dm755 "${srcdir}/${_extracted_dir_name}/system-sleep/${_realname}-resume.sh" \
+                        "${pkgdir}/usr/lib/systemd/system-sleep/${_realname}-resume"
+    fi
 
     # Install README
     install -Dm644 "${srcdir}/${_extracted_dir_name}/README.md" \
