@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ucm-desktop-bin
 _pkgname='UCM Desktop'
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A desktop app companion to the UCM CLI.(Prebuilt version)"
 arch=(
@@ -23,8 +23,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/unisonweb/ucm-desk
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
 sha256sums=('1a6dcace03c9ae60da5594e77bff3207de150a7e1b257b43f3ba53b21a6b2b3a')
-sha256sums_aarch64=('0fc87c2ea4d2309610228f9eafbd338a96ac982aad4f8f515089977b44dd71fc')
-sha256sums_x86_64=('891c01f60a82c2a974a7807831f9915fab5640be967b70be741463bc7ba5cecd')
+sha256sums_aarch64=('afe8a547da18411259777f7b773c6a48fe346ca9212a763ee9314472bed59e92')
+sha256sums_x86_64=('05049494a72f21fee5c3c5d81e20373296cc1aca179d3f0b939704d94ef6997f')
 prepare() {
     sed -i "s/Categories=/Categories=Development;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
