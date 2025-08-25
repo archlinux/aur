@@ -2,13 +2,13 @@
 
 pkgname=('angle')
 pkgver=7258
-pkgrel=4
+pkgrel=5
 pkgdesc="A conformant OpenGL ES implementation for Windows, Mac, Linux, iOS and Android."
 arch=('x86_64')
 url="https://chromium.googlesource.com/angle/angle"
 license=('BSD-3-Clause')
 depends=('zlib' 'libglvnd' 'freetype2' 'expat' 'libpng' 'libjpeg-turbo' 'fontconfig' 'harfbuzz' 'gcc-libs' 'libwebp' 'glibc')
-makedepends=('git' 'python' 'procps-ng' 'ninja' 'gn')
+makedepends=('git' 'python' 'procps-ng' 'ninja' 'gn' 'patchelf')
 provides=(angle)
 conflicts=(angle)
 source=(
@@ -16,32 +16,68 @@ source=(
     "angle.pc"
     "vk.patch"
     "gclient_args.gni"
+
+    "build::git+https://chromium.googlesource.com/chromium/src/build.git#commit=169fcf699b64d2d5e75a391beaec8a7ad6e41a7f"
+    "testing::git+https://chromium.googlesource.com/chromium/src/testing#commit=0d5210a4b1978e7e2c6b8623c719dff0a0994a8f"
+    "abseil-cpp::git+https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp#commit=e3d58ba1a2a04f85225c3c04fa4603bb64399b2c"
+    "astc-encoder::git+https://chromium.googlesource.com/external/github.com/ARM-software/astc-encoder#commit=2319d9c4d4af53a7fc7c52985e264ce6e8a02a9b"
+    "EGL-Registry::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/EGL-Registry#commit=7dea2ed79187cd13f76183c4b9100159b9e3e071"
+    "libdrm::git+https://chromium.googlesource.com/chromiumos/third_party/libdrm.git#commit=ad78bb591d02162d3b90890aa4d0a238b2a37cde"
+    "jsoncpp::git+https://chromium.googlesource.com/chromium/src/third_party/jsoncpp#commit=f62d44704b4da6014aa231cfc116e7fd29617d2a"
+    "jsoncpp_upstream::git+https://chromium.googlesource.com/external/github.com/open-source-parsers/jsoncpp.git"
+    "OpenGL-Registry::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/OpenGL-Registry#commit=200cea4030cb49d3e40677379e6368a5f0e8c27b"
+    "rapidjson::git+https://chromium.googlesource.com/external/github.com/Tencent/rapidjson#commit=781a4e667d84aeedbeb8184b7b62425ea66ec59f"
+    "spirv-headers::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/SPIRV-Headers#commit=2a611a970fdbc41ac2e3e328802aed9985352dca"
+    "spirv-tools::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/SPIRV-Tools#commit=108b19e5c6979f496deffad4acbe354237afa7d3"
+    "vulkan-headers::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Headers#commit=10739e8e00a7b6f74d22dd0a547f1406ff1f5eb9"
+    "vulkan-loader::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Loader#commit=c8a2c8c9164a58ce71c1c77104e28e8de724539e"
+    "vulkan-tools::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Tools#commit=e3fc64396755191b3c51e5c57d0454872e7fa487"
+    "vulkan_memory_allocator::git+https://chromium.googlesource.com/external/github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator#commit=56300b29fbfcc693ee6609ddad3fdd5b7a449a21"
+    "zlib::git+https://chromium.googlesource.com/chromium/src/third_party/zlib#commit=4028ebf8710ee39d2286cb0f847f9b95c59f84d8"
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
+
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
-prepare() {    
-    { [ -d angle/build/.git ] || git clone https://chromium.googlesource.com/chromium/src/build.git angle/build; } && git -C angle/build reset --hard 169fcf699b64d2d5e75a391beaec8a7ad6e41a7f
-    { [ -d angle/testing/.git ] || git clone https://chromium.googlesource.com/chromium/src/testing angle/testing; } && git -C angle/testing reset --hard 0d5210a4b1978e7e2c6b8623c719dff0a0994a8f
-    { [ -d angle/third_party/abseil-cpp/.git ] || git clone https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp angle/third_party/abseil-cpp; } && git -C angle/third_party/abseil-cpp reset --hard e3d58ba1a2a04f85225c3c04fa4603bb64399b2c
-    { [ -d angle/third_party/astc-encoder/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/ARM-software/astc-encoder angle/third_party/astc-encoder/src; } && git -C angle/third_party/astc-encoder/src reset --hard 2319d9c4d4af53a7fc7c52985e264ce6e8a02a9b
-    { [ -d angle/third_party/EGL-Registry/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/KhronosGroup/EGL-Registry angle/third_party/EGL-Registry/src; } && git -C angle/third_party/EGL-Registry/src reset --hard 7dea2ed79187cd13f76183c4b9100159b9e3e071
-    { [ -d angle/third_party/libdrm/src/.git ] || git clone https://chromium.googlesource.com/chromiumos/third_party/libdrm.git angle/third_party/libdrm/src; } && git -C angle/third_party/libdrm/src reset --hard ad78bb591d02162d3b90890aa4d0a238b2a37cde
-    { [ -d angle/third_party/jsoncpp/.git ] || git clone https://chromium.googlesource.com/chromium/src/third_party/jsoncpp angle/third_party/jsoncpp; } && git -C angle/third_party/jsoncpp reset --hard f62d44704b4da6014aa231cfc116e7fd29617d2a
-    { [ -d angle/third_party/jsoncpp/source/.git ] || git clone https://chromium.googlesource.com/external/github.com/open-source-parsers/jsoncpp.git angle/third_party/jsoncpp/source; }
-    { [ -d angle/third_party/OpenGL-Registry/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/KhronosGroup/OpenGL-Registry angle/third_party/OpenGL-Registry/src; } && git -C angle/third_party/OpenGL-Registry/src reset --hard 200cea4030cb49d3e40677379e6368a5f0e8c27b
-    { [ -d angle/third_party/rapidjson/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/Tencent/rapidjson angle/third_party/rapidjson/src; } && git -C angle/third_party/rapidjson/src reset --hard 781a4e667d84aeedbeb8184b7b62425ea66ec59f
-    { [ -d angle/third_party/spirv-headers/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/KhronosGroup/SPIRV-Headers angle/third_party/spirv-headers/src; } && git -C angle/third_party/spirv-headers/src reset --hard 2a611a970fdbc41ac2e3e328802aed9985352dca
-    { [ -d angle/third_party/spirv-tools/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/KhronosGroup/SPIRV-Tools angle/third_party/spirv-tools/src; } && git -C angle/third_party/spirv-tools/src reset --hard 108b19e5c6979f496deffad4acbe354237afa7d3
-    { [ -d angle/third_party/vulkan-headers/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Headers angle/third_party/vulkan-headers/src; } && git -C angle/third_party/vulkan-headers/src reset --hard 10739e8e00a7b6f74d22dd0a547f1406ff1f5eb9
-    { [ -d angle/third_party/vulkan-loader/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Loader angle/third_party/vulkan-loader/src; } && git -C angle/third_party/vulkan-loader/src reset --hard c8a2c8c9164a58ce71c1c77104e28e8de724539e
-    { [ -d angle/third_party/vulkan-tools/src/.git ] || git clone https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Tools angle/third_party/vulkan-tools/src; } && git -C angle/third_party/vulkan-tools/src reset --hard e3fc64396755191b3c51e5c57d0454872e7fa487
-    { [ -d angle/third_party/vulkan_memory_allocator/.git ] || git clone https://chromium.googlesource.com/external/github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator angle/third_party/vulkan_memory_allocator; } && git -C angle/third_party/vulkan_memory_allocator reset --hard 56300b29fbfcc693ee6609ddad3fdd5b7a449a21
-    { [ -d angle/third_party/zlib/.git ] || git clone https://chromium.googlesource.com/chromium/src/third_party/zlib angle/third_party/zlib; } && git -C angle/third_party/zlib reset --hard 4028ebf8710ee39d2286cb0f847f9b95c59f84d8
+prepare() {
+    rm -fr angle/build; ln -s "${srcdir}/build" angle/build
+    rm -fr angle/testing; ln -s "${srcdir}/testing" angle/testing
+    rm -fr angle/third_party/abseil-cpp; ln -s "${srcdir}/abseil-cpp" angle/third_party/abseil-cpp
+    rm -fr angle/third_party/astc-encoder/src; ln -s "${srcdir}/astc-encoder" angle/third_party/astc-encoder/src
+    rm -fr angle/third_party/EGL-Registry/src; ln -s "${srcdir}/EGL-Registry" angle/third_party/EGL-Registry/src
+    rm -fr angle/third_party/libdrm/src; ln -s "${srcdir}/libdrm" angle/third_party/libdrm/src
+    rm -fr angle/third_party/jsoncpp; ln -s "${srcdir}/jsoncpp" angle/third_party/jsoncpp
+    rm -fr angle/third_party/jsoncpp/source; ln -s "${srcdir}/jsoncpp_upstream" angle/third_party/jsoncpp/source
+    rm -fr angle/third_party/OpenGL-Registry/src; ln -s "${srcdir}/OpenGL-Registry" angle/third_party/OpenGL-Registry/src
+    rm -fr angle/third_party/rapidjson/src; ln -s "${srcdir}/rapidjson" angle/third_party/rapidjson/src
+    rm -fr angle/third_party/spirv-headers/src; ln -s "${srcdir}/spirv-headers" angle/third_party/spirv-headers/src
+    rm -fr angle/third_party/spirv-tools/src; ln -s "${srcdir}/spirv-tools" angle/third_party/spirv-tools/src
+    rm -fr angle/third_party/vulkan-headers/src; ln -s "${srcdir}/vulkan-headers" angle/third_party/vulkan-headers/src
+    rm -fr angle/third_party/vulkan-loader/src; ln -s "${srcdir}/vulkan-loader" angle/third_party/vulkan-loader/src
+    rm -fr angle/third_party/vulkan-tools/src; ln -s "${srcdir}/vulkan-tools" angle/third_party/vulkan-tools/src
+    rm -fr angle/third_party/vulkan_memory_allocator; ln -s "${srcdir}/vulkan_memory_allocator" angle/third_party/vulkan_memory_allocator
+    rm -fr angle/third_party/zlib; ln -s "${srcdir}/zlib" angle/third_party/zlib
 
     cp gclient_args.gni angle/build/config
     cd angle
