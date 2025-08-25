@@ -1,4 +1,5 @@
 pkgbase = doas-sudo-shim-k
+<<<<<<< HEAD
 	pkgdesc = Wrapper for sudo which utilizes doas (includes -k flag to ensure makepkg compatibility)
 	pkgver = 0.1.2.1k
 	pkgrel = 1
@@ -13,6 +14,22 @@ pkgbase = doas-sudo-shim-k
 	conflicts = sudo
 	conflicts = doas-sudo-shim
 	source = doas-sudo-shim-0.1.2.1k.tar.gz::https://github.com/mckaygerhard/doas-sudo-shim/archive/refs/tags/v0.1.2.1.tar.gz
+=======
+	pkgdesc = Sudo wrapper which wields doas (includes -k flag to ensure makepkg compatibility!)
+	pkgver = 0.1.2.1
+	pkgrel = 2
+	url = https://github.com/fclivaz42/doas-sudo-shim
+	arch = any
+	license = ISC
+	depends = awk
+	depends = doas
+	depends = sh
+	optdepends = asciidoctor: manpage generator
+	provides = sudo
+	conflicts = sudo
+	conflicts = doas-sudo-shim
+	source = doas-sudo-shim-0.1.2.1.tar.gz::https://github.com/mckaygerhard/doas-sudo-shim/archive/refs/tags/v0.1.2.1.tar.gz
+>>>>>>> 0216343 (for luluco250 ;3)
 	sha256sums = 32719b1bd71d9f47137723ca8fd40c276aff728a910624bb38e35c66d4f132bc
 
 pkgname = doas-sudo-shim-k
