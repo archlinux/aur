@@ -1,0 +1,17 @@
+pkgbase = lib32-zix
+	pkgdesc = A lightweight C99 portability and data structure library
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://gitlab.com/drobilla/zix
+	arch = x86_64
+	license = custom:ISC
+	makedepends = meson
+	source = https://download.drobilla.net/zix-0.6.2.tar.xz
+	source = https://download.drobilla.net/zix-0.6.2.tar.xz.sig
+	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
+	sha512sums = 3b072f00481a34e8b900311c2dc77fd73a63a34f69ea953be6b714f5bcbdebcc3cdd81feae73b5ad2bdc09a4bac122e12d9035cfc417ca41dfe5230d1fe13d9c
+	sha512sums = SKIP
+	b2sums = 230d9f6717f10ac6f7608593fa94331a4aebd8c4c1c59f1db5a7d1881d674d687d67c353c3944bf4649ea5cbb49a8c4afe8abc82bad9eaf84bff79777a0a91e1
+	b2sums = SKIP
+
+pkgname = lib32-zix
