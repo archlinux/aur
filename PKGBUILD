@@ -5,7 +5,7 @@
 pkgname=lib32-ladspa
 _name="${pkgname/lib32-}"
 pkgver=1.17
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux Audio Developer's Simple Plugin API"
 arch=(x86_64)
 url="https://www.ladspa.org/"
