@@ -2,7 +2,7 @@
 
 pkgname=('angle')
 pkgver=7258
-pkgrel=3
+pkgrel=4
 pkgdesc="A conformant OpenGL ES implementation for Windows, Mac, Linux, iOS and Android."
 arch=('x86_64')
 url="https://chromium.googlesource.com/angle/angle"
@@ -95,6 +95,7 @@ package() {
         libfeature_support
     )
     for lib in "${libs[@]}"; do
+        patchelf --set-rpath "/opt/angle/usr/lib" "out/Release/$lib.so"
         install -D -m644 "out/Release/$lib.so" "$pkgdir/opt/angle/usr/lib/$lib.so"
     done
 
