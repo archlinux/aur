@@ -1,12 +1,11 @@
 pkgbase = gtkwave-gtk3-tcl
 	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files (GTK+ 3 version, with Tcl/Tk support)
-	pkgver = 3.3.123
+	pkgver = 3.3.124
 	pkgrel = 1
 	url = http://gtkwave.sourceforge.net
 	install = gtkwave.install
 	arch = x86_64
-	license = GPL
-	license = MIT
+	license = GPL-2.0-or-later AND MIT
 	makedepends = gperf
 	depends = bzip2
 	depends = xz
@@ -16,7 +15,7 @@ pkgbase = gtkwave-gtk3-tcl
 	depends = tk
 	provides = gtkwave
 	conflicts = gtkwave
-	source = https://downloads.sourceforge.net/project/gtkwave/gtkwave-gtk3-3.3.123/gtkwave-gtk3-3.3.123.tar.gz
-	sha256sums = c2209d6c38e2bfe9747538bc3820d3525e88bd66c4ce092d04d2417e666bd797
+	source = https://downloads.sourceforge.net/project/gtkwave/gtkwave-gtk3-3.3.124/gtkwave-gtk3-3.3.124.tar.gz
+	sha256sums = 4b1590e05e3e3ae26e34fa80aff369254397379b2f970cfa99150b8b97e535cf
 
 pkgname = gtkwave-gtk3-tcl
