@@ -3,8 +3,8 @@
 
 _basename="xf86-input-evdev"
 pkgname="${_basename//xf86/xlibre}"
-pkgver=2.11.0.1
-pkgrel=2
+pkgver=2.11.0.2
+pkgrel=1
 pkgdesc="XLibre evdev input driver"
 arch=('aarch64' 'x86_64')
 url="https://github.com/X11Libre/${_basename}"
@@ -16,7 +16,7 @@ conflicts=("${_basename}" 'xorg-server<21.1.1' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-
 groups=('xlibre-drivers')
 _pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-b2sums=('339e23ec883fc5870dd9c6b5e60330e09c7a898aa079892e338bc140f8c5f71f9139114d5986483a55e4ec1ce2f03f74d9cb4c170d11c0471069685545b62585')
+b2sums=('4f126995f5a91f1142ddf2965e4b26b991e956b9bfdfa4095de99c840ffa53f960cc8bcc166790aa01747650e28480c4f438b4ff03cbb0b37a4fe385462cfc2b')
 
 build() {
   local configure_options=(
