@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Schleifer <js@nil.im>
 pkgname=('libobjfw' 'libobjfwrt' 'libobjfwtls' 'libobjfwhid' 'ofarc' 'ofdns'
-         'ofhash' 'ofhttp')
+         'ofgctester' 'ofhash' 'ofhttp')
 pkgbase=objfw
-pkgver=1.3
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Portable, lightweight framework for the Objective-C language"
 arch=('x86_64')
@@ -11,12 +11,12 @@ license=('LGPL3')
 groups=(objfw)
 makedepends=(clang)
 source=("https://objfw.nil.im/downloads/$pkgbase-$pkgver.tar.gz")
-sha256sums=(de9e8a84437c01dacb9e83d7de0e3f7add3152165707d51a4caec640e4f56ba6)
+sha256sums=(e223b1cae37453f02ea98f085c3c1f4b78dcf7c16b43d35b05d9ad4480e175b2)
 
 build() {
 	cd "$pkgbase-$pkgver"
 	./configure OBJC=clang --prefix=/usr --with-tls=openssl
-	make
+	make -j$(nproc)
 }
 
 check() {
@@ -38,6 +38,7 @@ package_libobjfw() {
 	# Those are in subpackages
 	rm -f "$pkgdir/usr/bin/ofarc"
 	rm -f "$pkgdir/usr/bin/ofdns"
+	rm -f "$pkgdir/usr/bin/ofgctester"
 	rm -f "$pkgdir/usr/bin/ofhash"
 	rm -f "$pkgdir/usr/bin/ofhttp"
 	rm -fr "$pkgdir/usr/include/ObjFWHID"
@@ -50,6 +51,7 @@ package_libobjfw() {
 	rm -f "$pkgdir/usr/lib/objfw-config/ObjFWTLS.oc"
 	rm -f "$pkgdir/usr/share/man/man1/ofarc.1"
 	rm -f "$pkgdir/usr/share/man/man1/ofdns.1"
+	rm -f "$pkgdir/usr/share/man/man1/ofgctester.1"
 	rm -f "$pkgdir/usr/share/man/man1/ofhash.1"
 	rm -f "$pkgdir/usr/share/man/man1/ofhttp.1"
 	rm -fr "$pkgdir/usr/share/ofarc"
@@ -96,7 +98,7 @@ package_libobjfwhid() {
 
 package_ofarc() {
 	pkgdesc="Utility for handling ZIP, Tar, LHA and Zoo archives"
-	depends=(glibc gcc-libs libobjfw libobjfwrt)
+	depends=(glibc gcc-libs libobjfw libobjfwrt libobjfwtls)
 
 	cd "$pkgbase-$pkgver"
 	make -C utils/ofarc DESTDIR="$pkgdir/" install
@@ -118,9 +120,21 @@ package_ofdns() {
 	done
 }
 
+package_ofgctester() {
+	pkgdesc="Game controller tester for the terminal"
+	depends=(glibc gcc-libs libobjfw libobjfwrt libobjfwhid)
+
+	cd "$pkgbase-$pkgver"
+	make -C utils/ofgctester DESTDIR="$pkgdir/" install
+
+	for i in COPYING COPYING.LESSER; do
+		install -D -m 644 "$i" "$pkgdir/usr/share/licenses/$pkgname/$i"
+	done
+}
+
 package_ofhash() {
 	pkgdesc="Utility to hash files with various cryptographic hash functions"
-	depends=(glibc gcc-libs libobjfw libobjfwrt)
+	depends=(glibc gcc-libs libobjfw libobjfwrt libobjfwtls)
 
 	cd "$pkgbase-$pkgver"
 	make -C utils/ofhash DESTDIR="$pkgdir/" install
