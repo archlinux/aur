@@ -1,7 +1,7 @@
 # Maintainer: nithin <nithin3dev@gmail.com>
 pkgname=echo-meter
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK4 application for visualizing echo measurements"
 arch=('x86_64')
 url="https://github.com/Nithin-3/echo-meter"
