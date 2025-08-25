@@ -10,14 +10,19 @@ import tempfile
 import glob
 from pathlib import Path
 
+flags=""
+objects=[]
+
 if len(sys.argv) > 2:
-  flags  = sys.argv[1]
-  target = sys.argv[2]
-elif len(sys.argv) > 1:
-  flags = "-S"
-  target= sys.argv[1]
+  for i, j in zip(sys.argv, range(len(sys.argv))):
+    if j==0:
+       pass
+    elif j==1:
+       flags=i
+    else:
+       objects.append(i)
 else:
-  print("opqq ERR: No arguments passed. Please just give the correct package name it will try to install.", file=sys.stderr)
+  print("opqq ERR: No arguments passed. Example usage: opww -S hyprland-git", file=sys.stderr)
   sys.exit(1)
 
 helper=None
@@ -45,36 +50,40 @@ if os.geteuid() == 0:
 
 def githubMirror(pkg, downloadOnly=False):
   cwd=os.getcwd()
-  status=12345
+  status=123456 # one two three four five six\ndoes this need to exist (no)
   try:
-    with tempfile.TemporaryDirectory() as dir:
-      os.chdir(dir)
-      status=os.system(f"git clone --branch {pkg} --single-branch https://github.com/archlinux/aur.git {pkg}")
-      if status != 0:
-        print("opqq ERR: Cloning failed. Is this a real AUR package?", file=sys.stderr)
-        sys.exit(status)
-      os.chdir(pkg)
-      os.system("less PKGBUILD")
-      if input("opqq ASK: Is this PKGBUILD good to run? (y/n) ").lower() != "y":
-        print("opqq ERR: Aborted.", file=sys.stderr)
-        sys.exit(2)
-      if downloadOnly:
-        status=os.system("makepkg -s")
-        Path(cwd).mkdir(parents=True, exist_ok=True)
-        for file in glob.glob("*.pkg.tar.zst"):
-          shutil.copy(file, cwd)
-      else:
-        status=os.system("makepkg -si")
+    for i in pkg:
+      with tempfile.TemporaryDirectory() as dir:
+        os.chdir(dir)
+        status=os.system(f"git clone --branch {i} --single-branch https://github.com/archlinux/aur.git {i}")
+        if status != 0:
+          print("opqq ERR: Cloning failed. Is this a real AUR package?", file=sys.stderr)
+          sys.exit(status)
+        os.chdir(i)
+        os.system("less PKGBUILD")
+        if input("opqq ASK: Is this PKGBUILD good to run? (y/n) ").lower() != "y":
+          print("opqq ERR: Aborted.", file=sys.stderr)
+          sys.exit(2)
+        if downloadOnly:
+          status=os.system("makepkg -s")
+          Path(cwd).mkdir(parents=True, exist_ok=True)
+          for file in glob.glob("*.pkg.tar.zst"):
+            shutil.copy(file, cwd)
+        else:
+          status=os.system("makepkg -si")
+          if status!=0:
+            print("opqq ERR: makepkg failed. Aborting.")
+            sys.exit(status)
   finally:
     os.chdir(cwd)
-    sys.exit(status)
+    sys.exit(0)
 def installFlow(pkg): # If -S: run -S
   print("opqq INFO: Checking if available in your repos...")
-  if os.system(f"pacman -Si {pkg}>/dev/null") == 0:
-    print(f"opqq INFO: Found package {pkg} in your repos.")
+  if os.system(f"pacman -Si {' '.join(pkg)}>/dev/null") == 0:
+    print(f"opqq INFO: Found packages {pkg} in your repos.")
     if amiroot:
-      os.execvp("pacman", ["pacman", "-S", pkg])
-    os.execvp("sudo", ["sudo", "pacman", "-S", pkg])
+      os.execvp("pacman", ["pacman", "-S"]+pkg)
+    os.execvp("sudo", ["sudo", "pacman", "-S"]+pkg)
 
   if helper is False:
     print("opqq ERR: Not found in repos but you are root (uid 0) and can't do AUR operations. Please use an non root account with sudo privilages.")
@@ -85,8 +94,8 @@ def installFlow(pkg): # If -S: run -S
     githubMirror(pkg)
   else:
     print(f"opqq INFO: Attempt 1 of getting AUR package: Using {helper}.")
-    status=os.system(f"{helper} -S {pkg}")
-    if status != 0:
+    status=os.system(f"{helper} -S {' '.join(pkg)}")
+    if status != 0 or os.system(f"pacman -Qq {pkg[0]}") != 0:
       print("opqq ERR: AUR helper failed.")
       print("opqq INFO: Using github mirror...")
       githubMirror(pkg)
@@ -94,19 +103,19 @@ def installFlow(pkg): # If -S: run -S
       sys.exit(0)
 def uninstallFlow(pkg): # If -R: Run -Rns
   if amiroot:
-    os.execvp("pacman", ["pacman", "-Rns", pkg])
-  os.execvp("sudo", ["sudo", "pacman", "-Rns", pkg])
+    os.execvp("pacman", ["pacman", "-Rns"]+pkg)
+  os.execvp("sudo", ["sudo", "pacman", "-Rns"]+pkg)
 def manualFlow(pkg): # If -U: Run -U
   if amiroot:
-    os.execvp("pacman", ["pacman", "-U", pkg])
-  os.execvp("sudo", ["sudo", "pacman", "-U", pkg])
-def downloadFlow(pkg): # if -Sw: Run -Sw
+    os.execvp("pacman", ["pacman", "-U"]+pkg)
+  os.execvp("sudo", ["sudo", "pacman", "-U"]+pkg)
+def downloadFlow(pkgs): # if -Sw: Run -Sw
   print("opqq INFO: Checking if available in your repos...")
-  if os.system(f"pacman -Si {pkg}>/dev/null") == 0:
+  if os.system(f"pacman -Si {' '.join(pkg)}>/dev/null") == 0:
     print(f"opqq INFO: Found package {pkg} in your repos.")
     if amiroot:
-      os.execvp("pacman",     ["pacman", "-Sw", "--cachedir", ".", pkg])
-    os.execvp("sudo", ["sudo", "pacman", "-Sw", "--cachedir", ".", pkg])
+      os.execvp("pacman",     ["pacman", "-Sw", "--cachedir", "."]+pkg)
+    os.execvp("sudo", ["sudo", "pacman", "-Sw", "--cachedir", "."]+pkg)
   if helper is False:
     print("opqq ERR: Not found in repos but you are root (uid 0) and can't do AUR operations. Please use an non root account with sudo privilages.")
     sys.exit(1)
@@ -115,12 +124,14 @@ def downloadFlow(pkg): # if -Sw: Run -Sw
 
 if __name__ == "__main__":
   if "Sw" in flags:
-    downloadFlow(target)
+    downloadFlow(objects)
   elif "S" in flags:
-    installFlow(target)
+    installFlow(objects)
   elif "R" in flags:
-    uninstallFlow(target)
+    uninstallFlow(objects)
   elif "U" in flags:
-    manualFlow(target)
+    manualFlow(objects)
+  elif "G" in flags:
+    githubMirror(objects)
   else:
-    print("opqq ERR: We only support one package at a time (for now!)")
+    print("opqq ERR: Supported flags: -S (install), -R (remove package), -Sw (download package to current directory), -U (Install .pkg.tar.zst), and -G (forcefully install from github. None were found.")
