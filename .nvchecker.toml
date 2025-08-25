@@ -1,0 +1,5 @@
+[manssh-bin]
+source = "github"
+github = "xwjdsh/manssh"
+use_latest_release = true
+prefix = "v"
