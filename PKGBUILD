@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-dialer-git
-pkgver=r1169.387b2b8
+pkgver=v6.3.90.r13.g387b2b8
 pkgrel=1
 pkgdesc="Dialer for Plasma Mobile - Git version"
 arch=(any)
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "plasma-dialer"
-  printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
