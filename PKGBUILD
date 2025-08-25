@@ -5,7 +5,8 @@
 # Contributor: Manolis Tzanidakis
 
 pkgname=makepasswd
-pkgver=1.10_14
+pkgver=1.10_15
+_pkgver=1.10-15
 pkgrel=1
 pkgdesc='Generates true random passwords with the emphasis on security over pronounceability (Debian version)'
 arch=('any')
@@ -16,12 +17,17 @@ depends=('perl-passwd-md5'
          'perl-bytes-random-secure'
          'perl-crypt-random-seed')
 source=("http://ftp.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver%_*}.orig.tar.gz"
-        "http://ftp.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver//_/-}.diff.gz")
+        "http://ftp.debian.org/debian/pool/main/m/makepasswd/makepasswd_${_pkgver}.debian.tar.xz")
 sha256sums=('41491f361d810f9bb3e08b40df3c3034faec306d434dab15534e19023f91a75c'
-            'e72d5f45de382fc70b108d692ca4fc2f66fcc280d693a54982ec2ae0ef1d712c')
+            'de6f6e9b7e679f4d2774eed30c0c79083786f8e4ca9e4da35cf29c27217f22a0')
 
 prepare() {
-  patch -p1 -d "$pkgname-${pkgver%_*}" < "${pkgname}_${pkgver//_/-}.diff"
+  ln -s "../debian/patches" "${pkgname}-${pkgver%_*}/patches"
+  cd "${pkgname}-${pkgver%_*}"
+  series=$(cat patches/series)
+  for file in ${series};do
+     patch -Np1 -i "patches/${file}"
+  done
 }
 
 check() {
