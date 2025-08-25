@@ -1,0 +1,5 @@
+[gomphotherium-bin]
+source = "github"
+github = "mrusme/gomphotherium"
+use_latest_release = true
+prefix = "v"
