@@ -7,6 +7,13 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## Update to 20250822
+
+### Deleted
+
+- AC_CACB_CD.crt
+- Serasa_AC_v5.crt
+
 ## 20250801
 
 ### Deleted
