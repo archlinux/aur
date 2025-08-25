@@ -1,0 +1,18 @@
+pkgbase = wivrn-multilib-git
+	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets. (32-bit support)
+	pkgver = 25.8.62.g8f8e583
+	pkgrel = 1
+	url = https://github.com/WiVRn/WiVRn
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc-multilib
+	makedepends = ninja
+	makedepends = pkgconf
+	provides = wivrn-server
+	conflicts = wivrn-server
+	source = git+https://github.com/WiVRn/WiVRn
+	sha256sums = SKIP
+
+pkgname = wivrn-multilib-git
