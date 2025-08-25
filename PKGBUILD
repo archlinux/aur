@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.4.23
-pkgrel=2
+pkgver=5.4.25
+pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -11,22 +11,23 @@ depends=(qt5-declarative qt5-base libxcrypt-compat gcc-libs glibc sqlite qt5-qui
 optdepends=('logrotate: For using logrotate to rotate log files')
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=63d89aafabd2fcc57744ef0bafd0fcb01faf9b6d
+sha256sums=('SKIP'
+            '5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd'
+            '50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901'
+            'fc623f716451b7f7ee38b5c984d4c5566e51dc4a85bedc54f27934a3013694a8'
+            '23ac94f40a185dcd829bd71220056c0591cf50e640b787ec26bb832c3de6f055'
+            '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
+            'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5')
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=7be4fba8086337daf09f28d72daf377b96068c9f
 		cellframe-node.logrotate
 		cellframe-node.service
 		cellframe-diagtool.service
 		cellframe-node-asan.service
 		cellframe-node-tmpfiles.conf
 		cellframe-node-sysusers.conf)
-md5sums=('SKIP'
-         'a10650eb138f6fe0c4bbefa6557ffb4f'
-         '4bf9cc7596903ffa5aba7fa7922d9016'
-         'ee2424d674f7806a0a6caaff7cc5fa26'
-         '3962e50d7c9c1c2b42876fa376457a44'
-         'e334310bf6cd6c4bbe612733eee928e0'
-         'ecead745d3492224d2a5a2f7d9d561b0')
 options=(!debug !strip)
 install=$pkgname.install
+_executables=("$pkgname-cli" "$pkgname-tool" "$pkgname" "$pkgname-config")
 
 prepare() {
 	local patchver="${pkgver##*.}"
@@ -58,8 +59,7 @@ build() {
 				-DBUILD_DIAGTOOL=ON \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=Debug \
-				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-				-DCMAKE_C_FLAGS="-D_GNU_SOURCE -Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
+				-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 				-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 				-Wno-dev
 		else
@@ -68,8 +68,6 @@ build() {
 				-DBUILD_DIAGTOOL=ON \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-				-DCMAKE_C_FLAGS="-D_GNU_SOURCE -Wno-error=incompatible-pointer-types" \
-				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 				-DCELLFRAME_NO_OPTIMIZATION=OFF \
 				-Wno-dev
 		fi
@@ -78,8 +76,7 @@ build() {
 		cmake -B build \
 			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=Debug \
-			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-			-DCMAKE_C_FLAGS="-D_GNU_SOURCE -Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
+			-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 			-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
@@ -88,8 +85,6 @@ build() {
 		cmake -B build \
 			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-			-DCMAKE_C_FLAGS="-D_GNU_SOURCE -Wno-error=incompatible-pointer-types" \
-			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
 	fi
@@ -108,7 +103,7 @@ package() {
 	install -Dm644 "$srcdir/$pkgname-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 	install -Dm644 "$srcdir/$pkgname-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-	for _executables in cellframe-node-cli cellframe-node-tool cellframe-node cellframe-node-config; do
-		ln -sf "/opt/cellframe-node/bin/$_executables" "$pkgdir/usr/bin/$_executables"
+	for executable in "${_executables[@]}"; do
+		ln -sf "/opt/cellframe-node/bin/$executable" "$pkgdir/usr/bin/$executable"
 	done
 }

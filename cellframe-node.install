@@ -9,7 +9,7 @@ ${BOLD}NODE CONFIGURATION FILES${NORMAL}
 
     ${BOLD}cellframe-node-config -i /opt/cellframe-node/share/default.setup${NORMAL}
 
-    For enabling diagtool (which is used by Cellframe Dashboard), run (as root):
+    For enabling diagtool (which is used by Cellframe Wallet), run (as root):
 
     ${BOLD}systemctl enable --now cellframe-diagtool.service${NORMAL}
 
@@ -27,7 +27,37 @@ ${BOLD}RUNNING A MASTERNODE${NORMAL}
     ${BOLD}https://wiki.cellframe.net/02.+Learn/Cellframe+Node/Master+Node+Manual+Setup${NORMAL}\n"
 }
 
+_is_python_and_pip_ok() {
+    PYTHON_BIN=/opt/cellframe-node/python/bin/python3.10
+    PIP_BIN=/opt/cellframe-node/python/bin/pip3
+
+    [[ -f "$PYTHON_BIN" && ! -x "$PYTHON_BIN" ]] && chmod +x "$PYTHON_BIN"
+    [[ -f "$PIP_BIN" && ! -x "$PIP_BIN" ]] && chmod +x "$PIP_BIN"
+
+    if [[ -x "$PYTHON_BIN" && -x "$PIP_BIN" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+_post_install_wheels() {
+    if _is_python_and_pip_ok; then
+        WHEEL_DIR="/opt/cellframe-node/share/wheels"
+        WHEELS=("$WHEEL_DIR"/*.whl)
+
+        echo ":: Installing Python wheel packages..."
+        /opt/cellframe-node/python/bin/pip3 install "${WHEELS[@]}" &> /dev/null && echo ":: Installed wheel packages for Python development" \
+            || echo ":: Failed to install Python wheel packages"
+        rm "$WHEEL_DIR"/*.whl && :: echo "Removed wheel packages" || echo ":: Failed to remove wheel packages"
+    else
+        echo ":: Python or pip not found, skipping wheel installation..."
+    fi
+}
+
+
 post_install() {
+    _post_install_wheels
     _showmsg
 }
 
@@ -38,6 +68,7 @@ post_upgrade() {
     && echo ":: Restarting cellframe-node.service..." \
     && systemctl restart cellframe-node.service \
     || echo ":: cellframe-node.service not enabled, skipping restart..."
+    _post_install_wheels
 }
 
 pre_remove() {
