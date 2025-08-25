@@ -2,7 +2,7 @@
 
 _name=("protoc-gen-grpc-gateway" "protoc-gen-openapiv2")
 pkgname="grpc-gateway"
-pkgver=2.27.1
+pkgver=2.27.2
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=('aarch64' 'x86_64')
@@ -14,15 +14,14 @@ makedepends=('go')
 provides=("${_name[@]}")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('918792ce31a184a2cab577d871bd15edb81546afbb33cb50ed139a8cdd52629b')
+sha256sums=('510990df237b7adb934383c21e351003012d54ee34b84b10a2b26a359a0a1ba8')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build"
 }

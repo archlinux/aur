@@ -1,6 +1,6 @@
 pkgbase = grpc-gateway
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec
-	pkgver = 2.27.1
+	pkgver = 2.27.2
 	pkgrel = 1
 	url = https://grpc-ecosystem.github.io/grpc-gateway/
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = grpc-gateway
 	depends = protoc-gen-go-grpc
 	provides = protoc-gen-grpc-gateway
 	provides = protoc-gen-openapiv2
-	source = grpc-gateway-2.27.1.tar.gz::https://github.com/grpc-ecosystem/grpc-gateway/archive/refs/tags/v2.27.1.tar.gz
-	sha256sums = 918792ce31a184a2cab577d871bd15edb81546afbb33cb50ed139a8cdd52629b
+	source = grpc-gateway-2.27.2.tar.gz::https://github.com/grpc-ecosystem/grpc-gateway/archive/refs/tags/v2.27.2.tar.gz
+	sha256sums = 510990df237b7adb934383c21e351003012d54ee34b84b10a2b26a359a0a1ba8
 
 pkgname = grpc-gateway
