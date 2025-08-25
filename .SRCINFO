@@ -5,6 +5,7 @@ pkgbase = agent-sync-bin
 	url = https://github.com/GowayLee/agent-sync
 	arch = x86_64
 	license = GPL3
+	options = !debug
 	source = agent-sync-v0.1.0-linux-x86_64::https://github.com/GowayLee/agent-sync/releases/download/v0.1.0/agent-sync-v0.1.0-linux-x86_64
 	sha256sums = 4983dceee3592a44c0d1454b6abbcdbb6dc357c3cd7750247e0282ebd65b948e
 
