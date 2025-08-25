@@ -3,7 +3,7 @@
 _base=pyamg
 pkgname=python-${_base}
 pkgdesc="Algebraic Multigrid Solvers in Python"
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/${_base}/${_base}"
@@ -12,7 +12,7 @@ depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel pybind11) # python-matplotlib
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('469a5675bb65ff9eadfdbf344c35cb01bebe09c987b493aaeaf5aa98273ebd8071534e25edac82ffc26f39eb3877e1a69cd2a3894de70bcb5396b6cf723aa3b6')
+sha512sums=('f2e11705cfbcd28a59a7ec226eb9d5f4ef978adb9104953c6f5f01868d82c9e4f7605ecc57664e467cf78733f5ebc2ec80859a7136cd5c1c4351c603a978a5fc')
 
 # https://bbs.archlinux.org/viewtopic.php?id=249188
 build() {
