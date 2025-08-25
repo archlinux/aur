@@ -7,7 +7,7 @@
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-unstable" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-dev
-pkgver=141.0.7354.0
+pkgver=141.0.7367.0
 pkgrel=1
 pkgdesc="The popular web browser by Google (Dev Channel)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ _channel=unstable
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
-sha512sums=('ac5aefd50fbf4c7c9f3e1a6203c34b39106b7d8671f637b475b4ecee4ddb5c3b3c1ec250bed7a921443d31bfedd428e6234c9c384e2127f8c296405530818508'
+sha512sums=('16ebc3ea1499da5a89f8ad179a4f0b3953cb9e7e414d2d0cf478b3c5b0a28ef110975270ba228148b57180837fe9e887cd6e102461702ff16d6661c29d33f1a2'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '445eb36a588f49af018ded3d852b63e0523ffac20c25be721f3ef4663591256849432bebb3d9f352e4f53cbe1fb77fa67cf8911c9161f826490a21adbdcc81f4')
 
@@ -67,6 +67,5 @@ package() {
 	rm -r \
 		"$pkgdir"/etc/cron.daily/ \
 		"$pkgdir"/opt/google/chrome-$_channel/cron/ \
-		"$pkgdir"/opt/google/chrome-$_channel/product_logo_*.{png,xpm} \
-		"$pkgdir"/usr/share/menu/
+		"$pkgdir"/opt/google/chrome-$_channel/product_logo_*.png
 }
