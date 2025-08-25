@@ -5,7 +5,7 @@
 pkgname=python-pptx
 _pypiname=${pkgname}
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A Python library for creating and updating PowerPoint (.pptx) files"
 url="https://github.com/scanny/python-pptx"
 arch=('any')
@@ -13,10 +13,7 @@ license=('MIT')
 depends=(
   python
   python-pillow
-  python-behave
-  python-docutils
   python-lxml
-  python-sphinx
   python-typing_extensions
   python-xlsxwriter
 )
