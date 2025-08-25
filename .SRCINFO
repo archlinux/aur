@@ -11,7 +11,7 @@ pkgbase = pivccu-modules-dkms
 	makedepends = dtc
 	depends = dkms
 	conflicts = pivccu-modules
-	source = pivccu::git+https://github.com/alexreinert/piVCCU#commit=b787f3d84b311bd3e07b0ca8f2aa63330030746e
+	source = pivccu::git+https://github.com/alexreinert/piVCCU#commit=82d53a2321f87d6cc8b088c4b4b4f282ebce4552
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = 76f9f787cd63f567e1393df760afb6ba90db3178c7a6ca7421a1a8d9d403c021

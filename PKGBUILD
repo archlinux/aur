@@ -2,7 +2,7 @@
 
 _pkgbase=pivccu-modules
 pkgname=${_pkgbase}-dkms
-pkgver=1.0.79
+pkgver=1.0.85
 pkgrel=1
 pkgdesc="Kernel modules needed for Homematic"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('dkms')
 makedepends=('dtc')
 conflicts=("${_pkgbase}")
-source=('pivccu::git+https://github.com/alexreinert/piVCCU#commit=b787f3d84b311bd3e07b0ca8f2aa63330030746e'
+source=('pivccu::git+https://github.com/alexreinert/piVCCU#commit=82d53a2321f87d6cc8b088c4b4b4f282ebce4552'
         'dkms.conf')
 sha256sums=('SKIP'
             '76f9f787cd63f567e1393df760afb6ba90db3178c7a6ca7421a1a8d9d403c021')
