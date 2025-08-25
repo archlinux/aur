@@ -1,0 +1,13 @@
+pkgbase = go-callvis
+	pkgdesc = Visualize call graph of a Go program using Graphviz
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://ondrajz.github.io/go-callvis/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = go-callvis-0.7.1.tar.gz::https://github.com/ondrajz/go-callvis/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 8e78313de9c79c0d9bd215de9591924b29e13f8abb2bd5b524f29998b457b70d
+
+pkgname = go-callvis

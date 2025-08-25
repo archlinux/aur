@@ -1,0 +1,4 @@
+[go-callvis]
+source = "git"
+git = "https://github.com/ondrajz/go-callvis.git"
+prefix = "v"
