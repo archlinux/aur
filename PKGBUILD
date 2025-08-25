@@ -1,16 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=smooth-git
-pkgver=0.9.10.r38.gd8418a2
+pkgver=0.9.10.r41.g8804ddf
 pkgrel=1
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
 url="http://www.smooth-project.org"
 license=('Artistic-2.0')
 depends=(
+  'bzip2'
   'curl'
   'fribidi'
   'gtk3'
+  'libcpuid'
   'libjpeg-turbo'
+  'libpng'
   'libxml2'
 )
 makedepends=('git')
@@ -31,7 +34,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  make
+  make config=systemlibcpuid
 }
 
 package() {
