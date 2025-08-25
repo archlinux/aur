@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-dialer-git
 pkgver=r1169.387b2b8
-pkgrel=0
+pkgrel=1
 pkgdesc="Dialer for Plasma Mobile - Git version"
 arch=(any)
 url="https://invent.kde.org/plasma-mobile/plasma-dialer"
