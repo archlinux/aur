@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor-git
 _pkgname=MKEditor
-pkgver=2.7.0.r1.g9be6b24
+pkgver=3.4.0.r2.g90bd455
 _electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="The simple markdown editor.(Use system-wide electron)"
 arch=('any')
-url="https://mkeditoross.github.io/"
-_ghurl="https://github.com/mkeditorOSS/mkeditor"
+url="https://versyxdigital.github.io/mkeditor"
+_ghurl="https://github.com/versyxdigital/mkeditor"
 license=("MIT")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
