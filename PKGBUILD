@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-git
-pkgver=5.0.r4.gf4c61d73b
+pkgver=5.0.r27.g550bb8de2
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ source=("${pkgname}::git+https://github.com/86Box/86Box.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname}
+    cd $pkgname
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -32,7 +32,7 @@ build() {
         armv7h)   _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
         aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
     esac
-    LDFLAGS='-z now -z shstk' cmake -S"${pkgname}" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR"
+    LDFLAGS='-z now -z shstk' cmake -S$pkgname -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR" -DEMU_GIT_HASH="$(GIT_DIR=86box-git/.git git rev-parse --short HEAD)"
     cmake --build build
 }
 
