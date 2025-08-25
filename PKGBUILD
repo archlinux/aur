@@ -9,7 +9,7 @@ pkgrel=3
 pkgdesc="Linux Audio Developer's Simple Plugin API"
 arch=(x86_64)
 url="https://www.ladspa.org/"
-license=(LGPL2.1)
+license=(LGPL-2.1-or-later)
 depends=(
   "$_name=$pkgver"
   lib32-gcc-libs
