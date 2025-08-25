@@ -1,0 +1,5 @@
+[fast-ssh-bin]
+source = "github"
+github = "Julien-R44/fast-ssh"
+use_latest_release = true
+prefix = "v"
