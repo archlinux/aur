@@ -2,7 +2,7 @@
 
 pkgname=python-filewrap
 _name=${pkgname//-/_}
-pkgver=0.2.8.1
+pkgver=0.2.8.2
 pkgrel=1
 epoch=
 pkgdesc="Python file wrappers."
@@ -16,17 +16,19 @@ depends=(
     python
     #AUR
     python-asynctools
+    python-property
 )
 makedepends=(
     python-poetry
     python-build
     python-installer
     python-wheel
-    python-setuptools)
+    python-setuptools
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a5eb3ddb50fb99333cbfe62d92281be792c9e4c125141c1e3698826dbf2db8ef')
+sha256sums=('16b3b32bab7c90745a9e72d3a428fb80a11f07eb196627ac684fbdc6896243bb')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
