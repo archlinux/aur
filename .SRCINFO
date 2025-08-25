@@ -1,6 +1,6 @@
 pkgbase = rustrland
 	pkgdesc = A Rust-powered window management for Hyprland - Fast, reliable plugin system
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/mattdef/rustrland
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = rustrland
 	optdepends = firefox: Browser support for scratchpad plugin
 	optdepends = thunar: File manager support for scratchpad plugin
 	conflicts = rustrland-git
-	source = rustrland-0.3.7.tar.gz::https://github.com/mattdef/rustrland/archive/v0.3.7.tar.gz
-	sha256sums = 3968331229617b1775842cc0a86a80f517003b42981571735c649d33cd7cea6c
+	source = rustrland-0.3.8.tar.gz::https://github.com/mattdef/rustrland/archive/v0.3.8.tar.gz
+	sha256sums = 0f16bcb678ec9be54211b4c6810bf10b7a4bb7838f3af7a71a28b14da23c94d1
 
 pkgname = rustrland

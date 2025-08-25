@@ -2,7 +2,7 @@
 # Contributor: Rustrland Contributors
 
 pkgname=rustrland
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A Rust-powered window management for Hyprland - Fast, reliable plugin system"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 makedepends=('rust' 'cargo')
 conflicts=('rustrland-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mattdef/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3968331229617b1775842cc0a86a80f517003b42981571735c649d33cd7cea6c')
+sha256sums=('0f16bcb678ec9be54211b4c6810bf10b7a4bb7838f3af7a71a28b14da23c94d1')
 
 build() {
     cd "$pkgname-$pkgver"
