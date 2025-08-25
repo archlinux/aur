@@ -1,0 +1,17 @@
+pkgbase = arco
+	pkgdesc = Terminal-based virtual instrument playground with real-time synthesis and built-in sequencer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/arco
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = alsa-lib
+	makedepends = pkg-config
+	depends = alsa-lib
+	optdepends = alsa-utils: for audio device testing and configuration
+	source = git+https://github.com/tree3stan-chord/arco.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = arco
