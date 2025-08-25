@@ -5,8 +5,8 @@
 _pkgname=hdrview
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=2.5.3+7.r687.20250821.30768b5
-pkgrel=1
+pkgver=2.5.3+9.r689.20250824.84f4b6b
+pkgrel=2
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
 # url='https://wkjarosz.github.io/hdrview/' # This actually is an online version of the software, not a website about the software.
@@ -22,6 +22,7 @@ makedepends=(
   'brotli'
   'cmake'
   'dav1d'
+  'ffmpeg'
   #'fmt'            # When not using system packages, this gets downloaded to the build directory.
   'freetype2>=2.12'
   'gcc-libs'
@@ -30,6 +31,7 @@ makedepends=(
   'glfw'
   'gperftools'
   'gtest'
+  'highway'
   #'imath'          # When not using system packages, this gets downloaded to the build directory.
   # 'imgui-git' # Fails to build when 'imgui' is installed. Need to download it locally to build directory.
   'kvazaar'
@@ -40,19 +42,20 @@ makedepends=(
   'libwebp'
   'libx11'
   'libxext'
-  #'libjxl'
+  #'libjxl'         # When not using system packages, this gets downloaded to the build directory.
   'nasm'
   'ninja'
   'nlohmann-json'
   #'openexr'        # When not using system packages, this gets downloaded to the build directory.
   'openjpeg2'
   #'plutosvg'       # When not using system packages, this gets downloaded to the build directory.
+  #'plutovg'        # When not using system packages, this gets downloaded to the build directory.
   'rav1e'
   'sdl2'
   #'spdlog'         # When not using system packages, this gets downloaded to the build directory.
   'svt-av1'
   'uvg266'
-  'vvenc'           # As of 2025-08-24, vvenc-git is needed because vvenc does not install the file `/usr/lib/cmake/vvenc/vvencTargets-shared.cmake`. See https://aur.archlinux.org/packages/vvenc#comment-1037407.
+  'vvenc-git'       # As of 2025-08-24, vvenc-git is needed because vvenc does not install the file `/usr/lib/cmake/vvenc/vvencTargets-shared.cmake`. See https://aur.archlinux.org/packages/vvenc#comment-1037407.
   'vvdec'
   'vulkan-icd-loader'
   'x265'
@@ -61,16 +64,17 @@ depends=(
   'gcc-libs'
   'glibc'
   'glfw'
-  #'imath'
-  #'libfmt.so'
+  'highway'
+  'libbrotlienc.so'    # Provided by 'brotli'
+  'libbrotlidec.so'    # Provided by 'brotli'
+  'libbrotlicommon.so' # Provided by 'brotli'
+  'libopenh264.so'
+  'libde265'
   'libfreetype.so'
   'libjpeg.so'
-  #'libjxl.so' 'libjxl_threads.so'
   'liblcms2.so'
-  #'libspdlog.so'
   'libx11'
   'libxext'
-  # 'openexr'
   'sdl2'
   'vulkan-icd-loader'
 )
@@ -116,8 +120,9 @@ prepare() {
   _cmake_config=(
     -DBUILD_WEBSITE=OFF
     -DCMAKE_INSTALL_PREFIX=/usr
-    -DEXEC_INSTALL_PREFIX=/usr
+    -DEXEC_INSTALL_PREFIX=/usr/bin
     -DLIB_INSTALL_DIR=/usr/lib
+    # -DLIB_INSTALL_DIR=/opt/hdrview/lib
     -DCMAKE_BUILD_TYPE=Release
     -DCPM_DONT_UPDATE_MODULE_PATH=OFF
     -DCPM_DOWNLOAD_ALL=OFF
@@ -149,7 +154,6 @@ prepare() {
     # -DFMT_OS=ON
     -DFMT_PEDANTIC=OFF
     -DFMT_TEST=OFF
-    -DFMT_UNICODE=ON
     -DFMT_WERROR=OFF
     
     # -DHDRVIEW_BUILD_UHDR_DEPS=OFF
@@ -162,22 +166,22 @@ prepare() {
     # -DHDRVIEW_IGNORE_BREW_PORTS=OFF
     -DHDRVIEW_PORTABLE_INSTALL=OFF
     
-    -DHELLOIMGUI_ADD_APP_WITH_INSTALL=ON
-    -DHELLOIMGUI_BUILD_DEMOS=ON
+    -DHELLOIMGUI_ADD_APP_WITH_INSTALL=OFF
+    -DHELLOIMGUI_BUILD_DEMOS=OFF
     -DHELLOIMGUI_BUILD_DOCS=OFF
-    -DHELLOIMGUI_BUILD_GLFW_OPENGL3_BARE_EXAMPLE=ON
+    -DHELLOIMGUI_BUILD_GLFW_OPENGL3_BARE_EXAMPLE=OFF
     -DHELLOIMGUI_BUILD_IMGUI=ON
-    -DHELLOIMGUI_BUILD_TESTS=ON
+    -DHELLOIMGUI_BUILD_TESTS=OFF
     -DHELLOIMGUI_DOWNLOAD_FREETYPE_IF_NEEDED=OFF
     -DHELLOIMGUI_DOWNLOAD_GLFW_IF_NEEDED=OFF
     -DHELLOIMGUI_DOWNLOAD_SDL_IF_NEEDED=OFF
-    -DHELLOIMGUI_FETCH_IMGUI_TEST_ENGINE=ON
+    -DHELLOIMGUI_FETCH_IMGUI_TEST_ENGINE=OFF
     -DHELLOIMGUI_FREETYPE_STATIC=OFF
     -DHELLOIMGUI_HAS_OPENGL=ON
     -DHELLOIMGUI_HAS_OPENGL3=ON
     -DHELLOIMGUI_HAS_VULKAN=ON
     -DHELLOIMGUI_HEADLESS=OFF
-    -DHELLOIMGUI_INSTALL=ON
+    -DHELLOIMGUI_INSTALL=OFF
     -DHELLOIMGUI_STB_IMAGE_IMPLEMENTATION=ON
     -DHELLOIMGUI_STB_IMAGE_WRITE_IMPLEMENTATION=ON
     -DHELLOIMGUI_USE_EXTERNAL_JSON=OFF
@@ -193,7 +197,7 @@ prepare() {
     -DHWY_CMAKE_HEADER_ONLY=OFF
     -DHWY_CMAKE_RVV=`_cpuflag2cmake rvv`
     -DHWY_CMAKE_SSE2=`_cpuflag2cmake sse2`
-    -DHWY_ENABLE_INSTALL=ON
+    -DHWY_ENABLE_INSTALL=OFF
     -DHWY_WARNINGS_ARE_ERRORS=OFF
     -DIMATH_ENABLE_LARGE_STACK=ON
     -DIMATH_HALF_USE_LOOKUP_TABLE=ON
@@ -207,7 +211,7 @@ prepare() {
     -DJPEGXL_BUNDLE_LIBPNG=OFF
     -DJPEGXL_ENABLE_AVX512=`_cpuflag2cmake avx512f`
     -DJPEGXL_ENABLE_AVX512_SPR=`_cpuflag2cmake avx512_bf16`  # Assuming that `avx_bf16` means "AVX-512FP16".
-    -DJPEGXL_ENABLE_AVX512_ZEN4=OFF # Don't know how to test for it.
+    -DJPEGXL_ENABLE_AVX512_ZEN4=OFF                          # Don't know how to test for it.
     -DJPEGXL_ENABLE_BENCHMARK=OFF
     -DJPEGXL_ENABLE_BOXES=ON
     -DJPEGXL_ENABLE_COVERAGE=OFF
@@ -232,7 +236,7 @@ prepare() {
     -DJPEGXL_FORCE_NEON=OFF
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON
     -DJPEGXL_FORCE_SYSTEM_GTEST=ON
-    -DJPEGXL_FORCE_SYSTEM_HWY=OFF
+    -DJPEGXL_FORCE_SYSTEM_HWY=ON
     -DJPEGXL_FORCE_SYSTEM_LCMS2=ON
     -DJPEGXL_INSTALL_JPEGLI_LIBJPEG=OFF
     -DJPEGXL_TEST_TOOLS=OFF
@@ -250,12 +254,10 @@ prepare() {
     -DMATH_LIBRARY=/usr/lib/libm.so
     -DM_LIBRARY=/usr/lib/libm.so
     
-    -DOPENEXR_BUILD_OS_FUZZ=OFF
     -DOPENEXR_BUILD_PYTHON=OFF
     -DOPENEXR_ENABLE_LARGE_STACK=ON
     -DOPENEXR_ENABLE_THREADING=ON
     -DOPENEXR_FORCE_INTERNAL_IMATH=OFF
-    -DOPENEXR_INSTALL_DEVELOPER_TOOL=OFF
     -DOPENEXR_INSTALL_DOCS=OFF
     -DOPENEXR_INSTALL_PKG_CONFIG=OFF
     -DOPENEXR_INSTALL_TOOLS=OFF
@@ -263,9 +265,6 @@ prepare() {
     -DOPENEXR_TEST_PYTHON=OFF
     -DOPENEXR_TEST_TOOLS=OFF
     -DOPENEXR_USE_CLANG_TIDY=OFF
-    
-    -DOPENGLES3_INCLUDE_DIRS=/usr/include/GLES3
-    -DOPENGLES3_LIBRARIES=/usr/lib
     
     -DOpenGL_GL_PREFERENCE=GLVND
     
@@ -303,7 +302,6 @@ prepare() {
     
     -DUHDR_BUILD_DEPS=OFF
     -DUHDR_BUILD_JAVA=OFF
-    -DUHDR_BUILD_PACKAGING=OFF
     -DUHDR_ENABLE_GLES=OFF
     -DUHDR_ENABLE_INTRINSICS=ON
     -DUHDR_ENABLE_LOGS=OFF
@@ -397,6 +395,38 @@ package() {
 
   ## Add a lowercase executable symlink
   ln -svr "${pkgdir}/usr/bin/HDRView" "${pkgdir}/usr/bin/hdrview"
+
+  ## Clean up stuff we do not want to install locally
+  #rm -Rf "${pkgdir}/opt/hdrview/lib"
+#   rm -Rf "${pkgdir}/usr/include/glad"
+#   rm -Rf "${pkgdir}/usr/include/hello_imgui"
+#   rm -Rf "${pkgdir}/usr/include/jxl"
+#   rm -Rf "${pkgdir}/usr/include/KHR"
+#   rm -Rf "${pkgdir}/usr/include/libexif"
+#   rm -Rf "${pkgdir}/usr/include/libheif"
+#   rm -Rf "${pkgdir}/usr/include/plutovg"
+#   rm -f  "${pkgdir}/usr/include"/imconfig.h
+#   rm -f  "${pkgdir}/usr/include"/imgui*.h
+#   rm -f  "${pkgdir}/usr/include"/stb_image*.h
+#   rm -f  "${pkgdir}/usr/include"/zconf.h
+#   rm -f  "${pkgdir}/usr/include"/zlib.h
+#   rm -f  "${pkgdir}/usr/lib"/*.a
+#   rm -Rf "${pkgdir}/usr/lib/cmake/hello_imgui"
+#   rm -Rf "${pkgdir}/usr/lib/cmake/libheif"
+#   rm -Rf "${pkgdir}/usr/lib/cmake/plutovg"
+#   rm -Rf "${pkgdir}/usr/lib/cmake/zlib"
+#   rm -Rf "${pkgdir}/usr/lib/libheif"
+#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/libexif.pc
+#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/libheif.pc
+#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/libjxl*.pc
+#   rm -f  "${pkgdir}/usr/lib/pkgconfig"/zlib.pc
+
+  rm -Rf "${pkgdir}/usr"/{include,lib}
+
+  rm -Rf "${pkgdir}/usr/assets"
+  rm -Rf "${pkgdir}/usr/share/hello-imgui"
+  rm -f  "${pkgdir}/usr"/hello_* rm -f "${pkgdir}/usr"/Hello_*
+
 
   ## Install documentation and license
   for _docfile in README.md TODO.md git.log; do
