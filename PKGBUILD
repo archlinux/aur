@@ -1,11 +1,10 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Max Bruckner <max at maxbruckner dot de>
-
 pkgname=smooth
 pkgver=0.9.10
 pkgrel=2
-pkgdesc="An object oriented C++ class library for Windows, OS X, Linux and most Unix-like operating systems"
+pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
 url="http://www.smooth-project.org/"
 license=('Artistic-2.0')

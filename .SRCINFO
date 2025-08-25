@@ -1,5 +1,5 @@
 pkgbase = smooth
-	pkgdesc = An object oriented C++ class library for Windows, OS X, Linux and most Unix-like operating systems
+	pkgdesc = An object oriented C++ class library
 	pkgver = 0.9.10
 	pkgrel = 2
 	url = http://www.smooth-project.org/
