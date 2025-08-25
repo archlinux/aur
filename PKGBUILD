@@ -1,6 +1,6 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=opww
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Odd Pacman Wrapper Wrapper"
 arch=('any')

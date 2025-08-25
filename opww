@@ -1,15 +1,21 @@
 #!/usr/bin/python3
 # odd pacman wrapper wrapper
 # an interesting AUR wrapper made to work when aur.archlinux.org is down
-# 80 lines of wrapping other stuff because I can't bother actually implimenting anything, please read it else you may run opww -S out of habit and make this whole thing attempt to run a package named "-S"
+# a lot of wrapping other stuff because I can't bother actually implimenting anything.
 
 import os
 import sys
 import shutil
 import tempfile
+import glob
+from pathlib import Path
 
-if len(sys.argv) > 1:
-  pkg = sys.argv[1]
+if len(sys.argv) > 2:
+  flags  = sys.argv[1]
+  target = sys.argv[2]
+elif len(sys.argv) > 1:
+  flags = "-S"
+  target= sys.argv[1]
 else:
   print("opqq ERR: No arguments passed. Please just give the correct package name it will try to install.", file=sys.stderr)
   sys.exit(1)
@@ -37,7 +43,7 @@ if os.geteuid() == 0:
   helper=False
 
 
-def githubMirror():
+def githubMirror(pkg, downloadOnly=False):
   cwd=os.getcwd()
   status=12345
   try:
@@ -50,31 +56,71 @@ def githubMirror():
       os.chdir(pkg)
       os.system("less PKGBUILD")
       if input("opqq ASK: Is this PKGBUILD good to run? (y/n) ").lower() != "y":
-          print("opqq ERR: Aborted.", file=sys.stderr)
-          sys.exit(2)
-      status=os.system("makepkg -si")
+        print("opqq ERR: Aborted.", file=sys.stderr)
+        sys.exit(2)
+      if downloadOnly:
+        status=os.system("makepkg -s")
+        Path(cwd).mkdir(parents=True, exist_ok=True)
+        for file in glob.glob("*.pkg.tar.zst"):
+          shutil.copy(file, cwd)
+      else:
+        status=os.system("makepkg -si")
   finally:
     os.chdir(cwd)
     sys.exit(status)
+def installFlow(pkg): # If -S: run -S
+  print("opqq INFO: Checking if available in your repos...")
+  if os.system(f"pacman -Si {pkg}>/dev/null") == 0:
+    print(f"opqq INFO: Found package {pkg} in your repos.")
+    if amiroot:
+      os.execvp("pacman", ["pacman", "-S", pkg])
+    os.execvp("sudo", ["sudo", "pacman", "-S", pkg])
 
-print("opqq INFO: Checking if available in your repos...")
-if os.system(f"pacman -Si {pkg}>/dev/null") == 0:
-  print(f"opqq INFO: Found package {pkg} in your repos.")
+  if helper is False:
+    print("opqq ERR: Not found in repos but you are root (uid 0) and can't do AUR operations. Please use an non root account with sudo privilages.")
+    sys.exit(1)
+  elif helper is None:
+    # No INFO: using github mirror because no helper is found and they got the WARNing
+    # We use the github mirror directly here because there really is no reason to go straight to aur.archlinux.org because the only reason I do in the first place is the benifits of using an proper AUR helper.
+    githubMirror(pkg)
+  else:
+    print(f"opqq INFO: Attempt 1 of getting AUR package: Using {helper}.")
+    status=os.system(f"{helper} -S {pkg}")
+    if status != 0:
+      print("opqq ERR: AUR helper failed.")
+      print("opqq INFO: Using github mirror...")
+      githubMirror(pkg)
+    else:
+      sys.exit(0)
+def uninstallFlow(pkg): # If -R: Run -Rns
   if amiroot:
-    os.execvp("pacman", ["pacman", "-S", pkg])
-  os.execvp("sudo", ["sudo", "pacman", "-S", pkg])
+    os.execvp("pacman", ["pacman", "-Rns", pkg])
+  os.execvp("sudo", ["sudo", "pacman", "-Rns", pkg])
+def manualFlow(pkg): # If -U: Run -U
+  if amiroot:
+    os.execvp("pacman", ["pacman", "-U", pkg])
+  os.execvp("sudo", ["sudo", "pacman", "-U", pkg])
+def downloadFlow(pkg): # if -Sw: Run -Sw
+  print("opqq INFO: Checking if available in your repos...")
+  if os.system(f"pacman -Si {pkg}>/dev/null") == 0:
+    print(f"opqq INFO: Found package {pkg} in your repos.")
+    if amiroot:
+      os.execvp("pacman",     ["pacman", "-Sw", "--cachedir", ".", pkg])
+    os.execvp("sudo", ["sudo", "pacman", "-Sw", "--cachedir", ".", pkg])
+  if helper is False:
+    print("opqq ERR: Not found in repos but you are root (uid 0) and can't do AUR operations. Please use an non root account with sudo privilages.")
+    sys.exit(1)
+  elif helper is None:
+    githubMirror(pkg, True)
 
-if helper is False:
-  print("opqq ERR: Not found in repos but you are root (uid 0) and can't do AUR operations. Please use an non root account with sudo privilages.")
-  sys.exit(1)
-elif helper is None:
-  # No INFO: using github mirror because no helper is found and they got the WARNing
-  # We use the github mirror directly here because there really is no reason to go straight to aur.archlinux.org because the only reason I do in the first place is the benifits of using an proper AUR helper.
-  githubMirror()
-else:
-  print(f"opqq INFO: Attempt 1 of getting AUR package: Using {helper}.")
-  status=os.system(f"{helper} -S {pkg}")
-  if status != 0:
-    print("opqq ERR: AUR helper failed.")
-    print("opqq INFO: Using github mirror...")
-    githubMirror()
+if __name__ == "__main__":
+  if "Sw" in flags:
+    downloadFlow(target)
+  elif "S" in flags:
+    installFlow(target)
+  elif "R" in flags:
+    uninstallFlow(target)
+  elif "U" in flags:
+    manualFlow(target)
+  else:
+    print("opqq ERR: We only support one package at a time (for now!)")
