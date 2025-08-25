@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-browser-git
 _pkgname=AI-Browser
-pkgver=1.5.0.r0.gb1396f9
-_electronversion=35
+pkgver=1.6.2.r0.gb952941
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc='Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.(Use system-wide electron)'
 arch=('any')
-url="https://github.com/Jun-Murakami/AI-Browser"
+url="https://jun-murakami.web.app/#aiBrowser"
+_ghurl="https://github.com/Jun-Murakami/AI-Browser"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -22,11 +23,11 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname%-git}.git::git+${url}.git"
+    "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
