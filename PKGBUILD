@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="obsidian-cli"
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update and move notes!"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://yakitrak.github.io/obsidian-cli-docs"
 _url="https://github.com/Yakitrak/${pkgname}"
 license=('MIT')
@@ -12,21 +12,29 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('77c3fa6a0d402161545531ff148ce8cd6d6be31e4ed6ef9b67edb4f7bf48fc16')
+sha256sums=('f789e89e215414f517b2a54d49b060e33ee45d11427e92f298f32b5dd616fd86')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  chmod -R ug+Xwr "${GOMODCACHE}"
+
   mkdir -p "build" "completions"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" .
 
   for _sh in bash fish zsh powershell; do
     ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
