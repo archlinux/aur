@@ -1,6 +1,6 @@
 pkgbase = xlibre-input-void
 	pkgdesc = XLibre void input driver
-	pkgver = 1.4.2.1
+	pkgver = 1.4.2.2
 	pkgrel = 2
 	url = https://github.com/X11Libre/xf86-input-void
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = xlibre-input-void
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
-	source = xf86-input-void-xlibre-xf86-input-void-1.4.2.1.tar.gz::https://github.com/X11Libre/xf86-input-void/archive/refs/tags/xlibre-xf86-input-void-1.4.2.1.tar.gz
-	b2sums = 4b06b12b05c1a31272d439a03ffe125126064d64873c98b2b775e911e7380038962b33a0080b5735c6023cc0aa491fa2a52eae3c4a18678a34f7d6be81b0cb48
+	source = xf86-input-void-xlibre-xf86-input-void-1.4.2.2.tar.gz::https://github.com/X11Libre/xf86-input-void/archive/refs/tags/xlibre-xf86-input-void-1.4.2.2.tar.gz
+	b2sums = 23a9a9423eb395d84f67febc9df2388002d45d1cbe8abfeda9728c3d8a158b573e8e285829e82ee38b3ea7546c5abd4f5c9a4a09b7314506d0c5a2214c1e8fdb
 
 pkgname = xlibre-input-void

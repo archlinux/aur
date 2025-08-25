@@ -3,7 +3,7 @@
 
 _basename="xf86-input-void"
 pkgname="${_basename//xf86/xlibre}"
-pkgver=1.4.2.1
+pkgver=1.4.2.2
 pkgrel=2
 pkgdesc="XLibre void input driver"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=("${_basename}" 'xorg-server<21.1.1' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-
 groups=('xlibre-drivers')
 _pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-b2sums=('4b06b12b05c1a31272d439a03ffe125126064d64873c98b2b775e911e7380038962b33a0080b5735c6023cc0aa491fa2a52eae3c4a18678a34f7d6be81b0cb48')
+b2sums=('23a9a9423eb395d84f67febc9df2388002d45d1cbe8abfeda9728c3d8a158b573e8e285829e82ee38b3ea7546c5abd4f5c9a4a09b7314506d0c5a2214c1e8fdb')
 
 build() {
   local configure_options=(
