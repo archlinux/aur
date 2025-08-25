@@ -6,7 +6,7 @@ _pkgname=("${_langs[@]/#/"${_pkgbase}-"}")
 pkgbase="${_pkgbase}-bin"
 pkgname=("${pkgbase}" "${_pkgname[@]/%/-bin}")
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Protoc plugin to generate polyglot message validators"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/bufbuild/${_pkgbase}"
@@ -21,7 +21,7 @@ sha256sums_x86_64=('e7a1d7256184dc6824e8f8e4b672b1281013e321579daffd19b2e3e90b6f
 
 package_protoc-gen-validate-bin() {
   depends=('protobuf')
-  provides=("${pkgname%-bin}")
+  provides=("${pkgname%-bin}=${pkgver}")
   conflicts=("${pkgname%-bin}")
 
   cd "${srcdir}"
@@ -34,8 +34,8 @@ for _lang in "${_langs[@]}"; do
   eval "
 package_${_pkgbase}-${_lang}-bin() {
   pkgdesc+=' - ${_lang} target'
-  depends=('${_pkgbase}=${pkgver}')
-  provides=('${_pkgbase}-${_lang}')
+  depends+=('${_pkgbase}=${pkgver}')
+  provides=('${_pkgbase}-${_lang}=${pkgver}')
   conflicts=('${_pkgbase}-${_lang}')
   
   install -vDm755 '${_pkgbase}-${_lang}' \"\${pkgdir}/usr/bin/${_pkgbase}-${_lang}\"

@@ -1,7 +1,7 @@
 pkgbase = protoc-gen-validate-bin
 	pkgdesc = Protoc plugin to generate polyglot message validators
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bufbuild/protoc-gen-validate
 	arch = aarch64
 	arch = i686
@@ -16,23 +16,23 @@ pkgbase = protoc-gen-validate-bin
 
 pkgname = protoc-gen-validate-bin
 	depends = protobuf
-	provides = protoc-gen-validate
+	provides = protoc-gen-validate=1.2.1
 	conflicts = protoc-gen-validate
 
 pkgname = protoc-gen-validate-cpp-bin
 	pkgdesc = Protoc plugin to generate polyglot message validators - cpp target
 	depends = protoc-gen-validate=1.2.1
-	provides = protoc-gen-validate-cpp
+	provides = protoc-gen-validate-cpp=1.2.1
 	conflicts = protoc-gen-validate-cpp
 
 pkgname = protoc-gen-validate-go-bin
 	pkgdesc = Protoc plugin to generate polyglot message validators - go target
 	depends = protoc-gen-validate=1.2.1
-	provides = protoc-gen-validate-go
+	provides = protoc-gen-validate-go=1.2.1
 	conflicts = protoc-gen-validate-go
 
 pkgname = protoc-gen-validate-java-bin
 	pkgdesc = Protoc plugin to generate polyglot message validators - java target
 	depends = protoc-gen-validate=1.2.1
-	provides = protoc-gen-validate-java
+	provides = protoc-gen-validate-java=1.2.1
 	conflicts = protoc-gen-validate-java
