@@ -1,7 +1,7 @@
 # Maintainer: Petrov Vlad <petrov.vlad@ya.ru>
 
 pkgname=freelib-dev-git
-pkgver=6.1.100
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Book library manager"
 arch=(x86_64)
@@ -9,8 +9,9 @@ url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
 depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6 onetbb qtkeychain-qt6)
 optdepends=('kindlegen: convert to MOBI, AZW3'
-  'djvulibre: djvu covers'
-  'poppler-qt6: pdf covers')
+            'djvulibre: djvu covers'
+            'poppler-qt6: pdf covers'
+            'kio: KDE integration')
 makedepends=(git cmake)
 provides=(freelib)
 conflicts=(freelib freelib-git)
