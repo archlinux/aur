@@ -5,12 +5,12 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Btrfs rollback tool written in Go for Arch-based distributions"
 arch=('any')
-url="https://github.com/xeyossr/btrfs-rollback"
+url="https://github.com/axrona/btrfs-rollback"
 license=('GPL3')
 depends=('btrfs-progs')
 makedepends=('go')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xeyossr/btrfs-rollback/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/axrona/btrfs-rollback/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
