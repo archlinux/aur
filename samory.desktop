@@ -2,5 +2,7 @@
 Type=Application
 Name=Samory
 Exec=/usr/bin/samory
+Icon=samory-icon.png
+Comment=A memory like game with custom deck support
 
 Categories=Game
