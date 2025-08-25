@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "plasma-settings"
-  git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
