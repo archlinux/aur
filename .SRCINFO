@@ -1,0 +1,22 @@
+pkgbase = spotify-cue
+	pkgdesc = Unified CLI Spotify controller with intelligent session management and network support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/notvox/cue
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-requests
+	depends = python-flask
+	depends = python-spotipy
+	depends = python-schedule
+	optdepends = systemd: for cue-server daemon service
+	provides = cue
+	source = git+https://github.com/notvox/cue.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = spotify-cue
