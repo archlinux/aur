@@ -3,9 +3,8 @@
 
 _basename="xf86-input-synaptics"
 pkgname="${_basename//xf86/xlibre}"
-# pkgver=1.10.0.1
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.10.0.2
+pkgrel=1
 pkgdesc="XLibre Synaptics driver for notebook touchpads"
 arch=('aarch64' 'x86_64')
 url="https://github.com/X11Libre/${_basename}"
@@ -17,11 +16,10 @@ conflicts=("${_basename}" 'synaptics' 'xorg-server<21.1.2' 'X-ABI-XINPUT_VERSION
 replaces=('synaptics')
 groups=('xlibre-drivers')
 install="${pkgname}.install"
-# _pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
-# source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-_pkgsrc="${_basename}-${_basename}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xf86-input-synaptics-1.10.0.tar.gz")
-b2sums=('d8079db5ca672c449d23972ffbe238c081cfcad3bee3cd9a9d7851b9efd2f841ad0b05eb3e6c9d6be4081187988fa4eabc4ef5fb88889af53a5aa2440312b1ff')
+_pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
+#source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgsrc}.tar.gz")
+b2sums=('6c3dbfbf0feaf35cb5dcfa9aa7f87c9ae64c625f18143dd08a523873595ed8ca98c57e62fe8bb631dfcbcdc85c199e956dd5f67ed87cf22ffa1c9f455f78c65d')
 
 build() {
   local configure_options=(
