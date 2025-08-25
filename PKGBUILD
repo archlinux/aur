@@ -3,7 +3,7 @@
 _name=("protoc-gen-grpc-gateway" "protoc-gen-openapiv2")
 _pkgname="grpc-gateway"
 pkgname="${_pkgname}-bin"
-pkgver=2.27.1
+pkgver=2.27.2
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=('aarch64' 'x86_64')
@@ -22,10 +22,10 @@ for _binary in "${_name[@]}"; do
 done
 sha256sums=('a4764320cdc5246fa64626129b6bc8b6835a9c1fbb994daadbbd1268d5b949c1'
             'a15b1d1b168954c92ff7fb1620382418f7c72f4f4d251ee791d1098ad68ab0c4')
-sha256sums_aarch64=('837e835946219837064ce691c007d045d10977ea3a4ea70b0ea5e2ead196bcda'
-                    '3510db1ea197d4ff9456cdac90ecfdbadd018858d6d73b9e5031257474aac284')
-sha256sums_x86_64=('74b7f8711097d544de49f4db0894941f8952139b5e75106365f3af1c47696649'
-                   'd163c53e0f1506c109ed4452f6cedf2440af6ff15d621be34144da7e996e2327')
+sha256sums_aarch64=('710bf0ac9d8cbe1d0e1ead29916cf50e08fa0976c6be5366c300e8044d8e67b8'
+                    'efce95ad086b0ffada3b2db0fac833ee444b9d658cd652f6041d1f2af30800cc')
+sha256sums_x86_64=('46a51c05403b2392cec1e554a295726f00731b11eddffd22406bffbc74afe885'
+                   '957ab86000557c748ff79f26ea6578dc91a0264e76c57f07b9c932b1f9776e57')
 
 package() {
   cd "${srcdir}"
