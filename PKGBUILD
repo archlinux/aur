@@ -59,6 +59,7 @@ package() {
     echo "Installing 32-bit libraries"
     DESTDIR="$pkgdir" cmake --install WiVRn/build32
     echo "Moving 32-bit libraries from /usr/lib to /usr/lib32"
+    mkdir -p "$pkgdir/usr/lib32"
     mv "$pkgdir/usr/lib/wivrn" "$pkgdir/usr/lib32/wivrn"
 
     echo "Installing 64-bit libraries and server"
