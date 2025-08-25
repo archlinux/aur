@@ -2,7 +2,7 @@
 
 pkgname=nrip
 _pkg=NRip
-pkgver=0.8.1
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Safe rm with a graveyard (rm, list, prune, resurrect, fzf integration)'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=("nrip=${pkgver}")
 #conflicts=()
 
 source=("${_pkg}-${pkgver}.tar.gz::https://forgejo.dirty-flix-servarr.fr/Samda/${_pkg}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8f7cd8b0f5a33af99419a8d65424ad30c9871d28cef3b731815a1100d7e67fbc')
+sha256sums=('646cc4c2e6f56015208c8d1d57a7394aa4ee3cf82daca01b06906240de69e775')
 
 prepare() {
   cd "$srcdir/${pkgname}"
