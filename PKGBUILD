@@ -6,7 +6,7 @@ _pkgname="heptabase"
 _pkgname_capital="Heptabase"
 pkgname="$_pkgname-bin"
 _pkgext="AppImage"
-pkgver="1.66.0"
+pkgver="1.71.1"
 pkgrel=1
 pkgdesc="A visual note-taking tool for learning complex topics."
 url="https://heptabase.com"
@@ -15,7 +15,7 @@ license=('custom')
 source=(
     "https://github.com/heptameta/project-meta/releases/download/v$pkgver/$_pkgname_capital-$pkgver.$_pkgext"
 )
-sha512sums=('46fc0ced11cb1fb423c9b72ca8557ef1e718a2fc0febc2e19efe85b8fe197783ea93ccb50b1856d52b846aba5dbf2d38372cdebbcd5175bfde8681083b68b6b1')
+sha512sums=('aa9614d16815f5b860bea5e91bd2392d3fd9a1b5a47dd789191a32582f27a8c43338e5529f498287fb70d2a974237e29a0b2fdad45f4073eab460498c04396e0')
 
 prepare() {
     _gen_script
