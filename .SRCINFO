@@ -1,0 +1,17 @@
+pkgbase = discord-rpc-lsp-git
+	pkgdesc = A Language Server Protocol (LSP) to share what you're coding on Discord.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/zerootoad/discord-rpc-lsp
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	optdepends = arrpc: open source implementation of Discord's desktop RPC server API.
+	optdepends = helix: text editor with strong LSP configuration capabilities.
+	provides = discord-rpc-lsp
+	conflicts = discord-rpc-lsp
+	source = git+https://github.com/zerootoad/discord-rpc-lsp.git
+	sha256sums = SKIP
+
+pkgname = discord-rpc-lsp-git
