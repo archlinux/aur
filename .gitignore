@@ -1,0 +1,8 @@
+*
+!.editorconfig
+!.gitignore
+!.python-version
+!.SRCINFO
+!Makefile
+!PKGBUILD
+!README.md

@@ -1,0 +1,18 @@
+pkgbase = zedless-git
+	pkgdesc = Zed fork focused on privacy and being local-first
+	pkgver = 0.192.0.dev.r980.gadb21022b5
+	pkgrel = 1
+	url = https://github.com/zedless-editor/zedless
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = cargo
+	checkdepends = git
+	makedepends = cargo
+	makedepends = git
+	provides = zedless
+	conflicts = zedless
+	conflicts = zedless-bin
+	source = git+https://github.com/zedless-editor/zedless.git
+	sha512sums = SKIP
+
+pkgname = zedless-git
