@@ -3,7 +3,7 @@
 _name=hyperqueue
 pkgbase=$_name-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.22.0.r15.g99a27a2
+pkgver=0.23.0.r69.g49bab80
 pkgrel=1
 pkgdesc="Scheduler for sub-node tasks for HPC systems with batch scheduling"
 arch=(x86_64)
@@ -38,7 +38,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd $_name
-  git describe --long --tags --abbrev=7 --exclude=nightly | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude=nightly --exclude=-rc | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
