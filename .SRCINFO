@@ -1,0 +1,18 @@
+pkgbase = wezztershier
+	pkgdesc = GUI tuner for WezTerm configuration using static decorators
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/wezztershier
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt6
+	optdepends = wezterm: for WezTerm terminal emulator integration
+	source = git+https://github.com/tenseleyFlow/wezztershier.git#tag=v0.2.0
+	sha256sums = SKIP
+
+pkgname = wezztershier
