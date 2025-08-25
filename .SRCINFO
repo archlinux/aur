@@ -1,0 +1,16 @@
+pkgbase = shellp
+	pkgdesc = Development note-taking companion that prompts you to document important shell commands
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/shellp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = git: for Git repository integration
+	optdepends = bash: for shell hook integration
+	optdepends = zsh: for shell hook integration
+	source = git+https://github.com/tenseleyFlow/shellp.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = shellp
