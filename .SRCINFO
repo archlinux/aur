@@ -1,6 +1,6 @@
 pkgbase = rook
 	pkgdesc = A lightweight, stand-alone, headless secret service tool backed by a Keepass v2 database.
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://hg.sr.ht/~ser/rook
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = rook
 	optdepends = yad: dialog tool, for autotype
 	optdepends = xsel: X clipboard tool, for getAttr
 	optdepends = util-linux: for the column formatting command, for getAttr
-	source = rook-0.4.0.tar.gz::https://hg.sr.ht/~ser/rook/archive/v0.4.0.tar.gz
-	sha256sums = 0c1d261e5957a2729042789478344485153419d85d8332ef4bf8a3b56a7d54c3
+	source = rook-0.4.2.tar.gz::https://hg.sr.ht/~ser/rook/archive/v0.4.2.tar.gz
+	sha256sums = b7722b0400ecf3d9032397b4245fa252936e1028ae2e7f9732e96eaaf29e5d15
 
 pkgname = rook
