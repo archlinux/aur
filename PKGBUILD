@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=7.1.1
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
@@ -151,7 +151,6 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         "031-ffmpeg-add-svt-vp9.patch"
         "040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-        "050-ffmpeg-fix-segfault-with-avisynthplus.patch"
         '070-ffmpeg-svt-av1-3.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95'
         '090-ffmpeg-lcevcdec4.0.0-fix.patch'
         "LICENSE")
@@ -162,7 +161,6 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
             'aa0daffc4d234b6621b63c298dc165d29522c5087f8905a923d23ee2d164e9ad'
             '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
-            '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
             'b83ba1efdfec19ac54d1b0395a98d02039fe9d45bec1e6473e57a6288a304884'
             '2ff4ba31e43d6d397542ec25df224cef01cf501409e202255e9414e482ba14cf'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
@@ -175,7 +173,6 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/031-ffmpeg-add-svt-vp9.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-svt-av1-3.0.0-fix.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-lcevcdec4.0.0-fix.patch"
 }
