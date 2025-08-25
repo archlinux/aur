@@ -1,12 +1,12 @@
 # Maintainer: levinion <levinnion@gmail.com>
 pkgname=fzfmenu
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An application launcher based on fzf "
 url="https://github.com/levinion/fzfmenu"
 arch=("any")
 license=("GPLv3")
-depends=('gcc-libs' 'glibc')
+depends=("gcc-libs" "glibc" "fzf")
 makedepends=("cargo" "git")
 provides=("fzfmenu")
 source=(
