@@ -2,23 +2,18 @@
 
 _name="verdict"
 pkgname="lib32-${_name}"
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Compute quality functions of 2 and 3-dimensional regions (32-bit)"
 arch=('x86_64')
 url="https://github.com/sandialabs/${_name}"
 license=('BSD-3-Clause')
-depends=('lib32-gcc-libs' 'lib32-glibc' "${_name}>=${pkgver}")
-makedepends=('cmake>=3.16' 'lib32-gtest')
+depends=('lib32-glibc' "${_name}>=${pkgver}")
+makedepends=('cmake>=3.16' 'lib32-gcc-libs' 'lib32-gtest')
 provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('225c8c5318f4b02e7215cefa61b5dc3f99e05147ad3fefe6ee5a3ee5b828964b')
-
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  sed -i 's/set(CMAKE_CXX_STANDARD 11)/set(CMAKE_CXX_STANDARD 14)/g' 'CMakeLists.txt'
-}
+sha256sums=('d12d1cd41c6568997df348a72cc2973a662fae1b3634a068ea2201b5f7383186')
 
 build() {
   export CFLAGS+=" -m32"
