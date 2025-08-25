@@ -64,18 +64,18 @@ build() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/opt/"
+    mkdir -p "${pkgdir}/usr/lib/"
     cp -r "${srcdir}/${pkgname}/dist_electron/linux-unpacked/" \
-        "${pkgdir}/opt/${pkgname}/"
+        "${pkgdir}/usr/lib/${pkgname}/"
 
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s "/opt/${pkgname}/LICENSES.chromium.html" \
+    ln -s "/usr/lib/${pkgname}/LICENSES.chromium.html" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
-    ln -s "/opt/${pkgname}/LICENSE.electron.txt" \
+    ln -s "/usr/lib/${pkgname}/LICENSE.electron.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
 
     mkdir -p "${pkgdir}/usr/bin/"
-    ln -s "/opt/${pkgname}/${pkgname}" \
+    ln -s "/usr/lib/${pkgname}/${pkgname}" \
         "${pkgdir}/usr/bin/${pkgname}"
 
     local size
