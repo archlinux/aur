@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=data.tree
-_pkgver=1.1.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="General Purpose Hierarchical Data Structure"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2cb316683cdf181900d26e49b69d7f79')
-b2sums=('a04a96ae2d95db3a8ff678c45f06ee9a0747e6767d2d6f06c4bb90487d440f7f2d1d4b1c2f2ad7ec11dcedfc2c81debf0afaa00a805cdf29a2189290493e25dd')
+md5sums=('a456eff17400a38feb07cd0497ea4141')
+b2sums=('259aeeaaccb4a739c16c3a7459797c3af33e2e57aedf877fefe8bafbfd7c65584ce30a743909e477500e352582afd537a6243f75588e610fbb4d83620b63fa11')
 
 build() {
   mkdir build
