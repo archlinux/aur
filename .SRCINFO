@@ -1,11 +1,13 @@
 pkgbase = libebu
 	pkgver = 4.5_20220808
-	pkgrel = 1
+	pkgrel = 2
 	url = http://green.ribbon.to/~ikazuhiro/dic/ebu.html
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = sed
 	makedepends = findutils
+	makedepends = zlib
+	makedepends = libdeflate
 	provides = libebu.so
 	provides = libebu
 	source = http://green.ribbon.to/~ikazuhiro/dic/files/ebu-4.5-20220808.tar.gz
