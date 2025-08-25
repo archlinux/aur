@@ -13,7 +13,7 @@ depends=('kdeconnect-git'
         'plasma-nano-git')
 makedepends=('cmake' 'extra-cmake-modules-git' 'git') 
 optdepends=('libcec: add USB-CEC support in order to be controlled by TV remotes'
-            'plasma-remotecontrollers: add setting tab for remote controllers')
+            'plasma-remotecontrollers-git: add support for remote controllers')
 conflicts=('plasma-bigscreen')
 source=('git+https://invent.kde.org/plasma/plasma-bigscreen.git')
 noextract=()
