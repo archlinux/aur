@@ -1,0 +1,32 @@
+From 9c8516b7dfaa101f8c90b3c8fd3e8b816e2c025c Mon Sep 17 00:00:00 2001
+From: Philipp Wollschlegel <folken@kabelsalat.ch>
+Date: Wed, 11 Sep 2024 13:15:42 +0200
+Subject: [PATCH] lib/fmt/PathFormatter.hpp: mark format const
+
+---
+ src/lib/fmt/PathFormatter.hpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/lib/fmt/PathFormatter.hpp b/src/lib/fmt/PathFormatter.hpp
+index c3da4b605d..cf129879bc 100644
+--- a/src/lib/fmt/PathFormatter.hpp
++++ b/src/lib/fmt/PathFormatter.hpp
+@@ -10,10 +10,11 @@
+ template<>
+ struct fmt::formatter<Path> : formatter<string_view>
+ {
+-	template<typename FormatContext>
+-	auto format(Path path, FormatContext &ctx) {
+-		return formatter<string_view>::format(path.ToUTF8(), ctx);
+-	}
++  template <typename FormatContext>
++  auto format(Path path, FormatContext &ctx) const
++  {
++    return formatter<string_view>::format(path.ToUTF8(), ctx);
++  }
+ };
+ 
+ template<>
+-- 
+2.51.0
+
