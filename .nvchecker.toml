@@ -1,0 +1,5 @@
+[unfurl-bin]
+source = "github"
+github = "tomnomnom/unfurl"
+use_latest_release = true
+prefix = "v"
