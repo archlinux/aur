@@ -10,7 +10,7 @@ license=('MIT')
 depends=('quickshell' 'ttf-roboto' 'inter-font' 'ttf-material-symbols-variable-git')
 optdepends=(
   'cliphist: For clipboard history support'
-  'swwww: Wallpaper animations and effects'
+  'swww: Wallpaper animations and effects'
   'matugen: Material You color scheme generation'
   'cava: Audio visualizer component'
   'gpu-screen-recorder: Screen recording functionality'
