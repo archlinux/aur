@@ -1,6 +1,6 @@
 pkgbase = android-google-apis-x86-64-system-image
 	pkgdesc = Android with Google APIs x86_64 Atom System Image, latest API
-	pkgver = 36_r06
+	pkgver = 36_r07
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = android-google-apis-x86-64-system-image
 	conflicts = android-google-apis-x86-64-system-image-36
 	options = !strip
 	options = !debug
-	source = https://dl.google.com/android/repository/sys-img/google_apis/x86_64-36_r06.zip
+	source = https://dl.google.com/android/repository/sys-img/google_apis/x86_64-36_r07.zip
 	source = package.xml
-	sha256sums = 3c93b5ac3585f47c599ac41169f9d46cc0fb196bc037786365074672d2bad7a8
-	sha256sums = 94d75371cf00e7e4f7082ba62d07a4b7e55cb0ba67966fe485eac2cfb3e315f0
+	sha256sums = b1bb0769d0bed7698e61f203d7dc9bf6e7c37cd01a39d0d8788a11186bc78160
+	sha256sums = 1fd4bbdb451520d71263e08e72db6c5ed4f7ccccb7f40fe68ea1d710bc9d59c2
 
 pkgname = android-google-apis-x86-64-system-image
 	depends = android-platform
