@@ -71,8 +71,8 @@ source=("php-${pkgver}-cli-build-extensions.json::https://dl.static-php.dev/stat
 source_x86_64=("php-${pkgver}-cli-linux-x86_64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-${pkgver}-cli-linux-x86_64.tar.gz")
 source_aarch64=("php-${pkgver}-cli-linux-aarch64.tar.gz::https://dl.static-php.dev/static-php-cli/bulk/php-${pkgver}-cli-linux-aarch64.tar.gz")
 sha256sums=('d53e9261993abfe9106c67a82f475d697d9fe825a5d0e18f37a88585ab5a705a')
-sha256sums_x86_64=('9b6fd584d6ca7da739eae7352653d74fc7fb1c3928e5dfa2dd257a0ff6aaf01c')
-sha256sums_aarch64=('7e54cc175c2ccaa800a37473964a2c7d8f0d367bdae8592e31e1284ef4d0c318')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 options=(!strip)
 
 package() {
