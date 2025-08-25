@@ -1,6 +1,6 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=nexus-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="CLI for building Talus Agents with Nexus, the Agentic Workflow Engine"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/talus-network/nexus-sdk"
 license=("Apache-2.0")
 
 source=("$url/releases/download/v$pkgver/nexus-cli-$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=("b26290ca239bc9390abd3f15d61aa1ba2452103a12fd042607841645e6b79fa4")
+sha256sums=("ed199419840f53bfa899372d4ebd98ed2bfad0a866ee3241b50e7d261f0f07b6")
 
 package() {
     install -Dm755 nexus "${pkgdir}/usr/bin/nexus"
