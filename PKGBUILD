@@ -2,7 +2,7 @@
 pkgname=plasma-dialer-git
 pkgver=6.3.90.r13.g387b2b8
 pkgrel=1
-pkgdesc="Dialer for Plasma Mobile - Git version"
+pkgdesc="Dialer for Plasma Mobile"
 arch=(any)
 url="https://invent.kde.org/plasma-mobile/plasma-dialer"
 license=('GPL3')
