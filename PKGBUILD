@@ -1,4 +1,4 @@
-# Maintainer: ivanich
+# Maintainer: wast3
 pkgname=kodi-addon-inputstream-ffmpegdirect
 pkgver=21.3.8
 pkgrel=1
