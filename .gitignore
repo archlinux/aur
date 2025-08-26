@@ -15,7 +15,7 @@ Thumbs.db
 
 # Editor files
 *.code-workspace
-*.swp
-*.swo
+*-swp
+*-swo
 .vscode/
 .qodo/
