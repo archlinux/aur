@@ -49,42 +49,6 @@ source=("git+https://github.com/damachine/coolerdash.git#tag=$_tag")
 sha256sums=('SKIP')
 validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
-prepare() {
-    cd "$srcdir/coolerdash" || return 1
-
-    # best-effort: try GitHub user .gpg first, then keyserver (no hard-fail)
-    repo_user=$(printf "%s" "$url" | sed -n 's|https://github.com/\([^/]*\)/.*|\1|p')
-    if [[ -n $repo_user ]]; then
-        curl -fsSL "https://github.com/${repo_user}.gpg" | gpg --import >/dev/null 2>&1 || true
-    fi
-
-    for key in "${validpgpkeys[@]}"; do
-        # if key present locally, good; otherwise warn (do not fail)
-        if ! gpg --list-keys "$key" >/dev/null 2>&1; then
-            # optional try keyserver as last resort (still non-fatal)
-            gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$key" >/dev/null 2>&1 || true
-            if ! gpg --list-keys "$key" >/dev/null 2>&1; then
-                echo "WARNING: GPG key $key not available; tag verification will be skipped" >&2
-            fi
-        fi
-    done
-
-    # Only verify tag if it exists AND the key is available; otherwise warn and continue
-    if git rev-parse --verify --quiet "refs/tags/$_tag" >/dev/null; then
-        # check whether any validpgpkeys are available locally
-        if gpg --list-keys "${validpgpkeys[@]}" >/dev/null 2>&1; then
-            if ! git tag -v "$_tag" >/dev/null 2>&1; then
-                echo "ERROR: git tag $_tag signature verification failed" >&2
-                return 1
-            fi
-        else
-            echo "WARNING: tag $_tag present but no matching GPG key available; skipping verification" >&2
-        fi
-    else
-        echo "WARNING: $_tag is not a tag in this checkout; skipping tag signature verification" >&2
-    fi
-}
-
 build() {
     echo "================================================================"
     echo " Developed and maintained by"
