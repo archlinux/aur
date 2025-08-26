@@ -1,11 +1,11 @@
-# Maintainer: Giacomo Vercesi <mrjackv at hotmail dot it>
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Giacomo Vercesi <mrjackv at hotmail dot it>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
 
 pkgname=python-mbstrdecoder
 _pkg="${pkgname#python-}"
-pkgver=1.1.2
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Multi-byte character string decoder'
 arch=('any')
@@ -16,11 +16,8 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 # checkdepends=(
 # 'python-pytest' 'python-pytest-runner' 'python-pytest-md-report'
 # 'python-faker')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/$_pkg/$_pkg-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/$_pkg/$_pkg-$pkgver.tar.gz.asc")
-sha256sums=('c3a258e5e00192281eb774c00637f68d2d460854cea0c5c820aa241732aa0b51'
-            'SKIP')
-validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('8105ef9cf6b7d7d69fe7fd6b68a2d8f281ca9b365d7a9b670be376b2e6c81b21')
 
 build() {
   cd "$_pkg-$pkgver"
