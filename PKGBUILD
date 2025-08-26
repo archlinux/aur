@@ -2,7 +2,7 @@
 
 pkgname=fortsh
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Unix shell implementation in Fortran 2018 with advanced features'
 arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortsh'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 build() {
     cd fortsh
     make clean
-    make all
+    make all FCFLAGS="-Wall -Wextra -std=f2018 -fPIC -g -O2 -Wno-unused-variable"
 }
 
 check() {
