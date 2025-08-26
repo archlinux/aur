@@ -27,6 +27,9 @@ for arg in "$@"; do
         break
     fi
 done
+if [[ "$XDG_SESSION_TYPE" == "wayland" && -n "$WAYLAND_DISPLAY" ]]; then
+    _WAYLAND_OPTION=true
+fi
 if [[ "${_WAYLAND_OPTION}" == true ]]; then
     echo "Forcing Wayland"
     flags+=("--enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL" "--ozone-platform=wayland")
