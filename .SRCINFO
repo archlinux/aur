@@ -1,9 +1,17 @@
 pkgbase = emojify-go
-	pkgdesc = Placeholder - managed by GoReleaser
-	pkgver = 0.0.0
+	pkgdesc = Lighting fast Emoji conversion on the command line 😱
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/damienbutt/emojify-go
+	arch = aarch64
 	arch = x86_64
 	license = MIT
-
+	makedepends = go
+	makedepends = git
+	conflicts = emojify
+	provides = emojify
+	
+	source = https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go-1.0.0.tar.gz
+	sha256sums = bef7a7c1fff31b6ecb16ae99c565ed4777eb32903c0152a8c108b121d6eee2b2
+	
 pkgname = emojify-go
