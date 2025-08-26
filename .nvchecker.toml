@@ -1,0 +1,4 @@
+[protoc-gen-go-vtproto]
+source = "git"
+git = "https://github.com/planetscale/vtprotobuf.git"
+prefix = "v"

@@ -1,0 +1,16 @@
+pkgbase = protoc-gen-go-vtproto
+	pkgdesc = Protocol Buffers compiler that generates optimized marshaling & unmarshaling Go code for ProtoBuf APIv2
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/planetscale/vtprotobuf
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	source = vtprotobuf-0.6.0.tar.gz::https://github.com/planetscale/vtprotobuf/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 93ed5268bb2bbfe8c3aef008ba6d977a921b2ec62e7e78c762a8c1ae45c5a49c
+
+pkgname = protoc-gen-go-vtproto
