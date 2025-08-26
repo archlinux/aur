@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell-git'
-pkgver=r1110.b52822f
+pkgver=r1130.aa66f3c
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
 depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'cava' 'networkmanager'
          'lm_sensors' 'fish' 'aubio' 'libpipewire' 'glibc' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon'
-         'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'grim' 'swappy' 'libqalculate' 'wayland' 'bash' 'qt6-declarative')
-makedepends=('git' 'gcc' 'wayland-protocols')
+         'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'grim' 'swappy' 'libqalculate' 'wayland' 'bash' 'qt6-base' 'qt6-declarative')
+makedepends=('git' 'gcc' 'wayland-protocols' 'cmake' 'ninja')
 provides=('caelestia-shell')
 conflicts=('caelestia-shell')
 source=("$pkgname::git+$url.git")
@@ -33,6 +33,11 @@ build() {
     gcc $CFLAGS -o idle-inhibitor.o -c idle-inhibitor.c
     g++ $CXXFLAGS -o inhibit_idle idle-inhibitor.cpp idle-inhibitor.o -lwayland-client $LDFLAGS
     rm idle-inhibitor.{h,c,o}
+
+    cd "${srcdir}/${pkgname}/plugin"
+
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DINSTALL_QMLDIR="$pkgdir"/usr/lib/qt6/qml
+    cmake --build build
 }
 
 package() {
@@ -43,6 +48,8 @@ package() {
 
     install -Dm755 ./assets/cpp/inhibit_idle "$pkgdir"/usr/lib/caelestia/inhibit_idle
     rm ./assets/cpp/inhibit_idle
+
+    cmake --install plugin/build
 
     install -dm755 "$pkgdir"/etc/xdg/quickshell/caelestia
     cp -r ./* "$pkgdir"/etc/xdg/quickshell/caelestia/
