@@ -1,12 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=packet
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A Quick Share client for Linux"
 arch=('x86_64')
 url="https://github.com/nozwock/packet"
 license=('GPL-3.0-or-later')
-depends=('libadwaita')
+depends=(
+  'gtk4'
+  'libadwaita'
+)
 makedepends=(
   'blueprint-compiler'
   'cargo'
@@ -19,7 +22,7 @@ optdepends=(
   'python-dbus: needed for Nautilus extension'
 )
 source=("git+https://github.com/nozwock/packet.git#tag=$pkgver")
-sha256sums=('e63cebe5752073d97601f97ea4e11ae91920519cd5e98c57c7dafaceb7173101')
+sha256sums=('4d34845f96ea8601f48672cb549b8ca72c8b24066eaac0d31d4383e93d8fb242')
 
 prepare() {
   cd "$pkgname"
