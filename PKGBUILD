@@ -44,24 +44,24 @@ prepare() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/opt/"
-    cp -r "${srcdir}/unofficial-homestuck-collection-${pkgver}/" "${pkgdir}/opt/unofficial-homestuck-collection/"
+    mkdir -p "${pkgdir}/usr/lib/"
+    cp -r "${srcdir}/${_pkgbase}-${pkgver}/" \
+        "${pkgdir}/usr/lib/${_pkgbase}/"
 
-    mkdir -p "${pkgdir}/usr/share/licenses/unofficial-homestuck-collection/"
-    ln -s "/opt/unofficial-homestuck-collection/LICENSES.chromium.html" \
-        "${pkgdir}/usr/share/licenses/unofficial-homestuck-collection/LICENSES.chromium.html"
-    ln -s "/opt/unofficial-homestuck-collection/LICENSE.electron.txt" \
-        "${pkgdir}/usr/share/licenses/unofficial-homestuck-collection/LICENSE.electron.txt"
+    mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}/"
+    ln -s "/usr/lib/${_pkgbase}/LICENSES.chromium.html" \
+        "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSES.chromium.html"
+    ln -s "/usr/lib/${_pkgbase}/LICENSE.electron.txt" \
+        "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE.electron.txt"
 
     mkdir -p "${pkgdir}/usr/bin/"
-    ln -s "/opt/unofficial-homestuck-collection/unofficial-homestuck-collection" \
-        "${pkgdir}/usr/bin/unofficial-homestuck-collection"
-
-    install -Dm644 "${_pkgbase}.desktop" "${pkgdir}/usr/share/applications/${_pkgbase}.desktop"
+    ln -s "/usr/lib/${_pkgbase}/${_pkgbase}" \
+        "${pkgdir}/usr/bin/${_pkgbase}"
 
     for size in 16 24 32 48 64 128 256 512; do
         install -Dm644 "icon-${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgbase}.png"
     done
 
     install -Dm644 "icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgbase}.svg"
+    install -Dm644 "${_pkgbase}.desktop" "${pkgdir}/usr/share/applications/${_pkgbase}.desktop"
 }
