@@ -1,7 +1,7 @@
 #Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=0.1.8.r81.g885f83f
+pkgver=1.1.0.r1.ga2095c9
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -27,6 +27,7 @@ depends=(
   xdg-desktop-portal
 )
 optdepends=(
+  'alsa-utils: Advanced details in ALSA device picker'
   'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
 )
 makedepends=(
