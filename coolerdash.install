@@ -1,0 +1,63 @@
+post_install() {
+    # Create user for service
+    if ! id -u coolerdash &>/dev/null; then
+        useradd --system --no-create-home coolerdash || true
+    fi
+
+    # Stop service before install or update
+    if systemctl is-active --quiet coolerdash.service; then
+        echo "Stopping coolerdash service..."
+        systemctl stop coolerdash.service 2>/dev/null || true
+    fi
+    echo "CoolerDash has been installed successfully!"
+    echo "Start the service..."
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl enable --now coolerdash.service 2>/dev/null || true
+    echo "CoolerDash has been installed successfully!"
+    echo "To start the service, run: systemctl enable --now coolerdash.service"
+
+    echo "================================================================"
+    echo "CoolerDash has been installed."
+    echo "Please note:"
+    echo "- The configuration is located at /etc/coolerdash/config.ini"
+    echo "- Start the service with: sudo systemctl enable --now coolerdash"
+    echo "- Further information can be found in /opt/coolerdash/README.md"
+    echo "================================================================"
+}
+
+pre_remove() {
+    # Stop and disable systemd service before removal
+    if systemctl is-active --quiet coolerdash.service; then
+        echo "Stopping coolerdash service..."
+        systemctl stop coolerdash.service 2>/dev/null || true
+    fi
+    
+    if systemctl is-enabled --quiet coolerdash.service; then
+        echo "Disabling coolerdash service..."
+        systemctl disable coolerdash.service 2>/dev/null || true
+    fi
+    
+    # Remove all installed users, files and directories
+    if id -u coolerdash &>/dev/null; then
+        userdel -rf coolerdash || true
+    fi
+
+    rm -f /etc/systemd/system/coolerdash.service 2>/dev/null || true
+    rm -f /usr/share/man/man1/coolerdash.1 2>/dev/null || true
+    rm -f /usr/bin/coolerdash 2>/dev/null || true
+    rm -rf /opt/coolerdash 2>/dev/null || true
+    
+    # Remove config directory only if empty (preserves modified configs)
+    rmdir /etc/coolerdash 2>/dev/null || true
+    echo "================================================================"
+    echo "CoolerDash and all related files have been removed."
+    echo "The configuration file /etc/coolerdash/config.ini remains on your system if it was modified."
+    echo "================================================================"
+}
+
+post_remove() {
+    echo "================================================================"
+    echo "CoolerDash has been removed."
+    echo "The configuration file /etc/coolerdash/config.ini remains on your system."
+    echo "================================================================"
+}

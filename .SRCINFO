@@ -1,0 +1,27 @@
+pkgbase = coolerdash-git
+	pkgdesc = Extends CoolerControl with a polished LCD dashboard
+	pkgver = 1.25
+	pkgrel = 1
+	url = https://github.com/damachine/coolerdash
+	install = coolerdash.install
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = git
+	depends = cairo
+	depends = coolercontrol
+	depends = jansson
+	depends = libcurl-gnutls
+	depends = libinih
+	depends = ttf-roboto
+	provides = coolerdash
+	conflicts = coolerdash
+	replaces = coolerdash
+	backup = etc/coolerdash/config.ini
+	source = git+https://github.com/damachine/coolerdash.git#tag=v1.25
+	validpgpkeys = 160A147D7BFD360F41C4E52BC841EA18095F5D74
+	sha256sums = SKIP
+
+pkgname = coolerdash-git
