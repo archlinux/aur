@@ -1,0 +1,25 @@
+pkgbase = ttrpc
+	pkgdesc = GRPC for low-memory environments
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/containerd/ttrpc
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	source = ttrpc-1.2.7.tar.gz::https://github.com/containerd/ttrpc/archive/refs/tags/v1.2.7.tar.gz
+	sha256sums = 647c74fa44cc19ccb2f89d01283f4488c7cac7578b14b3d537fbd19b92146abf
+
+pkgname = ttrpc-common
+	pkgdesc = GRPC for low-memory environments (common files)
+	arch = any
+
+pkgname = protoc-gen-go-ttrpc
+	depends = ttrpc-common=1.2.7
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+
+pkgname = protoc-gen-gogottrpc
+	depends = ttrpc-common=1.2.7
+	depends = glibc
+	depends = protobuf
