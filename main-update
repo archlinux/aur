@@ -72,7 +72,7 @@ update_mirrorlist() {
   fi
 
   if [ ! -f "$MIRRORLIST_TEMP" ]; then
-    echo -e "\033[1;31mFailed to update mirrorlist\n\033[0m"
+    echo -e "\033[1;33mFailed to update mirrorlist. (The Arch Linux project's mirrorlist service is affected by DDoS attacks. The first connection from your device's IP address may fail. This can be safely ignored.)\n\033[0m"
     return
   fi
 
