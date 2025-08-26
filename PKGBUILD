@@ -4,33 +4,36 @@
 
 _basename=faac
 pkgname=lib32-faac
-pkgver=1.30
-pkgrel=3
+pkgver=1.31.1
+pkgrel=1
 pkgdesc="Freeware Advanced Audio Coder"
 arch=(x86_64)
 url="https://www.audiocoding.com/"
-license=('GPL2' 'custom')
+_url="https://github.com/knik0/faac"
+license=(
+    GPL-2.0-or-later
+    GPL-3.0-or-later
+    LGPL-2.1-or-later
+    LicenseRef-ISO-MPEG-4
+)
 depends=(lib32-glibc faac)
-source=("${_basename}-${pkgver}.tar.gz::https://github.com/knik0/${_basename}/archive/${pkgver/./_}.tar.gz"
-        "${_basename}-1.30-pkgconfig.patch::https://github.com/knik0/faac/commit/11215a2dc792d28a8fa7bbef059c6798d248a0ea.patch")
-sha512sums=('8582cd580dba2a347d15dc4fab42020d7120d0552c54ab74cfaf59ba1b270abb94c67e39d42459a14cbc6e98f3fd00cbda589e1b4f0c7278e41bdef6ae7b6554'
-            '3dafe1c6921758a4610a49d8ae106e9fb6dccdd0d5cc3a3eedf8c91c01f1eaa0ee6b65cadfb86ae47093f35499baa8d795397457f7b34280b02199095c6f9e29')
-b2sums=('ee3cf1ad44c14ec289036c9a6f087df3a1cf81c9b0f60b6a2121f5badba3f3cab983001437bb6051ab2306c0e5e14ee8e3c9439116bd82c370f808d912ce2c13'
-        'ccb6d86c8a23ded205c6f0baa24172f753e98649e35c98031c401a9154444bac923ec0d89a811cc1a6ac868347d46878cd2443028abec8fdc24020084c4c725b')
+makedepends=(git)
+source=(
+    $_basename::git+$_url#tag=$_basename-$pkgver
+)
+sha512sums=('302ab4626b71618deea01da52af4ec32d4842f3c21bfa43c4d2ac6cd3a204fa967bb093d6e0f5bd83d89184cffccd6cbdcbc4dd4ce40302d867177a724ff8f52')
+b2sums=('10d23df89aaaf8d361a04744edff02f982d7da983003c32bc2e5ed9b35d740195e12b1f2d80697c3dace13e6022c1d0a4c3e1cd97d5f24eaa3c962e9576cc72c')
 
 prepare() {
-    mv -v "${_basename}-${pkgver/./_}" "${_basename}-${pkgver}"
+    sed -n '9,37p' $_basename/README > LicenseRef-ISO-MPEG-4.txt
 
-    cd "${_basename}-${pkgver}"
-
-    # add pkg-config file
-    patch -Np1 -i ../"${_basename}-1.30-pkgconfig.patch"
+    cd $_basename
 
     autoreconf -vfi
 }
 
 build() {
-    cd "${_basename}-${pkgver}"
+    cd $_basename
 
     export CC='gcc -m32'
     export CXX='g++ -m32'
@@ -45,12 +48,11 @@ build() {
 }
 
 package() {
-    cd "${_basename}-${pkgver}"
+    cd $_basename
 
     make DESTDIR="$pkgdir" install
 
     rm -rf "$pkgdir"/usr/{bin,include,share}
 
-    install -Dm644 "${srcdir}"/${_basename}-${pkgver}/COPYING \
-     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -vDm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
