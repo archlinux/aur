@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.2.20
+pkgver=1.2.21
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
@@ -14,8 +14,8 @@ conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
 		        bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64.zip # add "baseline" here to download the avx2-less build of bun!
         brotliFlag.patch)
-b2sums=('0944aeb890971276c7661435a52893ee01cae03a2faa5b9c83dec4f3a82fb068a6f61a72d66d75a1055c8aabaa10a74c8f8b3ab6351efa475dd08c5393d89aa7'
-        '6e1ea2e5dce2a353d36af6338170736b3ef2920a852ac971c02b225044e050e70159ab9eff779cafd2ae55e3cea80ce273c8101822fcf5c7f6d3eaabd17afcea'
+b2sums=('741689378e3e5673229d43d33dcbc3c6233d3a7a877aec4d6181392699338945e80638efac58bd6e3d9c8cf7fa45d2ff5bccb242ecace483df5fbfcd23fc4e07'
+        '73aeac0b83ce59c2f82165860a246ee4e443f647e565426deeff0e97670459233dee80e8c0cae358615c9355f6487fa0e4d5ccbae81569a37608cd2bf8b594c5'
         'ba86bf7d8ff3c6b0aa1b26a2eaf7d0ca480ff42fde59b75f3290de3f197a07ec8fd926c96287436e29d5dedb9632ffe9e1f8d44ebfa7f9df804874bc889afc2d')
 options=(ccache lto)
 
@@ -27,7 +27,7 @@ prepare() {
   if ! [[ -d WebKit ]]; then
       git clone --filter=tree:0 https://github.com/oven-sh/WebKit.git -b autobuild-$_webkitver
   else
-      git -C WebKit fetch --filter=tree:0
+      # git -C WebKit fetch --filter=tree:0
       git -C WebKit switch --detach autobuild-$_webkitver
   fi
 
@@ -56,7 +56,7 @@ build() {
   # CC="/usr/lib/llvm19/bin/clang" CXX="/usr/lib/llvm19/bin/clang++" \
   CMAKE_LINKER_TYPE="mold" \
   CXXFLAGS="-Wno-unused-result ${CXXFLAGS}" bun ./scripts/build.mjs -GNinja -B $srcdir/build -S $srcdir/bun -Wno-dev -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBATOMIC=OFF \
-        -DENABLE_CCACHE=ON -DENABLE_LTO=ON -DUSE_STATIC_SQLITE=OFF -DWEBKIT_LOCAL=ON -DWEBKIT_PATH=$srcdir/WebKitBuild/output  -j$_j -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DENABLE_CCACHE=ON -DENABLE_LTO=ON -DENABLE_ASAN=OFF -DUSE_STATIC_SQLITE=OFF -DWEBKIT_LOCAL=ON -DWEBKIT_PATH=$srcdir/WebKitBuild/output  -j$_j -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" -DLLVM_VERSION=20.1.8
 }
 
