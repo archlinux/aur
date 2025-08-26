@@ -1,6 +1,6 @@
 pkgbase = tuned-git
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
-	pkgver = 2.25.1.r0.g889387b
+	pkgver = 2.26.0.r0.g181472a
 	pkgrel = 1
 	url = https://github.com/redhat-performance/tuned
 	arch = any
