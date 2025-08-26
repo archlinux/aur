@@ -1,6 +1,6 @@
 pkgbase = tabby-bin
 	pkgdesc = Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux
-	pkgver = 1.0.225
+	pkgver = 1.0.227
 	pkgrel = 1
 	url = https://github.com/Eugeny/tabby
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = tabby-bin
 	conflicts = tabby
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Eugeny/tabby/releases/download/v1.0.225/tabby-1.0.225-linux-x64.deb
-	sha256sums_x86_64 = 1eb2185d54bbb24ad7155e506e3dc69254acb69a5b12d85b31c6ccdbca52fcf2
-	source_aarch64 = https://github.com/Eugeny/tabby/releases/download/v1.0.225/tabby-1.0.225-linux-arm64.deb
-	sha256sums_aarch64 = 14d8338200b2ebf2acdf6ecda71ce0d54fdaddc776e2724d704b9374214f15ae
+	source_x86_64 = https://github.com/Eugeny/tabby/releases/download/v1.0.227/tabby-1.0.227-linux-x64.deb
+	sha256sums_x86_64 = a600cb4aa7326e70a9b3a10da52d7ae70a698aa132dc7602200857ff7ce92f07
+	source_aarch64 = https://github.com/Eugeny/tabby/releases/download/v1.0.227/tabby-1.0.227-linux-arm64.deb
+	sha256sums_aarch64 = 748ad945cf37b9a1aa0167eed08fa05b86416a940904674d06dcffc8d3870fb8
 
 pkgname = tabby-bin
