@@ -1,6 +1,6 @@
 pkgbase = starship-git
 	pkgdesc = The cross-shell prompt for astronauts
-	pkgver = 1.18.2.3242.g98d0ac8e2
+	pkgver = 1.23.0.3901.gfe184e648
 	pkgrel = 1
 	url = https://github.com/starship/starship
 	arch = x86_64

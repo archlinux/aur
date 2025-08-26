@@ -1,8 +1,8 @@
-# Maintainer: Walter - "d2Nhc2Fub3ZhQGRpc3Jvb3Qub3JnCg=="
+# Maintainer: Walter Casanova - "Y29udGFjdG9Ad2FsdGVyY2FzYW5vdmEudGVjaAo="
 
 pkgname="starship-git"
 _pkgname="starship"
-pkgver=1.18.2.3242.g98d0ac8e2
+pkgver=1.23.0.3901.gfe184e648
 pkgrel=1
 pkgdesc="The cross-shell prompt for astronauts"
 arch=("x86_64")
@@ -24,21 +24,26 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch \
+    --locked \
+    --target "$(rustc -vV | sed -n 's/host: //p')" \
+    --manifest-path Cargo.toml
+
 }
 
 build() {
   cd $_pkgname
-  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen \
+  --release \
+  --all-features \
+  --manifest-path Cargo.toml
  }
 
 check() {
   cd $_pkgname
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
+  cargo test --frozen \
+  --manifest-path Cargo.toml
  }
 
 package() {
