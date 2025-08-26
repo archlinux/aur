@@ -1,7 +1,7 @@
-From d37c0ead6729a9a7d0e1befcf1df575297d982b5 Mon Sep 17 00:00:00 2001
+From 10c9205116d531f038ec3927c0f14b5663bcd819 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 1 May 2022 23:28:26 +0200
-Subject: [PATCH 11/31] Allow using properties of PkgConfig targets for Wayland
+Subject: [PATCH 11/24] Allow using properties of PkgConfig targets for Wayland
  to handle deps of static libs
 
 Change-Id: I2a4acf0acaf5a363d551384bb4c33c48a3792f27
@@ -49,5 +49,5 @@ index 233cc88d020..875c71377c6 100644
  set_package_properties(Wayland PROPERTIES
      URL "http://wayland.freedesktop.org"
 -- 
-2.50.1
+2.51.0
 

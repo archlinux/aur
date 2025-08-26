@@ -1,7 +1,7 @@
-From 98748c894e3d3281ed234efbeb570cb346382d6a Mon Sep 17 00:00:00 2001
+From a309df1954c665a1145962a202f130b3cf1585e6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 2 Apr 2025 22:00:09 +0200
-Subject: [PATCH 19/31] Avoid compile error due to inconsistent use of
+Subject: [PATCH 19/24] Avoid compile error due to inconsistent use of
  `noexcept`
 
 Change-Id: Ib4c392cd306b4e8b433048af077ae7aeb0459e1f
@@ -93,5 +93,5 @@ index 016f9dd04c0..70a03360015 100644
  private:
      bool copyFormatEtc(LPFORMATETC dest, const FORMATETC *src) const;
 -- 
-2.50.1
+2.51.0
 

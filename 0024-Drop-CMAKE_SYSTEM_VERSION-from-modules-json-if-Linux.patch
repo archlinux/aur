@@ -1,7 +1,7 @@
-From c7a14f8661ea9ceab4845f901b3903939f05f77b Mon Sep 17 00:00:00 2001
+From 496b556eaf2f52324ce1c68ec8dba86c64d789eb Mon Sep 17 00:00:00 2001
 From: Cristian Le <cristian.le@qt.io>
 Date: Thu, 19 Jun 2025 17:12:46 +0200
-Subject: [PATCH 31/31] Drop CMAKE_SYSTEM_VERSION from modules json if Linux
+Subject: [PATCH 24/24] Drop CMAKE_SYSTEM_VERSION from modules json if Linux
 
 In order to make the project build reproducible it should not record
 transient information of the build host.
@@ -31,10 +31,10 @@ index e8b58387d9e..5d41bc8e377 100644
      "repository": "${lower_case_project_name}",
      "version": "${PROJECT_VERSION}",${extra_module_information}
 diff --git a/cmake/QtModuleHelpers.cmake b/cmake/QtModuleHelpers.cmake
-index cd66af3f474..6f07dc419bd 100644
+index 3402d1106fe..729d17212aa 100644
 --- a/cmake/QtModuleHelpers.cmake
 +++ b/cmake/QtModuleHelpers.cmake
-@@ -1463,9 +1463,13 @@ ${indent3}\"name\": \"${platform_name}\",")
+@@ -1464,9 +1464,13 @@ ${indent3}\"name\": \"${platform_name}\",")
              string(APPEND platforms_information "
  ${indent3}\"variant\": \"${platform_variant}\",")
          endif()
@@ -50,5 +50,5 @@ index cd66af3f474..6f07dc419bd 100644
          string(APPEND platforms_information "
  ${indent3}\"compiler_id\": \"${CMAKE_CXX_COMPILER_ID}\",
 -- 
-2.50.1
+2.51.0
 
