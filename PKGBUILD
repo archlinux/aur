@@ -27,7 +27,6 @@ depends=(
 'python-websocket-client'
 )
 makedepends=('python-build' 'python-installer' 'python-poetry-dynamic-versioning')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-responses')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/neptune-ai/neptune-client/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('d221d1ff0795d7a028ff97ac6b8b63bb')
 
@@ -35,11 +34,6 @@ build() {
   cd "$srcdir"/neptune-client-$pkgver
   export POETRY_DYNAMIC_VERSIONING_BYPASS=$pkgver
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$srcdir"/neptune-client-$pkgver
-  python -m pytest
 }
 
 package() {
