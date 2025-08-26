@@ -2,18 +2,23 @@
 
 _basename=sord
 pkgname=lib32-sord
-pkgver=0.16.14
+pkgver=0.16.18
 pkgrel=1
 pkgdesc="A lightweight C library for storing RDF data in memory (32-bit)"
 arch=(x86_64)
 url="https://drobilla.net/software/sord.html"
-license=(custom:ISC)
-depends=(lib32-serd sord)
+license=(ISC)
+depends=(
+    lib32-glibc
+    lib32-pcre2
+    lib32-serd
+    lib32-zix
+    sord)
 makedepends=(meson)
 source=(https://download.drobilla.net/$_basename-$pkgver.tar.xz{,.sig})
-sha512sums=('f6f254518d5dccece7975529b1fcfd552fd9c37e49dc7e9f8a46756b85e476dac064a39af42bfb3078e999e75d1aa75dcc30ec91e08753defa9363adafdfd3bd'
+sha512sums=('e271d97c77187d7ed0a9c8fe0a65fcf50e269ba79dba4e8d55781ffe3715888c5388d90812d76a48e89ecc9c5e047e0d53ff40333fde7dbbf12dffc496d05e31'
             'SKIP')
-b2sums=('399f4bf5d1b8ae557fa7e2d2e92e74ed646d0554235f4527a4b9ad53aa6beb0e90e2d80c9e65ab3c872b5c8d45a7948b7746284bb1fd2352320a0aa33e97e305'
+b2sums=('8dfffa4632ddf3efe0c4a421d43001d1186f6336004847eaf12f91ca408486eca222ab1b68e9dc31d2e41f0e65fe1cd167a4b5cc5fabd516f032416b4c0dbae3'
         'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
