@@ -1,5 +1,3 @@
-# shellcheck disable=SC2034,SC2154,SC2164
-
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 # Contributor: Siavosh Kasravi <siavosh.kasravi@gmail.com>
 # Contributor: JustKidding <jk@vin.ovh>
@@ -16,16 +14,17 @@ pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=8.0.13
-pkgrel=5
+pkgrel=6
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("SSPL-1.0")
 depends=('libstemmer' 'snappy' 'yaml-cpp' 'libunwind' 'curl' 'zstd' 'zlib'
          'libsasl' 'openssl' 'glibc' 'gcc14-libs')
-makedepends=('python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3'
+makedepends=('python' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3'
              'python-yaml' 'python-requests' 'python-pymongo' 'python-gitpython'
-             'python-distro' 'python-retry' 'gcc14')
+             'python-distro' 'python-retry' 'gcc14' 'lld' 'onetbb'
+             'bazelisk' 'bc' 'libxml2-legacy')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh: interactive shell to connect with MongoDB')
 backup=("etc/mongodb.conf")
@@ -34,73 +33,23 @@ options=(!debug)
 source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb.sysusers
         mongodb.tmpfiles
-        mongodb-8.0.13-skip-reqs-check.patch
-        mongodb-5.0.2-no-compass.patch
-        mongodb-8.0.12-sconstruct.patch
-        mongodb-4.4.29-no-enterprise.patch
+        bazel-python-path.patch
+        bazel-python-modules.patch
+        bazel-distro.patch
+        bazel-version.patch
+        bazelisk-url.patch
+        bazel-mongo-enterprise.patch
 )
 sha256sums=('43fddb27453bd94d9938a69fff50abe191f597ac10fe82a59ff150bab556ef39'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
-            '4f8e6c6e3081ac1a59cb79160d91a6023d0e9d074db02247a0f824dd9528a3fd'
-            '41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
-            'dd83d1ba0e2c4b9cd67986307b111aefaeab2f3cd9f1084e835fb1b7e976fdf6'
-            '7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905')
-sha256sums_aarch64=('6dd9f20e153ff2a3e185d9411e9d9ec54ba8ed29a0a1489828ccb047205cceac')
-source_aarch64=(extrapatch-sconstruct.patch)
-
-_scons_args=(
-  CC="${CC:-gcc-14}"
-  CXX="${CXX:-g++-14}"
-  AR="${AR:-gcc-ar-14}"
-  MONGO_DISTMOD=arch
-  MONGO_VERSION="$pkgver"
-  CCFLAGS="-w"
-  #VERBOSE=off
-
-  #--use-system-boost
-  #--use-system-pcre2
-  --use-system-snappy
-  --use-system-stemmer
-  --use-system-yaml
-  --use-system-zlib
-  --use-system-zstd
-  #--use-system-tcmalloc
-  --use-system-libunwind
-  #--use-system-libbson
-  #--use-system-mongo-c
-
-  --use-sasl-client
-  --ssl
-  --disable-warnings-as-errors
-  --runtime-hardening=off
+            '59a522f2a20a003799dbff2846a5b7a2e46eb1deab75b0bb3c3746cfe2b5446e'
+            '0eb743ab868cdaf086fa9d7f791595c467904c8ecbe5e737b5296eea591bd9b2'
+            '9e1770ff45f7e2169d577213bf11e1c8e3907c13ffac893112e2d368e63bcd4f'
+            '2c3bb6d4d0b3feb48b89c92ae26cc6be251681c90b2daccb8c94073a2bfd2c2c'
+            '94d9d5f898680af74271863286d2b407afe9e881a75c2fefe124aed692d7714a'
+            '36083b7c75f8723cea750fbde9935c96ba0273d963d0c1a4e712c7b0a30c7c0f'
 )
-
-all-flag-vars() {
-  echo {C,CXX}FLAGS
-}
-
-_filter-var() {
-  local f x var=$1 new=()
-  shift
-
-  for f in ${!var} ; do
-    for x in "$@" ; do
-      # Note this should work with globs like -O*
-      [[ ${f} == "${x}" ]] && continue 2
-    done
-    new+=( "${f}" )
-  done
-  export "${var}"="${new[*]}"
-}
-
-filter-flags() {
-  local v
-  for v in $(all-flag-vars) ; do
-    _filter-var "${v}" "$@"
-  done
-  return 0
-}
 
 prepare() {
   cd "${srcdir}/mongo-r${pkgver}"
@@ -124,15 +73,6 @@ prepare() {
   # See: https://jira.mongodb.org/browse/SERVER-38086
   sed -i 's/\[Service]/[Service]\nTimeoutStartSec=infinity/' rpm/mongod.service
 
-  if check_option debug y; then
-    _scons_args+=(--dbg=on)
-  fi
-
-  if check_option lto y; then
-    _scons_args+=(--lto=on)
-  fi
-
-  # apply gentoo patches
   for file in "$srcdir"/*.patch; do
     echo "Applying patch $file..."
     patch -Np1 -i "$file"
@@ -141,23 +81,71 @@ prepare() {
 
 build() {
   cd "${srcdir}/mongo-r${pkgver}"
+  
+  # Set gcc14 toolchain for Bazel to resolve C++ toolchain properly
+  export CC="${CC:-gcc-14}"
+  export CXX="${CXX:-g++-14}"
+  export AR="${AR:-gcc-ar-14}"
+  
+  # export BAZELISK_SKIP_WRAPPER=1
+  # export MONGO_BAZEL_WRAPPER_DEBUG=1
+  export USE_NATIVE_TOOLCHAIN=1
 
-  if check_option debug n; then
-    filter-flags '-m*'
-    filter-flags '-O?'
-  fi
+  # core does not build the mongo shell (jstestshell)
+  # bazelisk build install-core
 
-  export SCONSFLAGS="$MAKEFLAGS"
-  ./buildscripts/scons.py "${_scons_args[@]}" install-devcore
+  # Build using the install-devcore target (includes mongod, mongos, and jstestshell/mongo)
+  # Force Bazel to use system toolchain instead of MongoDB's custom toolchain
+  # Override MongoDB's .bazelrc that disables native toolchain detection
+  # Using some options from --config=opt
+  bazelisk build install-devcore \
+    --verbose_failures \
+    --define=MONGO_VERSION=${pkgver} \
+    --define=MONGO_DISTMOD=arch \
+    --toolchain_resolution_debug='@bazel_tools//tools/cpp:toolchain_type' \
+    --action_env=CC="${CC}" \
+    --action_env=CXX="${CXX}" \
+    --action_env=AR="${AR}" \
+    --repo_env=CC="${CC}" \
+    --repo_env=CXX="${CXX}" \
+    --repo_env=AR="${AR}" \
+    --repo_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=0 \
+    --cxxopt='-std=c++20' \
+    --cxxopt='-w' \
+    --cxxopt='-Wno-error' \
+    --cxxopt='-I/usr/include' \
+    --copt='-D_GNU_SOURCE' \
+    --copt='-w' \
+    --copt='-Wno-error' \
+    --copt='-I/usr/include' \
+    --linkopt='-lresolv' \
+    --linkopt='-ltbb' \
+    --linkopt='-Wl,-w' \
+    --//bazel/config:linker=lld \
+    --compilation_mode=opt \
+    --fission=yes \
+    --//bazel/config:dwarf_version=5 \
+    --//bazel/config:compress_debug_compile=True \
+    --//bazel/config:opt=on \
+    --//bazel/config:dbg=False \
+    --//bazel/config:dbg_level=2 \
+    --//bazel/config:debug_symbols=True \
+    --//bazel/config:separate_debug=False
+    # --//bazel/config:thin_lto=True
 }
 
 package() {
   cd "${srcdir}/mongo-r${pkgver}"
 
-  # Install binaries
-  install -D build/install/bin/mongo "$pkgdir/usr/bin/mongo"
-  install -D build/install/bin/mongod "$pkgdir/usr/bin/mongod"
-  install -D build/install/bin/mongos "$pkgdir/usr/bin/mongos"
+  # Install binaries from Bazel install-core output
+  # Built binaries are in bazel-bin/install-devcore/bin/ (symlinks to real outputs)
+  install -D "bazel-bin/install-devcore/bin/mongod" "$pkgdir/usr/bin/mongod"
+  install -D "bazel-bin/install-devcore/bin/mongos" "$pkgdir/usr/bin/mongos"
+
+  # install-devcore includes the mongo shell (jstestshell)
+  if [[ -f "bazel-bin/install-devcore/bin/mongo" ]]; then
+    install -D "bazel-bin/install-devcore/bin/mongo" "$pkgdir/usr/bin/mongo"
+  fi
 
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${_pkgname}.conf"
@@ -177,4 +165,3 @@ package() {
   # Install license
   install -D LICENSE-Community.txt "$pkgdir/usr/share/licenses/mongodb/LICENSE"
 }
-# vim:set ts=2 sw=2 et:
