@@ -1,7 +1,7 @@
 # Maintainer: Alexander Tagirov [aur @tagirov.cc]
 
 pkgname=rusk
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A minimal terminal task manager written in Rust"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=("rust")
 license=("GPL-3.0-or-later")
 depends=('gcc-libs')
 source=("rusk-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cc064f7c3ac08b5bf369d6c8277fd9e013b0f8fca7adc373b90f32a6eb822540')
+sha256sums=('e252ced103439bf4e2bbca337420ffe40180d57938f5bad06456dc53d4406d4e')
 options=('!debug')
 
 build() {
