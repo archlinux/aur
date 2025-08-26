@@ -1,7 +1,7 @@
-From d50deb7408a9b0263e06993affe430e57fbd89d2 Mon Sep 17 00:00:00 2001
+From 396d6461f2d5ced7f166d00b262bb8cb4109c1e8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 1 Oct 2022 17:43:07 +0200
-Subject: [PATCH 1/2] Fix compile flags of resonance-audio for mingw-w64
+Subject: [PATCH] Fix compile flags of resonance-audio for mingw-w64
 
 ---
  src/3rdparty/resonance-audio/CMakeLists.txt | 4 ++--
@@ -30,5 +30,5 @@ index 6af0b3fb3..d94beb0ed 100644
      set(CMAKE_CXX_FLAGS "-fPIC -O3 -Wno-vla -msse -msse2 -msse3 -mfpmath=sse")
  endif ()
 -- 
-2.49.0
+2.51.0
 
