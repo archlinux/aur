@@ -2,14 +2,14 @@
 
 _name=testcontainers
 pkgname=python-${_name}
-pkgver=4.9.1
-pkgrel=2
+pkgver=4.12.0
+pkgrel=1
 pkgdesc='Python library for throwaway instances of anything that can run in a Docker container.'
 arch=('any')
 url='https://github.com/testcontainers/testcontainers-python'
 license=('Apache-2.0')
-source=("${url}/archive/refs/tags/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('df83261ff1217fa1ff85392a3f76b9a628cecb63a4473bf41b1a0fa48d6c98e0')
+source=("${url}/archive/refs/tags/${_name//-/_}-v${pkgver}.tar.gz")
+sha256sums=('3ae97315217e83275467fd217b13327fcef22ea96f76230dba53560634ef9ed4')
 depends=('python>=3.9' 'python-docker' 'python-urllib3' 'python-wrapt' 'python-typing_extensions' 'python-dotenv')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-anyio' 'python-psycopg2' 'python-pg8000' 'python-sqlalchemy' 'python-psycopg' 'python-cassandra-driver' 'python-pytest-asyncio' 'python-kafka-ng' 'python-hvac' 'python-pymilvus' 'python-httpx' 'python-paho-mqtt' 'python-sqlalchemy-cockroachdb' 'python-paramiko' 'python-types-paramiko' 'python-pytest-mock' )
