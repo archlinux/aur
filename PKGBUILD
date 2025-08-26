@@ -1,16 +1,14 @@
-# Maintainer: Julian <juliannfairfax@protonmail.com>
-
 pkgname=powersupply
-pkgver=0.9.0
-pkgrel=1
-pkgdesc="GTK3 app to display power status of phones"
-url="https://gitlab.com/MartijnBraam/$pkgname"
+pkgver=0.10.1
+pkgrel=0
+pkgdesc="Graphical power_supply status tool for Linux mobile platforms"
+url="https://gitlab.postmarketos.org/postmarketOS/powersupply"
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 license=("MIT")
-depends=("libhandy")
+depends=("gtk4" "libadwaita")
 makedepends=("meson")
-source=("https://gitlab.com/MartijnBraam/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("c5e4b71ced2df92fe5ab01826315aafc310e3abeedd3411a3fdba62a33712b0e")
+source=("https://gitlab.postmarketos.org/postmarketOS/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('77bfc4445d244e398e4644bc6f37f045315d2fea258c0cf5fca7400e14f03eca')
 
 build() {
 	cd "${srcdir}"/$pkgname-$pkgver
