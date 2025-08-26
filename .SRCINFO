@@ -1,6 +1,6 @@
 pkgbase = rancher-desktop
 	pkgdesc = Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop
-	pkgver = 1.19.3
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://rancherdesktop.io/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rancher-desktop
 	provides = nerdctl
 	provides = limactl
 	options = !debug
-	source = https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v1.19.3.tar.gz
-	sha256sums = 7ceebff325c516af860b08bff6537fe1abd24646e8af246f256879549aecdf72
+	source = https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v1.20.0.tar.gz
+	sha256sums = b5c6e4dab578a9caeb87f000ae59ca7f7ea717745ac101fc96d1002e2a566008
 
 pkgname = rancher-desktop

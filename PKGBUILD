@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.19.3
+pkgver=1.20.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'nodejs' 'imagemagick' 'go')
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7ceebff325c516af860b08bff6537fe1abd24646e8af246f256879549aecdf72')
+sha256sums=('b5c6e4dab578a9caeb87f000ae59ca7f7ea717745ac101fc96d1002e2a566008')
 options=(!debug)
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
@@ -24,7 +24,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 22.14.0
+    nvm install 22
 
     cd "${pkgname}-${pkgver}"
     sed -i "s|childProcess.execFileSync('git', \['describe', '--tags'\]).toString().trim()|'v${pkgver}'|g" scripts/package.ts
@@ -48,7 +48,7 @@ build() {
   rm packaging/linux/flatpak.yaml
   # https://github.com/rancher-sandbox/rancher-desktop#how-to-run
   npm install --global yarn
-  yarn install
+  yarn
   yarn build
   yarn package --publish=never
 }
