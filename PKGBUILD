@@ -12,7 +12,7 @@ provides=('emojify')
 conflicts=('emojify')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go-1.0.0.tar.gz")
-sha256sums=('bef7a7c1fff31b6ecb16ae99c565ed4777eb32903c0152a8c108b121d6eee2b2')
+sha256sums=('ecde7b0a0a804f8274562aef650a879bfb900868a9c2e562deda5cac8c1356bf')
 prepare() {
   cd "$srcdir/emojify-go-1.0.0"
 
@@ -32,7 +32,7 @@ build() {
   export LDFLAGS="-linkmode=external -extldflags \"${LDFLAGS}\""
 
   go build \
-  -ldflags="-s -w -X github.com/damienbutt/emojify-go/internal/version.Version=1.0.0 -X github.com/damienbutt/emojify-go/internal/version.Commit=fb0c342d62bf684802923c93c09120e00b7a88ca -X github.com/damienbutt/emojify-go/internal/version.Date=2025-08-26T12:24:02Z -X github.com/damienbutt/emojify-go/internal/version.BuiltBy=makepkg ${LDFLAGS}" \
+  -ldflags="-s -w -X github.com/damienbutt/emojify-go/internal/version.Version=1.0.0 -X github.com/damienbutt/emojify-go/internal/version.Commit=803a0039c7869078a3f3ffbac5567480448c5cc7 -X github.com/damienbutt/emojify-go/internal/version.Date=2025-08-26T13:30:14Z -X github.com/damienbutt/emojify-go/internal/version.BuiltBy=makepkg ${LDFLAGS}" \
   -o emojify \
   ./cmd/emojify
 }
