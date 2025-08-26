@@ -1,16 +1,16 @@
 pkgbase = sublime-merge
 	pkgdesc = Meet a new Git Client, from the makers of Sublime Text
-	pkgver = 2110
+	pkgver = 2112
 	pkgrel = 1
 	url = https://www.sublimemerge.com
 	arch = x86_64
 	license = custom
 	depends = gtk3
-	source = https://download.sublimetext.com/sublime_merge_build_2110_x64.tar.xz
-	source = https://download.sublimetext.com/sublime_merge_build_2110_x64.tar.xz.asc
+	source = https://download.sublimetext.com/sublime_merge_build_2112_x64.tar.xz
+	source = https://download.sublimetext.com/sublime_merge_build_2112_x64.tar.xz.asc
 	source = LICENSE
 	validpgpkeys = 1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A
-	b2sums = c89d890e1bfa3ec9e42bb855708b50af9ceb03cb7412681784924ba8c5ebd37c0435b2f8cd673c6261e80edd518f8143d4a15f778ebf96d347308c72e58cd8f4
+	b2sums = 7d16565342246f66092746ce2c66c5b39ef1f95f2edb061d99e950de05a3c2eed2e71de2b1976524ac4125703abee1be32bc5d0cdcdf26787f695c579626bdba
 	b2sums = SKIP
 	b2sums = e17f9223fc423b385d20f78fd54bf8bdc0722134cb89e1a12f9105a4d130e9ae12f81997904b52ce6d6db45810d23db53c8f90c8a9bc1ac0ae4a8532d1097396
 
