@@ -2,7 +2,7 @@
 # Contributor: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='chia-bin'
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Provides GUI"
 arch=('x86_64' 'aarch64')
@@ -15,11 +15,11 @@ provides=('chia' 'chia-gui')
 options=('!strip')
 source_x86_64=("https://github.com/Chia-Network/chia-blockchain/releases/download/${pkgver//_/-}/chia-blockchain_${pkgver//_/-}_amd64.deb")
 source_aarch64=("https://github.com/Chia-Network/chia-blockchain/releases/download/${pkgver//_/-}/chia-blockchain_${pkgver//_/-}_arm64.deb")
-sha256sums_x86_64=('bf071f355816d8755de6f2dfeba79badfe97a7f78cb3d63860e5c35f6849a922')
-sha256sums_aarch64=('88a9136cc60143b444afbcbc947a12dcc454aef92997c3fef7dd8cd99b53b5ca')
+sha256sums_x86_64=('ed47854d642da13859b8b75570b9a11a1d331ed27e55b3cca8431a03a311d99f')
+sha256sums_aarch64=('0b96f83936fd03bb292c605f03af7106ee5e6f613e30f67b25405f86e6feccd6')
 
 package() {
-	tar -xf data.tar.xz -C "$pkgdir"
+	tar -xf data.tar.zst -C "$pkgdir"
 	rm -rf "$pkgdir/usr/share/doc"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s /opt/chia/resources/app.asar.unpacked/daemon/chia "$pkgdir/usr/bin/chia"
