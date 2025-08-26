@@ -1,7 +1,7 @@
 # Maintainer: envolution
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sttr
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc='cli app to perform various operations on string'
 license=('MIT')
@@ -10,7 +10,7 @@ url="https://github.com/abhimanyu003/sttr"
 depends=(glibc)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/abhimanyu003/sttr/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d59a4f25c2ad4478699585aff16d3b99b9b1fddfb894bdf072705d6342aee59a')
+sha256sums=('72e1c173843e42b3e719843f2825bf1d2a20e3167016c5962158365969e38df2')
 
 build() {
   cd "$pkgname-$pkgver"
