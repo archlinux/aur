@@ -6,18 +6,18 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.21.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
 arch=(x86_64 i686)
 license=('GPL-2.0-or-later OR GPL-3.0-or-later')
 depends=(boost-libs libglvnd lttng-ust libepoxy libxml++2.6 libinput yaml-cpp
-         libxkbcommon  freetype2  hicolor-icon-theme libxcursor pixman
+         libxkbcommon  freetype2  hicolor-icon-theme libxcursor
          egl-wayland wayland
          glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm
-         # explicit depends
-         bash systemd-libs
+         # explicit depends 
+         bash systemd-libs libdisplay-info pixman
 )
 makedepends=(glm doxygen graphviz cmake ninja boost umockdev wlcs glmark2
              python-pillow python-dbus
@@ -31,7 +31,7 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 options=()
 source=("https://github.com/canonical/mir/releases/download/v${pkgver}/mir-${pkgver}.tar.xz")
-sha256sums=('6f970c8bae73680a022d61c4b34ee37253909934c243fab81a620b55ddcd4c13')
+sha256sums=('6015f1d1919bea1c2f5ecab43a98f525572a005947ae9fb7d05a91251130dd35')
 
 # glm doesnt ship with a glm.pc, but mir build falls back on cmake's find_package for non-debian systems
 
@@ -40,8 +40,8 @@ build() {
   export CXXFLAGS+=" -ffat-lto-objects -O2"
 
   local _flags=(
-    -B build
-    -S "${pkgname}-${pkgver}"
+    -B build 
+    -S "${pkgname}-${pkgver}" 
     -GNinja
     -Wno-dev
     -DCMAKE_BUILD_TYPE=None
