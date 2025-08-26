@@ -6,8 +6,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=proxygen
-pkgver=2025.08.18.00
-pkgrel=2
+pkgver=2025.08.25.00
+pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
 url="https://github.com/facebook/proxygen"
@@ -44,13 +44,18 @@ provides=(
   libproxygenhqloggerhelper.so
   libproxygenhttpserver.so
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2c28aa692544116fd34224310165e344588922be973164b572b9b1b5e9b24f54')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  fix-cares-oss-build.patch::https://patch-diff.githubusercontent.com/raw/facebook/proxygen/pull/572.patch
+  )
+sha256sums=('f12eb1838093e2e344bc8003c41f56d6519365213e8852e3308bb4c7a1bd1908'
+            '569168e8a0b1575ee4996c9722a0bc8026867df77ff15eb8cea4b5b3140562ac')
 
 prepare() {
   cd $pkgname-$pkgver
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
+  patch -Np1 -i ../fix-cares-oss-build.patch
   sed -i '/find_package(fmt REQUIRED)/a find_package(Glog CONFIG REQUIRED)' \
     CMakeLists.txt
 }
