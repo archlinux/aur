@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-positioning
 	pkgdesc = Provides access to position, satellite and area monitoring classes (android)
-	pkgver = 6.9.1
+	pkgver = 6.9.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = android-aarch64-qt6-positioning
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.9/6.9.1/submodules/qtpositioning-everywhere-src-6.9.1.tar.xz
-	sha256sums = 7062734b4989248ca3f0e3e4aebb9aa2e7ed2d6bf19e779e520c6ef69706ff26
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.2/submodules/qtpositioning-everywhere-src-6.9.2.tar.xz
+	sha256sums = 489a9801ffbda04b16c62f64a687efae4c1a07807f6b67f40ce1f37c3dfdbc1a
 
 pkgname = android-aarch64-qt6-positioning
