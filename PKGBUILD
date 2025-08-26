@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=4.2.0.1466
-_rls_tag=v4.2.0
+pkgver=4.2.1.8360
+_rls_tag=v4.2.1
 pkgrel=1
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
 arch=('x86_64')
@@ -11,7 +11,8 @@ depends=('minizip' 'zlib' 'openssl' 'libxml2' 'libxslt' 'xmlsec')
 makedepends=('cmake' 'git' 'libxsd' 'xsd')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=$_rls_tag"
         "open-eid-cmake::git+https://github.com/open-eid/cmake.git")
-sha256sums=("SKIP" "SKIP")
+sha256sums=('f2334b5db00cc87cb40fcb2a482e92aaaa5154e363e9ae8b177f172e8c8bf7d0'
+            'SKIP')
 validpgpkeys=(
     'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma https://github.com/metsma.gpg
 )
