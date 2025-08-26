@@ -1,0 +1,26 @@
+pkgbase = grpc-api-gateway
+	pkgdesc = Flexible and fast gRPC to HTTP and OpenAPI interface
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://meshapi.github.io/grpc-api-gateway/
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	source = grpc-api-gateway-0.1.0.tar.gz::https://github.com/meshapi/grpc-api-gateway/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b23075cfa625b8b2906f6e367b30f957b043fe9c78b8cf81db8a27316d92ab6f
+
+pkgname = grpc-api-gateway-common
+	pkgdesc = Flexible and fast gRPC to HTTP and OpenAPI interface (common files)
+	arch = any
+
+pkgname = protoc-gen-grpc-api-gateway
+	depends = grpc-api-gateway-common=0.1.0
+	depends = glibc
+	depends = protobuf
+
+pkgname = protoc-gen-openapiv3
+	depends = grpc-api-gateway-common=0.1.0
+	depends = glibc
+	depends = protobuf

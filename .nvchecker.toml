@@ -1,0 +1,4 @@
+[grpc-api-gateway]
+source = "git"
+git = "https://github.com/meshapi/grpc-api-gateway.git"
+prefix = "v"
