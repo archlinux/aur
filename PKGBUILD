@@ -45,11 +45,8 @@ optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
 _tag=v1.25
-source=(
-    "git+https://github.com/damachine/coolerdash.git#tag=$_tag"
-    "https://github.com/damachine/coolerdash/releases/download/$_tag/v1.25.tag.sig"
-)
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/damachine/coolerdash.git#tag=$_tag")
+sha256sums=('SKIP')
 validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
 # Git-Tag Build versioning
