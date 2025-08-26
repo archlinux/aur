@@ -1,0 +1,11 @@
+pkgbase = comty-desktop-bin
+	pkgdesc = Official Comty Desktop application bin
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ragestudio/comty
+	arch = x86_64
+	license = MIT
+	source = https://storage.ragestudio.net/comty-releases/linux/comty-desktop_0.4.0_amd64.deb
+	sha256sums = 94b7f88d15e2d6613df60d6cc865bf173ebc5dba65c079b6f22e67f59e1b3920
+
+pkgname = comty-desktop-bin
