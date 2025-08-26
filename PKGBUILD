@@ -11,7 +11,7 @@
 
 _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
-_qtver=6.9.1
+_qtver=6.9.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -53,29 +53,35 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0018-Allow-handling-Android-activity-lifecycle-by-user-pr.patch'
         '0019-Avoid-compile-error-due-to-inconsistent-use-of-noexc.patch'
         '0020-Allow-keeping-Android-app-in-background-with-QtQuick.patch'
-        '0021-Allow-resuming-native-app-when-Android-activity-is-r.patch')
-sha256sums=('40caedbf83cc9a1959610830563565889878bc95f115868bbf545d1914acf28e'
-            '4dd316eff8b4e5c393175aae84accfb6bbfbdd92ce89a65e04e6d71095121521'
-            'f7f7bdcda47181f47c83c9e3653f9f2b1b6d5d7433e5e7f31e29a6b5b6cb4988'
-            'e9cb8ce8872f6618f547b3de62fc265ad0517d457c3410ae38f0c41b588c46a2'
-            '61395a0faaf2d88194aa1ca6144e8b2d789f0b08c0fdb23adc84548a76215541'
-            '29b58e0d6687b955827c078c7d32766cb8a6fab8201fc0aeb4d9598e43ff6db1'
-            'b688ed710b5450c0b1110da73b51df5dc9e719e39d161b927056f963e9e90542'
-            'e5fec53b66b0db5cb6a8db4f805ddef8e960e98579be3aa8d1df417ff5489a87'
-            'a1d6bd511ab47f23aa1b5df3f13bbcdc455153e2abcc241d586942b681016eb0'
-            '88eb2d9743f16ee26a2d44c261a24bb3aa46ac9275d65d11576e0dda75a0a4a1'
-            'cfb5467f1460ae0dab38c58cc80b63d726fffe894101f686ed853c153c9f7a0f'
-            '44b412f26d18439c06977ac0af3db6e7fdf4cb868b1cac449907ad58b52ae258'
-            '9a4d98a64e2a04b0b48b13b8e66664be98ca57bebd4b242e5184f72534d80825'
-            '5ffc584862c97e5b607ec8c6bf4d88244ae6a93d62e901c5e34b37c6fe57c7fe'
-            '4cc11e63f9d49019be1c2cc1ca074714276a4f14bb4518e409cd29f2573aebce'
-            '08811df307fce23fe65cebf4077d4502f4708d7d0d026adf6e6919fc524cf33d'
-            '8e6f42f62f9dbad86181d488f3f13641bf85073860a84e5f1be225cfb696aa92'
-            '9c946d99e810d200dde147da5c545863acfe720f99efc351eee8ca40cbc0d25d'
-            'e54dd30aea47ba060915c8ff365f870c1352c87b582234f49fc248bc74afb82a'
-            '7fb16759c8ce8cedb6aa6453da8fc20003d76a59a98090dc87b13fb50607c1e4'
-            '52dd592b7a08ba1dd90965c5670e121cb1569c1004215afc12b7452388cdde9c'
-            'd6982440a6d7ee110d4f5f7006ae4531f0f9a5e4ebfe01b1d2008bd423524240')
+        '0021-Allow-resuming-native-app-when-Android-activity-is-r.patch'
+        '0022-Enable-minimal-and-offscreen-plugins-when-compiling-.patch'
+        '0023-Allow-configuring-use-of-OpenSSL-in-QPasswordDigesto.patch'
+        '0024-Drop-CMAKE_SYSTEM_VERSION-from-modules-json-if-Linux.patch')
+sha256sums=('44be9c9ecfe04129c4dea0a7e1b36ad476c9cc07c292016ac98e7b41514f2440'
+            '53092668a3cf64a4ffb06eaf915ac4a0b920f76d860c723b253332ce1d91aeee'
+            'f2c6ef1e5d91ee24d79c8bed8f7a63a858694a086f933956bdff034b12cc4c2e'
+            'a8f789ddf002c1b38288a1dc87a4a0158008c4568a6c836f9b69957d4318ba5f'
+            '2f8dbf0d123224991fabe99966bc1fcffc229b931872325a2d9b33b0cea2d364'
+            '2d98422ed694034a7427d01573e0db7c0581c8197fcecc9ee17a1e3b6b537147'
+            'cdc15291f6028c0b47614ea9b5a9e42368ca62d6d54ea54ec9f44ad429915198'
+            'b099aca1dff621fec47ae93ef0c7797876db03224f3b13a8b9d6bf14bb5005ef'
+            '4ff88e9c84be974db03f5aac7554f79b44b8d20279e85ed33c38d6c8019e6fad'
+            'd2727e5bc5ee241ab159140d81a31455c387987882395c321ac40d4c769a4abc'
+            '70d69b8532383a15b12e701540116b404131b04ac47ea45bef64b5e4460be757'
+            '0aeb1086fc06a3d5338818d7ae924f3fccb02c02abcf9fd2c0df3d2342e89b33'
+            '4a44a0690530bddf0acda8eaf14076c32d470a0b1a769db82c8a49fbd5f1f4ee'
+            '69873f1a8628510489a4558de4ceb526b6e38c289079fdd434cae03705653c66'
+            '1d1b9aeded465852e696bceec44b9b707af8ca5873d2ec69aba039d7673184bd'
+            '35021cf6f5fef941a61723120ca35d149a1065cb2c52b491dc4d6fa551e3748a'
+            '9c3940080fbc3e1b0a8fa8ce4cc36b4c8fa44cf0a7436fe03d3dd646e659f2b5'
+            '5104913129e1c4530c21e0e3d1a419b80853f27761824b3c584b3f6737c1bc12'
+            '83ead37aba92fcb5637fa075fe80ef9436c43392ce89ca241ab0fdfaafa7c494'
+            '707964b22f9c0dd0bff13eacf29c47dfbea201caaf307acbc7abfe82361c984a'
+            '41b950f1a064700f813ded288e51faa89a57c3bd0fe3c561780e237a112e2d18'
+            '3d5c64f93fb0fcedb12d2f75a01df2c2c687457afc46d499a8c0f1cca26ca257'
+            'ccf9e8569222ac3d57d6d7090cb6b7e446d13a2177e0e5508806fa0fab498670'
+            'e84911790825bbad48c3947f7399d280a41222afa79d3751e5fe0ce10aec6561'
+            '54b5cf672f20969167bcc442aa2d41ec9741a1413c5b27b271db958b4ad048a7')
 
 prepare () {
   cd $_pkgfqn
