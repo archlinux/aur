@@ -1,6 +1,6 @@
 # Maintainer: SUDO <justmultiplythinks@gmail.com>
 pkgname=rootvim
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Custom Neovim configuration by realSUDO with isolated profile"
 arch=('any')
@@ -36,5 +36,8 @@ export PATH="$GLOBAL_PY/bin:$PATH"
 exec nvim -u "$NVIM_ROOTVIM_HOME/init.lua" "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/rootvim"
+	install -dm755 "$pkgdir/usr/share/rootvim"
+	echo "rootvim version: 1.1.2" > "$pkgdir/usr/share/rootvim/VERSION"
+	echo "Build date: $(date)" >> "$pkgdir/usr/share/rootvim/VERSION"
 }
 
