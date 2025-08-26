@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url='https://homestuck.github.io/'
-license=('custom:chrome' 'custom:electron')
+license=('GPL-3.0-or-later' 'LicenseRef-chrome' 'LicenseRef-electron')
 depends=('libvips')
 makedepends=('gendesk')
 provides=("${_pkgbase}")
@@ -48,11 +48,11 @@ package() {
     cp -r "${srcdir}/${_pkgbase}-${pkgver}/" \
         "${pkgdir}/usr/lib/${_pkgbase}/"
 
-    mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}/"
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/usr/lib/${_pkgbase}/LICENSES.chromium.html" \
-        "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSES.chromium.html"
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
     ln -s "/usr/lib/${_pkgbase}/LICENSE.electron.txt" \
-        "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE.electron.txt"
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
 
     mkdir -p "${pkgdir}/usr/bin/"
     ln -s "/usr/lib/${_pkgbase}/${_pkgbase}" \
