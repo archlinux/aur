@@ -3,7 +3,7 @@
 # Contributor: Senge Dev <sengedev at gmail dot com>
 
 pkgname=1panel-git
-pkgver=1.10.29.lts.r27.g708499a
+pkgver=2.0.8.r107.g6f45b90
 pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
@@ -57,7 +57,7 @@ build() {
 
     # Edit the source code using sed
     sed -i 's/当前已经是最新版本/当前版本为 AUR 版本，如需更新，请使用 AUR 更新/g' ${srcdir}/${pkgname}/frontend/src/lang/modules/zh.ts
-    sed -i 's/當前已經是最新版本/當前版本為 AUR 版本，如需更新，請使用 AUR 更新/g' ${srcdir}/${pkgname}/frontend/src/lang/modules/tw.ts
+    sed -i 's/當前已經是最新版本/當前版本為 AUR 版本，如需更新，請使用 AUR 更新/g' ${srcdir}/${pkgname}/frontend/src/lang/modules/zh-Hant.ts
     sed -i 's/It is currently the latest version/It is ArchLinux AUR version, if you want to update it, please use AUR./g' ${srcdir}/${pkgname}/frontend/src/lang/modules/en.ts
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -72,10 +72,10 @@ build() {
 
     cd ${srcdir}/${pkgname}/frontend
     npm install
-    npm audit fix --force
+    #     npm audit fix --force
     npm rum build:pro
-    cd ${srcdir}/${pkgname}/backend
-    GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/${pkgname}//build/1panel ${srcdir}/${pkgname}/cmd/server/main.go
+    cd ${srcdir}/${pkgname}/core
+    GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/${pkgname}//build/1panel ${srcdir}/${pkgname}/core/cmd/server/main.go
 }
 
 package() {
