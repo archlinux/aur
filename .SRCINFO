@@ -1,6 +1,6 @@
 pkgbase = friendly-kobold
 	pkgdesc = A desktop app for running Large Language Models locally
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/lone-cloud/friendly-kobold
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = friendly-kobold
 	optdepends = libxss: Screen saver detection support
 	provides = friendly-kobold
 	conflicts = friendly-kobold-git
-	source = friendly-kobold-0.7.0.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.7.0/Friendly.Kobold-0.7.0.AppImage
-	source = friendly-kobold.desktop::https://raw.githubusercontent.com/lone-cloud/friendly-kobold/v0.7.0/assets/friendly-kobold.desktop
-	sha256sums = a1009edf310c316c7b73501fe65d84126c0f8dc6f593280e77ce747a3c8cd022
+	source = friendly-kobold-0.8.0.AppImage::https://github.com/lone-cloud/friendly-kobold/releases/download/v0.8.0/Friendly.Kobold-0.8.0.AppImage
+	source = friendly-kobold.desktop::https://raw.githubusercontent.com/lone-cloud/friendly-kobold/v0.8.0/assets/friendly-kobold.desktop
+	sha256sums = 3841bf51cf8b8d324543a4f812328234358874d1fbc5b5ac50168a7f3cd3c3e7
 	sha256sums = faa15709dd546ba46cd8fe0daf488c1fc3f6f13fdcc926b3dea140743f85dad8
 
 pkgname = friendly-kobold
