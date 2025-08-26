@@ -29,6 +29,6 @@ pkgbase = python-neptune-client
 	depends = python-urllib3
 	depends = python-websocket-client
 	source = python-neptune-client-1.14.0.tar.gz::https://github.com/neptune-ai/neptune-client/archive/refs/tags/1.14.0.tar.gz
-	md5sums = 76e6f38756b5fccf230a43f2eff4104b
+	md5sums = d221d1ff0795d7a028ff97ac6b8b63bb
 
 pkgname = python-neptune-client

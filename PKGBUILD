@@ -29,7 +29,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-poetry-dynamic-versioning')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-responses')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/neptune-ai/neptune-client/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('76e6f38756b5fccf230a43f2eff4104b')
+md5sums=('d221d1ff0795d7a028ff97ac6b8b63bb')
 
 build() {
   cd "$srcdir"/neptune-client-$pkgver
