@@ -87,15 +87,14 @@ prepare() {
 
 build() {
     echo "================================================================"
-    echo ' '
-    echo '         .--.  '
-    echo '        |o_o | '
-    echo '        |:_/ | '
-    echo '       //   \ \ '
-    echo '      (|     | ) '
-    echo "      /'\\_   _/'\\ "
-    echo '      \___)=(___/ '
-    echo ' '
+    echo '   .--.  '
+    echo '  |o_o | '
+    echo '  |:_/ | '
+    echo ' //   \ \ '
+    echo '(|     | ) '
+    echo "/'\\_  _/' \\ "
+    echo '\___)=(___/ '
+    echo " "
 
     # Build inside the checked-out repository
     cd "$srcdir/coolerdash" || return 1
