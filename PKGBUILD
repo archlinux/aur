@@ -1,31 +1,45 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.8.0.4476
-_rls_tag=v4.8.0
+pkgver=4.8.2.5377
+_rls_tag=v4.8.2
 pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64')
 url="https://www.id.ee/"
 license=('LGPL-2.1-or-later')
-depends=('zlib' 'openssl' 'libdigidocpp>=4.2.0' 'libldap' 'pcsclite' 'opensc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
+depends=('zlib' 'openssl' 'libdigidocpp>=4.2.1' 'libldap' 'pcsclite' 'opensc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'gettext' 'flatbuffers' 'qt6-tools' 'qt6-translations')
 optdepends=('ccid: Smart Card support'
             'python-nautilus: Nautilus Extension')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=$_rls_tag"
-        "open-eid-common::git+https://github.com/open-eid/qt-common.git")
-sha256sums=("SKIP" "SKIP")
+        "open-eid-common::git+https://github.com/open-eid/qt-common.git"
+        "eu-lotl.xml-$pkgver::https://ec.europa.eu/tools/lotl/eu-lotl.xml"
+        "EE.xml-$pkgver::https://sr.riik.ee/tsl/estonian-tsl.xml"
+        "config.json-$pkgver::https://id.eesti.ee/config.json"
+        "config.rsa-$pkgver::https://id.eesti.ee/config.rsa"
+        "config.pub-$pkgver::https://id.eesti.ee/config.pub")
+sha256sums=('3c30117d3c8dd0a95d946c5bb17dfda0b5c2f294d2349148e0c44ec9274e3496'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 validpgpkeys=(
     'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma https://github.com/metsma.gpg
 )
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
-  mkdir "$pkgname-build"
 
   git submodule init
   git config submodule.common.url $srcdir/open-eid-common
   git -c protocol.file.allow=always submodule update
+
+  [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
+  mkdir -p "$pkgname-build/client"
+  mkdir -p "$pkgname-build/common"
+  # https://github.com/open-eid/DigiDoc4-Client/wiki/DeveloperTips
+  cp "$srcdir/eu-lotl.xml-$pkgver"  "client/eu-lotl.xml"
+  cp "$srcdir/EE.xml-$pkgver"       "client/EE.xml"
+  cp "$srcdir/config.json-$pkgver"  "common/config.json"
+  cp "$srcdir/config.rsa-$pkgver"   "common/config.rsa"
+  cp "$srcdir/config.pub-$pkgver"   "common/config.pub"
 }
 
 build() {
