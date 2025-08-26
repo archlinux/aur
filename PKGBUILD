@@ -6,7 +6,7 @@
 # (at your option) any later version.
 pkgname=simtrace2
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Traces the communication between phones and SIM cards with second generation simtrace hardware."
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/simtrace2"
@@ -24,6 +24,9 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=$pkgdir install
+  # install udev rules
+  install -Dm 644 contrib/99-simtrace2.rules \
+                  "${pkgdir}/etc/udev/rules.d/99-simtrace2.rules"
 }
 
 # vim:set ts=2 sw=2 et:
