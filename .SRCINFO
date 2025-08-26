@@ -8,9 +8,9 @@ pkgbase = emojify-go-bin
 	provides = emojify
 	arch = aarch64
 	source_aarch64 = https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go_1.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = bd950b9e75ae5efff7ff58e7df146fea76c6e6a9d8f1ac93e5e9cbd4bfe531d3
+	sha256sums_aarch64 = 6ec9bcc61456a52ee7ee4e08f072d5764467813546c8f05d57e37d59821b027d
 	arch = x86_64
 	source_x86_64 = https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go_1.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 139d3a648fe0541a9333d17ec45df052c7d834f101d941f5131f639d0a84e0e4
+	sha256sums_x86_64 = 5b7ed90811f9ce379203221b7f55f8501a2482eeba3d7c241138721c4e82876a
 	
 pkgname = emojify-go-bin
