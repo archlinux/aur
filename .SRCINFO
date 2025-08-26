@@ -7,11 +7,10 @@ pkgbase = simtrace2
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = git
 	depends = libosmocore
 	depends = libusb
 	depends = talloc
-	source = git://git.osmocom.org/simtrace2#tag=0.8.1
-	sha512sums = SKIP
+	source = https://downloads.osmocom.org/releases/simtrace2/simtrace2-host-0.8.1.tar.bz2
+	sha256sums = 553d84c7979af85c6c86c1859d7c5437c089265beeabb8278f5f1df739796516
 
 pkgname = simtrace2
