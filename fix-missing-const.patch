@@ -1,0 +1,48 @@
+diff --git a/genogroup.h b/genogroup.h
+index 8575e37..1f7d9ac 100644
+--- a/genogroup.h
++++ b/genogroup.h
+@@ -42,7 +42,7 @@ namespace std {
+   template<> class less<MultiLocusGenotype*> {
+   public:
+     bool operator()(MultiLocusGenotype const* p1, 
+-		    MultiLocusGenotype const* p2) {
++		    MultiLocusGenotype const* p2) const {
+       if (!p1)
+ 	return true;
+       if (!p2)
+diff --git a/homozyg.cpp b/homozyg.cpp
+index aca6550..1f85761 100644
+--- a/homozyg.cpp
++++ b/homozyg.cpp
+@@ -33,7 +33,7 @@ namespace std
+   template<>
+   class less<Segment*> {
+   public:
+-  bool operator()(Segment const* s1, Segment const* s2)
++  bool operator()(Segment const* s1, Segment const* s2) const
+   {
+     if      ( s1->start  > s2->start ) return true;
+     else if ( s1->start  < s2->start ) return false;
+@@ -70,7 +70,7 @@ namespace std
+   template<>
+   class less<Pool*> {
+   public:
+-  bool operator()(Pool const* p1, Pool const* p2)
++  bool operator()(Pool const* p1, Pool const* p2) const
+   {
+ 
+     if      ( p1->segs.size() > p2->segs.size() ) return true; 
+diff --git a/plink.h b/plink.h
+index 8351402..e1f238d 100644
+--- a/plink.h
++++ b/plink.h
+@@ -387,7 +387,7 @@ namespace std
+   template<>
+     class less<Locus*> {
+     public:
+-    bool operator()(Locus const* p1, Locus const* p2)
++    bool operator()(Locus const* p1, Locus const* p2) const
+       {
+ 
+ 	// Locus comparison based first on distance, 
