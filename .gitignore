@@ -1,0 +1,21 @@
+src/
+pkg/
+coolerdash/
+*.pkg.tar.*
+*.tar.*
+*.zip
+*.gz
+*.xz
+*.zst
+
+# OS files
+.directory
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.code-workspace
+*.swp
+*.swo
+.vscode/
+.qodo/
