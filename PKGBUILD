@@ -2,20 +2,31 @@
 
 pkgname=displaz-git
 pkgdesc='A hackable LIDAR viewer (Git version)'
-pkgver=0.4.0.r107.g91ecf30
+pkgver=0.4.0.r140.g9d0d77e
 pkgrel=1
 url='http://c42f.github.io/displaz/'
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('x86_64')
 
-depends=('glew' 'libLASlib.so' 'libglvnd' 'qt5-base')
-makedepends=('cmake' 'git' 'imath' 'python-docutils')
+depends=(
+  'glew'
+  'libLASlib.so'
+  'libglvnd'
+  'qt5-base'
+)
+makedepends=(
+ 'cmake'
+ 'git'
+ 'imath'
+)
 
 source=(
   'git+https://github.com/c42f/displaz.git'
+  'fix_readme_filename.patch'
 )
 sha256sums=(
   'SKIP'
+  '69a96e6a3361ba110ce6b8b4915bd203f1a152395f56d1bbcdf2de403aef9c9b'
 )
 
 pkgver() {
@@ -24,8 +35,8 @@ pkgver() {
 }
 
 prepare() {
-  cd displaz/src/render
-  sed -i '/#include <string>/a #include <vector>' FrameRate.h
+  cd displaz
+  patch -p0 -i "$srcdir/fix_readme_filename.patch"
 }
 
 build() {
