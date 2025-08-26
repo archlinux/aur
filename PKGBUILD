@@ -5,7 +5,7 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=1.4.2.25.g0fd13a9
+pkgver=1.4.5.2.g0c84dc4
 pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/cueki/${_pkgname}"
 license=('GPL-3.0-or-later' 'CC-BY-NC-ND-4.0')
 
-depends=('python>=3.11' 'python-pyqt6>=6.8.0' 'python-pillow>=11.1.0' 'python-pyxdg')
+depends=('python>=3.11' 'python-pyqt6>=6.8.0' 'python-pillow>=11.1.0' 'python-pyxdg' 'python-valve-parsers-git')
 makedepends=('git' 'gendesk')
 
 install="${_pkgname}.install"
