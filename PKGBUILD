@@ -47,7 +47,7 @@ optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
 _tag=v1.26
-source=("git+https://github.com/damachine/coolerdash.git#tag=$_tag")
+source=("git+https://github.com/damachine/coolerdash.git?signed#tag=$_tag")
 sha256sums=('SKIP')
 validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
