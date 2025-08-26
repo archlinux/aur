@@ -1,7 +1,7 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-ffmpegdirect
-pkgver=21.3.5
-pkgrel=5
+pkgver=21.3.8
+pkgrel=1
 pkgdesc="Inputstream ffmpegdirect kodi plugin"
 _koditarget=Omega
 _gitname=inputstream.ffmpegdirect
@@ -11,10 +11,10 @@ license=('GPL')
 groups=('kodi')
 makedepends=('cmake' 'git' 'pkgconf' 'kodi-dev')
 provides=('kodi-addon-inputstream-ffmpegdirect')
-depends=('kodi')
+depends=('kodi' 'ffmpeg6.1')
 source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz")
 
-sha256sums=('b28ccbd489d9b69779fd818ee158f69ebd6fd85b1f0410ffc8098ff0c8665bdc')
+sha256sums=('0648c6bbb2143cec0c3f48ad476f2c213f20c809caaf5ac74c8ceb4e53635f4e')
 
 build() {
     mkdir -p "${_gitname}-${pkgver}-${_koditarget}/build"
@@ -23,6 +23,8 @@ build() {
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
+	-DFFMPEG_INCLUDE_DIRS=/usr/include/ffmpeg6.1 \
+	-DFFMPEG_LIBRARIES=/usr/lib/ffmpeg6.1 \
         ..
     make
 }
