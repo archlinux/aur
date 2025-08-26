@@ -1,6 +1,6 @@
 pkgbase = fbthrift
 	pkgdesc = Facebook's branch of Apache Thrift, including a new C++ server
-	pkgver = 2025.08.18.00
+	pkgver = 2025.08.25.00
 	pkgrel = 1
 	url = https://github.com/facebook/fbthrift
 	arch = x86_64
@@ -9,20 +9,20 @@ pkgbase = fbthrift
 	makedepends = cmake
 	makedepends = cython
 	makedepends = gtest
-	makedepends = mvfst=2025.08.18.00
+	makedepends = mvfst=2025.08.25.00
 	makedepends = ninja
 	depends = boost-libs
 	depends = double-conversion
-	depends = fizz=2025.08.18.00
+	depends = fizz=2025.08.25.00
 	depends = fmt
-	depends = folly=2025.08.18.00
+	depends = folly=2025.08.25.00
 	depends = gcc-libs
 	depends = gflags
 	depends = glibc
 	depends = google-glog
 	depends = openssl
 	depends = python
-	depends = wangle=2025.08.18.00
+	depends = wangle=2025.08.25.00
 	depends = xxhash
 	depends = zlib
 	optdepends = python-snappy: Snappy compression support
@@ -46,7 +46,7 @@ pkgbase = fbthrift
 	conflicts = python-thrift
 	options = !emptydirs
 	options = !lto
-	source = fbthrift-2025.08.18.00.tar.gz::https://github.com/facebook/fbthrift/archive/v2025.08.18.00.tar.gz
-	sha256sums = 2bf208b198bf7ad55d404a8863ff5092ce0ad6f0d8693877cacb72db16b44772
+	source = fbthrift-2025.08.25.00.tar.gz::https://github.com/facebook/fbthrift/archive/v2025.08.25.00.tar.gz
+	sha256sums = 1bb005d5cff2149c2326a4b5bfc0535ca2fa1ecb6ed3ef0e044b3612fe0a9810
 
 pkgname = fbthrift
