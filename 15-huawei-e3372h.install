@@ -1,0 +1,8 @@
+post_upgrade() {
+  echo ">>    Now reload udev:"
+  echo ">>    sudo udevadm control --reload && sudo udevadm trigger"
+}
+
+post_install() {
+  post_upgrade
+}
