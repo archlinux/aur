@@ -9,8 +9,14 @@ pkgdesc="State-of-the-art solver for mathematical programming (Python bindings)"
 arch=('aarch64' 'x86_64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
 license=('custom:Gurobi EULA')
-depends=('glibc' "gurobi>=${pkgver}" "python>=${_py}") # 'python-numpy' 'python-scipy'
-makedepends=('python-installer' 'python-wheel')
+depends=(
+  'glibc'
+  "gurobi>=${pkgver}"
+  "python>=${_py}"
+)
+makedepends=(
+  'python-installer'
+)
 source_aarch64=("https://files.pythonhosted.org/packages/cp${_py//./}/${_name::1}/${_name}/${_name//-/_}-${pkgver}-cp${_py//./}-cp${_py//./}-manylinux2014_aarch64.manylinux_2_17_aarch64.whl")
 source_x86_64=("https://files.pythonhosted.org/packages/cp${_py//./}/${_name::1}/${_name}/${_name//-/_}-${pkgver}-cp${_py//./}-cp${_py//./}-manylinux2014_x86_64.manylinux_2_17_x86_64.whl")
 noextract=("${source_aarch64[@]##*/}"
