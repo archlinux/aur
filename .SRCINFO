@@ -15,6 +15,7 @@ pkgbase = kodi-addon-inputstream-ffmpegdirect
 	makedepends = pkgconf
 	makedepends = kodi-dev
 	depends = kodi
+	depends = ffmpeg6.1
 	provides = kodi-addon-inputstream-ffmpegdirect
 	source = https://github.com/xbmc/inputstream.ffmpegdirect/archive/21.3.5-Omega.tar.gz
 	sha256sums = 0648c6bbb2143cec0c3f48ad476f2c213f20c809caaf5ac74c8ceb4e53635f4e 
