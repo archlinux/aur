@@ -5,8 +5,8 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=1.4.5.2.g0c84dc4
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
