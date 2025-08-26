@@ -6,11 +6,11 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=1.4.5.2.g0c84dc4
-pkgrel=1
+pkgrel=2
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
-url="https://github.com/cueki/${_pkgname}"
+url="https://github.com/cueki/casual-pre-loader"
 license=('GPL-3.0-or-later' 'CC-BY-NC-ND-4.0')
 
 depends=('python>=3.11' 'python-pyqt6>=6.8.0' 'python-pillow>=11.1.0' 'python-pyxdg' 'python-valve-parsers-git')
@@ -28,8 +28,7 @@ prepare() {
 }
 
 pkgver() {
-	cd "${_pkgname}"
-	git describe --tag | sed 's/^v//; s/-/./g'
+	git -C "${_pkgname}" describe --tag --always | sed 's/^v//; s/-/./g'
 }
 
 package() {
@@ -53,9 +52,9 @@ package() {
 		vtfedit/ \
 		"${pkgdir}/usr/lib/${_pkgname}/"
 
-	ln -s "/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                          # symlink the main.py file into the PATH as "${_pkgname}"
-	ln -s "/usr/lib/${_pkgname}/gui/cueki_icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png" # symlink the icon file into the correct location
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                          # symlink the main.py file into the PATH as "${_pkgname}"
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/gui/cueki_icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png" # symlink the icon file into the correct location
 
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"          # license
-	install -Dm644 {README.md,READ_THIS.txt} -t "${pkgdir}/usr/share/doc/${_pkgname}/" # docs
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"        # license
+	install -Dm644 README.md READ_THIS.txt -t "${pkgdir}/usr/share/doc/${_pkgname}/" # docs
 }
