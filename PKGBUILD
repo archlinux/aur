@@ -6,8 +6,8 @@ pkgname=(
   networkmanager-openvpn
   networkmanager-vpn-plugin-openvpn
 )
-pkgver=1.12.2
-pkgrel=2
+pkgver=1.12.3
+pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
@@ -28,7 +28,7 @@ makedepends=(
   python
 )
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git?signed#tag=$pkgver")
-b2sums=('6286ed5a251b6e50d57ce932f1c9ea89c900e1e8851af053c4d1e800519f392c8e824bd9ff7475bfc2adeed4eb83997e151952028111396f576675513e46e025')
+b2sums=('32c4563703b9aa795c31e627fd6eaedbe29334c090833dac2fc1dc3bc71d5af84f7b7d4f26cdd5d2566ea64ec5b8f0b411c2af3b39ee7615dedaee7d7d90edc5')
 validpgpkeys=(
   07F9AEC86144386D9576210B66A44781B4EBC2D0 # Íñigo Huguet <ihuguet@redhat.com>
   1CFF865BDF957BE935765BBD2E1878D078DEF7C6 # Íñigo Huguet <ihuguet@riseup.net>
