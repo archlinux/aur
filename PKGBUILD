@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=textual-universal-directorytree
 pkgname=python-${_base}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A Textual Directory Tree for all File Systems"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-textual python-universal_pathlib)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest python-requests python-s3fs)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ac722e0523719cccc74c8f53c386132b996bb025e4fb5883dcab919a4841043f9b0ac48a61c336b312360b53b521705f34f33591fd1b3fb15709d31e8b1c86dc')
+sha512sums=('1f4459bf7c34e852fccdeb4db7bb0ab60dbb81cab5738fc38dc8a2c838c95422cd39f8719edcb439d122f45c51bdb0e152443d4287d2b0e8601f64d72f437c15')
 
 build() {
   cd ${_base}-${pkgver}
