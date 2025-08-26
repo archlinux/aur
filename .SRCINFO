@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang-dict-nightly
 	pkgdesc = 万象词库——每日构建版
-	pkgver = 11.3.1+r20250825.143545
+	pkgver = 11.3.1+r20250826.194237
 	pkgrel = 1
 	url = https://github.com/amzxyz/rime_wanxiang
 	arch = any
