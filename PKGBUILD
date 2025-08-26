@@ -42,20 +42,25 @@ arch=('x86_64')
 url="https://github.com/damachine/coolerdash"
 license=('MIT')
 depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' 'ttf-roboto')
-makedepends=('gcc' 'make' 'pkg-config' 'git')
+makedepends=('gcc' 'make' 'pkg-config' 'git' 'openssh')
 optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
 _tag=v1.26
-source=("git+https://github.com/damachine/coolerdash.git?signed#tag=$_tag")
-sha256sums=('SKIP')
+source=("git+https://github.com/damachine/coolerdash.git?signed#tag=$_tag?signed"
+        "ssh_allowed_signers")
+sha256sums=('SKIP'
+            '18b1a6302b369ce01ce5a040046fa609ab045a99890797e9d8c041543ac450d6')
 validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
+
+prepare() {
+  git -C "$srcdir/coolerdash" -c gpg.ssh.allowedSignersFile="$srcdir/ssh_allowed_signers" verify-tag "$_tag"
+}
 
 # Git-Tag Build versioning
 pkgver() {
-    cd "$srcdir/coolerdash" || return 1
-    git describe --tags --long --match "v*" \
-        | sed -E 's/^v//; s/-([0-9]+)-g/\.r\1.g/; s/-/./g'
+    cd "$srcdir/coolerdash"
+    git describe --tags --long --match "v*" | sed -E 's/^v//; s/-([0-9]+)-g/\.r\1.g/; s/-/./g'
 }
 
 build() {
