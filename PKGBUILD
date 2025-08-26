@@ -4,7 +4,7 @@
 
 pkgname='caelestia-shell-git'
 pkgver=r1130.aa66f3c
-pkgrel=2
+pkgrel=3
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
@@ -50,6 +50,7 @@ package() {
     rm ./assets/cpp/inhibit_idle
 
     DESTDIR="$pkgdir" cmake --install plugin/build
+    rm -rf plugin/build
 
     install -dm755 "$pkgdir"/etc/xdg/quickshell/caelestia
     cp -r ./* "$pkgdir"/etc/xdg/quickshell/caelestia/
