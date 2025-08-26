@@ -30,7 +30,7 @@
 # - All dependencies are documented in README.md and AUR-README.md
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.25
+pkgver=1.25.r0.gcaf40fe
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
