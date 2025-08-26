@@ -7,10 +7,10 @@
 
 pkgname=llama.cpp-cuda-f16
 _pkgname="${pkgname%-cuda-f16}"
-pkgver=b6269
+pkgver=b6280
 pkgrel=1
-_build_number=6269
-_commit_id=6b64f74
+_build_number=6280
+_commit_id=0fd90db
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -39,7 +39,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('19ac1cee303b464a8aff41572fc5f7c5a2e9d27989b5662f163f545f39e92096'
+sha256sums=('0de0acfb39d30de3209eb4ec31df87c085a2af150c351483247a341c55f572bd'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
@@ -89,6 +89,12 @@ build() {
       -DGGML_NATIVE=ON
     )
   fi
+  # Allow user-specified additional flags
+  if [[ -n "${aur_llamacpp_cmakeopts:-}" ]]; then
+    echo "Applying custom CMake options: ${aur_llamacpp_cmakeopts}"
+    # shellcheck disable=SC2206 # intentional word splitting
+    _cmake_options+=(${aur_llamacpp_cmakeopts})
+  fi  
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
