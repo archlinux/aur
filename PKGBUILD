@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-5compat
-_qtver=6.9.1
+_qtver=6.9.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qt5compat-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('96c726ac3f0d5c40570e75196e4ab5c95d3de7c85d15604fe97ac2a6573d917a')
+sha256sums=('cb289905c689fc271ce783f8b67844040aa73d78f4f0cf8421fa713390a75b60')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
