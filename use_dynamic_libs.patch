@@ -1,0 +1,46 @@
+From 137a4024d01e7899286ad6d1393c76562b31d1cd Mon Sep 17 00:00:00 2001
+From: 1994 <1994intime@protonmail.com>
+Date: Tue, 26 Aug 2025 06:42:29 +0000
+Subject: [PATCH] PKGBUILD: Make static dependencies dynamic
+
+Changed static dependencies that are not packaged with arch to dynamic
+---
+ monero-sys/build.rs | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/monero-sys/build.rs b/monero-sys/build.rs
+index c40c41a6..3cd01a71 100644
+--- a/monero-sys/build.rs
++++ b/monero-sys/build.rs
+@@ -264,20 +264,20 @@ fn main() {
+     println!("cargo:rustc-link-lib=static=boost_chrono");
+ 
+     // Link libsodium statically
+-    println!("cargo:rustc-link-lib=static=sodium");
++    println!("cargo:rustc-link-lib=sodium");
+ 
+     // Link OpenSSL statically
+-    println!("cargo:rustc-link-lib=static=ssl"); // This is OpenSSL (libsll)
+-    println!("cargo:rustc-link-lib=static=crypto"); // This is OpenSSLs crypto library (libcrypto)
++    println!("cargo:rustc-link-lib=ssl"); // This is OpenSSL (libsll)
++    println!("cargo:rustc-link-lib=crypto"); // This is OpenSSLs crypto library (libcrypto)
+ 
+     // Link unbound statically
+-    println!("cargo:rustc-link-lib=static=unbound");
+-    println!("cargo:rustc-link-lib=static=expat"); // Expat is required by unbound
+-    println!("cargo:rustc-link-lib=static=nghttp2");
+-    println!("cargo:rustc-link-lib=static=event");
++    println!("cargo:rustc-link-lib=unbound");
++    println!("cargo:rustc-link-lib=expat"); // Expat is required by unbound
++    println!("cargo:rustc-link-lib=nghttp2");
++    println!("cargo:rustc-link-lib=event");
+ 
+     // Link protobuf statically
+-    println!("cargo:rustc-link-lib=static=protobuf");
++    println!("cargo:rustc-link-lib=protobuf");
+ 
+     #[cfg(target_os = "macos")]
+     println!("cargo:rustc-link-arg=-mmacosx-version-min=11.0");
+-- 
+2.51.0
+

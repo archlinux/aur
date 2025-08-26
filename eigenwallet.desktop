@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=
+Comment=GUI for XMR<>BTC Atomic Swaps written in Rust
+Exec=/usr/bin/unstoppableswap-gui-rs
+Icon=unstoppableswap-gui-rs
+Name=eigenwallet
+Terminal=false
+Type=Application
