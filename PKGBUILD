@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r25349.e44ec1f
+pkgver=2.3.1.r25462.90a6c53
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -67,7 +67,7 @@ build() {
   ninja -C build
   
   # add localizations
-  ./run_gettext.sh --full
+  ./scripts//run_gettext.sh --full
 }
 
 package() {
