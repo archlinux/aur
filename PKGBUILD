@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortsh
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Modern Unix shell implementation in Fortran 2018 with advanced features'
 arch=('x86_64')
