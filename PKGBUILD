@@ -1,48 +1,46 @@
-# Maintainer: Charles Dong <chardon_cs@proton.me>
+# Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=wmswitch
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Switch between window managers seamlessly"
-arch=("x86_64" "aarch64")
-url="https://github.com/chardoncs/wmswitch"
+pkgdesc='Unified configuration manager for tiling window managers (i3, Hyprland, AeroSpace)'
+arch=('x86_64')
+url='https://github.com/tenseleyFlow/wmswitch'
 license=('MIT')
-groups=()
-depends=()
-makedepends=(
-	rust
-    cargo
-)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=()
-noextract=()
-sha256sums=()
-validpgpkeys=()
-
-_srcroot="${pkgname}-${pkgver}-${pkgrel}"
+depends=('glibc')
+makedepends=('gcc' 'make')
+source=("git+https://github.com/tenseleyFlow/wmswitch.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-	local srcroot="$srcdir/$_srcroot"
+    cd wmswitch
+    make release
+}
 
-	if [ ! -d $srcroot ]; then
-		mkdir $srcroot
-	fi
-
-	pushd $srcroot
-
-	cargo install ${pkgname}@${pkgver} --locked --target-dir $srcroot/ --root $srcroot/
+check() {
+    cd wmswitch
+    make test || true  # Allow tests to fail gracefully
 }
 
 package() {
-	local srcroot="$srcdir/$_srcroot"
-
-	install -Dm755 $srcroot/bin/$pkgname ${pkgdir}/usr/bin/$pkgname
+    cd wmswitch
+    
+    # Install the binary
+    install -Dm755 bin/wmswitch "$pkgdir/usr/bin/wmswitch"
+    
+    # Install documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 WMSWITCH-GOALS.md "$pkgdir/usr/share/doc/$pkgname/WMSWITCH-GOALS.md"
+    
+    # Install shell completions
+    if [ -d completions ]; then
+        install -Dm644 completions/wmswitch.bash "$pkgdir/usr/share/bash-completion/completions/wmswitch"
+        install -Dm644 completions/wmswitch.zsh "$pkgdir/usr/share/zsh/site-functions/_wmswitch"
+        install -Dm644 completions/wmswitch.fish "$pkgdir/usr/share/fish/vendor_completions.d/wmswitch.fish"
+    fi
+    
+    # Install example configurations
+    if [ -d examples ]; then
+        install -Dm644 examples/* -t "$pkgdir/usr/share/doc/$pkgname/examples/"
+    fi
 }

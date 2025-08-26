@@ -1,12 +1,14 @@
 pkgbase = wmswitch
-	pkgdesc = Switch between window managers seamlessly
+	pkgdesc = Unified configuration manager for tiling window managers (i3, Hyprland, AeroSpace)
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/chardoncs/wmswitch
+	url = https://github.com/tenseleyFlow/wmswitch
 	arch = x86_64
-	arch = aarch64
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = git+https://github.com/tenseleyFlow/wmswitch.git#tag=v0.1.0
+	sha256sums = SKIP
 
 pkgname = wmswitch
