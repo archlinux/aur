@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-multimedia
-_qtver=6.9.1
+_qtver=6.9.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,11 +19,9 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch'
-        '0002-Fix-casing-when-including-wininet.h.patch')
-sha256sums=('955e36459518ee55f8e2bb79defc6e44aa94dc1edf5ac58a22d7734b2e07391d'
-            'f974e0a54693cda47d07964c44130e66e8c4e6207e5e3be4fd3fb8b2d12a05fa'
-            '273c69ad51282eb63a2e427239ad771a55d4469cfb2272d853b3308c94a676f2')
+        '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
+sha256sums=('7bf8a19a57a7432181b05d0e264acfd8ca4b75a3901d01a27a32935703e5ab12'
+            '0f1fda588cbd55c1b454552e49279522bfd210b63f0e03801e8f4a878931ea6d')
 
 prepare () {
   cd $_pkgfqn
