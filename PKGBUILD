@@ -1,31 +1,33 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=nifskope-bin
-pkgver=2.0.dev11_20250630
+pkgver=2.0.dev11_20250824
 pkgrel=1
-pkgdesc="Fork of NifSkope 2.0.dev9 with many fixes and improvements."
+pkgdesc="Opening and editing the NetImmerse file format (NIF)."
 arch=('x86_64')
 url="https://github.com/fo76utils/nifskope"
 license=('BSD-3-Clause')
 depends=('qt6-imageformats')
-makedepends=()
+makedepends=('xdg-utils')
 checkdepends=()
 optdepends=(
     'qt6-tools'
 )
 provides=('nifskope')
-source=("${url}/releases/download/v${pkgver//_/-}/NifSkope_2_0_2025-06-30-linuxqt6_x64.7z"
+source=("${url}/releases/download/v${pkgver//_/-}/NifSkope_2_0_2025-08-24-linuxqt6_x64.7z"
     "${url}/blob/develop/res/nifskope.png?raw=true"
     "NifSkope.desktop"
     "vnd.gamebryo-nif.xml"
+    "nifskope.install"
 )
 
-sha256sums=('14b51b1a29d9ba61f237d21ebed61f24e8c4119904fa67ce91f270eae363758c'
+sha256sums=('549fd47a5decfaf4fa587e6f5f0b430c7aea33a97edb4c93e61b88b1cc646267'
             '27e11322eff6f06bd1f8ff9ab41cafeb9cae51a22da2796ad761d9e9b2295fe7'
             '71a7456c085f0af9e6b01c685d32f4b24e131200f97e67c1380db19d4191f4d1'
-            '7931c6edab17833624ca1471f91540df5b622d1697a3c74440c344a4a0144315')
+            '8295c3826e1b764f2049b94c10e51b4ca1eb4094844675a001e25d2ab512d976'
+            '8ae3733e56a8a16a17dbdb0003c5c7673bd52847f04e0d55b716922e7e6b0391')
 
 package() {
-    cd ${pkgdir}
+    install -Dm 644 vnd.gamebryo-nif.xml ${pkgdir}/usr/share/nifskope/vnd.gamebryo-nif.xml
     install -Dm 755 ${srcdir}/nifskope-linux/NifSkope_noavx2 ${pkgdir}/usr/lib/nifskope/NifSkope
     install -Dm 644 -t ${pkgdir}/usr/lib/nifskope/shaders ${srcdir}/nifskope-linux/shaders/*
     install -Dm 644 ${srcdir}/nifskope-linux/*.xml ${pkgdir}/usr/lib/nifskope
