@@ -1,25 +1,20 @@
 # Maintainer:
 # Contributor: éclairevoyant
 
-## links
-# https://astian.org/midori-browser/download/
-# https://github.com/goastian/midori-desktop
-
 ## options
-: ${_build_pgo:=true}
-: ${_build_pgo_reuse:=try}
-: ${_build_pgo_xvfb:=true}
+: ${_build_lto:=false}
+: ${_build_system_libs:=true}
 
 : ${_commit=ESR128}
 
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.5.2.r55.g7c0cd10
+pkgver=11.6.r23.gcc19b4f
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
-arch=('x86_64')
 license=('MPL-2.0')
+arch=('x86_64')
 
 depends=(
   dbus
@@ -71,20 +66,6 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 
-if [[ "${_build_pgo::1}" == "t" ]]; then
-  if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
-    makedepends+=(
-      xorg-server-xvfb
-    )
-  else
-    makedepends+=(
-      weston
-      xorg-xwayland
-      wlheadless-run # aur/xwayland-run
-    )
-  fi
-fi
-
 options=(
   !debug
   !emptydirs
@@ -96,41 +77,15 @@ options=(
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
-_source_main() {
-  _pkgsrc="midori-tensei"
-  source=(
-    "$_pkgsrc"::"git+https://github.com/goastian/midori-desktop.git#commit=${_commit:?}"
-    "$_pkgname.desktop"
-  )
-  sha256sums=(
-    'SKIP'
-    '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
-  )
-}
-
-_source_midori_tensei() {
-  local _sources_add=(
-    'goastian.l10n-central'::'git+https://github.com/goastian/l10n-central.git'::'floorp/browser/locales/l10n-central'
-  )
-
-  local _p _idx _src _sm_prep _sm_func
-  for _p in ${_sources_add[@]}; do
-    _idx="${_p%%::*}"
-    _sm_prep+=("${_idx}::${_p##*::}")
-    _src="${_p%::*}"
-    source+=("$_src")
-    sha256sums+=('SKIP')
-  done
-
-  eval "_prepare_midori_tensei() (
-    cd \"\$srcdir/\$_pkgsrc\"
-    local _submodules=(${_sm_prep[@]})
-    _submodule_update
-  )"
-}
-
-_source_main
-_source_midori_tensei
+_pkgsrc="midori-tensei"
+source=(
+  "$_pkgsrc"::"git+https://github.com/goastian/midori-desktop.git#commit=${_commit:?}"
+  "$_pkgname.desktop"
+)
+sha256sums=(
+  'SKIP'
+  '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
+)
 
 pkgver() {
   cd "$_pkgsrc"
@@ -149,24 +104,14 @@ pkgver() {
   printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_commit::7}"
 }
 
-prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
+prepare() (
   mkdir -p mozbuild
   cd "$_pkgsrc"
 
-  # l10n
-  _prepare_midori_tensei
+  git submodule update --init --recursive --depth=1
 
   # clear forced startup pages
-  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
+  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
 
   # prepare api keys
   cp "floorp/apis"/api-*-key ./
@@ -175,13 +120,11 @@ prepare() {
   cat > ../mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
-
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
@@ -190,7 +133,7 @@ ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
-ac_add_options --with-app-basename=${_pkgname^}
+ac_add_options --with-app-basename=$_pkgname
 ac_add_options --with-app-name=$_pkgname
 ac_add_options --with-branding=browser/branding/official
 ac_add_options --enable-update-channel=nightly
@@ -209,15 +152,6 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/api-google-location-service-key
 ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/api-google-safe-browsing-key
 
-# System Libraries
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-webp
-ac_add_options --with-system-zlib
-
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-av1
@@ -225,6 +159,7 @@ ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-pulseaudio
 ac_add_options --enable-sandbox
 ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
@@ -247,6 +182,11 @@ ac_add_options --enable-strip
 ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
+# Optimization
+ac_add_options --enable-optimize
+ac_add_options OPT_LEVEL="2"
+ac_add_options RUSTC_OPT_LEVEL="2"
+
 # Other
 export AR=llvm-ar
 export CC=clang
@@ -255,23 +195,32 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\n\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
-    fi
-  done
-}
+  if [[ "${_build_system_libs::1}" == "t" ]]; then
+    cat >> ../mozconfig << END
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-webp
+ac_add_options --with-system-zlib
+END
+  fi
+
+  if [[ "${_build_lto::1}" == "t" ]]; then
+    cat >> ../mozconfig << END
+ac_add_options --enable-lto=cross,full
+END
+  fi
+)
 
 build() (
   cd "$_pkgsrc"
 
+  export RUSTUP_TOOLCHAIN=stable
+
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
-  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && mkdir -pm700 "${XDG_RUNTIME_DIR:?}"
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -289,120 +238,10 @@ build() (
   # LTO/PGO needs more open files
   ulimit -n 4096
 
-  # Do 3-tier PGO
-  if [[ "${_build_pgo::1}" == "t" ]]; then
-    # find previous profile file...
-    local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
-    _pkgver_prof=$(
-      cd "$SRCDEST"
-      for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
-        | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
-    )
+  echo "Building browser..."
+  cat > .mozconfig ../mozconfig
 
-    # new profile for new major version
-    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ]; then
-      _build_pgo_reuse=false
-      _pkgver_prof="$pkgver"
-    fi
-
-    # new profile for new minor version
-    _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
-    _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
-
-    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ]; then
-      _build_pgo_reuse=false
-      _pkgver_prof="$pkgver"
-    fi
-
-    local _old_profdata="$SRCDEST/$_pkgname-$_pkgver_prof-merged.profdata"
-    local _old_jarlog="$SRCDEST/$_pkgname-$_pkgver_prof-jarlog"
-
-    # Restore old profile
-    if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
-      if [[ -s "$_old_profdata" ]]; then
-        echo "Restoring old profile data."
-        cp -f "$_old_profdata" merged.profdata
-      fi
-
-      if [[ -s "$_old_jarlog" ]]; then
-        echo "Restoring old jar log."
-        cp -f "$_old_jarlog" jarlog
-      fi
-    fi
-
-    # Make new profile
-    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
-      echo "Building instrumented browser..."
-      cat > .mozconfig ../mozconfig - << END
-ac_add_options --enable-profile-generate=cross
-export MOZ_ENABLE_FULL_SYMBOLS=1
-END
-      ./mach build
-
-      echo "Profiling instrumented browser..."
-      ./mach package
-
-      local _headless_env=(
-        LLVM_PROFDATA=llvm-profdata
-        JARLOG_FILE="${PWD@Q}/jarlog"
-        LIBGL_ALWAYS_SOFTWARE=true
-        dbus-run-session
-      )
-
-      if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
-        local _headless_run=(
-          xvfb-run
-          -s "-screen 0 1920x1080x24 -nolisten local"
-        )
-      else
-        local _headless_run=(
-          wlheadless-run
-          -c weston --width=1920 --height=1080
-        )
-      fi
-
-      env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
-
-      echo "Removing instrumented browser..."
-      ./mach clobber objdir
-    fi
-
-    echo "Building optimized browser..."
-    cat > .mozconfig ../mozconfig
-
-    if [[ -s merged.profdata ]]; then
-      stat -c "Profile data found (%s bytes)" merged.profdata
-      cat >> .mozconfig - << END
-ac_add_options --enable-lto=cross,full
-ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-END
-
-      # save profdata for reuse
-      cp -f merged.profdata "$_old_profdata"
-    else
-      echo "Profile data not found."
-    fi
-
-    if [[ -s jarlog ]]; then
-      stat -c "Jar log found (%s bytes)" jarlog
-      cat >> .mozconfig - << END
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-
-      # save jarlog for reuse
-      cp -f jarlog "$_old_jarlog"
-    else
-      echo "Jar log not found."
-    fi
-
-    ./mach build --priority normal
-  else
-    echo "Building browser..."
-    cat > .mozconfig ../mozconfig
-
-    ./mach build --priority normal
-  fi
+  ./mach build --priority normal
 )
 
 package() {

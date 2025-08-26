@@ -1,6 +1,6 @@
 pkgbase = midori-git
 	pkgdesc = Web browser based on Floorp
-	pkgver = 11.5.2.r55.g7c0cd10
+	pkgver = 11.6.r23.gcc19b4f
 	pkgrel = 1
 	url = https://github.com/goastian/midori-desktop
 	arch = x86_64
@@ -29,7 +29,6 @@ pkgbase = midori-git
 	makedepends = wasi-libc++abi
 	makedepends = yasm
 	makedepends = zip
-	makedepends = xorg-server-xvfb
 	depends = dbus
 	depends = ffmpeg
 	depends = gtk3
@@ -49,7 +48,7 @@ pkgbase = midori-git
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = midori=11.5.2
+	provides = midori=11.6
 	conflicts = midori
 	options = !debug
 	options = !emptydirs
@@ -58,9 +57,7 @@ pkgbase = midori-git
 	options = !strip
 	source = midori-tensei::git+https://github.com/goastian/midori-desktop.git#commit=ESR128
 	source = midori.desktop
-	source = goastian.l10n-central::git+https://github.com/goastian/l10n-central.git
 	sha256sums = SKIP
 	sha256sums = 7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470
-	sha256sums = SKIP
 
 pkgname = midori-git
