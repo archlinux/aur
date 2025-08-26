@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=zek-bin
-pkgver=0.1.19
+pkgver=0.1.28
 pkgrel=1
 pkgdesc="Generate a Go struct from XML"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('zek')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/miku/zek/releases/download/${pkgver}/zek_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('ef4958ba7cb74f972cc4bccab61fd25531e96d77d7aa9262d75861466fca9ce9')
+sha256sums=('44e0cdd902fedba9f99a6480ef4b244b91c8d78a7e0d6a95d96ad644e3fceedc')
 
 package() {
   cd "${srcdir}"
