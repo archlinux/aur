@@ -4,19 +4,19 @@
 
 pkgname=bluetuith
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI-based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
-url="https://github.com/darkhz/bluetuith"
+url="https://github.com/bluetuith-org/bluetuith"
 license=('MIT')
 depends=('bluez' 'dbus')
 optdepends=("bluez-obex: send and receive files via OBEX")
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9e48728843d1e50c8199e532a714c989681f7ab041fb64a7cb093530383e86b0')
+makedepends=('git' 'go')
+source=("$pkgname::git+$url.git?tag=0.2.5-rc1")
+sha256sums=('SKIP')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	mkdir -p build
 	go mod download
 }
@@ -26,18 +26,20 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
-	cd "$pkgname-$pkgver"
-	go build -o build
+	export GOFLAGS="-buildmode=pie -trimpath"
+
+	cd "$pkgname"
+	version="$(git describe --exact-match --abbrev=0 HEAD)@$(git rev-parse HEAD | head -c7)"
+	go build -ldflags="-linkmode=external -s -w -X github.com/darkhz/bluetuith/cmd.Version=${version}" -o build
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	go test ./...
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	install -D "build/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
