@@ -1,4 +1,4 @@
 [river-git]
 source = "git"
-git = "https://github.com/riverwm/river.git"
+git = "https://codeberg.org/river/river.git"
 prefix = "v"
