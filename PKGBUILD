@@ -19,7 +19,7 @@ sha256sums_x86_64=('ed47854d642da13859b8b75570b9a11a1d331ed27e55b3cca8431a03a311
 sha256sums_aarch64=('0b96f83936fd03bb292c605f03af7106ee5e6f613e30f67b25405f86e6feccd6')
 
 package() {
-	tar -xf data.tar.zst -C "$pkgdir"
+	tar -xf data.tar.xz -C "$pkgdir"
 	rm -rf "$pkgdir/usr/share/doc"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s /opt/chia/resources/app.asar.unpacked/daemon/chia "$pkgdir/usr/bin/chia"
