@@ -1,36 +1,38 @@
 # -----------------------------------------------------------------------------
-# author: damachine (christkue79@gmail.com)
-# website: https://github.com/damachine
-# copyright: (c) 2025 damachine
-# license: MIT
-# version: 1.0
+# Author: damachine (christkue79@gmail.com)
+# Maintainer: damachine <christkue79@gmail.com>
+# Website: https://github.com/damachine
+# Copyright: (c) 2025 damachine
+# License: MIT
+# Version: 1.0
 #
 # Info:
-# 	CoolerDash PKGBUILD
+#   CoolerDash PKGBUILD
 #   Build system for CoolerDash (C99 LCD daemon)
-# 	Project coding standards and packaging notes (see README for details)
-# 	Maintainer: DAMACHINE <christkue79@gmail.com>
+#   Project coding standards and packaging notes (see README for details)
+#
 # Details:
 #   This PKGBUILD handles build, install, dependencies, and packaging for Arch/AUR.
 #   Edit dependencies, paths, and user as needed for your system.
-#   Do not run as root. Use a dedicated user for security.
+#   Do not run as root. Use dedicated user for security.
 #   Ensure all required dependencies are installed.
 #   It uses color output and Unicode icons for better readability. All paths and dependencies are configurable.
 #   See README.md and AUR-README.md for further details.
-# Example:
-#   makepkg -si
-#   makepkg -s
-#   makepkg -c
-#   makepkg -f
 #
-# --- Dependency notes ---
-# -		'cairo', 'libcurl-gnutls', 'libinih', 'coolercontrol' are required for core functionality
-# - 	'nvidia-utils' and 'lm_sensors' are optional for extended hardware monitoring
-# - 	'ttf-roboto' is required for proper font rendering on the LCD
-# - All dependencies are documented in README.md and AUR-README.md
+# Build:
+#   makepkg -si
+#
+# Dependency:
+#   'cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' are required for core functionality
+#   'ttf-roboto' is required for proper font rendering on the LCD
+#   All dependencies are documented in README.md and AUR-README.md
+#
+# Disclaimer:
+#   This software is provided "as is", without warranty of any kind, express or implied.
+#   I do not guarantee that it will work as intended on your system.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.25.r0.g459dfe9
+pkgver=1.26.r0.g15ad2d4
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -44,7 +46,7 @@ makedepends=('gcc' 'make' 'pkg-config' 'git')
 optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_tag=v1.25
+_tag=v1.26
 source=("git+https://github.com/damachine/coolerdash.git#tag=$_tag")
 sha256sums=('SKIP')
 validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
@@ -58,12 +60,12 @@ pkgver() {
 
 build() {
     echo "================================================================"
-    echo " Developed and maintained by"
-    echo "  ____    _    __  __    _    ____ _   _ ___ _   _ _____ "
-    echo " |  _ \  / \  |  \/  |  / \  / ___| | | |_ _| \ | | ____|"
-    echo " | | | |/ _ \ | |\/| | / _ \| |   | |_| || ||  \| |  _|  "
-    echo " | |_| / ___ \| |  | |/ ___ \ |___|  _  || || |\  | |___ "
-    echo " |____/_/   \_\_|  |_/_/   \_\____|_| |_|___|_| \_|_____|"
+    echo "Developed and maintained by"
+    echo "  ____    _    __  __    _    ____ _   _ ___ _   _ _____  "
+    echo " |  _ \  / \  |  \/  |  / \  / ___| | | |_ _| \ | | ____| "
+    echo " | | | |/ _ \ | |\/| | / _ \| |   | |_| || ||  \| |  _|   "
+    echo " | |_| / ___ \| |  | |/ ___ \ |___|  _  || || |\  | |___  "
+    echo " |____/_/   \_\_|  |_/_/   \_\____|_| |_|___|_| \_|_____| "
     echo " "
 
     # Build inside the checked-out repository
