@@ -1,7 +1,7 @@
 pkgbase = elephant-providerlist
 	pkgdesc = providerlist provider for elephant
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = elephant-providerlist
 	makedepends = go
 	provides = elephant-providerlist
 	conflicts = elephant-providerlist
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-5.tar.gz
-	sha256sums = 1c324928dcfe81299a59420276113df7738965659322b6762cfbd619d1b0eb5c
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-6.tar.gz
+	sha256sums = 19a4d683360d173210fcdceaee067dd41cf09f20f1c015df9d512c9acc61520a
 
 pkgname = elephant-providerlist
