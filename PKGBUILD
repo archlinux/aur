@@ -1,17 +1,19 @@
-# Maintainer: Steven Seifried <gitlab@canox.net>
-# Contributor: Steven Seifried <gitlab@canox.net>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+
 pkgname=huawei-me936-udev
-pkgver=1.0
-pkgrel=3
-pkgdesc="udev Rule and Configuration files for Huawei ME936 LTE Modul"
-url="https://github.com/StevenSeifried/udev-rules/tree/master/huawei-me936"
-license=("GPL3")
+pkgver=1
+pkgrel=1
+pkgdesc="Udev rule and configs for the Huawei ME936 modem"
 arch=('any')
-source=("git+https://github.com/StevenSeifried/udev-rules/")
-sha256sums=('SKIP')
-sha512sums=('SKIP')
+source=("77-huawei-me936.rules"
+        "modprobe.d-huawei-me936.conf"
+        "modules-load.d-huawei-me936.conf")
+sha256sums=('e0e0c590d032b3141a980d89df27cb6c99e54937bd4d76945f99fa2c4decdb52'
+            '79ad582f7bb0d7e4c65b827f7a42e124b5a173bf5e33d1fb15f75d12b20c9c1a'
+            'cb117683456fbf25affb2ef434c3d743af55d053ac16af2bc4eea0114c424401')
+
 package() {
- install -Dm644 "$srcdir/udev-rules/huawei-me936/77-huawei-me936.rules" "${pkgdir}/etc/udev/rules.d/77-huawei-me936.rules"
- install -Dm644 "$srcdir/udev-rules/huawei-me936/modules-load.d/huawei-me936.conf" "${pkgdir}/etc/modules-load.d/huawei-me936.conf"
- install -Dm644 "$srcdir/udev-rules/huawei-me936/modprobe.d/huawei-me936.conf" "${pkgdir}/etc/modprobe.d/huawei-me936.conf"
+  install -Dm644 77-huawei-me936.rules -t "$pkgdir/etc/udev/rules.d"
+  install -Dm644 modprobe.d-huawei-me936.conf "$pkgdir/etc/modprobe.d/huawei-me936.conf"
+  install -Dm644 modules-load.d-huawei-me936.conf "$pkgdir/etc/modules-load.d/huawei-me936.conf"
 }

@@ -1,13 +1,13 @@
 pkgbase = huawei-me936-udev
-	pkgdesc = udev Rule and Configuration files for Huawei ME936 LTE Modul
-	pkgver = 1.0
-	pkgrel = 3
-	url = https://github.com/StevenSeifried/udev-rules/tree/master/huawei-me936
+	pkgdesc = Udev rule and configs for the Huawei ME936 modem
+	pkgver = 1
+	pkgrel = 1
 	arch = any
-	license = GPL3
-	source = git+https://github.com/StevenSeifried/udev-rules/
-	sha256sums = SKIP
-	sha512sums = SKIP
+	source = 77-huawei-me936.rules
+	source = modprobe.d-huawei-me936.conf
+	source = modules-load.d-huawei-me936.conf
+	sha256sums = e0e0c590d032b3141a980d89df27cb6c99e54937bd4d76945f99fa2c4decdb52
+	sha256sums = 79ad582f7bb0d7e4c65b827f7a42e124b5a173bf5e33d1fb15f75d12b20c9c1a
+	sha256sums = cb117683456fbf25affb2ef434c3d743af55d053ac16af2bc4eea0114c424401
 
 pkgname = huawei-me936-udev
-
