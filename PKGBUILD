@@ -2,7 +2,7 @@
 # Maintainer: Abhimanyu Sharma <abhimanyusharma003@gmail.com>
 
 pkgname='sttr-bin'
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc='sttr is command line software that allows you to quickly run various transformation operations on the string.'
 url='https://github.com/abhimanyu003/sttr'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('sttr')
 conflicts=('sttr')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.26/sttr_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d0e9caf7bc4203818703d8e62ed309d92a1902938c303fc19ae8897b36fc25bc')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.27/sttr_Linux_arm64.tar.gz")
+sha256sums_aarch64=('5156f9303fbf82ccc1cfb1cf7da5e32b1764df85bd27febca8207a502a74f7bc')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.26/sttr_Linux_i386.tar.gz")
-sha256sums_i686=('1f474bfae10dd3c545456ce5e295fb58bd388b48612d5070cd56345a56095db0')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.27/sttr_Linux_i386.tar.gz")
+sha256sums_i686=('b81568e839cef7669409b5054c828d6f852f959cd3e426e315bc5b43d387b778')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.26/sttr_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c7ece9a6bcd7f303fb805484f1b98cf0e3ea639dd909eb6b2a41d21ee4b2ac8d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.27/sttr_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('01cb3c5089a5893b6acd1312f0b0f811c80a2cf0420e5855bc69cd7e26917748')
 
 package() {
   install -Dm755 "./sttr" "${pkgdir}/usr/bin/sttr"
