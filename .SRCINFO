@@ -1,0 +1,15 @@
+pkgbase = eyescore
+	pkgdesc = Professional CLI Music Notation System - A colorized, feature-rich TUI score engraver
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tree3stan-chord/score
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gcc
+	depends = alsa-lib
+	source = git+https://github.com/tree3stan-chord/score.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = eyescore
