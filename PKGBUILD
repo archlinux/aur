@@ -6,7 +6,7 @@ pkgver=2.10.1
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
-url="https://smile.mijorus.it"
+url="https://mijorus.it/projects/smile/"
 license=('GPL-3.0-or-later')
 depends=(
   'emoji-font'
