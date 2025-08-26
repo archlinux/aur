@@ -1,0 +1,15 @@
+pkgbase = python-revtok
+	pkgdesc = Reversible tokenization in Python.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/jekbradbury/revtok
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/ea/a4/03688e46ea35e100fcb406bf59ef5b682317acc9c892e8ffbad13b0c51c3/revtok-0.0.3.tar.gz
+	sha256sums = b068055907eb3c9b2b4202e6839f51c9b9e9e16c9267a392c06a326d25bd6287
+
+pkgname = python-revtok
