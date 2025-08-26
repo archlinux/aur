@@ -4,17 +4,17 @@
 
 pkgname=python-vcard
 _pkg="${pkgname#python-}"
-pkgver=0.16.1
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="vCard validator"
 arch=('any')
 url='https://gitlab.com/engmark/vcard'
 license=('AGPL3')
 depends=('python-dateutil' 'python-typing_extensions')
-makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest' 'python-mock')
 source=("$pkgname-$pkgver.tar.bz2::$url/-/archive/v$pkgver/vcard-v$pkgver.tar.bz2")
-sha256sums=('670fe68bc514e7fea0b7cfe60f6339a3557bcc7132ad2bbe2e0e45e12d473cc4')
+sha256sums=('e075a830cc3e1d29d929cd3138fdaa71c0fe06436e4ac2d15852058012133fc2')
 
 prepare() {
 	cd "$_pkg-v$pkgver"
