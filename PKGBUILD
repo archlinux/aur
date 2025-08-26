@@ -39,7 +39,7 @@ prepare() {
         --pkgname="${_pkgbase}" \
         --pkgdesc="${pkgdesc}" \
         --name="Unofficial Homestuck Collection" \
-        --categories "Game;" \
+        --categories "Game" \
         --exec="/usr/bin/unofficial-homestuck-collection"
 }
 
