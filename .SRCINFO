@@ -1,6 +1,6 @@
 pkgbase = fileoptimizer-bin
 	pkgdesc = Lossless file size optimizer supporting multiple formats
-	pkgver = 16.90.2829
+	pkgver = 17.00.2842
 	pkgrel = 1
 	url = https://nikkhokkho.sourceforge.io/?page=FileOptimizer
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = fileoptimizer-bin
 	provides = fileoptimizer
 	conflicts = fileoptimizer
 	options = !strip
-	source = fileoptimizer-16.90.2829.7z.exe::https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/16.90.2829/FileOptimizerFull.7z.exe/download
+	source = fileoptimizer-17.00.2842.7z.exe::https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/17.00.2842/FileOptimizerFull.7z.exe/download
 	source = fileoptimizer.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP

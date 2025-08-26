@@ -5,7 +5,7 @@ _pkgname=fileoptimizer
 
 # This is only the initial version
 # The pkgver() function below will always fetch the latest version
-pkgver=16.90.2829
+pkgver=17.00.2842
 
 # Always fetch the latest version
 pkgver() {
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 options=(!strip)
 
 prepare() {
-    7z x "$_pkgname-$pkgver.7z.exe"
+    7z x -y "$_pkgname-$pkgver.7z.exe"
 }
 
 package() {
