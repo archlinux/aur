@@ -14,12 +14,12 @@ source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/sour
 sha256sums=('1b56b0cbd3eec3d2fd123c9eb2704e612b777e15a17705a804279ea6525e0c53')
 
 build() {
-  cd "${srcdir}"/${_name}-${pkgver}
+  cd "${srcdir}"/types_paramiko-${pkgver}
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}"/${_name}-${pkgver}
+  cd "${srcdir}"/types_paramiko-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
