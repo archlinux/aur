@@ -3,7 +3,7 @@
 _pkgauthor=bmarse
 _pkgname=tododo
 pkgname=${_pkgname}-bin
-pkgver=0.6.0
+pkgver=0.7.0
 _pkgvername=v${pkgver}-stable
 pkgrel=1
 pkgdesc="The todo manager that should be extinct"
@@ -20,9 +20,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${_barch[2]}.tar.gz")
-sha256sums_x86_64=('7a99deee06c7a9e0d79e00417e43c8bd94a4f28f7a07679e4526ab28e7af4857')
-sha256sums_i686=('05b204d2ebd8bd23bc718cfb0a19a1343e63c9adcf6003c92d78777ced16d0e8')
-sha256sums_aarch64=('2d54f8b0175e80679d1bb2c1e268210d7b2e53f3707625d2209582eb6880ee1a')
+sha256sums_x86_64=('f866ae2fefb2d2fdc5b8af92cd6b01d1d3859fcebd63efeb0b5d70a95b818efc')
+sha256sums_i686=('31035402bbb7a5b7ebfb32a6b21fd596694131db791c1163d3547f239c89752b')
+sha256sums_aarch64=('3b69f234fb9a32d7dde7e4eb855fa04c2c54b6d4611b53f7e876f31a0c9b4339')
 
 
 package() {

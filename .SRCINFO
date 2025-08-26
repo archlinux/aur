@@ -1,6 +1,6 @@
 pkgbase = tododo-bin
 	pkgdesc = The todo manager that should be extinct
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/bmarse/tododo
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = tododo-bin
 	depends = glibc
 	provides = tododo
 	conflicts = tododo
-	source_x86_64 = tododo-x86_64-0.6.0.tar.gz::https://github.com/bmarse/tododo/releases/download/v0.6.0-stable/tododo-v0.6.0-stable-linux-amd64.tar.gz
-	sha256sums_x86_64 = 7a99deee06c7a9e0d79e00417e43c8bd94a4f28f7a07679e4526ab28e7af4857
-	source_i686 = tododo-i686-0.6.0.tar.gz::https://github.com/bmarse/tododo/releases/download/v0.6.0-stable/tododo-v0.6.0-stable-linux-386.tar.gz
-	sha256sums_i686 = 05b204d2ebd8bd23bc718cfb0a19a1343e63c9adcf6003c92d78777ced16d0e8
-	source_aarch64 = tododo-aarch64-0.6.0.tar.gz::https://github.com/bmarse/tododo/releases/download/v0.6.0-stable/tododo-v0.6.0-stable-linux-arm64.tar.gz
-	sha256sums_aarch64 = 2d54f8b0175e80679d1bb2c1e268210d7b2e53f3707625d2209582eb6880ee1a
+	source_x86_64 = tododo-x86_64-0.7.0.tar.gz::https://github.com/bmarse/tododo/releases/download/v0.7.0-stable/tododo-v0.7.0-stable-linux-amd64.tar.gz
+	sha256sums_x86_64 = f866ae2fefb2d2fdc5b8af92cd6b01d1d3859fcebd63efeb0b5d70a95b818efc
+	source_i686 = tododo-i686-0.7.0.tar.gz::https://github.com/bmarse/tododo/releases/download/v0.7.0-stable/tododo-v0.7.0-stable-linux-386.tar.gz
+	sha256sums_i686 = 31035402bbb7a5b7ebfb32a6b21fd596694131db791c1163d3547f239c89752b
+	source_aarch64 = tododo-aarch64-0.7.0.tar.gz::https://github.com/bmarse/tododo/releases/download/v0.7.0-stable/tododo-v0.7.0-stable-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3b69f234fb9a32d7dde7e4eb855fa04c2c54b6d4611b53f7e876f31a0c9b4339
 
 pkgname = tododo-bin
