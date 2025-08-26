@@ -24,14 +24,14 @@ if command -v git > /dev/null; then
     fi
 else
     # We are probably inside a clean chroot environment, use fixed version info instead
-    _git_branch="branch=zfs-2.3.4-staging"
-    _staging_ver="2.3.4"
-    _base_ver="2.3.3"
+    _git_branch="branch=zfs-2.3.5-staging"
+    _staging_ver="2.3.5"
+    _base_ver="2.3.4"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.3.r61.g3b64a9619f
-pkgrel=4
+pkgver=2.3.4.r0.g34f96a15c7
+pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -73,11 +73,7 @@ prepare() {
 /^AC_CONFIG_FILES\(\[$/n
 /^\]\)$/n
 /^\s*(module\/.*|zfs.release|Makefile)$/!d
-}
-/^AC_CONFIG_FILES\(\[.*\]\)$/{
-/objtool-wrapper/!d
-}
-' configure.ac
+}' configure.ac
 
     sed -i -e "s/Version:[[:print:]]*/Version:       ${pkgver}/" META
     sed -i -e "s/Release:[[:print:]]*/Release:       ${pkgrel}/" META
