@@ -6,16 +6,23 @@
 # Contributor: Elis Hughes <elishughes@googlemail.com>
 
 pkgname=lib32-rtmpdump
-pkgver=2.4.r99.f1b83c1
+pkgver=2.4.r105.6f6bb13
 pkgrel=1
 epoch=1
 pkgdesc='A toolkit for RTMP streams (32 bit)'
 arch=(x86_64)
 url=http://rtmpdump.mplayerhq.hu/
-license=(GPL2 LGPL2.1)
-depends=(lib32-glibc lib32-gnutls lib32-zlib rtmpdump)
+license=(
+    GPL2
+    LGPL2.1
+)
+depends=(
+    lib32-glibc
+    lib32-gnutls
+    lib32-zlib
+    rtmpdump)
 makedepends=(git)
-_commit=f1b83c10d8beb43fcc70a6e88cf4325499f25857
+_commit=6f6bb1353fc84f4cc37138baa99f586750028a01
 source=(git+https://git.ffmpeg.org/rtmpdump#commit=${_commit})
 sha256sums=('SKIP')
 

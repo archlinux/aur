@@ -1,6 +1,6 @@
 pkgbase = lib32-rtmpdump
 	pkgdesc = A toolkit for RTMP streams (32 bit)
-	pkgver = 2.4.r99.f1b83c1
+	pkgver = 2.4.r105.6f6bb13
 	pkgrel = 1
 	epoch = 1
 	url = http://rtmpdump.mplayerhq.hu/
@@ -12,7 +12,7 @@ pkgbase = lib32-rtmpdump
 	depends = lib32-gnutls
 	depends = lib32-zlib
 	depends = rtmpdump
-	source = git+https://git.ffmpeg.org/rtmpdump#commit=f1b83c10d8beb43fcc70a6e88cf4325499f25857
+	source = git+https://git.ffmpeg.org/rtmpdump#commit=6f6bb1353fc84f4cc37138baa99f586750028a01
 	sha256sums = SKIP
 
 pkgname = lib32-rtmpdump
