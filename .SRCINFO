@@ -1,6 +1,6 @@
 pkgbase = xmlcutty-bin
 	pkgdesc = xmlcutty is a simple tool for carving out elements from large XML files, fast - binary static
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/miku/xmlcutty
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = xmlcutty-bin
 	replaces = xmlcutty
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/miku/xmlcutty/releases/download/v0.1.6/xmlcutty_0.1.6_amd64.deb
-	sha256sums = dd1b7eed320a02b6f8fd68064a8317e4c0ef186b4d1053738f510de9822f4b5c
+	source = https://github.com/miku/xmlcutty/releases/download/v0.1.8/xmlcutty_0.1.8_amd64.deb
+	sha256sums = cdbcd00f769d9a4967e9267ee500d4c50c517981ffdb07fdc556fd9125bdb737
 
 pkgname = xmlcutty-bin
 
