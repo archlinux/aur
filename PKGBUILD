@@ -1,14 +1,14 @@
 # Maintainer: Rafael Epplée <aur@rafa.ee>
-# Maintainer: Steffen Ridderbusch <steffen@robots.ox.ac.uk>
+# Contributor: Steffen Ridderbusch <steffen@robots.ox.ac.uk>
 # Contributor: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
 pkgver=2.1.5
 pkgrel=1
-pkgdesc='all-in-one encrypted to-do list, habit tracker, journaling, life-tracking and notes app (unofficial and *not* supported by upstream developers)'
+pkgdesc='all-in-one encrypted productivity app (unofficial, not supported by upstream)'
 arch=('x86_64')
 depends=('libindicator-gtk3' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst' )
 url='https://lunatask.app'
-license=('proprietary')
+license=('LicenseRef-proprietary')
 
 _file=Lunatask-${pkgver}.AppImage
 source=(https://github.com/lunatask/lunatask/releases/download/v${pkgver}/${_file})
@@ -24,18 +24,14 @@ prepare() {
 }
 
 package() {
-  install -d "$pkgdir"/usr/bin/
-  install -d "$pkgdir"/usr/local/lunatask/
-  install -d "$pkgdir"/usr/share/applications/
-  install -d "$pkgdir"/usr/share/icons/
-  install -d "$pkgdir"/usr/share/icons/hicolor/512x512/apps
-
-  install -m644 squashfs-root/usr/share/icons/hicolor/512x512/apps/lunatask.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/lunatask.png
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/lunatask.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/lunatask.png
 
   sed -i 's/Exec=AppRun.*/Exec=lunatask/' squashfs-root/lunatask.desktop
-  install -m644 squashfs-root/lunatask.desktop "$pkgdir"/usr/share/applications/
+  install -Dm644 squashfs-root/lunatask.desktop "$pkgdir"/usr/share/applications/lunatask.desktop
 
   find squashfs-root -type d -exec chmod 755 {} +
-  mv squashfs-root/* "$pkgdir"/usr/local/lunatask/
-  ln -s /usr/local/lunatask/lunatask "$pkgdir"/usr/bin/lunatask
+  mkdir -p "$pkgdir"/opt/lunatask
+  mv squashfs-root/* "$pkgdir"/opt/lunatask/
+  mkdir -p "$pkgdir"/usr/bin
+  ln -s /opt/lunatask/lunatask "$pkgdir"/usr/bin/lunatask
 }

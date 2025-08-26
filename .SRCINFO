@@ -1,10 +1,10 @@
 pkgbase = lunatask
-	pkgdesc = all-in-one encrypted to-do list, habit tracker, journaling, life-tracking and notes app (unofficial and *not* supported by upstream developers)
+	pkgdesc = all-in-one encrypted productivity app (unofficial, not supported by upstream)
 	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://lunatask.app
 	arch = x86_64
-	license = proprietary
+	license = LicenseRef-proprietary
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
 	depends = libnotify
