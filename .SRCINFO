@@ -11,7 +11,7 @@ pkgbase = python-types-paramiko
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-cryptography
-	source = https://files.pythonhosted.org/packages/source/t/types_paramiko/types_paramiko-4.0.0.20250822.tar.gz
+	source = types-paramiko-4.0.0.20250822.tar.gz::https://files.pythonhosted.org/packages/source/t/types_paramiko/types_paramiko-4.0.0.20250822.tar.gz
 	sha256sums = 1b56b0cbd3eec3d2fd123c9eb2704e612b777e15a17705a804279ea6525e0c53
 
 pkgname = python-types-paramiko
