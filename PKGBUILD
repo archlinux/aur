@@ -1,7 +1,7 @@
 # Maintainer: Mercas <me@smj.im>
 
 pkgname=anytype-alpha
-pkgver=0.47.66
+pkgver=0.49.9
 _tag="-alpha" # -alpha, -beta or leave blank
 pkgrel=1
 pkgdesc="The everything app for those who celebrate trust & autonomy(extract binary pkg)"
@@ -16,8 +16,8 @@ conflicts=('anytype-bin'
 options=('!strip' '!debug')
 source=("https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_tag}/anytype_${pkgver}${_tag}_amd64.deb"
   "anytype.sh")
-sha256sums=('e20988925a48700d169d9ebcbc9fc374916c61400968c1892305821348f638e9'
-  '8688c3f1f2b7e43b1f033549dd8018b7d2d2a9523e4d12995bce43d768e17c3a')
+sha256sums=('f99c18ec9a7e945bef69f55628381cb3f7561c8f8a2f49e966b30622f19ea75d'
+            '8688c3f1f2b7e43b1f033549dd8018b7d2d2a9523e4d12995bce43d768e17c3a')
 
 package() {
   echo "Extract data.tar.xz ..."
