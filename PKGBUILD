@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -360,7 +360,9 @@ _package() {
   done
 
   # Clean up duplicates with Arch packages
-  rm "${pkgdir}"/usr/include/*.h
+  rm "${pkgdir}"/usr/include/{*.h,*.hpp}
+  rm -rf "${pkgdir}"/usr/include/oneapi/
+  rm -rf "${pkgdir}"/usr/include/fmt/
 
   # Python module is hardcoded so look there at runtime
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
