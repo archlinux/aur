@@ -1,5 +1,4 @@
 [guile-fibers]
-source = 'github'
-github = 'wingo/fibers'
-use_latest_release = true
+source = 'git'
+git = 'https://codeberg.org/fibers/fibers.git'
 prefix = 'v'
