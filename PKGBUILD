@@ -1,25 +1,29 @@
 # Maintainer: Kevin <github@kev314.dev>
 
 pkgname=noctalia-shell
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
 license=('MIT')
-install=noctalia-shell.install
-depends=('quickshell' 'ttf-roboto' 'inter-font' 'ttf-material-symbols-variable-git')
+depends=(
+  'quickshell'
+  'ttf-roboto'
+  'inter-font' 
+  'ttf-material-symbols-variable-git'
+  'gpu-screen-recorder'
+  'brightnessctl'
+  'ddcutil'
+)
 optdepends=(
   'cliphist: For clipboard history support'
   'swww: Wallpaper animations and effects'
   'matugen-bin: Material You color scheme generation'
   'cava: Audio visualizer component'
-  'gpu-screen-recorder: Screen recording functionality'
-  'brightnessctl: For internal/laptop monitor brightness'
-  'ddcutil: For desktop monitor brightness'
 )
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('ddbcc29e79472149c58a9613fb906e1dbf10652670db5645ce7f74c86b741c06')
+sha256sums=('8b4c372140ae2aa6659a824e2a42ebb5b5e798b43c8fce11682a6da59f646437')
 
 package() {
   cd "$srcdir/$pkgname"
@@ -27,4 +31,12 @@ package() {
   # Install shell files to quickshell system config directory
   install -dm755 "$pkgdir/etc/xdg/quickshell/noctalia"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/noctalia/"
+  
+  # Create wrapper script
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/noctalia-shell" << 'EOF'
+#!/bin/bash
+exec qs -c noctalia "$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/noctalia-shell"
 }
