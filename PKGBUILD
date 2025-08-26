@@ -8,8 +8,40 @@ pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url='https://homestuck.giovanh.com/unofficial-homestuck-collection/'
 license=('GPL-3.0-or-later' 'LicenseRef-chrome' 'LicenseRef-electron')
-depends=('libvips')
 makedepends=('gendesk')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libcups'
+    'libdrm'
+    'libvips'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxcrypt-compat'
+    'libxcursor'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxi'
+    'libxrandr'
+    'libxrender'
+    'libxss'
+    'libxtst'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+)
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 options=('!strip')
