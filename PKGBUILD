@@ -1,8 +1,8 @@
 # Maintainer: Alessandro Bernardello
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=ente-auth-bin
-pkgver=4.4.3
-pkgrel=2
+pkgver=4.4.4
+pkgrel=1
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://ente.io/auth"
@@ -19,7 +19,7 @@ optdepends=(
 	'zenity: Required for importing files'
 )
 source=("https://github.com/ente-io/ente/releases/download/auth-v${pkgver}/ente-auth-v${pkgver}-${CARCH}.deb")
-sha256sums=('c2993c33467f53b063c06b6208332ab253e851b44195ef3715e6e6d41baf5877')
+sha256sums=('73e344f8e2b57b9411aa6f4b3940021aaf913039124a272d51be4c5031f5cebd')
 provides=("ente-auth")
 conflicts=("ente-auth")
 
