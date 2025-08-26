@@ -3,7 +3,7 @@
 
 pkgname=ds9
 pkgver=8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=('7d0dd2e41d52c21270d7d3fae747ed8f'
 build() {
     cd ${srcdir}/SAOImageDS9-${pkgver}
     unix/configure
-    make
+    env CFLAGS="-std=gnu11" make
 }
 
 package() {
