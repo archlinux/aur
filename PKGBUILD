@@ -2,8 +2,8 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.4.8.r1.g2024cce
-pkgrel=2
+pkgver=1.4.8.r3.gbac15c2
+pkgrel=1
 pkgdesc="IDE authored by deepin"
 arch=($CARCH)
 url="https://github.com/linuxdeepin/deepin-unioncode"
@@ -18,10 +18,10 @@ depends=(
     clang
     cmark
     dbus
-    dtkcore
-    dtklog
-    dtkwidget
-    dtkgui
+    dtk6core
+    dtk6log
+    dtk6widget
+    dtk6gui
     gcc-libs
     glibc
     hicolor-icon-theme
@@ -34,12 +34,13 @@ depends=(
     libelfin
     libunwind
     libx11
-    qt5-base
-    qt5-declarative
-    qt5-location
+    qt6-5compat
+    qt6-base
+    qt6-declarative
+    qt6-location
     qt5-script
-    qt5-webchannel
-    qt5-webengine
+    qt6-webchannel
+    qt6-webengine
     syntax-highlighting5
     python
     yaml-cpp
@@ -62,8 +63,8 @@ makedepends=(
     libxi
     lxqt-build-tools
     lxqt-build-tools-qt5
-    qt5-networkauth
-    qt5-tools
+    qt6-networkauth
+    qt6-tools
     qtermwidget
     openssl
     systemd
@@ -71,6 +72,7 @@ makedepends=(
     python-onnxruntime
     python-pip
     python-pyjsparser
+    vulkan-headers
 )
 checkdepends=()
 optdepends=()
@@ -102,6 +104,11 @@ build() {
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_CXX_STANDARD=11 \
+        -DCMAKE_CXX_STANDARD_REQUIRED=ON \
+        -DCMAKE_CXX_EXTENSIONS=OFF \
+        -Winconsistent-missing-override \
+        -Wunused-command-line-argument \
         -Wno-dev \
         -B build \
         -G Ninja \
