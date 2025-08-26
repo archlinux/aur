@@ -1,6 +1,6 @@
 pkgbase = python-ultralytics
 	pkgdesc = Object detection, multi-object tracking, instance segmentation, pose estimation and image classification.
-	pkgver = 8.3.185
+	pkgver = 8.3.186
 	pkgrel = 1
 	url = https://github.com/ultralytics/ultralytics
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = python-ultralytics
 	depends = yt-dlp
 	depends = python-onnx
 	depends = python-tensorflow
-	source = python-ultralytics-8.3.185.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v8.3.185.tar.gz
-	sha256sums = 5f97ac39a2c874a261f1506993a113100f8ecb0e8a05f74031cefa00c8a09dda
+	source = python-ultralytics-8.3.186.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v8.3.186.tar.gz
+	sha256sums = 30abd3a041f84a9e7310a671254beb4981581cebc5bf37dff5fc53c701a2dd4c
 
 pkgname = python-ultralytics
 	depends = python
