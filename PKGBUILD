@@ -1,5 +1,4 @@
-# Maintainer GI Jack <GI_Jack@hackermail.com>
-# Poached from ArchStrike <team@archstrike.org>
+# Maintainer Network Jack <Network_Jack@null.net>
 
 pkgname=windows-binaries
 pkgver=0.6.10
