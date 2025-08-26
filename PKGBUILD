@@ -3,7 +3,7 @@
 _pkgname="sentencepiece"
 pkgname="${_pkgname}-bin"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=('x86_64')
 url="https://github.com/google/${_pkgname}"
@@ -30,7 +30,7 @@ sha256sums_x86_64=('654083fba04d00fdb1d7dcd7924c223f1962336244443fd60125fcf2c15f
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}-Linux-${CARCH}/lib/pkgconfig"
-  sed -i 's|prefix=.*|prefix=/usr|g' "${_pkgname}.pc"
+  sed -i 's|^prefix=.*|prefix=/usr|g' "${_pkgname}.pc"
 }
 
 package() {
