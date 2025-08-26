@@ -7,7 +7,7 @@
 
 pkgname=proxygen
 pkgver=2025.08.18.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
 url="https://github.com/facebook/proxygen"
@@ -15,16 +15,17 @@ license=(BSD-3-Clause)
 depends=(
   boost-libs
   double-conversion
-  fizz=$pkgver
+  "fizz>=$pkgver"
   fmt
-  folly=$pkgver
+  "folly>=$pkgver"
   gcc-libs
   gflags
   glibc
   google-glog
-  mvfst=$pkgver
+  "mvfst>=$pkgver"
   openssl
-  wangle=$pkgver
+  "wangle>=$pkgver"
+  c-ares
   zlib
   zstd
 )
