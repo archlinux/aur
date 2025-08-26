@@ -6,10 +6,10 @@
 : ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp
-pkgver=b6280
+pkgver=b6283
 pkgrel=1
-_build_number=6280
-_commit_id=0fd90db
+_build_number=6283
+_commit_id=1d8d83d
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -35,7 +35,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('0de0acfb39d30de3209eb4ec31df87c085a2af150c351483247a341c55f572bd'
+sha256sums=('52b5c15c419aa3e39936e25bfab46fbd9597940eba4df3d345090530f75c3ab2'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
