@@ -1,0 +1,24 @@
+pkgbase = eigenwallet-developertools-git
+	pkgdesc = λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps
+	pkgver = 3.0.0.beta.11.r1.b5574de
+	pkgrel = 1
+	url = https://eigenwallet.org
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = base-devel
+	makedepends = rustup
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = boost
+	makedepends = libsodium
+	makedepends = openssl
+	depends = glib2
+	conflicts = eigenwallet-developertools-bin
+	options = !lto
+	source = eigenwallet-developertools-git::git+https://github.com/eigenwallet/core
+	source = use_dynamic_libs.patch
+	sha256sums = SKIP
+	sha256sums = 9daa328e5dcd5c0e3fa7396f295d2879b216c63888f121ca420b83995f61e2e5
+
+pkgname = eigenwallet-developertools-git
