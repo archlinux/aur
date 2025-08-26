@@ -1,6 +1,6 @@
 pkgbase = mal
 	pkgdesc = A terminal client for MyAnimeList (integrated with ani-cli) written in rust
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Dogfetus/mal-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mal
 	depends = glibc
 	options = !lto
 	options = !debug
-	source = mal-0.1.2.tar.gz::https://github.com/Dogfetus/mal-cli/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 39d14c3fdbe03f408b4a75c77e4530d49cf1b65cac76b5128e0852ae75b770cf
+	source = mal-0.1.3.tar.gz::https://github.com/Dogfetus/mal-cli/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 88d43d0af9d83fa1c96afb78a2bcb3605d160afd6780b21cb079cf2b7ab59c39
 
 pkgname = mal
