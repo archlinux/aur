@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortsh'
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc-fortran>=11.0' 'gcc' 'make')
+makedepends=('gcc-fortran' 'gcc' 'make')
 source=("git+https://github.com/FortranGoingOnForty/fortsh.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
