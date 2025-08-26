@@ -21,5 +21,5 @@ sha256sums_x86_64=('89a8167878a5a376468650ed7a7c9fee346fd4d1d406ee9fb2b6b0dd8183
 sha256sums_aarch64=('a5ccb2e07d46fafb8f5bacf7049ac16553567d4f793db38f51f764014c21bde2')
 
 package() {
-	tar -xf data.tar.xz -C "$pkgdir"
+	tar -xf data.tar.zst -C "$pkgdir"
 }
