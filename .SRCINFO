@@ -22,8 +22,8 @@ pkgbase = high-tide
 	depends = python-tidalapi>=0.8.6
 	depends = org.freedesktop.secrets
 	depends = xdg-desktop-portal
-	depends = alsa-utils
 	optdepends = python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support
+	optdepends = alsa-utils: Advanced details in ALSA device picker
 	source = high-tide-1.1.0.tar.gz::https://github.com/Nokse22/high-tide/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = a4ceb1b2581b59e402e9437fab763771c599faa3259e079c4fe930fe8f33d0ef
 	b2sums = b2f681dfdc29d65d05c6545fac054e1d7f57e6187138fbbba821f198c8024fb03617823ddc0032d6b826c5db242ce2ebcb1fb0ab6d2810c1c908ac7893a86bba
