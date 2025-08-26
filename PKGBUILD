@@ -49,6 +49,13 @@ source=("git+https://github.com/damachine/coolerdash.git#tag=$_tag")
 sha256sums=('SKIP')
 validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
+# Git-Tag Build versioning
+pkgver() {
+    cd "$srcdir/coolerdash" || return 1
+    git describe --tags --long --match "v*" \
+        | sed -E 's/^v//; s/-([0-9]+)-g/\.r\1.g/; s/-/./g'
+}
+
 build() {
     echo "================================================================"
     echo " Developed and maintained by"
