@@ -1,0 +1,18 @@
+pkgbase = zvm-git
+	pkgdesc = A version manager for Zig compilers
+	pkgver = 0.8.8.r0.g71b7405
+	pkgrel = 1
+	url = https://github.com/tristanisham/zvm
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = zvm
+	conflicts = zvm
+	options = !strip
+	options = !debug
+	source = zvm::git+https://github.com/tristanisham/zvm.git
+	sha256sums = SKIP
+
+pkgname = zvm-git
