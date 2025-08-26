@@ -1,7 +1,7 @@
-From 858f5ee4e2ff3dff3cbcf2e694900e56d2f8c7c8 Mon Sep 17 00:00:00 2001
+From 5da5c3140cef5e78836c00b209139bfb97d7ec1e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
-Subject: [PATCH 15/31] Workaround linker error about missing symbol
+Subject: [PATCH 15/24] Workaround linker error about missing symbol
  `__sync_bool_compare_and_swap_16`
 
 This error only happens when compiling for the x86_64-w64-mingw32 target
@@ -19,10 +19,10 @@ Change-Id: I1b96a6dc44c5f7d527dbed9db58b4f030f175721
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 63b15cce88e..2c7d6b3e241 100644
+index 218d3edd744..50b2ef9f1fd 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -874,6 +874,11 @@ qt_internal_extend_target(Core CONDITION WASM
+@@ -883,6 +883,11 @@ qt_internal_extend_target(Core CONDITION WASM
          text/qlocale_wasm.cpp
  )
  
@@ -83,5 +83,5 @@ index 4c171a3c755..d82e9f8ac9c 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.50.1
+2.51.0
 

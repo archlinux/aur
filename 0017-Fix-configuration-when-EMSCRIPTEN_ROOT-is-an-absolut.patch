@@ -1,7 +1,7 @@
-From d5fd205dc5dd811b3dfa3c14622b799358ec01fb Mon Sep 17 00:00:00 2001
+From fe8433395361f501d0f6a070205b15e95394be9c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:31:12 +0200
-Subject: [PATCH 17/31] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
+Subject: [PATCH 17/24] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
  path
 
 Not sure whether this is unusual but under Arch Linux the `emscripten`
@@ -30,5 +30,5 @@ index ecdca052113..6e235c7556c 100644
      set(${out_var} "${EMROOT_PATH}" PARENT_SCOPE)
  endfunction()
 -- 
-2.50.1
+2.51.0
 

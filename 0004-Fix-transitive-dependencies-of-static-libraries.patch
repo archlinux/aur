@@ -1,7 +1,7 @@
-From 03a3791245955375e82af26f1e896032cd612ef6 Mon Sep 17 00:00:00 2001
+From 2cda305bc4de0031ec43f554edac8ad4b75314b5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
-Subject: [PATCH 04/31] Fix transitive dependencies (of static libraries)
+Subject: [PATCH 04/24] Fix transitive dependencies (of static libraries)
 
 The dependencies of these libraries are not reliably picked up by their
 corresponding find modules. This change allows adding the required
@@ -132,5 +132,5 @@ index 2f55ab49500..bcf0bdbb42e 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.50.1
+2.51.0
 

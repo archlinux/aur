@@ -1,7 +1,7 @@
-From 5724ee3dd68e04d64628f73a6fcf7379ed9e1cb6 Mon Sep 17 00:00:00 2001
+From 5a19bd26154a030b3358b1df442a881a1b88f9af Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:49:36 +0200
-Subject: [PATCH 09/31] Fix dependency of xcb-image on xcb-util
+Subject: [PATCH 09/24] Fix dependency of xcb-image on xcb-util
 
 Considering this linker error, xcb-image apparently depends on xcb-util:
 ```
@@ -15,7 +15,7 @@ Change-Id: Ic87a94ec664c126a5af1012d31b068d3dc7ec947
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
-index 26b9bf89633..0ae21f774c6 100644
+index 0c546d09a8b..340f972f430 100644
 --- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 +++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 @@ -108,6 +108,7 @@ set(XCB_known_components
@@ -38,11 +38,11 @@ index 26b9bf89633..0ae21f774c6 100644
  set(XCB_XCB_component_deps)
  set(XCB_COMPOSITE_component_deps XCB XFIXES)
  set(XCB_DAMAGE_component_deps XCB XFIXES)
--set(XCB_IMAGE_component_deps XCB SHM)
-+set(XCB_IMAGE_component_deps XCB SHM UTIL)
+-set(XCB_IMAGE_component_deps XCB SHM AUX)
++set(XCB_IMAGE_component_deps XCB SHM AUX UTIL)
  set(XCB_RENDERUTIL_component_deps XCB RENDER)
  set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
  set(XCB_XVMC_component_deps XCB XV)
 -- 
-2.50.1
+2.51.0
 

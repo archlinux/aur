@@ -1,7 +1,7 @@
-From 20fb58a81999352693b7334f76e9fcdd76905a0b Mon Sep 17 00:00:00 2001
+From 0076f02a51f9e725bb8d9a011a2e48f7d29bc2b5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:13:19 +0100
-Subject: [PATCH 03/31] Fix using static PCRE2 and DBus-1
+Subject: [PATCH 03/24] Fix using static PCRE2 and DBus-1
 
 When making a static build of Qt we're using the static version of these
 libraries and must define the corresponding macros.
@@ -29,10 +29,10 @@ index a8ff90b5072..e061c31e7b8 100644
  #include <pcre2.h>
  
 diff --git a/src/dbus/qdbus_symbols_p.h b/src/dbus/qdbus_symbols_p.h
-index 78b7e049ef3..d06a3b04aac 100644
+index a3e3b202c12..6a4856e8428 100644
 --- a/src/dbus/qdbus_symbols_p.h
 +++ b/src/dbus/qdbus_symbols_p.h
-@@ -21,6 +21,10 @@
+@@ -22,6 +22,10 @@
  
  #ifndef QT_NO_DBUS
  
@@ -44,5 +44,5 @@ index 78b7e049ef3..d06a3b04aac 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.50.1
+2.51.0
 

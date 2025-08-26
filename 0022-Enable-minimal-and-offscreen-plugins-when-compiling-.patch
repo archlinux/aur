@@ -1,7 +1,7 @@
-From d9758ea82cc7859028406fcab5b5e9a15925e5ee Mon Sep 17 00:00:00 2001
+From 1702815512f2f18fc04bb933a516ff5083543710 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 9 Jun 2025 21:15:42 +0200
-Subject: [PATCH 22/31] Enable minimal and offscreen plugins when compiling for
+Subject: [PATCH 22/24] Enable minimal and offscreen plugins when compiling for
  Android
 
 Those platform plugins are very useful to run "graphical" code from
@@ -31,5 +31,5 @@ index 69071a22c24..6c035387187 100644
  endif()
  if(QT_FEATURE_xcb)
 -- 
-2.50.1
+2.51.0
 
