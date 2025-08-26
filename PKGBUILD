@@ -6,8 +6,8 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libtirpc
-pkgver=1.3.6
-pkgrel=2
+pkgver=1.3.7
+pkgrel=1
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
 arch=(x86_64)
 url=https://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary
@@ -18,14 +18,14 @@ depends=(
   libtirpc
 )
 makedepends=(git)
-_tag=cf7441f5b90f043308cc34ae8d25127aed844c92
+_tag=5bd87617e4b3129e76e79847c95bdea4b1290d9f
 source=(git://git.linux-nfs.org/projects/steved/libtirpc.git#tag=${_tag})
-b2sums=('b5f0ec01312c4f82904cbdaa23c9e76518b890f1e84f4c595d99b3bde5cf05b3331b0c1752e2c5ca0ac771749b42fb149ca2f46345c03ba5f5b1332ebf314457')
+b2sums=('62390a1330f5fb8f38e1c9c8096355393fe8c99a5290fe0c7b1c70472f97a2a3f621882596c9cb8d830f34e83d305e6c7a9a4a6809e0c9fc3aa3e3fc738765bf')
 
 prepare() {
   cd libtirpc
-  git cherry-pick -n d473f1e1f6ba80bfaee4daa058da159305167323 # gcc 15
-  git cherry-pick -n 240ee6c774729c9c24812aa8912f1fcf8996b162 # gcc 15
+  # git cherry-pick -n d473f1e1f6ba80bfaee4daa058da159305167323 # gcc 15
+  # git cherry-pick -n 240ee6c774729c9c24812aa8912f1fcf8996b162 # gcc 15
   chmod +x autogen.sh
   ./autogen.sh
 }
