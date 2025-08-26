@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=pdserv
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="The PdServ library provides process data communication mechanisms for Linux real-time applications in user space (i. e. using RT-PREEMPT). The main focus is placed on providing a process-data interface without interfering real-time operation."
 arch=($CARCH)
@@ -36,7 +36,7 @@ options=()
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('99bcf63e90abd06628afe59ae5cdc6dfa8f9a5e60ad9c1482128a0d250992dfb')
+sha256sums=('8ed90afafef320cfa37b5be7ff19ad70b1646ac80029b8e1958ab63ce8a1077f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
