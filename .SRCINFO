@@ -1,0 +1,22 @@
+pkgbase = mnemo-bin
+	pkgdesc = Note-taking app designed to enhance the retention of information.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lemueldls/mnemo
+	arch = x86_64
+	license = AGPL-3.0
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/lemueldls/mnemo/releases/download/mnemo-v0.1.0/mnemo-v0.1.0-amd64.deb
+	sha256sums_x86_64 = d4d13871b5f7bcbc09e53a931e46f79e870fc07096a27a4d94fe4500c6fc95ef
+
+pkgname = mnemo-bin
