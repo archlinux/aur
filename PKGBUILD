@@ -1,8 +1,8 @@
 # Maintainer: xeyossr (axrona)
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli
-pkgver=4.5.3
-pkgrel=2
+pkgver=4.5.4
+pkgrel=1
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('any')
 url="https://github.com/axrona/anitr-cli"
