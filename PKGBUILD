@@ -1,5 +1,5 @@
-# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: 0b100100 <0b100100 at protonmail dot ch>
+# Contributor: Gaetan Bisson <bisson at archlinux dot org>
 
 pkgname=msieve
 pkgver=1.53
