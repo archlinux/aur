@@ -1,7 +1,7 @@
 # Maintainer: 0xM4LL0C <0xM4LL0C@proton.me>
 
 pkgname=disk_usage
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A tool to monitor disk usage and alert when usage exceeds a threshold"
 arch=('any')
