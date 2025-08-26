@@ -2,10 +2,10 @@
 _pkgname=redisinsight
 pkgname=${_pkgname}-bin
 pkgver=2.70.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Redis Insight is an intuitive and efficient GUI for Redis, allowing you to interact with your databases and manage your data."
 arch=('x86_64')
-url='https://redis.com/redis-enterprise/redis-insight'
+url='https://redis.io/insight/'
 license=('custom:SSPL')
 depends=(
 	'libgtk-3.so'
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _filename="Redis-Insight-linux-x86_64-${pkgver}.AppImage"
 source=("${_filename}::https://download.redisinsight.redis.com/releases/${pkgver}/Redis-Insight-linux-x86_64.AppImage")
-sha512sums=('871e5784d2328676ba9d85bbc171638f65dd683bdaabe16ba3baabfa269ee9c62e63b20ee6c1f6fa839556f6b4ef2027a34db3c31b2598db8392245671ce6b1b')
+sha512sums=('84427f22fc062844609a5ebb948d7a64d5e8b11a43444acfaf966afa93639f44d35ae09363091f9f55007adbf052b3c87437b06b6afdd65408d010d8976466d1')
 
 prepare() {
 	chmod +x "${_filename}"
