@@ -7,8 +7,8 @@ pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
 pkgver=2.83.2
 _binaryversion=700
-pkgrel=3
-arch=('any')
+pkgrel=4
+arch=('x86_64' 'aarch64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
 makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'libtheora' 'minizip' 'openal>=1.14' 'sdl2' 'cjson')
@@ -103,8 +103,8 @@ package_etlegacy-mod() {
 
     # mod
     mkdir -p $pkgdir/usr/lib/$_pkgbase/legacy
-    install -m 644 $srcdir/etlegacy-v$pkgver-${arch}/legacy/legacy_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
-    install -m 644 $srcdir/etlegacy-v$pkgver-${arch}/legacy/qagame.mp.x86_64.so $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/legacy_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/qagame.mp.x86_64.so $pkgdir/usr/lib/$_pkgbase/legacy
 
     # geoip
     ln -s /usr/share/GeoIP/GeoIP.dat $pkgdir/usr/lib/$_pkgbase/legacy
