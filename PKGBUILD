@@ -9,7 +9,7 @@ url="https://github.com/musdev13/rain"
 license=('GPL3')
 depends=('mpv' 'taglib' 'curl' 'nlohmann-json')
 makedepends=('git' 'make' 'gcc')
-optdepends=('yt-dlp: for YouTube Music')
+optdepends=('yt-dlp: for YouTube Music and Spotify')
 provides=('rain')
 conflicts=('rain')
 source=("$pkgname::git+https://github.com/musdev13/rain.git")
@@ -35,7 +35,7 @@ prepare() {
 # building
 build() {
     cd "$pkgname"
-    make
+    make -j$(nproc)
 }
 
 # checking build
