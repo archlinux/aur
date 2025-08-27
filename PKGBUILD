@@ -65,15 +65,6 @@ pkgver() {
 }
 
 build() {
-    echo "================================================================"
-    echo "Developed and maintained by"
-    echo "  ____    _    __  __    _    ____ _   _ ___ _   _ _____  "
-    echo " |  _ \  / \  |  \/  |  / \  / ___| | | |_ _| \ | | ____| "
-    echo " | | | |/ _ \ | |\/| | / _ \| |   | |_| || ||  \| |  _|   "
-    echo " | |_| / ___ \| |  | |/ ___ \ |___|  _  || || |\  | |___  "
-    echo " |____/_/   \_\_|  |_/_/   \_\____|_| |_|___|_| \_|_____| "
-    echo " "
-
     # Build inside the checked-out repository
     cd "$srcdir/coolerdash" || return 1
 
