@@ -1,13 +1,13 @@
 pkgbase = kubectl-ai-bin
 	pkgdesc = AI powered Kubernetes Assistant
-	pkgver = 0.0.20
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/kubectl-ai
 	arch = x86_64
 	license = Apache-2.0
 	conflicts = kubectl-ai
 	conflicts = kubectl-ai-git
-	source = kubectl-ai-0.0.20.tar.gz::https://github.com/GoogleCloudPlatform/kubectl-ai/releases/download/v0.0.20/kubectl-ai_Linux_x86_64.tar.gz
-	sha512sums = f4975487af9cfd317a97baa783b648b9d97d625d9302a04208072119e21fdd91405af4cb223564ef6c887d3cc3ebd17d61b297ebfe4c9f12a91015f152116337
+	source = kubectl-ai-0.0.23.tar.gz::https://github.com/GoogleCloudPlatform/kubectl-ai/releases/download/v0.0.23/kubectl-ai_Linux_x86_64.tar.gz
+	sha512sums = 1cb63a2986bda83c7b3249a94fbafb18510a5029605ef28d1ce82dcc8a429f18f4cccfbbcf68abb3732a5b5697e8dca1eadffaffb5684b4655842f803600830e
 
 pkgname = kubectl-ai-bin
