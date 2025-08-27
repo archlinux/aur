@@ -13,16 +13,16 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('a038fe4f5bc0dbc346f4e2ee9c656a363defdb0d5259df65b66b2520fe823e9a')
 
 prepare () {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/unrpyc-${pkgver}"
     sed -i "/scripts=/s/]/, 'deobfuscate.py']/" setup.py
 }
 
 package() {
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  
-  install -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -d "${pkgdir}/usr/share/licenses/unrpyc"
+
+  install -m644 "${srcdir}/unrpyc-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/unrpyc/LICENSE"
+
+  cd "${srcdir}/unrpyc-${pkgver}"
   python setup.py install --root="${pkgdir}"
-  mv "${pkgdir}/usr/bin/unrpyc1.py" "${pkgdir}/usr/bin/unrpyc1"
+  mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc1"
 }
