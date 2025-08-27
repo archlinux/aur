@@ -1,6 +1,6 @@
 pkgbase = barghman-git
 	pkgdesc = A service that fetches Iran electricity blackout schedules and emails it as calendar (ICS) files.
-	pkgver = r40.1a77da9
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://github.com/dozheiny/barghman
 	arch = x86_64
