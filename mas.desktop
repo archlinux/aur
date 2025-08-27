@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Monika After Story CN
+Comment=Your beloved virtual girlfriend
+Icon=mascn
+Exec=/opt/monika-after-story-cn/DDLC.sh
+Terminal=false
+Categories=Game
+Keywords=monika,love,monika-after-story,renpy,python,visual-novel,game
