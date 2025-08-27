@@ -1,13 +1,13 @@
 pkgbase = python2-pyparsing
 	pkgdesc = General parsing module for Python
 	pkgver = 2.4.7
-	pkgrel = 1
+	pkgrel = 7
 	url = https://github.com/pyparsing/pyparsing
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	source = https://github.com/pyparsing/pyparsing/archive/pyparsing_2.4.7.tar.gz
-	sha512sums = c7a546729f86a2b5176e2482b566b9fd715b03e495aaef4d720b21307bb03f385dbc849247f8d266cb3d92be0a83c34ce4995b655ce85318355d5a0d42d6991e
+	depends = python2>=2.6
+	source = pyparsing-pyparsing_2.4.7.tar.gz::https://github.com/pyparsing/pyparsing/archive/refs/tags/pyparsing_2.4.7.zip
+	sha512sums = f7f49bc1b086bf41ea3bc44378ee284f7868c8a0fe7493457e55fc38dd32ed810ca0dc6f4ca5e02686566f3c96c8ebabcd93321cda09a929cbf4f2c77b4f76cf
 
 pkgname = python2-pyparsing
-	depends = python2

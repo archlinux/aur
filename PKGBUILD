@@ -1,7 +1,6 @@
-# SPDX-License-Identifier: AGPL-3.0
-#
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Truocolo <truocolo@aol.com>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
@@ -9,68 +8,38 @@
 # Contributor: Arvid Ephraim Picciani <aep@exys.org>
 # Contributor: Michael Krauss <hippodriver@gmx.net>
 
-# shellcheck disable=SC2034
-_py="python2"
-_pkg="pyparsing"
-pkgbase="${_py}-${_pkg}"
-pkgname=(
-  "${pkgbase}"
-)
+_name="pyparsing"
+pkgname="python2-${_name}"
 pkgver=2.4.7
-pkgrel=1
-pkgdesc='General parsing module for Python'
-arch=(
-  'any'
+pkgrel=7
+pkgdesc="General parsing module for Python"
+arch=('any')
+url="https://github.com/${_name}/${_name}"
+license=('MIT')
+depends=(
+  'python2>=2.6'
 )
-_http="https://github.com"
-url="${_http}/${_pkg}/${_pkg}"
 makedepends=(
-  "${_py}-setuptools"
+  'python2-setuptools'
 )
-license=(
-  'MIT'
-)
-source=(
-  "${url}/archive/${_pkg}_${pkgver}.tar.gz"
-)
-sha512sums=(
-  'c7a546729f86a2b5176e2482b566b9fd715b03e495aaef4d720b21307bb03f385dbc849247f8d266cb3d92be0a83c34ce4995b655ce85318355d5a0d42d6991e'
-)
+_pkgsrc="${_name}-${_name}_${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_name}_${pkgver}.zip")
+sha512sums=('f7f49bc1b086bf41ea3bc44378ee284f7868c8a0fe7493457e55fc38dd32ed810ca0dc6f4ca5e02686566f3c96c8ebabcd93321cda09a929cbf4f2c77b4f76cf')
 
 build() {
-  cd \
-    "${_pkg}-${_pkg}_${pkgver}" || \
-    exit
-  "${_py}" \
-    setup.py \
-      build
+  cd "${srcdir}/${_pkgsrc}"
+  python2 setup.py build
 }
 
 check() {
-  cd \
-    "${_pkg}-${_pkg}_${pkgver}" || \
-      exit
-  "${_py}" \
-    unitTests.py
+  cd "${srcdir}/${_pkgsrc}"
+  python2 unitTests.py
 }
 
-# shellcheck disable=SC2154
 package() {
-  depends=(
-    "${_py}"
-  )
-  cd \
-    "${_pkg}-${_pkg}_${pkgver}" || \
-    exit
-  "${_py}" \
-    setup.py \
-      install \
-        --root="${pkgdir}" \
-        --optimize=1
-  install \
-    -Dm644 \
-    LICENSE \
-    "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-}
+  cd "${srcdir}/${_pkgsrc}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 
-# vim:set sw=2 sts=-1 et:
+  install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.rst" "CHANGES"
+  install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
+}
