@@ -19,7 +19,7 @@ prepare () {
     cd "${srcdir}/unrpyc-legacy"
     mv deobfuscate.py deobfuscate1.py
     sed -i "/scripts=/s/]/, 'deobfuscate1.py']/" setup.py
-    sed -i "/.deobfuscate/.deobfuscate1/" setup.py
+    sed -i "/py_modules=/s/\.deobfuscate/\.deobfuscate1/" setup.py
     sed -i "/import deobfuscate/import deobfuscate1 as deobfuscate/" unrpyc.py
 }
 
