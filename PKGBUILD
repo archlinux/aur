@@ -1,8 +1,8 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=145
-pkgrel=2
+pkgver=146
+pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=("x86_64" "i686" "aarch64")
 url="https://ares-emu.net/"
@@ -16,12 +16,11 @@ provides=("ares-emu")
 conflicts=("ares-emu")
 install="ares.install"
 source=("https://github.com/ares-emulator/ares/releases/download/v${pkgver}/ares-source.tar.gz")
-sha512sums=("37c4a371b36aed1e72d6b32e92bc7c364879c383cbdeeff288ee7e74f677022dfdaeef20b9cc4c1e10f48ac434f95fee5003fa26d92ef3c9b89002d8b7303c69")
+sha512sums=("62e5d6d34054403f469634b3c9c5d7db72b198aa8bae0c6f10ec1eb06d11b111152b026278441c0729896bdb3746cabe9d6f2628f5bc9c9827d7c4a975826cfa")
 
 build() {
   local cmake_options=(
     -B "build"
-    -S "ares-${pkgver}"
     -W no-dev
     -D CMAKE_BUILD_TYPE="None"
     -D CMAKE_INSTALL_PREFIX="/usr"
@@ -38,5 +37,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install "build"
-  install -Dm 644 "ares-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
