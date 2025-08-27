@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=11.30.0-1
+_pkgver=12.1.1
 
 pkgname=${_pkgname}-catppuccin-bin
 pkgver=${_pkgver//-/_}
@@ -11,43 +11,45 @@ pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('MPL2')
 depends=(dbus
-  dbus-glib
-  ffmpeg
-  gtk3
-  libxss
-  libxt
-  mime-types
-  nss
-  ttf-font
-  zlib)
+         dbus-glib
+         ffmpeg
+         gtk3
+         libxss
+         libxt
+         mime-types
+         nss
+         ttf-font
+         zlib)
 makedepends=()
 optdepends=('hunspell-dictionary: Spell checking'
-  'libnotify: Notification integration'
-  'networkmanager: Location detection via available WiFi networks'
-  'profile-sync-daemon: Load the browser profile into RAM'
-  'pulse-native-provider: Audio support'
-  'searx: Searching the web using a locally running searX instance'
-  'speech-dispatcher: Text-to-Speech'
-  'whoogle: Searching the web using a locally running Whoogle instance'
-  'xdg-desktop-portal: Screensharing with Wayland')
-conflicts=(${_pkgname})
-provides=(${_pkgname})
+            'libnotify: Notification integration'
+            'networkmanager: Location detection via available WiFi networks'
+            'profile-sync-daemon: Load the browser profile into RAM'
+            'pulse-native-provider: Audio support'
+            'searx: Searching the web using a locally running searX instance'
+            'speech-dispatcher: Text-to-Speech'
+            'whoogle: Searching the web using a locally running Whoogle instance'
+            'xdg-desktop-portal: Screensharing with Wayland')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 options=(!debug
-  !emptydirs
-  !lto
-  !makeflags
-  !strip)
+         !emptydirs
+         !lto
+         !makeflags
+         !strip)
 backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
-  "usr/lib/${_pkgname}/distribution/policies.json")
-source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-catppuccin-v${_pkgver}.linux-x86_64.tar.zst
-  https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
-  https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('4322b3283c4cb347132f8173aa05c8bd2d9cd2dea905c7ba276d3db40c481b92'
-            '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
+        "usr/lib/${_pkgname}/distribution/policies.json")
+source=(firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
+        https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v"$_pkgver"/assets/firedragon.desktop)
+source_x86_64=(firedragon-catppuccin-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-catppuccin-linux-x64.tar.xz)
+source_aarch64=(firedragon-catppuccin-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-catppuccin-linux-arm64.tar.xz)
+sha256sums=('61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
+sha256sums_x86_64=('a338a9a8c6c907bd3ce0921caeb12b94355f7861635619a90fb24ed8eacf4f4a')
+sha256sums_aarch64=('7f730fe78a514436e3079d92a7fad2826e9f263b0738d4f472675868cf62d4d4')
 
 package() {
   cd "${srcdir}/${_pkgname}"
