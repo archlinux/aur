@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 # Contributor: Frank Phillips <frankalso[at]gmail[dot]com>
 pkgname=fatrace
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='Reports file access events from running processes.'
 arch=('x86_64' 'aarch64' 'armv6l')
@@ -9,7 +9,7 @@ url='https://github.com/martinpitt/fatrace'
 license=('GPL')
 depends=('python' 'powertop')
 source=("https://github.com/martinpitt/fatrace/archive/${pkgver}.tar.gz")
-sha256sums=('78db3ebc6c18207647fb086ba10aed724b934cc32fe8b3b181d0c41386a888d2')
+sha256sums=('fd8f143f4e162d36c8ae29c51b32d315415447829c81091e3bb86b326051c77c')
 
 build() {
     cd "$pkgname-$pkgver"
