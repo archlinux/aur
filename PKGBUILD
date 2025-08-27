@@ -5,10 +5,11 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-pkgver=47.0.0.0
+pkgver=47.0.1.0
 # curl -s https://nwjs.io/versions.json | jq -r 'limit(1; .versions[] | select(.components.chromium | startswith("137.")) | .version)'
-_libffmpegver=0.100.1
-pkgrel=2
+# strings src/opt/slimjet/slimjet | grep -Eo '^Chrome/([0-9]+(\.[0-9]+)+)' | head -n 1
+_libffmpegver=0.99.1
+pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -42,8 +43,15 @@ source=(
     #"${pkgname}-${pkgver}.deb::${url}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('aa6b60b18565a15b5571fddf857484bb2af643e4710a9adcf70f460f7e31e128'
-            'f97bd8f332bf1e5ac4f1d89f78c9dcfac9b2dbec9d02a29dfbb9d9d6c971e72e')
+sha256sums=('56d8aaf76ebc014cdd269cdb9e84b8ee958884b3066e67c32bc478181c5d64d6'
+            'db0ffaba9e65ef018a673e9d01acc6111f1f7d2b474f0fbcdd8e190ff416c16d')
+_get_versions() {
+    _slimjetver="$(strings ${srcdir}/opt/${pkgname}/${pkgname} | grep -oP 'Chrome/\K[0-9]+' | head -n 1)"
+    _slimjetver="${_slimjetver}."
+    _ffmpegver="$(curl -s https://nwjs.io/versions.json | jq -r --arg v "${_slimjetver}" 'limit(1; .versions[] | select(.components.chromium | startswith($v))).version // empty')"
+    echo -e "The chromium version of ${pkgname} is: \033[1;31m${_slimjetver}\033[0m"
+    echo -e "So the ffmpeg version should be: \033[1;31m${_ffmpegver}\033[0m"
+}
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
@@ -55,6 +63,7 @@ prepare() {
     chmod 0755 "${srcdir}/opt/${pkgname}/${pkgname}-sandbox"
     sed -i "s/opt\/${pkgname}/usr\/lib\/${pkgname}/g" "${srcdir}/usr/share/gnome-control-center/default-apps/${pkgname}.xml"
     sed -i "s/opt\/${pkgname}/usr\/lib\/${pkgname}/g" "${srcdir}/usr/share/menu/${pkgname}.menu"
+    _get_versions
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
