@@ -10,7 +10,7 @@ license=('MIT')
 depends=("python2")
 makedepends=("python2-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0e5f29fd63965606ab83a5f9b3bdee53232f4614251132bfc4bf999f05cb7f37')
+sha256sums=('a038fe4f5bc0dbc346f4e2ee9c656a363defdb0d5259df65b66b2520fe823e9a')
 
 prepare () {
     cd "${srcdir}/${pkgname}-${pkgver}"
