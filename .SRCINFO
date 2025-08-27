@@ -54,6 +54,7 @@ pkgbase = zrythm-git
 	depends = zix
 	depends = yyjson
 	depends = magic_enum
+	depends = libbacktrace
 	optdepends = portaudio: portaudio backend
 	optdepends = qt5-base: for embedding qt5 plugin UIs
 	optdepends = jack: for jack backend

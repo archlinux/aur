@@ -11,7 +11,7 @@ url="https://www.zrythm.org"
 license=('custom:Zrythm License')
 depends=('lilv' 'libx11' 'libsndfile' 'libsamplerate' 'alsa-lib' 'fftw'
          'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter'
-         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd' 'zix' 'yyjson' 'magic_enum')
+         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd' 'zix' 'yyjson' 'magic_enum' 'libbacktrace')
 makedepends=('python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
              'ladspa' 'lv2' 'cmake' 'sassc' 'glib2-devel')
