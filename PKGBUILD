@@ -82,40 +82,33 @@ prepare() {
 build() {
     cd "${srcdir}/caddy/cmd/caddy"
 
-    _ldflags="-s -w -X github.com/caddyserver/caddy/v2.CustomVersion=v${pkgver}"
-
     if [[ "${CADDY_STATICALLY_LINKED}" == "yes" ]]
     then
         export CGO_ENABLED=0
     else
         export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-        export CGO_LDFLAGS="${LDFLAGS} -Wl,-z,shstk -Wl,-z,ibt"
-        export CGO_CFLAGS="${CFLAGS}"
         export CGO_CPPFLAGS="${CPPFLAGS}"
-        export GOPATH="${srcdir}"
-
-        _ldflags="${_ldflags} -linkmode=external"
+        export CGO_CFLAGS="${CFLAGS}"
+        export CGO_CXXFLAGS="${CXXFLAGS}"
+        export CGO_LDFLAGS="${LDFLAGS} -Wl,-z,shstk -Wl,-z,ibt"
     fi
 
-    go build -o ./caddy -ldflags "${_ldflags}"
+    go build -o "${srcdir}/_caddy"
 }
 
 package() {
-    pushd "${srcdir}"
+    cd "${srcdir}"
 
-    pushd caddy/cmd/caddy
-    install -Dm755 caddy -t "${pkgdir}/usr/bin"
+    install -Dm755 _caddy "${pkgdir}/usr/bin/caddy"
     "${pkgdir}/usr/bin/caddy" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_caddy"
     "${pkgdir}/usr/bin/caddy" completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/caddy"
     "${pkgdir}/usr/bin/caddy" completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/caddy.fish"
-    popd
 
     install -Dm644 caddy.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/caddy.conf"
     install -Dm644 caddy.sysusers "${pkgdir}/usr/lib/sysusers.d/caddy.conf"
 
-    pushd caddy-dist
-    install -Dm644 init/caddy.service -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 init/caddy-api.service -t "${pkgdir}/usr/lib/systemd/system"
+    cd caddy-dist
+    install -Dm644 init/*.service -t "${pkgdir}/usr/lib/systemd/system"
 
     install -Dm644 config/Caddyfile -t "${pkgdir}/etc/caddy"
     install -Dm644 welcome/index.html -t "${pkgdir}/usr/share/caddy"
