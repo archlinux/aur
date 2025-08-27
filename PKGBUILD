@@ -1,8 +1,8 @@
-# Maintainer: yurzhang <yurzhang at 163 dot com>
+# Maintainer: yurzhang <yurzhang dot oi at gmail dot com>
 
 pkgname=cch
 _pkgname="CodeForces Contest Helper v2"
-pkgver=2.0BETA37
+pkgver=2.0BETA40
 pkgrel=1
 pkgdesc="A powerful contest helper for CodeForces, developed by NW.js"
 
@@ -25,11 +25,11 @@ options=('!strip')
 install="${pkgname}.install"
 
 _orgname="CodeforcesContestHelper"
-_pkgver="v2.0-beta-37"
+_pkgver="v2.0-beta-40"
 source_x86_64=(https://github.com/${_orgname}/CCHv2/releases/download/${_pkgver}/CCHv2.${_pkgver}.linux64.tar.gz)
 source_i686=(https://github.com/${_orgname}/CCHv2/releases/download/${_pkgver}/CCHv2.${_pkgver}.linux32.tar.gz)
-sha256sums_x86_64=('9b7efacea92736d7797d0da1d502dd976b1b5c442a429bc64bce829367dfaa9d')
-sha256sums_i686=('48cc8d4cd85ad8d695bba3fde24fc16b82ad2ff65de64fb6e81b5c9c9b45c7b2')
+sha256sums_x86_64=('d569ede5dfa133cd084c8ff08b92832d8533219ce5b09995aa76f3c99e11b654')
+sha256sums_i686=('23369272c03ae7dbc7b4c244cbcf95c1af9d6fbb9e3db3ca8520c04ba2d461fd')
 
 package() {
   _arch=linux64
