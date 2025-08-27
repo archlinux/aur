@@ -1,42 +1,52 @@
-# Maintainer: Niels Martignène <niels.martignene@gmail.com>
-
+# Maintainer: Martin Rys <rys.rs/contact>
+# Contributor: Antoine Lubineau <antoine@lubignon.info>
 pkgname=ty-git
-pkgver=0.8.0.r19.g056db1a
+pkgver=0.0.1.alpha.19.r3.59bf06d
 pkgrel=1
-pkgdesc="GUI and command-line tools to manage Teensy devices"
-arch=('x86_64' 'i686')
-url="http://github.com/Koromix/ty"
-license=('MIT')
-depends=('teensyduino' 'libudev.so' 'qt5-base')
-makedepends=('git' 'imagemagick')
-provides=('ty')
-conflicts=('ty')
-source=('git+https://github.com/Koromix/ty.git')
+pkgdesc="An extremely fast Python type checker and language server, written in Rust."
+arch=("x86_64")
+url="https://github.com/astral-sh/ty"
+license=("MIT")
+conflicts=("ty")
+depends=(
+	python
+)
+makedepends=(
+	git
+	maturin
+	python-installer
+)
+options=(!lto)
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ty
+	cd "${srcdir}/${pkgname}"
+	printf "%s" "$(git describe --tags --long | sed -e 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
+prepare() {
+	cd "${srcdir}/${pkgname}"
+	git submodule update --init --recursive
+	cp ruff/rust-toolchain.toml .
+	cargo fetch --manifest-path ruff/Cargo.toml --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd ty
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
-  make
+	cd "${srcdir}/${pkgname}"
+	maturin build --locked --release --all-features --target "$(rustc -vV | sed -n 's/host: //p')" --strip
 }
 
 package() {
-  cd ty
+	python -m installer --destdir="${pkgdir}" "${srcdir}/${pkgname}/ruff/target/wheels"/*.whl
 
-  make install DESTDIR="${pkgdir}"
+	install -D -m 0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "$srcdir/${pkgname}/LICENSE"
 
-  for size in 16 32 48 256; do
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-    convert -resize "${size}x${size}" resources/images/tyqt.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyqt.png"
-    convert -resize "${size}x${size}" resources/images/upty.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/upty.png"
-  done
+	install -d -m 0755 "${pkgdir}/usr/share/doc/${pkgname}"
+	cp -r "${srcdir}/${pkgname}/docs/"* "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/ty-git/LICENSE.txt"
+	"${pkgdir}/usr/bin/ty" generate-shell-completion bash | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
+	"${pkgdir}/usr/bin/ty" generate-shell-completion elvish | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/elvish/lib/${pkgname}.elv"
+	"${pkgdir}/usr/bin/ty" generate-shell-completion fish | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+	"${pkgdir}/usr/bin/ty" generate-shell-completion zsh | install -D -m 0644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
