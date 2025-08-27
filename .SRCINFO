@@ -1,19 +1,19 @@
 pkgbase = carapace-spec-bin
 	pkgdesc = define simple completions using a spec file
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/rsteube/carapace-spec
 	license = MIT
 	conflicts = carapace-spec
 	provides = carapace-spec
 	arch = aarch64
-	source_aarch64 = https://github.com/carapace-sh/carapace-spec/releases/download/v1.3.0/carapace-spec_1.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 460ea2cc92065aa51e474667ebdfb9f3cad7755eb99741109ddb672e7afa06f2
+	source_aarch64 = https://github.com/carapace-sh/carapace-spec/releases/download/v1.3.1/carapace-spec_1.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 57003d095368db5f629a1725d28df9d133dd8892c3a219f4b657fac09d23a6fa
 	arch = i686
-	source_i686 = https://github.com/carapace-sh/carapace-spec/releases/download/v1.3.0/carapace-spec_1.3.0_linux_386.tar.gz
-	sha256sums_i686 = 0c4ea04e45e9861c2a42df159f72c6e9f237f53e01d15a584986ef4200b9c6b1
+	source_i686 = https://github.com/carapace-sh/carapace-spec/releases/download/v1.3.1/carapace-spec_1.3.1_linux_386.tar.gz
+	sha256sums_i686 = 9939f7af9a45b12faa0a71edb7999641c84b4ea421a3eab288e34f8ddee939bc
 	arch = x86_64
-	source_x86_64 = https://github.com/carapace-sh/carapace-spec/releases/download/v1.3.0/carapace-spec_1.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = f567bc5071c0a0a91e55e10647589eb0ed9ccf488d2d8e6918fa577635857847
+	source_x86_64 = https://github.com/carapace-sh/carapace-spec/releases/download/v1.3.1/carapace-spec_1.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b6991fb7099d8ca4f9d8b50e300c82469567e9b4f429904df44185704c501da3
 	
 pkgname = carapace-spec-bin
