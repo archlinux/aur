@@ -1,0 +1,25 @@
+pkgbase = soco-cli
+	pkgdesc = Command Line Interface to Control Sonos Sound Systems
+	pkgver = 0.4.80
+	pkgrel = 1
+	url = https://github.com/avantrec/soco-cli
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools>=61.2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.5
+	depends = python-soco
+	depends = python-tabulate
+	depends = python-rangehttpserver
+	depends = python-xmltodict
+	depends = python-ifaddr
+	depends = python-fastapi
+	depends = uvicorn
+	provides = soco-cli
+	conflicts = soco-cli
+	source = soco-cli-0.4.80.tar.gz::https://github.com/avantrec/soco-cli/archive/refs/tags/v0.4.80.tar.gz
+	sha256sums = 72a7c3d4263e13d539f52048e0c622d50becebbb5fd318dfb78d2d3fca4c7832
+
+pkgname = soco-cli
