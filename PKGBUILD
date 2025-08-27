@@ -1,7 +1,7 @@
 # Maintainer: mrcjkb, vhyrro
 # shellcheck disable=SC2034,2154,2164
 pkgname=lux-cli
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 epoch=
 pkgdesc="A luxurious package manager for Lua"
@@ -17,7 +17,7 @@ conflicts=(lux-cli-git)
 replaces=()
 options=(!lto)
 source=("lx-${pkgver}_x86_64.tar.gz::${url}/releases/download/v${pkgver}/lx_${pkgver}_x86_64.tar.gz")
-sha512sums=("89a310e3c660e1287fffc3aad225cb9cb844690b65c187aeaf552c273b818d0857c93de707ef404dec25f4ad27c7c2b78cefcbb2e741878987397f7b7965118b")
+sha512sums=("55614e63b8868450ff6876fe2d4fa86673693beef011c31a2cb6a4b63cac7d459b08248b53a5d729c5251bffe6942f30288b479688e4b307c6a6ad86b34ed88c")
 
 package() {
 	cp -r "${srcdir}"/* "${pkgdir}"/
