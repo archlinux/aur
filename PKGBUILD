@@ -1,6 +1,6 @@
 # Maintainer: alpheratz0 <alpheratz99@protonmail.com>
 pkgname=opilion
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='PulseAudio volume manager for X11 with vim-like keybindings'
 arch=(x86_64)
@@ -19,7 +19,7 @@ depends=(
 makedepends=(pkgconf git wget)
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('341f1d045e1714744cdc8ddf6c9ee53bbd7cfdb19285fe900aa8f444b2369c85')
+sha256sums=('de4ed5bd39aadddaf23b24cc2673fafeb18bfde728db033368dc82641ebf023f')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"

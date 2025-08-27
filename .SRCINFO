@@ -1,6 +1,6 @@
 pkgbase = opilion
 	pkgdesc = PulseAudio volume manager for X11 with vim-like keybindings
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/alpheratz0/opilion
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = opilion
 	depends = fcft
 	depends = terminus-font
 	options = !debug
-	source = opilion-1.0.0.tar.gz::https://github.com/alpheratz0/opilion/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 341f1d045e1714744cdc8ddf6c9ee53bbd7cfdb19285fe900aa8f444b2369c85
+	source = opilion-1.1.0.tar.gz::https://github.com/alpheratz0/opilion/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = de4ed5bd39aadddaf23b24cc2673fafeb18bfde728db033368dc82641ebf023f
 
 pkgname = opilion
