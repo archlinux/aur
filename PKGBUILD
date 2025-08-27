@@ -18,9 +18,9 @@ prepare () {
 }
 
 package() {
-  install -d "${pkgdir}/usr/share/licenses/unrpyc"
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m644 "${srcdir}/unrpyc-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/unrpyc/LICENSE"
+  install -m644 "${srcdir}/unrpyc-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "${srcdir}/unrpyc-${pkgver}"
   python setup.py install --root="${pkgdir}"
