@@ -1,15 +1,15 @@
 pkgbase = guile-fibers-git
 	pkgdesc = Concurrent ML-like concurrency for Guile
-	pkgver = v1.3.1.r24.gf92e5cb
+	pkgver = v1.3.1.r39.gb3a9494
 	pkgrel = 1
-	url = https://github.com/wingo/fibers
+	url = https://codeberg.org/fibers/fibers
 	arch = any
 	license = LGPL3+
 	makedepends = git
 	depends = guile>=2.1.7
 	provides = guile-fibers
 	options = !strip
-	source = git+https://github.com/wingo/fibers.git
+	source = git+https://codeberg.org/fibers/fibers.git
 	md5sums = SKIP
 
 pkgname = guile-fibers-git
