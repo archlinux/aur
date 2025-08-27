@@ -1,4 +1,5 @@
-# Maintainer: TheCyberArcher <TheCyberArcher@protonmail.ch>
+# Maintainer: nicknb <nicknb at posteo dot com>
+# Contributor: TheCyberArcher <TheCyberArcher@protonmail.ch>
 # Contributor: novenary
 # Contributor: Daniel M. Capella
 # Contributor: Dan Elkouby
