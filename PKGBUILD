@@ -1,6 +1,6 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 pkgname=deepin-qt6platform-plugins-git
-pkgver=6.0.4.r0.gab6cb58
+pkgver=6.0.41.r1.gfe42fd3
 pkgrel=1
 sourcename=dde-qt6platform-plugins
 sourcetars=("$sourcename"_"$pkgver".tar.xz)
@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/qt6platform-plugins"
 license=('GPL3')
 depends=('cairo' 'qt6-base')
-makedepends=('git' 'expac' 'libglvnd' 'ninja' 'cmake' 'libxcb' 'libxi' 'gtest' 'gmock')
+makedepends=('git' 'expac' 'libglvnd' 'ninja' 'cmake' 'libxcb' 'libxi' 'gtest' 'gmock' 'qt6-xcb-private-headers')
 groups=('deepin-git')
 source=("git+${url}")
 sha512sums=('SKIP')
@@ -29,7 +29,7 @@ build() {
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_PREFIX=/usr \
                 -DCMAKE_BUILD_TYPE=Release \
-                -DQT_XCB_PRIVATE_HEADERS=/usr/include/qtxcb-private \
+                -DQT_XCB_PRIVATE_HEADERS=/usr/include/qt6xcb-private \
                 -DDTK_VERSION=$version
 	ninja
 }

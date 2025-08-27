@@ -1,6 +1,6 @@
 pkgbase = deepin-qt6platform-plugins-git
 	pkgdesc = Qt platform plugins for DDE
-	pkgver = 6.0.4.r0.gab6cb58
+	pkgver = 6.0.41.r1.gfe42fd3
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/qt6platform-plugins
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = deepin-qt6platform-plugins-git
 	makedepends = libxi
 	makedepends = gtest
 	makedepends = gmock
+	makedepends = qt6-xcb-private-headers
 	depends = cairo
 	depends = qt6-base
 	provides = deepin-qt6platform-plugins
