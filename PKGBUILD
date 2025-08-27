@@ -1,6 +1,7 @@
 # Maintainer: Mus <sonics0977703996@gmail.com>
 pkgname=rain-git
-pkgver=r58.$(git ls-remote https://github.com/musdev13/rain.git HEAD | cut -c1-7)
+_commit=$(git ls-remote https://github.com/musdev13/rain.git HEAD | cut -c1-7)
+pkgver=r62.4259a22
 pkgrel=1
 pkgdesc="Rain - Simple TUI player"
 arch=('x86_64')
