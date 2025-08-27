@@ -1,0 +1,14 @@
+pkgbase = bruh-shell
+	pkgdesc = A minimal standalone shell that prints 'bruh' when a command fails
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/praneethashok14/bruh-shell
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = sh
+	source = https://github.com/praneethashok14/bruh-shell/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = bruh-shell
