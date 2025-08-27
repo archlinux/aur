@@ -8,7 +8,7 @@ url="https://github.com/musdev13/rain"
 license=('GPL3')
 depends=('mpv' 'curl' 'taglib')
 optdepends=('yt-dlp: for YouTube Music and Spotify support')
-source=("${pkgname}-${pkgver}::https://github.com/musdev13/rain/releases/download/v$(pkgver)/rain")
+source=("${pkgname}-${pkgver}::https://github.com/musdev13/rain/releases/download/v${pkgver}/rain")
 sha256sums=('SKIP')
 
 package() {
