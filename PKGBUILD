@@ -1,8 +1,9 @@
 # Maintainer: Thomas Quillan <tjquillan@gmail.com>
+# Maintainer: Andrew Titmuss <iandrewt@icloud.com>
 
 pkgname=nodejs-neovim
 _npmname=neovim
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Nvim Node.js client and plugin host"
 arch=("any")
@@ -12,7 +13,7 @@ depends=("nodejs")
 makedepends=("npm" "jq")
 optdepends=()
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('309ffa56beeffa0cae6e01e906b4f8b9e7ac66cdef37d677deb697bcd6c83998')
+sha256sums=('fe840cf26b904cb98830fa5723c62b9e04c120a04a8141784377ceecdd5f9661')
 noextract=("$_npmname-$pkgver.tgz")
 
 package() {
