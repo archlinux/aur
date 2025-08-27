@@ -1,11 +1,11 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: Andrew Shark <ashark linuxcomp ru>
 
 pkgname="python-type-enforced"
 _name=${pkgname#python-}
 _name2="type_enforced"
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Check if type annotations correspond the reality at runtime"
 arch=("any")
 url="https://github.com/connor-makowski/type_enforced"
@@ -17,7 +17,7 @@ makedepends=(
 	python-setuptools
 	python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/connor-makowski/type_enforced/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bf643281e16cb3f455e23e20b1b80868b8e5676fcbe34ccab2afe1d78de2fb19')
+sha256sums=('e1be210b892f77ef939ad784f2b65c639a5979f7e324091d5fe5fecfc5515d8a')
 
 build() {
 	cd "${_name2}-${pkgver}"
