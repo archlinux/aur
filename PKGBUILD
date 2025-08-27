@@ -3,7 +3,7 @@
 _pkgauthor=murat-cileli
 _pkgname=clyp
 pkgname=${_pkgname}-bin
-pkgver=0.9.5
+pkgver=0.9.6
 _pkgvername=${pkgver}
 pkgrel=1
 pkgdesc="Clipboard manager for Linux"
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${pkgrel}-${arch[0]}.pkg.tar.zst")
-sha256sums_x86_64=('7fd223072907c516fa4f5f8796a49abd19e7f0adc3b3e797f4a080d939f3608e')
+sha256sums_x86_64=('b3c7d7463f628f1d0772706e7f96cd5e675f91727a06160e3199b406398111de')
 
 
 package() {

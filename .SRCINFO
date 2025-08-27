@@ -1,6 +1,6 @@
 pkgbase = clyp-bin
 	pkgdesc = Clipboard manager for Linux
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/murat-cileli/clyp
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = clyp-bin
 	depends = hicolor-icon-theme
 	provides = clyp
 	conflicts = clyp
-	source_x86_64 = https://github.com/murat-cileli/clyp/releases/download/0.9.5/clyp-0.9.5-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 7fd223072907c516fa4f5f8796a49abd19e7f0adc3b3e797f4a080d939f3608e
+	source_x86_64 = https://github.com/murat-cileli/clyp/releases/download/0.9.6/clyp-0.9.6-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = b3c7d7463f628f1d0772706e7f96cd5e675f91727a06160e3199b406398111de
 
 pkgname = clyp-bin
