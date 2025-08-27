@@ -1,7 +1,7 @@
 pkgbase = spinframework-cli
 	pkgdesc = an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly
-	pkgver = 3.3.1
-	pkgrel = 2
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://spinframework.dev/
 	arch = x86_64
 	license = Apache-2.0
@@ -16,9 +16,7 @@ pkgbase = spinframework-cli
 	provides = fermyon-spin
 	conflicts = fermyon-spin
 	options = !debug
-	source = spin-3.3.1.tar.gz::https://github.com/spinframework/spin/archive/v3.3.1.tar.gz
-	source = 01-fix-compiler-warnings.patch
-	sha256sums = 5137573e757a7d2cef68bf59b4a4a017149f3286353e68e16aeb6686b100f653
-	sha256sums = b6694fc7699efd915d8a3049e8ed85bdd67a0fc1b5cee346db49d470ba9b4476
+	source = spin-3.4.0.tar.gz::https://github.com/spinframework/spin/archive/v3.4.0.tar.gz
+	sha256sums = 82164ab3f8fc41edf9d230fa572125d8547a4caf7dac630e94717423022446e5
 
 pkgname = spinframework-cli
