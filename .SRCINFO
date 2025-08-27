@@ -1,0 +1,20 @@
+pkgbase = amphi-photos
+	pkgdesc = Cross-platform photos app with self-hosted sync
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://amphi.site
+	arch = x86_64
+	arch = aarch64
+	license = APACHE
+	depends = fuse2
+	depends = mpv
+	depends = mimalloc
+	depends = ffmpeg
+	depends = imagemagick
+	options = !debug
+	source_x86_64 = https://github.com/amphi2024/photos/releases/download/v1.0.0/Photos-1.0.0-Linux-x86_64.deb
+	sha256sums_x86_64 = 4068fdffedd570d978aef46daaf5dc108c9f823a3bf34957e710703245e54e32
+	source_aarch64 = https://github.com/amphi2024/photos/releases/download/v1.0.0/Photos-1.0.0-Linux-arm64.deb
+	sha256sums_aarch64 = 06b4a0eefeb548a97ce974fe0278c9717c45033e2f024dac3f902c57a75770c9
+
+pkgname = amphi-photos
