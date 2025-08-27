@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
+Categories=Game;
 Name=Vintage Story
 Comment=Uncompromising wilderness survival sandbox game (unstable)
-Icon=/usr/share/pixmaps/vintagestory-unstable.xpm
-Exec=FONTCONFIG_FILE="/usr/share/vintagestory-unstable/fontconfig.conf" /usr/bin/vintagestory-unstable
-Path=/usr/share/vintagestory-unstable
+Icon=vintagestory-unstable
+Exec=/usr/bin/vintagestory-unstable
+Path=/opt/vintagestory-unstable
 NoDisplay=false
-Categories=Game;
-StartupNotify=false
 Terminal=false
+StartupNotify=false
 StartupWMClass=Vintagestory
