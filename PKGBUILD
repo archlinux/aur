@@ -10,7 +10,7 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.14.4
+pkgver=1.3.15
 _skiaver=m124
 _skiahash=08a5439a6b
 pkgrel=1
@@ -40,15 +40,13 @@ makedepends=(# "Meta" dependencies
              # Fuck it, compiling with GCC>=13 is broken and I'm not gonna write a patch to fix it
              clang
              )
-source=(# "https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
-		# tag your releases properly >:(
-		  "https://github.com/aseprite/aseprite/releases/download/v1.3.14.2/Aseprite-v$pkgver-Source.zip"
+source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
         # forgive me, I couldn't figure out linker errors.
         # update commit with skia
         skia-$_skiaver-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
-		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=5660117490fe3eaf57774023b8152d42e828165f
+		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=a8d05093dfa21398210168f4f08fc9449350c01c
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -64,10 +62,10 @@ source=(# "https://github.com/aseprite/aseprite/releases/download/v$pkgver/Asepr
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz"
            "aseprite-skia-$_skiaver-flutter.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('d4e59025ad673c2da8c037ca01ce7d71181cae2e0d9b6cbd081eaf2dba120fda'
+sha256sums=('40f6ad93821a36d23608c761f5a0a4e0d633a3f53a89f932724d0781577836ee'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
-            'ad46a79be08d94809fe007f39a0708e15012cb85bed9fb467e6b9a6d1c4853f8'
+            'ec01905d09e49fa98d4c56357a44d0fa451a9acf6eac757eb8ff247aadc31b35'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             '96d75ecc951712e80734f476511658fcc3c91fc1655fe9a01453c3fc8c2a9274'
