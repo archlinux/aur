@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="A python lyrics player for cmus"
 arch=('any')
 url="https://github.com/Ja4e/Lyrus"
-license=('MIT')
+license=('AGPL-3.0')
 
 depends=(
     'python'
