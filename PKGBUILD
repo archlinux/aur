@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -33,7 +33,7 @@ checkdepends=('python-pytest'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('c6295962b60542a9c7468a3b515ce8524616ca9f8c1a38c790db4286340ba501')
+sha256sums=('0b9924b4034fe9ae43604d78fe8e5107ea2c2391620124fc833043a62e83c744')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -57,14 +57,14 @@ check() {
 
 #   mkdir -p dist/lib
 #   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # no xdist for inline-snapshot #
 }
 
 package_mkdocstrings-python() {
     depends=('python>=3.9'
              'mkdocs-autorefs>=1.4'
              'mkdocstrings>=0.30'
-             'python-griffe>=1.12.1')
+             'python-griffe>=1.13')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
