@@ -2,7 +2,7 @@
 # Contributor: Árni Dagur <arnidg@protonmail.ch>
 
 pkgname='xcp'
-pkgver='0.24.1'
+pkgver='0.24.2'
 pkgrel=1
 pkgdesc="An extended 'cp'"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('11c2844bae4e06b83e182455a2774e252f123c2a87a4b17d8510895257a605c687d9b510183b4e225a926af8074344506ebc56b550ffe60d07a39441f3c45212')
+sha512sums=('b318d40bf95ebc51fd23046e90fa30b19cc5eff3d1582654f879514f24119c3a4f3120fd5e528b2831a55982d0448d0b65ef004ce9a10dd5a163bfbc2ed0f135')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
