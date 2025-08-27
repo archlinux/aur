@@ -23,6 +23,6 @@ package() {
   install -m644 "${srcdir}/unrpyc-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "${srcdir}/unrpyc-${pkgver}"
-  python setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="${pkgdir}"
   mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc1"
 }
