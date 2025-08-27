@@ -1,0 +1,18 @@
+pkgbase = comty-desktop
+	pkgdesc = Official Comty Desktop application
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ragestudio/comty
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	depends = electron37
+	conflicts = comty-desktop-bin
+	source = comty.sh
+	source = comty.desktop
+	source = https://github.com/ragestudio/comty/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = comty-desktop
