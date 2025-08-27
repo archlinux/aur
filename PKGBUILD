@@ -1,10 +1,10 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
-pkgver=2025.4.0
-pkgrel=3
+pkgver=2025.8.1
+pkgrel=1
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('x86_64')
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -23,7 +23,7 @@ options=(!strip)
 source=(
 	"jitsi-meet-${arch[0]}-${pkgver}.AppImage::https://github.com/jitsi/jitsi-meet-electron/releases/download/v${pkgver//_/-}/jitsi-meet-${arch[0]}.AppImage"
 	"${_pkgname}.desktop")
-sha256sums=('f40bb056423151f18b7a17f04a5d64b82e5dbddfa89840b25aba0def6c48f29c'
+sha256sums=('5e2db6be39e2755cce6613e6d293e558b4d07e88acb0fb0d879ce71730d6a20f'
             'e11ef8c07bdc5067976f562b236b8c0d683c0e9037f2eb93482c2fd6ba3a5aff')
 
 
