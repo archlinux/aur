@@ -2,7 +2,7 @@
 
 pkgname=python-urlopen
 _name=${pkgname//-/_}
-pkgver=0.1.6.2
+pkgver=0.1.6.3
 pkgrel=1
 epoch=
 pkgdesc="Python urlopen wrapper."
@@ -34,7 +34,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('268ed024143b4c0824a7b08947c9d46307c9dd7c62052deaf652f810f5f1599b')
+sha256sums=('73d7facb6f4d57cc3e507b718b2051f3b33c23a48563b40ec50578153759147b')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
