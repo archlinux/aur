@@ -30,6 +30,7 @@ package() {
                             $pkgdir/etc/ufw/applications.d/wsddn
     install -Dm 0644 out/wsddn.conf $pkgdir/etc/wsddn.conf
     install -Dm 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm 0644 Acknowledgements.md $pkgdir/usr/share/doc/$pkgname/Acknowledgements.md
 
 }
 
