@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadon@outlook.com>
 
 pkgname=eyescore
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Professional CLI Music Notation System - A colorized, feature-rich TUI score engraver"
 arch=('x86_64')
