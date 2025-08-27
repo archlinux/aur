@@ -1,6 +1,6 @@
 pkgbase = seqan3
 	pkgdesc = The modern C++ library for sequence analysis https://doi.org/10.1016/j.jbiotec.2017.07.017
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = http://www.seqan.de
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = seqan3
 	makedepends = glibc
 	makedepends = gcc-libs
 	makedepends = cereal
-	source = git+https://github.com/seqan/seqan3.git#tag=3.3.0
-	sha256sums = SKIP
+	source = git+https://github.com/seqan/seqan3.git#tag=3.4.0
+	sha256sums = 7b3e0f7bb981f079680ca73a2698fffb419383fe81e893b301487f9e0c53669e
 
 pkgname = seqan3
