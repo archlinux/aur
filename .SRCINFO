@@ -1,0 +1,21 @@
+pkgbase = python-wolframclient
+	pkgdesc = A Python library with various tools to interact with the Wolfram Language and the Wolfram Cloud
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.wolfram.com/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-pytz
+	depends = python-requests
+	depends = python-aiohttp
+	depends = python-oauthlib
+	depends = python-pyzmq
+	depends = python-certifi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/w/wolframclient/wolframclient-1.4.0.tar.gz
+	sha256sums = 59f1f0a71257fa79c444cc9489097fe74e2c7890157f252a961cea406e17e9fb
+
+pkgname = python-wolframclient
