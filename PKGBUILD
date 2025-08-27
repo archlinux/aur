@@ -2,19 +2,20 @@
 
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
-pkgname='caelestia-shell-git'
-pkgver=r1130.aa66f3c
-pkgrel=3
+_pkgname='caelestia-shell'
+pkgname="$_pkgname-git"
+pkgver=r1135.9030634
+pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
 depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'cava' 'networkmanager'
          'lm_sensors' 'fish' 'aubio' 'libpipewire' 'glibc' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon'
-         'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'grim' 'swappy' 'libqalculate' 'wayland' 'bash' 'qt6-base' 'qt6-declarative')
-makedepends=('git' 'gcc' 'wayland-protocols' 'cmake' 'ninja')
-provides=('caelestia-shell')
-conflicts=('caelestia-shell')
+         'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'grim' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative')
+makedepends=('git' 'cmake' 'ninja')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -24,34 +25,15 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}/assets/cpp"
+    cd "${srcdir}/${pkgname}"
 
-    g++ $CXXFLAGS -std=c++17 -Wall -Wextra -I/usr/include/pipewire-0.3 -I/usr/include/spa-0.2 -I/usr/include/aubio -o beat_detector beat-detector.cpp -lpipewire-0.3 -laubio $LDFLAGS
-
-    wayland-scanner client-header < /usr/share/wayland-protocols/unstable/idle-inhibit/idle-inhibit-unstable-v1.xml > idle-inhibitor.h
-    wayland-scanner private-code < /usr/share/wayland-protocols/unstable/idle-inhibit/idle-inhibit-unstable-v1.xml > idle-inhibitor.c
-    gcc $CFLAGS -o idle-inhibitor.o -c idle-inhibitor.c
-    g++ $CXXFLAGS -o inhibit_idle idle-inhibitor.cpp idle-inhibitor.o -lwayland-client $LDFLAGS
-    rm idle-inhibitor.{h,c,o}
-
-    cd "${srcdir}/${pkgname}/plugin"
-
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DINSTALL_QMLDIR=/usr/lib/qt6/qml
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
     cmake --build build
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
 
-    install -Dm755 ./assets/cpp/beat_detector "$pkgdir"/usr/lib/caelestia/beat_detector
-    rm ./assets/cpp/beat_detector
-
-    install -Dm755 ./assets/cpp/inhibit_idle "$pkgdir"/usr/lib/caelestia/inhibit_idle
-    rm ./assets/cpp/inhibit_idle
-
-    DESTDIR="$pkgdir" cmake --install plugin/build
-    rm -rf plugin/build
-
-    install -dm755 "$pkgdir"/etc/xdg/quickshell/caelestia
-    cp -r ./* "$pkgdir"/etc/xdg/quickshell/caelestia/
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }
