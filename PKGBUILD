@@ -9,22 +9,26 @@ url="https://github.com/CensoredUsername/unrpyc"
 license=('MIT')
 depends=("python2")
 makedepends=("python2-setuptools")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a038fe4f5bc0dbc346f4e2ee9c656a363defdb0d5259df65b66b2520fe823e9a')
+source=("${pkgname}.zip::${url}/archive/refs/heads/legacy.zip")
+noextract=("${pkgname}.zip")
+sha256sums=('SKIP')
 
 prepare () {
-    cd "${srcdir}/unrpyc-${pkgver}"
+   unzip -q "${srcdir}/${pkgname}.zip" -d "${srcdir}"
+
+    cd "${srcdir}/unrpyc-legacy"
     mv deobfuscate.py deobfuscate1.py
     sed -i "/scripts=/s/]/, 'deobfuscate1.py']/" setup.py
+    sed -i "/.deobfuscate/.deobfuscate1/" setup.py
     sed -i "/import deobfuscate/import deobfuscate1 as deobfuscate/" unrpyc.py
 }
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m644 "${srcdir}/unrpyc-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 "${srcdir}/unrpyc-legacy/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cd "${srcdir}/unrpyc-${pkgver}"
+  cd "${srcdir}/unrpyc-legacy"
   python2 setup.py install --root="${pkgdir}"
   mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc1"
 }
