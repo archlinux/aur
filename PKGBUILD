@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-pcu
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Osmocom's GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface"
 url="https://osmocom.org/projects/osmopcu"
@@ -12,7 +12,7 @@ depends=('libosmocore' 'talloc')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-pcu.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('3187f77050eae90fd758a141b7551b725fb387fef23bf28a3545eeaa02bb778c')
+sha256sums=('d8ee0669bb3c9a7c323c5d8405807a12ee78a2a5dbc42f912d5b2664e8d32dc7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

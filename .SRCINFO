@@ -1,6 +1,6 @@
 pkgbase = osmo-pcu
 	pkgdesc = Osmocom's GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmopcu
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = osmo-pcu
 	depends = talloc
 	conflicts = osmo-pcu-git
 	backup = etc/osmocom/osmo-pcu.cfg
-	source = https://downloads.osmocom.org/releases/osmo-pcu/osmo-pcu-1.5.1.tar.bz2
-	sha256sums = 3187f77050eae90fd758a141b7551b725fb387fef23bf28a3545eeaa02bb778c
+	source = https://downloads.osmocom.org/releases/osmo-pcu/osmo-pcu-1.5.2.tar.bz2
+	sha256sums = d8ee0669bb3c9a7c323c5d8405807a12ee78a2a5dbc42f912d5b2664e8d32dc7
 
 pkgname = osmo-pcu
