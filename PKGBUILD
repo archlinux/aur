@@ -2,7 +2,7 @@
 
 pkgname=waveterm-vis
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern terminal-based music visualizer with stunning ASCII art effects'
 arch=('any')
 url='https://github.com/tree3stan-chord/waveterm'
