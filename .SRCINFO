@@ -7,7 +7,6 @@ pkgbase = splash-bin
 	arch = i686
 	arch = aarch64
 	license = MIT
-	depends = glibc
 	provides = splash
 	conflicts = splash
 	source = LICENSE-0.9.5::https://raw.githubusercontent.com/joshi4/splash/v0.9.5/LICENSE
