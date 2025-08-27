@@ -2,7 +2,7 @@
 _appname=vutronmusic
 pkgname="${_appname}-electron-bin"
 _pkgname=VutronMusic
-pkgver=2.3.7
+pkgver=2.4.0
 _electronversion=29
 pkgrel=1
 pkgdesc="A high-quality third-party NetEase Cloud Music player that supports local music playback, offline playlists, and desktop lyrics.(Prebuilt version,use system-wide electron)高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示、Linux-gnome桌面状态栏歌词显示."
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/stark81/VutronMusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9428604c5803c31b8f1692bfd48a22cc3ef21e3db87298c7680a66dc2308962a'
+sha256sums=('1b993d018e3c140062d87aad608b0f3767353725c05e5677f35860be111a334d'
             '6e2dc41556237850d3e147d56d4bf63718f8044e2898a99599367b723418af1e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
