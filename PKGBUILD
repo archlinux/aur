@@ -23,7 +23,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "$_pkgname.desktop"
         "vsmodinstall-handler.desktop"
-		"fontconfig.conf")
+        "font.conf")
 md5sums=("SKIP"
          "97e27a3d0283b0f01176cdd6fa5dcf53"
          "dde267f52d41fb90641b6405dccb5cd3"
