@@ -1,6 +1,6 @@
 pkgbase = vk-messenger-appimage
 	pkgdesc = VK Messenger for Linux in the appimage package format
-	pkgver = 6.0.52.327
+	pkgver = 6.0.54.338
 	pkgrel = 1
 	url = https://vk.me/app
 	arch = x86_64
