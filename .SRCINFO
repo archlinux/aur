@@ -1,0 +1,18 @@
+pkgbase = frzscr-git
+	pkgdesc = screen freezing program for wayland
+	pkgver = r81.9ae7e9f
+	pkgrel = 1
+	url = https://github.com/heather7283/frzscr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	depends = wayland
+	provides = frzscr
+	source = git+https://github.com/heather7283/frzscr
+	sha256sums = SKIP
+
+pkgname = frzscr-git
