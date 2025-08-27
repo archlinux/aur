@@ -25,9 +25,9 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
         "vsmodinstall-handler.desktop"
         "font.conf")
 md5sums=("SKIP"
-         "97e27a3d0283b0f01176cdd6fa5dcf53"
-         "dde267f52d41fb90641b6405dccb5cd3"
-		 "698441836af7385df922c922b08b7606")
+         "059254de5906f7802403433c2f0fd627"
+         "f086616f754a92eb4c39889d43abffd5"
+         "9912e111cef7077cab433290c9995b6f")
 
 prepare() {
 	# Remove install script provided by developers
@@ -45,13 +45,15 @@ package() {
 	install -Dm644 "$_pkgname"/assets/gameicon.xpm "$pkgdir"/usr/share/pixmaps/"$pkgname".xpm
 	install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
 	install -Dm644 vsmodinstall-handler.desktop "$pkgdir"/usr/share/applications/"$pkgname"-modinstall-handler.desktop
-	# Copy fonts to /usr/share/fonts
-	#install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF/ "$_pkgname"/assets/game/fonts/*.ttf
-	# Copy all other application files
-	cp -rdp --no-preserve=ownership "$_pkgname" "$pkgdir"/usr/share/"$pkgname"
-	# Copy over fontconfig.conf to not rely on system installed fonts
-	install -Dm644 "fontconfig.conf" "$pkgdir"/usr/share/"$pkgname"/fontconfig.conf
-	# Create a symlink to run the game from terminal
-	install -dm 755 "$pkgdir"/usr/bin/ # Create directory first (required)
-	ln -s /usr/share/"$pkgname"/Vintagestory "$pkgdir"/usr/bin/"$pkgname"
+
+	# Copy all other application files (`/opt` is the right place to dump this)
+	install -dm 755 "$pkgdir"/opt # Create directory first (required)
+	cp -r --preserve=mode -t "$pkgdir"/opt "$pkgname"
+
+	# Override `font.conf` provided by the game, as it is useless
+	install -Dm644 font.conf "$pkgdir"/opt/"$pkgname"/font.conf
+
+	# Create a symlink to run the launch script from terminal
+	install -dm 755 "$pkgdir"/usr/bin # Create directory first (required)
+	ln -s /opt/"$pkgname"/run.sh "$pkgdir"/usr/bin/"$pkgname"
 }
