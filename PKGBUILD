@@ -5,10 +5,10 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.0.3.rc3.r14.g4ea9664
+pkgver=0.0.3.rc3.r22.g22847ec
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')

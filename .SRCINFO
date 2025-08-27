@@ -1,10 +1,11 @@
 pkgbase = eden-git
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
-	pkgver = 0.0.3.rc3.r14.g4ea9664
+	pkgver = 0.0.3.rc3.r22.g22847ec
 	pkgrel = 1
 	epoch = 1
 	url = https://eden-emulator.github.io/
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
