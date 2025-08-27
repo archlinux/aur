@@ -1,0 +1,15 @@
+pkgbase = madgit
+	pkgdesc = Mass run git distributed across multiple repositories
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/wykwit/madgit
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = git
+	source = madgit-0.2.0.tar.gz::https://gitlab.com/wykwit/madgit/-/archive/v0.2.0/madgit-v0.2.0.tar.gz
+	sha256sums = 3b58ad3ae8d24f3d2f85dd165730abe43c2ed5d717aff59ad4d6ef1fafda17e2
+
+pkgname = madgit
