@@ -2,7 +2,7 @@
 pkgname=zen-browser-portable
 _firefox_version=141.0.2
 pkgver=1.14.11b
-pkgrel=3
+pkgrel=4
 pkgdesc="Experience tranquillity while browsing the web without people tracking you, sandboxed by portable"
 arch=('x86_64')
 url="https://github.com/Kraftland/portable"
@@ -347,5 +347,15 @@ TryExec=portable
 Exec=env _portableConfig=org.mozilla.zen portable -- %u
 Terminal=false
 NoDisplay=true''' >"${pkgdir}/usr/share/applications/zen-browser.desktop"
+
+	echo '''[Desktop Entry]
+Type=Application
+Name=Zen Browser
+GenericName=Stub for MPRIS
+Icon=zen-browser
+TryExec=portable
+Exec=env _portableConfig=org.mozilla.zen portable -- %u
+Terminal=false
+NoDisplay=true''' >"${pkgdir}/usr/share/applications/zen-browser-portable.desktop"
 }
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
