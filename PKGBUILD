@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=libthreadar
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='C++ library manage threads and any type to exception between them'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('automake' 'libtool' 'autoconf' 'doxygen' 'man-db' 'groff')
 provides=("libthreadar.so=${pkgver}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Edrusb/libthreadar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dd8de4b1fb7814aba14a2b2c69b3ff5a174143c78f393a8144da1d061526bf5c')
+sha256sums=('84b76be23b3d4cfc25c36fe961f9c07a6c4754ea48fb670d1c0520a544cf8797')
 
 prepare() {
   cd "$pkgname-$pkgver"
