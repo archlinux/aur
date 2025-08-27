@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.100.46.r0.g1867400
-_electronversion=32
+pkgver=1.101.16.r0.gd24131c
+_electronversion=35
 _nodeversion=22
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
@@ -46,6 +46,10 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _electronversion="$(grep '^ *"electron": *"' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -54,6 +58,7 @@ prepare() {
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
+    _get_electron_version
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="System" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
