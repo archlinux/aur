@@ -14,21 +14,21 @@ noextract=("${pkgname}.zip")
 sha256sums=('SKIP')
 
 prepare () {
-   unzip -q "${srcdir}/${pkgname}.zip" -d "${srcdir}"
-
+    unzip -q "${srcdir}/${pkgname}.zip" -d "${srcdir}"
+    
     cd "${srcdir}/unrpyc-legacy"
     mv deobfuscate.py deobfuscate1.py
     sed -i "/scripts=/s/]/, 'deobfuscate1.py']/" setup.py
     sed -i "/py_modules=/s/\.deobfuscate/\.deobfuscate1/" setup.py
-    sed -i "/import deobfuscate/import deobfuscate1 as deobfuscate/" unrpyc.py
+    sed -i 's/^\s*import deobfuscate\s*$/import deobfuscate1 as deobfuscate/' unrpyc.py
 }
 
 package() {
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  install -m644 "${srcdir}/unrpyc-legacy/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  cd "${srcdir}/unrpyc-legacy"
-  python2 setup.py install --root="${pkgdir}"
-  mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc1"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    
+    install -m644 "${srcdir}/unrpyc-legacy/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    cd "${srcdir}/unrpyc-legacy"
+    python2 setup.py install --root="${pkgdir}"
+    mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc1"
 }
