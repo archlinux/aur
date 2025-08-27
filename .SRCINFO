@@ -1,0 +1,29 @@
+pkgbase = noctalia-shell-git
+pkgname = noctalia-shell-git
+pkgver = 2.3.0.8.g56967d4
+pkgrel = 1
+pkgdesc = A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. (git version)
+url = https://github.com/noctalia-dev/noctalia-shell
+arch = any
+license = MIT
+
+depends = quickshell
+depends = ttf-roboto
+depends = inter-font
+depends = ttf-material-symbols-variable-git
+depends = gpu-screen-recorder
+depends = brightnessctl
+depends = ddcutil
+
+optdepends = cliphist: For clipboard history support
+optdepends = swww: Wallpaper animations and effects
+optdepends = matugen-bin: Material You color scheme generation
+optdepends = cava: Audio visualizer component
+
+makedepends = git
+
+provides = noctalia-shell
+conflicts = noctalia-shell
+
+source = git+https://github.com/noctalia-dev/noctalia-shell.git
+md5sums = SKIP
