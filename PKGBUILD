@@ -3,7 +3,7 @@
 
 pkgname='emojify-go'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lighting fast Emoji conversion on the command line 😱'
 url='https://github.com/damienbutt/emojify-go'
 arch=('aarch64' 'x86_64')
@@ -14,30 +14,29 @@ makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go-1.0.0.tar.gz")
 sha256sums=('ecde7b0a0a804f8274562aef650a879bfb900868a9c2e562deda5cac8c1356bf')
 prepare() {
-  cd "$srcdir/emojify-go-1.0.0"
-
-  # Set up Go environment for reproducible builds
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  export CGO_ENABLED=0
+  cd "$srcdir"
 
   # Download dependencies
   go mod download
 }
 build() {
-  cd "$srcdir/emojify-go-1.0.0"
+  cd "$srcdir"
 
   # Build the binary with proper flags
   export CGO_ENABLED=0
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  export LDFLAGS="-linkmode=external -extldflags \"${LDFLAGS}\""
 
   go build \
-  -ldflags="-s -w -X github.com/damienbutt/emojify-go/internal/version.Version=1.0.0 -X github.com/damienbutt/emojify-go/internal/version.Commit=803a0039c7869078a3f3ffbac5567480448c5cc7 -X github.com/damienbutt/emojify-go/internal/version.Date=2025-08-26T13:30:14Z -X github.com/damienbutt/emojify-go/internal/version.BuiltBy=makepkg ${LDFLAGS}" \
-  -o emojify \
-  ./cmd/emojify
+    -ldflags="-s -w -X github.com/damienbutt/emojify-go/internal/version.Version=1.0.0 \
+        -X github.com/damienbutt/emojify-go/internal/version.Commit=803a0039c7869078a3f3ffbac5567480448c5cc7 \
+        -X github.com/damienbutt/emojify-go/internal/version.Date=2025-08-26T13:30:14Z \
+        -X github.com/damienbutt/emojify-go/internal/version.BuiltBy=makepkg" \
+    -trimpath \
+    -gcflags="all=-l" \
+    -o emojify \
+    ./cmd/emojify
 }
 package() {
-  cd "$srcdir/emojify-go-1.0.0"
+  cd "$srcdir"
 
   # Install binary
   install -Dm755 emojify "${pkgdir}/usr/bin/emojify"
