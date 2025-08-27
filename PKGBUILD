@@ -3,7 +3,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-prerelease
-pkgver=2.7.61.7
+pkgver=2.7.61.8
 _pkgtag=$pkgver
 # https://github.com/supermerill/SuperSlicer/blob/2.7.61.0/deps/%2BLibBGCode/LibBGCode.cmake
 _libbgcode=6f43cb004ef3d3bda37dde49f6235e24d2717629
@@ -35,6 +35,7 @@ makedepends=(
 	'cmake'
 	'eigen'
 	'libigl'
+	'mold'
 	'ninja'
 	'openvdb'
 )
@@ -49,7 +50,7 @@ source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0003-openexr3.patch"
         "0004-cgal6.patch"
         "0005-boost-process-includes.patch")
-sha512sums=('be2e58cf45a15276a1e771be9638fe7900fccb2abc7a3011d18c31fe2075ea255daf54c1fa81d256290190995ce28fb7d8ce08ee488d47b58809711e4595c465'
+sha512sums=('d7cd6a6f3b3ba552e8e5b89d031816adafa812348d5f609e247e67957d826133d4088615b9becc7151cc797f0f559dc0bb4655b00e4bbeffd278ef40bb322337'
             '04cb7cb69d887e1fa5ced5c0219b0ee6cab81f09d1bc1226ebd26563e2ce60b85fb6e5aef11a36dffd3e00779849906fc5c19ad2cdd22d45360226912b6af31b'
             'ecbe9bdec72a372dfdc25b32dee382a9937c544567fa2da42a30467ddff2594495bf244a773401f655930301a2debc94636a362383239fa08808d0e51bc687a4'
             '1b8561d0f148ce2c38b7211eb78facc6e0cc2b89481e7c7700353534c7946a7b885e517852597b3252c6c21de527736f406f27ab01833d0f275c64103a8111f7'
@@ -95,6 +96,9 @@ build() {
 	cd "$srcdir/libbgcode-$_libbgcode"
 	cd build
 
+	_ninjaflags="$NINJAFLAGS"
+	[ -z "$_ninjaflags" ] && [ -n "$SHELL" ] && _ninjaflags="-j2"
+	
 	cmake .. \
 		-G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
@@ -102,7 +106,7 @@ build() {
 		-DLibBGCode_BUILD_CMD_TOOL=OFF \
 		-DLibBGCode_BUILD_TESTS=OFF \
 		-Wno-dev
-	ninja
+	ninja $_ninjaflags
 	mkdir destdir
 	DESTDIR=destdir ninja install
 	export "CMAKE_PREFIX_PATH=$PWD/destdir:$CMAKE_PREFIX_PATH"
@@ -111,10 +115,13 @@ build() {
 	cd "$srcdir/SuperSlicer-$_pkgtag"
 	cd build
 
-	cmake .. -DCMAKE_MESSAGE_LOG_LEVEL=DEBUG \
+	cmake .. \
 		-G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_MESSAGE_LOG_LEVEL=DEBUG \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
+		-DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold" \
 		-DOpenGL_GL_PREFERENCE=GLVND \
 		-DSLIC3R_FHS=ON \
 		-DSLIC3R_STATIC=OFF \
@@ -123,7 +130,7 @@ build() {
 		-DSLIC3R_BUILD_TESTS=OFF \
 		-DSLIC3R_ALPHA=ON \
 		-Wno-dev
-	ninja
+	ninja $_ninjaflags
 }
 
 package() {

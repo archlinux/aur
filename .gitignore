@@ -1,0 +1,13 @@
+# emacs
+*~
+\#*#
+.#*#
+
+# makepkg
+*.tar*
+*.pkg*
+/src/
+/pkg/
+
+# git
+*.orig
