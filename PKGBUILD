@@ -1,6 +1,6 @@
 # Maintainer: Miguel Santos <miguelandrelealsantos.business@gmail.com>
 pkgname=omarchy-calculator-git
-pkgver=r1.0.0.1.abc123
+pkgver=r31.b770e2a
 pkgrel=1
 pkgdesc="A minimal calculator app built with the Omarchy theme for Flutter (git version)"
 arch=('x86_64')
