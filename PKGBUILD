@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=libosmo-gprs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Osmocom GPRS libraries"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ provides=('libosmo-csn1.so=1-64'
           'libosmo-gprs-sm.so=1-64'
           'libosmo-gprs-sndcp.so=1-64')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('b979c40ee8000b9a5eafa071013d3ee90372a6b43adac1a7afc5cf67f1ee8636')
+sha256sums=('a1af5658b4c4ac16b3bf4682cd69d7da97d6b8a013f06cb83fb0247c8a51e184')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
