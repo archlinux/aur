@@ -2,7 +2,7 @@
 # Copyright (c) 2024-2025 Jim Philip, with Reserved Package Name "vencord-hook"
 # Copyright (c) 2022-2025 Vendicated and Vencord contributors, with Reserved Project Name "Vencord"
 
-set -euo pipefail
+set -eo pipefail
 
 echo_hook() {
 	# echo -ne "\e[35mHOOK  \e[39m"
@@ -14,6 +14,12 @@ err_handler() {
 	echo_hook "An error occurred. If unresolvable, contact the package maintainer: https://aur.archlinux.org/packages/vencord-hook"
 }
 trap err_handler ERR
+
+if [ -z "$SUDO_USER" ] && [ -n "$PKEXEC_UID" ]; then
+	echo_hook "Polkit is being used but isn't supported by VencordInstaller; manually setting SUDO_USER."
+	SUDO_USER=$(getent passwd "$PKEXEC_UID" | cut -d: -f1)
+	export SUDO_USER
+fi
 
 installer=$(mktemp /tmp/vencord-hook.XXXXXX)
 cleanup() {
