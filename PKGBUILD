@@ -14,7 +14,9 @@ sha256sums=('a038fe4f5bc0dbc346f4e2ee9c656a363defdb0d5259df65b66b2520fe823e9a')
 
 prepare () {
     cd "${srcdir}/unrpyc-${pkgver}"
-    sed -i "/scripts=/s/]/, 'deobfuscate.py']/" setup.py
+    mv deobfuscate.py deobfuscate1.py
+    sed -i "/scripts=/s/]/, 'deobfuscate1.py']/" setup.py
+    sed -i "/import deobfuscate/import deobfuscate1 as deobfuscate/" unrpyc.py
 }
 
 package() {
