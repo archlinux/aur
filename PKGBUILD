@@ -1,35 +1,44 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-mocket
-pkgver=3.12.8
+pkgver=3.13.11
 pkgrel=1
 pkgdesc="Socket Mock Framework - for all kinds of socket animals, web-clients included - with gevent/asyncio/SSL support"
 url="https://github.com/mindflayer/python-mocket"
 license=('BSD')
 arch=('any')
-depends=('python-decorator' 'python-httptools' 'python-magic' 'python-urllib3')
+depends=('python-decorator>=4.0.0' 'python-h11' 'python-typing_extensions' 'python-urllib3')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('pifpaf' 'python-pytest' 'python-pytest-asyncio' 'python-aiohttp' 'python-fastapi'
-              'python-gevent' 'python-httpx' 'python-pook' 'python-redis' 'python-asgiref'
-              'python-requests' 'python-sure' 'python-xxhash' 'redis')
+checkdepends=(
+	'pre-commit'
+	'python-psutil'
+	'python-pytest'
+	'python-pytest-cov'
+	'python-asyncio'
+	'python-asgiref'
+	'python-requests'
+	'python-redis'
+	'python-gevent'
+	'python-sure'
+	'python-flake8'
+	'python-xxhash'
+	'python-httpx'
+	'python-requirementslib'
+	'python-build'
+	'python-fastapi'
+	'python-aiohttp'
+	'python-wait-for-it'
+	'mypy'
+	'python-types-decorator'
+	'python-types-requests'
+	'python-trio'
+)
 source=("https://github.com/mindflayer/python-mocket/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('1188423ee110967b2bd64cd5760ceda68ec852df4a0b1e2e169bc59714f28fecc777b7e676fcb8be104e1f6cd86bd34bd8507e1ea2dd65b4f6650c1231ce9c0e')
-
-prepare() {
-  cd python-mocket-$pkgver
-  sed -i 's/--cov=mocket --cov-report=term-missing//' pytest.ini
-}
+sha512sums=('2c7a9c4306c235c464a621fa345922a3bcafb18589ef47ca25626668aa9a89baf6bfa327182a211427797a43ae9c1c269e7b256bb5befd310943b63a43fef818')
 
 build() {
   cd python-mocket-$pkgver
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd python-mocket-$pkgver
-  # Disable tests which depend on an running nginx container
-  # TODO: report test_no_dangling_fds failure
-  SKIP_TRUE_HTTP=true pifpaf run redis pytest -- -k 'not HttpEntryTestCase and not test_no_dangling_fds'
 }
 
 package() {
