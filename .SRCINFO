@@ -1,10 +1,12 @@
 pkgbase = omodsim
 	pkgdesc = Open ModSim is a Free Modbus Slave (Server) Utility
 	pkgver = 1.8.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanny32/OpenModSim
 	arch = x86_64
 	license = MIT
+	depends = qt6-base
+	optdepends = qt6-serialport: for modbus serial port support
 	source = https://github.com/sanny32/OpenModSim/releases/download/1.8.2/qt6-omodsim-1.8.2-1.x86_64.rpm
 	source = LICENSE::https://raw.githubusercontent.com/sanny32/OpenModSim/refs/heads/main/LICENSE.md
 	sha1sums = f65549879df1c4ea706762b113b5f233eff96fd5
