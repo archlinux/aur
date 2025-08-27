@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Polyversal Patcher
+Comment=Helper script for installing CoZ patches with Proton
+Icon=polyversal
+Exec=polyversal --log
+Terminal=false
+Type=Application
+Categories=Game,
+Icon=polyversal-patcher

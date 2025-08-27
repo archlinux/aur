@@ -14,9 +14,11 @@ pkgbase = polyversal-patcher-bin
 	optdepends = zenity: Required for using Polyversal Patcher as a GUI
 	provides = polyversal-patcher
 	conflicts = polyversal-patcher
+	source = Polyversal.desktop
 	source = Polyversal-v2_2_1-1.tar.gz::https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher/releases/download/2.2.1/Polyversal-v2_2_1.tar.gz
 	source = Polyversal-v2_2_1-1.svg::https://raw.githubusercontent.com/CommitteeOfZero/polyversal-coz-linux-patcher/2.2.1/assets/logo-square.svg
-	sha256sums = f26006323e00de04d421d1ac94656208c18cf6868cede5d0654e7d410e2b8373
+	sha256sums = 208ffdea36943ced42487427edf5c7fd638348b92e8b61bc0a7dc4bfc5eb3326
+	sha256sums = ec1a0b86da5dead663dcf5ded262109b468796b94d905f83b123a6bad260261c
 	sha256sums = 62f3a79c1446932e1ce1d4a56991113739c7d7c6d8b4a8d9c994b62468229960
 
 pkgname = polyversal-patcher-bin
