@@ -9,7 +9,7 @@ license=('BSD')
 arch=('any')
 depends=('python-decorator>=4.0.0' 'python-h11' 'python-typing_extensions' 'python-urllib3')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=(
+: 'checkdepends=(
 	'pre-commit'
 	'python-psutil'
 	'python-pytest'
@@ -32,7 +32,7 @@ checkdepends=(
 	'python-types-decorator'
 	'python-types-requests'
 	'python-trio'
-)
+)'
 source=("https://github.com/mindflayer/python-mocket/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('2c7a9c4306c235c464a621fa345922a3bcafb18589ef47ca25626668aa9a89baf6bfa327182a211427797a43ae9c1c269e7b256bb5befd310943b63a43fef818')
 
