@@ -1,18 +1,21 @@
 # Maintainer: Samuobe samuobe@ik.me
 
 pkgname=arch-store
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A graphical app for managing your programs with pacman, AUR, flatpak, and appimage"
 arch=('any')
 license=('GPL-3.0-or-later')
 depends=('python' 'python-pyqt6')
-source=("https://github.com/Samuobe/Arch-Store/archive/refs/tags/V2.0.1.tar.gz")
+source=("https://github.com/Samuobe/Arch-Store/archive/refs/tags/v2.0.2.tar.gz")
 md5sums=('SKIP')
 
 package() {
     install -d "$pkgdir/usr/share/arch-store"
-    cp -r "$srcdir/Arch-Store-$pkgver/"* "$pkgdir/usr/share/arch-store/"
+    cp "$srcdir/Arch-Store-$pkgver"/*.py "$pkgdir/usr/share/arch-store/"
+    cp -r "$srcdir/Arch-Store-$pkgver/lpak" "$pkgdir/usr/share/arch-store/"
+    cp -r "$srcdir/Arch-Store-$pkgver/library" "$pkgdir/usr/share/arch-store/"
+    cp -r "$srcdir/Arch-Store-$pkgver/icon.png" "$pkgdir/usr/share/arch-store/"
 
     install -dm1777 "$pkgdir/var/lib/arch-store"
 
