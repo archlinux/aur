@@ -1,7 +1,7 @@
 pkgbase = omarchy-chromium-bin
 	pkgdesc = A web browser built for speed, simplicity, and security, with patches for Omarchy (binary package)
-	pkgver = 139.0.7258.138
-	pkgrel = 4
+	pkgver = 139.0.7258.154
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	arch = aarch64
@@ -25,9 +25,9 @@ pkgbase = omarchy-chromium-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = omarchy-chromium
-	source_x86_64 = https://github.com/omacom-io/omarchy-chromium/releases/download/v139.0.7258.138-4/omarchy-chromium-139.0.7258.138-4-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = a602a7fd5d65ae266f7617ad6fafe1de7051f48ff7557ff0d0709a8b443f45b2
-	source_aarch64 = https://github.com/omacom-io/omarchy-chromium/releases/download/v139.0.7258.138-4/omarchy-chromium-139.0.7258.138-4-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = 3847102d8cd9adfd22cb3e2761ee8d9fbd4795348d9d03c612c2e795c9d20bdb
+	source_x86_64 = https://github.com/omacom-io/omarchy-chromium/releases/download/v139.0.7258.154-2/omarchy-chromium-139.0.7258.154-2-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 330d2f7fae11980636fcc8698ef8392dbf879cb57794508c874dfc16d8386c42
+	source_aarch64 = https://github.com/omacom-io/omarchy-chromium/releases/download/v139.0.7258.154-2/omarchy-chromium-139.0.7258.154-2-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 026837082012b73cf2d499770c8efca6a4c57dd21443c04701819fdf5e96a64f
 
 pkgname = omarchy-chromium-bin
