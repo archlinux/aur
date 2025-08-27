@@ -9,7 +9,7 @@ pkgname=(
   "lib32-xrizer"
 )
 pkgver="0.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR"
 arch=("x86_64")
 url="https://github.com/Supreeeme/xrizer"
