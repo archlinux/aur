@@ -7,7 +7,7 @@
 
 pkgbase=zoom-system-qt
 pkgname=(${pkgbase}{,-cef} )
-pkgver=6.5.8.3527
+pkgver=6.5.11.4015
 pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-zoom')
@@ -26,7 +26,7 @@ source=("zoom_orig-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.
 #"cef-${_cefver}.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_137.0.19%2Bg8a1c4ce%2Bchromium-${_cefver}_linux64_minimal.tar.bz2"
 )
 noextract=(*.tar*) # for small BUILDDIR
-sha512sums=('fe3b042bcf0c79b38a9d4e782bfbe5752803ce43ce477ffb4d129a00f5933613f942a07b881c17b36cbae47d66af62a70393be44f831dbbbf07693d9ef458f87')
+sha512sums=('c150fa1469b9f1bec922a2b47a89a9ebab322427303d37936b364c8b21f2f281debbaa265f52458ea8642df16f49790f8d82fbcbb7c7e947a331f8f91a85e302')
 build() {
   bsdtar -xf zoom_orig-$pkgver.pkg.tar.xz \
     --exclude opt/zoom/cef --exclude opt/zoom/Qt --exclude opt/zoom/qt.conf --exclude opt/zoom/translations \

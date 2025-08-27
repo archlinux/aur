@@ -1,5 +1,5 @@
 pkgbase = zoom-system-qt
-	pkgver = 6.5.8.3527
+	pkgver = 6.5.11.4015
 	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = zoom-system-qt
 	optdepends = qt5-remoteobjects
 	optdepends = ffmpeg
 	optdepends = zoom-system-qt-cef: zoomus.conf disableCef=false
-	noextract = zoom-system-qt-6.5.8.3527-1-x86_64.pkg.tar.zst
-	noextract = zoom-system-qt-cef-6.5.8.3527-1-x86_64.pkg.tar.zst
-	noextract = zoom_orig-6.5.8.3527.pkg.tar.xz
+	noextract = zoom-system-qt-6.5.11.4015-1-x86_64.pkg.tar.zst
+	noextract = zoom-system-qt-cef-6.5.11.4015-1-x86_64.pkg.tar.zst
+	noextract = zoom_orig-6.5.11.4015.pkg.tar.xz
 	options = !strip
 	options = emptydirs
-	source = zoom_orig-6.5.8.3527.pkg.tar.xz::https://zoom.us/client/6.5.8.3527/zoom_x86_64.pkg.tar.xz
-	sha512sums = fe3b042bcf0c79b38a9d4e782bfbe5752803ce43ce477ffb4d129a00f5933613f942a07b881c17b36cbae47d66af62a70393be44f831dbbbf07693d9ef458f87
+	source = zoom_orig-6.5.11.4015.pkg.tar.xz::https://zoom.us/client/6.5.11.4015/zoom_x86_64.pkg.tar.xz
+	sha512sums = c150fa1469b9f1bec922a2b47a89a9ebab322427303d37936b364c8b21f2f281debbaa265f52458ea8642df16f49790f8d82fbcbb7c7e947a331f8f91a85e302
 
 pkgname = zoom-system-qt
 	pkgdesc = Zoom Workspace client on system runtime
