@@ -1,18 +1,30 @@
 pkgbase = funkwhale-cli-git
-	pkgdesc = CLI tool for interacting with funkwhale instances
-	pkgver = v0.5.0+5+g2802466
+	pkgdesc = A command line interface to interact with Funkwhale servers
+	pkgver = r121.4767d1a
 	pkgrel = 1
-	url = https://github.com/RodrigoLeiteF/funkwhale-cli
-	arch = x86_64
-	license = GPLv2
-	makedepends = rust
-	makedepends = cargo
+	epoch = 2
+	url = https://dev.funkwhale.audio/funkwhale/cli
+	arch = any
+	license = AGPL
 	makedepends = git
-	depends = openssl
-	provides = funkwhale-cli
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-keyring
+	depends = python-click-log
+	depends = python-dotenv
+	depends = python-marshmallow
+	depends = python-semver
+	depends = python-tabulate
+	provides = funkwhale-cli=r121.4767d1a
 	conflicts = funkwhale-cli
-	source = git+https://github.com/RodrigoLeiteF/funkwhale-cli
-	md5sums = SKIP
+	source = funkwhale-cli::git+https://dev.funkwhale.audio/funkwhale/cli.git
+	source = keyrings.patch
+	source = oauth.patch
+	sha256sums = SKIP
+	sha256sums = b9561fed8b9f5a5b4e317b0c29ce2ce034a4b15426ed9a35dd503ce6da970c36
+	sha256sums = 6033ae064004b551c0159e66de8934bdeb2e706c0951330f7250b0a1308dd669
 
 pkgname = funkwhale-cli-git
-
