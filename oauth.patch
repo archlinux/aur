@@ -1,0 +1,134 @@
+diff --git a/.gitignore b/.gitignore
+index d110fb48b71bad3e729fc7913f2ec9645738ca63..2eb7caa1eae8a1fbf57b99bf9d92baf652100ca5 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -3,4 +3,5 @@ build
+ funkwhale
+ venv
+ .idea
+-funkwhale_cli.egg-info
+\ No newline at end of file
++funkwhale_cli.egg-info
++**/__pycache__
+diff --git a/README.md b/README.md
+index 02cfcbf681c8c8b13757043cc972e5028d515c4f..c15262a667c3cfefd5a2b38e40dacd726058ec9d 100644
+--- a/README.md
++++ b/README.md
+@@ -32,8 +32,8 @@ funkwhale --help
+ # get help on a specific command
+ funkwhale tracks ls --help
+ 
+-# get login
+-funkwhale -H https://demo.funkwhale.audio login  # credentials are demo and demo on this server
++# get login - You need to create an application in your Funkwhale-settings. Then you need to provide the access-token of that application here
++funkwhale -H https://demo.funkwhale.audio login  
+ 
+ # Store the server URL to avoid specifying it on the CLI
+ echo "FUNKWHALE_SERVER_URL=https://demo.funkwhale.audio" >> .env
+diff --git a/funkwhale_cli/api.py b/funkwhale_cli/api.py
+index c29b51ba3b29e2641014ddb1c44a710a362f5fb5..5c89c2cf66b406067fa8a393faa61d2182c70f19 100644
+--- a/funkwhale_cli/api.py
++++ b/funkwhale_cli/api.py
+@@ -1,3 +1,6 @@
++import urllib.parse
++import webbrowser
++
+ import aiohttp
+ 
+ from . import exceptions
+@@ -44,18 +47,6 @@ def clean_nodeinfo(data):
+     return result.data
+ 
+ 
+-async def get_jwt_token(session, url, username, password):
+-    url = f"{url}/api/v1/token/"
+-    response = await session.post(
+-        url, data={"username": username, "password": password}
+-    )
+-    if response.status == 400:
+-        raise exceptions.AuthenticationError(
+-            "Unable to log in with provided credentials"
+-        )
+-    return (await response.json())["token"]
+-
+-
+ class API(object):
+     def __init__(self, base_url, token):
+         self.base_url = base_url
+diff --git a/funkwhale_cli/cli/auth.py b/funkwhale_cli/cli/auth.py
+index befc482585c20b9ce33e0c37f5a9ba08bcacae76..134d13014a5b9b9e8c5d1a5cea55c1ea790db20c 100644
+--- a/funkwhale_cli/cli/auth.py
++++ b/funkwhale_cli/cli/auth.py
+@@ -68,31 +68,22 @@ def init_keyring():
+ 
+ 
+ @base.cli.command()
+-@click.option("-u", "--username", envvar="FUNKWHALE_USERNAME", prompt=True)
+-@click.option(
+-    "-p", "--password", envvar="FUNKWHALE_PASSWORD", prompt=True, hide_input=True
+-)
++@click.option("-t", "--access-token", envvar="FUNKWHALE_ACCESS_TOKEN", prompt=True, hide_input=True)
+ @click.pass_context
+ @base.async_command
+-async def login(ctx, username, password):
+-    async with api.get_session() as session:
+-        token = await api.get_jwt_token(
+-            session, ctx.obj["SERVER_URL"], username=username, password=password
+-        )
+-
++async def login(ctx, access_token):
+     try:
+-        keyring.set_password(ctx.obj["SERVER_URL"], "_", token)
++        keyring.set_password(ctx.obj["SERVER_URL"], "_", access_token)
+     except ValueError as e:
+         raise click.ClickException(
+-            "Error while retrieving password from keyring: {}. Your password may be incorrect.".format(
++            "Error while saving access-token to keyring: {}.".format(
+                 e.args[0]
+             )
+         )
+     except Exception as e:
+         raise click.ClickException(
+-            "Error while retrieving password from keyring: {}".format(e.args[0])
++            "Error while saving access-token to keyring: {}".format(e.args[0])
+         )
+-    click.echo("Login successfull!")
+ 
+ 
+ @base.cli.command()
+@@ -100,4 +91,4 @@ async def login(ctx, username, password):
+ @base.async_command
+ async def logout(ctx):
+     keyring.delete_password(ctx.obj["SERVER_URL"], "_")
+-    click.echo("Logout successfull!")
++    click.echo("Logout successful!")
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 5d7819f1a997373864ba789fa0002716e522a716..d43d461027a25f4dab5045e529bebf134bc5758d 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -24,7 +24,8 @@ def cli_ctx(mocker):
+         obj={
+             "remote": api.get_api(
+                 domain="test.funkwhale", protocol="https", token="test_token"
+-            )
++            ),
++            "SERVER_URL": "http://testurl"
+         },
+         color=None,
+     )
+@@ -82,6 +83,15 @@ def test_lazy_credential(mocker):
+     str(credential)
+     assert get_password.call_count == 1
+ 
++def test_login(cli_ctx, session, mocker):
++    command = cli.auth.login
++
++    set_password = mocker.patch("keyring.set_password")
++    
++    command.callback(access_token="password")
++
++    set_password.assert_called_once_with("http://testurl", "_", "password")
++
+ 
+ def test_users_me(cli_ctx, session, responses, get_requests):
+     command = cli.users.users_me

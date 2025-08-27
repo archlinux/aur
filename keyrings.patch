@@ -1,0 +1,17 @@
+diff --git a/funkwhale_cli/cli/auth.py b/funkwhale_cli/cli/auth.py
+index befc482..7b274be 100644
+--- a/funkwhale_cli/cli/auth.py
++++ b/funkwhale_cli/cli/auth.py
+@@ -1,13 +1,6 @@
+ import click
+ import keyring
+
+-# importing the backends explicitely is required for PyInstaller to work
+-import keyring.backends.kwallet
+-import keyring.backends.Windows
+-import keyring.backends.OS_X
+-import keyring.backends.SecretService
+-import keyring.backends.chainer
+-
+ from . import base
+ from .. import api
