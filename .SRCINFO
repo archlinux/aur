@@ -19,6 +19,7 @@ pkgbase = xemu
 	makedepends = libslirp
 	makedepends = meson
 	makedepends = nlohmann-json
+	makedepends = python-distlib
 	makedepends = python-yaml
 	makedepends = tomlplusplus>=3.1
 	makedepends = vulkan-headers

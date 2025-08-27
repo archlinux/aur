@@ -29,6 +29,7 @@ makedepends=(
 	libslirp
 	meson
 	nlohmann-json
+	python-distlib
 	python-yaml
 	'tomlplusplus>=3.1'
 	vulkan-headers
