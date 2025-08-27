@@ -1,18 +1,17 @@
 pkgbase = simgear
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
 	pkgver = 2024.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://home.flightgear.org/
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.0-only
+	makedepends = plib
 	makedepends = boost174
 	makedepends = cmake
 	makedepends = mesa
-	depends = glu
-	depends = glut
-	depends = freealut
-	depends = plib
 	depends = openscenegraph
+	depends = openal
+	depends = ffmpeg
 	source = https://gitlab.com/flightgear/simgear/-/archive/v2024.1.1/simgear-v2024.1.1.tar.gz
 	sha256sums = 5e7215d5876d1def78b90a1dee5424f0b3f4ecd7a71a1e074e21d984d4d2dbbf
 
