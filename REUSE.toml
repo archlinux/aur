@@ -27,3 +27,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "torchvision contributors"
 SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = [
+    "cuviddec.h",
+    "nvcuvid.h",
+]
+SPDX-FileCopyrightText = "DALI contributors"
+SPDX-License-Identifier = "Apache-2.0"
