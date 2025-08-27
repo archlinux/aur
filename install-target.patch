@@ -37,32 +37,6 @@ Index: plugins/regularboldtextmarker/regularboldtextmarker.pro
 +  target.path = $$PLUGINDIR
 +  INSTALLS += target
 +}
-Index: scripts/debian_amd64/beebeep.appdata.xml
-===================================================================
---- scripts/debian_amd64/beebeep.appdata.xml	(nonexistent)
-+++ scripts/debian_amd64/beebeep.appdata.xml	(working copy)
-@@ -0,0 +1,21 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<component type="desktop-application">
-+  <id>net.beebeep.BeeBEEP</id>
-+  <launchable type="desktop-id">beebeep.desktop</launchable>
-+  <name>BeeBEEP</name>
-+  <summary>Free office messenger</summary>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>GPL-3.0</project_license>
-+  <developer_name>Marco Mastroddi</developer_name>
-+  <description>
-+    <p>This office messaging application, BeeBEEP, does not need an external server to let users communicate with each other. In your office, in your laboratory, at school, at home, in the hospital or in any other activity having the need for security and privacy, BeeBEEP is the best way to keep your private messages safe.</p>
-+  </description>
-+  <screenshots>
-+    <screenshot type="default">
-+      <image>https://www.beebeep.net/images/shots/beebeep_in_action_windows.png</image>
-+    </screenshot>
-+  </screenshots>
-+  <url type="bugtracker">https://sourceforge.net/p/beebeep/tickets/</url>
-+  <url type="homepage">https://www.beebeep.net/</url>
-+  <update_contact>marco.mastroddi@gmail.com</update_contact>
-+</component>
 Index: src/src.pro
 ===================================================================
 --- src/src.pro	(revision 1502)

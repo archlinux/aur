@@ -15,7 +15,7 @@ depends=('qt5-multimedia' 'qt5-x11extras')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-code-$pkgver.zip"
         'install-target.patch')
 sha256sums=('44994daf35c042aa1f023ad95c2fa17c2c652da5d4584ca547b1bbc2ed916248'
-            '11ff00bcee9d923ae3a34244b13813a33c8aafceda9a8c5e512fee1c3c52cb94')
+            'f6dd4cc2c797a9b21bee292f8adba563abff22b4065a22266fbd37efd96a5071')
  
 prepare() {
   cd $pkgname-code-r*
