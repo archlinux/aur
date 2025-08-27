@@ -4,7 +4,7 @@
 
 pkgname=lsfg-vk-git
 pkgver=v1.0.0.r40.5e04b4f
-pkgrel=1
+pkgrel=2
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=('x86_64')
 url="https://github.com/PancakeTAS/lsfg-vk"
@@ -15,6 +15,7 @@ depends=(
 	'gcc-libs'
 	'gtk4'
 	'libadwaita'
+	'pkgconf'
 )
 makedepends=(
 	'clang'
