@@ -1,7 +1,7 @@
 pkgbase = quectel-cm-git
 	pkgdesc = Quectel Connect Manager tool. For Quectel WWAN modems.
 	pkgver = 1.6.0.24.r3_kmilo17pet.20210805.2c623ff
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kmilo17pet/quectel-cm
 	arch = aarch64
 	arch = armv6h

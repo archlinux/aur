@@ -4,7 +4,7 @@ _projectname="quectel-cm"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=1.6.0.24.r3_kmilo17pet.20210805.2c623ff
-pkgrel=1
+pkgrel=2
 pkgdesc="Quectel Connect Manager tool. For Quectel WWAN modems."
 arch=(
   'aarch64'
@@ -89,7 +89,6 @@ package() {
   _docfiles=(
     "${srcdir}/git.log"
     README.md
-    NOTICE
     ReleaseNote.txt
   )
   _licensefiles=(
@@ -101,7 +100,7 @@ package() {
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
   done
   printf '%s\n' " --> installing license ..."
-  for _licensefile in "${_licensefiles}"; do
+  for _licensefile in "${_licensefiles[@]}"; do
     install -D -v -m644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")"
     ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_licensefile}")"
   done
