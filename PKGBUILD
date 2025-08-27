@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=vk-messenger-bin
-pkgver=6.0.52.327
+pkgver=6.0.54.338
 pkgrel=1
 pkgdesc="VK Messenger for Linux from rpm package"
 arch=('x86_64')
@@ -25,9 +25,7 @@ _app_bin_name=${_app_name}".rpm"
 source=(
     https://upload.object2.vk-apps.com/vk-me-desktop-dev-5837a06d-5f28-484a-ac22-045903cb1b1a/latest/${_app_bin_name}
 )
-sha256sums=(
-    'c0317881acfe58b9ffc32acb7ffc78675facad22e0f4bbc26ac3d4357c60e4fa'
-)
+sha256sums=('2c2082d5a25572de4686d8423bad51fa6bcf70d73c1e0ffbdaa063c33a1b9ff8')
 
 package() {
     cp -a "${srcdir}/opt/"  "${pkgdir}/opt/"
