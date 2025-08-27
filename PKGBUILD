@@ -1,7 +1,7 @@
 # Maintainer: Dirk Wilden <dirk.wilden@device-insight.com>
 
 pkgname=kafkactl
-pkgver=5.12.0
+pkgver=5.12.1
 pkgrel=1
 pkgdesc="Command Line Tool for managing Apache Kafka"
 url="https://github.com/deviceinsight/kafkactl/"
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/deviceinsight/kafkactl/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  1a54b398bfe4d634967a393c1cf119f31c0b2d5420230c233a424cfff30eb56b
+  25d1879185235c35fd327c4e96a403bb60188df82b2af3f9bfbb339adb0ae718
 )
 
 build() {
