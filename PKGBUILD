@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.43.1
+pkgver=5.44.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fa
 checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-gradio-pdf' 'python-matplotlib' 'python-hypothesis' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras' 'python-itsdangerous')
 optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp' 'ruff: needed for custom component docs generation')
 source=("${url}/archive/refs/tags/$_name@$pkgver.tar.gz")
-sha256sums=('c14a7ebf0b74124002c10b6a5bd6081c7942f38a474b62b262e33cdbeaebd0bc')
+sha256sums=('49c81507c26f0bfc756a04d3142fb5b4f4c44a02e6a9ef1955050a831b6f7cf6')
 
 prepare(){
   cd "$srcdir"/$_name-$_name-$pkgver
@@ -37,8 +37,6 @@ check() {
     --deselect test/test_external.py
     # Need custom tunnel
     --deselect test/test_tunneling.py::test_setup_custom_tunnel
-    # Failed
-    --deselect test/test_blocks.py::test_post_process_file_blocked
   )
   cd "$srcdir"/$_name-$_name-$pkgver
   ulimit -n 16384
