@@ -14,24 +14,24 @@ source=("$pkgname::git+https://github.com/cakePhone/omarchy_calculator.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   # Get Flutter dependencies
   flutter pub get
 }
 
 build() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   # Build the Flutter Linux application
   flutter build linux --release
 }
 
 package() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   
   # Install the main executable and libraries
   install -Dm755 "build/linux/x64/release/bundle/omarchy_calculator" \

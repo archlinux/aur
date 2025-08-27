@@ -1,0 +1,16 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.*
+
+# Makepkg files
+*.log
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
