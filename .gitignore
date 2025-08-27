@@ -1,6 +1,9 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 *~
 *.log
 *.tar.xz
-qtbug-96392.patch
+qtbase
 qtbase-everywhere-src-*.tar.xz
 qt6-base-headless-*.pkg.tar.*
