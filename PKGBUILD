@@ -5,9 +5,13 @@
 # Copyright: (c) 2025 damachine
 # License: MIT
 # Version: 1.0
+#   This software is provided "as is", without warranty of any kind, express or implied.
+#   I do not guarantee that it will work as intended on your system.
 #
 # Info:
-#   CoolerDash PKGBUILD
+#   CoolerDash 'PKGBUILD'
+#   This 'PKGBUILD' is hosted on AUR and is intended for automatic updates via AUR.
+#   This 'PKGBUILD' is designed for Arch Linux and derivatives.
 #   Build system for CoolerDash (C99 LCD daemon)
 #   Project coding standards and packaging notes (see README for details)
 #
@@ -17,19 +21,15 @@
 #   Do not run as root. Use dedicated user for security.
 #   Ensure all required dependencies are installed.
 #   It uses color output and Unicode icons for better readability. All paths and dependencies are configurable.
-#   See README.md and AUR-README.md for further details.
+#   See 'README.md' and 'AUR-README.md' for further details.
 #
 # Build:
-#   makepkg -si
+#   'makepkg -si'
 #
 # Dependency:
 #   'cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' are required for core functionality
 #   'ttf-roboto' is required for proper font rendering on the LCD
 #   All dependencies are documented in README.md and AUR-README.md
-#
-# Disclaimer:
-#   This software is provided "as is", without warranty of any kind, express or implied.
-#   I do not guarantee that it will work as intended on your system.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
 pkgver=1.26.r0.g15ad2d4
@@ -53,11 +53,12 @@ sha256sums=('SKIP'
             '18b1a6302b369ce01ce5a040046fa609ab045a99890797e9d8c041543ac450d6')
 validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
+# https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
 prepare() {
   git -C "$srcdir/coolerdash" -c gpg.ssh.allowedSignersFile="$srcdir/ssh_allowed_signers" verify-tag "$_tag"
 }
 
-# Git-Tag Build versioning
+# https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
 pkgver() {
     cd "$srcdir/coolerdash"
     git describe --tags --long --match "v*" | sed -E 's/^v//; s/-([0-9]+)-g/\.r\1.g/; s/-/./g'
@@ -76,8 +77,10 @@ build() {
     # Build inside the checked-out repository
     cd "$srcdir/coolerdash" || return 1
 
-    # Remove all previous tarball builds from srcdir (avoid using $srcdir)
-    rm -rf "$srcdir"/coolerdash-*.pkg.* || true
+    # Remove all previous tarball builds
+    rm -rf coolerdash-*.pkg.* || true
+    rm -rf build bin || true
+    mkdir -p build bin || true
 
     # Clean any previous builds if a Makefile exists
     if [[ -f Makefile || -f GNUmakefile ]]; then
@@ -120,7 +123,7 @@ check() {
 }
 
 package() {
-    # For local build: use current directory directly
+    # Create necessary directories and install files
     install -dm755 "$pkgdir/opt/coolerdash"
     install -Dm644 "$srcdir/AUR-README.md" "$pkgdir/opt/coolerdash/AUR-README.md"
     install -Dm644 "$srcdir/README.md" "$pkgdir/opt/coolerdash/README.md"
