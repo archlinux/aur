@@ -2,8 +2,8 @@
 
 pkgname=python-p115cipher
 _name=${pkgname#python-}
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 epoch=
 pkgdesc="115 cipher module."
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('cb8e9d480952e2a17850f2d1dc00892e50d63f06cc021d4dcc286e9b81a505eb')
+sha256sums=('4b5afcac9a7515f8b9173eeea6a2f0ddfa1125e79c64e360d4054b0aa239b83e')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
