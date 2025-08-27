@@ -72,6 +72,7 @@ Make sure you have SSH access to AUR configured with your SSH key uploaded to yo
 ## Package Structure
 
 This is a `-git` package that:
+
 - Clones the source code automatically from the main repository
 - Uses `pkgver()` function to generate version numbers based on git commits
 - Builds using Flutter's Linux build system
