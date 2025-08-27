@@ -1,7 +1,7 @@
 # Maintainer: Jonas Alves(JonasAlv) <zeropior@proton.me>
 pkgname=turtle-wow
 pkgver=2.1.2
-pkgrel=18
+pkgrel=19
 pkgdesc="Turtle WoW game launcher (extracted AppImage)"
 arch=('x86_64')
 url="https://turtle-wow.org/"
@@ -24,14 +24,15 @@ sha256sums=('SKIP'
 prepare() {
   cd "$srcdir"
   chmod +x "${pkgname}-${pkgver}.AppImage"
-  # extract
+  # extract AppImage
   ./"${pkgname}-${pkgver}.AppImage" --appimage-extract
   
-  cd squashfs-root
-  # find and delete all bundled libraries
-  rm -rfv squashfs-root/usr/lib/*  
+  cd squashfs-root/
+  # delete bundled libraries
+  rm -rfv usr/lib/*
   chmod u+x AppRun
 }
+
 
 package() {
   cd "$srcdir/squashfs-root"

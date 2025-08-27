@@ -1,7 +1,7 @@
 pkgbase = turtle-wow
 	pkgdesc = Turtle WoW game launcher (extracted AppImage)
 	pkgver = 2.1.2
-	pkgrel = 18
+	pkgrel = 19
 	url = https://turtle-wow.org/
 	install = turtle-wow.install
 	arch = x86_64
