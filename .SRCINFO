@@ -1,13 +1,15 @@
 pkgbase = heatshrink
 	pkgdesc = A data compression/decompression library for embedded/real-time systems
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atomicobject/heatshrink
 	arch = x86_64
 	license = ISC
+	makedepends = cmake
+	options = !lto
 	source = https://github.com/atomicobject/heatshrink/archive/refs/tags/v0.4.1.tar.gz
 	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-libs/heatshrink/files/heatshrink-0.4.1-cmake.patch
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 7529a1c8ac501191ad470b166773364e66d9926aad632690c72c63a1dea7e9a6
+	sha256sums = 12fa7ed5bc8178c24005cab8675b6089e823e3dc542243095d9425ee06c8ccb4
 
 pkgname = heatshrink
