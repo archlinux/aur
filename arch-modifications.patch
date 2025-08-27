@@ -1,0 +1,40 @@
+--- a/shutdown.in_orig	2025-08-26 20:10:09.550911043 -0400
++++ b/shutdown.in	2025-08-26 20:10:40.490932946 -0400
+@@ -12,29 +12,17 @@
+ 
+ SCRIPTSDIR="@cfgdir@/run.d"
+ 
++WRAPPER_DIR="$(dirname "$0")"
+ CMD="${0##*/}"
+ 
++# supported commands
+ case "$CMD" in
+-  halt|reboot|shutdown|poweroff|coldreboot|pm-hibernate|pm-suspend|pm-suspend-hybrid)
+-    if ! EXEC=$(command -v "$CMD.no-molly-guard"); then
+-      if ! EXEC=$(command -v "$CMD.no-molly-guard.usr-is-merged"); then
+-        echo "E: not a regular file: $EXEC" >&2
+-        exit 4
+-      fi
+-    fi
+-    if [ "$EXEC" -ef /usr/lib/molly-guard/molly-guard ]; then
+-      # Symlink forwards to ourselves. Resolve!
+-      LINKTARGET=$(readlink "$EXEC")
+-      if ! EXEC=$(command -v "$LINKTARGET.no-molly-guard"); then
+-        if ! EXEC=$(command -v "$LINKTARGET.no-molly-guard.usr-is-merged"); then
+-          echo "E: not a regular file $EXEC" >&2
+-          exit 4
+-        fi
+-      fi
+-    fi
+-    if [ ! -x $EXEC ]; then
+-      echo "E: not an executable: $EXEC" >&2
+-      exit 3
++  halt|poweroff|reboot|shutdown|coldreboot|pm-hibernate|pm-suspend|pm-suspend-hybrid)
++    EXEC="$WRAPPER_DIR/$CMD.no-molly-guard"
++
++    if [ ! -x "$EXEC" ]; then
++        echo "E: not a regular executable: $EXEC" >&2
++        exit 1
+     fi
+     ;;
+   *)

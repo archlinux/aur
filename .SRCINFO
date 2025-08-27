@@ -1,17 +1,18 @@
 pkgbase = molly-guard
 	pkgdesc = protects machines from accidental shutdowns/reboots (via ssh)
-	pkgver = 0.8.1
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://packages.debian.org/stable/molly-guard
 	install = molly-guard.install
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	makedepends = docbook-xsl
 	depends = openssh
 	depends = run-parts
 	optdepends = inetutils: for the FQDN Hostname support
-	source = https://mirror.unitedcolo.de/debian/pool/main/m/molly-guard/molly-guard_0.8.1.tar.xz
-	sha256sums = abaf8b912902066b25d17b2a24b8edcbeef3004e1c43591f25a733f50b4a555b
-	sha512sums = 07d16dd40af1df8707a5be78a661acde2f83e15f020c4087f054c44ff9e57086b469a3d7ef332044c36e2d7e0969e495ff8c8f752e2bd21059b1a3618a6a0a43
+	source = https://mirror.unitedcolo.de/debian/pool/main/m/molly-guard/molly-guard_0.8.5.tar.xz
+	source = arch-modifications.patch
+	sha512sums = 1e3231930e12f4727acefac737632052dbf018bb574803527ea745daec7723f42fec911b0352da23a87202c8c1a4401d238f304f9849a1e647de9b06ac064150
+	sha512sums = 7bf489623cbe7d6d59efbe070d40d1ad09d34b19bbf49312a0db4e266c38456a67be07e7bfee5cb392ee6985fd89422ae51e2090f57dd4573d79b93cc1757d31
 
 pkgname = molly-guard
