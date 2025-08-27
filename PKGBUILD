@@ -32,7 +32,7 @@
 #   All dependencies are documented in README.md and AUR-README.md
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.26.r0.g15ad2d4
+pkgver=1.27.r0.geced0af
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -46,7 +46,7 @@ makedepends=('gcc' 'make' 'pkg-config' 'git' 'openssh')
 optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_tag=v1.26
+_tag=v1.27
 source=("git+https://github.com/damachine/coolerdash.git?signed#tag=$_tag?signed"
         "ssh_allowed_signers")
 sha256sums=('SKIP'
