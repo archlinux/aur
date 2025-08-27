@@ -1,9 +1,9 @@
-pkgbase = kinit
+pkgbase = kinit5
 	pkgdesc = Process launcher to speed up launching KDE applications
 	pkgver = 5.116.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
-	install = kinit.install
+	install = kinit5.install
 	arch = x86_64
 	groups = kf5
 	license = LGPL
@@ -16,4 +16,4 @@ pkgbase = kinit
 	sha256sums = e4a4acc661035d22f7636397d23307c2e4e4129a7ed82d458fdf2f7ee63dbc2c
 	sha256sums = SKIP
 
-pkgname = kinit
+pkgname = kinit5
