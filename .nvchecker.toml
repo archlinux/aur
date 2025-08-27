@@ -1,0 +1,4 @@
+[python-asyncpraw]
+source = "git"
+git = "https://github.com/praw-dev/asyncpraw.git"
+prefix = "v"

@@ -1,25 +1,57 @@
-# Maintainer: entriphy <t4ils.dev@gmail.com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: entriphy <t4ils.dev@gmail.com>
 
-pkgname=python-asyncpraw
-_pkgname=asyncpraw
-pkgver=7.7.1
+_name="asyncpraw"
+pkgname="python-${_name}"
+pkgver=7.8.1
 pkgrel=1
 pkgdesc="Asynchronous Python Reddit API wrapper"
-arch=("any")
-url="https://github.com/praw-dev/$_pkgname"
-license=("BSD")
-options=(!emptydirs)
-depends=("python" "python-asyncprawcore" "python-aiofiles")
-makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("e20b8e00979c9de092334a3c1b2a0ca57a6647e41add2ee647d4a957f109ff1e")
+arch=('any')
+url="https://asyncpraw.readthedocs.io/en/stable/"
+_url="https://github.com/praw-dev/${_name}"
+license=('BSD-2-Clause')
+depends=(
+  'python>=3.8'
+  'python-aiofiles'
+  'python-aiohttp'
+  'python-aiosqlite'
+  'python-asyncprawcore>=2.4'
+  # 'python-defusedxml'
+  'python-update-checker>=0.18'
+)
+makedepends=(
+  'python-build'
+  'python-flit-core>=3.4'
+  'python-installer'
+  'python-typing_extensions'
+  'python-wheel'
+)
+# checkdepends=(
+#   'python-pytest'
+#   'python-pytest-asyncio'
+#   'python-pytest-vcr'
+#   'python-vcrpy'
+# )
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bcab59c279c0bb696439e4ee3fcfbfc15763041c1aa36510e3cf084321b5197e')
 
-build() {
-    cd "$_pkgname-$pkgver"
-	python -m build --wheel --no-isolation
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  sed -i 's/ <.*"/"/g' 'pyproject.toml'
 }
 
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  python -m build --wheel --no-isolation
+}
+
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   pytest
+# }
+
 package() {
-    cd "$_pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${srcdir}/${_pkgsrc}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
