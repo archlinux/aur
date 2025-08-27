@@ -1,21 +1,20 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=bluejay-git
-pkgver=1.0.3.r0.ga556b2f
+pkgver=1.0.3.r4.g69052fc
 pkgrel=1
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
 url="https://github.com/EbonJaeger/bluejay"
 license=(
-    CC0-1.0
-    CC-BY-SA-4.0
-    MPL-2.0
+    'CC0-1.0 AND CC-BY-SA-4.0 AND MPL-2.0'
 )
 depends=(
     bluez-qt
     gcc-libs
     glibc
     hicolor-icon-theme
+    kcolorscheme
     kcoreaddons
     kdbusaddons
     ki18n
@@ -27,6 +26,7 @@ depends=(
     qt6-declarative
 )
 makedepends=(
+    appstream
     extra-cmake-modules
     git
     ninja
@@ -47,7 +47,7 @@ build() {
         -S "${pkgname%-git}"
         -B build
         -D CMAKE_BUILD_TYPE=None
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -D CMAKE_INSTALL_PREFIX=/usr
         -G Ninja
         -W no-dev
     )
@@ -57,6 +57,8 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    cd "$srcdir/${pkgname%-git}"
-    install -Dm0644 -t "$pkgdir/usr/share/doc/${pkgname%-git}" README.md
+    install -Dm0644 -t "$pkgdir/usr/share/doc/${pkgname%-git}" \
+        "$srcdir/${pkgname%-git}/README.md"
 }
+
+# vim: set ft=sh ts=4 sw=4 et:
