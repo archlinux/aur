@@ -1,5 +1,5 @@
 pkgbase = lyrus-git
-	pkgdesc = A python lyrics player for cmus
+	pkgdesc = A Python curses lyrics player primarily for cmus, with playerctl as a fallback
 	pkgver = 1.0.0
 	pkgrel = 2
 	url = https://github.com/Ja4e/Lyrus
