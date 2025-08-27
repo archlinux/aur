@@ -1,0 +1,16 @@
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.log
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Editor files
+.vscode/
+.idea/
+*~
+.*.swp
