@@ -1,6 +1,6 @@
 pkgbase = waveterm-vis
 	pkgdesc = A modern terminal-based music visualizer with stunning ASCII art effects
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/tree3stan-chord/waveterm
 	arch = any
@@ -15,12 +15,13 @@ pkgbase = waveterm-vis
 	depends = python-click
 	depends = python-pydantic
 	depends = python-toml
+	depends = python-textual
 	optdepends = python-sounddevice: for microphone audio input
 	optdepends = python-librosa: for advanced audio processing
 	optdepends = python-pydub: for audio file support
 	optdepends = python-pillow: for export capabilities
 	optdepends = python-imageio: for GIF/video export
-	source = git+https://github.com/tree3stan-chord/waveterm.git#tag=v0.3.0
+	source = git+https://github.com/tree3stan-chord/waveterm.git#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = waveterm-vis

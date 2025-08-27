@@ -1,13 +1,13 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=waveterm-vis
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A modern terminal-based music visualizer with stunning ASCII art effects'
 arch=('any')
 url='https://github.com/tree3stan-chord/waveterm'
 license=('MIT')
-depends=('python' 'python-numpy' 'python-rich' 'python-click' 'python-pydantic' 'python-toml')
+depends=('python' 'python-numpy' 'python-rich' 'python-textual' 'python-click' 'python-pydantic' 'python-toml')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
     'python-sounddevice: for microphone audio input'
