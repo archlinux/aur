@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=inform7-ide-git
-pkgver=2.0.0.r151.g958ee984
+pkgver=2.0.0.r178.g4dcec50e
 pkgrel=1
 pkgdesc="a ide for the inform language/compiler"
 arch=(x86_64)
@@ -39,7 +39,6 @@ cd "inform"
 make "makers"
 make "forcetools"
 make "forcekits"
-make "forceextensions"
 make "localintegration"
 make -f "inform6/inform6.mk" "interpreters"
 
@@ -55,6 +54,7 @@ make "forcetransferdocumentation"
 make "forcetransferoutcomepages"
 make "forcetransfertemplates"
 make "forcetransferdelia"
+make "forcetransfersyntaxes"
 
 make "retrospective"
 cp -r "retrospective" -t "${srcdir}/inform7-ide"
