@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinuxo.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinuxo.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=cervisia
 pkgver=25.04.3
-pkgrel=3
+pkgrel=4
 pkgdesc='CVS Frontend'
 url='https://apps.kde.org/cervisia/'
 arch=(x86_64)
@@ -18,7 +19,7 @@ depends=(gcc-libs
          kdbusaddons5
          kdesu5
          ki18n5
-         krb5
+         kinit5
          kio5
          kitemviews5
          knotifications5
