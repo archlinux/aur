@@ -1,7 +1,7 @@
 pkgbase = waveterm-vis
 	pkgdesc = A modern terminal-based music visualizer with stunning ASCII art effects
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree3stan-chord/waveterm
 	arch = any
 	license = MIT
