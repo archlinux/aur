@@ -26,8 +26,10 @@ makedepends=(
 )
 source=(
   "xrizer::git+${url}.git"
+  "openvrpaths.vrpath"
 )
 sha256sums=(
+  "SKIP"
   "SKIP"
 )
 options=("!lto")
@@ -66,6 +68,9 @@ package_xrizer-common-git() {
   provides=("xrizer-common")
   conflicts=("xrizer-common")
 
+  install -Dm644 \
+    "${srcdir}/openvrpaths.vrpath" \
+    "${pkgdir}/opt/xrizer/openvrpaths.vrpath"
   install -Dm644 \
     /dev/null \
     "${pkgdir}/opt/xrizer/bin/version.txt"
