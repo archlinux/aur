@@ -1,7 +1,7 @@
 pkgbase = xiny
 	pkgdesc = A simple command line tool for converting between various units of measurement
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcicen/XinY
 	arch = i686
 	arch = x86_64
