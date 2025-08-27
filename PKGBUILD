@@ -3,8 +3,8 @@
 
 pkgname=php-legacy-yaml
 _extname=yaml
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.2.5
+pkgrel=1
 pkgdesc="Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library."
 arch=('x86_64')
 url="https://bd808.com/pecl-file_formats-yaml/"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('php-legacy' 'libyaml')
 backup=("etc/php-legacy/conf.d/$_extname.ini")
 source=("https://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('5937eb9722ddf6d64626799cfa024598ff2452ea157992e4e67331a253f90236')
+sha256sums=('0c751b489749fbf02071d5b0c6bfeb26c4b863c668ef89711ecf9507391bdf71')
 
 build() {
 	cd "$srcdir/$_extname-$pkgver"
