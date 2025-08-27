@@ -48,7 +48,7 @@ package() {
 
 	# Copy all other application files (`/opt` is the right place to dump this)
 	install -dm 755 "$pkgdir"/opt # Create directory first (required)
-	cp -r --preserve=mode -t "$pkgdir"/opt "$pkgname"
+	cp -r --preserve=mode "$_pkgname" "$pkgdir"/opt/"$pkgname"
 
 	# Override `font.conf` provided by the game, as it is useless
 	install -Dm644 font.conf "$pkgdir"/opt/"$pkgname"/font.conf
