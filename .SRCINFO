@@ -1,0 +1,17 @@
+pkgbase = duckduckgo-chat-cli
+	pkgdesc = A powerful CLI tool to interact with DuckDuckGo’s AI
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/benoitpetit/duckduckgo-chat-cli
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = https://github.com/benoitpetit/duckduckgo-chat-cli/archive/refs/tags/v1.2.2.tar.gz
+	sha512sums = c46f8b52802b89f86bcbf94db7f983b5fe870bffd4dad453e356fbd3113a5a85c1e73d4c53e2a7a27e4fe9329890f9f6317b5e30758ef6d6efd6490022867957
+
+pkgname = duckduckgo-chat-cli
