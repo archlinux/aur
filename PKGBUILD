@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.17.1
-_subver=1
+_subver=2
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 _nodeversion=22
@@ -38,7 +38,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('efec171b8027e3f7bd9c9b9973df8e335c3aa49db4febb7bec5ea695a3b18b1a'
+sha256sums=('2a7d571b1cd97b5c2042d23dac4a2b2786eaea546344e7ab75633565dd054a31'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -46,8 +46,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _electronversion="$(grep '^ *"electronVersion": *"' "${srcdir}/${pkgname}-${pkgver}/conf/build.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
