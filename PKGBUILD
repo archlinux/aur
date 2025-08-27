@@ -1,23 +1,16 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-
+# Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-remotecontrollers
-pkgver=5.27.10
-_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgver=5.27.12
 pkgrel=1
 pkgdesc='Translate various input device events into keyboard and pointer events'
-arch=(x86_64)
+arch=(any)
 url='https://plasma-bigscreen.org/'
 license=(GPL2)
 depends=(plasma-workspace)
 makedepends=(extra-cmake-modules plasma-wayland-protocols libcec)
 optdepends=('libcec: TV remotes support')
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('510426dfb47cb86e0491cdeaead3af6f5d8700408973188ca981c24572f1f473'
-            'SKIP')
-validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
-              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
-              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
-              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('3b1aefc4d6bb8215db54c53d5efa8a34f0e38477925511b1e6e342a9edace9d8')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
