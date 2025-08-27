@@ -10,6 +10,7 @@ pkgbase = plink1.9-git
 	depends = zlib>=1.2.4
 	depends = cblas
 	depends = lapack
+	provides = plink1.9
 	source = plink1.9::git+https://github.com/chrchang/plink-ng.git
 	source = bin-name.patch
 	sha256sums = SKIP

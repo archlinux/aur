@@ -15,6 +15,7 @@ source=('plink1.9::git+https://github.com/chrchang/plink-ng.git'
         'bin-name.patch')
 depends=('zlib>=1.2.4' 'cblas' 'lapack')
 makedepends=('git')
+provides=('plink1.9')
 sha256sums=(SKIP
             24f570e751f51b6ab05c29f92cad4a57b0a54b7bb4a81dd067cf1cdc1c887327)
 
