@@ -16,6 +16,8 @@ pkgbase = xrizer
 	makedepends = shaderc
 	options = !lto
 	source = xrizer::git+https://github.com/Supreeeme/xrizer.git#commit=76e01ac8ad79fed226a883985daa3cbe61271ca7
+	source = openvrpaths.vrpath
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = xrizer
