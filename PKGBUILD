@@ -2,7 +2,7 @@
 
 pkgname=waveterm-vis
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern terminal-based music visualizer with stunning ASCII art effects'
 arch=('any')
 url='https://github.com/tree3stan-chord/waveterm'
@@ -26,7 +26,7 @@ build() {
 
 check() {
     cd waveterm
-    python -m pytest || true  # Allow tests to fail gracefully
+    python -m pytest --tb=short || true  # Allow tests to fail gracefully
 }
 
 package() {
@@ -35,7 +35,11 @@ package() {
     # Install the Python package
     python -m installer --destdir="$pkgdir" dist/*.whl
     
-    # Install documentation
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Install documentation if files exist
+    if [[ -f README.md ]]; then
+        install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    fi
+    if [[ -f LICENSE ]]; then
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 }
