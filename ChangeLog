@@ -1273,3 +1273,17 @@ Fixes:
 - The logo in your booking page now immediately updates when you upload a new one.
 - The preferred alias of a Fastmail account is now correctly used as the organizer's email for meetings booked via a Morgen Scheduling Link.
 
+
+=== Morgen 3.6.17
+Improvements:
+- The maximum size of calendar feeds you can connect to Morgen has been increased to 4MB, so larger calendars can now sync without issues.
+ 
+Fixes:
+- Fixed an issue where the app could hang after pressing Connect when authorizing a calendar account locally.
+- Resolved a problem that caused infinite loading when connecting a calendar to the Morgen Cloud in certain cases.
+- Morgen now falls back to the browser if opening a native third-party app (like Todoist) fails — for example, if the app isn’t installed.
+- The AI Planner now always schedules new slots for long tasks instead of moving existing ones.
+- The support button in the bottom-right corner is now permanently hidden.
+- Fixed a bug where the “New task” button could disappear with certain task list configurations.
+- Fixed an issue where some Inbox tasks were not visible.
+- Frame filters now display task list colors, making it easier to select the right one.
