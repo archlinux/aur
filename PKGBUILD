@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='tencentcloud-cli'
-pkgver=3.0.1318.1
+pkgver=3.0.1380.1
 pkgrel=1
 pkgdesc='Tencent Cloud API 3.0 Command Line Interface'
 url='https://github.com/TencentCloud/tencentcloud-cli'
@@ -17,20 +17,25 @@ depends=(
 )
 optdepends=()
 makedepends=(git python-build python-installer python-setuptools python-wheel python-hatchling)
-conflicts=()
+conflicts=('tencentcloud-cli-intl-en')
 source=(
   "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('8e9e3e85103ee7811531cb8e3042143944106bddebc19a342d1fc52fe5881a03')
+sha256sums=('d1064d4464d08ad698ad5d8a4c7251ae1581135ae3e4e4109627fa10ac515947')
 
 build() {
   cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
-  #complete -C 'tccli_completer' tccli
+      cat > completion.bash << 'EOF'
+#!/bin/bash
+complete -C 'tccli_completer' tccli
+EOF
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/${_execname}"
 }
