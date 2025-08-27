@@ -13,6 +13,7 @@ url="https://www.cog-genomics.org/plink/2.0/"
 source=('plink2::git+https://github.com/chrchang/plink-ng.git' fixes.patch)
 depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp' 'intel-oneapi-compiler-shared-runtime')
 makedepends=('git')
+provides=('plink2')
 sha256sums=('SKIP'
             '7b6b3c9b418bf3e8e59e1311e59554540407bef99eb85e78fdcb8f26e2e40852')
 
