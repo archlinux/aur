@@ -1,8 +1,10 @@
 # Maintainer: Adityarup Laha <me@adityaruplaha.me>
 _pkgname='plink2'
 pkgname="$_pkgname-mkl-git"
+# Upstream has changed tag formats, epoch is necessary
+epoch=1
 _pkgver=2.0
-pkgver=2.0.r108.ga09b4443
+pkgver=2.0.a.6.17.r27.g281b4937
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 2.00 (alpha); dynamically linked to Intel MKL"
 arch=(x86_64)
@@ -12,7 +14,7 @@ source=('plink2::git+https://github.com/chrchang/plink-ng.git' fixes.patch)
 depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp' 'intel-oneapi-compiler-shared-runtime')
 makedepends=('git')
 sha256sums=('SKIP'
-            '1e0b255a74d75f0246cead411ef5d9d4723d039198a7e7875f650a3ae0f1090c')
+            '7b6b3c9b418bf3e8e59e1311e59554540407bef99eb85e78fdcb8f26e2e40852')
 
 prepare() {
     cd "$_pkgname/$_pkgver/build_dynamic"
@@ -31,5 +33,5 @@ package() {
 
 pkgver() {
     cd "$_pkgname"
-    echo "$_pkgver"."$(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^.*\.r/r/')"
+    echo "$_pkgver"."$(git describe --tags --long --match "v2.0*" | sed -E 's/^[^-]+-([^-]+)-([0-9]+)-(g[a-f0-9]+)/\1.r\2.\3/')"
 }
