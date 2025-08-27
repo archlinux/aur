@@ -3,7 +3,7 @@
 
 pkgname=plotjuggler
 pkgver='3.10.11'
-pkgrel=3
+pkgrel=4
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -38,7 +38,6 @@ makedepends=(
     'clang'
 )
 
-_dir="PlotJuggler-${pkgver}"
 source=(
     "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
     "plotjuggler3.10.9-1.patch"
@@ -59,12 +58,15 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/build
-	make DESTDIR=${pkgdir} install
+    cd "PlotJuggler-${pkgver}/build"
+    make DESTDIR="${pkgdir}" install
 
-    # clean up system-conflict files
-    rm -f ${pkgdir}/usr/local/lib/libfastcdr.a
-    rm -rf ${pkgdir}/usr/local/lib/cmake/fastcdr/
+    # fastcdr should not be installed,
+    # but CPM installs dependencies automatically
+    rm -r "${pkgdir}/usr/include/fastcdr"
+    rm -r "${pkgdir}/usr/lib/cmake/fastcdr"
+    rm "${pkgdir}/usr/lib/libfastcdr.a"
+    rm -r "${pkgdir}/usr/share/fastcdr"
 }
 
 sha256sums=('9492e6b5f676a237616db056d1d45cae64d9a880690e8dd6b93784dd205b93bb'
