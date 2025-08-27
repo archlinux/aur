@@ -1,6 +1,6 @@
 # Maintainer: ItsZariep <itszariep@disroot.org>
 pkgname=sgnotes-git
-pkgver=r25.b8891ff
+pkgver=r37.cde3176
 pkgrel=1
 pkgdesc="A simple GTK3 note-taking application"
 arch=('any')
@@ -17,16 +17,16 @@ echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-cd "$srcdir/SGNotes"
+cd "$srcdir/SGNotes/src"
 make WITHSOURCEVIEW=1
 }
 
 package() {
-cd "$srcdir/SGNotes"
+cd "$srcdir/SGNotes/src"
 make PREFIX="$pkgdir/usr" install
 }
 
 clean() {
-cd "$srcdir/SGNotes"
+cd "$srcdir/SGNotes/src"
 make clean
 }
