@@ -4,13 +4,13 @@
 # Contributor: xantares <xantares09@hotmail.com>
 _pkgname=asmjit
 pkgname=$_pkgname-git
-pkgver=r417.5c469e3
+pkgver=r562.a3199e8
 pkgrel=1
 pkgdesc="Machine code generation for C++"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://asmjit.com/"
-license=('zlib')
-depends=('gcc-libs')
+license=('Zlib')
+depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=$pkgver" 'libasmjit.so')
 conflicts=("$_pkgname")
@@ -27,17 +27,19 @@ prepare() {
 }
 
 build() {
-	cmake -S $_pkgname -B build \
-		-DASMJIT_TEST="$CHECKFUNC" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+	local options=(
+		-D ASMJIT_TEST="$CHECKFUNC"
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INSTALL_PREFIX=/usr
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
 check() {
-	ctest --test-dir build
+	ctest --output-on-failure --test-dir build
 }
 
 package() {
