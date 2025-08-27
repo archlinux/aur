@@ -2,7 +2,7 @@
 pkgname=lyrus-git
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="A python lyrics player for cmus"
+pkgdesc="A Python curses lyrics player primarily for cmus, with playerctl as a fallback"
 arch=('any')
 url="https://github.com/Ja4e/Lyrus"
 license=('AGPL-3.0')
