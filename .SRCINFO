@@ -1,6 +1,6 @@
 pkgbase = cch
 	pkgdesc = A powerful contest helper for CodeForces, developed by NW.js
-	pkgver = 2.0BETA37
+	pkgver = 2.0BETA40
 	pkgrel = 1
 	url = https://github.com/CodeforcesContestHelper/CCHv2
 	install = cch.install
@@ -17,9 +17,9 @@ pkgbase = cch
 	depends = mesa
 	depends = alsa-lib
 	options = !strip
-	source_x86_64 = https://github.com/CodeforcesContestHelper/CCHv2/releases/download/v2.0-beta-37/CCHv2.v2.0-beta-37.linux64.tar.gz
-	sha256sums_x86_64 = 9b7efacea92736d7797d0da1d502dd976b1b5c442a429bc64bce829367dfaa9d
-	source_i686 = https://github.com/CodeforcesContestHelper/CCHv2/releases/download/v2.0-beta-37/CCHv2.v2.0-beta-37.linux32.tar.gz
-	sha256sums_i686 = 48cc8d4cd85ad8d695bba3fde24fc16b82ad2ff65de64fb6e81b5c9c9b45c7b2
+	source_x86_64 = https://github.com/CodeforcesContestHelper/CCHv2/releases/download/v2.0-beta-40/CCHv2.v2.0-beta-40.linux64.tar.gz
+	sha256sums_x86_64 = d569ede5dfa133cd084c8ff08b92832d8533219ce5b09995aa76f3c99e11b654
+	source_i686 = https://github.com/CodeforcesContestHelper/CCHv2/releases/download/v2.0-beta-40/CCHv2.v2.0-beta-40.linux32.tar.gz
+	sha256sums_i686 = 23369272c03ae7dbc7b4c244cbcf95c1af9d6fbb9e3db3ca8520c04ba2d461fd
 
 pkgname = cch
