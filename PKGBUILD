@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://eigenwallet.org"
 conflicts=('eigenwallet-bin' 'unstoppableswap-gui')
 depends=('glib2' 'hicolor-icon-theme' 'gtk3' 'webkit2gtk' 'webkit2gtk-4.1' 'unbound')
-makedepends=('git' 'base-devel' 'rustup' 'cargo' 'cmake' 'boost' 'libsodium' 'openssl')
+makedepends=('git' 'base-devel' 'rustup' 'cargo' 'cmake' 'boost' 'libsodium' 'openssl' 'yarn')
 options=('!lto') # https://github.com/launchbadge/sqlx/issues/3149
 source=("${pkgname}"::"git+https://github.com/eigenwallet/core"
 	"use_dynamic_libs.patch" "eigenwallet.desktop")
@@ -18,6 +18,7 @@ sha256sums=('SKIP'
 	'b029a65d9d6383843a5db3d985c886cea037ef0b6236ae2bae9df1b90e235125')
 
 pkgver() {
+	cd "${srcdir}"
 	git describe --tags --match '[0-9]*' --abbrev=7 --always | sed -E 's/-([0-9]+)-g([0-9a-fA-F]+)/.r\1.\2/; s/-/./g'
 }
 
