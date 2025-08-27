@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opencomic
 _pkgname=OpenComic
-pkgver=1.6.0
+pkgver=1.6.1
 _electronversion=37
-_nodeversion=23
+_nodeversion=22
 pkgrel=1
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron.(Use system-wide electron)"
 arch=(
@@ -30,8 +30,8 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f577fa23a8d7da6f3e1f63927b0e60072e2fe5f8202a6e7577d688fd102d7329'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('307239d35eb5a4883eccd1177c01f6dd182c816d1f3bebc836748cd6da857add'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
