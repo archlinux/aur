@@ -2,7 +2,7 @@
 # Maintainer: Tommy Falkowski <tommy@byteowlz.com>
 
 pkgname='ppr-bin'
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='ppr - CLI tool for creating themed wallpapers from SVG templates'
 url='https://github.com/byteowlz/ppr'
@@ -12,11 +12,11 @@ provides=('ppr')
 conflicts=('ppr')
 depends=('go')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.0.5/ppr_1.0.5_linux_arm64.tar.gz")
-sha256sums_aarch64=('a1f4204161570ce26ddfe4ccf54f51e5cc7f6d24224bf35c5b1a48263875b8eb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.0.6/ppr_1.0.6_linux_arm64.tar.gz")
+sha256sums_aarch64=('d47bc5b664c5cbb973170b5f166158afe3f8e51dd38b20d8db3ba1e3d1199fd5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.0.5/ppr_1.0.5_linux_amd64.tar.gz")
-sha256sums_x86_64=('bdf4fbc9a6e11964089220e078e783b5532706c5741adf9b82faef52a70510ea')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.0.6/ppr_1.0.6_linux_amd64.tar.gz")
+sha256sums_x86_64=('6b1da47ec16dd4a8b7564c1d9528eaf0f1dfc7fdbc3c508ebb2b9318ab63243e')
 
 package() {
   cd "$srcdir"
@@ -28,7 +28,7 @@ package() {
   -buildmode=pie \
   -mod=readonly \
   -modcacherw \
-  -ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.version=1.0.5 -X main.commit=19d7df9779548276e5f3f0167127c7c8b21ad1ca -X main.date=2025-08-18T17:10:21Z" \
+  -ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.version=1.0.6 -X main.commit=dbc5d73e28400ca28e68105ba266258e25ce6578 -X main.date=2025-08-27T09:03:44Z" \
   -o ppr .
 
   # bin
