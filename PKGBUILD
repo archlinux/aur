@@ -3,7 +3,7 @@
 # Contributor: PancakeTAS <???>
 
 pkgname=lsfg-vk-git
-pkgver=r259.ef8ca42
+pkgver=v1.0.0.r40.5e04b4f
 pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=('x86_64')
@@ -35,26 +35,19 @@ install=lsfg-vk.install
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}/${pkgname%-git}"
-
-	# --filter=tree:0 minimizes network traffic
-	git submodule update --init --filter=tree:0 --recursive
+	# Git, tags available
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# build library
-    cmake -B build -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_C_COMPILER=clang \
-        -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=On
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_COMPILER=clang \
+		-DCMAKE_CXX_COMPILER=clang++ \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=On
 	ninja -C build
 
 	# build UI
