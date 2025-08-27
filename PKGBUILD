@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-git
-pkgver=5.0.r27.g550bb8de2
+pkgver=5.0.r85.g09691b873
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
@@ -12,6 +12,7 @@ makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2
 optdepends=(
     '86box-roms-git: ROM files'
     'discord-game-sdk: Discord Rich Presence'
+	'ghostscript: Printing with Generic PostScript Printer'
     'libpcap: Networking not limited to TCP/IP'
 )
 provides=('86box')
