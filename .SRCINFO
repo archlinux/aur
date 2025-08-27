@@ -1,18 +1,17 @@
 pkgbase = python-pymp4
-	pkgdesc = A Python MP4 Parser and toolkit
-	pkgver = 1.2.0
+	pkgdesc = Python parser for MP4 boxes
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/beardypig/pymp4
 	arch = any
 	license = Apache
-	checkdepends = python-pytest
-	checkdepends = python-wheel
-	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	depends = python-construct=2.8.8
-	source = pymp4::git+https://github.com/beardypig/pymp4.git#tag=1.2.0
-	md5sums = SKIP
+	depends = python-construct
+	source = https://files.pythonhosted.org/packages/a5/46/dfb3f5363fc71adaf419147fdcb93341029ca638634a5cc6f7e7446416b2/pymp4-1.4.0.tar.gz
+	sha256sums = bc9e77732a8a143d34c38aa862a54180716246938e4bf3e07585d19252b77bb5
 
 pkgname = python-pymp4
-
