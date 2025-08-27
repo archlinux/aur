@@ -1,6 +1,6 @@
 # Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname=ephepm-iaarasru
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="EphEPM calculates barycentric coordinates of some Solar System bodies "
 url="https://github.com/ProfessorNavigator/eph-epm"
@@ -9,7 +9,7 @@ arch=('x86_64')
 depends=('gtkmm-4.0' 'mathgl' 'gmp')
 makedepends=('cmake' 'sofa' 'gcc' 'pkgconf')
 source=("https://github.com/ProfessorNavigator/eph-epm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0e50ba282856814d20a3fcc07a641a9b1c5f00db0e8a2c00187efd40517217d9')
+sha256sums=('a0e38e8d9778409da4b891d36ddcd8d6414d526a2a7de9737d79d9d3d31aaa20')
 
 build() {  	
   	local cmake_options=(
