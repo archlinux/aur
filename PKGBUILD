@@ -1,7 +1,7 @@
 # Maintainer: Jonas Alves(JonasAlv) <zeropior@proton.me>
 pkgname=turtle-wow
 pkgver=2.1.2
-pkgrel=17
+pkgrel=18
 pkgdesc="Turtle WoW game launcher (extracted AppImage)"
 arch=('x86_64')
 url="https://turtle-wow.org/"
@@ -9,7 +9,7 @@ license=('custom')
 provides=('turtle-wow')
 conflicts=('turtle-wow')
 # jq is required to manipulate preferences.json.
-depends=('gtk3' 'alsa-lib' 'jq') 
+depends=('gtk3' 'alsa-lib' 'jq' 'webkit2gtk-4.1' ) 
 install=turtle-wow.install
 options=('!strip')
 
@@ -29,8 +29,7 @@ prepare() {
   
   cd squashfs-root
   # find and delete all bundled libraries
-  find . -type f -name "*.so*" -print -delete
-  
+  rm -rfv squashfs-root/usr/lib/*  
   chmod u+x AppRun
 }
 

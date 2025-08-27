@@ -1,7 +1,7 @@
 pkgbase = turtle-wow
 	pkgdesc = Turtle WoW game launcher (extracted AppImage)
 	pkgver = 2.1.2
-	pkgrel = 17
+	pkgrel = 18
 	url = https://turtle-wow.org/
 	install = turtle-wow.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = turtle-wow
 	depends = gtk3
 	depends = alsa-lib
 	depends = jq
+	depends = webkit2gtk-4.1
 	provides = turtle-wow
 	conflicts = turtle-wow
 	options = !strip
