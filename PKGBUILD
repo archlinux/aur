@@ -13,11 +13,6 @@
 #   'n' - disable all patches
 #   'y' - apply all patches (default)
 #
-# Show Doxygen comments in hover (D134130)
-# CLANGD_DOXYGEN:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Resolve forwarded parameters in hover (D130265)
 # CLANGD_RESOLVEFWDPARAMS:
 #   'n' - do not apply this patch
@@ -82,18 +77,8 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Show total record (class/struct/union) paddings in hover
-# CLANGD_HOVERRECORDPAD:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Add tweak for implementing abstract class (D94942)
 # CLANGD_IMPL_ABSTRACT_CLASS:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
-# Hover information: Show fields indexes in layout: `Offset: 8 bytes (index 1)`
-# CLANGD_HOVERFIELDIDX:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
@@ -109,7 +94,6 @@
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
 : ${CLANGD_USER_PATCHES:=y}
-: ${CLANGD_DOXYGEN:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEFWDPARAMS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_CODELENS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_POSTFIXCOMPLETION:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -122,14 +106,12 @@
 : ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEINCHEADERS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_HOVERFIELDIDX:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=21.r9912.g2f08927fd5f4
+pkgver=22.r5423.g90d429ca5762
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -143,9 +125,6 @@ replaces=('clangd-opt')
 provides=('clangd-opt')
 options=('!strip' '!lto')
 source=("git+https://github.com/llvm/llvm-project.git#branch=main"
-    'hover-doxygen-trunk.patch'
-    'doxygen-extra-render-trunk.patch'
-    'doxygen-more-fields.patch'
     'hover-resolve-forward-params.patch'
     'lsp-codelens.patch'
     'postfix-completion-trunk.patch'
@@ -158,18 +137,13 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'hover-no-defs.patch'
     'resolve-incomplete-header-includes.patch'
     'lsp-remove-files-from-cdb.patch'
-    'hover-record-paddings.patch'
     'implement-abstract-class.patch'
-    'hover-field-idx.patch'
     'inlay-hints-hide-deduced-types-ignore-evident.patch'
     'lsp-preprocessor-folding.patch')
 sha256sums=('SKIP'
-    '3ffa0fc19bc7c91c9edbe02e466c3eb5522e5a4655440d408610311cee6db06d'  # hover-doxygen-trunk
-    '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
-    'cf8c80466e6a264e0dfb3750ea7353aa2bb1044bffff381630cb008b95ef2ceb'  # doxygen-more-fields
     '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
     '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
-    '611c634082a70f120920d33bc0aaca79c7f3b74dadcda750de7b0a98766e1be5'  # postfix-completion-trunk
+    'd1b59079d51f19b653b4196945d9268c6427f2314ec3aff76e2b0d352892dbfb'  # postfix-completion-trunk
     'fd1f752f7a5a29bc18432ba60b0a9faa0381b3fee49febc53fc8f8f177d61f5d'  # refactor-extract-function
     'ad4b75468f2969e7414fb68670fb0ca622b0a1e19ca0fa7b836468f085fe0178'  # inlay-hints-paddings
     'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
@@ -179,9 +153,7 @@ sha256sums=('SKIP'
     '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
     '03ea8cac2b932c6657973cf11989a4e34a13958fc3957dfa3e62d44f5daa2a90'  # resolve-incomplete-header-includes
     '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
-    'd3e8d88d6bcc5c24cc28ce67bda144227d19fb740b50aec2ebdb7216de84fd47'  # hover-record-paddings
-    '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
-    '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d'  # hover-field-idx
+    '3d395094394e00def6ae7a311cf8ec85e4886336ddb1da5ef3b02d378e455f15'  # implement-abstract-class
     'ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea'  # inlay-hints-hide-deduced-types-ignore-evident
     'f943364e9813eb65371f0bfb02251dbc4e5a293575dc5c4b7630dacbf0ded74b') # lsp-preprocessor-folding
 
@@ -201,11 +173,6 @@ prepare() {
     cd ${srcdir}/llvm-project
 
     # Hover patches
-    if [ "$CLANGD_DOXYGEN" != "n" ]; then
-        apply_patch hover-doxygen-trunk
-        apply_patch doxygen-extra-render-trunk
-        apply_patch doxygen-more-fields
-    fi
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
         apply_patch hover-resolve-forward-params
     fi
@@ -223,12 +190,6 @@ prepare() {
     fi
     if [ "$CLANGD_HOVERNODEFS" != "n" ]; then
         apply_patch hover-no-defs
-    fi
-    if [ "$CLANGD_HOVERRECORDPAD" != "n" ]; then
-        apply_patch hover-record-paddings
-    fi
-    if [ "$CLANGD_HOVERFIELDIDX" != "n" ]; then
-        apply_patch hover-field-idx
     fi
 
     # LSP patches
