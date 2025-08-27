@@ -2,8 +2,8 @@
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=firefox-extension-localcdn
-pkgver=2.6.80
-_commit=e4bb7a69ae83dfd40f3a9106ef5d4846fa7491a7
+pkgver=2.6.81
+_commit=d4c68fe1a3ace65fd42f15b6a73cd96045235507
 pkgrel=1
 pkgdesc='LocalCDN addon for Firefox'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(git zip strip-nondeterminism)
 provides=('librewolf-extension-localcdn')
 conflicts=('librewolf-extension-localcdn')
 source=("git+https://codeberg.org/nobody/LocalCDN.git#commit=$_commit?signed")
-b2sums=('d7c4626ac472a94a8ff13b2e5e7b86b32564df6310079f92cb430cf35bd37bab11897f3a08bda20bae77a8d72bcbcdf6ee6f0743a8c92323b28a0002cbe17c70')
+b2sums=('de1cf572482ea7086cc04ce1ce8119fd7cf3fefabd6a3fb0500b91d003af1e2a068c90d2e708d9daea09ab2ca447058f185a92cdb19d3c78cdc15f5d3fc0f673')
 validpgpkeys=(3F59043BE267E1B1177688AC8F6DE3D614FCFD7A) # nobody <nfo@localcdn.org>
 
 pkgver() {
