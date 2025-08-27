@@ -2,7 +2,7 @@
 _projname="Polyversal"
 _pkgname="$(echo "$_projname" | tr "P" "p")-patcher"
 pkgname="$_pkgname-bin"
-pkgver=2.2.1
+pkgver=2.3.0
 _pkgver="$(echo "$pkgver" | tr "." "_")"
 _repo="CommitteeOfZero/polyversal-coz-linux-patcher"
 _archive="$_projname-v$_pkgver"
@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=(
   "208ffdea36943ced42487427edf5c7fd638348b92e8b61bc0a7dc4bfc5eb3326"
-  "ec1a0b86da5dead663dcf5ded262109b468796b94d905f83b123a6bad260261c"
+  "7cf294d6c1f9d5ee9ce6f531e90e7a4879873d6cab7d6dba9dc4c80c9365ed1c"
   "62f3a79c1446932e1ce1d4a56991113739c7d7c6d8b4a8d9c994b62468229960"
 )
 
