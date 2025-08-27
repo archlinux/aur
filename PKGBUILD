@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 	'b029a65d9d6383843a5db3d985c886cea037ef0b6236ae2bae9df1b90e235125')
 
 pkgver() {
-	cd "${srcdir}"
+	cd "${srcdir}/${pkgname}"
 	git describe --tags --match '[0-9]*' --abbrev=7 --always | sed -E 's/-([0-9]+)-g([0-9a-fA-F]+)/.r\1.\2/; s/-/./g'
 }
 
