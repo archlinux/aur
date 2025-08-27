@@ -1,5 +1,8 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 
+## options
+: ${i_swear_to_never_bother_the_developer_about_this_package:=false}
+
 pkgname=duckstation-git
 _pkgname=duckstation
 pkgver=0.1.r9409.g168b80dd4
@@ -121,6 +124,14 @@ prepare() {
 
     # bundle additional resources
     cp "$srcdir/cheats.zip" "$srcdir/patches.zip" "$srcdir/duckstation/data/resources"
+
+    # unbreak the build
+    if [ "$i_swear_to_never_bother_the_developer_about_this_package" = "true" ]; then
+        cd "$srcdir/duckstation"
+        sed -i 's/archlinux/marchlinux/g' CMakeModules/DuckStationBuildSummary.cmake
+        sed -i 's/\/usr\/lib/\/usr\/local\/lib/g' src/duckstation-qt/qthost.cpp
+    fi
+
 }
 
 build() {
