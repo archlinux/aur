@@ -1,0 +1,18 @@
+pkgbase = sip-bin
+	pkgdesc = Alternative to git clone for selective GitHub downloads
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/allocata/sip
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = sip
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/allocata/sip/v1.0.0/LICENSE
+	source = README-1.0.0.md::https://raw.githubusercontent.com/allocata/sip/v1.0.0/README.md
+	sha256sums = e92854e34dd352e5735d751251b0695b7235e7d1bc0e2deafd0ef39640dbac4c
+	sha256sums = 6290bef5c857d7d9183b9a67240eade48f5a8854db0037c737686608b43c3c29
+	source_x86_64 = sip-1.0.0::https://github.com/allocata/sip/releases/download/v1.0.0/sip
+	sha256sums_x86_64 = a30f3c794d7585b5b50a1fa29fbb32b23bac11c9b3657564bddd369cabbbf5d9
+
+pkgname = sip-bin
