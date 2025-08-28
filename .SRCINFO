@@ -1,7 +1,7 @@
 pkgbase = max
 	pkgdesc = MAX is a multifunctional digital platform with a fully integrated messenger.
-	pkgver = 25.8.0.454
-	pkgrel = 4
+	pkgver = 25.8.0.490
+	pkgrel = 1
 	url = https://max.ru
 	arch = x86_64
 	license = custom:max
@@ -17,6 +17,6 @@ pkgbase = max
 	depends = util-linux-libs
 	depends = libsecret
 	source = https://download.max.ru/electron/MAX.deb
-	md5sums = 91a4413990890aaced063daa78f148ab
+	md5sums = c387dad838c25b729acc10714c4572aa
 
 pkgname = max

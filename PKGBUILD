@@ -1,8 +1,8 @@
 # Maintainer: dibof228
 
 pkgname=max
-pkgver=25.8.0.454
-pkgrel=4
+pkgver=25.8.0.490
+pkgrel=1
 
 pkgdesc="MAX is a multifunctional digital platform with a fully integrated messenger."
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" 
 makedepends=("tar" "binutils")
 
 source=("https://download.max.ru/electron/MAX.deb")
-md5sums=('91a4413990890aaced063daa78f148ab')
+md5sums=('c387dad838c25b729acc10714c4572aa')
 
 prepare() {
     tar -xf data.tar.xz
