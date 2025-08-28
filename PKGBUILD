@@ -1,7 +1,7 @@
 # Maintainer: fk29g <fk29g.uphill912@slmails.com>
 pkgname="genpw"
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal password generator for Linux using /dev/urandom"
 arch=("any")
 url="https://git.sr.ht/~nicknb/$pkgname"
@@ -20,6 +20,6 @@ package() {
     install -Dm 644 $pkgname.1 $pkgdir/usr/share/man/man1/${pkgname}.1
     install -Dm 644 completion/$pkgname.bash $pkgdir/usr/share/bash-completion/completions/${pkgname}
     install -Dm 644 completion/$pkgname.zsh $pkgdir/usr/share/zsh/site-functions/_${pkgname}
-    install -Dm 644 completion/$pkgname.fish $pkgdir/usr/share/fish/completions/${pkganme}.fish
+    install -Dm 644 completion/$pkgname.fish $pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish
     gzip $pkgdir/usr/share/man/man1/${pkgname}.1
 }
