@@ -3,8 +3,8 @@
 # Contributor: Senge Dev <sengedev at gmail dot com>
 
 pkgname=1panel-git
-pkgver=2.0.8.r107.g6f45b90
-pkgrel=1
+pkgver=2.0.8.r121.g5c59042
+pkgrel=6
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
 url="https://1panel.cn"
@@ -34,12 +34,16 @@ conflicts=(
     '1panel-bin'
 )
 source=("${pkgname}"::"git+https://github.com/1Panel-dev/1Panel.git"
-    "1pctl"
-    "1panel.service"
+    "1pctl-agent"
+    "1pctl-core"
+    "1panel-agent.service"
+    "1panel-core.service"
 )
 sha256sums=('SKIP'
-    'b10ccbfe7055854185cb2cbcaff60774bfd6105e90780ffd0a3a5a2980c5696d'
-    '4763d661d985228b99b9be12ef8140c63c14e6cf40a07411db8e32d9a73cae42')
+    '76b2e927b03781e1d8a49d551b5847ba8f2031d4e12f3a200776659e337ebb15'
+    'f297311c938647af849c4ed2958d76a3c78d12f3cd4ee241ba6cfbed5133850a'
+    'd9c84bef23acd99fec47ae49a5469968499fb27f16ed07f32e849f573e78fd71'
+    '50c10b9cf798f139dd3c0f98f0f09febcc5456c96f10cfd235232bd3bef42265')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -51,7 +55,8 @@ pkgver() {
 }
 
 build() {
-    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${pkgver}#g" ${srcdir}/1pctl
+    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${pkgver}#g" ${srcdir}/1pctl-agent
+    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${pkgver}#g" ${srcdir}/1pctl-core
     find ${srcdir} -type f -exec sed -i 's@/usr/local/bin@/usr/bin@g' {} +
     find ${srcdir} -type f -exec sed -i 's@/etc/systemd/system@/usr/lib/systemd/system@g' {} +
 
@@ -75,13 +80,19 @@ build() {
     #     npm audit fix --force
     npm rum build:pro
     cd ${srcdir}/${pkgname}/core
-    GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/${pkgname}//build/1panel ${srcdir}/${pkgname}/core/cmd/server/main.go
+    GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/${pkgname}/build/1panel-core ${srcdir}/${pkgname}/core/cmd/server/main.go
+    cd ${srcdir}/${pkgname}/agent
+    GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/${pkgname}/build/1panel-agent ${srcdir}/${pkgname}/agent/cmd/server/main.go
 }
 
 package() {
-    install -vd ${pkgdir}/var/lib/1p/1panel
-    install -vDm755 ${srcdir}/${pkgname}/build/1panel ${pkgdir}/usr/bin/1panel
-    install -vDm644 ${srcdir}/1panel.service -t ${pkgdir}/usr/lib/systemd/system
-    install -vDm755 ${srcdir}/1pctl ${pkgdir}/usr/bin/1pctl
+    install -vd ${pkgdir}/var/lib/1p/1panel-agent
+    install -vd ${pkgdir}/var/lib/1p/1panel-core
+    install -vDm755 ${srcdir}/${pkgname}/build/1panel-core -t ${pkgdir}/usr/bin/
+    install -vDm755 ${srcdir}/${pkgname}/build/1panel-agent -t ${pkgdir}/usr/bin/
+    install -vDm644 ${srcdir}/1panel-agent.service -t ${pkgdir}/usr/lib/systemd/system
+    install -vDm644 ${srcdir}/1panel-core.service -t ${pkgdir}/usr/lib/systemd/system
+    install -vDm755 ${srcdir}/1pctl-agent -t ${pkgdir}/usr/bin/
+    install -vDm755 ${srcdir}/1pctl-core -t ${pkgdir}/usr/bin/
     install -vDm644 ${srcdir}/${pkgname}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

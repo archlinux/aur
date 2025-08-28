@@ -2,9 +2,12 @@
 
 pre_install() {
     echo -e "==================== 准备安装 1Panel ===================="
-    # 判断/var/lib/1p是否存在
-    if [ -d "/var/lib/1p/1panel" ]; then
-        echo -e "\033[32m警告: \033[0m/var/lib/1p/1panel 目录已存在，可能会影响 1Panel 的初始化。"
+    # 判断 /var/lib/1p 是否存在
+    if [ -d "/var/lib/1p/1panel-agent" ]; then
+        echo -e "\033[32m警告: \033[0m/var/lib/1p/1panel-agent 目录已存在，可能会影响 1Panel 的初始化。"
+    fi
+    if [ -d "/var/lib/1p/1panel-core" ]; then
+        echo -e "\033[32m警告: \033[0m/var/lib/1p/1panel-core 目录已存在，可能会影响 1Panel 的初始化。"
     fi
 }
 
@@ -21,7 +24,8 @@ post_install() {
         echo -e "\033[33m警告: docker-compose 未安装，请安装它，否则 1Panel 应用商店将无法使用。\033[0m"
     fi
     echo -e "\033[31m使用默认的用户名和密码将是一个十分危险的行为！！！\033[0m."
-    echo -e "请务必在启动 \033[34m1panel.service\033[0m 之前运行 \033[34m1pctl init\033[0m 来设置您的用户名和密码！"
+    echo -e "请务必在启动 \033[34m1panel-agent.service\033[0m 之前运行 \033[34m1pctl-agent init\033[0m 来设置您的用户名和密码！"
+    echo -e "请务必在启动 \033[34m1panel-core.service\033[0m 之前运行 \033[34m1pctl-core init\033[0m 来设置您的用户名和密码！"
     echo -e ""
     echo -e "==================== 1Panel 安装完成 ===================="
 }
@@ -29,40 +33,62 @@ post_install() {
 pre_remove() {
     echo -e "==================== 准备卸载 1Panel ===================="
     echo -e "\033[34m正在停止 systemd 服务...\033[0m"
-    systemctl disable --now 1panel
+    systemctl disable --now 1panel-agent
+    systemctl disable --now 1panel-core
 }
 
 post_remove() {
-    echo -e "请手动备份 \033[34m/var/lib/1p/1panel\033[0m 目录后删除它。"
+    echo -e "请手动备份 \033[34m/var/lib/1p/1panel-agent\033[0m 目录后删除它。"
+    echo -e "请手动备份 \033[34m/var/lib/1p/1panel-core\033[0m 目录后删除它。"
     echo -e "==================== 1Panel 卸载完成 ===================="
 }
 
 pre_upgrade() {
     export no_need_start="false"
     echo -e "==================== 准备更新 1Panel ===================="
-    echo -e " 正在备份1pctl文件"
-    cp /usr/bin/1pctl /usr/bin/1pctl.bak
-    if systemctl is-active --quiet 1panel; then
-        echo -e "检测到systemd服务正在运行，正在临时停止 1Panel 服务..."
-        systemctl stop 1panel
-        export _restart_1panel_service=true
+    echo -e " 正在备份 1pctl-agent 文件"
+    cp /usr/bin/1pctl-agent /usr/bin/1pctl-agent.bak
+    if systemctl is-active --quiet 1panel-agent; then
+        echo -e "检测到 systemd 服务正在运行，正在临时停止 1Panel 服务..."
+        systemctl stop 1panel-agent
+        export _restart_1panel_agent_service=true
+    fi
+    echo -e " 正在备份 1pctl-core 文件"
+    cp /usr/bin/1pctl-core /usr/bin/1pctl-core.bak
+    if systemctl is-active --quiet 1panel-core; then
+        echo -e "检测到 systemd 服务正在运行，正在临时停止 1Panel 服务..."
+        systemctl stop 1panel-core
+        export _restart_1panel_core_service=true
     fi
 }
 
-
 post_upgrade() {
-    if [ -n "${_restart_1panel_service+x}" ]; then
+    if [ -n "${_restart_1panel_agent_service+x}" ]; then
         echo -e "正在重启服务..."
-        systemctl start 1panel
-        unset _restart_1panel_service
+        systemctl start 1panel-agent
+        unset _restart_1panel_agent_service
         systemctl daemon-reload
     fi
-    # 提取1pctl的ORIGINAL_VERSION变量的值
-    _1panel_version=$(grep -oP '(?<=ORIGINAL_VERSION=).*' /usr/bin/1pctl)
-    echo -e "正在恢复1pctl备份"
-    mv /usr/bin/1pctl.bak /usr/bin/1pctl
-    # 更新1pctl的ORIGINAL_VERSION变量的值
-    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${_1panel_version}#g" /usr/bin/1pctl
-    chmod 755 /usr/bin/1pctl
+    if [ -n "${_restart_1panel_core_service+x}" ]; then
+        echo -e "正在重启服务..."
+        systemctl start 1panel-core
+        unset _restart_1panel_core_service
+        systemctl daemon-reload
+    fi
+    # 提取 1pctl-agent 的ORIGINAL_VERSION变量的值
+    _1panel_agent_version=$(grep -oP '(?<=ORIGINAL_VERSION=).*' /usr/bin/1pctl-agent)
+    echo -e "正在恢复 1pctl-agent 备份"
+    mv /usr/bin/1pctl-agent.bak /usr/bin/1pctl-agent
+    # 更新 1pctl-agent 的 ORIGINAL_VERSION 变量的值
+    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${_1panel_version}#g" /usr/bin/1pctl-agent
+    chmod 755 /usr/bin/1pctl-agent
+
+    # 提取 1pctl-core 的ORIGINAL_VERSION变量的值
+    _1panel_core_version=$(grep -oP '(?<=ORIGINAL_VERSION=).*' /usr/bin/1pctl-core)
+    echo -e "正在恢复 1pctl-core 备份"
+    mv /usr/bin/1pctl-core.bak /usr/bin/1pctl-core
+    # 更新 1pctl-core 的ORIGINAL_VERSION 变量的值
+    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${_1panel_version}#g" /usr/bin/1pctl-core
+    chmod 755 /usr/bin/1pctl-core
     echo -e "==================== 1Panel 更新完成 ===================="
 }
