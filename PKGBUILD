@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
 epoch=1
-pkgver=7.5.2
+pkgver=8.0rc2
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -16,6 +16,7 @@ makedepends+=(git)
 
 depends=(
 	"libnotify"
+	pipewire
 	"procps-ng"
 	"coreutils"
 	"awk"
@@ -52,7 +53,7 @@ checkdepends=()
 
 source=(portable::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('ae040c360a368d43f39f5c6a57151f88')
+md5sums=('1a7a20f8c0b3ce594f32a89a520df2f0')
 
 
 function package() {
