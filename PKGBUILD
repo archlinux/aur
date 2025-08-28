@@ -3,7 +3,7 @@
 _Name="IronPython"
 _basename="${_Name,,}"
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 _pkgname="${_basename}${pkgver%%.*}"
 pkgname="${_pkgname}-bin"
 pkgdesc="Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)"
@@ -22,12 +22,8 @@ provides=(
   "${_pkgname}"
   "${_basename}${pkgver%.*}"
 )
-replaces=(
-  "${_basename}-bin<3"
-)
 conflicts=(
   "${provides[@]}"
-  "${replaces[@]}"
 )
 _pkgsrc="${_url##*/}-${pkgver}"
 noextract=("${_pkgsrc}-any.deb")

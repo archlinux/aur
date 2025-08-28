@@ -1,7 +1,7 @@
 pkgbase = ironpython3-bin
 	pkgdesc = Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ironpython.net
 	arch = any
 	license = Apache-2.0
@@ -12,8 +12,6 @@ pkgbase = ironpython3-bin
 	provides = ironpython3.4
 	conflicts = ironpython3
 	conflicts = ironpython3.4
-	conflicts = ironpython-bin<3
-	replaces = ironpython-bin<3
 	noextract = ironpython3-3.4.2-any.deb
 	source = ironpython3-3.4.2-any.deb::https://github.com/IronLanguages/ironpython3/releases/download/v3.4.2/ironpython_3.4.2.deb
 	source = ironpython3-3.4.2-README.md::https://github.com/IronLanguages/ironpython3/raw/refs/tags/v3.4.2/README.md
