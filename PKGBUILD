@@ -1,7 +1,7 @@
 # Maintainer: Eri the Switch <e2024@opayq.com>
 
 pkgname="ttf-openttd"
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="OpenTTD TrueType typefaces"
 url='https://github.com/zephyris/openttd-ttf'
@@ -12,11 +12,11 @@ source=("OpenTTD-Mono-${pkgver}.ttf::https://github.com/zephyris/openttd-ttf/rel
         "OpenTTD-Serif-${pkgver}.ttf::https://github.com/zephyris/openttd-ttf/releases/download/${pkgver}/OpenTTD-Serif.ttf"
         "OpenTTD-Small-${pkgver}.ttf::https://github.com/zephyris/openttd-ttf/releases/download/${pkgver}/OpenTTD-Small.ttf"
         "OpenTTD-SmallCaps-${pkgver}.ttf::https://github.com/zephyris/openttd-ttf/releases/download/${pkgver}/OpenTTD-SmallCaps.ttf")
-sha256sums=('71d08887a117f96eea08b39467eeae5ea6ea2e897b955f79de5e05485e0c0405'
-            'b6fb3123beb28a5840aa8245f8a9d348e0520100dc9ea2f90e10a291c1fb87b9'
-            '05f26a3e563846eafb908d5c8f05d350449a001bf96bab912fa77c97863e4704'
-            '995d739adbe9b18cbaa9d63e9d5008c47c445635ff5a2258261b51b028a3ac09'
-            '9e7c418c89838843d9f6d3fa0aa25a82b83d86f21ae31e2cfb39e15847cac863')
+sha256sums=('7ec9e91093167e140193633cff861c3f7a3ce5a36f9fcaa24e02366ee13f66b0'
+            'f10d200b4769e31302d949326f0cd3a3f697a34788892f7180d813600693afe2'
+            'c299f2d912a4f78a85f2633adad11450a1186b8f63d5adc0999fdc3a4a536266'
+            'cfbd78b80bfecff188eae4c23447073e781c60741d39d16af2ca81a3920cbb5f'
+            '1f8c8e1adb62f43fdc7bcefad37cfe8c852c6774e8612eec1ac19b0aecacdaf8')
 
 package() {
     for font in Mono Sans Serif Small SmallCaps
