@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-shell
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
@@ -9,8 +9,8 @@ license=(MIT)
 depends=('gtk-layer-shell>=0.5' "wayfire>=${pkgver}" libpulse gtkmm3 alsa-lib libdbusmenu-gtk3)
 makedepends=(wayland wayland-protocols meson ninja gobject-introspection glm glib2-devel)
 source=("https://github.com/WayfireWM/wf-shell/releases/download/v${pkgver}/wf-shell-${pkgver}.tar.xz")
-sha256sums=('c8ac529b9fa6a4f65bd430140394b6b6a486c7b2def6c22b811396612ba94bb4')
-b2sums=('ea68e110381fa76590f193e6d9035e2ce1ce1a998a4c476785912d5666f42f9976b89ef78511b6d17e36f3dfb7022ed460b8b29a379445c5d41392ec7bb3ad3f')
+sha256sums=('49a7fc861849051a3be5de353e3d7442a37170c990a3ffd8d83b67a369edca93')
+b2sums=('47297fc78906cfad9a07394cda67cabb3f9c773bd2544dd5d9deb991e4d8cc4e939aec1796ea2851dabf8111818cb61b954b39fd2116494904dc082586b99096')
 
 build () {
 	rm -rf build
