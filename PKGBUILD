@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=7.0.r6.g29300072
+pkgver=8.0rc2.r0.gfe3acfe6
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -17,6 +17,7 @@ makedepends+=(git)
 
 depends=(
 	"libnotify"
+	pipewire
 	"procps-ng"
 	"coreutils"
 	"awk"
