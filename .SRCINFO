@@ -1,0 +1,19 @@
+pkgbase = dwatch-bin
+	pkgdesc = A tool to watch command output for differences and send notifications.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/IngoMeyer441/dwatch
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = dwatch
+	conflicts = dwatch
+	source = README-0.4.1.md::https://raw.githubusercontent.com/IngoMeyer441/dwatch/v0.4.1/README.md
+	source = LICENSE-0.4.1::https://raw.githubusercontent.com/IngoMeyer441/dwatch/v0.4.1/LICENSE
+	sha256sums = 06574e43e0030b56bf45e27b23de72402bfb742b277004fa6c3cd8e0883c91d4
+	sha256sums = dcfdbba52a8bd9363823539b05d8b4c313bbc0ad950a34f4e10c4551f791b223
+	source_x86_64 = dwatch-x86_64-0.4.1::https://github.com/IngoMeyer441/dwatch/releases/download/v0.4.1/dwatch_linux_x86_64
+	sha256sums_x86_64 = b4cf2124ef17f1d8a62b9755db52f0e90c81972bce66df4778cb193675ecf05f
+
+pkgname = dwatch-bin
