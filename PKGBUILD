@@ -1,9 +1,9 @@
 # Maintainer: Clem Lorteau <spam at lorteau dot fr>
 pkgname=arch-wiki-search
 _origpkgname=arch_wiki_search
-pkgver=20250826
+pkgver=20250827
 pkgrel=1
-pkgdesc="Read and search Archwiki and other wikis, online or offline, in HTML, markdown or text, on the desktop or the terminal"
+pkgdesc="Read and search Archwiki and other wikis, online or offline, on the desktop or the terminal"
 arch=("any")
 url="http://github.com/clorteau/arch-wiki-search"
 license=("MIT")
@@ -17,6 +17,8 @@ depends=(
     "python-beautifulsoup4"
     "python-html5lib"
     "python-yaml"
+    "python-markdownify"
+    "python-markdown"
 )
 makedepends=(
     "python-build"
@@ -24,13 +26,16 @@ makedepends=(
     "python-installer" 
 )
 optdepends=(
+    "python-pyqt6: control through notification area on desktop"
+    "python-textual: control through start menu like icon on console"
     "elinks: console browsing"
     "w3m: console browsing"
     "firefox: desktop environment browsing"
     "chromium: desktop environment browsing"
+    "brave: desktop environment browsing"
 )
-source=("https://files.pythonhosted.org/packages/0e/02/1b383d7690bcb92d0821f79f98b8844d7d6bf5b0da115ceeeb3e7cf6a926/arch_wiki_search-20250826.tar.gz")
-sha256sums=("0c83385bd293eadf875d39c5ded32dc9ea3d4d7e87b4e0dc8aa89a3f2b3b9e6f")
+source=("https://files.pythonhosted.org/packages/b4/af/44f9315a2b901c78691188c2e35bf6303c06c52db7e4aa535a89bc0b906b/arch_wiki_search-20250827.tar.gz")
+sha256sums=("27e67c092dfcf18028a9e9cd5eda5a5ec89d72847c542d565bf0fd94a5240abd")
 package() {
     cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
