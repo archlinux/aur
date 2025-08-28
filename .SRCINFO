@@ -1,0 +1,15 @@
+pkgbase = fuzzel-pass
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	makedepends = cargo
+	depends = fuzzel
+	depends = wtype
+	depends = pass
+	source = fuzzel-pass-0.1.0.tar.gz::https://static.crates.io/crates/fuzzel-pass/fuzzel-pass-0.1.0.crate
+	b2sums = 56693f9544fbb5e71a13bb85e5347e534832ab5370b874dc7cc48b713126686dbcd8c22ec7da23fb0f13bbc800428d387208de073791b9e466d953f85abf4b5a
+
+pkgname = fuzzel-pass
