@@ -1,0 +1,23 @@
+pkgbase = python-fastuuid
+	pkgdesc = Python bindings to Rust's UUID library.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/fastuuid/fastuuid
+	arch = any
+	license = BSD-3-Clause license
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
+	checkdepends = python-pytest
+	checkdepends = python-uuid7
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = glibc
+	depends = gcc-libs
+	source = https://files.pythonhosted.org/packages/source/f/fastuuid/fastuuid-0.12.0.tar.gz
+	sha256sums = d0bd4e5b35aad2826403f4411937c89e7c88857b1513fe10f696544c03e9bd8e
+
+pkgname = python-fastuuid
