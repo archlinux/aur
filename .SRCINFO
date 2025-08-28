@@ -1,6 +1,6 @@
 pkgbase = astap
 	pkgdesc = Astrometric (plate) solver, stacking of images, photometry and FITS viewer (build from source). Qt5 version.
-	pkgver = 2025.08.06
+	pkgver = 2025.08.28
 	pkgrel = 1
 	url = http://www.hnsky.org/astap.htm
 	arch = x86_64
@@ -15,10 +15,11 @@ pkgbase = astap
 	optdepends = d05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV
 	optdepends = d20-star-db-astap: 400MB database of 2000 stars per square degree, reliable with 0.3-10° FOV
 	optdepends = d50-star-db-astap: 900MB database of 5000 stars per square degree, reliable with 0.2-10° FOV
+	optdepends = d80-star-db-astap: 1.2GB database of 8000 stars per square degree, reliable with 0.15-10° FOV
 	conflicts = astap-bin
 	conflicts = astap-bin-qt5
 	conflicts = astap-cli
 	source = https://www.hnsky.org/astap_source.zip
-	sha256sums = 40edb374f374386c847a6721920669ab2009ada16b6096e6370e12cca72811f7
+	sha256sums = 0538dc01ddde92f3a5dc91a5a9f0cba808137f24c201d615aadba8b9dc2ecc4c
 
 pkgname = astap
