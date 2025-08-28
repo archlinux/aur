@@ -1,9 +1,9 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortsh
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='Modern Unix shell implementation in Fortran 2018 with POSIX compliance including shell options (set/shopt), proper pipeline exit handling, special variables, and advanced scripting features'
+pkgdesc='Enterprise-grade Unix shell in Fortran 2018 with full POSIX.1-2017 compliance: parameter expansion, positional parameters, field splitting, file descriptor redirection, and complete POSIX built-in command support'
 arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortsh'
 license=('MIT')
