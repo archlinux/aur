@@ -1,7 +1,7 @@
 pkgbase = dblab-bin
 	pkgdesc = Interactive client for PostgreSQL, MySQL and SQLite3.
 	pkgver = 0.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danvergara/dblab
 	arch = x86_64
 	license = MIT
