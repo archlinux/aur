@@ -4,7 +4,7 @@
 
 pkgname=theharvester-git
 pkgver=4.8.2.r55.g70e5c171
-pkgrel=1
+pkgrel=2
 pkgdesc="Gather emails, names, subdomains, IPs and URLs related to targets using public sources"
 arch=(any)
 url="https://github.com/laramies/theHarvester"
@@ -27,7 +27,7 @@ depends=(
 	python-requests
 	python-retrying
 	python-shodan
-  python-playwrite
+  python-playwright
   python-slowapi
 	uvicorn
 	python-uvloop
