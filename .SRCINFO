@@ -1,6 +1,6 @@
 pkgbase = rich-cli
 	pkgdesc = Rich-cli is a command line toolbox for fancy output in the terminal
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/Textualize/rich-cli
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = rich-cli
 	depends = python-requests
 	depends = python-textual
 	depends = python-rich-rst
-	source = https://files.pythonhosted.org/packages/source/r/rich-cli/rich-cli-1.8.0.tar.gz
-	sha256sums = 7f99ed213fb18c25999b644335f74d2be621a3a68593359e7fc62e95fe7e9a8a
+	source = rich-cli-1.8.1.tar.gz::https://github.com/Textualize/rich-cli/archive/v1.8.1.tar.gz
+	sha256sums = fdc485358275a58b47c700a5456d85242aab8f141b8764ff49deed03e7c04723
 
 pkgname = rich-cli
