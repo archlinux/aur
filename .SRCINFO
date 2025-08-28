@@ -1,6 +1,6 @@
 pkgbase = amphitheatre-desktop-bin
 	pkgdesc = Open source GUI application that enables you to interact with Amphitheatre.(Prebuilt version)
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/amphitheatre-app/desktop
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = amphitheatre-desktop-bin
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc>=2.38
-	provides = amphitheatre-desktop=0.9.5
+	provides = amphitheatre-desktop=0.9.6
 	conflicts = amphitheatre-desktop
-	source_aarch64 = amphitheatre-desktop-0.9.5-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.9.5/amphitheatre-desktop-linux-arm64.rpm
-	sha256sums_aarch64 = a09c52338a4b1b3ad22fa9bf9f6702e42cd1d7fce1641d5cf586c8664aa74fb9
-	source_i686 = amphitheatre-desktop-0.9.5-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.9.5/amphitheatre-desktop-linux-i386.rpm
-	sha256sums_i686 = 434c077a8934698515728f80e25e5325ef992efd11cbf8fc21e4a4ce06d2376a
-	source_x86_64 = amphitheatre-desktop-0.9.5-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.9.5/amphitheatre-desktop-linux-amd64.rpm
-	sha256sums_x86_64 = 23ea25d451b56ce49104f15d832481f0a816508724501868ce313ec083324502
+	source_aarch64 = amphitheatre-desktop-0.9.6-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.9.6/amphitheatre-desktop-linux-arm64.rpm
+	sha256sums_aarch64 = ef4472c6a1ce706b79f95daf0b92a958e1dae6077ef152407e30c87aebe46128
+	source_i686 = amphitheatre-desktop-0.9.6-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.9.6/amphitheatre-desktop-linux-i386.rpm
+	sha256sums_i686 = 5cfab1a2715cc1edcd4416108a3dc81db5cc1b7d6c73439d4086c61559814502
+	source_x86_64 = amphitheatre-desktop-0.9.6-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.9.6/amphitheatre-desktop-linux-amd64.rpm
+	sha256sums_x86_64 = f5dffa120a9e42f5d23e91740d0513cc79d198b8df3db6a4ad2ad34c6182bf41
 
 pkgname = amphitheatre-desktop-bin
