@@ -1,0 +1,18 @@
+pkgbase = kubectl-swiftnp
+	pkgdesc = kubectl plugin to display the pods and containers which have recently been OOMKilled
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bmuschko/kubectl-swiftnp
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	source = https://github.com/bmuschko/kubectl-swiftnp/archive/v0.1.0/kubectl-swiftnp-0.1.0.tar.gz
+	sha512sums = 5a8acef8fd3f1b0460331b73228260c30d30ab88a0674cfc407fd2d0754f79e740a99689f62b0a47ddd13f4e73035f9ad070215590e48de9e81b025ce2029400
+	b2sums = 68276c528cb781754015018e081528d2c12fe6bad348806f05cee71304392be52a91f95258065a7ede683a1644d52472b2b40d99b48eefa298ce34b2c6b37396
+
+pkgname = kubectl-swiftnp
