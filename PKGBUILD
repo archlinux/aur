@@ -2,7 +2,7 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.74
+pkgver=5.25.82
 _electronversion=32
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -22,13 +22,13 @@ makedepends=(
     '7zip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/releases/download/${pkgname%-bin}${pkgver}/${pkgname%-bin}-${pkgver}.exe"
+    "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/releases/download/${pkgname%-bin}/${pkgname%-bin}-${pkgver}.exe"
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9ba497d698f6a13122436fb8fcbec872beabd69b46e4752eb7d1daeb54c794d2'
-            '165291deda7ce854a2cb1bf0fda0c0186c165f35be1d727ffe5285b4d36acca3'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('a59479abf96dd5dcfeda6ccd8e3b8e9f219821d4f406ece830cbda2e11be3da0'
+            'b109d17d1f6d608cac916ba8d66b960c8aa715364291920eec7f59214592f822'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/tmp/${pkgname%-bin}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
