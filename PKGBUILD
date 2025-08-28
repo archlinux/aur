@@ -8,8 +8,8 @@ options=('!lto')
 pkgdesc='A static site generator for video publishing'
 pkgname=hyper8
 pkgrel=1
-pkgver=0.22.0
-sha256sums=('8942daeb354b4c76feaec771a4d8c671ecdd92730d9854b0638d0a7151a657a0')
+pkgver=0.23.0
+sha256sums=('e247fe016579be6654c6fdf12c9e05e60b3178011628292b2d4fe83bd397de56')
 url='https://simonrepp.com/hyper8'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/${pkgver}.tar.gz")
