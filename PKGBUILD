@@ -1,5 +1,5 @@
 # Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Maintainer: Alexandria <alxpettit@gmail.com>
 
 pkgname=syncplay-git
