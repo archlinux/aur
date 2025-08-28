@@ -2,7 +2,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname='doc2go-bin'
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Your Go documentation, to-go.'
 url='https://github.com/abhinav/doc2go'
@@ -11,17 +11,17 @@ license=('Apache')
 provides=('doc2go')
 conflicts=('doc2go')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.0/doc2go-linux-arm64.tar.gz")
-sha256sums_aarch64=('25aa807ad8aa10fc9753701766185f9353d9532bffe759c8431b32b00ffdf111')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.1/doc2go-linux-arm64.tar.gz")
+sha256sums_aarch64=('a2bd41d0f0d8bdb85127093cc2ddaf917b1f4644613409540d48ace3a682ee44')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.0/doc2go-linux-armv7.tar.gz")
-sha256sums_armv7h=('2d17f73c8b46ec9227263f9892ca77bb8f54683ea39a25f1f640a49ac442ff3a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.1/doc2go-linux-armv7.tar.gz")
+sha256sums_armv7h=('3d322ec5e43b574540f16c88a5fe94dbd4a13b821546a2b45cc26797daa901c8')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.0/doc2go-linux-386.tar.gz")
-sha256sums_i686=('7fd447552b18f7c03ffe04ffc9bb26067081870856f3c7fbd475c4ead130b10f')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.1/doc2go-linux-386.tar.gz")
+sha256sums_i686=('091a1ac4999c6768cf98ca9a6509b14a215508fed8ca732aec0d3dbe492a210a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.0/doc2go-linux-amd64.tar.gz")
-sha256sums_x86_64=('6c75533b098fce39f7f51bcb254ae2f350bb482eba0de04b399a012f088bfd4c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/doc2go/releases/download/v0.9.1/doc2go-linux-amd64.tar.gz")
+sha256sums_x86_64=('8b2977aa7f28cdcb484a53a1bd77cb9fa720648d32a439555fa33d890675f0f4')
 
 package() {
   install -Dm755 "./doc2go" "${pkgdir}/usr/bin/doc2go"
