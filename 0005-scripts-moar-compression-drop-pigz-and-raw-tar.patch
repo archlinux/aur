@@ -1,7 +1,7 @@
-From 964a2c70d3dca3a8ca3b74bf966c22785d78c0c7 Mon Sep 17 00:00:00 2001
+From 1aead94217ee0d42b41a53e8b6768b8dca486c3d Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
-Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
+Subject: [PATCH 5/5] scripts: moar compression, drop pigz and raw tar
 
 ---
  scripts/package-airgap | 15 ++++++++++-----
@@ -36,7 +36,7 @@ index 36c4084db9..43a729bed7 100755
    cp "${airgap_image_file}" dist/artifacts/k3s-images.txt
  fi
 diff --git a/scripts/package-cli b/scripts/package-cli
-index f38e10d074..2b2655bef8 100755
+index a15d754926..c11b0d0ebe 100755
 --- a/scripts/package-cli
 +++ b/scripts/package-cli
 @@ -54,11 +54,12 @@ mkdir -p ./etc
@@ -57,5 +57,5 @@ index f38e10d074..2b2655bef8 100755
  BIN_SUFFIX="-${ARCH}"
  if [ ${ARCH} = amd64 ]; then
 -- 
-2.50.1.5.gf5b12191f0
+2.51.0.5.g3c45a6f57d
 

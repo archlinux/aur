@@ -1,7 +1,7 @@
-From 159e29132f0b1553591b82996a7d11f086268aec Mon Sep 17 00:00:00 2001
+From 7e34571da8393aebc8a2937f33f26794195fec03 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:11:52 +0100
-Subject: [PATCH 3/6] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
+Subject: [PATCH 2/5] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
 
 Existing $DAPPER_OUTPUT is not enough to be able to run build steps
 sequentially (i. e. `make download; make generate; make build;
@@ -16,7 +16,7 @@ extracting anything other than the final artifacts.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Dockerfile.dapper b/Dockerfile.dapper
-index a246fba08e..028d792f2b 100644
+index 0042c24ece..335b5440c4 100644
 --- a/Dockerfile.dapper
 +++ b/Dockerfile.dapper
 @@ -46,7 +46,7 @@ ENV SELINUX=${SELINUX}
@@ -29,5 +29,5 @@ index a246fba08e..028d792f2b 100644
      CROSS=true \
      STATIC_BUILD=true
 -- 
-2.50.1.5.gf5b12191f0
+2.51.0.5.g3c45a6f57d
 
