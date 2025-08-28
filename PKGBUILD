@@ -5,7 +5,7 @@ _branch="develop"
 # renovate: pkgName=https://github.com/ralphbean/bugwarrior depName=bugwarrior-git
 _commit=dd96577c77949c8f07852785a8c8def368391970
 pkgname="${_pkgname}-git"
-pkgver=1582.963fa87
+pkgver=1585.d166c3f
 pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
