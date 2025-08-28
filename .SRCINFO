@@ -1,0 +1,17 @@
+pkgbase = swift-bundler-git
+	pkgdesc = An Xcodeproj-less tool for creating cross-platform Swift apps.
+	pkgver = v2.0.3.r301.gaa7af2e
+	pkgrel = 1
+	url = https://github.com/stackotter/swift-bundler
+	arch = x86_64
+	arch = aarch64
+	license = Apache License 2.0
+	makedepends = git
+	depends = swift-language
+	depends = patchelf
+	optdepends = rpmbuild: to use the linux RPM bundler
+	optdepends = appimagetool: to use the linuxAppImage bundler
+	source = git+https://github.com/stackotter/swift-bundler.git
+	sha256sums = SKIP
+
+pkgname = swift-bundler-git
