@@ -14,11 +14,9 @@ source_x86_64=(
   "${_pkgname}-${pkgver}.AppImage::https://github.com/klpod221/kerminal/releases/download/v${pkgver}/kerminal-${pkgver}.AppImage"
   "kerminal.desktop"
   "kerminal.png"
-  "kerminal-bin.install"
 )
 
 sha256sums_x86_64=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
