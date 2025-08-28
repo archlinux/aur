@@ -1,5 +1,5 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: Martin Rys <https://rys.rs/contact>
+# Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=flatpak-builder-tools-git
 pkgver=r457.a1eb29c
