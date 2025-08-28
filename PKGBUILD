@@ -3,12 +3,12 @@
 
 pkgname=stl-thumb-git
 pkgver=238.6f4dd55
-pkgrel=3
+pkgrel=4
 license=('MIT')
 pkgdesc="A fast lightweight thumbnail generator for STL files"
 url="https://github.com/unlimitedbacon/stl-thumb.git"
 source=("${pkgname}::git+https://github.com/unlimitedbacon/stl-thumb.git")
-depends=("libgl" "freetype2" "fontconfig")
+depends=("libgl" "freetype2" "fontconfig" "xorg-server-xvfb")
 makedepends=("rust" "git")
 provides=("stl-thumb")
 conflicts=("stl-thumb")
