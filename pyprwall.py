@@ -30,12 +30,14 @@ class WallpaperManager(Adw.Application):
         self.current_wallpaper = None
         self.thumbnails = {}
         
-        # Use a config file in the project folder for last folder
-        self.config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.pyprwall_config')
+        # Use a dedicated config directory inside the user's home folder
+        self.config_dir = str(Path.home() / ".config" / "pyprwall")
+        self.config_file = os.path.join(self.config_dir, '.pyprwall_config')
         
         # Create directories if they don't exist
         os.makedirs(self.wallpaper_dir, exist_ok=True)
         os.makedirs(self.hypr_config_dir, exist_ok=True)
+        os.makedirs(self.config_dir, exist_ok=True) # Create the new config directory
 
     def do_activate(self):
         """
