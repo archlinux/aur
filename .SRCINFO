@@ -1,7 +1,7 @@
 pkgbase = ironpython3-bin
 	pkgdesc = Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ironpython.net
 	arch = any
 	license = Apache-2.0
@@ -20,6 +20,6 @@ pkgbase = ironpython3-bin
 	sha256sums = 03b29046d06f9ddfc6f0b525e0f8ad3cf1e0fefd2482aaaf9b663a9bc0fa0259
 	sha256sums = df796578fceb50ec591f80e58e701fc69a1193ea9212705436de7f931a75bf03
 	sha256sums = 11c8b015ed198f376fd407aa23091187ee89c0f573d3df844bdd79fa02329049
-	sha256sums = 0a0dfec7b5b7b7035c2aa3d2028b849fac8a330b1373353e58cabde3a722eb77
+	sha256sums = d0a1515f3a8cfd824cafaa171d9cef11ba0d35939fd430fb900e8bbd4cdd3a2d
 
 pkgname = ironpython3-bin

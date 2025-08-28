@@ -3,7 +3,7 @@
 _Name="IronPython"
 _basename="${_Name,,}"
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 _pkgname="${_basename}${pkgver%%.*}"
 pkgname="${_pkgname}-bin"
 pkgdesc="Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)"
@@ -34,7 +34,7 @@ source=("${_pkgsrc}-any.deb::${_url}/releases/download/v${pkgver}/${_basename}_$
 sha256sums=('03b29046d06f9ddfc6f0b525e0f8ad3cf1e0fefd2482aaaf9b663a9bc0fa0259'
             'df796578fceb50ec591f80e58e701fc69a1193ea9212705436de7f931a75bf03'
             '11c8b015ed198f376fd407aa23091187ee89c0f573d3df844bdd79fa02329049'
-            '0a0dfec7b5b7b7035c2aa3d2028b849fac8a330b1373353e58cabde3a722eb77')
+            'd0a1515f3a8cfd824cafaa171d9cef11ba0d35939fd430fb900e8bbd4cdd3a2d')
 
 prepare() {
   cd "${srcdir}"
