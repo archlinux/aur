@@ -11,6 +11,7 @@ make install
 ## Update package
 
 1. Make changes
+1. Update `pkgrel` if needed
 1. `make srcinfo` to update `.SRCINFO`
 1. `make clean` to remove all source and built files
 1. `make fetch` to fetch new source files

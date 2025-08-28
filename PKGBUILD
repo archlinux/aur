@@ -3,7 +3,7 @@
 
 pkgname="zedless-git"
 pkgver=0.192.0.dev.r980.gadb21022b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Zed fork focused on privacy and being local-first"
 url="https://github.com/zedless-editor/zedless"
 license=("GPL-3.0-or-later")
@@ -56,5 +56,5 @@ package() {
   cd "zedless"
   # export RUSTUP_TOOLCHAIN=stable
   # cargo install --no-track --all-features --root "${pkgdir}/usr/" --frozen --path .
-  install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/zed"
+  install -D --mode=0755 --no-target-directory "target/release/zed" "${pkgdir}/usr/bin/zeditor"
 }
