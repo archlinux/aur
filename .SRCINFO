@@ -1,13 +1,13 @@
 pkgbase = kerminal-bin
 	pkgdesc = Modern terminal app with SSH/SFTP support
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/klpod221/kerminal
 	arch = x86_64
 	license = MIT
 	provides = kerminal
 	conflicts = kerminal
-	source_x86_64 = kerminal-0.2.1.AppImage::https://github.com/klpod221/kerminal/releases/download/v0.2.1/kerminal-0.2.1.AppImage
+	source_x86_64 = kerminal-0.2.2.AppImage::https://github.com/klpod221/kerminal/releases/download/v0.2.2/kerminal-0.2.2.AppImage
 	source_x86_64 = kerminal.desktop
 	source_x86_64 = kerminal.png
 	sha256sums_x86_64 = SKIP
