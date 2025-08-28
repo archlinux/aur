@@ -5,7 +5,7 @@
 _electron=electron35
 _node=18
 pkgname=joplin-beta
-pkgver=3.4.8
+pkgver=3.4.9
 pkgrel=1
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("x86_64")
@@ -19,7 +19,7 @@ conflicts=('joplin' 'joplin-desktop' 'joplin-appimage')
 source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
         "joplin.desktop"
         "joplin-desktop.sh")
-sha256sums=('2df25c5d12e6cbfd8f8f7dc0b63b00c365a6fe0a8871ce182b3591305fd82b56'
+sha256sums=('58531e08fa4c6464b6c2bd04bce2aab5ebfd692bc9f9c33a8be779e9bd7c3534'
             '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
             'bfa32ec8c64d9a81b0b288640d1ccbaf8a2ad5bc86226a0760f05f0077932b0a')
 
