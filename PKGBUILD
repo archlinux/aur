@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: Mario Ortiz Manero <marioortizmanero@gmail.com>
 
 pkgname=python-tekore
