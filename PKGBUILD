@@ -2,7 +2,7 @@
 
 pkgname=pytype-git
 _pkgname="${pkgname%-git}"
-pkgver=2024.10.11.r26.g62a983d
+pkgver=2024.10.11.r71.g762b86d
 pkgrel=1
 pkgdesc='Static type analyzer for Python code'
 arch=('x86_64' 'aarch64')
@@ -79,13 +79,13 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd "$_pkgname"
-	# disable for now
-	# python build_scripts/run_tests.py -f -v
-	# python out/bin/pytype -j auto
-	python out/bin/pytype --version
-}
+# See https://github.com/google/pytype/blob/main/README.md
+# Tests will always fail because it doesn't fully support Python 3.13+.
+# check() {
+# 	cd "$_pkgname"
+# 	python build_scripts/run_tests.py -f -v
+# 	python out/bin/pytype -j auto
+# }
 
 package() {
 	cd "$_pkgname"
