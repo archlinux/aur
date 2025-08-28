@@ -2,8 +2,8 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.91.0.7684.250719.75e511b.r0.75e511b31
-pkgrel=3
+pkgver=1.91.0.7698.250828.92588c7.r0.92588c7f8
+pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
@@ -60,6 +60,7 @@ prepare(){
   git config submodule.deps/libvorbis.url "$srcdir"/libvorbis-1.3.3
   git config submodule.deps/Windows-deps.url "$srcdir"/oolite-windows-dependencies
   git -c protocol.file.allow=always submodule update
+  
   patch -Np1 -i "$srcdir"/linux-force-use-of-libpng14.patch
   patch -Np1 -i "$srcdir"/linux_force_espeak-ng.patch
 }
@@ -68,8 +69,7 @@ prepare(){
 build() {
   cd oolite-git
   source /usr/share/GNUstep/Makefiles/GNUstep.sh
-  make -f Makefile release \
-    OBJCFLAGS+="-Wno-format-security"
+  make -f Makefile release
 }
 
 package() {
