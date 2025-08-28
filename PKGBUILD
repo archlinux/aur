@@ -64,5 +64,4 @@ package() {
 
   cd "${_pkgsrc}-any/usr"
   cp -a --no-preserve=ownership -t "${pkgdir}/usr" "lib" "share"
-
 }
