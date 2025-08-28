@@ -7,6 +7,6 @@ pkgbase = dummiesnmap
 	license = GPL3
 	depends = python
 	source = https://github.com/kaizokuv/dummiesnmap/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 86aea39e3749e5e333256153e25a4cbaf7cdcb6f560c91bdc4f64509a7bf198f
+	sha256sums = 10df19e2e8139e6ab9b5018fc3f8e4738a92ed0962c9860513d71e4d2659bb30
 
 pkgname = dummiesnmap
