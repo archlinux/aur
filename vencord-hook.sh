@@ -15,10 +15,26 @@ err_handler() {
 }
 trap err_handler ERR
 
-if [ -z "$SUDO_USER" ] && [ -n "$PKEXEC_UID" ]; then
-	echo_hook "Polkit is being used but isn't supported by VencordInstaller; manually setting SUDO_USER."
-	SUDO_USER=$(getent passwd "$PKEXEC_UID" | cut -d: -f1)
-	export SUDO_USER
+if [ -z "$SUDO_USER" ] && [ -z "$DOAS_USER" ]; then
+	echo_hook "Using unsupported privilege escalation utility; Manually setting SUDO_USER."
+
+	WEIRD_HELPERS=(pamac)
+
+	for helper in "${WEIRD_HELPERS[@]}"; do
+		user=$(ps -eo user:32,comm --no-headers | awk -v h="$helper" '$1 != "root" && $2 ~ ("^"h) {print $1; exit}')
+
+		if [ -n "$user" ]; then
+			break
+		fi
+	done
+
+	if [ -z "$user" ]; then
+		echo_hook "Failed to determine user. Please set SUDO_USER manually or use an officially supported package manager (e.g. 'pacman -S discord')."
+		exit 1
+	fi
+
+	echo_hook "SUDO_USER=$user"
+	export SUDO_USER="$user"
 fi
 
 installer=$(mktemp /tmp/vencord-hook.XXXXXX)
