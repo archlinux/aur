@@ -1,6 +1,6 @@
 pkgbase = petsc-complex
 	pkgdesc = Portable, extensible toolkit for scientific computation (complex scalars)
-	pkgver = 3.23.5
+	pkgver = 3.23.6
 	pkgrel = 1
 	url = https://petsc.org
 	install = petsc.install
@@ -36,12 +36,12 @@ pkgbase = petsc-complex
 	optdepends = triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator
 	optdepends = valgrind: support for valgrind to help find memory-management problems in programs
 	optdepends = zoltan: support for zoltan
-	provides = petsc=3.23.5
+	provides = petsc=3.23.6
 	conflicts = petsc
 	options = staticlibs
-	source = https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-lite-3.23.5.tar.gz
+	source = https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-lite-3.23.6.tar.gz
 	source = test_optdepends.sh
-	sha512sums = 7aa53e7921a343bc6718c4cdf78152130dac9191be7ffb4055aeaa1a5602f63d8bb0df460b6cbd3e6263fe6b2bcf433dcc3f743490a286caf922ff7bbbd4bb82
+	sha512sums = 624f3782b42f5abee979180dd891a82886b1f5d86a57c9efc03f8cab03113c8565c66e8101c704e19cd6a7d2471070915694d9ff856cc1b8e43dd75090d8ec6a
 	sha512sums = 6babb4f04fe8a503743cd0876cf75d8bcf2ebb1cfd2d89bcf10109721335b19f8b1b6ccb27cc8b85ea21597c2f1edd8f30824be614072a6498a6a92e39632468
 
 pkgname = petsc-complex
