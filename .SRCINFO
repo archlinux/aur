@@ -1,11 +1,10 @@
 pkgbase = gauche
 	pkgdesc = R7RS Scheme implementation (includes gosh)
 	pkgver = 0.9.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://practical-scheme.net/gauche/
 	arch = x86_64
 	license = BSD
-	makedepends = gauche
 	depends = libatomic_ops
 	depends = libxcrypt
 	depends = slib

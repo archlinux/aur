@@ -5,13 +5,13 @@
 
 pkgname=gauche
 pkgver=0.9.15
-pkgrel=2
+pkgrel=3
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
 pkgdesc='R7RS Scheme implementation (includes gosh)'
 depends=(libatomic_ops libxcrypt slib mbedtls)
 optdepends=(gdbm)
-makedepends=(gauche)
+makedepends=()
 license=(BSD)
 _info_page_date='24 Apr 2024 10:10' # For reproducible builds
 source=("https://github.com/shirok/Gauche/releases/download/release${pkgver//./_}/Gauche-${pkgver}.tgz")
