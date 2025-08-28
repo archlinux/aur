@@ -2,7 +2,7 @@
 
 pkgname=elephant-clipboard
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc='clipboard provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -11,15 +11,15 @@ depends=('wl-clipboard')
 makedepends=('go')
 conflicts=('elephant-clipboard')
 provides=('elephant-clipboard')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-7.tar.gz")
-sha256sums=('2b0878fd386213aa5351ccdc8dbb46f59893b20008ecb23db0de18345c9f182c')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-8.tar.gz")
+sha256sums=('9b3d5d300dd9b1b5ded7a4f520f70fb91c066602ec11bab433dd250917a12dce')
 
 build() {
-    cd elephant-${pkgver}-beta-7/internal/providers/clipboard
+    cd elephant-${pkgver}-beta-8/internal/providers/clipboard
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-7/internal/providers/clipboard
+    cd elephant-${pkgver}-beta-8/internal/providers/clipboard
     install -Dm 755 clipboard.so -t "${pkgdir}/etc/xdg/elephant/providers"
 }
