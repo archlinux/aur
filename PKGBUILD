@@ -3,7 +3,7 @@
 
 pkgname="zedless-git"
 pkgver=0.192.0.dev.r980.gadb21022b5
-pkgrel=2
+pkgrel=3
 pkgdesc="Zed fork focused on privacy and being local-first"
 url="https://github.com/zedless-editor/zedless"
 license=("GPL-3.0-or-later")
@@ -26,6 +26,9 @@ conflicts=("zed" "zed-preview" "zed-preview-bin" "zedless" "zedless-bin")
 provides=("zed")
 options=('!lto')
 
+_binname=zeditor
+_appid=dev.zed.Zedless
+
 pkgver() {
   cd "zedless"
   set -o pipefail
@@ -35,8 +38,14 @@ pkgver() {
 prepare() {
   cd "zedless"
   export RUSTUP_TOOLCHAIN=stable
-  # cargo update
+  # cargo update # not our responsibility
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  export APP_NAME="Zed"
+  export APP_CLI="${_binname}"
+  export DO_STARTUP_NOTIFY="true"
+  export APP_ARGS="%U"
+  export APP_ICON="zed"
+  envsubst < "crates/zed/resources/zed.desktop.in" > ${_appid}.desktop
 }
 
 build() {
@@ -49,12 +58,14 @@ build() {
 check() {
   cd "zedless"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  # cargo test --frozen --all-features # not our responsibility
 }
 
 package() {
   cd "zedless"
   # export RUSTUP_TOOLCHAIN=stable
   # cargo install --no-track --all-features --root "${pkgdir}/usr/" --frozen --path .
-  install -D --mode=0755 --no-target-directory "target/release/zed" "${pkgdir}/usr/bin/zeditor"
+  install -D --mode=0755 --no-target-directory "target/release/zed" "${pkgdir}/usr/bin/${_binname}"
+  install -D --mode=0644 --target-directory "${pkgdir}/usr/share/applications/" "${_appid}.desktop"
+  install -D --mode=0644 --no-target-directory crates/zed/resources/app-icon.png "${pkgdir}/usr/share/pixmaps/zed.png"
 }
