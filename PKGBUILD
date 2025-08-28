@@ -17,7 +17,7 @@ license=('LGPL-2.1-or-later')
 install=remove-chromium-ffmpeg.install
 source=($install replace-chromium-ffmpeg.hook
 #"${url}/releases/download/${_nw}/${_nw}-linux-x64.zip"
-"$_chromium.tar.zst::https://repo.herecura.eu/herecura/x86_64/vivaldi-snapshot-ffmpeg-codecs-${_chromium}-1-x86_64.pkg.tar.zst"
+"${_chromium}.tar.zst::https://repo.herecura.eu/herecura/x86_64/vivaldi-snapshot-ffmpeg-codecs-${_chromium}-1-x86_64.pkg.tar.zst"
 )
 sha256sums=('90549fe900b87703b86fba8fa5dead8082da9f1c5fcbd2be2e9c39f4879b27ce'
             '0f4500d0f35d1fa561c5c41ce808386bb36d0702227ba00d33bd423ed26260ed'
