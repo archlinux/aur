@@ -12,7 +12,7 @@ license=('Apache License 2.0')
 depends=(swift-language patchelf)
 makedepends=(git)
 optdepends=(
-  'rpmbuild: to use the linux RPM bundler'
+  'rpm-tools: to use the linux RPM bundler'
   'appimagetool: to use the linuxAppImage bundler'
 )
 source=("git+$url.git")
