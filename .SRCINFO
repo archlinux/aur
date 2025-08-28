@@ -1,0 +1,12 @@
+pkgbase = dummiesnmap
+	pkgdesc = A dumbed-down version of nmap, wrapped in python, for people who can't remember 50 million flags
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kaizokuv/dummiesnmap
+	arch = any
+	license = GPL3
+	depends = python
+	source = https://github.com/kaizokuv/dummiesnmap/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 86aea39e3749e5e333256153e25a4cbaf7cdcb6f560c91bdc4f64509a7bf198f
+
+pkgname = dummiesnmap
