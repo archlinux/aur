@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: John Troxler <firstname dot lastname at gmail dot com>
 
 # https://github.com/loot/libloot/issues/95
