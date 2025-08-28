@@ -3,7 +3,7 @@
 _Name="IronPython"
 _basename="${_Name,,}"
 pkgver=2.7.12
-pkgrel=1
+pkgrel=2
 pkgname="${_basename}${pkgver%%.*}"
 pkgdesc="Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)"
 arch=('any')
@@ -23,14 +23,6 @@ optdepends=(
 )
 provides=(
   "${_basename}${pkgver%.*}"
-  "${pkgname}-adodbapi"
-  "${pkgname}-axscript"
-  "${pkgname}-isapi"
-  "${pkgname}-pythonwin"
-  "${pkgname}-pywin32_system32"
-  "${pkgname}-win32"
-  "${pkgname}-win32com"
-  "${pkgname}-win32comext"
 )
 replaces=(
   "${_basename}<3"
@@ -43,7 +35,7 @@ _pkgsrc="${_url##*/}-ipy-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/ipy-${pkgver}.tar.gz"
         "dlr-60dfacb9852ec022dd076c152e286b116553c905.tar.gz::https://github.com/IronLanguages/dlr/archive/60dfacb9852ec022dd076c152e286b116553c905.tar.gz"
         "${pkgname}_nuget_config_json_url.patch"
-        "${pkgname}.sh")
+        "${_basename}.sh")
 b2sums=('df01bb18b07c1fe43fb87990c60dcd342bc861dbc9bd32abdf4f975d8d7275888290b298b8ed65f7131ca22c5cf47537c4d0413cfc760647a68b32e57619f903'
         '20a8da80eb7e8605577e57e3ea9bc698c2e7ecc74d1411e6b6647a78d9c99821cc349943e938d136d8029947eec27e13f71c9d4b63dafca95f8e836fd46dc32f'
         '65b81a7b6d4b69da948bc834c49609c172beab926fde0d30a90d9c02e0ed9a4bb9c4070b62acd569cba9ba412e0ff58b422d61d33e030bc52cf1fcf34f306152'
@@ -57,7 +49,7 @@ prepare() {
   _srcenv
 
   cd "${srcdir}"
-  sed -i "s/@@VERSION_MAJOR_MINOR@@/${pkgver%.*}/g" "${pkgname}.sh"
+  sed -i "s/@@VERSION_MAJOR_MINOR@@/${pkgver%.*}/g" "${_basename}.sh"
 
   cp -RT "dlr-60dfacb9852ec022dd076c152e286b116553c905" "${_pkgsrc}/Src/DLR"
 
@@ -105,14 +97,14 @@ build() {
 package() {
   cd "${srcdir}"
   for _exe in ipy ipyc ipyw; do
-    install -vDm755 "${pkgname}.sh"  "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
-    sed -i "s/@@EXE@@/${_exe}/g"     "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
-    ln -vsf "${_exe}${pkgver%.*}"    "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}"
+    install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
+    sed -i "s/@@EXE@@/${_exe}/g"      "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
+    ln -vsf "${_exe}${pkgver%.*}"     "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}"
   done
   for _exe in ipy ipyw; do
-    install -vDm755 "${pkgname}.sh"  "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
-    sed -i "s/@@EXE@@/${_exe}32/g"   "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
-    ln -vsf "${_exe}${pkgver%.*}-32" "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}-32"
+    install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
+    sed -i "s/@@EXE@@/${_exe}32/g"    "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
+    ln -vsf "${_exe}${pkgver%.*}-32"  "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}-32"
   done
 
   cd "${_pkgsrc}"
