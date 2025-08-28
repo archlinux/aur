@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.7.5
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.7.5::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.7.5
-	sha256sums = 86511279a665b3085255d420b810810d635848120919a10af0d1c7bd6509cf4c
+	source = pydantic-ai-0.8.0::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.8.0
+	sha256sums = 8ad929b9789358cc53a4d563c3cab007f9c7311b123a4948ce5da20c5c6b49db
 
 pkgname = python-pydantic-graph
 	pkgdesc = Graph and state machine librarys.
