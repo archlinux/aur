@@ -1,5 +1,4 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: Brian Li <brian14708@gmail.com>
 # Contributor: Denys Zariaiev <denys.zariaiev@gmail.com>
 
