@@ -1,0 +1,4 @@
+[keymaker]
+source = "git"
+git = "https://github.com/tobagin/keymaker.git"
+prefix = "v"
