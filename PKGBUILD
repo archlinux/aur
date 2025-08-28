@@ -23,8 +23,8 @@ source=("${_pkgbase}::git+https://github.com/mnixry/proton-bridge.git"
         "keyfile.patch"
         "protonmail-bridge.service")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+            'bd6cef568057414013b7e7afeba44d6966186c15fb8b87ae31b149bd5d7b68c9'
+            '58668370a896fadffa69b2ec2d34660edc1e88338608c8a9516f1650350726a9')
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"

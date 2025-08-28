@@ -64,20 +64,6 @@ makepkg -si
 ```
 Or use an AUR helper that respects VCS pkgver logic.
 
-## Switching to a fixed release
-No tags exist in the fork currently. When/if tags are added:
-- Replace the VCS source with an archive tarball (e.g. `source=("https://github.com/mnixry/proton-bridge/archive/refs/tags/vX.Y.Z.tar.gz" ...)`).
-- Remove `pkgver()` and set `pkgver=X.Y.Z`.
-- Regenerate checksums (`makepkg -g`).
-
-## AUR submission checklist (for when you publish)
-- [ ] Replace placeholder Maintainer line with your name/email.
-- [ ] Refresh patch against exact commit (update index lines & context if upstream changes).
-- [ ] Generate real sha256 sums for patch & service file (leave VCS source as SKIP or switch to tarball with checksum).
-- [ ] Verify `license` array matches upstream (`GPL3` vs `GPL-3.0-only`).
-- [ ] Ensure no unused files are shipped.
-- [ ] Run `namcap PKGBUILD` and `namcap *.pkg.tar.*` and address warnings where reasonable.
-
 ## Caveats
 - GUI (Qt) is intentionally not built to reduce dependency footprint; add GUI by pulling in the Qt build dependencies and using upstream style `cmake` invocation if desired.
 - File-based secret storage is less secure; consider using upstream packages if secure key storage matters.
