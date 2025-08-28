@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PyprWall
+Comment=Hyprland Wallpaper Manager
+Exec=/usr/bin/pyprwall
+Icon=preferences-desktop-wallpaper
+Terminal=false
+Type=Application
+Categories=Utility;GTK;
+Keywords=wallpaper;hyprland;
