@@ -1,8 +1,8 @@
 # Maintainer: Jerzy Mansarliński <jerzy at mansar dot eu>
 
 pkgname=got-your-back
-pkgver=1.82
-pkgrel=2
+pkgver=1.90
+pkgrel=1
 pkgdesc="A command line tool for backing up Gmail messages. Known as GYB."
 arch=(any)
 url=https://github.com/GAM-team/got-your-back
@@ -24,7 +24,7 @@ source=(
     "001-default-config-dir.patch"
     )
 sha256sums=(
-    '9cd29c81c78fceebe1e7ed34627bb27d758a250ccae92aecf6bacf1da6dfed09' 
+    '9f090cb5b1b4b1209801e2cae1d2d0065581c0d2d366682db1e2e74cc4609ec9'
     'e89329299e2040d0f565a69f05dcda0da7465d0f795d39c59a7b0646ab9c858b'
     )
 
