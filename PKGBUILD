@@ -8,9 +8,9 @@ license=('GPL3')
 depends=('python')
 makedepends=()
 source=("https://github.com/kaizokuv/dummiesnmap/archive/refs/tags/v1.0.0.tar.gz")
-sha256sums=('86aea39e3749e5e333256153e25a4cbaf7cdcb6f560c91bdc4f64509a7bf198f')
+sha256sums=('86aea39e3749e5e333256153e25a4cbaf7cdcb6f560c91bdc4f64509a7bf198f') 
 
-package() {
-    cd "dummiesnmap-$pkgver"
-    install -Dm755 main.py "$pkgdir/usr/bin/dummiesnmap"
+package() { 
+	cd "dummiesnmap-$pkgver" 
+	install -Dm755 main.py "$pkgdir/usr/bin/dummiesnmap" 
 }
