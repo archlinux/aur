@@ -1,7 +1,7 @@
 # Maintainer: Oscar Rodriguez a.k.a mester <mester@disroot.org> 
 pkgname="arashi-icon-theme"
 pkgver=25.08.3
-pkgrel=2
+pkgrel=3
 arch=("any")
 license=('CC-BY-4.0')
 pkgdesc="Arashi a smooth, modern icon set with a twist!"
@@ -31,7 +31,5 @@ package() {
         fi
     done
 	install -d -m755 "${pkgdir}/usr/share/icons/Arashi"
-	(cd ../../../ 
-	rm -rf src)
 	cp -a --no-preserve=ownership . "${pkgdir}/usr/share/icons/Arashi"
 }
