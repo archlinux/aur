@@ -2,7 +2,7 @@
 
 pkgbase=obsidian
 pkgname=(${pkgbase}-{bin,appimage})
-pkgver=1.9.10
+pkgver=1.9.12
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/obsidianmd/obsidian-releases"
@@ -20,9 +20,9 @@ source_aarch64=(
 )
 
 sha256sums=('56e6892346fb16287fd4a3c8d521d51e620604052ac8aee5be7b6a8fee9452c0')
-sha256sums_x86_64=('44c8eeb0797c332dbf4533aaaa126a31896db8c207dac9cda61beba7c33be257'
-                   '24471d25ed4d7d797a20a8ddf7b81ec43ae337f9ce495514dfdbb893307472b7')
-sha256sums_aarch64=('0ef8b8a77946869869aa85b74bf97959ef4f12129557a1b9a407885bdd808af6')
+sha256sums_x86_64=('5c2a5d7fcd566879e3db066ccc4df81b9c6ac3e72ec88a4ae13e0428a1cf289f'
+                   '41f721df379f899f802efb6e79f8a30b491734634b03434e28daf82558a2a8f3')
+sha256sums_aarch64=('90ef4b5f93ec8d77e5c8155a3d3abdf896d5767e3a70cec9d43117d8729f49c7')
 noextract=("Obsidian-${pkgver}-${CARCH}.AppImage")
 
 package_obsidian-bin() {
