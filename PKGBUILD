@@ -2,10 +2,10 @@
 
 pkgname=fuzzel-pass
 pkgver=0.1.0
-pkgrel=1
-pkgdesc=''
-url=''
-license=()
+pkgrel=2
+pkgdesc='A password-store frontend for auto-typing passwords'
+url='https://codeberg.org/stupeflo/fuzzel-pass'
+license=("istsl")
 makedepends=('cargo')
 depends=('fuzzel' 'wtype' 'pass')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
