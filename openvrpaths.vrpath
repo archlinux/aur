@@ -1,0 +1,7 @@
+{
+  "jsonid": "vrpathreg",
+  "runtime": [
+    "/opt/opencomposite"
+  ],
+  "version": 1
+}

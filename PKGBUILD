@@ -29,8 +29,10 @@ source=(
   "git+https://github.com/KhronosGroup/OpenXR-SDK.git"
   "git+https://github.com/g-truc/glm.git"
   "git+https://github.com/libunwind/libunwind.git"
+  "openvrpaths.vrpath"
 )
 sha1sums=(
+  "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
@@ -63,6 +65,9 @@ build() {
 }
 
 package() {
+  install -Dm644 \
+    "${srcdir}/openvrpaths.vrpath" \
+    "${pkgdir}/opt/opencomposite/openvrpaths.vrpath"
   install -Dm644 \
     /dev/null \
     "${pkgdir}/opt/opencomposite/bin/version.txt"
