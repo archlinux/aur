@@ -5,7 +5,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     printf "${yellow}==== python-accesser-git 初次安装注意事项 ====${all_off}\n"
-    printf "${blue}==>${all_off} 初次安装时，在首次运行软件后需要手动导入 ssl 证书。\n"
+    printf "${blue}==>${all_off} 初次安装时，在首次运行软件后需要手动导入 ssl 证书。可以从 http://localhost:7654/CERT/root.crt 获取证书。\n"
     printf "${blue}==>${all_off} ${bold}/etc/accesser/${all_off} 下为 systemd 服务的配置文件。如果不想使用 systemd，可以在终端手动\n"
     printf "    运行 ${bold}accesser${all_off} 命令，程序会在当前的工作目录生产配置文件，不会使用 ${bold}/etc/accesser/${all_off} 下。\n"
     printf "    的配置文件\n"
@@ -13,7 +13,8 @@ post_install() {
 
 post_upgrade() {
     printf "${yellow}==== python-accesser-git 更新注意事项 ====${all_off}\n"
-    printf "${blue}==>${all_off} 更新软件后，在重新运行软件后可能需要重新导入 ssl 证书。\n"
-    printf "${blue}==>${all_off} 如果使用 ${bold}trust anchor --store${all_off} 导入证书，重新导入 ssl 证书前，\n"
+    printf "${blue}==>${all_off} 最新版本证书存放位置发生了变化。请参考 https://github.com/URenko/Accesser/pull/245 进行迁移。\n"
+    printf "${blue}==>${all_off} 迁移后可以避免在 Accesser 安装目录变化时（例如 python 大版本更新时）需要重新导入证书的问题。\n"
+    printf "${blue}==>${all_off} 特别地，如果之前使用 ${bold}trust anchor --store${all_off} 导入证书并且需要重新导入 ssl 证书，\n"
     printf "    请先使用 ${bold}trust anchor --remove${all_off} 删除旧的 Accesser 证书文件。\n"
 }
