@@ -78,7 +78,7 @@ done <<<"$monitors"
 if [ -n "$result" ]; then
     result="${result}\n"
 fi
-result="${result}region\tSelection Region"
+result="${result}region\tregion: select"
 
 # Add windows to result
 parse_windows() {
@@ -105,7 +105,7 @@ parse_windows() {
                         title = parts3[1];
 
                         if (id != "" && title != "")
-                            print "window:"id "\t" client ":" title;
+                            print "window:"id "\t" "window: " title;
                     }
                 }
             }
