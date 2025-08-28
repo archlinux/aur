@@ -1,0 +1,14 @@
+pkgbase = vlsub-opensubtitles-com-git
+	pkgdesc = VLC extension for downloading subtitles from OpenSubtitles.com
+	pkgver = v1.2.2.r2.geca46ef
+	pkgrel = 1
+	url = https://github.com/opensubtitles/vlsub-opensubtitles-com
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vlc
+	conflicts = vlsub-git
+	source = git+https://github.com/opensubtitles/vlsub-opensubtitles-com.git
+	sha256sums = SKIP
+
+pkgname = vlsub-opensubtitles-com-git
