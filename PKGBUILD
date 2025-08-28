@@ -14,15 +14,11 @@ _srcurl="https://github.com/fekoneko/piximan/archive/refs/tags/v$pkgver.tar.gz"
 source=("$_srcname::$_srcurl")
 sha256sums=('e9d1ba1b426f0195199815f0496bdfee80278a972d43ea77b1d3008348cf12ca')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  export GOPATH="$srcdir"
-  go mod download
-}
-
 build() {
   cd "$pkgname-$pkgver"
+  export GOPATH="$srcdir"
   make build:current PIXIMAN_VERSION="v$pkgver"
+  go clean -modcache
 }
 
 package() {
