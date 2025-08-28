@@ -16,5 +16,7 @@ pkgbase = godl
 	depends = breeze-icons
 	depends = qqc2-desktop-style
 	depends = kconfigwidgets
+	source = git+https://github.com/sockeye-d/godl.git#tag=v1.2.2
+	sha256sums = SKIP
 
 pkgname = godl
