@@ -2,14 +2,14 @@
 
 pkgname="pi-im"
 pkgver=3.142a
-pkgrel=2
+pkgrel=3
 pkgdesc='the XMPP client from hell'
-url="https://github.com/sunglocto/${pkgname}"
+url="https://forge.sunglocto.net/sunglocto/${pkgname}"
 arch=('x86_64')
 license=('AGPL')
 makedepends=('go')
 
-source=("https://github.com/sunglocto/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("https://forge.sunglocto.net/sunglocto/${pkgname}/archive/${pkgver}.tar.gz")
 
 prepare() {
     cd "${pkgname}-${pkgver}/"
@@ -32,4 +32,4 @@ package() {
     cd "${pkgname}-${pkgver}/"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-sha256sums=('57bfbbd804e4bc1a337b683d1baf7cb0878d39b28240e39a7fe6726c222df17f')
+sha256sums=('cd675bb3c4550d6d520129b456da1a7b6fcc60c40e5bf5e09f01a30027a00a7e')
