@@ -12,7 +12,7 @@ makedepends=('go')
 _srcname="$pkgname-$pkgver.tar.gz"
 _srcurl="https://github.com/fekoneko/piximan/archive/refs/tags/v$pkgver.tar.gz"
 source=("$_srcname::$_srcurl")
-sha256sums=('ef77585c7de20b51cd39c8f0bb6fa253043ad5f6de01016ae805c77242281a4a')
+sha256sums=('e9d1ba1b426f0195199815f0496bdfee80278a972d43ea77b1d3008348cf12ca')
 
 prepare() {
   cd "$pkgname-$pkgver"
