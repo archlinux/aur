@@ -27,9 +27,7 @@ check() {
     -vv
   )
   cd "$srcdir"/$_name-$pkgver
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
