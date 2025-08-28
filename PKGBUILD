@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=amneziavpn-bin
-pkgver=4.8.9.2
+pkgver=4.8.10.0
 pkgrel=1
 pkgdesc="Amnezia VPN Client"
 arch=('x86_64')
@@ -11,11 +11,11 @@ install=amneziavpn.install
 conflicts=(amneziavpn amneziavpn-git)
 options=(!debug)
 source=(amneziavpn-$pkgver.tar.zip::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.tar.zip)
-sha256sums=('b3e1e23264e75e0be1955165c732d0c1d9050733562a9eeb1c5c33ec322ea6d5')
+sha256sums=('bc133c62a87e5b0ba03a1bda70b5b2474fce4e9e1926852b24773f2605ce408d')
 
 # Signature '\x37\x7A\xBC\xAF\x27\x1C' version '\x00\x04'
-_archive_offset=0x1ABF35C
-_archive_size=0x4B1B664
+_archive_offset=0x1ABF361
+_archive_size=0x4AF8F17
 
 prepare() {
   # Extract files from installer (only if exists, in case of using '--noextract').
