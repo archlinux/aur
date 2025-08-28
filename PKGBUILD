@@ -3,7 +3,7 @@
 pkgname=calligra-plan
 pkgdesc='A project management application intended for managing moderately large projects with multiple resources'
 pkgver=3.3.0
-pkgrel=6
+pkgrel=7
 arch=(x86_64)
 url='https://www.calligra-suite.org/'
 license=(GPL-2.0-or-later
@@ -21,7 +21,7 @@ depends=(gcc-libs
          kholidays5
          ki18n5
          kiconthemes5
-         kinit
+         kinit5
          kio5
          kitemviews5
          kjobwidgets5
