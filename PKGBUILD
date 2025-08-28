@@ -14,11 +14,14 @@ depends=('guile')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TaylanUB/scheme-${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('b0681daa006c80efd2fce5dc174ac439d44be8a9c2e70938e497efad08cd5659')
 
-build() {
+prepare() {
 	cd "${srcdir}/scheme-${_pkgname}-${pkgver}"
 	aclocal
 	autoconf
 	automake --add-missing
+}
+build() {
+	cd "${srcdir}/scheme-${_pkgname}-${pkgver}"
 	./configure --prefix=/usr
 	make
 }
