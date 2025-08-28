@@ -16,6 +16,7 @@ source=("${pkgname}"::"git+https://github.com/eigenwallet/core"
 sha256sums=('SKIP' '9daa328e5dcd5c0e3fa7396f295d2879b216c63888f121ca420b83995f61e2e5')
 
 pkgver() {
+	cd "${srcdir}/${pkgname}"
 	git describe --tags --match '[0-9]*' --abbrev=7 --always | sed -E 's/-([0-9]+)-g([0-9a-fA-F]+)/.r\1.\2/; s/-/./g'
 }
 
