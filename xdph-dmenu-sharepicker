@@ -81,36 +81,56 @@ fi
 result="${result}region\tSelection Region"
 
 # Add windows to result
+parse_windows() {
+    local windows="$1"
+
+    echo "$windows" | awk -F'\\[HA>\\]' '{
+        for(i=1; i<=NF; i++) {
+            if ($i == "") continue;
+
+            entry = $i;
+
+            # Split by [HC>] to get ID and rest
+            if (split(entry, parts1, "\\[HC>\\]") >= 2) {
+                id = parts1[1];
+                rest = parts1[2];
+
+                # Split by [HT>] to get client and title part
+                if (split(rest, parts2, "\\[HT>\\]") >= 2) {
+                    client = parts2[1];
+                    title_part = parts2[2];
+
+                    # Extract title (before [HE>])
+                    if (split(title_part, parts3, "\\[HE>\\]") >= 1) {
+                        title = parts3[1];
+
+                        if (id != "" && title != "")
+                            print "window:"id "\t" client ":" title;
+                    }
+                }
+            }
+        }
+    }'
+}
+
 while IFS= read -r line; do
     if [ -n "$result" ]; then
         result="${result}\n"
     fi
     result="${result}${line}"
-done < <(echo "$windows" | awk -F'\\[HE>\\]' '{
-    for(i=1; i<=NF; i++) {
-        if ($i == "") continue;
+done < <(parse_windows "$windows")
 
-        split($i, window, "\\[HC>\\]");
-        id = window[1];
+labels=$(echo -e "$result" | cut -f2)
+selection=$(echo -e "$labels" | "$@" "Select")
+selected_value=$(echo -e "$result" | awk -F'\t' -v sel="$selection" '$2 == sel {print; exit}')
 
-        split(window[2], parts, "\\[HT>\\]");
-        class = parts[1];
-        title = parts[2];
-
-        if (id != "")
-            print id "\t" "window: " title;
-    }
-}')
-
-selection=$(echo -e "$result" | "$@" "Select")
-
-if [[ $selection == *"screen"* ]]; then
-    monitor=$(echo "$selection" | cut -f1)
+if [[ $selected_value == *"screen"* ]]; then
+    monitor=$(echo "$selected_value" | cut -f1)
     echo "[SELECTION]/screen:${monitor}"
-elif [[ $selection == *"window"* ]]; then
-    window_id=$(echo "$selection" | cut -f1)
-    echo "[SELECTION]/window:${window_id}"
-elif [[ $selection == *"region"* ]]; then
+elif [[ $selected_value == *"window"* ]]; then
+    window_id=$(echo "$selected_value" | cut -f1)
+    echo "[SELECTION]/${window_id}"
+elif [[ $selected_value == *"region"* ]]; then
     region=$(slurp -f "%o@%x,%y,%w,%h")
     echo "[SELECTION]/region:${region}"
 fi

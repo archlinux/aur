@@ -1,6 +1,6 @@
 pkgbase = xdph-dmenu-sharepicker
 	pkgdesc = Hyprland Dmenu Screenshare-Picker
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = any
 	license = MIT

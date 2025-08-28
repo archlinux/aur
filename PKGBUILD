@@ -1,7 +1,7 @@
 # Maintainer: A. Benz <hello@benz.dev>
 pkgname=xdph-dmenu-sharepicker
 license=('MIT')
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Hyprland Dmenu Screenshare-Picker'
 depends=('hyprland' 'wlr-randr' 'jq')
