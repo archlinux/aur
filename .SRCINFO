@@ -1,6 +1,6 @@
 pkgbase = fortsh
-	pkgdesc = Modern Unix shell implementation in Fortran 2018 with comprehensive shell features including case statements, here documents, history expansion, enhanced aliases, and associative arrays
-	pkgver = 1.4.0
+	pkgdesc = Modern Unix shell implementation in Fortran 2018 with POSIX compliance including shell options (set/shopt), proper pipeline exit handling, special variables, and advanced scripting features
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/FortranGoingOnForty/fortsh
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = fortsh
 	makedepends = gcc-fortran
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = glibc
-	source = https://github.com/FortranGoingOnForty/fortsh/releases/download/v1.4.0/fortsh-1.4.0.tar.gz
-	sha256sums = 4aa6b639f7b5eae1b43c837f665fecacb9057487ea72087cea0600ea4df1465f
+	source = git+https://github.com/FortranGoingOnForty/fortsh.git
+	sha256sums = SKIP
 
 pkgname = fortsh
