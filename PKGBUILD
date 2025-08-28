@@ -23,7 +23,7 @@ provides=(
 
 source=(
 	# PT Sans
-	'https://info.paratype.ru/wp-content/uploads/2019/07/ptsans-1.zip'
+	'https://info.paratype.ru/wp-content/uploads/2019/07/PTSans.zip'
 	'https://info.paratype.ru/wp-content/uploads/2019/07/PTSansExpert.zip'
 
 	# PT Serif
