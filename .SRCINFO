@@ -1,7 +1,7 @@
 pkgbase = piximan
 	pkgdesc = Pixiv batch downloader and local collection viewer
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fekoneko/piximan
 	arch = x86_64
 	arch = i686

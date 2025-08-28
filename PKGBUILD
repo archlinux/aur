@@ -2,7 +2,7 @@
 
 pkgname='piximan'
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pixiv batch downloader and local collection viewer'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/fekoneko/piximan'
@@ -17,6 +17,11 @@ sha256sums=('ef77585c7de20b51cd39c8f0bb6fa253043ad5f6de01016ae805c77242281a4a')
 prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go mod download
 }
 
