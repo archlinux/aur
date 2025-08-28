@@ -5,7 +5,7 @@
 pkgname=python-blessings
 _name=${pkgname#python-}
 pkgver=1.7
-pkgrel=12
+pkgrel=13
 pkgdesc="A thin, practical wrapper around terminal coloring, styling, and positioning"
 url="https://github.com/erikrose/blessings"
 arch=(any)
@@ -21,13 +21,25 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
-  python-nose
+  python-pytest
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ee1dc1524631c4fdb9e3a7f1776cbf82ae50cf1edf225d45bf274bebed0c6c36')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+  'pytest.patch'  # https://github.com/erikrose/blessings/pull/167
+)
+sha256sums=(
+  'ee1dc1524631c4fdb9e3a7f1776cbf82ae50cf1edf225d45bf274bebed0c6c36'
+  '0703273dee07fda4112ff051a7fcbc6103eb2dc4d8c15c5328076f4765809b7c'
+)
 
 _archive="$_name-$pkgver"
+
+prepare() {
+  cd "$_archive" || exit
+
+  patch -Np1 -i "$srcdir/pytest.patch"
+}
 
 build() {
   cd "$_archive" || exit
@@ -38,7 +50,7 @@ build() {
 check() {
   cd "$_archive" || exit
 
-  script -c "python -m nose" /dev/null
+  python -m pytest -s blessings/tests.py
 }
 
 package() {

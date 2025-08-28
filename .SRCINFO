@@ -1,11 +1,11 @@
 pkgbase = python-blessings
 	pkgdesc = A thin, practical wrapper around terminal coloring, styling, and positioning
 	pkgver = 1.7
-	pkgrel = 11
+	pkgrel = 13
 	url = https://github.com/erikrose/blessings
 	arch = any
 	license = MIT
-	checkdepends = python-nose
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,6 +13,8 @@ pkgbase = python-blessings
 	depends = python
 	depends = python-six
 	source = python-blessings-1.7.tar.gz::https://github.com/erikrose/blessings/archive/refs/tags/1.7.tar.gz
+	source = pytest.patch
 	sha256sums = ee1dc1524631c4fdb9e3a7f1776cbf82ae50cf1edf225d45bf274bebed0c6c36
+	sha256sums = 0703273dee07fda4112ff051a7fcbc6103eb2dc4d8c15c5328076f4765809b7c
 
 pkgname = python-blessings
