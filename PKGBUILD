@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cangaroo-hpmicro-canfd-analyzer-git
-pkgver=r8.4b66c32
+pkgver=r18.01a523c
 pkgrel=1
 pkgdesc="Four-channel CANFD analyzer based on hpmicro hpm5361"
 arch=($CARCH)
@@ -41,6 +41,7 @@ prepare() {
 	git remote add taotieren https://github.com/taotieren/cangaroo_hpmicro_canfd_analyzer.git
 	git fetch --all
 	git merge taotieren/update-linux
+	git merge taotieren/rename-autoheightdelegate.h
 }
 
 build() {
