@@ -1,0 +1,19 @@
+pkgbase = python-pytest-asdf-plugin
+	pkgdesc = Pytest plugin for testing ASDF schemas
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/asdf-format/pytest-asdf-plugin
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-asdf
+	makedepends = python-setuptools-scm>=8
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/p/pytest_asdf_plugin/pytest_asdf_plugin-0.1.2.tar.gz
+	md5sums = a34d1a0162761246e867a189fc0951d8
+
+pkgname = python-pytest-asdf-plugin
+	depends = python>=3.9
+	depends = python-pytest>=7
+	depends = python-asdf
