@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=vtracer
 # [2025-07-23]: The version is actually 0.6.11 but the GitHub releases vs tags vs actual file version(==PyPI version) is all over the place
