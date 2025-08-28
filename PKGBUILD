@@ -105,17 +105,13 @@ build() {
 package() {
   cd "${srcdir}"
   for _exe in ipy ipyc ipyw; do
-    install -vDm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
-    sed -e "s/@@VERSION_MAJOR_MINOR@@/${pkgver%.*}/g" \
-        -e "s/@@EXE@@/${_exe}/g" \
-        -i "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
-    ln -vsf "${_exe}${pkgver%.*}" "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}"
+    install -vDm755 "${pkgname}.sh"  "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
+    sed -i "s/@@EXE@@/${_exe}/g"     "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
+    ln -vsf "${_exe}${pkgver%.*}"    "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}"
   done
   for _exe in ipy ipyw; do
-    install -vDm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
-    sed -e "s/@@VERSION_MAJOR_MINOR@@/${pkgver%.*}/g" \
-        -e "s/@@EXE@@/${_exe}32/g" \
-        -i "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
+    install -vDm755 "${pkgname}.sh"  "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
+    sed -i "s/@@EXE@@/${_exe}32/g"   "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
     ln -vsf "${_exe}${pkgver%.*}-32" "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}-32"
   done
 
