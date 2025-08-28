@@ -2,8 +2,8 @@
 # Maintainer: Damien Butt <22627489+damienbutt@users.noreply.github.com>
 
 pkgname='emojify-go'
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Lighting fast Emoji conversion on the command line 😱'
 url='https://github.com/damienbutt/emojify-go'
 arch=('aarch64' 'x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('emojify')
 conflicts=('emojify')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go-1.0.0.tar.gz")
-sha256sums=('ecde7b0a0a804f8274562aef650a879bfb900868a9c2e562deda5cac8c1356bf')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.1/emojify-go-1.0.1.tar.gz")
+sha256sums=('f407e61fb4b03ec1cfd3c56eda1632d17d2172460d20069cbc24c522ca69a221')
 prepare() {
   cd "$srcdir"
 
@@ -26,14 +26,14 @@ build() {
   export CGO_ENABLED=0
 
   go build \
-    -ldflags="-s -w -X github.com/damienbutt/emojify-go/internal/version.Version=1.0.0 \
-        -X github.com/damienbutt/emojify-go/internal/version.Commit=803a0039c7869078a3f3ffbac5567480448c5cc7 \
-        -X github.com/damienbutt/emojify-go/internal/version.Date=2025-08-26T13:30:14Z \
-        -X github.com/damienbutt/emojify-go/internal/version.BuiltBy=makepkg" \
-    -trimpath \
-    -gcflags="all=-l" \
-    -o emojify \
-    ./cmd/emojify
+  -ldflags="-s -w -X github.com/damienbutt/emojify-go/internal/version.Version=1.0.1 \
+  -X github.com/damienbutt/emojify-go/internal/version.Commit=85fcc38f43205b392ad511c757be1a7f96b16bb0 \
+  -X github.com/damienbutt/emojify-go/internal/version.Date=2025-08-28T21:21:08Z \
+  -X github.com/damienbutt/emojify-go/internal/version.BuiltBy=makepkg" \
+  -trimpath \
+  -gcflags="all=-l" \
+  -o emojify \
+  ./cmd/emojify
 }
 package() {
   cd "$srcdir"
