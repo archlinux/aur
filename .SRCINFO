@@ -1,0 +1,21 @@
+pkgbase = traefiktop-bin
+	pkgdesc = A TUI for visualizing Traefik routing
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/darksworm/traefiktop
+	conflicts = traefiktop
+	provides = traefiktop
+	arch = aarch64
+	source_aarch64 = https://github.com/darksworm/traefiktop/releases/download/v1.1.0/traefiktop-1.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 187df430e4d5917e079472444905c6de84f85c35328677786ba7cbe12a9ca175
+	arch = aarch64
+	source_aarch64 = https://github.com/darksworm/traefiktop/releases/download/v1.1.0/traefiktop-1.1.0-linux-arm64-musl.tar.gz
+	sha256sums_aarch64 = ff1593c91b7d7a8d7e69defd81fa70985be6a8342a3b05e32f4fa0dea370555f
+	arch = x86_64
+	source_x86_64 = https://github.com/darksworm/traefiktop/releases/download/v1.1.0/traefiktop-1.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6845ba3bd4e721dcdbcfb03be468b4d0a39f2722181e6d9b4809f351a7ba9466
+	arch = x86_64
+	source_x86_64 = https://github.com/darksworm/traefiktop/releases/download/v1.1.0/traefiktop-1.1.0-linux-amd64-musl.tar.gz
+	sha256sums_x86_64 = 9c4f1a7476a72278952989e185385d3390fdd0daaa295f891f0c8f1e27770be5
+	
+pkgname = traefiktop-bin
