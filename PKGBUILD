@@ -5,9 +5,9 @@
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.14.11b
+pkgver=1.15b
 _zen_version=${pkgver//_/-}
-_firefox_version=141.0.2
+_firefox_version=142.0
 pkgrel=1
 pkgdesc='Experience tranquillity while browsing the web without people tracking you'
 url='https://zen-browser.app/'
@@ -55,7 +55,7 @@ makedepends=(
   llvm
   mesa
   nasm
-  nodejs-lts-iron
+  nodejs
   #  pyenv
   python
   rust
@@ -89,8 +89,8 @@ source=(
   0004-fix-package-json.zen.patch
   0005-source-firefox-language-packs.patch
   )
-sha256sums=('e717dd50d5940ad65506cc44d78f3727d28f1278b08f038cdf2082adcf161476'
-            'c33937fe2f6ad29af3de8f1a128c054afbd64821f702bf98d9f4079b97d37f3a'
+sha256sums=('85565bdb094994e9647e5fe925d73cb0a0ff196a1f55a27bacc17373c2354cfe'
+            '2808e1f10f3b6c593f96f3745a55d12c98107886daef00f1e354c24203a64b0f'
             'SKIP'
             '523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9'
             '36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a'
