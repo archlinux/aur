@@ -2,7 +2,7 @@
 
 pkgname=python-concurrenttools
 _name=${pkgname//-/_}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="Python concurrent tools."
@@ -28,7 +28,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('19acc7f7e18712cc92d067b426cdd49f684bed729457c6bce0ead90dc30d554a')
+sha256sums=('32fafdb747ec605c2e18267458aa2ea3646ab6f2b00ffe9a8b094fc7cef9a933')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
