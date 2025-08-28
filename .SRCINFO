@@ -1,6 +1,6 @@
 pkgbase = riscv32-gnu-toolchain-elf-llvm-bin
 	pkgdesc = GNU toolchain for riscv32 ELF, including GCC and clang.
-	pkgver = 2025.08.08
+	pkgver = 2025.08.28
 	pkgrel = 1
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = riscv32-gnu-toolchain-elf-llvm-bin
 	provides = riscv32-gnu-toolchain-elf-bin
 	conflicts = riscv32-gnu-toolchain-elf-bin
 	options = !strip
-	source = https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.08.08/riscv32-elf-ubuntu-24.04-llvm-nightly-2025.08.08-nightly.tar.xz
-	sha512sums = 7cf2d76d8a9cd617654a014d5c87c2035271a305f148a656f8947134bb7404564cfe50196efbdf00957ed4067ed5f93a532d7e42831dc62b860a24a330215202
+	source = https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.08.28/riscv32-elf-ubuntu-24.04-llvm-nightly-2025.08.28-nightly.tar.xz
+	sha512sums = cfe05b13d1eba7f2c6d33bc0ac3d490173c2206b5b00fd14fef50502ce357826505891f4ad89fad634d0ec3e5316a31d38d21d7b56cc5046495b5d649b165320
 
 pkgname = riscv32-gnu-toolchain-elf-llvm-bin
