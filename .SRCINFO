@@ -1,0 +1,15 @@
+pkgbase = biliup-rs-bin
+	pkgdesc = 命令行投稿(B站)和视频下载工具，提供多种登录方式，支持多p
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/biliup/biliup-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = biliup
+	source_x86_64 = biliup-x86_64::https://github.com/biliup/biliup-rs/releases/download/v0.2.4/biliupR-v0.2.4-x86_64-linux.tar.xz
+	sha256sums_x86_64 = c0e509424caec2ad5d7c3a049f686d7201891e749e0e7be8a4127232b70bf5d7
+	source_aarch64 = biliup-aarch64::https://github.com/biliup/biliup-rs/releases/download/v0.2.4/biliupR-v0.2.4-aarch64-linux.tar.xz
+	sha256sums_aarch64 = d21c149d2a3ef15b3bbadb16edc453a938bbfdbf9b848e11da795cc3d79629e2
+
+pkgname = biliup-rs-bin
