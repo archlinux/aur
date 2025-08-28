@@ -4,7 +4,7 @@
 _wlroots_version=0.19.0
 _wlroots_majver=0.19
 pkgname=wayfire-git
-pkgver=0.9.0.r202.ga1d73f58
+pkgver=0.10.0.r1.g6b2c730b
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -45,7 +45,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/wayfire"
-    tag=$(git tag -l | awk '/^[0-9.]+$/ {print $0} /^v{1}[0-9.]+$/ {print substr($0,2)}'|sort -n|tail -n1)
+    tag=$(git tag -l | awk '/^[0-9.]+$/ {print $0} /^v{1}[0-9.]+$/ {print substr($0,2)}'|sort -V|tail -n1)
     printf "$tag.r%s.g%s" "$(git rev-list --count v${tag}..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
