@@ -1,8 +1,9 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=nyacc
-pkgver=2.02.2
+pkgver=2.02.4
 pkgrel=1
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
@@ -11,7 +12,7 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('guile' 'guile-bytestructures')
 makedepends=('guile')
 source=("http://download-mirror.savannah.gnu.org/releases/nyacc/$pkgname-$pkgver.tar.gz")
-sha256sums=('691a5370a53a73a2dcfa89d92f811b3e56483a67f92199cd0061944d044b0205')
+sha256sums=('1e1e73f80ba1155547f9e48de0fb06e8ceccd87b8af45a415a89b40639458356')
 
 build() {
   cd $pkgname-$pkgver
