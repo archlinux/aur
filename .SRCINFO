@@ -10,8 +10,8 @@ pkgbase = kerminal-bin
 	source_x86_64 = kerminal-0.2.1.AppImage::https://github.com/klpod221/kerminal/releases/download/v0.2.1/kerminal-0.2.1.AppImage
 	source_x86_64 = kerminal.desktop
 	source_x86_64 = kerminal.png
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = d444986f390c0441ccb9cd38d6c9bd894dbfadfe09a9c37de348d45a88698b60
+	sha256sums_x86_64 = 2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da
+	sha256sums_x86_64 = eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc
 
 pkgname = kerminal-bin

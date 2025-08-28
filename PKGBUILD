@@ -16,11 +16,9 @@ source_x86_64=(
   "kerminal.png"
 )
 
-sha256sums_x86_64=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums_x86_64=('d444986f390c0441ccb9cd38d6c9bd894dbfadfe09a9c37de348d45a88698b60'
+                   '2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da'
+                   'eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
