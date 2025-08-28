@@ -5,9 +5,9 @@ pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
 
 epoch=1
-pkgver=1.29.0
-pkgrel=2
-_tests_commit=0b27b42aef05
+pkgver=1.29.1
+pkgrel=1
+_tests_commit=25acbb7405e8
 
 pkgdesc='webserver in an effort to preserve free and open development of nginx (linked against libressl)'
 arch=(i686 x86_64)
@@ -31,9 +31,9 @@ source=("$url/download/freenginx-$pkgver.tar.gz"{,.asc}
 	"hg+https://freenginx.org/hg/nginx-tests#revision=$_tests_commit"
 	"service"
 	"logrotate")
-sha256sums=('c4b259afa560c34b37292e9e9c76cfd71ba24cfcff05c3f339d6a63a3f46801e'
+sha256sums=('e457ada52d6b29ea8f69c083abfaa6100571b0da39b3d8689daf2849d51d1cba'
             'SKIP'
-            '5690168cdab62225ecee3345e30e7bc2475794253f4139569c611bd59884374c'
+            'fcbb809e93d8d5aebd5fc179fc0fb09386f3482885a1997774db0e5478145a5f'
             'daa4292d37342f3a1c4e82a85d3b83e3b559f11e8cd309788dc8d6e46c0ce247'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8)  # Maxim Dounin <mdounin@mdounin.ru>
