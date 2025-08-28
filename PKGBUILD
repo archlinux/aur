@@ -27,7 +27,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DVERSION=$pkgver
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
     cmake --build build
 }
 
