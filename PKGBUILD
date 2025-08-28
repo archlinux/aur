@@ -1,7 +1,7 @@
 # Maintainer: mklan <me@klanm.at>
 pkgname=hyproled-git
-pkgver=0.1.2
-pkgrel=4
+pkgver=0.1.3
+pkgrel=5
 pkgdesc="A hyprland shader utility to prevent OLED burn in."
 arch=('any')
 url="https://github.com/mklan/hyproled"
