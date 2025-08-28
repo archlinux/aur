@@ -18,7 +18,7 @@ source=(
     "mas-$srcpkgver.tar.gz::https://github.com/Monika-After-Story/MonikaModDev/archive/refs/tags/v$srcpkgver.tar.gz"
     "https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/$pkgver/chs.rpa"
     "https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/$pkgver/chs_gui.rpa"
-    "mas.desktop"
+    "mascn.desktop"
 )
 sha256sums=(
     'd1d5f4dbc409f921c1f3b48e1c422da7ebf032916699517e0dd213127e2c4328'
