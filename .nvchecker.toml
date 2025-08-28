@@ -1,0 +1,4 @@
+[ironpython2]
+source = "git"
+git = "https://github.com/IronLanguages/ironpython2.git"
+prefix = "ipy-"
