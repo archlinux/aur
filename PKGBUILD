@@ -22,7 +22,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   install -d "${pkgdir}/usr/lib/${_pkgname}"
-  cp -r "${srcdir}/linux-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}/"
+  cp -r "${srcdir}/kerminal-${pkgver}/"* "${pkgdir}/usr/lib/${_pkgname}/"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
