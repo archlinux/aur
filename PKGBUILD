@@ -3,7 +3,7 @@
 _pkgname=pi-im
 pkgname="${_pkgname}-wayland"
 pkgver=3.142a
-pkgrel=2
+pkgrel=3
 pkgdesc='the XMPP client from hell'
 url="https://forge.sunglocto.net/sunglocto/${_pkgname}"
 arch=('x86_64')
@@ -16,12 +16,12 @@ conflicts=("${_pkgname}")
 source=("https://forge.sunglocto.net/sunglocto/${_pkgname}/archive/${pkgver}.tar.gz")
 
 prepare() {
-    cd "${_pkgname}-${pkgver}/"
+    cd "${_pkgname}/"
     mkdir -p 'build/'
 }
 
 build() {
-    cd "${_pkgname}-${pkgver}/"
+    cd "${_pkgname}/"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}/"
+    cd "${_pkgname}/"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 sha256sums=('cd675bb3c4550d6d520129b456da1a7b6fcc60c40e5bf5e09f01a30027a00a7e')
