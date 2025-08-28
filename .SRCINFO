@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD-3-Clause-Modification
@@ -242,6 +242,8 @@ pkgname = python-pytorch-rocm
 	depends = miopen-hip
 	depends = magma-hip
 	depends = onednn
+	depends = python-triton
+	depends = python-aotriton
 	provides = python-pytorch=2.8.0
 	conflicts = python-pytorch
 
@@ -273,6 +275,8 @@ pkgname = python-pytorch-opt-rocm
 	depends = miopen-hip
 	depends = magma-hip
 	depends = onednn
+	depends = python-triton
+	depends = python-aotriton
 	provides = python-pytorch=2.8.0
 	provides = python-pytorch-rocm=2.8.0
 	conflicts = python-pytorch
