@@ -3,10 +3,10 @@
 
 pkgname=typora-plugin
 _pkgname=typora
-_typora_ver=1.10.8
+_typora_ver=1.11.5
 _pkgver_x86_64="$_typora_ver"
 _pkgver_aarch64="$_typora_ver"
-_plugin_ver=1.15.9
+_plugin_ver=1.15.10
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=5
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
@@ -33,9 +33,9 @@ source_x86_64=("${_urlbase}${_pkgver_x86_64}_amd64.deb")
 source_aarch64=("${_urlbase}${_pkgver_aarch64}_arm64.deb")
 sha512sums=(
     '108cb69c5ada4e06dcd9995f4c45f9e5566a4ac41002af1d7cc22ecdc54f1186e43920019e54657be8b91b132dd60919241e135560d3d85d60f9618f4112095c'
-    'da1a2b41f4e5c38c5ba686e458a9bdb0ff0a590d67d3ad44a0546a58b94f1294fe9bc8d58813322bf331edd207e2ac50775dcb87e005c3f1f0c0050b5b3fa92a')
-sha512sums_x86_64=('dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466')
-sha512sums_aarch64=('8fe1e248820516b3a6067e71aa3f811d59b7f95658674d6d3777fff4886c80b9404fca737465176b3e38c7623d85221e16f060ec2bbfbf764a17d9142c60ef5e')
+    'f342e85d2266c519fdcfb55ed94f88fa4f8af5b3ea03f720c6a078d88642f803ef23eb4054b9183469638eed2acd7a70eb91cbbc61e3c816e70eaeb8978f8ffc')
+sha512sums_x86_64=('e9ec473aca25a7a42a5a1ca0268a66dadda0966d4b969069197c42924a216f98707a9cf3325a502b3164a8d24846de64f3cdbc103ea947eb98d5a7c737ad4bfb')
+sha512sums_aarch64=('f424a1ba555e8b79d61478e9cfa703ad54fb6466581e1c2483695ea395b7fd16002c7b4714b9ba9e62cce5d5ad76d6a9c709bfe0cd9264df369ebb25bb91ab37')
 
 _patch_plugin() {
   cp -r $srcdir/plugin $pkgdir/usr/share/typora/resources/
