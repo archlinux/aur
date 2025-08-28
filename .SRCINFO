@@ -1,7 +1,7 @@
 pkgbase = pi-im
 	pkgdesc = the XMPP client from hell
 	pkgver = 3.142a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://forge.sunglocto.net/sunglocto/pi-im
 	arch = x86_64
 	license = AGPL
