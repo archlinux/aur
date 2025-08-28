@@ -1,7 +1,7 @@
 pkgbase = zedless-git
 	pkgdesc = Zed fork focused on privacy and being local-first
 	pkgver = 0.192.0.dev.r980.gadb21022b5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zedless-editor/zedless
 	arch = x86_64
 	license = GPL-3.0-or-later
