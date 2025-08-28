@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="dwatch"
-pkgver="0.4.0"
+pkgver="0.4.1"
 pkgrel="1"
 pkgdesc="A tool to watch command output for differences and send notifications."
 arch=("any")
@@ -20,7 +20,7 @@ makedepends=(
     "python-wheel"
 )
 source=("https://github.com/IngoMeyer441/dwatch/archive/v${pkgver}.tar.gz")
-sha256sums=("dc704b03576e6feeb6dc3080196696d903a34d71a4454009cfc1c5ac1fa77320")
+sha256sums=("a248eae975039b0f3ee2ea49c7490cb2bf183e4879a77788e8bf48ffe741a9b2")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return
