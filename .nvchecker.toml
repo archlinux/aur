@@ -1,0 +1,5 @@
+[ironpython2-bin]
+source = "github"
+github = "IronLanguages/ironpython2"
+use_latest_release = true
+prefix = "ipy-"
