@@ -1,0 +1,116 @@
+#!/bin/bash
+
+monitors=$(wlr-randr --json | jq '.[] | .name')
+windows="${XDPH_WINDOW_SHARING_LIST}"
+
+result=""
+
+# shamelessly stolen from uwsm/uuctl
+if [ "$#" -le "1" ]; then
+    dmenu_candidates="walker fuzzel wofi rofi tofi bemenu wmenu dmenu"
+
+    if [ "$#" = "1" ]; then
+        case " $dmenu_candidates " in
+        *" $1 "*) true ;;
+        *)
+            {
+                echo "Supported menu tools: $dmenu_candidates"
+                echo "'$1' is not among them. Provide its full command line ending with prompt argument"
+                echo "(-p or analogous)"
+            } >&2
+            exit 1
+            ;;
+        esac
+    fi
+
+    for dmenu_candidate in $1 $dmenu_candidates; do
+        ! command -v "$dmenu_candidate" >/dev/null || break
+    done
+
+    case "$dmenu_candidate" in
+    walker)
+        set -- walker -d -p
+        ;;
+    fuzzel)
+        set -- fuzzel --dmenu -R --log-no-syslog --log-level=warning -p
+        ;;
+    wofi)
+        set -- wofi --dmenu -p
+        ;;
+    rofi)
+        set -- rofi -dmenu -p
+        ;;
+    tofi)
+        set -- tofi --prompt-text
+        ;;
+    bemenu)
+        set -- bemenu -p
+        ;;
+    wmenu)
+        set -- wmenu -p
+        ;;
+    dmenu)
+        set -- dmenu -p
+        ;;
+    '' | *)
+        # shellcheck disable=SC2086
+        echo "Could not find a menu tool among:" $dmenu_candidates
+        exit 1
+        ;;
+    esac
+else
+    if ! command -v "$1" >/dev/null; then
+        echo "Menu tool '$1' not found" >&2
+        exit 1
+    fi
+fi
+
+# Add monitors to result
+while IFS= read -r monitor; do
+    monitor=$(echo "$monitor" | tr -d '"') # Remove quotes from monitor name
+    if [ -n "$result" ]; then
+        result="${result}\n"
+    fi
+    result="${result}${monitor}\tscreen: ${monitor}"
+done <<<"$monitors"
+
+# Add region entry
+if [ -n "$result" ]; then
+    result="${result}\n"
+fi
+result="${result}region\tSelection Region"
+
+# Add windows to result
+while IFS= read -r line; do
+    if [ -n "$result" ]; then
+        result="${result}\n"
+    fi
+    result="${result}${line}"
+done < <(echo "$windows" | awk -F'\\[HE>\\]' '{
+    for(i=1; i<=NF; i++) {
+        if ($i == "") continue;
+
+        split($i, window, "\\[HC>\\]");
+        id = window[1];
+
+        split(window[2], parts, "\\[HT>\\]");
+        class = parts[1];
+        title = parts[2];
+
+        if (id != "")
+            print id "\t" "window: " title;
+    }
+}')
+
+selection=$(echo -e "$result" | "$@" "Select")
+
+if [[ $selection == *"screen"* ]]; then
+    monitor=$(echo "$selection" | cut -f1)
+    echo "[SELECTION]/screen:${monitor}"
+elif [[ $selection == *"window"* ]]; then
+    window_id=$(echo "$selection" | cut -f1)
+    echo "[SELECTION]/window:${window_id}"
+elif [[ $selection == *"region"* ]]; then
+    region=$(slurp -f "%o@%x,%y,%w,%h")
+    echo "[SELECTION]/region:${region}"
+fi

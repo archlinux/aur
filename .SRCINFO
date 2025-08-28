@@ -1,0 +1,15 @@
+pkgbase = xdph-dmenu-sharepicker
+	pkgdesc = Hyprland Dmenu Screenshare-Picker
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = hyprland
+	depends = wlr-randr
+	depends = jq
+	provides = xdph-dmenu-sharepicker
+	conflicts = xdph-dmenu-sharepicker
+	source = xdph-dmenu-sharepicker
+	sha256sums = SKIP
+
+pkgname = xdph-dmenu-sharepicker
