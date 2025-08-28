@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.7.4
+pkgver=3.7.5
 _electronversion=37
 _nodeversion=24
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('b4437139f24412fb834713e86926439516fabf3fd7fe0ef9a0b34fdca8af0443'
+sha256sums=('67f2ebabb99c97cb32641a0059a90b7d107117f2c79a94255126ac7bc90eb744'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
@@ -32,6 +32,10 @@ _ensure_local_nvm() {
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
+}
+_get_electron_version() {
+    _electronversion="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -42,6 +46,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
+    _get_electron_version
     _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
