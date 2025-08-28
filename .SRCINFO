@@ -1,6 +1,6 @@
 pkgbase = opencomposite-git
 	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR.
-	pkgver = r1228.538639b
+	pkgver = r1232.cff07db
 	pkgrel = 1
 	url = https://gitlab.com/znixian/OpenOVR
 	arch = x86_64
