@@ -11,7 +11,7 @@ _name="livereload"
 _module="${_name}"
 
 pkgname="python-${_module}"
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="livereload server in python"
 arch=("any")
@@ -19,8 +19,8 @@ url="https://github.com/lepture/python-livereload"
 license=("BSD")
 depends=("python" "python-six" "python-tornado")
 makedepends=("python-setuptools")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('676f50b9300e1582177493cef24f4e2b10a4e385d0de780bf9161dee66e3063420338021464477c8079bffd0e4690a4b0d15c71025ebf1959addbaa6e69fa8bb')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('a0c5a316ad5d34518b6ca44cddff51ba45d60a8ba24de767e791aa529e4ab22accf15916321fea755e67f4fd0aecb1e0ed840142662c27c8eaa6cad5dc2a7399')
 
 build() {
   cd "$pkgname-$pkgver"
