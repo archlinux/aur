@@ -6,7 +6,6 @@ pkgname=nextflow
 pkgver=24.04.3
 pkgrel=1
 pkgdesc="A DSL for data-driven computational pipelines"
-install=nextflow.install
 arch=('any')
 url='https://www.nextflow.io'
 license=('Apache-2.0')
