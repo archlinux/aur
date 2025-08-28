@@ -1,7 +1,7 @@
 pkgbase = clipse-gui
 	pkgdesc = A simple clipboard manager with a GUI
-	pkgver = 0.2.0
-	pkgrel = 1
+	pkgver = 0.3.2
+	pkgrel = 3
 	url = https://github.com/d7omdev/clipse-gui
 	arch = x86_64
 	license = MIT
