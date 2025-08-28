@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/tsirysndr/tunein-cli"
 source=("$url/releases/download/v${pkgver/_/-}/tunein_v${pkgver/_/-}_x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('a4945f497bd35da41a8442a40358f7bab548712667e1703ad68e719b0d6b5df6')
-depends=('alsa-lib')
+depends=('alsa-lib' 'dbus')
 license=('MIT')
 
 package() {
