@@ -1,4 +1,4 @@
-#Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 
 _pkgname=libqpsd
 pkgname=libqpsd-qt6
@@ -31,7 +31,7 @@ package() {
 	cp -r ../*.h "${pkgdir}/usr/include/libqpsd"
 
 	# This is very shabby, needs redoing, I don't know how to cmake, but it gets nomacs build progress a little bit further
-#	install -d "${pkgdir}/usr/lib/cmake/libqpsd"
-#	echo 'file(GLOB LIBQPSD_HEADERS "/usr/include/libqpsd/*.h")' > "${pkgdir}/usr/lib/cmake/libqpsd/libqpsdConfig.cmake"
-#	echo 'set(LIBQPSD_FOUND TRUE)' >> "${pkgdir}/usr/lib/cmake/libqpsd/libqpsdConfig.cmake"
+	#install -d "${pkgdir}/usr/lib/cmake/libqpsd"
+	#echo 'file(GLOB LIBQPSD_HEADERS "/usr/include/libqpsd/*.h")' > "${pkgdir}/usr/lib/cmake/libqpsd/libqpsdConfig.cmake"
+	#echo 'set(LIBQPSD_FOUND TRUE)' >> "${pkgdir}/usr/lib/cmake/libqpsd/libqpsdConfig.cmake"
 }
